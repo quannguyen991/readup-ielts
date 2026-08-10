@@ -19,6 +19,21 @@ export type LicenseType =
 
 export type ArticleTrack = 'academic' | 'general_training';
 
+/**
+ * Tier bám cấu trúc Reading của IELTS: 3 passage tăng dần độ dài và độ khó,
+ * cộng ba loại ngoài đề thi.
+ *
+ * Danh sách này phải khớp đúng enum `passage_tier` trong
+ * supabase/migrations/20260810000100_passage_tier.sql (Task 8).
+ */
+export type PassageTier =
+  | 'p1'
+  | 'p2'
+  | 'p3'
+  | 'short_academic'
+  | 'headline'
+  | 'official_practice';
+
 export type QuestionType =
   | 'true_false_not_given'
   | 'yes_no_not_given'
