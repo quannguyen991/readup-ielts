@@ -35,7 +35,11 @@ export function normalizeArticle(
     thumbnailUrl: raw.thumbnailUrl ?? null,
   };
 
-  if (!raw.bodyText) {
+  // Loại B (headline_only) không được phép có body dù nguồn có lỡ gửi kèm —
+  // đây là bất biến bản quyền, không phải tối ưu. CHECK constraint ở DB chỉ
+  // bắt khi push lên Supabase; ghi seed JSON cục bộ (thứ app thực sự đọc)
+  // không đi qua đó, nên chặn ở đây mới là chốt chặn thật sự.
+  if (!raw.bodyText || raw.licenseType === 'headline_only') {
     return {
       ok: true,
       article: {

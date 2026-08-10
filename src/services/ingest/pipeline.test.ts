@@ -62,6 +62,24 @@ test('normalizeArticle: bài Loại B không body thì tier là headline', () =>
   assert.equal(result.article.wordCount, null);
 });
 
+test('normalizeArticle: headline_only có body vẫn bị bỏ body — bất biến bản quyền', () => {
+  // raw() mặc định trả về 40 đoạn (~1240 từ), đủ để lọt gate và được gán
+  // hẳn một passage tier nếu không bị chặn bởi licenseType — nhưng
+  // headline_only tuyệt đối không được lưu toàn văn.
+  const result = normalizeArticle(raw({ licenseType: 'headline_only', sourceName: 'BBC News' }), COMMON);
+
+  assert.equal(result.ok, true);
+  if (!result.ok) return;
+  assert.equal(result.article.bodyText, null);
+  assert.deepEqual(result.article.paragraphs, []);
+  assert.equal(result.article.cefrLevel, null);
+  assert.equal(result.article.bandRange, null);
+  assert.equal(result.article.wordCount, null);
+  assert.equal(result.article.estMinutes, null);
+  assert.equal(result.article.readabilityScore, null);
+  assert.equal(result.article.rareWordRatio, null);
+});
+
 test('normalizeArticle: nguồn tự khai tier thì tôn trọng lời khai', () => {
   const result = normalizeArticle(
     raw({ bodyText: null, licenseType: 'headline_only', passageTier: 'official_practice' }),
