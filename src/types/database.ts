@@ -97,6 +97,7 @@ export type Article = {
   topic_id: string | null;
   topic: string | null;
   track: ArticleTrack;
+  passage_tier: PassageTier | null;
   cefr_level: CefrLevel | null;
   band_range: string | null;
   word_count: number | null;

@@ -1,24 +1,25 @@
+import { checkQuality, type RejectReason } from './quality-gate';
 import { analyzeText } from './readability';
+import { assignTier, countWords, truncateToTier } from './tiers';
 import type { IngestedArticle, RawArticle } from './types';
 
+export type NormalizeResult =
+  | { ok: true; article: IngestedArticle }
+  | { ok: false; reason: RejectReason };
+
+/** Số từ dùng để chấm độ khó — mẫu cố định nên bài dài không bị lệch điểm. */
+const SCORING_SAMPLE_WORDS = 800;
+
 /**
- * Chuẩn hoá bài thô: tách đoạn, chấm độ khó, sinh slug và id ổn định.
- * Bài Loại B (headline_only) không có body nên bỏ qua phần chấm điểm.
+ * Chuẩn hoá bài thô. Thứ tự bắt buộc:
+ * gate → chấm mẫu → gán tier → cắt theo tier → chấm lại trên bản đã cắt.
+ * Bài Loại B không có body nên bỏ qua toàn bộ phần chấm điểm.
  */
 export function normalizeArticle(
   raw: RawArticle,
   commonWords: ReadonlySet<string>,
-): IngestedArticle {
-  const paragraphs = raw.bodyText
-    ? raw.bodyText
-        .split(/\n{2,}/)
-        .map((p) => p.trim())
-        .filter(Boolean)
-    : [];
-
-  const analysis = raw.bodyText ? analyzeText(raw.bodyText, commonWords) : null;
-
-  return {
+): NormalizeResult {
+  const base = {
     id: stableId(raw.externalId),
     externalId: raw.externalId,
     title: raw.title.trim(),
@@ -31,16 +32,71 @@ export function normalizeArticle(
     attribution: raw.attribution ?? null,
     publishedAt: raw.publishedAt ?? null,
     summary: raw.summary?.trim() ?? null,
-    bodyText: raw.bodyText,
-    paragraphs,
     thumbnailUrl: raw.thumbnailUrl ?? null,
-    cefrLevel: analysis?.cefr ?? null,
-    bandRange: analysis?.bandRange ?? null,
-    wordCount: analysis?.wordCount ?? null,
-    estMinutes: analysis?.estMinutes ?? null,
-    readabilityScore: analysis?.fkGrade ?? null,
-    rareWordRatio: analysis?.rareWordRatio ?? null,
   };
+
+  if (!raw.bodyText) {
+    return {
+      ok: true,
+      article: {
+        ...base,
+        passageTier: raw.passageTier ?? 'headline',
+        bodyText: null,
+        paragraphs: [],
+        cefrLevel: null,
+        bandRange: null,
+        wordCount: null,
+        estMinutes: null,
+        readabilityScore: null,
+        rareWordRatio: null,
+      },
+    };
+  }
+
+  const paragraphs = raw.bodyText
+    .split(/\n{2,}/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+
+  const gate = checkQuality(base.title, paragraphs);
+  if (!gate.ok) return { ok: false, reason: gate.reason };
+
+  const sampleCefr = analyzeText(sampleForScoring(paragraphs), commonWords).cefr;
+  const tier = raw.passageTier ?? assignTier(countWords(raw.bodyText), sampleCefr);
+  if (tier === null) return { ok: false, reason: 'too_short' };
+
+  const kept = truncateToTier(paragraphs, tier);
+  const bodyText = kept.join('\n\n');
+  const analysis = analyzeText(bodyText, commonWords);
+
+  return {
+    ok: true,
+    article: {
+      ...base,
+      passageTier: tier,
+      bodyText,
+      paragraphs: kept,
+      cefrLevel: analysis.cefr,
+      bandRange: analysis.bandRange,
+      wordCount: analysis.wordCount,
+      estMinutes: analysis.estMinutes,
+      readabilityScore: analysis.fkGrade,
+      rareWordRatio: analysis.rareWordRatio,
+    },
+  };
+}
+
+function sampleForScoring(paragraphs: string[]): string {
+  const kept: string[] = [];
+  let total = 0;
+
+  for (const paragraph of paragraphs) {
+    kept.push(paragraph);
+    total += countWords(paragraph);
+    if (total >= SCORING_SAMPLE_WORDS) break;
+  }
+
+  return kept.join('\n\n');
 }
 
 /** Bỏ trùng theo externalId, rồi theo tiêu đề đã chuẩn hoá. */

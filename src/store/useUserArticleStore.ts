@@ -47,6 +47,8 @@ export const useUserArticleStore = create<UserArticleState>()(
           sourceUrl: '',
           topic: 'society',
           track: 'academic',
+          // Bài dán tay không đi qua normalizeArticle nên không có tier.
+          passageTier: null,
           licenseType: 'user_pasted',
           attribution: null,
           publishedAt: new Date().toISOString(),

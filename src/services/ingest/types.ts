@@ -1,4 +1,4 @@
-import type { ArticleTrack, CefrLevel, LicenseType } from '@/types/database';
+import type { ArticleTrack, CefrLevel, LicenseType, PassageTier } from '@/types/database';
 
 /** Bài đọc thô do một nguồn trả về, trước khi chấm độ khó và chuẩn hoá. */
 export type RawArticle = {
@@ -9,6 +9,8 @@ export type RawArticle = {
   sourceUrl: string;
   topic: string;
   track: ArticleTrack;
+  /** Nguồn nào biết trước tier của mình thì khai ở đây (đề official, headline). */
+  passageTier?: PassageTier;
   licenseType: LicenseType;
   attribution?: string;
   publishedAt?: string;
@@ -28,6 +30,7 @@ export type IngestedArticle = {
   sourceUrl: string;
   topic: string;
   track: ArticleTrack;
+  passageTier: PassageTier | null;
   licenseType: LicenseType;
   attribution: string | null;
   publishedAt: string | null;
