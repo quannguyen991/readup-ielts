@@ -62,3 +62,58 @@ export async function fetchJson<T>(
 export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+/**
+ * Chạy fn trên từng item với tối đa `limit` việc song song.
+ * Giữ đúng thứ tự kết quả theo thứ tự item đầu vào.
+ */
+export async function mapWithConcurrency<T, R>(
+  items: T[],
+  limit: number,
+  fn: (item: T, index: number) => Promise<R>,
+): Promise<R[]> {
+  const results = new Array<R>(items.length);
+  let next = 0;
+
+  const worker = async (): Promise<void> => {
+    for (;;) {
+      const index = next;
+      next += 1;
+      if (index >= items.length) return;
+      results[index] = await fn(items[index]!, index);
+    }
+  };
+
+  await Promise.all(
+    Array.from({ length: Math.max(1, Math.min(limit, items.length)) }, worker),
+  );
+
+  return results;
+}
+
+/**
+ * Tạo một bộ điều nhịp DÙNG CHUNG cho nhiều worker: đảm bảo mọi lệnh gọi tới
+ * hàm trả về (dù đến từ worker nào) cách nhau tối thiểu `spacingMs`, tính
+ * trên một mốc thời gian toàn cục duy nhất — không phải chia lịch riêng theo
+ * từng worker (cách đó dễ trôi vì khoảng cách thật phụ thuộc độ trễ response
+ * của từng request, hai worker có thể vẫn bắn trùng lúc).
+ *
+ * Race-free: đoạn "đọc mốc hiện tại (nextSlot) → tính start = max(now,
+ * nextSlot) → ghi mốc mới (start + spacingMs)" chạy hoàn toàn đồng bộ, không
+ * có `await` xen giữa. JS chỉ nhường lượt cho tác vụ khác tại điểm `await`,
+ * nên trong đúng đoạn đồng bộ đó không lệnh gọi nào khác có thể chen vào đọc
+ * `nextSlot` trước khi lệnh gọi hiện tại ghi xong — mỗi lệnh gọi luôn "giữ
+ * chỗ" trên giá trị mới nhất. Việc chờ thật sự (sleep) diễn ra SAU khi đã
+ * giữ chỗ xong, nên nhiều worker gọi đồng thời vẫn xếp hàng đúng thứ tự và
+ * đúng khoảng cách, không worker nào giành được cùng một khe.
+ */
+export function createPacer(spacingMs: number): () => Promise<void> {
+  let nextSlot = 0;
+
+  return function pace(): Promise<void> {
+    const now = Date.now();
+    const start = Math.max(now, nextSlot);
+    nextSlot = start + spacingMs;
+    return sleep(start - now);
+  };
+}
