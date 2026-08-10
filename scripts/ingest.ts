@@ -1,27 +1,36 @@
 /**
  * Cào bài đọc từ các nguồn công khai, chấm độ khó, ghi ra seed dùng offline
- * và (nếu đã cấu hình) đẩy lên Supabase.
+ * (src/data/seed/index.json + bodies/) và (nếu đã cấu hình) đẩy lên Supabase.
  *
- *   npm run ingest                       # cào + ghi src/data/seed/articles.json
+ *   npm run ingest                       # cào tiếp, giữ kho cũ + nguồn mới
  *   npm run ingest -- --limit 8          # giới hạn mỗi nguồn
+ *   npm run ingest -- --replace          # bỏ hết kho cũ, cào lại từ đầu
+ *   npm run ingest -- --resume           # bỏ qua nguồn đã ghi xong ở lần chạy trước
  *   npm run ingest -- --push             # đẩy tiếp lên Supabase
- *   npm run ingest -- --only wikipedia
+ *   npm run ingest -- --only official --only plos
  */
 import 'dotenv/config';
 
-import { mkdirSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join, resolve } from 'node:path';
 
 import { fetchText } from '../src/services/ingest/http';
 import { dedupe, normalizeArticle } from '../src/services/ingest/pipeline';
-import { analyzeText } from '../src/services/ingest/readability';
+import type { ArticleBody, SeedIndexEntry } from '../src/services/ingest/seed-writer';
+import { writeSeedBundle } from '../src/services/ingest/seed-writer';
 import { FULL_TEXT_FEEDS, HEADLINE_FEEDS, fetchFeed } from '../src/services/ingest/sources/feeds';
+import { fetchOfficialPractice } from '../src/services/ingest/sources/official-practice';
 import { fetchArxiv, fetchPlos } from '../src/services/ingest/sources/science';
-import { fetchWikipedia } from '../src/services/ingest/sources/wikipedia';
+import {
+  fetchWikipedia,
+  fetchWikipediaCategories,
+} from '../src/services/ingest/sources/wikipedia';
 import type { IngestedArticle, SourceResult } from '../src/services/ingest/types';
 
 const ROOT = resolve(import.meta.dirname, '..');
-const SEED_PATH = resolve(ROOT, 'src/data/seed/articles.json');
+const SEED_DIR = resolve(ROOT, 'src/data/seed');
+const INDEX_PATH = resolve(SEED_DIR, 'index.json');
+const STATE_PATH = resolve(SEED_DIR, '.ingest-state.json');
 const COMMON_WORDS_PATH = resolve(ROOT, 'src/data/common-words.json');
 const COMMON_WORDS_URL =
   'https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-usa.txt';
@@ -30,87 +39,135 @@ async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   const log = (m: string) => console.log(m);
 
-  const commonWords = await loadCommonWords(log);
-  const ctx = { limit: args.limit, log };
-
-  // Chấm lại độ khó cho kho bài hiện có mà không gọi mạng.
-  if (args.rescore) {
-    const existing = JSON.parse(readFileSync(SEED_PATH, 'utf8')) as IngestedArticle[];
-    const rescored = existing.map((a) => {
-      if (!a.bodyText) return a;
-      const analysis = analyzeText(a.bodyText, commonWords);
-      return {
-        ...a,
-        cefrLevel: analysis.cefr,
-        bandRange: analysis.bandRange,
-        wordCount: analysis.wordCount,
-        estMinutes: analysis.estMinutes,
-        readabilityScore: analysis.fkGrade,
-        rareWordRatio: analysis.rareWordRatio,
-      };
-    });
-    writeSeed(rescored);
-    const dist = rescored.reduce<Record<string, number>>((acc, a) => {
-      if (a.cefrLevel) acc[a.cefrLevel] = (acc[a.cefrLevel] ?? 0) + 1;
-      return acc;
-    }, {});
-    log(`Đã chấm lại ${rescored.filter((a) => a.bodyText).length} bài: ${JSON.stringify(dist)}`);
+  // replace = bắt đầu từ rỗng; resume = tiếp tục kho cũ. Hai ý ngược nhau —
+  // cho cả hai cùng lúc thì phải đoán ý nào thắng, nên chặn thẳng thay vì đoán.
+  if (args.replace && args.resume) {
+    log(
+      '✗ --replace và --resume không thể dùng cùng lúc ' +
+        '(replace = bỏ hết cào lại từ đầu, resume = tiếp tục kho cũ).',
+    );
+    process.exitCode = 1;
     return;
   }
 
-  const results: SourceResult[] = [];
+  // index.json không còn mang body (Task 6 tách seed thành index + chunk),
+  // nên "chấm lại độ khó từ seed" không còn dữ liệu để chấm. Giữ cờ lại (chỉ
+  // để không vỡ dòng lệnh cũ vì unknown flag), đổi thân thành thông báo.
+  if (args.rescore) {
+    log(
+      'Cờ --rescore đã bỏ: body giờ nằm trong chunk, không nằm trong index.\n' +
+        'Muốn chấm lại thì chạy lại nguồn tương ứng, ví dụ: npm run ingest -- --only wikipedia-categories',
+    );
+    return;
+  }
 
-  if (matches(args.only, 'wikipedia')) {
-    log('\n▸ Wikipedia (CC BY-SA, lưu toàn văn kèm attribution)');
-    results.push(await fetchWikipedia(ctx, 'en'));
-  }
-  if (matches(args.only, 'simple-wikipedia')) {
-    log('\n▸ Simple Wikipedia (bản dễ đọc hơn)');
-    results.push(await fetchWikipedia({ ...ctx, limit: Math.ceil(args.limit / 2) }, 'simple'));
-  }
-  if (matches(args.only, 'feeds')) {
-    log('\n▸ Nguồn Loại A qua RSS (public domain / mở)');
-    for (const feed of FULL_TEXT_FEEDS) results.push(await fetchFeed(feed, ctx));
-  }
-  if (matches(args.only, 'plos')) {
-    log('\n▸ PLOS ONE (CC BY)');
-    results.push(await fetchPlos(ctx));
-  }
-  if (matches(args.only, 'arxiv')) {
-    log('\n▸ arXiv abstracts');
-    results.push(await fetchArxiv(ctx));
-  }
-  if (matches(args.only, 'headlines')) {
-    log('\n▸ Nguồn Loại B — CHỈ tiêu đề + link gốc, không lưu toàn văn');
-    for (const feed of HEADLINE_FEEDS) {
-      results.push(await fetchFeed(feed, { ...ctx, limit: Math.min(args.limit, 6) }));
+  const commonWords = await loadCommonWords(log);
+  const ctx = { limit: args.limit, log };
+
+  const state = loadState(args.resume);
+  const rejected: Record<string, number> = {};
+  const { articles: existingArticles, corruptCount } = args.replace
+    ? { articles: [] as IngestedArticle[], corruptCount: 0 }
+    : loadExistingIndex();
+  let collected: IngestedArticle[] = existingArticles;
+
+  /** Chạy một nguồn rồi ghi seed ngay — job dài 5-8 phút nên không được mất giữa đường. */
+  const runSource = async (
+    key: string,
+    label: string,
+    run: () => Promise<SourceResult> | SourceResult,
+  ): Promise<void> => {
+    if (!matches(args.only, key)) return;
+    if (state.doneSources.includes(key)) {
+      log(`\n▸ ${label} — bỏ qua, đã xong ở lần chạy trước (--resume)`);
+      return;
     }
+
+    log(`\n▸ ${label}`);
+
+    let result: SourceResult;
+    try {
+      result = await run();
+    } catch (err) {
+      log(`  ✗ ${label} lỗi hẳn: ${err instanceof Error ? err.message : String(err)}`);
+      return;
+    }
+
+    for (const raw of result.articles) {
+      const normalized = normalizeArticle(raw, commonWords);
+      if (!normalized.ok) {
+        rejected[normalized.reason] = (rejected[normalized.reason] ?? 0) + 1;
+        continue;
+      }
+      collected.push(normalized.article);
+    }
+
+    collected = dedupe(collected);
+    const written = writeSeedBundle(SEED_DIR, collected);
+
+    state.doneSources.push(key);
+    saveState(state);
+
+    for (const e of result.errors.slice(0, 5)) log(`  - ${e}`);
+    log(
+      `  ✓ ${label}: kho bài hiện ${collected.length} bài · ${written.chunkCount} chunk (đã ghi seed)`,
+    );
+  };
+
+  await runSource('wikipedia', 'Wikipedia — tiêu đề curated (sàn chất lượng)', () =>
+    fetchWikipedia(ctx, 'en'),
+  );
+  await runSource('simple-wikipedia', 'Simple Wikipedia — tiêu đề curated', () =>
+    fetchWikipedia({ ...ctx, limit: Math.ceil(args.limit / 2) }, 'simple'),
+  );
+  await runSource('wikipedia-categories', 'Wikipedia — crawl theo category', () =>
+    fetchWikipediaCategories(ctx, 'en'),
+  );
+  await runSource('simple-wikipedia-categories', 'Simple Wikipedia — crawl theo category', () =>
+    fetchWikipediaCategories(ctx, 'simple'),
+  );
+  await runSource('feeds', 'NASA (public domain)', async () => {
+    const results = await Promise.all(FULL_TEXT_FEEDS.map((feed) => fetchFeed(feed, ctx)));
+    return mergeResults('Loại A qua RSS', results);
+  });
+  await runSource('plos', 'PLOS ONE (CC BY)', () => fetchPlos(ctx));
+  await runSource('arxiv', 'arXiv abstracts', () => fetchArxiv(ctx));
+  await runSource('official', 'Đề chính thức IELTS / British Council', () =>
+    fetchOfficialPractice(ctx),
+  );
+  await runSource('headlines', 'Loại B — CHỈ tiêu đề + link gốc', async () => {
+    const results = await Promise.all(
+      HEADLINE_FEEDS.map((feed) => fetchFeed(feed, { ...ctx, limit: Math.min(args.limit, 6) })),
+    );
+    return mergeResults('Loại B', results);
+  });
+
+  const written = writeSeedBundle(SEED_DIR, collected);
+
+  printSummary({ log, collected, written, rejected, corruptCount });
+
+  // KHÔNG xoá state file dù mọi nguồn (theo --only, nếu có) đã chạy xong.
+  // --resume chỉ được ĐỌC khi gõ tay (xem loadState: resume=false bỏ qua
+  // file này hoàn toàn), nên file cũ còn tồn tại không làm `npm run ingest`
+  // trơn bỏ sót nguồn nào — không có nguy cơ "âm thầm bỏ qua". Giữ lại còn
+  // được việc: thêm nguồn mới vào code rồi chạy --resume sẽ chỉ chạy nguồn
+  // mới đó, khỏi cào lại toàn bộ các nguồn cũ đã xong.
+  if (existsSync(STATE_PATH)) {
+    log(`\n(${STATE_PATH} vẫn còn — dùng --resume ở lần chạy sau để bỏ qua các nguồn đã xong.)`);
   }
 
-  const raw = results.flatMap((r) => r.articles);
-  const errors = results.flatMap((r) => r.errors);
-
-  const articles = dedupe(raw.map((r) => normalizeArticle(r, commonWords)));
-
-  const merged = args.replace ? articles : mergeWithExisting(articles);
-  writeSeed(merged);
-
-  log('\n── Kết quả ──');
-  log(`Lấy về: ${raw.length} bài · sau khi bỏ trùng: ${articles.length} · seed hiện có: ${merged.length}`);
-  log(`Loại A (có toàn văn): ${merged.filter((a) => a.bodyText).length}`);
-  log(`Loại B (chỉ tiêu đề):  ${merged.filter((a) => !a.bodyText).length}`);
-  log(`Ghi vào: ${SEED_PATH}`);
-
-  if (errors.length > 0) {
-    log(`\nNguồn lỗi hoặc bỏ qua (${errors.length}):`);
-    for (const e of errors.slice(0, 20)) log(`  - ${e}`);
-  }
-
-  if (args.push) await pushToSupabase(merged, log);
+  if (args.push) await pushToSupabase(collected, log);
 }
 
 function parseArgs(argv: string[]) {
-  const args = { limit: 12, push: false, replace: false, rescore: false, only: [] as string[] };
+  const args = {
+    limit: 12,
+    push: false,
+    replace: false,
+    rescore: false,
+    resume: false,
+    only: [] as string[],
+  };
 
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -118,6 +175,7 @@ function parseArgs(argv: string[]) {
     else if (arg === '--push') args.push = true;
     else if (arg === '--replace') args.replace = true;
     else if (arg === '--rescore') args.rescore = true;
+    else if (arg === '--resume') args.resume = true;
     else if (arg === '--only') args.only.push(String(argv[++i]));
   }
 
@@ -150,21 +208,136 @@ async function loadCommonWords(log: (m: string) => void): Promise<ReadonlySet<st
   return new Set(words);
 }
 
-/** Giữ lại bài cũ, thêm bài mới — id ổn định nên không sinh bản sao. */
-function mergeWithExisting(fresh: IngestedArticle[]): IngestedArticle[] {
-  if (!existsSync(SEED_PATH)) return fresh;
+type IngestState = { doneSources: string[] };
 
-  const existing = JSON.parse(readFileSync(SEED_PATH, 'utf8')) as IngestedArticle[];
-  const byId = new Map(existing.map((a) => [a.externalId, a]));
-  for (const article of fresh) byId.set(article.externalId, article);
-
-  return [...byId.values()];
+function loadState(resume: boolean): IngestState {
+  if (!resume || !existsSync(STATE_PATH)) return { doneSources: [] };
+  try {
+    return JSON.parse(readFileSync(STATE_PATH, 'utf8')) as IngestState;
+  } catch {
+    return { doneSources: [] };
+  }
 }
 
-function writeSeed(articles: IngestedArticle[]): void {
-  mkdirSync(dirname(SEED_PATH), { recursive: true });
-  const sorted = [...articles].sort((a, b) => a.title.localeCompare(b.title));
-  writeFileSync(SEED_PATH, JSON.stringify(sorted, null, 2), 'utf8');
+function saveState(state: IngestState): void {
+  mkdirSync(dirname(STATE_PATH), { recursive: true });
+  writeFileSync(STATE_PATH, JSON.stringify(state, null, 2), 'utf8');
+}
+
+function mergeResults(label: string, results: SourceResult[]): SourceResult {
+  return {
+    source: label,
+    articles: results.flatMap((r) => r.articles),
+    errors: results.flatMap((r) => r.errors),
+  };
+}
+
+/**
+ * Nạp lại index.json VÀ gắn lại body từ bodies/chunk-*.json.
+ *
+ * writeSeedBundle ghi lại TOÀN BỘ kho bài mỗi lần gọi — xoá sạch chunk cũ rồi
+ * ghi lại đúng những gì được truyền vào (xem comment trong seed-writer.ts).
+ * index.json tự nó không mang body, đó là lý do nó nhẹ; nhưng nếu hàm này
+ * trả bài cũ ra với bodyText: null, lần writeSeedBundle kế tiếp sẽ xoá toàn
+ * văn của MỌI bài đã cào trước đó — biến kho 1000 bài đọc được thành 1000
+ * bài rỗng, không một dòng lỗi nào báo. Vì vậy phải đọc thẳng file chunk
+ * bằng fs (KHÔNG qua bodies/registry.ts — file đó dùng require() chuỗi
+ * literal cho Metro bundler lúc build app, không phải cho script Node này)
+ * để gắn lại body trước khi đưa các bài đó vào `collected`.
+ */
+function loadExistingIndex(): { articles: IngestedArticle[]; corruptCount: number } {
+  if (!existsSync(INDEX_PATH)) return { articles: [], corruptCount: 0 };
+
+  let index: SeedIndexEntry[];
+  try {
+    index = JSON.parse(readFileSync(INDEX_PATH, 'utf8')) as SeedIndexEntry[];
+  } catch {
+    return { articles: [], corruptCount: 0 };
+  }
+
+  const bodiesDir = join(SEED_DIR, 'bodies');
+  const bodyById = new Map<string, ArticleBody>();
+
+  if (existsSync(bodiesDir)) {
+    // Glob bằng readdirSync + regex thay vì đoán tên file theo chunkCount cũ,
+    // để một file chunk bị xoá/đổi tên không làm cả script sập.
+    const chunkFiles = readdirSync(bodiesDir).filter((name) => /^chunk-\d+\.json$/.test(name));
+
+    for (const name of chunkFiles) {
+      try {
+        const chunk = JSON.parse(readFileSync(join(bodiesDir, name), 'utf8')) as Record<
+          string,
+          ArticleBody
+        >;
+        for (const [id, body] of Object.entries(chunk)) bodyById.set(id, body);
+      } catch {
+        // Một chunk hỏng không được làm sập cả script — bài của nó sẽ tự
+        // rơi vào nhánh "không tìm thấy body" và bị đếm corrupt bên dưới.
+      }
+    }
+  }
+
+  let corruptCount = 0;
+  const articles: IngestedArticle[] = index.map((entry) => {
+    const { chunk, ...meta } = entry;
+    const body = bodyById.get(entry.id);
+
+    if (body) return { ...meta, bodyText: body.bodyText, paragraphs: body.paragraphs };
+
+    // index nói bài này có chunk nhưng không tìm thấy body tương ứng trên
+    // đĩa — kho seed đã hỏng một phần TỪ TRƯỚC lần chạy này (bài Loại B /
+    // official có chunk: null ngay từ đầu, không rơi vào nhánh này).
+    if (chunk !== null) corruptCount += 1;
+
+    return { ...meta, bodyText: null, paragraphs: [] };
+  });
+
+  return { articles, corruptCount };
+}
+
+function countBy<T>(items: T[], key: (item: T) => string): Record<string, number> {
+  return items.reduce<Record<string, number>>((acc, item) => {
+    const k = key(item);
+    acc[k] = (acc[k] ?? 0) + 1;
+    return acc;
+  }, {});
+}
+
+function formatCounts(counts: Record<string, number>): string {
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, v]) => `${k}=${v}`)
+    .join(', ');
+}
+
+/** Bảng điều khiển duy nhất của người vận hành khi chạy job 5-8 phút — phải đủ để chẩn đoán, không cần đọc log thô. */
+function printSummary(input: {
+  log: (m: string) => void;
+  collected: IngestedArticle[];
+  written: { indexCount: number; chunkCount: number };
+  rejected: Record<string, number>;
+  corruptCount: number;
+}): void {
+  const { log, collected, written, rejected, corruptCount } = input;
+
+  log('\n── Kết quả ──');
+  log(`Kho bài: ${written.indexCount} bài · ${written.chunkCount} chunk body`);
+  log(`Có toàn văn: ${collected.filter((a) => a.bodyText !== null).length}`);
+  log(`Chỉ tiêu đề:  ${collected.filter((a) => a.bodyText === null).length}`);
+  log(`Phân bố tier: ${formatCounts(countBy(collected, (a) => a.passageTier ?? 'null'))}`);
+  log(`Phân bố CEFR: ${formatCounts(countBy(collected, (a) => a.cefrLevel ?? 'null'))}`);
+
+  if (Object.keys(rejected).length > 0) {
+    const total = Object.values(rejected).reduce((sum, n) => sum + n, 0);
+    log(`\nBài bị loại theo lý do (tổng ${total}): ${formatCounts(rejected)}`);
+  }
+
+  if (corruptCount > 0) {
+    log(
+      `\n⚠ ${corruptCount} bài trong index.json có chunk nhưng KHÔNG tìm thấy body trong ` +
+        `bodies/ — kho seed có thể đã hỏng một phần từ trước lần chạy này.`,
+    );
+  }
 }
 
 async function pushToSupabase(articles: IngestedArticle[], log: (m: string) => void): Promise<void> {
@@ -191,6 +364,7 @@ async function pushToSupabase(articles: IngestedArticle[], log: (m: string) => v
     topic: a.topic,
     topic_id: topicId.get(a.topic) ?? null,
     track: a.track,
+    passage_tier: a.passageTier,
     cefr_level: a.cefrLevel,
     band_range: a.bandRange,
     word_count: a.wordCount,
