@@ -9,13 +9,25 @@ const USER_AGENT = `ReadUpIELTS/0.1 (personal English reading study app; ${CONTA
 
 export async function fetchText(
   url: string,
-  options: { timeoutMs?: number; attempts?: number; headers?: Record<string, string> } = {},
+  options: {
+    timeoutMs?: number;
+    attempts?: number;
+    headers?: Record<string, string>;
+    /** Xin nhịp trước MỖI lần thử (kể cả lần đầu), không phải trước mỗi lệnh gọi logic. */
+    pace?: () => Promise<void>;
+  } = {},
 ): Promise<string> {
-  const { timeoutMs = 30_000, attempts = 3, headers = {} } = options;
+  const { timeoutMs = 30_000, attempts = 3, headers = {}, pace } = options;
 
   let lastError: unknown;
 
   for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    // Xin nhịp NGAY ĐẦU mỗi lần thử, kể cả retry — nếu chỉ pace() một lần
+    // trước khi gọi fetchText thì một request bị 429 rồi tự retry bên trong
+    // đây sẽ bắn request thật ra ngoài mà pacer không hề biết, phá vỡ đảm
+    // bảo "mọi request thật cách nhau tối thiểu spacingMs".
+    await pace?.();
+
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -50,7 +62,12 @@ export async function fetchText(
 
 export async function fetchJson<T>(
   url: string,
-  options?: { timeoutMs?: number; attempts?: number; headers?: Record<string, string> },
+  options?: {
+    timeoutMs?: number;
+    attempts?: number;
+    headers?: Record<string, string>;
+    pace?: () => Promise<void>;
+  },
 ): Promise<T> {
   const text = await fetchText(url, {
     ...options,

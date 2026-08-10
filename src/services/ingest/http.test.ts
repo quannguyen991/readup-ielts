@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { createPacer, mapWithConcurrency } from './http';
+import { createPacer, fetchJson, fetchText, mapWithConcurrency } from './http';
 
 test('mapWithConcurrency: giữ đúng thứ tự kết quả dù thời gian hoàn thành khác nhau', async () => {
   // Item lẻ trả về nhanh, item chẵn trả về chậm hơn — nếu implementation gom
@@ -134,4 +134,80 @@ test('createPacer: hai pacer độc lập không ảnh hưởng lẫn nhau', asy
   const elapsedB = Date.now() - t0;
 
   assert.ok(elapsedB < 30, `paceB độc lập phải gần như tức thời, nhưng mất ${elapsedB}ms`);
+});
+
+/**
+ * Ghim đảm bảo: retry bên trong fetchText KHÔNG được lách qua pacer.
+ *
+ * Trước bản sửa này, `pace()` chỉ được gọi một lần ở phía caller (bên ngoài
+ * fetchJson/fetchText) trước lệnh gọi logic — nếu request đó bị 429 và
+ * fetchText tự retry (đúng thiết kế sẵn có của nó), lần thử thứ hai bắn ra
+ * ngoài mà pacer không hề hay biết. Test này stub `globalThis.fetch` để lần
+ * gọi đầu trả 429 (thứ mà fetchText coi là lỗi tạm thời, tự retry), lần gọi
+ * sau mới thành công, rồi đếm xem `pace` được xin đúng 2 lần (một cho mỗi
+ * lần thử THẬT) hay chỉ 1 lần (bug cũ).
+ */
+test('fetchText: pace() được xin cho MỖI lần thử thật, kể cả lần retry sau 429', async () => {
+  const originalFetch = globalThis.fetch;
+  let callCount = 0;
+
+  globalThis.fetch = async (): Promise<Response> => {
+    callCount += 1;
+    if (callCount === 1) return new Response('', { status: 429 });
+    return new Response('ok', { status: 200 });
+  };
+
+  let paceCalls = 0;
+  const fakePace = async (): Promise<void> => {
+    paceCalls += 1;
+  };
+
+  try {
+    const result = await fetchText('https://example.test/pace-per-attempt', {
+      attempts: 3,
+      pace: fakePace,
+    });
+    assert.equal(result, 'ok');
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+
+  assert.equal(callCount, 2, 'fetch thật phải chạy đúng 2 lần: 1 lần 429 rồi 1 lần thành công');
+  assert.equal(
+    paceCalls,
+    2,
+    'pace phải được xin cho TỪNG lần thử thật (kể cả lần retry sau 429), không chỉ lần gọi logic đầu tiên — nếu chỉ 1 thì retry đã lách qua pacer',
+  );
+});
+
+test('fetchJson: forward pace xuống fetchText nguyên vẹn qua thêm một lớp bọc JSON', async () => {
+  const originalFetch = globalThis.fetch;
+  let callCount = 0;
+
+  globalThis.fetch = async (): Promise<Response> => {
+    callCount += 1;
+    if (callCount === 1) return new Response('', { status: 429 });
+    return new Response(JSON.stringify({ ok: true }), { status: 200 });
+  };
+
+  let paceCalls = 0;
+  const fakePace = async (): Promise<void> => {
+    paceCalls += 1;
+  };
+
+  try {
+    const result = await fetchJson<{ ok: boolean }>('https://example.test/pace-per-attempt-json', {
+      attempts: 3,
+      pace: fakePace,
+    });
+    assert.deepEqual(result, { ok: true });
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+
+  assert.equal(
+    paceCalls,
+    2,
+    'fetchJson chỉ bọc JSON.parse quanh fetchText — pace vẫn phải được forward và xin đủ 2 lần',
+  );
 });

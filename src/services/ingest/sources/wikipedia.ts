@@ -85,14 +85,25 @@ export async function fetchWikipedia(
   return { source: sourceName, articles, errors };
 }
 
-/** Lấy extract toàn bài cho MỘT tiêu đề. exlimit bị hạ xuống 1 nên không gộp được. */
-export async function fetchExtract(host: string, title: string): Promise<WikiPage | null> {
+/**
+ * Lấy extract toàn bài cho MỘT tiêu đề. exlimit bị hạ xuống 1 nên không gộp được.
+ *
+ * `pace` tuỳ chọn: nhánh curated (fetchWikipedia) không truyền — tự giữ nhịp
+ * riêng bằng sleep(900) không đổi. Nhánh crawl category truyền pacer dùng
+ * chung xuống tận đây để fetchJson/fetchText xin nhịp cho TỪNG lần thử thật
+ * (kể cả retry sau 429), không chỉ lần gọi logic đầu tiên.
+ */
+export async function fetchExtract(
+  host: string,
+  title: string,
+  options?: { pace?: () => Promise<void> },
+): Promise<WikiPage | null> {
   const url =
     `https://${host}/w/api.php?action=query&format=json&formatversion=2` +
     `&prop=extracts|pageimages&explaintext=1&exsectionformat=plain&piprop=thumbnail&pithumbsize=800` +
     `&redirects=1&titles=${encodeURIComponent(title)}`;
 
-  const json = await fetchJson<unknown>(url);
+  const json = await fetchJson<unknown>(url, { pace: options?.pace });
   const pages = normalizePages(json);
   const page = pages[0];
 
@@ -147,6 +158,11 @@ const FETCH_SPACING_MS = 400;
  * liệt kê category lẫn request lấy extract đều xin nhịp từ đây, nên tổng tốc
  * độ gọi ra ngoài luôn bị chặn ở FETCH_SPACING_MS bất kể có bao nhiêu request
  * đang chạy song song. Xem createPacer trong http.ts để biết vì sao race-free.
+ *
+ * Được truyền xuống fetchJson (qua fetchCategoryTitles và fetchExtract) thay
+ * vì gọi trực tiếp ở đây — fetchText tự gọi pace() ở ĐẦU MỖI LẦN THỬ trong
+ * vòng lặp retry của nó, nên một request bị 429 rồi tự retry cũng bị chặn
+ * đúng nhịp, không lách qua pacer được.
  */
 const pace = createPacer(FETCH_SPACING_MS);
 
@@ -160,15 +176,15 @@ async function fetchCategoryTitles(host: string, category: string): Promise<stri
   let cmcontinue: string | undefined;
 
   do {
-    await pace();
-
     const url =
       `https://${host}/w/api.php?action=query&format=json&formatversion=2` +
       `&list=categorymembers&cmnamespace=0&cmlimit=${CATEGORY_MEMBER_LIMIT}` +
       `&cmtitle=${encodeURIComponent(`Category:${category}`)}` +
       (cmcontinue ? `&cmcontinue=${encodeURIComponent(cmcontinue)}` : '');
 
-    const json = await fetchJson<CategoryMembersResponse>(url);
+    // pace được truyền xuống fetchJson thay vì gọi ở đây, để retry bên trong
+    // fetchText (khi gặp 429) cũng phải xin nhịp lại cho từng lần thử thật.
+    const json = await fetchJson<CategoryMembersResponse>(url, { pace });
     for (const member of json.query?.categorymembers ?? []) {
       if (member.title) titles.push(member.title);
     }
@@ -225,10 +241,11 @@ export async function fetchWikipediaCategories(
   ctx.log(`  · ${sourceName}: ${wanted.length} tiêu đề từ category, bắt đầu tải extract`);
 
   const fetched = await mapWithConcurrency(wanted, FETCH_CONCURRENCY, async (item) => {
-    await pace();
-
+    // pace được truyền vào fetchExtract (rồi xuống fetchJson/fetchText) thay
+    // vì gọi ở đây, cùng lý do như fetchCategoryTitles ở trên: một slot cho
+    // MỖI lần thử thật, kể cả các lần retry sau 429.
     try {
-      const page = await fetchExtract(host, item.title);
+      const page = await fetchExtract(host, item.title, { pace });
       if (!page) return null;
 
       const pageUrl = `https://${host}/wiki/${encodeURIComponent((page.title ?? item.title).replace(/ /g, '_'))}`;
