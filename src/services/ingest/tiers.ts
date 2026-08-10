@@ -52,23 +52,33 @@ export function assignTier(availableWords: number, cefr: CefrLevel | null): Pass
   return candidates[candidates.length - 1]!.tier;
 }
 
+/**
+ * Tích lũy các đơn vị (đoạn hoặc câu) cho tới khi đạt khổ mục tiêu,
+ * luôn giữ ít nhất đơn vị đầu để passage không rỗng.
+ */
+function accumulate<T>(units: T[], target: number, countFn: (unit: T) => number): T[] {
+  const kept: T[] = [];
+  let total = 0;
+
+  for (const unit of units) {
+    const n = countFn(unit);
+    // Luôn nhận đơn vị đầu, kể cả khi nó đã vượt khổ — không để passage rỗng.
+    if (kept.length > 0 && total + n > target) break;
+    kept.push(unit);
+    total += n;
+    if (total >= target) break;
+  }
+
+  return kept;
+}
+
 /** Cắt tại ranh giới đoạn cho tới khi đạt khổ mục tiêu của tier. */
 export function truncateToTier(paragraphs: string[], tier: PassageTier): string[] {
   const spec = tierSpec(tier);
   if (!spec) return paragraphs;
 
   const target = spec.targetWords;
-  const kept: string[] = [];
-  let total = 0;
-
-  for (const paragraph of paragraphs) {
-    const n = countWords(paragraph);
-    // Luôn nhận đoạn đầu, kể cả khi nó đã vượt khổ — không để passage rỗng.
-    if (kept.length > 0 && total + n > target) break;
-    kept.push(paragraph);
-    total += n;
-    if (total >= target) break;
-  }
+  const kept = accumulate(paragraphs, target, countWords);
 
   // Wikipedia đôi khi có một đoạn cực dài. Cắt tiếp theo câu để giữ hợp đồng tier.
   if (kept.length === 1 && countWords(kept[0]!) > target * 1.5) {
@@ -79,16 +89,7 @@ export function truncateToTier(paragraphs: string[], tier: PassageTier): string[
 }
 
 function truncateBySentence(paragraph: string, target: number): string {
-  const kept: string[] = [];
-  let total = 0;
-
-  for (const sentence of splitSentences(paragraph)) {
-    const n = countWords(sentence);
-    if (kept.length > 0 && total + n > target) break;
-    kept.push(sentence);
-    total += n;
-    if (total >= target) break;
-  }
-
+  const sentences = splitSentences(paragraph);
+  const kept = accumulate(sentences, target, countWords);
   return kept.join(' ');
 }
