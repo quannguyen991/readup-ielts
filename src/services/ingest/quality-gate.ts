@@ -45,7 +45,7 @@ export function checkQuality(title: string, paragraphs: string[]): QualityVerdic
 
     // Phạm vi U+0020–U+024F là space + Latin + Latin Extended-B.
     // Bất kỳ ký tự nào ngoài phạm vi này được tính là non-Latin.
-    const nonLatin = (text.match(/[^ -ɏ\s]/g) ?? []).length;
+    const nonLatin = (text.match(/[^\u0020-\u024F\s]/g) ?? []).length;
     if (nonLatin / nonSpace > MAX_NON_LATIN_RATIO) {
       return { ok: false, reason: 'non_latin_heavy' };
     }
