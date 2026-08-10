@@ -6,12 +6,12 @@ import type { FetchContext, RawArticle, SourceResult } from '../types';
  * Nguồn RSS.
  *
  * Loại A (lưu toàn văn): cơ quan công / tổ chức phi lợi nhuận phát hành nội dung
- * public domain hoặc mở — VOA Learning English, NASA, NIH, ScienceDaily.
- * Chỉ lưu toàn văn khi feed tự cung cấp trong content:encoded; không bao giờ
- * đi cào thêm trang gốc.
+ * public domain hoặc mở — NASA. Chỉ lưu toàn văn khi feed tự cung cấp trong
+ * content:encoded; không bao giờ đi cào thêm trang gốc.
  *
- * Loại B (chỉ tiêu đề): báo có bản quyền — BBC, Guardian, Reuters, Economist.
- * Lưu đúng những gì feed công khai: tiêu đề, mô tả ngắn, ảnh, link, ngày.
+ * Loại B (chỉ tiêu đề): báo có bản quyền, hoặc feed headline-only — BBC, Guardian,
+ * Reuters, Economist, CDC, ScienceDaily. Lưu đúng những gì feed công khai:
+ * tiêu đề, mô tả ngắn, ảnh, link, ngày.
  */
 
 type FeedSource = {
@@ -35,18 +35,20 @@ export const FULL_TEXT_FEEDS: FeedSource[] = [
     license: 'public_domain',
     attribution: 'Nguồn: NASA (public domain, U.S. Government).',
   },
+];
+
+export const HEADLINE_FEEDS: FeedSource[] = [
   {
     key: 'cdc',
     name: 'CDC',
     url: 'https://tools.cdc.gov/api/v2/resources/media/132608.rss',
     topic: 'health',
-    fullText: true,
-    license: 'public_domain',
-    attribution: 'Nguồn: U.S. Centers for Disease Control and Prevention (public domain).',
+    // Feed này KHÔNG có content:encoded và description chỉ ~14 từ — đã kiểm
+    // thật: HTTP 200 với 1836 item nhưng 0 bài lọt ngưỡng 180 từ. Nó là feed
+    // media/embed, bản chất chỉ có tiêu đề, nên thuộc Loại B.
+    fullText: false,
+    license: 'headline_only',
   },
-];
-
-export const HEADLINE_FEEDS: FeedSource[] = [
   {
     key: 'bbc',
     name: 'BBC News',

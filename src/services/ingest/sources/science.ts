@@ -40,7 +40,7 @@ export async function fetchPlos(ctx: FetchContext): Promise<SourceResult> {
           q: `${query} AND doc_type:full`,
           fl: 'id,title_display,abstract,publication_date,subject',
           wt: 'json',
-          rows: '4',
+          rows: '25',
           sort: 'publication_date desc',
         }).toString();
 
@@ -96,7 +96,7 @@ export async function fetchArxiv(ctx: FetchContext): Promise<SourceResult> {
         new URLSearchParams({
           search_query: `cat:${category}`,
           start: '0',
-          max_results: '4',
+          max_results: '25',
           sortBy: 'submittedDate',
           sortOrder: 'descending',
         }).toString();
