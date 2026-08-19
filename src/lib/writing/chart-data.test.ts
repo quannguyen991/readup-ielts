@@ -5,8 +5,8 @@ import { validateChartData } from './chart-data';
 import type { AnalysisKey } from './types';
 
 const KEY: AnalysisKey = {
-  trends: ['A tăng'],
-  extremes: ['A cao nhất'],
+  trends: [{ subject: 'A', direction: 'up', magnitude: 'large', from: 45, to: 68 }],
+  extremes: [{ subject: 'A', rank: 'highest', at: 'throughout' }],
   crossings: [],
   grouping: [['A'], ['B']],
 };
@@ -129,4 +129,22 @@ test('kind lạ thì trả lỗi chứ không ném ngoại lệ', () => {
   assert.equal(validateChartData({ ...line, kind: 'donut' }).ok, false);
   assert.equal(validateChartData(null).ok, false);
   assert.equal(validateChartData([]).ok, false);
+});
+
+test('xu hướng thiếu subject thì không qua', () => {
+  const r = validateChartData({
+    ...line,
+    analysisKey: { ...KEY, trends: [{ direction: 'up', magnitude: 'large', from: 1, to: 2 }] },
+  });
+  assert.equal(r.ok, false);
+  assert.match(r.ok === false ? r.reason : '', /subject/);
+});
+
+test('direction lạ thì không qua', () => {
+  const r = validateChartData({
+    ...line,
+    analysisKey: { ...KEY, trends: [{ ...KEY.trends[0], direction: 'sideways' }] },
+  });
+  assert.equal(r.ok, false);
+  assert.match(r.ok === false ? r.reason : '', /direction/);
 });

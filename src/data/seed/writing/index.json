@@ -34,25 +34,112 @@
       "kind": "line",
       "title": "Average price of petrol in three countries, 2000-2020",
       "unit": "US cents per litre",
-      "xLabels": ["2000", "2005", "2010", "2015", "2020"],
+      "xLabels": [
+        "2000",
+        "2005",
+        "2010",
+        "2015",
+        "2020"
+      ],
       "series": [
-        { "name": "Country A", "values": [45, 68, 95, 120, 155] },
-        { "name": "Country B", "values": [60, 72, 78, 74, 70] },
-        { "name": "Country C", "values": [95, 88, 70, 52, 40] }
+        {
+          "name": "Country A",
+          "values": [
+            45,
+            68,
+            95,
+            120,
+            155
+          ]
+        },
+        {
+          "name": "Country B",
+          "values": [
+            60,
+            72,
+            78,
+            74,
+            70
+          ]
+        },
+        {
+          "name": "Country C",
+          "values": [
+            95,
+            88,
+            70,
+            52,
+            40
+          ]
+        }
       ],
       "analysisKey": {
         "trends": [
-          "Country A tang lien tuc suot ky",
-          "Country C giam lien tuc suot ky",
-          "Country B gan nhu phang"
+          {
+            "subject": "Country A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 45,
+            "to": 155
+          },
+          {
+            "subject": "Country B",
+            "direction": "stable",
+            "magnitude": "small",
+            "from": 60,
+            "to": 70
+          },
+          {
+            "subject": "Country C",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 95,
+            "to": 40
+          }
         ],
         "extremes": [
-          "Country C dat nhat dau ky",
-          "Country A re nhat dau ky",
-          "Country A dat nhat cuoi ky"
+          {
+            "subject": "Country C",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Country A",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Country A",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Country C",
+            "rank": "lowest",
+            "at": "2020"
+          }
         ],
-        "crossings": ["Country A va Country C doi cho cho nhau trong khoang 2008"],
-        "grouping": [["Country A", "Country C"], ["Country B"]]
+        "crossings": [
+          {
+            "subject": "Country A",
+            "other": "Country C",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Country A",
+            "other": "Country B",
+            "nearLabel": "2005"
+          }
+        ],
+        "grouping": [
+          [
+            "Country A",
+            "Country C"
+          ],
+          [
+            "Country B"
+          ]
+        ]
       }
     },
     "essayKind": null,

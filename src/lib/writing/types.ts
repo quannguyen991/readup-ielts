@@ -28,18 +28,49 @@ export type DrillPart =
   | 'body'
   | 'conclusion';
 
+export type TrendDirection = 'up' | 'down' | 'stable' | 'fluctuating';
+
+/** Mức thay đổi tương đối so với giá trị đầu kỳ. */
+export type TrendMagnitude = 'large' | 'moderate' | 'small';
+
+export type TrendFact = {
+  /** Tên chuỗi/danh mục, viết y hệt như hiện trên biểu đồ. */
+  subject: string;
+  direction: TrendDirection;
+  magnitude: TrendMagnitude;
+  from: number;
+  to: number;
+};
+
+export type ExtremeFact = {
+  subject: string;
+  rank: 'highest' | 'lowest';
+  /** Nhãn mốc, hoặc 'throughout' nếu giữ nguyên thứ hạng suốt kỳ. */
+  at: string;
+};
+
+export type CrossingFact = {
+  subject: string;
+  other: string;
+  /** Nhãn mốc gần chỗ hai đường cắt nhau nhất. */
+  nearLabel: string;
+};
+
 /**
  * Khoá phân tích của một đề.
  *
  * Đây là thứ cho phép chấm drill Overview mà không gọi AI: bài của người học
- * bắt đúng bao nhiêu mục trong `trends` và `crossings` thì đo được bằng đối
- * chiếu từ khoá, không cần model. Nhờ vậy người học lặp lại bao nhiêu lần cũng
- * được mà không tốn token.
+ * nhắc đúng bao nhiêu `subject` và bao nhiêu `direction` thì đo được bằng đối
+ * chiếu từ khoá. Vì bài viết bằng tiếng Anh nên khoá phải là dữ liệu có trường,
+ * không phải câu văn tự do — câu văn thì không so được với gì cả.
+ *
+ * Toàn bộ khoá này do `deriveAnalysisKey()` suy ra từ chính `chartData`, không
+ * viết tay: viết tay thì dữ liệu đổi mà khoá không đổi, và không ai phát hiện.
  */
 export type AnalysisKey = {
-  trends: string[];
-  extremes: string[];
-  crossings: string[];
+  trends: TrendFact[];
+  extremes: ExtremeFact[];
+  crossings: CrossingFact[];
   /** Hai nhóm ứng với hai đoạn thân bài. */
   grouping: [string[], string[]];
 };

@@ -142,11 +142,35 @@ function checkSimple(data: Record<string, unknown>): string | null {
   }
 }
 
+const DIRECTIONS = new Set(['up', 'down', 'stable', 'fluctuating']);
+
 function checkAnalysisKey(key: unknown): string | null {
   if (!isRecord(key)) return 'Thiếu analysisKey.';
 
   for (const field of ['trends', 'extremes', 'crossings'] as const) {
     if (!Array.isArray(key[field])) return `analysisKey.${field} phải là mảng.`;
+  }
+
+  const trends = key.trends as unknown[];
+  if (trends.length === 0) {
+    return 'analysisKey.trends rỗng — đề không có xu hướng nào để mô tả.';
+  }
+  for (const t of trends) {
+    if (!isRecord(t) || typeof t.subject !== 'string' || t.subject.trim() === '') {
+      return 'Có phần tử trong analysisKey.trends thiếu subject.';
+    }
+    if (typeof t.direction !== 'string' || !DIRECTIONS.has(t.direction)) {
+      return `Xu hướng của "${String(t.subject)}" có direction không hợp lệ.`;
+    }
+  }
+
+  for (const e of key.extremes as unknown[]) {
+    if (!isRecord(e) || typeof e.subject !== 'string') {
+      return 'Có phần tử trong analysisKey.extremes thiếu subject.';
+    }
+    if (e.rank !== 'highest' && e.rank !== 'lowest') {
+      return `Cực trị của "${String(e.subject)}" có rank không hợp lệ.`;
+    }
   }
 
   const grouping = key.grouping;
@@ -155,10 +179,6 @@ function checkAnalysisKey(key: unknown): string | null {
   }
   if (!grouping.every((g) => Array.isArray(g) && g.length > 0)) {
     return 'analysisKey.grouping có nhóm rỗng.';
-  }
-
-  if ((key.trends as unknown[]).length === 0) {
-    return 'analysisKey.trends rỗng — đề không có xu hướng nào để mô tả.';
   }
   return null;
 }
