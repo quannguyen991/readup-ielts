@@ -40,7 +40,25 @@ export const QUESTION_TYPE_LABEL: Record<QuestionType, string> = {
   sat_command_of_evidence: 'Command of Evidence',
   sat_inference: 'Inferences',
   sat_text_structure: 'Text Structure and Purpose',
+  sat_transitions: 'Transitions',
+  sat_rhetorical_synthesis: 'Rhetorical Synthesis',
+  sat_boundaries: 'Boundaries',
+  sat_form_structure_sense: 'Form, Structure, and Sense',
 };
+
+/**
+ * Bốn dạng thuộc hai domain "Writing" của SAT Reading and Writing.
+ *
+ * Tách riêng với `SAT_QUESTION_TYPES` (hai domain đọc hiểu) vì người luyện chọn
+ * giữa hai nhóm này — đề thi thật trộn chung, nhưng lúc luyện thì tách ra mới
+ * biết mình yếu chỗ nào.
+ */
+export const SAT_WRITING_QUESTION_TYPES: readonly QuestionType[] = [
+  'sat_transitions',
+  'sat_rhetorical_synthesis',
+  'sat_boundaries',
+  'sat_form_structure_sense',
+];
 
 /** Dạng câu của kỳ thi nào — dùng để lọc và để chọn bộ sinh đề. */
 export const SAT_QUESTION_TYPES: readonly QuestionType[] = [

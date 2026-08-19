@@ -84,7 +84,13 @@ export type QuestionType =
   | 'sat_central_idea'
   | 'sat_command_of_evidence'
   | 'sat_inference'
-  | 'sat_text_structure';
+  | 'sat_text_structure'
+  // Hai domain "Writing" cua SAT Reading and Writing:
+  // Expression of Ideas va Standard English Conventions.
+  | 'sat_transitions'
+  | 'sat_rhetorical_synthesis'
+  | 'sat_boundaries'
+  | 'sat_form_structure_sense';
 
 export type WordStatusKind = 'new' | 'learning' | 'familiar' | 'known' | 'ignored';
 

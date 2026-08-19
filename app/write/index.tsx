@@ -92,12 +92,18 @@ export default function WritingLibraryScreen() {
 
       {tab === 'sat' ? (
         <Card className="mt-5">
-          <Text className="font-heavy text-cardTitle text-ink">SAT Writing chưa mở</Text>
+          <Text className="font-heavy text-cardTitle text-ink">SAT Writing</Text>
           <Text className="mt-2 font-sans text-body text-muted">
-            Phần này gồm hai nhóm câu hỏi trắc nghiệm mà bộ đề SAT hiện có chưa phủ: Expression of
-            Ideas (transitions, rhetorical synthesis) và Standard English Conventions (boundaries,
-            form / structure / sense). Sẽ dựng ở lát 6.
+            Hai nhóm kỹ năng viết của SAT Reading and Writing: Expression of Ideas (Transitions,
+            Rhetorical Synthesis) và Standard English Conventions (Boundaries, Form / Structure /
+            Sense). Toàn bộ là câu hỏi trắc nghiệm — bài thi số hoá hiện nay không còn phần viết luận.
           </Text>
+          <Text className="mt-2 font-sans text-label text-muted">
+            Câu hỏi dựng tại chỗ từ kho passage SAT đã có trong app.
+          </Text>
+          <View className="mt-4 flex-row">
+            <Button label="Bắt đầu luyện" onPress={() => router.push('/write/sat' as never)} />
+          </View>
         </Card>
       ) : (
         <>

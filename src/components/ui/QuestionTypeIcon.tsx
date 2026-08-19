@@ -22,6 +22,10 @@ const FALLBACK_ICON: Record<QuestionType, IconName> = {
   sat_command_of_evidence: 'search',
   sat_inference: 'trending',
   sat_text_structure: 'list',
+  sat_transitions: 'arrow-right',
+  sat_rhetorical_synthesis: 'sparkle',
+  sat_boundaries: 'more',
+  sat_form_structure_sense: 'letters',
 };
 
 const TONE_BY_TYPE: Record<QuestionType, IconTone> = {
@@ -38,6 +42,10 @@ const TONE_BY_TYPE: Record<QuestionType, IconTone> = {
   sat_command_of_evidence: 'success',
   sat_inference: 'warning',
   sat_text_structure: 'info',
+  sat_transitions: 'primary',
+  sat_rhetorical_synthesis: 'accent',
+  sat_boundaries: 'warning',
+  sat_form_structure_sense: 'success',
 };
 
 /**
