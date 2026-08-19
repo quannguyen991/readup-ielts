@@ -188,8 +188,13 @@ function PromptCard({ prompt }: { prompt: WritingPrompt }) {
         </View>
       ) : null}
 
-      <View className="mt-4 flex-row">
+      <View className="mt-4 flex-row flex-wrap gap-2">
         <Button label="Vào phòng viết" onPress={() => router.push(`/write/${prompt.id}` as never)} />
+        <Button
+          variant="outline"
+          label="Luyện từng phần"
+          onPress={() => router.push(`/write/drill/${prompt.id}` as never)}
+        />
       </View>
     </Card>
   );
