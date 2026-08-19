@@ -49,16 +49,28 @@ kỹ năng: hôm nay chỉ luyện overview, hôm sau chỉ luyện thân bài.
 
 ## Phạm vi — sáu lát
 
-| Lát | Nội dung | Phụ thuộc |
-|---|---|---|
-| 1 | Migration + types + repository | — |
-| 2 | Kho đề: nguồn ingest, bộ sinh đề Task 1, trang `/write` | 1 |
-| 3 | Phòng viết + chấm AI + trang kết quả | 1, 2 |
-| 4 | Bài mẫu AI có kiểm định band | 2, 3 |
-| 5 | Drill tách kỹ năng | 3 |
-| 6 | SAT Writing — 4 dạng của hai domain còn thiếu | 1 |
+| Lát | Nội dung | Phụ thuộc | Trạng thái |
+|---|---|---|---|
+| 1 | Migration + types + repository | — | **xong** |
+| 2 | Kho đề: bộ sinh đề Task 1, trang `/write` | 1 | **xong** |
+| 3 | Phòng viết + chấm AI + trang kết quả | 1, 2 | **xong** |
+| 4 | Bài mẫu AI có kiểm định band | 2, 3 | **xong** |
+| 5 | Drill tách kỹ năng | 3 | **xong** (3/6 phần chấm offline) |
+| 6 | SAT Writing — hai domain còn thiếu | 1 | **xong** (3/4 dạng sinh offline) |
 
 Lát 6 không phụ thuộc lát 2–5, làm song song được.
+
+### Những gì CHƯA làm, và vì sao
+
+- **Đề Task 1 dạng process và map.** Bộ sinh mới phủ line, bar, pie, table. Hai
+  dạng còn lại cần bộ sinh riêng vì không có trục số.
+- **Drill `outline`, `body`, `conclusion` chưa nối AI.** Ba phần này không có
+  đối chiếu khách quan nên phải gọi model; màn hình đang nói rõ điều đó.
+- **`sat_rhetorical_synthesis`.** Không sinh offline được mà không làm lộ đáp
+  án — xem Phần E.
+- **Đề Task 2 chưa crawl từ nguồn ngoài.** Hiện sinh theo công thức từ 12 chủ
+  đề × 5 dạng luận, ra 36 đề. Đủ cho 45 ngày luyện nhưng chưa đa dạng bằng đề
+  thi thật.
 
 ---
 
