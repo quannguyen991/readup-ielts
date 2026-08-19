@@ -37,8 +37,12 @@ kỹ năng: hôm nay chỉ luyện overview, hôm sau chỉ luyện thân bài.
 3. **Không cào bài mẫu có bản quyền.** Đề bài là dữ kiện, tái tạo được. Bài mẫu
    thì tự sinh và tự kiểm định.
 4. **Task 1 lưu dữ liệu, không lưu ảnh.** Biểu đồ dựng từ JSON bằng
-   `victory-native`. Ảnh thì không sửa được, không đọc được bằng screen reader,
-   và không sinh biến thể được.
+   `react-native-svg` — **không** dùng victory-native hay recharts. Dự án đã
+   chốt điều này ở `src/components/charts/index.tsx`: recharts chỉ chạy web,
+   victory-native chỉ chạy native, nên tự vẽ bằng SVG là cách duy nhất để web
+   và mobile hiển thị giống hệt nhau mà không phải bảo trì hai nhánh code.
+   Ảnh thì không sửa được, không đọc được bằng screen reader, và không sinh
+   biến thể được.
 5. **Với SAT, chỉ sinh offline dạng nào đáp án kiểm chứng được từ chính bài và
    không giải được bằng đối chiếu chuỗi** — nguyên tắc đã chốt ở spec
    2026-08-11, áp nguyên cho hai domain mới.
