@@ -1,75 +1,34 @@
 import { deriveAnalysisKey } from './analysis-key';
-import type { LineOrBarChart, PieChart, TableChart } from '@/lib/writing/types';
+import type { FigureSpec } from './figure-specs';
+import type { ChartData, LineOrBarChart, PieChart, TableChart } from '@/lib/writing/types';
 import { hashString, mulberry32 } from '@/services/questions/rng';
 
 /**
  * Bộ sinh dữ liệu biểu đồ cho đề Task 1.
  *
- * Ràng buộc sư phạm được bảo đảm bằng CẤU TRÚC chứ không bằng thử lại: số liệu
- * dựng từ một hình dạng đã biết là đạt (hai đường đi ngược chiều nhau thì chắc
- * chắn cắt nhau), rồi RNG chỉ rung trong biên độ không phá được hình dạng ấy.
- * Sinh ngẫu nhiên rồi lọc thì sẽ có hạt không bao giờ ra được đề hợp lệ, và lỗi
- * đó chỉ lộ khi chạy thật.
+ * Hai nguyên tắc:
+ *
+ * 1. **Ràng buộc sư phạm bảo đảm bằng CẤU TRÚC, không bằng thử lại.** Số liệu
+ *    dựng từ một hình dạng đã biết là đạt (hai đường đi ngược chiều thì chắc
+ *    chắn cắt nhau), rồi RNG chỉ rung trong biên độ không phá được hình dạng ấy.
+ *    Sinh ngẫu nhiên rồi lọc thì sẽ có hạt không bao giờ ra được đề hợp lệ.
+ *
+ * 2. **Mọi giá trị nằm trong `spec.range`.** Không có ràng buộc này thì trục
+ *    "% hộ gia đình" chạy tới 125% — con số không tồn tại, mà người học lại
+ *    phải chép đúng số liệu vào bài và sẽ bị trừ điểm vì lỗi của app.
  */
 
-export type ChartTopic = {
-  slug: string;
-  title: string;
-  unit: string;
-  /** Tên các đối tượng so sánh. Cần ít nhất 4 để dùng được cho cả pie lẫn table. */
-  subjects: string[];
-  /** Nhãn trục X cho line/table. Bar không trục thời gian thì dùng `subjects`. */
-  labels: string[];
-};
+/** Vị trí trong dải giá trị, tính theo tỷ lệ 0–1 của `range`. */
+function at(spec: FigureSpec, ratio: number): number {
+  const [lo, hi] = spec.range;
+  return lo + (hi - lo) * ratio;
+}
 
-export const CHART_TOPICS: ChartTopic[] = [
-  {
-    slug: 'environment',
-    title: 'Average price of petrol in four countries',
-    unit: 'US cents per litre',
-    subjects: ['Country A', 'Country B', 'Country C', 'Country D'],
-    labels: ['2000', '2005', '2010', '2015', '2020'],
-  },
-  {
-    slug: 'technology',
-    title: 'Households with internet access',
-    unit: '% of households',
-    subjects: ['Japan', 'Germany', 'Brazil', 'Kenya'],
-    labels: ['2005', '2010', '2015', '2020'],
-  },
-  {
-    slug: 'education',
-    title: 'Students enrolled in higher education',
-    unit: 'thousands of students',
-    subjects: ['Asia', 'Europe', 'Africa', 'South America'],
-    labels: ['2010', '2014', '2018', '2022'],
-  },
-  {
-    slug: 'health',
-    title: 'Daily water consumption per person',
-    unit: 'litres per person',
-    subjects: ['Australia', 'United States', 'China', 'Ethiopia'],
-    labels: ['2000', '2010', '2020'],
-  },
-  {
-    slug: 'business',
-    title: 'Sales of four types of beverage',
-    unit: 'million litres',
-    subjects: ['Bottled water', 'Fruit juice', 'Soft drinks', 'Tea'],
-    labels: ['2015', '2017', '2019', '2021'],
-  },
-  {
-    slug: 'society',
-    title: 'People using four leisure facilities',
-    unit: '% of residents',
-    subjects: ['Gyms', 'Libraries', 'Parks', 'Cinemas'],
-    labels: ['2010', '2015', '2020'],
-  },
-];
-
-/** Rung một giá trị trong khoảng ±pct, làm tròn về số nguyên dương. */
-function jitter(rng: () => number, value: number, pct: number): number {
-  return Math.max(1, Math.round(value * (1 + (rng() * 2 - 1) * pct)));
+/** Rung ±pct rồi kẹp lại trong `range`, làm tròn về số nguyên. */
+function jitter(spec: FigureSpec, rng: () => number, value: number, pct: number): number {
+  const [lo, hi] = spec.range;
+  const shaken = value * (1 + (rng() * 2 - 1) * pct);
+  return Math.round(Math.min(hi, Math.max(lo, shaken)));
 }
 
 /**
@@ -77,80 +36,82 @@ function jitter(rng: () => number, value: number, pct: number): number {
  * hình dạng này bảo đảm luôn có giao cắt. Chuỗi thứ ba đi ngang ở giữa dải để
  * có nhóm "ổn định" tương phản.
  */
-export function generateLineChart(topic: ChartTopic, seed: string): LineOrBarChart {
-  const rng = mulberry32(hashString(`${topic.slug}:line:${seed}`));
-  const labels = topic.labels;
-  const n = labels.length;
+export function generateLineChart(spec: FigureSpec, seed: string): LineOrBarChart {
+  const rng = mulberry32(hashString(`${spec.slug}:line:${seed}`));
+  const n = spec.labels.length;
 
-  const low = 20 + Math.floor(rng() * 20);
-  const high = low * (4 + Math.floor(rng() * 3));
+  const low = at(spec, 0.08 + rng() * 0.07);
+  const high = at(spec, 0.76 + rng() * 0.18);
 
-  // Rung tối đa 6%: đủ để hai đề khác hạt trông khác nhau, mà không đủ để một
+  // Rung tối đa 5%: đủ để hai đề khác hạt trông khác nhau, mà không đủ để một
   // đường đang lên bị kéo xuống dưới đường đang xuống trước điểm cắt.
-  const rising = Array.from({ length: n }, (_, i) =>
-    jitter(rng, low + ((high - low) * i) / (n - 1), 0.06),
+  const rising = spec.labels.map((_, i) =>
+    jitter(spec, rng, low + ((high - low) * i) / (n - 1), 0.05),
   );
-  const falling = Array.from({ length: n }, (_, i) =>
-    jitter(rng, high - ((high - low) * i) / (n - 1), 0.06),
+  const falling = spec.labels.map((_, i) =>
+    jitter(spec, rng, high - ((high - low) * i) / (n - 1), 0.05),
   );
-  const mid = Math.round((low + high) / 2);
-  const flat = Array.from({ length: n }, () => jitter(rng, mid, 0.04));
+  const flat = spec.labels.map(() => jitter(spec, rng, (low + high) / 2, 0.04));
 
   return withKey({
     kind: 'line',
-    title: `${topic.title}, ${labels[0]}-${labels[n - 1]}`,
-    unit: topic.unit,
-    xLabels: labels,
+    title: titleOf(spec),
+    unit: spec.unit,
+    xLabels: spec.labels,
     series: [
-      { name: topic.subjects[0] ?? 'A', values: rising },
-      { name: topic.subjects[1] ?? 'B', values: falling },
-      { name: topic.subjects[2] ?? 'C', values: flat },
+      { name: spec.subjects[0] ?? 'A', values: rising },
+      { name: spec.subjects[1] ?? 'B', values: falling },
+      { name: spec.subjects[2] ?? 'C', values: flat },
     ],
   });
 }
 
 /**
- * Biểu đồ cột không có trục thời gian: so sánh các đối tượng giữa hai nhóm.
- * Bậc thang nhân 1.6 mỗi nấc nên cao nhất luôn hơn thấp nhất trên bốn lần.
+ * Biểu đồ cột không có trục thời gian: so sánh các hạng mục giữa hai nhóm.
+ * Bậc thang 0.12 → 0.80 của dải bảo đảm cao nhất hơn thấp nhất trên gấp rưỡi
+ * ngay cả khi dải không bắt đầu từ 0 (ví dụ tuổi thọ 45–90).
  */
-export function generateBarChart(topic: ChartTopic, seed: string): LineOrBarChart {
-  const rng = mulberry32(hashString(`${topic.slug}:bar:${seed}`));
-  const subjects = topic.subjects.slice(0, 4);
-  const base = 10 + Math.floor(rng() * 10);
+export function generateBarChart(spec: FigureSpec, seed: string): LineOrBarChart {
+  const rng = mulberry32(hashString(`${spec.slug}:bar:${seed}`));
+  const levels = [0.12, 0.31, 0.53, 0.8];
 
-  const groupA = subjects.map((_, i) => jitter(rng, base * Math.pow(1.6, i), 0.08));
-  const groupB = subjects.map((_, i) => jitter(rng, base * Math.pow(1.6, 3 - i), 0.08));
+  const groupA = spec.subjects.map((_, i) => jitter(spec, rng, at(spec, levels[i] ?? 0.5), 0.07));
+  const groupB = spec.subjects.map((_, i) =>
+    jitter(spec, rng, at(spec, levels[spec.subjects.length - 1 - i] ?? 0.5), 0.07),
+  );
 
+  const [g1, g2] = spec.groups ?? ['Group 1', 'Group 2'];
   return withKey({
     kind: 'bar',
-    title: topic.title,
-    unit: topic.unit,
-    xLabels: subjects,
+    title: titleOf(spec),
+    unit: spec.unit,
+    xLabels: spec.subjects,
     series: [
-      { name: 'Group 1', values: groupA },
-      { name: 'Group 2', values: groupB },
+      { name: g1, values: groupA },
+      { name: g2, values: groupB },
     ],
   });
 }
 
 /**
- * Biểu đồ tròn hai hình. Đổi ngôi được bảo đảm bằng cách đảo ngược thứ tự phân
- * bổ giữa hai mốc: lát lớn nhất ở hình 1 thành lát nhỏ nhất ở hình 2.
+ * Biểu đồ tròn hai hình. Đổi ngôi bảo đảm bằng cách đảo ngược thứ tự phân bổ
+ * giữa hai mốc: lát lớn nhất ở hình 1 thành lát nhỏ nhất ở hình 2.
  */
-export function generatePieChart(topic: ChartTopic, seed: string): PieChart {
-  const rng = mulberry32(hashString(`${topic.slug}:pie:${seed}`));
-  const labels = topic.subjects.slice(0, 4);
+export function generatePieChart(spec: FigureSpec, seed: string): PieChart {
+  const rng = mulberry32(hashString(`${spec.slug}:pie:${seed}`));
+  const labels = spec.subjects;
 
-  const shares = [40, 28, 20, 12].map((v) => jitter(rng, v, 0.12));
-  const first = normaliseTo100(shares);
-  const second = normaliseTo100([...shares].reverse());
+  const base = [40, 28, 20, 12].slice(0, labels.length);
+  const shaken = base.map((v) => Math.max(1, Math.round(v * (1 + (rng() * 2 - 1) * 0.12))));
+  const first = normaliseTo100(shaken);
+  const second = normaliseTo100([...shaken].reverse());
 
-  const firstCaption = topic.labels[0] ?? 'Before';
-  const lastCaption = topic.labels[topic.labels.length - 1] ?? 'After';
+  const firstCaption = spec.labels[0] ?? 'Before';
+  const lastCaption = spec.labels[spec.labels.length - 1] ?? 'After';
 
   const chart: PieChart = {
     kind: 'pie',
-    title: topic.title,
+    title: titleOf(spec),
     unit: '%',
     pies: [
       { caption: firstCaption, slices: labels.map((l, i) => ({ label: l, value: first[i] ?? 0 })) },
@@ -192,35 +153,32 @@ function normaliseTo100(values: number[]): number[] {
  * Bảng số liệu. Hai chiều đọc cho hai kết luận khác nhau: có hàng tăng và hàng
  * giảm (đọc ngang), và hạng nhất đổi giữa cột đầu với cột cuối (đọc dọc).
  */
-export function generateTableChart(topic: ChartTopic, seed: string): TableChart {
-  const rng = mulberry32(hashString(`${topic.slug}:table:${seed}`));
-  const labels = topic.labels;
-  const subjects = topic.subjects.slice(0, 4);
+export function generateTableChart(spec: FigureSpec, seed: string): TableChart {
+  const rng = mulberry32(hashString(`${spec.slug}:table:${seed}`));
+  const n = spec.labels.length;
 
-  const low = 20 + Math.floor(rng() * 30);
-  const high = low * (3 + Math.floor(rng() * 3));
-
-  const rows = subjects.map((name, index) => {
+  const rows = spec.subjects.map((name, index) => {
     // Hàng chẵn đi lên, hàng lẻ đi xuống. Hàng 0 xuất phát thấp nhất và kết
     // thúc cao nhất, hàng 1 ngược lại — đó là chỗ đổi ngôi khi đọc dọc.
     const goesUp = index % 2 === 0;
     // Hàng thứ ba trở đi thu hẹp biên độ để không tranh mất ngôi của hai hàng
     // đầu, nếu không thì phép thử "hạng nhất đổi" có thể trượt.
-    const damp = index < 2 ? 1 : 0.45;
+    const outer = index < 2 ? [0.1, 0.85] : [0.34, 0.6];
+    const [lo, hi] = [outer[0] ?? 0.1, outer[1] ?? 0.85];
 
-    const values = labels.map((_, i) => {
-      const t = i / (labels.length - 1);
-      const raw = goesUp ? low + (high - low) * t : high - (high - low) * t;
-      return jitter(rng, low + (raw - low) * damp, 0.05);
+    const values = spec.labels.map((_, i) => {
+      const t = i / (n - 1);
+      const ratio = goesUp ? lo + (hi - lo) * t : hi - (hi - lo) * t;
+      return jitter(spec, rng, at(spec, ratio), 0.04);
     });
     return [name, ...values] as Array<string | number>;
   });
 
   const chart: TableChart = {
     kind: 'table',
-    title: topic.title,
-    unit: topic.unit,
-    headers: ['', ...labels],
+    title: titleOf(spec),
+    unit: spec.unit,
+    headers: ['', ...spec.labels],
     rows,
     analysisKey: EMPTY_KEY,
   };
@@ -230,12 +188,43 @@ export function generateTableChart(topic: ChartTopic, seed: string): TableChart 
     analysisKey: deriveAnalysisKey({
       kind: 'line',
       title: chart.title,
-      unit: topic.unit,
-      xLabels: labels,
+      unit: spec.unit,
+      xLabels: spec.labels,
       series: rows.map((row) => ({ name: String(row[0]), values: row.slice(1).map(Number) })),
       analysisKey: EMPTY_KEY,
     }),
   };
+}
+
+/** Sinh hình đúng theo `spec.kind`. */
+export function generateFigure(spec: FigureSpec, seed: string): ChartData {
+  switch (spec.kind) {
+    case 'bar':
+      return generateBarChart(spec, seed);
+    case 'pie':
+      return generatePieChart(spec, seed);
+    case 'table':
+      return generateTableChart(spec, seed);
+    default:
+      return generateLineChart(spec, seed);
+  }
+}
+
+/**
+ * Tiêu đề hình = mô tả của spec viết hoa chữ đầu, cộng khoảng thời gian với
+ * những loại hình có trục thời gian. Pie và bar đã tự mang mốc trong mô tả.
+ */
+export function titleOf(spec: FigureSpec): string {
+  const s = spec.subject;
+  return `${s.charAt(0).toUpperCase()}${s.slice(1)}${periodOf(spec)}`;
+}
+
+/** Cụm ", 2000–2020" cho line và table; rỗng với bar và pie. */
+export function periodOf(spec: FigureSpec): string {
+  if (spec.kind !== 'line' && spec.kind !== 'table') return '';
+  const first = spec.labels[0];
+  const last = spec.labels[spec.labels.length - 1];
+  return first && last ? `, ${first}–${last}` : '';
 }
 
 /** Chỗ giữ tạm trước khi khoá thật được suy ra. Không bao giờ lọt ra ngoài. */

@@ -1,12 +1,12 @@
 [
   {
-    "id": "w-t1-environment-line-0",
+    "id": "w-t1-line-petrol-price",
     "task": "ielts_task1",
-    "promptText": "The line graph below shows average price of petrol in four countries, 2000-2020.",
+    "promptText": "The line graph below shows the average price of petrol in three countries, 2000–2020.",
     "chartKind": "line",
     "chartData": {
       "kind": "line",
-      "title": "Average price of petrol in four countries, 2000-2020",
+      "title": "The average price of petrol in three countries, 2000–2020",
       "unit": "US cents per litre",
       "xLabels": [
         "2000",
@@ -19,31 +19,31 @@
         {
           "name": "Country A",
           "values": [
-            22,
-            41,
-            56,
-            70,
-            90
+            44,
+            81,
+            110,
+            151,
+            191
           ]
         },
         {
           "name": "Country B",
           "values": [
-            96,
-            78,
-            57,
-            41,
-            23
+            175,
+            155,
+            118,
+            80,
+            42
           ]
         },
         {
           "name": "Country C",
           "values": [
-            59,
-            59,
-            56,
-            57,
-            58
+            113,
+            111,
+            112,
+            114,
+            115
           ]
         }
       ],
@@ -53,22 +53,22 @@
             "subject": "Country A",
             "direction": "up",
             "magnitude": "large",
-            "from": 22,
-            "to": 90
+            "from": 44,
+            "to": 191
           },
           {
             "subject": "Country B",
             "direction": "down",
             "magnitude": "large",
-            "from": 96,
-            "to": 23
+            "from": 175,
+            "to": 42
           },
           {
             "subject": "Country C",
-            "direction": "fluctuating",
+            "direction": "stable",
             "magnitude": "small",
-            "from": 59,
-            "to": 58
+            "from": 113,
+            "to": 115
           }
         ],
         "extremes": [
@@ -129,418 +129,13 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-environment-bar-0",
+    "id": "w-t1-line-internet-access",
     "task": "ielts_task1",
-    "promptText": "The bar chart below shows average price of petrol in four countries.",
-    "chartKind": "bar",
-    "chartData": {
-      "kind": "bar",
-      "title": "Average price of petrol in four countries",
-      "unit": "US cents per litre",
-      "xLabels": [
-        "Country A",
-        "Country B",
-        "Country C",
-        "Country D"
-      ],
-      "series": [
-        {
-          "name": "Group 1",
-          "values": [
-            18,
-            28,
-            47,
-            75
-          ]
-        },
-        {
-          "name": "Group 2",
-          "values": [
-            72,
-            46,
-            26,
-            16
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Group 1",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 18,
-            "to": 75
-          },
-          {
-            "subject": "Group 2",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 72,
-            "to": 16
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Group 2",
-            "rank": "highest",
-            "at": "Country A"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "highest",
-            "at": "Country D"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "lowest",
-            "at": "Country A"
-          },
-          {
-            "subject": "Group 2",
-            "rank": "lowest",
-            "at": "Country D"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Group 1",
-            "other": "Group 2",
-            "nearLabel": "Country B"
-          }
-        ],
-        "grouping": [
-          [
-            "Group 1"
-          ],
-          [
-            "Group 2"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "environment",
-    "difficultyBand": 6.5,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-environment-pie-0",
-    "task": "ielts_task1",
-    "promptText": "The pie charts below show average price of petrol in four countries.",
-    "chartKind": "pie",
-    "chartData": {
-      "kind": "pie",
-      "title": "Average price of petrol in four countries",
-      "unit": "%",
-      "pies": [
-        {
-          "caption": "2000",
-          "slices": [
-            {
-              "label": "Country A",
-              "value": 40
-            },
-            {
-              "label": "Country B",
-              "value": 29
-            },
-            {
-              "label": "Country C",
-              "value": 19
-            },
-            {
-              "label": "Country D",
-              "value": 12
-            }
-          ]
-        },
-        {
-          "caption": "2020",
-          "slices": [
-            {
-              "label": "Country A",
-              "value": 12
-            },
-            {
-              "label": "Country B",
-              "value": 19
-            },
-            {
-              "label": "Country C",
-              "value": 29
-            },
-            {
-              "label": "Country D",
-              "value": 40
-            }
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Country A",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 40,
-            "to": 12
-          },
-          {
-            "subject": "Country B",
-            "direction": "down",
-            "magnitude": "moderate",
-            "from": 29,
-            "to": 19
-          },
-          {
-            "subject": "Country C",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 19,
-            "to": 29
-          },
-          {
-            "subject": "Country D",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 12,
-            "to": 40
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Country A",
-            "rank": "highest",
-            "at": "2000"
-          },
-          {
-            "subject": "Country D",
-            "rank": "highest",
-            "at": "2020"
-          },
-          {
-            "subject": "Country D",
-            "rank": "lowest",
-            "at": "2000"
-          },
-          {
-            "subject": "Country A",
-            "rank": "lowest",
-            "at": "2020"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Country A",
-            "other": "Country B",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Country A",
-            "other": "Country C",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Country A",
-            "other": "Country D",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "Country B",
-            "other": "Country C",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "Country B",
-            "other": "Country D",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "Country C",
-            "other": "Country D",
-            "nearLabel": "2000"
-          }
-        ],
-        "grouping": [
-          [
-            "Country C",
-            "Country D"
-          ],
-          [
-            "Country A",
-            "Country B"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "environment",
-    "difficultyBand": 7,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-environment-table-0",
-    "task": "ielts_task1",
-    "promptText": "The table below shows average price of petrol in four countries.",
-    "chartKind": "table",
-    "chartData": {
-      "kind": "table",
-      "title": "Average price of petrol in four countries",
-      "unit": "US cents per litre",
-      "headers": [
-        "",
-        "2000",
-        "2005",
-        "2010",
-        "2015",
-        "2020"
-      ],
-      "rows": [
-        [
-          "Country A",
-          33,
-          58,
-          80,
-          105,
-          132
-        ],
-        [
-          "Country B",
-          124,
-          106,
-          81,
-          53,
-          32
-        ],
-        [
-          "Country C",
-          32,
-          42,
-          51,
-          64,
-          71
-        ],
-        [
-          "Country D",
-          75,
-          67,
-          55,
-          43,
-          33
-        ]
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Country A",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 33,
-            "to": 132
-          },
-          {
-            "subject": "Country B",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 124,
-            "to": 32
-          },
-          {
-            "subject": "Country C",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 32,
-            "to": 71
-          },
-          {
-            "subject": "Country D",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 75,
-            "to": 33
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Country B",
-            "rank": "highest",
-            "at": "2000"
-          },
-          {
-            "subject": "Country A",
-            "rank": "highest",
-            "at": "2020"
-          },
-          {
-            "subject": "Country C",
-            "rank": "lowest",
-            "at": "2000"
-          },
-          {
-            "subject": "Country B",
-            "rank": "lowest",
-            "at": "2020"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Country A",
-            "other": "Country B",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "Country A",
-            "other": "Country D",
-            "nearLabel": "2005"
-          },
-          {
-            "subject": "Country B",
-            "other": "Country C",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Country B",
-            "other": "Country D",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Country C",
-            "other": "Country D",
-            "nearLabel": "2010"
-          }
-        ],
-        "grouping": [
-          [
-            "Country A",
-            "Country C"
-          ],
-          [
-            "Country B",
-            "Country D"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "environment",
-    "difficultyBand": 6,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-technology-line-1",
-    "task": "ielts_task1",
-    "promptText": "The line graph below shows households with internet access, 2005-2020.",
+    "promptText": "The line graph below shows the percentage of households with internet access in three countries, 2005–2020.",
     "chartKind": "line",
     "chartData": {
       "kind": "line",
-      "title": "Households with internet access, 2005-2020",
+      "title": "The percentage of households with internet access in three countries, 2005–2020",
       "unit": "% of households",
       "xLabels": [
         "2005",
@@ -552,28 +147,28 @@
         {
           "name": "Japan",
           "values": [
-            27,
-            53,
-            87,
-            111
-          ]
-        },
-        {
-          "name": "Germany",
-          "values": [
-            114,
-            82,
-            55,
-            26
+            14,
+            34,
+            58,
+            79
           ]
         },
         {
           "name": "Brazil",
           "values": [
-            70,
-            68,
-            71,
-            73
+            80,
+            58,
+            36,
+            13
+          ]
+        },
+        {
+          "name": "Kenya",
+          "values": [
+            46,
+            47,
+            45,
+            45
           ]
         }
       ],
@@ -583,27 +178,27 @@
             "subject": "Japan",
             "direction": "up",
             "magnitude": "large",
-            "from": 27,
-            "to": 111
-          },
-          {
-            "subject": "Germany",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 114,
-            "to": 26
+            "from": 14,
+            "to": 79
           },
           {
             "subject": "Brazil",
-            "direction": "fluctuating",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 80,
+            "to": 13
+          },
+          {
+            "subject": "Kenya",
+            "direction": "stable",
             "magnitude": "small",
-            "from": 70,
-            "to": 73
+            "from": 46,
+            "to": 45
           }
         ],
         "extremes": [
           {
-            "subject": "Germany",
+            "subject": "Brazil",
             "rank": "highest",
             "at": "2005"
           },
@@ -618,7 +213,7 @@
             "at": "2005"
           },
           {
-            "subject": "Germany",
+            "subject": "Brazil",
             "rank": "lowest",
             "at": "2020"
           }
@@ -626,18 +221,18 @@
         "crossings": [
           {
             "subject": "Japan",
-            "other": "Germany",
-            "nearLabel": "2010"
+            "other": "Brazil",
+            "nearLabel": "2015"
           },
           {
             "subject": "Japan",
-            "other": "Brazil",
+            "other": "Kenya",
             "nearLabel": "2010"
           },
           {
-            "subject": "Germany",
-            "other": "Brazil",
-            "nearLabel": "2010"
+            "subject": "Brazil",
+            "other": "Kenya",
+            "nearLabel": "2015"
           }
         ],
         "grouping": [
@@ -645,403 +240,8 @@
             "Japan"
           ],
           [
-            "Germany",
-            "Brazil"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "technology",
-    "difficultyBand": 6.5,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-technology-bar-1",
-    "task": "ielts_task1",
-    "promptText": "The bar chart below shows households with internet access.",
-    "chartKind": "bar",
-    "chartData": {
-      "kind": "bar",
-      "title": "Households with internet access",
-      "unit": "% of households",
-      "xLabels": [
-        "Japan",
-        "Germany",
-        "Brazil",
-        "Kenya"
-      ],
-      "series": [
-        {
-          "name": "Group 1",
-          "values": [
-            11,
-            21,
-            32,
-            48
-          ]
-        },
-        {
-          "name": "Group 2",
-          "values": [
-            52,
-            30,
-            20,
-            12
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Group 1",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 11,
-            "to": 48
-          },
-          {
-            "subject": "Group 2",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 52,
-            "to": 12
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Group 2",
-            "rank": "highest",
-            "at": "Japan"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "highest",
-            "at": "Kenya"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "lowest",
-            "at": "Japan"
-          },
-          {
-            "subject": "Group 2",
-            "rank": "lowest",
-            "at": "Kenya"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Group 1",
-            "other": "Group 2",
-            "nearLabel": "Germany"
-          }
-        ],
-        "grouping": [
-          [
-            "Group 1"
-          ],
-          [
-            "Group 2"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "technology",
-    "difficultyBand": 7,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-technology-pie-1",
-    "task": "ielts_task1",
-    "promptText": "The pie charts below show households with internet access.",
-    "chartKind": "pie",
-    "chartData": {
-      "kind": "pie",
-      "title": "Households with internet access",
-      "unit": "%",
-      "pies": [
-        {
-          "caption": "2005",
-          "slices": [
-            {
-              "label": "Japan",
-              "value": 39
-            },
-            {
-              "label": "Germany",
-              "value": 26
-            },
-            {
-              "label": "Brazil",
-              "value": 22
-            },
-            {
-              "label": "Kenya",
-              "value": 13
-            }
-          ]
-        },
-        {
-          "caption": "2020",
-          "slices": [
-            {
-              "label": "Japan",
-              "value": 13
-            },
-            {
-              "label": "Germany",
-              "value": 22
-            },
-            {
-              "label": "Brazil",
-              "value": 26
-            },
-            {
-              "label": "Kenya",
-              "value": 39
-            }
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Japan",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 39,
-            "to": 13
-          },
-          {
-            "subject": "Germany",
-            "direction": "down",
-            "magnitude": "moderate",
-            "from": 26,
-            "to": 22
-          },
-          {
-            "subject": "Brazil",
-            "direction": "up",
-            "magnitude": "moderate",
-            "from": 22,
-            "to": 26
-          },
-          {
-            "subject": "Kenya",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 13,
-            "to": 39
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Japan",
-            "rank": "highest",
-            "at": "2005"
-          },
-          {
-            "subject": "Kenya",
-            "rank": "highest",
-            "at": "2020"
-          },
-          {
-            "subject": "Kenya",
-            "rank": "lowest",
-            "at": "2005"
-          },
-          {
-            "subject": "Japan",
-            "rank": "lowest",
-            "at": "2020"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Japan",
-            "other": "Germany",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Japan",
-            "other": "Brazil",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Japan",
-            "other": "Kenya",
-            "nearLabel": "2005"
-          },
-          {
-            "subject": "Germany",
-            "other": "Brazil",
-            "nearLabel": "2005"
-          },
-          {
-            "subject": "Germany",
-            "other": "Kenya",
-            "nearLabel": "2005"
-          },
-          {
-            "subject": "Brazil",
-            "other": "Kenya",
-            "nearLabel": "2005"
-          }
-        ],
-        "grouping": [
-          [
             "Brazil",
             "Kenya"
-          ],
-          [
-            "Japan",
-            "Germany"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "technology",
-    "difficultyBand": 6,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-technology-table-1",
-    "task": "ielts_task1",
-    "promptText": "The table below shows households with internet access.",
-    "chartKind": "table",
-    "chartData": {
-      "kind": "table",
-      "title": "Households with internet access",
-      "unit": "% of households",
-      "headers": [
-        "",
-        "2005",
-        "2010",
-        "2015",
-        "2020"
-      ],
-      "rows": [
-        [
-          "Japan",
-          41,
-          81,
-          123,
-          160
-        ],
-        [
-          "Germany",
-          163,
-          129,
-          84,
-          42
-        ],
-        [
-          "Brazil",
-          41,
-          63,
-          77,
-          97
-        ],
-        [
-          "Kenya",
-          95,
-          79,
-          60,
-          41
-        ]
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Japan",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 41,
-            "to": 160
-          },
-          {
-            "subject": "Germany",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 163,
-            "to": 42
-          },
-          {
-            "subject": "Brazil",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 41,
-            "to": 97
-          },
-          {
-            "subject": "Kenya",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 95,
-            "to": 41
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Germany",
-            "rank": "highest",
-            "at": "2005"
-          },
-          {
-            "subject": "Japan",
-            "rank": "highest",
-            "at": "2020"
-          },
-          {
-            "subject": "Japan",
-            "rank": "lowest",
-            "at": "2005"
-          },
-          {
-            "subject": "Kenya",
-            "rank": "lowest",
-            "at": "2020"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Japan",
-            "other": "Germany",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Japan",
-            "other": "Kenya",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "Germany",
-            "other": "Brazil",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Brazil",
-            "other": "Kenya",
-            "nearLabel": "2010"
-          }
-        ],
-        "grouping": [
-          [
-            "Japan",
-            "Brazil"
-          ],
-          [
-            "Germany",
-            "Kenya"
           ]
         ]
       }
@@ -1054,13 +254,13 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-education-line-2",
+    "id": "w-t1-line-university-enrolment",
     "task": "ielts_task1",
-    "promptText": "The line graph below shows students enrolled in higher education, 2010-2022.",
+    "promptText": "The line graph below shows the number of students enrolled at three universities, 2010–2022.",
     "chartKind": "line",
     "chartData": {
       "kind": "line",
-      "title": "Students enrolled in higher education, 2010-2022",
+      "title": "The number of students enrolled at three universities, 2010–2022",
       "unit": "thousands of students",
       "xLabels": [
         "2010",
@@ -1070,103 +270,103 @@
       ],
       "series": [
         {
-          "name": "Asia",
+          "name": "Northgate",
           "values": [
-            36,
-            107,
-            172,
-            239
+            6,
+            16,
+            25,
+            34
           ]
         },
         {
-          "name": "Europe",
+          "name": "Riverside",
           "values": [
-            223,
-            173,
-            96,
-            37
+            34,
+            25,
+            16,
+            6
           ]
         },
         {
-          "name": "Africa",
+          "name": "Hilltop",
           "values": [
-            138,
-            134,
-            138,
-            135
+            20,
+            21,
+            21,
+            20
           ]
         }
       ],
       "analysisKey": {
         "trends": [
           {
-            "subject": "Asia",
+            "subject": "Northgate",
             "direction": "up",
             "magnitude": "large",
-            "from": 36,
-            "to": 239
+            "from": 6,
+            "to": 34
           },
           {
-            "subject": "Europe",
+            "subject": "Riverside",
             "direction": "down",
             "magnitude": "large",
-            "from": 223,
-            "to": 37
+            "from": 34,
+            "to": 6
           },
           {
-            "subject": "Africa",
-            "direction": "stable",
+            "subject": "Hilltop",
+            "direction": "fluctuating",
             "magnitude": "small",
-            "from": 138,
-            "to": 135
+            "from": 20,
+            "to": 20
           }
         ],
         "extremes": [
           {
-            "subject": "Europe",
+            "subject": "Riverside",
             "rank": "highest",
             "at": "2010"
           },
           {
-            "subject": "Asia",
+            "subject": "Northgate",
             "rank": "highest",
             "at": "2022"
           },
           {
-            "subject": "Asia",
+            "subject": "Northgate",
             "rank": "lowest",
             "at": "2010"
           },
           {
-            "subject": "Europe",
+            "subject": "Riverside",
             "rank": "lowest",
             "at": "2022"
           }
         ],
         "crossings": [
           {
-            "subject": "Asia",
-            "other": "Europe",
+            "subject": "Northgate",
+            "other": "Riverside",
             "nearLabel": "2014"
           },
           {
-            "subject": "Asia",
-            "other": "Africa",
-            "nearLabel": "2014"
+            "subject": "Northgate",
+            "other": "Hilltop",
+            "nearLabel": "2018"
           },
           {
-            "subject": "Europe",
-            "other": "Africa",
+            "subject": "Riverside",
+            "other": "Hilltop",
             "nearLabel": "2014"
           }
         ],
         "grouping": [
           [
-            "Asia"
+            "Northgate"
           ],
           [
-            "Europe",
-            "Africa"
+            "Riverside",
+            "Hilltop"
           ]
         ]
       }
@@ -1179,437 +379,50 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-education-bar-2",
+    "id": "w-t1-line-water-use",
     "task": "ielts_task1",
-    "promptText": "The bar chart below shows students enrolled in higher education.",
-    "chartKind": "bar",
-    "chartData": {
-      "kind": "bar",
-      "title": "Students enrolled in higher education",
-      "unit": "thousands of students",
-      "xLabels": [
-        "Asia",
-        "Europe",
-        "Africa",
-        "South America"
-      ],
-      "series": [
-        {
-          "name": "Group 1",
-          "values": [
-            12,
-            19,
-            30,
-            52
-          ]
-        },
-        {
-          "name": "Group 2",
-          "values": [
-            47,
-            29,
-            18,
-            13
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Group 1",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 12,
-            "to": 52
-          },
-          {
-            "subject": "Group 2",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 47,
-            "to": 13
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Group 2",
-            "rank": "highest",
-            "at": "Asia"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "highest",
-            "at": "South America"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "lowest",
-            "at": "Asia"
-          },
-          {
-            "subject": "Group 2",
-            "rank": "lowest",
-            "at": "South America"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Group 1",
-            "other": "Group 2",
-            "nearLabel": "Europe"
-          }
-        ],
-        "grouping": [
-          [
-            "Group 1"
-          ],
-          [
-            "Group 2"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "education",
-    "difficultyBand": 6,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-education-pie-2",
-    "task": "ielts_task1",
-    "promptText": "The pie charts below show students enrolled in higher education.",
-    "chartKind": "pie",
-    "chartData": {
-      "kind": "pie",
-      "title": "Students enrolled in higher education",
-      "unit": "%",
-      "pies": [
-        {
-          "caption": "2010",
-          "slices": [
-            {
-              "label": "Asia",
-              "value": 41
-            },
-            {
-              "label": "Europe",
-              "value": 27
-            },
-            {
-              "label": "Africa",
-              "value": 21
-            },
-            {
-              "label": "South America",
-              "value": 11
-            }
-          ]
-        },
-        {
-          "caption": "2022",
-          "slices": [
-            {
-              "label": "Asia",
-              "value": 11
-            },
-            {
-              "label": "Europe",
-              "value": 21
-            },
-            {
-              "label": "Africa",
-              "value": 27
-            },
-            {
-              "label": "South America",
-              "value": 41
-            }
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Asia",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 41,
-            "to": 11
-          },
-          {
-            "subject": "Europe",
-            "direction": "down",
-            "magnitude": "moderate",
-            "from": 27,
-            "to": 21
-          },
-          {
-            "subject": "Africa",
-            "direction": "up",
-            "magnitude": "moderate",
-            "from": 21,
-            "to": 27
-          },
-          {
-            "subject": "South America",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 11,
-            "to": 41
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Asia",
-            "rank": "highest",
-            "at": "2010"
-          },
-          {
-            "subject": "South America",
-            "rank": "highest",
-            "at": "2022"
-          },
-          {
-            "subject": "South America",
-            "rank": "lowest",
-            "at": "2010"
-          },
-          {
-            "subject": "Asia",
-            "rank": "lowest",
-            "at": "2022"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Asia",
-            "other": "Europe",
-            "nearLabel": "2022"
-          },
-          {
-            "subject": "Asia",
-            "other": "Africa",
-            "nearLabel": "2022"
-          },
-          {
-            "subject": "Asia",
-            "other": "South America",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "Europe",
-            "other": "Africa",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "Europe",
-            "other": "South America",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "Africa",
-            "other": "South America",
-            "nearLabel": "2010"
-          }
-        ],
-        "grouping": [
-          [
-            "Africa",
-            "South America"
-          ],
-          [
-            "Asia",
-            "Europe"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "education",
-    "difficultyBand": 6.5,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-education-table-2",
-    "task": "ielts_task1",
-    "promptText": "The table below shows students enrolled in higher education.",
-    "chartKind": "table",
-    "chartData": {
-      "kind": "table",
-      "title": "Students enrolled in higher education",
-      "unit": "thousands of students",
-      "headers": [
-        "",
-        "2010",
-        "2014",
-        "2018",
-        "2022"
-      ],
-      "rows": [
-        [
-          "Asia",
-          22,
-          38,
-          52,
-          64
-        ],
-        [
-          "Europe",
-          65,
-          50,
-          36,
-          23
-        ],
-        [
-          "Africa",
-          22,
-          29,
-          36,
-          43
-        ],
-        [
-          "South America",
-          43,
-          36,
-          30,
-          22
-        ]
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Asia",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 22,
-            "to": 64
-          },
-          {
-            "subject": "Europe",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 65,
-            "to": 23
-          },
-          {
-            "subject": "Africa",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 22,
-            "to": 43
-          },
-          {
-            "subject": "South America",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 43,
-            "to": 22
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Europe",
-            "rank": "highest",
-            "at": "2010"
-          },
-          {
-            "subject": "Asia",
-            "rank": "highest",
-            "at": "2022"
-          },
-          {
-            "subject": "Asia",
-            "rank": "lowest",
-            "at": "2010"
-          },
-          {
-            "subject": "South America",
-            "rank": "lowest",
-            "at": "2022"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Asia",
-            "other": "Europe",
-            "nearLabel": "2014"
-          },
-          {
-            "subject": "Asia",
-            "other": "South America",
-            "nearLabel": "2014"
-          },
-          {
-            "subject": "Europe",
-            "other": "Africa",
-            "nearLabel": "2018"
-          },
-          {
-            "subject": "Africa",
-            "other": "South America",
-            "nearLabel": "2018"
-          }
-        ],
-        "grouping": [
-          [
-            "Asia",
-            "Africa"
-          ],
-          [
-            "Europe",
-            "South America"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "education",
-    "difficultyBand": 7,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-health-line-3",
-    "task": "ielts_task1",
-    "promptText": "The line graph below shows daily water consumption per person, 2000-2020.",
+    "promptText": "The line graph below shows the average amount of water used per person each day in three countries, 2000–2020.",
     "chartKind": "line",
     "chartData": {
       "kind": "line",
-      "title": "Daily water consumption per person, 2000-2020",
+      "title": "The average amount of water used per person each day in three countries, 2000–2020",
       "unit": "litres per person",
       "xLabels": [
         "2000",
+        "2005",
         "2010",
+        "2015",
         "2020"
       ],
       "series": [
         {
           "name": "Australia",
           "values": [
-            21,
-            57,
-            90
-          ]
-        },
-        {
-          "name": "United States",
-          "values": [
-            87,
-            57,
-            22
+            73,
+            149,
+            245,
+            309,
+            395
           ]
         },
         {
           "name": "China",
           "values": [
-            53,
-            57,
-            54
+            395,
+            324,
+            242,
+            160,
+            77
+          ]
+        },
+        {
+          "name": "Ethiopia",
+          "values": [
+            238,
+            230,
+            243,
+            232,
+            240
           ]
         }
       ],
@@ -1619,27 +432,27 @@
             "subject": "Australia",
             "direction": "up",
             "magnitude": "large",
-            "from": 21,
-            "to": 90
-          },
-          {
-            "subject": "United States",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 87,
-            "to": 22
+            "from": 73,
+            "to": 395
           },
           {
             "subject": "China",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 395,
+            "to": 77
+          },
+          {
+            "subject": "Ethiopia",
             "direction": "fluctuating",
             "magnitude": "small",
-            "from": 53,
-            "to": 54
+            "from": 238,
+            "to": 240
           }
         ],
         "extremes": [
           {
-            "subject": "United States",
+            "subject": "China",
             "rank": "highest",
             "at": "2000"
           },
@@ -1654,7 +467,7 @@
             "at": "2000"
           },
           {
-            "subject": "United States",
+            "subject": "China",
             "rank": "lowest",
             "at": "2020"
           }
@@ -1662,17 +475,17 @@
         "crossings": [
           {
             "subject": "Australia",
-            "other": "United States",
+            "other": "China",
             "nearLabel": "2010"
           },
           {
             "subject": "Australia",
-            "other": "China",
+            "other": "Ethiopia",
             "nearLabel": "2010"
           },
           {
-            "subject": "United States",
-            "other": "China",
+            "subject": "China",
+            "other": "Ethiopia",
             "nearLabel": "2010"
           }
         ],
@@ -1681,403 +494,8 @@
             "Australia"
           ],
           [
-            "United States",
-            "China"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "health",
-    "difficultyBand": 6,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-health-bar-3",
-    "task": "ielts_task1",
-    "promptText": "The bar chart below shows daily water consumption per person.",
-    "chartKind": "bar",
-    "chartData": {
-      "kind": "bar",
-      "title": "Daily water consumption per person",
-      "unit": "litres per person",
-      "xLabels": [
-        "Australia",
-        "United States",
-        "China",
-        "Ethiopia"
-      ],
-      "series": [
-        {
-          "name": "Group 1",
-          "values": [
-            9,
-            16,
-            27,
-            44
-          ]
-        },
-        {
-          "name": "Group 2",
-          "values": [
-            41,
-            25,
-            16,
-            10
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Group 1",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 9,
-            "to": 44
-          },
-          {
-            "subject": "Group 2",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 41,
-            "to": 10
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Group 2",
-            "rank": "highest",
-            "at": "Australia"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "highest",
-            "at": "Ethiopia"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "lowest",
-            "at": "Australia"
-          },
-          {
-            "subject": "Group 2",
-            "rank": "lowest",
-            "at": "Ethiopia"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Group 1",
-            "other": "Group 2",
-            "nearLabel": "United States"
-          }
-        ],
-        "grouping": [
-          [
-            "Group 1"
-          ],
-          [
-            "Group 2"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "health",
-    "difficultyBand": 6.5,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-health-pie-3",
-    "task": "ielts_task1",
-    "promptText": "The pie charts below show daily water consumption per person.",
-    "chartKind": "pie",
-    "chartData": {
-      "kind": "pie",
-      "title": "Daily water consumption per person",
-      "unit": "%",
-      "pies": [
-        {
-          "caption": "2000",
-          "slices": [
-            {
-              "label": "Australia",
-              "value": 39
-            },
-            {
-              "label": "United States",
-              "value": 29
-            },
-            {
-              "label": "China",
-              "value": 20
-            },
-            {
-              "label": "Ethiopia",
-              "value": 12
-            }
-          ]
-        },
-        {
-          "caption": "2020",
-          "slices": [
-            {
-              "label": "Australia",
-              "value": 12
-            },
-            {
-              "label": "United States",
-              "value": 20
-            },
-            {
-              "label": "China",
-              "value": 29
-            },
-            {
-              "label": "Ethiopia",
-              "value": 39
-            }
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Australia",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 39,
-            "to": 12
-          },
-          {
-            "subject": "United States",
-            "direction": "down",
-            "magnitude": "moderate",
-            "from": 29,
-            "to": 20
-          },
-          {
-            "subject": "China",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 20,
-            "to": 29
-          },
-          {
-            "subject": "Ethiopia",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 12,
-            "to": 39
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Australia",
-            "rank": "highest",
-            "at": "2000"
-          },
-          {
-            "subject": "Ethiopia",
-            "rank": "highest",
-            "at": "2020"
-          },
-          {
-            "subject": "Ethiopia",
-            "rank": "lowest",
-            "at": "2000"
-          },
-          {
-            "subject": "Australia",
-            "rank": "lowest",
-            "at": "2020"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Australia",
-            "other": "United States",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Australia",
-            "other": "China",
-            "nearLabel": "2020"
-          },
-          {
-            "subject": "Australia",
-            "other": "Ethiopia",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "United States",
-            "other": "China",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "United States",
-            "other": "Ethiopia",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "China",
-            "other": "Ethiopia",
-            "nearLabel": "2000"
-          }
-        ],
-        "grouping": [
-          [
             "China",
             "Ethiopia"
-          ],
-          [
-            "Australia",
-            "United States"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "health",
-    "difficultyBand": 7,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-health-table-3",
-    "task": "ielts_task1",
-    "promptText": "The table below shows daily water consumption per person.",
-    "chartKind": "table",
-    "chartData": {
-      "kind": "table",
-      "title": "Daily water consumption per person",
-      "unit": "litres per person",
-      "headers": [
-        "",
-        "2000",
-        "2010",
-        "2020"
-      ],
-      "rows": [
-        [
-          "Australia",
-          33,
-          86,
-          137
-        ],
-        [
-          "United States",
-          129,
-          87,
-          35
-        ],
-        [
-          "China",
-          34,
-          59,
-          79
-        ],
-        [
-          "Ethiopia",
-          83,
-          55,
-          34
-        ]
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Australia",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 33,
-            "to": 137
-          },
-          {
-            "subject": "United States",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 129,
-            "to": 35
-          },
-          {
-            "subject": "China",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 34,
-            "to": 79
-          },
-          {
-            "subject": "Ethiopia",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 83,
-            "to": 34
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "United States",
-            "rank": "highest",
-            "at": "2000"
-          },
-          {
-            "subject": "Australia",
-            "rank": "highest",
-            "at": "2020"
-          },
-          {
-            "subject": "Australia",
-            "rank": "lowest",
-            "at": "2000"
-          },
-          {
-            "subject": "Ethiopia",
-            "rank": "lowest",
-            "at": "2020"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Australia",
-            "other": "United States",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "Australia",
-            "other": "China",
-            "nearLabel": "2000"
-          },
-          {
-            "subject": "Australia",
-            "other": "Ethiopia",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "United States",
-            "other": "China",
-            "nearLabel": "2010"
-          },
-          {
-            "subject": "China",
-            "other": "Ethiopia",
-            "nearLabel": "2010"
-          }
-        ],
-        "grouping": [
-          [
-            "Australia",
-            "China"
-          ],
-          [
-            "United States",
-            "Ethiopia"
           ]
         ]
       }
@@ -2090,13 +508,13 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-business-line-4",
+    "id": "w-t1-line-beverage-sales",
     "task": "ielts_task1",
-    "promptText": "The line graph below shows sales of four types of beverage, 2015-2021.",
+    "promptText": "The line graph below shows sales of three types of beverage in a supermarket chain, 2015–2021.",
     "chartKind": "line",
     "chartData": {
       "kind": "line",
-      "title": "Sales of four types of beverage, 2015-2021",
+      "title": "Sales of three types of beverage in a supermarket chain, 2015–2021",
       "unit": "million litres",
       "xLabels": [
         "2015",
@@ -2108,28 +526,28 @@
         {
           "name": "Bottled water",
           "values": [
-            31,
-            73,
-            117,
-            168
+            29,
+            63,
+            94,
+            126
           ]
         },
         {
           "name": "Fruit juice",
           "values": [
-            160,
-            122,
-            76,
-            31
+            130,
+            90,
+            63,
+            29
           ]
         },
         {
           "name": "Soft drinks",
           "values": [
-            98,
-            95,
-            95,
-            96
+            80,
+            80,
+            75,
+            76
           ]
         }
       ],
@@ -2139,22 +557,22 @@
             "subject": "Bottled water",
             "direction": "up",
             "magnitude": "large",
-            "from": 31,
-            "to": 168
+            "from": 29,
+            "to": 126
           },
           {
             "subject": "Fruit juice",
             "direction": "down",
             "magnitude": "large",
-            "from": 160,
-            "to": 31
+            "from": 130,
+            "to": 29
           },
           {
             "subject": "Soft drinks",
-            "direction": "stable",
+            "direction": "down",
             "magnitude": "small",
-            "from": 98,
-            "to": 96
+            "from": 80,
+            "to": 76
           }
         ],
         "extremes": [
@@ -2183,7 +601,7 @@
           {
             "subject": "Bottled water",
             "other": "Fruit juice",
-            "nearLabel": "2019"
+            "nearLabel": "2017"
           },
           {
             "subject": "Bottled water",
@@ -2193,7 +611,7 @@
           {
             "subject": "Fruit juice",
             "other": "Soft drinks",
-            "nearLabel": "2019"
+            "nearLabel": "2017"
           }
         ],
         "grouping": [
@@ -2215,418 +633,13 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-business-bar-4",
+    "id": "w-t1-line-leisure-use",
     "task": "ielts_task1",
-    "promptText": "The bar chart below shows sales of four types of beverage.",
-    "chartKind": "bar",
-    "chartData": {
-      "kind": "bar",
-      "title": "Sales of four types of beverage",
-      "unit": "million litres",
-      "xLabels": [
-        "Bottled water",
-        "Fruit juice",
-        "Soft drinks",
-        "Tea"
-      ],
-      "series": [
-        {
-          "name": "Group 1",
-          "values": [
-            11,
-            21,
-            30,
-            46
-          ]
-        },
-        {
-          "name": "Group 2",
-          "values": [
-            48,
-            28,
-            18,
-            11
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Group 1",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 11,
-            "to": 46
-          },
-          {
-            "subject": "Group 2",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 48,
-            "to": 11
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Group 2",
-            "rank": "highest",
-            "at": "Bottled water"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "highest",
-            "at": "Tea"
-          },
-          {
-            "subject": "Group 1",
-            "rank": "lowest",
-            "at": "Bottled water"
-          },
-          {
-            "subject": "Group 2",
-            "rank": "lowest",
-            "at": "Tea"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Group 1",
-            "other": "Group 2",
-            "nearLabel": "Fruit juice"
-          }
-        ],
-        "grouping": [
-          [
-            "Group 1"
-          ],
-          [
-            "Group 2"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "business",
-    "difficultyBand": 7,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-business-pie-4",
-    "task": "ielts_task1",
-    "promptText": "The pie charts below show sales of four types of beverage.",
-    "chartKind": "pie",
-    "chartData": {
-      "kind": "pie",
-      "title": "Sales of four types of beverage",
-      "unit": "%",
-      "pies": [
-        {
-          "caption": "2015",
-          "slices": [
-            {
-              "label": "Bottled water",
-              "value": 42
-            },
-            {
-              "label": "Fruit juice",
-              "value": 26
-            },
-            {
-              "label": "Soft drinks",
-              "value": 19
-            },
-            {
-              "label": "Tea",
-              "value": 13
-            }
-          ]
-        },
-        {
-          "caption": "2021",
-          "slices": [
-            {
-              "label": "Bottled water",
-              "value": 13
-            },
-            {
-              "label": "Fruit juice",
-              "value": 19
-            },
-            {
-              "label": "Soft drinks",
-              "value": 26
-            },
-            {
-              "label": "Tea",
-              "value": 42
-            }
-          ]
-        }
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Bottled water",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 42,
-            "to": 13
-          },
-          {
-            "subject": "Fruit juice",
-            "direction": "down",
-            "magnitude": "moderate",
-            "from": 26,
-            "to": 19
-          },
-          {
-            "subject": "Soft drinks",
-            "direction": "up",
-            "magnitude": "moderate",
-            "from": 19,
-            "to": 26
-          },
-          {
-            "subject": "Tea",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 13,
-            "to": 42
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Bottled water",
-            "rank": "highest",
-            "at": "2015"
-          },
-          {
-            "subject": "Tea",
-            "rank": "highest",
-            "at": "2021"
-          },
-          {
-            "subject": "Tea",
-            "rank": "lowest",
-            "at": "2015"
-          },
-          {
-            "subject": "Bottled water",
-            "rank": "lowest",
-            "at": "2021"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Bottled water",
-            "other": "Fruit juice",
-            "nearLabel": "2021"
-          },
-          {
-            "subject": "Bottled water",
-            "other": "Soft drinks",
-            "nearLabel": "2021"
-          },
-          {
-            "subject": "Bottled water",
-            "other": "Tea",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Fruit juice",
-            "other": "Soft drinks",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Fruit juice",
-            "other": "Tea",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Soft drinks",
-            "other": "Tea",
-            "nearLabel": "2015"
-          }
-        ],
-        "grouping": [
-          [
-            "Soft drinks",
-            "Tea"
-          ],
-          [
-            "Bottled water",
-            "Fruit juice"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "business",
-    "difficultyBand": 6,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-business-table-4",
-    "task": "ielts_task1",
-    "promptText": "The table below shows sales of four types of beverage.",
-    "chartKind": "table",
-    "chartData": {
-      "kind": "table",
-      "title": "Sales of four types of beverage",
-      "unit": "million litres",
-      "headers": [
-        "",
-        "2015",
-        "2017",
-        "2019",
-        "2021"
-      ],
-      "rows": [
-        [
-          "Bottled water",
-          43,
-          86,
-          130,
-          177
-        ],
-        [
-          "Fruit juice",
-          182,
-          138,
-          91,
-          45
-        ],
-        [
-          "Soft drinks",
-          46,
-          65,
-          86,
-          109
-        ],
-        [
-          "Tea",
-          108,
-          85,
-          64,
-          47
-        ]
-      ],
-      "analysisKey": {
-        "trends": [
-          {
-            "subject": "Bottled water",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 43,
-            "to": 177
-          },
-          {
-            "subject": "Fruit juice",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 182,
-            "to": 45
-          },
-          {
-            "subject": "Soft drinks",
-            "direction": "up",
-            "magnitude": "large",
-            "from": 46,
-            "to": 109
-          },
-          {
-            "subject": "Tea",
-            "direction": "down",
-            "magnitude": "large",
-            "from": 108,
-            "to": 47
-          }
-        ],
-        "extremes": [
-          {
-            "subject": "Fruit juice",
-            "rank": "highest",
-            "at": "2015"
-          },
-          {
-            "subject": "Bottled water",
-            "rank": "highest",
-            "at": "2021"
-          },
-          {
-            "subject": "Bottled water",
-            "rank": "lowest",
-            "at": "2015"
-          },
-          {
-            "subject": "Fruit juice",
-            "rank": "lowest",
-            "at": "2021"
-          }
-        ],
-        "crossings": [
-          {
-            "subject": "Bottled water",
-            "other": "Fruit juice",
-            "nearLabel": "2019"
-          },
-          {
-            "subject": "Bottled water",
-            "other": "Soft drinks",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Bottled water",
-            "other": "Tea",
-            "nearLabel": "2017"
-          },
-          {
-            "subject": "Fruit juice",
-            "other": "Soft drinks",
-            "nearLabel": "2019"
-          },
-          {
-            "subject": "Fruit juice",
-            "other": "Tea",
-            "nearLabel": "2021"
-          },
-          {
-            "subject": "Soft drinks",
-            "other": "Tea",
-            "nearLabel": "2017"
-          }
-        ],
-        "grouping": [
-          [
-            "Bottled water",
-            "Soft drinks"
-          ],
-          [
-            "Fruit juice",
-            "Tea"
-          ]
-        ]
-      }
-    },
-    "essayKind": null,
-    "topicSlug": "business",
-    "difficultyBand": 6.5,
-    "timeLimitSeconds": 1200,
-    "minWords": 150,
-    "source": "generated"
-  },
-  {
-    "id": "w-t1-society-line-5",
-    "task": "ielts_task1",
-    "promptText": "The line graph below shows people using four leisure facilities, 2010-2020.",
+    "promptText": "The line graph below shows the percentage of residents using three leisure facilities in a city, 2010–2020.",
     "chartKind": "line",
     "chartData": {
       "kind": "line",
-      "title": "People using four leisure facilities, 2010-2020",
+      "title": "The percentage of residents using three leisure facilities in a city, 2010–2020",
       "unit": "% of residents",
       "xLabels": [
         "2010",
@@ -2637,25 +650,25 @@
         {
           "name": "Gyms",
           "values": [
-            24,
-            82,
-            147
+            11,
+            43,
+            80
           ]
         },
         {
           "name": "Libraries",
           "values": [
-            149,
-            92,
-            26
+            78,
+            45,
+            11
           ]
         },
         {
           "name": "Parks",
           "values": [
-            89,
-            87,
-            90
+            45,
+            44,
+            44
           ]
         }
       ],
@@ -2665,22 +678,22 @@
             "subject": "Gyms",
             "direction": "up",
             "magnitude": "large",
-            "from": 24,
-            "to": 147
+            "from": 11,
+            "to": 80
           },
           {
             "subject": "Libraries",
             "direction": "down",
             "magnitude": "large",
-            "from": 149,
-            "to": 26
+            "from": 78,
+            "to": 11
           },
           {
             "subject": "Parks",
             "direction": "stable",
             "magnitude": "small",
-            "from": 89,
-            "to": 90
+            "from": 45,
+            "to": 44
           }
         ],
         "extremes": [
@@ -2741,92 +754,92 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-society-bar-5",
+    "id": "w-t1-bar-weekly-hours",
     "task": "ielts_task1",
-    "promptText": "The bar chart below shows people using four leisure facilities.",
+    "promptText": "The bar chart below shows the average number of hours per week spent on four activities by two age groups.",
     "chartKind": "bar",
     "chartData": {
       "kind": "bar",
-      "title": "People using four leisure facilities",
-      "unit": "% of residents",
+      "title": "The average number of hours per week spent on four activities by two age groups",
+      "unit": "hours per week",
       "xLabels": [
-        "Gyms",
-        "Libraries",
-        "Parks",
-        "Cinemas"
+        "Working",
+        "Housework",
+        "Leisure",
+        "Sleeping"
       ],
       "series": [
         {
-          "name": "Group 1",
+          "name": "Aged 20–35",
           "values": [
-            16,
-            25,
-            41,
-            65
+            8,
+            21,
+            39,
+            54
           ]
         },
         {
-          "name": "Group 2",
+          "name": "Aged 55–70",
           "values": [
-            63,
+            57,
             37,
-            25,
-            14
+            21,
+            8
           ]
         }
       ],
       "analysisKey": {
         "trends": [
           {
-            "subject": "Group 1",
+            "subject": "Aged 20–35",
             "direction": "up",
             "magnitude": "large",
-            "from": 16,
-            "to": 65
+            "from": 8,
+            "to": 54
           },
           {
-            "subject": "Group 2",
+            "subject": "Aged 55–70",
             "direction": "down",
             "magnitude": "large",
-            "from": 63,
-            "to": 14
+            "from": 57,
+            "to": 8
           }
         ],
         "extremes": [
           {
-            "subject": "Group 2",
+            "subject": "Aged 55–70",
             "rank": "highest",
-            "at": "Gyms"
+            "at": "Working"
           },
           {
-            "subject": "Group 1",
+            "subject": "Aged 20–35",
             "rank": "highest",
-            "at": "Cinemas"
+            "at": "Sleeping"
           },
           {
-            "subject": "Group 1",
+            "subject": "Aged 20–35",
             "rank": "lowest",
-            "at": "Gyms"
+            "at": "Working"
           },
           {
-            "subject": "Group 2",
+            "subject": "Aged 55–70",
             "rank": "lowest",
-            "at": "Cinemas"
+            "at": "Sleeping"
           }
         ],
         "crossings": [
           {
-            "subject": "Group 1",
-            "other": "Group 2",
-            "nearLabel": "Libraries"
+            "subject": "Aged 20–35",
+            "other": "Aged 55–70",
+            "nearLabel": "Housework"
           }
         ],
         "grouping": [
           [
-            "Group 1"
+            "Aged 20–35"
           ],
           [
-            "Group 2"
+            "Aged 55–70"
           ]
         ]
       }
@@ -2839,33 +852,523 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-society-pie-5",
+    "id": "w-t1-bar-subject-choice",
     "task": "ielts_task1",
-    "promptText": "The pie charts below show people using four leisure facilities.",
+    "promptText": "The bar chart below shows the percentage of students choosing four subjects at two universities.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "The percentage of students choosing four subjects at two universities",
+      "unit": "% of students",
+      "xLabels": [
+        "Science",
+        "Arts",
+        "Business",
+        "Engineering"
+      ],
+      "series": [
+        {
+          "name": "University A",
+          "values": [
+            7,
+            18,
+            33,
+            48
+          ]
+        },
+        {
+          "name": "University B",
+          "values": [
+            45,
+            30,
+            20,
+            7
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "University A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 7,
+            "to": 48
+          },
+          {
+            "subject": "University B",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 45,
+            "to": 7
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "University B",
+            "rank": "highest",
+            "at": "Science"
+          },
+          {
+            "subject": "University A",
+            "rank": "highest",
+            "at": "Engineering"
+          },
+          {
+            "subject": "University A",
+            "rank": "lowest",
+            "at": "Science"
+          },
+          {
+            "subject": "University B",
+            "rank": "lowest",
+            "at": "Engineering"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "University A",
+            "other": "University B",
+            "nearLabel": "Arts"
+          }
+        ],
+        "grouping": [
+          [
+            "University A"
+          ],
+          [
+            "University B"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "education",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-bar-food-intake",
+    "task": "ielts_task1",
+    "promptText": "The bar chart below shows the average daily intake of four food groups by men and women.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "The average daily intake of four food groups by men and women",
+      "unit": "grams per day",
+      "xLabels": [
+        "Vegetables",
+        "Fruit",
+        "Meat",
+        "Dairy"
+      ],
+      "series": [
+        {
+          "name": "Men",
+          "values": [
+            76,
+            187,
+            299,
+            475
+          ]
+        },
+        {
+          "name": "Women",
+          "values": [
+            474,
+            323,
+            188,
+            70
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Men",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 76,
+            "to": 475
+          },
+          {
+            "subject": "Women",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 474,
+            "to": 70
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Women",
+            "rank": "highest",
+            "at": "Vegetables"
+          },
+          {
+            "subject": "Men",
+            "rank": "highest",
+            "at": "Dairy"
+          },
+          {
+            "subject": "Men",
+            "rank": "lowest",
+            "at": "Vegetables"
+          },
+          {
+            "subject": "Women",
+            "rank": "lowest",
+            "at": "Dairy"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Men",
+            "other": "Women",
+            "nearLabel": "Meat"
+          }
+        ],
+        "grouping": [
+          [
+            "Men"
+          ],
+          [
+            "Women"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "health",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-bar-monthly-spending",
+    "task": "ielts_task1",
+    "promptText": "The bar chart below shows average monthly household spending on four categories in two cities.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "Average monthly household spending on four categories in two cities",
+      "unit": "USD per month",
+      "xLabels": [
+        "Housing",
+        "Food",
+        "Transport",
+        "Leisure"
+      ],
+      "series": [
+        {
+          "name": "City A",
+          "values": [
+            136,
+            353,
+            594,
+            1012
+          ]
+        },
+        {
+          "name": "City B",
+          "values": [
+            974,
+            634,
+            375,
+            150
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "City A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 136,
+            "to": 1012
+          },
+          {
+            "subject": "City B",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 974,
+            "to": 150
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "City B",
+            "rank": "highest",
+            "at": "Housing"
+          },
+          {
+            "subject": "City A",
+            "rank": "highest",
+            "at": "Leisure"
+          },
+          {
+            "subject": "City A",
+            "rank": "lowest",
+            "at": "Housing"
+          },
+          {
+            "subject": "City B",
+            "rank": "lowest",
+            "at": "Leisure"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "City A",
+            "other": "City B",
+            "nearLabel": "Transport"
+          }
+        ],
+        "grouping": [
+          [
+            "City A"
+          ],
+          [
+            "City B"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "business",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-bar-device-use",
+    "task": "ielts_task1",
+    "promptText": "The bar chart below shows the percentage of people using four types of device in two countries.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "The percentage of people using four types of device in two countries",
+      "unit": "% of people",
+      "xLabels": [
+        "Smartphone",
+        "Laptop",
+        "Tablet",
+        "Smart TV"
+      ],
+      "series": [
+        {
+          "name": "Country A",
+          "values": [
+            12,
+            33,
+            56,
+            85
+          ]
+        },
+        {
+          "name": "Country B",
+          "values": [
+            84,
+            51,
+            32,
+            12
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Country A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 12,
+            "to": 85
+          },
+          {
+            "subject": "Country B",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 84,
+            "to": 12
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Country B",
+            "rank": "highest",
+            "at": "Smartphone"
+          },
+          {
+            "subject": "Country A",
+            "rank": "highest",
+            "at": "Smart TV"
+          },
+          {
+            "subject": "Country A",
+            "rank": "lowest",
+            "at": "Smartphone"
+          },
+          {
+            "subject": "Country B",
+            "rank": "lowest",
+            "at": "Smart TV"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Country A",
+            "other": "Country B",
+            "nearLabel": "Laptop"
+          }
+        ],
+        "grouping": [
+          [
+            "Country A"
+          ],
+          [
+            "Country B"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "technology",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-bar-waste-by-town",
+    "task": "ielts_task1",
+    "promptText": "The bar chart below shows the amount of four types of waste produced by two towns.",
+    "chartKind": "bar",
+    "chartData": {
+      "kind": "bar",
+      "title": "The amount of four types of waste produced by two towns",
+      "unit": "tonnes per year",
+      "xLabels": [
+        "Paper",
+        "Plastic",
+        "Food",
+        "Glass"
+      ],
+      "series": [
+        {
+          "name": "Town A",
+          "values": [
+            1105,
+            2665,
+            4606,
+            7379
+          ]
+        },
+        {
+          "name": "Town B",
+          "values": [
+            6732,
+            5005,
+            2743,
+            1031
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Town A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 1105,
+            "to": 7379
+          },
+          {
+            "subject": "Town B",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 6732,
+            "to": 1031
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Town B",
+            "rank": "highest",
+            "at": "Paper"
+          },
+          {
+            "subject": "Town A",
+            "rank": "highest",
+            "at": "Glass"
+          },
+          {
+            "subject": "Town A",
+            "rank": "lowest",
+            "at": "Paper"
+          },
+          {
+            "subject": "Town B",
+            "rank": "lowest",
+            "at": "Glass"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Town A",
+            "other": "Town B",
+            "nearLabel": "Food"
+          }
+        ],
+        "grouping": [
+          [
+            "Town A"
+          ],
+          [
+            "Town B"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-electricity-sources",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show how electricity was generated in one country in 1995 and in 2020.",
     "chartKind": "pie",
     "chartData": {
       "kind": "pie",
-      "title": "People using four leisure facilities",
+      "title": "How electricity was generated in one country in 1995 and in 2020",
       "unit": "%",
       "pies": [
         {
-          "caption": "2010",
+          "caption": "1995",
           "slices": [
             {
-              "label": "Gyms",
-              "value": 39
+              "label": "Coal",
+              "value": 41
             },
             {
-              "label": "Libraries",
+              "label": "Gas",
               "value": 28
             },
             {
-              "label": "Parks",
-              "value": 20
+              "label": "Nuclear",
+              "value": 21
             },
             {
-              "label": "Cinemas",
-              "value": 13
+              "label": "Renewables",
+              "value": 10
             }
           ]
         },
@@ -2873,20 +1376,20 @@
           "caption": "2020",
           "slices": [
             {
-              "label": "Gyms",
-              "value": 13
+              "label": "Coal",
+              "value": 10
             },
             {
-              "label": "Libraries",
-              "value": 20
+              "label": "Gas",
+              "value": 21
             },
             {
-              "label": "Parks",
+              "label": "Nuclear",
               "value": 28
             },
             {
-              "label": "Cinemas",
-              "value": 39
+              "label": "Renewables",
+              "value": 41
             }
           ]
         }
@@ -2894,96 +1397,1176 @@
       "analysisKey": {
         "trends": [
           {
-            "subject": "Gyms",
+            "subject": "Coal",
             "direction": "down",
             "magnitude": "large",
-            "from": 39,
-            "to": 13
+            "from": 41,
+            "to": 10
           },
           {
-            "subject": "Libraries",
+            "subject": "Gas",
             "direction": "down",
             "magnitude": "moderate",
             "from": 28,
-            "to": 20
+            "to": 21
           },
           {
-            "subject": "Parks",
+            "subject": "Nuclear",
             "direction": "up",
-            "magnitude": "large",
-            "from": 20,
+            "magnitude": "moderate",
+            "from": 21,
             "to": 28
           },
           {
-            "subject": "Cinemas",
+            "subject": "Renewables",
             "direction": "up",
             "magnitude": "large",
-            "from": 13,
-            "to": 39
+            "from": 10,
+            "to": 41
           }
         ],
         "extremes": [
           {
-            "subject": "Gyms",
+            "subject": "Coal",
             "rank": "highest",
-            "at": "2010"
+            "at": "1995"
           },
           {
-            "subject": "Cinemas",
+            "subject": "Renewables",
             "rank": "highest",
             "at": "2020"
           },
           {
-            "subject": "Cinemas",
+            "subject": "Renewables",
             "rank": "lowest",
-            "at": "2010"
+            "at": "1995"
           },
           {
-            "subject": "Gyms",
+            "subject": "Coal",
             "rank": "lowest",
             "at": "2020"
           }
         ],
         "crossings": [
           {
-            "subject": "Gyms",
-            "other": "Libraries",
+            "subject": "Coal",
+            "other": "Gas",
             "nearLabel": "2020"
           },
           {
-            "subject": "Gyms",
-            "other": "Parks",
+            "subject": "Coal",
+            "other": "Nuclear",
             "nearLabel": "2020"
           },
           {
-            "subject": "Gyms",
-            "other": "Cinemas",
+            "subject": "Coal",
+            "other": "Renewables",
+            "nearLabel": "1995"
+          },
+          {
+            "subject": "Gas",
+            "other": "Nuclear",
+            "nearLabel": "1995"
+          },
+          {
+            "subject": "Gas",
+            "other": "Renewables",
+            "nearLabel": "1995"
+          },
+          {
+            "subject": "Nuclear",
+            "other": "Renewables",
+            "nearLabel": "1995"
+          }
+        ],
+        "grouping": [
+          [
+            "Nuclear",
+            "Renewables"
+          ],
+          [
+            "Coal",
+            "Gas"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-household-spending",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show how an average household spent its money in 2000 and in 2020.",
+    "chartKind": "pie",
+    "chartData": {
+      "kind": "pie",
+      "title": "How an average household spent its money in 2000 and in 2020",
+      "unit": "%",
+      "pies": [
+        {
+          "caption": "2000",
+          "slices": [
+            {
+              "label": "Food",
+              "value": 38
+            },
+            {
+              "label": "Housing",
+              "value": 30
+            },
+            {
+              "label": "Transport",
+              "value": 21
+            },
+            {
+              "label": "Leisure",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "caption": "2020",
+          "slices": [
+            {
+              "label": "Food",
+              "value": 11
+            },
+            {
+              "label": "Housing",
+              "value": 21
+            },
+            {
+              "label": "Transport",
+              "value": 30
+            },
+            {
+              "label": "Leisure",
+              "value": 38
+            }
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Food",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 38,
+            "to": 11
+          },
+          {
+            "subject": "Housing",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 30,
+            "to": 21
+          },
+          {
+            "subject": "Transport",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 21,
+            "to": 30
+          },
+          {
+            "subject": "Leisure",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 11,
+            "to": 38
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Food",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Leisure",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Leisure",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Food",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Food",
+            "other": "Housing",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Food",
+            "other": "Transport",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Food",
+            "other": "Leisure",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Housing",
+            "other": "Transport",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Housing",
+            "other": "Leisure",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Transport",
+            "other": "Leisure",
+            "nearLabel": "2020"
+          }
+        ],
+        "grouping": [
+          [
+            "Transport",
+            "Leisure"
+          ],
+          [
+            "Food",
+            "Housing"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "business",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-waste-composition",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show the composition of household waste in a city in 2005 and in 2020.",
+    "chartKind": "pie",
+    "chartData": {
+      "kind": "pie",
+      "title": "The composition of household waste in a city in 2005 and in 2020",
+      "unit": "%",
+      "pies": [
+        {
+          "caption": "2005",
+          "slices": [
+            {
+              "label": "Paper",
+              "value": 37
+            },
+            {
+              "label": "Plastic",
+              "value": 31
+            },
+            {
+              "label": "Food waste",
+              "value": 20
+            },
+            {
+              "label": "Glass",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "caption": "2020",
+          "slices": [
+            {
+              "label": "Paper",
+              "value": 12
+            },
+            {
+              "label": "Plastic",
+              "value": 20
+            },
+            {
+              "label": "Food waste",
+              "value": 31
+            },
+            {
+              "label": "Glass",
+              "value": 37
+            }
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Paper",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 37,
+            "to": 12
+          },
+          {
+            "subject": "Plastic",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 31,
+            "to": 20
+          },
+          {
+            "subject": "Food waste",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 20,
+            "to": 31
+          },
+          {
+            "subject": "Glass",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 12,
+            "to": 37
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Paper",
+            "rank": "highest",
+            "at": "2005"
+          },
+          {
+            "subject": "Glass",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Glass",
+            "rank": "lowest",
+            "at": "2005"
+          },
+          {
+            "subject": "Paper",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Paper",
+            "other": "Plastic",
+            "nearLabel": "2005"
+          },
+          {
+            "subject": "Paper",
+            "other": "Food waste",
+            "nearLabel": "2005"
+          },
+          {
+            "subject": "Paper",
+            "other": "Glass",
+            "nearLabel": "2005"
+          },
+          {
+            "subject": "Plastic",
+            "other": "Food waste",
+            "nearLabel": "2005"
+          },
+          {
+            "subject": "Plastic",
+            "other": "Glass",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Food waste",
+            "other": "Glass",
+            "nearLabel": "2020"
+          }
+        ],
+        "grouping": [
+          [
+            "Food waste",
+            "Glass"
+          ],
+          [
+            "Paper",
+            "Plastic"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-moving-reasons",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show the reasons people gave for moving home in 2000 and in 2020.",
+    "chartKind": "pie",
+    "chartData": {
+      "kind": "pie",
+      "title": "The reasons people gave for moving home in 2000 and in 2020",
+      "unit": "%",
+      "pies": [
+        {
+          "caption": "2000",
+          "slices": [
+            {
+              "label": "Work",
+              "value": 40
+            },
+            {
+              "label": "Study",
+              "value": 29
+            },
+            {
+              "label": "Family",
+              "value": 19
+            },
+            {
+              "label": "Cost of living",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "caption": "2020",
+          "slices": [
+            {
+              "label": "Work",
+              "value": 12
+            },
+            {
+              "label": "Study",
+              "value": 19
+            },
+            {
+              "label": "Family",
+              "value": 29
+            },
+            {
+              "label": "Cost of living",
+              "value": 40
+            }
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Work",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 40,
+            "to": 12
+          },
+          {
+            "subject": "Study",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 29,
+            "to": 19
+          },
+          {
+            "subject": "Family",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 19,
+            "to": 29
+          },
+          {
+            "subject": "Cost of living",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 12,
+            "to": 40
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Work",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Cost of living",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Cost of living",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Work",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Work",
+            "other": "Study",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Work",
+            "other": "Family",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Work",
+            "other": "Cost of living",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Study",
+            "other": "Family",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Study",
+            "other": "Cost of living",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Family",
+            "other": "Cost of living",
+            "nearLabel": "2000"
+          }
+        ],
+        "grouping": [
+          [
+            "Family",
+            "Cost of living"
+          ],
+          [
+            "Work",
+            "Study"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "society",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-graduate-subjects",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show the subjects studied by university graduates in 2000 and in 2020.",
+    "chartKind": "pie",
+    "chartData": {
+      "kind": "pie",
+      "title": "The subjects studied by university graduates in 2000 and in 2020",
+      "unit": "%",
+      "pies": [
+        {
+          "caption": "2000",
+          "slices": [
+            {
+              "label": "Science",
+              "value": 40
+            },
+            {
+              "label": "Business",
+              "value": 29
+            },
+            {
+              "label": "Arts",
+              "value": 20
+            },
+            {
+              "label": "Health",
+              "value": 11
+            }
+          ]
+        },
+        {
+          "caption": "2020",
+          "slices": [
+            {
+              "label": "Science",
+              "value": 11
+            },
+            {
+              "label": "Business",
+              "value": 20
+            },
+            {
+              "label": "Arts",
+              "value": 29
+            },
+            {
+              "label": "Health",
+              "value": 40
+            }
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Science",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 40,
+            "to": 11
+          },
+          {
+            "subject": "Business",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 29,
+            "to": 20
+          },
+          {
+            "subject": "Arts",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 20,
+            "to": 29
+          },
+          {
+            "subject": "Health",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 11,
+            "to": 40
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Science",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Health",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Health",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Science",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Science",
+            "other": "Business",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Science",
+            "other": "Arts",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Science",
+            "other": "Health",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Business",
+            "other": "Arts",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Business",
+            "other": "Health",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Arts",
+            "other": "Health",
+            "nearLabel": "2000"
+          }
+        ],
+        "grouping": [
+          [
+            "Arts",
+            "Health"
+          ],
+          [
+            "Science",
+            "Business"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "education",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-pie-internet-devices",
+    "task": "ielts_task1",
+    "promptText": "The pie charts below show how people accessed the internet in 2010 and in 2020.",
+    "chartKind": "pie",
+    "chartData": {
+      "kind": "pie",
+      "title": "How people accessed the internet in 2010 and in 2020",
+      "unit": "%",
+      "pies": [
+        {
+          "caption": "2010",
+          "slices": [
+            {
+              "label": "Desktop",
+              "value": 37
+            },
+            {
+              "label": "Laptop",
+              "value": 30
+            },
+            {
+              "label": "Smartphone",
+              "value": 21
+            },
+            {
+              "label": "Tablet",
+              "value": 12
+            }
+          ]
+        },
+        {
+          "caption": "2020",
+          "slices": [
+            {
+              "label": "Desktop",
+              "value": 12
+            },
+            {
+              "label": "Laptop",
+              "value": 21
+            },
+            {
+              "label": "Smartphone",
+              "value": 30
+            },
+            {
+              "label": "Tablet",
+              "value": 37
+            }
+          ]
+        }
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Desktop",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 37,
+            "to": 12
+          },
+          {
+            "subject": "Laptop",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 30,
+            "to": 21
+          },
+          {
+            "subject": "Smartphone",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 21,
+            "to": 30
+          },
+          {
+            "subject": "Tablet",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 12,
+            "to": 37
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Desktop",
+            "rank": "highest",
+            "at": "2010"
+          },
+          {
+            "subject": "Tablet",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Tablet",
+            "rank": "lowest",
+            "at": "2010"
+          },
+          {
+            "subject": "Desktop",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Desktop",
+            "other": "Laptop",
             "nearLabel": "2010"
           },
           {
-            "subject": "Libraries",
-            "other": "Parks",
+            "subject": "Desktop",
+            "other": "Smartphone",
             "nearLabel": "2010"
           },
           {
-            "subject": "Libraries",
-            "other": "Cinemas",
+            "subject": "Desktop",
+            "other": "Tablet",
             "nearLabel": "2010"
           },
           {
-            "subject": "Parks",
-            "other": "Cinemas",
+            "subject": "Laptop",
+            "other": "Smartphone",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Laptop",
+            "other": "Tablet",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Smartphone",
+            "other": "Tablet",
+            "nearLabel": "2020"
+          }
+        ],
+        "grouping": [
+          [
+            "Smartphone",
+            "Tablet"
+          ],
+          [
+            "Desktop",
+            "Laptop"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "technology",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-table-literacy-rate",
+    "task": "ielts_task1",
+    "promptText": "The table below shows adult literacy rates in four regions of the world, 1990–2020.",
+    "chartKind": "table",
+    "chartData": {
+      "kind": "table",
+      "title": "Adult literacy rates in four regions of the world, 1990–2020",
+      "unit": "% of adults",
+      "headers": [
+        "",
+        "1990",
+        "2000",
+        "2010",
+        "2020"
+      ],
+      "rows": [
+        [
+          "East Asia",
+          37,
+          56,
+          72,
+          92
+        ],
+        [
+          "South Asia",
+          90,
+          70,
+          55,
+          36
+        ],
+        [
+          "Sub-Saharan Africa",
+          55,
+          59,
+          67,
+          75
+        ],
+        [
+          "Europe",
+          71,
+          68,
+          62,
+          52
+        ]
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "East Asia",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 37,
+            "to": 92
+          },
+          {
+            "subject": "South Asia",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 90,
+            "to": 36
+          },
+          {
+            "subject": "Sub-Saharan Africa",
+            "direction": "up",
+            "magnitude": "moderate",
+            "from": 55,
+            "to": 75
+          },
+          {
+            "subject": "Europe",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 71,
+            "to": 52
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "South Asia",
+            "rank": "highest",
+            "at": "1990"
+          },
+          {
+            "subject": "East Asia",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "East Asia",
+            "rank": "lowest",
+            "at": "1990"
+          },
+          {
+            "subject": "South Asia",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "East Asia",
+            "other": "South Asia",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "East Asia",
+            "other": "Sub-Saharan Africa",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "East Asia",
+            "other": "Europe",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "South Asia",
+            "other": "Sub-Saharan Africa",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "South Asia",
+            "other": "Europe",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Sub-Saharan Africa",
+            "other": "Europe",
             "nearLabel": "2010"
           }
         ],
         "grouping": [
           [
-            "Parks",
-            "Cinemas"
+            "East Asia",
+            "Sub-Saharan Africa"
           ],
           [
-            "Gyms",
-            "Libraries"
+            "South Asia",
+            "Europe"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "education",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-table-transport-modes",
+    "task": "ielts_task1",
+    "promptText": "The table below shows the percentage of people using four modes of transport to travel to work, 2000–2020.",
+    "chartKind": "table",
+    "chartData": {
+      "kind": "table",
+      "title": "The percentage of people using four modes of transport to travel to work, 2000–2020",
+      "unit": "% of commuters",
+      "headers": [
+        "",
+        "2000",
+        "2010",
+        "2020"
+      ],
+      "rows": [
+        [
+          "Private car",
+          7,
+          34,
+          58
+        ],
+        [
+          "Bus",
+          57,
+          33,
+          7
+        ],
+        [
+          "Train",
+          23,
+          34,
+          42
+        ],
+        [
+          "Cycling",
+          42,
+          33,
+          24
+        ]
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Private car",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 7,
+            "to": 58
+          },
+          {
+            "subject": "Bus",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 57,
+            "to": 7
+          },
+          {
+            "subject": "Train",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 23,
+            "to": 42
+          },
+          {
+            "subject": "Cycling",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 42,
+            "to": 24
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Bus",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Private car",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Private car",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Bus",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Private car",
+            "other": "Bus",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Private car",
+            "other": "Train",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Private car",
+            "other": "Cycling",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Bus",
+            "other": "Train",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Bus",
+            "other": "Cycling",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Train",
+            "other": "Cycling",
+            "nearLabel": "2010"
+          }
+        ],
+        "grouping": [
+          [
+            "Private car",
+            "Train"
+          ],
+          [
+            "Bus",
+            "Cycling"
           ]
         ]
       }
@@ -2996,140 +2579,590 @@
     "source": "generated"
   },
   {
-    "id": "w-t1-society-table-5",
+    "id": "w-t1-table-life-expectancy",
     "task": "ielts_task1",
-    "promptText": "The table below shows people using four leisure facilities.",
+    "promptText": "The table below shows average life expectancy at birth in four countries, 1990–2020.",
     "chartKind": "table",
     "chartData": {
       "kind": "table",
-      "title": "People using four leisure facilities",
-      "unit": "% of residents",
+      "title": "Average life expectancy at birth in four countries, 1990–2020",
+      "unit": "years",
       "headers": [
         "",
+        "1990",
+        "2000",
         "2010",
-        "2015",
         "2020"
       ],
       "rows": [
         [
-          "Gyms",
-          39,
-          119,
-          197
+          "Japan",
+          51,
+          60,
+          71,
+          80
         ],
         [
-          "Libraries",
-          201,
-          121,
-          41
-        ],
-        [
-          "Parks",
-          41,
-          76,
-          112
-        ],
-        [
-          "Cinemas",
-          108,
+          "Brazil",
+          85,
           73,
-          39
+          59,
+          50
+        ],
+        [
+          "India",
+          60,
+          63,
+          69,
+          70
+        ],
+        [
+          "Nigeria",
+          72,
+          68,
+          64,
+          60
         ]
       ],
       "analysisKey": {
         "trends": [
           {
-            "subject": "Gyms",
+            "subject": "Japan",
             "direction": "up",
             "magnitude": "large",
-            "from": 39,
-            "to": 197
+            "from": 51,
+            "to": 80
           },
           {
-            "subject": "Libraries",
+            "subject": "Brazil",
             "direction": "down",
             "magnitude": "large",
-            "from": 201,
-            "to": 41
+            "from": 85,
+            "to": 50
           },
           {
-            "subject": "Parks",
+            "subject": "India",
             "direction": "up",
-            "magnitude": "large",
-            "from": 41,
-            "to": 112
+            "magnitude": "moderate",
+            "from": 60,
+            "to": 70
           },
           {
-            "subject": "Cinemas",
+            "subject": "Nigeria",
             "direction": "down",
-            "magnitude": "large",
-            "from": 108,
-            "to": 39
+            "magnitude": "moderate",
+            "from": 72,
+            "to": 60
           }
         ],
         "extremes": [
           {
-            "subject": "Libraries",
+            "subject": "Brazil",
             "rank": "highest",
-            "at": "2010"
+            "at": "1990"
           },
           {
-            "subject": "Gyms",
+            "subject": "Japan",
             "rank": "highest",
             "at": "2020"
           },
           {
-            "subject": "Gyms",
+            "subject": "Japan",
             "rank": "lowest",
-            "at": "2010"
+            "at": "1990"
           },
           {
-            "subject": "Cinemas",
+            "subject": "Brazil",
             "rank": "lowest",
             "at": "2020"
           }
         ],
         "crossings": [
           {
-            "subject": "Gyms",
-            "other": "Libraries",
-            "nearLabel": "2015"
-          },
-          {
-            "subject": "Gyms",
-            "other": "Parks",
+            "subject": "Japan",
+            "other": "Brazil",
             "nearLabel": "2010"
           },
           {
-            "subject": "Gyms",
-            "other": "Cinemas",
-            "nearLabel": "2015"
+            "subject": "Japan",
+            "other": "India",
+            "nearLabel": "2010"
           },
           {
-            "subject": "Libraries",
-            "other": "Parks",
-            "nearLabel": "2015"
+            "subject": "Japan",
+            "other": "Nigeria",
+            "nearLabel": "2010"
           },
           {
-            "subject": "Parks",
-            "other": "Cinemas",
-            "nearLabel": "2015"
+            "subject": "Brazil",
+            "other": "India",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "Brazil",
+            "other": "Nigeria",
+            "nearLabel": "2000"
+          },
+          {
+            "subject": "India",
+            "other": "Nigeria",
+            "nearLabel": "2000"
           }
         ],
         "grouping": [
           [
-            "Gyms",
-            "Parks"
+            "Japan",
+            "India"
           ],
           [
-            "Libraries",
-            "Cinemas"
+            "Brazil",
+            "Nigeria"
           ]
         ]
       }
     },
     "essayKind": null,
-    "topicSlug": "society",
+    "topicSlug": "health",
+    "difficultyBand": 7,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-table-company-revenue",
+    "task": "ielts_task1",
+    "promptText": "The table below shows the annual revenue of four companies, 2016–2022.",
+    "chartKind": "table",
+    "chartData": {
+      "kind": "table",
+      "title": "The annual revenue of four companies, 2016–2022",
+      "unit": "million USD",
+      "headers": [
+        "",
+        "2016",
+        "2018",
+        "2020",
+        "2022"
+      ],
+      "rows": [
+        [
+          "Alpha",
+          103,
+          331,
+          527,
+          736
+        ],
+        [
+          "Beta",
+          786,
+          537,
+          317,
+          102
+        ],
+        [
+          "Gamma",
+          323,
+          379,
+          477,
+          540
+        ],
+        [
+          "Delta",
+          526,
+          480,
+          404,
+          311
+        ]
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Alpha",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 103,
+            "to": 736
+          },
+          {
+            "subject": "Beta",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 786,
+            "to": 102
+          },
+          {
+            "subject": "Gamma",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 323,
+            "to": 540
+          },
+          {
+            "subject": "Delta",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 526,
+            "to": 311
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Beta",
+            "rank": "highest",
+            "at": "2016"
+          },
+          {
+            "subject": "Alpha",
+            "rank": "highest",
+            "at": "2022"
+          },
+          {
+            "subject": "Alpha",
+            "rank": "lowest",
+            "at": "2016"
+          },
+          {
+            "subject": "Beta",
+            "rank": "lowest",
+            "at": "2022"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Alpha",
+            "other": "Beta",
+            "nearLabel": "2018"
+          },
+          {
+            "subject": "Alpha",
+            "other": "Gamma",
+            "nearLabel": "2018"
+          },
+          {
+            "subject": "Alpha",
+            "other": "Delta",
+            "nearLabel": "2020"
+          },
+          {
+            "subject": "Beta",
+            "other": "Gamma",
+            "nearLabel": "2018"
+          },
+          {
+            "subject": "Beta",
+            "other": "Delta",
+            "nearLabel": "2018"
+          },
+          {
+            "subject": "Gamma",
+            "other": "Delta",
+            "nearLabel": "2020"
+          }
+        ],
+        "grouping": [
+          [
+            "Alpha",
+            "Gamma"
+          ],
+          [
+            "Beta",
+            "Delta"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "business",
+    "difficultyBand": 6,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-table-annual-rainfall",
+    "task": "ielts_task1",
+    "promptText": "The table below shows average annual rainfall in four cities, 2000–2020.",
+    "chartKind": "table",
+    "chartData": {
+      "kind": "table",
+      "title": "Average annual rainfall in four cities, 2000–2020",
+      "unit": "mm per year",
+      "headers": [
+        "",
+        "2000",
+        "2010",
+        "2020"
+      ],
+      "rows": [
+        [
+          "Oslo",
+          292,
+          998,
+          1674
+        ],
+        [
+          "Lisbon",
+          1716,
+          986,
+          295
+        ],
+        [
+          "Cairo",
+          737,
+          983,
+          1219
+        ],
+        [
+          "Mumbai",
+          1217,
+          975,
+          731
+        ]
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Oslo",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 292,
+            "to": 1674
+          },
+          {
+            "subject": "Lisbon",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 1716,
+            "to": 295
+          },
+          {
+            "subject": "Cairo",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 737,
+            "to": 1219
+          },
+          {
+            "subject": "Mumbai",
+            "direction": "down",
+            "magnitude": "moderate",
+            "from": 1217,
+            "to": 731
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Lisbon",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Oslo",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Oslo",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Lisbon",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Oslo",
+            "other": "Lisbon",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Oslo",
+            "other": "Cairo",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Oslo",
+            "other": "Mumbai",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Lisbon",
+            "other": "Cairo",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Lisbon",
+            "other": "Mumbai",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Cairo",
+            "other": "Mumbai",
+            "nearLabel": "2010"
+          }
+        ],
+        "grouping": [
+          [
+            "Oslo",
+            "Cairo"
+          ],
+          [
+            "Lisbon",
+            "Mumbai"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "generated"
+  },
+  {
+    "id": "w-t1-table-mobile-subscriptions",
+    "task": "ielts_task1",
+    "promptText": "The table below shows the number of mobile phone subscriptions in four countries, 2000–2020.",
+    "chartKind": "table",
+    "chartData": {
+      "kind": "table",
+      "title": "The number of mobile phone subscriptions in four countries, 2000–2020",
+      "unit": "per 100 people",
+      "headers": [
+        "",
+        "2000",
+        "2010",
+        "2020"
+      ],
+      "rows": [
+        [
+          "Country A",
+          21,
+          78,
+          141
+        ],
+        [
+          "Country B",
+          138,
+          78,
+          21
+        ],
+        [
+          "Country C",
+          59,
+          79,
+          101
+        ],
+        [
+          "Country D",
+          98,
+          78,
+          58
+        ]
+      ],
+      "analysisKey": {
+        "trends": [
+          {
+            "subject": "Country A",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 21,
+            "to": 141
+          },
+          {
+            "subject": "Country B",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 138,
+            "to": 21
+          },
+          {
+            "subject": "Country C",
+            "direction": "up",
+            "magnitude": "large",
+            "from": 59,
+            "to": 101
+          },
+          {
+            "subject": "Country D",
+            "direction": "down",
+            "magnitude": "large",
+            "from": 98,
+            "to": 58
+          }
+        ],
+        "extremes": [
+          {
+            "subject": "Country B",
+            "rank": "highest",
+            "at": "2000"
+          },
+          {
+            "subject": "Country A",
+            "rank": "highest",
+            "at": "2020"
+          },
+          {
+            "subject": "Country A",
+            "rank": "lowest",
+            "at": "2000"
+          },
+          {
+            "subject": "Country B",
+            "rank": "lowest",
+            "at": "2020"
+          }
+        ],
+        "crossings": [
+          {
+            "subject": "Country A",
+            "other": "Country B",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Country A",
+            "other": "Country C",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Country A",
+            "other": "Country D",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Country B",
+            "other": "Country C",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Country B",
+            "other": "Country D",
+            "nearLabel": "2010"
+          },
+          {
+            "subject": "Country C",
+            "other": "Country D",
+            "nearLabel": "2010"
+          }
+        ],
+        "grouping": [
+          [
+            "Country A",
+            "Country C"
+          ],
+          [
+            "Country B",
+            "Country D"
+          ]
+        ]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "technology",
     "difficultyBand": 7,
     "timeLimitSeconds": 1200,
     "minWords": 150,

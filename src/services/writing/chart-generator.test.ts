@@ -2,24 +2,57 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
 import {
-  CHART_TOPICS,
   generateBarChart,
   generateLineChart,
   generatePieChart,
   generateTableChart,
 } from './chart-generator';
+import { FIGURE_SPECS, type FigureSpec } from './figure-specs';
 import { validateChartData } from '@/lib/writing/chart-data';
+import type { Task1Chart } from '@/lib/writing/types';
 
-/** Mỗi chủ đề × 6 hạt = đủ mẫu để bắt lỗi chỉ xuất hiện với một số hạt. */
+/** Mỗi mô tả hình × 6 hạt = đủ mẫu để bắt lỗi chỉ xuất hiện với một số hạt. */
 const SEEDS = ['s0', 's1', 's2', 's3', 's4', 's5'];
-const CASES = CHART_TOPICS.flatMap((topic) => SEEDS.map((seed) => ({ topic, seed })));
 
-test('có ít nhất năm chủ đề để kho đề không nhàm', () => {
-  assert.ok(CHART_TOPICS.length >= 5);
+function casesFor(kind: Task1Chart): Array<{ topic: FigureSpec; seed: string }> {
+  return FIGURE_SPECS.filter((s) => s.kind === kind).flatMap((topic) =>
+    SEEDS.map((seed) => ({ topic, seed })),
+  );
+}
+
+test('mỗi loại hình có ít nhất năm mô tả để kho đề không nhàm', () => {
+  for (const kind of ['line', 'bar', 'pie', 'table'] as const) {
+    assert.ok(FIGURE_SPECS.filter((s) => s.kind === kind).length >= 5, `thiếu mô tả cho ${kind}`);
+  }
+});
+
+test('mọi giá trị sinh ra đều nằm trong biên của đơn vị', () => {
+  // Truc "% ho gia dinh" chay toi 125% la con so khong ton tai, ma nguoi hoc
+  // lai phai chep dung so lieu vao bai.
+  for (const spec of FIGURE_SPECS) {
+    const [lo, hi] = spec.range;
+    const chart =
+      spec.kind === 'bar'
+        ? generateBarChart(spec, 's0')
+        : spec.kind === 'table'
+          ? generateTableChart(spec, 's0')
+          : spec.kind === 'pie'
+            ? null
+            : generateLineChart(spec, 's0');
+    if (!chart) continue;
+
+    const values =
+      chart.kind === 'table'
+        ? chart.rows.flatMap((r) => r.slice(1).map(Number))
+        : chart.series.flatMap((x) => x.values);
+    for (const v of values) {
+      assert.ok(v >= lo && v <= hi, `${spec.slug}: giá trị ${v} ngoài biên ${lo}-${hi}`);
+    }
+  }
 });
 
 test('mọi biểu đồ đường sinh ra đều qua được bộ kiểm định', () => {
-  for (const { topic, seed } of CASES) {
+  for (const { topic, seed } of casesFor('line')) {
     const r = validateChartData(generateLineChart(topic, seed));
     assert.equal(r.ok, true, `${topic.slug}/${seed}: ${r.ok === false ? r.reason : ''}`);
   }
@@ -27,7 +60,7 @@ test('mọi biểu đồ đường sinh ra đều qua được bộ kiểm đị
 
 test('mọi biểu đồ đường đều có ít nhất một cặp đường cắt nhau', () => {
   // Đề không có giao cắt thì mất hẳn ý overview mạnh nhất là đổi ngôi.
-  for (const { topic, seed } of CASES) {
+  for (const { topic, seed } of casesFor('line')) {
     const chart = generateLineChart(topic, seed);
     assert.ok(
       chart.analysisKey.crossings.length >= 1,
@@ -37,7 +70,7 @@ test('mọi biểu đồ đường đều có ít nhất một cặp đường c
 });
 
 test('biểu đồ cột không có trục thời gian thì có cực trị rõ rệt', () => {
-  for (const { topic, seed } of CASES) {
+  for (const { topic, seed } of casesFor('bar')) {
     const chart = generateBarChart(topic, seed);
     const r = validateChartData(chart);
     assert.equal(r.ok, true, `${topic.slug}/${seed}: ${r.ok === false ? r.reason : ''}`);
@@ -51,7 +84,7 @@ test('biểu đồ cột không có trục thời gian thì có cực trị rõ 
 });
 
 test('biểu đồ tròn hai hình luôn có đổi ngôi giữa hai mốc', () => {
-  for (const { topic, seed } of CASES) {
+  for (const { topic, seed } of casesFor('pie')) {
     const chart = generatePieChart(topic, seed);
     const r = validateChartData(chart);
     assert.equal(r.ok, true, `${topic.slug}/${seed}: ${r.ok === false ? r.reason : ''}`);
@@ -64,7 +97,7 @@ test('biểu đồ tròn hai hình luôn có đổi ngôi giữa hai mốc', () 
 });
 
 test('mỗi hình tròn có tổng đúng 100', () => {
-  for (const { topic, seed } of CASES) {
+  for (const { topic, seed } of casesFor('pie')) {
     for (const pie of generatePieChart(topic, seed).pies) {
       const total = pie.slices.reduce((s, x) => s + x.value, 0);
       assert.equal(total, 100, `${topic.slug}/${seed}/${pie.caption} tổng ${total}`);
@@ -73,7 +106,7 @@ test('mỗi hình tròn có tổng đúng 100', () => {
 });
 
 test('bảng đọc ngang và đọc dọc cho hai kết luận khác nhau', () => {
-  for (const { topic, seed } of CASES) {
+  for (const { topic, seed } of casesFor('table')) {
     const chart = generateTableChart(topic, seed);
     const r = validateChartData(chart);
     assert.equal(r.ok, true, `${topic.slug}/${seed}: ${r.ok === false ? r.reason : ''}`);
@@ -97,7 +130,7 @@ test('bảng đọc ngang và đọc dọc cho hai kết luận khác nhau', () 
 });
 
 test('cùng một hạt luôn ra cùng một biểu đồ', () => {
-  const topic = CHART_TOPICS[0];
+  const topic = FIGURE_SPECS[0];
   assert.ok(topic);
   assert.deepEqual(generateLineChart(topic, 'x'), generateLineChart(topic, 'x'));
   assert.notDeepEqual(generateLineChart(topic, 'x'), generateLineChart(topic, 'y'));

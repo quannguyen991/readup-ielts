@@ -1,11 +1,6 @@
-import {
-  CHART_TOPICS,
-  generateBarChart,
-  generateLineChart,
-  generatePieChart,
-  generateTableChart,
-} from './chart-generator';
-import type { ChartData, Task1Chart, Task2Essay, WritingPrompt } from '@/lib/writing/types';
+import { generateFigure, periodOf } from './chart-generator';
+import { FIGURE_SPECS } from './figure-specs';
+import type { Task1Chart, Task2Essay, WritingPrompt } from '@/lib/writing/types';
 
 /**
  * Bộ sinh đề.
@@ -139,42 +134,20 @@ const TASK1_LEAD: Record<Task1Chart, string> = {
   map: 'The maps below show',
 };
 
-const TASK1_KINDS: Task1Chart[] = ['line', 'bar', 'pie', 'table'];
-
 export function generateTask1Prompts(): WritingPrompt[] {
-  const out: WritingPrompt[] = [];
-
-  CHART_TOPICS.forEach((topic, topicIndex) => {
-    TASK1_KINDS.forEach((kind, kindIndex) => {
-      const seed = `v1-${topicIndex}`;
-      const chartData: ChartData =
-        kind === 'line'
-          ? generateLineChart(topic, seed)
-          : kind === 'bar'
-            ? generateBarChart(topic, seed)
-            : kind === 'pie'
-              ? generatePieChart(topic, seed)
-              : generateTableChart(topic, seed);
-
-      out.push({
-        id: `w-t1-${topic.slug}-${kind}-${topicIndex}`,
-        task: 'ielts_task1',
-        promptText: `${TASK1_LEAD[kind]} ${lowerFirst(chartData.title)}.`,
-        chartKind: kind,
-        chartData,
-        essayKind: null,
-        topicSlug: topic.slug,
-        difficultyBand: BANDS[(topicIndex + kindIndex) % BANDS.length] ?? 6.5,
-        timeLimitSeconds: 1200,
-        minWords: 150,
-        source: 'generated',
-      });
-    });
-  });
-
-  return out;
-}
-
-function lowerFirst(s: string): string {
-  return s.charAt(0).toLowerCase() + s.slice(1);
+  return FIGURE_SPECS.map((spec, index) => ({
+    id: `w-t1-${spec.kind}-${spec.slug}`,
+    task: 'ielts_task1',
+    // `subject` đã viết thường và có sẵn mạo từ nên ghép vào là đọc trôi:
+    // "The line graph below shows the average price of petrol…".
+    promptText: `${TASK1_LEAD[spec.kind]} ${spec.subject}${periodOf(spec)}.`,
+    chartKind: spec.kind,
+    chartData: generateFigure(spec, 'v1'),
+    essayKind: null,
+    topicSlug: spec.topicSlug,
+    difficultyBand: BANDS[index % BANDS.length] ?? 6.5,
+    timeLimitSeconds: 1200,
+    minWords: 150,
+    source: 'generated',
+  }));
 }

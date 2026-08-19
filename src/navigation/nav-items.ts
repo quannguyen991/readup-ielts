@@ -17,6 +17,7 @@ export type NavItem = {
 export const NAV_ITEMS: NavItem[] = [
   { key: 'dashboard', label: 'Dashboard', href: '/dashboard', icon: 'home', inTopNav: true, inBottomTabs: true },
   { key: 'practice', label: 'Practice', href: '/practice', icon: 'pencil', inTopNav: true, inBottomTabs: true },
+  { key: 'writing', label: 'Writing', href: '/write', icon: 'note', inTopNav: true, inBottomTabs: true },
   { key: 'library', label: 'Library', href: '/library', icon: 'book', inTopNav: true, inBottomTabs: true },
   { key: 'vocabulary', label: 'Vocabulary', shortLabel: 'Vocab', href: '/vocabulary', icon: 'letters', inTopNav: true, inBottomTabs: true },
   { key: 'progress', label: 'Progress', href: '/progress', icon: 'trending', inTopNav: true },
