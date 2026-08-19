@@ -114,16 +114,48 @@ Ràng buộc: `chart_kind` và `chart_data` phải cùng null hoặc cùng khác
 chỉ khác null khi `task = 'ielts_task1'`. Tương tự `essay_kind` với Task 2. Đây
 là cùng kiểu ràng buộc đã dùng cho `sat_text_type` — giữ nhất quán.
 
-**`chart_data` — hình dạng JSON.** Một shape cho mọi loại, phần thừa để trống:
+**`chart_data` — union có discriminant.** Mỗi loại biểu đồ một shape riêng, phân
+biệt bằng `kind`. Không dùng một shape chung với các trường bỏ trống: shape
+chung thì không có gì ngăn một đề `pie` mang `xLabels`, và lỗi kiểu đó chỉ lộ
+ra lúc vẽ.
+
+```jsonc
+// line | bar
+{ "kind": "line", "title": "...", "unit": "US cents per litre",
+  "xLabels": ["2000", "2005"], "series": [{ "name": "Country A", "values": [45, 68] }],
+  "analysisKey": { ... } }
+
+// pie — mỗi hình tròn một phần tử trong `pies`
+{ "kind": "pie", "title": "...", "unit": "%",
+  "pies": [{ "caption": "1995", "slices": [{ "label": "Coal", "value": 52 }] }],
+  "analysisKey": { ... } }
+
+// table
+{ "kind": "table", "title": "...", "unit": "litres",
+  "headers": ["Country", "2000"], "rows": [["Australia", 340]], "analysisKey": { ... } }
+
+// process
+{ "kind": "process", "title": "...", "steps": ["..."], "isCycle": false, "analysisKey": { ... } }
+
+// map
+{ "kind": "map", "title": "...",
+  "panels": [{ "caption": "1990", "items": [{ "shape": "green", "label": "Forest",
+    "x": 0.08, "y": 0.1, "w": 0.34, "h": 0.34 }] }], "analysisKey": { ... } }
+
+// mixed — hai hình, mỗi hình là một shape ở trên, không lồng tiếp mixed
+{ "kind": "mixed", "title": "...", "parts": [ { ...line... }, { ...table... } ],
+  "analysisKey": { ... } }
+```
+
+**`analysisKey`** có ở mọi loại — đây là thứ cho phép chấm drill Overview mà
+không gọi AI:
 
 ```jsonc
 {
-  "title": "Average price of petrol in three countries",
-  "unit": "US cents per litre",
-  "xLabels": ["2000", "2005", "2010"],
-  "series": [{ "name": "Country A", "values": [45, 68, 95] }],
-  "panels": [],   // map: hai khung trước/sau
-  "steps": []     // process: danh sách bước
+  "trends": ["bottled water tang manh", "fruit juice giam deu"],
+  "extremes": ["soft drinks cao nhat dau ky", "bottled water thap nhat dau ky"],
+  "crossings": ["bottled water vuot soft drinks quanh 2020"],
+  "grouping": [["bottled water"], ["fruit juice", "soft drinks"]]
 }
 ```
 
