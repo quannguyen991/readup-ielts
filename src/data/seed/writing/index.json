@@ -1,0 +1,65 @@
+[
+  {
+    "id": "w-t2-transport-001",
+    "task": "ielts_task2",
+    "promptText": "Some people think that governments should spend more money on public transport, while others believe that improving roads for cars is more important. Discuss both views and give your own opinion.",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "discussion",
+    "topicSlug": "society",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t2-gapyear-001",
+    "task": "ielts_task2",
+    "promptText": "In many countries, young people are encouraged to work or travel for a year before they start university. Do the advantages of this outweigh the disadvantages?",
+    "chartKind": null,
+    "chartData": null,
+    "essayKind": "advantage_disadvantage",
+    "topicSlug": "education",
+    "difficultyBand": 6.5,
+    "timeLimitSeconds": 2400,
+    "minWords": 250,
+    "source": "curated"
+  },
+  {
+    "id": "w-t1-line-petrol-001",
+    "task": "ielts_task1",
+    "promptText": "The line graph below shows the average price of petrol in three countries between 2000 and 2020.",
+    "chartKind": "line",
+    "chartData": {
+      "kind": "line",
+      "title": "Average price of petrol in three countries, 2000-2020",
+      "unit": "US cents per litre",
+      "xLabels": ["2000", "2005", "2010", "2015", "2020"],
+      "series": [
+        { "name": "Country A", "values": [45, 68, 95, 120, 155] },
+        { "name": "Country B", "values": [60, 72, 78, 74, 70] },
+        { "name": "Country C", "values": [95, 88, 70, 52, 40] }
+      ],
+      "analysisKey": {
+        "trends": [
+          "Country A tang lien tuc suot ky",
+          "Country C giam lien tuc suot ky",
+          "Country B gan nhu phang"
+        ],
+        "extremes": [
+          "Country C dat nhat dau ky",
+          "Country A re nhat dau ky",
+          "Country A dat nhat cuoi ky"
+        ],
+        "crossings": ["Country A va Country C doi cho cho nhau trong khoang 2008"],
+        "grouping": [["Country A", "Country C"], ["Country B"]]
+      }
+    },
+    "essayKind": null,
+    "topicSlug": "environment",
+    "difficultyBand": 7.0,
+    "timeLimitSeconds": 1200,
+    "minWords": 150,
+    "source": "curated"
+  }
+]
