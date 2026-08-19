@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 
+import { hasActiveSelection } from './useTextSelection';
 import { highlightColors, wordStatusColor, type HighlightColorKey } from '@/theme/tokens';
 import { lemmatize } from '@/services/dictionary/lookup';
 import type { Highlight } from '@/store/useReaderStore';
@@ -29,6 +30,12 @@ export type PassageViewProps = {
 
 type Token = { text: string; isWord: boolean; start: number; end: number };
 
+/**
+ * Id của khối bài đọc trong DOM. `useTextSelection` dựa vào nó để biết vùng bôi
+ * đen nằm trong bài chứ không phải ở sidebar hay panel câu hỏi.
+ */
+export const PASSAGE_CONTAINER_ID = 'passage-body';
+
 export function PassageView({
   paragraphs,
   fontScale,
@@ -42,7 +49,7 @@ export function PassageView({
   speakingParagraph,
 }: PassageViewProps) {
   return (
-    <View className="gap-4">
+    <View className="gap-4" nativeID={PASSAGE_CONTAINER_ID}>
       {paragraphs.map((paragraph, index) => (
         <Paragraph
           key={index}
@@ -133,6 +140,10 @@ function Paragraph({
             <Text
               key={tokenIndex}
               onPress={() => {
+                // Kéo chuột bôi đen xong, trình duyệt vẫn bắn `click` vào từ
+                // cuối cùng. Không chặn thì thẻ tra MỘT từ đó sẽ đè lên nghĩa
+                // của cả cụm vừa bôi.
+                if (hasActiveSelection()) return;
                 if (phraseMode) onPhraseToken(index, tokenIndex, token.text);
                 else onWordPress(token.text, sentenceAround(text, token.start), index);
               }}

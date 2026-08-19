@@ -13,7 +13,8 @@ import {
   SectionHeader,
   StatCard,
 } from '@/components/ui';
-import { getArticleById } from '@/data/articles';
+import { getArticleWithBody } from '@/data/articles';
+import { formatBand } from '@/lib/band';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -31,7 +32,9 @@ export default function ReviewScreen() {
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const [showHighlights, setShowHighlights] = useState(true);
 
-  const article = session ? getArticleById(session.articleId) : undefined;
+  // Màn này hiện lại nguyên bài để soi câu dẫn chứng, nên cần toàn văn chứ
+  // không chỉ metadata.
+  const article = session ? getArticleWithBody(session.articleId) : undefined;
 
   const rows = useMemo(() => {
     if (!session || !questionSet) return [];
@@ -73,7 +76,10 @@ export default function ReviewScreen() {
         <View>
           <View className="flex-row items-center gap-2">
             <Text className="font-heavy text-pageTitle text-ink">Test Review</Text>
-            <Badge label="Academic Reading" tone="success" />
+            <Badge
+              label={session.exam === 'sat' ? 'SAT Reading' : 'Academic Reading'}
+              tone="success"
+            />
           </View>
           <Text className="mt-1 font-sans text-body text-muted">
             Practice Set: {session.articleTitle}
@@ -120,10 +126,14 @@ export default function ReviewScreen() {
           />
           <StatCard
             label="Estimated Band"
-            value={session.estimatedBand.toFixed(1)}
+            value={formatBand(session.estimatedBand)}
             icon="trending"
             tone="accent"
-            caption="Quy đổi từ điểm thô 40 câu"
+            caption={
+              session.estimatedBand == null
+                ? 'Bài SAT không quy ra band IELTS'
+                : 'Quy đổi từ điểm thô 40 câu'
+            }
           />
           <StatCard
             label="Time Used"

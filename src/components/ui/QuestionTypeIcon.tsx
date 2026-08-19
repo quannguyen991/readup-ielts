@@ -17,6 +17,11 @@ const FALLBACK_ICON: Record<QuestionType, IconName> = {
   sentence_completion: 'pencil',
   summary_completion: 'note',
   short_answer: 'info',
+  sat_words_in_context: 'letters',
+  sat_central_idea: 'target',
+  sat_command_of_evidence: 'search',
+  sat_inference: 'trending',
+  sat_text_structure: 'list',
 };
 
 const TONE_BY_TYPE: Record<QuestionType, IconTone> = {
@@ -28,6 +33,11 @@ const TONE_BY_TYPE: Record<QuestionType, IconTone> = {
   sentence_completion: 'accent',
   summary_completion: 'primary',
   short_answer: 'info',
+  sat_words_in_context: 'accent',
+  sat_central_idea: 'primary',
+  sat_command_of_evidence: 'success',
+  sat_inference: 'warning',
+  sat_text_structure: 'info',
 };
 
 /**

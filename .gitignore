@@ -36,9 +36,16 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# Checkpoint của ingest: trạng thái của MỘT lần chạy trên MỘT máy, không phải
+# dữ liệu. Commit vào là máy khác chạy `--resume` sẽ bỏ qua nguồn nó chưa cào.
+src/data/seed/.ingest-state.json
+
 # Subagent-driven development: ledger, brief, review package — scratch, không commit
 .superpowers/
 
 # generated native folders
 /ios
 /android
+
+.vercel
+.env*

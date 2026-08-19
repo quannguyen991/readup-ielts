@@ -1,4 +1,11 @@
-import type { ArticleTrack, CefrLevel, LicenseType, PassageTier } from '@/types/database';
+import type {
+  ArticleTrack,
+  CefrLevel,
+  ExamKind,
+  LicenseType,
+  PassageTier,
+  SatTextType,
+} from '@/types/database';
 
 /** Bài đọc thô do một nguồn trả về, trước khi chấm độ khó và chuẩn hoá. */
 export type RawArticle = {
@@ -9,7 +16,11 @@ export type RawArticle = {
   sourceUrl: string;
   topic: string;
   track: ArticleTrack;
-  /** Nguồn nào biết trước tier của mình thì khai ở đây (đề official, headline). */
+  /** Thiếu thì coi là 'ielts' — mọi nguồn cũ đều thuộc kỳ thi này. */
+  exam?: ExamKind;
+  /** Chỉ khai với bài SAT. */
+  satTextType?: SatTextType;
+  /** Nguồn nào biết trước tier của mình thì khai ở đây (đề official, headline, SAT). */
   passageTier?: PassageTier;
   licenseType: LicenseType;
   attribution?: string;
@@ -30,6 +41,8 @@ export type IngestedArticle = {
   sourceUrl: string;
   topic: string;
   track: ArticleTrack;
+  exam: ExamKind;
+  satTextType: SatTextType | null;
   passageTier: PassageTier | null;
   licenseType: LicenseType;
   attribution: string | null;

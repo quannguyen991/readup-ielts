@@ -85,7 +85,16 @@ export const useQuestionStore = create<QuestionState>()(
     {
       name: `${STORAGE_PREFIX}questions`,
       storage: storage<QuestionState>(),
-      version: 1,
+      // v2: bài SAT giờ sinh đề bằng bộ SAT. Bộ đề IELTS đã cache từ trước vẫn
+      // nằm trong storage và được trả về trước khi kịp sinh lại, nên một trích
+      // đoạn Jane Austen hiện ra 11 câu Matching Headings — đã gặp thật. Không
+      // khai migrate là có chủ ý: bộ đề sinh lại được từ bài, vứt đi là xong,
+      // không mất gì của người dùng.
+      //
+      // v3: bộ đề IELTS offline viết lại hẳn — bỏ bốn dạng giải được bằng đối
+      // chiếu chuỗi. Không bump thì người đã mở bài trước đó vẫn nhận đúng bộ
+      // đề dễ cũ từ cache, sửa cũng như không.
+      version: 3,
       partialize: (state) => ({ sets: state.sets }) as QuestionState,
     },
   ),

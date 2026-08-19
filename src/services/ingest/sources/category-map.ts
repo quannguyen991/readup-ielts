@@ -5,11 +5,13 @@
  * Tên category phải viết đúng như trên Wikipedia (phân biệt chữ hoa, dùng dấu
  * cách chứ không gạch dưới — code tự encode).
  */
-export const TOPIC_CATEGORIES: ReadonlyArray<{
+export type TopicCategoryMap = ReadonlyArray<{
   topic: string;
   en: string[];
   simple: string[];
-}> = [
+}>;
+
+export const TOPIC_CATEGORIES: TopicCategoryMap = [
   {
     topic: 'environment',
     en: ['Climate change', 'Conservation biology', 'Renewable energy', 'Pollution', 'Ecology'],

@@ -1,6 +1,6 @@
-import seed from './seed/articles.json';
-import type { IngestedArticle } from '@/services/ingest/types';
-import type { ArticleTrack, CefrLevel } from '@/types/database';
+import index from './seed/index.json';
+import { getArticleBody, type ArticleBody, type ArticleMeta } from './article-repository';
+import type { CefrLevel, ExamKind, PassageTier, SatTextType } from '@/types/database';
 
 /**
  * Kho bài đọc trong app.
@@ -8,11 +8,19 @@ import type { ArticleTrack, CefrLevel } from '@/types/database';
  * Nguồn hiện tại là seed cào sẵn (chạy `npm run ingest` để làm mới), nên app
  * dùng được ngay cả khi chưa cấu hình Supabase. Khi đã có Supabase, cùng bộ
  * hàm này sẽ đọc từ bảng `articles` — chữ ký hàm giữ nguyên.
+ *
+ * Kho chia làm hai phần: `index.json` (metadata mọi bài, bundle sẵn để duyệt
+ * và lọc tức thì) và `bodies/chunk-NN.json` (toàn văn, nạp lười). Nên ở đây
+ * `ArticleMeta` là thứ Library dùng, còn `Article` (đã có toàn văn) chỉ dựng
+ * khi thật sự mở bài ra đọc.
  */
 
-export type Article = IngestedArticle;
+/** Metadata bài đọc — thứ Library dùng để duyệt và lọc. Không mang toàn văn. */
+export type { ArticleMeta };
+/** Bài đọc đầy đủ. Màn đọc và bài tự dán dùng shape này. */
+export type Article = ArticleMeta & ArticleBody;
 
-export const ARTICLES: Article[] = seed as Article[];
+export const ARTICLES: ArticleMeta[] = index as unknown as ArticleMeta[];
 
 export const TOPICS = [
   { slug: 'environment', name: 'Environment', nameVi: 'Môi trường' },
@@ -25,37 +33,105 @@ export const TOPICS = [
   { slug: 'culture', name: 'Culture', nameVi: 'Văn hoá' },
   { slug: 'history', name: 'History', nameVi: 'Lịch sử' },
   { slug: 'psychology', name: 'Psychology', nameVi: 'Tâm lý học' },
+  // Thêm cùng nguồn SAT: passage văn học là một trong bốn loại văn bản của đề.
+  { slug: 'literature', name: 'Literature', nameVi: 'Văn học' },
 ] as const;
 
 export const CEFR_LEVELS: CefrLevel[] = ['A2', 'B1', 'B2', 'C1', 'C2'];
 
+export const EXAMS: ReadonlyArray<{ value: ExamKind; label: string }> = [
+  { value: 'ielts', label: 'IELTS' },
+  { value: 'sat', label: 'SAT' },
+];
+
+/** Nhãn tier hiển thị cho người học, kèm khổ chữ để biết mình sắp đọc gì. */
+export const TIER_LABEL: Record<PassageTier, string> = {
+  p1: 'Passage 1 (~750 từ)',
+  p2: 'Passage 2 (~900 từ)',
+  p3: 'Passage 3 (~1050 từ)',
+  short_academic: 'Bài học thuật ngắn',
+  headline: 'Chỉ tiêu đề',
+  official_practice: 'Đề chính thức',
+  sat_short: 'SAT — đoạn ngắn (25–150 từ)',
+  sat_long: 'SAT — đoạn dài (500–750 từ)',
+};
+
+/** Tier nào thuộc kỳ thi nào — dùng để dựng bộ lọc theo kỳ thi đang chọn. */
+export const TIERS_BY_EXAM: Record<ExamKind, PassageTier[]> = {
+  ielts: ['p1', 'p2', 'p3', 'short_academic', 'official_practice'],
+  // official_practice có ở cả hai: mỗi kỳ thi có link đề chính thức riêng.
+  sat: ['sat_short', 'sat_long', 'official_practice'],
+};
+
+export const SAT_TEXT_TYPES: ReadonlyArray<{ value: SatTextType; label: string }> = [
+  { value: 'literature', label: 'Văn học' },
+  { value: 'history_social', label: 'Lịch sử & KHXH' },
+  { value: 'humanities', label: 'Nhân văn' },
+  { value: 'science', label: 'Khoa học' },
+];
+
 export type ArticleFilters = {
   search?: string;
   topic?: string;
-  track?: ArticleTrack | 'all';
+  exam?: ExamKind | 'all';
+  track?: ArticleMeta['track'] | 'all';
+  tier?: PassageTier | 'all';
+  satTextType?: SatTextType | 'all';
   level?: CefrLevel | 'all';
-  /** 'readable' = bài Loại A có toàn văn; 'headline' = bài Loại B chỉ tiêu đề. */
+  /** 'readable' = bài có toàn văn; 'headline' = bài chỉ tiêu đề, mở link gốc. */
   kind?: 'all' | 'readable' | 'headline';
   sort?: 'newest' | 'shortest' | 'longest' | 'easiest' | 'hardest' | 'title';
 };
 
-export function getArticleById(id: string): Article | undefined {
+export function getArticleById(id: string): ArticleMeta | undefined {
   return ARTICLES.find((a) => a.id === id);
 }
 
-export function isReadable(article: Article): boolean {
-  return Boolean(article.bodyText) && article.licenseType !== 'headline_only';
+/** Metadata + toàn văn, dùng ở màn đọc. undefined nếu không có bài hoặc mất chunk. */
+export function getArticleWithBody(id: string): Article | undefined {
+  const meta = getArticleById(id);
+  if (!meta) return undefined;
+
+  const body = getArticleBody(meta);
+  if (!body) return undefined;
+
+  return { ...meta, ...body };
 }
 
-export function filterArticles(filters: ArticleFilters = {}): Article[] {
-  const { search, topic, track = 'all', level = 'all', kind = 'all', sort = 'newest' } = filters;
+/**
+ * Đọc được trong app hay không.
+ *
+ * Kiểm giấy phép chứ không kiểm `bodyText`: index cố tình không mang toàn văn,
+ * nên `Boolean(bodyText)` ở đây sẽ luôn sai. Giấy phép cũng đúng bản chất hơn —
+ * bài Loại B và đề official đều dùng 'headline_only' và chỉ mở link ra ngoài.
+ */
+export function isReadable(article: Pick<ArticleMeta, 'licenseType'>): boolean {
+  return article.licenseType !== 'headline_only';
+}
+
+export function filterArticles(filters: ArticleFilters = {}): ArticleMeta[] {
+  const {
+    search,
+    topic,
+    exam = 'all',
+    track = 'all',
+    tier = 'all',
+    satTextType = 'all',
+    level = 'all',
+    kind = 'all',
+    sort = 'newest',
+  } = filters;
   const needle = search?.trim().toLowerCase();
 
   const result = ARTICLES.filter((a) => {
     if (kind === 'readable' && !isReadable(a)) return false;
     if (kind === 'headline' && isReadable(a)) return false;
     if (topic && a.topic !== topic) return false;
-    if (track !== 'all' && a.track !== track) return false;
+    if (exam !== 'all' && a.exam !== exam) return false;
+    // `track` chỉ có nghĩa với IELTS, nên lọc theo nó không được kéo theo bài SAT.
+    if (track !== 'all' && (a.exam !== 'ielts' || a.track !== track)) return false;
+    if (tier !== 'all' && a.passageTier !== tier) return false;
+    if (satTextType !== 'all' && a.satTextType !== satTextType) return false;
     if (level !== 'all' && a.cefrLevel !== level) return false;
 
     if (needle) {
@@ -69,7 +145,10 @@ export function filterArticles(filters: ArticleFilters = {}): Article[] {
   return sortArticles(result, sort);
 }
 
-function sortArticles(articles: Article[], sort: NonNullable<ArticleFilters['sort']>): Article[] {
+function sortArticles(
+  articles: ArticleMeta[],
+  sort: NonNullable<ArticleFilters['sort']>,
+): ArticleMeta[] {
   const copy = [...articles];
 
   switch (sort) {
@@ -101,6 +180,25 @@ export function topicLabelVi(slug: string): string {
   return TOPICS.find((t) => t.slug === slug)?.nameVi ?? slug;
 }
 
+export function tierLabel(tier: PassageTier | null): string | null {
+  return tier ? TIER_LABEL[tier] : null;
+}
+
+/**
+ * Nhãn độ khó hợp với kỳ thi của bài.
+ *
+ * SAT không có thang band, nên gắn "Band 5–6" lên một trích đoạn SAT là thông
+ * tin sai. Đổi lại dùng chính Flesch-Kincaid Grade đã chấm — nó vốn là bậc lớp
+ * học ở Mỹ, đúng thước đo mà tài liệu SAT hay dùng.
+ */
+export function readingLevelLabel(
+  article: Pick<ArticleMeta, 'exam' | 'bandRange' | 'readabilityScore'>,
+): string | null {
+  if (article.exam !== 'sat') return article.bandRange;
+  if (article.readabilityScore === null) return null;
+  return `Độ khó lớp ${Math.max(1, Math.round(article.readabilityScore))}`;
+}
+
 /** Thống kê nhanh cho banner Library. */
 export function libraryStats() {
   const readable = ARTICLES.filter(isReadable);
@@ -109,5 +207,7 @@ export function libraryStats() {
     readable: readable.length,
     headlines: ARTICLES.length - readable.length,
     sources: new Set(ARTICLES.map((a) => a.sourceName)).size,
+    ielts: ARTICLES.filter((a) => a.exam === 'ielts').length,
+    sat: ARTICLES.filter((a) => a.exam === 'sat').length,
   };
 }

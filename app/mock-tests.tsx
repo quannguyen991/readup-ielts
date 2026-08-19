@@ -5,7 +5,8 @@ import { router } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, SectionHeader, StatCard } from '@/components/ui';
-import { filterArticles, type Article } from '@/data/articles';
+import { filterArticles, type ArticleMeta } from '@/data/articles';
+import { formatBand } from '@/lib/band';
 import { useStudyStore } from '@/store/useStudyStore';
 
 /**
@@ -19,8 +20,9 @@ export default function MockTestsScreen() {
   const tests = useMemo(() => buildTests(seed), [seed]);
   const mockSessions = sessions.filter((s) => s.mode === 'mock_test');
 
-  const bestBand =
-    sessions.length === 0 ? 0 : Math.max(...sessions.map((s) => s.estimatedBand));
+  // Lượt SAT không có band nên không tham gia so kỷ lục.
+  const bands = sessions.map((s) => s.estimatedBand).filter((b): b is number => b != null);
+  const bestBand = bands.length === 0 ? null : Math.max(...bands);
 
   return (
     <Screen>
@@ -44,13 +46,13 @@ export default function MockTestsScreen() {
           />
           <StatCard
             label="Band cao nhất"
-            value={bestBand > 0 ? bestBand.toFixed(1) : '—'}
+            value={formatBand(bestBand)}
             icon="trophy"
             tone="accent"
           />
           <StatCard
             label="Bài đọc sẵn sàng"
-            value={String(filterArticles({ kind: 'readable' }).length)}
+            value={String(filterArticles({ kind: 'readable', exam: 'ielts' }).length)}
             icon="book"
             tone="success"
           />
@@ -103,7 +105,10 @@ export default function MockTestsScreen() {
               <Text className="flex-1 font-semi text-body text-ink" numberOfLines={1}>
                 {session.articleTitle}
               </Text>
-              <Badge label={`Band ${session.estimatedBand.toFixed(1)}`} tone="primary" />
+              <Badge
+                label={session.estimatedBand == null ? 'SAT' : `Band ${formatBand(session.estimatedBand)}`}
+                tone="primary"
+              />
             </Pressable>
           ))}
 
@@ -119,13 +124,15 @@ export default function MockTestsScreen() {
 }
 
 /** Ghép 3 passage tăng dần độ khó, đổi bộ mỗi lần bấm "Đổi bộ đề". */
-function buildTests(seed: number): Article[][] {
-  const pool = filterArticles({ kind: 'readable', sort: 'easiest' });
+function buildTests(seed: number): ArticleMeta[][] {
+  // Chỉ lấy bài IELTS: màn này dựng đúng cấu trúc 3 passage của IELTS Reading,
+  // trộn passage SAT (khổ 25–150 từ) vào là hỏng nhịp đề.
+  const pool = filterArticles({ kind: 'readable', exam: 'ielts', sort: 'easiest' });
   const easy = pool.filter((a) => a.cefrLevel === 'B1' || a.cefrLevel === 'B2');
   const medium = pool.filter((a) => a.cefrLevel === 'C1');
   const hard = pool.filter((a) => a.cefrLevel === 'C2');
 
-  const tests: Article[][] = [];
+  const tests: ArticleMeta[][] = [];
 
   for (let i = 0; i < 3; i += 1) {
     const offset = seed * 3 + i;
@@ -133,7 +140,7 @@ function buildTests(seed: number): Article[][] {
     const passage2 = medium[offset % Math.max(1, medium.length)];
     const passage3 = hard[offset % Math.max(1, hard.length)];
 
-    const test = [passage1, passage2, passage3].filter((a): a is Article => Boolean(a));
+    const test = [passage1, passage2, passage3].filter((a): a is ArticleMeta => Boolean(a));
     if (test.length === 3) tests.push(test);
   }
 

@@ -1,5 +1,5 @@
 import { createPacer, fetchJson, mapWithConcurrency, sleep } from '../http';
-import { TOPIC_CATEGORIES } from './category-map';
+import { TOPIC_CATEGORIES, type TopicCategoryMap } from './category-map';
 import type { FetchContext, RawArticle, SourceResult } from '../types';
 
 /**
@@ -118,21 +118,45 @@ function normalizePages(json: unknown): WikiPage[] {
   return [];
 }
 
-/** Bỏ các mục cuối bài (References, See also...) và đoạn quá ngắn. */
-function cleanExtract(extract: string): string {
-  const stopHeadings = /^(References|See also|External links|Further reading|Notes|Bibliography|Sources)$/i;
+const STOP_HEADINGS =
+  /^(References|See also|External links|Further reading|Notes|Bibliography|Sources|Citations|Footnotes)$/i;
 
+/** Tối đa bấy nhiêu đoạn — đủ cho truncateToTier cắt theo tier lớn nhất. */
+const MAX_PARAGRAPHS = 60;
+/** Dưới ngần này từ thì là chú thích ảnh hoặc dòng lạc, không phải đoạn văn. */
+const MIN_PARAGRAPH_WORDS = 12;
+
+/**
+ * Đổi extract của MediaWiki thành các đoạn văn thật, bỏ mục cuối bài.
+ *
+ * Định dạng của `explaintext=1&exsectionformat=plain` KHÔNG giống trực giác:
+ * các đoạn trong cùng một mục cách nhau bằng MỘT dấu xuống dòng, còn hai dòng
+ * trống chỉ xuất hiện trước tên mục. Tách theo `\n{2,}` như văn bản thường sẽ
+ * dán nguyên một mục thành "một đoạn" và dính luôn tên mục vào đầu — đã gặp
+ * thật: "Research topics Research in evolutionary biology covers…".
+ *
+ * Xuất ra ngoài để test được mà không cần gọi mạng.
+ */
+export function cleanExtract(extract: string): string {
   const kept: string[] = [];
-  for (const block of extract.split(/\n{2,}/)) {
-    const line = block.trim();
-    if (!line) continue;
-    if (stopHeadings.test(line.replace(/=/g, '').trim())) break;
-    if (/^==+.*==+$/.test(line)) continue; // tiêu đề mục
-    if (line.split(/\s+/).length < 12) continue;
-    kept.push(line.replace(/\s+/g, ' '));
-    // 60 chứ không phải 14: nhánh crawl category dùng cùng hàm này rồi để
-    // truncateToTier ở pipeline cắt theo tier, nên cần đủ đoạn để cắt từ đó.
-    if (kept.length >= 60) break;
+
+  for (const section of extract.replace(/\r\n?/g, '\n').split(/\n{2,}/)) {
+    const lines = section.split('\n').map((l) => l.trim()).filter(Boolean);
+    if (lines.length === 0) continue;
+
+    // Dòng đầu mục là tên mục khi nó ngắn và không kết bằng dấu câu.
+    const heading = lines[0]!;
+    const isHeading = !/[.!?]["'”’)]?$/.test(heading) && countWords(heading) <= 12;
+    if (isHeading) {
+      if (STOP_HEADINGS.test(heading.replace(/=/g, '').trim())) return kept.join('\n\n');
+      lines.shift();
+    }
+
+    for (const line of lines) {
+      if (countWords(line) < MIN_PARAGRAPH_WORDS) continue;
+      kept.push(line.replace(/\s+/g, ' '));
+      if (kept.length >= MAX_PARAGRAPHS) return kept.join('\n\n');
+    }
   }
 
   return kept.join('\n\n');
@@ -203,19 +227,21 @@ async function fetchCategoryTitles(host: string, category: string): Promise<stri
 export async function fetchWikipediaCategories(
   ctx: FetchContext,
   variant: 'en' | 'simple' = 'en',
+  /** Bộ chủ đề khác, dùng khi cào cho kỳ thi khác (xem sat-science.ts). */
+  categoryMap: TopicCategoryMap = TOPIC_CATEGORIES,
 ): Promise<SourceResult> {
   const host = variant === 'simple' ? 'simple.wikipedia.org' : 'en.wikipedia.org';
   const sourceName = variant === 'simple' ? 'Simple Wikipedia' : 'Wikipedia';
   const errors: string[] = [];
 
   // Gom tiêu đề theo chủ đề, chia đều hạn mức cho các chủ đề.
-  const perTopic = Math.max(1, Math.ceil(ctx.limit / TOPIC_CATEGORIES.length));
+  const perTopic = Math.max(1, Math.ceil(ctx.limit / categoryMap.length));
   const wanted: Array<{ topic: string; title: string }> = [];
   // Dedupe theo tiêu đề trên toàn bộ crawl (không chỉ trong một category) để
   // một bài không bị tải hai lần khi nó nằm trong nhiều category/chủ đề.
   const seen = new Set<string>();
 
-  for (const entry of TOPIC_CATEGORIES) {
+  for (const entry of categoryMap) {
     const categories = variant === 'simple' ? entry.simple : entry.en;
     const collected: string[] = [];
 
@@ -259,7 +285,10 @@ export async function fetchWikipediaCategories(
         track: 'academic',
         licenseType: 'cc_by_sa',
         attribution: `Nguồn: ${sourceName}, bài "${page.title ?? item.title}", giấy phép CC BY-SA 4.0. ${pageUrl}`,
-        bodyText: page.extract ?? null,
+        // Phải qua cleanExtract chứ không lưu extract thô: extract thô dán cả
+        // một mục thành một "đoạn" khổng lồ, truncateToTier cắt trên đó sẽ ra
+        // passage lệch khổ và dính tên mục vào giữa câu.
+        bodyText: cleanExtract(page.extract ?? ''),
         thumbnailUrl: page.thumbnail?.source,
       };
 

@@ -8,6 +8,7 @@
  *   npm run ingest -- --resume           # bỏ qua nguồn đã ghi xong ở lần chạy trước
  *   npm run ingest -- --push             # đẩy tiếp lên Supabase
  *   npm run ingest -- --only official --only plos
+ *   npm run ingest -- --only sat         # cả cụm nguồn SAT
  */
 import 'dotenv/config';
 
@@ -19,7 +20,9 @@ import { dedupe, normalizeArticle } from '../src/services/ingest/pipeline';
 import type { ArticleBody, SeedIndexEntry } from '../src/services/ingest/seed-writer';
 import { writeSeedBundle } from '../src/services/ingest/seed-writer';
 import { FULL_TEXT_FEEDS, HEADLINE_FEEDS, fetchFeed } from '../src/services/ingest/sources/feeds';
+import { fetchGutenbergSat } from '../src/services/ingest/sources/gutenberg';
 import { fetchOfficialPractice } from '../src/services/ingest/sources/official-practice';
+import { fetchSatScience } from '../src/services/ingest/sources/sat-science';
 import { fetchArxiv, fetchPlos } from '../src/services/ingest/sources/science';
 import {
   fetchWikipedia,
@@ -142,6 +145,16 @@ async function main(): Promise<void> {
     return mergeResults('Loại B', results);
   });
 
+  // Nguồn SAT. Khoá bắt đầu bằng `sat-` nên `--only sat` gọi được cả cụm.
+  await runSource(
+    'sat-gutenberg',
+    'SAT — văn học, văn kiện lập quốc, khoa học kinh điển (Project Gutenberg)',
+    () => fetchGutenbergSat(ctx),
+  );
+  await runSource('sat-science', 'SAT — khoa học & khoa học xã hội đương đại', () =>
+    fetchSatScience(ctx),
+  );
+
   const written = writeSeedBundle(SEED_DIR, collected);
 
   printSummary({ log, collected, written, rejected, corruptCount });
@@ -182,8 +195,15 @@ function parseArgs(argv: string[]) {
   return args;
 }
 
+/**
+ * `--only` nhận cả tên nguồn lẻ lẫn tên NHÓM ('ielts' / 'sat').
+ *
+ * Nhóm suy ra từ tiền tố khoá chứ không tra bảng riêng: bảng riêng là thứ sẽ
+ * lệch với danh sách runSource ngay lần thêm nguồn tiếp theo.
+ */
 function matches(only: string[], key: string): boolean {
-  return only.length === 0 || only.includes(key);
+  if (only.length === 0 || only.includes(key)) return true;
+  return only.includes(key.startsWith('sat-') ? 'sat' : 'ielts');
 }
 
 /** Danh sách từ phổ biến để tính tỉ lệ từ hiếm — tải một lần rồi cache. */
@@ -324,8 +344,14 @@ function printSummary(input: {
   log(`Kho bài: ${written.indexCount} bài · ${written.chunkCount} chunk body`);
   log(`Có toàn văn: ${collected.filter((a) => a.bodyText !== null).length}`);
   log(`Chỉ tiêu đề:  ${collected.filter((a) => a.bodyText === null).length}`);
+  log(`Phân bố kỳ thi: ${formatCounts(countBy(collected, (a) => a.exam))}`);
   log(`Phân bố tier: ${formatCounts(countBy(collected, (a) => a.passageTier ?? 'null'))}`);
   log(`Phân bố CEFR: ${formatCounts(countBy(collected, (a) => a.cefrLevel ?? 'null'))}`);
+
+  const sat = collected.filter((a) => a.exam === 'sat');
+  if (sat.length > 0) {
+    log(`Loại văn bản SAT: ${formatCounts(countBy(sat, (a) => a.satTextType ?? 'null'))}`);
+  }
 
   if (Object.keys(rejected).length > 0) {
     const total = Object.values(rejected).reduce((sum, n) => sum + n, 0);
@@ -364,7 +390,9 @@ async function pushToSupabase(articles: IngestedArticle[], log: (m: string) => v
     topic: a.topic,
     topic_id: topicId.get(a.topic) ?? null,
     track: a.track,
+    exam: a.exam,
     passage_tier: a.passageTier,
+    sat_text_type: a.satTextType,
     cefr_level: a.cefrLevel,
     band_range: a.bandRange,
     word_count: a.wordCount,

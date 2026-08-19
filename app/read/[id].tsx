@@ -4,12 +4,22 @@ import { router, useLocalSearchParams } from 'expo-router';
 import * as Speech from 'expo-speech';
 import * as WebBrowser from 'expo-web-browser';
 
-import { PassageView, sentenceAround } from '@/components/reader/PassageView';
+import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround } from '@/components/reader/PassageView';
 import { QuestionPanel } from '@/components/reader/QuestionPanel';
+import { useTextSelection } from '@/components/reader/useTextSelection';
 import { WordSheet, type WordSheetTarget } from '@/components/reader/WordSheet';
 import { ChatPanel } from '@/components/reader/ChatPanel';
 import { Badge, Button, Card, Icon, IconButton } from '@/components/ui';
-import { getArticleById, isReadable, topicLabel } from '@/data/articles';
+import {
+  getArticleById,
+  getArticleWithBody,
+  isReadable,
+  readingLevelLabel,
+  tierLabel,
+  topicLabel,
+  type Article,
+  type ArticleMeta,
+} from '@/data/articles';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useReaderStore } from '@/store/useReaderStore';
@@ -22,8 +32,19 @@ import { color, highlightColors, type HighlightColorKey } from '@/theme/tokens';
 export default function ReadScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const userArticle = useUserArticleStore((s) => (id ? s.articles[id] : undefined));
+
   // Bài tự dán không nằm trong seed nên phải tra cả hai nguồn.
-  const article = (id ? getArticleById(id) : undefined) ?? userArticle;
+  const meta = useMemo<ArticleMeta | undefined>(
+    () => (id ? getArticleById(id) : undefined) ?? userArticle,
+    [id, userArticle],
+  );
+
+  // Toàn văn nằm trong bodies/chunk-NN.json, nạp lười — chỉ lấy khi bài thật
+  // sự đọc được. Bài chỉ tiêu đề không có chunk nào để nạp.
+  const article = useMemo<Article | undefined>(() => {
+    if (!meta || !isReadable(meta)) return undefined;
+    return (id ? getArticleWithBody(id) : undefined) ?? userArticle;
+  }, [id, meta, userArticle]);
 
   const fontScale = useReaderStore((s) => s.fontScale);
   const setFontScale = useReaderStore((s) => s.setFontScale);
@@ -98,7 +119,30 @@ export default function ReadScreen() {
     };
   }, [logStudyTime]);
 
-  if (!article) {
+  /**
+   * Bôi đen bất kỳ chỗ nào trong bài → mở luôn thẻ nghĩa cho đúng cụm đó, kèm
+   * nguyên câu chứa nó làm ngữ cảnh. Không phải bật chế độ gì trước.
+   *
+   * Gọi ở đây, trước mấy nhánh return sớm bên dưới, vì hook không được nằm sau
+   * điều kiện. `article` chưa nạp xong thì bỏ qua.
+   */
+  useTextSelection(PASSAGE_CONTAINER_ID, (selected) => {
+    if (!article) return;
+
+    const paragraphIndex = article.paragraphs.findIndex((p) => p.includes(selected));
+    const paragraph = paragraphIndex === -1 ? undefined : article.paragraphs[paragraphIndex];
+
+    setSheet({
+      word: selected,
+      sentence: paragraph ? sentenceAround(paragraph, paragraph.indexOf(selected)) : selected,
+      // Bôi vắt qua hai đoạn thì không quy về đoạn nào được; ghi đoạn đầu để
+      // phần "Lưu từ" vẫn có chỗ neo.
+      paragraphIndex: paragraphIndex === -1 ? 0 : paragraphIndex,
+      mode: selectionMode(selected),
+    });
+  });
+
+  if (!meta) {
     return (
       <View className="flex-1 items-center justify-center bg-canvas p-6">
         <Text className="font-strong text-cardTitle text-ink">Không tìm thấy bài đọc.</Text>
@@ -107,24 +151,42 @@ export default function ReadScreen() {
     );
   }
 
-  if (!isReadable(article)) {
+  if (!isReadable(meta)) {
     return (
       <View className="flex-1 items-center justify-center bg-canvas p-6">
         <Card className="max-w-[520px]">
           <Badge label="Chỉ tiêu đề" tone="warning" />
-          <Text className="mt-3 font-strong text-sectionTitle text-ink">{article.title}</Text>
-          <Text className="mt-2 font-sans text-body text-muted">
-            {article.summary}
-          </Text>
+          <Text className="mt-3 font-strong text-sectionTitle text-ink">{meta.title}</Text>
+          <Text className="mt-2 font-sans text-body text-muted">{meta.summary}</Text>
           <Text className="mt-3 font-sans text-label text-subtle">
-            Bài từ nguồn có bản quyền ({article.sourceName}) nên app không lưu toàn văn. Bấm để đọc
+            Bài từ nguồn có bản quyền ({meta.sourceName}) nên app không lưu toàn văn. Bấm để đọc
             trên trang gốc.
           </Text>
           <Button
             label="Mở link gốc"
             iconRight="arrow-right"
             className="mt-4"
-            onPress={() => void WebBrowser.openBrowserAsync(article.sourceUrl)}
+            onPress={() => void WebBrowser.openBrowserAsync(meta.sourceUrl)}
+          />
+        </Card>
+      </View>
+    );
+  }
+
+  // Metadata có nhưng không nạp được toàn văn: file chunk thiếu hoặc hỏng.
+  // Báo rõ thay vì render một bài rỗng.
+  if (!article) {
+    return (
+      <View className="flex-1 items-center justify-center bg-canvas p-6">
+        <Card className="max-w-[520px]">
+          <Text className="font-strong text-sectionTitle text-ink">{meta.title}</Text>
+          <Text className="mt-2 font-sans text-body text-muted">
+            Không nạp được toàn văn của bài này. Chạy lại `npm run ingest` để dựng lại kho bài.
+          </Text>
+          <Button
+            label="Về Library"
+            className="mt-4"
+            onPress={() => router.push('/library' as never)}
           />
         </Card>
       </View>
@@ -198,11 +260,13 @@ export default function ReadScreen() {
     const sessionId = addSession({
       articleId: article.id,
       articleTitle: article.title,
+      exam: article.exam,
       mode: 'practice',
       rawScore: correct,
       total: attempts.length,
       accuracy: attempts.length === 0 ? 0 : Math.round((correct / attempts.length) * 100),
-      estimatedBand: rawScoreToBand(correct, attempts.length),
+      // Band là thang riêng của IELTS — bài SAT không quy đổi được.
+      estimatedBand: article.exam === 'sat' ? null : rawScoreToBand(correct, attempts.length),
       durationMs,
       attempts,
     });
@@ -233,7 +297,7 @@ export default function ReadScreen() {
           label={article.cefrLevel ?? '—'}
           tone={article.cefrLevel === 'C2' ? 'danger' : article.cefrLevel === 'C1' ? 'warning' : 'success'}
         />
-        <Badge label={article.bandRange ?? '—'} tone="primary" />
+        <Badge label={readingLevelLabel(article) ?? '—'} tone="primary" />
 
         <View className="flex-row items-center gap-1.5">
           <Icon name="clock" size={14} color={color.subtle} />
@@ -263,12 +327,23 @@ export default function ReadScreen() {
           {/* Cột trái: bài đọc */}
           <View className="min-w-[320px] flex-[3]">
             <Card>
-              <Badge
-                label={article.track === 'academic' ? 'Academic' : 'General Training'}
-                tone="primary"
-                shape="tag"
-                uppercase
-              />
+              <View className="flex-row flex-wrap items-center gap-2">
+                <Badge
+                  label={
+                    article.exam === 'sat'
+                      ? 'SAT'
+                      : article.track === 'academic'
+                        ? 'IELTS Academic'
+                        : 'IELTS General Training'
+                  }
+                  tone="primary"
+                  shape="tag"
+                  uppercase
+                />
+                {article.passageTier ? (
+                  <Badge label={tierLabel(article.passageTier) ?? ''} tone="neutral" />
+                ) : null}
+              </View>
 
               <Text className="mt-2 font-heavy text-pageTitle text-ink">{article.title}</Text>
 
@@ -464,8 +539,9 @@ export default function ReadScreen() {
 
             {questionSet?.generatedBy === 'offline' ? (
               <Text className="mt-2 font-sans text-label text-subtle">
-                Bộ đề đang sinh offline từ chính bài đọc. Cấu hình ANTHROPIC_API_KEY để Claude ra đề
-                sát chuẩn IELTS hơn.
+                {article.exam === 'sat'
+                  ? 'Bộ đề đang sinh offline từ chính bài đọc, mới có Words in Context và Inferences. Cấu hình ANTHROPIC_API_KEY để Claude ra đủ năm dạng của SAT.'
+                  : 'Bộ đề đang sinh offline từ chính bài đọc. Cấu hình ANTHROPIC_API_KEY để Claude ra đề sát chuẩn IELTS hơn.'}
               </Text>
             ) : null}
           </View>
@@ -492,6 +568,19 @@ export default function ReadScreen() {
       <ChatPanel articleId={article.id} visible={chatOpen} onClose={() => setChatOpen(false)} />
     </View>
   );
+}
+
+/**
+ * Bôi một từ thì tra từ, bôi vài từ thì tra cả cụm, bôi nguyên câu thì giải
+ * thích ngữ pháp — ba chế độ này đã có sẵn trong WordSheet, ở đây chỉ chọn đúng
+ * chế độ theo thứ người đọc vừa bôi.
+ */
+function selectionMode(selected: string): WordSheetTarget['mode'] {
+  const words = selected.trim().split(/\s+/).length;
+  if (words === 1) return 'word';
+  // Có dấu kết câu ở giữa, hoặc quá dài để còn là một collocation.
+  if (words > 8 || /[.!?]/.test(selected.slice(0, -1))) return 'sentence';
+  return 'phrase';
 }
 
 /** So đáp án khoan dung: bỏ qua hoa thường, dấu câu và mạo từ thừa. */

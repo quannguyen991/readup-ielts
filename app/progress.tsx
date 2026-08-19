@@ -15,7 +15,8 @@ import {
   StatCard,
   TrendBadge,
 } from '@/components/ui';
-import { filterArticles } from '@/data/articles';
+import { filterArticles, getArticleWithBody } from '@/data/articles';
+import { bandDelta, formatBand, latestBand } from '@/lib/band';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
@@ -40,17 +41,20 @@ export default function ProgressScreen() {
     return sessions.filter((s) => Date.parse(s.finishedAt) >= cutoff);
   }, [sessions, range]);
 
+  // Biểu đồ band chỉ vẽ lượt IELTS: lượt SAT không có band, nhét vào là gãy trục.
   const bandSeries = useMemo(
     () =>
-      [...inRange]
-        .reverse()
-        .map((s) => ({ label: s.finishedAt.slice(5, 10), value: s.estimatedBand })),
+      [...inRange].reverse().flatMap((s) =>
+        s.estimatedBand == null
+          ? []
+          : [{ label: s.finishedAt.slice(5, 10), value: s.estimatedBand }],
+      ),
     [inRange],
   );
 
-  const currentBand = inRange[0]?.estimatedBand ?? 0;
-  const initialBand = bandSeries[0]?.value ?? 0;
-  const bestBand = bandSeries.length > 0 ? Math.max(...bandSeries.map((b) => b.value)) : 0;
+  const currentBand = latestBand(inRange.map((s) => s.estimatedBand));
+  const initialBand = bandSeries[0]?.value ?? null;
+  const bestBand = bandSeries.length > 0 ? Math.max(...bandSeries.map((b) => b.value)) : null;
 
   const totalMinutes = recentDays.reduce((sum, d) => sum + d.minutes, 0);
   const accuracy =
@@ -74,12 +78,19 @@ export default function ProgressScreen() {
   }, [recentDays]);
 
   const weakest = accuracyByType[0];
-  const onTrack = targetBand === 0 ? 0 : Math.round((currentBand / targetBand) * 100);
+  const onTrack =
+    targetBand === 0 || currentBand == null ? 0 : Math.round((currentBand / targetBand) * 100);
 
   const practiceWeakest = async () => {
     if (!weakest) return;
-    const candidates = filterArticles({ kind: 'readable', sort: 'easiest' });
-    const article = candidates[0];
+    // Dạng câu hỏi ở đây là dạng của IELTS, nên chỉ chọn trong bài IELTS.
+    const candidates = filterArticles({ kind: 'readable', exam: 'ielts', sort: 'easiest' });
+    const meta = candidates[0];
+    if (!meta) return;
+
+    // focusSet sinh đề từ chính nội dung bài nên cần toàn văn, mà toàn văn nằm
+    // trong chunk riêng chứ không có sẵn trong index.
+    const article = getArticleWithBody(meta.id);
     if (!article) return;
 
     await focusSet(article, weakest.type);
@@ -103,7 +114,7 @@ export default function ProgressScreen() {
 
             <ProgressBar value={Math.min(100, onTrack)} className="mt-2" />
             <Text className="mt-2 font-mid text-label text-muted">
-              {onTrack}% on track · band hiện tại {currentBand.toFixed(1)}
+              {onTrack}% on track · band hiện tại {formatBand(currentBand)}
             </Text>
           </View>
         }
@@ -132,11 +143,11 @@ export default function ProgressScreen() {
         <Grid columns={5} tabletColumns={2} mobileColumns={1}>
           <StatCard
             label="Current Band Estimate"
-            value={currentBand > 0 ? currentBand.toFixed(1) : '—'}
+            value={formatBand(currentBand)}
             icon="trending"
             tone="primary"
             status={
-              currentBand >= 6.5
+              (currentBand ?? 0) >= 6.5
                 ? { label: 'Good', tone: 'success' }
                 : { label: 'Đang lên', tone: 'warning' }
             }
@@ -192,13 +203,13 @@ export default function ProgressScreen() {
               <View>
                 <Text className="font-mid text-label text-muted">Initial Band</Text>
                 <Text className="font-strong text-cardTitle text-ink">
-                  {initialBand > 0 ? initialBand.toFixed(1) : '—'}
+                  {formatBand(initialBand)}
                 </Text>
               </View>
               <View className="items-end">
                 <Text className="font-mid text-label text-muted">Best Band</Text>
                 <Text className="font-strong text-cardTitle text-ink">
-                  {bestBand > 0 ? bestBand.toFixed(1) : '—'}
+                  {formatBand(bestBand)}
                 </Text>
               </View>
             </View>
@@ -341,7 +352,8 @@ export default function ProgressScreen() {
 
           {sessions.slice(0, 6).map((session, index) => {
             const previous = sessions[index + 1];
-            const delta = previous ? session.estimatedBand - previous.estimatedBand : 0;
+            // null khi một trong hai lượt là SAT — không có band thì không có gì để so.
+            const delta = bandDelta(session.estimatedBand, previous?.estimatedBand);
 
             return (
               <View key={session.id} className="flex-row items-center border-b border-border py-3">
@@ -353,9 +365,9 @@ export default function ProgressScreen() {
                 </Text>
                 <View className="w-20 flex-row items-center gap-1.5">
                   <Text className="font-strong text-body text-ink">
-                    {session.estimatedBand.toFixed(1)}
+                    {formatBand(session.estimatedBand)}
                   </Text>
-                  {delta !== 0 ? <TrendBadge value={Number(delta.toFixed(1))} /> : null}
+                  {delta ? <TrendBadge value={delta} /> : null}
                 </View>
                 <Text className="w-20 font-mid text-body text-body">{session.accuracy}%</Text>
                 <Pressable

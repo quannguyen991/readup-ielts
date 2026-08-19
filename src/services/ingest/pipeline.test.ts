@@ -107,6 +107,44 @@ test('normalizeArticle: bài quá ngắn thì bị loại', () => {
   assert.equal(result.reason, 'too_short');
 });
 
+test('normalizeArticle: nguồn không khai kỳ thi thì mặc định là IELTS', () => {
+  const result = normalizeArticle(raw(), COMMON);
+
+  assert.equal(result.ok, true);
+  if (!result.ok) return;
+  assert.equal(result.article.exam, 'ielts');
+  assert.equal(result.article.satTextType, null);
+});
+
+test('normalizeArticle: passage SAT ngắn một đoạn vẫn lọt gate', () => {
+  const result = normalizeArticle(
+    raw({
+      exam: 'sat',
+      satTextType: 'literature',
+      passageTier: 'sat_short',
+      bodyText: prose(1),
+    }),
+    COMMON,
+  );
+
+  assert.equal(result.ok, true);
+  if (!result.ok) return;
+  assert.equal(result.article.exam, 'sat');
+  assert.equal(result.article.satTextType, 'literature');
+  assert.equal(result.article.passageTier, 'sat_short');
+  assert.ok(result.article.wordCount! <= 150, `${result.article.wordCount} từ, vượt khổ SAT ngắn`);
+});
+
+test('normalizeArticle: bài IELTS một đoạn vẫn bị gate loại như cũ', () => {
+  // Cùng đúng thân bài như test trên, chỉ khác chỗ không khai tier SAT —
+  // chứng minh việc nới ngưỡng bám vào tier chứ không rò sang bài thường.
+  const result = normalizeArticle(raw({ bodyText: prose(1) }), COMMON);
+
+  assert.equal(result.ok, false);
+  if (result.ok) return;
+  assert.equal(result.reason, 'too_few_paragraphs');
+});
+
 test('normalizeArticle: id ổn định giữa các lần chạy', () => {
   const a = normalizeArticle(raw(), COMMON);
   const b = normalizeArticle(raw(), COMMON);

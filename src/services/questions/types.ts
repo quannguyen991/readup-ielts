@@ -33,4 +33,20 @@ export const QUESTION_TYPE_LABEL: Record<QuestionType, string> = {
   sentence_completion: 'Sentence Completion',
   summary_completion: 'Summary Completion',
   short_answer: 'Short Answer',
+  // Giữ nguyên tên tiếng Anh của College Board — người luyện SAT tra tài liệu
+  // theo đúng những tên này.
+  sat_words_in_context: 'Words in Context',
+  sat_central_idea: 'Central Ideas and Details',
+  sat_command_of_evidence: 'Command of Evidence',
+  sat_inference: 'Inferences',
+  sat_text_structure: 'Text Structure and Purpose',
 };
+
+/** Dạng câu của kỳ thi nào — dùng để lọc và để chọn bộ sinh đề. */
+export const SAT_QUESTION_TYPES: readonly QuestionType[] = [
+  'sat_words_in_context',
+  'sat_central_idea',
+  'sat_command_of_evidence',
+  'sat_inference',
+  'sat_text_structure',
+];

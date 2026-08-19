@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 
 import { Badge, Icon, IconButton, ProgressBar } from '@/components/ui';
-import { isReadable, topicLabel, type Article } from '@/data/articles';
+import { isReadable, readingLevelLabel, topicLabel, type ArticleMeta } from '@/data/articles';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 
@@ -19,7 +19,7 @@ export function ArticleCard({
   article,
   layout = 'grid',
 }: {
-  article: Article;
+  article: ArticleMeta;
   layout?: 'grid' | 'list';
 }) {
   const progress = useStudyStore((s) => s.progress[article.id]);
@@ -43,13 +43,18 @@ export function ArticleCard({
       <Thumbnail article={article} size={layout === 'grid' ? 76 : 64} />
 
       <View className="min-w-0 flex-1">
-        <View className="flex-row items-center gap-2">
-          <Badge
-            label={article.track === 'academic' ? 'Academic' : 'General Training'}
-            tone={article.track === 'academic' ? 'primary' : 'success'}
-            shape="tag"
-            uppercase
-          />
+        <View className="flex-row flex-wrap items-center gap-2">
+          {/* Kỳ thi trước, rồi mới tới track — track chỉ có nghĩa với IELTS. */}
+          {article.exam === 'sat' ? (
+            <Badge label="SAT" tone="accent" shape="tag" uppercase />
+          ) : (
+            <Badge
+              label={article.track === 'academic' ? 'Academic' : 'General Training'}
+              tone={article.track === 'academic' ? 'primary' : 'success'}
+              shape="tag"
+              uppercase
+            />
+          )}
           {!readable ? <Badge label="Link gốc" tone="neutral" /> : null}
         </View>
 
@@ -60,7 +65,9 @@ export function ArticleCard({
         <View className="mt-1.5 flex-row flex-wrap items-center gap-x-4 gap-y-1">
           <Meta icon="clock" label={article.estMinutes ? `${article.estMinutes} min` : '—'} />
           <Meta icon="book" label={topicLabel(article.topic)} />
-          {article.bandRange ? <Meta icon="gauge" label={article.bandRange} /> : null}
+          {readingLevelLabel(article) ? (
+            <Meta icon="gauge" label={readingLevelLabel(article)!} />
+          ) : null}
           <Meta icon="info" label={article.sourceName} />
         </View>
 
@@ -92,7 +99,7 @@ export function ArticleCard({
   );
 }
 
-function Thumbnail({ article, size }: { article: Article; size: number }) {
+function Thumbnail({ article, size }: { article: ArticleMeta; size: number }) {
   if (article.thumbnailUrl) {
     return (
       <Image

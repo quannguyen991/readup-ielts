@@ -15,6 +15,10 @@ import {
 } from '@/components/ui';
 import {
   CEFR_LEVELS,
+  EXAMS,
+  SAT_TEXT_TYPES,
+  TIERS_BY_EXAM,
+  TIER_LABEL,
   TOPICS,
   filterArticles,
   libraryStats,
@@ -27,7 +31,11 @@ import type { CefrLevel } from '@/types/database';
 /** Library + panel My Vocabulary — bám ảnh tham chiếu số 5. */
 export default function LibraryScreen() {
   const [search, setSearch] = useState('');
+  const [exam, setExam] = useState<NonNullable<ArticleFilters['exam']>>('all');
   const [track, setTrack] = useState<NonNullable<ArticleFilters['track']>>('all');
+  const [tier, setTier] = useState<NonNullable<ArticleFilters['tier']>>('all');
+  const [satTextType, setSatTextType] =
+    useState<NonNullable<ArticleFilters['satTextType']>>('all');
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
   const [topic, setTopic] = useState<string | undefined>(undefined);
   const [kind, setKind] = useState<NonNullable<ArticleFilters['kind']>>('all');
@@ -39,15 +47,30 @@ export default function LibraryScreen() {
   const dueCount = useDueCards().length;
 
   const articles = useMemo(
-    () => filterArticles({ search, track, level, topic, kind, sort }),
-    [search, track, level, topic, kind, sort],
+    () => filterArticles({ search, exam, track, tier, satTextType, level, topic, kind, sort }),
+    [search, exam, track, tier, satTextType, level, topic, kind, sort],
   );
+
+  /**
+   * Đổi kỳ thi thì bỏ hết bộ lọc con của kỳ thi cũ. Không bỏ thì người dùng dễ
+   * rơi vào tổ hợp rỗng kiểu "SAT + General Training" mà không hiểu vì sao
+   * không còn bài nào.
+   */
+  const selectExam = (next: NonNullable<ArticleFilters['exam']>) => {
+    setExam(next);
+    setTrack('all');
+    setTier('all');
+    setSatTextType('all');
+  };
 
   const savedWords = Object.values(entries).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   const reset = () => {
     setSearch('');
+    setExam('all');
     setTrack('all');
+    setTier('all');
+    setSatTextType('all');
     setLevel('all');
     setTopic(undefined);
     setKind('all');
@@ -63,9 +86,10 @@ export default function LibraryScreen() {
       >
         <View className="flex-row flex-wrap gap-3">
           <HeroStat value={String(stats.readable)} label="Bài đọc đầy đủ" />
+          <HeroStat value={String(stats.ielts)} label="Passage IELTS" />
+          <HeroStat value={String(stats.sat)} label="Passage SAT" />
           <HeroStat value={String(savedWords.length)} label="Từ đã lưu" />
           <HeroStat value={String(dueCount)} label="Đến hạn ôn hôm nay" />
-          <HeroStat value={String(stats.sources)} label="Nguồn" />
         </View>
       </HeroBanner>
 
@@ -87,13 +111,18 @@ export default function LibraryScreen() {
       </View>
 
       <View className="mt-3 flex-row flex-wrap items-center gap-2">
-        <Chip label="Tất cả" active={track === 'all' && kind === 'all'} onPress={reset} />
-        <Chip label="Academic" active={track === 'academic'} onPress={() => setTrack('academic')} />
-        <Chip
-          label="General Training"
-          active={track === 'general_training'}
-          onPress={() => setTrack('general_training')}
-        />
+        <Chip label="Mọi kỳ thi" active={exam === 'all'} onPress={() => selectExam('all')} />
+        {EXAMS.map((e) => (
+          <Chip
+            key={e.value}
+            label={e.label}
+            active={exam === e.value}
+            onPress={() => selectExam(exam === e.value ? 'all' : e.value)}
+          />
+        ))}
+
+        <View className="w-2" />
+
         <Chip
           label="Đọc được toàn văn"
           active={kind === 'readable'}
@@ -112,6 +141,61 @@ export default function LibraryScreen() {
           <Text className="font-semi text-label text-primary-600">Reset</Text>
         </Pressable>
       </View>
+
+      {/* Hàng lọc thứ hai đổi theo kỳ thi: track chỉ có nghĩa với IELTS, còn
+          loại văn bản (văn học / lịch sử / nhân văn / khoa học) là trục của SAT. */}
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2">
+        <View className="flex-row gap-2 py-1">
+          {exam === 'sat' ? (
+            <>
+              <Chip
+                label="Mọi loại văn bản"
+                active={satTextType === 'all'}
+                onPress={() => setSatTextType('all')}
+              />
+              {SAT_TEXT_TYPES.map((t) => (
+                <Chip
+                  key={t.value}
+                  label={t.label}
+                  active={satTextType === t.value}
+                  onPress={() => setSatTextType(satTextType === t.value ? 'all' : t.value)}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              <Chip label="Mọi track" active={track === 'all'} onPress={() => setTrack('all')} />
+              <Chip
+                label="Academic"
+                active={track === 'academic'}
+                onPress={() => setTrack(track === 'academic' ? 'all' : 'academic')}
+              />
+              <Chip
+                label="General Training"
+                active={track === 'general_training'}
+                onPress={() =>
+                  setTrack(track === 'general_training' ? 'all' : 'general_training')
+                }
+              />
+            </>
+          )}
+
+          {exam !== 'all' ? (
+            <>
+              <View className="w-2" />
+              <Chip label="Mọi khổ bài" active={tier === 'all'} onPress={() => setTier('all')} />
+              {TIERS_BY_EXAM[exam].map((t) => (
+                <Chip
+                  key={t}
+                  label={TIER_LABEL[t]}
+                  active={tier === t}
+                  onPress={() => setTier(tier === t ? 'all' : t)}
+                />
+              ))}
+            </>
+          ) : null}
+        </View>
+      </ScrollView>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2">
         <View className="flex-row gap-2 py-1">

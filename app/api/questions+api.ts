@@ -1,4 +1,4 @@
-import { getArticleById, isReadable } from '@/data/articles';
+import { getArticleById, getArticleWithBody, isReadable } from '@/data/articles';
 import { AiError } from '@/services/ai/errors';
 import { generateQuestionsWithClaude } from '@/services/ai/questions';
 import type { QuestionType } from '@/types/database';
@@ -22,17 +22,26 @@ export async function POST(request: Request): Promise<Response> {
       return Response.json({ error: 'Thiếu articleId.' }, { status: 400 });
     }
 
-    const article = getArticleById(body.articleId);
-    if (!article) {
+    const meta = getArticleById(body.articleId);
+    if (!meta) {
       return Response.json({ error: 'Không tìm thấy bài đọc.' }, { status: 404 });
     }
 
-    if (!isReadable(article)) {
+    if (!isReadable(meta)) {
       return Response.json(
         {
           error:
             'Bài này thuộc nguồn có bản quyền (chỉ lưu tiêu đề), không sinh đề được. Mở link gốc để đọc.',
         },
+        { status: 422 },
+      );
+    }
+
+    // Toàn văn nằm trong chunk riêng, không nằm trong index.
+    const article = getArticleWithBody(body.articleId);
+    if (!article) {
+      return Response.json(
+        { error: 'Không nạp được toàn văn của bài này. Chạy lại `npm run ingest`.' },
         { status: 422 },
       );
     }
@@ -45,9 +54,16 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     const questionSet = await generateQuestionsWithClaude(
-      { id: article.id, title: article.title, paragraphs: article.paragraphs },
       {
-        count: body.count ?? 12,
+        id: article.id,
+        title: article.title,
+        paragraphs: article.paragraphs,
+        // Quyết định cả bộ dạng câu lẫn số câu — bài SAT phải ra đề SAT.
+        exam: article.exam,
+        cefrLevel: article.cefrLevel,
+      },
+      {
+        ...(body.count ? { count: body.count } : {}),
         ...(body.focusType ? { focusType: body.focusType } : {}),
       },
     );

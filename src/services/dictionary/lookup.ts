@@ -81,6 +81,38 @@ async function fetchEnglish(word: string): Promise<Partial<WordLookup>> {
   };
 }
 
+export type MyMemoryResponse = {
+  responseData?: { translatedText?: string };
+  matches?: Array<{ translation?: string; match?: number; 'created-by'?: string }>;
+};
+
+/** Nguồn dịch MÁY của MyMemory. Phần còn lại là kho do người dùng đóng góp. */
+const MACHINE_SOURCES = /matecat|^mt!?$/i;
+
+/**
+ * Chọn bản dịch dùng được từ phản hồi MyMemory.
+ *
+ * Không lấy thẳng `responseData.translatedText`: trường đó là bản có điểm khớp
+ * cao nhất bất kể nguồn, mà kho cộng đồng có cả rác. Tra "coral" trên bản public
+ * đã ra "tóc ngôcolor" đúng theo đường đó, trong khi bản dịch máy ngay dưới ghi
+ * đúng "san hô". Nên ưu tiên nguồn máy, hết mới quay về trường chính.
+ */
+export function pickBestTranslation(source: string, data: MyMemoryResponse): string | null {
+  const machine = (data.matches ?? [])
+    .filter((m) => MACHINE_SOURCES.test(m['created-by'] ?? ''))
+    .filter((m) => Boolean(m.translation?.trim()))
+    .sort((a, b) => (b.match ?? 0) - (a.match ?? 0))[0];
+
+  const candidate = machine?.translation ?? data.responseData?.translatedText;
+  const translated = candidate?.trim();
+
+  if (!translated) return null;
+  // Trả về đúng chữ tiếng Anh ban đầu nghĩa là không dịch được.
+  if (translated.toLowerCase() === source.trim().toLowerCase()) return null;
+
+  return translated;
+}
+
 async function fetchVietnamese(text: string): Promise<string | null> {
   try {
     const res = await fetch(
@@ -88,10 +120,7 @@ async function fetchVietnamese(text: string): Promise<string | null> {
     );
     if (!res.ok) return null;
 
-    const data = (await res.json()) as { responseData?: { translatedText?: string } };
-    const translated = data.responseData?.translatedText?.trim();
-    if (!translated || translated.toLowerCase() === text.toLowerCase()) return null;
-    return translated;
+    return pickBestTranslation(text, (await res.json()) as MyMemoryResponse);
   } catch {
     return null;
   }
@@ -116,29 +145,65 @@ async function fetchContextual(
   }
 }
 
-export async function lookupWord(word: string, sentence: string): Promise<WordLookup> {
-  const clean = word.replace(/[^A-Za-z'-]/g, '');
-  const lemma = lemmatize(clean);
-  const isPhrase = clean !== word.trim() ? false : word.trim().includes(' ');
+/**
+ * Tầng nghĩa nền: ưu tiên route `/api/dictionary` của chính app.
+ *
+ * Gọi thẳng từ trình duyệt thì dictionaryapi.dev bị Cloudflare chặn (fetch ném
+ * "Failed to fetch"), mất sạch phiên âm và nghĩa tiếng Anh. Nhưng trên iOS và
+ * Android không có route nào để gọi, nên hỏng thì quay về gọi trực tiếp.
+ */
+async function fetchBase(
+  word: string,
+  lemma: string,
+  isPhrase: boolean,
+): Promise<Partial<WordLookup>> {
+  try {
+    const res = await fetch('/api/dictionary', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ word, lemma }),
+    });
 
-  const [english, vietnamese, contextual] = await Promise.all([
+    if (res.ok) {
+      const data = (await res.json()) as Partial<WordLookup> & { error?: string };
+      if (!data.error) return data;
+    }
+  } catch {
+    // Rơi xuống đường gọi trực tiếp bên dưới.
+  }
+
+  const [english, vietnamese] = await Promise.all([
     isPhrase
       ? Promise.resolve({} as Partial<WordLookup>)
       : fetchEnglish(lemma).catch(() => ({}) as Partial<WordLookup>),
     fetchVietnamese(word),
+  ]);
+
+  return { ...english, definitionVi: vietnamese };
+}
+
+export async function lookupWord(word: string, sentence: string): Promise<WordLookup> {
+  const clean = word.replace(/[^A-Za-z'-]/g, '');
+  const lemma = lemmatize(clean);
+  // Bôi đen thường ra cả cụm, nên phải nhận đúng cụm: tra "coral reef system"
+  // trong từ điển đơn từ thì không có mục nào, chỉ dịch mới ra nghĩa.
+  const isPhrase = word.trim().includes(' ');
+
+  const [base, contextual] = await Promise.all([
+    fetchBase(word, lemma, isPhrase),
     fetchContextual(word, sentence),
   ]);
 
   return {
     word,
     lemma: isPhrase ? word.toLowerCase() : lemma,
-    phonetic: english.phonetic ?? null,
-    partOfSpeech: english.partOfSpeech ?? null,
-    definitionGeneral: english.definitionGeneral ?? null,
-    definitionVi: contextual?.definitionVi ?? vietnamese,
+    phonetic: base.phonetic ?? null,
+    partOfSpeech: base.partOfSpeech ?? null,
+    definitionGeneral: base.definitionGeneral ?? null,
+    definitionVi: contextual?.definitionVi ?? base.definitionVi ?? null,
     definitionContext: contextual?.definitionContext ?? null,
-    examples: english.examples ?? [],
-    audioUrl: english.audioUrl ?? null,
+    examples: base.examples ?? [],
+    audioUrl: base.audioUrl ?? null,
   };
 }
 

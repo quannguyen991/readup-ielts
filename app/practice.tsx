@@ -6,11 +6,12 @@ import { ArticleCard } from '@/components/article/ArticleCard';
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, SectionHeader, StatCard } from '@/components/ui';
-import { filterArticles } from '@/data/articles';
+import { EXAMS, filterArticles } from '@/data/articles';
+import { averageBand, formatBand } from '@/lib/band';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useAccuracyByType, useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
-import type { CefrLevel } from '@/types/database';
+import type { CefrLevel, ExamKind } from '@/types/database';
 
 /** Practice hub: chọn bài theo mục tiêu, xem lượt làm gần đây, hoặc dán văn bản của mình. */
 export default function PracticeScreen() {
@@ -19,11 +20,12 @@ export default function PracticeScreen() {
   const progress = useStudyStore((s) => s.progress);
 
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
+  const [exam, setExam] = useState<ExamKind | 'all'>('all');
   const [pasted, setPasted] = useState('');
 
   const suggestions = useMemo(
-    () => filterArticles({ kind: 'readable', level, sort: 'easiest' }).slice(0, 6),
-    [level],
+    () => filterArticles({ kind: 'readable', exam, level, sort: 'easiest' }).slice(0, 6),
+    [exam, level],
   );
 
   const inProgress = useMemo(
@@ -36,11 +38,8 @@ export default function PracticeScreen() {
   );
 
   const weakest = accuracyByType[0];
-  const avgBand =
-    sessions.length === 0
-      ? 0
-      : sessions.slice(0, 5).reduce((sum, s) => sum + s.estimatedBand, 0) /
-        Math.min(5, sessions.length);
+  // Chỉ lượt IELTS mới có band; lượt SAT bị bỏ qua chứ không tính là 0.
+  const avgBand = averageBand(sessions.slice(0, 5).map((s) => s.estimatedBand));
 
   return (
     <Screen>
@@ -59,7 +58,7 @@ export default function PracticeScreen() {
           />
           <StatCard
             label="Band 5 lượt gần nhất"
-            value={avgBand > 0 ? avgBand.toFixed(1) : '—'}
+            value={formatBand(avgBand)}
             icon="trending"
             tone="success"
           />
@@ -84,6 +83,7 @@ export default function PracticeScreen() {
           <SectionHeader title="Đọc tiếp" subtitle="Những bài bạn đang dở" icon="book" />
           <View className="mt-3 gap-2">
             {inProgress.map((item) => {
+              // Không lọc kỳ thi ở đây: bài đang đọc dở là bài nào cũng phải hiện.
               const article = filterArticles().find((a) => a.id === item.articleId);
               if (!article) return null;
               return <ArticleCard key={item.articleId} article={article} />;
@@ -99,25 +99,27 @@ export default function PracticeScreen() {
           icon="sparkle"
           iconTone="accent"
           right={
-            <View className="flex-row gap-1.5">
+            <View className="flex-row flex-wrap items-center gap-1.5">
+              {/* Kho bài có cả IELTS lẫn SAT; không lọc theo kỳ thi thì passage
+                  SAT ngắn luôn đứng đầu danh sách "dễ trước". */}
+              {(['all', ...EXAMS.map((e) => e.value)] as const).map((e) => (
+                <Pill
+                  key={e}
+                  label={e === 'all' ? 'Mọi kỳ thi' : e.toUpperCase()}
+                  active={exam === e}
+                  onPress={() => setExam(e)}
+                />
+              ))}
+
+              <View className="w-2" />
+
               {(['all', 'B1', 'B2', 'C1', 'C2'] as const).map((l) => (
-                <Pressable
+                <Pill
                   key={l}
+                  label={l === 'all' ? 'Mọi độ khó' : l}
+                  active={level === l}
                   onPress={() => setLevel(l)}
-                  className={[
-                    'rounded-pill px-2.5 py-1',
-                    level === l ? 'bg-primary-600' : 'bg-surfaceAlt',
-                  ].join(' ')}
-                >
-                  <Text
-                    className={[
-                      'font-semi text-label',
-                      level === l ? 'text-white' : 'text-muted',
-                    ].join(' ')}
-                  >
-                    {l === 'all' ? 'Tất cả' : l}
-                  </Text>
-                </Pressable>
+                />
               ))}
             </View>
           }
@@ -179,7 +181,10 @@ export default function PracticeScreen() {
                   {session.finishedAt.slice(0, 10)} · {session.rawScore}/{session.total} đúng
                 </Text>
               </View>
-              <Badge label={`Band ${session.estimatedBand.toFixed(1)}`} tone="primary" />
+              <Badge
+                label={session.estimatedBand == null ? 'SAT' : `Band ${formatBand(session.estimatedBand)}`}
+                tone="primary"
+              />
               <Badge
                 label={`${session.accuracy}%`}
                 tone={session.accuracy >= 70 ? 'success' : 'warning'}
@@ -195,5 +200,29 @@ export default function PracticeScreen() {
         </View>
       </Card>
     </Screen>
+  );
+}
+
+/** Nút lọc nhỏ trong SectionHeader — nhỏ hơn Chip của Library một cỡ. */
+function Pill({
+  label,
+  active,
+  onPress,
+}: {
+  label: string;
+  active: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityState={{ selected: active }}
+      className={['rounded-pill px-2.5 py-1', active ? 'bg-primary-600' : 'bg-surfaceAlt'].join(' ')}
+    >
+      <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
+        {label}
+      </Text>
+    </Pressable>
   );
 }

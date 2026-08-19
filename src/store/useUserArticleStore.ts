@@ -47,8 +47,14 @@ export const useUserArticleStore = create<UserArticleState>()(
           sourceUrl: '',
           topic: 'society',
           track: 'academic',
-          // Bài dán tay không đi qua normalizeArticle nên không có tier.
+          // Bài dán tay không thuộc kỳ thi nào; xếp vào IELTS vì đó là mặc
+          // định của app, và không có tier vì không đi qua normalizeArticle.
+          exam: 'ielts',
+          satTextType: null,
           passageTier: null,
+          // Không nằm trong seed nên không thuộc chunk nào; toàn văn giữ ngay
+          // trong store này.
+          chunk: null,
           licenseType: 'user_pasted',
           attribution: null,
           publishedAt: new Date().toISOString(),
@@ -75,6 +81,37 @@ export const useUserArticleStore = create<UserArticleState>()(
           return { articles };
         }),
     }),
-    { name: `${STORAGE_PREFIX}user-articles`, storage: storage<UserArticleState>(), version: 1 },
+    {
+      name: `${STORAGE_PREFIX}user-articles`,
+      storage: storage<UserArticleState>(),
+      // v2: Article có thêm exam / satTextType / chunk. KHÁC useQuestionStore ở
+      // chỗ đây là nội dung người dùng tự dán — vứt đi là mất bài của họ, nên
+      // phải vá field thiếu chứ không được bỏ state cũ.
+      version: 2,
+      migrate: (persisted) => {
+        const state = persisted as UserArticleState | undefined;
+        if (!state?.articles) return { articles: {} } as UserArticleState;
+
+        const articles = Object.fromEntries(
+          Object.entries(state.articles).map(([id, value]) => {
+            // Bài lưu từ bản cũ thiếu hẳn mấy field này, dù kiểu Article nói là
+            // có — nên phải đọc qua Partial rồi bù mặc định.
+            const article = value as Partial<Article>;
+            return [
+              id,
+              {
+                ...article,
+                exam: article.exam ?? 'ielts',
+                satTextType: article.satTextType ?? null,
+                passageTier: article.passageTier ?? null,
+                chunk: article.chunk ?? null,
+              } as Article,
+            ];
+          }),
+        );
+
+        return { ...state, articles } as UserArticleState;
+      },
+    },
   ),
 );

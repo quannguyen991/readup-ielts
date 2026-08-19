@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
@@ -11,11 +11,19 @@ import { color } from '@/theme/tokens';
 
 export default function BookmarksScreen() {
   const bookmarks = useStudyStore((s) => s.bookmarks);
-  const words = useVocabStore((s) => Object.values(s.entries));
+  // Selector PHẢI trả về thứ ổn định qua các lần render. Object.values dựng
+  // mảng mới mỗi lần, zustand thấy snapshot luôn khác nên render lại vô hạn —
+  // màn này từng trắng trang kèm "Maximum update depth exceeded".
+  const entries = useVocabStore((s) => s.entries);
+  const words = useMemo(() => Object.values(entries), [entries]);
 
-  const articles = bookmarks
-    .map((id) => getArticleById(id))
-    .filter((a): a is NonNullable<typeof a> => Boolean(a));
+  const articles = useMemo(
+    () =>
+      bookmarks
+        .map((id) => getArticleById(id))
+        .filter((a): a is NonNullable<typeof a> => Boolean(a)),
+    [bookmarks],
+  );
 
   return (
     <Screen>

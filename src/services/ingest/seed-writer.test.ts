@@ -17,6 +17,8 @@ function article(i: number, withBody = true): IngestedArticle {
     sourceUrl: 'https://example.org/a',
     topic: 'science',
     track: 'academic',
+    exam: 'ielts',
+    satTextType: null,
     licenseType: withBody ? 'cc_by_sa' : 'headline_only',
     passageTier: withBody ? 'p1' : 'headline',
     attribution: null,

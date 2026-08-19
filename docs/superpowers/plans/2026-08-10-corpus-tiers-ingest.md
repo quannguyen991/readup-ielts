@@ -12,7 +12,12 @@
 
 - **Expo SDK 57.** Đọc doc đúng phiên bản tại https://docs.expo.dev/versions/v57.0.0/ trước khi viết code liên quan Expo (yêu cầu trong `AGENTS.md`).
 - **Không thêm dependency mới.** Test dùng `node:test` chạy qua `tsx`.
-- **TypeScript strict.** `npm run typecheck` phải sạch sau mỗi task.
+- **TypeScript strict.** `npm run typecheck` phải sạch sau mỗi task, **trừ hai chỗ cố ý dưới đây** — đó là hệ quả của việc đổi kiểu công khai ở task này và sửa chỗ tiêu thụ ở task sau, không phải lỗi:
+  - Sau **Task 3** (đổi kiểu trả về của `normalizeArticle`): đỏ ở `scripts/ingest.ts`, xanh lại ở Task 7.
+  - Sau **Task 9** (index không còn `bodyText`): đỏ ở `app/read/[id].tsx` và có thể ở `app/library.tsx`, xanh lại ở Task 10.
+
+  Ở hai task đó, việc cần làm là **ghi lại danh sách lỗi** rồi đi tiếp, không phải chữa cháy bằng `any` hay `@ts-expect-error`. Mọi task khác: typecheck sạch là điều kiện xong.
+- **`npm test` phải xanh sau MỌI task**, kể cả Task 3 và Task 9. Test không phụ thuộc chỗ tiêu thụ nên không có ngoại lệ nào ở đây.
 - **Bản quyền — bất khả xâm phạm:** bài `licenseType === 'headline_only'` phải luôn có `bodyText === null` và `sourceUrl` khác rỗng. DB có CHECK constraint chặn; code không được tìm cách lách.
 - **Wikimedia User-Agent phải có email liên hệ thật**, đổi qua env `INGEST_CONTACT`, mặc định trong `src/services/ingest/http.ts`. Thiếu sẽ bị 429.
 - **Ngưỡng tier (copy đúng từ spec A1):** `p1` min 650 / target 750 · `p2` min 800 / target 900 · `p3` min 950 / target 1050 · `short_academic` 150–649 · dưới 150 từ thì loại bỏ.
@@ -1913,14 +1918,17 @@ Khai báo trong type và destructure:
 
 f) Đổi kiểu tham số của `sortArticles` từ `Article[]` sang `ArticleMeta[]` và giá trị trả về tương ứng; `filterArticles` trả `ArticleMeta[]`.
 
-- [ ] **Step 6: Cho bài tự dán có passageTier và chunk**
+- [ ] **Step 6: Cho bài tự dán có chunk**
 
-Trong `src/store/useUserArticleStore.ts`, thêm hai field vào object `article` (sau `track: 'academic',`):
+**Đã đổi trong lúc thực thi:** `passageTier: null` đã được thêm ở **Task 3**, không phải ở đây. Lý do: Task 3 làm `passageTier` thành field bắt buộc của `IngestedArticle`, nên `useUserArticleStore` vỡ typecheck ngay tại Task 3 chứ không chờ được tới Task 9 — đây là lỗi thứ tự trong bản nháp plan. Đã xác minh `useUserArticleStore.ts` là chỗ construct `IngestedArticle` duy nhất còn lại ngoài `pipeline.ts`.
+
+Nên ở task này chỉ còn **một** field phải thêm vào object `article` trong `src/store/useUserArticleStore.ts`:
 
 ```ts
-          passageTier: null,
           chunk: null,
 ```
+
+Kiểm trước khi sửa: nếu `passageTier: null` chưa có ở đó thì Task 3 đã làm sai — thêm cả hai và ghi vào report.
 
 - [ ] **Step 7: Kiểm tra typecheck và test**
 

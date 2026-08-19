@@ -18,6 +18,7 @@ import {
   StatCard,
 } from '@/components/ui';
 import { filterArticles, isReadable, libraryStats, topicLabel } from '@/data/articles';
+import { bandDelta, formatBand } from '@/lib/band';
 import { assetKeys } from '@/services/assets/useAssets';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
@@ -39,12 +40,18 @@ export default function DashboardScreen() {
   const weekMinutes = recentDays.reduce((sum, d) => sum + d.minutes, 0);
   const weekQuestions = recentDays.reduce((sum, d) => sum + d.questions, 0);
 
-  const currentBand = sessions[0]?.estimatedBand ?? 0;
-  const previousBand = sessions[1]?.estimatedBand ?? currentBand;
+  // Chỉ lượt IELTS có band. Lấy hai lượt *có band* gần nhất, bỏ qua lượt SAT
+  // chen giữa — trước đây lượt SAT làm band tụt về 0.
+  const bands = sessions.map((s) => s.estimatedBand).filter((b): b is number => b != null);
+  const currentBand = bands[0] ?? null;
+  const previousBand = bands[1] ?? null;
 
   // Gợi ý bài: ưu tiên bài đang đọc dở, không thì bài dễ nhất chưa động tới.
+  // Giới hạn trong bài IELTS vì màn này là trang chủ IELTS — passage SAT chỉ
+  // 60–150 từ nên xếp "dễ nhất" là chúng chiếm sạch chỗ. Vào Library hoặc
+  // Practice để chọn kỳ thi.
   const recommended = useMemo(() => {
-    const readable = filterArticles({ kind: 'readable', sort: 'easiest' });
+    const readable = filterArticles({ kind: 'readable', exam: 'ielts', sort: 'easiest' });
     const unread = readable.find((a) => !progress[a.id]);
     const inProgress = readable.find(
       (a) => progress[a.id] && (progress[a.id]?.percentCompleted ?? 0) < 100,
@@ -53,7 +60,7 @@ export default function DashboardScreen() {
   }, [progress]);
 
   const featured = useMemo(
-    () => filterArticles({ kind: 'readable', sort: 'newest' }).slice(0, 3),
+    () => filterArticles({ kind: 'readable', exam: 'ielts', sort: 'newest' }).slice(0, 3),
     [],
   );
 
@@ -61,7 +68,7 @@ export default function DashboardScreen() {
     <Screen>
       <HeroBanner
         title="Master IELTS Reading"
-        subtitle={`${stats.readable} bài đọc đầy đủ từ ${stats.sources} nguồn công khai. Đọc, tra từ trong ngữ cảnh, làm đề và xem lại từng câu kèm bằng chứng.`}
+        subtitle={`${stats.ielts} passage IELTS và ${stats.sat} passage SAT từ ${stats.sources} nguồn công khai. Đọc, tra từ trong ngữ cảnh, làm đề và xem lại từng câu kèm bằng chứng.`}
         illustration="dashboard-hero"
       >
         <View className="flex-row flex-wrap items-center gap-3">
@@ -100,15 +107,14 @@ export default function DashboardScreen() {
           />
           <StatCard
             label="Estimated Band Score"
-            value={currentBand > 0 ? currentBand.toFixed(1) : '—'}
+            value={formatBand(currentBand)}
             icon="trending"
             tone="success"
-            trend={
-              currentBand > 0
-                ? { value: Number((currentBand - previousBand).toFixed(1)) }
-                : undefined
-            }
-            caption={currentBand > 0 ? 'Từ lượt làm gần nhất' : 'Làm một bài để có số liệu'}
+            trend={(() => {
+              const delta = bandDelta(currentBand, previousBand);
+              return delta == null ? undefined : { value: delta };
+            })()}
+            caption={currentBand == null ? 'Làm một bài IELTS để có số liệu' : 'Từ lượt làm gần nhất'}
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard

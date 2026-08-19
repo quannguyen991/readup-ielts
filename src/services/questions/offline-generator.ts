@@ -1,3 +1,13 @@
+import { hashString, mulberry32, shuffle } from './rng';
+import { generateSatQuestionSet } from './sat-generator';
+import {
+  OPTIONS_PER_QUESTION,
+  blankOut,
+  contentWords,
+  interleave,
+  pickDistractors,
+  wordsOf,
+} from './text-utils';
 import type { GeneratedQuestion, QuestionSet } from './types';
 import type { Article } from '@/data/articles';
 import { splitSentences } from '@/services/ingest/readability';
@@ -5,187 +15,80 @@ import { splitSentences } from '@/services/ingest/readability';
 /**
  * Bộ sinh đề chạy hoàn toàn offline, không cần API key.
  *
- * Nó bám vào chính câu chữ trong bài: mỗi câu hỏi đều trích được `evidence_text`
- * có thật, nên màn Test Review vẫn tô sáng đúng chỗ. Chất lượng dĩ nhiên không
- * bằng Claude — khi có ANTHROPIC_API_KEY thì `generateQuestionSet` sẽ ưu tiên AI
- * và chỉ rơi về bộ này khi lỗi.
- *
  * Sinh xác định (deterministic) theo id bài: mở lại vẫn ra đúng bộ đề đó.
+ *
+ * LUẬT: chỉ sinh dạng nào thoả CẢ HAI điều kiện — đáp án kiểm chứng được từ
+ * chính bài, và câu hỏi không giải được bằng đối chiếu chuỗi với bài đọc.
+ *
+ * Bản trước vi phạm cả hai ở mọi dạng, nên đã bỏ hết:
+ * - Matching Headings: "tiêu đề" là 9 từ đầu của chính đoạn đó, lại hỏi theo
+ *   đúng thứ tự đoạn 1→5. Ghép chuỗi là xong, không cần đọc.
+ * - Sentence Completion: chép nguyên câu trong bài rồi khoét một từ → Ctrl-F.
+ * - Short Answer: "con số nào nêu trong câu này?" → chép lại con số.
+ * - Multiple Choice ý chính: bốn lựa chọn là 9 từ đầu của đoạn 1–4, đáp án LUÔN
+ *   là đoạn 1 — đoán được bằng vị trí.
+ * - True/False/Not Given: FALSE luôn là câu gốc chèn "not", NOT GIVEN luôn kết
+ *   thúc bằng cùng một mệnh đề template. Làm hai bài là thuộc mẹo.
+ *
+ * Bốn dạng IELTS còn lại (Matching Headings, Matching Information, Sentence
+ * Completion, True/False/Not Given) để dành cho nhánh Claude, vì cả bốn đều đòi
+ * PARAPHRASE THẬT: nhận định phải diễn đạt lại ý của bài bằng chữ khác. Diễn đạt
+ * lại bằng phép thay chuỗi thì hoặc ra câu sai nghĩa, hoặc giữ nguyên đủ chữ để
+ * dò ngược — đằng nào cũng hỏng. Đây là cùng lý do bộ SAT chỉ sinh hai trong
+ * năm dạng của nó.
+ *
+ * ĐÃ ĐO (kho 567 bài IELTS đọc được, 08/2026): trung bình 11,4 câu/bài, trung vị
+ * 12, chỉ 2 bài ra 0 câu. Hai bài đó đều là bài một đoạn ngắn — không đủ đoạn để
+ * cắt câu kết, cũng không đủ vốn từ để làm nhiễu.
  */
 
 const TARGET_QUESTIONS = 12;
 
+/** Đoạn ngắn hơn thì không đủ chữ để vừa khoét vừa còn ngữ cảnh mà đoán. */
+const MIN_PARAGRAPH_WORDS = 25;
+
+/**
+ * Từ đủ dài để việc khoét chỗ trống có ý nghĩa. Hạ dần khi vốn từ trong bài quá
+ * mỏng, giống bộ SAT.
+ */
+const BLANK_WORD_LENGTHS = [7, 6, 5];
+
 export function generateOfflineQuestionSet(article: Article): QuestionSet {
-  const paragraphs = article.paragraphs.filter((p) => p.split(/\s+/).length >= 25);
+  // Bài SAT phải ra dạng câu của SAT. Ra True/False/Not Given trên một trích
+  // đoạn Jane Austen là luyện sai kỳ thi.
+  if (article.exam === 'sat') return generateSatQuestionSet(article);
+
+  return generateIeltsQuestionSet(article);
+}
+
+type Sentence = { text: string; paragraphIndex: number };
+
+function generateIeltsQuestionSet(article: Article): QuestionSet {
   const rng = mulberry32(hashString(article.id));
 
-  const questions: GeneratedQuestion[] = [];
-  const usedSentences = new Set<string>();
+  const paragraphs = article.paragraphs.filter(
+    (p) => wordsOf(p).length >= MIN_PARAGRAPH_WORDS,
+  );
 
-  const pick = <T,>(items: T[]): T | undefined =>
-    items.length === 0 ? undefined : items[Math.floor(rng() * items.length)];
+  const sentences: Sentence[] = paragraphs.flatMap((paragraph, index) =>
+    splitSentences(paragraph)
+      .map((text) => ({ text: text.trim(), paragraphIndex: index }))
+      .filter((s) => wordsOf(s.text).length >= 8),
+  );
 
-  // 1. Matching Headings — mỗi đoạn một tiêu đề, đảo thứ tự lựa chọn.
-  const headingParagraphs = paragraphs.slice(0, 5);
-  if (headingParagraphs.length >= 3) {
-    const headings = headingParagraphs.map((p) => summarizeParagraph(p));
-    const shuffled = shuffle(headings, rng);
+  // Rút luân phiên để dạng nhiều nguồn không át dạng ít: mỗi câu trong bài đều
+  // đẻ được một câu Words in Context, còn Paragraph Completion thì chỉ đoạn từ
+  // 3 câu trở lên mới có.
+  const picked = interleave(
+    [
+      wordsInContext(article, sentences, rng),
+      paragraphCompletion(article, paragraphs, rng),
+    ],
+    TARGET_QUESTIONS,
+  );
 
-    headingParagraphs.forEach((paragraph, index) => {
-      const answer = headings[index];
-      if (!answer) return;
-
-      questions.push({
-        id: `${article.id}-mh-${index}`,
-        orderIndex: questions.length,
-        type: 'matching_headings',
-        prompt: `Chọn tiêu đề đúng cho đoạn ${index + 1}.`,
-        instruction: 'Mỗi tiêu đề chỉ dùng một lần.',
-        options: shuffled,
-        correctAnswer: answer,
-        evidenceText: firstSentence(paragraph),
-        evidenceParagraphIndex: index,
-        explanation: `Đoạn ${index + 1} tập trung vào ý: ${answer.toLowerCase()}.`,
-        lessonTip:
-          'Đọc câu đầu và câu cuối đoạn trước — ý chính của đoạn thường nằm ở đó.',
-      });
-    });
-  }
-
-  // 2. True / False / Not Given — hai câu đúng, một câu bị đảo nghĩa, một câu bịa.
-  for (let i = 0; i < paragraphs.length && questions.length < TARGET_QUESTIONS - 5; i += 1) {
-    const paragraph = paragraphs[i];
-    if (!paragraph) continue;
-
-    const sentence = pick(
-      splitSentences(paragraph).filter(
-        (s) => s.split(/\s+/).length >= 12 && s.split(/\s+/).length <= 34 && !usedSentences.has(s),
-      ),
-    );
-    if (!sentence) continue;
-    usedSentences.add(sentence);
-
-    const mode = questions.length % 3;
-
-    if (mode === 0) {
-      questions.push({
-        id: `${article.id}-tf-${i}-t`,
-        orderIndex: questions.length,
-        type: 'true_false_not_given',
-        prompt: paraphrase(sentence),
-        instruction: 'Chọn TRUE, FALSE hoặc NOT GIVEN theo thông tin trong bài.',
-        options: ['TRUE', 'FALSE', 'NOT GIVEN'],
-        correctAnswer: 'TRUE',
-        evidenceText: sentence,
-        evidenceParagraphIndex: i,
-        explanation: `Bài viết nêu: "${sentence}" — trùng khớp với nội dung câu hỏi.`,
-        lessonTip: 'Khớp ý, không khớp từ. Cùng ý mà khác từ vẫn là TRUE.',
-      });
-    } else if (mode === 1) {
-      questions.push({
-        id: `${article.id}-tf-${i}-f`,
-        orderIndex: questions.length,
-        type: 'true_false_not_given',
-        prompt: negate(sentence),
-        instruction: 'Chọn TRUE, FALSE hoặc NOT GIVEN theo thông tin trong bài.',
-        options: ['TRUE', 'FALSE', 'NOT GIVEN'],
-        correctAnswer: 'FALSE',
-        evidenceText: sentence,
-        evidenceParagraphIndex: i,
-        explanation: `Bài viết nói ngược lại: "${sentence}".`,
-        lessonTip:
-          'Một từ phủ định (not, never, no longer) đủ để lật câu từ TRUE thành FALSE.',
-      });
-    } else {
-      questions.push({
-        id: `${article.id}-tf-${i}-ng`,
-        orderIndex: questions.length,
-        type: 'true_false_not_given',
-        prompt: inventClaim(sentence),
-        instruction: 'Chọn TRUE, FALSE hoặc NOT GIVEN theo thông tin trong bài.',
-        options: ['TRUE', 'FALSE', 'NOT GIVEN'],
-        correctAnswer: 'NOT GIVEN',
-        evidenceText: sentence,
-        evidenceParagraphIndex: i,
-        explanation:
-          'Bài có nhắc tới chủ đề này nhưng không đưa ra thông tin để khẳng định hay bác bỏ.',
-        lessonTip:
-          'NOT GIVEN là khi bài im lặng. Đừng suy luận từ kiến thức bên ngoài bài đọc.',
-      });
-    }
-  }
-
-  // 3. Sentence Completion — khoét một danh từ/số liệu quan trọng.
-  for (let i = 0; i < paragraphs.length && questions.length < TARGET_QUESTIONS - 2; i += 1) {
-    const paragraph = paragraphs[i];
-    if (!paragraph) continue;
-
-    const candidate = splitSentences(paragraph).find((s) => findKeyword(s) !== null);
-    if (!candidate) continue;
-
-    const keyword = findKeyword(candidate);
-    if (!keyword) continue;
-
-    questions.push({
-      id: `${article.id}-sc-${i}`,
-      orderIndex: questions.length,
-      type: 'sentence_completion',
-      prompt: candidate.replace(keyword, '________'),
-      instruction: 'Điền KHÔNG QUÁ HAI TỪ lấy từ bài đọc.',
-      options: null,
-      correctAnswer: keyword,
-      evidenceText: candidate,
-      evidenceParagraphIndex: i,
-      explanation: `Chỗ trống lấy đúng từ trong bài: "${keyword}".`,
-      lessonTip: 'Chép nguyên dạng từ trong bài — không đổi số ít/số nhiều, không viết lại.',
-    });
-  }
-
-  // 4. Short Answer — hỏi về con số xuất hiện trong bài.
-  const numberSentence = paragraphs
-    .map((p, index) => ({ index, sentence: splitSentences(p).find((s) => /\d/.test(s)) }))
-    .find((x) => x.sentence);
-
-  if (numberSentence?.sentence) {
-    const number = numberSentence.sentence.match(/\d[\d,.]*/)?.[0];
-    if (number) {
-      questions.push({
-        id: `${article.id}-sa`,
-        orderIndex: questions.length,
-        type: 'short_answer',
-        prompt: `Theo bài đọc, con số nào được nêu trong câu: "${numberSentence.sentence.replace(
-          number,
-          '…',
-        )}"?`,
-        instruction: 'Trả lời KHÔNG QUÁ BA TỪ hoặc một con số.',
-        options: null,
-        correctAnswer: number,
-        evidenceText: numberSentence.sentence,
-        evidenceParagraphIndex: numberSentence.index,
-        explanation: `Câu trong bài ghi rõ con số ${number}.`,
-        lessonTip: 'Câu hỏi có số liệu thường dễ ăn điểm — quét số trước, đọc câu sau.',
-      });
-    }
-  }
-
-  // 5. Multiple Choice — ý chính toàn bài.
-  const mainIdea = summarizeParagraph(paragraphs[0] ?? article.title);
-  const distractors = paragraphs.slice(1, 4).map((p) => summarizeParagraph(p));
-  if (distractors.length >= 2) {
-    questions.push({
-      id: `${article.id}-mc`,
-      orderIndex: questions.length,
-      type: 'multiple_choice',
-      prompt: 'Ý chính của toàn bài là gì?',
-      instruction: 'Chọn MỘT đáp án đúng.',
-      options: shuffle([mainIdea, ...distractors], rng),
-      correctAnswer: mainIdea,
-      evidenceText: firstSentence(paragraphs[0] ?? article.title),
-      evidenceParagraphIndex: 0,
-      explanation: 'Đoạn mở đầu nêu chủ đề bao trùm cả bài; các đáp án còn lại chỉ là ý phụ.',
-      lessonTip: 'Ý chính phải bao được cả bài, không phải chi tiết của một đoạn.',
-    });
-  }
+  // Xếp tăng dần: đoán từ trong một câu trước, nắm mạch cả đoạn sau.
+  const ordered = [...picked].sort((a, b) => difficultyRank(a) - difficultyRank(b));
 
   return {
     articleId: article.id,
@@ -193,104 +96,123 @@ export function generateOfflineQuestionSet(article: Article): QuestionSet {
     generatedBy: 'offline',
     model: null,
     createdAt: new Date().toISOString(),
-    questions: questions
-      .slice(0, TARGET_QUESTIONS)
-      .map((q, index) => ({ ...q, orderIndex: index })),
+    questions: ordered.map((q, index) => ({ ...q, orderIndex: index })),
   };
 }
 
-// ── Tiện ích ngôn ngữ ─────────────────────────────────────────────────────────
-
-function summarizeParagraph(paragraph: string): string {
-  const sentence = firstSentence(paragraph);
-  const words = sentence.split(/\s+/).slice(0, 9).join(' ');
-  return words.replace(/[,;:]$/, '').replace(/\.$/, '');
+/** Words in Context dễ hơn Paragraph Completion: một câu so với cả đoạn. */
+function difficultyRank(question: GeneratedQuestion): number {
+  return question.id.includes('-wic-') ? 0 : 1;
 }
 
-function firstSentence(text: string): string {
-  return splitSentences(text)[0] ?? text.slice(0, 160);
-}
+// ── Words in Context ─────────────────────────────────────────────────────────
 
-function paraphrase(sentence: string): string {
-  return sentence
-    .replace(/\bis\b/g, 'remains')
-    .replace(/\bmany\b/gi, 'a large number of')
-    .replace(/\bimportant\b/gi, 'significant')
-    .replace(/\bhelps?\b/gi, 'contributes to');
-}
+/**
+ * Khoét một từ mang nghĩa trong câu, bốn lựa chọn đều là từ CÓ THẬT ở chỗ khác
+ * trong bài.
+ *
+ * Đáp án luôn đúng vì đó là từ gốc. Không dò ngược được vì từ đã bị che, và
+ * không loại nhiễu bằng cảm giác "từ này lạ" được vì nhiễu cũng lấy từ bài ra.
+ */
+function wordsInContext(
+  article: Article,
+  sentences: Sentence[],
+  rng: () => number,
+): GeneratedQuestion[] {
+  const body = sentences.map((s) => s.text).join(' ');
 
-function negate(sentence: string): string {
-  if (/\bis\b/.test(sentence)) return sentence.replace(/\bis\b/, 'is not');
-  if (/\bare\b/.test(sentence)) return sentence.replace(/\bare\b/, 'are not');
-  if (/\bcan\b/.test(sentence)) return sentence.replace(/\bcan\b/, 'cannot');
-  if (/\bhas\b/.test(sentence)) return sentence.replace(/\bhas\b/, 'does not have');
-  return `It is not true that ${lowerFirst(sentence)}`;
-}
+  const minLength =
+    BLANK_WORD_LENGTHS.find((n) => contentWords(body, n).length >= OPTIONS_PER_QUESTION) ??
+    BLANK_WORD_LENGTHS[BLANK_WORD_LENGTHS.length - 1]!;
 
-function inventClaim(sentence: string): string {
-  const subject = sentence.split(/\s+/).slice(0, 4).join(' ');
-  return `${subject} is considered the most popular topic among researchers worldwide.`;
-}
+  const pool = contentWords(body, minLength);
+  if (pool.length < OPTIONS_PER_QUESTION) return [];
 
-function lowerFirst(text: string): string {
-  return text.charAt(0).toLowerCase() + text.slice(1);
-}
+  const out: GeneratedQuestion[] = [];
+  const used = new Set<string>();
 
-/** Từ khoá để khoét: ưu tiên số liệu, sau đó là danh từ dài không phổ biến. */
-function findKeyword(sentence: string): string | null {
-  const number = sentence.match(/\b\d[\d,.]*\s?(?:%|percent|kilometres|km|years|species)?\b/);
-  if (number?.[0] && number[0].trim().length > 1) return number[0].trim();
+  // Đảo thứ tự câu nguồn: câu hỏi không được đi theo đúng thứ tự đoạn trong bài,
+  // vì như thế là chỉ cần đọc lần lượt từ trên xuống mà không cần định vị.
+  for (const sentence of shuffle(sentences, rng)) {
+    const candidate = contentWords(sentence.text, minLength).find((w) => !used.has(w));
+    if (!candidate) continue;
 
-  const words = sentence.match(/\b[a-z]{7,}\b/g);
-  const candidate = words?.find((w) => !STOP_WORDS.has(w));
-  return candidate ?? null;
-}
+    const distractors = pickDistractors(pool, candidate, sentence.text, minLength, rng);
+    if (distractors.length < OPTIONS_PER_QUESTION - 1) continue;
 
-const STOP_WORDS = new Set([
-  'because',
-  'between',
-  'however',
-  'therefore',
-  'although',
-  'together',
-  'including',
-  'especially',
-  'generally',
-  'different',
-  'important',
-  'following',
-]);
+    used.add(candidate);
 
-function shuffle<T>(items: T[], rng: () => number): T[] {
-  const copy = [...items];
-  for (let i = copy.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(rng() * (i + 1));
-    const a = copy[i];
-    const b = copy[j];
-    if (a !== undefined && b !== undefined) {
-      copy[i] = b;
-      copy[j] = a;
-    }
+    out.push({
+      id: `${article.id}-wic-${out.length}`,
+      orderIndex: 0,
+      type: 'multiple_choice',
+      prompt: blankOut(sentence.text, candidate),
+      instruction: 'Choose the word that best completes the gap.',
+      options: shuffle([candidate, ...distractors], rng),
+      correctAnswer: candidate,
+      evidenceText: sentence.text,
+      evidenceParagraphIndex: sentence.paragraphIndex,
+      explanation: `Câu gốc trong bài dùng từ "${candidate}". Ba lựa chọn còn lại đều lấy từ chỗ khác trong chính bài này nên nghe rất quen, nhưng đặt vào đây thì sai nghĩa hoặc sai cấu trúc câu.`,
+      lessonTip:
+        'Đọc trọn câu rồi mới nhìn đáp án. Từ đúng phải hợp cả nghĩa lẫn ngữ pháp — hợp chủ đề thôi thì chưa đủ.',
+    });
   }
-  return copy;
+
+  return out;
 }
 
-function hashString(input: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < input.length; i += 1) {
-    h ^= input.charCodeAt(i);
-    h = Math.imul(h, 16777619);
+// ── Paragraph Completion ─────────────────────────────────────────────────────
+
+/**
+ * Cắt câu cuối của một đoạn rồi hỏi câu nào khép đoạn cho hợp lý. Nhiễu là câu
+ * cuối thật của những đoạn khác trong cùng bài.
+ *
+ * Đáp án kiểm chứng được vì đó là câu thật của đoạn. Không đối chiếu chuỗi được
+ * vì câu đã bị lấy ra khỏi đoạn — muốn chọn đúng phải theo được mạch lập luận
+ * và mấy từ nối, đại từ ở câu ngay trước.
+ */
+function paragraphCompletion(
+  article: Article,
+  paragraphs: string[],
+  rng: () => number,
+): GeneratedQuestion[] {
+  const out: GeneratedQuestion[] = [];
+
+  // Gom câu cuối của mọi đoạn để làm nhiễu: nhiễu phải là câu KẾT của đoạn khác,
+  // không phải câu giữa đoạn — câu giữa đoạn loại được ngay vì nó lửng lơ.
+  const closings = paragraphs.map((p) => {
+    const sentences = splitSentences(p).map((s) => s.trim());
+    return sentences[sentences.length - 1] ?? '';
+  });
+
+  for (const [index, paragraph] of paragraphs.entries()) {
+    const sentences = splitSentences(paragraph).map((s) => s.trim());
+    if (sentences.length < 3) continue;
+
+    const answer = sentences[sentences.length - 1]!;
+    const opening = sentences.slice(0, -1).join(' ');
+
+    const others = closings.filter((s) => s && s !== answer && !opening.includes(s));
+    if (others.length < OPTIONS_PER_QUESTION - 1) continue;
+
+    const distractors = shuffle(others, rng).slice(0, OPTIONS_PER_QUESTION - 1);
+
+    out.push({
+      id: `${article.id}-pc-${index}`,
+      orderIndex: 0,
+      type: 'multiple_choice',
+      prompt: `${opening} ______`,
+      instruction: 'Choose the sentence that most logically completes the paragraph.',
+      options: shuffle([answer, ...distractors], rng),
+      correctAnswer: answer,
+      evidenceText: answer,
+      evidenceParagraphIndex: index,
+      explanation:
+        'Đây là câu thật sự khép lại đoạn: nó nối tiếp ý của câu ngay trước đó. Ba lựa chọn kia là câu kết của những đoạn khác trong bài, nên đặt vào đây là đứt mạch.',
+      lessonTip:
+        'Câu điền vào chỗ trống phải nối được với câu ngay TRƯỚC nó. Bám vào từ nối (however, therefore…) và đại từ — chúng chỉ ngược lại thứ vừa được nhắc.',
+    });
   }
-  return h >>> 0;
-}
 
-function mulberry32(seed: number): () => number {
-  let a = seed;
-  return () => {
-    a |= 0;
-    a = (a + 0x6d2b79f5) | 0;
-    let t = Math.imul(a ^ (a >>> 15), 1 | a);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
+  return out;
 }

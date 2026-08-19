@@ -20,11 +20,25 @@ export type LicenseType =
 export type ArticleTrack = 'academic' | 'general_training';
 
 /**
- * Tier bám cấu trúc Reading của IELTS: 3 passage tăng dần độ dài và độ khó,
- * cộng ba loại ngoài đề thi.
+ * Kỳ thi mà bài đọc được cắt theo khổ của nó. `track` (academic /
+ * general_training) chỉ có nghĩa với IELTS, nên kỳ thi phải là một trục riêng
+ * chứ không nhét thêm giá trị vào `track`.
+ *
+ * Khớp enum `exam_kind` trong
+ * supabase/migrations/20260810000200_exam_sat.sql.
+ */
+export type ExamKind = 'ielts' | 'sat';
+
+/**
+ * Tier bám cấu trúc Reading của từng kỳ thi:
+ * - IELTS: 3 passage tăng dần độ dài và độ khó, cộng ba loại ngoài đề thi.
+ * - SAT: `sat_short` là khổ của SAT số hoá hiện hành (25–150 từ, mỗi đoạn một
+ *   câu hỏi); `sat_long` là khổ đoạn dài 500–750 từ của SAT giấy, vẫn còn dùng
+ *   rộng rãi trong tài liệu luyện và hợp cho việc luyện đọc dài hơi.
  *
  * Danh sách này phải khớp đúng enum `passage_tier` trong
- * supabase/migrations/20260810000100_passage_tier.sql (Task 8).
+ * supabase/migrations/20260810000100_passage_tier.sql và phần mở rộng ở
+ * 20260810000200_exam_sat.sql.
  */
 export type PassageTier =
   | 'p1'
@@ -32,8 +46,31 @@ export type PassageTier =
   | 'p3'
   | 'short_academic'
   | 'headline'
-  | 'official_practice';
+  | 'official_practice'
+  | 'sat_short'
+  | 'sat_long';
 
+/**
+ * Bốn loại văn bản mà SAT Reading and Writing lấy đề: văn học, lịch sử/khoa học
+ * xã hội (gồm cả nhóm văn kiện lập quốc và diễn văn thường gọi là "Great Global
+ * Conversation"), nhân văn, và khoa học tự nhiên.
+ *
+ * null với mọi bài IELTS.
+ */
+export type SatTextType = 'literature' | 'history_social' | 'humanities' | 'science';
+
+/**
+ * Dạng câu hỏi, gồm cả hai kỳ thi.
+ *
+ * Tám dạng đầu là của IELTS Reading. Năm dạng `sat_*` bám đúng tên miền nội
+ * dung của SAT Reading and Writing: Information and Ideas (central idea,
+ * command of evidence, inferences) và Craft and Structure (words in context,
+ * text structure and purpose). Khác biệt cấu trúc quan trọng nhất: MỌI câu SAT
+ * đều là trắc nghiệm 4 lựa chọn, không có câu điền từ.
+ *
+ * Danh sách này phải khớp enum `question_type` trong
+ * supabase/migrations/20260809000100_init.sql + 20260810000300_sat_question_types.sql.
+ */
 export type QuestionType =
   | 'true_false_not_given'
   | 'yes_no_not_given'
@@ -42,7 +79,12 @@ export type QuestionType =
   | 'multiple_choice'
   | 'sentence_completion'
   | 'summary_completion'
-  | 'short_answer';
+  | 'short_answer'
+  | 'sat_words_in_context'
+  | 'sat_central_idea'
+  | 'sat_command_of_evidence'
+  | 'sat_inference'
+  | 'sat_text_structure';
 
 export type WordStatusKind = 'new' | 'learning' | 'familiar' | 'known' | 'ignored';
 
@@ -97,7 +139,10 @@ export type Article = {
   topic_id: string | null;
   topic: string | null;
   track: ArticleTrack;
+  exam: ExamKind;
   passage_tier: PassageTier | null;
+  /** Chỉ có giá trị với bài SAT. */
+  sat_text_type: SatTextType | null;
   cefr_level: CefrLevel | null;
   band_range: string | null;
   word_count: number | null;
@@ -383,7 +428,8 @@ export type Database = {
       topics: TableDef<Topic, 'name_vi' | 'icon_url' | 'color' | 'sort_order'>;
       articles: TableDef<
         Article,
-        | 'slug' | 'source_name' | 'source_url' | 'topic_id' | 'topic' | 'track' | 'cefr_level'
+        | 'slug' | 'source_name' | 'source_url' | 'topic_id' | 'topic' | 'track' | 'exam'
+        | 'passage_tier' | 'sat_text_type' | 'cefr_level'
         | 'band_range' | 'word_count' | 'est_minutes' | 'body_text' | 'summary' | 'thumbnail_url'
         | 'license_type' | 'attribution' | 'readability_score' | 'rare_word_ratio'
         | 'created_by' | 'is_private' | 'published_at'
@@ -461,6 +507,9 @@ export type Database = {
       cefr_level: CefrLevel;
       license_type: LicenseType;
       article_track: ArticleTrack;
+      exam_kind: ExamKind;
+      passage_tier: PassageTier;
+      sat_text_type: SatTextType;
       question_type: QuestionType;
       word_status_kind: WordStatusKind;
       highlight_color: HighlightColor;

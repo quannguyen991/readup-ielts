@@ -3,7 +3,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage, todayKey, uid } from './persist';
-import type { QuestionType } from '@/types/database';
+import type { ExamKind, QuestionType } from '@/types/database';
 
 /**
  * Tiến độ học: đọc tới đâu, làm bài ra sao, chuỗi ngày, thời gian theo hoạt động.
@@ -26,11 +26,18 @@ export type TestSession = {
   id: string;
   articleId: string;
   articleTitle: string;
+  /** Kỳ thi của bài đã làm — quyết định lượt này có quy ra band được hay không. */
+  exam: ExamKind;
   mode: 'practice' | 'mock_test';
   rawScore: number;
   total: number;
   accuracy: number;
-  estimatedBand: number;
+  /**
+   * null với lượt làm bài SAT: band là thang của riêng IELTS, gắn "Band 4.5"
+   * lên một bài SAT là nói sai. Mọi chỗ tính trung bình band phải lọc bỏ null
+   * chứ không được coi là 0.
+   */
+  estimatedBand: number | null;
   durationMs: number;
   finishedAt: string;
   attempts: AttemptRecord[];
@@ -310,7 +317,26 @@ export const useStudyStore = create<StudyState>()(
         return out;
       },
     }),
-    { name: `${STORAGE_PREFIX}study`, storage: storage<StudyState>(), version: 1 },
+    {
+      name: `${STORAGE_PREFIX}study`,
+      storage: storage<StudyState>(),
+      // v2: TestSession có thêm `exam`. PHẢI migrate chứ không được bỏ state —
+      // đây là toàn bộ lịch sử luyện tập của người dùng. Lượt cũ đều là IELTS
+      // vì lúc đó kho bài chưa có SAT.
+      version: 2,
+      migrate: (persisted) => {
+        const state = persisted as StudyState | undefined;
+        if (!state?.sessions) return state as StudyState;
+
+        return {
+          ...state,
+          sessions: state.sessions.map((session) => ({
+            ...session,
+            exam: session.exam ?? 'ielts',
+          })),
+        };
+      },
+    },
   ),
 );
 

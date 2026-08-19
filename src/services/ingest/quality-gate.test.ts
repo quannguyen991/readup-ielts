@@ -12,6 +12,37 @@ test('checkQuality: bài prose bình thường thì lọt', () => {
   assert.deepEqual(checkQuality('Photosynthesis', goodParagraphs()), { ok: true });
 });
 
+test('checkQuality: ngưỡng nới cho passage SAT ngắn thì một đoạn cũng lọt', () => {
+  const satShort = [goodParagraph(1)];
+
+  assert.deepEqual(checkQuality('An excerpt', satShort), {
+    ok: false,
+    reason: 'too_few_paragraphs',
+  });
+  assert.deepEqual(checkQuality('An excerpt', satShort, { minParagraphs: 1, minWords: 25 }), {
+    ok: true,
+  });
+});
+
+test('checkQuality: nới ngưỡng độ dài KHÔNG nới các kiểm tra rác', () => {
+  const limits = { minParagraphs: 1, minWords: 25 };
+  // Đủ 30 từ để qua ngưỡng độ dài đã nới, nhưng phần lớn ký tự là số —
+  // đúng dạng bảng biểu mà gate phải chặn.
+  const tableRow = [
+    Array.from({ length: 30 }, () => 'Year').join(' '),
+    Array.from({ length: 80 }, (_, i) => `${1900 + i}.${i}`).join(' | '),
+  ].join(' ');
+
+  assert.deepEqual(checkQuality('List of things', [goodParagraph(1)], limits), {
+    ok: false,
+    reason: 'list_article',
+  });
+  assert.deepEqual(checkQuality('Numbers', [tableRow], limits), {
+    ok: false,
+    reason: 'low_prose_ratio',
+  });
+});
+
 test('checkQuality: loại bài "List of ..."', () => {
   const verdict = checkQuality('List of countries by population', goodParagraphs());
   assert.deepEqual(verdict, { ok: false, reason: 'list_article' });

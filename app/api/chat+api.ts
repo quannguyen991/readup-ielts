@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 
-import { getArticleById, isReadable } from '@/data/articles';
+import { getArticleWithBody } from '@/data/articles';
 import { AI_MODELS } from '@/services/ai/client';
 
 /**
@@ -23,8 +23,10 @@ export async function POST(request: Request): Promise<Response> {
       messages?: Array<{ role: 'user' | 'assistant'; content: string }>;
     };
 
-    const article = body.articleId ? getArticleById(body.articleId) : undefined;
-    if (!article || !isReadable(article)) {
+    // getArticleWithBody trả undefined cho cả bài chỉ tiêu đề lẫn bài mất
+    // chunk — hai trường hợp đó với trợ giảng là như nhau: không có gì để đọc.
+    const article = body.articleId ? getArticleWithBody(body.articleId) : undefined;
+    if (!article) {
       return new Response('Bài này không có toàn văn nên trợ giảng không đọc được.', {
         status: 422,
       });

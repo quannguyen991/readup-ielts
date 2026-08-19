@@ -1,6 +1,6 @@
 import { checkQuality, type RejectReason } from './quality-gate';
 import { analyzeText } from './readability';
-import { assignTier, countWords, truncateToTier } from './tiers';
+import { assignTier, countWords, gateLimitsFor, refineTier, truncateToTier } from './tiers';
 import type { IngestedArticle, RawArticle } from './types';
 
 export type NormalizeResult =
@@ -28,6 +28,9 @@ export function normalizeArticle(
     sourceUrl: raw.sourceUrl,
     topic: raw.topic,
     track: raw.track,
+    // Nguồn cũ không khai gì cả — tất cả đều là bài IELTS.
+    exam: raw.exam ?? ('ielts' as const),
+    satTextType: raw.satTextType ?? null,
     licenseType: raw.licenseType,
     attribution: raw.attribution ?? null,
     publishedAt: raw.publishedAt ?? null,
@@ -62,7 +65,13 @@ export function normalizeArticle(
     .map((p) => p.trim())
     .filter(Boolean);
 
-  const gate = checkQuality(base.title, paragraphs);
+  // Nguồn tự khai tier thì gate phải dùng khổ của tier đó: một passage SAT ngắn
+  // hợp lệ chỉ có 25–150 từ trong một đoạn, ngưỡng IELTS sẽ loại sạch.
+  const gate = checkQuality(
+    base.title,
+    paragraphs,
+    raw.passageTier ? gateLimitsFor(raw.passageTier) : undefined,
+  );
   if (!gate.ok) return { ok: false, reason: gate.reason };
 
   const sampleCefr = analyzeText(sampleForScoring(paragraphs), commonWords).cefr;
@@ -77,7 +86,9 @@ export function normalizeArticle(
     ok: true,
     article: {
       ...base,
-      passageTier: tier,
+      // Cắt xong mới biết khổ thật; tier suy ra từ độ dài có sẵn có thể đã quá
+      // rộng. Tier do nguồn khai thì giữ nguyên lời khai.
+      passageTier: raw.passageTier ?? refineTier(tier, analysis.wordCount),
       bodyText,
       paragraphs: kept,
       cefrLevel: analysis.cefr,

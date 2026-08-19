@@ -1,0 +1,33 @@
+// FILE NÀY DO scripts/ingest.ts SINH RA. ĐỪNG SỬA TAY.
+// require() phải là chuỗi literal để Metro phân tích được lúc build.
+
+export const CHUNKS: Record<number, () => unknown> = {
+  0: () => require('./chunk-00.json'),
+  1: () => require('./chunk-01.json'),
+  2: () => require('./chunk-02.json'),
+  3: () => require('./chunk-03.json'),
+  4: () => require('./chunk-04.json'),
+  5: () => require('./chunk-05.json'),
+  6: () => require('./chunk-06.json'),
+  7: () => require('./chunk-07.json'),
+  8: () => require('./chunk-08.json'),
+  9: () => require('./chunk-09.json'),
+  10: () => require('./chunk-10.json'),
+  11: () => require('./chunk-11.json'),
+  12: () => require('./chunk-12.json'),
+  13: () => require('./chunk-13.json'),
+  14: () => require('./chunk-14.json'),
+  15: () => require('./chunk-15.json'),
+  16: () => require('./chunk-16.json'),
+  17: () => require('./chunk-17.json'),
+  18: () => require('./chunk-18.json'),
+  19: () => require('./chunk-19.json'),
+  20: () => require('./chunk-20.json'),
+  21: () => require('./chunk-21.json'),
+  22: () => require('./chunk-22.json'),
+  23: () => require('./chunk-23.json'),
+  24: () => require('./chunk-24.json'),
+  25: () => require('./chunk-25.json'),
+  26: () => require('./chunk-26.json'),
+  27: () => require('./chunk-27.json'),
+};
