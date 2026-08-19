@@ -41,8 +41,13 @@ export type DraftAnalysis = {
   repeatedWords: Array<{ word: string; count: number }>;
   connectivesPerSentence: number;
   hints: Hint[];
-  /** Ước lượng thô, KHÔNG phải band. Luôn hiển thị kèm chữ "ước lượng". */
-  estimate: { low: number; high: number };
+  /**
+   * Ước lượng thô, KHÔNG phải band. Luôn hiển thị kèm chữ "ước lượng".
+   *
+   * `null` khi bài còn quá ngắn để nói được gì: đưa ra con số cho một bài rỗng
+   * là bịa, và người học sẽ tin vào nó.
+   */
+  estimate: { low: number; high: number } | null;
 };
 
 /** Cách mở đầu đoạn overview mà giám khảo tìm. */
@@ -194,7 +199,9 @@ export function analyseDraft(
     repeatedWords,
     connectivesPerSentence,
     hints,
-    estimate: estimateBand(hints),
+    // Dưới 40% số từ tối thiểu thì chưa có gì để chấm — cấu trúc bài chưa hình
+    // thành, mọi chỉ số đều vô nghĩa.
+    estimate: wordCount < prompt.minWords * 0.4 ? null : estimateBand(hints),
   };
 }
 
@@ -208,7 +215,7 @@ function estimateBand(hints: Hint[]): { low: number; high: number } {
   const warns = hints.filter((h) => h.severity === 'warn').length;
   const infos = hints.filter((h) => h.severity === 'info').length;
 
-  const low = Math.max(4, 6.5 - warns * 0.75 - infos * 0.25);
+  const low = Math.max(4, 6.5 - warns * 1 - infos * 0.25);
   return { low: round(low), high: round(Math.min(8, low + 1)) };
 }
 

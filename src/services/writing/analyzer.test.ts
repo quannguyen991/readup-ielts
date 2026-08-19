@@ -105,6 +105,12 @@ test('bài tốt thì không có cảnh báo nghiêm trọng nào', () => {
   );
 });
 
+test('bài còn quá ngắn thì KHÔNG ước lượng band — đưa con số cho bài rỗng là bịa', () => {
+  assert.equal(analyseDraft('', T1).estimate, null);
+  assert.equal(analyseDraft(padTo(40, 'The chart shows.'), T1).estimate, null);
+  assert.ok(analyseDraft(padTo(170, 'Overall, it rose.'), T1).estimate != null);
+});
+
 test('ước lượng band là một khoảng, và bài hỏng thì thấp hơn bài tốt', () => {
   const bad = analyseDraft(padTo(80, 'Sales increased. Sales increased. Sales increased.'), T1);
   const good = analyseDraft(
@@ -114,6 +120,7 @@ test('ước lượng band là một khoảng, và bài hỏng thì thấp hơn 
     ),
     T1,
   );
+  assert.ok(bad.estimate && good.estimate);
   assert.ok(bad.estimate.low < good.estimate.low);
   assert.ok(good.estimate.low <= good.estimate.high);
   assert.ok(bad.estimate.low >= 4);
