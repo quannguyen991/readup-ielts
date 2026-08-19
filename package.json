@@ -61,7 +61,8 @@
     "assets:plan": "tsx scripts/generate-assets.ts --plan",
     "assets:generate": "tsx scripts/generate-assets.ts",
     "ai:layout": "tsx scripts/ask-layout.ts",
-    "ingest": "tsx scripts/ingest.ts"
+    "ingest": "tsx scripts/ingest.ts",
+    "writing:prompts": "tsx scripts/generate-writing-prompts.ts"
   },
   "private": true
 }

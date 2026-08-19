@@ -69,8 +69,18 @@ test('lọc theo band tối đa lấy cả đề dễ hơn', () => {
 });
 
 test('tìm theo chữ, không phân biệt hoa thường', () => {
-  const found = filterWritingPrompts({ search: 'PUBLIC TRANSPORT' });
-  assert.ok(found.some((p) => p.id === 'w-t2-transport-001'));
+  // Lấy một cụm có thật trong một đề bất kỳ rồi viết hoa toàn bộ. Không bám vào
+  // id cụ thể nào của seed: seed do script sinh ra và sẽ đổi, mà hành vi cần
+  // kiểm ở đây là "tìm không phân biệt hoa thường", không phải nội dung kho đề.
+  const sample = WRITING_PROMPTS.find((p) => p.task === 'ielts_task2');
+  assert.ok(sample);
+
+  const phrase = sample.promptText.slice(10, 34);
+  const found = filterWritingPrompts({ search: phrase.toUpperCase() });
+  assert.ok(
+    found.some((p) => p.id === sample.id),
+    `không tìm thấy đề chứa "${phrase}"`,
+  );
 });
 
 test('không truyền bộ lọc thì trả toàn bộ', () => {
