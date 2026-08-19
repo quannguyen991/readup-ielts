@@ -108,6 +108,38 @@ QUY TẮC:
 3. Tối đa 12 lỗi. Ưu tiên lỗi ăn điểm, bỏ qua lỗi vụn vặt.
 4. Không đánh dấu chỗ đúng.`;
 
+/**
+ * Chỉ chạy lượt chấm điểm, bỏ lượt annotation.
+ *
+ * Dùng cho vòng kiểm định bài mẫu: ở đó chỉ cần biết bài rơi vào band nào, mà
+ * chạy thêm lượt annotation thì tốn gấp rưỡi thời gian cho một thông tin không
+ * ai đọc tới.
+ */
+export async function scoreWriting(input: {
+  prompt: WritingPrompt;
+  bodyText: string;
+}): Promise<{ bandLow: number; bandHigh: number; summaryVi: string; model: string }> {
+  const model = evaluationModel();
+  try {
+    const score = await withRetry(() =>
+      callJson(
+        model,
+        SCORE_SYSTEM,
+        `${describePrompt(input.prompt)}\n\nBÀI LÀM:\n${input.bodyText}`,
+      ),
+    );
+    const built = buildResult(score, { annotations: [] }, input.bodyText, model);
+    return {
+      bandLow: built.bandLow,
+      bandHigh: built.bandHigh,
+      summaryVi: built.summaryVi,
+      model,
+    };
+  } catch (err) {
+    throw toAiError(err, 'Không chấm được bài.');
+  }
+}
+
 export async function evaluateWriting(input: {
   prompt: WritingPrompt;
   bodyText: string;

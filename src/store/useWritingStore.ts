@@ -26,10 +26,22 @@ import type {
 
 type DraftKey = string;
 
+/** Bài mẫu đã sinh, khoá theo `promptId:targetBand`. */
+export type StoredModelEssay = {
+  promptId: string;
+  targetBand: number;
+  bodyText: string;
+  wordCount: number;
+  verifiedLow: number | null;
+  verifiedHigh: number | null;
+};
+
 type WritingState = {
   drafts: Record<DraftKey, { text: string; updatedAt: string }>;
   submissions: WritingSubmission[];
   evaluations: WritingEvaluation[];
+  /** Sinh bài mẫu tốn ba lượt gọi model, nên sinh xong là giữ lại. */
+  modelEssays: Record<string, StoredModelEssay>;
 
   saveDraft: (promptId: string, drillPart: DrillPart | null, text: string) => void;
   getDraft: (promptId: string, drillPart: DrillPart | null) => string;
@@ -44,6 +56,8 @@ type WritingState = {
   }) => WritingSubmission;
 
   saveEvaluation: (evaluation: WritingEvaluation) => void;
+  saveModelEssay: (essay: StoredModelEssay) => void;
+  getModelEssay: (promptId: string, targetBand: number) => StoredModelEssay | undefined;
 };
 
 /**
@@ -60,6 +74,7 @@ export const useWritingStore = create<WritingState>()(
       drafts: {},
       submissions: [],
       evaluations: [],
+      modelEssays: {},
 
       saveDraft: (promptId, drillPart, text) =>
         set((s) => ({
@@ -103,6 +118,13 @@ export const useWritingStore = create<WritingState>()(
             ...s.evaluations.filter((e) => e.submissionId !== evaluation.submissionId),
           ],
         })),
+
+      saveModelEssay: (essay) =>
+        set((s) => ({
+          modelEssays: { ...s.modelEssays, [`${essay.promptId}:${essay.targetBand}`]: essay },
+        })),
+
+      getModelEssay: (promptId, targetBand) => get().modelEssays[`${promptId}:${targetBand}`],
     }),
     { name: `${STORAGE_PREFIX}writing`, storage: storage() },
   ),

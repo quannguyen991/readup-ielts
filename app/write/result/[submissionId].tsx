@@ -224,6 +224,10 @@ export default function WritingResultScreen() {
               </View>
             </Card>
 
+            <View className="mt-3">
+              <ModelEssayPanel promptId={prompt.id} />
+            </View>
+
             <View className="mt-4 flex-row flex-wrap gap-2">
               <Button label="Viết lại bài này" onPress={() => router.push(`/write/${prompt.id}` as never)} />
               <Button variant="outline" label="Về kho đề" onPress={() => router.push('/write')} />
@@ -301,5 +305,96 @@ function AnnotatedText({
         ))}
       </View>
     </View>
+  );
+}
+
+
+/**
+ * Bài mẫu do AI soạn, sinh theo yêu cầu.
+ *
+ * Chỉ sinh khi người học bấm xem: mỗi bài tốn ba lượt gọi model, sinh sẵn cho
+ * cả kho là tốn tiền cho phần lớn bài chẳng ai mở ra. Sinh xong thì lưu lại nên
+ * lần sau mở là có ngay.
+ */
+function ModelEssayPanel({ promptId }: { promptId: string }) {
+  const TARGET = 7;
+  const essay = useWritingStore((s) => s.modelEssays[`${promptId}:${TARGET}`]);
+  const saveModelEssay = useWritingStore((s) => s.saveModelEssay);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const load = () => {
+    if (loading) return;
+    setLoading(true);
+    setError(null);
+    fetch('/api/writing/model-essay', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ promptId, targetBand: TARGET }),
+    })
+      .then(async (res) => {
+        const data = (await res.json()) as Record<string, unknown>;
+        if (!res.ok) throw new Error(String(data.error ?? 'Soạn bài mẫu thất bại.'));
+        return data;
+      })
+      .then((data) => saveModelEssay(data as never))
+      .catch((e: unknown) => setError(e instanceof Error ? e.message : 'Soạn bài mẫu thất bại.'))
+      .finally(() => setLoading(false));
+  };
+
+  return (
+    <Card>
+      <Text className="font-heavy text-cardTitle text-ink">Bài mẫu tham khảo</Text>
+
+      {!essay ? (
+        <>
+          <Text className="mt-1 font-sans text-label text-muted">
+            Bài do AI soạn ở mức band {TARGET}, sau đó được chấm ngược bằng chính đường chấm bạn vừa
+            dùng. Mất khoảng 30–60 giây.
+          </Text>
+          {error ? (
+            <Text className="mt-2 font-sans text-label text-danger-ink">{error}</Text>
+          ) : null}
+          <View className="mt-3 flex-row items-center gap-2">
+            {loading ? <ActivityIndicator color={color.primary} /> : null}
+            <Button
+              variant="outline"
+              label={loading ? 'Đang soạn…' : `Xem bài mẫu band ${TARGET}`}
+              disabled={loading}
+              onPress={load}
+            />
+          </View>
+        </>
+      ) : (
+        <>
+          <View className="mt-1 flex-row flex-wrap items-center gap-2">
+            <Badge tone="neutral" label={`Nhắm band ${essay.targetBand}`} />
+            {essay.verifiedLow != null && essay.verifiedHigh != null ? (
+              <Badge
+                tone={
+                  Math.abs((essay.verifiedLow + essay.verifiedHigh) / 2 - essay.targetBand) <= 0.5
+                    ? 'success'
+                    : 'warning'
+                }
+                label={`Chấm lại: ${formatBand(essay.verifiedLow)}–${formatBand(essay.verifiedHigh)}`}
+              />
+            ) : (
+              <Badge tone="warning" label="Chưa kiểm định được" />
+            )}
+            <Text className="font-sans text-label text-muted">{essay.wordCount} từ</Text>
+          </View>
+
+          <Text className="mt-3 font-sans text-body text-ink" style={{ lineHeight: 24 }}>
+            {essay.bodyText}
+          </Text>
+
+          <Text className="mt-3 font-sans text-label text-subtle">
+            Đây là bài tham khảo do AI soạn, không phải bài thi thật đạt band này. Đọc để lấy khung
+            câu và cách nhóm ý, đừng học thuộc.
+          </Text>
+        </>
+      )}
+    </Card>
   );
 }
