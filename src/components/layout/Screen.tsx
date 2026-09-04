@@ -20,11 +20,18 @@ export function Screen({ children, scroll = true }: ScreenProps) {
     </View>
   );
 
-  if (!scroll) return <View className="flex-1 bg-canvas">{inner}</View>;
+  /*
+    Vùng nội dung KHÔNG tự tô nền nữa.
+
+    Trước đây mỗi màn tô đè một lớp `bg-canvas` đục, và nền loang ở AppShell nằm
+    ngay dưới lớp ấy — có cũng như không. Màu nền giờ do AppShell lo; thẻ và
+    bảng vẫn dùng `bg-surface` trắng đục nên chữ vẫn nằm trên nền phẳng, dễ đọc.
+  */
+  if (!scroll) return <View className="flex-1">{inner}</View>;
 
   return (
     <ScrollView
-      className="flex-1 bg-canvas"
+      className="flex-1"
       contentContainerStyle={{ paddingBottom: 32 }}
       showsVerticalScrollIndicator={false}
     >

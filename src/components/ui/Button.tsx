@@ -2,7 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from './Icon';
-import { color } from '@/theme/tokens';
+import { color, paper } from '@/theme/tokens';
 
 export type ButtonVariant =
   | 'primary'
@@ -13,7 +13,11 @@ export type ButtonVariant =
   /** Dùng trên nền gradient của banner hero: chữ trắng, nền mờ. */
   | 'onDark'
   /** Nút chính trên banner gradient: nền trắng, chữ xanh (như ảnh 4). */
-  | 'onDarkSolid';
+  | 'onDarkSolid'
+  /** Nút chính của các màn TÁC VỤ — xanh tím, dùng trên thẻ giấy kem. */
+  | 'brand'
+  /** Nút phụ của màn tác vụ: viền chàm nhạt, nền trắng. */
+  | 'brandOutline';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 type ButtonProps = {
@@ -37,6 +41,8 @@ const container: Record<ButtonVariant, string> = {
   danger: 'bg-danger',
   onDark: 'bg-white/15 border border-white/35',
   onDarkSolid: 'bg-white',
+  brand: 'bg-brand-mid',
+  brandOutline: 'bg-white border border-brand-soft',
 };
 
 const labelClass: Record<ButtonVariant, string> = {
@@ -47,6 +53,8 @@ const labelClass: Record<ButtonVariant, string> = {
   danger: 'text-white',
   onDark: 'text-white',
   onDarkSolid: 'text-primary-700',
+  brand: 'text-white',
+  brandOutline: 'text-paper-body',
 };
 
 const iconColor: Record<ButtonVariant, string> = {
@@ -57,6 +65,8 @@ const iconColor: Record<ButtonVariant, string> = {
   danger: color.white,
   onDark: color.white,
   onDarkSolid: color.primary,
+  brand: color.white,
+  brandOutline: paper.body,
 };
 
 const sizing: Record<ButtonSize, { box: string; text: string; icon: number }> = {

@@ -34,6 +34,7 @@ export type IconName =
   | 'arrow-right'
   | 'info'
   | 'sparkle'
+  | 'lock'
   | 'gauge'
   | 'calendar'
   | 'refresh'
@@ -43,6 +44,14 @@ export type IconName =
   | 'list'
   | 'filter'
   | 'plus'
+  | 'play'
+  | 'languages'
+  | 'leaf'
+  | 'heart'
+  | 'briefcase'
+  | 'compass'
+  | 'building'
+  | 'flask'
   | 'more';
 
 type IconProps = {
@@ -192,6 +201,13 @@ function renderPaths(name: IconName, p: CommonProps) {
       );
     case 'check':
       return <Polyline {...p} points="5 12.8 9.6 17 19 7.4" />;
+    case 'lock':
+      return (
+        <>
+          <Rect {...p} x={4.8} y={10.5} width={14.4} height={9} rx={2.4} />
+          <Path {...p} d="M8.4 10.5V7.8a3.6 3.6 0 0 1 7.2 0v2.7" />
+        </>
+      );
     case 'close':
       return <Path {...p} d="m6.5 6.5 11 11m0-11-11 11" />;
     case 'chevron-down':
@@ -250,6 +266,9 @@ function renderPaths(name: IconName, p: CommonProps) {
           <Path {...p} d="M4 10h16M8.6 3.6v3.6M15.4 3.6v3.6" />
         </>
       );
+    case 'play':
+      // Tam giác đặc: nút "chạy tiếp" mà vẽ rỗng nét thì nhìn như cái nêm.
+      return <Path {...p} d="M8 5.5 18 12 8 18.5Z" fill={p.stroke} />;
     case 'refresh':
       return (
         <>
@@ -291,6 +310,64 @@ function renderPaths(name: IconName, p: CommonProps) {
       return <Path {...p} d="M4.5 5.8h15l-5.8 6.7v5.3l-3.4 2v-7.3z" />;
     case 'plus':
       return <Path {...p} d="M12 5.5v13M5.5 12h13" />;
+    case 'languages':
+      // Hai mũi tên ngược chiều — quy ước phổ biến cho "đổi/dịch ngôn ngữ",
+      // không vẽ chữ cái cụ thể vì bộ icon này toàn nét trừu tượng.
+      return (
+        <>
+          <Path {...p} d="M4.5 8.5h13" />
+          <Polyline {...p} points="14.3 5.3 17.5 8.5 14.3 11.7" />
+          <Path {...p} d="M19.5 15.5h-13" />
+          <Polyline {...p} points="9.7 12.3 6.5 15.5 9.7 18.7" />
+        </>
+      );
+    case 'leaf':
+      return (
+        <>
+          <Path {...p} d="M11 20a7 7 0 0 1-1.2-13.9C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z" />
+          <Path {...p} d="M2 21c0-3 1.9-5.4 5.1-6 2.4-.5 4.9-2 5.9-3" />
+        </>
+      );
+    case 'heart':
+      return (
+        <Path
+          {...p}
+          d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5C2 10.8 3.5 12.5 5 14l7 7z"
+        />
+      );
+    case 'briefcase':
+      return (
+        <>
+          <Rect {...p} x={3.5} y={8} width={17} height={11.5} rx={2} />
+          <Path {...p} d="M9 8V6.3a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2V8" />
+          <Path {...p} d="M3.5 13.5h17" />
+        </>
+      );
+    case 'compass':
+      return (
+        <>
+          <Circle {...p} cx={12} cy={12} r={8} />
+          <Path {...p} d="M14.8 9.2 13 13l-3.8 1.8L11 11z" fill={p.stroke} />
+        </>
+      );
+    case 'building':
+      return (
+        <>
+          <Rect {...p} x={6} y={3.5} width={12} height={17} rx={1.5} />
+          <Path {...p} d="M9 7.5h.01M15 7.5h.01M9 11.5h.01M15 11.5h.01M9 15.5h.01M15 15.5h.01" strokeWidth={2.4} />
+        </>
+      );
+    case 'flask':
+      return (
+        <>
+          <Path
+            {...p}
+            d="M10 3v6.3c0 .4-.1.8-.4 1.1l-4.9 6.9A2.6 2.6 0 0 0 6.8 21h10.4a2.6 2.6 0 0 0 2.1-4.1l-4.9-6.9a1.9 1.9 0 0 1-.4-1.1V3"
+          />
+          <Path {...p} d="M9 3h6" />
+          <Path {...p} d="M6.7 15h10.6" />
+        </>
+      );
     case 'more':
       return (
         <>

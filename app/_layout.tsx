@@ -2,7 +2,7 @@ import '../global.css';
 
 import React, { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
-import { Slot } from 'expo-router';
+import { Slot, usePathname } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -16,9 +16,17 @@ import {
 } from '@expo-google-fonts/plus-jakarta-sans';
 
 import { AppShell } from '@/components/layout/AppShell';
+import { PageTransition } from '@/components/motion/Motion';
+import { useAuthBootstrap } from '@/store/useAuthStore';
+import { useSyncBootstrap } from '@/store/useSyncStore';
 import { color } from '@/theme/tokens';
 
 export default function RootLayout() {
+  // Khoá chuyển cảnh là đường dẫn: đổi trang thì nội dung được gắn lại và hiệu
+  // ứng vào chạy lại. Đây cũng là lý do KHÔNG bọc cả AppShell — sidebar phải
+  // đứng yên, chỉ vùng nội dung mới chuyển.
+  const pathname = usePathname();
+
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -27,6 +35,11 @@ export default function RootLayout() {
         },
       }),
   );
+
+  // Khôi phục phiên đăng nhập rồi bật đồng bộ. Cả hai đều chịu được việc chưa
+  // cấu hình Supabase — lúc ấy app chạy hoàn toàn cục bộ như trước.
+  useAuthBootstrap();
+  useSyncBootstrap();
 
   const [fontsLoaded] = useFonts({
     PlusJakartaSans_400Regular,
@@ -49,7 +62,9 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <StatusBar style="dark" />
         <AppShell>
-          <Slot />
+          <PageTransition routeKey={pathname}>
+            <Slot />
+          </PageTransition>
         </AppShell>
       </QueryClientProvider>
     </SafeAreaProvider>

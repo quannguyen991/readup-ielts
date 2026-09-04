@@ -61,8 +61,7 @@ export function HeroBanner({
           <View className="hidden lg:flex">
             <AssetImage
               assetKey={assetKeys.illustration(illustration)}
-              width={280}
-              height={180}
+              preset="hero" 
               contentFit="contain"
               radius={0}
             />
