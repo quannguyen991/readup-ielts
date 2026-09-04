@@ -18,6 +18,7 @@ import { formatBand } from '@/lib/band';
 import { findEvidenceSpan, mergeSpans, type EvidenceSpan } from '@/lib/reading/evidence';
 import { ReadingCoachPanel, type CoachRequest } from '@/components/reader/ReadingCoachPanel';
 import { ProofStateBadge } from '@/components/reader/ProofStateBadge';
+import { ProbePanel } from '@/components/reader/ProbePanel';
 import { classify } from '@/services/proofloop/state';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
@@ -244,13 +245,41 @@ export default function ReviewScreen() {
                     chưa tồn tại lúc họ làm bài.
                   */}
                   {attempt.evidenceMark !== undefined ? (
-                    <ProofStateBadge
-                      state={classify({
-                        answerCorrect: attempt.isCorrect,
-                        mark: attempt.evidenceMark ?? null,
-                        truthParagraphIndex: question?.evidenceParagraphIndex ?? null,
-                      })}
-                    />
+                    <>
+                      <ProofStateBadge
+                        state={classify({
+                          answerCorrect: attempt.isCorrect,
+                          mark: attempt.evidenceMark ?? null,
+                          truthParagraphIndex: question?.evidenceParagraphIndex ?? null,
+                        })}
+                      />
+                      {article && question ? (
+                        <ProbePanel
+                          state={classify({
+                            answerCorrect: attempt.isCorrect,
+                            mark: attempt.evidenceMark ?? null,
+                            truthParagraphIndex: question.evidenceParagraphIndex ?? null,
+                          })}
+                          mark={attempt.evidenceMark ?? null}
+                          fetchProbe={async () => {
+                            const res = await fetch('/api/proofloop/probe', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                answerCorrect: attempt.isCorrect,
+                                mark: attempt.evidenceMark ?? null,
+                                truthParagraphIndex: question.evidenceParagraphIndex ?? null,
+                                passage: article.paragraphs.join('\n\n'),
+                                questionPrompt: question.prompt,
+                                correctAnswer: question.correctAnswer,
+                                truthEvidenceText: question.evidenceText,
+                              }),
+                            });
+                            return res.json();
+                          }}
+                        />
+                      ) : null}
+                    </>
                   ) : null}
 
                   <View className="mt-3 flex-row flex-wrap gap-6">
