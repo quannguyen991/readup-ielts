@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import type { QuestionType } from '@/types/database';
 import * as Speech from 'expo-speech';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -9,6 +10,7 @@ import { QuestionPanel } from '@/components/reader/QuestionPanel';
 import { useTextSelection } from '@/components/reader/useTextSelection';
 import { WordSheet, type WordSheetTarget } from '@/components/reader/WordSheet';
 import { ChatPanel } from '@/components/reader/ChatPanel';
+import { useBilingual } from '@/components/reader/useBilingual';
 import { Badge, Button, Card, Icon, IconButton } from '@/components/ui';
 import {
   getArticleById,
@@ -30,7 +32,19 @@ import { color, highlightColors, type HighlightColorKey } from '@/theme/tokens';
 
 /** Màn hình đọc + luyện đề, bố cục 2 cột — bám ảnh tham chiếu số 2. */
 export default function ReadScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, types } = useLocalSearchParams<{ id: string; types?: string }>();
+
+  /*
+    Đơn hàng dạng câu đến từ bộ lọc ở màn Luyện tập, đi qua URL.
+
+    Đi qua URL chứ không qua một store dùng chung: bộ lọc là ý muốn cho LẦN MỞ
+    BÀI NÀY, không phải thiết lập vĩnh viễn của người dùng. Để trong store thì
+    một lần lọc hôm nay sẽ âm thầm đổi mọi bài đọc tuần sau mà không ai nhớ vì sao.
+  */
+  const requestedTypes = useMemo(
+    () => (types ? (types.split(',').filter(Boolean) as QuestionType[]) : undefined),
+    [types],
+  );
   const userArticle = useUserArticleStore((s) => (id ? s.articles[id] : undefined));
 
   // Bài tự dán không nằm trong seed nên phải tra cả hai nguồn.
@@ -47,6 +61,7 @@ export default function ReadScreen() {
   }, [id, meta, userArticle]);
 
   const fontScale = useReaderStore((s) => s.fontScale);
+  const bilingual = useBilingual(id ?? '');
   const setFontScale = useReaderStore((s) => s.setFontScale);
   const ttsRate = useReaderStore((s) => s.ttsRate);
   const setTtsRate = useReaderStore((s) => s.setTtsRate);
@@ -65,8 +80,11 @@ export default function ReadScreen() {
 
   const ensureSet = useQuestionStore((s) => s.ensureSet);
   const questionSet = useQuestionStore((s) => (id ? s.sets[id] : undefined));
-
-  const [loadingQuestions, setLoadingQuestions] = useState(false);
+  // Cờ "đang tải" đọc THẲNG từ store chứ không giữ một bản sao cục bộ. Store là
+  // nơi thật sự biết bộ đề của bài này đang được lấy hay không (nó đặt cờ ngay
+  // trong `ensureSet`, kèm cả hạn chờ); giữ thêm một `useState` ở đây chỉ là bản
+  // sao chép tay, và cứ mỗi lần mở bài lại tốn một lượt render để bật nó lên.
+  const loadingQuestions = useQuestionStore((s) => (id ? (s.loading[id] ?? false) : false));
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [marked, setMarked] = useState<Record<string, boolean>>({});
   const [submitting, setSubmitting] = useState(false);
@@ -83,7 +101,10 @@ export default function ReadScreen() {
   const [secondsLeft, setSecondsLeft] = useState(20 * 60);
   const [paused, setPaused] = useState(false);
 
-  const startedAt = useRef(Date.now());
+  // Mốc đặt trong effect, không phải trong `useRef(Date.now())`: đối số của useRef
+  // được tính ngay trong lúc render. Mốc này chỉ đọc ở handler nên đặt muộn một
+  // nhịp không ảnh hưởng gì, mà lại đúng hơn — nó là lúc bài đọc thật sự hiện ra.
+  const startedAt = useRef(0);
   const articleHighlights = useMemo(
     () => highlights.filter((h) => h.articleId === article?.id),
     [highlights, article?.id],
@@ -96,20 +117,33 @@ export default function ReadScreen() {
     return () => clearInterval(timer);
   }, [paused]);
 
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
+
   // Đánh dấu các từ trong bài là "đã gặp" để lần sau tô nhạt sẵn.
+  //
+  // Hoãn một nhịp chứ không chạy thẳng trong effect. Hai lý do, và cả hai đều là
+  // lý do thật chứ không phải để chiều lint: (1) đây là ghi vào store từ vựng
+  // ngay giữa lượt commit của màn đọc, kéo theo một lượt render nữa trước khi
+  // người đọc kịp thấy chữ nào; (2) việc tách 400 từ rồi tra nguyên thể là phần
+  // tính toán nặng nhất lúc mở bài, mà nó KHÔNG cần xong trước khi bài hiện ra.
   useEffect(() => {
     if (!article?.bodyText) return;
-    const lemmas = [...new Set((article.bodyText.toLowerCase().match(/[a-z]{4,}/g) ?? []).slice(0, 400))].map(
-      lemmatize,
-    );
-    markSeen(lemmas);
+    const body = article.bodyText;
+    const defer = setTimeout(() => {
+      const lemmas = [...new Set((body.toLowerCase().match(/[a-z]{4,}/g) ?? []).slice(0, 400))].map(
+        lemmatize,
+      );
+      markSeen(lemmas);
+    }, 0);
+    return () => clearTimeout(defer);
   }, [article?.id, article?.bodyText, markSeen]);
 
   useEffect(() => {
     if (!article || !isReadable(article)) return;
-    setLoadingQuestions(true);
-    void ensureSet(article).finally(() => setLoadingQuestions(false));
-  }, [article, ensureSet]);
+    void ensureSet(article, requestedTypes ? { types: requestedTypes } : {});
+  }, [article, ensureSet, requestedTypes]);
 
   useEffect(() => {
     return () => {
@@ -155,7 +189,7 @@ export default function ReadScreen() {
     return (
       <View className="flex-1 items-center justify-center bg-canvas p-6">
         <Card className="max-w-[520px]">
-          <Badge label="Chỉ tiêu đề" tone="warning" />
+          <Badge label="Link đề chính thức" tone="warning" />
           <Text className="mt-3 font-strong text-sectionTitle text-ink">{meta.title}</Text>
           <Text className="mt-2 font-sans text-body text-muted">{meta.summary}</Text>
           <Text className="mt-3 font-sans text-label text-subtle">
@@ -273,8 +307,22 @@ export default function ReadScreen() {
 
     setProgress(article.id, 100, article.paragraphs.length - 1);
 
+    /*
+      Chỉ ghi tốc độ đọc khi con số CÓ THỂ LÀ THẬT.
+
+      Ngưỡng cũ là 12 giây, nên ai mở bài rồi bấm nộp sớm sẽ tạo ra "1045
+      từ/phút" và con số đó nằm lại trong trang Tiến độ như một thành tích. Người
+      đọc nhanh nhất cũng chỉ quanh 400 từ/phút; ngoài khoảng 60–600 thì đó không
+      phải tốc độ đọc, đó là nhiễu — và nhiễu thì đừng lưu, đừng hiện.
+
+      `durationMs` tính cả thời gian trả lời câu hỏi nên nó vốn đã rộng tay; càng
+      không có lý do chấp nhận thêm giá trị vô lý.
+    */
     const minutes = durationMs / 60000;
-    if (minutes > 0.2 && article.wordCount) logWpm(article.wordCount / minutes);
+    if (minutes > 0 && article.wordCount) {
+      const wpm = article.wordCount / minutes;
+      if (wpm >= 60 && wpm <= 600) logWpm(wpm);
+    }
 
     setSubmitting(false);
     router.push(`/review/${sessionId}` as never);
@@ -360,6 +408,7 @@ export default function ReadScreen() {
 
               <View className="mt-4 border-t border-border pt-4">
                 <PassageView
+                  translations={bilingual.on ? bilingual.paragraphs : null}
                   paragraphs={article.paragraphs}
                   fontScale={fontScale}
                   highlights={articleHighlights}
@@ -465,6 +514,26 @@ export default function ReadScreen() {
               </View>
 
               <View className="mt-3 flex-row flex-wrap items-center gap-2 border-t border-border pt-3">
+                {/*
+                  Nút song ngữ đứng ĐẦU hàng công cụ, trước cả nút đọc to: với
+                  người học ở trình độ thấp thì đây là thứ quyết định họ đọc hết
+                  bài hay bỏ giữa chừng.
+                */}
+                <Button
+                  label={
+                    bilingual.loading
+                      ? 'Đang dịch…'
+                      : bilingual.on
+                        ? 'Tắt song ngữ'
+                        : 'Đọc song ngữ'
+                  }
+                  variant={bilingual.on ? 'primary' : 'outline'}
+                  size="sm"
+                  iconLeft="letters"
+                  loading={bilingual.loading}
+                  disabled={bilingual.loading}
+                  onPress={() => void bilingual.toggle()}
+                />
                 <Button
                   label="Đọc to bài"
                   variant="outline"
@@ -481,6 +550,15 @@ export default function ReadScreen() {
                     setSpeakingParagraph(null);
                   }}
                 />
+
+                {bilingual.error ? (
+                  <View className="w-full flex-row items-start gap-2 rounded-card bg-danger-soft p-2.5">
+                    <Icon name="info" size={15} color={color.danger} />
+                    <Text className="flex-1 font-sans text-label text-danger-ink">
+                      {bilingual.error}
+                    </Text>
+                  </View>
+                ) : null}
 
                 {[0.75, 1, 1.5, 2].map((rate) => (
                   <Pressable
@@ -540,8 +618,8 @@ export default function ReadScreen() {
             {questionSet?.generatedBy === 'offline' ? (
               <Text className="mt-2 font-sans text-label text-subtle">
                 {article.exam === 'sat'
-                  ? 'Bộ đề đang sinh offline từ chính bài đọc, mới có Words in Context và Inferences. Cấu hình ANTHROPIC_API_KEY để Claude ra đủ năm dạng của SAT.'
-                  : 'Bộ đề đang sinh offline từ chính bài đọc. Cấu hình ANTHROPIC_API_KEY để Claude ra đề sát chuẩn IELTS hơn.'}
+                  ? 'Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Words in Context và Inferences. Tải lại trang để lấy đủ năm dạng của SAT.'
+                  : 'Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Multiple Choice. Tải lại trang để lấy đủ các dạng câu.'}
               </Text>
             ) : null}
           </View>

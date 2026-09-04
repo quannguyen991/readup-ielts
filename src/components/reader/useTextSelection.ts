@@ -18,8 +18,14 @@ export function useTextSelection(
   enabled = true,
 ): void {
   // Giữ callback trong ref để không phải gỡ rồi gắn lại listener mỗi lần render.
+  //
+  // Gán trong effect chứ không gán thẳng trong thân hàm: ghi vào ref lúc render
+  // là một hiệu ứng phụ nằm sai chỗ. Không có khoảng hở nào ở đây — listener chỉ
+  // được gắn từ effect bên dưới, mà effect thì luôn chạy sau lần gán này.
   const handler = useRef(onSelect);
-  handler.current = onSelect;
+  useEffect(() => {
+    handler.current = onSelect;
+  }, [onSelect]);
 
   // Bôi đen xong mà người đọc bấm tiếp vào chính vùng đó thì trình duyệt vẫn
   // giữ nguyên selection cũ — không mở lại thẻ cho cùng một cụm chữ.

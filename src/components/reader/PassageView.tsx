@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 
 import { hasActiveSelection } from './useTextSelection';
-import { highlightColors, wordStatusColor, type HighlightColorKey } from '@/theme/tokens';
+import { color, highlightColors, wordStatusColor, type HighlightColorKey } from '@/theme/tokens';
 import { lemmatize } from '@/services/dictionary/lookup';
 import type { Highlight } from '@/store/useReaderStore';
 import type { WordStatusKind } from '@/types/database';
@@ -26,6 +26,13 @@ export type PassageViewProps = {
   onPhraseToken: (paragraphIndex: number, tokenIndex: number, token: string) => void;
   /** Đoạn đang được đọc to bởi text-to-speech. */
   speakingParagraph: number | null;
+  /**
+   * Bản dịch tiếng Việt, MỘT PHẦN TỬ MỘT ĐOẠN, cùng thứ tự với `paragraphs`.
+   *
+   * `null` = chưa bật song ngữ. Phần tử rỗng = đoạn đó chưa dịch được; hiện chỗ
+   * trống có lời nhắn còn hơn ghép nhầm bản dịch của đoạn bên cạnh vào.
+   */
+  translations?: string[] | null;
 };
 
 type Token = { text: string; isWord: boolean; start: number; end: number };
@@ -47,6 +54,7 @@ export function PassageView({
   phraseAnchor,
   onPhraseToken,
   speakingParagraph,
+  translations = null,
 }: PassageViewProps) {
   return (
     <View className="gap-4" nativeID={PASSAGE_CONTAINER_ID}>
@@ -64,6 +72,7 @@ export function PassageView({
           phraseAnchor={phraseAnchor?.paragraphIndex === index ? phraseAnchor.tokenIndex : null}
           onPhraseToken={onPhraseToken}
           speaking={speakingParagraph === index}
+          translation={translations ? (translations[index] ?? '') : null}
         />
       ))}
     </View>
@@ -82,6 +91,7 @@ function Paragraph({
   phraseAnchor,
   onPhraseToken,
   speaking,
+  translation,
 }: {
   index: number;
   text: string;
@@ -94,6 +104,7 @@ function Paragraph({
   phraseAnchor: number | null;
   onPhraseToken: PassageViewProps['onPhraseToken'];
   speaking: boolean;
+  translation: string | null;
 }) {
   const tokens = useMemo(() => tokenize(text), [text]);
   const ranges = useMemo(() => highlightRanges(text, highlights), [text, highlights]);
@@ -102,22 +113,25 @@ function Paragraph({
   const lineHeight = fontSize * 1.75;
 
   return (
-    <View className="flex-row gap-3">
-      <View
-        className={[
-          'h-6 w-6 items-center justify-center rounded-md',
-          speaking ? 'bg-primary-600' : 'bg-surfaceAlt',
-        ].join(' ')}
-      >
-        <Text
-          className={['font-strong text-label', speaking ? 'text-white' : 'text-muted'].join(' ')}
-        >
-          {index + 1}
-        </Text>
-      </View>
+    /*
+      KHÔNG đánh số đoạn.
 
+      Đề thi thật không đánh số từng đoạn của passage, và ô số ở đầu mỗi đoạn ăn
+      mất một khoảng lề trên màn hình hẹp. Nó vốn kiêm một việc khác — cho biết
+      đoạn nào đang được đọc to — nên bỏ số thì phải trả việc đó cho thứ khác:
+      một vạch màu bên trái, chỉ hiện đúng lúc đang đọc.
+    */
+    <View
+      className="flex-row gap-3 rounded-r-card"
+      style={
+        speaking
+          ? { borderLeftWidth: 3, borderLeftColor: color.primary, backgroundColor: color.primarySoft, paddingLeft: 10, paddingVertical: 4, marginLeft: -13 }
+          : undefined
+      }
+    >
+      <View className="flex-1">
       <Text
-        className="flex-1 font-sans text-body"
+        className="font-sans text-body"
         style={{ fontSize, lineHeight, color: '#334155' }}
         selectable
       >
@@ -155,6 +169,36 @@ function Paragraph({
           );
         })}
       </Text>
+
+      {/*
+        Bản dịch nằm NGAY DƯỚI đoạn của nó, không phải ở cột bên cạnh.
+
+        Hai cột song song trông gọn trên màn hình rộng nhưng hỏng trên điện
+        thoại — và người học đối chiếu theo CÂU chứ không theo cả đoạn, nên mắt
+        phải đi xuống một đoạn ngắn là đúng hơn đi ngang cả màn hình.
+
+        Chữ nhỏ hơn và nhạt hơn bản gốc, cố ý: bản tiếng Anh vẫn là thứ phải đọc,
+        tiếng Việt chỉ để đối chiếu khi vướng.
+      */}
+      {translation !== null ? (
+        <View
+          className="mt-1.5 border-l-2 pl-2.5"
+          style={{ borderColor: color.border }}
+        >
+          {translation ? (
+            <Text
+              className="font-sans"
+              style={{ fontSize: fontSize * 0.94, lineHeight: lineHeight * 0.92, color: color.muted }}
+              selectable
+            >
+              {translation}
+            </Text>
+          ) : (
+            <Text className="font-sans text-label text-subtle">Đoạn này chưa dịch được.</Text>
+          )}
+        </View>
+      ) : null}
+      </View>
     </View>
   );
 }

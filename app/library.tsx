@@ -3,16 +3,9 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
+import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
-import {
-  Badge,
-  Button,
-  Card,
-  HeroBanner,
-  Icon,
-  ProgressBar,
-  SectionHeader,
-} from '@/components/ui';
+import { Button, Card, Icon, Pagination } from '@/components/ui';
 import {
   CEFR_LEVELS,
   EXAMS,
@@ -24,11 +17,29 @@ import {
   libraryStats,
   type ArticleFilters,
 } from '@/data/articles';
+import { BILINGUAL_ARTICLES } from '@/data/bilingual-repository';
 import { useDueCards, useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
 import type { CefrLevel } from '@/types/database';
 
-/** Library + panel My Vocabulary — bám ảnh tham chiếu số 5. */
+/**
+ * Kho bài đọc.
+ *
+ * BỘ LỌC GẤP LẠI, KHÔNG BÀY HẾT RA. Bản trước xếp năm hàng chip luôn hiện — kỳ
+ * thi, track, khổ bài, độ khó, chủ đề — cộng hàng sắp xếp, chiếm gần hết màn
+ * hình đầu tiên. Người mới vào chưa biết mình muốn lọc gì, nên năm hàng ấy chỉ
+ * là bức tường chắn giữa họ và bài đọc. Giờ mặc định chỉ có ô tìm kiếm và một
+ * nút mở bộ lọc; ai cần lọc thì mở ra, và khi đã chọn thì số bộ lọc đang bật
+ * hiện ngay trên nút nên không ai quên mình đang lọc gì.
+ *
+ * PHÂN TRANG, KHÔNG PHẢI "XEM THÊM". Nút xem thêm nối bài vào cuối danh sách
+ * mãi mãi: cuộn tới bài thứ 60 rồi mở một bài, quay lại là mất sạch vị trí.
+ * Trang có số thì quay lại vẫn đúng trang, và mỗi màn chỉ có 9 thẻ nên mắt còn
+ * nhìn được từng thẻ thay vì lướt qua một dải dài.
+ */
+
+const PAGE_SIZE = 9;
+
 export default function LibraryScreen() {
   const [search, setSearch] = useState('');
   const [exam, setExam] = useState<NonNullable<ArticleFilters['exam']>>('all');
@@ -40,16 +51,27 @@ export default function LibraryScreen() {
   const [topic, setTopic] = useState<string | undefined>(undefined);
   const [kind, setKind] = useState<NonNullable<ArticleFilters['kind']>>('all');
   const [sort, setSort] = useState<NonNullable<ArticleFilters['sort']>>('newest');
-  const [visible, setVisible] = useState(8);
+  const [showFilters, setShowFilters] = useState(false);
+  const [page, setPage] = useState(0);
 
   const stats = useMemo(() => libraryStats(), []);
   const entries = useVocabStore((s) => s.entries);
   const dueCount = useDueCards().length;
+  const savedCount = Object.keys(entries).length;
 
   const articles = useMemo(
     () => filterArticles({ search, exam, track, tier, satTextType, level, topic, kind, sort }),
     [search, exam, track, tier, satTextType, level, topic, kind, sort],
   );
+
+  const activeFilters =
+    (exam !== 'all' ? 1 : 0) +
+    (track !== 'all' ? 1 : 0) +
+    (tier !== 'all' ? 1 : 0) +
+    (satTextType !== 'all' ? 1 : 0) +
+    (level !== 'all' ? 1 : 0) +
+    (topic ? 1 : 0) +
+    (kind !== 'all' ? 1 : 0);
 
   /**
    * Đổi kỳ thi thì bỏ hết bộ lọc con của kỳ thi cũ. Không bỏ thì người dùng dễ
@@ -61,9 +83,8 @@ export default function LibraryScreen() {
     setTrack('all');
     setTier('all');
     setSatTextType('all');
+    setPage(0);
   };
-
-  const savedWords = Object.values(entries).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   const reset = () => {
     setSearch('');
@@ -75,115 +96,155 @@ export default function LibraryScreen() {
     setTopic(undefined);
     setKind('all');
     setSort('newest');
+    setPage(0);
   };
+
+  const pageCount = Math.max(1, Math.ceil(articles.length / PAGE_SIZE));
+  const current = Math.min(page, pageCount - 1);
+  const shown = articles.slice(current * PAGE_SIZE, current * PAGE_SIZE + PAGE_SIZE);
 
   return (
     <Screen>
-      <HeroBanner
-        title="Build Vocabulary Through Reading"
-        subtitle="Đọc bài thật từ nguồn công khai, lưu từ ngay trong câu gặp nó, rồi ôn lại đúng lúc sắp quên."
-        illustration="library-hero"
-      >
-        <View className="flex-row flex-wrap gap-3">
-          <HeroStat value={String(stats.readable)} label="Bài đọc đầy đủ" />
-          <HeroStat value={String(stats.ielts)} label="Passage IELTS" />
-          <HeroStat value={String(stats.sat)} label="Passage SAT" />
-          <HeroStat value={String(savedWords.length)} label="Từ đã lưu" />
-          <HeroStat value={String(dueCount)} label="Đến hạn ôn hôm nay" />
-        </View>
-      </HeroBanner>
-
-      <View className="mt-4 flex-row items-center gap-2 rounded-card border border-border bg-surface px-4">
-        <Icon name="search" size={18} color={color.subtle} />
-        <TextInput
-          value={search}
-          onChangeText={setSearch}
-          placeholder="Tìm bài đọc, chủ đề hoặc từ vựng…"
-          placeholderTextColor={color.subtle}
-          className="h-12 flex-1 font-sans text-body text-ink"
-          style={{ outlineStyle: 'none' } as never}
-        />
-        {search ? (
-          <Pressable onPress={() => setSearch('')} accessibilityLabel="Xoá tìm kiếm">
-            <Icon name="close" size={16} color={color.subtle} />
-          </Pressable>
-        ) : null}
+      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
+        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
+          Reading library
+        </Text>
       </View>
 
-      <View className="mt-3 flex-row flex-wrap items-center gap-2">
-        <Chip label="Mọi kỳ thi" active={exam === 'all'} onPress={() => selectExam('all')} />
-        {EXAMS.map((e) => (
-          <Chip
-            key={e.value}
-            label={e.label}
-            active={exam === e.value}
-            onPress={() => selectExam(exam === e.value ? 'all' : e.value)}
+      <Text className="mt-3 font-heavy text-pageTitle text-ink">Kho bài đọc</Text>
+      <Text className="mt-1.5 max-w-[640px] font-sans text-bodyLg text-muted">
+        Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng
+        lúc sắp quên.
+      </Text>
+
+      <View className="mt-5">
+        <Grid columns={4} tabletColumns={2} mobileColumns={2} gap={12}>
+          <StatTile icon="book" label="Bài đọc đầy đủ" value={String(stats.readable)} />
+          <StatTile icon="clipboard" label="Passage IELTS" value={String(stats.ielts)} />
+          <StatTile icon="grid" label="Passage SAT" value={String(stats.sat)} />
+          <StatTile icon="letters" label="Từ đã lưu" value={String(savedCount)} />
+        </Grid>
+      </View>
+
+      {/*
+        Lối sang kho song ngữ đặt NGAY TRÊN bộ lọc, không nhét xuống chân trang.
+        Hai kho khác nhau ở chỗ được phép hiện gì (xem `bilingual-repository`),
+        nên người vào đây tìm bài đọc cần biết có kho thứ hai ngay từ đầu.
+      */}
+      <Pressable
+        accessibilityRole="link"
+        onPress={() => router.push('/bilingual' as never)}
+        className="mt-5 flex-row flex-wrap items-center gap-4 rounded-card border border-accent-200 bg-accent-50 p-4"
+        style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
+      >
+        <View className="h-12 w-12 items-center justify-center rounded-panel bg-accent-600">
+          <Icon name="languages" size={22} color="#FFFFFF" strokeWidth={1.9} />
+        </View>
+        <View className="min-w-[220px] flex-1">
+          <Text className="font-heavy text-cardTitle text-accent-900">Đọc song ngữ Anh–Việt</Text>
+          <Text className="mt-0.5 font-sans text-body text-accent-800">
+            {BILINGUAL_ARTICLES.length} bài viết riêng cho người học tiếng Việt, bản gốc và bản dịch
+            nằm cạnh nhau theo từng đoạn.
+          </Text>
+        </View>
+        <View className="flex-row items-center gap-1.5">
+          <Text className="font-strong text-body text-accent-700">Mở kho</Text>
+          <Icon name="arrow-right" size={16} color={color.accent} strokeWidth={2} />
+        </View>
+      </Pressable>
+
+      {/* ------------------------------------------------ tìm kiếm + bộ lọc */}
+      <View className="mt-5 flex-row flex-wrap items-center gap-2">
+        <View className="min-w-[260px] flex-1 flex-row items-center gap-2 rounded-card border border-border bg-surface px-4">
+          <Icon name="search" size={18} color={color.subtle} />
+          <TextInput
+            value={search}
+            onChangeText={(text) => {
+              setSearch(text);
+              setPage(0);
+            }}
+            placeholder="Tìm bài đọc, chủ đề hoặc từ vựng…"
+            placeholderTextColor={color.subtle}
+            className="h-11 flex-1 font-sans text-body text-ink"
+            style={{ outlineStyle: 'none' } as never}
           />
-        ))}
+          {search ? (
+            <Pressable onPress={() => setSearch('')} accessibilityLabel="Xoá tìm kiếm">
+              <Icon name="close" size={16} color={color.subtle} />
+            </Pressable>
+          ) : null}
+        </View>
 
-        <View className="w-2" />
-
-        <Chip
-          label="Đọc được toàn văn"
-          active={kind === 'readable'}
-          onPress={() => setKind(kind === 'readable' ? 'all' : 'readable')}
-        />
-        <Chip
-          label="Chỉ tiêu đề"
-          active={kind === 'headline'}
-          onPress={() => setKind(kind === 'headline' ? 'all' : 'headline')}
-        />
-
-        <View className="flex-1" />
-
-        <Pressable onPress={reset} className="flex-row items-center gap-1">
-          <Icon name="refresh" size={14} color={color.primary} />
-          <Text className="font-semi text-label text-primary-600">Reset</Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityState={{ expanded: showFilters }}
+          onPress={() => setShowFilters((v) => !v)}
+          className="h-11 flex-row items-center gap-2 rounded-card border border-border bg-surface px-4"
+        >
+          <Icon name="filter" size={16} color={color.body} />
+          <Text className="font-semi text-body text-ink">Bộ lọc</Text>
+          {activeFilters > 0 ? (
+            <View className="h-5 min-w-[20px] items-center justify-center rounded-pill bg-primary-600 px-1.5">
+              <Text className="font-strong text-white" style={{ fontSize: 10 }}>
+                {activeFilters}
+              </Text>
+            </View>
+          ) : null}
+          <Icon name={showFilters ? 'chevron-down' : 'chevron-right'} size={15} color={color.subtle} />
         </Pressable>
       </View>
 
-      {/* Hàng lọc thứ hai đổi theo kỳ thi: track chỉ có nghĩa với IELTS, còn
-          loại văn bản (văn học / lịch sử / nhân văn / khoa học) là trục của SAT. */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2">
-        <View className="flex-row gap-2 py-1">
-          {exam === 'sat' ? (
-            <>
+      {showFilters ? (
+        <Card className="mt-3">
+          <FilterRow label="Kỳ thi">
+            <Chip label="Tất cả" active={exam === 'all'} onPress={() => selectExam('all')} />
+            {EXAMS.map((e) => (
               <Chip
-                label="Mọi loại văn bản"
-                active={satTextType === 'all'}
-                onPress={() => setSatTextType('all')}
+                key={e.value}
+                label={e.label}
+                active={exam === e.value}
+                onPress={() => selectExam(exam === e.value ? 'all' : e.value)}
               />
-              {SAT_TEXT_TYPES.map((t) => (
+            ))}
+          </FilterRow>
+
+          <FilterRow label={exam === 'sat' ? 'Loại văn bản' : 'Track'}>
+            {exam === 'sat' ? (
+              <>
                 <Chip
-                  key={t.value}
-                  label={t.label}
-                  active={satTextType === t.value}
-                  onPress={() => setSatTextType(satTextType === t.value ? 'all' : t.value)}
+                  label="Tất cả"
+                  active={satTextType === 'all'}
+                  onPress={() => setSatTextType('all')}
                 />
-              ))}
-            </>
-          ) : (
-            <>
-              <Chip label="Mọi track" active={track === 'all'} onPress={() => setTrack('all')} />
-              <Chip
-                label="Academic"
-                active={track === 'academic'}
-                onPress={() => setTrack(track === 'academic' ? 'all' : 'academic')}
-              />
-              <Chip
-                label="General Training"
-                active={track === 'general_training'}
-                onPress={() =>
-                  setTrack(track === 'general_training' ? 'all' : 'general_training')
-                }
-              />
-            </>
-          )}
+                {SAT_TEXT_TYPES.map((t) => (
+                  <Chip
+                    key={t.value}
+                    label={t.label}
+                    active={satTextType === t.value}
+                    onPress={() => setSatTextType(satTextType === t.value ? 'all' : t.value)}
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                <Chip label="Tất cả" active={track === 'all'} onPress={() => setTrack('all')} />
+                <Chip
+                  label="Academic"
+                  active={track === 'academic'}
+                  onPress={() => setTrack(track === 'academic' ? 'all' : 'academic')}
+                />
+                <Chip
+                  label="General Training"
+                  active={track === 'general_training'}
+                  onPress={() => setTrack(track === 'general_training' ? 'all' : 'general_training')}
+                />
+              </>
+            )}
+          </FilterRow>
 
           {exam !== 'all' ? (
-            <>
-              <View className="w-2" />
-              <Chip label="Mọi khổ bài" active={tier === 'all'} onPress={() => setTier('all')} />
+            <FilterRow label="Khổ bài">
+              <Chip label="Tất cả" active={tier === 'all'} onPress={() => setTier('all')} />
               {TIERS_BY_EXAM[exam].map((t) => (
                 <Chip
                   key={t}
@@ -192,139 +253,121 @@ export default function LibraryScreen() {
                   onPress={() => setTier(tier === t ? 'all' : t)}
                 />
               ))}
-            </>
+            </FilterRow>
           ) : null}
-        </View>
-      </ScrollView>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-2">
-        <View className="flex-row gap-2 py-1">
-          <Chip label="Mọi độ khó" active={level === 'all'} onPress={() => setLevel('all')} />
-          {CEFR_LEVELS.map((l) => (
-            <Chip key={l} label={l} active={level === l} onPress={() => setLevel(l)} />
-          ))}
-          <View className="w-2" />
-          <Chip label="Mọi chủ đề" active={!topic} onPress={() => setTopic(undefined)} />
-          {TOPICS.map((t) => (
+          <FilterRow label="Độ khó">
+            <Chip label="Tất cả" active={level === 'all'} onPress={() => setLevel('all')} />
+            {CEFR_LEVELS.map((l) => (
+              <Chip key={l} label={l} active={level === l} onPress={() => setLevel(l)} />
+            ))}
+          </FilterRow>
+
+          <FilterRow label="Chủ đề">
+            <Chip label="Tất cả" active={!topic} onPress={() => setTopic(undefined)} />
+            {TOPICS.map((t) => (
+              <Chip
+                key={t.slug}
+                label={t.nameVi}
+                active={topic === t.slug}
+                onPress={() => setTopic(topic === t.slug ? undefined : t.slug)}
+              />
+            ))}
+          </FilterRow>
+
+          <FilterRow label="Dạng bài">
             <Chip
-              key={t.slug}
-              label={t.nameVi}
-              active={topic === t.slug}
-              onPress={() => setTopic(topic === t.slug ? undefined : t.slug)}
+              label="Đọc được toàn văn"
+              active={kind === 'readable'}
+              onPress={() => setKind(kind === 'readable' ? 'all' : 'readable')}
+            />
+            {/*
+              Nhãn "Link đề chính thức", không phải "Chỉ tiêu đề": 41 bài tin chỉ
+              có tiêu đề đã gỡ khỏi kho, còn lại đúng 8 link tới đề thi chính
+              thức của Cambridge / College Board / Khan Academy — thứ người luyện
+              thi chủ động đi tìm, không phải một thiếu sót.
+            */}
+            <Chip
+              label="Link đề chính thức"
+              active={kind === 'headline'}
+              onPress={() => setKind(kind === 'headline' ? 'all' : 'headline')}
+            />
+          </FilterRow>
+
+          <Pressable onPress={reset} className="mt-1 flex-row items-center gap-1 self-start py-1">
+            <Icon name="refresh" size={14} color={color.primary} />
+            <Text className="font-semi text-label text-primary-600">Bỏ hết bộ lọc</Text>
+          </Pressable>
+        </Card>
+      ) : null}
+
+      {/* ------------------------------------------------------- kết quả */}
+      <View className="mt-5 flex-row flex-wrap items-center justify-between gap-3">
+        <Text className="font-strong text-cardTitle text-ink">
+          {articles.length} bài{activeFilters > 0 || search ? ' khớp bộ lọc' : ''}
+        </Text>
+        <View className="flex-row flex-wrap items-center gap-1.5">
+          {(['newest', 'shortest', 'easiest', 'hardest'] as const).map((s) => (
+            <Chip
+              key={s}
+              label={SORT_LABEL[s]}
+              active={sort === s}
+              onPress={() => {
+                setSort(s);
+                setPage(0);
+              }}
             />
           ))}
-        </View>
-      </ScrollView>
-
-      <View className="mt-4 flex-row flex-wrap gap-4">
-        <View className="min-w-[320px] flex-[2]">
-          <Card>
-            <SectionHeader
-              title="Reading Library"
-              subtitle={`${articles.length} bài khớp bộ lọc`}
-              icon="book"
-              right={
-                <View className="flex-row items-center gap-1">
-                  {(['newest', 'shortest', 'easiest', 'hardest'] as const).map((s) => (
-                    <Chip
-                      key={s}
-                      label={SORT_LABEL[s]}
-                      active={sort === s}
-                      onPress={() => setSort(s)}
-                    />
-                  ))}
-                </View>
-              }
-            />
-
-            <View className="mt-4 gap-3">
-              {articles.slice(0, visible).map((article) => (
-                <ArticleCard key={article.id} article={article} />
-              ))}
-
-              {articles.length === 0 ? (
-                <Text className="py-8 text-center font-sans text-body text-muted">
-                  Không có bài nào khớp. Thử bỏ bớt bộ lọc.
-                </Text>
-              ) : null}
-            </View>
-
-            {visible < articles.length ? (
-              <Button
-                label={`Xem thêm (${articles.length - visible})`}
-                variant="outline"
-                iconRight="chevron-down"
-                fullWidth
-                className="mt-4"
-                onPress={() => setVisible((v) => v + 8)}
-              />
-            ) : null}
-          </Card>
-        </View>
-
-        <View className="min-w-[300px] flex-1">
-          <Card>
-            <SectionHeader
-              title="My Vocabulary"
-              subtitle="Từ bạn đã lưu khi đọc"
-              icon="letters"
-              iconTone="accent"
-              action={{ label: 'Xem tất cả', onPress: () => router.push('/vocabulary' as never) }}
-            />
-
-            <View className="mt-4 gap-3">
-              {savedWords.slice(0, 5).map((entry) => (
-                <View key={entry.id} className="rounded-panel border border-border p-3">
-                  <View className="flex-row items-center justify-between">
-                    <Text className="font-strong text-cardTitle text-ink">{entry.word}</Text>
-                    <Badge label={`${entry.masteryPercent}%`} tone="accent" />
-                  </View>
-
-                  <Text className="mt-0.5 font-mid text-label text-muted">
-                    {[entry.partOfSpeech, entry.phonetic].filter(Boolean).join(' · ') || '—'}
-                  </Text>
-
-                  <Text className="mt-1.5 font-sans text-body text-body" numberOfLines={2}>
-                    {entry.definitionContext ?? entry.definitionVi ?? entry.definitionGeneral ?? '—'}
-                  </Text>
-
-                  <Text className="mt-1.5 font-sans text-label text-subtle" numberOfLines={2}>
-                    “{entry.sourceSentence}”
-                  </Text>
-
-                  <ProgressBar value={entry.masteryPercent} tone="accent" className="mt-2" />
-                </View>
-              ))}
-
-              {savedWords.length === 0 ? (
-                <View className="items-center rounded-panel bg-surfaceAlt px-4 py-8">
-                  <Icon name="letters" size={28} color={color.subtle} />
-                  <Text className="mt-2 text-center font-sans text-body text-muted">
-                    Chưa có từ nào. Mở một bài đọc rồi chạm vào từ bất kỳ để lưu kèm câu gốc.
-                  </Text>
-                </View>
-              ) : null}
-            </View>
-
-            <View className="mt-4 flex-row items-center justify-between rounded-panel bg-primary-50 px-3 py-3">
-              <View className="min-w-0 flex-1">
-                <Text className="font-semi text-body text-primary-700">Smart Review</Text>
-                <Text className="font-sans text-label text-muted">
-                  {dueCount > 0
-                    ? `${dueCount} thẻ đến hạn ôn hôm nay`
-                    : 'Chưa có thẻ nào đến hạn — quay lại sau'}
-                </Text>
-              </View>
-              <Button
-                label="Start Review"
-                size="sm"
-                disabled={dueCount === 0}
-                onPress={() => router.push('/vocabulary?tab=review' as never)}
-              />
-            </View>
-          </Card>
         </View>
       </View>
+
+      <View className="mt-3">
+        {shown.length > 0 ? (
+          <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>
+            {shown.map((article) => (
+              <ArticleCard key={article.id} article={article} layout="cover" />
+            ))}
+          </Grid>
+        ) : (
+          <Card className="items-center py-10">
+            <Icon name="search" size={26} color={color.subtle} />
+            <Text className="mt-2 text-center font-sans text-body text-muted">
+              Không có bài nào khớp. Thử bỏ bớt bộ lọc.
+            </Text>
+            <Button className="mt-3" variant="outline" label="Bỏ hết bộ lọc" onPress={reset} />
+          </Card>
+        )}
+      </View>
+
+      {pageCount > 1 ? (
+        <Pagination page={current} pageCount={pageCount} onChange={setPage} />
+      ) : null}
+
+      {/* --------------------------------------------------- ôn từ đã lưu */}
+      <Card className="mt-5 flex-row flex-wrap items-center justify-between gap-3">
+        <View className="min-w-[220px] flex-1">
+          <Text className="font-strong text-cardTitle text-ink">Sổ từ của bạn</Text>
+          <Text className="mt-0.5 font-sans text-body text-muted">
+            {savedCount === 0
+              ? 'Chưa có từ nào. Mở một bài rồi chạm vào từ bất kỳ để lưu kèm câu gốc.'
+              : dueCount > 0
+                ? `${savedCount} từ đã lưu · ${dueCount} thẻ đến hạn ôn hôm nay`
+                : `${savedCount} từ đã lưu · chưa có thẻ nào đến hạn`}
+          </Text>
+        </View>
+        <View className="flex-row flex-wrap gap-2">
+          <Button
+            variant="outline"
+            label="Mở sổ từ"
+            onPress={() => router.push('/vocabulary' as never)}
+          />
+          <Button
+            label="Ôn ngay"
+            disabled={dueCount === 0}
+            onPress={() => router.push('/vocabulary?tab=review' as never)}
+          />
+        </View>
+      </Card>
     </Screen>
   );
 }
@@ -336,11 +379,39 @@ const SORT_LABEL: Record<'newest' | 'shortest' | 'easiest' | 'hardest', string> 
   hardest: 'Khó nhất',
 };
 
-function HeroStat({ value, label }: { value: string; label: string }) {
+function StatTile({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ComponentProps<typeof Icon>['name'];
+  label: string;
+  value: string;
+}) {
   return (
-    <View className="rounded-panel bg-white/15 px-4 py-2.5">
-      <Text className="font-heavy text-cardTitle text-white">{value}</Text>
-      <Text className="font-mid text-label text-primary-100">{label}</Text>
+    <View className="flex-row items-center gap-3 rounded-card border border-border bg-surface px-4 py-3.5">
+      <View className="h-10 w-10 items-center justify-center rounded-panel bg-primary-50">
+        <Icon name={icon} size={18} color={color.primary} strokeWidth={1.9} />
+      </View>
+      <View className="min-w-0 flex-1">
+        <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 9 }}>
+          {label}
+        </Text>
+        <Text className="font-heavy text-sectionTitle text-ink">{value}</Text>
+      </View>
+    </View>
+  );
+}
+
+function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <View className="mb-3">
+      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+        {label}
+      </Text>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View className="flex-row gap-1.5 py-0.5">{children}</View>
+      </ScrollView>
     </View>
   );
 }
