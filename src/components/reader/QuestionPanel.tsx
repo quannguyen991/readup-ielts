@@ -1,8 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
+import { EvidenceMarker } from '@/components/reader/EvidenceMarker';
 import { Badge, Button, Card, Icon } from '@/components/ui';
 import { QUESTION_TYPE_LABEL, type GeneratedQuestion } from '@/services/questions/types';
+import type { EvidenceMark } from '@/services/proofloop/types';
 import { color } from '@/theme/tokens';
 import type { QuestionType } from '@/types/database';
 
@@ -18,6 +20,10 @@ export function QuestionPanel({
   onToggleMark,
   onSubmit,
   submitting,
+  evidenceMarks,
+  evidenceFor,
+  onStartEvidence,
+  onClearEvidence,
 }: {
   questions: GeneratedQuestion[];
   answers: Record<string, string>;
@@ -26,6 +32,16 @@ export function QuestionPanel({
   onToggleMark: (questionId: string) => void;
   onSubmit: () => void;
   submitting: boolean;
+  /**
+   * Bốn prop ProofLoop dưới đây đều TUỲ CHỌN.
+   *
+   * Panel này còn phục vụ SAT và bài dán tay — những chỗ chưa bật ProofLoop.
+   * Bắt buộc chúng là làm hỏng ba màn khác để thêm một tính năng cho một màn.
+   */
+  evidenceMarks?: Record<string, EvidenceMark>;
+  evidenceFor?: string | null;
+  onStartEvidence?: (questionId: string) => void;
+  onClearEvidence?: (questionId: string) => void;
 }) {
   const [current, setCurrent] = useState(0);
   const [typeFilter, setTypeFilter] = useState<QuestionType | 'all'>('all');
@@ -133,6 +149,15 @@ export function QuestionPanel({
         ) : null}
 
         <Text className="mt-2 font-semi text-bodyLg text-ink">{question.prompt}</Text>
+
+        {onStartEvidence ? (
+          <EvidenceMarker
+            mark={evidenceMarks?.[question.id]}
+            active={evidenceFor === question.id}
+            onStart={() => onStartEvidence(question.id)}
+            onClear={() => onClearEvidence?.(question.id)}
+          />
+        ) : null}
 
         <View className="mt-4">
           {question.options ? (

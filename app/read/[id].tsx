@@ -10,6 +10,7 @@ import { QuestionPanel } from '@/components/reader/QuestionPanel';
 import { useTextSelection } from '@/components/reader/useTextSelection';
 import { WordSheet, type WordSheetTarget } from '@/components/reader/WordSheet';
 import { ChatPanel } from '@/components/reader/ChatPanel';
+import type { EvidenceMark } from '@/services/proofloop/types';
 import { useBilingual } from '@/components/reader/useBilingual';
 import { Badge, Button, Card, Icon, IconButton } from '@/components/ui';
 import {
@@ -97,6 +98,19 @@ export default function ReadScreen() {
     tokenIndex: number;
     word: string;
   } | null>(null);
+  /*
+    PROOFLOOP — bằng chứng người học tự khoanh cho từng câu.
+
+    Đây là vế thứ hai của phép so ở `services/proofloop/state.ts`; vế thứ nhất
+    (`evidenceParagraphIndex`) đã nằm sẵn trong mọi bộ đề. Không có vế này thì
+    đáp án đúng và đoán trúng nhìn giống hệt nhau.
+
+    Dùng lại chế độ chọn cụm có sẵn: khi `evidenceFor` khác null, lần chạm hai
+    đầu cụm tiếp theo ghi vào đây thay vì mở thẻ nghĩa.
+  */
+  const [evidenceMarks, setEvidenceMarks] = useState<Record<string, EvidenceMark>>({});
+  const [evidenceFor, setEvidenceFor] = useState<string | null>(null);
+
   const [speakingParagraph, setSpeakingParagraph] = useState<number | null>(null);
   const [secondsLeft, setSecondsLeft] = useState(20 * 60);
   const [paused, setPaused] = useState(false);
@@ -261,6 +275,25 @@ export default function ReadScreen() {
       start >= 0 && endWordPos >= 0
         ? paragraph.slice(start, endWordPos + token.length)
         : `${phraseAnchor.word} ${token}`;
+
+    // Đang khoanh bằng chứng thì ghi vào đó, KHÔNG mở thẻ nghĩa: người học đang
+    // trả lời câu hỏi, mở thẻ nghĩa lúc này là cắt ngang việc họ đang làm.
+    if (evidenceFor) {
+      const startOffset = start >= 0 ? start : 0;
+      setEvidenceMarks((prev) => ({
+        ...prev,
+        [evidenceFor]: {
+          paragraphIndex,
+          phrase,
+          startOffset,
+          endOffset: startOffset + phrase.length,
+        },
+      }));
+      setEvidenceFor(null);
+      setPhraseAnchor(null);
+      setPhraseMode(false);
+      return;
+    }
 
     setSheet({
       word: phrase,
@@ -612,6 +645,20 @@ export default function ReadScreen() {
                   setMarked((prev) => ({ ...prev, [questionId]: !prev[questionId] }))
                 }
                 onSubmit={submit}
+                evidenceMarks={evidenceMarks}
+                evidenceFor={evidenceFor}
+                onStartEvidence={(questionId) => {
+                  setEvidenceFor(questionId);
+                  setPhraseAnchor(null);
+                  setPhraseMode(true);
+                }}
+                onClearEvidence={(questionId) =>
+                  setEvidenceMarks((prev) => {
+                    const next = { ...prev };
+                    delete next[questionId];
+                    return next;
+                  })
+                }
               />
             )}
 
