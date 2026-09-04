@@ -1,23 +1,42 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
-import { Badge, Button, Card, Icon } from '@/components/ui';
+import { TaskShell } from '@/components/layout/TaskShell';
+import { Button, Icon, PaperCard } from '@/components/ui';
 import { ChartFigure } from '@/components/writing/ChartFigure';
 import { getWritingPromptById } from '@/data/writing-repository';
 import { analyseDraft } from '@/services/writing/analyzer';
 import { useWritingStore } from '@/store/useWritingStore';
-import { color, layout } from '@/theme/tokens';
+import { color, paper } from '@/theme/tokens';
 
 /**
  * Phòng viết.
  *
- * Ba cột: đề bên trái, ô soạn thảo ở giữa, phân tích tức thì bên phải. Phân
- * tích chạy hoàn toàn trên máy nên cập nhật theo từng chữ gõ mà không tốn gì —
- * xem `services/writing/analyzer`.
+ * Hai cột trên nền giấy kẻ ô: đề bài bên trái đứng yên, ô soạn thảo bên phải
+ * chiếm phần còn lại. Bản trước chia BA cột — đề, ô viết, và một cột phân tích
+ * tức thì — nhưng cột thứ ba là thứ nhấp nháy theo từng chữ gõ ngay cạnh chỗ
+ * đang viết, tức là nó cạnh tranh sự chú ý với đúng việc mà màn hình này tồn
+ * tại để phục vụ. Giờ phân tích nằm dưới ô viết, cuộn tới thì thấy.
  *
- * Bản nháp tự lưu sau mỗi lần gõ ngừng, nên đóng tab giữa chừng không mất bài.
+ * Bản nháp tự lưu sau mỗi lần gõ, nên đóng tab giữa chừng không mất bài.
  */
+
+/**
+ * Ba mặt chữ để chọn.
+ *
+ * Chỉ dùng font HỆ THỐNG cộng font sẵn có của app, không nạp thêm bộ chữ nào:
+ * một bộ chữ web là vài trăm KB tải về chỉ để đổi cảm giác khi gõ. Người quen
+ * viết trên giấy hay chọn chữ có chân, nên có sẵn một lựa chọn như vậy là đủ.
+ */
+const FONTS = [
+  { key: 'sans', label: 'Jakarta', family: 'PlusJakartaSans_400Regular' },
+  { key: 'serif', label: 'Có chân', family: Platform.select({ web: 'Georgia, serif', default: 'serif' }) },
+  { key: 'mono', label: 'Đơn cách', family: Platform.select({ web: 'ui-monospace, monospace', default: 'monospace' }) },
+] as const;
+
+const SIZES = [15, 16, 18, 20] as const;
+
 export default function WritingRoomScreen() {
   const { promptId } = useLocalSearchParams<{ promptId: string }>();
   const prompt = typeof promptId === 'string' ? getWritingPromptById(promptId) : undefined;
@@ -29,6 +48,8 @@ export default function WritingRoomScreen() {
   const [text, setText] = useState(() => (prompt ? getDraft(prompt.id, null) : ''));
   const [secondsLeft, setSecondsLeft] = useState(prompt?.timeLimitSeconds ?? 1200);
   const [running, setRunning] = useState(false);
+  const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('sans');
+  const [fontSize, setFontSize] = useState<number>(16);
   const startedAt = useRef<number | null>(null);
 
   // Đồng hồ chỉ chạy khi người học bấm bắt đầu: mở trang ra để đọc đề mà đã bị
@@ -55,12 +76,19 @@ export default function WritingRoomScreen() {
 
   if (!prompt) {
     return (
-      <View className="flex-1 items-center justify-center bg-canvas p-6">
-        <Text className="font-heavy text-cardTitle text-ink">Không tìm thấy đề này</Text>
-        <View className="mt-4">
-          <Button label="Về kho đề" onPress={() => router.replace('/write')} />
-        </View>
-      </View>
+      <TaskShell backHref="/write" backLabel="Về kho đề" title="Không tìm thấy đề này" icon="pencil">
+        <PaperCard className="max-w-[520px]">
+          <Text className="font-sans text-body text-paper-body">
+            Đề bạn vừa mở không còn trong kho. Quay lại danh sách để chọn đề khác.
+          </Text>
+          <Button
+            className="mt-4"
+            variant="brand"
+            label="Về kho đề"
+            onPress={() => router.replace('/write')}
+          />
+        </PaperCard>
+      </TaskShell>
     );
   }
 
@@ -77,152 +105,221 @@ export default function WritingRoomScreen() {
   };
 
   const overtime = secondsLeft === 0;
+  const isTask1 = prompt.task === 'ielts_task1';
+  const wordCount = analysis?.wordCount ?? 0;
+  const fontFamily = FONTS.find((f) => f.key === fontKey)?.family;
 
   return (
-    <ScrollView className="flex-1 bg-canvas" contentContainerStyle={{ paddingBottom: 40 }}>
-      <View
-        className="w-full self-center px-4 py-4 lg:px-6 lg:py-6"
-        style={{ maxWidth: layout.contentMaxWidth }}
-      >
-        <View className="mb-4 flex-row flex-wrap items-center justify-between gap-3">
-          <Pressable onPress={() => router.push('/write')} className="flex-row items-center gap-1">
-            <Icon name="chevron-left" size={18} color={color.muted} />
-            <Text className="font-semi text-body text-muted">Kho đề</Text>
-          </Pressable>
-
-          <View className="flex-row items-center gap-3">
-            <View
-              className={[
-                'flex-row items-center gap-1.5 rounded-pill border px-3 py-1.5',
-                overtime ? 'border-danger bg-danger-soft' : 'border-border bg-surface',
-              ].join(' ')}
-            >
-              <Icon name="clock" size={15} color={overtime ? color.danger : color.muted} />
-              <Text
-                className={['font-strong text-body', overtime ? 'text-danger-ink' : 'text-ink'].join(' ')}
-              >
-                {formatClock(secondsLeft)}
+    <TaskShell
+      backHref="/write"
+      backLabel="Quay lại kho đề"
+      title="Phòng viết"
+      subtitle={isTask1 ? 'Task 1 · Academic Writing' : 'Task 2 · Essay'}
+      icon="pencil"
+      right={
+        <View className="flex-row items-center gap-2">
+          <View
+            className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5"
+            style={{ backgroundColor: overtime ? color.danger : 'rgba(255,255,255,0.18)' }}
+          >
+            <Icon name="clock" size={14} color="#FFFFFF" strokeWidth={2} />
+            <Text className="font-strong text-body text-white">{formatClock(secondsLeft)}</Text>
+          </View>
+          <Button
+            variant="onDark"
+            size="sm"
+            label={running ? 'Tạm dừng' : 'Tính giờ'}
+            onPress={() => setRunning((r) => !r)}
+          />
+        </View>
+      }
+    >
+      <View className="gap-4 lg:flex-row">
+        {/* ---------------------------------------------------------- đề bài */}
+        <View className="lg:w-[36%]">
+          <PaperCard>
+            <View className="flex-row items-center justify-between">
+              <Text className="font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
+              <Text className="font-semi text-label text-paper-muted">
+                {isTask1 ? 'Task 1 · Academic' : 'Task 2 · Essay'}
               </Text>
             </View>
-            <Button
-              variant={running ? 'outline' : 'primary'}
-              label={running ? 'Tạm dừng' : 'Bắt đầu tính giờ'}
-              onPress={() => setRunning((r) => !r)}
-            />
-            <Button label="Nộp bài" onPress={onSubmit} disabled={text.trim() === ''} />
-          </View>
-        </View>
 
-        <View className="flex-col gap-4 lg:flex-row">
-          {/* Đề bài */}
-          <View className="lg:w-[34%]">
-            <Card>
-              <View className="flex-row flex-wrap items-center gap-2">
-                <Badge tone="primary" label={prompt.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} />
-                <Text className="font-sans text-label text-muted">
-                  {Math.round(prompt.timeLimitSeconds / 60)} phút · ≥ {prompt.minWords} từ
-                </Text>
-              </View>
-              <Text className="mt-3 font-sans text-body text-ink">{prompt.promptText}</Text>
-              <Text className="mt-3 font-sans text-label text-muted">
-                Summarise the information by selecting and reporting the main features, and make
-                comparisons where relevant.
-              </Text>
-            </Card>
+            <Text className="mt-4 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
+              Prompt
+            </Text>
+            <Text className="mt-1.5 font-mid text-bodyLg text-paper-ink" style={{ lineHeight: 24 }}>
+              {prompt.promptText}
+            </Text>
 
             {prompt.chartData ? (
-              <View className="mt-3">
-                <ChartFigure data={prompt.chartData} width={380} />
+              <View className="mt-4 items-center rounded-panel border border-brand-soft bg-white p-3">
+                <ChartFigure data={prompt.chartData} width={360} />
               </View>
             ) : null}
-          </View>
 
-          {/* Ô soạn thảo */}
-          <View className="lg:flex-1">
-            <Card>
-              <Text className="mb-2 font-heavy text-cardTitle text-ink">Bài viết của bạn</Text>
-              <TextInput
-                value={text}
-                onChangeText={onChange}
-                multiline
-                textAlignVertical="top"
-                placeholder="Bắt đầu viết ở đây. Nhớ dành 3 phút đầu để phân tích đề trước khi đặt bút."
-                placeholderTextColor={color.subtle}
-                className="min-h-[420px] rounded-md border border-border bg-surface p-3 font-sans text-body text-ink"
-                style={{ lineHeight: 22 }}
-              />
-              <View className="mt-2 flex-row justify-between">
-                <Text
-                  className={[
-                    'font-semi text-label',
-                    analysis && analysis.wordCount < prompt.minWords ? 'text-danger-ink' : 'text-muted',
-                  ].join(' ')}
-                >
-                  {analysis?.wordCount ?? 0} / {prompt.minWords} từ
+            <View className="mt-4 flex-row flex-wrap items-center justify-between gap-2 border-t border-brand-soft pt-3">
+              <Text className="font-strong text-label text-paper-ink">
+                {isTask1 ? 'Task 1 · Academic' : 'Task 2'}
+              </Text>
+              <Text className="font-sans text-label text-paper-muted">
+                Tối thiểu <Text className="font-strong text-paper-ink">{prompt.minWords} từ</Text>
+              </Text>
+              <Text className="font-sans text-label text-paper-muted">
+                Gợi ý{' '}
+                <Text className="font-strong text-paper-ink">
+                  {Math.round(prompt.timeLimitSeconds / 60)} phút
                 </Text>
-                <Text className="font-sans text-label text-muted">
-                  {analysis?.paragraphCount ?? 0} đoạn · {analysis?.sentenceCount ?? 0} câu
-                </Text>
-              </View>
-            </Card>
-          </View>
+              </Text>
+            </View>
+          </PaperCard>
 
-          {/* Phân tích tức thì */}
-          <View className="lg:w-[26%]">
-            <Card>
-              <Text className="font-heavy text-cardTitle text-ink">Phân tích nhanh</Text>
-              <Text className="mt-1 font-sans text-label text-muted">
+          {analysis ? (
+            <PaperCard className="mt-4">
+              <Text className="font-heavy text-cardTitle text-paper-ink">Phân tích nhanh</Text>
+              <Text className="mt-1 font-sans text-label text-paper-muted">
                 Chạy ngay trên máy, không dùng AI.
               </Text>
 
-              {analysis ? (
-                <>
-                  <View className="mt-3 rounded-md bg-surfaceAlt p-3">
-                    <Text className="font-sans text-label text-muted">Ước lượng band</Text>
-                    {analysis.estimate ? (
-                      <>
-                        <Text className="font-heavy text-stat text-primary-700">
-                          {analysis.estimate.low.toFixed(1)}–{analysis.estimate.high.toFixed(1)}
-                        </Text>
-                        <Text className="font-sans text-label text-subtle">
-                          Chỉ là ước lượng từ cấu trúc bài, không phải band thật.
-                        </Text>
-                      </>
-                    ) : (
-                      <Text className="font-sans text-label text-subtle">
-                        Viết thêm đã rồi mới ước lượng được — bài còn quá ngắn để nói gì.
-                      </Text>
-                    )}
-                  </View>
+              <View className="mt-3 rounded-panel bg-brand-tint p-3">
+                <Text className="font-sans text-label text-paper-muted">Ước lượng band</Text>
+                {analysis.estimate ? (
+                  <>
+                    <Text className="font-heavy text-stat" style={{ color: paper.brandMid }}>
+                      {analysis.estimate.low.toFixed(1)}–{analysis.estimate.high.toFixed(1)}
+                    </Text>
+                    <Text className="font-sans text-label text-paper-muted">
+                      Chỉ là ước lượng từ cấu trúc bài, không phải band thật.
+                    </Text>
+                  </>
+                ) : (
+                  <Text className="font-sans text-label text-paper-muted">
+                    Viết thêm đã rồi mới ước lượng được — bài còn quá ngắn để nói gì.
+                  </Text>
+                )}
+              </View>
 
-                  <View className="mt-3 gap-2">
-                    {analysis.hints.length === 0 ? (
-                      <Text className="font-sans text-body text-success-ink">
-                        Chưa phát hiện vấn đề nào về cấu trúc.
-                      </Text>
-                    ) : (
-                      analysis.hints.map((h) => (
-                        <View
-                          key={h.code}
-                          className={[
-                            'rounded-md border-l-4 p-2',
-                            h.severity === 'warn'
-                              ? 'border-danger bg-danger-soft'
-                              : 'border-warning bg-warning-soft',
-                          ].join(' ')}
-                        >
-                          <Text className="font-sans text-label text-body">{h.message}</Text>
-                        </View>
-                      ))
-                    )}
-                  </View>
-                </>
-              ) : null}
-            </Card>
-          </View>
+              <View className="mt-3 gap-2">
+                {analysis.hints.length === 0 ? (
+                  <Text className="font-sans text-body text-success-ink">
+                    Chưa phát hiện vấn đề nào về cấu trúc.
+                  </Text>
+                ) : (
+                  analysis.hints.map((h) => (
+                    <View
+                      key={h.code}
+                      className={[
+                        'rounded-md border-l-4 p-2.5',
+                        h.severity === 'warn'
+                          ? 'border-danger bg-danger-soft'
+                          : 'border-warning bg-warning-soft',
+                      ].join(' ')}
+                    >
+                      <Text className="font-sans text-label text-body">{h.message}</Text>
+                    </View>
+                  ))
+                )}
+              </View>
+            </PaperCard>
+          ) : null}
+        </View>
+
+        {/* --------------------------------------------------------- bài làm */}
+        <View className="lg:flex-1">
+          <PaperCard padded={false}>
+            <View className="flex-row flex-wrap items-center justify-between gap-2 px-5 pt-5">
+              <Text className="font-heavy text-cardTitle text-paper-ink">Bài làm</Text>
+              <View className="flex-row items-center gap-3">
+                <Text
+                  className="font-strong text-label"
+                  style={{ color: wordCount < prompt.minWords ? color.danger : paper.brandMid }}
+                >
+                  {wordCount} / {prompt.minWords} từ
+                </Text>
+                <Button
+                  variant="brand"
+                  size="sm"
+                  label="Nộp bài"
+                  iconRight="check"
+                  disabled={text.trim() === ''}
+                  onPress={onSubmit}
+                />
+              </View>
+            </View>
+
+            {/* ----------------------------------------------- thanh chữ */}
+            <View className="mt-4 flex-row flex-wrap items-center gap-x-4 gap-y-2 border-y border-brand-soft bg-brand-tint px-5 py-2.5">
+              <View className="flex-row items-center gap-1.5">
+                <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+                  Font
+                </Text>
+                {FONTS.map((f) => (
+                  <Pressable
+                    key={f.key}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: fontKey === f.key }}
+                    onPress={() => setFontKey(f.key)}
+                    className="rounded-md px-2 py-1"
+                    style={{ backgroundColor: fontKey === f.key ? paper.brandMid : 'transparent' }}
+                  >
+                    <Text
+                      className="text-label"
+                      style={{
+                        fontFamily: f.family,
+                        color: fontKey === f.key ? '#FFFFFF' : paper.muted,
+                      }}
+                    >
+                      {f.label}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+
+              <View className="flex-row items-center gap-1.5">
+                <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+                  Cỡ chữ
+                </Text>
+                {SIZES.map((s) => (
+                  <Pressable
+                    key={s}
+                    accessibilityRole="button"
+                    accessibilityState={{ selected: fontSize === s }}
+                    onPress={() => setFontSize(s)}
+                    className="rounded-md px-2 py-1"
+                    style={{ backgroundColor: fontSize === s ? paper.brandMid : 'transparent' }}
+                  >
+                    <Text
+                      className="font-semi text-label"
+                      style={{ color: fontSize === s ? '#FFFFFF' : paper.muted }}
+                    >
+                      {s}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            </View>
+
+            <TextInput
+              value={text}
+              onChangeText={onChange}
+              multiline
+              textAlignVertical="top"
+              placeholder={`Viết bài ${isTask1 ? 'Task 1' : 'Task 2'} của bạn tại đây (tối thiểu ${prompt.minWords} từ)…`}
+              placeholderTextColor={paper.muted}
+              className="min-h-[460px] bg-paper px-5 py-4 text-paper-ink"
+              style={{ fontFamily, fontSize, lineHeight: fontSize * 1.75 }}
+            />
+
+            <View className="flex-row justify-between border-t border-brand-soft px-5 py-3">
+              <Text className="font-sans text-label text-paper-muted">
+                {analysis?.paragraphCount ?? 0} đoạn · {analysis?.sentenceCount ?? 0} câu
+              </Text>
+              <Text className="font-sans text-label text-paper-muted">Bản nháp tự lưu</Text>
+            </View>
+          </PaperCard>
         </View>
       </View>
-    </ScrollView>
+    </TaskShell>
   );
 }
 
