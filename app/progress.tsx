@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { BarChart, DonutChart, Heatmap, HorizontalBars, LineChart } from '@/components/charts';
 import { Grid } from '@/components/layout/Grid';
+import { useNow } from '@/lib/clock';
 import { Screen } from '@/components/layout/Screen';
 import {
   Badge,
@@ -17,11 +18,83 @@ import {
 } from '@/components/ui';
 import { filterArticles, getArticleWithBody } from '@/data/articles';
 import { bandDelta, formatBand, latestBand } from '@/lib/band';
+import { MATH_DOMAIN_LABEL, MATH_ERROR_LABEL, type MathDomain } from '@/lib/math/types';
+import { formatAccuracy } from '@/services/math/scoring';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
+import { useMathDomainStats, useMathErrorTags, useMathTotals } from '@/store/useMathStore';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { chartPalette, color } from '@/theme/tokens';
+
+/**
+ * Tiến độ SAT Math.
+ *
+ * Hai bảng, hai câu hỏi khác nhau: theo DOMAIN trả lời "mảng nào yếu", theo
+ * NHÃN LỖI trả lời "hỏng kiểu gì". Bảng thứ hai là thứ bảng theo domain không
+ * bao giờ cho thấy — sai dấu rải đều bốn domain thì nhìn theo domain sẽ tưởng
+ * là không có vấn đề gì nổi bật.
+ */
+function MathProgressCard() {
+  const domainStats = useMathDomainStats();
+  const errorTags = useMathErrorTags();
+  const totals = useMathTotals();
+
+  if (totals.questions === 0) return null;
+
+  const domains = (Object.keys(domainStats) as MathDomain[]).filter((d) => domainStats[d].total > 0);
+
+  return (
+    <Card className="mt-4">
+      <SectionHeader
+        title="SAT Math"
+        subtitle={`${totals.questions} câu đã làm · đúng ${totals.correct}`}
+        icon="grid"
+        iconTone="accent"
+        action={{ label: 'Mở module', onPress: () => router.push('/math' as never) }}
+      />
+
+      <View className="mt-4 flex-row flex-wrap gap-6">
+        <View className="min-w-[260px] flex-1 gap-3">
+          <Text className="font-mid text-label text-muted">Theo domain</Text>
+          {domains.map((domain) => (
+            <View key={domain}>
+              <View className="flex-row items-center justify-between">
+                <Text className="font-sans text-body text-ink">{MATH_DOMAIN_LABEL[domain]}</Text>
+                <Text className="font-strong text-label text-muted">
+                  {domainStats[domain].correct}/{domainStats[domain].total} ·{' '}
+                  {formatAccuracy(domainStats[domain].accuracy)}
+                </Text>
+              </View>
+              <View className="mt-1">
+                <ProgressBar
+                  value={Math.round((domainStats[domain].accuracy ?? 0) * 100)}
+                  tone={(domainStats[domain].accuracy ?? 0) >= 0.8 ? 'success' : 'primary'}
+                />
+              </View>
+            </View>
+          ))}
+        </View>
+
+        <View className="min-w-[260px] flex-1 gap-2">
+          <Text className="font-mid text-label text-muted">Lỗi hay mắc nhất</Text>
+          {errorTags.length === 0 ? (
+            <Text className="font-sans text-body text-muted">
+              Chưa có câu nào chọn nhầm một đáp án mang nhãn lỗi.
+            </Text>
+          ) : (
+            errorTags.slice(0, 4).map(({ tag, count }) => (
+              <View key={tag} className="flex-row items-start gap-2 rounded-panel bg-surfaceAlt p-2">
+                <Badge label={`${count}×`} tone="danger" />
+                <Text className="flex-1 font-sans text-body text-ink">{MATH_ERROR_LABEL[tag]}</Text>
+              </View>
+            ))
+          )}
+        </View>
+      </View>
+    </Card>
+  );
+}
 
 /** Progress — bám ảnh tham chiếu số 3, số liệu lấy từ chính hoạt động của bạn. */
 export default function ProgressScreen() {
@@ -36,10 +109,14 @@ export default function ProgressScreen() {
   const words = useVocabStore((s) => Object.keys(s.entries).length);
   const focusSet = useQuestionStore((s) => s.focusSet);
 
+  // Mốc "bây giờ" lấy từ đồng hồ ngoài React (xem `src/lib/clock.ts`): gọi thẳng
+  // Date.now() ở đây thì render không còn thuần tuý, và khung 30 ngày sẽ đứng im
+  // ở thời điểm mở trang.
+  const now = useNow();
   const inRange = useMemo(() => {
-    const cutoff = Date.now() - range * 86_400_000;
+    const cutoff = now - range * 86_400_000;
     return sessions.filter((s) => Date.parse(s.finishedAt) >= cutoff);
-  }, [sessions, range]);
+  }, [sessions, range, now]);
 
   // Biểu đồ band chỉ vẽ lượt IELTS: lượt SAT không có band, nhét vào là gãy trục.
   const bandSeries = useMemo(
@@ -333,6 +410,8 @@ export default function ProgressScreen() {
           </Card>
         </View>
       </View>
+
+      <MathProgressCard />
 
       <Card className="mt-4">
         <SectionHeader

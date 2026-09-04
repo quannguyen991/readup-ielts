@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+
+import { useNow } from '@/lib/clock';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { createEmptyCard, fsrs, generatorParameters, Rating, State, type Card, type Grade } from 'ts-fsrs';
@@ -288,8 +290,12 @@ export function useDueCards(): Array<{ entry: VocabEntry; kind: CardKind; card: 
   const entries = useVocabStore((s) => s.entries);
   const cards = useVocabStore((s) => s.cards);
 
+  // Cùng lý do như ở `app/progress.tsx`: Date.now() trong useMemo vừa phá tính
+  // thuần tuý của render, vừa khiến danh sách tới hạn đứng im. Dùng đồng hồ chung
+  // thì thẻ đến hạn lúc 9h01 tự hiện ra mà không cần người dùng bấm gì.
+  const now = useNow();
+
   return useMemo(() => {
-    const now = Date.now();
     const due: Array<{ entry: VocabEntry; kind: CardKind; card: StoredCard }> = [];
 
     for (const entry of Object.values(entries)) {
