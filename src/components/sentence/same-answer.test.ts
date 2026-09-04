@@ -64,3 +64,41 @@ test('số giữ nguyên, không bị luật chữ cái nuốt mất', () => {
   assert.equal(sameAnswer('1998.', '1998'), true);
   assert.equal(sameAnswer('1997', '1998'), false);
 });
+
+// -------------------------------------------------- phương án cho dạng cố định
+
+/** Bản sao của `optionsFor` — cùng lý do chép như `sameAnswer` ở trên. */
+const FIXED_OPTIONS: Partial<Record<string, string[]>> = {
+  true_false_not_given: ['TRUE', 'FALSE', 'NOT GIVEN'],
+  yes_no_not_given: ['YES', 'NO', 'NOT GIVEN'],
+};
+
+function optionsFor(q: { type: string; options: string[] | null }): string[] {
+  if (q.options?.length) return q.options;
+  return FIXED_OPTIONS[q.type] ?? [];
+}
+
+test('model quên gửi phương án cho TFNG thì tự bù đủ ba lựa chọn', () => {
+  // Đo thật trên production: cùng một dạng câu, lượt có lượt không.
+  assert.deepEqual(optionsFor({ type: 'true_false_not_given', options: null }), [
+    'TRUE',
+    'FALSE',
+    'NOT GIVEN',
+  ]);
+  assert.deepEqual(optionsFor({ type: 'yes_no_not_given', options: null }), [
+    'YES',
+    'NO',
+    'NOT GIVEN',
+  ]);
+});
+
+test('model có gửi phương án thì dùng của model, không đè', () => {
+  const riêng = ['Ba', 'Bốn', 'Năm'];
+  assert.deepEqual(optionsFor({ type: 'multiple_choice', options: riêng }), riêng);
+  assert.deepEqual(optionsFor({ type: 'true_false_not_given', options: riêng }), riêng);
+});
+
+test('dạng điền từ vẫn không có phương án — nó phải ra ô gõ', () => {
+  assert.deepEqual(optionsFor({ type: 'sentence_completion', options: null }), []);
+  assert.deepEqual(optionsFor({ type: 'short_answer', options: null }), []);
+});

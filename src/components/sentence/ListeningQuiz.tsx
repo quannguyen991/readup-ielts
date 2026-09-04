@@ -34,6 +34,25 @@ type Status = 'loading' | 'ready' | 'error';
 /** Gom câu thành đoạn để model có ngữ cảnh, thay vì hỏi trên từng câu rời. */
 const SENTENCES_PER_PARAGRAPH = 6;
 
+/**
+ * Ba dạng câu có bộ phương án CỐ ĐỊNH theo luật đề, không do model nghĩ ra.
+ *
+ * Model trả `options: null` cho chúng lúc có lúc không — đo thật trên production:
+ * cùng một dạng true_false_not_given, lượt này kèm đủ ba phương án, lượt sau để
+ * trống. Không tự bù thì đúng những lượt ấy hiện ra ô gõ tự do, và người học phải
+ * đoán xem nên gõ "TRUE", "True" hay "Đúng".
+ */
+const FIXED_OPTIONS: Partial<Record<string, string[]>> = {
+  true_false_not_given: ['TRUE', 'FALSE', 'NOT GIVEN'],
+  yes_no_not_given: ['YES', 'NO', 'NOT GIVEN'],
+};
+
+/** Phương án để hiện: của model nếu có, không thì bộ cố định của dạng câu. */
+function optionsFor(question: GeneratedQuestion): string[] {
+  if (question.options?.length) return question.options;
+  return FIXED_OPTIONS[question.type] ?? [];
+}
+
 export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
   // Bắt đầu ở 'loading' chứ không phải 'idle': lượt sinh đầu luôn chạy ngay khi
   // mở tab, nên để 'idle' rồi lại đổi sang 'loading' ngay trong effect là một
@@ -278,6 +297,7 @@ function QuizItem({
 }) {
   const answered = picked !== null;
   const right = sameAnswer(picked, question.correctAnswer);
+  const options = optionsFor(question);
 
   return (
     <PaperCard>
@@ -302,11 +322,11 @@ function QuizItem({
         </View>
       </View>
 
-      {(question.options ?? []).length === 0 ? (
+      {options.length === 0 ? (
         <FillIn question={question} picked={picked} onPick={onPick} />
       ) : (
       <View className="mt-3 gap-2">
-        {(question.options ?? []).map((option) => {
+        {options.map((option) => {
           const isAnswer = option === question.correctAnswer;
           const isPicked = option === picked;
           const tone = !answered
