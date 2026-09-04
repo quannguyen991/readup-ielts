@@ -1,22 +1,10 @@
-import Anthropic from '@anthropic-ai/sdk';
 
-import { AI_MODELS } from './client';
-import { AiError, toAiError } from './errors';
-import { withRetry } from './retry';
-import { serverEnv } from '@/lib/env';
+import { AiError } from './errors';
+import { chatWithFallback } from './fallback';
 import type { GeneratedQuestion, QuestionSet } from '@/services/questions/types';
 import type { ExamKind, QuestionType } from '@/types/database';
 
-/** SERVER-ONLY. Sinh bộ đề IELTS hoặc SAT bằng Claude từ toàn văn bài đọc. */
-
-let client: Anthropic | null = null;
-
-function getAnthropic(): Anthropic {
-  if (!client) {
-    client = new Anthropic({ apiKey: serverEnv('ANTHROPIC_API_KEY'), maxRetries: 0 });
-  }
-  return client;
-}
+/** SERVER-ONLY. Sinh bộ đề IELTS hoặc SAT từ toàn văn bài đọc, qua bộ hai proxy. */
 
 const IELTS_TYPES = new Set<QuestionType>([
   'true_false_not_given',
@@ -170,60 +158,57 @@ export async function generateQuestionsWithClaude(
     .join('\n\n')
     .slice(0, 24_000);
 
-  const mixInstruction =
-    exam === 'sat'
-      ? `Trộn ${count} câu qua ít nhất 3 dạng khác nhau, ưu tiên Words in Context, Central Ideas và Inferences.`
-      : `Trộn ${count} câu qua ít nhất 4 dạng khác nhau, ưu tiên True/False/Not Given, Matching Headings, Sentence Completion và Multiple Choice.`;
+  /*
+    CHIA LÔ CHẠY SONG SONG.
 
-  const typeInstruction = focusType
-    ? `Tất cả ${count} câu đều thuộc dạng "${focusType}" để luyện tập trung dạng này.`
-    : mixInstruction;
+    Đo được: xin 8 câu trong một lần gọi mất 47,5s — Vercel cắt request ở 60s,
+    nên bản một-lần-gọi hỏng ngay khi lên production dù chạy tốt ở máy. Thời gian
+    tăng nhanh hơn số câu, vì model phải giữ cả bộ đề trong đầu để tránh trùng.
 
-  const userPrompt = [
-    `Tiêu đề bài: ${article.title}`,
-    `Trình độ bài (CEFR): ${article.cefrLevel ?? 'không rõ'}`,
-    '',
-    'BÀI ĐỌC:',
-    passage,
-    '',
-    `Yêu cầu: tạo đúng ${count} câu hỏi. ${typeInstruction}`,
-  ].join('\n');
+    Chia thành lô nhỏ rồi gọi song song thì tổng thời gian bằng LÔ CHẬM NHẤT chứ
+    không phải tổng các lô. Đổi lại, các lô không nhìn thấy nhau nên có thể ra
+    câu trùng ý — khử trùng ở bước gộp bên dưới.
+  */
+  const wanted = focusType ? [focusType] : pickTypes(options.types, exam);
+  const batches = planBatches(count, wanted);
 
-  const raw = await withRetry(
-    async () => {
-      try {
-        const response = await getAnthropic().messages.create({
-          model: AI_MODELS.claude,
-          max_tokens: 8000,
-          system: exam === 'sat' ? SAT_SYSTEM_PROMPT : IELTS_SYSTEM_PROMPT,
-          messages: [{ role: 'user', content: userPrompt }],
-        });
-
-        const text = response.content
-          .filter((block): block is Anthropic.TextBlock => block.type === 'text')
-          .map((block) => block.text)
-          .join('');
-
-        if (!text.trim()) throw new AiError('bad_response', 'Claude trả về nội dung rỗng.');
-        return text;
-      } catch (err) {
-        throw toAiError(err, 'Gọi Claude sinh đề thất bại');
-      }
-    },
-    { label: 'generateQuestions', attempts: 3 },
+  const settled = await Promise.allSettled(
+    batches.map((batch) =>
+      chatWithFallback({
+        purpose: 'questions',
+        system: exam === 'sat' ? SAT_SYSTEM_PROMPT : IELTS_SYSTEM_PROMPT,
+        user: buildUserPrompt(article, passage, batch),
+        temperature: 0.4,
+      }),
+    ),
   );
 
-  const questions = parseQuestions(raw, article, exam);
+  // Một lô hỏng KHÔNG làm hỏng cả bộ đề: 9 câu vẫn luyện được, còn ném lỗi thì
+  // người học không có gì để làm. Chỉ hỏng hết mới báo lỗi.
+  const raws = settled
+    .filter((r) => r.status === 'fulfilled')
+    .map((r) => r.value);
+
+  if (raws.length === 0) {
+    const why = settled
+      .map((r) => (r.status === 'rejected' ? String(r.reason?.message ?? r.reason) : ''))
+      .filter(Boolean)[0];
+    throw new AiError('server_error', `Sinh đề thất bại: ${why ?? 'không rõ nguyên nhân'}`);
+  }
+
+  const questions = dedupe(raws.flatMap((r) => parseQuestions(r.text, article, exam))).slice(0, count);
+  const usedModel = raws[0]?.model ?? '?';
+
 
   if (questions.length === 0) {
-    throw new AiError('bad_response', 'Không đọc được câu hỏi hợp lệ nào từ phản hồi của Claude.');
+    throw new AiError('bad_response', 'Không đọc được câu hỏi hợp lệ nào từ phản hồi của model.');
   }
 
   return {
     articleId: article.id,
     title: `Bộ đề: ${article.title}`,
     generatedBy: 'ai',
-    model: AI_MODELS.claude,
+    model: usedModel,
     createdAt: new Date().toISOString(),
     questions,
   };
@@ -269,7 +254,15 @@ function parseQuestions(
     // một dấu câu là người học chọn đúng vẫn bị chấm sai.
     if (exam === 'sat' && (!opts || !opts.includes(q.correct_answer))) continue;
 
-    const paragraphIndex = clampIndex(q.evidence_paragraph_index, article.paragraphs.length);
+    /*
+      Loại câu có trích dẫn KHÔNG tìm thấy trong bài.
+
+      Thà 6 câu tô sáng đúng còn hơn 8 câu mà 2 câu bấm vào không thấy gì. Chỉ
+      số đoạn lấy từ chỗ TÌM ĐƯỢC THẬT, không tin số model tự khai — nó hay đếm
+      lệch một đoạn.
+    */
+    const paragraphIndex = locateEvidence(q.evidence_text, article.paragraphs);
+    if (paragraphIndex === -1) continue;
 
     out.push({
       id: `${article.id}-ai-${out.length}`,
@@ -289,8 +282,126 @@ function parseQuestions(
   return out;
 }
 
-function clampIndex(value: unknown, length: number): number {
-  const index = Number(value);
-  if (!Number.isFinite(index)) return 0;
-  return Math.min(Math.max(0, Math.trunc(index)), Math.max(0, length - 1));
+
+/*
+  Số câu mỗi lô — BỐN, và con số này đo ra chứ không chọn cho tròn.
+
+  Ngân sách một cửa là 45s, Vercel cắt cả request ở 60s. Model đang dùng
+  (claude-haiku-4-5) sinh 4 câu trong 13-16s trên ba bài đo thử, nên lô 4 câu
+  còn nguyên hơn nửa ngân sách làm biên an toàn.
+
+  Đã đo riêng là proxy KHÔNG chặn gọi song song, nên chia lô rồi gọi song song
+  thì tổng thời gian bằng lô chậm nhất chứ không phải tổng các lô. Đổi lại mỗi
+  lô phải gửi lại toàn văn bài đọc, nên lô càng nhỏ càng tốn token — bốn là chỗ
+  cân bằng. Hạ xuống được bằng biến môi trường nếu đổi sang model chậm hơn.
+*/
+const BATCH_SIZE = Number(process.env.QUESTIONS_BATCH_SIZE ?? 4);
+
+/**
+ * Bộ dạng câu sẽ đặt hàng.
+ *
+ * `requested` đến từ bộ lọc "Loại câu hỏi" ở màn Luyện tập. Lọc rỗng nghĩa là
+ * "gì cũng được", không phải "không dạng nào" — nên rỗng thì trả về bộ mặc định
+ * chứ không trả về mảng rỗng, vốn sẽ sinh ra đề không có câu nào.
+ */
+export function pickTypes(requested: QuestionType[] | undefined, exam: ExamKind): QuestionType[] {
+  const valid = validTypesFor(exam);
+  const asked = (requested ?? []).filter((t) => valid.has(t));
+  if (asked.length > 0) return asked;
+  return exam === 'sat'
+    ? ['sat_words_in_context', 'sat_central_idea', 'sat_inference', 'sat_text_structure']
+    : ['true_false_not_given', 'matching_headings', 'sentence_completion', 'multiple_choice'];
+}
+
+/**
+ * Chia số câu thành các lô, mỗi lô gánh một phần bộ dạng.
+ *
+ * Chia dạng theo lô chứ không để mỗi lô tự trộn tất cả: mỗi lô chỉ thấy phần
+ * của mình nên KHÔNG lô nào bỏ sót dạng khó. Bản trước dặn "trộn ít nhất 4 dạng"
+ * trong một lần gọi, và model hay dồn về Multiple Choice cho nhanh.
+ */
+export function planBatches(count: number, types: QuestionType[]): { count: number; types: QuestionType[] }[] {
+  const batchCount = Math.max(1, Math.ceil(count / BATCH_SIZE));
+  const batches: { count: number; types: QuestionType[] }[] = [];
+
+  for (let i = 0; i < batchCount; i += 1) {
+    // Chia dư cho các lô đầu, nên tổng luôn đúng bằng `count`.
+    const size = Math.floor(count / batchCount) + (i < count % batchCount ? 1 : 0);
+    if (size <= 0) continue;
+    // Chia vòng: lô 0 lấy dạng 0, 2, 4…; lô 1 lấy dạng 1, 3, 5…
+    const mine = types.filter((_, ti) => ti % batchCount === i);
+    batches.push({ count: size, types: mine.length > 0 ? mine : types });
+  }
+
+  return batches;
+}
+
+function buildUserPrompt(
+  article: { title: string; cefrLevel?: string | null },
+  passage: string,
+  batch: { count: number; types: QuestionType[] },
+): string {
+  const list = batch.types.map((t) => `"${t}"`).join(', ');
+  const instruction =
+    batch.types.length === 1
+      ? `Cả ${batch.count} câu đều thuộc dạng ${list}.`
+      : `Chia ${batch.count} câu cho các dạng sau, mỗi dạng ít nhất một câu: ${list}. Không dùng dạng nào ngoài danh sách này.`;
+
+  return [
+    `Tiêu đề bài: ${article.title}`,
+    `Trình độ bài (CEFR): ${article.cefrLevel ?? 'không rõ'}`,
+    '',
+    'BÀI ĐỌC:',
+    passage,
+    '',
+    `Yêu cầu: tạo đúng ${batch.count} câu hỏi. ${instruction}`,
+  ].join('\n');
+}
+
+/**
+ * Khử câu trùng giữa các lô.
+ *
+ * Các lô gọi song song nên không biết lô kia hỏi gì; hai lô cùng bám một đoạn
+ * hay lấy chung một ý. So theo đề bài đã chuẩn hoá, không so nguyên văn — khác
+ * nhau một dấu chấm vẫn là cùng một câu với người học.
+ */
+export function dedupe(questions: GeneratedQuestion[]): GeneratedQuestion[] {
+  const seen = new Set<string>();
+  const out: GeneratedQuestion[] = [];
+
+  for (const q of questions) {
+    const key = q.prompt.toLowerCase().replace(/[^a-z0-9À-ỹ]+/g, ' ').trim();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    // Đánh lại số thứ tự sau khi gộp, nếu không id sẽ trùng giữa các lô.
+    out.push({ ...q, id: `${q.id}-${out.length}`, orderIndex: out.length });
+  }
+
+  return out;
+}
+
+/**
+ * Tìm trích dẫn trong bài và trả về chỉ số đoạn CHỨA NÓ THẬT.
+ *
+ * Trích dẫn dùng để tô sáng đúng chỗ trong bài. Model thỉnh thoảng diễn đạt lại
+ * thay vì chép nguyên văn — đo trên một bài mẫu thì 2/8 câu như vậy. Câu đó vẫn
+ * hiện được nhưng bấm vào không tô sáng gì cả, và người học tưởng app hỏng.
+ *
+ * So khớp sau khi chuẩn hoá khoảng trắng và các loại nháy/gạch ngang, vì model
+ * hay đổi " thành “ hoặc - thành – khi chép lại. Không tìm thấy thì trả -1 để
+ * bên gọi loại câu đó đi.
+ */
+export function locateEvidence(evidence: string, paragraphs: string[]): number {
+  const norm = (t: string) =>
+    t
+      .toLowerCase()
+      .replace(/[‘’“”]/g, "'")
+      .replace(/[–—]/g, '-')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+  const needle = norm(evidence);
+  if (needle.length < 10) return -1;
+
+  return paragraphs.findIndex((p) => norm(p).includes(needle));
 }

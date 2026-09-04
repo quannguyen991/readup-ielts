@@ -1,0 +1,27 @@
+{
+  "writing": [
+    ["groq", "openai/gpt-oss-120b"],
+    ["aibox", "deepseek-v4-flash"],
+    ["codex", "claude-haiku-4-5-20251001"]
+  ],
+  "questions": [
+    ["groq", "openai/gpt-oss-120b"],
+    ["aibox", "deepseek-v4-flash"],
+    ["codex", "claude-haiku-4-5-20251001"]
+  ],
+  "define": [
+    ["groq", "qwen/qwen3.8-27b"],
+    ["aibox", "deepseek-v4-flash"],
+    ["codex", "claude-haiku-4-5-20251001"]
+  ],
+  "translate": [
+    ["groq", "qwen/qwen3.8-27b"],
+    ["aibox", "deepseek-v4-flash"],
+    ["codex", "claude-haiku-4-5-20251001"]
+  ],
+  "chat": [
+    ["groq", "qwen/qwen3.8-27b"],
+    ["aibox", "deepseek-v4-flash"],
+    ["codex", "claude-haiku-4-5-20251001"]
+  ]
+}

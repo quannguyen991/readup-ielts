@@ -1,7 +1,5 @@
-import Anthropic from '@anthropic-ai/sdk';
-
 import { getArticleWithBody } from '@/data/articles';
-import { AI_MODELS } from '@/services/ai/client';
+import { streamWithFallback } from '@/services/ai/fallback';
 
 /**
  * POST /api/chat  { articleId, messages: [{role, content}] }
@@ -9,14 +7,12 @@ import { AI_MODELS } from '@/services/ai/client';
  *
  * Toàn văn bài đọc được đưa vào system prompt; trợ giảng trả lời tiếng Việt và
  * luôn trích dẫn số đoạn.
+ *
+ * Đi qua bộ hai proxy như mọi tính năng AI khác. Bản trước gọi thẳng SDK
+ * Anthropic bằng `ANTHROPIC_API_KEY` — biến chưa bao giờ được cấu hình, nên
+ * chatbox trả 503 mọi lúc.
  */
 export async function POST(request: Request): Promise<Response> {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return new Response('Chưa cấu hình ANTHROPIC_API_KEY nên chatbox chưa dùng được.', {
-      status: 503,
-    });
-  }
-
   try {
     const body = (await request.json()) as {
       articleId?: string;
@@ -49,31 +45,43 @@ export async function POST(request: Request): Promise<Response> {
       passage,
     ].join('\n');
 
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+    /*
+      Lịch sử chat gộp vào MỘT lượt hỏi, không gửi thành nhiều message.
+
+      Giao thức tương thích OpenAI có nhận mảng messages, nhưng lớp gọi chung
+      của app chỉ nhận một cặp system/user — và giữ nó đơn giản như thế đáng giá
+      hơn: chatbox là chỗ duy nhất cần nhiều lượt, còn bốn việc kia thì không.
+      Mười hai lượt gần nhất là đủ ngữ cảnh cho một buổi hỏi bài.
+    */
+    const history = (body.messages ?? []).slice(-12);
+    const question = history
+      .map((m) => `${m.role === 'user' ? 'Người học' : 'Trợ giảng'}: ${m.content}`)
+      .join('\n\n');
+
+    const result = await streamWithFallback({
+      purpose: 'chat',
+      system,
+      user: question || 'Chào bạn.',
+      temperature: 0.3,
+    });
 
     const stream = new ReadableStream<Uint8Array>({
       async start(controller) {
         const encoder = new TextEncoder();
 
         try {
-          const response = client.messages.stream({
-            model: AI_MODELS.claude,
-            max_tokens: 2000,
-            system,
-            messages: (body.messages ?? []).slice(-12),
-          });
-
-          for await (const event of response) {
-            if (
-              event.type === 'content_block_delta' &&
-              event.delta.type === 'text_delta'
-            ) {
-              controller.enqueue(encoder.encode(event.delta.text));
-            }
+          for await (const piece of result.stream) {
+            controller.enqueue(encoder.encode(piece));
           }
         } catch (err) {
-          const message = err instanceof Error ? err.message : 'Lỗi không xác định';
-          controller.enqueue(encoder.encode(`\n\n[Lỗi khi gọi Claude: ${message}]`));
+          /*
+            Đứt giữa chừng thì nói thẳng là đứt.
+
+            Đóng stream im lặng sẽ để lại một câu cụt giữa chừng trông y như câu
+            trả lời đã xong — người học đọc rồi tin, mà nửa sau không bao giờ tới.
+          */
+          const message = err instanceof Error ? err.message : 'lỗi không xác định';
+          controller.enqueue(encoder.encode(`\n\n[Mất kết nối giữa chừng: ${message}]`));
         } finally {
           controller.close();
         }

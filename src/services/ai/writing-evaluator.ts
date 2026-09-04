@@ -1,5 +1,6 @@
 import { getOpenAI } from './client';
 import { AiError, toAiError } from './errors';
+import { chatWithFallback } from './fallback';
 import { withRetry } from './retry';
 import { anchorAnnotations, type RawAnnotation } from '@/services/writing/annotate';
 import type { WritingAnnotation, WritingPrompt } from '@/lib/writing/types';
@@ -183,18 +184,17 @@ function describePrompt(prompt: WritingPrompt): string {
   return lines.join('\n');
 }
 
-async function callJson(model: string, system: string, user: string): Promise<unknown> {
-  const res = await getOpenAI().chat.completions.create({
-    model,
-    messages: [
-      { role: 'system', content: system },
-      { role: 'user', content: user },
-    ],
-  });
-
-  const text = res.choices[0]?.message?.content;
-  if (!text) throw new AiError('bad_response', 'Model không trả về nội dung nào.');
-  return parseJson(text);
+/**
+ * Gọi model, tự chuyển sang proxy dự phòng khi proxy chính hỏng.
+ *
+ * `model` giữ lại trong chữ ký cho tương thích với chỗ gọi, nhưng KHÔNG còn
+ * được dùng: model giờ gắn với từng proxy (xem `fallback.ts`), vì danh mục model
+ * của hai nhà cung cấp không giao nhau — tên model của bên này không tồn tại ở
+ * bên kia.
+ */
+async function callJson(_model: string, system: string, user: string): Promise<unknown> {
+  const result = await chatWithFallback({ purpose: 'writing', system, user });
+  return parseJson(result.text);
 }
 
 /**

@@ -1,8 +1,4 @@
-import Anthropic from '@anthropic-ai/sdk';
-
-import { AI_MODELS } from '@/services/ai/client';
-import { toAiError } from '@/services/ai/errors';
-import { withRetry } from '@/services/ai/retry';
+import { chatWithFallback } from '@/services/ai/fallback';
 
 /**
  * POST /api/define  { word, sentence, mode? }
@@ -10,12 +6,11 @@ import { withRetry } from '@/services/ai/retry';
  * mode 'word'     → nghĩa của từ ĐÚNG theo ngữ cảnh câu đó
  * mode 'phrase'   → dịch cả cụm (collocation quan trọng hơn từ lẻ ở band 7+)
  * mode 'sentence' → giải thích cấu trúc ngữ pháp + dịch cả câu
+ *
+ * Đi qua bộ hai proxy. Bản trước gọi thẳng SDK Anthropic bằng
+ * `ANTHROPIC_API_KEY` — biến chưa bao giờ được cấu hình, nên tra từ trả 503.
  */
 export async function POST(request: Request): Promise<Response> {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return Response.json({ error: 'Chưa cấu hình ANTHROPIC_API_KEY.' }, { status: 503 });
-  }
-
   try {
     const body = (await request.json()) as {
       word?: string;
@@ -49,29 +44,13 @@ export async function POST(request: Request): Promise<Response> {
             '"examples":["câu ví dụ 1","câu ví dụ 2"]}',
           ].join('\n');
 
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY, maxRetries: 0 });
-
-    const text = await withRetry(
-      async () => {
-        try {
-          const response = await client.messages.create({
-            model: AI_MODELS.claude,
-            max_tokens: 700,
-            system:
-              'Bạn là trợ giảng IELTS. Trả lời bằng JSON thuần, không markdown fence, không lời dẫn.',
-            messages: [{ role: 'user', content: prompt }],
-          });
-
-          return response.content
-            .filter((b): b is Anthropic.TextBlock => b.type === 'text')
-            .map((b) => b.text)
-            .join('');
-        } catch (err) {
-          throw toAiError(err, 'Tra từ bằng Claude thất bại');
-        }
-      },
-      { label: 'define', attempts: 2 },
-    );
+    const { text } = await chatWithFallback({
+      purpose: 'define',
+      system:
+        'Bạn là trợ giảng IELTS. Trả lời bằng JSON thuần, không markdown fence, không lời dẫn.',
+      user: prompt,
+      temperature: 0.2,
+    });
 
     return Response.json(parseJson(text));
   } catch (err) {

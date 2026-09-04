@@ -1,14 +1,21 @@
 import { getArticleById, getArticleWithBody, isReadable } from '@/data/articles';
 import { AiError } from '@/services/ai/errors';
 import { generateQuestionsWithClaude } from '@/services/ai/questions';
+import { questionCacheKey, readSharedQuestionSet, writeSharedQuestionSet } from '@/services/questions/cache';
 import type { QuestionType } from '@/types/database';
 
 /**
- * POST /api/questions  { articleId, count?, focusType? }
+ * POST /api/questions  { articleId, count?, focusType?, types? }
  *
- * Chạy server-side để ANTHROPIC_API_KEY không xuống client.
+ * Chạy server-side để khoá proxy AI không xuống client.
  * Client gọi route này trước; nếu lỗi (chưa có key, mạng hỏng…) thì tự rơi về
  * bộ sinh đề offline nên luôn có đề để làm.
+ *
+ * CÓ CACHE DÙNG CHUNG (03/09/2026): trước khi gọi AI, kiểm bộ đề CHUNG cho
+ * đúng bài + đúng đơn hàng dạng câu (`questionCacheKey`) — có thì trả ngay,
+ * không mất 20 giây gọi AI lại cho một kết quả gần như giống hệt lần trước.
+ * Sinh mới xong thì ghi lại vào cache cho người MỞ SAU, không phải chỉ người
+ * MỞ TRƯỚC được hưởng.
  */
 export async function POST(request: Request): Promise<Response> {
   try {
@@ -16,6 +23,7 @@ export async function POST(request: Request): Promise<Response> {
       articleId?: string;
       count?: number;
       focusType?: QuestionType;
+      types?: QuestionType[];
     };
 
     if (!body.articleId) {
@@ -46,12 +54,10 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
-    if (!process.env.ANTHROPIC_API_KEY) {
-      return Response.json(
-        { error: 'Chưa cấu hình ANTHROPIC_API_KEY.', code: 'missing_config' },
-        { status: 503 },
-      );
-    }
+    const requestedTypes = questionCacheKey({ types: body.types, focusType: body.focusType });
+
+    const cached = await readSharedQuestionSet(article.id, requestedTypes);
+    if (cached) return Response.json(cached);
 
     const questionSet = await generateQuestionsWithClaude(
       {
@@ -65,10 +71,33 @@ export async function POST(request: Request): Promise<Response> {
       {
         ...(body.count ? { count: body.count } : {}),
         ...(body.focusType ? { focusType: body.focusType } : {}),
+        // Bộ lọc "Loại câu hỏi" ở màn Luyện tập gửi xuống đây. Đây là ĐẶT HÀNG
+        // chứ không phải lọc: đề chưa tồn tại lúc chọn, nó sinh ra theo đơn.
+        ...(Array.isArray(body.types) && body.types.length > 0 ? { types: body.types } : {}),
       },
     );
 
-    return Response.json(questionSet);
+    /*
+      PHẢI `await`, không được `void`.
+
+      Bản đầu dùng `void writeSharedQuestionSet(...)` với ý định "người dùng
+      đang chờ câu trả lời của họ, đừng bắt họ chờ thêm việc ghi cache cho
+      người sau". Sai — đã kiểm trên production: gọi 3 lần liên tiếp cùng một
+      bài, cả ba lần đều mất ~22 giây, tức KHÔNG lần nào cache thật sự được ghi.
+
+      Nguyên nhân: hàm serverless trên Vercel có thể bị ĐÓNG BĂNG/DỌN NGAY SAU
+      KHI `Response` đã trả về, không đợi các Promise chưa `await` chạy nốt —
+      đây là hành vi nền tảng, không phải lỗi logic trong `writeSharedQuestionSet`.
+      `void` khiến việc ghi cache có khả năng bị giết giữa chừng mỗi lần, nên
+      cache không bao giờ thật sự ấm lên.
+
+      Đổi lại: chờ thêm vài trăm mili-giây cho hai lệnh INSERT là cái giá không
+      đáng kể so với 20+ giây đã tốn để sinh đề — và đổi lại NGƯỜI MỞ SAU thật
+      sự được hưởng cache, đúng mục đích cả tính năng này sinh ra.
+    */
+    await writeSharedQuestionSet(article.id, requestedTypes, questionSet);
+
+    return Response.json({ ...questionSet, requestedTypes });
   } catch (err) {
     if (err instanceof AiError) {
       return Response.json({ error: err.message, code: err.code }, { status: err.status ?? 502 });

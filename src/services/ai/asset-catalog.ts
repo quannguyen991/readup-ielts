@@ -51,12 +51,18 @@ const TOPIC_THUMBNAILS: Array<{ key: string; subject: string }> = [
   { key: 'psychology', subject: 'an abstract close-up of interconnected neural-like filaments' },
 ];
 
-/** 4 illustration 3D cho banner các trang chính. */
+/**
+ * Illustration 3D cho banner từng trang.
+ *
+ * Mỗi trang một cảnh RIÊNG, không dùng lại một ảnh chung: banner là thứ đầu
+ * tiên đập vào mắt khi mở trang, nên nó cũng là thứ nói cho người dùng biết họ
+ * đang ở đâu. Bốn trang dùng chung một ảnh thì bốn trang trông như một.
+ */
 const ILLUSTRATIONS: Array<{ key: string; scene: string }> = [
   {
     key: 'dashboard-hero',
     scene:
-      'an open book on a study desk with a desk lamp, a coffee cup, a small plant and a floating sticky note',
+      'an open book floating beside a small desk lamp, a coffee cup and a tiny potted plant',
   },
   {
     key: 'progress-hero',
@@ -72,6 +78,42 @@ const ILLUSTRATIONS: Array<{ key: string; scene: string }> = [
     key: 'practice-hero',
     scene:
       'a floating notebook with a pencil, a stopwatch and a checkmark badge orbiting around it',
+  },
+  {
+    key: 'writing-hero',
+    scene:
+      'a fountain pen beside a small folded note card, with a little line chart and a pie chart floating around them',
+  },
+  {
+    key: 'mock-tests-hero',
+    scene:
+      'a clipboard holding a short answer sheet, a large stopwatch and two small stacked booklets, all floating apart',
+  },
+  {
+    key: 'vocabulary-hero',
+    scene:
+      'a fan of flashcards floating above an open dictionary, with a small magnifying glass',
+  },
+  {
+    key: 'math-hero',
+    scene:
+      'a calculator, a geometric cone and a ruler floating separately',
+  },
+  {
+    key: 'notes-hero',
+    scene: 'a stack of sticky notes with a pencil and a small paper clip',
+  },
+  {
+    key: 'bookmarks-hero',
+    scene: 'a closed book with several colourful ribbon bookmarks fanning out of it',
+  },
+  {
+    key: 'upgrade-hero',
+    scene: 'a glowing key unlocking a padlock above a small treasure chest of books',
+  },
+  {
+    key: 'referral-hero',
+    scene: 'two hands passing a glowing envelope, with small star badges floating around',
   },
 ];
 

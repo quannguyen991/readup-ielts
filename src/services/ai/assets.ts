@@ -1,4 +1,5 @@
 import { generateImage } from './images';
+import { makeBackgroundTransparent } from './png';
 import type { AssetSpec } from './asset-catalog';
 import { ASSET_BUCKET, getSupabaseAdmin } from '@/lib/supabase-admin';
 import type { GeneratedAsset } from '@/types/database';
@@ -43,6 +44,22 @@ export async function ensureAsset(
     label: spec.key,
     onRetry: (msg) => log?.(msg),
   });
+
+  /*
+    Bóc nền trắng cho icon và illustration; ẢNH CHỤP THÌ KHÔNG.
+
+    Thumbnail chủ đề là ảnh chụp thật, nền của nó là bầu trời hay bức tường —
+    bóc đi thì thủng ảnh. Chỉ hai loại vẽ trên nền trắng phẳng mới cần, và chúng
+    cũng là hai loại được đặt lên nền màu (banner gradient, thẻ có tô nền), tức
+    là hai loại mà cái ô trắng lộ ra rõ nhất.
+  */
+  if (spec.kind === 'nav_icon' || spec.kind === 'question_icon' || spec.kind === 'illustration') {
+    const cut = await makeBackgroundTransparent(image.bytes);
+    if (cut) {
+      log?.(`    ✂ bóc nền ${spec.key}: ${cut.clearedPercent.toFixed(0)}% pixel`);
+      image.bytes = cut.bytes;
+    }
+  }
 
   const storagePath = `${spec.key}.png`;
   const { error: uploadError } = await supabase.storage
