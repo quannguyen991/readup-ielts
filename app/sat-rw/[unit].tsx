@@ -2,16 +2,12 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
+import { QuestionCard } from '@/components/sat-rw/QuestionCard';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Badge, Button, Icon, PaperCard } from '@/components/ui';
-import {
-  SAT_RW_SKILL_LABEL,
-  getSatRwUnit,
-  questionsForUnit,
-  type SatRwQuestion,
-} from '@/data/sat-rw-repository';
+import { SAT_RW_SKILL_LABEL, getSatRwUnit, questionsForUnit } from '@/data/sat-rw-repository';
 import { useStudyStore } from '@/store/useStudyStore';
-import { color, paper } from '@/theme/tokens';
+import { paper } from '@/theme/tokens';
 
 /**
  * Luyện một unit SAT Reading & Writing.
@@ -174,92 +170,5 @@ export default function SatRwUnitScreen() {
         )}
       </View>
     </TaskShell>
-  );
-}
-
-function QuestionCard({
-  question,
-  picked,
-  onPick,
-}: {
-  question: SatRwQuestion;
-  picked: number | null;
-  onPick: (choice: number) => void;
-}) {
-  const answered = picked !== null;
-
-  return (
-    <PaperCard>
-      <Text className="font-mid text-bodyLg text-paper-ink" style={{ lineHeight: 28 }}>
-        {question.passage}
-      </Text>
-
-      <Text className="mt-4 font-strong text-body text-paper-ink">{question.stem}</Text>
-
-      <View className="mt-3 gap-2">
-        {question.options.map((option, i) => {
-          const isAnswer = i === question.answerIndex;
-          const isPicked = picked === i;
-
-          const tone = !answered
-            ? { border: paper.brandSoft, bg: '#FFFFFF' }
-            : isAnswer
-              ? { border: color.success, bg: color.successSoft }
-              : isPicked
-                ? { border: color.danger, bg: color.dangerSoft }
-                : { border: paper.brandSoft, bg: '#FFFFFF' };
-
-          return (
-            <Pressable
-              key={i}
-              accessibilityRole="button"
-              accessibilityState={{ selected: isPicked, disabled: answered }}
-              disabled={answered}
-              onPress={() => onPick(i)}
-              className="flex-row items-start gap-3 rounded-panel border px-3.5 py-3"
-              style={{ borderColor: tone.border, backgroundColor: tone.bg }}
-            >
-              <View
-                className="h-6 w-6 items-center justify-center rounded-pill"
-                style={{ backgroundColor: answered && isAnswer ? color.success : paper.brandTint }}
-              >
-                <Text
-                  className="font-strong text-label"
-                  style={{ color: answered && isAnswer ? '#FFFFFF' : paper.body }}
-                >
-                  {'ABCD'[i]}
-                </Text>
-              </View>
-              <Text className="min-w-0 flex-1 font-sans text-body text-paper-ink">{option}</Text>
-            </Pressable>
-          );
-        })}
-      </View>
-
-      {answered ? (
-        <View
-          className="mt-4 rounded-panel border-l-4 p-3.5"
-          style={{
-            borderLeftColor: picked === question.answerIndex ? color.success : color.warning,
-            backgroundColor: paper.brandTint,
-          }}
-        >
-          <View className="flex-row items-center gap-2">
-            <Icon
-              name={picked === question.answerIndex ? 'check' : 'info'}
-              size={16}
-              color={picked === question.answerIndex ? color.success : color.warning}
-              strokeWidth={2.2}
-            />
-            <Text className="font-strong text-body text-paper-ink">
-              {picked === question.answerIndex ? 'Đúng rồi' : `Đáp án đúng là ${'ABCD'[question.answerIndex]}`}
-            </Text>
-          </View>
-          <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
-            {question.solutionVi}
-          </Text>
-        </View>
-      ) : null}
-    </PaperCard>
   );
 }

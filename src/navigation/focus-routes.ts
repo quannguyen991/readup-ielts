@@ -21,8 +21,9 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/math\/(diagnostic|mock|vocab)$/,
   /^\/math\/(drill|review|set)\/[^/]+$/,
 
-  // SAT Verbal: màn luyện từng unit.
+  // SAT Verbal: màn luyện từng unit, và màn làm đề trộn.
   /^\/sat-rw\/[^/]+$/,
+  /^\/sat-rw\/mix\/[^/]+$/,
 
   // Reading: đọc bài, đọc song ngữ, và xem lại phiên.
   /^\/read\/[^/]+$/,

@@ -3,6 +3,11 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import {
+  QUESTIONS_PER_SET,
+  SAT_RW_MIXED_SETS,
+  mixedSetStats,
+} from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Icon } from '@/components/ui';
 import {
@@ -28,6 +33,7 @@ import { color } from '@/theme/tokens';
  */
 export default function SatRwHubScreen() {
   const stats = useMemo(() => satRwStats(), []);
+  const mixStats = useMemo(() => mixedSetStats(), []);
 
   return (
     <Screen>
@@ -50,6 +56,45 @@ export default function SatRwHubScreen() {
           <StatTile icon="grid" label="Mảng đề" value={String(stats.domains)} />
           <StatTile icon="target" label="Kỹ năng" value={String(stats.skills)} />
         </Grid>
+      </View>
+
+      {/*
+        Đề trộn đặt TRƯỚC danh sách unit.
+
+        Unit là chỗ học từng luật một, và nó phải có. Nhưng làm hết một unit thì
+        tới câu thứ năm là đoán được đáp án mà không cần đọc — vì đã biết trước
+        câu này hỏi luật gì. Đề trộn mới là thứ giống lúc thi, nên nó là lối vào
+        mặc định; ai muốn học lại một luật cụ thể thì cuộn xuống.
+      */}
+      <View className="mt-6">
+        <View className="flex-row flex-wrap items-end justify-between gap-2">
+          <View className="min-w-0 flex-1">
+            <Text className="font-strong text-cardTitle text-ink">Đề trộn</Text>
+            <Text className="mt-1 max-w-[620px] font-sans text-body text-muted">
+              {mixStats.sets} đề, mỗi đề {QUESTIONS_PER_SET} câu lấy từ cả bốn mảng và xếp xen kẽ —
+              bạn phải tự nhận ra câu đang hỏi luật gì, giống lúc thi thật.
+            </Text>
+          </View>
+        </View>
+
+        <View className="mt-3">
+          <Grid columns={5} tabletColumns={4} mobileColumns={3} gap={10}>
+            {SAT_RW_MIXED_SETS.map((set) => (
+              <Pressable
+                key={set.id}
+                accessibilityRole="link"
+                onPress={() => router.push(`/sat-rw/mix/${set.id}` as never)}
+                className="items-center rounded-panel border border-border bg-surface px-2 py-3"
+                style={({ pressed }) => (pressed ? { opacity: 0.9 } : undefined)}
+              >
+                <Text className="font-heavy text-cardTitle text-ink">{set.order}</Text>
+                <Text className="mt-0.5 font-mid text-label text-muted">
+                  {set.questions.length} câu
+                </Text>
+              </Pressable>
+            ))}
+          </Grid>
+        </View>
       </View>
 
       {SAT_RW_DOMAINS.map((domain) => {
