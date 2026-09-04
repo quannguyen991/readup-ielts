@@ -57,14 +57,26 @@ test('mỗi nhịp báo lại mốc thời gian mới cho mọi người nghe', 
   const clock = clockFor(20);
   const truoc = clock.now;
 
+  /*
+    Chờ tới khi CÓ nhịp đầu tiên, không chờ một khoảng cố định rồi đếm.
+
+    Bản đầu ngủ 70ms rồi đòi đếm được ít nhất 2 nhịp 20ms. Nó đỏ bấp bênh khi máy
+    đang bận — `setInterval` không hứa chạy đúng giờ, và một test đỏ ngẫu nhiên
+    còn tệ hơn không có test: lần sau đỏ thật cũng bị cho là nhiễu.
+  */
   let soLanBao = 0;
-  const off = clock.subscribe(() => {
-    soLanBao += 1;
+  const cóNhịp = new Promise<void>((resolve) => {
+    const off = clock.subscribe(() => {
+      soLanBao += 1;
+      off();
+      resolve();
+    });
+    // Trần để test hỏng hẳn thay vì treo, nếu timer không bao giờ chạy.
+    setTimeout(off, 3000);
   });
 
-  await new Promise((resolve) => setTimeout(resolve, 70));
-  off();
+  await Promise.race([cóNhịp, new Promise((r) => setTimeout(r, 3000))]);
 
-  assert.ok(soLanBao >= 2, `phải báo ít nhất 2 nhịp trong 70ms, thực tế ${soLanBao}`);
+  assert.ok(soLanBao >= 1, 'timer chạy mà không báo cho người nghe nào');
   assert.ok(clock.now >= truoc, 'mốc thời gian không được đi lùi');
 });

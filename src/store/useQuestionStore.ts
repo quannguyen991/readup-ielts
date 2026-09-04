@@ -24,6 +24,16 @@ type QuestionState = {
   getSet: (articleId: string) => QuestionSet | undefined;
 };
 
+/**
+ * Bài của kho seed mang id dạng UUID; bài người dùng tạo mang tiền tố riêng.
+ *
+ * Kiểm bằng tiền tố chứ không gọi ngược lên kho: hàm này chạy ở client, mà kho
+ * seed thì nặng vài trăm KB — nạp nó chỉ để hỏi một câu hỏi có/không là quá đắt.
+ */
+function isSeedArticle(id: string): boolean {
+  return !id.startsWith('user-') && !id.startsWith('yt-');
+}
+
 async function requestAiSet(
   article: Article,
   options: { count?: number; focusType?: QuestionType; types?: QuestionType[] } = {},
@@ -40,7 +50,27 @@ async function requestAiSet(
     const response = await fetch('/api/questions', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ articleId: article.id, ...options }),
+      /*
+        Bài KHÔNG nằm trong kho seed thì phải gửi kèm toàn văn.
+
+        Máy chủ tra bài theo id trong kho; văn bản người dùng tự dán chỉ tồn tại
+        trên máy họ nên tra không ra, và trước đây lượt gọi ấy nhận 404 rồi âm
+        thầm rơi về bộ sinh offline — chỉ làm được một dạng câu. Tức là tính năng
+        "dán văn bản rồi làm đề" chưa bao giờ thật sự dùng AI.
+      */
+      body: JSON.stringify({
+        articleId: article.id,
+        ...options,
+        ...(isSeedArticle(article.id)
+          ? {}
+          : {
+              passage: {
+                title: article.title,
+                paragraphs: article.paragraphs,
+                cefrLevel: article.cefrLevel,
+              },
+            }),
+      }),
       signal: AbortSignal.timeout(75_000),
     });
 

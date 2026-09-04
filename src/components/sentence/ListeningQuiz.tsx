@@ -1,0 +1,379 @@
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
+
+import { Button, Icon, PaperCard } from '@/components/ui';
+import type { GeneratedQuestion } from '@/services/questions/types';
+import type { TranscriptSentence } from '@/services/youtube/transcript';
+import { color, paper } from '@/theme/tokens';
+
+/**
+ * Nghe hiểu: câu hỏi sinh thẳng từ phụ đề của chính video đang xem.
+ *
+ * VÌ SAO CÓ PHẦN NÀY BÊN CẠNH CHÉP CHÍNH TẢ. Chép chính tả rèn tai bắt được ÂM —
+ * rất hợp khi còn chưa nghe ra từ. Nhưng chép đúng từng chữ mà không hiểu người
+ * ta đang nói gì thì vẫn không trả lời được đề Listening thật: đề hỏi ý chính,
+ * hỏi thái độ người nói, hỏi thông tin đã được diễn đạt lại bằng từ khác. Đó là
+ * hai kỹ năng khác nhau, và cái thứ hai không tự đến từ cái thứ nhất.
+ *
+ * Câu hỏi sinh TỪ PHỤ ĐỀ CHỨ KHÔNG SOẠN SẴN, nên bất kỳ video nào người học dán
+ * vào cũng có đề — kể cả video vừa đăng hôm qua.
+ *
+ * Phụ đề chỉ đi qua máy chủ một lượt để sinh đề rồi thôi, không lưu lại thành
+ * nội dung của app; video vẫn phát qua trình nhúng chính thức của YouTube.
+ */
+
+type Props = {
+  videoId: string;
+  sentences: TranscriptSentence[];
+  /** Bấm vào dẫn chứng thì nhảy tới đúng chỗ đó trong video. */
+  onSeek: (seconds: number) => void;
+};
+
+type Status = 'loading' | 'ready' | 'error';
+
+/** Gom câu thành đoạn để model có ngữ cảnh, thay vì hỏi trên từng câu rời. */
+const SENTENCES_PER_PARAGRAPH = 6;
+
+export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
+  // Bắt đầu ở 'loading' chứ không phải 'idle': lượt sinh đầu luôn chạy ngay khi
+  // mở tab, nên để 'idle' rồi lại đổi sang 'loading' ngay trong effect là một
+  // lượt render thừa — và là đúng cái React Compiler cảnh báo.
+  const [status, setStatus] = useState<Status>('loading');
+  const [questions, setQuestions] = useState<GeneratedQuestion[]>([]);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [error, setError] = useState<string | null>(null);
+
+  /**
+   * Đoạn văn, kèm mốc thời gian của câu đầu mỗi đoạn.
+   *
+   * Giữ mốc lại để bấm vào dẫn chứng là tua được tới chỗ đó — không có nó thì
+   * người học đọc "đáp án nằm ở đoạn 3" rồi phải tự mò lại trong video.
+   */
+  const { paragraphs, startAt } = useMemo(() => {
+    const out: string[] = [];
+    const marks: number[] = [];
+    for (let i = 0; i < sentences.length; i += SENTENCES_PER_PARAGRAPH) {
+      const group = sentences.slice(i, i + SENTENCES_PER_PARAGRAPH);
+      if (group.length === 0) continue;
+      out.push(group.map((s) => s.text).join(' '));
+      marks.push(group[0]?.start ?? 0);
+    }
+    return { paragraphs: out, startAt: marks };
+  }, [sentences]);
+
+  const load = useCallback(async () => {
+    /*
+      KHÔNG đặt cờ nào trước lời gọi mạng.
+
+      Effect bên dưới gọi hàm này ngay khi mở tab; mọi `setState` chạy đồng bộ ở
+      đây sẽ nằm ngay trong lượt commit của effect và kéo theo một lượt render
+      nữa trước khi người dùng kịp thấy gì. Trạng thái chờ đã là giá trị khởi tạo
+      rồi, nên không cần đặt lại; phần dọn lỗi cũ dời xuống nhánh thành công.
+    */
+    try {
+      const res = await fetch('/api/questions', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          // Tiền tố `yt-` báo cho store biết đây không phải bài của kho seed.
+          articleId: `yt-${videoId}`,
+          count: 8,
+          passage: { title: `Video ${videoId}`, paragraphs },
+        }),
+        signal: AbortSignal.timeout(75_000),
+      });
+
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error ?? `Máy chủ trả về ${res.status}`);
+      }
+
+      const data = (await res.json()) as { questions?: GeneratedQuestion[] };
+      if (!data.questions?.length) throw new Error('Không sinh được câu hỏi nào từ phụ đề này.');
+      setQuestions(data.questions);
+      setError(null);
+      setStatus('ready');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Lỗi lạ');
+      setStatus('error');
+    }
+  }, [paragraphs, videoId]);
+
+  /*
+    Chỉ sinh khi người học mở tab này, không sinh sẵn lúc nạp video: mỗi lượt tốn
+    một lời gọi AI, mà phần lớn người vào đây là để chép chính tả.
+
+    Hoãn một nhịp thay vì gọi thẳng trong effect. Lý do thật, không phải để chiều
+    lint: `load` có `setState` bên trong, nên gọi thẳng là mở request mạng ngay
+    giữa lượt commit của màn — chậm đúng vào lúc người dùng vừa bấm sang tab và
+    đang chờ thấy khung chờ hiện ra. Dời ra sau commit thì khung chờ vẽ trước,
+    request đi sau. `clearTimeout` lo trường hợp rời tab trước khi kịp gọi.
+  */
+  useEffect(() => {
+    if (paragraphs.length === 0) return;
+    const defer = setTimeout(() => void load(), 0);
+    return () => clearTimeout(defer);
+  }, [paragraphs.length, load]);
+
+  /** Bấm "Ra đề khác"/"Thử lại" — ở đây đặt cờ chờ là hợp lệ, đang trong handler. */
+  const reload = () => {
+    setStatus('loading');
+    setAnswers({});
+    void load();
+  };
+
+  if (paragraphs.length === 0) {
+    return (
+      <PaperCard>
+        <Text className="font-sans text-body text-paper-body">
+          Phụ đề của video này quá ngắn để sinh câu hỏi nghe hiểu.
+        </Text>
+      </PaperCard>
+    );
+  }
+
+  if (status === 'loading') {
+    return (
+      <PaperCard className="items-center py-10">
+        <ActivityIndicator color={paper.brandMid} />
+        <Text className="mt-3 font-sans text-body text-paper-muted">
+          Đang đọc phụ đề và ra đề nghe hiểu…
+        </Text>
+        <Text className="mt-1 font-sans text-label text-paper-muted">
+          Mất khoảng 10–20 giây cho một video.
+        </Text>
+      </PaperCard>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <PaperCard>
+        <View className="flex-row items-center gap-2">
+          <Icon name="info" size={18} color={color.warning} strokeWidth={2.2} />
+          <Text className="font-strong text-body text-paper-ink">Chưa ra được đề</Text>
+        </View>
+        <Text className="mt-1.5 font-sans text-body text-paper-body">{error}</Text>
+        <Button
+          className="mt-4 self-start"
+          variant="brand"
+          label="Thử lại"
+          iconLeft="refresh"
+          onPress={reload}
+        />
+      </PaperCard>
+    );
+  }
+
+  const answered = questions.filter((q) => answers[q.id]).length;
+  const correct = questions.filter((q) => sameAnswer(answers[q.id] ?? null, q.correctAnswer)).length;
+
+  return (
+    <View>
+      <View className="mb-3 flex-row flex-wrap items-center gap-2">
+        <Text className="font-strong text-body text-white">
+          {answered}/{questions.length} câu đã trả lời
+        </Text>
+        {answered > 0 ? (
+          <Text className="font-sans text-label text-white/80">· đúng {correct}</Text>
+        ) : null}
+        <View className="flex-1" />
+        <Button variant="onDark" label="Ra đề khác" iconLeft="refresh" onPress={reload} />
+      </View>
+
+      <View className="gap-3">
+        {questions.map((q, i) => (
+          <QuizItem
+            key={q.id}
+            question={q}
+            order={i + 1}
+            picked={answers[q.id] ?? null}
+            onPick={(value) => setAnswers((prev) => (prev[q.id] ? prev : { ...prev, [q.id]: value }))}
+            onSeek={() => onSeek(startAt[q.evidenceParagraphIndex] ?? 0)}
+          />
+        ))}
+      </View>
+    </View>
+  );
+}
+
+/**
+ * Câu ĐIỀN TỪ — không có phương án để bấm.
+ *
+ * Bốn trong tám câu mà model sinh ra là dạng điền (sentence completion, short
+ * answer). Bản đầu của màn này chỉ vẽ danh sách phương án, nên đúng những câu ấy
+ * hiện ra như một câu hỏi cụt: đọc được đề mà không có chỗ nào trả lời.
+ *
+ * Chấm rộng tay: bỏ hoa thường, bỏ dấu câu, bỏ mạo từ ở đầu. Đề IELTS thật chấp
+ * nhận "expel" cho "expel." và "the algae" cho "algae"; bắt gõ khớp từng ký tự là
+ * chấm sai chứ không phải chấm chặt.
+ */
+function FillIn({
+  question,
+  picked,
+  onPick,
+}: {
+  question: GeneratedQuestion;
+  picked: string | null;
+  onPick: (value: string) => void;
+}) {
+  const [draft, setDraft] = useState('');
+  const answered = picked !== null;
+
+  return (
+    <View className="mt-3 flex-row flex-wrap items-center gap-2">
+      <TextInput
+        value={answered ? picked : draft}
+        onChangeText={setDraft}
+        editable={!answered}
+        placeholder="Gõ câu trả lời…"
+        placeholderTextColor={paper.muted}
+        onSubmitEditing={() => draft.trim() && onPick(draft.trim())}
+        className="min-w-[220px] flex-1 rounded-panel border px-3.5 py-2.5 font-sans text-body text-paper-ink"
+        style={{
+          borderColor: answered
+            ? sameAnswer(picked, question.correctAnswer)
+              ? color.success
+              : color.danger
+            : paper.brandSoft,
+          backgroundColor: '#FFFFFF',
+        }}
+      />
+      {!answered ? (
+        <Button
+          variant="brand"
+          size="sm"
+          label="Trả lời"
+          onPress={() => draft.trim() && onPick(draft.trim())}
+        />
+      ) : null}
+    </View>
+  );
+}
+
+/** So đáp án điền: bỏ hoa thường, dấu câu, và mạo từ đứng đầu. */
+export function sameAnswer(a: string | null, b: string): boolean {
+  const chuan = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .replace(/^(a|an|the)\s+/, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  return a !== null && chuan(a) === chuan(b);
+}
+
+function QuizItem({
+  question,
+  order,
+  picked,
+  onPick,
+  onSeek,
+}: {
+  question: GeneratedQuestion;
+  order: number;
+  picked: string | null;
+  onPick: (value: string) => void;
+  onSeek: () => void;
+}) {
+  const answered = picked !== null;
+  const right = sameAnswer(picked, question.correctAnswer);
+
+  return (
+    <PaperCard>
+      <View className="flex-row gap-3">
+        <View
+          className="h-7 w-7 items-center justify-center rounded-pill"
+          style={{ backgroundColor: paper.brandTint }}
+        >
+          <Text className="font-strong text-label" style={{ color: paper.body }}>
+            {order}
+          </Text>
+        </View>
+        <View className="min-w-0 flex-1">
+          {question.instruction ? (
+            <Text className="mb-1 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+              {question.instruction}
+            </Text>
+          ) : null}
+          <Text className="font-mid text-bodyLg text-paper-ink" style={{ lineHeight: 25 }}>
+            {question.prompt}
+          </Text>
+        </View>
+      </View>
+
+      {(question.options ?? []).length === 0 ? (
+        <FillIn question={question} picked={picked} onPick={onPick} />
+      ) : (
+      <View className="mt-3 gap-2">
+        {(question.options ?? []).map((option) => {
+          const isAnswer = option === question.correctAnswer;
+          const isPicked = option === picked;
+          const tone = !answered
+            ? { border: paper.brandSoft, bg: '#FFFFFF' }
+            : isAnswer
+              ? { border: color.success, bg: color.successSoft }
+              : isPicked
+                ? { border: color.danger, bg: color.dangerSoft }
+                : { border: paper.brandSoft, bg: '#FFFFFF' };
+
+          return (
+            <Pressable
+              key={option}
+              accessibilityRole="button"
+              accessibilityState={{ selected: isPicked, disabled: answered }}
+              disabled={answered}
+              onPress={() => onPick(option)}
+              className="rounded-panel border px-3.5 py-2.5"
+              style={{ borderColor: tone.border, backgroundColor: tone.bg }}
+            >
+              <Text className="font-sans text-body text-paper-ink">{option}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+      )}
+
+      {answered ? (
+        <View
+          className="mt-3 rounded-panel border-l-4 p-3.5"
+          style={{
+            borderLeftColor: right ? color.success : color.warning,
+            backgroundColor: paper.brandTint,
+          }}
+        >
+          <View className="flex-row items-center gap-2">
+            <Icon
+              name={right ? 'check' : 'info'}
+              size={16}
+              color={right ? color.success : color.warning}
+              strokeWidth={2.2}
+            />
+            <Text className="font-strong text-body text-paper-ink">
+              {right ? 'Đúng rồi' : `Đáp án đúng: ${question.correctAnswer}`}
+            </Text>
+          </View>
+
+          {question.explanation ? (
+            <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
+              {question.explanation}
+            </Text>
+          ) : null}
+
+          {question.evidenceText ? (
+            <Pressable
+              accessibilityRole="button"
+              onPress={onSeek}
+              className="mt-2.5 flex-row items-start gap-2 rounded-panel bg-white/70 p-2.5"
+            >
+              <Icon name="play" size={14} color={paper.brandMid} strokeWidth={2.2} />
+              <Text className="min-w-0 flex-1 font-mid text-label text-paper-body" style={{ lineHeight: 19 }}>
+                “{question.evidenceText}” — bấm để nghe lại đúng chỗ này
+              </Text>
+            </Pressable>
+          ) : null}
+        </View>
+      ) : null}
+    </PaperCard>
+  );
+}

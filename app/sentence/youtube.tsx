@@ -4,6 +4,7 @@ import { Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-na
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
 import { LetterCell } from '@/components/sentence/LetterCell';
+import { ListeningQuiz } from '@/components/sentence/ListeningQuiz';
 import { PixelTrack } from '@/components/sentence/PixelTrack';
 import { Badge, Button, Icon } from '@/components/ui';
 import { parsePastedTranscript } from '@/services/youtube/paste-transcript';
@@ -30,6 +31,12 @@ import { color, paper } from '@/theme/tokens';
  *
  * KHÔNG LƯU GÌ. Phụ đề sống trong một phiên luyện rồi thôi.
  */
+
+/** Hai chế độ luyện trên cùng một video. */
+const MODES = [
+  { key: 'dictation' as const, label: 'Chép chính tả', icon: 'pencil' as const },
+  { key: 'quiz' as const, label: 'Nghe hiểu', icon: 'clipboard' as const },
+];
 
 type Phase = 'pick' | 'practice';
 
@@ -236,6 +243,16 @@ function PracticeView({
   const [typed, setTyped] = useState('');
   const [revealed, setRevealed] = useState(false);
   const [doneCount, setDoneCount] = useState(0);
+  /*
+    Hai chế độ trên CÙNG một video, không phải hai màn riêng.
+
+    Chép chính tả rèn tai bắt được ÂM; nghe hiểu rèn việc nắm Ý. Đó là hai kỹ năng
+    khác nhau và cái thứ hai không tự đến từ cái thứ nhất — chép đúng từng chữ mà
+    không hiểu người ta nói gì thì vẫn không làm được đề Listening thật. Để chung
+    một màn vì người học thường muốn làm cả hai trên đúng video vừa nghe, lúc còn
+    nhớ nội dung.
+  */
+  const [mode, setMode] = useState<'dictation' | 'quiz'>('dictation');
 
   const inputRef = useRef<TextInput>(null);
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -346,6 +363,36 @@ function PracticeView({
         </View>
       ) : null}
 
+      <View className="mb-4 flex-row flex-wrap gap-1.5">
+        {MODES.map((m) => (
+          <Pressable
+            key={m.key}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: mode === m.key }}
+            onPress={() => setMode(m.key)}
+            className={[
+              'flex-row items-center gap-2 rounded-pill border px-4 py-2',
+              mode === m.key ? 'border-transparent bg-white' : 'border-white/30 bg-white/10',
+            ].join(' ')}
+          >
+            <Icon
+              name={m.icon}
+              size={15}
+              color={mode === m.key ? paper.brandMid : '#FFFFFF'}
+              strokeWidth={2.1}
+            />
+            <Text
+              className={['font-strong text-body', mode === m.key ? 'text-paper-ink' : 'text-white'].join(' ')}
+            >
+              {m.label}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+
+      {mode === 'quiz' ? (
+        <ListeningQuiz videoId={videoId} sentences={sentences} onSeek={(at) => play(at)} />
+      ) : (
       <View className="gap-4 lg:flex-row">
         {/* ------------------------------------------------------ trình phát */}
         <View className="lg:w-[42%]">
@@ -523,6 +570,7 @@ function PracticeView({
           </View>
         </View>
       </View>
+      )}
     </TaskShell>
   );
 }
