@@ -3,6 +3,7 @@ import { Pressable, ScrollView, Text, View } from 'react-native';
 import { Link } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { AuroraBackdrop } from './AuroraBackdrop';
 import { GridBackdrop } from './GridBackdrop';
 import { Icon } from '@/components/ui/Icon';
 import { color, layout, paper } from '@/theme/tokens';
@@ -102,7 +103,17 @@ export function TaskShell({
     </SafeAreaView>
   );
 
-  if (onBrand) return <GridBackdrop>{body}</GridBackdrop>;
+  /*
+    Tông tối dùng nền LOANG, tông giấy vẫn giữ lưới kẻ ô. Đây là chủ ý, không
+    phải làm dở dang.
+
+    Tông tối là màn chọn bài và màn xem kết quả — chỗ để nhìn, và ở đó khối loang
+    lớn mềm làm nền đẹp mà không tranh chỗ với chữ. Tông giấy là màn ĐANG GÕ: ô
+    chữ, ô nhập, bài viết. Ở đó lưới kẻ gợi đúng thứ cần gợi — tờ giấy kẻ để
+    viết lên — và một nền đang chuyển động chậm ngay sau con trỏ là thứ gây phân
+    tâm đúng vào lúc cần tập trung nhất.
+  */
+  if (onBrand) return <AuroraBackdrop>{body}</AuroraBackdrop>;
 
   /*
     Tông sáng CŨNG có lưới, chỉ là lưới nhạt trên nền xanh nước biển rất nhạt.

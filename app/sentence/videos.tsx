@@ -1,0 +1,220 @@
+import React, { useMemo, useState } from 'react';
+import { Image, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { router } from 'expo-router';
+
+import { Grid } from '@/components/layout/Grid';
+import { Screen } from '@/components/layout/Screen';
+import { Badge, Card, Icon } from '@/components/ui';
+import {
+  VIDEO_LEVELS,
+  VIDEO_TOPICS,
+  filterVideos,
+  formatDuration,
+  thumbnailUrl,
+  videoLibraryStats,
+  type LibraryVideo,
+} from '@/data/video-library';
+import { preparedList, useVideoTranscriptStore } from '@/store/useVideoTranscriptStore';
+import { color } from '@/theme/tokens';
+
+/**
+ * Thư viện video luyện nghe.
+ *
+ * NÓI THẲNG GIỚI HẠN NGAY TRÊN ĐẦU, không giấu xuống cuối. App không tự lấy được
+ * phụ đề từ YouTube (đo cả hai đường, xem `video-library.ts`), nên mỗi video phải
+ * dán phụ đề một lần. Hứa "bấm là học" rồi để người ta đâm vào ô dán ở màn sau
+ * là cách nhanh nhất khiến họ nghĩ app hỏng.
+ *
+ * Đổi lại, dán một lần là xong: mục "Đang luyện dở" ở trên cùng gom những video
+ * đã chuẩn bị, vào là làm tiếp ngay.
+ */
+export default function VideoLibraryScreen() {
+  const [level, setLevel] = useState('all');
+  const [topic, setTopic] = useState('all');
+  const [search, setSearch] = useState('');
+
+  const stats = useMemo(() => videoLibraryStats(), []);
+  const videos = useMemo(() => filterVideos({ level, topic, search }), [level, topic, search]);
+
+  const saved = useVideoTranscriptStore((s) => s.videos);
+  const prepared = useMemo(() => preparedList(saved), [saved]);
+
+  return (
+    <Screen>
+      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
+        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
+          Listening video library
+        </Text>
+      </View>
+
+      <Text className="mt-3 font-heavy text-pageTitle text-ink">Thư viện video</Text>
+      <Text className="mt-1.5 max-w-[680px] font-sans text-bodyLg text-muted">
+        {stats.videos} video từ {stats.channels} kênh, chia theo trình độ. Nghe từng câu rồi chép lại,
+        hoặc chuyển sang phần nghe hiểu để làm đề sinh từ chính phụ đề video đó.
+      </Text>
+
+      <View className="mt-4 flex-row items-start gap-2.5 rounded-panel border border-warning bg-warning-soft p-3.5">
+        <Icon name="info" size={17} color={color.warning} strokeWidth={2} />
+        <Text className="min-w-0 flex-1 font-sans text-body text-warning-ink" style={{ lineHeight: 22 }}>
+          YouTube không cho lấy phụ đề tự động nữa, nên lần đầu mở một video bạn cần dán phụ đề vào —
+          mở video trên YouTube, bấm <Text className="font-strong">…more</Text> →{' '}
+          <Text className="font-strong">Show transcript</Text>, chép rồi dán. Chỉ phải làm một lần cho
+          mỗi video; app nhớ lại cho những lần sau.
+        </Text>
+      </View>
+
+      {prepared.length > 0 ? (
+        <View className="mt-6">
+          <Text className="font-strong text-cardTitle text-ink">Đang luyện dở</Text>
+          <Text className="mt-1 font-sans text-body text-muted">
+            {prepared.length} video đã chuẩn bị phụ đề — vào là làm tiếp ngay.
+          </Text>
+          <View className="mt-3">
+            <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
+              {prepared.slice(0, 8).map((p) => (
+                <VideoCard
+                  key={p.videoId}
+                  video={{
+                    id: p.videoId,
+                    title: `Video ${p.videoId}`,
+                    channel: 'Đã chuẩn bị',
+                    level: '',
+                    topic: '',
+                    durationSeconds: null,
+                  }}
+                  progress={`${p.doneCount}/${p.sentences.length} câu`}
+                />
+              ))}
+            </Grid>
+          </View>
+        </View>
+      ) : null}
+
+      <Card className="mt-6">
+        <View className="flex-row items-center gap-2 rounded-panel border border-border bg-surface px-3 py-2">
+          <Icon name="search" size={16} color={color.subtle} />
+          <TextInput
+            value={search}
+            onChangeText={setSearch}
+            placeholder="Tìm theo tên video hoặc kênh…"
+            placeholderTextColor={color.subtle}
+            className="min-w-0 flex-1 font-sans text-body text-ink"
+          />
+        </View>
+
+        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+          Trình độ
+        </Text>
+        <View className="flex-row flex-wrap gap-1.5">
+          <Chip label="Tất cả" active={level === 'all'} onPress={() => setLevel('all')} />
+          {VIDEO_LEVELS.map((l) => (
+            <Chip key={l} label={l} active={level === l} onPress={() => setLevel(level === l ? 'all' : l)} />
+          ))}
+        </View>
+
+        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+          Chủ đề
+        </Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <View className="flex-row gap-1.5 py-0.5">
+            <Chip label="Tất cả" active={topic === 'all'} onPress={() => setTopic('all')} />
+            {VIDEO_TOPICS.map((t) => (
+              <Chip key={t} label={t} active={topic === t} onPress={() => setTopic(topic === t ? 'all' : t)} />
+            ))}
+          </View>
+        </ScrollView>
+      </Card>
+
+      <Text className="mt-5 font-strong text-cardTitle text-ink">{videos.length} video</Text>
+
+      <View className="mt-3">
+        <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
+          {videos.map((v) => (
+            <VideoCard key={v.id} video={v} prepared={Boolean(saved[v.id])} />
+          ))}
+        </Grid>
+      </View>
+
+      {videos.length === 0 ? (
+        <Card className="mt-3">
+          <Text className="font-sans text-body text-muted">
+            Không có video nào khớp. Bỏ bớt bộ lọc hoặc đổi từ khoá tìm.
+          </Text>
+        </Card>
+      ) : null}
+    </Screen>
+  );
+}
+
+function VideoCard({
+  video,
+  prepared,
+  progress,
+}: {
+  video: LibraryVideo;
+  prepared?: boolean;
+  progress?: string;
+}) {
+  const duration = formatDuration(video.durationSeconds);
+
+  return (
+    <Pressable
+      accessibilityRole="link"
+      onPress={() => router.push(`/sentence/youtube?v=${video.id}` as never)}
+      className="h-full overflow-hidden rounded-card border border-border bg-surface"
+      style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
+    >
+      {/*
+        Ảnh giữ đúng tỉ lệ 16:9 bằng aspectRatio, không đặt chiều cao cứng: đặt
+        cứng thì ở cột hẹp ảnh bị méo, mà thumbnail méo trông như ảnh hỏng.
+      */}
+      <View style={{ aspectRatio: 16 / 9, backgroundColor: color.surfaceAlt }}>
+        <Image
+          source={{ uri: thumbnailUrl(video.id) }}
+          style={{ width: '100%', height: '100%' }}
+          resizeMode="cover"
+        />
+        {duration ? (
+          <View className="absolute bottom-2 right-2 rounded-pill bg-black/70 px-2 py-0.5">
+            <Text className="font-strong text-white" style={{ fontSize: 10 }}>
+              {duration}
+            </Text>
+          </View>
+        ) : null}
+      </View>
+
+      <View className="flex-1 p-3.5">
+        <Text className="font-strong text-body text-ink" numberOfLines={2} style={{ lineHeight: 21 }}>
+          {video.title}
+        </Text>
+        <Text className="mt-1 font-sans text-label text-muted" numberOfLines={1}>
+          {video.channel}
+        </Text>
+
+        <View className="mt-2.5 flex-row flex-wrap items-center gap-1.5">
+          {video.level ? <Badge label={video.level} tone="neutral" /> : null}
+          {progress ? <Badge label={progress} tone="success" /> : null}
+          {prepared && !progress ? <Badge label="đã có phụ đề" tone="success" /> : null}
+        </View>
+      </View>
+    </Pressable>
+  );
+}
+
+function Chip({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
+  return (
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityState={{ selected: active }}
+      className={[
+        'rounded-pill border px-3 py-1.5',
+        active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
+      ].join(' ')}
+    >
+      <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
+        {label}
+      </Text>
+    </Pressable>
+  );
+}

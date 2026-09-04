@@ -8,6 +8,7 @@ import { Badge, Card, Icon, StickerCard } from '@/components/ui';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { dictationSetStats } from '@/data/dictation-sets';
 import { translationSetStats } from '@/data/translation-sets';
+import { videoLibraryStats } from '@/data/video-library';
 import { useSentenceStats, useSentenceStore } from '@/store/useSentenceStore';
 import { color, stickerGradient } from '@/theme/tokens';
 
@@ -79,10 +80,10 @@ export default function SentenceHubScreen() {
           <EntryCard
             icon="volume"
             tint="accent"
-            title="Luyện theo video YouTube"
-            body="Dán liên kết một video có phụ đề tiếng Anh, nghe từng câu rồi điền lại ngay bên cạnh."
-            cta="Mở video"
-            onPress={() => router.push('/sentence/youtube' as never)}
+            title="Thư viện video"
+            body={`${videoLibraryStats().videos} video từ TED, BBC, Vox… chia theo trình độ — nghe rồi chép lại, hoặc làm đề nghe hiểu sinh từ chính phụ đề.`}
+            cta="Mở thư viện video"
+            onPress={() => router.push('/sentence/videos' as never)}
           />
         </View>
       </Appear>

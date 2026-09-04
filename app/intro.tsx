@@ -3,7 +3,7 @@ import { Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { GridBackdrop } from '@/components/layout/GridBackdrop';
+import { AuroraBackdrop } from '@/components/layout/AuroraBackdrop';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { AssetImage, Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
@@ -224,13 +224,13 @@ export default function IntroScreen() {
       {/* ------------------------------------------------------------- hero */}
       <Appear>
         {/*
-          Bọc thêm một lớp HÀNG NGANG quanh `GridBackdrop`. Nền kẻ ô lấy cả khung
+          Bọc thêm một lớp HÀNG NGANG quanh nền. Nền lấy cả khung
           bằng `flex-1`, mà `flex-1` trong một cột cao-theo-nội-dung thì co về 0
           (flex-basis 0, không có chiều cao cha để chia). Đặt vào hàng ngang thì
           flex-1 ăn theo BỀ NGANG, còn chiều cao vẫn do nội dung bên trong quyết.
         */}
         <View style={{ flexDirection: 'row', borderRadius: 24, overflow: 'hidden' }}>
-          <GridBackdrop>
+          <AuroraBackdrop>
             <View
               style={{
                 paddingHorizontal: wide ? 40 : 22,
@@ -291,7 +291,7 @@ export default function IntroScreen() {
                 <StatPill value={String(WRITING_PROMPTS.length)} label="đề Writing" />
               </View>
             </View>
-          </GridBackdrop>
+          </AuroraBackdrop>
         </View>
       </Appear>
 
