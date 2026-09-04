@@ -3,7 +3,12 @@ import { AiError, toAiError } from './errors';
 import { chatWithFallback } from './fallback';
 import { withRetry } from './retry';
 import { anchorAnnotations, type RawAnnotation } from '@/services/writing/annotate';
-import type { WritingAnnotation, WritingPrompt } from '@/lib/writing/types';
+import type {
+  CriterionDetail,
+  CriterionKey,
+  WritingAnnotation,
+  WritingPrompt,
+} from '@/lib/writing/types';
 
 /**
  * SERVER-ONLY. Chấm bài Writing bằng AI.
@@ -28,6 +33,12 @@ export type WritingEvaluationResult = {
   improvements: string[];
   annotations: WritingAnnotation[];
   model: string;
+  criteria: Record<CriterionKey, CriterionDetail>;
+  wordCount: number;
+  /** Chép từ đề: màn kết quả cần mốc này để nói bài có đủ số từ hay không. */
+  minWords: number;
+  priorityVi: string;
+  nextBandVi: string;
 };
 
 /** Model dùng để chấm. Đây là lời gọi AI quan trọng nhất của app. */
@@ -69,7 +80,7 @@ Grammatical Range and Accuracy
 
 Chấm CHẶT. Nếu phân vân giữa hai mức, chọn mức thấp hơn.`;
 
-const SCORE_SYSTEM = `Bạn là giám khảo IELTS Writing giàu kinh nghiệm.
+const SCORE_SYSTEM = `Bạn là giám khảo IELTS Writing giàu kinh nghiệm, đang viết phiếu chấm chi tiết cho học viên người Việt.
 
 ${RUBRIC}
 
@@ -77,14 +88,32 @@ Trả về JSON THUẦN, không markdown fence, không lời dẫn:
 {
   "bandLow": number,        // cận dưới, bội số của 0.5
   "bandHigh": number,       // cận trên, bội số của 0.5, cách bandLow tối đa 1.0
-  "taskBand": number,
-  "coherenceBand": number,
-  "lexicalBand": number,
-  "grammarBand": number,
-  "summaryVi": string,      // 2-3 câu TIẾNG VIỆT, nói thẳng điểm yếu lớn nhất
-  "strengths": string[],    // 2-3 mục, TIẾNG VIỆT
-  "improvements": string[]  // 2-3 mục, TIẾNG VIỆT, mỗi mục là một việc làm được ngay
+  "criteria": {
+    "task":      { "band": number, "evidenceVi": string, "gapVi": string, "nextStepVi": string, "quotes": string[] },
+    "coherence": { "band": number, "evidenceVi": string, "gapVi": string, "nextStepVi": string, "quotes": string[] },
+    "lexical":   { "band": number, "evidenceVi": string, "gapVi": string, "nextStepVi": string, "quotes": string[] },
+    "grammar":   { "band": number, "evidenceVi": string, "gapVi": string, "nextStepVi": string, "quotes": string[] }
+  },
+  "summaryVi": string,      // 3-4 câu TIẾNG VIỆT, nói thẳng điểm yếu lớn nhất
+  "priorityVi": string,     // NẾU CHỈ SỬA ĐƯỢC MỘT THỨ thì sửa gì, TIẾNG VIỆT, một câu
+  "nextBandVi": string,     // cần làm gì để lên band kế tiếp, TIẾNG VIỆT, 1-2 câu cụ thể
+  "strengths": string[],    // 2-4 mục, TIẾNG VIỆT
+  "improvements": string[]  // 3-5 mục, TIẾNG VIỆT, mỗi mục là một việc làm được ngay
 }
+
+QUY TẮC CHO PHẦN CHI TIẾT — đây là phần người học đọc kỹ nhất:
+1. "evidenceVi" là câu NHẬN XÉT DO BẠN VIẾT, bằng TIẾNG VIỆT CÓ DẤU — KHÔNG phải
+   chỗ để chép lại câu tiếng Anh trong bài (chỗ đó là "quotes"). Nó phải nói VÌ SAO
+   ở mức band đó, dựa vào chính bài này. Cấm nhận xét chung chung kiểu "cần cải
+   thiện ngữ pháp"; phải là "câu phức chỉ xuất hiện 2 lần, còn lại là câu đơn nối
+   bằng and". Ba trường evidenceVi/gapVi/nextStepVi đều PHẢI viết bằng tiếng Việt.
+2. "gapVi" nói THIẾU ĐÚNG CÁI GÌ để lên nửa bậc, không phải mô tả lại lỗi.
+3. "nextStepVi" là một việc làm được ngay ở bài sau, cụ thể tới mức bắt tay vào làm
+   được. "Đọc thêm sách" không phải một việc; "mỗi đoạn thân bài viết một câu chủ đề
+   đứng đầu" mới là.
+4. "quotes" chép NGUYÊN VĂN 1-3 đoạn ngắn từ bài (mỗi đoạn 2-10 từ) làm dẫn chứng.
+   Chép sai một ký tự là dẫn chứng vô giá trị. Nếu không tìm được thì để mảng rỗng.
+5. Viết như đang nói với một người cụ thể, xưng "bài của bạn". Không viết như báo cáo.
 
 BẮT BUỘC trả KHOẢNG band chứ không phải một số cứng: chấm tự động không đủ tin cậy để chốt một con số.`;
 
@@ -163,7 +192,7 @@ export async function evaluateWriting(input: {
       ),
     );
 
-    return buildResult(score, annotated, input.bodyText, model);
+    return { ...buildResult(score, annotated, input.bodyText, model), minWords: input.prompt.minWords };
   } catch (err) {
     throw toAiError(err, 'Không chấm được bài. Thử lại sau ít phút.');
   }
@@ -232,11 +261,12 @@ export function buildResult(
   model: string,
 ): WritingEvaluationResult {
   const s = asRecord(score);
+  const detail = readCriteria(s, bodyText);
   const criteria = {
-    taskBand: band(s.taskBand),
-    coherenceBand: band(s.coherenceBand),
-    lexicalBand: band(s.lexicalBand),
-    grammarBand: band(s.grammarBand),
+    taskBand: detail.task.band,
+    coherenceBand: detail.coherence.band,
+    lexicalBand: detail.lexical.band,
+    grammarBand: detail.grammar.band,
   };
 
   let low = band(s.bandLow);
@@ -257,7 +287,82 @@ export function buildResult(
     improvements: stringList(s.improvements),
     annotations: anchorAnnotations(bodyText, rawAnnotations),
     model,
+    criteria: detail,
+    wordCount: countWords(bodyText),
+    priorityVi: typeof s.priorityVi === 'string' ? s.priorityVi : '',
+    nextBandVi: typeof s.nextBandVi === 'string' ? s.nextBandVi : '',
+    // Chỗ gọi nào biết đề thì ghi đè bằng số thật của đề.
+    minWords: 0,
   };
+}
+
+const CRITERION_KEYS: CriterionKey[] = ['task', 'coherence', 'lexical', 'grammar'];
+
+/** Tên biến band kiểu cũ, giữ để bản chấm cũ của model vẫn đọc được. */
+const LEGACY_BAND_FIELD: Record<CriterionKey, string> = {
+  task: 'taskBand',
+  coherence: 'coherenceBand',
+  lexical: 'lexicalBand',
+  grammar: 'grammarBand',
+};
+
+/**
+ * Đọc phần nhận xét chi tiết của bốn tiêu chí.
+ *
+ * Chấp nhận CẢ HAI hình dạng: `criteria.task.band` (mới) và `taskBand` (cũ). Model
+ * thỉnh thoảng vẫn trả về hình dạng cũ, và khi ấy thà mất phần chi tiết còn hơn
+ * mất luôn điểm số.
+ */
+function readCriteria(s: Record<string, unknown>, bodyText: string): Record<CriterionKey, CriterionDetail> {
+  const raw = asRecord(s.criteria);
+  const out = {} as Record<CriterionKey, CriterionDetail>;
+
+  for (const key of CRITERION_KEYS) {
+    const c = asRecord(raw[key]);
+    const legacy = s[LEGACY_BAND_FIELD[key]];
+    out[key] = {
+      band: band(c.band ?? legacy),
+      evidenceVi: typeof c.evidenceVi === 'string' ? c.evidenceVi : '',
+      gapVi: typeof c.gapVi === 'string' ? c.gapVi : '',
+      nextStepVi: typeof c.nextStepVi === 'string' ? c.nextStepVi : '',
+      quotes: verifiedQuotes(c.quotes, bodyText),
+    };
+  }
+  return out;
+}
+
+/**
+ * Chỉ giữ lại trích dẫn CÓ THẬT trong bài.
+ *
+ * Model được dặn chép nguyên văn, nhưng nó vẫn bịa — và một dẫn chứng bịa còn tệ
+ * hơn không có dẫn chứng nào: người học đi tìm câu đó trong bài mình, không thấy,
+ * rồi mất tin vào toàn bộ phần còn lại. Chỗ này kiểm được bằng code nên phải kiểm.
+ */
+function verifiedQuotes(v: unknown, bodyText: string): string[] {
+  if (!Array.isArray(v)) return [];
+  const hay = bodyText.toLowerCase();
+  const out: string[] = [];
+  for (const item of v) {
+    if (typeof item !== 'string') continue;
+    const q = item.trim();
+    if (q.length < 2) continue;
+    if (!hay.includes(q.toLowerCase())) continue;
+    out.push(q);
+    if (out.length === 3) break;
+  }
+  return out;
+}
+
+/**
+ * Đếm từ bằng code chứ không hỏi model.
+ *
+ * Số từ là thứ kiểm được tuyệt đối, mà nó lại quyết định trực tiếp Task Response
+ * (thiếu số từ tối thiểu là trừ thẳng). Hỏi model một con số đếm được là tự chuốc
+ * lấy rủi ro không có lợi ích gì.
+ */
+export function countWords(text: string): number {
+  const trimmed = text.trim();
+  return trimmed === '' ? 0 : trimmed.split(/\s+/).length;
 }
 
 const CATEGORIES = new Set(['grammar', 'lexis', 'cohesion', 'expression', 'task']);

@@ -625,6 +625,95 @@ function AnnotationCard({ index, annotation }: { index: number; annotation: Writ
 
 // ------------------------------------------------------------- tab: nhận xét
 
+/** Bốn tiêu chí, theo đúng khoá mà phần chấm chi tiết trả về. */
+const DETAIL_CRITERIA = [
+  { key: 'task', label: 'Task Achievement', short: 'Bám đề' },
+  { key: 'coherence', label: 'Coherence & Cohesion', short: 'Bố cục & liên kết' },
+  { key: 'lexical', label: 'Lexical Resource', short: 'Từ vựng' },
+  { key: 'grammar', label: 'Grammatical Range', short: 'Ngữ pháp' },
+] as const;
+
+/**
+ * Một tiêu chí, mổ xẻ đủ bốn tầng.
+ *
+ * Vì sao không gộp thành một đoạn văn: bốn tầng này trả lời bốn câu hỏi khác nhau
+ * và người học dùng chúng ở hai thời điểm khác nhau — "vì sao" và "dẫn chứng" đọc
+ * ngay lúc nhận điểm, còn "thiếu gì" và "làm gì tiếp" là thứ họ mở lại trước khi
+ * viết bài sau. Gộp một đoạn thì lần mở lại nào cũng phải đọc lại từ đầu.
+ */
+function CriterionDetailCard({
+  label,
+  short,
+  detail,
+}: {
+  label: string;
+  short: string;
+  detail: import('@/lib/writing/types').CriterionDetail;
+}) {
+  const tone =
+    detail.band >= 7 ? color.success : detail.band >= 6 ? color.warning : color.danger;
+
+  return (
+    <View className="mt-3 overflow-hidden rounded-panel border border-paper-line bg-white">
+      <View className="flex-row items-center justify-between border-b border-paper-line px-3.5 py-2.5">
+        <View className="min-w-0 flex-1">
+          <Text className="font-strong text-body text-paper-ink">{label}</Text>
+          <Text className="mt-0.5 font-sans text-label text-paper-muted">{short}</Text>
+        </View>
+        <View className="rounded-pill px-3 py-1" style={{ backgroundColor: tone }}>
+          <Text className="font-heavy text-body text-white">{formatBand(detail.band)}</Text>
+        </View>
+      </View>
+
+      <View className="gap-2.5 p-3.5">
+        {detail.evidenceVi ? (
+          <DetailRow icon="info" title="Vì sao ở mức này" body={detail.evidenceVi} />
+        ) : null}
+
+        {detail.quotes.length > 0 ? (
+          <View className="rounded-panel bg-paper-canvas p-2.5">
+            <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+              Dẫn chứng từ bài của bạn
+            </Text>
+            {detail.quotes.map((q) => (
+              <Text key={q} className="mt-1 font-mid text-label text-paper-ink" style={{ lineHeight: 19 }}>
+                “{q}”
+              </Text>
+            ))}
+          </View>
+        ) : null}
+
+        {detail.gapVi ? <DetailRow icon="arrow-right" title="Thiếu gì để lên nửa bậc" body={detail.gapVi} /> : null}
+        {detail.nextStepVi ? <DetailRow icon="check" title="Làm ngay ở bài sau" body={detail.nextStepVi} /> : null}
+      </View>
+    </View>
+  );
+}
+
+function DetailRow({
+  icon,
+  title,
+  body,
+}: {
+  icon: React.ComponentProps<typeof Icon>['name'];
+  title: string;
+  body: string;
+}) {
+  return (
+    <View className="flex-row gap-2.5">
+      <View className="pt-0.5">
+        <Icon name={icon} size={14} color={paper.muted} strokeWidth={2} />
+      </View>
+      <View className="min-w-0 flex-1">
+        <Text className="font-semi text-label text-paper-muted">{title}</Text>
+        <Text className="mt-0.5 font-sans text-body text-paper-body" style={{ lineHeight: 22 }}>
+          {body}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
 function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
   if (!evaluation) {
     return (
@@ -635,11 +724,70 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
     );
   }
 
+  const detail = evaluation.criteria;
+  const thieuTu =
+    evaluation.wordCount !== undefined &&
+    evaluation.minWords !== undefined &&
+    evaluation.wordCount < evaluation.minWords;
+
   return (
     <View>
+      {/*
+        "Nếu chỉ sửa được một thứ" đặt TRÊN CÙNG và trước cả nhận xét chung.
+        Một phiếu chấm chi tiết có cái giá của nó: đọc xong mười mục thì không
+        biết bắt đầu từ đâu. Dòng này là câu trả lời cho đúng câu hỏi đó.
+      */}
+      {evaluation.priorityVi ? (
+        <View className="mb-4 flex-row gap-2.5 rounded-panel border-l-4 border-primary-600 bg-primary-50 p-3.5">
+          <Icon name="target" size={16} color={color.primary} strokeWidth={2.2} />
+          <View className="min-w-0 flex-1">
+            <Text className="font-semi uppercase tracking-wide text-primary-800" style={{ fontSize: 9 }}>
+              Nếu chỉ sửa được một thứ
+            </Text>
+            <Text className="mt-1 font-mid text-bodyLg text-primary-900" style={{ lineHeight: 24 }}>
+              {evaluation.priorityVi}
+            </Text>
+          </View>
+        </View>
+      ) : null}
+
+      {evaluation.wordCount !== undefined ? (
+        <View className="mb-3 flex-row flex-wrap items-center gap-2">
+          <Badge
+            label={`${evaluation.wordCount} từ`}
+            tone={thieuTu ? 'danger' : 'success'}
+          />
+          {evaluation.minWords !== undefined ? (
+            <Text className="font-sans text-label text-paper-muted">
+              {thieuTu
+                ? `Thiếu ${evaluation.minWords - evaluation.wordCount} từ so với mức tối thiểu ${evaluation.minWords} — riêng việc này đã bị trừ Task Response.`
+                : `Đạt mức tối thiểu ${evaluation.minWords} từ.`}
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
+
       <Text className="font-mid text-bodyLg text-paper-ink" style={{ lineHeight: 26 }}>
         {evaluation.summaryVi}
       </Text>
+
+      {detail ? (
+        <View className="mt-5">
+          <Text className="font-strong text-cardTitle text-paper-ink">Chấm theo từng tiêu chí</Text>
+          {DETAIL_CRITERIA.map((c) => (
+            <CriterionDetailCard key={c.key} label={c.label} short={c.short} detail={detail[c.key]} />
+          ))}
+        </View>
+      ) : null}
+
+      {evaluation.nextBandVi ? (
+        <View className="mt-4 rounded-panel border border-primary-200 bg-primary-50 p-3.5">
+          <Text className="font-strong text-body text-primary-900">Để lên band kế tiếp</Text>
+          <Text className="mt-1 font-sans text-body text-primary-800" style={{ lineHeight: 22 }}>
+            {evaluation.nextBandVi}
+          </Text>
+        </View>
+      ) : null}
 
       {evaluation.strengths.length > 0 ? (
         <View className="mt-4 rounded-panel border border-success bg-success-soft p-3.5">

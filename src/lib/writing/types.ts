@@ -160,6 +160,31 @@ export type WritingAnnotation = {
   fix: string;
 };
 
+/** Bốn tiêu chí chấm của IELTS Writing. */
+export type CriterionKey = 'task' | 'coherence' | 'lexical' | 'grammar';
+
+/**
+ * Phần nhận xét CHI TIẾT của một tiêu chí.
+ *
+ * Một con số band không dạy được gì: người học nhìn "Grammar 6.0" xong vẫn không
+ * biết phải sửa gì. Ba trường dưới đây trả lời đúng ba câu hỏi họ sẽ hỏi tiếp —
+ * "vì sao lại là 6?", "thiếu gì để lên 6.5?", "giờ tôi làm gì?".
+ *
+ * `quotes` bắt model phải chỉ vào chỗ cụ thể trong bài thay vì nhận xét chung
+ * chung; nhận xét không có dẫn chứng là nhận xét không kiểm được.
+ */
+export type CriterionDetail = {
+  band: number;
+  /** Vì sao bài rơi vào mức này — dẫn chứng từ chính bài. */
+  evidenceVi: string;
+  /** Còn thiếu đúng điều gì để lên nửa bậc. */
+  gapVi: string;
+  /** Một việc làm được ngay ở bài sau. */
+  nextStepVi: string;
+  /** Trích dẫn ngắn từ bài, minh hoạ cho nhận xét. */
+  quotes: string[];
+};
+
 export type WritingEvaluation = {
   submissionId: string;
   /** Luôn là khoảng — chấm AI không đủ tin cậy để trả một con số band cứng. */
@@ -175,4 +200,20 @@ export type WritingEvaluation = {
   annotations: WritingAnnotation[];
   model: string | null;
   evaluatedAt: string;
+
+  /*
+    Phần chi tiết, THÊM SAU nên để tuỳ chọn.
+
+    Những bài đã chấm và lưu trên máy người dùng TRƯỚC khi có phần này không có
+    các trường dưới đây. Bắt buộc chúng thì màn kết quả sẽ vỡ khi mở lại bài cũ —
+    mà bài cũ chính là thứ người ta hay mở lại nhất.
+  */
+  criteria?: Record<CriterionKey, CriterionDetail>;
+  /** Đếm bằng code, KHÔNG hỏi model: đây là con số kiểm được, không việc gì phải tin. */
+  wordCount?: number;
+  minWords?: number;
+  /** Việc quan trọng nhất phải sửa trước, nếu chỉ sửa được một thứ. */
+  priorityVi?: string;
+  /** Cần gì để bước lên band kế tiếp. */
+  nextBandVi?: string;
 };
