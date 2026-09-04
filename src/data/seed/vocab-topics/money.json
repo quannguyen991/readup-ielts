@@ -1,0 +1,508 @@
+{
+  "slug": "money",
+  "name": "Money and Spending",
+  "nameVi": "Tiền bạc",
+  "blurb": "Tiết kiệm, chi tiêu, nghèo giàu",
+  "words": [
+    {
+      "word": "expenditure",
+      "pos": "noun",
+      "ipa": "/ɪkˈspendɪtʃər/",
+      "meaningVi": "chi tiêu, khoản chi",
+      "definitionEn": "the total amount of money that a government, organization, or person spends",
+      "example": "The government's expenditure on healthcare has increased significantly over the past decade.",
+      "collocation": "government expenditure",
+      "band": "6-7"
+    },
+    {
+      "word": "frugality",
+      "pos": "noun",
+      "ipa": "/fruːˈɡæləti/",
+      "meaningVi": "sự tiết kiệm, tính tằn tiện",
+      "definitionEn": "the quality of being careful with money, especially by avoiding waste",
+      "example": "His frugality allowed him to save enough money for a down payment on a house.",
+      "collocation": "practice frugality",
+      "band": "7-8"
+    },
+    {
+      "word": "affluence",
+      "pos": "noun",
+      "ipa": "/ˈæfluəns/",
+      "meaningVi": "sự giàu có, sung túc",
+      "definitionEn": "the state of having a lot of money and a comfortable standard of living",
+      "example": "The affluence of the neighborhood is evident from the luxury cars and mansions.",
+      "collocation": "material affluence",
+      "band": "7-8"
+    },
+    {
+      "word": "disparity",
+      "pos": "noun",
+      "ipa": "/dɪˈspærəti/",
+      "meaningVi": "sự chênh lệch, bất bình đẳng",
+      "definitionEn": "a difference, especially one that is unfair or unequal",
+      "example": "The widening income disparity between the rich and the poor is a major social concern.",
+      "collocation": "income disparity",
+      "band": "7-8"
+    },
+    {
+      "word": "inflation",
+      "pos": "noun",
+      "ipa": "/ɪnˈfleɪʃn/",
+      "meaningVi": "lạm phát",
+      "definitionEn": "a general increase in the prices of goods and services in an economy",
+      "example": "High inflation erodes the purchasing power of people's savings.",
+      "collocation": "double-digit inflation",
+      "band": "6-7"
+    },
+    {
+      "word": "savings",
+      "pos": "noun",
+      "ipa": "/ˈseɪvɪŋz/",
+      "meaningVi": "tiền tiết kiệm",
+      "definitionEn": "money that you have saved, especially in a bank account",
+      "example": "Many people rely on their savings to cover unexpected expenses.",
+      "collocation": "life savings",
+      "band": "5-6"
+    },
+    {
+      "word": "budget",
+      "pos": "noun",
+      "ipa": "/ˈbʌdʒɪt/",
+      "meaningVi": "ngân sách, ngân quỹ",
+      "definitionEn": "a plan of how much money you will spend on different things",
+      "example": "A well-planned budget is essential for managing personal finances.",
+      "collocation": "tight budget",
+      "band": "5-6"
+    },
+    {
+      "word": "debt",
+      "pos": "noun",
+      "ipa": "/det/",
+      "meaningVi": "nợ, khoản nợ",
+      "definitionEn": "an amount of money that you owe to a person or organization",
+      "example": "Rising student debt has become a heavy burden for young graduates.",
+      "collocation": "accumulate debt",
+      "band": "5-6"
+    },
+    {
+      "word": "income",
+      "pos": "noun",
+      "ipa": "/ˈɪnkʌm/",
+      "meaningVi": "thu nhập",
+      "definitionEn": "the money that you earn from work, investments, etc.",
+      "example": "A stable income is crucial for maintaining a decent standard of living.",
+      "collocation": "disposable income",
+      "band": "5-6"
+    },
+    {
+      "word": "poverty",
+      "pos": "noun",
+      "ipa": "/ˈpɒvəti/",
+      "meaningVi": "nghèo đói",
+      "definitionEn": "the state of being extremely poor",
+      "example": "Poverty remains a persistent problem in many developing countries.",
+      "collocation": "extreme poverty",
+      "band": "6-7"
+    },
+    {
+      "word": "wealth",
+      "pos": "noun",
+      "ipa": "/welθ/",
+      "meaningVi": "sự giàu có, tài sản",
+      "definitionEn": "a large amount of money, property, or valuable possessions",
+      "example": "The distribution of wealth in society is often highly unequal.",
+      "collocation": "accumulate wealth",
+      "band": "5-6"
+    },
+    {
+      "word": "investment",
+      "pos": "noun",
+      "ipa": "/ɪnˈvestmənt/",
+      "meaningVi": "sự đầu tư, khoản đầu tư",
+      "definitionEn": "the act of putting money into something to make a profit",
+      "example": "Long-term investment in education yields high returns for individuals and society.",
+      "collocation": "make an investment",
+      "band": "6-7"
+    },
+    {
+      "word": "capital",
+      "pos": "noun",
+      "ipa": "/ˈkæpɪtl/",
+      "meaningVi": "vốn, tư bản",
+      "definitionEn": "money or property used to produce more wealth",
+      "example": "Start-ups often struggle to raise sufficient capital to expand their operations.",
+      "collocation": "venture capital",
+      "band": "7-8"
+    },
+    {
+      "word": "dividend",
+      "pos": "noun",
+      "ipa": "/ˈdɪvɪdend/",
+      "meaningVi": "cổ tức, lợi tức",
+      "definitionEn": "a share of a company's profits paid to shareholders",
+      "example": "The company announced an increase in its annual dividend after strong earnings.",
+      "collocation": "pay a dividend",
+      "band": "7-8"
+    },
+    {
+      "word": "subsidy",
+      "pos": "noun",
+      "ipa": "/ˈsʌbsədi/",
+      "meaningVi": "trợ cấp, trợ giá",
+      "definitionEn": "money given by the government to help an industry or group",
+      "example": "The government provides subsidies for renewable energy to encourage green investment.",
+      "collocation": "government subsidy",
+      "band": "7-8"
+    },
+    {
+      "word": "allowance",
+      "pos": "noun",
+      "ipa": "/əˈlaʊəns/",
+      "meaningVi": "tiền tiêu vặt, phụ cấp",
+      "definitionEn": "an amount of money given regularly to somebody, especially a child",
+      "example": "Giving children a weekly allowance can teach them the value of money.",
+      "collocation": "weekly allowance",
+      "band": "5-6"
+    },
+    {
+      "word": "rate",
+      "pos": "noun",
+      "ipa": "/reɪt/",
+      "meaningVi": "tỷ lệ, mức",
+      "definitionEn": "the amount of money that is charged or paid for something",
+      "example": "Interest rates have a direct impact on the cost of borrowing money.",
+      "collocation": "interest rate",
+      "band": "5-6"
+    },
+    {
+      "word": "deposit",
+      "pos": "noun",
+      "ipa": "/dɪˈpɒzɪt/",
+      "meaningVi": "tiền gửi, tiền đặt cọc",
+      "definitionEn": "a sum of money placed in a bank account or given as a first payment",
+      "example": "A fixed deposit account offers a higher interest rate than a regular savings account.",
+      "collocation": "make a deposit",
+      "band": "6-7"
+    },
+    {
+      "word": "withdrawal",
+      "pos": "noun",
+      "ipa": "/wɪðˈdrɔːəl/",
+      "meaningVi": "sự rút tiền",
+      "definitionEn": "the act of taking money out of a bank account",
+      "example": "The bank charges a fee for each withdrawal from an ATM outside its network.",
+      "collocation": "make a withdrawal",
+      "band": "6-7"
+    },
+    {
+      "word": "loan",
+      "pos": "noun",
+      "ipa": "/ləʊn/",
+      "meaningVi": "khoản vay, tiền cho vay",
+      "definitionEn": "money that is borrowed and must be repaid with interest",
+      "example": "Taking out a loan to buy a house is a common financial decision.",
+      "collocation": "apply for a loan",
+      "band": "5-6"
+    },
+    {
+      "word": "mortgage",
+      "pos": "noun",
+      "ipa": "/ˈmɔːɡɪdʒ/",
+      "meaningVi": "thế chấp, vay thế chấp",
+      "definitionEn": "a loan used to buy a home, where the property is used as security",
+      "example": "Rising mortgage rates have made homeownership less affordable for many families.",
+      "collocation": "mortgage payment",
+      "band": "7-8"
+    },
+    {
+      "word": "collateral",
+      "pos": "noun",
+      "ipa": "/kəˈlætərəl/",
+      "meaningVi": "tài sản thế chấp",
+      "definitionEn": "property or assets pledged as security for a loan",
+      "example": "Banks often require collateral before approving a large business loan.",
+      "collocation": "use as collateral",
+      "band": "8+"
+    },
+    {
+      "word": "credit",
+      "pos": "noun",
+      "ipa": "/ˈkredɪt/",
+      "meaningVi": "tín dụng, hạn mức vay",
+      "definitionEn": "the ability to buy something now and pay for it later",
+      "example": "A good credit score is essential for obtaining favorable loan terms.",
+      "collocation": "credit card",
+      "band": "5-6"
+    },
+    {
+      "word": "installment",
+      "pos": "noun",
+      "ipa": "/ɪnˈstɔːlmənt/",
+      "meaningVi": "trả góp, kỳ trả",
+      "definitionEn": "one of several payments made over a period of time",
+      "example": "Many people buy electronics through monthly installments to manage their cash flow.",
+      "collocation": "pay in installments",
+      "band": "6-7"
+    },
+    {
+      "word": "revenue",
+      "pos": "noun",
+      "ipa": "/ˈrevənjuː/",
+      "meaningVi": "doanh thu, thu nhập (của tổ chức)",
+      "definitionEn": "the money that a company or government receives from its activities",
+      "example": "The company's revenue doubled after the launch of its new product line.",
+      "collocation": "annual revenue",
+      "band": "7-8"
+    },
+    {
+      "word": "profit",
+      "pos": "noun",
+      "ipa": "/ˈprɒfɪt/",
+      "meaningVi": "lợi nhuận",
+      "definitionEn": "the amount of money earned after deducting costs",
+      "example": "The company reported a net profit of $10 million for the last quarter.",
+      "collocation": "make a profit",
+      "band": "5-6"
+    },
+    {
+      "word": "loss",
+      "pos": "noun",
+      "ipa": "/lɒs/",
+      "meaningVi": "thua lỗ, mất mát",
+      "definitionEn": "the amount of money that a business loses when it spends more than it earns",
+      "example": "The business suffered a heavy loss due to the economic downturn.",
+      "collocation": "suffer a loss",
+      "band": "5-6"
+    },
+    {
+      "word": "tax",
+      "pos": "noun",
+      "ipa": "/tæks/",
+      "meaningVi": "thuế",
+      "definitionEn": "a compulsory payment to the government to fund public services",
+      "example": "High tax rates can discourage investment and reduce economic growth.",
+      "collocation": "income tax",
+      "band": "5-6"
+    },
+    {
+      "word": "tariff",
+      "pos": "noun",
+      "ipa": "/ˈtærɪf/",
+      "meaningVi": "thuế quan, biểu thuế",
+      "definitionEn": "a tax on goods imported or exported",
+      "example": "The government imposed tariffs on imported steel to protect domestic industries.",
+      "collocation": "impose a tariff",
+      "band": "8+"
+    },
+    {
+      "word": "budgeting",
+      "pos": "noun",
+      "ipa": "/ˈbʌdʒətɪŋ/",
+      "meaningVi": "việc lập ngân sách",
+      "definitionEn": "the process of planning how to spend your money",
+      "example": "Effective budgeting is the cornerstone of sound financial management.",
+      "collocation": "budgeting skills",
+      "band": "6-7"
+    },
+    {
+      "word": "overdraft",
+      "pos": "noun",
+      "ipa": "/ˈəʊvədrɑːft/",
+      "meaningVi": "thấu chi, số dư nợ",
+      "definitionEn": "an amount of money withdrawn from a bank account exceeding the balance",
+      "example": "Using an overdraft can be expensive because of high interest charges.",
+      "collocation": "overdraft facility",
+      "band": "7-8"
+    },
+    {
+      "word": "insolvency",
+      "pos": "noun",
+      "ipa": "/ɪnˈsɒlvənsi/",
+      "meaningVi": "sự mất khả năng thanh toán",
+      "definitionEn": "the state of being unable to pay debts",
+      "example": "The company filed for insolvency after failing to secure additional funding.",
+      "collocation": "declare insolvency",
+      "band": "8+"
+    },
+    {
+      "word": "bankruptcy",
+      "pos": "noun",
+      "ipa": "/ˈbæŋkrʌptsi/",
+      "meaningVi": "phá sản",
+      "definitionEn": "a legal process allowing a person or business to be released from debt",
+      "example": "Many small businesses face bankruptcy during an economic recession.",
+      "collocation": "file for bankruptcy",
+      "band": "7-8"
+    },
+    {
+      "word": "endowment",
+      "pos": "noun",
+      "ipa": "/ɪnˈdaʊmənt/",
+      "meaningVi": "sự tài trợ, khoản hiến tặng",
+      "definitionEn": "a large amount of money given to an institution, often to produce income",
+      "example": "The university uses its endowment to fund scholarships for needy students.",
+      "collocation": "endowment fund",
+      "band": "8+"
+    },
+    {
+      "word": "philanthropy",
+      "pos": "noun",
+      "ipa": "/fɪˈlænθrəpi/",
+      "meaningVi": "lòng từ thiện, hoạt động nhân đạo",
+      "definitionEn": "the practice of giving money and time to help others, especially through charities",
+      "example": "Wealthy individuals often engage in philanthropy to give back to society.",
+      "collocation": "corporate philanthropy",
+      "band": "8+"
+    },
+    {
+      "word": "capitalism",
+      "pos": "noun",
+      "ipa": "/ˈkæpɪtəlɪzəm/",
+      "meaningVi": "chủ nghĩa tư bản",
+      "definitionEn": "an economic system based on private ownership and profit",
+      "example": "Capitalism encourages competition and innovation but can also lead to inequality.",
+      "collocation": "free-market capitalism",
+      "band": "7-8"
+    },
+    {
+      "word": "consumerism",
+      "pos": "noun",
+      "ipa": "/kənˈsjuːmərɪzəm/",
+      "meaningVi": "chủ nghĩa tiêu dùng",
+      "definitionEn": "the tendency to buy and consume goods in large quantities, often beyond needs",
+      "example": "Excessive consumerism has contributed to environmental degradation and personal debt.",
+      "collocation": "rampant consumerism",
+      "band": "7-8"
+    },
+    {
+      "word": "thrift",
+      "pos": "noun",
+      "ipa": "/θrɪft/",
+      "meaningVi": "sự tiết kiệm, tính tằn tiện",
+      "definitionEn": "the habit of using money carefully and avoiding waste",
+      "example": "Her thrift allowed her to retire comfortably at an early age.",
+      "collocation": "value thrift",
+      "band": "6-7"
+    },
+    {
+      "word": "extravagance",
+      "pos": "noun",
+      "ipa": "/ɪkˈstrævəɡəns/",
+      "meaningVi": "sự xa hoa, hoang phí",
+      "definitionEn": "the act of spending a lot of money on things that are not necessary",
+      "example": "Extravagance in spending can quickly lead to financial ruin.",
+      "collocation": "unnecessary extravagance",
+      "band": "7-8"
+    },
+    {
+      "word": "necessity",
+      "pos": "noun",
+      "ipa": "/nəˈsesəti/",
+      "meaningVi": "nhu yếu phẩm, thứ cần thiết",
+      "definitionEn": "something that you must have, especially for basic living",
+      "example": "Food, housing, and healthcare are basic necessities that everyone should afford.",
+      "collocation": "basic necessities",
+      "band": "5-6"
+    },
+    {
+      "word": "luxury",
+      "pos": "noun",
+      "ipa": "/ˈlʌkʃəri/",
+      "meaningVi": "xa xỉ, hàng cao cấp",
+      "definitionEn": "something expensive that you do not need but enjoy having",
+      "example": "Many people consider a private car a luxury rather than a necessity.",
+      "collocation": "luxury goods",
+      "band": "5-6"
+    },
+    {
+      "word": "entitlement",
+      "pos": "noun",
+      "ipa": "/ɪnˈtaɪtlmənt/",
+      "meaningVi": "quyền lợi, sự được hưởng",
+      "definitionEn": "a right to receive benefits or financial support from the government",
+      "example": "Welfare entitlement programs help reduce poverty but also burden the budget.",
+      "collocation": "entitlement program",
+      "band": "8+"
+    },
+    {
+      "word": "welfare",
+      "pos": "noun",
+      "ipa": "/ˈwelfeər/",
+      "meaningVi": "phúc lợi, trợ cấp xã hội",
+      "definitionEn": "money paid by the government to people who are poor or unemployed",
+      "example": "The government is reforming the welfare system to encourage employment.",
+      "collocation": "welfare state",
+      "band": "7-8"
+    },
+    {
+      "word": "deprivation",
+      "pos": "noun",
+      "ipa": "/ˌdeprɪˈveɪʃn/",
+      "meaningVi": "sự thiếu thốn, túng quẫn",
+      "definitionEn": "the lack of basic necessities, such as food, money, or shelter",
+      "example": "Prolonged material deprivation can lead to serious health and social problems.",
+      "collocation": "socioeconomic deprivation",
+      "band": "8+"
+    },
+    {
+      "word": "gratification",
+      "pos": "noun",
+      "ipa": "/ˌɡrætɪfɪˈkeɪʃn/",
+      "meaningVi": "sự hài lòng, thỏa mãn",
+      "definitionEn": "the feeling of pleasure or satisfaction, often from spending money",
+      "example": "Instant gratification from shopping can lead to impulsive spending habits.",
+      "collocation": "instant gratification",
+      "band": "7-8"
+    },
+    {
+      "word": "hedonic",
+      "pos": "adjective",
+      "ipa": "/hiːˈdɒnɪk/",
+      "meaningVi": "thuộc về khoái lạc, hưởng thụ",
+      "definitionEn": "relating to the pursuit of pleasure, especially through consumption",
+      "example": "Hedonic spending often provides short-term joy but can undermine long-term savings.",
+      "collocation": "hedonic adaptation",
+      "band": "8+"
+    },
+    {
+      "word": "disposable",
+      "pos": "adjective",
+      "ipa": "/dɪˈspəʊzəbl/",
+      "meaningVi": "dùng một lần; có thể chi tiêu",
+      "definitionEn": "available for use, especially after taxes and necessary expenses are paid",
+      "example": "Higher disposable income allows people to spend more on entertainment and travel.",
+      "collocation": "disposable income",
+      "band": "6-7"
+    },
+    {
+      "word": "liquid",
+      "pos": "adjective",
+      "ipa": "/ˈlɪkwɪd/",
+      "meaningVi": "có tính thanh khoản, dễ chuyển thành tiền",
+      "definitionEn": "easily converted into cash without losing value",
+      "example": "Investors prefer liquid assets that can be sold quickly in an emergency.",
+      "collocation": "liquid assets",
+      "band": "8+"
+    },
+    {
+      "word": "scarcity",
+      "pos": "noun",
+      "ipa": "/ˈskeəsəti/",
+      "meaningVi": "sự khan hiếm, thiếu hụt",
+      "definitionEn": "a situation where there is not enough of something to meet demand",
+      "example": "The scarcity of affordable housing in big cities drives up rental prices.",
+      "collocation": "resource scarcity",
+      "band": "7-8"
+    },
+    {
+      "word": "recession",
+      "pos": "noun",
+      "ipa": "/rɪˈseʃn/",
+      "meaningVi": "suy thoái kinh tế",
+      "definitionEn": "a period of temporary economic decline, with reduced trade and activity",
+      "example": "During a recession, consumer spending typically falls and unemployment rises.",
+      "collocation": "economic recession",
+      "band": "7-8"
+    }
+  ]
+}

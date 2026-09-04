@@ -1,0 +1,508 @@
+{
+  "slug": "crime",
+  "name": "Crime and Punishment",
+  "nameVi": "Tội phạm",
+  "blurb": "Vi phạm, hình phạt, phòng ngừa",
+  "words": [
+    {
+      "word": "offender",
+      "pos": "noun",
+      "ipa": "/əˈfɛndər/",
+      "meaningVi": "người phạm tội",
+      "definitionEn": "A person who commits an illegal act.",
+      "example": "The court ordered the offender to pay compensation to the victim.",
+      "collocation": "repeat offender",
+      "band": "5-6"
+    },
+    {
+      "word": "sentence",
+      "pos": "noun",
+      "ipa": "/ˈsɛntəns/",
+      "meaningVi": "bản án",
+      "definitionEn": "The punishment assigned to a defendant found guilty by a court.",
+      "example": "The judge handed down a severe sentence for the drug trafficking charge.",
+      "collocation": "custodial sentence",
+      "band": "5-6"
+    },
+    {
+      "word": "evidence",
+      "pos": "noun",
+      "ipa": "/ˈɛvɪdəns/",
+      "meaningVi": "bằng chứng",
+      "definitionEn": "Information or objects presented in court to prove a fact.",
+      "example": "The forensic evidence strongly linked the suspect to the crime scene.",
+      "collocation": "circumstantial evidence",
+      "band": "5-6"
+    },
+    {
+      "word": "witness",
+      "pos": "noun",
+      "ipa": "/ˈwɪtnəs/",
+      "meaningVi": "nhân chứng",
+      "definitionEn": "A person who sees an event, typically a crime, and can testify in court.",
+      "example": "The key witness provided crucial testimony that led to the conviction.",
+      "collocation": "eyewitness",
+      "band": "5-6"
+    },
+    {
+      "word": "victim",
+      "pos": "noun",
+      "ipa": "/ˈvɪktɪm/",
+      "meaningVi": "nạn nhân",
+      "definitionEn": "A person harmed or killed as a result of a crime.",
+      "example": "Support services are available to help victims of violent crime.",
+      "collocation": "crime victim",
+      "band": "5-6"
+    },
+    {
+      "word": "punishment",
+      "pos": "noun",
+      "ipa": "/ˈpʌnɪʃmənt/",
+      "meaningVi": "hình phạt",
+      "definitionEn": "A penalty imposed for committing a crime or wrongdoing.",
+      "example": "The severity of the punishment should reflect the seriousness of the offence.",
+      "collocation": "capital punishment",
+      "band": "5-6"
+    },
+    {
+      "word": "fine",
+      "pos": "noun",
+      "ipa": "/faɪn/",
+      "meaningVi": "tiền phạt",
+      "definitionEn": "A sum of money imposed as a penalty for an offence.",
+      "example": "The court imposed a heavy fine for the environmental violation.",
+      "collocation": "pay a fine",
+      "band": "5-6"
+    },
+    {
+      "word": "probation",
+      "pos": "noun",
+      "ipa": "/prəˈbeɪʃən/",
+      "meaningVi": "án treo, quản chế",
+      "definitionEn": "A period of supervision in the community as an alternative to imprisonment.",
+      "example": "The offender was placed on probation for two years instead of being sent to prison.",
+      "collocation": "probation officer",
+      "band": "6-7"
+    },
+    {
+      "word": "detention",
+      "pos": "noun",
+      "ipa": "/dɪˈtɛnʃən/",
+      "meaningVi": "giam giữ",
+      "definitionEn": "The state of being held in custody, especially in a prison or jail.",
+      "example": "The suspect was placed in pre-trial detention pending further investigation.",
+      "collocation": "detention centre",
+      "band": "6-7"
+    },
+    {
+      "word": "appeal",
+      "pos": "noun",
+      "ipa": "/əˈpiːl/",
+      "meaningVi": "kháng cáo",
+      "definitionEn": "A request to a higher court to review a decision made by a lower court.",
+      "example": "The defendant filed an appeal against the guilty verdict.",
+      "collocation": "appeal court",
+      "band": "6-7"
+    },
+    {
+      "word": "rehabilitation",
+      "pos": "noun",
+      "ipa": "/ˌriːəˌbɪlɪˈteɪʃən/",
+      "meaningVi": "cải tạo, phục hồi",
+      "definitionEn": "The process of helping an offender to reintegrate into society and avoid reoffending.",
+      "example": "Effective rehabilitation programs can reduce recidivism rates significantly.",
+      "collocation": "rehabilitation programme",
+      "band": "6-7"
+    },
+    {
+      "word": "deterrence",
+      "pos": "noun",
+      "ipa": "/dɪˈtɜːrəns/",
+      "meaningVi": "sự răn đe, ngăn chặn",
+      "definitionEn": "The idea that punishment discourages people from committing crimes.",
+      "example": "Harsh penalties are often justified on grounds of general deterrence.",
+      "collocation": "deterrence effect",
+      "band": "6-7"
+    },
+    {
+      "word": "prosecution",
+      "pos": "noun",
+      "ipa": "/ˌprɒsɪˈkjuːʃən/",
+      "meaningVi": "sự truy tố",
+      "definitionEn": "The legal process of charging and trying someone for a crime.",
+      "example": "The prosecution presented a strong case against the accused.",
+      "collocation": "criminal prosecution",
+      "band": "6-7"
+    },
+    {
+      "word": "defendant",
+      "pos": "noun",
+      "ipa": "/dɪˈfɛndənt/",
+      "meaningVi": "bị cáo",
+      "definitionEn": "A person accused or sued in a court of law.",
+      "example": "The defendant pleaded not guilty to all charges.",
+      "collocation": "defendant's rights",
+      "band": "6-7"
+    },
+    {
+      "word": "verdict",
+      "pos": "noun",
+      "ipa": "/ˈvɜːrdɪkt/",
+      "meaningVi": "phán quyết",
+      "definitionEn": "A decision on a legal case, made by a jury or judge.",
+      "example": "The jury reached a unanimous verdict of guilty after hours of deliberation.",
+      "collocation": "guilty verdict",
+      "band": "6-7"
+    },
+    {
+      "word": "acquittal",
+      "pos": "noun",
+      "ipa": "/əˈkwɪtəl/",
+      "meaningVi": "sự tuyên bố trắng án",
+      "definitionEn": "A judgment that a person is not guilty of the crime with which they have been charged.",
+      "example": "The acquittal of the defendant was met with shock by the public.",
+      "collocation": "acquittal rate",
+      "band": "6-7"
+    },
+    {
+      "word": "conviction",
+      "pos": "noun",
+      "ipa": "/kənˈvɪkʃən/",
+      "meaningVi": "sự kết án",
+      "definitionEn": "A formal declaration that someone is guilty of a criminal offence.",
+      "example": "A criminal conviction can have serious long-term consequences for employment.",
+      "collocation": "previous conviction",
+      "band": "6-7"
+    },
+    {
+      "word": "parole",
+      "pos": "noun",
+      "ipa": "/pəˈroʊl/",
+      "meaningVi": "tạm tha có điều kiện",
+      "definitionEn": "The release of a prisoner before the end of their sentence, subject to conditions.",
+      "example": "Prisoners may be eligible for parole after serving a minimum term.",
+      "collocation": "parole board",
+      "band": "6-7"
+    },
+    {
+      "word": "bail",
+      "pos": "noun",
+      "ipa": "/beɪl/",
+      "meaningVi": "tiền bảo lãnh",
+      "definitionEn": "The temporary release of an accused person awaiting trial, often secured by a sum of money.",
+      "example": "The judge set bail at $10,000, and the defendant was released pending trial.",
+      "collocation": "bail condition",
+      "band": "6-7"
+    },
+    {
+      "word": "custody",
+      "pos": "noun",
+      "ipa": "/ˈkʌstədi/",
+      "meaningVi": "sự giam giữ, quyền nuôi dưỡng",
+      "definitionEn": "The state of being held in prison or the legal right to care for a child.",
+      "example": "The suspect was taken into custody immediately after the arrest.",
+      "collocation": "in custody",
+      "band": "6-7"
+    },
+    {
+      "word": "surveillance",
+      "pos": "noun",
+      "ipa": "/sərˈveɪləns/",
+      "meaningVi": "sự giám sát",
+      "definitionEn": "Close observation of a person or place, especially by police or intelligence agencies.",
+      "example": "Undercover police conducted surveillance on the suspected drug dealer.",
+      "collocation": "surveillance camera",
+      "band": "6-7"
+    },
+    {
+      "word": "forensic",
+      "pos": "adjective",
+      "ipa": "/fəˈrɛnsɪk/",
+      "meaningVi": "thuộc pháp y",
+      "definitionEn": "Relating to the application of scientific methods to criminal investigations.",
+      "example": "Forensic analysis of the DNA evidence proved crucial in solving the case.",
+      "collocation": "forensic science",
+      "band": "6-7"
+    },
+    {
+      "word": "testimony",
+      "pos": "noun",
+      "ipa": "/ˈtɛstɪmoʊni/",
+      "meaningVi": "lời khai",
+      "definitionEn": "A formal statement given by a witness in court, usually under oath.",
+      "example": "The victim's testimony was emotional but consistent with the evidence.",
+      "collocation": "expert testimony",
+      "band": "6-7"
+    },
+    {
+      "word": "perjury",
+      "pos": "noun",
+      "ipa": "/ˈpɜːrdʒəri/",
+      "meaningVi": "tội khai man",
+      "definitionEn": "The offence of deliberately lying under oath in a court of law.",
+      "example": "The witness was charged with perjury after contradicting her earlier statement.",
+      "collocation": "commit perjury",
+      "band": "6-7"
+    },
+    {
+      "word": "plea",
+      "pos": "noun",
+      "ipa": "/pliː/",
+      "meaningVi": "lời biện hộ, nhận tội/không nhận tội",
+      "definitionEn": "A formal statement by a defendant of guilt or innocence in response to a charge.",
+      "example": "The defendant entered a plea of not guilty at the arraignment.",
+      "collocation": "plea bargain",
+      "band": "6-7"
+    },
+    {
+      "word": "indictment",
+      "pos": "noun",
+      "ipa": "/ɪnˈdaɪtmənt/",
+      "meaningVi": "bản cáo trạng",
+      "definitionEn": "A formal charge or accusation of a serious crime, issued by a grand jury.",
+      "example": "The grand jury returned an indictment against the corporate executives.",
+      "collocation": "indictment for fraud",
+      "band": "6-7"
+    },
+    {
+      "word": "subpoena",
+      "pos": "noun",
+      "ipa": "/səˈpiːnə/",
+      "meaningVi": "trát hầu tòa",
+      "definitionEn": "A writ ordering a person to attend court as a witness or to produce evidence.",
+      "example": "The court issued a subpoena requiring the journalist to testify.",
+      "collocation": "subpoena duces tecum",
+      "band": "6-7"
+    },
+    {
+      "word": "recidivism",
+      "pos": "noun",
+      "ipa": "/rɪˈsɪdɪvɪzəm/",
+      "meaningVi": "tái phạm",
+      "definitionEn": "The tendency of a convicted criminal to reoffend after release.",
+      "example": "High recidivism rates indicate that the prison system is failing to rehabilitate offenders.",
+      "collocation": "recidivism rate",
+      "band": "7-8"
+    },
+    {
+      "word": "criminality",
+      "pos": "noun",
+      "ipa": "/ˌkrɪmɪˈnælɪti/",
+      "meaningVi": "tính chất tội phạm, tình trạng phạm tội",
+      "definitionEn": "The state of being criminal or the extent of criminal activity in a society.",
+      "example": "Poverty and lack of education are often linked to urban criminality.",
+      "collocation": "organized criminality",
+      "band": "7-8"
+    },
+    {
+      "word": "culpable",
+      "pos": "adjective",
+      "ipa": "/ˈkʌlpəbəl/",
+      "meaningVi": "có tội, đáng trách",
+      "definitionEn": "Responsible for a crime or wrongdoing; deserving blame.",
+      "example": "The court found the company culpable for the safety violations.",
+      "collocation": "culpable homicide",
+      "band": "7-8"
+    },
+    {
+      "word": "premeditation",
+      "pos": "noun",
+      "ipa": "/prɪˌmɛdɪˈteɪʃən/",
+      "meaningVi": "sự có chủ đích trước",
+      "definitionEn": "The act of planning or plotting a crime beforehand.",
+      "example": "The murder charge was upgraded to first-degree due to clear evidence of premeditation.",
+      "collocation": "premeditation and malice",
+      "band": "7-8"
+    },
+    {
+      "word": "mitigating",
+      "pos": "adjective",
+      "ipa": "/ˈmɪtɪɡeɪtɪŋ/",
+      "meaningVi": "giảm nhẹ (tội)",
+      "definitionEn": "Tending to make a crime or offence less serious or more excusable.",
+      "example": "The judge considered the defendant's difficult childhood as a mitigating factor.",
+      "collocation": "mitigating circumstances",
+      "band": "7-8"
+    },
+    {
+      "word": "aggravating",
+      "pos": "adjective",
+      "ipa": "/ˈæɡrəveɪtɪŋ/",
+      "meaningVi": "làm nặng thêm (tội)",
+      "definitionEn": "Tending to make a crime more serious, such as by involving violence or a vulnerable victim.",
+      "example": "The use of a weapon is an aggravating factor in assault cases.",
+      "collocation": "aggravating factor",
+      "band": "7-8"
+    },
+    {
+      "word": "incarceration",
+      "pos": "noun",
+      "ipa": "/ɪnˌkɑːrsəˈreɪʃən/",
+      "meaningVi": "sự giam cầm, bỏ tù",
+      "definitionEn": "The state of being confined in prison; imprisonment.",
+      "example": "Long-term incarceration can have severe psychological effects on prisoners.",
+      "collocation": "mass incarceration",
+      "band": "7-8"
+    },
+    {
+      "word": "recidivist",
+      "pos": "noun",
+      "ipa": "/rɪˈsɪdɪvɪst/",
+      "meaningVi": "người tái phạm",
+      "definitionEn": "A person who repeatedly commits crimes or relapses into criminal behaviour.",
+      "example": "The programme targets recidivists with intensive support to break the cycle of crime.",
+      "collocation": "chronic recidivist",
+      "band": "7-8"
+    },
+    {
+      "word": "restitution",
+      "pos": "noun",
+      "ipa": "/ˌrɛstɪˈtjuːʃən/",
+      "meaningVi": "sự bồi thường",
+      "definitionEn": "The act of restoring something to its rightful owner, or compensating for loss or injury.",
+      "example": "The court ordered the offender to make restitution to the victims of the fraud.",
+      "collocation": "order restitution",
+      "band": "7-8"
+    },
+    {
+      "word": "restorative justice",
+      "pos": "noun",
+      "ipa": "/rɪˈstɔːrətɪv ˈdʒʌstɪs/",
+      "meaningVi": "công lý phục hồi",
+      "definitionEn": "A system of justice that focuses on repairing harm through reconciliation between offender and victim.",
+      "example": "Restorative justice practices often involve face-to-face meetings between the victim and the offender.",
+      "collocation": "restorative justice programme",
+      "band": "7-8"
+    },
+    {
+      "word": "mandatory sentencing",
+      "pos": "noun",
+      "ipa": "/ˈmændətɔːri ˈsɛntənsɪŋ/",
+      "meaningVi": "tuyên án bắt buộc",
+      "definitionEn": "A legal requirement that a court impose a fixed minimum sentence for certain crimes.",
+      "example": "Mandatory sentencing for drug offences has been criticised for reducing judicial discretion.",
+      "collocation": "mandatory minimum sentence",
+      "band": "7-8"
+    },
+    {
+      "word": "white-collar crime",
+      "pos": "noun",
+      "ipa": "/ˈwaɪt ˈkɒlər kraɪm/",
+      "meaningVi": "tội phạm cổ trắng",
+      "definitionEn": "Non-violent crime committed for financial gain by business or government professionals.",
+      "example": "White-collar crime such as insider trading often goes undetected for years.",
+      "collocation": "white-collar crime investigation",
+      "band": "7-8"
+    },
+    {
+      "word": "cybercrime",
+      "pos": "noun",
+      "ipa": "/ˈsaɪbərkraɪm/",
+      "meaningVi": "tội phạm mạng",
+      "definitionEn": "Criminal activity carried out using computers or the internet.",
+      "example": "Governments are investing heavily to combat the growing threat of cybercrime.",
+      "collocation": "cybercrime unit",
+      "band": "7-8"
+    },
+    {
+      "word": "embezzlement",
+      "pos": "noun",
+      "ipa": "/ɪmˈbɛzəlmənt/",
+      "meaningVi": "tội tham ô, biển thủ",
+      "definitionEn": "The fraudulent taking of money or property entrusted to one's care, especially by an employee.",
+      "example": "The accountant was convicted of embezzlement after siphoning funds from the company.",
+      "collocation": "embezzlement of funds",
+      "band": "7-8"
+    },
+    {
+      "word": "fraud",
+      "pos": "noun",
+      "ipa": "/frɔːd/",
+      "meaningVi": "gian lận, lừa đảo",
+      "definitionEn": "Wrongful deception intended to result in financial or personal gain.",
+      "example": "The executive was found guilty of fraud for falsifying financial reports.",
+      "collocation": "tax fraud",
+      "band": "7-8"
+    },
+    {
+      "word": "bribery",
+      "pos": "noun",
+      "ipa": "/ˈbraɪbəri/",
+      "meaningVi": "hối lộ",
+      "definitionEn": "The practice of offering, giving, or receiving something of value to influence a public official.",
+      "example": "The politician was arrested on charges of bribery and corruption.",
+      "collocation": "bribery scandal",
+      "band": "7-8"
+    },
+    {
+      "word": "corruption",
+      "pos": "noun",
+      "ipa": "/kəˈrʌpʃən/",
+      "meaningVi": "tham nhũng",
+      "definitionEn": "Dishonest or illegal behaviour, especially by people in positions of power.",
+      "example": "Widespread corruption undermines trust in the justice system.",
+      "collocation": "political corruption",
+      "band": "7-8"
+    },
+    {
+      "word": "conspiracy",
+      "pos": "noun",
+      "ipa": "/kənˈspɪrəsi/",
+      "meaningVi": "âm mưu",
+      "definitionEn": "A secret plan by a group of people to commit an illegal or harmful act.",
+      "example": "The three men were charged with conspiracy to commit robbery.",
+      "collocation": "conspiracy to defraud",
+      "band": "7-8"
+    },
+    {
+      "word": "accomplice",
+      "pos": "noun",
+      "ipa": "/əˈkʌmplɪs/",
+      "meaningVi": "đồng phạm",
+      "definitionEn": "A person who helps another commit a crime.",
+      "example": "The driver of the getaway car was arrested as an accomplice to the robbery.",
+      "collocation": "accomplice in crime",
+      "band": "7-8"
+    },
+    {
+      "word": "accessory",
+      "pos": "noun",
+      "ipa": "/əkˈsɛsəri/",
+      "meaningVi": "người tòng phạm, kẻ phụ giúp",
+      "definitionEn": "A person who is not present at the crime but helps the offender before or after it.",
+      "example": "She was charged as an accessory after the fact for hiding the stolen goods.",
+      "collocation": "accessory to murder",
+      "band": "7-8"
+    },
+    {
+      "word": "delinquency",
+      "pos": "noun",
+      "ipa": "/dɪˈlɪŋkwənsi/",
+      "meaningVi": "sự phạm tội, hành vi phạm pháp, đặc biệt là ở trẻ vị thành niên",
+      "definitionEn": "Minor crime or antisocial behaviour, especially by young people.",
+      "example": "Early intervention programmes can help reduce juvenile delinquency.",
+      "collocation": "juvenile delinquency",
+      "band": "7-8"
+    },
+    {
+      "word": "litigation",
+      "pos": "noun",
+      "ipa": "/ˌlɪtɪˈɡeɪʃən/",
+      "meaningVi": "kiện tụng",
+      "definitionEn": "The process of taking legal action in a civil court.",
+      "example": "The company faced lengthy litigation over the environmental damage claim.",
+      "collocation": "litigation costs",
+      "band": "7-8"
+    },
+    {
+      "word": "penal system",
+      "pos": "noun",
+      "ipa": "/ˈpiːnəl ˈsɪstəm/",
+      "meaningVi": "hệ thống hình phạt/hình sự",
+      "definitionEn": "The system of laws and institutions for punishing and controlling crime.",
+      "example": "The penal system in many countries focuses on retribution rather than rehabilitation.",
+      "collocation": "reform of the penal system",
+      "band": "7-8"
+    }
+  ]
+}

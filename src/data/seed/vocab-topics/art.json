@@ -1,0 +1,508 @@
+{
+  "slug": "art",
+  "name": "Art",
+  "nameVi": "Nghệ thuật",
+  "blurb": "Hội hoạ, âm nhạc, sáng tạo",
+  "words": [
+    {
+      "word": "aesthetic",
+      "pos": "adjective",
+      "ipa": "/esˈθetɪk/",
+      "meaningVi": "thẩm mỹ",
+      "definitionEn": "concerned with beauty or the appreciation of beauty",
+      "example": "The artist’s work is highly valued for its aesthetic appeal and emotional depth.",
+      "collocation": "aesthetic value",
+      "band": "6-7"
+    },
+    {
+      "word": "avant-garde",
+      "pos": "adjective",
+      "ipa": "/ˌævɑːŋˈɡɑːrd/",
+      "meaningVi": "tiên phong",
+      "definitionEn": "new and experimental ideas and methods in art",
+      "example": "The gallery showcased avant-garde installations that challenged traditional boundaries.",
+      "collocation": "avant-garde movement",
+      "band": "7-8"
+    },
+    {
+      "word": "masterpiece",
+      "pos": "noun",
+      "ipa": "/ˈmæstərpiːs/",
+      "meaningVi": "kiệt tác",
+      "definitionEn": "a work of outstanding artistry or skill",
+      "example": "The Mona Lisa is widely regarded as a masterpiece of the Renaissance period.",
+      "collocation": "create a masterpiece",
+      "band": "6-7"
+    },
+    {
+      "word": "composition",
+      "pos": "noun",
+      "ipa": "/ˌkɒmpəˈzɪʃən/",
+      "meaningVi": "bố cục, sáng tác",
+      "definitionEn": "the arrangement of elements in a work of art or music",
+      "example": "The composition of the painting draws the viewer’s eye towards the central figure.",
+      "collocation": "musical composition",
+      "band": "6-7"
+    },
+    {
+      "word": "portrayal",
+      "pos": "noun",
+      "ipa": "/pɔːrˈtreɪəl/",
+      "meaningVi": "sự miêu tả",
+      "definitionEn": "the act of depicting someone or something in a work of art",
+      "example": "The film’s portrayal of historical events was both accurate and moving.",
+      "collocation": "realistic portrayal",
+      "band": "6-7"
+    },
+    {
+      "word": "evocative",
+      "pos": "adjective",
+      "ipa": "/ɪˈvɒkətɪv/",
+      "meaningVi": "gợi cảm, gợi nhớ",
+      "definitionEn": "bringing strong images, memories, or feelings to mind",
+      "example": "The music was so evocative that it transported the audience to another era.",
+      "collocation": "evocative imagery",
+      "band": "7-8"
+    },
+    {
+      "word": "abstract",
+      "pos": "adjective",
+      "ipa": "/ˈæbstrækt/",
+      "meaningVi": "trừu tượng",
+      "definitionEn": "relating to art that does not attempt to represent external reality",
+      "example": "Abstract art often relies on colour and form rather than realistic subjects.",
+      "collocation": "abstract painting",
+      "band": "6-7"
+    },
+    {
+      "word": "perspective",
+      "pos": "noun",
+      "ipa": "/pərˈspektɪv/",
+      "meaningVi": "góc nhìn, phối cảnh",
+      "definitionEn": "the technique of representing three-dimensional space on a flat surface",
+      "example": "The artist used linear perspective to create a sense of depth in the landscape.",
+      "collocation": "linear perspective",
+      "band": "6-7"
+    },
+    {
+      "word": "genre",
+      "pos": "noun",
+      "ipa": "/ˈʒɑːnrə/",
+      "meaningVi": "thể loại",
+      "definitionEn": "a category of artistic composition characterized by similarities in style or subject",
+      "example": "The museum’s collection spans multiple genres, including portraiture and still life.",
+      "collocation": "genre painting",
+      "band": "5-6"
+    },
+    {
+      "word": "motif",
+      "pos": "noun",
+      "ipa": "/moʊˈtiːf/",
+      "meaningVi": "họa tiết, chủ đề",
+      "definitionEn": "a recurring element or theme in an artistic work",
+      "example": "The floral motif appears throughout the tapestry, symbolizing growth and renewal.",
+      "collocation": "recurring motif",
+      "band": "6-7"
+    },
+    {
+      "word": "renaissance",
+      "pos": "noun",
+      "ipa": "/rɪˈneɪsns/",
+      "meaningVi": "Phục hưng",
+      "definitionEn": "the revival of art and learning in Europe during the 14th–16th centuries",
+      "example": "The Renaissance marked a golden age of creativity and scientific discovery.",
+      "collocation": "Renaissance art",
+      "band": "7-8"
+    },
+    {
+      "word": "critique",
+      "pos": "noun",
+      "ipa": "/krɪˈtiːk/",
+      "meaningVi": "phê bình",
+      "definitionEn": "a detailed evaluation or analysis of a work of art",
+      "example": "The art critic’s critique highlighted both the strengths and weaknesses of the exhibition.",
+      "collocation": "art critique",
+      "band": "6-7"
+    },
+    {
+      "word": "medium",
+      "pos": "noun",
+      "ipa": "/ˈmiːdiəm/",
+      "meaningVi": "chất liệu, phương tiện",
+      "definitionEn": "the material or method used by an artist to create a work",
+      "example": "Oil paint is a traditional medium that allows for rich blending of colours.",
+      "collocation": "artistic medium",
+      "band": "5-6"
+    },
+    {
+      "word": "palette",
+      "pos": "noun",
+      "ipa": "/ˈpælɪt/",
+      "meaningVi": "bảng màu",
+      "definitionEn": "the range of colours used by an artist in a particular work",
+      "example": "The painter’s palette was dominated by earthy tones and muted greens.",
+      "collocation": "colour palette",
+      "band": "6-7"
+    },
+    {
+      "word": "harmony",
+      "pos": "noun",
+      "ipa": "/ˈhɑːrməni/",
+      "meaningVi": "sự hài hòa",
+      "definitionEn": "the combination of elements in a pleasing or balanced way",
+      "example": "The harmonies in the symphony create a sense of unity and peace.",
+      "collocation": "visual harmony",
+      "band": "5-6"
+    },
+    {
+      "word": "improvisation",
+      "pos": "noun",
+      "ipa": "/ɪmˌprɒvɪˈzeɪʃən/",
+      "meaningVi": "sự ứng biến",
+      "definitionEn": "the act of creating or performing spontaneously without preparation",
+      "example": "Jazz musicians often rely on improvisation to express their creativity.",
+      "collocation": "musical improvisation",
+      "band": "7-8"
+    },
+    {
+      "word": "melancholy",
+      "pos": "adjective",
+      "ipa": "/ˈmelənkɒli/",
+      "meaningVi": "u sầu",
+      "definitionEn": "a feeling of pensive sadness, often expressed in art",
+      "example": "The melancholy melody of the cello piece evoked a deep sense of longing.",
+      "collocation": "melancholy mood",
+      "band": "6-7"
+    },
+    {
+      "word": "surreal",
+      "pos": "adjective",
+      "ipa": "/səˈriːəl/",
+      "meaningVi": "siêu thực",
+      "definitionEn": "having a dreamlike or bizarre quality, often associated with Surrealism",
+      "example": "The surreal landscape in the painting challenges the viewer’s perception of reality.",
+      "collocation": "surreal imagery",
+      "band": "7-8"
+    },
+    {
+      "word": "mural",
+      "pos": "noun",
+      "ipa": "/ˈmjʊrəl/",
+      "meaningVi": "tranh tường",
+      "definitionEn": "a large painting applied directly to a wall or ceiling",
+      "example": "The community mural depicts local history and celebrates cultural diversity.",
+      "collocation": "public mural",
+      "band": "5-6"
+    },
+    {
+      "word": "sculpture",
+      "pos": "noun",
+      "ipa": "/ˈskʌlptʃər/",
+      "meaningVi": "điêu khắc",
+      "definitionEn": "the art of creating three-dimensional forms by carving or modeling",
+      "example": "The sculpture in the park is made of recycled metal and represents environmental themes.",
+      "collocation": "bronze sculpture",
+      "band": "5-6"
+    },
+    {
+      "word": "calligraphy",
+      "pos": "noun",
+      "ipa": "/kəˈlɪɡrəfi/",
+      "meaningVi": "thư pháp",
+      "definitionEn": "the art of beautiful handwriting, often using a brush or pen",
+      "example": "Calligraphy is highly regarded in East Asian cultures as both an art form and a discipline.",
+      "collocation": "Arabic calligraphy",
+      "band": "6-7"
+    },
+    {
+      "word": "orchestration",
+      "pos": "noun",
+      "ipa": "/ˌɔːrkɪˈstreɪʃən/",
+      "meaningVi": "sự dàn dựng (dàn nhạc)",
+      "definitionEn": "the arrangement of music for an orchestra, or careful coordination of elements",
+      "example": "The orchestration of the symphony required meticulous attention to each instrument’s part.",
+      "collocation": "musical orchestration",
+      "band": "7-8"
+    },
+    {
+      "word": "dynamic",
+      "pos": "adjective",
+      "ipa": "/daɪˈnæmɪk/",
+      "meaningVi": "năng động, có động lực",
+      "definitionEn": "characterized by constant change, activity, or progress",
+      "example": "The dynamic brushstrokes in the painting convey a sense of movement and energy.",
+      "collocation": "dynamic composition",
+      "band": "6-7"
+    },
+    {
+      "word": "authenticity",
+      "pos": "noun",
+      "ipa": "/ˌɔːθenˈtɪsɪti/",
+      "meaningVi": "tính chân thực",
+      "definitionEn": "the quality of being genuine or true to its origins",
+      "example": "Art collectors often pay a premium for the authenticity of a signed work.",
+      "collocation": "prove authenticity",
+      "band": "7-8"
+    },
+    {
+      "word": "imagination",
+      "pos": "noun",
+      "ipa": "/ɪˌmædʒɪˈneɪʃən/",
+      "meaningVi": "trí tưởng tượng",
+      "definitionEn": "the ability to form new ideas, images, or concepts not present to the senses",
+      "example": "The artist’s imagination gave rise to fantastical creatures and dreamlike landscapes.",
+      "collocation": "creative imagination",
+      "band": "5-6"
+    },
+    {
+      "word": "innovation",
+      "pos": "noun",
+      "ipa": "/ˌɪnəˈveɪʃən/",
+      "meaningVi": "sự đổi mới",
+      "definitionEn": "the introduction of new methods, ideas, or products",
+      "example": "Technological innovation has transformed the way digital art is created and shared.",
+      "collocation": "artistic innovation",
+      "band": "7-8"
+    },
+    {
+      "word": "narrative",
+      "pos": "noun",
+      "ipa": "/ˈnærətɪv/",
+      "meaningVi": "lời tường thuật, câu chuyện",
+      "definitionEn": "a spoken or written account of connected events; a story",
+      "example": "The narrative in the graphic novel is conveyed through both text and illustration.",
+      "collocation": "visual narrative",
+      "band": "6-7"
+    },
+    {
+      "word": "technique",
+      "pos": "noun",
+      "ipa": "/tekˈniːk/",
+      "meaningVi": "kỹ thuật",
+      "definitionEn": "a skilled method or procedure used in art or music",
+      "example": "The painter’s technique of layering glazes creates a luminous effect.",
+      "collocation": "painting technique",
+      "band": "5-6"
+    },
+    {
+      "word": "audience",
+      "pos": "noun",
+      "ipa": "/ˈɔːdiəns/",
+      "meaningVi": "khán giả",
+      "definitionEn": "the assembled spectators or listeners at a performance or exhibition",
+      "example": "The performance engaged the audience through interactive elements and live participation.",
+      "collocation": "target audience",
+      "band": "5-6"
+    },
+    {
+      "word": "censorship",
+      "pos": "noun",
+      "ipa": "/ˈsensərʃɪp/",
+      "meaningVi": "kiểm duyệt",
+      "definitionEn": "the suppression of aspects of art considered offensive or harmful",
+      "example": "Censorship of provocative artworks often sparks debates about freedom of expression.",
+      "collocation": "artistic censorship",
+      "band": "8+"
+    },
+    {
+      "word": "patronage",
+      "pos": "noun",
+      "ipa": "/ˈpeɪtrənɪdʒ/",
+      "meaningVi": "sự bảo trợ",
+      "definitionEn": "financial support given to an artist or cultural institution",
+      "example": "Royal patronage played a crucial role in the flourishing of Renaissance art.",
+      "collocation": "art patronage",
+      "band": "7-8"
+    },
+    {
+      "word": "curator",
+      "pos": "noun",
+      "ipa": "/kjʊˈreɪtər/",
+      "meaningVi": "người phụ trách bảo tàng",
+      "definitionEn": "a person responsible for selecting and managing a collection of artworks",
+      "example": "The curator carefully selected pieces for the contemporary art exhibition.",
+      "collocation": "museum curator",
+      "band": "6-7"
+    },
+    {
+      "word": "exhibition",
+      "pos": "noun",
+      "ipa": "/ˌeksɪˈbɪʃən/",
+      "meaningVi": "triển lãm",
+      "definitionEn": "a public display of works of art or other items of interest",
+      "example": "The gallery’s annual exhibition attracts artists from around the world.",
+      "collocation": "art exhibition",
+      "band": "5-6"
+    },
+    {
+      "word": "gallery",
+      "pos": "noun",
+      "ipa": "/ˈɡæləri/",
+      "meaningVi": "phòng trưng bày",
+      "definitionEn": "a room or building for the display of art",
+      "example": "The modern art gallery features rotating exhibits of emerging artists.",
+      "collocation": "art gallery",
+      "band": "5-6"
+    },
+    {
+      "word": "portfolio",
+      "pos": "noun",
+      "ipa": "/pɔːrtˈfoʊlioʊ/",
+      "meaningVi": "tập tác phẩm",
+      "definitionEn": "a collection of works that demonstrates an artist’s skills and range",
+      "example": "Applicants to the art school must submit a portfolio of their best work.",
+      "collocation": "artist’s portfolio",
+      "band": "6-7"
+    },
+    {
+      "word": "sketch",
+      "pos": "noun",
+      "ipa": "/sketʃ/",
+      "meaningVi": "phác thảo",
+      "definitionEn": "a rough drawing made quickly to capture the main ideas",
+      "example": "The artist produced a series of preliminary sketches before starting the final painting.",
+      "collocation": "preliminary sketch",
+      "band": "5-6"
+    },
+    {
+      "word": "brushstroke",
+      "pos": "noun",
+      "ipa": "/ˈbrʌʃstroʊk/",
+      "meaningVi": "nét cọ",
+      "definitionEn": "the mark made by a brush in painting",
+      "example": "Van Gogh’s distinctive brushstrokes are immediately recognizable for their energy.",
+      "collocation": "bold brushstroke",
+      "band": "6-7"
+    },
+    {
+      "word": "pigment",
+      "pos": "noun",
+      "ipa": "/ˈpɪɡmənt/",
+      "meaningVi": "sắc tố",
+      "definitionEn": "a natural or synthetic substance that gives colour to paint",
+      "example": "Ancient artists used natural pigments derived from minerals and plants.",
+      "collocation": "natural pigment",
+      "band": "6-7"
+    },
+    {
+      "word": "canvas",
+      "pos": "noun",
+      "ipa": "/ˈkænvəs/",
+      "meaningVi": "vải bạt, bức tranh",
+      "definitionEn": "a piece of cloth used as a surface for painting",
+      "example": "The artist stretched the canvas tightly over the wooden frame before painting.",
+      "collocation": "oil on canvas",
+      "band": "5-6"
+    },
+    {
+      "word": "silhouette",
+      "pos": "noun",
+      "ipa": "/ˌsɪlʊˈet/",
+      "meaningVi": "hình bóng",
+      "definitionEn": "the dark shape and outline of someone or something visible against a lighter background",
+      "example": "The silhouette of the dancer against the spotlight created a dramatic effect.",
+      "collocation": "silhouette portrait",
+      "band": "6-7"
+    },
+    {
+      "word": "resonance",
+      "pos": "noun",
+      "ipa": "/ˈrezənəns/",
+      "meaningVi": "sự cộng hưởng",
+      "definitionEn": "the quality of evoking a strong emotional response or significance",
+      "example": "The poem’s resonance with contemporary issues makes it still relevant today.",
+      "collocation": "emotional resonance",
+      "band": "7-8"
+    },
+    {
+      "word": "contemplation",
+      "pos": "noun",
+      "ipa": "/ˌkɒntəmˈpleɪʃən/",
+      "meaningVi": "sự suy ngẫm",
+      "definitionEn": "deep reflective thought, often inspired by a work of art",
+      "example": "The quiet atmosphere of the gallery encourages contemplation of the artwork.",
+      "collocation": "quiet contemplation",
+      "band": "7-8"
+    },
+    {
+      "word": "conceptual",
+      "pos": "adjective",
+      "ipa": "/kənˈseptʃuəl/",
+      "meaningVi": "khái niệm",
+      "definitionEn": "based on ideas or concepts rather than physical form",
+      "example": "Conceptual art prioritizes the idea behind the work over its aesthetic appearance.",
+      "collocation": "conceptual framework",
+      "band": "7-8"
+    },
+    {
+      "word": "figurative",
+      "pos": "adjective",
+      "ipa": "/ˈfɪɡjərətɪv/",
+      "meaningVi": "hình tượng",
+      "definitionEn": "representing forms that are recognizably derived from real objects or figures",
+      "example": "Figurative sculpture often depicts human or animal forms in a realistic manner.",
+      "collocation": "figurative painting",
+      "band": "6-7"
+    },
+    {
+      "word": "minimalist",
+      "pos": "adjective",
+      "ipa": "/ˈmɪnɪməlɪst/",
+      "meaningVi": "tối giản",
+      "definitionEn": "using simple forms and a limited number of elements",
+      "example": "The minimalist design of the sculpture emphasizes clean lines and negative space.",
+      "collocation": "minimalist style",
+      "band": "7-8"
+    },
+    {
+      "word": "provocative",
+      "pos": "adjective",
+      "ipa": "/prəˈvɒkətɪv/",
+      "meaningVi": "khiêu khích, kích thích",
+      "definitionEn": "causing thought, discussion, or strong reaction, often intentionally",
+      "example": "The provocative performance challenged societal norms and sparked intense debate.",
+      "collocation": "provocative artwork",
+      "band": "7-8"
+    },
+    {
+      "word": "transcendent",
+      "pos": "adjective",
+      "ipa": "/trænˈsendənt/",
+      "meaningVi": "siêu việt",
+      "definitionEn": "beyond or above the range of ordinary experience; sublime",
+      "example": "The transcendent beauty of the cathedral’s stained glass moved visitors to tears.",
+      "collocation": "transcendent experience",
+      "band": "8+"
+    },
+    {
+      "word": "virtuosity",
+      "pos": "noun",
+      "ipa": "/ˌvɜːrtʃuˈɒsɪti/",
+      "meaningVi": "kỹ thuật điêu luyện",
+      "definitionEn": "great skill in an artistic or musical performance",
+      "example": "The pianist’s virtuosity was evident in the flawless execution of the complex piece.",
+      "collocation": "technical virtuosity",
+      "band": "8+"
+    },
+    {
+      "word": "expressionism",
+      "pos": "noun",
+      "ipa": "/ɪkˈspreʃənɪzəm/",
+      "meaningVi": "chủ nghĩa biểu hiện",
+      "definitionEn": "a style in which the artist seeks to express emotional experience rather than physical reality",
+      "example": "Expressionism often uses distorted forms and vivid colours to convey inner turmoil.",
+      "collocation": "German Expressionism",
+      "band": "7-8"
+    },
+    {
+      "word": "impressionism",
+      "pos": "noun",
+      "ipa": "/ɪmˈpreʃənɪzəm/",
+      "meaningVi": "ấn tượng (trường phái)",
+      "definitionEn": "a 19th-century movement characterized by small, visible brushstrokes and an emphasis on light",
+      "example": "Impressionism revolutionized art by focusing on fleeting moments and natural light.",
+      "collocation": "French Impressionism",
+      "band": "7-8"
+    }
+  ]
+}

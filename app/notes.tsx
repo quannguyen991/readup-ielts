@@ -3,7 +3,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
+import { Badge, Button, Card, HeroBanner, Icon, SectionHeader } from '@/components/ui';
 import { useReaderStore } from '@/store/useReaderStore';
 import { color, highlightColors } from '@/theme/tokens';
 
@@ -20,13 +20,11 @@ export default function NotesScreen() {
 
   return (
     <Screen>
-      <View className="flex-row items-center justify-between">
-        <View>
-          <Text className="font-heavy text-pageTitle text-ink">Notes</Text>
-          <Text className="mt-1 font-sans text-body text-muted">
-            Ghi chú và đoạn bôi màu bạn tạo khi đọc.
-          </Text>
-        </View>
+      <HeroBanner
+        title="Notes"
+        subtitle="Ghi chú và đoạn bôi màu bạn tạo khi đọc."
+        illustration="notes-hero"
+      >
         <Button
           label="Ghi chú mới"
           iconLeft="plus"
@@ -34,7 +32,7 @@ export default function NotesScreen() {
             addNote({ articleId: null, articleTitle: null, paragraphIndex: null, body: '' })
           }
         />
-      </View>
+      </HeroBanner>
 
       <Card className="mt-4">
         <SectionHeader title="Ghi chú" subtitle={`${notes.length} mục`} icon="note" />

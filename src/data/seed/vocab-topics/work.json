@@ -1,0 +1,508 @@
+{
+  "slug": "work",
+  "name": "Work and Careers",
+  "nameVi": "Công việc",
+  "blurb": "Nghề nghiệp, nơi làm việc, kỹ năng",
+  "words": [
+    {
+      "word": "occupation",
+      "pos": "noun",
+      "ipa": "/ˌɒkjʊˈpeɪʃən/",
+      "meaningVi": "nghề nghiệp hoặc công việc",
+      "definitionEn": "a job or profession, especially as a regular means of earning money",
+      "example": "An individual’s occupation can significantly influence their social status and quality of life.",
+      "collocation": "professional occupation",
+      "band": "5-6"
+    },
+    {
+      "word": "profession",
+      "pos": "noun",
+      "ipa": "/prəˈfeʃən/",
+      "meaningVi": "nghề chuyên môn",
+      "definitionEn": "a paid occupation that requires advanced education or specialised training",
+      "example": "The teaching profession requires both subject knowledge and strong interpersonal skills.",
+      "collocation": "enter a profession",
+      "band": "5-6"
+    },
+    {
+      "word": "workforce",
+      "pos": "noun",
+      "ipa": "/ˈwɜːkfɔːs/",
+      "meaningVi": "lực lượng lao động",
+      "definitionEn": "all the people who are available to work in a particular organisation, area, or country",
+      "example": "An ageing workforce may create serious challenges for the national pension system.",
+      "collocation": "skilled workforce",
+      "band": "5-6"
+    },
+    {
+      "word": "employment",
+      "pos": "noun",
+      "ipa": "/ɪmˈplɔɪmənt/",
+      "meaningVi": "việc làm; tình trạng có việc",
+      "definitionEn": "the state of having paid work",
+      "example": "Stable employment enables people to plan their finances and support their families.",
+      "collocation": "full-time employment",
+      "band": "5-6"
+    },
+    {
+      "word": "qualification",
+      "pos": "noun",
+      "ipa": "/ˌkwɒlɪfɪˈkeɪʃən/",
+      "meaningVi": "bằng cấp hoặc chứng chỉ chuyên môn",
+      "definitionEn": "an official record showing that a person has completed a course or possesses a particular skill",
+      "example": "A university qualification can improve access to professional occupations.",
+      "collocation": "academic qualification",
+      "band": "5-6"
+    },
+    {
+      "word": "productivity",
+      "pos": "noun",
+      "ipa": "/ˌprɒdʌkˈtɪvəti/",
+      "meaningVi": "năng suất lao động",
+      "definitionEn": "the rate at which goods or services are produced compared with the resources used",
+      "example": "Flexible working arrangements may increase employee productivity in some industries.",
+      "collocation": "enhance productivity",
+      "band": "6-7"
+    },
+    {
+      "word": "remuneration",
+      "pos": "noun",
+      "ipa": "/rɪˌmjuːnəˈreɪʃən/",
+      "meaningVi": "thù lao hoặc tiền lương",
+      "definitionEn": "payment or other financial rewards received for work",
+      "example": "Competitive remuneration is essential for attracting highly qualified specialists.",
+      "collocation": "financial remuneration",
+      "band": "7-8"
+    },
+    {
+      "word": "promotion",
+      "pos": "noun",
+      "ipa": "/prəˈməʊʃən/",
+      "meaningVi": "sự thăng chức",
+      "definitionEn": "the act of moving an employee to a higher position or rank",
+      "example": "Employees often regard promotion as recognition of their commitment and performance.",
+      "collocation": "career promotion",
+      "band": "5-6"
+    },
+    {
+      "word": "supervisor",
+      "pos": "noun",
+      "ipa": "/ˈsuːpəvaɪzə(r)/",
+      "meaningVi": "người giám sát",
+      "definitionEn": "a person whose role is to oversee the work of others",
+      "example": "A supportive supervisor can help new employees adapt to demanding working conditions.",
+      "collocation": "direct supervisor",
+      "band": "5-6"
+    },
+    {
+      "word": "hierarchy",
+      "pos": "noun",
+      "ipa": "/ˈhaɪərɑːki/",
+      "meaningVi": "cơ cấu thứ bậc",
+      "definitionEn": "a system in which people or roles are ranked according to authority or importance",
+      "example": "A rigid organisational hierarchy can discourage employees from expressing innovative ideas.",
+      "collocation": "corporate hierarchy",
+      "band": "6-7"
+    },
+    {
+      "word": "entrepreneurship",
+      "pos": "noun",
+      "ipa": "/ˌɒntrəprəˈnɜːʃɪp/",
+      "meaningVi": "tinh thần hoặc hoạt động khởi nghiệp",
+      "definitionEn": "the activity of creating and managing a business, usually involving financial risk",
+      "example": "Entrepreneurship can provide employment opportunities in regions with limited industries.",
+      "collocation": "promote entrepreneurship",
+      "band": "6-7"
+    },
+    {
+      "word": "remotely",
+      "pos": "adverb",
+      "ipa": "/rɪˈməʊtli/",
+      "meaningVi": "từ xa",
+      "definitionEn": "from a location away from the usual workplace",
+      "example": "Many professionals now work remotely, which can reduce commuting time and expenses.",
+      "collocation": "work remotely",
+      "band": "5-6"
+    },
+    {
+      "word": "workplace",
+      "pos": "noun",
+      "ipa": "/ˈwɜːkpleɪs/",
+      "meaningVi": "nơi làm việc",
+      "definitionEn": "the place where people carry out their jobs",
+      "example": "A respectful workplace is more likely to retain talented employees.",
+      "collocation": "safe workplace",
+      "band": "5-6"
+    },
+    {
+      "word": "flexibility",
+      "pos": "noun",
+      "ipa": "/ˌfleksəˈbɪləti/",
+      "meaningVi": "tính linh hoạt",
+      "definitionEn": "the ability to change or adapt easily to different circumstances",
+      "example": "Greater flexibility in working hours can improve employees’ work-life balance.",
+      "collocation": "workplace flexibility",
+      "band": "6-7"
+    },
+    {
+      "word": "collaboration",
+      "pos": "noun",
+      "ipa": "/kəˌlæbəˈreɪʃən/",
+      "meaningVi": "sự hợp tác",
+      "definitionEn": "the act of working jointly with others to achieve a shared objective",
+      "example": "Effective collaboration between departments is vital for completing complex projects.",
+      "collocation": "cross-functional collaboration",
+      "band": "6-7"
+    },
+    {
+      "word": "competence",
+      "pos": "noun",
+      "ipa": "/ˈkɒmpɪtəns/",
+      "meaningVi": "năng lực thực hiện công việc",
+      "definitionEn": "the ability to perform a task successfully and effectively",
+      "example": "Professional competence is developed through education, practice, and constructive feedback.",
+      "collocation": "professional competence",
+      "band": "7-8"
+    },
+    {
+      "word": "adaptability",
+      "pos": "noun",
+      "ipa": "/əˌdæptəˈbɪləti/",
+      "meaningVi": "khả năng thích nghi",
+      "definitionEn": "the ability to adjust successfully to new conditions or demands",
+      "example": "Adaptability has become an increasingly valuable quality in rapidly changing industries.",
+      "collocation": "demonstrate adaptability",
+      "band": "7-8"
+    },
+    {
+      "word": "initiative",
+      "pos": "noun",
+      "ipa": "/ɪˈnɪʃətɪv/",
+      "meaningVi": "tính chủ động",
+      "definitionEn": "the ability to act independently and make decisions without being told what to do",
+      "example": "Employers tend to value candidates who demonstrate initiative when solving problems.",
+      "collocation": "show initiative",
+      "band": "6-7"
+    },
+    {
+      "word": "accountability",
+      "pos": "noun",
+      "ipa": "/əˌkaʊntəˈbɪləti/",
+      "meaningVi": "trách nhiệm giải trình",
+      "definitionEn": "the obligation to accept responsibility for decisions, actions, and results",
+      "example": "Clear accountability can prevent mistakes from being ignored within an organisation.",
+      "collocation": "individual accountability",
+      "band": "7-8"
+    },
+    {
+      "word": "interpersonal",
+      "pos": "adjective",
+      "ipa": "/ˌɪntəˈpɜːsənəl/",
+      "meaningVi": "thuộc về quan hệ giữa người với người",
+      "definitionEn": "relating to relationships and communication between people",
+      "example": "Interpersonal skills are crucial for employees who work closely with customers.",
+      "collocation": "interpersonal skills",
+      "band": "6-7"
+    },
+    {
+      "word": "vocational",
+      "pos": "adjective",
+      "ipa": "/vəʊˈkeɪʃənəl/",
+      "meaningVi": "thuộc đào tạo nghề",
+      "definitionEn": "relating to education or training that prepares someone for a particular job",
+      "example": "Vocational education can equip young people with practical skills for immediate employment.",
+      "collocation": "vocational training",
+      "band": "7-8"
+    },
+    {
+      "word": "lucrative",
+      "pos": "adjective",
+      "ipa": "/ˈluːkrətɪv/",
+      "meaningVi": "sinh lợi, có thu nhập cao",
+      "definitionEn": "producing a large amount of money or profit",
+      "example": "Some graduates choose lucrative careers even when these jobs do not match their personal interests.",
+      "collocation": "lucrative career",
+      "band": "7-8"
+    },
+    {
+      "word": "redundancy",
+      "pos": "noun",
+      "ipa": "/rɪˈdʌndənsi/",
+      "meaningVi": "tình trạng mất việc do vị trí bị cắt giảm",
+      "definitionEn": "a situation in which an employee loses a job because the position is no longer needed",
+      "example": "The introduction of artificial intelligence may lead to redundancy in certain routine occupations.",
+      "collocation": "face redundancy",
+      "band": "7-8"
+    },
+    {
+      "word": "burnout",
+      "pos": "noun",
+      "ipa": "/ˈbɜːnaʊt/",
+      "meaningVi": "kiệt sức nghề nghiệp",
+      "definitionEn": "a state of extreme physical and emotional exhaustion caused by prolonged stress at work",
+      "example": "Employers should monitor workloads carefully to reduce the risk of burnout among staff.",
+      "collocation": "experience burnout",
+      "band": "6-7"
+    },
+    {
+      "word": "occupational",
+      "pos": "adjective",
+      "ipa": "/ˌɒkjuˈpeɪʃənəl/",
+      "meaningVi": "thuộc về nghề nghiệp hoặc công việc",
+      "definitionEn": "relating to a person’s job or work",
+      "example": "Occupational stress is a significant concern in professions involving constant public interaction.",
+      "collocation": "occupational stress",
+      "band": "8+"
+    },
+    {
+      "word": "career",
+      "pos": "noun",
+      "ipa": "/kəˈrɪər/",
+      "meaningVi": "sự nghiệp",
+      "definitionEn": "the job or series of jobs that someone does over a long period of their life, often with opportunities for advancement",
+      "example": "A well-planned career can lead to both personal fulfillment and financial stability.",
+      "collocation": "career path",
+      "band": "5-6"
+    },
+    {
+      "word": "position",
+      "pos": "noun",
+      "ipa": "/pəˈzɪʃən/",
+      "meaningVi": "vị trí công việc",
+      "definitionEn": "a particular job or role within an organization",
+      "example": "She applied for a managerial position at the multinational corporation.",
+      "collocation": "position vacancy",
+      "band": "6-7"
+    },
+    {
+      "word": "employee",
+      "pos": "noun",
+      "ipa": "/ɪmˈplɔɪiː/",
+      "meaningVi": "nhân viên",
+      "definitionEn": "a person who is paid to work for an organization or another person",
+      "example": "Every employee should receive a clear job description and regular feedback.",
+      "collocation": "employee benefits",
+      "band": "5-6"
+    },
+    {
+      "word": "employer",
+      "pos": "noun",
+      "ipa": "/ɪmˈplɔɪər/",
+      "meaningVi": "người sử dụng lao động",
+      "definitionEn": "a person or organization that hires people to work for them",
+      "example": "The employer is responsible for providing a safe working environment.",
+      "collocation": "employer contributions",
+      "band": "5-6"
+    },
+    {
+      "word": "manager",
+      "pos": "noun",
+      "ipa": "/ˈmænɪdʒər/",
+      "meaningVi": "quản lý",
+      "definitionEn": "a person responsible for controlling or administering an organization or part of it",
+      "example": "An effective manager must balance team morale with productivity targets.",
+      "collocation": "line manager",
+      "band": "5-6"
+    },
+    {
+      "word": "colleague",
+      "pos": "noun",
+      "ipa": "/ˈkɒliːɡ/",
+      "meaningVi": "đồng nghiệp",
+      "definitionEn": "a person with whom one works in a professional setting",
+      "example": "My colleague and I collaborated on the annual report for the board.",
+      "collocation": "close colleague",
+      "band": "5-6"
+    },
+    {
+      "word": "assignment",
+      "pos": "noun",
+      "ipa": "/əˈsaɪnmənt/",
+      "meaningVi": "nhiệm vụ được giao",
+      "definitionEn": "a task or piece of work allocated to someone as part of their job",
+      "example": "The overseas assignment offered her a chance to develop cross-cultural skills.",
+      "collocation": "challenging assignment",
+      "band": "6-7"
+    },
+    {
+      "word": "obligation",
+      "pos": "noun",
+      "ipa": "/ˌɒblɪˈɡeɪʃən/",
+      "meaningVi": "nghĩa vụ",
+      "definitionEn": "a duty or commitment that is binding, often legally or morally",
+      "example": "Employers have a legal obligation to prevent discrimination in the workplace.",
+      "collocation": "contractual obligation",
+      "band": "7-8"
+    },
+    {
+      "word": "expertise",
+      "pos": "noun",
+      "ipa": "/ˌekspɜːˈtiːz/",
+      "meaningVi": "chuyên môn",
+      "definitionEn": "specialized knowledge or skill in a particular field",
+      "example": "Her expertise in data analysis made her an invaluable asset to the project team.",
+      "collocation": "technical expertise",
+      "band": "7-8"
+    },
+    {
+      "word": "training",
+      "pos": "noun",
+      "ipa": "/ˈtreɪnɪŋ/",
+      "meaningVi": "đào tạo",
+      "definitionEn": "the process of learning skills or knowledge needed for a particular job or activity",
+      "example": "Ongoing training is essential for employees to keep up with industry trends.",
+      "collocation": "on-the-job training",
+      "band": "5-6"
+    },
+    {
+      "word": "background",
+      "pos": "noun",
+      "ipa": "/ˈbækɡraʊnd/",
+      "meaningVi": "kinh nghiệm nền tảng",
+      "definitionEn": "a person's education, experience, and social circumstances that contribute to their qualifications",
+      "example": "Candidates with a strong technical background are preferred for this role.",
+      "collocation": "educational background",
+      "band": "6-7"
+    },
+    {
+      "word": "interview",
+      "pos": "noun",
+      "ipa": "/ˈɪntəvjuː/",
+      "meaningVi": "buổi phỏng vấn",
+      "definitionEn": "a formal meeting in which someone is asked questions to assess their suitability for a job",
+      "example": "The panel interview included questions about problem-solving and teamwork.",
+      "collocation": "job interview",
+      "band": "5-6"
+    },
+    {
+      "word": "compensation",
+      "pos": "noun",
+      "ipa": "/ˌkɒmpənˈseɪʃən/",
+      "meaningVi": "tiền lương và phúc lợi",
+      "definitionEn": "the total package of salary, bonuses, and benefits provided to an employee",
+      "example": "The compensation package includes health insurance and a performance bonus.",
+      "collocation": "compensation plan",
+      "band": "7-8"
+    },
+    {
+      "word": "wage",
+      "pos": "noun",
+      "ipa": "/weɪdʒ/",
+      "meaningVi": "tiền lương (theo giờ/tuần)",
+      "definitionEn": "a fixed regular payment for work, typically calculated on an hourly or daily basis",
+      "example": "Many workers are demanding a living wage that covers basic expenses.",
+      "collocation": "minimum wage",
+      "band": "5-6"
+    },
+    {
+      "word": "benefit",
+      "pos": "noun",
+      "ipa": "/ˈbenɪfɪt/",
+      "meaningVi": "phúc lợi",
+      "definitionEn": "a non-wage advantage provided by an employer, such as health insurance or paid leave",
+      "example": "Flexible working hours are one of the most valued benefits in modern workplaces.",
+      "collocation": "employee benefit",
+      "band": "6-7"
+    },
+    {
+      "word": "pension",
+      "pos": "noun",
+      "ipa": "/ˈpenʃən/",
+      "meaningVi": "lương hưu",
+      "definitionEn": "a regular payment made to a retired person by their employer or the state",
+      "example": "A generous pension plan can significantly improve long-term financial security.",
+      "collocation": "pension contribution",
+      "band": "6-7"
+    },
+    {
+      "word": "contract",
+      "pos": "noun",
+      "ipa": "/ˈkɒntrækt/",
+      "meaningVi": "hợp đồng lao động",
+      "definitionEn": "a written agreement that sets out the terms of employment",
+      "example": "Before signing the contract, she reviewed the clauses about notice period and non-compete.",
+      "collocation": "employment contract",
+      "band": "6-7"
+    },
+    {
+      "word": "temporary",
+      "pos": "adjective",
+      "ipa": "/ˈtempərəri/",
+      "meaningVi": "tạm thời",
+      "definitionEn": "lasting for a limited period of time, not permanent",
+      "example": "Many graduates start with temporary positions to gain industry experience.",
+      "collocation": "temporary assignment",
+      "band": "6-7"
+    },
+    {
+      "word": "permanent",
+      "pos": "adjective",
+      "ipa": "/ˈpɜːmənənt/",
+      "meaningVi": "lâu dài, cố định",
+      "definitionEn": "intended to last for an indefinite period, not temporary",
+      "example": "After a successful probation period, she was offered a permanent contract.",
+      "collocation": "permanent employment",
+      "band": "6-7"
+    },
+    {
+      "word": "self-employed",
+      "pos": "adjective",
+      "ipa": "/ˌself ɪmˈplɔɪd/",
+      "meaningVi": "tự làm chủ",
+      "definitionEn": "working for oneself as a freelancer or business owner rather than for an employer",
+      "example": "Being self-employed requires strong time management and financial discipline.",
+      "collocation": "self-employed worker",
+      "band": "6-7"
+    },
+    {
+      "word": "freelance",
+      "pos": "adjective",
+      "ipa": "/ˈfriːlɑːns/",
+      "meaningVi": "làm việc tự do",
+      "definitionEn": "working independently for different companies rather than being employed by one",
+      "example": "She built a successful freelance career as a graphic designer.",
+      "collocation": "freelance work",
+      "band": "6-7"
+    },
+    {
+      "word": "apprentice",
+      "pos": "noun",
+      "ipa": "/əˈprentɪs/",
+      "meaningVi": "người học việc",
+      "definitionEn": "a person who learns a trade or skill from a skilled employer, often while being paid a lower wage",
+      "example": "The company offers an apprenticeship program for young people entering the trades.",
+      "collocation": "apprentice program",
+      "band": "7-8"
+    },
+    {
+      "word": "intern",
+      "pos": "noun",
+      "ipa": "/ˈɪntɜːn/",
+      "meaningVi": "thực tập sinh",
+      "definitionEn": "a student or graduate who works temporarily at an organization to gain practical experience",
+      "example": "The intern was given mentorship and real responsibilities to prepare for a full-time role.",
+      "collocation": "intern position",
+      "band": "6-7"
+    },
+    {
+      "word": "headhunter",
+      "pos": "noun",
+      "ipa": "/ˈhedˌhʌntər/",
+      "meaningVi": "nhà săn đầu người",
+      "definitionEn": "a recruiter who specializes in finding highly qualified candidates for executive or specialized positions",
+      "example": "A headhunter contacted her about a senior director role at a rival firm.",
+      "collocation": "corporate headhunter",
+      "band": "8+"
+    },
+    {
+      "word": "severance",
+      "pos": "noun",
+      "ipa": "/ˈsevərəns/",
+      "meaningVi": "tiền bồi thường thôi việc",
+      "definitionEn": "money and benefits paid to an employee when they leave a company, often due to redundancy",
+      "example": "The severance package included six months of salary and continued health coverage.",
+      "collocation": "severance pay",
+      "band": "8+"
+    }
+  ]
+}

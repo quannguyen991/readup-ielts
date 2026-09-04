@@ -1,0 +1,508 @@
+{
+  "slug": "elderly",
+  "name": "Ageing",
+  "nameVi": "Người cao tuổi",
+  "blurb": "Dân số già, hưu trí, chăm sóc",
+  "words": [
+    {
+      "word": "ageing",
+      "pos": "noun",
+      "ipa": "/ˈeɪdʒɪŋ/",
+      "meaningVi": "quá trình già hóa",
+      "definitionEn": "the process of growing older, especially in relation to individuals or populations",
+      "example": "Population ageing is placing considerable pressure on public healthcare systems.",
+      "collocation": "population ageing",
+      "band": "5-6"
+    },
+    {
+      "word": "demographic",
+      "pos": "adjective",
+      "ipa": "/ˌdeməˈɡræfɪk/",
+      "meaningVi": "thuộc về nhân khẩu học",
+      "definitionEn": "relating to the characteristics of a population",
+      "example": "Demographic changes are transforming the structure of many developed societies.",
+      "collocation": "demographic change",
+      "band": "6-7"
+    },
+    {
+      "word": "longevity",
+      "pos": "noun",
+      "ipa": "/lɒnˈdʒevəti/",
+      "meaningVi": "tuổi thọ",
+      "definitionEn": "the length or duration of a person’s life",
+      "example": "Improved medical treatment has contributed significantly to human longevity.",
+      "collocation": "increased longevity",
+      "band": "6-7"
+    },
+    {
+      "word": "fertility",
+      "pos": "noun",
+      "ipa": "/fəˈtɪləti/",
+      "meaningVi": "mức sinh",
+      "definitionEn": "the ability or tendency of a population to produce children",
+      "example": "Declining fertility has accelerated the ageing of the national population.",
+      "collocation": "declining fertility",
+      "band": "6-7"
+    },
+    {
+      "word": "dependency",
+      "pos": "noun",
+      "ipa": "/dɪˈpendənsi/",
+      "meaningVi": "sự phụ thuộc",
+      "definitionEn": "the state of relying on others for financial or physical support",
+      "example": "A rising old-age dependency ratio may place a heavier burden on workers.",
+      "collocation": "old-age dependency",
+      "band": "7-8"
+    },
+    {
+      "word": "pension",
+      "pos": "noun",
+      "ipa": "/ˈpenʃən/",
+      "meaningVi": "lương hưu",
+      "definitionEn": "a regular payment made to a retired person",
+      "example": "Many citizens rely on a state pension after leaving the workforce.",
+      "collocation": "state pension",
+      "band": "5-6"
+    },
+    {
+      "word": "retirement",
+      "pos": "noun",
+      "ipa": "/rɪˈtaɪəmənt/",
+      "meaningVi": "sự nghỉ hưu",
+      "definitionEn": "the period when a person stops working permanently",
+      "example": "Retirement policies should reflect the increasing life expectancy of the population.",
+      "collocation": "retirement age",
+      "band": "5-6"
+    },
+    {
+      "word": "workforce",
+      "pos": "noun",
+      "ipa": "/ˈwɜːkfɔːs/",
+      "meaningVi": "lực lượng lao động",
+      "definitionEn": "all the people who are available for work in a society or organisation",
+      "example": "An ageing workforce may require employers to redesign working conditions.",
+      "collocation": "ageing workforce",
+      "band": "5-6"
+    },
+    {
+      "word": "employability",
+      "pos": "noun",
+      "ipa": "/ɪmˌplɔɪəˈbɪləti/",
+      "meaningVi": "khả năng được tuyển dụng",
+      "definitionEn": "the skills and qualities that make someone suitable for employment",
+      "example": "Lifelong training can improve the employability of older workers.",
+      "collocation": "enhance employability",
+      "band": "7-8"
+    },
+    {
+      "word": "discrimination",
+      "pos": "noun",
+      "ipa": "/dɪˌskrɪmɪˈneɪʃən/",
+      "meaningVi": "sự phân biệt đối xử",
+      "definitionEn": "unfair treatment based on characteristics such as age",
+      "example": "Age discrimination can prevent experienced employees from remaining in work.",
+      "collocation": "age discrimination",
+      "band": "5-6"
+    },
+    {
+      "word": "caregiver",
+      "pos": "noun",
+      "ipa": "/ˈkeəɡɪvə/",
+      "meaningVi": "người chăm sóc",
+      "definitionEn": "a person who provides regular care for someone who is ill or dependent",
+      "example": "Family caregivers often experience considerable emotional and financial stress.",
+      "collocation": "family caregiver",
+      "band": "6-7"
+    },
+    {
+      "word": "geriatric",
+      "pos": "adjective",
+      "ipa": "/ˌdʒeriˈætrɪk/",
+      "meaningVi": "thuộc về lão khoa",
+      "definitionEn": "relating to the health and care of older people",
+      "example": "Governments need to expand geriatric services in regional hospitals.",
+      "collocation": "geriatric care",
+      "band": "7-8"
+    },
+    {
+      "word": "frailty",
+      "pos": "noun",
+      "ipa": "/ˈfreɪlti/",
+      "meaningVi": "tình trạng suy yếu",
+      "definitionEn": "a condition of physical weakness commonly associated with old age",
+      "example": "Early intervention can reduce frailty among vulnerable older adults.",
+      "collocation": "physical frailty",
+      "band": "7-8"
+    },
+    {
+      "word": "dementia",
+      "pos": "noun",
+      "ipa": "/dɪˈmenʃə/",
+      "meaningVi": "chứng sa sút trí tuệ",
+      "definitionEn": "a condition involving a decline in memory and other mental abilities",
+      "example": "Specialist services are essential for families affected by dementia.",
+      "collocation": "dementia care",
+      "band": "6-7"
+    },
+    {
+      "word": "chronic",
+      "pos": "adjective",
+      "ipa": "/ˈkrɒnɪk/",
+      "meaningVi": "mãn tính",
+      "definitionEn": "continuing for a long time and often difficult to cure",
+      "example": "Older adults are more likely to suffer from chronic health conditions.",
+      "collocation": "chronic illness",
+      "band": "5-6"
+    },
+    {
+      "word": "morbidity",
+      "pos": "noun",
+      "ipa": "/mɔːˈbɪdəti/",
+      "meaningVi": "tỷ lệ mắc bệnh",
+      "definitionEn": "the condition of being diseased or the rate of disease in a population",
+      "example": "Public health programmes can lower morbidity among elderly citizens.",
+      "collocation": "morbidity rate",
+      "band": "8+"
+    },
+    {
+      "word": "mortality",
+      "pos": "noun",
+      "ipa": "/mɔːˈtæləti/",
+      "meaningVi": "tỷ lệ tử vong",
+      "definitionEn": "the number or rate of deaths in a population",
+      "example": "Improved prevention has reduced mortality from several age-related diseases.",
+      "collocation": "mortality rate",
+      "band": "7-8"
+    },
+    {
+      "word": "healthcare",
+      "pos": "noun",
+      "ipa": "/ˈhelθkeə/",
+      "meaningVi": "dịch vụ chăm sóc sức khỏe",
+      "definitionEn": "the organised provision of medical services",
+      "example": "An ageing society requires greater investment in accessible healthcare.",
+      "collocation": "healthcare provision",
+      "band": "5-6"
+    },
+    {
+      "word": "institutionalisation",
+      "pos": "noun",
+      "ipa": "/ˌɪnstɪtjuːʃənəlaɪˈzeɪʃən/",
+      "meaningVi": "việc đưa vào cơ sở chăm sóc",
+      "definitionEn": "the process of placing a person in a residential institution for long-term care",
+      "example": "Institutionalisation should not be the default solution for elderly people living alone.",
+      "collocation": "institutionalisation of older adults",
+      "band": "8+"
+    },
+    {
+      "word": "intergenerational",
+      "pos": "adjective",
+      "ipa": "/ˌɪntədʒenəˈreɪʃənəl/",
+      "meaningVi": "giữa các thế hệ",
+      "definitionEn": "involving or affecting different generations",
+      "example": "Intergenerational programmes can strengthen mutual understanding within communities.",
+      "collocation": "intergenerational solidarity",
+      "band": "7-8"
+    },
+    {
+      "word": "social isolation",
+      "pos": "noun",
+      "ipa": "/ˌsəʊʃəl ˌaɪsəˈleɪʃən/",
+      "meaningVi": "sự cô lập xã hội",
+      "definitionEn": "a lack of contact and interaction with other people",
+      "example": "Social isolation can seriously damage the mental health of retired individuals.",
+      "collocation": "combat social isolation",
+      "band": "6-7"
+    },
+    {
+      "word": "accessibility",
+      "pos": "noun",
+      "ipa": "/əkˌsesəˈbɪləti/",
+      "meaningVi": "khả năng tiếp cận",
+      "definitionEn": "the degree to which services or places can be used by people with different needs",
+      "example": "Improving accessibility is necessary if older residents are to use public transport independently.",
+      "collocation": "improve accessibility",
+      "band": "7-8"
+    },
+    {
+      "word": "accommodation",
+      "pos": "noun",
+      "ipa": "/əˌkɒməˈdeɪʃən/",
+      "meaningVi": "chỗ ở",
+      "definitionEn": "a place designed or provided for people to live in",
+      "example": "Affordable accommodation can help older people remain in their communities.",
+      "collocation": "suitable accommodation",
+      "band": "5-6"
+    },
+    {
+      "word": "rehabilitation",
+      "pos": "noun",
+      "ipa": "/ˌriːəbɪlɪˈteɪʃən/",
+      "meaningVi": "sự phục hồi chức năng",
+      "definitionEn": "treatment intended to restore a person’s health or abilities",
+      "example": "Post-operative rehabilitation enables many elderly patients to regain independence.",
+      "collocation": "physical rehabilitation",
+      "band": "6-7"
+    },
+    {
+      "word": "prevention",
+      "pos": "noun",
+      "ipa": "/prɪˈvenʃən/",
+      "meaningVi": "sự phòng ngừa",
+      "definitionEn": "action taken to stop a disease or problem from occurring",
+      "example": "Disease prevention is generally more cost-effective than long-term treatment.",
+      "collocation": "disease prevention",
+      "band": "5-6"
+    },
+    {
+      "word": "autonomy",
+      "pos": "noun",
+      "ipa": "/ɔːˈtɒnəmi/",
+      "meaningVi": "quyền tự chủ",
+      "definitionEn": "the ability to make one’s own decisions and live independently",
+      "example": "Care policies should protect the autonomy of older patients.",
+      "collocation": "preserve autonomy",
+      "band": "7-8"
+    },
+    {
+      "word": "dignity",
+      "pos": "noun",
+      "ipa": "/ˈdɪɡnəti/",
+      "meaningVi": "phẩm giá",
+      "definitionEn": "the sense of value and respect that every person deserves",
+      "example": "Residential facilities must ensure that residents are treated with dignity.",
+      "collocation": "preserve human dignity",
+      "band": "6-7"
+    },
+    {
+      "word": "eldercare",
+      "pos": "noun",
+      "ipa": "/ˈeldəkeə/",
+      "meaningVi": "chăm sóc người cao tuổi",
+      "definitionEn": "the care and support provided to elderly people",
+      "example": "The demand for professional eldercare is likely to grow substantially.",
+      "collocation": "professional eldercare",
+      "band": "6-7"
+    },
+    {
+      "word": "overburdened",
+      "pos": "adjective",
+      "ipa": "/ˌəʊvəˈbɜːdənd/",
+      "meaningVi": "bị quá tải",
+      "definitionEn": "having more work or responsibility than can reasonably be managed",
+      "example": "Overburdened families may be unable to provide adequate care for elderly relatives.",
+      "collocation": "overburdened healthcare system",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainability",
+      "pos": "noun",
+      "ipa": "/səˌsteɪnəˈbɪləti/",
+      "meaningVi": "tính bền vững",
+      "definitionEn": "the ability of a system to continue effectively over time",
+      "example": "The sustainability of public pension systems depends on careful economic planning.",
+      "collocation": "financial sustainability",
+      "band": "7-8"
+    },
+    {
+      "word": "provision",
+      "pos": "noun",
+      "ipa": "/prəˈvɪʒən/",
+      "meaningVi": "sự cung cấp",
+      "definitionEn": "the act of supplying a service or facility",
+      "example": "The provision of community-based care can reduce pressure on hospitals.",
+      "collocation": "provision of care",
+      "band": "7-8"
+    },
+    {
+      "word": "entitlement",
+      "pos": "noun",
+      "ipa": "/ɪnˈtaɪtlmənt/",
+      "meaningVi": "quyền lợi được hưởng",
+      "definitionEn": "a benefit or payment that a person has a legal right to receive",
+      "example": "Pension entitlement should be transparent and accessible to all eligible citizens.",
+      "collocation": "pension entitlement",
+      "band": "7-8"
+    },
+    {
+      "word": "annuity",
+      "pos": "noun",
+      "ipa": "/əˈnjuːəti/",
+      "meaningVi": "khoản tiền nhận định kỳ",
+      "definitionEn": "a fixed amount of money paid regularly, usually after retirement",
+      "example": "Some retirees purchase an annuity to secure a stable income for life.",
+      "collocation": "retirement annuity",
+      "band": "8+"
+    },
+    {
+      "word": "contributory",
+      "pos": "adjective",
+      "ipa": "/kənˈtrɪbjətri/",
+      "meaningVi": "dựa trên khoản đóng góp",
+      "definitionEn": "involving regular payments made by an individual or employer",
+      "example": "A contributory pension scheme can provide workers with greater financial security.",
+      "collocation": "contributory pension",
+      "band": "7-8"
+    },
+    {
+      "word": "means-tested",
+      "pos": "adjective",
+      "ipa": "/ˈmiːnz ˌtestɪd/",
+      "meaningVi": "được xét theo thu nhập",
+      "definitionEn": "provided only after assessing a person’s income and financial resources",
+      "example": "Means-tested benefits can direct limited public funds towards the poorest pensioners.",
+      "collocation": "means-tested benefits",
+      "band": "7-8"
+    },
+    {
+      "word": "informal",
+      "pos": "adjective",
+      "ipa": "/ɪnˈfɔːməl/",
+      "meaningVi": "không chính thức",
+      "definitionEn": "not provided through a formal organisation or professional service",
+      "example": "Informal care supplied by relatives remains vital in many ageing societies.",
+      "collocation": "informal care",
+      "band": "6-7"
+    },
+    {
+      "word": "multigenerational",
+      "pos": "adjective",
+      "ipa": "/ˌmʌltɪˌdʒenəˈreɪʃənəl/",
+      "meaningVi": "nhiều thế hệ",
+      "definitionEn": "involving several generations of a family or community",
+      "example": "Multigenerational households can offer older adults companionship and practical support.",
+      "collocation": "multigenerational household",
+      "band": "7-8"
+    },
+    {
+      "word": "ageism",
+      "pos": "noun",
+      "ipa": "/ˈeɪdʒɪzəm/",
+      "meaningVi": "định kiến tuổi tác",
+      "definitionEn": "unfair prejudice or discrimination against people because of their age",
+      "example": "Ageism in recruitment deprives businesses of valuable experience.",
+      "collocation": "combat ageism",
+      "band": "7-8"
+    },
+    {
+      "word": "lifespan",
+      "pos": "noun",
+      "ipa": "/ˈlaɪfspæn/",
+      "meaningVi": "tuổi thọ",
+      "definitionEn": "the length of time that a person or organism is expected to live",
+      "example": "A longer lifespan does not necessarily guarantee a better quality of life.",
+      "collocation": "average lifespan",
+      "band": "5-6"
+    },
+    {
+      "word": "pensioner",
+      "pos": "noun",
+      "ipa": "/ˈpenʃənə/",
+      "meaningVi": "người hưởng lương hưu",
+      "definitionEn": "a person who receives a pension, especially after retirement",
+      "example": "Many pensioners struggle to meet living costs when prices rise sharply.",
+      "collocation": "low-income pensioner",
+      "band": "5-6"
+    },
+    {
+      "word": "sedentary",
+      "pos": "adjective",
+      "ipa": "/ˈsedəntəri/",
+      "meaningVi": "ít vận động",
+      "definitionEn": "involving much sitting and little physical activity",
+      "example": "A sedentary lifestyle can increase the risk of chronic disease in later life.",
+      "collocation": "sedentary lifestyle",
+      "band": "6-7"
+    },
+    {
+      "word": "cognitive",
+      "pos": "adjective",
+      "ipa": "/ˈkɒɡnətɪv/",
+      "meaningVi": "thuộc về nhận thức",
+      "definitionEn": "relating to mental processes such as thinking and remembering",
+      "example": "Regular mental activity may help older adults maintain cognitive function.",
+      "collocation": "cognitive decline",
+      "band": "7-8"
+    },
+    {
+      "word": "palliative",
+      "pos": "adjective",
+      "ipa": "/ˈpæliətɪv/",
+      "meaningVi": "giảm nhẹ",
+      "definitionEn": "intended to relieve suffering rather than cure an illness",
+      "example": "Palliative services should be available to patients with advanced conditions.",
+      "collocation": "palliative care",
+      "band": "7-8"
+    },
+    {
+      "word": "respite",
+      "pos": "noun",
+      "ipa": "/ˈrespɪt/",
+      "meaningVi": "thời gian nghỉ tạm thời",
+      "definitionEn": "a short period of relief from a difficult responsibility or situation",
+      "example": "Respite services give family caregivers time to recover from prolonged stress.",
+      "collocation": "respite care",
+      "band": "8+"
+    },
+    {
+      "word": "guardianship",
+      "pos": "noun",
+      "ipa": "/ˈɡɑːdiənʃɪp/",
+      "meaningVi": "quyền giám hộ",
+      "definitionEn": "the legal responsibility for caring for someone who cannot manage independently",
+      "example": "Guardianship arrangements should respect the preferences of older people whenever possible.",
+      "collocation": "legal guardianship",
+      "band": "8+"
+    },
+    {
+      "word": "gerontology",
+      "pos": "noun",
+      "ipa": "/ˌdʒerənˈtɒlədʒi/",
+      "meaningVi": "lão khoa học",
+      "definitionEn": "the scientific study of ageing and the problems of older people",
+      "example": "Gerontology can inform policies designed to support healthy ageing.",
+      "collocation": "the study of gerontology",
+      "band": "8+"
+    },
+    {
+      "word": "active",
+      "pos": "adjective",
+      "ipa": "/ˈæktɪv/",
+      "meaningVi": "năng động, tích cực tham gia",
+      "definitionEn": "involved in physical, social, or economic activities",
+      "example": "Active ageing enables older citizens to contribute to their communities for longer.",
+      "collocation": "active ageing",
+      "band": "6-7"
+    },
+    {
+      "word": "productive",
+      "pos": "adjective",
+      "ipa": "/prəˈdʌktɪv/",
+      "meaningVi": "có năng suất, có ích",
+      "definitionEn": "able to produce useful results or make a valuable contribution",
+      "example": "Older employees can remain productive when workplaces offer flexible arrangements.",
+      "collocation": "productive ageing",
+      "band": "6-7"
+    },
+    {
+      "word": "age-friendly",
+      "pos": "adjective",
+      "ipa": "/ˈeɪdʒ ˌfrendli/",
+      "meaningVi": "thân thiện với người cao tuổi",
+      "definitionEn": "designed to meet the needs and abilities of older people",
+      "example": "Age-friendly cities provide safe transport, accessible housing, and inclusive public spaces.",
+      "collocation": "age-friendly environment",
+      "band": "6-7"
+    },
+    {
+      "word": "superannuation",
+      "pos": "noun",
+      "ipa": "/ˌsuːpərænjuˈeɪʃən/",
+      "meaningVi": "quỹ hưu trí",
+      "definitionEn": "a retirement savings system funded during a person’s working life",
+      "example": "Compulsory superannuation can reduce dependence on government pensions.",
+      "collocation": "superannuation fund",
+      "band": "8+"
+    }
+  ]
+}

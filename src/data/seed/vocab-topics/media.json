@@ -1,0 +1,508 @@
+{
+  "slug": "media",
+  "name": "Media",
+  "nameVi": "Truyền thông",
+  "blurb": "Báo chí, quảng cáo, mạng xã hội",
+  "words": [
+    {
+      "word": "journalism",
+      "pos": "noun",
+      "ipa": "/ˈdʒɜːrnəlɪzəm/",
+      "meaningVi": "nghề báo",
+      "definitionEn": "the activity of gathering, assessing, creating, and presenting news and information",
+      "example": "Investigative journalism plays a crucial role in holding those in power accountable.",
+      "collocation": "investigative journalism",
+      "band": "6-7"
+    },
+    {
+      "word": "reporter",
+      "pos": "noun",
+      "ipa": "/rɪˈpɔːrtər/",
+      "meaningVi": "phóng viên",
+      "definitionEn": "a person who reports news for a newspaper, magazine, or broadcasting company",
+      "example": "The reporter was sent to cover the election campaign.",
+      "collocation": "news reporter",
+      "band": "5-6"
+    },
+    {
+      "word": "article",
+      "pos": "noun",
+      "ipa": "/ˈɑːrtɪkl/",
+      "meaningVi": "bài báo",
+      "definitionEn": "a piece of writing in a newspaper or magazine",
+      "example": "She wrote an insightful article about the impact of social media on mental health.",
+      "collocation": "feature article",
+      "band": "5-6"
+    },
+    {
+      "word": "headline",
+      "pos": "noun",
+      "ipa": "/ˈhedlaɪn/",
+      "meaningVi": "tiêu đề",
+      "definitionEn": "a heading at the top of an article or page",
+      "example": "The headline was designed to grab readers' attention.",
+      "collocation": "bold headline",
+      "band": "5-6"
+    },
+    {
+      "word": "editorial",
+      "pos": "noun",
+      "ipa": "/ˌedɪˈtɔːriəl/",
+      "meaningVi": "bài xã luận",
+      "definitionEn": "an article in a newspaper expressing the editor's opinion",
+      "example": "The editorial condemned the government's handling of the crisis.",
+      "collocation": "editorial board",
+      "band": "7-8"
+    },
+    {
+      "word": "column",
+      "pos": "noun",
+      "ipa": "/ˈkɑːləm/",
+      "meaningVi": "chuyên mục",
+      "definitionEn": "a regular article by a particular journalist",
+      "example": "His weekly column analyzes the latest media trends.",
+      "collocation": "opinion column",
+      "band": "6-7"
+    },
+    {
+      "word": "correspondent",
+      "pos": "noun",
+      "ipa": "/ˌkɔːrɪˈspɑːndənt/",
+      "meaningVi": "phóng viên thường trú",
+      "definitionEn": "a journalist employed to report on a particular subject or from a foreign country",
+      "example": "The war correspondent risked her life to report from the frontline.",
+      "collocation": "foreign correspondent",
+      "band": "7-8"
+    },
+    {
+      "word": "coverage",
+      "pos": "noun",
+      "ipa": "/ˈkʌvərɪdʒ/",
+      "meaningVi": "sự đưa tin",
+      "definitionEn": "the reporting of news events",
+      "example": "The media coverage of the disaster was extensive and empathetic.",
+      "collocation": "media coverage",
+      "band": "6-7"
+    },
+    {
+      "word": "censorship",
+      "pos": "noun",
+      "ipa": "/ˈsensərʃɪp/",
+      "meaningVi": "kiểm duyệt",
+      "definitionEn": "the suppression of speech or other public communication",
+      "example": "Censorship of the press is a sign of an authoritarian regime.",
+      "collocation": "government censorship",
+      "band": "7-8"
+    },
+    {
+      "word": "press freedom",
+      "pos": "noun",
+      "ipa": "/pres ˈfriːdəm/",
+      "meaningVi": "tự do báo chí",
+      "definitionEn": "the right of journalists to report news without restriction",
+      "example": "Press freedom is essential for a functioning democracy.",
+      "collocation": "threat to press freedom",
+      "band": "8+"
+    },
+    {
+      "word": "tabloid",
+      "pos": "noun",
+      "ipa": "/ˈtæblɔɪd/",
+      "meaningVi": "báo lá cải",
+      "definitionEn": "a newspaper with a smaller format, often focusing on sensational stories",
+      "example": "Tabloid newspapers often prioritize celebrity gossip over hard news.",
+      "collocation": "tabloid journalism",
+      "band": "6-7"
+    },
+    {
+      "word": "broadsheet",
+      "pos": "noun",
+      "ipa": "/ˈbrɔːdʃiːt/",
+      "meaningVi": "báo khổ lớn",
+      "definitionEn": "a large-format newspaper, typically considered more serious",
+      "example": "Broadsheet newspapers are known for their in-depth analysis.",
+      "collocation": "broadsheet newspaper",
+      "band": "6-7"
+    },
+    {
+      "word": "circulation",
+      "pos": "noun",
+      "ipa": "/ˌsɜːrkjʊˈleɪʃən/",
+      "meaningVi": "số lượng phát hành",
+      "definitionEn": "the number of copies of a newspaper distributed",
+      "example": "The newspaper's circulation has declined due to digital competition.",
+      "collocation": "daily circulation",
+      "band": "7-8"
+    },
+    {
+      "word": "subscription",
+      "pos": "noun",
+      "ipa": "/səbˈskrɪpʃən/",
+      "meaningVi": "sự đăng ký dài hạn",
+      "definitionEn": "an arrangement to receive a publication regularly",
+      "example": "Many people now prefer digital subscriptions to print newspapers.",
+      "collocation": "online subscription",
+      "band": "6-7"
+    },
+    {
+      "word": "byline",
+      "pos": "noun",
+      "ipa": "/ˈbaɪlaɪn/",
+      "meaningVi": "dòng tên tác giả",
+      "definitionEn": "a line in a newspaper naming the writer of an article",
+      "example": "The journalist was proud to see her byline on the front page.",
+      "collocation": "byline credit",
+      "band": "8+"
+    },
+    {
+      "word": "scoop",
+      "pos": "noun",
+      "ipa": "/skuːp/",
+      "meaningVi": "tin độc quyền",
+      "definitionEn": "a news story reported by one publication before others",
+      "example": "The reporter got a major scoop by interviewing the whistleblower.",
+      "collocation": "exclusive scoop",
+      "band": "8+"
+    },
+    {
+      "word": "exclusive",
+      "pos": "adjective",
+      "ipa": "/ɪkˈskluːsɪv/",
+      "meaningVi": "độc quyền",
+      "definitionEn": "a story available to only one newspaper",
+      "example": "The magazine published an exclusive interview with the celebrity.",
+      "collocation": "exclusive report",
+      "band": "7-8"
+    },
+    {
+      "word": "leak",
+      "pos": "noun",
+      "ipa": "/liːk/",
+      "meaningVi": "sự rò rỉ thông tin",
+      "definitionEn": "the disclosure of confidential information",
+      "example": "The leak of classified documents caused a political scandal.",
+      "collocation": "data leak",
+      "band": "7-8"
+    },
+    {
+      "word": "embargo",
+      "pos": "noun",
+      "ipa": "/ɪmˈbɑːrɡoʊ/",
+      "meaningVi": "lệnh cấm đăng tin",
+      "definitionEn": "a ban on publishing a news story until a specific time",
+      "example": "The press agreed to observe the embargo until the official announcement.",
+      "collocation": "news embargo",
+      "band": "8+"
+    },
+    {
+      "word": "deadline",
+      "pos": "noun",
+      "ipa": "/ˈdedlaɪn/",
+      "meaningVi": "hạn chót",
+      "definitionEn": "the latest time by which something must be completed",
+      "example": "Journalists often work under tight deadlines to meet publication schedules.",
+      "collocation": "tight deadline",
+      "band": "5-6"
+    },
+    {
+      "word": "advertisement",
+      "pos": "noun",
+      "ipa": "/ədˈvɜːrtɪsmənt/",
+      "meaningVi": "quảng cáo",
+      "definitionEn": "a notice promoting a product or service",
+      "example": "The advertisement targeted young adults through social media platforms.",
+      "collocation": "online advertisement",
+      "band": "5-6"
+    },
+    {
+      "word": "commercial",
+      "pos": "noun",
+      "ipa": "/kəˈmɜːrʃəl/",
+      "meaningVi": "quảng cáo thương mại",
+      "definitionEn": "a television or radio advertisement",
+      "example": "The commercial aired during the Super Bowl to reach a massive audience.",
+      "collocation": "TV commercial",
+      "band": "5-6"
+    },
+    {
+      "word": "campaign",
+      "pos": "noun",
+      "ipa": "/kæmˈpeɪn/",
+      "meaningVi": "chiến dịch",
+      "definitionEn": "a series of coordinated actions to promote something",
+      "example": "The marketing campaign used emotional appeals to increase brand loyalty.",
+      "collocation": "advertising campaign",
+      "band": "6-7"
+    },
+    {
+      "word": "brand",
+      "pos": "noun",
+      "ipa": "/brænd/",
+      "meaningVi": "thương hiệu",
+      "definitionEn": "a name, term, design, or symbol that identifies a product",
+      "example": "Building a strong brand is crucial for long-term success.",
+      "collocation": "brand awareness",
+      "band": "6-7"
+    },
+    {
+      "word": "slogan",
+      "pos": "noun",
+      "ipa": "/ˈsloʊɡən/",
+      "meaningVi": "khẩu hiệu",
+      "definitionEn": "a short, memorable phrase used in advertising",
+      "example": "The company's slogan emphasized quality and reliability.",
+      "collocation": "catchy slogan",
+      "band": "5-6"
+    },
+    {
+      "word": "target audience",
+      "pos": "noun",
+      "ipa": "/ˈtɑːrɡɪt ˈɔːdiəns/",
+      "meaningVi": "đối tượng mục tiêu",
+      "definitionEn": "a specific group of people aimed at by a product or message",
+      "example": "The advertisement was designed to appeal to its target audience.",
+      "collocation": "specific target audience",
+      "band": "6-7"
+    },
+    {
+      "word": "marketing",
+      "pos": "noun",
+      "ipa": "/ˈmɑːrkɪtɪŋ/",
+      "meaningVi": "tiếp thị",
+      "definitionEn": "the process of promoting and selling products",
+      "example": "Digital marketing has transformed how companies reach consumers.",
+      "collocation": "marketing strategy",
+      "band": "6-7"
+    },
+    {
+      "word": "propaganda",
+      "pos": "noun",
+      "ipa": "/ˌprɒpəˈɡændə/",
+      "meaningVi": "tuyên truyền",
+      "definitionEn": "information biased to promote a political cause",
+      "example": "Propaganda is often used in wartime to shape public opinion.",
+      "collocation": "political propaganda",
+      "band": "7-8"
+    },
+    {
+      "word": "sponsorship",
+      "pos": "noun",
+      "ipa": "/ˈspɒnsərʃɪp/",
+      "meaningVi": "tài trợ",
+      "definitionEn": "financial support from a company in exchange for promotion",
+      "example": "The event was funded by corporate sponsorship.",
+      "collocation": "sponsorship deal",
+      "band": "7-8"
+    },
+    {
+      "word": "endorsement",
+      "pos": "noun",
+      "ipa": "/ɪnˈdɔːrsmənt/",
+      "meaningVi": "sự chứng thực",
+      "definitionEn": "a public statement of support for a product",
+      "example": "Celebrity endorsements can significantly boost sales.",
+      "collocation": "product endorsement",
+      "band": "7-8"
+    },
+    {
+      "word": "influencer",
+      "pos": "noun",
+      "ipa": "/ˈɪnfluənsər/",
+      "meaningVi": "người có sức ảnh hưởng",
+      "definitionEn": "a person who promotes products on social media",
+      "example": "Influencers often collaborate with brands to promote products.",
+      "collocation": "social media influencer",
+      "band": "7-8"
+    },
+    {
+      "word": "viral",
+      "pos": "adjective",
+      "ipa": "/ˈvaɪrəl/",
+      "meaningVi": "lan truyền nhanh",
+      "definitionEn": "spreading rapidly via the internet",
+      "example": "The video went viral within hours, gaining millions of views.",
+      "collocation": "viral content",
+      "band": "6-7"
+    },
+    {
+      "word": "clickbait",
+      "pos": "noun",
+      "ipa": "/ˈklɪkbeɪt/",
+      "meaningVi": "câu click",
+      "definitionEn": "content designed to attract clicks",
+      "example": "Clickbait headlines often exaggerate the truth to generate traffic.",
+      "collocation": "clickbait article",
+      "band": "7-8"
+    },
+    {
+      "word": "banner ad",
+      "pos": "noun",
+      "ipa": "/ˈbænər æd/",
+      "meaningVi": "quảng cáo biểu ngữ",
+      "definitionEn": "an online advertisement displayed on a web page",
+      "example": "Banner ads are less effective now due to ad-blockers.",
+      "collocation": "banner advertisement",
+      "band": "6-7"
+    },
+    {
+      "word": "pop-up",
+      "pos": "noun",
+      "ipa": "/ˈpɒpʌp/",
+      "meaningVi": "cửa sổ pop-up",
+      "definitionEn": "an advertisement that appears suddenly in a new window",
+      "example": "Pop-up ads can be annoying and disrupt user experience.",
+      "collocation": "pop-up advertisement",
+      "band": "5-6"
+    },
+    {
+      "word": "native advertising",
+      "pos": "noun",
+      "ipa": "/ˈneɪtɪv ˈædvərtaɪzɪŋ/",
+      "meaningVi": "quảng cáo tự nhiên",
+      "definitionEn": "advertising that matches the look and feel of the platform",
+      "example": "Native advertising is less intrusive than traditional ads.",
+      "collocation": "native advertising campaign",
+      "band": "8+"
+    },
+    {
+      "word": "product placement",
+      "pos": "noun",
+      "ipa": "/ˈprɒdʌkt ˈpleɪsmənt/",
+      "meaningVi": "đặt sản phẩm",
+      "definitionEn": "embedding branded products in media content",
+      "example": "Product placement in movies is a subtle form of advertising.",
+      "collocation": "product placement deal",
+      "band": "8+"
+    },
+    {
+      "word": "consumer",
+      "pos": "noun",
+      "ipa": "/kənˈsjuːmər/",
+      "meaningVi": "người tiêu dùng",
+      "definitionEn": "a person who purchases goods or services",
+      "example": "Consumer behavior is heavily influenced by advertising.",
+      "collocation": "consumer demand",
+      "band": "5-6"
+    },
+    {
+      "word": "demographics",
+      "pos": "noun",
+      "ipa": "/ˌdeməˈɡræfɪks/",
+      "meaningVi": "nhân khẩu học",
+      "definitionEn": "statistical data about a population",
+      "example": "Marketers use demographics to target specific groups.",
+      "collocation": "demographic data",
+      "band": "6-7"
+    },
+    {
+      "word": "market share",
+      "pos": "noun",
+      "ipa": "/ˈmɑːrkɪt ʃer/",
+      "meaningVi": "thị phần",
+      "definitionEn": "the portion of a market controlled by a company",
+      "example": "The company's market share has grown due to effective advertising.",
+      "collocation": "increase market share",
+      "band": "6-7"
+    },
+    {
+      "word": "social media",
+      "pos": "noun",
+      "ipa": "/ˈsoʊʃəl ˈmiːdiə/",
+      "meaningVi": "mạng xã hội",
+      "definitionEn": "websites and applications that enable user interaction",
+      "example": "Social media has become a primary source of news for many people.",
+      "collocation": "social media platform",
+      "band": "5-6"
+    },
+    {
+      "word": "platform",
+      "pos": "noun",
+      "ipa": "/ˈplætfɔːrm/",
+      "meaningVi": "nền tảng",
+      "definitionEn": "a digital service that hosts content",
+      "example": "YouTube is a popular platform for video content.",
+      "collocation": "digital platform",
+      "band": "6-7"
+    },
+    {
+      "word": "post",
+      "pos": "noun",
+      "ipa": "/poʊst/",
+      "meaningVi": "bài đăng",
+      "definitionEn": "a message published on a social media site",
+      "example": "Her post about the event received hundreds of likes.",
+      "collocation": "social media post",
+      "band": "5-6"
+    },
+    {
+      "word": "tweet",
+      "pos": "noun",
+      "ipa": "/twiːt/",
+      "meaningVi": "dòng tweet",
+      "definitionEn": "a message on Twitter",
+      "example": "The politician's tweet sparked a heated debate.",
+      "collocation": "controversial tweet",
+      "band": "5-6"
+    },
+    {
+      "word": "like",
+      "pos": "noun",
+      "ipa": "/laɪk/",
+      "meaningVi": "lượt thích",
+      "definitionEn": "an indication of approval on social media",
+      "example": "The number of likes is often used as a measure of popularity.",
+      "collocation": "Facebook like",
+      "band": "5-6"
+    },
+    {
+      "word": "share",
+      "pos": "noun",
+      "ipa": "/ʃer/",
+      "meaningVi": "lượt chia sẻ",
+      "definitionEn": "the act of reposting content",
+      "example": "Shares help content spread organically across networks.",
+      "collocation": "share button",
+      "band": "5-6"
+    },
+    {
+      "word": "follower",
+      "pos": "noun",
+      "ipa": "/ˈfɒloʊər/",
+      "meaningVi": "người theo dõi",
+      "definitionEn": "a user who subscribes to another's updates",
+      "example": "She gained thousands of followers after her viral video.",
+      "collocation": "loyal follower",
+      "band": "5-6"
+    },
+    {
+      "word": "trending",
+      "pos": "adjective",
+      "ipa": "/ˈtrendɪŋ/",
+      "meaningVi": "thịnh hành",
+      "definitionEn": "becoming popular on social media",
+      "example": "The hashtag was trending on Twitter within minutes.",
+      "collocation": "trending topic",
+      "band": "6-7"
+    },
+    {
+      "word": "hashtag",
+      "pos": "noun",
+      "ipa": "/ˈhæʃtæɡ/",
+      "meaningVi": "thẻ bắt đầu bằng #",
+      "definitionEn": "a word or phrase preceded by a hash sign",
+      "example": "Using relevant hashtags can increase the visibility of a post.",
+      "collocation": "popular hashtag",
+      "band": "5-6"
+    },
+    {
+      "word": "algorithm",
+      "pos": "noun",
+      "ipa": "/ˈælɡərɪðəm/",
+      "meaningVi": "thuật toán",
+      "definitionEn": "a set of rules used by a platform to curate content",
+      "example": "The algorithm prioritizes content that generates high engagement.",
+      "collocation": "social media algorithm",
+      "band": "7-8"
+    }
+  ]
+}

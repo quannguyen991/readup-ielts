@@ -1,0 +1,508 @@
+{
+  "slug": "energy",
+  "name": "Energy",
+  "nameVi": "Năng lượng",
+  "blurb": "Tái tạo, nhiên liệu hoá thạch, tiết kiệm điện",
+  "words": [
+    {
+      "word": "renewable",
+      "pos": "adjective",
+      "ipa": "/rɪˈnjuːəbəl/",
+      "meaningVi": "có thể tái tạo",
+      "definitionEn": "capable of being replenished naturally",
+      "example": "Many countries are investing in renewable energy sources.",
+      "collocation": "renewable energy",
+      "band": "6-7"
+    },
+    {
+      "word": "solar",
+      "pos": "adjective",
+      "ipa": "/ˈsoʊlər/",
+      "meaningVi": "thuộc mặt trời",
+      "definitionEn": "relating to the sun",
+      "example": "Solar panels convert sunlight into electricity.",
+      "collocation": "solar power",
+      "band": "6-7"
+    },
+    {
+      "word": "wind",
+      "pos": "noun",
+      "ipa": "/wɪnd/",
+      "meaningVi": "gió",
+      "definitionEn": "natural movement of air used for energy",
+      "example": "Wind turbines generate electricity from wind.",
+      "collocation": "wind energy",
+      "band": "5-6"
+    },
+    {
+      "word": "hydroelectric",
+      "pos": "adjective",
+      "ipa": "/ˌhaɪdroʊɪˈlektrɪk/",
+      "meaningVi": "thủy điện",
+      "definitionEn": "generating electricity using flowing water",
+      "example": "Hydroelectric dams provide clean power.",
+      "collocation": "hydroelectric plant",
+      "band": "7-8"
+    },
+    {
+      "word": "geothermal",
+      "pos": "adjective",
+      "ipa": "/ˌdʒiːoʊˈθɜːrməl/",
+      "meaningVi": "địa nhiệt",
+      "definitionEn": "relating to heat from the earth",
+      "example": "Geothermal energy is harnessed from underground heat.",
+      "collocation": "geothermal energy",
+      "band": "7-8"
+    },
+    {
+      "word": "biomass",
+      "pos": "noun",
+      "ipa": "/ˈbaɪoʊmæs/",
+      "meaningVi": "sinh khối",
+      "definitionEn": "organic matter used as fuel",
+      "example": "Biomass can be burned for heat or electricity.",
+      "collocation": "biomass fuel",
+      "band": "6-7"
+    },
+    {
+      "word": "fossil fuel",
+      "pos": "noun",
+      "ipa": "/ˈfɒsəl ˈfjuːəl/",
+      "meaningVi": "nhiên liệu hóa thạch",
+      "definitionEn": "natural fuel formed from ancient organisms",
+      "example": "Burning fossil fuels releases carbon dioxide.",
+      "collocation": "fossil fuel consumption",
+      "band": "5-6"
+    },
+    {
+      "word": "non-renewable",
+      "pos": "adjective",
+      "ipa": "/ˌnɒn rɪˈnjuːəbəl/",
+      "meaningVi": "không thể tái tạo",
+      "definitionEn": "not replaceable once used",
+      "example": "Oil is a non-renewable resource.",
+      "collocation": "non-renewable energy",
+      "band": "6-7"
+    },
+    {
+      "word": "consumption",
+      "pos": "noun",
+      "ipa": "/kənˈsʌmpʃən/",
+      "meaningVi": "sự tiêu thụ",
+      "definitionEn": "the act of using resources",
+      "example": "Energy consumption has risen sharply.",
+      "collocation": "energy consumption",
+      "band": "5-6"
+    },
+    {
+      "word": "efficiency",
+      "pos": "noun",
+      "ipa": "/ɪˈfɪʃənsi/",
+      "meaningVi": "hiệu suất",
+      "definitionEn": "the ability to do something without waste",
+      "example": "Improving energy efficiency reduces costs.",
+      "collocation": "energy efficiency",
+      "band": "6-7"
+    },
+    {
+      "word": "emission",
+      "pos": "noun",
+      "ipa": "/ɪˈmɪʃən/",
+      "meaningVi": "sự phát thải",
+      "definitionEn": "the production and discharge of something, especially gas",
+      "example": "Carbon emissions contribute to global warming.",
+      "collocation": "carbon emission",
+      "band": "6-7"
+    },
+    {
+      "word": "greenhouse gas",
+      "pos": "noun",
+      "ipa": "/ˈɡriːnhaʊs ɡæs/",
+      "meaningVi": "khí nhà kính",
+      "definitionEn": "gases that trap heat in the atmosphere",
+      "example": "Methane is a potent greenhouse gas.",
+      "collocation": "greenhouse gas emissions",
+      "band": "7-8"
+    },
+    {
+      "word": "carbon footprint",
+      "pos": "noun",
+      "ipa": "/ˈkɑːrbən ˈfʊtprɪnt/",
+      "meaningVi": "dấu chân carbon",
+      "definitionEn": "amount of carbon dioxide produced by an activity",
+      "example": "Reducing your carbon footprint helps the environment.",
+      "collocation": "reduce carbon footprint",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪnəbəl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "able to be maintained over time",
+      "example": "Sustainable energy sources are vital for the future.",
+      "collocation": "sustainable development",
+      "band": "6-7"
+    },
+    {
+      "word": "grid",
+      "pos": "noun",
+      "ipa": "/ɡrɪd/",
+      "meaningVi": "lưới điện",
+      "definitionEn": "network for transmitting electricity",
+      "example": "The power grid supplies electricity to homes.",
+      "collocation": "national grid",
+      "band": "5-6"
+    },
+    {
+      "word": "turbine",
+      "pos": "noun",
+      "ipa": "/ˈtɜːrbaɪn/",
+      "meaningVi": "tuabin",
+      "definitionEn": "machine for generating power from moving fluid",
+      "example": "Wind turbines are common in rural areas.",
+      "collocation": "wind turbine",
+      "band": "6-7"
+    },
+    {
+      "word": "photovoltaic",
+      "pos": "adjective",
+      "ipa": "/ˌfoʊtəʊvɒlˈteɪɪk/",
+      "meaningVi": "quang điện",
+      "definitionEn": "converting light into electricity",
+      "example": "Photovoltaic cells are used in solar panels.",
+      "collocation": "photovoltaic system",
+      "band": "8+"
+    },
+    {
+      "word": "insulation",
+      "pos": "noun",
+      "ipa": "/ˌɪnsəˈleɪʃən/",
+      "meaningVi": "cách nhiệt",
+      "definitionEn": "material that prevents heat loss",
+      "example": "Proper insulation reduces heating costs.",
+      "collocation": "thermal insulation",
+      "band": "6-7"
+    },
+    {
+      "word": "conservation",
+      "pos": "noun",
+      "ipa": "/ˌkɒnsərˈveɪʃən/",
+      "meaningVi": "bảo tồn",
+      "definitionEn": "careful use of resources",
+      "example": "Energy conservation is essential for sustainability.",
+      "collocation": "energy conservation",
+      "band": "5-6"
+    },
+    {
+      "word": "depletion",
+      "pos": "noun",
+      "ipa": "/dɪˈpliːʃən/",
+      "meaningVi": "sự cạn kiệt",
+      "definitionEn": "reduction in quantity",
+      "example": "The depletion of oil reserves is a concern.",
+      "collocation": "resource depletion",
+      "band": "7-8"
+    },
+    {
+      "word": "energy-saving",
+      "pos": "adjective",
+      "ipa": "/ˈenərdʒi ˈseɪvɪŋ/",
+      "meaningVi": "tiết kiệm năng lượng",
+      "definitionEn": "designed to use less energy",
+      "example": "Energy-saving appliances reduce electricity bills.",
+      "collocation": "energy-saving measures",
+      "band": "5-6"
+    },
+    {
+      "word": "energy-intensive",
+      "pos": "adjective",
+      "ipa": "/ˈenərdʒi ɪnˈtensɪv/",
+      "meaningVi": "tốn nhiều năng lượng",
+      "definitionEn": "requiring a lot of energy to operate",
+      "example": "Energy-intensive industries need to adopt cleaner technologies.",
+      "collocation": "energy-intensive industries",
+      "band": "7-8"
+    },
+    {
+      "word": "energy crisis",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi ˈkraɪsɪs/",
+      "meaningVi": "khủng hoảng năng lượng",
+      "definitionEn": "a period of severe shortage of energy supply",
+      "example": "The energy crisis led to higher prices and power cuts.",
+      "collocation": "global energy crisis",
+      "band": "6-7"
+    },
+    {
+      "word": "energy security",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi sɪˈkjʊrɪti/",
+      "meaningVi": "an ninh năng lượng",
+      "definitionEn": "uninterrupted availability of energy sources at an affordable price",
+      "example": "Diversifying energy sources improves energy security.",
+      "collocation": "ensure energy security",
+      "band": "7-8"
+    },
+    {
+      "word": "clean energy",
+      "pos": "noun",
+      "ipa": "/kliːn ˈenərdʒi/",
+      "meaningVi": "năng lượng sạch",
+      "definitionEn": "energy that does not pollute the environment",
+      "example": "Governments should invest more in clean energy.",
+      "collocation": "clean energy technology",
+      "band": "6-7"
+    },
+    {
+      "word": "green energy",
+      "pos": "noun",
+      "ipa": "/ɡriːn ˈenərdʒi/",
+      "meaningVi": "năng lượng xanh",
+      "definitionEn": "energy from natural sources that are replenished",
+      "example": "Green energy helps reduce carbon emissions.",
+      "collocation": "green energy sources",
+      "band": "6-7"
+    },
+    {
+      "word": "alternative energy",
+      "pos": "noun",
+      "ipa": "/ɔːlˈtɜːrnətɪv ˈenərdʒi/",
+      "meaningVi": "năng lượng thay thế",
+      "definitionEn": "energy derived from sources other than fossil fuels",
+      "example": "Alternative energy includes solar, wind, and hydro power.",
+      "collocation": "alternative energy technologies",
+      "band": "6-7"
+    },
+    {
+      "word": "nuclear energy",
+      "pos": "noun",
+      "ipa": "/ˈnuːkliər ˈenərdʒi/",
+      "meaningVi": "năng lượng hạt nhân",
+      "definitionEn": "energy released from nuclear reactions",
+      "example": "Nuclear energy is a controversial source of power.",
+      "collocation": "nuclear energy plant",
+      "band": "7-8"
+    },
+    {
+      "word": "thermal energy",
+      "pos": "noun",
+      "ipa": "/ˈθɜːrməl ˈenərdʒi/",
+      "meaningVi": "năng lượng nhiệt",
+      "definitionEn": "energy that comes from heat",
+      "example": "Thermal energy from the sun can be used for heating.",
+      "collocation": "thermal energy storage",
+      "band": "6-7"
+    },
+    {
+      "word": "power plant",
+      "pos": "noun",
+      "ipa": "/ˈpaʊər plænt/",
+      "meaningVi": "nhà máy điện",
+      "definitionEn": "a facility where electricity is generated",
+      "example": "The coal-fired power plant will be shut down.",
+      "collocation": "power plant capacity",
+      "band": "5-6"
+    },
+    {
+      "word": "generator",
+      "pos": "noun",
+      "ipa": "/ˈdʒenəreɪtər/",
+      "meaningVi": "máy phát điện",
+      "definitionEn": "a machine that converts mechanical energy into electrical energy",
+      "example": "A backup generator provides power during outages.",
+      "collocation": "diesel generator",
+      "band": "5-6"
+    },
+    {
+      "word": "transmission",
+      "pos": "noun",
+      "ipa": "/trænzˈmɪʃən/",
+      "meaningVi": "sự truyền tải",
+      "definitionEn": "the process of sending electricity over long distances",
+      "example": "High-voltage transmission lines carry electricity across the country.",
+      "collocation": "electricity transmission",
+      "band": "7-8"
+    },
+    {
+      "word": "distribution",
+      "pos": "noun",
+      "ipa": "/ˌdɪstrɪˈbjuːʃən/",
+      "meaningVi": "sự phân phối",
+      "definitionEn": "the delivery of electricity to end users",
+      "example": "The distribution network must be upgraded to handle more renewable energy.",
+      "collocation": "energy distribution network",
+      "band": "6-7"
+    },
+    {
+      "word": "smart grid",
+      "pos": "noun",
+      "ipa": "/smɑːrt ɡrɪd/",
+      "meaningVi": "lưới điện thông minh",
+      "definitionEn": "an electricity network that uses digital technology to manage supply and demand",
+      "example": "A smart grid optimizes energy use and reduces waste.",
+      "collocation": "smart grid technology",
+      "band": "8+"
+    },
+    {
+      "word": "energy audit",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi ˈɔːdɪt/",
+      "meaningVi": "kiểm toán năng lượng",
+      "definitionEn": "an inspection of energy use to identify savings opportunities",
+      "example": "Conducting an energy audit can lower electricity bills.",
+      "collocation": "conduct an energy audit",
+      "band": "7-8"
+    },
+    {
+      "word": "energy bill",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi bɪl/",
+      "meaningVi": "hóa đơn tiền điện",
+      "definitionEn": "a statement of charges for energy consumed",
+      "example": "High energy bills are a burden for low-income households.",
+      "collocation": "reduce energy bills",
+      "band": "5-6"
+    },
+    {
+      "word": "energy poverty",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi ˈpɒvərti/",
+      "meaningVi": "nghèo năng lượng",
+      "definitionEn": "lack of access to modern energy services",
+      "example": "Energy poverty affects millions of people in developing countries.",
+      "collocation": "tackle energy poverty",
+      "band": "8+"
+    },
+    {
+      "word": "fuel-efficient",
+      "pos": "adjective",
+      "ipa": "/ˈfjuːəl ɪˈfɪʃənt/",
+      "meaningVi": "tiết kiệm nhiên liệu",
+      "definitionEn": "using less fuel to perform a task",
+      "example": "Fuel-efficient vehicles help reduce carbon emissions.",
+      "collocation": "fuel-efficient cars",
+      "band": "6-7"
+    },
+    {
+      "word": "carbon-neutral",
+      "pos": "adjective",
+      "ipa": "/ˈkɑːrbən ˈnuːtrəl/",
+      "meaningVi": "trung hòa carbon",
+      "definitionEn": "achieving net zero carbon emissions",
+      "example": "The company aims to become carbon-neutral by 2050.",
+      "collocation": "carbon-neutral target",
+      "band": "8+"
+    },
+    {
+      "word": "carbon tax",
+      "pos": "noun",
+      "ipa": "/ˈkɑːrbən tæks/",
+      "meaningVi": "thuế carbon",
+      "definitionEn": "a tax on the burning of fossil fuels based on carbon content",
+      "example": "A carbon tax incentivizes companies to reduce emissions.",
+      "collocation": "impose a carbon tax",
+      "band": "7-8"
+    },
+    {
+      "word": "renewable portfolio",
+      "pos": "noun",
+      "ipa": "/rɪˈnjuːəbəl pɔːrtˈfoʊlioʊ/",
+      "meaningVi": "danh mục năng lượng tái tạo",
+      "definitionEn": "a set of renewable energy sources used to meet a target",
+      "example": "The state has a renewable portfolio standard requiring 50% clean energy.",
+      "collocation": "renewable portfolio standard",
+      "band": "8+"
+    },
+    {
+      "word": "net-zero",
+      "pos": "adjective",
+      "ipa": "/net ˈzɪroʊ/",
+      "meaningVi": "ròng bằng không",
+      "definitionEn": "having no net emissions of greenhouse gases",
+      "example": "Many countries have pledged to achieve net-zero emissions.",
+      "collocation": "net-zero emissions target",
+      "band": "8+"
+    },
+    {
+      "word": "energy transition",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi trænˈzɪʃən/",
+      "meaningVi": "chuyển đổi năng lượng",
+      "definitionEn": "a shift from fossil fuels to renewable energy",
+      "example": "The global energy transition requires significant investment.",
+      "collocation": "energy transition plan",
+      "band": "7-8"
+    },
+    {
+      "word": "decarbonization",
+      "pos": "noun",
+      "ipa": "/diːˌkɑːrbənaɪˈzeɪʃən/",
+      "meaningVi": "sự khử carbon",
+      "definitionEn": "the process of reducing carbon emissions",
+      "example": "Decarbonization of the economy is essential for climate goals.",
+      "collocation": "decarbonization strategy",
+      "band": "8+"
+    },
+    {
+      "word": "electrification",
+      "pos": "noun",
+      "ipa": "/ɪˌlektrɪfɪˈkeɪʃən/",
+      "meaningVi": "sự điện khí hóa",
+      "definitionEn": "the process of powering systems with electricity",
+      "example": "Electrification of transport can reduce reliance on oil.",
+      "collocation": "electrification of transport",
+      "band": "7-8"
+    },
+    {
+      "word": "energy storage",
+      "pos": "noun",
+      "ipa": "/ˈenərdʒi ˈstɔːrɪdʒ/",
+      "meaningVi": "lưu trữ năng lượng",
+      "definitionEn": "capturing energy for later use",
+      "example": "Energy storage systems are crucial for integrating renewables.",
+      "collocation": "energy storage system",
+      "band": "7-8"
+    },
+    {
+      "word": "battery",
+      "pos": "noun",
+      "ipa": "/ˈbætəri/",
+      "meaningVi": "pin, ắc quy",
+      "definitionEn": "a device that stores chemical energy for electrical use",
+      "example": "Lithium-ion batteries are widely used in electric vehicles.",
+      "collocation": "battery storage",
+      "band": "5-6"
+    },
+    {
+      "word": "hydrogen",
+      "pos": "noun",
+      "ipa": "/ˈhaɪdrədʒən/",
+      "meaningVi": "hydro",
+      "definitionEn": "a clean fuel that produces water when burned",
+      "example": "Hydrogen fuel cells are a promising clean technology.",
+      "collocation": "hydrogen fuel",
+      "band": "7-8"
+    },
+    {
+      "word": "biogas",
+      "pos": "noun",
+      "ipa": "/ˈbaɪoʊɡæs/",
+      "meaningVi": "khí sinh học",
+      "definitionEn": "gas produced from organic waste, used as fuel",
+      "example": "Biogas from landfills can be used to generate electricity.",
+      "collocation": "biogas plant",
+      "band": "6-7"
+    },
+    {
+      "word": "solar farm",
+      "pos": "noun",
+      "ipa": "/ˈsoʊlər fɑːrm/",
+      "meaningVi": "trang trại năng lượng mặt trời",
+      "definitionEn": "a large area of solar panels used to generate electricity",
+      "example": "A large solar farm can power thousands of homes.",
+      "collocation": "build a solar farm",
+      "band": "6-7"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "language",
+  "name": "Language",
+  "nameVi": "Ngôn ngữ",
+  "blurb": "Học ngoại ngữ, tiếng mẹ đẻ, giao tiếp",
+  "words": [
+    {
+      "word": "acquisition",
+      "pos": "noun",
+      "ipa": "/ˌæk.wɪˈzɪʃ.ən/",
+      "meaningVi": "sự tiếp thu ngôn ngữ",
+      "definitionEn": "the process of learning or gaining a language, especially a second language",
+      "example": "The acquisition of a second language requires consistent practice and exposure.",
+      "collocation": "language acquisition",
+      "band": "6-7"
+    },
+    {
+      "word": "bilingual",
+      "pos": "adjective",
+      "ipa": "/baɪˈlɪŋ.ɡwəl/",
+      "meaningVi": "song ngữ",
+      "definitionEn": "able to speak two languages fluently",
+      "example": "Being bilingual can enhance cognitive abilities and job prospects.",
+      "collocation": "bilingual education",
+      "band": "6-7"
+    },
+    {
+      "word": "multilingual",
+      "pos": "adjective",
+      "ipa": "/ˌmʌl.tiˈlɪŋ.ɡwəl/",
+      "meaningVi": "đa ngữ",
+      "definitionEn": "able to speak several languages with some degree of proficiency",
+      "example": "Multilingual societies often have complex language policies to accommodate diversity.",
+      "collocation": "multilingual environment",
+      "band": "7-8"
+    },
+    {
+      "word": "fluency",
+      "pos": "noun",
+      "ipa": "/ˈfluː.ən.si/",
+      "meaningVi": "sự trôi chảy, lưu loát",
+      "definitionEn": "the ability to speak or write a language easily and accurately",
+      "example": "Achieving fluency in a foreign language is a long-term goal for most learners.",
+      "collocation": "oral fluency",
+      "band": "6-7"
+    },
+    {
+      "word": "proficiency",
+      "pos": "noun",
+      "ipa": "/prəˈfɪʃ.ən.si/",
+      "meaningVi": "trình độ thành thạo",
+      "definitionEn": "a high degree of skill in a language, often measured by tests",
+      "example": "Language proficiency tests measure reading, writing, listening, and speaking.",
+      "collocation": "language proficiency",
+      "band": "6-7"
+    },
+    {
+      "word": "immersion",
+      "pos": "noun",
+      "ipa": "/ɪˈmɜːr.ʒən/",
+      "meaningVi": "phương pháp nhúng ngôn ngữ",
+      "definitionEn": "a method of learning a language by being surrounded by it in a natural environment",
+      "example": "Immersion programs help learners acquire a language naturally through constant exposure.",
+      "collocation": "total immersion",
+      "band": "7-8"
+    },
+    {
+      "word": "dialect",
+      "pos": "noun",
+      "ipa": "/ˈdaɪ.ə.lekt/",
+      "meaningVi": "phương ngữ, thổ ngữ",
+      "definitionEn": "a regional or social variety of a language with distinct features",
+      "example": "The dialect spoken in this region differs significantly from the standard language.",
+      "collocation": "regional dialect",
+      "band": "5-6"
+    },
+    {
+      "word": "accent",
+      "pos": "noun",
+      "ipa": "/ˈæk.sənt/",
+      "meaningVi": "giọng điệu, trọng âm",
+      "definitionEn": "the way words are pronounced by a particular person or group",
+      "example": "Her accent reveals that she is from the southern part of the country.",
+      "collocation": "foreign accent",
+      "band": "5-6"
+    },
+    {
+      "word": "grammar",
+      "pos": "noun",
+      "ipa": "/ˈɡræm.ər/",
+      "meaningVi": "ngữ pháp",
+      "definitionEn": "the set of rules explaining how words are used in a language",
+      "example": "A solid understanding of grammar is essential for writing academic essays.",
+      "collocation": "grammar rules",
+      "band": "5-6"
+    },
+    {
+      "word": "vocabulary",
+      "pos": "noun",
+      "ipa": "/vəˈkæb.jə.ler.i/",
+      "meaningVi": "từ vựng",
+      "definitionEn": "the words known or used by a person or in a particular field",
+      "example": "Expanding your vocabulary is crucial for achieving a high score in IELTS.",
+      "collocation": "academic vocabulary",
+      "band": "5-6"
+    },
+    {
+      "word": "syntax",
+      "pos": "noun",
+      "ipa": "/ˈsɪn.tæks/",
+      "meaningVi": "cú pháp",
+      "definitionEn": "the arrangement of words and phrases to create well-formed sentences",
+      "example": "Syntax governs the structure of sentences in a language.",
+      "collocation": "syntactic structure",
+      "band": "7-8"
+    },
+    {
+      "word": "semantics",
+      "pos": "noun",
+      "ipa": "/sɪˈmæn.tɪks/",
+      "meaningVi": "ngữ nghĩa học",
+      "definitionEn": "the study of meaning in language, including words and sentences",
+      "example": "Semantics deals with the meaning of words and sentences.",
+      "collocation": "semantic meaning",
+      "band": "8+"
+    },
+    {
+      "word": "phonetics",
+      "pos": "noun",
+      "ipa": "/fəˈnet.ɪks/",
+      "meaningVi": "ngữ âm học",
+      "definitionEn": "the study of the sounds of human speech",
+      "example": "Phonetics studies the sounds of human speech, including articulation and acoustics.",
+      "collocation": "phonetic transcription",
+      "band": "7-8"
+    },
+    {
+      "word": "pragmatic",
+      "pos": "adjective",
+      "ipa": "/præɡˈmæt.ɪk/",
+      "meaningVi": "thuộc về dụng học",
+      "definitionEn": "relating to the use of language in social contexts and implied meanings",
+      "example": "Pragmatic competence involves understanding implied meanings in conversation.",
+      "collocation": "pragmatic skills",
+      "band": "8+"
+    },
+    {
+      "word": "discourse",
+      "pos": "noun",
+      "ipa": "/ˈdɪs.kɔːrs/",
+      "meaningVi": "diễn ngôn",
+      "definitionEn": "extended communication, written or spoken, beyond the sentence level",
+      "example": "Discourse analysis examines language use beyond the sentence level.",
+      "collocation": "academic discourse",
+      "band": "7-8"
+    },
+    {
+      "word": "literacy",
+      "pos": "noun",
+      "ipa": "/ˈlɪt.ər.ə.si/",
+      "meaningVi": "khả năng đọc viết, biết chữ",
+      "definitionEn": "the ability to read and write in a language",
+      "example": "Literacy rates have improved significantly due to educational reforms.",
+      "collocation": "digital literacy",
+      "band": "5-6"
+    },
+    {
+      "word": "oracy",
+      "pos": "noun",
+      "ipa": "/ˈɔːr.ə.si/",
+      "meaningVi": "khả năng nói và nghe",
+      "definitionEn": "the ability to express oneself fluently and to understand spoken language",
+      "example": "Oracy is as important as literacy in language learning.",
+      "collocation": "oracy skills",
+      "band": "7-8"
+    },
+    {
+      "word": "mother tongue",
+      "pos": "noun",
+      "ipa": "/ˈmʌð.ər tʌŋ/",
+      "meaningVi": "tiếng mẹ đẻ",
+      "definitionEn": "the first language learned from birth, usually the language of one's parents",
+      "example": "Maintaining one's mother tongue while learning a second language is beneficial.",
+      "collocation": "mother tongue influence",
+      "band": "5-6"
+    },
+    {
+      "word": "native speaker",
+      "pos": "noun",
+      "ipa": "/ˈneɪ.tɪv ˈspiː.kər/",
+      "meaningVi": "người bản ngữ",
+      "definitionEn": "a person who speaks a language as their first language",
+      "example": "Native speaker intuition is often used as a benchmark for correctness.",
+      "collocation": "native speaker competence",
+      "band": "5-6"
+    },
+    {
+      "word": "second language",
+      "pos": "noun",
+      "ipa": "/ˈsek.ənd ˈlæŋ.ɡwɪdʒ/",
+      "meaningVi": "ngôn ngữ thứ hai",
+      "definitionEn": "a language learned after the first language, often in a school or social setting",
+      "example": "Learning a second language can open up new career opportunities.",
+      "collocation": "second language acquisition",
+      "band": "5-6"
+    },
+    {
+      "word": "foreign language",
+      "pos": "noun",
+      "ipa": "/ˈfɒr.ɪn ˈlæŋ.ɡwɪdʒ/",
+      "meaningVi": "ngoại ngữ",
+      "definitionEn": "a language that is not commonly spoken in one's own country",
+      "example": "Studying a foreign language improves cognitive flexibility.",
+      "collocation": "foreign language learning",
+      "band": "5-6"
+    },
+    {
+      "word": "lingua franca",
+      "pos": "noun",
+      "ipa": "/ˌlɪŋ.ɡwə ˈfræŋ.kə/",
+      "meaningVi": "ngôn ngữ chung, ngôn ngữ cầu nối",
+      "definitionEn": "a language used for communication between speakers of different native languages",
+      "example": "English serves as a lingua franca in international business.",
+      "collocation": "global lingua franca",
+      "band": "7-8"
+    },
+    {
+      "word": "code-switching",
+      "pos": "noun",
+      "ipa": "/ˈkoʊd ˌswɪtʃ.ɪŋ/",
+      "meaningVi": "sự chuyển mã ngôn ngữ",
+      "definitionEn": "the practice of alternating between two or more languages in conversation",
+      "example": "Code-switching is common among bilingual speakers in multilingual communities.",
+      "collocation": "code-switching behavior",
+      "band": "7-8"
+    },
+    {
+      "word": "language barrier",
+      "pos": "noun",
+      "ipa": "/ˈlæŋ.ɡwɪdʒ ˈbær.i.ər/",
+      "meaningVi": "rào cản ngôn ngữ",
+      "definitionEn": "difficulty in communication caused by not sharing a common language",
+      "example": "Language barriers can hinder effective communication in multicultural teams.",
+      "collocation": "overcome language barriers",
+      "band": "5-6"
+    },
+    {
+      "word": "language policy",
+      "pos": "noun",
+      "ipa": "/ˈlæŋ.ɡwɪdʒ ˈpɒl.ə.si/",
+      "meaningVi": "chính sách ngôn ngữ",
+      "definitionEn": "a set of official decisions about the use of languages in a country or organization",
+      "example": "Language policy in education influences which languages are taught.",
+      "collocation": "national language policy",
+      "band": "7-8"
+    },
+    {
+      "word": "critical period",
+      "pos": "noun",
+      "ipa": "/ˈkrɪt.ɪ.kəl ˈpɪə.ri.əd/",
+      "meaningVi": "giai đoạn then chốt (trong tiếp thu ngôn ngữ)",
+      "definitionEn": "a time window in early life when language acquisition is most natural and effective",
+      "example": "The critical period hypothesis suggests that language acquisition is easier in childhood.",
+      "collocation": "critical period hypothesis",
+      "band": "8+"
+    },
+    {
+      "word": "competence",
+      "pos": "noun",
+      "ipa": "/ˈkɒm.pɪ.təns/",
+      "meaningVi": "năng lực ngôn ngữ (tiềm ẩn)",
+      "definitionEn": "the underlying knowledge of a language that allows a speaker to produce and understand sentences",
+      "example": "Linguistic competence refers to the innate knowledge of a language.",
+      "collocation": "communicative competence",
+      "band": "7-8"
+    },
+    {
+      "word": "performance",
+      "pos": "noun",
+      "ipa": "/pəˈfɔːr.məns/",
+      "meaningVi": "hành vi ngôn ngữ (thực tế)",
+      "definitionEn": "the actual use of language in real situations, influenced by memory and attention",
+      "example": "Language performance may be affected by anxiety or fatigue.",
+      "collocation": "language performance",
+      "band": "6-7"
+    },
+    {
+      "word": "register",
+      "pos": "noun",
+      "ipa": "/ˈredʒ.ɪ.stər/",
+      "meaningVi": "ngữ vực (phong cách ngôn ngữ theo ngữ cảnh)",
+      "definitionEn": "a variety of language used for a particular purpose or in a particular social setting",
+      "example": "Using an appropriate register is essential in formal writing.",
+      "collocation": "formal register",
+      "band": "7-8"
+    },
+    {
+      "word": "jargon",
+      "pos": "noun",
+      "ipa": "/ˈdʒɑːr.ɡən/",
+      "meaningVi": "biệt ngữ (chuyên ngành)",
+      "definitionEn": "specialized language used by a particular profession or group",
+      "example": "Medical jargon can be confusing for patients without a medical background.",
+      "collocation": "professional jargon",
+      "band": "6-7"
+    },
+    {
+      "word": "slang",
+      "pos": "noun",
+      "ipa": "/slæŋ/",
+      "meaningVi": "tiếng lóng",
+      "definitionEn": "very informal words and phrases used in casual speech, often restricted to a group",
+      "example": "Slang is often informal and may not be understood by older generations.",
+      "collocation": "youth slang",
+      "band": "5-6"
+    },
+    {
+      "word": "idiom",
+      "pos": "noun",
+      "ipa": "/ˈɪd.i.əm/",
+      "meaningVi": "thành ngữ",
+      "definitionEn": "a fixed expression with a meaning that cannot be derived from the individual words",
+      "example": "Idioms like 'break the ice' are culturally specific.",
+      "collocation": "idiomatic expression",
+      "band": "6-7"
+    },
+    {
+      "word": "euphemism",
+      "pos": "noun",
+      "ipa": "/ˈjuː.fə.mɪ.zəm/",
+      "meaningVi": "uyển ngữ, nói giảm nói tránh",
+      "definitionEn": "a mild or indirect word or phrase used to avoid harsh or unpleasant reality",
+      "example": "Euphemisms are used to soften the impact of sensitive topics.",
+      "collocation": "euphemistic language",
+      "band": "7-8"
+    },
+    {
+      "word": "connotation",
+      "pos": "noun",
+      "ipa": "/ˌkɒn.əˈteɪ.ʃən/",
+      "meaningVi": "hàm ý, sắc thái nghĩa",
+      "definitionEn": "the emotional or cultural association attached to a word beyond its literal meaning",
+      "example": "The word 'home' has positive connotations of warmth and safety.",
+      "collocation": "negative connotation",
+      "band": "6-7"
+    },
+    {
+      "word": "denotation",
+      "pos": "noun",
+      "ipa": "/ˌdiː.nəʊˈteɪ.ʃən/",
+      "meaningVi": "nghĩa đen, nghĩa gốc",
+      "definitionEn": "the literal or primary meaning of a word, as opposed to its connotations",
+      "example": "The denotation of 'dog' is a domesticated canine.",
+      "collocation": "literal denotation",
+      "band": "7-8"
+    },
+    {
+      "word": "inference",
+      "pos": "noun",
+      "ipa": "/ˈɪn.fər.əns/",
+      "meaningVi": "suy luận, hàm ý (từ ngữ cảnh)",
+      "definitionEn": "a conclusion reached on the basis of evidence and reasoning, not explicit statement",
+      "example": "Inference skills are important for reading comprehension.",
+      "collocation": "make an inference",
+      "band": "6-7"
+    },
+    {
+      "word": "translation",
+      "pos": "noun",
+      "ipa": "/trænsˈleɪ.ʃən/",
+      "meaningVi": "dịch thuật (viết)",
+      "definitionEn": "the process of converting written text from one language into another",
+      "example": "Translation requires not only linguistic knowledge but also cultural awareness.",
+      "collocation": "machine translation",
+      "band": "5-6"
+    },
+    {
+      "word": "interpretation",
+      "pos": "noun",
+      "ipa": "/ɪnˌtɜːr.prɪˈteɪ.ʃən/",
+      "meaningVi": "thông dịch (nói), diễn giải",
+      "definitionEn": "the oral conversion of spoken language from one language to another, or the act of explaining meaning",
+      "example": "Interpretation of poetry can vary among readers.",
+      "collocation": "simultaneous interpretation",
+      "band": "6-7"
+    },
+    {
+      "word": "bilingualism",
+      "pos": "noun",
+      "ipa": "/baɪˈlɪŋ.ɡwə.lɪ.zəm/",
+      "meaningVi": "hiện tượng song ngữ",
+      "definitionEn": "the ability to use two languages proficiently, or the state of a community using two languages",
+      "example": "Bilingualism has been linked to cognitive advantages in later life.",
+      "collocation": "additive bilingualism",
+      "band": "7-8"
+    },
+    {
+      "word": "multilingualism",
+      "pos": "noun",
+      "ipa": "/ˌmʌl.tiˈlɪŋ.ɡwə.lɪ.zəm/",
+      "meaningVi": "đa ngữ",
+      "definitionEn": "the ability to use multiple languages, or the presence of several languages in a society",
+      "example": "Multilingualism is common in many African countries.",
+      "collocation": "societal multilingualism",
+      "band": "7-8"
+    },
+    {
+      "word": "etymology",
+      "pos": "noun",
+      "ipa": "/ˌet.ɪˈmɒl.ə.dʒi/",
+      "meaningVi": "từ nguyên học",
+      "definitionEn": "the study of the origin and historical development of words",
+      "example": "Etymology traces the historical development of words across languages.",
+      "collocation": "etymological dictionary",
+      "band": "8+"
+    },
+    {
+      "word": "orthography",
+      "pos": "noun",
+      "ipa": "/ɔːrˈθɒɡ.rə.fi/",
+      "meaningVi": "chính tả, hệ thống chữ viết",
+      "definitionEn": "the conventional spelling system of a language",
+      "example": "English orthography is not always phonetic.",
+      "collocation": "orthographic system",
+      "band": "7-8"
+    },
+    {
+      "word": "morpheme",
+      "pos": "noun",
+      "ipa": "/ˈmɔːr.fiːm/",
+      "meaningVi": "hình vị",
+      "definitionEn": "the smallest meaningful unit in a language, such as 'un-' or 'table'",
+      "example": "Morphemes are the smallest units of meaning in a language.",
+      "collocation": "bound morpheme",
+      "band": "8+"
+    },
+    {
+      "word": "phoneme",
+      "pos": "noun",
+      "ipa": "/ˈfəʊ.niːm/",
+      "meaningVi": "âm vị",
+      "definitionEn": "the smallest unit of sound that distinguishes one word from another",
+      "example": "Phonemes are the smallest units of sound that distinguish meaning.",
+      "collocation": "phonemic awareness",
+      "band": "7-8"
+    },
+    {
+      "word": "allophone",
+      "pos": "noun",
+      "ipa": "/ˈæl.ə.fəʊn/",
+      "meaningVi": "tha âm vị",
+      "definitionEn": "a phonetic variant of a phoneme that does not change meaning",
+      "example": "Allophones are variations of a phoneme that do not change meaning.",
+      "collocation": "allophonic variation",
+      "band": "8+"
+    },
+    {
+      "word": "diglossia",
+      "pos": "noun",
+      "ipa": "/daɪˈɡlɒs.i.ə/",
+      "meaningVi": "song thể ngôn ngữ",
+      "definitionEn": "a situation where two varieties of the same language are used in different social contexts",
+      "example": "Diglossia refers to a situation where two varieties of the same language are used in different contexts.",
+      "collocation": "diglossic situation",
+      "band": "8+"
+    },
+    {
+      "word": "pidgin",
+      "pos": "noun",
+      "ipa": "/ˈpɪdʒ.ɪn/",
+      "meaningVi": "tiếng bồi (ngôn ngữ pha trộn)",
+      "definitionEn": "a simplified language that develops as a means of communication between groups with no common language",
+      "example": "Pidgins arise from contact between speakers of different languages.",
+      "collocation": "pidgin language",
+      "band": "7-8"
+    },
+    {
+      "word": "creole",
+      "pos": "noun",
+      "ipa": "/ˈkriː.oʊl/",
+      "meaningVi": "ngôn ngữ creole (ngôn ngữ lai trở thành bản ngữ)",
+      "definitionEn": "a stable natural language that develops from a pidgin and becomes the first language of a community",
+      "example": "Creole languages develop from pidgins and become native tongues.",
+      "collocation": "creole speaker",
+      "band": "7-8"
+    },
+    {
+      "word": "attrition",
+      "pos": "noun",
+      "ipa": "/əˈtrɪʃ.ən/",
+      "meaningVi": "sự hao mòn ngôn ngữ (mất dần khả năng ngôn ngữ)",
+      "definitionEn": "the gradual loss of a language skill or knowledge, especially when the language is not used",
+      "example": "Language attrition can occur when a speaker no longer uses their first language.",
+      "collocation": "first language attrition",
+      "band": "8+"
+    },
+    {
+      "word": "revitalization",
+      "pos": "noun",
+      "ipa": "/ˌriː.vaɪ.tə.laɪˈzeɪ.ʃən/",
+      "meaningVi": "sự phục hồi ngôn ngữ (đưa ngôn ngữ trở lại sử dụng)",
+      "definitionEn": "the process of bringing a language back into active use after it has declined",
+      "example": "Language revitalization efforts aim to revive endangered languages.",
+      "collocation": "language revitalization program",
+      "band": "8+"
+    }
+  ]
+}

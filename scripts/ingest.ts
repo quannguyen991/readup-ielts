@@ -138,12 +138,32 @@ async function main(): Promise<void> {
   await runSource('official', 'Đề chính thức IELTS / British Council', () =>
     fetchOfficialPractice(ctx),
   );
-  await runSource('headlines', 'Loại B — CHỈ tiêu đề + link gốc', async () => {
-    const results = await Promise.all(
-      HEADLINE_FEEDS.map((feed) => fetchFeed(feed, { ...ctx, limit: Math.min(args.limit, 6) })),
-    );
-    return mergeResults('Loại B', results);
-  });
+  /*
+    NGUỒN LOẠI B ĐÃ TẮT — không chạy mặc định nữa, phải gọi `--only headlines`.
+
+    Nguồn này chỉ lấy được tiêu đề của báo có bản quyền (BBC, Guardian,
+    Economist, NPR, ScienceDaily, Phys.org, CDC), nên bài nó tạo ra không đọc
+    được trong app: bấm vào là nhảy sang trang gốc, thêm mấy bước và một màn
+    quảng cáo, rồi mới tới bài. Trong thư viện toàn bài đọc trọn vẹn thì 41 bài
+    kiểu đó là 41 cái bẫy — nhìn y hệt bài đọc được cho tới lúc bấm vào.
+
+    KHÔNG thể sửa bằng cách cào toàn văn về: đó là báo có bản quyền, và ghi
+    nguồn không phải là giấy phép sao chép. `normalizeArticle` cũng chặn sẵn
+    (xem `pipeline.ts`, có test canh) — nên cách duy nhất còn lại là đừng thêm
+    những bài không đọc được vào thư viện ngay từ đầu.
+
+    Bài đã lỡ thêm cũng đã gỡ khỏi `index.json`. Link đề chính thức (Cambridge,
+    College Board, Khan Academy) thì GIỮ: nó gắn nhãn "Đề chính thức", không ai
+    mong đọc nguyên đề thi trong app, nên nó không lừa ai cả.
+  */
+  if (args.only.includes('headlines')) {
+    await runSource('headlines', 'Loại B — CHỈ tiêu đề + link gốc', async () => {
+      const results = await Promise.all(
+        HEADLINE_FEEDS.map((feed) => fetchFeed(feed, { ...ctx, limit: Math.min(args.limit, 6) })),
+      );
+      return mergeResults('Loại B', results);
+    });
+  }
 
   // Nguồn SAT. Khoá bắt đầu bằng `sat-` nên `--only sat` gọi được cả cụm.
   await runSource(

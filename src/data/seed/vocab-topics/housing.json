@@ -1,0 +1,508 @@
+{
+  "slug": "housing",
+  "name": "Housing",
+  "nameVi": "Nhà ở",
+  "blurb": "Kiến trúc, thuê mua, không gian sống",
+  "words": [
+    {
+      "word": "accommodation",
+      "pos": "noun",
+      "ipa": "/əˌkɒm.əˈdeɪ.ʃən/",
+      "meaningVi": "nơi ở, chỗ ở",
+      "definitionEn": "a place to live or stay",
+      "example": "The city offers various types of accommodation for students.",
+      "collocation": "affordable accommodation",
+      "band": "5-6"
+    },
+    {
+      "word": "amenities",
+      "pos": "noun",
+      "ipa": "/əˈmiː.nə.tiz/",
+      "meaningVi": "tiện nghi",
+      "definitionEn": "features that make a place comfortable",
+      "example": "The apartment complex has excellent amenities such as a pool and gym.",
+      "collocation": "modern amenities",
+      "band": "6-7"
+    },
+    {
+      "word": "architect",
+      "pos": "noun",
+      "ipa": "/ˈɑːr.kɪ.tekt/",
+      "meaningVi": "kiến trúc sư",
+      "definitionEn": "a person who designs buildings",
+      "example": "The architect designed a sustainable house with solar panels.",
+      "collocation": "lead architect",
+      "band": "6-7"
+    },
+    {
+      "word": "architecture",
+      "pos": "noun",
+      "ipa": "/ˈɑːr.kɪ.tek.tʃər/",
+      "meaningVi": "kiến trúc",
+      "definitionEn": "the style of building",
+      "example": "The architecture of the house is a blend of modern and traditional.",
+      "collocation": "modern architecture",
+      "band": "5-6"
+    },
+    {
+      "word": "balcony",
+      "pos": "noun",
+      "ipa": "/ˈbæl.kə.ni/",
+      "meaningVi": "ban công",
+      "definitionEn": "a platform projecting from the wall of a building",
+      "example": "The balcony offers a stunning view of the city skyline.",
+      "collocation": "private balcony",
+      "band": "5-6"
+    },
+    {
+      "word": "basement",
+      "pos": "noun",
+      "ipa": "/ˈbeɪs.mənt/",
+      "meaningVi": "tầng hầm",
+      "definitionEn": "the lowest floor of a building, partly or entirely below ground",
+      "example": "The basement was converted into a home gym.",
+      "collocation": "damp basement",
+      "band": "5-6"
+    },
+    {
+      "word": "conservatory",
+      "pos": "noun",
+      "ipa": "/kənˈsɜːr.və.tɔːr.i/",
+      "meaningVi": "phòng kính trồng cây",
+      "definitionEn": "a room with glass walls and roof for plants or relaxation",
+      "example": "They built a conservatory off the kitchen to enjoy natural light.",
+      "collocation": "glass conservatory",
+      "band": "7-8"
+    },
+    {
+      "word": "construction",
+      "pos": "noun",
+      "ipa": "/kənˈstrʌk.ʃən/",
+      "meaningVi": "xây dựng",
+      "definitionEn": "the process of building something",
+      "example": "Construction of the new housing estate began last month.",
+      "collocation": "construction industry",
+      "band": "6-7"
+    },
+    {
+      "word": "co-working space",
+      "pos": "noun",
+      "ipa": "/koʊ ˈwɜːr.kɪŋ speɪs/",
+      "meaningVi": "không gian làm việc chung",
+      "definitionEn": "a shared office environment for freelancers and remote workers",
+      "example": "Many freelancers prefer to rent a co-working space for networking.",
+      "collocation": "rent a co-working space",
+      "band": "7-8"
+    },
+    {
+      "word": "cottage",
+      "pos": "noun",
+      "ipa": "/ˈkɒt.ɪdʒ/",
+      "meaningVi": "nhà tranh, nhà nhỏ",
+      "definitionEn": "a small, cozy house, often in a rural area",
+      "example": "They rented a cottage in the countryside for a weekend getaway.",
+      "collocation": "quaint cottage",
+      "band": "5-6"
+    },
+    {
+      "word": "curb appeal",
+      "pos": "noun",
+      "ipa": "/kɜːrb əˈpiːl/",
+      "meaningVi": "sức hút từ bên ngoài",
+      "definitionEn": "the attractiveness of a property from the street",
+      "example": "Improving curb appeal can significantly increase property value.",
+      "collocation": "enhance curb appeal",
+      "band": "7-8"
+    },
+    {
+      "word": "deposit",
+      "pos": "noun",
+      "ipa": "/dɪˈpɒz.ɪt/",
+      "meaningVi": "tiền đặt cọc",
+      "definitionEn": "money paid upfront to secure a rental or purchase",
+      "example": "The tenant paid a security deposit before moving in.",
+      "collocation": "refundable deposit",
+      "band": "6-7"
+    },
+    {
+      "word": "detached house",
+      "pos": "noun",
+      "ipa": "/dɪˈtætʃt haʊs/",
+      "meaningVi": "nhà độc lập",
+      "definitionEn": "a house that is not attached to any other building",
+      "example": "They prefer a detached house for more privacy.",
+      "collocation": "spacious detached house",
+      "band": "5-6"
+    },
+    {
+      "word": "dwelling",
+      "pos": "noun",
+      "ipa": "/ˈdwel.ɪŋ/",
+      "meaningVi": "nơi cư trú",
+      "definitionEn": "a place where people live",
+      "example": "The dwelling was poorly maintained and needed repairs.",
+      "collocation": "residential dwelling",
+      "band": "6-7"
+    },
+    {
+      "word": "energy-efficient",
+      "pos": "adj",
+      "ipa": "/ˈen.ər.dʒi ɪˈfɪʃ.ənt/",
+      "meaningVi": "tiết kiệm năng lượng",
+      "definitionEn": "using less energy to reduce costs and environmental impact",
+      "example": "The house has energy-efficient windows and insulation.",
+      "collocation": "energy-efficient appliances",
+      "band": "7-8"
+    },
+    {
+      "word": "estate agent",
+      "pos": "noun",
+      "ipa": "/ɪˈsteɪt ˌeɪ.dʒənt/",
+      "meaningVi": "nhân viên bất động sản",
+      "definitionEn": "a person who sells and rents properties",
+      "example": "The estate agent showed us several houses in the area.",
+      "collocation": "contact an estate agent",
+      "band": "6-7"
+    },
+    {
+      "word": "exterior",
+      "pos": "noun",
+      "ipa": "/ɪkˈstɪə.ri.ər/",
+      "meaningVi": "ngoại thất",
+      "definitionEn": "the outside of a building",
+      "example": "The exterior of the building needs repainting after the storm.",
+      "collocation": "exterior design",
+      "band": "6-7"
+    },
+    {
+      "word": "facade",
+      "pos": "noun",
+      "ipa": "/fəˈsɑːd/",
+      "meaningVi": "mặt tiền",
+      "definitionEn": "the front of a building, often decorative",
+      "example": "The facade was decorated with intricate ceramic tiles.",
+      "collocation": "ornate facade",
+      "band": "7-8"
+    },
+    {
+      "word": "floor plan",
+      "pos": "noun",
+      "ipa": "/flɔːr plæn/",
+      "meaningVi": "sơ đồ tầng",
+      "definitionEn": "a diagram showing the layout of rooms in a building",
+      "example": "The floor plan shows an open-plan living area and two bedrooms.",
+      "collocation": "detailed floor plan",
+      "band": "5-6"
+    },
+    {
+      "word": "foreclose",
+      "pos": "verb",
+      "ipa": "/fɔːrˈkloʊz/",
+      "meaningVi": "tịch thu nhà (vì không trả nợ)",
+      "definitionEn": "to take possession of a property when the owner fails to repay a mortgage",
+      "example": "The bank foreclosed on their home after six months of missed payments.",
+      "collocation": "foreclose on a property",
+      "band": "8+"
+    },
+    {
+      "word": "furnished",
+      "pos": "adj",
+      "ipa": "/ˈfɜːr.nɪʃt/",
+      "meaningVi": "có nội thất",
+      "definitionEn": "containing furniture such as beds, tables, and chairs",
+      "example": "The apartment is fully furnished, so you can move in immediately.",
+      "collocation": "furnished flat",
+      "band": "5-6"
+    },
+    {
+      "word": "gated community",
+      "pos": "noun",
+      "ipa": "/ˈɡeɪ.tɪd kəˈmjuː.nə.ti/",
+      "meaningVi": "khu dân cư có cổng bảo vệ",
+      "definitionEn": "a residential area with a controlled entrance for security",
+      "example": "They live in a gated community for safety and privacy.",
+      "collocation": "exclusive gated community",
+      "band": "7-8"
+    },
+    {
+      "word": "gentrification",
+      "pos": "noun",
+      "ipa": "/ˌdʒen.trɪ.fɪˈkeɪ.ʃən/",
+      "meaningVi": "sự chỉnh trang đô thị (làm tăng giá trị khu phố)",
+      "definitionEn": "the process of renovating a neighborhood to attract wealthier residents",
+      "example": "Gentrification often displaces long-term residents due to rising rents.",
+      "collocation": "rapid gentrification",
+      "band": "8+"
+    },
+    {
+      "word": "habitable",
+      "pos": "adj",
+      "ipa": "/ˈhæb.ɪ.tə.bəl/",
+      "meaningVi": "có thể ở được",
+      "definitionEn": "suitable for living in",
+      "example": "The house is not habitable without major repairs to the roof.",
+      "collocation": "habitable condition",
+      "band": "6-7"
+    },
+    {
+      "word": "high-rise",
+      "pos": "noun",
+      "ipa": "/ˈhaɪ raɪz/",
+      "meaningVi": "nhà cao tầng",
+      "definitionEn": "a tall building with many floors",
+      "example": "The high-rise offers panoramic views of the entire city.",
+      "collocation": "high-rise apartment",
+      "band": "5-6"
+    },
+    {
+      "word": "homeownership",
+      "pos": "noun",
+      "ipa": "/ˈhoʊm.oʊ.nər.ʃɪp/",
+      "meaningVi": "quyền sở hữu nhà",
+      "definitionEn": "the state of owning a home",
+      "example": "The government introduces policies to promote homeownership among young people.",
+      "collocation": "rate of homeownership",
+      "band": "7-8"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪn.frə.strʌk.tʃər/",
+      "meaningVi": "cơ sở hạ tầng",
+      "definitionEn": "basic facilities needed for a society to function, such as roads and utilities",
+      "example": "The area lacks adequate infrastructure for public transport.",
+      "collocation": "urban infrastructure",
+      "band": "6-7"
+    },
+    {
+      "word": "interior",
+      "pos": "noun",
+      "ipa": "/ɪnˈtɪə.ri.ər/",
+      "meaningVi": "nội thất",
+      "definitionEn": "the inside of a building",
+      "example": "The interior was decorated with taste and attention to detail.",
+      "collocation": "interior design",
+      "band": "6-7"
+    },
+    {
+      "word": "landlord",
+      "pos": "noun",
+      "ipa": "/ˈlænd.lɔːrd/",
+      "meaningVi": "chủ nhà cho thuê",
+      "definitionEn": "a person who owns and rents out property",
+      "example": "The landlord increased the rent without notice.",
+      "collocation": "responsible landlord",
+      "band": "5-6"
+    },
+    {
+      "word": "lease",
+      "pos": "noun",
+      "ipa": "/liːs/",
+      "meaningVi": "hợp đồng thuê",
+      "definitionEn": "a contract specifying the terms of renting a property",
+      "example": "They signed a one-year lease with an option to renew.",
+      "collocation": "lease agreement",
+      "band": "6-7"
+    },
+    {
+      "word": "loft",
+      "pos": "noun",
+      "ipa": "/lɒft/",
+      "meaningVi": "gác xép, căn hộ áp mái",
+      "definitionEn": "a large, open room under a roof, often converted into a living space",
+      "example": "The loft was converted into a studio apartment.",
+      "collocation": "loft conversion",
+      "band": "6-7"
+    },
+    {
+      "word": "maintenance",
+      "pos": "noun",
+      "ipa": "/ˈmeɪn.tən.əns/",
+      "meaningVi": "bảo trì",
+      "definitionEn": "the process of keeping a property in good condition",
+      "example": "Regular maintenance is essential to avoid costly repairs.",
+      "collocation": "property maintenance",
+      "band": "6-7"
+    },
+    {
+      "word": "mortgage",
+      "pos": "noun",
+      "ipa": "/ˈmɔːr.ɡɪdʒ/",
+      "meaningVi": "thế chấp, vay mua nhà",
+      "definitionEn": "a loan from a bank to buy a property",
+      "example": "They took out a mortgage to buy a house in the suburbs.",
+      "collocation": "mortgage payment",
+      "band": "6-7"
+    },
+    {
+      "word": "neighbourhood",
+      "pos": "noun",
+      "ipa": "/ˈneɪ.bər.hʊd/",
+      "meaningVi": "khu phố",
+      "definitionEn": "a district or community within a larger city",
+      "example": "The neighbourhood is very quiet and family-friendly.",
+      "collocation": "friendly neighbourhood",
+      "band": "5-6"
+    },
+    {
+      "word": "occupancy",
+      "pos": "noun",
+      "ipa": "/ˈɒk.jə.pən.si/",
+      "meaningVi": "tình trạng cư trú",
+      "definitionEn": "the act of living in or using a property",
+      "example": "The occupancy rate of the building has increased recently.",
+      "collocation": "occupancy permit",
+      "band": "7-8"
+    },
+    {
+      "word": "open-plan",
+      "pos": "adj",
+      "ipa": "/ˈoʊ.pən plæn/",
+      "meaningVi": "thiết kế mở",
+      "definitionEn": "having few internal walls to create a spacious feel",
+      "example": "The open-plan kitchen and living room are ideal for entertaining.",
+      "collocation": "open-plan living",
+      "band": "6-7"
+    },
+    {
+      "word": "penthouse",
+      "pos": "noun",
+      "ipa": "/ˈpent.haʊs/",
+      "meaningVi": "căn hộ áp mái cao cấp",
+      "definitionEn": "an apartment on the top floor of a building, often luxurious",
+      "example": "The penthouse has a private terrace and stunning views.",
+      "collocation": "luxury penthouse",
+      "band": "7-8"
+    },
+    {
+      "word": "property",
+      "pos": "noun",
+      "ipa": "/ˈprɒp.ər.ti/",
+      "meaningVi": "bất động sản",
+      "definitionEn": "a building or land owned by someone",
+      "example": "The property is worth a lot after renovation.",
+      "collocation": "property value",
+      "band": "5-6"
+    },
+    {
+      "word": "renovation",
+      "pos": "noun",
+      "ipa": "/ˌren.əˈveɪ.ʃən/",
+      "meaningVi": "cải tạo, tu sửa",
+      "definitionEn": "the act of restoring or improving a building",
+      "example": "The renovation took three months and cost a fortune.",
+      "collocation": "home renovation",
+      "band": "6-7"
+    },
+    {
+      "word": "rent",
+      "pos": "verb",
+      "ipa": "/rent/",
+      "meaningVi": "thuê nhà",
+      "definitionEn": "to pay to live in a property owned by someone else",
+      "example": "They rent an apartment in the city center.",
+      "collocation": "rent a flat",
+      "band": "5-6"
+    },
+    {
+      "word": "rental",
+      "pos": "adj",
+      "ipa": "/ˈren.təl/",
+      "meaningVi": "cho thuê",
+      "definitionEn": "relating to renting a property",
+      "example": "The rental market is highly competitive in this city.",
+      "collocation": "rental property",
+      "band": "5-6"
+    },
+    {
+      "word": "residence",
+      "pos": "noun",
+      "ipa": "/ˈrez.ɪ.dəns/",
+      "meaningVi": "nơi cư trú",
+      "definitionEn": "a place where someone lives",
+      "example": "The residence is near the park and has a garden.",
+      "collocation": "primary residence",
+      "band": "6-7"
+    },
+    {
+      "word": "residential",
+      "pos": "adj",
+      "ipa": "/ˌrez.ɪˈden.ʃəl/",
+      "meaningVi": "thuộc khu dân cư",
+      "definitionEn": "suitable for living in, rather than business",
+      "example": "The area is mainly residential with few shops.",
+      "collocation": "residential area",
+      "band": "5-6"
+    },
+    {
+      "word": "security deposit",
+      "pos": "noun",
+      "ipa": "/sɪˈkjʊr.ə.ti dɪˈpɒz.ɪt/",
+      "meaningVi": "tiền đặt cọc bảo đảm",
+      "definitionEn": "money held by the landlord to cover damages",
+      "example": "They paid a security deposit when moving in, which was refunded later.",
+      "collocation": "return the security deposit",
+      "band": "6-7"
+    },
+    {
+      "word": "semi-detached",
+      "pos": "adj",
+      "ipa": "/ˌsem.i dɪˈtætʃt/",
+      "meaningVi": "nhà bán liền kề",
+      "definitionEn": "attached to another house on one side",
+      "example": "They live in a semi-detached house with a shared wall.",
+      "collocation": "semi-detached home",
+      "band": "5-6"
+    },
+    {
+      "word": "skyscraper",
+      "pos": "noun",
+      "ipa": "/ˈskaɪ.skreɪ.pər/",
+      "meaningVi": "nhà chọc trời",
+      "definitionEn": "a very tall building with many floors",
+      "example": "The city skyline is filled with skyscrapers of glass and steel.",
+      "collocation": "towering skyscraper",
+      "band": "6-7"
+    },
+    {
+      "word": "studio",
+      "pos": "noun",
+      "ipa": "/ˈstjuː.di.oʊ/",
+      "meaningVi": "căn hộ studio",
+      "definitionEn": "a one-room apartment with a combined living and sleeping area",
+      "example": "She lives in a small studio in the university district.",
+      "collocation": "studio apartment",
+      "band": "5-6"
+    },
+    {
+      "word": "suburban",
+      "pos": "adj",
+      "ipa": "/səˈbɜːr.bən/",
+      "meaningVi": "ngoại ô",
+      "definitionEn": "relating to a suburb, a residential area outside a city",
+      "example": "They prefer suburban living for its peace and quiet.",
+      "collocation": "suburban area",
+      "band": "5-6"
+    },
+    {
+      "word": "tenant",
+      "pos": "noun",
+      "ipa": "/ˈten.ənt/",
+      "meaningVi": "người thuê nhà",
+      "definitionEn": "a person who rents a property from a landlord",
+      "example": "The tenant complained about the lack of hot water.",
+      "collocation": "long-term tenant",
+      "band": "6-7"
+    },
+    {
+      "word": "zoning",
+      "pos": "noun",
+      "ipa": "/ˈzoʊ.nɪŋ/",
+      "meaningVi": "quy hoạch phân khu",
+      "definitionEn": "the regulation of land use by local authorities",
+      "example": "Zoning laws restrict the construction of tall buildings in residential areas.",
+      "collocation": "zoning regulations",
+      "band": "8+"
+    }
+  ]
+}

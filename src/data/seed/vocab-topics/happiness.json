@@ -1,0 +1,508 @@
+{
+  "slug": "happiness",
+  "name": "Happiness and Wellbeing",
+  "nameVi": "Hạnh phúc",
+  "blurb": "Cảm xúc, cân bằng, áp lực tinh thần",
+  "words": [
+    {
+      "word": "contentment",
+      "pos": "noun",
+      "ipa": "/kənˈtentmənt/",
+      "meaningVi": "sự hài lòng, mãn nguyện",
+      "definitionEn": "A state of happiness and satisfaction with what one has.",
+      "example": "Many people mistakenly believe that wealth automatically leads to a lifelong sense of contentment.",
+      "collocation": "find contentment in",
+      "band": "6-7"
+    },
+    {
+      "word": "fulfillment",
+      "pos": "noun",
+      "ipa": "/fʊlˈfɪlmənt/",
+      "meaningVi": "sự thỏa mãn, viên mãn",
+      "definitionEn": "The feeling of being satisfied because you have achieved something meaningful.",
+      "example": "Pursuing a career that aligns with personal values often brings a deeper sense of fulfillment.",
+      "collocation": "achieve fulfillment",
+      "band": "6-7"
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "ipa": "/rɪˈzɪliəns/",
+      "meaningVi": "khả năng phục hồi, sự kiên cường",
+      "definitionEn": "The capacity to recover quickly from difficulties or adversity.",
+      "example": "Building resilience is essential for maintaining mental well-being in the face of life's challenges.",
+      "collocation": "build resilience",
+      "band": "7-8"
+    },
+    {
+      "word": "optimism",
+      "pos": "noun",
+      "ipa": "/ˈɒptɪmɪzəm/",
+      "meaningVi": "sự lạc quan",
+      "definitionEn": "Hopefulness and confidence about the future or the success of something.",
+      "example": "Research shows that cultivating optimism can significantly improve one's overall happiness and health.",
+      "collocation": "cultivate optimism",
+      "band": "6-7"
+    },
+    {
+      "word": "mindfulness",
+      "pos": "noun",
+      "ipa": "/ˈmaɪnd.fəl.nəs/",
+      "meaningVi": "chánh niệm, sự tỉnh thức",
+      "definitionEn": "The practice of being fully present and engaged in the moment without judgment.",
+      "example": "Practicing mindfulness through meditation has been shown to reduce stress and enhance emotional well-being.",
+      "collocation": "practice mindfulness",
+      "band": "7-8"
+    },
+    {
+      "word": "gratitude",
+      "pos": "noun",
+      "ipa": "/ˈɡrætɪtjuːd/",
+      "meaningVi": "lòng biết ơn",
+      "definitionEn": "The quality of being thankful and ready to show appreciation for kindness.",
+      "example": "Expressing gratitude regularly is a simple yet powerful way to boost long-term happiness.",
+      "collocation": "express gratitude",
+      "band": "6-7"
+    },
+    {
+      "word": "serenity",
+      "pos": "noun",
+      "ipa": "/səˈrenəti/",
+      "meaningVi": "sự thanh thản, bình yên",
+      "definitionEn": "The state of being calm, peaceful, and untroubled.",
+      "example": "Spending time in nature often brings a profound sense of serenity that is hard to achieve in urban environments.",
+      "collocation": "sense of serenity",
+      "band": "7-8"
+    },
+    {
+      "word": "tranquility",
+      "pos": "noun",
+      "ipa": "/træŋˈkwɪlɪti/",
+      "meaningVi": "sự yên tĩnh, tĩnh lặng",
+      "definitionEn": "The quality of being calm and without disturbance.",
+      "example": "The tranquility of the countryside provides an ideal setting for reflection and mental recovery.",
+      "collocation": "peace and tranquility",
+      "band": "7-8"
+    },
+    {
+      "word": "euphoria",
+      "pos": "noun",
+      "ipa": "/juːˈfɔːriə/",
+      "meaningVi": "cảm giác hưng phấn, phấn khích tột độ",
+      "definitionEn": "An intense feeling of happiness and excitement.",
+      "example": "Winning the championship triggered a temporary state of euphoria among the team members.",
+      "collocation": "state of euphoria",
+      "band": "7-8"
+    },
+    {
+      "word": "bliss",
+      "pos": "noun",
+      "ipa": "/blɪs/",
+      "meaningVi": "niềm hạnh phúc tuyệt đối, cực lạc",
+      "definitionEn": "Perfect happiness; great joy.",
+      "example": "The couple described their honeymoon on the secluded island as pure bliss.",
+      "collocation": "sheer bliss",
+      "band": "7-8"
+    },
+    {
+      "word": "satisfaction",
+      "pos": "noun",
+      "ipa": "/ˌsætɪsˈfækʃn/",
+      "meaningVi": "sự hài lòng, thỏa mãn",
+      "definitionEn": "The feeling of pleasure or achievement when something meets your expectations or needs.",
+      "example": "Job satisfaction is closely linked to employee productivity and mental health.",
+      "collocation": "job satisfaction",
+      "band": "5-6"
+    },
+    {
+      "word": "flourishing",
+      "pos": "noun",
+      "ipa": "/ˈflʌrɪʃɪŋ/",
+      "meaningVi": "sự phát triển thịnh vượng, hưng thịnh",
+      "definitionEn": "The state of thriving in life, both emotionally and psychologically.",
+      "example": "Positive psychology focuses on the factors that allow individuals and communities to flourish.",
+      "collocation": "human flourishing",
+      "band": "8+"
+    },
+    {
+      "word": "eudaimonia",
+      "pos": "noun",
+      "ipa": "/juːdaɪˈməʊniə/",
+      "meaningVi": "eudaimonia (hạnh phúc đích thực qua sống có đức hạnh)",
+      "definitionEn": "A Greek concept of happiness achieved through living a life of virtue and meaning.",
+      "example": "Aristotle argued that eudaimonia is the ultimate goal of human existence, not merely a fleeting emotion.",
+      "collocation": "pursuit of eudaimonia",
+      "band": "8+"
+    },
+    {
+      "word": "hedonic",
+      "pos": "adjective",
+      "ipa": "/hɪˈdɒnɪk/",
+      "meaningVi": "thuộc về khoái lạc, hưởng thụ",
+      "definitionEn": "Relating to pleasure or the pursuit of pleasure.",
+      "example": "The hedonic treadmill suggests that people quickly adapt to positive changes, making lasting happiness elusive.",
+      "collocation": "hedonic adaptation",
+      "band": "8+"
+    },
+    {
+      "word": "meaningfulness",
+      "pos": "noun",
+      "ipa": "/ˈmiːnɪŋfəlnəs/",
+      "meaningVi": "sự có ý nghĩa",
+      "definitionEn": "The quality of having significance or purpose in life.",
+      "example": "A sense of meaningfulness often contributes more to long-term well-being than transient pleasures.",
+      "collocation": "sense of meaningfulness",
+      "band": "8+"
+    },
+    {
+      "word": "purpose",
+      "pos": "noun",
+      "ipa": "/ˈpɜːpəs/",
+      "meaningVi": "mục đích, ý nghĩa cuộc sống",
+      "definitionEn": "A strong sense of direction or intention that gives life meaning.",
+      "example": "Having a clear purpose in life has been linked to greater resilience and lower rates of depression.",
+      "collocation": "sense of purpose",
+      "band": "6-7"
+    },
+    {
+      "word": "self-actualization",
+      "pos": "noun",
+      "ipa": "/ˌself ˌæktʃuəlaɪˈzeɪʃn/",
+      "meaningVi": "sự tự hiện thực hóa, hoàn thiện bản thân",
+      "definitionEn": "The realization of one's full potential and abilities.",
+      "example": "According to Maslow, self-actualization represents the highest level of psychological development.",
+      "collocation": "reach self-actualization",
+      "band": "8+"
+    },
+    {
+      "word": "stress",
+      "pos": "noun",
+      "ipa": "/stres/",
+      "meaningVi": "căng thẳng, áp lực",
+      "definitionEn": "A state of mental or emotional strain resulting from adverse or demanding circumstances.",
+      "example": "Chronic stress can significantly impair both mental and physical well-being.",
+      "collocation": "cope with stress",
+      "band": "5-6"
+    },
+    {
+      "word": "anxiety",
+      "pos": "noun",
+      "ipa": "/æŋˈzaɪəti/",
+      "meaningVi": "lo âu, lo lắng",
+      "definitionEn": "A feeling of worry, nervousness, or unease about something with an uncertain outcome.",
+      "example": "The prevalence of anxiety disorders has increased dramatically in modern societies.",
+      "collocation": "suffer from anxiety",
+      "band": "5-6"
+    },
+    {
+      "word": "burnout",
+      "pos": "noun",
+      "ipa": "/ˈbɜːnaʊt/",
+      "meaningVi": "kiệt sức, cháy sạch (tinh thần)",
+      "definitionEn": "Physical or mental collapse caused by overwork or stress.",
+      "example": "Employee burnout is a major concern in the modern workplace, often leading to decreased productivity.",
+      "collocation": "experience burnout",
+      "band": "6-7"
+    },
+    {
+      "word": "depression",
+      "pos": "noun",
+      "ipa": "/dɪˈpreʃn/",
+      "meaningVi": "trầm cảm",
+      "definitionEn": "A serious medical condition involving persistent sadness, loss of interest, and low mood.",
+      "example": "Depression is one of the most common mental health disorders worldwide.",
+      "collocation": "clinical depression",
+      "band": "5-6"
+    },
+    {
+      "word": "coping",
+      "pos": "noun",
+      "ipa": "/ˈkəʊpɪŋ/",
+      "meaningVi": "sự đối phó, ứng phó",
+      "definitionEn": "The process of dealing with stressful situations effectively.",
+      "example": "Developing healthy coping mechanisms is crucial for maintaining psychological well-being.",
+      "collocation": "coping mechanism",
+      "band": "7-8"
+    },
+    {
+      "word": "meditation",
+      "pos": "noun",
+      "ipa": "/ˌmedɪˈteɪʃn/",
+      "meaningVi": "thiền, thiền định",
+      "definitionEn": "A practice of focusing the mind to achieve a state of calm and clarity.",
+      "example": "Regular meditation has been proven to reduce symptoms of anxiety and improve emotional regulation.",
+      "collocation": "practice meditation",
+      "band": "6-7"
+    },
+    {
+      "word": "work-life balance",
+      "pos": "noun phrase",
+      "ipa": "/ˌwɜːk laɪf ˈbæləns/",
+      "meaningVi": "cân bằng công việc và cuộc sống",
+      "definitionEn": "The equilibrium between professional responsibilities and personal life.",
+      "example": "Many companies are now implementing policies to improve employees' work-life balance.",
+      "collocation": "maintain work-life balance",
+      "band": "6-7"
+    },
+    {
+      "word": "social support",
+      "pos": "noun phrase",
+      "ipa": "/ˈsəʊʃəl səˈpɔːt/",
+      "meaningVi": "hỗ trợ xã hội",
+      "definitionEn": "The assistance and comfort provided by family, friends, or community.",
+      "example": "Strong social support networks are a key predictor of life satisfaction and happiness.",
+      "collocation": "rely on social support",
+      "band": "6-7"
+    },
+    {
+      "word": "positive psychology",
+      "pos": "noun phrase",
+      "ipa": "/ˈpɒzətɪv saɪˈkɒlədʒi/",
+      "meaningVi": "tâm lý học tích cực",
+      "definitionEn": "The branch of psychology that focuses on strengths, virtues, and factors that enable individuals to thrive.",
+      "example": "Positive psychology emphasizes the importance of gratitude and resilience in achieving well-being.",
+      "collocation": "field of positive psychology",
+      "band": "7-8"
+    },
+    {
+      "word": "altruism",
+      "pos": "noun",
+      "ipa": "/ˈæltruɪzəm/",
+      "meaningVi": "lòng vị tha, sự hy sinh vì người khác",
+      "definitionEn": "Selfless concern for the well-being of others.",
+      "example": "Acts of altruism not only benefit the recipient but also enhance the giver's sense of happiness.",
+      "collocation": "act of altruism",
+      "band": "7-8"
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "ipa": "/ˈempəθi/",
+      "meaningVi": "sự đồng cảm, thấu hiểu cảm xúc",
+      "definitionEn": "The ability to understand and share the feelings of another person.",
+      "example": "Empathy is a crucial skill for building strong interpersonal relationships and emotional well-being.",
+      "collocation": "show empathy",
+      "band": "6-7"
+    },
+    {
+      "word": "compassion",
+      "pos": "noun",
+      "ipa": "/kəmˈpæʃn/",
+      "meaningVi": "lòng trắc ẩn, từ bi",
+      "definitionEn": "Sympathetic concern for the suffering of others, combined with a desire to help.",
+      "example": "Compassion towards oneself and others is a cornerstone of psychological resilience.",
+      "collocation": "compassion for others",
+      "band": "7-8"
+    },
+    {
+      "word": "self-esteem",
+      "pos": "noun",
+      "ipa": "/ˌself ɪˈstiːm/",
+      "meaningVi": "lòng tự trọng, tự đánh giá cao bản thân",
+      "definitionEn": "Confidence in one's own worth or abilities.",
+      "example": "Low self-esteem is often associated with a higher risk of depression and anxiety.",
+      "collocation": "boost self-esteem",
+      "band": "5-6"
+    },
+    {
+      "word": "confidence",
+      "pos": "noun",
+      "ipa": "/ˈkɒnfɪdəns/",
+      "meaningVi": "sự tự tin",
+      "definitionEn": "A feeling of self-assurance arising from one's appreciation of one's own abilities or qualities.",
+      "example": "Building confidence in one's own abilities can significantly improve overall well-being.",
+      "collocation": "gain confidence",
+      "band": "5-6"
+    },
+    {
+      "word": "motivation",
+      "pos": "noun",
+      "ipa": "/ˌməʊtɪˈveɪʃn/",
+      "meaningVi": "động lực",
+      "definitionEn": "The desire or willingness to do something; drive.",
+      "example": "Intrinsic motivation, such as personal growth, leads to more sustainable happiness than external rewards.",
+      "collocation": "intrinsic motivation",
+      "band": "6-7"
+    },
+    {
+      "word": "engagement",
+      "pos": "noun",
+      "ipa": "/ɪnˈɡeɪdʒmənt/",
+      "meaningVi": "sự gắn kết, tham gia sâu sắc",
+      "definitionEn": "The state of being deeply involved and absorbed in an activity.",
+      "example": "Employee engagement is strongly correlated with higher job satisfaction and lower turnover.",
+      "collocation": "employee engagement",
+      "band": "7-8"
+    },
+    {
+      "word": "flow",
+      "pos": "noun",
+      "ipa": "/fləʊ/",
+      "meaningVi": "trạng thái dòng chảy (hoàn toàn tập trung)",
+      "definitionEn": "A mental state of complete absorption and enjoyment in an activity.",
+      "example": "Skilled athletes often experience flow during competition, which enhances their performance and well-being.",
+      "collocation": "achieve flow",
+      "band": "8+"
+    },
+    {
+      "word": "subjective well-being",
+      "pos": "noun phrase",
+      "ipa": "/səbˈdʒektɪv wel ˈbiːɪŋ/",
+      "meaningVi": "hạnh phúc chủ quan",
+      "definitionEn": "An individual's personal assessment of their own happiness and life satisfaction.",
+      "example": "Subjective well-being is often measured by surveys that ask people to rate their life satisfaction.",
+      "collocation": "measure subjective well-being",
+      "band": "8+"
+    },
+    {
+      "word": "life satisfaction",
+      "pos": "noun phrase",
+      "ipa": "/laɪf ˌsætɪsˈfækʃn/",
+      "meaningVi": "sự hài lòng với cuộc sống",
+      "definitionEn": "A global evaluation of one's life as a whole, based on personal criteria.",
+      "example": "Life satisfaction tends to be higher in societies with strong social safety nets and low inequality.",
+      "collocation": "overall life satisfaction",
+      "band": "6-7"
+    },
+    {
+      "word": "mental health",
+      "pos": "noun phrase",
+      "ipa": "/ˈmentl helθ/",
+      "meaningVi": "sức khỏe tâm thần",
+      "definitionEn": "A person's condition with regard to their psychological and emotional well-being.",
+      "example": "Governments are increasingly investing in mental health services to address rising rates of depression.",
+      "collocation": "mental health issues",
+      "band": "5-6"
+    },
+    {
+      "word": "psychological well-being",
+      "pos": "noun phrase",
+      "ipa": "/ˌsaɪkəˈlɒdʒɪkl wel ˈbiːɪŋ/",
+      "meaningVi": "sức khỏe tâm lý",
+      "definitionEn": "A state of positive mental health, including self-acceptance, purpose, and personal growth.",
+      "example": "Psychological well-being goes beyond mere happiness and includes aspects like autonomy and mastery.",
+      "collocation": "enhance psychological well-being",
+      "band": "7-8"
+    },
+    {
+      "word": "emotional intelligence",
+      "pos": "noun phrase",
+      "ipa": "/ɪˈməʊʃənl ɪnˈtelɪdʒəns/",
+      "meaningVi": "trí tuệ cảm xúc",
+      "definitionEn": "The ability to perceive, control, and evaluate emotions in oneself and others.",
+      "example": "High emotional intelligence helps individuals manage stress and build stronger relationships.",
+      "collocation": "develop emotional intelligence",
+      "band": "7-8"
+    },
+    {
+      "word": "adversity",
+      "pos": "noun",
+      "ipa": "/ədˈvɜːsəti/",
+      "meaningVi": "nghịch cảnh, khó khăn",
+      "definitionEn": "Difficulties or misfortune that test one's character and resilience.",
+      "example": "Overcoming adversity often leads to personal growth and a deeper appreciation for life.",
+      "collocation": "face adversity",
+      "band": "6-7"
+    },
+    {
+      "word": "relaxation",
+      "pos": "noun",
+      "ipa": "/ˌriːlækˈseɪʃn/",
+      "meaningVi": "sự thư giãn",
+      "definitionEn": "The state of being free from tension and anxiety.",
+      "example": "Incorporating relaxation techniques into daily routines can significantly reduce stress levels.",
+      "collocation": "relaxation technique",
+      "band": "5-6"
+    },
+    {
+      "word": "harmony",
+      "pos": "noun",
+      "ipa": "/ˈhɑːməni/",
+      "meaningVi": "sự hòa hợp, hài hòa",
+      "definitionEn": "A consistent, orderly, or pleasing arrangement of parts; peace and balance.",
+      "example": "Living in harmony with nature and one's values is essential for long-term well-being.",
+      "collocation": "inner harmony",
+      "band": "7-8"
+    },
+    {
+      "word": "leisure",
+      "pos": "noun",
+      "ipa": "/ˈleʒə(r)/",
+      "meaningVi": "thời gian rảnh rỗi, giải trí",
+      "definitionEn": "Time free from work or duties, used for relaxation and enjoyment.",
+      "example": "Engaging in leisure activities is a vital component of a balanced and happy life.",
+      "collocation": "leisure time",
+      "band": "5-6"
+    },
+    {
+      "word": "pleasure",
+      "pos": "noun",
+      "ipa": "/ˈpleʒə(r)/",
+      "meaningVi": "niềm vui, sự thích thú",
+      "definitionEn": "A feeling of enjoyment or satisfaction derived from an activity or experience.",
+      "example": "While pleasure is a short-term feeling, it is an important part of overall happiness.",
+      "collocation": "simple pleasure",
+      "band": "5-6"
+    },
+    {
+      "word": "joy",
+      "pos": "noun",
+      "ipa": "/dʒɔɪ/",
+      "meaningVi": "niềm vui lớn",
+      "definitionEn": "A strong feeling of happiness and delight.",
+      "example": "The joy of helping others can be more fulfilling than pursuing personal gain.",
+      "collocation": "bring joy",
+      "band": "5-6"
+    },
+    {
+      "word": "delight",
+      "pos": "noun",
+      "ipa": "/dɪˈlaɪt/",
+      "meaningVi": "niềm vui thích, sự hân hoan",
+      "definitionEn": "Great pleasure or satisfaction.",
+      "example": "The children's faces showed pure delight as they played in the park.",
+      "collocation": "great delight",
+      "band": "6-7"
+    },
+    {
+      "word": "cheerfulness",
+      "pos": "noun",
+      "ipa": "/ˈtʃɪəfəlnəs/",
+      "meaningVi": "sự vui vẻ, phấn chấn",
+      "definitionEn": "The quality of being noticeably happy and optimistic.",
+      "example": "Her cheerfulness was contagious and lifted the mood of everyone around her.",
+      "collocation": "natural cheerfulness",
+      "band": "6-7"
+    },
+    {
+      "word": "hope",
+      "pos": "noun",
+      "ipa": "/həʊp/",
+      "meaningVi": "hy vọng",
+      "definitionEn": "A feeling of expectation and desire for a certain thing to happen.",
+      "example": "Maintaining a sense of hope during difficult times is crucial for psychological resilience.",
+      "collocation": "hold onto hope",
+      "band": "5-6"
+    },
+    {
+      "word": "positivity",
+      "pos": "noun",
+      "ipa": "/ˌpɒzəˈtɪvəti/",
+      "meaningVi": "sự tích cực, lạc quan",
+      "definitionEn": "The practice of being optimistic and focusing on good outcomes.",
+      "example": "Cultivating positivity through daily affirmations can improve mental health.",
+      "collocation": "cultivate positivity",
+      "band": "6-7"
+    },
+    {
+      "word": "inner peace",
+      "pos": "noun phrase",
+      "ipa": "/ˈɪnə(r) piːs/",
+      "meaningVi": "sự bình an nội tâm",
+      "definitionEn": "A state of mental and spiritual calmness, with no anxiety or stress.",
+      "example": "Many people turn to yoga and meditation as a means of finding inner peace.",
+      "collocation": "find inner peace",
+      "band": "7-8"
+    }
+  ]
+}

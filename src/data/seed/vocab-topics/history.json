@@ -1,0 +1,508 @@
+{
+  "slug": "history",
+  "name": "History",
+  "nameVi": "Lịch sử",
+  "blurb": "Quá khứ, di tích, bài học lịch sử",
+  "words": [
+    {
+      "word": "ancestry",
+      "pos": "noun",
+      "ipa": "/ˈænsɛstri/",
+      "meaningVi": "dòng dõi, tổ tiên",
+      "definitionEn": "the lineage or descent of a person or group from ancestors",
+      "example": "Tracing one's ancestry can reveal fascinating insights into migration patterns and historical events.",
+      "collocation": "trace one's ancestry",
+      "band": "7-8"
+    },
+    {
+      "word": "ancient",
+      "pos": "adjective",
+      "ipa": "/ˈeɪnʃənt/",
+      "meaningVi": "cổ đại, xa xưa",
+      "definitionEn": "belonging to the very distant past, especially before the end of the Western Roman Empire",
+      "example": "The ancient ruins of Rome attract millions of tourists who are eager to learn about its past.",
+      "collocation": "ancient civilization",
+      "band": "5-6"
+    },
+    {
+      "word": "antiquity",
+      "pos": "noun",
+      "ipa": "/ænˈtɪkwɪti/",
+      "meaningVi": "thời cổ đại, đồ cổ",
+      "definitionEn": "the ancient past, especially the period before the Middle Ages",
+      "example": "Scholars of antiquity rely on fragmented texts and archaeological findings to reconstruct early societies.",
+      "collocation": "classical antiquity",
+      "band": "7-8"
+    },
+    {
+      "word": "archaeology",
+      "pos": "noun",
+      "ipa": "/ˌɑːrkiˈɒlədʒi/",
+      "meaningVi": "khảo cổ học",
+      "definitionEn": "the study of human history and prehistory through the excavation of sites and the analysis of artifacts",
+      "example": "Archaeology provides tangible evidence of how people lived in prehistoric times.",
+      "collocation": "field of archaeology",
+      "band": "7-8"
+    },
+    {
+      "word": "artifact",
+      "pos": "noun",
+      "ipa": "/ˈɑːrtɪfækt/",
+      "meaningVi": "đồ tạo tác, hiện vật",
+      "definitionEn": "an object made by a human being, typically of cultural or historical interest",
+      "example": "The museum displayed a rare artifact from the Bronze Age, which was carefully preserved for centuries.",
+      "collocation": "historical artifact",
+      "band": "7-8"
+    },
+    {
+      "word": "chronicle",
+      "pos": "noun",
+      "ipa": "/ˈkrɒnɪkəl/",
+      "meaningVi": "biên niên sử",
+      "definitionEn": "a factual written account of important or historical events in the order of their occurrence",
+      "example": "The chronicle of the Norman Conquest provides a detailed narrative of the invasion.",
+      "collocation": "historical chronicle",
+      "band": "8+"
+    },
+    {
+      "word": "chronicler",
+      "pos": "noun",
+      "ipa": "/ˈkrɒnɪklər/",
+      "meaningVi": "người ghi chép biên niên sử",
+      "definitionEn": "a person who writes accounts of historical events in the order they happened",
+      "example": "The medieval chronicler recorded the king's deeds in a meticulously dated manuscript.",
+      "collocation": "court chronicler",
+      "band": "8+"
+    },
+    {
+      "word": "civilization",
+      "pos": "noun",
+      "ipa": "/ˌsɪvɪlaɪˈzeɪʃən/",
+      "meaningVi": "nền văn minh",
+      "definitionEn": "an advanced state of human society characterized by developed culture, government, and technology",
+      "example": "The Indus Valley civilization is one of the oldest urban civilizations known to historians.",
+      "collocation": "ancient civilization",
+      "band": "6-7"
+    },
+    {
+      "word": "colonial",
+      "pos": "adjective",
+      "ipa": "/kəˈloʊniəl/",
+      "meaningVi": "thuộc địa",
+      "definitionEn": "relating to or characteristic of a colony or colonies, especially in the context of imperialism",
+      "example": "Colonial architecture in Southeast Asia reflects the influence of European powers during the 19th century.",
+      "collocation": "colonial period",
+      "band": "6-7"
+    },
+    {
+      "word": "commemorate",
+      "pos": "verb",
+      "ipa": "/kəˈmɛməreɪt/",
+      "meaningVi": "kỷ niệm, tưởng niệm",
+      "definitionEn": "to honor the memory of an event or person with a ceremony or monument",
+      "example": "The new statue was erected to commemorate the soldiers who fell in the battle.",
+      "collocation": "commemorate an event",
+      "band": "7-8"
+    },
+    {
+      "word": "contemporary",
+      "pos": "adjective",
+      "ipa": "/kənˈtɛmpəreri/",
+      "meaningVi": "đương thời, đương đại",
+      "definitionEn": "living or occurring at the same time; belonging to the present time",
+      "example": "Contemporary accounts of the event often conflict with each other, making historical reconstruction difficult.",
+      "collocation": "contemporary source",
+      "band": "6-7"
+    },
+    {
+      "word": "descendant",
+      "pos": "noun",
+      "ipa": "/dɪˈsɛndənt/",
+      "meaningVi": "hậu duệ, con cháu",
+      "definitionEn": "a person who is descended from a particular ancestor",
+      "example": "Many descendants of the original settlers still live in the region and preserve their traditions.",
+      "collocation": "direct descendant",
+      "band": "6-7"
+    },
+    {
+      "word": "dynasty",
+      "pos": "noun",
+      "ipa": "/ˈdaɪnəsti/",
+      "meaningVi": "triều đại",
+      "definitionEn": "a succession of rulers from the same family or line",
+      "example": "The Ming dynasty ruled China for nearly three centuries and left a rich cultural legacy.",
+      "collocation": "imperial dynasty",
+      "band": "6-7"
+    },
+    {
+      "word": "epoch",
+      "pos": "noun",
+      "ipa": "/ˈɛpək/",
+      "meaningVi": "thời đại, kỷ nguyên",
+      "definitionEn": "a particular period of time in history or a person's life, marked by notable events",
+      "example": "The Industrial Revolution marked an epoch of unprecedented technological change.",
+      "collocation": "historical epoch",
+      "band": "7-8"
+    },
+    {
+      "word": "epoch-making",
+      "pos": "adjective",
+      "ipa": "/ˈiːpɒk meɪkɪŋ/",
+      "meaningVi": "có tính chất mở ra một kỷ nguyên mới, trọng đại",
+      "definitionEn": "so significant as to be considered the beginning of a new era",
+      "example": "The invention of the printing press was an epoch-making event that transformed knowledge dissemination.",
+      "collocation": "epoch-making discovery",
+      "band": "8+"
+    },
+    {
+      "word": "excavation",
+      "pos": "noun",
+      "ipa": "/ˌɛkskəˈveɪʃən/",
+      "meaningVi": "khai quật (khảo cổ)",
+      "definitionEn": "the process of digging out and removing earth, especially in an archaeological site",
+      "example": "The excavation of the ancient city revealed a complex network of roads and temples.",
+      "collocation": "archaeological excavation",
+      "band": "7-8"
+    },
+    {
+      "word": "folklore",
+      "pos": "noun",
+      "ipa": "/ˈfoʊklɔːr/",
+      "meaningVi": "văn hóa dân gian, truyền thuyết dân gian",
+      "definitionEn": "the traditional beliefs, customs, stories, and songs of a community, passed through generations",
+      "example": "Folklore often preserves historical memories that are not found in written records.",
+      "collocation": "local folklore",
+      "band": "5-6"
+    },
+    {
+      "word": "genealogy",
+      "pos": "noun",
+      "ipa": "/ˌdʒiːniˈælədʒi/",
+      "meaningVi": "phả hệ, gia phả",
+      "definitionEn": "the study of family descent and history",
+      "example": "Genealogy has become a popular hobby, with many people using DNA tests to trace their roots.",
+      "collocation": "family genealogy",
+      "band": "8+"
+    },
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈhɛrɪtɪdʒ/",
+      "meaningVi": "di sản",
+      "definitionEn": "property that is inherited; also, the cultural traditions and historical sites passed down from previous generations",
+      "example": "Protecting cultural heritage is essential for maintaining a nation's identity and history.",
+      "collocation": "cultural heritage",
+      "band": "6-7"
+    },
+    {
+      "word": "historian",
+      "pos": "noun",
+      "ipa": "/hɪˈstɔːriən/",
+      "meaningVi": "nhà sử học",
+      "definitionEn": "an expert in or student of history, especially that of a particular period or region",
+      "example": "The historian argued that the primary sources from that period have been misinterpreted.",
+      "collocation": "professional historian",
+      "band": "5-6"
+    },
+    {
+      "word": "historiography",
+      "pos": "noun",
+      "ipa": "/hɪˌstɔːriˈɒɡrəfi/",
+      "meaningVi": "sử học, phương pháp viết sử",
+      "definitionEn": "the study of historical writing and the methods used by historians",
+      "example": "Modern historiography emphasizes the importance of perspective and bias in historical narratives.",
+      "collocation": "critical historiography",
+      "band": "8+"
+    },
+    {
+      "word": "indigenous",
+      "pos": "adjective",
+      "ipa": "/ɪnˈdɪdʒɪnəs/",
+      "meaningVi": "bản địa",
+      "definitionEn": "originating or occurring naturally in a particular place; native",
+      "example": "The indigenous peoples of the Americas have a long history that predates European contact.",
+      "collocation": "indigenous population",
+      "band": "7-8"
+    },
+    {
+      "word": "inscription",
+      "pos": "noun",
+      "ipa": "/ɪnˈskrɪpʃən/",
+      "meaningVi": "chữ khắc, bia ký",
+      "definitionEn": "words or symbols carved or engraved on a surface, especially as a historical record",
+      "example": "The ancient inscription on the temple wall provided valuable information about the ruler's achievements.",
+      "collocation": "stone inscription",
+      "band": "7-8"
+    },
+    {
+      "word": "legacy",
+      "pos": "noun",
+      "ipa": "/ˈlɛɡəsi/",
+      "meaningVi": "di sản (tinh thần, văn hóa)",
+      "definitionEn": "something handed down from a predecessor or from the past, often intangible",
+      "example": "The legacy of the Roman Empire can still be seen in modern legal systems and architecture.",
+      "collocation": "lasting legacy",
+      "band": "6-7"
+    },
+    {
+      "word": "medieval",
+      "pos": "adjective",
+      "ipa": "/ˌmɛdiˈiːvəl/",
+      "meaningVi": "thời Trung cổ",
+      "definitionEn": "relating to the Middle Ages (approximately 5th to 15th century)",
+      "example": "Medieval castles were designed primarily for defense rather than comfort.",
+      "collocation": "medieval period",
+      "band": "6-7"
+    },
+    {
+      "word": "milestone",
+      "pos": "noun",
+      "ipa": "/ˈmaɪlstoʊn/",
+      "meaningVi": "cột mốc, bước ngoặt",
+      "definitionEn": "an important event or stage in the development of something",
+      "example": "The signing of the Magna Carta was a milestone in the history of constitutional law.",
+      "collocation": "historical milestone",
+      "band": "6-7"
+    },
+    {
+      "word": "monument",
+      "pos": "noun",
+      "ipa": "/ˈmɒnjʊmənt/",
+      "meaningVi": "tượng đài, đài kỷ niệm",
+      "definitionEn": "a structure, statue, or building erected to commemorate a person or event",
+      "example": "The Washington Monument is a famous landmark that honors the first president of the United States.",
+      "collocation": "national monument",
+      "band": "5-6"
+    },
+    {
+      "word": "mythology",
+      "pos": "noun",
+      "ipa": "/mɪˈθɒlədʒi/",
+      "meaningVi": "thần thoại học, huyền thoại",
+      "definitionEn": "a collection of myths, especially those belonging to a particular religious or cultural tradition",
+      "example": "Greek mythology has profoundly influenced Western literature and art throughout history.",
+      "collocation": "ancient mythology",
+      "band": "6-7"
+    },
+    {
+      "word": "nostalgia",
+      "pos": "noun",
+      "ipa": "/nɒˈstældʒə/",
+      "meaningVi": "nỗi nhớ quá khứ, hoài niệm",
+      "definitionEn": "a sentimental longing for the past, typically for a period or place with happy personal associations",
+      "example": "Nostalgia for the 'good old days' often distorts our understanding of historical reality.",
+      "collocation": "sense of nostalgia",
+      "band": "7-8"
+    },
+    {
+      "word": "oral",
+      "pos": "adjective",
+      "ipa": "/ˈɔːrəl/",
+      "meaningVi": "bằng lời nói, truyền miệng",
+      "definitionEn": "spoken rather than written; transmitted by word of mouth",
+      "example": "Oral traditions are crucial for reconstructing the history of societies without written records.",
+      "collocation": "oral history",
+      "band": "5-6"
+    },
+    {
+      "word": "paleontology",
+      "pos": "noun",
+      "ipa": "/ˌpeɪliɒnˈtɒlədʒi/",
+      "meaningVi": "cổ sinh vật học",
+      "definitionEn": "the study of prehistoric life through fossils",
+      "example": "Paleontology helps us understand the evolution of species over millions of years of Earth's history.",
+      "collocation": "fossil paleontology",
+      "band": "8+"
+    },
+    {
+      "word": "prehistoric",
+      "pos": "adjective",
+      "ipa": "/ˌpriːhɪˈstɒrɪk/",
+      "meaningVi": "tiền sử",
+      "definitionEn": "relating to the period before written records",
+      "example": "Prehistoric cave paintings provide a glimpse into the beliefs and daily life of early humans.",
+      "collocation": "prehistoric era",
+      "band": "6-7"
+    },
+    {
+      "word": "preservation",
+      "pos": "noun",
+      "ipa": "/ˌprɛzərˈveɪʃən/",
+      "meaningVi": "bảo tồn",
+      "definitionEn": "the act of keeping something in its original state or in good condition",
+      "example": "The preservation of ancient manuscripts requires strict control of temperature and humidity.",
+      "collocation": "historical preservation",
+      "band": "6-7"
+    },
+    {
+      "word": "prosperity",
+      "pos": "noun",
+      "ipa": "/prɒˈspɛrɪti/",
+      "meaningVi": "sự thịnh vượng, phồn vinh",
+      "definitionEn": "the state of being successful and having a lot of money and resources",
+      "example": "The prosperity of the Han dynasty was built on a strong agricultural base and trade along the Silk Road.",
+      "collocation": "economic prosperity",
+      "band": "6-7"
+    },
+    {
+      "word": "provenance",
+      "pos": "noun",
+      "ipa": "/ˈprɒvənəns/",
+      "meaningVi": "nguồn gốc, xuất xứ (đặc biệt của tác phẩm nghệ thuật, hiện vật)",
+      "definitionEn": "the place of origin or earliest known history of something",
+      "example": "The provenance of the painting was traced back to a 16th-century Italian collector.",
+      "collocation": "provenance of an artifact",
+      "band": "8+"
+    },
+    {
+      "word": "reconstruct",
+      "pos": "verb",
+      "ipa": "/ˌriːkənˈstrʌkt/",
+      "meaningVi": "tái tạo, phục dựng (lịch sử)",
+      "definitionEn": "to build or form again; to create an image or model of something from the past using available evidence",
+      "example": "Historians use a variety of sources to reconstruct the daily life of ordinary people in the Middle Ages.",
+      "collocation": "reconstruct the past",
+      "band": "7-8"
+    },
+    {
+      "word": "reign",
+      "pos": "noun",
+      "ipa": "/reɪn/",
+      "meaningVi": "triều đại, thời kỳ cai trị",
+      "definitionEn": "the period during which a sovereign rules",
+      "example": "The reign of Queen Elizabeth I is often called the Golden Age of English history.",
+      "collocation": "during the reign of",
+      "band": "5-6"
+    },
+    {
+      "word": "relic",
+      "pos": "noun",
+      "ipa": "/ˈrɛlɪk/",
+      "meaningVi": "di vật, thánh tích",
+      "definitionEn": "an object surviving from an earlier time, especially one of historical interest",
+      "example": "The museum houses a relic of the first transatlantic telegraph cable.",
+      "collocation": "historical relic",
+      "band": "6-7"
+    },
+    {
+      "word": "renaissance",
+      "pos": "noun",
+      "ipa": "/rɪˈneɪsəns/",
+      "meaningVi": "Phục hưng, thời kỳ Phục hưng",
+      "definitionEn": "the revival of art and learning under the influence of classical models in the 14th–16th centuries; also any similar revival",
+      "example": "The Renaissance marked a transition from the medieval to the modern world in European history.",
+      "collocation": "Italian Renaissance",
+      "band": "7-8"
+    },
+    {
+      "word": "restoration",
+      "pos": "noun",
+      "ipa": "/ˌrɛstəˈreɪʃən/",
+      "meaningVi": "sự phục hồi, trùng tu",
+      "definitionEn": "the act of returning something to its original condition or a previous state",
+      "example": "The restoration of the ancient temple took a decade and required traditional building techniques.",
+      "collocation": "historical restoration",
+      "band": "6-7"
+    },
+    {
+      "word": "retrospect",
+      "pos": "noun",
+      "ipa": "/ˈrɛtrəspekt/",
+      "meaningVi": "sự nhìn lại quá khứ (thường dùng in retrospect)",
+      "definitionEn": "a survey or review of past events; consideration of the past",
+      "example": "In retrospect, the Treaty of Versailles was a flawed agreement that sowed the seeds of future conflict.",
+      "collocation": "in retrospect",
+      "band": "8+"
+    },
+    {
+      "word": "revolution",
+      "pos": "noun",
+      "ipa": "/ˌrɛvəˈluːʃən/",
+      "meaningVi": "cuộc cách mạng",
+      "definitionEn": "a forcible overthrow of a government or social order in favor of a new system",
+      "example": "The French Revolution radically transformed the political landscape of Europe.",
+      "collocation": "political revolution",
+      "band": "6-7"
+    },
+    {
+      "word": "ruin",
+      "pos": "noun",
+      "ipa": "/ˈruːɪn/",
+      "meaningVi": "tàn tích, đống đổ nát",
+      "definitionEn": "the remains of a building, city, etc., that has been destroyed or decayed",
+      "example": "The ruins of the ancient city are a popular destination for tourists and historians alike.",
+      "collocation": "ancient ruins",
+      "band": "5-6"
+    },
+    {
+      "word": "saga",
+      "pos": "noun",
+      "ipa": "/ˈsɑːɡə/",
+      "meaningVi": "sử thi, câu chuyện dài về lịch sử",
+      "definitionEn": "a long story of heroic achievement, especially a medieval prose narrative in Old Norse or Icelandic",
+      "example": "The Icelandic sagas are invaluable sources for understanding the history and culture of medieval Scandinavia.",
+      "collocation": "historical saga",
+      "band": "8+"
+    },
+    {
+      "word": "sovereign",
+      "pos": "noun",
+      "ipa": "/ˈsɒvrɪn/",
+      "meaningVi": "quốc vương, người lãnh đạo tối cao",
+      "definitionEn": "a supreme ruler, especially a monarch",
+      "example": "The sovereign of the kingdom was responsible for both political and religious leadership.",
+      "collocation": "absolute sovereign",
+      "band": "7-8"
+    },
+    {
+      "word": "timeline",
+      "pos": "noun",
+      "ipa": "/ˈtaɪmlaɪn/",
+      "meaningVi": "dòng thời gian, mốc thời gian",
+      "definitionEn": "a graphical representation of a period of time, on which important events are marked",
+      "example": "The timeline of the Roman Empire shows the succession of emperors and key military campaigns.",
+      "collocation": "historical timeline",
+      "band": "5-6"
+    },
+    {
+      "word": "tradition",
+      "pos": "noun",
+      "ipa": "/trəˈdɪʃən/",
+      "meaningVi": "truyền thống",
+      "definitionEn": "a long-established custom or belief passed on from generation to generation",
+      "example": "Many traditions from the colonial period are still practiced in rural communities today.",
+      "collocation": "cultural tradition",
+      "band": "5-6"
+    },
+    {
+      "word": "upheaval",
+      "pos": "noun",
+      "ipa": "/ʌpˈhiːvəl/",
+      "meaningVi": "biến động lớn, chấn động",
+      "definitionEn": "a violent or sudden change or disruption to something",
+      "example": "The political upheaval of the 20th century led to the redrawing of national borders across Europe.",
+      "collocation": "social upheaval",
+      "band": "8+"
+    },
+    {
+      "word": "vintage",
+      "pos": "adjective",
+      "ipa": "/ˈvɪntɪdʒ/",
+      "meaningVi": "cổ điển, niên hiệu (thường nói về rượu vang, đồ cổ)",
+      "definitionEn": "relating to or typical of a past era; also, of high quality and from a particular year (especially wine)",
+      "example": "Vintage photographs from the 19th century offer a precious window into the daily lives of our ancestors.",
+      "collocation": "vintage clothing",
+      "band": "6-7"
+    },
+    {
+      "word": "warfare",
+      "pos": "noun",
+      "ipa": "/ˈwɔːrfeər/",
+      "meaningVi": "chiến tranh, phương thức chiến tranh",
+      "definitionEn": "the activity of fighting a war, especially using particular weapons or methods",
+      "example": "The evolution of warfare from swords to nuclear weapons has dramatically altered the course of history.",
+      "collocation": "modern warfare",
+      "band": "6-7"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "globalisation",
+  "name": "Globalisation",
+  "nameVi": "Toàn cầu hoá",
+  "blurb": "Hội nhập, đa quốc gia, di cư",
+  "words": [
+    {
+      "word": "Globalisation",
+      "pos": "noun",
+      "ipa": "/ˌɡləʊ.bə.laɪˈzeɪ.ʃən/",
+      "meaningVi": "toàn cầu hoá",
+      "definitionEn": "The process by which businesses or other organisations develop international influence or start operating on an international scale.",
+      "example": "Globalisation has accelerated the exchange of ideas and goods across borders.",
+      "collocation": "the impact of globalisation",
+      "band": "5-6"
+    },
+    {
+      "word": "Interconnectedness",
+      "pos": "noun",
+      "ipa": "/ˌɪn.tə.kəˈnek.tɪd.nəs/",
+      "meaningVi": "sự kết nối lẫn nhau",
+      "definitionEn": "The state of being connected with each other, especially in a global context.",
+      "example": "The interconnectedness of financial markets means that a crisis in one country can quickly spread.",
+      "collocation": "global interconnectedness",
+      "band": "6-7"
+    },
+    {
+      "word": "Homogenisation",
+      "pos": "noun",
+      "ipa": "/həˌmɒdʒ.ɪ.naɪˈzeɪ.ʃən/",
+      "meaningVi": "sự đồng nhất hoá",
+      "definitionEn": "The process of making things uniform or similar across different regions.",
+      "example": "Critics argue that globalisation leads to the homogenisation of local cultures.",
+      "collocation": "cultural homogenisation",
+      "band": "7-8"
+    },
+    {
+      "word": "Multinational",
+      "pos": "adjective",
+      "ipa": "/ˌmʌl.tɪˈnæʃ.ən.əl/",
+      "meaningVi": "đa quốc gia",
+      "definitionEn": "Operating in several countries; having subsidiaries or branches in multiple nations.",
+      "example": "Multinational corporations often wield significant influence over trade policies.",
+      "collocation": "multinational company",
+      "band": "5-6"
+    },
+    {
+      "word": "Migration",
+      "pos": "noun",
+      "ipa": "/maɪˈɡreɪ.ʃən/",
+      "meaningVi": "di cư",
+      "definitionEn": "The movement of people from one place to another, often across international borders.",
+      "example": "Migration patterns have shifted dramatically due to economic globalisation.",
+      "collocation": "large-scale migration",
+      "band": "6-7"
+    },
+    {
+      "word": "Outsourcing",
+      "pos": "noun",
+      "ipa": "/ˈaʊt.sɔː.sɪŋ/",
+      "meaningVi": "thuê ngoài",
+      "definitionEn": "The practice of obtaining goods or services from an external supplier, often in a different country.",
+      "example": "Outsourcing has enabled companies to reduce labour costs and increase efficiency.",
+      "collocation": "outsourcing of jobs",
+      "band": "6-7"
+    },
+    {
+      "word": "Acculturation",
+      "pos": "noun",
+      "ipa": "/əˌkʌl.tʃərˈeɪ.ʃən/",
+      "meaningVi": "sự tiếp biến văn hoá",
+      "definitionEn": "The process of adopting the cultural traits or social patterns of another group.",
+      "example": "Acculturation can be observed in the fusion of culinary traditions from different continents.",
+      "collocation": "acculturation process",
+      "band": "7-8"
+    },
+    {
+      "word": "Diaspora",
+      "pos": "noun",
+      "ipa": "/daɪˈæs.pər.ə/",
+      "meaningVi": "cộng đồng hải ngoại",
+      "definitionEn": "The dispersion of a people from their original homeland to other parts of the world.",
+      "example": "The Indian diaspora has made substantial contributions to the economies of their host countries.",
+      "collocation": "African diaspora",
+      "band": "7-8"
+    },
+    {
+      "word": "Integration",
+      "pos": "noun",
+      "ipa": "/ˌɪn.tɪˈɡreɪ.ʃən/",
+      "meaningVi": "hội nhập",
+      "definitionEn": "The act of combining or adding parts to make a unified whole, especially in economic or political contexts.",
+      "example": "Economic integration facilitates the free movement of goods, services, and labour.",
+      "collocation": "regional integration",
+      "band": "6-7"
+    },
+    {
+      "word": "Transnational",
+      "pos": "adjective",
+      "ipa": "/trænzˈnæʃ.ən.əl/",
+      "meaningVi": "xuyên quốc gia",
+      "definitionEn": "Extending or operating across national boundaries.",
+      "example": "Transnational corporations play a key role in shaping global supply chains.",
+      "collocation": "transnational network",
+      "band": "7-8"
+    },
+    {
+      "word": "Standardisation",
+      "pos": "noun",
+      "ipa": "/ˌstæn.də.daɪˈzeɪ.ʃən/",
+      "meaningVi": "tiêu chuẩn hoá",
+      "definitionEn": "The process of making something conform to a standard, often to facilitate international trade.",
+      "example": "Standardisation of product specifications reduces barriers to global commerce.",
+      "collocation": "standardisation of processes",
+      "band": "6-7"
+    },
+    {
+      "word": "Liberalisation",
+      "pos": "noun",
+      "ipa": "/ˌlɪb.ər.ə.laɪˈzeɪ.ʃən/",
+      "meaningVi": "tự do hoá",
+      "definitionEn": "The removal of government controls or restrictions on trade, markets, or business activities.",
+      "example": "Trade liberalisation has boosted economic growth in many developing countries.",
+      "collocation": "liberalisation of markets",
+      "band": "7-8"
+    },
+    {
+      "word": "Emigration",
+      "pos": "noun",
+      "ipa": "/ˌem.ɪˈɡreɪ.ʃən/",
+      "meaningVi": "di cư ra nước ngoài",
+      "definitionEn": "The act of leaving one's own country to settle permanently in another.",
+      "example": "Emigration often leads to a brain drain in the home country.",
+      "collocation": "mass emigration",
+      "band": "6-7"
+    },
+    {
+      "word": "Immigration",
+      "pos": "noun",
+      "ipa": "/ˌɪm.ɪˈɡreɪ.ʃən/",
+      "meaningVi": "nhập cư",
+      "definitionEn": "The act of coming to live permanently in a foreign country.",
+      "example": "Immigration policies have become a contentious issue in the context of globalisation.",
+      "collocation": "illegal immigration",
+      "band": "5-6"
+    },
+    {
+      "word": "Remittance",
+      "pos": "noun",
+      "ipa": "/rɪˈmɪt.əns/",
+      "meaningVi": "kiều hối",
+      "definitionEn": "A sum of money sent to someone in another country, typically by a migrant worker.",
+      "example": "Remittances from migrants constitute a vital source of income for many developing nations.",
+      "collocation": "remittance flows",
+      "band": "7-8"
+    },
+    {
+      "word": "Brain drain",
+      "pos": "noun",
+      "ipa": "/ˈbreɪn ˌdreɪn/",
+      "meaningVi": "chảy máu chất xám",
+      "definitionEn": "The emigration of highly skilled or educated people from a country, leading to a loss of talent.",
+      "example": "Brain drain is a serious concern for countries investing heavily in education.",
+      "collocation": "brain drain phenomenon",
+      "band": "6-7"
+    },
+    {
+      "word": "Flow",
+      "pos": "noun",
+      "ipa": "/fləʊ/",
+      "meaningVi": "dòng chảy",
+      "definitionEn": "The movement of something (e.g., capital, goods, information) across borders.",
+      "example": "The free flow of capital is a defining feature of globalisation.",
+      "collocation": "capital flow",
+      "band": "5-6"
+    },
+    {
+      "word": "Barrier",
+      "pos": "noun",
+      "ipa": "/ˈbær.i.ər/",
+      "meaningVi": "rào cản",
+      "definitionEn": "An obstacle that prevents movement, access, or trade between countries.",
+      "example": "Trade barriers have been gradually reduced through multilateral agreements.",
+      "collocation": "trade barrier",
+      "band": "5-6"
+    },
+    {
+      "word": "Convergence",
+      "pos": "noun",
+      "ipa": "/kənˈvɜː.dʒəns/",
+      "meaningVi": "sự hội tụ",
+      "definitionEn": "The process of becoming similar or coming together, especially in economic or cultural terms.",
+      "example": "Economic convergence between developed and developing nations remains a distant goal.",
+      "collocation": "convergence of cultures",
+      "band": "7-8"
+    },
+    {
+      "word": "Divergence",
+      "pos": "noun",
+      "ipa": "/daɪˈvɜː.dʒəns/",
+      "meaningVi": "sự phân kỳ",
+      "definitionEn": "The process of becoming different or moving apart, especially in economic or social indicators.",
+      "example": "Despite globalisation, there is still a divergence in income levels across regions.",
+      "collocation": "economic divergence",
+      "band": "7-8"
+    },
+    {
+      "word": "Hegemony",
+      "pos": "noun",
+      "ipa": "/hɪˈdʒem.ə.ni/",
+      "meaningVi": "sự bá quyền",
+      "definitionEn": "Leadership or dominance, especially by one country or social group over others.",
+      "example": "Cultural hegemony of Western media is often criticised by scholars of globalisation.",
+      "collocation": "global hegemony",
+      "band": "8+"
+    },
+    {
+      "word": "Supranational",
+      "pos": "adjective",
+      "ipa": "/ˌsuː.prəˈnæʃ.ən.əl/",
+      "meaningVi": "siêu quốc gia",
+      "definitionEn": "Having power or influence that transcends national boundaries, often referring to organisations.",
+      "example": "The European Union is a supranational body that enforces common policies among member states.",
+      "collocation": "supranational organisation",
+      "band": "8+"
+    },
+    {
+      "word": "Glocalisation",
+      "pos": "noun",
+      "ipa": "/ˌɡləʊ.kə.laɪˈzeɪ.ʃən/",
+      "meaningVi": "toàn cầu địa phương hoá (địa phương hoá sản phẩm toàn cầu)",
+      "definitionEn": "The adaptation of global products or ideas to local contexts to meet specific cultural needs.",
+      "example": "Glocalisation allows multinational brands to tailor their offerings to local tastes.",
+      "collocation": "glocalisation strategy",
+      "band": "8+"
+    },
+    {
+      "word": "Neoliberalism",
+      "pos": "noun",
+      "ipa": "/ˌniː.əʊˈlɪb.ər.əl.ɪ.zəm/",
+      "meaningVi": "chủ nghĩa tân tự do",
+      "definitionEn": "A political and economic philosophy that emphasises free markets, deregulation, and privatisation.",
+      "example": "Neoliberalism has been a driving force behind the liberalisation of global trade.",
+      "collocation": "neoliberal policies",
+      "band": "8+"
+    },
+    {
+      "word": "Cultural imperialism",
+      "pos": "noun",
+      "ipa": "/ˈkʌl.tʃər.əl ɪmˈpɪə.ri.ə.lɪ.zəm/",
+      "meaningVi": "chủ nghĩa đế quốc văn hoá",
+      "definitionEn": "The practice of promoting the culture of one nation over others, often through media and consumer goods.",
+      "example": "Cultural imperialism is often associated with the global spread of American popular culture.",
+      "collocation": "cultural imperialism theory",
+      "band": "8+"
+    },
+    {
+      "word": "Cosmopolitan",
+      "pos": "adjective",
+      "ipa": "/ˌkɒzməˈpɒlɪtən/",
+      "meaningVi": "mang tính quốc tế, đa văn hóa",
+      "definitionEn": "Containing people from many different parts of the world, or having a global outlook.",
+      "example": "London is a cosmopolitan city where diverse cultures coexist harmoniously.",
+      "collocation": "cosmopolitan society",
+      "band": "6-7"
+    },
+    {
+      "word": "Interdependence",
+      "pos": "noun",
+      "ipa": "/ˌɪntədɪˈpendəns/",
+      "meaningVi": "sự phụ thuộc lẫn nhau",
+      "definitionEn": "The state of being dependent on each other, especially economically or politically.",
+      "example": "Globalisation has increased the interdependence of national economies.",
+      "collocation": "economic interdependence",
+      "band": "6-7"
+    },
+    {
+      "word": "Multicultural",
+      "pos": "adjective",
+      "ipa": "/ˌmʌltiˈkʌltʃərəl/",
+      "meaningVi": "đa văn hóa",
+      "definitionEn": "Relating to or containing several cultural or ethnic groups.",
+      "example": "A multicultural workforce often brings innovative ideas to a company.",
+      "collocation": "multicultural society",
+      "band": "5-6"
+    },
+    {
+      "word": "Cross-border",
+      "pos": "adjective",
+      "ipa": "/ˌkrɒs ˈbɔːdə/",
+      "meaningVi": "xuyên biên giới",
+      "definitionEn": "Involving movement or activity across an international border.",
+      "example": "Cross-border trade has been facilitated by free trade agreements.",
+      "collocation": "cross-border investment",
+      "band": "5-6"
+    },
+    {
+      "word": "Global Village",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ˈvɪlɪdʒ/",
+      "meaningVi": "ngôi làng toàn cầu (thế giới kết nối)",
+      "definitionEn": "The world considered as a single community linked by telecommunications and transport.",
+      "example": "The internet has turned the world into a global village.",
+      "collocation": "live in a global village",
+      "band": "5-6"
+    },
+    {
+      "word": "Offshoring",
+      "pos": "noun",
+      "ipa": "/ˈɒfʃɔːrɪŋ/",
+      "meaningVi": "sự chuyển hoạt động ra nước ngoài",
+      "definitionEn": "The practice of moving a company's business processes to another country, often to reduce costs.",
+      "example": "Offshoring has sparked debates about job losses in developed countries.",
+      "collocation": "offshoring of services",
+      "band": "6-7"
+    },
+    {
+      "word": "Expatriate",
+      "pos": "noun",
+      "ipa": "/ɪkˈspætriət/",
+      "meaningVi": "người nước ngoài sống và làm việc ở nước khác",
+      "definitionEn": "A person who lives outside their native country, often for work.",
+      "example": "Many expatriates working in multinational corporations face cultural adjustment challenges.",
+      "collocation": "expatriate worker",
+      "band": "5-6"
+    },
+    {
+      "word": "Cultural Exchange",
+      "pos": "noun",
+      "ipa": "/ˈkʌltʃərəl ɪksˈtʃeɪndʒ/",
+      "meaningVi": "giao lưu văn hóa",
+      "definitionEn": "The sharing of ideas, traditions, and values between different cultures.",
+      "example": "Student exchange programmes promote cultural exchange between nations.",
+      "collocation": "promote cultural exchange",
+      "band": "5-6"
+    },
+    {
+      "word": "Global Citizen",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ˈsɪtɪzən/",
+      "meaningVi": "công dân toàn cầu",
+      "definitionEn": "A person who sees themselves as part of the world community, with responsibilities beyond national borders.",
+      "example": "Being a global citizen involves understanding and addressing global issues like climate change.",
+      "collocation": "sense of global citizenship",
+      "band": "6-7"
+    },
+    {
+      "word": "International Trade",
+      "pos": "noun",
+      "ipa": "/ˌɪntəˈnæʃənəl treɪd/",
+      "meaningVi": "thương mại quốc tế",
+      "definitionEn": "The exchange of goods and services between countries.",
+      "example": "International trade has grown rapidly due to globalisation and technological advances.",
+      "collocation": "international trade agreement",
+      "band": "5-6"
+    },
+    {
+      "word": "Free Trade",
+      "pos": "noun",
+      "ipa": "/ˌfriː ˈtreɪd/",
+      "meaningVi": "thương mại tự do",
+      "definitionEn": "Trade between countries without tariffs, quotas, or other restrictions.",
+      "example": "Free trade often leads to lower prices for consumers but can hurt domestic industries.",
+      "collocation": "free trade zone",
+      "band": "5-6"
+    },
+    {
+      "word": "Economic Integration",
+      "pos": "noun",
+      "ipa": "/ˌiːkəˈnɒmɪk ˌɪntɪˈɡreɪʃən/",
+      "meaningVi": "hội nhập kinh tế",
+      "definitionEn": "The process of reducing trade barriers and coordinating economic policies between countries.",
+      "example": "The European Union is a prime example of deep economic integration.",
+      "collocation": "regional economic integration",
+      "band": "6-7"
+    },
+    {
+      "word": "Foreign Direct Investment",
+      "pos": "noun",
+      "ipa": "/ˈfɒrɪn daɪˈrekt ɪnˈvestmənt/",
+      "meaningVi": "đầu tư trực tiếp nước ngoài",
+      "definitionEn": "An investment made by a company or individual in one country into business interests in another country.",
+      "example": "Developing countries often attract foreign direct investment to boost their economies.",
+      "collocation": "attract foreign direct investment",
+      "band": "7-8"
+    },
+    {
+      "word": "Global Supply Chain",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl səˈplaɪ tʃeɪn/",
+      "meaningVi": "chuỗi cung ứng toàn cầu",
+      "definitionEn": "The worldwide network of production, distribution, and logistics for goods and services.",
+      "example": "The pandemic exposed vulnerabilities in the global supply chain.",
+      "collocation": "global supply chain disruption",
+      "band": "7-8"
+    },
+    {
+      "word": "Cultural Diversity",
+      "pos": "noun",
+      "ipa": "/ˈkʌltʃərəl daɪˈvɜːsɪti/",
+      "meaningVi": "đa dạng văn hóa",
+      "definitionEn": "The existence of a variety of cultural groups within a society.",
+      "example": "Cultural diversity enriches workplaces by fostering creativity and different perspectives.",
+      "collocation": "respect for cultural diversity",
+      "band": "6-7"
+    },
+    {
+      "word": "Borderless",
+      "pos": "adjective",
+      "ipa": "/ˈbɔːdələs/",
+      "meaningVi": "không biên giới",
+      "definitionEn": "Not limited by national boundaries; global in scope.",
+      "example": "The internet has created a borderless world for information sharing.",
+      "collocation": "borderless market",
+      "band": "6-7"
+    },
+    {
+      "word": "Global Economy",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ɪˈkɒnəmi/",
+      "meaningVi": "nền kinh tế toàn cầu",
+      "definitionEn": "The economies of the world considered as a single system, especially in terms of trade and finance.",
+      "example": "The global economy is increasingly interconnected through trade and capital flows.",
+      "collocation": "integrate into the global economy",
+      "band": "5-6"
+    },
+    {
+      "word": "Multilateral",
+      "pos": "adjective",
+      "ipa": "/ˌmʌltiˈlætərəl/",
+      "meaningVi": "đa phương",
+      "definitionEn": "Involving several countries or parties, especially in diplomacy or trade.",
+      "example": "Multilateral agreements are crucial for addressing global challenges like climate change.",
+      "collocation": "multilateral trade talks",
+      "band": "6-7"
+    },
+    {
+      "word": "International Organisation",
+      "pos": "noun",
+      "ipa": "/ˌɪntəˈnæʃənəl ˌɔːɡənaɪˈzeɪʃən/",
+      "meaningVi": "tổ chức quốc tế",
+      "definitionEn": "An institution with membership from multiple countries, established to address common issues.",
+      "example": "The United Nations is a major international organisation promoting peace and cooperation.",
+      "collocation": "join an international organisation",
+      "band": "7-8"
+    },
+    {
+      "word": "Cross-cultural",
+      "pos": "adjective",
+      "ipa": "/ˌkrɒs ˈkʌltʃərəl/",
+      "meaningVi": "xuyên văn hóa",
+      "definitionEn": "Relating to different cultures or comparison between them.",
+      "example": "Cross-cultural communication skills are essential for global business success.",
+      "collocation": "cross-cultural understanding",
+      "band": "6-7"
+    },
+    {
+      "word": "Global Governance",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ˈɡʌvənəns/",
+      "meaningVi": "quản trị toàn cầu",
+      "definitionEn": "The system of rules, institutions, and practices that manage international affairs.",
+      "example": "Effective global governance is needed to regulate multinational corporations.",
+      "collocation": "global governance framework",
+      "band": "8+"
+    },
+    {
+      "word": "Labour Mobility",
+      "pos": "noun",
+      "ipa": "/ˈleɪbə məʊˈbɪlɪti/",
+      "meaningVi": "sự di chuyển lao động",
+      "definitionEn": "The ability of workers to move between jobs, regions, or countries for employment.",
+      "example": "Labour mobility within the EU has helped address skill shortages in certain sectors.",
+      "collocation": "restrictions on labour mobility",
+      "band": "5-6"
+    },
+    {
+      "word": "Global Competitiveness",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl kəmˌpetɪˈtɪvɪti/",
+      "meaningVi": "năng lực cạnh tranh toàn cầu",
+      "definitionEn": "The ability of a country or company to compete in the global market.",
+      "example": "Innovation is key to maintaining global competitiveness in the tech industry.",
+      "collocation": "enhance global competitiveness",
+      "band": "6-7"
+    },
+    {
+      "word": "Intercultural",
+      "pos": "adjective",
+      "ipa": "/ˌɪntəˈkʌltʃərəl/",
+      "meaningVi": "liên văn hóa",
+      "definitionEn": "Relating to or between different cultures, especially in communication or exchange.",
+      "example": "Intercultural dialogue helps reduce misunderstandings in multinational teams.",
+      "collocation": "intercultural skills",
+      "band": "6-7"
+    },
+    {
+      "word": "Global Enterprise",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ˈentəpraɪz/",
+      "meaningVi": "doanh nghiệp toàn cầu",
+      "definitionEn": "A large company that operates in multiple countries around the world.",
+      "example": "A global enterprise must adapt its marketing strategies to local cultures.",
+      "collocation": "leading global enterprise",
+      "band": "7-8"
+    }
+  ]
+}

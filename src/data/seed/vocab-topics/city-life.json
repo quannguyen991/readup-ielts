@@ -1,0 +1,508 @@
+{
+  "slug": "city-life",
+  "name": "City Life",
+  "nameVi": "Đời sống đô thị",
+  "blurb": "Đô thị hoá, nhà ở, tiện ích",
+  "words": [
+    {
+      "word": "urbanisation",
+      "pos": "noun",
+      "ipa": "/ˌɜːbənaɪˈzeɪʃən/",
+      "meaningVi": "đô thị hoá",
+      "definitionEn": "the process of making an area more urban, with more people and buildings.",
+      "example": "Rapid urbanisation has led to a significant increase in housing demand in major cities.",
+      "collocation": "rapid urbanisation",
+      "band": "6-7"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪnfrəstrʌktʃər/",
+      "meaningVi": "cơ sở hạ tầng",
+      "definitionEn": "the basic physical and organisational structures needed for a city to function.",
+      "example": "The government invested heavily in improving the city's infrastructure, including roads and bridges.",
+      "collocation": "urban infrastructure",
+      "band": "6-7"
+    },
+    {
+      "word": "congestion",
+      "pos": "noun",
+      "ipa": "/kənˈdʒestʃən/",
+      "meaningVi": "sự tắc nghẽn (giao thông)",
+      "definitionEn": "the state of being overcrowded, especially with traffic.",
+      "example": "Traffic congestion during peak hours is a major drawback of living in the city centre.",
+      "collocation": "traffic congestion",
+      "band": "5-6"
+    },
+    {
+      "word": "gentrification",
+      "pos": "noun",
+      "ipa": "/ˌdʒentrɪfɪˈkeɪʃən/",
+      "meaningVi": "sự phục hồi khu vực đô thị (thường làm tăng giá nhà)",
+      "definitionEn": "the process of renovating a deteriorated urban area to attract wealthier residents, often displacing original inhabitants.",
+      "example": "Gentrification has transformed many old neighbourhoods, but it often pushes low-income families out.",
+      "collocation": "rapid gentrification",
+      "band": "7-8"
+    },
+    {
+      "word": "municipality",
+      "pos": "noun",
+      "ipa": "/mjuːˌnɪsɪˈpæləti/",
+      "meaningVi": "khu đô thị tự quản, thành phố",
+      "definitionEn": "a city, town, or other district that has its own local government.",
+      "example": "The municipality plans to build more public parks to improve residents' quality of life.",
+      "collocation": "local municipality",
+      "band": "6-7"
+    },
+    {
+      "word": "high-rise",
+      "pos": "adjective/noun",
+      "ipa": "/ˈhaɪ raɪz/",
+      "meaningVi": "nhà cao tầng",
+      "definitionEn": "a tall building with many storeys, typically found in dense urban areas.",
+      "example": "Many high-rise apartments have been constructed to accommodate the growing population.",
+      "collocation": "high-rise building",
+      "band": "5-6"
+    },
+    {
+      "word": "suburb",
+      "pos": "noun",
+      "ipa": "/ˈsʌbɜːb/",
+      "meaningVi": "ngoại ô",
+      "definitionEn": "a residential area on the outskirts of a city.",
+      "example": "Living in a suburb offers a quieter environment compared to the bustling city centre.",
+      "collocation": "outer suburb",
+      "band": "5-6"
+    },
+    {
+      "word": "slum",
+      "pos": "noun",
+      "ipa": "/slʌm/",
+      "meaningVi": "khu ổ chuột",
+      "definitionEn": "a heavily populated urban area with substandard housing and poor living conditions.",
+      "example": "The government is trying to upgrade slum areas by providing better sanitation and housing.",
+      "collocation": "urban slum",
+      "band": "6-7"
+    },
+    {
+      "word": "public transport",
+      "pos": "noun",
+      "ipa": "/ˈpʌblɪk ˈtrænspɔːrt/",
+      "meaningVi": "giao thông công cộng",
+      "definitionEn": "a system of buses, trains, etc. that is available to the general public.",
+      "example": "An efficient public transport system can reduce traffic congestion and pollution.",
+      "collocation": "reliable public transport",
+      "band": "5-6"
+    },
+    {
+      "word": "pedestrian",
+      "pos": "noun",
+      "ipa": "/pəˈdestriən/",
+      "meaningVi": "người đi bộ",
+      "definitionEn": "a person walking in a city, especially in an area with traffic.",
+      "example": "Pedestrian zones in the city centre make shopping safer and more pleasant.",
+      "collocation": "pedestrian zone",
+      "band": "5-6"
+    },
+    {
+      "word": "metropolitan",
+      "pos": "adjective",
+      "ipa": "/ˌmetrəˈpɒlɪtən/",
+      "meaningVi": "thuộc đô thị lớn",
+      "definitionEn": "relating to a large city or its surrounding area.",
+      "example": "The metropolitan area comprises the city and its suburbs, housing millions of people.",
+      "collocation": "metropolitan area",
+      "band": "6-7"
+    },
+    {
+      "word": "residential",
+      "pos": "adjective",
+      "ipa": "/ˌrezɪˈdenʃəl/",
+      "meaningVi": "khu dân cư",
+      "definitionEn": "used for or relating to homes, rather than businesses or industry.",
+      "example": "The residential district is known for its quiet streets and family-friendly atmosphere.",
+      "collocation": "residential area",
+      "band": "5-6"
+    },
+    {
+      "word": "commercial",
+      "pos": "adjective",
+      "ipa": "/kəˈmɜːʃəl/",
+      "meaningVi": "thương mại",
+      "definitionEn": "relating to business or trade, often in a city centre.",
+      "example": "Commercial districts are usually crowded with offices, shops, and restaurants.",
+      "collocation": "commercial area",
+      "band": "5-6"
+    },
+    {
+      "word": "amenities",
+      "pos": "noun",
+      "ipa": "/əˈmiːnɪtiz/",
+      "meaningVi": "tiện nghi, tiện ích",
+      "definitionEn": "features that make a place pleasant or comfortable to live in.",
+      "example": "The neighbourhood offers excellent amenities such as parks, gyms, and shopping centres.",
+      "collocation": "local amenities",
+      "band": "6-7"
+    },
+    {
+      "word": "density",
+      "pos": "noun",
+      "ipa": "/ˈdensəti/",
+      "meaningVi": "mật độ",
+      "definitionEn": "the number of people or buildings per unit of area.",
+      "example": "High population density in cities often leads to a lack of personal space.",
+      "collocation": "population density",
+      "band": "6-7"
+    },
+    {
+      "word": "green space",
+      "pos": "noun",
+      "ipa": "/ˈɡriːn speɪs/",
+      "meaningVi": "không gian xanh",
+      "definitionEn": "an area of grass, trees, or other vegetation in a city.",
+      "example": "Green spaces like parks and gardens are essential for residents' mental well-being.",
+      "collocation": "accessible green space",
+      "band": "5-6"
+    },
+    {
+      "word": "commute",
+      "pos": "noun/verb",
+      "ipa": "/kəˈmjuːt/",
+      "meaningVi": "sự đi lại (hàng ngày), đi làm xa",
+      "definitionEn": "the journey to and from work, especially by a regular route.",
+      "example": "A lengthy commute can be stressful and reduce the time available for leisure activities.",
+      "collocation": "long commute",
+      "band": "6-7"
+    },
+    {
+      "word": "affordable housing",
+      "pos": "noun",
+      "ipa": "/əˈfɔːrdəbl ˈhaʊzɪŋ/",
+      "meaningVi": "nhà ở giá phải chăng",
+      "definitionEn": "housing that is reasonably priced for people with low or moderate incomes.",
+      "example": "The lack of affordable housing is a critical issue in many metropolitan cities.",
+      "collocation": "affordable housing scheme",
+      "band": "7-8"
+    },
+    {
+      "word": "noise pollution",
+      "pos": "noun",
+      "ipa": "/ˈnɔɪz pəˈluːʃən/",
+      "meaningVi": "ô nhiễm tiếng ồn",
+      "definitionEn": "harmful or annoying levels of noise in the environment.",
+      "example": "Noise pollution from traffic and construction sites can disturb sleep and concentration.",
+      "collocation": "chronic noise pollution",
+      "band": "6-7"
+    },
+    {
+      "word": "urban sprawl",
+      "pos": "noun",
+      "ipa": "/ˈɜːbən sprɔːl/",
+      "meaningVi": "sự mở rộng đô thị không kiểm soát",
+      "definitionEn": "the uncontrolled expansion of urban areas into the countryside.",
+      "example": "Urban sprawl has led to the loss of farmland and increased dependency on cars.",
+      "collocation": "uncontrolled urban sprawl",
+      "band": "8+"
+    },
+    {
+      "word": "revitalisation",
+      "pos": "noun",
+      "ipa": "/riːˌvaɪtəlaɪˈzeɪʃən/",
+      "meaningVi": "sự phục hồi, tái sinh",
+      "definitionEn": "the process of bringing new life, energy, or economic activity to a city area.",
+      "example": "The revitalisation of the old docklands attracted new businesses and tourists.",
+      "collocation": "urban revitalisation",
+      "band": "7-8"
+    },
+    {
+      "word": "council",
+      "pos": "noun",
+      "ipa": "/ˈkaʊnsəl/",
+      "meaningVi": "hội đồng (thành phố)",
+      "definitionEn": "the local government authority responsible for a city or town.",
+      "example": "The city council has introduced a recycling programme to reduce waste.",
+      "collocation": "city council",
+      "band": "5-6"
+    },
+    {
+      "word": "zoning",
+      "pos": "noun",
+      "ipa": "/ˈzəʊnɪŋ/",
+      "meaningVi": "phân vùng (quy hoạch đô thị)",
+      "definitionEn": "the division of land into zones for different uses, such as residential, commercial, or industrial.",
+      "example": "Zoning regulations ensure that factories are built away from residential areas.",
+      "collocation": "zoning regulation",
+      "band": "7-8"
+    },
+    {
+      "word": "skyline",
+      "pos": "noun",
+      "ipa": "/ˈskaɪlaɪn/",
+      "meaningVi": "đường chân trời thành phố",
+      "definitionEn": "the outline of buildings and structures against the sky, especially in a city.",
+      "example": "The city's skyline is dominated by modern skyscrapers and historic landmarks.",
+      "collocation": "iconic skyline",
+      "band": "5-6"
+    },
+    {
+      "word": "sewage",
+      "pos": "noun",
+      "ipa": "/ˈsuːɪdʒ/",
+      "meaningVi": "nước thải, hệ thống thoát nước",
+      "definitionEn": "the waste water and excrement carried away in drains and sewers.",
+      "example": "Adequate sewage treatment is essential for preventing waterborne diseases in crowded cities.",
+      "collocation": "sewage system",
+      "band": "6-7"
+    },
+    {
+      "word": "conurbation",
+      "pos": "noun",
+      "ipa": "/ˌkɒnɜːˈbeɪʃən/",
+      "meaningVi": "vùng đô thị lớn (liên kết nhiều thành phố)",
+      "definitionEn": "A large urban area formed by the merging of several towns or cities.",
+      "example": "The government's plan aims to manage the growth of the sprawling conurbation more sustainably.",
+      "collocation": "sprawling conurbation",
+      "band": "7-8"
+    },
+    {
+      "word": "overpopulation",
+      "pos": "noun",
+      "ipa": "/ˌəʊvəˌpɒpjʊˈleɪʃən/",
+      "meaningVi": "tình trạng quá tải dân số",
+      "definitionEn": "The condition of having too many people in an area, leading to strain on resources.",
+      "example": "Overpopulation in cities often results in inadequate housing and strained public services.",
+      "collocation": "urban overpopulation",
+      "band": "6-7"
+    },
+    {
+      "word": "dwelling",
+      "pos": "noun",
+      "ipa": "/ˈdwɛlɪŋ/",
+      "meaningVi": "nơi ở, nhà ở",
+      "definitionEn": "A place where people live, such as a house or apartment.",
+      "example": "Many low-income families are forced to live in cramped, substandard dwellings in the city centre.",
+      "collocation": "residential dwelling",
+      "band": "6-7"
+    },
+    {
+      "word": "tenement",
+      "pos": "noun",
+      "ipa": "/ˈtɛnəmənt/",
+      "meaningVi": "nhà tập thể cũ (thường xuống cấp)",
+      "definitionEn": "A run-down, overcrowded apartment building, often in a poor urban area.",
+      "example": "The old tenement block was eventually demolished as part of the urban regeneration project.",
+      "collocation": "tenement block",
+      "band": "7-8"
+    },
+    {
+      "word": "condominium",
+      "pos": "noun",
+      "ipa": "/ˌkɒndəˈmɪniəm/",
+      "meaningVi": "căn hộ chung cư (cao cấp, sở hữu riêng)",
+      "definitionEn": "A type of apartment building where each unit is individually owned.",
+      "example": "The newly built condominium offers modern amenities and a great view of the skyline.",
+      "collocation": "luxury condominium",
+      "band": "5-6"
+    },
+    {
+      "word": "neighbourhood",
+      "pos": "noun",
+      "ipa": "/ˈneɪbəhʊd/",
+      "meaningVi": "khu phố, khu dân cư",
+      "definitionEn": "A district or area within a city, often with a distinct character.",
+      "example": "This neighbourhood is known for its vibrant street markets and community spirit.",
+      "collocation": "neighbourhood watch",
+      "band": "5-6"
+    },
+    {
+      "word": "precinct",
+      "pos": "noun",
+      "ipa": "/ˈpriːsɪŋkt/",
+      "meaningVi": "khu vực (trong thành phố, thường dành riêng cho mục đích cụ thể)",
+      "definitionEn": "A defined area within a city, often for a specific purpose (e.g., shopping, pedestrian).",
+      "example": "The shopping precinct is always crowded during weekends, attracting both locals and tourists.",
+      "collocation": "shopping precinct",
+      "band": "6-7"
+    },
+    {
+      "word": "artery",
+      "pos": "noun",
+      "ipa": "/ˈɑːtəri/",
+      "meaningVi": "trục đường chính, huyết mạch giao thông",
+      "definitionEn": "A major road or route that carries a large volume of traffic.",
+      "example": "The city's main artery is frequently clogged with commuter traffic during peak hours.",
+      "collocation": "traffic artery",
+      "band": "7-8"
+    },
+    {
+      "word": "boulevard",
+      "pos": "noun",
+      "ipa": "/ˈbuːlɪvɑːd/",
+      "meaningVi": "đại lộ (rộng, có cây xanh)",
+      "definitionEn": "A wide, tree-lined street, often with a central median.",
+      "example": "The grand boulevard is lined with cafes and boutiques, making it a popular leisure destination.",
+      "collocation": "grand boulevard",
+      "band": "5-6"
+    },
+    {
+      "word": "plaza",
+      "pos": "noun",
+      "ipa": "/ˈplɑːzə/",
+      "meaningVi": "quảng trường, khu vực công cộng",
+      "definitionEn": "A public square or open space in a city.",
+      "example": "The central plaza hosts cultural festivals and provides a gathering place for the community.",
+      "collocation": "town plaza",
+      "band": "5-6"
+    },
+    {
+      "word": "pavement",
+      "pos": "noun",
+      "ipa": "/ˈpeɪvmənt/",
+      "meaningVi": "vỉa hè",
+      "definitionEn": "The paved surface for pedestrians alongside a road.",
+      "example": "The pavement was widened to accommodate more pedestrian traffic and outdoor seating.",
+      "collocation": "pavement café",
+      "band": "5-6"
+    },
+    {
+      "word": "litter",
+      "pos": "noun",
+      "ipa": "/ˈlɪtə/",
+      "meaningVi": "rác thải bừa bãi",
+      "definitionEn": "Waste material, such as paper and cans, left in public places.",
+      "example": "Litter is a pervasive problem in urban areas, often requiring regular street cleaning.",
+      "collocation": "litter bin",
+      "band": "5-6"
+    },
+    {
+      "word": "sanitation",
+      "pos": "noun",
+      "ipa": "/ˌsænɪˈteɪʃən/",
+      "meaningVi": "hệ thống vệ sinh môi trường (xử lý rác, nước thải)",
+      "definitionEn": "The system of waste disposal and clean water supply in a city.",
+      "example": "Inadequate sanitation in densely populated slums poses serious health risks.",
+      "collocation": "sanitation facilities",
+      "band": "8+"
+    },
+    {
+      "word": "waste disposal",
+      "pos": "noun phrase",
+      "ipa": "/weɪst dɪˈspəʊzəl/",
+      "meaningVi": "xử lý rác thải",
+      "definitionEn": "The process of collecting and disposing of garbage.",
+      "example": "Efficient waste disposal is essential for maintaining a healthy urban environment.",
+      "collocation": "waste disposal system",
+      "band": "6-7"
+    },
+    {
+      "word": "smog",
+      "pos": "noun",
+      "ipa": "/smɒɡ/",
+      "meaningVi": "khói bụi ô nhiễm (đặc biệt ở thành phố)",
+      "definitionEn": "A thick, harmful haze caused by air pollution, often in cities.",
+      "example": "The city was blanketed in thick smog due to vehicle emissions and industrial activity.",
+      "collocation": "smog alert",
+      "band": "6-7"
+    },
+    {
+      "word": "gridlock",
+      "pos": "noun",
+      "ipa": "/ˈɡrɪd.lɒk/",
+      "meaningVi": "tắc đường nghiêm trọng, ùn tắc hoàn toàn",
+      "definitionEn": "A situation where traffic is completely stopped due to congestion.",
+      "example": "The city experienced gridlock during the rush hour, causing delays for hours.",
+      "collocation": "traffic gridlock",
+      "band": "7-8"
+    },
+    {
+      "word": "walkability",
+      "pos": "noun",
+      "ipa": "/ˌwɔːkəˈbɪləti/",
+      "meaningVi": "tính dễ đi bộ (mức độ thân thiện với người đi bộ)",
+      "definitionEn": "The degree to which an area is friendly to pedestrians.",
+      "example": "The city has improved walkability by adding more pedestrian crossings and wider sidewalks.",
+      "collocation": "walkability index",
+      "band": "7-8"
+    },
+    {
+      "word": "mixed-use",
+      "pos": "adjective",
+      "ipa": "/mɪkst juːs/",
+      "meaningVi": "đa chức năng (kết hợp nhiều mục đích sử dụng)",
+      "definitionEn": "Describing a building or area that combines residential, commercial, and other uses.",
+      "example": "Mixed-use developments are becoming increasingly popular in urban planning to reduce commuting.",
+      "collocation": "mixed-use development",
+      "band": "7-8"
+    },
+    {
+      "word": "overcrowding",
+      "pos": "noun",
+      "ipa": "/ˌəʊvəˈkraʊdɪŋ/",
+      "meaningVi": "tình trạng quá đông đúc (trong nhà ở hoặc khu vực)",
+      "definitionEn": "The state of having too many people in a space, causing discomfort.",
+      "example": "Overcrowding in the city centre leads to increased stress and a higher risk of disease.",
+      "collocation": "overcrowding in housing",
+      "band": "6-7"
+    },
+    {
+      "word": "inner city",
+      "pos": "noun phrase",
+      "ipa": "/ˈɪnə ˈsɪti/",
+      "meaningVi": "nội thành (thường nghèo, xuống cấp)",
+      "definitionEn": "The central part of a city, often characterized by older buildings and lower income.",
+      "example": "The inner city has suffered from decades of neglect, but recent regeneration projects aim to revive it.",
+      "collocation": "inner city area",
+      "band": "6-7"
+    },
+    {
+      "word": "outskirts",
+      "pos": "noun plural",
+      "ipa": "/ˈaʊtskɜːts/",
+      "meaningVi": "vùng ngoại ô, ven đô",
+      "definitionEn": "The outer edges of a city, away from the center.",
+      "example": "Many families move to the outskirts to escape the high cost of living in the city centre.",
+      "collocation": "city outskirts",
+      "band": "6-7"
+    },
+    {
+      "word": "megalopolis",
+      "pos": "noun",
+      "ipa": "/ˌmɛɡəˈlɒpəlɪs/",
+      "meaningVi": "siêu đô thị (vùng đô thị rộng lớn)",
+      "definitionEn": "A very large, sprawling urban area formed by the merging of several cities.",
+      "example": "The entire region is becoming one huge megalopolis, stretching over hundreds of miles.",
+      "collocation": "megalopolis region",
+      "band": "8+"
+    },
+    {
+      "word": "regeneration",
+      "pos": "noun",
+      "ipa": "/rɪˌdʒɛnəˈreɪʃən/",
+      "meaningVi": "sự tái sinh, cải tạo đô thị",
+      "definitionEn": "The process of improving and revitalizing a run-down urban area.",
+      "example": "The government invested heavily in urban regeneration to transform the derelict docklands.",
+      "collocation": "urban regeneration scheme",
+      "band": "7-8"
+    },
+    {
+      "word": "redevelopment",
+      "pos": "noun",
+      "ipa": "/ˌriːdɪˈvɛləpmənt/",
+      "meaningVi": "sự tái phát triển (phá bỏ và xây dựng lại)",
+      "definitionEn": "The process of demolishing and rebuilding an area to improve it.",
+      "example": "The redevelopment of the old industrial zone has created new housing and jobs.",
+      "collocation": "redevelopment project",
+      "band": "7-8"
+    },
+    {
+      "word": "brownfield",
+      "pos": "noun (often attributive)",
+      "ipa": "/ˈbraʊnfiːld/",
+      "meaningVi": "khu đất công nghiệp bỏ hoang (được tái phát triển)",
+      "definitionEn": "A former industrial or commercial site that is being redeveloped.",
+      "example": "The city encourages building on brownfield sites rather than expanding into greenfield areas.",
+      "collocation": "brownfield land",
+      "band": "8+"
+    }
+  ]
+}

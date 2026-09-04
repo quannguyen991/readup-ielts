@@ -1,0 +1,508 @@
+{
+  "slug": "transport",
+  "name": "Transport",
+  "nameVi": "Giao thông",
+  "blurb": "Phương tiện, hạ tầng, tắc đường",
+  "words": [
+    {
+      "word": "congestion",
+      "pos": "noun",
+      "ipa": "/kənˈdʒɛstʃən/",
+      "meaningVi": "tắc nghẽn giao thông",
+      "definitionEn": "The state of being overcrowded, especially with traffic.",
+      "example": "Traffic congestion in urban areas leads to significant delays and increased fuel consumption.",
+      "collocation": "traffic congestion",
+      "band": "6-7"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪnfrəstrʌktʃər/",
+      "meaningVi": "cơ sở hạ tầng",
+      "definitionEn": "The basic physical systems and structures needed for a society to function, such as roads, bridges, and railways.",
+      "example": "Governments must invest heavily in transport infrastructure to support economic growth.",
+      "collocation": "transport infrastructure",
+      "band": "7-8"
+    },
+    {
+      "word": "emission",
+      "pos": "noun",
+      "ipa": "/ɪˈmɪʃən/",
+      "meaningVi": "khí thải",
+      "definitionEn": "The production and discharge of something, especially gas or radiation.",
+      "example": "Reducing vehicle emissions is crucial for improving air quality in cities.",
+      "collocation": "vehicle emissions",
+      "band": "6-7"
+    },
+    {
+      "word": "commute",
+      "pos": "noun",
+      "ipa": "/kəˈmjuːt/",
+      "meaningVi": "hành trình đi làm hàng ngày",
+      "definitionEn": "A regular journey to and from work or study.",
+      "example": "Her daily commute by train takes almost two hours each way.",
+      "collocation": "long commute",
+      "band": "6-7"
+    },
+    {
+      "word": "pedestrian",
+      "pos": "noun",
+      "ipa": "/pəˈdɛstriən/",
+      "meaningVi": "người đi bộ",
+      "definitionEn": "A person walking, especially in a town or city, rather than travelling in a vehicle.",
+      "example": "Pedestrian safety should be a priority when designing new urban roads.",
+      "collocation": "pedestrian zone",
+      "band": "5-6"
+    },
+    {
+      "word": "transit",
+      "pos": "noun",
+      "ipa": "/ˈtrænzɪt/",
+      "meaningVi": "vận chuyển công cộng",
+      "definitionEn": "The system of public transportation, especially in urban areas.",
+      "example": "Many cities are expanding their mass transit systems to reduce car dependency.",
+      "collocation": "mass transit",
+      "band": "6-7"
+    },
+    {
+      "word": "gridlock",
+      "pos": "noun",
+      "ipa": "/ˈɡrɪdlɒk/",
+      "meaningVi": "kẹt xe nghiêm trọng",
+      "definitionEn": "A situation where traffic is so congested that no movement is possible.",
+      "example": "The city center experienced complete gridlock during the festival.",
+      "collocation": "gridlock situation",
+      "band": "7-8"
+    },
+    {
+      "word": "rush hour",
+      "pos": "noun",
+      "ipa": "/rʌʃ aʊər/",
+      "meaningVi": "giờ cao điểm",
+      "definitionEn": "The busiest time of day for travel, when people are going to or coming from work.",
+      "example": "During rush hour, it is almost impossible to find a seat on the underground.",
+      "collocation": "rush hour traffic",
+      "band": "5-6"
+    },
+    {
+      "word": "cycleway",
+      "pos": "noun",
+      "ipa": "/ˈsaɪkəlweɪ/",
+      "meaningVi": "làn đường dành cho xe đạp",
+      "definitionEn": "A path or lane used specifically for bicycles.",
+      "example": "The city has built an extensive network of cycleways to encourage cycling.",
+      "collocation": "dedicated cycleway",
+      "band": "6-7"
+    },
+    {
+      "word": "carpool",
+      "pos": "verb",
+      "ipa": "/ˈkɑːrpuːl/",
+      "meaningVi": "đi chung xe",
+      "definitionEn": "To travel together in a car, sharing the cost and reducing the number of vehicles on the road.",
+      "example": "Many employees choose to carpool to save on fuel expenses and reduce congestion.",
+      "collocation": "carpool lane",
+      "band": "6-7"
+    },
+    {
+      "word": "toll road",
+      "pos": "noun",
+      "ipa": "/toʊl roʊd/",
+      "meaningVi": "đường thu phí",
+      "definitionEn": "A road for which a driver must pay a fee to use.",
+      "example": "Using the toll road can significantly cut travel time during peak hours.",
+      "collocation": "toll road fee",
+      "band": "6-7"
+    },
+    {
+      "word": "highway",
+      "pos": "noun",
+      "ipa": "/ˈhaɪweɪ/",
+      "meaningVi": "đường cao tốc",
+      "definitionEn": "A main road, especially one connecting major towns or cities.",
+      "example": "The new highway reduced the journey time between the two cities by half.",
+      "collocation": "major highway",
+      "band": "5-6"
+    },
+    {
+      "word": "subway",
+      "pos": "noun",
+      "ipa": "/ˈsʌbweɪ/",
+      "meaningVi": "tàu điện ngầm",
+      "definitionEn": "An underground railway system in a city.",
+      "example": "The subway is the most efficient way to travel across the city during rush hour.",
+      "collocation": "subway system",
+      "band": "5-6"
+    },
+    {
+      "word": "railway",
+      "pos": "noun",
+      "ipa": "/ˈreɪlweɪ/",
+      "meaningVi": "đường sắt",
+      "definitionEn": "A track made of steel rails along which trains run.",
+      "example": "Investment in the railway network is essential for promoting sustainable transport.",
+      "collocation": "railway network",
+      "band": "5-6"
+    },
+    {
+      "word": "airport",
+      "pos": "noun",
+      "ipa": "/ˈɛrpɔːrt/",
+      "meaningVi": "sân bay",
+      "definitionEn": "A complex of runways and buildings for the takeoff, landing, and maintenance of aircraft.",
+      "example": "The airport expansion will increase its capacity to handle more international flights.",
+      "collocation": "airport terminal",
+      "band": "5-6"
+    },
+    {
+      "word": "seaport",
+      "pos": "noun",
+      "ipa": "/ˈsiːpɔːrt/",
+      "meaningVi": "cảng biển",
+      "definitionEn": "A port where ships dock, especially for the loading and unloading of cargo.",
+      "example": "The seaport handles a large volume of freight from overseas trade routes.",
+      "collocation": "seaport facilities",
+      "band": "6-7"
+    },
+    {
+      "word": "logistics",
+      "pos": "noun",
+      "ipa": "/ləˈdʒɪstɪks/",
+      "meaningVi": "hậu cần, logistics",
+      "definitionEn": "The detailed organization and implementation of a complex operation, especially in transport and supply chain.",
+      "example": "Efficient logistics are vital for the timely delivery of goods across the country.",
+      "collocation": "logistics company",
+      "band": "7-8"
+    },
+    {
+      "word": "freight",
+      "pos": "noun",
+      "ipa": "/freɪt/",
+      "meaningVi": "hàng hóa vận chuyển",
+      "definitionEn": "Goods transported in bulk by truck, train, ship, or aircraft.",
+      "example": "The railway is increasingly used for freight transport to reduce road congestion.",
+      "collocation": "freight train",
+      "band": "7-8"
+    },
+    {
+      "word": "cargo",
+      "pos": "noun",
+      "ipa": "/ˈkɑːrɡoʊ/",
+      "meaningVi": "hàng hóa (trên tàu, máy bay)",
+      "definitionEn": "Goods carried on a ship, aircraft, or motor vehicle.",
+      "example": "The cargo ship was loaded with containers destined for European ports.",
+      "collocation": "cargo ship",
+      "band": "6-7"
+    },
+    {
+      "word": "vehicle",
+      "pos": "noun",
+      "ipa": "/ˈviːɪkəl/",
+      "meaningVi": "phương tiện giao thông",
+      "definitionEn": "A machine used for transporting people or goods, especially on land.",
+      "example": "Electric vehicles are becoming more popular as a cleaner alternative to petrol cars.",
+      "collocation": "motor vehicle",
+      "band": "5-6"
+    },
+    {
+      "word": "motorist",
+      "pos": "noun",
+      "ipa": "/ˈmoʊtərɪst/",
+      "meaningVi": "người lái xe ô tô",
+      "definitionEn": "A person who drives a car.",
+      "example": "Motorists should be aware of cyclists sharing the road.",
+      "collocation": "motorist behavior",
+      "band": "6-7"
+    },
+    {
+      "word": "passenger",
+      "pos": "noun",
+      "ipa": "/ˈpæsɪndʒər/",
+      "meaningVi": "hành khách",
+      "definitionEn": "A person who is travelling in a vehicle, but not driving it.",
+      "example": "Passenger numbers on the high-speed rail have increased dramatically this year.",
+      "collocation": "passenger train",
+      "band": "5-6"
+    },
+    {
+      "word": "fare",
+      "pos": "noun",
+      "ipa": "/fɛr/",
+      "meaningVi": "giá vé",
+      "definitionEn": "The money paid for a journey on public transport.",
+      "example": "The government subsidized bus fares to encourage more people to use public transport.",
+      "collocation": "bus fare",
+      "band": "5-6"
+    },
+    {
+      "word": "route",
+      "pos": "noun",
+      "ipa": "/ruːt/",
+      "meaningVi": "tuyến đường, lộ trình",
+      "definitionEn": "A way or course taken in getting from a starting point to a destination.",
+      "example": "The most direct route to the airport is via the expressway.",
+      "collocation": "bus route",
+      "band": "5-6"
+    },
+    {
+      "word": "itinerary",
+      "pos": "noun",
+      "ipa": "/aɪˈtɪnərɛri/",
+      "meaningVi": "hành trình chi tiết",
+      "definitionEn": "A planned route or journey, especially for a business trip or holiday.",
+      "example": "The travel agent prepared a detailed itinerary for our tour of Europe.",
+      "collocation": "travel itinerary",
+      "band": "7-8"
+    },
+    {
+      "word": "navigation",
+      "pos": "noun",
+      "ipa": "/ˌnævɪˈɡeɪʃən/",
+      "meaningVi": "định vị, dẫn đường",
+      "definitionEn": "The process of planning and directing the route of a vehicle or ship.",
+      "example": "Modern navigation systems help drivers avoid traffic jams and find the fastest route.",
+      "collocation": "satellite navigation",
+      "band": "6-7"
+    },
+    {
+      "word": "fuel",
+      "pos": "noun",
+      "ipa": "/ˈfjuːəl/",
+      "meaningVi": "nhiên liệu",
+      "definitionEn": "A substance used to produce heat or power, such as petrol, diesel, or electricity.",
+      "example": "The rising cost of fuel has prompted many people to switch to public transport.",
+      "collocation": "fuel consumption",
+      "band": "5-6"
+    },
+    {
+      "word": "electric vehicle",
+      "pos": "noun",
+      "ipa": "/ɪˈlɛktrɪk ˈviːɪkəl/",
+      "meaningVi": "xe điện",
+      "definitionEn": "A vehicle that is powered by an electric motor rather than an internal combustion engine.",
+      "example": "Electric vehicles produce zero tailpipe emissions, making them environmentally friendly.",
+      "collocation": "electric vehicle charging station",
+      "band": "6-7"
+    },
+    {
+      "word": "hybrid",
+      "pos": "noun",
+      "ipa": "/ˈhaɪbrɪd/",
+      "meaningVi": "xe hybrid (kết hợp xăng và điện)",
+      "definitionEn": "A vehicle that uses both an internal combustion engine and an electric motor for propulsion.",
+      "example": "Hybrid cars are often more fuel-efficient than conventional petrol-only vehicles.",
+      "collocation": "hybrid car",
+      "band": "6-7"
+    },
+    {
+      "word": "autonomous",
+      "pos": "adjective",
+      "ipa": "/ɔːˈtɒnəməs/",
+      "meaningVi": "tự hành, không người lái",
+      "definitionEn": "(of a vehicle) able to operate without direct human control.",
+      "example": "Autonomous vehicles are expected to revolutionize the transport industry in the coming decades.",
+      "collocation": "autonomous driving",
+      "band": "8+"
+    },
+    {
+      "word": "self-driving",
+      "pos": "adjective",
+      "ipa": "/sɛlf ˈdraɪvɪŋ/",
+      "meaningVi": "tự lái",
+      "definitionEn": "(of a vehicle) capable of sensing its environment and moving safely with little or no human input.",
+      "example": "Self-driving cars could reduce accidents caused by human error.",
+      "collocation": "self-driving technology",
+      "band": "7-8"
+    },
+    {
+      "word": "ride-sharing",
+      "pos": "noun",
+      "ipa": "/raɪd ˈʃɛrɪŋ/",
+      "meaningVi": "dịch vụ đi chung xe",
+      "definitionEn": "A service where passengers share a ride in a private vehicle, often arranged via a mobile app.",
+      "example": "Ride-sharing platforms have reduced the number of cars on the road during peak hours.",
+      "collocation": "ride-sharing app",
+      "band": "6-7"
+    },
+    {
+      "word": "ride-hailing",
+      "pos": "noun",
+      "ipa": "/raɪd ˈheɪlɪŋ/",
+      "meaningVi": "dịch vụ gọi xe qua ứng dụng",
+      "definitionEn": "A service that allows users to request a ride from a private driver via a smartphone app.",
+      "example": "Ride-hailing services like Uber and Grab have changed urban mobility patterns.",
+      "collocation": "ride-hailing service",
+      "band": "6-7"
+    },
+    {
+      "word": "traffic light",
+      "pos": "noun",
+      "ipa": "/ˈtræfɪk laɪt/",
+      "meaningVi": "đèn giao thông",
+      "definitionEn": "A set of automatically operated coloured lights (red, amber, green) for controlling traffic at road junctions.",
+      "example": "Traffic lights are essential for managing the flow of vehicles at busy intersections.",
+      "collocation": "traffic light system",
+      "band": "5-6"
+    },
+    {
+      "word": "roundabout",
+      "pos": "noun",
+      "ipa": "/ˈraʊndəbaʊt/",
+      "meaningVi": "vòng xuyến, bùng binh",
+      "definitionEn": "A road junction at which traffic moves in one direction around a central island.",
+      "example": "Roundabouts are often safer than traditional intersections because they reduce the risk of head-on collisions.",
+      "collocation": "roundabout junction",
+      "band": "5-6"
+    },
+    {
+      "word": "intersection",
+      "pos": "noun",
+      "ipa": "/ˌɪntərˈsɛkʃən/",
+      "meaningVi": "ngã tư, giao lộ",
+      "definitionEn": "A place where two or more roads meet, especially when they cross each other.",
+      "example": "The intersection is notorious for accidents during peak hours.",
+      "collocation": "busy intersection",
+      "band": "5-6"
+    },
+    {
+      "word": "crosswalk",
+      "pos": "noun",
+      "ipa": "/ˈkrɔːswɔːk/",
+      "meaningVi": "vạch kẻ đường cho người đi bộ (Mỹ)",
+      "definitionEn": "A marked part of a road where pedestrians have priority to cross.",
+      "example": "Drivers must stop at crosswalks to allow pedestrians to cross safely.",
+      "collocation": "pedestrian crosswalk",
+      "band": "5-6"
+    },
+    {
+      "word": "footpath",
+      "pos": "noun",
+      "ipa": "/ˈfʊtpæθ/",
+      "meaningVi": "vỉa hè, lối đi bộ (Anh)",
+      "definitionEn": "A path for people to walk along, especially in a town or city.",
+      "example": "The council has widened the footpath to accommodate more pedestrians.",
+      "collocation": "narrow footpath",
+      "band": "5-6"
+    },
+    {
+      "word": "roadwork",
+      "pos": "noun",
+      "ipa": "/ˈroʊdwɜːrk/",
+      "meaningVi": "công trình sửa chữa đường",
+      "definitionEn": "Construction or repair of roads, often causing temporary traffic delays.",
+      "example": "Roadwork on the main highway caused long delays for commuters.",
+      "collocation": "roadwork zone",
+      "band": "5-6"
+    },
+    {
+      "word": "detour",
+      "pos": "noun",
+      "ipa": "/ˈdiːtʊər/",
+      "meaningVi": "đường vòng, đường tránh",
+      "definitionEn": "A longer route taken to avoid a problem or to reach a place when the direct road is closed.",
+      "example": "Drivers were advised to take a detour due to the bridge closure.",
+      "collocation": "detour route",
+      "band": "6-7"
+    },
+    {
+      "word": "diversion",
+      "pos": "noun",
+      "ipa": "/daɪˈvɜːrʒən/",
+      "meaningVi": "sự chuyển hướng giao thông",
+      "definitionEn": "A temporary change in the route of traffic, typically due to roadworks or an accident.",
+      "example": "The police set up a diversion to redirect traffic away from the accident scene.",
+      "collocation": "traffic diversion",
+      "band": "6-7"
+    },
+    {
+      "word": "accident",
+      "pos": "noun",
+      "ipa": "/ˈæksɪdənt/",
+      "meaningVi": "tai nạn",
+      "definitionEn": "An unfortunate event that happens unexpectedly and causes damage or injury, especially involving vehicles.",
+      "example": "The road accident caused a three-hour traffic jam on the motorway.",
+      "collocation": "road accident",
+      "band": "5-6"
+    },
+    {
+      "word": "collision",
+      "pos": "noun",
+      "ipa": "/kəˈlɪʒən/",
+      "meaningVi": "va chạm, đâm xe",
+      "definitionEn": "An instance of one moving object or person striking violently against another.",
+      "example": "The collision between a truck and a car resulted in serious injuries.",
+      "collocation": "head-on collision",
+      "band": "6-7"
+    },
+    {
+      "word": "fatality",
+      "pos": "noun",
+      "ipa": "/feɪˈtælɪti/",
+      "meaningVi": "tử vong (do tai nạn)",
+      "definitionEn": "A death caused by an accident, disaster, or war.",
+      "example": "Strict enforcement of seatbelt laws has reduced road fatalities significantly.",
+      "collocation": "road fatality",
+      "band": "7-8"
+    },
+    {
+      "word": "injury",
+      "pos": "noun",
+      "ipa": "/ˈɪndʒəri/",
+      "meaningVi": "thương tích",
+      "definitionEn": "Physical harm caused to a person's body, especially in an accident.",
+      "example": "The number of serious injuries in traffic accidents has declined due to safer vehicles.",
+      "collocation": "serious injury",
+      "band": "5-6"
+    },
+    {
+      "word": "safety",
+      "pos": "noun",
+      "ipa": "/ˈseɪfti/",
+      "meaningVi": "an toàn",
+      "definitionEn": "The condition of being protected from danger, risk, or injury.",
+      "example": "Road safety campaigns aim to reduce the number of accidents through education and enforcement.",
+      "collocation": "road safety",
+      "band": "5-6"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪnəbəl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "Able to be maintained at a certain level without depleting natural resources or causing environmental damage.",
+      "example": "Sustainable transport systems, such as cycling and public transit, are key to reducing carbon emissions.",
+      "collocation": "sustainable transport",
+      "band": "7-8"
+    },
+    {
+      "word": "eco-mobility",
+      "pos": "noun",
+      "ipa": "/ˈiːkoʊ moʊˈbɪlɪti/",
+      "meaningVi": "di chuyển sinh thái",
+      "definitionEn": "Environmentally friendly modes of transportation, such as walking, cycling, and electric vehicles.",
+      "example": "Cities are promoting eco-mobility by building bike lanes and pedestrian zones.",
+      "collocation": "eco-mobility options",
+      "band": "8+"
+    },
+    {
+      "word": "telecommute",
+      "pos": "verb",
+      "ipa": "/ˌtɛlɪkəˈmjuːt/",
+      "meaningVi": "làm việc từ xa",
+      "definitionEn": "To work from home, using telecommunications technology instead of commuting to an office.",
+      "example": "Telecommuting has become more common, which helps reduce traffic congestion during peak hours.",
+      "collocation": "telecommute from home",
+      "band": "7-8"
+    },
+    {
+      "word": "network",
+      "pos": "noun",
+      "ipa": "/ˈnɛtwɜːrk/",
+      "meaningVi": "mạng lưới (giao thông)",
+      "definitionEn": "A system of interconnected roads, railways, or other transport routes.",
+      "example": "The city's transport network includes buses, trams, and a metro line.",
+      "collocation": "road network",
+      "band": "6-7"
+    }
+  ]
+}

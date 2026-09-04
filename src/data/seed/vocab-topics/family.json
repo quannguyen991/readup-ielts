@@ -1,0 +1,508 @@
+{
+  "slug": "family",
+  "name": "Family",
+  "nameVi": "Gia đình",
+  "blurb": "Nuôi dạy con, quan hệ, thế hệ",
+  "words": [
+    {
+      "word": "nuclear family",
+      "pos": "noun",
+      "ipa": "/ˈnjuːkliə ˈfæmɪli/",
+      "meaningVi": "gia đình hạt nhân",
+      "definitionEn": "a family unit consisting of parents and their children living together",
+      "example": "The nuclear family is often considered the basic unit of society.",
+      "collocation": "nuclear family structure",
+      "band": "6-7"
+    },
+    {
+      "word": "extended family",
+      "pos": "noun",
+      "ipa": "/ɪkˈstendɪd ˈfæmɪli/",
+      "meaningVi": "gia đình mở rộng",
+      "definitionEn": "a family that includes relatives such as grandparents, aunts, uncles, and cousins",
+      "example": "In many cultures, the extended family plays a crucial role in child-rearing.",
+      "collocation": "extended family members",
+      "band": "6-7"
+    },
+    {
+      "word": "upbringing",
+      "pos": "noun",
+      "ipa": "/ˈʌpbrɪŋɪŋ/",
+      "meaningVi": "sự nuôi dạy",
+      "definitionEn": "the way a child is raised and educated",
+      "example": "Her strict upbringing taught her the value of discipline.",
+      "collocation": "traditional upbringing",
+      "band": "6-7"
+    },
+    {
+      "word": "nurture",
+      "pos": "verb",
+      "ipa": "/ˈnɜːtʃə/",
+      "meaningVi": "nuôi dưỡng",
+      "definitionEn": "to care for and encourage the growth or development of someone",
+      "example": "Parents should nurture their children's curiosity and creativity.",
+      "collocation": "nurture talent",
+      "band": "6-7"
+    },
+    {
+      "word": "discipline",
+      "pos": "noun",
+      "ipa": "/ˈdɪsɪplɪn/",
+      "meaningVi": "kỷ luật",
+      "definitionEn": "the practice of training people to obey rules or a code of behavior",
+      "example": "Consistent discipline helps children understand boundaries and self-control.",
+      "collocation": "parental discipline",
+      "band": "6-7"
+    },
+    {
+      "word": "authoritarian",
+      "pos": "adjective",
+      "ipa": "/ɔːˌθɒrɪˈteəriən/",
+      "meaningVi": "độc đoán (chỉ cha mẹ)",
+      "definitionEn": "expecting or requiring complete obedience from children without explanation",
+      "example": "Authoritarian parenting can hinder a child's independence and critical thinking.",
+      "collocation": "authoritarian style",
+      "band": "7-8"
+    },
+    {
+      "word": "permissive",
+      "pos": "adjective",
+      "ipa": "/pəˈmɪsɪv/",
+      "meaningVi": "dễ dãi (chỉ cha mẹ)",
+      "definitionEn": "allowing children a lot of freedom and few rules",
+      "example": "Permissive parents often avoid setting clear limits, which may lead to behavioral issues.",
+      "collocation": "permissive parenting",
+      "band": "7-8"
+    },
+    {
+      "word": "authoritative",
+      "pos": "adjective",
+      "ipa": "/ɔːˈθɒrɪtətɪv/",
+      "meaningVi": "có uy quyền đúng mực",
+      "definitionEn": "combining warmth and firmness, setting clear rules while explaining reasons",
+      "example": "Authoritative parenting is linked to positive outcomes such as self-esteem and social competence.",
+      "collocation": "authoritative approach",
+      "band": "7-8"
+    },
+    {
+      "word": "attachment",
+      "pos": "noun",
+      "ipa": "/əˈtætʃmənt/",
+      "meaningVi": "sự gắn bó tình cảm",
+      "definitionEn": "a deep emotional bond between a child and a caregiver",
+      "example": "Secure attachment in infancy fosters emotional health and resilience later in life.",
+      "collocation": "attachment theory",
+      "band": "7-8"
+    },
+    {
+      "word": "sibling",
+      "pos": "noun",
+      "ipa": "/ˈsɪblɪŋ/",
+      "meaningVi": "anh chị em ruột",
+      "definitionEn": "a brother or sister",
+      "example": "Sibling rivalry is common in many families, but it can be managed with fair treatment.",
+      "collocation": "younger sibling",
+      "band": "5-6"
+    },
+    {
+      "word": "rivalry",
+      "pos": "noun",
+      "ipa": "/ˈraɪvəlri/",
+      "meaningVi": "sự cạnh tranh",
+      "definitionEn": "competition between individuals, especially siblings",
+      "example": "Sibling rivalry can be minimized by encouraging cooperation rather than comparison.",
+      "collocation": "sibling rivalry",
+      "band": "6-7"
+    },
+    {
+      "word": "generation gap",
+      "pos": "noun",
+      "ipa": "/ˌdʒenəˈreɪʃən ɡæp/",
+      "meaningVi": "khoảng cách thế hệ",
+      "definitionEn": "differences in attitudes, values, and behaviors between younger and older generations",
+      "example": "The generation gap often leads to misunderstandings, but open communication can bridge it.",
+      "collocation": "bridge the generation gap",
+      "band": "6-7"
+    },
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈherɪtɪdʒ/",
+      "meaningVi": "di sản (văn hóa, gia đình)",
+      "definitionEn": "traditions, values, and achievements passed down from previous generations",
+      "example": "Family heritage shapes our identity and sense of belonging.",
+      "collocation": "cultural heritage",
+      "band": "7-8"
+    },
+    {
+      "word": "lineage",
+      "pos": "noun",
+      "ipa": "/ˈlɪniɪdʒ/",
+      "meaningVi": "dòng dõi, huyết thống",
+      "definitionEn": "direct descent from a particular ancestor or family line",
+      "example": "They traced their lineage back several centuries through historical records.",
+      "collocation": "family lineage",
+      "band": "8+"
+    },
+    {
+      "word": "kinship",
+      "pos": "noun",
+      "ipa": "/ˈkɪnʃɪp/",
+      "meaningVi": "quan hệ họ hàng",
+      "definitionEn": "blood relationship or a connection by family ties",
+      "example": "Kinship ties are especially strong in rural communities where extended families live together.",
+      "collocation": "kinship system",
+      "band": "7-8"
+    },
+    {
+      "word": "foster",
+      "pos": "verb",
+      "ipa": "/ˈfɒstə/",
+      "meaningVi": "nuôi dưỡng (con nuôi tạm thời)",
+      "definitionEn": "to raise a child who is not one's own biologically",
+      "example": "They decided to foster a child in need after completing the training program.",
+      "collocation": "foster parent",
+      "band": "6-7"
+    },
+    {
+      "word": "adoption",
+      "pos": "noun",
+      "ipa": "/əˈdɒpʃən/",
+      "meaningVi": "việc nhận con nuôi",
+      "definitionEn": "the legal process of taking a child as one's own",
+      "example": "Adoption provides a loving home for many children who cannot live with their birth parents.",
+      "collocation": "adoption agency",
+      "band": "6-7"
+    },
+    {
+      "word": "custody",
+      "pos": "noun",
+      "ipa": "/ˈkʌstədi/",
+      "meaningVi": "quyền nuôi con",
+      "definitionEn": "the legal right to take care of a child after a divorce or separation",
+      "example": "After the divorce, the mother was granted custody of the children.",
+      "collocation": "custody battle",
+      "band": "7-8"
+    },
+    {
+      "word": "autonomy",
+      "pos": "noun",
+      "ipa": "/ɔːˈtɒnəmi/",
+      "meaningVi": "quyền tự chủ",
+      "definitionEn": "the ability or right to make one's own decisions independently",
+      "example": "Adolescents often seek greater autonomy from their parents as they mature.",
+      "collocation": "grant autonomy",
+      "band": "7-8"
+    },
+    {
+      "word": "obedience",
+      "pos": "noun",
+      "ipa": "/əˈbiːdiəns/",
+      "meaningVi": "sự vâng lời",
+      "definitionEn": "compliance with commands or rules from an authority figure",
+      "example": "Strict parents expect unquestioning obedience from their children.",
+      "collocation": "demand obedience",
+      "band": "6-7"
+    },
+    {
+      "word": "rebellion",
+      "pos": "noun",
+      "ipa": "/rɪˈbeljən/",
+      "meaningVi": "sự nổi loạn",
+      "definitionEn": "resistance to or defiance of authority, especially during adolescence",
+      "example": "Teenage rebellion is a natural part of development as young people assert their identity.",
+      "collocation": "act of rebellion",
+      "band": "6-7"
+    },
+    {
+      "word": "conformity",
+      "pos": "noun",
+      "ipa": "/kənˈfɔːmɪti/",
+      "meaningVi": "sự tuân thủ, phù hợp",
+      "definitionEn": "behavior that matches the expectations of a group or society",
+      "example": "Family pressure can lead to excessive conformity, stifling a child's creativity.",
+      "collocation": "social conformity",
+      "band": "7-8"
+    },
+    {
+      "word": "individuality",
+      "pos": "noun",
+      "ipa": "/ˌɪndɪˌvɪdʒuˈæləti/",
+      "meaningVi": "tính cá nhân",
+      "definitionEn": "the qualities that make a person unique and different from others",
+      "example": "Parents should encourage individuality in their children rather than enforcing uniformity.",
+      "collocation": "express individuality",
+      "band": "7-8"
+    },
+    {
+      "word": "bonding",
+      "pos": "noun",
+      "ipa": "/ˈbɒndɪŋ/",
+      "meaningVi": "sự gắn kết",
+      "definitionEn": "the process of forming close emotional relationships",
+      "example": "Bonding activities such as family meals strengthen ties between parents and children.",
+      "collocation": "family bonding",
+      "band": "5-6"
+    },
+    {
+      "word": "cohesion",
+      "pos": "noun",
+      "ipa": "/kəʊˈhiːʒən/",
+      "meaningVi": "sự gắn kết, đoàn kết",
+      "definitionEn": "the unity and solidarity within a family group",
+      "example": "Family cohesion is important for providing emotional support during difficult times.",
+      "collocation": "family cohesion",
+      "band": "7-8"
+    },
+    {
+      "word": "discord",
+      "pos": "noun",
+      "ipa": "/ˈdɪskɔːd/",
+      "meaningVi": "sự bất hòa",
+      "definitionEn": "conflict or disagreement among family members",
+      "example": "Constant discord in the family can harm children's psychological well-being.",
+      "collocation": "family discord",
+      "band": "8+"
+    },
+    {
+      "word": "reconciliation",
+      "pos": "noun",
+      "ipa": "/ˌrekənsɪliˈeɪʃən/",
+      "meaningVi": "sự hòa giải",
+      "definitionEn": "the restoration of friendly relations after a quarrel or conflict",
+      "example": "Reconciliation after a serious argument requires empathy and compromise from both sides.",
+      "collocation": "seek reconciliation",
+      "band": "8+"
+    },
+    {
+      "word": "role model",
+      "pos": "noun",
+      "ipa": "/ˈrəʊl ˌmɒdl/",
+      "meaningVi": "hình mẫu",
+      "definitionEn": "a person whose behavior is emulated by others, especially children",
+      "example": "Parents are often the first role models for their children, influencing their values and habits.",
+      "collocation": "positive role model",
+      "band": "5-6"
+    },
+    {
+      "word": "parenting",
+      "pos": "noun",
+      "ipa": "/ˈpeərəntɪŋ/",
+      "meaningVi": "việc nuôi dạy con",
+      "definitionEn": "the process of raising a child from infancy to adulthood",
+      "example": "Effective parenting requires patience, consistency, and active involvement in a child's life.",
+      "collocation": "parenting skills",
+      "band": "6-7"
+    },
+    {
+      "word": "child-rearing",
+      "pos": "noun",
+      "ipa": "/ˈtʃaɪld rɪərɪŋ/",
+      "meaningVi": "việc nuôi dạy trẻ",
+      "definitionEn": "the practices and methods used to raise children",
+      "example": "Child-rearing practices vary significantly across cultures and socioeconomic backgrounds.",
+      "collocation": "child-rearing methods",
+      "band": "7-8"
+    },
+    {
+      "word": "punishment",
+      "pos": "noun",
+      "ipa": "/ˈpʌnɪʃmənt/",
+      "meaningVi": "hình phạt",
+      "definitionEn": "a penalty imposed for misbehavior or wrongdoing",
+      "example": "Physical punishment is discouraged in modern parenting due to its negative long-term effects.",
+      "collocation": "corporal punishment",
+      "band": "6-7"
+    },
+    {
+      "word": "affection",
+      "pos": "noun",
+      "ipa": "/əˈfekʃən/",
+      "meaningVi": "tình cảm, sự yêu thương",
+      "definitionEn": "a gentle feeling of fondness or love",
+      "example": "Showing affection is crucial for a child's emotional development and sense of security.",
+      "collocation": "parental affection",
+      "band": "5-6"
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "ipa": "/ˈempəθi/",
+      "meaningVi": "sự đồng cảm",
+      "definitionEn": "the ability to understand and share the feelings of another",
+      "example": "Parents can teach empathy by modeling compassionate behavior and discussing emotions.",
+      "collocation": "show empathy",
+      "band": "7-8"
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "ipa": "/rɪˈzɪliəns/",
+      "meaningVi": "khả năng phục hồi, kiên cường",
+      "definitionEn": "the capacity to recover quickly from difficulties or adversity",
+      "example": "Family support builds resilience in children, helping them cope with stress and setbacks.",
+      "collocation": "emotional resilience",
+      "band": "7-8"
+    },
+    {
+      "word": "independence",
+      "pos": "noun",
+      "ipa": "/ˌɪndɪˈpendəns/",
+      "meaningVi": "tính độc lập",
+      "definitionEn": "the state of being self-reliant and free from control",
+      "example": "Encouraging independence prepares children for adulthood and responsible decision-making.",
+      "collocation": "foster independence",
+      "band": "6-7"
+    },
+    {
+      "word": "dependency",
+      "pos": "noun",
+      "ipa": "/dɪˈpendənsi/",
+      "meaningVi": "sự phụ thuộc",
+      "definitionEn": "reliance on others for support, often excessive",
+      "example": "Overprotection can lead to unhealthy dependency, preventing children from developing self-confidence.",
+      "collocation": "emotional dependency",
+      "band": "7-8"
+    },
+    {
+      "word": "guidance",
+      "pos": "noun",
+      "ipa": "/ˈɡaɪdns/",
+      "meaningVi": "sự hướng dẫn",
+      "definitionEn": "advice or direction given to help someone make decisions",
+      "example": "Parental guidance is essential during adolescence when young people face many choices.",
+      "collocation": "provide guidance",
+      "band": "5-6"
+    },
+    {
+      "word": "supervision",
+      "pos": "noun",
+      "ipa": "/ˌsuːpəˈvɪʒən/",
+      "meaningVi": "sự giám sát",
+      "definitionEn": "the act of watching over a child's activities to ensure safety and proper behavior",
+      "example": "Adequate supervision prevents risky behavior and promotes a child's well-being.",
+      "collocation": "parental supervision",
+      "band": "6-7"
+    },
+    {
+      "word": "tradition",
+      "pos": "noun",
+      "ipa": "/trəˈdɪʃən/",
+      "meaningVi": "truyền thống",
+      "definitionEn": "a long-established custom or belief passed down within a family",
+      "example": "Family traditions strengthen bonds across generations and create lasting memories.",
+      "collocation": "family tradition",
+      "band": "5-6"
+    },
+    {
+      "word": "value",
+      "pos": "noun",
+      "ipa": "/ˈvæljuː/",
+      "meaningVi": "giá trị (đạo đức, tinh thần)",
+      "definitionEn": "a principle or standard of behavior considered important in a family",
+      "example": "Honesty is a core value in many families, and it is taught from an early age.",
+      "collocation": "family values",
+      "band": "5-6"
+    },
+    {
+      "word": "morality",
+      "pos": "noun",
+      "ipa": "/məˈræləti/",
+      "meaningVi": "đạo đức",
+      "definitionEn": "principles concerning the distinction between right and wrong",
+      "example": "Parents instill morality in their children by discussing ethical dilemmas and setting examples.",
+      "collocation": "moral development",
+      "band": "7-8"
+    },
+    {
+      "word": "ethics",
+      "pos": "noun",
+      "ipa": "/ˈeθɪks/",
+      "meaningVi": "đạo đức học, nguyên tắc đạo đức",
+      "definitionEn": "moral principles that govern a person's behavior",
+      "example": "Family ethics influence how children treat others and make decisions throughout life.",
+      "collocation": "work ethics",
+      "band": "7-8"
+    },
+    {
+      "word": "only child",
+      "pos": "noun",
+      "ipa": "/ˈəʊnli tʃaɪld/",
+      "meaningVi": "con một",
+      "definitionEn": "a child with no siblings",
+      "example": "Being an only child often means receiving more attention, but it can also lead to loneliness.",
+      "collocation": "only child syndrome",
+      "band": "5-6"
+    },
+    {
+      "word": "firstborn",
+      "pos": "noun",
+      "ipa": "/ˈfɜːstbɔːn/",
+      "meaningVi": "con đầu lòng",
+      "definitionEn": "the eldest child in a family",
+      "example": "Firstborn children often take on responsibilities and may feel pressure to set an example.",
+      "collocation": "firstborn child",
+      "band": "6-7"
+    },
+    {
+      "word": "middle child",
+      "pos": "noun",
+      "ipa": "/ˈmɪdl tʃaɪld/",
+      "meaningVi": "con giữa",
+      "definitionEn": "a child who is neither the eldest nor the youngest in a family",
+      "example": "The middle child may feel overlooked, but they often develop strong negotiation skills.",
+      "collocation": "middle child syndrome",
+      "band": "6-7"
+    },
+    {
+      "word": "youngest child",
+      "pos": "noun",
+      "ipa": "/ˈjʌŋɡɪst tʃaɪld/",
+      "meaningVi": "con út",
+      "definitionEn": "the last-born child in a family",
+      "example": "The youngest child often receives more lenient treatment and may be more outgoing.",
+      "collocation": "youngest child",
+      "band": "5-6"
+    },
+    {
+      "word": "grandparent",
+      "pos": "noun",
+      "ipa": "/ˈɡrændpeərənt/",
+      "meaningVi": "ông bà",
+      "definitionEn": "the parent of one's parent",
+      "example": "Grandparents often provide valuable wisdom and emotional support to grandchildren.",
+      "collocation": "grandparent involvement",
+      "band": "5-6"
+    },
+    {
+      "word": "multigenerational",
+      "pos": "adjective",
+      "ipa": "/ˌmʌltiˌdʒenəˈreɪʃənl/",
+      "meaningVi": "đa thế hệ",
+      "definitionEn": "involving several generations of a family living together or interacting",
+      "example": "Multigenerational households are common in many cultures, fostering strong family bonds.",
+      "collocation": "multigenerational family",
+      "band": "7-8"
+    },
+    {
+      "word": "heir",
+      "pos": "noun",
+      "ipa": "/eə/",
+      "meaningVi": "người thừa kế",
+      "definitionEn": "a person legally entitled to inherit property or a title",
+      "example": "The eldest son was the heir to the family estate, according to tradition.",
+      "collocation": "legal heir",
+      "band": "8+"
+    },
+    {
+      "word": "ancestor",
+      "pos": "noun",
+      "ipa": "/ˈænsestə/",
+      "meaningVi": "tổ tiên",
+      "definitionEn": "a person from whom one is descended, usually more remote than a grandparent",
+      "example": "Knowing one's ancestors can provide a sense of identity and connection to the past.",
+      "collocation": "ancestor worship",
+      "band": "7-8"
+    }
+  ]
+}

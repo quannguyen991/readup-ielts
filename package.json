@@ -12,6 +12,7 @@
     "@tanstack/react-query": "^5.101.4",
     "babel-preset-expo": "~57.0.0",
     "expo": "~57.0.11",
+    "expo-clipboard": "~57.0.1",
     "expo-constants": "~57.0.9",
     "expo-font": "~57.0.1",
     "expo-image": "~57.0.2",
@@ -25,6 +26,7 @@
     "expo-web-browser": "~57.0.2",
     "nativewind": "^4.2.6",
     "openai": "^7.4.0",
+    "qrcode-generator": "^2.0.4",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-native": "0.86.2",
@@ -46,6 +48,8 @@
     "@types/react": "~19.2.2",
     "cloudflared": "^0.7.1",
     "dotenv": "^17.4.2",
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~57.0.1",
     "tsx": "^4.23.11",
     "typescript": "~6.0.3"
   },
@@ -54,7 +58,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "vercel-build": "expo export -p web",
+    "build:web": "rm -rf dist && expo export -p web",
+    "setup:check": "tsx scripts/check-setup.ts",
     "test": "tsx --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
@@ -62,7 +67,10 @@
     "assets:generate": "tsx scripts/generate-assets.ts",
     "ai:layout": "tsx scripts/ask-layout.ts",
     "ingest": "tsx scripts/ingest.ts",
-    "writing:prompts": "tsx scripts/generate-writing-prompts.ts"
+    "writing:prompts": "tsx scripts/generate-writing-prompts.ts",
+    "setup:supabase": "tsx scripts/provision-supabase.ts",
+    "grant": "tsx scripts/grant-account.ts",
+    "vocab:topics": "tsx scripts/generate-vocab-topics.ts"
   },
   "private": true
 }

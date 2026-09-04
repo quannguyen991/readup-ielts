@@ -49,3 +49,6 @@ src/data/seed/.ingest-state.json
 
 .vercel
 .env*
+
+.secrets-proxies.json
+bench-out/

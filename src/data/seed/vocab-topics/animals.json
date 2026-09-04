@@ -1,0 +1,508 @@
+{
+  "slug": "animals",
+  "name": "Animals",
+  "nameVi": "Động vật",
+  "blurb": "Bảo tồn, vật nuôi, quyền động vật",
+  "words": [
+    {
+      "word": "conservation",
+      "pos": "noun",
+      "ipa": "/ˌkɒn.səˈveɪ.ʃən/",
+      "meaningVi": "bảo tồn",
+      "definitionEn": "the protection of animals, plants, and natural resources",
+      "example": "Wildlife conservation efforts have helped increase the population of several endangered species.",
+      "collocation": "wildlife conservation",
+      "band": "6-7"
+    },
+    {
+      "word": "endangered",
+      "pos": "adjective",
+      "ipa": "/ɪnˈdeɪn.dʒəd/",
+      "meaningVi": "có nguy cơ tuyệt chủng",
+      "definitionEn": "at risk of extinction",
+      "example": "The giant panda is no longer considered endangered thanks to conservation programs.",
+      "collocation": "endangered species",
+      "band": "6-7"
+    },
+    {
+      "word": "habitat",
+      "pos": "noun",
+      "ipa": "/ˈhæb.ɪ.tæt/",
+      "meaningVi": "môi trường sống",
+      "definitionEn": "the natural environment where an animal or plant lives",
+      "example": "Deforestation is destroying the habitat of countless rainforest animals.",
+      "collocation": "natural habitat",
+      "band": "5-6"
+    },
+    {
+      "word": "biodiversity",
+      "pos": "noun",
+      "ipa": "/ˌbaɪ.əʊ.daɪˈvɜː.sə.ti/",
+      "meaningVi": "đa dạng sinh học",
+      "definitionEn": "the variety of plant and animal life in a particular habitat",
+      "example": "Protecting forests is essential for maintaining biodiversity on a global scale.",
+      "collocation": "loss of biodiversity",
+      "band": "7-8"
+    },
+    {
+      "word": "poaching",
+      "pos": "noun",
+      "ipa": "/ˈpəʊ.tʃɪŋ/",
+      "meaningVi": "săn trộm",
+      "definitionEn": "illegal hunting or capturing of wild animals",
+      "example": "Poaching remains a major threat to elephants and rhinos in Africa.",
+      "collocation": "illegal poaching",
+      "band": "6-7"
+    },
+    {
+      "word": "captivity",
+      "pos": "noun",
+      "ipa": "/kæpˈtɪv.ə.ti/",
+      "meaningVi": "sự giam cầm, nuôi nhốt",
+      "definitionEn": "the state of being kept in a confined space, not free in the wild",
+      "example": "Some animals suffer from stress and abnormal behaviour when kept in captivity.",
+      "collocation": "in captivity",
+      "band": "6-7"
+    },
+    {
+      "word": "domestication",
+      "pos": "noun",
+      "ipa": "/dəˌmes.tɪˈkeɪ.ʃən/",
+      "meaningVi": "sự thuần hóa",
+      "definitionEn": "the process of adapting wild animals for human use and companionship",
+      "example": "The domestication of dogs occurred thousands of years ago and changed human history.",
+      "collocation": "process of domestication",
+      "band": "7-8"
+    },
+    {
+      "word": "animal welfare",
+      "pos": "noun phrase",
+      "ipa": "/ˈæn.ɪ.məl ˈwel.feər/",
+      "meaningVi": "phúc lợi động vật",
+      "definitionEn": "the well-being of animals, especially regarding their treatment by humans",
+      "example": "Many countries have strict laws to ensure animal welfare in factory farms.",
+      "collocation": "improve animal welfare",
+      "band": "6-7"
+    },
+    {
+      "word": "extinction",
+      "pos": "noun",
+      "ipa": "/ɪkˈstɪŋk.ʃən/",
+      "meaningVi": "sự tuyệt chủng",
+      "definitionEn": "the state or process of a species dying out completely",
+      "example": "Human activities have accelerated the extinction rate of many species.",
+      "collocation": "face extinction",
+      "band": "5-6"
+    },
+    {
+      "word": "sanctuary",
+      "pos": "noun",
+      "ipa": "/ˈsæŋk.tʃu.ər.i/",
+      "meaningVi": "khu bảo tồn, nơi trú ẩn",
+      "definitionEn": "a place where injured or abandoned animals are cared for and protected",
+      "example": "The wildlife sanctuary provides a safe haven for rescued orangutans.",
+      "collocation": "animal sanctuary",
+      "band": "6-7"
+    },
+    {
+      "word": "ecosystem",
+      "pos": "noun",
+      "ipa": "/ˈiː.kəʊ.sɪs.təm/",
+      "meaningVi": "hệ sinh thái",
+      "definitionEn": "a community of living organisms and their physical environment interacting as a system",
+      "example": "The loss of a single predator can destabilise an entire ecosystem.",
+      "collocation": "fragile ecosystem",
+      "band": "6-7"
+    },
+    {
+      "word": "predator",
+      "pos": "noun",
+      "ipa": "/ˈpred.ə.tər/",
+      "meaningVi": "động vật ăn thịt",
+      "definitionEn": "an animal that hunts and kills other animals for food",
+      "example": "Wolves are apex predators that play a key role in regulating prey populations.",
+      "collocation": "natural predator",
+      "band": "5-6"
+    },
+    {
+      "word": "prey",
+      "pos": "noun",
+      "ipa": "/preɪ/",
+      "meaningVi": "con mồi",
+      "definitionEn": "an animal that is hunted and killed by another for food",
+      "example": "Rabbits are common prey for foxes and birds of prey.",
+      "collocation": "fall prey to",
+      "band": "5-6"
+    },
+    {
+      "word": "breeding",
+      "pos": "noun",
+      "ipa": "/ˈbriː.dɪŋ/",
+      "meaningVi": "sự nhân giống, sinh sản",
+      "definitionEn": "the reproduction and raising of animals, often for a specific purpose",
+      "example": "Captive breeding programs have helped save the black-footed ferret from extinction.",
+      "collocation": "captive breeding",
+      "band": "6-7"
+    },
+    {
+      "word": "veterinary",
+      "pos": "adjective",
+      "ipa": "/ˈvet.ər.ɪ.nər.i/",
+      "meaningVi": "thú y",
+      "definitionEn": "relating to the medical treatment of animals",
+      "example": "Veterinary care is essential for the health of both pets and livestock.",
+      "collocation": "veterinary medicine",
+      "band": "6-7"
+    },
+    {
+      "word": "humane",
+      "pos": "adjective",
+      "ipa": "/hjuːˈmeɪn/",
+      "meaningVi": "nhân đạo, nhân từ",
+      "definitionEn": "showing compassion and kindness, especially towards animals",
+      "example": "Humane methods of euthanasia are used to minimise suffering in shelters.",
+      "collocation": "humane treatment",
+      "band": "7-8"
+    },
+    {
+      "word": "stray",
+      "pos": "adjective",
+      "ipa": "/streɪ/",
+      "meaningVi": "đi lạc, lang thang (động vật)",
+      "definitionEn": "an animal that is lost or has no home",
+      "example": "The city has launched a program to vaccinate and neuter stray dogs.",
+      "collocation": "stray animal",
+      "band": "5-6"
+    },
+    {
+      "word": "abandoned",
+      "pos": "adjective",
+      "ipa": "/əˈbæn.dənd/",
+      "meaningVi": "bị bỏ rơi",
+      "definitionEn": "left permanently without care or owner (of an animal)",
+      "example": "Abandoned pets often struggle to survive on the streets.",
+      "collocation": "abandoned pet",
+      "band": "5-6"
+    },
+    {
+      "word": "companion animal",
+      "pos": "noun phrase",
+      "ipa": "/kəmˈpæn.jən ˈæn.ɪ.məl/",
+      "meaningVi": "thú cưng, động vật đồng hành",
+      "definitionEn": "a pet kept for companionship rather than work",
+      "example": "Dogs are the most popular companion animals in many households.",
+      "collocation": "companion animal ownership",
+      "band": "6-7"
+    },
+    {
+      "word": "livestock",
+      "pos": "noun",
+      "ipa": "/ˈlaɪv.stɒk/",
+      "meaningVi": "gia súc, vật nuôi",
+      "definitionEn": "farm animals kept for meat, milk, or other products",
+      "example": "Intensive livestock farming has raised serious animal welfare concerns.",
+      "collocation": "livestock farming",
+      "band": "5-6"
+    },
+    {
+      "word": "slaughter",
+      "pos": "noun",
+      "ipa": "/ˈslɔː.tər/",
+      "meaningVi": "sự giết mổ",
+      "definitionEn": "the killing of animals for food",
+      "example": "Regulations require that slaughter be carried out in a humane manner.",
+      "collocation": "humane slaughter",
+      "band": "6-7"
+    },
+    {
+      "word": "animal testing",
+      "pos": "noun phrase",
+      "ipa": "/ˈæn.ɪ.məl ˈtes.tɪŋ/",
+      "meaningVi": "thử nghiệm trên động vật",
+      "definitionEn": "the use of animals in experiments for scientific or medical purposes",
+      "example": "Many cosmetics companies have banned animal testing in favour of alternative methods.",
+      "collocation": "ban animal testing",
+      "band": "7-8"
+    },
+    {
+      "word": "animal rights",
+      "pos": "noun phrase",
+      "ipa": "/ˈæn.ɪ.məl raɪts/",
+      "meaningVi": "quyền động vật",
+      "definitionEn": "the belief that animals are entitled to live free from human exploitation",
+      "example": "Animal rights activists argue that all sentient beings deserve legal protection.",
+      "collocation": "advocate for animal rights",
+      "band": "7-8"
+    },
+    {
+      "word": "wildlife",
+      "pos": "noun",
+      "ipa": "/ˈwaɪld.laɪf/",
+      "meaningVi": "động vật hoang dã",
+      "definitionEn": "animals and plants living in natural conditions, not domesticated",
+      "example": "Urban expansion often disrupts wildlife and their natural habitats.",
+      "collocation": "wildlife conservation",
+      "band": "5-6"
+    },
+    {
+      "word": "deforestation",
+      "pos": "noun",
+      "ipa": "/diːˌfɒr.ɪˈsteɪ.ʃən/",
+      "meaningVi": "sự phá rừng",
+      "definitionEn": "the clearing of forests, often causing habitat loss for animals",
+      "example": "Deforestation in the Amazon threatens countless species with extinction.",
+      "collocation": "deforestation and habitat loss",
+      "band": "6-7"
+    },
+    {
+      "word": "conservationist",
+      "pos": "noun",
+      "ipa": "/ˌkɒn.səˈveɪ.ʃən.ɪst/",
+      "meaningVi": "nhà bảo tồn",
+      "definitionEn": "a person who works to protect the natural environment and wildlife",
+      "example": "Conservationists are lobbying for stricter penalties against poaching.",
+      "collocation": "dedicated conservationist",
+      "band": "7-8"
+    },
+    {
+      "word": "rehabilitation",
+      "pos": "noun",
+      "ipa": "/ˌriː.ə.bɪl.ɪˈteɪ.ʃən/",
+      "meaningVi": "sự phục hồi (động vật hoang dã)",
+      "definitionEn": "the process of caring for injured or orphaned animals so they can return to the wild",
+      "example": "The rehabilitation centre successfully released three eagles back into the forest.",
+      "collocation": "wildlife rehabilitation",
+      "band": "7-8"
+    },
+    {
+      "word": "captive breeding",
+      "pos": "noun phrase",
+      "ipa": "/ˈkæp.tɪv ˈbriː.dɪŋ/",
+      "meaningVi": "nhân giống trong điều kiện nuôi nhốt",
+      "definitionEn": "the breeding of animals in controlled environments to preserve endangered species",
+      "example": "Captive breeding programs have been instrumental in saving the California condor.",
+      "collocation": "captive breeding program",
+      "band": "7-8"
+    },
+    {
+      "word": "reintroduction",
+      "pos": "noun",
+      "ipa": "/ˌriː.ɪn.trəˈdʌk.ʃən/",
+      "meaningVi": "sự tái thả vào tự nhiên",
+      "definitionEn": "the release of captive-bred animals back into their natural habitat",
+      "example": "The reintroduction of wolves to Yellowstone restored ecological balance.",
+      "collocation": "reintroduction into the wild",
+      "band": "8+"
+    },
+    {
+      "word": "migratory",
+      "pos": "adjective",
+      "ipa": "/ˈmaɪ.ɡrə.tər.i/",
+      "meaningVi": "di cư",
+      "definitionEn": "moving from one region to another seasonally (of animals)",
+      "example": "Migratory birds depend on stopover sites for food and rest.",
+      "collocation": "migratory bird",
+      "band": "6-7"
+    },
+    {
+      "word": "nocturnal",
+      "pos": "adjective",
+      "ipa": "/nɒkˈtɜː.nəl/",
+      "meaningVi": "hoạt động về đêm",
+      "definitionEn": "active during the night rather than the day",
+      "example": "Owls are nocturnal predators that hunt in darkness.",
+      "collocation": "nocturnal animal",
+      "band": "5-6"
+    },
+    {
+      "word": "camouflage",
+      "pos": "noun",
+      "ipa": "/ˈkæm.ə.flɑːʒ/",
+      "meaningVi": "sự ngụy trang",
+      "definitionEn": "the natural colouring or shape that allows an animal to blend in with its surroundings",
+      "example": "The chameleon's camouflage makes it almost invisible on leaves.",
+      "collocation": "natural camouflage",
+      "band": "6-7"
+    },
+    {
+      "word": "adaptation",
+      "pos": "noun",
+      "ipa": "/ˌæd.æpˈteɪ.ʃən/",
+      "meaningVi": "sự thích nghi",
+      "definitionEn": "a trait or behaviour that helps an animal survive in its environment",
+      "example": "The long neck of a giraffe is an adaptation for reaching high foliage.",
+      "collocation": "evolutionary adaptation",
+      "band": "6-7"
+    },
+    {
+      "word": "ethical",
+      "pos": "adjective",
+      "ipa": "/ˈeθ.ɪ.kəl/",
+      "meaningVi": "đạo đức, có đạo đức",
+      "definitionEn": "morally correct, especially regarding the treatment of animals",
+      "example": "Ethical consumers choose products that are not tested on animals.",
+      "collocation": "ethical treatment",
+      "band": "7-8"
+    },
+    {
+      "word": "sentient",
+      "pos": "adjective",
+      "ipa": "/ˈsen.ti.ənt/",
+      "meaningVi": "có cảm giác, biết cảm nhận",
+      "definitionEn": "able to feel pain, pleasure, and emotions",
+      "example": "Many laws now recognise animals as sentient beings with rights.",
+      "collocation": "sentient being",
+      "band": "8+"
+    },
+    {
+      "word": "exploitation",
+      "pos": "noun",
+      "ipa": "/ˌek.splɔɪˈteɪ.ʃən/",
+      "meaningVi": "sự khai thác",
+      "definitionEn": "the use of animals for human benefit, often in a harmful way",
+      "example": "The exploitation of animals in circuses is widely condemned.",
+      "collocation": "animal exploitation",
+      "band": "7-8"
+    },
+    {
+      "word": "captive",
+      "pos": "adjective",
+      "ipa": "/ˈkæp.tɪv/",
+      "meaningVi": "bị nuôi nhốt, bị giam cầm",
+      "definitionEn": "kept in a confined space, not free in the wild",
+      "example": "Captive animals may exhibit stereotypic behaviours due to stress.",
+      "collocation": "captive animal",
+      "band": "6-7"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪ.nə.bəl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "able to be maintained without harming the environment or animal populations",
+      "example": "Sustainable fishing practices help protect marine animal populations.",
+      "collocation": "sustainable agriculture",
+      "band": "7-8"
+    },
+    {
+      "word": "endemic",
+      "pos": "adjective",
+      "ipa": "/enˈdem.ɪk/",
+      "meaningVi": "đặc hữu",
+      "definitionEn": "native to a particular area and not found elsewhere",
+      "example": "The kiwi is an endemic bird species of New Zealand.",
+      "collocation": "endemic species",
+      "band": "7-8"
+    },
+    {
+      "word": "invasive species",
+      "pos": "noun phrase",
+      "ipa": "/ɪnˈveɪ.sɪv ˈspiː.ʃiːz/",
+      "meaningVi": "loài xâm lấn",
+      "definitionEn": "a non-native species that causes harm to the local ecosystem",
+      "example": "Invasive species often outcompete native animals for food and habitat.",
+      "collocation": "control invasive species",
+      "band": "7-8"
+    },
+    {
+      "word": "protected area",
+      "pos": "noun phrase",
+      "ipa": "/prəˈtek.tɪd ˈeə.ri.ə/",
+      "meaningVi": "khu bảo vệ",
+      "definitionEn": "a region designated for the conservation of wildlife and natural resources",
+      "example": "National parks are protected areas that safeguard many endangered animals.",
+      "collocation": "designate a protected area",
+      "band": "6-7"
+    },
+    {
+      "word": "wildlife corridor",
+      "pos": "noun phrase",
+      "ipa": "/ˈwaɪld.laɪf ˈkɒr.ɪ.dɔːr/",
+      "meaningVi": "hành lang động vật hoang dã",
+      "definitionEn": "a strip of natural habitat connecting larger areas for animal movement",
+      "example": "Wildlife corridors allow animals to migrate safely between fragmented habitats.",
+      "collocation": "establish a wildlife corridor",
+      "band": "8+"
+    },
+    {
+      "word": "animal husbandry",
+      "pos": "noun phrase",
+      "ipa": "/ˈæn.ɪ.məl ˈhʌz.bən.dri/",
+      "meaningVi": "chăn nuôi",
+      "definitionEn": "the care and breeding of farm animals",
+      "example": "Good animal husbandry practices improve the health and productivity of livestock.",
+      "collocation": "modern animal husbandry",
+      "band": "6-7"
+    },
+    {
+      "word": "neutering",
+      "pos": "noun",
+      "ipa": "/ˈnjuː.tər.ɪŋ/",
+      "meaningVi": "sự thiến, triệt sản",
+      "definitionEn": "the surgical procedure to prevent an animal from reproducing",
+      "example": "Neutering pets reduces the number of stray animals in urban areas.",
+      "collocation": "neutering programme",
+      "band": "6-7"
+    },
+    {
+      "word": "overpopulation",
+      "pos": "noun",
+      "ipa": "/ˌəʊ.və.pɒp.jʊˈleɪ.ʃən/",
+      "meaningVi": "sự quá tải dân số (động vật)",
+      "definitionEn": "an excessive number of animals in a given area, leading to welfare issues",
+      "example": "Overpopulation of cats in shelters puts pressure on resources.",
+      "collocation": "pet overpopulation",
+      "band": "6-7"
+    },
+    {
+      "word": "euthanasia",
+      "pos": "noun",
+      "ipa": "/ˌjuː.θəˈneɪ.zi.ə/",
+      "meaningVi": "sự an tử",
+      "definitionEn": "the act of putting an animal to death painlessly to end suffering",
+      "example": "Euthanasia is sometimes the only humane option for terminally ill animals.",
+      "collocation": "humane euthanasia",
+      "band": "7-8"
+    },
+    {
+      "word": "rescue",
+      "pos": "noun",
+      "ipa": "/ˈres.kjuː/",
+      "meaningVi": "sự giải cứu (động vật)",
+      "definitionEn": "the act of saving an animal from a dangerous or harmful situation",
+      "example": "The rescue of abandoned puppies from the street was covered by local media.",
+      "collocation": "animal rescue",
+      "band": "5-6"
+    },
+    {
+      "word": "advocacy",
+      "pos": "noun",
+      "ipa": "/ˈæd.və.kə.si/",
+      "meaningVi": "sự vận động, ủng hộ",
+      "definitionEn": "active support for a cause, such as animal protection",
+      "example": "Animal advocacy groups lobby for stronger anti-cruelty laws.",
+      "collocation": "animal advocacy",
+      "band": "7-8"
+    },
+    {
+      "word": "shelter",
+      "pos": "noun",
+      "ipa": "/ˈʃel.tər/",
+      "meaningVi": "trại tạm trú, nơi cứu hộ động vật",
+      "definitionEn": "a place that provides temporary care for homeless or abandoned animals",
+      "example": "Many animal shelters rely on donations to feed and treat the animals.",
+      "collocation": "animal shelter",
+      "band": "5-6"
+    },
+    {
+      "word": "veterinarian",
+      "pos": "noun",
+      "ipa": "/ˌvet.ər.ɪˈneər.i.ən/",
+      "meaningVi": "bác sĩ thú y",
+      "definitionEn": "a medical professional who treats animals",
+      "example": "The veterinarian performed surgery on the injured dog.",
+      "collocation": "consult a veterinarian",
+      "band": "5-6"
+    }
+  ]
+}

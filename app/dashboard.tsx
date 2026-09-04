@@ -12,6 +12,7 @@ import {
   Button,
   Card,
   HeroBanner,
+  Icon,
   ProgressBar,
   QuestionTypeIcon,
   SectionHeader,
@@ -19,8 +20,11 @@ import {
 } from '@/components/ui';
 import { filterArticles, isReadable, libraryStats, topicLabel } from '@/data/articles';
 import { bandDelta, formatBand } from '@/lib/band';
+import { MATH_SKILL_LABEL } from '@/lib/math/types';
 import { assetKeys } from '@/services/assets/useAssets';
+import { formatAccuracy } from '@/services/math/scoring';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
+import { useLatestDiagnostic, useMathPriority, useMathTotals } from '@/store/useMathStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useDueCards } from '@/store/useVocabStore';
 
@@ -91,11 +95,33 @@ export default function DashboardScreen() {
             onPress={() => router.push('/library' as never)}
           />
         </View>
+
+        {/*
+          Đường vào trang giới thiệu, đặt ở NGAY ĐÂY.
+
+          Trang `/intro` vốn chỉ hiện cho người mở app lần đầu; ai đã học rồi thì
+          root đưa thẳng vào màn này và không còn cách nào gặp lại nó — trừ một
+          mục nằm gần cuối sidebar, mà trên màn hình hẹp thì mục đó nằm trong tab
+          "More", coi như không tồn tại. Có trang không giống tìm được trang.
+
+          Để dạng liên kết chữ chứ không phải nút thứ ba: người đã đọc rồi không
+          cần nó chiếm chỗ ngang hai nút kia.
+        */}
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push('/intro' as never)}
+          className="mt-3 flex-row items-center gap-1.5 self-start"
+        >
+          <Icon name="info" size={15} color="#FFFFFF" />
+          <Text className="font-strong text-body text-white/90">App có những gì?</Text>
+          <Icon name="arrow-right" size={14} color="#FFFFFF" />
+        </Pressable>
       </HeroBanner>
 
       <View className="mt-4 lg:mt-6">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
           <StatCard
+            variant="sticker"
             label="Daily Goal"
             value={String(minutesToday)}
             unit={`/ ${dailyGoal} min`}
@@ -106,6 +132,7 @@ export default function DashboardScreen() {
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
+            variant="sticker"
             label="Estimated Band Score"
             value={formatBand(currentBand)}
             icon="trending"
@@ -118,6 +145,7 @@ export default function DashboardScreen() {
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
+            variant="sticker"
             label="Practice Streak"
             value={String(streak.current)}
             unit="days"
@@ -127,6 +155,7 @@ export default function DashboardScreen() {
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
+            variant="sticker"
             label="Total Practice Time"
             value={formatMinutes(weekMinutes)}
             icon="trophy"
@@ -281,6 +310,8 @@ export default function DashboardScreen() {
         </Grid>
       </View>
 
+      <MathCard />
+
       <Card className="mt-4 lg:mt-6">
         <SectionHeader
           title="Featured Practice"
@@ -296,6 +327,69 @@ export default function DashboardScreen() {
         </View>
       </Card>
     </Screen>
+  );
+}
+
+/**
+ * Thẻ SAT Math trên Dashboard.
+ *
+ * Nội dung đổi hẳn theo việc đã chẩn đoán hay chưa: chưa chẩn đoán thì thẻ chỉ
+ * có một việc để bấm, vì mọi con số khác lúc ấy đều chưa nói lên điều gì. Đã
+ * chẩn đoán rồi thì thẻ trả lời đúng một câu hỏi — hôm nay nên luyện kỹ năng nào.
+ */
+function MathCard() {
+  const diagnostic = useLatestDiagnostic();
+  const priority = useMathPriority();
+  const totals = useMathTotals();
+  const next = priority[0];
+
+  return (
+    <Card className="mt-4 lg:mt-6">
+      <SectionHeader
+        title="SAT Math"
+        subtitle={
+          diagnostic
+            ? `Đã làm ${totals.questions} câu · đúng ${totals.correct}`
+            : 'Nửa số điểm SAT nằm ở phần này'
+        }
+        icon="grid"
+        iconTone="accent"
+        action={{ label: 'Mở module', onPress: () => router.push('/math' as never) }}
+      />
+
+      {diagnostic && next ? (
+        <View className="mt-3 flex-row flex-wrap items-center justify-between gap-3">
+          <View className="flex-1" style={{ minWidth: 200 }}>
+            <Text className="font-sans text-label text-muted">Nên luyện tiếp</Text>
+            <Text className="mt-0.5 font-strong text-body text-ink">
+              {MATH_SKILL_LABEL[next.skill]}
+            </Text>
+            <Text className="mt-0.5 font-sans text-label text-muted">
+              {next.total === 0
+                ? 'chưa làm câu nào'
+                : `đúng ${next.correct}/${next.total} · ${formatAccuracy(next.accuracy)}`}
+            </Text>
+          </View>
+          <Button
+            label="Drill ngay"
+            variant="outline"
+            size="sm"
+            onPress={() => router.push(`/math/drill/${next.skill}` as never)}
+          />
+        </View>
+      ) : (
+        <View className="mt-3 flex-row flex-wrap items-center justify-between gap-3">
+          <Text className="flex-1 font-sans text-body text-muted" style={{ minWidth: 200 }}>
+            Chưa có bản đồ điểm yếu. Bài chẩn đoán 19 câu sẽ chỉ ra nên luyện gì trước.
+          </Text>
+          <Button
+            label="Làm bài chẩn đoán"
+            size="sm"
+            onPress={() => router.push('/math/diagnostic' as never)}
+          />
+        </View>
+      )}
+    </Card>
   );
 }
 

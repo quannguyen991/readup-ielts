@@ -1,0 +1,508 @@
+{
+  "slug": "government",
+  "name": "Government and Law",
+  "nameVi": "Chính phủ và pháp luật",
+  "blurb": "Chính sách, luật, tội phạm",
+  "words": [
+    {
+      "word": "crime",
+      "pos": "noun",
+      "ipa": "/kraɪm/",
+      "meaningVi": "tội phạm",
+      "definitionEn": "An illegal action or activity that can be punished by law.",
+      "example": "The government must implement stricter laws to combat violent crime.",
+      "collocation": "combat crime",
+      "band": "5-6"
+    },
+    {
+      "word": "penalty",
+      "pos": "noun",
+      "ipa": "/ˈpenəlti/",
+      "meaningVi": "hình phạt",
+      "definitionEn": "A punishment imposed for breaking a law, rule, or contract.",
+      "example": "The penalty for driving under the influence is a heavy fine and possible imprisonment.",
+      "collocation": "impose a penalty",
+      "band": "5-6"
+    },
+    {
+      "word": "offence",
+      "pos": "noun",
+      "ipa": "/əˈfens/",
+      "meaningVi": "hành vi phạm tội",
+      "definitionEn": "A breach of a law or rule; an illegal act.",
+      "example": "Speeding is a minor traffic offence that can lead to a fine.",
+      "collocation": "commit an offence",
+      "band": "5-6"
+    },
+    {
+      "word": "violation",
+      "pos": "noun",
+      "ipa": "/vaɪəˈleɪʃən/",
+      "meaningVi": "sự vi phạm",
+      "definitionEn": "An act of breaking or failing to comply with a law, rule, or agreement.",
+      "example": "Any violation of the terms of the contract will result in legal action.",
+      "collocation": "violation of the law",
+      "band": "5-6"
+    },
+    {
+      "word": "policy",
+      "pos": "noun",
+      "ipa": "/ˈpɒləsi/",
+      "meaningVi": "chính sách",
+      "definitionEn": "A course or principle of action adopted or proposed by a government or organization.",
+      "example": "The government's new policy on immigration aims to reduce illegal entry.",
+      "collocation": "government policy",
+      "band": "5-6"
+    },
+    {
+      "word": "court",
+      "pos": "noun",
+      "ipa": "/kɔːt/",
+      "meaningVi": "tòa án",
+      "definitionEn": "A place where legal cases are heard and judgments are made.",
+      "example": "The case will be heard in the high court next month.",
+      "collocation": "court of law",
+      "band": "5-6"
+    },
+    {
+      "word": "trial",
+      "pos": "noun",
+      "ipa": "/traɪəl/",
+      "meaningVi": "phiên tòa",
+      "definitionEn": "A formal examination of evidence in a court to decide guilt or innocence.",
+      "example": "The defendant is entitled to a fair trial by jury.",
+      "collocation": "stand trial",
+      "band": "5-6"
+    },
+    {
+      "word": "judge",
+      "pos": "noun",
+      "ipa": "/dʒʌdʒ/",
+      "meaningVi": "thẩm phán",
+      "definitionEn": "A public official who presides over a court of law and makes legal decisions.",
+      "example": "The judge delivered a fair verdict after considering all evidence.",
+      "collocation": "presiding judge",
+      "band": "5-6"
+    },
+    {
+      "word": "jury",
+      "pos": "noun",
+      "ipa": "/ˈdʒʊəri/",
+      "meaningVi": "bồi thẩm đoàn",
+      "definitionEn": "A group of people sworn to give a verdict in a court based on evidence.",
+      "example": "The jury reached a unanimous decision after hours of deliberation.",
+      "collocation": "jury trial",
+      "band": "5-6"
+    },
+    {
+      "word": "sentence",
+      "pos": "noun",
+      "ipa": "/ˈsentəns/",
+      "meaningVi": "bản án",
+      "definitionEn": "The punishment given by a court to a person convicted of a crime.",
+      "example": "The judge handed down a life sentence for the murder.",
+      "collocation": "serve a sentence",
+      "band": "5-6"
+    },
+    {
+      "word": "legislation",
+      "pos": "noun",
+      "ipa": "/ˌledʒɪsˈleɪʃən/",
+      "meaningVi": "pháp luật, luật pháp",
+      "definitionEn": "Laws collectively or the process of making them.",
+      "example": "New legislation on environmental protection was passed by parliament.",
+      "collocation": "introduce legislation",
+      "band": "6-7"
+    },
+    {
+      "word": "constitution",
+      "pos": "noun",
+      "ipa": "/ˌkɒnstɪˈtjuːʃən/",
+      "meaningVi": "hiến pháp",
+      "definitionEn": "A set of fundamental principles according to which a state is governed.",
+      "example": "The constitution guarantees the right to freedom of speech.",
+      "collocation": "constitutional rights",
+      "band": "6-7"
+    },
+    {
+      "word": "amendment",
+      "pos": "noun",
+      "ipa": "/əˈmendmənt/",
+      "meaningVi": "sửa đổi (hiến pháp/luật)",
+      "definitionEn": "A formal change or addition to a law, contract, or constitution.",
+      "example": "The first amendment to the constitution protects religious freedom.",
+      "collocation": "propose an amendment",
+      "band": "6-7"
+    },
+    {
+      "word": "enforce",
+      "pos": "verb",
+      "ipa": "/ɪnˈfɔːs/",
+      "meaningVi": "thực thi (luật)",
+      "definitionEn": "To make sure that a law or rule is obeyed.",
+      "example": "Police officers are responsible for enforcing the law.",
+      "collocation": "enforce regulations",
+      "band": "6-7"
+    },
+    {
+      "word": "sanction",
+      "pos": "noun",
+      "ipa": "/ˈsæŋkʃən/",
+      "meaningVi": "trừng phạt (thường qua biện pháp kinh tế)",
+      "definitionEn": "A threatened penalty for disobeying a law or rule, or an official action taken against a country.",
+      "example": "Economic sanctions were imposed on the country for violating human rights.",
+      "collocation": "impose sanctions",
+      "band": "6-7"
+    },
+    {
+      "word": "verdict",
+      "pos": "noun",
+      "ipa": "/ˈvɜːdɪkt/",
+      "meaningVi": "phán quyết",
+      "definitionEn": "A decision made by a jury on a legal case.",
+      "example": "The jury returned a verdict of not guilty.",
+      "collocation": "give a verdict",
+      "band": "6-7"
+    },
+    {
+      "word": "defendant",
+      "pos": "noun",
+      "ipa": "/dɪˈfendənt/",
+      "meaningVi": "bị cáo",
+      "definitionEn": "A person accused or sued in a court of law.",
+      "example": "The defendant pleaded not guilty to the charges.",
+      "collocation": "defendant's lawyer",
+      "band": "6-7"
+    },
+    {
+      "word": "prosecutor",
+      "pos": "noun",
+      "ipa": "/ˈprɒsɪkjuːtə/",
+      "meaningVi": "công tố viên",
+      "definitionEn": "A legal representative who brings charges against a person in court.",
+      "example": "The prosecutor presented strong evidence against the accused.",
+      "collocation": "prosecutor's office",
+      "band": "6-7"
+    },
+    {
+      "word": "statute",
+      "pos": "noun",
+      "ipa": "/ˈstætʃuːt/",
+      "meaningVi": "đạo luật",
+      "definitionEn": "A written law passed by a legislative body.",
+      "example": "The statute of limitations for this crime has expired.",
+      "collocation": "statute law",
+      "band": "6-7"
+    },
+    {
+      "word": "regulatory",
+      "pos": "adjective",
+      "ipa": "/ˈreɡjʊlətəri/",
+      "meaningVi": "thuộc về quy định",
+      "definitionEn": "Relating to the control or enforcement of rules and regulations.",
+      "example": "The company failed to comply with regulatory requirements.",
+      "collocation": "regulatory body",
+      "band": "6-7"
+    },
+    {
+      "word": "compliance",
+      "pos": "noun",
+      "ipa": "/kəmˈplaɪəns/",
+      "meaningVi": "sự tuân thủ",
+      "definitionEn": "The act of obeying a law, rule, or request.",
+      "example": "All businesses must ensure compliance with health and safety standards.",
+      "collocation": "in compliance with",
+      "band": "6-7"
+    },
+    {
+      "word": "pardon",
+      "pos": "noun",
+      "ipa": "/ˈpɑːdən/",
+      "meaningVi": "sự ân xá",
+      "definitionEn": "An official act of forgiving a crime and releasing the offender from punishment.",
+      "example": "The president granted a pardon to the prisoner after a review of the case.",
+      "collocation": "grant a pardon",
+      "band": "6-7"
+    },
+    {
+      "word": "bribery",
+      "pos": "noun",
+      "ipa": "/ˈbraɪbəri/",
+      "meaningVi": "hối lộ",
+      "definitionEn": "The act of giving or receiving money or gifts to influence someone's actions illegally.",
+      "example": "Bribery of public officials is a serious offense in most countries.",
+      "collocation": "accused of bribery",
+      "band": "6-7"
+    },
+    {
+      "word": "corruption",
+      "pos": "noun",
+      "ipa": "/kəˈrʌpʃən/",
+      "meaningVi": "tham nhũng",
+      "definitionEn": "Dishonest or illegal behavior, especially by people in power.",
+      "example": "Corruption undermines trust in government institutions.",
+      "collocation": "fight corruption",
+      "band": "6-7"
+    },
+    {
+      "word": "fraud",
+      "pos": "noun",
+      "ipa": "/frɔːd/",
+      "meaningVi": "lừa đảo",
+      "definitionEn": "Wrongful deception intended to gain financial or personal advantage.",
+      "example": "The company was found guilty of accounting fraud.",
+      "collocation": "commit fraud",
+      "band": "6-7"
+    },
+    {
+      "word": "jurisdiction",
+      "pos": "noun",
+      "ipa": "/ˌdʒʊərɪsˈdɪkʃən/",
+      "meaningVi": "thẩm quyền tài phán",
+      "definitionEn": "The official power to make legal decisions and judgments within a certain area.",
+      "example": "The court has jurisdiction over cases involving international law.",
+      "collocation": "within the jurisdiction",
+      "band": "7-8"
+    },
+    {
+      "word": "felony",
+      "pos": "noun",
+      "ipa": "/ˈfeləni/",
+      "meaningVi": "trọng tội",
+      "definitionEn": "A serious crime, such as murder or robbery, punishable by severe punishment.",
+      "example": "A felony conviction can result in a prison sentence of more than one year.",
+      "collocation": "commit a felony",
+      "band": "7-8"
+    },
+    {
+      "word": "misdemeanor",
+      "pos": "noun",
+      "ipa": "/mɪsdɪˈmiːnər/",
+      "meaningVi": "khinh tội",
+      "definitionEn": "A minor crime, less serious than a felony.",
+      "example": "Petty theft is usually classified as a misdemeanor.",
+      "collocation": "misdemeanor charge",
+      "band": "7-8"
+    },
+    {
+      "word": "acquittal",
+      "pos": "noun",
+      "ipa": "/əˈkwɪtəl/",
+      "meaningVi": "sự tha bổng",
+      "definitionEn": "A judgment that a person is not guilty of the crime they were charged with.",
+      "example": "The defendant's acquittal was a relief to his family.",
+      "collocation": "acquittal by jury",
+      "band": "7-8"
+    },
+    {
+      "word": "litigation",
+      "pos": "noun",
+      "ipa": "/lɪtɪˈɡeɪʃən/",
+      "meaningVi": "kiện tụng",
+      "definitionEn": "The process of taking legal action through the court system.",
+      "example": "The company faced costly litigation over patent infringement.",
+      "collocation": "legal litigation",
+      "band": "7-8"
+    },
+    {
+      "word": "judiciary",
+      "pos": "noun",
+      "ipa": "/dʒuːˈdɪʃəri/",
+      "meaningVi": "cơ quan tư pháp",
+      "definitionEn": "The judicial branch of government, consisting of judges and courts.",
+      "example": "The judiciary plays a crucial role in interpreting the law.",
+      "collocation": "independent judiciary",
+      "band": "7-8"
+    },
+    {
+      "word": "precedent",
+      "pos": "noun",
+      "ipa": "/ˈpresɪdənt/",
+      "meaningVi": "tiền lệ pháp lý",
+      "definitionEn": "A past court decision that is used as an example for future similar cases.",
+      "example": "The court's decision set a precedent for future cases.",
+      "collocation": "legal precedent",
+      "band": "7-8"
+    },
+    {
+      "word": "ordinance",
+      "pos": "noun",
+      "ipa": "/ˈɔːdɪnəns/",
+      "meaningVi": "sắc lệnh (địa phương)",
+      "definitionEn": "A law or regulation passed by a local authority.",
+      "example": "The city council passed an ordinance banning smoking in public places.",
+      "collocation": "local ordinance",
+      "band": "7-8"
+    },
+    {
+      "word": "infringement",
+      "pos": "noun",
+      "ipa": "/ɪnˈfrɪndʒmənt/",
+      "meaningVi": "sự vi phạm (bản quyền, luật)",
+      "definitionEn": "The act of breaking a law or violating a right.",
+      "example": "Unauthorized use of the trademark is an infringement of intellectual property rights.",
+      "collocation": "copyright infringement",
+      "band": "7-8"
+    },
+    {
+      "word": "deterrent",
+      "pos": "noun",
+      "ipa": "/dɪˈterənt/",
+      "meaningVi": "yếu tố răn đe",
+      "definitionEn": "Something that discourages criminal behavior through fear of punishment.",
+      "example": "Severe penalties are a deterrent to potential criminals.",
+      "collocation": "deterrent effect",
+      "band": "7-8"
+    },
+    {
+      "word": "rehabilitation",
+      "pos": "noun",
+      "ipa": "/riːhəbɪlɪˈteɪʃən/",
+      "meaningVi": "cải tạo (phạm nhân)",
+      "definitionEn": "The process of helping offenders to reintegrate into society.",
+      "example": "The prison system should focus on the rehabilitation of offenders.",
+      "collocation": "rehabilitation program",
+      "band": "7-8"
+    },
+    {
+      "word": "amnesty",
+      "pos": "noun",
+      "ipa": "/ˈæmnəsti/",
+      "meaningVi": "đại xá",
+      "definitionEn": "An official pardon granted to a group of people for past offenses.",
+      "example": "The government granted amnesty to political prisoners.",
+      "collocation": "grant amnesty",
+      "band": "7-8"
+    },
+    {
+      "word": "tribunal",
+      "pos": "noun",
+      "ipa": "/traɪˈbjuːnəl/",
+      "meaningVi": "tòa án đặc biệt",
+      "definitionEn": "A court-like body established to settle disputes or judge certain cases.",
+      "example": "The case was referred to an international tribunal for human rights.",
+      "collocation": "tribunal hearing",
+      "band": "7-8"
+    },
+    {
+      "word": "arbitration",
+      "pos": "noun",
+      "ipa": "/ɑːbɪˈtreɪʃən/",
+      "meaningVi": "trọng tài",
+      "definitionEn": "A method of settling disputes outside of court using an impartial third party.",
+      "example": "The dispute was resolved through arbitration rather than litigation.",
+      "collocation": "arbitration clause",
+      "band": "7-8"
+    },
+    {
+      "word": "sovereignty",
+      "pos": "noun",
+      "ipa": "/ˈsɒvrənti/",
+      "meaningVi": "chủ quyền",
+      "definitionEn": "The supreme authority of a state to govern itself without external interference.",
+      "example": "Nations are protective of their sovereignty in international relations.",
+      "collocation": "national sovereignty",
+      "band": "7-8"
+    },
+    {
+      "word": "recidivism",
+      "pos": "noun",
+      "ipa": "/rɪˈsɪdɪvɪzəm/",
+      "meaningVi": "tái phạm",
+      "definitionEn": "The tendency of a convicted criminal to reoffend after release.",
+      "example": "Recidivism rates remain high among released prisoners.",
+      "collocation": "reduce recidivism",
+      "band": "8+"
+    },
+    {
+      "word": "extradite",
+      "pos": "verb",
+      "ipa": "/ˈekstrədaɪt/",
+      "meaningVi": "dẫn độ",
+      "definitionEn": "To hand over a suspected criminal to another country for trial or punishment.",
+      "example": "The country agreed to extradite the fugitive to face trial.",
+      "collocation": "extradite a suspect",
+      "band": "8+"
+    },
+    {
+      "word": "injunction",
+      "pos": "noun",
+      "ipa": "/ɪnˈdʒʌŋkʃən/",
+      "meaningVi": "lệnh cấm",
+      "definitionEn": "A court order requiring a person to do or refrain from doing a specific act.",
+      "example": "The court issued an injunction to prevent the construction from proceeding.",
+      "collocation": "seek an injunction",
+      "band": "8+"
+    },
+    {
+      "word": "subpoena",
+      "pos": "noun",
+      "ipa": "/səˈpiːnə/",
+      "meaningVi": "trát hầu tòa",
+      "definitionEn": "A writ ordering a person to attend court as a witness.",
+      "example": "The witness was served with a subpoena to appear in court.",
+      "collocation": "issue a subpoena",
+      "band": "8+"
+    },
+    {
+      "word": "perjury",
+      "pos": "noun",
+      "ipa": "/ˈpɜːdʒəri/",
+      "meaningVi": "tội khai man",
+      "definitionEn": "The act of lying under oath in a court of law.",
+      "example": "The witness was charged with perjury for lying under oath.",
+      "collocation": "commit perjury",
+      "band": "8+"
+    },
+    {
+      "word": "impeachment",
+      "pos": "noun",
+      "ipa": "/ɪmˈpiːtʃmənt/",
+      "meaningVi": "luận tội (đối với quan chức)",
+      "definitionEn": "The process of charging a public official with misconduct in office.",
+      "example": "The president faced impeachment for abuse of power.",
+      "collocation": "impeachment proceedings",
+      "band": "8+"
+    },
+    {
+      "word": "habeas corpus",
+      "pos": "noun",
+      "ipa": "/ˈheɪbiəs ˈkɔːrpəs/",
+      "meaningVi": "lệnh giao nộp người bị giam",
+      "definitionEn": "A legal principle requiring a person under arrest to be brought before a judge.",
+      "example": "The prisoner filed a petition for habeas corpus to challenge his detention.",
+      "collocation": "writ of habeas corpus",
+      "band": "8+"
+    },
+    {
+      "word": "stare decisis",
+      "pos": "noun",
+      "ipa": "/ˈstɛəri dɪˈsaɪsɪs/",
+      "meaningVi": "nguyên tắc tuân theo tiền lệ",
+      "definitionEn": "The doctrine that courts should follow precedents established in previous cases.",
+      "example": "The principle of stare decisis ensures consistency in legal rulings.",
+      "collocation": "doctrine of stare decisis",
+      "band": "8+"
+    },
+    {
+      "word": "ultra vires",
+      "pos": "adjective",
+      "ipa": "/ˈʌltrə ˈvaɪriːz/",
+      "meaningVi": "vượt quá thẩm quyền",
+      "definitionEn": "Describing an act that exceeds the legal authority of the person or body performing it.",
+      "example": "The court ruled that the act was ultra vires and therefore invalid.",
+      "collocation": "ultra vires act",
+      "band": "8+"
+    },
+    {
+      "word": "suffrage",
+      "pos": "noun",
+      "ipa": "/ˈsʌfrɪdʒ/",
+      "meaningVi": "quyền bầu cử",
+      "definitionEn": "The right to vote in political elections.",
+      "example": "Universal suffrage is a fundamental right in a democracy.",
+      "collocation": "extend suffrage",
+      "band": "8+"
+    }
+  ]
+}

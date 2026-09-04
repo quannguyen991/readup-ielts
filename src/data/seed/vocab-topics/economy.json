@@ -1,0 +1,508 @@
+{
+  "slug": "economy",
+  "name": "Economy",
+  "nameVi": "Kinh tế",
+  "blurb": "Thương mại, tăng trưởng, tiêu dùng",
+  "words": [
+    {
+      "word": "economic growth",
+      "pos": "noun",
+      "ipa": "/ˌiːkəˈnɒmɪk ɡrəʊθ/",
+      "meaningVi": "tăng trưởng kinh tế",
+      "definitionEn": "an increase in the production of goods and services in an economy over time.",
+      "example": "Sustained economic growth is essential for improving living standards and reducing poverty.",
+      "collocation": "sustainable economic growth",
+      "band": "6-7"
+    },
+    {
+      "word": "inflation",
+      "pos": "noun",
+      "ipa": "/ɪnˈfleɪʃən/",
+      "meaningVi": "lạm phát",
+      "definitionEn": "a general increase in the price level of goods and services over a period.",
+      "example": "High inflation erodes purchasing power and can destabilize the economy.",
+      "collocation": "high inflation rate",
+      "band": "6-7"
+    },
+    {
+      "word": "recession",
+      "pos": "noun",
+      "ipa": "/rɪˈseʃən/",
+      "meaningVi": "suy thoái",
+      "definitionEn": "a period of temporary economic decline, typically defined by two consecutive quarters of negative GDP growth.",
+      "example": "The country experienced a severe recession following the financial crisis.",
+      "collocation": "deep recession",
+      "band": "6-7"
+    },
+    {
+      "word": "gross domestic product",
+      "pos": "noun",
+      "ipa": "/ɡrəʊs dəˈmestɪk ˈprɒdʌkt/",
+      "meaningVi": "tổng sản phẩm quốc nội (GDP)",
+      "definitionEn": "the total value of all goods and services produced within a country in a specific period.",
+      "example": "A rise in gross domestic product indicates a growing economy.",
+      "collocation": "GDP growth rate",
+      "band": "6-7"
+    },
+    {
+      "word": "consumer spending",
+      "pos": "noun",
+      "ipa": "/kənˈsjuːmə ˈspendɪŋ/",
+      "meaningVi": "chi tiêu tiêu dùng",
+      "definitionEn": "the total amount of money spent by households on goods and services.",
+      "example": "Consumer spending accounts for a large share of aggregate demand in most economies.",
+      "collocation": "domestic consumer spending",
+      "band": "6-7"
+    },
+    {
+      "word": "trade deficit",
+      "pos": "noun",
+      "ipa": "/treɪd ˈdefɪsɪt/",
+      "meaningVi": "thâm hụt thương mại",
+      "definitionEn": "the amount by which the value of a country's imports exceeds its exports.",
+      "example": "A persistent trade deficit may weaken the national currency.",
+      "collocation": "widening trade deficit",
+      "band": "6-7"
+    },
+    {
+      "word": "fiscal policy",
+      "pos": "noun",
+      "ipa": "/ˈfɪskəl ˈpɒlɪsi/",
+      "meaningVi": "chính sách tài khóa",
+      "definitionEn": "government policies regarding taxation and spending to influence the economy.",
+      "example": "Expansionary fiscal policy can stimulate demand during a downturn.",
+      "collocation": "expansionary fiscal policy",
+      "band": "7-8"
+    },
+    {
+      "word": "monetary policy",
+      "pos": "noun",
+      "ipa": "/ˈmʌnɪtəri ˈpɒlɪsi/",
+      "meaningVi": "chính sách tiền tệ",
+      "definitionEn": "actions by a central bank to control money supply and interest rates.",
+      "example": "The central bank tightened monetary policy to curb inflation.",
+      "collocation": "tight monetary policy",
+      "band": "7-8"
+    },
+    {
+      "word": "supply chain",
+      "pos": "noun",
+      "ipa": "/səˈplaɪ tʃeɪn/",
+      "meaningVi": "chuỗi cung ứng",
+      "definitionEn": "the network of organizations and processes involved in producing and delivering a product.",
+      "example": "Global supply chain disruptions led to shortages of essential goods.",
+      "collocation": "global supply chain",
+      "band": "6-7"
+    },
+    {
+      "word": "demand",
+      "pos": "noun",
+      "ipa": "/dɪˈmɑːnd/",
+      "meaningVi": "cầu (nhu cầu thị trường)",
+      "definitionEn": "the desire and ability of consumers to purchase a good or service at a given price.",
+      "example": "Strong consumer demand drove up prices in the housing market.",
+      "collocation": "aggregate demand",
+      "band": "5-6"
+    },
+    {
+      "word": "market",
+      "pos": "noun",
+      "ipa": "/ˈmɑːkɪt/",
+      "meaningVi": "thị trường",
+      "definitionEn": "a system where buyers and sellers exchange goods, services, or assets.",
+      "example": "The stock market reacted positively to the interest rate cut.",
+      "collocation": "stock market",
+      "band": "5-6"
+    },
+    {
+      "word": "investment",
+      "pos": "noun",
+      "ipa": "/ɪnˈvestmənt/",
+      "meaningVi": "đầu tư",
+      "definitionEn": "the purchase of an asset or resources with the expectation of future returns.",
+      "example": "Foreign direct investment brings capital and technology to developing countries.",
+      "collocation": "foreign direct investment",
+      "band": "6-7"
+    },
+    {
+      "word": "export",
+      "pos": "noun",
+      "ipa": "/ˈekspɔːt/",
+      "meaningVi": "xuất khẩu",
+      "definitionEn": "a good or service sold to another country.",
+      "example": "The country's main exports include electronics and machinery.",
+      "collocation": "export volume",
+      "band": "5-6"
+    },
+    {
+      "word": "import",
+      "pos": "noun",
+      "ipa": "/ˈɪmpɔːt/",
+      "meaningVi": "nhập khẩu",
+      "definitionEn": "a good or service brought into a country from abroad.",
+      "example": "Higher tariffs on imports can protect domestic industries.",
+      "collocation": "import duty",
+      "band": "5-6"
+    },
+    {
+      "word": "tariff",
+      "pos": "noun",
+      "ipa": "/ˈtærɪf/",
+      "meaningVi": "thuế quan, thuế nhập khẩu",
+      "definitionEn": "a tax imposed on imported goods and services.",
+      "example": "The government imposed a tariff on steel to support local producers.",
+      "collocation": "trade tariff",
+      "band": "7-8"
+    },
+    {
+      "word": "subsidy",
+      "pos": "noun",
+      "ipa": "/ˈsʌbsɪdi/",
+      "meaningVi": "trợ cấp",
+      "definitionEn": "a sum of money granted by the government to support a specific industry or activity.",
+      "example": "Agricultural subsidies are often criticized for distorting international trade.",
+      "collocation": "government subsidy",
+      "band": "7-8"
+    },
+    {
+      "word": "competition",
+      "pos": "noun",
+      "ipa": "/ˌkɒmpəˈtɪʃən/",
+      "meaningVi": "cạnh tranh",
+      "definitionEn": "rivalry among sellers in a market for customers and sales.",
+      "example": "Intense competition forces companies to innovate and lower prices.",
+      "collocation": "fierce competition",
+      "band": "6-7"
+    },
+    {
+      "word": "monopoly",
+      "pos": "noun",
+      "ipa": "/məˈnɒpəli/",
+      "meaningVi": "độc quyền",
+      "definitionEn": "a market structure where a single firm produces a good or service with no close substitutes.",
+      "example": "The firm was accused of abusing its monopoly power to raise prices.",
+      "collocation": "natural monopoly",
+      "band": "7-8"
+    },
+    {
+      "word": "equilibrium",
+      "pos": "noun",
+      "ipa": "/ˌiːkwɪˈlɪbriəm/",
+      "meaningVi": "trạng thái cân bằng (thị trường)",
+      "definitionEn": "a state where market supply equals demand, leading to a stable price.",
+      "example": "At equilibrium, the quantity supplied matches the quantity demanded.",
+      "collocation": "market equilibrium",
+      "band": "7-8"
+    },
+    {
+      "word": "elasticity",
+      "pos": "noun",
+      "ipa": "/ˌiːlæˈstɪsəti/",
+      "meaningVi": "độ co giãn (cầu/cung)",
+      "definitionEn": "the measure of responsiveness of quantity demanded or supplied to changes in price or income.",
+      "example": "Price elasticity of demand is high for luxury goods but low for necessities.",
+      "collocation": "price elasticity of demand",
+      "band": "8+"
+    },
+    {
+      "word": "scarcity",
+      "pos": "noun",
+      "ipa": "/ˈskeəsɪti/",
+      "meaningVi": "sự khan hiếm",
+      "definitionEn": "the limited availability of resources relative to unlimited wants.",
+      "example": "Scarcity forces societies to make choices about resource allocation.",
+      "collocation": "resource scarcity",
+      "band": "6-7"
+    },
+    {
+      "word": "opportunity cost",
+      "pos": "noun",
+      "ipa": "/ˌɒpəˈtjuːnɪti kɒst/",
+      "meaningVi": "chi phí cơ hội",
+      "definitionEn": "the value of the next best alternative foregone when a decision is made.",
+      "example": "The opportunity cost of investing in new machinery is the potential profit from other ventures.",
+      "collocation": "high opportunity cost",
+      "band": "7-8"
+    },
+    {
+      "word": "productivity",
+      "pos": "noun",
+      "ipa": "/ˌprɒdʌkˈtɪvəti/",
+      "meaningVi": "năng suất",
+      "definitionEn": "the efficiency with which inputs are converted into outputs, often measured per worker or per hour.",
+      "example": "Rising productivity is a key driver of long-term economic growth.",
+      "collocation": "labor productivity",
+      "band": "6-7"
+    },
+    {
+      "word": "labor force",
+      "pos": "noun",
+      "ipa": "/ˈleɪbə fɔːs/",
+      "meaningVi": "lực lượng lao động",
+      "definitionEn": "the total number of people who are employed or actively seeking employment.",
+      "example": "An aging population may shrink the labor force and slow economic expansion.",
+      "collocation": "skilled labor force",
+      "band": "6-7"
+    },
+    {
+      "word": "capital",
+      "pos": "noun",
+      "ipa": "/ˈkæpɪtəl/",
+      "meaningVi": "vốn, tư bản",
+      "definitionEn": "financial assets or physical assets (e.g., machinery, buildings) used in production.",
+      "example": "Access to capital is crucial for small businesses to expand.",
+      "collocation": "human capital",
+      "band": "5-6"
+    },
+    {
+      "word": "asset",
+      "pos": "noun",
+      "ipa": "/ˈæset/",
+      "meaningVi": "tài sản",
+      "definitionEn": "an item of value owned by an individual, company, or country.",
+      "example": "The company's assets include cash, property, and intellectual property.",
+      "collocation": "financial asset",
+      "band": "5-6"
+    },
+    {
+      "word": "liability",
+      "pos": "noun",
+      "ipa": "/ˌlaɪəˈbɪləti/",
+      "meaningVi": "nợ phải trả, trách nhiệm tài chính",
+      "definitionEn": "a debt or financial obligation that must be settled in the future.",
+      "example": "High liabilities can make a firm vulnerable to bankruptcy during a downturn.",
+      "collocation": "current liability",
+      "band": "7-8"
+    },
+    {
+      "word": "revenue",
+      "pos": "noun",
+      "ipa": "/ˈrevənjuː/",
+      "meaningVi": "doanh thu",
+      "definitionEn": "the total income generated by a business from its activities, before expenses.",
+      "example": "The company's revenue increased by 20% due to higher sales volume.",
+      "collocation": "tax revenue",
+      "band": "5-6"
+    },
+    {
+      "word": "profit",
+      "pos": "noun",
+      "ipa": "/ˈprɒfɪt/",
+      "meaningVi": "lợi nhuận",
+      "definitionEn": "the financial gain obtained when revenue exceeds costs.",
+      "example": "Firms reinvest profits to fund research and development.",
+      "collocation": "net profit margin",
+      "band": "5-6"
+    },
+    {
+      "word": "loss",
+      "pos": "noun",
+      "ipa": "/lɒs/",
+      "meaningVi": "thua lỗ",
+      "definitionEn": "the amount by which total costs exceed total revenue.",
+      "example": "The company reported a loss for the second consecutive quarter.",
+      "collocation": "operating loss",
+      "band": "5-6"
+    },
+    {
+      "word": "budget",
+      "pos": "noun",
+      "ipa": "/ˈbʌdʒɪt/",
+      "meaningVi": "ngân sách",
+      "definitionEn": "a plan of expected income and expenditure over a specific period.",
+      "example": "The government announced a balanced budget for the next fiscal year.",
+      "collocation": "government budget deficit",
+      "band": "5-6"
+    },
+    {
+      "word": "deficit",
+      "pos": "noun",
+      "ipa": "/ˈdefɪsɪt/",
+      "meaningVi": "thâm hụt, thâm hụt ngân sách",
+      "definitionEn": "the amount by which spending exceeds revenue, especially in a government budget.",
+      "example": "A large budget deficit may lead to higher public debt.",
+      "collocation": "budget deficit",
+      "band": "6-7"
+    },
+    {
+      "word": "surplus",
+      "pos": "noun",
+      "ipa": "/ˈsɜːpləs/",
+      "meaningVi": "thặng dư",
+      "definitionEn": "the amount by which revenue exceeds expenditure, or supply exceeds demand.",
+      "example": "A trade surplus can strengthen a country's currency.",
+      "collocation": "trade surplus",
+      "band": "6-7"
+    },
+    {
+      "word": "debt",
+      "pos": "noun",
+      "ipa": "/det/",
+      "meaningVi": "nợ",
+      "definitionEn": "an amount of money borrowed by one party from another, typically with interest.",
+      "example": "High national debt can crowd out private investment.",
+      "collocation": "public debt",
+      "band": "5-6"
+    },
+    {
+      "word": "interest rate",
+      "pos": "noun",
+      "ipa": "/ˈɪntrɪst reɪt/",
+      "meaningVi": "lãi suất",
+      "definitionEn": "the percentage charged on a loan or paid on savings, usually expressed annually.",
+      "example": "Lower interest rates encourage borrowing and spending.",
+      "collocation": "central bank interest rate",
+      "band": "6-7"
+    },
+    {
+      "word": "exchange rate",
+      "pos": "noun",
+      "ipa": "/ɪksˈtʃeɪndʒ reɪt/",
+      "meaningVi": "tỷ giá hối đoái",
+      "definitionEn": "the value of one currency expressed in terms of another currency.",
+      "example": "A volatile exchange rate creates uncertainty for international traders.",
+      "collocation": "floating exchange rate",
+      "band": "7-8"
+    },
+    {
+      "word": "currency",
+      "pos": "noun",
+      "ipa": "/ˈkʌrənsi/",
+      "meaningVi": "tiền tệ",
+      "definitionEn": "a system of money in general use in a particular country.",
+      "example": "The euro is the common currency of the Eurozone.",
+      "collocation": "foreign currency reserves",
+      "band": "6-7"
+    },
+    {
+      "word": "stock",
+      "pos": "noun",
+      "ipa": "/stɒk/",
+      "meaningVi": "cổ phiếu",
+      "definitionEn": "a share representing ownership in a corporation.",
+      "example": "Investors bought stocks in technology companies expecting rapid growth.",
+      "collocation": "stock exchange",
+      "band": "5-6"
+    },
+    {
+      "word": "bond",
+      "pos": "noun",
+      "ipa": "/bɒnd/",
+      "meaningVi": "trái phiếu",
+      "definitionEn": "a fixed-income instrument representing a loan made by an investor to a borrower (typically government or corporate).",
+      "example": "Government bonds are considered low-risk investments.",
+      "collocation": "government bond yield",
+      "band": "7-8"
+    },
+    {
+      "word": "dividend",
+      "pos": "noun",
+      "ipa": "/ˈdɪvɪdend/",
+      "meaningVi": "cổ tức",
+      "definitionEn": "a portion of a company's earnings distributed to shareholders.",
+      "example": "The company paid a quarterly dividend of 50 cents per share.",
+      "collocation": "dividend yield",
+      "band": "8+"
+    },
+    {
+      "word": "inflation rate",
+      "pos": "noun",
+      "ipa": "/ɪnˈfleɪʃən reɪt/",
+      "meaningVi": "tỷ lệ lạm phát",
+      "definitionEn": "the percentage increase in the general price level over a period.",
+      "example": "Central banks target an inflation rate of around 2% in many economies.",
+      "collocation": "annual inflation rate",
+      "band": "6-7"
+    },
+    {
+      "word": "consumer price index",
+      "pos": "noun",
+      "ipa": "/kənˈsjuːmə praɪs ˈɪndeks/",
+      "meaningVi": "chỉ số giá tiêu dùng (CPI)",
+      "definitionEn": "a measure of the average change over time in the prices paid by urban consumers for a basket of goods and services.",
+      "example": "The consumer price index rose by 0.3% last month, indicating mild inflation.",
+      "collocation": "CPI data",
+      "band": "7-8"
+    },
+    {
+      "word": "purchasing power",
+      "pos": "noun",
+      "ipa": "/ˈpɜːtʃəsɪŋ ˈpaʊə/",
+      "meaningVi": "sức mua",
+      "definitionEn": "the value of a currency expressed in terms of the amount of goods or services that one unit can buy.",
+      "example": "Inflation erodes the purchasing power of households.",
+      "collocation": "purchasing power parity",
+      "band": "7-8"
+    },
+    {
+      "word": "disposable income",
+      "pos": "noun",
+      "ipa": "/dɪˈspəʊzəbl ˈɪnkʌm/",
+      "meaningVi": "thu nhập khả dụng",
+      "definitionEn": "the amount of income left after taxes and necessary deductions, available for spending or saving.",
+      "example": "Higher disposable income often leads to increased consumer spending.",
+      "collocation": "disposable income per capita",
+      "band": "6-7"
+    },
+    {
+      "word": "income inequality",
+      "pos": "noun",
+      "ipa": "/ˈɪnkʌm ˌɪnɪˈkwɒləti/",
+      "meaningVi": "bất bình đẳng thu nhập",
+      "definitionEn": "the uneven distribution of income among individuals or groups in a society.",
+      "example": "Rising income inequality can undermine social cohesion and economic stability.",
+      "collocation": "widening income inequality",
+      "band": "7-8"
+    },
+    {
+      "word": "economic indicator",
+      "pos": "noun",
+      "ipa": "/ˌiːkəˈnɒmɪk ˈɪndɪkeɪtə/",
+      "meaningVi": "chỉ báo kinh tế",
+      "definitionEn": "a statistic (e.g., GDP, unemployment rate) used to assess the health of an economy.",
+      "example": "Investors closely monitor economic indicators to predict market trends.",
+      "collocation": "leading economic indicator",
+      "band": "7-8"
+    },
+    {
+      "word": "business cycle",
+      "pos": "noun",
+      "ipa": "/ˈbɪznɪs ˈsaɪkəl/",
+      "meaningVi": "chu kỳ kinh doanh",
+      "definitionEn": "the natural rise and fall of economic activity over time, including expansion, peak, contraction, and trough.",
+      "example": "Understanding the business cycle helps policymakers implement appropriate measures.",
+      "collocation": "business cycle fluctuations",
+      "band": "7-8"
+    },
+    {
+      "word": "boom",
+      "pos": "noun",
+      "ipa": "/buːm/",
+      "meaningVi": "thời kỳ bùng nổ (kinh tế)",
+      "definitionEn": "a period of rapid economic expansion characterized by high growth and low unemployment.",
+      "example": "The housing boom was fueled by easy credit and speculative buying.",
+      "collocation": "economic boom",
+      "band": "6-7"
+    },
+    {
+      "word": "recovery",
+      "pos": "noun",
+      "ipa": "/rɪˈkʌvəri/",
+      "meaningVi": "sự phục hồi (kinh tế)",
+      "definitionEn": "the process of returning to a stable economic state after a recession or crisis.",
+      "example": "The economy showed signs of recovery after the central bank lowered interest rates.",
+      "collocation": "economic recovery",
+      "band": "6-7"
+    },
+    {
+      "word": "stagnation",
+      "pos": "noun",
+      "ipa": "/stæɡˈneɪʃən/",
+      "meaningVi": "sự trì trệ",
+      "definitionEn": "a prolonged period of slow or no economic growth, often accompanied by high unemployment.",
+      "example": "The country has been in a state of stagnation for over a decade.",
+      "collocation": "economic stagnation",
+      "band": "8+"
+    }
+  ]
+}

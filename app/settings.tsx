@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
+import { AccountCard } from '@/components/account/AccountCard';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Card, SectionHeader } from '@/components/ui';
 import { hasSupabaseConfig, publicEnv } from '@/lib/env';
@@ -11,6 +12,8 @@ export default function SettingsScreen() {
   return (
     <Screen>
       <Text className="font-heavy text-pageTitle text-ink">Settings</Text>
+
+      <AccountCard />
 
       <Card className="mt-4">
         <SectionHeader

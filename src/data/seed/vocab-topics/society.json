@@ -1,0 +1,508 @@
+{
+  "slug": "society",
+  "name": "Society",
+  "nameVi": "Xã hội",
+  "blurb": "Cộng đồng, bất bình đẳng, chuẩn mực",
+  "words": [
+    {
+      "word": "inequality",
+      "pos": "noun",
+      "ipa": "/ˌɪnɪˈkwɒlɪti/",
+      "meaningVi": "bất bình đẳng",
+      "definitionEn": "the state of being unequal, especially in terms of rights, opportunities, or wealth.",
+      "example": "The government must address the growing inequality in access to education.",
+      "collocation": "social inequality",
+      "band": "6-7"
+    },
+    {
+      "word": "norm",
+      "pos": "noun",
+      "ipa": "/nɔːm/",
+      "meaningVi": "chuẩn mực, quy tắc xã hội",
+      "definitionEn": "a standard or pattern of behavior that is typical or expected within a group or society.",
+      "example": "In many societies, it is a norm to greet others with a handshake.",
+      "collocation": "social norm",
+      "band": "6-7"
+    },
+    {
+      "word": "community",
+      "pos": "noun",
+      "ipa": "/kəˈmjuːnɪti/",
+      "meaningVi": "cộng đồng",
+      "definitionEn": "a group of people living in the same place or having a particular characteristic in common.",
+      "example": "The local community came together to support the victims of the flood.",
+      "collocation": "sense of community",
+      "band": "5-6"
+    },
+    {
+      "word": "discrimination",
+      "pos": "noun",
+      "ipa": "/dɪˌskrɪmɪˈneɪʃn/",
+      "meaningVi": "sự phân biệt đối xử",
+      "definitionEn": "the unjust treatment of different categories of people, especially on the grounds of race, age, or sex.",
+      "example": "Laws against racial discrimination have been strengthened in many countries.",
+      "collocation": "racial discrimination",
+      "band": "6-7"
+    },
+    {
+      "word": "prejudice",
+      "pos": "noun",
+      "ipa": "/ˈpredʒʊdɪs/",
+      "meaningVi": "định kiến, thành kiến",
+      "definitionEn": "a preconceived opinion that is not based on reason or actual experience.",
+      "example": "Prejudice against immigrants often stems from lack of understanding.",
+      "collocation": "racial prejudice",
+      "band": "6-7"
+    },
+    {
+      "word": "stereotype",
+      "pos": "noun",
+      "ipa": "/ˈsteriətaɪp/",
+      "meaningVi": "khuôn mẫu, định kiến",
+      "definitionEn": "a widely held but fixed and oversimplified image or idea of a particular type of person or thing.",
+      "example": "It is important to challenge negative stereotypes about minority groups.",
+      "collocation": "cultural stereotype",
+      "band": "6-7"
+    },
+    {
+      "word": "multiculturalism",
+      "pos": "noun",
+      "ipa": "/ˌmʌltiˈkʌltʃərəlɪzəm/",
+      "meaningVi": "chủ nghĩa đa văn hóa",
+      "definitionEn": "the presence of, or support for the presence of, several distinct cultural or ethnic groups within a society.",
+      "example": "Multiculturalism has enriched many societies but also sparked debates about national identity.",
+      "collocation": "policy of multiculturalism",
+      "band": "7-8"
+    },
+    {
+      "word": "diversity",
+      "pos": "noun",
+      "ipa": "/daɪˈvɜːsɪti/",
+      "meaningVi": "sự đa dạng",
+      "definitionEn": "the state of being diverse; variety, especially in terms of culture, ethnicity, or background.",
+      "example": "Workplace diversity can lead to greater creativity and innovation.",
+      "collocation": "cultural diversity",
+      "band": "6-7"
+    },
+    {
+      "word": "inclusion",
+      "pos": "noun",
+      "ipa": "/ɪnˈkluːʒn/",
+      "meaningVi": "sự bao gồm, hòa nhập",
+      "definitionEn": "the practice of ensuring that people feel they belong and are valued in a group or society.",
+      "example": "Social inclusion programs aim to reduce the marginalization of disadvantaged groups.",
+      "collocation": "social inclusion",
+      "band": "7-8"
+    },
+    {
+      "word": "exclusion",
+      "pos": "noun",
+      "ipa": "/ɪkˈskluːʒn/",
+      "meaningVi": "sự loại trừ",
+      "definitionEn": "the process of preventing someone or something from being part of a group or society.",
+      "example": "Long-term unemployment can lead to social exclusion.",
+      "collocation": "social exclusion",
+      "band": "7-8"
+    },
+    {
+      "word": "marginalization",
+      "pos": "noun",
+      "ipa": "/ˌmɑːdʒɪnəlaɪˈzeɪʃn/",
+      "meaningVi": "sự gạt ra bên lề, thiệt thòi",
+      "definitionEn": "the process of relegating a group or individual to a less important or powerless position within society.",
+      "example": "The marginalization of indigenous communities has historical roots in colonialism.",
+      "collocation": "economic marginalization",
+      "band": "7-8"
+    },
+    {
+      "word": "social stratification",
+      "pos": "noun",
+      "ipa": "/ˈsəʊʃl ˌstrætɪfɪˈkeɪʃn/",
+      "meaningVi": "phân tầng xã hội",
+      "definitionEn": "the hierarchical arrangement of social classes or groups within a society.",
+      "example": "Social stratification often determines an individual's life chances and opportunities.",
+      "collocation": "system of social stratification",
+      "band": "8+"
+    },
+    {
+      "word": "class",
+      "pos": "noun",
+      "ipa": "/klɑːs/",
+      "meaningVi": "giai cấp, tầng lớp xã hội",
+      "definitionEn": "a system of ordering society based on status, wealth, or occupation.",
+      "example": "The working class has historically fought for better labor rights.",
+      "collocation": "social class",
+      "band": "5-6"
+    },
+    {
+      "word": "hierarchy",
+      "pos": "noun",
+      "ipa": "/ˈhaɪərɑːki/",
+      "meaningVi": "hệ thống thứ bậc, phân cấp",
+      "definitionEn": "a system in which members of a society are ranked according to their status or authority.",
+      "example": "The social hierarchy in many traditional societies is rigid and difficult to change.",
+      "collocation": "social hierarchy",
+      "band": "6-7"
+    },
+    {
+      "word": "privilege",
+      "pos": "noun",
+      "ipa": "/ˈprɪvəlɪdʒ/",
+      "meaningVi": "đặc quyền, lợi thế",
+      "definitionEn": "a special right, advantage, or immunity granted or available only to a particular person or group.",
+      "example": "White privilege is a concept that refers to the unearned advantages enjoyed by white people in some societies.",
+      "collocation": "unearned privilege",
+      "band": "7-8"
+    },
+    {
+      "word": "oppression",
+      "pos": "noun",
+      "ipa": "/əˈpreʃn/",
+      "meaningVi": "sự áp bức",
+      "definitionEn": "prolonged cruel or unjust treatment or control of a group of people.",
+      "example": "The struggle against oppression is a central theme in many social movements.",
+      "collocation": "systemic oppression",
+      "band": "7-8"
+    },
+    {
+      "word": "exploitation",
+      "pos": "noun",
+      "ipa": "/ˌeksplɔɪˈteɪʃn/",
+      "meaningVi": "sự bóc lột",
+      "definitionEn": "the action of treating someone unfairly in order to benefit from their work or resources.",
+      "example": "Child labor is a form of exploitation that violates human rights.",
+      "collocation": "economic exploitation",
+      "band": "7-8"
+    },
+    {
+      "word": "solidarity",
+      "pos": "noun",
+      "ipa": "/ˌsɒlɪˈdærɪti/",
+      "meaningVi": "tinh thần đoàn kết",
+      "definitionEn": "unity or agreement of feeling or action, especially among individuals with a common interest.",
+      "example": "The protesters showed solidarity by marching together for social justice.",
+      "collocation": "show solidarity",
+      "band": "6-7"
+    },
+    {
+      "word": "cohesion",
+      "pos": "noun",
+      "ipa": "/kəʊˈhiːʒn/",
+      "meaningVi": "sự gắn kết",
+      "definitionEn": "the action or fact of forming a united whole, especially in a social context.",
+      "example": "Social cohesion is essential for a peaceful and prosperous society.",
+      "collocation": "social cohesion",
+      "band": "7-8"
+    },
+    {
+      "word": "integration",
+      "pos": "noun",
+      "ipa": "/ˌɪntɪˈɡreɪʃn/",
+      "meaningVi": "sự hội nhập",
+      "definitionEn": "the process of bringing together people from different groups into a unified society.",
+      "example": "Successful integration of immigrants requires language training and job opportunities.",
+      "collocation": "integration into society",
+      "band": "6-7"
+    },
+    {
+      "word": "assimilation",
+      "pos": "noun",
+      "ipa": "/əˌsɪməˈleɪʃn/",
+      "meaningVi": "sự đồng hóa",
+      "definitionEn": "the process by which a minority group adopts the customs and attitudes of the dominant culture.",
+      "example": "Assimilation policies have often been criticized for erasing cultural diversity.",
+      "collocation": "cultural assimilation",
+      "band": "7-8"
+    },
+    {
+      "word": "segregation",
+      "pos": "noun",
+      "ipa": "/ˌseɡrɪˈɡeɪʃn/",
+      "meaningVi": "sự phân biệt, tách biệt",
+      "definitionEn": "the action of setting someone apart from others, especially based on race or religion.",
+      "example": "Racial segregation in schools was declared unconstitutional in many countries.",
+      "collocation": "racial segregation",
+      "band": "7-8"
+    },
+    {
+      "word": "ghetto",
+      "pos": "noun",
+      "ipa": "/ˈɡetəʊ/",
+      "meaningVi": "khu ổ chuột, khu biệt lập",
+      "definitionEn": "a part of a city, especially a slum area, occupied by a minority group that is isolated from the rest of society.",
+      "example": "Living in a ghetto can limit access to quality education and healthcare.",
+      "collocation": "urban ghetto",
+      "band": "7-8"
+    },
+    {
+      "word": "underclass",
+      "pos": "noun",
+      "ipa": "/ˈʌndəklɑːs/",
+      "meaningVi": "tầng lớp dưới đáy xã hội",
+      "definitionEn": "a social class consisting of people who are in the lowest position in the social hierarchy and often face poverty and unemployment.",
+      "example": "The underclass is often trapped in a cycle of poverty and deprivation.",
+      "collocation": "emergence of an underclass",
+      "band": "8+"
+    },
+    {
+      "word": "meritocracy",
+      "pos": "noun",
+      "ipa": "/ˌmerɪˈtɒkrəsi/",
+      "meaningVi": "chế độ nhân tài",
+      "definitionEn": "a system in which people are chosen and rewarded based on their ability and effort rather than their wealth or social class.",
+      "example": "Education is often seen as a key to achieving meritocracy.",
+      "collocation": "ideal of meritocracy",
+      "band": "8+"
+    },
+    {
+      "word": "egalitarianism",
+      "pos": "noun",
+      "ipa": "/ɪˌɡælɪˈteəriənɪzəm/",
+      "meaningVi": "chủ nghĩa bình quân, bình đẳng",
+      "definitionEn": "the belief that all people are equal and should have equal rights and opportunities.",
+      "example": "Egalitarianism is a core principle of many democratic societies.",
+      "collocation": "commitment to egalitarianism",
+      "band": "8+"
+    },
+    {
+      "word": "feminism",
+      "pos": "noun",
+      "ipa": "/ˈfemənɪzəm/",
+      "meaningVi": "chủ nghĩa nữ quyền",
+      "definitionEn": "the advocacy of women's rights on the grounds of equality of the sexes.",
+      "example": "Feminism has helped to achieve significant progress in gender equality, but challenges remain.",
+      "collocation": "wave of feminism",
+      "band": "7-8"
+    },
+    {
+      "word": "patriarchy",
+      "pos": "noun",
+      "ipa": "/ˈpeɪtriɑːki/",
+      "meaningVi": "chế độ phụ quyền",
+      "definitionEn": "a system of society or government in which men hold the power and women are largely excluded from it.",
+      "example": "The patriarchy has historically limited women's roles in the public sphere.",
+      "collocation": "patriarchy system",
+      "band": "8+"
+    },
+    {
+      "word": "gender equality",
+      "pos": "noun",
+      "ipa": "/ˈdʒendər ɪˈkwɒlɪti/",
+      "meaningVi": "bình đẳng giới",
+      "definitionEn": "the state in which access to rights or opportunities is unaffected by gender.",
+      "example": "Promoting gender equality is essential for sustainable development.",
+      "collocation": "gender equality policy",
+      "band": "6-7"
+    },
+    {
+      "word": "racial equality",
+      "pos": "noun",
+      "ipa": "/ˈreɪʃl ɪˈkwɒlɪti/",
+      "meaningVi": "bình đẳng chủng tộc",
+      "definitionEn": "the concept of equal treatment and opportunity for people of all races.",
+      "example": "The movement for racial equality has gained momentum in recent years.",
+      "collocation": "fight for racial equality",
+      "band": "6-7"
+    },
+    {
+      "word": "social justice",
+      "pos": "noun",
+      "ipa": "/ˈsəʊʃl ˈdʒʌstɪs/",
+      "meaningVi": "công bằng xã hội",
+      "definitionEn": "the concept of fair and just relations between individuals and society, including the distribution of wealth and opportunities.",
+      "example": "Social justice requires addressing systemic inequalities in education and healthcare.",
+      "collocation": "social justice movement",
+      "band": "7-8"
+    },
+    {
+      "word": "welfare",
+      "pos": "noun",
+      "ipa": "/ˈwelfeər/",
+      "meaningVi": "phúc lợi, an sinh xã hội",
+      "definitionEn": "the health, happiness, and prosperity of a person or group, or government programs that provide financial support to people in need.",
+      "example": "The welfare state in many European countries provides a safety net for the unemployed.",
+      "collocation": "welfare system",
+      "band": "6-7"
+    },
+    {
+      "word": "poverty",
+      "pos": "noun",
+      "ipa": "/ˈpɒvəti/",
+      "meaningVi": "nghèo đói",
+      "definitionEn": "the state of being extremely poor, lacking the means to meet basic needs.",
+      "example": "Poverty is often linked to lack of access to education and healthcare.",
+      "collocation": "poverty reduction",
+      "band": "5-6"
+    },
+    {
+      "word": "affluence",
+      "pos": "noun",
+      "ipa": "/ˈæfluəns/",
+      "meaningVi": "sự giàu có, sung túc",
+      "definitionEn": "the state of having a great deal of money, wealth, or material possessions.",
+      "example": "The affluence of the upper class contrasts sharply with the poverty of the underclass.",
+      "collocation": "era of affluence",
+      "band": "7-8"
+    },
+    {
+      "word": "homelessness",
+      "pos": "noun",
+      "ipa": "/ˈhəʊmləsnəs/",
+      "meaningVi": "tình trạng vô gia cư",
+      "definitionEn": "the condition of not having a permanent place to live, often due to poverty or lack of affordable housing.",
+      "example": "Homelessness is a visible sign of social inequality in many cities.",
+      "collocation": "homelessness crisis",
+      "band": "6-7"
+    },
+    {
+      "word": "crime",
+      "pos": "noun",
+      "ipa": "/kraɪm/",
+      "meaningVi": "tội phạm",
+      "definitionEn": "an action or omission that constitutes an offense and is punishable by law.",
+      "example": "High crime rates are often associated with areas of high unemployment.",
+      "collocation": "crime rate",
+      "band": "5-6"
+    },
+    {
+      "word": "deviance",
+      "pos": "noun",
+      "ipa": "/ˈdiːviəns/",
+      "meaningVi": "sự lệch chuẩn, hành vi lệch lạc",
+      "definitionEn": "behavior that violates social norms or expectations.",
+      "example": "Sociologists study deviance to understand how societies define and enforce norms.",
+      "collocation": "forms of deviance",
+      "band": "7-8"
+    },
+    {
+      "word": "conformity",
+      "pos": "noun",
+      "ipa": "/kənˈfɔːmɪti/",
+      "meaningVi": "sự tuân thủ, phù hợp với chuẩn mực",
+      "definitionEn": "the act of matching attitudes, beliefs, and behaviors to group norms or societal expectations.",
+      "example": "Conformity can be both a source of social stability and a barrier to change.",
+      "collocation": "pressure to conformity",
+      "band": "7-8"
+    },
+    {
+      "word": "compliance",
+      "pos": "noun",
+      "ipa": "/kəmˈplaɪəns/",
+      "meaningVi": "sự tuân thủ, phục tùng",
+      "definitionEn": "the action or fact of obeying a law, rule, or request, or conforming to a standard.",
+      "example": "Compliance with social norms is often rewarded by acceptance within the group.",
+      "collocation": "compliance with rules",
+      "band": "6-7"
+    },
+    {
+      "word": "authority",
+      "pos": "noun",
+      "ipa": "/ɔːˈθɒrɪti/",
+      "meaningVi": "quyền lực, thẩm quyền",
+      "definitionEn": "the power or right to give orders, make decisions, and enforce obedience.",
+      "example": "Societies rely on legitimate authority to maintain order and stability.",
+      "collocation": "legitimate authority",
+      "band": "6-7"
+    },
+    {
+      "word": "empowerment",
+      "pos": "noun",
+      "ipa": "/ɪmˈpaʊərmənt/",
+      "meaningVi": "sự trao quyền, làm chủ",
+      "definitionEn": "the process of enabling individuals or groups to gain control over their own lives and decisions.",
+      "example": "Women's empowerment is a key goal of many development programs.",
+      "collocation": "empowerment of women",
+      "band": "7-8"
+    },
+    {
+      "word": "elite",
+      "pos": "noun",
+      "ipa": "/ɪˈliːt/",
+      "meaningVi": "tầng lớp tinh hoa",
+      "definitionEn": "a select group of people who have more power, wealth, or influence than the rest of society.",
+      "example": "The political elite often have access to better education and healthcare.",
+      "collocation": "elite group",
+      "band": "6-7"
+    },
+    {
+      "word": "masses",
+      "pos": "noun",
+      "ipa": "/ˈmæsɪz/",
+      "meaningVi": "quần chúng, đông đảo người dân",
+      "definitionEn": "the ordinary people in society, as opposed to the elite or privileged class.",
+      "example": "The mass media can influence the opinions of the masses on social issues.",
+      "collocation": "the masses",
+      "band": "5-6"
+    },
+    {
+      "word": "public opinion",
+      "pos": "noun",
+      "ipa": "/ˈpʌblɪk əˈpɪnjən/",
+      "meaningVi": "dư luận, ý kiến công chúng",
+      "definitionEn": "the views of the general population on a particular issue, often measured by polls.",
+      "example": "Public opinion plays a crucial role in shaping government policies.",
+      "collocation": "influence public opinion",
+      "band": "6-7"
+    },
+    {
+      "word": "social movement",
+      "pos": "noun",
+      "ipa": "/ˈsəʊʃl ˈmuːvmənt/",
+      "meaningVi": "phong trào xã hội",
+      "definitionEn": "a collective effort by a group of people to bring about social or political change.",
+      "example": "The civil rights movement was a major social movement that fought for racial equality.",
+      "collocation": "grassroots social movement",
+      "band": "7-8"
+    },
+    {
+      "word": "activism",
+      "pos": "noun",
+      "ipa": "/ˈæktɪvɪzəm/",
+      "meaningVi": "hoạt động xã hội, chủ nghĩa hành động",
+      "definitionEn": "the use of direct action or vigorous campaigning to bring about social or political change.",
+      "example": "Activism can take many forms, from petitions to protests.",
+      "collocation": "political activism",
+      "band": "7-8"
+    },
+    {
+      "word": "volunteerism",
+      "pos": "noun",
+      "ipa": "/ˌvɒlənˈtɪərɪzəm/",
+      "meaningVi": "tinh thần tình nguyện",
+      "definitionEn": "the practice of offering time and services to help others without financial reward.",
+      "example": "Volunteerism strengthens community bonds and provides vital services.",
+      "collocation": "spirit of volunteerism",
+      "band": "6-7"
+    },
+    {
+      "word": "philanthropy",
+      "pos": "noun",
+      "ipa": "/fɪˈlænθrəpi/",
+      "meaningVi": "hoạt động từ thiện",
+      "definitionEn": "the desire to promote the welfare of others, expressed especially by the generous donation of money to good causes.",
+      "example": "Philanthropy plays a significant role in funding social programs and research.",
+      "collocation": "corporate philanthropy",
+      "band": "7-8"
+    },
+    {
+      "word": "civic duty",
+      "pos": "noun",
+      "ipa": "/ˈsɪvɪk ˈdjuːti/",
+      "meaningVi": "nghĩa vụ công dân",
+      "definitionEn": "the responsibilities of a citizen, such as voting, obeying laws, and contributing to the community.",
+      "example": "Voting is considered a fundamental civic duty in a democracy.",
+      "collocation": "civic duty to vote",
+      "band": "6-7"
+    },
+    {
+      "word": "social contract",
+      "pos": "noun",
+      "ipa": "/ˈsəʊʃl ˈkɒntrækt/",
+      "meaningVi": "khế ước xã hội",
+      "definitionEn": "an implicit agreement among members of a society to cooperate for social benefits, often involving giving up some freedoms in exchange for security.",
+      "example": "The social contract theory underpins modern ideas of government and citizenship.",
+      "collocation": "theory of social contract",
+      "band": "8+"
+    }
+  ]
+}

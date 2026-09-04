@@ -1,0 +1,32 @@
+-- ============================================================================
+-- Gỡ khoá ngoại `question_sets.article_id → articles.id` — SAI GIẢ ĐỊNH, không
+-- phải lỗi đánh máy.
+--
+-- Migration khởi tạo (20260809000100) dựng `question_sets`/`questions` với giả
+-- định 1409 bài đọc của app nằm trong bảng `articles` của Supabase. Thực tế app
+-- đã rẽ sang hướng khác: TOÀN BỘ kho bài đọc là BUNDLE JSON TĨNH đóng gói cùng
+-- app (`src/data/seed/index.json` + các chunk toàn văn), đọc qua
+-- `getArticleById`/`getArticleWithBody` — KHÔNG BAO GIỜ qua Supabase. Bảng
+-- `articles` trong DB gần như trống, chỉ còn ý nghĩa cho nội dung do người dùng
+-- tự thêm sau này (nếu có), không phải kho 1409 bài đang chạy thật.
+--
+-- Hệ quả: bất kỳ lần ghi `question_sets` nào với `article_id` là một ID từ
+-- bundle (dạng như 'b53e6cee-1ddd-4ab4-b2b2-0e0ac627b92c') đều bị Postgres từ
+-- chối với lỗi 23503 — "Key (article_id)=(...) is not present in table
+-- articles" — vì khoá ngoại đòi một hàng KHÔNG TỒN TẠI và SẼ KHÔNG BAO GIỜ tồn
+-- tại theo đúng kiến trúc hiện tại. Đây chính là lý do cache đề dùng chung
+-- (`20260903000200_shared_question_cache.sql`) ghi thất bại HOÀN TOÀN im lặng —
+-- `writeSharedQuestionSet()` tự nuốt mọi lỗi ghi, nên route vẫn trả 200 bình
+-- thường trong khi cache không bao giờ có gì cả.
+--
+-- Bảng `question_sets` CHƯA TỪNG được ghi trước migration cache (đã xác nhận:
+-- không route nào gọi `.from('question_sets')` trước đó), nên gỡ ràng buộc này
+-- không phá dữ liệu nào đang có.
+-- ============================================================================
+
+alter table question_sets drop constraint question_sets_article_id_fkey;
+
+-- `article_id` vẫn NOT NULL và vẫn có index (`question_sets_article_idx`) —
+-- chỉ mất tính chất "khoá ngoại", vẫn là một chuỗi uuid định danh bài đọc theo
+-- đúng ID trong bundle. So khớp đúng/sai ID giờ là trách nhiệm của tầng ứng
+-- dụng (route đọc `getArticleById()` trước khi ghi cache), không phải của DB.

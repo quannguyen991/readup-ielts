@@ -1,0 +1,508 @@
+{
+  "slug": "education",
+  "name": "Education",
+  "nameVi": "Giáo dục",
+  "blurb": "Trường lớp, phương pháp học, bằng cấp",
+  "words": [
+    {
+      "word": "academic",
+      "pos": "adjective",
+      "ipa": "/ˌæk.əˈdem.ɪk/",
+      "meaningVi": "thuộc học thuật",
+      "definitionEn": "relating to education, especially at a college or university level",
+      "example": "Students must maintain a high academic standard to qualify for the scholarship.",
+      "collocation": "academic performance",
+      "band": "6-7"
+    },
+    {
+      "word": "accreditation",
+      "pos": "noun",
+      "ipa": "/əˌkred.ɪˈteɪ.ʃən/",
+      "meaningVi": "sự công nhận",
+      "definitionEn": "official approval given by an authority, usually to an educational institution or program",
+      "example": "The university lost its accreditation after failing to meet the required standards.",
+      "collocation": "gain accreditation",
+      "band": "7-8"
+    },
+    {
+      "word": "alumni",
+      "pos": "noun",
+      "ipa": "/əˈlʌm.naɪ/",
+      "meaningVi": "cựu sinh viên",
+      "definitionEn": "graduates or former students of a particular school, college, or university",
+      "example": "Many alumni donate generously to support scholarships for current students.",
+      "collocation": "alumni association",
+      "band": "6-7"
+    },
+    {
+      "word": "apprenticeship",
+      "pos": "noun",
+      "ipa": "/əˈpren.tɪs.ʃɪp/",
+      "meaningVi": "học nghề",
+      "definitionEn": "a system of training a new generation of practitioners in a trade or profession with on-the-job training and often some accompanying study",
+      "example": "She decided to pursue an apprenticeship rather than a traditional university degree.",
+      "collocation": "complete an apprenticeship",
+      "band": "6-7"
+    },
+    {
+      "word": "assessment",
+      "pos": "noun",
+      "ipa": "/əˈses.mənt/",
+      "meaningVi": "đánh giá",
+      "definitionEn": "the evaluation or estimation of the nature, quality, or ability of someone or something",
+      "example": "Continuous assessment is used to monitor students' progress throughout the semester.",
+      "collocation": "formative assessment",
+      "band": "6-7"
+    },
+    {
+      "word": "baccalaureate",
+      "pos": "noun",
+      "ipa": "/ˌbæk.əˈlɔːr.i.ɪt/",
+      "meaningVi": "bằng tú tài",
+      "definitionEn": "an academic degree or qualification, especially the International Baccalaureate or a bachelor's degree",
+      "example": "The International Baccalaureate program is recognized by universities worldwide.",
+      "collocation": "International Baccalaureate",
+      "band": "7-8"
+    },
+    {
+      "word": "commencement",
+      "pos": "noun",
+      "ipa": "/kəˈmens.mənt/",
+      "meaningVi": "lễ tốt nghiệp",
+      "definitionEn": "a ceremony at which students receive their academic degrees or diplomas",
+      "example": "The commencement speech was delivered by a renowned alumnus.",
+      "collocation": "commencement ceremony",
+      "band": "6-7"
+    },
+    {
+      "word": "compulsory",
+      "pos": "adjective",
+      "ipa": "/kəmˈpʌl.sər.i/",
+      "meaningVi": "bắt buộc",
+      "definitionEn": "required by law or a rule; obligatory",
+      "example": "In many countries, education is compulsory for children between the ages of 6 and 16.",
+      "collocation": "compulsory education",
+      "band": "6-7"
+    },
+    {
+      "word": "comprehensive",
+      "pos": "adjective",
+      "ipa": "/ˌkɒm.prɪˈhen.sɪv/",
+      "meaningVi": "toàn diện",
+      "definitionEn": "covering a wide range of topics or details; thorough",
+      "example": "A comprehensive curriculum includes both theoretical knowledge and practical skills.",
+      "collocation": "comprehensive education",
+      "band": "7-8"
+    },
+    {
+      "word": "credential",
+      "pos": "noun",
+      "ipa": "/krɪˈden.ʃəl/",
+      "meaningVi": "chứng chỉ",
+      "definitionEn": "a qualification, achievement, or quality that gives someone a basis for trust or authority",
+      "example": "Employers often require candidates to present their academic credentials.",
+      "collocation": "academic credentials",
+      "band": "6-7"
+    },
+    {
+      "word": "curriculum",
+      "pos": "noun",
+      "ipa": "/kəˈrɪk.jə.ləm/",
+      "meaningVi": "chương trình giảng dạy",
+      "definitionEn": "the subjects comprising a course of study in a school or college",
+      "example": "The school is revising its curriculum to include more digital literacy.",
+      "collocation": "core curriculum",
+      "band": "6-7"
+    },
+    {
+      "word": "curriculum vitae",
+      "pos": "noun",
+      "ipa": "/kəˌrɪk.jə.ləm ˈviː.taɪ/",
+      "meaningVi": "sơ yếu lý lịch",
+      "definitionEn": "a written overview of a person's education, qualifications, and experience",
+      "example": "Applicants are requested to submit a detailed curriculum vitae with their application.",
+      "collocation": "update your curriculum vitae",
+      "band": "7-8"
+    },
+    {
+      "word": "dean",
+      "pos": "noun",
+      "ipa": "/diːn/",
+      "meaningVi": "trưởng khoa",
+      "definitionEn": "the head of a faculty or department in a college or university",
+      "example": "The dean of the faculty of engineering announced a new research initiative.",
+      "collocation": "dean of students",
+      "band": "6-7"
+    },
+    {
+      "word": "degree",
+      "pos": "noun",
+      "ipa": "/dɪˈɡriː/",
+      "meaningVi": "bằng cấp",
+      "definitionEn": "a qualification awarded by a college or university after completing a course of study",
+      "example": "She earned a degree in economics from a prestigious university.",
+      "collocation": "bachelor's degree",
+      "band": "5-6"
+    },
+    {
+      "word": "didactic",
+      "pos": "adjective",
+      "ipa": "/daɪˈdæk.tɪk/",
+      "meaningVi": "mang tính giáo huấn",
+      "definitionEn": "intended to teach, especially in a way that is morally instructive",
+      "example": "The didactic approach of the lecture left little room for student interaction.",
+      "collocation": "didactic teaching",
+      "band": "8+"
+    },
+    {
+      "word": "diploma",
+      "pos": "noun",
+      "ipa": "/dɪˈpləʊ.mə/",
+      "meaningVi": "bằng tốt nghiệp",
+      "definitionEn": "a certificate awarded by an educational institution for completing a course of study",
+      "example": "He received his diploma at the graduation ceremony.",
+      "collocation": "high school diploma",
+      "band": "5-6"
+    },
+    {
+      "word": "dissertation",
+      "pos": "noun",
+      "ipa": "/ˌdɪs.əˈteɪ.ʃən/",
+      "meaningVi": "luận văn",
+      "definitionEn": "a long essay on a particular subject, especially one written for a university degree",
+      "example": "Her dissertation on climate change policy was highly praised by the committee.",
+      "collocation": "write a dissertation",
+      "band": "7-8"
+    },
+    {
+      "word": "dropout",
+      "pos": "noun",
+      "ipa": "/ˈdrɒp.aʊt/",
+      "meaningVi": "người bỏ học",
+      "definitionEn": "a person who leaves school or college before completing a course",
+      "example": "The school implemented programs to reduce the dropout rate among at-risk students.",
+      "collocation": "high school dropout",
+      "band": "6-7"
+    },
+    {
+      "word": "elective",
+      "pos": "adjective",
+      "ipa": "/ɪˈlek.tɪv/",
+      "meaningVi": "tự chọn",
+      "definitionEn": "a course or subject that students can choose to study, rather than being compulsory",
+      "example": "Students may take elective courses in fields such as art or music.",
+      "collocation": "elective subject",
+      "band": "6-7"
+    },
+    {
+      "word": "enrollment",
+      "pos": "noun",
+      "ipa": "/ɪnˈrəʊl.mənt/",
+      "meaningVi": "sự ghi danh",
+      "definitionEn": "the process of registering or being registered for a course or program",
+      "example": "Enrollment for the fall semester opens in July.",
+      "collocation": "enrollment number",
+      "band": "5-6"
+    },
+    {
+      "word": "extracurricular",
+      "pos": "adjective",
+      "ipa": "/ˌek.strə.kəˈrɪk.jə.lər/",
+      "meaningVi": "ngoại khóa",
+      "definitionEn": "activities that fall outside the regular academic curriculum",
+      "example": "Participating in extracurricular activities can enhance a student's university application.",
+      "collocation": "extracurricular activity",
+      "band": "6-7"
+    },
+    {
+      "word": "faculty",
+      "pos": "noun",
+      "ipa": "/ˈfæk.əl.ti/",
+      "meaningVi": "giảng viên/ khoa",
+      "definitionEn": "the teaching staff of a university or college, or a department within it",
+      "example": "The faculty of arts and sciences offers a wide range of majors.",
+      "collocation": "faculty member",
+      "band": "6-7"
+    },
+    {
+      "word": "GPA",
+      "pos": "noun",
+      "ipa": "/ˌdʒiː.piːˈeɪ/",
+      "meaningVi": "điểm trung bình",
+      "definitionEn": "grade point average; a numerical measure of a student's academic performance",
+      "example": "To maintain his scholarship, he needs to keep his GPA above 3.5.",
+      "collocation": "cumulative GPA",
+      "band": "5-6"
+    },
+    {
+      "word": "graduation",
+      "pos": "noun",
+      "ipa": "/ˌɡrædʒ.uˈeɪ.ʃən/",
+      "meaningVi": "tốt nghiệp",
+      "definitionEn": "the successful completion of a course of study, especially at a university",
+      "example": "After graduation, she plans to work in the non-profit sector.",
+      "collocation": "graduation ceremony",
+      "band": "5-6"
+    },
+    {
+      "word": "heuristic",
+      "pos": "adjective",
+      "ipa": "/hjʊˈrɪs.tɪk/",
+      "meaningVi": "khám phá",
+      "definitionEn": "involving learning through discovery and problem-solving rather than direct instruction",
+      "example": "The heuristic method encourages students to find solutions on their own.",
+      "collocation": "heuristic learning",
+      "band": "8+"
+    },
+    {
+      "word": "holistic",
+      "pos": "adjective",
+      "ipa": "/həʊˈlɪs.tɪk/",
+      "meaningVi": "toàn diện",
+      "definitionEn": "considering the whole person or system, rather than just separate parts",
+      "example": "A holistic education aims to develop the intellectual, emotional, and social aspects of a student.",
+      "collocation": "holistic approach",
+      "band": "7-8"
+    },
+    {
+      "word": "interactive",
+      "pos": "adjective",
+      "ipa": "/ˌɪn.tərˈæk.tɪv/",
+      "meaningVi": "tương tác",
+      "definitionEn": "involving communication and active participation between the teacher and students",
+      "example": "Interactive learning platforms have become popular in modern classrooms.",
+      "collocation": "interactive learning",
+      "band": "6-7"
+    },
+    {
+      "word": "interdisciplinary",
+      "pos": "adjective",
+      "ipa": "/ˌɪn.tərˈdɪs.ɪ.plɪ.nər.i/",
+      "meaningVi": "liên ngành",
+      "definitionEn": "involving two or more academic disciplines",
+      "example": "The university offers an interdisciplinary program combining business and technology.",
+      "collocation": "interdisciplinary study",
+      "band": "7-8"
+    },
+    {
+      "word": "internship",
+      "pos": "noun",
+      "ipa": "/ˈɪn.tɜːn.ʃɪp/",
+      "meaningVi": "kỳ thực tập",
+      "definitionEn": "a period of work experience offered by an organization for a limited period, often to students",
+      "example": "She completed an internship at a marketing firm to gain practical experience.",
+      "collocation": "do an internship",
+      "band": "6-7"
+    },
+    {
+      "word": "lecture",
+      "pos": "noun",
+      "ipa": "/ˈlek.tʃər/",
+      "meaningVi": "bài giảng",
+      "definitionEn": "an educational talk given to a group of students, especially at a university",
+      "example": "The professor's lecture on quantum mechanics was both informative and engaging.",
+      "collocation": "attend a lecture",
+      "band": "5-6"
+    },
+    {
+      "word": "literacy",
+      "pos": "noun",
+      "ipa": "/ˈlɪt.ər.ə.si/",
+      "meaningVi": "khả năng đọc viết",
+      "definitionEn": "the ability to read and write",
+      "example": "Improving literacy rates among adults is a key goal of the education program.",
+      "collocation": "literacy rate",
+      "band": "6-7"
+    },
+    {
+      "word": "matriculation",
+      "pos": "noun",
+      "ipa": "/məˌtrɪk.jəˈleɪ.ʃən/",
+      "meaningVi": "nhập học",
+      "definitionEn": "the formal process of enrolling in a college or university",
+      "example": "Matriculation into the university requires a high school diploma or equivalent.",
+      "collocation": "matriculation ceremony",
+      "band": "7-8"
+    },
+    {
+      "word": "mentor",
+      "pos": "noun",
+      "ipa": "/ˈmen.tɔːr/",
+      "meaningVi": "người hướng dẫn",
+      "definitionEn": "an experienced and trusted advisor who guides a less experienced person",
+      "example": "Each graduate student is assigned a mentor who provides academic guidance.",
+      "collocation": "mentor program",
+      "band": "6-7"
+    },
+    {
+      "word": "numeracy",
+      "pos": "noun",
+      "ipa": "/ˈnjuː.mər.ə.si/",
+      "meaningVi": "khả năng tính toán",
+      "definitionEn": "the ability to understand and work with numbers",
+      "example": "Basic numeracy skills are essential for everyday life and many jobs.",
+      "collocation": "numeracy skills",
+      "band": "6-7"
+    },
+    {
+      "word": "pedagogy",
+      "pos": "noun",
+      "ipa": "/ˈped.ə.ɡɒdʒ.i/",
+      "meaningVi": "phương pháp sư phạm",
+      "definitionEn": "the method and practice of teaching, especially as an academic subject",
+      "example": "Modern pedagogy emphasizes student-centered learning over traditional lectures.",
+      "collocation": "effective pedagogy",
+      "band": "7-8"
+    },
+    {
+      "word": "peer",
+      "pos": "noun",
+      "ipa": "/pɪər/",
+      "meaningVi": "bạn đồng trang lứa",
+      "definitionEn": "a person of the same age, status, or ability as another, especially in a school context",
+      "example": "Peer assessment can help students develop critical thinking skills.",
+      "collocation": "peer review",
+      "band": "6-7"
+    },
+    {
+      "word": "plagiarism",
+      "pos": "noun",
+      "ipa": "/ˈpleɪ.dʒər.ɪ.zəm/",
+      "meaningVi": "đạo văn",
+      "definitionEn": "the practice of taking someone else's work or ideas and passing them off as one's own",
+      "example": "Universities have strict policies against plagiarism, and offenders may face expulsion.",
+      "collocation": "commit plagiarism",
+      "band": "7-8"
+    },
+    {
+      "word": "postgraduate",
+      "pos": "adjective",
+      "ipa": "/ˌpəʊstˈɡrædʒ.u.ɪt/",
+      "meaningVi": "sau đại học",
+      "definitionEn": "relating to studies undertaken after completing a first degree",
+      "example": "Many students pursue postgraduate degrees to specialize in their field.",
+      "collocation": "postgraduate study",
+      "band": "6-7"
+    },
+    {
+      "word": "remedial",
+      "pos": "adjective",
+      "ipa": "/rɪˈmiː.di.əl/",
+      "meaningVi": "phụ đạo",
+      "definitionEn": "designed to improve or correct a student's skills in a particular area",
+      "example": "The school offers remedial classes for students who struggle with mathematics.",
+      "collocation": "remedial education",
+      "band": "6-7"
+    },
+    {
+      "word": "rigorous",
+      "pos": "adjective",
+      "ipa": "/ˈrɪɡ.ər.əs/",
+      "meaningVi": "khắt khe, nghiêm ngặt",
+      "definitionEn": "extremely thorough, exhaustive, or accurate; demanding",
+      "example": "The rigorous academic program prepares students for competitive careers.",
+      "collocation": "rigorous training",
+      "band": "7-8"
+    },
+    {
+      "word": "scholarship",
+      "pos": "noun",
+      "ipa": "/ˈskɒl.ə.ʃɪp/",
+      "meaningVi": "học bổng",
+      "definitionEn": "a financial award given to a student to help pay for education",
+      "example": "She was awarded a full scholarship to study abroad.",
+      "collocation": "win a scholarship",
+      "band": "5-6"
+    },
+    {
+      "word": "seminar",
+      "pos": "noun",
+      "ipa": "/ˈsem.ɪ.nɑːr/",
+      "meaningVi": "hội thảo",
+      "definitionEn": "a small group discussion or class on a particular topic, often at a university",
+      "example": "The seminar on educational technology was attended by 20 graduate students.",
+      "collocation": "attend a seminar",
+      "band": "6-7"
+    },
+    {
+      "word": "syllabus",
+      "pos": "noun",
+      "ipa": "/ˈsɪl.ə.bəs/",
+      "meaningVi": "đề cương môn học",
+      "definitionEn": "an outline of the subjects, topics, and readings for a course",
+      "example": "The syllabus for the course includes weekly readings and assignments.",
+      "collocation": "course syllabus",
+      "band": "6-7"
+    },
+    {
+      "word": "thesis",
+      "pos": "noun",
+      "ipa": "/ˈθiː.sɪs/",
+      "meaningVi": "luận án",
+      "definitionEn": "a long piece of research-based writing submitted for a higher degree, such as a master's or doctorate",
+      "example": "He defended his thesis on the history of economic thought successfully.",
+      "collocation": "write a thesis",
+      "band": "7-8"
+    },
+    {
+      "word": "transcript",
+      "pos": "noun",
+      "ipa": "/ˈtræn.skrɪpt/",
+      "meaningVi": "bảng điểm",
+      "definitionEn": "an official record of a student's academic performance and courses taken",
+      "example": "Applicants must submit their official transcripts along with the application form.",
+      "collocation": "academic transcript",
+      "band": "6-7"
+    },
+    {
+      "word": "tuition",
+      "pos": "noun",
+      "ipa": "/tjuˈɪʃ.ən/",
+      "meaningVi": "học phí",
+      "definitionEn": "the fee charged for instruction, especially at a college or private school",
+      "example": "Rising tuition costs have made higher education less accessible for many families.",
+      "collocation": "tuition fee",
+      "band": "5-6"
+    },
+    {
+      "word": "tutorial",
+      "pos": "noun",
+      "ipa": "/tjuːˈtɔː.ri.əl/",
+      "meaningVi": "lớp hướng dẫn",
+      "definitionEn": "a small group session led by a tutor, often used to supplement lectures",
+      "example": "The weekly tutorial gives students the chance to ask questions and discuss ideas.",
+      "collocation": "tutorial session",
+      "band": "6-7"
+    },
+    {
+      "word": "undergraduate",
+      "pos": "noun",
+      "ipa": "/ˌʌn.dərˈɡrædʒ.u.ɪt/",
+      "meaningVi": "sinh viên đại học chưa tốt nghiệp",
+      "definitionEn": "a student at a college or university who is working towards a first degree",
+      "example": "Undergraduates are required to complete a certain number of credit hours per semester.",
+      "collocation": "undergraduate degree",
+      "band": "5-6"
+    },
+    {
+      "word": "valedictorian",
+      "pos": "noun",
+      "ipa": "/ˌvæl.ɪ.dɪkˈtɔː.ri.ən/",
+      "meaningVi": "thủ khoa phát biểu",
+      "definitionEn": "the student who has the highest academic rank in a graduating class and delivers the farewell speech",
+      "example": "The valedictorian gave an inspiring speech at the graduation ceremony.",
+      "collocation": "class valedictorian",
+      "band": "7-8"
+    },
+    {
+      "word": "vocational",
+      "pos": "adjective",
+      "ipa": "/vəʊˈkeɪ.ʃən.əl/",
+      "meaningVi": "hướng nghiệp",
+      "definitionEn": "relating to education that prepares students for a specific trade or career",
+      "example": "Vocational training programs provide practical skills for jobs like plumbing or carpentry.",
+      "collocation": "vocational education",
+      "band": "6-7"
+    }
+  ]
+}

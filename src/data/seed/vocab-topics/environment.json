@@ -1,0 +1,508 @@
+{
+  "slug": "environment",
+  "name": "Environment",
+  "nameVi": "Môi trường",
+  "blurb": "Ô nhiễm, biến đổi khí hậu, bảo tồn",
+  "words": [
+    {
+      "word": "pollution",
+      "pos": "noun",
+      "ipa": "/pəˈluːʃən/",
+      "meaningVi": "sự ô nhiễm",
+      "definitionEn": "the presence of harmful substances in the environment",
+      "example": "Industrial pollution has severely impacted the quality of local rivers.",
+      "collocation": "air pollution",
+      "band": "5-6"
+    },
+    {
+      "word": "emission",
+      "pos": "noun",
+      "ipa": "/ɪˈmɪʃən/",
+      "meaningVi": "sự phát thải",
+      "definitionEn": "the release of gases or substances into the atmosphere",
+      "example": "The government has set strict limits on carbon emissions from factories.",
+      "collocation": "carbon emission",
+      "band": "6-7"
+    },
+    {
+      "word": "contaminant",
+      "pos": "noun",
+      "ipa": "/kənˈtæmɪnənt/",
+      "meaningVi": "chất gây ô nhiễm",
+      "definitionEn": "a substance that makes something impure or polluted",
+      "example": "Chemical contaminants in groundwater pose a serious health risk.",
+      "collocation": "toxic contaminant",
+      "band": "7-8"
+    },
+    {
+      "word": "deforestation",
+      "pos": "noun",
+      "ipa": "/diːˌfɒrɪˈsteɪʃən/",
+      "meaningVi": "sự phá rừng",
+      "definitionEn": "the removal of trees from a forested area",
+      "example": "Deforestation in the Amazon accelerates climate change.",
+      "collocation": "massive deforestation",
+      "band": "6-7"
+    },
+    {
+      "word": "biodiversity",
+      "pos": "noun",
+      "ipa": "/ˌbaɪəʊdaɪˈvɜːsɪti/",
+      "meaningVi": "đa dạng sinh học",
+      "definitionEn": "the variety of plant and animal life in a habitat",
+      "example": "Protecting biodiversity is essential for a healthy ecosystem.",
+      "collocation": "loss of biodiversity",
+      "band": "7-8"
+    },
+    {
+      "word": "ecosystem",
+      "pos": "noun",
+      "ipa": "/ˈiːkəʊˌsɪstəm/",
+      "meaningVi": "hệ sinh thái",
+      "definitionEn": "a community of living organisms and their environment",
+      "example": "Deforestation disrupts the entire ecosystem of the region.",
+      "collocation": "fragile ecosystem",
+      "band": "6-7"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪnəbəl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "able to be maintained without harming the environment",
+      "example": "Sustainable farming practices help preserve soil quality.",
+      "collocation": "sustainable development",
+      "band": "6-7"
+    },
+    {
+      "word": "renewable",
+      "pos": "adjective",
+      "ipa": "/rɪˈnjuːəbəl/",
+      "meaningVi": "có thể tái tạo",
+      "definitionEn": "derived from sources that are naturally replenished",
+      "example": "Many countries are investing in renewable energy sources.",
+      "collocation": "renewable energy",
+      "band": "6-7"
+    },
+    {
+      "word": "conservation",
+      "pos": "noun",
+      "ipa": "/ˌkɒnsəˈveɪʃən/",
+      "meaningVi": "sự bảo tồn",
+      "definitionEn": "the protection of natural resources and wildlife",
+      "example": "Conservation efforts have helped restore the population of endangered species.",
+      "collocation": "wildlife conservation",
+      "band": "6-7"
+    },
+    {
+      "word": "degradation",
+      "pos": "noun",
+      "ipa": "/ˌdeɡrəˈdeɪʃən/",
+      "meaningVi": "sự suy thoái",
+      "definitionEn": "the process of becoming worse or less valuable",
+      "example": "Soil degradation reduces agricultural productivity.",
+      "collocation": "environmental degradation",
+      "band": "7-8"
+    },
+    {
+      "word": "carbon footprint",
+      "pos": "noun",
+      "ipa": "/ˈkɑːbən ˈfʊtprɪnt/",
+      "meaningVi": "dấu chân carbon",
+      "definitionEn": "the total amount of greenhouse gases emitted by an activity",
+      "example": "Reducing your carbon footprint can be achieved by using public transport.",
+      "collocation": "reduce carbon footprint",
+      "band": "7-8"
+    },
+    {
+      "word": "greenhouse gas",
+      "pos": "noun",
+      "ipa": "/ˈɡriːnhaʊs ɡæs/",
+      "meaningVi": "khí nhà kính",
+      "definitionEn": "a gas that traps heat in the atmosphere, contributing to global warming",
+      "example": "Methane is a potent greenhouse gas released by livestock.",
+      "collocation": "greenhouse gas emissions",
+      "band": "6-7"
+    },
+    {
+      "word": "global warming",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ˈwɔːmɪŋ/",
+      "meaningVi": "sự nóng lên toàn cầu",
+      "definitionEn": "the gradual increase in Earth's average temperature",
+      "example": "Global warming is causing polar ice caps to melt at an alarming rate.",
+      "collocation": "combat global warming",
+      "band": "5-6"
+    },
+    {
+      "word": "climate change",
+      "pos": "noun",
+      "ipa": "/ˈklaɪmət tʃeɪndʒ/",
+      "meaningVi": "biến đổi khí hậu",
+      "definitionEn": "long-term shifts in temperatures and weather patterns",
+      "example": "Climate change is one of the most pressing issues of our time.",
+      "collocation": "mitigate climate change",
+      "band": "5-6"
+    },
+    {
+      "word": "ozone layer",
+      "pos": "noun",
+      "ipa": "/ˈəʊzəʊn ˈleɪə/",
+      "meaningVi": "tầng ozone",
+      "definitionEn": "a layer in the stratosphere that protects Earth from UV radiation",
+      "example": "The ozone layer is gradually recovering thanks to international agreements.",
+      "collocation": "depletion of the ozone layer",
+      "band": "6-7"
+    },
+    {
+      "word": "depletion",
+      "pos": "noun",
+      "ipa": "/dɪˈpliːʃən/",
+      "meaningVi": "sự suy giảm",
+      "definitionEn": "the reduction in the amount or quality of something",
+      "example": "The depletion of natural resources threatens future generations.",
+      "collocation": "resource depletion",
+      "band": "7-8"
+    },
+    {
+      "word": "fossil fuel",
+      "pos": "noun",
+      "ipa": "/ˈfɒsəl ˈfjuːəl/",
+      "meaningVi": "nhiên liệu hóa thạch",
+      "definitionEn": "a natural fuel such as coal or gas formed from ancient organisms",
+      "example": "Burning fossil fuels releases large amounts of carbon dioxide.",
+      "collocation": "fossil fuel consumption",
+      "band": "6-7"
+    },
+    {
+      "word": "mitigate",
+      "pos": "verb",
+      "ipa": "/ˈmɪtɪɡeɪt/",
+      "meaningVi": "giảm nhẹ",
+      "definitionEn": "to make less severe or serious",
+      "example": "We need to mitigate the effects of industrial pollution on local communities.",
+      "collocation": "mitigate the impact",
+      "band": "7-8"
+    },
+    {
+      "word": "adapt",
+      "pos": "verb",
+      "ipa": "/əˈdæpt/",
+      "meaningVi": "thích ứng",
+      "definitionEn": "to adjust to new conditions, especially environmental changes",
+      "example": "Coastal cities must adapt to rising sea levels.",
+      "collocation": "adapt to climate change",
+      "band": "6-7"
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "ipa": "/rɪˈzɪliəns/",
+      "meaningVi": "khả năng phục hồi",
+      "definitionEn": "the capacity to recover quickly from difficulties or shocks",
+      "example": "Building community resilience is crucial for coping with natural disasters.",
+      "collocation": "ecological resilience",
+      "band": "8+"
+    },
+    {
+      "word": "anthropogenic",
+      "pos": "adjective",
+      "ipa": "/ˌænθrəpəˈdʒenɪk/",
+      "meaningVi": "do con người gây ra",
+      "definitionEn": "caused or influenced by human activity",
+      "example": "Anthropogenic emissions are the primary driver of global warming.",
+      "collocation": "anthropogenic impact",
+      "band": "8+"
+    },
+    {
+      "word": "exacerbate",
+      "pos": "verb",
+      "ipa": "/ɪɡˈzæsəbeɪt/",
+      "meaningVi": "làm trầm trọng thêm",
+      "definitionEn": "to make a problem or situation worse",
+      "example": "Deforestation exacerbates the effects of climate change.",
+      "collocation": "exacerbate the problem",
+      "band": "7-8"
+    },
+    {
+      "word": "ecological",
+      "pos": "adjective",
+      "ipa": "/ˌiːkəˈlɒdʒɪkəl/",
+      "meaningVi": "thuộc sinh thái",
+      "definitionEn": "relating to the relationships between organisms and their environment",
+      "example": "The oil spill caused an ecological disaster in the region.",
+      "collocation": "ecological balance",
+      "band": "6-7"
+    },
+    {
+      "word": "pollutant",
+      "pos": "noun",
+      "ipa": "/pəˈluːtənt/",
+      "meaningVi": "chất ô nhiễm",
+      "definitionEn": "a substance that pollutes the environment",
+      "example": "Factories must filter pollutants before releasing wastewater.",
+      "collocation": "air pollutant",
+      "band": "6-7"
+    },
+    {
+      "word": "runoff",
+      "pos": "noun",
+      "ipa": "/ˈrʌnɒf/",
+      "meaningVi": "dòng chảy tràn",
+      "definitionEn": "water that flows over land and carries pollutants into water bodies",
+      "example": "Agricultural runoff containing fertilizers causes algal blooms in lakes.",
+      "collocation": "agricultural runoff",
+      "band": "7-8"
+    },
+    {
+      "word": "acid rain",
+      "pos": "noun",
+      "ipa": "/ˈæsɪd reɪn/",
+      "meaningVi": "mưa axit",
+      "definitionEn": "rainfall with high acidity due to pollutants like sulfur dioxide",
+      "example": "Acid rain damages forests and acidifies lakes.",
+      "collocation": "cause acid rain",
+      "band": "6-7"
+    },
+    {
+      "word": "smog",
+      "pos": "noun",
+      "ipa": "/smɒɡ/",
+      "meaningVi": "khói mù",
+      "definitionEn": "a mixture of smoke and fog, often caused by air pollution",
+      "example": "Major cities often experience thick smog during winter.",
+      "collocation": "photochemical smog",
+      "band": "6-7"
+    },
+    {
+      "word": "landfill",
+      "pos": "noun",
+      "ipa": "/ˈlændfɪl/",
+      "meaningVi": "bãi chôn lấp",
+      "definitionEn": "a site where waste is buried in the ground",
+      "example": "Landfills produce methane gas as organic waste decomposes.",
+      "collocation": "landfill waste",
+      "band": "6-7"
+    },
+    {
+      "word": "incineration",
+      "pos": "noun",
+      "ipa": "/ɪnˌsɪnəˈreɪʃən/",
+      "meaningVi": "sự đốt rác",
+      "definitionEn": "the process of burning waste materials",
+      "example": "Incineration reduces the volume of waste but can release toxic fumes.",
+      "collocation": "waste incineration",
+      "band": "7-8"
+    },
+    {
+      "word": "recycling",
+      "pos": "noun",
+      "ipa": "/ˌriːˈsaɪklɪŋ/",
+      "meaningVi": "sự tái chế",
+      "definitionEn": "the process of converting waste into reusable material",
+      "example": "Recycling helps conserve natural resources and reduce landfill use.",
+      "collocation": "recycling program",
+      "band": "5-6"
+    },
+    {
+      "word": "compost",
+      "pos": "noun",
+      "ipa": "/ˈkɒmpɒst/",
+      "meaningVi": "phân compost",
+      "definitionEn": "decayed organic matter used as a fertilizer",
+      "example": "Compost enriches soil and reduces the need for chemical fertilizers.",
+      "collocation": "compost heap",
+      "band": "6-7"
+    },
+    {
+      "word": "biodegrade",
+      "pos": "verb",
+      "ipa": "/ˌbaɪəʊdɪˈɡreɪd/",
+      "meaningVi": "phân hủy sinh học",
+      "definitionEn": "to break down naturally by the action of living organisms",
+      "example": "Plastic bags do not biodegrade easily, causing long-term pollution.",
+      "collocation": "biodegrade naturally",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainable development",
+      "pos": "noun",
+      "ipa": "/səˈsteɪnəbəl dɪˈveləpmənt/",
+      "meaningVi": "phát triển bền vững",
+      "definitionEn": "economic growth that meets present needs without harming future generations",
+      "example": "Sustainable development aims to balance economic progress with environmental protection.",
+      "collocation": "promote sustainable development",
+      "band": "6-7"
+    },
+    {
+      "word": "carbon neutral",
+      "pos": "adjective",
+      "ipa": "/ˈkɑːbən ˈnjuːtrəl/",
+      "meaningVi": "trung hòa carbon",
+      "definitionEn": "producing no net carbon emissions, often through offsets",
+      "example": "The company aims to become carbon neutral by 2030.",
+      "collocation": "carbon neutral target",
+      "band": "7-8"
+    },
+    {
+      "word": "carbon offset",
+      "pos": "noun",
+      "ipa": "/ˈkɑːbən ˈɒfset/",
+      "meaningVi": "bù đắp carbon",
+      "definitionEn": "a reduction in emissions elsewhere to compensate for one's own emissions",
+      "example": "Many airlines offer carbon offset programs for flights.",
+      "collocation": "purchase carbon offsets",
+      "band": "8+"
+    },
+    {
+      "word": "renewable energy",
+      "pos": "noun",
+      "ipa": "/rɪˈnjuːəbəl ˈenədʒi/",
+      "meaningVi": "năng lượng tái tạo",
+      "definitionEn": "energy from sources that are naturally replenished, such as solar or wind",
+      "example": "Investing in renewable energy is key to reducing greenhouse gas emissions.",
+      "collocation": "renewable energy sources",
+      "band": "6-7"
+    },
+    {
+      "word": "solar panel",
+      "pos": "noun",
+      "ipa": "/ˈsəʊlə ˈpænəl/",
+      "meaningVi": "tấm pin mặt trời",
+      "definitionEn": "a device that converts sunlight into electricity",
+      "example": "Solar panels on rooftops can significantly reduce household energy bills.",
+      "collocation": "install solar panels",
+      "band": "5-6"
+    },
+    {
+      "word": "wind turbine",
+      "pos": "noun",
+      "ipa": "/wɪnd ˈtɜːbaɪn/",
+      "meaningVi": "tuabin gió",
+      "definitionEn": "a machine that converts wind energy into electricity",
+      "example": "Wind turbines are a common sight in many rural areas.",
+      "collocation": "offshore wind turbine",
+      "band": "6-7"
+    },
+    {
+      "word": "hydropower",
+      "pos": "noun",
+      "ipa": "/ˈhaɪdrəʊpaʊə/",
+      "meaningVi": "thủy điện",
+      "definitionEn": "electricity generated by using the energy of flowing water",
+      "example": "Hydropower is a reliable source of renewable energy.",
+      "collocation": "hydropower plant",
+      "band": "6-7"
+    },
+    {
+      "word": "geothermal",
+      "pos": "adjective",
+      "ipa": "/ˌdʒiːəʊˈθɜːməl/",
+      "meaningVi": "địa nhiệt",
+      "definitionEn": "relating to heat from the Earth's interior",
+      "example": "Geothermal energy can be used for heating and electricity generation.",
+      "collocation": "geothermal energy",
+      "band": "7-8"
+    },
+    {
+      "word": "environmentalist",
+      "pos": "noun",
+      "ipa": "/ɪnˌvaɪrənˈmentəlɪst/",
+      "meaningVi": "nhà môi trường học",
+      "definitionEn": "a person who advocates for the protection of the environment",
+      "example": "Environmentalists are pushing for stricter regulations on plastic waste.",
+      "collocation": "environmentalist group",
+      "band": "6-7"
+    },
+    {
+      "word": "activism",
+      "pos": "noun",
+      "ipa": "/ˈæktɪvɪzəm/",
+      "meaningVi": "chủ nghĩa hoạt động",
+      "definitionEn": "the use of direct action to bring about social or political change",
+      "example": "Environmental activism has grown rapidly among young people.",
+      "collocation": "climate activism",
+      "band": "7-8"
+    },
+    {
+      "word": "legislation",
+      "pos": "noun",
+      "ipa": "/ˌledʒɪsˈleɪʃən/",
+      "meaningVi": "pháp luật, luật",
+      "definitionEn": "laws passed by a government body",
+      "example": "New legislation aims to ban single-use plastics by 2025.",
+      "collocation": "environmental legislation",
+      "band": "7-8"
+    },
+    {
+      "word": "regulation",
+      "pos": "noun",
+      "ipa": "/ˌreɡjʊˈleɪʃən/",
+      "meaningVi": "quy định",
+      "definitionEn": "a rule or directive made by an authority",
+      "example": "Stricter regulations on emissions have improved air quality.",
+      "collocation": "government regulation",
+      "band": "6-7"
+    },
+    {
+      "word": "compliance",
+      "pos": "noun",
+      "ipa": "/kəmˈplaɪəns/",
+      "meaningVi": "sự tuân thủ",
+      "definitionEn": "the act of obeying rules or standards",
+      "example": "Companies must ensure compliance with environmental laws.",
+      "collocation": "regulatory compliance",
+      "band": "7-8"
+    },
+    {
+      "word": "enforcement",
+      "pos": "noun",
+      "ipa": "/ɪnˈfɔːsmənt/",
+      "meaningVi": "sự thực thi",
+      "definitionEn": "the process of making sure laws are obeyed",
+      "example": "Effective enforcement of pollution laws is essential for clean water.",
+      "collocation": "law enforcement",
+      "band": "7-8"
+    },
+    {
+      "word": "eco-friendly",
+      "pos": "adjective",
+      "ipa": "/ˈiːkəʊ ˈfrendli/",
+      "meaningVi": "thân thiện với môi trường",
+      "definitionEn": "not harmful to the environment",
+      "example": "Eco-friendly products are becoming more popular among consumers.",
+      "collocation": "eco-friendly packaging",
+      "band": "5-6"
+    },
+    {
+      "word": "greenwashing",
+      "pos": "noun",
+      "ipa": "/ˈɡriːnwɒʃɪŋ/",
+      "meaningVi": "hành vi tẩy xanh",
+      "definitionEn": "deceptive marketing that exaggerates environmental benefits",
+      "example": "Consumers should be wary of greenwashing when choosing products.",
+      "collocation": "accusations of greenwashing",
+      "band": "8+"
+    },
+    {
+      "word": "overexploitation",
+      "pos": "noun",
+      "ipa": "/ˌəʊvərˌeksplɔɪˈteɪʃən/",
+      "meaningVi": "sự khai thác quá mức",
+      "definitionEn": "the use of a resource beyond its sustainable capacity",
+      "example": "Overexploitation of fisheries has led to the collapse of many fish stocks.",
+      "collocation": "overexploitation of resources",
+      "band": "7-8"
+    },
+    {
+      "word": "habitat destruction",
+      "pos": "noun",
+      "ipa": "/ˈhæbɪtæt dɪˈstrʌkʃən/",
+      "meaningVi": "sự phá hủy môi trường sống",
+      "definitionEn": "the process of making a natural habitat unable to support its native species",
+      "example": "Habitat destruction is the main threat to endangered species worldwide.",
+      "collocation": "prevent habitat destruction",
+      "band": "6-7"
+    }
+  ]
+}

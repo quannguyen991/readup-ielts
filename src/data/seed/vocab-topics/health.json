@@ -1,0 +1,508 @@
+{
+  "slug": "health",
+  "name": "Health",
+  "nameVi": "Sức khoẻ",
+  "blurb": "Bệnh tật, y tế, lối sống",
+  "words": [
+    {
+      "word": "symptom",
+      "pos": "noun",
+      "ipa": "/ˈsɪmptəm/",
+      "meaningVi": "triệu chứng",
+      "definitionEn": "A physical or mental sign indicating a disease or condition.",
+      "example": "The patient's symptoms included a persistent cough and high fever.",
+      "collocation": "develop symptoms",
+      "band": "5-6"
+    },
+    {
+      "word": "treatment",
+      "pos": "noun",
+      "ipa": "/ˈtriːtmənt/",
+      "meaningVi": "sự điều trị",
+      "definitionEn": "Medical care given to a patient for an illness or injury.",
+      "example": "Early treatment is crucial for preventing the spread of infectious diseases.",
+      "collocation": "receive treatment",
+      "band": "5-6"
+    },
+    {
+      "word": "medication",
+      "pos": "noun",
+      "ipa": "/ˌmedɪˈkeɪʃən/",
+      "meaningVi": "thuốc chữa bệnh",
+      "definitionEn": "A drug or medicine used to treat a medical condition.",
+      "example": "The doctor prescribed a new medication to control her blood pressure.",
+      "collocation": "prescribe medication",
+      "band": "5-6"
+    },
+    {
+      "word": "stress",
+      "pos": "noun",
+      "ipa": "/stres/",
+      "meaningVi": "căng thẳng",
+      "definitionEn": "A state of mental or emotional strain resulting from adverse circumstances.",
+      "example": "Chronic stress can weaken the immune system and increase the risk of illness.",
+      "collocation": "cope with stress",
+      "band": "5-6"
+    },
+    {
+      "word": "surgery",
+      "pos": "noun",
+      "ipa": "/ˈsɜːrdʒəri/",
+      "meaningVi": "phẫu thuật",
+      "definitionEn": "Medical treatment involving an incision to repair or remove body parts.",
+      "example": "The patient underwent surgery to remove the tumour.",
+      "collocation": "undergo surgery",
+      "band": "5-6"
+    },
+    {
+      "word": "hygiene",
+      "pos": "noun",
+      "ipa": "/ˈhaɪdʒiːn/",
+      "meaningVi": "vệ sinh",
+      "definitionEn": "Practices that promote health and prevent disease, especially cleanliness.",
+      "example": "Proper hand hygiene is essential to reduce the transmission of infections.",
+      "collocation": "personal hygiene",
+      "band": "5-6"
+    },
+    {
+      "word": "organic",
+      "pos": "adjective",
+      "ipa": "/ɔːrˈɡænɪk/",
+      "meaningVi": "hữu cơ",
+      "definitionEn": "Relating to food produced without synthetic chemicals or pesticides.",
+      "example": "Many people believe that organic food is healthier than conventionally grown produce.",
+      "collocation": "organic produce",
+      "band": "5-6"
+    },
+    {
+      "word": "detox",
+      "pos": "noun",
+      "ipa": "/ˈdiːtɒks/",
+      "meaningVi": "giải độc",
+      "definitionEn": "A process of removing toxins from the body, often through diet or special treatments.",
+      "example": "Some people follow a detox diet to cleanse their bodies after overindulgence.",
+      "collocation": "detox programme",
+      "band": "5-6"
+    },
+    {
+      "word": "health insurance",
+      "pos": "noun",
+      "ipa": "/helθ ɪnˈʃʊərəns/",
+      "meaningVi": "bảo hiểm y tế",
+      "definitionEn": "A policy that covers medical expenses in exchange for regular payments.",
+      "example": "Lack of health insurance can prevent people from seeking timely medical care.",
+      "collocation": "purchase health insurance",
+      "band": "5-6"
+    },
+    {
+      "word": "lifestyle",
+      "pos": "noun",
+      "ipa": "/ˈlaɪfstaɪl/",
+      "meaningVi": "lối sống",
+      "definitionEn": "The way a person lives, including habits, behaviours, and choices.",
+      "example": "A sedentary lifestyle is a major risk factor for cardiovascular disease.",
+      "collocation": "healthy lifestyle",
+      "band": "5-6"
+    },
+    {
+      "word": "contagious",
+      "pos": "adjective",
+      "ipa": "/kənˈteɪdʒəs/",
+      "meaningVi": "lây nhiễm",
+      "definitionEn": "Able to be transmitted from one person to another by direct or indirect contact.",
+      "example": "Measles is a highly contagious disease that can spread rapidly in schools.",
+      "collocation": "highly contagious",
+      "band": "5-6"
+    },
+    {
+      "word": "mental health",
+      "pos": "noun",
+      "ipa": "/ˈmentl helθ/",
+      "meaningVi": "sức khỏe tâm thần",
+      "definitionEn": "A person's emotional, psychological, and social well-being.",
+      "example": "Employers are increasingly recognising the importance of mental health in the workplace.",
+      "collocation": "mental health issues",
+      "band": "5-6"
+    },
+    {
+      "word": "diet",
+      "pos": "noun",
+      "ipa": "/ˈdaɪət/",
+      "meaningVi": "chế độ ăn",
+      "definitionEn": "The kinds of food that a person habitually eats.",
+      "example": "A balanced diet rich in fruits and vegetables supports overall health.",
+      "collocation": "balanced diet",
+      "band": "5-6"
+    },
+    {
+      "word": "diagnosis",
+      "pos": "noun",
+      "ipa": "/ˌdaɪəɡˈnəʊsɪs/",
+      "meaningVi": "chẩn đoán",
+      "definitionEn": "The identification of the nature of an illness or problem by examination.",
+      "example": "Early diagnosis of cancer significantly improves the chances of successful treatment.",
+      "collocation": "make a diagnosis",
+      "band": "6-7"
+    },
+    {
+      "word": "chronic",
+      "pos": "adjective",
+      "ipa": "/ˈkrɒnɪk/",
+      "meaningVi": "mãn tính",
+      "definitionEn": "Persisting for a long time or constantly recurring.",
+      "example": "Chronic diseases such as diabetes require long-term management and lifestyle changes.",
+      "collocation": "chronic condition",
+      "band": "6-7"
+    },
+    {
+      "word": "epidemic",
+      "pos": "noun",
+      "ipa": "/ˌepɪˈdemɪk/",
+      "meaningVi": "dịch bệnh",
+      "definitionEn": "A widespread occurrence of a disease in a community at a particular time.",
+      "example": "The government implemented strict measures to control the epidemic.",
+      "collocation": "epidemic outbreak",
+      "band": "6-7"
+    },
+    {
+      "word": "outbreak",
+      "pos": "noun",
+      "ipa": "/ˈaʊtbreɪk/",
+      "meaningVi": "bùng phát dịch",
+      "definitionEn": "The sudden start of something unpleasant, especially a disease.",
+      "example": "The outbreak of the virus led to widespread panic and travel restrictions.",
+      "collocation": "disease outbreak",
+      "band": "6-7"
+    },
+    {
+      "word": "quarantine",
+      "pos": "noun",
+      "ipa": "/ˈkwɒrəntiːn/",
+      "meaningVi": "cách ly",
+      "definitionEn": "A period of isolation imposed to prevent the spread of disease.",
+      "example": "Passengers arriving from affected areas were placed in quarantine for two weeks.",
+      "collocation": "impose quarantine",
+      "band": "6-7"
+    },
+    {
+      "word": "therapy",
+      "pos": "noun",
+      "ipa": "/ˈθerəpi/",
+      "meaningVi": "liệu pháp",
+      "definitionEn": "Treatment intended to relieve or heal a disorder.",
+      "example": "Physical therapy helped the patient regain mobility after the accident.",
+      "collocation": "undergo therapy",
+      "band": "6-7"
+    },
+    {
+      "word": "vaccination",
+      "pos": "noun",
+      "ipa": "/ˌvæksɪˈneɪʃən/",
+      "meaningVi": "tiêm chủng",
+      "definitionEn": "The administration of a vaccine to stimulate immunity against a disease.",
+      "example": "Vaccination programmes have eradicated smallpox and reduced polio cases dramatically.",
+      "collocation": "routine vaccination",
+      "band": "6-7"
+    },
+    {
+      "word": "immunity",
+      "pos": "noun",
+      "ipa": "/ɪˈmjuːnɪti/",
+      "meaningVi": "miễn dịch",
+      "definitionEn": "The ability of the body to resist infection or disease.",
+      "example": "Herd immunity protects vulnerable populations when enough people are vaccinated.",
+      "collocation": "build immunity",
+      "band": "6-7"
+    },
+    {
+      "word": "diabetes",
+      "pos": "noun",
+      "ipa": "/ˌdaɪəˈbiːtiːz/",
+      "meaningVi": "bệnh tiểu đường",
+      "definitionEn": "A metabolic disorder characterised by high blood sugar levels over a prolonged period.",
+      "example": "Type 2 diabetes is often linked to obesity and a sedentary lifestyle.",
+      "collocation": "manage diabetes",
+      "band": "6-7"
+    },
+    {
+      "word": "obesity",
+      "pos": "noun",
+      "ipa": "/əʊˈbiːsɪti/",
+      "meaningVi": "béo phì",
+      "definitionEn": "A condition of being grossly overweight, often measured by BMI over 30.",
+      "example": "Obesity is a major public health concern that increases the risk of heart disease.",
+      "collocation": "combat obesity",
+      "band": "6-7"
+    },
+    {
+      "word": "insomnia",
+      "pos": "noun",
+      "ipa": "/ɪnˈsɒmniə/",
+      "meaningVi": "mất ngủ",
+      "definitionEn": "Persistent difficulty falling asleep or staying asleep.",
+      "example": "Chronic insomnia can impair cognitive function and weaken the immune system.",
+      "collocation": "suffer from insomnia",
+      "band": "6-7"
+    },
+    {
+      "word": "nutrition",
+      "pos": "noun",
+      "ipa": "/njuːˈtrɪʃən/",
+      "meaningVi": "dinh dưỡng",
+      "definitionEn": "The process of providing or obtaining the food necessary for health and growth.",
+      "example": "Good nutrition is essential for maintaining a strong immune system.",
+      "collocation": "proper nutrition",
+      "band": "6-7"
+    },
+    {
+      "word": "rehabilitation",
+      "pos": "noun",
+      "ipa": "/ˌriːhəˌbɪlɪˈteɪʃən/",
+      "meaningVi": "phục hồi chức năng",
+      "definitionEn": "The process of restoring a person to health or normal life through training and therapy.",
+      "example": "After the stroke, the patient underwent intensive rehabilitation to regain speech and movement.",
+      "collocation": "cardiac rehabilitation",
+      "band": "6-7"
+    },
+    {
+      "word": "acute",
+      "pos": "adjective",
+      "ipa": "/əˈkjuːt/",
+      "meaningVi": "cấp tính",
+      "definitionEn": "Having a sudden onset and short duration, often severe.",
+      "example": "Acute appendicitis requires immediate surgical intervention.",
+      "collocation": "acute pain",
+      "band": "7-8"
+    },
+    {
+      "word": "pandemic",
+      "pos": "noun",
+      "ipa": "/pænˈdemɪk/",
+      "meaningVi": "đại dịch",
+      "definitionEn": "An epidemic occurring over a very wide area, crossing international borders.",
+      "example": "The COVID-19 pandemic highlighted the fragility of global healthcare systems.",
+      "collocation": "global pandemic",
+      "band": "7-8"
+    },
+    {
+      "word": "inflammation",
+      "pos": "noun",
+      "ipa": "/ˌɪnfləˈmeɪʃən/",
+      "meaningVi": "viêm",
+      "definitionEn": "A localized physical condition involving redness, swelling, heat, and pain as a response to injury or infection.",
+      "example": "Chronic inflammation is linked to many diseases, including arthritis and heart disease.",
+      "collocation": "reduce inflammation",
+      "band": "7-8"
+    },
+    {
+      "word": "cardiovascular",
+      "pos": "adjective",
+      "ipa": "/ˌkɑːrdiəʊˈvæskjələr/",
+      "meaningVi": "tim mạch",
+      "definitionEn": "Relating to the heart and blood vessels.",
+      "example": "Regular exercise lowers the risk of cardiovascular disease by improving circulation.",
+      "collocation": "cardiovascular fitness",
+      "band": "7-8"
+    },
+    {
+      "word": "respiratory",
+      "pos": "adjective",
+      "ipa": "/rɪˈspɪrətəri/",
+      "meaningVi": "hô hấp",
+      "definitionEn": "Relating to the organs of breathing, such as the lungs.",
+      "example": "Air pollution is a major cause of respiratory illnesses like asthma and bronchitis.",
+      "collocation": "respiratory infection",
+      "band": "7-8"
+    },
+    {
+      "word": "hypertension",
+      "pos": "noun",
+      "ipa": "/ˌhaɪpəˈtenʃən/",
+      "meaningVi": "tăng huyết áp",
+      "definitionEn": "Abnormally high blood pressure, often leading to health complications.",
+      "example": "Hypertension is often called the 'silent killer' because it has few symptoms.",
+      "collocation": "manage hypertension",
+      "band": "7-8"
+    },
+    {
+      "word": "malnutrition",
+      "pos": "noun",
+      "ipa": "/ˌmælnjuːˈtrɪʃən/",
+      "meaningVi": "suy dinh dưỡng",
+      "definitionEn": "Lack of proper nutrition, caused by an inadequate or unbalanced diet.",
+      "example": "Malnutrition in children can lead to stunted growth and impaired cognitive development.",
+      "collocation": "chronic malnutrition",
+      "band": "7-8"
+    },
+    {
+      "word": "sedentary",
+      "pos": "adjective",
+      "ipa": "/ˈsedəntəri/",
+      "meaningVi": "ít vận động",
+      "definitionEn": "Characterised by a lot of sitting and little physical activity.",
+      "example": "A sedentary lifestyle is a primary contributor to the global obesity epidemic.",
+      "collocation": "sedentary behaviour",
+      "band": "7-8"
+    },
+    {
+      "word": "non-communicable",
+      "pos": "adjective",
+      "ipa": "/nɒn kəˈmjuːnɪkəbl/",
+      "meaningVi": "không lây nhiễm",
+      "definitionEn": "Not transmissible from one person to another; often chronic.",
+      "example": "Non-communicable diseases such as diabetes and cancer account for most deaths worldwide.",
+      "collocation": "non-communicable disease",
+      "band": "7-8"
+    },
+    {
+      "word": "transplant",
+      "pos": "noun",
+      "ipa": "/trænsˈplɑːnt/",
+      "meaningVi": "cấy ghép",
+      "definitionEn": "The transfer of an organ or tissue from one body to another.",
+      "example": "Organ transplant waiting lists are often long due to a shortage of donors.",
+      "collocation": "organ transplant",
+      "band": "7-8"
+    },
+    {
+      "word": "depression",
+      "pos": "noun",
+      "ipa": "/dɪˈpreʃən/",
+      "meaningVi": "trầm cảm",
+      "definitionEn": "A serious mental health condition marked by persistent sadness and loss of interest.",
+      "example": "Depression is a leading cause of disability worldwide and requires professional treatment.",
+      "collocation": "clinical depression",
+      "band": "7-8"
+    },
+    {
+      "word": "anxiety",
+      "pos": "noun",
+      "ipa": "/æŋˈzaɪəti/",
+      "meaningVi": "lo âu",
+      "definitionEn": "A feeling of worry, nervousness, or unease, often about an imminent event.",
+      "example": "Anxiety disorders are common and can significantly impair a person's quality of life.",
+      "collocation": "chronic anxiety",
+      "band": "7-8"
+    },
+    {
+      "word": "prognosis",
+      "pos": "noun",
+      "ipa": "/prɒɡˈnəʊsɪs/",
+      "meaningVi": "tiên lượng",
+      "definitionEn": "The likely course and outcome of a disease or medical condition.",
+      "example": "The prognosis for early-stage breast cancer is generally favourable with treatment.",
+      "collocation": "poor prognosis",
+      "band": "8+"
+    },
+    {
+      "word": "vector",
+      "pos": "noun",
+      "ipa": "/ˈvektər/",
+      "meaningVi": "vật trung gian truyền bệnh",
+      "definitionEn": "An organism, often an insect, that transmits a pathogen.",
+      "example": "Mosquitoes are vectors for malaria, dengue fever, and Zika virus.",
+      "collocation": "disease vector",
+      "band": "8+"
+    },
+    {
+      "word": "relapse",
+      "pos": "noun",
+      "ipa": "/rɪˈlæps/",
+      "meaningVi": "tái phát",
+      "definitionEn": "A deterioration in health after a period of improvement; return of a disease.",
+      "example": "The patient experienced a relapse of symptoms after stopping the medication prematurely.",
+      "collocation": "risk of relapse",
+      "band": "8+"
+    },
+    {
+      "word": "remission",
+      "pos": "noun",
+      "ipa": "/rɪˈmɪʃən/",
+      "meaningVi": "thuyên giảm",
+      "definitionEn": "A temporary or permanent decrease or disappearance of disease symptoms.",
+      "example": "The cancer patient was in remission after completing the chemotherapy regimen.",
+      "collocation": "go into remission",
+      "band": "8+"
+    },
+    {
+      "word": "palliative",
+      "pos": "adjective",
+      "ipa": "/ˈpæliətɪv/",
+      "meaningVi": "giảm nhẹ",
+      "definitionEn": "Relieving symptoms without curing the underlying disease, often used in end-of-life care.",
+      "example": "Palliative care focuses on improving the quality of life for patients with serious illnesses.",
+      "collocation": "palliative treatment",
+      "band": "8+"
+    },
+    {
+      "word": "epidemiology",
+      "pos": "noun",
+      "ipa": "/ˌepɪdɪːmiˈɒlədʒi/",
+      "meaningVi": "dịch tễ học",
+      "definitionEn": "The study of the distribution and determinants of health-related states in populations.",
+      "example": "Epidemiology plays a crucial role in understanding how diseases spread and how to control them.",
+      "collocation": "epidemiological study",
+      "band": "8+"
+    },
+    {
+      "word": "comorbidity",
+      "pos": "noun",
+      "ipa": "/kəʊmɔːrˈbɪdɪti/",
+      "meaningVi": "bệnh đi kèm",
+      "definitionEn": "The simultaneous presence of two or more medical conditions in a patient.",
+      "example": "Patients with diabetes often have comorbidities such as hypertension and obesity.",
+      "collocation": "multiple comorbidities",
+      "band": "8+"
+    },
+    {
+      "word": "pathogenesis",
+      "pos": "noun",
+      "ipa": "/ˌpæθəˈdʒenɪsɪs/",
+      "meaningVi": "cơ chế bệnh sinh",
+      "definitionEn": "The biological mechanism that leads to the development of a disease.",
+      "example": "Understanding the pathogenesis of COVID-19 has been essential for developing effective treatments.",
+      "collocation": "disease pathogenesis",
+      "band": "8+"
+    },
+    {
+      "word": "nosocomial",
+      "pos": "adjective",
+      "ipa": "/ˌnɒsəˈkəʊmiəl/",
+      "meaningVi": "nhiễm trùng bệnh viện",
+      "definitionEn": "Originating or taking place in a hospital, especially infections acquired there.",
+      "example": "Nosocomial infections are a major concern in healthcare settings, often caused by antibiotic-resistant bacteria.",
+      "collocation": "nosocomial infection",
+      "band": "8+"
+    },
+    {
+      "word": "iatrogenic",
+      "pos": "adjective",
+      "ipa": "/aɪˌætrəˈdʒenɪk/",
+      "meaningVi": "do can thiệp y tế",
+      "definitionEn": "Caused by medical treatment or diagnostic procedures.",
+      "example": "Iatrogenic conditions, such as adverse drug reactions, can sometimes be avoided by careful monitoring.",
+      "collocation": "iatrogenic harm",
+      "band": "8+"
+    },
+    {
+      "word": "placebo",
+      "pos": "noun",
+      "ipa": "/pləˈsiːbəʊ/",
+      "meaningVi": "giả dược",
+      "definitionEn": "A harmless substance or treatment given as a control in medical trials.",
+      "example": "The placebo effect shows that patients can experience real improvement from believing they are receiving treatment.",
+      "collocation": "placebo effect",
+      "band": "8+"
+    },
+    {
+      "word": "prophylaxis",
+      "pos": "noun",
+      "ipa": "/ˌprɒfɪˈlæksɪs/",
+      "meaningVi": "dự phòng",
+      "definitionEn": "Measures taken to prevent disease, such as vaccination or medication.",
+      "example": "Antibiotic prophylaxis is sometimes given before surgery to prevent infection.",
+      "collocation": "pre-exposure prophylaxis",
+      "band": "8+"
+    }
+  ]
+}

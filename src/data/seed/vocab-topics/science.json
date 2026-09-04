@@ -1,0 +1,508 @@
+{
+  "slug": "science",
+  "name": "Science and Research",
+  "nameVi": "Khoa học",
+  "blurb": "Nghiên cứu, thí nghiệm, phát hiện",
+  "words": [
+    {
+      "word": "analysis",
+      "pos": "noun",
+      "ipa": "/əˈnæləsɪs/",
+      "meaningVi": "phân tích",
+      "definitionEn": "The process of examining data or information in detail to understand its structure or meaning.",
+      "example": "The analysis of the experimental data revealed a significant correlation between the two variables.",
+      "collocation": "conduct an analysis",
+      "band": "5-6"
+    },
+    {
+      "word": "anomaly",
+      "pos": "noun",
+      "ipa": "/əˈnɒməli/",
+      "meaningVi": "sự bất thường, dị thường",
+      "definitionEn": "Something that deviates from what is standard, normal, or expected.",
+      "example": "The researcher identified an anomaly in the dataset that required further investigation.",
+      "collocation": "detect an anomaly",
+      "band": "8+"
+    },
+    {
+      "word": "bias",
+      "pos": "noun",
+      "ipa": "/ˈbaɪəs/",
+      "meaningVi": "sự thiên lệch, sai lệch",
+      "definitionEn": "A systematic error introduced into research by the researcher's own preferences or the study design.",
+      "example": "The study was criticized for selection bias, as the sample was not representative of the population.",
+      "collocation": "selection bias",
+      "band": "7-8"
+    },
+    {
+      "word": "breakthrough",
+      "pos": "noun",
+      "ipa": "/ˈbreɪkθruː/",
+      "meaningVi": "đột phá",
+      "definitionEn": "A significant and sudden advance or discovery in a field of research.",
+      "example": "The breakthrough in gene editing technology has opened up new possibilities for treating genetic disorders.",
+      "collocation": "scientific breakthrough",
+      "band": "7-8"
+    },
+    {
+      "word": "case study",
+      "pos": "noun",
+      "ipa": "/ˈkeɪs ˌstʌdi/",
+      "meaningVi": "nghiên cứu điển hình",
+      "definitionEn": "An in-depth investigation of a single individual, group, or event to explore underlying principles.",
+      "example": "A case study of the patient's response to the new drug provided valuable insights for the clinical trial.",
+      "collocation": "conduct a case study",
+      "band": "6-7"
+    },
+    {
+      "word": "causation",
+      "pos": "noun",
+      "ipa": "/kɔːˈzeɪʃən/",
+      "meaningVi": "quan hệ nhân quả",
+      "definitionEn": "The relationship between cause and effect, where one event directly leads to another.",
+      "example": "The researcher was careful not to confuse correlation with causation when interpreting the results.",
+      "collocation": "establish causation",
+      "band": "8+"
+    },
+    {
+      "word": "conclusion",
+      "pos": "noun",
+      "ipa": "/kənˈkluːʒən/",
+      "meaningVi": "kết luận",
+      "definitionEn": "A reasoned judgment or inference drawn from the data and analysis of a study.",
+      "example": "The conclusion of the experiment supported the initial hypothesis that temperature affects reaction rate.",
+      "collocation": "draw a conclusion",
+      "band": "5-6"
+    },
+    {
+      "word": "confounding",
+      "pos": "adjective",
+      "ipa": "/kənˈfaʊndɪŋ/",
+      "meaningVi": "gây nhiễu (biến gây nhiễu)",
+      "definitionEn": "Describing a variable that influences both the independent and dependent variables, leading to spurious associations.",
+      "example": "The researchers controlled for confounding variables by using a randomized design.",
+      "collocation": "confounding variable",
+      "band": "8+"
+    },
+    {
+      "word": "control group",
+      "pos": "noun",
+      "ipa": "/kənˈtrəʊl ɡruːp/",
+      "meaningVi": "nhóm đối chứng",
+      "definitionEn": "A group in an experiment that does not receive the treatment and is used as a baseline for comparison.",
+      "example": "The control group showed no improvement, while the experimental group had a 20% reduction in symptoms.",
+      "collocation": "assign to a control group",
+      "band": "6-7"
+    },
+    {
+      "word": "correlation",
+      "pos": "noun",
+      "ipa": "/ˌkɒrəˈleɪʃən/",
+      "meaningVi": "sự tương quan",
+      "definitionEn": "A statistical measure indicating the extent to which two variables change together.",
+      "example": "A strong positive correlation was found between hours of study and exam scores.",
+      "collocation": "positive correlation",
+      "band": "7-8"
+    },
+    {
+      "word": "cross-sectional",
+      "pos": "adjective",
+      "ipa": "/ˈkrɒs ˈsekʃənəl/",
+      "meaningVi": "cắt ngang (nghiên cứu cắt ngang)",
+      "definitionEn": "Relating to a study that examines a population at a single point in time.",
+      "example": "A cross-sectional survey was conducted to assess the prevalence of the disease among different age groups.",
+      "collocation": "cross-sectional study",
+      "band": "8+"
+    },
+    {
+      "word": "data",
+      "pos": "noun",
+      "ipa": "/ˈdeɪtə/",
+      "meaningVi": "dữ liệu",
+      "definitionEn": "Facts, figures, or information collected for analysis and reference.",
+      "example": "The raw data from the experiment were cleaned and processed before statistical analysis.",
+      "collocation": "collect data",
+      "band": "5-6"
+    },
+    {
+      "word": "discovery",
+      "pos": "noun",
+      "ipa": "/dɪˈskʌvəri/",
+      "meaningVi": "phát hiện",
+      "definitionEn": "The act of finding something previously unknown or unrecognized.",
+      "example": "The discovery of penicillin revolutionized the treatment of bacterial infections.",
+      "collocation": "make a discovery",
+      "band": "5-6"
+    },
+    {
+      "word": "double-blind",
+      "pos": "adjective",
+      "ipa": "/ˈdʌbəl blaɪnd/",
+      "meaningVi": "mù đôi (thí nghiệm mù đôi)",
+      "definitionEn": "Describing an experiment in which neither the participants nor the researchers know who is in the treatment or control group.",
+      "example": "A double-blind trial was used to eliminate placebo effects and researcher bias.",
+      "collocation": "double-blind study",
+      "band": "8+"
+    },
+    {
+      "word": "empirical",
+      "pos": "adjective",
+      "ipa": "/ɪmˈpɪrɪkəl/",
+      "meaningVi": "thực nghiệm, dựa trên quan sát",
+      "definitionEn": "Based on observation, experience, or experiment rather than theory or logic.",
+      "example": "The theory was supported by empirical evidence from several large-scale studies.",
+      "collocation": "empirical evidence",
+      "band": "7-8"
+    },
+    {
+      "word": "ethics",
+      "pos": "noun",
+      "ipa": "/ˈeθɪks/",
+      "meaningVi": "đạo đức (nghiên cứu)",
+      "definitionEn": "Moral principles governing the conduct of research, especially concerning human or animal subjects.",
+      "example": "The research proposal was approved by the ethics committee after a thorough review.",
+      "collocation": "research ethics",
+      "band": "7-8"
+    },
+    {
+      "word": "evidence",
+      "pos": "noun",
+      "ipa": "/ˈevɪdəns/",
+      "meaningVi": "bằng chứng",
+      "definitionEn": "Available facts or information indicating whether a belief or proposition is true or valid.",
+      "example": "The evidence from the clinical trial strongly suggests that the drug is effective.",
+      "collocation": "provide evidence",
+      "band": "5-6"
+    },
+    {
+      "word": "falsification",
+      "pos": "noun",
+      "ipa": "/ˌfɔːlsɪfɪˈkeɪʃən/",
+      "meaningVi": "sự bác bỏ (giả thuyết), làm sai lệch",
+      "definitionEn": "The act of proving a hypothesis or theory to be false; also, deliberately altering data.",
+      "example": "According to Popper, scientific theories must be open to falsification through rigorous testing.",
+      "collocation": "falsification of a hypothesis",
+      "band": "8+"
+    },
+    {
+      "word": "field study",
+      "pos": "noun",
+      "ipa": "/ˈfiːld ˌstʌdi/",
+      "meaningVi": "nghiên cứu thực địa",
+      "definitionEn": "Research conducted in a natural setting rather than in a laboratory.",
+      "example": "The ecologist conducted a field study to observe the behavior of wolves in their natural habitat.",
+      "collocation": "conduct a field study",
+      "band": "6-7"
+    },
+    {
+      "word": "funding",
+      "pos": "noun",
+      "ipa": "/ˈfʌndɪŋ/",
+      "meaningVi": "tài trợ, kinh phí",
+      "definitionEn": "Money provided by an organization or government to support research activities.",
+      "example": "The university received substantial funding from the government for its renewable energy project.",
+      "collocation": "research funding",
+      "band": "6-7"
+    },
+    {
+      "word": "grant",
+      "pos": "noun",
+      "ipa": "/ɡrɑːnt/",
+      "meaningVi": "khoản tài trợ nghiên cứu",
+      "definitionEn": "A sum of money given by a body (e.g., government, foundation) for a specific research project.",
+      "example": "The scientist applied for a grant to study the effects of climate change on coral reefs.",
+      "collocation": "apply for a grant",
+      "band": "6-7"
+    },
+    {
+      "word": "hypothesis",
+      "pos": "noun",
+      "ipa": "/haɪˈpɒθəsɪs/",
+      "meaningVi": "giả thuyết",
+      "definitionEn": "A proposed explanation for a phenomenon, which can be tested through experimentation.",
+      "example": "The hypothesis that increased exercise improves cognitive function was tested in a randomized trial.",
+      "collocation": "test a hypothesis",
+      "band": "6-7"
+    },
+    {
+      "word": "implication",
+      "pos": "noun",
+      "ipa": "/ˌɪmplɪˈkeɪʃən/",
+      "meaningVi": "hệ quả, ý nghĩa",
+      "definitionEn": "A possible consequence or significance of a finding or theory.",
+      "example": "The implications of this research for public health policy are profound.",
+      "collocation": "practical implication",
+      "band": "6-7"
+    },
+    {
+      "word": "innovation",
+      "pos": "noun",
+      "ipa": "/ˌɪnəˈveɪʃən/",
+      "meaningVi": "sự đổi mới, sáng kiến",
+      "definitionEn": "A new method, idea, or product introduced to improve or advance a field.",
+      "example": "Technological innovation in data collection has accelerated the pace of scientific discovery.",
+      "collocation": "technological innovation",
+      "band": "6-7"
+    },
+    {
+      "word": "interview",
+      "pos": "noun",
+      "ipa": "/ˈɪntəvjuː/",
+      "meaningVi": "phỏng vấn (nghiên cứu)",
+      "definitionEn": "A qualitative data collection method in which a researcher asks questions of a participant.",
+      "example": "The researcher conducted semi-structured interviews with 20 participants to gather in-depth opinions.",
+      "collocation": "conduct an interview",
+      "band": "5-6"
+    },
+    {
+      "word": "laboratory",
+      "pos": "noun",
+      "ipa": "/ləˈbɒrətəri/",
+      "meaningVi": "phòng thí nghiệm",
+      "definitionEn": "A room or building equipped for scientific experiments, research, or teaching.",
+      "example": "The laboratory was equipped with state-of-the-art instruments for chemical analysis.",
+      "collocation": "laboratory experiment",
+      "band": "5-6"
+    },
+    {
+      "word": "limitation",
+      "pos": "noun",
+      "ipa": "/ˌlɪmɪˈteɪʃən/",
+      "meaningVi": "hạn chế",
+      "definitionEn": "A weakness or constraint in a study that may affect the validity or generalizability of its findings.",
+      "example": "The researchers acknowledged the limitation of a small sample size in their study.",
+      "collocation": "acknowledge a limitation",
+      "band": "6-7"
+    },
+    {
+      "word": "longitudinal",
+      "pos": "adjective",
+      "ipa": "/ˌlɒndʒɪˈtjuːdɪnəl/",
+      "meaningVi": "dọc (nghiên cứu dọc)",
+      "definitionEn": "Relating to a study that follows the same subjects over a long period of time.",
+      "example": "A longitudinal study tracked the participants' health outcomes for 20 years.",
+      "collocation": "longitudinal study",
+      "band": "8+"
+    },
+    {
+      "word": "measurement",
+      "pos": "noun",
+      "ipa": "/ˈmeʒəmənt/",
+      "meaningVi": "đo lường",
+      "definitionEn": "The process of assigning numbers to attributes or phenomena according to rules.",
+      "example": "Accurate measurement of temperature is crucial for the success of the experiment.",
+      "collocation": "take a measurement",
+      "band": "5-6"
+    },
+    {
+      "word": "methodology",
+      "pos": "noun",
+      "ipa": "/ˌmeθəˈdɒlədʒi/",
+      "meaningVi": "phương pháp luận",
+      "definitionEn": "The systematic, theoretical analysis of the methods applied to a field of study.",
+      "example": "The methodology section of the paper described the sampling and data analysis procedures.",
+      "collocation": "research methodology",
+      "band": "6-7"
+    },
+    {
+      "word": "null hypothesis",
+      "pos": "noun",
+      "ipa": "/ˈnʌl haɪˈpɒθəsɪs/",
+      "meaningVi": "giả thuyết không",
+      "definitionEn": "The hypothesis that there is no significant difference or relationship between variables, often tested against an alternative hypothesis.",
+      "example": "The p-value was less than 0.05, so the null hypothesis was rejected.",
+      "collocation": "reject the null hypothesis",
+      "band": "8+"
+    },
+    {
+      "word": "observation",
+      "pos": "noun",
+      "ipa": "/ˌɒbzəˈveɪʃən/",
+      "meaningVi": "quan sát",
+      "definitionEn": "The act of noticing and recording facts or events as part of a study.",
+      "example": "The naturalist's detailed observation of bird behavior contributed to the theory of evolution.",
+      "collocation": "direct observation",
+      "band": "5-6"
+    },
+    {
+      "word": "p-value",
+      "pos": "noun",
+      "ipa": "/ˈpiː ˌvæljuː/",
+      "meaningVi": "giá trị p",
+      "definitionEn": "The probability of obtaining results at least as extreme as the observed ones, assuming the null hypothesis is true.",
+      "example": "A p-value of 0.03 indicates that the result is statistically significant at the 5% level.",
+      "collocation": "p-value threshold",
+      "band": "8+"
+    },
+    {
+      "word": "paradigm",
+      "pos": "noun",
+      "ipa": "/ˈpærədaɪm/",
+      "meaningVi": "mô hình, khuôn mẫu tư duy",
+      "definitionEn": "A distinct set of concepts, theories, and methods that define a scientific discipline at a particular time.",
+      "example": "The shift from Newtonian to quantum physics represented a major paradigm change in science.",
+      "collocation": "paradigm shift",
+      "band": "8+"
+    },
+    {
+      "word": "peer review",
+      "pos": "noun",
+      "ipa": "/ˈpɪə rɪˈvjuː/",
+      "meaningVi": "bình duyệt đồng cấp",
+      "definitionEn": "The evaluation of a research paper by experts in the same field before publication.",
+      "example": "The manuscript underwent rigorous peer review before being accepted for publication.",
+      "collocation": "peer review process",
+      "band": "7-8"
+    },
+    {
+      "word": "pilot study",
+      "pos": "noun",
+      "ipa": "/ˈpaɪlət ˌstʌdi/",
+      "meaningVi": "nghiên cứu thử nghiệm",
+      "definitionEn": "A small-scale preliminary study conducted to test the feasibility of a larger research project.",
+      "example": "A pilot study was carried out to refine the survey questions and identify potential problems.",
+      "collocation": "conduct a pilot study",
+      "band": "7-8"
+    },
+    {
+      "word": "placebo",
+      "pos": "noun",
+      "ipa": "/pləˈsiːbəʊ/",
+      "meaningVi": "giả dược",
+      "definitionEn": "An inactive substance or treatment given to a control group to compare with the active treatment.",
+      "example": "Patients in the placebo group reported a 10% reduction in pain, likely due to the placebo effect.",
+      "collocation": "placebo effect",
+      "band": "7-8"
+    },
+    {
+      "word": "qualitative",
+      "pos": "adjective",
+      "ipa": "/ˈkwɒlɪtətɪv/",
+      "meaningVi": "định tính",
+      "definitionEn": "Relating to research that explores phenomena through non-numerical data such as interviews, texts, or observations.",
+      "example": "Qualitative research methods, such as focus groups, provide deep insights into participants' experiences.",
+      "collocation": "qualitative research",
+      "band": "7-8"
+    },
+    {
+      "word": "quantitative",
+      "pos": "adjective",
+      "ipa": "/ˈkwɒntɪtətɪv/",
+      "meaningVi": "định lượng",
+      "definitionEn": "Relating to research that uses numerical data and statistical analysis to measure variables and test hypotheses.",
+      "example": "Quantitative data from the survey were analyzed using regression models.",
+      "collocation": "quantitative analysis",
+      "band": "7-8"
+    },
+    {
+      "word": "randomized",
+      "pos": "adjective",
+      "ipa": "/ˈrændəmaɪzd/",
+      "meaningVi": "ngẫu nhiên hóa",
+      "definitionEn": "Describing an experiment where subjects are assigned to groups by chance to reduce bias.",
+      "example": "A randomized controlled trial is considered the gold standard for evaluating medical interventions.",
+      "collocation": "randomized controlled trial",
+      "band": "7-8"
+    },
+    {
+      "word": "reliability",
+      "pos": "noun",
+      "ipa": "/rɪˌlaɪəˈbɪləti/",
+      "meaningVi": "độ tin cậy",
+      "definitionEn": "The consistency of a measurement or study; the extent to which results can be reproduced under the same conditions.",
+      "example": "The reliability of the test was confirmed by administering it twice to the same group and obtaining similar scores.",
+      "collocation": "test reliability",
+      "band": "7-8"
+    },
+    {
+      "word": "replication",
+      "pos": "noun",
+      "ipa": "/ˌreplɪˈkeɪʃən/",
+      "meaningVi": "sự tái lập (kết quả)",
+      "definitionEn": "The repetition of a study to confirm its findings and assess their generalizability.",
+      "example": "Replication of the experiment in different laboratories would strengthen the evidence.",
+      "collocation": "replication study",
+      "band": "7-8"
+    },
+    {
+      "word": "reproducibility",
+      "pos": "noun",
+      "ipa": "/rɪˌprɒdjuːsəˈbɪləti/",
+      "meaningVi": "tính tái tạo",
+      "definitionEn": "The ability of a study to be repeated by independent researchers with the same methods and results.",
+      "example": "The reproducibility crisis in psychology has led to calls for more transparent research practices.",
+      "collocation": "reproducibility crisis",
+      "band": "8+"
+    },
+    {
+      "word": "sample",
+      "pos": "noun",
+      "ipa": "/ˈsɑːmpəl/",
+      "meaningVi": "mẫu (nghiên cứu)",
+      "definitionEn": "A subset of a population selected to represent the whole group in a study.",
+      "example": "The sample consisted of 500 participants randomly selected from the national registry.",
+      "collocation": "sample size",
+      "band": "5-6"
+    },
+    {
+      "word": "significant",
+      "pos": "adjective",
+      "ipa": "/sɪɡˈnɪfɪkənt/",
+      "meaningVi": "có ý nghĩa thống kê",
+      "definitionEn": "Indicating that the observed results are unlikely to have occurred by chance, usually based on a p-value threshold.",
+      "example": "The difference between the two groups was statistically significant at the 0.01 level.",
+      "collocation": "statistically significant",
+      "band": "6-7"
+    },
+    {
+      "word": "simulation",
+      "pos": "noun",
+      "ipa": "/ˌsɪmjuˈleɪʃən/",
+      "meaningVi": "mô phỏng",
+      "definitionEn": "The imitation of a real-world process or system using a model, often computational.",
+      "example": "Computer simulations of climate change help scientists predict future temperature patterns.",
+      "collocation": "computer simulation",
+      "band": "7-8"
+    },
+    {
+      "word": "statistical",
+      "pos": "adjective",
+      "ipa": "/stəˈtɪstɪkəl/",
+      "meaningVi": "thuộc về thống kê",
+      "definitionEn": "Relating to the use of statistics to analyze data and draw inferences.",
+      "example": "The researchers employed statistical methods to control for confounding variables.",
+      "collocation": "statistical analysis",
+      "band": "6-7"
+    },
+    {
+      "word": "theoretical",
+      "pos": "adjective",
+      "ipa": "/θɪəˈretɪkəl/",
+      "meaningVi": "thuộc lý thuyết",
+      "definitionEn": "Based on or concerned with theory rather than practical application or empirical data.",
+      "example": "The theoretical framework of the study was grounded in social cognitive theory.",
+      "collocation": "theoretical framework",
+      "band": "6-7"
+    },
+    {
+      "word": "validity",
+      "pos": "noun",
+      "ipa": "/vəˈlɪdəti/",
+      "meaningVi": "tính hợp lệ, giá trị",
+      "definitionEn": "The extent to which a test, measurement, or study accurately measures what it claims to measure.",
+      "example": "The validity of the questionnaire was assessed by comparing its results with established measures.",
+      "collocation": "internal validity",
+      "band": "7-8"
+    },
+    {
+      "word": "variable",
+      "pos": "noun",
+      "ipa": "/ˈveəriəbl/",
+      "meaningVi": "biến số",
+      "definitionEn": "A factor or element that can change or be changed in an experiment, such as independent or dependent variables.",
+      "example": "The independent variable was manipulated to observe its effect on the dependent variable.",
+      "collocation": "dependent variable",
+      "band": "6-7"
+    }
+  ]
+}

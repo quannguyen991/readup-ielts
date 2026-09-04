@@ -96,18 +96,45 @@ export function LineChart({
   );
 }
 
+/**
+ * Biểu đồ cột, TỰ ĐO bề rộng của khung chứa nó.
+ *
+ * Bản trước vẽ `<Svg width={520}>` cố định bên trong một thẻ co giãn. Trên màn
+ * hình hẹp hơn 520px, cột cuối cùng thò hẳn ra ngoài viền thẻ — và nó không bị
+ * cắt, nó nằm chồng lên phần bên cạnh. Lỗi chỉ lộ ra ở đúng vài bề rộng cửa sổ,
+ * nên rất dễ lọt khi chỉ xem ở một cỡ màn hình.
+ *
+ * `onLayout` trả về bề rộng thật; trước khi có số đó thì chưa vẽ gì, vì vẽ bằng
+ * một bề rộng đoán rồi nhảy sang bề rộng thật là một cú giật thấy rõ.
+ */
 export function BarChart({
   data,
-  width = 520,
+  width,
   height = 200,
   showSecondary = false,
 }: {
   data: Array<{ label: string; value: number; secondary?: number }>;
+  /** Bỏ trống = tự co theo khung chứa. Chỉ truyền khi thật sự cần cỡ cố định. */
   width?: number;
   height?: number;
   showSecondary?: boolean;
 }) {
+  const [measured, setMeasured] = React.useState<number | null>(null);
+
   if (data.length === 0) return <EmptyChart height={height} />;
+
+  if (width === undefined) {
+    return (
+      <View
+        style={{ width: '100%', height }}
+        onLayout={(e) => setMeasured(Math.floor(e.nativeEvent.layout.width))}
+      >
+        {measured && measured > 0 ? (
+          <BarChart data={data} width={measured} height={height} showSecondary={showSecondary} />
+        ) : null}
+      </View>
+    );
+  }
 
   const padding = { top: 12, right: 8, bottom: 24, left: 8 };
   const innerW = width - padding.left - padding.right;

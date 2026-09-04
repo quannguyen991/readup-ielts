@@ -1,0 +1,508 @@
+{
+  "slug": "children",
+  "name": "Children and Youth",
+  "nameVi": "Trẻ em và thanh niên",
+  "blurb": "Phát triển, kỷ luật, áp lực",
+  "words": [
+    {
+      "word": "adolescence",
+      "pos": "noun",
+      "ipa": "/ˌæd.əˈles.əns/",
+      "meaningVi": "tuổi vị thành niên",
+      "definitionEn": "the period of life between childhood and adulthood",
+      "example": "During adolescence, teenagers often experience significant physical and emotional changes.",
+      "collocation": "early adolescence",
+      "band": "6-7"
+    },
+    {
+      "word": "upbringing",
+      "pos": "noun",
+      "ipa": "/ˈʌp.brɪŋ.ɪŋ/",
+      "meaningVi": "sự nuôi dạy",
+      "definitionEn": "the way a child is raised and taught to behave",
+      "example": "Her strict upbringing instilled a strong sense of discipline in her.",
+      "collocation": "strict upbringing",
+      "band": "5-6"
+    },
+    {
+      "word": "discipline",
+      "pos": "noun",
+      "ipa": "/ˈdɪs.ə.plɪn/",
+      "meaningVi": "kỷ luật, sự rèn luyện",
+      "definitionEn": "training that corrects, molds, or perfects mental faculties or moral character",
+      "example": "Schools should focus on fostering self-discipline rather than punishment.",
+      "collocation": "self-discipline",
+      "band": "5-6"
+    },
+    {
+      "word": "peer pressure",
+      "pos": "noun",
+      "ipa": "/pɪər ˈpreʃ.ər/",
+      "meaningVi": "áp lực bạn bè",
+      "definitionEn": "influence from members of one's peer group",
+      "example": "Many teenagers succumb to peer pressure to fit in socially.",
+      "collocation": "succumb to peer pressure",
+      "band": "5-6"
+    },
+    {
+      "word": "self-esteem",
+      "pos": "noun",
+      "ipa": "/ˌself.ɪˈstiːm/",
+      "meaningVi": "lòng tự trọng",
+      "definitionEn": "confidence in one's own worth or abilities",
+      "example": "Low self-esteem can negatively affect a child's academic performance.",
+      "collocation": "low self-esteem",
+      "band": "5-6"
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "ipa": "/rɪˈzɪl.i.əns/",
+      "meaningVi": "khả năng phục hồi",
+      "definitionEn": "the capacity to recover quickly from difficulties",
+      "example": "Building resilience in children helps them cope with adversity.",
+      "collocation": "build resilience",
+      "band": "6-7"
+    },
+    {
+      "word": "cognitive development",
+      "pos": "noun",
+      "ipa": "/ˈkɒɡ.nɪ.tɪv dɪˈvel.əp.mənt/",
+      "meaningVi": "phát triển nhận thức",
+      "definitionEn": "the process of growth in intellectual abilities",
+      "example": "Reading to toddlers enhances their cognitive development.",
+      "collocation": "promote cognitive development",
+      "band": "6-7"
+    },
+    {
+      "word": "emotional intelligence",
+      "pos": "noun",
+      "ipa": "/ɪˈməʊ.ʃən.əl ɪnˈtel.ɪ.dʒəns/",
+      "meaningVi": "trí tuệ cảm xúc",
+      "definitionEn": "the ability to understand and manage emotions",
+      "example": "Emotional intelligence is crucial for forming healthy relationships.",
+      "collocation": "high emotional intelligence",
+      "band": "7-8"
+    },
+    {
+      "word": "socialization",
+      "pos": "noun",
+      "ipa": "/ˌsəʊ.ʃəl.aɪˈzeɪ.ʃən/",
+      "meaningVi": "sự xã hội hóa",
+      "definitionEn": "the process of learning to behave in a way that is acceptable to society",
+      "example": "Peer interaction is vital for socialization during childhood.",
+      "collocation": "peer socialization",
+      "band": "6-7"
+    },
+    {
+      "word": "parental involvement",
+      "pos": "noun",
+      "ipa": "/pəˈren.təl ɪnˈvɒlv.mənt/",
+      "meaningVi": "sự tham gia của cha mẹ",
+      "definitionEn": "the participation of parents in their children's education and activities",
+      "example": "Parental involvement is strongly linked to academic success.",
+      "collocation": "high parental involvement",
+      "band": "5-6"
+    },
+    {
+      "word": "authoritative parenting",
+      "pos": "noun",
+      "ipa": "/ɔːˈθɒr.ɪ.tə.tɪv ˈpeər.ən.tɪŋ/",
+      "meaningVi": "nuôi dạy con có uy quyền",
+      "definitionEn": "a parenting style characterized by high responsiveness and high demands",
+      "example": "Authoritative parenting is considered the most effective approach.",
+      "collocation": "authoritative parenting style",
+      "band": "7-8"
+    },
+    {
+      "word": "permissive parenting",
+      "pos": "noun",
+      "ipa": "/pəˈmɪs.ɪv ˈpeər.ən.tɪŋ/",
+      "meaningVi": "nuôi dạy con dễ dãi",
+      "definitionEn": "a parenting style with low demands but high responsiveness",
+      "example": "Permissive parenting may lead to a lack of self-discipline in children.",
+      "collocation": "permissive parenting style",
+      "band": "7-8"
+    },
+    {
+      "word": "authoritarian parenting",
+      "pos": "noun",
+      "ipa": "/ɔːˌθɒr.ɪˈteər.i.ən ˈpeər.ən.tɪŋ/",
+      "meaningVi": "nuôi dạy con độc đoán",
+      "definitionEn": "a parenting style with high demands but low responsiveness",
+      "example": "Authoritarian parenting often results in children with low self-esteem.",
+      "collocation": "authoritarian parenting style",
+      "band": "7-8"
+    },
+    {
+      "word": "neglectful parenting",
+      "pos": "noun",
+      "ipa": "/nɪˈɡlek.tfəl ˈpeər.ən.tɪŋ/",
+      "meaningVi": "nuôi dạy con sao nhãng",
+      "definitionEn": "a parenting style with low demands and low responsiveness",
+      "example": "Neglectful parenting can have severe developmental consequences.",
+      "collocation": "neglectful parenting style",
+      "band": "7-8"
+    },
+    {
+      "word": "helicopter parenting",
+      "pos": "noun",
+      "ipa": "/ˈhel.ɪ.kɒp.tər ˈpeər.ən.tɪŋ/",
+      "meaningVi": "nuôi dạy con kiểu 'trực thăng'",
+      "definitionEn": "overprotective parenting where parents hover over their children",
+      "example": "Helicopter parenting may hinder a child's ability to become independent.",
+      "collocation": "helicopter parenting approach",
+      "band": "8+"
+    },
+    {
+      "word": "free-range parenting",
+      "pos": "noun",
+      "ipa": "/ˌfriːˈreɪndʒ ˈpeər.ən.tɪŋ/",
+      "meaningVi": "nuôi dạy con tự do",
+      "definitionEn": "a parenting style that encourages independence by giving children freedom",
+      "example": "Free-range parenting promotes self-reliance but requires careful supervision.",
+      "collocation": "free-range parenting philosophy",
+      "band": "8+"
+    },
+    {
+      "word": "growth mindset",
+      "pos": "noun",
+      "ipa": "/ɡrəʊθ ˈmaɪnd.set/",
+      "meaningVi": "tư duy phát triển",
+      "definitionEn": "the belief that abilities can be developed through effort",
+      "example": "Cultivating a growth mindset helps students embrace challenges.",
+      "collocation": "develop a growth mindset",
+      "band": "7-8"
+    },
+    {
+      "word": "fixed mindset",
+      "pos": "noun",
+      "ipa": "/fɪkst ˈmaɪnd.set/",
+      "meaningVi": "tư duy cố định",
+      "definitionEn": "the belief that abilities are innate and unchangeable",
+      "example": "A fixed mindset can prevent children from reaching their full potential.",
+      "collocation": "adopt a fixed mindset",
+      "band": "7-8"
+    },
+    {
+      "word": "grit",
+      "pos": "noun",
+      "ipa": "/ɡrɪt/",
+      "meaningVi": "sự kiên trì",
+      "definitionEn": "courage and resolve; strength of character",
+      "example": "Grit is a stronger predictor of success than intelligence.",
+      "collocation": "demonstrate grit",
+      "band": "7-8"
+    },
+    {
+      "word": "perseverance",
+      "pos": "noun",
+      "ipa": "/ˌpɜː.sɪˈvɪər.əns/",
+      "meaningVi": "sự bền bỉ",
+      "definitionEn": "persistence in doing something despite difficulty",
+      "example": "Perseverance is essential for achieving long-term goals.",
+      "collocation": "show perseverance",
+      "band": "6-7"
+    },
+    {
+      "word": "autonomy",
+      "pos": "noun",
+      "ipa": "/ɔːˈtɒn.ə.mi/",
+      "meaningVi": "quyền tự chủ",
+      "definitionEn": "the right to make one's own decisions",
+      "example": "Adolescents need increasing autonomy to develop responsibility.",
+      "collocation": "grant autonomy",
+      "band": "6-7"
+    },
+    {
+      "word": "responsibility",
+      "pos": "noun",
+      "ipa": "/rɪˌspɒn.sɪˈbɪl.ɪ.ti/",
+      "meaningVi": "trách nhiệm",
+      "definitionEn": "the state of being accountable for something",
+      "example": "Assigning chores teaches children responsibility.",
+      "collocation": "take responsibility",
+      "band": "5-6"
+    },
+    {
+      "word": "accountability",
+      "pos": "noun",
+      "ipa": "/əˌkaʊn.təˈbɪl.ɪ.ti/",
+      "meaningVi": "trách nhiệm giải trình",
+      "definitionEn": "the obligation to report or justify actions",
+      "example": "Schools should hold students accountable for their behavior.",
+      "collocation": "sense of accountability",
+      "band": "6-7"
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "ipa": "/ˈem.pə.θi/",
+      "meaningVi": "sự đồng cảm",
+      "definitionEn": "the ability to understand others' feelings",
+      "example": "Empathy can be nurtured through role-playing and discussion.",
+      "collocation": "show empathy",
+      "band": "5-6"
+    },
+    {
+      "word": "morality",
+      "pos": "noun",
+      "ipa": "/məˈræl.ɪ.ti/",
+      "meaningVi": "đạo đức",
+      "definitionEn": "principles concerning right and wrong",
+      "example": "Parents play a key role in shaping a child's morality.",
+      "collocation": "moral development",
+      "band": "6-7"
+    },
+    {
+      "word": "values",
+      "pos": "noun",
+      "ipa": "/ˈvæl.juːz/",
+      "meaningVi": "các giá trị",
+      "definitionEn": "beliefs about what is important in life",
+      "example": "Family values influence a child's behavior and choices.",
+      "collocation": "core values",
+      "band": "5-6"
+    },
+    {
+      "word": "role model",
+      "pos": "noun",
+      "ipa": "/ˈrəʊl ˌmɒd.əl/",
+      "meaningVi": "hình mẫu, người làm gương",
+      "definitionEn": "a person who serves as an example to others",
+      "example": "Teachers should be positive role models for their students.",
+      "collocation": "positive role model",
+      "band": "5-6"
+    },
+    {
+      "word": "mentorship",
+      "pos": "noun",
+      "ipa": "/ˈmen.tɔːr.ʃɪp/",
+      "meaningVi": "sự hướng dẫn, cố vấn",
+      "definitionEn": "guidance provided by a mentor",
+      "example": "Mentorship programs can help at-risk youth stay on track.",
+      "collocation": "mentorship program",
+      "band": "6-7"
+    },
+    {
+      "word": "extracurricular",
+      "pos": "adj",
+      "ipa": "/ˌek.strə.kəˈrɪk.jʊ.lər/",
+      "meaningVi": "ngoại khóa",
+      "definitionEn": "activities outside regular curriculum",
+      "example": "Extracurricular activities enhance social skills and confidence.",
+      "collocation": "extracurricular activities",
+      "band": "5-6"
+    },
+    {
+      "word": "motivation",
+      "pos": "noun",
+      "ipa": "/ˌməʊ.tɪˈveɪ.ʃən/",
+      "meaningVi": "động lực",
+      "definitionEn": "the reason or drive to do something",
+      "example": "Intrinsic motivation leads to deeper learning.",
+      "collocation": "intrinsic motivation",
+      "band": "6-7"
+    },
+    {
+      "word": "procrastination",
+      "pos": "noun",
+      "ipa": "/prəˌkræs.tɪˈneɪ.ʃən/",
+      "meaningVi": "sự trì hoãn",
+      "definitionEn": "the act of delaying tasks",
+      "example": "Procrastination often stems from fear of failure.",
+      "collocation": "avoid procrastination",
+      "band": "6-7"
+    },
+    {
+      "word": "bullying",
+      "pos": "noun",
+      "ipa": "/ˈbʊl.i.ɪŋ/",
+      "meaningVi": "bắt nạt",
+      "definitionEn": "aggressive behavior intended to hurt someone",
+      "example": "Bullying can have long-term psychological effects on victims.",
+      "collocation": "school bullying",
+      "band": "5-6"
+    },
+    {
+      "word": "cyberbullying",
+      "pos": "noun",
+      "ipa": "/ˈsaɪ.bəˌbʊl.i.ɪŋ/",
+      "meaningVi": "bắt nạt qua mạng",
+      "definitionEn": "bullying using electronic communication",
+      "example": "Cyberbullying is a growing concern among adolescents.",
+      "collocation": "cyberbullying prevention",
+      "band": "6-7"
+    },
+    {
+      "word": "mental health",
+      "pos": "noun",
+      "ipa": "/ˈmen.təl helθ/",
+      "meaningVi": "sức khỏe tâm thần",
+      "definitionEn": "emotional and psychological well-being",
+      "example": "Promoting mental health in schools is essential.",
+      "collocation": "mental health issues",
+      "band": "5-6"
+    },
+    {
+      "word": "anxiety",
+      "pos": "noun",
+      "ipa": "/æŋˈzaɪ.ə.ti/",
+      "meaningVi": "lo âu",
+      "definitionEn": "a feeling of worry or unease",
+      "example": "Academic pressure often leads to anxiety in teenagers.",
+      "collocation": "test anxiety",
+      "band": "5-6"
+    },
+    {
+      "word": "depression",
+      "pos": "noun",
+      "ipa": "/dɪˈpreʃ.ən/",
+      "meaningVi": "trầm cảm",
+      "definitionEn": "a mood disorder causing persistent sadness",
+      "example": "Depression in adolescents can be alleviated with early intervention.",
+      "collocation": "clinical depression",
+      "band": "6-7"
+    },
+    {
+      "word": "coping mechanism",
+      "pos": "noun",
+      "ipa": "/ˈkəʊ.pɪŋ ˌmek.ə.nɪ.zəm/",
+      "meaningVi": "cơ chế đối phó",
+      "definitionEn": "a strategy to deal with stress",
+      "example": "Healthy coping mechanisms include exercise and talking to friends.",
+      "collocation": "develop coping mechanisms",
+      "band": "6-7"
+    },
+    {
+      "word": "trauma",
+      "pos": "noun",
+      "ipa": "/ˈtrɔː.mə/",
+      "meaningVi": "chấn thương tâm lý",
+      "definitionEn": "a deeply distressing experience",
+      "example": "Childhood trauma can affect brain development.",
+      "collocation": "childhood trauma",
+      "band": "7-8"
+    },
+    {
+      "word": "attachment",
+      "pos": "noun",
+      "ipa": "/əˈtætʃ.mənt/",
+      "meaningVi": "sự gắn bó",
+      "definitionEn": "emotional bond between a child and caregiver",
+      "example": "Secure attachment forms the foundation for healthy relationships.",
+      "collocation": "secure attachment",
+      "band": "7-8"
+    },
+    {
+      "word": "scaffolding",
+      "pos": "noun",
+      "ipa": "/ˈskæf.əld.ɪŋ/",
+      "meaningVi": "sự giàn giáo (trong giáo dục)",
+      "definitionEn": "instructional support provided to learners",
+      "example": "Teachers use scaffolding to help students master new concepts.",
+      "collocation": "scaffolding technique",
+      "band": "8+"
+    },
+    {
+      "word": "zone of proximal development",
+      "pos": "noun",
+      "ipa": "/zəʊn ɒv ˈprɒk.sɪ.məl dɪˈvel.əp.mənt/",
+      "meaningVi": "vùng phát triển gần",
+      "definitionEn": "the gap between what a learner can do alone and with help",
+      "example": "Effective instruction targets the zone of proximal development.",
+      "collocation": "ZPD approach",
+      "band": "8+"
+    },
+    {
+      "word": "identity formation",
+      "pos": "noun",
+      "ipa": "/aɪˈden.tɪ.ti fɔːˈmeɪ.ʃən/",
+      "meaningVi": "hình thành bản sắc",
+      "definitionEn": "the process of developing a sense of self",
+      "example": "Adolescence is a critical period for identity formation.",
+      "collocation": "identity formation process",
+      "band": "7-8"
+    },
+    {
+      "word": "rebellion",
+      "pos": "noun",
+      "ipa": "/rɪˈbel.i.ən/",
+      "meaningVi": "sự nổi loạn",
+      "definitionEn": "resistance to authority or control",
+      "example": "Teenage rebellion is often a way to assert independence.",
+      "collocation": "adolescent rebellion",
+      "band": "6-7"
+    },
+    {
+      "word": "conformity",
+      "pos": "noun",
+      "ipa": "/kənˈfɔː.mɪ.ti/",
+      "meaningVi": "sự tuân thủ",
+      "definitionEn": "compliance with social norms",
+      "example": "Excessive conformity can stifle creativity in children.",
+      "collocation": "social conformity",
+      "band": "6-7"
+    },
+    {
+      "word": "generation gap",
+      "pos": "noun",
+      "ipa": "/ˌdʒen.əˈreɪ.ʃən ɡæp/",
+      "meaningVi": "khoảng cách thế hệ",
+      "definitionEn": "differences between generations",
+      "example": "The generation gap often leads to misunderstandings between parents and teenagers.",
+      "collocation": "bridge the generation gap",
+      "band": "5-6"
+    },
+    {
+      "word": "student burnout",
+      "pos": "noun",
+      "ipa": "/ˈstjuː.dənt ˈbɜːn.aʊt/",
+      "meaningVi": "kiệt sức học tập",
+      "definitionEn": "physical and emotional exhaustion due to academic stress",
+      "example": "Student burnout is increasingly common in competitive schools.",
+      "collocation": "academic burnout",
+      "band": "7-8"
+    },
+    {
+      "word": "academic stress",
+      "pos": "noun",
+      "ipa": "/ˌæk.əˈdem.ɪk stres/",
+      "meaningVi": "căng thẳng học tập",
+      "definitionEn": "pressure related to school performance",
+      "example": "Academic stress can negatively impact mental health.",
+      "collocation": "high levels of academic stress",
+      "band": "5-6"
+    },
+    {
+      "word": "social pressure",
+      "pos": "noun",
+      "ipa": "/ˈsəʊ.ʃəl ˈpreʃ.ər/",
+      "meaningVi": "áp lực xã hội",
+      "definitionEn": "influence from societal expectations",
+      "example": "Social pressure to succeed can be overwhelming for youths.",
+      "collocation": "social pressure to conform",
+      "band": "6-7"
+    },
+    {
+      "word": "transitional period",
+      "pos": "noun",
+      "ipa": "/trænˈzɪʃ.ən.əl ˈpɪər.i.əd/",
+      "meaningVi": "giai đoạn chuyển tiếp",
+      "definitionEn": "a time of change from one stage to another",
+      "example": "Puberty is a transitional period marked by rapid changes.",
+      "collocation": "transitional period in life",
+      "band": "6-7"
+    },
+    {
+      "word": "developmental milestones",
+      "pos": "noun",
+      "ipa": "/dɪˌvel.əpˈmen.təl ˈmaɪl.stəʊnz/",
+      "meaningVi": "các mốc phát triển",
+      "definitionEn": "key skills or behaviors acquired at certain ages",
+      "example": "Pediatricians monitor developmental milestones to ensure healthy growth.",
+      "collocation": "reach developmental milestones",
+      "band": "6-7"
+    }
+  ]
+}

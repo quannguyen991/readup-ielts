@@ -113,6 +113,9 @@ type TableDef<Row, OptionalOnInsert extends keyof Row = never> = {
   Relationships: [];
 };
 
+export type PlanIdRow = 'free' | 'plus' | 'pro' | 'max';
+export type UserRoleRow = 'user' | 'admin';
+
 export type Profile = {
   id: string;
   display_name: string | null;
@@ -121,8 +124,102 @@ export type Profile = {
   target_date: string | null;
   daily_goal_minutes: number;
   locale: string;
+  /**
+   * Ba cột này người dùng KHÔNG ghi được.
+   *
+   * Migration đã `revoke update (plan, plan_started_at, plan_expires_at, role)`
+   * khỏi vai trò `authenticated`, nên chúng không nằm trong danh sách cột được
+   * sửa của `TableDef` bên dưới. Muốn đổi thì phải qua service_role.
+   */
+  plan: PlanIdRow;
+  plan_started_at: string | null;
+  plan_expires_at: string | null;
+  role: UserRoleRow;
+  /** Mã mời riêng của người dùng. Cấp khi họ mở trang mời lần đầu. */
+  referral_code: string | null;
+  /** Tháng Plus đã thưởng nhưng chưa dùng, vì đang có gói cao hơn. */
+  plus_credit_months: number;
+  referral_rewards_granted: number;
   created_at: string;
   updated_at: string;
+};
+
+export type ArticleTranslation = {
+  article_id: string;
+  lang: string;
+  paragraphs: string[];
+  source_hash: string;
+  model: string;
+  created_at: string;
+};
+
+export type AiUsage = {
+  user_id: string;
+  period_key: string;
+  calls: number;
+  updated_at: string;
+};
+
+export type Referral = {
+  id: string;
+  referrer_id: string;
+  invited_id: string;
+  created_at: string;
+  qualified_at: string | null;
+};
+
+export type PaymentStatus = 'pending' | 'paid' | 'failed' | 'refunded';
+
+export type Payment = {
+  id: string;
+  user_id: string;
+  plan: PlanIdRow;
+  /** Đơn vị ĐỒNG, kiểu nguyên. Tiền không bao giờ để kiểu dấu phẩy động. */
+  amount_vnd: number;
+  billing_cycle: 'monthly' | 'yearly';
+  status: PaymentStatus;
+  provider: string;
+  provider_ref: string | null;
+  /** Mã in trong nội dung chuyển khoản. Duy nhất toàn bảng. */
+  reference: string | null;
+  months: number | null;
+  confirmed_by: string | null;
+  confirmed_at: string | null;
+  admin_note: string | null;
+  paid_at: string | null;
+  /** Đơn thuộc một nhóm mua chung nào, nếu có. Xem `PaymentGroup`. */
+  group_id: string | null;
+  created_at: string;
+};
+
+export type PaymentGroupStatus = 'collecting' | 'settled' | 'expired';
+
+export type PaymentGroup = {
+  id: string;
+  leader_id: string;
+  plan: PlanIdRow;
+  target_size: 3 | 5 | 10;
+  discount_percent: number;
+  /** Mã chia sẻ, tiền tố RG — cùng bộ máy với mã đối chiếu (RU) và mã mời (RD). */
+  code: string;
+  status: PaymentGroupStatus;
+  created_at: string;
+  settle_by: string;
+  settled_size: number | null;
+  settled_at: string | null;
+  settled_by: string | null;
+};
+
+export type AdminAudit = {
+  id: string;
+  /** null = chạy từ CLI hoặc từ một quy trình tự động, không có ai đăng nhập. */
+  actor_id: string | null;
+  target_id: string;
+  action: string;
+  before: unknown;
+  after: unknown;
+  note: string | null;
+  created_at: string;
 };
 
 export type Topic = {
@@ -265,6 +362,12 @@ export type QuestionSet = {
   est_minutes: number | null;
   generated_by: string | null;
   model: string | null;
+  /**
+   * Đơn hàng dạng câu, đã sắp xếp và nối bằng dấu phẩy — rỗng nghĩa là không
+   * lọc gì. `user_id IS NULL` + khoá này xác định một bộ đề DÙNG CHUNG duy
+   * nhất cho một bài (ràng buộc unique một phần ở tầng DB).
+   */
+  requested_types: string;
   created_at: string;
   updated_at: string;
 };
@@ -427,10 +530,44 @@ export type GeneratedAsset = {
   created_at: string;
 };
 
+/**
+ * Dữ liệu học của một người, tách theo store phía client.
+ *
+ * `payload` là JSON tự do có chủ ý — hình dạng của nó do `SyncedStore` bên
+ * client quy định, và nó đổi theo phiên bản app. Ép kiểu ở đây thành một schema
+ * cứng nghĩa là mỗi lần thêm một trường vào store là một migration.
+ */
+export type UserState = {
+  user_id: string;
+  store_key: string;
+  payload: Json;
+  updated_at: string;
+};
+
 export type Database = {
   public: {
     Tables: {
       profiles: TableDef<Profile, 'display_name' | 'avatar_url' | 'target_band' | 'target_date' | 'daily_goal_minutes' | 'locale'>;
+      admin_audit: TableDef<AdminAudit, never>;
+      referrals: TableDef<Referral, 'qualified_at'>;
+      ai_usage: TableDef<AiUsage, 'calls' | 'updated_at'>;
+      article_translations: TableDef<ArticleTranslation, 'lang'>;
+      payments: TableDef<
+        Payment,
+        | 'provider'
+        | 'provider_ref'
+        | 'reference'
+        | 'months'
+        | 'confirmed_by'
+        | 'confirmed_at'
+        | 'admin_note'
+        | 'paid_at'
+        | 'group_id'
+      >;
+      payment_groups: TableDef<
+        PaymentGroup,
+        'status' | 'settle_by' | 'settled_size' | 'settled_at' | 'settled_by'
+      >;
       topics: TableDef<Topic, 'name_vi' | 'icon_url' | 'color' | 'sort_order'>;
       articles: TableDef<
         Article,
@@ -468,7 +605,7 @@ export type Database = {
       question_sets: TableDef<
         QuestionSet,
         | 'user_id' | 'title' | 'track' | 'difficulty' | 'total_questions' | 'est_minutes'
-        | 'generated_by' | 'model'
+        | 'generated_by' | 'model' | 'requested_types'
       >;
       questions: TableDef<Question, 'instruction' | 'options' | 'lesson_tip'>;
       test_sessions: TableDef<
@@ -506,9 +643,18 @@ export type Database = {
         GeneratedAsset,
         'prompt' | 'model' | 'public_url' | 'width' | 'height'
       >;
+      user_state: TableDef<UserState, 'updated_at'>;
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      /** Cộng bộ đếm lượt AI và trả về số mới, trong MỘT câu lệnh nguyên tử. */
+      bump_ai_usage: {
+        Args: { p_user: string; p_period: string };
+        Returns: number;
+      };
+      /** Vai trò hiện tại có phải admin không. SECURITY DEFINER, tránh RLS đệ quy. */
+      is_admin: { Args: Record<string, never>; Returns: boolean };
+    };
     Enums: {
       cefr_level: CefrLevel;
       license_type: LicenseType;

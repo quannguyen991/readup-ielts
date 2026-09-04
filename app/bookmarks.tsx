@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
 import { Screen } from '@/components/layout/Screen';
-import { Card, Icon, SectionHeader } from '@/components/ui';
+import { Card, HeroBanner, Icon, SectionHeader } from '@/components/ui';
 import { getArticleById } from '@/data/articles';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
@@ -27,10 +27,11 @@ export default function BookmarksScreen() {
 
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Bookmarks</Text>
-      <Text className="mt-1 font-sans text-body text-muted">
-        Bài đọc bạn đánh dấu để quay lại sau.
-      </Text>
+      <HeroBanner
+        title="Bookmarks"
+        subtitle="Bài đọc bạn đánh dấu để quay lại sau."
+        illustration="bookmarks-hero"
+      />
 
       <Card className="mt-4">
         <SectionHeader title="Bài đã đánh dấu" subtitle={`${articles.length} bài`} icon="bookmark" />

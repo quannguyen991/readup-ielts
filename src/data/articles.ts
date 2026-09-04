@@ -50,7 +50,7 @@ export const TIER_LABEL: Record<PassageTier, string> = {
   p2: 'Passage 2 (~900 từ)',
   p3: 'Passage 3 (~1050 từ)',
   short_academic: 'Bài học thuật ngắn',
-  headline: 'Chỉ tiêu đề',
+  headline: 'Link đề chính thức',
   official_practice: 'Đề chính thức',
   sat_short: 'SAT — đoạn ngắn (25–150 từ)',
   sat_long: 'SAT — đoạn dài (500–750 từ)',

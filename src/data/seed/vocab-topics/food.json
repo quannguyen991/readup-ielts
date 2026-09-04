@@ -1,0 +1,508 @@
+{
+  "slug": "food",
+  "name": "Food and Diet",
+  "nameVi": "Ẩm thực",
+  "blurb": "Dinh dưỡng, ăn uống, sản xuất thực phẩm",
+  "words": [
+    {
+      "word": "nutrition",
+      "pos": "noun",
+      "ipa": "/njuːˈtrɪʃən/",
+      "meaningVi": "dinh dưỡng",
+      "definitionEn": "the process of providing or obtaining the food necessary for health and growth",
+      "example": "Good nutrition is essential for maintaining a healthy immune system.",
+      "collocation": "proper nutrition",
+      "band": "5-6"
+    },
+    {
+      "word": "malnutrition",
+      "pos": "noun",
+      "ipa": "/ˌmælnjuːˈtrɪʃən/",
+      "meaningVi": "suy dinh dưỡng",
+      "definitionEn": "lack of proper nutrition, caused by not having enough to eat or not eating enough of the right foods",
+      "example": "Malnutrition is a serious problem in many developing countries.",
+      "collocation": "chronic malnutrition",
+      "band": "6-7"
+    },
+    {
+      "word": "calorie",
+      "pos": "noun",
+      "ipa": "/ˈkæləri/",
+      "meaningVi": "calo",
+      "definitionEn": "a unit of energy used to measure the energy content of food",
+      "example": "A typical adult needs about 2000 calories per day to maintain weight.",
+      "collocation": "calorie intake",
+      "band": "5-6"
+    },
+    {
+      "word": "macronutrient",
+      "pos": "noun",
+      "ipa": "/ˌmækroʊˈnuːtriənt/",
+      "meaningVi": "chất dinh dưỡng đa lượng",
+      "definitionEn": "a type of nutrient (such as carbohydrate, protein, or fat) that the body needs in large amounts",
+      "example": "Carbohydrates, proteins, and fats are the three main macronutrients.",
+      "collocation": "essential macronutrient",
+      "band": "7-8"
+    },
+    {
+      "word": "micronutrient",
+      "pos": "noun",
+      "ipa": "/ˌmaɪkroʊˈnuːtriənt/",
+      "meaningVi": "vi chất dinh dưỡng",
+      "definitionEn": "a nutrient such as a vitamin or mineral that the body needs in very small amounts",
+      "example": "Micronutrient deficiencies can lead to various health problems.",
+      "collocation": "micronutrient deficiency",
+      "band": "7-8"
+    },
+    {
+      "word": "carbohydrate",
+      "pos": "noun",
+      "ipa": "/ˌkɑːrboʊˈhaɪdreɪt/",
+      "meaningVi": "carbohydrate",
+      "definitionEn": "a nutrient found in foods such as bread, rice, and pasta that provides energy",
+      "example": "Complex carbohydrates like whole grains are healthier than simple sugars.",
+      "collocation": "refined carbohydrate",
+      "band": "5-6"
+    },
+    {
+      "word": "protein",
+      "pos": "noun",
+      "ipa": "/ˈproʊtiːn/",
+      "meaningVi": "protein",
+      "definitionEn": "a nutrient essential for building and repairing body tissues",
+      "example": "Lean meat, fish, and legumes are excellent sources of protein.",
+      "collocation": "high-quality protein",
+      "band": "5-6"
+    },
+    {
+      "word": "fat",
+      "pos": "noun",
+      "ipa": "/fæt/",
+      "meaningVi": "chất béo",
+      "definitionEn": "a nutrient that provides energy and helps the body absorb vitamins",
+      "example": "Unsaturated fats are considered healthier than saturated fats.",
+      "collocation": "dietary fat",
+      "band": "5-6"
+    },
+    {
+      "word": "fiber",
+      "pos": "noun",
+      "ipa": "/ˈfaɪbər/",
+      "meaningVi": "chất xơ",
+      "definitionEn": "a type of carbohydrate that the body cannot digest, important for digestive health",
+      "example": "A diet rich in fiber can help prevent constipation.",
+      "collocation": "dietary fiber",
+      "band": "5-6"
+    },
+    {
+      "word": "vitamin",
+      "pos": "noun",
+      "ipa": "/ˈvaɪtəmɪn/",
+      "meaningVi": "vitamin",
+      "definitionEn": "a organic compound that is essential for normal growth and nutrition",
+      "example": "Oranges are a good source of vitamin C.",
+      "collocation": "vitamin supplement",
+      "band": "5-6"
+    },
+    {
+      "word": "mineral",
+      "pos": "noun",
+      "ipa": "/ˈmɪnərəl/",
+      "meaningVi": "khoáng chất",
+      "definitionEn": "a naturally occurring inorganic substance needed by the body for various functions",
+      "example": "Calcium and iron are important minerals for bone health and blood production.",
+      "collocation": "trace mineral",
+      "band": "5-6"
+    },
+    {
+      "word": "antioxidant",
+      "pos": "noun",
+      "ipa": "/ˌæntiˈɒksɪdənt/",
+      "meaningVi": "chất chống oxy hóa",
+      "definitionEn": "a substance that protects cells from damage caused by free radicals",
+      "example": "Berries are rich in antioxidants that may reduce the risk of chronic diseases.",
+      "collocation": "powerful antioxidant",
+      "band": "6-7"
+    },
+    {
+      "word": "metabolism",
+      "pos": "noun",
+      "ipa": "/məˈtæbəlɪzəm/",
+      "meaningVi": "sự trao đổi chất",
+      "definitionEn": "the chemical processes that occur in the body to maintain life, including converting food into energy",
+      "example": "A person's metabolism can affect how quickly they burn calories.",
+      "collocation": "basal metabolic rate",
+      "band": "6-7"
+    },
+    {
+      "word": "obesity",
+      "pos": "noun",
+      "ipa": "/oʊˈbiːsəti/",
+      "meaningVi": "béo phì",
+      "definitionEn": "the condition of being extremely overweight with a high amount of body fat",
+      "example": "Obesity is a major risk factor for heart disease and diabetes.",
+      "collocation": "childhood obesity",
+      "band": "6-7"
+    },
+    {
+      "word": "overweight",
+      "pos": "adjective",
+      "ipa": "/ˌoʊvərˈweɪt/",
+      "meaningVi": "thừa cân",
+      "definitionEn": "weighing more than is considered healthy for a particular height",
+      "example": "Being overweight can increase the likelihood of developing health issues.",
+      "collocation": "overweight population",
+      "band": "5-6"
+    },
+    {
+      "word": "underweight",
+      "pos": "adjective",
+      "ipa": "/ˌʌndərˈweɪt/",
+      "meaningVi": "thiếu cân",
+      "definitionEn": "weighing less than is considered healthy",
+      "example": "Underweight individuals may have a weakened immune system.",
+      "collocation": "underweight children",
+      "band": "5-6"
+    },
+    {
+      "word": "balanced diet",
+      "pos": "noun phrase",
+      "ipa": "/ˈbælənst ˈdaɪət/",
+      "meaningVi": "chế độ ăn cân bằng",
+      "definitionEn": "a diet that contains the right proportions of all essential nutrients",
+      "example": "A balanced diet includes fruits, vegetables, whole grains, and lean proteins.",
+      "collocation": "maintain a balanced diet",
+      "band": "5-6"
+    },
+    {
+      "word": "dietary",
+      "pos": "adjective",
+      "ipa": "/ˈdaɪəteri/",
+      "meaningVi": "thuộc chế độ ăn",
+      "definitionEn": "relating to the food that a person eats",
+      "example": "Dietary guidelines recommend limiting added sugars and saturated fats.",
+      "collocation": "dietary habit",
+      "band": "6-7"
+    },
+    {
+      "word": "nutrient-dense",
+      "pos": "adjective",
+      "ipa": "/ˈnuːtriənt dɛns/",
+      "meaningVi": "giàu dinh dưỡng",
+      "definitionEn": "containing a high amount of nutrients relative to its calorie content",
+      "example": "Leafy greens are nutrient-dense foods that provide many vitamins and minerals.",
+      "collocation": "nutrient-dense meal",
+      "band": "7-8"
+    },
+    {
+      "word": "processed food",
+      "pos": "noun phrase",
+      "ipa": "/ˈprɒsɛst fuːd/",
+      "meaningVi": "thực phẩm chế biến",
+      "definitionEn": "food that has been altered from its natural state, often with added preservatives or flavors",
+      "example": "Consuming too much processed food can lead to health problems.",
+      "collocation": "highly processed food",
+      "band": "6-7"
+    },
+    {
+      "word": "organic",
+      "pos": "adjective",
+      "ipa": "/ɔːrˈɡænɪk/",
+      "meaningVi": "hữu cơ",
+      "definitionEn": "produced without the use of synthetic chemicals, such as pesticides or fertilizers",
+      "example": "Organic farming practices are more environmentally sustainable.",
+      "collocation": "organic produce",
+      "band": "6-7"
+    },
+    {
+      "word": "genetically modified",
+      "pos": "adjective",
+      "ipa": "/dʒəˈnetɪkli ˈmɒdɪfaɪd/",
+      "meaningVi": "biến đổi gen",
+      "definitionEn": "refers to an organism whose genetic material has been altered using biotechnology",
+      "example": "Genetically modified crops are often engineered to resist pests.",
+      "collocation": "genetically modified organism (GMO)",
+      "band": "7-8"
+    },
+    {
+      "word": "preservative",
+      "pos": "noun",
+      "ipa": "/prɪˈzɜːrvətɪv/",
+      "meaningVi": "chất bảo quản",
+      "definitionEn": "a substance added to food to prevent spoilage or extend its shelf life",
+      "example": "Many packaged foods contain artificial preservatives.",
+      "collocation": "chemical preservative",
+      "band": "6-7"
+    },
+    {
+      "word": "additive",
+      "pos": "noun",
+      "ipa": "/ˈædɪtɪv/",
+      "meaningVi": "phụ gia",
+      "definitionEn": "a substance added to food to improve its flavor, appearance, or texture",
+      "example": "Food additives are regulated to ensure they are safe for consumption.",
+      "collocation": "food additive",
+      "band": "6-7"
+    },
+    {
+      "word": "fortified",
+      "pos": "adjective",
+      "ipa": "/ˈfɔːrtɪfaɪd/",
+      "meaningVi": "được tăng cường (dinh dưỡng)",
+      "definitionEn": "having nutrients added that are not naturally present",
+      "example": "Fortified milk is often enriched with vitamin D.",
+      "collocation": "fortified cereal",
+      "band": "7-8"
+    },
+    {
+      "word": "deficiency",
+      "pos": "noun",
+      "ipa": "/dɪˈfɪʃənsi/",
+      "meaningVi": "sự thiếu hụt",
+      "definitionEn": "a lack of a specific nutrient that can lead to health problems",
+      "example": "Vitamin D deficiency can cause bone weakness.",
+      "collocation": "iron deficiency",
+      "band": "6-7"
+    },
+    {
+      "word": "intake",
+      "pos": "noun",
+      "ipa": "/ˈɪnteɪk/",
+      "meaningVi": "lượng tiêu thụ",
+      "definitionEn": "the amount of food or drink that is taken into the body",
+      "example": "Reducing your salt intake can lower blood pressure.",
+      "collocation": "daily intake",
+      "band": "6-7"
+    },
+    {
+      "word": "consumption",
+      "pos": "noun",
+      "ipa": "/kənˈsʌmpʃən/",
+      "meaningVi": "sự tiêu thụ",
+      "definitionEn": "the act of eating or drinking something",
+      "example": "Excessive consumption of sugary drinks is linked to obesity.",
+      "collocation": "meat consumption",
+      "band": "6-7"
+    },
+    {
+      "word": "portion",
+      "pos": "noun",
+      "ipa": "/ˈpɔːrʃən/",
+      "meaningVi": "khẩu phần",
+      "definitionEn": "the amount of food served to one person at one time",
+      "example": "Controlling portion sizes is key to weight management.",
+      "collocation": "portion control",
+      "band": "5-6"
+    },
+    {
+      "word": "serving",
+      "pos": "noun",
+      "ipa": "/ˈsɜːrvɪŋ/",
+      "meaningVi": "suất ăn",
+      "definitionEn": "a standard amount of food used as a reference for dietary guidelines",
+      "example": "A serving of vegetables is about 80 grams.",
+      "collocation": "serving size",
+      "band": "5-6"
+    },
+    {
+      "word": "hunger",
+      "pos": "noun",
+      "ipa": "/ˈhʌŋɡər/",
+      "meaningVi": "cơn đói",
+      "definitionEn": "the feeling of needing or wanting to eat",
+      "example": "Chronic hunger can lead to malnutrition.",
+      "collocation": "world hunger",
+      "band": "5-6"
+    },
+    {
+      "word": "appetite",
+      "pos": "noun",
+      "ipa": "/ˈæpɪtaɪt/",
+      "meaningVi": "sự thèm ăn",
+      "definitionEn": "a natural desire to eat",
+      "example": "Regular exercise can help regulate appetite.",
+      "collocation": "loss of appetite",
+      "band": "5-6"
+    },
+    {
+      "word": "satiety",
+      "pos": "noun",
+      "ipa": "/səˈtaɪəti/",
+      "meaningVi": "cảm giác no",
+      "definitionEn": "the feeling of being full after eating",
+      "example": "Foods high in fiber promote satiety and reduce overeating.",
+      "collocation": "satiety index",
+      "band": "7-8"
+    },
+    {
+      "word": "digestive",
+      "pos": "adjective",
+      "ipa": "/daɪˈdʒestɪv/",
+      "meaningVi": "thuộc tiêu hóa",
+      "definitionEn": "relating to the process of breaking down food in the body",
+      "example": "Probiotics support digestive health by maintaining gut bacteria.",
+      "collocation": "digestive system",
+      "band": "6-7"
+    },
+    {
+      "word": "absorption",
+      "pos": "noun",
+      "ipa": "/əbˈzɔːrpʃən/",
+      "meaningVi": "sự hấp thụ",
+      "definitionEn": "the process by which nutrients from food enter the bloodstream",
+      "example": "Vitamin C enhances the absorption of iron from plant sources.",
+      "collocation": "nutrient absorption",
+      "band": "6-7"
+    },
+    {
+      "word": "digestion",
+      "pos": "noun",
+      "ipa": "/daɪˈdʒestʃən/",
+      "meaningVi": "sự tiêu hóa",
+      "definitionEn": "the process of breaking down food into smaller components that can be absorbed",
+      "example": "Chewing thoroughly aids digestion.",
+      "collocation": "poor digestion",
+      "band": "6-7"
+    },
+    {
+      "word": "agriculture",
+      "pos": "noun",
+      "ipa": "/ˈæɡrɪkʌltʃər/",
+      "meaningVi": "nông nghiệp",
+      "definitionEn": "the practice of cultivating land and raising animals for food production",
+      "example": "Sustainable agriculture aims to minimize environmental impact.",
+      "collocation": "intensive agriculture",
+      "band": "6-7"
+    },
+    {
+      "word": "cultivation",
+      "pos": "noun",
+      "ipa": "/ˌkʌltɪˈveɪʃən/",
+      "meaningVi": "sự canh tác",
+      "definitionEn": "the process of growing crops or plants",
+      "example": "The cultivation of rice requires a lot of water.",
+      "collocation": "crop cultivation",
+      "band": "7-8"
+    },
+    {
+      "word": "harvest",
+      "pos": "noun",
+      "ipa": "/ˈhɑːrvɪst/",
+      "meaningVi": "mùa màng, thu hoạch",
+      "definitionEn": "the process of gathering ripe crops from the fields",
+      "example": "The harvest season is a busy time for farmers.",
+      "collocation": "bountiful harvest",
+      "band": "5-6"
+    },
+    {
+      "word": "livestock",
+      "pos": "noun",
+      "ipa": "/ˈlaɪvstɒk/",
+      "meaningVi": "gia súc",
+      "definitionEn": "animals kept on a farm for food or other products",
+      "example": "Raising livestock contributes to greenhouse gas emissions.",
+      "collocation": "livestock farming",
+      "band": "6-7"
+    },
+    {
+      "word": "poultry",
+      "pos": "noun",
+      "ipa": "/ˈpoʊltri/",
+      "meaningVi": "gia cầm",
+      "definitionEn": "domesticated birds such as chickens and turkeys raised for meat or eggs",
+      "example": "Poultry is a lean source of protein.",
+      "collocation": "poultry industry",
+      "band": "5-6"
+    },
+    {
+      "word": "seafood",
+      "pos": "noun",
+      "ipa": "/ˈsiːfuːd/",
+      "meaningVi": "hải sản",
+      "definitionEn": "edible marine animals such as fish, shellfish, and crustaceans",
+      "example": "Seafood is rich in omega-3 fatty acids.",
+      "collocation": "fresh seafood",
+      "band": "5-6"
+    },
+    {
+      "word": "dairy",
+      "pos": "noun",
+      "ipa": "/ˈdɛri/",
+      "meaningVi": "sữa và các chế phẩm từ sữa",
+      "definitionEn": "food products made from milk, such as cheese, yogurt, and butter",
+      "example": "Dairy products are a good source of calcium.",
+      "collocation": "dairy farm",
+      "band": "5-6"
+    },
+    {
+      "word": "grain",
+      "pos": "noun",
+      "ipa": "/ɡreɪn/",
+      "meaningVi": "ngũ cốc",
+      "definitionEn": "the small hard seeds of cereal plants such as wheat, rice, and corn",
+      "example": "Whole grains are more nutritious than refined grains.",
+      "collocation": "whole grain",
+      "band": "5-6"
+    },
+    {
+      "word": "legume",
+      "pos": "noun",
+      "ipa": "/ˈleɡjuːm/",
+      "meaningVi": "cây họ đậu",
+      "definitionEn": "a plant whose seeds are eaten as food, such as beans, lentils, and peas",
+      "example": "Legumes are a great source of plant-based protein and fiber.",
+      "collocation": "legume consumption",
+      "band": "6-7"
+    },
+    {
+      "word": "allergen",
+      "pos": "noun",
+      "ipa": "/ˈælərdʒən/",
+      "meaningVi": "chất gây dị ứng",
+      "definitionEn": "a substance that can cause an allergic reaction",
+      "example": "Peanuts are a common allergen in many processed foods.",
+      "collocation": "food allergen",
+      "band": "7-8"
+    },
+    {
+      "word": "intolerance",
+      "pos": "noun",
+      "ipa": "/ɪnˈtɒlərəns/",
+      "meaningVi": "sự không dung nạp",
+      "definitionEn": "the inability to properly digest a particular food, leading to discomfort",
+      "example": "Lactose intolerance is common among adults.",
+      "collocation": "food intolerance",
+      "band": "7-8"
+    },
+    {
+      "word": "diabetes",
+      "pos": "noun",
+      "ipa": "/ˌdaɪəˈbiːtiːz/",
+      "meaningVi": "bệnh tiểu đường",
+      "definitionEn": "a chronic condition in which the body cannot regulate blood sugar levels properly",
+      "example": "A diet high in sugar increases the risk of type 2 diabetes.",
+      "collocation": "diabetes prevention",
+      "band": "6-7"
+    },
+    {
+      "word": "cardiovascular",
+      "pos": "adjective",
+      "ipa": "/ˌkɑːrdioʊˈvæskjələr/",
+      "meaningVi": "tim mạch",
+      "definitionEn": "relating to the heart and blood vessels",
+      "example": "A diet rich in fruits and vegetables supports cardiovascular health.",
+      "collocation": "cardiovascular disease",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪnəbl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "able to be maintained over time without depleting natural resources",
+      "example": "Sustainable food production methods are essential for the environment.",
+      "collocation": "sustainable agriculture",
+      "band": "7-8"
+    }
+  ]
+}

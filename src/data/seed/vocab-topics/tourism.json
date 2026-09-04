@@ -1,0 +1,508 @@
+{
+  "slug": "tourism",
+  "name": "Tourism",
+  "nameVi": "Du lịch",
+  "blurb": "Đi lại, điểm đến, tác động du lịch",
+  "words": [
+    {
+      "word": "destination",
+      "pos": "noun",
+      "ipa": "/ˌdɛstɪˈneɪʃən/",
+      "meaningVi": "điểm đến",
+      "definitionEn": "a place to which someone is going or being sent",
+      "example": "Paris is one of the most popular tourist destinations in the world.",
+      "collocation": "popular destination",
+      "band": "5-6"
+    },
+    {
+      "word": "tourist",
+      "pos": "noun",
+      "ipa": "/ˈtʊərɪst/",
+      "meaningVi": "khách du lịch",
+      "definitionEn": "a person who is traveling or visiting a place for pleasure",
+      "example": "The city welcomed millions of tourists last year.",
+      "collocation": "international tourist",
+      "band": "5-6"
+    },
+    {
+      "word": "attraction",
+      "pos": "noun",
+      "ipa": "/əˈtrækʃən/",
+      "meaningVi": "điểm thu hút, hấp dẫn",
+      "definitionEn": "a place or thing that draws visitors by being interesting or enjoyable",
+      "example": "The Eiffel Tower is a major tourist attraction.",
+      "collocation": "major attraction",
+      "band": "5-6"
+    },
+    {
+      "word": "accommodation",
+      "pos": "noun",
+      "ipa": "/əˌkɒməˈdeɪʃən/",
+      "meaningVi": "chỗ ở",
+      "definitionEn": "a room or building where someone stays or lives",
+      "example": "We need to book accommodation in advance during peak season.",
+      "collocation": "provide accommodation",
+      "band": "5-6"
+    },
+    {
+      "word": "itinerary",
+      "pos": "noun",
+      "ipa": "/aɪˈtɪnərəri/",
+      "meaningVi": "lịch trình, hành trình",
+      "definitionEn": "a planned route or journey",
+      "example": "The tour guide gave us a detailed itinerary for the trip.",
+      "collocation": "travel itinerary",
+      "band": "6-7"
+    },
+    {
+      "word": "excursion",
+      "pos": "noun",
+      "ipa": "/ɪkˈskɜːʃən/",
+      "meaningVi": "chuyến tham quan ngắn",
+      "definitionEn": "a short journey or trip, especially one taken for pleasure",
+      "example": "We went on an excursion to the nearby islands.",
+      "collocation": "day excursion",
+      "band": "6-7"
+    },
+    {
+      "word": "package tour",
+      "pos": "noun",
+      "ipa": "/ˈpækɪdʒ tʊər/",
+      "meaningVi": "tour trọn gói",
+      "definitionEn": "a holiday organized by a travel company with transportation, accommodation, and sometimes meals included",
+      "example": "A package tour saves you the hassle of planning everything yourself.",
+      "collocation": "book a package tour",
+      "band": "6-7"
+    },
+    {
+      "word": "sightseeing",
+      "pos": "noun",
+      "ipa": "/ˈsaɪtˌsiːɪŋ/",
+      "meaningVi": "tham quan ngắm cảnh",
+      "definitionEn": "the activity of visiting places of interest in a particular location",
+      "example": "We spent the morning sightseeing around the old town.",
+      "collocation": "go sightseeing",
+      "band": "5-6"
+    },
+    {
+      "word": "souvenir",
+      "pos": "noun",
+      "ipa": "/ˌsuːvəˈnɪər/",
+      "meaningVi": "đồ lưu niệm",
+      "definitionEn": "a thing that is kept as a reminder of a person, place, or event",
+      "example": "I bought a souvenir keychain from the gift shop.",
+      "collocation": "buy souvenirs",
+      "band": "5-6"
+    },
+    {
+      "word": "hospitality",
+      "pos": "noun",
+      "ipa": "/ˌhɒspɪˈtælɪti/",
+      "meaningVi": "lòng hiếu khách, ngành khách sạn",
+      "definitionEn": "the friendly and generous reception of guests or strangers",
+      "example": "The hospitality industry is a major employer in this region.",
+      "collocation": "hospitality sector",
+      "band": "6-7"
+    },
+    {
+      "word": "ecotourism",
+      "pos": "noun",
+      "ipa": "/ˈiːkəʊˌtʊərɪzəm/",
+      "meaningVi": "du lịch sinh thái",
+      "definitionEn": "tourism directed toward natural environments, intended to support conservation and observe wildlife",
+      "example": "Ecotourism promotes responsible travel to natural areas.",
+      "collocation": "promote ecotourism",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adj",
+      "ipa": "/səˈsteɪnəbəl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "able to be maintained at a certain rate or level without depleting resources",
+      "example": "Sustainable tourism aims to minimize negative impacts on the environment.",
+      "collocation": "sustainable tourism",
+      "band": "7-8"
+    },
+    {
+      "word": "overtourism",
+      "pos": "noun",
+      "ipa": "/ˈəʊvəˌtʊərɪzəm/",
+      "meaningVi": "tình trạng quá tải du lịch",
+      "definitionEn": "excessive tourism that leads to negative impacts on local communities and environments",
+      "example": "Overtourism has become a serious problem in many historic cities.",
+      "collocation": "combat overtourism",
+      "band": "8+"
+    },
+    {
+      "word": "revenue",
+      "pos": "noun",
+      "ipa": "/ˈrɛvɪnjuː/",
+      "meaningVi": "doanh thu",
+      "definitionEn": "income, especially from taxes or business activities",
+      "example": "Tourism revenue accounts for a significant portion of the country's GDP.",
+      "collocation": "generate revenue",
+      "band": "6-7"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪnfrəstrʌktʃə/",
+      "meaningVi": "cơ sở hạ tầng",
+      "definitionEn": "the basic physical systems of a country or region, such as transportation, communication, and utilities",
+      "example": "The government invested heavily in tourism infrastructure.",
+      "collocation": "tourism infrastructure",
+      "band": "6-7"
+    },
+    {
+      "word": "transportation",
+      "pos": "noun",
+      "ipa": "/ˌtrænspɔːˈteɪʃən/",
+      "meaningVi": "giao thông vận tải",
+      "definitionEn": "the movement of people or goods from one place to another",
+      "example": "Public transportation is essential for tourists to explore the city.",
+      "collocation": "public transportation",
+      "band": "5-6"
+    },
+    {
+      "word": "flight",
+      "pos": "noun",
+      "ipa": "/flaɪt/",
+      "meaningVi": "chuyến bay",
+      "definitionEn": "a journey made by air, especially in a plane",
+      "example": "Our flight was delayed due to bad weather.",
+      "collocation": "direct flight",
+      "band": "5-6"
+    },
+    {
+      "word": "cruise",
+      "pos": "noun",
+      "ipa": "/kruːz/",
+      "meaningVi": "du thuyền, chuyến đi biển",
+      "definitionEn": "a voyage on a ship or boat taken for pleasure",
+      "example": "A Mediterranean cruise is a popular vacation choice.",
+      "collocation": "go on a cruise",
+      "band": "5-6"
+    },
+    {
+      "word": "resort",
+      "pos": "noun",
+      "ipa": "/rɪˈzɔːt/",
+      "meaningVi": "khu nghỉ dưỡng",
+      "definitionEn": "a place that is frequented by people for relaxation or recreation",
+      "example": "The beach resort offers all-inclusive packages.",
+      "collocation": "beach resort",
+      "band": "5-6"
+    },
+    {
+      "word": "hotel",
+      "pos": "noun",
+      "ipa": "/həʊˈtɛl/",
+      "meaningVi": "khách sạn",
+      "definitionEn": "a building where travelers can pay for accommodation and meals",
+      "example": "We stayed at a five-star hotel in the city center.",
+      "collocation": "luxury hotel",
+      "band": "5-6"
+    },
+    {
+      "word": "backpacker",
+      "pos": "noun",
+      "ipa": "/ˈbækˌpækə/",
+      "meaningVi": "khách du lịch ba lô",
+      "definitionEn": "a person who travels on a budget, usually carrying a backpack",
+      "example": "Backpacker hostels are popular among young travelers.",
+      "collocation": "backpacker hostel",
+      "band": "6-7"
+    },
+    {
+      "word": "cultural tourism",
+      "pos": "noun",
+      "ipa": "/ˈkʌltʃərəl ˈtʊərɪzəm/",
+      "meaningVi": "du lịch văn hóa",
+      "definitionEn": "tourism that focuses on experiencing the culture of a destination",
+      "example": "Cultural tourism involves visiting museums, heritage sites, and festivals.",
+      "collocation": "promote cultural tourism",
+      "band": "7-8"
+    },
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈhɛrɪtɪdʒ/",
+      "meaningVi": "di sản",
+      "definitionEn": "valuable objects and qualities such as cultural traditions, history, and natural features that are passed down from previous generations",
+      "example": "The city is known for its rich cultural heritage.",
+      "collocation": "cultural heritage",
+      "band": "7-8"
+    },
+    {
+      "word": "landmark",
+      "pos": "noun",
+      "ipa": "/ˈlændmɑːk/",
+      "meaningVi": "điểm mốc, địa danh nổi tiếng",
+      "definitionEn": "an object or structure that is easily recognized and used for navigation or as a point of interest",
+      "example": "The Statue of Liberty is a famous landmark.",
+      "collocation": "famous landmark",
+      "band": "5-6"
+    },
+    {
+      "word": "museum",
+      "pos": "noun",
+      "ipa": "/mjuːˈziːəm/",
+      "meaningVi": "bảo tàng",
+      "definitionEn": "a building where objects of historical, scientific, or artistic interest are stored and exhibited",
+      "example": "The museum attracts many tourists interested in art.",
+      "collocation": "visit a museum",
+      "band": "5-6"
+    },
+    {
+      "word": "guide",
+      "pos": "noun",
+      "ipa": "/ɡaɪd/",
+      "meaningVi": "hướng dẫn viên",
+      "definitionEn": "a person who leads others on trips or through unfamiliar places",
+      "example": "Our guide explained the history of the ancient ruins.",
+      "collocation": "tour guide",
+      "band": "5-6"
+    },
+    {
+      "word": "tour operator",
+      "pos": "noun",
+      "ipa": "/tʊər ˈɒpəreɪtə/",
+      "meaningVi": "công ty lữ hành",
+      "definitionEn": "a company that organizes and sells package holidays",
+      "example": "The tour operator arranged all our transfers and excursions.",
+      "collocation": "choose a tour operator",
+      "band": "6-7"
+    },
+    {
+      "word": "booking",
+      "pos": "noun",
+      "ipa": "/ˈbʊkɪŋ/",
+      "meaningVi": "đặt trước, việc đặt chỗ",
+      "definitionEn": "an arrangement to have something reserved, such as a seat or room",
+      "example": "We made a booking for a table at the restaurant.",
+      "collocation": "make a booking",
+      "band": "5-6"
+    },
+    {
+      "word": "reservation",
+      "pos": "noun",
+      "ipa": "/ˌrɛzəˈveɪʃən/",
+      "meaningVi": "đặt chỗ trước",
+      "definitionEn": "an arrangement in which something is kept for someone",
+      "example": "I have a reservation under the name Smith.",
+      "collocation": "confirm a reservation",
+      "band": "5-6"
+    },
+    {
+      "word": "cancellation",
+      "pos": "noun",
+      "ipa": "/ˌkænsəˈleɪʃən/",
+      "meaningVi": "sự hủy bỏ",
+      "definitionEn": "the act of deciding that something already arranged will not happen",
+      "example": "The cancellation of the flight caused a lot of inconvenience.",
+      "collocation": "flight cancellation",
+      "band": "6-7"
+    },
+    {
+      "word": "delay",
+      "pos": "noun",
+      "ipa": "/dɪˈleɪ/",
+      "meaningVi": "sự chậm trễ",
+      "definitionEn": "a period of time by which something is late",
+      "example": "There was a delay of two hours due to the storm.",
+      "collocation": "long delay",
+      "band": "5-6"
+    },
+    {
+      "word": "check-in",
+      "pos": "noun",
+      "ipa": "/ˈtʃɛk ɪn/",
+      "meaningVi": "thủ tục làm thủ tục (ở sân bay, khách sạn)",
+      "definitionEn": "the process of registering at a hotel or airport",
+      "example": "Online check-in saves time at the airport.",
+      "collocation": "online check-in",
+      "band": "5-6"
+    },
+    {
+      "word": "check-out",
+      "pos": "noun",
+      "ipa": "/ˈtʃɛk aʊt/",
+      "meaningVi": "thủ tục trả phòng",
+      "definitionEn": "the process of leaving a hotel after paying the bill",
+      "example": "Check-out time is 11 a.m.",
+      "collocation": "late check-out",
+      "band": "5-6"
+    },
+    {
+      "word": "departure",
+      "pos": "noun",
+      "ipa": "/dɪˈpɑːtʃə/",
+      "meaningVi": "khởi hành",
+      "definitionEn": "the act of leaving a place, especially at the start of a journey",
+      "example": "The departure gate is number 23.",
+      "collocation": "departure time",
+      "band": "5-6"
+    },
+    {
+      "word": "arrival",
+      "pos": "noun",
+      "ipa": "/əˈraɪvəl/",
+      "meaningVi": "đến nơi",
+      "definitionEn": "the act of arriving at a place",
+      "example": "We had a smooth arrival at the airport.",
+      "collocation": "arrival hall",
+      "band": "5-6"
+    },
+    {
+      "word": "customs",
+      "pos": "noun",
+      "ipa": "/ˈkʌstəmz/",
+      "meaningVi": "hải quan",
+      "definitionEn": "the official department that checks goods entering a country",
+      "example": "You must declare items at customs.",
+      "collocation": "go through customs",
+      "band": "6-7"
+    },
+    {
+      "word": "visa",
+      "pos": "noun",
+      "ipa": "/ˈviːzə/",
+      "meaningVi": "thị thực, visa",
+      "definitionEn": "an endorsement on a passport indicating that the holder is allowed to enter a country",
+      "example": "You need a visa to travel to some countries.",
+      "collocation": "apply for a visa",
+      "band": "5-6"
+    },
+    {
+      "word": "passport",
+      "pos": "noun",
+      "ipa": "/ˈpɑːspɔːt/",
+      "meaningVi": "hộ chiếu",
+      "definitionEn": "an official document issued by a government certifying the holder's identity and citizenship",
+      "example": "Don't forget to bring your passport when traveling abroad.",
+      "collocation": "valid passport",
+      "band": "5-6"
+    },
+    {
+      "word": "currency",
+      "pos": "noun",
+      "ipa": "/ˈkʌrənsi/",
+      "meaningVi": "tiền tệ",
+      "definitionEn": "a system of money in general use in a particular country",
+      "example": "It's a good idea to exchange currency before your trip.",
+      "collocation": "local currency",
+      "band": "5-6"
+    },
+    {
+      "word": "exchange rate",
+      "pos": "noun",
+      "ipa": "/ɪksˈtʃeɪndʒ reɪt/",
+      "meaningVi": "tỷ giá hối đoái",
+      "definitionEn": "the value of one currency for the purpose of conversion to another",
+      "example": "The exchange rate is favorable for tourists this season.",
+      "collocation": "favorable exchange rate",
+      "band": "6-7"
+    },
+    {
+      "word": "local",
+      "pos": "adj",
+      "ipa": "/ˈləʊkəl/",
+      "meaningVi": "địa phương, bản địa",
+      "definitionEn": "relating to a particular place or area",
+      "example": "We tried local cuisine at the market.",
+      "collocation": "local community",
+      "band": "5-6"
+    },
+    {
+      "word": "authentic",
+      "pos": "adj",
+      "ipa": "/ɔːˈθɛntɪk/",
+      "meaningVi": "chân thực, đích thực",
+      "definitionEn": "of undisputed origin; genuine",
+      "example": "Tourists often seek authentic cultural experiences.",
+      "collocation": "authentic experience",
+      "band": "7-8"
+    },
+    {
+      "word": "experience",
+      "pos": "noun",
+      "ipa": "/ɪkˈspɪəriəns/",
+      "meaningVi": "trải nghiệm, kinh nghiệm",
+      "definitionEn": "practical contact with and observation of facts or events",
+      "example": "Travel broadens your experience of the world.",
+      "collocation": "cultural experience",
+      "band": "5-6"
+    },
+    {
+      "word": "overcrowding",
+      "pos": "noun",
+      "ipa": "/ˌəʊvəˈkraʊdɪŋ/",
+      "meaningVi": "sự quá đông đúc",
+      "definitionEn": "the state of being filled with too many people or things",
+      "example": "Overcrowding at popular tourist spots can ruin the experience.",
+      "collocation": "overcrowding problem",
+      "band": "7-8"
+    },
+    {
+      "word": "pollution",
+      "pos": "noun",
+      "ipa": "/pəˈluːʃən/",
+      "meaningVi": "ô nhiễm",
+      "definitionEn": "the presence of harmful substances in the environment",
+      "example": "Tourism can contribute to air and water pollution.",
+      "collocation": "environmental pollution",
+      "band": "6-7"
+    },
+    {
+      "word": "preservation",
+      "pos": "noun",
+      "ipa": "/ˌprɛzəˈveɪʃən/",
+      "meaningVi": "sự bảo tồn, gìn giữ",
+      "definitionEn": "the act of keeping something in its original state or in good condition",
+      "example": "The preservation of historical sites is crucial for tourism.",
+      "collocation": "heritage preservation",
+      "band": "7-8"
+    },
+    {
+      "word": "conservation",
+      "pos": "noun",
+      "ipa": "/ˌkɒnsəˈveɪʃən/",
+      "meaningVi": "bảo tồn thiên nhiên",
+      "definitionEn": "the protection of natural resources, especially to prevent them from being damaged or destroyed",
+      "example": "Ecotourism supports conservation efforts.",
+      "collocation": "wildlife conservation",
+      "band": "7-8"
+    },
+    {
+      "word": "commodification",
+      "pos": "noun",
+      "ipa": "/kəˌmɒdɪfɪˈkeɪʃən/",
+      "meaningVi": "sự thương mại hóa, biến thành hàng hóa",
+      "definitionEn": "the action of turning something into a commodity for sale",
+      "example": "The commodification of culture is a negative side effect of mass tourism.",
+      "collocation": "commodification of culture",
+      "band": "8+"
+    },
+    {
+      "word": "homogenization",
+      "pos": "noun",
+      "ipa": "/həˌmɒdʒənɪˈzeɪʃən/",
+      "meaningVi": "sự đồng nhất hóa",
+      "definitionEn": "the process of making things uniform or similar",
+      "example": "Global tourism leads to the homogenization of local cultures.",
+      "collocation": "cultural homogenization",
+      "band": "8+"
+    },
+    {
+      "word": "carrying capacity",
+      "pos": "noun",
+      "ipa": "/ˈkæriɪŋ kəˈpæsɪti/",
+      "meaningVi": "sức chứa, khả năng chịu tải",
+      "definitionEn": "the maximum number of people that can be supported in a given area without causing damage",
+      "example": "The national park has a limited carrying capacity to protect the ecosystem.",
+      "collocation": "environmental carrying capacity",
+      "band": "8+"
+    }
+  ]
+}

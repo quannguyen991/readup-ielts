@@ -1,0 +1,508 @@
+{
+  "slug": "sport",
+  "name": "Sport",
+  "nameVi": "Thể thao",
+  "blurb": "Thi đấu, rèn luyện, tinh thần đồng đội",
+  "words": [
+    {
+      "word": "athlete",
+      "pos": "noun",
+      "ipa": "/ˈæθliːt/",
+      "meaningVi": "vận động viên",
+      "definitionEn": "a person who is proficient in sports and other forms of physical exercise",
+      "example": "Professional athletes often follow strict diets to maintain peak performance.",
+      "collocation": "elite athlete",
+      "band": "5-6"
+    },
+    {
+      "word": "tournament",
+      "pos": "noun",
+      "ipa": "/ˈtʊənəmənt/",
+      "meaningVi": "giải đấu",
+      "definitionEn": "a series of contests between a number of competitors, who compete for an overall prize",
+      "example": "The tennis tournament attracted top players from around the world.",
+      "collocation": "international tournament",
+      "band": "6-7"
+    },
+    {
+      "word": "endurance",
+      "pos": "noun",
+      "ipa": "/ɪnˈdjʊərəns/",
+      "meaningVi": "sức bền, sự chịu đựng",
+      "definitionEn": "the ability to sustain prolonged physical or mental effort",
+      "example": "Marathon runners require exceptional endurance to complete the race.",
+      "collocation": "build up endurance",
+      "band": "7-8"
+    },
+    {
+      "word": "discipline",
+      "pos": "noun",
+      "ipa": "/ˈdɪsəplɪn/",
+      "meaningVi": "kỷ luật, tính kỷ luật",
+      "definitionEn": "the practice of training people to obey rules or a code of behavior",
+      "example": "Self-discipline is crucial for athletes who want to improve their skills.",
+      "collocation": "maintain discipline",
+      "band": "6-7"
+    },
+    {
+      "word": "vigorous",
+      "pos": "adjective",
+      "ipa": "/ˈvɪɡərəs/",
+      "meaningVi": "mạnh mẽ, cường tráng",
+      "definitionEn": "strong, healthy, and full of energy",
+      "example": "Vigorous physical activity can reduce the risk of chronic diseases.",
+      "collocation": "vigorous exercise",
+      "band": "7-8"
+    },
+    {
+      "word": "stamina",
+      "pos": "noun",
+      "ipa": "/ˈstæmɪnə/",
+      "meaningVi": "sức chịu đựng, thể lực bền bỉ",
+      "definitionEn": "the ability to sustain prolonged physical or mental effort",
+      "example": "Cyclists need to build up their stamina for long-distance races.",
+      "collocation": "increase stamina",
+      "band": "7-8"
+    },
+    {
+      "word": "forfeit",
+      "pos": "verb",
+      "ipa": "/ˈfɔːrfɪt/",
+      "meaningVi": "bị mất, bị tước (quyền, giải thưởng)",
+      "definitionEn": "to lose or be deprived of (property, right, or prize) as a penalty for wrongdoing",
+      "example": "The team had to forfeit the match due to a player eligibility issue.",
+      "collocation": "forfeit a game",
+      "band": "8+"
+    },
+    {
+      "word": "camaraderie",
+      "pos": "noun",
+      "ipa": "/ˌkæməˈrɑːdəri/",
+      "meaningVi": "tình đồng đội, tinh thần đoàn kết",
+      "definitionEn": "mutual trust and friendship among people who spend a lot of time together",
+      "example": "The camaraderie among teammates often leads to better performance on the field.",
+      "collocation": "sense of camaraderie",
+      "band": "8+"
+    },
+    {
+      "word": "rigorous",
+      "pos": "adjective",
+      "ipa": "/ˈrɪɡərəs/",
+      "meaningVi": "khắc nghiệt, nghiêm ngặt",
+      "definitionEn": "extremely thorough, exhaustive, or accurate",
+      "example": "The training program is rigorous and demands full commitment from participants.",
+      "collocation": "rigorous training",
+      "band": "7-8"
+    },
+    {
+      "word": "agility",
+      "pos": "noun",
+      "ipa": "/əˈdʒɪləti/",
+      "meaningVi": "sự nhanh nhẹn, linh hoạt",
+      "definitionEn": "the ability to move quickly and easily",
+      "example": "Basketball players rely on agility to dodge defenders and score points.",
+      "collocation": "improve agility",
+      "band": "7-8"
+    },
+    {
+      "word": "podium",
+      "pos": "noun",
+      "ipa": "/ˈpoʊdiəm/",
+      "meaningVi": "bục vinh quang, bục trao giải",
+      "definitionEn": "a small platform on which a person may stand to be seen by an audience",
+      "example": "Standing on the podium after winning a gold medal is a dream for many athletes.",
+      "collocation": "podium finish",
+      "band": "6-7"
+    },
+    {
+      "word": "spectator",
+      "pos": "noun",
+      "ipa": "/ˈspekteɪtər/",
+      "meaningVi": "khán giả",
+      "definitionEn": "a person who watches at a show, game, or other event",
+      "example": "Spectators at the stadium cheered loudly when the home team scored.",
+      "collocation": "spectator sport",
+      "band": "5-6"
+    },
+    {
+      "word": "marginal",
+      "pos": "adjective",
+      "ipa": "/ˈmɑːrdʒɪnəl/",
+      "meaningVi": "nhỏ, không đáng kể (lợi thế/thua)",
+      "definitionEn": "very small in amount or effect",
+      "example": "The athlete won by a marginal difference of only 0.01 seconds.",
+      "collocation": "marginal gain",
+      "band": "8+"
+    },
+    {
+      "word": "prestigious",
+      "pos": "adjective",
+      "ipa": "/preˈstɪdʒəs/",
+      "meaningVi": "danh giá, uy tín",
+      "definitionEn": "having a high reputation; respected and admired",
+      "example": "Winning the prestigious championship elevated the team's status worldwide.",
+      "collocation": "prestigious award",
+      "band": "7-8"
+    },
+    {
+      "word": "adhere",
+      "pos": "verb",
+      "ipa": "/ədˈhɪr/",
+      "meaningVi": "tuân thủ",
+      "definitionEn": "to stick firmly to a rule, decision, or plan",
+      "example": "All players must adhere to the anti-doping regulations set by the governing body.",
+      "collocation": "adhere to rules",
+      "band": "8+"
+    },
+    {
+      "word": "regimen",
+      "pos": "noun",
+      "ipa": "/ˈredʒɪmən/",
+      "meaningVi": "chế độ (tập luyện, ăn uống)",
+      "definitionEn": "a prescribed course of medical treatment, diet, or exercise for the promotion of health",
+      "example": "A strict training regimen is essential for athletes preparing for the Olympics.",
+      "collocation": "training regimen",
+      "band": "8+"
+    },
+    {
+      "word": "prowess",
+      "pos": "noun",
+      "ipa": "/ˈpraʊɪs/",
+      "meaningVi": "kỹ năng xuất sắc, tài năng",
+      "definitionEn": "skill or expertise in a particular activity or field",
+      "example": "Her athletic prowess earned her a place on the national team.",
+      "collocation": "physical prowess",
+      "band": "8+"
+    },
+    {
+      "word": "setback",
+      "pos": "noun",
+      "ipa": "/ˈsetbæk/",
+      "meaningVi": "sự trở ngại, thất bại tạm thời",
+      "definitionEn": "a reversal or check in progress; a difficulty",
+      "example": "Injuries can be a major setback for professional athletes.",
+      "collocation": "suffer a setback",
+      "band": "6-7"
+    },
+    {
+      "word": "collaborate",
+      "pos": "verb",
+      "ipa": "/kəˈlæbəreɪt/",
+      "meaningVi": "hợp tác",
+      "definitionEn": "to work jointly with others or together especially in an intellectual endeavor",
+      "example": "Team members must collaborate effectively to achieve a common goal in sports.",
+      "collocation": "collaborate with teammates",
+      "band": "7-8"
+    },
+    {
+      "word": "enforce",
+      "pos": "verb",
+      "ipa": "/ɪnˈfɔːrs/",
+      "meaningVi": "thi hành, thực thi (luật lệ)",
+      "definitionEn": "to compel observance of or compliance with (a law, rule, or obligation)",
+      "example": "Referees are responsible for enforcing the rules during a match.",
+      "collocation": "enforce regulations",
+      "band": "7-8"
+    },
+    {
+      "word": "drawback",
+      "pos": "noun",
+      "ipa": "/ˈdrɔːbæk/",
+      "meaningVi": "nhược điểm, bất lợi",
+      "definitionEn": "a feature that renders something less acceptable; a disadvantage",
+      "example": "One drawback of intense training is the increased risk of injury.",
+      "collocation": "major drawback",
+      "band": "6-7"
+    },
+    {
+      "word": "facilitate",
+      "pos": "verb",
+      "ipa": "/fəˈsɪlɪteɪt/",
+      "meaningVi": "tạo điều kiện, thúc đẩy",
+      "definitionEn": "to make (an action or process) easy or easier",
+      "example": "Proper warm-up exercises facilitate better performance and reduce injury risk.",
+      "collocation": "facilitate recovery",
+      "band": "7-8"
+    },
+    {
+      "word": "motivate",
+      "pos": "verb",
+      "ipa": "/ˈmoʊtɪveɪt/",
+      "meaningVi": "thúc đẩy, tạo động lực",
+      "definitionEn": "to provide (someone) with a reason for doing something; to stimulate",
+      "example": "Coaches often use positive reinforcement to motivate their athletes.",
+      "collocation": "motivate players",
+      "band": "6-7"
+    },
+    {
+      "word": "outstanding",
+      "pos": "adjective",
+      "ipa": "/aʊtˈstændɪŋ/",
+      "meaningVi": "xuất sắc, nổi bật",
+      "definitionEn": "exceptionally good; remarkable",
+      "example": "The team delivered an outstanding performance in the championship final.",
+      "collocation": "outstanding achievement",
+      "band": "5-6"
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "ipa": "/rɪˈzɪliəns/",
+      "meaningVi": "tính kiên cường, khả năng phục hồi",
+      "definitionEn": "the capacity to recover quickly from difficulties; toughness",
+      "example": "Mental resilience is as important as physical strength in competitive sports.",
+      "collocation": "build resilience",
+      "band": "8+"
+    },
+    {
+      "word": "competition",
+      "pos": "noun",
+      "ipa": "/ˌkɒmpəˈtɪʃən/",
+      "meaningVi": "sự cạnh tranh, cuộc thi",
+      "definitionEn": "a contest between individuals or teams",
+      "example": "The competition was fierce, but our team managed to secure a place in the finals.",
+      "collocation": "fierce competition",
+      "band": "5-6"
+    },
+    {
+      "word": "contest",
+      "pos": "noun",
+      "ipa": "/ˈkɒntest/",
+      "meaningVi": "cuộc thi đấu",
+      "definitionEn": "a competition in which people try to win",
+      "example": "The annual swimming contest attracts participants from all over the country.",
+      "collocation": "win a contest",
+      "band": "6-7"
+    },
+    {
+      "word": "practice",
+      "pos": "noun",
+      "ipa": "/ˈpræktɪs/",
+      "meaningVi": "sự luyện tập",
+      "definitionEn": "repeated exercise to improve a skill",
+      "example": "Regular practice is essential for mastering any sport.",
+      "collocation": "daily practice",
+      "band": "5-6"
+    },
+    {
+      "word": "coach",
+      "pos": "noun",
+      "ipa": "/kəʊtʃ/",
+      "meaningVi": "huấn luyện viên",
+      "definitionEn": "a person who trains a sports team or player",
+      "example": "The coach emphasized the importance of discipline during the training session.",
+      "collocation": "head coach",
+      "band": "5-6"
+    },
+    {
+      "word": "referee",
+      "pos": "noun",
+      "ipa": "/ˌrefəˈriː/",
+      "meaningVi": "trọng tài",
+      "definitionEn": "an official who enforces the rules of a game",
+      "example": "The referee made a controversial decision that affected the outcome of the match.",
+      "collocation": "referee's decision",
+      "band": "5-6"
+    },
+    {
+      "word": "opponent",
+      "pos": "noun",
+      "ipa": "/əˈpəʊnənt/",
+      "meaningVi": "đối thủ",
+      "definitionEn": "a person or team that one competes against",
+      "example": "Our opponents were well-prepared, but we managed to outplay them in the second half.",
+      "collocation": "tough opponent",
+      "band": "5-6"
+    },
+    {
+      "word": "teammate",
+      "pos": "noun",
+      "ipa": "/ˈtiːmmeɪt/",
+      "meaningVi": "đồng đội",
+      "definitionEn": "a member of the same team",
+      "example": "Good communication with teammates is crucial for success in team sports.",
+      "collocation": "supportive teammate",
+      "band": "5-6"
+    },
+    {
+      "word": "victory",
+      "pos": "noun",
+      "ipa": "/ˈvɪktəri/",
+      "meaningVi": "chiến thắng",
+      "definitionEn": "an act of defeating an opponent",
+      "example": "The team celebrated their hard-earned victory with great enthusiasm.",
+      "collocation": "narrow victory",
+      "band": "5-6"
+    },
+    {
+      "word": "defeat",
+      "pos": "noun",
+      "ipa": "/dɪˈfiːt/",
+      "meaningVi": "thất bại",
+      "definitionEn": "the act of losing a contest",
+      "example": "Despite the defeat, the players showed great character and determination.",
+      "collocation": "concede defeat",
+      "band": "5-6"
+    },
+    {
+      "word": "score",
+      "pos": "noun",
+      "ipa": "/skɔːr/",
+      "meaningVi": "điểm số, tỷ số",
+      "definitionEn": "the number of points achieved in a game",
+      "example": "The final score was 3-1, reflecting the superiority of the home team.",
+      "collocation": "final score",
+      "band": "5-6"
+    },
+    {
+      "word": "penalty",
+      "pos": "noun",
+      "ipa": "/ˈpenəlti/",
+      "meaningVi": "hình phạt, quả phạt",
+      "definitionEn": "a punishment imposed for breaking a rule in a sport",
+      "example": "The referee awarded a penalty for the foul committed inside the box.",
+      "collocation": "award a penalty",
+      "band": "5-6"
+    },
+    {
+      "word": "championship",
+      "pos": "noun",
+      "ipa": "/ˈtʃæmpiənʃɪp/",
+      "meaningVi": "chức vô địch, giải vô địch",
+      "definitionEn": "a competition to find the best player or team in a particular sport",
+      "example": "Winning the championship requires not only skill but also mental toughness.",
+      "collocation": "win the championship",
+      "band": "6-7"
+    },
+    {
+      "word": "league",
+      "pos": "noun",
+      "ipa": "/liːɡ/",
+      "meaningVi": "giải đấu, liên đoàn",
+      "definitionEn": "a group of sports teams that play against each other",
+      "example": "The team struggled in the league this season due to injuries.",
+      "collocation": "league table",
+      "band": "6-7"
+    },
+    {
+      "word": "medal",
+      "pos": "noun",
+      "ipa": "/ˈmedəl/",
+      "meaningVi": "huy chương",
+      "definitionEn": "a flat piece of metal given as a prize in a competition",
+      "example": "She won a gold medal in the 100-metre sprint at the Olympics.",
+      "collocation": "gold medal",
+      "band": "6-7"
+    },
+    {
+      "word": "record",
+      "pos": "noun",
+      "ipa": "/ˈrekɔːd/",
+      "meaningVi": "kỷ lục",
+      "definitionEn": "the best performance or highest level ever achieved",
+      "example": "He broke the world record in the marathon with an astonishing time.",
+      "collocation": "break a record",
+      "band": "6-7"
+    },
+    {
+      "word": "trial",
+      "pos": "noun",
+      "ipa": "/ˈtraɪəl/",
+      "meaningVi": "cuộc thử nghiệm, buổi thử sức",
+      "definitionEn": "a test of someone's ability to play a sport",
+      "example": "The young athlete impressed the scouts during the trial and was offered a contract.",
+      "collocation": "trial match",
+      "band": "6-7"
+    },
+    {
+      "word": "workout",
+      "pos": "noun",
+      "ipa": "/ˈwɜːkaʊt/",
+      "meaningVi": "buổi tập luyện",
+      "definitionEn": "a session of physical exercise",
+      "example": "A proper workout routine should include both cardiovascular and strength training.",
+      "collocation": "intense workout",
+      "band": "6-7"
+    },
+    {
+      "word": "fitness",
+      "pos": "noun",
+      "ipa": "/ˈfɪtnəs/",
+      "meaningVi": "thể lực, sự khỏe mạnh",
+      "definitionEn": "the condition of being physically fit and healthy",
+      "example": "Athletes must maintain a high level of fitness to compete at the top level.",
+      "collocation": "physical fitness",
+      "band": "6-7"
+    },
+    {
+      "word": "coordination",
+      "pos": "noun",
+      "ipa": "/kəʊˌɔːrdɪˈneɪʃən/",
+      "meaningVi": "sự phối hợp",
+      "definitionEn": "the ability to move different parts of the body together smoothly",
+      "example": "Good hand-eye coordination is vital for sports like tennis and basketball.",
+      "collocation": "hand-eye coordination",
+      "band": "7-8"
+    },
+    {
+      "word": "teamwork",
+      "pos": "noun",
+      "ipa": "/ˈtiːmwɜːrk/",
+      "meaningVi": "tinh thần đồng đội",
+      "definitionEn": "the combined effort of a group of people working together effectively",
+      "example": "Effective teamwork often determines the success of a sports team more than individual talent.",
+      "collocation": "promote teamwork",
+      "band": "7-8"
+    },
+    {
+      "word": "sportsmanship",
+      "pos": "noun",
+      "ipa": "/ˈspɔːrtsmənʃɪp/",
+      "meaningVi": "tinh thần thể thao",
+      "definitionEn": "fair, generous, and polite behaviour in a sport",
+      "example": "The athlete was praised for his sportsmanship after helping his injured opponent.",
+      "collocation": "good sportsmanship",
+      "band": "7-8"
+    },
+    {
+      "word": "tactics",
+      "pos": "noun",
+      "ipa": "/ˈtæktɪks/",
+      "meaningVi": "chiến thuật",
+      "definitionEn": "the planned methods used to achieve a particular goal in a game",
+      "example": "The coach's clever tactics neutralized the opponent's strengths.",
+      "collocation": "defensive tactics",
+      "band": "7-8"
+    },
+    {
+      "word": "synergy",
+      "pos": "noun",
+      "ipa": "/ˈsɪnədʒi/",
+      "meaningVi": "sức mạnh tổng hợp",
+      "definitionEn": "the combined power of a group that is greater than the sum of its parts",
+      "example": "The synergy between the players created a formidable team that outperformed expectations.",
+      "collocation": "team synergy",
+      "band": "8+"
+    },
+    {
+      "word": "doping",
+      "pos": "noun",
+      "ipa": "/ˈdəʊpɪŋ/",
+      "meaningVi": "sử dụng chất cấm",
+      "definitionEn": "the use of banned substances to enhance performance",
+      "example": "Doping scandals have tarnished the reputation of several sports.",
+      "collocation": "anti-doping regulations",
+      "band": "8+"
+    },
+    {
+      "word": "disqualification",
+      "pos": "noun",
+      "ipa": "/dɪsˌkwɒlɪfɪˈkeɪʃən/",
+      "meaningVi": "sự loại khỏi cuộc thi",
+      "definitionEn": "the act of being removed from a competition for breaking the rules",
+      "example": "The athlete faced disqualification after testing positive for a banned substance.",
+      "collocation": "disqualification from the race",
+      "band": "8+"
+    }
+  ]
+}

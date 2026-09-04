@@ -15,6 +15,8 @@ import {
 } from '@/components/ui';
 import { getArticleWithBody } from '@/data/articles';
 import { formatBand } from '@/lib/band';
+import { findEvidenceSpan, mergeSpans, type EvidenceSpan } from '@/lib/reading/evidence';
+import { ReadingCoachPanel, type CoachRequest } from '@/components/reader/ReadingCoachPanel';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -44,6 +46,33 @@ export default function ReviewScreen() {
       question: questionSet.questions.find((q) => q.id === attempt.questionId),
     }));
   }, [session, questionSet]);
+
+  /*
+    Gói dữ liệu cho AI: CHỈ những câu sai, và chỉ những trường AI thật sự cần.
+
+    Gửi cả lượt làm bài lên là gửi thừa — câu đúng không nói được gì về lỗi, mà
+    lại làm loãng phần AI phải đọc và tốn thêm token cho mỗi lượt.
+  */
+  const coachRequest = useMemo<CoachRequest | null>(() => {
+    if (!session) return null;
+    return {
+      articleTitle: session.articleTitle,
+      total: session.total,
+      correct: session.rawScore,
+      wrong: rows
+        .filter(({ attempt }) => !attempt.isCorrect)
+        .map(({ attempt, question }) => ({
+          questionId: attempt.questionId,
+          type: attempt.type,
+          typeLabel: QUESTION_TYPE_LABEL[attempt.type],
+          prompt: question?.prompt ?? '',
+          userAnswer: attempt.userAnswer,
+          correctAnswer: attempt.correctAnswer,
+          evidenceText: question?.evidenceText ?? '',
+        }))
+        .filter((w) => w.prompt !== ''),
+    };
+  }, [rows, session]);
 
   const filtered = rows.filter(({ attempt }) => {
     if (filter === 'correct' && !attempt.isCorrect) return false;
@@ -144,6 +173,8 @@ export default function ReviewScreen() {
           />
         </Grid>
       </View>
+
+      {coachRequest ? <ReadingCoachPanel request={coachRequest} /> : null}
 
       <View className="mt-4 flex-row flex-wrap gap-4">
         {/* Danh sách câu hỏi */}
@@ -325,19 +356,48 @@ export default function ReviewScreen() {
                   .map((r, i) => ({ ...r, order: i }))
                   .filter((r) => r.question?.evidenceParagraphIndex === index);
 
+                const marked = showHighlights && evidence.length > 0;
+
                 return (
                   <View key={index} className="flex-row gap-2">
-                    <View className="h-6 w-6 items-center justify-center rounded-md bg-surfaceAlt">
-                      <Text className="font-strong text-label text-muted">
+                    <View
+                      className={`h-6 w-6 items-center justify-center rounded-md ${
+                        marked ? 'bg-primary-600' : 'bg-surfaceAlt'
+                      }`}
+                    >
+                      <Text
+                        className={`font-strong text-label ${marked ? 'text-white' : 'text-muted'}`}
+                      >
                         {String.fromCharCode(65 + index)}
                       </Text>
                     </View>
 
-                    <Text className="flex-1 font-sans text-body text-body">
-                      {showHighlights && evidence.length > 0
-                        ? renderWithEvidence(paragraph, evidence)
-                        : paragraph}
-                    </Text>
+                    {/*
+                      CẢ ĐOẠN được đánh dấu, không chỉ câu trích.
+
+                      Câu trích chỉ tô được khi dò ra vị trí của nó; mà `evidenceParagraphIndex`
+                      thì LUÔN có. Nên đoạn chứa đáp án được nền nhạt + viền trái + chữ
+                      cái đảo màu — ba dấu hiệu ấy không phụ thuộc việc dò chuỗi, nên
+                      người học luôn nhìn ra ngay đáp án nằm ở đoạn nào, kể cả khi câu
+                      trích của model chép sai một dấu và không tô được.
+                    */}
+                    <View
+                      className={
+                        marked
+                          ? 'flex-1 rounded-panel border-l-[3px] border-primary bg-primary-50 px-3 py-2'
+                          : 'flex-1'
+                      }
+                    >
+                      <Text className="font-sans text-body text-body">
+                        {marked ? renderWithEvidence(paragraph, evidence) : paragraph}
+                      </Text>
+
+                      {marked ? (
+                        <Text className="mt-1.5 font-mid text-label text-primary-700">
+                          Đáp án câu {evidence.map((e) => e.order + 1).join(', ')} nằm ở đoạn này
+                        </Text>
+                      ) : null}
+                    </View>
                   </View>
                 );
               })}
@@ -373,22 +433,48 @@ function renderWithEvidence(
   paragraph: string,
   evidence: Array<{ question?: { evidenceText: string }; attempt: { isCorrect: boolean }; order: number }>,
 ): React.ReactNode {
-  const first = evidence[0];
-  const text = first?.question?.evidenceText;
-  if (!text) return paragraph;
+  /*
+    Tô MỌI câu trích trong đoạn, không chỉ câu đầu.
 
-  const start = paragraph.indexOf(text);
-  if (start === -1) return paragraph;
+    Bản trước chỉ lấy `evidence[0]`, nên khi hai câu hỏi cùng dựa vào một đoạn
+    thì câu thứ hai không được chỉ ra — mà đó lại đúng lúc người học cần nhất,
+    vì hai câu cùng đoạn là chỗ dễ lẫn nhất.
+  */
+  const found = evidence
+    .map((e) => {
+      const text = e.question?.evidenceText;
+      const span = text ? findEvidenceSpan(paragraph, text) : null;
+      return span ? { span, isCorrect: e.attempt.isCorrect } : null;
+    })
+    .filter((x): x is { span: EvidenceSpan; isCorrect: boolean } => x !== null);
 
-  const fill = first.attempt.isCorrect ? highlightColors.green.fill : highlightColors.yellow.fill;
+  if (found.length === 0) return paragraph;
 
-  return (
-    <>
-      {paragraph.slice(0, start)}
-      <Text style={{ backgroundColor: fill }}>{text}</Text>
-      {paragraph.slice(start + text.length)}
-    </>
-  );
+  // Gộp trước khi tô: hai vùng chồng nhau sẽ đè màu lên nhau và nhoè ranh giới.
+  const spans = mergeSpans(found.map((f) => f.span));
+
+  const parts: React.ReactNode[] = [];
+  let cursor = 0;
+
+  for (const [i, span] of spans.entries()) {
+    if (span.start > cursor) parts.push(paragraph.slice(cursor, span.start));
+
+    // Một vùng gộp có thể trùm cả câu đúng lẫn câu sai; ưu tiên màu của câu SAI
+    // vì đó là chỗ người học cần xem lại.
+    const wrong = found.some((f) => f.span.start < span.end && f.span.end > span.start && !f.isCorrect);
+    const fill = wrong ? highlightColors.yellow.fill : highlightColors.green.fill;
+
+    parts.push(
+      <Text key={`ev-${i}`} style={{ backgroundColor: fill }}>
+        {paragraph.slice(span.start, span.end)}
+      </Text>,
+    );
+    cursor = span.end;
+  }
+
+  if (cursor < paragraph.length) parts.push(paragraph.slice(cursor));
+
+  return <>{parts}</>;
 }
 
 function worstType(attempts: Array<{ type: QuestionType; isCorrect: boolean }>): QuestionType {

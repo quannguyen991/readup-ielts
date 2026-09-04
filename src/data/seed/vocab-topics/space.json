@@ -1,0 +1,508 @@
+{
+  "slug": "space",
+  "name": "Space and Exploration",
+  "nameVi": "Vũ trụ",
+  "blurb": "Thám hiểm, vệ tinh, ngân sách",
+  "words": [
+    {
+      "word": "exploration",
+      "pos": "noun",
+      "ipa": "/ˌekspləˈreɪʃən/",
+      "meaningVi": "sự thám hiểm",
+      "definitionEn": "The act of investigating unknown regions or subjects.",
+      "example": "Space exploration has expanded humanity's understanding of the universe.",
+      "collocation": "space exploration",
+      "band": "5-6"
+    },
+    {
+      "word": "spaceflight",
+      "pos": "noun",
+      "ipa": "/ˈspeɪsˌflaɪt/",
+      "meaningVi": "chuyến bay vào vũ trụ",
+      "definitionEn": "Travel through outer space by a spacecraft.",
+      "example": "Human spaceflight requires extensive preparation and technological expertise.",
+      "collocation": "human spaceflight",
+      "band": "6-7"
+    },
+    {
+      "word": "astronaut",
+      "pos": "noun",
+      "ipa": "/ˈæstrənɔːt/",
+      "meaningVi": "phi hành gia",
+      "definitionEn": "A person trained to travel and work in space.",
+      "example": "Every astronaut must undergo rigorous physical and psychological training.",
+      "collocation": "experienced astronaut",
+      "band": "5-6"
+    },
+    {
+      "word": "spacecraft",
+      "pos": "noun",
+      "ipa": "/ˈspeɪskrɑːft/",
+      "meaningVi": "tàu vũ trụ",
+      "definitionEn": "A vehicle designed for travel beyond the Earth's atmosphere.",
+      "example": "The spacecraft carried scientific instruments to study the distant planet.",
+      "collocation": "unmanned spacecraft",
+      "band": "5-6"
+    },
+    {
+      "word": "satellite",
+      "pos": "noun",
+      "ipa": "/ˈsætəlaɪt/",
+      "meaningVi": "vệ tinh",
+      "definitionEn": "An artificial object sent into space to collect information or provide services.",
+      "example": "A satellite can monitor climate change across the entire planet.",
+      "collocation": "communications satellite",
+      "band": "5-6"
+    },
+    {
+      "word": "orbit",
+      "pos": "noun",
+      "ipa": "/ˈɔːbɪt/",
+      "meaningVi": "quỹ đạo",
+      "definitionEn": "The curved path followed by an object around a planet or star.",
+      "example": "The satellite was placed into a stable orbit around the Earth.",
+      "collocation": "low Earth orbit",
+      "band": "5-6"
+    },
+    {
+      "word": "launch",
+      "pos": "noun",
+      "ipa": "/lɔːntʃ/",
+      "meaningVi": "vụ phóng",
+      "definitionEn": "The act of sending a spacecraft or satellite into space.",
+      "example": "The launch of the probe was delayed by severe weather conditions.",
+      "collocation": "rocket launch",
+      "band": "5-6"
+    },
+    {
+      "word": "propulsion",
+      "pos": "noun",
+      "ipa": "/prəˈpʌlʃən/",
+      "meaningVi": "lực đẩy; hệ thống đẩy",
+      "definitionEn": "The force or system that moves a vehicle forward.",
+      "example": "Electric propulsion could make future deep-space missions more efficient.",
+      "collocation": "advanced propulsion system",
+      "band": "7-8"
+    },
+    {
+      "word": "trajectory",
+      "pos": "noun",
+      "ipa": "/trəˈdʒektəri/",
+      "meaningVi": "quỹ đạo bay; đường đi",
+      "definitionEn": "The curved path followed by a moving object through space.",
+      "example": "Scientists calculated the asteroid's trajectory to assess the danger to Earth.",
+      "collocation": "flight trajectory",
+      "band": "7-8"
+    },
+    {
+      "word": "mission",
+      "pos": "noun",
+      "ipa": "/ˈmɪʃən/",
+      "meaningVi": "sứ mệnh; nhiệm vụ không gian",
+      "definitionEn": "A planned journey or operation carried out for a specific purpose.",
+      "example": "The mission aims to collect samples from the surface of Mars.",
+      "collocation": "space mission",
+      "band": "5-6"
+    },
+    {
+      "word": "extraterrestrial",
+      "pos": "adjective",
+      "ipa": "/ˌekstrətəˈrestriəl/",
+      "meaningVi": "ngoài Trái Đất",
+      "definitionEn": "Existing or originating beyond the Earth.",
+      "example": "Researchers continue to search for extraterrestrial life in distant systems.",
+      "collocation": "extraterrestrial life",
+      "band": "7-8"
+    },
+    {
+      "word": "habitable",
+      "pos": "adjective",
+      "ipa": "/ˈhæbɪtəbl/",
+      "meaningVi": "có thể sinh sống được",
+      "definitionEn": "Suitable for supporting human or other forms of life.",
+      "example": "The discovery of a potentially habitable exoplanet attracted global attention.",
+      "collocation": "habitable environment",
+      "band": "6-7"
+    },
+    {
+      "word": "habitation",
+      "pos": "noun",
+      "ipa": "/ˌhæbɪˈteɪʃən/",
+      "meaningVi": "nơi cư trú; sự cư trú",
+      "definitionEn": "The act or condition of living in a particular place.",
+      "example": "Permanent human habitation on the Moon would require reliable life-support systems.",
+      "collocation": "human habitation",
+      "band": "7-8"
+    },
+    {
+      "word": "astronomy",
+      "pos": "noun",
+      "ipa": "/əˈstrɒnəmi/",
+      "meaningVi": "thiên văn học",
+      "definitionEn": "The scientific study of stars, planets, and the universe.",
+      "example": "Astronomy has benefited greatly from advances in digital imaging.",
+      "collocation": "the field of astronomy",
+      "band": "5-6"
+    },
+    {
+      "word": "observatory",
+      "pos": "noun",
+      "ipa": "/əbˈzɜːvətri/",
+      "meaningVi": "đài quan sát thiên văn",
+      "definitionEn": "A building or facility used for observing astronomical objects.",
+      "example": "The observatory provides researchers with detailed images of distant galaxies.",
+      "collocation": "astronomical observatory",
+      "band": "6-7"
+    },
+    {
+      "word": "telescope",
+      "pos": "noun",
+      "ipa": "/ˈtelɪskəʊp/",
+      "meaningVi": "kính thiên văn",
+      "definitionEn": "An instrument used to observe distant objects in space.",
+      "example": "The telescope detected signs of water vapour in the planet's atmosphere.",
+      "collocation": "space telescope",
+      "band": "5-6"
+    },
+    {
+      "word": "cosmos",
+      "pos": "noun",
+      "ipa": "/ˈkɒzmɒs/",
+      "meaningVi": "vũ trụ",
+      "definitionEn": "The universe considered as an ordered and interconnected system.",
+      "example": "The study of the cosmos raises profound questions about humanity's origins.",
+      "collocation": "the vast cosmos",
+      "band": "7-8"
+    },
+    {
+      "word": "celestial",
+      "pos": "adjective",
+      "ipa": "/səˈlestiəl/",
+      "meaningVi": "thuộc thiên thể",
+      "definitionEn": "Relating to objects or phenomena in the sky or outer space.",
+      "example": "Ancient civilizations carefully recorded celestial movements.",
+      "collocation": "celestial body",
+      "band": "7-8"
+    },
+    {
+      "word": "galaxy",
+      "pos": "noun",
+      "ipa": "/ˈɡæləksi/",
+      "meaningVi": "thiên hà",
+      "definitionEn": "A vast system of stars, gas, and dust held together by gravity.",
+      "example": "The telescope captured evidence of a galaxy forming billions of years ago.",
+      "collocation": "distant galaxy",
+      "band": "6-7"
+    },
+    {
+      "word": "asteroid",
+      "pos": "noun",
+      "ipa": "/ˈæstərɔɪd/",
+      "meaningVi": "tiểu hành tinh",
+      "definitionEn": "A rocky object that travels around the Sun, mainly between Mars and Jupiter.",
+      "example": "Scientists are developing methods to redirect an asteroid approaching Earth.",
+      "collocation": "near-Earth asteroid",
+      "band": "6-7"
+    },
+    {
+      "word": "comet",
+      "pos": "noun",
+      "ipa": "/ˈkɒmɪt/",
+      "meaningVi": "sao chổi",
+      "definitionEn": "An object made of ice and dust that develops a bright tail near the Sun.",
+      "example": "The comet became visible from Earth as it passed close to the Sun.",
+      "collocation": "periodic comet",
+      "band": "6-7"
+    },
+    {
+      "word": "meteorite",
+      "pos": "noun",
+      "ipa": "/ˈmiːtiəraɪt/",
+      "meaningVi": "thiên thạch",
+      "definitionEn": "A piece of rock from space that reaches the surface of a planet.",
+      "example": "The meteorite contained minerals that are rarely found on Earth.",
+      "collocation": "iron meteorite",
+      "band": "6-7"
+    },
+    {
+      "word": "lunar",
+      "pos": "adjective",
+      "ipa": "/ˈluːnə/",
+      "meaningVi": "thuộc Mặt Trăng",
+      "definitionEn": "Relating to the Moon.",
+      "example": "Several countries are investing in lunar research stations.",
+      "collocation": "lunar surface",
+      "band": "6-7"
+    },
+    {
+      "word": "planetary",
+      "pos": "adjective",
+      "ipa": "/ˈplænətri/",
+      "meaningVi": "thuộc hành tinh",
+      "definitionEn": "Relating to a planet or to planets as a group.",
+      "example": "Planetary science helps explain how solar systems develop.",
+      "collocation": "planetary system",
+      "band": "6-7"
+    },
+    {
+      "word": "gravity",
+      "pos": "noun",
+      "ipa": "/ˈɡrævəti/",
+      "meaningVi": "lực hấp dẫn",
+      "definitionEn": "The force that attracts objects towards one another.",
+      "example": "Reduced gravity can cause serious health problems during long missions.",
+      "collocation": "reduced gravity",
+      "band": "5-6"
+    },
+    {
+      "word": "microgravity",
+      "pos": "noun",
+      "ipa": "/ˈmaɪkrəʊˌɡrævəti/",
+      "meaningVi": "vi trọng lực",
+      "definitionEn": "A condition in which gravity is extremely weak, as in orbit.",
+      "example": "Experiments in microgravity have improved scientists' understanding of human biology.",
+      "collocation": "microgravity research",
+      "band": "7-8"
+    },
+    {
+      "word": "radiation",
+      "pos": "noun",
+      "ipa": "/ˌreɪdiˈeɪʃən/",
+      "meaningVi": "bức xạ",
+      "definitionEn": "Energy emitted as waves or particles from a source.",
+      "example": "Cosmic radiation poses a significant risk to astronauts on long missions.",
+      "collocation": "cosmic radiation",
+      "band": "6-7"
+    },
+    {
+      "word": "atmosphere",
+      "pos": "noun",
+      "ipa": "/ˈætməsfɪə/",
+      "meaningVi": "khí quyển",
+      "definitionEn": "The layer of gases surrounding a planet.",
+      "example": "The spacecraft entered the atmosphere at an extremely high speed.",
+      "collocation": "planetary atmosphere",
+      "band": "5-6"
+    },
+    {
+      "word": "exoplanet",
+      "pos": "noun",
+      "ipa": "/ˈeksəʊˌplænɪt/",
+      "meaningVi": "ngoại hành tinh",
+      "definitionEn": "A planet orbiting a star outside our solar system.",
+      "example": "The exoplanet appears to have conditions that could support liquid water.",
+      "collocation": "potentially habitable exoplanet",
+      "band": "7-8"
+    },
+    {
+      "word": "biosignature",
+      "pos": "noun",
+      "ipa": "/ˌbaɪəʊˈsɪɡnətʃə/",
+      "meaningVi": "dấu hiệu sinh học",
+      "definitionEn": "A sign that may indicate the presence of past or present life.",
+      "example": "The probe was designed to identify a biosignature in Martian soil.",
+      "collocation": "potential biosignature",
+      "band": "8+"
+    },
+    {
+      "word": "colonisation",
+      "pos": "noun",
+      "ipa": "/ˌkɒlənaɪˈzeɪʃən/",
+      "meaningVi": "sự định cư thuộc địa",
+      "definitionEn": "The process of establishing a permanent human presence in another place.",
+      "example": "The colonisation of Mars remains technologically and ethically controversial.",
+      "collocation": "space colonisation",
+      "band": "8+"
+    },
+    {
+      "word": "settlement",
+      "pos": "noun",
+      "ipa": "/ˈsetlmənt/",
+      "meaningVi": "khu định cư",
+      "definitionEn": "A place where people establish a permanent community.",
+      "example": "A lunar settlement would need dependable supplies of water and energy.",
+      "collocation": "permanent settlement",
+      "band": "6-7"
+    },
+    {
+      "word": "rover",
+      "pos": "noun",
+      "ipa": "/ˈrəʊvə/",
+      "meaningVi": "xe tự hành thám hiểm",
+      "definitionEn": "A vehicle designed to travel across the surface of a planet or moon.",
+      "example": "The rover transmitted photographs of previously unexplored terrain.",
+      "collocation": "Mars rover",
+      "band": "6-7"
+    },
+    {
+      "word": "probe",
+      "pos": "noun",
+      "ipa": "/prəʊb/",
+      "meaningVi": "tàu thăm dò",
+      "definitionEn": "An unmanned spacecraft sent to investigate a celestial object.",
+      "example": "The probe gathered valuable data about the planet's magnetic field.",
+      "collocation": "space probe",
+      "band": "6-7"
+    },
+    {
+      "word": "payload",
+      "pos": "noun",
+      "ipa": "/ˈpeɪləʊd/",
+      "meaningVi": "hàng hóa hoặc thiết bị mang theo",
+      "definitionEn": "The equipment or cargo carried by a rocket or spacecraft.",
+      "example": "The satellite's payload included instruments for measuring atmospheric pollution.",
+      "collocation": "scientific payload",
+      "band": "7-8"
+    },
+    {
+      "word": "docking",
+      "pos": "noun",
+      "ipa": "/ˈdɒkɪŋ/",
+      "meaningVi": "sự kết nối tàu vũ trụ",
+      "definitionEn": "The process of joining one spacecraft to another in space.",
+      "example": "Successful docking is essential when astronauts transfer between spacecraft.",
+      "collocation": "automated docking",
+      "band": "7-8"
+    },
+    {
+      "word": "reentry",
+      "pos": "noun",
+      "ipa": "/ˌriːˈentri/",
+      "meaningVi": "sự trở lại khí quyển",
+      "definitionEn": "The return of a spacecraft into a planet's atmosphere.",
+      "example": "The capsule survived reentry because it was protected by a heat shield.",
+      "collocation": "controlled reentry",
+      "band": "7-8"
+    },
+    {
+      "word": "recoverable",
+      "pos": "adjective",
+      "ipa": "/rɪˈkʌvərəbl/",
+      "meaningVi": "có thể thu hồi",
+      "definitionEn": "Able to be retrieved or used again after a mission.",
+      "example": "Recoverable rockets have significantly reduced the cost of launching satellites.",
+      "collocation": "recoverable rocket",
+      "band": "7-8"
+    },
+    {
+      "word": "commercialisation",
+      "pos": "noun",
+      "ipa": "/kəˌmɜːʃəlaɪˈzeɪʃən/",
+      "meaningVi": "sự thương mại hóa",
+      "definitionEn": "The process of developing an activity or technology for profit.",
+      "example": "The commercialisation of space travel may make access to orbit more affordable.",
+      "collocation": "commercialisation of space",
+      "band": "8+"
+    },
+    {
+      "word": "innovation",
+      "pos": "noun",
+      "ipa": "/ˌɪnəˈveɪʃən/",
+      "meaningVi": "sự đổi mới",
+      "definitionEn": "A new idea, method, or technology that improves existing practice.",
+      "example": "Innovation in satellite technology has transformed global communication.",
+      "collocation": "technological innovation",
+      "band": "6-7"
+    },
+    {
+      "word": "investment",
+      "pos": "noun",
+      "ipa": "/ɪnˈvestmənt/",
+      "meaningVi": "khoản đầu tư",
+      "definitionEn": "The use of money or resources to achieve future benefits.",
+      "example": "Public investment in space research can generate advances in other industries.",
+      "collocation": "government investment",
+      "band": "5-6"
+    },
+    {
+      "word": "funding",
+      "pos": "noun",
+      "ipa": "/ˈfʌndɪŋ/",
+      "meaningVi": "nguồn tài trợ",
+      "definitionEn": "Money provided for a particular project or activity.",
+      "example": "Stable funding is necessary for long-term exploration programmes.",
+      "collocation": "public funding",
+      "band": "5-6"
+    },
+    {
+      "word": "expenditure",
+      "pos": "noun",
+      "ipa": "/ɪkˈspendɪtʃə/",
+      "meaningVi": "khoản chi tiêu",
+      "definitionEn": "The amount of money spent on a particular purpose.",
+      "example": "Government expenditure on space programmes must be carefully evaluated.",
+      "collocation": "public expenditure",
+      "band": "6-7"
+    },
+    {
+      "word": "allocation",
+      "pos": "noun",
+      "ipa": "/ˌæləˈkeɪʃən/",
+      "meaningVi": "sự phân bổ",
+      "definitionEn": "The process of distributing money or resources for specific purposes.",
+      "example": "The allocation of national resources to space exploration remains controversial.",
+      "collocation": "budget allocation",
+      "band": "6-7"
+    },
+    {
+      "word": "budgetary",
+      "pos": "adjective",
+      "ipa": "/ˈbʌdʒɪtəri/",
+      "meaningVi": "thuộc ngân sách",
+      "definitionEn": "Relating to the planning and use of financial resources.",
+      "example": "Budgetary constraints may prevent poorer countries from joining major missions.",
+      "collocation": "budgetary constraints",
+      "band": "7-8"
+    },
+    {
+      "word": "justify",
+      "pos": "verb",
+      "ipa": "/ˈdʒʌstɪfaɪ/",
+      "meaningVi": "biện minh; chứng minh là hợp lý",
+      "definitionEn": "To give convincing reasons for an action or decision.",
+      "example": "Governments must justify spending billions on exploration when basic needs remain unmet.",
+      "collocation": "justify public spending",
+      "band": "6-7"
+    },
+    {
+      "word": "feasibility",
+      "pos": "noun",
+      "ipa": "/ˌfiːzəˈbɪləti/",
+      "meaningVi": "tính khả thi",
+      "definitionEn": "The extent to which a plan can be successfully carried out.",
+      "example": "A feasibility study is required before approving a permanent lunar base.",
+      "collocation": "technical feasibility",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainability",
+      "pos": "noun",
+      "ipa": "/səˌsteɪnəˈbɪləti/",
+      "meaningVi": "tính bền vững",
+      "definitionEn": "The ability to continue without exhausting resources or causing serious harm.",
+      "example": "The sustainability of space activities depends on responsible resource management.",
+      "collocation": "environmental sustainability",
+      "band": "7-8"
+    },
+    {
+      "word": "geopolitical",
+      "pos": "adjective",
+      "ipa": "/ˌdʒiːəʊpəˈlɪtɪkəl/",
+      "meaningVi": "thuộc địa chính trị",
+      "definitionEn": "Relating to the influence of geography on international politics.",
+      "example": "Space cooperation can reduce geopolitical tensions between rival powers.",
+      "collocation": "geopolitical interests",
+      "band": "8+"
+    },
+    {
+      "word": "debris",
+      "pos": "noun",
+      "ipa": "/ˈdebriː/",
+      "meaningVi": "mảnh vỡ không gian",
+      "definitionEn": "Scattered remains or waste from damaged or abandoned spacecraft.",
+      "example": "Orbital debris threatens both crewed missions and functioning satellites.",
+      "collocation": "orbital debris",
+      "band": "7-8"
+    }
+  ]
+}

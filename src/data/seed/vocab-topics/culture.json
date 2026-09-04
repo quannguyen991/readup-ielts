@@ -1,0 +1,508 @@
+{
+  "slug": "culture",
+  "name": "Culture and Tradition",
+  "nameVi": "Văn hoá",
+  "blurb": "Phong tục, di sản, bản sắc",
+  "words": [
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈherɪtɪdʒ/",
+      "meaningVi": "di sản",
+      "definitionEn": "The legacy of physical and intangible attributes passed down from past generations, often considered valuable for a culture.",
+      "example": "Preserving cultural heritage is essential for maintaining national identity.",
+      "collocation": "cultural heritage",
+      "band": "6-7"
+    },
+    {
+      "word": "tradition",
+      "pos": "noun",
+      "ipa": "/trəˈdɪʃən/",
+      "meaningVi": "truyền thống",
+      "definitionEn": "A long-established custom or belief passed on through generations within a society.",
+      "example": "Many countries have a tradition of celebrating the Lunar New Year.",
+      "collocation": "long-standing tradition",
+      "band": "5-6"
+    },
+    {
+      "word": "custom",
+      "pos": "noun",
+      "ipa": "/ˈkʌstəm/",
+      "meaningVi": "phong tục",
+      "definitionEn": "A traditional and widely accepted way of behaving or doing something specific to a culture.",
+      "example": "It is a local custom to bow when greeting elders.",
+      "collocation": "social custom",
+      "band": "5-6"
+    },
+    {
+      "word": "ritual",
+      "pos": "noun",
+      "ipa": "/ˈrɪtʃuəl/",
+      "meaningVi": "nghi lễ",
+      "definitionEn": "A religious or solemn ceremony consisting of a series of actions performed according to a prescribed order.",
+      "example": "The wedding ritual involves exchanging vows and rings.",
+      "collocation": "religious ritual",
+      "band": "6-7"
+    },
+    {
+      "word": "folklore",
+      "pos": "noun",
+      "ipa": "/ˈfoʊklɔːr/",
+      "meaningVi": "văn hóa dân gian",
+      "definitionEn": "The traditional beliefs, myths, stories, and customs of a community, passed orally through generations.",
+      "example": "Folklore often reflects the values and fears of a society.",
+      "collocation": "rich folklore",
+      "band": "6-7"
+    },
+    {
+      "word": "ethnic",
+      "pos": "adjective",
+      "ipa": "/ˈeθnɪk/",
+      "meaningVi": "thuộc dân tộc",
+      "definitionEn": "Relating to a group of people sharing a common cultural or national background, often distinct from the mainstream.",
+      "example": "Ethnic diversity enriches a nation's cultural landscape.",
+      "collocation": "ethnic minority",
+      "band": "6-7"
+    },
+    {
+      "word": "indigenous",
+      "pos": "adjective",
+      "ipa": "/ɪnˈdɪdʒənəs/",
+      "meaningVi": "bản địa",
+      "definitionEn": "Originating naturally in a particular place; native to a region, especially referring to original inhabitants.",
+      "example": "Indigenous communities have preserved their languages for centuries.",
+      "collocation": "indigenous culture",
+      "band": "7-8"
+    },
+    {
+      "word": "cultural identity",
+      "pos": "noun",
+      "ipa": "/ˈkʌltʃərəl aɪˈdentɪti/",
+      "meaningVi": "bản sắc văn hóa",
+      "definitionEn": "The feeling of belonging to a group with shared cultural characteristics, such as language, customs, and values.",
+      "example": "Globalization can threaten a nation's cultural identity.",
+      "collocation": "preserve cultural identity",
+      "band": "7-8"
+    },
+    {
+      "word": "assimilation",
+      "pos": "noun",
+      "ipa": "/əˌsɪməˈleɪʃən/",
+      "meaningVi": "sự đồng hóa",
+      "definitionEn": "The process by which a minority group adopts the culture of the dominant group, often losing its own distinct traits.",
+      "example": "Assimilation often leads to the loss of traditional customs.",
+      "collocation": "cultural assimilation",
+      "band": "7-8"
+    },
+    {
+      "word": "diversity",
+      "pos": "noun",
+      "ipa": "/daɪˈvɜːrsɪti/",
+      "meaningVi": "sự đa dạng",
+      "definitionEn": "The state of having a variety of different cultural elements, such as ethnicities, languages, and traditions.",
+      "example": "Cultural diversity is a source of innovation and creativity.",
+      "collocation": "cultural diversity",
+      "band": "6-7"
+    },
+    {
+      "word": "multiculturalism",
+      "pos": "noun",
+      "ipa": "/ˌmʌltiˈkʌltʃərəlɪzəm/",
+      "meaningVi": "chủ nghĩa đa văn hóa",
+      "definitionEn": "The coexistence and appreciation of diverse cultures within a society, often promoted by official policy.",
+      "example": "Multiculturalism promotes inclusion and mutual respect.",
+      "collocation": "policy of multiculturalism",
+      "band": "7-8"
+    },
+    {
+      "word": "preservation",
+      "pos": "noun",
+      "ipa": "/ˌprezərˈveɪʃən/",
+      "meaningVi": "sự bảo tồn",
+      "definitionEn": "The act of keeping cultural heritage, sites, or traditions in their original state to prevent decay or loss.",
+      "example": "Preservation of historical sites is crucial for future generations.",
+      "collocation": "cultural preservation",
+      "band": "6-7"
+    },
+    {
+      "word": "intangible",
+      "pos": "adjective",
+      "ipa": "/ɪnˈtændʒəbl/",
+      "meaningVi": "vô hình (phi vật thể)",
+      "definitionEn": "Not able to be touched; referring to cultural elements like practices, knowledge, and oral traditions.",
+      "example": "Intangible cultural heritage includes oral traditions and rituals.",
+      "collocation": "intangible heritage",
+      "band": "7-8"
+    },
+    {
+      "word": "tangible",
+      "pos": "adjective",
+      "ipa": "/ˈtændʒəbl/",
+      "meaningVi": "hữu hình",
+      "definitionEn": "Perceptible by touch; referring to concrete cultural assets like monuments, artifacts, and buildings.",
+      "example": "Tangible cultural assets like monuments and artifacts need protection.",
+      "collocation": "tangible heritage",
+      "band": "7-8"
+    },
+    {
+      "word": "ancestor",
+      "pos": "noun",
+      "ipa": "/ˈænsestər/",
+      "meaningVi": "tổ tiên",
+      "definitionEn": "A person from whom one is descended, often honored in cultural traditions.",
+      "example": "Many cultures hold ceremonies to honor their ancestors.",
+      "collocation": "ancestor worship",
+      "band": "5-6"
+    },
+    {
+      "word": "lineage",
+      "pos": "noun",
+      "ipa": "/ˈlɪniɪdʒ/",
+      "meaningVi": "dòng dõi",
+      "definitionEn": "Direct descent from an ancestor; ancestry, often traced through genealogy.",
+      "example": "Royal lineage is often traced through historical records.",
+      "collocation": "family lineage",
+      "band": "6-7"
+    },
+    {
+      "word": "ethnic group",
+      "pos": "noun",
+      "ipa": "/ˈeθnɪk ɡruːp/",
+      "meaningVi": "nhóm dân tộc",
+      "definitionEn": "A community of people sharing common cultural traits, such as language, religion, and traditions.",
+      "example": "The country is home to numerous ethnic groups, each with its own traditions.",
+      "collocation": "diverse ethnic groups",
+      "band": "6-7"
+    },
+    {
+      "word": "minority",
+      "pos": "noun",
+      "ipa": "/maɪˈnɔːrɪti/",
+      "meaningVi": "thiểu số",
+      "definitionEn": "A smaller group within a society, often with distinct cultural characteristics different from the majority.",
+      "example": "Minority cultures contribute to the nation's cultural mosaic.",
+      "collocation": "ethnic minority",
+      "band": "5-6"
+    },
+    {
+      "word": "mainstream",
+      "pos": "adjective",
+      "ipa": "/ˈmeɪnstriːm/",
+      "meaningVi": "chủ lưu",
+      "definitionEn": "The prevailing current of thought or culture that is widely accepted in a society.",
+      "example": "Mainstream culture often overshadows subcultures.",
+      "collocation": "mainstream society",
+      "band": "6-7"
+    },
+    {
+      "word": "norm",
+      "pos": "noun",
+      "ipa": "/nɔːrm/",
+      "meaningVi": "chuẩn mực",
+      "definitionEn": "A standard or pattern of behavior that is typical or expected within a specific cultural group.",
+      "example": "Cultural norms dictate appropriate behavior in social settings.",
+      "collocation": "social norms",
+      "band": "6-7"
+    },
+    {
+      "word": "value",
+      "pos": "noun",
+      "ipa": "/ˈvæljuː/",
+      "meaningVi": "giá trị",
+      "definitionEn": "Principles or standards of behavior that are considered important in a culture, often guiding actions.",
+      "example": "Traditional values such as respect for elders are deeply ingrained.",
+      "collocation": "core values",
+      "band": "5-6"
+    },
+    {
+      "word": "belief",
+      "pos": "noun",
+      "ipa": "/bɪˈliːf/",
+      "meaningVi": "niềm tin",
+      "definitionEn": "An acceptance that something exists or is true, especially without proof, often rooted in cultural or religious context.",
+      "example": "Religious beliefs often influence cultural practices.",
+      "collocation": "cultural beliefs",
+      "band": "5-6"
+    },
+    {
+      "word": "ceremony",
+      "pos": "noun",
+      "ipa": "/ˈserɪmoʊni/",
+      "meaningVi": "nghi lễ, buổi lễ",
+      "definitionEn": "A formal event performed on a special occasion, often with symbolic meaning.",
+      "example": "The opening ceremony of the festival was spectacular.",
+      "collocation": "traditional ceremony",
+      "band": "5-6"
+    },
+    {
+      "word": "festival",
+      "pos": "noun",
+      "ipa": "/ˈfestɪvəl/",
+      "meaningVi": "lễ hội",
+      "definitionEn": "A day or period of celebration for cultural or religious reasons, often involving music, dance, and food.",
+      "example": "The harvest festival is celebrated with music and dance.",
+      "collocation": "cultural festival",
+      "band": "5-6"
+    },
+    {
+      "word": "rite",
+      "pos": "noun",
+      "ipa": "/raɪt/",
+      "meaningVi": "nghi thức",
+      "definitionEn": "A religious or other solemn ceremony or act, often marking a significant life event.",
+      "example": "The rite of passage marks the transition from childhood to adulthood.",
+      "collocation": "rite of passage",
+      "band": "6-7"
+    },
+    {
+      "word": "symbolic",
+      "pos": "adjective",
+      "ipa": "/sɪmˈbɑːlɪk/",
+      "meaningVi": "mang tính biểu tượng",
+      "definitionEn": "Serving as a symbol, representing a deeper meaning or concept within a culture.",
+      "example": "The dove is symbolic of peace in many cultures.",
+      "collocation": "symbolic meaning",
+      "band": "6-7"
+    },
+    {
+      "word": "artifact",
+      "pos": "noun",
+      "ipa": "/ˈɑːrtɪfækt/",
+      "meaningVi": "đồ tạo tác",
+      "definitionEn": "An object made by a human being, typically of cultural or historical interest, such as a tool or ornament.",
+      "example": "Museums display artifacts from ancient civilizations.",
+      "collocation": "cultural artifact",
+      "band": "6-7"
+    },
+    {
+      "word": "relic",
+      "pos": "noun",
+      "ipa": "/ˈrelɪk/",
+      "meaningVi": "di vật",
+      "definitionEn": "An object surviving from an earlier time, often with religious or cultural significance.",
+      "example": "The relic is believed to have healing powers.",
+      "collocation": "sacred relic",
+      "band": "7-8"
+    },
+    {
+      "word": "monument",
+      "pos": "noun",
+      "ipa": "/ˈmɑːnjumənt/",
+      "meaningVi": "tượng đài, di tích",
+      "definitionEn": "A structure built to commemorate a person or event, often of historical or cultural importance.",
+      "example": "The ancient monument attracts tourists from around the world.",
+      "collocation": "historical monument",
+      "band": "6-7"
+    },
+    {
+      "word": "legacy",
+      "pos": "noun",
+      "ipa": "/ˈleɡəsi/",
+      "meaningVi": "di sản (tinh thần)",
+      "definitionEn": "Something handed down by a predecessor, such as cultural values, traditions, or achievements.",
+      "example": "The legacy of colonial rule still affects cultural attitudes.",
+      "collocation": "cultural legacy",
+      "band": "7-8"
+    },
+    {
+      "word": "heritage conservation",
+      "pos": "noun",
+      "ipa": "/ˈherɪtɪdʒ ˌkɑːnsərˈveɪʃən/",
+      "meaningVi": "bảo tồn di sản",
+      "definitionEn": "The process of preserving cultural heritage, including sites, objects, and traditions, for future generations.",
+      "example": "Heritage conservation requires government funding and public awareness.",
+      "collocation": "heritage conservation efforts",
+      "band": "7-8"
+    },
+    {
+      "word": "cultural exchange",
+      "pos": "noun",
+      "ipa": "/ˈkʌltʃərəl ɪksˈtʃeɪndʒ/",
+      "meaningVi": "giao lưu văn hóa",
+      "definitionEn": "The sharing of ideas, traditions, and customs between different cultures, often through programs or events.",
+      "example": "Cultural exchange programs foster mutual understanding.",
+      "collocation": "international cultural exchange",
+      "band": "6-7"
+    },
+    {
+      "word": "cross-cultural",
+      "pos": "adjective",
+      "ipa": "/krɔːs ˈkʌltʃərəl/",
+      "meaningVi": "xuyên văn hóa",
+      "definitionEn": "Relating to different cultures or comparing them, often focusing on communication and interaction.",
+      "example": "Cross-cultural communication skills are essential in a globalized world.",
+      "collocation": "cross-cultural awareness",
+      "band": "7-8"
+    },
+    {
+      "word": "acculturation",
+      "pos": "noun",
+      "ipa": "/əˌkʌltʃəˈreɪʃən/",
+      "meaningVi": "sự tiếp biến văn hóa",
+      "definitionEn": "The process of adopting the cultural traits of another group, often resulting in a blend of traditions.",
+      "example": "Acculturation can lead to the blending of traditions.",
+      "collocation": "rapid acculturation",
+      "band": "8+"
+    },
+    {
+      "word": "ethnocentrism",
+      "pos": "noun",
+      "ipa": "/ˌeθnoʊˈsentrɪzəm/",
+      "meaningVi": "chủ nghĩa vị chủng tộc",
+      "definitionEn": "The tendency to evaluate other cultures based on one's own cultural standards, often leading to bias.",
+      "example": "Ethnocentrism hinders cross-cultural understanding.",
+      "collocation": "ethnocentric attitude",
+      "band": "8+"
+    },
+    {
+      "word": "cultural relativism",
+      "pos": "noun",
+      "ipa": "/ˈkʌltʃərəl ˈrelətɪvɪzəm/",
+      "meaningVi": "thuyết tương đối văn hóa",
+      "definitionEn": "The principle of understanding a culture on its own terms without judging it by another culture's standards.",
+      "example": "Cultural relativism encourages respect for diverse practices.",
+      "collocation": "approach of cultural relativism",
+      "band": "8+"
+    },
+    {
+      "word": "globalization",
+      "pos": "noun",
+      "ipa": "/ˌɡloʊbəlaɪˈzeɪʃən/",
+      "meaningVi": "toàn cầu hóa",
+      "definitionEn": "The process of increasing interconnectedness among cultures, economies, and societies worldwide.",
+      "example": "Globalization often leads to the erosion of local traditions.",
+      "collocation": "cultural globalization",
+      "band": "7-8"
+    },
+    {
+      "word": "homogenization",
+      "pos": "noun",
+      "ipa": "/həˌmɒdʒənɪˈzeɪʃən/",
+      "meaningVi": "sự đồng nhất hóa",
+      "definitionEn": "The process of making things uniform or similar, often reducing cultural diversity.",
+      "example": "Cultural homogenization threatens the uniqueness of local practices.",
+      "collocation": "cultural homogenization",
+      "band": "8+"
+    },
+    {
+      "word": "authenticity",
+      "pos": "noun",
+      "ipa": "/ˌɔːθenˈtɪsɪti/",
+      "meaningVi": "tính xác thực, chân thực",
+      "definitionEn": "The quality of being genuine or true to a culture, free from artificial or commercial influences.",
+      "example": "Tourists seek authenticity in their cultural experiences.",
+      "collocation": "cultural authenticity",
+      "band": "7-8"
+    },
+    {
+      "word": "revival",
+      "pos": "noun",
+      "ipa": "/rɪˈvaɪvəl/",
+      "meaningVi": "sự phục hưng, hồi sinh",
+      "definitionEn": "An improvement in the condition or popularity of something, such as a cultural tradition or art form.",
+      "example": "The revival of traditional crafts has boosted local economies.",
+      "collocation": "cultural revival",
+      "band": "7-8"
+    },
+    {
+      "word": "folk",
+      "pos": "adjective",
+      "ipa": "/foʊk/",
+      "meaningVi": "dân gian",
+      "definitionEn": "Traditional and typical of the ordinary people of a country, often passed down orally.",
+      "example": "Folk music often tells stories of everyday life.",
+      "collocation": "folk tradition",
+      "band": "5-6"
+    },
+    {
+      "word": "traditional costume",
+      "pos": "noun",
+      "ipa": "/trəˈdɪʃənəl ˈkɑːstuːm/",
+      "meaningVi": "trang phục truyền thống",
+      "definitionEn": "Clothing that represents a specific culture or region, often worn during festivals or ceremonies.",
+      "example": "Traditional costumes are worn during national holidays.",
+      "collocation": "wearing traditional costume",
+      "band": "5-6"
+    },
+    {
+      "word": "cuisine",
+      "pos": "noun",
+      "ipa": "/kwɪˈziːn/",
+      "meaningVi": "ẩm thực",
+      "definitionEn": "A style or method of cooking characteristic of a particular region or culture.",
+      "example": "Vietnamese cuisine is known for its fresh ingredients and balance of flavors.",
+      "collocation": "local cuisine",
+      "band": "5-6"
+    },
+    {
+      "word": "oral tradition",
+      "pos": "noun",
+      "ipa": "/ˈɔːrəl trəˈdɪʃən/",
+      "meaningVi": "truyền miệng",
+      "definitionEn": "The passing of cultural knowledge, stories, and customs through spoken word rather than writing.",
+      "example": "Oral tradition preserves the history of indigenous communities.",
+      "collocation": "oral tradition storytelling",
+      "band": "6-7"
+    },
+    {
+      "word": "myth",
+      "pos": "noun",
+      "ipa": "/mɪθ/",
+      "meaningVi": "thần thoại, huyền thoại",
+      "definitionEn": "A traditional story explaining natural or social phenomena, often involving supernatural beings.",
+      "example": "The myth of the creation of the world is central to many cultures.",
+      "collocation": "ancient myth",
+      "band": "6-7"
+    },
+    {
+      "word": "legend",
+      "pos": "noun",
+      "ipa": "/ˈledʒənd/",
+      "meaningVi": "truyền thuyết",
+      "definitionEn": "A traditional story sometimes regarded as historical but not authenticated, often about heroic figures.",
+      "example": "The legend of King Arthur has inspired many works of art.",
+      "collocation": "folk legend",
+      "band": "6-7"
+    },
+    {
+      "word": "superstition",
+      "pos": "noun",
+      "ipa": "/ˌsuːpərˈstɪʃən/",
+      "meaningVi": "mê tín",
+      "definitionEn": "A belief in supernatural causality, often irrational, leading to certain practices or taboos.",
+      "example": "Superstition leads many people to avoid walking under ladders.",
+      "collocation": "local superstition",
+      "band": "6-7"
+    },
+    {
+      "word": "taboo",
+      "pos": "noun",
+      "ipa": "/təˈbuː/",
+      "meaningVi": "điều cấm kỵ",
+      "definitionEn": "A social or religious prohibition against certain actions, words, or topics within a culture.",
+      "example": "In some cultures, discussing death is considered a taboo.",
+      "collocation": "cultural taboo",
+      "band": "7-8"
+    },
+    {
+      "word": "diaspora",
+      "pos": "noun",
+      "ipa": "/daɪˈæspərə/",
+      "meaningVi": "cộng đồng hải ngoại",
+      "definitionEn": "The dispersion of a people from their original homeland, often leading to cultural exchange and adaptation.",
+      "example": "The African diaspora has contributed to global cultural diversity.",
+      "collocation": "diaspora community",
+      "band": "7-8"
+    },
+    {
+      "word": "hybrid",
+      "pos": "adjective",
+      "ipa": "/ˈhaɪbrɪd/",
+      "meaningVi": "lai ghép, pha trộn",
+      "definitionEn": "Referring to a mixture of different cultural elements, resulting in a new, blended form.",
+      "example": "Hybrid cultures emerge from the blending of immigrant traditions.",
+      "collocation": "hybrid identity",
+      "band": "8+"
+    }
+  ]
+}

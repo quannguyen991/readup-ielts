@@ -1,0 +1,508 @@
+{
+  "slug": "technology",
+  "name": "Technology",
+  "nameVi": "Công nghệ",
+  "blurb": "Internet, AI, thiết bị số",
+  "words": [
+    {
+      "word": "algorithm",
+      "pos": "noun",
+      "ipa": "/ˈælɡəˌrɪðəm/",
+      "meaningVi": "thuật toán",
+      "definitionEn": "A set of rules or steps used to solve a problem or perform a computation.",
+      "example": "The recommendation system relies on a sophisticated algorithm to analyze user preferences.",
+      "collocation": "machine learning algorithm",
+      "band": "7-8"
+    },
+    {
+      "word": "artificial intelligence",
+      "pos": "noun",
+      "ipa": "/ˌɑːrtɪˈfɪʃl ɪnˈtelɪdʒəns/",
+      "meaningVi": "trí tuệ nhân tạo",
+      "definitionEn": "The simulation of human intelligence by machines, especially computer systems.",
+      "example": "Artificial intelligence is transforming industries such as healthcare and finance.",
+      "collocation": "advancements in artificial intelligence",
+      "band": "7-8"
+    },
+    {
+      "word": "automation",
+      "pos": "noun",
+      "ipa": "/ˌɔːtəˈmeɪʃn/",
+      "meaningVi": "tự động hóa",
+      "definitionEn": "The use of technology to perform tasks without human intervention.",
+      "example": "Automation has significantly increased production efficiency in manufacturing plants.",
+      "collocation": "industrial automation",
+      "band": "6-7"
+    },
+    {
+      "word": "bandwidth",
+      "pos": "noun",
+      "ipa": "/ˈbændwɪdθ/",
+      "meaningVi": "băng thông",
+      "definitionEn": "The maximum rate of data transfer across a network connection.",
+      "example": "High bandwidth is essential for streaming high-definition video without buffering.",
+      "collocation": "limited bandwidth",
+      "band": "6-7"
+    },
+    {
+      "word": "biocomputing",
+      "pos": "noun",
+      "ipa": "/ˌbaɪoʊkəmˈpjuːtɪŋ/",
+      "meaningVi": "tin sinh học (dùng hệ thống sinh học để tính toán)",
+      "definitionEn": "The use of biological systems, such as DNA or cells, to perform computational tasks.",
+      "example": "Biocomputing holds promise for creating ultra-efficient processors that mimic living organisms.",
+      "collocation": "biocomputing research",
+      "band": "8+"
+    },
+    {
+      "word": "blockchain",
+      "pos": "noun",
+      "ipa": "/ˈblɑːktʃeɪn/",
+      "meaningVi": "chuỗi khối (công nghệ sổ cái phân tán)",
+      "definitionEn": "A decentralized digital ledger that records transactions across multiple computers.",
+      "example": "Blockchain technology ensures transparency and security in cryptocurrency transactions.",
+      "collocation": "blockchain network",
+      "band": "7-8"
+    },
+    {
+      "word": "cloud computing",
+      "pos": "noun",
+      "ipa": "/klaʊd kəmˈpjuːtɪŋ/",
+      "meaningVi": "điện toán đám mây",
+      "definitionEn": "The delivery of computing services—including storage, processing, and software—over the internet.",
+      "example": "Many businesses now rely on cloud computing to reduce infrastructure costs.",
+      "collocation": "cloud computing services",
+      "band": "7-8"
+    },
+    {
+      "word": "cybersecurity",
+      "pos": "noun",
+      "ipa": "/ˌsaɪbərsɪˈkjʊrəti/",
+      "meaningVi": "an ninh mạng",
+      "definitionEn": "The practice of protecting systems, networks, and data from digital attacks.",
+      "example": "Cybersecurity measures are critical to prevent data breaches and identity theft.",
+      "collocation": "cybersecurity threats",
+      "band": "6-7"
+    },
+    {
+      "word": "data mining",
+      "pos": "noun",
+      "ipa": "/ˈdeɪtə ˌmaɪnɪŋ/",
+      "meaningVi": "khai thác dữ liệu",
+      "definitionEn": "The process of analyzing large datasets to discover patterns and useful information.",
+      "example": "Data mining helps retailers identify customer purchasing trends and tailor marketing strategies.",
+      "collocation": "data mining techniques",
+      "band": "7-8"
+    },
+    {
+      "word": "digital divide",
+      "pos": "noun",
+      "ipa": "/ˈdɪdʒɪtl dɪˈvaɪd/",
+      "meaningVi": "khoảng cách số (chênh lệch về tiếp cận công nghệ)",
+      "definitionEn": "The gap between those who have access to modern information technology and those who do not.",
+      "example": "Bridging the digital divide requires investment in rural internet infrastructure.",
+      "collocation": "narrow the digital divide",
+      "band": "6-7"
+    },
+    {
+      "word": "encryption",
+      "pos": "noun",
+      "ipa": "/ɪnˈkrɪpʃn/",
+      "meaningVi": "mã hóa",
+      "definitionEn": "The process of converting data into a coded form to prevent unauthorized access.",
+      "example": "End-to-end encryption ensures that only the sender and receiver can read the messages.",
+      "collocation": "encryption technology",
+      "band": "6-7"
+    },
+    {
+      "word": "facial recognition",
+      "pos": "noun",
+      "ipa": "/ˈfeɪʃl ˌrekəɡˈnɪʃn/",
+      "meaningVi": "nhận dạng khuôn mặt",
+      "definitionEn": "A biometric technology that identifies or verifies a person using their facial features.",
+      "example": "Facial recognition systems are increasingly used for airport security and smartphone unlocking.",
+      "collocation": "facial recognition software",
+      "band": "6-7"
+    },
+    {
+      "word": "firewall",
+      "pos": "noun",
+      "ipa": "/ˈfaɪərwɔːl/",
+      "meaningVi": "tường lửa",
+      "definitionEn": "A security system that monitors and controls incoming and outgoing network traffic.",
+      "example": "A properly configured firewall can prevent unauthorized access to a corporate network.",
+      "collocation": "configure a firewall",
+      "band": "6-7"
+    },
+    {
+      "word": "gadget",
+      "pos": "noun",
+      "ipa": "/ˈɡædʒɪt/",
+      "meaningVi": "thiết bị điện tử nhỏ",
+      "definitionEn": "A small electronic device with a specific function, often portable.",
+      "example": "Wearable gadgets like smartwatches have become popular for tracking health metrics.",
+      "collocation": "latest gadget",
+      "band": "5-6"
+    },
+    {
+      "word": "hack",
+      "pos": "verb",
+      "ipa": "/hæk/",
+      "meaningVi": "xâm nhập trái phép (hệ thống máy tính)",
+      "definitionEn": "To gain unauthorized access to a computer system or network.",
+      "example": "Cybercriminals managed to hack the company’s database and steal sensitive information.",
+      "collocation": "hack into a system",
+      "band": "5-6"
+    },
+    {
+      "word": "innovation",
+      "pos": "noun",
+      "ipa": "/ˌɪnəˈveɪʃn/",
+      "meaningVi": "đổi mới, sáng tạo",
+      "definitionEn": "A new idea, method, or product that brings significant improvement.",
+      "example": "Technological innovation drives economic growth and improves quality of life.",
+      "collocation": "technological innovation",
+      "band": "6-7"
+    },
+    {
+      "word": "interface",
+      "pos": "noun",
+      "ipa": "/ˈɪntərfeɪs/",
+      "meaningVi": "giao diện",
+      "definitionEn": "A point of interaction between a user and a computer system, or between two systems.",
+      "example": "A user-friendly interface is crucial for the widespread adoption of software applications.",
+      "collocation": "user interface",
+      "band": "6-7"
+    },
+    {
+      "word": "internet of things",
+      "pos": "noun",
+      "ipa": "/ˈɪntərnet əv ˈθɪŋz/",
+      "meaningVi": "Internet vạn vật",
+      "definitionEn": "The network of physical devices embedded with sensors and software to exchange data.",
+      "example": "The Internet of Things enables smart homes to automatically adjust lighting and temperature.",
+      "collocation": "Internet of Things devices",
+      "band": "7-8"
+    },
+    {
+      "word": "latency",
+      "pos": "noun",
+      "ipa": "/ˈleɪtənsi/",
+      "meaningVi": "độ trễ",
+      "definitionEn": "The time delay between a user's action and the system's response.",
+      "example": "Low latency is critical for real-time applications such as online gaming and video conferencing.",
+      "collocation": "low latency",
+      "band": "7-8"
+    },
+    {
+      "word": "malware",
+      "pos": "noun",
+      "ipa": "/ˈmælweər/",
+      "meaningVi": "phần mềm độc hại",
+      "definitionEn": "Software designed to disrupt, damage, or gain unauthorized access to a computer system.",
+      "example": "Installing antivirus software helps protect against various types of malware.",
+      "collocation": "malware attack",
+      "band": "6-7"
+    },
+    {
+      "word": "network",
+      "pos": "noun",
+      "ipa": "/ˈnetwɜːrk/",
+      "meaningVi": "mạng lưới, mạng",
+      "definitionEn": "A group of interconnected computers or devices that can communicate and share resources.",
+      "example": "A reliable network infrastructure is essential for seamless remote work.",
+      "collocation": "network infrastructure",
+      "band": "5-6"
+    },
+    {
+      "word": "quantum computing",
+      "pos": "noun",
+      "ipa": "/ˈkwɑːntəm kəmˈpjuːtɪŋ/",
+      "meaningVi": "điện toán lượng tử",
+      "definitionEn": "A type of computing that uses quantum-mechanical phenomena to process information.",
+      "example": "Quantum computing has the potential to solve complex problems that are beyond classical computers.",
+      "collocation": "quantum computing research",
+      "band": "8+"
+    },
+    {
+      "word": "robotics",
+      "pos": "noun",
+      "ipa": "/roʊˈbɑːtɪks/",
+      "meaningVi": "người máy, robot học",
+      "definitionEn": "The branch of technology that deals with the design, construction, and operation of robots.",
+      "example": "Advancements in robotics have revolutionized manufacturing and healthcare industries.",
+      "collocation": "robotics engineering",
+      "band": "7-8"
+    },
+    {
+      "word": "server",
+      "pos": "noun",
+      "ipa": "/ˈsɜːrvər/",
+      "meaningVi": "máy chủ",
+      "definitionEn": "A computer or system that provides data, services, or resources to other computers over a network.",
+      "example": "The company’s server crashed due to an unexpected surge in traffic.",
+      "collocation": "web server",
+      "band": "5-6"
+    },
+    {
+      "word": "virtual reality",
+      "pos": "noun",
+      "ipa": "/ˈvɜːrtʃuəl riˈæləti/",
+      "meaningVi": "thực tế ảo",
+      "definitionEn": "A simulated experience created by computer technology that immerses users in a 3D environment.",
+      "example": "Virtual reality is increasingly used in education to provide immersive learning experiences.",
+      "collocation": "virtual reality headset",
+      "band": "6-7"
+    },
+    {
+      "word": "accessibility",
+      "pos": "noun",
+      "ipa": "/əkˌsesəˈbɪləti/",
+      "meaningVi": "khả năng tiếp cận công nghệ",
+      "definitionEn": "The quality of being easy for people to use or access, including those with disabilities.",
+      "example": "Improving the accessibility of digital services can reduce social exclusion.",
+      "collocation": "digital accessibility",
+      "band": "6-7"
+    },
+    {
+      "word": "adaptability",
+      "pos": "noun",
+      "ipa": "/əˌdæptəˈbɪləti/",
+      "meaningVi": "khả năng thích nghi",
+      "definitionEn": "The ability to adjust effectively to new technologies or changing circumstances.",
+      "example": "Adaptability is increasingly valued as workplaces adopt new digital tools.",
+      "collocation": "technological adaptability",
+      "band": "7-8"
+    },
+    {
+      "word": "anonymity",
+      "pos": "noun",
+      "ipa": "/ˌænəˈnɪməti/",
+      "meaningVi": "tính ẩn danh",
+      "definitionEn": "The condition of having one's identity concealed online.",
+      "example": "Online anonymity can encourage users to express controversial opinions more freely.",
+      "collocation": "preserve online anonymity",
+      "band": "7-8"
+    },
+    {
+      "word": "augment",
+      "pos": "verb",
+      "ipa": "/ɔːɡˈment/",
+      "meaningVi": "tăng cường, bổ trợ",
+      "definitionEn": "To improve or expand something by adding a technological component.",
+      "example": "Digital tools can augment teachers' ability to provide individualised feedback.",
+      "collocation": "augment human capabilities",
+      "band": "7-8"
+    },
+    {
+      "word": "biometric",
+      "pos": "adjective",
+      "ipa": "/ˌbaɪəˈmetrɪk/",
+      "meaningVi": "thuộc sinh trắc học",
+      "definitionEn": "Relating to the use of distinctive physical or behavioural characteristics for identification.",
+      "example": "Biometric authentication may provide stronger protection than conventional passwords.",
+      "collocation": "biometric authentication",
+      "band": "7-8"
+    },
+    {
+      "word": "browser",
+      "pos": "noun",
+      "ipa": "/ˈbraʊzə/",
+      "meaningVi": "trình duyệt",
+      "definitionEn": "A software application used to access and view online content.",
+      "example": "A modern browser enables users to access educational resources on a wide range of devices.",
+      "collocation": "web browser",
+      "band": "5-6"
+    },
+    {
+      "word": "convergence",
+      "pos": "noun",
+      "ipa": "/kənˈvɜːdʒəns/",
+      "meaningVi": "sự hội tụ công nghệ",
+      "definitionEn": "The combination of previously separate technologies, services, or functions.",
+      "example": "The convergence of communication and entertainment technologies has changed consumer behaviour.",
+      "collocation": "technological convergence",
+      "band": "8+"
+    },
+    {
+      "word": "digitisation",
+      "pos": "noun",
+      "ipa": "/ˌdɪdʒɪtaɪˈzeɪʃən/",
+      "meaningVi": "quá trình số hoá",
+      "definitionEn": "The process of converting information or processes into digital form.",
+      "example": "The digitisation of public records has made government services more efficient.",
+      "collocation": "the digitisation of services",
+      "band": "7-8"
+    },
+    {
+      "word": "digital literacy",
+      "pos": "noun",
+      "ipa": "/ˌdɪdʒɪtl ˈlɪtərəsi/",
+      "meaningVi": "năng lực sử dụng công nghệ số",
+      "definitionEn": "The ability to use digital tools effectively, critically, and responsibly.",
+      "example": "Digital literacy should be taught alongside traditional reading and writing skills.",
+      "collocation": "develop digital literacy",
+      "band": "6-7"
+    },
+    {
+      "word": "disinformation",
+      "pos": "noun",
+      "ipa": "/ˌdɪsɪnfəˈmeɪʃən/",
+      "meaningVi": "thông tin sai lệch có chủ đích",
+      "definitionEn": "False information deliberately created and spread to mislead people.",
+      "example": "Disinformation can undermine public trust during elections and health emergencies.",
+      "collocation": "spread disinformation",
+      "band": "7-8"
+    },
+    {
+      "word": "e-commerce",
+      "pos": "noun",
+      "ipa": "/ˈiː ˌkɒmɜːs/",
+      "meaningVi": "thương mại điện tử",
+      "definitionEn": "The buying and selling of goods or services through digital channels.",
+      "example": "E-commerce has enabled small businesses to reach customers beyond their local markets.",
+      "collocation": "e-commerce platform",
+      "band": "6-7"
+    },
+    {
+      "word": "e-waste",
+      "pos": "noun",
+      "ipa": "/ˈiː weɪst/",
+      "meaningVi": "rác thải điện tử",
+      "definitionEn": "Discarded electronic devices and components that are no longer wanted or usable.",
+      "example": "Governments need stricter regulations to prevent e-waste from contaminating soil and water.",
+      "collocation": "electronic e-waste recycling",
+      "band": "6-7"
+    },
+    {
+      "word": "immersive",
+      "pos": "adjective",
+      "ipa": "/ɪˈmɜːsɪv/",
+      "meaningVi": "mang tính nhập vai",
+      "definitionEn": "Creating a strong sense of involvement in a digitally produced environment or experience.",
+      "example": "Immersive educational applications can make complex scientific concepts easier to understand.",
+      "collocation": "immersive digital experience",
+      "band": "7-8"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪnfrəˌstrʌktʃə/",
+      "meaningVi": "cơ sở hạ tầng công nghệ",
+      "definitionEn": "The basic physical and digital systems needed for technological services to operate.",
+      "example": "Rural regions require reliable digital infrastructure to participate in the modern economy.",
+      "collocation": "digital infrastructure",
+      "band": "6-7"
+    },
+    {
+      "word": "interoperability",
+      "pos": "noun",
+      "ipa": "/ˌɪntərˌɒpərəˈbɪləti/",
+      "meaningVi": "khả năng liên thông",
+      "definitionEn": "The ability of different technological systems to exchange and use information effectively.",
+      "example": "Interoperability between medical databases could improve the continuity of patient care.",
+      "collocation": "system interoperability",
+      "band": "8+"
+    },
+    {
+      "word": "personalisation",
+      "pos": "noun",
+      "ipa": "/ˌpɜːsənəlaɪˈzeɪʃən/",
+      "meaningVi": "sự cá nhân hoá",
+      "definitionEn": "The process of tailoring digital content or services to an individual's preferences.",
+      "example": "Personalisation allows online platforms to recommend content that matches users' interests.",
+      "collocation": "content personalisation",
+      "band": "7-8"
+    },
+    {
+      "word": "platform",
+      "pos": "noun",
+      "ipa": "/ˈplætfɔːm/",
+      "meaningVi": "nền tảng số",
+      "definitionEn": "A digital service or system that enables users to perform activities or interact with others.",
+      "example": "A well-regulated platform can help independent creators distribute their work globally.",
+      "collocation": "social media platform",
+      "band": "5-6"
+    },
+    {
+      "word": "privacy",
+      "pos": "noun",
+      "ipa": "/ˈprɪvəsi/",
+      "meaningVi": "quyền riêng tư",
+      "definitionEn": "The right to keep personal information and activities protected from unwanted observation.",
+      "example": "Consumers are increasingly concerned about privacy when using free digital services.",
+      "collocation": "protect user privacy",
+      "band": "5-6"
+    },
+    {
+      "word": "proliferation",
+      "pos": "noun",
+      "ipa": "/prəˌlɪfəˈreɪʃən/",
+      "meaningVi": "sự gia tăng nhanh chóng",
+      "definitionEn": "A rapid and widespread increase in the number or use of something.",
+      "example": "The proliferation of smartphones has transformed how people access information.",
+      "collocation": "the proliferation of devices",
+      "band": "8+"
+    },
+    {
+      "word": "surveillance",
+      "pos": "noun",
+      "ipa": "/səˈveɪləns/",
+      "meaningVi": "sự giám sát",
+      "definitionEn": "The continuous observation or monitoring of people, activities, or information.",
+      "example": "The widespread use of digital surveillance raises serious questions about civil liberties.",
+      "collocation": "mass surveillance",
+      "band": "7-8"
+    },
+    {
+      "word": "telecommuting",
+      "pos": "noun",
+      "ipa": "/ˌtelikəˈmjuːtɪŋ/",
+      "meaningVi": "làm việc từ xa",
+      "definitionEn": "Working from home or another location by using digital communication technologies.",
+      "example": "Telecommuting can reduce commuting emissions, although it may blur work-life boundaries.",
+      "collocation": "remote telecommuting",
+      "band": "6-7"
+    },
+    {
+      "word": "upskill",
+      "pos": "verb",
+      "ipa": "/ˌʌpˈskɪl/",
+      "meaningVi": "nâng cao kỹ năng",
+      "definitionEn": "To learn new skills in order to remain effective in a changing workplace.",
+      "example": "Employees must upskill regularly as digital technologies reshape existing occupations.",
+      "collocation": "upskill the workforce",
+      "band": "6-7"
+    },
+    {
+      "word": "user-generated content",
+      "pos": "noun",
+      "ipa": "/ˌjuːzə ˌdʒenəreɪtɪd ˈkɒntent/",
+      "meaningVi": "nội dung do người dùng tạo",
+      "definitionEn": "Material such as posts, reviews, or videos produced by users rather than organisations.",
+      "example": "User-generated content has become an influential source of product information.",
+      "collocation": "moderate user-generated content",
+      "band": "7-8"
+    },
+    {
+      "word": "ubiquitous",
+      "pos": "adjective",
+      "ipa": "/juːˈbɪkwɪtəs/",
+      "meaningVi": "phổ biến ở khắp nơi",
+      "definitionEn": "Present or encountered almost everywhere.",
+      "example": "Internet access has become ubiquitous in urban areas, but rural communities remain underserved.",
+      "collocation": "ubiquitous digital technology",
+      "band": "8+"
+    },
+    {
+      "word": "wearable technology",
+      "pos": "noun",
+      "ipa": "/ˌweərəbl tekˈnɒlədʒi/",
+      "meaningVi": "công nghệ thiết bị đeo",
+      "definitionEn": "Electronic devices designed to be worn and used to collect or display information.",
+      "example": "Wearable technology can help individuals monitor their physical activity and overall health.",
+      "collocation": "wearable technology device",
+      "band": "6-7"
+    }
+  ]
+}

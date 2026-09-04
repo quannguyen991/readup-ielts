@@ -1,19 +1,12 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { router } from 'expo-router';
 import * as Speech from 'expo-speech';
 
 import { Grid } from '@/components/layout/Grid';
+import { VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { Screen } from '@/components/layout/Screen';
-import {
-  Badge,
-  Button,
-  Card,
-  Icon,
-  IconButton,
-  ProgressBar,
-  SectionHeader,
-  StatCard,
-} from '@/components/ui';
+import { Badge, Button, Card, HeroBanner, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
 import { color, wordStatusColor } from '@/theme/tokens';
@@ -68,14 +61,11 @@ export default function VocabularyScreen() {
 
   return (
     <Screen>
-      <View className="flex-row flex-wrap items-center justify-between gap-3">
-        <View>
-          <Text className="font-heavy text-pageTitle text-ink">Vocabulary</Text>
-          <Text className="mt-1 font-sans text-body text-muted">
-            Mỗi từ lưu kèm nguyên câu gặp nó. Ôn theo FSRS nên bạn chỉ gặp lại đúng lúc sắp quên.
-          </Text>
-        </View>
-
+      <HeroBanner
+        title="Vocabulary"
+        subtitle="Mỗi từ lưu kèm nguyên câu gặp nó. Ôn theo FSRS nên bạn chỉ gặp lại đúng lúc sắp quên."
+        illustration="vocabulary-hero"
+      >
         <View className="flex-row gap-2">
           <Button
             label="Danh sách"
@@ -90,7 +80,7 @@ export default function VocabularyScreen() {
             onPress={() => setTab('review')}
           />
         </View>
-      </View>
+      </HeroBanner>
 
       <View className="mt-4">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
@@ -140,12 +130,38 @@ export default function VocabularyScreen() {
             ))}
 
             {words.length === 0 ? (
-              <View className="items-center rounded-panel bg-surfaceAlt px-4 py-10">
+              /*
+                Trạng thái rỗng phải CHO MỘT ĐƯỜNG ĐI, không chỉ giải thích vì
+                sao nó rỗng. Bản trước bảo người dùng đi mở Library rồi chạm vào
+                từng từ — đúng, nhưng đó là việc của ngày thứ ba, không phải của
+                phút đầu tiên. Bộ từ theo chủ đề lấp đúng khoảng đó.
+              */
+              <View className="items-center rounded-panel bg-surfaceAlt px-4 py-8">
                 <Icon name="letters" size={32} color={color.subtle} />
                 <Text className="mt-3 text-center font-sans text-body text-muted">
-                  Sổ từ đang trống. Mở một bài trong Library, chạm vào từ bất kỳ rồi bấm “Lưu vào sổ
-                  từ”.
+                  Sổ từ đang trống — và không cần trống lâu.
                 </Text>
+                <Text className="mt-1 max-w-[420px] text-center font-sans text-label text-subtle">
+                  {VOCAB_TOPIC_TOTALS.topics > 0
+                    ? `Lấy sẵn một bộ ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ IELTS chia theo ${VOCAB_TOPIC_TOTALS.topics} chủ đề, hoặc mở một bài trong Library rồi chạm vào từ bất kỳ.`
+                    : 'Mở một bài trong Library, chạm vào từ bất kỳ rồi bấm “Lưu vào sổ từ”.'}
+                </Text>
+                <View className="mt-4 flex-row flex-wrap justify-center gap-2">
+                  {/* Nút chỉ hiện khi kho chủ đề thật sự có bộ nào. Mời người
+                      dùng vào một trang trống là lời hứa hỏng ngay tại chỗ. */}
+                  {VOCAB_TOPIC_TOTALS.topics > 0 ? (
+                    <Button
+                      label="Chọn bộ từ theo chủ đề"
+                      iconRight="arrow-right"
+                      onPress={() => router.push('/vocabulary/topics' as never)}
+                    />
+                  ) : null}
+                  <Button
+                    label="Mở kho bài đọc"
+                    variant="outline"
+                    onPress={() => router.push('/library' as never)}
+                  />
+                </View>
               </View>
             ) : null}
           </View>
