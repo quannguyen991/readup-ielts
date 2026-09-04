@@ -1,0 +1,294 @@
+/**
+ * Bốn gói: Free · Plus · Pro · Max.
+ *
+ * NGUYÊN TẮC CHIA GÓI — chặn theo CHI PHÍ THẬT, không chặn bừa để ép nâng cấp.
+ * App này có hai loại tính năng với hai cấu trúc chi phí khác hẳn nhau:
+ *
+ *   Chi phí biến đổi THẬT  — mọi thứ gọi AI: chấm Writing (`/api/writing/evaluate`),
+ *                            bài mẫu (`/api/writing/model-essay`), chatbox
+ *                            (`/api/chat`). Mỗi lượt dùng là tiền ra khỏi túi.
+ *   Chi phí gần bằng 0     — SAT Math (sinh bằng code), kho bài đọc đã cào sẵn,
+ *                            FSRS, thống kê, đồng bộ.
+ *
+ * Từ đó ra đúng hai bậc thang, và ba gói trả tiền nằm trên hai bậc đó:
+ *
+ *   Free → Plus  : mở hết NỘI DUNG (chi phí ~0, nên mở sớm và mở hẳn)
+ *   Plus → Pro   : thêm TRỢ GIẢNG AI (chatbox, bài mẫu)
+ *   Pro  → Max   : cùng tính năng, NHIỀU AI HƠN gấp sáu + hỗ trợ ưu tiên
+ *
+ * CẬP NHẬT 03/09/2026 — Max không còn "không có gì độc quyền ngoài hỗ trợ ưu
+ * tiên" như nguyên tắc gốc ghi. Bản gốc đúng lúc mới ra mắt, nhưng giờ Max còn
+ * độc quyền một trục KHÔNG PHẢI TÍNH NĂNG PHẦN MỀM: bậc GIẢM GIÁ SÂU NHẤT khi
+ * mua theo nhóm (`groupBuy.ts`) — 10 người mua Max theo năm giảm tới 30%, sâu
+ * hơn hẳn Plus (20%) và Pro (25%). Đây vẫn tuân đúng tinh thần nguyên tắc gốc:
+ * không bịa ra một feature không ai implement — group-buy là cơ chế THẬT, chạy
+ * qua đúng luồng QR thủ công đang có, không phải một dòng quảng cáo suông.
+ *
+ * NGÂN SÁCH AI vẫn là trục khác biệt chính giữa ba gói trả tiền — không đổi.
+ *
+ * Gói Free được dùng THẬT, không phải bản demo: trọn bài chẩn đoán, trọn chặng
+ * Đại số (25 bộ đề, hơn 500 câu), 5 bài đọc mỗi ngày, 3 lượt chấm AI để biết nó
+ * chấm ra sao. Bản Free chỉ đủ để nhìn thì người ta gỡ app trước khi kịp thấy
+ * giá trị — CỐ Ý KHÔNG CẮT GÌ THÊM Ở ĐÂY dù đợt tăng giá 03/09/2026 này có mục
+ * tiêu đẩy người dùng lên Max: phần "cắt bớt" dồn hết vào Plus và Pro (xem lịch
+ * sử ai_calls_per_month bên dưới), Free giữ nguyên như một ranh giới đã chốt.
+ *
+ * ĐỒNG BỘ NHIỀU THIẾT BỊ KHÔNG BỊ KHOÁ Ở GÓI NÀO. Nó gần như không tốn gì, mà
+ * lại là thứ khiến người dùng ở lại — khoá nó là tự bắn vào chân mình.
+ */
+
+import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
+
+export type PlanId = 'free' | 'plus' | 'pro' | 'max';
+
+/**
+ * Tính năng bật/tắt theo gói.
+ *
+ * Đặt tên theo THỨ NGƯỜI DÙNG LÀM ĐƯỢC, không theo tên màn hình. Màn hình đổi
+ * tên liên tục, còn "mở khoá toàn bộ lộ trình Math" thì không.
+ *
+ * MỖI TÊN Ở ĐÂY PHẢI CÓ CODE CHẠY ĐƯỢC ĐỨNG SAU. Bản trước có
+ * `ai_explanations` nằm trong danh sách và hiện trên bảng so sánh, nhưng không
+ * có endpoint nào cài nó — bán một thứ không tồn tại. Đã bỏ.
+ */
+export type Feature =
+  | 'math_all_stages'
+  | 'math_unlimited_mock'
+  | 'reading_unlimited'
+  | 'vocab_unlimited'
+  | 'writing_offline_grading'
+  | 'writing_ai_grading'
+  | 'model_essays'
+  | 'ai_chat'
+  | 'priority_support';
+
+/** Hạn mức đếm theo chu kỳ. `null` nghĩa là không giới hạn. */
+export type Quota = 'reading_per_day' | 'mock_per_week' | 'ai_calls_per_month' | 'vocab_total';
+
+export type QuotaPeriod = 'day' | 'week' | 'month' | 'forever';
+
+export const QUOTA_PERIOD: Record<Quota, QuotaPeriod> = {
+  reading_per_day: 'day',
+  mock_per_week: 'week',
+  ai_calls_per_month: 'month',
+  vocab_total: 'forever',
+};
+
+export const QUOTA_LABEL: Record<Quota, string> = {
+  reading_per_day: 'bài đọc mỗi ngày',
+  mock_per_week: 'lượt thi thử mỗi tuần',
+  ai_calls_per_month: 'lượt dùng AI mỗi tháng',
+  vocab_total: 'từ trong sổ từ',
+};
+
+export type Plan = {
+  id: PlanId;
+  name: string;
+  tagline: string;
+  /** Giá theo tháng, đơn vị đồng. 0 = miễn phí. */
+  monthlyVnd: number;
+  /** Giá trả trước một năm. Rẻ hơn 12 tháng lẻ. */
+  yearlyVnd: number;
+  features: Feature[];
+  quotas: Record<Quota, number | null>;
+  /** Ba gạch đầu dòng hiện trên thẻ giá — viết theo lợi ích, không theo tên tính năng. */
+  highlights: string[];
+  /** Gói được gợi ý mặc định trên trang giá. Đúng một gói được đánh dấu. */
+  recommended?: boolean;
+};
+
+const CONTENT_FEATURES: Feature[] = [
+  'math_all_stages',
+  'math_unlimited_mock',
+  'reading_unlimited',
+  'vocab_unlimited',
+  'writing_offline_grading',
+  'writing_ai_grading',
+];
+
+const COACH_FEATURES: Feature[] = [...CONTENT_FEATURES, 'model_essays', 'ai_chat'];
+
+/**
+ * GIÁ ĐỢT HAI, sau khi giá ra mắt (39k/79k/149k) đã chứng minh app dùng được.
+ *
+ * LỊCH SỬ GIÁ — ghi lại để bất kỳ ai đọc file này cũng biết đây là lần tăng thứ
+ * mấy và tăng theo lý do gì, không phải đoán:
+ *   - 02/09/2026 (ra mắt): Plus 39k/350k · Pro 79k/690k · Max 149k/1.290k.
+ *     Giá thấp có chủ đích, vì lúc mới ra mắt thứ khan hiếm là NGƯỜI DÙNG, không
+ *     phải doanh thu.
+ *   - 03/09/2026 (đợt này): tăng đều ~25-27% cả ba gói, sau khi đã có người
+ *     dùng thật và phản hồi thật. Không phải "giá cũ bịa ra để trông như đang
+ *     giảm" — đây là tăng giá thật, nói thẳng là tăng.
+ *
+ * NGƯỜI ĐANG TRẢ PHÍ TRƯỚC 03/09/2026 GIỮ NGUYÊN GIÁ CŨ tới hết kỳ đang trả —
+ * xem `PRICE_CHANGE_CUTOFF_ISO` và `resolveGrandfatherPrice()` trong
+ * `src/services/payment/pricing-rules.ts`. Tăng giá mà không cam kết này thì
+ * người vừa trả tiền tuần trước mở app lên thấy giá gấp rưỡi — đúng kiểu trải
+ * nghiệm khiến người ta không bao giờ gia hạn nữa.
+ *
+ * Mốc so sánh: các app luyện thi phổ biến ở VN rơi vào 1–1,5 triệu một năm. Plus
+ * 470k/năm và Pro 890k/năm vẫn nằm dưới mốc đó; Max 1.590k/năm nhỉnh hơn nhưng
+ * đổi lại có bậc giảm giá mua-theo-nhóm sâu nhất (xem `groupBuy.ts`), nên giá
+ * niêm yết KHÔNG phải giá đa số người mua nhóm sẽ trả.
+ *
+ * Trả năm rẻ dần theo gói — Plus 20%, Pro 25%, Max 29% — cố ý để CHÍNH CƠ CHẾ
+ * GIÁ cũng nhẹ nhàng đẩy người sẵn sàng cam kết dài hạn lên gói cao hơn, không
+ * chỉ dựa vào cắt tính năng.
+ */
+export const PLANS: Record<PlanId, Plan> = {
+  free: {
+    id: 'free',
+    name: 'Free',
+    tagline: 'Học thật, không phải bản dùng thử',
+    monthlyVnd: 0,
+    yearlyVnd: 0,
+    features: ['writing_offline_grading', 'writing_ai_grading'],
+    quotas: {
+      reading_per_day: 5,
+      mock_per_week: 1,
+      // GIỮ NGUYÊN 3, không cắt theo đợt tăng giá 03/09/2026. Ba lượt là để BIẾT
+      // AI chấm ra sao, không phải để dùng lâu dài — cho 0 thì người dùng không
+      // bao giờ thấy thứ đắt nhất của app. Đây là ranh giới "học thật" đã chốt,
+      // phần cắt để đẩy Max dồn hết vào Plus/Pro, không đụng vào Free.
+      ai_calls_per_month: 3,
+      vocab_total: 100,
+    },
+    highlights: [
+      'Trọn bài chẩn đoán SAT Math 19 kỹ năng',
+      'Trọn chặng Đại số — 25 bộ đề, hơn 500 câu',
+      '5 bài đọc mỗi ngày · 3 lượt chấm AI mỗi tháng',
+      'Dùng thử Plus 3 ngày miễn phí bất cứ lúc nào, không cần thẻ',
+    ],
+  },
+
+  plus: {
+    id: 'plus',
+    name: 'Plus',
+    tagline: 'Mở hết nội dung, không giới hạn số lượng',
+    monthlyVnd: 49_000,
+    yearlyVnd: 470_000,
+    features: CONTENT_FEATURES,
+    quotas: {
+      reading_per_day: null,
+      mock_per_week: null,
+      // 30 → 20. Đây là lượt CẮT THẬT của đợt tăng giá 03/09/2026 — dồn vào Plus
+      // và Pro theo đúng yêu cầu, không đụng Free.
+      ai_calls_per_month: 20,
+      vocab_total: null,
+    },
+    highlights: [
+      `Toàn bộ ${CURRICULUM_TOTALS.sets} bộ đề SAT Math, mở hết ${CURRICULUM_TOTALS.stages} chặng — Free chỉ có chặng 1`,
+      'Bài đọc, sổ từ và thi thử adaptive không giới hạn',
+      '20 lượt chấm Writing bằng AI mỗi tháng',
+      'Mua theo nhóm 10 người: giảm tới 20% giá năm',
+    ],
+  },
+
+  pro: {
+    id: 'pro',
+    name: 'Pro',
+    tagline: 'Có trợ giảng AI kèm bên cạnh',
+    monthlyVnd: 140_000,
+    // Trả năm giữ đúng mức giảm 25% như trước: 140.000 × 12 × 0,75.
+    yearlyVnd: 1_260_000,
+    features: COACH_FEATURES,
+    quotas: {
+      reading_per_day: null,
+      mock_per_week: null,
+      // 150 → 120.
+      ai_calls_per_month: 120,
+      vocab_total: null,
+    },
+    highlights: [
+      'Mọi thứ của Plus',
+      'Chatbox hỏi ngay trong bài đọc + bài mẫu theo band',
+      '120 lượt AI mỗi tháng — đủ cho 4 bài/ngày',
+      'Cần dùng AI nhiều hơn? Max có 720 lượt/tháng — gấp 6 lần',
+    ],
+    recommended: true,
+  },
+
+  max: {
+    id: 'max',
+    name: 'Max',
+    tagline: 'Cùng tính năng Pro, ngân sách AI gấp sáu',
+    monthlyVnd: 250_000,
+    // Trả năm giữ đúng mức giảm 30% như trước: 250.000 × 12 × 0,70.
+    yearlyVnd: 2_100_000,
+    features: [...COACH_FEATURES, 'priority_support'],
+    quotas: {
+      reading_per_day: null,
+      mock_per_week: null,
+      // 600 → 720, và tỉ lệ so với Pro giãn từ 4 lần lên 6 lần (120*6=720) —
+      // ngân sách AI vẫn là trục khác biệt CHÍNH giữa Pro và Max.
+      ai_calls_per_month: 720,
+      vocab_total: null,
+    },
+    highlights: [
+      'Mọi thứ của Pro',
+      '720 lượt AI mỗi tháng — gấp 6 lần Pro',
+      'Hỗ trợ ưu tiên, trả lời trong ngày',
+      'Giảm giá sâu nhất khi mua theo nhóm — tới 30% cho nhóm 10 người',
+    ],
+  },
+};
+
+/** Từ rẻ tới đắt. Thứ tự này là nguồn sự thật cho việc so hai gói hơn kém. */
+export const PLAN_ORDER: PlanId[] = ['free', 'plus', 'pro', 'max'];
+
+/** Vị trí trong bậc thang. Dùng để so gói, không so bằng chuỗi. */
+export function planRank(id: PlanId): number {
+  const at = PLAN_ORDER.indexOf(id);
+  return at < 0 ? 0 : at;
+}
+
+/**
+ * HAI lượt dùng thử, phục vụ hai mục đích khác nhau — thêm 03/09/2026.
+ *
+ *   Plus 3 ngày  — nếm NỘI DUNG (151 bộ đề Math, đọc/từ vựng không giới hạn).
+ *                  CTA đầu tiên mọi tài khoản Free thấy, một chạm, không tự
+ *                  động kích hoạt lúc đăng ký — tự động kích hoạt tạo cảm giác
+ *                  "bị lấy mất" khi hết hạn mà không ai chủ động bấm gì.
+ *   Pro  7 ngày  — nếm TRỢ GIẢNG AI (chatbox, bài mẫu). Giữ nguyên như cũ.
+ *
+ * Dùng NỐI TIẾP được (Plus trước, Pro sau — tối đa 10 ngày trải nghiệm trả phí
+ * trọn đời), mỗi loại đúng MỘT LẦN/tài khoản — theo dõi bằng hai cờ riêng
+ * `plusTrialUsed`/`proTrialUsed` trong `useBillingStore.ts`, không suy ra từ
+ * gói hiện tại như bản một-cờ cũ (suy như thế thì hết hạn Plus trial là cờ tự
+ * "quên", cho dùng lại được).
+ *
+ * KHÔNG có nhánh đặc biệt xử lý "đang dùng thử Plus mà bấm nút Pro": nút Pro
+ * chỉ hiện lại sau khi Plus trial đã hết hạn (`plan==='free'`), nên tình huống
+ * chồng lấn không xảy ra trong luồng bình thường. Nếu có cách nào đó vẫn bấm
+ * được (link cũ, tab khác), `startVipTrial()` ghi đè thẳng — không cộng dồn
+ * ngày Plus còn dư — vì nó chỉ `set()` lại cả ba trường, không đọc giá trị cũ.
+ */
+export const PLUS_TRIAL_PLAN: PlanId = 'plus';
+export const PLUS_TRIAL_DAYS = 3;
+
+/**
+ * Dùng thử gói PRO, không phải Max.
+ *
+ * Cho thử gói đắt nhất rồi tụt xuống Free là cú rơi mạnh nhất có thể, và nó tạo
+ * ấn tượng "bị lấy mất" chứ không phải "được cho dùng". Pro là gói ta thật sự
+ * muốn người dùng chọn, nên đó mới là thứ đáng cho họ nếm.
+ */
+export const TRIAL_PLAN: PlanId = 'pro';
+export const TRIAL_DAYS = 7;
+
+export function planOf(id: PlanId | null | undefined): Plan {
+  return PLANS[id ?? 'free'] ?? PLANS.free;
+}
+
+/** "99.000đ" — dấu chấm ngăn nghìn theo cách viết Việt Nam. */
+export function formatVnd(amount: number): string {
+  if (amount === 0) return 'Miễn phí';
+  return `${amount.toLocaleString('vi-VN')}đ`;
+}
+
+/** Phần trăm tiết kiệm khi trả năm, làm tròn xuống cho khỏi hứa quá. */
+export function yearlySavingPercent(plan: Plan): number {
+  if (plan.monthlyVnd === 0) return 0;
+  const twelveMonths = plan.monthlyVnd * 12;
+  return Math.floor(((twelveMonths - plan.yearlyVnd) / twelveMonths) * 100);
+}
