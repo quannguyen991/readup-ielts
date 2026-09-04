@@ -1,0 +1,508 @@
+{
+  "slug": "change",
+  "name": "Change and Development",
+  "nameVi": "Thay đổi",
+  "blurb": "Chuyển biến, cải tiến, thích nghi",
+  "words": [
+    {
+      "word": "adapt",
+      "pos": "verb",
+      "ipa": "/əˈdæpt/",
+      "meaningVi": "thích nghi, điều chỉnh",
+      "definitionEn": "to change your behavior or ideas to suit a new situation",
+      "example": "Companies must adapt quickly to changing market conditions to remain competitive.",
+      "collocation": "adapt to",
+      "band": "5-6"
+    },
+    {
+      "word": "adjustment",
+      "pos": "noun",
+      "ipa": "/əˈdʒʌstmənt/",
+      "meaningVi": "sự điều chỉnh",
+      "definitionEn": "a small change made to something to improve or correct it",
+      "example": "The government made several adjustments to the tax policy to stimulate economic growth.",
+      "collocation": "make adjustments",
+      "band": "5-6"
+    },
+    {
+      "word": "gradual",
+      "pos": "adjective",
+      "ipa": "/ˈɡrædʒuəl/",
+      "meaningVi": "dần dần, từ từ",
+      "definitionEn": "happening slowly over a period of time",
+      "example": "There has been a gradual increase in the average global temperature over the last century.",
+      "collocation": "gradual change",
+      "band": "5-6"
+    },
+    {
+      "word": "convert",
+      "pos": "verb",
+      "ipa": "/kənˈvɜːrt/",
+      "meaningVi": "chuyển đổi",
+      "definitionEn": "to change the form, character, or function of something",
+      "example": "Many factories have converted to renewable energy sources to reduce their carbon footprint.",
+      "collocation": "convert into",
+      "band": "5-6"
+    },
+    {
+      "word": "modify",
+      "pos": "verb",
+      "ipa": "/ˈmɒdɪfaɪ/",
+      "meaningVi": "sửa đổi, điều chỉnh",
+      "definitionEn": "to make small changes to something in order to improve it",
+      "example": "The curriculum was modified to incorporate more practical skills training.",
+      "collocation": "modify behavior",
+      "band": "5-6"
+    },
+    {
+      "word": "shift",
+      "pos": "noun",
+      "ipa": "/ʃɪft/",
+      "meaningVi": "sự thay đổi, chuyển dịch",
+      "definitionEn": "a change in position, direction, or trend",
+      "example": "There has been a significant shift in consumer preferences towards organic products.",
+      "collocation": "significant shift",
+      "band": "6-7"
+    },
+    {
+      "word": "transition",
+      "pos": "noun",
+      "ipa": "/trænˈzɪʃən/",
+      "meaningVi": "sự chuyển tiếp",
+      "definitionEn": "the process of changing from one state or condition to another",
+      "example": "The transition from a traditional economy to a digital one requires substantial investment in infrastructure.",
+      "collocation": "smooth transition",
+      "band": "6-7"
+    },
+    {
+      "word": "reform",
+      "pos": "noun",
+      "ipa": "/rɪˈfɔːrm/",
+      "meaningVi": "cải cách",
+      "definitionEn": "changes made to improve a system, law, or organization",
+      "example": "Education reform is essential to equip students with skills for the 21st century.",
+      "collocation": "political reform",
+      "band": "6-7"
+    },
+    {
+      "word": "fluctuation",
+      "pos": "noun",
+      "ipa": "/ˌflʌktʃuˈeɪʃən/",
+      "meaningVi": "sự dao động, biến động",
+      "definitionEn": "frequent changes in amount, level, or value",
+      "example": "The fluctuation of oil prices has a direct impact on global inflation rates.",
+      "collocation": "price fluctuation",
+      "band": "6-7"
+    },
+    {
+      "word": "alteration",
+      "pos": "noun",
+      "ipa": "/ˌɔːltəˈreɪʃən/",
+      "meaningVi": "sự thay đổi (thường nhỏ)",
+      "definitionEn": "a change, usually a slight one, to something",
+      "example": "Minor alterations to the building design were made to improve energy efficiency.",
+      "collocation": "minor alteration",
+      "band": "6-7"
+    },
+    {
+      "word": "modification",
+      "pos": "noun",
+      "ipa": "/ˌmɒdɪfɪˈkeɪʃən/",
+      "meaningVi": "sự điều chỉnh, sửa đổi",
+      "definitionEn": "a small change made to something to improve or adapt it",
+      "example": "The software underwent several modifications to enhance user experience.",
+      "collocation": "make modifications",
+      "band": "6-7"
+    },
+    {
+      "word": "progression",
+      "pos": "noun",
+      "ipa": "/prəˈɡreʃən/",
+      "meaningVi": "sự tiến triển",
+      "definitionEn": "the process of developing or moving forward gradually",
+      "example": "The progression of medical technology has significantly increased life expectancy.",
+      "collocation": "steady progression",
+      "band": "6-7"
+    },
+    {
+      "word": "evolve",
+      "pos": "verb",
+      "ipa": "/ɪˈvɒlv/",
+      "meaningVi": "tiến hóa, phát triển dần",
+      "definitionEn": "to develop gradually over a long period of time",
+      "example": "Business models evolve in response to technological advancements and consumer demands.",
+      "collocation": "evolve over time",
+      "band": "6-7"
+    },
+    {
+      "word": "transform",
+      "pos": "verb",
+      "ipa": "/trænsˈfɔːrm/",
+      "meaningVi": "biến đổi, thay đổi hoàn toàn",
+      "definitionEn": "to change something completely, usually in a positive way",
+      "example": "Digital technology has transformed the way we communicate and access information.",
+      "collocation": "transform into",
+      "band": "6-7"
+    },
+    {
+      "word": "revolution",
+      "pos": "noun",
+      "ipa": "/ˌrevəˈluːʃən/",
+      "meaningVi": "cuộc cách mạng",
+      "definitionEn": "a complete change in methods, beliefs, or conditions",
+      "example": "The Industrial Revolution brought about profound social and economic changes.",
+      "collocation": "industrial revolution",
+      "band": "7-8"
+    },
+    {
+      "word": "revolutionize",
+      "pos": "verb",
+      "ipa": "/ˌrevəˈluːʃənaɪz/",
+      "meaningVi": "cách mạng hóa",
+      "definitionEn": "to completely change something, making it much better or more modern",
+      "example": "The invention of the internet revolutionized the way people access information.",
+      "collocation": "revolutionize the industry",
+      "band": "7-8"
+    },
+    {
+      "word": "innovation",
+      "pos": "noun",
+      "ipa": "/ˌɪnəˈveɪʃən/",
+      "meaningVi": "sự đổi mới, sáng tạo",
+      "definitionEn": "a new idea, method, or device that brings about positive change",
+      "example": "Technological innovation is a key driver of economic growth in modern societies.",
+      "collocation": "technological innovation",
+      "band": "7-8"
+    },
+    {
+      "word": "transformation",
+      "pos": "noun",
+      "ipa": "/ˌtrænsfərˈmeɪʃən/",
+      "meaningVi": "sự biến đổi hoàn toàn",
+      "definitionEn": "a complete change in form, appearance, or character",
+      "example": "The digital transformation of healthcare has improved patient access to medical services.",
+      "collocation": "undergo transformation",
+      "band": "7-8"
+    },
+    {
+      "word": "evolution",
+      "pos": "noun",
+      "ipa": "/ˌiːvəˈluːʃən/",
+      "meaningVi": "sự tiến hóa, phát triển",
+      "definitionEn": "the gradual development of something over time",
+      "example": "The evolution of renewable energy technologies has made them more affordable and efficient.",
+      "collocation": "evolution of species",
+      "band": "7-8"
+    },
+    {
+      "word": "unprecedented",
+      "pos": "adjective",
+      "ipa": "/ʌnˈpresɪdentɪd/",
+      "meaningVi": "chưa từng có",
+      "definitionEn": "never done or known before; without previous example",
+      "example": "The pandemic caused unprecedented disruption to global supply chains.",
+      "collocation": "unprecedented change",
+      "band": "7-8"
+    },
+    {
+      "word": "radical",
+      "pos": "adjective",
+      "ipa": "/ˈrædɪkəl/",
+      "meaningVi": "triệt để, căn bản",
+      "definitionEn": "relating to fundamental or extreme change",
+      "example": "Radical reforms are needed to address the root causes of income inequality.",
+      "collocation": "radical reform",
+      "band": "7-8"
+    },
+    {
+      "word": "incremental",
+      "pos": "adjective",
+      "ipa": "/ˌɪŋkrɪˈmentl/",
+      "meaningVi": "tăng dần, từng bước",
+      "definitionEn": "increasing or adding gradually in small steps",
+      "example": "Incremental improvements in manufacturing processes can lead to significant cost savings over time.",
+      "collocation": "incremental improvement",
+      "band": "7-8"
+    },
+    {
+      "word": "breakthrough",
+      "pos": "noun",
+      "ipa": "/ˈbreɪkθruː/",
+      "meaningVi": "đột phá",
+      "definitionEn": "a sudden, important discovery or development that solves a problem or advances knowledge",
+      "example": "The breakthrough in vaccine technology has saved millions of lives worldwide.",
+      "collocation": "major breakthrough",
+      "band": "8+"
+    },
+    {
+      "word": "upheaval",
+      "pos": "noun",
+      "ipa": "/ʌpˈhiːvəl/",
+      "meaningVi": "sự biến động lớn, xáo trộn",
+      "definitionEn": "a big, sudden change that causes confusion or disruption",
+      "example": "The political upheaval led to widespread economic instability and social unrest.",
+      "collocation": "political upheaval",
+      "band": "8+"
+    },
+    {
+      "word": "metamorphosis",
+      "pos": "noun",
+      "ipa": "/ˌmetəˈmɔːrfəsɪs/",
+      "meaningVi": "sự biến hình, thay đổi hoàn toàn",
+      "definitionEn": "a complete change of form, structure, or substance",
+      "example": "The company underwent a complete metamorphosis from a small startup to a global corporation.",
+      "collocation": "undergo metamorphosis",
+      "band": "8+"
+    },
+    {
+      "word": "change",
+      "pos": "noun",
+      "ipa": "/tʃeɪndʒ/",
+      "meaningVi": "sự thay đổi",
+      "definitionEn": "the process of becoming different",
+      "example": "The company underwent significant change in its management structure.",
+      "collocation": "undergo change",
+      "band": "5-6"
+    },
+    {
+      "word": "development",
+      "pos": "noun",
+      "ipa": "/dɪˈveləpmənt/",
+      "meaningVi": "sự phát triển",
+      "definitionEn": "the process of growing or improving",
+      "example": "The development of renewable energy sources is crucial for a sustainable future.",
+      "collocation": "economic development",
+      "band": "5-6"
+    },
+    {
+      "word": "growth",
+      "pos": "noun",
+      "ipa": "/ɡrəʊθ/",
+      "meaningVi": "sự tăng trưởng",
+      "definitionEn": "the process of increasing in size or value",
+      "example": "The rapid growth of the urban population has led to housing shortages.",
+      "collocation": "population growth",
+      "band": "5-6"
+    },
+    {
+      "word": "progress",
+      "pos": "noun",
+      "ipa": "/ˈprəʊɡres/",
+      "meaningVi": "tiến bộ",
+      "definitionEn": "forward or onward movement towards a goal",
+      "example": "Technological progress has transformed the way we communicate.",
+      "collocation": "make progress",
+      "band": "5-6"
+    },
+    {
+      "word": "improvement",
+      "pos": "noun",
+      "ipa": "/ɪmˈpruːvmənt/",
+      "meaningVi": "sự cải thiện",
+      "definitionEn": "the act of making something better",
+      "example": "There has been a noticeable improvement in the quality of education.",
+      "collocation": "continuous improvement",
+      "band": "5-6"
+    },
+    {
+      "word": "decline",
+      "pos": "noun",
+      "ipa": "/dɪˈklaɪn/",
+      "meaningVi": "sự suy giảm",
+      "definitionEn": "a gradual decrease in quality, quantity, or importance",
+      "example": "The decline of traditional industries has led to job losses in many regions.",
+      "collocation": "economic decline",
+      "band": "5-6"
+    },
+    {
+      "word": "advancement",
+      "pos": "noun",
+      "ipa": "/ədˈvɑːnsmənt/",
+      "meaningVi": "sự tiến bộ, tiến triển",
+      "definitionEn": "progress or development in a particular area",
+      "example": "The advancement of artificial intelligence raises ethical concerns.",
+      "collocation": "technological advancement",
+      "band": "6-7"
+    },
+    {
+      "word": "expansion",
+      "pos": "noun",
+      "ipa": "/ɪkˈspænʃən/",
+      "meaningVi": "sự mở rộng",
+      "definitionEn": "the act of increasing in size, scope, or volume",
+      "example": "The company's expansion into overseas markets has been very successful.",
+      "collocation": "business expansion",
+      "band": "6-7"
+    },
+    {
+      "word": "upgrade",
+      "pos": "noun",
+      "ipa": "/ˈʌpɡreɪd/",
+      "meaningVi": "sự nâng cấp",
+      "definitionEn": "an improvement or enhancement of something",
+      "example": "The software upgrade resulted in faster processing speeds.",
+      "collocation": "system upgrade",
+      "band": "6-7"
+    },
+    {
+      "word": "renewal",
+      "pos": "noun",
+      "ipa": "/rɪˈnjuːəl/",
+      "meaningVi": "sự đổi mới, tái tạo",
+      "definitionEn": "the act of making something new or fresh again",
+      "example": "Urban renewal projects aim to revitalize decaying city centers.",
+      "collocation": "urban renewal",
+      "band": "6-7"
+    },
+    {
+      "word": "revival",
+      "pos": "noun",
+      "ipa": "/rɪˈvaɪvəl/",
+      "meaningVi": "sự phục hồi, hồi sinh",
+      "definitionEn": "the process of becoming active or popular again",
+      "example": "There has been a revival of interest in traditional crafts.",
+      "collocation": "economic revival",
+      "band": "6-7"
+    },
+    {
+      "word": "overhaul",
+      "pos": "noun",
+      "ipa": "/ˈəʊvəhɔːl/",
+      "meaningVi": "sự đại tu, sửa chữa lớn",
+      "definitionEn": "a thorough examination and repair or renovation",
+      "example": "The government announced a complete overhaul of the healthcare system.",
+      "collocation": "complete overhaul",
+      "band": "6-7"
+    },
+    {
+      "word": "acceleration",
+      "pos": "noun",
+      "ipa": "/əkˌseləˈreɪʃən/",
+      "meaningVi": "sự tăng tốc",
+      "definitionEn": "the rate of increase in speed or change",
+      "example": "The acceleration of climate change is a major global concern.",
+      "collocation": "acceleration of change",
+      "band": "7-8"
+    },
+    {
+      "word": "diversification",
+      "pos": "noun",
+      "ipa": "/daɪˌvɜːsɪfɪˈkeɪʃən/",
+      "meaningVi": "sự đa dạng hóa",
+      "definitionEn": "the process of becoming more varied or diverse",
+      "example": "Diversification of the economy reduces dependence on a single sector.",
+      "collocation": "economic diversification",
+      "band": "7-8"
+    },
+    {
+      "word": "modernization",
+      "pos": "noun",
+      "ipa": "/ˌmɒdənaɪˈzeɪʃən/",
+      "meaningVi": "sự hiện đại hóa",
+      "definitionEn": "the process of adopting modern methods or technologies",
+      "example": "The modernization of infrastructure has boosted the country's productivity.",
+      "collocation": "industrial modernization",
+      "band": "7-8"
+    },
+    {
+      "word": "restructuring",
+      "pos": "noun",
+      "ipa": "/riːˈstrʌktʃərɪŋ/",
+      "meaningVi": "sự tái cấu trúc",
+      "definitionEn": "the process of reorganizing a company or system",
+      "example": "The company underwent major restructuring to cut costs.",
+      "collocation": "corporate restructuring",
+      "band": "7-8"
+    },
+    {
+      "word": "regeneration",
+      "pos": "noun",
+      "ipa": "/rɪˌdʒenəˈreɪʃən/",
+      "meaningVi": "sự tái sinh, phục hồi",
+      "definitionEn": "the process of renewal or restoration",
+      "example": "The regeneration of the inner city has attracted new businesses.",
+      "collocation": "urban regeneration",
+      "band": "7-8"
+    },
+    {
+      "word": "restoration",
+      "pos": "noun",
+      "ipa": "/ˌrestəˈreɪʃən/",
+      "meaningVi": "sự phục hồi, trùng tu",
+      "definitionEn": "the act of returning something to its original condition",
+      "example": "The restoration of historic buildings preserves cultural heritage.",
+      "collocation": "building restoration",
+      "band": "7-8"
+    },
+    {
+      "word": "reorientation",
+      "pos": "noun",
+      "ipa": "/riːˌɔːriənˈteɪʃən/",
+      "meaningVi": "sự định hướng lại",
+      "definitionEn": "the process of changing direction or focus",
+      "example": "The reorientation of the company's strategy led to increased profits.",
+      "collocation": "strategic reorientation",
+      "band": "7-8"
+    },
+    {
+      "word": "volatility",
+      "pos": "noun",
+      "ipa": "/ˌvɒləˈtɪləti/",
+      "meaningVi": "sự biến động",
+      "definitionEn": "the tendency to change rapidly and unpredictably",
+      "example": "Market volatility can cause significant financial losses for investors.",
+      "collocation": "price volatility",
+      "band": "8+"
+    },
+    {
+      "word": "rehabilitation",
+      "pos": "noun",
+      "ipa": "/ˌriːhəˌbɪlɪˈteɪʃən/",
+      "meaningVi": "sự phục hồi, tái hòa nhập",
+      "definitionEn": "the process of restoring someone to a former condition or reputation",
+      "example": "The rehabilitation of offenders is an important aspect of the justice system.",
+      "collocation": "rehabilitation program",
+      "band": "8+"
+    },
+    {
+      "word": "redefinition",
+      "pos": "noun",
+      "ipa": "/ˌriːdefɪˈnɪʃən/",
+      "meaningVi": "sự định nghĩa lại",
+      "definitionEn": "the act of defining something again or differently",
+      "example": "The redefinition of success in modern society often includes work-life balance.",
+      "collocation": "redefinition of roles",
+      "band": "8+"
+    },
+    {
+      "word": "reallocation",
+      "pos": "noun",
+      "ipa": "/ˌriːæləˈkeɪʃən/",
+      "meaningVi": "sự phân bổ lại",
+      "definitionEn": "the act of distributing resources or funds differently",
+      "example": "The reallocation of government funds to education has improved literacy rates.",
+      "collocation": "resource reallocation",
+      "band": "8+"
+    },
+    {
+      "word": "redistribution",
+      "pos": "noun",
+      "ipa": "/ˌriːdɪstrɪˈbjuːʃən/",
+      "meaningVi": "sự phân phối lại",
+      "definitionEn": "the act of distributing something, especially wealth, differently",
+      "example": "Wealth redistribution policies aim to reduce income inequality.",
+      "collocation": "wealth redistribution",
+      "band": "8+"
+    },
+    {
+      "word": "deceleration",
+      "pos": "noun",
+      "ipa": "/diːˌseləˈreɪʃən/",
+      "meaningVi": "sự giảm tốc",
+      "definitionEn": "the act of slowing down or decreasing speed",
+      "example": "The deceleration of economic growth has prompted calls for stimulus measures.",
+      "collocation": "economic deceleration",
+      "band": "8+"
+    }
+  ]
+}

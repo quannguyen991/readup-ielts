@@ -1,0 +1,508 @@
+{
+  "slug": "leisure",
+  "name": "Leisure and Free Time",
+  "nameVi": "Giải trí",
+  "blurb": "Sở thích, nghỉ ngơi, giải trí",
+  "words": [
+    {
+      "word": "pastime",
+      "pos": "noun",
+      "ipa": "/ˈpæs.taɪm/",
+      "meaningVi": "thú tiêu khiển",
+      "definitionEn": "An activity that someone does regularly for enjoyment in their free time.",
+      "example": "Reading has always been my favourite pastime, especially during long weekends.",
+      "collocation": "a popular pastime",
+      "band": "5-6"
+    },
+    {
+      "word": "recreation",
+      "pos": "noun",
+      "ipa": "/ˌrek.riˈeɪ.ʃən/",
+      "meaningVi": "sự giải trí, hoạt động thư giãn",
+      "definitionEn": "Activities done for enjoyment when one is not working.",
+      "example": "The park provides excellent facilities for outdoor recreation, such as cycling and jogging.",
+      "collocation": "recreation facilities",
+      "band": "5-6"
+    },
+    {
+      "word": "leisure",
+      "pos": "noun",
+      "ipa": "/ˈleʒ.ər/",
+      "meaningVi": "thời gian rảnh rỗi",
+      "definitionEn": "Time when one is not working or occupied; free time.",
+      "example": "Many people struggle to balance their work commitments with leisure activities.",
+      "collocation": "leisure time",
+      "band": "5-6"
+    },
+    {
+      "word": "hobby",
+      "pos": "noun",
+      "ipa": "/ˈhɒb.i/",
+      "meaningVi": "sở thích",
+      "definitionEn": "A regular activity done for pleasure in one's spare time.",
+      "example": "Developing a creative hobby like painting can significantly reduce stress levels.",
+      "collocation": "pursue a hobby",
+      "band": "5-6"
+    },
+    {
+      "word": "amusement",
+      "pos": "noun",
+      "ipa": "/əˈmjuːz.mənt/",
+      "meaningVi": "sự vui thích, trò giải trí",
+      "definitionEn": "The state or experience of finding something funny or entertaining.",
+      "example": "The festival offered a wide range of amusements for visitors of all ages.",
+      "collocation": "for amusement",
+      "band": "5-6"
+    },
+    {
+      "word": "entertainment",
+      "pos": "noun",
+      "ipa": "/ˌen.təˈteɪn.mənt/",
+      "meaningVi": "sự giải trí, chương trình giải trí",
+      "definitionEn": "Activities such as shows, films, or games that provide enjoyment for people.",
+      "example": "The entertainment industry has a significant impact on the economy and culture.",
+      "collocation": "live entertainment",
+      "band": "5-6"
+    },
+    {
+      "word": "relaxation",
+      "pos": "noun",
+      "ipa": "/ˌriː.lækˈseɪ.ʃən/",
+      "meaningVi": "sự thư giãn",
+      "definitionEn": "The state of being free from tension and anxiety; rest and recreation.",
+      "example": "Yoga is an excellent form of relaxation that also improves flexibility.",
+      "collocation": "a relaxation technique",
+      "band": "5-6"
+    },
+    {
+      "word": "unwind",
+      "pos": "verb",
+      "ipa": "/ʌnˈwaɪnd/",
+      "meaningVi": "thư giãn, xả stress",
+      "definitionEn": "To relax after a period of work or tension.",
+      "example": "After a long day at the office, I like to unwind by listening to classical music.",
+      "collocation": "unwind after work",
+      "band": "6-7"
+    },
+    {
+      "word": "indulge",
+      "pos": "verb",
+      "ipa": "/ɪnˈdʌldʒ/",
+      "meaningVi": "đam mê, nuông chiều bản thân",
+      "definitionEn": "To allow oneself to enjoy something pleasurable, often as a treat.",
+      "example": "On weekends, many people indulge in their favourite hobbies without feeling guilty.",
+      "collocation": "indulge in a hobby",
+      "band": "6-7"
+    },
+    {
+      "word": "socialize",
+      "pos": "verb",
+      "ipa": "/ˈsəʊ.ʃə.laɪz/",
+      "meaningVi": "giao lưu, giao tiếp",
+      "definitionEn": "To spend time with other people in a friendly way, especially for enjoyment.",
+      "example": "Socializing with friends is an essential part of maintaining mental well-being.",
+      "collocation": "socialize with others",
+      "band": "6-7"
+    },
+    {
+      "word": "getaway",
+      "pos": "noun",
+      "ipa": "/ˈɡet.ə.weɪ/",
+      "meaningVi": "chuyến đi nghỉ ngắn ngày",
+      "definitionEn": "A short holiday or trip away from home, often to a relaxing place.",
+      "example": "A weekend getaway to the countryside helps people recharge after a hectic week.",
+      "collocation": "a weekend getaway",
+      "band": "6-7"
+    },
+    {
+      "word": "retreat",
+      "pos": "noun",
+      "ipa": "/rɪˈtriːt/",
+      "meaningVi": "nơi ẩn dật, kỳ nghỉ tĩnh tâm",
+      "definitionEn": "A place or period of seclusion, often for relaxation or spiritual reflection.",
+      "example": "Many professionals attend a wellness retreat to escape the pressures of urban life.",
+      "collocation": "a spa retreat",
+      "band": "6-7"
+    },
+    {
+      "word": "escapism",
+      "pos": "noun",
+      "ipa": "/ɪˈskeɪ.pɪ.zəm/",
+      "meaningVi": "sự trốn tránh thực tế (qua giải trí)",
+      "definitionEn": "The tendency to seek distraction and relief from reality through entertainment or fantasy.",
+      "example": "While some view video games as mere escapism, others see them as a form of interactive art.",
+      "collocation": "a form of escapism",
+      "band": "6-7"
+    },
+    {
+      "word": "sedentary",
+      "pos": "adjective",
+      "ipa": "/ˈsed.ən.tər.i/",
+      "meaningVi": "ít vận động, ngồi nhiều",
+      "definitionEn": "Characterized by much sitting and little physical activity.",
+      "example": "Sedentary leisure activities, such as watching television, can contribute to health problems.",
+      "collocation": "a sedentary lifestyle",
+      "band": "6-7"
+    },
+    {
+      "word": "recreational",
+      "pos": "adjective",
+      "ipa": "/ˌrek.riˈeɪ.ʃən.əl/",
+      "meaningVi": "thuộc giải trí",
+      "definitionEn": "Relating to activities done for enjoyment rather than work.",
+      "example": "The government should invest more in recreational facilities to promote public health.",
+      "collocation": "recreational activities",
+      "band": "7-8"
+    },
+    {
+      "word": "therapeutic",
+      "pos": "adjective",
+      "ipa": "/ˌθer.əˈpjuː.tɪk/",
+      "meaningVi": "có tính trị liệu",
+      "definitionEn": "Having a healing or beneficial effect on the mind or body.",
+      "example": "Gardening is often described as therapeutic because it reduces anxiety and improves mood.",
+      "collocation": "therapeutic benefits",
+      "band": "7-8"
+    },
+    {
+      "word": "recharge",
+      "pos": "verb",
+      "ipa": "/ˌriːˈtʃɑːdʒ/",
+      "meaningVi": "nạp lại năng lượng",
+      "definitionEn": "To restore energy and vitality through rest or a change of activity.",
+      "example": "Taking short breaks during the day allows employees to recharge and stay productive.",
+      "collocation": "recharge one's batteries",
+      "band": "7-8"
+    },
+    {
+      "word": "spectator",
+      "pos": "noun",
+      "ipa": "/spekˈteɪ.tər/",
+      "meaningVi": "khán giả",
+      "definitionEn": "A person who watches an event, especially a sports match or performance.",
+      "example": "Spectator sports like football attract millions of fans worldwide, boosting local economies.",
+      "collocation": "a spectator sport",
+      "band": "7-8"
+    },
+    {
+      "word": "participant",
+      "pos": "noun",
+      "ipa": "/pɑːˈtɪs.ɪ.pənt/",
+      "meaningVi": "người tham gia",
+      "definitionEn": "A person who takes part in an activity or event.",
+      "example": "Active participants in team sports often develop better communication and leadership skills.",
+      "collocation": "an active participant",
+      "band": "7-8"
+    },
+    {
+      "word": "engagement",
+      "pos": "noun",
+      "ipa": "/ɪnˈɡeɪdʒ.mənt/",
+      "meaningVi": "sự tham gia, gắn kết",
+      "definitionEn": "The act of being involved or occupied with an activity, often with interest.",
+      "example": "High levels of engagement in leisure activities are linked to greater life satisfaction.",
+      "collocation": "engagement in leisure activities",
+      "band": "7-8"
+    },
+    {
+      "word": "diversion",
+      "pos": "noun",
+      "ipa": "/daɪˈvɜː.ʒən/",
+      "meaningVi": "trò giải trí, sự xao lãng tích cực",
+      "definitionEn": "An activity that distracts the mind from work or worries, providing enjoyment.",
+      "example": "Reading a novel can be a pleasant diversion from daily routines and responsibilities.",
+      "collocation": "a welcome diversion",
+      "band": "7-8"
+    },
+    {
+      "word": "pursuit",
+      "pos": "noun",
+      "ipa": "/pəˈsjuːt/",
+      "meaningVi": "sự theo đuổi (sở thích, đam mê)",
+      "definitionEn": "An activity that someone engages in regularly, especially a hobby or interest.",
+      "example": "Intellectual pursuits such as learning a new language can keep the mind sharp in old age.",
+      "collocation": "intellectual pursuits",
+      "band": "8+"
+    },
+    {
+      "word": "avocation",
+      "pos": "noun",
+      "ipa": "/ˌæv.əˈkeɪ.ʃən/",
+      "meaningVi": "nghề tay trái, sở thích ngoài công việc",
+      "definitionEn": "A hobby or secondary occupation that is not one's main job.",
+      "example": "Many successful people attribute their creativity to a fulfilling avocation outside work.",
+      "collocation": "a fulfilling avocation",
+      "band": "8+"
+    },
+    {
+      "word": "leisurely",
+      "pos": "adjective",
+      "ipa": "/ˈleʒ.ər.li/",
+      "meaningVi": "thong thả, nhàn nhã",
+      "definitionEn": "Acting or done without haste; relaxed and unhurried.",
+      "example": "A leisurely stroll through the park is an excellent way to appreciate nature and clear the mind.",
+      "collocation": "a leisurely pace",
+      "band": "8+"
+    },
+    {
+      "word": "rejuvenate",
+      "pos": "verb",
+      "ipa": "/rɪˈdʒuː.və.neɪt/",
+      "meaningVi": "trẻ hóa, phục hồi sức sống",
+      "definitionEn": "To make someone feel or look younger, fresher, or more energetic.",
+      "example": "A short holiday can rejuvenate both the body and mind, enhancing overall productivity.",
+      "collocation": "rejuvenate the mind",
+      "band": "8+"
+    },
+    {
+      "word": "activity",
+      "pos": "noun",
+      "ipa": "/ækˈtɪvɪti/",
+      "meaningVi": "hoạt động (giải trí)",
+      "definitionEn": "something that you do for enjoyment or in your free time",
+      "example": "Engaging in a creative activity such as painting can significantly reduce stress levels.",
+      "collocation": "leisure activity",
+      "band": "5-6"
+    },
+    {
+      "word": "interest",
+      "pos": "noun",
+      "ipa": "/ˈɪntrəst/",
+      "meaningVi": "sở thích, mối quan tâm",
+      "definitionEn": "a subject or activity that you enjoy doing or learning about in your free time",
+      "example": "Pursuing a personal interest like photography can enrich one's life beyond work.",
+      "collocation": "develop an interest",
+      "band": "5-6"
+    },
+    {
+      "word": "enjoyment",
+      "pos": "noun",
+      "ipa": "/ɪnˈdʒɔɪmənt/",
+      "meaningVi": "sự thưởng thức, niềm vui",
+      "definitionEn": "the feeling of pleasure you get from doing something you like",
+      "example": "The enjoyment derived from reading classic literature is often underestimated.",
+      "collocation": "derive enjoyment from",
+      "band": "5-6"
+    },
+    {
+      "word": "spare time",
+      "pos": "noun phrase",
+      "ipa": "/speər taɪm/",
+      "meaningVi": "thời gian rảnh",
+      "definitionEn": "time when you are not working or busy; free time",
+      "example": "Many people use their spare time to volunteer for community projects.",
+      "collocation": "spend spare time",
+      "band": "5-6"
+    },
+    {
+      "word": "vacation",
+      "pos": "noun",
+      "ipa": "/veɪˈkeɪʃən/",
+      "meaningVi": "kỳ nghỉ",
+      "definitionEn": "a period of time when you are not working and you travel or rest",
+      "example": "Taking a vacation abroad provides an opportunity to experience different cultures.",
+      "collocation": "go on vacation",
+      "band": "5-6"
+    },
+    {
+      "word": "break",
+      "pos": "noun",
+      "ipa": "/breɪk/",
+      "meaningVi": "sự nghỉ ngơi, kỳ nghỉ ngắn",
+      "definitionEn": "a short period of rest from work or other activities",
+      "example": "A short break from screen time can improve mental clarity and focus.",
+      "collocation": "take a break",
+      "band": "5-6"
+    },
+    {
+      "word": "rest",
+      "pos": "noun",
+      "ipa": "/rest/",
+      "meaningVi": "sự nghỉ ngơi, thư giãn",
+      "definitionEn": "a period of relaxing or sleeping after being active or working",
+      "example": "Getting adequate rest is essential for maintaining both physical and mental health.",
+      "collocation": "get some rest",
+      "band": "6-7"
+    },
+    {
+      "word": "excursion",
+      "pos": "noun",
+      "ipa": "/ɪkˈskɜːrʒən/",
+      "meaningVi": "chuyến dã ngoại, tham quan",
+      "definitionEn": "a short journey taken for pleasure, especially by a group of people",
+      "example": "The school organised an excursion to the botanical garden to teach students about native plants.",
+      "collocation": "organise an excursion",
+      "band": "6-7"
+    },
+    {
+      "word": "expedition",
+      "pos": "noun",
+      "ipa": "/ˌekspɪˈdɪʃən/",
+      "meaningVi": "cuộc thám hiểm, chuyến đi có mục đích",
+      "definitionEn": "a long and carefully planned journey, especially to a distant or unknown place",
+      "example": "Mountaineering expeditions require extensive preparation and physical fitness.",
+      "collocation": "mountaineering expedition",
+      "band": "7-8"
+    },
+    {
+      "word": "adventure",
+      "pos": "noun",
+      "ipa": "/ədˈventʃər/",
+      "meaningVi": "cuộc phiêu lưu, chuyến đi mạo hiểm",
+      "definitionEn": "an unusual, exciting, or daring experience or activity",
+      "example": "Travelling to remote destinations often turns into a memorable adventure.",
+      "collocation": "sense of adventure",
+      "band": "6-7"
+    },
+    {
+      "word": "exploration",
+      "pos": "noun",
+      "ipa": "/ˌekspləˈreɪʃən/",
+      "meaningVi": "sự khám phá, thám hiểm",
+      "definitionEn": "the act of travelling to or examining a new place in order to learn about it",
+      "example": "Space exploration has inspired countless people to pursue careers in science.",
+      "collocation": "space exploration",
+      "band": "7-8"
+    },
+    {
+      "word": "sightseeing",
+      "pos": "noun",
+      "ipa": "/ˈsaɪtsiːɪŋ/",
+      "meaningVi": "việc tham quan, ngắm cảnh",
+      "definitionEn": "the activity of visiting interesting places, especially as a tourist",
+      "example": "Sightseeing gives tourists a chance to appreciate local architecture and history.",
+      "collocation": "go sightseeing",
+      "band": "5-6"
+    },
+    {
+      "word": "volunteering",
+      "pos": "noun",
+      "ipa": "/ˌvɒlənˈtɪərɪŋ/",
+      "meaningVi": "công việc tình nguyện",
+      "definitionEn": "the practice of doing work for free to help others or a cause",
+      "example": "Volunteering at a local shelter can be a rewarding way to spend weekends.",
+      "collocation": "volunteering work",
+      "band": "6-7"
+    },
+    {
+      "word": "philanthropy",
+      "pos": "noun",
+      "ipa": "/fɪˈlænθrəpi/",
+      "meaningVi": "hoạt động từ thiện, lòng nhân ái",
+      "definitionEn": "the desire to promote the welfare of others, expressed especially by the generous donation of money or time",
+      "example": "Engaging in philanthropy allows individuals to contribute meaningfully to society.",
+      "collocation": "corporate philanthropy",
+      "band": "8+"
+    },
+    {
+      "word": "craft",
+      "pos": "noun",
+      "ipa": "/kræft/",
+      "meaningVi": "nghề thủ công, đồ thủ công",
+      "definitionEn": "an activity that involves making something by hand, such as pottery, knitting, or woodworking",
+      "example": "Learning a craft like pottery can be a therapeutic way to relax after work.",
+      "collocation": "handicraft",
+      "band": "5-6"
+    },
+    {
+      "word": "art",
+      "pos": "noun",
+      "ipa": "/ɑːrt/",
+      "meaningVi": "nghệ thuật",
+      "definitionEn": "the expression of creative skill through painting, sculpture, music, etc.",
+      "example": "Appreciating art in museums can broaden one's cultural perspective.",
+      "collocation": "visual art",
+      "band": "5-6"
+    },
+    {
+      "word": "gastronomy",
+      "pos": "noun",
+      "ipa": "/ɡæˈstrɒnəmi/",
+      "meaningVi": "ẩm thực, nghệ thuật nấu ăn",
+      "definitionEn": "the art and practice of choosing, cooking, and eating good food",
+      "example": "Exploring local gastronomy is a highlight of many international trips.",
+      "collocation": "French gastronomy",
+      "band": "8+"
+    },
+    {
+      "word": "horticulture",
+      "pos": "noun",
+      "ipa": "/ˈhɔːrtɪkʌltʃər/",
+      "meaningVi": "nghề làm vườn, trồng trọt",
+      "definitionEn": "the art or practice of garden cultivation and management",
+      "example": "Horticulture has become a popular hobby among city dwellers seeking a connection with nature.",
+      "collocation": "horticulture therapy",
+      "band": "8+"
+    },
+    {
+      "word": "photography",
+      "pos": "noun",
+      "ipa": "/fəˈtɒɡrəfi/",
+      "meaningVi": "nhiếp ảnh",
+      "definitionEn": "the art or practice of taking and processing photographs",
+      "example": "Digital photography allows enthusiasts to experiment with composition and lighting.",
+      "collocation": "landscape photography",
+      "band": "6-7"
+    },
+    {
+      "word": "sculpture",
+      "pos": "noun",
+      "ipa": "/ˈskʌlptʃər/",
+      "meaningVi": "điêu khắc",
+      "definitionEn": "the art of making forms or figures by carving or modeling materials like stone, metal, or wood",
+      "example": "Creating a sculpture requires patience, creativity, and a steady hand.",
+      "collocation": "sculpture exhibition",
+      "band": "6-7"
+    },
+    {
+      "word": "yoga",
+      "pos": "noun",
+      "ipa": "/ˈjoʊɡə/",
+      "meaningVi": "yoga",
+      "definitionEn": "a system of physical postures, breathing techniques, and meditation for health and relaxation",
+      "example": "Practising yoga regularly helps improve flexibility and mental focus.",
+      "collocation": "yoga class",
+      "band": "5-6"
+    },
+    {
+      "word": "meditation",
+      "pos": "noun",
+      "ipa": "/ˌmedɪˈteɪʃən/",
+      "meaningVi": "thiền định",
+      "definitionEn": "the practice of focusing the mind, often for relaxation or spiritual purposes",
+      "example": "Daily meditation can reduce anxiety and enhance overall well-being.",
+      "collocation": "mindfulness meditation",
+      "band": "6-7"
+    },
+    {
+      "word": "mindfulness",
+      "pos": "noun",
+      "ipa": "/ˈmaɪndfəlnəs/",
+      "meaningVi": "chánh niệm, sự tập trung vào hiện tại",
+      "definitionEn": "the practice of being aware of your thoughts, feelings, and surroundings in the present moment",
+      "example": "Mindfulness has become a popular approach to stress management in modern society.",
+      "collocation": "mindfulness practice",
+      "band": "7-8"
+    },
+    {
+      "word": "self-care",
+      "pos": "noun",
+      "ipa": "/ˌself ˈkeər/",
+      "meaningVi": "tự chăm sóc bản thân",
+      "definitionEn": "the practice of taking actions to preserve or improve one's own health and well-being",
+      "example": "Prioritising self-care is essential for maintaining a healthy work-life balance.",
+      "collocation": "self-care routine",
+      "band": "6-7"
+    },
+    {
+      "word": "sojourn",
+      "pos": "noun",
+      "ipa": "/ˈsɒdʒɜːrn/",
+      "meaningVi": "kỳ nghỉ ngắn, giai đoạn lưu lại",
+      "definitionEn": "a temporary stay in a place away from home",
+      "example": "A sojourn in the countryside can provide a much-needed escape from urban life.",
+      "collocation": "brief sojourn",
+      "band": "7-8"
+    }
+  ]
+}

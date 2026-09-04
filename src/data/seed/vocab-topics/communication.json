@@ -1,0 +1,508 @@
+{
+  "slug": "communication",
+  "name": "Communication Skills",
+  "nameVi": "Giao tiếp",
+  "blurb": "Thuyết phục, lắng nghe, hiểu lầm",
+  "words": [
+    {
+      "word": "convey",
+      "pos": "verb",
+      "ipa": "/kənˈveɪ/",
+      "meaningVi": "truyền đạt, diễn đạt",
+      "definitionEn": "to make an idea, feeling, or information known or understandable to someone",
+      "example": "Effective communicators can convey complex ideas in a simple manner.",
+      "collocation": "convey a message",
+      "band": "5-6"
+    },
+    {
+      "word": "paraphrase",
+      "pos": "verb",
+      "ipa": "/ˈpærəfreɪz/",
+      "meaningVi": "diễn giải lại, nói lại bằng từ khác",
+      "definitionEn": "to express the meaning of something using different words, especially to achieve greater clarity",
+      "example": "To avoid misunderstanding, the speaker paraphrased the key points of her argument.",
+      "collocation": "paraphrase a statement",
+      "band": "5-6"
+    },
+    {
+      "word": "perceive",
+      "pos": "verb",
+      "ipa": "/pərˈsiːv/",
+      "meaningVi": "nhận thức, hiểu",
+      "definitionEn": "to become aware of, understand, or interpret something in a particular way",
+      "example": "How we perceive others' intentions can significantly affect our communication style.",
+      "collocation": "perceive as a threat",
+      "band": "5-6"
+    },
+    {
+      "word": "interact",
+      "pos": "verb",
+      "ipa": "/ˌɪntərˈækt/",
+      "meaningVi": "tương tác, giao tiếp",
+      "definitionEn": "to communicate with or react to each other in a social or professional context",
+      "example": "Team members who interact regularly tend to build stronger working relationships.",
+      "collocation": "interact with colleagues",
+      "band": "5-6"
+    },
+    {
+      "word": "misunderstanding",
+      "pos": "noun",
+      "ipa": "/ˌmɪsʌndərˈstændɪŋ/",
+      "meaningVi": "sự hiểu lầm",
+      "definitionEn": "a failure to understand someone or something correctly, often leading to conflict",
+      "example": "A minor misunderstanding can escalate into a serious dispute if not addressed promptly.",
+      "collocation": "clear up a misunderstanding",
+      "band": "5-6"
+    },
+    {
+      "word": "exchange",
+      "pos": "verb",
+      "ipa": "/ɪksˈtʃeɪndʒ/",
+      "meaningVi": "trao đổi (thông tin, ý kiến)",
+      "definitionEn": "to give and receive information, ideas, or opinions in a conversation",
+      "example": "During the meeting, we exchanged views on how to improve customer service.",
+      "collocation": "exchange ideas",
+      "band": "5-6"
+    },
+    {
+      "word": "persuasion",
+      "pos": "noun",
+      "ipa": "/pərˈsweɪʒən/",
+      "meaningVi": "sự thuyết phục, khả năng thuyết phục",
+      "definitionEn": "the act of convincing someone to do or believe something through reasoning or argument",
+      "example": "The art of persuasion relies on logic, emotion, and credibility.",
+      "collocation": "powers of persuasion",
+      "band": "6-7"
+    },
+    {
+      "word": "articulate",
+      "pos": "adjective",
+      "ipa": "/ɑːrˈtɪkjʊlət/",
+      "meaningVi": "có khả năng diễn đạt rõ ràng, mạch lạc",
+      "definitionEn": "able to express thoughts, feelings, or ideas clearly and effectively",
+      "example": "An articulate speaker can capture the audience's attention with precise language.",
+      "collocation": "articulate speaker",
+      "band": "6-7"
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "ipa": "/ˈempəθi/",
+      "meaningVi": "sự đồng cảm, thấu hiểu cảm xúc người khác",
+      "definitionEn": "the ability to understand and share the feelings of another person",
+      "example": "Demonstrating empathy helps build trust and reduces the likelihood of conflict.",
+      "collocation": "show empathy",
+      "band": "6-7"
+    },
+    {
+      "word": "clarity",
+      "pos": "noun",
+      "ipa": "/ˈklærɪti/",
+      "meaningVi": "sự rõ ràng, minh bạch (trong giao tiếp)",
+      "definitionEn": "the quality of being easily understood, free from ambiguity or confusion",
+      "example": "Clarity in communication ensures that the intended message is received accurately.",
+      "collocation": "provide clarity",
+      "band": "6-7"
+    },
+    {
+      "word": "negotiate",
+      "pos": "verb",
+      "ipa": "/nɪˈɡoʊʃieɪt/",
+      "meaningVi": "đàm phán, thương lượng",
+      "definitionEn": "to discuss something in order to reach an agreement, especially in a formal or professional setting",
+      "example": "Skilled negotiators know how to balance assertiveness with active listening.",
+      "collocation": "negotiate a deal",
+      "band": "6-7"
+    },
+    {
+      "word": "assertive",
+      "pos": "adjective",
+      "ipa": "/əˈsɜːrtɪv/",
+      "meaningVi": "quyết đoán, tự tin (không hung hăng)",
+      "definitionEn": "confident and direct in expressing one's needs or opinions while respecting others",
+      "example": "Being assertive rather than aggressive can improve workplace communication.",
+      "collocation": "assertive communication",
+      "band": "6-7"
+    },
+    {
+      "word": "interpersonal",
+      "pos": "adjective",
+      "ipa": "/ˌɪntərˈpɜːrsənəl/",
+      "meaningVi": "giữa các cá nhân, liên cá nhân",
+      "definitionEn": "relating to relationships or communication between people",
+      "example": "Strong interpersonal skills are essential for effective teamwork and leadership.",
+      "collocation": "interpersonal skills",
+      "band": "6-7"
+    },
+    {
+      "word": "nonverbal",
+      "pos": "adjective",
+      "ipa": "/ˌnɑːnˈvɜːrbəl/",
+      "meaningVi": "phi ngôn ngữ (cử chỉ, nét mặt)",
+      "definitionEn": "not using words, such as body language, facial expressions, or tone of voice",
+      "example": "Nonverbal cues often convey more meaning than spoken words in face-to-face interactions.",
+      "collocation": "nonverbal communication",
+      "band": "6-7"
+    },
+    {
+      "word": "concise",
+      "pos": "adjective",
+      "ipa": "/kənˈsaɪs/",
+      "meaningVi": "súc tích, ngắn gọn mà đầy đủ",
+      "definitionEn": "giving a lot of information clearly in a few words; brief but comprehensive",
+      "example": "A concise email saves time and reduces the risk of misinterpretation.",
+      "collocation": "concise explanation",
+      "band": "6-7"
+    },
+    {
+      "word": "feedback",
+      "pos": "noun",
+      "ipa": "/ˈfiːdbæk/",
+      "meaningVi": "phản hồi, góp ý",
+      "definitionEn": "information or opinions about someone's performance or behavior, used for improvement",
+      "example": "Constructive feedback helps individuals refine their communication strategies.",
+      "collocation": "provide feedback",
+      "band": "6-7"
+    },
+    {
+      "word": "misinterpretation",
+      "pos": "noun",
+      "ipa": "/ˌmɪsɪnˌtɜːrprɪˈteɪʃən/",
+      "meaningVi": "sự hiểu sai, diễn giải sai",
+      "definitionEn": "the act of understanding or explaining something incorrectly",
+      "example": "Cultural differences often lead to misinterpretation of gestures or tone.",
+      "collocation": "prevent misinterpretation",
+      "band": "7-8"
+    },
+    {
+      "word": "ambiguity",
+      "pos": "noun",
+      "ipa": "/ˌæmbɪˈɡjuːɪti/",
+      "meaningVi": "sự mơ hồ, không rõ ràng",
+      "definitionEn": "the quality of being open to more than one interpretation; inexactness",
+      "example": "Ambiguity in a contract can cause costly disputes during negotiations.",
+      "collocation": "remove ambiguity",
+      "band": "7-8"
+    },
+    {
+      "word": "rapport",
+      "pos": "noun",
+      "ipa": "/ræˈpɔːr/",
+      "meaningVi": "sự hòa hợp, mối quan hệ tốt",
+      "definitionEn": "a close and harmonious relationship with mutual understanding and trust",
+      "example": "Building rapport with clients is the first step toward successful persuasion.",
+      "collocation": "establish rapport",
+      "band": "7-8"
+    },
+    {
+      "word": "debrief",
+      "pos": "verb",
+      "ipa": "/diːˈbriːf/",
+      "meaningVi": "hỏi lại, thu thập thông tin sau sự kiện",
+      "definitionEn": "to question someone about a completed task or event to gather information or feedback",
+      "example": "The manager debriefed the team after the presentation to discuss what went well.",
+      "collocation": "debrief the team",
+      "band": "7-8"
+    },
+    {
+      "word": "succinct",
+      "pos": "adjective",
+      "ipa": "/səkˈsɪŋkt/",
+      "meaningVi": "ngắn gọn, súc tích (mang tính trang trọng)",
+      "definitionEn": "expressed in a clear and brief manner; without unnecessary words",
+      "example": "A succinct summary of the proposal helped the committee reach a quick decision.",
+      "collocation": "succinct response",
+      "band": "7-8"
+    },
+    {
+      "word": "attentiveness",
+      "pos": "noun",
+      "ipa": "/əˈtentɪvnəs/",
+      "meaningVi": "sự chú ý, lắng nghe chăm chú",
+      "definitionEn": "the quality of paying careful attention to what someone is saying or doing",
+      "example": "Active listening requires attentiveness, not just hearing the words.",
+      "collocation": "demonstrate attentiveness",
+      "band": "7-8"
+    },
+    {
+      "word": "eloquence",
+      "pos": "noun",
+      "ipa": "/ˈeləkwəns/",
+      "meaningVi": "tài hùng biện, sự nói lưu loát thuyết phục",
+      "definitionEn": "the ability to speak or write in a fluent, persuasive, and powerful manner",
+      "example": "The politician's eloquence swayed the audience during the debate.",
+      "collocation": "speak with eloquence",
+      "band": "8+"
+    },
+    {
+      "word": "discourse",
+      "pos": "noun",
+      "ipa": "/ˈdɪskɔːrs/",
+      "meaningVi": "diễn ngôn, cuộc thảo luận kéo dài",
+      "definitionEn": "written or spoken communication or debate on a particular topic, often formal or academic",
+      "example": "Critical discourse analysis examines how language shapes social power relations.",
+      "collocation": "engage in discourse",
+      "band": "8+"
+    },
+    {
+      "word": "delineate",
+      "pos": "verb",
+      "ipa": "/dɪˈlɪnieɪt/",
+      "meaningVi": "phác họa, mô tả chi tiết rõ ràng",
+      "definitionEn": "to describe or portray something precisely, outlining its boundaries or details",
+      "example": "In her speech, she delineated the steps needed to improve cross-cultural communication.",
+      "collocation": "delineate the boundaries",
+      "band": "8+"
+    },
+    {
+      "word": "coherent",
+      "pos": "adjective",
+      "ipa": "/koʊˈhɪrənt/",
+      "meaningVi": "mạch lạc, dễ hiểu",
+      "definitionEn": "logical and well-organized; easy to understand because the parts are connected clearly",
+      "example": "A coherent argument is essential for persuading the audience during a debate.",
+      "collocation": "coherent message",
+      "band": "6-7"
+    },
+    {
+      "word": "confer",
+      "pos": "verb",
+      "ipa": "/kənˈfɜr/",
+      "meaningVi": "trao đổi, hội ý",
+      "definitionEn": "to exchange ideas or opinions with someone in order to reach a decision or understanding",
+      "example": "The team members conferred for hours to resolve the communication breakdown.",
+      "collocation": "confer with colleagues",
+      "band": "7-8"
+    },
+    {
+      "word": "connotation",
+      "pos": "noun",
+      "ipa": "/ˌkɑnəˈteɪʃən/",
+      "meaningVi": "hàm ý, sắc thái nghĩa",
+      "definitionEn": "an idea or feeling that a word evokes in addition to its literal meaning",
+      "example": "The word 'pushy' has a negative connotation that can damage rapport in communication.",
+      "collocation": "negative connotation",
+      "band": "7-8"
+    },
+    {
+      "word": "consensus",
+      "pos": "noun",
+      "ipa": "/kənˈsɛnsəs/",
+      "meaningVi": "sự đồng thuận",
+      "definitionEn": "a general agreement among a group of people",
+      "example": "Building consensus requires active listening and willingness to compromise.",
+      "collocation": "reach a consensus",
+      "band": "7-8"
+    },
+    {
+      "word": "convince",
+      "pos": "verb",
+      "ipa": "/kənˈvɪns/",
+      "meaningVi": "thuyết phục",
+      "definitionEn": "to cause someone to believe firmly in the truth of something",
+      "example": "To convince the committee, you must present evidence and address their concerns directly.",
+      "collocation": "convince someone of something",
+      "band": "6-7"
+    },
+    {
+      "word": "disclose",
+      "pos": "verb",
+      "ipa": "/dɪsˈkloʊz/",
+      "meaningVi": "tiết lộ, bộc lộ",
+      "definitionEn": "to make something known or reveal information that was previously hidden",
+      "example": "He was reluctant to disclose his true feelings during the interview.",
+      "collocation": "disclose information",
+      "band": "6-7"
+    },
+    {
+      "word": "dispute",
+      "pos": "noun",
+      "ipa": "/dɪˈspjut/",
+      "meaningVi": "sự tranh luận, bất đồng",
+      "definitionEn": "a disagreement or argument between two or more parties",
+      "example": "A prolonged dispute often stems from poor listening skills and misinterpreted signals.",
+      "collocation": "settle a dispute",
+      "band": "6-7"
+    },
+    {
+      "word": "elaborate",
+      "pos": "verb",
+      "ipa": "/ɪˈlæbəˌreɪt/",
+      "meaningVi": "trình bày chi tiết",
+      "definitionEn": "to develop or present in detail; to explain more thoroughly",
+      "example": "Could you elaborate on your point so that everyone understands the reasoning?",
+      "collocation": "elaborate on a topic",
+      "band": "6-7"
+    },
+    {
+      "word": "enunciate",
+      "pos": "verb",
+      "ipa": "/ɪˈnʌnsiˌeɪt/",
+      "meaningVi": "nói rõ ràng, phát âm rõ",
+      "definitionEn": "to say or pronounce words clearly and distinctly",
+      "example": "A good public speaker should enunciate each word to avoid confusion.",
+      "collocation": "enunciate clearly",
+      "band": "7-8"
+    },
+    {
+      "word": "facilitate",
+      "pos": "verb",
+      "ipa": "/fəˈsɪlɪˌteɪt/",
+      "meaningVi": "tạo điều kiện, hỗ trợ",
+      "definitionEn": "to make a process easier or help something happen smoothly",
+      "example": "Open-ended questions facilitate deeper conversation and mutual understanding.",
+      "collocation": "facilitate communication",
+      "band": "7-8"
+    },
+    {
+      "word": "implication",
+      "pos": "noun",
+      "ipa": "/ˌɪmplɪˈkeɪʃən/",
+      "meaningVi": "ngụ ý, hàm ý",
+      "definitionEn": "a possible future effect or result of something; something that is suggested but not stated directly",
+      "example": "Her silence carried the implication that she disagreed with the proposal.",
+      "collocation": "understand the implication",
+      "band": "7-8"
+    },
+    {
+      "word": "inhibited",
+      "pos": "adjective",
+      "ipa": "/ɪnˈhɪbɪtɪd/",
+      "meaningVi": "bị ức chế, ngại ngùng",
+      "definitionEn": "unable to act naturally or express feelings freely due to self-consciousness or restraint",
+      "example": "Inhibited speakers often struggle to articulate their thoughts in group discussions.",
+      "collocation": "socially inhibited",
+      "band": "7-8"
+    },
+    {
+      "word": "innuendo",
+      "pos": "noun",
+      "ipa": "/ˌɪnjuˈɛndoʊ/",
+      "meaningVi": "lời nói bóng gió, ẩn ý",
+      "definitionEn": "a remark that indirectly suggests something unpleasant or rude",
+      "example": "Using innuendo can create misunderstanding and damage trust in a conversation.",
+      "collocation": "make an innuendo",
+      "band": "8+"
+    },
+    {
+      "word": "interrogate",
+      "pos": "verb",
+      "ipa": "/ɪnˈtɛrəˌgeɪt/",
+      "meaningVi": "hỏi dồn, thẩm vấn",
+      "definitionEn": "to ask someone many questions in a forceful or aggressive way",
+      "example": "Instead of interrogating the witness, the mediator should use open-ended questions.",
+      "collocation": "interrogate a suspect",
+      "band": "7-8"
+    },
+    {
+      "word": "lucid",
+      "pos": "adjective",
+      "ipa": "/ˈluːsɪd/",
+      "meaningVi": "rõ ràng, dễ hiểu",
+      "definitionEn": "expressed clearly so that it is easy to understand",
+      "example": "A lucid explanation helps prevent miscommunication in cross-cultural teams.",
+      "collocation": "lucid explanation",
+      "band": "7-8"
+    },
+    {
+      "word": "mediate",
+      "pos": "verb",
+      "ipa": "/ˈmidiˌeɪt/",
+      "meaningVi": "hòa giải, làm trung gian",
+      "definitionEn": "to intervene between two parties in a dispute to help them reach an agreement",
+      "example": "A skilled manager can mediate conflicts by encouraging empathetic listening.",
+      "collocation": "mediate a dispute",
+      "band": "7-8"
+    },
+    {
+      "word": "miscommunication",
+      "pos": "noun",
+      "ipa": "/ˌmɪskəˌmjuːnɪˈkeɪʃən/",
+      "meaningVi": "sự hiểu lầm trong giao tiếp",
+      "definitionEn": "a failure to communicate ideas or intentions correctly",
+      "example": "Miscommunication often arises from cultural differences in body language.",
+      "collocation": "avoid miscommunication",
+      "band": "6-7"
+    },
+    {
+      "word": "nuance",
+      "pos": "noun",
+      "ipa": "/ˈnuːɑns/",
+      "meaningVi": "sắc thái tinh tế",
+      "definitionEn": "a subtle difference in meaning, expression, or sound",
+      "example": "Grasping the nuance of a speaker's tone is crucial for effective listening.",
+      "collocation": "subtle nuance",
+      "band": "8+"
+    },
+    {
+      "word": "placate",
+      "pos": "verb",
+      "ipa": "/ˈpleɪˌkeɪt/",
+      "meaningVi": "xoa dịu, làm nguôi giận",
+      "definitionEn": "to make someone less angry or hostile by giving in to their demands or soothing them",
+      "example": "The customer service representative tried to placate the irate client with a sincere apology.",
+      "collocation": "placate an opponent",
+      "band": "8+"
+    },
+    {
+      "word": "receptive",
+      "pos": "adjective",
+      "ipa": "/rɪˈsɛptɪv/",
+      "meaningVi": "dễ tiếp thu, cởi mở",
+      "definitionEn": "willing to listen to or accept new ideas, suggestions, or feedback",
+      "example": "A receptive listener encourages the speaker to share more openly.",
+      "collocation": "receptive to feedback",
+      "band": "6-7"
+    },
+    {
+      "word": "refute",
+      "pos": "verb",
+      "ipa": "/rɪˈfjut/",
+      "meaningVi": "bác bỏ, phản bác",
+      "definitionEn": "to prove a statement or argument wrong by providing evidence or reasoning",
+      "example": "He refuted the claim with compelling data during the negotiation.",
+      "collocation": "refute an argument",
+      "band": "7-8"
+    },
+    {
+      "word": "reiterate",
+      "pos": "verb",
+      "ipa": "/riˈɪtəˌreɪt/",
+      "meaningVi": "nhắc lại, lặp lại",
+      "definitionEn": "to say something again, often for emphasis or clarity",
+      "example": "The speaker reiterated the key points to ensure the audience understood the message.",
+      "collocation": "reiterate a point",
+      "band": "6-7"
+    },
+    {
+      "word": "resolve",
+      "pos": "verb",
+      "ipa": "/rɪˈzɑlv/",
+      "meaningVi": "giải quyết (mâu thuẫn, vấn đề)",
+      "definitionEn": "to find a solution to a problem or disagreement",
+      "example": "Active listening is essential to resolve conflicts in a team setting.",
+      "collocation": "resolve a conflict",
+      "band": "6-7"
+    },
+    {
+      "word": "sympathetic",
+      "pos": "adjective",
+      "ipa": "/ˌsɪmpəˈθɛtɪk/",
+      "meaningVi": "thông cảm, đồng cảm",
+      "definitionEn": "showing understanding and care for someone else's feelings or problems",
+      "example": "A sympathetic listener can build trust and encourage honest communication.",
+      "collocation": "sympathetic ear",
+      "band": "6-7"
+    },
+    {
+      "word": "verbalize",
+      "pos": "verb",
+      "ipa": "/ˈvɜrbəˌlaɪz/",
+      "meaningVi": "diễn đạt bằng lời",
+      "definitionEn": "to express something in words, especially thoughts or feelings",
+      "example": "It can be difficult to verbalize complex emotions without proper vocabulary.",
+      "collocation": "verbalize thoughts",
+      "band": "7-8"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "success-failure",
+  "name": "Success and Failure",
+  "nameVi": "Thành công và thất bại",
+  "blurb": "Nỗ lực, thành tựu, vấp ngã",
+  "words": [
+    {
+      "word": "obstacle",
+      "pos": "noun",
+      "ipa": "/ˈɒb.stə.kəl/",
+      "meaningVi": "chướng ngại vật, trở ngại",
+      "definitionEn": "a thing that blocks one's way or prevents progress",
+      "example": "Lack of funding is a major obstacle to the project's completion.",
+      "collocation": "major obstacle",
+      "band": "5-6"
+    },
+    {
+      "word": "hardship",
+      "pos": "noun",
+      "ipa": "/ˈhɑːd.ʃɪp/",
+      "meaningVi": "khó khăn, gian khổ",
+      "definitionEn": "severe suffering or privation",
+      "example": "Many entrepreneurs overcome financial hardship before achieving success.",
+      "collocation": "financial hardship",
+      "band": "5-6"
+    },
+    {
+      "word": "failure",
+      "pos": "noun",
+      "ipa": "/ˈfeɪl.jər/",
+      "meaningVi": "sự thất bại",
+      "definitionEn": "lack of success in achieving a goal",
+      "example": "Failure is often a stepping stone to future accomplishments.",
+      "collocation": "repeated failure",
+      "band": "5-6"
+    },
+    {
+      "word": "achieve",
+      "pos": "verb",
+      "ipa": "/əˈtʃiːv/",
+      "meaningVi": "đạt được",
+      "definitionEn": "to successfully reach a desired objective or result",
+      "example": "She worked tirelessly to achieve her dream of becoming a doctor.",
+      "collocation": "achieve a goal",
+      "band": "5-6"
+    },
+    {
+      "word": "overcome",
+      "pos": "verb",
+      "ipa": "/ˌəʊ.vəˈkʌm/",
+      "meaningVi": "vượt qua",
+      "definitionEn": "to successfully deal with a problem or difficulty",
+      "example": "They managed to overcome every setback during the campaign.",
+      "collocation": "overcome an obstacle",
+      "band": "5-6"
+    },
+    {
+      "word": "endeavor",
+      "pos": "noun",
+      "ipa": "/ɪnˈdev.ər/",
+      "meaningVi": "sự nỗ lực, cố gắng",
+      "definitionEn": "an attempt to achieve something, especially a difficult one",
+      "example": "His latest endeavor in renewable energy has attracted global attention.",
+      "collocation": "successful endeavor",
+      "band": "6-7"
+    },
+    {
+      "word": "setback",
+      "pos": "noun",
+      "ipa": "/ˈset.bæk/",
+      "meaningVi": "sự thụt lùi, trở ngại",
+      "definitionEn": "a reversal or check in progress",
+      "example": "The team suffered a major setback when their funding was cut.",
+      "collocation": "suffer a setback",
+      "band": "6-7"
+    },
+    {
+      "word": "milestone",
+      "pos": "noun",
+      "ipa": "/ˈmaɪl.stəʊn/",
+      "meaningVi": "cột mốc, thành tựu quan trọng",
+      "definitionEn": "an important event or stage in development",
+      "example": "Graduating from university is a significant milestone in one's life.",
+      "collocation": "significant milestone",
+      "band": "6-7"
+    },
+    {
+      "word": "accomplishment",
+      "pos": "noun",
+      "ipa": "/əˈkʌm.plɪʃ.mənt/",
+      "meaningVi": "thành tựu, thành tích",
+      "definitionEn": "something that has been achieved successfully",
+      "example": "Winning the award was the greatest accomplishment of her career.",
+      "collocation": "great accomplishment",
+      "band": "6-7"
+    },
+    {
+      "word": "aspiration",
+      "pos": "noun",
+      "ipa": "/ˌæs.pəˈreɪ.ʃən/",
+      "meaningVi": "khát vọng, hoài bão",
+      "definitionEn": "a strong desire to achieve something high or great",
+      "example": "Many young people have aspirations to become leaders in their fields.",
+      "collocation": "personal aspiration",
+      "band": "6-7"
+    },
+    {
+      "word": "attain",
+      "pos": "verb",
+      "ipa": "/əˈteɪn/",
+      "meaningVi": "đạt được (sau nhiều nỗ lực)",
+      "definitionEn": "to succeed in achieving something after effort",
+      "example": "Only a few climbers manage to attain the summit of Everest.",
+      "collocation": "attain success",
+      "band": "6-7"
+    },
+    {
+      "word": "surpass",
+      "pos": "verb",
+      "ipa": "/səˈpɑːs/",
+      "meaningVi": "vượt qua, hơn hẳn",
+      "definitionEn": "to do or be better than something or someone",
+      "example": "Her sales figures have surpassed all previous records.",
+      "collocation": "surpass expectations",
+      "band": "6-7"
+    },
+    {
+      "word": "flourish",
+      "pos": "verb",
+      "ipa": "/ˈflʌr.ɪʃ/",
+      "meaningVi": "phát triển mạnh mẽ, thịnh vượng",
+      "definitionEn": "to grow or develop in a healthy or vigorous way",
+      "example": "The business began to flourish after the new marketing strategy was implemented.",
+      "collocation": "flourish in an environment",
+      "band": "6-7"
+    },
+    {
+      "word": "perseverance",
+      "pos": "noun",
+      "ipa": "/ˌpɜː.sɪˈvɪə.rəns/",
+      "meaningVi": "sự kiên trì, bền bỉ",
+      "definitionEn": "persistence in doing something despite difficulty or delay",
+      "example": "Perseverance is often the key to turning failure into success.",
+      "collocation": "show perseverance",
+      "band": "7-8"
+    },
+    {
+      "word": "resilience",
+      "pos": "noun",
+      "ipa": "/rɪˈzɪl.i.əns/",
+      "meaningVi": "sự kiên cường, khả năng phục hồi",
+      "definitionEn": "the capacity to recover quickly from difficulties",
+      "example": "Her resilience in the face of adversity inspired everyone around her.",
+      "collocation": "emotional resilience",
+      "band": "7-8"
+    },
+    {
+      "word": "triumph",
+      "pos": "noun",
+      "ipa": "/ˈtraɪ.əmf/",
+      "meaningVi": "thắng lợi lớn, thành công rực rỡ",
+      "definitionEn": "a great victory or achievement",
+      "example": "The team's triumph in the championship was celebrated nationwide.",
+      "collocation": "triumph over adversity",
+      "band": "7-8"
+    },
+    {
+      "word": "downfall",
+      "pos": "noun",
+      "ipa": "/ˈdaʊn.fɔːl/",
+      "meaningVi": "sự sụp đổ, nguyên nhân thất bại",
+      "definitionEn": "a loss of power, status, or prosperity; a cause of failure",
+      "example": "Arrogance was the downfall of many once-successful leaders.",
+      "collocation": "lead to one's downfall",
+      "band": "7-8"
+    },
+    {
+      "word": "breakthrough",
+      "pos": "noun",
+      "ipa": "/ˈbreɪk.θruː/",
+      "meaningVi": "đột phá, bước tiến quan trọng",
+      "definitionEn": "a sudden, important advance or discovery",
+      "example": "The development of the vaccine was a major breakthrough in medical science.",
+      "collocation": "scientific breakthrough",
+      "band": "7-8"
+    },
+    {
+      "word": "pinnacle",
+      "pos": "noun",
+      "ipa": "/ˈpɪn.ə.kəl/",
+      "meaningVi": "đỉnh cao, đỉnh điểm",
+      "definitionEn": "the most successful point of something",
+      "example": "Winning an Olympic gold medal is often considered the pinnacle of an athlete's career.",
+      "collocation": "reach the pinnacle",
+      "band": "7-8"
+    },
+    {
+      "word": "adversity",
+      "pos": "noun",
+      "ipa": "/ədˈvɜː.sə.ti/",
+      "meaningVi": "nghịch cảnh, khó khăn",
+      "definitionEn": "a difficult or unpleasant situation",
+      "example": "Success is often sweeter when achieved after overcoming adversity.",
+      "collocation": "face adversity",
+      "band": "7-8"
+    },
+    {
+      "word": "falter",
+      "pos": "verb",
+      "ipa": "/ˈfɔːl.tər/",
+      "meaningVi": "chùn bước, nao núng, suy yếu",
+      "definitionEn": "to lose strength or momentum; to hesitate",
+      "example": "His confidence began to falter after repeated rejections.",
+      "collocation": "falter in one's efforts",
+      "band": "7-8"
+    },
+    {
+      "word": "acclaim",
+      "pos": "noun",
+      "ipa": "/əˈkleɪm/",
+      "meaningVi": "sự hoan nghênh, ca ngợi",
+      "definitionEn": "enthusiastic and public praise",
+      "example": "The novel received widespread critical acclaim after its publication.",
+      "collocation": "critical acclaim",
+      "band": "8+"
+    },
+    {
+      "word": "accolade",
+      "pos": "noun",
+      "ipa": "/ˈæk.ə.leɪd/",
+      "meaningVi": "giải thưởng, vinh dự",
+      "definitionEn": "an award or privilege granted as a special honor",
+      "example": "The Nobel Prize is one of the highest accolades a scientist can receive.",
+      "collocation": "receive an accolade",
+      "band": "8+"
+    },
+    {
+      "word": "tenacity",
+      "pos": "noun",
+      "ipa": "/təˈnæs.ə.ti/",
+      "meaningVi": "sự kiên cường, bền bỉ không lùi bước",
+      "definitionEn": "the quality of being very determined and persistent",
+      "example": "Her tenacity in pursuing her goals eventually led to a breakthrough.",
+      "collocation": "dogged tenacity",
+      "band": "8+"
+    },
+    {
+      "word": "debacle",
+      "pos": "noun",
+      "ipa": "/dɪˈbɑː.kəl/",
+      "meaningVi": "sự thất bại thảm hại",
+      "definitionEn": "a sudden and ignominious failure; a fiasco",
+      "example": "The product launch turned into a complete debacle due to poor planning.",
+      "collocation": "financial debacle",
+      "band": "8+"
+    },
+    {
+      "word": "effort",
+      "pos": "noun",
+      "ipa": "/ˈɛfərt/",
+      "meaningVi": "sự nỗ lực",
+      "definitionEn": "the physical or mental energy needed to do something",
+      "example": "She put tremendous effort into her research.",
+      "collocation": "make a concerted effort",
+      "band": "5-6"
+    },
+    {
+      "word": "success",
+      "pos": "noun",
+      "ipa": "/səkˈsɛs/",
+      "meaningVi": "sự thành công",
+      "definitionEn": "the accomplishment of an aim or purpose",
+      "example": "His success was the result of years of hard work.",
+      "collocation": "enjoy success",
+      "band": "5-6"
+    },
+    {
+      "word": "victory",
+      "pos": "noun",
+      "ipa": "/ˈvɪktəri/",
+      "meaningVi": "chiến thắng",
+      "definitionEn": "an act of defeating an opponent",
+      "example": "The team celebrated their victory.",
+      "collocation": "claim victory",
+      "band": "5-6"
+    },
+    {
+      "word": "defeat",
+      "pos": "noun",
+      "ipa": "/dɪˈfiːt/",
+      "meaningVi": "sự thất bại, đánh bại",
+      "definitionEn": "the state of being beaten",
+      "example": "They suffered a crushing defeat.",
+      "collocation": "concede defeat",
+      "band": "5-6"
+    },
+    {
+      "word": "challenge",
+      "pos": "noun",
+      "ipa": "/ˈtʃælɪndʒ/",
+      "meaningVi": "thách thức",
+      "definitionEn": "a task or situation that tests one's abilities",
+      "example": "This challenge tested our abilities.",
+      "collocation": "face a challenge",
+      "band": "5-6"
+    },
+    {
+      "word": "struggle",
+      "pos": "noun",
+      "ipa": "/ˈstrʌɡəl/",
+      "meaningVi": "cuộc đấu tranh, sự khó khăn",
+      "definitionEn": "a forceful or violent effort to get free of restraint",
+      "example": "The struggle for survival is real.",
+      "collocation": "ongoing struggle",
+      "band": "5-6"
+    },
+    {
+      "word": "lesson",
+      "pos": "noun",
+      "ipa": "/ˈlɛsən/",
+      "meaningVi": "bài học",
+      "definitionEn": "an experience that teaches a moral or practical lesson",
+      "example": "Mistakes often teach a valuable lesson.",
+      "collocation": "learn a lesson",
+      "band": "5-6"
+    },
+    {
+      "word": "growth",
+      "pos": "noun",
+      "ipa": "/ɡroʊθ/",
+      "meaningVi": "sự phát triển, trưởng thành",
+      "definitionEn": "the process of increasing in size or improving",
+      "example": "Personal growth often comes from challenges.",
+      "collocation": "experience growth",
+      "band": "5-6"
+    },
+    {
+      "word": "progress",
+      "pos": "noun",
+      "ipa": "/ˈprɒɡrɛs/",
+      "meaningVi": "tiến bộ, sự tiến triển",
+      "definitionEn": "forward or onward movement toward a goal",
+      "example": "We have made significant progress.",
+      "collocation": "make progress",
+      "band": "5-6"
+    },
+    {
+      "word": "improvement",
+      "pos": "noun",
+      "ipa": "/ɪmˈpruːvmənt/",
+      "meaningVi": "sự cải thiện",
+      "definitionEn": "the act of making something better",
+      "example": "There is room for improvement.",
+      "collocation": "continuous improvement",
+      "band": "5-6"
+    },
+    {
+      "word": "determination",
+      "pos": "noun",
+      "ipa": "/dɪˌtɜːrmɪˈneɪʃən/",
+      "meaningVi": "sự quyết tâm",
+      "definitionEn": "firmness of purpose",
+      "example": "Her determination never wavered.",
+      "collocation": "show determination",
+      "band": "6-7"
+    },
+    {
+      "word": "persistence",
+      "pos": "noun",
+      "ipa": "/pərˈsɪstəns/",
+      "meaningVi": "sự kiên trì",
+      "definitionEn": "continued effort to do something despite difficulties",
+      "example": "Persistence is key to success.",
+      "collocation": "persistence pays off",
+      "band": "6-7"
+    },
+    {
+      "word": "dedication",
+      "pos": "noun",
+      "ipa": "/ˌdɛdɪˈkeɪʃən/",
+      "meaningVi": "sự cống hiến, tận tụy",
+      "definitionEn": "the quality of being committed to a task",
+      "example": "His dedication to the project was admirable.",
+      "collocation": "total dedication",
+      "band": "6-7"
+    },
+    {
+      "word": "stamina",
+      "pos": "noun",
+      "ipa": "/ˈstæmɪnə/",
+      "meaningVi": "sức bền, sự chịu đựng",
+      "definitionEn": "the ability to sustain prolonged physical or mental effort",
+      "example": "Running a marathon requires great stamina.",
+      "collocation": "physical stamina",
+      "band": "6-7"
+    },
+    {
+      "word": "diligence",
+      "pos": "noun",
+      "ipa": "/ˈdɪlɪdʒəns/",
+      "meaningVi": "sự siêng năng, chăm chỉ",
+      "definitionEn": "careful and persistent work or effort",
+      "example": "Diligence is essential for academic success.",
+      "collocation": "with diligence",
+      "band": "6-7"
+    },
+    {
+      "word": "hurdle",
+      "pos": "noun",
+      "ipa": "/ˈhɜːrdl/",
+      "meaningVi": "rào cản, trở ngại",
+      "definitionEn": "an obstacle or difficulty",
+      "example": "The first hurdle was securing funding.",
+      "collocation": "clear a hurdle",
+      "band": "6-7"
+    },
+    {
+      "word": "barrier",
+      "pos": "noun",
+      "ipa": "/ˈbæriər/",
+      "meaningVi": "rào cản, chướng ngại",
+      "definitionEn": "a circumstance that obstructs progress",
+      "example": "Language can be a barrier to communication.",
+      "collocation": "break down barriers",
+      "band": "6-7"
+    },
+    {
+      "word": "frustration",
+      "pos": "noun",
+      "ipa": "/frʌˈstreɪʃən/",
+      "meaningVi": "sự thất vọng, bực bội",
+      "definitionEn": "the feeling of being upset or annoyed",
+      "example": "Her frustration grew with each unsuccessful attempt.",
+      "collocation": "express frustration",
+      "band": "6-7"
+    },
+    {
+      "word": "recognition",
+      "pos": "noun",
+      "ipa": "/ˌrɛkəɡˈnɪʃən/",
+      "meaningVi": "sự công nhận",
+      "definitionEn": "acknowledgment of someone's work or achievements",
+      "example": "She received recognition for her efforts.",
+      "collocation": "gain recognition",
+      "band": "6-7"
+    },
+    {
+      "word": "glory",
+      "pos": "noun",
+      "ipa": "/ˈɡlɔːri/",
+      "meaningVi": "vinh quang",
+      "definitionEn": "fame and honor won by great achievements",
+      "example": "He sought glory on the battlefield.",
+      "collocation": "earn glory",
+      "band": "6-7"
+    },
+    {
+      "word": "strive",
+      "pos": "verb",
+      "ipa": "/straɪv/",
+      "meaningVi": "phấn đấu, nỗ lực",
+      "definitionEn": "to make great efforts to achieve something",
+      "example": "We must strive for excellence.",
+      "collocation": "strive for success",
+      "band": "6-7"
+    },
+    {
+      "word": "grit",
+      "pos": "noun",
+      "ipa": "/ɡrɪt/",
+      "meaningVi": "sự kiên cường",
+      "definitionEn": "courage and resolve; strength of character",
+      "example": "She showed true grit in the face of difficulties.",
+      "collocation": "true grit",
+      "band": "7-8"
+    },
+    {
+      "word": "prestige",
+      "pos": "noun",
+      "ipa": "/prɛˈstiːʒ/",
+      "meaningVi": "uy tín, danh tiếng",
+      "definitionEn": "widespread respect and admiration",
+      "example": "The university has great prestige.",
+      "collocation": "high prestige",
+      "band": "7-8"
+    },
+    {
+      "word": "conquest",
+      "pos": "noun",
+      "ipa": "/ˈkɒŋkwest/",
+      "meaningVi": "sự chinh phục",
+      "definitionEn": "the act of gaining control over something",
+      "example": "The conquest of the mountain was a feat.",
+      "collocation": "military conquest",
+      "band": "7-8"
+    },
+    {
+      "word": "ascendancy",
+      "pos": "noun",
+      "ipa": "/əˈsɛndənsi/",
+      "meaningVi": "sự thống trị, ưu thế",
+      "definitionEn": "a position of dominant power or influence",
+      "example": "The company gained ascendancy over its rivals.",
+      "collocation": "gain ascendancy",
+      "band": "8+"
+    }
+  ]
+}

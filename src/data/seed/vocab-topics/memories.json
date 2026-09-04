@@ -1,0 +1,508 @@
+{
+  "slug": "memories",
+  "name": "Memories and Childhood",
+  "nameVi": "Ký ức",
+  "blurb": "Kỷ niệm, tuổi thơ, hoài niệm",
+  "words": [
+    {
+      "word": "nostalgia",
+      "pos": "noun",
+      "ipa": "/nɒˈstæl.dʒə/",
+      "meaningVi": "nỗi nhớ da diết về quá khứ",
+      "definitionEn": "a sentimental longing or wistful affection for a period in the past",
+      "example": "The old photograph filled her with a deep sense of nostalgia for her carefree childhood.",
+      "collocation": "feel nostalgia for",
+      "band": "6-7"
+    },
+    {
+      "word": "reminiscence",
+      "pos": "noun",
+      "ipa": "/ˌrem.ɪˈnɪs.əns/",
+      "meaningVi": "hồi ức, kỷ niệm đã qua",
+      "definitionEn": "a story or account of a past event or experience that is remembered",
+      "example": "His reminiscences of summer holidays at the beach were vivid and heartwarming.",
+      "collocation": "fond reminiscence",
+      "band": "7-8"
+    },
+    {
+      "word": "recollection",
+      "pos": "noun",
+      "ipa": "/ˌrek.əˈlek.ʃən/",
+      "meaningVi": "sự hồi tưởng, ký ức",
+      "definitionEn": "the action or faculty of remembering something; a memory",
+      "example": "Her recollection of the school's annual fair was surprisingly detailed.",
+      "collocation": "vivid recollection",
+      "band": "6-7"
+    },
+    {
+      "word": "vivid",
+      "pos": "adjective",
+      "ipa": "/ˈvɪv.ɪd/",
+      "meaningVi": "sống động, rõ ràng (ký ức)",
+      "definitionEn": "producing powerful feelings or strong, clear images in the mind",
+      "example": "He has a vivid memory of the first time he rode a bicycle without training wheels.",
+      "collocation": "vivid memory",
+      "band": "6-7"
+    },
+    {
+      "word": "cherish",
+      "pos": "verb",
+      "ipa": "/ˈtʃer.ɪʃ/",
+      "meaningVi": "trân trọng, nâng niu (kỷ niệm)",
+      "definitionEn": "to keep a memory or feeling in your mind because it is valuable or important",
+      "example": "I will always cherish the moments I spent playing with my grandparents.",
+      "collocation": "cherish the memory",
+      "band": "7-8"
+    },
+    {
+      "word": "infancy",
+      "pos": "noun",
+      "ipa": "/ˈɪn.fən.si/",
+      "meaningVi": "thời thơ ấu (0-2 tuổi)",
+      "definitionEn": "the early stage of childhood, especially the first year of life",
+      "example": "The experiences during infancy can have a profound impact on a person's emotional development.",
+      "collocation": "early infancy",
+      "band": "6-7"
+    },
+    {
+      "word": "upbringing",
+      "pos": "noun",
+      "ipa": "/ˈʌp.brɪŋ.ɪŋ/",
+      "meaningVi": "sự nuôi dạy, giáo dục từ nhỏ",
+      "definitionEn": "the way in which a child is raised and educated",
+      "example": "A strict upbringing often shapes a child's sense of discipline and responsibility.",
+      "collocation": "strict upbringing",
+      "band": "7-8"
+    },
+    {
+      "word": "formative",
+      "pos": "adjective",
+      "ipa": "/ˈfɔː.mə.tɪv/",
+      "meaningVi": "hình thành, có ảnh hưởng lớn (thời kỳ phát triển)",
+      "definitionEn": "relating to the period of someone's life that has a strong influence on their character",
+      "example": "The formative years of childhood are crucial for developing social skills.",
+      "collocation": "formative years",
+      "band": "7-8"
+    },
+    {
+      "word": "milestone",
+      "pos": "noun",
+      "ipa": "/ˈmaɪl.stəʊn/",
+      "meaningVi": "cột mốc quan trọng (trong cuộc đời)",
+      "definitionEn": "an important event or stage in the development of something",
+      "example": "Learning to walk is a major milestone in a child's physical development.",
+      "collocation": "reach a milestone",
+      "band": "6-7"
+    },
+    {
+      "word": "flashback",
+      "pos": "noun",
+      "ipa": "/ˈflæʃ.bæk/",
+      "meaningVi": "hồi tưởng đột ngột, ký ức ùa về",
+      "definitionEn": "a sudden, clear memory of a past event that seems real",
+      "example": "The smell of freshly baked bread triggered a flashback to her grandmother's kitchen.",
+      "collocation": "have a flashback",
+      "band": "6-7"
+    },
+    {
+      "word": "memento",
+      "pos": "noun",
+      "ipa": "/məˈmen.təʊ/",
+      "meaningVi": "vật kỷ niệm",
+      "definitionEn": "an object kept as a reminder of a person, place, or event",
+      "example": "She kept the seashell as a memento of their family trip to the coast.",
+      "collocation": "keep as a memento",
+      "band": "7-8"
+    },
+    {
+      "word": "keepsake",
+      "pos": "noun",
+      "ipa": "/ˈkiːp.seɪk/",
+      "meaningVi": "vật lưu niệm nhỏ",
+      "definitionEn": "a small item that is kept in memory of the person who gave it or the event it is associated with",
+      "example": "The locket was a precious keepsake from her late mother.",
+      "collocation": "treasured keepsake",
+      "band": "6-7"
+    },
+    {
+      "word": "innocent",
+      "pos": "adjective",
+      "ipa": "/ˈɪn.ə.sənt/",
+      "meaningVi": "ngây thơ, trong trắng (thời thơ ấu)",
+      "definitionEn": "free from moral wrong; not corrupted or guilty",
+      "example": "The innocent games of childhood often involve simple imagination and creativity.",
+      "collocation": "innocent childhood",
+      "band": "5-6"
+    },
+    {
+      "word": "carefree",
+      "pos": "adjective",
+      "ipa": "/ˈkeə.friː/",
+      "meaningVi": "vô tư lự, không lo âu",
+      "definitionEn": "free from anxiety or responsibility",
+      "example": "Those carefree days of summer vacation are among my most cherished memories.",
+      "collocation": "carefree days",
+      "band": "5-6"
+    },
+    {
+      "word": "fond",
+      "pos": "adjective",
+      "ipa": "/fɒnd/",
+      "meaningVi": "yêu mến, trìu mến (kỷ niệm)",
+      "definitionEn": "having affection or liking for someone or something",
+      "example": "I have fond memories of reading bedtime stories with my father.",
+      "collocation": "fond memories",
+      "band": "5-6"
+    },
+    {
+      "word": "distant",
+      "pos": "adjective",
+      "ipa": "/ˈdɪs.tənt/",
+      "meaningVi": "xa xôi (trong quá khứ)",
+      "definitionEn": "far away in time or space",
+      "example": "The distant past of early childhood often feels like another world.",
+      "collocation": "distant past",
+      "band": "5-6"
+    },
+    {
+      "word": "recall",
+      "pos": "verb",
+      "ipa": "/rɪˈkɔːl/",
+      "meaningVi": "nhớ lại, gợi nhớ",
+      "definitionEn": "to remember something from the past",
+      "example": "Many adults can clearly recall their first day at school.",
+      "collocation": "recall vividly",
+      "band": "5-6"
+    },
+    {
+      "word": "blur",
+      "pos": "verb",
+      "ipa": "/blɜːr/",
+      "meaningVi": "mờ nhạt, khó nhớ rõ",
+      "definitionEn": "to become unclear or difficult to see or remember",
+      "example": "As time passes, the details of childhood incidents often blur together.",
+      "collocation": "blur into one",
+      "band": "6-7"
+    },
+    {
+      "word": "fade",
+      "pos": "verb",
+      "ipa": "/feɪd/",
+      "meaningVi": "phai nhạt dần (ký ức)",
+      "definitionEn": "to gradually become less clear or less bright",
+      "example": "Memories of early childhood tend to fade unless they are frequently revisited.",
+      "collocation": "fade away",
+      "band": "6-7"
+    },
+    {
+      "word": "sentimental",
+      "pos": "adjective",
+      "ipa": "/ˌsen.tɪˈmen.təl/",
+      "meaningVi": "đa cảm, dễ xúc động về kỷ niệm",
+      "definitionEn": "based on or influenced by feelings of tenderness, sadness, or nostalgia",
+      "example": "She became sentimental when she found her old toy box in the attic.",
+      "collocation": "sentimental value",
+      "band": "7-8"
+    },
+    {
+      "word": "yearning",
+      "pos": "noun",
+      "ipa": "/ˈjɜː.nɪŋ/",
+      "meaningVi": "niềm khao khát, mong mỏi về quá khứ",
+      "definitionEn": "a strong feeling of wishing for something, especially something that you have lost or cannot have",
+      "example": "The old song evoked a deep yearning for the simplicity of childhood.",
+      "collocation": "yearning for the past",
+      "band": "7-8"
+    },
+    {
+      "word": "evoke",
+      "pos": "verb",
+      "ipa": "/ɪˈvəʊk/",
+      "meaningVi": "gợi lên (ký ức, cảm xúc)",
+      "definitionEn": "to bring a memory, feeling, or image into the mind",
+      "example": "The scent of freshly cut grass can evoke memories of playing in the garden as a child.",
+      "collocation": "evoke memories",
+      "band": "7-8"
+    },
+    {
+      "word": "commemorate",
+      "pos": "verb",
+      "ipa": "/kəˈmem.ə.reɪt/",
+      "meaningVi": "tưởng niệm, kỷ niệm",
+      "definitionEn": "to remember and show respect for a past event or person",
+      "example": "They built a small statue to commemorate the happy days of their shared childhood.",
+      "collocation": "commemorate an event",
+      "band": "7-8"
+    },
+    {
+      "word": "poignant",
+      "pos": "adjective",
+      "ipa": "/ˈpɔɪ.njənt/",
+      "meaningVi": "đầy xúc động, sâu sắc (gây thương nhớ)",
+      "definitionEn": "evoking a keen sense of sadness or regret, often related to memories",
+      "example": "The photograph of her childhood home was a poignant reminder of the time that had passed.",
+      "collocation": "poignant memory",
+      "band": "8+"
+    },
+    {
+      "word": "elusive",
+      "pos": "adjective",
+      "ipa": "/ɪˈluː.sɪv/",
+      "meaningVi": "khó nắm bắt, khó nhớ rõ (ký ức)",
+      "definitionEn": "difficult to find, catch, or achieve; often used to describe memories that are hard to recall",
+      "example": "The details of her earliest memory remain elusive, no matter how hard she tries to remember.",
+      "collocation": "elusive memory",
+      "band": "8+"
+    },
+    {
+      "word": "childhood",
+      "pos": "noun",
+      "ipa": "/ˈtʃaɪld.hʊd/",
+      "meaningVi": "thời thơ ấu",
+      "definitionEn": "the period of time when you are a child",
+      "example": "My childhood was filled with joyful moments.",
+      "collocation": "during childhood",
+      "band": "5-6"
+    },
+    {
+      "word": "memory",
+      "pos": "noun",
+      "ipa": "/ˈmem.ər.i/",
+      "meaningVi": "ký ức",
+      "definitionEn": "something that you remember",
+      "example": "One of my earliest memories is playing in the garden.",
+      "collocation": "childhood memory",
+      "band": "5-6"
+    },
+    {
+      "word": "past",
+      "pos": "noun",
+      "ipa": "/pæst/",
+      "meaningVi": "quá khứ",
+      "definitionEn": "the time before the present",
+      "example": "Dwelling on the past can prevent personal growth.",
+      "collocation": "in the past",
+      "band": "5-6"
+    },
+    {
+      "word": "experience",
+      "pos": "noun",
+      "ipa": "/ɪkˈspɪr.i.əns/",
+      "meaningVi": "trải nghiệm",
+      "definitionEn": "something that happens to you that affects you",
+      "example": "My experience of moving to a new city shaped my personality.",
+      "collocation": "life experience",
+      "band": "5-6"
+    },
+    {
+      "word": "impression",
+      "pos": "noun",
+      "ipa": "/ɪmˈpreʃ.ən/",
+      "meaningVi": "ấn tượng",
+      "definitionEn": "an idea, feeling, or opinion about something",
+      "example": "The first impression of a place can stay with you forever.",
+      "collocation": "lasting impression",
+      "band": "6-7"
+    },
+    {
+      "word": "influence",
+      "pos": "noun",
+      "ipa": "/ˈɪn.flu.əns/",
+      "meaningVi": "ảnh hưởng",
+      "definitionEn": "the power to affect how someone or something develops",
+      "example": "My parents' influence on my childhood was profound.",
+      "collocation": "positive influence",
+      "band": "6-7"
+    },
+    {
+      "word": "period",
+      "pos": "noun",
+      "ipa": "/ˈpɪr.i.əd/",
+      "meaningVi": "giai đoạn",
+      "definitionEn": "a length of time",
+      "example": "The early period of my life was spent in a small town.",
+      "collocation": "early childhood period",
+      "band": "5-6"
+    },
+    {
+      "word": "phase",
+      "pos": "noun",
+      "ipa": "/feɪz/",
+      "meaningVi": "giai đoạn",
+      "definitionEn": "a stage in a process of change or development",
+      "example": "Adolescence is a challenging phase for many people.",
+      "collocation": "awkward phase",
+      "band": "6-7"
+    },
+    {
+      "word": "tradition",
+      "pos": "noun",
+      "ipa": "/trəˈdɪʃ.ən/",
+      "meaningVi": "truyền thống",
+      "definitionEn": "a custom or belief passed down over time",
+      "example": "Our family tradition of Sunday dinners is a cherished memory.",
+      "collocation": "family tradition",
+      "band": "6-7"
+    },
+    {
+      "word": "legacy",
+      "pos": "noun",
+      "ipa": "/ˈleɡ.ə.si/",
+      "meaningVi": "di sản",
+      "definitionEn": "something that is handed down from the past",
+      "example": "The legacy of my grandparents' hard work still inspires me.",
+      "collocation": "cultural legacy",
+      "band": "7-8"
+    },
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈher.ɪ.tɪdʒ/",
+      "meaningVi": "di sản",
+      "definitionEn": "the traditions, achievements, and beliefs that are part of a group's history",
+      "example": "Exploring my cultural heritage helped me understand my roots.",
+      "collocation": "cultural heritage",
+      "band": "7-8"
+    },
+    {
+      "word": "ancestry",
+      "pos": "noun",
+      "ipa": "/ˈæn.ses.tri/",
+      "meaningVi": "tổ tiên",
+      "definitionEn": "a person's family line of descent",
+      "example": "I traced my ancestry back to the 18th century.",
+      "collocation": "ancient ancestry",
+      "band": "7-8"
+    },
+    {
+      "word": "roots",
+      "pos": "noun",
+      "ipa": "/ruːts/",
+      "meaningVi": "cội nguồn",
+      "definitionEn": "the origin or background of a person or thing",
+      "example": "My immigrant parents instilled in me a sense of my roots.",
+      "collocation": "family roots",
+      "band": "6-7"
+    },
+    {
+      "word": "memorable",
+      "pos": "adjective",
+      "ipa": "/ˈmem.ər.ə.bəl/",
+      "meaningVi": "đáng nhớ",
+      "definitionEn": "worth remembering",
+      "example": "My first trip abroad was a memorable experience.",
+      "collocation": "memorable moment",
+      "band": "6-7"
+    },
+    {
+      "word": "significant",
+      "pos": "adjective",
+      "ipa": "/sɪɡˈnɪf.ɪ.kənt/",
+      "meaningVi": "có ý nghĩa",
+      "definitionEn": "important and meaningful",
+      "example": "That event was significant in shaping my childhood.",
+      "collocation": "significant event",
+      "band": "6-7"
+    },
+    {
+      "word": "profound",
+      "pos": "adjective",
+      "ipa": "/prəˈfaʊnd/",
+      "meaningVi": "sâu sắc",
+      "definitionEn": "very great or intense",
+      "example": "The loss of a pet can have a profound impact on a child.",
+      "collocation": "profound effect",
+      "band": "7-8"
+    },
+    {
+      "word": "enduring",
+      "pos": "adjective",
+      "ipa": "/ɪnˈdʊr.ɪŋ/",
+      "meaningVi": "lâu dài, bền bỉ",
+      "definitionEn": "lasting over a long period",
+      "example": "Some childhood memories are enduring.",
+      "collocation": "enduring memory",
+      "band": "7-8"
+    },
+    {
+      "word": "impressionable",
+      "pos": "adjective",
+      "ipa": "/ɪmˈpreʃ.ən.ə.bəl/",
+      "meaningVi": "dễ bị ảnh hưởng",
+      "definitionEn": "easily influenced",
+      "example": "Children are impressionable at a young age.",
+      "collocation": "impressionable mind",
+      "band": "7-8"
+    },
+    {
+      "word": "reflective",
+      "pos": "adjective",
+      "ipa": "/rɪˈflek.tɪv/",
+      "meaningVi": "suy ngẫm, hồi tưởng",
+      "definitionEn": "thinking deeply about the past",
+      "example": "The old photograph made me feel reflective.",
+      "collocation": "reflective mood",
+      "band": "7-8"
+    },
+    {
+      "word": "imprint",
+      "pos": "verb",
+      "ipa": "/ɪmˈprɪnt/",
+      "meaningVi": "in sâu, khắc sâu",
+      "definitionEn": "to fix firmly in the mind",
+      "example": "My early years imprinted a love of nature in me.",
+      "collocation": "imprinted on memory",
+      "band": "7-8"
+    },
+    {
+      "word": "hark back",
+      "pos": "phrasal verb",
+      "ipa": "/hɑːrk bæk/",
+      "meaningVi": "nhắc lại, gợi lại",
+      "definitionEn": "to mention something that happened in the past",
+      "example": "The old house harks back to a simpler time.",
+      "collocation": "hark back to",
+      "band": "8+"
+    },
+    {
+      "word": "relive",
+      "pos": "verb",
+      "ipa": "/riːˈlɪv/",
+      "meaningVi": "sống lại",
+      "definitionEn": "to experience again in the mind",
+      "example": "I often relive the happy moments of my childhood.",
+      "collocation": "relive memories",
+      "band": "6-7"
+    },
+    {
+      "word": "reflect",
+      "pos": "verb",
+      "ipa": "/rɪˈflekt/",
+      "meaningVi": "suy ngẫm, nhìn lại",
+      "definitionEn": "to think carefully about the past",
+      "example": "I often reflect on my childhood memories.",
+      "collocation": "reflect on the past",
+      "band": "6-7"
+    },
+    {
+      "word": "retrospect",
+      "pos": "noun",
+      "ipa": "/ˈret.rə.spekt/",
+      "meaningVi": "sự nhìn lại quá khứ",
+      "definitionEn": "thinking about past events",
+      "example": "In retrospect, I realize how important my childhood was.",
+      "collocation": "in retrospect",
+      "band": "8+"
+    },
+    {
+      "word": "treasure",
+      "pos": "verb",
+      "ipa": "/ˈtreʒ.ər/",
+      "meaningVi": "trân trọng, coi trọng",
+      "definitionEn": "to keep something valuable in your memory",
+      "example": "I treasure the time I spent with my grandparents.",
+      "collocation": "treasure memories",
+      "band": "6-7"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "agriculture",
+  "name": "Agriculture and Food Production",
+  "nameVi": "Nông nghiệp",
+  "blurb": "Trồng trọt, chăn nuôi, mùa vụ",
+  "words": [
+    {
+      "word": "cultivate",
+      "pos": "verb",
+      "ipa": "/ˈkʌltɪveɪt/",
+      "meaningVi": "canh tác, trồng trọt",
+      "definitionEn": "To prepare and use land for growing crops.",
+      "example": "Farmers in this region have been cultivating rice for centuries.",
+      "collocation": "cultivate crops",
+      "band": "6-7"
+    },
+    {
+      "word": "harvest",
+      "pos": "noun",
+      "ipa": "/ˈhɑːrvɪst/",
+      "meaningVi": "vụ thu hoạch",
+      "definitionEn": "The process of gathering ripe crops from the fields.",
+      "example": "The harvest this year was severely affected by unexpected floods.",
+      "collocation": "a bountiful harvest",
+      "band": "5-6"
+    },
+    {
+      "word": "irrigation",
+      "pos": "noun",
+      "ipa": "/ˌɪrɪˈɡeɪʃən/",
+      "meaningVi": "sự tưới tiêu",
+      "definitionEn": "The supply of water to land or crops to help growth.",
+      "example": "Modern irrigation systems have significantly increased crop yields in arid regions.",
+      "collocation": "irrigation system",
+      "band": "6-7"
+    },
+    {
+      "word": "crop rotation",
+      "pos": "noun phrase",
+      "ipa": "/krɒp roʊˈteɪʃən/",
+      "meaningVi": "luân canh cây trồng",
+      "definitionEn": "The practice of growing different types of crops in the same area in sequenced seasons.",
+      "example": "Crop rotation helps maintain soil fertility and reduce pest buildup.",
+      "collocation": "practice crop rotation",
+      "band": "7-8"
+    },
+    {
+      "word": "soil fertility",
+      "pos": "noun phrase",
+      "ipa": "/sɔɪl fərˈtɪləti/",
+      "meaningVi": "độ phì nhiêu của đất",
+      "definitionEn": "The ability of soil to sustain plant growth by providing essential nutrients.",
+      "example": "Intensive farming often depletes soil fertility over time.",
+      "collocation": "maintain soil fertility",
+      "band": "6-7"
+    },
+    {
+      "word": "pesticide",
+      "pos": "noun",
+      "ipa": "/ˈpestɪsaɪd/",
+      "meaningVi": "thuốc trừ sâu",
+      "definitionEn": "A chemical substance used to kill insects that harm crops.",
+      "example": "Overuse of pesticides can lead to environmental pollution and health risks.",
+      "collocation": "chemical pesticide",
+      "band": "6-7"
+    },
+    {
+      "word": "fertilizer",
+      "pos": "noun",
+      "ipa": "/ˈfɜːrtəlaɪzər/",
+      "meaningVi": "phân bón",
+      "definitionEn": "A natural or chemical substance added to soil to make it more fertile.",
+      "example": "Many farmers rely on synthetic fertilizers to boost crop production.",
+      "collocation": "apply fertilizer",
+      "band": "5-6"
+    },
+    {
+      "word": "livestock",
+      "pos": "noun",
+      "ipa": "/ˈlaɪvstɒk/",
+      "meaningVi": "gia súc",
+      "definitionEn": "Farm animals such as cattle, sheep, and pigs kept for meat, milk, or wool.",
+      "example": "The livestock industry contributes significantly to greenhouse gas emissions.",
+      "collocation": "raise livestock",
+      "band": "6-7"
+    },
+    {
+      "word": "intensive farming",
+      "pos": "noun phrase",
+      "ipa": "/ɪnˈtensɪv ˈfɑːrmɪŋ/",
+      "meaningVi": "thâm canh",
+      "definitionEn": "A farming method that uses high inputs of labor, fertilizers, and technology to maximize output.",
+      "example": "Intensive farming has been criticized for its negative impact on animal welfare.",
+      "collocation": "intensive farming practices",
+      "band": "7-8"
+    },
+    {
+      "word": "organic farming",
+      "pos": "noun phrase",
+      "ipa": "/ɔːrˈɡænɪk ˈfɑːrmɪŋ/",
+      "meaningVi": "canh tác hữu cơ",
+      "definitionEn": "A method of farming that avoids synthetic chemicals, using natural processes.",
+      "example": "Organic farming is gaining popularity among consumers who are health-conscious.",
+      "collocation": "switch to organic farming",
+      "band": "6-7"
+    },
+    {
+      "word": "yield",
+      "pos": "noun",
+      "ipa": "/jiːld/",
+      "meaningVi": "sản lượng",
+      "definitionEn": "The amount of crop produced per unit of land.",
+      "example": "The yield of wheat per hectare has doubled thanks to improved seeds.",
+      "collocation": "high yield",
+      "band": "5-6"
+    },
+    {
+      "word": "drought",
+      "pos": "noun",
+      "ipa": "/draʊt/",
+      "meaningVi": "hạn hán",
+      "definitionEn": "A prolonged period of abnormally low rainfall, leading to water shortage.",
+      "example": "Severe drought can cause crop failure and food shortages.",
+      "collocation": "drought-resistant crops",
+      "band": "5-6"
+    },
+    {
+      "word": "monoculture",
+      "pos": "noun",
+      "ipa": "/ˈmɒnəˌkʌltʃər/",
+      "meaningVi": "độc canh",
+      "definitionEn": "The cultivation of a single crop over a large area year after year.",
+      "example": "Monoculture reduces biodiversity and makes crops more vulnerable to disease.",
+      "collocation": "monoculture farming",
+      "band": "7-8"
+    },
+    {
+      "word": "genetically modified",
+      "pos": "adjective",
+      "ipa": "/dʒəˈnetɪkli ˈmɒdɪfaɪd/",
+      "meaningVi": "biến đổi gen",
+      "definitionEn": "Refers to organisms whose genetic material has been altered using biotechnology.",
+      "example": "Genetically modified crops are often engineered to resist pests or tolerate herbicides.",
+      "collocation": "genetically modified organism (GMO)",
+      "band": "7-8"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪnəbl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "Capable of being maintained over the long term without harming the environment.",
+      "example": "Sustainable agriculture aims to balance food production with ecological preservation.",
+      "collocation": "sustainable farming",
+      "band": "7-8"
+    },
+    {
+      "word": "agricultural subsidy",
+      "pos": "noun phrase",
+      "ipa": "/ˌæɡrɪˈkʌltʃərəl ˈsʌbsɪdi/",
+      "meaningVi": "trợ cấp nông nghiệp",
+      "definitionEn": "Government financial support provided to farmers to stabilize prices and supply.",
+      "example": "Agricultural subsidies can distort global trade markets.",
+      "collocation": "remove agricultural subsidies",
+      "band": "8+"
+    },
+    {
+      "word": "food security",
+      "pos": "noun phrase",
+      "ipa": "/fuːd sɪˈkjʊərəti/",
+      "meaningVi": "an ninh lương thực",
+      "definitionEn": "The state of having reliable access to a sufficient quantity of affordable food.",
+      "example": "Climate change poses a serious threat to global food security.",
+      "collocation": "ensure food security",
+      "band": "7-8"
+    },
+    {
+      "word": "staple food",
+      "pos": "noun phrase",
+      "ipa": "/ˈsteɪpəl fuːd/",
+      "meaningVi": "lương thực chính",
+      "definitionEn": "A basic food that forms the main part of a population's diet.",
+      "example": "Rice is a staple food for billions of people in Asia.",
+      "collocation": "staple food crop",
+      "band": "5-6"
+    },
+    {
+      "word": "malnutrition",
+      "pos": "noun",
+      "ipa": "/ˌmælnjuːˈtrɪʃən/",
+      "meaningVi": "suy dinh dưỡng",
+      "definitionEn": "Poor nutrition caused by insufficient or unbalanced food intake.",
+      "example": "Malnutrition remains a critical issue in many developing countries.",
+      "collocation": "child malnutrition",
+      "band": "6-7"
+    },
+    {
+      "word": "arable land",
+      "pos": "noun phrase",
+      "ipa": "/ˈærəbəl lænd/",
+      "meaningVi": "đất canh tác",
+      "definitionEn": "Land suitable for growing crops.",
+      "example": "The amount of arable land per person is decreasing worldwide.",
+      "collocation": "arable land area",
+      "band": "6-7"
+    },
+    {
+      "word": "deforestation",
+      "pos": "noun",
+      "ipa": "/diːˌfɒrɪˈsteɪʃən/",
+      "meaningVi": "phá rừng",
+      "definitionEn": "The clearing of forests for agricultural or other purposes.",
+      "example": "Deforestation for agriculture is a major driver of climate change.",
+      "collocation": "deforestation rate",
+      "band": "7-8"
+    },
+    {
+      "word": "greenhouse gas",
+      "pos": "noun phrase",
+      "ipa": "/ˈɡriːnhaʊs ɡæs/",
+      "meaningVi": "khí nhà kính",
+      "definitionEn": "Gases that trap heat in the atmosphere, such as carbon dioxide and methane.",
+      "example": "Agriculture is a significant source of greenhouse gas emissions.",
+      "collocation": "greenhouse gas emissions",
+      "band": "6-7"
+    },
+    {
+      "word": "pollinator",
+      "pos": "noun",
+      "ipa": "/ˈpɒlɪneɪtər/",
+      "meaningVi": "loài thụ phấn",
+      "definitionEn": "An insect or animal that carries pollen from one flower to another.",
+      "example": "Bees are vital pollinators for many fruit and vegetable crops.",
+      "collocation": "protect pollinators",
+      "band": "7-8"
+    },
+    {
+      "word": "aquaculture",
+      "pos": "noun",
+      "ipa": "/ˈækwəˌkʌltʃər/",
+      "meaningVi": "nuôi trồng thủy sản",
+      "definitionEn": "The farming of fish, shellfish, and aquatic plants.",
+      "example": "Aquaculture has grown rapidly to meet the rising demand for seafood.",
+      "collocation": "aquaculture industry",
+      "band": "7-8"
+    },
+    {
+      "word": "food miles",
+      "pos": "noun phrase",
+      "ipa": "/fuːd maɪlz/",
+      "meaningVi": "dặm thực phẩm (khoảng cách vận chuyển)",
+      "definitionEn": "The distance food travels from production to the consumer.",
+      "example": "Reducing food miles can lower the carbon footprint of meals.",
+      "collocation": "reduce food miles",
+      "band": "8+"
+    },
+    {
+      "word": "agronomy",
+      "pos": "noun",
+      "ipa": "/əˈɡrɒnəmi/",
+      "meaningVi": "khoa học nông nghiệp",
+      "definitionEn": "the science of soil management and crop production",
+      "example": "Advances in agronomy have significantly improved global food production efficiency.",
+      "collocation": "applied agronomy",
+      "band": "7-8"
+    },
+    {
+      "word": "tillage",
+      "pos": "noun",
+      "ipa": "/ˈtɪlɪdʒ/",
+      "meaningVi": "sự cày xới đất",
+      "definitionEn": "the preparation of land for growing crops",
+      "example": "Conservation tillage reduces soil erosion and preserves moisture in the field.",
+      "collocation": "no-till tillage",
+      "band": "6-7"
+    },
+    {
+      "word": "germination",
+      "pos": "noun",
+      "ipa": "/ˌdʒɜːmɪˈneɪʃən/",
+      "meaningVi": "sự nảy mầm",
+      "definitionEn": "the process by which a seed begins to grow and develop into a plant",
+      "example": "Optimal soil temperature is crucial for the germination of most cereal crops.",
+      "collocation": "seed germination",
+      "band": "5-6"
+    },
+    {
+      "word": "plant breeding",
+      "pos": "noun",
+      "ipa": "/plɑːnt ˈbriːdɪŋ/",
+      "meaningVi": "nhân giống cây trồng",
+      "definitionEn": "the science of altering the genetic traits of plants to produce desired characteristics",
+      "example": "Modern plant breeding has developed drought-resistant varieties that require less water.",
+      "collocation": "conventional plant breeding",
+      "band": "7-8"
+    },
+    {
+      "word": "pastoralism",
+      "pos": "noun",
+      "ipa": "/ˈpɑːstərəlɪzəm/",
+      "meaningVi": "chăn thả du mục",
+      "definitionEn": "a system of farming based on raising livestock by moving herds to different pastures",
+      "example": "Pastoralism is often practiced in arid regions where crop cultivation is difficult.",
+      "collocation": "nomadic pastoralism",
+      "band": "6-7"
+    },
+    {
+      "word": "silage",
+      "pos": "noun",
+      "ipa": "/ˈsaɪlɪdʒ/",
+      "meaningVi": "thức ăn ủ chua",
+      "definitionEn": "green fodder that is preserved by fermentation in a silo for livestock feed",
+      "example": "Farmers often store silage to ensure a consistent feed supply during winter months.",
+      "collocation": "maize silage",
+      "band": "5-6"
+    },
+    {
+      "word": "forage",
+      "pos": "noun",
+      "ipa": "/ˈfɒrɪdʒ/",
+      "meaningVi": "thức ăn thô xanh",
+      "definitionEn": "plant material eaten by grazing livestock",
+      "example": "High-quality forage is essential for maintaining healthy dairy herds.",
+      "collocation": "forage crop",
+      "band": "6-7"
+    },
+    {
+      "word": "fallow",
+      "pos": "adjective",
+      "ipa": "/ˈfæləʊ/",
+      "meaningVi": "bỏ hoang (đất)",
+      "definitionEn": "describing land that is ploughed but left unseeded to restore fertility",
+      "example": "Leaving fields fallow for a season can help replenish soil nutrients naturally.",
+      "collocation": "fallow period",
+      "band": "5-6"
+    },
+    {
+      "word": "threshing",
+      "pos": "noun",
+      "ipa": "/ˈθreʃɪŋ/",
+      "meaningVi": "sự đập lúa, tuốt lúa",
+      "definitionEn": "the process of separating grain from stalks and husks",
+      "example": "Traditional threshing was often done by hand, but modern machines perform the task rapidly.",
+      "collocation": "threshing machine",
+      "band": "5-6"
+    },
+    {
+      "word": "silo",
+      "pos": "noun",
+      "ipa": "/ˈsaɪləʊ/",
+      "meaningVi": "xi-lô chứa ngũ cốc",
+      "definitionEn": "a tall structure used for storing grain or fermented feed such as silage",
+      "example": "The new silo can hold up to 5,000 tonnes of wheat without spoilage.",
+      "collocation": "grain silo",
+      "band": "5-6"
+    },
+    {
+      "word": "mulch",
+      "pos": "noun",
+      "ipa": "/mʌltʃ/",
+      "meaningVi": "lớp phủ đất",
+      "definitionEn": "a layer of material (e.g., straw, plastic) spread on the soil surface to conserve moisture and suppress weeds",
+      "example": "Applying organic mulch around vegetable beds reduces water evaporation and weed growth.",
+      "collocation": "organic mulch",
+      "band": "6-7"
+    },
+    {
+      "word": "compost",
+      "pos": "noun",
+      "ipa": "/ˈkɒmpɒst/",
+      "meaningVi": "phân hữu cơ",
+      "definitionEn": "decayed organic material used as a fertilizer for soil amendment",
+      "example": "Farmers often produce compost from animal manure and crop residues to improve soil structure.",
+      "collocation": "compost heap",
+      "band": "6-7"
+    },
+    {
+      "word": "vermicompost",
+      "pos": "noun",
+      "ipa": "/ˈvɜːmɪkɒmpɒst/",
+      "meaningVi": "phân trùn quế",
+      "definitionEn": "a nutrient-rich organic fertilizer produced by earthworms breaking down organic waste",
+      "example": "Using vermicompost in greenhouse cultivation can boost plant growth without synthetic chemicals.",
+      "collocation": "vermicompost production",
+      "band": "7-8"
+    },
+    {
+      "word": "biochar",
+      "pos": "noun",
+      "ipa": "/ˈbaɪəʊtʃɑːr/",
+      "meaningVi": "than sinh học",
+      "definitionEn": "charcoal produced from biomass that is used as a soil amendment to sequester carbon and improve fertility",
+      "example": "Application of biochar in degraded soils can enhance water retention and nutrient availability.",
+      "collocation": "biochar amendment",
+      "band": "8+"
+    },
+    {
+      "word": "green manure",
+      "pos": "noun",
+      "ipa": "/ɡriːn məˈnjʊər/",
+      "meaningVi": "phân xanh",
+      "definitionEn": "plants grown specifically to be ploughed into the soil to enrich it with organic matter and nutrients",
+      "example": "Leguminous crops are often used as green manure because they fix nitrogen from the atmosphere.",
+      "collocation": "green manure crop",
+      "band": "6-7"
+    },
+    {
+      "word": "legume",
+      "pos": "noun",
+      "ipa": "/ˈleɡjuːm/",
+      "meaningVi": "cây họ đậu",
+      "definitionEn": "a plant of the family Fabaceae that produces seeds in pods and has symbiotic nitrogen-fixing bacteria",
+      "example": "Including legumes in a crop rotation reduces the need for synthetic nitrogen fertilisers.",
+      "collocation": "legume species",
+      "band": "6-7"
+    },
+    {
+      "word": "nitrogen fixation",
+      "pos": "noun",
+      "ipa": "/ˈnaɪtrədʒən fɪkˈseɪʃən/",
+      "meaningVi": "sự cố định đạm",
+      "definitionEn": "the process by which atmospheric nitrogen is converted into ammonia by microorganisms, making it available to plants",
+      "example": "Rhizobium bacteria in root nodules of legumes perform biological nitrogen fixation.",
+      "collocation": "biological nitrogen fixation",
+      "band": "7-8"
+    },
+    {
+      "word": "integrated pest management",
+      "pos": "noun",
+      "ipa": "/ˈɪntɪɡreɪtɪd pest ˈmænɪdʒmənt/",
+      "meaningVi": "quản lý dịch hại tổng hợp",
+      "definitionEn": "an ecosystem-based approach to pest control that combines biological, cultural, and chemical methods",
+      "example": "Integrated pest management minimises the use of broad-spectrum pesticides and protects beneficial insects.",
+      "collocation": "IPM strategy",
+      "band": "8+"
+    },
+    {
+      "word": "biological control",
+      "pos": "noun",
+      "ipa": "/ˌbaɪəˈlɒdʒɪkəl kənˈtrəʊl/",
+      "meaningVi": "kiểm soát sinh học",
+      "definitionEn": "the use of natural predators, parasites, or pathogens to manage pest populations",
+      "example": "Biological control using ladybirds is an effective way to reduce aphid infestations in crops.",
+      "collocation": "biological control agent",
+      "band": "7-8"
+    },
+    {
+      "word": "horticulture",
+      "pos": "noun",
+      "ipa": "/ˈhɔːtɪkʌltʃə/",
+      "meaningVi": "nghề làm vườn",
+      "definitionEn": "the art and science of growing fruits, vegetables, flowers, and ornamental plants",
+      "example": "Commercial horticulture plays a vital role in supplying fresh produce to urban markets.",
+      "collocation": "horticulture industry",
+      "band": "6-7"
+    },
+    {
+      "word": "agroforestry",
+      "pos": "noun",
+      "ipa": "/ˈæɡrəʊfɒrɪstri/",
+      "meaningVi": "nông lâm kết hợp",
+      "definitionEn": "a land-use system that integrates trees and shrubs with crops or livestock",
+      "example": "Agroforestry practices enhance biodiversity while providing timber and food products.",
+      "collocation": "agroforestry system",
+      "band": "8+"
+    },
+    {
+      "word": "intercropping",
+      "pos": "noun",
+      "ipa": "/ˌɪntəˈkrɒpɪŋ/",
+      "meaningVi": "sự xen canh",
+      "definitionEn": "the practice of growing two or more crops simultaneously in the same field",
+      "example": "Intercropping maize with beans can improve land productivity and reduce pest pressure.",
+      "collocation": "intercropping system",
+      "band": "7-8"
+    },
+    {
+      "word": "companion planting",
+      "pos": "noun",
+      "ipa": "/kəmˈpænjən ˈplɑːntɪŋ/",
+      "meaningVi": "trồng cây bạn đồng hành",
+      "definitionEn": "the strategic placement of different plants together to benefit each other through pest control or nutrient sharing",
+      "example": "Companion planting of marigolds with tomatoes is believed to repel certain insects.",
+      "collocation": "companion planting technique",
+      "band": "6-7"
+    },
+    {
+      "word": "succession planting",
+      "pos": "noun",
+      "ipa": "/səkˈseʃən ˈplɑːntɪŋ/",
+      "meaningVi": "trồng nối vụ",
+      "definitionEn": "the practice of planting crops at intervals so that harvests are staggered throughout the season",
+      "example": "Succession planting allows gardeners to maintain a continuous supply of fresh vegetables.",
+      "collocation": "succession planting schedule",
+      "band": "7-8"
+    },
+    {
+      "word": "cover crop",
+      "pos": "noun",
+      "ipa": "/ˈkʌvə krɒp/",
+      "meaningVi": "cây che phủ đất",
+      "definitionEn": "a crop grown primarily to protect and enrich the soil rather than for harvest",
+      "example": "Planting a cover crop of rye after harvest prevents soil erosion during winter rains.",
+      "collocation": "cover crop species",
+      "band": "6-7"
+    }
+  ]
+}

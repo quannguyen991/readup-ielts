@@ -1,0 +1,508 @@
+{
+  "slug": "fashion",
+  "name": "Fashion and Appearance",
+  "nameVi": "Thời trang",
+  "blurb": "Trang phục, xu hướng, ngoại hình",
+  "words": [
+    {
+      "word": "aesthetic",
+      "pos": "noun",
+      "ipa": "/esˈθetɪk/",
+      "meaningVi": "phong cách, tiêu chuẩn về vẻ đẹp",
+      "definitionEn": "a set of principles concerned with the appreciation and criticism of beauty",
+      "example": "The designer's aesthetic emphasizes minimalism and sustainable materials.",
+      "collocation": "personal aesthetic, aesthetic appeal",
+      "band": "6-7"
+    },
+    {
+      "word": "boutique",
+      "pos": "noun",
+      "ipa": "/buːˈtiːk/",
+      "meaningVi": "cửa hàng thời trang cao cấp, nhỏ",
+      "definitionEn": "a small shop selling fashionable or specialized items",
+      "example": "She discovered a luxury boutique in the city center that specializes in vintage clothing.",
+      "collocation": "fashion boutique, designer boutique",
+      "band": "6-7"
+    },
+    {
+      "word": "curate",
+      "pos": "verb",
+      "ipa": "/ˈkjʊəreɪt/",
+      "meaningVi": "lựa chọn cẩn thận, sắp xếp",
+      "definitionEn": "to select and organize items or content carefully",
+      "example": "Influencers curate their wardrobes to reflect current fashion trends.",
+      "collocation": "curate a collection, carefully curated",
+      "band": "6-7"
+    },
+    {
+      "word": "silhouette",
+      "pos": "noun",
+      "ipa": "/ˌsɪluˈet/",
+      "meaningVi": "hình dáng, đường nét",
+      "definitionEn": "the outline or shape of something, especially a garment",
+      "example": "The evening gown featured an elegant silhouette that flattered her figure.",
+      "collocation": "flattering silhouette, sleek silhouette",
+      "band": "6-7"
+    },
+    {
+      "word": "versatile",
+      "pos": "adjective",
+      "ipa": "/ˈvɜːrsətaɪl/",
+      "meaningVi": "đa năng, linh hoạt",
+      "definitionEn": "able to be used in many different ways or for many purposes",
+      "example": "A versatile blazer can be worn casually or formally depending on styling.",
+      "collocation": "versatile wardrobe, versatile piece",
+      "band": "6-7"
+    },
+    {
+      "word": "palette",
+      "pos": "noun",
+      "ipa": "/ˈpælət/",
+      "meaningVi": "bảng màu, tổng hợp màu sắc",
+      "definitionEn": "a range of colors or qualities",
+      "example": "The season's color palette features earth tones and pastels.",
+      "collocation": "color palette, neutral palette",
+      "band": "6-7"
+    },
+    {
+      "word": "tailored",
+      "pos": "adjective",
+      "ipa": "/ˈteɪlərd/",
+      "meaningVi": "may đo, vừa vặn, phù hợp",
+      "definitionEn": "made or adapted for a particular person or purpose; fitted closely to the body",
+      "example": "Tailored suits convey professionalism in corporate environments.",
+      "collocation": "tailored fit, tailored clothing",
+      "band": "6-7"
+    },
+    {
+      "word": "garment",
+      "pos": "noun",
+      "ipa": "/ˈɡɑːrmənt/",
+      "meaningVi": "quần áo, trang phục",
+      "definitionEn": "an item of clothing",
+      "example": "The quality of each garment reflects the designer's meticulous attention to detail.",
+      "collocation": "designer garment, high-quality garment",
+      "band": "5-6"
+    },
+    {
+      "word": "embellish",
+      "pos": "verb",
+      "ipa": "/ɪmˈbelɪʃ/",
+      "meaningVi": "trang trí, làm đẹp",
+      "definitionEn": "to make more attractive by adding decorative details",
+      "example": "Embellished dresses with beads and sequins are popular for evening events.",
+      "collocation": "embellished with, heavily embellished",
+      "band": "6-7"
+    },
+    {
+      "word": "fabric",
+      "pos": "noun",
+      "ipa": "/ˈfæbrɪk/",
+      "meaningVi": "vải, chất liệu",
+      "definitionEn": "material made by weaving or knitting fibers",
+      "example": "Sustainable fabrics like organic cotton are increasingly used in ethical fashion.",
+      "collocation": "premium fabric, natural fabric",
+      "band": "5-6"
+    },
+    {
+      "word": "trend",
+      "pos": "noun",
+      "ipa": "/trend/",
+      "meaningVi": "xu hướng, thời trang",
+      "definitionEn": "a general direction or tendency, especially in fashion",
+      "example": "Fast fashion trends often prioritize affordability over sustainability.",
+      "collocation": "fashion trend, current trend",
+      "band": "5-6"
+    },
+    {
+      "word": "proportion",
+      "pos": "noun",
+      "ipa": "/prəˈpɔːrʃn/",
+      "meaningVi": "tỷ lệ, cân đối",
+      "definitionEn": "the relationship in size, amount, or degree between things",
+      "example": "Proper proportion in clothing design ensures a balanced and flattering look.",
+      "collocation": "visual proportion, balanced proportion",
+      "band": "6-7"
+    },
+    {
+      "word": "accessory",
+      "pos": "noun",
+      "ipa": "/əkˈsesəri/",
+      "meaningVi": "phụ kiện, đồ trang sức",
+      "definitionEn": "a small item worn or carried to complement an outfit",
+      "example": "Accessories such as belts and scarves can transform a basic outfit.",
+      "collocation": "fashion accessory, statement accessory",
+      "band": "5-6"
+    },
+    {
+      "word": "sophisticated",
+      "pos": "adjective",
+      "ipa": "/səˈfɪstɪkeɪtɪd/",
+      "meaningVi": "tinh tế, sang trọng",
+      "definitionEn": "refined and elegant in appearance or manner",
+      "example": "The sophisticated styling demonstrated her understanding of high fashion principles.",
+      "collocation": "sophisticated design, sophisticated look",
+      "band": "6-7"
+    },
+    {
+      "word": "contemporary",
+      "pos": "adjective",
+      "ipa": "/kənˈtemprəri/",
+      "meaningVi": "đương đại, hiện đại",
+      "definitionEn": "modern; belonging to the present time",
+      "example": "Contemporary fashion designers often challenge traditional notions of beauty.",
+      "collocation": "contemporary style, contemporary design",
+      "band": "6-7"
+    },
+    {
+      "word": "texture",
+      "pos": "noun",
+      "ipa": "/ˈtekstʃər/",
+      "meaningVi": "kết cấu, cảm giác bề mặt",
+      "definitionEn": "the feel, appearance, or consistency of a surface or fabric",
+      "example": "Mixing different textures creates visual interest and depth in an outfit.",
+      "collocation": "varied texture, tactile texture",
+      "band": "6-7"
+    },
+    {
+      "word": "drape",
+      "pos": "verb",
+      "ipa": "/dreɪp/",
+      "meaningVi": "rủi xuống, tạo nếp gấp",
+      "definitionEn": "to arrange cloth loosely over something, creating flowing folds",
+      "example": "The fabric drapes elegantly, creating a flattering silhouette.",
+      "collocation": "drape beautifully, drape loosely",
+      "band": "6-7"
+    },
+    {
+      "word": "minimalist",
+      "pos": "adjective",
+      "ipa": "/ˈmɪnɪməlɪst/",
+      "meaningVi": "tối giản, đơn giản",
+      "definitionEn": "using the fewest and simplest elements to create maximum effect",
+      "example": "Minimalist fashion advocates for fewer, high-quality pieces rather than excessive consumption.",
+      "collocation": "minimalist approach, minimalist wardrobe",
+      "band": "6-7"
+    },
+    {
+      "word": "indulgence",
+      "pos": "noun",
+      "ipa": "/ɪnˈdʌldʒəns/",
+      "meaningVi": "sự thỏa mãn, sự xa xỉ",
+      "definitionEn": "the act of satisfying a desire or enjoying something pleasurable",
+      "example": "Luxury fashion brands market themselves as an indulgence for discerning consumers.",
+      "collocation": "fashion indulgence, personal indulgence",
+      "band": "6-7"
+    },
+    {
+      "word": "conform",
+      "pos": "verb",
+      "ipa": "/kənˈfɔːrm/",
+      "meaningVi": "tuân thủ, phù hợp",
+      "definitionEn": "to comply with standards, rules, or expectations",
+      "example": "Not all individuals choose to conform to mainstream fashion norms.",
+      "collocation": "conform to standards, conform to expectations",
+      "band": "6-7"
+    },
+    {
+      "word": "innovative",
+      "pos": "adjective",
+      "ipa": "/ɪnˈnɑːvətɪv/",
+      "meaningVi": "sáng tạo, tân tiến",
+      "definitionEn": "featuring new methods or ideas; advanced and original",
+      "example": "Innovative designers experiment with unconventional materials to create sustainable fashion.",
+      "collocation": "innovative design, innovative approach",
+      "band": "6-7"
+    },
+    {
+      "word": "ornate",
+      "pos": "adjective",
+      "ipa": "/ɔːrˈneɪt/",
+      "meaningVi": "cầu kỳ, trang trí công phu",
+      "definitionEn": "elaborately and heavily decorated",
+      "example": "Ornate evening wear with intricate details remains popular for formal occasions.",
+      "collocation": "ornate design, ornate detail",
+      "band": "7-8"
+    },
+    {
+      "word": "refine",
+      "pos": "verb",
+      "ipa": "/rɪˈfaɪn/",
+      "meaningVi": "tinh tế hóa, cải thiện",
+      "definitionEn": "to make more polished, elegant, or precise",
+      "example": "Refining one's personal style involves understanding body proportions and color theory.",
+      "collocation": "refine taste, refine style",
+      "band": "6-7"
+    },
+    {
+      "word": "exude",
+      "pos": "verb",
+      "ipa": "/ɪɡˈzuːd/",
+      "meaningVi": "tỏa ra, thể hiện rõ",
+      "definitionEn": "to display a quality openly and obviously",
+      "example": "Her carefully chosen outfit exuded confidence and professional competence.",
+      "collocation": "exude confidence, exude elegance",
+      "band": "6-7"
+    },
+    {
+      "word": "ubiquitous",
+      "pos": "adjective",
+      "ipa": "/juːˈbɪkwɪtəs/",
+      "meaningVi": "phổ biến, có mặt khắp nơi",
+      "definitionEn": "present, appearing, or found everywhere",
+      "example": "Fast fashion brands have become ubiquitous in shopping malls worldwide.",
+      "collocation": "ubiquitous presence, ubiquitous trend",
+      "band": "7-8"
+    },
+    {
+      "word": "attire",
+      "pos": "noun",
+      "ipa": "/əˈtaɪər/",
+      "meaningVi": "trang phục (trang trọng)",
+      "definitionEn": "clothes, especially of a formal or ceremonial type",
+      "example": "The guests were expected to wear formal attire for the gala dinner.",
+      "collocation": "formal attire",
+      "band": "5-6"
+    },
+    {
+      "word": "ensemble",
+      "pos": "noun",
+      "ipa": "/ɒnˈsɒm.bəl/",
+      "meaningVi": "bộ trang phục phối hợp",
+      "definitionEn": "a coordinated outfit or set of clothes worn together",
+      "example": "She wore a stunning ensemble consisting of a tailored jacket and matching trousers.",
+      "collocation": "a stylish ensemble",
+      "band": "6-7"
+    },
+    {
+      "word": "couture",
+      "pos": "noun",
+      "ipa": "/kuːˈtjʊər/",
+      "meaningVi": "thời trang cao cấp",
+      "definitionEn": "the design and manufacture of fashionable custom-made clothes",
+      "example": "Many celebrities choose couture for red-carpet events to ensure a unique look.",
+      "collocation": "high couture",
+      "band": "7-8"
+    },
+    {
+      "word": "wardrobe",
+      "pos": "noun",
+      "ipa": "/ˈwɔːr.drəʊb/",
+      "meaningVi": "tủ quần áo (toàn bộ quần áo)",
+      "definitionEn": "a person's entire collection of clothes",
+      "example": "A minimalist wardrobe often consists of neutral colors and timeless pieces.",
+      "collocation": "capsule wardrobe",
+      "band": "5-6"
+    },
+    {
+      "word": "apparel",
+      "pos": "noun",
+      "ipa": "/əˈpær.əl/",
+      "meaningVi": "hàng may mặc, quần áo",
+      "definitionEn": "clothing, especially when sold in shops",
+      "example": "The retail sector has seen a surge in sustainable apparel made from recycled materials.",
+      "collocation": "sportswear apparel",
+      "band": "5-6"
+    },
+    {
+      "word": "bespoke",
+      "pos": "adjective",
+      "ipa": "/bɪˈspəʊk/",
+      "meaningVi": "được đặt may riêng",
+      "definitionEn": "made to order according to the customer's specifications",
+      "example": "He prefers bespoke suits because they fit perfectly and reflect his personal style.",
+      "collocation": "bespoke tailoring",
+      "band": "8+"
+    },
+    {
+      "word": "chic",
+      "pos": "adjective",
+      "ipa": "/ʃiːk/",
+      "meaningVi": "sang trọng, thanh lịch",
+      "definitionEn": "elegantly and stylishly fashionable",
+      "example": "The designer's collection was praised for its chic simplicity and clean lines.",
+      "collocation": "effortlessly chic",
+      "band": "6-7"
+    },
+    {
+      "word": "elegant",
+      "pos": "adjective",
+      "ipa": "/ˈel.ɪ.ɡənt/",
+      "meaningVi": "thanh lịch, tao nhã",
+      "definitionEn": "graceful and stylish in appearance or manner",
+      "example": "An elegant evening gown can make a powerful impression at formal events.",
+      "collocation": "elegant design",
+      "band": "5-6"
+    },
+    {
+      "word": "fashionable",
+      "pos": "adjective",
+      "ipa": "/ˈfæʃ.ən.ə.bəl/",
+      "meaningVi": "hợp thời trang",
+      "definitionEn": "following current trends in clothing or appearance",
+      "example": "Young people often try to wear fashionable items to express their identity.",
+      "collocation": "fashionable attire",
+      "band": "5-6"
+    },
+    {
+      "word": "flamboyant",
+      "pos": "adjective",
+      "ipa": "/flæmˈbɔɪ.ənt/",
+      "meaningVi": "lộng lẫy, phô trương",
+      "definitionEn": "tending to attract attention because of brightly colored or showy clothes",
+      "example": "His flamboyant style often includes bold patterns and vibrant colors.",
+      "collocation": "flamboyant outfit",
+      "band": "7-8"
+    },
+    {
+      "word": "immaculate",
+      "pos": "adjective",
+      "ipa": "/ɪˈmæk.jʊ.lət/",
+      "meaningVi": "tinh tươm, hoàn hảo (về trang phục)",
+      "definitionEn": "perfectly clean, neat, or tidy",
+      "example": "The bride's dress was immaculate, with no wrinkles or stains visible.",
+      "collocation": "immaculate appearance",
+      "band": "7-8"
+    },
+    {
+      "word": "impeccable",
+      "pos": "adjective",
+      "ipa": "/ɪmˈpek.ə.bəl/",
+      "meaningVi": "hoàn hảo, không chê vào đâu được",
+      "definitionEn": "in accordance with the highest standards of propriety; faultless",
+      "example": "Her taste in fashion is impeccable, always choosing pieces that suit her perfectly.",
+      "collocation": "impeccable style",
+      "band": "7-8"
+    },
+    {
+      "word": "lavish",
+      "pos": "adjective",
+      "ipa": "/ˈlæv.ɪʃ/",
+      "meaningVi": "xa hoa, sang trọng",
+      "definitionEn": "sumptuously rich, elaborate, or luxurious",
+      "example": "The celebrity wore a lavish gown adorned with diamonds and sequins.",
+      "collocation": "lavish wedding dress",
+      "band": "6-7"
+    },
+    {
+      "word": "modest",
+      "pos": "adjective",
+      "ipa": "/ˈmɒd.ɪst/",
+      "meaningVi": "kín đáo, giản dị (về trang phục)",
+      "definitionEn": "not showing one's body or wearing anything too revealing or extravagant",
+      "example": "Some cultures require modest clothing that covers the shoulders and knees.",
+      "collocation": "modest dress code",
+      "band": "5-6"
+    },
+    {
+      "word": "outrageous",
+      "pos": "adjective",
+      "ipa": "/aʊtˈreɪ.dʒəs/",
+      "meaningVi": "kỳ quặc, gây sốc (về thời trang)",
+      "definitionEn": "very unusual and intended to shock or draw attention",
+      "example": "The designer's outrageous creations often provoke debate in the fashion industry.",
+      "collocation": "outrageous fashion",
+      "band": "7-8"
+    },
+    {
+      "word": "pristine",
+      "pos": "adjective",
+      "ipa": "/ˈprɪs.tiːn/",
+      "meaningVi": "nguyên sơ, mới tinh",
+      "definitionEn": "in its original condition; unspoiled",
+      "example": "The vintage dress was in pristine condition despite being decades old.",
+      "collocation": "pristine condition",
+      "band": "6-7"
+    },
+    {
+      "word": "retro",
+      "pos": "adjective",
+      "ipa": "/ˈret.rəʊ/",
+      "meaningVi": "theo phong cách cổ điển",
+      "definitionEn": "imitating styles from the recent past, especially the 1950s to 1970s",
+      "example": "Retro fashion has made a comeback, with many people wearing flared trousers again.",
+      "collocation": "retro style",
+      "band": "6-7"
+    },
+    {
+      "word": "smart",
+      "pos": "adjective",
+      "ipa": "/smɑːt/",
+      "meaningVi": "lịch sự, bảnh bao",
+      "definitionEn": "neat, trim, and stylish in appearance",
+      "example": "A smart casual dress code is often required for business meetings.",
+      "collocation": "smart outfit",
+      "band": "5-6"
+    },
+    {
+      "word": "stylish",
+      "pos": "adjective",
+      "ipa": "/ˈstaɪ.lɪʃ/",
+      "meaningVi": "sành điệu, phong cách",
+      "definitionEn": "having a fashionable appearance",
+      "example": "She always looks stylish even in simple clothes because of her confident attitude.",
+      "collocation": "stylish accessory",
+      "band": "5-6"
+    },
+    {
+      "word": "trendsetter",
+      "pos": "noun",
+      "ipa": "/ˈtrend.set.ər/",
+      "meaningVi": "người tạo xu hướng",
+      "definitionEn": "a person who starts new fashions or ideas",
+      "example": "Fashion influencers act as trendsetters, shaping what people wear worldwide.",
+      "collocation": "a fashion trendsetter",
+      "band": "6-7"
+    },
+    {
+      "word": "vogue",
+      "pos": "noun",
+      "ipa": "/vəʊɡ/",
+      "meaningVi": "mốt, thịnh hành",
+      "definitionEn": "the prevailing fashion or style at a particular time",
+      "example": "Sustainable fashion is currently in vogue among environmentally conscious consumers.",
+      "collocation": "in vogue",
+      "band": "7-8"
+    },
+    {
+      "word": "wardrobe staple",
+      "pos": "noun phrase",
+      "ipa": "/ˈwɔːr.drəʊb ˌsteɪ.pəl/",
+      "meaningVi": "món đồ cơ bản không thể thiếu",
+      "definitionEn": "a basic, essential item of clothing that is always useful",
+      "example": "A white shirt is considered a wardrobe staple because it can be dressed up or down.",
+      "collocation": "a classic wardrobe staple",
+      "band": "6-7"
+    },
+    {
+      "word": "dress code",
+      "pos": "noun",
+      "ipa": "/ˈdres kəʊd/",
+      "meaningVi": "quy định trang phục",
+      "definitionEn": "a set of rules specifying the required style of clothing",
+      "example": "The company has a strict dress code that prohibits jeans and sneakers.",
+      "collocation": "strict dress code",
+      "band": "5-6"
+    },
+    {
+      "word": "haute couture",
+      "pos": "noun",
+      "ipa": "/ˌəʊt kuːˈtjʊər/",
+      "meaningVi": "thời trang cao cấp (may đo)",
+      "definitionEn": "the design and production of exclusive, custom-fitted high-end fashion",
+      "example": "Haute couture houses create one-of-a-kind garments for wealthy clients.",
+      "collocation": "haute couture fashion show",
+      "band": "8+"
+    },
+    {
+      "word": "fashion-forward",
+      "pos": "adjective",
+      "ipa": "/ˈfæʃ.ən ˌfɔː.wəd/",
+      "meaningVi": "tiên phong về thời trang",
+      "definitionEn": "ahead of current trends; adopting styles before they become mainstream",
+      "example": "Fashion-forward individuals often experiment with avant-garde designs.",
+      "collocation": "fashion-forward look",
+      "band": "8+"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "shopping",
+  "name": "Shopping and Consumers",
+  "nameVi": "Mua sắm",
+  "blurb": "Tiêu dùng, thương hiệu, giá cả",
+  "words": [
+    {
+      "word": "consumerism",
+      "pos": "noun",
+      "ipa": "/kənˈsjuːmərɪzəm/",
+      "meaningVi": "chủ nghĩa tiêu dùng",
+      "definitionEn": "The preoccupation of society with the acquisition of consumer goods.",
+      "example": "Modern consumerism often leads to overconsumption and environmental degradation.",
+      "collocation": "rampant consumerism",
+      "band": "7-8"
+    },
+    {
+      "word": "branding",
+      "pos": "noun",
+      "ipa": "/ˈbrændɪŋ/",
+      "meaningVi": "xây dựng thương hiệu",
+      "definitionEn": "The promotion of a particular product or company by means of advertising and distinctive design.",
+      "example": "Effective branding can significantly increase customer loyalty and market share.",
+      "collocation": "corporate branding",
+      "band": "6-7"
+    },
+    {
+      "word": "premium",
+      "pos": "adjective",
+      "ipa": "/ˈpriːmiəm/",
+      "meaningVi": "cao cấp, phụ trội",
+      "definitionEn": "Relating to or denoting a product that is superior in quality and commands a higher price.",
+      "example": "Many consumers are willing to pay a premium for organic food because of its health benefits.",
+      "collocation": "premium price",
+      "band": "6-7"
+    },
+    {
+      "word": "discount",
+      "pos": "noun",
+      "ipa": "/ˈdɪskaʊnt/",
+      "meaningVi": "chiết khấu, giảm giá",
+      "definitionEn": "A reduction from the usual price of something.",
+      "example": "The store offered a 20% discount on all electronics during the holiday sale.",
+      "collocation": "discount rate",
+      "band": "5-6"
+    },
+    {
+      "word": "retail",
+      "pos": "noun",
+      "ipa": "/ˈriːteɪl/",
+      "meaningVi": "bán lẻ",
+      "definitionEn": "The sale of goods to the public in relatively small quantities for use or consumption rather than for resale.",
+      "example": "The rise of online retail has transformed traditional shopping habits.",
+      "collocation": "retail sector",
+      "band": "6-7"
+    },
+    {
+      "word": "wholesale",
+      "pos": "noun",
+      "ipa": "/ˈhoʊlseɪl/",
+      "meaningVi": "bán buôn, bán sỉ",
+      "definitionEn": "The sale of goods in large quantities to be retailed by others.",
+      "example": "Wholesale prices are generally lower than retail prices due to bulk purchasing.",
+      "collocation": "wholesale market",
+      "band": "6-7"
+    },
+    {
+      "word": "e-commerce",
+      "pos": "noun",
+      "ipa": "/ˈiːkɒmɜːrs/",
+      "meaningVi": "thương mại điện tử",
+      "definitionEn": "Commercial transactions conducted electronically on the Internet.",
+      "example": "The growth of e-commerce has made shopping more convenient for consumers worldwide.",
+      "collocation": "e-commerce platform",
+      "band": "6-7"
+    },
+    {
+      "word": "impulse buy",
+      "pos": "noun",
+      "ipa": "/ˈɪmpʌls baɪ/",
+      "meaningVi": "mua sắm bốc đồng",
+      "definitionEn": "An unplanned purchase made on a sudden whim.",
+      "example": "Impulse buys are often regretted later, especially when they exceed the consumer's budget.",
+      "collocation": "impulse buy behaviour",
+      "band": "7-8"
+    },
+    {
+      "word": "expenditure",
+      "pos": "noun",
+      "ipa": "/ɪkˈspendɪtʃər/",
+      "meaningVi": "chi tiêu, chi phí",
+      "definitionEn": "The action of spending funds; an amount of money spent.",
+      "example": "Household expenditure on luxury goods has increased steadily over the past decade.",
+      "collocation": "consumer expenditure",
+      "band": "6-7"
+    },
+    {
+      "word": "budget",
+      "pos": "noun",
+      "ipa": "/ˈbʌdʒɪt/",
+      "meaningVi": "ngân sách",
+      "definitionEn": "An estimate of income and expenditure for a set period of time.",
+      "example": "It is essential for consumers to set a monthly budget to avoid overspending.",
+      "collocation": "budget deficit",
+      "band": "5-6"
+    },
+    {
+      "word": "luxury",
+      "pos": "noun",
+      "ipa": "/ˈlʌkʃəri/",
+      "meaningVi": "hàng xa xỉ",
+      "definitionEn": "The state of great comfort and extravagant living, or an expensive item that is not essential but desirable.",
+      "example": "Luxury brands often rely on exclusivity to maintain their premium image.",
+      "collocation": "luxury goods",
+      "band": "6-7"
+    },
+    {
+      "word": "necessity",
+      "pos": "noun",
+      "ipa": "/nəˈsesəti/",
+      "meaningVi": "nhu yếu phẩm, thứ cần thiết",
+      "definitionEn": "A thing that is necessary for a particular purpose, especially a basic need.",
+      "example": "Food and shelter are considered basic necessities for every individual.",
+      "collocation": "daily necessity",
+      "band": "5-6"
+    },
+    {
+      "word": "bargain",
+      "pos": "noun",
+      "ipa": "/ˈbɑːrɡɪn/",
+      "meaningVi": "món hời, mặc cả",
+      "definitionEn": "An item bought or sold at a price lower than its usual value; a negotiation.",
+      "example": "Finding a bargain in a crowded market requires patience and careful comparison.",
+      "collocation": "bargain hunt",
+      "band": "5-6"
+    },
+    {
+      "word": "inflation",
+      "pos": "noun",
+      "ipa": "/ɪnˈfleɪʃn/",
+      "meaningVi": "lạm phát",
+      "definitionEn": "A general increase in prices and fall in the purchasing value of money.",
+      "example": "High inflation erodes consumers' purchasing power and reduces real income.",
+      "collocation": "inflation rate",
+      "band": "7-8"
+    },
+    {
+      "word": "demand",
+      "pos": "noun",
+      "ipa": "/dɪˈmænd/",
+      "meaningVi": "nhu cầu",
+      "definitionEn": "The desire of consumers for a particular good or service, backed by willingness to pay.",
+      "example": "When demand for a product exceeds supply, prices tend to rise.",
+      "collocation": "consumer demand",
+      "band": "6-7"
+    },
+    {
+      "word": "supply",
+      "pos": "noun",
+      "ipa": "/səˈplaɪ/",
+      "meaningVi": "cung ứng, nguồn cung",
+      "definitionEn": "The amount of a product that is available for consumers to purchase.",
+      "example": "Supply chain disruptions can lead to shortages and higher prices for consumers.",
+      "collocation": "supply chain",
+      "band": "6-7"
+    },
+    {
+      "word": "monopoly",
+      "pos": "noun",
+      "ipa": "/məˈnɑːpəli/",
+      "meaningVi": "độc quyền",
+      "definitionEn": "The exclusive control of a commodity or service in a particular market, giving the ability to set prices.",
+      "example": "A monopoly in the market often results in higher prices for consumers with fewer choices.",
+      "collocation": "monopoly power",
+      "band": "7-8"
+    },
+    {
+      "word": "competition",
+      "pos": "noun",
+      "ipa": "/ˌkɑːmpəˈtɪʃn/",
+      "meaningVi": "cạnh tranh",
+      "definitionEn": "The situation in which different businesses strive to attract customers and increase sales.",
+      "example": "Intense competition among retailers often leads to lower prices and better quality for consumers.",
+      "collocation": "fierce competition",
+      "band": "6-7"
+    },
+    {
+      "word": "advertising",
+      "pos": "noun",
+      "ipa": "/ˈædvərtaɪzɪŋ/",
+      "meaningVi": "quảng cáo",
+      "definitionEn": "The activity of producing advertisements to promote products or services.",
+      "example": "Advertising plays a crucial role in shaping consumer preferences and brand perception.",
+      "collocation": "advertising campaign",
+      "band": "6-7"
+    },
+    {
+      "word": "marketing",
+      "pos": "noun",
+      "ipa": "/ˈmɑːrkɪtɪŋ/",
+      "meaningVi": "tiếp thị",
+      "definitionEn": "The process of promoting, selling, and distributing a product or service.",
+      "example": "Effective marketing strategies can significantly boost sales and customer engagement.",
+      "collocation": "marketing strategy",
+      "band": "6-7"
+    },
+    {
+      "word": "loyalty",
+      "pos": "noun",
+      "ipa": "/ˈlɔɪəlti/",
+      "meaningVi": "lòng trung thành (khách hàng)",
+      "definitionEn": "The tendency of customers to consistently purchase from the same brand over time.",
+      "example": "Many companies offer loyalty programs to reward repeat customers and encourage brand loyalty.",
+      "collocation": "customer loyalty",
+      "band": "7-8"
+    },
+    {
+      "word": "refund",
+      "pos": "noun",
+      "ipa": "/ˈriːfʌnd/",
+      "meaningVi": "hoàn tiền",
+      "definitionEn": "A repayment of the full amount paid for a product or service, usually due to dissatisfaction or defect.",
+      "example": "The store has a strict policy that any refund requires the original receipt.",
+      "collocation": "refund policy",
+      "band": "5-6"
+    },
+    {
+      "word": "warranty",
+      "pos": "noun",
+      "ipa": "/ˈwɔːrənti/",
+      "meaningVi": "bảo hành",
+      "definitionEn": "A written guarantee promising to repair or replace a product if necessary within a specified period.",
+      "example": "A longer warranty period often gives consumers more confidence in the quality of a product.",
+      "collocation": "warranty period",
+      "band": "7-8"
+    },
+    {
+      "word": "counterfeit",
+      "pos": "adjective",
+      "ipa": "/ˈkaʊntərfɪt/",
+      "meaningVi": "giả mạo, hàng nhái",
+      "definitionEn": "Made in exact imitation of something valuable or important with the intention to deceive.",
+      "example": "Counterfeit goods not only harm the brand owner but also pose risks to consumer safety.",
+      "collocation": "counterfeit products",
+      "band": "8+"
+    },
+    {
+      "word": "sustainability",
+      "pos": "noun",
+      "ipa": "/səˌsteɪnəˈbɪləti/",
+      "meaningVi": "tính bền vững",
+      "definitionEn": "The ability to maintain or support a process continuously over time, especially in relation to environmental and social impact.",
+      "example": "Consumers are increasingly prioritizing sustainability when making purchasing decisions.",
+      "collocation": "environmental sustainability",
+      "band": "8+"
+    },
+    {
+      "word": "consumer",
+      "pos": "noun",
+      "ipa": "/kənˈsjuːmər/",
+      "meaningVi": "người tiêu dùng",
+      "definitionEn": "A person who buys goods and services for personal use.",
+      "example": "The modern consumer is increasingly concerned about the ethical sourcing of products.",
+      "collocation": "consumer behaviour",
+      "band": "5-6"
+    },
+    {
+      "word": "purchase",
+      "pos": "verb",
+      "ipa": "/ˈpɜːrtʃəs/",
+      "meaningVi": "mua hàng",
+      "definitionEn": "To buy something.",
+      "example": "Many consumers prefer to purchase goods online due to the convenience it offers.",
+      "collocation": "make a purchase",
+      "band": "5-6"
+    },
+    {
+      "word": "price tag",
+      "pos": "noun",
+      "ipa": "/ˈpraɪs tæɡ/",
+      "meaningVi": "giá bán, mức giá",
+      "definitionEn": "The price of something, often shown on a label.",
+      "example": "The price tag on luxury handbags can be exorbitant, reflecting the brand's exclusivity.",
+      "collocation": "high price tag",
+      "band": "5-6"
+    },
+    {
+      "word": "product",
+      "pos": "noun",
+      "ipa": "/ˈprɒdʌkt/",
+      "meaningVi": "sản phẩm",
+      "definitionEn": "An item that is manufactured or refined for sale.",
+      "example": "Companies invest heavily in research and development to improve their product quality.",
+      "collocation": "product range",
+      "band": "5-6"
+    },
+    {
+      "word": "brand",
+      "pos": "noun",
+      "ipa": "/brænd/",
+      "meaningVi": "thương hiệu",
+      "definitionEn": "A type of product manufactured by a particular company under a particular name.",
+      "example": "Strong brand loyalty can insulate companies from price competition.",
+      "collocation": "brand image",
+      "band": "5-6"
+    },
+    {
+      "word": "shopper",
+      "pos": "noun",
+      "ipa": "/ˈʃɒpər/",
+      "meaningVi": "người mua sắm",
+      "definitionEn": "A person who visits shops to buy goods.",
+      "example": "The rise of online shopping has transformed the behaviour of the average shopper.",
+      "collocation": "window shopper",
+      "band": "5-6"
+    },
+    {
+      "word": "customer",
+      "pos": "noun",
+      "ipa": "/ˈkʌstəmər/",
+      "meaningVi": "khách hàng",
+      "definitionEn": "A person who buys goods or services from a shop or business.",
+      "example": "Excellent customer service is a key factor in retaining customers.",
+      "collocation": "customer satisfaction",
+      "band": "5-6"
+    },
+    {
+      "word": "client",
+      "pos": "noun",
+      "ipa": "/ˈklaɪənt/",
+      "meaningVi": "khách hàng (dịch vụ)",
+      "definitionEn": "A person who uses the services of a professional organization.",
+      "example": "Financial advisors must tailor their recommendations to each client's needs.",
+      "collocation": "corporate client",
+      "band": "6-7"
+    },
+    {
+      "word": "patron",
+      "pos": "noun",
+      "ipa": "/ˈpeɪtrən/",
+      "meaningVi": "khách hàng quen",
+      "definitionEn": "A person who regularly uses a particular shop, restaurant, or business.",
+      "example": "The upscale boutique relies on a loyal patron base for its steady revenue.",
+      "collocation": "regular patron",
+      "band": "6-7"
+    },
+    {
+      "word": "commodity",
+      "pos": "noun",
+      "ipa": "/kəˈmɒdəti/",
+      "meaningVi": "hàng hóa, mặt hàng",
+      "definitionEn": "A raw material or primary agricultural product that can be bought and sold.",
+      "example": "The price of commodities such as oil and wheat fluctuates based on global supply and demand.",
+      "collocation": "commodity market",
+      "band": "6-7"
+    },
+    {
+      "word": "merchandise",
+      "pos": "noun",
+      "ipa": "/ˈmɜːrtʃəndaɪs/",
+      "meaningVi": "hàng hóa bán",
+      "definitionEn": "Goods that are bought or sold in shops.",
+      "example": "Retailers often display their merchandise in an attractive manner to boost sales.",
+      "collocation": "promotional merchandise",
+      "band": "6-7"
+    },
+    {
+      "word": "inventory",
+      "pos": "noun",
+      "ipa": "/ˈɪnvəntɔːri/",
+      "meaningVi": "hàng tồn kho",
+      "definitionEn": "A complete list of items such as property, goods in stock, or the contents of a building.",
+      "example": "Efficient inventory management is crucial for avoiding stockouts and overstocking.",
+      "collocation": "inventory turnover",
+      "band": "6-7"
+    },
+    {
+      "word": "stock",
+      "pos": "noun",
+      "ipa": "/stɒk/",
+      "meaningVi": "hàng trong kho",
+      "definitionEn": "The goods available for sale in a shop.",
+      "example": "The limited-edition sneakers were out of stock within hours of their release.",
+      "collocation": "in stock",
+      "band": "5-6"
+    },
+    {
+      "word": "supply chain",
+      "pos": "noun",
+      "ipa": "/səˈplaɪ tʃeɪn/",
+      "meaningVi": "chuỗi cung ứng",
+      "definitionEn": "The sequence of processes involved in the production and distribution of a commodity.",
+      "example": "Disruptions in the supply chain can lead to significant delays in product delivery.",
+      "collocation": "global supply chain",
+      "band": "7-8"
+    },
+    {
+      "word": "distribution",
+      "pos": "noun",
+      "ipa": "/ˌdɪstrɪˈbjuːʃən/",
+      "meaningVi": "phân phối",
+      "definitionEn": "The action of sharing something out among a number of recipients.",
+      "example": "The company expanded its distribution network to reach rural areas more effectively.",
+      "collocation": "distribution channel",
+      "band": "6-7"
+    },
+    {
+      "word": "logistics",
+      "pos": "noun",
+      "ipa": "/ləˈdʒɪstɪks/",
+      "meaningVi": "logistics, hậu cần",
+      "definitionEn": "The detailed organization and implementation of a complex operation, especially in business.",
+      "example": "Advanced logistics systems enable same-day delivery for online shoppers.",
+      "collocation": "logistics management",
+      "band": "7-8"
+    },
+    {
+      "word": "pricing",
+      "pos": "noun",
+      "ipa": "/ˈpraɪsɪŋ/",
+      "meaningVi": "việc định giá",
+      "definitionEn": "The process of setting prices for products or services.",
+      "example": "Competitive pricing strategies often involve careful analysis of the market.",
+      "collocation": "pricing strategy",
+      "band": "6-7"
+    },
+    {
+      "word": "affordability",
+      "pos": "noun",
+      "ipa": "/əˌfɔːrdəˈbɪləti/",
+      "meaningVi": "khả năng chi trả",
+      "definitionEn": "The quality of being affordable; the extent to which something is within one's financial means.",
+      "example": "The affordability of housing is a major concern for young families in urban areas.",
+      "collocation": "affordability index",
+      "band": "7-8"
+    },
+    {
+      "word": "disposable income",
+      "pos": "noun phrase",
+      "ipa": "/dɪˈspəʊzəbl ˈɪnkʌm/",
+      "meaningVi": "thu nhập khả dụng",
+      "definitionEn": "The amount of money that households have available for spending and saving after income taxes have been accounted for.",
+      "example": "An increase in disposable income often leads to higher consumer spending on non-essential items.",
+      "collocation": "disposable income level",
+      "band": "7-8"
+    },
+    {
+      "word": "purchasing power",
+      "pos": "noun phrase",
+      "ipa": "/ˈpɜːrtʃəsɪŋ ˈpaʊər/",
+      "meaningVi": "sức mua",
+      "definitionEn": "The financial ability to buy goods and services.",
+      "example": "Currency depreciation reduces the purchasing power of consumers in the international market.",
+      "collocation": "purchasing power parity",
+      "band": "7-8"
+    },
+    {
+      "word": "consumer confidence",
+      "pos": "noun phrase",
+      "ipa": "/kənˈsjuːmər ˈkɒnfɪdəns/",
+      "meaningVi": "niềm tin của người tiêu dùng",
+      "definitionEn": "An economic indicator measuring the degree of optimism that consumers feel about the overall state of the economy.",
+      "example": "High consumer confidence typically encourages people to make major purchases like cars and homes.",
+      "collocation": "consumer confidence index",
+      "band": "7-8"
+    },
+    {
+      "word": "price elasticity",
+      "pos": "noun phrase",
+      "ipa": "/ˈpraɪs ˌiːlæˈstɪsəti/",
+      "meaningVi": "độ co giãn của giá",
+      "definitionEn": "A measure of how much the quantity demanded of a good responds to a change in its price.",
+      "example": "Luxury goods often have low price elasticity because consumers are less sensitive to price changes.",
+      "collocation": "price elasticity of demand",
+      "band": "7-8"
+    },
+    {
+      "word": "cost-benefit analysis",
+      "pos": "noun phrase",
+      "ipa": "/ˈkɒst ˈbenɪfɪt əˈnæləsɪs/",
+      "meaningVi": "phân tích chi phí-lợi ích",
+      "definitionEn": "A systematic approach to estimating the strengths and weaknesses of alternatives used to determine options that provide the best approach to achieve benefits.",
+      "example": "A thorough cost-benefit analysis is essential before launching a new product line.",
+      "collocation": "conduct a cost-benefit analysis",
+      "band": "8+"
+    },
+    {
+      "word": "opportunity cost",
+      "pos": "noun phrase",
+      "ipa": "/ˌɒpəˈtjuːnəti kɒst/",
+      "meaningVi": "chi phí cơ hội",
+      "definitionEn": "The loss of potential gain from other alternatives when one alternative is chosen.",
+      "example": "The opportunity cost of spending money on a luxury vacation is the savings you could have invested.",
+      "collocation": "opportunity cost of capital",
+      "band": "8+"
+    },
+    {
+      "word": "return policy",
+      "pos": "noun phrase",
+      "ipa": "/rɪˈtɜːrn ˈpɒləsi/",
+      "meaningVi": "chính sách đổi trả",
+      "definitionEn": "A set of rules that a retailer follows regarding the acceptance of returned items.",
+      "example": "A generous return policy can significantly boost customer trust and repeat purchases.",
+      "collocation": "liberal return policy",
+      "band": "6-7"
+    }
+  ]
+}

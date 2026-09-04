@@ -60,6 +60,36 @@ const TOPICS: Topic[] = [
   { slug: 'happiness', name: 'Happiness and Wellbeing', nameVi: 'Hạnh phúc', blurb: 'Cảm xúc, cân bằng, áp lực tinh thần' },
   { slug: 'history', name: 'History', nameVi: 'Lịch sử', blurb: 'Quá khứ, di tích, bài học lịch sử' },
   { slug: 'energy', name: 'Energy', nameVi: 'Năng lượng', blurb: 'Tái tạo, nhiên liệu hoá thạch, tiết kiệm điện' },
+
+  /*
+    Hai mươi chủ đề bổ sung, đưa kho lên 50 bộ.
+
+    Ba mươi chủ đề đầu chọn theo TẦN SUẤT RA ĐỀ. Hai mươi chủ đề này chọn theo một
+    trục khác hẳn: những mảng mà người học có ý để nói nhưng KHÔNG CÓ TỪ để nói —
+    hay gặp nhất ở Speaking Part 2 (tả người, tả nơi chốn, kể kỷ niệm) và ở những
+    đề Task 2 hỏi về cảm xúc, đạo đức, rủi ro. Chúng ít ra đề hơn, nhưng khi ra thì
+    người học trắng từ hẳn chứ không phải chỉ nghèo từ.
+  */
+  { slug: 'personality', name: 'Personality and Character', nameVi: 'Tính cách', blurb: 'Mô tả người, thói quen, thái độ' },
+  { slug: 'emotions', name: 'Emotions', nameVi: 'Cảm xúc', blurb: 'Vui buồn, lo lắng, phản ứng tâm lý' },
+  { slug: 'places', name: 'Describing Places', nameVi: 'Tả nơi chốn', blurb: 'Cảnh quan, không khí, kiến trúc' },
+  { slug: 'memories', name: 'Memories and Childhood', nameVi: 'Ký ức', blurb: 'Kỷ niệm, tuổi thơ, hoài niệm' },
+  { slug: 'success-failure', name: 'Success and Failure', nameVi: 'Thành công và thất bại', blurb: 'Nỗ lực, thành tựu, vấp ngã' },
+  { slug: 'risk-safety', name: 'Risk and Safety', nameVi: 'Rủi ro và an toàn', blurb: 'Nguy hiểm, phòng ngừa, bảo hiểm' },
+  { slug: 'ethics', name: 'Ethics and Morality', nameVi: 'Đạo đức', blurb: 'Đúng sai, trách nhiệm, lương tâm' },
+  { slug: 'change', name: 'Change and Development', nameVi: 'Thay đổi', blurb: 'Chuyển biến, cải tiến, thích nghi' },
+  { slug: 'comparison', name: 'Comparison and Contrast', nameVi: 'So sánh', blurb: 'Hơn kém, tương đồng, khác biệt' },
+  { slug: 'cause-effect', name: 'Cause and Effect', nameVi: 'Nguyên nhân và kết quả', blurb: 'Dẫn tới, bắt nguồn, hệ quả' },
+  { slug: 'agriculture', name: 'Agriculture and Food Production', nameVi: 'Nông nghiệp', blurb: 'Trồng trọt, chăn nuôi, mùa vụ' },
+  { slug: 'animals-nature', name: 'Animals and Wildlife', nameVi: 'Động vật hoang dã', blurb: 'Loài, môi trường sống, tuyệt chủng' },
+  { slug: 'weather-climate', name: 'Weather and Climate', nameVi: 'Thời tiết và khí hậu', blurb: 'Mùa, thiên tai, nhiệt độ' },
+  { slug: 'architecture', name: 'Architecture and Design', nameVi: 'Kiến trúc', blurb: 'Công trình, vật liệu, thiết kế' },
+  { slug: 'fashion', name: 'Fashion and Appearance', nameVi: 'Thời trang', blurb: 'Trang phục, xu hướng, ngoại hình' },
+  { slug: 'festivals', name: 'Festivals and Celebrations', nameVi: 'Lễ hội', blurb: 'Nghi lễ, sum họp, phong tục' },
+  { slug: 'shopping', name: 'Shopping and Consumers', nameVi: 'Mua sắm', blurb: 'Tiêu dùng, thương hiệu, giá cả' },
+  { slug: 'leisure', name: 'Leisure and Free Time', nameVi: 'Giải trí', blurb: 'Sở thích, nghỉ ngơi, giải trí' },
+  { slug: 'communication', name: 'Communication Skills', nameVi: 'Giao tiếp', blurb: 'Thuyết phục, lắng nghe, hiểu lầm' },
+  { slug: 'ai-future', name: 'AI and the Future', nameVi: 'AI và tương lai', blurb: 'Tự động hoá, dự đoán, thích ứng' },
 ];
 
 export type VocabEntry = {
@@ -146,7 +176,7 @@ function checkTopic(words: VocabEntry[], expected: number = WORDS_PER_TOPIC): Ch
 
 // -------------------------------------------------------------------- chạy
 
-type Proxy = { id: string; base: string; key: string };
+type Proxy = { id: string; base: string; key: string; model: string; foldSystem: boolean };
 
 /**
  * Sinh MỘT NỬA bộ từ (25 từ) trong một lời gọi.
@@ -159,6 +189,14 @@ type Proxy = { id: string; base: string; key: string };
  * Nửa sau nhận danh sách từ của nửa đầu để KHÔNG lặp lại: model không nhớ lượt
  * trước, nên không nói thì nó lặp ngay những từ dễ nghĩ ra nhất.
  */
+/** Cửa nào nuốt vai `system` thì phải gộp chỉ dẫn vào tin nhắn người dùng. */
+function buildMessages(system: string, user: string, fold: boolean) {
+  return [
+    { role: 'system', content: system },
+    { role: 'user', content: fold ? `${system}\n\n---\n\n${user}` : user },
+  ];
+}
+
 async function generateHalf(
   topic: Topic,
   count: number,
@@ -181,12 +219,9 @@ async function generateHalf(
           method: 'POST',
           headers: { Authorization: `Bearer ${proxy.key}`, 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            model: proxy.id === 'aibox' ? 'deepseek-v4-flash' : 'gpt-5.5',
+            model: proxy.model,
             temperature: 0.4,
-            messages: [
-              { role: 'system', content: SYSTEM.replace('{{COUNT}}', String(count)) },
-              { role: 'user', content: user },
-            ],
+            messages: buildMessages(SYSTEM.replace('{{COUNT}}', String(count)), user, proxy.foldSystem),
           }),
           signal: AbortSignal.timeout(180_000),
         });
@@ -227,15 +262,31 @@ async function generateTopic(topic: Topic, proxies: Proxy[]): Promise<VocabEntry
   return words;
 }
 
+/**
+ * Ba cửa, đọc thẳng từ `.env.local` — CÙNG một nguồn với app và với bộ sinh bài dịch.
+ *
+ * Trước đây script này đọc riêng `.secrets-proxies.json`, và cái giá phải trả lộ ra
+ * đúng lúc cấu hình đổi: file riêng vẫn trỏ cửa dự phòng vào `gpt-5.5` trên codex,
+ * mà codex thì NUỐT vai `system` — nơi chứa toàn bộ chỉ dẫn soạn từ vựng. Nghĩa là
+ * cửa dự phòng của script này cũng chưa bao giờ dự phòng được. Hai nguồn cấu hình
+ * cho cùng một hạ tầng thì sớm muộn cũng lệch nhau, nên bỏ hẳn một cái.
+ */
+function readEnvFile(): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const line of readFileSync('.env.local', 'utf8').split(/\r?\n/)) {
+    const m = /^([A-Z_]+)=(.*)$/.exec(line);
+    if (m && m[1] && m[2] !== undefined) out[m[1]] = m[2].replace(/^"|"$/g, '');
+  }
+  return out;
+}
+
 async function main() {
-  const cfg = JSON.parse(readFileSync('.secrets-proxies.json', 'utf8')) as {
-    proxies: Array<{ id: string; base: string; key: string }>;
-  };
-  // Proxy nhanh đứng trước; proxy kia làm dự phòng khi bộ nào cứng đầu.
-  const proxies = [
-    cfg.proxies.find((p) => p.id === 'aibox')!,
-    cfg.proxies.find((p) => p.id === 'codex')!,
-  ].filter(Boolean);
+  const env = readEnvFile();
+  const proxies: Proxy[] = [
+    { id: 'groq', base: env.AI_PRIMARY_BASE_URL ?? '', key: env.AI_PRIMARY_API_KEY ?? '', model: env.WRITING_MODEL ?? 'openai/gpt-oss-120b', foldSystem: false },
+    { id: 'aibox', base: env.AI_SECONDARY_BASE_URL ?? '', key: env.AI_SECONDARY_API_KEY ?? '', model: env.AI_SECONDARY_MODEL ?? 'deepseek-v4-flash', foldSystem: false },
+    { id: 'codex', base: env.AI_TERTIARY_BASE_URL ?? '', key: env.AI_TERTIARY_API_KEY ?? '', model: env.AI_TERTIARY_MODEL ?? 'claude-haiku-4-5-20251001', foldSystem: env.AI_TERTIARY_FOLD_SYSTEM === 'true' },
+  ].filter((p) => p.base && p.key);
 
   mkdirSync(OUT_DIR, { recursive: true });
   const redo = process.argv.includes('--redo') ? process.argv[process.argv.indexOf('--redo') + 1] : null;

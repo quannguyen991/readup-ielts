@@ -1,0 +1,508 @@
+{
+  "slug": "places",
+  "name": "Describing Places",
+  "nameVi": "Tả nơi chốn",
+  "blurb": "Cảnh quan, không khí, kiến trúc",
+  "words": [
+    {
+      "word": "landscape",
+      "pos": "noun",
+      "ipa": "/ˈlændskeɪp/",
+      "meaningVi": "cảnh quan",
+      "definitionEn": "a large area of countryside, especially in relation to its appearance",
+      "example": "The landscape of the Scottish Highlands is breathtakingly beautiful.",
+      "collocation": "breathtaking landscape",
+      "band": "5-6"
+    },
+    {
+      "word": "picturesque",
+      "pos": "adjective",
+      "ipa": "/ˌpɪktʃəˈresk/",
+      "meaningVi": "đẹp như tranh vẽ",
+      "definitionEn": "visually attractive, especially in a quaint or charming way",
+      "example": "The picturesque village of Hallstatt attracts millions of tourists each year.",
+      "collocation": "picturesque village",
+      "band": "6-7"
+    },
+    {
+      "word": "bustling",
+      "pos": "adjective",
+      "ipa": "/ˈbʌslɪŋ/",
+      "meaningVi": "nhộn nhịp, sầm uất",
+      "definitionEn": "full of people moving about in a busy way",
+      "example": "The bustling streets of Tokyo never seem to sleep.",
+      "collocation": "bustling streets",
+      "band": "6-7"
+    },
+    {
+      "word": "serene",
+      "pos": "adjective",
+      "ipa": "/səˈriːn/",
+      "meaningVi": "thanh bình, yên ả",
+      "definitionEn": "calm, peaceful, and untroubled",
+      "example": "The serene atmosphere of the lake made it a perfect spot for meditation.",
+      "collocation": "serene atmosphere",
+      "band": "6-7"
+    },
+    {
+      "word": "sprawling",
+      "pos": "adjective",
+      "ipa": "/ˈsprɔːlɪŋ/",
+      "meaningVi": "trải rộng, lan rộng",
+      "definitionEn": "spreading out over a large area in an untidy or irregular way",
+      "example": "The sprawling metropolis of Los Angeles extends for miles along the coast.",
+      "collocation": "sprawling metropolis",
+      "band": "6-7"
+    },
+    {
+      "word": "dilapidated",
+      "pos": "adjective",
+      "ipa": "/dɪˈlæpɪdeɪtɪd/",
+      "meaningVi": "đổ nát, tồi tàn",
+      "definitionEn": "in a state of disrepair or ruin as a result of age or neglect",
+      "example": "The dilapidated factory was demolished to make way for a new park.",
+      "collocation": "dilapidated building",
+      "band": "7-8"
+    },
+    {
+      "word": "architectural",
+      "pos": "adjective",
+      "ipa": "/ˌɑːrkɪˈtektʃərəl/",
+      "meaningVi": "thuộc kiến trúc",
+      "definitionEn": "relating to the design and construction of buildings",
+      "example": "The city is famous for its architectural heritage, including Gothic cathedrals and modern skyscrapers.",
+      "collocation": "architectural heritage",
+      "band": "6-7"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪnfrəstrʌktʃər/",
+      "meaningVi": "cơ sở hạ tầng",
+      "definitionEn": "the basic physical and organizational structures needed for a society to operate",
+      "example": "The government invested heavily in improving the infrastructure of rural areas.",
+      "collocation": "infrastructure development",
+      "band": "6-7"
+    },
+    {
+      "word": "metropolitan",
+      "pos": "adjective",
+      "ipa": "/ˌmetrəˈpɒlɪtən/",
+      "meaningVi": "thuộc đô thị lớn",
+      "definitionEn": "relating to a large city or a city and its surrounding areas",
+      "example": "Metropolitan areas often offer a wider range of cultural activities than smaller towns.",
+      "collocation": "metropolitan area",
+      "band": "7-8"
+    },
+    {
+      "word": "rural",
+      "pos": "adjective",
+      "ipa": "/ˈrʊrəl/",
+      "meaningVi": "nông thôn, thuộc vùng quê",
+      "definitionEn": "relating to the countryside rather than the town",
+      "example": "Many people move to rural areas to escape the noise of the city.",
+      "collocation": "rural landscape",
+      "band": "5-6"
+    },
+    {
+      "word": "urban",
+      "pos": "adjective",
+      "ipa": "/ˈɜːrbən/",
+      "meaningVi": "đô thị, thuộc thành phố",
+      "definitionEn": "relating to a city or town",
+      "example": "Urban planning plays a crucial role in creating sustainable cities.",
+      "collocation": "urban planning",
+      "band": "5-6"
+    },
+    {
+      "word": "scenic",
+      "pos": "adjective",
+      "ipa": "/ˈsiːnɪk/",
+      "meaningVi": "có cảnh đẹp, ngoạn mục",
+      "definitionEn": "providing beautiful views of the countryside or natural features",
+      "example": "The scenic route along the coast offers stunning views of the ocean.",
+      "collocation": "scenic route",
+      "band": "6-7"
+    },
+    {
+      "word": "charming",
+      "pos": "adjective",
+      "ipa": "/ˈtʃɑːrmɪŋ/",
+      "meaningVi": "quyến rũ, duyên dáng",
+      "definitionEn": "pleasant, attractive, and delightful",
+      "example": "The charming old town with its cobblestone streets is a popular tourist destination.",
+      "collocation": "charming town",
+      "band": "6-7"
+    },
+    {
+      "word": "historic",
+      "pos": "adjective",
+      "ipa": "/hɪˈstɔːrɪk/",
+      "meaningVi": "mang tính lịch sử",
+      "definitionEn": "famous or important in history",
+      "example": "The historic castle has been preserved for centuries.",
+      "collocation": "historic site",
+      "band": "5-6"
+    },
+    {
+      "word": "vibrant",
+      "pos": "adjective",
+      "ipa": "/ˈvaɪbrənt/",
+      "meaningVi": "sôi động, đầy sức sống",
+      "definitionEn": "full of energy, activity, and life",
+      "example": "The vibrant nightlife of the city attracts many young people.",
+      "collocation": "vibrant nightlife",
+      "band": "6-7"
+    },
+    {
+      "word": "tranquil",
+      "pos": "adjective",
+      "ipa": "/ˈtræŋkwɪl/",
+      "meaningVi": "yên tĩnh, tĩnh lặng",
+      "definitionEn": "free from disturbance or noise; calm",
+      "example": "The tranquil garden was a perfect place to relax after a busy day.",
+      "collocation": "tranquil setting",
+      "band": "6-7"
+    },
+    {
+      "word": "captivating",
+      "pos": "adjective",
+      "ipa": "/ˈkæptɪveɪtɪŋ/",
+      "meaningVi": "hấp dẫn, lôi cuốn",
+      "definitionEn": "attracting and holding one's attention; fascinating",
+      "example": "The captivating view of the sunset over the mountains left everyone speechless.",
+      "collocation": "captivating view",
+      "band": "7-8"
+    },
+    {
+      "word": "ruin",
+      "pos": "noun",
+      "ipa": "/ˈruːɪn/",
+      "meaningVi": "tàn tích, phế tích",
+      "definitionEn": "the remains of a building or structure that has been destroyed or has fallen into disrepair",
+      "example": "The ancient ruins of the temple are a UNESCO World Heritage site.",
+      "collocation": "ancient ruins",
+      "band": "6-7"
+    },
+    {
+      "word": "skyline",
+      "pos": "noun",
+      "ipa": "/ˈskaɪlaɪn/",
+      "meaningVi": "đường chân trời (của thành phố)",
+      "definitionEn": "the outline of buildings, mountains, etc., against the sky",
+      "example": "The skyline of Hong Kong is dominated by towering skyscrapers.",
+      "collocation": "city skyline",
+      "band": "6-7"
+    },
+    {
+      "word": "atmosphere",
+      "pos": "noun",
+      "ipa": "/ˈætməsfɪr/",
+      "meaningVi": "bầu không khí",
+      "definitionEn": "the character, feeling, or mood of a place",
+      "example": "The atmosphere in the old café was warm and inviting.",
+      "collocation": "relaxed atmosphere",
+      "band": "5-6"
+    },
+    {
+      "word": "quaint",
+      "pos": "adjective",
+      "ipa": "/kweɪnt/",
+      "meaningVi": "cổ kính, độc đáo",
+      "definitionEn": "attractively unusual or old-fashioned",
+      "example": "The quaint cottages with thatched roofs are a common sight in the English countryside.",
+      "collocation": "quaint cottage",
+      "band": "6-7"
+    },
+    {
+      "word": "imposing",
+      "pos": "adjective",
+      "ipa": "/ɪmˈpoʊzɪŋ/",
+      "meaningVi": "hùng vĩ, đồ sộ",
+      "definitionEn": "impressive in size, appearance, or manner",
+      "example": "The imposing cathedral dominates the city's skyline.",
+      "collocation": "imposing structure",
+      "band": "6-7"
+    },
+    {
+      "word": "breathtaking",
+      "pos": "adjective",
+      "ipa": "/ˈbreθˌteɪkɪŋ/",
+      "meaningVi": "ngoạn mục, đẹp đến nghẹt thở",
+      "definitionEn": "astonishing or awe-inspiring in quality, so as to take one's breath away",
+      "example": "The breathtaking views from the mountain peak made the climb worthwhile.",
+      "collocation": "breathtaking views",
+      "band": "8+"
+    },
+    {
+      "word": "unspoiled",
+      "pos": "adjective",
+      "ipa": "/ʌnˈspɔɪld/",
+      "meaningVi": "hoang sơ, chưa bị tác động",
+      "definitionEn": "not harmed or damaged; still in its original natural state",
+      "example": "The unspoiled beaches of the island are a paradise for nature lovers.",
+      "collocation": "unspoiled nature",
+      "band": "7-8"
+    },
+    {
+      "word": "cosmopolitan",
+      "pos": "adjective",
+      "ipa": "/ˌkɒzməˈpɒlɪtən/",
+      "meaningVi": "quốc tế, đa văn hóa",
+      "definitionEn": "familiar with and comfortable in many different countries and cultures",
+      "example": "London is a cosmopolitan city with a diverse population and global influences.",
+      "collocation": "cosmopolitan city",
+      "band": "7-8"
+    },
+    {
+      "word": "ancient",
+      "pos": "adj",
+      "ipa": "/ˈeɪnʃənt/",
+      "meaningVi": "cổ xưa",
+      "definitionEn": "belonging to the very distant past",
+      "example": "The ancient ruins of the temple attract thousands of tourists every year.",
+      "collocation": "ancient civilization",
+      "band": "5-6"
+    },
+    {
+      "word": "fascinating",
+      "pos": "adj",
+      "ipa": "/ˈfæsɪneɪtɪŋ/",
+      "meaningVi": "hấp dẫn, lôi cuốn",
+      "definitionEn": "extremely interesting or attractive",
+      "example": "The city's fascinating blend of modern and traditional architecture is a sight to behold.",
+      "collocation": "fascinating architecture",
+      "band": "5-6"
+    },
+    {
+      "word": "crowded",
+      "pos": "adj",
+      "ipa": "/ˈkraʊdɪd/",
+      "meaningVi": "đông đúc",
+      "definitionEn": "filled with many people or things",
+      "example": "The crowded streets of the old town made it difficult to walk freely.",
+      "collocation": "crowded streets",
+      "band": "5-6"
+    },
+    {
+      "word": "peaceful",
+      "pos": "adj",
+      "ipa": "/ˈpiːsfəl/",
+      "meaningVi": "yên bình",
+      "definitionEn": "free from disturbance; calm",
+      "example": "The peaceful countryside offers a perfect escape from the hustle and bustle of city life.",
+      "collocation": "peaceful environment",
+      "band": "5-6"
+    },
+    {
+      "word": "lively",
+      "pos": "adj",
+      "ipa": "/ˈlaɪvli/",
+      "meaningVi": "sôi động, sống động",
+      "definitionEn": "full of life and energy",
+      "example": "The lively market square is always filled with locals and tourists alike.",
+      "collocation": "lively atmosphere",
+      "band": "5-6"
+    },
+    {
+      "word": "appealing",
+      "pos": "adj",
+      "ipa": "/əˈpiːlɪŋ/",
+      "meaningVi": "hấp dẫn, lôi cuốn",
+      "definitionEn": "attractive or interesting",
+      "example": "The appealing coastal scenery makes this region a popular holiday destination.",
+      "collocation": "appealing scenery",
+      "band": "5-6"
+    },
+    {
+      "word": "pleasant",
+      "pos": "adj",
+      "ipa": "/ˈplezənt/",
+      "meaningVi": "dễ chịu, thú vị",
+      "definitionEn": "giving a sense of happy satisfaction or enjoyment",
+      "example": "The pleasant climate of the island contributes to its year-round tourism.",
+      "collocation": "pleasant climate",
+      "band": "5-6"
+    },
+    {
+      "word": "panorama",
+      "pos": "noun",
+      "ipa": "/ˌpænəˈræmə/",
+      "meaningVi": "toàn cảnh, quang cảnh bao quát",
+      "definitionEn": "an unbroken view of a wide area",
+      "example": "From the top of the hill, visitors can enjoy a stunning panorama of the entire valley.",
+      "collocation": "breathtaking panorama",
+      "band": "6-7"
+    },
+    {
+      "word": "congested",
+      "pos": "adj",
+      "ipa": "/kənˈdʒestɪd/",
+      "meaningVi": "tắc nghẽn, đông đúc",
+      "definitionEn": "so crowded with traffic or people that it is difficult to move",
+      "example": "The city's congested roads during rush hour are a major source of frustration for commuters.",
+      "collocation": "congested traffic",
+      "band": "6-7"
+    },
+    {
+      "word": "secluded",
+      "pos": "adj",
+      "ipa": "/sɪˈkluːdɪd/",
+      "meaningVi": "hẻo lánh, riêng tư",
+      "definitionEn": "not seen or visited by many people; private and quiet",
+      "example": "The secluded beach is ideal for those seeking peace and solitude.",
+      "collocation": "secluded location",
+      "band": "6-7"
+    },
+    {
+      "word": "lush",
+      "pos": "adj",
+      "ipa": "/lʌʃ/",
+      "meaningVi": "tươi tốt, xanh mướt",
+      "definitionEn": "of vegetation growing thickly and luxuriantly",
+      "example": "The lush green hills of the countryside are a delight to hikers and nature lovers.",
+      "collocation": "lush vegetation",
+      "band": "6-7"
+    },
+    {
+      "word": "animated",
+      "pos": "adj",
+      "ipa": "/ˈænɪmeɪtɪd/",
+      "meaningVi": "sinh động, nhộn nhịp",
+      "definitionEn": "full of life and activity",
+      "example": "The animated streets of the festival quarter are filled with music and laughter.",
+      "collocation": "animated atmosphere",
+      "band": "6-7"
+    },
+    {
+      "word": "expansive",
+      "pos": "adj",
+      "ipa": "/ɪkˈspænsɪv/",
+      "meaningVi": "rộng lớn, bao la",
+      "definitionEn": "covering a large area; extensive",
+      "example": "The expansive plains stretch as far as the eye can see, offering a sense of freedom.",
+      "collocation": "expansive landscape",
+      "band": "6-7"
+    },
+    {
+      "word": "pristine",
+      "pos": "adj",
+      "ipa": "/ˈprɪstiːn/",
+      "meaningVi": "nguyên sơ, tinh khiết",
+      "definitionEn": "in its original condition; unspoiled",
+      "example": "The pristine waters of the lake remain crystal clear due to strict environmental protection.",
+      "collocation": "pristine environment",
+      "band": "7-8"
+    },
+    {
+      "word": "ornate",
+      "pos": "adj",
+      "ipa": "/ɔːˈneɪt/",
+      "meaningVi": "cầu kỳ, trang trí phức tạp",
+      "definitionEn": "decorated with a lot of complex details",
+      "example": "The ornate ceiling of the cathedral features intricate carvings and gold leaf.",
+      "collocation": "ornate architecture",
+      "band": "7-8"
+    },
+    {
+      "word": "arid",
+      "pos": "adj",
+      "ipa": "/ˈærɪd/",
+      "meaningVi": "khô cằn, khô hạn",
+      "definitionEn": "having little or no rain; very dry",
+      "example": "The arid desert landscape is both harsh and beautiful in its starkness.",
+      "collocation": "arid climate",
+      "band": "7-8"
+    },
+    {
+      "word": "thronged",
+      "pos": "adj",
+      "ipa": "/θrɒŋd/",
+      "meaningVi": "đông nghịt, chật kín người",
+      "definitionEn": "crowded with people or things",
+      "example": "The main square is always thronged with tourists during the summer season.",
+      "collocation": "thronged with tourists",
+      "band": "7-8"
+    },
+    {
+      "word": "ramshackle",
+      "pos": "adj",
+      "ipa": "/ˈræmʃækəl/",
+      "meaningVi": "ọp ẹp, xiêu vẹo",
+      "definitionEn": "in a state of severe disrepair; tumbledown",
+      "example": "The ramshackle buildings along the waterfront have been abandoned for decades.",
+      "collocation": "ramshackle building",
+      "band": "7-8"
+    },
+    {
+      "word": "majestic",
+      "pos": "adj",
+      "ipa": "/məˈdʒestɪk/",
+      "meaningVi": "uy nghi, hùng vĩ",
+      "definitionEn": "having grandeur or beauty that inspires admiration",
+      "example": "The majestic mountain peaks are covered in snow throughout the year.",
+      "collocation": "majestic scenery",
+      "band": "7-8"
+    },
+    {
+      "word": "vestiges",
+      "pos": "noun",
+      "ipa": "/ˈvestɪdʒɪz/",
+      "meaningVi": "dấu vết, tàn tích",
+      "definitionEn": "traces or remains of something that no longer exists",
+      "example": "The vestiges of the ancient Roman forum can still be seen in the city centre.",
+      "collocation": "vestiges of the past",
+      "band": "8+"
+    },
+    {
+      "word": "sublime",
+      "pos": "adj",
+      "ipa": "/səˈblaɪm/",
+      "meaningVi": "hùng vĩ, cao cả, tuyệt vời",
+      "definitionEn": "of outstanding beauty or grandeur",
+      "example": "The sublime beauty of the sunset over the ocean left the visitors speechless.",
+      "collocation": "sublime beauty",
+      "band": "8+"
+    },
+    {
+      "word": "opulent",
+      "pos": "adj",
+      "ipa": "/ˈɒpjʊlənt/",
+      "meaningVi": "xa hoa, tráng lệ",
+      "definitionEn": "rich and luxurious",
+      "example": "The opulent palaces of the former royal family are now open to the public.",
+      "collocation": "opulent interior",
+      "band": "8+"
+    },
+    {
+      "word": "idyllic",
+      "pos": "adj",
+      "ipa": "/ɪˈdɪlɪk/",
+      "meaningVi": "bình dị, nên thơ",
+      "definitionEn": "extremely pleasant, peaceful, and picturesque",
+      "example": "The idyllic village with its thatched cottages and flower-filled gardens is a photographer's dream.",
+      "collocation": "idyllic setting",
+      "band": "8+"
+    },
+    {
+      "word": "labyrinthine",
+      "pos": "adj",
+      "ipa": "/ˌlæbəˈrɪnθaɪn/",
+      "meaningVi": "phức tạp như mê cung, rối rắm",
+      "definitionEn": "like a labyrinth; complicated and confusing",
+      "example": "The labyrinthine layout of the old market makes it easy to get lost.",
+      "collocation": "labyrinthine streets",
+      "band": "8+"
+    },
+    {
+      "word": "verdant",
+      "pos": "adj",
+      "ipa": "/ˈvɜːdənt/",
+      "meaningVi": "xanh tươi, phủ đầy cây cỏ",
+      "definitionEn": "green with grass or other rich vegetation",
+      "example": "The verdant landscapes of the national park are a haven for wildlife.",
+      "collocation": "verdant landscape",
+      "band": "8+"
+    }
+  ]
+}

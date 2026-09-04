@@ -1,0 +1,508 @@
+{
+  "slug": "ai-future",
+  "name": "AI and the Future",
+  "nameVi": "AI và tương lai",
+  "blurb": "Tự động hoá, dự đoán, thích ứng",
+  "words": [
+    {
+      "word": "automation",
+      "pos": "noun",
+      "ipa": "/ˌɔːtəˈmeɪʃən/",
+      "meaningVi": "tự động hóa",
+      "definitionEn": "the use of machines or technology to perform tasks without human intervention",
+      "example": "The automation of manufacturing processes has significantly increased productivity.",
+      "collocation": "automation of",
+      "band": "5-6"
+    },
+    {
+      "word": "prediction",
+      "pos": "noun",
+      "ipa": "/prɪˈdɪkʃən/",
+      "meaningVi": "dự đoán",
+      "definitionEn": "a statement about what will happen in the future based on evidence or analysis",
+      "example": "Accurate weather prediction relies on advanced algorithms.",
+      "collocation": "make predictions",
+      "band": "5-6"
+    },
+    {
+      "word": "adaptation",
+      "pos": "noun",
+      "ipa": "/ˌædæpˈteɪʃən/",
+      "meaningVi": "sự thích ứng",
+      "definitionEn": "the process of adjusting to new conditions or environments",
+      "example": "Organisations must undergo constant adaptation to survive in the digital age.",
+      "collocation": "adaptation to",
+      "band": "6-7"
+    },
+    {
+      "word": "algorithm",
+      "pos": "noun",
+      "ipa": "/ˈælɡərɪðəm/",
+      "meaningVi": "thuật toán",
+      "definitionEn": "a set of rules or steps used to solve a problem or perform a computation",
+      "example": "The algorithm used for credit scoring must be transparent to avoid bias.",
+      "collocation": "implement an algorithm",
+      "band": "6-7"
+    },
+    {
+      "word": "artificial intelligence",
+      "pos": "noun",
+      "ipa": "/ˌɑːtɪˈfɪʃəl ɪnˈtelɪdʒəns/",
+      "meaningVi": "trí tuệ nhân tạo",
+      "definitionEn": "the simulation of human intelligence by machines, especially computer systems",
+      "example": "Artificial intelligence is transforming the healthcare industry.",
+      "collocation": "advancements in artificial intelligence",
+      "band": "6-7"
+    },
+    {
+      "word": "machine learning",
+      "pos": "noun",
+      "ipa": "/məˈʃiːn ˈlɜːnɪŋ/",
+      "meaningVi": "học máy",
+      "definitionEn": "a subset of artificial intelligence that enables systems to learn from data without explicit programming",
+      "example": "Machine learning enables systems to improve their performance without explicit programming.",
+      "collocation": "leveraging machine learning",
+      "band": "7-8"
+    },
+    {
+      "word": "autonomous",
+      "pos": "adjective",
+      "ipa": "/ɔːˈtɒnəməs/",
+      "meaningVi": "tự động (tự trị)",
+      "definitionEn": "able to operate independently without human control",
+      "example": "Autonomous vehicles are expected to reduce traffic accidents.",
+      "collocation": "autonomous systems",
+      "band": "7-8"
+    },
+    {
+      "word": "disruption",
+      "pos": "noun",
+      "ipa": "/dɪsˈrʌpʃən/",
+      "meaningVi": "sự gián đoạn, đột phá",
+      "definitionEn": "a major change that disturbs normal processes or established structures",
+      "example": "The disruption caused by AI in the job market requires proactive policy responses.",
+      "collocation": "cause disruption",
+      "band": "7-8"
+    },
+    {
+      "word": "speculative",
+      "pos": "adjective",
+      "ipa": "/ˈspekjʊlətɪv/",
+      "meaningVi": "suy đoán, mang tính đầu cơ",
+      "definitionEn": "based on conjecture rather than solid evidence; involving high risk in anticipation of future gains",
+      "example": "Speculative investments in AI startups can be risky.",
+      "collocation": "speculative investment",
+      "band": "8+"
+    },
+    {
+      "word": "bias",
+      "pos": "noun",
+      "ipa": "/ˈbaɪəs/",
+      "meaningVi": "thiên vị, thiên lệch",
+      "definitionEn": "a systematic error or prejudice in data, algorithms, or decision-making processes",
+      "example": "Algorithmic bias can perpetuate social inequalities.",
+      "collocation": "algorithmic bias",
+      "band": "7-8"
+    },
+    {
+      "word": "ethical",
+      "pos": "adjective",
+      "ipa": "/ˈeθɪkəl/",
+      "meaningVi": "đạo đức, thuộc về đạo đức",
+      "definitionEn": "relating to moral principles and values",
+      "example": "Ethical frameworks are essential for responsible AI development.",
+      "collocation": "ethical considerations",
+      "band": "7-8"
+    },
+    {
+      "word": "singularity",
+      "pos": "noun",
+      "ipa": "/ˌsɪŋɡjʊˈlærɪti/",
+      "meaningVi": "điểm kỳ dị (công nghệ)",
+      "definitionEn": "a hypothetical future point where artificial intelligence surpasses human intelligence, leading to unforeseeable changes",
+      "example": "The singularity represents a hypothetical point where AI surpasses human cognitive abilities.",
+      "collocation": "technological singularity",
+      "band": "8+"
+    },
+    {
+      "word": "augmentation",
+      "pos": "noun",
+      "ipa": "/ˌɔːɡmenˈteɪʃən/",
+      "meaningVi": "sự tăng cường, mở rộng",
+      "definitionEn": "the process of enhancing human abilities or performance through technology",
+      "example": "Human augmentation through AI implants could enhance memory and learning.",
+      "collocation": "human augmentation",
+      "band": "8+"
+    },
+    {
+      "word": "surveillance",
+      "pos": "noun",
+      "ipa": "/sɜːˈveɪləns/",
+      "meaningVi": "giám sát",
+      "definitionEn": "close monitoring of people's behaviour, often for security or control purposes",
+      "example": "Surveillance systems powered by AI raise concerns about privacy.",
+      "collocation": "surveillance systems",
+      "band": "6-7"
+    },
+    {
+      "word": "optimisation",
+      "pos": "noun",
+      "ipa": "/ˌɒptɪmaɪˈzeɪʃən/",
+      "meaningVi": "sự tối ưu hóa",
+      "definitionEn": "the process of making something as effective or efficient as possible",
+      "example": "Process optimisation using AI reduces waste and energy consumption.",
+      "collocation": "process optimisation",
+      "band": "6-7"
+    },
+    {
+      "word": "innovation",
+      "pos": "noun",
+      "ipa": "/ˌɪnəˈveɪʃən/",
+      "meaningVi": "đổi mới, sáng tạo",
+      "definitionEn": "a new idea, method, or product that brings about significant change",
+      "example": "Technological innovation drives economic growth.",
+      "collocation": "technological innovation",
+      "band": "5-6"
+    },
+    {
+      "word": "workforce",
+      "pos": "noun",
+      "ipa": "/ˈwɜːkfɔːs/",
+      "meaningVi": "lực lượng lao động",
+      "definitionEn": "the total number of people available for work in an economy or organisation",
+      "example": "The workforce must acquire new skills to remain relevant in an AI-driven economy.",
+      "collocation": "workforce transformation",
+      "band": "6-7"
+    },
+    {
+      "word": "unemployment",
+      "pos": "noun",
+      "ipa": "/ˌʌnɪmˈplɔɪmənt/",
+      "meaningVi": "thất nghiệp",
+      "definitionEn": "the state of being without a paid job despite being available to work",
+      "example": "Mass unemployment due to automation is a major concern for policymakers.",
+      "collocation": "mass unemployment",
+      "band": "5-6"
+    },
+    {
+      "word": "inequality",
+      "pos": "noun",
+      "ipa": "/ˌɪnɪˈkwɒlɪti/",
+      "meaningVi": "bất bình đẳng",
+      "definitionEn": "unequal distribution of resources, opportunities, or wealth among groups",
+      "example": "Economic inequality may widen if the benefits of AI are not distributed fairly.",
+      "collocation": "social inequality",
+      "band": "6-7"
+    },
+    {
+      "word": "transformation",
+      "pos": "noun",
+      "ipa": "/ˌtrænsfəˈmeɪʃən/",
+      "meaningVi": "sự chuyển đổi, biến đổi",
+      "definitionEn": "a thorough or dramatic change in form, structure, or function",
+      "example": "Digital transformation is reshaping entire industries.",
+      "collocation": "digital transformation",
+      "band": "6-7"
+    },
+    {
+      "word": "convergence",
+      "pos": "noun",
+      "ipa": "/kənˈvɜːdʒəns/",
+      "meaningVi": "sự hội tụ",
+      "definitionEn": "the merging of different technologies, industries, or ideas into a unified whole",
+      "example": "The convergence of AI, IoT, and big data creates unprecedented opportunities.",
+      "collocation": "technological convergence",
+      "band": "8+"
+    },
+    {
+      "word": "anomaly",
+      "pos": "noun",
+      "ipa": "/əˈnɒməli/",
+      "meaningVi": "bất thường, dị thường",
+      "definitionEn": "something that deviates from the norm or expected pattern",
+      "example": "Anomaly detection systems can identify fraudulent transactions effectively.",
+      "collocation": "detect anomalies",
+      "band": "7-8"
+    },
+    {
+      "word": "probabilistic",
+      "pos": "adjective",
+      "ipa": "/ˌprɒbəbɪˈlɪstɪk/",
+      "meaningVi": "xác suất, thuộc về xác suất",
+      "definitionEn": "based on or involving probability; expressing likelihood rather than certainty",
+      "example": "Probabilistic models are used to predict outcomes under uncertainty.",
+      "collocation": "probabilistic model",
+      "band": "8+"
+    },
+    {
+      "word": "neural network",
+      "pos": "noun",
+      "ipa": "/ˈnjʊərəl ˈnetwɜːk/",
+      "meaningVi": "mạng nơ-ron",
+      "definitionEn": "a computing system inspired by the human brain, composed of interconnected nodes (neurons) that learn from data",
+      "example": "Training a neural network requires large amounts of labelled data.",
+      "collocation": "train a neural network",
+      "band": "7-8"
+    },
+    {
+      "word": "deep learning",
+      "pos": "noun",
+      "ipa": "/diːp ˈlɜːnɪŋ/",
+      "meaningVi": "học sâu",
+      "definitionEn": "a subset of machine learning using multi-layered neural networks to model complex patterns",
+      "example": "Deep learning has achieved remarkable results in image recognition.",
+      "collocation": "deep learning algorithms",
+      "band": "7-8"
+    },
+    {
+      "word": "robotic",
+      "pos": "adj",
+      "ipa": "/rəʊˈbɒtɪk/",
+      "meaningVi": "thuộc về robot, tự động như robot",
+      "definitionEn": "Relating to or resembling a robot, especially in terms of automation or mechanical movement.",
+      "example": "The factory introduced a robotic arm to assemble components with precision.",
+      "collocation": "robotic system",
+      "band": "5-6"
+    },
+    {
+      "word": "intelligent",
+      "pos": "adj",
+      "ipa": "/ɪnˈtelɪdʒənt/",
+      "meaningVi": "thông minh, có trí tuệ",
+      "definitionEn": "Having the ability to learn, reason, and make decisions, often used to describe AI systems.",
+      "example": "An intelligent assistant can schedule meetings based on your preferences.",
+      "collocation": "intelligent system",
+      "band": "5-6"
+    },
+    {
+      "word": "chatbot",
+      "pos": "noun",
+      "ipa": "/ˈtʃætbɒt/",
+      "meaningVi": "trò chuyện tự động, chatbot",
+      "definitionEn": "A computer program designed to simulate conversation with human users, especially over the internet.",
+      "example": "Many companies now use a chatbot to handle customer inquiries around the clock.",
+      "collocation": "AI-powered chatbot",
+      "band": "5-6"
+    },
+    {
+      "word": "automated",
+      "pos": "adj",
+      "ipa": "/ˈɔːtəmeɪtɪd/",
+      "meaningVi": "tự động hóa, được vận hành tự động",
+      "definitionEn": "Operated by machines or computers without human intervention.",
+      "example": "The automated warehouse system can sort packages ten times faster than manual workers.",
+      "collocation": "automated process",
+      "band": "5-6"
+    },
+    {
+      "word": "digital",
+      "pos": "adj",
+      "ipa": "/ˈdɪdʒɪtəl/",
+      "meaningVi": "kỹ thuật số, thuộc về công nghệ số",
+      "definitionEn": "Relating to or using signals or data represented as a series of digits, especially in computing and AI.",
+      "example": "A digital twin of the engine allows engineers to predict failures without physical testing.",
+      "collocation": "digital transformation",
+      "band": "5-6"
+    },
+    {
+      "word": "automate",
+      "pos": "verb",
+      "ipa": "/ˈɔːtəmeɪt/",
+      "meaningVi": "tự động hóa, làm cho tự động",
+      "definitionEn": "To use machines or computers to perform tasks that were previously done by humans.",
+      "example": "Firms are seeking to automate repetitive tasks to reduce costs and improve efficiency.",
+      "collocation": "automate workflows",
+      "band": "6-7"
+    },
+    {
+      "word": "predictive",
+      "pos": "adj",
+      "ipa": "/prɪˈdɪktɪv/",
+      "meaningVi": "mang tính dự đoán, dự báo",
+      "definitionEn": "Relating to or capable of making predictions about future events or trends.",
+      "example": "Predictive models in healthcare can identify patients at risk of developing chronic diseases.",
+      "collocation": "predictive analytics",
+      "band": "6-7"
+    },
+    {
+      "word": "simulate",
+      "pos": "verb",
+      "ipa": "/ˈsɪmjuleɪt/",
+      "meaningVi": "mô phỏng, giả lập",
+      "definitionEn": "To imitate the appearance or functioning of a system or process, often for testing or training.",
+      "example": "Engineers use software to simulate the impact of an earthquake on a building design.",
+      "collocation": "simulate scenarios",
+      "band": "6-7"
+    },
+    {
+      "word": "simulation",
+      "pos": "noun",
+      "ipa": "/ˌsɪmjuˈleɪʃən/",
+      "meaningVi": "sự mô phỏng, quá trình giả lập",
+      "definitionEn": "A model or representation of a real-world process or system, used for analysis or prediction.",
+      "example": "The simulation of autonomous vehicle behaviour helps developers improve safety algorithms.",
+      "collocation": "computer simulation",
+      "band": "6-7"
+    },
+    {
+      "word": "innovate",
+      "pos": "verb",
+      "ipa": "/ˈɪnəveɪt/",
+      "meaningVi": "đổi mới, sáng tạo",
+      "definitionEn": "To introduce new ideas, methods, or products, especially in technology and AI.",
+      "example": "Startups in the field of artificial intelligence continue to innovate at an astonishing pace.",
+      "collocation": "innovate rapidly",
+      "band": "6-7"
+    },
+    {
+      "word": "transform",
+      "pos": "verb",
+      "ipa": "/trænsˈfɔːm/",
+      "meaningVi": "biến đổi, chuyển đổi sâu sắc",
+      "definitionEn": "To change the form, structure, or function of something completely, often through technology.",
+      "example": "The adoption of AI could transform the way we approach education and personalised learning.",
+      "collocation": "transform industries",
+      "band": "6-7"
+    },
+    {
+      "word": "humanoid",
+      "pos": "adj",
+      "ipa": "/ˈhjuːmənɔɪd/",
+      "meaningVi": "hình người, giống con người",
+      "definitionEn": "Resembling a human being in form and sometimes in behaviour, often used for robots.",
+      "example": "The humanoid robot was designed to assist elderly people with daily tasks in their homes.",
+      "collocation": "humanoid robot",
+      "band": "6-7"
+    },
+    {
+      "word": "adaptive",
+      "pos": "adj",
+      "ipa": "/əˈdæptɪv/",
+      "meaningVi": "thích nghi, có khả năng điều chỉnh",
+      "definitionEn": "Capable of adjusting to new conditions or changing environments, often used for AI systems.",
+      "example": "An adaptive algorithm can modify its parameters based on user feedback over time.",
+      "collocation": "adaptive system",
+      "band": "7-8"
+    },
+    {
+      "word": "cognitive",
+      "pos": "adj",
+      "ipa": "/ˈkɒɡnɪtɪv/",
+      "meaningVi": "nhận thức, liên quan đến quá trình tư duy",
+      "definitionEn": "Relating to mental processes such as perception, reasoning, and learning, often applied to AI.",
+      "example": "Cognitive computing aims to mimic human thought processes in complex decision-making tasks.",
+      "collocation": "cognitive ability",
+      "band": "7-8"
+    },
+    {
+      "word": "augment",
+      "pos": "verb",
+      "ipa": "/ɔːɡˈment/",
+      "meaningVi": "tăng cường, mở rộng",
+      "definitionEn": "To make something greater, stronger, or more effective, typically by adding to it.",
+      "example": "AI can augment human intelligence by providing real-time data analysis and recommendations.",
+      "collocation": "augment human capabilities",
+      "band": "7-8"
+    },
+    {
+      "word": "disrupt",
+      "pos": "verb",
+      "ipa": "/dɪsˈrʌpt/",
+      "meaningVi": "phá vỡ, làm gián đoạn",
+      "definitionEn": "To cause significant change or interruption to an existing system, industry, or process.",
+      "example": "The rise of generative AI threatens to disrupt traditional creative industries such as writing and design.",
+      "collocation": "disrupt market",
+      "band": "7-8"
+    },
+    {
+      "word": "optimize",
+      "pos": "verb",
+      "ipa": "/ˈɒptɪmaɪz/",
+      "meaningVi": "tối ưu hóa, làm cho hiệu quả nhất",
+      "definitionEn": "To make something as effective, efficient, or functional as possible, often using algorithms.",
+      "example": "Engineers use machine learning to optimise the energy consumption of data centres.",
+      "collocation": "optimize performance",
+      "band": "7-8"
+    },
+    {
+      "word": "data-driven",
+      "pos": "adj",
+      "ipa": "/ˈdeɪtə ˈdrɪvən/",
+      "meaningVi": "dựa trên dữ liệu, lấy dữ liệu làm nền tảng",
+      "definitionEn": "Guided or determined by data analysis rather than intuition or experience alone.",
+      "example": "A data-driven approach to policy-making can lead to more accurate predictions of social outcomes.",
+      "collocation": "data-driven decision",
+      "band": "7-8"
+    },
+    {
+      "word": "fairness",
+      "pos": "noun",
+      "ipa": "/ˈfeənəs/",
+      "meaningVi": "sự công bằng, tính công bằng",
+      "definitionEn": "The quality of treating people equally and without bias, a key concern in AI ethics.",
+      "example": "Ensuring fairness in AI systems requires careful testing for hidden biases in training data.",
+      "collocation": "algorithmic fairness",
+      "band": "7-8"
+    },
+    {
+      "word": "breakthrough",
+      "pos": "noun",
+      "ipa": "/ˈbreɪkθruː/",
+      "meaningVi": "bước đột phá, thành tựu quan trọng",
+      "definitionEn": "A sudden, significant advance or discovery, especially in science or technology.",
+      "example": "The breakthrough in natural language processing allowed machines to understand context much better than before.",
+      "collocation": "scientific breakthrough",
+      "band": "7-8"
+    },
+    {
+      "word": "adaptability",
+      "pos": "noun",
+      "ipa": "/əˌdæptəˈbɪləti/",
+      "meaningVi": "khả năng thích nghi, tính linh hoạt",
+      "definitionEn": "The capacity to adjust to new conditions or changes in the environment, a valuable trait for AI systems.",
+      "example": "The adaptability of reinforcement learning agents makes them suitable for dynamic environments like stock trading.",
+      "collocation": "human adaptability",
+      "band": "7-8"
+    },
+    {
+      "word": "converge",
+      "pos": "verb",
+      "ipa": "/kənˈvɜːdʒ/",
+      "meaningVi": "hội tụ, gặp nhau",
+      "definitionEn": "To come together from different directions to form a single point or common goal, used in technology and AI.",
+      "example": "As AI and biotechnology converge, new possibilities for personalised medicine are emerging.",
+      "collocation": "converge on a solution",
+      "band": "8+"
+    },
+    {
+      "word": "heuristic",
+      "pos": "noun",
+      "ipa": "/hjʊˈrɪstɪk/",
+      "meaningVi": "phương pháp heuristic, phỏng đoán có hệ thống",
+      "definitionEn": "A problem-solving approach that uses a practical method not guaranteed to be optimal but sufficient for immediate goals.",
+      "example": "A common heuristic in AI pathfinding is to estimate the distance to the target using a straight-line formula.",
+      "collocation": "heuristic algorithm",
+      "band": "8+"
+    },
+    {
+      "word": "paradigm",
+      "pos": "noun",
+      "ipa": "/ˈpærədaɪm/",
+      "meaningVi": "mô hình mẫu, hệ hình",
+      "definitionEn": "A typical example or pattern of something, especially a set of ideas that form a framework for thinking.",
+      "example": "The shift from rule-based programming to deep learning represents a major paradigm change in AI research.",
+      "collocation": "paradigm shift",
+      "band": "8+"
+    },
+    {
+      "word": "synthesis",
+      "pos": "noun",
+      "ipa": "/ˈsɪnθəsɪs/",
+      "meaningVi": "sự tổng hợp, kết hợp",
+      "definitionEn": "The combination of separate elements or ideas to form a coherent whole, often in AI system design.",
+      "example": "The synthesis of vision and language models has enabled more advanced image captioning systems.",
+      "collocation": "data synthesis",
+      "band": "8+"
+    }
+  ]
+}

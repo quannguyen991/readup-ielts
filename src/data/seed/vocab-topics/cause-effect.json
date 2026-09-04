@@ -1,0 +1,508 @@
+{
+  "slug": "cause-effect",
+  "name": "Cause and Effect",
+  "nameVi": "Nguyên nhân và kết quả",
+  "blurb": "Dẫn tới, bắt nguồn, hệ quả",
+  "words": [
+    {
+      "word": "cause",
+      "pos": "verb",
+      "ipa": "/kɔːz/",
+      "meaningVi": "gây ra, nguyên nhân",
+      "definitionEn": "to make something happen, especially something bad",
+      "example": "Air pollution can cause respiratory illnesses in urban populations.",
+      "collocation": "cause damage",
+      "band": "5-6"
+    },
+    {
+      "word": "effect",
+      "pos": "noun",
+      "ipa": "/ɪˈfekt/",
+      "meaningVi": "ảnh hưởng, kết quả",
+      "definitionEn": "a change that results when something is done or happens",
+      "example": "The effect of global warming on sea levels is a major concern.",
+      "collocation": "have a significant effect",
+      "band": "5-6"
+    },
+    {
+      "word": "result",
+      "pos": "noun",
+      "ipa": "/rɪˈzʌlt/",
+      "meaningVi": "kết quả",
+      "definitionEn": "the outcome of an action or situation",
+      "example": "The result of the experiment confirmed the hypothesis.",
+      "collocation": "as a result of",
+      "band": "5-6"
+    },
+    {
+      "word": "consequence",
+      "pos": "noun",
+      "ipa": "/ˈkɒn.sɪ.kwəns/",
+      "meaningVi": "hậu quả",
+      "definitionEn": "a result of an action or situation, often negative or serious",
+      "example": "The economic crisis had severe consequences for the working class.",
+      "collocation": "serious consequence",
+      "band": "6-7"
+    },
+    {
+      "word": "outcome",
+      "pos": "noun",
+      "ipa": "/ˈaʊt.kʌm/",
+      "meaningVi": "kết quả (đầu ra)",
+      "definitionEn": "the final result of a process or activity",
+      "example": "The outcome of the negotiations was a new trade agreement.",
+      "collocation": "positive outcome",
+      "band": "6-7"
+    },
+    {
+      "word": "impact",
+      "pos": "noun",
+      "ipa": "/ˈɪm.pækt/",
+      "meaningVi": "tác động",
+      "definitionEn": "the strong effect or influence that something has on a situation",
+      "example": "The impact of technology on education has been transformative.",
+      "collocation": "have a profound impact",
+      "band": "6-7"
+    },
+    {
+      "word": "influence",
+      "pos": "noun",
+      "ipa": "/ˈɪn.flu.əns/",
+      "meaningVi": "ảnh hưởng",
+      "definitionEn": "the power to affect the way someone or something develops or behaves",
+      "example": "Social media has a considerable influence on public opinion.",
+      "collocation": "exert influence",
+      "band": "6-7"
+    },
+    {
+      "word": "factor",
+      "pos": "noun",
+      "ipa": "/ˈfæk.tər/",
+      "meaningVi": "yếu tố",
+      "definitionEn": "one of the things that actively contribute to a result",
+      "example": "Lack of exercise is a key factor in the rise of obesity rates.",
+      "collocation": "contributing factor",
+      "band": "6-7"
+    },
+    {
+      "word": "catalyst",
+      "pos": "noun",
+      "ipa": "/ˈkæt.əl.ɪst/",
+      "meaningVi": "chất xúc tác (ẩn dụ)",
+      "definitionEn": "a person or thing that causes an important change to happen",
+      "example": "The internet acted as a catalyst for the globalisation of trade.",
+      "collocation": "act as a catalyst",
+      "band": "7-8"
+    },
+    {
+      "word": "trigger",
+      "pos": "verb",
+      "ipa": "/ˈtrɪɡ.ər/",
+      "meaningVi": "kích hoạt, gây ra",
+      "definitionEn": "to cause something to start or happen suddenly",
+      "example": "The announcement triggered a wave of protests across the country.",
+      "collocation": "trigger a reaction",
+      "band": "7-8"
+    },
+    {
+      "word": "provoke",
+      "pos": "verb",
+      "ipa": "/prəˈvəʊk/",
+      "meaningVi": "gây ra (phản ứng mạnh)",
+      "definitionEn": "to cause a strong reaction, especially anger or annoyance",
+      "example": "The government's decision provoked widespread criticism from the media.",
+      "collocation": "provoke a response",
+      "band": "7-8"
+    },
+    {
+      "word": "induce",
+      "pos": "verb",
+      "ipa": "/ɪnˈdjuːs/",
+      "meaningVi": "gây ra, thôi thúc",
+      "definitionEn": "to cause a particular state or condition to happen",
+      "example": "Stress can induce a range of health problems, including insomnia.",
+      "collocation": "induce sleep",
+      "band": "7-8"
+    },
+    {
+      "word": "generate",
+      "pos": "verb",
+      "ipa": "/ˈdʒen.ə.reɪt/",
+      "meaningVi": "tạo ra",
+      "definitionEn": "to produce or create something, especially power or income",
+      "example": "The new policy is expected to generate thousands of jobs in the renewable energy sector.",
+      "collocation": "generate revenue",
+      "band": "7-8"
+    },
+    {
+      "word": "produce",
+      "pos": "verb",
+      "ipa": "/prəˈdjuːs/",
+      "meaningVi": "sản xuất, gây ra",
+      "definitionEn": "to cause a particular result or effect",
+      "example": "The combination of factors produced an unexpected economic downturn.",
+      "collocation": "produce an effect",
+      "band": "7-8"
+    },
+    {
+      "word": "stem",
+      "pos": "verb",
+      "ipa": "/stem/",
+      "meaningVi": "bắt nguồn từ",
+      "definitionEn": "to originate from or be caused by something",
+      "example": "Many of the current social problems stem from inequality in education.",
+      "collocation": "stem from",
+      "band": "6-7"
+    },
+    {
+      "word": "originate",
+      "pos": "verb",
+      "ipa": "/əˈrɪdʒ.ɪ.neɪt/",
+      "meaningVi": "bắt nguồn",
+      "definitionEn": "to come from a particular source or begin in a certain way",
+      "example": "The crisis originated in the banking sector before spreading to the whole economy.",
+      "collocation": "originate in",
+      "band": "7-8"
+    },
+    {
+      "word": "derive",
+      "pos": "verb",
+      "ipa": "/dɪˈraɪv/",
+      "meaningVi": "có nguồn gốc từ",
+      "definitionEn": "to get something from a source or have something as a source",
+      "example": "Many English words derive from Latin and Greek roots.",
+      "collocation": "derive from",
+      "band": "7-8"
+    },
+    {
+      "word": "attribute",
+      "pos": "verb",
+      "ipa": "/əˈtrɪb.juːt/",
+      "meaningVi": "quy cho, cho là do",
+      "definitionEn": "to consider that something is caused by a particular thing",
+      "example": "The success of the project can be attributed to effective teamwork.",
+      "collocation": "attribute to",
+      "band": "6-7"
+    },
+    {
+      "word": "account",
+      "pos": "verb",
+      "ipa": "/əˈkaʊnt/",
+      "meaningVi": "giải thích, chiếm (account for)",
+      "definitionEn": "to explain the reason for something or to be a particular part of a total",
+      "example": "Poor infrastructure accounts for the low level of foreign investment in the region.",
+      "collocation": "account for",
+      "band": "6-7"
+    },
+    {
+      "word": "contribute",
+      "pos": "verb",
+      "ipa": "/kənˈtrɪb.juːt/",
+      "meaningVi": "đóng góp, góp phần",
+      "definitionEn": "to be one of the causes of something",
+      "example": "Several factors contributed to the company's bankruptcy.",
+      "collocation": "contribute to",
+      "band": "6-7"
+    },
+    {
+      "word": "lead",
+      "pos": "verb",
+      "ipa": "/liːd/",
+      "meaningVi": "dẫn đến",
+      "definitionEn": "to cause something to happen or to result in a particular situation",
+      "example": "Excessive consumption of processed food can lead to chronic diseases.",
+      "collocation": "lead to",
+      "band": "6-7"
+    },
+    {
+      "word": "precipitate",
+      "pos": "verb",
+      "ipa": "/prɪˈsɪp.ɪ.teɪt/",
+      "meaningVi": "đẩy nhanh, gây ra đột ngột",
+      "definitionEn": "to cause an event or situation to happen suddenly or sooner than expected",
+      "example": "The sudden rise in oil prices precipitated an economic recession.",
+      "collocation": "precipitate a crisis",
+      "band": "8+"
+    },
+    {
+      "word": "exacerbate",
+      "pos": "verb",
+      "ipa": "/ɪɡˈzæs.ər.beɪt/",
+      "meaningVi": "làm trầm trọng thêm",
+      "definitionEn": "to make a problem, bad situation, or negative feeling worse",
+      "example": "Deforestation exacerbates the effects of climate change by reducing carbon absorption.",
+      "collocation": "exacerbate the problem",
+      "band": "8+"
+    },
+    {
+      "word": "causal",
+      "pos": "adjective",
+      "ipa": "/ˈkɔː.zəl/",
+      "meaningVi": "nhân quả, thuộc về nguyên nhân",
+      "definitionEn": "relating to or showing a cause-and-effect relationship",
+      "example": "The study established a causal link between smoking and lung cancer.",
+      "collocation": "causal relationship",
+      "band": "8+"
+    },
+    {
+      "word": "ramification",
+      "pos": "noun",
+      "ipa": "/ˌræm.ɪ.fɪˈkeɪ.ʃən/",
+      "meaningVi": "hệ quả, hậu quả (phức tạp)",
+      "definitionEn": "a complex or unforeseen consequence of an action or event",
+      "example": "The decision to cut funding had far-reaching ramifications for the education system.",
+      "collocation": "have far-reaching ramifications",
+      "band": "8+"
+    },
+    {
+      "word": "source",
+      "pos": "noun",
+      "ipa": "/sɔːrs/",
+      "meaningVi": "nguồn, gốc (nguyên nhân)",
+      "definitionEn": "a point of origin or cause, especially of something negative or positive.",
+      "example": "The primary source of environmental degradation is industrial pollution.",
+      "collocation": "source of conflict",
+      "band": "5-6"
+    },
+    {
+      "word": "basis",
+      "pos": "noun",
+      "ipa": "/ˈbeɪsɪs/",
+      "meaningVi": "cơ sở, nền tảng (nguyên nhân cơ bản)",
+      "definitionEn": "the underlying support or foundation for an idea, argument, or process.",
+      "example": "The basis of his argument was flawed economic data.",
+      "collocation": "on the basis of",
+      "band": "5-6"
+    },
+    {
+      "word": "origin",
+      "pos": "noun",
+      "ipa": "/ˈɔːrɪdʒɪn/",
+      "meaningVi": "nguồn gốc",
+      "definitionEn": "the beginning or cause of something.",
+      "example": "The origin of the conflict can be traced back to colonial policies.",
+      "collocation": "origin of the problem",
+      "band": "6-7"
+    },
+    {
+      "word": "root",
+      "pos": "noun",
+      "ipa": "/ruːt/",
+      "meaningVi": "gốc rễ",
+      "definitionEn": "the fundamental cause or source of something.",
+      "example": "Poverty is often the root of many social issues.",
+      "collocation": "root cause",
+      "band": "6-7"
+    },
+    {
+      "word": "motivation",
+      "pos": "noun",
+      "ipa": "/ˌmoʊtɪˈveɪʃn/",
+      "meaningVi": "động lực, lý do thúc đẩy",
+      "definitionEn": "the reason or reasons one has for acting or behaving in a particular way.",
+      "example": "Financial incentives served as the primary motivation for employees to work overtime.",
+      "collocation": "underlying motivation",
+      "band": "6-7"
+    },
+    {
+      "word": "grounds",
+      "pos": "noun",
+      "ipa": "/ɡraʊndz/",
+      "meaningVi": "căn cứ, lý do chính đáng",
+      "definitionEn": "factors forming a basis for action or belief; justification.",
+      "example": "There are strong grounds for believing that the policy will fail.",
+      "collocation": "on the grounds of",
+      "band": "6-7"
+    },
+    {
+      "word": "motive",
+      "pos": "noun",
+      "ipa": "/ˈmoʊtɪv/",
+      "meaningVi": "động cơ",
+      "definitionEn": "a reason for doing something, especially one that is hidden or not obvious.",
+      "example": "The police investigated the suspect's motive for the crime.",
+      "collocation": "motive for the attack",
+      "band": "6-7"
+    },
+    {
+      "word": "correlation",
+      "pos": "noun",
+      "ipa": "/ˌkɔːrəˈleɪʃn/",
+      "meaningVi": "sự tương quan",
+      "definitionEn": "a mutual relationship or connection between two or more things.",
+      "example": "There is a strong correlation between smoking and lung cancer.",
+      "collocation": "positive correlation",
+      "band": "6-7"
+    },
+    {
+      "word": "association",
+      "pos": "noun",
+      "ipa": "/əˌsoʊsiˈeɪʃn/",
+      "meaningVi": "sự liên quan, mối liên hệ",
+      "definitionEn": "a connection or link between things, often implying a causal relationship.",
+      "example": "The association between diet and health is well-documented.",
+      "collocation": "close association",
+      "band": "6-7"
+    },
+    {
+      "word": "chain",
+      "pos": "noun",
+      "ipa": "/tʃeɪn/",
+      "meaningVi": "chuỗi (sự kiện)",
+      "definitionEn": "a series of connected events or things, each causing the next.",
+      "example": "The accident set off a chain of events that led to the company's bankruptcy.",
+      "collocation": "chain of events",
+      "band": "6-7"
+    },
+    {
+      "word": "impetus",
+      "pos": "noun",
+      "ipa": "/ˈɪmpɪtəs/",
+      "meaningVi": "động lực, sự thúc đẩy",
+      "definitionEn": "the force or energy with which something moves or happens; a driving force.",
+      "example": "The new legislation gave impetus to the renewable energy sector.",
+      "collocation": "provide impetus",
+      "band": "7-8"
+    },
+    {
+      "word": "justification",
+      "pos": "noun",
+      "ipa": "/ˌdʒʌstɪfɪˈkeɪʃn/",
+      "meaningVi": "sự biện minh, lý do chính đáng",
+      "definitionEn": "the action of showing something to be right or reasonable.",
+      "example": "The government provided no justification for the tax increase.",
+      "collocation": "justification for the action",
+      "band": "7-8"
+    },
+    {
+      "word": "driver",
+      "pos": "noun",
+      "ipa": "/ˈdraɪvər/",
+      "meaningVi": "yếu tố thúc đẩy, động lực",
+      "definitionEn": "a factor that causes something to happen or develop.",
+      "example": "Technological innovation is a key driver of economic growth.",
+      "collocation": "key driver of change",
+      "band": "7-8"
+    },
+    {
+      "word": "precondition",
+      "pos": "noun",
+      "ipa": "/ˌpriːkənˈdɪʃn/",
+      "meaningVi": "điều kiện tiên quyết",
+      "definitionEn": "a condition that must be fulfilled before other things can happen.",
+      "example": "Peace is a precondition for sustainable development.",
+      "collocation": "necessary precondition",
+      "band": "7-8"
+    },
+    {
+      "word": "prerequisite",
+      "pos": "noun",
+      "ipa": "/ˌpriːˈrekwɪzɪt/",
+      "meaningVi": "điều kiện cần, tiên quyết",
+      "definitionEn": "a thing that is required as a prior condition for something else to happen or exist.",
+      "example": "A strong foundation in mathematics is a prerequisite for studying physics.",
+      "collocation": "prerequisite for admission",
+      "band": "7-8"
+    },
+    {
+      "word": "ripple",
+      "pos": "noun",
+      "ipa": "/ˈrɪpl/",
+      "meaningVi": "gợn sóng, hiệu ứng lan tỏa",
+      "definitionEn": "a situation in which one event causes a series of other events to happen.",
+      "example": "The bank's collapse had a ripple effect throughout the global economy.",
+      "collocation": "ripple effect",
+      "band": "7-8"
+    },
+    {
+      "word": "engender",
+      "pos": "verb",
+      "ipa": "/ɪnˈdʒendər/",
+      "meaningVi": "gây ra, làm nảy sinh",
+      "definitionEn": "to cause or give rise to (a feeling, situation, or condition).",
+      "example": "The new policy is expected to engender significant changes in the education system.",
+      "collocation": "engender a sense of",
+      "band": "7-8"
+    },
+    {
+      "word": "yield",
+      "pos": "verb",
+      "ipa": "/jiːld/",
+      "meaningVi": "mang lại, sinh ra (kết quả)",
+      "definitionEn": "to produce or provide (a result, profit, or benefit).",
+      "example": "The research yielded valuable insights into the causes of the disease.",
+      "collocation": "yield results",
+      "band": "7-8"
+    },
+    {
+      "word": "foster",
+      "pos": "verb",
+      "ipa": "/ˈfɔːstər/",
+      "meaningVi": "thúc đẩy, nuôi dưỡng (dẫn đến)",
+      "definitionEn": "to encourage the development of something, especially something desirable.",
+      "example": "The government aims to foster economic growth through tax incentives.",
+      "collocation": "foster a climate of",
+      "band": "7-8"
+    },
+    {
+      "word": "underlie",
+      "pos": "verb",
+      "ipa": "/ˌʌndərˈlaɪ/",
+      "meaningVi": "là nguyên nhân cơ bản của",
+      "definitionEn": "to be the cause or basis of something.",
+      "example": "A lack of trust underlies many conflicts in the workplace.",
+      "collocation": "underlying factors",
+      "band": "7-8"
+    },
+    {
+      "word": "determinant",
+      "pos": "noun",
+      "ipa": "/dɪˈtɜːrmɪnənt/",
+      "meaningVi": "yếu tố quyết định",
+      "definitionEn": "a factor that decisively affects the nature or outcome of something.",
+      "example": "Income level is often a determinant of access to healthcare.",
+      "collocation": "major determinant of",
+      "band": "8+"
+    },
+    {
+      "word": "antecedent",
+      "pos": "noun",
+      "ipa": "/ˌæntɪˈsiːdnt/",
+      "meaningVi": "tiền đề, sự việc xảy ra trước",
+      "definitionEn": "a thing that existed before or logically precedes another.",
+      "example": "The antecedents of the financial crisis were apparent years before.",
+      "collocation": "historical antecedents",
+      "band": "8+"
+    },
+    {
+      "word": "cascade",
+      "pos": "noun",
+      "ipa": "/kæˈskeɪd/",
+      "meaningVi": "thác, hiệu ứng dây chuyền",
+      "definitionEn": "a process whereby something, typically information or knowledge, is passed on successively.",
+      "example": "The initial failure caused a cascade of problems throughout the supply chain.",
+      "collocation": "cascade effect",
+      "band": "8+"
+    },
+    {
+      "word": "nexus",
+      "pos": "noun",
+      "ipa": "/ˈneksəs/",
+      "meaningVi": "mối liên kết, mối quan hệ chặt chẽ",
+      "definitionEn": "a central or focal point; a connection or series of connections linking two or more things.",
+      "example": "The study examines the nexus between poverty and crime.",
+      "collocation": "nexus between A and B",
+      "band": "8+"
+    },
+    {
+      "word": "spawn",
+      "pos": "verb",
+      "ipa": "/spɔːn/",
+      "meaningVi": "sản sinh, gây ra (hàng loạt)",
+      "definitionEn": "to cause something to develop or be produced.",
+      "example": "The economic boom spawned a new generation of entrepreneurs.",
+      "collocation": "spawn a wave of",
+      "band": "8+"
+    }
+  ]
+}

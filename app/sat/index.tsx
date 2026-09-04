@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Card, Icon, StickerCard, type IconName } from '@/components/ui';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
+import { mixedSetStats } from '@/services/sat-rw/mixed-sets';
 import { stickerGradient } from '@/theme/tokens';
 
 /**
@@ -32,6 +33,7 @@ type Half = {
 
 export default function SatHubScreen() {
   const verbal = useMemo(() => satRwStats(), []);
+  const mix = useMemo(() => mixedSetStats(), []);
 
   const halves: Half[] = [
     {
@@ -53,8 +55,8 @@ export default function SatHubScreen() {
       title: 'SAT Verbal',
       subtitle: 'Reading & Writing',
       lines: [
-        `${verbal.questions} câu, ${verbal.units} unit, đủ 4 mảng đề thật`,
-        'Có Cross-Text Connections và Command of Evidence',
+        `${verbal.questions} câu, ${verbal.units} unit theo từng luật một`,
+        `${mix.sets} đề trộn bốn mảng, giống module thi thu nhỏ`,
         'Mỗi câu giải thích vì sao ba phương án kia sai',
       ],
       badge: `${verbal.questions} CÂU`,

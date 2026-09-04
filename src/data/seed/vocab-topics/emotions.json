@@ -1,0 +1,508 @@
+{
+  "slug": "emotions",
+  "name": "Emotions",
+  "nameVi": "Cảm xúc",
+  "blurb": "Vui buồn, lo lắng, phản ứng tâm lý",
+  "words": [
+    {
+      "word": "exhilaration",
+      "pos": "noun",
+      "ipa": "/ɪɡˌzɪl.əˈreɪ.ʃən/",
+      "meaningVi": "sự hưng phấn, phấn khởi tột độ",
+      "definitionEn": "a feeling of great happiness and excitement",
+      "example": "Winning the championship brought a sense of exhilaration that lasted for days.",
+      "collocation": "a feeling of exhilaration",
+      "band": "7-8"
+    },
+    {
+      "word": "melancholy",
+      "pos": "noun",
+      "ipa": "/ˈmel.ən.kɒl.i/",
+      "meaningVi": "nỗi u sầu, buồn bã sâu lắng",
+      "definitionEn": "a deep, persistent sadness without clear cause",
+      "example": "The rainy weather often induces a feeling of melancholy in many people.",
+      "collocation": "a sense of melancholy",
+      "band": "7-8"
+    },
+    {
+      "word": "apprehension",
+      "pos": "noun",
+      "ipa": "/ˌæp.rɪˈhen.ʃən/",
+      "meaningVi": "sự lo ngại, e sợ về điều sắp xảy ra",
+      "definitionEn": "anxiety or fear about a future event",
+      "example": "Students feel a great deal of apprehension before important exams.",
+      "collocation": "feel apprehension about",
+      "band": "6-7"
+    },
+    {
+      "word": "indignation",
+      "pos": "noun",
+      "ipa": "/ˌɪn.dɪɡˈneɪ.ʃən/",
+      "meaningVi": "sự phẫn nộ, căm phẫn vì bất công",
+      "definitionEn": "anger aroused by unfair treatment",
+      "example": "The public expressed indignation at the government's decision to cut education funding.",
+      "collocation": "righteous indignation",
+      "band": "7-8"
+    },
+    {
+      "word": "euphoria",
+      "pos": "noun",
+      "ipa": "/juːˈfɔː.ri.ə/",
+      "meaningVi": "trạng thái hưng phấn, phấn khích cực độ",
+      "definitionEn": "an intense feeling of happiness and well-being",
+      "example": "The euphoria of winning the lottery quickly faded when the winner realised the tax burden.",
+      "collocation": "a state of euphoria",
+      "band": "7-8"
+    },
+    {
+      "word": "remorse",
+      "pos": "noun",
+      "ipa": "/rɪˈmɔːs/",
+      "meaningVi": "sự hối hận, ăn năn sâu sắc",
+      "definitionEn": "deep regret for a wrong action",
+      "example": "He showed no remorse for his dishonest behaviour in the negotiation.",
+      "collocation": "feel remorse for",
+      "band": "6-7"
+    },
+    {
+      "word": "serenity",
+      "pos": "noun",
+      "ipa": "/səˈren.ə.ti/",
+      "meaningVi": "sự thanh thản, bình yên trong tâm hồn",
+      "definitionEn": "a state of calm and peacefulness",
+      "example": "Meditation helps many people achieve a sense of serenity in their daily lives.",
+      "collocation": "a feeling of serenity",
+      "band": "6-7"
+    },
+    {
+      "word": "resentment",
+      "pos": "noun",
+      "ipa": "/rɪˈzent.mənt/",
+      "meaningVi": "sự oán giận, bực bội kéo dài",
+      "definitionEn": "persistent anger over unfair treatment",
+      "example": "The employee's resentment stemmed from being overlooked for promotion repeatedly.",
+      "collocation": "harbour resentment",
+      "band": "6-7"
+    },
+    {
+      "word": "nostalgia",
+      "pos": "noun",
+      "ipa": "/nɒˈstæl.dʒə/",
+      "meaningVi": "nỗi hoài niệm, nhớ về quá khứ",
+      "definitionEn": "a sentimental longing for past times",
+      "example": "Looking at old photographs often evokes a strong sense of nostalgia.",
+      "collocation": "a sense of nostalgia",
+      "band": "6-7"
+    },
+    {
+      "word": "dismay",
+      "pos": "noun",
+      "ipa": "/dɪˈsmeɪ/",
+      "meaningVi": "sự thất vọng, hoảng hốt trước điều bất ngờ xấu",
+      "definitionEn": "a feeling of shock and disappointment",
+      "example": "To her dismay, the project she had worked on for months was cancelled.",
+      "collocation": "to one's dismay",
+      "band": "6-7"
+    },
+    {
+      "word": "elation",
+      "pos": "noun",
+      "ipa": "/ɪˈleɪ.ʃən/",
+      "meaningVi": "sự phấn khởi, vui sướng tột độ",
+      "definitionEn": "a feeling of great happiness and pride",
+      "example": "The team's victory was met with elation from fans around the world.",
+      "collocation": "a feeling of elation",
+      "band": "7-8"
+    },
+    {
+      "word": "trepidation",
+      "pos": "noun",
+      "ipa": "/ˌtrep.ɪˈdeɪ.ʃən/",
+      "meaningVi": "sự run sợ, lo lắng trước nguy hiểm hoặc điều chưa biết",
+      "definitionEn": "a feeling of fear or anxiety about something uncertain",
+      "example": "Many people face the first day of a new job with trepidation.",
+      "collocation": "with trepidation",
+      "band": "7-8"
+    },
+    {
+      "word": "composure",
+      "pos": "noun",
+      "ipa": "/kəmˈpəʊ.ʒər/",
+      "meaningVi": "sự điềm tĩnh, bình tĩnh trong tình huống căng thẳng",
+      "definitionEn": "the state of being calm and in control of one's feelings",
+      "example": "She managed to maintain her composure during the stressful interview.",
+      "collocation": "maintain/lose one's composure",
+      "band": "6-7"
+    },
+    {
+      "word": "agitation",
+      "pos": "noun",
+      "ipa": "/ˌædʒ.ɪˈteɪ.ʃən/",
+      "meaningVi": "sự bồn chồn, kích động",
+      "definitionEn": "a state of anxiety or nervous excitement",
+      "example": "The constant noise in the city can cause agitation and stress.",
+      "collocation": "mental agitation",
+      "band": "6-7"
+    },
+    {
+      "word": "gratification",
+      "pos": "noun",
+      "ipa": "/ˌɡræt.ɪ.fɪˈkeɪ.ʃən/",
+      "meaningVi": "sự hài lòng, thỏa mãn",
+      "definitionEn": "pleasure, especially when obtained from something desired",
+      "example": "Instant gratification from social media often undermines long-term happiness.",
+      "collocation": "immediate gratification",
+      "band": "7-8"
+    },
+    {
+      "word": "exasperation",
+      "pos": "noun",
+      "ipa": "/ɪɡˌzæs.pəˈreɪ.ʃən/",
+      "meaningVi": "sự bực tức, tức giận vì khó chịu lặp lại",
+      "definitionEn": "a feeling of intense irritation or annoyance",
+      "example": "He sighed in exasperation after explaining the same rule for the third time.",
+      "collocation": "in exasperation",
+      "band": "7-8"
+    },
+    {
+      "word": "despondency",
+      "pos": "noun",
+      "ipa": "/dɪˈspɒn.dən.si/",
+      "meaningVi": "sự chán nản, tuyệt vọng",
+      "definitionEn": "a state of low spirits caused by loss of hope or confidence",
+      "example": "Long-term unemployment can lead to a deep sense of despondency.",
+      "collocation": "a feeling of despondency",
+      "band": "8+"
+    },
+    {
+      "word": "infatuation",
+      "pos": "noun",
+      "ipa": "/ɪnˌfætʃ.uˈeɪ.ʃən/",
+      "meaningVi": "sự say mê mù quáng, si mê",
+      "definitionEn": "an intense but short-lived passion for someone or something",
+      "example": "Teenage infatuation often fades as quickly as it appears.",
+      "collocation": "a short-lived infatuation",
+      "band": "6-7"
+    },
+    {
+      "word": "contempt",
+      "pos": "noun",
+      "ipa": "/kənˈtempt/",
+      "meaningVi": "sự khinh bỉ, coi thường",
+      "definitionEn": "the feeling that someone or something is worthless or beneath consideration",
+      "example": "The politician showed nothing but contempt for the opinions of the public.",
+      "collocation": "hold in contempt",
+      "band": "7-8"
+    },
+    {
+      "word": "ambivalence",
+      "pos": "noun",
+      "ipa": "/æmˈbɪv.ə.ləns/",
+      "meaningVi": "sự mâu thuẫn cảm xúc, vừa thích vừa ghét",
+      "definitionEn": "the state of having mixed feelings about something",
+      "example": "Many people feel ambivalence towards modern technology, appreciating its benefits but fearing its drawbacks.",
+      "collocation": "feel ambivalence about",
+      "band": "8+"
+    },
+    {
+      "word": "apathy",
+      "pos": "noun",
+      "ipa": "/ˈæp.ə.θi/",
+      "meaningVi": "sự thờ ơ, vô cảm",
+      "definitionEn": "lack of interest, enthusiasm, or concern",
+      "example": "Political apathy among young people is a growing concern in many democracies.",
+      "collocation": "voter apathy",
+      "band": "7-8"
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "ipa": "/ˈem.pə.θi/",
+      "meaningVi": "sự đồng cảm, thấu hiểu cảm xúc người khác",
+      "definitionEn": "the ability to understand and share the feelings of another person",
+      "example": "Empathy is a crucial skill for effective leadership and teamwork.",
+      "collocation": "show empathy towards",
+      "band": "5-6"
+    },
+    {
+      "word": "poignant",
+      "pos": "adjective",
+      "ipa": "/ˈpɔɪ.njənt/",
+      "meaningVi": "xúc động, thấm thía, đau đớn (thường về ký ức, câu chuyện)",
+      "definitionEn": "evoking a keen sense of sadness or regret",
+      "example": "The film's poignant ending left many audience members in tears.",
+      "collocation": "a poignant moment",
+      "band": "7-8"
+    },
+    {
+      "word": "wistful",
+      "pos": "adjective",
+      "ipa": "/ˈwɪst.fəl/",
+      "meaningVi": "đầy nuối tiếc, nhớ nhung một cách buồn bã",
+      "definitionEn": "having or showing a feeling of vague or regretful longing",
+      "example": "She gave a wistful smile as she recalled her childhood summers.",
+      "collocation": "a wistful look",
+      "band": "7-8"
+    },
+    {
+      "word": "stoic",
+      "pos": "adjective",
+      "ipa": "/ˈstəʊ.ɪk/",
+      "meaningVi": "khắc kỷ, chịu đựng đau khổ mà không than phiền",
+      "definitionEn": "enduring pain or hardship without showing feelings or complaining",
+      "example": "He remained stoic despite the devastating news of his failure.",
+      "collocation": "a stoic attitude",
+      "band": "8+"
+    },
+    {
+      "word": "anxiety",
+      "pos": "noun",
+      "ipa": "/æŋˈzaɪəti/",
+      "meaningVi": "sự lo lắng, bất an",
+      "definitionEn": "a feeling of worry, nervousness, or unease about something with an uncertain outcome",
+      "example": "The prolonged uncertainty caused him considerable anxiety before the exam.",
+      "collocation": "chronic anxiety",
+      "band": "6-7"
+    },
+    {
+      "word": "distress",
+      "pos": "noun",
+      "ipa": "/dɪˈstres/",
+      "meaningVi": "sự đau khổ, kiệt quệ tinh thần",
+      "definitionEn": "extreme anxiety, sorrow, or pain",
+      "example": "The news of the accident plunged the family into deep distress.",
+      "collocation": "emotional distress",
+      "band": "6-7"
+    },
+    {
+      "word": "frustration",
+      "pos": "noun",
+      "ipa": "/frʌˈstreɪʃn/",
+      "meaningVi": "sự thất vọng, bực bội",
+      "definitionEn": "the feeling of being upset or annoyed as a result of being unable to change or achieve something",
+      "example": "His constant frustration with the slow progress led to a loss of motivation.",
+      "collocation": "mounting frustration",
+      "band": "6-7"
+    },
+    {
+      "word": "sorrow",
+      "pos": "noun",
+      "ipa": "/ˈsɒrəʊ/",
+      "meaningVi": "nỗi buồn sâu sắc",
+      "definitionEn": "a feeling of deep distress caused by loss, disappointment, or other misfortune",
+      "example": "The entire community shared their sorrow after the tragic event.",
+      "collocation": "profound sorrow",
+      "band": "6-7"
+    },
+    {
+      "word": "ecstasy",
+      "pos": "noun",
+      "ipa": "/ˈekstəsi/",
+      "meaningVi": "trạng thái xuất thần, hạnh phúc tột độ",
+      "definitionEn": "an overwhelming feeling of great happiness or joyful excitement",
+      "example": "The artist experienced pure ecstasy while completing her masterpiece.",
+      "collocation": "sheer ecstasy",
+      "band": "7-8"
+    },
+    {
+      "word": "fury",
+      "pos": "noun",
+      "ipa": "/ˈfjʊəri/",
+      "meaningVi": "cơn thịnh nộ",
+      "definitionEn": "wild or violent anger",
+      "example": "The crowd erupted in fury when the decision was announced.",
+      "collocation": "blind fury",
+      "band": "7-8"
+    },
+    {
+      "word": "dread",
+      "pos": "noun",
+      "ipa": "/dred/",
+      "meaningVi": "nỗi sợ hãi, lo sợ",
+      "definitionEn": "great fear or apprehension about something that may happen",
+      "example": "She felt a growing sense of dread as the deadline approached.",
+      "collocation": "overwhelming dread",
+      "band": "7-8"
+    },
+    {
+      "word": "astonishment",
+      "pos": "noun",
+      "ipa": "/əˈstɒnɪʃmənt/",
+      "meaningVi": "sự ngạc nhiên tột độ",
+      "definitionEn": "great surprise or amazement",
+      "example": "To everyone's astonishment, the team won the championship against all odds.",
+      "collocation": "utter astonishment",
+      "band": "7-8"
+    },
+    {
+      "word": "revulsion",
+      "pos": "noun",
+      "ipa": "/rɪˈvʌlʃn/",
+      "meaningVi": "sự ghê tởm, kinh tởm",
+      "definitionEn": "a strong feeling of disgust or repulsion",
+      "example": "The graphic footage filled viewers with revulsion.",
+      "collocation": "moral revulsion",
+      "band": "8+"
+    },
+    {
+      "word": "bliss",
+      "pos": "noun",
+      "ipa": "/blɪs/",
+      "meaningVi": "hạnh phúc tuyệt vời",
+      "definitionEn": "perfect happiness; great joy",
+      "example": "The couple described their honeymoon as a state of pure bliss.",
+      "collocation": "marital bliss",
+      "band": "7-8"
+    },
+    {
+      "word": "worry",
+      "pos": "noun",
+      "ipa": "/ˈwʌri/",
+      "meaningVi": "sự lo lắng",
+      "definitionEn": "a state of anxiety and uncertainty over actual or potential problems",
+      "example": "Financial worry is a major source of stress for many people.",
+      "collocation": "constant worry",
+      "band": "5-6"
+    },
+    {
+      "word": "stress",
+      "pos": "noun",
+      "ipa": "/stres/",
+      "meaningVi": "căng thẳng",
+      "definitionEn": "a state of mental or emotional strain resulting from adverse or demanding circumstances",
+      "example": "Prolonged stress can have negative effects on both mental and physical health.",
+      "collocation": "work-related stress",
+      "band": "6-7"
+    },
+    {
+      "word": "tension",
+      "pos": "noun",
+      "ipa": "/ˈtenʃn/",
+      "meaningVi": "sự căng thẳng, tình trạng căng thẳng",
+      "definitionEn": "a state of mental or emotional strain; suspense",
+      "example": "The tension in the room was palpable as the negotiations continued.",
+      "collocation": "political tension",
+      "band": "6-7"
+    },
+    {
+      "word": "relief",
+      "pos": "noun",
+      "ipa": "/rɪˈliːf/",
+      "meaningVi": "sự nhẹ nhõm, giải tỏa",
+      "definitionEn": "a feeling of reassurance and relaxation following release from anxiety or distress",
+      "example": "She breathed a sigh of relief when she heard the good news.",
+      "collocation": "great relief",
+      "band": "6-7"
+    },
+    {
+      "word": "grief",
+      "pos": "noun",
+      "ipa": "/ɡriːf/",
+      "meaningVi": "nỗi đau buồn, tang thương",
+      "definitionEn": "deep sorrow, especially caused by someone's death",
+      "example": "The family is still struggling to cope with their grief after the loss.",
+      "collocation": "overwhelming grief",
+      "band": "7-8"
+    },
+    {
+      "word": "outrage",
+      "pos": "noun",
+      "ipa": "/ˈaʊtreɪdʒ/",
+      "meaningVi": "sự phẫn nộ, căm phẫn",
+      "definitionEn": "a strong anger or indignation aroused by an injustice or offense",
+      "example": "The government's decision sparked public outrage across the country.",
+      "collocation": "moral outrage",
+      "band": "7-8"
+    },
+    {
+      "word": "panic",
+      "pos": "noun",
+      "ipa": "/ˈpænɪk/",
+      "meaningVi": "sự hoảng loạn",
+      "definitionEn": "sudden uncontrollable fear or anxiety, often causing irrational behavior",
+      "example": "Panic spread through the crowd when the fire alarm went off.",
+      "collocation": "panic attack",
+      "band": "6-7"
+    },
+    {
+      "word": "contentment",
+      "pos": "noun",
+      "ipa": "/kənˈtentmənt/",
+      "meaningVi": "sự hài lòng, mãn nguyện",
+      "definitionEn": "a state of happiness and satisfaction",
+      "example": "He found lasting contentment in a simple life close to nature.",
+      "collocation": "inner contentment",
+      "band": "7-8"
+    },
+    {
+      "word": "irritation",
+      "pos": "noun",
+      "ipa": "/ˌɪrɪˈteɪʃn/",
+      "meaningVi": "sự khó chịu, bực mình",
+      "definitionEn": "a feeling of slight anger or annoyance",
+      "example": "The constant noise from the construction site caused considerable irritation.",
+      "collocation": "minor irritation",
+      "band": "6-7"
+    },
+    {
+      "word": "disappointment",
+      "pos": "noun",
+      "ipa": "/ˌdɪsəˈpɔɪntmənt/",
+      "meaningVi": "sự thất vọng",
+      "definitionEn": "sadness or displeasure caused by the nonfulfillment of one's hopes or expectations",
+      "example": "The team's defeat was a huge disappointment for their fans.",
+      "collocation": "bitter disappointment",
+      "band": "6-7"
+    },
+    {
+      "word": "shame",
+      "pos": "noun",
+      "ipa": "/ʃeɪm/",
+      "meaningVi": "sự xấu hổ, hổ thẹn",
+      "definitionEn": "a painful feeling of humiliation or distress caused by the consciousness of wrong or foolish behavior",
+      "example": "He felt a deep sense of shame after lying to his parents.",
+      "collocation": "public shame",
+      "band": "6-7"
+    },
+    {
+      "word": "guilt",
+      "pos": "noun",
+      "ipa": "/ɡɪlt/",
+      "meaningVi": "cảm giác tội lỗi",
+      "definitionEn": "a feeling of having committed wrong or failed in an obligation",
+      "example": "Survivor's guilt is a common psychological response after a tragedy.",
+      "collocation": "overwhelming guilt",
+      "band": "6-7"
+    },
+    {
+      "word": "jealousy",
+      "pos": "noun",
+      "ipa": "/ˈdʒeləsi/",
+      "meaningVi": "sự ghen tị, ghen tuông",
+      "definitionEn": "a feeling of envy toward someone's achievements or advantages",
+      "example": "Jealousy can destroy relationships if it is not managed properly.",
+      "collocation": "petty jealousy",
+      "band": "6-7"
+    },
+    {
+      "word": "compassion",
+      "pos": "noun",
+      "ipa": "/kəmˈpæʃn/",
+      "meaningVi": "lòng trắc ẩn, sự đồng cảm",
+      "definitionEn": "sympathetic pity and concern for the sufferings or misfortunes of others",
+      "example": "Compassion for the less fortunate is a key value in many cultures.",
+      "collocation": "deep compassion",
+      "band": "7-8"
+    },
+    {
+      "word": "hostility",
+      "pos": "noun",
+      "ipa": "/hɒˈstɪləti/",
+      "meaningVi": "sự thù địch, thái độ thù địch",
+      "definitionEn": "unfriendly or antagonistic behavior or feelings",
+      "example": "The hostility between the two groups has escalated over the years.",
+      "collocation": "open hostility",
+      "band": "7-8"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "personality",
+  "name": "Personality and Character",
+  "nameVi": "Tính cách",
+  "blurb": "Mô tả người, thói quen, thái độ",
+  "words": [
+    {
+      "word": "gregarious",
+      "pos": "adjective",
+      "ipa": "/ɡrɪˈɡɛriəs/",
+      "meaningVi": "hòa đồng, thích giao lưu",
+      "definitionEn": "fond of company; sociable",
+      "example": "Her gregarious nature made her the life of every party.",
+      "collocation": "gregarious personality",
+      "band": "6-7"
+    },
+    {
+      "word": "meticulous",
+      "pos": "adjective",
+      "ipa": "/məˈtɪkjʊləs/",
+      "meaningVi": "tỉ mỉ, cẩn thận",
+      "definitionEn": "showing great attention to detail; very careful and precise",
+      "example": "A meticulous planner, he double-checked every aspect of the project.",
+      "collocation": "meticulous attention to detail",
+      "band": "7-8"
+    },
+    {
+      "word": "altruistic",
+      "pos": "adjective",
+      "ipa": "/ˌæltruˈɪstɪk/",
+      "meaningVi": "vị tha, không ích kỷ",
+      "definitionEn": "showing a selfless concern for the well-being of others",
+      "example": "Her altruistic decision to work in a remote clinic inspired many volunteers.",
+      "collocation": "altruistic behavior",
+      "band": "7-8"
+    },
+    {
+      "word": "complacent",
+      "pos": "adjective",
+      "ipa": "/kəmˈpleɪsənt/",
+      "meaningVi": "tự mãn, thỏa mãn với bản thân",
+      "definitionEn": "showing uncritical satisfaction with oneself or one's achievements",
+      "example": "After years of success, the manager grew complacent and ignored market changes.",
+      "collocation": "become complacent",
+      "band": "5-6"
+    },
+    {
+      "word": "pugnacious",
+      "pos": "adjective",
+      "ipa": "/pʌɡˈneɪʃəs/",
+      "meaningVi": "hiếu chiến, hay gây gổ",
+      "definitionEn": "eager or quick to argue, quarrel, or fight",
+      "example": "His pugnacious attitude alienated even his closest colleagues.",
+      "collocation": "pugnacious demeanor",
+      "band": "8+"
+    },
+    {
+      "word": "charismatic",
+      "pos": "adjective",
+      "ipa": "/ˌkærɪzˈmætɪk/",
+      "meaningVi": "có sức hút, lôi cuốn",
+      "definitionEn": "exercising a compelling charm that inspires devotion in others",
+      "example": "A charismatic leader can unite people behind a shared vision.",
+      "collocation": "charismatic personality",
+      "band": "7-8"
+    },
+    {
+      "word": "resilient",
+      "pos": "adjective",
+      "ipa": "/rɪˈzɪliənt/",
+      "meaningVi": "kiên cường, có khả năng phục hồi",
+      "definitionEn": "able to recover quickly from difficult conditions",
+      "example": "Resilient individuals often turn setbacks into opportunities for growth.",
+      "collocation": "resilient spirit",
+      "band": "6-7"
+    },
+    {
+      "word": "conscientious",
+      "pos": "adjective",
+      "ipa": "/ˌkɒnʃiˈɛnʃəs/",
+      "meaningVi": "tận tâm, có trách nhiệm",
+      "definitionEn": "wishing to do one's work or duty thoroughly and carefully",
+      "example": "A conscientious employee always meets deadlines and produces high-quality work.",
+      "collocation": "conscientious worker",
+      "band": "6-7"
+    },
+    {
+      "word": "indolent",
+      "pos": "adjective",
+      "ipa": "/ˈɪndələnt/",
+      "meaningVi": "lười biếng, uể oải",
+      "definitionEn": "wanting to avoid activity or exertion; lazy",
+      "example": "His indolent cousin spent the entire summer watching television.",
+      "collocation": "indolent lifestyle",
+      "band": "5-6"
+    },
+    {
+      "word": "pragmatic",
+      "pos": "adjective",
+      "ipa": "/præɡˈmætɪk/",
+      "meaningVi": "thực dụng, thực tế",
+      "definitionEn": "dealing with things sensibly and realistically",
+      "example": "We need a pragmatic approach to solve this budget crisis.",
+      "collocation": "pragmatic solution",
+      "band": "6-7"
+    },
+    {
+      "word": "empathetic",
+      "pos": "adjective",
+      "ipa": "/ˌɛmpəˈθɛtɪk/",
+      "meaningVi": "đồng cảm, thấu hiểu cảm xúc người khác",
+      "definitionEn": "showing an ability to understand and share the feelings of another",
+      "example": "An empathetic teacher can sense when a student is struggling emotionally.",
+      "collocation": "empathetic listening",
+      "band": "6-7"
+    },
+    {
+      "word": "volatile",
+      "pos": "adjective",
+      "ipa": "/ˈvɒlətaɪl/",
+      "meaningVi": "thất thường, dễ thay đổi (tính cách hoặc tình huống)",
+      "definitionEn": "liable to change rapidly and unpredictably, especially for the worse",
+      "example": "Her volatile temper made it hard for colleagues to approach her.",
+      "collocation": "volatile nature",
+      "band": "7-8"
+    },
+    {
+      "word": "inquisitive",
+      "pos": "adjective",
+      "ipa": "/ɪnˈkwɪzɪtɪv/",
+      "meaningVi": "ham học hỏi, tò mò muốn biết",
+      "definitionEn": "curious or inquiring; eager for knowledge",
+      "example": "An inquisitive mind is essential for scientific discovery.",
+      "collocation": "inquisitive nature",
+      "band": "6-7"
+    },
+    {
+      "word": "perseverance",
+      "pos": "noun",
+      "ipa": "/ˌpɜːsɪˈvɪərəns/",
+      "meaningVi": "sự kiên trì, bền bỉ",
+      "definitionEn": "persistence in doing something despite difficulty or delay in achieving success",
+      "example": "Her perseverance in the face of repeated failures eventually led to a breakthrough.",
+      "collocation": "demonstrate perseverance",
+      "band": "7-8"
+    },
+    {
+      "word": "reclusive",
+      "pos": "adjective",
+      "ipa": "/rɪˈkluːsɪv/",
+      "meaningVi": "ẩn dật, thích sống tách biệt",
+      "definitionEn": "avoiding the company of other people; solitary",
+      "example": "The reclusive author rarely gave interviews or attended public events.",
+      "collocation": "reclusive lifestyle",
+      "band": "5-6"
+    },
+    {
+      "word": "arrogant",
+      "pos": "adjective",
+      "ipa": "/ˈærəɡənt/",
+      "meaningVi": "kiêu ngạo, tự phụ",
+      "definitionEn": "having an exaggerated sense of one's own importance or abilities",
+      "example": "His arrogant remark offended everyone in the meeting.",
+      "collocation": "arrogant attitude",
+      "band": "5-6"
+    },
+    {
+      "word": "articulate",
+      "pos": "adjective",
+      "ipa": "/ɑːˈtɪkjʊlət/",
+      "meaningVi": "ăn nói lưu loát, rõ ràng",
+      "definitionEn": "having or showing the ability to speak fluently and coherently",
+      "example": "The articulate candidate impressed the interviewers with her clear reasoning.",
+      "collocation": "articulate speaker",
+      "band": "6-7"
+    },
+    {
+      "word": "impulsive",
+      "pos": "adjective",
+      "ipa": "/ɪmˈpʌlsɪv/",
+      "meaningVi": "bốc đồng, hành động theo cảm tính",
+      "definitionEn": "acting or done without forethought, on a sudden urge",
+      "example": "Impulsive decisions often lead to regret later.",
+      "collocation": "impulsive behavior",
+      "band": "5-6"
+    },
+    {
+      "word": "tenacious",
+      "pos": "adjective",
+      "ipa": "/tɪˈneɪʃəs/",
+      "meaningVi": "kiên trì, bền bỉ, không từ bỏ",
+      "definitionEn": "holding firmly to something; persistent",
+      "example": "A tenacious negotiator, she refused to accept an unfair deal.",
+      "collocation": "tenacious spirit",
+      "band": "8+"
+    },
+    {
+      "word": "servile",
+      "pos": "adjective",
+      "ipa": "/ˈsɜːvaɪl/",
+      "meaningVi": "nịnh hót, quỵ lụy, đầy tớ",
+      "definitionEn": "having an excessive willingness to serve or please others, often in a submissive way",
+      "example": "His servile manner toward his boss was embarrassing to watch.",
+      "collocation": "servile obedience",
+      "band": "8+"
+    },
+    {
+      "word": "discerning",
+      "pos": "adjective",
+      "ipa": "/dɪˈsɜːnɪŋ/",
+      "meaningVi": "sành sỏi, tinh tế, có óc phán đoán tốt",
+      "definitionEn": "having or showing good judgment, especially about style or quality",
+      "example": "Discerning readers can spot a poorly structured argument instantly.",
+      "collocation": "discerning taste",
+      "band": "8+"
+    },
+    {
+      "word": "unassuming",
+      "pos": "adjective",
+      "ipa": "/ˌʌnəˈsjuːmɪŋ/",
+      "meaningVi": "khiêm tốn, không phô trương",
+      "definitionEn": "not pretentious or arrogant; modest",
+      "example": "Despite his fame, the professor remained unassuming and approachable.",
+      "collocation": "unassuming manner",
+      "band": "7-8"
+    },
+    {
+      "word": "vindictive",
+      "pos": "adjective",
+      "ipa": "/vɪnˈdɪktɪv/",
+      "meaningVi": "thù hận, hay nuôi lòng hận thù",
+      "definitionEn": "having or showing a strong or unreasoning desire for revenge",
+      "example": "A vindictive person will hold a grudge for years over a minor offense.",
+      "collocation": "vindictive streak",
+      "band": "5-6"
+    },
+    {
+      "word": "stoic",
+      "pos": "adjective",
+      "ipa": "/ˈstəʊɪk/",
+      "meaningVi": "chịu đựng, nhẫn nại, không biểu lộ cảm xúc",
+      "definitionEn": "enduring pain or hardship without showing feelings or complaining",
+      "example": "He remained stoic even after learning about the devastating loss.",
+      "collocation": "stoic acceptance",
+      "band": "7-8"
+    },
+    {
+      "word": "zealous",
+      "pos": "adjective",
+      "ipa": "/ˈzɛləs/",
+      "meaningVi": "nhiệt tình, hăng hái, cuồng nhiệt",
+      "definitionEn": "having great energy or enthusiasm for a cause or activity",
+      "example": "The zealous volunteer worked tirelessly to support the charity.",
+      "collocation": "zealous advocate",
+      "band": "6-7"
+    },
+    {
+      "word": "amiable",
+      "pos": "adj",
+      "ipa": "/ˈeɪ.mi.ə.bəl/",
+      "meaningVi": "dễ mến, thân thiện",
+      "definitionEn": "having a friendly and pleasant manner",
+      "example": "Her amiable nature makes her a popular colleague in the office.",
+      "collocation": "an amiable person",
+      "band": "5-6"
+    },
+    {
+      "word": "candid",
+      "pos": "adj",
+      "ipa": "/ˈkæn.dɪd/",
+      "meaningVi": "thẳng thắn, thành thật",
+      "definitionEn": "truthful and straightforward; frank",
+      "example": "In a candid interview, the CEO admitted the company's past mistakes.",
+      "collocation": "candid opinion",
+      "band": "5-6"
+    },
+    {
+      "word": "diligent",
+      "pos": "adj",
+      "ipa": "/ˈdɪl.ɪ.dʒənt/",
+      "meaningVi": "siêng năng, chăm chỉ",
+      "definitionEn": "having or showing careful and persistent effort",
+      "example": "A diligent student always completes assignments on time and thoroughly.",
+      "collocation": "diligent worker",
+      "band": "5-6"
+    },
+    {
+      "word": "modest",
+      "pos": "adj",
+      "ipa": "/ˈmɒd.ɪst/",
+      "meaningVi": "khiêm tốn, nhún nhường",
+      "definitionEn": "unassuming in the estimation of one's abilities or achievements",
+      "example": "Despite his Nobel Prize, he remained remarkably modest about his contributions.",
+      "collocation": "modest attitude",
+      "band": "5-6"
+    },
+    {
+      "word": "keen",
+      "pos": "adj",
+      "ipa": "/kiːn/",
+      "meaningVi": "nhiệt tình, ham học hỏi",
+      "definitionEn": "eager or enthusiastic about something",
+      "example": "She is a keen observer of human behaviour, which helps her in negotiations.",
+      "collocation": "keen interest",
+      "band": "5-6"
+    },
+    {
+      "word": "determined",
+      "pos": "adj",
+      "ipa": "/dɪˈtɜː.mɪnd/",
+      "meaningVi": "quyết tâm, kiên định",
+      "definitionEn": "having a strong desire to do something, not easily discouraged",
+      "example": "His determined effort to improve his English led to an IELTS band 8.",
+      "collocation": "determined to succeed",
+      "band": "5-6"
+    },
+    {
+      "word": "eccentric",
+      "pos": "adj",
+      "ipa": "/ɪkˈsen.trɪk/",
+      "meaningVi": "lập dị, kỳ quặc",
+      "definitionEn": "deviating from conventional or normal behaviour, especially in a way that is odd or whimsical",
+      "example": "The artist's eccentric style often puzzles critics but delights collectors.",
+      "collocation": "eccentric behaviour",
+      "band": "6-7"
+    },
+    {
+      "word": "fervent",
+      "pos": "adj",
+      "ipa": "/ˈfɜː.vənt/",
+      "meaningVi": "nhiệt tình, sôi nổi",
+      "definitionEn": "having or displaying a passionate intensity",
+      "example": "Fervent supporters of the movement gathered outside the parliament building.",
+      "collocation": "fervent belief",
+      "band": "6-7"
+    },
+    {
+      "word": "genial",
+      "pos": "adj",
+      "ipa": "/ˈdʒiː.ni.əl/",
+      "meaningVi": "vui vẻ, hòa nhã",
+      "definitionEn": "friendly and cheerful in manner",
+      "example": "The genial host made everyone feel welcome at the party.",
+      "collocation": "genial smile",
+      "band": "6-7"
+    },
+    {
+      "word": "haughty",
+      "pos": "adj",
+      "ipa": "/ˈhɔː.ti/",
+      "meaningVi": "kiêu ngạo, ngạo mạn",
+      "definitionEn": "arrogantly superior and disdainful",
+      "example": "His haughty tone alienated many of his colleagues in the meeting.",
+      "collocation": "haughty attitude",
+      "band": "6-7"
+    },
+    {
+      "word": "impartial",
+      "pos": "adj",
+      "ipa": "/ɪmˈpɑː.ʃəl/",
+      "meaningVi": "công bằng, vô tư",
+      "definitionEn": "treating all rivals or disputants equally; fair and just",
+      "example": "A judge must remain impartial to ensure a fair trial.",
+      "collocation": "impartial judgment",
+      "band": "6-7"
+    },
+    {
+      "word": "lethargic",
+      "pos": "adj",
+      "ipa": "/ləˈθɑː.dʒɪk/",
+      "meaningVi": "uể oải, thiếu năng lượng",
+      "definitionEn": "affected by lethargy; sluggish and apathetic",
+      "example": "After a heavy lunch, many employees feel lethargic and unproductive.",
+      "collocation": "feel lethargic",
+      "band": "6-7"
+    },
+    {
+      "word": "obstinate",
+      "pos": "adj",
+      "ipa": "/ˈɒb.stɪ.nət/",
+      "meaningVi": "bướng bỉnh, ngoan cố",
+      "definitionEn": "stubbornly refusing to change one's opinion or chosen course of action",
+      "example": "Despite clear evidence, he remained obstinate and refused to admit his error.",
+      "collocation": "obstinate refusal",
+      "band": "6-7"
+    },
+    {
+      "word": "placid",
+      "pos": "adj",
+      "ipa": "/ˈplæs.ɪd/",
+      "meaningVi": "điềm tĩnh, bình thản",
+      "definitionEn": "not easily upset or excited; calm and peaceful",
+      "example": "Her placid temperament helps her handle stressful situations with ease.",
+      "collocation": "placid nature",
+      "band": "6-7"
+    },
+    {
+      "word": "rash",
+      "pos": "adj",
+      "ipa": "/ræʃ/",
+      "meaningVi": "hấp tấp, thiếu suy nghĩ",
+      "definitionEn": "acting or done without careful consideration of the consequences",
+      "example": "A rash decision during the negotiation cost the company millions.",
+      "collocation": "rash decision",
+      "band": "6-7"
+    },
+    {
+      "word": "hospitable",
+      "pos": "adj",
+      "ipa": "/hɒˈspɪ.tə.bəl/",
+      "meaningVi": "hiếu khách, niềm nở",
+      "definitionEn": "friendly and welcoming to guests or strangers",
+      "example": "People in rural areas are often more hospitable than those in big cities.",
+      "collocation": "hospitable host",
+      "band": "6-7"
+    },
+    {
+      "word": "yielding",
+      "pos": "adj",
+      "ipa": "/ˈjiːl.dɪŋ/",
+      "meaningVi": "dễ thỏa hiệp, dễ bảo",
+      "definitionEn": "inclined to give way to others; compliant or submissive",
+      "example": "A yielding personality can sometimes be mistaken for weakness in negotiations.",
+      "collocation": "yielding nature",
+      "band": "6-7"
+    },
+    {
+      "word": "ambitious",
+      "pos": "adj",
+      "ipa": "/æmˈbɪʃ.əs/",
+      "meaningVi": "tham vọng, đầy hoài bão",
+      "definitionEn": "having a strong desire for success, power, or achievement",
+      "example": "Ambitious individuals often set high goals and work tirelessly to achieve them.",
+      "collocation": "ambitious plan",
+      "band": "6-7"
+    },
+    {
+      "word": "nonchalant",
+      "pos": "adj",
+      "ipa": "/ˈnɒn.ʃəl.ənt/",
+      "meaningVi": "thờ ơ, lãnh đạm",
+      "definitionEn": "feeling or appearing casually calm and relaxed; not showing anxiety or interest",
+      "example": "His nonchalant response to the crisis surprised everyone in the team.",
+      "collocation": "nonchalant attitude",
+      "band": "7-8"
+    },
+    {
+      "word": "sanguine",
+      "pos": "adj",
+      "ipa": "/ˈsæŋ.ɡwɪn/",
+      "meaningVi": "lạc quan, tin tưởng",
+      "definitionEn": "optimistic or positive, especially in a difficult situation",
+      "example": "Despite the economic downturn, the investor remained sanguine about the recovery.",
+      "collocation": "sanguine outlook",
+      "band": "7-8"
+    },
+    {
+      "word": "taciturn",
+      "pos": "adj",
+      "ipa": "/ˈtæs.ɪ.tɜːn/",
+      "meaningVi": "ít nói, trầm tính",
+      "definitionEn": "reserved or uncommunicative in speech; saying little",
+      "example": "The taciturn professor rarely spoke outside his lectures, but his writing was profound.",
+      "collocation": "taciturn personality",
+      "band": "7-8"
+    },
+    {
+      "word": "unscrupulous",
+      "pos": "adj",
+      "ipa": "/ʌnˈskruː.pjʊ.ləs/",
+      "meaningVi": "vô đạo đức, không có nguyên tắc",
+      "definitionEn": "having or showing no moral principles; dishonest or unfair",
+      "example": "Unscrupulous businessmen often exploit loopholes in the law for personal gain.",
+      "collocation": "unscrupulous behaviour",
+      "band": "7-8"
+    },
+    {
+      "word": "versatile",
+      "pos": "adj",
+      "ipa": "/ˈvɜː.sə.taɪl/",
+      "meaningVi": "đa năng, linh hoạt",
+      "definitionEn": "able to adapt or be adapted to many different functions or activities",
+      "example": "A versatile employee can handle tasks ranging from customer service to data analysis.",
+      "collocation": "versatile skill set",
+      "band": "7-8"
+    },
+    {
+      "word": "witty",
+      "pos": "adj",
+      "ipa": "/ˈwɪt.i/",
+      "meaningVi": "hóm hỉnh, dí dỏm",
+      "definitionEn": "showing quick and inventive verbal humour",
+      "example": "Her witty remarks during the debate made the audience laugh while still proving her point.",
+      "collocation": "witty comment",
+      "band": "7-8"
+    },
+    {
+      "word": "recalcitrant",
+      "pos": "adj",
+      "ipa": "/rɪˈkæl.sɪ.trənt/",
+      "meaningVi": "ngang bướng, khó bảo",
+      "definitionEn": "having an obstinately uncooperative attitude towards authority or discipline",
+      "example": "The recalcitrant student refused to follow any classroom rules, disrupting the lesson.",
+      "collocation": "recalcitrant behaviour",
+      "band": "8+"
+    }
+  ]
+}

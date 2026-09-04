@@ -14,10 +14,10 @@ import { BAND_ORDER, VOCAB_TOPICS, groupByBand, type VocabTopicWord } from './vo
  * học sai cách đọc và không có gì báo cho họ biết.
  */
 
-const EXPECTED_TOPICS = 30;
+const EXPECTED_TOPICS = 50;
 const WORDS_PER_TOPIC = 50;
 
-test('đủ 30 chủ đề, mỗi chủ đề đúng 50 từ', () => {
+test('đủ 50 chủ đề, mỗi chủ đề đúng 50 từ', () => {
   assert.equal(
     VOCAB_TOPICS.length,
     EXPECTED_TOPICS,

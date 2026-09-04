@@ -55,7 +55,7 @@ const DEFAULT_TOPIC_STYLE = { colors: ['#93B4FD', '#2563EB'] as readonly [string
  *
  * VÌ SAO MÀN NÀY TỒN TẠI: sổ từ của app chỉ đầy lên khi người học chạm vào từ
  * trong lúc đọc, nên ngày đầu tiên nó TRỐNG TRƠN — người mới vào thấy số 0 và
- * một dòng bảo họ đi chỗ khác trước đã. Ba mươi bộ này cho họ thứ để bắt đầu
+ * một dòng bảo họ đi chỗ khác trước đã. Năm mươi bộ này cho họ thứ để bắt đầu
  * ngay, và cho người sắp thi một danh sách rà theo chủ đề.
  *
  * Thẻ chủ đề hiện SỐ TỪ ĐÃ LƯU của chính người dùng, không chỉ tổng số từ có.

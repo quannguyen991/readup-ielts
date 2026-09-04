@@ -1,0 +1,508 @@
+{
+  "slug": "comparison",
+  "name": "Comparison and Contrast",
+  "nameVi": "So sánh",
+  "blurb": "Hơn kém, tương đồng, khác biệt",
+  "words": [
+    {
+      "word": "differ",
+      "pos": "verb",
+      "ipa": "/ˈdɪfər/",
+      "meaningVi": "khác nhau",
+      "definitionEn": "to be unlike or distinct in nature, form, or characteristics",
+      "example": "The two theories differ significantly in their approach to economic development.",
+      "collocation": "differ from",
+      "band": "5-6"
+    },
+    {
+      "word": "similarity",
+      "pos": "noun",
+      "ipa": "/ˌsɪməˈlærəti/",
+      "meaningVi": "sự tương đồng",
+      "definitionEn": "the state or quality of being similar; resemblance",
+      "example": "There is a striking similarity between the two paintings despite their different periods.",
+      "collocation": "striking similarity",
+      "band": "5-6"
+    },
+    {
+      "word": "contrast",
+      "pos": "noun",
+      "ipa": "/ˈkɒntræst/",
+      "meaningVi": "sự tương phản",
+      "definitionEn": "the state of being noticeably different from something else when compared",
+      "example": "The contrast between urban and rural lifestyles is becoming more pronounced.",
+      "collocation": "sharp contrast",
+      "band": "5-6"
+    },
+    {
+      "word": "comparable",
+      "pos": "adjective",
+      "ipa": "/ˈkɒmpərəbəl/",
+      "meaningVi": "có thể so sánh",
+      "definitionEn": "able to be compared; similar in quality or quantity",
+      "example": "The salaries in the two sectors are not directly comparable due to different benefit packages.",
+      "collocation": "comparable to",
+      "band": "5-6"
+    },
+    {
+      "word": "equivalent",
+      "pos": "adjective",
+      "ipa": "/ɪˈkwɪvələnt/",
+      "meaningVi": "tương đương",
+      "definitionEn": "equal in value, amount, function, or meaning",
+      "example": "A bachelor's degree in one country is often equivalent to a master's degree in another.",
+      "collocation": "equivalent to",
+      "band": "5-6"
+    },
+    {
+      "word": "disparity",
+      "pos": "noun",
+      "ipa": "/dɪˈspærəti/",
+      "meaningVi": "sự chênh lệch",
+      "definitionEn": "a great difference between things",
+      "example": "The growing economic disparity between the rich and the poor is a major concern.",
+      "collocation": "economic disparity",
+      "band": "6-7"
+    },
+    {
+      "word": "analogous",
+      "pos": "adjective",
+      "ipa": "/əˈnæləɡəs/",
+      "meaningVi": "tương tự",
+      "definitionEn": "comparable in certain respects, typically in a way that makes clearer the nature of the things compared",
+      "example": "The human heart is analogous to a pump in its function.",
+      "collocation": "analogous to",
+      "band": "6-7"
+    },
+    {
+      "word": "correlate",
+      "pos": "verb",
+      "ipa": "/ˈkɒrəleɪt/",
+      "meaningVi": "tương quan",
+      "definitionEn": "to have a mutual relationship or connection, in which one thing affects or depends on another",
+      "example": "Income levels correlate strongly with educational attainment in most societies.",
+      "collocation": "correlate with",
+      "band": "6-7"
+    },
+    {
+      "word": "distinction",
+      "pos": "noun",
+      "ipa": "/dɪˈstɪŋkʃən/",
+      "meaningVi": "sự khác biệt",
+      "definitionEn": "a difference or contrast between similar things or people",
+      "example": "The distinction between formal and informal learning environments is often blurred.",
+      "collocation": "clear distinction",
+      "band": "6-7"
+    },
+    {
+      "word": "divergence",
+      "pos": "noun",
+      "ipa": "/daɪˈvɜːrdʒəns/",
+      "meaningVi": "sự phân kỳ",
+      "definitionEn": "the process or state of diverging; a difference in opinions, interests, or trends",
+      "example": "There has been a noticeable divergence in the economic policies of the two countries.",
+      "collocation": "divergence in",
+      "band": "6-7"
+    },
+    {
+      "word": "parallel",
+      "pos": "adjective",
+      "ipa": "/ˈpærəlel/",
+      "meaningVi": "song song, tương đương",
+      "definitionEn": "occurring or existing at the same time or in a similar way; corresponding",
+      "example": "The development of digital technology runs parallel to the rise of the internet.",
+      "collocation": "run parallel to",
+      "band": "6-7"
+    },
+    {
+      "word": "counterpart",
+      "pos": "noun",
+      "ipa": "/ˈkaʊntərpɑːrt/",
+      "meaningVi": "đối tác, bên tương ứng",
+      "definitionEn": "a person or thing that corresponds to or has the same function as another person or thing in a different place or situation",
+      "example": "The British Prime Minister met with his French counterpart to discuss trade.",
+      "collocation": "counterpart in",
+      "band": "6-7"
+    },
+    {
+      "word": "respective",
+      "pos": "adjective",
+      "ipa": "/rɪˈspektɪv/",
+      "meaningVi": "tương ứng",
+      "definitionEn": "belonging or relating separately to each of the people or things previously mentioned",
+      "example": "The two companies reported their respective profits for the fiscal year.",
+      "collocation": "respective roles",
+      "band": "6-7"
+    },
+    {
+      "word": "proportional",
+      "pos": "adjective",
+      "ipa": "/prəˈpɔːrʃənəl/",
+      "meaningVi": "tỉ lệ thuận",
+      "definitionEn": "corresponding in size or amount to something else",
+      "example": "The amount of tax paid is proportional to the income earned.",
+      "collocation": "proportional to",
+      "band": "6-7"
+    },
+    {
+      "word": "correlation",
+      "pos": "noun",
+      "ipa": "/ˌkɒrəˈleɪʃən/",
+      "meaningVi": "sự tương quan",
+      "definitionEn": "a mutual relationship or connection between two or more things",
+      "example": "There is a strong correlation between exercise and mental health.",
+      "collocation": "strong correlation",
+      "band": "6-7"
+    },
+    {
+      "word": "nuance",
+      "pos": "noun",
+      "ipa": "/ˈnjuːɑːns/",
+      "meaningVi": "sắc thái tinh tế",
+      "definitionEn": "a subtle difference in meaning, opinion, or attitude",
+      "example": "The nuance between the two policies is often overlooked by casual observers.",
+      "collocation": "subtle nuance",
+      "band": "6-7"
+    },
+    {
+      "word": "homogeneous",
+      "pos": "adjective",
+      "ipa": "/ˌhoʊməˈdʒiːniəs/",
+      "meaningVi": "đồng nhất",
+      "definitionEn": "consisting of parts or people that are similar to each other or of the same type",
+      "example": "A homogeneous society may lack the cultural diversity found in multicultural nations.",
+      "collocation": "homogeneous group",
+      "band": "7-8"
+    },
+    {
+      "word": "heterogeneous",
+      "pos": "adjective",
+      "ipa": "/ˌhetərəˈdʒiːniəs/",
+      "meaningVi": "không đồng nhất",
+      "definitionEn": "consisting of parts or people that are very different from each other",
+      "example": "The city's population is highly heterogeneous, comprising many ethnicities.",
+      "collocation": "heterogeneous population",
+      "band": "7-8"
+    },
+    {
+      "word": "juxtapose",
+      "pos": "verb",
+      "ipa": "/ˈdʒʌkstəpoʊz/",
+      "meaningVi": "đặt cạnh nhau để so sánh",
+      "definitionEn": "to place close together or side by side for comparison or contrast",
+      "example": "The author juxtaposes traditional values with modern technology to highlight their conflict.",
+      "collocation": "juxtapose with",
+      "band": "7-8"
+    },
+    {
+      "word": "resonate",
+      "pos": "verb",
+      "ipa": "/ˈrezəneɪt/",
+      "meaningVi": "cộng hưởng, tương đồng",
+      "definitionEn": "to be similar or in agreement with something; to evoke a feeling of shared experience",
+      "example": "The themes of the novel resonate with the struggles of contemporary society.",
+      "collocation": "resonate with",
+      "band": "7-8"
+    },
+    {
+      "word": "mutually exclusive",
+      "pos": "adjective phrase",
+      "ipa": "/ˈmjuːtʃuəli ɪkˈskluːsɪv/",
+      "meaningVi": "loại trừ lẫn nhau",
+      "definitionEn": "not able to exist or be true at the same time",
+      "example": "Economic growth and environmental protection are not mutually exclusive if managed properly.",
+      "collocation": "mutually exclusive concepts",
+      "band": "7-8"
+    },
+    {
+      "word": "inversely",
+      "pos": "adverb",
+      "ipa": "/ɪnˈvɜːrsli/",
+      "meaningVi": "theo tỉ lệ nghịch",
+      "definitionEn": "in a way that is opposite in direction, effect, or order",
+      "example": "The price of a product is inversely related to its supply.",
+      "collocation": "inversely proportional",
+      "band": "7-8"
+    },
+    {
+      "word": "deviate",
+      "pos": "verb",
+      "ipa": "/ˈdiːvieɪt/",
+      "meaningVi": "sai lệch, đi chệch",
+      "definitionEn": "to depart from an established course or standard",
+      "example": "The results of the experiment deviate significantly from the initial hypothesis.",
+      "collocation": "deviate from",
+      "band": "7-8"
+    },
+    {
+      "word": "dichotomy",
+      "pos": "noun",
+      "ipa": "/daɪˈkɒtəmi/",
+      "meaningVi": "sự phân đôi",
+      "definitionEn": "a division or contrast between two things that are represented as being opposed or entirely different",
+      "example": "The dichotomy between mind and body has been debated for centuries.",
+      "collocation": "false dichotomy",
+      "band": "8+"
+    },
+    {
+      "word": "parity",
+      "pos": "noun",
+      "ipa": "/ˈpærəti/",
+      "meaningVi": "sự ngang bằng",
+      "definitionEn": "the state of being equal, especially in status, value, or power",
+      "example": "The treaty aims to achieve parity in military spending between the two nations.",
+      "collocation": "parity with",
+      "band": "7-8"
+    },
+    {
+      "word": "resemble",
+      "pos": "verb",
+      "ipa": "/rɪˈzɛmbəl/",
+      "meaningVi": "giống, tương tự",
+      "definitionEn": "to be similar or look like someone or something",
+      "example": "The two theories resemble each other in their fundamental assumptions.",
+      "collocation": "resemble in appearance",
+      "band": "6-7"
+    },
+    {
+      "word": "identical",
+      "pos": "adjective",
+      "ipa": "/aɪˈdɛntɪkəl/",
+      "meaningVi": "giống hệt",
+      "definitionEn": "exactly the same in every way",
+      "example": "The results of the experiment were identical to those obtained previously.",
+      "collocation": "identical to",
+      "band": "6-7"
+    },
+    {
+      "word": "distinct",
+      "pos": "adjective",
+      "ipa": "/dɪˈstɪŋkt/",
+      "meaningVi": "khác biệt rõ ràng",
+      "definitionEn": "clearly different or separate",
+      "example": "These two issues are distinct and should be treated separately.",
+      "collocation": "distinct from",
+      "band": "6-7"
+    },
+    {
+      "word": "differentiate",
+      "pos": "verb",
+      "ipa": "/ˌdɪfəˈrɛnʃieɪt/",
+      "meaningVi": "phân biệt",
+      "definitionEn": "to recognize or show the difference between things",
+      "example": "It is crucial to differentiate between correlation and causation.",
+      "collocation": "differentiate between",
+      "band": "7-8"
+    },
+    {
+      "word": "discrepancy",
+      "pos": "noun",
+      "ipa": "/dɪsˈkrɛpənsi/",
+      "meaningVi": "sự khác biệt, không nhất quán",
+      "definitionEn": "a difference between two or more things that should be the same",
+      "example": "There is a significant discrepancy between the two sets of data.",
+      "collocation": "discrepancy between",
+      "band": "7-8"
+    },
+    {
+      "word": "contradict",
+      "pos": "verb",
+      "ipa": "/ˌkɒntrəˈdɪkt/",
+      "meaningVi": "mâu thuẫn",
+      "definitionEn": "to be in opposition or disagreement with something",
+      "example": "The witness's testimony contradicts the physical evidence.",
+      "collocation": "contradict each other",
+      "band": "7-8"
+    },
+    {
+      "word": "uniform",
+      "pos": "adjective",
+      "ipa": "/ˈjuːnɪfɔːrm/",
+      "meaningVi": "đồng nhất",
+      "definitionEn": "not varying; the same in all cases",
+      "example": "The company maintains a uniform policy across all branches.",
+      "collocation": "uniform across",
+      "band": "6-7"
+    },
+    {
+      "word": "diverse",
+      "pos": "adjective",
+      "ipa": "/daɪˈvɜːrs/",
+      "meaningVi": "đa dạng",
+      "definitionEn": "showing a great deal of variety; very different",
+      "example": "The student body is diverse, with students from over 50 countries.",
+      "collocation": "diverse range of",
+      "band": "6-7"
+    },
+    {
+      "word": "akin",
+      "pos": "adjective",
+      "ipa": "/əˈkɪn/",
+      "meaningVi": "tương tự",
+      "definitionEn": "similar in nature or character",
+      "example": "This approach is akin to the method used in the previous study.",
+      "collocation": "akin to",
+      "band": "7-8"
+    },
+    {
+      "word": "comparative",
+      "pos": "adjective",
+      "ipa": "/kəmˈpærətɪv/",
+      "meaningVi": "mang tính so sánh",
+      "definitionEn": "relating to or based on comparison",
+      "example": "A comparative analysis of the two economic systems revealed key differences.",
+      "collocation": "comparative study",
+      "band": "6-7"
+    },
+    {
+      "word": "mirror",
+      "pos": "verb",
+      "ipa": "/ˈmɪrər/",
+      "meaningVi": "phản ánh, tương tự",
+      "definitionEn": "to reflect or resemble closely",
+      "example": "The trends in consumer behavior mirror those observed in the last decade.",
+      "collocation": "mirror the pattern",
+      "band": "7-8"
+    },
+    {
+      "word": "conflicting",
+      "pos": "adjective",
+      "ipa": "/kənˈflɪktɪŋ/",
+      "meaningVi": "mâu thuẫn",
+      "definitionEn": "in disagreement; incompatible",
+      "example": "The two parties hold conflicting views on tax reform.",
+      "collocation": "conflicting views",
+      "band": "7-8"
+    },
+    {
+      "word": "polarity",
+      "pos": "noun",
+      "ipa": "/pəˈlærɪti/",
+      "meaningVi": "sự phân cực, đối lập",
+      "definitionEn": "the state of having two opposite or contradictory aspects",
+      "example": "The polarity of opinions on the issue has made consensus difficult.",
+      "collocation": "polarity of opinions",
+      "band": "8+"
+    },
+    {
+      "word": "symmetry",
+      "pos": "noun",
+      "ipa": "/ˈsɪmətri/",
+      "meaningVi": "sự đối xứng",
+      "definitionEn": "the quality of being made up of exactly similar parts facing each other",
+      "example": "The symmetry of the building's design is aesthetically pleasing.",
+      "collocation": "symmetry in",
+      "band": "6-7"
+    },
+    {
+      "word": "asymmetry",
+      "pos": "noun",
+      "ipa": "/eɪˈsɪmətri/",
+      "meaningVi": "sự bất đối xứng",
+      "definitionEn": "lack of symmetry or equality",
+      "example": "The asymmetry in the distribution of wealth is a growing concern.",
+      "collocation": "asymmetry between",
+      "band": "8+"
+    },
+    {
+      "word": "resemblance",
+      "pos": "noun",
+      "ipa": "/rɪˈzɛmbləns/",
+      "meaningVi": "sự giống nhau",
+      "definitionEn": "the state of being similar to someone or something",
+      "example": "There is a strong resemblance between the two paintings.",
+      "collocation": "resemblance to",
+      "band": "6-7"
+    },
+    {
+      "word": "differentiation",
+      "pos": "noun",
+      "ipa": "/ˌdɪfəˌrɛnʃiˈeɪʃən/",
+      "meaningVi": "sự phân biệt",
+      "definitionEn": "the act of distinguishing or showing difference",
+      "example": "The differentiation of products is essential for market segmentation.",
+      "collocation": "differentiation between",
+      "band": "8+"
+    },
+    {
+      "word": "contradictory",
+      "pos": "adjective",
+      "ipa": "/ˌkɒntrəˈdɪktəri/",
+      "meaningVi": "mâu thuẫn",
+      "definitionEn": "mutually opposed or inconsistent",
+      "example": "The evidence presented is contradictory and requires further investigation.",
+      "collocation": "contradictory statements",
+      "band": "7-8"
+    },
+    {
+      "word": "equal",
+      "pos": "adjective",
+      "ipa": "/ˈiːkwəl/",
+      "meaningVi": "bằng nhau",
+      "definitionEn": "being the same in quantity, size, degree, or value",
+      "example": "All participants were treated as equal under the study protocol.",
+      "collocation": "equal to",
+      "band": "5-6"
+    },
+    {
+      "word": "inequality",
+      "pos": "noun",
+      "ipa": "/ˌɪnɪˈkwɒlɪti/",
+      "meaningVi": "bất bình đẳng",
+      "definitionEn": "lack of equality or fairness",
+      "example": "Income inequality has been linked to social unrest.",
+      "collocation": "inequality in",
+      "band": "6-7"
+    },
+    {
+      "word": "relate",
+      "pos": "verb",
+      "ipa": "/rɪˈleɪt/",
+      "meaningVi": "liên quan, so sánh",
+      "definitionEn": "to show or establish a connection between things",
+      "example": "We need to relate these findings to the broader context.",
+      "collocation": "relate to",
+      "band": "5-6"
+    },
+    {
+      "word": "association",
+      "pos": "noun",
+      "ipa": "/əˌsoʊsiˈeɪʃən/",
+      "meaningVi": "sự liên kết, tương đồng",
+      "definitionEn": "a connection or relationship between things",
+      "example": "There is a well-documented association between diet and health.",
+      "collocation": "association with",
+      "band": "6-7"
+    },
+    {
+      "word": "variant",
+      "pos": "noun",
+      "ipa": "/ˈvɛriənt/",
+      "meaningVi": "biến thể, dạng khác",
+      "definitionEn": "a form or version that differs from others",
+      "example": "This is a new variant of the virus that shows different symptoms.",
+      "collocation": "variant of",
+      "band": "6-7"
+    },
+    {
+      "word": "discriminate",
+      "pos": "verb",
+      "ipa": "/dɪˈskrɪmɪneɪt/",
+      "meaningVi": "phân biệt",
+      "definitionEn": "to recognize a distinction or difference",
+      "example": "The ability to discriminate between subtle differences is important.",
+      "collocation": "discriminate between",
+      "band": "7-8"
+    },
+    {
+      "word": "comparison",
+      "pos": "noun",
+      "ipa": "/kəmˈpærɪsən/",
+      "meaningVi": "sự so sánh",
+      "definitionEn": "the act of examining similarities and differences",
+      "example": "A comparison of the two methods indicates that Method A is more efficient.",
+      "collocation": "comparison between",
+      "band": "5-6"
+    }
+  ]
+}

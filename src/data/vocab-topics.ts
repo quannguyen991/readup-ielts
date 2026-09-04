@@ -5,10 +5,10 @@ import topics from './seed/vocab-topics/index.json';
  *
  * VÌ SAO CÓ: sổ từ của app vốn chỉ đầy lên khi người học chạm vào từ trong lúc
  * đọc — tức là nó TRỐNG TRƠN ở ngày đầu tiên. Người mới mở app, vào Sổ từ, thấy
- * số 0 và một dòng chữ bảo họ đi chỗ khác trước đã. Ba mươi bộ này cho họ thứ
+ * số 0 và một dòng chữ bảo họ đi chỗ khác trước đã. Năm mươi bộ này cho họ thứ
  * để bắt đầu ngay, và cho người sắp thi một danh sách để rà theo chủ đề.
  *
- * Dữ liệu nằm trong bundle (không gọi mạng): 1.500 từ dạng JSON là vài trăm KB,
+ * Dữ liệu nằm trong bundle (không gọi mạng): 2.500 từ dạng JSON là vài trăm KB,
  * rẻ hơn nhiều so với việc bắt người dùng chờ một lời gọi API để xem danh sách.
  */
 

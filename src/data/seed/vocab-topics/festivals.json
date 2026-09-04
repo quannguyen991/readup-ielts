@@ -1,0 +1,508 @@
+{
+  "slug": "festivals",
+  "name": "Festivals and Celebrations",
+  "nameVi": "Lễ hội",
+  "blurb": "Nghi lễ, sum họp, phong tục",
+  "words": [
+    {
+      "word": "tradition",
+      "pos": "noun",
+      "ipa": "/trəˈdɪʃən/",
+      "meaningVi": "truyền thống",
+      "definitionEn": "a long-established custom or belief passed on from generation to generation",
+      "example": "The tradition of giving gifts during the holiday season strengthens family bonds.",
+      "collocation": "uphold a tradition",
+      "band": "5-6"
+    },
+    {
+      "word": "custom",
+      "pos": "noun",
+      "ipa": "/ˈkʌstəm/",
+      "meaningVi": "phong tục",
+      "definitionEn": "a traditional practice or way of behaving that is specific to a society or community",
+      "example": "It is a local custom to light lanterns during the autumn festival.",
+      "collocation": "follow a custom",
+      "band": "5-6"
+    },
+    {
+      "word": "gather",
+      "pos": "verb",
+      "ipa": "/ˈɡæðər/",
+      "meaningVi": "tụ họp",
+      "definitionEn": "to come together in a group",
+      "example": "Families gather from all over the country to celebrate the Lunar New Year.",
+      "collocation": "gather for a celebration",
+      "band": "5-6"
+    },
+    {
+      "word": "feast",
+      "pos": "noun",
+      "ipa": "/fiːst/",
+      "meaningVi": "bữa tiệc lớn",
+      "definitionEn": "a large, elaborate meal, often in celebration of a festival",
+      "example": "The wedding feast was a grand affair with dozens of traditional dishes.",
+      "collocation": "host a feast",
+      "band": "5-6"
+    },
+    {
+      "word": "ceremony",
+      "pos": "noun",
+      "ipa": "/ˈsɛrəˌmoʊni/",
+      "meaningVi": "buổi lễ",
+      "definitionEn": "a formal event performed on a special occasion",
+      "example": "The opening ceremony of the Olympic Games is watched by billions worldwide.",
+      "collocation": "attend a ceremony",
+      "band": "5-6"
+    },
+    {
+      "word": "reunion",
+      "pos": "noun",
+      "ipa": "/riːˈjuːniən/",
+      "meaningVi": "sự đoàn tụ",
+      "definitionEn": "a gathering of people who have been separated, often family or friends",
+      "example": "The annual family reunion is a cherished occasion for relatives to reconnect.",
+      "collocation": "family reunion",
+      "band": "5-6"
+    },
+    {
+      "word": "ritual",
+      "pos": "noun",
+      "ipa": "/ˈrɪtʃuəl/",
+      "meaningVi": "nghi lễ",
+      "definitionEn": "a religious or solemn ceremony consisting of a set of actions performed in a prescribed order",
+      "example": "Lighting the bonfire is an ancient ritual that marks the start of the festival.",
+      "collocation": "perform a ritual",
+      "band": "6-7"
+    },
+    {
+      "word": "observance",
+      "pos": "noun",
+      "ipa": "/əbˈzɜːrvəns/",
+      "meaningVi": "sự tuân thủ, cử hành (nghi lễ)",
+      "definitionEn": "the practice of following a law, custom, or religious ceremony",
+      "example": "The strict observance of religious holidays reflects the community's devotion.",
+      "collocation": "religious observance",
+      "band": "6-7"
+    },
+    {
+      "word": "procession",
+      "pos": "noun",
+      "ipa": "/prəˈsɛʃən/",
+      "meaningVi": "đám rước",
+      "definitionEn": "a line of people or vehicles moving in a formal or ceremonial way",
+      "example": "The colorful procession wound through the streets, accompanied by music and dancing.",
+      "collocation": "lead a procession",
+      "band": "6-7"
+    },
+    {
+      "word": "festive",
+      "pos": "adjective",
+      "ipa": "/ˈfɛstɪv/",
+      "meaningVi": "thuộc lễ hội, vui tươi",
+      "definitionEn": "relating to a celebration; cheerful and celebratory",
+      "example": "The city was decorated with festive lights and banners for the holiday.",
+      "collocation": "festive atmosphere",
+      "band": "6-7"
+    },
+    {
+      "word": "commemorate",
+      "pos": "verb",
+      "ipa": "/kəˈmɛməˌreɪt/",
+      "meaningVi": "kỷ niệm",
+      "definitionEn": "to honor the memory of an event or person with a ceremony",
+      "example": "Every year, the town holds a parade to commemorate the founding of the nation.",
+      "collocation": "commemorate an event",
+      "band": "6-7"
+    },
+    {
+      "word": "symbolic",
+      "pos": "adjective",
+      "ipa": "/sɪmˈbɑlɪk/",
+      "meaningVi": "mang tính biểu tượng",
+      "definitionEn": "serving as a symbol of something",
+      "example": "The exchange of rings is a symbolic act representing eternal commitment.",
+      "collocation": "symbolic meaning",
+      "band": "6-7"
+    },
+    {
+      "word": "festivity",
+      "pos": "noun",
+      "ipa": "/fɛˈstɪvɪti/",
+      "meaningVi": "lễ hội, sự vui mừng",
+      "definitionEn": "joyful celebration; a festive event or activity",
+      "example": "The festivities continued well into the night with fireworks and dancing.",
+      "collocation": "join in the festivities",
+      "band": "7-8"
+    },
+    {
+      "word": "pageantry",
+      "pos": "noun",
+      "ipa": "/ˈpædʒəntri/",
+      "meaningVi": "sự phô trương, cảnh tượng lộng lẫy",
+      "definitionEn": "elaborate display or ceremony, often with costumes and grand spectacle",
+      "example": "The pageantry of the royal wedding attracted global attention.",
+      "collocation": "display of pageantry",
+      "band": "7-8"
+    },
+    {
+      "word": "solemn",
+      "pos": "adjective",
+      "ipa": "/ˈsɑləm/",
+      "meaningVi": "trang nghiêm",
+      "definitionEn": "serious and without humor; dignified and formal",
+      "example": "The memorial service was a solemn occasion that moved everyone to tears.",
+      "collocation": "solemn ceremony",
+      "band": "7-8"
+    },
+    {
+      "word": "jubilant",
+      "pos": "adjective",
+      "ipa": "/ˈdʒuːbɪlənt/",
+      "meaningVi": "hân hoan, vui sướng",
+      "definitionEn": "feeling or expressing great happiness and triumph",
+      "example": "The jubilant crowd cheered as the champion raised the trophy.",
+      "collocation": "jubilant celebration",
+      "band": "7-8"
+    },
+    {
+      "word": "preserve",
+      "pos": "verb",
+      "ipa": "/prɪˈzɜːrv/",
+      "meaningVi": "bảo tồn",
+      "definitionEn": "to maintain something in its original state or to keep alive",
+      "example": "Many communities strive to preserve their traditional festivals for future generations.",
+      "collocation": "preserve a tradition",
+      "band": "7-8"
+    },
+    {
+      "word": "culminate",
+      "pos": "verb",
+      "ipa": "/ˈkʌlmɪneɪt/",
+      "meaningVi": "lên đến đỉnh điểm",
+      "definitionEn": "to reach a climax or highest point",
+      "example": "The week-long festival culminates in a spectacular fireworks display.",
+      "collocation": "culminate in/with something",
+      "band": "7-8"
+    },
+    {
+      "word": "pilgrimage",
+      "pos": "noun",
+      "ipa": "/ˈpɪlɡrɪmɪdʒ/",
+      "meaningVi": "cuộc hành hương",
+      "definitionEn": "a journey to a sacred place for religious reasons",
+      "example": "Millions of Muslims make a pilgrimage to Mecca each year.",
+      "collocation": "make a pilgrimage",
+      "band": "7-8"
+    },
+    {
+      "word": "congregation",
+      "pos": "noun",
+      "ipa": "/ˌkɑŋɡrɪˈɡeɪʃən/",
+      "meaningVi": "hội chúng, giáo đoàn",
+      "definitionEn": "a group of people gathered for religious worship",
+      "example": "The congregation sang hymns together during the Christmas service.",
+      "collocation": "address the congregation",
+      "band": "8+"
+    },
+    {
+      "word": "commemoration",
+      "pos": "noun",
+      "ipa": "/kəˌmɛməˈreɪʃən/",
+      "meaningVi": "sự kỷ niệm, lễ kỷ niệm",
+      "definitionEn": "the act of honoring a person or event with a ceremony",
+      "example": "The monument was built in commemoration of the soldiers who sacrificed their lives.",
+      "collocation": "in commemoration of",
+      "band": "8+"
+    },
+    {
+      "word": "sacrifice",
+      "pos": "noun",
+      "ipa": "/ˈsækrɪfaɪs/",
+      "meaningVi": "sự hiến tế, hy sinh",
+      "definitionEn": "an offering to a deity, often involving the slaughter of an animal; or the act of giving up something valuable",
+      "example": "In ancient times, animal sacrifice was a common ritual during harvest festivals.",
+      "collocation": "make a sacrifice",
+      "band": "8+"
+    },
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈhɛrɪtɪdʒ/",
+      "meaningVi": "di sản",
+      "definitionEn": "property that is or may be inherited; cultural traditions, achievements, or values",
+      "example": "The festival is an important part of the nation's cultural heritage.",
+      "collocation": "cultural heritage",
+      "band": "8+"
+    },
+    {
+      "word": "reunite",
+      "pos": "verb",
+      "ipa": "/ˌriːjuːˈnaɪt/",
+      "meaningVi": "đoàn tụ",
+      "definitionEn": "to come together again after a period of separation",
+      "example": "The festival provided an opportunity for long-lost relatives to reunite.",
+      "collocation": "reunite with family",
+      "band": "8+"
+    },
+    {
+      "word": "reverence",
+      "pos": "noun",
+      "ipa": "/ˈrɛvərəns/",
+      "meaningVi": "sự tôn kính",
+      "definitionEn": "deep respect for someone or something, often of a religious or spiritual nature",
+      "example": "The pilgrims showed great reverence for the sacred shrine.",
+      "collocation": "show reverence",
+      "band": "8+"
+    },
+    {
+      "word": "celebration",
+      "pos": "noun",
+      "ipa": "/ˌsel.əˈbreɪ.ʃən/",
+      "meaningVi": "lễ kỷ niệm, sự ăn mừng",
+      "definitionEn": "a special event or activity that marks an important occasion",
+      "example": "The annual celebration of the Lunar New Year involves various traditional performances.",
+      "collocation": "hold a celebration",
+      "band": "5-6"
+    },
+    {
+      "word": "festival",
+      "pos": "noun",
+      "ipa": "/ˈfes.tɪ.vəl/",
+      "meaningVi": "lễ hội",
+      "definitionEn": "a series of public events or performances organized to celebrate something",
+      "example": "The music festival attracts thousands of visitors from around the world.",
+      "collocation": "attend a festival",
+      "band": "5-6"
+    },
+    {
+      "word": "holiday",
+      "pos": "noun",
+      "ipa": "/ˈhɒl.ɪ.deɪ/",
+      "meaningVi": "ngày lễ, kỳ nghỉ",
+      "definitionEn": "a day of celebration or rest from work, often with religious or national significance",
+      "example": "Many families travel abroad during the summer holiday season.",
+      "collocation": "public holiday",
+      "band": "5-6"
+    },
+    {
+      "word": "event",
+      "pos": "noun",
+      "ipa": "/ɪˈvent/",
+      "meaningVi": "sự kiện",
+      "definitionEn": "a planned public or social occasion",
+      "example": "The charity event raised a significant amount of money for the local community.",
+      "collocation": "major event",
+      "band": "5-6"
+    },
+    {
+      "word": "occasion",
+      "pos": "noun",
+      "ipa": "/əˈkeɪ.ʒən/",
+      "meaningVi": "dịp, cơ hội",
+      "definitionEn": "a particular time when something happens or a special event",
+      "example": "The wedding was a joyous occasion for the entire family.",
+      "collocation": "special occasion",
+      "band": "5-6"
+    },
+    {
+      "word": "parade",
+      "pos": "noun",
+      "ipa": "/pəˈreɪd/",
+      "meaningVi": "cuộc diễu hành",
+      "definitionEn": "a public procession of people, vehicles, or floats, often as part of a celebration",
+      "example": "The colorful parade featured elaborate floats and marching bands.",
+      "collocation": "military parade",
+      "band": "6-7"
+    },
+    {
+      "word": "float",
+      "pos": "noun",
+      "ipa": "/floʊt/",
+      "meaningVi": "xe hoa",
+      "definitionEn": "a decorated platform or vehicle used in a parade",
+      "example": "The float representing the local folklore was the most impressive in the parade.",
+      "collocation": "parade float",
+      "band": "6-7"
+    },
+    {
+      "word": "firework",
+      "pos": "noun",
+      "ipa": "/ˈfaɪər.wɜːrk/",
+      "meaningVi": "pháo hoa",
+      "definitionEn": "a device that produces a loud noise and bright colors when lit, used in celebrations",
+      "example": "The firework display lit up the night sky on New Year's Eve.",
+      "collocation": "firework display",
+      "band": "6-7"
+    },
+    {
+      "word": "lantern",
+      "pos": "noun",
+      "ipa": "/ˈlæn.tərn/",
+      "meaningVi": "đèn lồng",
+      "definitionEn": "a portable light source, often enclosed in a decorative case, used in festivals",
+      "example": "During the Mid-Autumn Festival, children carry colorful lanterns in the streets.",
+      "collocation": "lantern festival",
+      "band": "6-7"
+    },
+    {
+      "word": "costume",
+      "pos": "noun",
+      "ipa": "/ˈkɒs.tjuːm/",
+      "meaningVi": "trang phục hóa trang",
+      "definitionEn": "a set of clothes worn to represent a particular character or culture, especially during festivals",
+      "example": "Participants in the carnival wore elaborate costumes made of feathers and beads.",
+      "collocation": "traditional costume",
+      "band": "6-7"
+    },
+    {
+      "word": "decoration",
+      "pos": "noun",
+      "ipa": "/ˌdek.əˈreɪ.ʃən/",
+      "meaningVi": "đồ trang trí",
+      "definitionEn": "something used to make a place or object look more attractive for a celebration",
+      "example": "The streets were adorned with festive decorations and colorful banners.",
+      "collocation": "Christmas decoration",
+      "band": "6-7"
+    },
+    {
+      "word": "banquet",
+      "pos": "noun",
+      "ipa": "/ˈbæŋ.kwɪt/",
+      "meaningVi": "yến tiệc, bữa tiệc lớn",
+      "definitionEn": "a formal and elaborate meal for many people, often held to celebrate a special occasion",
+      "example": "The wedding banquet featured a variety of exquisite dishes and fine wines.",
+      "collocation": "state banquet",
+      "band": "6-7"
+    },
+    {
+      "word": "assembly",
+      "pos": "noun",
+      "ipa": "/əˈsem.bli/",
+      "meaningVi": "sự tụ họp, buổi họp mặt",
+      "definitionEn": "a group of people gathered together for a common purpose, such as a celebration",
+      "example": "The annual assembly of the community marked the beginning of the harvest festival.",
+      "collocation": "public assembly",
+      "band": "6-7"
+    },
+    {
+      "word": "ancestral",
+      "pos": "adjective",
+      "ipa": "/ænˈses.trəl/",
+      "meaningVi": "thuộc về tổ tiên",
+      "definitionEn": "relating to or inherited from one's ancestors",
+      "example": "Many families perform ancestral rituals during the Qingming Festival to honor their forebears.",
+      "collocation": "ancestral home",
+      "band": "7-8"
+    },
+    {
+      "word": "worship",
+      "pos": "verb",
+      "ipa": "/ˈwɜːr.ʃɪp/",
+      "meaningVi": "thờ phụng, tôn kính",
+      "definitionEn": "to show reverence and adoration to a deity or spirit, often through rituals",
+      "example": "During the festival, devotees gather at the temple to worship the deity.",
+      "collocation": "worship ancestors",
+      "band": "7-8"
+    },
+    {
+      "word": "offering",
+      "pos": "noun",
+      "ipa": "/ˈɒf.ər.ɪŋ/",
+      "meaningVi": "lễ vật, đồ cúng",
+      "definitionEn": "something presented as a gift or tribute, especially in a religious or ceremonial context",
+      "example": "The villagers prepared generous offerings of fruit and flowers for the festival.",
+      "collocation": "make an offering",
+      "band": "7-8"
+    },
+    {
+      "word": "prayer",
+      "pos": "noun",
+      "ipa": "/preər/",
+      "meaningVi": "lời cầu nguyện",
+      "definitionEn": "a solemn request or expression of thanks addressed to a deity",
+      "example": "The festival began with a collective prayer for peace and prosperity.",
+      "collocation": "say a prayer",
+      "band": "7-8"
+    },
+    {
+      "word": "chant",
+      "pos": "noun",
+      "ipa": "/tʃɑːnt/",
+      "meaningVi": "bài tụng, điệp khúc",
+      "definitionEn": "a repeated rhythmic phrase or song, often used in religious or ceremonial contexts",
+      "example": "The monks recited a melodic chant during the opening ceremony.",
+      "collocation": "religious chant",
+      "band": "7-8"
+    },
+    {
+      "word": "dance",
+      "pos": "noun",
+      "ipa": "/dɑːns/",
+      "meaningVi": "điệu múa",
+      "definitionEn": "a series of movements performed to music, often part of cultural celebrations",
+      "example": "The traditional dance performed at the festival told the story of the village's history.",
+      "collocation": "folk dance",
+      "band": "7-8"
+    },
+    {
+      "word": "spectacle",
+      "pos": "noun",
+      "ipa": "/ˈspek.tə.kəl/",
+      "meaningVi": "cảnh tượng ngoạn mục",
+      "definitionEn": "a visually striking performance or display, often in a public celebration",
+      "example": "The fireworks created a magnificent spectacle that delighted the crowd.",
+      "collocation": "public spectacle",
+      "band": "7-8"
+    },
+    {
+      "word": "rite",
+      "pos": "noun",
+      "ipa": "/raɪt/",
+      "meaningVi": "nghi thức, nghi lễ",
+      "definitionEn": "a formal religious or ceremonial act or procedure",
+      "example": "The rite of passage is performed to mark the transition from adolescence to adulthood.",
+      "collocation": "initiation rite",
+      "band": "8+"
+    },
+    {
+      "word": "legacy",
+      "pos": "noun",
+      "ipa": "/ˈleɡ.ə.si/",
+      "meaningVi": "di sản",
+      "definitionEn": "something handed down from the past, such as cultural traditions or values",
+      "example": "The festival is a cultural legacy that has been passed down through generations.",
+      "collocation": "cultural legacy",
+      "band": "8+"
+    },
+    {
+      "word": "pomp",
+      "pos": "noun",
+      "ipa": "/pɒmp/",
+      "meaningVi": "sự lộng lẫy, tráng lệ",
+      "definitionEn": "ceremonial splendor and display, often with great showiness",
+      "example": "The royal wedding was conducted with great pomp and circumstance.",
+      "collocation": "pomp and ceremony",
+      "band": "8+"
+    },
+    {
+      "word": "festal",
+      "pos": "adjective",
+      "ipa": "/ˈfes.təl/",
+      "meaningVi": "thuộc lễ hội, vui tươi",
+      "definitionEn": "relating to or characteristic of a festival or celebration",
+      "example": "The festal atmosphere in the town was palpable as everyone prepared for the carnival.",
+      "collocation": "festal mood",
+      "band": "8+"
+    },
+    {
+      "word": "jubilee",
+      "pos": "noun",
+      "ipa": "/ˈdʒuː.bɪ.liː/",
+      "meaningVi": "lễ kỷ niệm, đại lễ",
+      "definitionEn": "a special anniversary of an event, often a 25th or 50th, celebrated with festivities",
+      "example": "The queen's diamond jubilee was marked by nationwide celebrations.",
+      "collocation": "golden jubilee",
+      "band": "8+"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "weather-climate",
+  "name": "Weather and Climate",
+  "nameVi": "Thời tiết và khí hậu",
+  "blurb": "Mùa, thiên tai, nhiệt độ",
+  "words": [
+    {
+      "word": "monsoon",
+      "pos": "noun",
+      "ipa": "/mɒnˈsuːn/",
+      "meaningVi": "gió mùa, mùa mưa",
+      "definitionEn": "A seasonal prevailing wind that brings heavy rainfall, especially in South Asia.",
+      "example": "The monsoon season is crucial for agriculture in India, as it provides the majority of annual rainfall.",
+      "collocation": "monsoon season",
+      "band": "5-6"
+    },
+    {
+      "word": "temperate",
+      "pos": "adjective",
+      "ipa": "/ˈtempərət/",
+      "meaningVi": "ôn đới",
+      "definitionEn": "Relating to a region with moderate temperatures, not extremely hot or cold.",
+      "example": "Temperate climates are often considered ideal for human habitation due to their mild weather patterns.",
+      "collocation": "temperate climate",
+      "band": "5-6"
+    },
+    {
+      "word": "tropical",
+      "pos": "adjective",
+      "ipa": "/ˈtrɒpɪkəl/",
+      "meaningVi": "nhiệt đới",
+      "definitionEn": "Relating to the region near the equator, characterized by warm temperatures year-round.",
+      "example": "Tropical regions are known for their high humidity and abundant biodiversity.",
+      "collocation": "tropical storm",
+      "band": "5-6"
+    },
+    {
+      "word": "arctic",
+      "pos": "adjective",
+      "ipa": "/ˈɑːrktɪk/",
+      "meaningVi": "Bắc Cực, hàn đới",
+      "definitionEn": "Relating to the extremely cold region near the North Pole.",
+      "example": "Arctic sea ice is melting at an alarming rate due to global warming.",
+      "collocation": "arctic conditions",
+      "band": "5-6"
+    },
+    {
+      "word": "drought",
+      "pos": "noun",
+      "ipa": "/draʊt/",
+      "meaningVi": "hạn hán",
+      "definitionEn": "A prolonged period of abnormally low rainfall, leading to a shortage of water.",
+      "example": "Severe drought has devastated crop yields in the region, causing food shortages.",
+      "collocation": "severe drought",
+      "band": "5-6"
+    },
+    {
+      "word": "flood",
+      "pos": "noun",
+      "ipa": "/flʌd/",
+      "meaningVi": "lũ lụt",
+      "definitionEn": "An overflow of water onto land that is usually dry, often caused by heavy rain or storm surges.",
+      "example": "The catastrophic flood displaced thousands of residents and damaged infrastructure.",
+      "collocation": "flash flood",
+      "band": "5-6"
+    },
+    {
+      "word": "humidity",
+      "pos": "noun",
+      "ipa": "/hjuːˈmɪdəti/",
+      "meaningVi": "độ ẩm",
+      "definitionEn": "The amount of water vapor present in the air.",
+      "example": "High humidity can make hot weather feel even more oppressive and uncomfortable.",
+      "collocation": "high humidity",
+      "band": "5-6"
+    },
+    {
+      "word": "precipitation",
+      "pos": "noun",
+      "ipa": "/prɪˌsɪpɪˈteɪʃən/",
+      "meaningVi": "lượng mưa, kết tủa (thời tiết)",
+      "definitionEn": "Any form of water, such as rain, snow, or hail, that falls from the atmosphere to the Earth's surface.",
+      "example": "The annual precipitation in this desert region is less than 100 millimeters.",
+      "collocation": "annual precipitation",
+      "band": "5-6"
+    },
+    {
+      "word": "hurricane",
+      "pos": "noun",
+      "ipa": "/ˈhʌrɪkən/",
+      "meaningVi": "bão nhiệt đới (Đại Tây Dương)",
+      "definitionEn": "A large, powerful storm with strong winds and heavy rain, forming over warm ocean waters.",
+      "example": "The hurricane caused widespread destruction along the coast, with wind speeds exceeding 200 km/h.",
+      "collocation": "hurricane season",
+      "band": "6-7"
+    },
+    {
+      "word": "tornado",
+      "pos": "noun",
+      "ipa": "/tɔːrˈneɪdəʊ/",
+      "meaningVi": "lốc xoáy",
+      "definitionEn": "A violent, rotating column of air that extends from a thunderstorm to the ground.",
+      "example": "Tornadoes are capable of leveling entire neighborhoods in just a few minutes.",
+      "collocation": "tornado warning",
+      "band": "6-7"
+    },
+    {
+      "word": "blizzard",
+      "pos": "noun",
+      "ipa": "/ˈblɪzərd/",
+      "meaningVi": "bão tuyết",
+      "definitionEn": "A severe snowstorm with strong winds, low visibility, and intense cold.",
+      "example": "The blizzard forced the closure of all major highways and airports in the region.",
+      "collocation": "blizzard conditions",
+      "band": "6-7"
+    },
+    {
+      "word": "avalanche",
+      "pos": "noun",
+      "ipa": "/ˈævəlæntʃ/",
+      "meaningVi": "tuyết lở",
+      "definitionEn": "A rapid flow of snow down a slope, often triggered by natural factors or human activity.",
+      "example": "The avalanche buried several ski huts under tons of snow, requiring a massive rescue operation.",
+      "collocation": "avalanche risk",
+      "band": "6-7"
+    },
+    {
+      "word": "heatwave",
+      "pos": "noun",
+      "ipa": "/ˈhiːtweɪv/",
+      "meaningVi": "đợt nắng nóng",
+      "definitionEn": "A prolonged period of excessively hot weather, often with high humidity.",
+      "example": "The heatwave broke temperature records across Europe, leading to health warnings.",
+      "collocation": "heatwave warning",
+      "band": "6-7"
+    },
+    {
+      "word": "cold snap",
+      "pos": "noun",
+      "ipa": "/ˈkəʊld snæp/",
+      "meaningVi": "đợt rét đậm",
+      "definitionEn": "A sudden, short period of very cold weather.",
+      "example": "The cold snap caused pipes to burst in many homes due to freezing temperatures.",
+      "collocation": "cold snap warning",
+      "band": "6-7"
+    },
+    {
+      "word": "hailstorm",
+      "pos": "noun",
+      "ipa": "/ˈheɪlstɔːrm/",
+      "meaningVi": "mưa đá",
+      "definitionEn": "A storm with hail, which are balls or lumps of ice that fall from the sky.",
+      "example": "The hailstorm damaged cars and crops, with some hailstones as large as golf balls.",
+      "collocation": "severe hailstorm",
+      "band": "6-7"
+    },
+    {
+      "word": "mudslide",
+      "pos": "noun",
+      "ipa": "/ˈmʌdslaɪd/",
+      "meaningVi": "lở đất, lũ bùn",
+      "definitionEn": "A mass of mud and other debris sliding down a slope, often after heavy rain.",
+      "example": "Heavy rainfall triggered a mudslide that destroyed several houses in the hillside village.",
+      "collocation": "mudslide risk",
+      "band": "6-7"
+    },
+    {
+      "word": "wildfire",
+      "pos": "noun",
+      "ipa": "/ˈwaɪldfaɪər/",
+      "meaningVi": "cháy rừng",
+      "definitionEn": "A large, destructive fire that spreads quickly over vegetation, often in dry conditions.",
+      "example": "The wildfire consumed thousands of acres of forest, releasing vast amounts of carbon dioxide.",
+      "collocation": "wildfire season",
+      "band": "6-7"
+    },
+    {
+      "word": "cyclone",
+      "pos": "noun",
+      "ipa": "/ˈsaɪkləʊn/",
+      "meaningVi": "bão nhiệt đới (Ấn Độ Dương, Thái Bình Dương)",
+      "definitionEn": "A large-scale storm system with rotating winds, often forming in tropical regions.",
+      "example": "The cyclone made landfall with destructive winds and torrential rain, causing widespread flooding.",
+      "collocation": "tropical cyclone",
+      "band": "6-7"
+    },
+    {
+      "word": "equinox",
+      "pos": "noun",
+      "ipa": "/ˈekwɪnɒks/",
+      "meaningVi": "ngày xuân phân / thu phân",
+      "definitionEn": "The time when day and night are of equal length, occurring twice a year.",
+      "example": "The spring equinox marks the beginning of longer days and warmer temperatures.",
+      "collocation": "autumnal equinox",
+      "band": "7-8"
+    },
+    {
+      "word": "solstice",
+      "pos": "noun",
+      "ipa": "/ˈsɒlstɪs/",
+      "meaningVi": "ngày hạ chí / đông chí",
+      "definitionEn": "The time when the sun reaches its highest or lowest point, resulting in the longest or shortest day.",
+      "example": "The summer solstice brings the longest daylight hours of the year in the Northern Hemisphere.",
+      "collocation": "summer solstice",
+      "band": "7-8"
+    },
+    {
+      "word": "global warming",
+      "pos": "noun",
+      "ipa": "/ˈɡləʊbəl ˈwɔːrmɪŋ/",
+      "meaningVi": "sự nóng lên toàn cầu",
+      "definitionEn": "The long-term increase in Earth's average temperature due to human activities, especially greenhouse gas emissions.",
+      "example": "Global warming is causing glaciers to retreat and sea levels to rise at an unprecedented rate.",
+      "collocation": "combat global warming",
+      "band": "7-8"
+    },
+    {
+      "word": "greenhouse effect",
+      "pos": "noun",
+      "ipa": "/ˈɡriːnhaʊs ɪˈfekt/",
+      "meaningVi": "hiệu ứng nhà kính",
+      "definitionEn": "The trapping of heat in the atmosphere by gases such as carbon dioxide, causing the planet to warm.",
+      "example": "The enhanced greenhouse effect, driven by human activities, is a primary cause of climate change.",
+      "collocation": "enhanced greenhouse effect",
+      "band": "7-8"
+    },
+    {
+      "word": "carbon footprint",
+      "pos": "noun",
+      "ipa": "/ˈkɑːrbən ˈfʊtprɪnt/",
+      "meaningVi": "dấu chân carbon",
+      "definitionEn": "The total amount of greenhouse gases emitted by an individual, organization, or product.",
+      "example": "Reducing your carbon footprint by using public transport can help mitigate climate change.",
+      "collocation": "reduce carbon footprint",
+      "band": "7-8"
+    },
+    {
+      "word": "heatstroke",
+      "pos": "noun",
+      "ipa": "/ˈhiːtstrəʊk/",
+      "meaningVi": "say nắng, sốc nhiệt",
+      "definitionEn": "A serious condition caused by overheating of the body, often due to prolonged exposure to high temperatures.",
+      "example": "Heatstroke can be fatal if not treated promptly, especially during extreme heatwaves.",
+      "collocation": "suffer from heatstroke",
+      "band": "7-8"
+    },
+    {
+      "word": "hypothermia",
+      "pos": "noun",
+      "ipa": "/ˌhaɪpəˈθɜːrmiə/",
+      "meaningVi": "hạ thân nhiệt",
+      "definitionEn": "A dangerous condition where the body temperature drops below normal, often due to cold exposure.",
+      "example": "Hypothermia is a major risk for hikers caught in sudden cold snaps without proper gear.",
+      "collocation": "hypothermia risk",
+      "band": "7-8"
+    },
+    {
+      "word": "climate",
+      "pos": "noun",
+      "ipa": "/ˈklaɪmət/",
+      "meaningVi": "khí hậu",
+      "definitionEn": "The long-term average weather conditions of a region, including temperature, precipitation, and wind patterns.",
+      "example": "The climate of the Mediterranean region is mild and rainy in winter, which attracts many tourists.",
+      "collocation": "climate change",
+      "band": "5-6"
+    },
+    {
+      "word": "atmosphere",
+      "pos": "noun",
+      "ipa": "/ˈætməsfɪr/",
+      "meaningVi": "khí quyển",
+      "definitionEn": "The layer of gases surrounding the Earth, which influences weather and climate.",
+      "example": "The atmosphere plays a crucial role in regulating the Earth's temperature by trapping heat.",
+      "collocation": "atmospheric pressure",
+      "band": "6-7"
+    },
+    {
+      "word": "meteorological",
+      "pos": "adjective",
+      "ipa": "/ˌmiːtiərəˈlɑːdʒɪkl/",
+      "meaningVi": "thuộc khí tượng",
+      "definitionEn": "Relating to the scientific study of weather and atmospheric conditions.",
+      "example": "Meteorological data collected over decades helps scientists predict long-term climate trends.",
+      "collocation": "meteorological office",
+      "band": "8+"
+    },
+    {
+      "word": "forecast",
+      "pos": "noun",
+      "ipa": "/ˈfɔːrkæst/",
+      "meaningVi": "dự báo",
+      "definitionEn": "A prediction of future weather conditions based on scientific analysis.",
+      "example": "The weather forecast indicated a high probability of thunderstorms this afternoon.",
+      "collocation": "weather forecast",
+      "band": "6-7"
+    },
+    {
+      "word": "phenomenon",
+      "pos": "noun",
+      "ipa": "/fəˈnɑːmɪnən/",
+      "meaningVi": "hiện tượng",
+      "definitionEn": "An observable event or fact, especially in the natural world, such as a weather event.",
+      "example": "El Niño is a climatic phenomenon that disrupts normal weather patterns worldwide.",
+      "collocation": "natural phenomenon",
+      "band": "6-7"
+    },
+    {
+      "word": "variability",
+      "pos": "noun",
+      "ipa": "/ˌveriəˈbɪləti/",
+      "meaningVi": "sự biến thiên",
+      "definitionEn": "The tendency of weather or climate to change or vary over time.",
+      "example": "The variability of rainfall in this region makes agriculture particularly challenging.",
+      "collocation": "climate variability",
+      "band": "7-8"
+    },
+    {
+      "word": "anomaly",
+      "pos": "noun",
+      "ipa": "/əˈnɑːməli/",
+      "meaningVi": "dị thường",
+      "definitionEn": "A deviation from the normal or expected pattern, often used in climatology to describe unusual weather events.",
+      "example": "The temperature anomaly recorded last month was 3°C above the historical average.",
+      "collocation": "temperature anomaly",
+      "band": "8+"
+    },
+    {
+      "word": "condensation",
+      "pos": "noun",
+      "ipa": "/ˌkɑːndenˈseɪʃn/",
+      "meaningVi": "sự ngưng tụ",
+      "definitionEn": "The process by which water vapor in the air turns into liquid water, forming clouds or fog.",
+      "example": "Condensation occurs when warm, moist air comes into contact with a cold surface.",
+      "collocation": "condensation point",
+      "band": "7-8"
+    },
+    {
+      "word": "evaporation",
+      "pos": "noun",
+      "ipa": "/ɪˌvæpəˈreɪʃn/",
+      "meaningVi": "sự bay hơi",
+      "definitionEn": "The process by which liquid water changes into water vapor, driven by heat from the sun.",
+      "example": "High evaporation rates in arid regions contribute to the formation of salt flats.",
+      "collocation": "evaporation rate",
+      "band": "7-8"
+    },
+    {
+      "word": "thunderstorm",
+      "pos": "noun",
+      "ipa": "/ˈθʌndərstɔːrm/",
+      "meaningVi": "dông",
+      "definitionEn": "A storm with thunder and lightning, typically accompanied by heavy rain or hail.",
+      "example": "The sudden thunderstorm caused widespread power outages across the city.",
+      "collocation": "severe thunderstorm",
+      "band": "6-7"
+    },
+    {
+      "word": "lightning",
+      "pos": "noun",
+      "ipa": "/ˈlaɪtnɪŋ/",
+      "meaningVi": "sét, chớp",
+      "definitionEn": "A bright flash of light produced by electrical discharge in the atmosphere during a storm.",
+      "example": "Lightning strikes can ignite wildfires, especially in dry forests.",
+      "collocation": "lightning bolt",
+      "band": "6-7"
+    },
+    {
+      "word": "fog",
+      "pos": "noun",
+      "ipa": "/fɑːɡ/",
+      "meaningVi": "sương mù",
+      "definitionEn": "A thick cloud of tiny water droplets suspended in the air near the ground, reducing visibility.",
+      "example": "Dense fog delayed flights at the airport for several hours this morning.",
+      "collocation": "dense fog",
+      "band": "5-6"
+    },
+    {
+      "word": "frost",
+      "pos": "noun",
+      "ipa": "/frɔːst/",
+      "meaningVi": "sương giá",
+      "definitionEn": "A thin layer of ice crystals formed on surfaces when the temperature drops below freezing.",
+      "example": "The early frost damaged many crops, causing significant losses for farmers.",
+      "collocation": "ground frost",
+      "band": "6-7"
+    },
+    {
+      "word": "sleet",
+      "pos": "noun",
+      "ipa": "/sliːt/",
+      "meaningVi": "mưa đá nhỏ",
+      "definitionEn": "Precipitation consisting of partly frozen rain, often hitting the ground as small ice pellets.",
+      "example": "Sleet made the roads extremely slippery and dangerous for drivers.",
+      "collocation": "sleet storm",
+      "band": "7-8"
+    },
+    {
+      "word": "hail",
+      "pos": "noun",
+      "ipa": "/heɪl/",
+      "meaningVi": "mưa đá",
+      "definitionEn": "Small balls of ice that fall from thunderstorms, often causing damage to property and crops.",
+      "example": "Hail the size of golf balls pummeled the neighborhood, breaking windows and denting cars.",
+      "collocation": "hail damage",
+      "band": "7-8"
+    },
+    {
+      "word": "gale",
+      "pos": "noun",
+      "ipa": "/ɡeɪl/",
+      "meaningVi": "gió giật mạnh",
+      "definitionEn": "A very strong wind, typically between 34 and 40 knots on the Beaufort scale.",
+      "example": "The gale uprooted several trees and overturned small boats in the harbor.",
+      "collocation": "gale force winds",
+      "band": "7-8"
+    },
+    {
+      "word": "meteorologist",
+      "pos": "noun",
+      "ipa": "/ˌmiːtiəˈrɑːlədʒɪst/",
+      "meaningVi": "nhà khí tượng",
+      "definitionEn": "A scientist who studies weather and atmospheric conditions to make forecasts and understand climate.",
+      "example": "The meteorologist warned that the incoming storm could bring record-breaking rainfall.",
+      "collocation": "professional meteorologist",
+      "band": "7-8"
+    },
+    {
+      "word": "barometer",
+      "pos": "noun",
+      "ipa": "/bəˈrɑːmɪtər/",
+      "meaningVi": "phong vũ biểu, áp kế",
+      "definitionEn": "An instrument that measures atmospheric pressure, used to predict weather changes.",
+      "example": "A rapidly falling barometer often signals an approaching storm or cyclone.",
+      "collocation": "barometric pressure",
+      "band": "8+"
+    },
+    {
+      "word": "isotherm",
+      "pos": "noun",
+      "ipa": "/ˈaɪsəθɜːrm/",
+      "meaningVi": "đường đẳng nhiệt",
+      "definitionEn": "A line on a weather map connecting points of equal temperature.",
+      "example": "The isotherm chart clearly showed a cold front moving southward across the continent.",
+      "collocation": "isotherm map",
+      "band": "8+"
+    },
+    {
+      "word": "seasonal",
+      "pos": "adjective",
+      "ipa": "/ˈsiːzənl/",
+      "meaningVi": "theo mùa",
+      "definitionEn": "Occurring or varying with the seasons of the year.",
+      "example": "Seasonal variations in temperature and daylight affect plant growth cycles.",
+      "collocation": "seasonal changes",
+      "band": "5-6"
+    },
+    {
+      "word": "diurnal",
+      "pos": "adjective",
+      "ipa": "/daɪˈɜːrnl/",
+      "meaningVi": "hàng ngày (về biến động nhiệt độ)",
+      "definitionEn": "Relating to or occurring during the day, or describing daily cycles, often used for temperature range.",
+      "example": "The diurnal temperature range in desert regions can exceed 20°C between day and night.",
+      "collocation": "diurnal variation",
+      "band": "7-8"
+    },
+    {
+      "word": "microclimate",
+      "pos": "noun",
+      "ipa": "/ˈmaɪkroʊklaɪmət/",
+      "meaningVi": "vi khí hậu",
+      "definitionEn": "A small, localized area with different weather conditions from the surrounding region.",
+      "example": "The garden's microclimate, sheltered by walls, allows tropical plants to thrive despite the cold winters.",
+      "collocation": "local microclimate",
+      "band": "8+"
+    },
+    {
+      "word": "extreme",
+      "pos": "adjective",
+      "ipa": "/ɪkˈstriːm/",
+      "meaningVi": "cực đoan",
+      "definitionEn": "Very severe or unusual, often used to describe weather events that are dangerous or record-breaking.",
+      "example": "Extreme weather events, such as intense heatwaves and heavy rainfall, have become more frequent.",
+      "collocation": "extreme weather",
+      "band": "6-7"
+    },
+    {
+      "word": "fluctuation",
+      "pos": "noun",
+      "ipa": "/ˌflʌktʃuˈeɪʃn/",
+      "meaningVi": "sự dao động",
+      "definitionEn": "Irregular changes or variations in weather conditions, such as temperature or pressure.",
+      "example": "The fluctuation of ocean temperatures influences the intensity of tropical storms.",
+      "collocation": "temperature fluctuation",
+      "band": "7-8"
+    },
+    {
+      "word": "onset",
+      "pos": "noun",
+      "ipa": "/ˈɑːnset/",
+      "meaningVi": "sự bắt đầu (mùa, hiện tượng)",
+      "definitionEn": "The beginning or start of a season, weather event, or climatic condition.",
+      "example": "The onset of the monsoon season brings heavy rains that are vital for agriculture.",
+      "collocation": "onset of winter",
+      "band": "6-7"
+    }
+  ]
+}

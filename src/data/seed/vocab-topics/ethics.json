@@ -1,0 +1,508 @@
+{
+  "slug": "ethics",
+  "name": "Ethics and Morality",
+  "nameVi": "Đạo đức",
+  "blurb": "Đúng sai, trách nhiệm, lương tâm",
+  "words": [
+    {
+      "word": "moral",
+      "pos": "adjective",
+      "ipa": "/ˈmɒr.əl/",
+      "meaningVi": "thuộc về đạo đức",
+      "definitionEn": "relating to principles of right and wrong behavior",
+      "example": "Leaders must make moral decisions that benefit society as a whole.",
+      "collocation": "moral obligation",
+      "band": "5-6"
+    },
+    {
+      "word": "ethical",
+      "pos": "adjective",
+      "ipa": "/ˈeθ.ɪ.kəl/",
+      "meaningVi": "có đạo đức, hợp lý",
+      "definitionEn": "relating to moral principles or the branch of knowledge dealing with these",
+      "example": "The company was praised for its ethical business practices.",
+      "collocation": "ethical dilemma",
+      "band": "5-6"
+    },
+    {
+      "word": "integrity",
+      "pos": "noun",
+      "ipa": "/ɪnˈteɡ.rə.ti/",
+      "meaningVi": "sự chính trực",
+      "definitionEn": "the quality of being honest and having strong moral principles",
+      "example": "A person of integrity always keeps their promises.",
+      "collocation": "moral integrity",
+      "band": "6-7"
+    },
+    {
+      "word": "conscience",
+      "pos": "noun",
+      "ipa": "/ˈkɒn.ʃəns/",
+      "meaningVi": "lương tâm",
+      "definitionEn": "a person's moral sense of right and wrong",
+      "example": "He could not in good conscience ignore the suffering of others.",
+      "collocation": "guilty conscience",
+      "band": "6-7"
+    },
+    {
+      "word": "virtue",
+      "pos": "noun",
+      "ipa": "/ˈvɜː.tʃuː/",
+      "meaningVi": "đức hạnh, phẩm chất tốt",
+      "definitionEn": "behavior showing high moral standards",
+      "example": "Honesty is considered a fundamental virtue in any society.",
+      "collocation": "civic virtue",
+      "band": "6-7"
+    },
+    {
+      "word": "vice",
+      "pos": "noun",
+      "ipa": "/vaɪs/",
+      "meaningVi": "thói xấu, tệ nạn",
+      "definitionEn": "immoral or wicked behavior",
+      "example": "Greed is a vice that can corrupt even the most principled individuals.",
+      "collocation": "vice squad",
+      "band": "6-7"
+    },
+    {
+      "word": "accountability",
+      "pos": "noun",
+      "ipa": "/əˌkaʊn.təˈbɪl.ə.ti/",
+      "meaningVi": "trách nhiệm giải trình",
+      "definitionEn": "the fact or condition of being responsible for one's actions",
+      "example": "Political leaders must ensure accountability in the use of public funds.",
+      "collocation": "public accountability",
+      "band": "7-8"
+    },
+    {
+      "word": "culpability",
+      "pos": "noun",
+      "ipa": "/ˌkʌl.pəˈbɪl.ə.ti/",
+      "meaningVi": "tội lỗi, trách nhiệm pháp lý",
+      "definitionEn": "responsibility for a fault or wrong; blameworthiness",
+      "example": "The court determined the degree of culpability for each defendant.",
+      "collocation": "criminal culpability",
+      "band": "8+"
+    },
+    {
+      "word": "righteous",
+      "pos": "adjective",
+      "ipa": "/ˈraɪ.tʃəs/",
+      "meaningVi": "chính nghĩa, ngay thẳng",
+      "definitionEn": "morally right or justifiable",
+      "example": "She felt a righteous anger at the injustice she witnessed.",
+      "collocation": "righteous indignation",
+      "band": "7-8"
+    },
+    {
+      "word": "dilemma",
+      "pos": "noun",
+      "ipa": "/daɪˈlem.ə/",
+      "meaningVi": "tình huống khó xử",
+      "definitionEn": "a situation in which a difficult choice has to be made between two alternatives",
+      "example": "The doctor faced a moral dilemma when deciding whether to disclose the patient's condition.",
+      "collocation": "ethical dilemma",
+      "band": "6-7"
+    },
+    {
+      "word": "moral imperative",
+      "pos": "noun",
+      "ipa": "/ˈmɒr.əl ɪmˈper.ə.tɪv/",
+      "meaningVi": "mệnh lệnh đạo đức",
+      "definitionEn": "a principle or command that is morally required",
+      "example": "Reducing poverty is a moral imperative for any civilized society.",
+      "collocation": "fulfill a moral imperative",
+      "band": "7-8"
+    },
+    {
+      "word": "altruism",
+      "pos": "noun",
+      "ipa": "/ˈæl.tru.ɪz.əm/",
+      "meaningVi": "lòng vị tha",
+      "definitionEn": "selfless concern for the well-being of others",
+      "example": "Many volunteers are motivated by genuine altruism rather than personal gain.",
+      "collocation": "act of altruism",
+      "band": "7-8"
+    },
+    {
+      "word": "egoism",
+      "pos": "noun",
+      "ipa": "/ˈeɡ.əʊ.ɪz.əm/",
+      "meaningVi": "chủ nghĩa vị kỷ",
+      "definitionEn": "an ethical theory that treats self-interest as the foundation of morality",
+      "example": "Ethical egoism argues that individuals should act in their own self-interest.",
+      "collocation": "psychological egoism",
+      "band": "8+"
+    },
+    {
+      "word": "deception",
+      "pos": "noun",
+      "ipa": "/dɪˈsep.ʃən/",
+      "meaningVi": "sự lừa dối",
+      "definitionEn": "the act of causing someone to believe something that is not true",
+      "example": "Deception in advertising undermines consumer trust.",
+      "collocation": "deliberate deception",
+      "band": "6-7"
+    },
+    {
+      "word": "hypocrisy",
+      "pos": "noun",
+      "ipa": "/hɪˈpɒk.rɪ.si/",
+      "meaningVi": "sự đạo đức giả",
+      "definitionEn": "the practice of claiming to have moral standards or beliefs to which one's own behavior does not conform",
+      "example": "The politician's hypocrisy was exposed when he was caught accepting bribes.",
+      "collocation": "sheer hypocrisy",
+      "band": "7-8"
+    },
+    {
+      "word": "impartial",
+      "pos": "adjective",
+      "ipa": "/ɪmˈpɑː.ʃəl/",
+      "meaningVi": "vô tư, công bằng",
+      "definitionEn": "treating all rivals or disputants equally; fair and just",
+      "example": "A judge must remain impartial throughout the trial.",
+      "collocation": "impartial judgment",
+      "band": "6-7"
+    },
+    {
+      "word": "moral compass",
+      "pos": "noun",
+      "ipa": "/ˈmɒr.əl ˈkʌm.pəs/",
+      "meaningVi": "la bàn đạo đức",
+      "definitionEn": "a person's ability to judge what is right and wrong and act accordingly",
+      "example": "He lost his moral compass after years of corruption.",
+      "collocation": "strengthen one's moral compass",
+      "band": "7-8"
+    },
+    {
+      "word": "ethical conduct",
+      "pos": "noun",
+      "ipa": "/ˈeθ.ɪ.kəl ˈkɒn.dʌkt/",
+      "meaningVi": "hành vi đạo đức",
+      "definitionEn": "behavior that is morally correct and in accordance with accepted principles",
+      "example": "The organization promotes ethical conduct among its employees.",
+      "collocation": "standards of ethical conduct",
+      "band": "6-7"
+    },
+    {
+      "word": "moral obligation",
+      "pos": "noun",
+      "ipa": "/ˈmɒr.əl ˌɒb.lɪˈɡeɪ.ʃən/",
+      "meaningVi": "nghĩa vụ đạo đức",
+      "definitionEn": "a duty which one owes to society or to one's conscience",
+      "example": "We have a moral obligation to help those in need.",
+      "collocation": "fulfill a moral obligation",
+      "band": "5-6"
+    },
+    {
+      "word": "transgress",
+      "pos": "verb",
+      "ipa": "/trænzˈɡres/",
+      "meaningVi": "vi phạm (đạo đức, luật lệ)",
+      "definitionEn": "to go beyond the limits of what is morally or legally acceptable",
+      "example": "Those who transgress ethical boundaries may face severe consequences.",
+      "collocation": "transgress the law",
+      "band": "7-8"
+    },
+    {
+      "word": "exonerate",
+      "pos": "verb",
+      "ipa": "/ɪɡˈzɒn.ə.reɪt/",
+      "meaningVi": "minh oan, tha tội",
+      "definitionEn": "to officially state that someone is not to blame for something",
+      "example": "The new evidence exonerated the defendant of all charges.",
+      "collocation": "exonerate from blame",
+      "band": "8+"
+    },
+    {
+      "word": "impunity",
+      "pos": "noun",
+      "ipa": "/ɪmˈpjuː.nə.ti/",
+      "meaningVi": "sự trừng phạt, thoát tội",
+      "definitionEn": "exemption from punishment or freedom from the injurious consequences of an action",
+      "example": "Corrupt officials cannot act with impunity forever.",
+      "collocation": "act with impunity",
+      "band": "8+"
+    },
+    {
+      "word": "conscience-stricken",
+      "pos": "adjective",
+      "ipa": "/ˈkɒn.ʃəns ˌstrɪk.ən/",
+      "meaningVi": "day dứt lương tâm",
+      "definitionEn": "feeling very guilty or remorseful about something",
+      "example": "The conscience-stricken thief returned the stolen money.",
+      "collocation": "feel conscience-stricken",
+      "band": "8+"
+    },
+    {
+      "word": "ethically",
+      "pos": "adverb",
+      "ipa": "/ˈeθ.ɪ.kli/",
+      "meaningVi": "về mặt đạo đức",
+      "definitionEn": "in a way that is morally correct",
+      "example": "Companies should operate ethically to maintain public trust.",
+      "collocation": "act ethically",
+      "band": "5-6"
+    },
+    {
+      "word": "sanctity",
+      "pos": "noun",
+      "ipa": "/ˈsæŋk.tə.ti/",
+      "meaningVi": "sự thiêng liêng, bất khả xâm phạm",
+      "definitionEn": "the state or quality of being holy, sacred, or inviolable",
+      "example": "We must respect the sanctity of human life.",
+      "collocation": "sanctity of contract",
+      "band": "7-8"
+    },
+    {
+      "word": "justice",
+      "pos": "noun",
+      "ipa": "/ˈdʒʌs.tɪs/",
+      "meaningVi": "công lý, sự công bằng",
+      "definitionEn": "The quality of being fair and reasonable; the administration of what is just.",
+      "example": "The court system exists to ensure that justice is served for all citizens.",
+      "collocation": "social justice",
+      "band": "6-7"
+    },
+    {
+      "word": "fairness",
+      "pos": "noun",
+      "ipa": "/ˈfeər.nəs/",
+      "meaningVi": "sự công bằng",
+      "definitionEn": "Impartial and just treatment or behavior without favoritism or discrimination.",
+      "example": "Employers must ensure fairness in the hiring process to avoid bias.",
+      "collocation": "procedural fairness",
+      "band": "5-6"
+    },
+    {
+      "word": "honesty",
+      "pos": "noun",
+      "ipa": "/ˈɒn.ɪ.sti/",
+      "meaningVi": "sự trung thực",
+      "definitionEn": "The quality of being truthful and free from deceit.",
+      "example": "Honesty is a fundamental value in any ethical relationship.",
+      "collocation": "intellectual honesty",
+      "band": "5-6"
+    },
+    {
+      "word": "responsibility",
+      "pos": "noun",
+      "ipa": "/rɪˌspɒn.sɪˈbɪl.ɪ.ti/",
+      "meaningVi": "trách nhiệm",
+      "definitionEn": "The state or fact of being accountable for something within one's power or control.",
+      "example": "Corporate social responsibility has become a key concern for modern businesses.",
+      "collocation": "moral responsibility",
+      "band": "6-7"
+    },
+    {
+      "word": "duty",
+      "pos": "noun",
+      "ipa": "/ˈdjuː.ti/",
+      "meaningVi": "bổn phận, nhiệm vụ",
+      "definitionEn": "A moral or legal obligation; a task or action that one is required to perform.",
+      "example": "It is the duty of every citizen to obey the law and contribute to society.",
+      "collocation": "civic duty",
+      "band": "5-6"
+    },
+    {
+      "word": "obligation",
+      "pos": "noun",
+      "ipa": "/ˌɒb.lɪˈɡeɪ.ʃən/",
+      "meaningVi": "nghĩa vụ",
+      "definitionEn": "An act or course of action to which a person is morally or legally bound.",
+      "example": "Parents have a legal obligation to provide for their children's education.",
+      "collocation": "legal obligation",
+      "band": "6-7"
+    },
+    {
+      "word": "liability",
+      "pos": "noun",
+      "ipa": "/ˌlaɪ.əˈbɪl.ɪ.ti/",
+      "meaningVi": "trách nhiệm pháp lý",
+      "definitionEn": "The state of being legally responsible for something, especially for damage or injury.",
+      "example": "The company denied liability for the accident, claiming it was a technical failure.",
+      "collocation": "strict liability",
+      "band": "7-8"
+    },
+    {
+      "word": "guilt",
+      "pos": "noun",
+      "ipa": "/ɡɪlt/",
+      "meaningVi": "tội lỗi, sự có tội",
+      "definitionEn": "The fact of having committed a specified or implied offense or crime.",
+      "example": "The defendant's guilt was established beyond a reasonable doubt.",
+      "collocation": "feelings of guilt",
+      "band": "5-6"
+    },
+    {
+      "word": "innocence",
+      "pos": "noun",
+      "ipa": "/ˈɪn.ə.səns/",
+      "meaningVi": "sự vô tội",
+      "definitionEn": "The state of being free from guilt or sin; lack of experience or knowledge of evil.",
+      "example": "The jury was convinced of the suspect's innocence after reviewing the evidence.",
+      "collocation": "presumption of innocence",
+      "band": "5-6"
+    },
+    {
+      "word": "punishment",
+      "pos": "noun",
+      "ipa": "/ˈpʌn.ɪʃ.mənt/",
+      "meaningVi": "hình phạt",
+      "definitionEn": "The infliction of a penalty as retribution for an offense.",
+      "example": "The punishment should fit the crime and be proportionate to the harm caused.",
+      "collocation": "capital punishment",
+      "band": "6-7"
+    },
+    {
+      "word": "merit",
+      "pos": "noun",
+      "ipa": "/ˈmer.ɪt/",
+      "meaningVi": "công lao, giá trị",
+      "definitionEn": "The quality of being particularly good or worthy, especially so as to deserve praise or reward.",
+      "example": "Promotions should be based on merit rather than seniority or favoritism.",
+      "collocation": "merit-based system",
+      "band": "6-7"
+    },
+    {
+      "word": "principle",
+      "pos": "noun",
+      "ipa": "/ˈprɪn.sɪ.pəl/",
+      "meaningVi": "nguyên tắc",
+      "definitionEn": "A fundamental truth or proposition that serves as the foundation for a system of belief or behavior.",
+      "example": "The principle of equality is enshrined in the constitution of many democratic nations.",
+      "collocation": "guiding principle",
+      "band": "6-7"
+    },
+    {
+      "word": "autonomy",
+      "pos": "noun",
+      "ipa": "/ɔːˈtɒn.ə.mi/",
+      "meaningVi": "quyền tự chủ, tự trị",
+      "definitionEn": "The right or condition of self-government, especially in the context of personal or institutional independence.",
+      "example": "Respecting patient autonomy is a cornerstone of medical ethics.",
+      "collocation": "personal autonomy",
+      "band": "7-8"
+    },
+    {
+      "word": "dignity",
+      "pos": "noun",
+      "ipa": "/ˈdɪɡ.nɪ.ti/",
+      "meaningVi": "phẩm giá",
+      "definitionEn": "The state or quality of being worthy of honor or respect.",
+      "example": "All human beings deserve to be treated with dignity and respect.",
+      "collocation": "human dignity",
+      "band": "7-8"
+    },
+    {
+      "word": "equity",
+      "pos": "noun",
+      "ipa": "/ˈek.wɪ.ti/",
+      "meaningVi": "công bằng, sự bình đẳng",
+      "definitionEn": "The quality of being fair and impartial, especially in the distribution of resources or opportunities.",
+      "example": "The government aims to promote equity in education by providing equal funding to all schools.",
+      "collocation": "social equity",
+      "band": "7-8"
+    },
+    {
+      "word": "bias",
+      "pos": "noun",
+      "ipa": "/ˈbaɪ.əs/",
+      "meaningVi": "sự thiên vị, thành kiến",
+      "definitionEn": "Prejudice in favor of or against one thing, person, or group compared with another, usually in a way considered to be unfair.",
+      "example": "Unconscious bias can affect hiring decisions even when employers intend to be impartial.",
+      "collocation": "unconscious bias",
+      "band": "6-7"
+    },
+    {
+      "word": "prejudice",
+      "pos": "noun",
+      "ipa": "/ˈpredʒ.ʊ.dɪs/",
+      "meaningVi": "định kiến, thành kiến",
+      "definitionEn": "Preconceived opinion that is not based on reason or actual experience.",
+      "example": "Racial prejudice continues to be a major obstacle to social harmony.",
+      "collocation": "racial prejudice",
+      "band": "7-8"
+    },
+    {
+      "word": "discrimination",
+      "pos": "noun",
+      "ipa": "/dɪˌskrɪm.ɪˈneɪ.ʃən/",
+      "meaningVi": "sự phân biệt đối xử",
+      "definitionEn": "The unjust or prejudicial treatment of different categories of people, especially on the grounds of race, age, or sex.",
+      "example": "Anti-discrimination laws are essential to protect the rights of minority groups.",
+      "collocation": "gender discrimination",
+      "band": "7-8"
+    },
+    {
+      "word": "compassion",
+      "pos": "noun",
+      "ipa": "/kəmˈpæʃ.ən/",
+      "meaningVi": "lòng trắc ẩn, sự đồng cảm",
+      "definitionEn": "Sympathetic pity and concern for the sufferings or misfortunes of others.",
+      "example": "Compassion is a virtue that should guide our actions towards the less fortunate.",
+      "collocation": "compassion fatigue",
+      "band": "7-8"
+    },
+    {
+      "word": "empathy",
+      "pos": "noun",
+      "ipa": "/ˈem.pə.θi/",
+      "meaningVi": "sự đồng cảm, thấu hiểu",
+      "definitionEn": "The ability to understand and share the feelings of another.",
+      "example": "Empathy is crucial for effective communication and conflict resolution.",
+      "collocation": "empathetic response",
+      "band": "7-8"
+    },
+    {
+      "word": "utilitarianism",
+      "pos": "noun",
+      "ipa": "/ˌjuː.tɪl.ɪˈteər.i.ə.nɪ.zəm/",
+      "meaningVi": "chủ nghĩa vị lợi",
+      "definitionEn": "The ethical theory that the best action is the one that maximizes utility, usually defined as that which produces the greatest well-being of the greatest number of people.",
+      "example": "Utilitarianism argues that the morality of an action is determined by its consequences.",
+      "collocation": "act utilitarianism",
+      "band": "8+"
+    },
+    {
+      "word": "deontology",
+      "pos": "noun",
+      "ipa": "/ˌdiː.ɒnˈtɒl.ə.dʒi/",
+      "meaningVi": "đạo đức học nghĩa vụ",
+      "definitionEn": "The ethical theory that the morality of an action is based on whether that action itself is right or wrong under a series of rules, rather than based on the consequences of the action.",
+      "example": "Deontology emphasizes duties and rules that must be followed regardless of outcomes.",
+      "collocation": "Kantian deontology",
+      "band": "8+"
+    },
+    {
+      "word": "consequentialism",
+      "pos": "noun",
+      "ipa": "/ˌkɒn.sɪˈkwen.ʃəl.ɪ.zəm/",
+      "meaningVi": "chủ nghĩa hậu quả",
+      "definitionEn": "The ethical doctrine that the morality of an action is to be judged solely by its consequences.",
+      "example": "Consequentialism is often contrasted with deontology in ethical debates.",
+      "collocation": "negative consequentialism",
+      "band": "8+"
+    },
+    {
+      "word": "veracity",
+      "pos": "noun",
+      "ipa": "/vəˈræs.ɪ.ti/",
+      "meaningVi": "tính trung thực, xác thực",
+      "definitionEn": "Conformity to facts; accuracy or habitual truthfulness.",
+      "example": "The veracity of the witness's testimony was questioned by the defense lawyer.",
+      "collocation": "veracity of information",
+      "band": "8+"
+    },
+    {
+      "word": "reparation",
+      "pos": "noun",
+      "ipa": "/ˌrep.əˈreɪ.ʃən/",
+      "meaningVi": "sự bồi thường, đền bù",
+      "definitionEn": "The making of amends for a wrong one has done, by paying money or otherwise helping those who have been harmed.",
+      "example": "The government agreed to pay reparations to the victims of the historical injustice.",
+      "collocation": "war reparations",
+      "band": "8+"
+    }
+  ]
+}

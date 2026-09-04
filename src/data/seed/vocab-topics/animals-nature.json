@@ -1,0 +1,508 @@
+{
+  "slug": "animals-nature",
+  "name": "Animals and Wildlife",
+  "nameVi": "Động vật hoang dã",
+  "blurb": "Loài, môi trường sống, tuyệt chủng",
+  "words": [
+    {
+      "word": "habitat",
+      "pos": "noun",
+      "ipa": "/ˈhæbɪtæt/",
+      "meaningVi": "môi trường sống",
+      "definitionEn": "the natural environment in which an animal or plant lives",
+      "example": "The destruction of natural habitats is a major threat to biodiversity.",
+      "collocation": "natural habitat",
+      "band": "5-6"
+    },
+    {
+      "word": "species",
+      "pos": "noun",
+      "ipa": "/ˈspiːʃiːz/",
+      "meaningVi": "loài",
+      "definitionEn": "a group of living organisms that can reproduce with each other",
+      "example": "Many species are at risk of extinction due to human activities.",
+      "collocation": "endangered species",
+      "band": "5-6"
+    },
+    {
+      "word": "predator",
+      "pos": "noun",
+      "ipa": "/ˈprɛdətər/",
+      "meaningVi": "động vật ăn thịt",
+      "definitionEn": "an animal that hunts and kills other animals for food",
+      "example": "The introduction of predators can disrupt the local ecosystem.",
+      "collocation": "top predator",
+      "band": "5-6"
+    },
+    {
+      "word": "prey",
+      "pos": "noun",
+      "ipa": "/preɪ/",
+      "meaningVi": "con mồi",
+      "definitionEn": "an animal that is hunted and killed by another animal",
+      "example": "The prey population declines when predator numbers increase.",
+      "collocation": "easy prey",
+      "band": "5-6"
+    },
+    {
+      "word": "migration",
+      "pos": "noun",
+      "ipa": "/maɪˈɡreɪʃən/",
+      "meaningVi": "sự di cư",
+      "definitionEn": "the seasonal movement of animals from one region to another",
+      "example": "Bird migration is a remarkable natural phenomenon.",
+      "collocation": "annual migration",
+      "band": "5-6"
+    },
+    {
+      "word": "extinction",
+      "pos": "noun",
+      "ipa": "/ɪkˈstɪŋkʃən/",
+      "meaningVi": "sự tuyệt chủng",
+      "definitionEn": "the state of no longer existing as a species",
+      "example": "Human activity has accelerated the rate of extinction.",
+      "collocation": "mass extinction",
+      "band": "5-6"
+    },
+    {
+      "word": "poaching",
+      "pos": "noun",
+      "ipa": "/ˈpoʊtʃɪŋ/",
+      "meaningVi": "săn trộm",
+      "definitionEn": "illegal hunting of wild animals",
+      "example": "Poaching remains a serious problem for endangered species.",
+      "collocation": "illegal poaching",
+      "band": "5-6"
+    },
+    {
+      "word": "adaptation",
+      "pos": "noun",
+      "ipa": "/ˌædæpˈteɪʃən/",
+      "meaningVi": "sự thích nghi",
+      "definitionEn": "the process of changing to suit new conditions",
+      "example": "Animals develop adaptations to survive in harsh environments.",
+      "collocation": "evolutionary adaptation",
+      "band": "5-6"
+    },
+    {
+      "word": "biodiversity",
+      "pos": "noun",
+      "ipa": "/ˌbaɪoʊdaɪˈvɜːrsɪti/",
+      "meaningVi": "đa dạng sinh học",
+      "definitionEn": "the variety of plant and animal life in a particular habitat",
+      "example": "Tropical rainforests support high levels of biodiversity.",
+      "collocation": "biodiversity loss",
+      "band": "6-7"
+    },
+    {
+      "word": "conservation",
+      "pos": "noun",
+      "ipa": "/ˌkɒnsərˈveɪʃən/",
+      "meaningVi": "bảo tồn",
+      "definitionEn": "the protection of natural resources and wildlife",
+      "example": "Conservation efforts have helped save several species from extinction.",
+      "collocation": "wildlife conservation",
+      "band": "6-7"
+    },
+    {
+      "word": "ecosystem",
+      "pos": "noun",
+      "ipa": "/ˈiːkoʊˌsɪstəm/",
+      "meaningVi": "hệ sinh thái",
+      "definitionEn": "a community of interacting organisms and their physical environment",
+      "example": "A healthy ecosystem provides essential services for human beings.",
+      "collocation": "fragile ecosystem",
+      "band": "6-7"
+    },
+    {
+      "word": "endangered",
+      "pos": "adjective",
+      "ipa": "/ɪnˈdeɪndʒərd/",
+      "meaningVi": "có nguy cơ tuyệt chủng",
+      "definitionEn": "at risk of becoming extinct",
+      "example": "The giant panda is no longer considered endangered.",
+      "collocation": "endangered species",
+      "band": "6-7"
+    },
+    {
+      "word": "deforestation",
+      "pos": "noun",
+      "ipa": "/diːˌfɒrɪˈsteɪʃən/",
+      "meaningVi": "phá rừng",
+      "definitionEn": "the clearing of forests for other uses",
+      "example": "Deforestation destroys the habitat of countless animals.",
+      "collocation": "rampant deforestation",
+      "band": "6-7"
+    },
+    {
+      "word": "poacher",
+      "pos": "noun",
+      "ipa": "/ˈpoʊtʃər/",
+      "meaningVi": "kẻ săn trộm",
+      "definitionEn": "a person who hunts illegally",
+      "example": "Poachers kill rhinos for their horns.",
+      "collocation": "poacher activity",
+      "band": "6-7"
+    },
+    {
+      "word": "sanctuary",
+      "pos": "noun",
+      "ipa": "/ˈsæŋktʃuˌɛri/",
+      "meaningVi": "khu bảo tồn",
+      "definitionEn": "a place where wildlife is protected",
+      "example": "The sanctuary provides a safe haven for injured animals.",
+      "collocation": "wildlife sanctuary",
+      "band": "6-7"
+    },
+    {
+      "word": "threatened",
+      "pos": "adjective",
+      "ipa": "/ˈθrɛtənd/",
+      "meaningVi": "bị đe dọa",
+      "definitionEn": "likely to become endangered in the near future",
+      "example": "The IUCN lists this species as threatened.",
+      "collocation": "threatened species",
+      "band": "6-7"
+    },
+    {
+      "word": "captive breeding",
+      "pos": "noun",
+      "ipa": "/ˈkæptɪv ˈbriːdɪŋ/",
+      "meaningVi": "nhân giống trong điều kiện nuôi nhốt",
+      "definitionEn": "breeding of animals in controlled environments to help preserve species",
+      "example": "Captive breeding programs have been successful for the California condor.",
+      "collocation": "captive breeding program",
+      "band": "7-8"
+    },
+    {
+      "word": "wildlife reserve",
+      "pos": "noun",
+      "ipa": "/ˈwaɪldlaɪf rɪˈzɜːrv/",
+      "meaningVi": "khu dự trữ động vật hoang dã",
+      "definitionEn": "an area set aside for the protection of wild animals",
+      "example": "The wildlife reserve covers thousands of hectares.",
+      "collocation": "wildlife reserve area",
+      "band": "7-8"
+    },
+    {
+      "word": "invasive species",
+      "pos": "noun",
+      "ipa": "/ɪnˈveɪsɪv ˈspiːʃiːz/",
+      "meaningVi": "loài xâm lấn",
+      "definitionEn": "non-native species that cause harm to the ecosystem",
+      "example": "Invasive species often outcompete native wildlife.",
+      "collocation": "invasive species control",
+      "band": "7-8"
+    },
+    {
+      "word": "conservationist",
+      "pos": "noun",
+      "ipa": "/ˌkɒnsərˈveɪʃənɪst/",
+      "meaningVi": "nhà bảo tồn",
+      "definitionEn": "a person who works to protect the environment",
+      "example": "Conservationists advocate for stricter wildlife protection laws.",
+      "collocation": "dedicated conservationist",
+      "band": "7-8"
+    },
+    {
+      "word": "ecological balance",
+      "pos": "noun",
+      "ipa": "/ˌiːkəˈlɒdʒɪkəl ˈbæləns/",
+      "meaningVi": "cân bằng sinh thái",
+      "definitionEn": "a state of equilibrium in an ecosystem",
+      "example": "Human activities can disrupt the ecological balance.",
+      "collocation": "maintain ecological balance",
+      "band": "7-8"
+    },
+    {
+      "word": "vulnerable",
+      "pos": "adjective",
+      "ipa": "/ˈvʌlnərəbəl/",
+      "meaningVi": "dễ bị tổn thương, dễ tuyệt chủng",
+      "definitionEn": "at risk of becoming endangered",
+      "example": "The species is classified as vulnerable on the IUCN Red List.",
+      "collocation": "vulnerable species",
+      "band": "7-8"
+    },
+    {
+      "word": "anthropogenic",
+      "pos": "adjective",
+      "ipa": "/ˌænθrəpoʊˈdʒɛnɪk/",
+      "meaningVi": "do con người gây ra",
+      "definitionEn": "caused or influenced by humans",
+      "example": "Anthropogenic factors are the main cause of biodiversity loss.",
+      "collocation": "anthropogenic impact",
+      "band": "8+"
+    },
+    {
+      "word": "extirpation",
+      "pos": "noun",
+      "ipa": "/ˌɛkstərˈpeɪʃən/",
+      "meaningVi": "sự tuyệt chủng cục bộ",
+      "definitionEn": "the local extinction of a species in a specific area",
+      "example": "The extirpation of wolves from the region disrupted the food chain.",
+      "collocation": "local extirpation",
+      "band": "8+"
+    },
+    {
+      "word": "wildlife corridor",
+      "pos": "noun",
+      "ipa": "/ˈwaɪldlaɪf ˈkɔːrɪdɔːr/",
+      "meaningVi": "hành lang động vật hoang dã",
+      "definitionEn": "a strip of habitat connecting isolated populations",
+      "example": "Wildlife corridors help animals move between fragmented habitats.",
+      "collocation": "establish wildlife corridors",
+      "band": "8+"
+    },
+    {
+      "word": "amphibian",
+      "pos": "noun",
+      "ipa": "/æmˈfɪb.i.ən/",
+      "meaningVi": "động vật lưỡng cư",
+      "definitionEn": "a cold-blooded vertebrate animal that can live both in water and on land, such as frogs and salamanders.",
+      "example": "Amphibians are highly sensitive to environmental changes, making them excellent bioindicators.",
+      "collocation": "amphibian population",
+      "band": "5-6"
+    },
+    {
+      "word": "aquatic",
+      "pos": "adjective",
+      "ipa": "/əˈkwæt.ɪk/",
+      "meaningVi": "sống dưới nước",
+      "definitionEn": "living or growing in water.",
+      "example": "Aquatic ecosystems, such as coral reefs, support a vast array of marine life.",
+      "collocation": "aquatic habitat",
+      "band": "6-7"
+    },
+    {
+      "word": "arboreal",
+      "pos": "adjective",
+      "ipa": "/ɑːrˈbɔːr.i.əl/",
+      "meaningVi": "sống trên cây",
+      "definitionEn": "living in trees.",
+      "example": "Arboreal animals, like monkeys and sloths, have strong limbs for climbing.",
+      "collocation": "arboreal mammal",
+      "band": "7-8"
+    },
+    {
+      "word": "avian",
+      "pos": "adjective",
+      "ipa": "/ˈeɪ.vi.ən/",
+      "meaningVi": "thuộc về chim",
+      "definitionEn": "relating to birds.",
+      "example": "Avian species exhibit a wide range of migratory behaviours.",
+      "collocation": "avian influenza",
+      "band": "7-8"
+    },
+    {
+      "word": "breed",
+      "pos": "verb",
+      "ipa": "/briːd/",
+      "meaningVi": "sinh sản, gây giống",
+      "definitionEn": "to produce offspring.",
+      "example": "Many birds breed in the spring to take advantage of abundant food resources.",
+      "collocation": "breed successfully",
+      "band": "5-6"
+    },
+    {
+      "word": "burrow",
+      "pos": "noun",
+      "ipa": "/ˈbɜːr.oʊ/",
+      "meaningVi": "hang, đào hang",
+      "definitionEn": "a hole or tunnel dug by an animal for shelter.",
+      "example": "Rabbits dig extensive burrow systems to protect themselves from predators.",
+      "collocation": "burrow entrance",
+      "band": "6-7"
+    },
+    {
+      "word": "camouflage",
+      "pos": "noun",
+      "ipa": "/ˈkæm.ə.flɑːʒ/",
+      "meaningVi": "ngụy trang",
+      "definitionEn": "the natural coloring or form that allows an animal to blend in with its surroundings.",
+      "example": "The chameleon's ability to change its skin colour provides excellent camouflage.",
+      "collocation": "camouflage pattern",
+      "band": "6-7"
+    },
+    {
+      "word": "carnivore",
+      "pos": "noun",
+      "ipa": "/ˈkɑːr.nɪ.vɔːr/",
+      "meaningVi": "động vật ăn thịt",
+      "definitionEn": "an animal that feeds on other animals.",
+      "example": "Lions are apex carnivores that play a crucial role in controlling prey populations.",
+      "collocation": "top carnivore",
+      "band": "6-7"
+    },
+    {
+      "word": "diurnal",
+      "pos": "adjective",
+      "ipa": "/daɪˈɜːr.nəl/",
+      "meaningVi": "hoạt động ban ngày",
+      "definitionEn": "active during the day.",
+      "example": "Diurnal animals, such as most songbirds, rely on daylight for foraging.",
+      "collocation": "diurnal species",
+      "band": "7-8"
+    },
+    {
+      "word": "fauna",
+      "pos": "noun",
+      "ipa": "/ˈfɔː.nə/",
+      "meaningVi": "hệ động vật",
+      "definitionEn": "the animals of a particular region, habitat, or geological period.",
+      "example": "The fauna of the Amazon rainforest is incredibly diverse.",
+      "collocation": "native fauna",
+      "band": "6-7"
+    },
+    {
+      "word": "fledgling",
+      "pos": "noun",
+      "ipa": "/ˈfledʒ.lɪŋ/",
+      "meaningVi": "chim non mới tập bay",
+      "definitionEn": "a young bird that has just developed feathers and is learning to fly.",
+      "example": "Fledglings often leave the nest before they are fully capable of flight.",
+      "collocation": "fledgling bird",
+      "band": "7-8"
+    },
+    {
+      "word": "flock",
+      "pos": "noun",
+      "ipa": "/flɒk/",
+      "meaningVi": "đàn (chim, cừu)",
+      "definitionEn": "a group of birds or sheep.",
+      "example": "A flock of geese flew south for the winter.",
+      "collocation": "flock of sheep",
+      "band": "5-6"
+    },
+    {
+      "word": "hatchling",
+      "pos": "noun",
+      "ipa": "/ˈhætʃ.lɪŋ/",
+      "meaningVi": "con non mới nở",
+      "definitionEn": "a newly hatched animal, especially a reptile or bird.",
+      "example": "Sea turtle hatchlings instinctively crawl towards the ocean after emerging from their nests.",
+      "collocation": "hatchling survival rate",
+      "band": "7-8"
+    },
+    {
+      "word": "herbivore",
+      "pos": "noun",
+      "ipa": "/ˈhɜːr.bɪ.vɔːr/",
+      "meaningVi": "động vật ăn cỏ",
+      "definitionEn": "an animal that feeds on plants.",
+      "example": "Herbivores such as deer and rabbits have digestive systems adapted to break down cellulose.",
+      "collocation": "large herbivore",
+      "band": "6-7"
+    },
+    {
+      "word": "herd",
+      "pos": "noun",
+      "ipa": "/hɜːrd/",
+      "meaningVi": "bầy đàn (động vật có vú lớn)",
+      "definitionEn": "a group of animals, especially large mammals, that live together.",
+      "example": "A herd of elephants can travel long distances in search of water.",
+      "collocation": "herd of cattle",
+      "band": "5-6"
+    },
+    {
+      "word": "hibernate",
+      "pos": "verb",
+      "ipa": "/ˈhaɪ.bər.neɪt/",
+      "meaningVi": "ngủ đông",
+      "definitionEn": "to spend the winter in a dormant state.",
+      "example": "Some bears hibernate for several months, relying on stored body fat.",
+      "collocation": "hibernate during winter",
+      "band": "6-7"
+    },
+    {
+      "word": "mammal",
+      "pos": "noun",
+      "ipa": "/ˈmæm.əl/",
+      "meaningVi": "động vật có vú",
+      "definitionEn": "a warm-blooded vertebrate animal that has hair or fur and feeds its young with milk.",
+      "example": "Mammals are characterized by their ability to regulate body temperature internally.",
+      "collocation": "marine mammal",
+      "band": "5-6"
+    },
+    {
+      "word": "molt",
+      "pos": "verb",
+      "ipa": "/moʊlt/",
+      "meaningVi": "lột xác, thay lông",
+      "definitionEn": "to shed feathers, hair, or skin to make way for new growth.",
+      "example": "Birds molt their feathers annually to maintain flight efficiency.",
+      "collocation": "molt period",
+      "band": "7-8"
+    },
+    {
+      "word": "nocturnal",
+      "pos": "adjective",
+      "ipa": "/nɒkˈtɜːr.nəl/",
+      "meaningVi": "hoạt động về đêm",
+      "definitionEn": "active during the night.",
+      "example": "Many nocturnal animals, like owls and bats, have evolved enhanced senses of hearing and vision.",
+      "collocation": "nocturnal creature",
+      "band": "6-7"
+    },
+    {
+      "word": "offspring",
+      "pos": "noun",
+      "ipa": "/ˈɒf.sprɪŋ/",
+      "meaningVi": "con non, hậu duệ",
+      "definitionEn": "the young of an animal.",
+      "example": "Parental care is crucial for the survival of offspring in many mammalian species.",
+      "collocation": "raise offspring",
+      "band": "6-7"
+    },
+    {
+      "word": "omnivore",
+      "pos": "noun",
+      "ipa": "/ˈɒm.nɪ.vɔːr/",
+      "meaningVi": "động vật ăn tạp",
+      "definitionEn": "an animal that eats both plants and animals.",
+      "example": "Bears are omnivores, consuming berries, fish, and small mammals.",
+      "collocation": "opportunistic omnivore",
+      "band": "6-7"
+    },
+    {
+      "word": "pack",
+      "pos": "noun",
+      "ipa": "/pæk/",
+      "meaningVi": "bầy (sói, chó hoang)",
+      "definitionEn": "a group of wild animals, especially wolves, that hunt together.",
+      "example": "Wolves hunt in packs to take down prey larger than themselves.",
+      "collocation": "pack of wolves",
+      "band": "5-6"
+    },
+    {
+      "word": "reptile",
+      "pos": "noun",
+      "ipa": "/ˈrep.taɪl/",
+      "meaningVi": "bò sát",
+      "definitionEn": "a cold-blooded vertebrate animal of a class that includes snakes, lizards, crocodiles, turtles, etc.",
+      "example": "Reptiles are ectothermic and often bask in the sun to regulate their body temperature.",
+      "collocation": "reptile habitat",
+      "band": "5-6"
+    },
+    {
+      "word": "shoal",
+      "pos": "noun",
+      "ipa": "/ʃoʊl/",
+      "meaningVi": "đàn cá",
+      "definitionEn": "a large group of fish swimming together.",
+      "example": "The shoal of herring moved swiftly to avoid the dolphins.",
+      "collocation": "shoal of fish",
+      "band": "7-8"
+    },
+    {
+      "word": "terrestrial",
+      "pos": "adjective",
+      "ipa": "/təˈres.tri.əl/",
+      "meaningVi": "sống trên cạn",
+      "definitionEn": "living on land.",
+      "example": "Terrestrial animals have evolved various adaptations to cope with arid environments.",
+      "collocation": "terrestrial ecosystem",
+      "band": "7-8"
+    }
+  ]
+}

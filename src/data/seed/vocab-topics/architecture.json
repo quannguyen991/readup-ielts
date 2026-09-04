@@ -1,0 +1,508 @@
+{
+  "slug": "architecture",
+  "name": "Architecture and Design",
+  "nameVi": "Kiến trúc",
+  "blurb": "Công trình, vật liệu, thiết kế",
+  "words": [
+    {
+      "word": "column",
+      "pos": "noun",
+      "ipa": "/ˈkɒl.əm/",
+      "meaningVi": "cột trụ",
+      "definitionEn": "a tall, vertical structure used as a support in a building or as an ornamental feature",
+      "example": "The ancient Greek temple featured massive marble columns that supported the roof.",
+      "collocation": "structural column",
+      "band": "5-6"
+    },
+    {
+      "word": "foundation",
+      "pos": "noun",
+      "ipa": "/faʊnˈdeɪ.ʃən/",
+      "meaningVi": "nền móng",
+      "definitionEn": "the lowest load-bearing part of a building, typically below ground level",
+      "example": "The architect ensured the foundation was reinforced to withstand earthquakes.",
+      "collocation": "concrete foundation",
+      "band": "5-6"
+    },
+    {
+      "word": "layout",
+      "pos": "noun",
+      "ipa": "/ˈleɪ.aʊt/",
+      "meaningVi": "bố trí, sơ đồ mặt bằng",
+      "definitionEn": "the way in which the parts of a building or structure are arranged",
+      "example": "The open-plan layout of the office encourages collaboration among employees.",
+      "collocation": "interior layout",
+      "band": "5-6"
+    },
+    {
+      "word": "skyscraper",
+      "pos": "noun",
+      "ipa": "/ˈskaɪˌskreɪ.pər/",
+      "meaningVi": "nhà chọc trời",
+      "definitionEn": "a very tall building with many floors",
+      "example": "The city's skyline is dominated by modern skyscrapers made of glass and steel.",
+      "collocation": "residential skyscraper",
+      "band": "5-6"
+    },
+    {
+      "word": "structure",
+      "pos": "noun",
+      "ipa": "/ˈstrʌk.tʃər/",
+      "meaningVi": "cấu trúc, công trình",
+      "definitionEn": "a building or other object constructed from several parts",
+      "example": "The steel structure of the bridge was designed to withstand high winds.",
+      "collocation": "steel structure",
+      "band": "5-6"
+    },
+    {
+      "word": "facade",
+      "pos": "noun",
+      "ipa": "/fəˈsɑːd/",
+      "meaningVi": "mặt tiền",
+      "definitionEn": "the front or outer face of a building",
+      "example": "The historic building's facade was carefully restored to preserve its original appearance.",
+      "collocation": "building facade",
+      "band": "6-7"
+    },
+    {
+      "word": "blueprint",
+      "pos": "noun",
+      "ipa": "/ˈbluː.prɪnt/",
+      "meaningVi": "bản thiết kế",
+      "definitionEn": "a detailed plan or drawing of a building or structure",
+      "example": "Before construction begins, the architect must finalize the blueprint for the project.",
+      "collocation": "architectural blueprint",
+      "band": "6-7"
+    },
+    {
+      "word": "sustainable",
+      "pos": "adjective",
+      "ipa": "/səˈsteɪ.nə.bəl/",
+      "meaningVi": "bền vững",
+      "definitionEn": "relating to design that minimizes environmental impact",
+      "example": "Sustainable architecture incorporates energy-efficient materials and renewable energy sources.",
+      "collocation": "sustainable design",
+      "band": "6-7"
+    },
+    {
+      "word": "renovation",
+      "pos": "noun",
+      "ipa": "/ˌren.əˈveɪ.ʃən/",
+      "meaningVi": "sự cải tạo",
+      "definitionEn": "the process of repairing and improving a building",
+      "example": "The renovation of the old factory into loft apartments attracted many young professionals.",
+      "collocation": "major renovation",
+      "band": "6-7"
+    },
+    {
+      "word": "aesthetic",
+      "pos": "adjective",
+      "ipa": "/esˈθet.ɪk/",
+      "meaningVi": "thẩm mỹ",
+      "definitionEn": "concerned with the beauty or artistic quality of a building",
+      "example": "The aesthetic appeal of the house was enhanced by its large windows and natural stone walls.",
+      "collocation": "aesthetic value",
+      "band": "6-7"
+    },
+    {
+      "word": "dome",
+      "pos": "noun",
+      "ipa": "/doʊm/",
+      "meaningVi": "mái vòm",
+      "definitionEn": "a rounded vault forming the roof of a building",
+      "example": "The cathedral's impressive dome can be seen from miles away.",
+      "collocation": "domed roof",
+      "band": "6-7"
+    },
+    {
+      "word": "symmetry",
+      "pos": "noun",
+      "ipa": "/ˈsɪm.ɪ.tri/",
+      "meaningVi": "sự đối xứng",
+      "definitionEn": "the quality of being made up of exactly similar parts facing each other",
+      "example": "The symmetry of the building's design gives it a sense of balance and harmony.",
+      "collocation": "symmetrical design",
+      "band": "6-7"
+    },
+    {
+      "word": "infrastructure",
+      "pos": "noun",
+      "ipa": "/ˈɪn.frə.strʌk.tʃər/",
+      "meaningVi": "cơ sở hạ tầng",
+      "definitionEn": "the basic physical systems and structures needed for a city or building to function",
+      "example": "Urban infrastructure includes roads, water supply, and sewage systems.",
+      "collocation": "urban infrastructure",
+      "band": "6-7"
+    },
+    {
+      "word": "landmark",
+      "pos": "noun",
+      "ipa": "/ˈlænd.mɑːrk/",
+      "meaningVi": "công trình tiêu biểu",
+      "definitionEn": "a building or structure that is easily recognizable and historically significant",
+      "example": "The Sydney Opera House is one of the most famous landmarks in the world.",
+      "collocation": "historic landmark",
+      "band": "6-7"
+    },
+    {
+      "word": "beam",
+      "pos": "noun",
+      "ipa": "/biːm/",
+      "meaningVi": "dầm, xà",
+      "definitionEn": "a long, sturdy piece of timber or metal used as a horizontal support in a building",
+      "example": "The wooden beams in the ceiling were exposed to create a rustic atmosphere.",
+      "collocation": "steel beam",
+      "band": "6-7"
+    },
+    {
+      "word": "arch",
+      "pos": "noun",
+      "ipa": "/ɑːrtʃ/",
+      "meaningVi": "vòm",
+      "definitionEn": "a curved structure spanning an opening, often used as a decorative or supportive element",
+      "example": "The Roman arch is a classic architectural feature still used in modern buildings.",
+      "collocation": "triumphal arch",
+      "band": "7-8"
+    },
+    {
+      "word": "prefabricated",
+      "pos": "adjective",
+      "ipa": "/ˌpriːˈfæb.rɪ.keɪ.tɪd/",
+      "meaningVi": "đúc sẵn, lắp ghép",
+      "definitionEn": "manufactured in advance in sections that can be easily transported and assembled on site",
+      "example": "Prefabricated houses are becoming more popular due to their lower cost and faster construction time.",
+      "collocation": "prefabricated components",
+      "band": "7-8"
+    },
+    {
+      "word": "heritage",
+      "pos": "noun",
+      "ipa": "/ˈher.ɪ.tɪdʒ/",
+      "meaningVi": "di sản",
+      "definitionEn": "buildings and structures of historical or cultural importance",
+      "example": "The city's heritage buildings are protected by law to prevent demolition.",
+      "collocation": "cultural heritage",
+      "band": "7-8"
+    },
+    {
+      "word": "zoning",
+      "pos": "noun",
+      "ipa": "/ˈzoʊ.nɪŋ/",
+      "meaningVi": "phân vùng",
+      "definitionEn": "the division of land into areas for different uses, such as residential, commercial, or industrial",
+      "example": "Zoning regulations determine what types of buildings can be constructed in each district.",
+      "collocation": "zoning laws",
+      "band": "7-8"
+    },
+    {
+      "word": "skyline",
+      "pos": "noun",
+      "ipa": "/ˈskaɪ.laɪn/",
+      "meaningVi": "đường chân trời (của thành phố)",
+      "definitionEn": "the outline of buildings and structures against the sky",
+      "example": "The new skyscraper will dramatically alter the city's skyline.",
+      "collocation": "city skyline",
+      "band": "7-8"
+    },
+    {
+      "word": "ornate",
+      "pos": "adjective",
+      "ipa": "/ɔːrˈneɪt/",
+      "meaningVi": "trang trí cầu kỳ",
+      "definitionEn": "decorated with many intricate details, often in a lavish style",
+      "example": "The ornate ceiling of the ballroom was covered in gold leaf and intricate frescoes.",
+      "collocation": "ornate decoration",
+      "band": "7-8"
+    },
+    {
+      "word": "minimalist",
+      "pos": "adjective",
+      "ipa": "/ˈmɪn.ɪ.mə.lɪst/",
+      "meaningVi": "tối giản",
+      "definitionEn": "using simple, clean lines and a lack of unnecessary decoration",
+      "example": "Minimalist architecture emphasizes functionality and simplicity over ornamentation.",
+      "collocation": "minimalist design",
+      "band": "7-8"
+    },
+    {
+      "word": "edifice",
+      "pos": "noun",
+      "ipa": "/ˈed.ɪ.fɪs/",
+      "meaningVi": "tòa nhà đồ sộ",
+      "definitionEn": "a large, imposing building",
+      "example": "The grand edifice of the parliament building symbolizes the nation's power and history.",
+      "collocation": "imposing edifice",
+      "band": "8+"
+    },
+    {
+      "word": "cantilever",
+      "pos": "noun",
+      "ipa": "/ˈkæn.tɪ.liː.vər/",
+      "meaningVi": "công xôn",
+      "definitionEn": "a long projecting beam or structure fixed at one end only, often used in modern architecture",
+      "example": "The cantilever of the balcony allows it to extend outward without visible supports.",
+      "collocation": "cantilever design",
+      "band": "8+"
+    },
+    {
+      "word": "vernacular",
+      "pos": "adjective",
+      "ipa": "/vərˈnæk.jə.lər/",
+      "meaningVi": "(kiến trúc) bản địa",
+      "definitionEn": "architecture that uses local materials and traditional styles, reflecting the culture of a region",
+      "example": "Vernacular architecture is often more sustainable because it adapts to the local climate and resources.",
+      "collocation": "vernacular architecture",
+      "band": "8+"
+    },
+    {
+      "word": "atrium",
+      "pos": "noun",
+      "ipa": "/ˈeɪtriəm/",
+      "meaningVi": "giếng trời, không gian mở trung tâm",
+      "definitionEn": "a large open central space in a building, often with a glass roof",
+      "example": "The hotel's atrium features a stunning glass ceiling and tropical plants.",
+      "collocation": "atrium lobby",
+      "band": "6-7"
+    },
+    {
+      "word": "partition",
+      "pos": "noun",
+      "ipa": "/pɑːrˈtɪʃən/",
+      "meaningVi": "vách ngăn",
+      "definitionEn": "a thin wall or screen used to divide a room",
+      "example": "The office uses glass partitions to create private workstations.",
+      "collocation": "partition wall",
+      "band": "6-7"
+    },
+    {
+      "word": "cladding",
+      "pos": "noun",
+      "ipa": "/ˈklædɪŋ/",
+      "meaningVi": "lớp ốp (ngoài) của tòa nhà",
+      "definitionEn": "a material applied to the outside of a building to provide insulation or protection",
+      "example": "The building's aluminum cladding gives it a modern appearance.",
+      "collocation": "metal cladding",
+      "band": "7-8"
+    },
+    {
+      "word": "buttress",
+      "pos": "noun",
+      "ipa": "/ˈbʌtrəs/",
+      "meaningVi": "trụ chống, trụ bay",
+      "definitionEn": "a projecting support built against a wall to strengthen it",
+      "example": "The Gothic cathedral has flying buttresses that support the high walls.",
+      "collocation": "flying buttress",
+      "band": "7-8"
+    },
+    {
+      "word": "load-bearing",
+      "pos": "adjective",
+      "ipa": "/ˈloʊd ˌberɪŋ/",
+      "meaningVi": "chịu lực",
+      "definitionEn": "supporting the weight of a structure",
+      "example": "Removing a load-bearing wall without proper reinforcement can be dangerous.",
+      "collocation": "load-bearing wall",
+      "band": "6-7"
+    },
+    {
+      "word": "open-plan",
+      "pos": "adjective",
+      "ipa": "/ˈoʊpən plæn/",
+      "meaningVi": "không gian mở, ít vách ngăn",
+      "definitionEn": "having a large open area with few or no walls",
+      "example": "Many modern offices adopt an open-plan layout to encourage collaboration.",
+      "collocation": "open-plan office",
+      "band": "5-6"
+    },
+    {
+      "word": "retrofitting",
+      "pos": "noun",
+      "ipa": "/ˈretroʊfɪtɪŋ/",
+      "meaningVi": "cải tạo, trang bị thêm hệ thống mới cho công trình cũ",
+      "definitionEn": "the process of adding new features or systems to an existing building",
+      "example": "Retrofitting older buildings with energy-efficient systems is a key aspect of sustainable architecture.",
+      "collocation": "seismic retrofitting",
+      "band": "8+"
+    },
+    {
+      "word": "spatial",
+      "pos": "adjective",
+      "ipa": "/ˈspeɪʃəl/",
+      "meaningVi": "thuộc về không gian",
+      "definitionEn": "relating to space",
+      "example": "The architect's spatial arrangement of rooms ensures a smooth flow of movement.",
+      "collocation": "spatial planning",
+      "band": "6-7"
+    },
+    {
+      "word": "insulation",
+      "pos": "noun",
+      "ipa": "/ˌɪnsəˈleɪʃən/",
+      "meaningVi": "vật liệu cách nhiệt/cách âm",
+      "definitionEn": "material used to prevent heat, sound, or electricity from passing through",
+      "example": "Proper insulation in walls reduces energy consumption significantly.",
+      "collocation": "thermal insulation",
+      "band": "6-7"
+    },
+    {
+      "word": "ventilation",
+      "pos": "noun",
+      "ipa": "/ˌventɪˈleɪʃən/",
+      "meaningVi": "sự thông gió",
+      "definitionEn": "the provision of fresh air to a space",
+      "example": "Good ventilation is essential in high-rise buildings to maintain air quality.",
+      "collocation": "natural ventilation",
+      "band": "6-7"
+    },
+    {
+      "word": "ergonomics",
+      "pos": "noun",
+      "ipa": "/ˌɜːrɡəˈnɒmɪks/",
+      "meaningVi": "công thái học",
+      "definitionEn": "the study of designing equipment and spaces for efficient and comfortable human use",
+      "example": "The design of the kitchen prioritizes ergonomics, with countertops at a comfortable height.",
+      "collocation": "office ergonomics",
+      "band": "7-8"
+    },
+    {
+      "word": "modular",
+      "pos": "adjective",
+      "ipa": "/ˈmɒdʒələr/",
+      "meaningVi": "mô-đun, dạng lắp ghép",
+      "definitionEn": "consisting of separate units that can be combined or arranged",
+      "example": "Modular construction allows for faster building assembly and customization.",
+      "collocation": "modular design",
+      "band": "7-8"
+    },
+    {
+      "word": "reinforced concrete",
+      "pos": "noun",
+      "ipa": "/ˌriːɪnˈfɔːrst ˈkɒnkriːt/",
+      "meaningVi": "bê tông cốt thép",
+      "definitionEn": "concrete with embedded steel bars for added strength",
+      "example": "Reinforced concrete is widely used in high-rise buildings due to its high load-bearing capacity.",
+      "collocation": "reinforced concrete frame",
+      "band": "7-8"
+    },
+    {
+      "word": "seismic",
+      "pos": "adjective",
+      "ipa": "/ˈsaɪzmɪk/",
+      "meaningVi": "thuộc về động đất",
+      "definitionEn": "relating to earthquakes",
+      "example": "Buildings in seismic zones must be designed to withstand strong ground motions.",
+      "collocation": "seismic design",
+      "band": "8+"
+    },
+    {
+      "word": "landscaping",
+      "pos": "noun",
+      "ipa": "/ˈlændskeɪpɪŋ/",
+      "meaningVi": "cảnh quan, thiết kế cảnh quan",
+      "definitionEn": "the process of improving the appearance of an area of land by planting trees, shrubs, etc.",
+      "example": "The landscaping around the office complex includes a pond and native plants.",
+      "collocation": "landscaping design",
+      "band": "5-6"
+    },
+    {
+      "word": "skylight",
+      "pos": "noun",
+      "ipa": "/ˈskaɪlaɪt/",
+      "meaningVi": "giếng trời, cửa sổ trần",
+      "definitionEn": "a window in a roof or ceiling",
+      "example": "The skylight in the living room floods the space with natural light.",
+      "collocation": "skylight window",
+      "band": "5-6"
+    },
+    {
+      "word": "foyer",
+      "pos": "noun",
+      "ipa": "/ˈfɔɪeɪ/",
+      "meaningVi": "tiền sảnh, phòng chờ",
+      "definitionEn": "an entrance hall or lobby",
+      "example": "The hotel's grand foyer is decorated with marble floors and chandeliers.",
+      "collocation": "foyer area",
+      "band": "5-6"
+    },
+    {
+      "word": "colonnade",
+      "pos": "noun",
+      "ipa": "/ˌkɒləˈneɪd/",
+      "meaningVi": "hàng cột, dãy cột",
+      "definitionEn": "a row of evenly spaced columns supporting a roof",
+      "example": "The colonnade along the front of the building provides a shaded walkway.",
+      "collocation": "colonnaded walkway",
+      "band": "7-8"
+    },
+    {
+      "word": "pediment",
+      "pos": "noun",
+      "ipa": "/ˈpedɪmənt/",
+      "meaningVi": "trán tường (hình tam giác) kiểu cổ điển",
+      "definitionEn": "a triangular gable above a doorway or window in classical architecture",
+      "example": "The pediment of the bank building is adorned with a sculpture.",
+      "collocation": "pediment sculpture",
+      "band": "8+"
+    },
+    {
+      "word": "balcony",
+      "pos": "noun",
+      "ipa": "/ˈbælkəni/",
+      "meaningVi": "ban công",
+      "definitionEn": "a platform projecting from the wall of a building",
+      "example": "The apartment's balcony offers a panoramic view of the city.",
+      "collocation": "balcony railing",
+      "band": "5-6"
+    },
+    {
+      "word": "elevator",
+      "pos": "noun",
+      "ipa": "/ˈelɪveɪtər/",
+      "meaningVi": "thang máy",
+      "definitionEn": "a lift for moving people or goods between floors",
+      "example": "The building has four elevators to handle the high volume of occupants.",
+      "collocation": "elevator shaft",
+      "band": "5-6"
+    },
+    {
+      "word": "staircase",
+      "pos": "noun",
+      "ipa": "/ˈsterkeɪs/",
+      "meaningVi": "cầu thang",
+      "definitionEn": "a set of stairs",
+      "example": "The grand staircase in the mansion is made of marble.",
+      "collocation": "spiral staircase",
+      "band": "5-6"
+    },
+    {
+      "word": "conservatory",
+      "pos": "noun",
+      "ipa": "/kənˈsɜːrvətɔːri/",
+      "meaningVi": "nhà kính, phòng kính trồng cây",
+      "definitionEn": "a room with glass walls and roof for growing plants",
+      "example": "The conservatory is attached to the main house and serves as a winter garden.",
+      "collocation": "conservatory roof",
+      "band": "6-7"
+    },
+    {
+      "word": "penthouse",
+      "pos": "noun",
+      "ipa": "/ˈpenthaʊs/",
+      "meaningVi": "căn hộ áp mái (cao cấp)",
+      "definitionEn": "a luxurious apartment on the top floor of a building",
+      "example": "The penthouse features a private rooftop terrace and floor-to-ceiling windows.",
+      "collocation": "penthouse suite",
+      "band": "6-7"
+    },
+    {
+      "word": "mezzanine",
+      "pos": "noun",
+      "ipa": "/ˈmezəniːn/",
+      "meaningVi": "gác lửng, tầng lửng",
+      "definitionEn": "a low-ceilinged floor between two main floors",
+      "example": "The library has a mezzanine level that overlooks the main reading room.",
+      "collocation": "mezzanine floor",
+      "band": "6-7"
+    }
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "slug": "risk-safety",
+  "name": "Risk and Safety",
+  "nameVi": "Rủi ro và an toàn",
+  "blurb": "Nguy hiểm, phòng ngừa, bảo hiểm",
+  "words": [
+    {
+      "word": "risk",
+      "pos": "noun",
+      "ipa": "/rɪsk/",
+      "meaningVi": "rủi ro",
+      "definitionEn": "the possibility of something bad happening",
+      "example": "Investors should carefully evaluate the risk associated with volatile markets.",
+      "collocation": "high risk",
+      "band": "5-6"
+    },
+    {
+      "word": "danger",
+      "pos": "noun",
+      "ipa": "/ˈdeɪndʒər/",
+      "meaningVi": "mối nguy hiểm",
+      "definitionEn": "the possibility of harm or death",
+      "example": "The danger of using outdated electrical equipment cannot be overlooked.",
+      "collocation": "imminent danger",
+      "band": "5-6"
+    },
+    {
+      "word": "safe",
+      "pos": "adjective",
+      "ipa": "/seɪf/",
+      "meaningVi": "an toàn",
+      "definitionEn": "protected from danger or risk",
+      "example": "It is essential to keep the workplace safe for all employees.",
+      "collocation": "safe environment",
+      "band": "5-6"
+    },
+    {
+      "word": "accident",
+      "pos": "noun",
+      "ipa": "/ˈæksɪdənt/",
+      "meaningVi": "tai nạn",
+      "definitionEn": "an unexpected event that causes damage or injury",
+      "example": "The report highlighted the need for stricter regulations to prevent road accidents.",
+      "collocation": "industrial accident",
+      "band": "5-6"
+    },
+    {
+      "word": "injury",
+      "pos": "noun",
+      "ipa": "/ˈɪndʒəri/",
+      "meaningVi": "thương tích",
+      "definitionEn": "physical harm or damage to a person's body",
+      "example": "Wearing appropriate protective gear can significantly reduce the risk of injury.",
+      "collocation": "serious injury",
+      "band": "5-6"
+    },
+    {
+      "word": "hazard",
+      "pos": "noun",
+      "ipa": "/ˈhæzərd/",
+      "meaningVi": "mối nguy hại",
+      "definitionEn": "a source of danger or potential harm",
+      "example": "Chemical spills are a major hazard in industrial environments.",
+      "collocation": "health hazard",
+      "band": "6-7"
+    },
+    {
+      "word": "precaution",
+      "pos": "noun",
+      "ipa": "/prɪˈkɔːʃən/",
+      "meaningVi": "biện pháp phòng ngừa",
+      "definitionEn": "a measure taken in advance to prevent something dangerous or unpleasant",
+      "example": "All workers must follow the safety precautions before entering the construction site.",
+      "collocation": "take precaution",
+      "band": "6-7"
+    },
+    {
+      "word": "insurance",
+      "pos": "noun",
+      "ipa": "/ɪnˈʃʊrəns/",
+      "meaningVi": "bảo hiểm",
+      "definitionEn": "a financial arrangement that provides compensation for specific losses",
+      "example": "Having adequate insurance coverage is a crucial part of personal financial planning.",
+      "collocation": "health insurance",
+      "band": "6-7"
+    },
+    {
+      "word": "risk assessment",
+      "pos": "noun phrase",
+      "ipa": "/rɪsk əˈsɛsmənt/",
+      "meaningVi": "đánh giá rủi ro",
+      "definitionEn": "the process of identifying and evaluating potential risks",
+      "example": "A thorough risk assessment must be conducted before launching any new project.",
+      "collocation": "conduct a risk assessment",
+      "band": "6-7"
+    },
+    {
+      "word": "safety measure",
+      "pos": "noun phrase",
+      "ipa": "/ˈseɪfti ˈmɛʒər/",
+      "meaningVi": "biện pháp an toàn",
+      "definitionEn": "an action or procedure designed to prevent accidents or harm",
+      "example": "The company implemented strict safety measures to protect its employees.",
+      "collocation": "implement safety measures",
+      "band": "6-7"
+    },
+    {
+      "word": "preventive",
+      "pos": "adjective",
+      "ipa": "/prɪˈvɛntɪv/",
+      "meaningVi": "phòng ngừa",
+      "definitionEn": "intended to stop something undesirable from happening",
+      "example": "Preventive maintenance of machinery can reduce the likelihood of breakdowns.",
+      "collocation": "preventive action",
+      "band": "6-7"
+    },
+    {
+      "word": "exposure",
+      "pos": "noun",
+      "ipa": "/ɪkˈspoʊʒər/",
+      "meaningVi": "sự tiếp xúc (với nguy hiểm)",
+      "definitionEn": "the state of being subjected to a harmful substance or condition",
+      "example": "Prolonged exposure to loud noise can cause permanent hearing loss.",
+      "collocation": "occupational exposure",
+      "band": "6-7"
+    },
+    {
+      "word": "emergency",
+      "pos": "noun",
+      "ipa": "/ɪˈmɜːrdʒənsi/",
+      "meaningVi": "tình trạng khẩn cấp",
+      "definitionEn": "a serious, unexpected situation that requires immediate action",
+      "example": "The hospital has a well-trained team to handle any emergency.",
+      "collocation": "emergency response",
+      "band": "6-7"
+    },
+    {
+      "word": "disaster",
+      "pos": "noun",
+      "ipa": "/dɪˈzæstər/",
+      "meaningVi": "thảm họa",
+      "definitionEn": "a sudden event causing great damage or loss of life",
+      "example": "Natural disasters such as earthquakes and floods are often unpredictable.",
+      "collocation": "natural disaster",
+      "band": "6-7"
+    },
+    {
+      "word": "hazardous",
+      "pos": "adjective",
+      "ipa": "/ˈhæzərdəs/",
+      "meaningVi": "nguy hiểm, độc hại",
+      "definitionEn": "involving risk or danger, especially to health or safety",
+      "example": "Workers must wear protective suits when handling hazardous materials.",
+      "collocation": "hazardous waste",
+      "band": "6-7"
+    },
+    {
+      "word": "risk-taking",
+      "pos": "noun",
+      "ipa": "/ˈrɪsk ˌteɪkɪŋ/",
+      "meaningVi": "hành vi chấp nhận rủi ro",
+      "definitionEn": "the act of engaging in actions that involve potential danger or loss",
+      "example": "Excessive risk-taking in financial markets can lead to severe economic downturns.",
+      "collocation": "reckless risk-taking",
+      "band": "6-7"
+    },
+    {
+      "word": "vulnerability",
+      "pos": "noun",
+      "ipa": "/ˌvʌlnərəˈbɪləti/",
+      "meaningVi": "tính dễ bị tổn thương",
+      "definitionEn": "the quality of being susceptible to physical or emotional harm",
+      "example": "Cybersecurity measures aim to reduce the vulnerability of critical infrastructure.",
+      "collocation": "security vulnerability",
+      "band": "7-8"
+    },
+    {
+      "word": "mitigate",
+      "pos": "verb",
+      "ipa": "/ˈmɪtɪɡeɪt/",
+      "meaningVi": "giảm nhẹ, làm dịu",
+      "definitionEn": "to make something less severe or serious",
+      "example": "Governments should invest in early warning systems to mitigate the impact of floods.",
+      "collocation": "mitigate the risk",
+      "band": "7-8"
+    },
+    {
+      "word": "safeguard",
+      "pos": "verb",
+      "ipa": "/ˈseɪfɡɑːrd/",
+      "meaningVi": "bảo vệ, bảo đảm",
+      "definitionEn": "to protect something from harm or danger",
+      "example": "New regulations were introduced to safeguard public health.",
+      "collocation": "safeguard against",
+      "band": "7-8"
+    },
+    {
+      "word": "liability",
+      "pos": "noun",
+      "ipa": "/ˌlaɪəˈbɪləti/",
+      "meaningVi": "trách nhiệm pháp lý",
+      "definitionEn": "legal responsibility for something, especially for damage or injury",
+      "example": "Companies must carry liability insurance to cover potential lawsuits.",
+      "collocation": "product liability",
+      "band": "7-8"
+    },
+    {
+      "word": "precautionary",
+      "pos": "adjective",
+      "ipa": "/prɪˈkɔːʃəneri/",
+      "meaningVi": "mang tính phòng ngừa",
+      "definitionEn": "intended to prevent possible danger or trouble",
+      "example": "The authorities issued a precautionary warning about the approaching storm.",
+      "collocation": "precautionary measure",
+      "band": "7-8"
+    },
+    {
+      "word": "preparedness",
+      "pos": "noun",
+      "ipa": "/prɪˈpɛrɪdnəs/",
+      "meaningVi": "sự chuẩn bị sẵn sàng",
+      "definitionEn": "the state of being ready to deal with a potential emergency",
+      "example": "Disaster preparedness drills can save lives during a crisis.",
+      "collocation": "emergency preparedness",
+      "band": "7-8"
+    },
+    {
+      "word": "peril",
+      "pos": "noun",
+      "ipa": "/ˈpɛrəl/",
+      "meaningVi": "hiểm họa, nguy cơ lớn",
+      "definitionEn": "serious and immediate danger",
+      "example": "Many species are in peril of extinction due to habitat loss.",
+      "collocation": "in peril",
+      "band": "8+"
+    },
+    {
+      "word": "contingency",
+      "pos": "noun",
+      "ipa": "/kənˈtɪndʒənsi/",
+      "meaningVi": "tình huống dự phòng, kế hoạch dự phòng",
+      "definitionEn": "a possible future event that must be prepared for",
+      "example": "Every project should have a contingency plan in case of unexpected delays.",
+      "collocation": "contingency plan",
+      "band": "8+"
+    },
+    {
+      "word": "catastrophe",
+      "pos": "noun",
+      "ipa": "/kəˈtæstrəfi/",
+      "meaningVi": "thảm họa lớn, tai ương",
+      "definitionEn": "a sudden and widespread disaster causing great damage or suffering",
+      "example": "Climate change could trigger a global catastrophe if left unaddressed.",
+      "collocation": "environmental catastrophe",
+      "band": "8+"
+    },
+    {
+      "word": "threat",
+      "pos": "noun",
+      "ipa": "/θret/",
+      "meaningVi": "mối đe dọa",
+      "definitionEn": "a person or thing likely to cause damage or danger",
+      "example": "The growing threat of cyber attacks has forced companies to strengthen their network security.",
+      "collocation": "pose a threat",
+      "band": "5-6"
+    },
+    {
+      "word": "damage",
+      "pos": "noun",
+      "ipa": "/ˈdæmɪdʒ/",
+      "meaningVi": "thiệt hại",
+      "definitionEn": "physical harm that impairs the value, usefulness, or normal function of something",
+      "example": "The insurance policy covers damage caused by natural disasters such as floods and earthquakes.",
+      "collocation": "suffer damage",
+      "band": "5-6"
+    },
+    {
+      "word": "loss",
+      "pos": "noun",
+      "ipa": "/lɒs/",
+      "meaningVi": "tổn thất",
+      "definitionEn": "the fact or process of losing something or someone",
+      "example": "Businesses must calculate the potential loss of revenue if a major safety incident occurs.",
+      "collocation": "financial loss",
+      "band": "5-6"
+    },
+    {
+      "word": "crisis",
+      "pos": "noun",
+      "ipa": "/ˈkraɪsɪs/",
+      "meaningVi": "khủng hoảng",
+      "definitionEn": "a time of intense difficulty, danger, or uncertainty",
+      "example": "Effective communication is vital during a crisis to minimize panic and ensure public safety.",
+      "collocation": "crisis management",
+      "band": "5-6"
+    },
+    {
+      "word": "negligent",
+      "pos": "adjective",
+      "ipa": "/ˈneɡlɪdʒənt/",
+      "meaningVi": "cẩu thả, thiếu trách nhiệm",
+      "definitionEn": "failing to take proper care in doing something",
+      "example": "The court found the factory owner negligent for ignoring basic safety regulations.",
+      "collocation": "negligent behavior",
+      "band": "6-7"
+    },
+    {
+      "word": "compensate",
+      "pos": "verb",
+      "ipa": "/ˈkɒmpənseɪt/",
+      "meaningVi": "bồi thường",
+      "definitionEn": "to give someone something, typically money, in recognition of loss, suffering, or injury",
+      "example": "The airline agreed to compensate passengers for the delays caused by the technical failure.",
+      "collocation": "compensate for",
+      "band": "6-7"
+    },
+    {
+      "word": "comply",
+      "pos": "verb",
+      "ipa": "/kəmˈplaɪ/",
+      "meaningVi": "tuân thủ",
+      "definitionEn": "to act in accordance with a wish, command, or rule",
+      "example": "All employees must comply with the new workplace safety protocols to avoid penalties.",
+      "collocation": "comply with regulations",
+      "band": "6-7"
+    },
+    {
+      "word": "regulation",
+      "pos": "noun",
+      "ipa": "/ˌreɡjuˈleɪʃn/",
+      "meaningVi": "quy định",
+      "definitionEn": "a rule or directive made and maintained by an authority",
+      "example": "Strict health and safety regulations are enforced in construction sites to prevent accidents.",
+      "collocation": "safety regulation",
+      "band": "6-7"
+    },
+    {
+      "word": "protocol",
+      "pos": "noun",
+      "ipa": "/ˈprəʊtəkɒl/",
+      "meaningVi": "giao thức, quy trình",
+      "definitionEn": "a set of rules or procedures for a particular situation",
+      "example": "Emergency response teams must follow the established protocol when dealing with chemical spills.",
+      "collocation": "safety protocol",
+      "band": "6-7"
+    },
+    {
+      "word": "oversight",
+      "pos": "noun",
+      "ipa": "/ˈəʊvəsaɪt/",
+      "meaningVi": "sự giám sát",
+      "definitionEn": "the action of overseeing something; supervision",
+      "example": "Government oversight of food production ensures that products meet safety standards.",
+      "collocation": "regulatory oversight",
+      "band": "6-7"
+    },
+    {
+      "word": "inspection",
+      "pos": "noun",
+      "ipa": "/ɪnˈspekʃn/",
+      "meaningVi": "sự kiểm tra",
+      "definitionEn": "a careful examination of something for faults or defects",
+      "example": "Regular inspection of fire extinguishers is mandatory in all public buildings.",
+      "collocation": "carry out an inspection",
+      "band": "6-7"
+    },
+    {
+      "word": "surveillance",
+      "pos": "noun",
+      "ipa": "/sɜːˈveɪləns/",
+      "meaningVi": "sự giám sát (theo dõi)",
+      "definitionEn": "close observation of a person or place, especially for security purposes",
+      "example": "Surveillance cameras are installed in high-risk areas to deter criminal activity.",
+      "collocation": "surveillance system",
+      "band": "6-7"
+    },
+    {
+      "word": "contain",
+      "pos": "verb",
+      "ipa": "/kənˈteɪn/",
+      "meaningVi": "ngăn chặn",
+      "definitionEn": "to keep something harmful under control or within limits",
+      "example": "Firefighters worked for hours to contain the blaze and prevent it from spreading to nearby homes.",
+      "collocation": "contain the spread",
+      "band": "6-7"
+    },
+    {
+      "word": "evacuate",
+      "pos": "verb",
+      "ipa": "/ɪˈvækjueɪt/",
+      "meaningVi": "sơ tán",
+      "definitionEn": "to remove people from a dangerous place to a safe place",
+      "example": "Authorities decided to evacuate the coastal town ahead of the approaching hurricane.",
+      "collocation": "evacuate the area",
+      "band": "6-7"
+    },
+    {
+      "word": "resilient",
+      "pos": "adjective",
+      "ipa": "/rɪˈzɪliənt/",
+      "meaningVi": "có khả năng phục hồi",
+      "definitionEn": "able to recover quickly from difficult conditions",
+      "example": "A resilient infrastructure is essential for minimizing damage after a natural disaster.",
+      "collocation": "resilient system",
+      "band": "6-7"
+    },
+    {
+      "word": "adhere",
+      "pos": "verb",
+      "ipa": "/ədˈhɪər/",
+      "meaningVi": "tuân thủ chặt chẽ",
+      "definitionEn": "to stick to or follow a rule, plan, or standard",
+      "example": "Manufacturers must adhere to strict quality control standards to ensure product safety.",
+      "collocation": "adhere to guidelines",
+      "band": "6-7"
+    },
+    {
+      "word": "detect",
+      "pos": "verb",
+      "ipa": "/dɪˈtekt/",
+      "meaningVi": "phát hiện",
+      "definitionEn": "to discover or identify the presence of something",
+      "example": "Early warning systems can detect seismic activity and provide time for evacuation.",
+      "collocation": "detect a problem",
+      "band": "6-7"
+    },
+    {
+      "word": "respond",
+      "pos": "verb",
+      "ipa": "/rɪˈspɒnd/",
+      "meaningVi": "phản ứng, ứng phó",
+      "definitionEn": "to act in reaction to something",
+      "example": "Security personnel must be trained to respond quickly to any safety threat.",
+      "collocation": "respond to an emergency",
+      "band": "6-7"
+    },
+    {
+      "word": "scrutinize",
+      "pos": "verb",
+      "ipa": "/ˈskruːtɪnaɪz/",
+      "meaningVi": "xem xét kỹ lưỡng",
+      "definitionEn": "to examine or inspect closely and thoroughly",
+      "example": "The investigation panel will scrutinize the safety records of the company before issuing a report.",
+      "collocation": "scrutinize the evidence",
+      "band": "7-8"
+    },
+    {
+      "word": "coverage",
+      "pos": "noun",
+      "ipa": "/ˈkʌvərɪdʒ/",
+      "meaningVi": "phạm vi bảo hiểm",
+      "definitionEn": "the extent to which something is protected or included, especially in insurance",
+      "example": "Employees should check that their health insurance coverage includes occupational injuries.",
+      "collocation": "insurance coverage",
+      "band": "7-8"
+    },
+    {
+      "word": "indemnity",
+      "pos": "noun",
+      "ipa": "/ɪnˈdemnəti/",
+      "meaningVi": "sự bồi thường",
+      "definitionEn": "security or protection against a loss or other financial burden",
+      "example": "The contractor demanded an indemnity clause to protect against liability for workplace accidents.",
+      "collocation": "indemnity insurance",
+      "band": "7-8"
+    },
+    {
+      "word": "malpractice",
+      "pos": "noun",
+      "ipa": "/ˌmælˈpræktɪs/",
+      "meaningVi": "hành vi sai trái (hành nghề)",
+      "definitionEn": "improper or illegal professional conduct, especially by a doctor or lawyer",
+      "example": "Medical malpractice lawsuits often arise from a failure to follow standard safety procedures.",
+      "collocation": "medical malpractice",
+      "band": "8+"
+    },
+    {
+      "word": "litigation",
+      "pos": "noun",
+      "ipa": "/ˌlɪtɪˈɡeɪʃn/",
+      "meaningVi": "kiện tụng",
+      "definitionEn": "the process of taking legal action",
+      "example": "Companies often face costly litigation if they neglect workplace safety obligations.",
+      "collocation": "litigation process",
+      "band": "8+"
+    },
+    {
+      "word": "quarantine",
+      "pos": "noun",
+      "ipa": "/ˈkwɒrəntiːn/",
+      "meaningVi": "sự cách ly",
+      "definitionEn": "a state of isolation to prevent the spread of disease or contamination",
+      "example": "The outbreak required a strict quarantine of all passengers arriving from the affected region.",
+      "collocation": "quarantine period",
+      "band": "8+"
+    },
+    {
+      "word": "decontamination",
+      "pos": "noun",
+      "ipa": "/ˌdiːkənˌtæmɪˈneɪʃn/",
+      "meaningVi": "sự khử nhiễm",
+      "definitionEn": "the process of removing dangerous substances or germs from something",
+      "example": "Workers in hazmat suits performed decontamination of the laboratory after the chemical leak.",
+      "collocation": "decontamination procedure",
+      "band": "8+"
+    }
+  ]
+}
