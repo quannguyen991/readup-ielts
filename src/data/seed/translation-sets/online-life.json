@@ -1,0 +1,78 @@
+{
+  "slug": "online-life",
+  "title": "Đời sống trên mạng",
+  "blurb": "Câu về mạng xã hội và thói quen dùng internet.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-online-life-01",
+      "difficulty": "medium",
+      "vi": "Những người thường xuyên đăng bài về cuộc sống cá nhân thường mong muốn nhận được sự chú ý từ người khác.",
+      "en": "People who frequently post about their personal lives often seek attention from others.",
+      "hint": "Mệnh đề quan hệ với 'who'"
+    },
+    {
+      "id": "tr-online-life-02",
+      "difficulty": "medium",
+      "vi": "Mặc dù việc bình luận tiêu cực rất dễ dàng, nhưng nó có thể gây ra những hậu quả không mong muốn.",
+      "en": "Although leaving negative comments is very easy, it can cause unintended consequences.",
+      "hint": "Cấu trúc 'although'"
+    },
+    {
+      "id": "tr-online-life-03",
+      "difficulty": "medium",
+      "vi": "Bởi vì nghiện điện thoại làm giảm khả năng tập trung, nhiều học sinh gặp khó khăn trong việc học.",
+      "en": "Because phone addiction reduces concentration ability, many students struggle with their studies.",
+      "hint": "Mệnh đề nguyên nhân 'because'"
+    },
+    {
+      "id": "tr-online-life-04",
+      "difficulty": "medium",
+      "vi": "Khi bạn lướt mạng xã hội trước khi ngủ, bạn sẽ khó đi vào giấc ngủ hơn.",
+      "en": "When you scroll through social media before sleeping, you will find it harder to fall asleep.",
+      "hint": "Mệnh đề thời gian 'when'"
+    },
+    {
+      "id": "tr-online-life-05",
+      "difficulty": "medium",
+      "vi": "Nếu bạn không kiểm soát thời gian dùng điện thoại, bạn sẽ dễ bị nghiện mất kiểm soát.",
+      "en": "If you do not control your phone usage time, you will easily become addicted.",
+      "hint": "Câu điều kiện loại 1 'if'"
+    },
+    {
+      "id": "tr-online-life-06",
+      "difficulty": "medium",
+      "vi": "Nhiều người chỉnh sửa ảnh trước khi đăng để họ trông hoàn hảo hơn trong mắt bạn bè.",
+      "en": "Many people edit photos before posting so that they look more perfect in friends' eyes.",
+      "hint": "Mệnh đề mục đích 'so that'"
+    },
+    {
+      "id": "tr-online-life-07",
+      "difficulty": "medium",
+      "vi": "Có quá nhiều thông tin giả trên mạng đến nỗi người dùng khó phân biệt đúng sai.",
+      "en": "There is such a lot of fake information online that users find it hard to distinguish truth.",
+      "hint": "Cấu trúc 'such...that'"
+    },
+    {
+      "id": "tr-online-life-08",
+      "difficulty": "medium",
+      "vi": "Không chỉ lướt mạng gây mất thời gian, mà nó còn ảnh hưởng đến sức khỏe tinh thần của bạn.",
+      "en": "Not only does scrolling cause time waste, but it also affects your mental health.",
+      "hint": "Cấu trúc 'not only...but also' đảo ngữ"
+    },
+    {
+      "id": "tr-online-life-09",
+      "difficulty": "medium",
+      "vi": "Càng dành nhiều thời gian trên mạng, bạn càng cảm thấy xa cách với thế giới thực.",
+      "en": "The more time you spend online, the more disconnected you feel from the real world.",
+      "hint": "So sánh kép 'the more...the more'"
+    },
+    {
+      "id": "tr-online-life-10",
+      "difficulty": "medium",
+      "vi": "Bài đăng mới nhất của anh ấy, mà thường gây tranh cãi, đã thu hút hàng trăm bình luận.",
+      "en": "His latest post, which often sparks controversy, attracted hundreds of comments.",
+      "hint": "Mệnh đề quan hệ không xác định 'which'"
+    }
+  ]
+}

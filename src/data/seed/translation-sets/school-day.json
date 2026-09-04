@@ -1,0 +1,78 @@
+{
+  "slug": "school-day",
+  "title": "Một ngày ở trường",
+  "blurb": "Câu về lớp học, thầy cô và bài vở thường ngày.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-school-day-01",
+      "difficulty": "easy",
+      "vi": "Mỗi sáng, tôi đi học bằng xe đạp.",
+      "en": "Every morning, I go to school by bicycle.",
+      "hint": "Thì hiện tại đơn diễn tả thói quen."
+    },
+    {
+      "id": "tr-school-day-02",
+      "difficulty": "easy",
+      "vi": "Hôm qua, chúng tôi đã học bài về động vật.",
+      "en": "Yesterday, we studied a lesson about animals.",
+      "hint": "Thì quá khứ đơn kể sự việc đã xảy ra."
+    },
+    {
+      "id": "tr-school-day-03",
+      "difficulty": "easy",
+      "vi": "Ngày mai, tôi sẽ tham gia câu lạc bộ tiếng Anh.",
+      "en": "Tomorrow, I will join the English club.",
+      "hint": "Thì tương lai đơn với 'will'."
+    },
+    {
+      "id": "tr-school-day-04",
+      "difficulty": "easy",
+      "vi": "Có một thư viện lớn ở trường tôi.",
+      "en": "There is a big library in my school.",
+      "hint": "Cấu trúc 'There is/are' chỉ sự tồn tại."
+    },
+    {
+      "id": "tr-school-day-05",
+      "difficulty": "easy",
+      "vi": "Bài tập về nhà được giao vào cuối buổi học.",
+      "en": "Homework was assigned at the end of class.",
+      "hint": "Câu bị động thì quá khứ đơn."
+    },
+    {
+      "id": "tr-school-day-06",
+      "difficulty": "easy",
+      "vi": "Chúng tôi phải mang đồng phục mỗi ngày.",
+      "en": "We must wear our school uniforms every day.",
+      "hint": "Động từ khuyết thiếu 'must' chỉ sự bắt buộc."
+    },
+    {
+      "id": "tr-school-day-07",
+      "difficulty": "easy",
+      "vi": "Nếu trời mưa, chúng tôi sẽ ở lại trong lớp.",
+      "en": "If it rains, we will stay inside the classroom.",
+      "hint": "Câu điều kiện loại 1 (If + hiện tại, will + V)."
+    },
+    {
+      "id": "tr-school-day-08",
+      "difficulty": "easy",
+      "vi": "Giờ ra chơi ngắn hơn giờ học.",
+      "en": "Recess is shorter than a regular class.",
+      "hint": "So sánh hơn với tính từ ngắn 'shorter than'."
+    },
+    {
+      "id": "tr-school-day-09",
+      "difficulty": "easy",
+      "vi": "Tôi thích đọc sách trong thư viện.",
+      "en": "I like reading books in the library.",
+      "hint": "Cấu trúc 'like + V-ing' diễn tả sở thích."
+    },
+    {
+      "id": "tr-school-day-10",
+      "difficulty": "easy",
+      "vi": "Thật là một buổi học thú vị chúng tôi có hôm nay!",
+      "en": "What an interesting lesson we have today!",
+      "hint": "Câu cảm thán với 'What a/an + adj + noun'."
+    }
+  ]
+}

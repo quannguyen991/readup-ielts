@@ -1,0 +1,78 @@
+{
+  "slug": "money-habits",
+  "title": "Chi tiêu và tiết kiệm",
+  "blurb": "Câu về cách quản lý tiền và những lựa chọn chi tiêu.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-money-habits-01",
+      "difficulty": "medium",
+      "vi": "Mặc dù cô ấy có mức lương cao, cô ấy vẫn sống tiết kiệm để dành cho hưu trí.",
+      "en": "Although she earns a high salary, she still lives frugally to save for retirement.",
+      "hint": "cấu trúc although"
+    },
+    {
+      "id": "tr-money-habits-02",
+      "difficulty": "medium",
+      "vi": "Bởi vì anh ấy lãng phí tiền vào những thứ không cần thiết, anh ấy không thể trả tiền thuê nhà tháng này.",
+      "en": "Because he wasted money on unnecessary items, he couldn't afford his rent this month.",
+      "hint": "cấu trúc because"
+    },
+    {
+      "id": "tr-money-habits-03",
+      "difficulty": "medium",
+      "vi": "Kế hoạch ngân sách, mà chúng tôi đã lập tháng trước, đã giúp chúng tôi kiểm soát chi tiêu hiệu quả.",
+      "en": "The budget plan, which we created last month, helped us control our spending effectively.",
+      "hint": "mệnh đề quan hệ which"
+    },
+    {
+      "id": "tr-money-habits-04",
+      "difficulty": "medium",
+      "vi": "Những người tiết kiệm tiền thường xuyên ít có khả năng đối mặt với khủng hoảng tài chính.",
+      "en": "People who save money regularly are less likely to face financial crises.",
+      "hint": "mệnh đề quan hệ who"
+    },
+    {
+      "id": "tr-money-habits-05",
+      "difficulty": "medium",
+      "vi": "Nếu bạn mua xe trả góp, bạn cần trả lãi hàng tháng.",
+      "en": "If you buy a car on installment, you need to pay interest every month.",
+      "hint": "câu điều kiện if"
+    },
+    {
+      "id": "tr-money-habits-06",
+      "difficulty": "medium",
+      "vi": "Khi cô ấy xem lại chi tiêu hàng tháng, cô ấy nhận ra mình đã chi quá nhiều cho việc ăn ngoài.",
+      "en": "When she reviewed her monthly expenses, she realized she spent too much on dining out.",
+      "hint": "cấu trúc when"
+    },
+    {
+      "id": "tr-money-habits-07",
+      "difficulty": "medium",
+      "vi": "Trong khi anh ấy thích mua sắm, anh ấy luôn tuân thủ ngân sách một cách nghiêm ngặt.",
+      "en": "While he enjoys shopping, he always sticks to his budget strictly.",
+      "hint": "cấu trúc while"
+    },
+    {
+      "id": "tr-money-habits-08",
+      "difficulty": "medium",
+      "vi": "Cô ấy theo dõi mọi khoản chi tiêu để có thể điều chỉnh thói quen chi tiêu.",
+      "en": "She tracks every expense so that she can adjust her spending habits.",
+      "hint": "cấu trúc so that"
+    },
+    {
+      "id": "tr-money-habits-09",
+      "difficulty": "medium",
+      "vi": "Mặc dù lãi suất thấp, anh ấy thích trả tiền mặt hơn là dùng thẻ tín dụng.",
+      "en": "Even though the interest rate is low, he prefers to pay in cash rather than use credit.",
+      "hint": "cấu trúc even though"
+    },
+    {
+      "id": "tr-money-habits-10",
+      "difficulty": "medium",
+      "vi": "Bạn càng chi tiêu bất cẩn, bạn càng khó tiết kiệm tiền cho những trường hợp khẩn cấp.",
+      "en": "The more you spend carelessly, the harder it becomes to save money for emergencies.",
+      "hint": "so sánh kép the more...the more"
+    }
+  ]
+}

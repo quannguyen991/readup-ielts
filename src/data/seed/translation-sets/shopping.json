@@ -1,0 +1,78 @@
+{
+  "slug": "shopping",
+  "title": "Mua sắm",
+  "blurb": "Câu về đi chợ, siêu thị, hỏi giá và trả tiền.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-shopping-01",
+      "difficulty": "easy",
+      "vi": "Tôi thường mua rau ở chợ vào sáng sớm.",
+      "en": "I usually buy vegetables at the market in the morning.",
+      "hint": "Thì hiện tại đơn, trạng từ tần suất"
+    },
+    {
+      "id": "tr-shopping-02",
+      "difficulty": "easy",
+      "vi": "Cô ấy đang so sánh giá của hai loại gạo.",
+      "en": "She is comparing the prices of two rice varieties.",
+      "hint": "Thì hiện tại tiếp diễn, động từ so sánh"
+    },
+    {
+      "id": "tr-shopping-03",
+      "difficulty": "easy",
+      "vi": "Hôm qua tôi đã trả lại áo bị rách.",
+      "en": "I returned the torn shirt to the store yesterday.",
+      "hint": "Thì quá khứ đơn, động từ trả lại"
+    },
+    {
+      "id": "tr-shopping-04",
+      "difficulty": "easy",
+      "vi": "Tuần tới tôi sẽ mua sắm ở siêu thị lớn.",
+      "en": "I will shop at the big supermarket next week.",
+      "hint": "Thì tương lai đơn với will"
+    },
+    {
+      "id": "tr-shopping-05",
+      "difficulty": "easy",
+      "vi": "Bạn nên kiểm tra nhãn giá trước khi mua.",
+      "en": "You should check the price tags before buying.",
+      "hint": "Modal should, động từ nguyên mẫu"
+    },
+    {
+      "id": "tr-shopping-06",
+      "difficulty": "easy",
+      "vi": "Nếu giá giảm, tôi sẽ mua nhiều hơn.",
+      "en": "If the price drops, I will buy more.",
+      "hint": "Câu điều kiện loại 1, hiện tại đơn + will"
+    },
+    {
+      "id": "tr-shopping-07",
+      "difficulty": "easy",
+      "vi": "Giá của sản phẩm này đã được giảm xuống.",
+      "en": "The price of this product has been reduced.",
+      "hint": "Câu bị động hiện tại hoàn thành"
+    },
+    {
+      "id": "tr-shopping-08",
+      "difficulty": "easy",
+      "vi": "Giá này rẻ hơn so với cửa hàng khác.",
+      "en": "This price is cheaper than at other stores.",
+      "hint": "Câu so sánh hơn, tính từ comparative"
+    },
+    {
+      "id": "tr-shopping-09",
+      "difficulty": "easy",
+      "vi": "Tôi đến chợ để mua trái cây tươi.",
+      "en": "I go to the market to buy fresh fruit.",
+      "hint": "Mục đích với to + V"
+    },
+    {
+      "id": "tr-shopping-10",
+      "difficulty": "easy",
+      "vi": "Mặc cả ở chợ luôn khiến tôi hứng thú.",
+      "en": "Bargaining at the market always excites me.",
+      "hint": "Động từ dạng V-ing làm chủ ngữ"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "education-reform",
+  "title": "Cải cách giáo dục",
+  "blurb": "Câu về thi cử, chương trình và bất bình đẳng học tập.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-education-reform-01",
+      "difficulty": "hard",
+      "vi": "Những học sinh từ vùng nông thôn gặp khó khăn trong việc tiếp cận giáo dục chất lượng cao do khoảng cách địa lý và thiếu cơ sở vật chất.",
+      "en": "Students from rural areas face difficulties in accessing quality education because of geographical distance and inadequate educational facilities.",
+      "hint": "Cấu trúc Because + reason clause để giải thích nguyên nhân."
+    },
+    {
+      "id": "tr-education-reform-02",
+      "difficulty": "hard",
+      "vi": "Nếu học phí được giảm bớt một cách hợp lý, nhiều gia đình nghèo sẽ có cơ hội đưa con em vào trường học.",
+      "en": "If tuition fees were reduced reasonably, a considerable number of low-income families would be able to send their children to school.",
+      "hint": "Câu điều kiện loại 2 với would + verb để diễn tả tình huống giả định."
+    },
+    {
+      "id": "tr-education-reform-03",
+      "difficulty": "hard",
+      "vi": "Việc cải cách hệ thống thi cử đã được thực hiện để giảm áp lực và tạo môi trường học tập lành mạnh cho học sinh.",
+      "en": "Examination system reforms have been carried out to alleviate pressure and create a healthier learning environment for students.",
+      "hint": "Cấu trúc bị động Present Perfect Continuous với to-infinitive để chỉ mục đích."
+    },
+    {
+      "id": "tr-education-reform-04",
+      "difficulty": "hard",
+      "vi": "Không chỉ cải thiện chất lượng giảng dạy mà còn trang bị công nghệ hiện đại, các trường học hiện đại đã nâng cao kết quả học tập.",
+      "en": "Not only has quality teaching been improved, but schools equipped with modern technology have also enhanced academic performance significantly.",
+      "hint": "Cấu trúc Not only...but also với bị động để nhấn mạnh hai khía cạnh."
+    },
+    {
+      "id": "tr-education-reform-05",
+      "difficulty": "hard",
+      "vi": "Những chính sách về học phí miễn phí hoặc giảm học phí được coi là yếu tố quan trọng nhất để giảm bất bình đẳng giáo dục.",
+      "en": "Policies regarding free or reduced tuition fees are considered to be the most critical factor in reducing educational inequality.",
+      "hint": "Cấu trúc be considered + to-infinitive để diễn tả quan điểm chung."
+    },
+    {
+      "id": "tr-education-reform-06",
+      "difficulty": "hard",
+      "vi": "Mặc dù các thành phố lớn có nhiều trường học tốt, vùng sâu vùng xa vẫn thiếu nhân lực giáo dục có năng lực.",
+      "en": "Although major cities have many excellent schools, remote areas still suffer from a shortage of qualified teaching professionals.",
+      "hint": "Mệnh đề nhượng bộ với Although...vẫn còn contrast."
+    },
+    {
+      "id": "tr-education-reform-07",
+      "difficulty": "hard",
+      "vi": "Những sinh viên muốn học cao hơn nhưng bị cản trở bởi chi phí học tập quá cao và hỗ trợ tài chính không đủ.",
+      "en": "Students who aspire to pursue higher education are often hindered by excessive tuition costs and insufficient financial support from the government.",
+      "hint": "Mệnh đề quan hệ giới hạn với be hindered by + noun phrase."
+    },
+    {
+      "id": "tr-education-reform-08",
+      "difficulty": "hard",
+      "vi": "Để nâng cao chất lượng giáo dục tại các vùng kinh tế yếu kém, cần phải đầu tư mạnh mẽ vào cơ sở hạ tầng và đào tạo giáo viên.",
+      "en": "In order to improve educational quality in economically disadvantaged regions, significant investment must be made in infrastructure and teacher training.",
+      "hint": "Cấu trúc In order to + infinitive + must be + past participle (bị động)."
+    },
+    {
+      "id": "tr-education-reform-09",
+      "difficulty": "hard",
+      "vi": "Những kỳ thi quốc gia, nếu được thiết kế hợp lý, sẽ đánh giá khả năng thực tế của học sinh thay vì chỉ kiểm tra kiến thức lý thuyết.",
+      "en": "National examinations, if designed appropriately, would assess students' practical abilities rather than merely testing theoretical knowledge.",
+      "hint": "Câu điều kiện loại 2 với rather than + gerund để so sánh."
+    },
+    {
+      "id": "tr-education-reform-10",
+      "difficulty": "hard",
+      "vi": "Sự khác biệt trong chất lượng giáo dục giữa các vùng đô thị và nông thôn không những ảnh hưởng đến cơ hội việc làm mà còn làm sâu đặc bất bình đẳng xã hội.",
+      "en": "The disparity in educational quality between urban and rural regions not only affects employment opportunities but also deepens social inequality.",
+      "hint": "Cấu trúc Not only...but also với động từ chính để nhấn mạnh hai hậu quả."
+    }
+  ]
+}

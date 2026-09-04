@@ -1,0 +1,78 @@
+{
+  "slug": "housing-rent",
+  "title": "Thuê nhà",
+  "blurb": "Câu về tìm phòng, hợp đồng và chủ nhà.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-housing-rent-01",
+      "difficulty": "medium",
+      "vi": "Mặc dù tiền cọc khá cao, nhưng chúng tôi đã quyết định thuê căn hộ này vì vị trí thuận lợi.",
+      "en": "Although the deposit was quite high, we decided to rent this apartment because of its convenient location.",
+      "hint": "Câu nhượng bộ với Although"
+    },
+    {
+      "id": "tr-housing-rent-02",
+      "difficulty": "medium",
+      "vi": "Người chủ nhà, người đã ký hợp đồng với chúng tôi tuần trước, yêu cầu đặt cọc ba tháng tiền thuê.",
+      "en": "The landlord, who signed the contract with us last week, required a deposit of three months' rent.",
+      "hint": "Mệnh đề quan hệ không xác định"
+    },
+    {
+      "id": "tr-housing-rent-03",
+      "difficulty": "medium",
+      "vi": "Nếu bạn không kiểm tra kỹ hợp đồng, bạn có thể bị tính phí sửa chữa không công bằng.",
+      "en": "If you do not check the contract carefully, you may be charged for unfair repair costs.",
+      "hint": "Câu điều kiện loại 1"
+    },
+    {
+      "id": "tr-housing-rent-04",
+      "difficulty": "medium",
+      "vi": "Chúng tôi sẽ chuyển đến căn hộ mới sau khi hợp đồng thuê cũ chính thức kết thúc vào tháng sau.",
+      "en": "We will move to the new apartment after the old lease officially ends next month.",
+      "hint": "Mệnh đề thời gian với after"
+    },
+    {
+      "id": "tr-housing-rent-05",
+      "difficulty": "medium",
+      "vi": "Căn hộ mà chúng tôi đã thuê cần sửa chữa hệ thống ống nước vì các đường ống bị rò rỉ.",
+      "en": "The apartment which we rented needs plumbing repairs because the pipes are leaking.",
+      "hint": "Mệnh đề quan hệ xác định + because"
+    },
+    {
+      "id": "tr-housing-rent-06",
+      "difficulty": "medium",
+      "vi": "Khi bạn ký hợp đồng thuê nhà, hãy đảm bảo rằng tất cả các điều khoản đều được nêu rõ ràng.",
+      "en": "When you sign the rental contract, make sure that all terms are clearly stated.",
+      "hint": "Mệnh đề trạng ngữ thời gian với When"
+    },
+    {
+      "id": "tr-housing-rent-07",
+      "difficulty": "medium",
+      "vi": "Người thuê phải trả tiền sửa chữa nhỏ, nhưng chủ nhà sẽ chịu trách nhiệm cho các hư hỏng lớn.",
+      "en": "Tenants must pay for minor repairs, but the landlord will cover major damages.",
+      "hint": "Câu ghép với but"
+    },
+    {
+      "id": "tr-housing-rent-08",
+      "difficulty": "medium",
+      "vi": "Vì chúng tôi đã thông báo trước một tháng, nên chúng tôi không mất tiền cọc khi chuyển đi.",
+      "en": "Because we gave one month's notice in advance, we did not lose our deposit when moving out.",
+      "hint": "Câu nguyên nhân-kết quả với Because"
+    },
+    {
+      "id": "tr-housing-rent-09",
+      "difficulty": "medium",
+      "vi": "Chủ nhà sẽ trả lại toàn bộ tiền cọc nếu bạn giữ căn hộ sạch sẽ và không gây hư hỏng.",
+      "en": "The landlord will return the full deposit if you keep the apartment clean and undamaged.",
+      "hint": "Câu điều kiện với if"
+    },
+    {
+      "id": "tr-housing-rent-10",
+      "difficulty": "medium",
+      "vi": "Mặc dù hợp đồng có vẻ dài, nhưng bạn nên đọc kỹ từng điều khoản trước khi ký.",
+      "en": "Although the contract seems lengthy, you should read each clause carefully before signing.",
+      "hint": "Câu nhượng bộ với Although"
+    }
+  ]
+}

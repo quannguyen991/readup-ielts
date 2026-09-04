@@ -1,0 +1,78 @@
+{
+  "slug": "neighbours",
+  "title": "Hàng xóm",
+  "blurb": "Câu về người sống quanh mình và chuyện hằng ngày.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-neighbours-01",
+      "difficulty": "easy",
+      "vi": "Tôi chào buổi sáng người hàng xóm mới của tôi.",
+      "en": "I say good morning to my new neighbor.",
+      "hint": "Thì hiện tại đơn với chủ ngữ 'I'."
+    },
+    {
+      "id": "tr-neighbours-02",
+      "difficulty": "easy",
+      "vi": "Bạn có thể giúp tôi chuyển cái bàn nặng này không?",
+      "en": "Can you help me move this heavy table?",
+      "hint": "Câu yêu cầu với 'Can you...?'"
+    },
+    {
+      "id": "tr-neighbours-03",
+      "difficulty": "easy",
+      "vi": "Xin lỗi, nhà tôi hơi ồn vì có bữa tiệc tối nay.",
+      "en": "Sorry, my house is noisy because of a party tonight.",
+      "hint": "Cấu trúc 'because of + danh từ'."
+    },
+    {
+      "id": "tr-neighbours-04",
+      "difficulty": "easy",
+      "vi": "Tôi sẽ để lại chìa khóa cho bạn nếu bạn cần nó.",
+      "en": "I will leave the key for you if you need it.",
+      "hint": "Câu điều kiện loại 1 với 'if'."
+    },
+    {
+      "id": "tr-neighbours-05",
+      "difficulty": "easy",
+      "vi": "Người hàng xóm của tôi rất thân thiện và luôn giúp đỡ.",
+      "en": "My neighbor is very friendly and always helpful.",
+      "hint": "Câu miêu tả với tính từ và trạng từ."
+    },
+    {
+      "id": "tr-neighbours-06",
+      "difficulty": "easy",
+      "vi": "Bà ấy thường tưới cây cho tôi khi tôi đi nghỉ mát.",
+      "en": "She often waters my plants when I am away on vacation.",
+      "hint": "Thì hiện tại đơn với trạng từ tần suất 'often'."
+    },
+    {
+      "id": "tr-neighbours-07",
+      "difficulty": "easy",
+      "vi": "Tiếng nhạc từ căn hộ bên cạnh quá to vào ban đêm.",
+      "en": "The music from the next apartment is too loud at night.",
+      "hint": "Cấu trúc 'too + tính từ'."
+    },
+    {
+      "id": "tr-neighbours-08",
+      "difficulty": "easy",
+      "vi": "Bạn có thể nhận giúp tôi bưu kiện này khi tôi ra ngoài không?",
+      "en": "Could you receive this package for me while I am out?",
+      "hint": "Câu yêu cầu lịch sự với 'Could you...?'"
+    },
+    {
+      "id": "tr-neighbours-09",
+      "difficulty": "easy",
+      "vi": "Chúng tôi đã sống cạnh nhau được ba năm rồi.",
+      "en": "We have lived next to each other for three years now.",
+      "hint": "Thì hiện tại hoàn thành với 'for + khoảng thời gian'."
+    },
+    {
+      "id": "tr-neighbours-10",
+      "difficulty": "easy",
+      "vi": "Anh ấy đã sửa cái vòi nước bị rò trong bếp của tôi hôm qua.",
+      "en": "He fixed the leaking faucet in my kitchen yesterday.",
+      "hint": "Thì quá khứ đơn với trạng từ 'yesterday'."
+    }
+  ]
+}

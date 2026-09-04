@@ -1,0 +1,78 @@
+{
+  "slug": "daily-routine",
+  "title": "Thói quen hằng ngày",
+  "blurb": "Câu về việc lặp lại mỗi ngày và cách nói giờ giấc.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-daily-routine-01",
+      "difficulty": "easy",
+      "vi": "Tôi thường dậy lúc sáu giờ sáng.",
+      "en": "I usually wake up at six o'clock.",
+      "hint": "Thì hiện tại đơn, trạng từ tần suất."
+    },
+    {
+      "id": "tr-daily-routine-02",
+      "difficulty": "easy",
+      "vi": "Cô ấy đang ăn sáng ngay sau khi tập thể dục.",
+      "en": "She is having breakfast right after exercising.",
+      "hint": "Thì hiện tại tiếp diễn, hành động đang diễn ra."
+    },
+    {
+      "id": "tr-daily-routine-03",
+      "difficulty": "easy",
+      "vi": "Chúng tôi phải đến công ty lúc bảy giờ mỗi ngày.",
+      "en": "We have to arrive at the office by seven.",
+      "hint": "Modal 'have to' diễn tả nghĩa vụ."
+    },
+    {
+      "id": "tr-daily-routine-04",
+      "difficulty": "easy",
+      "vi": "Anh đã quen uống cà phê mỗi sáng từ năm ngoái.",
+      "en": "He has been drinking coffee every morning since last year.",
+      "hint": "Present perfect continuous, chỉ thói quen kéo dài."
+    },
+    {
+      "id": "tr-daily-routine-05",
+      "difficulty": "easy",
+      "vi": "Cô ấy ăn ít hơn tôi vào bữa trưa.",
+      "en": "She eats less than I do at lunch.",
+      "hint": "So sánh với than, dùng ít hơn."
+    },
+    {
+      "id": "tr-daily-routine-06",
+      "difficulty": "easy",
+      "vi": "Nếu trời mưa, tôi thường mang ô đi làm.",
+      "en": "If it rains, I always take an umbrella.",
+      "hint": "Câu điều kiện loại 0, nói thói quen."
+    },
+    {
+      "id": "tr-daily-routine-07",
+      "difficulty": "easy",
+      "vi": "Bữa sáng luôn được chuẩn bị vào lúc năm giờ.",
+      "en": "Breakfast is always prepared at five o'clock.",
+      "hint": "Câu bị động, nhấn mạnh hành động."
+    },
+    {
+      "id": "tr-daily-routine-08",
+      "difficulty": "easy",
+      "vi": "Tôi dậy sớm để đi bộ trong công viên.",
+      "en": "I wake up early to walk in the park.",
+      "hint": "Mệnh đề nguyên mẫu 'to + verb' chỉ mục đích."
+    },
+    {
+      "id": "tr-daily-routine-09",
+      "difficulty": "easy",
+      "vi": "Đọc báo vào buổi sáng giúp tôi tỉnh táo.",
+      "en": "Reading the newspaper in the morning keeps me alert.",
+      "hint": "Gerund làm chủ ngữ, chỉ thói quen."
+    },
+    {
+      "id": "tr-daily-routine-10",
+      "difficulty": "easy",
+      "vi": "Chúng tôi kết thúc công việc lúc năm giờ chiều.",
+      "en": "We finish work at five p.m. each day.",
+      "hint": "Thì hiện tại đơn, cụm thời gian cố định."
+    }
+  ]
+}

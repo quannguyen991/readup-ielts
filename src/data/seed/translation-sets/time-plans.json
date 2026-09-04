@@ -1,0 +1,78 @@
+{
+  "slug": "time-plans",
+  "title": "Hẹn và kế hoạch gần",
+  "blurb": "Câu nói về việc sắp làm trong vài ngày tới.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-time-plans-01",
+      "difficulty": "easy",
+      "vi": "Cuối tuần này bạn có rảnh đi xem phim với tôi không?",
+      "en": "Could you go to the movies with me this weekend?",
+      "hint": "Cấu trúc đề nghị lịch sự 'Could you + V?'"
+    },
+    {
+      "id": "tr-time-plans-02",
+      "difficulty": "easy",
+      "vi": "Chúng ta hãy gặp nhau vào thứ Bảy lúc 7 giờ tối nhé.",
+      "en": "Let's meet on Saturday evening at 7 p.m.",
+      "hint": "Cấu trúc rủ rê 'Let's + V'"
+    },
+    {
+      "id": "tr-time-plans-03",
+      "difficulty": "easy",
+      "vi": "Tôi định sẽ đi chơi biển vào cuối tuần này.",
+      "en": "I am going to go to the beach this weekend.",
+      "hint": "Cấu trúc dự định 'be going to'"
+    },
+    {
+      "id": "tr-time-plans-04",
+      "difficulty": "easy",
+      "vi": "Tôi sẽ gọi điện cho bạn để xác nhận lịch.",
+      "en": "I will call you to confirm the schedule.",
+      "hint": "Cấu trúc tương lai đơn 'will + V'"
+    },
+    {
+      "id": "tr-time-plans-05",
+      "difficulty": "easy",
+      "vi": "Sao chúng ta không thử nhà hàng Ý mới đó?",
+      "en": "Why don't we try that new Italian restaurant?",
+      "hint": "Cấu trúc gợi ý 'Why don't we + V?'"
+    },
+    {
+      "id": "tr-time-plans-06",
+      "difficulty": "easy",
+      "vi": "Đi ăn trưa vào thứ Hai này thì thế nào?",
+      "en": "How about having lunch this Monday?",
+      "hint": "Cấu trúc gợi ý 'How about + V-ing?'"
+    },
+    {
+      "id": "tr-time-plans-07",
+      "difficulty": "easy",
+      "vi": "Chúng ta có thể dời cuộc hẹn sang tuần sau.",
+      "en": "We can postpone the appointment to next week.",
+      "hint": "Cấu trúc khả năng 'can + V'"
+    },
+    {
+      "id": "tr-time-plans-08",
+      "difficulty": "easy",
+      "vi": "Bạn có muốn tham gia buổi tiệc cuối tuần này không?",
+      "en": "Would you like to join the party this weekend?",
+      "hint": "Cấu trúc mời 'Would you like to + V?'"
+    },
+    {
+      "id": "tr-time-plans-09",
+      "difficulty": "easy",
+      "vi": "Tôi phải hủy cuộc hẹn vì có việc đột xuất.",
+      "en": "I have to cancel the appointment due to an emergency.",
+      "hint": "Cấu trúc bắt buộc 'have to + V'"
+    },
+    {
+      "id": "tr-time-plans-10",
+      "difficulty": "easy",
+      "vi": "Thứ Tư tuần sau bạn có rảnh để gặp nhau không?",
+      "en": "Are you free to meet next Wednesday?",
+      "hint": "Cấu trúc hỏi lịch 'Are you free to + V?'"
+    }
+  ]
+}

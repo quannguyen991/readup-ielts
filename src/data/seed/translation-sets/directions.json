@@ -1,0 +1,78 @@
+{
+  "slug": "directions",
+  "title": "Chỉ đường",
+  "blurb": "Câu hỏi đường và mô tả vị trí.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-directions-01",
+      "difficulty": "easy",
+      "vi": "Bạn nên rẽ trái ở ngã tư tiếp theo.",
+      "en": "You should turn left at the next intersection.",
+      "hint": "should + động từ nguyên mẫu, giới từ 'at' chỉ địa điểm."
+    },
+    {
+      "id": "tr-directions-02",
+      "difficulty": "easy",
+      "vi": "Bệnh viện nằm đối diện với công viên trung tâm.",
+      "en": "The hospital is located opposite the central park.",
+      "hint": "cấu trúc 'be located opposite' + danh từ."
+    },
+    {
+      "id": "tr-directions-03",
+      "difficulty": "easy",
+      "vi": "Siêu thị cách đây khoảng hai trăm mét.",
+      "en": "The supermarket is about two hundred meters away.",
+      "hint": "cấu trúc 'be about + khoảng cách + away'."
+    },
+    {
+      "id": "tr-directions-04",
+      "difficulty": "easy",
+      "vi": "Đi thẳng cho đến khi bạn thấy đèn giao thông.",
+      "en": "Go straight until you see the traffic light.",
+      "hint": "mệnh lệnh + 'until' + mệnh đề hiện tại đơn."
+    },
+    {
+      "id": "tr-directions-05",
+      "difficulty": "easy",
+      "vi": "Trạm xe buýt ở bên phải của con đường này.",
+      "en": "The bus stop is on the right side of this road.",
+      "hint": "cấu trúc 'be on the right side of'."
+    },
+    {
+      "id": "tr-directions-06",
+      "difficulty": "easy",
+      "vi": "Nhà hàng nằm giữa ngân hàng và hiệu sách lớn.",
+      "en": "The restaurant is between the bank and the large bookstore.",
+      "hint": "cấu trúc 'be between A and B'."
+    },
+    {
+      "id": "tr-directions-07",
+      "difficulty": "easy",
+      "vi": "Rẽ phải sau khi bạn đi qua cây cầu.",
+      "en": "Turn right after you go over the bridge.",
+      "hint": "mệnh lệnh + 'after' + mệnh đề hiện tại đơn."
+    },
+    {
+      "id": "tr-directions-08",
+      "difficulty": "easy",
+      "vi": "Bạn có thể đi bộ đến trung tâm trong mười phút.",
+      "en": "You can walk to the center in ten minutes.",
+      "hint": "cấu trúc 'can + V' + 'in + thời gian'."
+    },
+    {
+      "id": "tr-directions-09",
+      "difficulty": "easy",
+      "vi": "Tòa nhà cao nhất ở cuối con đường chính.",
+      "en": "The tallest building is at the end of the main street.",
+      "hint": "so sánh nhất của tính từ, 'at the end of'."
+    },
+    {
+      "id": "tr-directions-10",
+      "difficulty": "easy",
+      "vi": "Đi qua hai ngã tư rồi rẽ trái vào đường nhỏ.",
+      "en": "Go through two intersections and turn left into the small lane.",
+      "hint": "mệnh lệnh + 'and' nối hai hành động."
+    }
+  ]
+}

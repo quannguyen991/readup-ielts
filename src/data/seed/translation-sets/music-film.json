@@ -1,0 +1,78 @@
+{
+  "slug": "music-film",
+  "title": "Âm nhạc và phim ảnh",
+  "blurb": "Câu nhận xét về bài hát, phim và diễn viên.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-music-film-01",
+      "difficulty": "medium",
+      "vi": "Cô ấy thích xem phim hành động hơn là phim lãng mạn, vì bộ phim có nhiều cảnh quay ngoài trời.",
+      "en": "She prefers watching action movies to romantic ones because the film features numerous outdoor scenes.",
+      "hint": "Cấu trúc so sánh với 'prefer...to' và mệnh đề nguyên nhân với 'because'."
+    },
+    {
+      "id": "tr-music-film-02",
+      "difficulty": "medium",
+      "vi": "Nhạc jazz, mà ông ông tôi yêu thích, đã truyền cảm hứng cho thế hệ trẻ hiện nay.",
+      "en": "Jazz music, which my grandfather loved dearly, has inspired the young generation today.",
+      "hint": "Mệnh đề quan hệ không xác định với 'which' đặt giữa câu để bổ sung thông tin."
+    },
+    {
+      "id": "tr-music-film-03",
+      "difficulty": "medium",
+      "vi": "Nếu bạn muốn hiểu sâu về tính cách nhân vật chính, bạn nên xem lại những cảnh cuối cùng của bộ phim.",
+      "en": "If you want to understand the protagonist's character better, you should rewatch the final scenes of the film.",
+      "hint": "Câu điều kiện loại 1 với 'if' ở mệnh đề điều kiện và 'should' ở mệnh đề chính."
+    },
+    {
+      "id": "tr-music-film-04",
+      "difficulty": "medium",
+      "vi": "Kết phim không như những gì khán giả mong đợi, do đó nhiều người cảm thấy thất vọng.",
+      "en": "The ending turned out differently from what audiences expected, so many viewers felt disappointed.",
+      "hint": "Liên từ 'so' nối hai mệnh đề độc lập để chỉ hệ quả của hành động trước."
+    },
+    {
+      "id": "tr-music-film-05",
+      "difficulty": "medium",
+      "vi": "Những bài hát pop hiện đại không chỉ đơn thuần là âm nhạc, mà còn phản ánh các vấn đề xã hội.",
+      "en": "Modern pop songs are not merely music; they also reflect contemporary social issues.",
+      "hint": "Cấu trúc 'not only...but also' dùng để nhấn mạnh sự kết hợp giữa hai đặc điểm."
+    },
+    {
+      "id": "tr-music-film-06",
+      "difficulty": "medium",
+      "vi": "Trong khi bộ phim kinh dị này công bố vào năm 2010, nó vẫn còn gây ám ảnh cho người xem cho đến bây giờ.",
+      "en": "Although this horror film was released back in 2010, it continues to haunt viewers even today.",
+      "hint": "Liên từ 'although' nối mệnh đề nhượcbộ với mệnh đề chính để tạo độ tương phản."
+    },
+    {
+      "id": "tr-music-film-07",
+      "difficulty": "medium",
+      "vi": "Diễn viên chính, người đã giành nhiều giải thưởng quốc tế, đã thực hiện vai diễn xuất sắc trong bộ phim mới này.",
+      "en": "The lead actor, who has won numerous international awards, delivered an outstanding performance in this new film.",
+      "hint": "Mệnh đề quan hệ xác định với 'who' để cung cấp thông tin bổ sung về người thực hiện hành động."
+    },
+    {
+      "id": "tr-music-film-08",
+      "difficulty": "medium",
+      "vi": "Gu nhạc của anh ấy rất độc đáo, và điều đó làm cho bạn bè của anh cảm thấy tò mò về lý do chọn lựa của anh.",
+      "en": "His musical taste is quite unique, and this makes his friends curious about the reasons behind his choices.",
+      "hint": "Liên từ 'and' nối hai mệnh đề độc lập với cấu trúc 'make' ở mệnh đề thứ hai."
+    },
+    {
+      "id": "tr-music-film-09",
+      "difficulty": "medium",
+      "vi": "Nếu như kết thúc bộ phim này không quá buồn, nó sẽ trở thành bộ phim yêu thích của hàng triệu người xem.",
+      "en": "If the ending of this movie were not so tragic, it would become the favorite film of millions of viewers.",
+      "hint": "Câu điều kiện loại 2 dùng để diễn tả tình huống giả định trái với thực tế hiện tại."
+    },
+    {
+      "id": "tr-music-film-10",
+      "difficulty": "medium",
+      "vi": "Các nhạc sĩ trẻ, những người bị ảnh hưởng bởi phong cách âm nhạc cổ điển, đang sáng tác những bản nhạc mới với kết cấu hiện đại.",
+      "en": "Young musicians, who are influenced by classical musical styles, are composing new pieces with modern structures.",
+      "hint": "Mệnh đề quan hệ không xác định với 'who' để cộng thêm chi tiết về nhóm người được đề cập."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "ai-and-jobs",
+  "title": "Trí tuệ nhân tạo và việc làm",
+  "blurb": "Câu bàn về tác động của tự động hoá lên nghề nghiệp.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-ai-and-jobs-01",
+      "difficulty": "hard",
+      "vi": "Công nghệ AI được cho là sẽ thay thế hàng triệu công việc trong những năm tới, nhưng nó cũng tạo ra những cơ hội việc làm mới mà chúng ta chưa từng tưởng tượng.",
+      "en": "While artificial intelligence is expected to replace millions of jobs in the coming years, it simultaneously creates new employment opportunities that we have never previously imagined.",
+      "hint": "Cấu trúc nhượng bộ (While + mệnh đề), nhấn mạnh sự tương phản giữa hai ý."
+    },
+    {
+      "id": "tr-ai-and-jobs-02",
+      "difficulty": "hard",
+      "vi": "Những người lao động muốn thích ứng với thế giới công nghệ nên phát triển các kỹ năng mềm như sáng tạo, tư duy phản biện và làm việc nhóm.",
+      "en": "Workers who wish to adapt to the technological world should develop soft skills such as creativity, critical thinking, and teamwork, which are increasingly valued by employers.",
+      "hint": "Mệnh đề quan hệ (who + mệnh đề phụ), danh sách liên tiếp với 'such as'."
+    },
+    {
+      "id": "tr-ai-and-jobs-03",
+      "difficulty": "hard",
+      "vi": "Mặc dù AI có khả năng xử lý dữ liệu nhanh hơn con người, nhưng nó không thể có được sự đồng cảm và tính sáng tạo của con người.",
+      "en": "Although artificial intelligence can process data faster than humans, it cannot possess the empathy and creativity that are inherent to human beings.",
+      "hint": "Nhượng bộ (Although), mệnh đề quan hệ xác định (that are), so sánh so sánh (faster than)."
+    },
+    {
+      "id": "tr-ai-and-jobs-04",
+      "difficulty": "hard",
+      "vi": "Các công ty công nghệ được yêu cầu phải xem xét những ảnh hưởng đạo đức trước khi triển khai các hệ thống AI có thể ảnh hưởng đến cuộc sống của người dân.",
+      "en": "Technology companies are required to consider the ethical implications before deploying artificial intelligence systems that could significantly impact the lives of ordinary citizens.",
+      "hint": "Bị động với must/should, mệnh đề quan hệ xác định (that could)."
+    },
+    {
+      "id": "tr-ai-and-jobs-05",
+      "difficulty": "hard",
+      "vi": "Nếu như giáo dục không được cập nhật để dạy những kỹ năng phù hợp với thời đại AI, thì bất bình đẳng trong xã hội sẽ gia tăng.",
+      "en": "If education is not updated to teach skills relevant to the artificial intelligence era, then social inequality will inevitably increase and deepen.",
+      "hint": "Câu điều kiện loại 1 (If + present + future), kết quả được nhấn mạnh."
+    },
+    {
+      "id": "tr-ai-and-jobs-06",
+      "difficulty": "hard",
+      "vi": "Những chuyên gia cho rằng việc tích hợp AI vào các lĩnh vực y tế và giáo dục sẽ cải thiện chất lượng dịch vụ mà người dân nhận được.",
+      "en": "Experts believe that integrating artificial intelligence into healthcare and education sectors will improve the quality of services that citizens receive, rather than diminish them.",
+      "hint": "Cấu trúc 'believe that' với mệnh đề danh từ, mệnh đề quan hệ (that citizens receive)."
+    },
+    {
+      "id": "tr-ai-and-jobs-07",
+      "difficulty": "hard",
+      "vi": "Được coi là cuộc cách mạng công nghiệp thứ tư, AI đang thay đổi toàn bộ cách thức con người làm việc và suy nghĩ về tương lai.",
+      "en": "Regarded as the fourth industrial revolution, artificial intelligence is fundamentally transforming how humans work and think about their future, creating unprecedented challenges and opportunities.",
+      "hint": "Cấu trúc nhấn mạnh với 'regarded as', mệnh đề danh từ với 'how'."
+    },
+    {
+      "id": "tr-ai-and-jobs-08",
+      "difficulty": "hard",
+      "vi": "Các nhà hoạch định chính sách cần phải cân bằng giữa việc khuyến khích đổi mới công nghệ và bảo vệ những công nhân hiện tại khỏi thất nghiệp.",
+      "en": "Policymakers must strike a balance between encouraging technological innovation and protecting current workers from unemployment, which requires both vision and compassion.",
+      "hint": "Cấu trúc 'balance between X and Y', mệnh đề quan hệ giải thích (which + requires)."
+    },
+    {
+      "id": "tr-ai-and-jobs-09",
+      "difficulty": "hard",
+      "vi": "Trong khi các máy có thể học cách làm việc một cách lặp lại, con người vẫn chiếm ưu thế về khả năng giải quyết vấn đề sáng tạo.",
+      "en": "While machines can be programmed to perform repetitive tasks efficiently, humans maintain a distinct advantage in solving problems creatively and adapting to unprecedented situations.",
+      "hint": "Nhượng bộ (While), bị động với 'be programmed', so sánh (maintain an advantage)."
+    },
+    {
+      "id": "tr-ai-and-jobs-10",
+      "difficulty": "hard",
+      "vi": "Những tác động của AI đối với thị trường lao động không thể được dự đoán một cách chính xác nếu như chúng ta không tính đến các yếu tố con người và xã hội.",
+      "en": "The impact of artificial intelligence on the labor market cannot be accurately predicted unless we take into account human and social factors that will shape how technology is adopted and used.",
+      "hint": "Bị động với 'cannot be predicted', mệnh đề phụ điều kiện với 'unless', mệnh đề quan hệ."
+    }
+  ]
+}

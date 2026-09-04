@@ -1,0 +1,78 @@
+{
+  "slug": "sports-fitness",
+  "title": "Thể thao và rèn luyện",
+  "blurb": "Câu về tập luyện, thi đấu và giữ dáng.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-sports-fitness-01",
+      "difficulty": "medium",
+      "vi": "Những người thường xuyên chạy bộ vào buổi sáng có xu hướng có tinh thần tốt hơn.",
+      "en": "People who regularly go jogging in the morning tend to have better mental health.",
+      "hint": "Mệnh đề quan hệ 'who' bổ nghĩa cho chủ ngữ."
+    },
+    {
+      "id": "tr-sports-fitness-02",
+      "difficulty": "medium",
+      "vi": "Mặc dù bị chấn thương đầu gối, anh ấy vẫn quyết tâm hoàn thành cuộc đua marathon.",
+      "en": "Although he suffered a knee injury, he was determined to finish the marathon race.",
+      "hint": "Liên từ 'although' nối hai mệnh đề tương phản."
+    },
+    {
+      "id": "tr-sports-fitness-03",
+      "difficulty": "medium",
+      "vi": "Bởi vì tập luyện quá sức, cô ấy bị đau cơ và phải nghỉ tập vài ngày.",
+      "en": "Because she overtrained at the gym, she experienced muscle pain and had to rest for a few days.",
+      "hint": "Liên từ 'because' chỉ nguyên nhân."
+    },
+    {
+      "id": "tr-sports-fitness-04",
+      "difficulty": "medium",
+      "vi": "Khi bạn nâng tạ quá nặng mà không có kỹ thuật đúng, bạn có thể dễ bị chấn thương.",
+      "en": "When you lift weights that are too heavy without proper technique, you can easily get injured.",
+      "hint": "Liên từ 'when' chỉ thời gian."
+    },
+    {
+      "id": "tr-sports-fitness-05",
+      "difficulty": "medium",
+      "vi": "Nếu bạn muốn cải thiện thành tích chạy, bạn nên tập luyện theo một kế hoạch bài bản.",
+      "en": "If you want to improve your running performance, you should follow a structured training plan.",
+      "hint": "Câu điều kiện loại 1 với 'if'."
+    },
+    {
+      "id": "tr-sports-fitness-06",
+      "difficulty": "medium",
+      "vi": "Trong khi chạy bộ ngoài trời, hãy luôn chú ý đến môi trường xung quanh để tránh tai nạn.",
+      "en": "While jogging outdoors, always pay attention to your surroundings to avoid accidents.",
+      "hint": "Liên từ 'while' chỉ hành động đồng thời."
+    },
+    {
+      "id": "tr-sports-fitness-07",
+      "difficulty": "medium",
+      "vi": "Từ khi bắt đầu tập gym, anh ấy đã tăng cường sức mạnh và sự tự tin đáng kể.",
+      "en": "Since he started working out at the gym, he has significantly increased his strength and confidence.",
+      "hint": "Liên từ 'since' chỉ thời gian (từ khi)."
+    },
+    {
+      "id": "tr-sports-fitness-08",
+      "difficulty": "medium",
+      "vi": "Cô ấy uống đủ nước trước trận đấu để cơ thể không bị mất nước trong suốt 90 phút.",
+      "en": "She drank enough water before the match so that her body would not be dehydrated during the 90 minutes.",
+      "hint": "Liên từ 'so that' chỉ mục đích."
+    },
+    {
+      "id": "tr-sports-fitness-09",
+      "difficulty": "medium",
+      "vi": "Trận đấu hay đến nỗi khán giả không muốn rời khỏi sân vận động.",
+      "en": "The match was such an exciting game that the audience did not want to leave the stadium.",
+      "hint": "Cấu trúc 'such + (a/an) + adj + noun + that'."
+    },
+    {
+      "id": "tr-sports-fitness-10",
+      "difficulty": "medium",
+      "vi": "Chạy bộ không những cải thiện sức khỏe tim mạch mà còn giúp giảm căng thẳng hiệu quả.",
+      "en": "Not only does jogging improve cardiovascular health, but it also helps reduce stress effectively.",
+      "hint": "Cấu trúc đảo ngữ 'Not only...but also'."
+    }
+  ]
+}

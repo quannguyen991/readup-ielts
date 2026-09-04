@@ -1,0 +1,78 @@
+{
+  "slug": "food-culture",
+  "title": "Văn hoá ẩm thực",
+  "blurb": "Câu về món ăn vùng miền và thói quen ăn uống.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-food-culture-01",
+      "difficulty": "medium",
+      "vi": "Mặc dù đồ ăn nhanh tiện lợi, nhưng nó chứa nhiều chất béo và natri không tốt cho sức khỏe.",
+      "en": "Although fast food is convenient, it contains excessive amounts of fat and sodium that are harmful to our health.",
+      "hint": "Mệnh đề nhượng bộ (Although) + mệnh đề chính với động từ đơn."
+    },
+    {
+      "id": "tr-food-culture-02",
+      "difficulty": "medium",
+      "vi": "Những món ăn chay truyền thống không chỉ giàu dinh dưỡng mà còn phản ánh triết lý sống của người Việt.",
+      "en": "Traditional vegetarian dishes not only provide essential nutrients but also reflect the philosophical values of Vietnamese culture.",
+      "hint": "Cấu trúc not only...but also để nhấn mạnh hai ý tương đương."
+    },
+    {
+      "id": "tr-food-culture-03",
+      "difficulty": "medium",
+      "vi": "Vì muốn giữ gìn nét văn hoá địa phương, nhiều cộng đồng vẫn duy trì những công thức nấu ăn cổ truyền.",
+      "en": "Because they want to preserve local cultural heritage, many communities continue to maintain traditional cooking recipes passed down through generations.",
+      "hint": "Mệnh đề nguyên nhân (Because) + mệnh đề chính, động từ hiện tại đơn."
+    },
+    {
+      "id": "tr-food-culture-04",
+      "difficulty": "medium",
+      "vi": "Các đặc sản địa phương, những sản phẩm được chế biến từ nguyên liệu tự nhiên, luôn thu hút du khách quốc tế.",
+      "en": "Local specialties, which are crafted from natural ingredients and traditional methods, have always attracted tourists from around the world.",
+      "hint": "Mệnh đề quan hệ không hạn định giải thích thêm thông tin về danh từ đứng trước."
+    },
+    {
+      "id": "tr-food-culture-05",
+      "difficulty": "medium",
+      "vi": "Khi những người trẻ tuổi bỏ bê ẩm thực truyền thống để chọn đồ ăn nhanh, các kỹ năng nấu ăn cổ xưa sẽ bị thất truyền.",
+      "en": "When younger generations neglect traditional cuisine in favor of fast food, the ancient cooking skills and family recipes risk being lost forever.",
+      "hint": "Mệnh đề thời gian (When) + mệnh đề chính, cấu trúc tương lai đơn."
+    },
+    {
+      "id": "tr-food-culture-06",
+      "difficulty": "medium",
+      "vi": "Những nhà hàng chay hiện đại không những cải thiện chất lượng đồ ăn mà còn thay đổi nhận thức của thực khách về ẩm thực chay.",
+      "en": "Modern vegetarian restaurants not only improved the quality of plant-based dishes but have also transformed how diners perceive vegetarian cuisine.",
+      "hint": "Cấu trúc not only...but have also với hai động từ khác nhau."
+    },
+    {
+      "id": "tr-food-culture-07",
+      "difficulty": "medium",
+      "vi": "Bởi vì các loại thực phẩm nhanh chế biến với nhiều phụ gia hóa học, các bác sĩ khuyến cáo hạn chế tiêu thụ thường xuyên.",
+      "en": "Because processed fast food products contain numerous chemical additives and preservatives, health professionals recommend limiting regular consumption.",
+      "hint": "Mệnh đề nguyên nhân (Because) + mệnh đề chính với động từ khuyến cáo."
+    },
+    {
+      "id": "tr-food-culture-08",
+      "difficulty": "medium",
+      "vi": "Những địa điểm quán ăn chay, nơi mọi người tìm kiếm những lựa chọn ăn uống lành mạnh, ngày càng mọc lên ở các thành phố lớn.",
+      "en": "Vegetarian restaurants, where health-conscious diners seek nutritious meal options, are sprouting up rapidly in major cities across the country.",
+      "hint": "Mệnh đề quan hệ không hạn định (where) chỉ định địa điểm và giải thích mục đích."
+    },
+    {
+      "id": "tr-food-culture-09",
+      "difficulty": "medium",
+      "vi": "Nếu chúng ta muốn bảo tồn các công thức nấu ăn cổ truyền, thì các thế hệ trẻ phải được dạy kỹ năng nấu ăn từ khi còn nhỏ.",
+      "en": "If we want to preserve traditional cooking recipes and techniques, then younger generations must be taught culinary skills from an early age.",
+      "hint": "Cấu trúc câu điều kiện loại 1 (If...then) với động từ khiếm khuyết (must)."
+    },
+    {
+      "id": "tr-food-culture-10",
+      "difficulty": "medium",
+      "vi": "Trong khi các đặc sản địa phương được chế biến từ công thức lâu đời, những món ăn nhanh thường sử dụng nguyên liệu công nghiệp.",
+      "en": "While local specialties are prepared using centuries-old recipes and traditional techniques, fast food items typically rely on mass-produced industrial ingredients.",
+      "hint": "Mệnh đề tương phản (While) + mệnh đề chính, so sánh hai đối tượng khác nhau."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "ageing-society",
+  "title": "Dân số già",
+  "blurb": "Câu về già hoá dân số và gánh nặng an sinh.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-ageing-society-01",
+      "difficulty": "hard",
+      "vi": "Những người về hưu thường gặp khó khăn trong việc duy trì mức sống vì lương hưu không đủ để chi trả các chi phí y tế ngày càng tăng.",
+      "en": "Retirees often struggle to maintain their standard of living because pensions are insufficient to cover increasingly high healthcare expenses.",
+      "hint": "Mệnh đề nguyên nhân (because) + so sánh cấu trúc so...that"
+    },
+    {
+      "id": "tr-ageing-society-02",
+      "difficulty": "hard",
+      "vi": "Tỷ lệ dân số già cao đã buộc các chính phủ phải đầu tư thêm vào cơ sở hạ tầng chăm sóc người cao tuổi, điều mà trước đây ít được ưu tiên.",
+      "en": "The rising proportion of elderly citizens has forced governments to invest more in aged care infrastructure, something which was previously neglected.",
+      "hint": "Mệnh đề quan hệ (something which) + bị động (was neglected)"
+    },
+    {
+      "id": "tr-ageing-society-03",
+      "difficulty": "hard",
+      "vi": "Không chỉ lực lượng lao động trẻ giảm mà các công ty còn phải trả lương cao hơn để thu hút nhân viên kỹ năng cao.",
+      "en": "Not only is the younger workforce shrinking, but companies must also pay higher wages to attract skilled employees.",
+      "hint": "Cấu trúc nhấn mạnh Not only...but also + đảo ngữ"
+    },
+    {
+      "id": "tr-ageing-society-04",
+      "difficulty": "hard",
+      "vi": "Dù chi phí chăm sóc người già rất cao, nhiều gia đình vẫn chọn chăm sóc tại nhà thay vì sử dụng dịch vụ tổ chức.",
+      "en": "Although the cost of elderly care is substantial, many families still prefer home care rather than relying on institutional services.",
+      "hint": "Mệnh đề nhượng bộ (although) + cấu trúc so sánh rather than"
+    },
+    {
+      "id": "tr-ageing-society-05",
+      "difficulty": "hard",
+      "vi": "Nếu không có các chính sách khuyến khích tái việc làm, những người về hưu sớm sẽ trở thành gánh nặng cho ngân sách công.",
+      "en": "If governments fail to implement policies encouraging older workers to return to employment, early retirees will become a burden on public finances.",
+      "hint": "Câu điều kiện loại 1 (if...will) + bị động ngầm"
+    },
+    {
+      "id": "tr-ageing-society-06",
+      "difficulty": "hard",
+      "vi": "Các quốc gia phát triển đã nhận thức được rằng vấn đề dân số già đòi hỏi cải cách hệ thống lương hưu toàn diện.",
+      "en": "Developed nations have come to realize that the ageing population crisis demands comprehensive pension system reforms.",
+      "hint": "Mệnh đề bổ ngữ (that) + danh từ ghép (ageing population crisis)"
+    },
+    {
+      "id": "tr-ageing-society-07",
+      "difficulty": "hard",
+      "vi": "Khi số lượng người lao động giảm mà số người hưởng lương hưu tăng, tỷ lệ phụ thuộc kinh tế sẽ trở nên khó kiểm soát.",
+      "en": "As the workforce declines while the number of pension recipients rises, the economic dependency ratio will become increasingly difficult to manage.",
+      "hint": "Mệnh đề thời gian (as) + cấu trúc so sánh (while) + bị động tương lai"
+    },
+    {
+      "id": "tr-ageing-society-08",
+      "difficulty": "hard",
+      "vi": "Cái mà lo lắng nhất các nhà lãnh đạo chính sách là việc hệ thống an sinh xã hội sẽ không đủ tài chính để hỗ trợ thế hệ người già.",
+      "en": "What concerns policymakers most is whether social security systems will have sufficient funds to support the ageing generation.",
+      "hint": "Mệnh đề danh từ (what) + nhấn mạnh what + điều kiện lẩn (whether)"
+    },
+    {
+      "id": "tr-ageing-society-09",
+      "difficulty": "hard",
+      "vi": "Những chương trình tuyển dụng lao động cao tuổi không chỉ giúp giải quyết thiếu hụt nhân lực mà còn nâng cao chất lượng cuộc sống của người về hưu.",
+      "en": "Programmes that recruit older workers not only help address labour shortages but also significantly improve the quality of life for retirees.",
+      "hint": "Cấu trúc not only...but also + mệnh đề quan hệ (that recruit)"
+    },
+    {
+      "id": "tr-ageing-society-10",
+      "difficulty": "hard",
+      "vi": "Chính vì sự gia tăng nhanh chóng của dân số già mà các nước buộc phải nâng tuổi nghỉ hưu, dù quyết định này gây ra nhiều phản đối.",
+      "en": "It is precisely because of the rapid increase in the elderly population that countries have been forced to raise retirement ages, although this decision has provoked widespread opposition.",
+      "hint": "Cấu trúc nhấn mạnh It is...because...that + mệnh đề nhượng bộ"
+    }
+  ]
+}

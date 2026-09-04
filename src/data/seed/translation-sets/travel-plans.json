@@ -1,0 +1,78 @@
+{
+  "slug": "travel-plans",
+  "title": "Chuẩn bị chuyến đi",
+  "blurb": "Câu về đặt vé, hành lý và lịch trình.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-travel-plans-01",
+      "difficulty": "medium",
+      "vi": "Tôi phải xin visa trước khi đặt vé máy bay vì thủ tục mất nhiều thời gian.",
+      "en": "I must apply for a visa before booking flight tickets because the procedure takes a lot of time.",
+      "hint": "Dùng liên từ 'because' chỉ nguyên nhân."
+    },
+    {
+      "id": "tr-travel-plans-02",
+      "difficulty": "medium",
+      "vi": "Khách sạn mà chúng tôi đã đặt từ tháng trước nằm ngay trung tâm thành phố.",
+      "en": "The hotel which we booked last month is located right in the city center.",
+      "hint": "Mệnh đề quan hệ 'which' bổ nghĩa cho chủ ngữ."
+    },
+    {
+      "id": "tr-travel-plans-03",
+      "difficulty": "medium",
+      "vi": "Nếu bạn không mang đủ hành lý ký gửi, bạn sẽ phải trả thêm phí tại sân bay.",
+      "en": "If you do not bring enough checked baggage, you will have to pay an extra fee at the airport.",
+      "hint": "Câu điều kiện loại 1 với 'if'."
+    },
+    {
+      "id": "tr-travel-plans-04",
+      "difficulty": "medium",
+      "vi": "Chúng tôi đã phải hoãn chuyến bay vì thời tiết xấu, nhưng hãng hàng không đã hỗ trợ đổi vé.",
+      "en": "We had to delay our flight because of bad weather, but the airline supported us with ticket changes.",
+      "hint": "Liên từ 'but' nối hai mệnh đề tương phản."
+    },
+    {
+      "id": "tr-travel-plans-05",
+      "difficulty": "medium",
+      "vi": "Khi bạn đến sân bay, hãy kiểm tra cổng lên máy bay trên màn hình thông tin.",
+      "en": "When you arrive at the airport, please check the boarding gate on the information screen.",
+      "hint": "Mệnh đề trạng ngữ chỉ thời gian với 'when'."
+    },
+    {
+      "id": "tr-travel-plans-06",
+      "difficulty": "medium",
+      "vi": "Hành lý xách tay của tôi, mà tôi đã mua ở cửa hàng giảm giá, rất nhẹ và tiện lợi.",
+      "en": "My carry-on luggage, which I bought at a discount store, is very light and convenient.",
+      "hint": "Mệnh đề quan hệ không xác định với 'which'."
+    },
+    {
+      "id": "tr-travel-plans-07",
+      "difficulty": "medium",
+      "vi": "Tôi sẽ gọi điện cho khách sạn để xác nhận đặt phòng trước khi khởi hành.",
+      "en": "I will call the hotel to confirm the reservation before I depart for the trip.",
+      "hint": "Liên từ 'before' + mệnh đề thời gian."
+    },
+    {
+      "id": "tr-travel-plans-08",
+      "difficulty": "medium",
+      "vi": "Mặc dù chuyến bay bị hoãn ba tiếng, hành khách vẫn kiên nhẫn chờ đợi ở phòng chờ.",
+      "en": "Although the flight was delayed for three hours, the passengers still waited patiently in the lounge.",
+      "hint": "Mệnh đề nhượng bộ với 'although'."
+    },
+    {
+      "id": "tr-travel-plans-09",
+      "difficulty": "medium",
+      "vi": "Người hướng dẫn viên, người đã nói tiếng Anh rất tốt, đã giúp chúng tôi làm thủ tục nhập cảnh.",
+      "en": "The tour guide, who spoke English very well, helped us with the immigration procedures.",
+      "hint": "Mệnh đề quan hệ bổ nghĩa cho chủ ngữ."
+    },
+    {
+      "id": "tr-travel-plans-10",
+      "difficulty": "medium",
+      "vi": "Bạn cần mang theo hộ chiếu còn hạn, nếu không bạn sẽ không được lên máy bay.",
+      "en": "You need to bring a valid passport, or else you will not be allowed to board the plane.",
+      "hint": "Liên từ 'or else' chỉ điều kiện trái ngược."
+    }
+  ]
+}

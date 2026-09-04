@@ -1,0 +1,78 @@
+{
+  "slug": "city-traffic",
+  "title": "Giao thông đô thị",
+  "blurb": "Câu về tắc đường, phương tiện và hạ tầng.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-city-traffic-01",
+      "difficulty": "medium",
+      "vi": "Mặc dù giao thông vào giờ cao điểm rất tắc nghẽn, tôi vẫn đến làm đúng giờ.",
+      "en": "Although rush-hour traffic is heavily congested, I still arrive at work on time.",
+      "hint": "Mệnh đề phụ 'although'"
+    },
+    {
+      "id": "tr-city-traffic-02",
+      "difficulty": "medium",
+      "vi": "Xe buýt thường đến trễ, nhưng tôi luôn mang theo sách để đọc.",
+      "en": "The bus often arrives late, but I always bring a book to read.",
+      "hint": "Compound sentence với 'but'"
+    },
+    {
+      "id": "tr-city-traffic-03",
+      "difficulty": "medium",
+      "vi": "Hệ thống metro mới, mà được xây dựng năm ngoái, đã giảm đáng kể thời gian di chuyển.",
+      "en": "The new metro system, which was built last year, has significantly reduced travel time.",
+      "hint": "Mệnh đề quan hệ 'which'"
+    },
+    {
+      "id": "tr-city-traffic-04",
+      "difficulty": "medium",
+      "vi": "Nếu bạn tránh giờ cao điểm, bạn sẽ không phải chịu kẹt xe.",
+      "en": "If you avoid rush hour, you will not have to endure traffic jams.",
+      "hint": "Câu điều kiện loại 1 với 'if'"
+    },
+    {
+      "id": "tr-city-traffic-05",
+      "difficulty": "medium",
+      "vi": "Trong khi nhiều người dùng ô tô, tôi lại thích đi bộ tới trạm metro.",
+      "en": "While many people drive cars, I prefer walking to the metro station.",
+      "hint": "Mệnh đề phụ 'while' (đối lập)"
+    },
+    {
+      "id": "tr-city-traffic-06",
+      "difficulty": "medium",
+      "vi": "Ngay khi tàu metro đến ga, tôi vội vã chạy lên cầu thang.",
+      "en": "As soon as the metro train arrives at the station, I rush up the stairs.",
+      "hint": "Mệnh đề thời gian 'as soon as'"
+    },
+    {
+      "id": "tr-city-traffic-07",
+      "difficulty": "medium",
+      "vi": "Tôi dừng lại mua vé để tránh việc mua vé trễ khi xe buýt đã đầy.",
+      "en": "I stopped to buy a ticket so as to avoid buying it late when the bus is full.",
+      "hint": "Mệnh đề mục đích 'so as to'"
+    },
+    {
+      "id": "tr-city-traffic-08",
+      "difficulty": "medium",
+      "vi": "Giao thông chậm trễ vì tai nạn trên cầu, khiến mọi người phải đợi lâu.",
+      "en": "Traffic is delayed because of an accident on the bridge, causing everyone to wait for a long time.",
+      "hint": "Mệnh đề nguyên nhân 'because'"
+    },
+    {
+      "id": "tr-city-traffic-09",
+      "difficulty": "medium",
+      "vi": "Có một khu vực đường phố mà người dân gọi là 'điểm nghẽn' vào mỗi buổi chiều.",
+      "en": "There is a street area that locals call the 'bottleneck' every afternoon.",
+      "hint": "Mệnh đề quan hệ 'that'"
+    },
+    {
+      "id": "tr-city-traffic-10",
+      "difficulty": "medium",
+      "vi": "Bạn sẽ không đến kịp nếu không rời nhà sớm hơn giờ cao điểm.",
+      "en": "You won't arrive on time unless you leave home earlier than rush hour.",
+      "hint": "Câu điều kiện phủ định 'unless'"
+    }
+  ]
+}

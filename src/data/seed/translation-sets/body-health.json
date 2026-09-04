@@ -1,0 +1,78 @@
+{
+  "slug": "body-health",
+  "title": "Cơ thể và ốm đau",
+  "blurb": "Câu mô tả triệu chứng và lời khuyên đơn giản.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-body-health-01",
+      "difficulty": "easy",
+      "vi": "Tôi bị đau đầu dữ dội sau khi làm việc quá sức.",
+      "en": "I have a terrible headache after overworking.",
+      "hint": "Thì hiện tại đơn với 'have a headache'."
+    },
+    {
+      "id": "tr-body-health-02",
+      "difficulty": "easy",
+      "vi": "Cô ấy đang sốt cao nên phải nghỉ học.",
+      "en": "She is running a high fever and must stay home.",
+      "hint": "Hiện tại tiếp diễn với 'run a fever'."
+    },
+    {
+      "id": "tr-body-health-03",
+      "difficulty": "easy",
+      "vi": "Hôm qua tôi đã đi khám bệnh ở bệnh viện.",
+      "en": "Yesterday I went to see a doctor at the hospital.",
+      "hint": "Thì quá khứ đơn với 'go to see a doctor'."
+    },
+    {
+      "id": "tr-body-health-04",
+      "difficulty": "easy",
+      "vi": "Bạn đã uống thuốc theo đơn của bác sĩ chưa?",
+      "en": "Have you taken the medicine as prescribed?",
+      "hint": "Hiện tại hoàn thành với 'take medicine'."
+    },
+    {
+      "id": "tr-body-health-05",
+      "difficulty": "easy",
+      "vi": "Tôi sẽ nghỉ ngơi vài ngày để khỏi bệnh.",
+      "en": "I will rest for a few days to recover.",
+      "hint": "Tương lai đơn với 'will rest'."
+    },
+    {
+      "id": "tr-body-health-06",
+      "difficulty": "easy",
+      "vi": "Nếu bạn bị cảm, hãy uống nhiều nước ấm.",
+      "en": "If you catch a cold, drink plenty of warm water.",
+      "hint": "Câu điều kiện loại 1 với 'if'."
+    },
+    {
+      "id": "tr-body-health-07",
+      "difficulty": "easy",
+      "vi": "Thuốc này phải được uống sau bữa ăn ba lần mỗi ngày.",
+      "en": "This medicine must be taken after meals three times daily.",
+      "hint": "Bị động với 'must be taken'."
+    },
+    {
+      "id": "tr-body-health-08",
+      "difficulty": "easy",
+      "vi": "Bác sĩ kê đơn thuốc kháng sinh cho tôi hôm qua.",
+      "en": "The doctor prescribed antibiotics for me yesterday.",
+      "hint": "Quá khứ đơn với 'prescribe'."
+    },
+    {
+      "id": "tr-body-health-09",
+      "difficulty": "easy",
+      "vi": "Tôi cảm thấy đau họng mỗi khi nuốt nước bọt.",
+      "en": "I feel a sore throat every time I swallow.",
+      "hint": "Hiện tại đơn với mệnh đề thời gian 'every time'."
+    },
+    {
+      "id": "tr-body-health-10",
+      "difficulty": "easy",
+      "vi": "Anh ấy bị chẩn đoán mắc bệnh cúm tại phòng cấp cứu.",
+      "en": "He was diagnosed with the flu at the emergency room.",
+      "hint": "Bị động quá khứ với 'was diagnosed'."
+    }
+  ]
+}

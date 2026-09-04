@@ -1,0 +1,78 @@
+{
+  "slug": "pets-animals",
+  "title": "Thú nuôi",
+  "blurb": "Câu về chó mèo, chăm sóc và thói quen của chúng.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-pets-animals-01",
+      "difficulty": "easy",
+      "vi": "Tôi cho chó ăn hai lần mỗi ngày.",
+      "en": "I feed my dog twice a day.",
+      "hint": "Thì hiện tại đơn cho thói quen."
+    },
+    {
+      "id": "tr-pets-animals-02",
+      "difficulty": "easy",
+      "vi": "Cô ấy đang dắt mèo đi dạo trong công viên.",
+      "en": "She is walking her cat in the park now.",
+      "hint": "Thì hiện tại tiếp diễn."
+    },
+    {
+      "id": "tr-pets-animals-03",
+      "difficulty": "easy",
+      "vi": "Hôm qua chúng tôi đưa thỏ đến bác sĩ thú y.",
+      "en": "We took our rabbit to the vet yesterday.",
+      "hint": "Thì quá khứ đơn."
+    },
+    {
+      "id": "tr-pets-animals-04",
+      "difficulty": "easy",
+      "vi": "Bạn phải vệ sinh lồng chuột hamster thường xuyên.",
+      "en": "You must clean the hamster's cage regularly.",
+      "hint": "Động từ khuyết thiếu must."
+    },
+    {
+      "id": "tr-pets-animals-05",
+      "difficulty": "easy",
+      "vi": "Chú chó golden retriever đã được một gia đình tốt bụng nhận nuôi.",
+      "en": "The golden retriever was adopted by a kind family.",
+      "hint": "Câu bị động thì quá khứ đơn."
+    },
+    {
+      "id": "tr-pets-animals-06",
+      "difficulty": "easy",
+      "vi": "Con vẹt của tôi nói nhiều hơn con chim hoàng yến của cô ấy.",
+      "en": "My parrot is more talkative than her canary.",
+      "hint": "So sánh hơn với tính từ dài."
+    },
+    {
+      "id": "tr-pets-animals-07",
+      "difficulty": "easy",
+      "vi": "Luôn cung cấp nước sạch cho thú cưng của bạn.",
+      "en": "Always provide fresh water for your pet.",
+      "hint": "Câu mệnh lệnh."
+    },
+    {
+      "id": "tr-pets-animals-08",
+      "difficulty": "easy",
+      "vi": "Tôi từng dắt chó đi dạo mỗi sáng.",
+      "en": "I used to take my dog for a walk every morning.",
+      "hint": "Cấu trúc used to + V."
+    },
+    {
+      "id": "tr-pets-animals-09",
+      "difficulty": "easy",
+      "vi": "Ngày mai chúng tôi phải mua thức ăn mới cho cá.",
+      "en": "We have to buy new food for the fish tomorrow.",
+      "hint": "Have to diễn tả sự cần thiết."
+    },
+    {
+      "id": "tr-pets-animals-10",
+      "difficulty": "easy",
+      "vi": "Việc tiêm phòng cho thú cưng hàng năm rất quan trọng.",
+      "en": "It is important to vaccinate your pet every year.",
+      "hint": "Cấu trúc It is + adj + to V."
+    }
+  ]
+}

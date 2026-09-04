@@ -1,3 +1,4 @@
+import SEED_SETS from './seed/translation-sets/index.json';
 import {
   SENTENCE_TOPIC_LABEL,
   TRANSLATION_SENTENCES,
@@ -79,11 +80,68 @@ function build(): TranslationSet[] {
     });
   }
 
+  sets.push(...seeded());
+
   // Xếp bài dễ lên trước, rồi mới đánh số — cùng lý do như thứ tự câu trong bài.
   sets.sort(
     (a, b) => DIFFICULTY_RANK[a.level] - DIFFICULTY_RANK[b.level] || a.title.localeCompare(b.title, 'vi'),
   );
   return sets.map((set, i) => ({ ...set, order: i + 1 }));
+}
+
+/**
+ * Bốn mươi bộ soạn thêm, nạp từ seed.
+ *
+ * Vì sao KHÔNG nhét vào `TRANSLATION_SENTENCES` như 100 câu gốc: 100 câu gốc mang
+ * theo cả `SENTENCE_ENRICHMENT` (cách diễn đạt khác + từ vựng) soạn tay cho từng
+ * câu, và chúng bị ràng vào union `SentenceTopic` chỉ có 10 giá trị. Bốn mươi bộ
+ * mới có chủ đề riêng, hẹp hơn hẳn ("Chỉ đường", "Thuê nhà"), nên bắt chúng đội
+ * lốt một trong 10 chủ đề cũ chỉ để lọt qua kiểu dữ liệu là nói dối cho tiện.
+ *
+ * `topic` vẫn phải điền vì lịch sử luyện tập thống kê theo trục đó — nên mỗi bộ
+ * mới được gán chủ đề GẦN NHẤT trong 10 chủ đề cũ. Đây là ánh xạ có mất mát, và
+ * nó chỉ dùng cho thống kê, không dùng để hiển thị: người học luôn thấy tên thật
+ * của bài.
+ */
+const SEED_TOPIC: Record<string, SentenceTopic> = {
+  'daily-routine': 'society', 'home-chores': 'family', shopping: 'economy',
+  'weather-talk': 'environment', directions: 'travel', 'food-cooking': 'health',
+  'pets-animals': 'society', 'clothes-style': 'society', 'phone-messages': 'technology',
+  neighbours: 'society', 'school-day': 'education', hobbies: 'society',
+  'body-health': 'health', 'time-plans': 'society',
+  'money-habits': 'economy', 'city-traffic': 'society', 'jobs-interview': 'work',
+  'online-life': 'technology', 'sports-fitness': 'health', 'music-film': 'media',
+  'travel-plans': 'travel', 'housing-rent': 'society', 'study-abroad': 'education',
+  volunteering: 'society', 'food-culture': 'health', 'shopping-online': 'economy',
+  friendship: 'family', 'city-vs-country': 'society', 'time-management': 'work',
+  festivals: 'society',
+  'ai-and-jobs': 'technology', 'climate-policy': 'environment', 'public-health': 'health',
+  'urban-planning': 'society', 'education-reform': 'education', 'privacy-data': 'technology',
+  'ageing-society': 'society', 'cultural-heritage': 'society', inequality: 'society',
+  'science-funding': 'education',
+};
+
+type SeedSet = {
+  slug: string;
+  title: string;
+  blurb: string;
+  level: SentenceDifficulty;
+  items: { id: string; difficulty: SentenceDifficulty; vi: string; en: string; hint: string }[];
+};
+
+function seeded(): TranslationSet[] {
+  return (SEED_SETS as SeedSet[]).map((s) => {
+    const topic = SEED_TOPIC[s.slug] ?? 'society';
+    return {
+      id: `tset-${s.slug}`,
+      order: 0,
+      title: s.title,
+      topic,
+      blurb: s.blurb,
+      level: s.level,
+      items: s.items.map((it) => ({ ...it, topic })),
+    };
+  });
 }
 
 export const TRANSLATION_SETS: TranslationSet[] = build();

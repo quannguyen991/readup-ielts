@@ -1,0 +1,78 @@
+{
+  "slug": "study-abroad",
+  "title": "Du học",
+  "blurb": "Câu về hồ sơ, học bổng và sống xa nhà.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-study-abroad-01",
+      "difficulty": "medium",
+      "vi": "Sinh viên nhận học bổng toàn phần, người đã đạt điểm IELTS 8.0, sẽ bay sang Anh vào tháng Chín.",
+      "en": "The student who received a full scholarship and achieved an IELTS score of 8.0 will fly to the UK in September.",
+      "hint": "Mệnh đề quan hệ với who, chủ ngữ số ít."
+    },
+    {
+      "id": "tr-study-abroad-02",
+      "difficulty": "medium",
+      "vi": "Khi bạn nộp hồ sơ xin visa du học, hãy chắc chắn rằng tất cả giấy tờ đều hợp lệ.",
+      "en": "When you submit your study visa application, make sure that all documents are valid and complete.",
+      "hint": "Mệnh đề trạng ngữ thời gian với when + mệnh lệnh."
+    },
+    {
+      "id": "tr-study-abroad-03",
+      "difficulty": "medium",
+      "vi": "Mặc dù học bổng chỉ chi trả học phí, tôi vẫn rất biết ơn vì cơ hội này.",
+      "en": "Although the scholarship only covers tuition fees, I am still very grateful for this opportunity.",
+      "hint": "Mệnh đề nhượng bộ với although."
+    },
+    {
+      "id": "tr-study-abroad-04",
+      "difficulty": "medium",
+      "vi": "Vì cô ấy nhớ nhà quá nhiều, cô ấy thường gọi video cho bố mẹ mỗi tối.",
+      "en": "Because she misses home so much, she often video calls her parents every evening.",
+      "hint": "Mệnh đề nguyên nhân với because."
+    },
+    {
+      "id": "tr-study-abroad-05",
+      "difficulty": "medium",
+      "vi": "Bài luận xin học bổng mà tôi viết bằng tiếng Anh đã được chấp nhận ngay lần đầu.",
+      "en": "The scholarship essay which I wrote in English was accepted on the first attempt.",
+      "hint": "Mệnh đề quan hệ với which, bổ nghĩa cho tân ngữ."
+    },
+    {
+      "id": "tr-study-abroad-06",
+      "difficulty": "medium",
+      "vi": "Nếu bạn tham gia câu lạc bộ tiếng Anh, bạn sẽ hòa nhập nhanh hơn với bạn bè quốc tế.",
+      "en": "If you join the English club, you will integrate faster with international friends.",
+      "hint": "Câu điều kiện loại 1 (if + hiện tại, tương lai)."
+    },
+    {
+      "id": "tr-study-abroad-07",
+      "difficulty": "medium",
+      "vi": "Anh ấy học tiếng Đức mỗi ngày để có thể giao tiếp tốt khi du học ở Berlin.",
+      "en": "He studies German every day so that he can communicate well when studying abroad in Berlin.",
+      "hint": "Mệnh đề mục đích với so that + can."
+    },
+    {
+      "id": "tr-study-abroad-08",
+      "difficulty": "medium",
+      "vi": "Người bạn cùng phòng mà cha mẹ là giáo sư đại học đã giúp tôi rất nhiều trong việc học.",
+      "en": "My roommate whose parents are university professors has helped me a lot with my studies.",
+      "hint": "Mệnh đề quan hệ sở hữu với whose."
+    },
+    {
+      "id": "tr-study-abroad-09",
+      "difficulty": "medium",
+      "vi": "Trong khi tôi đang chuẩn bị hồ sơ xin học bổng, bạn tôi đã nhận được thư mời nhập học.",
+      "en": "While I was preparing the scholarship application, my friend had already received the admission letter.",
+      "hint": "Mệnh đề trạng ngữ thời gian với while + quá khứ tiếp diễn."
+    },
+    {
+      "id": "tr-study-abroad-10",
+      "difficulty": "medium",
+      "vi": "Không chỉ cô ấy vượt qua nỗi nhớ nhà, mà cô ấy còn trở nên tự tin hơn trong môi trường mới.",
+      "en": "Not only did she overcome her homesickness, but she also became more confident in the new environment.",
+      "hint": "Cấu trúc đảo ngữ với not only ... but also."
+    }
+  ]
+}

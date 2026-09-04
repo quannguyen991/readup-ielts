@@ -1,0 +1,78 @@
+{
+  "slug": "weather-talk",
+  "title": "Thời tiết",
+  "blurb": "Câu mô tả thời tiết và cách nó đổi kế hoạch.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-weather-talk-01",
+      "difficulty": "easy",
+      "vi": "Mặt trời chiếu sáng rực rỡ trên thành phố hôm nay.",
+      "en": "The sun shines brightly over the city today.",
+      "hint": "Thì hiện tại đơn, mô tả hiện tượng chung"
+    },
+    {
+      "id": "tr-weather-talk-02",
+      "difficulty": "easy",
+      "vi": "Trời đang mưa to ở khu vực phía bắc.",
+      "en": "It is raining heavily across the northern region.",
+      "hint": "Thì hiện tại tiếp diễn, diễn tả hành động đang xảy ra"
+    },
+    {
+      "id": "tr-weather-talk-03",
+      "difficulty": "easy",
+      "vi": "Dự báo đã dự đoán bão sấm giông cho chiều nay.",
+      "en": "The forecast has predicted thunderstorms for this afternoon.",
+      "hint": "Thì hiện tại hoàn thành, chỉ việc đã xảy ra và ảnh hưởng"
+    },
+    {
+      "id": "tr-weather-talk-04",
+      "difficulty": "easy",
+      "vi": "Ngày mai sẽ mang đến bầu trời trong xanh và gió nhẹ.",
+      "en": "Tomorrow will bring clear skies and gentle breezes.",
+      "hint": "Thì tương lai đơn, dự đoán sự kiện sẽ tới"
+    },
+    {
+      "id": "tr-weather-talk-05",
+      "difficulty": "easy",
+      "vi": "Gió sẽ đang thổi mạnh trong đêm nay.",
+      "en": "The wind will be blowing strongly tonight.",
+      "hint": "Thì tương lai tiếp diễn, hành động sẽ đang diễn ra"
+    },
+    {
+      "id": "tr-weather-talk-06",
+      "difficulty": "easy",
+      "vi": "Chúng ta phải mang ô trong mùa mưa bão.",
+      "en": "We must carry umbrellas during the monsoon season.",
+      "hint": "Modal must, diễn tả sự cần thiết"
+    },
+    {
+      "id": "tr-weather-talk-07",
+      "difficulty": "easy",
+      "vi": "Sương mù dày đặc đã được các trạm ven biển báo cáo sớm.",
+      "en": "Heavy fog was reported by the coastal stations early.",
+      "hint": "Câu bị động, nhấn mạnh đối tượng bị tác động"
+    },
+    {
+      "id": "tr-weather-talk-08",
+      "difficulty": "easy",
+      "vi": "Nhiệt độ hôm nay cảm thấy lạnh hơn so với buổi sáng hôm qua.",
+      "en": "Today's temperature feels colder than yesterday's morning.",
+      "hint": "Câu so sánh, dùng hơn để so sánh"
+    },
+    {
+      "id": "tr-weather-talk-09",
+      "difficulty": "easy",
+      "vi": "Đây là ngày gió mạnh nhất trong tháng.",
+      "en": "This is the windiest day of the month.",
+      "hint": "Câu siêu cấp, dùng nhất để so sánh"
+    },
+    {
+      "id": "tr-weather-talk-10",
+      "difficulty": "easy",
+      "vi": "Lái xe trong mưa đòi hỏi phải cẩn thận hơn.",
+      "en": "Driving in the rain requires extra caution.",
+      "hint": "Danh động từ (gerund) làm chủ ngữ"
+    }
+  ]
+}

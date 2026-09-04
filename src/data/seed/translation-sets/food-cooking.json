@@ -1,0 +1,78 @@
+{
+  "slug": "food-cooking",
+  "title": "Nấu ăn",
+  "blurb": "Câu về món ăn, nguyên liệu và cách chế biến.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-food-cooking-01",
+      "difficulty": "easy",
+      "vi": "Để làm món cà ri này, bạn cần nhâm nhi từng gia vị một cách cẩn thận.",
+      "en": "To make this curry, you need to add spices gradually with careful attention.",
+      "hint": "Mệnh đề to-infinitive làm chủ ngữ, động từ need + to-infinitive."
+    },
+    {
+      "id": "tr-food-cooking-02",
+      "difficulty": "easy",
+      "vi": "Những người yêu thích ăn cay thường thêm nhiều tiêu vào các món ăn hàng ngày.",
+      "en": "People who enjoy spicy food typically add more pepper to their daily meals.",
+      "hint": "Mệnh đề quan hệ với who, động từ typically + verb nguyên mẫu."
+    },
+    {
+      "id": "tr-food-cooking-03",
+      "difficulty": "easy",
+      "vi": "Nếu bạn không có bơ, bạn có thể thay thế bằng dầu ô liu tốt hơn.",
+      "en": "If you don't have butter, you could substitute it with olive oil instead.",
+      "hint": "Câu điều kiện loại 1, động từ could + infinitive để đưa ra gợi ý."
+    },
+    {
+      "id": "tr-food-cooking-04",
+      "difficulty": "easy",
+      "vi": "Món salad ngon nhất là khi tôi trộn rau tươi với nước sốt dặc biệt.",
+      "en": "The salad tastes best when I mix fresh vegetables with my special dressing.",
+      "hint": "Mệnh đề when chỉ thời gian, động từ tastes + adjective."
+    },
+    {
+      "id": "tr-food-cooking-05",
+      "difficulty": "easy",
+      "vi": "Hầu hết các đầu bếp chuyên nghiệp đều coi muối và đường là những nguyên liệu quan trọng nhất.",
+      "en": "Most professional chefs consider salt and sugar as the most essential ingredients.",
+      "hint": "Động từ consider + object + as + noun phrase, superlative most essential."
+    },
+    {
+      "id": "tr-food-cooking-06",
+      "difficulty": "easy",
+      "vi": "Mặc dù công thức này phức tạp, nhưng kết quả nó luôn ngon lắm.",
+      "en": "Although this recipe is complicated, the result always turns out delicious.",
+      "hint": "Mệnh đề nhượng bộ với although, động từ turn out + adjective."
+    },
+    {
+      "id": "tr-food-cooking-07",
+      "difficulty": "easy",
+      "vi": "Bất cứ ai đã nếm thử bánh chocolate của tôi đều nói nó thơm phức lắm.",
+      "en": "Anyone who has tasted my chocolate cake says it smells absolutely wonderful.",
+      "hint": "Mệnh đề quan hệ với who, present perfect has tasted kết hợp động từ says."
+    },
+    {
+      "id": "tr-food-cooking-08",
+      "difficulty": "easy",
+      "vi": "Bằng cách rưới mật ong lên trên mặt bánh, tôi làm cho nó trở nên bóng và ngọt hơn.",
+      "en": "By drizzling honey on top of the cake, I make it shinier and sweeter.",
+      "hint": "Cấu trúc by + gerund, động từ make + object + adjective."
+    },
+    {
+      "id": "tr-food-cooking-09",
+      "difficulty": "easy",
+      "vi": "Nước dùng càng được nấu lâu thì càng đậm đà và hương vị càng tốt.",
+      "en": "The longer the broth simmers, the richer and more flavourful it becomes.",
+      "hint": "Cấu trúc so sánh kép (the more... the more...), động từ simmer + gerund."
+    },
+    {
+      "id": "tr-food-cooking-10",
+      "difficulty": "easy",
+      "vi": "Để các thực khách cảm thấy hài lòng, bạn phải chú ý đến chi tiết từng bước nấu nướng.",
+      "en": "To keep diners satisfied, you must pay attention to every cooking step carefully.",
+      "hint": "To-infinitive diễn tả mục đích, động từ must + infinitive nhấn mạnh bắt buộc."
+    }
+  ]
+}

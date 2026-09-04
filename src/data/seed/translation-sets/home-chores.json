@@ -1,0 +1,78 @@
+{
+  "slug": "home-chores",
+  "title": "Việc nhà",
+  "blurb": "Câu về dọn dẹp, nấu nướng và phân công trong nhà.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-home-chores-01",
+      "difficulty": "easy",
+      "vi": "Tôi quét sàn nhà mỗi sáng.",
+      "en": "I sweep the floor in the morning.",
+      "hint": "Thì hiện tại đơn"
+    },
+    {
+      "id": "tr-home-chores-02",
+      "difficulty": "easy",
+      "vi": "Mẹ đang rửa bát sau bữa tối.",
+      "en": "Mom is washing the dishes after dinner.",
+      "hint": "Thì hiện tại tiếp diễn"
+    },
+    {
+      "id": "tr-home-chores-03",
+      "difficulty": "easy",
+      "vi": "Chúng tôi đã giặt sạch tất cả quần áo.",
+      "en": "We have washed all the clothes already.",
+      "hint": "Thì hiện tại hoàn thành"
+    },
+    {
+      "id": "tr-home-chores-04",
+      "difficulty": "easy",
+      "vi": "Anh ấy nấu cơm cho gia đình hôm qua.",
+      "en": "He cooked rice for the family yesterday.",
+      "hint": "Thì quá khứ đơn"
+    },
+    {
+      "id": "tr-home-chores-05",
+      "difficulty": "easy",
+      "vi": "Tôi sẽ dọn dẹp nhà vào cuối tuần.",
+      "en": "I will clean the house this weekend.",
+      "hint": "Thì tương lai simple (will)"
+    },
+    {
+      "id": "tr-home-chores-06",
+      "difficulty": "easy",
+      "vi": "Bạn nên rửa bát ngay sau khi ăn.",
+      "en": "You should wash the dishes right after eating.",
+      "hint": "Modal should + động từ nguyên mẫu"
+    },
+    {
+      "id": "tr-home-chores-07",
+      "difficulty": "easy",
+      "vi": "Hãy quét bụi bề mặt bàn ngay bây giờ.",
+      "en": "Please sweep the table surface right now.",
+      "hint": "Câu mệnh lệnh (imperative)"
+    },
+    {
+      "id": "tr-home-chores-08",
+      "difficulty": "easy",
+      "vi": "Giặt quần áo vào buổi sáng giúp tôi tỉnh táo.",
+      "en": "Washing clothes in the morning keeps me alert.",
+      "hint": "Danh động từ (gerund) làm chủ ngữ"
+    },
+    {
+      "id": "tr-home-chores-09",
+      "difficulty": "easy",
+      "vi": "Bữa ăn tối đã được nấu bởi mẹ.",
+      "en": "Dinner was cooked by Mom last night.",
+      "hint": "Câu bị động (passive voice)"
+    },
+    {
+      "id": "tr-home-chores-10",
+      "difficulty": "easy",
+      "vi": "Tôi đặt đồng hồ hẹn giờ để đun nước cho trà.",
+      "en": "I set the timer to boil water for tea.",
+      "hint": "Câu có mục đích với infinitive"
+    }
+  ]
+}

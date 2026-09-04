@@ -1,0 +1,78 @@
+{
+  "slug": "time-management",
+  "title": "Quản lý thời gian",
+  "blurb": "Câu về sắp xếp việc và trì hoãn.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-time-management-01",
+      "difficulty": "medium",
+      "vi": "Tôi nộp dự án sớm vì tôi ưu tiên thời hạn hơn mọi thứ khác.",
+      "en": "I submitted the project early because I prioritized the deadline above all else.",
+      "hint": "Câu ghép với because (nguyên nhân)"
+    },
+    {
+      "id": "tr-time-management-02",
+      "difficulty": "medium",
+      "vi": "Mặc dù tôi muốn trì hoãn, tôi đã hoàn thành bản thuyết trình đúng thời gian.",
+      "en": "Although I felt tempted to procrastinate, I completed the presentation on time.",
+      "hint": "Câu phức với although (đối lập)"
+    },
+    {
+      "id": "tr-time-management-03",
+      "difficulty": "medium",
+      "vi": "Nếu bạn đặt ra ưu tiên rõ ràng, bạn sẽ tránh bỏ lỡ các thời hạn quan trọng trong công việc.",
+      "en": "If you set clear priorities, you will avoid missing important deadlines in work.",
+      "hint": "Câu điều kiện loại 1 với if"
+    },
+    {
+      "id": "tr-time-management-04",
+      "difficulty": "medium",
+      "vi": "Đồng nghiệp của tôi, người luôn cập nhật lịch làm việc, không bao giờ quên bất kỳ cuộc họp nào ever.",
+      "en": "My colleague, who always updates his calendar, never forgets any meeting ever.",
+      "hint": "Mệnh đề quan hệ who mô tả người"
+    },
+    {
+      "id": "tr-time-management-05",
+      "difficulty": "medium",
+      "vi": "Công việc mà cần được giải quyết ngay lập tức nên được thực hiện trước bất kỳ công việc nào khác.",
+      "en": "The task that requires immediate attention should be tackled before any other work.",
+      "hint": "Mệnh đề quan hệ that chỉ định đối tượng"
+    },
+    {
+      "id": "tr-time-management-06",
+      "difficulty": "medium",
+      "vi": "Trong khi một số thành viên nhóm trì hoãn nhiệm vụ, tôi vẫn tuân thủ lịch biểu của mình.",
+      "en": "While some team members delay their assignments, I stick to my schedule.",
+      "hint": "Câu ghép với while (đồng thời, trái ngược)"
+    },
+    {
+      "id": "tr-time-management-07",
+      "difficulty": "medium",
+      "vi": "Ngay khi đồng hồ điểm chín giờ, tôi bắt đầu xem lại kế hoạch trong ngày.",
+      "en": "As soon as the clock strikes nine, I begin reviewing the day's agenda.",
+      "hint": "Câu ghép với as soon as (khi... ngay)"
+    },
+    {
+      "id": "tr-time-management-08",
+      "difficulty": "medium",
+      "vi": "Tôi sắp xếp tuần làm việc sao cho mỗi ngày đều có ít nhất một buổi học tập tập trung.",
+      "en": "I organized my week so that each day includes at least one focused study session.",
+      "hint": "Câu ghép với so that (mục đích)"
+    },
+    {
+      "id": "tr-time-management-09",
+      "difficulty": "medium",
+      "vi": "Kể từ khi khách hàng kéo dài thời hạn, chúng tôi có thể dành thời gian nhiều hơn cho việc kiểm thử.",
+      "en": "Since the client extended the deadline, we can allocate more time for testing.",
+      "hint": "Câu ghép với since (nguyên nhân)"
+    },
+    {
+      "id": "tr-time-management-10",
+      "difficulty": "medium",
+      "vi": "Nếu không ngừng hoãn công việc, lượng công việc tồn đọng sẽ tiếp tục tăng đáng kể theo thời gian.",
+      "en": "Unless you stop postponing tasks, the backlog will keep growing significantly over time.",
+      "hint": "Câu ghép với unless (điều kiện phủ định)"
+    }
+  ]
+}

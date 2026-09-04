@@ -1,0 +1,78 @@
+{
+  "slug": "climate-policy",
+  "title": "Chính sách khí hậu",
+  "blurb": "Câu về cam kết giảm phát thải và đánh đổi kinh tế.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-climate-policy-01",
+      "difficulty": "hard",
+      "vi": "Các nước phát triển phải cắt giảm lượng khí thải carbon đáng kể trong thập kỷ tới nếu muốn đạt được mục tiêu khí hậu toàn cầu.",
+      "en": "Developed nations must significantly reduce carbon emissions over the next decade if they are to achieve global climate targets.",
+      "hint": "Câu điều kiện loại 1 với mệnh đề if + will/must, nhấn mạnh trách nhiệm"
+    },
+    {
+      "id": "tr-climate-policy-02",
+      "difficulty": "hard",
+      "vi": "Năng lượng tái tạo, được coi là giải pháp then chốt cho cuộc khủng hoảng khí hậu, đang được đầu tư rộng rãi bởi các chính phủ trên thế giới.",
+      "en": "Renewable energy, regarded as the key solution to the climate crisis, is being extensively funded by governments worldwide.",
+      "hint": "Mệnh đề quan hệ với appositive phrase (regarded as), cấu trúc bị động hiện tại tiếp diễn"
+    },
+    {
+      "id": "tr-climate-policy-03",
+      "difficulty": "hard",
+      "vi": "Mặc dù thuế carbon có thể tăng chi phí sản xuất, nó lại khuyến khích các doanh nghiệp chuyển sang các phương pháp sản xuất xanh hơn.",
+      "en": "Although carbon taxes may increase production costs, they encourage businesses to transition toward more sustainable manufacturing practices.",
+      "hint": "Mệnh đề nhượng bộ (although), so sánh giữa hai tác động trái chiều"
+    },
+    {
+      "id": "tr-climate-policy-04",
+      "difficulty": "hard",
+      "vi": "Các nhà khoa học cảnh báo rằng nếu không hạn chế phát thải trong năm năm tới, sẽ không thể ngăn chặn biến đổi khí hậu nghiêm trọng.",
+      "en": "Scientists warn that unless emissions are curtailed within the next five years, severe climate change cannot be prevented.",
+      "hint": "Câu điều kiện âm (unless), tường thuật lời nói với that-clause"
+    },
+    {
+      "id": "tr-climate-policy-05",
+      "difficulty": "hard",
+      "vi": "Các chính sách năng lượng tái tạo được thực hiện ở nhiều quốc gia đã chứng minh khả năng giảm phụ thuộc vào nhiên liệu hóa thạch.",
+      "en": "Renewable energy policies implemented across numerous countries have demonstrated the capacity to reduce dependence on fossil fuels.",
+      "hint": "Mệnh đề quan hệ với động từ quá khứ phân từ (implemented), cấu trúc Perfect tense"
+    },
+    {
+      "id": "tr-climate-policy-06",
+      "difficulty": "hard",
+      "vi": "Để đạt được sự trung hòa cacbon, các khu vực công nghiệp phải chuyển đổi sang sử dụng điện từ các nguồn sạch trong thập kỷ này.",
+      "en": "In order to achieve carbon neutrality, industrial sectors must transition to electricity sourced from clean power in this decade.",
+      "hint": "Cụm mục đích (in order to), yêu cầu bắt buộc với must + verb nguyên mẫu"
+    },
+    {
+      "id": "tr-climate-policy-07",
+      "difficulty": "hard",
+      "vi": "Các sáng kiến khí hậu địa phương, dù quy mô nhỏ, đóng góp đáng kể vào nỗ lực giảm phát thải toàn cầu.",
+      "en": "Local climate initiatives, despite their limited scale, contribute meaningfully to the global effort to reduce emissions.",
+      "hint": "Mệnh đề nhượng bộ trong appositive (despite), cấu trúc để nêu lợi ích không dễ thấy"
+    },
+    {
+      "id": "tr-climate-policy-08",
+      "difficulty": "hard",
+      "vi": "Những người ủng hộ năng lượng hạt nhân cho rằng nó là lựa chọn thực tế nhất để thay thế nhiên liệu hóa thạch mà vẫn đảm bảo cung cấp năng lượng ổn định.",
+      "en": "Proponents of nuclear energy argue that it represents the most pragmatic alternative to fossil fuels while ensuring stable energy supply.",
+      "hint": "Mệnh đề quán tính với while, cấu trúc so sánh với superlative form"
+    },
+    {
+      "id": "tr-climate-policy-09",
+      "difficulty": "hard",
+      "vi": "Được công nhân như một trong những biện pháp hiệu quả nhất, thuế carbon được áp dụng để khuyến khích các doanh nghiệp hạn chế lượng khí thải của mình.",
+      "en": "Recognized as one of the most effective measures, carbon taxation is implemented to incentivize corporations to limit their greenhouse gas output.",
+      "hint": "Mệnh đề quán tính bị động (Recognized as), cấu trúc mục đích với to-infinitive"
+    },
+    {
+      "id": "tr-climate-policy-10",
+      "difficulty": "hard",
+      "vi": "Nếu các quốc gia phát triển không tăng cường hỗ trợ cho các nước đang phát triển trong việc chuyển đổi năng lượng, mục tiêu Paris sẽ khó đạt được.",
+      "en": "If developed countries fail to strengthen financial support for developing nations' energy transition, the Paris Agreement targets will remain difficult to achieve.",
+      "hint": "Câu điều kiện loại 1 với cấu trúc fail to + verb, mệnh đề kết quả"
+    }
+  ]
+}

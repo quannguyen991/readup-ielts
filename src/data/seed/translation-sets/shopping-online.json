@@ -1,0 +1,78 @@
+{
+  "slug": "shopping-online",
+  "title": "Mua hàng trực tuyến",
+  "blurb": "Câu về đặt hàng, giao hàng và đánh giá.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-shopping-online-01",
+      "difficulty": "medium",
+      "vi": "Tôi đã đặt một chiếc áo khoác online, nhưng màu sắc nhận được lại khác so với hình ảnh trên trang web.",
+      "en": "I ordered a jacket online, but the color I received was different from the image on the website.",
+      "hint": "Mệnh đề đối lập với 'but'."
+    },
+    {
+      "id": "tr-shopping-online-02",
+      "difficulty": "medium",
+      "vi": "Khi gói hàng được giao đến, tôi phát hiện ra rằng nó đã bị hư hỏng trong quá trình vận chuyển.",
+      "en": "When the package was delivered, I discovered that it had been damaged during transit.",
+      "hint": "Mệnh đề trạng ngữ chỉ thời gian 'when'."
+    },
+    {
+      "id": "tr-shopping-online-03",
+      "difficulty": "medium",
+      "vi": "Vì sản phẩm không đúng với mô tả, tôi đã yêu cầu hoàn tiền ngay sau khi nhận hàng.",
+      "en": "Because the product did not match the description, I requested a refund right after receiving it.",
+      "hint": "Mệnh đề chỉ nguyên nhân 'because'."
+    },
+    {
+      "id": "tr-shopping-online-04",
+      "difficulty": "medium",
+      "vi": "Khách hàng nào đã mua hàng trên trang web đó thường để lại đánh giá năm sao.",
+      "en": "Customers who have purchased items on that website often leave five-star reviews.",
+      "hint": "Mệnh đề quan hệ với 'who'."
+    },
+    {
+      "id": "tr-shopping-online-05",
+      "difficulty": "medium",
+      "vi": "Mặc dù giá cả khá cao, nhiều người vẫn thích mua sắm trực tuyến vì sự tiện lợi.",
+      "en": "Although the prices are quite high, many people still prefer online shopping for its convenience.",
+      "hint": "Mệnh đề nhượng bộ 'although'."
+    },
+    {
+      "id": "tr-shopping-online-06",
+      "difficulty": "medium",
+      "vi": "Nếu đơn hàng bị thất lạc, công ty sẽ gửi lại sản phẩm hoặc hoàn tiền đầy đủ cho khách.",
+      "en": "If the order gets lost, the company will resend the product or issue a full refund to the customer.",
+      "hint": "Mệnh đề điều kiện 'if'."
+    },
+    {
+      "id": "tr-shopping-online-07",
+      "difficulty": "medium",
+      "vi": "Đây là cửa hàng trực tuyến nơi khách hàng có thể mua sắm mà không lo về chất lượng hàng giả.",
+      "en": "This is an online store where customers can shop without worrying about counterfeit quality.",
+      "hint": "Mệnh đề quan hệ với 'where'."
+    },
+    {
+      "id": "tr-shopping-online-08",
+      "difficulty": "medium",
+      "vi": "Đánh giá sao không chỉ phản ánh chất lượng sản phẩm mà còn ảnh hưởng đến quyết định của người mua sau.",
+      "en": "Star ratings not only reflect product quality but also influence the decisions of future buyers.",
+      "hint": "Cấu trúc 'not only... but also...'."
+    },
+    {
+      "id": "tr-shopping-online-09",
+      "difficulty": "medium",
+      "vi": "Tôi đã đặt hàng từ sớm để chắc chắn rằng quà tặng sẽ đến kịp dịp sinh nhật của bạn tôi.",
+      "en": "I placed the order early so that the gift would arrive in time for my friend's birthday.",
+      "hint": "Mệnh đề chỉ mục đích 'so that'."
+    },
+    {
+      "id": "tr-shopping-online-10",
+      "difficulty": "medium",
+      "vi": "Người mua hàng có đơn vận chuyển miễn phí thường cảm thấy hài lòng hơn với trải nghiệm mua sắm.",
+      "en": "Shoppers whose orders have free shipping often feel more satisfied with the shopping experience.",
+      "hint": "Mệnh đề quan hệ với 'whose'."
+    }
+  ]
+}

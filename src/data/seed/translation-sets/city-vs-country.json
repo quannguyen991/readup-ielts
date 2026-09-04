@@ -1,0 +1,78 @@
+{
+  "slug": "city-vs-country",
+  "title": "Thành thị và nông thôn",
+  "blurb": "Câu so sánh hai lối sống.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-city-vs-country-01",
+      "difficulty": "medium",
+      "vi": "Mặc dù cuộc sống ở thành phố hiện đại và tiện nghi hơn, nhưng nhiều người vẫn thích sự yên tĩnh của nông thôn.",
+      "en": "Although city life is more modern and convenient, many people still prefer the quietness of the countryside.",
+      "hint": "Liên từ tương phản 'Although' + mệnh đề."
+    },
+    {
+      "id": "tr-city-vs-country-02",
+      "difficulty": "medium",
+      "vi": "Những người sống ở nông thôn thường có chi phí sinh hoạt thấp hơn, nhưng họ lại thiếu các dịch vụ y tế chất lượng cao.",
+      "en": "People who live in rural areas often have lower living costs, but they lack high-quality medical services.",
+      "hint": "Mệnh đề quan hệ 'who' + liên từ 'but'."
+    },
+    {
+      "id": "tr-city-vs-country-03",
+      "difficulty": "medium",
+      "vi": "Chi phí nhà ở tại thành phố quá cao, vì vậy nhiều gia đình trẻ buộc phải chuyển ra ngoại ô.",
+      "en": "Housing costs in the city are too high, so many young families are forced to move to the suburbs.",
+      "hint": "Liên từ kết quả 'so' nối hai mệnh đề."
+    },
+    {
+      "id": "tr-city-vs-country-04",
+      "difficulty": "medium",
+      "vi": "Nông thôn là nơi mà không khí trong lành và cuộc sống yên bình, điều mà cư dân thành phố hiếm khi có được.",
+      "en": "The countryside is a place where fresh air and peaceful life exist, which city dwellers rarely have.",
+      "hint": "Mệnh đề quan hệ 'where' và 'which'."
+    },
+    {
+      "id": "tr-city-vs-country-05",
+      "difficulty": "medium",
+      "vi": "Vì cơ hội việc làm ở thành phố đa dạng hơn, nhiều sinh viên tốt nghiệp chọn ở lại đó để phát triển sự nghiệp.",
+      "en": "Because job opportunities in the city are more diverse, many graduates choose to stay there to develop their careers.",
+      "hint": "Liên từ nguyên nhân 'Because' + mệnh đề chính."
+    },
+    {
+      "id": "tr-city-vs-country-06",
+      "difficulty": "medium",
+      "vi": "Những người có con nhỏ thường chọn sống ở nông thôn vì môi trường an toàn và ít ô nhiễm.",
+      "en": "People whose children are young often choose to live in the countryside because the environment is safer and less polluted.",
+      "hint": "Mệnh đề quan hệ 'whose' + liên từ 'because'."
+    },
+    {
+      "id": "tr-city-vs-country-07",
+      "difficulty": "medium",
+      "vi": "Nếu bạn muốn tiết kiệm tiền và có không gian sống rộng rãi, bạn nên cân nhắc chuyển về vùng ngoại ô.",
+      "en": "If you want to save money and have more living space, you should consider moving to the suburbs.",
+      "hint": "Câu điều kiện loại 1 với 'If'."
+    },
+    {
+      "id": "tr-city-vs-country-08",
+      "difficulty": "medium",
+      "vi": "Các thành phố lớn, nơi tập trung nhiều trường đại học và bệnh viện, luôn thu hút người dân từ các vùng quê.",
+      "en": "Big cities, where many universities and hospitals are concentrated, always attract people from rural areas.",
+      "hint": "Mệnh đề quan hệ không xác định với 'where'."
+    },
+    {
+      "id": "tr-city-vs-country-09",
+      "difficulty": "medium",
+      "vi": "Khi cuộc sống ở nông thôn trở nên quá tẻ nhạt, một số người trẻ quyết định lên thành phố để tìm kiếm cơ hội mới.",
+      "en": "When rural life becomes too boring, some young people decide to move to the city to seek new opportunities.",
+      "hint": "Liên từ thời gian 'When' + mệnh đề chính."
+    },
+    {
+      "id": "tr-city-vs-country-10",
+      "difficulty": "medium",
+      "vi": "Trong khi thành phố có nhiều tiện nghi hiện đại, nông thôn lại mang đến sự gần gũi với thiên nhiên và cộng đồng thân thiện.",
+      "en": "While the city offers many modern amenities, the countryside provides closeness to nature and a friendly community.",
+      "hint": "Liên từ tương phản 'While' (hai vế song song)."
+    }
+  ]
+}

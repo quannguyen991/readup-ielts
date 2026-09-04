@@ -1,0 +1,78 @@
+{
+  "slug": "clothes-style",
+  "title": "Quần áo",
+  "blurb": "Câu về trang phục, cỡ số và cách phối đồ.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-clothes-style-01",
+      "difficulty": "easy",
+      "vi": "Chiếc áo sơ mi này được làm bằng cotton.",
+      "en": "This shirt is made of cotton.",
+      "hint": "cấu trúc bị động"
+    },
+    {
+      "id": "tr-clothes-style-02",
+      "difficulty": "easy",
+      "vi": "Váy đỏ đẹp hơn váy xanh.",
+      "en": "The red dress is prettier than the blue one.",
+      "hint": "cấu trúc so sánh hơn"
+    },
+    {
+      "id": "tr-clothes-style-03",
+      "difficulty": "easy",
+      "vi": "Hãy mặc bộ vest này cho buổi phỏng vấn.",
+      "en": "Wear this suit for the interview.",
+      "hint": "câu mệnh lệnh"
+    },
+    {
+      "id": "tr-clothes-style-04",
+      "difficulty": "easy",
+      "vi": "Bạn phải giặt quần áo bằng nước lạnh.",
+      "en": "You must wash clothes with cold water.",
+      "hint": "động từ khiếm khuyết must"
+    },
+    {
+      "id": "tr-clothes-style-05",
+      "difficulty": "easy",
+      "vi": "Tôi chưa bao giờ mặc áo dài.",
+      "en": "I have never worn an ao dai.",
+      "hint": "thì hiện tại hoàn thành"
+    },
+    {
+      "id": "tr-clothes-style-06",
+      "difficulty": "easy",
+      "vi": "Tôi từng mặc đồng phục khi đi học.",
+      "en": "I used to wear a uniform at school.",
+      "hint": "cấu trúc used to"
+    },
+    {
+      "id": "tr-clothes-style-07",
+      "difficulty": "easy",
+      "vi": "Bạn nên chọn size lớn hơn.",
+      "en": "You should choose a larger size.",
+      "hint": "động từ khiếm khuyết should"
+    },
+    {
+      "id": "tr-clothes-style-08",
+      "difficulty": "easy",
+      "vi": "Tôi cần mua một đôi giày mới.",
+      "en": "I need to buy a new pair of shoes.",
+      "hint": "cấu trúc need to"
+    },
+    {
+      "id": "tr-clothes-style-09",
+      "difficulty": "easy",
+      "vi": "Điều quan trọng là mặc quần áo thoải mái.",
+      "en": "It is important to wear comfortable clothes.",
+      "hint": "cấu trúc it is important to"
+    },
+    {
+      "id": "tr-clothes-style-10",
+      "difficulty": "easy",
+      "vi": "Có một vết bẩn trên áo sơ mi của bạn.",
+      "en": "There is a stain on your shirt.",
+      "hint": "cấu trúc there is"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "phone-messages",
+  "title": "Điện thoại và tin nhắn",
+  "blurb": "Câu về gọi điện, nhắn tin và hẹn gặp.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-phone-messages-01",
+      "difficulty": "easy",
+      "vi": "Tôi vừa gọi cho bạn nhưng không có ai nghe máy.",
+      "en": "I just called you but nobody answered the phone.",
+      "hint": "Thì quá khứ đơn với \"just\" để chỉ hành động vừa xảy ra."
+    },
+    {
+      "id": "tr-phone-messages-02",
+      "difficulty": "easy",
+      "vi": "Anh ấy nhắn lại cho tôi sau khi họp xong.",
+      "en": "He will text me back after the meeting finishes.",
+      "hint": "Câu điều kiện thời gian: \"after\" + mệnh đề với thì hiện tại đơn."
+    },
+    {
+      "id": "tr-phone-messages-03",
+      "difficulty": "easy",
+      "vi": "Chúng tôi đã hẹn gặp nhau lúc ba giờ chiều hôm nay.",
+      "en": "We arranged to meet at three o'clock this afternoon.",
+      "hint": "Cấu trúc \"arrange to + V\" diễn tả việc lên kế hoạch."
+    },
+    {
+      "id": "tr-phone-messages-04",
+      "difficulty": "easy",
+      "vi": "Bạn có thể gọi lại cho tôi vào lúc tối không.",
+      "en": "Can you call me back in the evening please.",
+      "hint": "Mệnh đề câu hỏi với \"can\" để xin phép lịch sự."
+    },
+    {
+      "id": "tr-phone-messages-05",
+      "difficulty": "easy",
+      "vi": "Tôi đã nhầm số điện thoại của bạn ba lần rồi.",
+      "en": "I have dialled your number wrong three times already.",
+      "hint": "Thì hiện tại hoàn thành để chỉ hành động lặp lại."
+    },
+    {
+      "id": "tr-phone-messages-06",
+      "difficulty": "easy",
+      "vi": "Nếu bạn không trả lời, tôi sẽ để lời nhắn thoại.",
+      "en": "If you don't pick up, I will leave a voicemail.",
+      "hint": "Câu điều kiện loại một: If + hiện tại đơn, will + V."
+    },
+    {
+      "id": "tr-phone-messages-07",
+      "difficulty": "easy",
+      "vi": "Cô ấy thường gọi tôi vào buổi trưa mỗi ngày.",
+      "en": "She usually calls me around noon every single day.",
+      "hint": "Trạng từ tần suất \"usually\" với thì hiện tại đơn thói quen."
+    },
+    {
+      "id": "tr-phone-messages-08",
+      "difficulty": "easy",
+      "vi": "Họ yêu cầu tôi không gọi điện sau mười giờ tối.",
+      "en": "They asked me not to ring after ten o'clock at night.",
+      "hint": "Cấu trúc \"ask + O + not to + V\" để chỉ yêu cầu phủ định."
+    },
+    {
+      "id": "tr-phone-messages-09",
+      "difficulty": "easy",
+      "vi": "Tôi vừa nhận được tin nhắn từ sếp báo cho tôi đến sớm.",
+      "en": "I just received a message from my boss asking to arrive early.",
+      "hint": "Cấu trúc phân từ hiện tại \"asking\" để rút gọn mệnh đề quan hệ."
+    },
+    {
+      "id": "tr-phone-messages-10",
+      "difficulty": "easy",
+      "vi": "Anh ấy hứa sẽ gọi lại cho tôi trong vòng một giờ.",
+      "en": "He promised to ring me back within the next hour.",
+      "hint": "Cấu trúc \"promise to + V\" diễn tả lời hứa."
+    }
+  ]
+}

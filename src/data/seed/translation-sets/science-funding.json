@@ -1,0 +1,78 @@
+{
+  "slug": "science-funding",
+  "title": "Đầu tư cho khoa học",
+  "blurb": "Câu về ngân sách nghiên cứu và ưu tiên xã hội.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-science-funding-01",
+      "difficulty": "hard",
+      "vi": "Chính phủ cần phân bổ ngân sách lớn hơn cho các dự án nghiên cứu cơ bản, vốn là nền tảng của các phát minh tương lai.",
+      "en": "Governments must allocate substantially larger budgets to fundamental research projects, which serve as the foundation for future technological innovations.",
+      "hint": "Mệnh đề quan hệ (relative clause) với which; động từ khuyết thiếu must; động từ bị động (allocate)."
+    },
+    {
+      "id": "tr-science-funding-02",
+      "difficulty": "hard",
+      "vi": "Những phát hiện khoa học được công bố từ các viện nghiên cứu hàng đầu thường có tác động sâu rộng đến nền kinh tế toàn cầu.",
+      "en": "Scientific discoveries published by leading research institutes frequently exert profound effects on the global economy, attracting both private and public investments.",
+      "hint": "Cụm động từ phrasal (exert effects); tính từ đặc điểm (leading); bị động trong mệnh đề phụ."
+    },
+    {
+      "id": "tr-science-funding-03",
+      "difficulty": "hard",
+      "vi": "Nếu các nước không tăng cường đầu tư vào lĩnh vực khoa học, họ sẽ tụt hậu về công nghệ so với các đối thủ cạnh tranh.",
+      "en": "Should nations fail to increase their investment in scientific research, they will fall behind their competitors in technological advancement and innovation capacity.",
+      "hint": "Điều kiện loại 2 (hypothetical conditional); động từ khuyết thiếu should; cấu trúc so sánh (compared to)."
+    },
+    {
+      "id": "tr-science-funding-04",
+      "difficulty": "hard",
+      "vi": "Các công ty công nghệ lớn đã thu được lợi nhuận khổng lồ từ những ứng dụng thực tiễn của nghiên cứu cơ bản được tài trợ công.",
+      "en": "Major technology corporations have reaped enormous profits from the practical applications of publicly funded basic research conducted over the past two decades.",
+      "hint": "Thể hoàn thành hiện tại (present perfect); tính từ ghép (publicly funded); mệnh đề phụ thời gian."
+    },
+    {
+      "id": "tr-science-funding-05",
+      "difficulty": "hard",
+      "vi": "Chỉ khi các nhà khoa học được hỗ trợ tài chính đầy đủ thì họ mới có thể tập trung toàn bộ công sức vào các phát minh đột phá.",
+      "en": "Only when scientists receive adequate financial support can they dedicate their full efforts to making breakthrough discoveries that transform industries and society.",
+      "hint": "Cấu trúc nhấn mạnh (inversion) với only when; động từ khuyết thiếu can; mệnh đề phụ."
+    },
+    {
+      "id": "tr-science-funding-06",
+      "difficulty": "hard",
+      "vi": "Mặc dù chi phí ban đầu của các dự án nghiên cứu rất cao, lợi ích kinh tế và xã hội mà chúng mang lại lại gấp bội lần chi phí đó.",
+      "en": "Although the initial costs of research projects are substantial, the economic and social benefits they generate typically exceed these expenditures by a factor of several times.",
+      "hint": "Mệnh đề nhượcbộ (concession clause) với although; cấu trúc so sánh exceed; bị động."
+    },
+    {
+      "id": "tr-science-funding-07",
+      "difficulty": "hard",
+      "vi": "Những ứng dụng y tế phát triển từ nghiên cứu cơ bản đã giúp hàng triệu người sống lâu hơn và có chất lượng sống tốt hơn.",
+      "en": "Medical applications derived from basic research have enabled millions of people to live longer, healthier lives, transforming global healthcare outcomes and reducing mortality rates.",
+      "hint": "Cấu trúc bị động (derived from); động từ khuyết thiếu have enabled; mệnh đề phụ kết quả."
+    },
+    {
+      "id": "tr-science-funding-08",
+      "difficulty": "hard",
+      "vi": "Những năm gần đây, sự cạnh tranh giữa các quốc gia về đầu tư khoa học ngày càng gay gắt, khiến các nước phải tăng ngân sách R&D liên tục.",
+      "en": "In recent years, the competition among nations regarding scientific investment has intensified significantly, forcing countries to continuously increase their research and development budgets to maintain technological competitiveness.",
+      "hint": "Cấu trúc thời gian (in recent years); mệnh đề phụ kết quả với forcing; bị động implicit."
+    },
+    {
+      "id": "tr-science-funding-09",
+      "difficulty": "hard",
+      "vi": "Để các quốc gia đạt được sự phát triển bền vững, cần phải đầu tư mạnh mẽ vào khoa học ứng dụng nhằm giải quyết các vấn đề môi trường hiện đại.",
+      "en": "For nations to achieve sustainable development, substantial investments in applied science are required to address contemporary environmental challenges and create innovative solutions for future generations.",
+      "hint": "Cấu trúc mục đích (for + infinitive); bị động (are required); mệnh đề phụ mục đích với để."
+    },
+    {
+      "id": "tr-science-funding-10",
+      "difficulty": "hard",
+      "vi": "Các nhà nước có nền tảng khoa học mạnh thường thu được lợi thế cạnh tranh lâu dài, điều này chứng minh rằng đầu tư cho nghiên cứu là quyết định chiến lược quan trọng.",
+      "en": "Nations with strong scientific foundations typically gain sustained competitive advantages, which demonstrates that investing in research represents a critical strategic decision for long-term economic prosperity and global influence.",
+      "hint": "Mệnh đề quan hệ không hạn định (non-defining relative clause) với which; động từ bị động represent."
+    }
+  ]
+}

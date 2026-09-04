@@ -1,0 +1,78 @@
+{
+  "slug": "inequality",
+  "title": "Bất bình đẳng",
+  "blurb": "Câu về khoảng cách giàu nghèo và cơ hội.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-inequality-01",
+      "difficulty": "hard",
+      "vi": "Những người có thu nhập thấp thường bị hạn chế quyền tiếp cận giáo dục chất lượng, điều này làm trầm trọng thêm bất bình đẳng trong xã hội.",
+      "en": "Low-income individuals are often denied access to quality education, a factor which significantly exacerbates social inequality and limits future opportunities.",
+      "hint": "Cấu trúc bị động với mệnh đề phụ giải thích nguyên nhân."
+    },
+    {
+      "id": "tr-inequality-02",
+      "difficulty": "hard",
+      "vi": "Dù có nỗ lực từ chính phủ, khoảng cách về cơ hội việc làm giữa các nhóm xã hội vẫn không giảm đáng kể.",
+      "en": "Despite government efforts to close the gap, employment opportunities remain unequally distributed across different socioeconomic groups.",
+      "hint": "Cộng từ 'Despite' + danh động từ, câu chính có 'remain' + tính từ."
+    },
+    {
+      "id": "tr-inequality-03",
+      "difficulty": "hard",
+      "vi": "Hệ thống an sinh xã hội hiện tại, nếu không được cải cách, sẽ không thể bảo vệ những người dễ bị tổn thương nhất.",
+      "en": "The current welfare system, unless reformed to address systemic gaps, will continue to fail the most vulnerable members of society.",
+      "hint": "Mệnh đề điều kiện âm tính 'unless' + tương lai đơn."
+    },
+    {
+      "id": "tr-inequality-04",
+      "difficulty": "hard",
+      "vi": "Bất bình đẳng trong thu nhập không chỉ ảnh hưởng đến hiện tại mà còn cản trở khả năng dịch chuyển xã hội của thế hệ tiếp theo.",
+      "en": "Income inequality affects not only present living standards but also significantly hampers intergenerational social mobility and long-term economic prospects.",
+      "hint": "Cộng từ 'not only...but also' kết nối hai đối tượng."
+    },
+    {
+      "id": "tr-inequality-05",
+      "difficulty": "hard",
+      "vi": "Những chính sách được thiết kế để giảm bất bình đẳng thường chỉ mang lại kết quả tạm thời nếu không kèm theo giáo dục liên tục.",
+      "en": "Policies designed to reduce inequality tend to produce only temporary results unless they are coupled with sustained educational and economic reform programmes.",
+      "hint": "Mệnh đề quan hệ định nghĩa + mệnh đề điều kiện phức hợp."
+    },
+    {
+      "id": "tr-inequality-06",
+      "difficulty": "hard",
+      "vi": "Sự thiếu công bằng trong phân bổ tài nguyên công cộng được coi là nguyên nhân chính dẫn đến sự phân hóa giàu nghèo.",
+      "en": "The unequal distribution of public resources is widely considered to be the primary driver of wealth disparity that characterizes many developing economies today.",
+      "hint": "Cấu trúc bị động 'is considered to be' + mệnh đề quan hệ."
+    },
+    {
+      "id": "tr-inequality-07",
+      "difficulty": "hard",
+      "vi": "Có vẻ như những cơ hội khởi nghiệp chỉ dành cho những ai đã sở hữu vốn ban đầu và mạng lưới xã hội vững chắc.",
+      "en": "It appears that entrepreneurial opportunities remain largely inaccessible to those lacking initial capital and well-established social networks.",
+      "hint": "Cấu trúc nhấn mạnh 'It appears that' + bị động."
+    },
+    {
+      "id": "tr-inequality-08",
+      "difficulty": "hard",
+      "vi": "Mặc dù tỷ lệ thất nghiệp chính thức đã giảm, tình trạng việc làm không ổn định ngày càng phổ biến trong các tầng xã hội thấp hơn.",
+      "en": "While official unemployment rates have declined, precarious employment and job insecurity have become increasingly prevalent among lower socioeconomic strata.",
+      "hint": "Mệnh đề nhượng bộ 'While' + hiện tại hoàn thành, so sánh với hiện tại đơn."
+    },
+    {
+      "id": "tr-inequality-09",
+      "difficulty": "hard",
+      "vi": "Chỉ khi có sự can thiệp mạnh mẽ từ nhà nước thì tình trạng bất bình đẳng về an sinh sức khỏe mới có thể được cải thiện.",
+      "en": "Only through substantial state intervention in healthcare systems can the persistent inequality in health outcomes and medical access be effectively addressed.",
+      "hint": "Cấu trúc đảo ngữ 'Only through' + bị động với động từ khuyết thiếu 'can'."
+    },
+    {
+      "id": "tr-inequality-10",
+      "difficulty": "hard",
+      "vi": "Những người sinh ra trong gia đình nghèo không những gặp khó khăn ngay từ đầu mà còn chịu các rào cản cộng tính suốt cuộc đời.",
+      "en": "Individuals born into poverty face not only immediate disadvantages but also cumulative structural barriers that compound throughout their entire lives.",
+      "hint": "Cộng từ 'not only...but also' + mệnh đề quan hệ định ngĩa."
+    }
+  ]
+}

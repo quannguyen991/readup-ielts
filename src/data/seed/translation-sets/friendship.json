@@ -1,0 +1,78 @@
+{
+  "slug": "friendship",
+  "title": "Bạn bè",
+  "blurb": "Câu về tình bạn, mâu thuẫn và giữ liên lạc.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-friendship-01",
+      "difficulty": "medium",
+      "vi": "Mặc dù chúng tôi đã thân thiết từ nhỏ, nhưng đôi khi vẫn có những bất đồng nhỏ.",
+      "en": "Although we have been close friends since childhood, we still have minor disagreements occasionally.",
+      "hint": "Although + mệnh đề, mệnh đề chính"
+    },
+    {
+      "id": "tr-friendship-02",
+      "difficulty": "medium",
+      "vi": "Người bạn mà tôi tin tưởng nhất đã phản bội lại lòng tin của tôi.",
+      "en": "The friend whom I trusted the most ended up betraying my trust.",
+      "hint": "Mệnh đề quan hệ với whom"
+    },
+    {
+      "id": "tr-friendship-03",
+      "difficulty": "medium",
+      "vi": "Chúng tôi giận nhau vì một hiểu lầm, nhưng sau đó đã ngồi lại nói chuyện.",
+      "en": "We were angry at each other because of a misunderstanding, but we later sat down and talked.",
+      "hint": "Liên từ but nối hai mệnh đề"
+    },
+    {
+      "id": "tr-friendship-04",
+      "difficulty": "medium",
+      "vi": "Khi tôi nhận ra lỗi của mình, tôi đã chủ động xin lỗi và làm lành với cô ấy.",
+      "en": "When I realized my mistake, I took the initiative to apologize and make peace with her.",
+      "hint": "When + mệnh đề, mệnh đề chính"
+    },
+    {
+      "id": "tr-friendship-05",
+      "difficulty": "medium",
+      "vi": "Cô ấy là người bạn luôn ủng hộ tôi, dù tôi có quyết định sai lầm.",
+      "en": "She is the friend who always supports me, even when I make wrong decisions.",
+      "hint": "Mệnh đề quan hệ who + even when"
+    },
+    {
+      "id": "tr-friendship-06",
+      "difficulty": "medium",
+      "vi": "Sau nhiều năm xa cách, chúng tôi gặp lại nhau và cảm thấy như chưa từng xa rời.",
+      "en": "After years of being apart, we met again and felt as if we had never been separated.",
+      "hint": "Liên từ and, cụm after + V-ing"
+    },
+    {
+      "id": "tr-friendship-07",
+      "difficulty": "medium",
+      "vi": "Nếu bạn không chịu lắng nghe, tình bạn này sẽ khó có thể kéo dài.",
+      "en": "If you refuse to listen, this friendship will hardly be able to last.",
+      "hint": "If + mệnh đề điều kiện loại 1"
+    },
+    {
+      "id": "tr-friendship-08",
+      "difficulty": "medium",
+      "vi": "Chúng tôi đã từng rất thân, nhưng giờ đây khoảng cách địa lý đã làm chúng tôi xa lạ.",
+      "en": "We used to be very close, but now geographical distance has made us strangers.",
+      "hint": "Used to + V, liên từ but"
+    },
+    {
+      "id": "tr-friendship-09",
+      "difficulty": "medium",
+      "vi": "Người bạn mà tôi coi như tri kỷ đã chuyển đi nước ngoài, khiến tôi rất nhớ.",
+      "en": "The friend whom I considered my soulmate has moved abroad, which makes me miss him a lot.",
+      "hint": "Mệnh đề quan hệ whom và which"
+    },
+    {
+      "id": "tr-friendship-10",
+      "difficulty": "medium",
+      "vi": "Dù đã giận nhau nhiều ngày, cuối cùng họ cũng làm hòa và mỉm cười với nhau.",
+      "en": "Although they had been angry at each other for days, they finally made up and smiled at each other.",
+      "hint": "Although + quá khứ hoàn thành"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "volunteering",
+  "title": "Tình nguyện",
+  "blurb": "Câu về hoạt động cộng đồng và giúp đỡ người khác.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-volunteering-01",
+      "difficulty": "medium",
+      "vi": "Những người tình nguyện dọn rác ở bãi biển vào cuối tuần đã thu gom được hơn năm mươi bao rác.",
+      "en": "The volunteers who cleaned the beach last weekend collected more than fifty bags of trash.",
+      "hint": "Mệnh đề quan hệ 'who' làm chủ ngữ cho động từ 'cleaned'."
+    },
+    {
+      "id": "tr-volunteering-02",
+      "difficulty": "medium",
+      "vi": "Mặc dù trời mưa rất to, các tình nguyện viên vẫn đến đông đủ để tham gia buổi quyên góp từ thiện.",
+      "en": "Although it was raining heavily, the volunteers came in full force to join the charity donation event.",
+      "hint": "Cấu trúc 'Although + mệnh đề, mệnh đề chính'."
+    },
+    {
+      "id": "tr-volunteering-03",
+      "difficulty": "medium",
+      "vi": "Vì trẻ em ở vùng sâu vùng xa không có sách vở, chúng tôi đã quyên góp hàng trăm cuốn sách giáo khoa cũ.",
+      "en": "Because children in remote areas lack textbooks, we donated hundreds of used schoolbooks.",
+      "hint": "Cấu trúc 'Because + mệnh đề nguyên nhân, mệnh đề kết quả'."
+    },
+    {
+      "id": "tr-volunteering-04",
+      "difficulty": "medium",
+      "vi": "Khi chúng tôi dạy tiếng Anh miễn phí cho trẻ em nghèo, chúng tôi nhận thấy các em rất ham học và tiến bộ nhanh.",
+      "en": "When we taught free English classes to underprivileged children, we noticed they were eager to learn and improved quickly.",
+      "hint": "Cấu trúc 'When + mệnh đề thời gian, mệnh đề chính'."
+    },
+    {
+      "id": "tr-volunteering-05",
+      "difficulty": "medium",
+      "vi": "Trong khi nhóm tôi phân loại quần áo quyên góp, nhóm khác sắp xếp thực phẩm và đồ dùng học tập.",
+      "en": "While my team sorted donated clothes, another group arranged food and school supplies.",
+      "hint": "Cấu trúc 'While + mệnh đề chỉ hành động song song'."
+    },
+    {
+      "id": "tr-volunteering-06",
+      "difficulty": "medium",
+      "vi": "Chúng tôi tổ chức các lớp dạy miễn phí vào mỗi tối thứ bảy để trẻ em đường phố có thể học đọc và viết cơ bản.",
+      "en": "We organize free classes every Saturday evening so that street children can learn basic reading and writing.",
+      "hint": "Cấu trúc 'so that + mệnh đề chỉ mục đích'."
+    },
+    {
+      "id": "tr-volunteering-07",
+      "difficulty": "medium",
+      "vi": "Không chỉ các tình nguyện viên quyên góp tiền, mà họ còn dành thời gian để dạy kèm cho các em học sinh yếu kém.",
+      "en": "Not only did the volunteers donate money, but they also spent time tutoring struggling students.",
+      "hint": "Đảo ngữ với 'Not only... but also' và trợ động từ 'did'."
+    },
+    {
+      "id": "tr-volunteering-08",
+      "difficulty": "medium",
+      "vi": "Nếu mỗi người quyên góp một phần nhỏ thu nhập của mình, chúng ta có thể tạo ra sự thay đổi lớn cho cộng đồng.",
+      "en": "If each person donates a small portion of their income, we can create a huge change for the community.",
+      "hint": "Câu điều kiện loại 1: 'If + hiện tại đơn, tương lai đơn'."
+    },
+    {
+      "id": "tr-volunteering-09",
+      "difficulty": "medium",
+      "vi": "Những tình nguyện viên, những người mà sự nhiệt tình không bao giờ vơi, đã truyền cảm hứng cho rất nhiều người khác tham gia.",
+      "en": "The volunteers, whose enthusiasm never diminishes, have inspired many others to join.",
+      "hint": "Mệnh đề quan hệ sở hữu 'whose'."
+    },
+    {
+      "id": "tr-volunteering-10",
+      "difficulty": "medium",
+      "vi": "Chúng tôi đã quyên góp được số tiền lớn, số tiền này sẽ được dùng để xây dựng một thư viện nhỏ cho trẻ em vùng cao.",
+      "en": "We raised a large sum of money, which will be used to build a small library for children in the highlands.",
+      "hint": "Mệnh đề quan hệ không xác định với 'which' thay thế cho cả mệnh đề trước."
+    }
+  ]
+}

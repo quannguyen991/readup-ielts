@@ -1,0 +1,78 @@
+{
+  "slug": "privacy-data",
+  "title": "Quyền riêng tư và dữ liệu",
+  "blurb": "Câu về thu thập dữ liệu và giám sát.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-privacy-data-01",
+      "difficulty": "hard",
+      "vi": "Mặc dù người dùng đã đồng ý với điều khoản dịch vụ, họ thường không nhận thức được rằng dữ liệu của mình đang bị thu thập bởi bên thứ ba.",
+      "en": "Although users have agreed to the terms of service, they are often unaware that their data is being collected by third parties.",
+      "hint": "Mệnh đề nhượng bộ với Although, bị động hiện tại tiếp diễn."
+    },
+    {
+      "id": "tr-privacy-data-02",
+      "difficulty": "hard",
+      "vi": "Không chỉ các công ty công nghệ thu thập dữ liệu cá nhân mà còn chia sẻ chúng với các đối tác quảng cáo mà không có sự đồng thuận rõ ràng.",
+      "en": "Not only do technology companies collect personal data, but they also share it with advertising partners without explicit consent.",
+      "hint": "Cấu trúc đảo ngữ Not only... but also..."
+    },
+    {
+      "id": "tr-privacy-data-03",
+      "difficulty": "hard",
+      "vi": "Việc camera giám sát được lắp đặt ở nơi công cộng là cần thiết cho an ninh, nhưng nó phải tuân thủ các quy định về quyền riêng tư.",
+      "en": "It is necessary that surveillance cameras be installed in public places for security, but they must comply with privacy regulations.",
+      "hint": "Cấu trúc giả định với It is necessary that + động từ nguyên thể."
+    },
+    {
+      "id": "tr-privacy-data-04",
+      "difficulty": "hard",
+      "vi": "Nếu người dùng không được thông báo về cách dữ liệu của họ được xử lý, thì mọi sự đồng thuận đều có thể bị coi là vô hiệu.",
+      "en": "If users are not informed about how their data is processed, any consent given may be considered invalid.",
+      "hint": "Câu điều kiện loại 1 kết hợp bị động."
+    },
+    {
+      "id": "tr-privacy-data-05",
+      "difficulty": "hard",
+      "vi": "Chính sự thiếu minh bạch trong việc thu thập dữ liệu đã khiến nhiều người lo ngại về quyền riêng tư của họ bị xâm phạm.",
+      "en": "It is the lack of transparency in data collection that has made many people worried about their privacy being violated.",
+      "hint": "Cấu trúc nhấn mạnh It is... that..."
+    },
+    {
+      "id": "tr-privacy-data-06",
+      "difficulty": "hard",
+      "vi": "Khi dữ liệu nhạy cảm bị rò rỉ do lỗ hổng bảo mật, hậu quả có thể ảnh hưởng nghiêm trọng đến danh tiếng của công ty.",
+      "en": "When sensitive data is leaked due to a security breach, the consequences can severely affect the company's reputation.",
+      "hint": "Mệnh đề thời gian với When, bị động hiện tại."
+    },
+    {
+      "id": "tr-privacy-data-07",
+      "difficulty": "hard",
+      "vi": "Người dùng có quyền yêu cầu xóa dữ liệu cá nhân của họ khỏi hệ thống, điều mà các công ty phải thực hiện trong thời gian hợp lý.",
+      "en": "Users have the right to request that their personal data be deleted from the system, which companies must carry out within a reasonable time.",
+      "hint": "Mệnh đề quan hệ which, cấu trúc giả định với request that."
+    },
+    {
+      "id": "tr-privacy-data-08",
+      "difficulty": "hard",
+      "vi": "Trừ khi có sự đồng ý rõ ràng từ người dùng, việc sử dụng dữ liệu cho mục đích khác ngoài mục đích ban đầu là bất hợp pháp.",
+      "en": "Unless explicit consent is obtained from users, using data for purposes other than the original one is illegal.",
+      "hint": "Câu điều kiện với Unless, bị động hiện tại."
+    },
+    {
+      "id": "tr-privacy-data-09",
+      "difficulty": "hard",
+      "vi": "Các chính sách bảo mật được thiết kế phức tạp đến nỗi nhiều người không đọc hết trước khi nhấn nút đồng ý.",
+      "en": "Privacy policies are designed in such a complex way that many people do not read them fully before clicking the agree button.",
+      "hint": "Cấu trúc such... that với mệnh đề kết quả."
+    },
+    {
+      "id": "tr-privacy-data-10",
+      "difficulty": "hard",
+      "vi": "Chỉ sau khi xảy ra vụ bê bối dữ liệu lớn, các công ty mới nhận ra tầm quan trọng của việc bảo vệ quyền riêng tư của khách hàng.",
+      "en": "Only after a major data scandal occurred did companies realize the importance of protecting customers' privacy.",
+      "hint": "Đảo ngữ với Only after + trợ động từ did."
+    }
+  ]
+}

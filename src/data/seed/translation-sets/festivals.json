@@ -1,0 +1,78 @@
+{
+  "slug": "festivals",
+  "title": "Lễ hội và ngày Tết",
+  "blurb": "Câu về phong tục và không khí ngày lễ.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-festivals-01",
+      "difficulty": "medium",
+      "vi": "Mẹ tôi luôn chuẩn bị những món ăn truyền thống vào dịp Tết, và bà ngoại của tôi cũng giúp đỡ cô ấy.",
+      "en": "My mother always prepares traditional dishes during Tet, and my grandmother also helps her with the cooking.",
+      "hint": "Cấu trúc: mệnh đề độc lập + liên từ \"and\" + mệnh đề độc lập cùng cấp."
+    },
+    {
+      "id": "tr-festivals-02",
+      "difficulty": "medium",
+      "vi": "Những người thích trang trí nhà cửa có thể mua những bông hoa vàng, vốn là biểu tượng của may mắn.",
+      "en": "Those who enjoy decorating their homes can buy yellow flowers, which are a symbol of good fortune and prosperity.",
+      "hint": "Mệnh đề quan hệ hạn định (who) + mệnh đề quan hệ không hạn định (which)."
+    },
+    {
+      "id": "tr-festivals-03",
+      "difficulty": "medium",
+      "vi": "Vì trẻ em rất mong chờ lì xì, nên cha mẹ thường chuẩn bị tiền lẻ trước ngày Tết.",
+      "en": "Because children eagerly anticipate receiving lucky money, parents usually prepare small bills before the Lunar New Year arrives.",
+      "hint": "Cấu trúc: because + mệnh đề phụ, + so + mệnh đề chính."
+    },
+    {
+      "id": "tr-festivals-04",
+      "difficulty": "medium",
+      "vi": "Những gia đình quy tụ lại để ăn cơm tối cùng nhau, khi đó họ thường kể chuyện và cười nói rôm rả.",
+      "en": "Families gather together for dinner, and during this time they usually share stories and laugh cheerfully with one another.",
+      "hint": "Mệnh đề chính + dấu phẩy + mệnh đề phụ thời gian (when) + mệnh đề tiếp theo."
+    },
+    {
+      "id": "tr-festivals-05",
+      "difficulty": "medium",
+      "vi": "Nếu bạn muốn tìm hiểu về phong tục Tết, bạn nên ghé thăm những lễ hội truyền thống ở các tỉnh.",
+      "en": "If you want to understand Lunar New Year customs, you should visit traditional festivals held in various provinces.",
+      "hint": "Cấu trúc điều kiện: If + mệnh đề điều kiện, + mệnh đề kết quả (should)."
+    },
+    {
+      "id": "tr-festivals-06",
+      "difficulty": "medium",
+      "vi": "Những cây quất được trưng bày ở các nhà cửa vì chúng mang ý nghĩa của sự thịnh vượng và tài lộc.",
+      "en": "Kumquat trees are displayed in homes because they symbolize prosperity and abundant wealth in Vietnamese culture.",
+      "hint": "Mệnh đề chính + because + mệnh đề phụ nguyên nhân."
+    },
+    {
+      "id": "tr-festivals-07",
+      "difficulty": "medium",
+      "vi": "Mặc dù Tết là một ngày lễ truyền thống, nhưng ngày nay nhiều người trẻ cũng tham gia vào các hoạt động hiện đại.",
+      "en": "Although Tet is a traditional holiday that has existed for centuries, many young people nowadays participate in modern festive activities.",
+      "hint": "Although + mệnh đề phụ, + nhưng mệnh đề chính (mệnh đề tương phản)."
+    },
+    {
+      "id": "tr-festivals-08",
+      "difficulty": "medium",
+      "vi": "Cái bánh chưng mà bà tôi làm hàng năm là một phần không thể thiếu trong bữa ăn Tết của gia đình.",
+      "en": "The square cake that my grandmother makes every year is an essential part of our family's Tet meal and celebration.",
+      "hint": "Mệnh đề quan hệ hạn định (that) bổ sung cho danh từ chính."
+    },
+    {
+      "id": "tr-festivals-09",
+      "difficulty": "medium",
+      "vi": "Sau khi dọn dẹp nhà cửa xong, gia đình tôi thường trang trí với những chiếc đèn đỏ và dải để chuẩn bị cho ngày hội.",
+      "en": "After finishing the thorough house cleaning, my family usually decorates with red lanterns and ornaments to prepare for the festive celebration.",
+      "hint": "After + V-ing (động danh từ), + mệnh đề chính với \"usually\"."
+    },
+    {
+      "id": "tr-festivals-10",
+      "difficulty": "medium",
+      "vi": "Những người có mong muốn tìm hiểu văn hóa Tết thường đi xem những chương trình biểu diễn, vốn diễn ra ở các quảng trường công cộng.",
+      "en": "People who wish to experience Tet culture often attend performing shows, which typically take place in public squares and cultural centers.",
+      "hint": "Mệnh đề quan hệ hạn định (who) + mệnh đề chính + which + mệnh đề quan hệ không hạn định."
+    }
+  ]
+}

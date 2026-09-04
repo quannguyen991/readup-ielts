@@ -1,0 +1,78 @@
+{
+  "slug": "jobs-interview",
+  "title": "Xin việc và phỏng vấn",
+  "blurb": "Câu về hồ sơ, phỏng vấn và kỳ vọng công việc.",
+  "level": "medium",
+  "items": [
+    {
+      "id": "tr-jobs-interview-01",
+      "difficulty": "medium",
+      "vi": "Ứng viên nào điều chỉnh CV phù hợp với từng công việc có cơ hội cao hơn được mời phỏng vấn.",
+      "en": "Applicants who tailor their CVs to each job have a higher chance of being invited for an interview.",
+      "hint": "Mệnh đề quan hệ 'who'"
+    },
+    {
+      "id": "tr-jobs-interview-02",
+      "difficulty": "medium",
+      "vi": "Mặc dù anh ấy lo lắng trong buổi phỏng vấn, anh ấy vẫn trả lời tự tin tất cả câu hỏi.",
+      "en": "Although he was nervous during the interview, he managed to answer all questions confidently.",
+      "hint": "Liên từ 'although'"
+    },
+    {
+      "id": "tr-jobs-interview-03",
+      "difficulty": "medium",
+      "vi": "Bởi vì cô ấy đã chuẩn bị kỹ lưỡng cho buổi phỏng vấn, cô ấy đã gây ấn tượng với nhà quản lý tuyển dụng bằng kiến thức của mình.",
+      "en": "Because she had prepared thoroughly for the interview, she impressed the hiring manager with her knowledge.",
+      "hint": "Liên từ 'because'"
+    },
+    {
+      "id": "tr-jobs-interview-04",
+      "difficulty": "medium",
+      "vi": "Khi người phỏng vấn hỏi về điểm mạnh, anh ấy nhấn mạnh kỹ năng giải quyết vấn đề và làm việc nhóm.",
+      "en": "When the interviewer asked about his strengths, he highlighted his problem-solving skills and teamwork.",
+      "hint": "Liên từ 'when'"
+    },
+    {
+      "id": "tr-jobs-interview-05",
+      "difficulty": "medium",
+      "vi": "Trừ khi bạn tự tin thương lượng lương, bạn có thể không nhận được mức lương xứng đáng.",
+      "en": "Unless you negotiate your salary confidently, you might not get the pay you deserve.",
+      "hint": "Liên từ 'unless'"
+    },
+    {
+      "id": "tr-jobs-interview-06",
+      "difficulty": "medium",
+      "vi": "Thời gian thử việc, thường kéo dài ba tháng, cho phép cả hai bên đánh giá sự phù hợp.",
+      "en": "The probation period, which usually lasts three months, allows both parties to evaluate the fit.",
+      "hint": "Mệnh đề quan hệ 'which'"
+    },
+    {
+      "id": "tr-jobs-interview-07",
+      "difficulty": "medium",
+      "vi": "Trong khi một số ứng viên phóng đại kinh nghiệm, nhà tuyển dụng có thể dễ dàng xác minh sự thật qua người tham khảo.",
+      "en": "While some candidates exaggerate their experience, employers can easily verify the truth through references.",
+      "hint": "Liên từ 'while'"
+    },
+    {
+      "id": "tr-jobs-interview-08",
+      "difficulty": "medium",
+      "vi": "Nếu bạn nêu bật thành tích liên quan trong CV, nhà tuyển dụng sẽ nhận ra tiềm năng của bạn ngay lập tức.",
+      "en": "If you highlight your relevant achievements in the CV, the recruiter will notice your potential immediately.",
+      "hint": "Câu điều kiện loại 1 với 'if'"
+    },
+    {
+      "id": "tr-jobs-interview-09",
+      "difficulty": "medium",
+      "vi": "Cô ấy chuẩn bị danh sách câu hỏi để hỏi người phỏng vấn để cô ấy có thể thể hiện sự quan tâm thực sự đến công ty.",
+      "en": "She prepared a list of questions to ask the interviewer so that she could demonstrate her genuine interest in the company.",
+      "hint": "Cấu trúc 'so that' chỉ mục đích"
+    },
+    {
+      "id": "tr-jobs-interview-10",
+      "difficulty": "medium",
+      "vi": "Mặc dù mức lương thấp hơn mong đợi, anh ấy vẫn nhận công việc vì cơ hội phát triển nghề nghiệp tuyệt vời.",
+      "en": "Even though the salary was lower than expected, he accepted the job because of the great career growth opportunities.",
+      "hint": "Liên từ 'even though'"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "public-health",
+  "title": "Y tế công cộng",
+  "blurb": "Câu về hệ thống y tế và phòng bệnh ở quy mô lớn.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-public-health-01",
+      "difficulty": "hard",
+      "vi": "Những người không có bảo hiểm y tế thường phải chi trả số tiền khổng lồ khi nhập viện vì bệnh nghiêm trọng.",
+      "en": "Individuals who lack health insurance often face substantial financial burdens when hospitalized for serious illnesses, which can lead to long-term debt.",
+      "hint": "Mệnh đề quan hệ (relative clause) với who; cấu trúc bị động ngầm"
+    },
+    {
+      "id": "tr-public-health-02",
+      "difficulty": "hard",
+      "vi": "Nếu tỉ lệ tiêm chủng trong cộng đồng đạt 85%, các bệnh truyền nhiễm sẽ được kiểm soát hiệu quả hơn.",
+      "en": "If vaccination rates within the community reach 85 percent, communicable diseases would be controlled far more effectively than they are now.",
+      "hint": "Câu điều kiện loại 2 (mixed conditional); so sánh với than"
+    },
+    {
+      "id": "tr-public-health-03",
+      "difficulty": "hard",
+      "vi": "Các bệnh viện ở thành phố lớn bị quá tải do số lượng bệnh nhân tăng đột ngột trong mùa dịch.",
+      "en": "Hospitals in major cities are overwhelmed by surging patient numbers during epidemic seasons, which strains their resources considerably.",
+      "hint": "Bị động hiện tại đơn; mệnh đề quan hệ không hạn định với which"
+    },
+    {
+      "id": "tr-public-health-04",
+      "difficulty": "hard",
+      "vi": "Chính phủ nên đầu tư thêm vào ngành y tế công cộng để giảm áp lực lên các cơ sở chữa bệnh.",
+      "en": "The government should invest additional resources in public health infrastructure so as to alleviate the mounting pressure on medical facilities nationwide.",
+      "hint": "Cấu trúc so as to để chỉ mục đích; so sánh mounting (tăng lên)"
+    },
+    {
+      "id": "tr-public-health-05",
+      "difficulty": "hard",
+      "vi": "Mặc dù chi phí bảo hiểm y tế khá cao, việc có bảo hiểm vẫn rẻ hơn so với chi phí điều trị khi bị bệnh.",
+      "en": "Although health insurance premiums are relatively expensive, maintaining coverage remains far cheaper than bearing the costs of medical treatment when illness strikes unexpectedly.",
+      "hint": "Mệnh đề nhượng bộ với although; so sánh hơn cheaper than"
+    },
+    {
+      "id": "tr-public-health-06",
+      "difficulty": "hard",
+      "vi": "Tất cả trẻ em dưới 6 tuổi phải được tiêm chủng đầy đủ theo lịch định kỳ của Bộ Y tế.",
+      "en": "All children under the age of six must receive complete vaccinations according to the mandatory immunization schedule established by the Ministry of Health.",
+      "hint": "Bị động phải được + V (must be); mệnh đề tính từ với established"
+    },
+    {
+      "id": "tr-public-health-07",
+      "difficulty": "hard",
+      "vi": "Số lượng nhân viên y tế không đủ là lý do chính dẫn đến tình trạng chăm sóc bệnh nhân kém hiệu quả.",
+      "en": "The shortage of healthcare workers, which is a critical factor, results in inadequate patient care delivery across many hospitals and clinics.",
+      "hint": "Mệnh đề quan hệ không hạn định inserting explanation; động từ results in"
+    },
+    {
+      "id": "tr-public-health-08",
+      "difficulty": "hard",
+      "vi": "Vì một số người vẫn nghi ngờ hiệu quả của vaccine nên tỉ lệ tiêm chủng ở vùng nông thôn còn thấp.",
+      "en": "Because certain individuals harbor doubts about vaccine efficacy, immunization rates in rural regions remain considerably lower than those in urban centers.",
+      "hint": "Mệnh đề nguyên nhân với because; so sánh lower than"
+    },
+    {
+      "id": "tr-public-health-09",
+      "difficulty": "hard",
+      "vi": "Những bệnh viện được trang bị công nghệ hiện đại sẽ cung cấp dịch vụ y tế tốt hơn cho bệnh nhân.",
+      "en": "Hospitals that are equipped with state-of-the-art technology will deliver superior healthcare services to patients, thereby improving overall treatment outcomes.",
+      "hint": "Mệnh đề quan hệ hạn định với that; bị động được trang bị"
+    },
+    {
+      "id": "tr-public-health-10",
+      "difficulty": "hard",
+      "vi": "Để giảm quá tải bệnh viện, chính sách y tế công cộng cần tập trung vào phòng chống bệnh hơn là điều trị.",
+      "en": "To reduce hospital overcrowding, public health policies must prioritize disease prevention and early intervention rather than focusing exclusively on treatment after illness develops.",
+      "hint": "Cấu trúc to-infinitive chỉ mục đích; rather than + V-ing"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "slug": "hobbies",
+  "title": "Sở thích",
+  "blurb": "Câu về những việc làm lúc rảnh.",
+  "level": "easy",
+  "items": [
+    {
+      "id": "tr-hobbies-01",
+      "difficulty": "easy",
+      "vi": "Em thích sưu tầm những tấm tem cũ từ các nước khác nhau.",
+      "en": "I enjoy collecting old stamps from different countries around the world.",
+      "hint": "Động từ V-ing sau động từ enjoy; cấu trúc danh động từ."
+    },
+    {
+      "id": "tr-hobbies-02",
+      "difficulty": "easy",
+      "vi": "Anh ấy đã học đàn piano trong năm năm qua.",
+      "en": "He has been learning to play the piano for the past five years.",
+      "hint": "Thì hiện tại hoàn thành tiếp diễn (Present Perfect Continuous)."
+    },
+    {
+      "id": "tr-hobbies-03",
+      "difficulty": "easy",
+      "vi": "Vẽ tranh giúp cô ấy giải tỏa căng thẳng sau những ngày làm việc vất vả.",
+      "en": "Drawing helps her relieve stress after her exhausting working days.",
+      "hint": "Danh động từ làm chủ ngữ; động từ số ít ở vị từ."
+    },
+    {
+      "id": "tr-hobbies-04",
+      "difficulty": "easy",
+      "vi": "Nếu bạn muốn trở thành nhạc sĩ giỏi thì phải luyện tập hàng ngày.",
+      "en": "If you want to become a skilled musician, you must practice every day.",
+      "hint": "Mệnh đề điều kiện loại 1; động từ khuyết thiếu must."
+    },
+    {
+      "id": "tr-hobbies-05",
+      "difficulty": "easy",
+      "vi": "Cuốn tiểu thuyết này thú vị hơn bất cứ cuốn nào tôi từng đọc.",
+      "en": "This novel is more interesting than any book I have ever read.",
+      "hint": "So sánh hơn với cấu trúc more...than; thì hiện tại hoàn thành."
+    },
+    {
+      "id": "tr-hobbies-06",
+      "difficulty": "easy",
+      "vi": "Không chỉ thích đọc sách, cô ấy còn viết thơ hay.",
+      "en": "Not only does she love reading books, but she also writes excellent poems.",
+      "hint": "Cấu trúc Not only...but also; đảo ngữ sau not only."
+    },
+    {
+      "id": "tr-hobbies-07",
+      "difficulty": "easy",
+      "vi": "Những người sưu tầm tranh cổ điểm có thể kiếm được rất nhiều tiền.",
+      "en": "Those who collect antique paintings can make a considerable amount of money.",
+      "hint": "Mệnh đề quan hệ với those who; động từ khuyết thiếu can."
+    },
+    {
+      "id": "tr-hobbies-08",
+      "difficulty": "easy",
+      "vi": "Mặc dù bận rộn, anh vẫn dành thời gian chơi guitar mỗi tối.",
+      "en": "Despite being busy, he still makes time to play guitar every evening.",
+      "hint": "Cấu trúc Despite + V-ing thay thế Although; still để nhấn mạnh."
+    },
+    {
+      "id": "tr-hobbies-09",
+      "difficulty": "easy",
+      "vi": "Cùng lúc mà cô ấy đọc sách thì cô ấy cũng ghi chép những điều cần nhớ.",
+      "en": "While she reads, she takes notes on the important points simultaneously.",
+      "hint": "Mệnh đề thời gian với While; động từ hiện tại đơn (thói quen)."
+    },
+    {
+      "id": "tr-hobbies-10",
+      "difficulty": "easy",
+      "vi": "Chỉ những người đam mê âm nhạc mới có thể hiểu được tầm quan trọng của nó.",
+      "en": "Only those passionate about music can truly understand its profound significance.",
+      "hint": "Cấu trúc Only + N + can; tính từ passionate; động từ khuyết thiếu can."
+    }
+  ]
+}

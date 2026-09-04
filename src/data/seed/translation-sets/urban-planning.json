@@ -1,0 +1,78 @@
+{
+  "slug": "urban-planning",
+  "title": "Quy hoạch đô thị",
+  "blurb": "Câu về cách thành phố được thiết kế và hệ quả.",
+  "level": "hard",
+  "items": [
+    {
+      "id": "tr-urban-planning-01",
+      "difficulty": "hard",
+      "vi": "Các khu vực xanh được phát triển trong thành phố không chỉ cải thiện chất lượng không khí mà còn tạo điều kiện cho cộng đồng địa phương gặp gỡ nhau.",
+      "en": "Green spaces developed within urban areas not only improve air quality but also provide opportunities for local communities to gather together.",
+      "hint": "Cấu trúc not only...but also (không chỉ...mà còn) với mệnh đề quan hệ"
+    },
+    {
+      "id": "tr-urban-planning-02",
+      "difficulty": "hard",
+      "vi": "Nếu mật độ dân cư tiếp tục tăng mà không có quy hoạch hợp lý, các vấn đề về tắc đường và ô nhiễm sẽ trở nên nghiêm trọng hơn.",
+      "en": "If population density continues to rise without proper urban planning, traffic congestion and pollution problems will become increasingly severe.",
+      "hint": "Câu điều kiện loại 1 (If + hiện tại, will + động từ)"
+    },
+    {
+      "id": "tr-urban-planning-03",
+      "difficulty": "hard",
+      "vi": "Hệ thống giao thông công cộng được coi là yếu tố then chốt để giảm lượng phương tiện cá nhân trên đường phố.",
+      "en": "Public transportation systems are considered a key factor in reducing the number of private vehicles on city streets.",
+      "hint": "Cấu trúc bị động với tính từ (are considered), mệnh đề to động từ nguyên thể"
+    },
+    {
+      "id": "tr-urban-planning-04",
+      "difficulty": "hard",
+      "vi": "Mặc dù việc mở rộng các con đường chính có thể giúp giảm tắc đường ngắn hạn, nhưng nó lại khuyến khích sử dụng ô tô nhiều hơn.",
+      "en": "Although expanding main roads may help reduce traffic congestion in the short term, it actually encourages greater automobile usage.",
+      "hint": "Mệnh đề nhượcbộ (Although) với mệnh đề độc lập đối lập"
+    },
+    {
+      "id": "tr-urban-planning-05",
+      "difficulty": "hard",
+      "vi": "Những thành phố có tỷ lệ phủ xanh cao hơn 20% được biết là có chỉ số hạnh phúc và sức khỏe tâm thần tốt hơn ở cộng dân.",
+      "en": "Cities with a green coverage rate exceeding 20% are known to have higher happiness and mental health indices among their residents.",
+      "hint": "Cấu trúc bị động (are known to) với mệnh đề quan hệ định nghĩa"
+    },
+    {
+      "id": "tr-urban-planning-06",
+      "difficulty": "hard",
+      "vi": "Để đạt được sự phát triển bền vững, các nhà quy hoạch đô thị cần phải cân bằng giữa phát triển kinh tế và bảo vệ môi trường.",
+      "en": "In order to achieve sustainable development, urban planners must balance between economic growth and environmental protection.",
+      "hint": "Cấu trúc to động từ nguyên thể (In order to) và bị động động từ phải (must balance)"
+    },
+    {
+      "id": "tr-urban-planning-07",
+      "difficulty": "hard",
+      "vi": "Các dự án phát triển quận mới, nếu được thực hiện mà không xem xét đến dân số hiện tại, sẽ dẫn đến áp lực lớn lên hạ tầng.",
+      "en": "New district development projects, if implemented without considering the current population, will place enormous pressure on existing infrastructure.",
+      "hint": "Mệnh đề điều kiện với dấu phẩy, bị động (without considering)"
+    },
+    {
+      "id": "tr-urban-planning-08",
+      "difficulty": "hard",
+      "vi": "Chính vì những lợi ích về môi trường và xã hội mà ngày càng nhiều thành phố chọn xây dựng các tuyến xe buýt nhanh.",
+      "en": "It is because of the environmental and social benefits that an increasing number of cities choose to construct rapid bus transit systems.",
+      "hint": "Cấu trúc nhấn mạnh (It is...that), động từ chọn lựa (choose to)"
+    },
+    {
+      "id": "tr-urban-planning-09",
+      "difficulty": "hard",
+      "vi": "Các không gian công cộng được thiết kế tốt, bao gồm công viên và quảng trường, là nơi sinh sống chất lượng cao được phản ánh rõ ràng.",
+      "en": "Well-designed public spaces, including parks and squares, clearly reflect and contribute to higher quality urban living standards.",
+      "hint": "Cấu trúc bị động với tính từ (are designed), mệnh đề phụ trạng từ (including)"
+    },
+    {
+      "id": "tr-urban-planning-10",
+      "difficulty": "hard",
+      "vi": "Bất chấp những khó khăn về tài chính, nhiều chính quyền địa phương vẫn ưu tiên đầu tư vào hạ tầng giao thông công cộng.",
+      "en": "Despite financial constraints, many local authorities continue to prioritize investment in public transportation infrastructure.",
+      "hint": "Mệnh đề nhượcbộ (Despite), động từ tiếp tục (continue to)"
+    }
+  ]
+}
