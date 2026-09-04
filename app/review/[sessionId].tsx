@@ -17,6 +17,8 @@ import { getArticleWithBody } from '@/data/articles';
 import { formatBand } from '@/lib/band';
 import { findEvidenceSpan, mergeSpans, type EvidenceSpan } from '@/lib/reading/evidence';
 import { ReadingCoachPanel, type CoachRequest } from '@/components/reader/ReadingCoachPanel';
+import { ProofStateBadge } from '@/components/reader/ProofStateBadge';
+import { classify } from '@/services/proofloop/state';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -234,6 +236,22 @@ export default function ReviewScreen() {
                   <Text className="mt-3 font-semi text-bodyLg text-ink">
                     {question?.prompt ?? '—'}
                   </Text>
+
+                  {/*
+                    Trạng thái ProofLoop chỉ hiện khi lượt này CÓ khoanh bằng
+                    chứng. Lượt cũ và bài SAT không có trường đó — hiện
+                    "chưa khoanh" cho chúng là trách người học vì một tính năng
+                    chưa tồn tại lúc họ làm bài.
+                  */}
+                  {attempt.evidenceMark !== undefined ? (
+                    <ProofStateBadge
+                      state={classify({
+                        answerCorrect: attempt.isCorrect,
+                        mark: attempt.evidenceMark ?? null,
+                        truthParagraphIndex: question?.evidenceParagraphIndex ?? null,
+                      })}
+                    />
+                  ) : null}
 
                   <View className="mt-3 flex-row flex-wrap gap-6">
                     <View>

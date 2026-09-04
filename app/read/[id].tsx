@@ -318,6 +318,10 @@ export default function ReadScreen() {
         isCorrect: isAnswerCorrect(userAnswer, q.correctAnswer),
         timeSpentMs: 0,
         markedForReview: Boolean(marked[q.id]),
+        // `undefined` khi người học không khoanh gì: KHÔNG ĐO, khác với đo rồi
+        // thấy sai. Đừng thay bằng `null` cho gọn — hai thứ đó dẫn tới hai
+        // trạng thái khác nhau ở tầng phân loại.
+        evidenceMark: evidenceMarks[q.id],
       };
     });
 

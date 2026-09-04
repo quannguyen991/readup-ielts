@@ -3,6 +3,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage, todayKey, uid } from './persist';
+import type { EvidenceMark } from '@/services/proofloop/types';
 import type { ExamKind, QuestionType } from '@/types/database';
 
 /**
@@ -20,6 +21,18 @@ export type AttemptRecord = {
   isCorrect: boolean;
   timeSpentMs: number;
   markedForReview: boolean;
+  /**
+   * PROOFLOOP — chỗ người học tự khoanh làm bằng chứng cho câu trả lời này.
+   *
+   * TUỲ CHỌN, và phải giữ như vậy: mọi lượt làm bài đã lưu từ trước đều không
+   * có trường này, còn bài SAT và bài dán tay thì chưa bật ProofLoop. Bắt buộc
+   * nó là làm hỏng toàn bộ lịch sử cũ.
+   *
+   * `undefined` nghĩa là KHÔNG ĐO — không phải đo rồi thấy sai. Hai thứ đó dẫn
+   * tới hai trạng thái khác nhau ở `services/proofloop/state.ts`, và gộp chúng
+   * lại là biến một lượt không được hỏi thành một lượt bị chấm là chọn sai.
+   */
+  evidenceMark?: EvidenceMark | null;
 };
 
 export type TestSession = {
