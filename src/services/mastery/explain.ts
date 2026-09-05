@@ -60,7 +60,7 @@ export function explain(rec: SkillRecord, locale: Locale = 'vi'): Explanation {
 
   const steps: Explanation['steps'] = [
     { label: t('explain.domain'), detail: `${DOMAIN_LABEL[rec.skill.domain]} · ${rec.skill.key}` },
-    { label: t('explain.observed', { n: rec.observations }), detail: t(STATE_KEY[rec.lastState]) },
+    { label: t('explain.observed', { n: rec.observed ?? 0 }), detail: t(STATE_KEY[rec.lastState]) },
   ];
 
   const probe = PROBE_TABLE[rec.lastState];

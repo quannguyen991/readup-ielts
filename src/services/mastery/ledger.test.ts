@@ -205,3 +205,80 @@ test('liệt kê được kỹ năng cần làm rõ và kỹ năng đã công nh
   assert.deepEqual(needsWork(l).map((r) => r.skill.key), ['locate']);
   assert.deepEqual(confirmed(l).map((r) => r.skill.key), ['linear_equations_one_var']);
 });
+
+/** Lấy bản ghi và khẳng định nó có thật — `noUncheckedIndexedAccess` bật. */
+function at(led: ReturnType<typeof emptyLedger>, id = 'reading:locate') {
+  const r = led[id];
+  assert.ok(r, `sổ không có bản ghi ${id}`);
+  return r;
+}
+
+/*
+  Nhóm test dưới đây khoá lại một lỗi đã có thật trong bản chạy được: lượt KHÔNG
+  quan sát được ghi đè lên dấu vết của lượt đã quan sát được, và nó phá cơ chế
+  trong im lặng — không có gì đỏ, không có gì hiện ra, phép thử chỉ đơn giản là
+  không bao giờ chạy nữa.
+*/
+
+test('lượt không khoanh bằng chứng KHÔNG dập trạng thái đã quan sát được', () => {
+  // Câu 1: đúng đáp án nhưng khoanh sai chỗ — đúng thứ cơ chế sinh ra để bắt.
+  let led = record(emptyLedger(), obs({ pointer: P(5), truth: P(2) }));
+  assert.equal(at(led).lastState, 'misaligned-correct');
+
+  // Chín câu sau không khoanh gì.
+  for (let i = 0; i < 9; i += 1) led = record(led, obs({ pointer: null }));
+
+  assert.equal(
+    at(led).lastState,
+    'misaligned-correct',
+    'trạng thái quan sát được bị lượt trống dập mất',
+  );
+  assert.equal(probeFor(at(led).lastState), 'evidence-reselect');
+});
+
+test('lượt không khoanh bằng chứng KHÔNG đổi nguồn dùng cho phép so chuyển giao', () => {
+  let led = record(emptyLedger(), obs({ sourceId: 'bai-A', answerCorrect: false, truth: P(9) }));
+  assert.equal(at(led).lastSourceId, 'bai-A');
+
+  // Lướt một bài khác mà không khoanh gì.
+  led = record(led, obs({ sourceId: 'bai-B', pointer: null }));
+
+  assert.equal(
+    at(led).lastSourceId,
+    'bai-A',
+    'nguồn so chuyển giao bị lượt trống dời sang bài khác — luật chuyển giao lộn ngược',
+  );
+});
+
+test('lượt không khoanh bằng chứng KHÔNG xoá trạng thái cần phép thử', () => {
+  let led = record(emptyLedger(), obs({ answerCorrect: false, pointer: P(1), truth: P(1) }));
+  assert.equal(at(led).status, 'needs-probe');
+
+  led = record(led, obs({ pointer: null }));
+  assert.equal(at(led).status, 'needs-probe');
+});
+
+test('hai bộ đếm tách nhau: làm bao nhiêu lượt, và quan sát được bao nhiêu lượt', () => {
+  let led = record(emptyLedger(), obs({ pointer: P(2), truth: P(2) }));
+  for (let i = 0; i < 4; i += 1) led = record(led, obs({ pointer: null }));
+
+  assert.equal(at(led).observations, 5, 'tổng lượt làm bài');
+  assert.equal(at(led).observed, 1, 'lượt thật sự quan sát được');
+});
+
+test('sổ lưu từ bản cũ không có trường observed thì không sinh ra NaN', () => {
+  const legacy = {
+    'reading:locate': {
+      skill: READING,
+      status: 'probing' as const,
+      lastState: 'aligned-correct' as const,
+      lastSourceId: 'bai-A',
+      observations: 3,
+      transfers: 0,
+      updatedAt: '2026-09-01T00:00:00.000Z',
+    },
+  } as unknown as Parameters<typeof record>[0];
+
+  const led = record(legacy, obs({ pointer: P(2), truth: P(2) }));
+  assert.equal(at(led).observed, 1);
+});

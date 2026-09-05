@@ -81,6 +81,7 @@ function blank(skill: SkillRef, at: string): SkillRecord {
     lastState: 'unobserved',
     lastSourceId: null,
     observations: 0,
+    observed: 0,
     transfers: 0,
     updatedAt: at,
   };
@@ -101,16 +102,42 @@ export function record(ledger: Ledger, obs: Observation): Ledger {
   const cur = ledger[id] ?? blank(obs.skill, obs.at);
   const state = classify(obs);
 
-  const status: SkillStatus =
-    state === 'unobserved'
-      ? cur.status === 'confirmed'
-        ? 'confirmed'
-        : 'unobserved'
-      : !obs.answerCorrect
-        ? 'needs-probe'
-        : cur.status === 'confirmed'
-          ? 'confirmed'
-          : 'probing';
+  /*
+    LƯỢT KHÔNG QUAN SÁT ĐƯỢC THÌ KHÔNG ĐƯỢC XOÁ DẤU VẾT CỦA LƯỢT ĐÃ QUAN SÁT ĐƯỢC.
+
+    Đây là hệ quả trực tiếp của nguyên tắc "không đo được khác đo rồi thấy sai":
+    một lượt không mang thông tin thì cũng không được phá thông tin đang có.
+
+    Bản cũ ghi đè `lastState` và `lastSourceId` cho MỌI lượt, và điều đó phá cơ
+    chế theo hai đường, cả hai đều im lặng:
+
+    1. `lastState` chọn phép thử tiếp theo. Người học để lộ `misaligned-correct` ở
+       câu 1 rồi làm tiếp 9 câu không khoanh gì — trạng thái bị dập về
+       `unobserved`, `probeFor` trả null, và phép thử đáng lẽ phải chạy thì không
+       bao giờ chạy. Đúng thứ mà cả cơ chế sinh ra để bắt lại bị bỏ lọt.
+
+    2. `lastSourceId` là vế so của điều kiện chuyển giao. Đọc bài A có khoanh, rồi
+       lướt bài B không khoanh gì, `lastSourceId` thành B. Phép thử chạy trên A —
+       đúng chỗ khó khăn xuất hiện — lại được tính là "nguồn khác" và công nhận.
+       Luật chuyển giao bị lộn ngược.
+  */
+  if (state === 'unobserved') {
+    return {
+      ...ledger,
+      [id]: {
+        ...cur,
+        observations: cur.observations + 1,
+        observed: cur.observed ?? 0,
+        updatedAt: obs.at,
+      },
+    };
+  }
+
+  const status: SkillStatus = !obs.answerCorrect
+    ? 'needs-probe'
+    : cur.status === 'confirmed'
+      ? 'confirmed'
+      : 'probing';
 
   return {
     ...ledger,
@@ -120,6 +147,7 @@ export function record(ledger: Ledger, obs: Observation): Ledger {
       lastState: state,
       lastSourceId: obs.sourceId,
       observations: cur.observations + 1,
+      observed: (cur.observed ?? 0) + 1,
       updatedAt: obs.at,
     },
   };

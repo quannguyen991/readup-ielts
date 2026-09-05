@@ -101,7 +101,18 @@ export type SkillRecord = {
   lastState: ProofState;
   /** Nguồn của quan sát gần nhất; phép thử chuyển giao phải dùng nguồn KHÁC. */
   lastSourceId: string | null;
+  /** Tổng số lượt làm bài đã gửi lên, KỂ CẢ lượt không khoanh bằng chứng. */
   observations: number;
+  /**
+   * Số lượt THẬT SỰ quan sát được — trạng thái khác `unobserved`.
+   *
+   * Tách khỏi `observations` vì màn hình nói "N lượt quan sát" ngay bên cạnh chữ
+   * "chưa quan sát được". Hai dòng đó cãi nhau, và dòng sai là dòng đếm: người
+   * học làm 10 câu mà không khoanh câu nào thì hệ thống quan sát được đúng 0 lần.
+   *
+   * Có thể `undefined` ở sổ lưu từ bản cũ — luôn đọc qua `?? 0`.
+   */
+  observed: number;
   /** Số lần đã đạt chuyển giao trên một nguồn khác. */
   transfers: number;
   updatedAt: string;

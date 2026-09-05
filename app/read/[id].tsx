@@ -11,6 +11,8 @@ import { useTextSelection } from '@/components/reader/useTextSelection';
 import { WordSheet, type WordSheetTarget } from '@/components/reader/WordSheet';
 import { ChatPanel } from '@/components/reader/ChatPanel';
 import type { EvidenceMark } from '@/services/proofloop/types';
+import { readingSkillFor } from '@/services/mastery/reading-skill';
+import { observeSkill } from '@/store/useMasteryStore';
 import { useBilingual } from '@/components/reader/useBilingual';
 import { Badge, Button, Card, Icon, IconButton } from '@/components/ui';
 import {
@@ -324,6 +326,41 @@ export default function ReadScreen() {
         evidenceMark: evidenceMarks[q.id],
       };
     });
+
+    /*
+      Gửi từng câu lên SỔ BẰNG CHỨNG.
+
+      Trước đây màn này khoanh bằng chứng, tính trạng thái và hiện huy hiệu — rồi
+      dừng ở đó. Không có gì chảy lên `services/mastery`, nên trang Sổ bằng chứng
+      trống trơn với người chỉ luyện Reading, màn giáo viên không bao giờ thấy khó
+      khăn Reading của lớp, và phiên 1 của giao thức chạy thử ("Reading with
+      evidence marking → baseline ledger") không sinh nổi một dòng dữ liệu.
+
+      `sourceId` là id bài đọc, và phải đúng là nó: điều kiện chuyển giao so hai
+      `sourceId` với nhau, nên đặt bừa một chuỗi mới mỗi lượt sẽ khiến mọi phép
+      thử đều "đạt chuyển giao" và cả cơ chế mất nghĩa.
+    */
+    const observedAt = new Date().toISOString();
+    for (const q of questions) {
+      const skillKey = readingSkillFor(q.type);
+      // Ngữ pháp thuần không có "đoạn đỡ đáp án" nên không vào sổ. Xem reading-skill.ts.
+      if (skillKey === null) continue;
+
+      const mark = evidenceMarks[q.id];
+      const truthIndex = q.evidenceParagraphIndex;
+
+      observeSkill({
+        skill: { domain: 'reading', key: skillKey },
+        sourceId: article.id,
+        answerCorrect: isAnswerCorrect(answers[q.id]?.trim() ?? '', q.correctAnswer),
+        pointer: mark ? { kind: 'paragraph', index: mark.paragraphIndex } : null,
+        // Bộ đề cũ có câu không kèm đối chứng — `passage_tier` đã bỏ ràng buộc
+        // not null. Không có đối chứng thì không so được, và bộ phân loại sẽ ghi
+        // `unobserved` chứ không đoán bù.
+        truth: Number.isInteger(truthIndex) ? { kind: 'paragraph', index: truthIndex } : null,
+        at: observedAt,
+      });
+    }
 
     const correct = attempts.filter((a) => a.isCorrect).length;
     const durationMs = Date.now() - startedAt.current;

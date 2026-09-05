@@ -21,6 +21,7 @@ function rec(over: Partial<SkillRecord> = {}): SkillRecord {
     lastState: 'aligned-correct' as ProofState,
     lastSourceId: 'article-1',
     observations: 3,
+    observed: 3,
     transfers: 0,
     updatedAt: '2026-09-05T10:00:00.000Z',
     ...over,
@@ -102,6 +103,20 @@ test('có số lần chuyển giao thì nêu ra, không có thì không bịa d�
   assert.ok(!explain(rec({ transfers: 0 })).steps.some((s) => s.label.includes('Đã đạt chuyển giao')));
 });
 
-test('nêu đúng số lượt đã quan sát', () => {
-  assert.ok(explain(rec({ observations: 7 })).steps.some((s) => s.label.includes('7 lượt')));
+test('nêu đúng số lượt ĐÃ QUAN SÁT ĐƯỢC, không phải số lượt đã làm', () => {
+  assert.ok(explain(rec({ observed: 7 })).steps.some((s) => s.label.includes('7 lượt')));
+});
+
+/*
+  Dòng đếm phải khớp với dòng trạng thái ngay cạnh nó. Bản cũ đếm cả lượt không
+  khoanh gì, nên màn hình hiện "chưa quan sát được" bên trên và "10 lượt quan
+  sát" bên dưới — hai dòng cãi nhau, và người đọc tin dòng có con số.
+*/
+test('làm nhiều lượt mà không khoanh gì thì không được khoe số lượt quan sát', () => {
+  const e = explain(rec({ lastState: 'unobserved', status: 'unobserved', observations: 10, observed: 0 }));
+  assert.ok(
+    e.steps.some((s) => s.label.includes('0 lượt')),
+    `phải nói thẳng là 0 lượt quan sát được: ${JSON.stringify(e.steps.map((s) => s.label))}`,
+  );
+  assert.ok(!e.steps.some((s) => s.label.includes('10 lượt')));
 });

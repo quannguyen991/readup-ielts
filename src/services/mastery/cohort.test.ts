@@ -23,6 +23,7 @@ function rec(over: Partial<SkillRecord> = {}): SkillRecord {
     lastState: 'misaligned-wrong',
     lastSourceId: 'article-77',
     observations: 3,
+    observed: 3,
     transfers: 0,
     updatedAt: '2026-09-05T10:00:00.000Z',
     ...over,

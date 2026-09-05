@@ -137,7 +137,7 @@ function SkillCard({ rec }: { rec: SkillRecord }) {
             {t(STATUS_LABEL_KEY[rec.status])}
           </Text>
           <Text className="mt-0.5 font-sans text-label text-subtle">
-            {t('mastery.observations', { n: rec.observations })}
+            {t('mastery.observations', { n: rec.observed ?? 0 })}
             {rec.transfers > 0 ? ` · ${t('mastery.transfers', { n: rec.transfers })}` : ''}
           </Text>
         </View>
