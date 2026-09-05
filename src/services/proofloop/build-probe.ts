@@ -16,7 +16,46 @@ export type ProbeInput = {
   truthEvidenceText: string;
   /** Cụm người học đã khoanh. `null` nghĩa là chưa khoanh gì. */
   learnerPhrase: string | null;
+  /**
+   * Lý do bản nháp trước bị loại, để lần thử sau không lặp lại đúng lỗi ấy.
+   *
+   * Thử lại mà không nói vì sao trượt thì chỉ là quay xúc xắc thêm một lần: cùng
+   * lời dặn, cùng bài, model có rất ít lý do để ra khác đi. Đo thật cho thấy
+   * điều đó — hàng rào bịt mắt loại cả hai lần liên tiếp với cùng một kiểu lỗi.
+   */
+  retryBecause?: RetryReason | null;
 };
+
+/** Lý do loại mà nói lại cho model thì nó sửa được. */
+export type RetryReason =
+  | 'answerable-without-passage'
+  | 'stem-leaks-decisive-phrase'
+  | 'transfer-reuses-original-evidence'
+  | 'transfer-reuses-original-stem'
+  | 'evidence-paragraph-mismatch'
+  | 'duplicate-options'
+  | 'evidence-not-verbatim';
+
+const RETRY_NOTE: Readonly<Record<RetryReason, string>> = Object.freeze({
+  'answerable-without-passage':
+    'Your previous attempt was REJECTED: another model answered it correctly WITHOUT reading the passage. The question must be unanswerable from general knowledge or from the shape of the options alone. Make every option plausible to someone who has not read the text, so that only the passage separates them.',
+  'stem-leaks-decisive-phrase':
+    'Your previous attempt was REJECTED: the decisive phrase appeared inside the question stem, so the learner could match strings instead of reading. Keep that wording out of the stem.',
+  'transfer-reuses-original-evidence':
+    'Your previous attempt was REJECTED: it reused the original evidence sentence. Build the question on different content.',
+  'transfer-reuses-original-stem':
+    'Your previous attempt was REJECTED: it restated the original question. Ask something genuinely different.',
+  'evidence-paragraph-mismatch':
+    'Your previous attempt was REJECTED: evidenceParagraphIndex did not point at the paragraph containing evidenceText. Count paragraphs from 0.',
+  'duplicate-options': 'Your previous attempt was REJECTED: two options were the same. Make every option distinct.',
+  'evidence-not-verbatim':
+    'Your previous attempt was REJECTED: evidenceText was not copied verbatim from the passage. Copy it character for character.',
+});
+
+/** Lý do này nói lại cho model thì có ích, hay chỉ là nhiễu. */
+export function retryNoteFor(reason: string): string | null {
+  return RETRY_NOTE[reason as RetryReason] ?? null;
+}
 
 export type ParseResult =
   | { ok: true; draft: ProbeDraft }
@@ -29,9 +68,13 @@ export type ParseResult =
  * nội dung lời dặn, không phải cái ống dẫn. Việc gọi mạng nằm ở API route.
  */
 export function buildProbePrompt(input: ProbeInput): string {
+  const retry = input.retryBecause ? RETRY_NOTE[input.retryBecause] : null;
   return [
     'You build ONE diagnostic probe for an IELTS Reading learner.',
     'You do not judge the learner. You only build the probe.',
+    // Đặt ngay đầu, trước cả bài đọc: lời dặn sửa lỗi nằm cuối một prompt dài
+    // thì model hay bỏ qua, mà đây đúng là câu quan trọng nhất của lần thử này.
+    ...(retry ? ['', retry] : []),
     '',
     `PROBE KIND (assigned, do not change): ${input.kind}`,
     `TASK: ${PROBE_BRIEF[input.kind]}`,

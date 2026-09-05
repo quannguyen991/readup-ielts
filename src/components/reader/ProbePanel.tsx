@@ -39,20 +39,67 @@ const FAIL_TEXT: Record<string, string> = {
   'insufficient-evidence': 'Bài này không đủ căn cứ để ra một phép thử công bằng.',
   'not-json': 'Chưa dựng được phép thử cho lượt này.',
   unobserved: 'Lượt này chưa khoanh bằng chứng nên chưa có gì để làm rõ.',
+  'no-transfer-source': 'Chưa tìm được bài đọc khác cùng khổ để thử. Phép thử chuyển giao bắt buộc phải ở bài khác.',
+  'transfer-same-source': 'Câu dựng ra vẫn nằm trên chính bài cũ nên đã bị loại.',
+  'answerable-without-passage': 'Câu dựng ra trả lời được mà không cần đọc bài, nên đã bị loại.',
+  'stem-leaks-decisive-phrase': 'Câu dựng ra để lộ sẵn chữ quyết định trong đề nên đã bị loại.',
+  'evidence-paragraph-mismatch': 'Câu dựng ra chỉ sai đoạn chứa bằng chứng nên đã bị loại.',
+  'transfer-reuses-original-evidence': 'Câu dựng ra dùng lại đúng câu bằng chứng cũ nên đã bị loại.',
+  'transfer-reuses-original-stem': 'Câu dựng ra chỉ chép lại câu hỏi cũ nên đã bị loại.',
+  'duplicate-options': 'Câu dựng ra có hai phương án trùng nhau nên đã bị loại.',
+};
+
+/** Biên nhận từ máy chủ: ba hàng rào đã làm gì với bản nháp của model. */
+export type ProbeReceipt = {
+  attempts: number;
+  rejections: string[];
+  warnings: string[];
+  blind: string | null;
 };
 
 export type ProbeResponse =
-  | { state: ProofState; kind: ProbeKind; draft: ProbeDraft; model?: string }
-  | { state: ProofState; kind: ProbeKind | null; draft?: null; reason: string };
+  | {
+      state: ProofState;
+      kind: ProbeKind;
+      draft: ProbeDraft;
+      model?: string;
+      receipt?: ProbeReceipt;
+    }
+  | {
+      state: ProofState;
+      kind: ProbeKind | null;
+      draft?: null;
+      reason: string;
+      receipt?: ProbeReceipt;
+    };
+
+/** Lời kể của từng kết luận ở hàng rào bịt mắt. */
+const BLIND_TEXT: Record<string, string> = {
+  'blind-model-could-not-answer': 'che bài đi thì một AI khác không trả lời được — đúng là câu phải đọc mới làm được',
+  'blind-model-answered-wrong': 'một AI khác trả lời sai khi không được đọc bài',
+  'blind-guess-hit': 'một AI khác đoán trúng dù không được đọc bài, nhưng tự nhận là đoán',
+  unreadable: 'không đọc được câu trả lời của AI kiểm tra',
+  'check-failed': 'chưa chạy được bước kiểm này',
+};
 
 export function ProbePanel({
   state,
   mark,
   fetchProbe,
+  onResolved,
 }: {
   state: ProofState;
   mark: EvidenceMark | null;
   fetchProbe: () => Promise<ProbeResponse>;
+  /**
+   * Người học vừa trả lời xong phép thử.
+   *
+   * Bảng này KHÔNG tự ghi vào sổ bằng chứng: nó không biết lượt này thuộc kỹ
+   * năng nào, cũng không biết bài chuyển giao là bài nào. Cả hai thứ đó nằm ở
+   * màn gọi nó, và luật công nhận thì nằm ở `mastery/ledger.ts`. Bảng này chỉ
+   * báo lại đã xảy ra chuyện gì.
+   */
+  onResolved?: (result: { kind: ProbeKind; passed: boolean }) => void;
 }) {
   const [phase, setPhase] = useState<'idle' | 'loading' | 'probe' | 'answered' | 'failed'>('idle');
   const [data, setData] = useState<ProbeResponse | null>(null);
@@ -106,6 +153,7 @@ export function ProbePanel({
   }
 
   const draft = data.draft;
+  const receipt = data.receipt ?? null;
   const correct = chosen === draft.correctOption;
 
   return (
@@ -124,6 +172,7 @@ export function ProbePanel({
               onPress={() => {
                 setChosen(index);
                 setPhase('answered');
+                onResolved?.({ kind: draft.kind, passed: index === draft.correctOption });
               }}
               className={[
                 'rounded-panel border px-3 py-3',
@@ -168,9 +217,65 @@ export function ProbePanel({
           */}
           <Text className="mt-3 font-sans text-label text-muted">
             {correct
-              ? 'Đã làm rõ được chỗ này. Chưa xác nhận là đã nắm kỹ năng — muốn xác nhận thì cần một câu ở bài đọc khác.'
+              ? draft.kind === 'transfer'
+                ? 'Câu này ở một bài đọc khác, nên làm được ở đây là đã tách được "hiểu" khỏi "nhớ bài cũ".'
+                : 'Đã làm rõ được chỗ này. Chưa xác nhận là đã nắm kỹ năng — muốn xác nhận thì cần một câu ở bài đọc khác.'
               : 'Chỗ vướng vẫn còn. Lần sau bám vào chữ quyết định ở trên trước khi chọn.'}
           </Text>
+
+          {/*
+            BIÊN NHẬN KIỂM CHỨNG.
+
+            Câu hỏi này do một model viết ra, và người học có quyền biết nó đã bị
+            đối chiếu ở đâu trước khi tới tay mình. Đây là chỗ dạy về AI hiệu quả
+            hơn mọi bài giảng về AI: nó xảy ra trên chính bài của họ, ngay trước
+            mắt họ.
+
+            Dòng "chưa kiểm được" nếu có thì PHẢI hiện, và hiện khác màu. Bỏ nó
+            đi thì biên nhận đọc thành giấy chứng nhận — đúng cái hiểu lầm mà nó
+            sinh ra để ngăn.
+          */}
+          {receipt ? (
+            <View className="mt-3 rounded-panel bg-surface-muted px-3 py-3">
+              <Text className="font-mid text-label text-muted">Câu này đã bị kiểm những gì</Text>
+
+              <Text className="mt-1 font-sans text-label text-ink">
+                · chữ trích dẫn được đối chiếu nguyên văn với bài đọc
+              </Text>
+              <Text className="mt-1 font-sans text-label text-ink">
+                · chỉ số đoạn được đối chiếu với đoạn thật sự chứa câu đó
+              </Text>
+              {draft.kind === 'transfer' ? (
+                <Text className="mt-1 font-sans text-label text-ink">
+                  · bài dùng cho câu này khác bài bạn vừa làm
+                </Text>
+              ) : null}
+              {receipt.blind ? (
+                <Text
+                  className={[
+                    'mt-1 font-sans text-label',
+                    receipt.blind === 'check-failed' || receipt.blind === 'unreadable'
+                      ? 'text-danger-ink'
+                      : 'text-ink',
+                  ].join(' ')}
+                >
+                  · {BLIND_TEXT[receipt.blind] ?? receipt.blind}
+                </Text>
+              ) : null}
+
+              {receipt.rejections.length > 0 ? (
+                <Text className="mt-2 font-sans text-label text-muted">
+                  Trước câu này, {receipt.rejections.length} bản nháp của AI đã bị loại.
+                </Text>
+              ) : null}
+
+              {/* Luôn hiện, và luôn khác màu. Xem chú thích ở trên. */}
+              <Text className="mt-2 font-sans text-label text-danger-ink">
+                · chưa kiểm được bằng máy: câu chữ có tự nhiên không, và câu hỏi này có đúng là
+                đang đo kỹ năng bạn đang vướng không
+              </Text>
+            </View>
+          ) : null}
         </View>
       ) : null}
     </Card>

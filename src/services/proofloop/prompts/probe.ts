@@ -11,8 +11,15 @@ import type { ProbeKind } from '../types';
  * thích trước là mớm đáp án, và phép thử mất sạch giá trị.
  */
 export const PROBE_BRIEF: Readonly<Record<ProbeKind, string>> = Object.freeze({
+  /*
+    Bản cũ viết "DIFFERENT content within this passage", và câu ấy chống lại luật
+    công nhận của sổ bằng chứng: sổ chỉ công nhận khi người học làm được trên một
+    NGUỒN KHÁC, vì lặp lại trên đúng bài cũ không tách nổi "đã hiểu" khỏi "nhớ
+    bài này". Bài đọc gửi kèm lời dặn này giờ ĐÃ là bài khác, do
+    `transfer-source.ts` chọn, và `probe-validity.ts` chặn nếu không phải.
+  */
   transfer:
-    'Build ONE new question testing the same micro-skill on DIFFERENT content within this passage. Do not reuse the original wording or the original evidence sentence.',
+    'The passage above is a DIFFERENT text from the one where the learner ran into trouble. Build ONE new question testing the same micro-skill on this new passage. Do not reuse the original wording or the original evidence sentence.',
   'evidence-reselect':
     'Do NOT explain or reveal the answer. Build ONE question asking the learner to identify which sentence in the passage actually supports the correct answer.',
   entailment:

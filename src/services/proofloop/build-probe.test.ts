@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildProbePrompt, parseProbeResponse, type ProbeInput } from './build-probe';
+import { buildProbePrompt, parseProbeResponse, retryNoteFor, type ProbeInput } from './build-probe';
 
 const PASSAGE = 'Anthems are always performed by a trained choir.';
 
@@ -85,4 +85,37 @@ test('JSON đọc được nhưng vi phạm luật thì vẫn bị loại', () =
   const out = parseProbeResponse(draftBody({ decisivePhrase: 'không có trong câu' }), ctx);
   assert.equal(out.ok, false);
   assert.equal(out.ok === false && out.reason, 'phrase-not-in-evidence');
+});
+
+/*
+  Vòng phản hồi khi thử lại.
+
+  Đo thật trên bài rừng ngập mặn: hàng rào bịt mắt loại cả ba lần liên tiếp với
+  đúng một kiểu lỗi. Thử lại mà không nói vì sao trượt thì chỉ là quay xúc xắc
+  thêm lượt nữa với đúng lời dặn cũ.
+*/
+
+test('lời dặn thử lại nói rõ lần trước hỏng vì sao', () => {
+  const base = buildProbePrompt(input());
+  const retry = buildProbePrompt({ ...input(), retryBecause: 'answerable-without-passage' });
+
+  assert.ok(!base.includes('REJECTED'), 'lần đầu chưa có gì để sửa');
+  assert.ok(retry.includes('REJECTED'));
+  assert.ok(/without reading the passage/i.test(retry));
+});
+
+test('lời dặn sửa lỗi đứng TRƯỚC bài đọc', () => {
+  const retry = buildProbePrompt({ ...input(), retryBecause: 'stem-leaks-decisive-phrase' });
+  assert.ok(
+    retry.indexOf('REJECTED') < retry.indexOf('PASSAGE:'),
+    'nằm cuối một prompt dài thì model hay bỏ qua, mà đây là câu quan trọng nhất của lần thử này',
+  );
+});
+
+test('chỉ những lý do nói lại được mới sinh ra lời dặn', () => {
+  assert.ok(retryNoteFor('answerable-without-passage'));
+  assert.ok(retryNoteFor('evidence-not-verbatim'));
+  // Bài không đủ căn cứ thì nói lại cũng vô ích: model không có thêm thông tin nào.
+  assert.equal(retryNoteFor('insufficient-evidence'), null);
+  assert.equal(retryNoteFor('transfer-same-source'), null);
 });

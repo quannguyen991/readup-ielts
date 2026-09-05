@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -13,7 +13,10 @@ import {
   SectionHeader,
   StatCard,
 } from '@/components/ui';
-import { getArticleWithBody } from '@/data/articles';
+import { ARTICLES, getArticleWithBody } from '@/data/articles';
+import { pickTransferSource } from '@/services/proofloop/transfer-source';
+import { readingSkillFor } from '@/services/mastery/reading-skill';
+import { resolveProbe } from '@/store/useMasteryStore';
 import { formatBand } from '@/lib/band';
 import { findEvidenceSpan, mergeSpans, type EvidenceSpan } from '@/lib/reading/evidence';
 import { ReadingCoachPanel, type CoachRequest } from '@/components/reader/ReadingCoachPanel';
@@ -35,6 +38,13 @@ export default function ReviewScreen() {
   const [filter, setFilter] = useState<'all' | 'correct' | 'incorrect'>('all');
   const [typeFilter, setTypeFilter] = useState<QuestionType | 'all'>('all');
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  /*
+    Bài đã dùng cho phép thử chuyển giao vừa rồi.
+
+    Giữ ở ref chứ không ở state: nó chỉ được đọc lúc ghi kết quả, và đưa vào
+    state thì mỗi lần dựng phép thử lại vẽ lại cả màn xem lại.
+  */
+  const lastTransferId = useRef<string | null>(null);
   const [showHighlights, setShowHighlights] = useState(true);
 
   // Màn này hiện lại nguyên bài để soi câu dẫn chứng, nên cần toàn văn chứ
@@ -262,6 +272,19 @@ export default function ReviewScreen() {
                           })}
                           mark={attempt.evidenceMark ?? null}
                           fetchProbe={async () => {
+                            /*
+                              Phép thử chuyển giao cần một bài KHÁC, và bài ấy
+                              phải chọn ở đây chứ không ở máy chủ: kho bài nằm
+                              trong bundle của client, máy chủ không có nó.
+
+                              Nạp toàn văn có thể không ra gì (bài chỉ có tiêu
+                              đề, hoặc chunk hỏng) — khi đó gửi đi mà thiếu, và
+                              route trả `no-transfer-source`. Nói không chạy
+                              được vẫn đúng hơn là chạy trên chính bài cũ.
+                            */
+                            const pick = pickTransferSource(article, ARTICLES);
+                            const transfer = pick ? getArticleWithBody(pick.id) : undefined;
+
                             const res = await fetch('/api/proofloop/probe', {
                               method: 'POST',
                               headers: { 'Content-Type': 'application/json' },
@@ -273,9 +296,36 @@ export default function ReviewScreen() {
                                 questionPrompt: question.prompt,
                                 correctAnswer: question.correctAnswer,
                                 truthEvidenceText: question.evidenceText,
+                                sourceId: article.id,
+                                transferPassage: transfer?.paragraphs.join('\n\n'),
+                                transferSourceId: transfer?.id,
                               }),
                             });
-                            return res.json();
+                            const json = await res.json();
+                            lastTransferId.current = transfer?.id ?? null;
+                            return json;
+                          }}
+                          /*
+                            Kết quả phép thử phải chảy vào sổ, nếu không thì
+                            `confirmed` là một trạng thái không đường nào tới
+                            được ở Reading — luật công nhận vẫn đúng, vẫn có
+                            test, và vẫn không bao giờ chạy.
+
+                            Kỹ năng lấy từ DẠNG CÂU HỎI, không hỏi model. Nguồn
+                            phép thử lấy từ bài vừa gửi đi; `applyOutcome` so nó
+                            với nguồn gốc, và chỉ khác nhau mới tính chuyển giao.
+                          */
+                          onResolved={({ kind, passed }) => {
+                            const skillKey = readingSkillFor(question.type);
+                            if (skillKey === null) return;
+                            resolveProbe({
+                              skill: { domain: 'reading', key: skillKey },
+                              kind,
+                              passed,
+                              sourceId: article.id,
+                              probeSourceId: lastTransferId.current ?? article.id,
+                              at: new Date().toISOString(),
+                            });
                           }}
                         />
                       ) : null}
