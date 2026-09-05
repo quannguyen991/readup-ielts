@@ -61,11 +61,7 @@ const AREAS: Area[] = [
     icon: 'book',
     colors: stickerGradient.primary,
     title: 'Reading',
-    lines: [
-      `${readableCount.toLocaleString('vi-VN')} bài toàn văn từ nguồn công khai`,
-      `${ieltsCount} passage IELTS · ${satCount} passage SAT`,
-      'Xem lại từng câu kèm bằng chứng trong bài',
-    ],
+    lines: [`${ieltsCount} passage IELTS · ${satCount} passage SAT`],
     badge: `${readableCount.toLocaleString('vi-VN')} BÀI`,
     href: '/practice',
   },
@@ -73,11 +69,7 @@ const AREAS: Area[] = [
     icon: 'pencil',
     colors: stickerGradient.danger,
     title: 'Writing',
-    lines: [
-      `${task1Count} đề Task 1 có biểu đồ vẽ sẵn`,
-      `${task2Count} đề Task 2 theo 5 dạng luận`,
-      'Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng',
-    ],
+    lines: ['Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng'],
     badge: `${WRITING_PROMPTS.length} ĐỀ`,
     href: '/write',
   },
@@ -85,11 +77,7 @@ const AREAS: Area[] = [
     icon: 'grid',
     colors: stickerGradient.accent,
     title: 'SAT',
-    lines: [
-      `Math: ${CURRICULUM_TOTALS.sets} bộ đề, đủ 19 kỹ năng Digital SAT`,
-      `Verbal: ${satRwStats().questions} câu, đủ 4 mảng đề thật`,
-      'Đáp án tính bằng code, không do AI đoán',
-    ],
+    lines: ['Đáp án tính bằng code, không do AI đoán'],
     badge: `${(CURRICULUM_TOTALS.questions + satRwStats().questions).toLocaleString('vi-VN')} CÂU`,
     href: '/sat',
   },
@@ -97,11 +85,7 @@ const AREAS: Area[] = [
     icon: 'volume',
     colors: stickerGradient.info,
     title: 'Luyện câu',
-    lines: [
-      `${DICTATION_SENTENCES.length} câu chép chính tả, chấm từng từ`,
-      `${TRANSLATION_SENTENCES.length} câu dịch Việt – Anh có đáp án mẫu`,
-      'Chắc cấu trúc câu trước khi viết cả bài',
-    ],
+    lines: ['Chép chính tả và dịch câu, chấm từng từ'],
     badge: `${sentenceCount} CÂU`,
     href: '/sentence',
   },
@@ -109,11 +93,7 @@ const AREAS: Area[] = [
     icon: 'letters',
     colors: stickerGradient.success,
     title: 'Sổ từ vựng',
-    lines: [
-      'Mỗi từ lưu kèm nguyên câu gặp nó',
-      'Gặp lại đúng lúc sắp quên, không ôn tràn',
-      'Bốn kiểu thẻ, tra nghĩa ngay trong lúc đọc',
-    ],
+    lines: ['Mỗi từ lưu kèm nguyên câu gặp nó'],
     badge: 'FSRS',
     href: '/vocabulary',
   },
@@ -121,11 +101,7 @@ const AREAS: Area[] = [
     icon: 'trending',
     colors: stickerGradient.warning,
     title: 'Lộ trình',
-    lines: [
-      `${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`,
-      'Mở đầu bằng bài chẩn đoán 19 câu',
-      'Trọn chặng Đại số nằm trong bản Free',
-    ],
+    lines: [`${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`],
     badge: 'MIỄN PHÍ',
     href: '/math',
   },
@@ -153,7 +129,7 @@ const DIFFERENCES: {
     colors: stickerGradient.success,
     title: 'Đáp án toán tính bằng code, không do AI đoán',
     body:
-      'Mỗi câu SAT Math dựng từ tham số rồi suy ra đáp án từ chính tham số đó, nên đề và đáp án không thể lệch nhau. Bộ kiểm chứng chạy 200 hạt cho mỗi dạng, đọc ngược từ đề bài in ra — thế nghiệm vào phương trình phải ra 0.',
+      'Đề dựng từ tham số rồi suy ngược ra đáp án, nên đề và đáp án không thể lệch nhau.',
     proof: ['200 hạt mỗi dạng', 'thế nghiệm → 0', '0 lần AI tính đáp án'],
   },
   {
@@ -161,7 +137,7 @@ const DIFFERENCES: {
     colors: stickerGradient.warning,
     title: 'Sai ở đâu được gọi đúng tên chỗ đó',
     body:
-      'Mỗi đáp án nhiễu dựng từ một sai lầm có tên — sai dấu, quên nhân phân phối, lấy nhầm mẫu số. Chọn nhầm cái nào thì màn xem lại nói đúng cái đó, và thống kê gộp lại cho thấy bạn hay hỏng kiểu gì.',
+      'Mỗi đáp án nhiễu dựng từ một sai lầm có tên, nên chọn nhầm cái nào là biết mình hay hỏng kiểu gì.',
     proof: ['sign_flip', 'forgot_distribute', 'used_diameter_not_radius'],
   },
   {
@@ -169,7 +145,7 @@ const DIFFERENCES: {
     colors: stickerGradient.info,
     title: 'Học được ngay, không cần tài khoản',
     body:
-      'Mở lên là học. Dữ liệu nằm trên máy bạn. Đăng nhập chỉ để mang tiến độ sang máy khác — không phải cửa vào, và không có bước bắt tạo tài khoản trước khi cho xem gì.',
+      'Mở lên là học. Đăng nhập chỉ để mang tiến độ sang máy khác, không phải cửa vào.',
     proof: ['0 tài khoản để bắt đầu', 'dữ liệu nằm trên máy bạn'],
   },
 ];
@@ -191,19 +167,19 @@ const STEPS: {
     n: '1',
     colors: stickerGradient.info,
     title: 'Làm bài chẩn đoán',
-    body: '19 câu, mỗi kỹ năng một câu. Xong là có bản đồ mình thủng chỗ nào.',
+    body: '19 câu, mỗi kỹ năng một câu.',
   },
   {
     n: '2',
     colors: stickerGradient.primary,
     title: 'Đi theo lộ trình',
-    body: 'Mỗi bài học có 5 bộ đề siết dần thời gian, từ làm quen tới chốt kỹ năng.',
+    body: 'Mỗi bài học 5 bộ đề, siết dần thời gian.',
   },
   {
     n: '3',
     colors: stickerGradient.accent,
     title: 'Thi thử đúng khổ đề',
-    body: 'Hai module × 22 câu × 35 phút, module sau đổi độ khó theo kết quả module trước.',
+    body: 'Hai module × 22 câu × 35 phút, độ khó đổi theo kết quả.',
   },
 ];
 
@@ -315,8 +291,7 @@ export default function IntroScreen() {
               </View>
 
               <Text className="mt-4 font-sans text-bodyLg text-white/90" style={{ maxWidth: 620 }}>
-                ReadUp gộp Reading, Writing, sổ từ và trọn lộ trình SAT Math vào một chỗ. Đề sinh mới
-                mỗi lượt, đáp án tính bằng code, và mỗi câu sai được gọi đúng tên lỗi.
+                Đề sinh mới mỗi lượt, đáp án tính bằng code, và mỗi câu sai được gọi đúng tên lỗi.
               </Text>
 
               <View className="mt-6 flex-row flex-wrap gap-2">
@@ -351,13 +326,13 @@ export default function IntroScreen() {
 
       {/* ---------------------------------------------------------- sáu mảng */}
       <Appear index={1}>
-        <Text className="mt-8 font-heavy text-sectionTitle text-ink">App có gì</Text>
+        <Text className="mt-14 font-heavy text-sectionTitle text-ink">App có gì</Text>
         <Text className="mt-1 font-sans text-body text-muted">
           Sáu mảng, dùng chung một sổ từ và một bảng tiến độ.
         </Text>
       </Appear>
 
-      <View className="mt-4">
+      <View className="mt-5">
         <Grid columns={3} tabletColumns={2} mobileColumns={1}>
           {AREAS.map((area, index) => (
             <Appear key={area.title} index={index + 2} style={{ height: '100%' }}>
@@ -369,9 +344,9 @@ export default function IntroScreen() {
 
       {/* -------------------------------------------------------- ba bước */}
       <Appear index={3}>
-        <Text className="mt-8 font-heavy text-sectionTitle text-ink">Bắt đầu thế nào</Text>
+        <Text className="mt-14 font-heavy text-sectionTitle text-ink">Bắt đầu thế nào</Text>
       </Appear>
-      <View className="mt-4">
+      <View className="mt-5">
         <Grid columns={3} tabletColumns={3} mobileColumns={1}>
           {STEPS.map((step, index) => (
             <Appear key={step.n} index={index + 4} style={{ height: '100%' }}>
@@ -383,9 +358,9 @@ export default function IntroScreen() {
 
       {/* ------------------------------------------------------ khác biệt */}
       <Appear index={5}>
-        <Text className="mt-8 font-heavy text-sectionTitle text-ink">Khác gì các app khác</Text>
+        <Text className="mt-14 font-heavy text-sectionTitle text-ink">Khác gì các app khác</Text>
       </Appear>
-      <View className="mt-4 gap-3">
+      <View className="mt-5 gap-3">
         {DIFFERENCES.map((item, index) => (
           <Appear key={item.title} index={index + 6}>
             <DifferenceCard item={item} />
@@ -395,7 +370,7 @@ export default function IntroScreen() {
 
       {/* ------------------------------------------------------------ giá */}
       <Appear index={7}>
-        <Text className="mt-8 font-heavy text-sectionTitle text-ink">Gói và giá</Text>
+        <Text className="mt-14 font-heavy text-sectionTitle text-ink">Gói và giá</Text>
         <Text className="mt-1 font-sans text-body text-muted">
           Bản Free dùng học thật được — trọn bài chẩn đoán và trọn chặng Đại số, không phải bản xem
           thử. Nâng cấp khi cần phần còn lại, không phải để bắt đầu.
@@ -414,7 +389,7 @@ export default function IntroScreen() {
         </View>
       </Appear>
 
-      <View className="mt-4">
+      <View className="mt-5">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
           {PLAN_ORDER.map((id, index) => (
             <Appear key={id} index={index + 8} style={{ height: '100%' }}>

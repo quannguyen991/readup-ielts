@@ -154,10 +154,9 @@ export const PLANS: Record<PlanId, Plan> = {
       vocab_total: 100,
     },
     highlights: [
-      'Trọn bài chẩn đoán SAT Math 19 kỹ năng',
-      'Trọn chặng Đại số — 25 bộ đề, hơn 500 câu',
-      '5 bài đọc mỗi ngày · 3 lượt chấm AI mỗi tháng',
-      'Dùng thử Plus 3 ngày miễn phí bất cứ lúc nào, không cần thẻ',
+      'Trọn bài chẩn đoán 19 kỹ năng',
+      'Trọn chặng Đại số, hơn 500 câu',
+      '5 bài đọc mỗi ngày',
     ],
   },
 
@@ -177,10 +176,9 @@ export const PLANS: Record<PlanId, Plan> = {
       vocab_total: null,
     },
     highlights: [
-      `Toàn bộ ${CURRICULUM_TOTALS.sets} bộ đề SAT Math, mở hết ${CURRICULUM_TOTALS.stages} chặng — Free chỉ có chặng 1`,
-      'Bài đọc, sổ từ và thi thử adaptive không giới hạn',
-      '20 lượt chấm Writing bằng AI mỗi tháng',
-      'Mua theo nhóm 10 người: giảm tới 20% giá năm',
+      `Mở hết ${CURRICULUM_TOTALS.stages} chặng · ${CURRICULUM_TOTALS.sets} bộ đề`,
+      'Bài đọc và thi thử không giới hạn',
+      '20 lượt chấm Writing mỗi tháng',
     ],
   },
 
@@ -201,9 +199,8 @@ export const PLANS: Record<PlanId, Plan> = {
     },
     highlights: [
       'Mọi thứ của Plus',
-      'Chatbox hỏi ngay trong bài đọc + bài mẫu theo band',
-      '120 lượt AI mỗi tháng — đủ cho 4 bài/ngày',
-      'Cần dùng AI nhiều hơn? Max có 720 lượt/tháng — gấp 6 lần',
+      'Trợ giảng AI ngay trong bài đọc',
+      '120 lượt AI mỗi tháng',
     ],
     recommended: true,
   },
@@ -226,9 +223,8 @@ export const PLANS: Record<PlanId, Plan> = {
     },
     highlights: [
       'Mọi thứ của Pro',
-      '720 lượt AI mỗi tháng — gấp 6 lần Pro',
-      'Hỗ trợ ưu tiên, trả lời trong ngày',
-      'Giảm giá sâu nhất khi mua theo nhóm — tới 30% cho nhóm 10 người',
+      '720 lượt AI mỗi tháng',
+      'Hỗ trợ ưu tiên trong ngày',
     ],
   },
 };
