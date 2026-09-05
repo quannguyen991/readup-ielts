@@ -52,7 +52,7 @@ export default function SatWritingScreen() {
         className="w-full self-center px-4 py-4 lg:px-6 lg:py-6"
         style={{ maxWidth: layout.contentMaxWidth }}
       >
-        <Pressable onPress={() => router.push('/write')} className="mb-3 flex-row items-center gap-1">
+        <Pressable onPress={() => router.push('/write/tests')} className="mb-3 flex-row items-center gap-1">
           <Icon name="chevron-left" size={18} color={color.muted} />
           <Text className="font-semi text-body text-muted">Kho đề</Text>
         </Pressable>

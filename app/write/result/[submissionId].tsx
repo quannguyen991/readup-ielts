@@ -169,7 +169,7 @@ export default function WritingResultScreen() {
             className="mt-4"
             variant="brand"
             label="Về kho đề"
-            onPress={() => router.replace('/write')}
+            onPress={() => router.replace('/write/tests')}
           />
         </PaperCard>
       </TaskShell>
@@ -362,7 +362,7 @@ export default function WritingResultScreen() {
               iconLeft="refresh"
               onPress={() => router.push(`/write/${prompt.id}` as never)}
             />
-            <Button variant="onDark" label="Về kho đề" onPress={() => router.push('/write')} />
+            <Button variant="onDark" label="Về kho đề" onPress={() => router.push('/write/tests')} />
           </View>
         </View>
       </View>

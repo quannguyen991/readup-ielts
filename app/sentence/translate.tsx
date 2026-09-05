@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { TaskShell } from '@/components/layout/TaskShell';
@@ -14,6 +14,7 @@ import { getTranslationSet } from '@/data/translation-sets';
 import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
 import { buildReveal } from '@/services/sentence/word-reveal';
+import { chunkItems, itemsForStructure } from '@/services/writing/translation-path';
 import { useSentenceStore, type TranslationAttempt } from '@/store/useSentenceStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
@@ -47,11 +48,39 @@ export default function TranslateScreen() {
       /sentence/translate                  — thư viện bài, chọn bài rồi vào
       /sentence/translate?set=tset-health  — luyện thẳng một bài theo chủ đề
   */
-  const { set: setParam } = useLocalSearchParams<{ set?: string }>();
+  const {
+    set: setParam,
+    structure: structureParam,
+    chunk: chunkParam,
+  } = useLocalSearchParams<{ set?: string; structure?: string; chunk?: string }>();
+
   const chosenSet = typeof setParam === 'string' ? getTranslationSet(setParam) : undefined;
 
-  const [phase, setPhase] = useState<Phase>(chosenSet ? 'running' : 'setup');
-  const [items, setItems] = useState<TranslationItem[]>(() => chosenSet?.items ?? []);
+  /*
+    Ba đường vào, và cả ba đều dựng ra cùng một thứ — một mảng câu để luyện:
+
+      /sentence/translate                       thư viện, chọn bài rồi vào
+      ?set=tset-health                          trọn một bộ chủ đề
+      ?set=tset-health&chunk=3                  bộ ấy, ba câu một lượt (Bước 3–5)
+      ?structure=passive                        gom theo cấu trúc câu (Bước 1)
+
+    Gộp cả ba về một chỗ dựng ngay tại đây thay vì đẻ thêm màn luyện thứ hai:
+    phần khó của màn này là bộ mở khoá theo từng từ, và nhân đôi nó ra hai bản
+    là nhân đôi luôn mọi lỗi về sau.
+  */
+  const entryItems = useMemo<TranslationItem[]>(() => {
+    const size = Number(chunkParam);
+    const chunk = Number.isInteger(size) && size > 1 ? size : 1;
+
+    if (typeof structureParam === 'string') {
+      return chunkItems(itemsForStructure(structureParam), chunk);
+    }
+    if (chosenSet) return chunkItems(chosenSet.items, chunk);
+    return [];
+  }, [chosenSet, chunkParam, structureParam]);
+
+  const [phase, setPhase] = useState<Phase>(entryItems.length > 0 ? 'running' : 'setup');
+  const [items, setItems] = useState<TranslationItem[]>(() => entryItems);
   const [index, setIndex] = useState(0);
   const [attempts, setAttempts] = useState<TranslationAttempt[]>([]);
 
@@ -113,6 +142,7 @@ export default function TranslateScreen() {
     <RunningView
       key={items[index]?.id ?? index}
       item={items[index]!}
+      items={items}
       index={index}
       total={items.length}
       onSubmit={finishItem}
@@ -157,11 +187,13 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
 
 function RunningView({
   item,
+  items,
   index,
   total,
   onSubmit,
 }: {
   item: TranslationItem;
+  items: TranslationItem[];
   index: number;
   total: number;
   onSubmit: (attempt: TranslationAttempt) => void;
@@ -188,6 +220,44 @@ function RunningView({
       timeSpentMs: Date.now() - enteredAt.current,
     });
   };
+
+  /*
+    Ctrl+Space — MỞ HỘ ĐÚNG MỘT TỪ, không phải mở cả câu.
+
+    Chỗ tắc của bài này gần như luôn là một từ: người học biết cấu trúc nhưng
+    không nhớ đúng từ mà câu mẫu dùng. Không có lối gỡ thì họ bỏ dở cả câu; mở
+    cả câu thì phần còn lại chẳng còn gì để làm. Mở một từ trả lại đúng thứ họ
+    thiếu rồi để họ đi tiếp.
+
+    Nó ghi vào `usedHint`, và câu có mở hộ KHÔNG tính là tự làm được — cùng luật
+    với nút "Xem gợi ý" vốn có. Một lối gỡ không để lại dấu vết thì sổ tiến độ
+    bắt đầu nói dối.
+  */
+  const revealNextWord = useCallback(() => {
+    const active = reveal.tokens.find((t) => t.status !== 'solved');
+    if (!active) return;
+    const upTo = reveal.tokens.slice(0, reveal.tokens.indexOf(active) + 1);
+    setTyped(upTo.map((t) => t.word).join(' '));
+    setShowHint(true);
+  }, [reveal.tokens]);
+
+  /*
+    Bắt phím ở cấp cửa sổ, cùng cách màn Chép chính tả bắt phím Tab.
+
+    Đã thử đặt trên chính ô nhập trước: react-native-web KHÔNG giao Ctrl+Space
+    qua `onKeyPress` của TextInput, nên tổ hợp ấy rơi vào hư không. Ở cấp cửa sổ
+    thì nó tới, và `preventDefault` giữ trình duyệt khỏi cuộn trang.
+  */
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.code !== 'Space' || !(event.ctrlKey || event.metaKey)) return;
+      event.preventDefault();
+      revealNextWord();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [revealNextWord]);
 
   const percent = reveal.total > 0 ? (reveal.solvedCount / reveal.total) * 100 : 0;
 
@@ -270,6 +340,41 @@ function RunningView({
               </View>
             ) : null}
           </PaperCard>
+
+          {/*
+            CÁC CÂU CÒN LẠI.
+
+            Không phải để làm trước, mà để biết còn bao xa. Một bài mười câu mà
+            chỉ thấy đúng câu đang gõ thì người học không ước lượng được nên
+            ngồi tiếp hay dừng — và không ước lượng được thì hay dừng.
+
+            Chỉ hiện tiếng Việt: hiện kèm bản tiếng Anh là phát đáp án của những
+            câu chưa tới.
+          */}
+          {items.length > 1 ? (
+            <PaperCard className="mt-3">
+              <Text className="font-heavy text-label text-paper-muted" style={{ letterSpacing: 1 }}>
+                CÁC CÂU CÒN LẠI
+              </Text>
+              <View className="mt-2.5 gap-2.5">
+                {items.map((other, i) =>
+                  i <= index ? null : (
+                    <View key={other.id} className="flex-row gap-2.5">
+                      <View className="h-6 w-6 items-center justify-center rounded-pill bg-brand-tint">
+                        <Text className="font-semi text-label" style={{ color: paper.brandMid, fontSize: 11 }}>
+                          {i + 1}
+                        </Text>
+                      </View>
+                      <Text className="flex-1 font-sans text-label text-paper-body">{other.vi}</Text>
+                    </View>
+                  ),
+                )}
+                {index === items.length - 1 ? (
+                  <Text className="font-sans text-label text-paper-muted">Đây là câu cuối.</Text>
+                ) : null}
+              </View>
+            </PaperCard>
+          ) : null}
         </View>
 
         {/* ------------------------------------------------------- bài dịch */}
@@ -317,6 +422,13 @@ function RunningView({
                 Chưa khớp câu mẫu ở từ đang gõ — sửa lại từ đó rồi đi tiếp.
               </Text>
             ) : null}
+
+            {/* Phím tắt nói ngay dưới ô gõ, chỗ mắt đang nhìn — để trong trang trợ giúp thì không ai đọc. */}
+            <Text className="mt-2 font-sans text-label text-paper-muted">
+              <Text className="font-semi text-paper-body">Ctrl</Text> +{' '}
+              <Text className="font-semi text-paper-body">Space</Text> mở hộ một từ ·{' '}
+              <Text className="font-semi text-paper-body">Enter</Text> sang câu sau
+            </Text>
 
             <View className="mt-3 flex-row flex-wrap items-center gap-2">
               <Button label="Xoá hết" variant="brandOutline" size="sm" onPress={() => setTyped('')} />

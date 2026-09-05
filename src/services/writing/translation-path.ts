@@ -214,3 +214,41 @@ export function topicsForStep(step: PathStep): PathTopic[] {
 export function stepUnits(step: PathStep): number {
   return topicsForStep(step).reduce((sum, t) => sum + t.units, 0);
 }
+
+/**
+ * Gộp nhiều câu liền nhau thành MỘT lượt dịch.
+ *
+ * Đề bài là mấy câu tiếng Việt nối lại, đáp án là mấy câu tiếng Anh tương ứng
+ * nối lại. Người học gõ liền một mạch, và bộ mở khoá theo từng từ vẫn chạy y
+ * nguyên vì nó vốn chỉ nhìn vào một chuỗi.
+ *
+ * `id` mang cả chỉ số lượt để hai lượt trong cùng một bộ không trùng khoá — sổ
+ * lượt làm bài lưu theo `itemId`, trùng khoá là ghi đè mất lượt trước.
+ *
+ * Phần dư ở cuối bị BỎ, không gộp thành một lượt ngắn hơn: bước này định nghĩa
+ * bằng "mấy câu một lượt", và một lượt hai câu nằm trong bước bốn câu thì con số
+ * trên thẻ không còn đúng nữa.
+ */
+export function chunkItems(items: readonly TranslationItem[], chunk: number): TranslationItem[] {
+  if (chunk <= 1) return [...items];
+
+  const out: TranslationItem[] = [];
+  for (let i = 0; i + chunk <= items.length; i += chunk) {
+    const group = items.slice(i, i + chunk);
+    const first = group[0] as TranslationItem;
+    out.push({
+      ...first,
+      id: `${first.id}-x${chunk}-${out.length + 1}`,
+      vi: group.map((g) => g.vi).join(' '),
+      en: group.map((g) => g.en).join(' '),
+      // Gợi ý của câu đầu không nói gì về ba câu sau, nên gom hết lại; trùng thì bỏ.
+      hint: [...new Set(group.map((g) => g.hint).filter(Boolean))].join(' · '),
+    });
+  }
+  return out;
+}
+
+/** Mọi câu thuộc một nhóm cấu trúc, gom từ khắp các bộ. */
+export function itemsForStructure(structureId: string): TranslationItem[] {
+  return allItems().filter((it) => structureOf(it) === structureId);
+}

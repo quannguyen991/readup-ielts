@@ -85,7 +85,7 @@ export default function WritingRoomScreen() {
             className="mt-4"
             variant="brand"
             label="Về kho đề"
-            onPress={() => router.replace('/write')}
+            onPress={() => router.replace('/write/tests')}
           />
         </PaperCard>
       </TaskShell>

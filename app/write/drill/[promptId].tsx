@@ -103,7 +103,7 @@ export default function WritingDrillScreen() {
       <View className="flex-1 items-center justify-center bg-canvas p-6">
         <Text className="font-heavy text-cardTitle text-ink">Không tìm thấy đề này</Text>
         <View className="mt-4">
-          <Button label="Về kho đề" onPress={() => router.replace('/write')} />
+          <Button label="Về kho đề" onPress={() => router.replace('/write/tests')} />
         </View>
       </View>
     );
@@ -127,7 +127,7 @@ export default function WritingDrillScreen() {
         className="w-full self-center px-4 py-4 lg:px-6 lg:py-6"
         style={{ maxWidth: layout.contentMaxWidth }}
       >
-        <Pressable onPress={() => router.push('/write')} className="mb-3 flex-row items-center gap-1">
+        <Pressable onPress={() => router.push('/write/tests')} className="mb-3 flex-row items-center gap-1">
           <Icon name="chevron-left" size={18} color={color.muted} />
           <Text className="font-semi text-body text-muted">Kho đề</Text>
         </Pressable>
