@@ -1,6 +1,7 @@
 import { getOpenAI } from './client';
 import { AiError, toAiError } from './errors';
 import { chatWithFallback } from './fallback';
+import { countQuoteMatches, writingReceipt, type VerificationReceipt } from './verification';
 import { withRetry } from './retry';
 import { anchorAnnotations, type RawAnnotation } from '@/services/writing/annotate';
 import type {
@@ -39,6 +40,8 @@ export type WritingEvaluationResult = {
   minWords: number;
   priorityVi: string;
   nextBandVi: string;
+  /** Biên nhận kiểm chứng — app đã đối chiếu những gì AI nói, xem `verification.ts`. */
+  verification: VerificationReceipt;
 };
 
 /** Model dùng để chấm. Đây là lời gọi AI quan trọng nhất của app. */
@@ -261,7 +264,8 @@ export function buildResult(
   model: string,
 ): WritingEvaluationResult {
   const s = asRecord(score);
-  const detail = readCriteria(s, bodyText);
+  const read = readCriteria(s, bodyText);
+  const detail = read.criteria;
   const criteria = {
     taskBand: detail.task.band,
     coherenceBand: detail.coherence.band,
@@ -277,6 +281,7 @@ export function buildResult(
   if (high === low) high = Math.min(9, low + 0.5);
 
   const rawAnnotations = readAnnotations(annotated);
+  const anchored = anchorAnnotations(bodyText, rawAnnotations);
 
   return {
     ...criteria,
@@ -285,7 +290,7 @@ export function buildResult(
     summaryVi: typeof s.summaryVi === 'string' ? s.summaryVi : '',
     strengths: stringList(s.strengths),
     improvements: stringList(s.improvements),
-    annotations: anchorAnnotations(bodyText, rawAnnotations),
+    annotations: anchored,
     model,
     criteria: detail,
     wordCount: countWords(bodyText),
@@ -293,6 +298,16 @@ export function buildResult(
     nextBandVi: typeof s.nextBandVi === 'string' ? s.nextBandVi : '',
     // Chỗ gọi nào biết đề thì ghi đè bằng số thật của đề.
     minWords: 0,
+    verification: writingReceipt({
+      model,
+      quotesChecked: read.quotesChecked,
+      quotesRejected: read.quotesRejected,
+      annotationsChecked: rawAnnotations.length,
+      // Chú thích nào không neo được vào chữ thật trong bài thì đã bị bỏ ở
+      // `anchorAnnotations` — hiệu số chính là số bị bỏ.
+      annotationsRejected: Math.max(0, rawAnnotations.length - anchored.length),
+      wordCount: countWords(bodyText),
+    }),
   };
 }
 
@@ -313,13 +328,30 @@ const LEGACY_BAND_FIELD: Record<CriterionKey, string> = {
  * thỉnh thoảng vẫn trả về hình dạng cũ, và khi ấy thà mất phần chi tiết còn hơn
  * mất luôn điểm số.
  */
-function readCriteria(s: Record<string, unknown>, bodyText: string): Record<CriterionKey, CriterionDetail> {
+function readCriteria(
+  s: Record<string, unknown>,
+  bodyText: string,
+): { criteria: Record<CriterionKey, CriterionDetail>; quotesChecked: number; quotesRejected: number } {
   const raw = asRecord(s.criteria);
   const out = {} as Record<CriterionKey, CriterionDetail>;
+  let quotesChecked = 0;
+  let quotesRejected = 0;
 
   for (const key of CRITERION_KEYS) {
     const c = asRecord(raw[key]);
     const legacy = s[LEGACY_BAND_FIELD[key]];
+
+    // Đếm TRƯỚC khi lọc: sau khi lọc thì phần bị loại đã biến mất, mà chính phần
+    // ấy mới là thứ đáng nói với người học.
+    if (Array.isArray(c.quotes)) {
+      const tally = countQuoteMatches(
+        c.quotes.filter((q): q is string => typeof q === 'string'),
+        bodyText,
+      );
+      quotesChecked += tally.checked;
+      quotesRejected += tally.rejected;
+    }
+
     out[key] = {
       band: band(c.band ?? legacy),
       evidenceVi: typeof c.evidenceVi === 'string' ? c.evidenceVi : '',
@@ -328,7 +360,7 @@ function readCriteria(s: Record<string, unknown>, bodyText: string): Record<Crit
       quotes: verifiedQuotes(c.quotes, bodyText),
     };
   }
-  return out;
+  return { criteria: out, quotesChecked, quotesRejected };
 }
 
 /**

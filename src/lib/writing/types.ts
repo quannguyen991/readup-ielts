@@ -216,4 +216,11 @@ export type WritingEvaluation = {
   priorityVi?: string;
   /** Cần gì để bước lên band kế tiếp. */
   nextBandVi?: string;
+  /**
+   * Biên nhận kiểm chứng — app đã đối chiếu những gì AI nói và kết quả ra sao.
+   *
+   * Tuỳ chọn vì cùng lý do với các trường chi tiết ở trên: bài chấm và lưu trước
+   * khi có phần này không mang nó.
+   */
+  verification?: import("@/services/ai/verification").VerificationReceipt;
 };

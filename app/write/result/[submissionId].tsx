@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
+import { VerificationReceiptPanel } from '@/components/ai/VerificationReceiptPanel';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Badge, Button, Icon, PaperCard } from '@/components/ui';
 import { ChartFigure } from '@/components/writing/ChartFigure';
@@ -778,6 +779,10 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
             <CriterionDetailCard key={c.key} label={c.label} short={c.short} detail={detail[c.key]} />
           ))}
         </View>
+      ) : null}
+
+      {evaluation.verification ? (
+        <VerificationReceiptPanel receipt={evaluation.verification} />
       ) : null}
 
       {evaluation.nextBandVi ? (
