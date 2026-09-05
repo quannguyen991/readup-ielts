@@ -37,14 +37,22 @@ function normalise(word: string): string {
   return word.toLowerCase().replace(/[^a-z0-9'-]/g, '');
 }
 
-/** Cắt câu thành từ + phần dấu câu bám theo, giữ nguyên khoảng trắng. */
+/**
+ * Cắt câu thành từng từ. KHÔNG trả khoảng trắng thành phần tử riêng.
+ *
+ * Bản đầu tách cả dấu cách ra thành token riêng, và trên màn nó đẻ ra những khe
+ * hở lạ giữa câu: dấu cách rơi vào cuối dòng thì trình duyệt vẫn dành chỗ cho
+ * nó, hoặc nó bị đẩy xuống làm ký tự đầu dòng sau. Cho dấu cách đi kèm luôn với
+ * từ đứng trước thì nó không bao giờ tự mình chiếm một vị trí xuống dòng.
+ */
 export function tokenise(text: string): { text: string; word: string | null }[] {
-  const parts = text.split(/(\s+)/);
-  return parts.map((part) => {
-    if (part.trim() === '') return { text: part, word: null };
-    const core = normalise(part);
-    return { text: part, word: core.length > 1 ? core : null };
-  });
+  return text
+    .split(/\s+/)
+    .filter((part) => part !== '')
+    .map((part) => {
+      const core = normalise(part);
+      return { text: part, word: core.length > 1 ? core : null };
+    });
 }
 
 export function HoverGlossText({
@@ -76,6 +84,15 @@ export function HoverGlossText({
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const tokens = useMemo(() => tokenise(text), [text]);
+
+  /*
+    Dấu cách vẽ bằng LỀ PHẢI của mỗi từ, không bằng một ký tự trắng.
+
+    Bề rộng lấy xấp xỉ 0.26 lần cỡ chữ — sát với dấu cách của các mặt chữ đang
+    dùng. Đặt bằng lề thì dấu cách không bao giờ tự mình rơi xuống đầu dòng sau,
+    và cuối dòng nó cũng không chiếm chỗ.
+  */
+  const space = fontSize * 0.26;
 
   const clearTimer = () => {
     if (timer.current) clearTimeout(timer.current);
@@ -147,7 +164,7 @@ export function HoverGlossText({
       {tokens.map((token, i) => {
         if (!token.word) {
           return (
-            <Text key={i} style={{ fontFamily, fontSize, lineHeight, color }}>
+            <Text key={i} style={{ fontFamily, fontSize, lineHeight, color, marginRight: space }}>
               {token.text}
             </Text>
           );
@@ -157,7 +174,7 @@ export function HoverGlossText({
         const known = bundled?.[token.word] !== undefined;
 
         return (
-          <View key={i} style={{ position: 'relative' }}>
+          <View key={i} style={{ position: 'relative', marginRight: space }}>
             {isActive ? (
               <GlossBubble word={token.word} gloss={gloss} busy={busy} />
             ) : null}

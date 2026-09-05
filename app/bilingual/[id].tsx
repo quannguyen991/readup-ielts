@@ -199,8 +199,19 @@ export default function BilingualReaderScreen() {
         ) : null}
       </View>
 
-      {/* ---------------------------------------------------- từng đoạn một */}
-      <View className="mt-4 gap-4">
+      {/*
+        MỘT TẤM GIẤY CHO CẢ BÀI, không phải mỗi đoạn một tấm.
+
+        Bản trước bọc từng đoạn trong một thẻ riêng, nên một bài mười đoạn đọc ra
+        thành hai mươi cái hộp xếp chồng — mắt phải vượt một đường viền và một
+        khoảng trống sau mỗi đoạn, và bài văn vỡ thành từng mẩu rời.
+
+        Nhưng KHÔNG gộp thành hai cột cuộn rời: đoạn tiếng Anh vẫn phải nằm ngang
+        hàng với đúng đoạn tiếng Việt của nó, vì cả điểm mạnh của bài song ngữ
+        nằm ở chỗ liếc ngang là thấy nghĩa. Nên vẫn là từng cặp một, chỉ bỏ vỏ
+        thẻ đi và thay bằng một đường kẻ mảnh.
+      */}
+      <PaperCard className="mt-4">
         {article.paragraphs.map((paragraph, index) => (
           <ParagraphRow
             key={index}
@@ -209,9 +220,10 @@ export default function BilingualReaderScreen() {
             showVi={showVi}
             fontFamily={fontFamily}
             fontSize={fontSize}
+            first={index === 0}
           />
         ))}
-      </View>
+      </PaperCard>
 
       <VocabPanel vocab={article.vocab} />
       <QuestionPanel questions={article.questions} />
@@ -234,12 +246,15 @@ function ParagraphRow({
   showVi,
   fontFamily,
   fontSize,
+  first,
 }: {
   index: number;
   paragraph: BilingualParagraph;
   showVi: boolean;
   fontFamily: string | undefined;
   fontSize: number;
+  /** Đoạn đầu không kẻ đường phân cách phía trên. */
+  first: boolean;
 }) {
 
   /*
@@ -264,10 +279,27 @@ function ParagraphRow({
   const lineHeight = fontSize * 1.75;
 
   return (
-    <View className={showVi ? 'gap-4 lg:flex-row' : ''}>
-      <View className={showVi ? 'lg:flex-1' : ''}>
-        <PaperCard>
-          <Text className="mb-2 font-strong text-label text-paper-muted">{index + 1}</Text>
+    <View
+      className={first ? '' : 'mt-5 pt-5'}
+      style={first ? undefined : { borderTopWidth: 1, borderTopColor: paper.brandSoft }}
+    >
+      {/*
+        Số đoạn nằm MỘT LẦN cho cả cặp, không lặp ở mỗi cột.
+
+        Hai cột là hai bản của cùng một đoạn, nên hai con số giống hệt nhau đứng
+        cạnh nhau chỉ làm mắt phải xác nhận lại một điều đã rõ.
+      */}
+      <Text className="mb-1.5 font-strong text-label text-paper-muted">{index + 1}</Text>
+
+      <View className={showVi ? 'gap-6 lg:flex-row' : ''}>
+        {/*
+          Hai cột CHIA ĐÔI ĐÚNG BẰNG NHAU: cùng `flex-1`, cùng `flexBasis: 0`.
+
+          Chỉ đặt `flex-1` thôi là chưa đủ — không có `flexBasis: 0` thì hai cột
+          chia theo LƯỢNG CHỮ trong mỗi bên, mà bản tiếng Việt thường dài hơn bản
+          tiếng Anh, nên cột phải phình ra và hai bên lệch nhau.
+        */}
+        <View style={showVi ? { flex: 1, flexBasis: 0 } : undefined}>
           {/*
             MỌI từ đều rê được, không chỉ những từ đã soạn sẵn nghĩa.
 
@@ -284,16 +316,14 @@ function ParagraphRow({
             lineHeight={lineHeight}
             color={paper.ink}
           />
-        </PaperCard>
+        </View>
 
+        {showVi ? (
+          <View style={{ flex: 1, flexBasis: 0 }}>
+            <Text style={{ fontSize, lineHeight, color: paper.body }}>{paragraph.vi}</Text>
+          </View>
+        ) : null}
       </View>
-
-      {showVi ? (
-        <PaperCard className="lg:flex-1">
-          <Text className="mb-2 font-strong text-label text-paper-muted">{index + 1}</Text>
-          <Text style={{ fontSize, lineHeight, color: paper.body }}>{paragraph.vi}</Text>
-        </PaperCard>
-      ) : null}
     </View>
   );
 }
