@@ -169,6 +169,22 @@ const STEPS: Array<{ n: string; title: string; body: string }> = [
   },
 ];
 
+/**
+ * Vào app từ trang giới thiệu thì THAY THẾ trang này trong lịch sử, không chồng lên.
+ *
+ * Trang giới thiệu là cửa vào, không phải một trang trong app. Dùng `push` thì nó
+ * nằm lại trong lịch sử, và nút back ngay cạnh logo sẽ đưa người đang học quay
+ * ngược ra trang quảng cáo — đúng lỗi người dùng báo. `replace` khiến back từ
+ * Tổng quan hành xử như mong đợi: hoặc không có gì để back, hoặc về đúng màn
+ * trước đó BÊN TRONG app.
+ *
+ * Không áp cho mọi liên kết trên trang này: các lối rời app tạm thời (mời bạn,
+ * nâng cấp) vẫn nên quay lại được chỗ cũ.
+ */
+function enterApp(href: string): void {
+  router.replace(href as never);
+}
+
 export default function IntroScreen() {
   const { width } = useWindowDimensions();
 
@@ -214,7 +230,7 @@ export default function IntroScreen() {
                 label="Tiếp tục học"
                 variant="brand"
                 iconRight="arrow-right"
-                onPress={() => router.push('/dashboard' as never)}
+                onPress={() => enterApp('/dashboard')}
               />
             </View>
           </Card>
@@ -271,13 +287,13 @@ export default function IntroScreen() {
                   variant="onDarkSolid"
                   size="lg"
                   iconRight="arrow-right"
-                  onPress={() => router.push('/dashboard' as never)}
+                  onPress={() => enterApp('/dashboard')}
                 />
                 <Button
                   label="Xem lộ trình SAT Math"
                   variant="onDark"
                   size="lg"
-                  onPress={() => router.push('/math' as never)}
+                  onPress={() => enterApp('/math')}
                 />
               </View>
 
@@ -436,12 +452,12 @@ export default function IntroScreen() {
                 label="Làm bài chẩn đoán"
                 variant="brand"
                 iconRight="arrow-right"
-                onPress={() => router.push('/math/diagnostic' as never)}
+                onPress={() => enterApp('/math/diagnostic')}
               />
               <Button
                 label="Vào thẳng app"
                 variant="brandOutline"
-                onPress={() => router.push('/dashboard' as never)}
+                onPress={() => enterApp('/dashboard')}
               />
             </View>
           </View>
@@ -465,7 +481,7 @@ function StatPill({ value, label }: { value: string; label: string }) {
 /** Một mảng học: thẻ sticker màu đặc, viên thuốc ghim đáy là con số thật của mảng đó. */
 function AreaCard({ area }: { area: Area }) {
   return (
-    <PressScale onPress={() => router.push(area.href as never)} style={{ height: '100%' }}>
+    <PressScale onPress={() => enterApp(area.href)} style={{ height: '100%' }}>
       <StickerCard colors={area.colors} style={{ height: '100%' }}>
         {/* Hai ngôi sao chỉ để trang trí — chặn chạm để chúng không nuốt cú bấm
             vào thẻ ở góc trên phải. */}
@@ -587,7 +603,7 @@ function PlanCard({ plan, yearly }: { plan: (typeof PLANS)[PlanId]; yearly: bool
         label={free ? 'Bắt đầu miễn phí' : `Chọn ${plan.name}`}
         variant={plan.recommended ? 'brand' : 'brandOutline'}
         fullWidth
-        onPress={() => router.push((free ? '/dashboard' : '/upgrade') as never)}
+        onPress={() => free ? enterApp('/dashboard') : router.push('/upgrade' as never)}
       />
     </Card>
   );

@@ -2,12 +2,14 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Pressable, Text, View } from 'react-native';
 
 import { Screen } from '@/components/layout/Screen';
+import { SelfDiagnose } from './SelfDiagnose';
 import { CrossFade } from '@/components/motion/Motion';
 import { Badge, Button, Card } from '@/components/ui';
-import type { MathItem } from '@/lib/math/types';
-import type { MathResponse } from '@/services/math/grade';
+import { MATH_ERROR_LABEL, type MathErrorTag, type MathItem } from '@/lib/math/types';
+import { gradeMathItem, type MathResponse } from '@/services/math/grade';
 
 import { MathQuestionView } from './MathQuestionView';
+import { observeSkill } from '@/store/useMasteryStore';
 
 /**
  * Màn làm bài Math — dùng chung cho chẩn đoán, drill và mock.
@@ -43,6 +45,9 @@ export type MathRunnerProps = {
   onFinish: (responses: MathResponse[], elapsedMs: number) => void;
 };
 
+/** Toàn bộ nhãn lỗi, dùng làm kho bốc mồi nhử cho bước tự chẩn đoán. */
+const ALL_ERROR_TAGS = Object.keys(MATH_ERROR_LABEL) as MathErrorTag[];
+
 export function MathRunner({
   title,
   subtitle,
@@ -74,6 +79,20 @@ export function MathRunner({
   }, []);
 
   const current = items[index];
+
+  /*
+    Nhãn lỗi của câu ĐANG mở, nếu người học đã trả lời và trả lời sai.
+
+    `null` ở cả ba trường hợp: chưa trả lời, trả lời đúng, hoặc sai nhưng phương
+    án họ chọn không mang nhãn lỗi nào (câu điền số không có nhiễu có tên).
+  */
+  const answeredWrong = useMemo(() => {
+    if (!current) return null;
+    const given = answers[current.id];
+    if (given === undefined || given.trim() === '') return null;
+    const grade = gradeMathItem(current, given);
+    return grade.isCorrect ? null : grade.errorTag;
+  }, [current, answers]);
 
   /** Dồn thời gian đã ở trên câu hiện tại vào sổ, rồi bắt đầu đếm lại. */
   const flushTime = useCallback(() => {
@@ -171,6 +190,34 @@ export function MathRunner({
             }
           />
         </CrossFade>
+
+        {/*
+          Bước tự chẩn đoán chen vào GIỮA "đã trả lời sai" và "xem lời giải".
+
+          Đặt sau lời giải thì vô nghĩa — lúc ấy đáp án đã nằm trên màn hình. Đặt
+          trước khi trả lời thì cũng vô nghĩa — chưa sai thì chưa có lỗi nào để
+          gọi tên. Chỉ đúng một khe này là hỏi được.
+        */}
+        {answeredWrong && !revealed[current.id] ? (
+          <SelfDiagnose
+            itemId={current.id}
+            actualTag={answeredWrong}
+            allTags={ALL_ERROR_TAGS}
+            onPick={(picked, correct) => {
+              observeSkill({
+                skill: { domain: 'sat-math', key: current.skill },
+                sourceId: current.id,
+                answerCorrect: false,
+                pointer: { kind: 'error-tag', tag: picked },
+                truth: { kind: 'error-tag', tag: answeredWrong },
+                at: new Date().toISOString(),
+              });
+              if (correct) {
+                /* không làm gì thêm: ghi nhận là đủ, không thưởng phạt */
+              }
+            }}
+          />
+        ) : null}
 
         {instantSolution && !revealed[current.id] ? (
           <View className="mt-3 border-t border-border pt-3">
