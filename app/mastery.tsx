@@ -6,6 +6,8 @@ import { Screen } from '@/components/layout/Screen';
 import { Card, Icon } from '@/components/ui';
 import { explain } from '@/services/mastery/explain';
 import { DOMAIN_LABEL, type Domain, type SkillRecord, type SkillStatus } from '@/services/mastery/types';
+import { LOCALE_LABEL, type Locale } from '@/i18n';
+import { useLocaleStore, useT } from '@/i18n/useT';
 import { useMasteryStore } from '@/store/useMasteryStore';
 import { color } from '@/theme/tokens';
 
@@ -24,17 +26,25 @@ import { color } from '@/theme/tokens';
  * bảng tiến độ nói dối.
  */
 
-const STATUS_META: Record<SkillStatus, { label: string; tone: string; icon: 'check' | 'info' | 'clock' }> = {
-  confirmed: { label: 'Đã làm được trên bài khác', tone: color.success, icon: 'check' },
-  probing: { label: 'Chưa đủ căn cứ', tone: color.warning, icon: 'clock' },
-  'needs-probe': { label: 'Có chỗ cần làm rõ', tone: color.danger, icon: 'info' },
-  unobserved: { label: 'Chưa quan sát được', tone: color.subtle, icon: 'info' },
+const STATUS_META: Record<SkillStatus, { tone: string; icon: 'check' | 'info' | 'clock' }> = {
+  confirmed: { tone: color.success, icon: 'check' },
+  probing: { tone: color.warning, icon: 'clock' },
+  'needs-probe': { tone: color.danger, icon: 'info' },
+  unobserved: { tone: color.subtle, icon: 'info' },
 };
+
+const STATUS_LABEL_KEY = {
+  confirmed: 'status.confirmed',
+  probing: 'status.probing',
+  'needs-probe': 'status.needsProbe',
+  unobserved: 'status.unobserved',
+} as const;
 
 const ORDER: SkillStatus[] = ['needs-probe', 'probing', 'confirmed', 'unobserved'];
 
 export default function MasteryScreen() {
   const ledger = useMasteryStore((s) => s.ledger);
+  const { t } = useT();
 
   const records = useMemo(
     () =>
@@ -58,33 +68,29 @@ export default function MasteryScreen() {
     <Screen>
       <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
         <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Evidence ledger
+          {t('mastery.eyebrow')}
         </Text>
       </View>
 
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">Sổ bằng chứng</Text>
+      <Text className="mt-3 font-heavy text-pageTitle text-ink">{t('mastery.title')}</Text>
       <Text className="mt-1.5 max-w-[680px] font-sans text-bodyLg text-muted">
-        App không chấm bạn bằng phần trăm. Nó ghi lại từng lượt quan sát được — bạn trả lời đúng hay
-        sai, và bạn dựa vào chỗ nào — rồi chỉ công nhận một kỹ năng khi bạn làm được nó trên{' '}
-        <Text className="font-strong text-ink">một bài khác</Text>.
+        {t('mastery.intro')}
       </Text>
 
+      <LanguageToggle />
+
       <Card className="mt-4">
-        <Text className="font-strong text-body text-ink">Vì sao lại khắt khe như vậy</Text>
+        <Text className="font-strong text-body text-ink">{t('mastery.whyStrictTitle')}</Text>
         <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-          Làm đúng một câu có thể là đã hiểu, mà cũng có thể là nhớ đáp án hoặc đoán trúng. Chỉ khi
-          gặp một bài chưa từng thấy mà vẫn làm được thì mới tách được hai khả năng đó ra. Vì thế
-          công nhận ở đây không phải huy chương: gặp lại kỹ năng ấy mà trượt thì nó bị gỡ.
+          {t('mastery.whyStrictBody')}
         </Text>
       </Card>
 
       {records.length === 0 ? (
         <Card className="mt-5">
-          <Text className="font-strong text-body text-ink">Sổ còn trống</Text>
+          <Text className="font-strong text-body text-ink">{t('mastery.emptyTitle')}</Text>
           <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-            Làm một bài đọc hoặc một đề toán, và nhớ đánh dấu chỗ bạn dựa vào để trả lời. Không có
-            dấu đó thì app chỉ biết bạn đúng hay sai, chứ không đối chiếu được gì — và nó sẽ ghi là
-            “chưa quan sát được” chứ không đoán thay bạn.
+            {t('mastery.emptyBody')}
           </Text>
         </Card>
       ) : (
@@ -107,8 +113,9 @@ export default function MasteryScreen() {
 
 function SkillCard({ rec }: { rec: SkillRecord }) {
   const [open, setOpen] = useState(false);
+  const { t, locale } = useT();
   const meta = STATUS_META[rec.status];
-  const e = useMemo(() => explain(rec), [rec]);
+  const e = useMemo(() => explain(rec, locale), [rec, locale]);
 
   return (
     <View className="h-full overflow-hidden rounded-card border border-border bg-surface">
@@ -124,11 +131,11 @@ function SkillCard({ rec }: { rec: SkillRecord }) {
         <View className="min-w-0 flex-1">
           <Text className="font-strong text-body text-ink">{rec.skill.key}</Text>
           <Text className="mt-0.5 font-sans text-label" style={{ color: meta.tone }}>
-            {meta.label}
+            {t(STATUS_LABEL_KEY[rec.status])}
           </Text>
           <Text className="mt-0.5 font-sans text-label text-subtle">
-            {rec.observations} lượt quan sát
-            {rec.transfers > 0 ? ` · ${rec.transfers} lần làm được trên bài khác` : ''}
+            {t('mastery.observations', { n: rec.observations })}
+            {rec.transfers > 0 ? ` · ${t('mastery.transfers', { n: rec.transfers })}` : ''}
           </Text>
         </View>
         <Icon name={open ? 'chevron-down' : 'chevron-right'} size={16} color={color.subtle} strokeWidth={2} />
@@ -137,7 +144,7 @@ function SkillCard({ rec }: { rec: SkillRecord }) {
       {open ? (
         <View className="border-t border-border px-3.5 py-3">
           <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 9 }}>
-            Vì sao app nghĩ như vậy
+            {t('mastery.whyThink')}
           </Text>
 
           {e.steps.map((step) => (
@@ -150,13 +157,48 @@ function SkillCard({ rec }: { rec: SkillRecord }) {
           ))}
 
           <View className="mt-3 rounded-panel bg-primary-50 p-3">
-            <Text className="font-strong text-label text-primary-900">Bước tiếp theo</Text>
+            <Text className="font-strong text-label text-primary-900">{t('mastery.nextStep')}</Text>
             <Text className="mt-0.5 font-sans text-label text-primary-800" style={{ lineHeight: 19 }}>
               {e.nextVi}
             </Text>
           </View>
         </View>
       ) : null}
+    </View>
+  );
+}
+
+/**
+ * Nút đổi ngôn ngữ.
+ *
+ * Đặt ngay trên màn này chứ không giấu trong Cài đặt: đây là màn giải thích cơ
+ * chế, và người cần bản tiếng Anh chính là người đang muốn hiểu cơ chế — bắt họ
+ * đi tìm trong Cài đặt là đặt rào ngay trước thứ họ tới để xem.
+ */
+function LanguageToggle() {
+  const { locale } = useT();
+  const setLocale = useLocaleStore((s) => s.setLocale);
+
+  return (
+    <View className="mt-4 flex-row flex-wrap items-center gap-1.5">
+      {(['vi', 'en'] as Locale[]).map((code) => (
+        <Pressable
+          key={code}
+          accessibilityRole="button"
+          accessibilityState={{ selected: locale === code }}
+          onPress={() => setLocale(code)}
+          className={[
+            'rounded-pill border px-3 py-1.5',
+            locale === code ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
+          ].join(' ')}
+        >
+          <Text
+            className={['font-semi text-label', locale === code ? 'text-white' : 'text-muted'].join(' ')}
+          >
+            {LOCALE_LABEL[code]}
+          </Text>
+        </Pressable>
+      ))}
     </View>
   );
 }

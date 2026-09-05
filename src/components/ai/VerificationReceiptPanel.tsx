@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { Icon } from '@/components/ui';
+import { useT } from '@/i18n/useT';
+import type { MessageKey } from '@/i18n/keys';
 import {
-  METHOD_LABEL,
   summarise,
   type CheckMethod,
   type VerificationReceipt,
@@ -26,8 +27,17 @@ import { color, paper } from '@/theme/tokens';
  * màu trung tính, và nằm cuối. Cho nó cùng một hình dáng với các dòng đã kiểm sẽ
  * biến cả bảng thành giấy chứng nhận — đúng cái hiểu sai mà nó sinh ra để chống.
  */
+/** Cách kiểm → khoá từ điển. Nhãn nằm trong `src/i18n`, không nằm rải trong mã. */
+const METHOD_KEY: Record<CheckMethod, MessageKey> = {
+  'quote-match': 'method.quoteMatch',
+  computed: 'method.computed',
+  'cross-check': 'method.crossCheck',
+  unverifiable: 'method.unverifiable',
+};
+
 export function VerificationReceiptPanel({ receipt }: { receipt: VerificationReceipt }) {
   const [open, setOpen] = useState(false);
+  const { t } = useT();
   const { checked, rejected } = summarise(receipt);
 
   return (
@@ -40,10 +50,11 @@ export function VerificationReceiptPanel({ receipt }: { receipt: VerificationRec
       >
         <Icon name="lock" size={16} color={paper.brandMid} strokeWidth={2} />
         <View className="min-w-0 flex-1">
-          <Text className="font-strong text-body text-paper-ink">AI nói gì, app kiểm được đến đâu</Text>
+          <Text className="font-strong text-body text-paper-ink">{t('verify.title')}</Text>
           <Text className="mt-0.5 font-sans text-label text-paper-muted">
-            {checked} khẳng định đã đối chiếu
-            {rejected > 0 ? ` · ${rejected} bị loại vì không đúng` : ' · không cái nào bị loại'}
+            {rejected > 0
+              ? t('verify.summary', { checked, rejected })
+              : t('verify.summaryClean', { checked })}
           </Text>
         </View>
         <Icon
@@ -57,22 +68,19 @@ export function VerificationReceiptPanel({ receipt }: { receipt: VerificationRec
       {open ? (
         <View className="border-t border-paper-line px-3.5 py-3">
           {receipt.items.map((item) => (
-            <Row key={item.label} item={item} />
+            <Row key={item.label} item={item} methodLabel={t(METHOD_KEY[item.method])} />
           ))}
 
           {receipt.model ? (
             <Text className="mt-3 font-sans text-label text-paper-muted">
-              Bài này do model <Text className="font-strong">{receipt.model}</Text> chấm. App không
-              giấu tên model: biết ai nói thì mới truy được khi có gì đó sai.
+              {t('verify.modelNote', { model: receipt.model })}
             </Text>
           ) : null}
 
           <View className="mt-3 rounded-panel bg-paper-canvas p-3">
-            <Text className="font-strong text-label text-paper-ink">Tự kiểm thế nào</Text>
+            <Text className="font-strong text-label text-paper-ink">{t('verify.howToCheckTitle')}</Text>
             <Text className="mt-1 font-sans text-label text-paper-body" style={{ lineHeight: 19 }}>
-              Với mọi nhận xét AI đưa ra, hỏi một câu: “dựa vào đâu trong bài của tôi?”. Nhận xét chỉ
-              ra được đúng một đoạn chữ thì kiểm được; nhận xét nói chung chung thì không — và cái
-              không kiểm được là cái cần đọc bằng con mắt nghi ngờ.
+              {t('verify.howToCheckBody')}
             </Text>
           </View>
         </View>
@@ -81,7 +89,13 @@ export function VerificationReceiptPanel({ receipt }: { receipt: VerificationRec
   );
 }
 
-function Row({ item }: { item: { label: string; method: CheckMethod; checked: number | null; rejected: number | null; noteVi: string } }) {
+function Row({
+  item,
+  methodLabel,
+}: {
+  item: { label: string; method: CheckMethod; checked: number | null; rejected: number | null; noteVi: string };
+  methodLabel: string;
+}) {
   const unverifiable = item.method === 'unverifiable';
   const failed = (item.rejected ?? 0) > 0;
 
@@ -101,7 +115,7 @@ function Row({ item }: { item: { label: string; method: CheckMethod; checked: nu
             style={{ backgroundColor: unverifiable ? paper.brandTint : `${tone}22` }}
           >
             <Text className="font-semi" style={{ fontSize: 9, color: unverifiable ? paper.body : tone }}>
-              {METHOD_LABEL[item.method]}
+              {methodLabel}
             </Text>
           </View>
         </View>

@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { Icon } from '@/components/ui';
+import { useT } from '@/i18n/useT';
 import { MATH_ERROR_LABEL, type MathErrorTag } from '@/lib/math/types';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
 import { color } from '@/theme/tokens';
@@ -45,6 +46,7 @@ export function SelfDiagnose({
   onPick: (picked: MathErrorTag, correct: boolean) => void;
 }) {
   const [picked, setPicked] = useState<MathErrorTag | null>(null);
+  const { t } = useT();
 
   /**
    * Ba phương án, gieo hạt theo id câu.
@@ -65,12 +67,9 @@ export function SelfDiagnose({
     <View className="mt-3 rounded-panel border border-border bg-surface p-3.5">
       <View className="flex-row items-center gap-2">
         <Icon name="target" size={16} color={color.primary} strokeWidth={2.2} />
-        <Text className="font-strong text-body text-ink">Bạn nghĩ mình sai ở đâu?</Text>
+        <Text className="font-strong text-body text-ink">{t('diagnose.title')}</Text>
       </View>
-      <Text className="mt-1 font-sans text-label text-muted">
-        Đoán trước rồi mới xem lời giải. Đoán sai không bị trừ gì — app chỉ cần biết bạn đã nhìn thấy
-        chỗ hỏng hay chưa.
-      </Text>
+      <Text className="mt-1 font-sans text-label text-muted">{t('diagnose.hint')}</Text>
 
       <View className="mt-3 gap-2">
         {options.map((tag) => {
@@ -116,9 +115,7 @@ export function SelfDiagnose({
             strokeWidth={2.2}
           />
           <Text className="min-w-0 flex-1 font-sans text-label text-muted" style={{ lineHeight: 19 }}>
-            {picked === actualTag
-              ? 'Bạn gọi đúng tên lỗi của mình. Chỗ vướng là ở thao tác, không phải ở chỗ nhận ra vấn đề — luyện thêm vài câu cùng dạng là được.'
-              : 'Lỗi thật nằm ở dòng được tô xanh. Gọi sai tên lỗi nghĩa là chưa nhìn thấy chỗ hỏng, nên đọc lời giải xong vẫn dễ lặp lại — app sẽ đưa thêm một câu cùng dạng để kiểm.'}
+            {t(picked === actualTag ? 'diagnose.rightTag' : 'diagnose.wrongTag')}
           </Text>
         </View>
       ) : null}
