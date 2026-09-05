@@ -21,10 +21,20 @@ export function QuestionCard({
   question,
   picked,
   onPick,
+  showSolution = true,
 }: {
   question: SatRwQuestion;
   picked: number | null;
   onPick: (choice: number) => void;
+  /**
+   * Có được hiện lời giải chưa.
+   *
+   * Màn đề trộn giữ lại lời giải cho tới khi người học trả lời xong câu "câu này
+   * kiểm luật gì". Hiện lời giải trước thì câu hỏi ấy vô nghĩa — đáp án và tên
+   * luật đã nằm sẵn trên màn hình. Mặc định `true` để màn luyện unit giữ nguyên
+   * hành vi cũ.
+   */
+  showSolution?: boolean;
 }) {
   const answered = picked !== null;
 
@@ -76,7 +86,7 @@ export function QuestionCard({
         })}
       </View>
 
-      {answered ? (
+      {answered && showSolution ? (
         <View
           className="mt-4 rounded-panel border-l-4 p-3.5"
           style={{

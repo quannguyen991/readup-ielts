@@ -4,9 +4,11 @@ import { router, useLocalSearchParams } from 'expo-router';
 
 import { TaskShell } from '@/components/layout/TaskShell';
 import { QuestionCard } from '@/components/sat-rw/QuestionCard';
+import { RuleCheck } from '@/components/sat-rw/RuleCheck';
 import { Badge, Button, PaperCard } from '@/components/ui';
 import { SAT_RW_SKILL_LABEL } from '@/data/sat-rw-repository';
 import { getMixedSet } from '@/services/sat-rw/mixed-sets';
+import { observeSkill } from '@/store/useMasteryStore';
 import { useStudyStore } from '@/store/useStudyStore';
 
 /**
@@ -29,6 +31,8 @@ export default function SatRwMixScreen() {
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [correct, setCorrect] = useState(0);
+  /** Đã hỏi "câu này kiểm luật gì" cho câu hiện tại chưa. */
+  const [ruleAsked, setRuleAsked] = useState(false);
   const [done, setDone] = useState(false);
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -65,6 +69,7 @@ export default function SatRwMixScreen() {
     if (index + 1 < questions.length) {
       setIndex(index + 1);
       setPicked(null);
+      setRuleAsked(false);
       return;
     }
     logQuestions(questions.length);
@@ -98,6 +103,7 @@ export default function SatRwMixScreen() {
             onPress={() => {
               setIndex(0);
               setPicked(null);
+              setRuleAsked(false);
               setCorrect(0);
               setDone(false);
             }}
@@ -133,14 +139,37 @@ export default function SatRwMixScreen() {
         </View>
       }
     >
-      <QuestionCard question={question} picked={picked} onPick={submit} />
+      <QuestionCard question={question} picked={picked} onPick={submit} showSolution={ruleAsked} />
+
+
+      {/*
+        Trục thứ hai của sổ bằng chứng, chen giữa "đã chọn đáp án" và "xem lời
+        giải". Đặt sau lời giải thì vô nghĩa — đáp án đã nằm trên màn hình.
+      */}
+      {answered && !ruleAsked ? (
+        <RuleCheck
+          questionId={question.id}
+          actualSkill={question.skill}
+          onPick={(pickedSkill) => {
+            setRuleAsked(true);
+            observeSkill({
+              skill: { domain: 'sat-verbal', key: question.skill },
+              sourceId: question.id,
+              answerCorrect: picked === question.answerIndex,
+              pointer: { kind: 'error-tag', tag: pickedSkill },
+              truth: { kind: 'error-tag', tag: question.skill },
+              at: new Date().toISOString(),
+            });
+          }}
+        />
+      ) : null}
 
       <View className="mt-4 flex-row flex-wrap items-center gap-2">
-        {answered ? (
+        {answered && ruleAsked ? (
           <Badge label={SAT_RW_SKILL_LABEL[question.skill] ?? question.skill} tone="neutral" />
         ) : null}
         <View className="flex-1" />
-        {answered ? (
+        {answered && ruleAsked ? (
           <Button
             variant="onDarkSolid"
             label={index + 1 < questions.length ? 'Câu tiếp theo' : 'Xem kết quả'}
@@ -148,7 +177,9 @@ export default function SatRwMixScreen() {
             onPress={next}
           />
         ) : (
-          <Text className="font-sans text-label text-white/80">Chọn một phương án để xem lời giải</Text>
+          <Text className="font-sans text-label text-white/80">
+            {answered ? 'Chọn tên luật ở trên để xem lời giải' : 'Chọn một phương án để tiếp tục'}
+          </Text>
         )}
       </View>
     </TaskShell>
