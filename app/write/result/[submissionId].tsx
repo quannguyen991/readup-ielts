@@ -50,11 +50,11 @@ const CRITERIA = [
   { key: 'CC', label: 'Coherence & Cohesion', categories: ['cohesion'] },
   { key: 'LR', label: 'Lexical Resource', categories: ['lexis', 'expression'] },
   { key: 'GR', label: 'Grammatical Range', categories: ['grammar'] },
-] as const satisfies ReadonlyArray<{
+] as const satisfies readonly {
   key: string;
   label: string;
   categories: readonly AnnotationCategory[];
-}>;
+}[];
 
 type CriterionKey = (typeof CRITERIA)[number]['key'];
 
@@ -68,7 +68,7 @@ const CATEGORY_HIGHLIGHT: Record<AnnotationCategory, { fill: string; edge: strin
 
 type Tab = 'essay' | 'review' | 'errors' | 'fixed' | 'model';
 
-const TABS: ReadonlyArray<{ key: Tab; label: string }> = [
+const TABS: readonly { key: Tab; label: string }[] = [
   { key: 'essay', label: 'Bài viết của bạn' },
   { key: 'errors', label: 'Sửa lỗi chi tiết' },
   { key: 'review', label: 'Nhận xét' },

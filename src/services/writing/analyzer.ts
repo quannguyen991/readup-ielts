@@ -38,7 +38,7 @@ export type DraftAnalysis = {
   paragraphCount: number;
   sentenceCount: number;
   hasOverview: boolean;
-  repeatedWords: Array<{ word: string; count: number }>;
+  repeatedWords: { word: string; count: number }[];
   connectivesPerSentence: number;
   hints: Hint[];
   /**
@@ -245,8 +245,8 @@ function splitSentences(text: string): string[] {
     .filter((s) => countWords(s) > 0);
 }
 
-function countTrendLemmas(lower: string): Array<{ word: string; count: number }> {
-  const out: Array<{ word: string; count: number }> = [];
+function countTrendLemmas(lower: string): { word: string; count: number }[] {
+  const out: { word: string; count: number }[] = [];
   for (const [lemma, forms] of Object.entries(TREND_LEMMAS)) {
     const count = forms.reduce((sum, f) => sum + wordOccurrences(lower, f), 0);
     if (count > 0) out.push({ word: lemma, count });

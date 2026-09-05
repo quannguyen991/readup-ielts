@@ -14,7 +14,7 @@ import type { Task1Chart } from '@/lib/writing/types';
 /** Mỗi mô tả hình × 6 hạt = đủ mẫu để bắt lỗi chỉ xuất hiện với một số hạt. */
 const SEEDS = ['s0', 's1', 's2', 's3', 's4', 's5'];
 
-function casesFor(kind: Task1Chart): Array<{ topic: FigureSpec; seed: string }> {
+function casesFor(kind: Task1Chart): { topic: FigureSpec; seed: string }[] {
   return FIGURE_SPECS.filter((s) => s.kind === kind).flatMap((topic) =>
     SEEDS.map((seed) => ({ topic, seed })),
   );

@@ -24,7 +24,7 @@ import type { Task2Essay, WritingPrompt, WritingTask } from '@/lib/writing/types
 
 type Tab = WritingTask | 'sat';
 
-const TABS: ReadonlyArray<{ key: Tab; label: string }> = [
+const TABS: readonly { key: Tab; label: string }[] = [
   { key: 'ielts_task1', label: 'Task 1' },
   { key: 'ielts_task2', label: 'Task 2' },
   { key: 'sat', label: 'SAT Writing' },
@@ -58,21 +58,54 @@ export default function WritingLibraryScreen() {
   const [tab, setTab] = useState<Tab>('ielts_task1');
   const [topic, setTopic] = useState<string | undefined>(undefined);
   const [maxBand, setMaxBand] = useState<number | undefined>(undefined);
+  /** Loại biểu đồ (Task 1) hoặc dạng luận (Task 2) — hai tab dùng chung một ô trạng thái. */
+  const [kind, setKind] = useState<string | undefined>(undefined);
   const [visible, setVisible] = useState(6);
 
   const stats = useMemo(() => writingLibraryStats(), []);
 
   const prompts = useMemo(() => {
     if (tab === 'sat') return [];
-    const filters: WritingPromptFilters = { task: tab, topicSlug: topic, maxBand };
+    const filters: WritingPromptFilters = {
+      task: tab,
+      topicSlug: topic,
+      maxBand,
+      ...(tab === 'ielts_task1'
+        ? { chartKind: kind as WritingPromptFilters['chartKind'] }
+        : { essayKind: kind as WritingPromptFilters['essayKind'] }),
+    };
     return filterWritingPrompts(filters);
-  }, [tab, topic, maxBand]);
+  }, [tab, topic, maxBand, kind]);
+
+  /*
+    Đếm số đề của từng loại NGAY TRÊN nút lọc.
+
+    Không có con số thì người học phải bấm thử từng loại mới biết loại nào có
+    nhiều đề — và loại rỗng thì bấm vào chỉ nhận về một màn trống. Đếm theo tab
+    và bỏ qua các bộ lọc khác, để con số không nhảy mỗi lần đổi chủ đề.
+  */
+  const kindCounts = useMemo(() => {
+    if (tab === 'sat') return [] as { key: string; label: string; count: number }[];
+    const all = filterWritingPrompts({ task: tab });
+    const keys =
+      tab === 'ielts_task1'
+        ? Object.keys(CHART_LABEL)
+        : (Object.keys(ESSAY_LABEL) as string[]);
+    return keys
+      .map((key) => ({
+        key,
+        label: (tab === 'ielts_task1' ? CHART_LABEL : (ESSAY_LABEL as Record<string, string>))[key] ?? key,
+        count: all.filter((p) => (tab === 'ielts_task1' ? p.chartKind : p.essayKind) === key).length,
+      }))
+      .filter((k) => k.count > 0);
+  }, [tab]);
 
   /** Đổi tab thì bỏ bộ lọc con: giữ lại dễ rơi vào tổ hợp rỗng khó hiểu. */
   const selectTab = (next: Tab) => {
     setTab(next);
     setTopic(undefined);
     setMaxBand(undefined);
+    setKind(undefined);
     setVisible(6);
   };
 
@@ -108,6 +141,21 @@ export default function WritingLibraryScreen() {
       ) : (
         <>
           <View className="mt-4 flex-row flex-wrap items-center gap-2">
+            <Text className="font-semi text-label text-muted">
+              {tab === 'ielts_task1' ? 'Loại biểu đồ' : 'Dạng luận'}
+            </Text>
+            <Chip label="Tất cả" active={kind === undefined} onPress={() => setKind(undefined)} />
+            {kindCounts.map((k) => (
+              <Chip
+                key={k.key}
+                label={`${k.label} · ${k.count}`}
+                active={kind === k.key}
+                onPress={() => setKind(kind === k.key ? undefined : k.key)}
+              />
+            ))}
+          </View>
+
+          <View className="mt-2 flex-row flex-wrap items-center gap-2">
             <Text className="font-semi text-label text-muted">Chủ đề</Text>
             <Chip label="Tất cả" active={topic === undefined} onPress={() => setTopic(undefined)} />
             {TOPICS.map((t) => (

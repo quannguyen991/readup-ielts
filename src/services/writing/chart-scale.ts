@@ -50,7 +50,7 @@ function round(v: number): number {
  * thấp trông như bằng 0, và đó là kiểu bóp méo tỷ lệ mà đề thi thật không có.
  * Có giá trị âm (nhiệt độ chẳng hạn) thì giữ nguyên cận dưới thật.
  */
-export function seriesExtent(series: Array<{ values: number[] }>): { min: number; max: number } {
+export function seriesExtent(series: { values: number[] }[]): { min: number; max: number } {
   const all = series.flatMap((s) => s.values).filter((v) => Number.isFinite(v));
   if (all.length === 0) return { min: 0, max: 1 };
 
@@ -69,7 +69,7 @@ export type PieArc = {
   endAngle: number;
 };
 
-export function pieSlices(slices: Array<{ label: string; value: number }>): PieArc[] {
+export function pieSlices(slices: { label: string; value: number }[]): PieArc[] {
   const total = slices.reduce((s, x) => s + Math.max(0, x.value), 0);
   if (total <= 0) return [];
 

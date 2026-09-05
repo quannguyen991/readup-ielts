@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { deriveAnalysisKey } from './analysis-key';
 import type { LineOrBarChart } from '@/lib/writing/types';
 
-function chart(series: Array<{ name: string; values: number[] }>): LineOrBarChart {
+function chart(series: { name: string; values: number[] }[]): LineOrBarChart {
   return {
     kind: 'line',
     title: 'T',

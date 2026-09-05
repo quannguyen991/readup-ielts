@@ -24,7 +24,7 @@ export function anchorAnnotations(
   text: string,
   raws: RawAnnotation[],
 ): WritingAnnotation[] {
-  const taken: Array<[number, number]> = [];
+  const taken: [number, number][] = [];
   const out: WritingAnnotation[] = [];
 
   for (const rawItem of raws) {
@@ -47,7 +47,7 @@ export function anchorAnnotations(
 function locate(
   text: string,
   quote: string,
-  taken: Array<[number, number]>,
+  taken: [number, number][],
 ): [number, number] | null {
   return (
     findExact(text, quote, taken) ??
@@ -59,7 +59,7 @@ function locate(
 function findExact(
   text: string,
   quote: string,
-  taken: Array<[number, number]>,
+  taken: [number, number][],
 ): [number, number] | null {
   return scan(text, taken, (from) => {
     const at = text.indexOf(quote, from);
@@ -70,7 +70,7 @@ function findExact(
 function findCaseInsensitive(
   text: string,
   quote: string,
-  taken: Array<[number, number]>,
+  taken: [number, number][],
 ): [number, number] | null {
   const lowerText = text.toLowerCase();
   const lowerQuote = quote.toLowerCase();
@@ -87,7 +87,7 @@ function findCaseInsensitive(
 function findLooseWhitespace(
   text: string,
   quote: string,
-  taken: Array<[number, number]>,
+  taken: [number, number][],
 ): [number, number] | null {
   const pattern = quote
     .trim()
@@ -114,7 +114,7 @@ function findLooseWhitespace(
  */
 function scan(
   text: string,
-  taken: Array<[number, number]>,
+  taken: [number, number][],
   next: (from: number) => [number, number] | null,
 ): [number, number] | null {
   let from = 0;
@@ -127,7 +127,7 @@ function scan(
   return null;
 }
 
-function overlaps(span: [number, number], taken: Array<[number, number]>): boolean {
+function overlaps(span: [number, number], taken: [number, number][]): boolean {
   return taken.some(([s, e]) => span[0] < e && s < span[1]);
 }
 

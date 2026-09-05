@@ -9,7 +9,7 @@ import { DictationLibrary } from '@/components/sentence/DictationLibrary';
 import { LetterCell } from '@/components/sentence/LetterCell';
 import { PixelTrack } from '@/components/sentence/PixelTrack';
 import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
-import { Badge, Button, Icon } from '@/components/ui';
+import { Badge, Button, Icon, type IconName } from '@/components/ui';
 import { DICTATION_SENTENCES, type DictationItem } from '@/data/sentence-drills';
 import { DICTATION_VI } from '@/data/dictation-vi';
 import { getDictationSet, type DictationSet } from '@/data/dictation-sets';
@@ -155,6 +155,21 @@ export default function DictationScreen() {
       mode={mode}
       onChangeMode={setMode}
       onSubmit={finishItem}
+      onPrev={
+        index === 0
+          ? undefined
+          : () => {
+              /*
+                Lùi lại thì BỎ luôn lượt vừa ghi của câu trước.
+
+                Giữ nó lại thì một câu có hai lượt trong sổ, và bảng tổng kết
+                đếm nhiều hơn số câu thật. Người bấm lùi là người muốn làm lại
+                câu đó, không phải người muốn cộng thêm một lượt.
+              */
+              setAttempts((prev) => prev.slice(0, -1));
+              setIndex(index - 1);
+            }
+      }
     />
   );
 }
@@ -203,6 +218,7 @@ function RunningView({
   mode,
   onChangeMode,
   onSubmit,
+  onPrev,
 }: {
   /**
    * Câu đang luyện. `vi` chỉ có khi câu đến từ một BỘ ĐỀ — bộ đề mang sẵn bản
@@ -214,6 +230,8 @@ function RunningView({
   mode: InputMode;
   onChangeMode: (m: InputMode) => void;
   onSubmit: (attempt: DictationAttempt) => void;
+  /** `undefined` ở câu đầu — không có gì để lùi về. */
+  onPrev?: () => void;
 }) {
   const [letters, setLetters] = useState('');
   const [freeText, setFreeText] = useState('');
@@ -285,6 +303,18 @@ function RunningView({
   useEffect(() => {
     if (Platform.OS !== 'web') return;
     const onKey = (event: KeyboardEvent) => {
+      /*
+        Ctrl + ← lùi một câu.
+
+        KHÔNG bắt phím Ctrl trần dù ảnh tham chiếu ghi vậy: Ctrl trần cũng là nửa
+        đầu của Ctrl+C, Ctrl+V, Ctrl+A — bắt nó là cứ sao chép một chữ lại nhảy
+        mất câu. Nút ghi đúng tổ hợp thật, không ghi cái nghe gọn hơn.
+      */
+      if (event.key === 'ArrowLeft' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        onPrev?.();
+        return;
+      }
       if (event.key !== 'Tab') return;
       event.preventDefault();
       play(item.text, rate);
@@ -292,7 +322,7 @@ function RunningView({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [item.text, play, rate]);
+  }, [item.text, onPrev, play, rate]);
 
   const next = () => {
     setRevealed(false);
@@ -586,12 +616,34 @@ function RunningView({
               ) : null}
 
               <View className="flex-1" />
+            </View>
 
-              <Button
-                label={index + 1 === total ? 'Xem kết quả' : 'Câu tiếp theo'}
-                variant={done ? 'brand' : 'brandOutline'}
-                size={done ? 'md' : 'sm'}
-                iconRight="arrow-right"
+            {/*
+              BA NÚT ĐIỀU HƯỚNG, và cả ba đều ghi phím tắt ngay trên mặt nút.
+
+              Trước đây "nghe lại" chỉ có phím Tab và không có nút nào — ai không
+              đọc chú thích thì không biết nó tồn tại. Còn lùi lại thì hoàn toàn
+              chưa có: nghe hụt một câu là mất luôn câu ấy.
+            */}
+            <View className="mt-3 flex-row gap-2">
+              <NavKey
+                label="Câu trước"
+                hint="Ctrl ←"
+                icon="chevron-left"
+                disabled={!onPrev}
+                onPress={() => onPrev?.()}
+              />
+              <NavKey
+                label="Nghe lại"
+                hint="Tab"
+                icon="volume"
+                onPress={() => play(item.text, rate)}
+              />
+              <NavKey
+                label={index + 1 === total ? 'Xem kết quả' : 'Câu sau'}
+                hint="Enter"
+                icon="arrow-right"
+                emphasis={done}
                 onPress={next}
               />
             </View>
@@ -848,5 +900,70 @@ function SummaryView({
         />
       </View>
     </TaskShell>
+  );
+}
+
+
+/**
+ * Nút điều hướng có ghi PHÍM TẮT ngay trên mặt.
+ *
+ * Phím tắt viết trong một dòng chú thích ở đâu đó thì chỉ người đọc chú thích
+ * mới biết. Viết lên chính cái nút thì ai bấm chuột vài lần cũng nhận ra, rồi
+ * tự chuyển sang dùng phím — mà chuyển được sang phím thì tốc độ làm bài khác
+ * hẳn.
+ */
+function NavKey({
+  label,
+  hint,
+  icon,
+  onPress,
+  disabled,
+  emphasis,
+}: {
+  label: string;
+  hint: string;
+  icon: IconName;
+  onPress: () => void;
+  disabled?: boolean;
+  emphasis?: boolean;
+}) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${label} (${hint})`}
+      disabled={disabled}
+      onPress={onPress}
+      className="flex-1 items-center rounded-panel px-3 py-2.5"
+      style={{
+        borderWidth: 1.5,
+        borderColor: disabled ? paper.brandSoft : emphasis ? paper.brandMid : paper.brandSoft,
+        backgroundColor: emphasis ? paper.brandMid : '#FFFFFF',
+        opacity: disabled ? 0.45 : 1,
+      }}
+    >
+      <Icon
+        name={icon}
+        size={16}
+        strokeWidth={2}
+        color={emphasis ? '#FFFFFF' : paper.brandMid}
+      />
+      <Text
+        className="mt-1 font-semi text-label"
+        style={{ color: emphasis ? '#FFFFFF' : paper.ink }}
+      >
+        {label}
+      </Text>
+      <View
+        className="mt-1 rounded-pill px-2 py-0.5"
+        style={{ backgroundColor: emphasis ? 'rgba(255,255,255,0.22)' : paper.brandTint }}
+      >
+        <Text
+          className="font-semi"
+          style={{ fontSize: 10, color: emphasis ? '#FFFFFF' : paper.body }}
+        >
+          {hint}
+        </Text>
+      </View>
+    </Pressable>
   );
 }

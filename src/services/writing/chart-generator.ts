@@ -171,7 +171,7 @@ export function generateTableChart(spec: FigureSpec, seed: string): TableChart {
       const ratio = goesUp ? lo + (hi - lo) * t : hi - (hi - lo) * t;
       return jitter(spec, rng, at(spec, ratio), 0.04);
     });
-    return [name, ...values] as Array<string | number>;
+    return [name, ...values] as (string | number)[];
   });
 
   const chart: TableChart = {
