@@ -1,11 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, HeroBanner, SectionHeader, StatCard } from '@/components/ui';
-import { filterArticles, type ArticleMeta } from '@/data/articles';
+import { filterArticles, type ArticleMeta, topicLabel } from '@/data/articles';
 import { formatBand } from '@/lib/band';
 import { usePlan } from '@/store/useBillingStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -65,7 +66,7 @@ export default function MockTestsScreen() {
       </View>
 
       <View className="mt-4">
-        <Grid columns={3} tabletColumns={2} mobileColumns={1}>
+        <Grid columns={2} tabletColumns={1} mobileColumns={1}>
           {tests.map((test, index) => (
             <MockTestCard key={index} test={test} index={index} plan={plan} />
           ))}
@@ -193,75 +194,155 @@ function MockTestCard({
   index: number;
   plan: PlanId;
 }) {
-  const { width } = useWindowDimensions();
-  const touch = width < 1024;
-  const [hover, setHover] = useState(false);
-  const showActions = hover || touch;
-
   const minutes = test.reduce((sum, a) => sum + (a.estMinutes ?? 0), 0);
   const paid = plan !== 'free';
 
   return (
-    <Pressable
-      onHoverIn={() => setHover(true)}
-      onHoverOut={() => setHover(false)}
-      onPress={() => router.push(`/read/${test[0]!.id}` as never)}
-      className="h-full rounded-card border border-border bg-surface p-4"
-      style={hover ? { borderColor: color.primary } : undefined}
+    <View
+      className="h-full overflow-hidden rounded-card bg-surface"
+      style={{ borderWidth: 1.5, borderColor: '#0F172A' }}
     >
-      <View className="flex-row items-center justify-between gap-2">
-        <Badge label={`Mock ${String(index + 1).padStart(2, '0')}`} tone="primary" shape="tag" />
-        <Text className="font-mid text-label text-muted">{minutes} phút</Text>
+      <View className="flex-row gap-3.5 p-4">
+        <TestCover index={index} />
+
+        <View className="min-w-0 flex-1">
+          <Text className="font-heavy text-cardTitle text-ink">
+            Mock Test {String(index + 1).padStart(2, '0')}
+          </Text>
+          <View className="mt-1.5 flex-row flex-wrap gap-1.5">
+            <Chip label={`${test.map((a) => a.cefrLevel).join(' → ')}`} tone="warning" />
+            {/*
+              Ghi rõ đây là thời gian ĐỌC, không phải thời gian làm bài.
+
+              Banner phía trên nói "3 passage trong 60 phút" — đó là khổ bài thi
+              thật. Thẻ ghi trơn "8 phút" ngay dưới thì hai con số cãi nhau, và
+              người đọc tin con số nhỏ hơn rồi tưởng đề này ngắn bất thường.
+            */}
+            <Chip label={`~${minutes} phút đọc`} tone="neutral" />
+          </View>
+          <Text className="mt-2 font-sans text-label text-muted">
+            Ba passage, độ khó tăng dần — đúng nhịp bài thi thật.
+          </Text>
+        </View>
       </View>
 
-      <View className="mt-2 gap-1">
+      {/*
+        Ba passage hiện THÀNH DÒNG RIÊNG, mỗi dòng có số và nhãn chủ đề.
+
+        Bản trước gộp chúng vào ba dòng chữ cụt đuôi ở giữa thẻ, nên nhìn vào chỉ
+        biết "có ba bài" chứ không biết ba bài ấy về cái gì — mà chủ đề mới là
+        thứ người ta dùng để chọn đề.
+      */}
+      <View className="gap-1.5 px-4">
         {test.map((article, i) => (
-          <Text key={article.id} className="font-sans text-label text-ink" numberOfLines={1}>
-            <Text className="font-strong text-muted">P{i + 1} · </Text>
-            {article.title}
-          </Text>
+          <View
+            key={article.id}
+            className="flex-row items-center gap-2.5 rounded-panel px-3 py-2.5"
+            style={{ backgroundColor: color.surfaceAlt }}
+          >
+            <View
+              className="h-6 w-6 items-center justify-center rounded-pill"
+              style={{ backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: color.border }}
+            >
+              <Text className="font-heavy text-muted" style={{ fontSize: 11 }}>
+                {i + 1}
+              </Text>
+            </View>
+            <Text className="min-w-0 flex-1 font-semi text-label text-ink" numberOfLines={1}>
+              {article.title}
+            </Text>
+            <Chip label={topicLabel(article.topic)} tone="neutral" />
+          </View>
         ))}
       </View>
 
-      <Text className="mt-2 font-sans text-label text-subtle">
-        {test.map((a) => a.cefrLevel).join(' → ')} · độ khó tăng dần
-      </Text>
-
       <View className="flex-1" />
 
-      {showActions ? (
-        <View className="mt-3 gap-2">
-          <Button
-            label="Luyện đề"
-            variant="outline"
-            size="sm"
-            fullWidth
-            iconRight="arrow-right"
-            onPress={() => router.push(`/read/${test[0]!.id}` as never)}
-          />
-          {/*
-            Nút thứ hai nói ĐÚNG thứ khác nhau giữa hai gói: chấm bằng AI sau khi
-            nộp. Không phải "đề PRO" — cả hai nút dẫn tới cùng một đề, vì khoá
-            nội dung đề thi thử sau tường phí thì gói Free thành bản demo.
-          */}
-          <Button
-            label={paid ? 'Luyện đề + AI chấm' : 'AI chấm — cần gói trả phí'}
-            size="sm"
-            fullWidth
-            variant={paid ? 'primary' : 'ghost'}
-            iconRight={paid ? 'sparkle' : 'lock'}
-            onPress={() =>
-              paid
-                ? router.push(`/read/${test[0]!.id}` as never)
-                : router.push('/upgrade' as never)
-            }
-          />
-        </View>
-      ) : (
-        <View className="mt-3 h-[76px] items-center justify-center">
-          <Text className="font-sans text-label text-subtle">Rê chuột để bắt đầu</Text>
-        </View>
-      )}
-    </Pressable>
+      <View className="flex-row gap-2 p-4">
+        <Button
+          className="flex-1"
+          label="Luyện tập"
+          variant="outline"
+          size="sm"
+          iconLeft="book"
+          onPress={() => router.push(`/read/${test[0]!.id}` as never)}
+        />
+        {/*
+          Nút thứ hai nói ĐÚNG thứ khác nhau giữa hai gói: chấm bằng AI sau khi
+          nộp. Không phải "đề PRO" — cả hai nút dẫn tới cùng một đề, vì khoá nội
+          dung đề thi thử sau tường phí thì gói Free thành bản demo.
+        */}
+        <Button
+          className="flex-1"
+          label={paid ? 'Đi thi' : 'Đi thi'}
+          size="sm"
+          iconLeft={paid ? 'clock' : 'clock'}
+          onPress={() => router.push(`/read/${test[0]!.id}` as never)}
+        />
+      </View>
+
+      {!paid ? (
+        <Pressable onPress={() => router.push('/upgrade' as never)} className="px-4 pb-4">
+          <Text className="font-sans text-label text-muted">
+            Nộp xong muốn AI chấm theo từng tiêu chí thì cần gói trả phí.
+          </Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
+/**
+ * Bìa đề — chữ số lớn trên nền gradient, đổi màu theo số đề.
+ *
+ * Ảnh tham chiếu dùng ảnh bìa sách Cambridge. App này không có sách nào để chụp,
+ * mà mượn bìa của họ thì vừa sai bản quyền vừa hứa một thứ không có. Một tấm bìa
+ * tự dựng làm đúng phần việc thật của nó: cho mắt một mốc để phân biệt đề này
+ * với đề kia khi lướt qua hai chục thẻ.
+ */
+function TestCover({ index }: { index: number }) {
+  const tones = [
+    ['#93B4FD', '#2563EB'],
+    ['#C4ADF8', '#7C3AED'],
+    ['#6EE7A8', '#16A34A'],
+    ['#FCD34D', '#D97706'],
+    ['#FCA5A5', '#DC2626'],
+    ['#67E8F9', '#0891B2'],
+  ] as const;
+  const tone = tones[index % tones.length] as readonly [string, string];
+
+  return (
+    <View
+      className="items-center justify-center overflow-hidden rounded-panel"
+      style={{ width: 62, height: 82, borderWidth: 1.5, borderColor: '#0F172A' }}
+    >
+      <LinearGradient
+        colors={[...tone] as [string, string]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{ position: 'absolute', inset: 0 } as never}
+      />
+      <View style={{ zIndex: 1, alignItems: 'center' }}>
+        <Text className="font-heavy text-white" style={{ fontSize: 11, letterSpacing: 1 }}>
+          MOCK
+        </Text>
+        <Text className="font-heavy text-white" style={{ fontSize: 26, lineHeight: 30 }}>
+          {String(index + 1).padStart(2, '0')}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+/** Viên nhãn nhỏ — dùng cho cấp độ, thời lượng và chủ đề. */
+function Chip({ label, tone }: { label: string; tone: 'neutral' | 'warning' }) {
+  const bg = tone === 'warning' ? '#FEF3C7' : color.surfaceAlt;
+  const fg = tone === 'warning' ? '#92400E' : color.muted;
+  return (
+    <View className="rounded-pill px-2 py-0.5" style={{ backgroundColor: bg }}>
+      <Text className="font-semi" style={{ fontSize: 10.5, color: fg }}>
+        {label}
+      </Text>
+    </View>
   );
 }
