@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { AuroraBackground } from './AuroraBackground';
 import { TopBar } from './TopBar';
 import { isFocusRoute } from '@/navigation/focus-routes';
+import { AskBubble } from '@/components/ai/AskBubble';
 
 /**
  * Khung app dùng chung — MỘT thanh ngang, hoặc không có gì cả.
@@ -49,6 +50,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <AuroraBackground />
       <TopBar />
       <View className="flex-1">{children}</View>
+      {/*
+        Bong bóng hỏi nhanh chỉ sống ở nhánh này, tức là ở màn KHÔNG phải làm bài.
+        Nhánh `focus` phía trên trả về sớm và không gắn nó — giữa lúc đang tính
+        giờ làm đề mà có nút "hỏi AI" cạnh màn hình thì đó không còn là thi thử.
+      */}
+      <AskBubble />
     </SafeAreaView>
   );
 }

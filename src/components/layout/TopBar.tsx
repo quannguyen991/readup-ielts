@@ -65,8 +65,16 @@ export function TopBar() {
             </Pressable>
           ) : null}
 
-          <Link href={'/dashboard' as never} asChild>
-            <Pressable accessibilityRole="link" accessibilityLabel="Về trang tổng quan">
+          {/*
+            Logo về TRANG GIỚI THIỆU, không về Tổng quan.
+
+            Tổng quan là một màn bên trong app; trang giới thiệu mới là cửa vào —
+            chỗ có đủ sáu mảng, ba bước mở đầu và bảng giá. Bấm logo là thao tác
+            "cho tôi về đầu", và đầu ở đây là cửa vào chứ không phải một màn giữa
+            chừng. Người đang học vẫn có nút "Tiếp tục học" ngay đầu trang ấy.
+          */}
+          <Link href={'/intro' as never} asChild>
+            <Pressable accessibilityRole="link" accessibilityLabel="Về trang giới thiệu">
               <Logo compact />
             </Pressable>
           </Link>

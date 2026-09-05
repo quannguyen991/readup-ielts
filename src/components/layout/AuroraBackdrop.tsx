@@ -41,28 +41,60 @@ import { LinearGradient } from 'expo-linear-gradient';
  * Chu kỳ bằng nhau thì chúng gặp lại nhau đều đặn và mắt bắt ngay ra vòng lặp.
  */
 
-/** Xanh dương đậm → chàm → tím. Đủ tối để chữ trắng nổi lên. */
-const BASE_STOPS = ['#1E3A9E', '#3B3BBF', '#6D28D9'] as const;
+/**
+ * Trời đêm, không phải nền xanh dương.
+ *
+ * Bản trước lấy xanh dương đậm → chàm → tím (#1E3A9E → #3B3BBF → #6D28D9). Nền
+ * ấy đủ tối cho chữ trắng, nhưng nó SÁNG NGANG với các dải sáng vẽ đè lên, nên
+ * bốn dải chìm nghỉm và cả khối đọc ra thành một mảng gradient phẳng.
+ *
+ * Cực quang chỉ hiện ra khi có trời đêm để hiện lên. Hạ nền xuống gần đen mực
+ * rồi mới có chỗ cho dải sáng.
+ */
+const BASE_STOPS = ['#080C2A', '#161046', '#2A1152'] as const;
 
 type Blob = {
   color: string;
-  /** Tâm và bán kính theo phần trăm khung, để co giãn theo mọi khổ màn. */
-  cx: string;
-  cy: string;
-  rx: string;
-  ry: string;
+  /**
+   * Tâm và bán kính, tính trên khung 100×100 của `viewBox`.
+   *
+   * Dùng SỐ chứ không dùng chuỗi '20%': phép `rotate(góc cx cy)` của SVG cần toạ
+   * độ số, và `viewBox` + `preserveAspectRatio="none"` vẫn cho co giãn theo mọi
+   * khổ màn y như phần trăm.
+   */
+  cx: number;
+  cy: number;
+  rx: number;
+  ry: number;
   opacity: number;
   /** Biên độ trôi, tính bằng điểm ảnh. */
   driftX: number;
   driftY: number;
   seconds: number;
+  /** Nghiêng dải, tính bằng độ. Dải nằm ngang thì không ra cực quang. */
+  tilt?: number;
 };
 
+/*
+  DẢI, KHÔNG PHẢI QUẦNG.
+
+  Bốn khối cũ đều gần tròn (rx ≈ ry), và bốn quầng tròn mờ chồng lên nhau thì ra
+  gradient lưới — thứ có ở mọi trang chủ. Cực quang đọc ra được là nhờ HÌNH DẠNG:
+  dải dài, mỏng, nghiêng, chồng chéo nhau ở các góc khác nhau.
+
+  Nên ba dải chính đều rất bẹt (rx gấp 2–3 lần ry) và nghiêng khác nhau, còn hai
+  quầng tròn giữ lại chỉ để làm nền ấm phía sau, mờ hơn hẳn.
+
+  Màu lấy đúng dải cực quang thật — lục lam, xanh ngọc, tím, hồng — chứ không lấy
+  bốn sắc độ của cùng một màu thương hiệu. Bốn sắc độ cùng màu thì dù đậm tới đâu
+  vẫn đọc ra là một mảng.
+*/
 const BLOBS: Blob[] = [
-  { color: '#7DD3FC', cx: '20%', cy: '14%', rx: '52%', ry: '44%', opacity: 0.42, driftX: 46, driftY: 30, seconds: 17 },
-  { color: '#C084FC', cx: '84%', cy: '24%', rx: '46%', ry: '48%', opacity: 0.4, driftX: -38, driftY: 42, seconds: 23 },
-  { color: '#818CF8', cx: '68%', cy: '84%', rx: '58%', ry: '50%', opacity: 0.38, driftX: 34, driftY: -36, seconds: 29 },
-  { color: '#F0ABFC', cx: '10%', cy: '78%', rx: '44%', ry: '42%', opacity: 0.28, driftX: -30, driftY: -26, seconds: 37 },
+  { color: '#22D3EE', cx: 26, cy: 20, rx: 62, ry: 22, opacity: 0.55, driftX: 52, driftY: 26, seconds: 17, tilt: -18 },
+  { color: '#34D399', cx: 70, cy: 32, rx: 54, ry: 18, opacity: 0.4, driftX: -44, driftY: 34, seconds: 23, tilt: 12 },
+  { color: '#A855F7', cx: 58, cy: 76, rx: 68, ry: 26, opacity: 0.62, driftX: 38, driftY: -30, seconds: 29, tilt: -9 },
+  { color: '#F472B6', cx: 14, cy: 88, rx: 46, ry: 20, opacity: 0.34, driftX: -32, driftY: -24, seconds: 37, tilt: 16 },
+  { color: '#6366F1', cx: 88, cy: 62, rx: 40, ry: 40, opacity: 0.3, driftX: 26, driftY: 30, seconds: 31 },
 ];
 
 const STYLE_TAG_ID = 'aurora-backdrop-keyframes';
@@ -183,10 +215,18 @@ function NativeBlob({ blob, index }: { blob: Blob; index: number }) {
   );
 }
 
+/*
+  Nghiêng dải bằng cách xoay LỚP BỌC, không xoay hình trong SVG.
+
+  `rotation` + `origin` trên `<Ellipse>` là API của react-native-svg cho native;
+  trên web nó rơi thẳng xuống DOM và trình duyệt kêu `Invalid DOM property
+  'transform-origin'`. Xoay ở View thì cả hai nền tảng cùng hiểu, và cũng không
+  đụng vào transform mà lớp chuyển động bên ngoài đang dùng để trôi.
+*/
 function BlobShape({ blob, index }: { blob: Blob; index: number }) {
   const gradientId = `aurora-blob-${index}`;
   return (
-    <Svg width="100%" height="100%">
+    <Svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
       <Defs>
         <RadialGradient id={gradientId} cx="0.5" cy="0.5" r="0.5">
           <Stop offset={0} stopColor={blob.color} stopOpacity={blob.opacity} />
@@ -194,7 +234,14 @@ function BlobShape({ blob, index }: { blob: Blob; index: number }) {
           <Stop offset={1} stopColor={blob.color} stopOpacity={0} />
         </RadialGradient>
       </Defs>
-      <Ellipse cx={blob.cx} cy={blob.cy} rx={blob.rx} ry={blob.ry} fill={`url(#${gradientId})`} />
+      <Ellipse
+        cx={blob.cx}
+        cy={blob.cy}
+        rx={blob.rx}
+        ry={blob.ry}
+        fill={`url(#${gradientId})`}
+        transform={blob.tilt ? `rotate(${blob.tilt} ${blob.cx} ${blob.cy})` : undefined}
+      />
     </Svg>
   );
 }
