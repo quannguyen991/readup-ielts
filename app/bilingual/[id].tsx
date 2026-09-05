@@ -1,5 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
+
+import { HoverGlossText, type InlineGloss } from '@/components/reader/HoverGloss';
 import { router, useLocalSearchParams } from 'expo-router';
 import * as Speech from 'expo-speech';
 
@@ -7,12 +9,10 @@ import { TaskShell } from '@/components/layout/TaskShell';
 import { Badge, Button, Icon, PaperCard } from '@/components/ui';
 import {
   getBilingualArticleById,
-  type BilingualGloss,
   type BilingualParagraph,
   type BilingualQuestion,
   type BilingualVocab,
 } from '@/data/bilingual-repository';
-import { splitByGloss } from '@/services/reading/gloss-split';
 import { color, paper } from '@/theme/tokens';
 
 /**
@@ -55,7 +55,6 @@ export default function BilingualReaderScreen() {
   const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('serif');
   const [fontSize, setFontSize] = useState<number>(17);
   const [showVi, setShowVi] = useState(true);
-  const [openGloss, setOpenGloss] = useState<BilingualGloss | null>(null);
 
   if (!article) {
     return (
@@ -242,17 +241,25 @@ function ParagraphRow({
   fontFamily: string | undefined;
   fontSize: number;
 }) {
-  /*
-    Nghĩa của từ mở ra NGAY TRONG ĐOẠN vừa bấm, nên state nằm ở đây chứ không ở
-    màn hình cha. Để ở cha thì thẻ nghĩa chỉ có một chỗ đứng duy nhất — cuối
-    danh sách đoạn — và bấm một từ ở đoạn đầu sẽ mở ra thứ nằm ngoài tầm mắt.
-  */
-  const [openGloss, setOpenGloss] = useState<BilingualGloss | null>(null);
 
-  const segments = useMemo(
-    () => splitByGloss(paragraph.en, paragraph.gloss),
-    [paragraph.en, paragraph.gloss],
-  );
+  /*
+    Nghĩa soạn sẵn của đoạn, đổi sang bảng tra theo từ đã thường hoá.
+
+    Những từ này hiện TỨC THÌ và không tốn lời gọi mạng nào — và chúng là những
+    từ người soạn bài cho là đáng dừng lại, nên cũng là những từ hay được rê vào
+    nhất.
+  */
+  const bundledGloss = useMemo(() => {
+    const map: Record<string, InlineGloss> = {};
+    for (const g of paragraph.gloss ?? []) {
+      map[g.word.toLowerCase().replace(/[^a-z0-9'-]/g, '')] = {
+        word: g.word,
+        meaningVi: g.meaningVi,
+        pos: g.pos,
+      };
+    }
+    return map;
+  }, [paragraph.gloss]);
 
   const lineHeight = fontSize * 1.75;
 
@@ -261,32 +268,24 @@ function ParagraphRow({
       <View className={showVi ? 'lg:flex-1' : ''}>
         <PaperCard>
           <Text className="mb-2 font-strong text-label text-paper-muted">{index + 1}</Text>
-          <Text style={{ fontFamily, fontSize, lineHeight, color: paper.ink }}>
-            {segments.map((segment, i) =>
-              segment.gloss ? (
-                <Text
-                  key={i}
-                  onPress={() =>
-                    setOpenGloss((current) =>
-                      current?.word === segment.gloss?.word ? null : segment.gloss,
-                    )
-                  }
-                  style={{
-                    color: paper.brandMid,
-                    textDecorationLine: 'underline',
-                    textDecorationStyle: 'dotted',
-                  }}
-                >
-                  {segment.text}
-                </Text>
-              ) : (
-                <Text key={i}>{segment.text}</Text>
-              ),
-            )}
-          </Text>
+          {/*
+            MỌI từ đều rê được, không chỉ những từ đã soạn sẵn nghĩa.
+
+            Bản trước chỉ gạch chân vài từ trong danh sách và bấm mới hiện nghĩa.
+            Nhưng từ làm người đọc khựng lại không phải lúc nào cũng là từ người
+            soạn cho là khó — và với những từ ngoài danh sách thì trước đây không
+            có đường nào tra ngay tại chỗ.
+          */}
+          <HoverGlossText
+            text={paragraph.en}
+            bundled={bundledGloss}
+            fontFamily={fontFamily}
+            fontSize={fontSize}
+            lineHeight={lineHeight}
+            color={paper.ink}
+          />
         </PaperCard>
 
-        {openGloss ? <GlossSheet gloss={openGloss} onClose={() => setOpenGloss(null)} /> : null}
       </View>
 
       {showVi ? (
@@ -299,32 +298,6 @@ function ParagraphRow({
   );
 }
 
-/** Thẻ nghĩa hiện ra khi bấm vào một từ được gạch chân. */
-function GlossSheet({ gloss, onClose }: { gloss: BilingualGloss; onClose: () => void }) {
-  return (
-    <View className="mt-4 flex-row items-start gap-3 rounded-card border-2 bg-white p-4" style={{ borderColor: paper.brandMid }}>
-      <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: paper.brandMid }}>
-        <Icon name="letters" size={17} color="#FFFFFF" strokeWidth={2} />
-      </View>
-      <View className="min-w-0 flex-1">
-        <View className="flex-row flex-wrap items-baseline gap-2">
-          <Text className="font-heavy text-sectionTitle text-paper-ink">{gloss.word}</Text>
-          <Text className="font-sans text-label text-paper-muted">{gloss.ipa}</Text>
-          <Badge label={gloss.pos} tone="neutral" />
-        </View>
-        <Text className="mt-1 font-mid text-bodyLg text-paper-body">{gloss.meaningVi}</Text>
-      </View>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel="Đóng nghĩa từ"
-        onPress={onClose}
-        className="h-8 w-8 items-center justify-center rounded-pill bg-brand-tint"
-      >
-        <Icon name="close" size={15} color={paper.body} strokeWidth={2} />
-      </Pressable>
-    </View>
-  );
-}
 
 function VocabPanel({ vocab }: { vocab: BilingualVocab[] }) {
   const [open, setOpen] = useState(false);
