@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Text, View, useWindowDimensions } from 'react-native';
+import { Platform, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
 import { AuroraBackdrop } from '@/components/layout/AuroraBackdrop';
@@ -130,40 +131,77 @@ const AREAS: Area[] = [
   },
 ];
 
-const DIFFERENCES: Array<{ icon: IconName; title: string; body: string }> = [
+/**
+ * Mỗi lời tuyên bố đi kèm VẬT CHỨNG, không đi kèm tính từ.
+ *
+ * `proof` là những mẩu lấy thẳng từ ruột app — tên lỗi thật trong bộ sinh đề,
+ * số hạt bộ kiểm chứng chạy, số tài khoản cần để bắt đầu. Đó là thứ trang giới
+ * thiệu của người khác không chép được, vì họ không có nó trong máy.
+ *
+ * Ba tên lỗi dưới đây là khoá thật trong `MATH_ERROR_LABEL`, không phải chữ
+ * viết cho đẹp — cùng luật với mọi con số khác trên trang này.
+ */
+const DIFFERENCES: {
+  icon: IconName;
+  colors: readonly [string, string];
+  title: string;
+  body: string;
+  proof: string[];
+}[] = [
   {
     icon: 'check',
+    colors: stickerGradient.success,
     title: 'Đáp án toán tính bằng code, không do AI đoán',
     body:
       'Mỗi câu SAT Math dựng từ tham số rồi suy ra đáp án từ chính tham số đó, nên đề và đáp án không thể lệch nhau. Bộ kiểm chứng chạy 200 hạt cho mỗi dạng, đọc ngược từ đề bài in ra — thế nghiệm vào phương trình phải ra 0.',
+    proof: ['200 hạt mỗi dạng', 'thế nghiệm → 0', '0 lần AI tính đáp án'],
   },
   {
     icon: 'info',
+    colors: stickerGradient.warning,
     title: 'Sai ở đâu được gọi đúng tên chỗ đó',
     body:
       'Mỗi đáp án nhiễu dựng từ một sai lầm có tên — sai dấu, quên nhân phân phối, lấy nhầm mẫu số. Chọn nhầm cái nào thì màn xem lại nói đúng cái đó, và thống kê gộp lại cho thấy bạn hay hỏng kiểu gì.',
+    proof: ['sign_flip', 'forgot_distribute', 'used_diameter_not_radius'],
   },
   {
     icon: 'flame',
+    colors: stickerGradient.info,
     title: 'Học được ngay, không cần tài khoản',
     body:
       'Mở lên là học. Dữ liệu nằm trên máy bạn. Đăng nhập chỉ để mang tiến độ sang máy khác — không phải cửa vào, và không có bước bắt tạo tài khoản trước khi cho xem gì.',
+    proof: ['0 tài khoản để bắt đầu', 'dữ liệu nằm trên máy bạn'],
   },
 ];
 
-const STEPS: Array<{ n: string; title: string; body: string }> = [
+/**
+ * Ba bước, và ở đây đánh số là ĐÚNG chứ không phải trang trí: thứ tự mang thông
+ * tin thật — không làm bài chẩn đoán trước thì lộ trình không biết xếp gì.
+ *
+ * Màu đi từ lam nhạt sang tím đậm theo đúng thứ tự ấy, nên trên máy nhỏ khi ba
+ * thẻ xếp dọc thì vẫn đọc ra được đâu là đầu đường.
+ */
+const STEPS: {
+  n: string;
+  colors: readonly [string, string];
+  title: string;
+  body: string;
+}[] = [
   {
     n: '1',
+    colors: stickerGradient.info,
     title: 'Làm bài chẩn đoán',
     body: '19 câu, mỗi kỹ năng một câu. Xong là có bản đồ mình thủng chỗ nào.',
   },
   {
     n: '2',
+    colors: stickerGradient.primary,
     title: 'Đi theo lộ trình',
     body: 'Mỗi bài học có 5 bộ đề siết dần thời gian, từ làm quen tới chốt kỹ năng.',
   },
   {
     n: '3',
+    colors: stickerGradient.accent,
     title: 'Thi thử đúng khổ đề',
     body: 'Hai module × 22 câu × 35 phút, module sau đổi độ khó theo kết quả module trước.',
   },
@@ -337,13 +375,7 @@ export default function IntroScreen() {
         <Grid columns={3} tabletColumns={3} mobileColumns={1}>
           {STEPS.map((step, index) => (
             <Appear key={step.n} index={index + 4} style={{ height: '100%' }}>
-              <Card className="h-full">
-                <View className="h-9 w-9 items-center justify-center rounded-pill bg-brand-soft">
-                  <Text className="font-heavy text-body text-paper-ink">{step.n}</Text>
-                </View>
-                <Text className="mt-3 font-strong text-cardTitle text-ink">{step.title}</Text>
-                <Text className="mt-1 font-sans text-body text-muted">{step.body}</Text>
-              </Card>
+              <StepCard step={step} />
             </Appear>
           ))}
         </Grid>
@@ -356,17 +388,7 @@ export default function IntroScreen() {
       <View className="mt-4 gap-3">
         {DIFFERENCES.map((item, index) => (
           <Appear key={item.title} index={index + 6}>
-            <Card>
-              <View className="flex-row items-start gap-3">
-                <View className="h-10 w-10 items-center justify-center rounded-panel bg-brand-soft">
-                  <Icon name={item.icon} size={18} color={paper.brandMid} />
-                </View>
-                <View className="flex-1">
-                  <Text className="font-strong text-cardTitle text-ink">{item.title}</Text>
-                  <Text className="mt-1 font-sans text-body text-muted">{item.body}</Text>
-                </View>
-              </View>
-            </Card>
+            <DifferenceCard item={item} />
           </Appear>
         ))}
       </View>
@@ -466,6 +488,125 @@ export default function IntroScreen() {
 
       <View className="h-6" />
     </Screen>
+  );
+}
+
+/**
+ * Viền đen dày + bóng lệch CỨNG — cùng cách dựng với `StickerCard`, khác mỗi
+ * ruột trắng thay vì gradient.
+ *
+ * Nửa trên trang có giọng riêng rất rõ (thẻ sticker viền đen), rồi ba khối dưới
+ * bỏ hẳn giọng ấy để về thẻ trắng trơn. Trang đọc như hai người viết. Dùng lại
+ * đúng bộ vật liệu, chỉ đổi ruột, là cách nối lại mà không phải bịa thêm ngôn
+ * ngữ thứ ba.
+ */
+const hardEdge = (Platform.OS === 'web'
+  ? { borderWidth: 2.5, borderColor: '#0F172A', boxShadow: '5px 5px 0 #0F172A' }
+  : {
+      borderWidth: 2.5,
+      borderColor: '#0F172A',
+      shadowColor: '#0F172A',
+      shadowOffset: { width: 4, height: 4 },
+      shadowOpacity: 1,
+      shadowRadius: 0,
+      elevation: 6,
+    }) as never;
+
+/** Chữ máy — dùng cho những mẩu lấy thẳng từ ruột app, xem `DIFFERENCES.proof`. */
+const MONO = Platform.OS === 'web' ? 'ui-monospace, SFMono-Regular, Menlo, monospace' : 'monospace';
+
+/**
+ * Một bước trong ba bước mở đầu.
+ *
+ * Số bước nằm trong huy hiệu gradient chứ không phải viên xám: nó là thứ dẫn
+ * mắt, và ba màu đi theo thứ tự cũng là thứ duy nhất còn nói được "đây là một
+ * đường đi" khi màn hẹp và ba thẻ xếp dọc.
+ */
+function StepCard({ step }: { step: (typeof STEPS)[number] }) {
+  return (
+    <View className="h-full overflow-hidden rounded-card bg-white" style={hardEdge}>
+      <LinearGradient
+        colors={step.colors}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={{ height: 7 }}
+      />
+      <View className="p-4">
+        <View
+          className="h-11 w-11 items-center justify-center overflow-hidden rounded-pill"
+          style={{ borderWidth: 2, borderColor: '#0F172A' }}
+        >
+          <LinearGradient
+            colors={step.colors}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={{ position: 'absolute', inset: 0 } as never}
+          />
+          <Text className="font-heavy text-cardTitle text-white" style={{ zIndex: 1 }}>
+            {step.n}
+          </Text>
+        </View>
+        <Text className="mt-3 font-strong text-cardTitle text-ink">{step.title}</Text>
+        <Text className="mt-1 font-sans text-body text-muted">{step.body}</Text>
+      </View>
+    </View>
+  );
+}
+
+/**
+ * Một lời tuyên bố, kèm vật chứng.
+ *
+ * KHÔNG đánh số, và đó là chủ ý: ba mục này không phải một chuỗi, đánh số vào
+ * sẽ hứa một thứ tự không có thật. Dải màu dọc cạnh trái thay cho bóng cứng vì
+ * thẻ ở đây trải hết chiều ngang — ba khối rộng cùng đổ bóng cứng đọc rất nặng.
+ */
+function DifferenceCard({ item }: { item: (typeof DIFFERENCES)[number] }) {
+  return (
+    <View
+      className="flex-row overflow-hidden rounded-card bg-white"
+      style={{ borderWidth: 1.5, borderColor: '#0F172A' }}
+    >
+      <LinearGradient
+        colors={item.colors}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={{ width: 9 }}
+      />
+      <View className="flex-1 flex-row items-start gap-3 p-4">
+        <View
+          className="h-11 w-11 items-center justify-center overflow-hidden rounded-panel"
+          style={{ borderWidth: 2, borderColor: '#0F172A' }}
+        >
+          <LinearGradient
+            colors={item.colors}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={{ position: 'absolute', inset: 0 } as never}
+          />
+          <View style={{ zIndex: 1 }}>
+            <Icon name={item.icon} size={19} color="#fff" strokeWidth={2} />
+          </View>
+        </View>
+
+        <View className="flex-1">
+          <Text className="font-strong text-cardTitle text-ink">{item.title}</Text>
+          <Text className="mt-1 font-sans text-body text-muted">{item.body}</Text>
+
+          {/* Vật chứng. Chữ máy vì đây đúng là thứ máy in ra, không phải lời quảng cáo. */}
+          <View className="mt-3 flex-row flex-wrap gap-2">
+            {item.proof.map((chip) => (
+              <View
+                key={chip}
+                className="rounded-pill px-2.5 py-1"
+                style={{ backgroundColor: `${item.colors[1]}14`, borderWidth: 1, borderColor: `${item.colors[1]}33` }}
+              >
+                <Text style={{ fontFamily: MONO, fontSize: 12, color: item.colors[1] }}>{chip}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
+      </View>
+    </View>
   );
 }
 

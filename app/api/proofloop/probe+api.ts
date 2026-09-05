@@ -154,10 +154,6 @@ export async function POST(request: Request): Promise<Response> {
       Nhưng KHÔNG thử lại mãi: hỏng hết lượt thường là bài đọc thật sự không đỡ
       nổi phép thử loại này, và lúc đó câu trả lời đúng là nói ra chứ không phải
       quay tiếp cho tới khi model bịa ra thứ lọt lưới.
-
-      Không phải vì nó quan trọng hơn — mà vì nó phải qua thêm một hàng rào, nên
-      xác suất trượt một lần cao hơn hẳn. Cùng số lần thử thì loại khó nhất lại
-      là loại hay bỏ cuộc nhất, và đó là loại duy nhất sinh ra `confirmed`.
     */
     const maxAttempts = isTransfer ? 3 : 2;
     let because: RetryReason | null = null;
