@@ -17,8 +17,24 @@
  * thích trôi chảy sẽ tự phong cho mình là bằng chứng học tập.
  */
 
-/** Mảng kỹ năng. Mỗi mảng có cách "chỉ bằng chứng" riêng, xem `EvidencePointer`. */
-export type Domain = 'reading' | 'listening' | 'writing' | 'sat-math' | 'sat-verbal';
+/**
+ * Mảng kỹ năng. Mỗi mảng có cách "chỉ bằng chứng" riêng, xem `EvidencePointer`.
+ *
+ * `ai-literacy` KHÔNG phải một môn học thêm vào cho vui.
+ *
+ * Đề thi có bốn kỹ năng, nhưng thứ người học đang phải làm mỗi ngày mà không ai
+ * dạy là ĐỌC KẾT QUẢ DO MÁY SINH RA và biết chỗ nào tin được. Mảng này đo đúng
+ * năng lực đó, và đo bằng chính bộ máy hai trục của các mảng kia — nên nó không
+ * phải một cái bảng riêng dán thêm vào, mà là cùng một câu hỏi hỏi trên một loại
+ * đối tượng khác.
+ */
+export type Domain =
+  | 'reading'
+  | 'listening'
+  | 'writing'
+  | 'sat-math'
+  | 'sat-verbal'
+  | 'ai-literacy';
 
 export const DOMAIN_LABEL: Record<Domain, string> = {
   reading: 'Đọc hiểu',
@@ -26,6 +42,7 @@ export const DOMAIN_LABEL: Record<Domain, string> = {
   writing: 'Viết',
   'sat-math': 'SAT Math',
   'sat-verbal': 'SAT Verbal',
+  'ai-literacy': 'Đọc kết quả của AI',
 };
 
 /**

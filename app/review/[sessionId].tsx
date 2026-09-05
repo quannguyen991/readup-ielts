@@ -22,6 +22,7 @@ import { findEvidenceSpan, mergeSpans, type EvidenceSpan } from '@/lib/reading/e
 import { ReadingCoachPanel, type CoachRequest } from '@/components/reader/ReadingCoachPanel';
 import { ProofStateBadge } from '@/components/reader/ProofStateBadge';
 import { ProbePanel } from '@/components/reader/ProbePanel';
+import { AuditPanel } from '@/components/ai-literacy/AuditPanel';
 import { classify } from '@/services/proofloop/state';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
@@ -50,6 +51,19 @@ export default function ReviewScreen() {
   // Màn này hiện lại nguyên bài để soi câu dẫn chứng, nên cần toàn văn chứ
   // không chỉ metadata.
   const article = session ? getArticleWithBody(session.articleId) : undefined;
+
+  /*
+    Bài dùng cho phần "soi một bản của AI" — luôn là bài KHÁC bài vừa làm.
+
+    Cùng phép chọn tất định với phép thử chuyển giao, nên cùng một lượt làm bài
+    thì luôn soi trên cùng một bài; không dựng lại được thì không soi lại được
+    một ca lạ.
+  */
+  const auditArticle = useMemo(() => {
+    if (!article) return undefined;
+    const pick = pickTransferSource(article, ARTICLES);
+    return pick ? getArticleWithBody(pick.id) : undefined;
+  }, [article]);
 
   const rows = useMemo(() => {
     if (!session || !questionSet) return [];
@@ -188,6 +202,60 @@ export default function ReviewScreen() {
       </View>
 
       {coachRequest ? <ReadingCoachPanel request={coachRequest} /> : null}
+
+      {/*
+        SOI MỘT BẢN CỦA AI.
+
+        Đặt ở đây, ngay sau phần AI vừa nhận xét bài của họ, là cố ý: người học
+        vừa đọc một tràng chữ do máy viết ra, và câu hỏi tiếp theo đúng lúc nhất
+        là "bạn có kiểm được cái vừa đọc không".
+
+        Bản đem soi dựng trên BÀI KHÁC, không phải bài họ vừa làm — soi trên bài
+        vừa đọc kỹ thì đang đo trí nhớ về bài đó chứ không đo năng lực đọc kết
+        quả máy.
+      */}
+      {article && auditArticle && rows[0]?.question ? (
+        <AuditPanel
+          paragraphs={auditArticle.paragraphs}
+          seed={`${session.id}:${auditArticle.id}`}
+          sourceId={auditArticle.id}
+          fetchDraft={async () => {
+            const q = rows[0]?.question;
+            if (!q) return null;
+            /*
+              Gửi lên một quan sát KHỚP để bảng phép thử ra loại `transfer`.
+
+              Đây không phải lượt làm bài của ai cả và KHÔNG được ghi vào sổ —
+              chỗ này chỉ cần một bản do model viết ra để đem soi. Việc chấm nằm
+              ở `gradeAudit`, và nó chấm dựa trên lỗi ta tự cấy, không dựa vào
+              lời nào của model.
+            */
+            const res = await fetch('/api/proofloop/probe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                answerCorrect: true,
+                mark: {
+                  paragraphIndex: q.evidenceParagraphIndex,
+                  phrase: q.evidenceText,
+                  startOffset: 0,
+                  endOffset: q.evidenceText.length,
+                },
+                truthParagraphIndex: q.evidenceParagraphIndex,
+                passage: article.paragraphs.join('\n\n'),
+                questionPrompt: q.prompt,
+                correctAnswer: q.correctAnswer,
+                truthEvidenceText: q.evidenceText,
+                sourceId: article.id,
+                transferPassage: auditArticle.paragraphs.join('\n\n'),
+                transferSourceId: auditArticle.id,
+              }),
+            });
+            const json = await res.json();
+            return json?.draft ?? null;
+          }}
+        />
+      ) : null}
 
       <View className="mt-4 flex-row flex-wrap gap-4">
         {/* Danh sách câu hỏi */}
