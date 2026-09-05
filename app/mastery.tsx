@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
-import { Card, Icon } from '@/components/ui';
+import { Button, Card, Icon } from '@/components/ui';
+import { buildExport } from '@/services/mastery/cohort';
 import { explain } from '@/services/mastery/explain';
 import { DOMAIN_LABEL, type Domain, type SkillRecord, type SkillStatus } from '@/services/mastery/types';
 import { LOCALE_LABEL, type Locale } from '@/i18n';
@@ -78,6 +79,8 @@ export default function MasteryScreen() {
       </Text>
 
       <LanguageToggle />
+
+      <ExportCard />
 
       <Card className="mt-4">
         <Text className="font-strong text-body text-ink">{t('mastery.whyStrictTitle')}</Text>
@@ -200,5 +203,66 @@ function LanguageToggle() {
         </Pressable>
       ))}
     </View>
+  );
+}
+
+/**
+ * Xuất sổ để gửi cho giáo viên.
+ *
+ * MÃ DO CHÍNH NGƯỜI HỌC ĐẶT, không phải tên. Bản xuất cũng bỏ hẳn `lastSourceId`
+ * — id bài đọc là dấu vết ai đã làm gì lúc nào, không cần cho bức tranh lớp học
+ * và không nên rời khỏi máy họ. Xem `services/mastery/cohort.ts`.
+ *
+ * Hiện ra chuỗi JSON để chép tay chứ không tải file: chép được ở mọi trình duyệt
+ * và mọi máy, kể cả máy trường bị khoá quyền tải xuống — mà đó chính là loại máy
+ * cần dùng tính năng này nhất.
+ */
+function ExportCard() {
+  const ledger = useMasteryStore((s) => s.ledger);
+  const [code, setCode] = useState('');
+  const [payload, setPayload] = useState<string | null>(null);
+
+  const skills = Object.keys(ledger).length;
+  if (skills === 0) return null;
+
+  return (
+    <Card className="mt-4">
+      <View className="flex-row items-center gap-2">
+        <Icon name="clipboard" size={16} color={color.primary} strokeWidth={2.1} />
+        <Text className="font-strong text-body text-ink">Gửi sổ cho giáo viên</Text>
+      </View>
+      <Text className="mt-1 font-sans text-label text-muted" style={{ lineHeight: 19 }}>
+        Bản xuất chỉ mang mã bạn tự đặt và trạng thái {skills} kỹ năng — không có tên, không có bài
+        nào bạn đã làm.
+      </Text>
+
+      <View className="mt-3 flex-row flex-wrap items-center gap-2">
+        <TextInput
+          value={code}
+          onChangeText={setCode}
+          placeholder="Mã của bạn, ví dụ HS-01"
+          placeholderTextColor={color.subtle}
+          className="min-w-[180px] flex-1 rounded-panel border border-border bg-surface px-3 py-2 font-sans text-body text-ink"
+        />
+        <Button
+          label="Tạo bản xuất"
+          disabled={code.trim() === ''}
+          onPress={() => setPayload(JSON.stringify(buildExport(ledger, code)))}
+        />
+      </View>
+
+      {payload ? (
+        <View className="mt-3">
+          <Text className="font-sans text-label text-muted">Chép toàn bộ dòng dưới rồi gửi đi:</Text>
+          <TextInput
+            value={payload}
+            editable={false}
+            multiline
+            className="mt-1.5 rounded-panel border border-border bg-surfaceAlt px-3 py-2 font-sans text-label text-ink"
+            style={{ minHeight: 84 }}
+          />
+        </View>
+      ) : null}
+    </Card>
   );
 }

@@ -3,6 +3,7 @@ import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { VerificationReceiptPanel } from '@/components/ai/VerificationReceiptPanel';
+import { TransferCheck } from '@/components/writing/TransferCheck';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Badge, Button, Icon, PaperCard } from '@/components/ui';
 import { ChartFigure } from '@/components/writing/ChartFigure';
@@ -331,11 +332,17 @@ export default function WritingResultScreen() {
                   annotations={annotations}
                   focused={focused}
                   onFocus={setFocused}
+                  submissionId={submission.id}
                 />
               ) : null}
 
               {tab === 'errors' ? (
-                <ErrorsTab annotations={annotations} focused={focused} onFocus={setFocused} />
+                <ErrorsTab
+                  annotations={annotations}
+                  focused={focused}
+                  onFocus={setFocused}
+                  submissionId={saved?.submissionId ?? submission.id}
+                />
               ) : null}
 
               {tab === 'review' ? <ReviewTab evaluation={saved ?? null} /> : null}
@@ -417,11 +424,13 @@ function EssayTab({
   annotations,
   focused,
   onFocus,
+  submissionId,
 }: {
   text: string;
   annotations: WritingAnnotation[];
   focused: number | null;
   onFocus: (index: number | null) => void;
+  submissionId: string;
 }) {
   if (annotations.length === 0) {
     return (
@@ -473,7 +482,7 @@ function EssayTab({
 
       {active ? (
         <View className="mt-4">
-          <AnnotationCard index={focused! + 1} annotation={active} />
+          <AnnotationCard index={focused! + 1} annotation={active} submissionId={submissionId} />
         </View>
       ) : null}
     </View>
@@ -486,10 +495,12 @@ function ErrorsTab({
   annotations,
   focused,
   onFocus,
+  submissionId,
 }: {
   annotations: WritingAnnotation[];
   focused: number | null;
   onFocus: (index: number | null) => void;
+  submissionId: string;
 }) {
   const [filter, setFilter] = useState<CriterionKey | 'all'>('all');
 
@@ -550,7 +561,7 @@ function ErrorsTab({
         ) : (
           shown.map(({ a, index }) => (
             <Pressable key={index} onPress={() => onFocus(focused === index ? null : index)}>
-              <AnnotationCard index={index + 1} annotation={a} />
+              <AnnotationCard index={index + 1} annotation={a} submissionId={submissionId} />
             </Pressable>
           ))
         )}
@@ -586,7 +597,16 @@ function FilterChip({
   );
 }
 
-function AnnotationCard({ index, annotation }: { index: number; annotation: WritingAnnotation }) {
+function AnnotationCard({
+  index,
+  annotation,
+  submissionId,
+}: {
+  index: number;
+  annotation: WritingAnnotation;
+  /** Có id bài thì hiện được phép thử chuyển giao cho lỗi này. */
+  submissionId?: string;
+}) {
   const tone = CATEGORY_HIGHLIGHT[annotation.category];
 
   return (
@@ -620,6 +640,14 @@ function AnnotationCard({ index, annotation }: { index: number; annotation: Writ
       {annotation.whyVi ? (
         <Text className="mt-1.5 font-sans text-label text-paper-body">{annotation.whyVi}</Text>
       ) : null}
+
+      {/*
+        Lối vào phép thử chuyển giao, đặt ngay dưới lời giải thích.
+
+        Đọc xong lời giải thích rồi gật đầu không phải là biết sửa — chỗ đúng để
+        hỏi "sửa được ở câu khác chưa?" là ngay tại đây, lúc lỗi còn trong đầu.
+      */}
+      {submissionId ? <TransferCheck annotation={annotation} submissionId={submissionId} /> : null}
     </View>
   );
 }

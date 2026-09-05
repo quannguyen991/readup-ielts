@@ -4,6 +4,7 @@ import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-nativ
 import { Button, Icon, PaperCard } from '@/components/ui';
 import type { GeneratedQuestion } from '@/services/questions/types';
 import type { TranscriptSentence } from '@/services/youtube/transcript';
+import { observeSkill } from '@/store/useMasteryStore';
 import { color, paper } from '@/theme/tokens';
 
 /**
@@ -60,6 +61,8 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
   const [status, setStatus] = useState<Status>('loading');
   const [questions, setQuestions] = useState<GeneratedQuestion[]>([]);
   const [answers, setAnswers] = useState<Record<string, string>>({});
+  /** Đoạn người học cho là chứa đáp án — trục thứ hai của sổ bằng chứng. */
+  const [marks, setMarks] = useState<Record<string, number>>({});
   const [error, setError] = useState<string | null>(null);
 
   /**
@@ -138,6 +141,7 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
   const reload = () => {
     setStatus('loading');
     setAnswers({});
+    setMarks({});
     void load();
   };
 
@@ -207,7 +211,21 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
             question={q}
             order={i + 1}
             picked={answers[q.id] ?? null}
+            paragraphCount={paragraphs.length}
+            markedPart={marks[q.id] ?? null}
             onPick={(value) => setAnswers((prev) => (prev[q.id] ? prev : { ...prev, [q.id]: value }))}
+            onMark={(part) => {
+              if (marks[q.id] !== undefined) return;
+              setMarks((prev) => ({ ...prev, [q.id]: part }));
+              observeSkill({
+                skill: { domain: 'listening', key: q.type },
+                sourceId: `yt-${videoId}`,
+                answerCorrect: sameAnswer(answers[q.id] ?? null, q.correctAnswer),
+                pointer: { kind: 'transcript-line', index: part },
+                truth: { kind: 'transcript-line', index: q.evidenceParagraphIndex },
+                at: new Date().toISOString(),
+              });
+            }}
             onSeek={() => onSeek(startAt[q.evidenceParagraphIndex] ?? 0)}
           />
         ))}
@@ -286,16 +304,24 @@ function QuizItem({
   question,
   order,
   picked,
+  paragraphCount,
+  markedPart,
   onPick,
+  onMark,
   onSeek,
 }: {
   question: GeneratedQuestion;
   order: number;
   picked: string | null;
+  paragraphCount: number;
+  /** Đoạn người học đã chỉ, hoặc `null` nếu chưa chỉ. */
+  markedPart: number | null;
   onPick: (value: string) => void;
+  onMark: (part: number) => void;
   onSeek: () => void;
 }) {
   const answered = picked !== null;
+  const marked = markedPart !== null;
   const right = sameAnswer(picked, question.correctAnswer);
   const options = optionsFor(question);
 
@@ -354,7 +380,41 @@ function QuizItem({
       </View>
       )}
 
-      {answered ? (
+      {/*
+        Hỏi "nghe thấy ở đoạn nào" TRƯỚC khi hiện lời giải.
+
+        Đây là trục thứ hai của sổ bằng chứng ở mảng Nghe, đóng đúng vai trò mà
+        "khoanh đoạn chứa đáp án" đóng ở mảng Đọc. Trả lời đúng mà chỉ sai đoạn
+        nghĩa là bắt được từ khoá chứ chưa theo được mạch — hai chuyện khác nhau,
+        và không hỏi thì không tách ra được.
+
+        Hiện lời giải trước rồi mới hỏi thì câu hỏi thành vô nghĩa: đáp án đã nằm
+        trên màn hình.
+      */}
+      {answered && !marked ? (
+        <View className="mt-3 rounded-panel border border-paper-line bg-white p-3.5">
+          <Text className="font-strong text-label text-paper-ink">
+            Bạn nghe thấy đáp án ở đoạn nào?
+          </Text>
+          <Text className="mt-0.5 font-sans text-label text-paper-muted">
+            Chọn xong mới hiện lời giải. Chọn sai không bị trừ gì.
+          </Text>
+          <View className="mt-2.5 flex-row flex-wrap gap-1.5">
+            {Array.from({ length: paragraphCount }, (_, i) => (
+              <Pressable
+                key={i}
+                accessibilityRole="button"
+                onPress={() => onMark(i)}
+                className="rounded-pill border border-brand-soft bg-white px-3 py-1.5"
+              >
+                <Text className="font-semi text-label text-paper-body">Đoạn {i + 1}</Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+      ) : null}
+
+      {answered && marked ? (
         <View
           className="mt-3 rounded-panel border-l-4 p-3.5"
           style={{
@@ -377,6 +437,14 @@ function QuizItem({
           {question.explanation ? (
             <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
               {question.explanation}
+            </Text>
+          ) : null}
+
+          {markedPart !== null ? (
+            <Text className="mt-1.5 font-sans text-label text-paper-muted" style={{ lineHeight: 19 }}>
+              {markedPart === question.evidenceParagraphIndex
+                ? `Bạn chỉ đúng đoạn ${markedPart + 1} — chỗ thật sự chứa đáp án.`
+                : `Bạn chỉ đoạn ${markedPart + 1}, nhưng đáp án nằm ở đoạn ${question.evidenceParagraphIndex + 1}.`}
             </Text>
           ) : null}
 

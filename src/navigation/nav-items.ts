@@ -78,6 +78,7 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
       { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
+      { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
     ],
   },
   {
