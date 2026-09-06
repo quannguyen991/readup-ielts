@@ -38,9 +38,32 @@ import type { QuestionType } from '../src/types/database';
 
 /* ------------------------------------------------------------------ cấu hình */
 
-type Gate = { env: 'PRIMARY' | 'SECONDARY' | 'TERTIARY'; model: string; foldSystem: boolean };
+type EnvKey = 'PRIMARY' | 'SECONDARY' | 'TERTIARY';
+type Gate = { env: EnvKey; model: string; foldSystem: boolean };
 
-function gates(): Gate[] {
+/**
+ * Một cửa viết dạng `CỬA:tên-model`, ví dụ `SECONDARY:glm-5.2-fast-preview`.
+ *
+ * VÌ SAO PHẢI CHỈ ĐÍCH DANH MODEL, không lấy model mặc định của cửa. Mỗi proxy
+ * phục vụ hàng chục model của nhiều phòng lab khác nhau, và cái đáng đo là
+ * MODEL chứ không phải proxy. Lấy mặc định thì bảng xếp hạng chỉ có đúng một
+ * dòng cho mỗi cửa — mà so sánh giữa các model chính là phần nói được nhiều nhất.
+ */
+function parseGate(spec: string): Gate {
+  const [envRaw, ...rest] = spec.split(':');
+  const env = (envRaw ?? '').toUpperCase() as EnvKey;
+  const model = rest.join(':').trim();
+  if (!['PRIMARY', 'SECONDARY', 'TERTIARY'].includes(env) || !model) {
+    throw new Error(`Cửa không đọc được: "${spec}". Dạng đúng là CỬA:tên-model.`);
+  }
+  if (!process.env[`AI_${env}_BASE_URL`] || !process.env[`AI_${env}_API_KEY`]) {
+    throw new Error(`Cửa ${env} chưa có BASE_URL hoặc API_KEY trong .env.local.`);
+  }
+  return { env, model, foldSystem: process.env[`AI_${env}_FOLD_SYSTEM`] === 'true' };
+}
+
+/** Cửa mặc định khi không truyền `--models`: đúng những gì `.env.local` đã khai. */
+function defaultGates(): Gate[] {
   const out: Gate[] = [];
   for (const env of ['PRIMARY', 'SECONDARY', 'TERTIARY'] as const) {
     const base = process.env[`AI_${env}_BASE_URL`];
@@ -157,7 +180,8 @@ function sample(n: number): { id: string; title: string; body: string }[] {
 
 type Args = {
   passages: number;
-  judgeEnv: string;
+  judge: string;
+  models: string | null;
   out: string;
   report: boolean;
   perPassage: number;
@@ -170,7 +194,8 @@ function parseArgs(argv: string[]): Args {
   };
   return {
     passages: Number.parseInt(flag('passages', '40'), 10),
-    judgeEnv: flag('judge', 'TERTIARY').toUpperCase(),
+    judge: flag('judge', 'TERTIARY'),
+    models: flag('models', '') || null,
     out: flag('out', 'data/provenance/labels.jsonl'),
     report: argv.includes('--report'),
     perPassage: Number.parseInt(flag('count', '6'), 10),
@@ -231,11 +256,27 @@ async function main(): Promise<void> {
     return;
   }
 
-  const all = gates();
-  const judge = all.find((g) => g.env === args.judgeEnv);
-  if (!judge) throw new Error(`Không có cửa ${args.judgeEnv} để làm giám khảo.`);
-  const generators = all.filter((g) => g.env !== judge.env);
-  if (generators.length === 0) throw new Error('Không còn cửa nào để đo sau khi trừ giám khảo.');
+  const judge = args.judge.includes(':')
+    ? parseGate(args.judge)
+    : (defaultGates().find((g) => g.env === args.judge.toUpperCase()) ??
+      (() => {
+        throw new Error(`Không có cửa ${args.judge} để làm giám khảo.`);
+      })());
+
+  const generators = (
+    args.models
+      ? args.models.split(',').map((s) => parseGate(s.trim()))
+      : defaultGates().filter((g) => g.env !== judge.env)
+  ).filter((g) => g.model !== judge.model);
+
+  if (generators.length === 0) throw new Error('Không còn model nào để đo sau khi trừ giám khảo.');
+
+  /*
+    GIÁM KHẢO KHÔNG ĐƯỢC NẰM TRONG DANH SÁCH BỊ ĐO, và lọc ở đây chứ không tin
+    người gọi nhớ. Một model tự chấm đề của chính nó là một phép đo khác hẳn —
+    nó biết mình vừa viết gì — và trộn chung vào bảng xếp hạng thì dòng ấy không
+    so được với các dòng còn lại mà nhìn thì không thấy gì bất thường.
+  */
 
   const system = ieltsSystemPrompt();
   const passages = sample(args.passages);
