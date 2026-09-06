@@ -3,8 +3,28 @@ import { Text, View } from 'react-native';
 
 import { Screen } from '@/components/layout/Screen';
 import { Card } from '@/components/ui';
-import summary from '@/data/provenance-summary.json';
+import rawSummary from '@/data/provenance-summary.json';
+import type { Counts, ModelCounts } from '@/services/provenance/ledger';
 import { color, radius, spacing as space } from '@/theme/tokens';
+
+/**
+ * Kiểu khai TƯỜNG MINH, không suy từ chính tệp JSON.
+ *
+ * Suy từ tệp thì lúc kho nhãn rỗng, `byModel: []` cho ra `never[]` và mọi chỗ
+ * đọc `m.model` thành lỗi biên dịch — tức là trang chỉ dịch được khi đã có số
+ * liệu. Một trang có nhiệm vụ nói "chưa đủ dữ liệu" mà không dịch nổi lúc chưa
+ * có dữ liệu thì hỏng đúng vào lúc cần nó nhất.
+ */
+type Summary = {
+  measuredFrom: string | null;
+  measuredTo: string | null;
+  preregistration: { threshold: number; minSample: number; registeredIn: string };
+  verdict: { kind: string; text: string };
+  overall: Counts;
+  byModel: ModelCounts[];
+};
+
+const summary = rawSummary as unknown as Summary;
 
 /**
  * Đài quan sát: bao nhiêu phần trăm đề do AI sinh trả lời được mà không cần đọc bài.
@@ -20,7 +40,7 @@ import { color, radius, spacing as space } from '@/theme/tokens';
  * liệu đáng tin hơn một trang có số.
  */
 
-type ModelRow = (typeof summary.byModel)[number];
+type ModelRow = ModelCounts;
 
 const VERDICT_TONE: Record<string, { bg: string; fg: string; label: string }> = {
   'sample-too-small': { bg: color.warningSoft, fg: color.warning, label: 'NO CONCLUSION YET' },
@@ -136,16 +156,44 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>By model</Text>
+          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>
+            {byModel.length > 1 ? 'By model' : 'Model measured'}
+          </Text>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>
-            Worst first. The generation prompt already forbids this failure in six explicit rules —
-            so this measures how often each model does it anyway, after being told not to.
+            {byModel.length > 1
+              ? 'Worst first. The generation prompt already forbids this failure in six explicit rules — so this measures how often each model does it anyway, after being told not to.'
+              : 'The generation prompt already forbids this failure in six explicit rules — so this measures how often the model does it anyway, after being told not to.'}
           </Text>
           {byModel.length === 0 ? (
             <Text style={{ color: color.subtle, paddingVertical: space.sm }}>No runs recorded yet.</Text>
           ) : (
             byModel.map((m) => <Row key={m.model} model={m} />)
           )}
+
+          {/*
+            MỘT MODEL THÌ KHÔNG PHẢI BẢNG XẾP HẠNG, và phải nói ra.
+
+            Một bảng đúng một dòng dưới tiêu đề "By model" đọc ra như thể đã so
+            sánh xong và model này thắng — hoặc thua. Nó chưa so với gì cả. Dòng
+            dưới đây chỉ hiện khi thật sự chỉ có một model, nên nó tự biến mất
+            khi phép đo mở rộng.
+          */}
+          {byModel.length === 1 ? (
+            <Text
+              style={{
+                fontSize: 13,
+                color: color.warning,
+                marginTop: space.sm,
+                paddingTop: space.sm,
+                borderTopWidth: 1,
+                borderTopColor: color.border,
+                lineHeight: 19,
+              }}
+            >
+              ⚠ Only one generator has been measured, so this is not a comparison. The figure
+              describes this model on this corpus, and nothing about any other model.
+            </Text>
+          ) : null}
         </Card>
 
         <Card>

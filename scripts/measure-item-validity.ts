@@ -38,7 +38,7 @@ import type { QuestionType } from '../src/types/database';
 
 /* ------------------------------------------------------------------ cấu hình */
 
-type EnvKey = 'PRIMARY' | 'SECONDARY' | 'TERTIARY';
+type EnvKey = 'PRIMARY' | 'SECONDARY' | 'TERTIARY' | 'LOCAL';
 type Gate = { env: EnvKey; model: string; foldSystem: boolean };
 
 /**
@@ -53,7 +53,7 @@ function parseGate(spec: string): Gate {
   const [envRaw, ...rest] = spec.split(':');
   const env = (envRaw ?? '').toUpperCase() as EnvKey;
   const model = rest.join(':').trim();
-  if (!['PRIMARY', 'SECONDARY', 'TERTIARY'].includes(env) || !model) {
+  if (!['PRIMARY', 'SECONDARY', 'TERTIARY', 'LOCAL'].includes(env) || !model) {
     throw new Error(`Cửa không đọc được: "${spec}". Dạng đúng là CỬA:tên-model.`);
   }
   if (!process.env[`AI_${env}_BASE_URL`] || !process.env[`AI_${env}_API_KEY`]) {
