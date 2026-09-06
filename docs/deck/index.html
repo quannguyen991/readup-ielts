@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReadUp — AI for SDGs 2026</title>
+<style>
+/*
+  DECK IN RA PDF BẰNG CHROME.
+
+  Hai chế độ trong một tệp: trên màn hình là bộ slide bấm mũi tên; khi in thì
+  mọi slide hiện hết, mỗi slide một trang ngang. Không dùng thư viện biểu đồ —
+  số liệu ở đây là mấy hàng, vẽ tay bằng div thì gọn hơn và lúc in không phụ
+  thuộc vào việc CDN có sống hay không.
+
+  Không đặt chiều cao slide bằng mm: dùng aspect-ratio, đúng bài học đã ghi lại
+  từ lần in trước.
+*/
+:root{
+  --ink:#0F172A; --body:#334155; --muted:#64748B; --subtle:#94A3B8;
+  --line:#E9EDF5; --bg:#FFFFFF; --alt:#F7F8FC;
+  --blue:#2563EB; --purple:#7C3AED; --green:#16A34A; --red:#F04438; --amber:#F59E0B;
+  --sans:"Segoe UI","Helvetica Neue",Arial,sans-serif;
+  --mono:"Cascadia Mono",Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#334155;font-family:var(--sans);color:var(--ink)}
+
+.slide{
+  position:relative;width:100%;aspect-ratio:16/9;background:var(--bg);
+  padding:64px 76px;display:none;flex-direction:column;overflow:hidden;
+}
+.slide.active{display:flex}
+@media(min-width:900px){ .deck{max-width:1120px;margin:0 auto} }
+
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--purple)}
+h1{font-size:54px;line-height:1.06;font-weight:800;letter-spacing:-1.2px}
+h2{font-size:38px;line-height:1.12;font-weight:800;letter-spacing:-.6px;margin-bottom:20px}
+h3{font-size:19px;font-weight:800;margin-bottom:6px}
+p{font-size:19px;line-height:1.55;color:var(--body)}
+p.lead{font-size:23px;line-height:1.5}
+.small{font-size:15px;color:var(--muted);line-height:1.5}
+.tiny{font-size:12.5px;color:var(--subtle)}
+b.hi{color:var(--ink)}
+em{font-style:italic;color:var(--ink)}
+.grad{background:linear-gradient(100deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+.spacer{flex:1}
+.foot{display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid var(--line);padding-top:12px;margin-top:auto}
+
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--bg)}
+.card.alt{background:var(--alt)}
+.stat{font-size:46px;font-weight:800;letter-spacing:-1px;line-height:1}
+.stat.small{font-size:32px}
+.statlabel{font-size:13px;color:var(--muted);margin-top:4px}
+
+.pill{display:inline-block;padding:5px 13px;border-radius:999px;font-size:13px;font-weight:800;letter-spacing:.4px}
+.pill.warn{background:#FEF4E6;color:#B4690E}
+.pill.bad{background:#FEECEB;color:var(--red)}
+.pill.ok{background:#E8F8EE;color:var(--green)}
+
+.term{background:#0F172A;color:#E2E8F0;border-radius:14px;padding:20px 22px;
+  font-family:var(--mono);font-size:14px;line-height:1.75;white-space:pre-wrap}
+.term .g{color:#4ADE80}.term .r{color:#FCA5A5}.term .y{color:#FCD34D}.term .d{color:#94A3B8}
+
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+.node{border:1.5px solid var(--line);border-radius:12px;padding:11px 15px;font-size:14.5px;font-weight:700;background:var(--bg)}
+.node.on{border-color:var(--purple);background:#F5F1FE;color:var(--purple)}
+.arrow{color:var(--subtle);font-size:17px}
+
+.bars{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.bar{display:flex;align-items:center;gap:14px}
+.bar .name{width:210px;font-size:15px;font-weight:700;text-align:right;color:var(--body)}
+.bar .track{flex:1;height:26px;background:var(--alt);border-radius:7px;overflow:hidden}
+.bar .fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--purple));border-radius:7px}
+.bar .val{width:110px;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+
+ul.ticks{list-style:none;display:flex;flex-direction:column;gap:13px;margin-top:6px}
+ul.ticks li{display:flex;gap:12px;font-size:17.5px;line-height:1.45;color:var(--body)}
+ul.ticks li b{color:var(--ink)}
+.mk{font-weight:800;flex:none;width:18px}
+.mk.no{color:var(--red)}.mk.yes{color:var(--green)}.mk.warn{color:var(--amber)}
+
+.nav{position:fixed;bottom:18px;right:18px;display:flex;gap:8px;z-index:9}
+.nav button{border:none;background:#0F172A;color:#fff;border-radius:9px;
+  padding:9px 15px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans)}
+.count{position:fixed;bottom:24px;left:22px;color:#CBD5E1;font-size:13px;z-index:9}
+
+@media print{
+  @page{size:297mm 167mm;margin:0}
+  body{background:#fff}
+  .deck{max-width:none;margin:0}
+  .slide{display:flex!important;page-break-after:always;break-after:page;
+         width:297mm;height:167mm;aspect-ratio:auto;padding:15mm 17mm}
+  .slide:last-child{page-break-after:auto}
+  .nav,.count{display:none!important}
+  h1{font-size:40px}h2{font-size:29px}p{font-size:15px}p.lead{font-size:17px}
+  .stat{font-size:34px}.term{font-size:11px}.bar .name{width:170px;font-size:12.5px}
+  ul.ticks li{font-size:14px}.small{font-size:12px}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- 1 ─────────────────────────────────────────────────────── -->
+<section class="slide active">
+  <div class="eyebrow">UNU Macau · AI for SDGs 2026 · Track: AI for Education</div>
+  <div class="spacer"></div>
+  <h1>Nobody checks whether<br>AI-written exam questions<br><span class="grad">actually test anything.</span></h1>
+  <p class="lead" style="margin-top:26px;max-width:820px">
+    We built the check, ran it across four models from three labs, and published what it found —
+    including the parts it could not check.
+  </p>
+  <div class="spacer"></div>
+  <div class="foot">
+    <p class="small"><b class="hi">ReadUp</b> — English exam preparation, built in Vietnam</p>
+    <p class="tiny">readup-ielts.vercel.app</p>
+  </div>
+</section>
+
+<!-- 2 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The problem</div>
+  <h2 style="margin-top:14px">A question you can answer without<br>reading the passage does not measure reading.</h2>
+  <div class="cols" style="margin-top:6px">
+    <div>
+      <p>It measures background knowledge, or the shape of four options.</p>
+      <p style="margin-top:16px">Learners drilled on such questions learn to <em>guess</em> — and their
+      measured progress is partly fictional.</p>
+    </div>
+    <div class="card alt">
+      <h3>No formal rule catches it</h3>
+      <p class="small" style="margin-top:10px;font-family:var(--mono);font-size:14px;color:var(--ink)">
+        "According to the passage,<br>is water wet?"</p>
+      <p class="small" style="margin-top:12px">
+        Correctly formatted. Quotes the source verbatim. Four well-formed options.
+        <b class="hi">And useless.</b>
+      </p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Every AI tutor now generates items this way. None ship the item's provenance.</p><p class="tiny">2 / 14</p></div>
+</section>
+
+<!-- 3 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The check</div>
+  <h2 style="margin-top:14px">Make a second model try to answer it<br>with the passage taken away.</h2>
+  <div class="flow" style="margin-top:12px">
+    <div class="node">Model A writes an item</div><span class="arrow">→</span>
+    <div class="node">7 structural rules</div><span class="arrow">→</span>
+    <div class="node on">Model B answers it blind</div><span class="arrow">→</span>
+    <div class="node">serve, or discard</div>
+  </div>
+  <p style="margin-top:22px;max-width:900px">
+    If Model B gets it right <em>and</em> reports the answer was determinable, the item is not
+    testing reading. It is discarded, and the reason is fed back so the next draft does not fail
+    the same way.
+  </p>
+  <div class="card alt" style="margin-top:20px">
+    <p class="small"><b class="hi">Model B is never asked whether the question is good.</b>
+    That would be another unverifiable judgement. It is given the one task that can be checked —
+    <em>answer it</em> — and a rule engine with tests draws the conclusion.</p>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">AI is the engine and the subject. Remove it and there is nothing left to audit.</p><p class="tiny">3 / 14</p></div>
+</section>
+
+<!-- 4 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">Why the question is sharper than it looks</div>
+  <h2 style="margin-top:14px">The prompt already forbids this.<br>We measure what happens anyway.</h2>
+  <div class="cols" style="margin-top:4px">
+    <div class="card">
+      <h3>Rules 8–13, already in the generation prompt</h3>
+      <p class="small" style="margin-top:12px">No copying sentences from the passage.<br>
+      No building FALSE by inserting "not".<br>
+      No distractors that give themselves away.<br>
+      No answers that always sit in paragraph one.</p>
+    </div>
+    <div>
+      <p class="lead">So this is not <em>"does AI get this wrong"</em>.</p>
+      <p class="lead" style="margin-top:14px">It is <b class="hi">how often it still does after being
+      told, explicitly, not to.</b></p>
+      <p class="small" style="margin-top:18px">A high rate after a prohibition says something a high
+      rate with no instruction does not.</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Instruction-following is not a safety guarantee. That is the finding's real shape.</p><p class="tiny">4 / 14</p></div>
+</section>
+
+<!-- 5 ── FINDING (numbers filled from the measurement) ────── -->
+<section class="slide">
+  <div class="eyebrow">The measurement</div>
+  <h2 style="margin-top:14px">Four models, three labs,<br>one fixed blind judge.</h2>
+  <div class="bars" id="bars">
+    <!-- Số liệu điền từ src/data/provenance-summary.json. Không gõ tay. -->
+  </div>
+  <p class="small" style="margin-top:20px" id="finding-note"></p>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Live and self-updating at <b class="hi">/observatory</b></p><p class="tiny">5 / 14</p></div>
+</section>
+
+<!-- 6 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">Discipline</div>
+  <h2 style="margin-top:14px">The threshold was committed to git<br>before the measurement first ran.</h2>
+  <div class="cols" style="margin-top:6px">
+    <div>
+      <p><b class="hi">8%</b> — below it, the pre-written conclusion is that the gate catches less
+      than it costs and is not worth running at scale.</p>
+      <p style="margin-top:16px"><b class="hi">200 blind runs minimum</b> — below it the function
+      refuses to conclude anything at all.</p>
+      <p class="small" style="margin-top:18px">Three conclusions written out in full, one per
+      outcome. Choosing between them is arithmetic, not judgement.</p>
+    </div>
+    <div class="card alt">
+      <p class="small" style="font-family:var(--mono);font-size:13.5px;color:var(--ink)">
+src/services/provenance/ledger.ts
+
+export const FALSIFICATION_THRESHOLD = 0.08;
+export const MIN_SAMPLE = 200;</p>
+      <p class="small" style="margin-top:14px">It lives in <b class="hi">code</b>, not in a document
+      that can be edited at any time. Git history is the evidence for the order.</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">A disappointing result cannot be reinterpreted after it is seen.</p><p class="tiny">6 / 14</p></div>
+</section>
+
+<!-- 7 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">From one check to a chain</div>
+  <h2 style="margin-top:14px">Every link signed. No link asks you to trust us.</h2>
+  <div class="flow" style="margin-top:16px">
+    <div class="node">model writes item</div><span class="arrow">→</span>
+    <div class="node on">signed provenance label</div><span class="arrow">→</span>
+    <div class="node">learner answers</div><span class="arrow">→</span>
+    <div class="node on">signed credential</div><span class="arrow">→</span>
+    <div class="node">anyone verifies</div>
+  </div>
+  <div class="cols3" style="margin-top:26px">
+    <div class="card"><h3>Provenance label</h3><p class="small" style="margin-top:8px">
+      Which model, which version, which gates ran, how many drafts were discarded and why.</p></div>
+    <div class="card"><h3>Credential</h3><p class="small" style="margin-top:8px">
+      W3C VC signed with <span style="font-family:var(--mono)">did:key</span>. Key never leaves the
+      device. No blockchain, no server, no network.</p></div>
+    <div class="card"><h3>Verifier</h3><p class="small" style="margin-top:8px">
+      Imports nothing from the app, calls nothing. Reads a file, does arithmetic on a signature.</p></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">103 automated tests cover this chain alone.</p><p class="tiny">7 / 14</p></div>
+</section>
+
+<!-- 8 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The field that matters most</div>
+  <h2 style="margin-top:14px"><span class="grad">not-run</span> is never merged into <span class="grad">passed</span>.</h2>
+  <p style="margin-top:6px;max-width:900px">
+    When a provider call fails, the item is still served — blocking a learner because our own gate
+    broke punishes the wrong person. But the label records that <b class="hi">nothing was checked</b>.
+  </p>
+  <div class="card alt" style="margin-top:22px">
+    <p class="lead">Lying about having checked turns the whole receipt into decoration.
+    A test fails if the two states are ever merged.</p>
+  </div>
+  <p class="small" style="margin-top:22px">
+    We found this the hard way: a type bug in our own reader silently marked <b class="hi">18% of
+    items</b> "not checked" when the judge had in fact answered. The honest-by-default design meant
+    the error understated our own result rather than inflating it — and made it visible.
+  </p>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Published counts always separate <em>rejected</em> from <em>could not be checked</em>.</p><p class="tiny">8 / 14</p></div>
+</section>
+
+<!-- 9 ─────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The verifier</div>
+  <h2 style="margin-top:14px">It prints what it cannot establish.<br>No flag turns those lines off.</h2>
+  <div class="term" style="margin-top:8px"><span class="g">✓</span> signature valid          did:key:z6MkvrEz7KFP9QeRhm8xvaqrFdk7Wc9…
+<span class="g">✓</span> 4 skills recorded, 2 confirmed by transfer to a different source
+
+<span class="d">This does NOT establish:</span>
+  <span class="y">⚠</span> that the holder did not cheat while answering
+  <span class="y">⚠</span> that any institution recognises this — it is self-issued
+  <span class="y">⚠</span> that the cited item labels exist, until the corpus is published</div>
+  <p class="small" style="margin-top:18px">
+    That output came from a credential <b class="hi">issued in the browser</b> and verified by a
+    standalone script — two separate runtimes, one chain. A receipt made only of ticks reads as a
+    certificate, which is the misunderstanding this exists to prevent.
+  </p>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Tamper with one field and the signature fails, loudly.</p><p class="tiny">9 / 14</p></div>
+</section>
+
+<!-- 10 ────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The human anchor</div>
+  <h2 style="margin-top:14px">Without people, this is a machine<br>adjudicating a machine.</h2>
+  <div class="cols" style="margin-top:4px">
+    <div>
+      <p>Three to eight learners answer ~100 of the same items with the passages withheld — asked
+      the same two questions the model was asked: <em>what is your answer</em>, and
+      <em>were you sure or guessing</em>.</p>
+      <p class="small" style="margin-top:16px">The worksheet mixes half the items the model rejected
+      with half it passed. Random sampling would measure the false-alarm rate and barely measure the
+      miss rate — and misses are worse, because a miss sends a useless item straight to a learner.</p>
+    </div>
+    <div class="card alt">
+      <h3>Why eight people is the right number</h3>
+      <p class="small" style="margin-top:10px">Eight cannot support a learning-outcomes study. We
+      <b class="hi">cut</b> the study of that shape rather than run an underpowered one.</p>
+      <p class="small" style="margin-top:12px">Eight comfortably supports an <b class="hi">agreement
+      rate</b> — which is exactly the claim that needs anchoring.</p>
+      <p class="small" style="margin-top:12px">The agreement figure will be published even if it is
+      poor.</p>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Protocol includes the sentences the facilitator must not say.</p><p class="tiny">10 / 14</p></div>
+</section>
+
+<!-- 11 ────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">What we will not claim</div>
+  <h2 style="margin-top:14px">The limits, before you ask for them.</h2>
+  <ul class="ticks" style="margin-top:10px">
+    <li><span class="mk no">✗</span><span><b>Not "proven to improve learning."</b> There is no efficacy data from a real cohort. TRL 6, not 7.</span></li>
+    <li><span class="mk no">✗</span><span><b>Not "a recognised credential."</b> It is self-issued. Portable and independently checkable — never "recognised".</span></li>
+    <li><span class="mk no">✗</span><span><b>Not "the gate runs on every question."</b> Today it runs in the measurement harness and on transfer probes. Moving it onto every served item is next.</span></li>
+    <li><span class="mk warn">⚠</span><span><b>"Answerable blind" is a lower bound on leakage</b>, not a verdict on pedagogical worth. Real exams contain such items too.</span></li>
+    <li><span class="mk warn">⚠</span><span><b>The judge is itself a model</b>, and the corpus is Wikipedia, Gutenberg and PLOS — not real exam passages.</span></li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">A project whose thesis is honest measurement cannot be selective about its own.</p><p class="tiny">11 / 14</p></div>
+</section>
+
+<!-- 12 ────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The product underneath</div>
+  <h2 style="margin-top:14px">Deployed, not a prototype.</h2>
+  <div class="cols3" style="margin-top:10px">
+    <div class="card"><div class="stat">1,408</div><div class="statlabel">reading passages</div></div>
+    <div class="card"><div class="stat">2,472</div><div class="statlabel">SAT Maths items — answers computed in code, never generated</div></div>
+    <div class="card"><div class="stat">1,556</div><div class="statlabel">automated tests passing</div></div>
+  </div>
+  <div class="cols3" style="margin-top:18px">
+    <div class="card alt"><div class="stat small">3</div><div class="statlabel">independent model providers with automatic failover</div></div>
+    <div class="card alt"><div class="stat small">web · iOS · Android</div><div class="statlabel">one Expo codebase</div></div>
+    <div class="card alt"><div class="stat small">free tier</div><div class="statlabel">an entire SAT Algebra track, no account required</div></div>
+  </div>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">Built by a secondary-school student in Vietnam, for learners priced out of tutoring.</p><p class="tiny">12 / 14</p></div>
+</section>
+
+<!-- 13 ────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">Sustainable Development Goals</div>
+  <h2 style="margin-top:14px">Where this actually lands.</h2>
+  <ul class="ticks" style="margin-top:10px">
+    <li><span class="mk yes">4</span><span><b>Quality education.</b> Learners stop being drilled on items that do not test what they claim to — and the rate of such items becomes a published number.</span></li>
+    <li><span class="mk yes">10</span><span><b>Reduced inequalities.</b> <span style="font-family:var(--mono)">did:key</span> needs no ledger, no server and no connectivity, so a learner with none of those still <em>owns</em> a checkable record of their ability.</span></li>
+    <li><span class="mk yes">9</span><span><b>Industry &amp; infrastructure.</b> The gate, the label format and the verifier are documented and reusable — any vendor can run this against their own pipeline.</span></li>
+    <li><span class="mk yes">16</span><span><b>Institutions.</b> A claim about a person is auditable <em>by that person</em>, without trusting whoever made it.</span></li>
+  </ul>
+  <div class="spacer"></div>
+  <div class="foot"><p class="small">The reusable part is the method, not the product.</p><p class="tiny">13 / 14</p></div>
+</section>
+
+<!-- 14 ────────────────────────────────────────────────────── -->
+<section class="slide">
+  <div class="eyebrow">The ask</div>
+  <div class="spacer"></div>
+  <h1 style="font-size:44px">We are looking for an exam board<br>or a university willing to run<br><span class="grad">the same check on real exam items.</span></h1>
+  <p class="lead" style="margin-top:26px;max-width:840px">
+    Our corpus is public-domain text. The interesting question is what this measures on items that
+    people are actually graded on — and that needs a partner who holds them.
+  </p>
+  <div class="spacer"></div>
+  <div class="foot">
+    <p class="small"><b class="hi">ReadUp</b> · readup-ielts.vercel.app/observatory</p>
+    <p class="tiny">14 / 14</p>
+  </div>
+</section>
+
+</div>
+
+<div class="count"><span id="cur">1</span> / <span id="tot">14</span> &nbsp;·&nbsp; ← → to move &nbsp;·&nbsp; Ctrl+P for PDF</div>
+<div class="nav"><button onclick="go(-1)">←</button><button onclick="go(1)">→</button></div>
+
+<script>
+/* Số liệu slide 5 nạp từ tệp tóm tắt, KHÔNG gõ tay vào HTML: gõ tay là mở đường
+   cho deck và trang web nói hai con số khác nhau. Không đọc được thì nói thẳng
+   là chưa có, chứ không để trống cho người xem tự đoán. */
+fetch('../../src/data/provenance-summary.json')
+  .then((r) => r.json())
+  .then((s) => {
+    const bars = document.getElementById('bars');
+    const note = document.getElementById('finding-note');
+    const rows = (s.byModel || []).filter((m) => m.blindRejectionRate !== null);
+    if (!rows.length) {
+      bars.innerHTML = '<p class="lead">Measurement in progress — no figure is claimed yet.</p>';
+      note.textContent = 'The pre-registered function refuses to conclude below 200 blind runs, and so does this slide.';
+      return;
+    }
+    const max = Math.max(...rows.map((m) => m.blindRejectionRate));
+    bars.innerHTML = rows.map((m) => {
+      const pct = (m.blindRejectionRate * 100).toFixed(1);
+      const w = max > 0 ? (m.blindRejectionRate / max) * 100 : 0;
+      return '<div class="bar"><div class="name">' + m.model + '</div>' +
+        '<div class="track"><div class="fill" style="width:' + w + '%"></div></div>' +
+        '<div class="val">' + pct + '%  <span class="tiny">' + m.blindRejections + '/' + m.blindRuns + '</span></div></div>';
+    }).join('');
+    const o = s.overall;
+    const overall = o.blindRejectionRate === null ? '—' : (o.blindRejectionRate * 100).toFixed(1) + '%';
+    note.innerHTML = '<b class="hi">' + overall + ' of ' + o.blindRuns +
+      ' blind runs were answerable without the passage.</b> ' + o.blindNotRun +
+      ' further runs could not be checked and are counted separately, outside the fraction. ' +
+      'Judge: claude-haiku-4.5, fixed across all generators. Measured ' +
+      (s.measuredFrom || '').slice(0, 10) + '.';
+  })
+  .catch(() => {
+    document.getElementById('bars').innerHTML =
+      '<p class="lead">Measurement data not loaded — open this deck over http, not file://.</p>';
+  });
+
+const slides = [...document.querySelectorAll('.slide')];
+let i = 0;
+document.getElementById('tot').textContent = slides.length;
+function show(n) {
+  i = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((s, k) => s.classList.toggle('active', k === i));
+  document.getElementById('cur').textContent = i + 1;
+}
+function go(d) { show(i + d); }
+addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft') go(-1);
+});
+show(0);
+</script>
+</body>
+</html>
