@@ -1,6 +1,7 @@
 import { getArticleById, getArticleWithBody, isReadable } from '@/data/articles';
 import { AiError } from '@/services/ai/errors';
 import { generateQuestionsWithClaude } from '@/services/ai/questions';
+import { blueprintFor, type PassageBlueprint } from '@/services/questions/blueprint';
 import { questionCacheKey, readSharedQuestionSet, writeSharedQuestionSet } from '@/services/questions/cache';
 import type { QuestionType } from '@/types/database';
 
@@ -84,6 +85,28 @@ export async function POST(request: Request): Promise<Response> {
       );
     }
 
+    /*
+      BẢN THIẾT KẾ SUY RA TỪ KHỔ PASSAGE, KHÔNG DO CLIENT GỬI XUỐNG.
+
+      Khổ bài đã nói vị trí của nó trong đề: p1 là passage 1, p3 là passage 3.
+      Để client gửi xuống thì hai người mở cùng một bài có thể nhận hai cấu trúc
+      khác nhau, mà cache lại khoá chung — người sau sẽ nhận đề của người trước.
+
+      Chỉ áp cho IELTS. Đề SAT có cấu trúc riêng hẳn, và ép nó vào khuôn ba
+      passage của IELTS là dựng sai kỳ thi.
+
+      Bộ lọc "Loại câu hỏi" THẮNG bản thiết kế: người đã tự chọn dạng là người
+      đang luyện đúng dạng ấy, không phải người đang thi thử.
+      Cũng vậy với `focusType` và `count` do người gọi chỉ định.
+    */
+    const blueprint: PassageBlueprint | undefined =
+      article.exam === 'ielts' &&
+      !body.focusType &&
+      !body.count &&
+      !(Array.isArray(body.types) && body.types.length > 0)
+        ? blueprintFor(positionOf(article.passageTier), article.id)
+        : undefined;
+
     const requestedTypes = questionCacheKey({ types: body.types, focusType: body.focusType });
 
     const cached = await readSharedQuestionSet(article.id, requestedTypes);
@@ -104,6 +127,7 @@ export async function POST(request: Request): Promise<Response> {
         // Bộ lọc "Loại câu hỏi" ở màn Luyện tập gửi xuống đây. Đây là ĐẶT HÀNG
         // chứ không phải lọc: đề chưa tồn tại lúc chọn, nó sinh ra theo đơn.
         ...(Array.isArray(body.types) && body.types.length > 0 ? { types: body.types } : {}),
+        ...(blueprint ? { blueprint } : {}),
       },
     );
 
@@ -170,4 +194,17 @@ function readInlinePassage(
 
   if (paragraphs.length === 0) return null;
   return { title: (raw.title ?? '').trim() || 'Văn bản gửi kèm', paragraphs };
+}
+
+/**
+ * Khổ passage nói vị trí của bài trong đề.
+ *
+ * `short_academic` là bài ngắn ngoài khuôn ba passage; xếp nó vào vị trí 1 vì
+ * bố cục passage 1 nhẹ nhất và hợp với bài ngắn nhất. Xếp vào vị trí 3 sẽ đòi
+ * một bài 200 từ gánh năm câu trắc nghiệm suy luận.
+ */
+function positionOf(tier: string | null | undefined): 1 | 2 | 3 {
+  if (tier === 'p3') return 3;
+  if (tier === 'p2') return 2;
+  return 1;
 }

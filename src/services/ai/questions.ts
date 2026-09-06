@@ -1,5 +1,6 @@
 
 import { AiError } from './errors';
+import { BLOCK_RUBRIC, totalOf, type PassageBlueprint } from '@/services/questions/blueprint';
 import { chatWithFallback } from './fallback';
 import type { GeneratedQuestion, QuestionSet } from '@/services/questions/types';
 import type { ExamKind, QuestionType } from '@/types/database';
@@ -132,6 +133,14 @@ export type GenerateOptions = {
   types?: QuestionType[];
   /** Sinh riêng cho một dạng câu đang yếu (nút "Luyện dạng yếu nhất"). */
   focusType?: QuestionType;
+  /**
+   * Bản thiết kế đề: mấy khối, mỗi khối dạng gì và mấy câu.
+   *
+   * Khi có nó thì nó THẮNG cả `count` lẫn `types` — vì nó nói cả hai thứ ấy, và
+   * nói chặt hơn: không chỉ "dùng những dạng này" mà "dạng này đúng bấy nhiêu
+   * câu, đứng liền một khối".
+   */
+  blueprint?: PassageBlueprint;
 };
 
 export async function generateQuestionsWithClaude(
@@ -149,7 +158,8 @@ export async function generateQuestionsWithClaude(
   // Đoạn SAT chỉ 25–150 từ thì không gánh nổi 12 câu; đề thật cho mỗi đoạn
   // ngắn đúng một câu.
   const defaultCount = exam === 'sat' ? Math.min(8, Math.max(3, article.paragraphs.length * 2)) : 12;
-  const { count = defaultCount, focusType } = options;
+  const { focusType } = options;
+  const count = options.blueprint ? totalOf(options.blueprint) : (options.count ?? defaultCount);
 
   if (article.paragraphs.length === 0) {
     throw new AiError('invalid_request', 'Bài này không có toàn văn nên không sinh đề được.');
@@ -171,8 +181,18 @@ export async function generateQuestionsWithClaude(
     không phải tổng các lô. Đổi lại, các lô không nhìn thấy nhau nên có thể ra
     câu trùng ý — khử trùng ở bước gộp bên dưới.
   */
-  const wanted = focusType ? [focusType] : pickTypes(options.types, exam);
-  const batches = planBatches(count, wanted);
+  /*
+    CÓ BẢN THIẾT KẾ THÌ MỖI KHỐI LÀ MỘT LÔ, KHÔNG CHIA VÒNG NỮA.
+
+    `planBatches` chia dạng theo vòng để không lô nào bỏ sót dạng khó — đúng khi
+    chưa có cấu trúc đề. Nhưng khi đã có bản thiết kế thì cấu trúc là thứ phải
+    giữ, và cách duy nhất giữ được là mỗi lô xin ĐÚNG một dạng với ĐÚNG số câu
+    của khối ấy. `Promise.allSettled` giữ nguyên thứ tự, nên câu về cũng đã xếp
+    sẵn theo khối.
+  */
+  const batches = options.blueprint
+    ? options.blueprint.blocks.map((b) => ({ count: b.count, types: [b.type] }))
+    : planBatches(count, focusType ? [focusType] : pickTypes(options.types, exam));
 
   const settled = await Promise.allSettled(
     batches.map((batch) =>
@@ -349,6 +369,16 @@ function buildUserPrompt(
       ? `Cả ${batch.count} câu đều thuộc dạng ${list}.`
       : `Chia ${batch.count} câu cho các dạng sau, mỗi dạng ít nhất một câu: ${list}. Không dùng dạng nào ngoài danh sách này.`;
 
+  /*
+    Lô một dạng thì gửi kèm LỜI DẪN THẬT của dạng đó.
+
+    Lời dẫn không phải chữ trang trí: nó nói rõ luật chơi của khối, và luật ấy
+    ràng buộc chính nội dung câu hỏi. "Choose ONE WORD ONLY from the passage"
+    buộc đáp án phải là một từ có thật trong bài; bỏ câu đó đi thì model rất hay
+    sinh đáp án hai ba từ hoặc từ nó tự nghĩ ra.
+  */
+  const rubric = batch.types.length === 1 ? BLOCK_RUBRIC[batch.types[0] as QuestionType] : '';
+
   return [
     `Tiêu đề bài: ${article.title}`,
     `Trình độ bài (CEFR): ${article.cefrLevel ?? 'không rõ'}`,
@@ -357,6 +387,7 @@ function buildUserPrompt(
     passage,
     '',
     `Yêu cầu: tạo đúng ${batch.count} câu hỏi. ${instruction}`,
+    ...(rubric ? ['', 'Khối này mang đúng lời dẫn sau, và câu hỏi phải tuân thủ nó:', rubric] : []),
   ].join('\n');
 }
 

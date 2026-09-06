@@ -104,11 +104,18 @@ export default function MockTestsScreen() {
 }
 
 /** Ghép 3 passage tăng dần độ khó, đổi bộ mỗi lần bấm "Đổi bộ đề". */
-/** Số đề dựng sẵn. Hai mươi đề là đủ luyện vài tháng mà không gặp lại bài cũ. */
-export const MOCK_TEST_COUNT = 20;
+/**
+ * Số đề dựng sẵn.
+ *
+ * Nâng từ 20 lên 50 (07/09/2026). Kho có 567 bài IELTS đọc được, mà mỗi đề chỉ
+ * tiêu 3 bài và không đề nào dùng lại bài của đề khác — 20 đề mới dùng hết 60
+ * bài, tức là 90% kho nằm không. Người luyện đều mỗi tuần một đề thì 20 đề hết
+ * trong năm tháng.
+ */
+export const MOCK_TEST_COUNT = 50;
 
 /**
- * Dựng 20 đề, mỗi đề 3 passage theo đúng cấu trúc IELTS Reading.
+ * Dựng 50 đề, mỗi đề 3 passage theo đúng cấu trúc IELTS Reading.
  *
  * BA ĐIỀU KHÁC BẢN TRƯỚC (bản trước chỉ dựng 3 đề):
  *
@@ -117,7 +124,7 @@ export const MOCK_TEST_COUNT = 20;
  *    khó có ít bài — người thi thử lần hai gặp lại đúng passage vừa đọc.
  * 2. RÚT KHÔNG HOÀN LẠI: mỗi passage dùng đúng một lần trong cả bộ 20 đề.
  * 3. THIẾU BÀI THÌ HẠ CẤP CÓ TRẬT TỰ, không bỏ đề. Kho C2 ít hơn C1 nhiều, nên
- *    nếu đòi đủ ba mức mới dựng đề thì số đề dựng được sẽ ít hơn hẳn 20. Khi hết
+ *    nếu đòi đủ ba mức mới dựng đề thì số đề dựng được sẽ ít hơn hẳn con số trên. Khi hết
  *    bài ở một mức, lấy bài khó nhất còn lại — vẫn giữ được thứ tự dễ → khó
  *    trong một đề, vốn là điều quan trọng nhất của cấu trúc đề thật.
  */
