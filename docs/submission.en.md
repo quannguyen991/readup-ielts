@@ -151,8 +151,9 @@ Deployed and publicly reachable, not a prototype.
 | SAT Verbal | 384 questions, 16 skill units |
 | Writing prompts | 60, with per-criterion AI grading and inline error annotation |
 | Vocabulary | 50 topics, 2,500 words with FSRS scheduling |
-| Listening | 220 curated videos |
-| Automated tests | 1,300+ passing, of which 103 cover the chain described here |
+| Listening — audio | 251 public-domain pieces shipped **with their transcripts** (202,904 words), nothing to prepare |
+| Listening — video | 220 curated videos at native speed; transcript pasted once per video |
+| Automated tests | 1,556 passing, of which 103 cover the chain described here |
 | Model providers | 3 independent, different labs, automatic failover |
 
 Runs on web, iOS and Android from one Expo codebase.
@@ -200,6 +201,17 @@ validation.
 - **The blind judge is itself a model.** Anchored against people; the agreement rate
   will be published even if it is poor.
 - **The passage corpus is Wikipedia, Gutenberg and PLOS** — not real exam passages.
+- **The listening audio is read slowly on purpose.** VOA Learning English is written for
+  learners and read below natural speed, so it trains comprehension but not the pace of
+  real speech. The video library covers that, and it costs the learner one paste per
+  video: YouTube now requires a parameter signed by its own player, so neither a server
+  nor a browser can fetch captions (measured 5 Sept 2026 on both routes). We chose to
+  change source rather than work around a platform's stated boundary — which is also why
+  the audio library exists at all.
+- **Audio evidence timestamps are estimated**, not published. VOA gives the full text but
+  no per-sentence timing, so clicking a piece of evidence seeks to within a few seconds
+  rather than exactly. That is good enough to re-hear a passage and not good enough for
+  sentence dictation, so dictation is not offered on audio.
 - **The gate does not yet stand on the main generation route.** It runs in the measurement
   harness and on transfer probes. Moving it onto every served item is the next step, and
   the label format already carries the `not-run` state needed to be honest about the gap.

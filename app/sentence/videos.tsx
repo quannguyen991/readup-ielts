@@ -10,6 +10,7 @@ import {
   VIDEO_TOPICS,
   filterVideos,
   formatDuration,
+  getLibraryVideo,
   thumbnailUrl,
   videoLibraryStats,
   type LibraryVideo,
@@ -71,20 +72,30 @@ export default function VideoLibraryScreen() {
           </Text>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
-              {prepared.slice(0, 8).map((p) => (
-                <VideoCard
-                  key={p.videoId}
-                  video={{
-                    id: p.videoId,
-                    title: `Video ${p.videoId}`,
-                    channel: 'Đã chuẩn bị',
-                    level: '',
-                    topic: '',
-                    durationSeconds: null,
-                  }}
-                  progress={`${p.doneCount}/${p.sentences.length} câu`}
-                />
-              ))}
+              {prepared.slice(0, 8).map((p) => {
+                // Tra lại tên thật trong thư viện. Trước đây chỗ này dựng thẻ
+                // với title `Video <id>`, nên người đã chuẩn bị 5 video sẽ thấy
+                // 5 thẻ mang tên kiểu "Video pEO9-iPZQWA" — đúng ngay ở mục
+                // MỜI họ quay lại. Chỉ giữ dạng đó khi video không còn trong
+                // thư viện (đã gỡ khỏi seed nhưng người học vẫn còn dữ liệu).
+                const meta = getLibraryVideo(p.videoId);
+                return (
+                  <VideoCard
+                    key={p.videoId}
+                    video={
+                      meta ?? {
+                        id: p.videoId,
+                        title: `Video ${p.videoId}`,
+                        channel: 'Không còn trong thư viện',
+                        level: '',
+                        topic: '',
+                        durationSeconds: null,
+                      }
+                    }
+                    progress={`${p.doneCount}/${p.sentences.length} câu`}
+                  />
+                );
+              })}
             </Grid>
           </View>
         </View>

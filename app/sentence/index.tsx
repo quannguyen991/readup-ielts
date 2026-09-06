@@ -8,6 +8,7 @@ import { Badge, Card, Icon, StickerCard } from '@/components/ui';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { dictationSetStats } from '@/data/dictation-sets';
 import { translationSetStats } from '@/data/translation-sets';
+import { audioLibraryStats } from '@/data/audio-library';
 import { videoLibraryStats } from '@/data/video-library';
 import { useSentenceStats, useSentenceStore } from '@/store/useSentenceStore';
 import { color, stickerGradient } from '@/theme/tokens';
@@ -77,11 +78,26 @@ export default function SentenceHubScreen() {
             cta="Mở thư viện"
             onPress={() => router.push('/sentence/sets' as never)}
           />
+          {/*
+            Hai thư viện nghe, và thứ tự này có chủ ý: thư viện âm thanh đứng
+            TRƯỚC thư viện video vì nó là thư viện DUY NHẤT bấm vào là làm được
+            ngay. Video đòi dán phụ đề một lần cho mỗi video — YouTube đã khoá
+            đường lấy phụ đề tự động — nên để nó đứng đầu là dẫn người mới vào
+            đúng chỗ tốn công nhất trước khi họ kịp thấy app làm được gì.
+          */}
           <EntryCard
             icon="volume"
             tint="accent"
+            title="Thư viện nghe"
+            body={`${audioLibraryStats().items} bài nghe có SẴN LỜI từ VOA Learning English — bấm vào là làm được ngay, không phải dán gì.`}
+            cta="Mở thư viện nghe"
+            onPress={() => router.push('/sentence/audio' as never)}
+          />
+          <EntryCard
+            icon="play"
+            tint="primary"
             title="Thư viện video"
-            body={`${videoLibraryStats().videos} video từ TED, BBC, Vox… chia theo trình độ — nghe rồi chép lại, hoặc làm đề nghe hiểu sinh từ chính phụ đề.`}
+            body={`${videoLibraryStats().videos} video từ TED, BBC, Vox… giọng bản xứ ở tốc độ thật. Lần đầu mỗi video cần dán phụ đề một lần.`}
             cta="Mở thư viện video"
             onPress={() => router.push('/sentence/videos' as never)}
           />
