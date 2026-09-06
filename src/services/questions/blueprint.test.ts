@@ -8,7 +8,7 @@ import {
   totalOf,
   typesOf,
 } from './blueprint';
-import { AVAILABLE_IELTS_TYPES } from './types';
+import { RULE_SUPPORTED_TYPES } from './blueprint';
 
 /**
  * Canh bản thiết kế đề.
@@ -70,12 +70,12 @@ test('không khối nào quá ngắn để thành một khối', () => {
   }
 });
 
-test('chỉ dùng dạng câu mà app thật sự sinh được', () => {
-  const available = new Set(AVAILABLE_IELTS_TYPES);
+test('chỉ dùng dạng câu mà bộ sinh bằng LUẬT dựng được', () => {
+  const available = new Set(RULE_SUPPORTED_TYPES);
   for (const pos of POSITIONS) {
     for (let i = 0; i < 20; i += 1) {
       for (const t of typesOf(blueprintFor(pos, `bai-${i}`))) {
-        assert.ok(available.has(t), `bố cục dùng dạng ${t} mà bộ sinh chưa có`);
+        assert.ok(available.has(t), `bố cục dùng dạng ${t} mà bộ sinh bằng luật chưa dựng được`);
       }
     }
   }
@@ -96,8 +96,8 @@ test('ba vị trí không dùng cùng một rổ dạng câu', () => {
   assert.ok(!p1.has('yes_no_not_given'));
 });
 
-test('mọi dạng IELTS đều có lời dẫn, và lời dẫn không rỗng', () => {
-  for (const t of AVAILABLE_IELTS_TYPES) {
+test('mọi dạng dựng được đều có lời dẫn, và lời dẫn không rỗng', () => {
+  for (const t of RULE_SUPPORTED_TYPES) {
     assert.ok(BLOCK_RUBRIC[t].length > 20, `dạng ${t} thiếu lời dẫn`);
   }
 });

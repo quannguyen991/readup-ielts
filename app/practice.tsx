@@ -496,6 +496,13 @@ function QuickStart({ onPick }: { onPick: (next: RailSelection) => void }) {
         note="3 passage · 60 phút"
         onPress={() => router.push('/mock-tests' as never)}
       />
+      <Shortcut
+        icon="refresh"
+        tint="#F97316"
+        title="Xen kẽ dạng bài"
+        note="Trộn dạng, không theo khối"
+        onPress={() => router.push('/practice-mixed' as never)}
+      />
     </View>
   );
 }

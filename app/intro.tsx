@@ -291,7 +291,8 @@ export default function IntroScreen() {
               </View>
 
               <Text className="mt-4 font-sans text-bodyLg text-white/90" style={{ maxWidth: 620 }}>
-                Đề sinh mới mỗi lượt, đáp án tính bằng code, và mỗi câu sai được gọi đúng tên lỗi.
+                Đề dựng bằng code chứ không gọi AI, đáp án kiểm được từ chính bài đọc, và mỗi câu
+                sai được gọi đúng tên lỗi.
               </Text>
 
               <View className="mt-6 flex-row flex-wrap gap-2">

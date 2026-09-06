@@ -38,38 +38,81 @@ export type PassageBlueprint = {
  * những tổ hợp hay gặp trong đề Cambridge, nhưng KHÔNG chép đề: đây là khung
  * dạng câu, còn nội dung câu vẫn sinh từ bài đọc của app.
  */
+/**
+ * Năm HỌ dạng câu mà bộ sinh bằng luật dựng được chắc chắn.
+ *
+ * Ba dạng nối (Headings, Features, Sentence Endings) đã bị rút khỏi bố cục. Cả
+ * ba đòi trừu tượng hoá cả một đoạn hoặc dựng một danh sách lựa chọn có nghĩa —
+ * code không có vốn từ để làm, và bản trước cố làm thì ra "tiêu đề là 9 từ đầu
+ * của chính đoạn đó", ghép chuỗi là xong.
+ *
+ * Thà năm dạng dựng đúng còn hơn tám dạng có ba dạng đoán được. Ba dạng kia vẫn
+ * còn trong `QuestionType` và vẫn dùng được ở nhánh luyện xen kẽ.
+ */
+export const RULE_SUPPORTED_TYPES: readonly QuestionType[] = [
+  'true_false_not_given',
+  'yes_no_not_given',
+  'multiple_choice',
+  'sentence_completion',
+  'summary_completion',
+  'short_answer',
+  'matching_information',
+];
+
 const LAYOUTS: Record<1 | 2 | 3, QuestionBlock[][]> = {
   1: [
     [
       { type: 'true_false_not_given', count: 7 },
-      { type: 'summary_completion', count: 6 },
+      { type: 'sentence_completion', count: 6 },
     ],
     [
       { type: 'matching_information', count: 5 },
-      { type: 'sentence_completion', count: 4 },
       { type: 'short_answer', count: 4 },
+      { type: 'summary_completion', count: 4 },
     ],
     [
       { type: 'true_false_not_given', count: 6 },
-      { type: 'short_answer', count: 3 },
+      { type: 'summary_completion', count: 7 },
+    ],
+    /*
+      Ba khối nhỏ, thay vì hai khối lớn.
+
+      Một khối bảy câu đòi bảy câu nguồn cùng dựng được một dạng; ba khối bốn tới
+      năm câu chia gánh nặng ấy ra ba dạng khác nhau, nên bài đọc nghèo một dạng
+      vẫn lấp đủ. Đề thật có cả hai kiểu, nên đây không phải sáng tác thêm.
+    */
+    [
+      { type: 'true_false_not_given', count: 5 },
       { type: 'sentence_completion', count: 4 },
+      { type: 'summary_completion', count: 4 },
     ],
   ],
+  /*
+    MỖI VỊ TRÍ CHỈ CÒN MỘT BỐ CỤC DÙNG DẠNG NỐI THÔNG TIN.
+
+    Đo trên cả kho: "ý này nằm ở đoạn nào" chỉ lấp được 46% số chỗ, vì nó đòi câu
+    nguồn vừa ngắn vừa đủ vốn từ để nói lại ba chỗ. Passage 2 trước đây có tới
+    hai trong ba bố cục dựng trên dạng ấy cộng dạng trả lời ngắn, nên chỉ 27% số
+    bài lấp nổi mười ba câu — trong khi passage 3 đạt 72%.
+
+    Vẫn giữ đúng một bố cục có dạng ấy ở mỗi vị trí: đề thật có dạng này, bỏ hẳn
+    là bớt mất một dạng người học phải biết. Nhưng nó không còn là đường duy nhất.
+  */
   2: [
     [
-      { type: 'matching_headings', count: 6 },
-      { type: 'true_false_not_given', count: 4 },
-      { type: 'sentence_completion', count: 3 },
+      { type: 'true_false_not_given', count: 5 },
+      { type: 'summary_completion', count: 4 },
+      { type: 'multiple_choice', count: 4 },
     ],
     [
-      { type: 'matching_features', count: 5 },
-      { type: 'summary_completion', count: 5 },
+      { type: 'multiple_choice', count: 4 },
+      { type: 'true_false_not_given', count: 5 },
+      { type: 'sentence_completion', count: 4 },
+    ],
+    [
+      { type: 'matching_information', count: 5 },
+      { type: 'sentence_completion', count: 5 },
       { type: 'multiple_choice', count: 3 },
-    ],
-    [
-      { type: 'yes_no_not_given', count: 6 },
-      { type: 'matching_information', count: 4 },
-      { type: 'matching_sentence_endings', count: 3 },
     ],
   ],
   3: [
@@ -79,14 +122,14 @@ const LAYOUTS: Record<1 | 2 | 3, QuestionBlock[][]> = {
       { type: 'summary_completion', count: 3 },
     ],
     [
-      { type: 'matching_headings', count: 5 },
+      { type: 'yes_no_not_given', count: 6 },
       { type: 'multiple_choice', count: 4 },
-      { type: 'matching_sentence_endings', count: 4 },
+      { type: 'sentence_completion', count: 3 },
     ],
     [
-      { type: 'yes_no_not_given', count: 7 },
-      { type: 'matching_features', count: 3 },
-      { type: 'multiple_choice', count: 3 },
+      { type: 'multiple_choice', count: 4 },
+      { type: 'yes_no_not_given', count: 5 },
+      { type: 'matching_information', count: 4 },
     ],
   ],
 };
@@ -102,10 +145,30 @@ export const QUESTIONS_PER_PASSAGE = 13;
  * cũ" không còn là làm lại nữa, và cũng không so được hai lần làm.
  */
 export function blueprintFor(position: 1 | 2 | 3, seed: string): PassageBlueprint {
+  return blueprintsFor(position, seed)[0] as PassageBlueprint;
+}
+
+/**
+ * MỌI bố cục của vị trí này, xếp theo thứ tự ưu tiên tất định của bài.
+ *
+ * Bố cục đầu danh sách đúng là bố cục `blueprintFor` trả về; phần còn lại là
+ * đường lui. Có đường lui vì không phải bài đọc nào cũng gánh được mọi dạng câu:
+ * một bài không có đoạn nào đủ vốn từ để nói lại thì khối "ý này nằm ở đoạn nào"
+ * chỉ lấp được một phần ba, và bộ đề ra mười câu thay vì mười ba.
+ *
+ * Đây KHÔNG phải hạ chuẩn. Cả ba bố cục đều là tổ hợp có thật của đề IELTS, nên
+ * đổi sang bố cục khác vẫn ra một passage đúng form — chỉ là chọn cái mà bài đọc
+ * này cấp đủ nguyên liệu. Thứ bị loại vẫn là câu hỏi không đạt, không phải luật.
+ */
+export function blueprintsFor(position: 1 | 2 | 3, seed: string): PassageBlueprint[] {
   const layouts = LAYOUTS[position];
   const rng = mulberry32(hashString(`${position}:${seed}`));
-  const picked = layouts[Math.floor(rng() * layouts.length)] ?? layouts[0];
-  return { position, blocks: (picked as QuestionBlock[]).map((b) => ({ ...b })) };
+  const first = Math.floor(rng() * layouts.length);
+  const order = [first, ...layouts.map((_, i) => i).filter((i) => i !== first)];
+  return order.map((i) => ({
+    position,
+    blocks: (layouts[i] as QuestionBlock[]).map((b) => ({ ...b })),
+  }));
 }
 
 /** Mọi dạng câu mà bản thiết kế này cần, theo đúng thứ tự khối. */

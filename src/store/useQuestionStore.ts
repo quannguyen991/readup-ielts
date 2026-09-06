@@ -3,13 +3,23 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
 import type { Article } from '@/data/articles';
+import { buildMixedRuleQuestionSet, buildRuleQuestionSet } from '@/services/questions/build-set';
 import { generateOfflineQuestionSet } from '@/services/questions/offline-generator';
 import type { QuestionSet } from '@/services/questions/types';
 import type { QuestionType } from '@/types/database';
 
 /**
- * Bộ đề đã sinh, cache theo articleId để mở lại không phải gọi AI lần nữa.
- * Ưu tiên bộ sinh AI qua /api/questions; gọi hỏng thì dùng bộ offline.
+ * Bộ đề của một bài, giữ lại theo articleId.
+ *
+ * KHÔNG CÒN GỌI MẠNG. Trước đây mỗi lần mở bài là một lượt gọi AI: chờ hai mươi
+ * giây trước khi thấy câu đầu tiên, và mỗi lần gọi lại ra một bộ khác — nên
+ * "làm lại đề cũ" thật ra là làm một đề mới, không so được hai lần làm. Gọi
+ * hỏng thì rơi xuống bộ đường lùi chỉ có một dạng câu, và bộ ấy bị cache lại
+ * vĩnh viễn.
+ *
+ * Nay đề dựng bằng luật ngay trên máy: hiện ra tức thì, cùng một bài thì lần nào
+ * cũng ra đúng bộ đề ấy, và không tốn một lượt gọi nào. Cache vẫn giữ, nhưng chỉ
+ * để khỏi dựng lại — mất cache thì dựng lại ra y hệt.
  */
 type QuestionState = {
   sets: Record<string, QuestionSet>;
@@ -21,66 +31,14 @@ type QuestionState = {
     options?: { force?: boolean; types?: QuestionType[] },
   ) => Promise<QuestionSet>;
   focusSet: (article: Article, type: QuestionType) => Promise<QuestionSet>;
+  /** Bộ trộn dạng cho nhánh luyện xen kẽ — cố tình KHÔNG đi thành khối. */
+  mixedSet: (article: Article) => Promise<QuestionSet>;
   getSet: (articleId: string) => QuestionSet | undefined;
 };
 
-/**
- * Bài của kho seed mang id dạng UUID; bài người dùng tạo mang tiền tố riêng.
- *
- * Kiểm bằng tiền tố chứ không gọi ngược lên kho: hàm này chạy ở client, mà kho
- * seed thì nặng vài trăm KB — nạp nó chỉ để hỏi một câu hỏi có/không là quá đắt.
- */
-function isSeedArticle(id: string): boolean {
-  return !id.startsWith('user-') && !id.startsWith('yt-');
-}
-
-async function requestAiSet(
-  article: Article,
-  options: { count?: number; focusType?: QuestionType; types?: QuestionType[] } = {},
-): Promise<QuestionSet | null> {
-  try {
-    /*
-      Có hạn chờ, và hạn đó phải DÀI HƠN cả phía máy chủ.
-
-      Sinh 12 câu mất 20-21 giây đo trên production, nên hạn phải nới hơn thế
-      nhiều. Không đặt hạn thì một request treo sẽ để cờ `loading` bật mãi và
-      panel câu hỏi đứng ở "0 / 0" không bao giờ đổi — người dùng không biết là
-      đang chờ hay đã hỏng.
-    */
-    const response = await fetch('/api/questions', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      /*
-        Bài KHÔNG nằm trong kho seed thì phải gửi kèm toàn văn.
-
-        Máy chủ tra bài theo id trong kho; văn bản người dùng tự dán chỉ tồn tại
-        trên máy họ nên tra không ra, và trước đây lượt gọi ấy nhận 404 rồi âm
-        thầm rơi về bộ sinh offline — chỉ làm được một dạng câu. Tức là tính năng
-        "dán văn bản rồi làm đề" chưa bao giờ thật sự dùng AI.
-      */
-      body: JSON.stringify({
-        articleId: article.id,
-        ...options,
-        ...(isSeedArticle(article.id)
-          ? {}
-          : {
-              passage: {
-                title: article.title,
-                paragraphs: article.paragraphs,
-                cefrLevel: article.cefrLevel,
-              },
-            }),
-      }),
-      signal: AbortSignal.timeout(75_000),
-    });
-
-    if (!response.ok) return null;
-
-    const data = (await response.json()) as QuestionSet;
-    return data.questions?.length > 0 ? data : null;
-  } catch {
-    return null;
-  }
+/** Vị trí passage suy ra từ mức khó đã gán cho bài. */
+function positionOf(tier: string | null | undefined): 1 | 2 | 3 {
+  return tier === 'p3' ? 3 : tier === 'p2' ? 2 : 1;
 }
 
 export const useQuestionStore = create<QuestionState>()(
@@ -100,56 +58,51 @@ export const useQuestionStore = create<QuestionState>()(
           xong mà màn hình y nguyên là dấu hiệu app hỏng, dù nó chỉ đang trả cache.
         */
         const wanted = options.types?.length ? [...options.types].sort().join(',') : '';
+        if (cached && (cached.requestedTypes ?? '') === wanted && !options.force) return cached;
 
         /*
-          BỘ ĐỀ OFFLINE KHÔNG ĐƯỢC TÍNH LÀ CACHE HỢP LỆ.
+          Dựng ngay, không bật cờ chờ.
 
-          Đây là lỗi làm người dùng chỉ thấy Multiple Choice, và nó nằm ở cache
-          chứ không ở bộ sinh. Bộ offline chỉ làm được một dạng câu; nó là đường
-          lùi khi gọi AI hỏng. Nhưng bản trước cache nó y như cache bộ đề AI, nên
-          MỘT lần gọi hỏng — mạng chớp một nhịp, hàm serverless khởi động lạnh —
-          là bài đó bị ghim vào bộ đề yếu VĨNH VIỄN: mọi lần mở sau đều gặp cache
-          và không bao giờ thử lại AI nữa.
-
-          Đã thấy đúng thế trên production: bài Great Barrier Reef nằm trong
-          storage với `generatedBy: 'offline'`, 12 câu Multiple Choice, trong khi
-          gọi thẳng endpoint thì trả về đủ bốn dạng trong 20 giây.
-
-          Nay gặp cache offline thì vẫn thử AI lại. Hỏng nữa thì giữ nguyên bộ
-          offline — không mất gì, vì nó đã có sẵn trong tay.
+          Dựng bằng luật xong trong vài mili giây, nên bật `loading` rồi tắt chỉ
+          làm panel câu hỏi chớp một nhịp trắng — người dùng đọc ra là app giật.
         */
-        const sameOrder = (cached?.requestedTypes ?? '') === wanted;
-        const usable = cached && sameOrder && cached.generatedBy !== 'offline';
-        if (usable && !options.force) return cached;
-
-        set((state) => ({ loading: { ...state.loading, [article.id]: true } }));
-
-        const aiSet = await requestAiSet(article, options.types?.length ? { types: options.types } : {});
-
-        // Gọi AI hỏng mà đã có bộ offline đúng đơn hàng thì dùng lại, khỏi sinh
-        // lại một bộ y hệt.
-        const fallback = cached && sameOrder ? cached : generateOfflineQuestionSet(article);
-        const questionSet = { ...(aiSet ?? fallback), requestedTypes: wanted };
+        const questionSet: QuestionSet = {
+          ...(options.types?.length
+            ? buildRuleQuestionSet(
+                { id: article.id, title: article.title, paragraphs: article.paragraphs },
+                {
+                  position: positionOf(article.passageTier),
+                  blocks: options.types.map((type) => ({ type, count: 4 })),
+                },
+              )
+            : generateOfflineQuestionSet(article)),
+          requestedTypes: wanted,
+        };
 
         set((state) => ({
           sets: { ...state.sets, [article.id]: questionSet },
           loading: { ...state.loading, [article.id]: false },
-          lastError: aiSet ? null : 'Không gọi được AI, đang dùng bộ đề offline.',
+          lastError: null,
         }));
 
         return questionSet;
       },
 
       focusSet: async (article, type) => {
-        const aiSet = await requestAiSet(article, { focusType: type, count: 8 });
-        const questionSet =
-          aiSet ?? {
-            ...generateOfflineQuestionSet(article),
-            questions: generateOfflineQuestionSet(article).questions.filter(
-              (q) => q.type === type,
-            ),
-          };
+        const questionSet = buildRuleQuestionSet(
+          { id: article.id, title: article.title, paragraphs: article.paragraphs },
+          { position: positionOf(article.passageTier), blocks: [{ type, count: 8 }] },
+        );
+        set((state) => ({ sets: { ...state.sets, [article.id]: questionSet } }));
+        return questionSet;
+      },
 
+      mixedSet: async (article) => {
+        const questionSet = buildMixedRuleQuestionSet({
+          id: article.id,
+          title: article.title,
+          paragraphs: article.paragraphs,
+        });
         set((state) => ({ sets: { ...state.sets, [article.id]: questionSet } }));
         return questionSet;
       },
@@ -172,7 +125,12 @@ export const useQuestionStore = create<QuestionState>()(
       // v4: bộ đề nay mang thêm `requestedTypes`. Bộ cũ trong storage không có
       // trường đó nên sẽ khớp với đơn hàng rỗng và không bao giờ khớp với một
       // bộ lọc dạng câu — đúng ý, nhưng bump cho sạch.
-      version: 4,
+      //
+      // v5: đề IELTS nay dựng bằng luật và đi thành khối. Bộ AI cũ trong storage
+      // trộn lẫn các dạng trong một passage — đúng cái phải bỏ. Không bump thì
+      // người đã mở bài trước đó vẫn nhận đề trộn từ cache và không bao giờ thấy
+      // bộ mới.
+      version: 5,
       /*
         Khai `migrate` dù nó chỉ VỨT dữ liệu cũ.
 

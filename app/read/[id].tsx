@@ -35,7 +35,7 @@ import { color, highlightColors, type HighlightColorKey } from '@/theme/tokens';
 
 /** Màn hình đọc + luyện đề, bố cục 2 cột — bám ảnh tham chiếu số 2. */
 export default function ReadScreen() {
-  const { id, types } = useLocalSearchParams<{ id: string; types?: string }>();
+  const { id, types, mode } = useLocalSearchParams<{ id: string; types?: string; mode?: string }>();
 
   /*
     Đơn hàng dạng câu đến từ bộ lọc ở màn Luyện tập, đi qua URL.
@@ -82,6 +82,7 @@ export default function ReadScreen() {
   const logStudyTime = useStudyStore((s) => s.logStudyTime);
 
   const ensureSet = useQuestionStore((s) => s.ensureSet);
+  const mixedSet = useQuestionStore((s) => s.mixedSet);
   const questionSet = useQuestionStore((s) => (id ? s.sets[id] : undefined));
   // Cờ "đang tải" đọc THẲNG từ store chứ không giữ một bản sao cục bộ. Store là
   // nơi thật sự biết bộ đề của bài này đang được lấy hay không (nó đặt cờ ngay
@@ -158,8 +159,19 @@ export default function ReadScreen() {
 
   useEffect(() => {
     if (!article || !isReadable(article)) return;
+    /*
+      `mode=mixed` là nhánh LUYỆN XEN KẼ DẠNG BÀI.
+
+      Bộ đề thường đi thành khối như đề thật. Nhánh này cố tình trộn dạng, vì lúc
+      mới học thì nhận ra mình đang gặp dạng gì cũng là một kỹ năng, mà khối đề
+      đồng nhất che mất nó.
+    */
+    if (mode === 'mixed') {
+      void mixedSet(article);
+      return;
+    }
     void ensureSet(article, requestedTypes ? { types: requestedTypes } : {});
-  }, [article, ensureSet, requestedTypes]);
+  }, [article, ensureSet, mixedSet, mode, requestedTypes]);
 
   useEffect(() => {
     return () => {
@@ -689,6 +701,7 @@ export default function ReadScreen() {
             ) : (
               <QuestionPanel
                 questions={questions}
+                layout={mode === 'mixed' ? 'mixed' : 'blocks'}
                 answers={answers}
                 marked={marked}
                 submitting={submitting}
@@ -716,11 +729,15 @@ export default function ReadScreen() {
               />
             )}
 
-            {questionSet?.generatedBy === 'offline' ? (
+            {/*
+              Bộ đề IELTS nay dựng bằng luật ngay trên máy, nên "offline" không
+              còn là dấu hiệu hỏng — nó là đường chính. Dòng cảnh báo cũ nói
+              ngược lại, giữ nguyên là báo động giả trên mọi bài.
+            */}
+            {questionSet?.generatedBy === 'offline' && article.exam === 'sat' ? (
               <Text className="mt-2 font-sans text-label text-subtle">
-                {article.exam === 'sat'
-                  ? 'Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Words in Context và Inferences. Tải lại trang để lấy đủ năm dạng của SAT.'
-                  : 'Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Multiple Choice. Tải lại trang để lấy đủ các dạng câu.'}
+                Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Words in
+                Context và Inferences. Tải lại trang để lấy đủ năm dạng của SAT.
               </Text>
             ) : null}
           </View>

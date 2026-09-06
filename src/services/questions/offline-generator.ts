@@ -1,4 +1,5 @@
 import { hashString, mulberry32, shuffle } from './rng';
+import { buildBestRuleQuestionSet } from './build-set';
 import { generateSatQuestionSet } from './sat-generator';
 import {
   OPTIONS_PER_QUESTION,
@@ -53,15 +54,52 @@ const MIN_PARAGRAPH_WORDS = 25;
  */
 const BLANK_WORD_LENGTHS = [7, 6, 5];
 
+/** Vị trí passage suy ra từ mức khó đã gán cho bài. */
+function positionOf(tier: string | null | undefined): 1 | 2 | 3 {
+  return tier === 'p3' ? 3 : tier === 'p2' ? 2 : 1;
+}
+
+/**
+ * ĐÂY LÀ CỬA DUY NHẤT SINH ĐỀ, VÀ NÓ KHÔNG GỌI MẠNG.
+ *
+ * Trước đây đề IELTS sinh bằng AI lúc người học mở bài: chờ hai mươi giây, và
+ * mỗi lần mở lại ra một bộ khác. Nay đề dựng bằng luật ngay trên máy — tức thì,
+ * và cùng một bài thì lần nào cũng ra đúng bộ đề ấy, nên "làm lại đề cũ" mới
+ * thật sự là làm lại.
+ *
+ * Ba đường, xét theo thứ tự:
+ *   1. Bài SAT  → bộ sinh SAT.
+ *   2. Bài IELTS → bộ dựng theo bản thiết kế passage, đi thành khối như đề thật.
+ *   3. Bài quá ngắn hoặc quá nghèo từ để dựng nổi ba câu → bộ cũ (đoán từ trong
+ *      ngữ cảnh, hoàn thành đoạn). Không phải đề IELTS, nhưng vẫn là bài luyện
+ *      đọc có đáp án kiểm được — hơn là trả về màn hình trống.
+ */
 export function generateOfflineQuestionSet(article: Article): QuestionSet {
   // Bài SAT phải ra dạng câu của SAT. Ra True/False/Not Given trên một trích
   // đoạn Jane Austen là luyện sai kỳ thi.
   if (article.exam === 'sat') return generateSatQuestionSet(article);
 
+  const byRule = buildBestRuleQuestionSet(
+    { id: article.id, title: article.title, paragraphs: article.paragraphs },
+    positionOf(article.passageTier),
+  );
+  if (byRule.questions.length >= 3) return byRule;
+
   return generateIeltsQuestionSet(article);
 }
 
 type Sentence = { text: string; paragraphIndex: number };
+
+/**
+ * Bo de DUONG LUI — dung khi bo dung theo ban thiet ke khong ra noi ba cau.
+ *
+ * Khong phai de IELTS: no chi co doan tu trong ngu canh va hoan thanh doan, ca
+ * hai deu la trac nghiem bon lua chon. Xuat ra de kiem rieng duoc, vi rang buoc
+ * cua no khac han rang buoc cua bo dung theo khoi.
+ */
+export function generateFallbackQuestionSet(article: Article): QuestionSet {
+  return generateIeltsQuestionSet(article);
+}
 
 function generateIeltsQuestionSet(article: Article): QuestionSet {
   const rng = mulberry32(hashString(article.id));

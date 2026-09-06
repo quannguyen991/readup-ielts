@@ -25,6 +25,7 @@ export function QuestionPanel({
   evidenceFor,
   onStartEvidence,
   onClearEvidence,
+  layout = 'blocks',
 }: {
   questions: GeneratedQuestion[];
   answers: Record<string, string>;
@@ -39,12 +40,21 @@ export function QuestionPanel({
    * Panel này còn phục vụ SAT và bài dán tay — những chỗ chưa bật ProofLoop.
    * Bắt buộc chúng là làm hỏng ba màn khác để thêm một tính năng cho một màn.
    */
+  /**
+   * `mixed` = nhánh luyện xen kẽ dạng bài.
+   *
+   * Ở đó các dạng bị trộn có chủ đích, nên gom khối ra toàn khối một hai câu và
+   * cùng một lời dẫn hiện lại năm lần — trông như màn hình hỏng. Chế độ này bỏ
+   * lời dẫn khối, để mỗi câu tự mang nhãn dạng của nó.
+   */
+  layout?: 'blocks' | 'mixed';
   evidenceMarks?: Record<string, EvidenceMark>;
   evidenceFor?: string | null;
   onStartEvidence?: (questionId: string) => void;
   onClearEvidence?: (questionId: string) => void;
 }) {
   const [typeFilter, setTypeFilter] = useState<QuestionType | 'all'>('all');
+  const mixed = layout === 'mixed';
 
   const types = useMemo(
     () => [...new Set(questions.map((q) => q.type))] as QuestionType[],
@@ -146,23 +156,44 @@ export function QuestionPanel({
         Lời dẫn đứng MỘT LẦN cho cả khối, đúng chỗ nó đứng trong đề.
       */}
       {groupIntoBlocks(visible).map((block) => (
-        <View key={`${block.type}-${block.from}`} className="mt-4 border-t border-border pt-4">
+        <View
+          key={`${block.type}-${block.from}`}
+          className={mixed ? 'mt-4' : 'mt-4 border-t border-border pt-4'}
+        >
+          {/*
+            Che do xen ke bo tieu de "Questions 2-3".
+
+            Tron dang thi moi khoi chi con mot hai cau, nen tieu de khoi va vach
+            ngan hien lien tuc — man hinh day duong ke ma khong them mot thong tin
+            nao: so cau da nam ngay canh tung cau roi. Chi giu the ten dang.
+          */}
           <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-heavy text-cardTitle text-ink">
-              {block.from === block.to
-                ? `Question ${block.from}`
-                : `Questions ${block.from}–${block.to}`}
-            </Text>
+            {mixed ? null : (
+              <Text className="font-heavy text-cardTitle text-ink">
+                {block.from === block.to
+                  ? `Question ${block.from}`
+                  : `Questions ${block.from}–${block.to}`}
+              </Text>
+            )}
             <Badge label={QUESTION_TYPE_LABEL[block.type]} tone="accent" />
           </View>
 
-          {block.rubric ? (
+          {block.rubric && !mixed ? (
             <Text className="mt-2 font-sans text-label text-muted">{block.rubric}</Text>
           ) : null}
 
           <View className="mt-3 gap-3">
             {block.questions.map((question, i) => {
               const choices = optionsFor(question);
+              /*
+                Phuong an DAI thi xep doc, moi cai mot dong.
+
+                TRUE / FALSE / NOT GIVEN la ba chu, xep ngang thanh mot hang chip
+                doc rat nhanh. Nhung phuong an trac nghiem la ca mot cau, va xep
+                ngang thi chu bi cat ngang chung — nguoi hoc khong doc het duoc
+                phuong an minh dang chon.
+              */
+              const stacked = (choices ?? []).some((o) => o.length > 24);
               const number = block.from + i;
 
               return (
@@ -193,7 +224,7 @@ export function QuestionPanel({
                         dọc thì một câu chiếm gần nửa màn hình, làm khối mười ba
                         câu dài gấp đôi mà không thêm thông tin nào.
                       */
-                      <View className="flex-row flex-wrap gap-2">
+                      <View className={stacked ? 'gap-2' : 'flex-row flex-wrap gap-2'}>
                         {choices.map((option) => {
                           const selected = answers[question.id] === option;
                           return (
@@ -201,7 +232,8 @@ export function QuestionPanel({
                               key={option}
                               onPress={() => onAnswer(question.id, option)}
                               className={[
-                                'flex-row items-center gap-2 rounded-panel border px-3 py-2',
+                                'flex-row gap-2 rounded-panel border px-3 py-2',
+                                stacked ? 'items-start' : 'items-center',
                                 selected
                                   ? 'border-primary-600 bg-primary-50'
                                   : 'border-border bg-surface',
@@ -210,6 +242,7 @@ export function QuestionPanel({
                               <View
                                 className={[
                                   'h-4 w-4 items-center justify-center rounded-pill border',
+                                  stacked ? 'mt-0.5' : '',
                                   selected ? 'border-primary-600 bg-primary-600' : 'border-borderStrong',
                                 ].join(' ')}
                               >
@@ -220,6 +253,7 @@ export function QuestionPanel({
                               <Text
                                 className={[
                                   'font-mid text-label',
+                                  stacked ? 'flex-1' : '',
                                   selected ? 'text-primary-700' : 'text-body',
                                 ].join(' ')}
                               >

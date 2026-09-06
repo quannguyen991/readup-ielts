@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { generateOfflineQuestionSet } from './offline-generator';
+import { generateFallbackQuestionSet, generateOfflineQuestionSet } from './offline-generator';
 import type { Article } from '@/data/articles';
 
 /**
@@ -53,11 +53,18 @@ test('sinh được câu hỏi cho một passage IELTS bình thường', () => {
   assert.ok(set.questions.length > 0, 'không sinh được câu nào');
 });
 
-test('KHÔNG sinh lại bốn dạng giải được bằng đối chiếu chuỗi', () => {
+/*
+  SÁU BÀI KIỂM DƯỚI ĐÂY SOI ĐƯỜNG LÙI, KHÔNG SOI CỬA CHÍNH.
+
+  Đề IELTS nay dựng theo bản thiết kế passage nên có đủ TFNG, điền từ, nối thông
+  tin — đúng những dạng mà đường lùi bị cấm sinh. Ràng buộc cũ vẫn còn giá trị,
+  nhưng nó là ràng buộc CỦA ĐƯỜNG LÙI: bộ ấy chỉ dựng được trắc nghiệm khoét từ,
+  và nếu có ngày nó lén sinh Matching Headings trở lại thì vẫn phải kêu.
+*/
+test('đường lùi KHÔNG sinh lại bốn dạng giải được bằng đối chiếu chuỗi', () => {
   // Matching Headings lấy 9 từ đầu đoạn, Sentence Completion chép nguyên câu,
   // Short Answer chép lại con số, True/False/Not Given lộ mẹo "chèn not".
-  // Cả bốn đòi paraphrase thật, chỉ nhánh Claude làm được.
-  for (const q of generateOfflineQuestionSet(article()).questions) {
+  for (const q of generateFallbackQuestionSet(article()).questions) {
     assert.notEqual(q.type, 'matching_headings');
     assert.notEqual(q.type, 'sentence_completion');
     assert.notEqual(q.type, 'short_answer');
@@ -65,22 +72,22 @@ test('KHÔNG sinh lại bốn dạng giải được bằng đối chiếu chu�
   }
 });
 
-test('mọi câu đều là trắc nghiệm đúng 4 lựa chọn, không trùng nhau', () => {
-  for (const q of generateOfflineQuestionSet(article()).questions) {
+test('đường lùi: mọi câu đều là trắc nghiệm đúng 4 lựa chọn, không trùng nhau', () => {
+  for (const q of generateFallbackQuestionSet(article()).questions) {
     assert.ok(q.options, `câu ${q.id} không có lựa chọn`);
     assert.equal(q.options!.length, 4, `câu ${q.id} có ${q.options!.length} lựa chọn`);
     assert.equal(new Set(q.options).size, 4, 'lựa chọn bị trùng nhau');
   }
 });
 
-test('đáp án đúng luôn nằm trong danh sách lựa chọn', () => {
-  for (const q of generateOfflineQuestionSet(article()).questions) {
+test('đường lùi: đáp án đúng luôn nằm trong danh sách lựa chọn', () => {
+  for (const q of generateFallbackQuestionSet(article()).questions) {
     assert.ok(q.options!.includes(q.correctAnswer), `đáp án của ${q.id} không có trong lựa chọn`);
   }
 });
 
-test('đáp án kiểm chứng được từ chính bài đọc', () => {
-  for (const q of generateOfflineQuestionSet(article()).questions) {
+test('đường lùi: đáp án kiểm chứng được từ chính bài đọc', () => {
+  for (const q of generateFallbackQuestionSet(article()).questions) {
     assert.ok(BODY.includes(q.correctAnswer), `đáp án "${q.correctAnswer}" không có trong bài`);
     assert.match(q.prompt, /______/, 'câu hỏi phải có chỗ trống');
   }
@@ -88,7 +95,7 @@ test('đáp án kiểm chứng được từ chính bài đọc', () => {
 
 test('câu hỏi không chứa sẵn đáp án hay đáp án nhiễu', () => {
   // Thấy đáp án nằm ngay trong đề là chọn được mà không cần hiểu nghĩa.
-  for (const q of generateOfflineQuestionSet(article()).questions) {
+  for (const q of generateFallbackQuestionSet(article()).questions) {
     // Dạng Paragraph Completion lấy nhiễu là cả câu, nên chỉ soi dạng khoét từ.
     if (!q.id.includes('-wic-')) continue;
 
@@ -105,7 +112,7 @@ test('câu hỏi không chứa sẵn đáp án hay đáp án nhiễu', () => {
 test('câu hỏi KHÔNG đi theo thứ tự đoạn trong bài', () => {
   // Đây là điểm dễ nhất của bản cũ: hỏi đoạn 1, rồi đoạn 2, rồi đoạn 3 — người
   // học chỉ việc đọc lần lượt từ trên xuống, không cần định vị thông tin.
-  const indexes = generateOfflineQuestionSet(article()).questions.map(
+  const indexes = generateFallbackQuestionSet(article()).questions.map(
     (q) => q.evidenceParagraphIndex,
   );
 
@@ -114,7 +121,7 @@ test('câu hỏi KHÔNG đi theo thứ tự đoạn trong bài', () => {
 });
 
 test('xếp tăng dần: đoán từ trong câu trước, nắm mạch cả đoạn sau', () => {
-  const set = generateOfflineQuestionSet(article());
+  const set = generateFallbackQuestionSet(article());
   const lastWordGap = set.questions.map((q) => q.id.includes('-wic-')).lastIndexOf(true);
   const firstParagraph = set.questions.map((q) => q.id.includes('-pc-')).indexOf(true);
 
@@ -131,9 +138,9 @@ test('evidenceText có thật trong bài và trỏ đúng đoạn, để màn Re
   }
 });
 
-test('mọi câu đều có giải thích và bài học rút ra', () => {
+test('đường lùi: mọi câu đều có giải thích và bài học rút ra', () => {
   // Đây là thứ người học đọc sau khi nộp bài; thiếu là màn Review rỗng.
-  for (const q of generateOfflineQuestionSet(article()).questions) {
+  for (const q of generateFallbackQuestionSet(article()).questions) {
     assert.ok(q.explanation.length > 20, `câu ${q.id} giải thích quá sơ sài`);
     assert.ok(q.lessonTip && q.lessonTip.length > 20, `câu ${q.id} thiếu lesson tip`);
   }
@@ -150,8 +157,8 @@ test('sinh xác định: cùng bài ra đúng bộ đề đó', () => {
 });
 
 test('id bài quyết định thứ tự lựa chọn, để hai người không thấy cùng vị trí đáp án', () => {
-  const a = generateOfflineQuestionSet(article({ id: 'article-1' }));
-  const b = generateOfflineQuestionSet(article({ id: 'article-9' }));
+  const a = generateFallbackQuestionSet(article({ id: 'article-1' }));
+  const b = generateFallbackQuestionSet(article({ id: 'article-9' }));
 
   const sameOrder = a.questions.every(
     (q, i) => JSON.stringify(q.options) === JSON.stringify(b.questions[i]?.options),

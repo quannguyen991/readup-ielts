@@ -93,7 +93,17 @@ export function verifyQuestion(
     trong bài rồi khoét một từ". Câu như vậy giải được bằng dò chuỗi, và thứ nó
     đo là kỹ năng tìm chuỗi chứ không phải đọc hiểu.
   */
-  if (overlapRatio(question.prompt, question.evidenceText) > COPY_THRESHOLD) {
+  /*
+    Luật này KHÔNG áp cho họ điền từ.
+
+    Dạng điền từ lấy chính câu trong bài làm khung rồi khoét một chỗ — trùng chữ
+    là bản chất của nó, không phải lỗi. Cái phải chặn ở họ ấy nằm chỗ khác và đã
+    có luật riêng: đáp án phải là chữ có thật trong bài.
+
+    Với bốn họ còn lại thì trùng gần hết chữ đúng là hỏng: câu giải được bằng dò
+    chuỗi, và thứ nó đo là kỹ năng tìm chuỗi chứ không phải đọc hiểu.
+  */
+  if (!FROM_PASSAGE.has(question.type) && overlapRatio(question.prompt, question.evidenceText) > COPY_THRESHOLD) {
     return bad('stem-copies-evidence');
   }
 

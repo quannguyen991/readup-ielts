@@ -7,6 +7,7 @@ import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, HeroBanner, SectionHeader, StatCard } from '@/components/ui';
 import { filterArticles, type ArticleMeta, topicLabel } from '@/data/articles';
+import { FULL_SET_ARTICLE_IDS } from '@/data/full-question-sets';
 import { formatBand } from '@/lib/band';
 import { usePlan } from '@/store/useBillingStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -57,8 +58,8 @@ export default function MockTestsScreen() {
           />
           <StatCard
             variant="sticker"
-            label="Bài đọc sẵn sàng"
-            value={String(filterArticles({ kind: 'readable', exam: 'ielts' }).length)}
+            label="Bài vào được đề thi"
+            value={String(FULL_SET_ARTICLE_IDS.size)}
             icon="book"
             tone="success"
           />
@@ -129,9 +130,18 @@ export const MOCK_TEST_COUNT = 50;
  *    trong một đề, vốn là điều quan trọng nhất của cấu trúc đề thật.
  */
 function buildTests(seed: number): ArticleMeta[][] {
-  // Chỉ lấy bài IELTS: màn này dựng đúng cấu trúc 3 passage của IELTS Reading,
-  // trộn passage SAT (khổ 25–150 từ) vào là hỏng nhịp đề.
-  const pool = filterArticles({ kind: 'readable', exam: 'ielts', sort: 'easiest' });
+  /*
+    Chỉ lấy bài IELTS: màn này dựng đúng cấu trúc 3 passage của IELTS Reading,
+    trộn passage SAT (khổ 25–150 từ) vào là hỏng nhịp đề.
+
+    VÀ chỉ lấy bài dựng ĐỦ 13 CÂU. Đề thi thử phải đủ 40 câu; một passage ra mười
+    một câu thì bài thi ấy không còn là đề IELTS, và điểm quy ra band cũng sai
+    theo. Bài không đủ vẫn dùng bình thường ở nhánh luyện tập — chỉ là không được
+    đứng trong đề thi thử.
+  */
+  const pool = filterArticles({ kind: 'readable', exam: 'ielts', sort: 'easiest' }).filter((a) =>
+    FULL_SET_ARTICLE_IDS.has(a.id),
+  );
 
   const rank: Record<string, number> = { A2: 0, B1: 1, B2: 2, C1: 3, C2: 4 };
   const byHardness = [...pool].sort(
