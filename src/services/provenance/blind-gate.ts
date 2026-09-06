@@ -126,7 +126,28 @@ export function readBlindReply(text: string): BlindReply | null {
   if (typeof parsed !== 'object' || parsed === null) return null;
 
   const o = parsed as Record<string, unknown>;
-  const answer = typeof o.answer === 'string' ? o.answer : o.answer === null ? null : undefined;
+
+  /*
+    NHẬN CẢ SỐ, KHÔNG CHỈ CHUỖI.
+
+    Lời dặn nêu phương án dưới dạng "0. …", "1. …", nên model rất tự nhiên trả về
+    `{"answer": 2}` — một SỐ. Bản trước chỉ nhận chuỗi, nên mọi lượt như vậy bị
+    coi là "đọc không nổi" và ghi thành `not-run`. Đo thật thấy 18% số lượt rơi
+    vào đó: gần một phần năm số câu không được kiểm, mà lại KHÔNG phải vì hàng
+    rào hỏng — chỉ vì bộ đọc kén kiểu dữ liệu.
+
+    Hỏng kiểu này nguy hiểm hơn hỏng to tiếng: nó không báo lỗi, nó chỉ lặng lẽ
+    làm mẫu số nhỏ đi và thiên lệch về phía những câu model chịu trả lời bằng chữ.
+  */
+  const raw = o.answer;
+  const answer =
+    typeof raw === 'string'
+      ? raw
+      : typeof raw === 'number' && Number.isFinite(raw)
+        ? String(raw)
+        : raw === null
+          ? null
+          : undefined;
   if (answer === undefined) return null;
 
   // Thiếu `determinable` thì coi như KHÔNG xác định được: mặc định an toàn là

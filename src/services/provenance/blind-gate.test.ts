@@ -121,6 +121,39 @@ test('đọc được JSON nằm trong rào mã hoặc kèm lời dẫn', () => 
   assert.deepEqual(got, { answer: null, determinable: false });
 });
 
+test('answer là SỐ cũng đọc được — model hay trả chỉ số phương án', () => {
+  /*
+    Lời dặn nêu phương án dưới dạng "0. …", "1. …" nên model rất tự nhiên trả về
+    một SỐ. Bản đầu chỉ nhận chuỗi, và đo thật thấy 18% số lượt rơi vào nhánh
+    "đọc không nổi" rồi bị ghi là CHƯA KIỂM — không phải vì hàng rào hỏng, chỉ vì
+    bộ đọc kén kiểu dữ liệu. Hỏng kiểu ấy nguy hiểm hơn hỏng to tiếng: nó lặng lẽ
+    làm mẫu số nhỏ đi và thiên về phía những câu model chịu trả lời bằng chữ.
+  */
+  assert.deepEqual(readBlindReply('{"answer":2,"determinable":true}'), {
+    answer: '2',
+    determinable: true,
+  });
+});
+
+test('answer là số 0 không bị nhầm thành thiếu trường', () => {
+  // 0 là giá trị falsy; kiểm bằng `if (!answer)` là bỏ mất đúng phương án đầu.
+  assert.deepEqual(readBlindReply('{"answer":0,"determinable":false}'), {
+    answer: '0',
+    determinable: false,
+  });
+});
+
+test('answer là số đi hết được tới phán quyết', () => {
+  const v = judgeBlindReply(MC, readBlindReply('{"answer":0,"determinable":true}')!);
+  assert.equal(v.ok, false, 'chỉ số 0 trỏ đúng đáp án nên phải bị LOẠI');
+});
+
+test('answer kiểu lạ (mảng, object) thì vẫn trả null', () => {
+  for (const bad of ['{"answer":[1],"determinable":true}', '{"answer":{"x":1},"determinable":true}']) {
+    assert.equal(readBlindReply(bad), null, `phải từ chối ${bad}`);
+  }
+});
+
 test('không đọc nổi thì trả null, không đoán', () => {
   for (const junk of ['', 'xin lỗi tôi không thể', '{khong phai json']) {
     assert.equal(readBlindReply(junk), null);
