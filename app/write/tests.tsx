@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
+import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { ChartFigure } from '@/components/writing/ChartFigure';
@@ -189,11 +190,11 @@ export default function WritingLibraryScreen() {
               </Text>
             </Card>
           ) : (
-            <View className="gap-3">
+            <Grid columns={2} tabletColumns={1} mobileColumns={1}>
               {prompts.slice(0, visible).map((prompt) => (
                 <PromptCard key={prompt.id} prompt={prompt} />
               ))}
-            </View>
+            </Grid>
           )}
 
           {visible < prompts.length ? (
@@ -211,6 +212,17 @@ export default function WritingLibraryScreen() {
   );
 }
 
+/*
+  Thẻ đề dạng LƯỚI: ảnh bên trái, chữ bên phải.
+
+  Bản trước xếp dọc — nhãn, đề bài, rồi biểu đồ rộng 600px, rồi hai nút. Một
+  thẻ như vậy cao gần một màn hình, nên duyệt 24 đề là cuộn hai chục lần và
+  không lần nào thấy được hai đề cạnh nhau để so.
+
+  Ảnh nằm trái và chữ nằm phải thì một thẻ cao bằng một phần tư, hai thẻ đứng
+  cạnh nhau, và cái người ta thật sự dùng để chọn đề — LOẠI BIỂU ĐỒ trông ra
+  sao — hiện ngay chứ không phải cuộn xuống mới thấy.
+*/
 function PromptCard({ prompt }: { prompt: WritingPrompt }) {
   const kindLabel =
     prompt.task === 'ielts_task1'
@@ -220,37 +232,84 @@ function PromptCard({ prompt }: { prompt: WritingPrompt }) {
         : 'Task 2';
 
   return (
-    <Card>
-      <View className="flex-row flex-wrap items-center gap-2">
-        <Badge tone="primary" label={prompt.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} />
-        <Badge tone="neutral" label={kindLabel} />
-        <View className="flex-row items-center gap-1">
-          <Icon name="clock" size={14} color={color.muted} />
-          <Text className="font-sans text-label text-muted">
-            {Math.round(prompt.timeLimitSeconds / 60)} phút
+    <View
+      className="h-full overflow-hidden rounded-card bg-surface"
+      style={{ borderWidth: 1.5, borderColor: color.border }}
+    >
+      <View className="flex-row">
+        <View
+          className="items-center justify-center p-2.5"
+          style={{ width: 168, backgroundColor: color.surfaceAlt }}
+        >
+          {prompt.chartData ? (
+            <ChartFigure data={prompt.chartData} width={148} />
+          ) : (
+            <EssayTile kind={kindLabel} />
+          )}
+        </View>
+
+        <View className="min-w-0 flex-1 p-4">
+          <View className="flex-row flex-wrap items-center gap-1.5">
+            <Badge tone="primary" label={prompt.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} />
+            <Badge tone="neutral" label={kindLabel} />
+          </View>
+
+          <Text className="mt-2 font-semi text-body text-ink" numberOfLines={4}>
+            {prompt.promptText}
           </Text>
+
+          <View className="mt-2 flex-row flex-wrap items-center gap-x-3 gap-y-1">
+            <View className="flex-row items-center gap-1">
+              <Icon name="clock" size={13} color={color.muted} />
+              <Text className="font-sans text-label text-muted">
+                {Math.round(prompt.timeLimitSeconds / 60)} phút
+              </Text>
+            </View>
+            <Text className="font-sans text-label text-muted">≥ {prompt.minWords} từ</Text>
+            <Text className="font-sans text-label text-muted">
+              Band {prompt.difficultyBand.toFixed(1)}
+            </Text>
+          </View>
+
+          <View className="flex-1" />
+
+          <View className="mt-3 flex-row flex-wrap gap-2">
+            <Button
+              size="sm"
+              label="Vào phòng viết"
+              onPress={() => router.push(`/write/${prompt.id}` as never)}
+            />
+            <Button
+              size="sm"
+              variant="outline"
+              label="Luyện từng phần"
+              onPress={() => router.push(`/write/drill/${prompt.id}` as never)}
+            />
+          </View>
         </View>
-        <Text className="font-sans text-label text-muted">≥ {prompt.minWords} từ</Text>
-        <Text className="font-sans text-label text-muted">Band {prompt.difficultyBand.toFixed(1)}</Text>
       </View>
+    </View>
+  );
+}
 
-      <Text className="mt-3 font-sans text-body text-ink">{prompt.promptText}</Text>
-
-      {prompt.chartData ? (
-        <View className="mt-3">
-          <ChartFigure data={prompt.chartData} width={600} />
-        </View>
-      ) : null}
-
-      <View className="mt-4 flex-row flex-wrap gap-2">
-        <Button label="Vào phòng viết" onPress={() => router.push(`/write/${prompt.id}` as never)} />
-        <Button
-          variant="outline"
-          label="Luyện từng phần"
-          onPress={() => router.push(`/write/drill/${prompt.id}` as never)}
-        />
-      </View>
-    </Card>
+/**
+ * Ô hình cho đề Task 2 — dạng luận không có biểu đồ để hiện.
+ *
+ * Không mượn ảnh minh hoạ từ đâu: đề Task 2 là chữ, và một tấm ảnh stock gắn
+ * vào chỉ để lấp chỗ trống sẽ gợi sai chủ đề nhiều hơn là giúp chọn đề. Cái ô
+ * này nói đúng thứ có thật — đây là dạng luận gì.
+ */
+function EssayTile({ kind }: { kind: string }) {
+  return (
+    <View
+      className="h-[92px] w-full items-center justify-center rounded-panel bg-surface px-2"
+      style={{ borderWidth: 1, borderColor: color.border }}
+    >
+      <Icon name="pencil" size={20} color={color.muted} />
+      <Text className="mt-1.5 text-center font-semi text-label text-muted" numberOfLines={2}>
+        {kind}
+      </Text>
+    </View>
   );
 }
 
