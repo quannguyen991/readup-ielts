@@ -1,38 +1,49 @@
 {
   "note": "Sinh bằng scripts/export-provenance-summary.ts. Đừng sửa tay.",
-  "exportedAt": "2026-09-06T18:19:49.480Z",
-  "measuredFrom": "2026-09-06T18:16:22.218Z",
-  "measuredTo": "2026-09-06T18:19:38.033Z",
+  "exportedAt": "2026-09-06T20:21:09.542Z",
+  "measuredFrom": "2026-09-06T19:06:10.799Z",
+  "measuredTo": "2026-09-06T20:21:05.792Z",
   "preregistration": {
     "threshold": 0.08,
     "minSample": 200,
     "registeredIn": "src/services/provenance/ledger.ts"
   },
   "verdict": {
-    "kind": "sample-too-small",
-    "text": "Mẫu 7 lượt, dưới mức tối thiểu 200 đã đăng ký. Không rút kết luận nào từ con số này."
+    "kind": "above-threshold",
+    "text": "Tỉ lệ loại 26.3% trên 205 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
   },
   "overall": {
-    "items": 11,
-    "blindRuns": 7,
-    "blindRejections": 1,
-    "blindNotRun": 4,
+    "items": 226,
+    "blindRuns": 205,
+    "blindRejections": 54,
+    "blindNotRun": 21,
     "byReason": {
-      "answerable-without-passage": 1
+      "answerable-without-passage": 54
     },
-    "blindRejectionRate": 0.14285714285714285
+    "blindRejectionRate": 0.2634146341463415
   },
   "byModel": [
     {
-      "model": "deepseek-v4-flash",
-      "items": 11,
-      "blindRuns": 7,
-      "blindRejections": 1,
-      "blindNotRun": 4,
+      "model": "kr/deepseek-3.2",
+      "items": 114,
+      "blindRuns": 105,
+      "blindRejections": 29,
+      "blindNotRun": 9,
       "byReason": {
-        "answerable-without-passage": 1
+        "answerable-without-passage": 29
       },
-      "blindRejectionRate": 0.14285714285714285
+      "blindRejectionRate": 0.2761904761904762
+    },
+    {
+      "model": "ag/gemini-3.8-flash",
+      "items": 112,
+      "blindRuns": 100,
+      "blindRejections": 25,
+      "blindNotRun": 12,
+      "byReason": {
+        "answerable-without-passage": 25
+      },
+      "blindRejectionRate": 0.25
     }
   ]
 }

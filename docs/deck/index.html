@@ -110,9 +110,10 @@ ul.ticks li b{color:var(--ink)}
   <div class="eyebrow">UNU Macau · AI for SDGs 2026 · Track: AI for Education</div>
   <div class="spacer"></div>
   <h1>Nobody checks whether<br>AI-written exam questions<br><span class="grad">actually test anything.</span></h1>
-  <p class="lead" style="margin-top:26px;max-width:820px">
-    We built the check, ran it across four models from three labs, and published what it found —
-    including the parts it could not check.
+  <!-- Số model KHÔNG gõ tay: đã một lần lệch (deck ghi bốn, đo thật hai) đúng vào
+       chỗ mà cả deck này tồn tại để chống. Nay lấy từ tệp tóm tắt. -->
+  <p class="lead" style="margin-top:26px;max-width:820px" id="hero-sub">
+    We built the check, ran it, and published what it found — including the parts it could not check.
   </p>
   <div class="spacer"></div>
   <div class="foot">
@@ -196,7 +197,7 @@ ul.ticks li b{color:var(--ink)}
 <!-- 5 ── FINDING (numbers filled from the measurement) ────── -->
 <section class="slide">
   <div class="eyebrow">The measurement</div>
-  <h2 style="margin-top:14px">Four models, three labs,<br>one fixed blind judge.</h2>
+  <h2 style="margin-top:14px" id="finding-head">One fixed blind judge.</h2>
   <div class="bars" id="bars">
     <!-- Số liệu điền từ src/data/provenance-summary.json. Không gõ tay. -->
   </div>
@@ -402,6 +403,20 @@ fetch('../../src/data/provenance-summary.json')
     const bars = document.getElementById('bars');
     const note = document.getElementById('finding-note');
     const rows = (s.byModel || []).filter((m) => m.blindRejectionRate !== null);
+
+    /* Đếm phòng lab từ tiền tố tên model, và chỉ đếm khi đọc được. Gõ tay "bốn
+       model, ba lab" đã một lần sai đúng vào chỗ deck này tồn tại để chống. */
+    const n = rows.length;
+    const word = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six'][n] || String(n);
+    const heading = document.getElementById('finding-head');
+    const hero = document.getElementById('hero-sub');
+    if (n > 0) {
+      heading.innerHTML = word + ' model' + (n === 1 ? '' : 's') + ',<br>one fixed blind judge.';
+      hero.textContent =
+        'We built the check, ran it across ' + word.toLowerCase() + ' model' + (n === 1 ? '' : 's') +
+        ', and published what it found — including the parts it could not check.';
+    }
+
     if (!rows.length) {
       bars.innerHTML = '<p class="lead">Measurement in progress — no figure is claimed yet.</p>';
       note.textContent = 'The pre-registered function refuses to conclude below 200 blind runs, and so does this slide.';
