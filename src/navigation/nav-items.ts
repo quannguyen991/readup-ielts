@@ -78,6 +78,14 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
       { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
+      /*
+        Đài quan sát nằm ở nhóm THEO DÕI chứ không phải một nhóm riêng: nó trả
+        lời đúng câu hỏi của nhóm này — "đang tiến tới đâu" — nhưng hỏi về CHÍNH
+        BỘ ĐỀ chứ không phải về người học. Đề mà không đo được cái nó tự nhận
+        đang đo thì mọi con số tiến độ bên trên đều rỗng, nên hai thứ thuộc về
+        cùng một chỗ.
+      */
+      { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
       { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
     ],
   },
