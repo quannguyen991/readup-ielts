@@ -52,3 +52,7 @@ src/data/seed/.ingest-state.json
 
 .secrets-proxies.json
 bench-out/
+
+# Dữ liệu phép đo: sinh ra bằng lời gọi model, không phải mã nguồn.
+# Kết quả đã chốt thì công bố riêng, có ghim ngày và tên model.
+data/provenance/

@@ -21,7 +21,7 @@
  * KHÔNG BAO GIỜ GHI "ĐÃ ĐỖ" CHO MỘT LƯỢT CHƯA CHẠY. Lời gọi hỏng thì nhãn ghi
  * `not-run`, và `ledger.ts` để nó ra ngoài phân số. Xem `provenance/label.ts`.
  */
-import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { appendFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
 import { filterArticles, getArticleWithBody } from '../src/data/articles';
@@ -177,6 +177,11 @@ function parseArgs(argv: string[]): Args {
   };
 }
 
+/** Tệp nội dung câu hỏi, đặt cạnh tệp nhãn: `labels.jsonl` → `labels.items.jsonl`. */
+function itemsPath(labelsPath: string): string {
+  return labelsPath.replace(/\.jsonl$/, '') + '.items.jsonl';
+}
+
 function readLabels(path: string): ProvenanceLabel[] {
   if (!existsSync(path)) return [];
   return readFileSync(path, 'utf8')
@@ -242,6 +247,41 @@ async function main(): Promise<void> {
   console.log('');
 
   mkdirSync(dirname(args.out), { recursive: true });
+
+  /*
+    KHOÁ CHỐNG HAI LẦN CHẠY CÙNG GHI MỘT TỆP.
+
+    Đã vấp thật: dừng một lần chạy nền chỉ giết cái vỏ shell, còn tiến trình node
+    phía sau ống vẫn sống và vẫn ghi tiếp. Hai tiến trình cùng nối vào một tệp thì
+    tệp nhãn và tệp nội dung lệch nhau — mà lệch kiểu ấy KHÔNG hiện ra thành lỗi,
+    nó chỉ hiện ra thành một phép đo sai mà mình tưởng là đúng.
+
+    Khoá ghi theo PID và tự dọn khi thoát. Còn sót lại sau khi máy sập thì xoá tay:
+    câu trả lời đúng là bắt người chạy nhìn vào chứ không phải im lặng đè lên.
+  */
+  const lock = `${args.out}.lock`;
+  if (existsSync(lock)) {
+    throw new Error(
+      `Đang có một lần chạy khác ghi vào ${args.out} (khoá: ${lock}, ` +
+        `pid ${readFileSync(lock, 'utf8').trim()}).\n` +
+        'Nếu chắc chắn không còn tiến trình nào, xoá tệp khoá rồi chạy lại.',
+    );
+  }
+  writeFileSync(lock, String(process.pid), 'utf8');
+  const release = () => {
+    try {
+      if (existsSync(lock)) rmSync(lock);
+    } catch {
+      /* thoát thì thôi, không có gì cứu được nữa */
+    }
+  };
+  process.on('exit', release);
+  for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP'] as const) {
+    process.on(sig, () => {
+      release();
+      process.exit(130);
+    });
+  }
   /*
     Dò trùng theo CẶP (bài, model), không theo từng câu: một lần sinh đề ra cả
     bộ, nên đã đo cặp ấy rồi thì bỏ qua cả cụm. Dựng sẵn tập tiền tố thay vì quét
@@ -327,6 +367,21 @@ async function main(): Promise<void> {
           gates: gatesOut,
         });
         appendFileSync(args.out, `${JSON.stringify(label)}\n`, 'utf8');
+
+        /*
+          NỘI DUNG CÂU HỎI GHI RA TỆP RIÊNG, không nhét vào nhãn.
+
+          Nhãn là hồ sơ xuất xứ — nó đi vào chứng chỉ và hiện trên màn hình, nên
+          phải gọn và ổn định. Nội dung câu hỏi thì cồng kềnh và chỉ cần cho hai
+          việc ngoài lề: dựng phiếu cho người thật làm đối chứng với model bịt
+          mắt, và soi lại một ca lạ. Trộn hai thứ vào một tệp là bắt mọi người
+          đọc nhãn phải tải theo cả kho đề.
+        */
+        appendFileSync(
+          itemsPath(args.out),
+          `${JSON.stringify({ itemId: probe.questionId, ...probe, labelId: label.id })}\n`,
+          'utf8',
+        );
       }
     }
   }
