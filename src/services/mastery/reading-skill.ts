@@ -45,6 +45,10 @@ const SKILL_BY_TYPE: Readonly<Record<QuestionType, MicroSkill | null>> = Object.
 
   // Tra đúng chỗ. Câu trả lời nằm nguyên trong bài, việc của người đọc là tìm ra.
   matching_information: 'locate',
+  // Nối đặc điểm với người/vật: việc chính là TRA đúng chỗ nói về ai.
+  matching_features: 'locate',
+  // Nối vế câu: phải thấy vế sau có được bài kéo theo hay không.
+  matching_sentence_endings: 'entailment',
   sentence_completion: 'locate',
   short_answer: 'locate',
   sat_command_of_evidence: 'locate',

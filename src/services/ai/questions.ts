@@ -11,6 +11,8 @@ const IELTS_TYPES = new Set<QuestionType>([
   'yes_no_not_given',
   'matching_headings',
   'matching_information',
+  'matching_features',
+  'matching_sentence_endings',
   'multiple_choice',
   'sentence_completion',
   'summary_completion',

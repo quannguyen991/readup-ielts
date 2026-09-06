@@ -16,6 +16,8 @@ const ALL_TYPES: QuestionType[] = [
   'yes_no_not_given',
   'matching_headings',
   'matching_information',
+  'matching_features',
+  'matching_sentence_endings',
   'multiple_choice',
   'sentence_completion',
   'summary_completion',
@@ -64,6 +66,7 @@ test('dạng hỏi quan hệ suy ra được xếp vào entailment', () => {
 
 test('dạng bắt tra đúng chỗ được xếp vào locate', () => {
   assert.equal(readingSkillFor('matching_information'), 'locate');
+  assert.equal(readingSkillFor('matching_features'), 'locate');
   assert.equal(readingSkillFor('short_answer'), 'locate');
   assert.equal(readingSkillFor('sat_command_of_evidence'), 'locate');
 });

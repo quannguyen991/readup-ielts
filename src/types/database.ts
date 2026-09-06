@@ -76,6 +76,9 @@ export type QuestionType =
   | 'yes_no_not_given'
   | 'matching_headings'
   | 'matching_information'
+  // Hai dạng nối bổ sung 09/2026 — đề thật có, kho cũ thì chưa.
+  | 'matching_features'
+  | 'matching_sentence_endings'
   | 'multiple_choice'
   | 'sentence_completion'
   | 'summary_completion'
