@@ -117,10 +117,30 @@ order — which is why it lives in code, not in a document that can be edited at
 Three conclusions are written out in full, one per outcome. Choosing between them is an
 arithmetic comparison, not a judgement.
 
-**Status as of 7 September 2026: the run is in progress and has not yet reached the
-200-run minimum, so no headline figure is claimed.** The observatory page currently
-displays `NO CONCLUSION YET` and says how far short it is. A page that admits it lacks
-data is worth more than a page with a number.
+## The result
+
+Measured 7 September 2026, on 401 generated items over 366 completed blind checks:
+
+> **30.3% of AI-generated reading questions could be answered without the passage.**
+
+| Generator | Rejection rate | |
+|---|---|---|
+| `deepseek-3.2` | **30.5%** | 60 / 197 |
+| `gemini-3.8-flash` | **30.2%** | 51 / 169 |
+
+A further **35 checks could not be completed** and are counted separately, outside the
+fraction — never as passes.
+
+The judge was `claude-haiku-4.5`, fixed across both generators and from a third lab.
+
+**The most interesting number here is how close the two are.** Two models from two
+different labs, given the same prompt — the one that already forbids this failure in six
+explicit rules — land within 0.3 percentage points of each other. That is the signature
+of a property of the task, not a defect in one vendor's model.
+
+The pre-registered verdict function selected `above-threshold` by arithmetic: 30.3% is
+above the 8% committed to git before the first run, on 366 checks against a minimum of
+200.
 
 ## The human anchor
 

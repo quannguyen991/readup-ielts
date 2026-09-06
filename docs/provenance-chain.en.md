@@ -171,12 +171,34 @@ was cut for exactly this reason. They can comfortably support an agreement rate.
 protocol, including the sentences the facilitator must not say, is in
 `docs/doi-chung-nguoi-that.md`.
 
-## Status of the figures
+## The figures
 
-The measurement is running as of 7 September 2026. A pilot pass over two passages
-returned 3 rejections in 8 blind runs, and the pre-registration guard **refused to
-draw any conclusion** from it, as designed. No headline figure is claimed here until
-the 200-run minimum is met.
+Measured 7 September 2026. 401 generated items, 366 completed blind checks.
+
+| | |
+|---|---|
+| Answerable without the passage | **111 / 366 — 30.3%** |
+| `deepseek-3.2` | 30.5% (60 / 197) |
+| `gemini-3.8-flash` | 30.2% (51 / 169) |
+| Could not be checked | 35, counted separately |
+| Judge | `claude-haiku-4.5`, fixed, third lab |
+| Pre-registered verdict | `above-threshold` |
+
+Two models from two labs, given the prompt that already forbids this in six explicit
+rules, land within 0.3 points of each other. That closeness is the finding: it is a
+property of the task, not a defect in one vendor's model.
+
+**An earlier pilot pass, before the sample minimum was met, returned 3 rejections in 8
+runs — and the pre-registration guard refused to draw any conclusion from it, as
+designed.** The same function later selected `above-threshold` by arithmetic, not by
+anyone's judgement.
+
+**A bug we found by measuring, recorded here because it cuts the right way.** A type
+error in our own reply reader marked 18% of checks "not run" when the judge had in fact
+answered — it accepted a string answer but not a numeric one, and the judge returns
+option indices as numbers. Because `not-run` is excluded from the fraction rather than
+counted as a pass, the bug *understated* our own result instead of inflating it. The
+honest-by-default design made its own error visible and harmless.
 
 ## SDG mapping
 

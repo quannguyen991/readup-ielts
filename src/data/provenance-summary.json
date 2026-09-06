@@ -1,8 +1,8 @@
 {
   "note": "Sinh bằng scripts/export-provenance-summary.ts. Đừng sửa tay.",
-  "exportedAt": "2026-09-06T20:21:09.542Z",
+  "exportedAt": "2026-09-06T21:22:21.905Z",
   "measuredFrom": "2026-09-06T19:06:10.799Z",
-  "measuredTo": "2026-09-06T20:21:05.792Z",
+  "measuredTo": "2026-09-06T21:18:28.160Z",
   "preregistration": {
     "threshold": 0.08,
     "minSample": 200,
@@ -10,40 +10,40 @@
   },
   "verdict": {
     "kind": "above-threshold",
-    "text": "Tỉ lệ loại 26.3% trên 205 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
+    "text": "Tỉ lệ loại 30.3% trên 366 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
   },
   "overall": {
-    "items": 226,
-    "blindRuns": 205,
-    "blindRejections": 54,
-    "blindNotRun": 21,
+    "items": 401,
+    "blindRuns": 366,
+    "blindRejections": 111,
+    "blindNotRun": 35,
     "byReason": {
-      "answerable-without-passage": 54
+      "answerable-without-passage": 111
     },
-    "blindRejectionRate": 0.2634146341463415
+    "blindRejectionRate": 0.30327868852459017
   },
   "byModel": [
     {
       "model": "kr/deepseek-3.2",
-      "items": 114,
-      "blindRuns": 105,
-      "blindRejections": 29,
-      "blindNotRun": 9,
+      "items": 210,
+      "blindRuns": 197,
+      "blindRejections": 60,
+      "blindNotRun": 13,
       "byReason": {
-        "answerable-without-passage": 29
+        "answerable-without-passage": 60
       },
-      "blindRejectionRate": 0.2761904761904762
+      "blindRejectionRate": 0.30456852791878175
     },
     {
       "model": "ag/gemini-3.8-flash",
-      "items": 112,
-      "blindRuns": 100,
-      "blindRejections": 25,
-      "blindNotRun": 12,
+      "items": 191,
+      "blindRuns": 169,
+      "blindRejections": 51,
+      "blindNotRun": 22,
       "byReason": {
-        "answerable-without-passage": 25
+        "answerable-without-passage": 51
       },
-      "blindRejectionRate": 0.25
+      "blindRejectionRate": 0.30177514792899407
     }
   ]
 }

@@ -4,8 +4,12 @@
 form at ff.lingxi360.com. Deadline 15 September 2026.*
 
 Fill the personal fields yourself — name, university, email, phone, address. Everything
-below is ready to paste. Figures marked `[N]` must be replaced with the real number once
-the measurement passes its 200-run minimum; **do not paste a figure before then.**
+below is ready to paste.
+
+**The measurement completed on 7 September 2026: 30.3% of AI-generated reading questions
+(111 of 366 blind checks) could be answered without the passage.** That figure is safe to
+use. Regenerate it with `npx tsx scripts/export-provenance-summary.ts` if the corpus grows,
+and update this file rather than typing a different number anywhere else.
 
 ---
 
@@ -66,6 +70,12 @@ exam items is worth more to this project than money right now.)*
 > discarded. No formal rule catches this failure — "According to the passage, is water
 > wet?" is correctly formatted, quotes the source verbatim, and is useless.
 >
+> Run at scale, that gate produced a number nobody had published: **30.3% of generated
+> reading questions — 111 of 366 — could be answered blind.** Two models from two
+> different labs landed within 0.3 percentage points of each other, so this is a property
+> of the task rather than one vendor's defect. The generation prompt already forbade the
+> failure in six explicit rules; the measurement is of what happens anyway.
+>
 > Each verdict becomes a signed provenance label. Those labels feed two things: a public
 > measurement of how often AI-generated reading questions fail this test, broken down by
 > model; and a W3C Verifiable Credential the learner holds on their own device, signed
@@ -87,8 +97,14 @@ those. Export to PDF before uploading — the form accepts up to 30 MB.
 
 Written down so a late-night edit does not quietly overstate things:
 
-- **No measurement figure** until the run passes 200 blind checks. The pre-registered
-  function refuses to conclude below that, and so should the form.
+- **Not "the average AI tutor produces 30% bad questions."** The figure is two models,
+  one prompt, one public-domain corpus, one judge. Say what was measured, not what it
+  implies about products we did not test.
+- **Never quote the figure without the 35 unchecked runs.** They are excluded from the
+  fraction, not counted as passes, and leaving them out makes the denominator look
+  cleaner than it is.
+- **Not "verified by humans."** The human anchor has not been run yet. Until it has, this
+  is a model adjudicating a model, and the observatory page says so.
 - **Not "verified by an institution."** The credential is self-issued. Say "portable and
   independently checkable", never "recognised".
 - **Not "proven to improve learning."** There is no efficacy data. TRL 6, not 7.
