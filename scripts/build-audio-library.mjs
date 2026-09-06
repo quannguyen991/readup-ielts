@@ -172,15 +172,50 @@ function bocBai(html, url) {
  * làm hỏng một bài nghe.
  */
 function tachChuGiai(doan) {
-  const moc = doan.findIndex((d) => /^words in this story/i.test(d));
+  // Tìm mốc bằng BA dấu hiệu, không phải một.
+  //
+  // Bản đầu chỉ tìm đoạn bắt đầu bằng "Words in This Story" và ra 0/251 bài có
+  // chú giải — vì tiêu đề đó nằm trong thẻ <h2>, mà bước bóc chỉ lấy <p>. Hậu
+  // quả không phải là thiếu một tính năng phụ: toàn bộ mục từ vựng bị TÍNH VÀO
+  // LỜI ĐỌC ở 182/251 bài. Đề nghe hiểu sinh từ đó sẽ hỏi về những câu không hề
+  // có trong tiếng.
+  //
+  // Dấu hiệu chắc chắn nhất hoá ra là dòng gạch dưới ngăn cách, thứ luôn có
+  // trong thân bài. Lấy mốc CUỐI CÙNG trong ba dấu hiệu.
+  let moc = -1;
+  doan.forEach((d, i) => {
+    const laGachNgang = /^[_\-–—\s]{8,}$/.test(d);
+    const laTieuDe = /^words in this story/i.test(d);
+    if (laGachNgang || laTieuDe) moc = i;
+  });
   if (moc < 0) return { loi: doan, tuVung: [] };
 
   const tuVung = [];
   for (const d of doan.slice(moc + 1)) {
+    // Mục từ điển: "term – n. định nghĩa". Vế đầu ngắn, có gạch ngang ngăn.
     const m = d.match(/^(.{1,40}?)\s+[-–—]\s+(.+)$/);
     if (m) tuVung.push({ term: m[1].trim(), definition: m[2].trim() });
   }
-  return { loi: doan.slice(0, moc), tuVung };
+
+  let loi = doan.slice(0, moc);
+
+  // Bài nào có NHIỀU dòng gạch ngăn thì chỉ dòng cuối làm mốc, những dòng
+  // trước vẫn nằm lại trong lời đọc. Chúng không phải câu.
+  loi = loi.filter((d) => !/^[_\-–—\s]{8,}$/.test(d));
+
+  // Vẫn còn một ít bài mà mục từ vựng nằm TRƯỚC dòng gạch cuối. Cắt đuôi
+  // những dòng mang đúng dạng mục từ điển — nhận ra bằng nhãn từ loại
+  // ("n.", "v.", "adj.", "adv.") mà ban biên tập VOA luôn ghi. Chỉ dựa vào
+  // dấu gạch ngang thì sẽ cắt nhầm câu văn bình thường có gạch ngang.
+  const laMucTuDien = (d) =>
+    d.length < 160 && /^.{1,40}?\s+[-–—]\s+(n|v|adj|adv|prep|phr|idiom)\b\.?/i.test(d);
+  while (loi.length && laMucTuDien(loi[loi.length - 1])) {
+    const d = loi.pop();
+    const m = d.match(/^(.{1,40}?)\s+[-–—]\s+(.+)$/);
+    if (m) tuVung.unshift({ term: m[1].trim(), definition: m[2].trim() });
+  }
+
+  return { loi, tuVung };
 }
 
 async function chayMotMuc(muc, soBai) {
