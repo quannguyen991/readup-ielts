@@ -1,0 +1,38 @@
+{
+  "note": "Sinh bằng scripts/export-provenance-summary.ts. Đừng sửa tay.",
+  "exportedAt": "2026-09-06T18:19:49.480Z",
+  "measuredFrom": "2026-09-06T18:16:22.218Z",
+  "measuredTo": "2026-09-06T18:19:38.033Z",
+  "preregistration": {
+    "threshold": 0.08,
+    "minSample": 200,
+    "registeredIn": "src/services/provenance/ledger.ts"
+  },
+  "verdict": {
+    "kind": "sample-too-small",
+    "text": "Mẫu 7 lượt, dưới mức tối thiểu 200 đã đăng ký. Không rút kết luận nào từ con số này."
+  },
+  "overall": {
+    "items": 11,
+    "blindRuns": 7,
+    "blindRejections": 1,
+    "blindNotRun": 4,
+    "byReason": {
+      "answerable-without-passage": 1
+    },
+    "blindRejectionRate": 0.14285714285714285
+  },
+  "byModel": [
+    {
+      "model": "deepseek-v4-flash",
+      "items": 11,
+      "blindRuns": 7,
+      "blindRejections": 1,
+      "blindNotRun": 4,
+      "byReason": {
+        "answerable-without-passage": 1
+      },
+      "blindRejectionRate": 0.14285714285714285
+    }
+  ]
+}
