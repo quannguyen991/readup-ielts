@@ -11,6 +11,7 @@ import { LOCALE_LABEL, type Locale } from '@/i18n';
 import { useLocaleStore, useT } from '@/i18n/useT';
 import { useMasteryStore } from '@/store/useMasteryStore';
 import { AuditPanel } from '@/components/ai-literacy/AuditPanel';
+import { CredentialCard } from '@/components/credential/CredentialCard';
 import { ARTICLES, getArticleWithBody } from '@/data/articles';
 import { pickTransferSource } from '@/services/proofloop/transfer-source';
 import { color } from '@/theme/tokens';
@@ -84,6 +85,19 @@ export default function MasteryScreen() {
       <LanguageToggle />
 
       <ExportCard />
+
+      {/*
+        CHỨNG CHỈ KÝ SỐ, đặt NGAY DƯỚI bản xuất cho giáo viên — có chủ ý.
+
+        Hai thứ cùng lấy dữ liệu từ một chỗ và trông na ná nhau, nên đặt cạnh
+        nhau thì khác biệt tự lộ ra: bản trên là JSON trần, ai sửa cũng được và
+        không ai biết; bản dưới ký bằng khoá trên máy người học, sửa một ký tự là
+        hỏng chữ ký. Tách chúng ra hai chỗ thì người dùng sẽ dùng cái gặp trước
+        và không bao giờ biết cái kia giải quyết vấn đề gì.
+      */}
+      <View className="mt-4">
+        <CredentialCard ledger={ledger} />
+      </View>
 
       {/*
         SOI MỘT BẢN CỦA AI — dời từ màn xem lại về đây (07/09/2026).
