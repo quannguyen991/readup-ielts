@@ -22,11 +22,12 @@ import { findEvidenceSpan, mergeSpans, type EvidenceSpan } from '@/lib/reading/e
 import { ReadingCoachPanel, type CoachRequest } from '@/components/reader/ReadingCoachPanel';
 import { ProofStateBadge } from '@/components/reader/ProofStateBadge';
 import { ProbePanel } from '@/components/reader/ProbePanel';
-import { AuditPanel } from '@/components/ai-literacy/AuditPanel';
+import { ExplainPanel } from '@/components/reader/ExplainPanel';
 import { classify } from '@/services/proofloop/state';
 import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { usePlan } from '@/store/useBillingStore';
 import { color, highlightColors } from '@/theme/tokens';
 import type { QuestionType } from '@/types/database';
 
@@ -36,6 +37,7 @@ export default function ReviewScreen() {
   const session = useStudyStore((s) => s.sessions.find((x) => x.id === sessionId));
   const questionSet = useQuestionStore((s) => (session ? s.sets[session.articleId] : undefined));
 
+  const plan = usePlan();
   const [filter, setFilter] = useState<'all' | 'correct' | 'incorrect'>('all');
   const [typeFilter, setTypeFilter] = useState<QuestionType | 'all'>('all');
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
@@ -52,18 +54,6 @@ export default function ReviewScreen() {
   // không chỉ metadata.
   const article = session ? getArticleWithBody(session.articleId) : undefined;
 
-  /*
-    Bài dùng cho phần "soi một bản của AI" — luôn là bài KHÁC bài vừa làm.
-
-    Cùng phép chọn tất định với phép thử chuyển giao, nên cùng một lượt làm bài
-    thì luôn soi trên cùng một bài; không dựng lại được thì không soi lại được
-    một ca lạ.
-  */
-  const auditArticle = useMemo(() => {
-    if (!article) return undefined;
-    const pick = pickTransferSource(article, ARTICLES);
-    return pick ? getArticleWithBody(pick.id) : undefined;
-  }, [article]);
 
   const rows = useMemo(() => {
     if (!session || !questionSet) return [];
@@ -118,8 +108,12 @@ export default function ReviewScreen() {
   }
 
   const incorrect = session.attempts.filter((a) => !a.isCorrect).length;
-  const avgPerQuestion =
-    session.total === 0 ? 0 : Math.round(session.durationMs / session.total / 1000);
+  /*
+    "Bỏ qua" là câu KHÔNG có câu trả lời, "sai" là câu có trả lời mà trật. Cộng
+    hai cái lại đúng bằng số câu không đúng — nên bảng chấm không có chỗ hụt.
+  */
+  const skipped = session.attempts.filter((a) => !a.isCorrect && !a.userAnswer?.trim()).length;
+  const wrong = incorrect - skipped;
 
   return (
     <Screen>
@@ -158,104 +152,72 @@ export default function ReviewScreen() {
         </View>
       </View>
 
-      {/* Hàng chỉ số đầu trang */}
+      {/*
+        BẢNG CHẤM, và nó tách BỎ QUA khỏi SAI.
+
+        Bản trước chỉ có "đúng / tổng" và một tỉ lệ. Hai con số ấy gộp mất một
+        phân biệt quan trọng: bỏ trống 34 câu vì hết giờ khác hẳn làm sai 34 câu
+        vì đọc sai. Người thứ nhất cần luyện tốc độ, người thứ hai cần luyện kỹ
+        năng — mà một tỉ lệ đúng thì cho cả hai cùng một con số.
+      */}
       <View className="mt-4">
-        <Grid columns={4} tabletColumns={2} mobileColumns={1}>
+        <Grid columns={4} tabletColumns={2} mobileColumns={2}>
           <StatCard
-            label="Correct Answers"
-            value={`${session.rawScore}`}
+            variant="sticker"
+            label="Câu đúng"
+            value={String(session.rawScore)}
             unit={`/ ${session.total}`}
             icon="check"
             tone="success"
-            caption={`${incorrect} câu sai`}
+            caption={`${pct(session.rawScore, session.total)}%`}
           />
           <StatCard
-            label="Accuracy"
-            value={`${session.accuracy}`}
-            unit="%"
-            icon="target"
-            tone="primary"
-            status={{
-              label: session.accuracy >= 80 ? 'Excellent' : session.accuracy >= 60 ? 'Good' : 'Cần luyện thêm',
-              tone: session.accuracy >= 60 ? 'success' : 'warning',
-            }}
+            variant="sticker"
+            label="Bỏ qua"
+            value={String(skipped)}
+            icon="clock"
+            tone="warning"
+            caption={`${pct(skipped, session.total)}%`}
           />
           <StatCard
-            label="Estimated Band"
+            variant="sticker"
+            label="Câu sai"
+            value={String(wrong)}
+            icon="close"
+            tone="danger"
+            caption={`${pct(wrong, session.total)}%`}
+          />
+          <StatCard
+            variant="sticker"
+            label="Band IELTS"
             value={formatBand(session.estimatedBand)}
             icon="trending"
             tone="accent"
             caption={
               session.estimatedBand == null
-                ? 'Bài SAT không quy ra band IELTS'
-                : 'Quy đổi từ điểm thô 40 câu'
+                ? 'Bài SAT không quy ra band'
+                : `Làm trong ${formatDuration(session.durationMs)}`
             }
-          />
-          <StatCard
-            label="Time Used"
-            value={formatDuration(session.durationMs)}
-            icon="clock"
-            tone="warning"
-            caption={`Trung bình ${avgPerQuestion}s / câu`}
           />
         </Grid>
       </View>
 
-      {coachRequest ? <ReadingCoachPanel request={coachRequest} /> : null}
-
-      {/*
-        SOI MỘT BẢN CỦA AI.
-
-        Đặt ở đây, ngay sau phần AI vừa nhận xét bài của họ, là cố ý: người học
-        vừa đọc một tràng chữ do máy viết ra, và câu hỏi tiếp theo đúng lúc nhất
-        là "bạn có kiểm được cái vừa đọc không".
-
-        Bản đem soi dựng trên BÀI KHÁC, không phải bài họ vừa làm — soi trên bài
-        vừa đọc kỹ thì đang đo trí nhớ về bài đó chứ không đo năng lực đọc kết
-        quả máy.
-      */}
-      {article && auditArticle && rows[0]?.question ? (
-        <AuditPanel
-          paragraphs={auditArticle.paragraphs}
-          seed={`${session.id}:${auditArticle.id}`}
-          sourceId={auditArticle.id}
-          fetchDraft={async () => {
-            const q = rows[0]?.question;
-            if (!q) return null;
-            /*
-              Gửi lên một quan sát KHỚP để bảng phép thử ra loại `transfer`.
-
-              Đây không phải lượt làm bài của ai cả và KHÔNG được ghi vào sổ —
-              chỗ này chỉ cần một bản do model viết ra để đem soi. Việc chấm nằm
-              ở `gradeAudit`, và nó chấm dựa trên lỗi ta tự cấy, không dựa vào
-              lời nào của model.
-            */
-            const res = await fetch('/api/proofloop/probe', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                answerCorrect: true,
-                mark: {
-                  paragraphIndex: q.evidenceParagraphIndex,
-                  phrase: q.evidenceText,
-                  startOffset: 0,
-                  endOffset: q.evidenceText.length,
-                },
-                truthParagraphIndex: q.evidenceParagraphIndex,
-                passage: article.paragraphs.join('\n\n'),
-                questionPrompt: q.prompt,
-                correctAnswer: q.correctAnswer,
-                truthEvidenceText: q.evidenceText,
-                sourceId: article.id,
-                transferPassage: auditArticle.paragraphs.join('\n\n'),
-                transferSourceId: auditArticle.id,
-              }),
-            });
-            const json = await res.json();
-            return json?.draft ?? null;
-          }}
+      <View className="mt-4 flex-row flex-wrap gap-2">
+        <Button
+          label="Làm lại bài"
+          variant="outline"
+          iconLeft="refresh"
+          onPress={() => router.push(`/read/${session.articleId}` as never)}
         />
-      ) : null}
+        <Button
+          label={`Xem bài giải chi tiết (${incorrect})`}
+          iconRight="arrow-right"
+          disabled={incorrect === 0}
+          onPress={() => setFilter('incorrect')}
+        />
+      </View>
+
+      {coachRequest ? <ReadingCoachPanel request={coachRequest} /> : null}
 
       <View className="mt-4 flex-row flex-wrap gap-4">
         {/* Danh sách câu hỏi */}
@@ -466,12 +428,36 @@ export default function ReviewScreen() {
                             </View>
                           ) : null}
 
-                          <Button
-                            label="Why this is correct"
-                            variant="outline"
-                            size="sm"
-                            iconLeft="info"
-                            onPress={() => router.push(`/read/${session.articleId}` as never)}
+                          {/*
+                            Nút "Why this is correct" đã bỏ (07/09/2026).
+
+                            Nó chỉ đưa người học quay lại chính bài đọc — tức là
+                            trả lời "vì sao đúng" bằng cách bảo họ tự đi tìm lấy.
+                            Câu bằng chứng và đoạn số đã nằm ngay phía trên rồi;
+                            thứ còn thiếu là lời giải theo bước, và đó là việc của
+                            khối dưới đây.
+                          */}
+                          <ExplainPanel
+                            paid={plan !== 'free'}
+                            fetchExplanation={async () => {
+                              const res = await fetch('/api/reading/explain', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({
+                                  articleId: session.articleId,
+                                  prompt: question.prompt,
+                                  correctAnswer: question.correctAnswer,
+                                  userAnswer: attempt.userAnswer,
+                                  evidenceText: question.evidenceText,
+                                  typeLabel: QUESTION_TYPE_LABEL[question.type],
+                                }),
+                              });
+                              const json = (await res.json()) as { text?: string; error?: string };
+                              if (!res.ok || !json.text) {
+                                throw new Error(json.error ?? `Máy chủ trả ${res.status}`);
+                              }
+                              return json.text;
+                            }}
                           />
                         </View>
                       ) : null}
@@ -596,7 +582,7 @@ export default function ReviewScreen() {
 
 function renderWithEvidence(
   paragraph: string,
-  evidence: Array<{ question?: { evidenceText: string }; attempt: { isCorrect: boolean }; order: number }>,
+  evidence: { question?: { evidenceText: string }; attempt: { isCorrect: boolean }; order: number }[],
 ): React.ReactNode {
   /*
     Tô MỌI câu trích trong đoạn, không chỉ câu đầu.
@@ -642,7 +628,7 @@ function renderWithEvidence(
   return <>{parts}</>;
 }
 
-function worstType(attempts: Array<{ type: QuestionType; isCorrect: boolean }>): QuestionType {
+function worstType(attempts: { type: QuestionType; isCorrect: boolean }[]): QuestionType {
   const tally = new Map<QuestionType, { correct: number; total: number }>();
 
   for (const attempt of attempts) {
@@ -712,4 +698,9 @@ function formatDuration(ms: number): string {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
   return `${minutes}m ${String(seconds).padStart(2, '0')}s`;
+}
+
+/** Phần trăm làm tròn, và 0/0 ra 0 chứ không ra NaN. */
+function pct(part: number, total: number): number {
+  return total === 0 ? 0 : Math.round((part / total) * 100);
 }

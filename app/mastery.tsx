@@ -10,6 +10,9 @@ import { DOMAIN_LABEL, type Domain, type SkillRecord, type SkillStatus } from '@
 import { LOCALE_LABEL, type Locale } from '@/i18n';
 import { useLocaleStore, useT } from '@/i18n/useT';
 import { useMasteryStore } from '@/store/useMasteryStore';
+import { AuditPanel } from '@/components/ai-literacy/AuditPanel';
+import { ARTICLES, getArticleWithBody } from '@/data/articles';
+import { pickTransferSource } from '@/services/proofloop/transfer-source';
 import { color } from '@/theme/tokens';
 
 /**
@@ -81,6 +84,15 @@ export default function MasteryScreen() {
       <LanguageToggle />
 
       <ExportCard />
+
+      {/*
+        SOI MỘT BẢN CỦA AI — dời từ màn xem lại về đây (07/09/2026).
+
+        Ở màn xem lại nó chen vào giữa lúc người học đang muốn biết mình sai câu
+        nào, nên đọc ra như một thứ lạc đề. Ở đây thì đúng chỗ: đây là sổ ghi cả
+        mảng `ai-literacy`, và bài soi chính là bài sinh ra những dòng trong sổ ấy.
+      */}
+      <AuditSection />
 
       <Card className="mt-4">
         <Text className="font-strong text-body text-ink">{t('mastery.whyStrictTitle')}</Text>
@@ -264,5 +276,54 @@ function ExportCard() {
         </View>
       ) : null}
     </Card>
+  );
+}
+
+
+/**
+ * Khối soi bản AI, tự lấy bài của mình.
+ *
+ * Chọn bài TẤT ĐỊNH theo bài đầu kho, nên mở lại màn này thì vẫn là bản cũ chứ
+ * không đổi bài mỗi lần vẽ lại — đổi mỗi lần vẽ thì người đang đọc dở một bản sẽ
+ * mất nó ngay khi chạm vào thứ khác trên màn.
+ */
+function AuditSection() {
+  const source = useMemo(() => {
+    const first = ARTICLES.find((a) => a.exam === 'ielts' && a.licenseType !== 'headline_only');
+    if (!first) return null;
+    const pick = pickTransferSource(first, ARTICLES);
+    const full = pick ? getArticleWithBody(pick.id) : undefined;
+    return full ? { origin: getArticleWithBody(first.id), audit: full } : null;
+  }, []);
+
+  if (!source?.origin || !source.audit) return null;
+  const { origin, audit } = source;
+
+  return (
+    <AuditPanel
+      paragraphs={audit.paragraphs}
+      seed={audit.id}
+      sourceId={audit.id}
+      fetchDraft={async () => {
+        const res = await fetch('/api/proofloop/probe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            answerCorrect: true,
+            mark: { paragraphIndex: 0, phrase: origin.paragraphs[0] ?? '', startOffset: 0, endOffset: 1 },
+            truthParagraphIndex: 0,
+            passage: origin.paragraphs.join('\n\n'),
+            questionPrompt: `What is the main idea of "${origin.title}"?`,
+            correctAnswer: origin.title,
+            truthEvidenceText: origin.paragraphs[0] ?? '',
+            sourceId: origin.id,
+            transferPassage: audit.paragraphs.join('\n\n'),
+            transferSourceId: audit.id,
+          }),
+        });
+        const json = await res.json();
+        return json?.draft ?? null;
+      }}
+    />
   );
 }
