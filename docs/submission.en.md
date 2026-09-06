@@ -151,7 +151,7 @@ Deployed and publicly reachable, not a prototype.
 | SAT Verbal | 384 questions, 16 skill units |
 | Writing prompts | 60, with per-criterion AI grading and inline error annotation |
 | Vocabulary | 50 topics, 2,500 words with FSRS scheduling |
-| Listening — audio | 251 public-domain pieces shipped **with their transcripts** (202,904 words), nothing to prepare |
+| Listening — audio | 251 public-domain pieces shipped **with their transcripts** (178,280 words) plus 1,112 editor-written glossary entries; nothing to prepare |
 | Listening — video | 220 curated videos at native speed; transcript pasted once per video |
 | Automated tests | 1,556 passing, of which 103 cover the chain described here |
 | Model providers | 3 independent, different labs, automatic failover |
