@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
@@ -84,7 +84,6 @@ const SKILLS: RailSkill[] = [
         children: [
           { key: 'task1', label: 'Task 1 — biểu đồ' },
           { key: 'task2', label: 'Task 2 — luận' },
-          { key: 'sat', label: 'SAT Writing' },
         ],
       },
     ],
@@ -96,14 +95,6 @@ const SKILLS: RailSkill[] = [
     tint: '#0EA5E9',
     options: [],
     comingSoon: true,
-  },
-  {
-    key: 'math',
-    label: 'SAT Math',
-    icon: 'grid',
-    tint: '#F97316',
-    options: [],
-    href: '/math',
   },
 ];
 
@@ -255,7 +246,19 @@ export default function PracticeScreen() {
     <FilterRail
       skills={SKILLS}
       selection={selection}
-      onSelect={setSelection}
+      /*
+        Chọn "Full đề" là ĐI THẲNG sang phòng thi, không dừng ở một thẻ có nút.
+
+        Thẻ trung gian trước đây chỉ nói lại đúng những gì cái nút vừa bấm đã
+        nói, rồi bắt bấm thêm một lần nữa. Người chọn "Full đề" đã quyết rồi.
+      */
+      onSelect={(next) => {
+        if (next.skill === 'reading' && next.option === 'full') {
+          router.push('/mock-tests' as never);
+          return;
+        }
+        setSelection(next);
+      }}
       onNavigate={(href) => router.push(href as never)}
       groups={
         selection.skill === 'reading' ? (
@@ -389,9 +392,7 @@ export default function PracticeScreen() {
           className="flex-1"
           key={filterKey}
         >
-          {selection.skill === 'reading' && selection.option === 'full' ? (
-            <FullTestCard />
-          ) : selection.skill === 'reading' ? (
+          {selection.skill === 'reading' ? (
             <ResultGrid
               count={readingMatches.length}
               page={page}
@@ -414,9 +415,7 @@ export default function PracticeScreen() {
                 ))}
             </ResultGrid>
           ) : selection.skill === 'writing' ? (
-            selection.child === 'sat' ? (
-              <SatWritingCard />
-            ) : (
+            (
               <ResultGrid
                 count={writingMatches.length}
                 page={page}
@@ -495,14 +494,7 @@ function QuickStart({ onPick }: { onPick: (next: RailSelection) => void }) {
         tint="#A855F7"
         title="Full đề Reading"
         note="3 passage · 60 phút"
-        onPress={() => onPick({ skill: 'reading', option: 'full', child: null })}
-      />
-      <Shortcut
-        icon="grid"
-        tint="#F97316"
-        title="SAT Math"
-        note={`${CURRICULUM_TOTALS.sets} bộ theo lộ trình`}
-        onPress={() => router.push('/math' as never)}
+        onPress={() => router.push('/mock-tests' as never)}
       />
     </View>
   );
@@ -658,37 +650,4 @@ function Meta({ icon, text }: { icon: 'clock' | 'list'; text: string }) {
   );
 }
 
-function FullTestCard() {
-  return (
-    <Card>
-      <Text className="font-strong text-cardTitle text-ink">Full đề Reading</Text>
-      <Text className="mt-1 font-sans text-body text-muted">
-        Ba passage theo đúng cấu trúc đề thật, độ khó tăng dần, 60 phút và chấm gộp cả ba.
-      </Text>
-      <Button
-        className="mt-3 self-start"
-        label="Vào thi thử"
-        iconRight="arrow-right"
-        onPress={() => router.push('/mock-tests' as never)}
-      />
-    </Card>
-  );
-}
 
-function SatWritingCard() {
-  return (
-    <Card>
-      <Text className="font-strong text-cardTitle text-ink">SAT Writing</Text>
-      <Text className="mt-1 font-sans text-body text-muted">
-        Bốn dạng câu thuộc hai domain Writing của SAT Reading and Writing: Transitions, Rhetorical
-        Synthesis, Boundaries, và Form/Structure/Sense.
-      </Text>
-      <Button
-        className="mt-3 self-start"
-        label="Vào luyện SAT Writing"
-        iconRight="arrow-right"
-        onPress={() => router.push('/write/sat' as never)}
-      />
-    </Card>
-  );
-}

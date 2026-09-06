@@ -404,29 +404,42 @@ export default function ReadScreen() {
 
   return (
     <View className="flex-1 bg-canvas">
-      {/* Header: độ khó, thời gian, tiến độ câu, đồng hồ */}
+      {/*
+        Header: độ khó, thời gian, tiến độ câu, đồng hồ.
+
+        MỌI Ô CÙNG MỘT CHIỀU CAO (h-7). `items-center` một mình không đủ: bốn ô ở
+        đây cao thấp khác nhau vì viên nhãn có đệm dọc riêng còn cụm biểu tượng
+        thì không, nên căn giữa xong chúng vẫn lệch nhau vài điểm ảnh và cả hàng
+        đọc ra là gãy. Ép cùng chiều cao rồi mới căn giữa thì chúng nằm đúng một
+        đường.
+
+        Chữ cũng về CÙNG một cỡ: "Quay lại" trước dùng cỡ body giữa những ô cỡ
+        label, nên phần chân chữ của nó nhô cao hơn phần còn lại.
+      */}
       <View className="flex-row flex-wrap items-center gap-3 border-b border-border bg-surface px-4 py-3">
         <Pressable
           onPress={() => router.back()}
-          className="flex-row items-center gap-1.5"
+          className="h-7 flex-row items-center gap-1.5"
           accessibilityRole="button"
         >
-          <Icon name="chevron-left" size={16} color={color.muted} />
-          <Text className="font-semi text-body text-muted">Quay lại</Text>
+          <Icon name="chevron-left" size={15} color={color.muted} />
+          <Text className="font-semi text-label text-muted">Quay lại</Text>
         </Pressable>
 
-        <Badge
-          label={article.cefrLevel ?? '—'}
-          tone={article.cefrLevel === 'C2' ? 'danger' : article.cefrLevel === 'C1' ? 'warning' : 'success'}
-        />
-        <Badge label={readingLevelLabel(article) ?? '—'} tone="primary" />
+        <View className="h-7 flex-row items-center gap-2">
+          <Badge
+            label={article.cefrLevel ?? '—'}
+            tone={article.cefrLevel === 'C2' ? 'danger' : article.cefrLevel === 'C1' ? 'warning' : 'success'}
+          />
+          <Badge label={readingLevelLabel(article) ?? '—'} tone="primary" />
+        </View>
 
-        <View className="flex-row items-center gap-1.5">
+        <View className="h-7 flex-row items-center gap-1.5">
           <Icon name="clock" size={14} color={color.subtle} />
           <Text className="font-mid text-label text-muted">{article.estMinutes} min</Text>
         </View>
 
-        <View className="flex-row items-center gap-1.5">
+        <View className="h-7 flex-row items-center gap-1.5">
           <Icon name="clipboard" size={14} color={color.subtle} />
           <Text className="font-mid text-label text-muted">
             {answeredCount} / {questions.length}
