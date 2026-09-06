@@ -113,14 +113,53 @@ async function call(
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env[`AI_${gate.env}_API_KEY`]}`,
     },
-    body: JSON.stringify({ model: gate.model, temperature, messages }),
+    body: JSON.stringify({ model: gate.model, temperature, messages, stream: false }),
     signal: AbortSignal.timeout(180_000),
   });
   if (!res.ok) throw new Error(`${gate.model}: HTTP ${res.status} ${(await res.text()).slice(0, 200)}`);
-  const json = (await res.json()) as { choices?: { message?: { content?: string } }[] };
-  const text = json.choices?.[0]?.message?.content ?? '';
+
+  const raw = await res.text();
+  const text = readCompletion(raw);
   if (!text) throw new Error(`${gate.model}: trả về rỗng`);
   return { text, ms: Date.now() - t0 };
+}
+
+/**
+ * Đọc nội dung từ một phản hồi tương thích OpenAI, dù nó trả JSON hay SSE.
+ *
+ * VÌ SAO PHẢI CHỊU CẢ HAI. Đã vấp thật: gateway cục bộ trên máy này trả về dạng
+ * dòng sự kiện (`data: {...}`) kể cả khi không hỏi xin luồng, nên `res.json()`
+ * ném lỗi "Unexpected token 'd'" và toàn bộ model sau cửa ấy bị ghi là hỏng —
+ * trong khi chúng trả lời hoàn toàn bình thường.
+ *
+ * Vẫn gửi `stream: false` ở trên: nơi nào tôn trọng cờ đó thì đường JSON nhanh
+ * hơn và ít chỗ hỏng hơn. Hàm này là lưới đỡ cho nơi không tôn trọng.
+ */
+function readCompletion(raw: string): string {
+  try {
+    const json = JSON.parse(raw) as { choices?: { message?: { content?: string } }[] };
+    return json.choices?.[0]?.message?.content ?? '';
+  } catch {
+    /* không phải JSON — thử đọc như dòng sự kiện */
+  }
+
+  let out = '';
+  for (const line of raw.split('\n')) {
+    const t = line.trim();
+    if (!t.startsWith('data:')) continue;
+    const payload = t.slice(5).trim();
+    if (payload === '[DONE]') break;
+    try {
+      const chunk = JSON.parse(payload) as {
+        choices?: { delta?: { content?: string }; message?: { content?: string } }[];
+      };
+      const c = chunk.choices?.[0];
+      out += c?.delta?.content ?? c?.message?.content ?? '';
+    } catch {
+      /* một mẩu hỏng không nên làm mất cả câu trả lời */
+    }
+  }
+  return out;
 }
 
 /* ------------------------------------------------------- đọc đề model trả về */
@@ -351,6 +390,20 @@ async function main(): Promise<void> {
           0.4,
         );
         questions = parseQuestions(text);
+        /*
+          GỌI ĐƯỢC NHƯNG RA 0 CÂU LÀ MỘT KIỂU HỎNG KHÁC, phải nói ra.
+
+          Trước đó nhánh này im lặng: model trả về prose, hoặc JSON sai khoá, và
+          vòng lặp chỉ đơn giản không làm gì. Trên màn hình nó trông giống hệt
+          "model này chưa tới lượt" — nên một model hỏng có thể nằm im suốt cả
+          lượt đo mà không ai biết, và bảng kết quả thiếu hẳn một dòng mà không
+          có gì giải thích.
+        */
+        if (questions.length === 0) {
+          process.stdout.write('0');
+          console.error(`\n  ${gen.model}: gọi được nhưng không bóc ra câu nào — "${text.replace(/\s+/g, ' ').slice(0, 120)}"`);
+          continue;
+        }
       } catch (err) {
         process.stdout.write('E');
         console.error(`\n  sinh đề hỏng — ${(err as Error).message}`);
