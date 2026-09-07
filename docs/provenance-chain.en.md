@@ -184,9 +184,25 @@ Measured 7 September 2026. 401 generated items, 366 completed blind checks.
 | Judge | `claude-haiku-4.5`, fixed, third lab |
 | Pre-registered verdict | `above-threshold` |
 
-Two models from two labs, given the prompt that already forbids this in six explicit
-rules, land within 0.3 points of each other. That closeness is the finding: it is a
-property of the task, not a defect in one vendor's model.
+Two **distinct** models, given the prompt that already forbids this in six explicit
+rules, land within 0.3 points of each other. That closeness is the finding: it points at
+a property of the task rather than a defect in one particular model.
+
+**On model identity — what we verified and what we did not.** The models were served
+through a local OpenAI-compatible gateway that routes many upstreams. Gateway labels are
+not trustworthy on their own: one endpoint labelled `gpt-5.6-sol` returned *"Gemini 3.5
+Flash is no longer available"* as its answer, and another labelled `gpt-5.4-mini` routed
+to a different vendor's account entirely.
+
+So we tested distinctness directly. Three probes with many valid answers, at temperature
+0, produced **three completely different outputs across all three endpoints — 0 of 3
+matches for every pair.** That establishes what the finding needs: the two generators are
+different models, and the judge is a third one, so it is not grading its own output.
+
+It does **not** establish which labs made them. One generator self-reports as Gemini,
+consistent with its label; the other self-reports as "Kiro" — a wrapper name, not a model
+— so its `deepseek` label is unconfirmed. We therefore claim *two distinct models*, never
+*two named vendors*.
 
 **An earlier pilot pass, before the sample minimum was met, returned 3 rejections in 8
 runs — and the pre-registration guard refused to draw any conclusion from it, as

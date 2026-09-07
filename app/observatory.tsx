@@ -92,6 +92,15 @@ function Row({ model }: { model: ModelRow }) {
 }
 
 const CAVEATS: readonly string[] = [
+  /*
+    ĐẶT LÊN ĐẦU, có chủ ý. Tên model hiện ngay bên trên trong bảng, nên người
+    đọc mặc định coi chúng là đã xác minh. Chúng KHÔNG. Đã đo được: ba endpoint
+    là ba backend khác nhau (ba prompt mở, nhiệt độ 0, không cặp nào trùng câu
+    nào). Chưa đo được: hãng nào làm ra chúng — và một endpoint mang nhãn OpenAI
+    đã trả lời "Gemini 3.5 Flash is no longer available", nên nhãn của gateway
+    không đáng tin một mình.
+  */
+  'Model names come from the serving gateway and are NOT independently verified — one endpoint labelled as an OpenAI model answered "Gemini 3.5 Flash is no longer available". What was verified is that the endpoints are distinct: three open-ended probes at temperature 0 gave three different answers, 0 of 3 matches for every pair. So no model graded its own output, but the vendor attribution should not be relied on.',
   '"A model could answer it blind" is a lower bound on leakage, not a verdict on pedagogical worth. Real exams also contain items partly answerable from general knowledge.',
   'The passage corpus is Wikipedia, Project Gutenberg and PLOS — not real exam passages.',
   'The judge is itself a model. It is anchored against people answering the same items with passages withheld, and that agreement rate is published even when it is poor.',

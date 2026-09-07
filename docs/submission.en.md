@@ -131,12 +131,20 @@ Measured 7 September 2026, on 401 generated items over 366 completed blind check
 A further **35 checks could not be completed** and are counted separately, outside the
 fraction — never as passes.
 
-The judge was `claude-haiku-4.5`, fixed across both generators and from a third lab.
+The judge was a third, separate model, fixed across both generators.
 
-**The most interesting number here is how close the two are.** Two models from two
-different labs, given the same prompt — the one that already forbids this failure in six
-explicit rules — land within 0.3 percentage points of each other. That is the signature
-of a property of the task, not a defect in one vendor's model.
+**The most interesting number here is how close the two are.** Two distinct models, given
+the same prompt — the one that already forbids this failure in six explicit rules — land
+within 0.3 percentage points of each other. That points at a property of the task rather
+than a defect in one particular model.
+
+**What "distinct" means here, precisely.** The models were served through a gateway that
+routes many upstreams, and gateway labels proved unreliable — one endpoint labelled as an
+OpenAI model answered *"Gemini 3.5 Flash is no longer available"*. So distinctness was
+tested rather than assumed: three open-ended probes at temperature 0 returned **three
+completely different outputs, 0 of 3 matches for every pair.** The two generators are
+different models and the judge is a third, so no model graded its own work. Which *labs*
+built them is not something we can verify from here, and we do not claim it.
 
 The pre-registered verdict function selected `above-threshold` by arithmetic: 30.3% is
 above the 8% committed to git before the first run, on 366 checks against a minimum of

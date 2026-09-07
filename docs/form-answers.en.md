@@ -71,10 +71,11 @@ exam items is worth more to this project than money right now.)*
 > wet?" is correctly formatted, quotes the source verbatim, and is useless.
 >
 > Run at scale, that gate produced a number nobody had published: **30.3% of generated
-> reading questions — 111 of 366 — could be answered blind.** Two models from two
-> different labs landed within 0.3 percentage points of each other, so this is a property
-> of the task rather than one vendor's defect. The generation prompt already forbade the
-> failure in six explicit rules; the measurement is of what happens anyway.
+> reading questions — 111 of 366 — could be answered blind.** Two models, verified
+> distinct by behavioural probe, landed within 0.3 percentage points of each other, which
+> points at a property of the task rather than one model's defect. The generation prompt
+> already forbade the failure in six explicit rules; the measurement is of what happens
+> anyway.
 >
 > Each verdict becomes a signed provenance label. Those labels feed two things: a public
 > measurement of how often AI-generated reading questions fail this test, broken down by
@@ -105,6 +106,9 @@ Written down so a late-night edit does not quietly overstate things:
   cleaner than it is.
 - **Not "verified by humans."** The human anchor has not been run yet. Until it has, this
   is a model adjudicating a model, and the observatory page says so.
+- **Never name the vendors.** The models came through a gateway whose labels proved
+  unreliable. We verified the endpoints are *distinct* models; we did not verify who built
+  them. Say "two distinct models", never "DeepSeek and Gemini".
 - **Not "verified by an institution."** The credential is self-issued. Say "portable and
   independently checkable", never "recognised".
 - **Not "proven to improve learning."** There is no efficacy data. TRL 6, not 7.

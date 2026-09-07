@@ -435,8 +435,11 @@ fetch('../../src/data/provenance-summary.json')
     note.innerHTML = '<b class="hi">' + overall + ' of ' + o.blindRuns +
       ' blind runs were answerable without the passage.</b> ' + o.blindNotRun +
       ' further runs could not be checked and are counted separately, outside the fraction. ' +
-      'Judge: claude-haiku-4.5, fixed across all generators. Measured ' +
-      (s.measuredFrom || '').slice(0, 10) + '.';
+      'A separate model judged, fixed across all generators. Measured ' +
+      (s.measuredFrom || '').slice(0, 10) + '. ' +
+      '<span style="color:#B4690E">Names are gateway labels, not verified identities — ' +
+      'what was verified is that the endpoints are distinct models (three open-ended probes ' +
+      'at temperature 0, 0 of 3 matches for every pair).</span>';
   })
   .catch(() => {
     document.getElementById('bars').innerHTML =
