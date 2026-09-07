@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
 
 import { Button, Icon, PaperCard } from '@/components/ui';
+import { buildMixedRuleQuestionSet } from '@/services/questions/build-set';
 import type { GeneratedQuestion } from '@/services/questions/types';
 import type { TranscriptSentence } from '@/services/youtube/transcript';
 import { observeSkill } from '@/store/useMasteryStore';
@@ -85,34 +86,26 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
 
   const load = useCallback(async () => {
     /*
-      KHÔNG đặt cờ nào trước lời gọi mạng.
+      DỰNG NGAY TRÊN MÁY, KHÔNG GỌI MẠNG.
 
-      Effect bên dưới gọi hàm này ngay khi mở tab; mọi `setState` chạy đồng bộ ở
-      đây sẽ nằm ngay trong lượt commit của effect và kéo theo một lượt render
-      nữa trước khi người dùng kịp thấy gì. Trạng thái chờ đã là giá trị khởi tạo
-      rồi, nên không cần đặt lại; phần dọn lỗi cũ dời xuống nhánh thành công.
+      Trước đây mỗi lần mở tab này là một lượt gọi `/api/questions`, tức một lượt
+      gọi AI cho một video mà phần lớn người vào đây chỉ để chép chính tả. Bộ
+      sinh theo luật dựng đề từ chính phụ đề, xong trong vài mili giây, và không
+      tốn lượt gọi nào — cùng cách đề đọc đã chuyển sang từ 07/09/2026.
+
+      Phụ đề không phải văn xuôi học thuật nên số câu dựng được ít hơn bài đọc;
+      trộn dạng là hợp ở đây, vì đây là luyện nghe chứ không phải thi Reading.
     */
     try {
-      const res = await fetch('/api/questions', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({
-          // Tiền tố `yt-` báo cho store biết đây không phải bài của kho seed.
-          articleId: `yt-${videoId}`,
-          count: 8,
-          passage: { title: `Video ${videoId}`, paragraphs },
-        }),
-        signal: AbortSignal.timeout(75_000),
+      const set = buildMixedRuleQuestionSet({
+        id: `yt-${videoId}`,
+        title: `Video ${videoId}`,
+        paragraphs,
       });
-
-      if (!res.ok) {
-        const body = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error ?? `Máy chủ trả về ${res.status}`);
+      if (set.questions.length === 0) {
+        throw new Error('Phụ đề này quá ngắn hoặc quá ít từ để dựng được câu hỏi.');
       }
-
-      const data = (await res.json()) as { questions?: GeneratedQuestion[] };
-      if (!data.questions?.length) throw new Error('Không sinh được câu hỏi nào từ phụ đề này.');
-      setQuestions(data.questions);
+      setQuestions(set.questions);
       setError(null);
       setStatus('ready');
     } catch (err) {
@@ -122,14 +115,13 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
   }, [paragraphs, videoId]);
 
   /*
-    Chỉ sinh khi người học mở tab này, không sinh sẵn lúc nạp video: mỗi lượt tốn
-    một lời gọi AI, mà phần lớn người vào đây là để chép chính tả.
+    Chỉ dựng khi người học mở tab này, không dựng sẵn lúc nạp video.
 
     Hoãn một nhịp thay vì gọi thẳng trong effect. Lý do thật, không phải để chiều
-    lint: `load` có `setState` bên trong, nên gọi thẳng là mở request mạng ngay
-    giữa lượt commit của màn — chậm đúng vào lúc người dùng vừa bấm sang tab và
-    đang chờ thấy khung chờ hiện ra. Dời ra sau commit thì khung chờ vẽ trước,
-    request đi sau. `clearTimeout` lo trường hợp rời tab trước khi kịp gọi.
+    lint: `load` có `setState` bên trong, nên gọi thẳng là chạy cả bộ dựng đề ngay
+    giữa lượt commit của màn — chặn đúng vào lúc người dùng vừa bấm sang tab và
+    đang chờ thấy khung chờ hiện ra. Dời ra sau commit thì khung chờ vẽ trước.
+    `clearTimeout` lo trường hợp rời tab trước khi kịp dựng.
   */
   useEffect(() => {
     if (paragraphs.length === 0) return;
