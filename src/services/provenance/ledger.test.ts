@@ -157,6 +157,43 @@ test('ĐÚNG NGƯỠNG thì tính là vượt, không phải dưới', () => {
   assert.ok(Math.abs(rate - 40 / 540) < 1e-9);
 });
 
+/* --------------------------------- dòng model chưa đủ mẫu để đem so */
+
+test('dòng dưới ngưỡng mẫu bị đánh dấu là chưa so được', () => {
+  const s = summarise([
+    ...Array.from({ length: 60 }, () => clean('nhieu')),
+    ...Array.from({ length: 5 }, () => clean('it')),
+  ]);
+  const nhieu = s.byModel.find((m) => m.model === 'nhieu');
+  const it = s.byModel.find((m) => m.model === 'it');
+  assert.equal(nhieu?.comparable, true, '60 lượt phải đủ để so');
+  assert.equal(it?.comparable, false, '5 lượt không đủ để so');
+});
+
+test('dòng chưa đủ mẫu LUÔN xuống cuối, kể cả khi tỉ lệ cao nhất', () => {
+  /*
+    Đã vấp thật: một model mới đo 15 lượt hiện 6,7% ngay cạnh một model 169 lượt
+    hiện 30,2%. Bảng sắp "tệ nhất lên đầu", nên một mẫu bé mà ngẫu nhiên ra tỉ lệ
+    cao sẽ chiếm vị trí đầu và trở thành kết luận của cả bảng.
+  */
+  const s = summarise([
+    ...Array.from({ length: 60 }, () => clean('vung')),
+    ...Array.from({ length: 20 }, () => rejectedThen('vung', 1)),
+    ...Array.from({ length: 3 }, () => rejectedThen('beo', 4)),
+  ]);
+  const beo = s.byModel.find((m) => m.model === 'beo')!;
+  const vung = s.byModel.find((m) => m.model === 'vung')!;
+  assert.ok(beo.blindRejectionRate! > vung.blindRejectionRate!, 'mẫu bé đúng là có tỉ lệ cao hơn');
+  assert.equal(s.byModel[0]!.model, 'vung', 'nhưng dòng đủ mẫu vẫn phải đứng trước');
+  assert.equal(s.byModel[s.byModel.length - 1]!.model, 'beo');
+});
+
+test('dòng chưa đủ mẫu vẫn CÓ MẶT — giấu đi là một kiểu nói dối khác', () => {
+  const s = summarise([...Array.from({ length: 3 }, () => clean('beo'))]);
+  assert.equal(s.byModel.length, 1);
+  assert.equal(s.byModel[0]!.comparable, false);
+});
+
 test('mẫu quá nhỏ thì KHÔNG kết luận gì cả', () => {
   // Ba câu ra 33% nghe rất kêu. Đăng ký cỡ mẫu tối thiểu để chính mình sau này
   // không được phép chỉ vào một con số như vậy.

@@ -65,8 +65,17 @@ function verdictEn(kind: string, runs: number, rate: number | null): string {
   return `Rejection rate ${pct} over ${runs} blind runs, above the ${threshold} threshold registered before measuring. A meaningful share of AI-generated reading questions can be answered without reading the passage, and no formal rule catches them.`;
 }
 
+/**
+ * Một dòng model.
+ *
+ * DÒNG CHƯA ĐỦ MẪU PHẢI NHÌN LÀ BIẾT. Vẽ nó giống hệt dòng đủ mẫu là mời người
+ * đọc so 6,7% trên 15 lượt với 30,2% trên 169 lượt — và họ sẽ kết luận model đầu
+ * tốt gấp bốn. Ở đây nó mờ đi, mất chữ đậm, và mang thẳng chữ "too few to compare"
+ * ngay cạnh tên.
+ */
 function Row({ model }: { model: ModelRow }) {
   const rate = model.blindRejectionRate;
+  const weak = !model.comparable;
   return (
     <View
       style={{
@@ -76,9 +85,16 @@ function Row({ model }: { model: ModelRow }) {
         borderTopWidth: 1,
         borderTopColor: color.border,
         gap: space.md,
+        opacity: weak ? 0.55 : 1,
       }}
     >
-      <Text style={{ width: 76, fontWeight: '700', color: rate === null ? color.subtle : color.ink }}>
+      <Text
+        style={{
+          width: 76,
+          fontWeight: weak ? '400' : '700',
+          color: rate === null || weak ? color.subtle : color.ink,
+        }}
+      >
         {rate === null ? 'not run' : `${(rate * 100).toFixed(1)}%`}
       </Text>
       <Text style={{ width: 88, color: color.muted, fontVariant: ['tabular-nums'] }}>
@@ -86,6 +102,11 @@ function Row({ model }: { model: ModelRow }) {
       </Text>
       <Text style={{ flex: 1, color: color.body }} numberOfLines={1}>
         {model.model}
+        {weak ? (
+          <Text style={{ color: color.warning, fontSize: 12 }}>
+            {'  '}· too few runs to compare
+          </Text>
+        ) : null}
       </Text>
     </View>
   );

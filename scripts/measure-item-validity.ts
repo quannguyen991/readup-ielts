@@ -93,7 +93,42 @@ function ieltsSystemPrompt(): string {
   return m[1]!;
 }
 
+/**
+ * Gọi model, thử lại khi ĐỨT KẾT NỐI hoặc gặp lỗi tạm thời.
+ *
+ * VÌ SAO CẦN. Đã đo thấy: một proxy trong số này thỉnh thoảng không bắt tay nổi
+ * TCP, và `fetch` ném ra đúng một chữ "fetch failed" không nói gì thêm. Không
+ * thử lại thì một lần chập mạng làm mất cả một cặp (bài × model) — và cái mất
+ * ấy KHÔNG ngẫu nhiên: proxy chậm thì hay đứt hơn, nên model chậm sẽ có ít dữ
+ * liệu hơn một cách hệ thống, đúng kiểu thiên lệch không nhìn thấy được trên
+ * bảng kết quả.
+ *
+ * KHÔNG thử lại lỗi 4xx: hết hạn mức, sai khoá, sai tên model — thử lại bao
+ * nhiêu lần cũng ra đúng câu trả lời ấy, chỉ tốn thời gian và làm mờ nguyên nhân.
+ */
 async function call(
+  gate: Gate,
+  system: string,
+  user: string,
+  temperature: number,
+  tries = 3,
+): Promise<{ text: string; ms: number }> {
+  let last = '';
+  for (let attempt = 1; attempt <= tries; attempt += 1) {
+    try {
+      return await callOnce(gate, system, user, temperature);
+    } catch (err) {
+      const e = err as Error & { cause?: { code?: string } };
+      last = e.cause?.code ? `${e.message} (${e.cause.code})` : e.message;
+      // 4xx là câu trả lời dứt khoát của máy chủ, không phải sự cố thoáng qua.
+      if (/HTTP 4\d\d/.test(last)) break;
+      if (attempt < tries) await new Promise((r) => setTimeout(r, attempt * 4000));
+    }
+  }
+  throw new Error(`${gate.model}: ${last}`);
+}
+
+async function callOnce(
   gate: Gate,
   system: string,
   user: string,

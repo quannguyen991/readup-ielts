@@ -1,8 +1,8 @@
 {
   "note": "Sinh bằng scripts/export-provenance-summary.ts. Đừng sửa tay.",
-  "exportedAt": "2026-09-06T21:22:21.905Z",
+  "exportedAt": "2026-09-07T03:57:11.762Z",
   "measuredFrom": "2026-09-06T19:06:10.799Z",
-  "measuredTo": "2026-09-06T21:18:28.160Z",
+  "measuredTo": "2026-09-07T03:51:18.379Z",
   "preregistration": {
     "threshold": 0.08,
     "minSample": 200,
@@ -10,17 +10,17 @@
   },
   "verdict": {
     "kind": "above-threshold",
-    "text": "Tỉ lệ loại 30.3% trên 366 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
+    "text": "Tỉ lệ loại 28.6% trên 409 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
   },
   "overall": {
-    "items": 401,
-    "blindRuns": 366,
-    "blindRejections": 111,
-    "blindNotRun": 35,
+    "items": 445,
+    "blindRuns": 409,
+    "blindRejections": 117,
+    "blindNotRun": 36,
     "byReason": {
-      "answerable-without-passage": 111
+      "answerable-without-passage": 117
     },
-    "blindRejectionRate": 0.30327868852459017
+    "blindRejectionRate": 0.2860635696821516
   },
   "byModel": [
     {
@@ -32,7 +32,8 @@
       "byReason": {
         "answerable-without-passage": 60
       },
-      "blindRejectionRate": 0.30456852791878175
+      "blindRejectionRate": 0.30456852791878175,
+      "comparable": true
     },
     {
       "model": "ag/gemini-3.8-flash",
@@ -43,7 +44,32 @@
       "byReason": {
         "answerable-without-passage": 51
       },
-      "blindRejectionRate": 0.30177514792899407
+      "blindRejectionRate": 0.30177514792899407,
+      "comparable": true
+    },
+    {
+      "model": "gpt-5.5",
+      "items": 28,
+      "blindRuns": 28,
+      "blindRejections": 5,
+      "blindNotRun": 0,
+      "byReason": {
+        "answerable-without-passage": 5
+      },
+      "blindRejectionRate": 0.17857142857142858,
+      "comparable": false
+    },
+    {
+      "model": "gpt-6-astra",
+      "items": 16,
+      "blindRuns": 15,
+      "blindRejections": 1,
+      "blindNotRun": 1,
+      "byReason": {
+        "answerable-without-passage": 1
+      },
+      "blindRejectionRate": 0.06666666666666667,
+      "comparable": false
     }
   ]
 }

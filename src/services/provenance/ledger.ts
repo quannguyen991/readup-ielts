@@ -20,6 +20,21 @@ const BLIND_REJECTION = 'answerable-without-passage';
 export const MIN_SAMPLE = 200;
 
 /**
+ * Cỡ mẫu tối thiểu để một DÒNG MODEL được đem ra so sánh.
+ *
+ * VÌ SAO PHẢI CÓ RIÊNG. `MIN_SAMPLE` canh con số tổng, nhưng bảng theo model là
+ * một tuyên bố khác hẳn: nó mời người đọc so hàng này với hàng kia. Đã vấp thật —
+ * một model mới đo được 15 lượt hiện lên 6,7% ngay cạnh một model 169 lượt hiện
+ * 30,2%, và bất kỳ ai đọc cũng sẽ kết luận model đầu tốt gấp bốn lần. Trên 15
+ * quan sát thì khoảng tin cậy rộng đến mức con số ấy không loại trừ nổi 30%.
+ *
+ * 50 lượt: vẫn thô, nhưng đủ để một chênh lệch cỡ 30% với 10% không còn giải
+ * thích được bằng may rủi. Dưới ngưỡng, dòng vẫn HIỆN — giấu đi là một kiểu
+ * nói dối khác — nhưng bị đánh dấu là chưa đủ để so.
+ */
+export const MIN_MODEL_SAMPLE = 50;
+
+/**
  * NGƯỠNG PHỦ ĐỊNH, ĐĂNG KÝ TRƯỚC KHI ĐO.
  *
  * Con số này được ghi vào mã nguồn và commit TRƯỚC khi phép đo chạy lần đầu, để
@@ -52,7 +67,16 @@ export type Counts = {
   byReason: Record<string, number>;
 };
 
-export type ModelCounts = Counts & { model: string };
+export type ModelCounts = Counts & {
+  model: string;
+  /**
+   * Dòng này đã đủ lượt để đem so với dòng khác chưa.
+   *
+   * Tính ở đây chứ không để mỗi màn hình tự so với ngưỡng: so tay là chỗ mà một
+   * màn quên so, rồi hiện 6,7% cạnh 30,2% như thể hai con số cùng hạng.
+   */
+  comparable: boolean;
+};
 
 export type Summary = {
   overall: Counts;
@@ -120,10 +144,22 @@ export function summarise(labels: readonly ProvenanceLabel[]): Summary {
   }
 
   const models = [...byModel.entries()]
-    .map(([model, acc]) => ({ model, ...finish(acc) }))
+    .map(([model, acc]) => {
+      const counts = finish(acc);
+      return { model, ...counts, comparable: counts.blindRuns >= MIN_MODEL_SAMPLE };
+    })
     .sort((a, b) => {
-      // Model tệ nhất lên đầu. Chưa đo được thì xuống cuối chứ không xếp như 0% —
-      // "chưa đo" và "đo rồi, sạch" là hai chuyện khác nhau.
+      /*
+        DÒNG CHƯA ĐỦ MẪU LUÔN XUỐNG CUỐI, bất kể tỉ lệ.
+
+        Bảng này sắp "tệ nhất lên đầu", nên một model mới đo 15 lượt mà ngẫu
+        nhiên ra tỉ lệ cao sẽ chiếm mất vị trí đầu và trở thành kết luận của cả
+        bảng. Đẩy xuống cuối thì thứ tự vẫn đọc được mà không mời người ta so
+        nhầm.
+      */
+      if (a.comparable !== b.comparable) return a.comparable ? -1 : 1;
+      // Trong nhóm đủ mẫu: tệ nhất lên đầu. Chưa đo được thì xuống cuối chứ
+      // không xếp như 0% — "chưa đo" và "đo rồi, sạch" là hai chuyện khác nhau.
       const ra = a.blindRejectionRate ?? -1;
       const rb = b.blindRejectionRate ?? -1;
       return rb - ra || b.blindRuns - a.blindRuns;
