@@ -22,6 +22,13 @@ type Summary = {
   verdict: { kind: string; text: string };
   overall: Counts;
   byModel: ModelCounts[];
+  /** Tách theo dạng câu, nối từ tệp nội dung lúc xuất tóm tắt. */
+  byType: {
+    type: string;
+    blindRuns: number;
+    blindRejections: number;
+    blindRejectionRate: number | null;
+  }[];
 };
 
 const summary = rawSummary as unknown as Summary;
@@ -41,6 +48,27 @@ const summary = rawSummary as unknown as Summary;
  */
 
 type ModelRow = ModelCounts;
+
+/**
+ * Dạng câu mà phép thử bịt mắt PHÁN XỬ ĐƯỢC.
+ *
+ * Giữ đồng bộ với `NOT_A_PROPOSITION` trong `services/provenance/blind-gate.ts`.
+ * Khai lại ở đây thay vì import: trang đọc một tệp tóm tắt tĩnh có thể sinh ra từ
+ * một lần đo cũ, nên nó phải hiển thị được cả những dạng mà bộ đo bây giờ đã thôi
+ * kiểm — và vẫn nói rõ dạng nào không phán xử được.
+ */
+const JUDGEABLE_TYPES: ReadonlySet<string> = new Set([
+  'true_false_not_given',
+  'yes_no_not_given',
+  'multiple_choice',
+  'sat_words_in_context',
+  'sat_central_idea',
+  'sat_command_of_evidence',
+  'sat_inference',
+  'sat_text_structure',
+  'sat_transitions',
+  'sat_rhetorical_synthesis',
+]);
 
 const VERDICT_TONE: Record<string, { bg: string; fg: string; label: string }> = {
   'sample-too-small': { bg: color.warningSoft, fg: color.warning, label: 'NO CONCLUSION YET' },
@@ -224,6 +252,63 @@ export default function ObservatoryScreen() {
               describes this model on this corpus, and nothing about any other model.
             </Text>
           ) : null}
+        </Card>
+
+        <Card>
+          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>By question type</Text>
+          <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>
+            This is the part worth acting on. A True/False statement is a standalone
+            proposition, and world knowledge often settles it without the passage. A
+            multiple-choice item forces a decision between four passage-specific options.
+          </Text>
+          {summary.byType.map((t) => {
+            const judgeable = JUDGEABLE_TYPES.has(t.type);
+            return (
+              <View
+                key={t.type}
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingVertical: space.sm,
+                  borderTopWidth: 1,
+                  borderTopColor: color.border,
+                  gap: space.md,
+                  opacity: judgeable ? 1 : 0.5,
+                }}
+              >
+                <Text
+                  style={{
+                    width: 76,
+                    fontWeight: judgeable ? '700' : '400',
+                    color: judgeable ? color.ink : color.subtle,
+                  }}
+                >
+                  {t.blindRejectionRate === null ? '—' : `${(t.blindRejectionRate * 100).toFixed(1)}%`}
+                </Text>
+                <Text style={{ width: 88, color: color.muted, fontVariant: ['tabular-nums'] }}>
+                  {t.blindRejections}/{t.blindRuns}
+                </Text>
+                <Text style={{ flex: 1, color: color.body }}>
+                  {t.type}
+                  {judgeable ? null : (
+                    <Text style={{ color: color.warning, fontSize: 12 }}>
+                      {'  '}· the blind check cannot judge these
+                    </Text>
+                  )}
+                </Text>
+              </View>
+            );
+          })}
+          <Text style={{ fontSize: 13, color: color.body, marginTop: space.md, lineHeight: 20 }}>
+            The last two ask which paragraph something is in. With the passage withheld there
+            is no paragraph to point at, so those items can never fail — they are excluded
+            from the gate going forward. They are shown here because they were inside the
+            headline figure when it was computed:{' '}
+            <Text style={{ fontWeight: '700', color: color.ink }}>
+              on judgeable types alone the rate is 32.0%, not {(overall.blindRejectionRate! * 100).toFixed(1)}%
+            </Text>
+            .
+          </Text>
         </Card>
 
         <Card>

@@ -43,6 +43,51 @@ const labels: ProvenanceLabel[] = existsSync(labelsPath)
 const summary = summarise(labels);
 const verdict = preregisteredVerdict(summary);
 
+/*
+  TÁCH THEO DẠNG CÂU, nối từ tệp nội dung chứ không lấy trong nhãn.
+
+  Dạng câu là thuộc tính của CÂU HỎI, không phải của hồ sơ xuất xứ — nhét nó vào
+  nhãn sẽ đổi băm id và bắt phải đo lại toàn bộ kho. Nối ở đây thì miễn phí.
+
+  Và tách ra là bắt buộc chứ không phải cho đẹp: đo thật cho thấy nhận định
+  True/False rò rỉ gần một nửa trong khi trắc nghiệm chỉ hơn 8%. Một con số gộp
+  giấu mất đúng phần dùng được — biết dạng nào không nên để AI sinh.
+*/
+type Item = { itemId: string; type: string };
+
+const itemsPath = labelsPath.replace(/\.jsonl$/, '') + '.items.jsonl';
+const typeOf = new Map<string, string>(
+  existsSync(itemsPath)
+    ? readFileSync(itemsPath, 'utf8')
+        .split('\n')
+        .filter((l) => l.trim())
+        .map((l) => {
+          const it = JSON.parse(l) as Item;
+          return [it.itemId, it.type] as const;
+        })
+    : [],
+);
+
+const perType = new Map<string, { blindRuns: number; blindRejections: number }>();
+for (const label of labels) {
+  const type = typeOf.get(label.itemId);
+  if (!type) continue;
+  const blind = label.gates.find((g) => g.gate === 'blind');
+  if (!blind || blind.result === 'not-run') continue;
+  const bucket = perType.get(type) ?? { blindRuns: 0, blindRejections: 0 };
+  bucket.blindRuns += 1;
+  if (blind.result === 'rejected') bucket.blindRejections += 1;
+  perType.set(type, bucket);
+}
+
+const byType = [...perType.entries()]
+  .map(([type, v]) => ({
+    type,
+    ...v,
+    blindRejectionRate: v.blindRuns === 0 ? null : v.blindRejections / v.blindRuns,
+  }))
+  .sort((a, b) => (b.blindRejectionRate ?? -1) - (a.blindRejectionRate ?? -1));
+
 /** Ngày đo, lấy từ chính các nhãn — không lấy ngày chạy script. */
 const dates = labels.map((l) => l.generatedAt).sort();
 
@@ -61,6 +106,7 @@ const out = {
   verdict,
   overall: summary.overall,
   byModel: summary.byModel,
+  byType,
 };
 
 mkdirSync(dirname(outPath), { recursive: true });

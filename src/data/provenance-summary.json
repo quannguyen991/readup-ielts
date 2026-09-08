@@ -1,6 +1,6 @@
 {
   "note": "Sinh bằng scripts/export-provenance-summary.ts. Đừng sửa tay.",
-  "exportedAt": "2026-09-07T04:43:02.284Z",
+  "exportedAt": "2026-09-08T13:17:16.514Z",
   "measuredFrom": "2026-09-06T19:06:10.799Z",
   "measuredTo": "2026-09-07T04:42:22.324Z",
   "preregistration": {
@@ -82,6 +82,38 @@
       },
       "blindRejectionRate": 0.06666666666666667,
       "comparable": false
+    }
+  ],
+  "byType": [
+    {
+      "type": "yes_no_not_given",
+      "blindRuns": 46,
+      "blindRejections": 23,
+      "blindRejectionRate": 0.5
+    },
+    {
+      "type": "true_false_not_given",
+      "blindRuns": 285,
+      "blindRejections": 130,
+      "blindRejectionRate": 0.45614035087719296
+    },
+    {
+      "type": "multiple_choice",
+      "blindRuns": 200,
+      "blindRejections": 17,
+      "blindRejectionRate": 0.085
+    },
+    {
+      "type": "matching_information",
+      "blindRuns": 33,
+      "blindRejections": 1,
+      "blindRejectionRate": 0.030303030303030304
+    },
+    {
+      "type": "matching_headings",
+      "blindRuns": 35,
+      "blindRejections": 0,
+      "blindRejectionRate": 0
     }
   ]
 }

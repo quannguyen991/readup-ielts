@@ -70,13 +70,19 @@ exam items is worth more to this project than money right now.)*
 > "According to the passage, is water wet?" is correctly formatted, quotes the source
 > verbatim, and is useless.
 >
-> Run at scale, that gate produced a number nobody had published: **28.5% of generated
-> reading questions — 171 of 599 — could be answered blind.** Three models, verified
-> distinct by behavioural probe, landed within 2.1 percentage points of each other, and a
-> Pro-tier model did no better than a Flash one. That points at a property of the task
-> rather than one model's defect, and not at something the next capability jump removes. The generation prompt
-> already forbade the failure in six explicit rules; the measurement is of what happens
-> anyway.
+> Run at scale, that gate produced numbers nobody had published: **28.5% of generated
+> reading questions — 171 of 599 — could be answered blind, and 32.0% among the item types
+> the check can actually judge.** Split by type, the result becomes usable:
+> **True/False statements fail 45.6% of the time and Yes/No 50.0%, against 8.5% for
+> multiple choice.** A True/False item is a standalone proposition that general knowledge
+> often settles; multiple choice forces a decision among four options written against a
+> specific text.
+>
+> Three models, verified distinct by behavioural probe, landed within 2.1 points of each
+> other, and a Pro-tier model did no better than a Flash one — so this is a property of the
+> task, not one model's defect, and not something the next capability jump removes. The
+> generation prompt already forbade the failure in six explicit rules; the measurement is
+> of what happens anyway.
 >
 > ReadUp's own reading questions are **not written by a language model at all** — they are
 > built from deterministic rules and verified by deterministic rules, with no model call in
@@ -107,6 +113,9 @@ Written down so a late-night edit does not quietly overstate things:
 - **Not "the average AI tutor produces 30% bad questions."** The figure is three models,
   one prompt, one public-domain corpus, one judge. Say what was measured, not what it
   implies about products we did not test.
+- **Quote 28.5% and 32.0% together, never 32.0% alone.** The larger figure drops item
+  types the check cannot judge; the smaller one is what we published first. Presenting only
+  the flattering one would be exactly the selective reporting this project is against.
 - **Never quote the figure without the 57 unchecked runs.** They are excluded from the
   fraction, not counted as passes, and leaving them out makes the denominator look
   cleaner than it is.

@@ -168,6 +168,25 @@ test('thiếu determinable thì coi như KHÔNG xác định được', () => {
 
 /* ------------------------------------------------- dạng nào đáng kiểm */
 
+test('dạng TRỎ VỊ TRÍ trong bài thì bịt mắt là BẤT KHẢ, không được đo', () => {
+  /*
+    "Đoạn nào chứa thông tin sau?" — bịt mắt thì không có đoạn nào để trỏ. Model
+    luôn trượt, nên câu ấy không bao giờ bị loại, và mỗi câu như vậy lọt vào mẫu
+    số là một lần kéo tỉ lệ xuống mà không đo được gì.
+
+    Đo thật: nhóm này 68/599 lượt, loại đúng 1 câu (1,5%). Gộp vào làm tỉ lệ
+    chung tụt từ 32,0% còn 28,5%.
+  */
+  for (const t of [
+    'matching_headings',
+    'matching_information',
+    'matching_features',
+    'matching_sentence_endings',
+  ] as const) {
+    assert.equal(worthBlindChecking(t), false, `${t} không phán xử được bằng bịt mắt`);
+  }
+});
+
 test('dạng điền từ lấy chữ trong bài thì KHÔNG cần kiểm bịt mắt', () => {
   /*
     Đáp án là chữ trích nguyên từ bài. Model không đọc bài thì gần như không thể

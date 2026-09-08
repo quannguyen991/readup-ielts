@@ -42,21 +42,45 @@ export type BlindGateVerdict =
   | { ok: false; note: 'answerable-without-passage' };
 
 /**
- * Dạng lấy chữ NGUYÊN VĂN TỪ BÀI làm đáp án.
+ * Dạng mà đáp án là MỘT VỊ TRÍ TRONG BÀI, không phải một mệnh đề.
  *
- * Không kiểm bịt mắt: model chưa đọc bài thì gần như không thể đoán trúng đúng
- * cụm chữ ấy, nên hàng rào luôn xanh và chạy nó chỉ tốn tiền. Dạng này đã có
- * hàng rào luật lo — nó bắt đáp án phải có thật trong bài.
+ * KHÔNG ĐƯỢC ĐƯA VÀO HÀNG RÀO, và đây không phải chuyện tiết kiệm — nó là chuyện
+ * phép đo có nghĩa hay không.
+ *
+ * "Đoạn nào chứa thông tin sau?" hay "Chọn tiêu đề cho đoạn 3" khi bịt mắt thì
+ * không phải KHÓ, mà là BẤT KHẢ: không nhìn thấy bài thì không có đoạn nào để
+ * trỏ. Model sẽ luôn trượt hoặc luôn nói không biết, nên những câu ấy KHÔNG BAO
+ * GIỜ bị loại — và mỗi câu như vậy lọt vào mẫu số là một lần kéo tỉ lệ xuống mà
+ * không hề đo được gì.
+ *
+ * Đo thật trên 599 lượt: nhóm này 68 lượt, loại đúng 1 (1,5%). Gộp chúng vào
+ * làm tỉ lệ chung tụt từ 32,0% xuống 28,5% — tức là gần bốn điểm phần trăm biến
+ * mất vào những câu mà hàng rào không có cách nào phán xử.
+ *
+ * Dạng ĐIỀN TỪ lấy chữ nguyên văn từ bài cũng nằm đây, vì lý do gần giống: đáp
+ * án là một cụm chữ cụ thể trong bài, đoán trúng gần như không xảy ra. Dạng ấy
+ * đã có hàng rào luật lo — nó bắt đáp án phải có thật trong bài.
  */
-const FROM_PASSAGE: ReadonlySet<QuestionType> = new Set<QuestionType>([
+const NOT_A_PROPOSITION: ReadonlySet<QuestionType> = new Set<QuestionType>([
+  // đáp án là chữ trích từ bài
   'sentence_completion',
   'summary_completion',
   'short_answer',
+  // đáp án là một vị trí trong bài
+  'matching_headings',
+  'matching_information',
+  'matching_features',
+  'matching_sentence_endings',
 ]);
 
-/** Dạng này có đáng bỏ một lời gọi model ra kiểm không. */
+/**
+ * Câu dạng này có phán xử được bằng phép thử bịt mắt không.
+ *
+ * `false` nghĩa là KHÔNG ĐO ĐƯỢC, không phải "đã đỗ". Chỗ gọi phải bỏ hẳn câu ra
+ * khỏi mẫu chứ không ghi nó là sạch.
+ */
 export function worthBlindChecking(type: QuestionType): boolean {
-  return !FROM_PASSAGE.has(type);
+  return !NOT_A_PROPOSITION.has(type);
 }
 
 const TFNG_LABELS = ['TRUE', 'FALSE', 'NOT GIVEN'] as const;

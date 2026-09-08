@@ -154,6 +154,31 @@ failure is, it is not something the next capability jump removes.
 prompt — the one that already forbids this failure in six explicit rules. That is what a
 property of the task looks like, as opposed to a defect in one vendor's model.
 
+### The part that is actually actionable
+
+The single figure hides the useful result. Split by question type:
+
+| Question type | Answerable blind | |
+|---|---|---|
+| Yes/No/Not Given | **50.0%** | 23 / 46 |
+| True/False/Not Given | **45.6%** | 130 / 285 |
+| Multiple choice | **8.5%** | 17 / 200 |
+| *Matching information* | *3.0%* | *1 / 33* |
+| *Matching headings* | *0.0%* | *0 / 35* |
+
+**Nearly half of AI-written True/False statements can be settled without the passage.
+Multiple choice fails five times less often.** That difference has a mechanism: a
+True/False item is a standalone proposition, and general knowledge frequently adjudicates
+it; a multiple-choice item forces a decision among four options written against a specific
+text. Anyone generating assessment items with a model can act on that today.
+
+**And a correction to our own headline.** The last two rows ask *which paragraph* contains
+something. With the passage withheld there is no paragraph to point at, so those items
+cannot fail by construction — 1 rejection in 68 runs. Including them in the denominator
+dragged the overall figure down without measuring anything. **On item types the check can
+actually judge, the rate is 32.0%, not 28.5%.** Those types are excluded from the gate
+going forward; both numbers are published, because the smaller one is what we said first.
+
 Two further models appear in the published table with far smaller samples (28 and 15
 checks). They are shown, because hiding them would be its own kind of dishonesty, but they
 are marked *too few runs to compare* and sorted below the rest. A rate computed over 15

@@ -25,6 +25,8 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { gateStatus, type ProvenanceLabel } from '../src/services/provenance/label';
+import { worthBlindChecking } from '../src/services/provenance/blind-gate';
+import type { QuestionType } from '../src/types/database';
 
 type Item = {
   itemId: string;
@@ -161,9 +163,26 @@ function main(): void {
   */
   const rejected: Item[] = [];
   const passed: Item[] = [];
+  let skippedUnjudgeable = 0;
   for (const it of items) {
     const label = byId.get(it.itemId);
     if (!label) continue;
+
+    /*
+      BỎ DẠNG TRỎ VỊ TRÍ RA KHỎI PHIẾU.
+
+      "Đoạn nào chứa thông tin sau?" khi không có bài thì không phải khó mà là
+      bất khả — không có đoạn nào để trỏ. Người làm sẽ luôn bỏ trống, model cũng
+      luôn trượt, và hai bên "đồng thuận" một cách rỗng: chỉ số đồng thuận bị
+      thổi lên bởi những câu chưa bao giờ đo được gì.
+
+      Cùng luật với `worthBlindChecking` trong `services/provenance/blind-gate.ts`.
+    */
+    if (!worthBlindChecking(it.type as QuestionType)) {
+      skippedUnjudgeable += 1;
+      continue;
+    }
+
     const status = gateStatus(label, 'blind');
     if (status === 'rejected') rejected.push(it);
     else if (status === 'passed') passed.push(it);
@@ -200,6 +219,9 @@ function main(): void {
   );
 
   console.log(`Phiếu: ${join(outDir, 'phieu.html')}`);
+  if (skippedUnjudgeable > 0) {
+    console.log(`  bỏ ${skippedUnjudgeable} câu dạng trỏ vị trí — bịt mắt không phán xử được`);
+  }
   console.log(`  ${chosen.length} câu — ${takeRejected.length} câu model đã LOẠI, ${takePassed.length} câu model đã cho ĐỖ`);
   if (takeRejected.length < half) {
     console.log(`  ⚠ chỉ có ${rejected.length} câu bị loại trong kho; phiếu lệch về phía câu đỗ.`);
