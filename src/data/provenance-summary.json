@@ -1,8 +1,8 @@
 {
   "note": "Sinh bằng scripts/export-provenance-summary.ts. Đừng sửa tay.",
-  "exportedAt": "2026-09-07T03:57:11.762Z",
+  "exportedAt": "2026-09-07T04:43:02.284Z",
   "measuredFrom": "2026-09-06T19:06:10.799Z",
-  "measuredTo": "2026-09-07T03:51:18.379Z",
+  "measuredTo": "2026-09-07T04:42:22.324Z",
   "preregistration": {
     "threshold": 0.08,
     "minSample": 200,
@@ -10,17 +10,17 @@
   },
   "verdict": {
     "kind": "above-threshold",
-    "text": "Tỉ lệ loại 28.6% trên 409 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
+    "text": "Tỉ lệ loại 28.5% trên 599 lượt, vượt ngưỡng 8% đã đăng ký trước. Một phần đáng kể đề đọc hiểu do AI sinh ra trả lời được mà không cần đọc bài, và không luật hình thức nào bắt được chúng."
   },
   "overall": {
-    "items": 445,
-    "blindRuns": 409,
-    "blindRejections": 117,
-    "blindNotRun": 36,
+    "items": 656,
+    "blindRuns": 599,
+    "blindRejections": 171,
+    "blindNotRun": 57,
     "byReason": {
-      "answerable-without-passage": 117
+      "answerable-without-passage": 171
     },
-    "blindRejectionRate": 0.2860635696821516
+    "blindRejectionRate": 0.2854757929883139
   },
   "byModel": [
     {
@@ -45,6 +45,18 @@
         "answerable-without-passage": 51
       },
       "blindRejectionRate": 0.30177514792899407,
+      "comparable": true
+    },
+    {
+      "model": "ag/gemini-3.1-pro-low",
+      "items": 211,
+      "blindRuns": 190,
+      "blindRejections": 54,
+      "blindNotRun": 21,
+      "byReason": {
+        "answerable-without-passage": 54
+      },
+      "blindRejectionRate": 0.28421052631578947,
       "comparable": true
     },
     {

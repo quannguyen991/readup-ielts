@@ -173,48 +173,53 @@ protocol, including the sentences the facilitator must not say, is in
 
 ## The figures
 
-Measured 7 September 2026. 401 generated items, 366 completed blind checks.
+Measured 7 September 2026. 656 generated items, 599 completed blind checks.
 
 | | |
 |---|---|
-| Answerable without the passage | **111 / 366 — 30.3%** |
+| Answerable without the passage | **171 / 599 — 28.5%** |
 | `deepseek-3.2` | 30.5% (60 / 197) |
 | `gemini-3.8-flash` | 30.2% (51 / 169) |
-| Could not be checked | 35, counted separately |
-| Judge | `claude-haiku-4.5`, fixed, third lab |
+| `gemini-3.1-pro` | 28.4% (54 / 190) |
+| Could not be checked | 57, counted separately |
 | Pre-registered verdict | `above-threshold` |
 
-Two **distinct** models, given the prompt that already forbids this in six explicit
-rules, land within 0.3 points of each other. That closeness is the finding: it points at
-a property of the task rather than a defect in one particular model.
+**A stronger model does not fix it.** The Pro-tier model came in at 28.4% against the
+Flash model's 30.2% — a gap well inside the noise at these sample sizes.
+
+Three distinct models land within 2.1 points of each other, given the prompt that already
+forbids this in six explicit rules. That closeness is the finding: it is a property of the
+task, not a defect in one particular model.
+
+Two further endpoints appear in the published table with 28 and 15 checks. They are shown
+rather than hidden, but marked *too few runs to compare* and sorted last — a rate over 15
+observations cannot sit beside one over 197.
 
 **On model identity — what we verified and what we did not.** The models were served
-through a local OpenAI-compatible gateway that routes many upstreams. Gateway labels are
-not trustworthy on their own: one endpoint labelled `gpt-5.6-sol` returned *"Gemini 3.5
-Flash is no longer available"* as its answer, and another labelled `gpt-5.4-mini` routed
-to a different vendor's account entirely.
+through a local OpenAI-compatible gateway that routes many upstreams, and its labels are
+not trustworthy on their own. Three separate failures, all observed directly: an endpoint
+labelled `gpt-5.6-sol` answered *"Gemini 3.5 Flash is no longer available"*; an endpoint
+named after a Chinese lab self-reported as Claude; and a listed model returned *"Requested
+entity was not found"* because it no longer exists upstream.
 
-So we tested distinctness directly. Three probes with many valid answers, at temperature
-0, produced **three completely different outputs across all three endpoints — 0 of 3
-matches for every pair.** That establishes what the finding needs: the two generators are
-different models, and the judge is a third one, so it is not grading its own output.
+So distinctness was tested rather than assumed, with open-ended probes at temperature 0.
+**Every pair differed.** That establishes what the finding needs: the generators are
+different models, and the judge is another, so it is not grading its own output.
 
-It does **not** establish which labs made them. One generator self-reports as Gemini,
-consistent with its label; the other self-reports as "Kiro" — a wrapper name, not a model
-— so its `deepseek` label is unconfirmed. We therefore claim *two distinct models*, never
-*two named vendors*.
+One probe in the set discriminated nothing, and the reason is instructive. Asked for an
+invented Icelandic cartographer surname, four unrelated endpoints produced *Kortsson* or
+*Landakortsson* — `kort` means map and the patronymic suffix is fixed, so the task has an
+obvious answer. Agreement there measures the question, not the models. The probes that did
+discriminate separated every pair.
 
-**An earlier pilot pass, before the sample minimum was met, returned 3 rejections in 8
-runs — and the pre-registration guard refused to draw any conclusion from it, as
-designed.** The same function later selected `above-threshold` by arithmetic, not by
-anyone's judgement.
+It does **not** establish which labs made these models, and we do not claim it.
 
-**A bug we found by measuring, recorded here because it cuts the right way.** A type
-error in our own reply reader marked 18% of checks "not run" when the judge had in fact
-answered — it accepted a string answer but not a numeric one, and the judge returns
-option indices as numbers. Because `not-run` is excluded from the fraction rather than
-counted as a pass, the bug *understated* our own result instead of inflating it. The
-honest-by-default design made its own error visible and harmless.
+**A bug we found by measuring, recorded here because it cuts the right way.** A type error
+in our own reply reader marked 18% of checks "not run" when the judge had in fact answered
+— it accepted a string answer but not a numeric one, and the judge returns option indices
+as numbers. Because `not-run` is excluded from the fraction rather than counted as a pass,
+the bug *understated* our own result instead of inflating it. The honest-by-default design
+made its own error visible and harmless.
 
 ## SDG mapping
 

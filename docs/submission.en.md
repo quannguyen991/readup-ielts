@@ -119,35 +119,59 @@ arithmetic comparison, not a judgement.
 
 ## The result
 
-Measured 7 September 2026, on 401 generated items over 366 completed blind checks:
+Measured 7 September 2026, on 656 generated items over 599 completed blind checks:
 
-> **30.3% of AI-generated reading questions could be answered without the passage.**
+> **28.5% of AI-generated reading questions could be answered without the passage.**
 
-| Generator | Rejection rate | |
-|---|---|---|
-| `deepseek-3.2` | **30.5%** | 60 / 197 |
-| `gemini-3.8-flash` | **30.2%** | 51 / 169 |
+| Generator | Rejection rate | | |
+|---|---|---|---|
+| `deepseek-3.2` | **30.5%** | 60 / 197 | |
+| `gemini-3.8-flash` | **30.2%** | 51 / 169 | |
+| `gemini-3.1-pro` | **28.4%** | 54 / 190 | Pro tier |
 
-A further **35 checks could not be completed** and are counted separately, outside the
-fraction — never as passes.
+A further **57 checks could not be completed** and are counted separately, outside the
+fraction — never as passes. The judge was a fourth, separate model, fixed across all
+three generators.
 
-The judge was a third, separate model, fixed across both generators.
+**A stronger model does not fix it.** The Pro-tier model came in at 28.4% against the
+Flash model's 30.2% — a gap well inside the noise at these sample sizes. Whatever this
+failure is, it is not something the next capability jump removes.
 
-**The most interesting number here is how close the two are.** Two distinct models, given
-the same prompt — the one that already forbids this failure in six explicit rules — land
-within 0.3 percentage points of each other. That points at a property of the task rather
-than a defect in one particular model.
+**Three distinct models land within 2.1 percentage points of each other**, given the same
+prompt — the one that already forbids this failure in six explicit rules. That is what a
+property of the task looks like, as opposed to a defect in one vendor's model.
+
+Two further models appear in the published table with far smaller samples (28 and 15
+checks). They are shown, because hiding them would be its own kind of dishonesty, but they
+are marked *too few runs to compare* and sorted below the rest. A rate computed over 15
+observations cannot be set beside one computed over 197.
 
 **What "distinct" means here, precisely.** The models were served through a gateway that
 routes many upstreams, and gateway labels proved unreliable — one endpoint labelled as an
 OpenAI model answered *"Gemini 3.5 Flash is no longer available"*. So distinctness was
-tested rather than assumed: three open-ended probes at temperature 0 returned **three
-completely different outputs, 0 of 3 matches for every pair.** The two generators are
-different models and the judge is a third, so no model graded its own work. Which *labs*
-built them is not something we can verify from here, and we do not claim it.
+tested rather than assumed: open-ended probes at temperature 0, on the principle that two
+endpoints sharing a backend would produce the same text.
 
-The pre-registered verdict function selected `above-threshold` by arithmetic: 30.3% is
-above the 8% committed to git before the first run, on 366 checks against a minimum of
+**Every pair differed.** The generators are different models and the judge is another, so
+no model graded its own work.
+
+One probe in the set turned out to discriminate nothing, and it is worth saying why. Asked
+to invent a surname for an Icelandic cartographer, four unrelated endpoints all produced
+*Kortsson* or *Landakortsson* — `kort` is Icelandic for map, and the patronymic suffix is
+fixed, so the "creative" task has an obvious answer. Convergence there is evidence about
+the question, not about the models, and it is excluded from the conclusion. The probes that
+did discriminate — an original sentence, an unusual metaphor — separated every pair.
+
+Which *labs* built these models is not something we can verify from here, and we do not
+claim it.
+
+The same gateway also lists models that no longer exist — one returned *"Requested entity
+was not found"* — and one labelled after a Chinese lab self-reported as Claude. Three
+different kinds of wrong label from one source is why distinctness is tested and vendor
+names are never claimed.
+
+The pre-registered verdict function selected `above-threshold` by arithmetic: 28.5% is
+above the 8% committed to git before the first run, on 599 checks against a minimum of
 200.
 
 ## The human anchor
