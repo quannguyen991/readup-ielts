@@ -30,9 +30,14 @@ not trust us and does not run our software.
                 (1) label                                            (2) credential      (3) verifier
 ```
 
-### 1. A signed provenance label on every generated item
+### 1. A signed provenance label on every model-authored item
 
-Each item carries a record: which model wrote it (with version), which gates ran,
+**Scope first, because it is easy to overstate.** Reading questions in the shipped product
+carry no label, because no model writes them: they are built from rules and verified by
+rules, with no model call in the path. The label exists for items a model *does* author —
+the transfer probes, and every item in the measurement corpus.
+
+Each such item carries a record: which model wrote it (with version), which gates ran,
 what each gate returned, how many drafts were rejected and why.
 
 The gate that matters is adversarial and is the reason this project exists:

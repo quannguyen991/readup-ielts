@@ -64,11 +64,11 @@ exam items is worth more to this project than money right now.)*
 > which model wrote the question, what was checked before it arrived, or how many drafts
 > were discarded first.
 >
-> ReadUp puts every generated question through an adversarial gate: **a second model is
-> asked to answer it without being shown the passage.** If it succeeds and reports that
-> the answer was determinable, the question does not test reading comprehension and is
-> discarded. No formal rule catches this failure — "According to the passage, is water
-> wet?" is correctly formatted, quotes the source verbatim, and is useless.
+> We built the missing check: **a second model is asked to answer the question without
+> being shown the passage.** If it succeeds and reports the answer was determinable, the
+> question does not test reading comprehension. No formal rule catches this failure —
+> "According to the passage, is water wet?" is correctly formatted, quotes the source
+> verbatim, and is useless.
 >
 > Run at scale, that gate produced a number nobody had published: **28.5% of generated
 > reading questions — 171 of 599 — could be answered blind.** Three models, verified
@@ -77,6 +77,11 @@ exam items is worth more to this project than money right now.)*
 > rather than one model's defect, and not at something the next capability jump removes. The generation prompt
 > already forbade the failure in six explicit rules; the measurement is of what happens
 > anyway.
+>
+> ReadUp's own reading questions are **not written by a language model at all** — they are
+> built from deterministic rules and verified by deterministic rules, with no model call in
+> the path. That was decided for cost before this measurement ran; the measurement then
+> turned out to support it. Where a model does author an item, the blind check runs first.
 >
 > Each verdict becomes a signed provenance label. Those labels feed two things: a public
 > measurement of how often AI-generated reading questions fail this test, broken down by
@@ -113,5 +118,6 @@ Written down so a late-night edit does not quietly overstate things:
 - **Not "verified by an institution."** The credential is self-issued. Say "portable and
   independently checkable", never "recognised".
 - **Not "proven to improve learning."** There is no efficacy data. TRL 6, not 7.
-- **Not "the gate runs on every question."** It runs in the measurement harness and on
-  transfer probes today. Moving it onto every served item is the next step.
+- **Not "the gate runs on every question served."** Reading questions in the product are
+  not model-written at all, so there is nothing for it to gate there. It runs on transfer
+  probes and across the measurement corpus. Say what it covers, not what it sounds like.
