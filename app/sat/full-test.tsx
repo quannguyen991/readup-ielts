@@ -1,15 +1,24 @@
-import React, { useCallback, useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Text, useWindowDimensions, View } from 'react-native';
 import { router } from 'expo-router';
 
+import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { MathRunner } from '@/components/math/MathRunner';
 import { RwRunner } from '@/components/sat-rw/RwRunner';
-import { Button, Card, StatCard } from '@/components/ui';
+import {
+  Button,
+  Card,
+  HeroBanner,
+  IconCircle,
+  type IconName,
+  type IconTone,
+} from '@/components/ui';
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 import {
   BREAK_MINUTES,
+  FULL_TEST_ELAPSED_MINUTES,
   FULL_TEST_QUESTIONS,
   FULL_TEST_TESTING_MINUTES,
   endBreak,
@@ -21,7 +30,7 @@ import {
   TOTAL_STAGES,
   type FullTestState,
 } from '@/services/sat-rw/mock/full-test';
-import { color, spacing as space } from '@/theme/tokens';
+import { spacing as space } from '@/theme/tokens';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -81,7 +90,12 @@ export default function SatFullTestScreen() {
   }
 
   if (stage.kind === 'break') {
-    return <BreakScreen onContinue={() => setState((s) => (s ? endBreak(s) : s))} />;
+    return (
+      <BreakScreen
+        minutes={stage.minutes}
+        onContinue={() => setState((s) => (s ? endBreak(s) : s))}
+      />
+    );
   }
 
   return <ResultScreen state={state} onRestart={start} />;
@@ -98,136 +112,406 @@ function countRwCorrect(items: MockItem[], answers: (number | null)[]): number {
   return items.reduce((n, item, i) => (answers[i] === item.answerIndex ? n + 1 : n), 0);
 }
 
+/* ------------------------------------------------------------------ mở đầu */
+
+type Stage = { label: string; detail: string; tone: 'work' | 'rest' };
+
+const STAGES: readonly Stage[] = [
+  { label: 'Reading and Writing — module 1', detail: '27 câu · 32 phút', tone: 'work' },
+  { label: 'Reading and Writing — module 2', detail: '27 câu · 32 phút', tone: 'work' },
+  { label: 'Nghỉ giữa giờ', detail: `${BREAK_MINUTES} phút`, tone: 'rest' },
+  { label: 'Math — module 1', detail: '22 câu · 35 phút', tone: 'work' },
+  { label: 'Math — module 2', detail: '22 câu · 35 phút', tone: 'work' },
+];
+
+/**
+ * Màn mở đầu.
+ *
+ * Mở bằng `HeroBanner` như mọi trang khác trong app chứ không phải một dòng tiêu
+ * đề trần: đây là cửa vào của một việc kéo dài hơn hai tiếng, mà bản cũ trông
+ * nhẹ hơn cả trang Cài đặt.
+ */
 function Intro({ onStart }: { onStart: () => void }) {
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Thi thử SAT đầy đủ</Text>
-      <Text className="mt-2 max-w-[640px] font-sans text-bodyLg text-muted" style={{ lineHeight: 24 }}>
-        Đúng khổ đề số hoá: {FULL_TEST_QUESTIONS} câu, {FULL_TEST_TESTING_MINUTES} phút làm bài,
-        nghỉ {BREAK_MINUTES} phút giữa hai phần.
-      </Text>
-
-      <Card className="mt-4">
-        <Text className="font-strong text-body text-ink">Bài thi đi thế nào</Text>
-        <View className="mt-2">
-          {[
-            'Reading and Writing — module 1, 27 câu, 32 phút',
-            'Reading and Writing — module 2, 27 câu, 32 phút',
-            `Nghỉ ${BREAK_MINUTES} phút`,
-            'Math — module 1, 22 câu, 35 phút',
-            'Math — module 2, 22 câu, 35 phút',
-          ].map((line) => (
-            <Text key={line} className="mt-1 font-sans text-body text-body">
-              {'·  '}
-              {line}
-            </Text>
-          ))}
+      <HeroBanner
+        title="Thi thử SAT đầy đủ"
+        subtitle="Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module, module sau khó dễ tuỳ module trước. Làm một mạch từ đầu tới cuối."
+        right={<TimeFigures />}
+      >
+        {/*
+          `onDarkSolid` / `onDark` chứ không phải `primary` / `ghost`: hai variant
+          kia được vẽ cho nền trắng, và trên gradient của banner thì nút "Để sau"
+          biến mất hẳn — chữ mực trên nền tím. Đây là hai variant app đã có sẵn
+          đúng cho chỗ này (Dashboard dùng `onDarkSolid` ở cùng vị trí).
+        */}
+        <View className="flex-row flex-wrap gap-2">
+          <Button
+            label="Bắt đầu thi"
+            variant="onDarkSolid"
+            iconRight="chevron-right"
+            onPress={onStart}
+          />
+          {/*
+            Đi thẳng tới /sat chứ không `router.back()`: route này ẩn hết thanh
+            điều hướng (nó là phòng thi), nên nếu người học mở thẳng bằng đường
+            dẫn thì `back()` không có chỗ để lùi và màn hình thành ngõ cụt.
+          */}
+          <Button label="Để sau" variant="onDark" onPress={() => router.replace('/sat')} />
         </View>
-      </Card>
+      </HeroBanner>
 
-      <Card className="mt-3">
-        <Text className="font-strong text-body text-ink">Hai điều nên biết trước</Text>
-        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-          <Text style={{ color: color.ink, fontWeight: '700' }}>Module 2 khó dễ tuỳ module 1.</Text>{' '}
-          Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là cách đề
-          thật hoạt động, không phải hình phạt.
-        </Text>
-        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-          <Text style={{ color: color.ink, fontWeight: '700' }}>Nộp module là không quay lại.</Text>{' '}
-          Hết giờ thì tự nộp, kể cả khi còn câu chưa làm.
-        </Text>
-      </Card>
+      {/*
+        Hai cột trên desktop. Một thẻ dòng thời gian trải hết bề ngang trang để
+        chứa năm dòng ngắn thì hai phần ba thẻ là khoảng trắng, và hai thẻ lưu ý
+        bị đẩy xuống dưới màn hình đầu — trong khi chúng chính là thứ người học
+        cần đọc TRƯỚC khi bấm bắt đầu.
+      */}
+      <View className="mt-4" style={{ marginBottom: space['2xl'] }}>
+        <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
+          <Card>
+            <Text className="font-strong text-cardTitle text-ink">Bài thi đi thế nào</Text>
+            <View className="mt-3">
+              {STAGES.map((s, i) => (
+                <StageRow key={s.label} stage={s} last={i === STAGES.length - 1} />
+              ))}
+            </View>
+          </Card>
 
-      <View className="mt-5 flex-row gap-2" style={{ marginBottom: space['2xl'] }}>
-        <Button label="Bắt đầu thi" onPress={onStart} />
-        <Button variant="ghost" label="Để sau" onPress={() => router.back()} />
+          <View style={{ gap: 12 }}>
+            <Card>
+              <Text className="font-strong text-body text-ink">Module 2 khó dễ tuỳ module 1</Text>
+              <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+                Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là
+                cách đề thật hoạt động, không phải hình phạt.
+              </Text>
+            </Card>
+            <Card>
+              <Text className="font-strong text-body text-ink">Nộp module là không quay lại</Text>
+              <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+                Hết giờ thì tự nộp, kể cả khi còn câu chưa làm. Đề thật không cho cộng giờ.
+              </Text>
+            </Card>
+          </View>
+        </Grid>
       </View>
     </Screen>
   );
 }
 
-function BreakScreen({ onContinue }: { onContinue: () => void }) {
+/**
+ * Ba con số ở góc phải banner — chỗ `/math` để vòng tiến độ.
+ *
+ * HAI CON SỐ THỜI GIAN ĐỨNG RIÊNG, và đó là lý do khối này tồn tại chứ không
+ * phải để lấp chỗ trống. `full-test.ts` cố ý tách `FULL_TEST_TESTING_MINUTES`
+ * (134) khỏi `FULL_TEST_ELAPSED_MINUTES` (144) vì lẫn hai cái là nói sai về đề
+ * thi: mọi tài liệu College Board ghi "2 giờ 14 phút" và đó là thời gian LÀM
+ * BÀI. Người học cần biết trước là mình ngồi 144 phút, không phải 134.
+ */
+function TimeFigures() {
+  return (
+    <View className="rounded-panel bg-white/15 px-5 py-4" style={{ minWidth: 176 }}>
+      <Figure value={String(FULL_TEST_QUESTIONS)} unit="câu" note="27+27 và 22+22" />
+      <View className="my-3 h-px bg-white/25" />
+      <Figure value={String(FULL_TEST_TESTING_MINUTES)} unit="phút" note="thời gian làm bài" />
+      <View className="my-3 h-px bg-white/25" />
+      <Figure
+        value={String(FULL_TEST_ELAPSED_MINUTES)}
+        unit="phút"
+        note={`ngồi phòng thi, kể cả ${BREAK_MINUTES} phút nghỉ`}
+      />
+    </View>
+  );
+}
+
+function Figure({ value, unit, note }: { value: string; unit: string; note: string }) {
+  return (
+    <View>
+      <View className="flex-row items-baseline gap-1.5">
+        <Text className="font-heavy text-white" style={{ fontSize: 26, lineHeight: 30 }}>
+          {value}
+        </Text>
+        <Text className="font-strong text-body text-white/80">{unit}</Text>
+      </View>
+      <Text className="font-sans text-label text-white/70">{note}</Text>
+    </View>
+  );
+}
+
+/**
+ * Một chặng trong dòng thời gian.
+ *
+ * Vẽ thành dòng thời gian có đường nối chứ không phải năm dòng gạch đầu dòng:
+ * THỨ TỰ ở đây là thông tin — người học cần thấy Math nằm SAU giờ nghỉ, và giờ
+ * nghỉ nằm giữa. Năm dấu chấm giống hệt nhau nói "năm thứ ngang hàng", đúng cái
+ * ngược lại.
+ */
+function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
+  const { width } = useWindowDimensions();
+  const wide = width >= 640;
+  const rest = stage.tone === 'rest';
+  return (
+    <View className="flex-row">
+      <View className="items-center" style={{ width: 22 }}>
+        <View
+          className={`h-2.5 w-2.5 rounded-pill ${rest ? 'bg-warning' : 'bg-primary-600'}`}
+          style={{ marginTop: 7 }}
+        />
+        {/*
+          Ray nối 2px màu `primary-200`, không phải 1px màu `border`. Bản đầu
+          dùng `border` (#E9EDF5) rộng 1px trên nền thẻ trắng: nó CÓ trong DOM,
+          đo được 25px chiều cao, nhưng nhìn màn hình thì không thấy gì — năm cái
+          chấm rời nhau, đúng cái ý "năm thứ ngang hàng" mà dòng thời gian sinh
+          ra để phủ định.
+        */}
+        {last ? null : (
+          <View className="flex-1 bg-primary-200" style={{ width: 2, marginVertical: 4 }} />
+        )}
+      </View>
+      {/*
+        Thời lượng nằm bên phải khi còn chỗ, tụt xuống dòng dưới khi hết. Ép nó
+        đứng bên phải trên màn 375px thì cả nhãn lẫn thời lượng đều gãy hai dòng
+        và bốn mẩu chữ đan vào nhau.
+      */}
+      <View className={last ? 'flex-1' : 'flex-1 pb-3.5'}>
+        <View className={wide ? 'flex-row items-baseline justify-between gap-3' : ''}>
+          <Text className={`font-sans text-body ${rest ? 'text-warning-ink' : 'text-ink'}`}>
+            {stage.label}
+          </Text>
+          <Text className="font-semi text-label text-muted">{stage.detail}</Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+/* -------------------------------------------------------------------- nghỉ */
+
+/**
+ * Màn nghỉ giữa giờ — CÓ ĐỒNG HỒ.
+ *
+ * Bản trước ghi "Nghỉ 10 phút" rồi để một cái nút, không đếm gì cả. Màn hình nói
+ * ra một khoảng thời gian mà không đo nó thì con số ấy chỉ là trang trí: người
+ * học ngồi ba phút rồi bấm tiếp, và cái mình vừa hứa — "144 phút ngồi phòng thi,
+ * đúng như đề thật" — thành sai ngay trong lượt thi đầu tiên.
+ *
+ * Hết giờ là tự vào phần Math, giống lúc hết giờ module là tự nộp. Nút vẫn còn
+ * để ai nghỉ đủ rồi thì đi sớm — `endBreak` vốn đã nhận cả hai đường ấy.
+ */
+function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () => void }) {
+  const [remainingMs, setRemainingMs] = useState(minutes * 60_000);
+  const startedAt = useRef(Date.now());
+  const done = useRef(false);
+
+  const continueRef = useRef(onContinue);
+  continueRef.current = onContinue;
+
+  useEffect(() => {
+    startedAt.current = Date.now();
+    const timer = setInterval(() => {
+      const left = minutes * 60_000 - (Date.now() - startedAt.current);
+      setRemainingMs(left);
+      if (left <= 0 && !done.current) {
+        done.current = true;
+        continueRef.current();
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [minutes]);
+
   return (
     <Screen>
-      <View className="items-center" style={{ paddingTop: 48 }}>
-        <Text className="font-heavy text-pageTitle text-ink">Nghỉ {BREAK_MINUTES} phút</Text>
-        <Text
-          className="mt-3 max-w-[520px] text-center font-sans text-bodyLg text-muted"
-          style={{ lineHeight: 24 }}
-        >
-          Xong phần Reading and Writing. Đứng dậy, uống nước, đừng xem lại câu vừa làm —
-          phần sau là Math và nó không liên quan gì tới phần vừa rồi.
-        </Text>
-        <View className="mt-6">
-          <Button label="Vào phần Math" onPress={onContinue} />
-        </View>
-        <Text className="mt-3 font-sans text-label text-subtle">
-          Bấm khi bạn sẵn sàng — đồng hồ phần Math bắt đầu từ lúc đó.
-        </Text>
+      <View className="items-center" style={{ paddingTop: 40 }}>
+        <Card className="w-full items-center" style={{ maxWidth: 520, paddingVertical: 32 }}>
+          <IconCircle name="clock" tone="warning" size={64} />
+          <Text className="mt-4 font-strong text-label uppercase text-muted">Nghỉ giữa giờ</Text>
+          <Text
+            className="font-heavy text-warning-ink"
+            style={{ fontSize: 56, lineHeight: 64, fontVariant: ['tabular-nums'] }}
+          >
+            {formatClock(remainingMs)}
+          </Text>
+          <Text
+            className="mt-1 max-w-[400px] text-center font-sans text-body text-muted"
+            style={{ lineHeight: 23 }}
+          >
+            Xong phần Reading and Writing. Đứng dậy, uống nước, đừng xem lại câu vừa làm —
+            phần sau là Math và nó không liên quan gì tới phần vừa rồi.
+          </Text>
+          <View className="mt-6">
+            <Button label="Vào phần Math sớm" iconRight="chevron-right" onPress={onContinue} />
+          </View>
+          <Text className="mt-3 text-center font-sans text-label text-subtle">
+            Hết {minutes} phút là tự vào phần Math.
+          </Text>
+        </Card>
       </View>
     </Screen>
   );
 }
 
+/** mm:ss, không âm. Cùng khuôn với đồng hồ của hai phòng thi. */
+function formatClock(ms: number): string {
+  const total = Math.max(0, Math.round(ms / 1000));
+  return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
+}
+
+/* ------------------------------------------------------------------ kết quả */
+
 function ResultScreen({ state, onRestart }: { state: FullTestState; onRestart: () => void }) {
+  const { width } = useWindowDimensions();
+  const wide = width >= 900;
   const score = fullTestScore(state);
   if (!score) return null;
 
-  const rwTier = state.rw.tier === 'harder' ? 'module 2 khó' : 'module 2 dễ';
-  const mathTier = state.math.tier === 'harder' ? 'module 2 khó' : 'module 2 dễ';
+  const rwTier = state.rw.tier === 'harder' ? 'qua module 2 khó' : 'qua module 2 dễ';
+  const mathTier = state.math.tier === 'harder' ? 'qua module 2 khó' : 'qua module 2 dễ';
 
   return (
     <Screen>
       <Text className="font-heavy text-pageTitle text-ink">Kết quả</Text>
+      <Text className="mt-1 font-sans text-body text-muted">
+        {FULL_TEST_QUESTIONS} câu · {FULL_TEST_TESTING_MINUTES} phút làm bài
+      </Text>
 
-      <View className="mt-4 flex-row flex-wrap gap-3">
-        <StatCard label="Tổng" value={String(score.total)} icon="trending" caption="thang 400–1600" />
-        <StatCard
-          label="Reading and Writing"
-          value={String(score.readingWriting)}
-          icon="book"
-          caption={rwTier}
-        />
-        <StatCard label="Math" value={String(score.math)} icon="grid" caption={mathTier} />
-      </View>
-
+      {/*
+        MỘT PHIẾU ĐIỂM, không phải ba thẻ rời. Tổng nằm bên trái to hơn hẳn, hai
+        phần cộng thành nó nằm ngay bên phải — nhìn một lần là thấy 200 + 200 =
+        400. Bản trước xếp tổng thành một StatCard ngang hàng với hai phần, nên
+        phải đọc nhãn mới biết cái nào cộng ra cái nào; mà tổng thì lại nằm trong
+        một thẻ trắng rộng 1.250px với đúng ba dòng chữ dạt về mép trái.
+      */}
       <Card className="mt-4">
-        <Text className="font-strong text-body text-ink">Con số này là ƯỚC LƯỢNG</Text>
-        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-          College Board không công bố bảng quy đổi của đề số hoá, và bảng ấy còn đổi theo
-          từng kỳ thi. Đây là phỏng theo, đủ để theo dõi tiến bộ giữa các lần làm — không đủ
-          để dự đoán điểm thi thật.
-        </Text>
-        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-          Trần điểm phụ thuộc module 2 bạn được đưa vào: {rwTier} cho Reading and Writing,
-          {' '}
-          {mathTier} cho Math. Đúng như đề thật.
-        </Text>
-      </Card>
+        <View className={wide ? 'flex-row items-center gap-8' : ''}>
+          <View style={wide ? { width: 260 } : undefined}>
+            <Text className="font-strong text-label uppercase text-muted">Tổng điểm</Text>
+            <Text
+              className="font-heavy text-ink"
+              style={{ fontSize: 64, lineHeight: 70, fontVariant: ['tabular-nums'] }}
+            >
+              {score.total}
+            </Text>
+            <Text className="font-sans text-body text-muted">thang 400–1600</Text>
+          </View>
 
-      <Card className="mt-3">
-        <Text className="font-strong text-body text-ink">Số câu đúng từng module</Text>
-        <View className="mt-2">
-          <Line label="R&W module 1" r={state.rw.module1} />
-          <Line label="R&W module 2" r={state.rw.module2} />
-          <Line label="Math module 1" r={state.math.module1} />
-          <Line label="Math module 2" r={state.math.module2} />
+          {wide ? <View className="w-px self-stretch bg-borderStrong" /> : null}
+
+          <View className={wide ? 'flex-1 gap-3' : 'mt-4 gap-3'}>
+            <SectionScore
+              icon="book"
+              tone="primary"
+              label="Reading and Writing"
+              value={score.readingWriting}
+              tier={rwTier}
+            />
+            <SectionScore
+              icon="grid"
+              tone="accent"
+              label="Math"
+              value={score.math}
+              tier={mathTier}
+            />
+          </View>
         </View>
       </Card>
 
-      <View className="mt-5 flex-row gap-2" style={{ marginBottom: space['2xl'] }}>
-        <Button label="Thi lại đề khác" onPress={onRestart} />
+      <View className="mt-3">
+        <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
+          <Card>
+            <Text className="font-strong text-cardTitle text-ink">Số câu đúng từng module</Text>
+            <View className="mt-3">
+              <Line label="Reading and Writing — module 1" r={state.rw.module1} />
+              <Line label="Reading and Writing — module 2" r={state.rw.module2} />
+              <Line label="Math — module 1" r={state.math.module1} />
+              <Line label="Math — module 2" r={state.math.module2} last />
+            </View>
+          </Card>
+
+          <Card variant="flat">
+            <Text className="font-strong text-cardTitle text-ink">Con số này là ước lượng</Text>
+            <Text className="mt-2.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+              College Board không công bố bảng quy đổi của đề số hoá, và bảng ấy còn đổi theo
+              từng kỳ thi. Đây là phỏng theo — đủ để theo dõi tiến bộ giữa các lần làm, không
+              đủ để dự đoán điểm thi thật.
+            </Text>
+            <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+              Trần điểm phụ thuộc module 2 bạn được đưa vào: Reading and Writing {rwTier}, Math{' '}
+              {mathTier}. Đúng như đề thật.
+            </Text>
+          </Card>
+        </Grid>
+      </View>
+
+      <View className="mt-5 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
+        <Button label="Thi lại đề khác" iconRight="chevron-right" onPress={onRestart} />
         <Button variant="ghost" label="Về trang SAT" onPress={() => router.replace('/sat')} />
       </View>
     </Screen>
   );
 }
 
-function Line({ label, r }: { label: string; r: { correct: number; total: number } | null }) {
+/**
+ * Điểm một phần, đặt cạnh tổng.
+ *
+ * Nhắc luôn phần ấy đi qua module 2 nào: cùng một số câu đúng mà hai nhánh khác
+ * nhau thì ra hai điểm khác nhau, nên bỏ dòng đó đi là để người học tự đoán vì
+ * sao lần này 600 mà lần trước 520.
+ */
+function SectionScore({
+  icon,
+  tone,
+  label,
+  value,
+  tier,
+}: {
+  icon: IconName;
+  tone: IconTone;
+  label: string;
+  value: number;
+  tier: string;
+}) {
   return (
-    <View className="mt-1 flex-row justify-between">
+    <View className="flex-row items-center gap-3 rounded-panel bg-surfaceAlt px-4 py-3">
+      <IconCircle name={icon} tone={tone} size={40} />
+      <View className="min-w-0 flex-1">
+        <Text className="font-strong text-body text-ink">{label}</Text>
+        <Text className="font-sans text-label text-muted">{tier}</Text>
+      </View>
+      <Text
+        className="font-heavy text-ink"
+        style={{ fontSize: 28, lineHeight: 32, fontVariant: ['tabular-nums'] }}
+      >
+        {value}
+      </Text>
+    </View>
+  );
+}
+
+/**
+ * Một dòng "module — số câu đúng".
+ *
+ * Số căn phải và dùng chữ số đều bề ngang: bốn dòng này để ĐỐI CHIẾU với nhau,
+ * mà số căn trái thì hàng đơn vị không thẳng nên mắt phải đọc từng con một.
+ */
+function Line({
+  label,
+  r,
+  last,
+}: {
+  label: string;
+  r: { correct: number; total: number } | null;
+  last?: boolean;
+}) {
+  return (
+    <View
+      className={`flex-row items-baseline justify-between py-2 ${
+        last ? '' : 'border-b border-border'
+      }`}
+    >
       <Text className="font-sans text-body text-body">{label}</Text>
-      <Text className="font-semi text-body text-ink">{r ? `${r.correct}/${r.total}` : '—'}</Text>
+      <Text className="font-strong text-body text-ink" style={{ fontVariant: ['tabular-nums'] }}>
+        {r ? `${r.correct}/${r.total}` : '—'}
+      </Text>
     </View>
   );
 }
