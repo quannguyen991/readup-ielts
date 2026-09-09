@@ -59,8 +59,17 @@ function usableSentence(s: string): boolean {
   if (t.length < 95 || t.length > 280) return false;
   if (!/[.!?]$/.test(t)) return false;
 
-  // Mở đầu bằng đại từ hoặc từ chỉ định là câu dựa vào câu trước — tách ra thì mất nghĩa.
-  if (/^(it|he|she|they|this|that|these|those|such|but|and|however|therefore)\b/i.test(t)) {
+  /*
+    Mở đầu bằng đại từ, từ chỉ định hoặc LIÊN TỪ NỐI là câu dựa vào câu trước —
+    tách ra khỏi bài thì mất nghĩa. Danh sách đã nới sau khi đọc bài sinh ra: bản
+    đầu chặn `however` và `therefore` nhưng sót `furthermore`, `moreover`,
+    `nevertheless`… và một câu mở bằng "Furthermore, McGuire proposed…" lọt vào đề.
+  */
+  if (
+    /^(it|he|she|they|this|that|these|those|such|but|and|or|so|yet|however|therefore|furthermore|moreover|nevertheless|nonetheless|thus|hence|meanwhile|instead|similarly|consequently|accordingly|conversely|additionally|likewise|besides|otherwise|indeed|rather)\b/i.test(
+      t,
+    )
+  ) {
     return false;
   }
 
