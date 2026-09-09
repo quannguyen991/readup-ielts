@@ -36,6 +36,10 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Từ vựng theo chủ đề — đây là màn học thẻ, không phải màn duyệt.
   /^\/vocabulary\/topic\/[^/]+$/,
 
+  // Thi thử SAT đầy đủ: 98 câu, hơn hai tiếng. Đây là màn tập trung nhất trong
+  // cả app — mọi lối rẽ ngang đều là một cách bỏ dở bài thi.
+  /^\/sat\/full-test$/,
+
   // Đăng nhập và thanh toán: dẫn người dùng đi thẳng, không mời rẽ ngang.
   /^\/auth(\/|$)/,
   /^\/checkout$/,
