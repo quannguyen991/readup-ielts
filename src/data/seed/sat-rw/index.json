@@ -4609,6 +4609,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "The naturalist Jean-Henri Fabre kept his wasps in the garden rather than the laboratory. He argued that an insect removed from the soil it had chosen was no longer the animal he wanted to describe. His contemporaries, working with pinned specimens and precise measurements, considered the method unrigorous. Fabre published forty years of observations anyway, and much of what he recorded has since been confirmed with equipment he could not have imagined.",
+   "underline": "He argued that an insect removed from the soil it had chosen was no longer the animal he wanted to describe.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It states the conclusion that Fabre’s forty years of observation eventually supported.",
@@ -4626,6 +4627,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "Bioluminescent bacteria glow only after their population passes a threshold. A single cell that lit up on its own would spend energy and produce no visible light. The bacteria therefore release a signaling molecule and measure its concentration; when enough neighbors are present, all of them switch on at once. The mechanism has since been found in species that do not glow at all.",
+   "underline": "A single cell that lit up on its own would spend energy and produce no visible light.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It explains why the behavior described in the first sentence would not pay off for one cell acting alone.",
@@ -4643,6 +4645,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "Rachel Carson delivered the manuscript of Silent Spring with fifty-five pages of references. Her editor thought the apparatus excessive for a general readership and proposed cutting it. Carson refused. When the chemical industry attacked the book, the references were the first thing reviewers checked, and they held.",
+   "underline": "Her editor thought the apparatus excessive for a general readership and proposed cutting it.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It summarizes the chemical industry’s objection to the book.",
@@ -4660,6 +4663,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "Most models of urban growth assume that people move toward jobs. Data from three African capitals fit the assumption poorly: in each city, the districts that grew fastest in the 2010s held fewer formal jobs at the end of the decade than at the start. Residents had moved toward cheap land and a bus route, not toward employers. Planners who forecast demand from job counts alone underestimated water needs by a third.",
+   "underline": "Residents had moved toward cheap land and a bus route, not toward employers.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It explains how planners calculated the water needs of the three capitals.",
@@ -4677,6 +4681,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "The Antikythera mechanism has thirty surviving bronze gears, cut to tolerances that would not be matched in Europe for more than a thousand years. No other object of comparable complexity survives from the ancient Mediterranean. That does not mean none was made: bronze was valuable, and objects made of it were routinely melted down. The mechanism survived because it sank.",
+   "underline": "No other object of comparable complexity survives from the ancient Mediterranean.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It presents the conclusion that the text as a whole is written to establish.",
@@ -4694,6 +4699,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "In 1846 Ignaz Semmelweis noticed that the maternity ward staffed by doctors had a death rate three times higher than the ward staffed by midwives. The doctors came to the ward from the autopsy room; the midwives did not. Semmelweis ordered everyone entering his ward to wash in chlorinated lime. Deaths fell within a month. He could not say what the washing removed, and the profession did not accept the result for thirty years.",
+   "underline": "Semmelweis ordered everyone entering his ward to wash in chlorinated lime.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It reports the step Semmelweis took on the basis of the difference described before it.",
@@ -4711,6 +4717,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "Zora Neale Hurston collected folktales in Florida turpentine camps for four years before she published a line of them. She had trained as an anthropologist under Franz Boas, who insisted that a collector record what was said rather than what the collector expected to hear. The result reads like fiction and is not: the cadence in her transcriptions is the cadence of the camps.",
+   "underline": "She had trained as an anthropologist under Franz Boas, who insisted that a collector record what was said rather than what the collector expected to hear.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It argues that Hurston’s transcriptions should be read as fiction.",
@@ -4728,6 +4735,7 @@
    "domain": "Craft and Structure",
    "skill": "structure",
    "passage": "Corvids cache food and retrieve it months later. To test whether they remember when they hid each item, researchers let scrub jays store both worms, which rot, and peanuts, which do not. After four days the jays went to the worms first; after five, they ignored the worms entirely and dug up peanuts. The birds were tracking not just where but how long ago.",
+   "underline": "After four days the jays went to the worms first; after five, they ignored the worms entirely and dug up peanuts.",
    "stem": "Which choice best describes the function of the underlined sentence in the text as a whole?",
    "options": [
     "It reports the result that supports the claim made in the final sentence.",
@@ -5017,6 +5025,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Urban trees are the cheapest cooling technology a city has. Planting a million trees would cut summer peak temperatures across the whole city. Nurseries can supply the stock, and the labor is unskilled. Văn bản 2 Canopy cools the air beneath it and for a few dozen meters downwind. Whether a city gets cooler depends on where the canopy goes: a million trees spread evenly across a city move the average very little, while the same trees concentrated in the hottest districts change conditions there measurably.",
+   "underline": "Planting a million trees would cut summer peak temperatures across the whole city.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By agreeing that a million trees would lower temperatures citywide.",
@@ -5034,6 +5043,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 The Neanderthal genome contains variants associated in modern humans with language development. This shows that Neanderthals had language in the modern sense. Văn bản 2 Gene variants of this kind are necessary for speech but not sufficient for it: individuals who carry them can still fail to develop language, and the variants are also present in species that do not speak. What the genome establishes is that a barrier was absent, not that the capacity was present.",
+   "underline": "This shows that Neanderthals had language in the modern sense.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By claiming that the variants have no effect on language in modern humans.",
@@ -5085,6 +5095,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Reviewers of the 1913 premiere described a riot. The audience’s reaction proves that the music was too advanced for its first listeners. Văn bản 2 The disturbance began during the introduction, before the dissonant passages that later commentators point to. Contemporary accounts describe arguments about the choreography, the ticket prices and the seating of the fashionable audience. Whatever the crowd was reacting to, the timing does not fit the score.",
+   "underline": "The audience’s reaction proves that the music was too advanced for its first listeners.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By noting that the disturbance started too early in the performance for the music to have caused it.",
@@ -5119,6 +5130,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Every language studied has words for black and white, and languages that have a third color term always have a word for red. Color vocabulary therefore develops in a fixed order determined by biology. Văn bản 2 The sequence holds well for the languages in the original sample, which were collected from students at one American university and from published dictionaries. Field research since has found languages whose terms cut across the sequence, and several whose speakers sort colors differently depending on the material being described.",
+   "underline": "Color vocabulary therefore develops in a fixed order determined by biology.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By arguing that no language has a separate word for red.",
@@ -5170,6 +5182,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Bilingual children reach vocabulary milestones later than monolingual children in each of their languages. Raising a child with two languages therefore slows language development. Văn bản 2 Counted in one language at a time, the bilingual child is behind. Counted across both languages, the total number of words is the same or larger, and the gap in each single language closes by about age ten. The measure being used decides the answer.",
+   "underline": "Raising a child with two languages therefore slows language development.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By claiming that vocabulary size cannot be measured in young children.",
@@ -5221,6 +5234,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Cities that added bike lanes saw retail revenue on those streets rise. Bike lanes cause local businesses to earn more. Văn bản 2 The streets chosen for bike lanes were rarely chosen at random. Transport departments favored corridors that were already being redeveloped, already gaining residents, or already scheduled for repaving and new lighting. Comparing them with unchanged streets compares more than the lanes.",
+   "underline": "Bike lanes cause local businesses to earn more.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By objecting that the streets receiving bike lanes differed from the comparison streets in other ways as well.",
@@ -5272,6 +5286,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Participants who were paid to donate blood gave less often than unpaid volunteers in a Swedish trial. Paying people for a civic act reliably reduces how often they perform it. Văn bản 2 The effect appeared among women and not among men in that trial, and it disappeared when the payment could be redirected to a charity. Later replications in other countries have found effects in both directions. Whatever is happening is sensitive to how the payment is framed.",
+   "underline": "Paying people for a civic act reliably reduces how often they perform it.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By claiming that the Swedish trial did not include male participants.",
@@ -5323,6 +5338,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Coral reefs bleached in the 2016 marine heatwave have shown some recovery. Reefs can therefore be expected to recover from future heatwaves in the same way. Văn bản 2 Recovery on the reefs that regrew came almost entirely from larvae produced elsewhere. The reefs that supplied those larvae bleached in 2020 and again in 2024. Recovery of the kind observed after 2016 requires a source that has not itself been damaged.",
+   "underline": "Reefs can therefore be expected to recover from future heatwaves in the same way.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By denying that any recovery took place after the 2016 heatwave.",
@@ -5374,6 +5390,7 @@
    "domain": "Craft and Structure",
    "skill": "crosstext",
    "passage": "Văn bản 1 Students who attended the summer program scored higher on the entrance examination than students who did not. The program raised its participants’ scores. Văn bản 2 Places on the program were given to applicants who submitted a written statement and a teacher’s recommendation by a deadline in February. The comparison group is made up of students who did not apply.",
+   "underline": "The program raised its participants’ scores.",
    "stem": "Based on the texts, how would the author of Text 2 most likely respond to the underlined claim in Text 1?",
    "options": [
     "By claiming that the entrance examination was unfair to some applicants.",

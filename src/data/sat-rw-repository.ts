@@ -34,6 +34,14 @@ export type SatRwQuestion = {
   skill: string;
   /** Đoạn văn, có chỗ trống là dãy gạch dưới với các unit ngữ pháp. */
   passage: string;
+  /**
+   * Chuỗi con của `passage` được gạch chân khi hiện ra màn hình.
+   *
+   * Chỉ 17 câu có: những câu mà đề bài hỏi thẳng "the underlined sentence" /
+   * "the underlined claim in Text 1". Dấu do `scripts/mark-underlines.ts` đặt
+   * vào, và `passage.test.ts` canh cho không câu nào mất dấu hay thừa dấu.
+   */
+  underline?: string;
   stem: string;
   options: string[];
   answerIndex: number;

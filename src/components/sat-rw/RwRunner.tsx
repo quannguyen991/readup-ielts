@@ -4,8 +4,8 @@ import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 import { Screen } from '@/components/layout/Screen';
 import { CrossFade } from '@/components/motion/Motion';
 import { Badge, Button, Card } from '@/components/ui';
+import { PassageText } from '@/components/sat-rw/PassageText';
 import type { MockItem } from '@/services/sat-rw/mock/item';
-import { splitPassage } from '@/services/sat-rw/mock/passage';
 
 /**
  * Phòng thi Reading and Writing: một module, đồng hồ đếm ngược, không lời giải.
@@ -159,7 +159,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
         <CrossFade swapKey={item.id}>
           <View className={split ? 'flex-row gap-6' : ''}>
             <View className="flex-1">
-              <PassageBlocks passage={item.passage} />
+              <PassageText passage={item.passage} underline={item.underline} />
               {item.notes ? <NotesList notes={item.notes} /> : null}
               {item.table ? <EvidenceTable table={item.table} /> : null}
             </View>
@@ -285,30 +285,6 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
         </View>
       </Card>
     </Screen>
-  );
-}
-
-/**
- * Bài đọc, tách khối khi là câu ghép hai văn bản.
- *
- * Nhãn "Text 1" / "Text 2" nằm ở `splitPassage` cùng với lý do vì sao nó là bản
- * tiếng Anh chứ không phải "Văn bản 1".
- */
-function PassageBlocks({ passage }: { passage: string }) {
-  const blocks = splitPassage(passage);
-  return (
-    <View style={{ gap: 14 }}>
-      {blocks.map((b, i) => (
-        <View key={`${b.label ?? 'x'}-${i}`}>
-          {b.label ? (
-            <Text className="mb-1 font-strong text-label uppercase text-primary-700">{b.label}</Text>
-          ) : null}
-          <Text className="font-sans text-body text-body" style={{ lineHeight: 25 }}>
-            {b.text}
-          </Text>
-        </View>
-      ))}
-    </View>
   );
 }
 

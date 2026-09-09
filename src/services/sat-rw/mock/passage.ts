@@ -47,3 +47,34 @@ export function splitPassage(passage: string): PassageBlock[] {
 
   return blocks.length > 0 ? blocks : [{ label: null, text: passage }];
 }
+
+/* ------------------------------------------------------------- gạch chân */
+
+export type TextRun = { text: string; underlined: boolean };
+
+/**
+ * Cắt một khối văn bản quanh đoạn được gạch chân.
+ *
+ * VÌ SAO CẦN. 17 câu trong kho hỏi thẳng về "the underlined sentence" / "the
+ * underlined claim in Text 1". Không gạch chân gì thì người học phải tự đoán câu
+ * nào đang bị hỏi — đoán sai là làm sai, mà cái sai ấy không nói lên gì về việc
+ * họ có hiểu bài hay không. `scripts/mark-underlines.ts` đặt dấu vào kho, hàm
+ * này chỉ lo phần cắt ra để vẽ.
+ *
+ * KHÔNG TÌM THẤY THÌ TRẢ VỀ NGUYÊN KHỐI, không ném lỗi: đoạn gạch chân nằm trong
+ * Text 1 nên khi vẽ Text 2 sẽ không khớp, và đó là chuyện bình thường chứ không
+ * phải hỏng. Việc canh cho mọi câu hỏi "underlined" đều CÓ dấu là của test, chỗ
+ * đúng để bắt lỗi ấy — không phải giữa lúc người ta đang thi.
+ */
+export function markUnderline(text: string, underline?: string): TextRun[] {
+  if (!underline) return [{ text, underlined: false }];
+
+  const at = text.indexOf(underline);
+  if (at < 0) return [{ text, underlined: false }];
+
+  return [
+    { text: text.slice(0, at), underlined: false },
+    { text: underline, underlined: true },
+    { text: text.slice(at + underline.length), underlined: false },
+  ].filter((run) => run.text.length > 0);
+}

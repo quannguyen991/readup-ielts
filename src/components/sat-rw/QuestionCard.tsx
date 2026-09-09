@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { PassageText } from '@/components/sat-rw/PassageText';
 import { Icon, PaperCard } from '@/components/ui';
 import type { SatRwQuestion } from '@/data/sat-rw-repository';
 import { color, paper } from '@/theme/tokens';
@@ -40,9 +41,7 @@ export function QuestionCard({
 
   return (
     <PaperCard>
-      <Text className="font-mid text-bodyLg text-paper-ink" style={{ lineHeight: 28 }}>
-        {question.passage}
-      </Text>
+      <PassageText passage={question.passage} underline={question.underline} tone="paper" />
 
       <Text className="mt-4 font-strong text-body text-paper-ink">{question.stem}</Text>
 

@@ -73,7 +73,8 @@
     "setup:supabase": "tsx scripts/provision-supabase.ts",
     "grant": "tsx scripts/grant-account.ts",
     "vocab:topics": "tsx scripts/generate-vocab-topics.ts",
-    "verify:credential": "tsx scripts/verify-credential.ts"
+    "verify:credential": "tsx scripts/verify-credential.ts",
+    "satrw:underlines": "tsx scripts/mark-underlines.ts"
   },
   "private": true
 }

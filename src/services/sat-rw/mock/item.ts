@@ -30,6 +30,8 @@ export type MockItem = {
   skill: string;
   /** Đoạn văn. Với câu điền từ, chỗ trống nằm sẵn trong đây. */
   passage: string;
+  /** Chuỗi con của `passage` phải gạch chân — chỉ câu hỏi về "the underlined …" mới có. */
+  underline?: string;
   stem: string;
   options: string[];
   answerIndex: number;
@@ -48,6 +50,7 @@ export function fromRepository(q: SatRwQuestion): MockItem {
     domain: q.domain as MockDomain,
     skill: q.skill,
     passage: q.passage,
+    underline: q.underline,
     stem: q.stem,
     options: q.options,
     answerIndex: q.answerIndex,
