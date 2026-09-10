@@ -3,11 +3,13 @@ import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { router, useLocalSearchParams } from 'expo-router';
 
-import { PlanBadge, planTone } from '@/components/billing/PlanUi';
+import { planTone } from '@/components/billing/PlanUi';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { QrCode } from '@/components/payment/QrCode';
-import { Badge, Button, Card, Icon } from '@/components/ui';
+import { LinearGradient } from 'expo-linear-gradient';
+
+import { Button, Card, Icon } from '@/components/ui';
 import { PLANS, formatVnd, type PlanId } from '@/lib/billing/plans';
 import { hasBankConfig, publicEnv } from '@/lib/env';
 import { bankLabel } from '@/lib/payment/banks';
@@ -15,7 +17,7 @@ import { transferDescription } from '@/lib/payment/reference';
 import { buildVietQrPayload } from '@/lib/payment/vietqr';
 import { buildOrder, type BillingCycle } from '@/services/payment/order';
 import { useAuthStore } from '@/store/useAuthStore';
-import { color } from '@/theme/tokens';
+import { color, gradient } from '@/theme/tokens';
 
 /**
  * Trang thanh toán: QR chuyển khoản + đối chiếu tay.
@@ -242,16 +244,61 @@ export default function CheckoutScreen() {
 
   return (
     <Screen>
+      {/*
+        SỐ TIỀN LÊN ĐẦU, TO NHẤT.
+
+        Bản trước để nó là dòng thứ tư trong một danh sách năm dòng giống hệt nhau
+        — cùng cỡ chữ, cùng nền, cùng nút "Chép". Nhưng đây là trang chuyển tiền:
+        câu hỏi đầu tiên trong đầu người mở trang là "bao nhiêu", và họ phải quét
+        mắt qua bốn dòng mới tìm ra.
+      */}
       <Appear>
-        <View className="flex-row flex-wrap items-center gap-2">
-          <Text className="font-heavy text-pageTitle text-ink">Thanh toán</Text>
-          <PlanBadge plan={spec.plan} />
-          <Badge label={spec.cycle === 'yearly' ? '1 năm' : '1 tháng'} tone="neutral" shape="tag" />
-        </View>
-        <Text className="mt-1 font-sans text-body text-muted">
-          Chuyển khoản đúng số tiền và đúng nội dung bên dưới. Gói được bật sau khi đối chiếu —
-          thường trong vài giờ, chậm nhất là sang ngày hôm sau.
-        </Text>
+        <LinearGradient
+          colors={[...gradient.hero]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={{ borderRadius: 16, padding: 20 }}
+        >
+          <View className="flex-row flex-wrap items-end justify-between gap-4">
+            <View className="min-w-0">
+              <Text className="font-strong text-label uppercase text-white/75">
+                {PLANS[spec.plan].name} · {spec.cycle === 'yearly' ? '1 năm' : '1 tháng'}
+              </Text>
+              <Text
+                className="font-heavy text-white"
+                style={{ fontSize: 46, lineHeight: 54, fontVariant: ['tabular-nums'] }}
+              >
+                {formatVnd(amount)}
+              </Text>
+              {priceLabel ? (
+                <View className="mt-1 flex-row items-center gap-1.5 self-start rounded-pill bg-white/20 px-3 py-1">
+                  <Icon name="sparkle" size={13} color="#FFFFFF" />
+                  <Text className="font-strong text-label text-white">{priceLabel}</Text>
+                </View>
+              ) : null}
+            </View>
+
+            {/*
+              Mã ĐỐI CHIẾU đứng ngang hàng với số tiền, không chôn trong danh sách.
+              Thiếu nó thì tiền đã đi mà không đơn nào khớp được — đây là lỗi tốn thời
+              gian nhất của cả luồng, nên nó phải đập vào mắt ngay từ đầu.
+            */}
+            <View className="rounded-panel bg-white/15 px-4 py-3">
+              <Text className="font-strong text-label uppercase text-white/75">Mã đối chiếu</Text>
+              <Text
+                className="mt-0.5 font-heavy text-white"
+                style={{ fontSize: 20, lineHeight: 26, letterSpacing: 1 }}
+              >
+                {reference || '…'}
+              </Text>
+            </View>
+          </View>
+
+          <Text className="mt-4 font-sans text-body text-white/80" style={{ lineHeight: 22 }}>
+            Chuyển đúng số tiền và đúng nội dung bên dưới. Gói được bật sau khi đối chiếu —
+            thường trong vài giờ, chậm nhất là sang ngày hôm sau.
+          </Text>
+        </LinearGradient>
       </Appear>
 
       {error ? (
@@ -314,14 +361,6 @@ export default function CheckoutScreen() {
                   copied={copied === 'Chủ tài khoản'}
                 />
               ) : null}
-              {priceLabel ? (
-                <View className="flex-row items-center gap-1.5 rounded-card bg-success-soft px-2.5 py-1.5">
-                  <Icon name="sparkle" size={13} color={color.success} />
-                  <Text className="flex-1 font-mid text-label" style={{ color: color.success }}>
-                    {priceLabel}
-                  </Text>
-                </View>
-              ) : null}
               <CopyRow
                 label="Số tiền"
                 value={formatVnd(amount)}
@@ -365,8 +404,21 @@ export default function CheckoutScreen() {
               <Text className="font-strong text-cardTitle text-ink">Sau khi chuyển thì sao?</Text>
               <Text className="mt-1 font-sans text-body text-muted">
                 Trang này tự kiểm lại mỗi {POLL_MS / 1000} giây, bạn không cần tải lại. Gói bật xong
-                là hiện ngay ở đây và ở mọi máy bạn đăng nhập. Đóng trang cũng không sao — đơn vẫn
-                còn, và bạn xem lại được ở Cài đặt.
+                là hiện ngay ở đây và ở mọi máy bạn đăng nhập.
+              </Text>
+              {/*
+                CÂU NÀY TRƯỚC ĐÂY NÓI SAI. Nó bảo "xem lại được ở Cài đặt", nhưng trang
+                Cài đặt không hề liệt kê đơn nào — ai đóng trang rồi đi tìm sẽ không thấy gì,
+                đúng lúc họ đang lo vì vừa chuyển tiền.
+
+                Cái ĐÚNG là: đơn đang chờ được DÙNG LẠI trong vài giờ
+                (`REUSE_WINDOW_HOURS` ở `/api/payments/order`), nên mở lại đúng trang này
+                với cùng gói và cùng chu kỳ sẽ ra đúng đơn cũ, đúng mã đối chiếu cũ.
+              */}
+              <Text className="mt-2 font-sans text-body text-muted">
+                Đóng trang cũng không sao: mở lại trang thanh toán của đúng gói này thì ra lại đúng
+                đơn cũ và đúng mã <Text className="font-strong text-ink">{reference || '…'}</Text>,
+                không sinh mã mới.
               </Text>
               <Text className="mt-2 font-sans text-label text-subtle">
                 Đối chiếu do người thật làm, không phải máy — nên đừng chuyển khoản lần thứ hai nếu
