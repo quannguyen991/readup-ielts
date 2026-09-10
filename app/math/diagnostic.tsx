@@ -47,6 +47,7 @@ export default function MathDiagnosticScreen() {
 
   return (
     <MathRunner
+      surface="paper"
       title="Bài chẩn đoán"
       subtitle={`${DIAGNOSTIC_LENGTH} câu, mỗi kỹ năng đúng một câu. Không đoán bừa — bỏ trắng cũng là một thông tin.`}
       items={items}

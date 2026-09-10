@@ -104,6 +104,7 @@ export default function MathSetScreen() {
 
   return (
     <MathRunner
+      surface="paper"
       title={`${unit ? `${unit.title} · ` : ''}${set.title}`}
       subtitle={kind.purpose}
       items={items}

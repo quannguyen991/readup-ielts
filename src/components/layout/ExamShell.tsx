@@ -2,8 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { GridBackdrop } from '@/components/layout/GridBackdrop';
-import { Screen } from '@/components/layout/Screen';
+import { GridBackdrop } from './GridBackdrop';
+import { Screen } from './Screen';
 
 /**
  * Nền chung của cả bài thi SAT: giấy kẻ ô xanh tím, tràn viền.

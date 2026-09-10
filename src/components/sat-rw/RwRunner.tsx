@@ -3,7 +3,7 @@ import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 
 import { CrossFade } from '@/components/motion/Motion';
 import { Badge, Button, PaperCard } from '@/components/ui';
-import { ExamShell } from '@/components/sat-rw/ExamShell';
+import { ExamShell } from '@/components/layout/ExamShell';
 import { ItemBody } from '@/components/sat-rw/ItemBody';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 

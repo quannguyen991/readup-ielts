@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Pressable, Text, View } from 'react-native';
 
 import { Screen } from '@/components/layout/Screen';
-import { ExamShell } from '@/components/sat-rw/ExamShell';
+import { ExamShell } from '@/components/layout/ExamShell';
 import { SelfDiagnose } from './SelfDiagnose';
 import { CrossFade } from '@/components/motion/Motion';
 import { Badge, Button, Card, PaperCard } from '@/components/ui';
@@ -211,6 +211,7 @@ export function MathRunner({
         */}
         <CrossFade swapKey={current.id}>
           <MathQuestionView
+            surface={surface}
             item={current}
             index={index}
             answer={answers[current.id] ?? null}

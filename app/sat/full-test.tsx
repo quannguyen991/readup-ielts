@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { MathQuestionView } from '@/components/math/MathQuestionView';
 import { MathRunner } from '@/components/math/MathRunner';
-import { ExamShell } from '@/components/sat-rw/ExamShell';
+import { ExamShell } from '@/components/layout/ExamShell';
 import { RwReviewItem } from '@/components/sat-rw/RwReviewItem';
 import { RwRunner } from '@/components/sat-rw/RwRunner';
 import {

@@ -68,6 +68,7 @@ export default function MathDrillScreen() {
 
   return (
     <MathRunner
+      surface="paper"
       title={`Drill · ${MATH_SKILL_LABEL[skill]}`}
       subtitle={`${DRILL_LENGTH} câu cùng một kỹ năng. Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`}
       items={items}

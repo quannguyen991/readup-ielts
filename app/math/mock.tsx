@@ -174,6 +174,7 @@ export default function MathMockScreen() {
   if (phase.stage === 'module1') {
     return (
       <MathRunner
+        surface="paper"
         title="Thi thử · Module 1"
         subtitle="Độ khó trộn lẫn. Kết quả module này quyết định độ khó của module sau."
         items={module1}
@@ -216,6 +217,7 @@ export default function MathMockScreen() {
 
   return (
     <MathRunner
+      surface="paper"
       title={`Thi thử · Module 2 (${phase.tier === 'harder' ? 'khó hơn' : 'dễ hơn'})`}
       subtitle="Module cuối. Nộp xong sẽ ra điểm ước lượng và bảng xem lại từng câu."
       items={module2}
