@@ -4,6 +4,7 @@ import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AuroraBackground } from './AuroraBackground';
+import { LightGrid } from './LightGrid';
 import { TopBar } from './TopBar';
 import { isFocusRoute } from '@/navigation/focus-routes';
 import { AskBubble } from '@/components/ai/AskBubble';
@@ -34,10 +35,22 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const focus = isFocusRoute(pathname);
 
   if (focus) {
-    // Không SafeAreaView `edges={['top']}` ở đây: màn tác vụ tự vẽ nền tràn
-    // viền (nền lưới xanh tím), nên phần chèn an toàn phải nằm BÊN TRONG nền
-    // đó, không phải một dải trắng cắt ngang phía trên.
-    return <View className="flex-1 bg-paper-canvas">{children}</View>;
+    /*
+      NỀN LƯỚI SÁNG LÀ MẶC ĐỊNH của mọi màn tác vụ, vẽ ngay ở đây.
+
+      Trước đây chỗ này là `bg-paper-canvas` — một mảng xám phẳng — với giao hẹn
+      ngầm rằng màn con "tự vẽ nền tràn viền". Giao hẹn ngầm thì có màn nhớ có
+      màn quên: chín màn vẽ qua `TaskShell`, còn màn đọc, màn xem lại, màn tra
+      từ và màn thi SAT thì nằm trần trên mảng xám ấy hàng tháng trời.
+
+      Đặt mặc định ở đây thì quên là không quên được nữa. Màn nào muốn nền khác
+      (`TaskShell` tông tối, `ExamShell` lưới xanh tím) vẫn vẽ đè lên bình
+      thường — nền của chúng tràn viền nên phủ kín cái này.
+
+      Vẫn KHÔNG có `SafeAreaView edges={['top']}`: phần chèn an toàn phải nằm
+      BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
+    */
+    return <LightGrid>{children}</LightGrid>;
   }
 
   return (

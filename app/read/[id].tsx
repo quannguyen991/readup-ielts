@@ -415,7 +415,7 @@ export default function ReadScreen() {
   };
 
   return (
-    <View className="flex-1 bg-canvas">
+    <View className="flex-1">
       {/*
         Header: độ khó, thời gian, tiến độ câu, đồng hồ.
 

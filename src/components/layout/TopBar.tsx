@@ -25,11 +25,36 @@ const webBarShadow = { boxShadow: '0 6px 22px rgba(26, 26, 51, 0.10)' } as const
  * "Khám phá" — mở ra bảng phủ toàn màn, đóng lại là xong. Danh sách dài không
  * cần chiếm chỗ thường trực, vì nó chỉ được dùng vài giây mỗi phiên.
  */
+/**
+ * Man dau muc — cho khong con "ngoai" nao de lui ra.
+ *
+ * La MOI DICH DEN trong thanh dieu huong, cong trang gioi thieu (dich cua
+ * logo). Suy tu chinh `NAV_ITEMS` chu khong chep tay: them mot muc vao nav ma
+ * quen them vao day thi man ay se moc ra mot nut lui khong dua di dau ca.
+ */
+function isTopLevel(pathname: string): boolean {
+  if (pathname === '/' || pathname === '/intro') return true;
+  for (const group of [...NAV_GROUPS, ADMIN_GROUP]) {
+    for (const item of group.items) if (item.href === pathname) return true;
+  }
+  return false;
+}
+
 export function TopBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
   const name = useDisplayName();
   const plan = usePlan();
+  const pathname = usePathname();
+
+  /*
+    Chi hien nut lui khi DANG O MOT MAN CHI TIET.
+
+    `router.canGoBack()` mot minh la khong du: mo tab moi roi bam qua vai man
+    thi o Tong quan van "lui duoc" — lui ve dung man vua roi khoi, tuc la di
+    vong tron. Man dau muc thi khong co "ngoai" nao de thoat ra.
+  */
+  const showBack = router.canGoBack() && !isTopLevel(pathname);
 
   return (
     <>
@@ -42,29 +67,34 @@ export function TopBar() {
         một tầng riêng của trang.
       */}
       <View className="px-3 pb-1 pt-3">
-        <View
-          className="w-full flex-row items-center gap-3 self-center rounded-pill border border-brand-soft bg-paper px-3 py-2"
-          style={[{ maxWidth: 1180 }, Platform.OS === 'web' ? webBarShadow : shadow.card]}
-        >
-          {/*
-            Nút lùi đứng TRƯỚC logo, ở đúng chỗ mắt tìm khi muốn quay lại.
+        {/*
+          Nút lùi đứng NGOÀI thanh, không nằm trong.
 
-            Trên web đã có nút Back của trình duyệt, nhưng ở bản cài trên điện
-            thoại thì không có gì cả, và ngay trên web thì nhiều người vẫn tìm
-            nút lùi trong chính trang. Nó chỉ hiện khi thực sự lùi được — vẽ một
-            nút bấm vào không có gì xảy ra còn tệ hơn không vẽ.
-          */}
-          {router.canGoBack() ? (
+          Nó không phải một mục của thanh điều hướng: logo, "Khám phá", Sổ từ,
+          Tiến độ đều là những chỗ ĐỂ ĐI TỚI, còn lùi là thao tác trên lịch sử
+          duyệt. Nhét chung một viên thuốc thì nó trông như mục đầu tiên của menu.
+
+          VÀ ẨN Ở CÁC MÀN CHÍNH. Đứng ở Trang giới thiệu hay Tổng quan mà vẫn có
+          nút lùi thì nó đưa người ta đi đâu? Lùi là để thoát ra khỏi một màn chi
+          tiết; ở một màn đầu mục thì không có "ngoài" nào để thoát.
+        */}
+        <View className="w-full flex-row items-center gap-2 self-center" style={{ maxWidth: 1180 }}>
+          {showBack ? (
             <Pressable
               accessibilityRole="button"
               accessibilityLabel="Quay lại trang trước"
               onPress={() => router.back()}
-              className="h-9 w-9 items-center justify-center rounded-pill border border-brand-soft bg-brand-tint"
+              className="h-10 w-10 items-center justify-center rounded-pill border border-brand-soft bg-paper"
+              style={Platform.OS === 'web' ? webBarShadow : shadow.card}
             >
-              <Icon name="chevron-left" size={17} color={paper.body} strokeWidth={2.2} />
+              <Icon name="chevron-left" size={18} color={paper.body} strokeWidth={2.2} />
             </Pressable>
           ) : null}
 
+          <View
+            className="min-w-0 flex-1 flex-row items-center gap-3 rounded-pill border border-brand-soft bg-paper px-3 py-2"
+            style={Platform.OS === 'web' ? webBarShadow : shadow.card}
+          >
           {/*
             Logo về TRANG GIỚI THIỆU, không về Tổng quan.
 
@@ -161,6 +191,7 @@ export function TopBar() {
               </Pressable>
             </Link>
           ) : null}
+          </View>
         </View>
       </View>
 

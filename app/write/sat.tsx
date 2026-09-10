@@ -47,7 +47,7 @@ export default function SatWritingScreen() {
   };
 
   return (
-    <ScrollView className="flex-1 bg-canvas" contentContainerStyle={{ paddingBottom: 40 }}>
+    <ScrollView className="flex-1" contentContainerStyle={{ paddingBottom: 40 }}>
       <View
         className="w-full self-center px-4 py-4 lg:px-6 lg:py-6"
         style={{ maxWidth: layout.contentMaxWidth }}

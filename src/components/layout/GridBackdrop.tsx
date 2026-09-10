@@ -24,6 +24,21 @@ import Svg, { Defs, Ellipse, LinearGradient, Pattern, Path, RadialGradient, Rect
 /** Xanh dương đậm → chàm → tím. Đủ tối để chữ trắng và thẻ giấy sáng nổi lên. */
 const BASE_STOPS = ['#1E3A9E', '#3B3BBF', '#6D28D9'] as const;
 
+/**
+ * Bản SÁNG của cùng một nền: xanh nước biển rất nhạt, ngả tím ở góc dưới.
+ *
+ * Dùng cho màn ĐANG LÀM VIỆC — đọc bài, gõ bài, tra từ. Ở đó thẻ vẫn trắng, nên
+ * nền chỉ cần đủ màu để tách thẻ ra khỏi trang; nền tối sẽ biến mỗi thẻ thành
+ * một ô sáng chói giữa màn hình mà người ta phải nhìn vào hàng chục phút.
+ *
+ * ĐỨNG Ở ĐÂY chứ không nằm riêng trong `TaskShell`: giờ có sáu bảy màn dùng
+ * chung, mà hai bộ số gần giống nhau ở hai file là hai bộ số sẽ trôi khỏi nhau.
+ */
+export const LIGHT_STOPS = ['#E9F0FE', '#E3EAFC', '#EBE6FB'] as const;
+
+/** Nét kẻ cho bản sáng — chàm rất mờ, không phải trắng. */
+export const LIGHT_LINE = 'rgba(60, 82, 160, 0.10)';
+
 export function GridBackdrop({
   cell = 34,
   colors = BASE_STOPS,

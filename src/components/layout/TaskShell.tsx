@@ -4,7 +4,7 @@ import { Link } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AuroraBackdrop } from './AuroraBackdrop';
-import { GridBackdrop } from './GridBackdrop';
+import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { Icon } from '@/components/ui/Icon';
 import { color, layout, paper } from '@/theme/tokens';
 
@@ -124,14 +124,9 @@ export function TaskShell({
     tối — hai tông là hai độ sáng của cùng một thứ, không phải hai thiết kế.
   */
   return (
-    <GridBackdrop
-      colors={LIGHT_BACKDROP}
-      line="rgba(60, 82, 160, 0.10)"
-    >
+    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE}>
       {body}
     </GridBackdrop>
   );
 }
 
-/** Xanh nước biển rất nhạt, chuyển nhẹ sang tím ở góc dưới. */
-const LIGHT_BACKDROP = ['#E9F0FE', '#E3EAFC', '#EBE6FB'] as const;
