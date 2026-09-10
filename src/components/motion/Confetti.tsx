@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { View } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
+import { playCorrectChime } from '@/services/audio/chime';
 import { hashString, mulberry32 } from '@/services/questions/rng';
 
 const COLORS = ['#F0B429', '#4C6122', '#7FB069', '#8FA9E8', '#E9A6C0', '#FBF6D0'];
@@ -24,9 +25,36 @@ type Piece = {
  *
  * Vị trí các mảnh sinh từ RNG gieo hạt theo `seed`, nên cùng một câu thì mưa
  * giấy rơi giống hệt nhau — không có gì nhảy loạn khi React render lại.
+ *
+ * CÓ CẢ TIẾNG, không chỉ có hình. Đây là khoảnh khắc "bạn làm đúng" duy nhất
+ * của app, và nó nằm ở màn chép chính tả — nơi người học đang nhìn vào ô chữ
+ * chứ không nhìn ra rìa màn hình, nên mưa giấy rơi ở mép rất dễ lọt qua mắt.
+ * Một tiếng chuông thì không lọt được.
+ *
+ * Tiếng gắn ở ĐÂY chứ không ở từng màn: hai màn đang dùng, và mỗi màn tự viết
+ * một `useEffect` "chỉ kêu khi vừa chuyển sang đúng" là hai chỗ để sai cùng một
+ * kiểu. Chỗ nào không muốn tiếng thì truyền `silent`.
  */
-export function Confetti({ seed, pieces = 26 }: { seed: string; pieces?: number }) {
+export function Confetti({
+  seed,
+  pieces = 26,
+  silent = false,
+}: {
+  seed: string;
+  pieces?: number;
+  silent?: boolean;
+}) {
   const progress = useSharedValue(0);
+
+  /*
+    Phụ thuộc `seed` chứ không phải mảng rỗng. Component này KHÔNG gắn lại khi
+    đổi câu — React thấy cùng một loại component ở cùng một chỗ nên chỉ cập
+    nhật. Để mảng rỗng thì tiếng chuông kêu đúng một lần trong cả buổi học.
+  */
+  useEffect(() => {
+    if (silent) return;
+    playCorrectChime();
+  }, [seed, silent]);
 
   const items = useMemo<Piece[]>(() => {
     const rng = mulberry32(hashString(seed));
