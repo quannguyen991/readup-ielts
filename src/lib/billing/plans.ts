@@ -209,9 +209,9 @@ export const PLANS: Record<PlanId, Plan> = {
     id: 'max',
     name: 'Max',
     tagline: 'Cùng tính năng Pro, ngân sách AI gấp sáu',
-    monthlyVnd: 250_000,
-    // Trả năm giữ đúng mức giảm 30% như trước: 250.000 × 12 × 0,70.
-    yearlyVnd: 2_100_000,
+    monthlyVnd: 400_000,
+    // Trả năm giữ đúng mức giảm 30% như trước: 400.000 × 12 × 0,70.
+    yearlyVnd: 3_360_000,
     features: [...COACH_FEATURES, 'priority_support'],
     quotas: {
       reading_per_day: null,

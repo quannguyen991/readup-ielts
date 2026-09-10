@@ -126,7 +126,8 @@ export async function GET(request: Request): Promise<Response> {
     const state: PlanState = {
       plan: profile.plan,
       expiresAt: profile.plan_expires_at,
-      plusCreditMonths: profile.plus_credit_months ?? 0,
+      // Cot CSDL giu ten lich su `plus_credit_months` — xem chu thich o PlanState.
+      rewardCreditMonths: profile.plus_credit_months ?? 0,
       rewardsGranted: profile.referral_rewards_granted ?? 0,
     };
     const settled = settleReferralRewards(state, qualified);
@@ -135,7 +136,7 @@ export async function GET(request: Request): Promise<Response> {
     const changed =
       settled.plan !== state.plan ||
       settled.expiresAt !== state.expiresAt ||
-      settled.plusCreditMonths !== state.plusCreditMonths ||
+      settled.rewardCreditMonths !== state.rewardCreditMonths ||
       settled.rewardsGranted !== state.rewardsGranted;
 
     if (changed) {
@@ -145,7 +146,7 @@ export async function GET(request: Request): Promise<Response> {
           plan: settled.plan,
           plan_expires_at: settled.expiresAt,
           plan_started_at: settled.appliedMonths > 0 ? new Date().toISOString() : undefined,
-          plus_credit_months: settled.plusCreditMonths,
+          plus_credit_months: settled.rewardCreditMonths,
           referral_rewards_granted: settled.rewardsGranted,
         })
         .eq('id', userId);
@@ -167,7 +168,7 @@ export async function GET(request: Request): Promise<Response> {
       qualified,
       plan: settled.plan,
       planExpiresAt: settled.expiresAt,
-      creditMonths: settled.plusCreditMonths,
+      creditMonths: settled.rewardCreditMonths,
       justApplied: settled.appliedMonths,
       recent: (rows ?? []).slice(0, 20).map((r) => ({
         createdAt: r.created_at,

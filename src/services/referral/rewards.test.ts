@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
+import { PLAN_ORDER, planRank } from '@/lib/billing/plans';
 import {
   REFERRALS_PER_REWARD,
   REWARD_MONTHS,
+  REWARD_PLAN,
   settleReferralRewards,
   toNextReward,
   type PlanState,
@@ -13,7 +15,7 @@ const NOW = new Date(2026, 8, 2);
 const free = (over: Partial<PlanState> = {}): PlanState => ({
   plan: 'free',
   expiresAt: null,
-  plusCreditMonths: 0,
+  rewardCreditMonths: 0,
   rewardsGranted: 0,
   ...over,
 });
@@ -30,9 +32,9 @@ test('chưa đủ mốc thì không có gì thay đổi', () => {
   }
 });
 
-test('đủ 10 lượt → bật Plus 3 tháng', () => {
+test('đủ 10 lượt → bật gói thưởng 3 tháng', () => {
   const out = settleReferralRewards(free(), REFERRALS_PER_REWARD, NOW);
-  assert.equal(out.plan, 'plus');
+  assert.equal(out.plan, REWARD_PLAN);
   assert.equal(out.appliedMonths, REWARD_MONTHS);
   assert.equal(monthsBetween(out.expiresAt, NOW), REWARD_MONTHS);
   assert.equal(out.rewardsGranted, 1);
@@ -44,7 +46,7 @@ test('mốc thứ hai cộng dồn vào hạn đang có, không tính lại từ
   const state: PlanState = {
     plan: after1.plan,
     expiresAt: after1.expiresAt,
-    plusCreditMonths: 0,
+    rewardCreditMonths: 0,
     rewardsGranted: after1.rewardsGranted,
   };
   const after2 = settleReferralRewards(state, 20, NOW);
@@ -57,7 +59,7 @@ test('CHẠY LẠI KHÔNG PHÁT THÊM — hàm này bị gọi mỗi lần mở 
   const state: PlanState = {
     plan: first.plan,
     expiresAt: first.expiresAt,
-    plusCreditMonths: first.plusCreditMonths,
+    rewardCreditMonths: first.rewardCreditMonths,
     rewardsGranted: first.rewardsGranted,
   };
   for (let i = 0; i < 5; i += 1) {
@@ -67,46 +69,53 @@ test('CHẠY LẠI KHÔNG PHÁT THÊM — hàm này bị gọi mỗi lần mở 
   }
 });
 
-test('KHÔNG HẠ GÓI người đang dùng Pro — ghi nợ, chờ Pro hết hạn', () => {
+test('KHÔNG HẠ GÓI người đang dùng gói cao hơn phần thưởng — ghi nợ', () => {
   /*
-    Đây là ca dễ làm hỏng nhất: "thưởng gói Plus" viết thẳng ra code thành
-    `plan = 'plus'` là kéo người đang trả tiền cho Pro xuống Plus. Món quà biến
-    thành hình phạt, và đó đúng là loại lỗi khiến người ta đòi hoàn tiền.
+    Ca dễ làm hỏng nhất: viết thẳng `plan = <gói thưởng>` là kéo người đang trả
+    tiền cho gói cao hơn xuống thấp. Món quà biến thành hình phạt, và đó đúng
+    loại lỗi khiến người ta đòi hoàn tiền.
+
+    Dựng ca bằng gói NGAY TRÊN phần thưởng thay vì viết 'pro' cứng: hôm nay
+    thưởng là Max nên không còn gói nào cao hơn, và test tự bỏ qua. Ngày nào
+    phần thưởng hạ xuống, hoặc có gói cao hơn Max, nó tự sống lại.
   */
-  const proUntil = new Date(2027, 0, 1).toISOString();
+  const higher = PLAN_ORDER[planRank(REWARD_PLAN) + 1];
+  if (!higher) return; // phần thưởng đang là gói cao nhất — không có ca này
+
+  const until = new Date(2027, 0, 1).toISOString();
   const out = settleReferralRewards(
-    { plan: 'pro', expiresAt: proUntil, plusCreditMonths: 0, rewardsGranted: 0 },
+    { plan: higher, expiresAt: until, rewardCreditMonths: 0, rewardsGranted: 0 },
     10,
     NOW,
   );
-  assert.equal(out.plan, 'pro', 'gói bị hạ');
-  assert.equal(out.expiresAt, proUntil, 'hạn của gói đang dùng bị đụng vào');
+  assert.equal(out.plan, higher, 'gói bị hạ');
+  assert.equal(out.expiresAt, until, 'hạn của gói đang dùng bị đụng vào');
   assert.equal(out.bankedMonths, REWARD_MONTHS);
-  assert.equal(out.plusCreditMonths, REWARD_MONTHS);
+  assert.equal(out.rewardCreditMonths, REWARD_MONTHS);
   assert.equal(out.rewardsGranted, 1, 'vẫn phải ghi là đã phát, nếu không sẽ phát lại mãi');
 });
 
-test('nợ được kích hoạt khi gói cao hơn hết hạn', () => {
+test('nợ được kích hoạt khi gói đang có hết hạn', () => {
   const expiredPro = new Date(2026, 5, 1).toISOString();
   const out = settleReferralRewards(
-    { plan: 'pro', expiresAt: expiredPro, plusCreditMonths: 6, rewardsGranted: 2 },
+    { plan: 'pro', expiresAt: expiredPro, rewardCreditMonths: 6, rewardsGranted: 2 },
     20,
     NOW,
   );
-  assert.equal(out.plan, 'plus');
+  assert.equal(out.plan, REWARD_PLAN);
   assert.equal(monthsBetween(out.expiresAt, NOW), 6);
-  assert.equal(out.plusCreditMonths, 0);
+  assert.equal(out.rewardCreditMonths, 0);
 });
 
 test('nợ cũ và phần thưởng mới gộp làm một', () => {
-  const out = settleReferralRewards(free({ plusCreditMonths: 3, rewardsGranted: 1 }), 20, NOW);
+  const out = settleReferralRewards(free({ rewardCreditMonths: 3, rewardsGranted: 1 }), 20, NOW);
   assert.equal(monthsBetween(out.expiresAt, NOW), 6, '3 tháng nợ + 3 tháng mới');
-  assert.equal(out.plusCreditMonths, 0);
+  assert.equal(out.rewardCreditMonths, 0);
 });
 
 test('Max cũng không bị hạ, và nợ vẫn giữ', () => {
   const out = settleReferralRewards(
-    { plan: 'max', expiresAt: null, plusCreditMonths: 0, rewardsGranted: 0 },
+    { plan: 'max', expiresAt: null, rewardCreditMonths: 0, rewardsGranted: 0 },
     30,
     NOW,
   );
