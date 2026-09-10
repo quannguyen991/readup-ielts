@@ -4,7 +4,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
-import { AuroraBackdrop } from '@/components/layout/AuroraBackdrop';
+import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { AssetImage, Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
@@ -259,8 +259,19 @@ export default function IntroScreen() {
           (flex-basis 0, không có chiều cao cha để chia). Đặt vào hàng ngang thì
           flex-1 ăn theo BỀ NGANG, còn chiều cao vẫn do nội dung bên trong quyết.
         */}
+        {/*
+          NỀN GIỐNG MÀN ĐỌC BÀI, không phải tinh vân tím.
+
+          Trước đây hero dùng `AuroraBackdrop` với ba màu rất tối (#080C2A → #161046
+          → #2A1152) kèm khối loang trôi chậm. Nó là một thế giới thứ ba trong cùng một
+          app: nền trang thì sáng, màn làm bài thì lưới nhạt, riêng ô này tối đen.
+
+          Giờ dùng ĐÚNG bộ màu và đúng hoạ tiết lưới của màn đọc bài. Kéo theo:
+          chữ phải lật từ trắng sang mực, và hai nút bỏ variant "trên nền tối".
+          Đổi nền mà giữ chữ trắng thì câu tiêu đề biến mất — đổi thì phải đổi cả cặp.
+        */}
         <View style={{ flexDirection: 'row', borderRadius: 24, overflow: 'hidden' }}>
-          <AuroraBackdrop>
+          <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE}>
             <View
               style={{
                 paddingHorizontal: wide ? 40 : 22,
@@ -270,7 +281,7 @@ export default function IntroScreen() {
               <Badge label="IELTS · SAT" tone="neutral" shape="tag" />
 
               <Text
-                className="mt-4 font-heavy text-white"
+                className="mt-4 font-heavy text-paper-ink"
                 style={{ fontSize: wide ? 44 : 28, lineHeight: wide ? 52 : 36 }}
               >
                 Luyện thi bằng đề thật,
@@ -278,8 +289,13 @@ export default function IntroScreen() {
               {/* Dòng hai nằm trên một khối sáng hơn — mắt bắt được câu chốt trước
                   cả khi đọc hết dòng một. Lùi trái đúng bằng padding để hai dòng
                   vẫn thẳng mép chữ. */}
+              {/*
+                Khối nền của dòng hai lật từ `white/15` sang màu chàm đặc: trên nền
+                sáng thì một lớp trắng mờ không tạo ra ranh giới nào. Chữ trong khối ấy
+                thành trắng — đây là chỗ DUY NHẤT còn chữ trắng trong hero.
+              */}
               <View
-                className="mt-1.5 self-start rounded-md bg-white/15 px-2.5 py-1"
+                className="mt-1.5 self-start rounded-md bg-brand-mid px-3 py-1"
                 style={{ marginLeft: -10 }}
               >
                 <Text
@@ -290,7 +306,7 @@ export default function IntroScreen() {
                 </Text>
               </View>
 
-              <Text className="mt-4 font-sans text-bodyLg text-white/90" style={{ maxWidth: 620 }}>
+              <Text className="mt-4 font-sans text-bodyLg text-paper-body" style={{ maxWidth: 620 }}>
                 Đề dựng bằng code chứ không gọi AI, đáp án kiểm được từ chính bài đọc, và mỗi câu
                 sai được gọi đúng tên lỗi.
               </Text>
@@ -298,14 +314,14 @@ export default function IntroScreen() {
               <View className="mt-6 flex-row flex-wrap gap-2">
                 <Button
                   label="Bắt đầu học"
-                  variant="onDarkSolid"
+                  variant="brand"
                   size="lg"
                   iconRight="arrow-right"
                   onPress={() => enterApp('/dashboard')}
                 />
                 <Button
                   label="Xem lộ trình SAT Math"
-                  variant="onDark"
+                  variant="outline"
                   size="lg"
                   onPress={() => enterApp('/math')}
                 />
@@ -321,7 +337,7 @@ export default function IntroScreen() {
                 <StatPill value={String(WRITING_PROMPTS.length)} label="đề Writing" />
               </View>
             </View>
-          </AuroraBackdrop>
+          </GridBackdrop>
         </View>
       </Appear>
 
@@ -588,9 +604,9 @@ function DifferenceCard({ item }: { item: (typeof DIFFERENCES)[number] }) {
 
 function StatPill({ value, label }: { value: string; label: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill border border-white/25 bg-white/15 px-3 py-1.5">
-      <Text className="font-heavy text-body text-white">{value}</Text>
-      <Text className="font-sans text-label text-white/85">{label}</Text>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5">
+      <Text className="font-heavy text-body text-brand">{value}</Text>
+      <Text className="font-sans text-label text-paper-muted">{label}</Text>
     </View>
   );
 }
