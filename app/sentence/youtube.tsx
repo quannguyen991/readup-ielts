@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
@@ -164,10 +164,40 @@ function PickView({
       icon="play"
       tone="paper"
     >
+      {/*
+        DẪN SANG KHO CÓ SẴN TRƯỚC, không dẫn thẳng vào ô dán liên kết.
+
+        YouTube chặn máy chủ lấy phụ đề. Đo trực tiếp: đường lấy tự động chạy
+        được khi máy chủ là máy cá nhân, còn từ máy chủ Vercel thì YouTube trả
+        về "cần đăng nhập để xác nhận không phải bot" cho MỌI video. Nên trên
+        bản đang chạy, mọi liên kết dán vào đây đều rơi xuống bước dán phụ đề
+        bằng tay — mà đó là năm thao tác qua lại giữa hai tab.
+
+        Kho VOA thì bấm một cái là làm được ngay. Để nó đứng trên là nói thật
+        về việc đường nào đi được, chứ không phải giấu tính năng đi.
+      */}
+      <View className="mb-4 max-w-[760px] flex-row flex-wrap items-center gap-3 rounded-card border border-brand-soft bg-brand-tint p-4">
+        <Icon name="sparkle" size={18} color={paper.brandMid} />
+        <Text className="min-w-[240px] flex-1 font-sans text-body text-paper-body">
+          Muốn làm ngay thì dùng kho bài nghe có sẵn lời — bấm một cái là vào bài, không phải
+          dán gì.
+        </Text>
+        <Button
+          variant="brand"
+          label="Kho bài nghe"
+          iconRight="arrow-right"
+          onPress={() => router.push('/sentence/audio' as never)}
+        />
+      </View>
+
       <View className="max-w-[760px] rounded-card border border-brand-soft bg-white p-5">
         <Text className="font-sans text-bodyLg text-paper-body">
           Dán liên kết một video YouTube có phụ đề tiếng Anh. Video phát ngay trong trang, bạn nghe
           từng câu rồi điền lại vào ô chữ bên cạnh.
+        </Text>
+        <Text className="mt-2 font-sans text-label text-paper-muted">
+          YouTube chặn máy chủ lấy phụ đề, nên phần lớn video sẽ cần bạn dán phụ đề vào — app
+          hướng dẫn ngay bên dưới khi gặp.
         </Text>
 
         <View className="mt-4 flex-row flex-wrap items-center gap-2">
