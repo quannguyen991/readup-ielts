@@ -13,12 +13,15 @@ import {
   Button,
   Card,
   HeroBanner,
+  Icon,
   IconCircle,
+  ProgressBar,
   SectionHeader,
   type IconName,
   type IconTone,
 } from '@/components/ui';
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
+import { LinearGradient } from 'expo-linear-gradient';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 import {
   BREAK_MINUTES,
@@ -35,7 +38,7 @@ import {
   type FullTestState,
   type ModuleReview,
 } from '@/services/sat-rw/mock/full-test';
-import { spacing as space } from '@/theme/tokens';
+import { color, gradient, spacing as space } from '@/theme/tokens';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -190,7 +193,10 @@ function Intro({ onStart }: { onStart: () => void }) {
       <View className="mt-4" style={{ marginBottom: space['2xl'] }}>
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
           <Card>
-            <Text className="font-strong text-cardTitle text-ink">Bài thi đi thế nào</Text>
+            <View className="flex-row items-center gap-2.5">
+              <IconCircle name="clock" tone="primary" size={34} />
+              <Text className="font-strong text-cardTitle text-ink">Bài thi đi thế nào</Text>
+            </View>
             <View className="mt-3">
               {STAGES.map((s, i) => (
                 <StageRow key={s.label} stage={s} last={i === STAGES.length - 1} />
@@ -199,23 +205,55 @@ function Intro({ onStart }: { onStart: () => void }) {
           </Card>
 
           <View style={{ gap: 12 }}>
-            <Card>
-              <Text className="font-strong text-body text-ink">Module 2 khó dễ tuỳ module 1</Text>
-              <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-                Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là
-                cách đề thật hoạt động, không phải hình phạt.
-              </Text>
-            </Card>
-            <Card>
-              <Text className="font-strong text-body text-ink">Nộp module là không quay lại</Text>
-              <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-                Hết giờ thì tự nộp, kể cả khi còn câu chưa làm. Đề thật không cho cộng giờ.
-              </Text>
-            </Card>
+            <Note
+              icon="trending"
+              tone="accent"
+              title="Module 2 khó dễ tuỳ module 1"
+              body="Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là cách đề thật hoạt động, không phải hình phạt."
+            />
+            <Note
+              icon="lock"
+              tone="danger"
+              title="Nộp module là không quay lại"
+              body="Hết giờ thì tự nộp, kể cả khi còn câu chưa làm. Đề thật không cho cộng giờ."
+            />
           </View>
         </Grid>
       </View>
     </Screen>
+  );
+}
+
+/**
+ * Một lưu ý trước khi thi.
+ *
+ * Icon có MÀU RIÊNG theo nội dung chứ không phải cùng một tông cho đều: một cái nói
+ * về độ khó thay đổi, một cái nói về chuyện không quay lại được. Hai chuyện khác
+ * nhau, và cái thứ hai là cái mà người học cần thấy trước khi bấm bắt đầu.
+ */
+function Note({
+  icon,
+  tone,
+  title,
+  body,
+}: {
+  icon: IconName;
+  tone: IconTone;
+  title: string;
+  body: string;
+}) {
+  return (
+    <Card>
+      <View className="flex-row gap-3">
+        <IconCircle name={icon} tone={tone} size={38} />
+        <View className="min-w-0 flex-1">
+          <Text className="font-strong text-body text-ink">{title}</Text>
+          <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+            {body}
+          </Text>
+        </View>
+      </View>
+    </Card>
   );
 }
 
@@ -409,60 +447,69 @@ function ResultScreen({
         phải đọc nhãn mới biết cái nào cộng ra cái nào; mà tổng thì lại nằm trong
         một thẻ trắng rộng 1.250px với đúng ba dòng chữ dạt về mép trái.
       */}
-      <Card className="mt-4">
+      <LinearGradient
+        colors={[...gradient.hero]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{ borderRadius: 16, marginTop: 16, padding: 20 }}
+      >
         <View className={wide ? 'flex-row items-center gap-8' : ''}>
           <View style={wide ? { width: 260 } : undefined}>
-            <Text className="font-strong text-label uppercase text-muted">Tổng điểm</Text>
+            <View className="flex-row items-center gap-2">
+              <Icon name="trophy" size={18} color="#FFFFFF" strokeWidth={2} />
+              <Text className="font-strong text-label uppercase text-white/80">Tổng điểm</Text>
+            </View>
             <Text
-              className="font-heavy text-ink"
+              className="font-heavy text-white"
               style={{ fontSize: 64, lineHeight: 70, fontVariant: ['tabular-nums'] }}
             >
               {score.total}
             </Text>
-            <Text className="font-sans text-body text-muted">thang 400–1600</Text>
+            <Text className="font-sans text-body text-primary-100">thang 400–1600</Text>
           </View>
 
-          {wide ? <View className="w-px self-stretch bg-borderStrong" /> : null}
+          {wide ? <View className="w-px self-stretch bg-white/25" /> : null}
 
           <View className={wide ? 'flex-1 gap-3' : 'mt-4 gap-3'}>
             <SectionScore
               icon="book"
-              tone="primary"
               label="Reading and Writing"
               value={score.readingWriting}
               tier={rwTier}
             />
-            <SectionScore
-              icon="grid"
-              tone="accent"
-              label="Math"
-              value={score.math}
-              tier={mathTier}
-            />
+            <SectionScore icon="grid" label="Math" value={score.math} tier={mathTier} />
           </View>
         </View>
-      </Card>
+      </LinearGradient>
 
       <View className="mt-3">
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
           <Card>
-            <Text className="font-strong text-cardTitle text-ink">Số câu đúng từng module</Text>
-            <View className="mt-3">
-              <Line label="Reading and Writing — module 1" r={state.rw.module1} />
-              <Line label="Reading and Writing — module 2" r={state.rw.module2} />
-              <Line label="Math — module 1" r={state.math.module1} />
-              <Line label="Math — module 2" r={state.math.module2} last />
+            <View className="flex-row items-center gap-2.5">
+              <IconCircle name="target" tone="primary" size={34} />
+              <Text className="font-strong text-cardTitle text-ink">Số câu đúng từng module</Text>
+            </View>
+            <View className="mt-2">
+              <Line label="Reading and Writing — module 1" icon="book" r={state.rw.module1} />
+              <Line label="Reading and Writing — module 2" icon="book" r={state.rw.module2} />
+              <Line label="Math — module 1" icon="grid" r={state.math.module1} />
+              <Line label="Math — module 2" icon="grid" r={state.math.module2} />
             </View>
           </Card>
 
-          <Card variant="flat">
-            <Text className="font-strong text-cardTitle text-ink">Con số này là ước lượng</Text>
-            <Text className="mt-2.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+          <Card variant="flat" className="bg-warning-soft border-0">
+            <View className="flex-row items-center gap-2.5">
+              <IconCircle name="info" tone="warning" size={34} />
+              <Text className="font-strong text-cardTitle text-warning-ink">
+                Con số này là ước lượng
+              </Text>
+            </View>
+            <Text className="mt-2.5 font-sans text-body text-body" style={{ lineHeight: 22 }}>
               College Board không công bố bảng quy đổi của đề số hoá, và bảng ấy còn đổi theo
               từng kỳ thi. Đây là phỏng theo — đủ để theo dõi tiến bộ giữa các lần làm, không
               đủ để dự đoán điểm thi thật.
             </Text>
-            <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+            <Text className="mt-2 font-sans text-body text-body" style={{ lineHeight: 22 }}>
               Trần điểm phụ thuộc module 2 bạn được đưa vào: Reading and Writing {rwTier}, Math{' '}
               {mathTier}. Đúng như đề thật.
             </Text>
@@ -485,34 +532,37 @@ function ResultScreen({
 }
 
 /**
- * Điểm một phần, đặt cạnh tổng.
+ * Điểm một phần, đặt cạnh tổng trên nền gradient.
  *
  * Nhắc luôn phần ấy đi qua module 2 nào: cùng một số câu đúng mà hai nhánh khác
  * nhau thì ra hai điểm khác nhau, nên bỏ dòng đó đi là để người học tự đoán vì
  * sao lần này 600 mà lần trước 520.
+ *
+ * Nền `white/15` chứ không phải một màu đặc: gradient phía sau đổi màu từ xanh
+ * sang tím, mà một màu đặc đặt lên đó sẽ hợp ở đầu này và chỏi ở đầu kia.
  */
 function SectionScore({
   icon,
-  tone,
   label,
   value,
   tier,
 }: {
   icon: IconName;
-  tone: IconTone;
   label: string;
   value: number;
   tier: string;
 }) {
   return (
-    <View className="flex-row items-center gap-3 rounded-panel bg-surfaceAlt px-4 py-3">
-      <IconCircle name={icon} tone={tone} size={40} />
+    <View className="flex-row items-center gap-3 rounded-panel bg-white/15 px-4 py-3">
+      <View className="h-10 w-10 items-center justify-center rounded-pill bg-white/25">
+        <Icon name={icon} size={19} color="#FFFFFF" strokeWidth={2} />
+      </View>
       <View className="min-w-0 flex-1">
-        <Text className="font-strong text-body text-ink">{label}</Text>
-        <Text className="font-sans text-label text-muted">{tier}</Text>
+        <Text className="font-strong text-body text-white">{label}</Text>
+        <Text className="font-sans text-label text-primary-100">{tier}</Text>
       </View>
       <Text
-        className="font-heavy text-ink"
+        className="font-heavy text-white"
         style={{ fontSize: 28, lineHeight: 32, fontVariant: ['tabular-nums'] }}
       >
         {value}
@@ -522,30 +572,44 @@ function SectionScore({
 }
 
 /**
- * Một dòng "module — số câu đúng".
+ * Một dòng "module — số câu đúng", kèm thanh tỉ lệ.
  *
- * Số căn phải và dùng chữ số đều bề ngang: bốn dòng này để ĐỐI CHIẾU với nhau,
- * mà số căn trái thì hàng đơn vị không thẳng nên mắt phải đọc từng con một.
+ * BỐN DÒNG NÀY ĐỂ ĐỐI CHIẾU VỚI NHAU, mà "18/27" và "14/22" thì phải chia nhẩm
+ * mới biết cái nào hơn. Thanh tỉ lệ trả lời ngay bằng độ dài, còn con số vẫn ở đó
+ * cho ai cần chính xác — số căn phải, chữ số đều bề ngang để hàng đơn vị thẳng nhau.
+ *
+ * Màu theo NGƯỠNG chứ không theo module: xanh lá từ 70% lên, xanh dương từ 45%,
+ * dưới nữa là hồ phách. Bốn dòng bốn màu khác nhau chỉ vì chúng là bốn module thì
+ * màu không nói gì cả, chỉ làm trang rực lên.
  */
 function Line({
   label,
+  icon,
   r,
-  last,
 }: {
   label: string;
+  icon: IconName;
   r: { correct: number; total: number } | null;
-  last?: boolean;
 }) {
+  const ratio = r && r.total > 0 ? r.correct / r.total : 0;
+  const pct = Math.round(ratio * 100);
+  const tone = ratio >= 0.7 ? 'success' : ratio >= 0.45 ? 'primary' : 'warning';
+  const dot = ratio >= 0.7 ? color.success : ratio >= 0.45 ? color.primary : color.warning;
+
   return (
-    <View
-      className={`flex-row items-baseline justify-between py-2 ${
-        last ? '' : 'border-b border-border'
-      }`}
-    >
-      <Text className="font-sans text-body text-body">{label}</Text>
-      <Text className="font-strong text-body text-ink" style={{ fontVariant: ['tabular-nums'] }}>
-        {r ? `${r.correct}/${r.total}` : '—'}
-      </Text>
+    <View className="py-2">
+      <View className="flex-row items-baseline justify-between gap-3">
+        <View className="min-w-0 flex-1 flex-row items-center gap-2">
+          <Icon name={icon} size={15} color={dot} strokeWidth={2} />
+          <Text className="min-w-0 flex-1 font-sans text-body text-body">{label}</Text>
+        </View>
+        <Text className="font-strong text-body text-ink" style={{ fontVariant: ['tabular-nums'] }}>
+          {r ? `${r.correct}/${r.total}` : '—'}
+        </Text>
+      </View>
+      <View className="mt-1.5">
+        <ProgressBar value={pct} tone={tone} height={7} />
+      </View>
     </View>
   );
 }
@@ -572,7 +636,7 @@ function rowsOf(entry: ModuleReview): ReviewRow[] {
         index: i,
         correct: answer === item.answerIndex,
         blank: answer === null,
-        node: <RwReviewItem item={item} index={i} answer={answer} />,
+        node: <RwReviewItem item={item} answer={answer} />,
       };
     });
   }
@@ -585,10 +649,86 @@ function rowsOf(entry: ModuleReview): ReviewRow[] {
       correct: attempt?.isCorrect ?? false,
       blank: (attempt?.userAnswer ?? null) === null,
       node: (
-        <MathQuestionView item={item} index={i} answer={attempt?.userAnswer ?? null} revealed />
+        <MathQuestionView
+          item={item}
+          answer={attempt?.userAnswer ?? null}
+          revealed
+          showGrade={false}
+        />
       ),
     };
   });
+}
+
+/**
+ * Bảng màu ba trạng thái, khai MỘT CHỖ.
+ *
+ * Đứng chung một bảng thì ba trạng thái nói cùng một thứ tiếng ở mọi chỗ hiện ra
+ * — dải đầu thẻ, nút chọn module, chú giải. Rải rác mỗi nơi một lần là sau vài
+ * lần sửa thì "bỏ trống" ở chỗ này xám, chỗ kia hồ phách.
+ *
+ * Bỏ trống mang icon ĐỒNG HỒ chứ không phải dấu chấm hỏi: trong một bài thi có
+ * đồng hồ, lý do thường gặp nhất của một ô trống là hết giờ, không phải không biết.
+ */
+type Status = 'correct' | 'wrong' | 'blank';
+
+const STATUS: Record<
+  Status,
+  { label: string; icon: IconName; tone: IconTone; strip: string; text: string; ink: string }
+> = {
+  correct: {
+    label: 'Đúng',
+    icon: 'check',
+    tone: 'success',
+    strip: 'bg-success-soft',
+    text: 'text-success-ink',
+    ink: color.success,
+  },
+  wrong: {
+    label: 'Sai',
+    icon: 'close',
+    tone: 'danger',
+    strip: 'bg-danger-soft',
+    text: 'text-danger-ink',
+    ink: color.danger,
+  },
+  blank: {
+    label: 'Bỏ trống',
+    icon: 'clock',
+    tone: 'warning',
+    strip: 'bg-warning-soft',
+    text: 'text-warning-ink',
+    ink: color.warning,
+  },
+};
+
+function statusOf(row: ReviewRow): Status {
+  return row.correct ? 'correct' : row.blank ? 'blank' : 'wrong';
+}
+
+/**
+ * Vỏ một câu ở màn xem lại: dải trạng thái tràn sát mép thẻ, rồi mới tới nội dung.
+ *
+ * DẢI TRÀN SÁT MÉP chứ không phải một cái chip nhỏ trong góc: cuộn qua hai chục
+ * thẻ thì mắt bắt được mảng màu trước khi đọc được chữ, nên trạng thái phải là
+ * mảng chứ không phải một điểm. Có đủ icon + chữ + màu — màu không đứng một mình.
+ *
+ * Vỏ này dùng cho CẢ R&W LẪN MATH, nên `MathQuestionView` được tắt nhãn đúng/sai
+ * riêng của nó (`showGrade={false}`): hai nhãn "Sai" cách nhau hai centimet không
+ * cho biết thêm gì.
+ */
+function ReviewCard({ row }: { row: ReviewRow }) {
+  const st = STATUS[statusOf(row)];
+  return (
+    <Card className="overflow-hidden" padded={false}>
+      <View className={`flex-row items-center gap-2.5 px-4 py-2.5 ${st.strip}`}>
+        <Icon name={st.icon} size={16} color={st.ink} strokeWidth={2.6} />
+        <Text className={`font-strong text-cardTitle ${st.text}`}>Câu {row.index + 1}</Text>
+        <Text className={`ml-auto font-strong text-label uppercase ${st.text}`}>{st.label}</Text>
+      </View>
+      <View className="p-4">{row.node}</View>
+    </Card>
+  );
 }
 
 function moduleTitle(entry: ModuleReview): string {
@@ -646,12 +786,15 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
   return (
     <Screen>
       <View className="flex-row flex-wrap items-start justify-between gap-3">
-        <View className="flex-1" style={{ minWidth: 260 }}>
-          <Text className="font-heavy text-pageTitle text-ink">Xem lại bài thi</Text>
-          <Text className="mt-1 font-sans text-body text-muted">
-            {all.length - wrongTotal}/{all.length} câu đúng
-            {blankTotal > 0 ? ` · ${blankTotal} câu bỏ trống` : ''}
-          </Text>
+        <View className="flex-1 flex-row items-center gap-3" style={{ minWidth: 260 }}>
+          <IconCircle name="clipboard" tone="accent" size={46} />
+          <View className="min-w-0 flex-1">
+            <Text className="font-heavy text-pageTitle text-ink">Xem lại bài thi</Text>
+            <Text className="mt-1 font-sans text-body text-muted">
+              {all.length - wrongTotal}/{all.length} câu đúng
+              {blankTotal > 0 ? ` · ${blankTotal} câu bỏ trống` : ''}
+            </Text>
+          </View>
         </View>
         <Button label="Về kết quả" variant="outline" iconLeft="chevron-left" onPress={onBack} />
       </View>
@@ -665,6 +808,7 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
               <Button
                 key={`${entry.kind}-${entry.module}`}
                 label={`${moduleChip(entry)} · ${wrong} chưa đúng`}
+                iconLeft={entry.kind === 'rw' ? 'book' : 'grid'}
                 variant={i === openModule ? 'primary' : 'outline'}
                 onPress={() => setOpenModule(i)}
               />
@@ -683,10 +827,15 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
             variant={filter === 'all' ? 'secondary' : 'ghost'}
             onPress={() => setFilter('all')}
           />
-          <View className="flex-row flex-wrap items-center gap-2 lg:ml-auto">
-            <Badge label="Đúng" tone="success" shape="tag" />
-            <Badge label="Sai" tone="danger" shape="tag" />
-            <Badge label="Bỏ trống" tone="neutral" shape="tag" />
+          <View className="flex-row flex-wrap items-center gap-3 lg:ml-auto">
+            {(['correct', 'wrong', 'blank'] as const).map((k) => (
+              <View key={k} className="flex-row items-center gap-1.5">
+                <Icon name={STATUS[k].icon} size={14} color={STATUS[k].ink} strokeWidth={2.6} />
+                <Text className={`font-strong text-label ${STATUS[k].text}`}>
+                  {STATUS[k].label}
+                </Text>
+              </View>
+            ))}
           </View>
         </View>
       </Card>
@@ -701,16 +850,23 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
       ) : null}
 
       {shown.length === 0 ? (
-        <Card className="mt-3" variant="flat" style={{ maxWidth: REVIEW_COLUMN }}>
-          <Text className="font-strong text-cardTitle text-ink">Module này không sai câu nào</Text>
-          <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-            Bấm "Tất cả" nếu muốn soát lại lời giải của cả {rows.length} câu.
-          </Text>
+        <Card className="mt-3 bg-success-soft" variant="flat" style={{ maxWidth: REVIEW_COLUMN }}>
+          <View className="flex-row items-center gap-3">
+            <IconCircle name="trophy" tone="success" size={44} />
+            <View className="min-w-0 flex-1">
+              <Text className="font-strong text-cardTitle text-success-ink">
+                Module này không sai câu nào
+              </Text>
+              <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 22 }}>
+                Bấm "Tất cả" nếu muốn soát lại lời giải của cả {rows.length} câu.
+              </Text>
+            </View>
+          </View>
         </Card>
       ) : (
         <View className="mt-3 gap-4" style={{ maxWidth: REVIEW_COLUMN }}>
           {shown.map((row) => (
-            <Card key={row.key}>{row.node}</Card>
+            <ReviewCard key={row.key} row={row} />
           ))}
         </View>
       )}

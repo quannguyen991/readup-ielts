@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import { ItemBody } from './ItemBody';
-import { Badge, Icon } from '@/components/ui';
+import { Icon } from '@/components/ui';
 import { color } from '@/theme/tokens';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 
@@ -18,33 +18,12 @@ import type { MockItem } from '@/services/sat-rw/mock/item';
  * mò cũng cần thấy phương án nào đúng và vì sao — mà màn hình thì không phân biệt
  * được đoán với biết.
  */
-export function RwReviewItem({
-  item,
-  index,
-  answer,
-}: {
-  item: MockItem;
-  /** Số thứ tự trong module, đếm từ 0. */
-  index: number;
-  answer: number | null;
-}) {
+export function RwReviewItem({ item, answer }: { item: MockItem; answer: number | null }) {
   const blank = answer === null;
-  const correct = answer === item.answerIndex;
 
   return (
     <View>
-      <View className="flex-row items-center justify-between gap-3">
-        <Text className="font-strong text-cardTitle text-ink">Câu {index + 1}</Text>
-        <Badge
-          label={blank ? 'Bỏ trống' : correct ? 'Đúng' : 'Sai'}
-          tone={blank ? 'neutral' : correct ? 'success' : 'danger'}
-          shape="tag"
-        />
-      </View>
-
-      <View className="mt-3">
-        <ItemBody item={item} />
-      </View>
+      <ItemBody item={item} />
 
       <Text className="mt-4 font-strong text-body text-ink" style={{ lineHeight: 23 }}>
         {item.stem}
@@ -68,11 +47,21 @@ export function RwReviewItem({
         </Text>
       ) : null}
 
-      <View className="mt-3 rounded-panel bg-surfaceAlt px-4 py-3">
-        <Text className="font-strong text-label uppercase text-muted">Vì sao</Text>
-        <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 23 }}>
-          {item.solutionVi}
-        </Text>
+      {/*
+        Lời giải mang tông `info`, không phải xám. Đây là thứ DUY NHẤT trên thẻ
+        dạy được điều gì — điểm số thì đã xong rồi — nên nó phải là khối bắt mắt
+        thứ hai sau dải trạng thái, chứ không phải khối chìm nhất.
+      */}
+      <View className="mt-3 flex-row gap-3 rounded-panel bg-info-soft px-4 py-3">
+        <View style={{ paddingTop: 1 }}>
+          <Icon name="sparkle" size={17} color={color.info} strokeWidth={2} />
+        </View>
+        <View className="min-w-0 flex-1">
+          <Text className="font-strong text-label uppercase text-info-ink">Vì sao</Text>
+          <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 23 }}>
+            {item.solutionVi}
+          </Text>
+        </View>
       </View>
     </View>
   );

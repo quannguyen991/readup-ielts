@@ -24,12 +24,19 @@ export function MathQuestionView({
   onAnswer,
   revealed = false,
   index,
+  showGrade = true,
 }: {
   item: MathItem;
   answer: string | null;
   onAnswer?: (answer: string) => void;
   revealed?: boolean;
   index?: number;
+  /**
+   * Tắt khi nơi gọi ĐÃ nói đúng/sai ở chỗ khác — ví dụ màn xem lại bài thi đầy
+   * đủ, nơi mỗi câu có sẵn một dải màu trạng thái ở đầu thẻ. Hai cái nhãn "Sai"
+   * nằm cách nhau hai centimet không cho biết thêm gì, chỉ làm thẻ rối.
+   */
+  showGrade?: boolean;
 }) {
   const grade = revealed ? gradeMathItem(item, answer) : null;
   const locked = !onAnswer;
@@ -44,7 +51,7 @@ export function MathQuestionView({
         {item.format === 'grid_in' ? (
           <Badge label="Tự điền đáp án" tone="info" shape="tag" />
         ) : null}
-        {grade ? (
+        {grade && showGrade ? (
           <Badge
             label={grade.isCorrect ? 'Đúng' : answer === null ? 'Bỏ trắng' : 'Sai'}
             tone={grade.isCorrect ? 'success' : answer === null ? 'neutral' : 'danger'}
