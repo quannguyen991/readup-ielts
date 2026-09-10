@@ -95,24 +95,53 @@ export function useEnglishVoices(): EnglishVoice[] {
  * rất khô — người học mở bài lên, nghe câu đầu tiên, và tưởng bài khó trong khi
  * thật ra là giọng dở. Nên app tự chọn giúp một giọng nghe được, và vẫn để đổi.
  *
- * Thứ tự ưu tiên: giọng Anh-Anh của Google (rõ và đều nhất trong các giọng cài
- * sẵn), rồi tới bất kỳ giọng Anh-Anh nào, rồi Anh-Mỹ. Không có gì khớp thì trả
- * `null` để dùng giọng mặc định của máy.
+ * XẾP THEO THẾ HỆ GIỌNG, KHÔNG THEO GIỌNG NÀO TÔI THÍCH.
+ *
+ * Máy đọc chia làm hai thế hệ nghe khác hẳn nhau, và khoảng cách giữa hai thế
+ * hệ lớn hơn mọi khác biệt bên trong một thế hệ:
+ *
+ *   · Mạng nơ-ron — Microsoft "Natural" (Aria, Sonia, Guy…), Apple Premium /
+ *     Enhanced. Có ngữ điệu, ngắt nghỉ đúng chỗ, nghe được cả bài dài.
+ *   · Ghép âm đời cũ — Google UK/US English, Microsoft David/Zira/Mark. Từng
+ *     chữ đều một nhịp, nghe lâu thì mệt.
+ *
+ * Bản trước chọn "Google UK English Female" đầu tiên, tức là bốc một giọng đời
+ * CŨ ngay cả trên máy đã có giọng nơ-ron. Giờ mọi giọng nơ-ron đứng trước, và
+ * chỉ khi máy không có cái nào mới rơi xuống lớp cũ.
+ *
+ * Trong lớp cũ thì Google US đứng trên Google UK Female — giọng UK Female là
+ * giọng mũi và đều nhất trong nhóm, và đó là giọng bị chê.
+ *
+ * KHÔNG khoá theo tên máy cụ thể: khớp theo TỪ KHOÁ trong tên ("natural",
+ * "premium") nên máy nào cài thêm giọng nơ-ron mới cũng tự được ưu tiên, không
+ * phải chờ tôi bổ sung danh sách.
  */
 export function preferredVoice(voices: EnglishVoice[]): string | null {
   if (voices.length === 0) return null;
 
-  const byName = (needle: string) =>
-    voices.find((v) => v.name.toLowerCase().includes(needle.toLowerCase()));
+  const has = (v: EnglishVoice, needle: string) =>
+    v.name.toLowerCase().includes(needle.toLowerCase());
+
+  const first = (test: (v: EnglishVoice) => boolean) => voices.find(test);
 
   const byLang = (prefix: string) =>
     voices.find((v) => v.language.replace('_', '-').toLowerCase().startsWith(prefix));
 
   const pick =
-    byName('Google UK English Female') ??
-    byName('Google UK English') ??
+    /* Thế hệ nơ-ron, bất kể hãng nào. */
+    first((v) => has(v, 'natural')) ??
+    first((v) => has(v, 'premium')) ??
+    first((v) => has(v, 'enhanced')) ??
+    first((v) => has(v, 'neural')) ??
+    /* Giọng Apple nghe được, tên không kèm từ khoá nào ở trên. */
+    first((v) => has(v, 'ava')) ??
+    first((v) => has(v, 'samantha')) ??
+    first((v) => has(v, 'serena')) ??
+    /* Hết giọng mới thì mới tới lớp cũ. */
+    first((v) => has(v, 'google us english')) ??
+    first((v) => has(v, 'google uk english male')) ??
+    first((v) => has(v, 'google uk english')) ??
     byLang('en-gb') ??
-    byName('Google US English') ??
     byLang('en-us') ??
     voices[0];
 

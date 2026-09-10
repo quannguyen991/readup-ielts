@@ -8,6 +8,7 @@ import {
   parseVideoId,
   pickEnglishTrack,
   usableSentences,
+  speechCues,
 } from './transcript';
 
 test('rút được id video từ mọi kiểu liên kết hay dán', () => {
@@ -107,4 +108,59 @@ test('bỏ câu quá ngắn, câu không có chữ, và chú thích trong ngoặ
   ]);
   assert.equal(kept.length, 1);
   assert.equal(kept[0]?.text, 'This one is long enough to keep.');
+});
+
+/* ------------------------------------------------- khuôn XML đời mới */
+
+test('đọc được khuôn <p t d> của InnerTube, và đổi mili giây sang giây', () => {
+  /*
+    Đây là lỗi đã làm chết cả tính năng mà không ai thấy: InnerTube trả
+    `<timedtext format="3">` với `<p t="19514" d="1712">`, còn bộ đọc chỉ biết
+    `<text start="19.514" dur="1.712">`. Nhận về 8.256 byte phụ đề hợp lệ rồi
+    trả ra không cue nào, và người dùng đọc được đúng một dòng "phụ đề quá rời
+    rạc" — nói sai hẳn nguyên nhân.
+
+    Đơn vị khác nhau nên phải chia 1000; quên chia thì mọi mốc tua lệch một
+    nghìn lần và bài nghe nhảy thẳng tới cuối video.
+  */
+  const xml =
+    '<?xml version="1.0" encoding="utf-8" ?><timedtext format="3">' +
+    '<body><p t="19514" d="1712">Hear that?</p>' +
+    '<p t="21762" d="2265">That&#39;s nothing.</p></body></timedtext>';
+
+  const cues = parseTranscriptXml(xml);
+  assert.equal(cues.length, 2);
+  assert.equal(cues[0]!.start, 19.514);
+  assert.equal(cues[0]!.duration, 1.712);
+  assert.equal(cues[0]!.text, 'Hear that?');
+  assert.equal(cues[1]!.text, "That's nothing.");
+});
+
+test('khuôn cũ vẫn đọc được, và ĐƯỢC ƯU TIÊN', () => {
+  const xml =
+    '<transcript><text start="1.5" dur="2">One two three.</text></transcript>';
+  const cues = parseTranscriptXml(xml);
+  assert.equal(cues.length, 1);
+  assert.equal(cues[0]!.start, 1.5, 'khuôn cũ tính bằng giây, không được chia 1000');
+});
+
+test('mẩu ghi công người dịch bị bỏ trước khi gộp câu', () => {
+  /*
+    Không được nói ra trong video. Để lại là bắt người học gõ một cái tên riêng
+    họ chưa từng nghe, ngay ở câu ĐẦU TIÊN của bài.
+  */
+  const cues = [
+    { start: 0, duration: 7, text: 'Translator: Gustavo Rocha' },
+    { start: 7, duration: 2, text: 'Reviewer: Ariana Bleau Lugo' },
+    { start: 19, duration: 2, text: 'Hear that? That is nothing at all.' },
+  ];
+  const kept = speechCues(cues);
+  assert.equal(kept.length, 1);
+  assert.match(kept[0]!.text, /Hear that/);
+});
+
+test('câu có chữ "translator" giữa dòng thì KHÔNG bị bỏ', () => {
+  // Lọc theo dấu hai chấm ở đầu dòng, không lọc theo từ khoá xuất hiện bất kỳ đâu.
+  const cues = [{ start: 0, duration: 3, text: 'The translator explained the idea clearly.' }];
+  assert.equal(speechCues(cues).length, 1);
 });

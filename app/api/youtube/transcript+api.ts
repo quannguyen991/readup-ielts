@@ -1,6 +1,7 @@
+import { fetchCaptionTracks } from '@/services/youtube/innertube';
 import {
-  findCaptionTracks,
   groupIntoSentences,
+  speechCues,
   parseTranscriptXml,
   parseVideoId,
   pickEnglishTrack,
@@ -35,31 +36,30 @@ export async function GET(request: Request): Promise<Response> {
   }
 
   try {
-    const watch = await fetch(`https://www.youtube.com/watch?v=${videoId}&hl=en`, {
-      headers: {
-        // Không có User-Agent thì YouTube trả bản rút gọn không kèm cấu hình
-        // trình phát, và trong đó không có bảng phụ đề.
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36',
-        'Accept-Language': 'en-US,en;q=0.9',
-      },
-    });
+    /*
+      Hỏi InnerTube, KHÔNG cào trang watch nữa — xem `services/youtube/innertube.ts`
+      để biết vì sao. Tóm tắt: cách cũ vẫn TÌM THẤY bảng phụ đề nhưng mọi
+      `baseUrl` trong đó trả về 200 kèm 0 byte, nên người dùng nhận đúng một câu
+      "video này không có phụ đề" cho mọi video, kể cả video có phụ đề thật.
+    */
+    const found = await fetchCaptionTracks(videoId);
 
-    if (!watch.ok) {
-      return Response.json({ error: 'Không mở được video này.' }, { status: 502 });
+    if (!found.ok) {
+      /* Ba nguyên nhân, ba câu khác nhau — người đọc phải biết nên làm gì tiếp. */
+      const message =
+        found.reason === 'no_captions'
+          ? 'Video này không có phụ đề nên chưa làm bài chép chính tả được.'
+          : found.reason === 'blocked'
+            ? 'YouTube không cho lấy phụ đề của video này (video riêng tư, giới hạn tuổi, hoặc chặn nhúng).'
+            : 'Không nối được tới YouTube lúc này. Thử lại sau một lát.';
+      return Response.json({ error: message }, { status: found.reason === 'unreachable' ? 502 : 404 });
     }
 
-    const tracks = findCaptionTracks(await watch.text());
-    const track = pickEnglishTrack(tracks);
+    const track = pickEnglishTrack(found.tracks);
 
     if (!track) {
       return Response.json(
-        {
-          error:
-            tracks.length > 0
-              ? 'Video này có phụ đề nhưng không có bản tiếng Anh.'
-              : 'Video này không có phụ đề nên chưa làm bài chép chính tả được.',
-        },
+        { error: 'Video này có phụ đề nhưng không có bản tiếng Anh.' },
         { status: 404 },
       );
     }
@@ -71,7 +71,9 @@ export async function GET(request: Request): Promise<Response> {
       return Response.json({ error: 'Không tải được phụ đề của video này.' }, { status: 502 });
     }
 
-    const sentences = usableSentences(groupIntoSentences(parseTranscriptXml(await xml.text())));
+    const sentences = usableSentences(
+      groupIntoSentences(speechCues(parseTranscriptXml(await xml.text()))),
+    );
 
     if (sentences.length === 0) {
       return Response.json(

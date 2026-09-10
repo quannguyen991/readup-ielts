@@ -1,57 +1,29 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 
 import { AccountCard } from '@/components/account/AccountCard';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Card, SectionHeader } from '@/components/ui';
-import { hasSupabaseConfig, publicEnv } from '@/lib/env';
 
+/**
+ * Cài đặt tài khoản.
+ *
+ * ĐÃ GỠ BẢNG "KẾT NỐI SUPABASE" (10/09/2026). Nó in ra đường dẫn dự án Supabase
+ * và tên các biến môi trường, kèm một dòng nhắc "điền vào .env.local rồi khởi
+ * động lại dev server" — chỉ dẫn dành cho người đang DỰNG app, đặt nhầm vào
+ * trang của người ĐANG HỌC.
+ *
+ * Đường dẫn dự án và khoá anon vốn không phải bí mật (chúng đi kèm mọi request
+ * từ trình duyệt), nên gỡ đi không phải để bịt lỗ hổng. Gỡ vì hai lý do khác:
+ * nó không giúp người học được gì, và một trang cài đặt phơi ra tên biến môi
+ * trường thì trông như bản chưa làm xong.
+ *
+ * Cần kiểm cấu hình thì có `scripts/check-setup.ts` — đúng chỗ cho việc ấy.
+ */
 export default function SettingsScreen() {
-  const configured = hasSupabaseConfig();
-
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Settings</Text>
-
+      <Text className="font-heavy text-pageTitle text-ink">Cài đặt</Text>
       <AccountCard />
-
-      <Card className="mt-4">
-        <SectionHeader
-          title="Kết nối Supabase"
-          subtitle="Điền biến trong .env.local rồi khởi động lại dev server"
-          icon="settings"
-          right={
-            <Badge
-              label={configured ? 'Đã cấu hình' : 'Chưa cấu hình'}
-              tone={configured ? 'success' : 'warning'}
-            />
-          }
-        />
-
-        <View className="mt-4 gap-2">
-          <Row label="EXPO_PUBLIC_SUPABASE_URL" value={publicEnv.supabaseUrl || '—'} />
-          <Row
-            label="EXPO_PUBLIC_SUPABASE_ANON_KEY"
-            value={publicEnv.supabaseAnonKey ? '••••••••' : '—'}
-          />
-        </View>
-
-        <Text className="mt-4 font-sans text-label text-muted">
-          Các key bí mật (SUPABASE_SERVICE_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY) không đọc ở
-          client — chỉ dùng trong API route / Edge Function ở các bước sau.
-        </Text>
-      </Card>
     </Screen>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <View className="flex-row items-center justify-between rounded-panel bg-surfaceAlt px-3 py-2.5">
-      <Text className="font-mid text-label text-muted">{label}</Text>
-      <Text className="font-semi text-label text-ink" numberOfLines={1}>
-        {value}
-      </Text>
-    </View>
   );
 }
