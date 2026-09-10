@@ -24,6 +24,19 @@
  * không bịa ra một feature không ai implement — group-buy là cơ chế THẬT, chạy
  * qua đúng luồng QR thủ công đang có, không phải một dòng quảng cáo suông.
  *
+ * CẬP NHẬT 10/09/2026 — Max có thêm MỘT TÍNH NĂNG ĐỘC QUYỀN THẬT:
+ * `verifiable_credential`, tức chứng chỉ ký số Ed25519 theo chuẩn W3C Verifiable
+ * Credential (`services/credential/`), kèm trình kiểm độc lập chạy ngoài app
+ * (`scripts/verify-credential.ts`). Đây KHÔNG phải một dòng quảng cáo suông — toàn
+ * bộ đường ký và kiểm đã chạy và có 58 test.
+ *
+ * VÀ NÓ KHÔNG THEO NGUYÊN TẮC "CHẶN THEO CHI PHÍ THẬT" Ở TRÊN — nói thẳng ra
+ * chứ không giấu. Ký Ed25519 chạy ngay trên máy người dùng, chi phí bằng không.
+ * Lý do chặn là khác: đây không phải công cụ ĐỂ HỌC mà là GIẤY CHỨNG NHẬN
+ * cho cái đã học — giống hệt cách mọi khoá học khác thu tiền chứng chỉ riêng.
+ * Người dùng Free, Plus, Pro không mất một thứ gì để học; họ chỉ không có tờ
+ * giấy ở cuối. Đó là ranh giới tôi cho là còn giữ được tử tế.
+ *
  * NGÂN SÁCH AI vẫn là trục khác biệt chính giữa ba gói trả tiền — không đổi.
  *
  * Gói Free được dùng THẬT, không phải bản demo: trọn bài chẩn đoán, trọn chặng
@@ -60,7 +73,8 @@ export type Feature =
   | 'writing_ai_grading'
   | 'model_essays'
   | 'ai_chat'
-  | 'priority_support';
+  | 'priority_support'
+  | 'verifiable_credential';
 
 /** Hạn mức đếm theo chu kỳ. `null` nghĩa là không giới hạn. */
 export type Quota = 'reading_per_day' | 'mock_per_week' | 'ai_calls_per_month' | 'vocab_total';
@@ -212,7 +226,7 @@ export const PLANS: Record<PlanId, Plan> = {
     monthlyVnd: 400_000,
     // Trả năm giữ đúng mức giảm 30% như trước: 400.000 × 12 × 0,70.
     yearlyVnd: 3_360_000,
-    features: [...COACH_FEATURES, 'priority_support'],
+    features: [...COACH_FEATURES, 'priority_support', 'verifiable_credential'],
     quotas: {
       reading_per_day: null,
       mock_per_week: null,
@@ -223,6 +237,7 @@ export const PLANS: Record<PlanId, Plan> = {
     },
     highlights: [
       'Mọi thứ của Pro',
+      'Chứng chỉ ký số — ai cũng kiểm lại được',
       '720 lượt AI mỗi tháng',
       'Hỗ trợ ưu tiên trong ngày',
     ],

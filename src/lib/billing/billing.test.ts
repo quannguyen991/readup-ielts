@@ -116,11 +116,16 @@ test('chatbox và bài mẫu chỉ từ Pro trở lên', () => {
   }
 });
 
-test('Max khác Pro đúng ở hỗ trợ ưu tiên và ngân sách AI, không có gì khác', () => {
-  // Trang giá nói thẳng điều này. Nếu ai đó lén thêm một tính năng riêng cho Max
-  // mà quên sửa lời quảng cáo thì test này đỏ trước khi người dùng phát hiện.
+test('Max hơn Pro đúng HAI thứ, và ngân sách AI', () => {
+  /*
+    Trang giá nói thẳng điều này. Ai lén thêm một tính năng riêng cho Max mà
+    quên sửa lời quảng cáo thì test này đỏ trước khi người dùng phát hiện.
+
+    Danh sách viết CỤ THỂ chứ không phải "ít nhất một": một bài kiểm tra nói
+    "Max phải có gì đó hơn" thì bất kỳ tính năng bịa nào cũng qua được.
+  */
   const onlyInMax = PLANS.max.features.filter((f) => !PLANS.pro.features.includes(f));
-  assert.deepEqual(onlyInMax, ['priority_support']);
+  assert.deepEqual(onlyInMax, ['priority_support', 'verifiable_credential']);
   assert.ok(
     (quotaLimit('max', 'ai_calls_per_month') ?? 0) >= (quotaLimit('pro', 'ai_calls_per_month') ?? 0) * 3,
     'Max phải hơn Pro ít nhất gấp ba về ngân sách AI, nếu không thì chênh giá vô lý.',

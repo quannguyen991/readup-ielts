@@ -371,6 +371,10 @@ const COMPARE_FEATURES: Array<{ feature: Feature; label: string }> = [
   { feature: 'writing_ai_grading', label: 'Chấm Writing bằng AI, có annotation' },
   { feature: 'model_essays', label: 'Bài mẫu đã kiểm định band' },
   { feature: 'ai_chat', label: 'Chatbox trợ giảng' },
+  {
+    feature: 'verifiable_credential',
+    label: 'Chứng chỉ ký số — người khác kiểm lại được mà không cần tin app',
+  },
   { feature: 'priority_support', label: 'Hỗ trợ ưu tiên' },
 ];
 

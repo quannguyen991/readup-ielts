@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
+import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
-import { Button, Card, Icon } from '@/components/ui';
+import { Button, Card, Icon, IconCircle } from '@/components/ui';
 import { buildExport } from '@/services/mastery/cohort';
 import { explain } from '@/services/mastery/explain';
 import { DOMAIN_LABEL, type Domain, type SkillRecord, type SkillStatus } from '@/services/mastery/types';
@@ -14,6 +15,9 @@ import { AuditPanel } from '@/components/ai-literacy/AuditPanel';
 import { CredentialCard } from '@/components/credential/CredentialCard';
 import { ARTICLES, getArticleWithBody } from '@/data/articles';
 import { pickTransferSource } from '@/services/proofloop/transfer-source';
+import { checkFeature, requiredPlanFor } from '@/lib/billing/entitlements';
+import { PLANS, type PlanId } from '@/lib/billing/plans';
+import { usePlan } from '@/store/useBillingStore';
 import { color } from '@/theme/tokens';
 
 /**
@@ -49,6 +53,8 @@ const ORDER: SkillStatus[] = ['needs-probe', 'probing', 'confirmed', 'unobserved
 
 export default function MasteryScreen() {
   const ledger = useMasteryStore((s) => s.ledger);
+  const plan = usePlan();
+  const credential = checkFeature(plan, 'verifiable_credential');
   const { t } = useT();
 
   const records = useMemo(
@@ -96,7 +102,11 @@ export default function MasteryScreen() {
         và không bao giờ biết cái kia giải quyết vấn đề gì.
       */}
       <View className="mt-4">
-        <CredentialCard ledger={ledger} />
+        {credential.allowed ? (
+          <CredentialCard ledger={ledger} />
+        ) : (
+          <CredentialLocked need={requiredPlanFor('verifiable_credential')} />
+        )}
       </View>
 
       {/*
@@ -341,3 +351,63 @@ function AuditSection() {
     />
   );
 }
+
+/**
+ * Chỗ đứng của chứng chỉ ký số khi gói chưa mở.
+ *
+ * NÓI RÕ NÓ LÀ GÌ TRƯỚC KHI ĐÒI TIỀN. Một cái khoá với dòng "nâng cấp để mở"
+ * không cho người ta cơ sở nào để quyết; mà thứ này lại đúng loại khó hình dung
+ * — "chứng chỉ ký số" nghe như một cái huy hiệu trang trí. Ba dòng dưới đây nói
+ * đúng ba việc nó làm được, và chúng đều là việc thật.
+ *
+ * KHÔNG GIẤU SỔ BẰNG CHỨNG. Toàn bộ dữ liệu học vẫn hiện đầy đủ ở trên, và bản
+ * xuất JSON cho giáo viên vẫn dùng được ở mọi gói. Cái bị khoá là TỜ GIẤY ở
+ * cuối, không phải cái đã học.
+ */
+function CredentialLocked({ need }: { need: PlanId }) {
+  return (
+    <Card>
+      <View className="flex-row items-start gap-3">
+        <IconCircle name="lock" tone="warning" size={40} />
+        <View className="min-w-0 flex-1">
+          <Text className="font-strong text-cardTitle text-ink">
+            Chứng chỉ ký số — gói {PLANS[need].name}
+          </Text>
+          <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+            Sổ bằng chứng ở trên là của bạn ở mọi gói, và bản xuất cho giáo viên cũng vậy.
+            Cái nằm sau gói {PLANS[need].name} là tờ giấy ở cuối: một bản ghi được KÝ bằng
+            khoá nằm trên máy bạn.
+          </Text>
+          <View className="mt-3">
+            {CREDENTIAL_POINTS.map((line) => (
+              <View key={line} className="mt-1.5 flex-row gap-2.5">
+                <Icon name="check" size={15} color={color.success} strokeWidth={2.4} />
+                <Text className="min-w-0 flex-1 font-sans text-body text-body">{line}</Text>
+              </View>
+            ))}
+          </View>
+          <View className="mt-4 flex-row flex-wrap gap-2">
+            <Button
+              label={`Xem gói ${PLANS[need].name}`}
+              iconRight="chevron-right"
+              onPress={() => router.push('/upgrade' as never)}
+            />
+            <Button
+              label={`Mời 10 bạn, nhận ${PLANS[need].name} miễn phí`}
+              variant="outline"
+              iconLeft="sparkle"
+              onPress={() => router.push('/invite' as never)}
+            />
+          </View>
+        </View>
+      </View>
+    </Card>
+  );
+}
+
+/** Ba việc chứng chỉ làm được — mỗi dòng ứng với code đã chạy, không phải lời quảng cáo. */
+const CREDENTIAL_POINTS = [
+  'Sửa một ký tự trong bản ghi là chữ ký hỏng ngay, ai kiểm cũng thấy.',
+  'Người kiểm không cần tin ReadUp: có sẵn trình kiểm chạy độc lập ngoài app.',
+  'Theo chuẩn W3C Verifiable Credential, không phải một định dạng riêng của app.',
+];
