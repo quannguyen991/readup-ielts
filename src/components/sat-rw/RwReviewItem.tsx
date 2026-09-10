@@ -1,0 +1,146 @@
+import React from 'react';
+import { Text, View } from 'react-native';
+
+import { ItemBody } from './ItemBody';
+import { Badge, Icon } from '@/components/ui';
+import { color } from '@/theme/tokens';
+import type { MockItem } from '@/services/sat-rw/mock/item';
+
+/**
+ * Một câu R&W đã lộ đáp án, dùng ở màn xem lại sau khi thi.
+ *
+ * BA TRẠNG THÁI, KHÔNG PHẢI HAI. Đúng · chọn sai · bỏ trống. Gộp "bỏ trống" vào
+ * "sai" là xoá mất thông tin đắt nhất của một bài thi có đồng hồ: sai vì hiểu
+ * nhầm thì phải học lại kiến thức, còn bỏ trống hàng loạt ở cuối module thì phải
+ * học lại cách chia thời gian. Hai chứng bệnh khác nhau, hai cách chữa khác nhau.
+ *
+ * ĐÁP ÁN ĐÚNG LUÔN ĐƯỢC TÔ, kể cả khi người học làm đúng. Người làm đúng vì đoán
+ * mò cũng cần thấy phương án nào đúng và vì sao — mà màn hình thì không phân biệt
+ * được đoán với biết.
+ */
+export function RwReviewItem({
+  item,
+  index,
+  answer,
+}: {
+  item: MockItem;
+  /** Số thứ tự trong module, đếm từ 0. */
+  index: number;
+  answer: number | null;
+}) {
+  const blank = answer === null;
+  const correct = answer === item.answerIndex;
+
+  return (
+    <View>
+      <View className="flex-row items-center justify-between gap-3">
+        <Text className="font-strong text-cardTitle text-ink">Câu {index + 1}</Text>
+        <Badge
+          label={blank ? 'Bỏ trống' : correct ? 'Đúng' : 'Sai'}
+          tone={blank ? 'neutral' : correct ? 'success' : 'danger'}
+          shape="tag"
+        />
+      </View>
+
+      <View className="mt-3">
+        <ItemBody item={item} />
+      </View>
+
+      <Text className="mt-4 font-strong text-body text-ink" style={{ lineHeight: 23 }}>
+        {item.stem}
+      </Text>
+
+      <View className="mt-3 gap-2">
+        {item.options.map((option, i) => (
+          <OptionRow
+            key={option}
+            letter={'ABCD'[i]!}
+            text={option}
+            isAnswer={i === item.answerIndex}
+            isPicked={answer === i}
+          />
+        ))}
+      </View>
+
+      {blank ? (
+        <Text className="mt-2 font-sans text-label text-muted">
+          Câu này bạn chưa chọn phương án nào.
+        </Text>
+      ) : null}
+
+      <View className="mt-3 rounded-panel bg-surfaceAlt px-4 py-3">
+        <Text className="font-strong text-label uppercase text-muted">Vì sao</Text>
+        <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 23 }}>
+          {item.solutionVi}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+/**
+ * Một phương án ở màn xem lại.
+ *
+ * Chọn đúng thì CHỈ một viền xanh, không vừa xanh vừa đỏ: dòng ấy vừa là đáp án
+ * vừa là lựa chọn, và tô hai lớp lên cùng một dòng chỉ làm người ta phải đoán
+ * lớp nào nói gì.
+ */
+function OptionRow({
+  letter,
+  text,
+  isAnswer,
+  isPicked,
+}: {
+  letter: string;
+  text: string;
+  isAnswer: boolean;
+  isPicked: boolean;
+}) {
+  const wrongPick = isPicked && !isAnswer;
+
+  const box = isAnswer
+    ? 'border-success bg-success-soft'
+    : wrongPick
+      ? 'border-danger bg-danger-soft'
+      : 'border-border bg-surface';
+
+  const chip = isAnswer
+    ? 'border-success bg-success'
+    : wrongPick
+      ? 'border-danger bg-danger'
+      : 'border-borderStrong bg-surface';
+
+  return (
+    <View className={`flex-row items-start gap-3 rounded-panel border px-3.5 py-3 ${box}`}>
+      <View className={`h-6 w-6 items-center justify-center rounded-pill border ${chip}`}>
+        <Text
+          className={`font-strong text-label ${isAnswer || wrongPick ? 'text-white' : 'text-muted'}`}
+        >
+          {letter}
+        </Text>
+      </View>
+
+      <Text className="flex-1 font-sans text-body text-ink" style={{ lineHeight: 23 }}>
+        {text}
+      </Text>
+
+      {/*
+        Nhãn chữ chứ không chỉ có màu: "đáp án đúng" và "bạn chọn" là hai điều
+        khác nhau, mà xanh–đỏ thì khoảng 8% nam giới không phân biệt được.
+      */}
+      {isAnswer ? (
+        <View className="flex-row items-center gap-1.5">
+          <Icon name="check" size={15} color={color.success} strokeWidth={2.4} />
+          <Text className="font-strong text-label text-success-ink">
+            {isPicked ? 'Bạn chọn · đúng' : 'Đáp án đúng'}
+          </Text>
+        </View>
+      ) : wrongPick ? (
+        <View className="flex-row items-center gap-1.5">
+          <Icon name="close" size={15} color={color.danger} strokeWidth={2.4} />
+          <Text className="font-strong text-label text-danger-ink">Bạn chọn</Text>
+        </View>
+      ) : null}
+    </View>
+  );
+}

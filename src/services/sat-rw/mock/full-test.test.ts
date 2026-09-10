@@ -183,3 +183,114 @@ test('tất định: cùng hạt giống và cùng kết quả ra cùng bài', (
   assert.deepEqual(fullTestScore(a), fullTestScore(b));
   assert.deepEqual(a.rwModule1Ids, b.rwModule1Ids);
 });
+
+/* --------------------------------------------------------------- xem lại */
+
+/** Bài làm R&W đúng `n` câu đầu, còn lại bỏ trống. */
+function rwWork(items: { answerIndex: number }[], n: number): (number | null)[] {
+  return items.map((item, i) => (i < n ? item.answerIndex : null));
+}
+
+test('không đưa bài làm thì `review` vẫn rỗng — cũ vẫn chạy', () => {
+  /*
+    13 test phía trên gọi `submitModule` bằng hai tham số. Chúng phải xanh nguyên
+    trạng, nếu không thì đây là một cuộc đổi giao diện chứ không phải thêm việc.
+  */
+  const s = runThrough('r0', [20, 20, 15, 15]);
+  assert.deepEqual(s.review, []);
+  assert.ok(fullTestScore(s));
+});
+
+test('đưa bài làm vào thì giữ đúng câu của chặng vừa nộp', () => {
+  const s1 = startFullTest('r1');
+  const items = s1.stage.kind === 'rw' ? s1.stage.items : [];
+  const answers = rwWork(items, 9);
+
+  const s2 = submitModule(s1, { correct: 9, total: RW_MODULE_LENGTH }, { kind: 'rw', answers });
+
+  assert.equal(s2.review.length, 1);
+  const entry = s2.review[0]!;
+  assert.equal(entry.kind, 'rw');
+  assert.equal(entry.module, 1);
+  assert.deepEqual(
+    entry.items.map((i) => i.id),
+    items.map((i) => i.id),
+    'câu trong bảng xem lại phải là câu của module vừa nộp',
+  );
+  if (entry.kind === 'rw') assert.deepEqual(entry.answers, answers);
+});
+
+test('số câu đúng lệch với bài làm thì NÉM, không đi tiếp', () => {
+  /*
+    Hai con số ấy chỉ gặp nhau ở đây. Cho chúng lệch nhau đi tiếp nghĩa là người
+    học thấy một điểm số và một bảng xem lại nói hai chuyện khác nhau, mà không
+    có gì trên màn hình cho biết cái nào đúng.
+  */
+  const s = startFullTest('r2');
+  const items = s.stage.kind === 'rw' ? s.stage.items : [];
+  assert.throws(
+    () => submitModule(s, { correct: 27, total: 27 }, { kind: 'rw', answers: rwWork(items, 4) }),
+    /lệch nhau/,
+  );
+});
+
+test('đưa bài làm SAI KIỂU cho chặng thì NÉM', () => {
+  const s = startFullTest('r3');
+  assert.throws(
+    () => submitModule(s, { correct: 0, total: 27 }, { kind: 'math', attempts: [] }),
+    /math.*rw|rw.*math/,
+  );
+});
+
+test('bốn module xếp đúng thứ tự trong bảng xem lại', () => {
+  let s = startFullTest('r4');
+  const seen: string[] = [];
+
+  for (let i = 0; i < 2; i += 1) {
+    const items = s.stage.kind === 'rw' ? s.stage.items : [];
+    s = submitModule(s, { correct: 5, total: RW_MODULE_LENGTH }, { kind: 'rw', answers: rwWork(items, 5) });
+    seen.push(`rw${i + 1}`);
+  }
+  s = endBreak(s);
+  for (let i = 0; i < 2; i += 1) {
+    const items = s.stage.kind === 'math' ? s.stage.items : [];
+    const attempts = items.map((it, j) => ({
+      itemId: it.id,
+      skill: it.skill,
+      domain: it.domain,
+      format: it.format,
+      userAnswer: null,
+      isCorrect: j < 3,
+      errorTag: null,
+      note: null,
+      timeSpentMs: 0,
+    }));
+    s = submitModule(s, { correct: 3, total: 22 }, { kind: 'math', attempts });
+    seen.push(`math${i + 1}`);
+  }
+
+  assert.equal(s.stage.kind, 'result');
+  assert.equal(seen.length, 4);
+  assert.deepEqual(
+    s.review.map((r) => `${r.kind}${r.module}`),
+    ['rw1', 'rw2', 'math1', 'math2'],
+  );
+  /* Đủ 98 câu để xem lại — bằng đúng số câu của bài thi. */
+  assert.equal(
+    s.review.reduce((n, r) => n + r.items.length, 0),
+    FULL_TEST_QUESTIONS,
+  );
+});
+
+test('bấm nộp thừa lúc đang nghỉ KHÔNG thêm mục vào bảng xem lại', () => {
+  let s = startFullTest('r5');
+  for (let i = 0; i < 2; i += 1) {
+    const items = s.stage.kind === 'rw' ? s.stage.items : [];
+    s = submitModule(s, { correct: 2, total: RW_MODULE_LENGTH }, { kind: 'rw', answers: rwWork(items, 2) });
+  }
+  assert.equal(s.stage.kind, 'break');
+  assert.equal(s.review.length, 2);
+
+  const again = submitModule(s, { correct: 0, total: 22 }, { kind: 'math', attempts: [] });
+  assert.equal(again.review.length, 2, 'cú bấm thừa đã lọt vào bảng xem lại');
+});

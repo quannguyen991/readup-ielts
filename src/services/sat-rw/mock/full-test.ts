@@ -5,6 +5,7 @@ import {
   type MockModuleResult,
 } from '@/services/math/mock';
 import { estimateMathScore, routeSecondModule, type ModuleTier } from '@/services/math/scoring';
+import type { GradedAttempt } from '@/services/math/grade';
 import type { MathItem } from '@/lib/math/types';
 
 import {
@@ -62,6 +63,36 @@ export type FullStage =
   | { kind: 'math'; module: 1 | 2; items: MathItem[]; minutes: number }
   | { kind: 'result' };
 
+/**
+ * Bài làm của một module, giữ lại để xem lại sau khi thi xong.
+ *
+ * BẢN ĐẦU CỐ TÌNH KHÔNG GIỮ, và lý do ghi ở đây hồi ấy là "giữ cả bài làm sẽ
+ * biến một màn hình thành nơi chứa dữ liệu". Lý do ấy đúng với MÀN HÌNH và sai
+ * với máy trạng thái: bài làm là thứ lượt thi sở hữu, không phải thứ khung nhìn
+ * mượn tạm. Hệ quả của việc vứt nó đi là người học làm xong 98 câu chỉ nhận được
+ * một con số, không có cách nào biết mình sai câu nào — đúng cái app hứa ở trang
+ * chủ mà bài thi lớn nhất lại không làm được.
+ *
+ * Sống đúng bằng tuổi lượt thi: state này nằm trong bộ nhớ màn hình, đóng app là
+ * hết. Không có gì phải dọn.
+ */
+export type ModuleWork =
+  | { kind: 'rw'; answers: (number | null)[] }
+  | { kind: 'math'; attempts: GradedAttempt[] };
+
+export type ModuleReview =
+  | { kind: 'rw'; module: 1 | 2; items: MockItem[]; answers: (number | null)[] }
+  | { kind: 'math'; module: 1 | 2; items: MathItem[]; attempts: GradedAttempt[] };
+
+/** Số câu đúng suy ra từ chính bài làm — dùng để canh không lệch với điểm đã nộp. */
+function correctFromWork(work: ModuleWork, items: MockItem[] | MathItem[]): number {
+  if (work.kind === 'math') return work.attempts.filter((a) => a.isCorrect).length;
+  return (items as MockItem[]).reduce(
+    (n, item, i) => (work.answers[i] === item.answerIndex ? n + 1 : n),
+    0,
+  );
+}
+
 export type SectionProgress = {
   module1: RwModuleResult | null;
   module2: RwModuleResult | null;
@@ -75,6 +106,8 @@ export type FullTestState = {
   math: SectionProgress;
   /** Câu của module R&W 1, giữ lại để module 2 không lấy trùng. */
   rwModule1Ids: string[];
+  /** Bài làm bốn module, theo đúng thứ tự đã nộp. Rỗng cho tới lần nộp đầu tiên. */
+  review: ModuleReview[];
 };
 
 function emptySection(): SectionProgress {
@@ -89,6 +122,7 @@ export function startFullTest(seed: string): FullTestState {
     rw: emptySection(),
     math: emptySection(),
     rwModule1Ids: m.items.map((i) => i.id),
+    review: [],
   };
 }
 
@@ -101,15 +135,50 @@ export function startFullTest(seed: string): FullTestState {
  *
  * Nộp khi đang ở màn nghỉ hoặc màn kết quả là lỗi gọi sai, và hàm trả về nguyên
  * trạng thái cũ thay vì ném — màn hình bấm nhầm hai lần không nên làm sập bài thi.
+ *
+ * `work` là bài làm, để dành cho màn xem lại. Máy tự ghép nó với câu của chặng
+ * ĐANG nộp chứ không nhận cả hai từ ngoài: nhận cả hai là mở đường cho một lượt
+ * xem lại ghép nhầm đáp án của module này vào câu của module kia.
+ *
+ * Đưa `work` vào mà số câu đúng không khớp với `result.correct` thì NÉM. Đây là
+ * chỗ duy nhất hai con số ấy gặp nhau, mà chúng lệch nhau thì người học thấy một
+ * điểm số và một bảng xem lại nói hai chuyện khác nhau — không có gì trên màn
+ * hình cho biết cái nào đúng. Lệch được là do gọi sai, và lỗi gọi sai thì nên vỡ
+ * ở test chứ không nên đi tiếp.
  */
-export function submitModule(state: FullTestState, result: RwModuleResult): FullTestState {
+export function submitModule(
+  state: FullTestState,
+  result: RwModuleResult,
+  work?: ModuleWork,
+): FullTestState {
   const { seed, stage } = state;
+  if (stage.kind === 'break' || stage.kind === 'result') return state;
+
+  let review = state.review;
+  if (work) {
+    if (work.kind !== stage.kind) {
+      throw new Error(`nộp bài làm ${work.kind} cho chặng ${stage.kind}`);
+    }
+    const derived = correctFromWork(work, stage.items);
+    if (derived !== result.correct) {
+      throw new Error(
+        `số câu đúng lệch nhau: điểm nộp ${result.correct}, bài làm ${derived} (${stage.kind} module ${stage.module})`,
+      );
+    }
+    review = [
+      ...state.review,
+      work.kind === 'rw'
+        ? { kind: 'rw', module: stage.module, items: stage.items as MockItem[], answers: work.answers }
+        : { kind: 'math', module: stage.module, items: stage.items as MathItem[], attempts: work.attempts },
+    ];
+  }
 
   if (stage.kind === 'rw' && stage.module === 1) {
     const tier = routeRwSecondModule(result.correct, result.total);
     const m = buildRwModule(seed, 2, tier, new Set(state.rwModule1Ids));
     return {
       ...state,
+      review,
       stage: { kind: 'rw', module: 2, items: m.items, minutes: m.minutes },
       rw: { ...state.rw, module1: result, tier },
     };
@@ -118,6 +187,7 @@ export function submitModule(state: FullTestState, result: RwModuleResult): Full
   if (stage.kind === 'rw' && stage.module === 2) {
     return {
       ...state,
+      review,
       stage: { kind: 'break', minutes: BREAK_MINUTES },
       rw: { ...state.rw, module2: result },
     };
@@ -127,16 +197,13 @@ export function submitModule(state: FullTestState, result: RwModuleResult): Full
     const tier = routeSecondModule(result.correct, result.total);
     return {
       ...state,
+      review,
       stage: { kind: 'math', module: 2, items: buildMockModule(seed, 2, tier), minutes: MOCK_MODULE_MINUTES },
       math: { ...state.math, module1: result, tier },
     };
   }
 
-  if (stage.kind === 'math' && stage.module === 2) {
-    return { ...state, stage: { kind: 'result' }, math: { ...state.math, module2: result } };
-  }
-
-  return state;
+  return { ...state, review, stage: { kind: 'result' }, math: { ...state.math, module2: result } };
 }
 
 /** Hết giờ nghỉ — hoặc người học bấm bỏ qua. */

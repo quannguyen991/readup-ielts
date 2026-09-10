@@ -4,13 +4,17 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
+import { MathQuestionView } from '@/components/math/MathQuestionView';
 import { MathRunner } from '@/components/math/MathRunner';
+import { RwReviewItem } from '@/components/sat-rw/RwReviewItem';
 import { RwRunner } from '@/components/sat-rw/RwRunner';
 import {
+  Badge,
   Button,
   Card,
   HeroBanner,
   IconCircle,
+  SectionHeader,
   type IconName,
   type IconTone,
 } from '@/components/ui';
@@ -29,6 +33,7 @@ import {
   submitModule,
   TOTAL_STAGES,
   type FullTestState,
+  type ModuleReview,
 } from '@/services/sat-rw/mock/full-test';
 import { spacing as space } from '@/theme/tokens';
 
@@ -47,8 +52,10 @@ import { spacing as space } from '@/theme/tokens';
 
 export default function SatFullTestScreen() {
   const [state, setState] = useState<FullTestState | null>(null);
+  const [reviewing, setReviewing] = useState(false);
 
   const start = useCallback(() => {
+    setReviewing(false);
     setState(startFullTest(`full-${Date.now()}`));
   }, []);
 
@@ -66,7 +73,11 @@ export default function SatFullTestScreen() {
         minutes={stage.minutes}
         onFinish={(answers) => {
           const correct = countRwCorrect(stage.items, answers);
-          setState((s) => (s ? submitModule(s, { correct, total: stage.items.length }) : s));
+          setState((s) =>
+            s
+              ? submitModule(s, { correct, total: stage.items.length }, { kind: 'rw', answers })
+              : s,
+          );
         }}
       />
     );
@@ -82,8 +93,13 @@ export default function SatFullTestScreen() {
         minutes={stage.minutes}
         submitLabel="Nộp module"
         onFinish={(responses: MathResponse[]) => {
-          const correct = countCorrect(gradeMathSession(stage.items, responses));
-          setState((s) => (s ? submitModule(s, { correct, total: stage.items.length }) : s));
+          const attempts = gradeMathSession(stage.items, responses);
+          const correct = countCorrect(attempts);
+          setState((s) =>
+            s
+              ? submitModule(s, { correct, total: stage.items.length }, { kind: 'math', attempts })
+              : s,
+          );
         }}
       />
     );
@@ -98,15 +114,19 @@ export default function SatFullTestScreen() {
     );
   }
 
-  return <ResultScreen state={state} onRestart={start} />;
+  return reviewing ? (
+    <ReviewScreen state={state} onBack={() => setReviewing(false)} />
+  ) : (
+    <ResultScreen state={state} onRestart={start} onReview={() => setReviewing(true)} />
+  );
 }
 
 /**
  * Đếm câu đúng cho một module R&W.
  *
- * Không lưu đáp án người học vào state chung: màn này chỉ cần CON SỐ để chọn
- * module sau và để quy điểm. Giữ cả bài làm ở đây sẽ biến một màn hình thành nơi
- * chứa dữ liệu, mà nơi chứa dữ liệu thì phải có người dọn.
+ * Con số này đi cùng bài làm vào `submitModule`, và máy trạng thái đếm LẠI từ
+ * bài làm rồi so — lệch nhau là ném. Nên hàm ở đây không phải nguồn sự thật, nó
+ * chỉ là thứ được đem đi đối chiếu.
  */
 function countRwCorrect(items: MockItem[], answers: (number | null)[]): number {
   return items.reduce((n, item, i) => (answers[i] === item.answerIndex ? n + 1 : n), 0);
@@ -358,7 +378,15 @@ function formatClock(ms: number): string {
 
 /* ------------------------------------------------------------------ kết quả */
 
-function ResultScreen({ state, onRestart }: { state: FullTestState; onRestart: () => void }) {
+function ResultScreen({
+  state,
+  onRestart,
+  onReview,
+}: {
+  state: FullTestState;
+  onRestart: () => void;
+  onReview: () => void;
+}) {
   const { width } = useWindowDimensions();
   const wide = width >= 900;
   const score = fullTestScore(state);
@@ -442,8 +470,14 @@ function ResultScreen({ state, onRestart }: { state: FullTestState; onRestart: (
         </Grid>
       </View>
 
+      {/*
+        "Xem lại" đứng TRƯỚC "thi lại", và là nút chính. Thi lại ngay là làm lại
+        đúng những lỗi vừa mắc; chỗ điểm số lên được nằm ở bảng xem lại chứ không
+        ở lượt thi kế tiếp.
+      */}
       <View className="mt-5 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
-        <Button label="Thi lại đề khác" iconRight="chevron-right" onPress={onRestart} />
+        <Button label="Xem lại từng câu" iconRight="chevron-right" onPress={onReview} />
+        <Button label="Thi lại đề khác" variant="outline" iconLeft="refresh" onPress={onRestart} />
         <Button variant="ghost" label="Về trang SAT" onPress={() => router.replace('/sat')} />
       </View>
     </Screen>
@@ -513,6 +547,185 @@ function Line({
         {r ? `${r.correct}/${r.total}` : '—'}
       </Text>
     </View>
+  );
+}
+
+/* ------------------------------------------------------------------ xem lại */
+
+type ReviewFilter = 'wrong' | 'all';
+
+/** Một câu đã tách ra khỏi module, kèm đủ thứ để lọc và để vẽ. */
+type ReviewRow = {
+  key: string;
+  index: number;
+  correct: boolean;
+  blank: boolean;
+  node: React.ReactNode;
+};
+
+function rowsOf(entry: ModuleReview): ReviewRow[] {
+  if (entry.kind === 'rw') {
+    return entry.items.map((item, i) => {
+      const answer = entry.answers[i] ?? null;
+      return {
+        key: item.id,
+        index: i,
+        correct: answer === item.answerIndex,
+        blank: answer === null,
+        node: <RwReviewItem item={item} index={i} answer={answer} />,
+      };
+    });
+  }
+
+  return entry.items.map((item, i) => {
+    const attempt = entry.attempts[i];
+    return {
+      key: item.id,
+      index: i,
+      correct: attempt?.isCorrect ?? false,
+      blank: (attempt?.userAnswer ?? null) === null,
+      node: (
+        <MathQuestionView item={item} index={i} answer={attempt?.userAnswer ?? null} revealed />
+      ),
+    };
+  });
+}
+
+function moduleTitle(entry: ModuleReview): string {
+  const section = entry.kind === 'rw' ? 'Reading and Writing' : 'Math';
+  return `${section} — module ${entry.module}`;
+}
+
+/** Nhãn ngắn cho nút chọn module. */
+function moduleChip(entry: ModuleReview): string {
+  return `${entry.kind === 'rw' ? 'R&W' : 'Math'} ${entry.module}`;
+}
+
+/**
+ * Bề ngang tối đa của một thẻ xem lại.
+ *
+ * `Screen` cho tới 1.440px, và một đoạn văn trải hết chừng ấy thì mỗi dòng dài
+ * hơn 150 ký tự — đọc hết dòng là không tìm lại được đầu dòng sau. Phòng thi
+ * chữa bằng cách chia đôi màn hình, nhưng ở đây không chia được: lời giải phải
+ * nằm DƯỚI bốn phương án thì mới đọc theo đúng thứ tự. Nên hạ bề ngang.
+ */
+const REVIEW_COLUMN = 880;
+
+/**
+ * Xem lại cả bài thi, từng câu một.
+ *
+ * MỖI LẦN MỘT MODULE, và đây là chuyện hiệu năng chứ không phải sở thích: vẽ cả
+ * 98 câu — mỗi câu một đoạn văn, bốn phương án, một lời giải — ra cùng một trang
+ * cho hơn mười nghìn nút DOM, đủ để chính trình duyệt của tôi hết giờ khi chụp
+ * màn hình. Một module là 27 câu, và đó cũng đúng cách người ta xem lại: hết
+ * phần này rồi sang phần khác.
+ *
+ * MẶC ĐỌNH CHỈ HIỆN CÂU CHƯA ĐÚNG. Mở thẳng ra tất cả thì thứ người học cần —
+ * mấy câu sai — nằm rải rác giữa những câu họ đã làm được, và cuộn hết chúng là
+ * việc đủ chán để không ai làm lần thứ hai. "Tất cả" vẫn còn đó cho ai muốn soát
+ * lại cả bài.
+ *
+ * BỎ TRỐNG ĐỨNG CHUNG VỚI SAI trong bộ lọc nhưng ĐƯỢC GẮN NHÃN RIÊNG trong từng
+ * câu: cả hai đều là câu chưa lấy được điểm nên cùng cần xem lại, nhưng sai vì
+ * hiểu nhầm và bỏ trống vì hết giờ là hai chứng bệnh khác nhau.
+ */
+function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => void }) {
+  const [filter, setFilter] = useState<ReviewFilter>('wrong');
+  const [openModule, setOpenModule] = useState(0);
+
+  const modules = state.review.map((entry) => ({ entry, rows: rowsOf(entry) }));
+  const all = modules.flatMap((m) => m.rows);
+  const wrongTotal = all.filter((r) => !r.correct).length;
+  const blankTotal = all.filter((r) => r.blank).length;
+
+  const current = modules[Math.min(openModule, modules.length - 1)];
+  const rows = current?.rows ?? [];
+  const shown = filter === 'all' ? rows : rows.filter((r) => !r.correct);
+  const rightHere = rows.filter((r) => r.correct).length;
+
+  return (
+    <Screen>
+      <View className="flex-row flex-wrap items-start justify-between gap-3">
+        <View className="flex-1" style={{ minWidth: 260 }}>
+          <Text className="font-heavy text-pageTitle text-ink">Xem lại bài thi</Text>
+          <Text className="mt-1 font-sans text-body text-muted">
+            {all.length - wrongTotal}/{all.length} câu đúng
+            {blankTotal > 0 ? ` · ${blankTotal} câu bỏ trống` : ''}
+          </Text>
+        </View>
+        <Button label="Về kết quả" variant="outline" iconLeft="chevron-left" onPress={onBack} />
+      </View>
+
+      <Card className="mt-4" variant="flat">
+        <Text className="font-strong text-label uppercase text-muted">Module</Text>
+        <View className="mt-2 flex-row flex-wrap gap-2">
+          {modules.map(({ entry, rows: r }, i) => {
+            const wrong = r.filter((x) => !x.correct).length;
+            return (
+              <Button
+                key={`${entry.kind}-${entry.module}`}
+                label={`${moduleChip(entry)} · ${wrong} chưa đúng`}
+                variant={i === openModule ? 'primary' : 'outline'}
+                onPress={() => setOpenModule(i)}
+              />
+            );
+          })}
+        </View>
+
+        <View className="mt-3 flex-row flex-wrap items-center gap-2 border-t border-border pt-3">
+          <Button
+            label="Câu chưa đúng"
+            variant={filter === 'wrong' ? 'secondary' : 'ghost'}
+            onPress={() => setFilter('wrong')}
+          />
+          <Button
+            label="Tất cả"
+            variant={filter === 'all' ? 'secondary' : 'ghost'}
+            onPress={() => setFilter('all')}
+          />
+          <View className="flex-row flex-wrap items-center gap-2 lg:ml-auto">
+            <Badge label="Đúng" tone="success" shape="tag" />
+            <Badge label="Sai" tone="danger" shape="tag" />
+            <Badge label="Bỏ trống" tone="neutral" shape="tag" />
+          </View>
+        </View>
+      </Card>
+
+      {current ? (
+        <SectionHeader
+          className="mt-6"
+          title={moduleTitle(current.entry)}
+          subtitle={`${rightHere}/${rows.length} câu đúng · đang hiện ${shown.length} câu`}
+          icon={current.entry.kind === 'rw' ? 'book' : 'grid'}
+        />
+      ) : null}
+
+      {shown.length === 0 ? (
+        <Card className="mt-3" variant="flat" style={{ maxWidth: REVIEW_COLUMN }}>
+          <Text className="font-strong text-cardTitle text-ink">Module này không sai câu nào</Text>
+          <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+            Bấm "Tất cả" nếu muốn soát lại lời giải của cả {rows.length} câu.
+          </Text>
+        </Card>
+      ) : (
+        <View className="mt-3 gap-4" style={{ maxWidth: REVIEW_COLUMN }}>
+          {shown.map((row) => (
+            <Card key={row.key}>{row.node}</Card>
+          ))}
+        </View>
+      )}
+
+      <View className="mt-6 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
+        <Button label="Về kết quả" variant="outline" iconLeft="chevron-left" onPress={onBack} />
+        {openModule < modules.length - 1 ? (
+          <Button
+            label={`Sang ${moduleChip(modules[openModule + 1]!.entry)}`}
+            iconRight="chevron-right"
+            onPress={() => setOpenModule(openModule + 1)}
+          />
+        ) : null}
+      </View>
+    </Screen>
   );
 }
 
