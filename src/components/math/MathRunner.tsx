@@ -2,9 +2,10 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Pressable, Text, View } from 'react-native';
 
 import { Screen } from '@/components/layout/Screen';
+import { ExamShell } from '@/components/sat-rw/ExamShell';
 import { SelfDiagnose } from './SelfDiagnose';
 import { CrossFade } from '@/components/motion/Motion';
-import { Badge, Button, Card } from '@/components/ui';
+import { Badge, Button, Card, PaperCard } from '@/components/ui';
 import { MATH_ERROR_LABEL, type MathErrorTag, type MathItem } from '@/lib/math/types';
 import { gradeMathItem, type MathResponse } from '@/services/math/grade';
 
@@ -42,6 +43,17 @@ export type MathRunnerProps = {
    * trôi mất khỏi đầu.
    */
   instantSolution?: boolean;
+  /**
+   * Nền trang đang đặt phòng thi này lên.
+   *
+   * `light` — nền sáng của các màn /math (mặc định, giữ nguyên như cũ).
+   * `paper` — nền lưới xanh tím của bài thi SAT đầy đủ, thẻ chuyển sang giấy kem.
+   *
+   * Là THAM SỐ chứ không phải đổi thẳng: component này còn phục vụ /math/mock,
+   * /math/diagnostic và /math/set/* — những màn vẫn nằm trên nền sáng. Đổi thẳng
+   * là thẻ giấy kem rơi xuống nền sáng ở bốn màn khác mà không ai đợi.
+   */
+  surface?: 'light' | 'paper';
   onFinish: (responses: MathResponse[], elapsedMs: number) => void;
 };
 
@@ -56,8 +68,17 @@ export function MathRunner({
   phaseLabel,
   submitLabel = 'Nộp bài',
   instantSolution = false,
+  surface = 'light',
   onFinish,
 }: MathRunnerProps) {
+  const onPaper = surface === 'paper';
+  /* Chu tren nen: toi tren nen sang, trang tren nen cham. */
+  const titleClass = onPaper ? 'text-white' : 'text-ink';
+  const subClass = onPaper ? 'text-white/70' : 'text-muted';
+  const Shell = onPaper ? ExamShell : Screen;
+  const Panel = onPaper ? PaperCard : Card;
+  const hairline = onPaper ? 'border-brand-soft' : 'border-border';
+  const mutedClass = onPaper ? 'text-paper-muted' : 'text-muted';
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   // Đã mở lời giải câu nào. Mở rồi thì KHOÁ câu đó lại — xem đáp án xong còn
@@ -149,28 +170,39 @@ export function MathRunner({
   const lowOnTime = remainingMs <= 5 * 60_000;
 
   return (
-    <Screen>
+    <Shell>
       <View className="flex-row flex-wrap items-start justify-between gap-3">
         <View className="flex-1">
-          <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
+          <Text className={`font-heavy text-pageTitle ${titleClass}`}>{title}</Text>
           {subtitle ? (
-            <Text className="mt-1 font-sans text-body text-muted">{subtitle}</Text>
+            <Text className={`mt-1 font-sans text-body ${subClass}`}>{subtitle}</Text>
           ) : null}
         </View>
         <View className="items-end">
-          <Text
-            className={`font-heavy text-stat ${lowOnTime ? 'text-danger' : 'text-ink'}`}
-          >
-            {formatClock(remainingMs)}
-          </Text>
-          <Text className="font-sans text-label text-muted">
+          {/*
+            Trên nền chàm tối, đỏ đậm `text-danger` gần như không đọc được — đúng
+            lúc con số ấy cần đập vào mắt nhất — nên hết giờ dùng đỏ SÁNG.
+          */}
+          {onPaper ? (
+            <Text
+              className="font-heavy text-stat"
+              style={{ color: lowOnTime ? '#FCA5A5' : '#FFFFFF' }}
+            >
+              {formatClock(remainingMs)}
+            </Text>
+          ) : (
+            <Text className={`font-heavy text-stat ${lowOnTime ? 'text-danger' : 'text-ink'}`}>
+              {formatClock(remainingMs)}
+            </Text>
+          )}
+          <Text className={`font-sans text-label ${subClass}`}>
             {phaseLabel ? `${phaseLabel} · ` : ''}
             đã trả lời {answered}/{items.length}
           </Text>
         </View>
       </View>
 
-      <Card className="mt-4">
+      <Panel className="mt-4">
         {/*
           Hiện dần tại chỗ mỗi khi đổi câu. Đề toán đổi mà khung đứng im thì rất
           dễ tưởng chưa bấm được, nhất là hai câu liền nhau cùng dạng nên nhìn
@@ -220,7 +252,7 @@ export function MathRunner({
         ) : null}
 
         {instantSolution && !revealed[current.id] ? (
-          <View className="mt-3 border-t border-border pt-3">
+          <View className={`mt-3 border-t pt-3 ${hairline}`}>
             <Button
               label={
                 (answers[current.id] ?? '').trim() === ''
@@ -231,12 +263,12 @@ export function MathRunner({
               iconRight="chevron-down"
               onPress={() => setRevealed((prev) => ({ ...prev, [current.id]: true }))}
             />
-            <Text className="mt-2 font-sans text-label text-muted">
+            <Text className={`mt-2 font-sans text-label ${mutedClass}`}>
               Xem lời giải xong thì câu này bị khoá, không đổi đáp án được nữa.
             </Text>
           </View>
         ) : null}
-      </Card>
+      </Panel>
 
       <View className="mt-4 flex-row flex-wrap items-center justify-between gap-3">
         <View className="flex-row gap-2">
@@ -258,8 +290,8 @@ export function MathRunner({
         <Button label={submitLabel} iconRight="check" onPress={submit} />
       </View>
 
-      <Card className="mt-4" variant="flat">
-        <Text className="font-strong text-label text-muted">Bảng câu hỏi</Text>
+      <Panel className="mt-4">
+        <Text className={`font-strong text-label ${mutedClass}`}>Bảng câu hỏi</Text>
         <View className="mt-2 flex-row flex-wrap gap-2">
           {items.map((item, itemIndex) => {
             const done = (answers[item.id] ?? '').trim() !== '';
@@ -271,17 +303,31 @@ export function MathRunner({
                 onPress={() => goTo(itemIndex)}
                 className={`h-9 w-9 items-center justify-center rounded-pill border ${
                   active
-                    ? 'border-primary-600 bg-primary-600'
+                    ? onPaper
+                      ? 'border-brand-mid bg-brand-mid'
+                      : 'border-primary-600 bg-primary-600'
                     : seen
                       ? 'border-success bg-success-soft'
                       : done
-                        ? 'border-primary-200 bg-primary-50'
-                        : 'border-border bg-surface'
+                        ? onPaper
+                          ? 'border-brand-soft bg-brand-tint'
+                          : 'border-primary-200 bg-primary-50'
+                        : onPaper
+                          ? 'border-brand-soft bg-paper'
+                          : 'border-border bg-surface'
                 }`}
               >
                 <Text
                   className={`font-strong text-label ${
-                    active ? 'text-white' : seen ? 'text-success' : done ? 'text-primary-700' : 'text-muted'
+                    active
+                      ? 'text-white'
+                      : seen
+                        ? 'text-success'
+                        : done
+                          ? onPaper
+                            ? 'text-brand'
+                            : 'text-primary-700'
+                          : mutedClass
                   }`}
                 >
                   {itemIndex + 1}
@@ -296,8 +342,8 @@ export function MathRunner({
           {instantSolution ? <Badge label="Đã xem lời giải" tone="success" shape="tag" /> : null}
           <Badge label="Chưa trả lời" tone="neutral" shape="tag" />
         </View>
-      </Card>
-    </Screen>
+      </Panel>
+    </Shell>
   );
 }
 

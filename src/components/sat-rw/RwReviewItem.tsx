@@ -25,7 +25,7 @@ export function RwReviewItem({ item, answer }: { item: MockItem; answer: number 
     <View>
       <ItemBody item={item} />
 
-      <Text className="mt-4 font-strong text-body text-ink" style={{ lineHeight: 23 }}>
+      <Text className="mt-4 font-strong text-body text-paper-ink" style={{ lineHeight: 23 }}>
         {item.stem}
       </Text>
 
@@ -42,7 +42,7 @@ export function RwReviewItem({ item, answer }: { item: MockItem; answer: number 
       </View>
 
       {blank ? (
-        <Text className="mt-2 font-sans text-label text-muted">
+        <Text className="mt-2 font-sans text-label text-paper-muted">
           Câu này bạn chưa chọn phương án nào.
         </Text>
       ) : null}
@@ -58,7 +58,7 @@ export function RwReviewItem({ item, answer }: { item: MockItem; answer: number 
         </View>
         <View className="min-w-0 flex-1">
           <Text className="font-strong text-label uppercase text-info-ink">Vì sao</Text>
-          <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 23 }}>
+          <Text className="mt-1 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
             {item.solutionVi}
           </Text>
         </View>
@@ -91,25 +91,27 @@ function OptionRow({
     ? 'border-success bg-success-soft'
     : wrongPick
       ? 'border-danger bg-danger-soft'
-      : 'border-border bg-surface';
+      : 'border-brand-soft bg-paper';
 
   const chip = isAnswer
     ? 'border-success bg-success'
     : wrongPick
       ? 'border-danger bg-danger'
-      : 'border-borderStrong bg-surface';
+      : 'border-brand-soft bg-paper';
 
   return (
     <View className={`flex-row items-start gap-3 rounded-panel border px-3.5 py-3 ${box}`}>
       <View className={`h-6 w-6 items-center justify-center rounded-pill border ${chip}`}>
         <Text
-          className={`font-strong text-label ${isAnswer || wrongPick ? 'text-white' : 'text-muted'}`}
+          className={`font-strong text-label ${
+            isAnswer || wrongPick ? 'text-white' : 'text-paper-muted'
+          }`}
         >
           {letter}
         </Text>
       </View>
 
-      <Text className="flex-1 font-sans text-body text-ink" style={{ lineHeight: 23 }}>
+      <Text className="flex-1 font-sans text-body text-paper-ink" style={{ lineHeight: 23 }}>
         {text}
       </Text>
 

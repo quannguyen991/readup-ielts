@@ -3,20 +3,17 @@ import { Text, useWindowDimensions, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { Screen } from '@/components/layout/Screen';
 import { MathQuestionView } from '@/components/math/MathQuestionView';
 import { MathRunner } from '@/components/math/MathRunner';
+import { ExamShell } from '@/components/sat-rw/ExamShell';
 import { RwReviewItem } from '@/components/sat-rw/RwReviewItem';
 import { RwRunner } from '@/components/sat-rw/RwRunner';
 import {
-  Badge,
   Button,
-  Card,
-  HeroBanner,
   Icon,
   IconCircle,
+  PaperCard,
   ProgressBar,
-  SectionHeader,
   type IconName,
   type IconTone,
 } from '@/components/ui';
@@ -38,7 +35,7 @@ import {
   type FullTestState,
   type ModuleReview,
 } from '@/services/sat-rw/mock/full-test';
-import { color, gradient, spacing as space } from '@/theme/tokens';
+import { color, spacing as space } from '@/theme/tokens';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -95,6 +92,7 @@ export default function SatFullTestScreen() {
         items={stage.items}
         minutes={stage.minutes}
         submitLabel="Nộp module"
+        surface="paper"
         onFinish={(responses: MathResponse[]) => {
           const attempts = gradeMathSession(stage.items, responses);
           const correct = countCorrect(attempts);
@@ -156,33 +154,47 @@ const STAGES: readonly Stage[] = [
  */
 function Intro({ onStart }: { onStart: () => void }) {
   return (
-    <Screen>
-      <HeroBanner
-        title="Thi thử SAT đầy đủ"
-        subtitle="Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module, module sau khó dễ tuỳ module trước. Làm một mạch từ đầu tới cuối."
-        right={<TimeFigures />}
-      >
-        {/*
-          `onDarkSolid` / `onDark` chứ không phải `primary` / `ghost`: hai variant
-          kia được vẽ cho nền trắng, và trên gradient của banner thì nút "Để sau"
-          biến mất hẳn — chữ mực trên nền tím. Đây là hai variant app đã có sẵn
-          đúng cho chỗ này (Dashboard dùng `onDarkSolid` ở cùng vị trí).
-        */}
-        <View className="flex-row flex-wrap gap-2">
-          <Button
-            label="Bắt đầu thi"
-            variant="onDarkSolid"
-            iconRight="chevron-right"
-            onPress={onStart}
-          />
-          {/*
-            Đi thẳng tới /sat chứ không `router.back()`: route này ẩn hết thanh
-            điều hướng (nó là phòng thi), nên nếu người học mở thẳng bằng đường
-            dẫn thì `back()` không có chỗ để lùi và màn hình thành ngõ cụt.
-          */}
-          <Button label="Để sau" variant="onDark" onPress={() => router.replace('/sat')} />
+    <ExamShell>
+      {/*
+        Nền đã là gradient xanh tím rồi, nên KHÔNG còn `HeroBanner`: một banner
+        gradient đặt trên nền gradient cùng tone là hai lớp cùng màu chồng nhau,
+        và mép banner biến mất. Tiêu đề viết thẳng lên nền, đúng cách `TaskShell`
+        làm ở mọi màn tác vụ khác.
+      */}
+      <View className="flex-row flex-wrap items-start justify-between gap-4">
+        <View className="min-w-0 flex-1" style={{ minWidth: 260 }}>
+          <View className="flex-row items-center gap-3">
+            <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/15">
+              <Icon name="clipboard" size={22} color="#FFFFFF" strokeWidth={1.9} />
+            </View>
+            <Text className="font-heavy text-hero text-white">Thi thử SAT đầy đủ</Text>
+          </View>
+          <Text
+            className="mt-3 max-w-[560px] font-sans text-bodyLg text-white/75"
+            style={{ lineHeight: 24 }}
+          >
+            Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module,
+            module sau khó dễ tuỳ module trước. Làm một mạch từ đầu tới cuối.
+          </Text>
+          <View className="mt-5 flex-row flex-wrap gap-2">
+            <Button
+              label="Bắt đầu thi"
+              variant="onDarkSolid"
+              iconRight="chevron-right"
+              onPress={onStart}
+            />
+            {/*
+              Đi thẳng tới /sat chứ không `router.back()`: route này ẩn hết thanh
+              điều hướng (nó là phòng thi), nên nếu người học mở thẳng bằng đường
+              dẫn thì `back()` không có chỗ để lùi và màn hình thành ngõ cụt.
+            */}
+            <Button label="Để sau" variant="onDark" onPress={() => router.replace('/sat')} />
+          </View>
         </View>
-      </HeroBanner>
+        <View className="hidden lg:flex">
+          <TimeFigures />
+        </View>
+      </View>
 
       {/*
         Hai cột trên desktop. Một thẻ dòng thời gian trải hết bề ngang trang để
@@ -192,17 +204,17 @@ function Intro({ onStart }: { onStart: () => void }) {
       */}
       <View className="mt-4" style={{ marginBottom: space['2xl'] }}>
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
-          <Card>
+          <PaperCard>
             <View className="flex-row items-center gap-2.5">
               <IconCircle name="clock" tone="primary" size={34} />
-              <Text className="font-strong text-cardTitle text-ink">Bài thi đi thế nào</Text>
+              <Text className="font-strong text-cardTitle text-paper-ink">Bài thi đi thế nào</Text>
             </View>
             <View className="mt-3">
               {STAGES.map((s, i) => (
                 <StageRow key={s.label} stage={s} last={i === STAGES.length - 1} />
               ))}
             </View>
-          </Card>
+          </PaperCard>
 
           <View style={{ gap: 12 }}>
             <Note
@@ -220,7 +232,7 @@ function Intro({ onStart }: { onStart: () => void }) {
           </View>
         </Grid>
       </View>
-    </Screen>
+    </ExamShell>
   );
 }
 
@@ -243,17 +255,17 @@ function Note({
   body: string;
 }) {
   return (
-    <Card>
+    <PaperCard>
       <View className="flex-row gap-3">
         <IconCircle name={icon} tone={tone} size={38} />
         <View className="min-w-0 flex-1">
-          <Text className="font-strong text-body text-ink">{title}</Text>
-          <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+          <Text className="font-strong text-body text-paper-ink">{title}</Text>
+          <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 22 }}>
             {body}
           </Text>
         </View>
       </View>
-    </Card>
+    </PaperCard>
   );
 }
 
@@ -312,7 +324,7 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
     <View className="flex-row">
       <View className="items-center" style={{ width: 22 }}>
         <View
-          className={`h-2.5 w-2.5 rounded-pill ${rest ? 'bg-warning' : 'bg-primary-600'}`}
+          className={`h-2.5 w-2.5 rounded-pill ${rest ? 'bg-warning' : 'bg-brand-mid'}`}
           style={{ marginTop: 7 }}
         />
         {/*
@@ -323,7 +335,7 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
           ra để phủ định.
         */}
         {last ? null : (
-          <View className="flex-1 bg-primary-200" style={{ width: 2, marginVertical: 4 }} />
+          <View className="flex-1 bg-brand-soft" style={{ width: 2, marginVertical: 4 }} />
         )}
       </View>
       {/*
@@ -333,10 +345,10 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
       */}
       <View className={last ? 'flex-1' : 'flex-1 pb-3.5'}>
         <View className={wide ? 'flex-row items-baseline justify-between gap-3' : ''}>
-          <Text className={`font-sans text-body ${rest ? 'text-warning-ink' : 'text-ink'}`}>
+          <Text className={`font-sans text-body ${rest ? 'text-warning-ink' : 'text-paper-ink'}`}>
             {stage.label}
           </Text>
-          <Text className="font-semi text-label text-muted">{stage.detail}</Text>
+          <Text className="font-semi text-label text-paper-muted">{stage.detail}</Text>
         </View>
       </View>
     </View>
@@ -378,11 +390,13 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
   }, [minutes]);
 
   return (
-    <Screen>
+    <ExamShell>
       <View className="items-center" style={{ paddingTop: 40 }}>
-        <Card className="w-full items-center" style={{ maxWidth: 520, paddingVertical: 32 }}>
+        <PaperCard className="w-full items-center" style={{ maxWidth: 520, paddingVertical: 32 }}>
           <IconCircle name="clock" tone="warning" size={64} />
-          <Text className="mt-4 font-strong text-label uppercase text-muted">Nghỉ giữa giờ</Text>
+          <Text className="mt-4 font-strong text-label uppercase text-paper-muted">
+            Nghỉ giữa giờ
+          </Text>
           <Text
             className="font-heavy text-warning-ink"
             style={{ fontSize: 56, lineHeight: 64, fontVariant: ['tabular-nums'] }}
@@ -390,7 +404,7 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
             {formatClock(remainingMs)}
           </Text>
           <Text
-            className="mt-1 max-w-[400px] text-center font-sans text-body text-muted"
+            className="mt-1 max-w-[400px] text-center font-sans text-body text-paper-body"
             style={{ lineHeight: 23 }}
           >
             Xong phần Reading and Writing. Đứng dậy, uống nước, đừng xem lại câu vừa làm —
@@ -399,12 +413,12 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
           <View className="mt-6">
             <Button label="Vào phần Math sớm" iconRight="chevron-right" onPress={onContinue} />
           </View>
-          <Text className="mt-3 text-center font-sans text-label text-subtle">
+          <Text className="mt-3 text-center font-sans text-label text-paper-muted">
             Hết {minutes} phút là tự vào phần Math.
           </Text>
-        </Card>
+        </PaperCard>
       </View>
-    </Screen>
+    </ExamShell>
   );
 }
 
@@ -434,9 +448,9 @@ function ResultScreen({
   const mathTier = state.math.tier === 'harder' ? 'qua module 2 khó' : 'qua module 2 dễ';
 
   return (
-    <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Kết quả</Text>
-      <Text className="mt-1 font-sans text-body text-muted">
+    <ExamShell>
+      <Text className="font-heavy text-pageTitle text-white">Kết quả</Text>
+      <Text className="mt-1 font-sans text-body text-white/70">
         {FULL_TEST_QUESTIONS} câu · {FULL_TEST_TESTING_MINUTES} phút làm bài
       </Text>
 
@@ -447,8 +461,13 @@ function ResultScreen({
         phải đọc nhãn mới biết cái nào cộng ra cái nào; mà tổng thì lại nằm trong
         một thẻ trắng rộng 1.250px với đúng ba dòng chữ dạt về mép trái.
       */}
+      {/*
+        Phiếu điểm giữ gradient, nhưng là gradient SÁNG hơn nền — không phải
+        `gradient.hero` nữa. Nền trang đã là xanh→chàm→tím; đặt đúng bảng màu ấy
+        lên trên nó thì tấm phiếu chìm hẳn vào nền, không còn là một tấm gì cả.
+      */}
       <LinearGradient
-        colors={[...gradient.hero]}
+        colors={SCORE_GRADIENT}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 1 }}
         style={{ borderRadius: 16, marginTop: 16, padding: 20 }}
@@ -484,10 +503,12 @@ function ResultScreen({
 
       <View className="mt-3">
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
-          <Card>
+          <PaperCard>
             <View className="flex-row items-center gap-2.5">
               <IconCircle name="target" tone="primary" size={34} />
-              <Text className="font-strong text-cardTitle text-ink">Số câu đúng từng module</Text>
+              <Text className="font-strong text-cardTitle text-paper-ink">
+                Số câu đúng từng module
+              </Text>
             </View>
             <View className="mt-2">
               <Line label="Reading and Writing — module 1" icon="book" r={state.rw.module1} />
@@ -495,9 +516,9 @@ function ResultScreen({
               <Line label="Math — module 1" icon="grid" r={state.math.module1} />
               <Line label="Math — module 2" icon="grid" r={state.math.module2} />
             </View>
-          </Card>
+          </PaperCard>
 
-          <Card variant="flat" className="bg-warning-soft border-0">
+          <PaperCard className="bg-warning-soft">
             <View className="flex-row items-center gap-2.5">
               <IconCircle name="info" tone="warning" size={34} />
               <Text className="font-strong text-cardTitle text-warning-ink">
@@ -513,7 +534,7 @@ function ResultScreen({
               Trần điểm phụ thuộc module 2 bạn được đưa vào: Reading and Writing {rwTier}, Math{' '}
               {mathTier}. Đúng như đề thật.
             </Text>
-          </Card>
+          </PaperCard>
         </Grid>
       </View>
 
@@ -524,12 +545,15 @@ function ResultScreen({
       */}
       <View className="mt-5 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
         <Button label="Xem lại từng câu" iconRight="chevron-right" onPress={onReview} />
-        <Button label="Thi lại đề khác" variant="outline" iconLeft="refresh" onPress={onRestart} />
-        <Button variant="ghost" label="Về trang SAT" onPress={() => router.replace('/sat')} />
+        <Button label="Thi lại đề khác" variant="onDark" iconLeft="refresh" onPress={onRestart} />
+        <Button variant="onDark" label="Về trang SAT" onPress={() => router.replace('/sat')} />
       </View>
-    </Screen>
+    </ExamShell>
   );
 }
+
+/** Gradient của phiếu điểm — sáng hơn nền trang một bậy để nổi lên. */
+const SCORE_GRADIENT = ['#3B6DF6', '#4F46E5', '#8B5CF6'] as const;
 
 /**
  * Điểm một phần, đặt cạnh tổng trên nền gradient.
@@ -601,9 +625,12 @@ function Line({
       <View className="flex-row items-baseline justify-between gap-3">
         <View className="min-w-0 flex-1 flex-row items-center gap-2">
           <Icon name={icon} size={15} color={dot} strokeWidth={2} />
-          <Text className="min-w-0 flex-1 font-sans text-body text-body">{label}</Text>
+          <Text className="min-w-0 flex-1 font-sans text-body text-paper-body">{label}</Text>
         </View>
-        <Text className="font-strong text-body text-ink" style={{ fontVariant: ['tabular-nums'] }}>
+        <Text
+          className="font-strong text-body text-paper-ink"
+          style={{ fontVariant: ['tabular-nums'] }}
+        >
           {r ? `${r.correct}/${r.total}` : '—'}
         </Text>
       </View>
@@ -720,14 +747,14 @@ function statusOf(row: ReviewRow): Status {
 function ReviewCard({ row }: { row: ReviewRow }) {
   const st = STATUS[statusOf(row)];
   return (
-    <Card className="overflow-hidden" padded={false}>
-      <View className={`flex-row items-center gap-2.5 px-4 py-2.5 ${st.strip}`}>
+    <PaperCard className="overflow-hidden" padded={false}>
+      <View className={`flex-row items-center gap-2.5 px-5 py-3 ${st.strip}`}>
         <Icon name={st.icon} size={16} color={st.ink} strokeWidth={2.6} />
         <Text className={`font-strong text-cardTitle ${st.text}`}>Câu {row.index + 1}</Text>
         <Text className={`ml-auto font-strong text-label uppercase ${st.text}`}>{st.label}</Text>
       </View>
-      <View className="p-4">{row.node}</View>
-    </Card>
+      <View className="p-5">{row.node}</View>
+    </PaperCard>
   );
 }
 
@@ -784,23 +811,25 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
   const rightHere = rows.filter((r) => r.correct).length;
 
   return (
-    <Screen>
+    <ExamShell>
       <View className="flex-row flex-wrap items-start justify-between gap-3">
         <View className="flex-1 flex-row items-center gap-3" style={{ minWidth: 260 }}>
-          <IconCircle name="clipboard" tone="accent" size={46} />
+          <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/15">
+            <Icon name="clipboard" size={22} color="#FFFFFF" strokeWidth={1.9} />
+          </View>
           <View className="min-w-0 flex-1">
-            <Text className="font-heavy text-pageTitle text-ink">Xem lại bài thi</Text>
-            <Text className="mt-1 font-sans text-body text-muted">
+            <Text className="font-heavy text-pageTitle text-white">Xem lại bài thi</Text>
+            <Text className="mt-1 font-sans text-body text-white/70">
               {all.length - wrongTotal}/{all.length} câu đúng
               {blankTotal > 0 ? ` · ${blankTotal} câu bỏ trống` : ''}
             </Text>
           </View>
         </View>
-        <Button label="Về kết quả" variant="outline" iconLeft="chevron-left" onPress={onBack} />
+        <Button label="Về kết quả" variant="onDark" iconLeft="chevron-left" onPress={onBack} />
       </View>
 
-      <Card className="mt-4" variant="flat">
-        <Text className="font-strong text-label uppercase text-muted">Module</Text>
+      <PaperCard className="mt-4">
+        <Text className="font-strong text-label uppercase text-paper-muted">Module</Text>
         <View className="mt-2 flex-row flex-wrap gap-2">
           {modules.map(({ entry, rows: r }, i) => {
             const wrong = r.filter((x) => !x.correct).length;
@@ -816,7 +845,7 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
           })}
         </View>
 
-        <View className="mt-3 flex-row flex-wrap items-center gap-2 border-t border-border pt-3">
+        <View className="mt-3 flex-row flex-wrap items-center gap-2 border-t border-brand-soft pt-3">
           <Button
             label="Câu chưa đúng"
             variant={filter === 'wrong' ? 'secondary' : 'ghost'}
@@ -838,31 +867,41 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
             ))}
           </View>
         </View>
-      </Card>
+      </PaperCard>
 
       {current ? (
-        <SectionHeader
-          className="mt-6"
-          title={moduleTitle(current.entry)}
-          subtitle={`${rightHere}/${rows.length} câu đúng · đang hiện ${shown.length} câu`}
-          icon={current.entry.kind === 'rw' ? 'book' : 'grid'}
-        />
+        <View className="mt-6 flex-row items-center gap-2.5">
+          <Icon
+            name={current.entry.kind === 'rw' ? 'book' : 'grid'}
+            size={18}
+            color="#FFFFFF"
+            strokeWidth={2}
+          />
+          <View className="min-w-0 flex-1">
+            <Text className="font-strong text-cardTitle text-white">
+              {moduleTitle(current.entry)}
+            </Text>
+            <Text className="font-sans text-label text-white/70">
+              {rightHere}/{rows.length} câu đúng · đang hiện {shown.length} câu
+            </Text>
+          </View>
+        </View>
       ) : null}
 
       {shown.length === 0 ? (
-        <Card className="mt-3 bg-success-soft" variant="flat" style={{ maxWidth: REVIEW_COLUMN }}>
+        <PaperCard className="mt-3 bg-success-soft" style={{ maxWidth: REVIEW_COLUMN }}>
           <View className="flex-row items-center gap-3">
             <IconCircle name="trophy" tone="success" size={44} />
             <View className="min-w-0 flex-1">
               <Text className="font-strong text-cardTitle text-success-ink">
                 Module này không sai câu nào
               </Text>
-              <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 22 }}>
+              <Text className="mt-1 font-sans text-body text-paper-body" style={{ lineHeight: 22 }}>
                 Bấm "Tất cả" nếu muốn soát lại lời giải của cả {rows.length} câu.
               </Text>
             </View>
           </View>
-        </Card>
+        </PaperCard>
       ) : (
         <View className="mt-3 gap-4" style={{ maxWidth: REVIEW_COLUMN }}>
           {shown.map((row) => (
@@ -872,16 +911,17 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
       )}
 
       <View className="mt-6 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
-        <Button label="Về kết quả" variant="outline" iconLeft="chevron-left" onPress={onBack} />
+        <Button label="Về kết quả" variant="onDark" iconLeft="chevron-left" onPress={onBack} />
         {openModule < modules.length - 1 ? (
           <Button
             label={`Sang ${moduleChip(modules[openModule + 1]!.entry)}`}
+            variant="onDarkSolid"
             iconRight="chevron-right"
             onPress={() => setOpenModule(openModule + 1)}
           />
         ) : null}
       </View>
-    </Screen>
+    </ExamShell>
   );
 }
 

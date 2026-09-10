@@ -271,8 +271,15 @@ function ChoiceRow({
       ? 'border-primary-600 bg-primary-50'
       : 'border-border bg-surface';
 
+  /*
+    `accessibilityRole="radio"` chứ không để trống, giống hệt phương án bên phòng
+    thi R&W. Trình đọc màn hình đọc hai phòng thi của CÙNG một bài thi theo hai
+    kiểu khác nhau thì người dùng phải học lại cách nghe giữa lúc đang tính giờ.
+  */
   return (
     <Pressable
+      accessibilityRole="radio"
+      accessibilityState={{ selected, disabled }}
       onPress={disabled ? undefined : onPress}
       className={`flex-row items-center gap-3 rounded-card border p-3 ${tone}`}
     >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, View, type ViewProps } from 'react-native';
 
 import { shadow } from '@/theme/tokens';
 
@@ -17,15 +17,18 @@ export function PaperCard({
   children,
   className = '',
   padded = true,
+  style,
 }: {
   children: React.ReactNode;
   className?: string;
   padded?: boolean;
+  /** Ghi đè sau bóng đổ, giống `Card` — dùng cho bề ngang tối đa, đệm riêng. */
+  style?: ViewProps['style'];
 }) {
   return (
     <View
       className={['rounded-card bg-paper', padded ? 'p-5' : '', className].join(' ')}
-      style={Platform.OS === 'web' ? webShadow : shadow.card}
+      style={[Platform.OS === 'web' ? webShadow : shadow.card, style]}
     >
       {children}
     </View>

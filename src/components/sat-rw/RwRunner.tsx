@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 
-import { Screen } from '@/components/layout/Screen';
 import { CrossFade } from '@/components/motion/Motion';
-import { Badge, Button, Card } from '@/components/ui';
+import { Badge, Button, PaperCard } from '@/components/ui';
+import { ExamShell } from '@/components/sat-rw/ExamShell';
 import { ItemBody } from '@/components/sat-rw/ItemBody';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 
@@ -110,7 +110,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
   };
 
   return (
-    <Screen>
+    <ExamShell>
       {/*
         Trên màn hẹp, tiêu đề và đồng hồ XẾP CHỒNG chứ không đứng cạnh nhau. Xếp
         cạnh thì "Reading and Writing" gãy làm ba dòng và đồng hồ bị ép sát mép —
@@ -121,16 +121,24 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
       {split ? (
         <View className="flex-row items-start justify-between gap-3">
           <View className="flex-1">
-            <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
-            <Text className="mt-1 font-sans text-body text-muted">
+            <Text className="font-heavy text-pageTitle text-white">{title}</Text>
+            <Text className="mt-1 font-sans text-body text-white/70">
               Câu {index + 1} / {items.length}
             </Text>
           </View>
           <View className="items-end">
-            <Text className={`font-heavy text-stat ${lowOnTime ? 'text-danger' : 'text-ink'}`}>
+            {/*
+              Hết giờ đếm đỏ, nhưng là đỏ SÁNG (#FCA5A5) chứ không phải `text-danger`
+              (#F04438): đỏ đậm trên nền chàm tối gần như không đọc được — đúng lúc
+              con số ấy cần đập vào mắt nhất.
+            */}
+            <Text
+              className="font-heavy text-stat"
+              style={{ color: lowOnTime ? '#FCA5A5' : '#FFFFFF' }}
+            >
               {formatClock(remainingMs)}
             </Text>
-            <Text className="font-sans text-label text-muted">
+            <Text className="font-sans text-label text-white/70">
               {phaseLabel ? `${phaseLabel} · ` : ''}
               đã trả lời {answered}/{items.length}
             </Text>
@@ -138,19 +146,22 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
         </View>
       ) : (
         <View>
-          <Text className="font-heavy text-sectionTitle text-ink">{title}</Text>
+          <Text className="font-heavy text-sectionTitle text-white">{title}</Text>
           <View className="mt-1 flex-row items-baseline justify-between gap-3">
-            <Text className="flex-1 font-sans text-body text-muted">
+            <Text className="flex-1 font-sans text-body text-white/70">
               Câu {index + 1} / {items.length} · đã trả lời {answered}
             </Text>
-            <Text className={`font-heavy text-stat ${lowOnTime ? 'text-danger' : 'text-ink'}`}>
+            <Text
+              className="font-heavy text-stat"
+              style={{ color: lowOnTime ? '#FCA5A5' : '#FFFFFF' }}
+            >
               {formatClock(remainingMs)}
             </Text>
           </View>
         </View>
       )}
 
-      <Card className="mt-4">
+      <PaperCard className="mt-4">
         {/*
           Hiện dần tại chỗ mỗi khi đổi câu — cùng lý do đã ghi ở `MathRunner`:
           khung đứng im thì rất dễ tưởng chưa bấm được. Không dịch chuyển, vì
@@ -163,10 +174,10 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
             </View>
 
             {/* Vạch ngăn chỉ có khi chia đôi; xếp một cột thì nó là một gạch ngang vô nghĩa. */}
-            {split ? <View className="w-px self-stretch bg-borderStrong" /> : null}
+            {split ? <View className="w-px self-stretch bg-brand-soft" /> : null}
 
             <View className={split ? 'flex-1' : 'mt-5'}>
-              <Text className="font-strong text-cardTitle text-ink" style={{ lineHeight: 25 }}>
+              <Text className="font-strong text-cardTitle text-paper-ink" style={{ lineHeight: 25 }}>
                 {item.stem}
               </Text>
 
@@ -180,24 +191,24 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
                       accessibilityState={{ selected: picked }}
                       onPress={() => choose(i)}
                       className={`flex-row items-start gap-3 rounded-panel border px-3.5 py-3 ${
-                        picked ? 'border-primary-600 bg-primary-50' : 'border-border bg-surface'
+                        picked ? 'border-brand-mid bg-brand-tint' : 'border-brand-soft bg-paper'
                       }`}
                     >
                       <View
                         className={`h-6 w-6 items-center justify-center rounded-pill border ${
-                          picked
-                            ? 'border-primary-600 bg-primary-600'
-                            : 'border-borderStrong bg-surface'
+                          picked ? 'border-brand-mid bg-brand-mid' : 'border-brand-soft bg-paper'
                         }`}
                       >
                         <Text
-                          className={`font-strong text-label ${picked ? 'text-white' : 'text-muted'}`}
+                          className={`font-strong text-label ${
+                            picked ? 'text-white' : 'text-paper-muted'
+                          }`}
                         >
                           {'ABCD'[i]}
                         </Text>
                       </View>
                       <Text
-                        className="flex-1 font-sans text-body text-ink"
+                        className="flex-1 font-sans text-body text-paper-ink"
                         style={{ lineHeight: 23 }}
                       >
                         {option}
@@ -208,7 +219,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
               </View>
 
               {/* Nút đánh dấu ở CUỐI CỘT CÂU HỎI, không phải cuối thẻ: nó đánh dấu câu hỏi. */}
-              <View className="mt-4 border-t border-border pt-3">
+              <View className="mt-4 border-t border-brand-soft pt-3">
                 <Button
                   label={isFlagged ? 'Bỏ đánh dấu câu này' : 'Đánh dấu để xem lại'}
                   variant={isFlagged ? 'secondary' : 'ghost'}
@@ -219,7 +230,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
             </View>
           </View>
         </CrossFade>
-      </Card>
+      </PaperCard>
 
       <View className="mt-4 flex-row flex-wrap items-center justify-between gap-3">
         <View className="flex-row gap-2">
@@ -241,8 +252,8 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
         <Button label="Nộp module" iconRight="check" onPress={submit} />
       </View>
 
-      <Card className="mt-4" variant="flat">
-        <Text className="font-strong text-label text-muted">Bảng câu hỏi</Text>
+      <PaperCard className="mt-4">
+        <Text className="font-strong text-label text-paper-muted">Bảng câu hỏi</Text>
         <View className="mt-2 flex-row flex-wrap gap-2">
           {items.map((_, i) => {
             const active = i === index;
@@ -256,17 +267,23 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
                 onPress={() => setIndex(i)}
                 className={`h-9 w-9 items-center justify-center rounded-pill border ${
                   active
-                    ? 'border-primary-600 bg-primary-600'
+                    ? 'border-brand-mid bg-brand-mid'
                     : flag
                       ? 'border-warning bg-warning-soft'
                       : done
-                        ? 'border-primary-200 bg-primary-50'
-                        : 'border-border bg-surface'
+                        ? 'border-brand-soft bg-brand-tint'
+                        : 'border-brand-soft bg-paper'
                 }`}
               >
                 <Text
                   className={`font-strong text-label ${
-                    active ? 'text-white' : flag ? 'text-warning-ink' : done ? 'text-primary-700' : 'text-muted'
+                    active
+                      ? 'text-white'
+                      : flag
+                        ? 'text-warning-ink'
+                        : done
+                          ? 'text-brand'
+                          : 'text-paper-muted'
                   }`}
                 >
                   {i + 1}
@@ -281,7 +298,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
           <Badge label="Đã đánh dấu" tone="warning" shape="tag" />
           <Badge label="Chưa trả lời" tone="neutral" shape="tag" />
         </View>
-      </Card>
-    </Screen>
+      </PaperCard>
+    </ExamShell>
   );
 }
