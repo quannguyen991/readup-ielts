@@ -23,7 +23,7 @@ export function ItemBody({ item }: { item: MockItem }) {
 }
 
 /** Danh sách ghi chú của câu Rhetorical Synthesis. */
-function NotesList({ notes }: { notes: readonly string[] }) {
+export function NotesList({ notes }: { notes: readonly string[] }) {
   return (
     <View className="mt-3 rounded-panel border border-brand-soft bg-brand-tint px-3.5 py-3">
       {notes.map((n) => (
@@ -44,7 +44,7 @@ function NotesList({ notes }: { notes: readonly string[] }) {
  * Cột số căn PHẢI, cột tên căn trái: mắt so hàng số bằng cách đọc dọc, mà số căn
  * trái thì hàng đơn vị không thẳng nhau nên phải đọc từng con một.
  */
-function EvidenceTable({ table }: { table: NonNullable<MockItem['table']> }) {
+export function EvidenceTable({ table }: { table: NonNullable<MockItem['table']> }) {
   return (
     <View className="mt-3">
       <Text className="font-semi text-label text-paper-muted">{table.caption}</Text>

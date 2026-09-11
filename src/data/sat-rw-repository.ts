@@ -1,4 +1,5 @@
 import seed from './seed/sat-rw/index.json';
+import type { MockItem } from '@/services/sat-rw/mock/item';
 
 /**
  * Kho câu hỏi SAT Reading & Writing.
@@ -42,6 +43,16 @@ export type SatRwQuestion = {
    * vào, và `passage.test.ts` canh cho không câu nào mất dấu hay thừa dấu.
    */
   underline?: string;
+  /**
+   * Bảng số và danh sách ghi chú — CHỈ câu sinh từ bộ sinh mới có.
+   *
+   * Kho soạn tay không có câu nào dùng tới hai trường này, nhưng bộ sinh
+   * Command of Evidence và Rhetorical Synthesis thì có, và nếu kiểu dữ liệu
+   * không chỗ chứa chúng thì `QuestionCard` in ra một câu hỏi "dùng số liệu
+   * trong bảng" mà không có bảng nào.
+   */
+  table?: MockItem['table'];
+  notes?: readonly string[];
   stem: string;
   options: string[];
   answerIndex: number;

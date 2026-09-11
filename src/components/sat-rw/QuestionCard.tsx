@@ -1,6 +1,7 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { EvidenceTable, NotesList } from '@/components/sat-rw/ItemBody';
 import { PassageText } from '@/components/sat-rw/PassageText';
 import { Icon, PaperCard } from '@/components/ui';
 import type { SatRwQuestion } from '@/data/sat-rw-repository';
@@ -42,6 +43,15 @@ export function QuestionCard({
   return (
     <PaperCard>
       <PassageText passage={question.passage} underline={question.underline} tone="paper" />
+      {/*
+        Ghi chú và bảng số CHỈ câu sinh mới có, nhưng phải vẽ ở đây chứ không
+        chỉ ở phòng thi: bộ "Sinh mới" của lộ trình đi qua đúng thẻ này, và một
+        câu hỏi "dùng số liệu trong bảng" mà không có bảng thì không trả lời
+        được. Dùng lại đúng hai component của `ItemBody` nên hai nơi vẽ bảng
+        giống hệt nhau.
+      */}
+      {question.notes ? <NotesList notes={question.notes} /> : null}
+      {question.table ? <EvidenceTable table={question.table} /> : null}
 
       <Text className="mt-4 font-strong text-body text-paper-ink">{question.stem}</Text>
 

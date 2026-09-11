@@ -4,20 +4,17 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import {
+  SAT_RW_STAGES,
+  type SatRwCurriculumUnit,
+} from '@/services/sat-rw/curriculum';
+import {
   QUESTIONS_PER_SET,
   SAT_RW_MIXED_SETS,
   mixedSetStats,
 } from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Icon } from '@/components/ui';
-import {
-  SAT_RW_DOMAINS,
-  SAT_RW_SKILL_LABEL,
-  questionsForUnit,
-  satRwStats,
-  unitsByDomain,
-  type SatRwUnit,
-} from '@/data/sat-rw-repository';
+import { Badge, Card, Icon, IconCircle } from '@/components/ui';
+import { satRwStats } from '@/data/sat-rw-repository';
 import { color } from '@/theme/tokens';
 
 /**
@@ -97,84 +94,112 @@ export default function SatRwHubScreen() {
         </View>
       </View>
 
-      {SAT_RW_DOMAINS.map((domain) => {
-        const units = unitsByDomain(domain.key);
-        const count = stats.byDomain[domain.key] ?? 0;
-        if (units.length === 0) return null;
+      {/*
+        BỐN CHẶNG THEO THỨ TỰ NÊN HỌC, không phải bốn domain xếp cạnh nhau.
 
-        return (
-          <View key={domain.key} className="mt-6">
-            <View className="flex-row flex-wrap items-center gap-2">
-              <Text className="font-heavy text-sectionTitle text-ink">{domain.key}</Text>
-              <Badge label={`${domain.percent} đề thật`} tone="primary" />
-              <Text className="font-sans text-label text-muted">
-                {domain.labelVi} · {count} câu trong kho
-              </Text>
-            </View>
-
-            <View className="mt-3">
-              <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={12}>
-                {units.map((unit) => (
-                  <UnitCard key={unit.unit} unit={unit} />
-                ))}
-              </Grid>
-            </View>
+        Bản trước liệt kê bốn domain, mỗi domain một lưới unit — đúng về phân loại
+        nhưng không trả lời câu hỏi người học thực sự hỏi khi mở trang: "bắt đầu từ
+        đâu". Mười sáu ô ngang hàng nhau thì ai cũng bấm vào ô đầu tiên, mà ô đầu tiên
+        tuỳ thứ tự domain chứ không tuỳ độ khó.
+      */}
+      {SAT_RW_STAGES.map((stage, stageIndex) => (
+        <View key={stage.id} className="mt-8">
+          <View className="flex-row flex-wrap items-center gap-2">
+            <Text className="font-heavy text-sectionTitle text-ink">{stage.title}</Text>
+            <Badge label={`${stage.units.length} bài`} tone="primary" />
           </View>
-        );
-      })}
+          <Text
+            className="mt-1 max-w-[760px] font-sans text-body text-muted"
+            style={{ lineHeight: 22 }}
+          >
+            {stage.blurb}
+          </Text>
+
+          <View className="mt-3 gap-3">
+            {stage.units.map((unit) => (
+              <CurriculumUnitCard key={unit.number} unit={unit} stageIndex={stageIndex} />
+            ))}
+          </View>
+        </View>
+      ))}
     </Screen>
   );
 }
 
-function UnitCard({ unit }: { unit: SatRwUnit }) {
-  const skills = useMemo(() => {
-    const seen = new Set(questionsForUnit(unit.unit).map((q) => q.skill));
-    return [...seen];
-  }, [unit.unit]);
+/**
+ * Một bài học trong lộ trình: bẫy trung tâm ở trên, ba bốn bộ đề ở dưới.
+ *
+ * BẪY ĐỨNG TRƯỚC CÁC BỘ ĐỀ, không đứng sau. Nó là thứ quyết định người học canh
+ * cái gì khi làm câu đầu tiên; để nó xuống dưới nút bấm thì không ai đọc.
+ */
+function CurriculumUnitCard({
+  unit,
+  stageIndex,
+}: {
+  unit: SatRwCurriculumUnit;
+  stageIndex: number;
+}) {
+  const tone = STAGE_TONES[stageIndex % STAGE_TONES.length]!;
 
   return (
-    <Pressable
-      accessibilityRole="button"
-      onPress={() => router.push(`/sat-rw/${unit.unit}` as never)}
-      className="h-full rounded-card border border-border bg-surface p-4"
-      style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
-    >
+    <Card>
       <View className="flex-row items-start gap-3">
-        <View className="h-10 w-10 items-center justify-center rounded-panel bg-primary-50">
-          <Text className="font-heavy text-body text-primary-700">{unit.unit}</Text>
-        </View>
+        <IconCircle name="book" tone={tone} size={40} />
         <View className="min-w-0 flex-1">
-          <Text className="font-strong text-cardTitle text-ink">{unit.title}</Text>
-          <View className="mt-1.5 flex-row flex-wrap items-center gap-1.5">
-            {skills.map((skill) => (
-              <Text
-                key={skill}
-                className="font-semi uppercase tracking-wide text-subtle"
-                style={{ fontSize: 9 }}
+          <View className="flex-row flex-wrap items-center gap-2">
+            <Text className="font-strong text-cardTitle text-ink">
+              Bài {unit.number} · {unit.title}
+            </Text>
+            <Badge label={`${unit.questionCount} câu`} tone="neutral" shape="tag" />
+          </View>
+          <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+            {unit.trap}
+          </Text>
+
+          <View className="mt-3 flex-row flex-wrap gap-2">
+            {unit.sets.map((set) => (
+              <Pressable
+                key={set.id}
+                accessibilityRole="button"
+                accessibilityLabel={`${set.title} — ${set.count} câu`}
+                onPress={() => router.push(`/sat-rw/set/${set.id}` as never)}
+                className={`rounded-panel border px-3 py-2 ${
+                  set.kind === 'checkpoint'
+                    ? 'border-success bg-success-soft'
+                    : set.kind === 'generated'
+                      ? 'border-accent-200 bg-accent-50'
+                      : 'border-border bg-surfaceAlt'
+                }`}
+                style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
               >
-                {SAT_RW_SKILL_LABEL[skill] ?? skill}
-              </Text>
+                <Text className="font-strong text-label text-ink">{set.title}</Text>
+                <Text className="mt-0.5 font-sans text-label text-muted">
+                  {set.count} câu · {set.minutes} phút
+                  {set.instantSolution ? '' : ' · không lời giải'}
+                </Text>
+              </Pressable>
             ))}
           </View>
+
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => router.push(`/sat-rw/${unit.number}` as never)}
+            className="mt-3 flex-row items-center gap-1.5 self-start"
+          >
+            <Text className="font-strong text-label text-primary-700">
+              Hoặc làm trọn {unit.questionCount} câu một lượt
+            </Text>
+            <Icon name="chevron-right" size={14} color={color.primary} strokeWidth={2.2} />
+          </Pressable>
         </View>
       </View>
-
-      {unit.ruleVi ? (
-        <Text className="mt-3 font-sans text-label text-muted" numberOfLines={3}>
-          {unit.ruleVi}
-        </Text>
-      ) : null}
-
-      <View className="mt-3 flex-row items-center justify-between border-t border-border pt-2.5">
-        <Text className="font-mid text-label text-muted">{unit.count} câu</Text>
-        <View className="flex-row items-center gap-1.5">
-          <Text className="font-strong text-label text-primary-700">Luyện unit này</Text>
-          <Icon name="arrow-right" size={15} color={color.primary} strokeWidth={2} />
-        </View>
-      </View>
-    </Pressable>
+    </Card>
   );
 }
+
+/** Mỗi chặng một tông icon — cuộn dọc trang thì màu báo đã sang chặng khác. */
+const STAGE_TONES = ['primary', 'info', 'accent', 'warning'] as const;
+
 
 function StatTile({
   icon,
