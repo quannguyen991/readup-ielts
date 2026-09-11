@@ -68,6 +68,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
       { key: 'bilingual', label: 'Đọc song ngữ', href: '/bilingual', icon: 'languages' },
       { key: 'vocabulary', label: 'Sổ từ', shortLabel: 'Sổ từ', href: '/vocabulary', icon: 'letters', inBottomTabs: true },
+      { key: 'vocab-practice', label: 'Luyện từ vựng', href: '/vocabulary/practice', icon: 'refresh' },
       { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
       { key: 'notes', label: 'Ghi chú', href: '/notes', icon: 'note' },
       { key: 'bookmarks', label: 'Đã lưu', href: '/bookmarks', icon: 'bookmark' },

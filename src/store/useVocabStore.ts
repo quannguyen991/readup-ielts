@@ -196,10 +196,23 @@ export const useVocabStore = create<VocabState>()(
 
       gradeCard: (vocabId, kind, rating, durationMs = 0) => {
         const key = cardKey(vocabId, kind);
-        const stored = get().cards[key];
-        if (!stored) return;
-
         const now = new Date();
+
+        /*
+          THIẾU THẺ THÌ TẠO, KHÔNG IM LẶNG BỎ QUA.
+
+          Bản trước `return` ngay khi không tìm thấy thẻ. Nó đúng theo nghĩa
+          "không làm hỏng gì", nhưng hỏng theo nghĩa quan trọng hơn: màn ôn vẫn
+          chạy tiếp, người học vẫn thấy mình vừa ôn xong mười hai từ, mà lịch
+          FSRS đứng nguyên — hôm sau mở ra vẫn đúng ngần ấy từ đến hạn, và
+          không có gì trên màn hình nói vì sao.
+
+          Thiếu thẻ là chuyện có thật, không phải giả định: từ đồng bộ từ máy
+          khác hoặc lưu bằng bản app cũ có thể chưa đủ bốn loại, và ngày nào
+          thêm một loại thẻ mới thì MỌI từ cũ đều thiếu nó. Tạo thẻ rỗng rồi
+          chấm luôn cho lượt này là đúng việc người học vừa làm.
+        */
+        const stored = get().cards[key] ?? toStored(createEmptyCard(now));
         const result = scheduler.next(fromStored(stored), now, rating as Grade);
         const nextCard = toStored(result.card);
 
