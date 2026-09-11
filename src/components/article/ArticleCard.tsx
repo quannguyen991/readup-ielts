@@ -5,8 +5,9 @@ import { router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 
 import { Badge, Icon, IconButton, ProgressBar } from '@/components/ui';
-import { isReadable, readingLevelLabel, topicLabel, type ArticleMeta } from '@/data/articles';
-import { assetKeys, useAssetUrl } from '@/services/assets/useAssets';
+import { ARTICLES, isReadable, readingLevelLabel, topicLabel, type ArticleMeta } from '@/data/articles';
+import { buildPhotoOwners, coverSource, generatedCover } from '@/services/articles/cover';
+import { GeneratedCoverArt } from './GeneratedCoverArt';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 
@@ -177,23 +178,37 @@ export function ArticleCard({
   );
 }
 
+/*
+  Chủ của từng tấm ảnh, tính MỘT LẦN cho cả kho rồi mọi thẻ chỉ tra.
+
+  Tính theo thứ tự KHO, không theo thứ tự đang hiện: lọc hay sắp xếp lại lưới thì
+  chủ của tấm ảnh không được đổi, không thì cùng một bài lúc có ảnh lúc không.
+*/
+let owners: Map<string, string> | null = null;
+function photoOwners(): Map<string, string> {
+  if (!owners) owners = buildPhotoOwners(ARTICLES);
+  return owners;
+}
+
 /**
  * Ảnh bìa tràn ngang của thẻ `cover`.
  *
- * Có `onError` chứ không chỉ kiểm tra "có URL hay không": một URL tồn tại vẫn
- * có thể trả 404 (ảnh chủ đề chưa sinh, kho ảnh chưa cấu hình), và khi đó
- * `Image` để lại một ô trắng cao bằng cả tấm ảnh — trông như thẻ bị hỏng. Bắt
- * lỗi tải rồi rơi về khối màu thì thẻ luôn có hình khối tử tế.
+ * ẢNH THẬT CHỈ KHI NÓ LÀ CỦA RIÊNG BÀI NÀY. Bản trước lấy `thumbnailUrl ?? ảnh chủ
+ * đề`, mà cả kho chỉ có 10 ảnh chủ đề cho 1.055 bài không ảnh — màn đầu thư viện
+ * có một tấm lặp năm lần. Giờ bài không có ảnh riêng, hoặc ảnh của nó đã thuộc
+ * bài khác, thì được một bìa vẽ riêng — xem `services/articles/cover.ts`.
+ *
+ * `onError` vẫn giữ: ảnh có URL vẫn có thể trả 404, và khi đó rơi về bìa vẽ của
+ * chính bài ấy chứ không phải một ô trống hay một icon chung cho mọi thẻ.
  */
 function CoverImage({ article }: { article: ArticleMeta }) {
-  const topicUrl = useAssetUrl(assetKeys.topicThumbnail(article.topic ?? ''));
   const [failed, setFailed] = React.useState(false);
-  const uri = article.thumbnailUrl ?? topicUrl;
+  const src = coverSource(article, photoOwners());
 
-  if (uri && !failed) {
+  if (src.kind === 'photo' && !failed) {
     return (
       <Image
-        source={{ uri }}
+        source={{ uri: src.uri }}
         style={{ width: '100%', aspectRatio: 16 / 10, backgroundColor: color.primarySoft }}
         contentFit="cover"
         transition={150}
@@ -204,49 +219,44 @@ function CoverImage({ article }: { article: ArticleMeta }) {
   }
 
   return (
-    <View
-      className="items-center justify-center bg-primary-50"
-      style={{ width: '100%', aspectRatio: 16 / 10 }}
-    >
-      <Icon name="book" size={30} color={color.primary} />
-    </View>
+    <GeneratedCoverArt
+      cover={src.kind === 'generated' ? src : generatedCover(article)}
+      aspect="wide"
+    />
   );
 }
 
 function Thumbnail({ article, size }: { article: ArticleMeta; size: number }) {
   /*
-    Ba mức, xuống dần: ảnh riêng của bài → ảnh chung theo chủ đề → khối màu.
+    Cùng luật với ảnh bìa ngang, và cùng một bìa vẽ cho cùng một bài — một bài hiện ở
+    thư viện (thẻ ngang) và ở Tổng quan (ô vuông) phải nhận ra được là một bài.
 
-    Mức giữa là mức quan trọng nhất. Kho có 1409 bài mà sinh ảnh riêng cho từng
-    bài thì mất khoảng 18 tiếng gọi API và tốn tiền cho những tấm gần như không
-    ai nhìn kỹ. Mười ảnh theo mười chủ đề phủ được toàn bộ kho, và trong một
-    lưới thẻ thì "bài này thuộc mảng môi trường" là đúng thứ ảnh cần nói.
-
-    Khối màu vẫn giữ làm mức cuối: ảnh chưa sinh xong, mạng hỏng, hay chủ đề lạ
-    thì thẻ vẫn có hình khối tử tế chứ không thủng một lỗ.
+    Bản trước ô vuông không có `onError`: ảnh 404 là để lại một ô trắng. Giờ rơi về
+    bìa vẽ như thẻ ngang.
   */
-  const topicUrl = useAssetUrl(assetKeys.topicThumbnail(article.topic ?? ''));
-  const uri = article.thumbnailUrl ?? topicUrl;
+  const [failed, setFailed] = React.useState(false);
+  const src = coverSource(article, photoOwners());
 
-  if (uri) {
+  if (src.kind === 'photo' && !failed) {
     return (
       <Image
-        source={{ uri }}
+        source={{ uri: src.uri }}
         style={{ width: size, height: size, borderRadius: 12 }}
         contentFit="cover"
         transition={150}
         cachePolicy="memory-disk"
+        onError={() => setFailed(true)}
       />
     );
   }
 
   return (
-    <View
-      className="items-center justify-center rounded-panel bg-primary-50"
-      style={{ width: size, height: size }}
-    >
-      <Icon name="book" size={size * 0.34} color={color.primary} />
-    </View>
+    <GeneratedCoverArt
+      cover={src.kind === 'generated' ? src : generatedCover(article)}
+      aspect="square"
+      size={size}
+      radius={12}
+    />
   );
 }
 
