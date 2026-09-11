@@ -3,9 +3,16 @@ import { useMemo } from 'react';
 import { useNow } from '@/lib/clock';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { createEmptyCard, fsrs, generatorParameters, Rating, State, type Card, type Grade } from 'ts-fsrs';
-
 import { STORAGE_PREFIX, storage, uid } from './persist';
+import {
+  CARD_KINDS,
+  applyGrade,
+  cardKey,
+  emptyCard,
+  isDue,
+  type CardKind,
+  type StoredCard,
+} from '@/services/vocab/schedule';
 import type { WordStatusKind } from '@/types/database';
 
 /**
@@ -34,20 +41,12 @@ export type VocabEntry = {
   createdAt: string;
 };
 
-/** Thẻ FSRS được serialize sang JSON (Date → ISO string). */
-export type StoredCard = Omit<Card, 'due' | 'last_review'> & {
-  due: string;
-  last_review: string | null;
-};
-
-export type CardKind = 'word_to_meaning' | 'meaning_to_word' | 'cloze' | 'multiple_choice';
-
-export const CARD_KINDS: CardKind[] = [
-  'word_to_meaning',
-  'meaning_to_word',
-  'cloze',
-  'multiple_choice',
-];
+/*
+  Kiểu thẻ và luật xếp lịch nằm ở `services/vocab/schedule.ts` — module thuần,
+  không chạm tới `react-native` nên test được bằng bộ test của Node. Xuất lại ở
+  đây để mọi nơi đang nhập từ store không phải đổi đường nhập.
+*/
+export { CARD_KINDS, type CardKind, type StoredCard };
 
 export type ReviewLogEntry = {
   id: string;
@@ -77,38 +76,6 @@ type VocabState = {
   statusOf: (lemma: string) => WordStatusKind;
 };
 
-const scheduler = fsrs(generatorParameters({ enable_fuzz: true, enable_short_term: true }));
-
-const cardKey = (vocabId: string, kind: CardKind) => `${vocabId}:${kind}`;
-
-function toStored(card: Card): StoredCard {
-  return {
-    ...card,
-    due: card.due.toISOString(),
-    last_review: card.last_review ? card.last_review.toISOString() : null,
-  };
-}
-
-function fromStored(card: StoredCard): Card {
-  return {
-    ...card,
-    due: new Date(card.due),
-    ...(card.last_review ? { last_review: new Date(card.last_review) } : {}),
-  } as Card;
-}
-
-/** Mastery quy từ trạng thái + độ ổn định của thẻ, để hiện thanh % trong UI. */
-function masteryFromCards(cards: StoredCard[]): number {
-  if (cards.length === 0) return 0;
-
-  const score = cards.reduce((sum, card) => {
-    const base = card.state === State.Review ? 55 : card.state === State.Learning ? 25 : 5;
-    const stabilityBonus = Math.min(45, Math.log2(1 + card.stability) * 12);
-    return sum + base + stabilityBonus;
-  }, 0);
-
-  return Math.round(Math.min(100, score / cards.length));
-}
 
 export const useVocabStore = create<VocabState>()(
   persist(
@@ -135,7 +102,7 @@ export const useVocabStore = create<VocabState>()(
         const now = new Date();
         const newCards: Record<string, StoredCard> = {};
         for (const kind of CARD_KINDS) {
-          newCards[cardKey(id, kind)] = toStored(createEmptyCard(now));
+          newCards[cardKey(id, kind)] = emptyCard(now);
         }
 
         set((state) => ({
@@ -195,42 +162,28 @@ export const useVocabStore = create<VocabState>()(
         }),
 
       gradeCard: (vocabId, kind, rating, durationMs = 0) => {
-        const key = cardKey(vocabId, kind);
-        const now = new Date();
-
         /*
-          THIẾU THẺ THÌ TẠO, KHÔNG IM LẶNG BỎ QUA.
+          LUẬT XẾP LỊCH NẰM Ở `services/vocab/schedule.ts`, không nằm ở đây.
 
-          Bản trước `return` ngay khi không tìm thấy thẻ. Nó đúng theo nghĩa
-          "không làm hỏng gì", nhưng hỏng theo nghĩa quan trọng hơn: màn ôn vẫn
-          chạy tiếp, người học vẫn thấy mình vừa ôn xong mười hai từ, mà lịch
-          FSRS đứng nguyên — hôm sau mở ra vẫn đúng ngần ấy từ đến hạn, và
-          không có gì trên màn hình nói vì sao.
+          Store thì kéo theo `persist` → `AsyncStorage` → `react-native`, mà bộ
+          test của Node không dịch nổi `react-native/index.js` — nên mọi thứ
+          viết trong store đều không test được. Đó chính là lý do `gradeCard`
+          từng âm thầm bỏ qua khi thiếu thẻ mà không ai phát hiện.
 
-          Thiếu thẻ là chuyện có thật, không phải giả định: từ đồng bộ từ máy
-          khác hoặc lưu bằng bản app cũ có thể chưa đủ bốn loại, và ngày nào
-          thêm một loại thẻ mới thì MỌI từ cũ đều thiếu nó. Tạo thẻ rỗng rồi
-          chấm luôn cho lượt này là đúng việc người học vừa làm.
+          Giờ chỗ này chỉ còn việc gắn kết quả vào state; phần quyết định ngày
+          ôn lại có test canh.
         */
-        const stored = get().cards[key] ?? toStored(createEmptyCard(now));
-        const result = scheduler.next(fromStored(stored), now, rating as Grade);
-        const nextCard = toStored(result.card);
+        const now = new Date();
+        const outcome = applyGrade(get().cards, vocabId, kind, rating, now);
 
         set((state) => {
-          const cards = { ...state.cards, [key]: nextCard };
+          const cards = { ...state.cards, [outcome.key]: outcome.card };
           const entry = state.entries[vocabId];
 
           const entries = entry
             ? {
                 ...state.entries,
-                [vocabId]: {
-                  ...entry,
-                  masteryPercent: masteryFromCards(
-                    CARD_KINDS.map((k) => cards[cardKey(vocabId, k)]).filter(
-                      (c): c is StoredCard => Boolean(c),
-                    ),
-                  ),
-                },
+                [vocabId]: { ...entry, masteryPercent: outcome.masteryPercent },
               }
             : state.entries;
 
@@ -239,7 +192,7 @@ export const useVocabStore = create<VocabState>()(
             ? {
                 ...state.wordStatus,
                 [lemma]: {
-                  status: nextStatus(rating, nextCard),
+                  status: outcome.status,
                   timesSeen: (state.wordStatus[lemma]?.timesSeen ?? 0) + 1,
                   lastSeenAt: now.toISOString(),
                 },
@@ -276,7 +229,7 @@ export const useVocabStore = create<VocabState>()(
         for (const entry of Object.values(entries)) {
           for (const kind of CARD_KINDS) {
             const card = cards[cardKey(entry.id, kind)];
-            if (card && new Date(card.due).getTime() <= now.getTime()) {
+            if (card && isDue(card, now)) {
               due.push({ entry, kind, card });
             }
           }
@@ -322,9 +275,3 @@ export function useDueCards(): Array<{ entry: VocabEntry; kind: CardKind; card: 
   }, [entries, cards]);
 }
 
-function nextStatus(rating: 1 | 2 | 3 | 4, card: StoredCard): WordStatusKind {
-  if (rating === Rating.Again) return 'learning';
-  if (card.state === State.Review && card.stability > 21) return 'known';
-  if (card.state === State.Review) return 'familiar';
-  return 'learning';
-}
