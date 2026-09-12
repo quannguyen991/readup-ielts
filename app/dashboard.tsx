@@ -27,6 +27,65 @@ import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useLatestDiagnostic, useMathPriority, useMathTotals } from '@/store/useMathStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useDueCards } from '@/store/useVocabStore';
+import { PLAN_TOTAL_WEEKS, stageOf, todaySlots, weekNumber } from '@/services/plan/roadmap';
+
+/**
+ * "Hôm nay học gì" — ba khối của lộ trình 60 tuần, ngay trên Tổng quan.
+ *
+ * Lộ trình vốn nằm ở trang riêng, và ở một file HTML ngoài app trước đó. Mở app
+ * lên mà không thấy nó thì người học vẫn phải tự nhớ hôm nay tới đâu — đúng thứ
+ * lộ trình sinh ra để khỏi phải nhớ.
+ *
+ * Chỉ hiện khi lộ trình ĐANG CHẠY (tuần 1–60). Trước ngày bắt đầu hoặc sau khi
+ * kết thúc thì không có việc nào để nhắc, và một thẻ rỗng chỉ tổ chiếm chỗ.
+ */
+function TodayPlan() {
+  const today = useMemo(() => new Date(), []);
+  const week = weekNumber(today);
+  const stage = stageOf(week);
+  const slots = todaySlots(today, week);
+
+  if (week < 1 || week > PLAN_TOTAL_WEEKS || slots.length === 0) return null;
+
+  return (
+    <Card className="mt-4 lg:mt-6">
+      <SectionHeader
+        title="Hôm nay học gì"
+        subtitle={`Tuần ${week}/${PLAN_TOTAL_WEEKS}${stage ? ` · chặng ${stage.id} — ${stage.name}` : ''}`}
+        icon="calendar"
+        action={{ label: 'Xem lộ trình', onPress: () => router.push('/plan' as never) }}
+      />
+      <View className="mt-3 gap-2">
+        {slots.map((slot) => (
+          <View
+            key={slot.id}
+            className="flex-row flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surfaceAlt px-3 py-2.5"
+          >
+            <View className="min-w-0 flex-1" style={{ minWidth: 180 }}>
+              <Text className="font-mid text-label text-muted">{slot.when}</Text>
+              <Text className="mt-0.5 font-strong text-body text-ink">{slot.title}</Text>
+              {slot.detail ? (
+                <Text className="mt-0.5 font-sans text-label text-muted" numberOfLines={2}>
+                  {slot.detail}
+                </Text>
+              ) : null}
+            </View>
+            {slot.href ? (
+              <Button
+                label="Vào học"
+                size="sm"
+                iconRight="arrow-right"
+                onPress={() => router.push(slot.href as never)}
+              />
+            ) : (
+              <Text className="font-mid text-label text-subtle">Học trong sách</Text>
+            )}
+          </View>
+        ))}
+      </View>
+    </Card>
+  );
+}
 
 export default function DashboardScreen() {
   const dailyGoal = useStudyStore((s) => s.dailyGoalMinutes);
@@ -117,6 +176,8 @@ export default function DashboardScreen() {
           <Icon name="arrow-right" size={14} color="#FFFFFF" />
         </Pressable>
       </HeroBanner>
+
+      <TodayPlan />
 
       <View className="mt-4 lg:mt-6">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
