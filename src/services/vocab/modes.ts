@@ -23,6 +23,7 @@ import type { VocabEntry } from '@/store/useVocabStore';
 export type VocabModeId =
   | 'flashcard'
   | 'context'
+  | 'context_choice'
   | 'multiple_choice'
   | 'translate_sentence'
   | 'translate_paragraph'
@@ -105,6 +106,15 @@ export const VOCAB_MODES: VocabMode[] = [
       'Câu gốc nơi bạn gặp từ, khoét đúng chỗ từ đó. Đoán nghĩa từ câu trước, rồi mới xem đáp án.',
     icon: 'book',
     grading: 'self',
+    requires: (e) => clozeableSentence(e) !== null,
+  },
+  {
+    id: 'context_choice',
+    label: 'Điền từ vào chỗ trống',
+    blurb:
+      'Câu gốc khoét mất một từ, bốn từ để chọn. Ba từ nhiễu lấy từ chính sổ của bạn và không có sẵn trong câu, nên phải hiểu câu mới chọn đúng.',
+    icon: 'clipboard',
+    grading: 'auto',
     requires: (e) => clozeableSentence(e) !== null,
   },
   {

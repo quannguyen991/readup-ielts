@@ -7,6 +7,7 @@ import { Grid } from '@/components/layout/Grid';
 import { VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, HeroBanner, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
+import { VOCAB_MODES, modeAvailability } from '@/services/vocab/modes';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
 import { color, wordStatusColor } from '@/theme/tokens';
@@ -110,6 +111,8 @@ export default function VocabularyScreen() {
         </Grid>
       </View>
 
+      {tab === 'list' ? <PracticeStrip entries={words} /> : null}
+
       {tab === 'review' ? (
         <ReviewSession />
       ) : (
@@ -168,6 +171,60 @@ export default function VocabularyScreen() {
         </Card>
       )}
     </Screen>
+  );
+}
+
+/**
+ * Lối vào phòng luyện, đặt NGAY TRÊN danh sách từ.
+ *
+ * Sổ từ trước đây chỉ có hai tab: xem danh sách và ôn theo FSRS bằng bốn nút
+ * Again/Hard/Good/Easy. Cả bảy cách ôn nằm ở `/vocabulary/practice`, mà không
+ * có một đường nào từ đây dẫn sang — nên người dùng mở sổ từ ra chỉ thấy một
+ * cái danh sách và kết luận app không có phần luyện tập. Đúng như họ thấy.
+ *
+ * Mỗi chế độ hiện kèm SỐ TỪ dùng được cho nó. Chế độ không có từ nào đủ liệu
+ * thì mờ và không bấm được, thay vì mời bấm vào rồi hiện màn trống.
+ */
+function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
+  const counts = useMemo(() => modeAvailability(entries), [entries]);
+  if (entries.length === 0) return null;
+
+  return (
+    <Card className="mt-4">
+      <SectionHeader
+        title="Luyện tập"
+        subtitle={`${VOCAB_MODES.length} cách ôn — chọn một kiểu, hoặc để app trộn cả bảy`}
+        icon="target"
+        action={{
+          label: 'Mở phòng luyện',
+          onPress: () => router.push('/vocabulary/practice' as never),
+        }}
+      />
+      <View className="mt-3 flex-row flex-wrap gap-2">
+        {VOCAB_MODES.map((mode) => {
+          const count = counts[mode.id] ?? 0;
+          const off = count === 0;
+          return (
+            <Pressable
+              key={mode.id}
+              accessibilityRole="button"
+              accessibilityState={{ disabled: off }}
+              disabled={off}
+              onPress={() => router.push(`/vocabulary/practice?mode=${mode.id}` as never)}
+              className={`flex-row items-center gap-2 rounded-pill border px-3 py-2 ${
+                off ? 'border-border bg-surfaceAlt' : 'border-primary-200 bg-primary-50'
+              }`}
+            >
+              <Icon name={mode.icon} size={15} color={off ? color.subtle : color.primary} />
+              <Text className={off ? 'font-mid text-label text-subtle' : 'font-strong text-label text-ink'}>
+                {mode.label}
+              </Text>
+              <Text className="font-mid text-label text-muted">{count}</Text>
+            </Pressable>
+          );
+        })}
+      </View>
+    </Card>
   );
 }
 

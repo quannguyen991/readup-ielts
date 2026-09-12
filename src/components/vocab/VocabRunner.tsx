@@ -229,6 +229,31 @@ function Body({
         </View>
       );
 
+    case 'context_choice':
+      return (
+        <View>
+          <Text className="font-sans text-bodyLg text-paper-ink" style={{ lineHeight: 28 }}>
+            {exercise.blanked}
+          </Text>
+          <Text className="mt-2 font-sans text-label text-paper-muted">
+            Chọn từ điền vào chỗ trống.
+          </Text>
+          <OptionList
+            options={exercise.options}
+            answerIndex={exercise.answerIndex}
+            picked={picked}
+            revealed={revealed}
+            onPick={onPick}
+          />
+          {revealed && exercise.meaning ? (
+            <View className="mt-3 rounded-panel bg-brand-tint px-4 py-3">
+              <Text className="font-strong text-body text-brand">{exercise.answer}</Text>
+              <Text className="mt-1 font-sans text-body text-paper-body">{exercise.meaning}</Text>
+            </View>
+          ) : null}
+        </View>
+      );
+
     case 'multiple_choice':
       return (
         <View>
@@ -238,38 +263,13 @@ function Body({
               {exercise.context}
             </Text>
           ) : null}
-          <View className="mt-4 gap-2">
-            {exercise.options.map((option, i) => {
-              const isAnswer = i === exercise.answerIndex;
-              const isPicked = picked === i;
-              const tone = !revealed
-                ? 'border-brand-soft bg-paper'
-                : isAnswer
-                  ? 'border-success bg-success-soft'
-                  : isPicked
-                    ? 'border-danger bg-danger-soft'
-                    : 'border-brand-soft bg-paper';
-              return (
-                /*
-                  CẢ KHUNG bấm được, không chỉ mỗi chữ. Đặt `onPress` lên `Text`
-                  thì vùng bấm co đúng bằng chữ, và bấm vào phần đệm quanh nó
-                  không có gì xảy ra — người dùng tưởng app đơ. Dùng `Pressable`
-                  với vai `radio` cho khớp hai phòng thi SAT.
-                */
-                <Pressable
-                  key={option}
-                  accessibilityRole="radio"
-                  accessibilityState={{ selected: isPicked, disabled: revealed }}
-                  onPress={() => onPick(i)}
-                  className={`rounded-panel border px-4 py-3 ${tone}`}
-                >
-                  <Text className="font-sans text-body text-paper-ink">
-                    {'ABCD'[i]}. {option}
-                  </Text>
-                </Pressable>
-              );
-            })}
-          </View>
+          <OptionList
+            options={exercise.options}
+            answerIndex={exercise.answerIndex}
+            picked={picked}
+            revealed={revealed}
+            onPick={onPick}
+          />
         </View>
       );
 
@@ -378,7 +378,7 @@ function Controls({
     );
   }
 
-  if (exercise.mode === 'multiple_choice') {
+  if (exercise.mode === 'multiple_choice' || exercise.mode === 'context_choice') {
     const right = picked === exercise.answerIndex;
     return (
       <View className="mt-4 flex-row flex-wrap items-center gap-2">
@@ -477,11 +477,68 @@ function DictationNext({
  * mới: thêm loại là mọi từ cũ mọc thêm hai thẻ chưa học, và số "đến hạn ôn"
  * nhảy vọt trong một đêm mà người dùng không làm gì cả.
  */
+/**
+ * Bốn phương án, cả khung bấm được.
+ *
+ * Dùng chung cho trắc nghiệm nghĩa và điền từ vào chỗ trống: hai chế độ khác
+ * nhau ở phần đề bài, còn cách chọn phải giống hệt — người học không nên phải
+ * học lại cách bấm ở mỗi chế độ.
+ */
+function OptionList({
+  options,
+  answerIndex,
+  picked,
+  revealed,
+  onPick,
+}: {
+  options: string[];
+  answerIndex: number;
+  picked: number | null;
+  revealed: boolean;
+  onPick: (index: number) => void;
+}) {
+  return (
+    <View className="mt-4 gap-2">
+      {options.map((option, i) => {
+        const isAnswer = i === answerIndex;
+        const isPicked = picked === i;
+        const tone = !revealed
+          ? 'border-brand-soft bg-paper'
+          : isAnswer
+            ? 'border-success bg-success-soft'
+            : isPicked
+              ? 'border-danger bg-danger-soft'
+              : 'border-brand-soft bg-paper';
+        return (
+          /*
+            CẢ KHUNG bấm được, không chỉ mỗi chữ. Đặt `onPress` lên `Text` thì
+            vùng bấm co đúng bằng chữ, và bấm vào phần đệm quanh nó không có gì
+            xảy ra — người dùng tưởng app đơ. Dùng `Pressable` với vai `radio`
+            cho khớp hai phòng thi SAT.
+          */
+          <Pressable
+            key={option}
+            accessibilityRole="radio"
+            accessibilityState={{ selected: isPicked, disabled: revealed }}
+            onPress={() => onPick(i)}
+            className={`rounded-panel border px-4 py-3 ${tone}`}
+          >
+            <Text className="font-sans text-body text-paper-ink">
+              {'ABCD'[i]}. {option}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
 function cardKindOf(mode: VocabModeId) {
   switch (mode) {
     case 'multiple_choice':
       return 'multiple_choice' as const;
     case 'context':
+    case 'context_choice':
       return 'cloze' as const;
     case 'translate_sentence':
     case 'translate_paragraph':

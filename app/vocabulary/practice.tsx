@@ -80,7 +80,7 @@ export default function VocabPracticeScreen() {
       backHref="/vocabulary"
       backLabel="Về sổ từ"
       title="Luyện từ vựng"
-      subtitle={`${entries.length} từ trong sổ · sáu cách ôn`}
+      subtitle={`${entries.length} từ trong sổ · ${VOCAB_MODES.length} cách ôn`}
       icon="letters"
     >
       <View className="gap-3">

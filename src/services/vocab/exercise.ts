@@ -34,6 +34,17 @@ export type VocabExercise =
       meaning: string | null;
     }
   | {
+      mode: 'context_choice';
+      entry: VocabEntry;
+      /** Câu đã khoét, chỗ trống là một dãy gạch dưới. */
+      blanked: string;
+      answer: string;
+      /** Bốn TỪ để chọn, không phải bốn nghĩa. */
+      options: string[];
+      answerIndex: number;
+      meaning: string | null;
+    }
+  | {
       mode: 'multiple_choice';
       entry: VocabEntry;
       prompt: string;
@@ -108,6 +119,50 @@ export function buildChoices(
   return { options, answerIndex: options.indexOf(answer) };
 }
 
+/**
+ * Bốn TỪ để điền vào chỗ trống: một đúng, ba lấy từ sổ của chính người học.
+ *
+ * Khác `buildChoices` ở chỗ phương án là TỪ chứ không phải nghĩa — người học
+ * phải đọc câu rồi chọn từ hợp nghĩa, tức là đo đúng thứ đề thi đo.
+ *
+ * LOẠI TỪ ĐÃ CÓ SẴN TRONG CÂU. Một phương án xuất hiện ở chỗ khác ngay trong
+ * câu đang đọc thì loại được mà không cần hiểu gì: không ai điền một từ vừa
+ * nhìn thấy cách đó năm chữ.
+ */
+export function buildWordChoices(
+  entry: VocabEntry,
+  pool: VocabEntry[],
+  rnd: () => number,
+  blanked: string,
+): { options: string[]; answerIndex: number } | null {
+  const answer = entry.word?.trim();
+  if (!answer) return null;
+
+  const seen = new Set([normalize(answer)]);
+  const distractors: string[] = [];
+
+  for (const other of shuffle(pool, rnd)) {
+    if (other.id === entry.id) continue;
+    const word = other.word?.trim();
+    if (!word) continue;
+    const key = normalize(word);
+    if (seen.has(key)) continue;
+    if (new RegExp(`\\b${escapeRegExp(word)}\\b`, 'i').test(blanked)) continue;
+    seen.add(key);
+    distractors.push(word);
+    if (distractors.length === 3) break;
+  }
+
+  if (distractors.length < 3) return null;
+
+  const options = shuffle([answer, ...distractors], rnd);
+  return { options, answerIndex: options.indexOf(answer) };
+}
+
+function escapeRegExp(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 function normalize(text: string): string {
   return text.trim().toLowerCase().replace(/\s+/g, ' ');
 }
@@ -144,6 +199,13 @@ export function buildExercise(
     case 'context': {
       const cloze = buildCloze(entry);
       return cloze ? { mode, entry, ...cloze, meaning } : null;
+    }
+
+    case 'context_choice': {
+      const cloze = buildCloze(entry);
+      if (!cloze) return null;
+      const choices = buildWordChoices(entry, pool, rnd, cloze.blanked);
+      return choices ? { mode, entry, ...cloze, ...choices, meaning } : null;
     }
 
     case 'multiple_choice': {
