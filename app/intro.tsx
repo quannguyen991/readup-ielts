@@ -25,7 +25,13 @@ import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
 import { rememberInviteCode } from '@/services/referral/pending';
-import { REFERRALS_PER_REWARD, REWARD_MONTHS, REWARD_PLAN } from '@/services/referral/rewards';
+import {
+  MAX_REWARD_PLAN,
+  MAX_TIER_REFERRALS,
+  REFERRALS_PER_REWARD,
+  REWARD_MONTHS,
+  REWARD_PLAN,
+} from '@/services/referral/rewards';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { paper, stickerGradient } from '@/theme/tokens';
@@ -430,8 +436,9 @@ export default function IntroScreen() {
               </Text>
               <Text className="mt-1 font-sans text-body text-muted">
                 Mỗi người bạn mời tạo tài khoản và học thật sẽ cộng cho bạn một mốc. Đủ{' '}
-                {REFERRALS_PER_REWARD} mốc là thêm {REWARD_MONTHS} tháng gói{' '}
-                {PLANS[REWARD_PLAN].name}, không phải trả đồng nào.
+                {REFERRALS_PER_REWARD} mốc là {REWARD_MONTHS} tháng gói{' '}
+                {PLANS[REWARD_PLAN].name}; đủ {MAX_TIER_REFERRALS} mốc thì lên gói{' '}
+                {PLANS[MAX_REWARD_PLAN].name}. Không phải trả đồng nào.
               </Text>
             </View>
             <Button

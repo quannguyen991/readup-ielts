@@ -11,23 +11,43 @@ import { extendExpiry } from '@/services/payment/order';
  */
 
 /** Đủ ngần này lượt mời HỢP LỆ thì được một phần thưởng. */
-export const REFERRALS_PER_REWARD = 10;
+export const REFERRALS_PER_REWARD = 15;
 /** Mỗi phần thưởng là ngần này tháng. */
 export const REWARD_MONTHS = 3;
 
 /**
- * Thưởng bằng GÓI CAO NHẤT, không phải gói thấp nhất.
+ * Thưởng bằng gói PRO, không phải gói cao nhất.
  *
- * Trước là Plus. Mời được mười người thật — mười người phải tạo tài khoản
- * VÀ học thật, xem điều kiện "hợp lệ" trong `/api/referrals` — là việc khó
- * hơn nhiều so với việc trả 49.000đ. Phần thưởng phải tương xứng với công bỏ ra,
- * không thì chẳng ai bỏ công.
+ * Lịch sử: Plus → Max (03/09/2026) → Pro, và mốc lượt mời 10 → 15 (12/09/2026).
  *
- * Và đây là đường DUY NHẤT để có Max mà không trả tiền. Max 400.000đ/tháng là
- * gói đắt nhất; ba tháng Max đổi lấy mười người học thật là một cuộc đổi rõ
- * ràng cho cả hai bên.
+ * Vì sao không còn thưởng Max: Max là gói DUY NHẤT có chứng chỉ ký số, mà một
+ * tờ chứng nhận phát ra theo số lượt mời thì tự nó mất nghĩa. Pro đã có trọn
+ * nội dung và trợ giảng AI — đúng thứ người mời muốn dùng thật.
+ *
+ * Ba tháng Pro đáng 420.000đ, đổi lấy 15 người tạo tài khoản VÀ học thật (điều
+ * kiện "hợp lệ" xem trong `/api/referrals`). Vẫn là cuộc đổi rõ ràng cho cả hai
+ * bên, nhưng không còn phát không gói đắt nhất.
  */
-export const REWARD_PLAN: PlanId = 'max';
+export const REWARD_PLAN: PlanId = 'pro';
+
+/** Từ mốc này trở đi, phần thưởng nâng lên gói cao nhất. */
+export const MAX_TIER_REFERRALS = 30;
+
+/** Gói của mốc trên. */
+export const MAX_REWARD_PLAN: PlanId = 'max';
+
+/**
+ * Gói được thưởng, tính theo TỔNG số lượt mời hợp lệ.
+ *
+ * KHÔNG LƯU GÓI THƯỞNG VÀO CSDL. Cột `plus_credit_months` chỉ là một số nguyên,
+ * không chỗ nào ghi được "ba tháng này là Pro hay Max" — mà thêm cột thì phải
+ * chạy migration. Suy lại từ số lượt mời vừa tránh được migration, vừa ra một
+ * luật dễ nói với người dùng: đủ 30 lượt thì mọi tháng thưởng đang treo cũng
+ * được nâng lên Max, không phải chỉ phần mới.
+ */
+export function rewardPlanFor(qualifiedCount: number): PlanId {
+  return qualifiedCount >= MAX_TIER_REFERRALS ? MAX_REWARD_PLAN : REWARD_PLAN;
+}
 
 export type PlanState = {
   plan: PlanId;
@@ -60,10 +80,9 @@ export type Settlement = {
  *
  * BA QUY TẮC, và cả ba đều để KHÔNG AI MẤT GÌ:
  *
- * 1. KHÔNG BAO GIỜ HẠ GÓI. Phần thưởng giờ là Max — gói cao nhất — nên quy tắc
- *    này gần như không còn đụng tới ai. Nhưng giữ nguyên: nếu sau này có gói
- *    cao hơn Max, hoặc phần thưởng hạ xuống, thì người đang trả tiền cho gói cao
- *    hơn vẫn không bị kéo xuống — số tháng đó được GHI NỢ và tự bật sau.
+ * 1. KHÔNG BAO GIỜ HẠ GÓI. Phần thưởng là Pro, nên người đang trả tiền cho Max
+ *    mà tới mốc thưởng sẽ KHÔNG bị kéo xuống Pro: số tháng ấy được GHI NỢ, rồi
+ *    tự bật khi Max hết hạn.
  * 2. KHÔNG PHÁT LẠI. `rewardsGranted` nhớ đã phát bao nhiêu lần; hàm này chạy
  *    lại bao nhiêu lần cũng ra cùng kết quả.
  * 3. GIA HẠN CỘNG DỒN. Đang có Plus thì cộng vào hạn cũ, không tính lại từ hôm
@@ -100,13 +119,13 @@ export function settleReferralRewards(
       · đang dùng đúng gói ấy nhưng KHÔNG CÓ HẠN (vĩnh viễn) — kích hoạt là
         biến "không bao giờ hết" thành "hết sau ba tháng".
 
-    Vế thứ hai chỉ lộ ra khi phần thưởng đổi từ Plus sang Max: hồi thưởng Plus
-    thì tài khoản Max vĩnh viễn rơi vào vế thứ nhất và được ghi nợ đúng. Đổi
-    sang Max là hai gói bằng hạng, vế thứ nhất hết đỡ, và một tài khoản vĩnh
-    viễn sẽ bị gán hạn sử dụng. Test bắt được, không phải người dùng.
+    Vế thứ hai lộ ra khi phần thưởng BẰNG HẠNG với gói đang có: một tài khoản
+    Pro vĩnh viễn mà kích hoạt thưởng sẽ bị gán hạn ba tháng, tức là đổi "không
+    bao giờ hết" lấy ba tháng. Test bắt được chuyện này, không phải người dùng.
   */
-  const wouldDowngrade = planRank(active) > planRank(REWARD_PLAN);
-  const wouldCapLifetime = active === REWARD_PLAN && state.expiresAt === null;
+  const rewardPlan = rewardPlanFor(qualifiedCount);
+  const wouldDowngrade = planRank(active) > planRank(rewardPlan);
+  const wouldCapLifetime = active === rewardPlan && state.expiresAt === null;
 
   if (wouldDowngrade || wouldCapLifetime) {
     return {
@@ -119,10 +138,19 @@ export function settleReferralRewards(
     };
   }
 
-  // Đang Free hoặc đang Plus: kích hoạt toàn bộ số tháng đang có.
-  const base = active === REWARD_PLAN ? state.expiresAt : null;
+  // Đang Free, Plus, hoặc chính Pro có hạn: kích hoạt toàn bộ số tháng đang có.
+  /*
+    NÂNG HẠNG THÌ GIỮ NGUYÊN THỜI GIAN CÒN LẠI.
+
+    Người vừa mời thêm 15 người để lên mốc Max mà mất ba tháng Pro đang có thì
+    phần thưởng hoá ra phạt. Nên hạn cũ được cộng tiếp, chỉ đổi tên gói lên cao
+    hơn — miễn gói đang dùng không cao hơn gói thưởng (ca ấy đã ghi nợ ở trên).
+
+    `extendExpiry` tự bỏ qua hạn đã ở quá khứ, nên gói hết hạn cũng không sao.
+  */
+  const base = planRank(active) <= planRank(rewardPlan) ? state.expiresAt : null;
   return {
-    plan: REWARD_PLAN,
+    plan: rewardPlan,
     expiresAt: extendExpiry(base, totalCredit, now),
     rewardCreditMonths: 0,
     rewardsGranted: earned,

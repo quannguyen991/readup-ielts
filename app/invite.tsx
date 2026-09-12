@@ -10,6 +10,8 @@ import { Appear } from '@/components/motion/Motion';
 import { Button, Card, Icon } from '@/components/ui';
 import { PLANS } from '@/lib/billing/plans';
 import {
+  MAX_REWARD_PLAN,
+  MAX_TIER_REFERRALS,
   REFERRALS_PER_REWARD,
   REWARD_MONTHS,
   REWARD_PLAN,
@@ -19,7 +21,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { color, gradient } from '@/theme/tokens';
 
 /**
- * Mời bạn bè: đủ 10 lượt hợp lệ → 3 tháng gói Plus.
+ * Mời bạn bè, hai mốc: đủ 15 lượt hợp lệ → 3 tháng Pro; từ 30 lượt → 3 tháng Max.
  *
  * ĐIỀU KIỆN ĐƯỢC NÓI NGAY Ở TRÊN, không giấu xuống dòng chữ nhỏ cuối trang.
  * Người dùng mời mười người rồi mới biết "hợp lệ" nghĩa là gì thì họ có lý do
@@ -125,8 +127,12 @@ export default function InviteScreen() {
             Mời {REFERRALS_PER_REWARD} người học → {REWARD_MONTHS} tháng {PLANS[REWARD_PLAN].name}
           </Text>
           <Text className="mt-2 font-sans text-body text-white/90" style={{ maxWidth: 560 }}>
-            {PLANS[REWARD_PLAN].tagline}. Không giới hạn số lần: cứ đủ thêm{' '}
-            {REFERRALS_PER_REWARD} lượt là thêm {REWARD_MONTHS} tháng nữa.
+            Đủ {MAX_TIER_REFERRALS} lượt thì phần thưởng nâng lên gói{' '}
+            {PLANS[MAX_REWARD_PLAN].name} — kể cả những tháng đang treo cũng được bật ở mức đó.
+          </Text>
+          <Text className="mt-1.5 font-sans text-label text-white/75" style={{ maxWidth: 560 }}>
+            Không giới hạn số lần: cứ đủ thêm {REFERRALS_PER_REWARD} lượt là thêm{' '}
+            {REWARD_MONTHS} tháng nữa.
           </Text>
         </LinearGradient>
       </Appear>

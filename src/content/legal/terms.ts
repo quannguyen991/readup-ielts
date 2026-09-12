@@ -10,7 +10,13 @@ import {
 import { BOOK_TOTALS } from '@/services/books/catalog';
 import { BOOK_BUNDLE_RULE } from '@/services/books/entitlement';
 import { ACTIVATION_SLA_HOURS } from '@/services/payment/refund';
-import { REFERRALS_PER_REWARD, REWARD_MONTHS, REWARD_PLAN } from '@/services/referral/rewards';
+import {
+  MAX_REWARD_PLAN,
+  MAX_TIER_REFERRALS,
+  REFERRALS_PER_REWARD,
+  REWARD_MONTHS,
+  REWARD_PLAN,
+} from '@/services/referral/rewards';
 
 import { LEGAL_UPDATED_AT, contactVia, operatorClause, type LegalContext, type LegalDoc } from './shared';
 
@@ -119,7 +125,7 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
         blocks: [
           {
             kind: 'p',
-            text: `Cứ ${REFERRALS_PER_REWARD} người bạn mời tạo tài khoản và học xong ít nhất một bài, bạn được cộng ${REWARD_MONTHS} tháng gói ${PLANS[REWARD_PLAN].name}.`,
+            text: `Cứ ${REFERRALS_PER_REWARD} người bạn mời tạo tài khoản và học xong ít nhất một bài, bạn được cộng ${REWARD_MONTHS} tháng gói ${PLANS[REWARD_PLAN].name}. Từ ${MAX_TIER_REFERRALS} lượt mời hợp lệ trở đi, phần thưởng nâng lên gói ${PLANS[MAX_REWARD_PLAN].name}, và số tháng thưởng đang treo cũng được bật ở mức đó.`,
           },
           {
             kind: 'list',

@@ -19,6 +19,7 @@ import { checkFeature, requiredPlanFor } from '@/lib/billing/entitlements';
 import { PLANS, type PlanId } from '@/lib/billing/plans';
 import { usePlan } from '@/store/useBillingStore';
 import { color } from '@/theme/tokens';
+import { MAX_TIER_REFERRALS } from '@/services/referral/rewards';
 
 /**
  * Sổ bằng chứng: app nghĩ bạn đã làm được gì, và DỰA VÀO ĐÂU.
@@ -393,7 +394,7 @@ function CredentialLocked({ need }: { need: PlanId }) {
               onPress={() => router.push('/upgrade' as never)}
             />
             <Button
-              label={`Mời 10 bạn, nhận ${PLANS[need].name} miễn phí`}
+              label={`Mời ${MAX_TIER_REFERRALS} bạn, nhận ${PLANS[need].name} miễn phí`}
               variant="outline"
               iconLeft="sparkle"
               onPress={() => router.push('/invite' as never)}
