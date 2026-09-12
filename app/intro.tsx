@@ -25,6 +25,7 @@ import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
 import { rememberInviteCode } from '@/services/referral/pending';
+import { REFERRALS_PER_REWARD, REWARD_MONTHS, REWARD_PLAN } from '@/services/referral/rewards';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { paper, stickerGradient } from '@/theme/tokens';
@@ -424,11 +425,13 @@ export default function IntroScreen() {
             <AssetImage assetKey={assetKeys.illustration('referral-hero')} preset="card" />
             <View className="flex-1" style={{ minWidth: 220 }}>
               <Text className="font-strong text-cardTitle text-ink">
-                Mời 10 người, nhận gói Plus
+                Mời {REFERRALS_PER_REWARD} người, nhận {REWARD_MONTHS} tháng gói{' '}
+                {PLANS[REWARD_PLAN].name}
               </Text>
               <Text className="mt-1 font-sans text-body text-muted">
-                Mỗi người bạn mời vào học thật sẽ cộng cho bạn một mốc. Đủ 10 mốc là mở khoá toàn bộ
-                tính năng gói Plus, không phải trả đồng nào.
+                Mỗi người bạn mời tạo tài khoản và học thật sẽ cộng cho bạn một mốc. Đủ{' '}
+                {REFERRALS_PER_REWARD} mốc là thêm {REWARD_MONTHS} tháng gói{' '}
+                {PLANS[REWARD_PLAN].name}, không phải trả đồng nào.
               </Text>
             </View>
             <Button

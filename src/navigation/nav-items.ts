@@ -1,4 +1,6 @@
 import type { IconName } from '@/components/ui/Icon';
+import { PLANS } from '@/lib/billing/plans';
+import { REWARD_PLAN } from '@/services/referral/rewards';
 
 export type NavItem = {
   key: string;
@@ -78,6 +80,7 @@ export const NAV_GROUPS: NavGroup[] = [
     key: 'track',
     title: 'Theo dõi',
     items: [
+      { key: 'plan', label: 'Lộ trình 60 tuần', href: '/plan', icon: 'calendar' },
       { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
       { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
       /*
@@ -95,7 +98,9 @@ export const NAV_GROUPS: NavGroup[] = [
     key: 'account',
     title: null,
     items: [
-      { key: 'invite', label: 'Mời bạn, nhận Plus', href: '/invite', icon: 'sparkle' },
+      // Nhãn lấy từ chính luật thưởng: đổi gói thưởng ở `rewards.ts` mà quên sửa
+      // chỗ này thì thanh điều hướng hứa một gói, trang mời trả một gói khác.
+      { key: 'invite', label: `Mời bạn, nhận ${PLANS[REWARD_PLAN].name}`, href: '/invite', icon: 'sparkle' },
       { key: 'intro', label: 'Giới thiệu', href: '/intro', icon: 'info' },
       { key: 'upgrade', label: 'Nâng cấp', href: '/upgrade', icon: 'sparkle' },
       { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
