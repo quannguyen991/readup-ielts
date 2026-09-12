@@ -52,7 +52,12 @@ export type IconName =
   | 'compass'
   | 'building'
   | 'flask'
-  | 'more';
+  | 'more'
+  | 'mail'
+  | 'download'
+  | 'shield'
+  | 'external'
+  | 'gift';
 
 type IconProps = {
   name: IconName;
@@ -366,6 +371,45 @@ function renderPaths(name: IconName, p: CommonProps) {
           />
           <Path {...p} d="M9 3h6" />
           <Path {...p} d="M6.7 15h10.6" />
+        </>
+      );
+    case 'mail':
+      return (
+        <>
+          <Rect {...p} x={3.8} y={5.8} width={16.4} height={12.4} rx={2} />
+          <Path {...p} d="m4.6 7.2 7.4 5.6 7.4-5.6" />
+        </>
+      );
+    case 'download':
+      return (
+        <>
+          <Path {...p} d="M12 4.5v10.5" />
+          <Polyline {...p} points="7.5 10.5 12 15 16.5 10.5" />
+          <Path {...p} d="M5 19.5h14" />
+        </>
+      );
+    case 'shield':
+      return (
+        <>
+          <Path {...p} d="M12 3.8 5.5 6.3v5.2c0 4.1 2.8 7.3 6.5 8.7 3.7-1.4 6.5-4.6 6.5-8.7V6.3z" />
+          <Polyline {...p} points="9.2 12 11.3 14.1 15 10.2" />
+        </>
+      );
+    case 'external':
+      return (
+        <>
+          <Path {...p} d="M13.5 5H19v5.5" />
+          <Path {...p} d="m19 5-8 8" />
+          <Path {...p} d="M17.5 13.5v4a1.5 1.5 0 0 1-1.5 1.5H6.5A1.5 1.5 0 0 1 5 17.5V8a1.5 1.5 0 0 1 1.5-1.5h4" />
+        </>
+      );
+    case 'gift':
+      return (
+        <>
+          <Rect {...p} x={4} y={8.5} width={16} height={4} rx={1} />
+          <Path {...p} d="M5.5 12.5v6A1.5 1.5 0 0 0 7 20h10a1.5 1.5 0 0 0 1.5-1.5v-6" />
+          <Path {...p} d="M12 8.5V20" />
+          <Path {...p} d="M12 8.5C10.6 5.2 7.2 4.9 7.2 6.8c0 1.4 2.3 1.7 4.8 1.7zm0 0c1.4-3.3 4.8-3.6 4.8-1.7 0 1.4-2.3 1.7-4.8 1.7z" />
         </>
       );
     case 'more':

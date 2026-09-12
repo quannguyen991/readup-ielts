@@ -43,6 +43,26 @@ export const publicEnv = {
   bankBin: process.env.EXPO_PUBLIC_BANK_BIN ?? '',
   bankAccount: process.env.EXPO_PUBLIC_BANK_ACCOUNT ?? '',
   bankAccountName: process.env.EXPO_PUBLIC_BANK_ACCOUNT_NAME ?? '',
+
+  /**
+   * Người bán và kênh liên hệ — hiện ở trang Liên hệ, chân trang, trang thanh toán.
+   *
+   * CÔNG KHAI THEO THIẾT KẾ, cùng lý do với số tài khoản nhận tiền: người vừa
+   * chuyển tiền mà chưa thấy gói bật phải biết hỏi ai. Chưa khai thì các chỗ đó
+   * im lặng chứ không bịa ra một địa chỉ — chuẩn hoá và kiểm ở `src/lib/contact.ts`.
+   */
+  supportEmail: process.env.EXPO_PUBLIC_SUPPORT_EMAIL ?? '',
+  supportZalo: process.env.EXPO_PUBLIC_SUPPORT_ZALO ?? '',
+  sellerName: process.env.EXPO_PUBLIC_SELLER_NAME ?? '',
+  sellerAddress: process.env.EXPO_PUBLIC_SELLER_ADDRESS ?? '',
+  sellerTaxId: process.env.EXPO_PUBLIC_SELLER_TAX_ID ?? '',
+
+  /**
+   * Mã đo lường quảng cáo. Để trống thì không tải script nào và không hiện
+   * thông báo cookie — xem `src/services/analytics/track.ts`.
+   */
+  metaPixelId: process.env.EXPO_PUBLIC_META_PIXEL_ID ?? '',
+  ga4Id: process.env.EXPO_PUBLIC_GA4_ID ?? '',
 } as const;
 
 /** Đủ ba giá trị để dựng được QR chuyển khoản chưa. */
