@@ -4,6 +4,7 @@ import Animated, {
   Easing,
   useAnimatedStyle,
   useSharedValue,
+  withDelay,
   withRepeat,
   withSequence,
   withTiming,
@@ -34,11 +35,17 @@ export function LetterCell({
   state,
   caret,
   liveResult,
+  celebrate = false,
+  delayMs = 0,
 }: {
   char: string;
   state: LetterCellState;
   caret: boolean;
   liveResult: boolean;
+  /** Cả câu đã đúng — ô chuyển xanh và nảy theo đợt sóng. */
+  celebrate?: boolean;
+  /** Độ trễ của ô này trong đợt sóng, tính theo vị trí chữ cái. */
+  delayMs?: number;
 }) {
   const wrong = liveResult && state === 'wrong';
   const filled = char.length > 0;
@@ -47,15 +54,30 @@ export function LetterCell({
   const shake = useSharedValue(0);
   const glow = useSharedValue(0);
 
-  // Nảy khi ô vừa có chữ, xẹp lại khi bị xoá.
+  /*
+    Nảy khi ô vừa có chữ, xẹp lại khi bị xoá — và khi cả câu đã đúng thì nảy
+    mạnh hơn một nhịp, lệch nhau theo vị trí chữ cái nên cả dãy chạy thành một
+    đợt sóng từ trái sang phải. Nảy đồng loạt thì chỉ thấy cả khối giật một cái.
+
+    MỘT EFFECT DUY NHẤT GHI VÀO `pop`. Tách thành hai effect thì thứ tự chạy
+    quyết định ai thắng, và cái thua biến mất không để lại dấu vết nào.
+  */
   useEffect(() => {
-    pop.value = filled
-      ? withSequence(
-          withTiming(1.18, { duration: 90, easing: Easing.out(Easing.quad) }),
-          withTiming(1, { duration: 140, easing: Easing.out(Easing.quad) }),
+    pop.value = celebrate
+      ? withDelay(
+          delayMs,
+          withSequence(
+            withTiming(1.22, { duration: 130, easing: Easing.out(Easing.quad) }),
+            withTiming(1, { duration: 170, easing: Easing.out(Easing.quad) }),
+          ),
         )
-      : withTiming(0.9, { duration: 120 });
-  }, [filled, char, pop]);
+      : filled
+        ? withSequence(
+            withTiming(1.18, { duration: 90, easing: Easing.out(Easing.quad) }),
+            withTiming(1, { duration: 140, easing: Easing.out(Easing.quad) }),
+          )
+        : withTiming(0.9, { duration: 120 });
+  }, [celebrate, delayMs, filled, char, pop]);
 
   // Rung đúng một lần, ngay lúc ô chuyển sang sai.
   useEffect(() => {
@@ -83,16 +105,26 @@ export function LetterCell({
 
   const style = useAnimatedStyle(() => ({
     transform: [{ scale: pop.value }, { translateX: shake.value }],
-    borderWidth: caret || filled || wrong ? 1.6 : 1,
-    borderColor: wrong
-      ? color.danger
-      : caret
-        ? paper.brandMid
+    borderWidth: celebrate || caret || filled || wrong ? 1.6 : 1,
+    borderColor: celebrate
+      ? color.success
+      : wrong
+        ? color.danger
+        : caret
+          ? paper.brandMid
+          : filled
+            ? paper.fillEdge
+            : paper.brandSoft,
+    backgroundColor: celebrate
+      ? color.successSoft
+      : wrong
+        ? color.dangerSoft
         : filled
-          ? paper.fillEdge
-          : paper.brandSoft,
-    backgroundColor: wrong ? color.dangerSoft : filled ? paper.fill : '#FBFCFA',
-    opacity: caret ? 0.72 + glow.value * 0.28 : 1,
+          ? paper.fill
+          : '#FBFCFA',
+    // Đang ăn mừng thì tắt nhịp thở của con trỏ: hai chuyển động cùng lúc trên
+    // cùng một ô làm cả hai trông như lỗi vẽ.
+    opacity: caret && !celebrate ? 0.72 + glow.value * 0.28 : 1,
   }));
 
   /*
@@ -116,7 +148,10 @@ export function LetterCell({
         style,
       ]}
     >
-      <Text className="font-strong text-body" style={{ color: wrong ? color.danger : paper.ink }}>
+      <Text
+        className="font-strong text-body"
+        style={{ color: celebrate ? color.success : wrong ? color.danger : paper.ink }}
+      >
         {char}
       </Text>
     </Animated.View>

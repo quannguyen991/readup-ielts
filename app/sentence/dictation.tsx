@@ -269,6 +269,19 @@ function RunningView({
 
   const done = (mode === 'cells' ? grade.done : freeGrade !== null) || revealed;
 
+  /*
+    ĐÚNG CẢ CÂU — khác hẳn "đã điền kín".
+
+    `done` chỉ nói người học đã điền hết ô; điền kín mà sai bốn chữ vẫn là
+    `done`. Trước đây pháo giấy và tiếng chuông bám vào `done`, nên một câu sai
+    vẫn được ăn mừng y như câu đúng. Ăn mừng sai chỗ còn tệ hơn không ăn mừng:
+    nó dạy người học rằng tín hiệu ấy chẳng có nghĩa gì.
+  */
+  const allCorrect =
+    mode === 'cells'
+      ? grade.done && grade.correctCount === grade.total
+      : freeGrade !== null && freeGrade.accuracy === 1;
+
   useEffect(() => {
     enteredAt.current = Date.now();
     return () => {
@@ -370,7 +383,7 @@ function RunningView({
         {/* --------------------------------------------------------- vùng làm */}
         <View className="lg:flex-1">
           <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
-            {done && !revealed && mode === 'cells' ? <Confetti seed={item.id} /> : null}
+            {allCorrect && !revealed ? <Confetti seed={item.id} /> : null}
 
             {/*
               Đường chạy đặt TRÊN CÙNG, trước cả nút nghe: nó trả lời câu "còn
@@ -481,6 +494,7 @@ function RunningView({
                 states={grade.states}
                 caretAt={letters.length}
                 liveResult={liveResult}
+                celebrate={allCorrect && !revealed}
                 value={letters}
                 onChange={(text) => setLetters(sanitizeTyped(text, board.answer.length))}
                 inputRef={inputRef}
@@ -746,6 +760,7 @@ function LetterGrid({
   states,
   caretAt,
   liveResult,
+  celebrate,
   value,
   onChange,
   inputRef,
@@ -758,6 +773,8 @@ function LetterGrid({
   states: LetterCellState[];
   caretAt: number;
   liveResult: boolean;
+  /** Đúng cả câu — cả lưới chuyển xanh thành một đợt sóng. */
+  celebrate: boolean;
   value: string;
   onChange: (text: string) => void;
   inputRef: React.RefObject<TextInput | null>;
@@ -794,6 +811,8 @@ function LetterGrid({
                     state={revealed ? 'correct' : states[unit.index] ?? 'empty'}
                     caret={!revealed && caretAt === unit.index}
                     liveResult={liveResult}
+                    celebrate={celebrate}
+                    delayMs={unit.index * 18}
                   />
                 ),
               )}
