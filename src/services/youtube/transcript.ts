@@ -189,6 +189,57 @@ function matchCues(xml: string, pattern: RegExp, divisor: number): TranscriptCue
 }
 
 /**
+ * Đọc phụ đề WebVTT — định dạng `yt-dlp` trả về.
+ *
+ * Khác khuôn XML ở hai chỗ, và bỏ qua chỗ nào cũng làm hỏng bài chép chính tả:
+ *
+ * 1. Phụ đề TỰ ĐỘNG của YouTube cuộn từng chữ: mỗi mẩu lặp lại nguyên phần đã
+ *    hiện rồi thêm vài chữ mới, kèm mốc giờ cho từng chữ
+ *    (`<00:00:19.039><c> no</c>`). Lấy nguyên thì một câu bị đọc lại năm lần.
+ * 2. Mốc giờ viết HH:MM:SS.mmm chứ không phải số giây.
+ *
+ * Nên ở đây: bỏ mọi thẻ, rồi gộp mẩu nào trùng hoặc chỉ là phần đầu của mẩu
+ * trước — giữ bản DÀI NHẤT, tức lúc câu đã hiện đủ chữ.
+ */
+export function parseVtt(vtt: string): TranscriptCue[] {
+  const cues: TranscriptCue[] = [];
+
+  for (const block of vtt.replace(/\r/g, '').split(/\n{2,}/)) {
+    const lines = block.split('\n');
+    const at = lines.findIndex((line) => line.includes('-->'));
+    if (at < 0) continue;
+
+    const stamps = /(\d{1,2}:\d{2}:\d{2}[.,]\d{3})\s*-->\s*(\d{1,2}:\d{2}:\d{2}[.,]\d{3})/.exec(
+      lines[at] ?? '',
+    );
+    if (!stamps) continue;
+
+    const start = vttSeconds(stamps[1] ?? '');
+    const end = vttSeconds(stamps[2] ?? '');
+    const text = decode(lines.slice(at + 1).join(' '))
+      .replace(/<[^>]+>/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!text) continue;
+
+    const previous = cues[cues.length - 1];
+    if (previous && (previous.text === text || text.startsWith(previous.text))) {
+      previous.text = text;
+      previous.duration = Math.max(previous.duration, end - previous.start);
+      continue;
+    }
+    cues.push({ start, duration: Math.max(0, end - start), text });
+  }
+
+  return cues;
+}
+
+function vttSeconds(stamp: string): number {
+  const [h = '0', m = '0', s = '0'] = stamp.replace(',', '.').split(':');
+  return Number(h) * 3600 + Number(m) * 60 + Number(s);
+}
+
+/**
  * Gộp các mẩu phụ đề thành CÂU TRỌN VẸN.
  *
  * Phụ đề YouTube cắt theo dòng hiển thị, không theo câu — một câu hay bị chẻ
