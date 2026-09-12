@@ -9,6 +9,7 @@ import { Badge, Button, Card, Icon } from '@/components/ui';
 import { PLANS, PLAN_ORDER, formatVnd, type PlanId } from '@/lib/billing/plans';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
+import { type UserActivity } from '@/services/admin/activity';
 
 /**
  * Trang quản trị: xem người dùng và CẤP GÓI BẰNG TAY.
@@ -212,7 +213,7 @@ export default function AdminScreen() {
         ) : (
           users.map((user, index) => (
             <Appear key={user.id} index={index + 4}>
-              <UserRow user={user} onSetPlan={setPlan} />
+              <UserRow user={user} token={token} onSetPlan={setPlan} />
             </Appear>
           ))
         )}
@@ -640,13 +641,43 @@ function TabPill({
 
 function UserRow({
   user,
+  token,
   onSetPlan,
 }: {
   user: AdminUser;
+  token: string | null;
   onSetPlan: (user: AdminUser, plan: PlanId, months: number | null) => void;
 }) {
   const [open, setOpen] = useState(false);
   const [months, setMonths] = useState<number | null>(1);
+
+  /*
+    Hoạt động học đọc theo YÊU CẦU, không tải sẵn cùng danh sách: payload của một
+    tài khoản đã hơn 150 KB, nhân với một trăm dòng là vài chục megabyte cho một
+    bảng mà người duyệt chỉ nhìn vài dòng.
+  */
+  const [activity, setActivity] = useState<UserActivity | null>(null);
+  const [activityState, setActivityState] = useState<'idle' | 'loading' | 'error'>('idle');
+
+  const toggleActivity = async () => {
+    if (!token) return;
+    if (activity) {
+      setActivity(null);
+      return;
+    }
+    setActivityState('loading');
+    try {
+      const res = await fetch(`/api/admin/activity?userId=${user.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const body = (await res.json()) as { activity?: UserActivity; error?: string };
+      if (!res.ok || !body.activity) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      setActivity(body.activity);
+      setActivityState('idle');
+    } catch {
+      setActivityState('error');
+    }
+  };
 
   return (
     <Card>
@@ -677,6 +708,12 @@ function UserRow({
                   : 'không hết hạn'}
             </Text>
           </View>
+          <Button
+            label={activity ? 'Ẩn hoạt động' : 'Hoạt động'}
+            variant="ghost"
+            size="sm"
+            onPress={() => void toggleActivity()}
+          />
           <Button
             label={open ? 'Đóng' : 'Đổi gói'}
             variant="outline"
@@ -719,7 +756,79 @@ function UserRow({
           </View>
         </View>
       ) : null}
+
+      {activityState === 'loading' ? (
+        <Text className="mt-3 font-sans text-label text-muted">Đang đọc dữ liệu học…</Text>
+      ) : null}
+      {activityState === 'error' ? (
+        <Text className="mt-3 font-sans text-label text-danger">
+          Không đọc được hoạt động của tài khoản này.
+        </Text>
+      ) : null}
+      {activity ? <ActivityPanel activity={activity} plan={user.plan} /> : null}
     </Card>
+  );
+}
+
+/**
+ * Hoạt động học của một tài khoản — chỉ số đếm, không có nội dung.
+ *
+ * Người duyệt cần ba câu trả lời: tài khoản này có học thật không (để xét hoàn
+ * tiền và lượt mời hợp lệ), học lần cuối bao giờ, và máy của họ đang thấy gói
+ * nào. Không cần đọc bài viết hay ghi chú của ai, nên API cũng không trả ra.
+ */
+function ActivityPanel({ activity, plan }: { activity: UserActivity; plan: PlanId }) {
+  const items: [string, string][] = [
+    ['Ngày có học', String(activity.activeDays)],
+    ['Tổng thời gian', `${activity.minutes} phút`],
+    ['Số câu đã làm', String(activity.questions)],
+    ['Phiên đọc và đề', String(activity.readingSessions)],
+    ['Phiên SAT Math', String(activity.mathSessions)],
+    ['Bài đọc', `${activity.articlesRead} mở · ${activity.articlesFinished} xong`],
+    ['Sổ từ', `${activity.vocabWords} từ · ${activity.fsrsCards} thẻ`],
+    ['Đã lưu', String(activity.bookmarks)],
+  ];
+
+  return (
+    <View className="mt-3 border-t border-border pt-3">
+      <View className="flex-row flex-wrap items-baseline gap-2">
+        <Text className="font-strong text-label text-ink">Hoạt động</Text>
+        <Text className="font-sans text-label text-subtle">
+          {activity.lastSyncAt
+            ? `đồng bộ gần nhất ${formatDate(activity.lastSyncAt)}`
+            : 'chưa đồng bộ lần nào'}
+          {activity.firstDay ? ` · học từ ${activity.firstDay}` : ''}
+        </Text>
+      </View>
+
+      <View className="mt-2 flex-row flex-wrap gap-2">
+        {items.map(([label, value]) => (
+          <View key={label} className="rounded-card border border-border bg-surfaceAlt px-3 py-2">
+            <Text className="font-mid text-label text-muted">{label}</Text>
+            <Text className="mt-0.5 font-strong text-body text-ink">{value}</Text>
+          </View>
+        ))}
+      </View>
+
+      {/*
+        Gói ghi trên máy người dùng lệch với hồ sơ là chuyện BÌNH THƯỜNG ngay sau
+        khi admin đổi gói: máy họ chỉ biết khi mở app lần sau. Nói rõ để người
+        duyệt không tưởng là hỏng, và cũng để biết vì sao người dùng kêu "đã trả
+        tiền mà chưa thấy gói".
+      */}
+      {activity.planOnDevice && activity.planOnDevice !== plan ? (
+        <Text className="mt-2 font-sans text-label text-warning-ink">
+          Máy người dùng đang ghi gói {activity.planOnDevice}, hồ sơ là {plan} — họ cần mở app
+          để đồng bộ lại.
+        </Text>
+      ) : null}
+
+      {activity.syncedStores.length === 0 ? (
+        <Text className="mt-2 font-sans text-label text-subtle">
+          Tài khoản này chưa từng đồng bộ: dữ liệu học (nếu có) vẫn nằm trên trình duyệt của họ.
+        </Text>
+      ) : null}
+    </View>
   );
 }
 
