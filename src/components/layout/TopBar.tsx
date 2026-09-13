@@ -43,6 +43,12 @@ function isTopLevel(pathname: string): boolean {
 export function TopBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
+  /*
+    Vai trò đọc từ hồ sơ trên máy chủ, lấy lại mỗi lần tải trang. Nút này chỉ là
+    LỐI ĐI TẮT — quyền thật do từng route quản trị tự kiểm lại với cơ sở dữ liệu,
+    nên có sửa cờ này trong DevTools cũng không vào được gì.
+  */
+  const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const name = useDisplayName();
   const plan = usePlan();
   const pathname = usePathname();
@@ -164,6 +170,32 @@ export function TopBar() {
 
           <QuickLink href="/vocabulary" icon="letters" label="Sổ từ" />
           <QuickLink href="/progress" icon="clock" label="Tiến độ" />
+
+          {/*
+            Lối vào Quản trị nằm THẲNG trên thanh, không chôn trong bảng "Khám phá".
+            Người quản trị mở nó vài chục lần mỗi ngày để đối chiếu chuyển khoản;
+            mỗi lần phải mở bảng rồi cuộn xuống cuối là một lần thừa. Và khác các
+            mục kia, nút này KHÔNG ẩn trên màn hẹp — đối chiếu thanh toán là việc
+            hay làm trên điện thoại nhất.
+          */}
+          {isAdmin ? (
+            <Link href={'/admin' as never} asChild>
+              <Pressable
+                accessibilityRole="link"
+                accessibilityLabel="Trang quản trị"
+                className="flex-row items-center gap-1.5 rounded-pill border px-3 py-1.5"
+                style={{ borderColor: paper.brandSoft, backgroundColor: paper.brandTint }}
+              >
+                <Icon name="lock" size={14} color={paper.brandMid} strokeWidth={2} />
+                <Text
+                  className="font-heavy uppercase tracking-wide"
+                  style={{ fontSize: 11, color: paper.brandMid }}
+                >
+                  Quản trị
+                </Text>
+              </Pressable>
+            </Link>
+          ) : null}
 
           {plan === 'free' ? (
             <Link href={'/upgrade' as never} asChild>
