@@ -5,6 +5,7 @@ import { Button, Card } from '@/components/ui';
 import type { ProbeDraft } from '@/services/proofloop/draft-schema';
 import { probeFor } from '@/services/proofloop/probe-table';
 import type { EvidenceMark, ProbeKind, ProofState } from '@/services/proofloop/types';
+import { Appear } from '@/components/motion/Motion';
 
 /**
  * Bảng chạy MỘT phép thử chẩn đoán.
@@ -192,6 +193,7 @@ export function ProbePanel({
       </View>
 
       {/* Lời giải thích chỉ hiện SAU khi người học đã chọn — xem ghi chú đầu tệp. */}
+      <Appear>
       {phase === 'answered' ? (
         <View className="mt-3 border-t border-border pt-3">
           <Text className="font-semi text-label text-ink">
@@ -278,6 +280,7 @@ export function ProbePanel({
           ) : null}
         </View>
       ) : null}
+      </Appear>
     </Card>
   );
 }

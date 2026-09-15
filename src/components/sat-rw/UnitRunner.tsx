@@ -8,6 +8,7 @@ import { Badge, Button, Icon, PaperCard } from '@/components/ui';
 import { SAT_RW_SKILL_LABEL, type SatRwQuestion } from '@/data/sat-rw-repository';
 import { useStudyStore } from '@/store/useStudyStore';
 import { paper } from '@/theme/tokens';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Bộ chạy câu hỏi SAT Verbal — một câu một màn.
@@ -172,12 +173,15 @@ export function UnitRunner({
         </PaperCard>
       ) : null}
 
-      <QuestionCard
-        question={question}
-        picked={picked}
-        onPick={submit}
-        showSolution={instantSolution}
-      />
+      {/* Sang câu tiếp theo: câu mới mờ dần vào, không thay chữ tại chỗ. */}
+      <CrossFade swapKey={question.id}>
+        <QuestionCard
+          question={question}
+          picked={picked}
+          onPick={submit}
+          showSolution={instantSolution}
+        />
+      </CrossFade>
 
       <View className="mt-4 flex-row flex-wrap items-center gap-2">
         <Badge label={SAT_RW_SKILL_LABEL[question.skill] ?? question.skill} tone="neutral" />

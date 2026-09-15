@@ -152,8 +152,16 @@ export default function AdminScreen() {
         </View>
       </Appear>
 
-      {tab === 'payments' ? <PaymentsPanel token={token} onDone={() => void load()} /> : null}
-      {tab === 'groups' ? <GroupsPanel token={token} /> : null}
+      {tab === 'payments' ? (
+        <Appear>
+          <PaymentsPanel token={token} onDone={() => void load()} />
+        </Appear>
+      ) : null}
+      {tab === 'groups' ? (
+        <Appear>
+          <GroupsPanel token={token} />
+        </Appear>
+      ) : null}
 
       {tab === 'users' ? (
       <Appear index={2}>
@@ -765,7 +773,11 @@ function UserRow({
           Không đọc được hoạt động của tài khoản này.
         </Text>
       ) : null}
-      {activity ? <ActivityPanel activity={activity} plan={user.plan} /> : null}
+      {activity ? (
+        <Appear>
+          <ActivityPanel activity={activity} plan={user.plan} />
+        </Appear>
+      ) : null}
     </Card>
   );
 }

@@ -10,6 +10,7 @@ import { buildExercise, type VocabExercise } from '@/services/vocab/exercise';
 import { entriesForMode, getVocabMode, type VocabModeId } from '@/services/vocab/modes';
 import { useVocabStore, type VocabEntry } from '@/store/useVocabStore';
 import { paper } from '@/theme/tokens';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Chạy một buổi ôn từ vựng theo chế độ đã chọn.
@@ -131,6 +132,8 @@ export function VocabRunner({ mode, onExit }: { mode: VocabModeId; onExit: () =>
     >
       <PaperCard className="max-w-[760px]">
         {exercise ? (
+          /* Sang từ tiếp theo thì câu hỏi mờ dần vào — mắt biết đây là câu MỚI. */
+          <CrossFade swapKey={`${index}-${entry.id}`}>
           <Body
             exercise={exercise}
             paragraph={paragraph}
@@ -145,6 +148,7 @@ export function VocabRunner({ mode, onExit }: { mode: VocabModeId; onExit: () =>
             }}
             onSpeak={() => speak(exerciseSentence(exercise))}
           />
+          </CrossFade>
         ) : (
           <Text className="font-sans text-body text-paper-body">
             Từ này thiếu dữ liệu cho cách ôn đang chọn — bỏ qua.

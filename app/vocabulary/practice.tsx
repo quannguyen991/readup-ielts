@@ -13,6 +13,7 @@ import {
 } from '@/services/vocab/modes';
 import { useVocabStore } from '@/store/useVocabStore';
 import { paper } from '@/theme/tokens';
+import { PageTransition } from '@/components/motion/Motion';
 
 /**
  * Cửa vào luyện từ vựng: chọn chế độ, rồi chạy.
@@ -41,7 +42,11 @@ export default function VocabPracticeScreen() {
   );
 
   if (active) {
-    return <VocabRunner mode={active} onExit={() => setActive(null)} />;
+    return (
+      <PageTransition routeKey={`runner-${active}`}>
+        <VocabRunner mode={active} onExit={() => setActive(null)} />
+      </PageTransition>
+    );
   }
 
   if (entries.length === 0) {
@@ -76,6 +81,7 @@ export default function VocabPracticeScreen() {
   }
 
   return (
+    <PageTransition routeKey="picker">
     <TaskShell
       backHref="/vocabulary"
       backLabel="Về sổ từ"
@@ -159,6 +165,7 @@ export default function VocabPracticeScreen() {
         />
       </PaperCard>
     </TaskShell>
+    </PageTransition>
   );
 }
 

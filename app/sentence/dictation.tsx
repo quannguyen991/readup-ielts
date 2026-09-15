@@ -6,7 +6,7 @@ import * as Speech from 'expo-speech';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
 import { DictationLibrary } from '@/components/sentence/DictationLibrary';
-import { LetterCell } from '@/components/sentence/LetterCell';
+import { LetterGrid } from '@/components/sentence/LetterGrid';
 import { PixelTrack } from '@/components/sentence/PixelTrack';
 import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
 import { Badge, Button, Icon, type IconName } from '@/components/ui';
@@ -19,12 +19,11 @@ import {
   buildLetterBoard,
   gradeLetters,
   sanitizeTyped,
-  type LetterCellState,
-  type LetterWord,
 } from '@/services/sentence/letter-cells';
 import { useSentenceStore, type DictationAttempt } from '@/store/useSentenceStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
+import { CrossFade, PageTransition } from '@/components/motion/Motion';
 
 /**
  * Bài luyện chép chính tả — MỖI CHỮ CÁI MỘT Ô.
@@ -138,15 +137,28 @@ export default function DictationScreen() {
     [addSession, attempts, chosenSet, index, items.length, logQuestions, logStudyTime],
   );
 
+  /*
+    Chọn bài và tổng kết vào bằng nhịp chuyển trang. Sang câu mới thì chỉ MỜ TẠI
+    CHỖ: trượt cả màn mỗi câu thì mười hai câu là mười hai lần tưởng tải lại trang.
+  */
   if (phase === 'setup') {
-    return <LibraryView onRandom={start} />;
+    return (
+      <PageTransition routeKey="setup">
+        <LibraryView onRandom={start} />
+      </PageTransition>
+    );
   }
 
   if (phase === 'summary') {
-    return <SummaryView attempts={attempts} onRestart={() => setPhase('setup')} />;
+    return (
+      <PageTransition routeKey="summary">
+        <SummaryView attempts={attempts} onRestart={() => setPhase('setup')} />
+      </PageTransition>
+    );
   }
 
   return (
+    <CrossFade swapKey={`item-${items[index]?.id ?? index}`} style={{ flex: 1 }}>
     <RunningView
       key={items[index]?.id ?? index}
       item={items[index]!}
@@ -171,6 +183,7 @@ export default function DictationScreen() {
             }
       }
     />
+    </CrossFade>
   );
 }
 
@@ -333,8 +346,10 @@ function RunningView({
       play(item.text, rate);
       inputRef.current?.focus();
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    // Pha BẮT (true), không phải pha nổi: ô nhập ẩn của react-native-web chặn
+    // Enter lại, không cho nổi lên cửa sổ — xem ghi chú ở `LetterGrid`.
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
   }, [item.text, onPrev, play, rate]);
 
   const next = () => {
@@ -353,6 +368,36 @@ function RunningView({
       timeSpentMs: Date.now() - enteredAt.current,
     });
   };
+
+  /*
+    Enter = sang câu sau — nút ghi "Enter" từ lâu mà chưa có dòng nào nghe phím
+    ấy, nên người học bấm rồi ngồi chờ và tưởng app đơ.
+
+    CHỈ KHI ĐÃ XONG CÂU. Enter giữa chừng mà nhảy câu là mất câu đang gõ dở. Ở
+    chế độ tự gõ, Enter lần đầu là CHẤM, lần sau mới sang câu; Shift+Enter vẫn
+    xuống dòng như bình thường.
+
+    Không có mảng phụ thuộc: đăng ký lại mỗi lượt vẽ để luôn cầm `next` và
+    `done` mới nhất, thay vì giữ một bản cũ chỉ đúng ở câu đầu tiên.
+  */
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Enter' || event.shiftKey || event.isComposing) return;
+      if (mode === 'free' && !freeChecked && freeText.trim().length > 0) {
+        event.preventDefault();
+        setFreeChecked(true);
+        return;
+      }
+      if (!done) return;
+      event.preventDefault();
+      next();
+    };
+    // Pha BẮT (true), không phải pha nổi: ô nhập ẩn của react-native-web chặn
+    // Enter lại, không cho nổi lên cửa sổ — xem ghi chú ở `LetterGrid`.
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  });
 
   /** Từ nào đã điền đúng trọn vẹn thì mở ra ở bảng luyện phát âm. */
   const solvedWords = useMemo(
@@ -499,6 +544,7 @@ function RunningView({
                 onChange={(text) => setLetters(sanitizeTyped(text, board.answer.length))}
                 inputRef={inputRef}
                 onClear={() => setLetters('')}
+                hint="Mỗi ô là một chữ cái — Tab để nghe lại"
               />
             ) : (
               <View className="mt-3">
@@ -741,123 +787,6 @@ function RunningView({
         </View>
       </View>
     </TaskShell>
-  );
-}
-
-/**
- * Lưới ô chữ.
- *
- * Mọi phím vào MỘT ô nhập ẩn phủ lên lưới, rồi chữ được rải ra từng ô — chứ
- * không phải mỗi ô một `TextInput`. Sáu mươi ô nhập riêng nghĩa là sáu mươi
- * chỗ phải tự chuyển tiêu điểm qua lại, và phím xoá lùi ở đầu ô sẽ không biết
- * quay về ô trước. Với một ô nhập duy nhất thì gõ, xoá lùi, dán, chọn — tất cả
- * hoạt động đúng như bàn phím vốn dĩ, miễn phí.
- */
-function LetterGrid({
-  answer,
-  revealed,
-  words,
-  states,
-  caretAt,
-  liveResult,
-  celebrate,
-  value,
-  onChange,
-  inputRef,
-  onClear,
-}: {
-  answer: string;
-  /** Đã bấm "Xem đáp án" — ô hiện chữ đúng, không cho gõ nữa. */
-  revealed: boolean;
-  words: LetterWord[];
-  states: LetterCellState[];
-  caretAt: number;
-  liveResult: boolean;
-  /** Đúng cả câu — cả lưới chuyển xanh thành một đợt sóng. */
-  celebrate: boolean;
-  value: string;
-  onChange: (text: string) => void;
-  inputRef: React.RefObject<TextInput | null>;
-  onClear: () => void;
-}) {
-  useEffect(() => {
-    const timer = setTimeout(() => inputRef.current?.focus(), 80);
-    return () => clearTimeout(timer);
-  }, [inputRef]);
-
-  return (
-    <View className="mt-3 rounded-panel border-2 p-4" style={{ borderColor: paper.brandSoft }}>
-      {/*
-        Ô nhập trong suốt phủ ĐÚNG vùng ô chữ, không phủ cả thẻ: hàng chân thẻ
-        có nút "Xoá hết", mà một nút nằm dưới lớp phủ thì bấm không tới.
-      */}
-      <View>
-        <View className="flex-row flex-wrap gap-x-4 gap-y-2.5">
-          {words.map((word, wordIndex) => (
-            <View key={wordIndex} className="flex-row items-center gap-1">
-              {word.units.map((unit, unitIndex) =>
-                unit.kind === 'mark' ? (
-                  <Text key={unitIndex} className="font-strong text-bodyLg text-paper-muted">
-                    {unit.text}
-                  </Text>
-                ) : (
-                  <LetterCell
-                    key={unitIndex}
-                    char={
-                      revealed
-                        ? answer[unit.index] ?? ''
-                        : value[unit.index]?.toUpperCase() ?? ''
-                    }
-                    state={revealed ? 'correct' : states[unit.index] ?? 'empty'}
-                    caret={!revealed && caretAt === unit.index}
-                    liveResult={liveResult}
-                    celebrate={celebrate}
-                    delayMs={unit.index * 18}
-                  />
-                ),
-              )}
-            </View>
-          ))}
-        </View>
-
-        <TextInput
-          ref={inputRef}
-          value={value}
-          onChangeText={onChange}
-          editable={!revealed}
-          accessibilityLabel="Vùng điền chữ cái"
-          autoCapitalize="characters"
-          autoCorrect={false}
-          autoComplete="off"
-          spellCheck={false}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            opacity: 0,
-            color: 'transparent',
-          }}
-        />
-      </View>
-
-      <View className="mt-3 flex-row items-center justify-between">
-        <Text className="font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-          Mỗi ô là một chữ cái — Tab để nghe lại
-        </Text>
-        <Pressable
-          accessibilityRole="button"
-          onPress={onClear}
-          className="flex-row items-center gap-1.5 py-1"
-        >
-          <Icon name="refresh" size={13} color={paper.muted} strokeWidth={2} />
-          <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-            Xoá hết
-          </Text>
-        </Pressable>
-      </View>
-    </View>
   );
 }
 

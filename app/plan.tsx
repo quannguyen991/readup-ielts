@@ -271,6 +271,7 @@ function StageCard({
       </Pressable>
 
       {open ? (
+        <Appear>
         <View className="mt-3">
           <Text className="font-sans text-body text-muted" style={{ lineHeight: 22 }}>
             {stage.summary}
@@ -312,6 +313,7 @@ function StageCard({
             ))}
           </View>
         </View>
+        </Appear>
       ) : null}
     </Card>
   );

@@ -27,6 +27,7 @@ import {
 } from '@/lib/billing/plans';
 import { usePlanStatus, useBillingStore } from '@/store/useBillingStore';
 import { color, gradient } from '@/theme/tokens';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Bảng giá.
@@ -93,6 +94,8 @@ export default function UpgradeScreen() {
       </View>
 
       <View className="mt-4">
+        {/* Gạt tháng / năm: bảng giá mới mờ dần vào thay vì nhảy số tại chỗ. */}
+        <CrossFade swapKey={yearly ? 'yearly' : 'monthly'}>
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
           {PLAN_ORDER.map((id) => (
             <PlanCard
@@ -104,6 +107,7 @@ export default function UpgradeScreen() {
             />
           ))}
         </Grid>
+        </CrossFade>
       </View>
 
       {/*

@@ -3,6 +3,8 @@ import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { TaskShell } from '@/components/layout/TaskShell';
+import { Confetti } from '@/components/motion/Confetti';
+import { LetterGrid } from '@/components/sentence/LetterGrid';
 import { Button, Icon, PaperCard } from '@/components/ui';
 import {
   SENTENCE_DIFFICULTY_LABEL,
@@ -13,18 +15,20 @@ import { SENTENCE_ENRICHMENT } from '@/data/sentence-enrichment';
 import { getTranslationSet } from '@/data/translation-sets';
 import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
-import { buildReveal } from '@/services/sentence/word-reveal';
+import { buildLetterBoard, gradeLetters, sanitizeTyped } from '@/services/sentence/letter-cells';
 import { chunkItems, itemsForStructure } from '@/services/writing/translation-path';
 import { useSentenceStore, type TranslationAttempt } from '@/store/useSentenceStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
+import { Appear, CrossFade, PageTransition } from '@/components/motion/Motion';
 
 /**
  * Luyện dịch Việt → Anh bằng cách TÁI TẠO ĐÚNG CÂU MẪU.
  *
- * Câu mẫu hiện sẵn nhưng bị che: mỗi từ chỉ lộ chữ cái đầu cộng số dấu sao đúng
- * bằng số chữ còn lại. Gõ đúng từ nào thì ô đó lật ra. Sai một từ là dừng ngay
- * tại đó — chỗ dừng chính là chỗ cần nghĩ.
+ * Câu mẫu thành LƯỚI Ô CHỮ, mỗi chữ cái một ô — cùng lưới, cùng luật chấm với
+ * màn Chép chính tả (15/09/2026, trước đó là dãy thẻ từ bị che). Ô gõ sai đỏ
+ * ngay tại chỗ, nên chỗ dừng chính là chỗ cần nghĩ; đúng cả câu thì cả lưới
+ * xanh theo một đợt sóng và bắn pháo giấy.
  *
  * Bản trước ở đây là "dịch tự do rồi tự chấm": gõ gì cũng được, bấm xem đáp án,
  * rồi tự bấm "Đúng ý" / "Cần xem lại". Cách ấy tôn trọng chuyện một câu tiếng
@@ -130,23 +134,38 @@ export default function TranslateScreen() {
     setPhase('summary');
   };
 
+  /*
+    Chọn bài → từng câu → tổng kết: mỗi lần đổi vào bằng đúng nhịp chuyển trang.
+    Khoá theo mã câu nên sang câu mới cũng là một lần chuyển cảnh — không có nó,
+    câu mới thế chỗ câu cũ trong nháy mắt và người học không kịp thấy đã đổi câu.
+  */
   if (phase === 'setup') {
-    return <LibraryView onRandom={start} />;
+    return (
+      <PageTransition routeKey="setup">
+        <LibraryView onRandom={start} />
+      </PageTransition>
+    );
   }
 
   if (phase === 'summary') {
-    return <SummaryView attempts={attempts} items={items} onRestart={() => setPhase('setup')} />;
+    return (
+      <PageTransition routeKey="summary">
+        <SummaryView attempts={attempts} items={items} onRestart={() => setPhase('setup')} />
+      </PageTransition>
+    );
   }
 
   return (
-    <RunningView
-      key={items[index]?.id ?? index}
-      item={items[index]!}
-      items={items}
-      index={index}
-      total={items.length}
-      onSubmit={finishItem}
-    />
+    <CrossFade swapKey={`item-${items[index]?.id ?? index}`} style={{ flex: 1 }}>
+      <RunningView
+        key={items[index]?.id ?? index}
+        item={items[index]!}
+        items={items}
+        index={index}
+        total={items.length}
+        onSubmit={finishItem}
+      />
+    </CrossFade>
   );
 }
 
@@ -198,11 +217,33 @@ function RunningView({
   total: number;
   onSubmit: (attempt: TranslationAttempt) => void;
 }) {
-  const [typed, setTyped] = useState('');
+  const [letters, setLetters] = useState('');
   const [showHint, setShowHint] = useState(false);
   const enrichment = SENTENCE_ENRICHMENT[item.id];
+  const inputRef = useRef<TextInput>(null);
 
-  const reveal = useMemo(() => buildReveal(item.en, typed), [item.en, typed]);
+  /*
+    Câu mẫu thành lưới ô chữ, chấm bằng đúng bộ luật của màn Chép chính tả.
+
+    `grade.done` chỉ bật khi MỌI ô đều đúng — không phải khi điền kín. Đó là
+    điều kiện duy nhất để ăn mừng và để phím Enter được sang câu.
+  */
+  const board = useMemo(() => buildLetterBoard(item.en), [item.en]);
+  const grade = useMemo(() => gradeLetters(board.answer, letters), [board.answer, letters]);
+  const done = grade.done;
+
+  /** Từ nào đã đúng trọn vẹn — để đếm "x/y từ đúng" và biết từ tiếp theo là từ nào. */
+  const solvedWords = useMemo(
+    () =>
+      board.words.map((word) =>
+        word.units.every((u) => u.kind !== 'letter' || grade.states[u.index] === 'correct'),
+      ),
+    [board.words, grade.states],
+  );
+  const solvedCount = solvedWords.filter(Boolean).length;
+  const nextWord = board.words[solvedWords.indexOf(false)] ?? null;
+  const nextWordLength = nextWord ? nextWord.units.filter((u) => u.kind === 'letter').length : 0;
+  const percent = board.words.length > 0 ? (solvedCount / board.words.length) * 100 : 0;
 
   const enteredAt = useRef(0);
   useEffect(() => {
@@ -213,10 +254,14 @@ function RunningView({
     onSubmit({
       itemId: item.id,
       topic: item.topic,
-      typed,
-      // "Đúng" ở đây nghĩa là tự tái tạo được câu mẫu mà KHÔNG mở gợi ý. Ai đã
-      // mở gợi ý thì vẫn đi tiếp được, chỉ là câu đó không tính là làm được.
-      selfCorrect: !showHint,
+      typed: letters,
+      /*
+        "Đúng" nghĩa là TỰ tái tạo được cả câu mẫu mà không mở gợi ý.
+
+        Bản trước ghi `!showHint`, nên bấm "Bỏ qua câu này" khi chưa gõ chữ nào
+        vẫn được tính là làm được — sổ tiến độ đếm cả những câu bỏ dở.
+      */
+      selfCorrect: done && !showHint,
       timeSpentMs: Date.now() - enteredAt.current,
     });
   };
@@ -225,41 +270,49 @@ function RunningView({
     Ctrl+Space — MỞ HỘ ĐÚNG MỘT TỪ, không phải mở cả câu.
 
     Chỗ tắc của bài này gần như luôn là một từ: người học biết cấu trúc nhưng
-    không nhớ đúng từ mà câu mẫu dùng. Không có lối gỡ thì họ bỏ dở cả câu; mở
-    cả câu thì phần còn lại chẳng còn gì để làm. Mở một từ trả lại đúng thứ họ
-    thiếu rồi để họ đi tiếp.
+    không nhớ đúng từ mà câu mẫu dùng. Mở một từ trả lại đúng thứ họ thiếu rồi để
+    họ đi tiếp. Với lưới ô chữ, "mở một từ" là điền sẵn mọi chữ tới hết từ đầu
+    tiên còn sai.
 
-    Nó ghi vào `usedHint`, và câu có mở hộ KHÔNG tính là tự làm được — cùng luật
-    với nút "Xem gợi ý" vốn có. Một lối gỡ không để lại dấu vết thì sổ tiến độ
-    bắt đầu nói dối.
+    Câu có mở hộ KHÔNG tính là tự làm được — cùng luật với nút "Xem gợi ý". Một
+    lối gỡ không để lại dấu vết thì sổ tiến độ bắt đầu nói dối.
   */
   const revealNextWord = useCallback(() => {
-    const active = reveal.tokens.find((t) => t.status !== 'solved');
-    if (!active) return;
-    const upTo = reveal.tokens.slice(0, reveal.tokens.indexOf(active) + 1);
-    setTyped(upTo.map((t) => t.word).join(' '));
+    if (!nextWord) return;
+    const lastLetter = [...nextWord.units].reverse().find((u) => u.kind === 'letter');
+    if (!lastLetter || lastLetter.kind !== 'letter') return;
+    setLetters(board.answer.slice(0, lastLetter.index + 1));
     setShowHint(true);
-  }, [reveal.tokens]);
+    inputRef.current?.focus();
+  }, [board.answer, nextWord]);
 
   /*
-    Bắt phím ở cấp cửa sổ, cùng cách màn Chép chính tả bắt phím Tab.
+    Phím tắt bắt ở cấp cửa sổ: react-native-web KHÔNG giao Ctrl+Space qua
+    `onKeyPress` của TextInput, nên đặt trên ô nhập thì tổ hợp ấy rơi vào hư
+    không.
 
-    Đã thử đặt trên chính ô nhập trước: react-native-web KHÔNG giao Ctrl+Space
-    qua `onKeyPress` của TextInput, nên tổ hợp ấy rơi vào hư không. Ở cấp cửa sổ
-    thì nó tới, và `preventDefault` giữ trình duyệt khỏi cuộn trang.
+    Enter chỉ sang câu khi ĐÃ ĐÚNG CẢ CÂU — Enter giữa chừng mà nhảy câu là mất
+    câu đang gõ dở. Không có mảng phụ thuộc: đăng ký lại mỗi lượt vẽ để luôn cầm
+    `done` và `goNext` mới nhất.
   */
   useEffect(() => {
     if (Platform.OS !== 'web') return;
     const onKey = (event: KeyboardEvent) => {
-      if (event.code !== 'Space' || !(event.ctrlKey || event.metaKey)) return;
-      event.preventDefault();
-      revealNextWord();
+      if (event.code === 'Space' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        revealNextWord();
+        return;
+      }
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && done) {
+        event.preventDefault();
+        goNext();
+      }
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [revealNextWord]);
-
-  const percent = reveal.total > 0 ? (reveal.solvedCount / reveal.total) * 100 : 0;
+    // Pha BẮT (true), không phải pha nổi: ô nhập ẩn của react-native-web chặn
+    // Enter lại, không cho nổi lên cửa sổ — xem ghi chú ở `LetterGrid`.
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  });
 
   return (
     <TaskShell
@@ -268,17 +321,18 @@ function RunningView({
       title="Dịch câu"
       subtitle="Vietnamese → English"
       icon="languages"
+      tone="paper"
       right={
-        <View className="rounded-pill bg-white/20 px-3.5 py-1.5">
-          <Text className="font-strong text-label text-white">
-            Câu {index + 1}/{total}
+        <View className="rounded-pill border border-brand-soft bg-white px-3.5 py-1.5">
+          <Text className="font-strong text-label text-paper-body">
+            {index + 1} / {total}
           </Text>
         </View>
       }
     >
       <View className="gap-4 lg:flex-row">
         {/* ---------------------------------------------------------- đề bài */}
-        <View className="lg:w-[46%]">
+        <View className="lg:w-[38%]">
           <PaperCard>
             <View className="flex-row items-center justify-between">
               <Text className="font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
@@ -293,21 +347,6 @@ function RunningView({
               Tiếng Việt
             </Text>
             <Text className="mt-1.5 font-strong text-sectionTitle text-paper-ink">{item.vi}</Text>
-
-            <View className="mt-5 h-px bg-brand-soft" />
-
-            <Text className="mt-4 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
-              Câu mẫu — gõ đúng để mở từ
-            </Text>
-            <View className="mt-2.5 flex-row flex-wrap gap-1.5">
-              {reveal.tokens.map((token, i) => (
-                <WordChip
-                  key={`${item.id}-${i}`}
-                  token={token}
-                  warn={token.status === 'active' && reveal.mismatch}
-                />
-              ))}
-            </View>
 
             <Pressable
               accessibilityRole="button"
@@ -326,30 +365,29 @@ function RunningView({
             </Pressable>
 
             {showHint ? (
+              <Appear>
               <View className="mt-2.5 rounded-panel border border-brand-soft bg-brand-tint p-3">
                 <Text className="font-sans text-body text-paper-body">{item.hint}</Text>
-                {reveal.solvedCount < reveal.total ? (
+                {nextWord ? (
                   <Text className="mt-2 font-sans text-label text-paper-muted">
-                    Từ tiếp theo có{' '}
-                    <Text className="font-strong">
-                      {reveal.tokens[reveal.solvedCount]?.key.length ?? 0} chữ cái
-                    </Text>
-                    , bắt đầu bằng “{reveal.tokens[reveal.solvedCount]?.word.slice(0, 1)}”.
+                    Từ tiếp theo có <Text className="font-strong">{nextWordLength} chữ cái</Text>, bắt
+                    đầu bằng “{nextWord.text.replace(/[^A-Za-z0-9]/g, '').slice(0, 1)}”.
                   </Text>
                 ) : null}
               </View>
+              </Appear>
             ) : null}
           </PaperCard>
 
           {/*
             CÁC CÂU CÒN LẠI.
 
-            Không phải để làm trước, mà để biết còn bao xa. Một bài mười câu mà
-            chỉ thấy đúng câu đang gõ thì người học không ước lượng được nên
-            ngồi tiếp hay dừng — và không ước lượng được thì hay dừng.
+            Không phải để làm trước, mà để biết còn bao xa. Một bài mười câu mà chỉ
+            thấy đúng câu đang gõ thì người học không ước lượng được nên ngồi tiếp
+            hay dừng — và không ước lượng được thì hay dừng.
 
-            Chỉ hiện tiếng Việt: hiện kèm bản tiếng Anh là phát đáp án của những
-            câu chưa tới.
+            Chỉ hiện tiếng Việt: hiện kèm bản tiếng Anh là phát đáp án của những câu
+            chưa tới.
           */}
           {items.length > 1 ? (
             <PaperCard className="mt-3">
@@ -379,61 +417,58 @@ function RunningView({
 
         {/* ------------------------------------------------------- bài dịch */}
         <View className="lg:flex-1">
-          <PaperCard>
+          <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
+            {done ? <Confetti seed={item.id} /> : null}
+
             <View className="flex-row items-center justify-between">
               <Text className="font-heavy text-cardTitle text-paper-ink">Bài dịch của em</Text>
               <Text
                 className="font-strong text-label"
-                style={{ color: reveal.done ? paper.brandMid : paper.muted }}
+                style={{ color: done ? color.success : paper.muted }}
               >
-                {reveal.solvedCount}/{reveal.total} từ đúng
+                {solvedCount}/{board.words.length} từ đúng
               </Text>
             </View>
 
             <View className="mt-2.5 h-2 overflow-hidden rounded-pill bg-brand-soft">
               <View
                 className="h-full rounded-pill"
-                style={{ width: `${percent}%`, backgroundColor: paper.brandMid }}
+                style={{ width: `${percent}%`, backgroundColor: done ? color.success : paper.brandMid }}
               />
             </View>
 
-            <TextInput
-              value={typed}
-              onChangeText={setTyped}
-              onSubmitEditing={reveal.done ? goNext : undefined}
-              placeholder="Gõ bản dịch tiếng Anh của bạn…"
-              placeholderTextColor={paper.muted}
-              autoCapitalize="none"
-              autoCorrect={false}
-              returnKeyType="next"
-              className="mt-4 rounded-panel border bg-white px-3.5 py-3 font-sans text-bodyLg text-paper-ink"
-              style={{
-                borderColor: reveal.mismatch
-                  ? color.danger
-                  : reveal.done
-                    ? paper.brandMid
-                    : paper.brandSoft,
-                borderWidth: 1.5,
-              }}
+            <LetterGrid
+              answer={board.answer}
+              revealed={false}
+              words={board.words}
+              states={grade.states}
+              caretAt={letters.length}
+              liveResult
+              celebrate={done}
+              value={letters}
+              onChange={(text) => setLetters(sanitizeTyped(text, board.answer.length))}
+              inputRef={inputRef}
+              onClear={() => setLetters('')}
+              hint="Mỗi ô là một chữ cái — Ctrl+Space mở hộ một từ · Enter sang câu sau"
             />
 
-            {reveal.mismatch ? (
-              <Text className="mt-2 font-mid text-label text-danger">
-                Chưa khớp câu mẫu ở từ đang gõ — sửa lại từ đó rồi đi tiếp.
-              </Text>
+            {done ? (
+              <>
+                <View className="mt-4 flex-row items-center gap-2">
+                  <Icon name="check" size={18} color={color.success} strokeWidth={2.4} />
+                  <Text className="font-strong text-bodyLg text-success-ink">
+                    {showHint ? 'Xong câu — lần sau thử không mở gợi ý nhé!' : 'Bạn xuất sắc — đúng cả câu!'}
+                  </Text>
+                </View>
+                <View className="mt-2 rounded-panel bg-paper-canvas p-3.5">
+                  <Text className="font-strong text-bodyLg text-paper-ink">{item.en}</Text>
+                </View>
+              </>
             ) : null}
 
-            {/* Phím tắt nói ngay dưới ô gõ, chỗ mắt đang nhìn — để trong trang trợ giúp thì không ai đọc. */}
-            <Text className="mt-2 font-sans text-label text-paper-muted">
-              <Text className="font-semi text-paper-body">Ctrl</Text> +{' '}
-              <Text className="font-semi text-paper-body">Space</Text> mở hộ một từ ·{' '}
-              <Text className="font-semi text-paper-body">Enter</Text> sang câu sau
-            </Text>
-
-            <View className="mt-3 flex-row flex-wrap items-center gap-2">
-              <Button label="Xoá hết" variant="brandOutline" size="sm" onPress={() => setTyped('')} />
+            <View className="mt-4 flex-row flex-wrap items-center gap-2">
               <View className="flex-1" />
-              {reveal.done ? (
+              {done ? (
                 <Button
                   label={index + 1 < total ? 'Câu tiếp theo' : 'Xem kết quả'}
                   variant="brand"
@@ -445,92 +480,43 @@ function RunningView({
               )}
             </View>
 
-            {reveal.done ? (
+            {done && enrichment ? (
               <View className="mt-4 gap-3">
-                <View className="rounded-panel border border-success bg-success-soft p-3.5">
-                  <View className="flex-row items-center gap-2">
-                    <Icon name="check" size={17} color={color.success} strokeWidth={2.4} />
-                    <Text className="font-strong text-body text-success-ink">
-                      Chính xác! Câu hoàn chỉnh:
-                    </Text>
+                <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
+                  <Text className="font-strong text-label text-paper-muted">
+                    Cách diễn đạt khác — câu mẫu không phải bản dịch duy nhất đúng
+                  </Text>
+                  <View className="mt-2 gap-1.5">
+                    {enrichment.paraphrases.map((p, i) => (
+                      <Text key={i} className="font-sans text-body text-paper-body">
+                        • {p}
+                      </Text>
+                    ))}
                   </View>
-                  <Text className="mt-1.5 font-strong text-bodyLg text-paper-ink">{item.en}</Text>
                 </View>
 
-                {enrichment ? (
-                  <>
-                    <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
-                      <Text className="font-strong text-label text-paper-muted">
-                        Cách diễn đạt khác — câu mẫu không phải bản dịch duy nhất đúng
-                      </Text>
-                      <View className="mt-2 gap-1.5">
-                        {enrichment.paraphrases.map((p, i) => (
-                          <Text key={i} className="font-sans text-body text-paper-body">
-                            • {p}
-                          </Text>
-                        ))}
+                <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
+                  <Text className="font-strong text-label text-paper-muted">Từ vựng mới</Text>
+                  <View className="mt-2 gap-2.5">
+                    {enrichment.vocab.map((v, i) => (
+                      <View key={i}>
+                        <Text className="font-sans text-body text-paper-ink">
+                          <Text className="font-strong">{v.word}</Text>
+                          <Text className="text-paper-muted"> — {v.meaningVi}</Text>
+                        </Text>
+                        <Text className="font-sans text-label text-paper-muted">{v.example}</Text>
                       </View>
-                    </View>
-
-                    <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
-                      <Text className="font-strong text-label text-paper-muted">Từ vựng mới</Text>
-                      <View className="mt-2 gap-2.5">
-                        {enrichment.vocab.map((v, i) => (
-                          <View key={i}>
-                            <Text className="font-sans text-body text-paper-ink">
-                              <Text className="font-strong">{v.word}</Text>
-                              <Text className="text-paper-muted"> — {v.meaningVi}</Text>
-                            </Text>
-                            <Text className="font-sans text-label text-paper-muted">{v.example}</Text>
-                          </View>
-                        ))}
-                      </View>
-                    </View>
-                  </>
-                ) : null}
+                    ))}
+                  </View>
+                </View>
               </View>
             ) : null}
-          </PaperCard>
+          </View>
         </View>
       </View>
     </TaskShell>
   );
 }
-
-/**
- * Một từ của câu mẫu.
- *
- * Ba trạng thái phân biệt bằng HAI dấu hiệu chứ không chỉ bằng màu — đã mở thì
- * đổi cả chữ (hiện từ thật thay cho dấu sao), đang gõ lệch thì thêm viền đỏ.
- * Chỉ đổi màu thôi thì người phân biệt màu kém không thấy gì thay đổi.
- */
-function WordChip({ token, warn }: { token: ReturnType<typeof buildReveal>['tokens'][number]; warn: boolean }) {
-  const solved = token.status === 'solved';
-  const active = token.status === 'active';
-
-  return (
-    <View
-      className="rounded-md border px-2 py-1"
-      style={{
-        backgroundColor: solved ? paper.fill : '#FFFFFF',
-        borderColor: warn ? color.danger : solved ? paper.fillEdge : active ? paper.brandMid : paper.brandSoft,
-        borderWidth: solved || active || warn ? 1.5 : 1,
-      }}
-    >
-      <Text
-        className={solved ? 'font-strong text-body' : 'font-mid text-body'}
-        style={{
-          color: solved ? paper.ink : warn ? color.danger : paper.muted,
-          letterSpacing: solved ? 0 : 1,
-        }}
-      >
-        {solved ? token.word : token.masked}
-      </Text>
-    </View>
-  );
-}
-
-// ------------------------------------------------------------------- kết quả
 
 function SummaryView({
   attempts,
@@ -558,6 +544,7 @@ function SummaryView({
       title="Xong buổi luyện"
       subtitle="Translation practice"
       icon="languages"
+      tone="paper"
     >
       <PaperCard className="items-center py-7">
         <Text className="font-heavy text-hero text-paper-ink">
@@ -586,10 +573,10 @@ function SummaryView({
       ) : null}
 
       <View className="mt-4 flex-row flex-wrap gap-2">
-        <Button label="Luyện lại" iconLeft="refresh" variant="onDarkSolid" onPress={onRestart} />
+        <Button label="Luyện lại" iconLeft="refresh" variant="brand" onPress={onRestart} />
         <Button
           label="Về Luyện câu"
-          variant="onDark"
+          variant="brandOutline"
           onPress={() => router.replace('/sentence' as never)}
         />
       </View>

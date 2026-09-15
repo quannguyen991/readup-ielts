@@ -18,6 +18,7 @@ import {
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVideoTranscriptStore } from '@/store/useVideoTranscriptStore';
 import { color, paper } from '@/theme/tokens';
+import { CrossFade, PageTransition } from '@/components/motion/Motion';
 
 /**
  * Chép chính tả theo video YouTube.
@@ -74,17 +75,21 @@ export default function YoutubeDictationScreen() {
     remember(id, list, auto);
   };
 
+  /*
+    Chọn video → luyện: vào bằng nhịp chuyển trang. KHÔNG làm hiệu ứng khi sang câu
+    trong lúc luyện — khoá lại cả khung là dựng lại trình nhúng YouTube, tức là
+    tải lại video mỗi câu.
+  */
   if (phase === 'pick' || !videoId) {
     return (
-      <PickView
-        urlInput={urlInput}
-        onChangeUrl={setUrlInput}
-        onReady={start}
-      />
+      <PageTransition routeKey="pick">
+        <PickView urlInput={urlInput} onChangeUrl={setUrlInput} onReady={start} />
+      </PageTransition>
     );
   }
 
   return (
+    <PageTransition routeKey={`practice-${videoId}`}>
     <PracticeView
       videoId={videoId}
       sentences={sentences}
@@ -95,6 +100,7 @@ export default function YoutubeDictationScreen() {
         setSentences([]);
       }}
     />
+    </PageTransition>
   );
 }
 
@@ -372,8 +378,10 @@ function PracticeView({
         goNext();
       }
     };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    // Pha BẮT (true), không phải pha nổi: ô nhập ẩn của react-native-web chặn
+    // Enter lại, không cho nổi lên cửa sổ — xem ghi chú ở `LetterGrid`.
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
   }, [replay, goNext, solved]);
 
   // Sang câu mới thì tua tới đúng chỗ và trả tiêu điểm về ô nhập.
@@ -440,6 +448,7 @@ function PracticeView({
         ))}
       </View>
 
+      <CrossFade swapKey={mode}>
       {mode === 'quiz' ? (
         <ListeningQuiz videoId={videoId} sentences={sentences} onSeek={(at) => play(at)} />
       ) : (
@@ -621,6 +630,7 @@ function PracticeView({
         </View>
       </View>
       )}
+      </CrossFade>
     </TaskShell>
   );
 }

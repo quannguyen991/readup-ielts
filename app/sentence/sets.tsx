@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { Screen } from '@/components/layout/Screen';
 import { DictationLibrary } from '@/components/sentence/DictationLibrary';
 import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Thư viện bài của cả hai kiểu luyện câu.
@@ -60,7 +61,9 @@ export default function SentenceSetsScreen() {
       </View>
 
       <View className="mt-5">
-        {tab === 'dictation' ? <DictationLibrary heading={false} /> : <TranslationLibrary />}
+        <CrossFade swapKey={tab}>
+          {tab === 'dictation' ? <DictationLibrary heading={false} /> : <TranslationLibrary />}
+        </CrossFade>
       </View>
     </Screen>
   );

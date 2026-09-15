@@ -15,6 +15,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { useWritingStore } from '@/store/useWritingStore';
 import { color, paper } from '@/theme/tokens';
 import type { AnnotationCategory, WritingAnnotation, WritingEvaluation } from '@/lib/writing/types';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Kết quả chấm bài.
@@ -326,6 +327,8 @@ export default function WritingResultScreen() {
             </View>
 
             <View className="p-5">
+              {/* Đổi tab Bài viết / Lỗi / Nhận xét / Bản sửa / Bài mẫu: mờ dần sang. */}
+              <CrossFade swapKey={tab}>
               {tab === 'essay' ? (
                 <EssayTab
                   text={submission.bodyText}
@@ -352,6 +355,7 @@ export default function WritingResultScreen() {
               ) : null}
 
               {tab === 'model' ? <ModelEssayPanel promptId={prompt.id} /> : null}
+              </CrossFade>
             </View>
           </PaperCard>
 

@@ -36,6 +36,7 @@ import {
   type ModuleReview,
 } from '@/services/sat-rw/mock/full-test';
 import { color, spacing as space } from '@/theme/tokens';
+import { PageTransition } from '@/components/motion/Motion';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -59,12 +60,24 @@ export default function SatFullTestScreen() {
     setState(startFullTest(`full-${Date.now()}`));
   }, []);
 
-  if (!state) return <Intro onStart={start} />;
+  /*
+    Mỗi chặng của bài thi — giới thiệu, hai module R&W, nghỉ, hai module Math,
+    kết quả, xem lại — vào bằng đúng nhịp chuyển trang. Đây là màn dài nhất app,
+    chuyển chặng mà cụt ngang thì người thi không nhận ra mình vừa sang phần mới.
+  */
+  if (!state) {
+    return (
+      <PageTransition routeKey="intro">
+        <Intro onStart={start} />
+      </PageTransition>
+    );
+  }
 
   const { stage } = state;
 
   if (stage.kind === 'rw') {
     return (
+      <PageTransition routeKey={`rw-${stage.module}`}>
       <RwRunner
         key={`rw-${stage.module}`}
         title="Reading and Writing"
@@ -80,11 +93,13 @@ export default function SatFullTestScreen() {
           );
         }}
       />
+      </PageTransition>
     );
   }
 
   if (stage.kind === 'math') {
     return (
+      <PageTransition routeKey={`math-${stage.module}`}>
       <MathRunner
         key={`math-${stage.module}`}
         title="Math"
@@ -103,22 +118,29 @@ export default function SatFullTestScreen() {
           );
         }}
       />
+      </PageTransition>
     );
   }
 
   if (stage.kind === 'break') {
     return (
-      <BreakScreen
-        minutes={stage.minutes}
-        onContinue={() => setState((s) => (s ? endBreak(s) : s))}
-      />
+      <PageTransition routeKey="break">
+        <BreakScreen
+          minutes={stage.minutes}
+          onContinue={() => setState((s) => (s ? endBreak(s) : s))}
+        />
+      </PageTransition>
     );
   }
 
-  return reviewing ? (
-    <ReviewScreen state={state} onBack={() => setReviewing(false)} />
-  ) : (
-    <ResultScreen state={state} onRestart={start} onReview={() => setReviewing(true)} />
+  return (
+    <PageTransition routeKey={reviewing ? 'review' : 'result'}>
+      {reviewing ? (
+        <ReviewScreen state={state} onBack={() => setReviewing(false)} />
+      ) : (
+        <ResultScreen state={state} onRestart={start} onReview={() => setReviewing(true)} />
+      )}
+    </PageTransition>
   );
 }
 

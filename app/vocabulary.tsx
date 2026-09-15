@@ -12,6 +12,7 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
 import { color, wordStatusColor } from '@/theme/tokens';
 import type { WordStatusKind } from '@/types/database';
+import { CrossFade } from '@/components/motion/Motion';
 
 const CARD_KIND_LABEL: Record<CardKind, string> = {
   word_to_meaning: 'Từ → nghĩa',
@@ -111,6 +112,8 @@ export default function VocabularyScreen() {
         </Grid>
       </View>
 
+      {/* Đổi tab Danh sách / Ôn ngay: nội dung mờ dần sang, không nhảy cụt. */}
+      <CrossFade swapKey={tab}>
       {tab === 'list' ? <PracticeStrip entries={words} /> : null}
 
       {tab === 'review' ? (
@@ -170,6 +173,7 @@ export default function VocabularyScreen() {
           </View>
         </Card>
       )}
+      </CrossFade>
     </Screen>
   );
 }

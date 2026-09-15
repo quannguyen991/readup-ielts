@@ -14,6 +14,7 @@ import {
 import { TOPICS } from '@/data/articles';
 import { color } from '@/theme/tokens';
 import type { Task2Essay, WritingPrompt, WritingTask } from '@/lib/writing/types';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Kho đề Writing.
@@ -124,6 +125,7 @@ export default function WritingLibraryScreen() {
         ))}
       </View>
 
+      <CrossFade swapKey={tab}>
       {tab === 'sat' ? (
         <Card className="mt-5">
           <Text className="font-heavy text-cardTitle text-ink">SAT Writing</Text>
@@ -208,6 +210,7 @@ export default function WritingLibraryScreen() {
           ) : null}
         </>
       )}
+      </CrossFade>
     </Screen>
   );
 }

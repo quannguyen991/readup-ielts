@@ -45,6 +45,7 @@ import {
   useMathTotals,
 } from '@/store/useMathStore';
 import { color, gradient } from '@/theme/tokens';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Trang chủ module SAT Math.
@@ -100,11 +101,13 @@ export default function MathScreen() {
         />
       </View>
 
-      {tab === 'path' ? (
-        <PathView progressBySet={progressBySet} nextSetId={nextSet?.id ?? null} />
-      ) : null}
-      {tab === 'library' ? <LibraryView progressBySet={progressBySet} /> : null}
-      {tab === 'stats' ? <StatsView /> : null}
+      <CrossFade swapKey={tab}>
+        {tab === 'path' ? (
+          <PathView progressBySet={progressBySet} nextSetId={nextSet?.id ?? null} />
+        ) : null}
+        {tab === 'library' ? <LibraryView progressBySet={progressBySet} /> : null}
+        {tab === 'stats' ? <StatsView /> : null}
+      </CrossFade>
     </Screen>
   );
 }

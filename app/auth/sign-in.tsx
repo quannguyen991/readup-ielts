@@ -13,6 +13,7 @@ import {
 import { PHONE_ERROR_LABEL, parsePhone } from '@/services/auth/phone';
 import { isAuthAvailable, sendEmailOtp, sendPhoneOtp, signInWithOAuth } from '@/services/auth/session';
 import { color } from '@/theme/tokens';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Màn đăng nhập.
@@ -171,6 +172,7 @@ export default function SignInScreen() {
             </View>
           ) : null}
 
+          <CrossFade swapKey={mode}>
           {caps.phone && mode === 'phone' ? (
             <View className="mt-3">
               <Text className="font-mid text-label text-muted">Số di động</Text>
@@ -227,6 +229,7 @@ export default function SignInScreen() {
               </Text>
             </View>
           )}
+          </CrossFade>
 
           {error ? (
             <View className="mt-3 flex-row items-start gap-2 rounded-card bg-danger-soft p-2.5">

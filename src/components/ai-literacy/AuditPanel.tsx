@@ -6,6 +6,7 @@ import { auditFeedback, gradeAudit, type AuditAnswer } from '@/services/ai-liter
 import { buildAuditItem, FLAW_KINDS, FLAW_LABEL, type AuditItem, type FlawKind } from '@/services/ai-literacy/flaws';
 import type { ProbeDraft } from '@/services/proofloop/draft-schema';
 import { observeSkill } from '@/store/useMasteryStore';
+import { Appear } from '@/components/motion/Motion';
 
 /**
  * Soi một bản do AI sinh ra, và tìm lỗi đã được cấy vào đó.
@@ -154,6 +155,7 @@ export function AuditPanel({
         </Text>
       ))}
 
+      <Appear>
       {phase === 'asking' ? (
         <View className="mt-4 flex-row gap-2">
           <Button
@@ -165,7 +167,9 @@ export function AuditPanel({
           <Button label="Có lỗi" size="sm" onPress={() => setPhase('named')} />
         </View>
       ) : null}
+      </Appear>
 
+      <Appear>
       {phase === 'named' ? (
         <View className="mt-4">
           <Text className="font-mid text-label text-muted">Lỗi gì?</Text>
@@ -192,6 +196,7 @@ export function AuditPanel({
           </View>
         </View>
       ) : null}
+      </Appear>
 
       {revealed && answer ? (
         <View className="mt-4 border-t border-border pt-3">

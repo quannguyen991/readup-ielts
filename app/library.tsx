@@ -21,6 +21,7 @@ import { BILINGUAL_ARTICLES } from '@/data/bilingual-repository';
 import { useDueCards, useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
 import type { CefrLevel } from '@/types/database';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * Kho bài đọc.
@@ -322,6 +323,8 @@ export default function LibraryScreen() {
       </View>
 
       <View className="mt-3">
+        {/* Đổi trang hay đổi bộ lọc: danh sách mới mờ dần vào. */}
+        <CrossFade swapKey={`${current}-${shown[0]?.id ?? 0}`}>
         {shown.length > 0 ? (
           <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>
             {shown.map((article) => (
@@ -337,6 +340,7 @@ export default function LibraryScreen() {
             <Button className="mt-3" variant="outline" label="Bỏ hết bộ lọc" onPress={reset} />
           </Card>
         )}
+        </CrossFade>
       </View>
 
       {pageCount > 1 ? (

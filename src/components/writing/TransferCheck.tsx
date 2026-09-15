@@ -6,6 +6,7 @@ import { gradeTransfer, type TransferProbe } from '@/services/writing/transfer-p
 import { observeSkill, resolveProbe } from '@/store/useMasteryStore';
 import type { WritingAnnotation } from '@/lib/writing/types';
 import { color, paper } from '@/theme/tokens';
+import { CrossFade } from '@/components/motion/Motion';
 
 /**
  * "Sửa được lỗi này ở một câu khác chưa?"
@@ -173,6 +174,7 @@ export function TransferCheck({
         }}
       />
 
+      <CrossFade swapKey={phase}>
       {phase === 'answering' ? (
         <Button className="mt-2.5 self-start" variant="brand" size="sm" label="Nộp bản sửa" onPress={submit} />
       ) : (
@@ -210,6 +212,7 @@ export function TransferCheck({
           </View>
         </View>
       )}
+      </CrossFade>
     </PaperCard>
   );
 }

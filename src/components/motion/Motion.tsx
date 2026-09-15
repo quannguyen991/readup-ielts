@@ -118,10 +118,23 @@ export function Appear({
   );
 }
 
-/** Hiện dần tại chỗ, không dịch chuyển — dùng cho nội dung đổi trong cùng một khung. */
-export function CrossFade({ swapKey, children }: { swapKey: string; children: React.ReactNode }) {
+/**
+ * Hiện dần tại chỗ, không dịch chuyển — dùng cho nội dung đổi trong cùng một khung.
+ *
+ * `style` cho trường hợp bọc cả một màn toàn khung (câu tiếp theo của bài luyện):
+ * thiếu `flex: 1` thì màn bên trong co về chiều cao nội dung và nền lưới hụt đáy.
+ */
+export function CrossFade({
+  swapKey,
+  style,
+  children,
+}: {
+  swapKey: string;
+  style?: ViewStyle;
+  children: React.ReactNode;
+}) {
   return (
-    <Enter key={swapKey} duration={MOTION.item} lift={0}>
+    <Enter key={swapKey} duration={MOTION.item} lift={0} style={style}>
       {children}
     </Enter>
   );
