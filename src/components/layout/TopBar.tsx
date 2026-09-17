@@ -168,6 +168,7 @@ export function TopBar() {
 
           <View className="hidden h-6 w-px bg-brand-soft lg:flex" />
 
+          <QuickLink href="/bilingual" icon="languages" label="Đọc song ngữ" />
           <QuickLink href="/vocabulary" icon="letters" label="Sổ từ" />
           <QuickLink href="/progress" icon="clock" label="Tiến độ" />
 
