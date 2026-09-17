@@ -123,8 +123,8 @@ const AREAS: Area[] = [
 const BILINGUAL_AREA: Area = {
   icon: 'languages',
   colors: stickerGradient.rose,
-  title: 'Đọc song ngữ',
-  lines: ['Bài phân tích kiểu báo, Anh–Việt từng đoạn · rê vào từ nào cũng hiện nghĩa ngay'],
+  title: 'Đọc báo song ngữ',
+  lines: ['VOA, NASA, Global Voices và bài phân tích ReadUp · Anh–Việt · miễn phí cho mọi người'],
   badge: `${bilingualStats().articles} BÀI`,
   href: '/bilingual',
 };

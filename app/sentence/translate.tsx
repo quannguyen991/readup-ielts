@@ -219,6 +219,15 @@ function RunningView({
 }) {
   const [letters, setLetters] = useState('');
   const [showHint, setShowHint] = useState(false);
+  /*
+    "Xem đáp án" thay cho "Bỏ qua câu này".
+
+    Bỏ qua là mất luôn câu: người học không bao giờ biết câu mẫu viết thế nào,
+    nên chỗ tắc hôm nay vẫn tắc lần sau. Xem đáp án thì lưới hiện đủ chữ, câu
+    mẫu và cách diễn đạt khác hiện ra — người học đọc xong mới sang câu. Câu đã
+    xem đáp án KHÔNG tính là tự làm được.
+  */
+  const [revealed, setRevealed] = useState(false);
   const enrichment = SENTENCE_ENRICHMENT[item.id];
   const inputRef = useRef<TextInput>(null);
 
@@ -231,6 +240,8 @@ function RunningView({
   const board = useMemo(() => buildLetterBoard(item.en), [item.en]);
   const grade = useMemo(() => gradeLetters(board.answer, letters), [board.answer, letters]);
   const done = grade.done;
+  /** Đã xong câu: tự gõ đúng hết, hoặc đã bấm xem đáp án. */
+  const finished = done || revealed;
 
   /** Từ nào đã đúng trọn vẹn — để đếm "x/y từ đúng" và biết từ tiếp theo là từ nào. */
   const solvedWords = useMemo(
@@ -261,7 +272,7 @@ function RunningView({
         Bản trước ghi `!showHint`, nên bấm "Bỏ qua câu này" khi chưa gõ chữ nào
         vẫn được tính là làm được — sổ tiến độ đếm cả những câu bỏ dở.
       */
-      selfCorrect: done && !showHint,
+      selfCorrect: done && !showHint && !revealed,
       timeSpentMs: Date.now() - enteredAt.current,
     });
   };
@@ -303,7 +314,7 @@ function RunningView({
         revealNextWord();
         return;
       }
-      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && done) {
+      if (event.key === 'Enter' && !event.shiftKey && !event.isComposing && finished) {
         event.preventDefault();
         goNext();
       }
@@ -418,7 +429,7 @@ function RunningView({
         {/* ------------------------------------------------------- bài dịch */}
         <View className="lg:flex-1">
           <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
-            {done ? <Confetti seed={item.id} /> : null}
+            {done && !revealed ? <Confetti seed={item.id} /> : null}
 
             <View className="flex-row items-center justify-between">
               <Text className="font-heavy text-cardTitle text-paper-ink">Bài dịch của em</Text>
@@ -439,12 +450,12 @@ function RunningView({
 
             <LetterGrid
               answer={board.answer}
-              revealed={false}
+              revealed={revealed}
               words={board.words}
               states={grade.states}
               caretAt={letters.length}
               liveResult
-              celebrate={done}
+              celebrate={done && !revealed}
               value={letters}
               onChange={(text) => setLetters(sanitizeTyped(text, board.answer.length))}
               inputRef={inputRef}
@@ -452,23 +463,35 @@ function RunningView({
               hint="Mỗi ô là một chữ cái — Ctrl+Space mở hộ một từ · Enter sang câu sau"
             />
 
-            {done ? (
-              <>
+            {finished ? (
+              <Appear>
                 <View className="mt-4 flex-row items-center gap-2">
-                  <Icon name="check" size={18} color={color.success} strokeWidth={2.4} />
-                  <Text className="font-strong text-bodyLg text-success-ink">
-                    {showHint ? 'Xong câu — lần sau thử không mở gợi ý nhé!' : 'Bạn xuất sắc — đúng cả câu!'}
+                  <Icon
+                    name={revealed ? 'info' : 'check'}
+                    size={18}
+                    color={revealed ? paper.brandMid : color.success}
+                    strokeWidth={2.4}
+                  />
+                  <Text
+                    className="font-strong text-bodyLg"
+                    style={{ color: revealed ? paper.brandMid : color.success }}
+                  >
+                    {revealed
+                      ? 'Đáp án đây — đọc kỹ câu mẫu rồi sang câu sau nhé.'
+                      : showHint
+                        ? 'Xong câu — lần sau thử không mở gợi ý nhé!'
+                        : 'Bạn xuất sắc — đúng cả câu!'}
                   </Text>
                 </View>
                 <View className="mt-2 rounded-panel bg-paper-canvas p-3.5">
                   <Text className="font-strong text-bodyLg text-paper-ink">{item.en}</Text>
                 </View>
-              </>
+              </Appear>
             ) : null}
 
             <View className="mt-4 flex-row flex-wrap items-center gap-2">
               <View className="flex-1" />
-              {done ? (
+              {finished ? (
                 <Button
                   label={index + 1 < total ? 'Câu tiếp theo' : 'Xem kết quả'}
                   variant="brand"
@@ -476,11 +499,17 @@ function RunningView({
                   onPress={goNext}
                 />
               ) : (
-                <Button label="Bỏ qua câu này" variant="brandOutline" size="sm" onPress={goNext} />
+                <Button
+                  label="Xem đáp án"
+                  variant="brandOutline"
+                  size="sm"
+                  iconLeft="info"
+                  onPress={() => setRevealed(true)}
+                />
               )}
             </View>
 
-            {done && enrichment ? (
+            {finished && enrichment ? (
               <View className="mt-4 gap-3">
                 <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
                   <Text className="font-strong text-label text-paper-muted">

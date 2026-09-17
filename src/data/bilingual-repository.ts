@@ -41,8 +41,19 @@ export type BilingualQuestion = {
   type: string;
 };
 
+export type BilingualSource = {
+  outlet: string;
+  url: string;
+  author?: string;
+  publishedAt: string;
+  license: string;
+};
+
 export type BilingualArticle = {
   id: string;
+  /** "press" = bài báo lấy từ nguồn cho phép dùng lại; không có = bài ReadUp tự viết. */
+  kind?: 'press';
+  source?: BilingualSource;
   /** Số bài trong sách gốc — cũng là thứ tự độ khó tăng dần. */
   order: number;
   level: string;
@@ -59,27 +70,11 @@ export type BilingualArticle = {
 };
 
 /*
-  Gỡ thẻ <b>/<i> còn sót từ bản sách gốc.
-
-  Kho được chuyển từ bản HTML của sách, nên 181 chuỗi (đoạn Việt, đoạn Anh, họ
-  từ) còn mang thẻ in đậm/nghiêng. Màn đọc vẽ chữ bằng <Text> chứ không dựng
-  HTML, nên người đọc thấy nguyên "<b>" giữa câu — và từ điển rê chuột tra
-  "<i>salary</i>" thành "isalaryi". Gỡ một lần lúc nạp, không sửa tay file seed.
+  Thẻ <b>/<i> trong kho được GIỮ LẠI và màn đọc vẽ thành chữ đậm/nghiêng thật
+  (`lib/inlineMarkup.ts`). Chỗ nào chỉ cần chữ trơn — ô tìm kiếm, thẻ danh sách,
+  từ điển — thì gỡ thẻ tại chỗ bằng `stripInline`.
 */
-function stripTags<T>(value: T): T {
-  if (typeof value === 'string') {
-    return value.replace(/<\/?(?:b|i|em|strong)>/gi, '') as T;
-  }
-  if (Array.isArray(value)) return value.map(stripTags) as T;
-  if (value && typeof value === 'object') {
-    return Object.fromEntries(
-      Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, stripTags(v)]),
-    ) as T;
-  }
-  return value;
-}
-
-export const BILINGUAL_ARTICLES: BilingualArticle[] = stripTags(seed as BilingualArticle[]);
+export const BILINGUAL_ARTICLES: BilingualArticle[] = seed as BilingualArticle[];
 
 export function getBilingualArticleById(id: string): BilingualArticle | undefined {
   return BILINGUAL_ARTICLES.find((a) => a.id === id);
@@ -126,4 +121,75 @@ export function bilingualStats() {
     vocab: BILINGUAL_ARTICLES.reduce((n, a) => n + a.vocab.length, 0),
     questions: BILINGUAL_ARTICLES.reduce((n, a) => n + a.questions.length, 0),
   };
+}
+
+
+/*
+  NGUỒN BÀI — cổng "Đọc báo song ngữ" chia kho theo nơi bài được đăng.
+
+  Chỉ gồm những nơi cho phép dùng lại TOÀN VĂN: VOA và NASA (tài liệu của chính
+  phủ Mỹ, không giữ bản quyền), Global Voices (CC BY — được dịch, phải ghi
+  nguồn). Báo giữ bản quyền (Guardian, NYT, Economist…) KHÔNG được đưa vào đây,
+  kể cả khi có để link gốc: link không biến việc chép toàn văn thành hợp pháp.
+*/
+export type BilingualOutlet = {
+  key: string;
+  name: string;
+  /** Một dòng giới thiệu, chữ nghiêng trên thẻ nguồn. */
+  tagline: string;
+  license: string;
+  /** Màu bìa thẻ nguồn. */
+  cover: string;
+  ink: string;
+};
+
+export const BILINGUAL_OUTLETS: BilingualOutlet[] = [
+  {
+    key: 'readup',
+    name: 'ReadUp Analysis',
+    tagline: 'Bài phân tích tự viết — kinh tế, sức khoẻ, khoa học, Việt Nam',
+    license: 'Bản quyền ReadUp',
+    cover: '#F2B84B',
+    ink: '#1F2A12',
+  },
+  {
+    key: 'voa',
+    name: 'VOA Learning English',
+    tagline: 'Tin khoa học, sức khoẻ, văn hoá viết bằng tiếng Anh dễ đọc',
+    license: 'Public domain',
+    cover: '#2F5DA8',
+    ink: '#FFFFFF',
+  },
+  {
+    key: 'gv',
+    name: 'Global Voices',
+    tagline: 'Phóng sự từ cộng đồng khắp thế giới, góc nhìn người trong cuộc',
+    license: 'CC BY 3.0',
+    cover: '#C2553A',
+    ink: '#FFFFFF',
+  },
+  {
+    key: 'nasa',
+    name: 'NASA Science',
+    tagline: 'Trái Đất, Mặt Trăng, bầu trời — kể bởi chính nhà khoa học',
+    license: 'Public domain',
+    cover: '#1F2A44',
+    ink: '#FFFFFF',
+  },
+];
+
+export function outletKeyOf(article: BilingualArticle): string {
+  if (!article.source) return 'readup';
+  if (/VOA/i.test(article.source.outlet)) return 'voa';
+  if (/Global Voices/i.test(article.source.outlet)) return 'gv';
+  if (/NASA/i.test(article.source.outlet)) return 'nasa';
+  return 'readup';
+}
+
+export function articlesOfOutlet(key: string): BilingualArticle[] {
+  const list = BILINGUAL_ARTICLES.filter((a) => outletKeyOf(a) === key);
+  // Bài báo xếp mới đăng lên trước; bài tự viết theo thứ tự độ khó.
+  return key === 'readup'
+    ? list.sort((a, b) => a.order - b.order)
+    : list.sort((a, b) => (b.source?.publishedAt ?? '').localeCompare(a.source?.publishedAt ?? ''));
 }

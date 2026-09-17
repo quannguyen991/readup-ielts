@@ -46,6 +46,7 @@ export function offlineGloss(word: string): OfflineGloss | null {
  */
 export function normaliseToken(raw: string): string {
   return raw
+    .replace(/<\/?[a-z][^>]*>/gi, '')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[’‘]/g, "'")

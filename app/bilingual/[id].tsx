@@ -1,482 +1,1042 @@
-import React, { useMemo, useState } from 'react';
-import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
-
-import { HoverGlossText, type InlineGloss } from '@/components/reader/HoverGloss';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
+import {
+  Linking,
+  Platform,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  useWindowDimensions,
+} from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
 
-import { TaskShell } from '@/components/layout/TaskShell';
-import { Badge, Button, Icon, PaperCard } from '@/components/ui';
+import { GridBackdrop } from '@/components/layout/GridBackdrop';
+import { CrossFade } from '@/components/motion/Motion';
+import { HoverGlossText, type InlineGloss, type WordPick } from '@/components/reader/HoverGloss';
+import { WordPopover } from '@/components/reader/WordPopover';
+import { Button, Icon } from '@/components/ui';
 import {
   getBilingualArticleById,
+  type BilingualArticle,
   type BilingualParagraph,
   type BilingualQuestion,
   type BilingualVocab,
 } from '@/data/bilingual-repository';
-import { color, paper } from '@/theme/tokens';
+import { parseInline } from '@/lib/inlineMarkup';
+import { readingFont, useReadingFonts } from '@/lib/readingFonts';
+import { lemmatize } from '@/services/dictionary/lookup';
+import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
+import { useVocabStore } from '@/store/useVocabStore';
 
 /**
- * Màn đọc song ngữ Anh–Việt.
+ * Màn đọc song ngữ — bố cục phòng thi Reading.
  *
- * GHÉP THEO TỪNG ĐOẠN, KHÔNG PHẢI HAI CỘT CUỘN RỜI NHAU. Cách hay gặp là đặt
- * hai khung cuộn độc lập cạnh nhau; đọc được vài đoạn là hai bên lệch nhau vì
- * bản dịch dài ngắn khác bản gốc, rồi người đọc phải tự dò xem đoạn này ứng với
- * đoạn nào. Ở đây mỗi đoạn là MỘT HÀNG có hai ô, nên hai bản luôn thẳng hàng
- * dù bản dịch dài hơn bao nhiêu.
+ * HAI TẤM GIẤY RIÊNG, MỖI TẤM CUỘN RIÊNG. Bản trước ghép hai thứ tiếng vào một
+ * tấm, từng cặp đoạn một. Đọc như vậy thì mắt không bao giờ ở yên trong một thứ
+ * tiếng: cứ hết một đoạn là bản dịch nằm ngay cạnh, liếc sang là thành thói quen.
+ * Tách hai tấm như đề Reading thật — bài bên trái, bản dịch (hoặc câu hỏi) bên
+ * phải — người đọc đọc liền mạch tiếng Anh, chỉ sang bên phải khi thật sự cần.
  *
- * Màn hẹp thì hai ô xếp dọc: bản tiếng Anh trước, bản dịch ngay dưới nó.
+ * Để hai tấm không lạc nhau: rê vào một đoạn thì đoạn tương ứng bên kia sáng
+ * lên; bấm số đoạn thì tấm bên kia cuộn tới đúng đoạn đó.
  *
- * Nút "Ẩn bản dịch" có lý do sư phạm chứ không phải để trang trí: đọc song ngữ
- * mà lúc nào bản dịch cũng nằm sẵn trong tầm mắt thì mắt sẽ liếc sang trước khi
- * kịp đoán nghĩa, và bài đọc biến thành bài đọc tiếng Việt. Ẩn đi, đọc hết một
- * đoạn, rồi mới mở ra đối chiếu.
+ * MÀN HẸP chỉ đủ chỗ cho một tấm, nên thanh trên có bốn thẻ: English, Tiếng
+ * Việt, Câu hỏi, Từ vựng.
  */
 
-/**
- * Mặt chữ CHỈ ÁP CHO PHẦN TIẾNG ANH.
- *
- * Georgia và các font có chân của hệ thống không dựng được dấu tiếng Việt: chữ
- * "phố" hiện ra thành "phô ́" vì dấu sắc rời khỏi nguyên âm. Bản tiếng Việt vì
- * vậy luôn dùng Plus Jakarta Sans — bộ chữ của app, có đủ ký tự tiếng Việt.
- * Đây không phải hạn chế đáng tiếc: hai cột hai mặt chữ khác nhau còn giúp mắt
- * biết ngay mình đang ở cột nào.
- */
+type Theme = { key: string; label: string; bg: string; ink: string; body: string; muted: string; rule: string; tint: string };
+
+const THEMES: Theme[] = [
+  { key: 'paper', label: 'Giấy', bg: '#FFFDF7', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA', tint: '#F3F0E2' },
+  { key: 'sepia', label: 'Ngà', bg: '#F5ECD7', ink: '#33281A', body: '#4A3C2A', muted: '#8F7B5E', rule: '#E4D6B8', tint: '#EDE0C2' },
+  { key: 'mint', label: 'Rêu nhạt', bg: '#EEF3E4', ink: '#1F2A12', body: '#33402A', muted: '#76826A', rule: '#DAE3CA', tint: '#E1EAD2' },
+  { key: 'night', label: 'Tối', bg: '#1C2016', ink: '#EFEDE3', body: '#D3D0C3', muted: '#8E8C80', rule: '#2E3326', tint: '#262B1F' },
+];
+
 const FONTS = [
-  { key: 'sans', label: 'Jakarta', family: 'PlusJakartaSans_400Regular' },
-  { key: 'serif', label: 'Có chân', family: Platform.select({ web: 'Georgia, serif', default: 'serif' }) },
+  { key: 'serif', label: 'Lora (có chân)', family: readingFont.body },
+  { key: 'sans', label: 'Jakarta', family: readingFont.sans },
 ] as const;
 
-const SIZES = [15, 17, 19, 21] as const;
+const MIN_SIZE = 14;
+const MAX_SIZE = 24;
+const OLIVE = '#6B7B3F';
+const INK_BORDER = '#1F2A12';
+
+type RightTab = 'vi' | 'questions' | 'vocab';
+type NarrowTab = 'en' | RightTab;
 
 export default function BilingualReaderScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const article = typeof id === 'string' ? getBilingualArticleById(id) : undefined;
-
-  const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('serif');
-  const [fontSize, setFontSize] = useState<number>(17);
-  const [showVi, setShowVi] = useState(true);
+  useReadingFonts();
 
   if (!article) {
     return (
-      <TaskShell
-        backHref="/bilingual"
-        backLabel="Về kho song ngữ"
-        title="Không tìm thấy bài này"
-        icon="book"
-      >
-        <PaperCard className="max-w-[520px]">
-          <Text className="font-sans text-body text-paper-body">
-            Bài bạn vừa mở không có trong kho. Quay lại danh sách để chọn bài khác.
-          </Text>
-          <Button
-            className="mt-4"
-            variant="brand"
-            label="Về kho song ngữ"
-            onPress={() => router.replace('/bilingual' as never)}
-          />
-        </PaperCard>
-      </TaskShell>
+      <GridBackdrop>
+        <SafeAreaView className="flex-1 items-center justify-center p-6">
+          <View className="max-w-[460px] rounded-card bg-white p-6" style={sticker}>
+            <Text className="font-heavy text-sectionTitle text-ink">Không tìm thấy bài này</Text>
+            <Text className="mt-2 font-sans text-body text-muted">
+              Bài bạn vừa mở không có trong kho. Quay lại danh sách để chọn bài khác.
+            </Text>
+            <Button
+              className="mt-4"
+              variant="brand"
+              label="Về kho đọc song ngữ"
+              onPress={() => router.replace('/bilingual' as never)}
+            />
+          </View>
+        </SafeAreaView>
+      </GridBackdrop>
     );
   }
 
+  return <Reader article={article} />;
+}
+
+function Reader({ article }: { article: BilingualArticle }) {
+  const { width, height } = useWindowDimensions();
+  const wide = width >= 1024;
+
+  const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('serif');
+  const [fontSize, setFontSize] = useState(17);
+  const [themeKey, setThemeKey] = useState('paper');
+  const [rightTab, setRightTab] = useState<RightTab>('vi');
+  const [narrowTab, setNarrowTab] = useState<NarrowTab>('en');
+  const [hoverPara, setHoverPara] = useState<number | null>(null);
+  const [pick, setPick] = useState<(WordPick & { paragraph: number | null }) | null>(null);
+  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [checked, setChecked] = useState(false);
+  const [toolbarH, setToolbarH] = useState(72);
+
+  const theme = THEMES.find((t) => t.key === themeKey) ?? THEMES[0]!;
   const fontFamily = FONTS.find((f) => f.key === fontKey)?.family;
+  const dict = useArticleDictionary(article.id);
+
+  const entries = useVocabStore((s) => s.entries);
+  const savedCount = useMemo(
+    () => Object.values(entries).filter((e) => e.articleId === article.id).length,
+    [entries, article.id],
+  );
+
+  // Vị trí từng đoạn trong mỗi tấm, để bấm số đoạn thì tấm kia cuộn tới.
+  const enScroll = useRef<ScrollView>(null);
+  const viScroll = useRef<ScrollView>(null);
+  const enY = useRef<Record<number, number>>({});
+  const viY = useRef<Record<number, number>>({});
+
+  const jumpTo = useCallback((side: 'en' | 'vi', index: number) => {
+    const y = side === 'en' ? enY.current[index] : viY.current[index];
+    const ref = side === 'en' ? enScroll : viScroll;
+    if (y !== undefined) ref.current?.scrollTo({ y: Math.max(0, y - 16), animated: true });
+  }, []);
+
+  const onWord = useCallback(
+    (paragraph: number | null) => (p: WordPick) => setPick({ ...p, paragraph }),
+    [],
+  );
+
+  const paneHeight = Math.max(360, height - toolbarH - (wide ? 44 : 36));
+  const answeredCount = Object.keys(answers).length;
+  const score = article.questions.filter((q, i) => answers[i] === q.answerIndex).length;
+
+  const enPane = (
+    <EnglishPane
+      article={article}
+      theme={theme}
+      fontFamily={fontFamily}
+      fontSize={fontSize}
+      scrollRef={enScroll}
+      offsets={enY}
+      hoverPara={hoverPara}
+      onHoverPara={setHoverPara}
+      onJump={(i) => {
+        if (wide && rightTab === 'vi') jumpTo('vi', i);
+      }}
+      onWord={onWord}
+    />
+  );
+
+  const viPane = (
+    <VietnamesePane
+      article={article}
+      theme={theme}
+      fontFamily={fontKey === 'serif' ? readingFont.body : readingFont.sans}
+      fontSize={fontSize}
+      scrollRef={viScroll}
+      offsets={viY}
+      hoverPara={hoverPara}
+      onHoverPara={setHoverPara}
+      onJump={(i) => jumpTo('en', i)}
+    />
+  );
+
+  const questionsPane = (
+    <QuestionsPane
+      questions={article.questions}
+      theme={theme}
+      answers={answers}
+      checked={checked}
+      onAnswer={(q, o) => {
+        if (checked) return;
+        setAnswers((prev) => ({ ...prev, [q]: o }));
+      }}
+    />
+  );
+
+  const vocabPane = <VocabPane vocab={article.vocab} theme={theme} article={article} />;
+
+  const rightPane = rightTab === 'vi' ? viPane : rightTab === 'questions' ? questionsPane : vocabPane;
+  const activeNarrow =
+    narrowTab === 'en' ? enPane : narrowTab === 'vi' ? viPane : narrowTab === 'questions' ? questionsPane : vocabPane;
+  const tab: string = wide ? rightTab : narrowTab;
 
   return (
-    <TaskShell
-      backHref="/bilingual"
-      backLabel="Về kho song ngữ"
-      title="Đọc song ngữ"
-      subtitle={`Bài ${article.order} · ${article.level} · ${article.topic}`}
-      icon="book"
-      right={
-        <View className="rounded-pill bg-white/20 px-3.5 py-1.5">
-          <Text className="font-strong text-label text-white">
-            {article.wordCount} từ · {article.estMinutes} phút
-          </Text>
-        </View>
-      }
-    >
-      {/* ------------------------------------------------------- thanh chữ */}
-      <PaperCard padded={false} className="mb-4">
-        <View className="flex-row flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2.5">
-          <View className="flex-row items-center gap-1.5">
-            <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-              Font
-            </Text>
-            {FONTS.map((f) => (
-              <Pressable
-                key={f.key}
-                accessibilityRole="button"
-                accessibilityState={{ selected: fontKey === f.key }}
-                onPress={() => setFontKey(f.key)}
-                className="rounded-md px-2 py-1"
-                style={{ backgroundColor: fontKey === f.key ? paper.brandMid : 'transparent' }}
-              >
-                <Text
-                  className="text-label"
-                  style={{ fontFamily: f.family, color: fontKey === f.key ? '#FFFFFF' : paper.muted }}
-                >
-                  {f.label}
-                </Text>
-              </Pressable>
-            ))}
+    <GridBackdrop colors={['#5E6E37', '#6B7B3F', '#627238']} line="rgba(255,255,255,0.10)">
+      <SafeAreaView edges={['top']} className="flex-1">
+        <View className="flex-1 px-3 pt-3 lg:px-5">
+          <View onLayout={(e) => setToolbarH(e.nativeEvent.layout.height)}>
+            <Toolbar
+              wide={wide}
+              title={article.titleEn}
+              tab={tab}
+              onTab={(t) => (wide ? setRightTab(t as RightTab) : setNarrowTab(t as NarrowTab))}
+              fontKey={fontKey}
+              onFont={setFontKey}
+              fontSize={fontSize}
+              onSize={(d) => setFontSize((s) => Math.min(MAX_SIZE, Math.max(MIN_SIZE, s + d)))}
+              themeKey={themeKey}
+              onTheme={setThemeKey}
+              savedCount={savedCount}
+              questionCount={article.questions.length}
+              answers={answers}
+              checked={checked}
+              score={score}
+              answeredCount={answeredCount}
+              onCheck={() => {
+                if (checked) {
+                  setChecked(false);
+                  setAnswers({});
+                } else {
+                  setChecked(true);
+                }
+                if (wide) setRightTab('questions');
+                else setNarrowTab('questions');
+              }}
+            />
           </View>
 
-          <View className="flex-row items-center gap-1.5">
-            <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-              Cỡ chữ
-            </Text>
-            {SIZES.map((s) => (
-              <Pressable
-                key={s}
-                accessibilityRole="button"
-                accessibilityState={{ selected: fontSize === s }}
-                onPress={() => setFontSize(s)}
-                className="rounded-md px-2 py-1"
-                style={{ backgroundColor: fontSize === s ? paper.brandMid : 'transparent' }}
-              >
-                <Text
-                  className="font-semi text-label"
-                  style={{ color: fontSize === s ? '#FFFFFF' : paper.muted }}
-                >
-                  {s}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-
-          <View className="flex-1" />
-
-          <Pressable
-            accessibilityRole="button"
-            accessibilityState={{ selected: showVi }}
-            onPress={() => setShowVi((v) => !v)}
-            className="flex-row items-center gap-1.5 rounded-pill border border-brand-soft px-3 py-1.5"
-            style={{ backgroundColor: showVi ? '#FFFFFF' : paper.brandTint }}
-          >
-            <Icon name={showVi ? 'close' : 'languages'} size={14} color={paper.body} strokeWidth={2} />
-            <Text className="font-semi text-label text-paper-body">
-              {showVi ? 'Ẩn bản dịch' : 'Hiện bản dịch'}
-            </Text>
-          </Pressable>
+          {wide ? (
+            <View className="mt-3 flex-row gap-4" style={{ height: paneHeight }}>
+              <View style={{ flex: 1, flexBasis: 0 }}>{enPane}</View>
+              <View style={{ flex: 1, flexBasis: 0 }}>
+                <CrossFade swapKey={`right-${rightTab}`} style={{ flex: 1 }}>
+                  {rightPane}
+                </CrossFade>
+              </View>
+            </View>
+          ) : (
+            <View className="mt-3" style={{ height: paneHeight }}>
+              <CrossFade swapKey={`narrow-${narrowTab}`} style={{ flex: 1 }}>
+                {activeNarrow}
+              </CrossFade>
+            </View>
+          )}
         </View>
-      </PaperCard>
+      </SafeAreaView>
 
-      {/* --------------------------------------------------------- tiêu đề */}
-      <View className={showVi ? 'gap-4 lg:flex-row' : ''}>
-        <PaperCard className={showVi ? 'lg:flex-1' : ''}>
-          <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
-            English
-          </Text>
-          <Text className="mt-1.5 font-heavy text-pageTitle text-paper-ink" style={{ fontFamily }}>
-            {article.titleEn}
-          </Text>
-          <Text
-            className="mt-2 font-mid text-paper-body"
-            style={{ fontFamily, fontSize: fontSize + 1, lineHeight: (fontSize + 1) * 1.6 }}
-          >
-            {article.standfirstEn}
-          </Text>
-        </PaperCard>
-
-        {showVi ? (
-          <PaperCard className="lg:flex-1">
-            <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
-              Tiếng Việt
-            </Text>
-            <Text
-              className="mt-1.5 font-heavy text-pageTitle text-paper-ink"
-            >
-              {article.titleVi}
-            </Text>
-            <Text
-              className="mt-2 font-mid text-paper-body"
-              style={{ fontSize: fontSize + 1, lineHeight: (fontSize + 1) * 1.6 }}
-            >
-              {article.standfirstVi}
-            </Text>
-          </PaperCard>
-        ) : null}
-      </View>
-
-      {/*
-        MỘT TẤM GIẤY CHO CẢ BÀI, không phải mỗi đoạn một tấm.
-
-        Bản trước bọc từng đoạn trong một thẻ riêng, nên một bài mười đoạn đọc ra
-        thành hai mươi cái hộp xếp chồng — mắt phải vượt một đường viền và một
-        khoảng trống sau mỗi đoạn, và bài văn vỡ thành từng mẩu rời.
-
-        Nhưng KHÔNG gộp thành hai cột cuộn rời: đoạn tiếng Anh vẫn phải nằm ngang
-        hàng với đúng đoạn tiếng Việt của nó, vì cả điểm mạnh của bài song ngữ
-        nằm ở chỗ liếc ngang là thấy nghĩa. Nên vẫn là từng cặp một, chỉ bỏ vỏ
-        thẻ đi và thay bằng một đường kẻ mảnh.
-      */}
-      <PaperCard className="mt-4">
-        {article.paragraphs.map((paragraph, index) => (
-          <ParagraphRow
-            key={index}
-            index={index}
-            paragraph={paragraph}
-            showVi={showVi}
-            fontFamily={fontFamily}
-            fontSize={fontSize}
-            first={index === 0}
-          />
-        ))}
-      </PaperCard>
-
-      <VocabPanel vocab={article.vocab} />
-      <QuestionPanel questions={article.questions} />
-
-      <View className="mt-5 flex-row flex-wrap gap-2">
-        <Button
-          variant="onDarkSolid"
-          label="Về kho song ngữ"
-          iconLeft="arrow-right"
-          onPress={() => router.push('/bilingual' as never)}
-        />
-      </View>
-    </TaskShell>
+      <WordPopover
+        pick={pick}
+        table={dict}
+        articleId={article.id}
+        articleTitle={article.titleEn}
+        paragraphIndex={pick?.paragraph ?? null}
+        onClose={() => setPick(null)}
+      />
+    </GridBackdrop>
   );
 }
 
-function ParagraphRow({
-  index,
-  paragraph,
-  showVi,
-  fontFamily,
-  fontSize,
-  first,
-}: {
-  index: number;
-  paragraph: BilingualParagraph;
-  showVi: boolean;
-  fontFamily: string | undefined;
+/* ====================================================================== */
+/*                                 THANH TRÊN                              */
+/* ====================================================================== */
+
+function Toolbar(props: {
+  wide: boolean;
+  title: string;
+  tab: string;
+  onTab: (t: string) => void;
+  fontKey: string;
+  onFont: (k: (typeof FONTS)[number]['key']) => void;
   fontSize: number;
-  /** Đoạn đầu không kẻ đường phân cách phía trên. */
-  first: boolean;
+  onSize: (delta: number) => void;
+  themeKey: string;
+  onTheme: (k: string) => void;
+  savedCount: number;
+  questionCount: number;
+  answers: Record<number, number>;
+  checked: boolean;
+  score: number;
+  answeredCount: number;
+  onCheck: () => void;
 }) {
+  const { wide } = props;
+  const [fullscreen, setFullscreen] = useState(false);
 
-  /*
-    Nghĩa soạn sẵn của đoạn, đổi sang bảng tra theo từ đã thường hoá.
+  const tabs: { key: string; label: string }[] = wide
+    ? [
+        { key: 'vi', label: 'Bản dịch' },
+        { key: 'questions', label: 'Câu hỏi' },
+        { key: 'vocab', label: 'Từ vựng' },
+      ]
+    : [
+        { key: 'en', label: 'English' },
+        { key: 'vi', label: 'Tiếng Việt' },
+        { key: 'questions', label: 'Câu hỏi' },
+        { key: 'vocab', label: 'Từ vựng' },
+      ];
 
-    Những từ này hiện TỨC THÌ và không tốn lời gọi mạng nào — và chúng là những
-    từ người soạn bài cho là đáng dừng lại, nên cũng là những từ hay được rê vào
-    nhất.
-  */
-  const bundledGloss = useMemo(() => {
-    const map: Record<string, InlineGloss> = {};
-    for (const g of paragraph.gloss ?? []) {
-      map[g.word.toLowerCase().replace(/[^a-z0-9'-]/g, '')] = {
-        word: g.word,
-        meaningVi: g.meaningVi,
-        pos: g.pos,
-      };
+  const toggleFullscreen = () => {
+    if (Platform.OS !== 'web' || typeof document === 'undefined') return;
+    if (document.fullscreenElement) {
+      void document.exitFullscreen();
+      setFullscreen(false);
+    } else {
+      void document.documentElement.requestFullscreen?.();
+      setFullscreen(true);
     }
-    return map;
-  }, [paragraph.gloss]);
-
-  const lineHeight = fontSize * 1.75;
-
-  /*
-    Hai cột CHỈ KHI MÀN ĐỦ RỘNG, và đo bằng JS chứ không bằng lớp `lg:`.
-
-    `flexBasis: 0` là thứ giữ hai cột bằng nhau khi nằm ngang. Nhưng lớp `lg:`
-    chỉ đổi hướng xếp, còn style nội tuyến thì vẫn ở đó: màn hẹp xếp dọc mà mỗi
-    ô vẫn `flex: 1, flexBasis: 0` nghĩa là CAO bằng 0, chữ tràn ra ngoài và hai
-    thứ tiếng in chồng lên nhau (đo được trên iPad và điện thoại ngày 17/09/2026).
-  */
-  const { width } = useWindowDimensions();
-  const sideBySide = showVi && width >= 1024;
+  };
 
   return (
-    <View
-      className={first ? '' : 'mt-5 pt-5'}
-      style={first ? undefined : { borderTopWidth: 1, borderTopColor: paper.brandSoft }}
-    >
-      {/*
-        Số đoạn nằm MỘT LẦN cho cả cặp, không lặp ở mỗi cột.
+    <View className="rounded-card bg-white px-3 py-2.5" style={sticker}>
+      <View className="flex-row flex-wrap items-center gap-2">
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel="Về kho đọc song ngữ"
+          onPress={() => (router.canGoBack() ? router.back() : router.replace('/bilingual' as never))}
+          className="h-9 w-9 items-center justify-center rounded-md"
+          style={{ borderWidth: 2, borderColor: INK_BORDER }}
+        >
+          <Icon name="chevron-left" size={17} color={INK_BORDER} strokeWidth={2.4} />
+        </Pressable>
 
-        Hai cột là hai bản của cùng một đoạn, nên hai con số giống hệt nhau đứng
-        cạnh nhau chỉ làm mắt phải xác nhận lại một điều đã rõ.
-      */}
-      <Text className="mb-1.5 font-strong text-label text-paper-muted">{index + 1}</Text>
-
-      <View className={sideBySide ? 'flex-row gap-6' : showVi ? 'gap-3' : ''}>
-        {/*
-          Hai cột CHIA ĐÔI ĐÚNG BẰNG NHAU: cùng `flex-1`, cùng `flexBasis: 0`.
-
-          Chỉ đặt `flex-1` thôi là chưa đủ — không có `flexBasis: 0` thì hai cột
-          chia theo LƯỢNG CHỮ trong mỗi bên, mà bản tiếng Việt thường dài hơn bản
-          tiếng Anh, nên cột phải phình ra và hai bên lệch nhau.
-        */}
-        <View style={sideBySide ? { flex: 1, flexBasis: 0 } : undefined}>
-          {/*
-            MỌI từ đều rê được, không chỉ những từ đã soạn sẵn nghĩa.
-
-            Bản trước chỉ gạch chân vài từ trong danh sách và bấm mới hiện nghĩa.
-            Nhưng từ làm người đọc khựng lại không phải lúc nào cũng là từ người
-            soạn cho là khó — và với những từ ngoài danh sách thì trước đây không
-            có đường nào tra ngay tại chỗ.
-          */}
-          <HoverGlossText
-            text={paragraph.en}
-            bundled={bundledGloss}
-            fontFamily={fontFamily}
-            fontSize={fontSize}
-            lineHeight={lineHeight}
-            color={paper.ink}
-          />
+        <View className="mr-1 min-w-0 flex-row items-baseline gap-2" style={{ flexShrink: 1 }}>
+          <Text
+            style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '800', fontSize: 21, color: INK_BORDER }}
+          >
+            đọc song ngữ
+          </Text>
+          {wide ? (
+            <Text
+              numberOfLines={1}
+              style={{ fontFamily: readingFont.mono, fontSize: 10.5, letterSpacing: 1.2, color: '#7A8466', maxWidth: 280 }}
+            >
+              • {props.title.toUpperCase()}
+            </Text>
+          ) : null}
         </View>
 
-        {showVi ? (
-          <View
-            style={
-              sideBySide
-                ? { flex: 1, flexBasis: 0 }
-                : { borderLeftWidth: 2, borderLeftColor: paper.brandSoft, paddingLeft: 12 }
-            }
-          >
-            <Text style={{ fontSize, lineHeight, color: paper.body }}>{paragraph.vi}</Text>
+        <View className="flex-row items-center gap-1 rounded-md p-0.5" style={{ backgroundColor: '#F1F3E8' }}>
+          {tabs.map((t) => {
+            const on = props.tab === t.key;
+            return (
+              <Pressable
+                key={t.key}
+                accessibilityRole="tab"
+                accessibilityState={{ selected: on }}
+                onPress={() => props.onTab(t.key)}
+                className="rounded-md px-2.5 py-1.5"
+                style={{ backgroundColor: on ? INK_BORDER : 'transparent', ...(Platform.OS === 'web' ? transition : null) }}
+              >
+                <Text className="font-strong" style={{ fontSize: 12, color: on ? '#FFFFFF' : '#4A5236' }}>
+                  {t.label}
+                  {t.key === 'questions' ? ` ${props.answeredCount}/${props.questionCount}` : ''}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        <View className="flex-1" />
+
+        {wide ? (
+          <View className="flex-row items-center gap-1">
+            {Array.from({ length: props.questionCount }).map((_, i) => {
+              const done = props.answers[i] !== undefined;
+              return (
+                <View
+                  key={i}
+                  className="h-6 w-6 items-center justify-center rounded-pill"
+                  style={{ borderWidth: 1.5, borderColor: INK_BORDER, backgroundColor: done ? INK_BORDER : '#FFFFFF' }}
+                >
+                  <Text style={{ fontSize: 10.5, fontWeight: '700', color: done ? '#FFFFFF' : INK_BORDER }}>{i + 1}</Text>
+                </View>
+              );
+            })}
           </View>
         ) : null}
+
+        <View className="flex-row items-center gap-1">
+          {THEMES.map((t) => (
+            <Pressable
+              key={t.key}
+              accessibilityRole="button"
+              accessibilityLabel={`Nền ${t.label}`}
+              accessibilityState={{ selected: props.themeKey === t.key }}
+              onPress={() => props.onTheme(t.key)}
+              className="h-6 w-6 rounded-md"
+              style={{
+                backgroundColor: t.bg,
+                borderWidth: props.themeKey === t.key ? 2.5 : 1,
+                borderColor: props.themeKey === t.key ? INK_BORDER : '#C9CDB8',
+              }}
+            />
+          ))}
+        </View>
+
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Đổi mặt chữ"
+          onPress={() => props.onFont(props.fontKey === 'serif' ? 'sans' : 'serif')}
+          className="rounded-md px-2.5 py-1.5"
+          style={{ borderWidth: 1.5, borderColor: '#C9CDB8' }}
+        >
+          <Text
+            style={{
+              fontSize: 12,
+              color: INK_BORDER,
+              fontFamily: props.fontKey === 'serif' ? readingFont.body : readingFont.sans,
+            }}
+          >
+            {props.fontKey === 'serif' ? 'Lora' : 'Jakarta'} ⇄
+          </Text>
+        </Pressable>
+
+        <View className="flex-row items-center rounded-md" style={{ borderWidth: 1.5, borderColor: '#C9CDB8' }}>
+          <SizeButton label="−" onPress={() => props.onSize(-1)} />
+          <Text className="font-strong" style={{ fontSize: 12, color: INK_BORDER, minWidth: 26, textAlign: 'center' }}>
+            {props.fontSize}
+          </Text>
+          <SizeButton label="+" onPress={() => props.onSize(1)} />
+        </View>
+
+        <View className="flex-row items-center gap-1 rounded-md px-2.5 py-1.5" style={{ backgroundColor: '#F1F3E8' }}>
+          <Icon name="bookmark" size={13} color={OLIVE} strokeWidth={2} />
+          <Text className="font-strong" style={{ fontSize: 12, color: INK_BORDER }}>
+            {props.savedCount} từ
+          </Text>
+        </View>
+
+        {Platform.OS === 'web' ? (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={fullscreen ? 'Thoát toàn màn hình' : 'Toàn màn hình'}
+            onPress={toggleFullscreen}
+            className="h-8 w-8 items-center justify-center rounded-md"
+            style={{ borderWidth: 1.5, borderColor: INK_BORDER }}
+          >
+            <Text style={{ fontSize: 14, color: INK_BORDER }}>{fullscreen ? '⤡' : '⤢'}</Text>
+          </Pressable>
+        ) : null}
+
+        <Pressable
+          accessibilityRole="button"
+          onPress={props.onCheck}
+          className="rounded-md px-3.5 py-2"
+          style={{ backgroundColor: props.checked ? '#FFFFFF' : '#F2B84B', borderWidth: 2, borderColor: INK_BORDER }}
+        >
+          <Text className="font-heavy" style={{ fontSize: 12.5, color: INK_BORDER }}>
+            {props.checked ? `Đúng ${props.score}/${props.questionCount} · Làm lại` : 'Kiểm tra'}
+          </Text>
+        </Pressable>
       </View>
     </View>
   );
 }
 
-
-function VocabPanel({ vocab }: { vocab: BilingualVocab[] }) {
-  const [open, setOpen] = useState(false);
-  if (vocab.length === 0) return null;
-
+function SizeButton({ label, onPress }: { label: string; onPress: () => void }) {
   return (
-    <PaperCard className="mt-5">
-      <Pressable
-        accessibilityRole="button"
-        accessibilityState={{ expanded: open }}
-        onPress={() => setOpen((v) => !v)}
-        className="flex-row items-center gap-2"
-      >
-        <Icon name={open ? 'chevron-down' : 'chevron-right'} size={17} color={paper.brandMid} strokeWidth={2} />
-        <Text className="font-heavy text-cardTitle text-paper-ink">
-          Từ vựng cuối bài · {vocab.length} từ
-        </Text>
-      </Pressable>
-
-      {open ? (
-        <View className="mt-3 gap-3">
-          {vocab.map((entry, i) => (
-            <View key={i} className="rounded-panel border border-brand-soft p-3">
-              <View className="flex-row flex-wrap items-baseline gap-2">
-                <Text className="font-strong text-bodyLg text-paper-ink">{entry.word}</Text>
-                <Text className="font-sans text-label text-paper-muted">{entry.ipa}</Text>
-                <Badge label={entry.pos} tone="neutral" />
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel={`Nghe đọc từ ${entry.word}`}
-                  onPress={() => {
-                    Speech.stop();
-                    Speech.speak(entry.word, { language: 'en-US', rate: 0.9 });
-                  }}
-                >
-                  <Icon name="volume" size={15} color={paper.brandMid} strokeWidth={2} />
-                </Pressable>
-              </View>
-              <Text className="mt-1 font-mid text-body text-paper-body">{entry.meaningVi}</Text>
-              {entry.collocation ? (
-                <Text className="mt-1 font-sans text-label text-paper-muted">
-                  Đi với: {entry.collocation}
-                </Text>
-              ) : null}
-              {entry.example ? (
-                <Text
-                  className="mt-1 font-sans text-label text-paper-muted"
-                  style={{ fontStyle: 'italic' }}
-                >
-                  {entry.example}
-                </Text>
-              ) : null}
-              {entry.derivatives ? (
-                <Text className="mt-1 font-sans text-label text-paper-muted">
-                  Họ từ: {entry.derivatives}
-                </Text>
-              ) : null}
-            </View>
-          ))}
-        </View>
-      ) : null}
-    </PaperCard>
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={label === '+' ? 'Tăng cỡ chữ' : 'Giảm cỡ chữ'}
+      onPress={onPress}
+      className="px-2 py-1"
+    >
+      <Text className="font-heavy" style={{ fontSize: 14, color: INK_BORDER }}>
+        {label}
+      </Text>
+    </Pressable>
   );
 }
 
-function QuestionPanel({ questions }: { questions: BilingualQuestion[] }) {
-  const [picked, setPicked] = useState<Record<number, number>>({});
-  if (questions.length === 0) return null;
+/* ====================================================================== */
+/*                                   TẤM GIẤY                              */
+/* ====================================================================== */
+
+function Sheet({
+  theme,
+  scrollRef,
+  badge,
+  children,
+}: {
+  theme: Theme;
+  scrollRef?: React.RefObject<ScrollView | null>;
+  badge?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <View
+      className="flex-1 overflow-hidden rounded-card"
+      style={[sticker, { backgroundColor: theme.bg }, Platform.OS === 'web' ? transition : null]}
+    >
+      {badge ? (
+        <View
+          pointerEvents="none"
+          className="absolute right-4 top-3.5 z-10 rounded-pill px-2.5 py-0.5"
+          style={{ backgroundColor: badge === 'EN' ? 'rgba(79,70,229,0.12)' : 'rgba(220,38,38,0.10)' }}
+        >
+          <Text
+            style={{ fontSize: 10.5, fontWeight: '700', letterSpacing: 1, color: badge === 'EN' ? '#4F46E5' : '#DC2626' }}
+          >
+            {badge}
+          </Text>
+        </View>
+      ) : null}
+      <ScrollView ref={scrollRef} contentContainerStyle={{ padding: 28, paddingBottom: 64 }}>
+        {children}
+      </ScrollView>
+    </View>
+  );
+}
+
+function Kicker({ theme, children }: { theme: Theme; children: React.ReactNode }) {
+  return (
+    <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 1.6, color: theme.muted }}>{children}</Text>
+  );
+}
+
+function EnglishPane({
+  article,
+  theme,
+  fontFamily,
+  fontSize,
+  scrollRef,
+  offsets,
+  hoverPara,
+  onHoverPara,
+  onJump,
+  onWord,
+}: {
+  article: BilingualArticle;
+  theme: Theme;
+  fontFamily: string | undefined;
+  fontSize: number;
+  scrollRef: React.RefObject<ScrollView | null>;
+  offsets: React.MutableRefObject<Record<number, number>>;
+  hoverPara: number | null;
+  onHoverPara: (i: number | null) => void;
+  onJump: (i: number) => void;
+  onWord: (paragraph: number | null) => (p: WordPick) => void;
+}) {
+  const source = article.source;
+  return (
+    <Sheet theme={theme} scrollRef={scrollRef} badge="EN">
+      <Kicker theme={theme}>
+        ENGLISH <Text style={{ letterSpacing: 0.2 }}>· rê chuột vào từ để xem nghĩa, bấm vào từ để xem chi tiết</Text>
+      </Kicker>
+
+      <Text
+        style={{
+          marginTop: 14,
+          fontFamily: readingFont.display,
+          fontWeight: '800',
+          fontSize: fontSize + 15,
+          lineHeight: (fontSize + 15) * 1.18,
+          color: theme.ink,
+        }}
+      >
+        {article.titleEn}
+      </Text>
+
+      {source ? (
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => void Linking.openURL(source.url)}
+          className="mt-3 flex-row items-center gap-1.5 self-start rounded-pill px-3 py-1"
+          style={{ borderWidth: 1.5, borderColor: '#93A7F5', backgroundColor: 'rgba(147,167,245,0.12)' }}
+        >
+          <Text
+            style={{ fontFamily: readingFont.display, fontWeight: '700', fontSize: 11, letterSpacing: 0.8, color: '#3B4FB8' }}
+          >
+            LINK BÀI VIẾT GỐC | {source.outlet.toUpperCase()}
+          </Text>
+          <Icon name="external" size={11} color="#3B4FB8" strokeWidth={2.2} />
+        </Pressable>
+      ) : null}
+
+      <Text
+        style={{
+          marginTop: 12,
+          fontFamily: readingFont.body,
+          fontStyle: 'italic',
+          fontSize: fontSize + 1,
+          lineHeight: (fontSize + 1) * 1.6,
+          color: theme.body,
+        }}
+      >
+        {article.standfirstEn}
+      </Text>
+
+      <View className="mt-3 flex-row flex-wrap items-center gap-x-3 gap-y-1">
+        <Meta theme={theme} text={article.level} />
+        <Meta theme={theme} text={article.topic} />
+        <Meta theme={theme} text={`${article.wordCount} từ · ${article.estMinutes} phút`} />
+        {source?.author ? <Meta theme={theme} text={`by ${source.author}`} italic /> : null}
+      </View>
+
+      <View className="mt-5" style={{ height: 1, backgroundColor: theme.rule }} />
+
+      {article.paragraphs.map((p, i) => (
+        <ParagraphBlock
+          key={i}
+          index={i}
+          theme={theme}
+          hovered={hoverPara === i}
+          onHover={onHoverPara}
+          onJump={onJump}
+          onMeasure={(i, y) => {
+            offsets.current[i] = y;
+          }}
+        >
+          <EnglishParagraph paragraph={p} theme={theme} fontFamily={fontFamily} fontSize={fontSize} onWord={onWord(i)} />
+        </ParagraphBlock>
+      ))}
+
+      {source ? <SourceNote theme={theme} article={article} /> : null}
+    </Sheet>
+  );
+}
+
+function EnglishParagraph({
+  paragraph,
+  theme,
+  fontFamily,
+  fontSize,
+  onWord,
+}: {
+  paragraph: BilingualParagraph;
+  theme: Theme;
+  fontFamily: string | undefined;
+  fontSize: number;
+  onWord: (p: WordPick) => void;
+}) {
+  // Nghĩa soạn riêng cho đoạn — sát ngữ cảnh nhất, được ưu tiên khi rê chuột.
+  const bundled = useMemo(() => {
+    const map: Record<string, InlineGloss> = {};
+    for (const g of paragraph.gloss ?? []) {
+      map[g.word.toLowerCase().replace(/[^a-z0-9'-]/g, '')] = { word: g.word, meaningVi: g.meaningVi, pos: g.pos };
+    }
+    return map;
+  }, [paragraph.gloss]);
 
   return (
-    <PaperCard className="mt-4">
-      <Text className="font-heavy text-cardTitle text-paper-ink">
-        Câu hỏi hiểu bài · {questions.length} câu
-      </Text>
-      <Text className="mt-1 font-sans text-label text-paper-muted">
-        Chọn một phương án để xem vì sao đúng hoặc sai.
+    <HoverGlossText
+      text={paragraph.en}
+      bundled={bundled}
+      fontFamily={fontFamily}
+      fontSize={fontSize}
+      lineHeight={fontSize * 1.75}
+      color={theme.ink}
+      onWordPress={onWord}
+    />
+  );
+}
+
+function VietnamesePane({
+  article,
+  theme,
+  fontFamily,
+  fontSize,
+  scrollRef,
+  offsets,
+  hoverPara,
+  onHoverPara,
+  onJump,
+}: {
+  article: BilingualArticle;
+  theme: Theme;
+  fontFamily: string;
+  fontSize: number;
+  scrollRef: React.RefObject<ScrollView | null>;
+  offsets: React.MutableRefObject<Record<number, number>>;
+  hoverPara: number | null;
+  onHoverPara: (i: number | null) => void;
+  onJump: (i: number) => void;
+}) {
+  return (
+    <Sheet theme={theme} scrollRef={scrollRef} badge="VI">
+      <Kicker theme={theme}>TIẾNG VIỆT</Kicker>
+
+      <Text
+        style={{
+          marginTop: 14,
+          fontFamily: readingFont.display,
+          fontStyle: 'italic',
+          fontWeight: '700',
+          fontSize: fontSize + 15,
+          lineHeight: (fontSize + 15) * 1.22,
+          color: theme.ink,
+        }}
+      >
+        {article.titleVi}
       </Text>
 
-      <View className="mt-4 gap-4">
-        {questions.map((question, qi) => {
-          const chosen = picked[qi];
-          const answered = chosen !== undefined;
+      <Text
+        style={{
+          marginTop: 12,
+          fontFamily,
+          fontStyle: 'italic',
+          fontSize: fontSize + 1,
+          lineHeight: (fontSize + 1) * 1.6,
+          color: theme.body,
+        }}
+      >
+        {article.standfirstVi}
+      </Text>
 
-          return (
-            <View key={qi} className="rounded-panel border border-brand-soft p-3.5">
-              <View className="flex-row flex-wrap items-center gap-2">
-                <Text className="font-strong text-label text-paper-muted">Câu {qi + 1}</Text>
-                {question.type ? <Badge label={question.type} tone="neutral" /> : null}
+      <View className="mt-5" style={{ height: 1, backgroundColor: theme.rule }} />
+
+      {article.paragraphs.map((p, i) => (
+        <ParagraphBlock
+          key={i}
+          index={i}
+          theme={theme}
+          hovered={hoverPara === i}
+          onHover={onHoverPara}
+          onJump={onJump}
+          onMeasure={(i, y) => {
+            offsets.current[i] = y;
+          }}
+        >
+          <Rich text={p.vi} style={{ fontFamily, fontSize, lineHeight: fontSize * 1.75, color: theme.body }} />
+        </ParagraphBlock>
+      ))}
+    </Sheet>
+  );
+}
+
+/** Một đoạn: số đoạn bấm được để đối chiếu, nền sáng lên khi đoạn tương ứng bên kia đang được rê. */
+function ParagraphBlock({
+  index,
+  theme,
+  hovered,
+  onHover,
+  onJump,
+  onMeasure,
+  children,
+}: {
+  index: number;
+  theme: Theme;
+  hovered: boolean;
+  onHover: (i: number | null) => void;
+  onJump: (i: number) => void;
+  onMeasure: (i: number, y: number) => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <View
+      onLayout={(e) => onMeasure(index, e.nativeEvent.layout.y)}
+      // @ts-expect-error — onMouseEnter/Leave chỉ có trên react-native-web.
+      onMouseEnter={Platform.OS === 'web' ? () => onHover(index) : undefined}
+      onMouseLeave={Platform.OS === 'web' ? () => onHover(null) : undefined}
+      className="mt-4 rounded-md px-2 py-1.5"
+      style={[{ marginHorizontal: -8, backgroundColor: hovered ? theme.tint : 'transparent' }, Platform.OS === 'web' ? transition : null]}
+    >
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`Đối chiếu đoạn ${index + 1}`}
+        onPress={() => onJump(index)}
+        className="self-start"
+      >
+        <Text style={{ fontFamily: readingFont.mono, fontSize: 11, color: theme.muted, marginBottom: 4 }}>
+          {String(index + 1).padStart(2, '0')}
+        </Text>
+      </Pressable>
+      {children}
+    </View>
+  );
+}
+
+function Rich({ text, style }: { text: string; style: object }) {
+  const runs = useMemo(() => parseInline(text), [text]);
+  return (
+    <Text style={style}>
+      {runs.map((r, i) => (
+        <Text key={i} style={{ fontStyle: r.italic ? 'italic' : 'normal', fontWeight: r.bold ? '700' : undefined }}>
+          {r.text}
+        </Text>
+      ))}
+    </Text>
+  );
+}
+
+function Meta({ theme, text, italic }: { theme: Theme; text: string; italic?: boolean }) {
+  return (
+    <Text
+      style={{
+        fontSize: 11,
+        letterSpacing: italic ? 0 : 1,
+        color: theme.muted,
+        fontFamily: italic ? readingFont.body : readingFont.mono,
+        fontStyle: italic ? 'italic' : 'normal',
+      }}
+    >
+      {italic ? text : text.toUpperCase()}
+    </Text>
+  );
+}
+
+function SourceNote({ theme, article }: { theme: Theme; article: BilingualArticle }) {
+  const s = article.source!;
+  return (
+    <View className="mt-8 rounded-md p-3.5" style={{ backgroundColor: theme.tint }}>
+      <Text style={{ fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 13, lineHeight: 20, color: theme.body }}>
+        Nguồn: {s.outlet}
+        {s.author ? `, ${s.author}` : ''} — đăng ngày {s.publishedAt}. Giấy phép: {s.license}. Bản tiếng Việt, chú
+        giải và câu hỏi do ReadUp biên soạn.
+      </Text>
+    </View>
+  );
+}
+
+/* ====================================================================== */
+/*                               CÂU HỎI (IELTS)                           */
+/* ====================================================================== */
+
+function QuestionsPane({
+  questions,
+  theme,
+  answers,
+  checked,
+  onAnswer,
+}: {
+  questions: BilingualQuestion[];
+  theme: Theme;
+  answers: Record<number, number>;
+  checked: boolean;
+  onAnswer: (q: number, o: number) => void;
+}) {
+  return (
+    <Sheet theme={theme}>
+      <View className="rounded-card p-5" style={{ borderWidth: 2, borderColor: theme.ink }}>
+        <Text style={{ fontFamily: readingFont.sans, fontWeight: '800', fontSize: 22, color: theme.ink }}>
+          Questions 1–{questions.length}
+        </Text>
+        <Text style={{ marginTop: 6, fontFamily: readingFont.body, fontSize: 14.5, color: theme.body }}>
+          Choose the correct letter, <Text style={{ fontWeight: '700' }}>A, B, C or D</Text>.
+        </Text>
+        <Text style={{ marginTop: 2, fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 13.5, color: theme.muted }}>
+          Chọn xong bấm “Kiểm tra” trên thanh trên cùng để xem đáp án và lời giải.
+        </Text>
+
+        <View className="mt-5 gap-6">
+          {questions.map((q, qi) => (
+            <View key={qi}>
+              <View className="flex-row items-start gap-3">
+                <View
+                  className="mt-0.5 h-7 items-center justify-center rounded-md px-2"
+                  style={{ borderWidth: 1.5, borderColor: theme.ink }}
+                >
+                  <Text style={{ fontSize: 12.5, fontWeight: '700', color: theme.ink }}>{qi + 1}</Text>
+                </View>
+                <View className="min-w-0 flex-1">
+                  <Text style={{ fontFamily: readingFont.body, fontSize: 16, lineHeight: 24, color: theme.ink }}>{q.q}</Text>
+                  <Text style={{ fontFamily: readingFont.mono, fontSize: 10, letterSpacing: 1, color: theme.muted, marginTop: 2 }}>
+                    {q.type.toUpperCase()}
+                  </Text>
+                </View>
               </View>
-              <Text className="mt-1.5 font-mid text-bodyLg text-paper-ink">{question.q}</Text>
 
-              <View className="mt-2.5 gap-1.5">
-                {question.options.map((option, oi) => {
-                  const isAnswer = oi === question.answerIndex;
-                  const isChosen = chosen === oi;
-                  const tone = !answered
-                    ? { border: paper.brandSoft, bg: '#FFFFFF' }
-                    : isAnswer
-                      ? { border: color.success, bg: color.successSoft }
-                      : isChosen
-                        ? { border: color.danger, bg: color.dangerSoft }
-                        : { border: paper.brandSoft, bg: '#FFFFFF' };
-
+              <View className="ml-10 mt-2.5 gap-1.5">
+                {q.options.map((opt, oi) => {
+                  const chosen = answers[qi] === oi;
+                  const right = checked && oi === q.answerIndex;
+                  const wrong = checked && chosen && oi !== q.answerIndex;
                   return (
                     <Pressable
                       key={oi}
-                      accessibilityRole="button"
-                      accessibilityState={{ selected: isChosen }}
-                      onPress={() => setPicked((prev) => ({ ...prev, [qi]: oi }))}
-                      className="flex-row items-start gap-2.5 rounded-md border px-3 py-2.5"
-                      style={{ borderColor: tone.border, backgroundColor: tone.bg }}
+                      accessibilityRole="radio"
+                      accessibilityState={{ checked: chosen }}
+                      onPress={() => onAnswer(qi, oi)}
+                      className="flex-row items-start gap-2.5 rounded-md px-2.5 py-2"
+                      style={[
+                        {
+                          backgroundColor: right
+                            ? 'rgba(22,163,74,0.12)'
+                            : wrong
+                              ? 'rgba(220,38,38,0.10)'
+                              : chosen
+                                ? theme.tint
+                                : 'transparent',
+                        },
+                        Platform.OS === 'web' ? transition : null,
+                      ]}
                     >
-                      <Text className="font-strong text-body text-paper-muted">
-                        {'ABCD'[oi]}
-                      </Text>
-                      <Text className="min-w-0 flex-1 font-sans text-body text-paper-ink">
-                        {option}
+                      <View
+                        className="h-6 w-6 items-center justify-center rounded-pill"
+                        style={{
+                          borderWidth: 1.5,
+                          borderColor: right ? '#16A34A' : wrong ? '#DC2626' : theme.ink,
+                          backgroundColor: chosen ? (wrong ? '#DC2626' : right ? '#16A34A' : theme.ink) : 'transparent',
+                        }}
+                      >
+                        <Text style={{ fontSize: 11, fontWeight: '700', color: chosen ? theme.bg : theme.ink }}>
+                          {'ABCD'[oi]}
+                        </Text>
+                      </View>
+                      <Text style={{ flex: 1, fontFamily: readingFont.body, fontSize: 15, lineHeight: 22, color: theme.body }}>
+                        {opt}
                       </Text>
                     </Pressable>
                   );
                 })}
               </View>
 
-              {answered && question.whyVi ? (
-                <View className="mt-2.5 rounded-md bg-brand-tint p-3">
-                  <Text className="font-sans text-body text-paper-body">{question.whyVi}</Text>
-                </View>
+              {checked ? (
+                <CrossFade swapKey={`why-${qi}`}>
+                  <View className="ml-10 mt-2 rounded-md p-3" style={{ backgroundColor: theme.tint }}>
+                    <Text style={{ fontFamily: readingFont.sans, fontSize: 13.5, lineHeight: 21, color: theme.body }}>
+                      <Text style={{ fontWeight: '700' }}>
+                        {answers[qi] === q.answerIndex ? 'Đúng. ' : answers[qi] === undefined ? 'Chưa chọn. ' : 'Chưa đúng. '}
+                      </Text>
+                      <Text style={{ fontStyle: 'italic' }}>{q.whyVi}</Text>
+                    </Text>
+                  </View>
+                </CrossFade>
+              ) : null}
+            </View>
+          ))}
+        </View>
+      </View>
+    </Sheet>
+  );
+}
+
+/* ====================================================================== */
+/*                                   TỪ VỰNG                               */
+/* ====================================================================== */
+
+function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: Theme; article: BilingualArticle }) {
+  const saveWord = useVocabStore((s) => s.saveWord);
+  const entries = useVocabStore((s) => s.entries);
+
+  return (
+    <Sheet theme={theme}>
+      <Kicker theme={theme}>TỪ VỰNG CỦA BÀI · {vocab.length} TỪ</Kicker>
+      <Text
+        style={{ marginTop: 10, fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 26, color: theme.ink }}
+      >
+        Những từ đáng giữ lại
+      </Text>
+
+      <View className="mt-5 gap-3">
+        {vocab.map((v, i) => {
+          const lemma = lemmatize(v.word);
+          const saved = Object.values(entries).some((e) => e.lemma === lemma && e.articleId === article.id);
+          return (
+            <View key={i} className="rounded-md p-3.5" style={{ borderWidth: 1, borderColor: theme.rule }}>
+              <View className="flex-row flex-wrap items-baseline gap-x-2.5 gap-y-1">
+                <Text
+                  style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '800', fontSize: 19, color: theme.ink }}
+                >
+                  {v.word}
+                </Text>
+                <Text style={{ fontFamily: readingFont.mono, fontSize: 12, color: theme.muted }}>{v.ipa}</Text>
+                <Text style={{ fontSize: 11, fontWeight: '700', color: OLIVE }}>{v.pos}</Text>
+                <View className="flex-1" />
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={`Nghe từ ${v.word}`}
+                  onPress={() => {
+                    Speech.stop();
+                    Speech.speak(v.word, { language: 'en-GB', rate: 0.9 });
+                  }}
+                  className="px-1"
+                >
+                  <Icon name="volume" size={15} color={theme.muted} strokeWidth={2} />
+                </Pressable>
+                <Pressable
+                  accessibilityRole="button"
+                  disabled={saved}
+                  onPress={() =>
+                    saveWord({
+                      word: v.word,
+                      lemma,
+                      phonetic: v.ipa,
+                      partOfSpeech: v.pos,
+                      definitionContext: null,
+                      definitionGeneral: null,
+                      definitionVi: v.meaningVi,
+                      exampleSentence: v.example ?? null,
+                      sourceSentence: v.example ?? v.word,
+                      articleId: article.id,
+                      articleTitle: article.titleEn,
+                      paragraphIndex: null,
+                      isCollocation: v.word.includes(' '),
+                    })
+                  }
+                  className="rounded-pill px-2.5 py-1"
+                  style={{ backgroundColor: saved ? theme.tint : '#A3CC66' }}
+                >
+                  <Text style={{ fontSize: 11, fontWeight: '800', color: saved ? theme.muted : '#1F2A12' }}>
+                    {saved ? '✓ Đã lưu' : '+ Lưu'}
+                  </Text>
+                </Pressable>
+              </View>
+              <Text style={{ marginTop: 4, fontFamily: readingFont.sans, fontSize: 15, fontWeight: '600', color: theme.body }}>
+                {v.meaningVi}
+              </Text>
+              {v.collocation ? (
+                <Text style={{ marginTop: 4, fontSize: 13, color: theme.muted }}>
+                  Đi với: <Text style={{ fontStyle: 'italic', fontFamily: readingFont.body }}>{v.collocation}</Text>
+                </Text>
+              ) : null}
+              {v.example ? (
+                <Text
+                  style={{ marginTop: 4, fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 14, lineHeight: 21, color: theme.body }}
+                >
+                  “{v.example}”
+                </Text>
+              ) : null}
+              {v.derivatives && v.derivatives !== '—' ? (
+                <Rich text={`Họ từ: ${v.derivatives}`} style={{ marginTop: 4, fontSize: 13, color: theme.muted }} />
               ) : null}
             </View>
           );
         })}
       </View>
-    </PaperCard>
+    </Sheet>
   );
 }
+
+/* ====================================================================== */
+
+/*
+  react-native-web chuyển thẳng các khoá này xuống CSS; kiểu của RN không khai
+  báo chúng nên phải ép kiểu. Chỉ dùng trên web.
+*/
+const transition = {
+  transitionProperty: 'background-color, color, border-color',
+  transitionDuration: '220ms',
+  transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)',
+} as object;
+
+/** Viền mực + bóng lệch cứng — kiểu "sticker" của bố cục phòng thi tham chiếu. */
+const sticker = {
+  borderWidth: 2,
+  borderColor: INK_BORDER,
+  ...(Platform.OS === 'web' ? ({ boxShadow: `4px 5px 0 ${INK_BORDER}` } as object) : { elevation: 4 }),
+};

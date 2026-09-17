@@ -38,8 +38,14 @@ test('từ ngoài kho trả null để còn rơi xuống tra mạng', () => {
   assert.equal(offlineGloss('zzzqqq'), null);
 });
 
-test('kho song ngữ không còn thẻ HTML trong chữ hiển thị', () => {
+test('kho song ngữ chỉ mang thẻ đậm/nghiêng — màn đọc chỉ vẽ được hai loại này', () => {
   for (const a of BILINGUAL_ARTICLES) {
-    assert.ok(!/<\/?[a-z]+>/i.test(JSON.stringify(a)), `${a.id} còn thẻ HTML`);
+    const tags = JSON.stringify(a).match(/<\/?[a-z][^>]*>/gi) ?? [];
+    const odd = tags.filter((t) => !/^<\/?(b|i|em|strong)>$/i.test(t));
+    assert.deepEqual(odd, [], `${a.id} có thẻ lạ`);
   }
+});
+
+test('thường hoá gỡ thẻ trước khi tra', () => {
+  assert.equal(normaliseToken('<i>salary</i>,'), 'salary');
 });
