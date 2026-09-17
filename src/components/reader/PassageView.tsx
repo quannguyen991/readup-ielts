@@ -33,6 +33,9 @@ export type PassageViewProps = {
    * trống có lời nhắn còn hơn ghép nhầm bản dịch của đoạn bên cạnh vào.
    */
   translations?: string[] | null;
+  /** Mặt chữ và màu chữ của bài — màn luyện Reading cho người học tự chọn. */
+  fontFamily?: string;
+  textColor?: string;
 };
 
 type Token = { text: string; isWord: boolean; start: number; end: number };
@@ -55,6 +58,8 @@ export function PassageView({
   onPhraseToken,
   speakingParagraph,
   translations = null,
+  fontFamily,
+  textColor,
 }: PassageViewProps) {
   return (
     <View className="gap-4" nativeID={PASSAGE_CONTAINER_ID}>
@@ -73,6 +78,8 @@ export function PassageView({
           onPhraseToken={onPhraseToken}
           speaking={speakingParagraph === index}
           translation={translations ? (translations[index] ?? '') : null}
+          fontFamily={fontFamily}
+          textColor={textColor}
         />
       ))}
     </View>
@@ -92,7 +99,11 @@ function Paragraph({
   onPhraseToken,
   speaking,
   translation,
+  fontFamily,
+  textColor,
 }: {
+  fontFamily?: string;
+  textColor?: string;
   index: number;
   text: string;
   fontScale: number;
@@ -132,7 +143,7 @@ function Paragraph({
       <View className="flex-1">
       <Text
         className="font-sans text-body"
-        style={{ fontSize, lineHeight, color: '#334155' }}
+        style={{ fontSize, lineHeight, color: textColor ?? '#334155', ...(fontFamily ? { fontFamily } : null) }}
         selectable
       >
         {tokens.map((token, tokenIndex) => {

@@ -16,6 +16,7 @@ import {
   type BilingualOutlet,
 } from '@/data/bilingual-repository';
 import { stripInline } from '@/lib/inlineMarkup';
+import { HoverPressable } from '@/components/ui/HoverPressable';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 
 /**
@@ -277,7 +278,7 @@ function ArticleCard({ article, outlet }: { article: BilingualArticle; outlet: B
   const source = article.source;
 
   return (
-    <Pressable
+    <HoverPressable
       accessibilityRole="link"
       onPress={() => router.push(`/bilingual/${article.id}` as never)}
       className="h-full"
@@ -335,7 +336,7 @@ function ArticleCard({ article, outlet }: { article: BilingualArticle; outlet: B
           </Text>
         </View>
       </View>
-    </Pressable>
+    </HoverPressable>
   );
 }
 

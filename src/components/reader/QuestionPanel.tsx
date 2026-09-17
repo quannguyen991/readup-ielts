@@ -26,6 +26,7 @@ export function QuestionPanel({
   onStartEvidence,
   onClearEvidence,
   layout = 'blocks',
+  bare = false,
 }: {
   questions: GeneratedQuestion[];
   answers: Record<string, string>;
@@ -48,6 +49,8 @@ export function QuestionPanel({
    * lời dẫn khối, để mỗi câu tự mang nhãn dạng của nó.
    */
   layout?: 'blocks' | 'mixed';
+  /** Không bọc thẻ — khi panel đã nằm sẵn trong một tấm giấy của màn chứa nó. */
+  bare?: boolean;
   evidenceMarks?: Record<string, EvidenceMark>;
   evidenceFor?: string | null;
   onStartEvidence?: (questionId: string) => void;
@@ -70,14 +73,14 @@ export function QuestionPanel({
 
   if (visible.length === 0) {
     return (
-      <Card>
+      <PanelShell bare={bare}>
         <Text className="font-sans text-body text-muted">Chưa có câu hỏi nào cho bài này.</Text>
-      </Card>
+      </PanelShell>
     );
   }
 
   return (
-    <Card>
+    <PanelShell bare={bare}>
       <View className="flex-row items-center justify-between">
         <Text className="font-strong text-cardTitle text-ink">Questions</Text>
         <Text className="font-mid text-label text-muted">
@@ -308,8 +311,17 @@ export function QuestionPanel({
           onPress={onSubmit}
         />
       </View>
-    </Card>
+    </PanelShell>
   );
+}
+
+/**
+ * Vỏ của panel. Đặt ở cấp module chứ không khai báo trong thân `QuestionPanel`:
+ * khai báo trong thân thì mỗi lượt vẽ là một component MỚI, React gỡ ra gắn lại
+ * cả cây câu hỏi và ô điền đáp án mất con trỏ giữa lúc đang gõ.
+ */
+function PanelShell({ bare, children }: { bare: boolean; children: React.ReactNode }) {
+  return bare ? <View>{children}</View> : <Card>{children}</Card>;
 }
 
 function FilterChip({

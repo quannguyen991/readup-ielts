@@ -1,4 +1,4 @@
-import React, { useCallback, useId, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Linking,
   Platform,
@@ -12,7 +12,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
 
-import Svg, { Defs, Path, Pattern, Rect } from 'react-native-svg';
+import { OliveGrid } from '@/components/layout/OliveGrid';
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { HoverGlossText, type InlineGloss, type WordPick } from '@/components/reader/HoverGloss';
 import { WordPopover } from '@/components/reader/WordPopover';
@@ -29,6 +29,7 @@ import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
 import { useVocabStore } from '@/store/useVocabStore';
+import { HoverPressable } from '@/components/ui/HoverPressable';
 
 /**
  * Màn đọc báo song ngữ.
@@ -112,31 +113,8 @@ export default function BilingualReaderScreen() {
   return <Reader article={article} />;
 }
 
-/*
-  Nền lưới xanh rêu PHẲNG, vẽ riêng ở đây chứ không dùng `GridBackdrop`.
-
-  `GridBackdrop` có hai vệt loang xanh–tím hợp với nền chàm của app, lạc tông
-  trên nền rêu. Và nó đặt id gradient cố định: khung app đã vẽ một nền cùng id
-  ở phía dưới, nên trình duyệt lấy nhầm gradient của khung — màn đọc hiện ra
-  nền xanh nhạt thay vì xanh rêu. Id ở đây sinh theo từng lần gắn.
-*/
 function Backdrop({ children }: { children: React.ReactNode }) {
-  const cellId = `olive-cell-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
-  return (
-    <View className="flex-1" style={{ backgroundColor: '#697B3E' }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-        <Svg width="100%" height="100%">
-          <Defs>
-            <Pattern id={cellId} width={30} height={30} patternUnits="userSpaceOnUse">
-              <Path d="M 30 0 L 0 0 L 0 30" fill="none" stroke="rgba(255,255,255,0.13)" strokeWidth={1} />
-            </Pattern>
-          </Defs>
-          <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${cellId})`} />
-        </Svg>
-      </View>
-      {children}
-    </View>
-  );
+  return <OliveGrid>{children}</OliveGrid>;
 }
 
 function Reader({ article }: { article: BilingualArticle }) {
@@ -404,7 +382,7 @@ function Toolbar(props: {
               style={{ minWidth: 180, backgroundColor: '#26301A', borderWidth: 1, borderColor: PILL_BORDER, zIndex: 40 }}
             >
               {FONTS.map((f) => (
-                <Pressable
+                <HoverPressable
                   key={f.key}
                   accessibilityRole="menuitem"
                   onPress={() => {
@@ -416,7 +394,7 @@ function Toolbar(props: {
                 >
                   <Text style={{ fontFamily: f.family, fontSize: 15, color: CREAM }}>{f.label}</Text>
                   {props.fontKey === f.key ? <Icon name="check" size={14} color="#C9DA92" strokeWidth={2.4} /> : null}
-                </Pressable>
+                </HoverPressable>
               ))}
             </View>
           </Appear>
@@ -472,14 +450,14 @@ function Pill({
   );
   if (!onPress) return <View accessibilityLabel={label}>{inner}</View>;
   return (
-    <Pressable
+    <HoverPressable
       accessibilityRole="button"
       accessibilityLabel={label}
       onPress={onPress}
       style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
     >
       {inner}
-    </Pressable>
+    </HoverPressable>
   );
 }
 
@@ -608,7 +586,7 @@ function EnglishPane({
       </Text>
 
       {source ? (
-        <Pressable
+        <HoverPressable
           accessibilityRole="link"
           onPress={() => void Linking.openURL(source.url)}
           className="mt-3 flex-row items-center gap-1.5 self-start rounded-pill px-3 py-1"
@@ -621,7 +599,7 @@ function EnglishPane({
             LINK BÀI VIẾT GỐC | {source.outlet.toUpperCase()}
           </Text>
           <Icon name="external" size={10} color="#3F55B8" strokeWidth={2.2} />
-        </Pressable>
+        </HoverPressable>
       ) : null}
 
       <Text
@@ -888,7 +866,7 @@ function QuestionsPane({
                 const right = checked && oi === q.answerIndex;
                 const wrong = checked && chosen && oi !== q.answerIndex;
                 return (
-                  <Pressable
+                  <HoverPressable
                     key={oi}
                     accessibilityRole="radio"
                     accessibilityState={{ checked: chosen }}
@@ -915,7 +893,7 @@ function QuestionsPane({
                     <Text style={{ flex: 1, fontFamily: readingFont.fraunces, fontSize: 15.5, lineHeight: 23, color: theme.body }}>
                       {opt}
                     </Text>
-                  </Pressable>
+                  </HoverPressable>
                 );
               })}
             </View>
@@ -933,7 +911,7 @@ function QuestionsPane({
         ))}
       </View>
 
-      <Pressable
+      <HoverPressable
         accessibilityRole="button"
         onPress={onCheck}
         className="mt-8 items-center self-start rounded-pill px-6 py-3"
@@ -942,7 +920,7 @@ function QuestionsPane({
         <Text style={{ fontSize: 14, fontWeight: '800', color: checked ? theme.ink : '#FFFFFF' }}>
           {checked ? `Đúng ${score}/${questions.length} · Làm lại` : 'Xem kết quả'}
         </Text>
-      </Pressable>
+      </HoverPressable>
     </Sheet>
   );
 }

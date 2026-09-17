@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import type { QuestionType } from '@/types/database';
 import * as Speech from 'expo-speech';
@@ -14,7 +14,10 @@ import type { EvidenceMark } from '@/services/proofloop/types';
 import { readingSkillFor } from '@/services/mastery/reading-skill';
 import { observeSkill } from '@/store/useMasteryStore';
 import { useBilingual } from '@/components/reader/useBilingual';
-import { Badge, Button, Card, Icon, IconButton } from '@/components/ui';
+import { OliveGrid } from '@/components/layout/OliveGrid';
+import { CrossFade } from '@/components/motion/Motion';
+import { Badge, Button, Card, Icon } from '@/components/ui';
+import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import {
   getArticleById,
   getArticleWithBody,
@@ -31,9 +34,23 @@ import { useReaderStore } from '@/store/useReaderStore';
 import { rawScoreToBand, useStudyStore, type AttemptRecord } from '@/store/useStudyStore';
 import { useUserArticleStore } from '@/store/useUserArticleStore';
 import { useVocabStore } from '@/store/useVocabStore';
+import { HoverPressable } from '@/components/ui/HoverPressable';
 import { color, highlightColors, type HighlightColorKey } from '@/theme/tokens';
 
-/** Màn hình đọc + luyện đề, bố cục 2 cột — bám ảnh tham chiếu số 2. */
+/**
+ * Màn luyện Reading — bố cục PHÒNG THI.
+ *
+ * Thanh trên kiểu đề thi máy: dải số câu (đã làm tô đen, đánh dấu có chấm vàng),
+ * màu giấy, mặt chữ, cỡ chữ, toàn màn hình, đồng hồ, nút "Kiểm Tra". Dưới là hai
+ * tấm giấy viền mực đặt cạnh nhau, MỖI TẤM CUỘN RIÊNG: bài đọc bên trái, câu hỏi
+ * bên phải — người làm bài cuộn bài đi tìm bằng chứng mà câu hỏi vẫn đứng yên.
+ *
+ * Khác màn đọc báo song ngữ (tờ báo, không viền, không đồng hồ): ở đây người học
+ * đang LÀM ĐỀ, nên mọi thứ nhắc tới thời gian và số câu còn lại đều nằm trong tầm mắt.
+ *
+ * Màn hẹp chỉ đủ một tấm, nên thanh trên có thêm hai thẻ Bài đọc / Câu hỏi; bấm
+ * "khoanh bằng chứng" ở câu hỏi thì tự chuyển sang thẻ Bài đọc.
+ */
 export default function ReadScreen() {
   const { id, types, mode } = useLocalSearchParams<{ id: string; types?: string; mode?: string }>();
 
@@ -117,6 +134,14 @@ export default function ReadScreen() {
   const [speakingParagraph, setSpeakingParagraph] = useState<number | null>(null);
   const [secondsLeft, setSecondsLeft] = useState(20 * 60);
   const [paused, setPaused] = useState(false);
+
+  // Bố cục phòng thi: màu giấy, mặt chữ, thẻ bài/câu hỏi trên màn hẹp.
+  const { width: winW, height: winH } = useWindowDimensions();
+  const [paperKey, setPaperKey] = useState<string>('white');
+  const [fontKey, setFontKey] = useState<string>('serif');
+  const [narrowTab, setNarrowTab] = useState<'passage' | 'questions'>('passage');
+  const [toolbarH, setToolbarH] = useState(64);
+  useReadingFonts();
 
   // Mốc đặt trong effect, không phải trong `useRef(Date.now())`: đối số của useRef
   // được tính ngay trong lúc render. Mốc này chỉ đọc ở handler nên đặt muộn một
@@ -414,355 +439,396 @@ export default function ReadScreen() {
     router.push(`/review/${sessionId}` as never);
   };
 
-  return (
-    <View className="flex-1">
-      {/*
-        Header: độ khó, thời gian, tiến độ câu, đồng hồ.
+  const wide = winW >= 1024;
+  const theme = PAPER_THEMES.find((t) => t.key === paperKey) ?? PAPER_THEMES[0]!;
+  const passageFont = EXAM_FONTS.find((f) => f.key === fontKey) ?? EXAM_FONTS[0]!;
+  const paneHeight = Math.max(420, winH - toolbarH - (wide ? 36 : 28));
+  const pad = wide ? 36 : 20;
 
-        MỌI Ô CÙNG MỘT CHIỀU CAO (h-7). `items-center` một mình không đủ: bốn ô ở
-        đây cao thấp khác nhau vì viên nhãn có đệm dọc riêng còn cụm biểu tượng
-        thì không, nên căn giữa xong chúng vẫn lệch nhau vài điểm ảnh và cả hàng
-        đọc ra là gãy. Ép cùng chiều cao rồi mới căn giữa thì chúng nằm đúng một
-        đường.
+  const toggleFullscreen = () => {
+    if (Platform.OS !== 'web' || typeof document === 'undefined') return;
+    if (document.fullscreenElement) void document.exitFullscreen();
+    else void document.documentElement.requestFullscreen?.();
+  };
 
-        Chữ cũng về CÙNG một cỡ: "Quay lại" trước dùng cỡ body giữa những ô cỡ
-        label, nên phần chân chữ của nó nhô cao hơn phần còn lại.
-      */}
-      <View className="flex-row flex-wrap items-center gap-3 border-b border-border bg-surface px-4 py-3">
-        <Pressable
-          onPress={() => router.back()}
-          className="h-7 flex-row items-center gap-1.5"
-          accessibilityRole="button"
+  const passagePane = (
+    <ExamSheet bg={theme.bg}>
+      <ScrollView contentContainerStyle={{ padding: pad, paddingBottom: 72 }}>
+        <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 1.8, color: theme.muted }}>
+          {(article.exam === 'sat' ? 'SAT READING' : 'READING PASSAGE').toUpperCase()} · QUESTIONS 1–{questions.length || '…'}
+        </Text>
+
+        <Text
+          style={{
+            marginTop: 14,
+            textAlign: 'center',
+            fontFamily: passageFont.title,
+            fontWeight: '700',
+            fontSize: Math.round(26 * fontScale),
+            lineHeight: Math.round(34 * fontScale),
+            color: theme.ink,
+          }}
         >
-          <Icon name="chevron-left" size={15} color={color.muted} />
-          <Text className="font-semi text-label text-muted">Quay lại</Text>
-        </Pressable>
+          {article.title}
+        </Text>
 
-        <View className="h-7 flex-row items-center gap-2">
-          <Badge
-            label={article.cefrLevel ?? '—'}
-            tone={article.cefrLevel === 'C2' ? 'danger' : article.cefrLevel === 'C1' ? 'warning' : 'success'}
+        <Text style={{ marginTop: 6, textAlign: 'center', fontFamily: passageFont.title, fontStyle: 'italic', fontSize: 14, color: theme.muted }}>
+          {[
+            article.exam === 'sat' ? 'SAT' : article.track === 'academic' ? 'IELTS Academic' : 'IELTS General Training',
+            article.cefrLevel,
+            readingLevelLabel(article),
+            tierLabel(article.passageTier ?? null),
+            `${article.wordCount} từ`,
+            topicLabel(article.topic),
+          ]
+            .filter(Boolean)
+            .join(' · ')}
+        </Text>
+
+        {/* Công cụ đọc — một hàng mảnh, không tranh chỗ với bài */}
+        <View className="mt-5 flex-row flex-wrap items-center gap-1.5 border-y py-2.5" style={{ borderColor: theme.rule }}>
+          <ToolPill
+            label={bilingual.loading ? 'Đang dịch…' : bilingual.on ? 'Tắt song ngữ' : 'Song ngữ'}
+            active={bilingual.on}
+            disabled={bilingual.loading}
+            onPress={() => void bilingual.toggle()}
           />
-          <Badge label={readingLevelLabel(article) ?? '—'} tone="primary" />
+          <ToolPill label="Đọc to" onPress={() => speakParagraph(speakingParagraph === null ? 0 : speakingParagraph)} />
+          {speakingParagraph !== null ? (
+            <ToolPill
+              label="Dừng"
+              onPress={() => {
+                Speech.stop();
+                setSpeakingParagraph(null);
+              }}
+            />
+          ) : null}
+          <ToolPill
+            label={phraseMode ? 'Đang chọn cụm…' : 'Chọn cụm'}
+            active={phraseMode}
+            onPress={() => {
+              setPhraseMode((p) => !p);
+              setPhraseAnchor(null);
+            }}
+          />
+          <View className="mx-1 h-5 w-px" style={{ backgroundColor: theme.rule }} />
+          {(Object.keys(highlightColors) as HighlightColorKey[]).map((key) => (
+            <Pressable
+              key={key}
+              onPress={() => setHighlightColor(key)}
+              accessibilityLabel={`Bút ${highlightColors[key].label}`}
+              className="h-6 w-6 items-center justify-center rounded-pill"
+              style={{ borderWidth: 2, borderColor: highlightColor === key ? EXAM_INK : 'transparent' }}
+            >
+              <View className="h-4 w-4 rounded-pill" style={{ backgroundColor: highlightColors[key].dot }} />
+            </Pressable>
+          ))}
         </View>
 
-        <View className="h-7 flex-row items-center gap-1.5">
-          <Icon name="clock" size={14} color={color.subtle} />
-          <Text className="font-mid text-label text-muted">{article.estMinutes} min</Text>
-        </View>
-
-        <View className="h-7 flex-row items-center gap-1.5">
-          <Icon name="clipboard" size={14} color={color.subtle} />
-          <Text className="font-mid text-label text-muted">
-            {answeredCount} / {questions.length}
+        {bilingual.error ? (
+          <Text className="mt-2 font-sans text-label" style={{ color: color.danger }}>
+            {bilingual.error}
           </Text>
+        ) : null}
+
+        <View className="mt-6">
+          <PassageView
+            translations={bilingual.on ? bilingual.paragraphs : null}
+            paragraphs={article.paragraphs}
+            fontScale={fontScale}
+            fontFamily={passageFont.body}
+            textColor={theme.body}
+            highlights={articleHighlights}
+            statusOf={statusOf}
+            onWordPress={handleWordPress}
+            onSentenceLongPress={(sentence, paragraphIndex) =>
+              setSheet({ word: sentence, sentence, paragraphIndex, mode: 'sentence' })
+            }
+            phraseMode={phraseMode}
+            phraseAnchor={phraseAnchor}
+            onPhraseToken={handlePhraseToken}
+            speakingParagraph={speakingParagraph}
+          />
         </View>
 
-        <View className="flex-1" />
+        {article.attribution ? (
+          <Text style={{ marginTop: 28, fontFamily: passageFont.title, fontStyle: 'italic', fontSize: 12.5, color: theme.muted }}>
+            {article.attribution}
+          </Text>
+        ) : null}
 
-        <View className="flex-row items-center gap-2 rounded-panel bg-primary-50 px-3 py-1.5">
-          <Icon name="clock" size={15} color={color.primary} />
-          <Text className="font-strong text-body text-primary-700">{formatTime(secondsLeft)}</Text>
-          <Pressable onPress={() => setPaused((p) => !p)} accessibilityLabel="Tạm dừng">
-            <Icon name={paused ? 'chevron-right' : 'close'} size={14} color={color.primary} />
-          </Pressable>
-        </View>
-      </View>
-
-      <ScrollView className="flex-1" contentContainerStyle={{ padding: 16, paddingBottom: 40 }}>
-        <View className="mx-auto w-full max-w-[1400px] flex-row flex-wrap gap-4">
-          {/* Cột trái: bài đọc */}
-          <View className="min-w-[320px] flex-[3]">
-            <Card>
-              <View className="flex-row flex-wrap items-center gap-2">
-                <Badge
-                  label={
-                    article.exam === 'sat'
-                      ? 'SAT'
-                      : article.track === 'academic'
-                        ? 'IELTS Academic'
-                        : 'IELTS General Training'
-                  }
-                  tone="primary"
-                  shape="tag"
-                  uppercase
-                />
-                {article.passageTier ? (
-                  <Badge label={tierLabel(article.passageTier) ?? ''} tone="neutral" />
-                ) : null}
-              </View>
-
-              <Text className="mt-2 font-heavy text-pageTitle text-ink">{article.title}</Text>
-
-              <View className="mt-2 flex-row flex-wrap items-center gap-x-4 gap-y-1">
-                <Text className="font-mid text-label text-muted">
-                  {topicLabel(article.topic)} · {article.sourceName}
-                </Text>
-                <Text className="font-mid text-label text-muted">{article.wordCount} từ</Text>
-              </View>
-
-              {article.attribution ? (
-                <Text className="mt-2 font-sans text-label text-subtle">{article.attribution}</Text>
-              ) : null}
-
-              <View className="mt-4 border-t border-border pt-4">
-                <PassageView
-                  translations={bilingual.on ? bilingual.paragraphs : null}
-                  paragraphs={article.paragraphs}
-                  fontScale={fontScale}
-                  highlights={articleHighlights}
-                  statusOf={statusOf}
-                  onWordPress={handleWordPress}
-                  onSentenceLongPress={(sentence, paragraphIndex) =>
-                    setSheet({ word: sentence, sentence, paragraphIndex, mode: 'sentence' })
-                  }
-                  phraseMode={phraseMode}
-                  phraseAnchor={phraseAnchor}
-                  onPhraseToken={handlePhraseToken}
-                  speakingParagraph={speakingParagraph}
-                />
-              </View>
-            </Card>
-
-            {/* Thanh công cụ dưới bài */}
-            <Card className="mt-3">
-              <View className="flex-row flex-wrap items-center gap-2">
-                <View className="flex-row items-center gap-1.5 rounded-panel border border-border px-2.5 py-1.5">
-                  <Icon name="pencil" size={14} color={color.muted} />
-                  <Text className="font-semi text-label text-muted">Highlight</Text>
-                </View>
-
-                {(Object.keys(highlightColors) as HighlightColorKey[]).map((key) => (
-                  <Pressable
-                    key={key}
-                    onPress={() => setHighlightColor(key)}
-                    accessibilityLabel={highlightColors[key].label}
-                    className={[
-                      'h-7 w-7 items-center justify-center rounded-pill border-2',
-                      highlightColor === key ? 'border-primary-600' : 'border-transparent',
-                    ].join(' ')}
-                  >
-                    <View
-                      className="h-5 w-5 rounded-pill"
-                      style={{ backgroundColor: highlightColors[key].dot }}
-                    />
-                  </Pressable>
-                ))}
-
-                <Button
-                  label={phraseMode ? 'Đang chọn cụm…' : 'Chọn cụm từ'}
-                  variant={phraseMode ? 'primary' : 'outline'}
-                  size="sm"
-                  iconLeft="letters"
-                  onPress={() => {
-                    setPhraseMode((p) => !p);
-                    setPhraseAnchor(null);
-                  }}
-                />
-
-                <Button
-                  label="Highlight câu đang đọc"
-                  variant="outline"
-                  size="sm"
-                  iconLeft="check"
-                  onPress={() => {
-                    const paragraphIndex = speakingParagraph ?? 0;
-                    const paragraph = article.paragraphs[paragraphIndex];
-                    if (!paragraph) return;
-                    addHighlight({
-                      articleId: article.id,
-                      paragraphIndex,
-                      text: sentenceAround(paragraph, 0),
-                      color: highlightColor,
-                      note: null,
-                      evidenceForQuestionId: null,
-                    });
-                  }}
-                />
-
-                <Button
-                  label="Ghi chú"
-                  variant="outline"
-                  size="sm"
-                  iconLeft="note"
-                  onPress={() =>
-                    addNote({
-                      articleId: article.id,
-                      articleTitle: article.title,
-                      paragraphIndex: null,
-                      body: `Ghi chú cho "${article.title}"`,
-                    })
-                  }
-                />
-
-                <View className="flex-1" />
-
-                <View className="flex-row items-center gap-1">
-                  <IconButton
-                    name="close"
-                    accessibilityLabel="Giảm cỡ chữ"
-                    onPress={() => setFontScale(fontScale - 0.1)}
-                  />
-                  <Text className="font-semi text-body text-ink">A</Text>
-                  <IconButton
-                    name="plus"
-                    accessibilityLabel="Tăng cỡ chữ"
-                    onPress={() => setFontScale(fontScale + 0.1)}
-                  />
-                </View>
-              </View>
-
-              <View className="mt-3 flex-row flex-wrap items-center gap-2 border-t border-border pt-3">
-                {/*
-                  Nút song ngữ đứng ĐẦU hàng công cụ, trước cả nút đọc to: với
-                  người học ở trình độ thấp thì đây là thứ quyết định họ đọc hết
-                  bài hay bỏ giữa chừng.
-                */}
-                <Button
-                  label={
-                    bilingual.loading
-                      ? 'Đang dịch…'
-                      : bilingual.on
-                        ? 'Tắt song ngữ'
-                        : 'Đọc song ngữ'
-                  }
-                  variant={bilingual.on ? 'primary' : 'outline'}
-                  size="sm"
-                  iconLeft="letters"
-                  loading={bilingual.loading}
-                  disabled={bilingual.loading}
-                  onPress={() => void bilingual.toggle()}
-                />
-                <Button
-                  label="Đọc to bài"
-                  variant="outline"
-                  size="sm"
-                  iconLeft="volume"
-                  onPress={() => speakParagraph(0)}
-                />
-                <Button
-                  label="Dừng đọc"
-                  variant="ghost"
-                  size="sm"
-                  onPress={() => {
-                    Speech.stop();
-                    setSpeakingParagraph(null);
-                  }}
-                />
-
-                {bilingual.error ? (
-                  <View className="w-full flex-row items-start gap-2 rounded-card bg-danger-soft p-2.5">
-                    <Icon name="info" size={15} color={color.danger} />
-                    <Text className="flex-1 font-sans text-label text-danger-ink">
-                      {bilingual.error}
-                    </Text>
-                  </View>
-                ) : null}
-
-                {[0.75, 1, 1.5, 2].map((rate) => (
-                  <Pressable
-                    key={rate}
-                    onPress={() => setTtsRate(rate)}
-                    className={[
-                      'rounded-pill px-2.5 py-1',
-                      ttsRate === rate ? 'bg-primary-600' : 'bg-surfaceAlt',
-                    ].join(' ')}
-                  >
-                    <Text
-                      className={[
-                        'font-semi text-label',
-                        ttsRate === rate ? 'text-white' : 'text-muted',
-                      ].join(' ')}
-                    >
-                      {rate}x
-                    </Text>
-                  </Pressable>
-                ))}
-
-                <View className="flex-1" />
-
-                <Button
-                  label="Xoá hết highlight"
-                  variant="ghost"
-                  size="sm"
-                  onPress={() => clearHighlights(article.id)}
-                />
-              </View>
-            </Card>
-          </View>
-
-          {/* Cột phải: câu hỏi */}
-          <View className="min-w-[320px] flex-[2]">
-            {loadingQuestions && questions.length === 0 ? (
-              <Card className="items-center py-10">
-                <ActivityIndicator color={color.primary} />
-                <Text className="mt-2 font-sans text-body text-muted">Đang chuẩn bị bộ đề…</Text>
-              </Card>
-            ) : (
-              <QuestionPanel
-                questions={questions}
-                layout={mode === 'mixed' ? 'mixed' : 'blocks'}
-                answers={answers}
-                marked={marked}
-                submitting={submitting}
-                onAnswer={(questionId, answer) =>
-                  setAnswers((prev) => ({ ...prev, [questionId]: answer }))
-                }
-                onToggleMark={(questionId) =>
-                  setMarked((prev) => ({ ...prev, [questionId]: !prev[questionId] }))
-                }
-                onSubmit={submit}
-                evidenceMarks={evidenceMarks}
-                evidenceFor={evidenceFor}
-                onStartEvidence={(questionId) => {
-                  setEvidenceFor(questionId);
-                  setPhraseAnchor(null);
-                  setPhraseMode(true);
-                }}
-                onClearEvidence={(questionId) =>
-                  setEvidenceMarks((prev) => {
-                    const next = { ...prev };
-                    delete next[questionId];
-                    return next;
-                  })
-                }
-              />
-            )}
-
-            {/*
-              Bộ đề IELTS nay dựng bằng luật ngay trên máy, nên "offline" không
-              còn là dấu hiệu hỏng — nó là đường chính. Dòng cảnh báo cũ nói
-              ngược lại, giữ nguyên là báo động giả trên mọi bài.
-            */}
-            {questionSet?.generatedBy === 'offline' && article.exam === 'sat' ? (
-              <Text className="mt-2 font-sans text-label text-subtle">
-                Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Words in
-                Context và Inferences. Tải lại trang để lấy đủ năm dạng của SAT.
-              </Text>
-            ) : null}
-          </View>
+        {/* Công cụ phụ ở cuối bài */}
+        <View className="mt-6 flex-row flex-wrap items-center gap-1.5 border-t pt-3" style={{ borderColor: theme.rule }}>
+          <ToolPill
+            label="Highlight câu đang đọc"
+            onPress={() => {
+              const paragraphIndex = speakingParagraph ?? 0;
+              const paragraph = article.paragraphs[paragraphIndex];
+              if (!paragraph) return;
+              addHighlight({
+                articleId: article.id,
+                paragraphIndex,
+                text: sentenceAround(paragraph, 0),
+                color: highlightColor,
+                note: null,
+                evidenceForQuestionId: null,
+              });
+            }}
+          />
+          <ToolPill
+            label="Ghi chú"
+            onPress={() =>
+              addNote({
+                articleId: article.id,
+                articleTitle: article.title,
+                paragraphIndex: null,
+                body: `Ghi chú cho "${article.title}"`,
+              })
+            }
+          />
+          <ToolPill label="Xoá highlight" onPress={() => clearHighlights(article.id)} />
+          <View className="flex-1" />
+          <Text style={{ fontSize: 11, color: theme.muted, marginRight: 4 }}>Tốc độ đọc</Text>
+          {[0.75, 1, 1.5, 2].map((rate) => (
+            <ToolPill key={rate} label={`${rate}x`} active={ttsRate === rate} onPress={() => setTtsRate(rate)} />
+          ))}
         </View>
       </ScrollView>
+    </ExamSheet>
+  );
 
-      {/* Nút chat nổi */}
+  const questionsPane = (
+    <ExamSheet bg={theme.bg}>
+      <ScrollView contentContainerStyle={{ padding: pad, paddingBottom: 72 }}>
+        <View style={{ borderWidth: 2, borderColor: EXAM_INK, borderRadius: 18, padding: wide ? 22 : 14, backgroundColor: '#FFFFFF' }}>
+          {loadingQuestions && questions.length === 0 ? (
+            <View className="items-center py-10">
+              <ActivityIndicator color={EXAM_INK} />
+              <Text className="mt-2 font-sans text-body text-muted">Đang chuẩn bị bộ đề…</Text>
+            </View>
+          ) : (
+            <QuestionPanel
+              bare
+              questions={questions}
+              layout={mode === 'mixed' ? 'mixed' : 'blocks'}
+              answers={answers}
+              marked={marked}
+              submitting={submitting}
+              onAnswer={(questionId, answer) => setAnswers((prev) => ({ ...prev, [questionId]: answer }))}
+              onToggleMark={(questionId) => setMarked((prev) => ({ ...prev, [questionId]: !prev[questionId] }))}
+              onSubmit={submit}
+              evidenceMarks={evidenceMarks}
+              evidenceFor={evidenceFor}
+              onStartEvidence={(questionId) => {
+                setEvidenceFor(questionId);
+                setPhraseAnchor(null);
+                setPhraseMode(true);
+                if (!wide) setNarrowTab('passage');
+              }}
+              onClearEvidence={(questionId) =>
+                setEvidenceMarks((prev) => {
+                  const next = { ...prev };
+                  delete next[questionId];
+                  return next;
+                })
+              }
+            />
+          )}
+        </View>
+
+        {/*
+          Bộ đề IELTS nay dựng bằng luật ngay trên máy, nên "offline" không còn
+          là dấu hiệu hỏng — nó là đường chính. Chỉ SAT mới cần lời nhắc này.
+        */}
+        {questionSet?.generatedBy === 'offline' && article.exam === 'sat' ? (
+          <Text className="mt-3 font-sans text-label text-subtle">
+            Không gọi được AI nên bộ đề này sinh offline từ chính bài đọc, chỉ có Words in Context và Inferences.
+            Tải lại trang để lấy đủ năm dạng của SAT.
+          </Text>
+        ) : null}
+      </ScrollView>
+    </ExamSheet>
+  );
+
+  return (
+    <OliveGrid>
+      <View className="flex-1 px-3 pt-3 lg:px-6">
+        {/* ------------------------------------------------------ thanh phòng thi */}
+        <View onLayout={(e) => setToolbarH(e.nativeEvent.layout.height)}>
+          <View className="flex-row flex-wrap items-center gap-2 rounded-card bg-white px-3 py-2.5" style={examSticker}>
+            <Pressable
+              onPress={() => router.back()}
+              accessibilityRole="button"
+              accessibilityLabel="Quay lại"
+              className="h-9 w-9 items-center justify-center rounded-md"
+              style={{ borderWidth: 2, borderColor: EXAM_INK }}
+            >
+              <View style={{ transform: [{ rotate: '180deg' }] }}>
+                <Icon name="arrow-right" size={16} color={EXAM_INK} strokeWidth={2.4} />
+              </View>
+            </Pressable>
+
+            <View className="rounded-md px-2.5 py-1.5" style={{ backgroundColor: EXAM_INK }}>
+              <Text style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>{article.exam === 'sat' ? 'SAT' : 'READING'}</Text>
+            </View>
+
+            {/* dải số câu: đã trả lời thì tô đen, đánh dấu xem lại có chấm vàng */}
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ maxWidth: wide ? 560 : '100%' }}>
+              <View className="flex-row items-center gap-1">
+                {questions.map((q, i) => {
+                  const done = Boolean(answers[q.id]);
+                  return (
+                    <View
+                      key={q.id}
+                      className="h-6 min-w-6 items-center justify-center rounded-pill px-1"
+                      style={{ borderWidth: 1.5, borderColor: EXAM_INK, backgroundColor: done ? EXAM_INK : '#FFFFFF' }}
+                    >
+                      <Text style={{ fontSize: 10.5, fontWeight: '700', color: done ? '#FFFFFF' : EXAM_INK }}>{i + 1}</Text>
+                      {marked[q.id] ? (
+                        <View className="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-pill" style={{ backgroundColor: '#F2B84B' }} />
+                      ) : null}
+                    </View>
+                  );
+                })}
+              </View>
+            </ScrollView>
+            <Text style={{ fontSize: 11.5, fontWeight: '700', color: '#6B6F5E' }}>
+              {answeredCount}/{questions.length}
+            </Text>
+
+            <View className="flex-1" />
+
+            {!wide ? (
+              <View className="flex-row rounded-md p-0.5" style={{ backgroundColor: '#EEF0E6' }}>
+                {(['passage', 'questions'] as const).map((t) => (
+                  <Pressable
+                    key={t}
+                    accessibilityRole="tab"
+                    accessibilityState={{ selected: narrowTab === t }}
+                    onPress={() => setNarrowTab(t)}
+                    className="rounded-md px-2.5 py-1.5"
+                    style={{ backgroundColor: narrowTab === t ? EXAM_INK : 'transparent' }}
+                  >
+                    <Text style={{ fontSize: 12, fontWeight: '700', color: narrowTab === t ? '#FFFFFF' : EXAM_INK }}>
+                      {t === 'passage' ? 'Bài đọc' : 'Câu hỏi'}
+                    </Text>
+                  </Pressable>
+                ))}
+              </View>
+            ) : null}
+
+            {/* màu giấy */}
+            <View className="flex-row items-center gap-1">
+              {PAPER_THEMES.map((t) => (
+                <Pressable
+                  key={t.key}
+                  accessibilityRole="button"
+                  accessibilityLabel={`Giấy ${t.label}`}
+                  accessibilityState={{ selected: paperKey === t.key }}
+                  onPress={() => setPaperKey(t.key)}
+                  className="h-6 w-6 rounded-md"
+                  style={{ backgroundColor: t.bg, borderWidth: paperKey === t.key ? 2.5 : 1, borderColor: paperKey === t.key ? EXAM_INK : '#C8CCB8' }}
+                />
+              ))}
+            </View>
+
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Đổi mặt chữ"
+              onPress={() => {
+                const i = EXAM_FONTS.findIndex((f) => f.key === fontKey);
+                setFontKey(EXAM_FONTS[(i + 1) % EXAM_FONTS.length]!.key);
+              }}
+              className="h-8 flex-row items-center gap-1.5 rounded-md px-2.5"
+              style={{ borderWidth: 1.5, borderColor: EXAM_INK }}
+            >
+              <Text style={{ fontFamily: passageFont.title, fontSize: 12.5, color: EXAM_INK }}>{passageFont.label}</Text>
+              <Icon name="chevron-down" size={12} color={EXAM_INK} strokeWidth={2.4} />
+            </Pressable>
+
+            <View className="h-8 flex-row items-center rounded-md" style={{ borderWidth: 1.5, borderColor: EXAM_INK }}>
+              <Pressable accessibilityLabel="Giảm cỡ chữ" onPress={() => setFontScale(fontScale - 0.1)} className="px-2">
+                <Text style={{ fontSize: 14, fontWeight: '800', color: EXAM_INK }}>−</Text>
+              </Pressable>
+              <Text style={{ fontSize: 12, fontWeight: '700', color: EXAM_INK, minWidth: 34, textAlign: 'center' }}>
+                {Math.round(15 * fontScale)}px
+              </Text>
+              <Pressable accessibilityLabel="Tăng cỡ chữ" onPress={() => setFontScale(fontScale + 0.1)} className="px-2">
+                <Text style={{ fontSize: 14, fontWeight: '800', color: EXAM_INK }}>+</Text>
+              </Pressable>
+            </View>
+
+            {Platform.OS === 'web' ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel="Toàn màn hình"
+                onPress={toggleFullscreen}
+                className="h-8 w-8 items-center justify-center rounded-md"
+                style={{ borderWidth: 1.5, borderColor: EXAM_INK }}
+              >
+                <Text style={{ fontSize: 14, color: EXAM_INK }}>⤢</Text>
+              </Pressable>
+            ) : null}
+
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={paused ? 'Chạy tiếp đồng hồ' : 'Tạm dừng đồng hồ'}
+              onPress={() => setPaused((p) => !p)}
+              className="h-9 flex-row items-center gap-1.5 rounded-md px-3"
+              style={{ borderWidth: 2, borderColor: EXAM_INK }}
+            >
+              <View className="h-2 w-2 rounded-pill" style={{ backgroundColor: paused ? '#D97706' : '#16A34A' }} />
+              <Text style={{ fontSize: 13, fontWeight: '800', color: EXAM_INK, fontVariant: ['tabular-nums'] }}>
+                {formatTime(secondsLeft)}
+              </Text>
+            </Pressable>
+
+            <HoverPressable
+              accessibilityRole="button"
+              onPress={submit}
+              disabled={submitting || questions.length === 0}
+              className="h-9 items-center justify-center rounded-md px-4"
+              style={({ hovered }) => ({
+                backgroundColor: hovered ? '#E9A92F' : '#F2B84B',
+                borderWidth: 2,
+                borderColor: EXAM_INK,
+                opacity: questions.length === 0 ? 0.5 : 1,
+              })}
+            >
+              <Text style={{ fontSize: 13, fontWeight: '800', color: EXAM_INK }}>{submitting ? 'Đang chấm…' : 'Kiểm Tra'}</Text>
+            </HoverPressable>
+          </View>
+        </View>
+
+        {/* ------------------------------------------------------ hai tấm */}
+        {wide ? (
+          <View className="mt-4 flex-row gap-4" style={{ height: paneHeight }}>
+            <View style={{ flex: 1, flexBasis: 0 }}>{passagePane}</View>
+            <View style={{ flex: 1, flexBasis: 0 }}>{questionsPane}</View>
+          </View>
+        ) : (
+          <View className="mt-3" style={{ height: paneHeight }}>
+            <CrossFade swapKey={`tab-${narrowTab}`} style={{ flex: 1 }}>
+              {narrowTab === 'passage' ? passagePane : questionsPane}
+            </CrossFade>
+          </View>
+        )}
+      </View>
+
+      {/* Nút trợ giảng nổi */}
       <Pressable
         onPress={() => setChatOpen(true)}
         accessibilityLabel="Mở trợ giảng"
-        className="absolute bottom-6 right-6 h-14 w-14 items-center justify-center rounded-pill bg-primary-600"
-        style={{ boxShadow: '0 12px 32px rgba(37,99,235,0.35)' } as never}
+        className="absolute bottom-6 right-6 h-14 w-14 items-center justify-center rounded-pill"
+        style={{ backgroundColor: EXAM_INK, borderWidth: 2, borderColor: '#F2B84B', boxShadow: '0 12px 32px rgba(20,30,8,0.35)' } as never}
       >
         <Icon name="chat" size={24} color={color.white} strokeWidth={1.9} />
       </Pressable>
 
-      <WordSheet
-        target={sheet}
-        articleId={article.id}
-        articleTitle={article.title}
-        onClose={() => setSheet(null)}
-      />
+      <WordSheet target={sheet} articleId={article.id} articleTitle={article.title} onClose={() => setSheet(null)} />
 
       <ChatPanel articleId={article.id} visible={chatOpen} onClose={() => setChatOpen(false)} />
-    </View>
+    </OliveGrid>
   );
 }
 
@@ -799,4 +865,68 @@ function formatTime(totalSeconds: number): string {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
   return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+/* ====================================================================== */
+/*                          bộ phận của bố cục phòng thi                    */
+/* ====================================================================== */
+
+const EXAM_INK = '#1F2A12';
+
+const PAPER_THEMES = [
+  { key: 'white', label: 'trắng', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA' },
+  { key: 'cream', label: 'kem', bg: '#FBF6E9', ink: '#1F1B12', body: '#3A3527', muted: '#8E8672', rule: '#EAE2CC' },
+  { key: 'sepia', label: 'ngà', bg: '#F3E7CF', ink: '#33281A', body: '#4A3C2A', muted: '#8F7B5E', rule: '#E2D2B2' },
+  { key: 'mint', label: 'xanh nhạt', bg: '#EDF3E4', ink: '#1F2A12', body: '#33402A', muted: '#76826A', rule: '#D9E3C9' },
+] as const;
+
+const EXAM_FONTS = [
+  { key: 'serif', label: 'Fraunces', title: readingFont.fraunces, body: readingFont.fraunces },
+  { key: 'lora', label: 'Lora', title: readingFont.body, body: readingFont.body },
+  { key: 'sans', label: 'Jakarta', title: readingFont.sans, body: readingFont.sans },
+] as const;
+
+/** Viền mực + bóng lệch cứng của tấm giấy phòng thi. */
+const examSticker = {
+  borderWidth: 2,
+  borderColor: EXAM_INK,
+  ...(Platform.OS === 'web' ? ({ boxShadow: `4px 5px 0 ${EXAM_INK}` } as object) : { elevation: 4 }),
+};
+
+function ExamSheet({ bg, children }: { bg: string; children: React.ReactNode }) {
+  return (
+    <View className="flex-1 overflow-hidden rounded-card" style={[examSticker, { backgroundColor: bg }]}>
+      {children}
+    </View>
+  );
+}
+
+function ToolPill({
+  label,
+  active = false,
+  disabled = false,
+  onPress,
+}: {
+  label: string;
+  active?: boolean;
+  disabled?: boolean;
+  onPress: () => void;
+}) {
+  return (
+    <HoverPressable
+      accessibilityRole="button"
+      accessibilityState={{ selected: active, disabled }}
+      disabled={disabled}
+      onPress={onPress}
+      className="rounded-pill px-3 py-1"
+      style={({ hovered }) => ({
+        borderWidth: 1.5,
+        borderColor: EXAM_INK,
+        backgroundColor: active ? EXAM_INK : hovered ? 'rgba(31,42,18,0.08)' : 'transparent',
+        opacity: disabled ? 0.6 : 1,
+      })}
+    >
+      <Text style={{ fontSize: 11.5, fontWeight: '700', color: active ? '#FFFFFF' : EXAM_INK }}>{label}</Text>
+    </HoverPressable>
+  );
 }
