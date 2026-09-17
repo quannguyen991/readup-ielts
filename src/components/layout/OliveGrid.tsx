@@ -13,10 +13,19 @@ import Svg, { Defs, Path, Pattern, Rect } from 'react-native-svg';
  */
 export const OLIVE = '#697B3E';
 
-export function OliveGrid({ children, cell = 30 }: { children: React.ReactNode; cell?: number }) {
+export function OliveGrid({
+  children,
+  cell = 30,
+  color = OLIVE,
+}: {
+  children: React.ReactNode;
+  cell?: number;
+  /** Màu nền dưới lưới; mặc định xanh rêu. */
+  color?: string;
+}) {
   const cellId = `olive-cell-${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
   return (
-    <View className="flex-1" style={{ backgroundColor: OLIVE }}>
+    <View className="flex-1" style={{ backgroundColor: color }}>
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
         <Svg width="100%" height="100%">
           <Defs>

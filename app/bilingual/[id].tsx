@@ -57,7 +57,7 @@ const LIGHT: Theme = {
   muted: '#8A8E78',
   rule: '#ECE7D6',
   tint: '#F1ECDA',
-  accent: '#5E7031',
+  accent: '#3F4C9C',
 };
 const DARK: Theme = {
   bg: '#20251A',
@@ -114,7 +114,8 @@ export default function BilingualReaderScreen() {
 }
 
 function Backdrop({ children }: { children: React.ReactNode }) {
-  return <OliveGrid>{children}</OliveGrid>;
+  // Chàm đậm: cùng họ màu với thẻ tra từ, để giấy kem nổi lên mà không chói.
+  return <OliveGrid color="#2B3668">{children}</OliveGrid>;
 }
 
 function Reader({ article }: { article: BilingualArticle }) {
@@ -915,7 +916,7 @@ function QuestionsPane({
         accessibilityRole="button"
         onPress={onCheck}
         className="mt-8 items-center self-start rounded-pill px-6 py-3"
-        style={({ hovered }) => [{ backgroundColor: checked ? theme.tint : hovered ? '#4F5F28' : theme.accent }, webTransition]}
+        style={({ hovered }) => [{ backgroundColor: checked ? theme.tint : hovered ? '#323E82' : theme.accent }, webTransition]}
       >
         <Text style={{ fontSize: 14, fontWeight: '800', color: checked ? theme.ink : '#FFFFFF' }}>
           {checked ? `Đúng ${score}/${questions.length} · Làm lại` : 'Xem kết quả'}
