@@ -127,10 +127,14 @@ export function bilingualStats() {
 /*
   NGUỒN BÀI — cổng "Đọc báo song ngữ" chia kho theo nơi bài được đăng.
 
-  Chỉ gồm những nơi cho phép dùng lại TOÀN VĂN: VOA và NASA (tài liệu của chính
-  phủ Mỹ, không giữ bản quyền), Global Voices (CC BY — được dịch, phải ghi
-  nguồn). Báo giữ bản quyền (Guardian, NYT, Economist…) KHÔNG được đưa vào đây,
-  kể cả khi có để link gốc: link không biến việc chép toàn văn thành hợp pháp.
+  Chỉ gồm những nơi cho phép dùng lại TOÀN VĂN VÀ ĐƯỢC DỊCH: VOA và NASA (tài
+  liệu của chính phủ Mỹ, không giữ bản quyền), Global Voices (CC BY 3.0),
+  Wikinews (CC BY 2.5 — dự án đã đóng, bài cũ vẫn theo giấy phép), Wikipedia
+  (CC BY-SA 4.0 — bản dịch phải phát hành cùng giấy phép, ghi ở cuối bài).
+
+  ĐÃ XÉT VÀ LOẠI: The Conversation (CC BY-ND, điều khoản ghi rõ không cho dịch),
+  ProPublica (không cho sửa/dịch, chỉ phi thương mại). Báo giữ bản quyền
+  (Guardian, NYT, Economist…) KHÔNG được đưa vào, kể cả khi để link gốc.
 */
 export type BilingualOutlet = {
   key: string;
@@ -176,6 +180,22 @@ export const BILINGUAL_OUTLETS: BilingualOutlet[] = [
     cover: '#1F2A44',
     ink: '#FFFFFF',
   },
+  {
+    key: 'wikinews',
+    name: 'Wikinews',
+    tagline: 'Tin khoa học và môi trường do cộng đồng biên tập',
+    license: 'CC BY 2.5',
+    cover: '#3E6B5A',
+    ink: '#FFFFFF',
+  },
+  {
+    key: 'wikipedia',
+    name: 'Wikipedia',
+    tagline: 'Bài bách khoa: lịch sử, tự nhiên, văn minh — đúng chất đề IELTS',
+    license: 'CC BY-SA 4.0',
+    cover: '#E9E4D4',
+    ink: '#1F2A12',
+  },
 ];
 
 export function outletKeyOf(article: BilingualArticle): string {
@@ -183,6 +203,8 @@ export function outletKeyOf(article: BilingualArticle): string {
   if (/VOA/i.test(article.source.outlet)) return 'voa';
   if (/Global Voices/i.test(article.source.outlet)) return 'gv';
   if (/NASA/i.test(article.source.outlet)) return 'nasa';
+  if (/Wikinews/i.test(article.source.outlet)) return 'wikinews';
+  if (/Wikipedia/i.test(article.source.outlet)) return 'wikipedia';
   return 'readup';
 }
 

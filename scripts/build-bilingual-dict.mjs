@@ -42,7 +42,7 @@ for (const a of articles) {
   const table = {};
   const texts = [a.titleEn, a.standfirstEn, ...a.paragraphs.map((p) => p.en)];
   for (const t of texts) {
-    for (const part of t.split(/\s+/)) {
+    for (const part of t.split(/\s+/).flatMap((p) => p.split(/(?<=[—―/])(?=\S)/))) {
       const w = norm(part);
       if (w.length < 2 || !/[a-z]/.test(w)) continue;
       const key = candidates(w).find((k) => rich[k]);

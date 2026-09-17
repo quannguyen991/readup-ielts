@@ -55,6 +55,20 @@ export function normaliseToken(raw: string): string {
     .replace(/[^a-z0-9'-]/g, '');
 }
 
+/**
+ * Cắt một đoạn thành các mảnh để rê chuột — theo khoảng trắng, VÀ ngay sau
+ * gạch ngang dài hoặc gạch chéo. Báo tiếng Anh hay viết "farmers—Yang" hay
+ * "height/width" không cách; cắt theo khoảng trắng thôi thì hai từ dính thành
+ * "farmersyang", không tra được. Dấu vẫn đi kèm mảnh đứng trước nó nên chữ hiện
+ * ra y nguyên.
+ */
+export function splitTokens(text: string): string[] {
+  return text
+    .split(/\s+/)
+    .flatMap((part) => part.split(/(?<=[—―/])(?=\S)/))
+    .filter((part) => part !== '');
+}
+
 /** Token có đáng tra không: phải có ít nhất một chữ cái và dài hơn một ký tự. */
 export function isGlossable(token: string): boolean {
   return token.length > 1 && /[a-z]/.test(token);

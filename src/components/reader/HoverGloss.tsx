@@ -10,7 +10,7 @@ import Animated, {
 
 import { parseInline, stripInline } from '@/lib/inlineMarkup';
 import { lookupWord } from '@/services/dictionary/lookup';
-import { isGlossable, normaliseToken, offlineGloss } from '@/services/dictionary/offline-glossary';
+import { isGlossable, normaliseToken, offlineGloss, splitTokens } from '@/services/dictionary/offline-glossary';
 import { paper } from '@/theme/tokens';
 
 /**
@@ -61,8 +61,7 @@ type Token = { text: string; word: string | null; italic: boolean; bold: boolean
 export function tokenise(text: string): Token[] {
   const out: Token[] = [];
   for (const run of parseInline(text)) {
-    for (const part of run.text.split(/\s+/)) {
-      if (part === '') continue;
+    for (const part of splitTokens(run.text)) {
       const core = normaliseToken(part);
       out.push({ text: part, word: isGlossable(core) ? core : null, italic: run.italic, bold: run.bold });
     }

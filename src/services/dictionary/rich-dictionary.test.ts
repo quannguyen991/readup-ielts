@@ -4,7 +4,7 @@ import { existsSync, readFileSync } from 'node:fs';
 
 import { BILINGUAL_ARTICLES } from '@/data/bilingual-repository';
 
-import { isGlossable, normaliseToken } from './offline-glossary';
+import { isGlossable, normaliseToken, splitTokens } from './offline-glossary';
 import { findRich, type RichEntry } from './rich-dictionary';
 
 type Packed = [string, string, string, string, string, string[]];
@@ -26,7 +26,7 @@ test('mọi bài song ngữ đều có tệp từ điển chi tiết, phủ MỌ
     assert.ok(existsSync(path), `${a.id} chưa dựng từ điển — chạy node scripts/build-bilingual-dict.mjs`);
     const table = load(a.id);
     for (const t of [a.titleEn, a.standfirstEn, ...a.paragraphs.map((p) => p.en)]) {
-      for (const part of t.split(/\s+/)) {
+      for (const part of splitTokens(t)) {
         const w = normaliseToken(part);
         if (isGlossable(w) && !findRich(table, w)) gaps.push(`${a.id}: ${w}`);
       }
