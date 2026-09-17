@@ -16,13 +16,15 @@ import { Platform } from 'react-native';
  * `serif`, vì serif mặc định lại chính là Georgia.
  */
 const HREF =
-  'https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&display=swap&subset=vietnamese';
+  'https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,600;1,9..144,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&display=swap&subset=vietnamese';
 
 const FALLBACK = 'PlusJakartaSans_400Regular';
 
 export const readingFont = {
   body: Platform.select({ web: `Lora, ${FALLBACK}`, default: FALLBACK }) as string,
   display: Platform.select({ web: `"Playfair Display", ${FALLBACK}`, default: FALLBACK }) as string,
+  /** Fraunces — có chân kiểu báo in, đủ dấu Việt; mặt chữ mặc định của màn đọc song ngữ. */
+  fraunces: Platform.select({ web: `Fraunces, ${FALLBACK}`, default: FALLBACK }) as string,
   sans: FALLBACK,
   mono: Platform.select({ web: 'ui-monospace, SFMono-Regular, Menlo, Consolas, monospace', default: 'monospace' }) as string,
 };
