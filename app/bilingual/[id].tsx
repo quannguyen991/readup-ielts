@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 
 import { HoverGlossText, type InlineGloss } from '@/components/reader/HoverGloss';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -278,6 +278,17 @@ function ParagraphRow({
 
   const lineHeight = fontSize * 1.75;
 
+  /*
+    Hai cột CHỈ KHI MÀN ĐỦ RỘNG, và đo bằng JS chứ không bằng lớp `lg:`.
+
+    `flexBasis: 0` là thứ giữ hai cột bằng nhau khi nằm ngang. Nhưng lớp `lg:`
+    chỉ đổi hướng xếp, còn style nội tuyến thì vẫn ở đó: màn hẹp xếp dọc mà mỗi
+    ô vẫn `flex: 1, flexBasis: 0` nghĩa là CAO bằng 0, chữ tràn ra ngoài và hai
+    thứ tiếng in chồng lên nhau (đo được trên iPad và điện thoại ngày 17/09/2026).
+  */
+  const { width } = useWindowDimensions();
+  const sideBySide = showVi && width >= 1024;
+
   return (
     <View
       className={first ? '' : 'mt-5 pt-5'}
@@ -291,7 +302,7 @@ function ParagraphRow({
       */}
       <Text className="mb-1.5 font-strong text-label text-paper-muted">{index + 1}</Text>
 
-      <View className={showVi ? 'gap-6 lg:flex-row' : ''}>
+      <View className={sideBySide ? 'flex-row gap-6' : showVi ? 'gap-3' : ''}>
         {/*
           Hai cột CHIA ĐÔI ĐÚNG BẰNG NHAU: cùng `flex-1`, cùng `flexBasis: 0`.
 
@@ -299,7 +310,7 @@ function ParagraphRow({
           chia theo LƯỢNG CHỮ trong mỗi bên, mà bản tiếng Việt thường dài hơn bản
           tiếng Anh, nên cột phải phình ra và hai bên lệch nhau.
         */}
-        <View style={showVi ? { flex: 1, flexBasis: 0 } : undefined}>
+        <View style={sideBySide ? { flex: 1, flexBasis: 0 } : undefined}>
           {/*
             MỌI từ đều rê được, không chỉ những từ đã soạn sẵn nghĩa.
 
@@ -319,7 +330,13 @@ function ParagraphRow({
         </View>
 
         {showVi ? (
-          <View style={{ flex: 1, flexBasis: 0 }}>
+          <View
+            style={
+              sideBySide
+                ? { flex: 1, flexBasis: 0 }
+                : { borderLeftWidth: 2, borderLeftColor: paper.brandSoft, paddingLeft: 12 }
+            }
+          >
             <Text style={{ fontSize, lineHeight, color: paper.body }}>{paragraph.vi}</Text>
           </View>
         ) : null}

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, Pressable, Text, View } from 'react-native';
 
 import { lookupWord } from '@/services/dictionary/lookup';
+import { offlineGloss } from '@/services/dictionary/offline-glossary';
 import { paper } from '@/theme/tokens';
 
 /**
@@ -12,10 +13,11 @@ import { paper } from '@/theme/tokens';
  * đọc bỏ qua và đoán tiếp — đúng thói quen làm họ mãi không lên từ vựng. Rê
  * chuột thì không tốn quyết định nào, nên nghĩa tới đúng lúc mắt còn dừng ở từ.
  *
- * HAI NGUỒN NGHĨA, ƯU TIÊN NGUỒN CÓ SẴN. Bài song ngữ đã soạn sẵn nghĩa cho
- * những từ đáng chú ý; những từ ấy hiện TỨC THÌ và không tốn một lời gọi mạng
- * nào. Từ ngoài danh sách mới đi tra, và tra xong thì nhớ lại — rê qua lần hai
- * là hiện ngay.
+ * BA NGUỒN NGHĨA, ƯU TIÊN NGUỒN CÓ SẴN. (1) Nghĩa soạn riêng cho đoạn này —
+ * sát ngữ cảnh nhất. (2) Từ điển dựng sẵn của kho song ngữ, phủ MỌI dạng từ có
+ * trong 34 bài (`offline-glossary.ts`). Cả hai hiện TỨC THÌ, không một lời gọi
+ * mạng. (3) Chỉ từ nằm ngoài cả hai mới đi tra mạng — với kho hiện tại thì
+ * không còn từ nào như vậy, test độ phủ canh điều đó.
  *
  * ĐỘ TRỄ 180ms TRƯỚC KHI TRA. Đọc một dòng là chuột quét qua mười mấy từ; tra
  * ngay lập tức nghĩa là mười mấy lời gọi cho một dòng, và cái hiện ra sẽ là
@@ -104,7 +106,7 @@ export function HoverGlossText({
       clearTimer();
       setActive(at);
 
-      const ready = bundled?.[word] ?? CACHE.get(word);
+      const ready = bundled?.[word] ?? offlineGloss(word) ?? CACHE.get(word);
       if (ready !== undefined) {
         setGloss(ready);
         setBusy(false);
