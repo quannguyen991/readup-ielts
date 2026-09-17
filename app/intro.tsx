@@ -24,6 +24,7 @@ import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-dril
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
+import { bilingualStats } from '@/data/bilingual-repository';
 import { rememberInviteCode } from '@/services/referral/pending';
 import {
   MAX_REWARD_PLAN,
@@ -113,6 +114,20 @@ const AREAS: Area[] = [
     href: '/math',
   },
 ];
+
+/*
+  Đọc song ngữ đứng RIÊNG một hàng rộng dưới sáu thẻ, không chen thành thẻ thứ
+  bảy: lưới ba cột mà bảy thẻ thì thẻ cuối đứng trơ trọi một mình một hàng.
+  Hàng rộng cũng hợp với nội dung — đây là mảng đọc bài dài, hai thứ tiếng.
+*/
+const BILINGUAL_AREA: Area = {
+  icon: 'languages',
+  colors: stickerGradient.rose,
+  title: 'Đọc song ngữ',
+  lines: ['Bài phân tích kiểu báo, Anh–Việt từng đoạn · rê vào từ nào cũng hiện nghĩa ngay'],
+  badge: `${bilingualStats().articles} BÀI`,
+  href: '/bilingual',
+};
 
 /**
  * Mỗi lời tuyên bố đi kèm VẬT CHỨNG, không đi kèm tính từ.
@@ -352,7 +367,7 @@ export default function IntroScreen() {
       <Appear index={1}>
         <Text className="mt-14 font-heavy text-sectionTitle text-ink">App có gì</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          Sáu mảng, dùng chung một sổ từ và một bảng tiến độ.
+          Bảy mảng, dùng chung một sổ từ và một bảng tiến độ.
         </Text>
       </Appear>
 
@@ -364,6 +379,11 @@ export default function IntroScreen() {
             </Appear>
           ))}
         </Grid>
+        <Appear index={AREAS.length + 2}>
+          <View className="mt-4">
+            <AreaCard area={BILINGUAL_AREA} />
+          </View>
+        </Appear>
       </View>
 
       {/* -------------------------------------------------------- ba bước */}

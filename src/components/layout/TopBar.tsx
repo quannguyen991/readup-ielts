@@ -98,7 +98,7 @@ export function TopBar() {
           ) : null}
 
           <View
-            className="min-w-0 flex-1 flex-row items-center gap-2 sm:gap-3 rounded-pill border border-brand-soft bg-paper px-3 py-2"
+            className="min-w-0 flex-1 flex-row items-center gap-3 rounded-pill border border-brand-soft bg-paper px-3 py-2"
             style={Platform.OS === 'web' ? webBarShadow : shadow.card}
           >
           {/*
@@ -111,7 +111,7 @@ export function TopBar() {
           */}
           <Link href={'/intro' as never} asChild>
             <Pressable accessibilityRole="link" accessibilityLabel="Về trang giới thiệu">
-              <Logo compact markOnlyOnPhone />
+              <Logo compact />
             </Pressable>
           </Link>
 
@@ -125,24 +125,6 @@ export function TopBar() {
             <Text className="hidden font-semi text-label text-paper-body sm:flex">Khám phá</Text>
           </Pressable>
 
-          {/*
-            Đọc song ngữ đứng cạnh "Khám phá" và KHÔNG ẩn trên màn hẹp, khác các
-            lối tắt Sổ từ / Tiến độ. Đọc bài dài là việc người học làm trên điện
-            thoại và máy tính bảng nhiều nhất; chôn nó trong bảng Khám phá thì
-            đúng những máy ấy phải bấm hai lần. Màn hẹp dùng nhãn ngắn "Song ngữ" —
-            chỉ còn biểu tượng thì không ai đoán ra hai mũi tên kia là gì.
-          */}
-          <Link href={'/bilingual' as never} asChild>
-            <Pressable
-              accessibilityRole="link"
-              accessibilityLabel="Đọc song ngữ"
-              className="flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5"
-            >
-              <Icon name="languages" size={15} color={paper.body} strokeWidth={1.9} />
-              <Text className="font-semi text-label text-paper-body sm:hidden">Song ngữ</Text>
-              <Text className="hidden font-semi text-label text-paper-body sm:flex">Đọc song ngữ</Text>
-            </Pressable>
-          </Link>
 
           <View className="flex-1" />
 

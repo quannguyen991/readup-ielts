@@ -184,6 +184,7 @@ export const stickerGradient = {
   warning: ['#FCD34D', '#D97706'],
   danger: ['#FCA5A5', '#DC2626'],
   info: ['#67E8F9', '#0891B2'],
+  rose: ['#F9A8D4', '#DB2777'],
 } as const satisfies Record<string, readonly [string, string]>;
 
 /** Bảng màu cho biểu đồ (Progress — ảnh 3). */
