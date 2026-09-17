@@ -58,7 +58,28 @@ export type BilingualArticle = {
   questions: BilingualQuestion[];
 };
 
-export const BILINGUAL_ARTICLES: BilingualArticle[] = seed as BilingualArticle[];
+/*
+  Gỡ thẻ <b>/<i> còn sót từ bản sách gốc.
+
+  Kho được chuyển từ bản HTML của sách, nên 181 chuỗi (đoạn Việt, đoạn Anh, họ
+  từ) còn mang thẻ in đậm/nghiêng. Màn đọc vẽ chữ bằng <Text> chứ không dựng
+  HTML, nên người đọc thấy nguyên "<b>" giữa câu — và từ điển rê chuột tra
+  "<i>salary</i>" thành "isalaryi". Gỡ một lần lúc nạp, không sửa tay file seed.
+*/
+function stripTags<T>(value: T): T {
+  if (typeof value === 'string') {
+    return value.replace(/<\/?(?:b|i|em|strong)>/gi, '') as T;
+  }
+  if (Array.isArray(value)) return value.map(stripTags) as T;
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, stripTags(v)]),
+    ) as T;
+  }
+  return value;
+}
+
+export const BILINGUAL_ARTICLES: BilingualArticle[] = stripTags(seed as BilingualArticle[]);
 
 export function getBilingualArticleById(id: string): BilingualArticle | undefined {
   return BILINGUAL_ARTICLES.find((a) => a.id === id);

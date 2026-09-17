@@ -1,30 +1,33 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import seed from '@/data/seed/bilingual/index.json';
+import { BILINGUAL_ARTICLES } from '@/data/bilingual-repository';
 
-import { glossaryWordsOf, offlineGloss } from './offline-glossary';
+import { isGlossable, normaliseToken, offlineGloss } from './offline-glossary';
 
-type Article = {
-  titleEn: string;
-  standfirstEn: string;
-  paragraphs: { en: string }[];
-};
-
-const articles = (Array.isArray(seed) ? seed : (seed as { articles: unknown }).articles) as Article[];
-
-test('từ điển dựng sẵn có nghĩa cho MỌI từ trong kho song ngữ', () => {
+test('từ điển dựng sẵn có nghĩa cho MỌI từ người đọc rê được trong kho song ngữ', () => {
+  // Tách y như màn đọc: theo khoảng trắng, rồi thường hoá từng token.
   const missing = new Set<string>();
-  for (const a of articles) {
+  for (const a of BILINGUAL_ARTICLES) {
     const texts = [a.titleEn, a.standfirstEn, ...a.paragraphs.map((p) => p.en)];
     for (const t of texts) {
-      for (const w of glossaryWordsOf(t)) if (!offlineGloss(w)) missing.add(w);
+      for (const part of t.split(/\s+/)) {
+        const token = normaliseToken(part);
+        if (isGlossable(token) && !offlineGloss(token)) missing.add(`${token} (${part})`);
+      }
     }
   }
   assert.deepEqual([...missing], []);
 });
 
-test('nhận cả dạng có dấu nháy và sở hữu cách như token của bài', () => {
+test('thường hoá gập dấu, dấu nháy cong và gạch nối dài', () => {
+  assert.equal(normaliseToken('Vietnam’s'), "vietnam's");
+  assert.equal(normaliseToken('cafés,'), 'cafes');
+  assert.equal(normaliseToken('rice–shrimp'), 'rice-shrimp');
+  assert.equal(isGlossable(normaliseToken('1247,')), false);
+});
+
+test('nhận cả dạng có dấu nháy và sở hữu cách', () => {
   const plain = offlineGloss('city');
   assert.ok(plain?.meaningVi);
   assert.equal(offlineGloss("city's")?.meaningVi, plain?.meaningVi);
@@ -33,4 +36,10 @@ test('nhận cả dạng có dấu nháy và sở hữu cách như token của b
 
 test('từ ngoài kho trả null để còn rơi xuống tra mạng', () => {
   assert.equal(offlineGloss('zzzqqq'), null);
+});
+
+test('kho song ngữ không còn thẻ HTML trong chữ hiển thị', () => {
+  for (const a of BILINGUAL_ARTICLES) {
+    assert.ok(!/<\/?[a-z]+>/i.test(JSON.stringify(a)), `${a.id} còn thẻ HTML`);
+  }
 });

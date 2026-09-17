@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, Pressable, Text, View } from 'react-native';
 
 import { lookupWord } from '@/services/dictionary/lookup';
-import { offlineGloss } from '@/services/dictionary/offline-glossary';
+import { isGlossable, normaliseToken, offlineGloss } from '@/services/dictionary/offline-glossary';
 import { paper } from '@/theme/tokens';
 
 /**
@@ -35,9 +35,6 @@ const CACHE = new Map<string, InlineGloss | null>();
 
 const HOVER_DELAY_MS = 180;
 
-function normalise(word: string): string {
-  return word.toLowerCase().replace(/[^a-z0-9'-]/g, '');
-}
 
 /**
  * Cắt câu thành từng từ. KHÔNG trả khoảng trắng thành phần tử riêng.
@@ -52,8 +49,8 @@ export function tokenise(text: string): { text: string; word: string | null }[] 
     .split(/\s+/)
     .filter((part) => part !== '')
     .map((part) => {
-      const core = normalise(part);
-      return { text: part, word: core.length > 1 ? core : null };
+      const core = normaliseToken(part);
+      return { text: part, word: isGlossable(core) ? core : null };
     });
 }
 

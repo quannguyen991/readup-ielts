@@ -36,6 +36,29 @@ export function offlineGloss(word: string): OfflineGloss | null {
   return null;
 }
 
+/**
+ * Thường hoá MỘT token đúng như màn đọc làm trước khi tra — một chỗ duy nhất.
+ *
+ * Bài viết có dấu nháy cong (Vietnam’s), chữ có dấu (cafés, Māori) và gạch
+ * nối dài (rice–shrimp). Bỏ thẳng mọi ký tự ngoài a-z thì ba kiểu ấy thành
+ * "vietnams", "cafs", "riceshrimp" — không khoá nào khớp. Gập dấu và đổi dấu
+ * câu cong về dạng thẳng TRƯỚC khi lọc.
+ */
+export function normaliseToken(raw: string): string {
+  return raw
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[’‘]/g, "'")
+    .replace(/–/g, '-')
+    .toLowerCase()
+    .replace(/[^a-z0-9'-]/g, '');
+}
+
+/** Token có đáng tra không: phải có ít nhất một chữ cái và dài hơn một ký tự. */
+export function isGlossable(token: string): boolean {
+  return token.length > 1 && /[a-z]/.test(token);
+}
+
 /** Tách từ đúng như bộ dựng glossary — dùng chung cho test độ phủ. */
 export function glossaryWordsOf(text: string): string[] {
   const out: string[] = [];

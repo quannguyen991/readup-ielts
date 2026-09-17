@@ -8,10 +8,10 @@ import {
   getBilingualArticleById,
 } from './bilingual-repository';
 
-test('kho có đủ 34 bài, id không trùng', () => {
-  assert.equal(BILINGUAL_ARTICLES.length, 34);
+test('kho có đủ 74 bài, id không trùng', () => {
+  assert.equal(BILINGUAL_ARTICLES.length, 74);
   const ids = new Set(BILINGUAL_ARTICLES.map((a) => a.id));
-  assert.equal(ids.size, 34, 'có id bị trùng');
+  assert.equal(ids.size, 74, 'có id bị trùng');
 });
 
 test('mọi bài đều có đủ hai thứ tiếng ở tiêu đề và sapo', () => {
@@ -70,7 +70,7 @@ test('tra theo id trả về đúng bài, id lạ trả về undefined', () => {
 
 test('lọc theo chủ đề và trình độ thu hẹp đúng kho', () => {
   const all = filterBilingualArticles();
-  assert.equal(all.length, 34);
+  assert.equal(all.length, 74);
 
   const topic = BILINGUAL_ARTICLES[0]!.topic;
   const byTopic = filterBilingualArticles({ topic });
@@ -98,7 +98,7 @@ test('tìm kiếm bắt được cả tên tiếng Việt lẫn tên tiếng Anh
 
 test('thống kê đếm khớp với dữ liệu thật', () => {
   const stats = bilingualStats();
-  assert.equal(stats.articles, 34);
+  assert.equal(stats.articles, 74);
   assert.equal(
     stats.paragraphs,
     BILINGUAL_ARTICLES.reduce((n, a) => n + a.paragraphs.length, 0),
