@@ -303,7 +303,7 @@ function GlossBubble({
           borderRadius: 10,
           paddingHorizontal: 11,
           paddingVertical: 7,
-          backgroundColor: '#1F2A12',
+          backgroundColor: '#1E1B4B',
         },
         animated,
       ]}
@@ -314,7 +314,7 @@ function GlossBubble({
         <Text style={{ color: '#FFFFFF', fontSize: 12.5 }} numberOfLines={3}>
           <Text style={{ fontWeight: '700', fontStyle: 'italic' }}>{word}</Text>
           {gloss ? ` — ${gloss.meaningVi}` : ' — chưa có nghĩa'}
-          <Text style={{ color: '#B7C98A', fontSize: 11 }}>
+          <Text style={{ color: '#FCD68A', fontSize: 11 }}>
             {gloss?.pos ? `   ${gloss.pos}` : ''}
             {'   · bấm để xem thêm'}
           </Text>

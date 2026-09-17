@@ -31,9 +31,10 @@ import type { WordPick } from './HoverGloss';
  */
 
 const CARD_WIDTH = 340;
-const INK = '#1F2A12';
-const LIME = '#A3CC66';
-const LIME_SOFT = '#B7C98A';
+// Chàm đậm + hổ phách: cùng họ màu với nút "Kiểm tra" vàng trên thanh công cụ của màn đọc.
+const INK = '#1E1B4B';
+const LIME = '#FBBF24';
+const LIME_SOFT = '#FCD68A';
 
 export function WordPopover({
   pick,
@@ -196,7 +197,7 @@ export function WordPopover({
         {/* --------------------------------------------- khối định nghĩa */}
         <View className="mt-3 rounded-panel p-3" style={{ backgroundColor: 'rgba(0,0,0,0.25)' }}>
           {pos ? (
-            <View className="self-start rounded-md px-2 py-0.5" style={{ backgroundColor: 'rgba(163,204,102,0.18)' }}>
+            <View className="self-start rounded-md px-2 py-0.5" style={{ backgroundColor: 'rgba(251,191,36,0.16)' }}>
               <Text className="font-heavy uppercase" style={{ color: LIME, fontSize: 10, letterSpacing: 0.8 }}>
                 {posLabel(pos)}
               </Text>
@@ -239,9 +240,9 @@ export function WordPopover({
                     accessibilityLabel={`Nghe từ ${s}`}
                     onPress={() => speak(s)}
                     className="rounded-pill px-2.5 py-1"
-                    style={{ backgroundColor: 'rgba(163,204,102,0.14)', borderWidth: 1, borderColor: 'rgba(163,204,102,0.28)' }}
+                    style={{ backgroundColor: 'rgba(251,191,36,0.12)', borderWidth: 1, borderColor: 'rgba(251,191,36,0.32)' }}
                   >
-                    <Text style={{ color: '#E4F0CF', fontSize: 12, fontStyle: 'italic', fontFamily: readingFont.body }}>
+                    <Text style={{ color: '#FDEBC8', fontSize: 12, fontStyle: 'italic', fontFamily: readingFont.body }}>
                       {s}
                     </Text>
                   </Pressable>
@@ -258,7 +259,7 @@ export function WordPopover({
           disabled={saved}
           onPress={save}
           className="mt-3.5 flex-row items-center justify-center gap-2 rounded-panel py-3"
-          style={{ backgroundColor: saved ? 'rgba(163,204,102,0.2)' : LIME }}
+          style={{ backgroundColor: saved ? 'rgba(251,191,36,0.18)' : LIME }}
         >
           <Icon name={saved ? 'check' : 'plus'} size={15} color={saved ? LIME : INK} strokeWidth={2.4} />
           <Text className="font-heavy uppercase" style={{ color: saved ? LIME : INK, fontSize: 12.5, letterSpacing: 1.2 }}>
