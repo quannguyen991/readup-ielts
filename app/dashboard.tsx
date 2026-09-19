@@ -6,13 +6,12 @@ import { ArticleCard } from '@/components/article/ArticleCard';
 import { BarChart } from '@/components/charts';
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import {
   AssetImage,
   Badge,
   Button,
   Card,
-  HeroBanner,
-  Icon,
   ProgressBar,
   QuestionTypeIcon,
   SectionHeader,
@@ -129,53 +128,56 @@ export default function DashboardScreen() {
 
   return (
     <Screen>
-      <HeroBanner
-        title="Master IELTS Reading"
+      {/*
+        Hero DÙNG CHUNG với trang chủ (`LightHero`).
+
+        Trước đây chỗ này là khối gradient xanh đặc, chữ trắng, kèm hình 3D —
+        trông như một app khác so với trang chủ mà người dùng vừa bấm "Bắt đầu
+        học" để vào. Giờ hai trang cùng một nền lưới sáng, cùng cách đặt tiêu
+        đề hai dòng, nên đi từ trang này sang trang kia không thấy hẫng.
+
+        Bốn viên số liệu ở đây là SỐ CỦA NGƯỜI DÙNG (phút hôm nay, chuỗi, band,
+        thẻ tới hạn), khác trang chủ vốn là số của kho. Trang chủ giới thiệu app,
+        trang này nói về buổi học hôm nay.
+      */}
+      <LightHero
+        badge="Tổng quan"
+        line1="Hôm nay học tiếp,"
+        line2="đúng chỗ đang dở"
         subtitle={`${stats.ielts} passage IELTS và ${stats.sat} passage SAT từ ${stats.sources} nguồn công khai. Đọc, tra từ trong ngữ cảnh, làm đề và xem lại từng câu kèm bằng chứng.`}
-        illustration="dashboard-hero"
+        footer={
+          <>
+            <HeroStat value={`${minutesToday}`} label={`/ ${dailyGoal} phút hôm nay`} />
+            <HeroStat value={String(streak.current)} label="ngày liên tiếp" />
+            <HeroStat value={currentBand != null ? currentBand.toFixed(1) : '—'} label="band gần nhất" />
+            <HeroStat value={`${dueCards}`} label="thẻ từ tới hạn" />
+          </>
+        }
       >
-        <View className="flex-row flex-wrap items-center gap-3">
-          <Button
-            label="Bắt đầu luyện"
-            iconRight="arrow-right"
-            size="lg"
-            variant="onDarkSolid"
-            onPress={() =>
-              recommended
-                ? router.push(`/read/${recommended.id}` as never)
-                : router.push('/library' as never)
-            }
-          />
-          <Button
-            label="Mở thư viện"
-            iconLeft="book"
-            size="lg"
-            variant="onDark"
-            onPress={() => router.push('/library' as never)}
-          />
-        </View>
-
-        {/*
-          Đường vào trang giới thiệu, đặt ở NGAY ĐÂY.
-
-          Trang `/intro` vốn chỉ hiện cho người mở app lần đầu; ai đã học rồi thì
-          root đưa thẳng vào màn này và không còn cách nào gặp lại nó — trừ một
-          mục nằm gần cuối sidebar, mà trên màn hình hẹp thì mục đó nằm trong tab
-          "More", coi như không tồn tại. Có trang không giống tìm được trang.
-
-          Để dạng liên kết chữ chứ không phải nút thứ ba: người đã đọc rồi không
-          cần nó chiếm chỗ ngang hai nút kia.
-        */}
-        <Pressable
-          accessibilityRole="button"
-          onPress={() => router.push('/intro' as never)}
-          className="mt-3 flex-row items-center gap-1.5 self-start"
-        >
-          <Icon name="info" size={15} color="#FFFFFF" />
-          <Text className="font-strong text-body text-white/90">App có những gì?</Text>
-          <Icon name="arrow-right" size={14} color="#FFFFFF" />
-        </Pressable>
-      </HeroBanner>
+        <Button
+          label="Bắt đầu luyện"
+          iconRight="arrow-right"
+          size="lg"
+          variant="brand"
+          onPress={() =>
+            recommended ? router.push(`/read/${recommended.id}` as never) : router.push('/library' as never)
+          }
+        />
+        <Button
+          label="Mở thư viện"
+          iconLeft="book"
+          size="lg"
+          variant="outline"
+          onPress={() => router.push('/library' as never)}
+        />
+        <Button
+          label="Xếp hạng"
+          iconLeft="trophy"
+          size="lg"
+          variant="outline"
+          onPress={() => router.push('/leaderboard' as never)}
+        />
+      </LightHero>
 
       <TodayPlan />
 
