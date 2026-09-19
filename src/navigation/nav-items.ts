@@ -51,7 +51,10 @@ export const NAV_GROUPS: NavGroup[] = [
     key: 'overview',
     title: null,
     items: [
-      { key: 'dashboard', label: 'Tổng quan', href: '/dashboard', icon: 'home', inBottomTabs: true },
+      // Trang chủ = trang giới thiệu: hero, bảy thẻ chọn mảng học, ba bước bắt đầu.
+      // Nó là thứ người dùng thấy khi mở app, nên phải có lối quay lại từ thanh bên.
+      { key: 'home', label: 'Trang chủ', href: '/intro', icon: 'home', inBottomTabs: true },
+      { key: 'dashboard', label: 'Tổng quan', href: '/dashboard', icon: 'gauge', inBottomTabs: true },
     ],
   },
   {
@@ -121,7 +124,6 @@ export const NAV_GROUPS: NavGroup[] = [
       // Nhãn lấy từ chính luật thưởng: đổi gói thưởng ở `rewards.ts` mà quên sửa
       // chỗ này thì thanh điều hướng hứa một gói, trang mời trả một gói khác.
       { key: 'invite', label: `Mời bạn, nhận ${PLANS[REWARD_PLAN].name}`, href: '/invite', icon: 'sparkle' },
-      { key: 'intro', label: 'Giới thiệu', href: '/intro', icon: 'info' },
       { key: 'upgrade', label: 'Nâng cấp', href: '/upgrade', icon: 'sparkle' },
       { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
     ],
