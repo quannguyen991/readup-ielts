@@ -100,6 +100,8 @@ export const NAV_GROUPS: NavGroup[] = [
     items: [
       { key: 'plan', label: 'Lộ trình 60 tuần', href: '/plan', icon: 'calendar' },
       { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
+      { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
+      { key: 'shop', label: 'Cửa hàng đổi điểm', href: '/shop', icon: 'gift' },
       { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
       /*
         Đài quan sát nằm ở nhóm THEO DÕI chứ không phải một nhóm riêng: nó trả
