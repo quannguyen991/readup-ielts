@@ -5,19 +5,20 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AuroraBackground } from './AuroraBackground';
 import { LightGrid } from './LightGrid';
+import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { isFocusRoute } from '@/navigation/focus-routes';
 import { AskBubble } from '@/components/ai/AskBubble';
 
 /**
- * Khung app dùng chung — MỘT thanh ngang, hoặc không có gì cả.
+ * Khung app dùng chung — một cột dọc bên trái, một thanh ngang, hoặc không có gì.
  *
  * Hai chế độ:
  *
- *   Duyệt   — `TopBar` trên đỉnh, mọi khổ màn như nhau. Trước đây chỗ này có
- *             sidebar 244px ở desktop và header + bottom tabs ở mobile: ba bộ
- *             khung cho cùng một việc, và ở desktop thì cột trái ăn mất chiều
- *             ngang của chính nội dung.
+ *   Duyệt   — màn rộng: CỘT DỌC BÊN TRÁI, cả danh sách mục mở sẵn nên đi tới
+ *             đâu cũng chỉ một cú bấm, không phải mở bảng "Khám phá" trước.
+ *             Màn hẹp: vẫn là thanh ngang, vì cột dọc ăn mất nửa bề ngang của
+ *             một màn điện thoại.
  *   Tập trung — vào bài thì KHÔNG vẽ thanh nào. Đang bấm giờ làm bài mà cạnh
  *             màn hình vẫn có mười lối rẽ là lời mời bỏ dở; đường về nằm trong
  *             chính màn bài, dưới dạng một liên kết "quay lại" duy nhất.
@@ -61,8 +62,23 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         mỗi cú điều hướng. Ở AppShell nó sống suốt phiên và trôi liên tục.
       */}
       <AuroraBackground />
-      <TopBar />
-      <View className="flex-1">{children}</View>
+      {/*
+        Ẩn/hiện theo breakpoint của NativeWind chứ không đo width bằng JS: bản
+        render phía máy chủ không biết màn thật rộng bao nhiêu.
+      */}
+      <View className="flex-1 lg:flex-row">
+        {/* zIndex ở ĐÂY nữa, không chỉ trong Sidebar: thẻ bung ra nằm trong khung
+            này, mà khung nội dung là anh em đứng sau nên vẽ đè lên. */}
+        <View className="hidden lg:flex" style={{ zIndex: 40 }}>
+          <Sidebar />
+        </View>
+        <View className="min-w-0 flex-1">
+          <View className="lg:hidden">
+            <TopBar />
+          </View>
+          <View className="flex-1">{children}</View>
+        </View>
+      </View>
       {/*
         Bong bóng hỏi nhanh chỉ sống ở nhánh này, tức là ở màn KHÔNG phải làm bài.
         Nhánh `focus` phía trên trả về sớm và không gắn nó — giữa lúc đang tính

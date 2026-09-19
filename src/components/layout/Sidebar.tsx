@@ -11,20 +11,27 @@ import { ADMIN_GROUP, NAV_GROUPS, activeNavKey } from '@/navigation/nav-items';
 import { usePlan } from '@/store/useBillingStore';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useLeftEdgeHover } from '@/lib/useHover';
 import { color, layout, shadow } from '@/theme/tokens';
 
 /**
- * Sidebar trái — THẺ NỔI, không dính mép màn hình.
+ * Sidebar trái — THANH GỌN, bung ra khi rê chuột.
  *
- * Từ chỗ là một cột có viền phải chạm hai mép, giờ nó là một thẻ bo 16px có
- * khoảng thở quanh bốn phía và đổ bóng nhẹ. Đây cũng là chỗ duy nhất còn điều
- * hướng ở khổ desktop, nên nó ôm luôn logo trên đỉnh và tài khoản dưới đáy —
- * hai thứ trước đây nằm ở thanh ngang đã bỏ.
+ * Bình thường rộng 68px và chỉ có biểu tượng, nên nó lấy rất ít bề ngang của
+ * bài đọc. Rê chuột vào là bung thành thẻ 232px có đủ tên mục, và thẻ bung NẰM
+ * ĐÈ lên nội dung chứ không đẩy nội dung sang phải: đẩy thì cả trang chạy ngang
+ * mỗi lần chuột đi qua mép trái, chữ nhảy giữa lúc đang đọc.
+ *
+ * Lúc thu gọn vẫn nhận ra mục đang mở: nền xanh nhạt cộng vạch dọc bên trái.
+ * Tiêu đề nhóm nhường chỗ cho một đường kẻ, để dải biểu tượng không thành một
+ * cột dài không đầu không cuối.
  *
  * Danh sách mục cuộn được riêng, còn logo và tài khoản đứng yên: 11 mục cộng
  * card streak vượt chiều cao màn hình laptop 13 inch, mà cuộn cả thẻ thì logo
  * trôi mất.
  */
+const RAIL_WIDTH = 68;
+
 export function Sidebar() {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
@@ -34,14 +41,29 @@ export function Sidebar() {
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const groups = isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS;
 
+  // Bung khi chuột vào trong 92px tính từ mép trái, thu lại khi ra quá 260px.
+  const hovered = useLeftEdgeHover(RAIL_WIDTH + 24, layout.sidebarWidth + 28);
+  // Trên native không có chuột: mở sẵn, và cột nằm trong khung riêng của nó.
+  const expanded = hovered || Platform.OS !== 'web';
+
   return (
-    <View className="h-full py-3 pl-3" style={{ width: layout.sidebarWidth + 12 }}>
+    <View className="h-full py-3 pl-3" style={{ width: RAIL_WIDTH + 12, zIndex: 40 }}>
       <View
-        className="flex-1 rounded-card border border-border bg-surface px-3 pb-3 pt-4"
-        style={Platform.OS === 'web' ? webShadow : shadow.card}
+        className="flex-1 overflow-hidden rounded-card border border-border bg-surface px-3 pb-3 pt-4"
+        style={[
+          Platform.OS === 'web' ? webShadow : shadow.card,
+          { width: expanded ? layout.sidebarWidth : RAIL_WIDTH },
+          Platform.OS === 'web'
+            ? ({
+                transitionProperty: 'width',
+                transitionDuration: '180ms',
+                transitionTimingFunction: 'ease-out',
+              } as object)
+            : null,
+        ]}
       >
         <View className="px-1">
-          <Logo />
+          <Logo compact markOnly={!expanded} />
         </View>
 
         <ScrollView
@@ -50,11 +72,15 @@ export function Sidebar() {
           contentContainerStyle={{ paddingBottom: 8 }}
         >
           {groups.map((group, groupIndex) => (
-            <View key={group.key} className={groupIndex === 0 ? '' : 'mt-4'}>
+            <View key={group.key} className={groupIndex === 0 ? '' : 'mt-3'}>
               {group.title ? (
-                <Text className="mb-1.5 px-3 font-strong text-label uppercase tracking-wide text-subtle">
-                  {group.title}
-                </Text>
+                expanded ? (
+                  <Text className="mb-1.5 mt-1 px-3 font-strong text-label uppercase tracking-wide text-subtle">
+                    {group.title}
+                  </Text>
+                ) : (
+                  <View className="mx-2 mb-2 mt-2 h-px bg-border" />
+                )
               ) : null}
 
               <View className="gap-0.5">
@@ -65,8 +91,10 @@ export function Sidebar() {
                       <View
                         accessibilityRole="link"
                         accessibilityState={{ selected: active }}
+                        accessibilityLabel={item.label}
                         className={[
-                          'flex-row items-center gap-3 rounded-panel px-3 py-2.5',
+                          'flex-row items-center gap-3 rounded-panel py-2.5',
+                          expanded ? 'px-3' : 'px-2',
                           active ? 'bg-primary-50' : 'bg-transparent',
                         ].join(' ')}
                       >
@@ -84,14 +112,17 @@ export function Sidebar() {
                           color={active ? color.primary : color.muted}
                           strokeWidth={active ? 2 : 1.7}
                         />
-                        <Text
-                          className={[
-                            'text-body',
-                            active ? 'font-semi text-primary-700' : 'font-mid text-body',
-                          ].join(' ')}
-                        >
-                          {item.label}
-                        </Text>
+                        {expanded ? (
+                          <Text
+                            numberOfLines={1}
+                            className={[
+                              'flex-1 text-body',
+                              active ? 'font-semi text-primary-700' : 'font-mid text-body',
+                            ].join(' ')}
+                          >
+                            {item.label}
+                          </Text>
+                        ) : null}
                       </View>
                     </Link>
                   );
@@ -100,10 +131,10 @@ export function Sidebar() {
             </View>
           ))}
 
-          <StreakCard />
+          {expanded ? <StreakCard /> : null}
         </ScrollView>
 
-        <AccountRow />
+        <AccountRow expanded={expanded} />
       </View>
     </View>
   );
@@ -176,7 +207,7 @@ function StreakCard() {
  * nằm trên máy này và đăng nhập để mang đi nơi khác. Đã đăng nhập thì nó dẫn
  * sang Cài đặt, nơi có trạng thái đồng bộ và nút đăng xuất.
  */
-function AccountRow() {
+function AccountRow({ expanded }: { expanded: boolean }) {
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
   const available = useAuthStore((s) => s.available);
   const name = useDisplayName();
@@ -186,14 +217,18 @@ function AccountRow() {
     return (
       <Pressable
         accessibilityRole="button"
+        accessibilityLabel="Đăng nhập"
         onPress={() => router.push('/auth/sign-in' as never)}
-        className="mt-3 rounded-panel border border-dashed border-borderStrong px-3 py-2.5"
+        className={[
+          'mt-3 rounded-panel border border-dashed border-borderStrong py-2.5',
+          expanded ? 'px-3' : 'px-2',
+        ].join(' ')}
       >
         <View className="flex-row items-center gap-2.5">
           <View className="h-9 w-9 items-center justify-center rounded-pill bg-surfaceAlt">
             <Icon name="plus" size={17} color={color.muted} />
           </View>
-          <View className="flex-1">
+          <View className={expanded ? 'flex-1' : 'hidden'}>
             <Text className="font-semi text-body text-ink">Đăng nhập</Text>
             <Text className="font-sans text-label text-muted" numberOfLines={1}>
               {available ? 'Để giữ tiến độ khi đổi máy' : 'Chưa nối máy chủ'}
@@ -207,6 +242,7 @@ function AccountRow() {
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel="Tài khoản"
       onPress={() => router.push('/settings' as never)}
       className="mt-3 flex-row items-center gap-2.5 rounded-panel border border-border px-2.5 py-2"
     >
@@ -215,15 +251,19 @@ function AccountRow() {
           {name.slice(0, 1).toUpperCase()}
         </Text>
       </View>
-      <View className="flex-1">
-        <Text className="font-semi text-body text-ink" numberOfLines={1}>
-          {name}
-        </Text>
-        <View className="mt-0.5 flex-row">
-          <PlanBadge plan={plan} compact />
-        </View>
-      </View>
-      <Icon name="chevron-right" size={16} color={color.subtle} />
+      {expanded ? (
+        <>
+          <View className="flex-1">
+            <Text className="font-semi text-body text-ink" numberOfLines={1}>
+              {name}
+            </Text>
+            <View className="mt-0.5 flex-row">
+              <PlanBadge plan={plan} compact />
+            </View>
+          </View>
+          <Icon name="chevron-right" size={16} color={color.subtle} />
+        </>
+      ) : null}
     </Pressable>
   );
 }

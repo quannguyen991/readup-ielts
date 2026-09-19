@@ -21,7 +21,7 @@ export type NavGroup = {
 };
 
 /**
- * Điều hướng, GOM THEO NHÓM VIỆC.
+ * Điều hướng, GOM THEO KỲ THI rồi mới tới nhóm việc.
  *
  * Bản trước là 12 mục phẳng xếp thành một cột dài: Dashboard, Practice, Writing,
  * SAT Math, Library, Vocabulary, Progress, Mock Tests, Notes, Bookmarks, Nâng
@@ -30,9 +30,15 @@ export type NavGroup = {
  *
  * Ba nhóm dưới đây trả lời ba câu hỏi khác nhau:
  *
- *   LUYỆN TẬP — "hôm nay tôi làm bài gì"      (bốn nơi có đề để làm)
+ *   IELTS     — Reading, Writing, thi thử Reading
+ *   SAT       — Math, Verbal, bài thi đầy đủ
+ *   NGHE & VIẾT CÂU — chép chính tả, dịch câu: dùng chung cho cả hai kỳ thi
  *   THƯ VIỆN  — "tôi tra lại cái đã lưu ở đâu" (bài đọc, từ, ghi chú, đánh dấu)
  *   THEO DÕI  — "tôi đang tiến tới đâu"
+ *
+ * TÁCH IELTS VÀ SAT LÀ CHỦ Ý. Gộp chung thành một khối "Luyện tập" thì người
+ * đang ôn SAT phải đọc qua bốn mục IELTS mới tới phần của mình, và ngược lại —
+ * mà gần như không ai luyện cả hai trong cùng một buổi.
  *
  * Tổng quan đứng riêng trên đầu vì nó không thuộc nhóm nào — nó là chỗ nhìn
  * thấy cả ba. Nâng cấp và Cài đặt xuống chân, tách khỏi việc học.
@@ -49,15 +55,27 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
-    key: 'practice',
-    title: 'Luyện tập',
+    key: 'ielts',
+    title: 'IELTS',
     items: [
       { key: 'reading', label: 'Reading', href: '/practice', icon: 'book', inBottomTabs: true },
       { key: 'writing', label: 'Writing', href: '/write', icon: 'pencil', inBottomTabs: true },
+      { key: 'mock-tests', label: 'Thi thử Reading', shortLabel: 'Thi thử', href: '/mock-tests', icon: 'clipboard' },
+    ],
+  },
+  {
+    key: 'sat',
+    title: 'SAT',
+    items: [
       { key: 'math', label: 'SAT Math', href: '/math', icon: 'grid', inBottomTabs: true },
       { key: 'sat-rw', label: 'SAT Verbal', href: '/sat-rw', icon: 'letters' },
-      { key: 'mock-tests', label: 'Thi thử', shortLabel: 'Thi thử', href: '/mock-tests', icon: 'clipboard' },
       { key: 'sat-full-test', label: 'Thi thử SAT đầy đủ', href: '/sat/full-test', icon: 'clock' },
+    ],
+  },
+  {
+    key: 'skills',
+    title: 'Nghe & viết câu',
+    items: [
       { key: 'sentence', label: 'Luyện câu', href: '/sentence', icon: 'volume' },
       { key: 'dictation-sets', label: 'Bộ đề chép chính tả', href: '/sentence/sets', icon: 'play' },
       { key: 'dictation-youtube', label: 'Chép chính tả theo video', href: '/sentence/youtube', icon: 'volume' },

@@ -12,7 +12,14 @@ import { color, gradient } from '@/theme/tokens';
  * Tên là "ReadUp", không kèm "IELTS": app giờ dạy cả SAT Math, nên gắn tên một
  * kỳ thi vào thương hiệu là tự bó hẹp lại và nói sai về thứ bên trong.
  */
-export function Logo({ compact = false }: { compact?: boolean }) {
+export function Logo({
+  compact = false,
+  markOnly = false,
+}: {
+  compact?: boolean;
+  /** Chỉ vẽ biểu tượng, bỏ chữ — cột dọc lúc thu gọn. */
+  markOnly?: boolean;
+}) {
   return (
     <View className="flex-row items-center gap-2.5">
       <LinearGradient
@@ -23,11 +30,13 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       >
         <Icon name="book" size={20} color={color.white} strokeWidth={1.9} />
       </LinearGradient>
-      <Text
-        className={`font-heavy text-ink ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`}
-      >
-        ReadUp
-      </Text>
+      {markOnly ? null : (
+        <Text
+          className={`font-heavy text-ink ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`}
+        >
+          ReadUp
+        </Text>
+      )}
     </View>
   );
 }
