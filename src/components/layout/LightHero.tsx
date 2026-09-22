@@ -1,5 +1,17 @@
-import React from 'react';
-import { Platform, Text, View, useWindowDimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Platform, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import Animated, {
+  Easing,
+  cancelAnimation,
+  useAnimatedStyle,
+  useReducedMotion,
+  useSharedValue,
+  withDelay,
+  withRepeat,
+  withSequence,
+  withTiming,
+} from 'react-native-reanimated';
 
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { Badge } from '@/components/ui/Badge';
@@ -44,20 +56,7 @@ export function LightHero({
     hàng ngang, flex-1 ăn theo bề ngang còn chiều cao do nội dung quyết định.
   */
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        borderRadius: 24,
-        overflow: 'hidden',
-        // Viền trắng mảnh + bóng mềm: khung hero phải tách khỏi nền trang dù
-        // nền là xanh kẻ ô, loang hay trắng.
-        borderWidth: 1.5,
-        borderColor: 'rgba(255,255,255,0.9)',
-        ...(Platform.OS === 'web'
-          ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 16px 40px rgba(30,41,99,0.14)' } as object)
-          : { elevation: 3 }),
-      }}
-    >
+    <View style={HERO_FRAME}>
       {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
           đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
       <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
@@ -84,6 +83,96 @@ export function LightHero({
           {footer ? <View className="mt-7 flex-row flex-wrap gap-2">{footer}</View> : null}
         </View>
       </GridBackdrop>
+      <LightSweep />
+    </View>
+  );
+}
+
+/**
+ * Khung hero: viền trắng mảnh + bóng mềm, để khung luôn tách khỏi nền trang dù
+ * nền là xanh kẻ ô, loang hay trắng. Xuất ra để hero riêng của trang chủ dùng
+ * đúng khung này.
+ */
+export const HERO_FRAME = {
+  flexDirection: 'row',
+  borderRadius: 24,
+  overflow: 'hidden',
+  borderWidth: 1.5,
+  borderColor: 'rgba(255,255,255,0.9)',
+  ...(Platform.OS === 'web'
+    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 16px 40px rgba(30,41,99,0.14)' } as object)
+    : { elevation: 3 }),
+} as const;
+
+/** Bề ngang dải sáng. */
+const BAND = 260;
+
+/**
+ * Dải sáng chéo lướt ngang qua khung hero, rồi nghỉ vài giây, lặp lại.
+ *
+ * Nằm TRÊN nội dung nhưng `pointerEvents="none"` và mờ ở hai mép, nên chỉ như
+ * một vệt phản quang lướt qua mặt kính, không che chữ lâu hơn một khoảnh khắc.
+ * Chạy bằng shared value của Reanimated chứ không dùng `entering=` (làm trắng
+ * trang trên web). Người đặt "giảm chuyển động" thì không chạy.
+ */
+export function LightSweep() {
+  const reduced = useReducedMotion();
+  const [width, setWidth] = useState(0);
+  const progress = useSharedValue(0);
+
+  useEffect(() => {
+    if (reduced || width === 0) return;
+    progress.value = 0;
+    progress.value = withRepeat(
+      withSequence(
+        withDelay(2600, withTiming(1, { duration: 1500, easing: Easing.inOut(Easing.cubic) })),
+        withTiming(0, { duration: 0 }),
+      ),
+      -1,
+      false,
+    );
+    return () => cancelAnimation(progress);
+  }, [reduced, width, progress]);
+
+  const bandStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: -BAND * 1.5 + progress.value * (width + BAND * 3) }, { skewX: '-22deg' }],
+  }));
+
+  return (
+    <View
+      pointerEvents="none"
+      style={StyleSheet.absoluteFill}
+      onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
+    >
+      {reduced ? null : (
+        <Animated.View
+          style={[{ position: 'absolute', top: -60, bottom: -60, left: 0, width: BAND, flexDirection: 'row' }, bandStyle]}
+        >
+          {/* Dải chính: lõi gần trắng đặc, hai mép tan dần — nền hero vốn đã
+              sáng, dải trắng mờ đều sẽ không nhìn thấy được. */}
+          <LinearGradient
+            colors={[
+              'rgba(255,255,255,0)',
+              'rgba(255,255,255,0.35)',
+              'rgba(255,255,255,0.9)',
+              'rgba(255,255,255,0.35)',
+              'rgba(255,255,255,0)',
+            ]}
+            locations={[0, 0.3, 0.5, 0.7, 1]}
+            start={{ x: 0, y: 0.5 }}
+            end={{ x: 1, y: 0.5 }}
+            style={{ flex: 1 }}
+          />
+          {/* Vệt mảnh đi sau, như ánh thứ hai phản chiếu trên mặt kính. */}
+          <View style={{ width: 34 }} />
+          <LinearGradient
+            colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,0)']}
+            start={{ x: 0, y: 0.5 }}
+            end={{ x: 1, y: 0.5 }}
+            style={{ width: 26 }}
+          />
+        </Animated.View>
+      )}
     </View>
   );
 }
