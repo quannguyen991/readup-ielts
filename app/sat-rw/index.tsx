@@ -20,7 +20,7 @@ import { Badge, Button, Card, Icon, IconCircle } from '@/components/ui';
 import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS, SAT_RW_UNITS } from '@/data/sat-rw-repository';
 import { MATH_BANK_TOTAL, mathBankDone } from '@/services/math/bank';
 import { summarizeRwBySkill } from '@/services/sat-rw/progress';
-import { useMathSkillStats } from '@/store/useMathStore';
+import { useMathBankProgress } from '@/store/useMathStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { color } from '@/theme/tokens';
 
@@ -64,7 +64,7 @@ export default function SatRwHubScreen() {
   const [tab, setTab] = useState<Tab>('skills');
   const attempts = useSatRwStore((s) => s.attempts);
   const progress = useMemo(() => summarizeRwBySkill(SAT_RW_QUESTIONS, attempts), [attempts]);
-  const mathStats = useMathSkillStats();
+  const mathBank = useMathBankProgress();
   const mixStats = useMemo(() => mixedSetStats(), []);
 
   return (
@@ -106,7 +106,7 @@ export default function SatRwHubScreen() {
           eyebrow: 'Math',
           title: 'Ngân hàng SAT Math',
           blurb: '19 kỹ năng, đề sinh mới mỗi lượt.',
-          done: mathBankDone(mathStats),
+          done: mathBankDone(mathBank),
           total: MATH_BANK_TOTAL,
           icon: 'grid',
           href: '/math',
@@ -128,11 +128,12 @@ export default function SatRwHubScreen() {
               const total = skills.reduce((sum, k) => sum + (progress[k]?.bank ?? 0), 0);
               return (
                 <DomainSection key={d.key} title={d.key} subtitle={`${d.percent} đề SAT Verbal · ${d.labelVi}`} done={done} total={total}>
-                  {skills.map((k) => {
+                  {skills.map((k, i) => {
                     const p = progress[k]!;
                     return (
                       <SkillCard
                         key={k}
+                        index={i}
                         title={SKILL_NAME[k]!.en}
                         subtitle={SKILL_NAME[k]!.vi}
                         bank={p.bank}
@@ -141,6 +142,7 @@ export default function SatRwHubScreen() {
                         wrong={p.wrong}
                         accuracy={p.accuracy}
                         totalMs={p.totalMs}
+                        meta={`Lượt ${Math.min(Math.floor(p.answered / 10) + 1, Math.ceil(p.bank / 10))}/${Math.ceil(p.bank / 10)} · 10 câu`}
                         href={`/sat-rw/skill/${k}`}
                         icon="letters"
                       />
