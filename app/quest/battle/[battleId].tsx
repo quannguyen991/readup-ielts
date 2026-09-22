@@ -6,6 +6,9 @@ import Animated, { Easing, useAnimatedStyle, useReducedMotion, useSharedValue, w
 import { CrossFade, PressScale } from '@/components/motion/Motion';
 import { QuestBackdrop, BattleCharacters, BattleDamageFlash } from '@/components/quest/QuestVisual';
 import { HealthBar, QuestStat } from '@/components/quest/QuestHud';
+import { MathFigure } from '@/components/math/MathFigure';
+import { MathText } from '@/components/math/MathText';
+import { ItemBody } from '@/components/sat-rw/ItemBody';
 import { Button } from '@/components/ui';
 import { getQuestMap, getQuestNode } from '@/services/quest/maps';
 import { resolveCombatAnswer } from '@/services/quest/combat';
@@ -100,10 +103,13 @@ export default function QuestBattleScreen() {
       battleId: battle.id,
       nodeId: node.id,
       mapId: map.id,
-      correct: battle.questions.length - allWrongIds.length,
-      total: battle.questions.length,
+      // Tính trên số câu ĐÃ TRẢ LỜI: hạ quái sớm thì các câu còn lại chưa làm,
+      // đếm chúng là "đúng" sẽ thổi phồng độ chính xác và số sao.
+      correct: index + 1 - allWrongIds.length,
+      total: index + 1,
       damage,
       wrongQuestionIds: allWrongIds,
+      wrongQuestions: battle.questions.filter((q) => allWrongIds.includes(q.id)),
     });
     router.replace(`/quest/result/${node.id}` as never);
   };
@@ -132,13 +138,21 @@ export default function QuestBattleScreen() {
         </View>
 
           <QuestBackdrop map={map} minHeight={330}>
-          <View className="absolute inset-x-5 top-5 flex-row gap-4">
+          <View className="absolute inset-x-5 top-5 flex-row gap-4" style={{ zIndex: 5 }}>
             <HealthBar value={playerHp} max={100} color="#86EFAC" label="READUP UNIT" />
             <HealthBar value={enemyHp} max={enemyMax} color="#FB7185" label={map.boss} />
           </View>
           <BattleCharacters map={map} phase={phase} />
-          <View className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-pill border border-white/20 bg-black/45 px-4 py-2">
-            <Text className="font-strong text-label text-white">{status}</Text>
+          {/*
+            Căn giữa bằng một hàng tràn ngang chứ không bằng left-1/2 + dịch trái:
+            kiểu cũ chỉ cho viên này nửa bề ngang khung, nên trên điện thoại nó
+            xuống dòng và đè lên nhãn READUP UNIT / ENEMY. Màn hẹp thì nâng lên
+            trên hai nhãn đó.
+          */}
+          <View pointerEvents="none" className="absolute inset-x-0 bottom-12 items-center lg:bottom-5" style={{ zIndex: 6 }}>
+            <View className="rounded-pill border border-white/20 bg-black/55 px-4 py-2">
+              <Text numberOfLines={1} className="font-strong text-label text-white">{status}</Text>
+            </View>
           </View>
         </QuestBackdrop>
 
@@ -146,11 +160,34 @@ export default function QuestBattleScreen() {
           <CrossFade swapKey={`${question.id}:${revealed}`}>
             <View>
               <View className="flex-row items-center justify-between gap-3">
-                <Text className="font-strong text-label tracking-[1.5px] text-cyan-300">SAT {question.subject === 'math' ? 'MATH' : 'VERBAL'} · {question.skill}</Text>
+                <Text className="font-strong text-label tracking-[1.5px] text-cyan-300">SAT {question.subject === 'math' ? 'MATH' : 'VERBAL'} · {question.skillLabel ?? question.skill}</Text>
                 <Text className="font-sans text-label text-white/45">CÂU {index + 1}</Text>
               </View>
-              {question.context ? <Text numberOfLines={4} className="mt-3 rounded-panel bg-slate-800 p-3 font-sans text-label leading-5 text-white/65">{question.context}</Text> : null}
-              <Text className="mt-4 font-strong text-bodyLg leading-6 text-white">{question.prompt}</Text>
+              {/*
+                Đoạn văn Verbal in trên TẤM GIẤY SÁNG, đủ cả bảng số và phần gạch
+                chân, bằng đúng component của phòng thi SAT R&W. Trước đây nó bị
+                cắt còn 4 dòng trên nền tối — câu hỏi vẫn hiện nhưng bài để trả
+                lời thì không đọc hết được.
+              */}
+              {question.rwItem ? (
+                <View className="mt-3 rounded-panel bg-[#FBF8F1] px-4 py-3">
+                  <ItemBody item={question.rwItem} />
+                </View>
+              ) : question.context ? (
+                <Text className="mt-3 rounded-panel bg-slate-800 p-3 font-sans text-body leading-6 text-white/80">{question.context}</Text>
+              ) : null}
+              {question.subject === 'math' ? (
+                <View className="mt-4">
+                  <MathText size={17} weight="semibold" tone="#FFFFFF">{question.prompt}</MathText>
+                </View>
+              ) : (
+                <Text className="mt-4 font-strong text-bodyLg leading-6 text-white">{question.prompt}</Text>
+              )}
+              {question.figure ? (
+                <View className="mt-3 self-start rounded-panel bg-white p-3">
+                  <MathFigure spec={question.figure} />
+                </View>
+              ) : null}
               <View className="mt-4 gap-2">
                 {question.options.map((option, optionIndex) => {
                   const picked = selected === optionIndex;
@@ -160,7 +197,11 @@ export default function QuestBattleScreen() {
                     <PressScale key={`${question.id}:${optionIndex}`}>
                       <Pressable onPress={() => choose(optionIndex)} accessibilityRole="radio" accessibilityState={{ selected: picked, disabled: revealed }} className={`flex-row items-center gap-3 rounded-panel border px-3.5 py-3 ${correct ? 'border-emerald-300 bg-emerald-400/15' : wrong ? 'border-rose-300 bg-rose-400/15' : picked ? 'border-cyan-300 bg-cyan-400/15' : 'border-white/10 bg-slate-800'}`}>
                         <View className={`h-7 w-7 items-center justify-center rounded-full border ${correct ? 'border-emerald-300 bg-emerald-400/20' : wrong ? 'border-rose-300 bg-rose-400/20' : 'border-white/20'}`}><Text className="font-strong text-label text-white">{'ABCD'[optionIndex]}</Text></View>
-                        <Text className="flex-1 font-sans text-body text-white">{option}</Text>
+                        {question.subject === 'math' ? (
+                          <View className="flex-1"><MathText size={15} tone="#FFFFFF">{option}</MathText></View>
+                        ) : (
+                          <Text className="flex-1 font-sans text-body text-white">{option}</Text>
+                        )}
                         {correct ? <Text className="text-lg text-emerald-300">✓</Text> : wrong ? <Text className="text-lg text-rose-300">×</Text> : null}
                       </Pressable>
                     </PressScale>

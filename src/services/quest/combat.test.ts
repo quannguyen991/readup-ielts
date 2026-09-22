@@ -30,5 +30,13 @@ test('xếp sao theo độ chính xác', () => {
   assert.equal(starsForAccuracy(9, 10), 3);
   assert.equal(starsForAccuracy(7, 10), 2);
   assert.equal(starsForAccuracy(6, 10), 1);
+  assert.equal(starsForAccuracy(5, 10), 1);
   assert.equal(xpForBattle(8, 10, 3), 285);
+});
+
+test('dưới một nửa số câu đúng thì không vượt node — bấm bừa không qua được', () => {
+  assert.equal(starsForAccuracy(3, 8), 0);
+  assert.equal(starsForAccuracy(0, 8), 0);
+  assert.equal(starsForAccuracy(4, 8), 1);
+  assert.equal(starsForAccuracy(0, 0), 0);
 });

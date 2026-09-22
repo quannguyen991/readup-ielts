@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -20,13 +20,14 @@ export default function QuestMapScreen() {
   const { mapId } = useLocalSearchParams<{ mapId: string }>();
   const map = getQuestMap(mapId);
   const stars = useQuestStore((s) => s.stars);
+  const narrow = useWindowDimensions().width < 640;
   const unlocked = useQuestStore((s) => s.unlockedNodes);
 
   return (
     <Screen>
       <View className="flex-row items-center justify-between gap-3">
-        <Button label="Quest" variant="ghost" iconLeft="chevron-left" onPress={() => router.replace('/quest' as never)} />
-        <Text className="font-strong text-label text-muted">MAP {map.nodes.length > 4 ? '03' : map.id === 'iron-frontier' ? '01' : '02'}</Text>
+        <Button label="Quest" variant="onDark" iconLeft="chevron-left" onPress={() => router.replace('/quest' as never)} />
+        <Text className="font-strong text-label text-white/60">MAP {map.nodes.length > 4 ? '03' : map.id === 'iron-frontier' ? '01' : '02'}</Text>
       </View>
 
       <QuestBackdrop map={map} minHeight={520}>
@@ -44,28 +45,58 @@ export default function QuestMapScreen() {
 
       <View className="mt-6 flex-row items-end justify-between gap-3">
         <View>
-          <Text className="font-heavy text-sectionTitle text-ink">Đường tiến công</Text>
-          <Text className="mt-1 font-sans text-body text-muted">Mỗi node là một trận 8–10 câu SAT.</Text>
+          <Text className="font-heavy text-sectionTitle text-white">Đường tiến công</Text>
+          <Text className="mt-1 font-sans text-body text-white/70">Mỗi node là một trận 8–10 câu SAT.</Text>
         </View>
-        <Text className="font-strong text-label text-primary-600">{Object.values(stars).filter((value) => value > 0).length}/{map.nodes.length} đã vượt</Text>
+        <Text className="font-strong text-label text-cyan-200">{map.nodes.filter((n) => (stars[n.id] ?? 0) > 0).length}/{map.nodes.length} đã vượt</Text>
       </View>
 
       <View className="mt-5 overflow-hidden rounded-card border border-white/30 bg-slate-950/55 p-4 lg:p-6">
-        <View className="relative h-[430px] overflow-hidden rounded-panel border border-white/15 bg-black/20">
-          <View className="absolute left-[10%] right-[10%] top-[51%] h-2 rounded-pill bg-white/20" />
-          <View className="absolute left-[10%] right-[10%] top-[49%] h-1 rounded-pill" style={{ backgroundColor: `${map.accent}B8` }} />
+        {/*
+          Màn hẹp: đường tiến công chạy DỌC, node so le trái–phải. Bốn node dàn
+          ngang trên bề rộng 300px thì mỗi node chỉ còn 75px cho một hình tròn
+          96px kèm nhãn 130px — chúng chồng lên nhau và node cuối tràn ra ngoài.
+        */}
+        <View
+          className="relative overflow-hidden rounded-panel border border-white/15 bg-black/20"
+          style={{ height: narrow ? 620 : 430 }}
+        >
+          {narrow ? (
+            <>
+              <View className="absolute bottom-[10%] top-[10%] w-2 rounded-pill bg-white/20" style={{ left: '50%', marginLeft: -4 }} />
+              <View className="absolute bottom-[10%] top-[10%] w-1 rounded-pill" style={{ left: '50%', marginLeft: -2, backgroundColor: `${map.accent}B8` }} />
+            </>
+          ) : (
+            <>
+              <View className="absolute left-[10%] right-[10%] top-[51%] h-2 rounded-pill bg-white/20" />
+              <View className="absolute left-[10%] right-[10%] top-[49%] h-1 rounded-pill" style={{ backgroundColor: `${map.accent}B8` }} />
+            </>
+          )}
           {map.nodes.map((node, index) => {
             const open = unlocked.includes(node.id);
             const earned = stars[node.id] ?? 0;
             const meta = NODE_META[node.kind];
-            const positions = [
-              { left: '10%', top: '50%' },
-              { left: '36%', top: '28%' },
-              { left: '62%', top: '56%' },
-              { left: '88%', top: '34%' },
-            ] as const;
+            // Toạ độ là TÂM node; khối bọc lùi nửa bề ngang / nửa hình tròn để
+            // node không lệch sang phải so với điểm nó được đặt.
+            const positions = narrow
+              ? ([
+                  { left: '28%', top: '11%' },
+                  { left: '72%', top: '35%' },
+                  { left: '28%', top: '59%' },
+                  { left: '72%', top: '83%' },
+                ] as const)
+              : ([
+                  { left: '12%', top: '50%' },
+                  { left: '37%', top: '28%' },
+                  { left: '63%', top: '56%' },
+                  { left: '88%', top: '34%' },
+                ] as const);
             return (
-              <View key={node.id} className="absolute items-center" style={positions[index] ?? positions[0]}>
+              <View
+                key={node.id}
+                className="absolute items-center"
+                style={[positions[index] ?? positions[0], { width: 140, marginLeft: -70, marginTop: -48 }]}
+              >
                   <Pressable
                     accessibilityRole="button"
                     accessibilityState={{ disabled: !open }}

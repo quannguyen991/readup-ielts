@@ -70,7 +70,12 @@ export const useQuestStore = create<QuestState>()(
             level: levelForXp(state.xp + xp),
             stars: { ...state.stars, [result.nodeId]: starsForNode },
             unlockedNodes: unlocked,
-            completedBattles: [completed, ...state.completedBattles].slice(0, 50),
+            // Chỉ trận MỚI NHẤT giữ bản sao câu sai (có cả đoạn văn Verbal):
+            // 50 trận × 10 câu kèm đoạn văn là cả megabyte trong localStorage.
+            completedBattles: [
+              completed,
+              ...state.completedBattles.map(({ wrongQuestions: _dropped, ...rest }) => rest),
+            ].slice(0, 50),
             wrongQuestionIds: [...new Set([...result.wrongQuestionIds, ...state.wrongQuestionIds])].slice(0, 100),
             ownedCosmetics: stars === 3
               ? [...new Set([...state.ownedCosmetics, `${result.mapId}-skin-basic`])]
