@@ -11,7 +11,7 @@ import { TopBar } from './TopBar';
 import { isFocusRoute } from '@/navigation/focus-routes';
 import { AskBubble } from '@/components/ai/AskBubble';
 
-const QUEST_WORLD_BACKGROUND = require('../../../assets/quest/quest-world-bg.png');
+const QUEST_WORLD_BACKGROUND = require('../../../assets/quest/quest-world-bg.webp');
 
 /**
  * Khung app dùng chung — cột điều hướng cố định bên trái trên desktop, thanh
@@ -56,7 +56,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
     */
     return (
-      <LightGrid>
+      <FocusBackdrop quest={isQuestRoute}>
         <View className="flex-1 lg:flex-row">
           <View
             className="hidden lg:flex"
@@ -71,7 +71,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <View className="flex-1">{children}</View>
           </View>
         </View>
-      </LightGrid>
+      </FocusBackdrop>
     );
   }
 
@@ -81,7 +81,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <View pointerEvents="none" className="absolute inset-0 overflow-hidden bg-[#091126]">
           <Image source={QUEST_WORLD_BACKGROUND} className="absolute inset-0 h-full w-full" contentFit="cover" />
           <View className="absolute inset-0 bg-[#07112D]/45" />
-          <Image source={require('../../../assets/quest/quest-stickers.png')} className="absolute inset-0 h-full w-full opacity-20" contentFit="cover" />
+          <Image source={require('../../../assets/quest/quest-stickers.webp')} className="absolute inset-0 h-full w-full opacity-20" contentFit="cover" />
         </View>
       ) : null}
       {/*
@@ -117,5 +117,26 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       */}
       <AskBubble />
     </SafeAreaView>
+  );
+}
+
+/**
+ * Nền cho màn tập trung: lưới sáng mặc định, riêng Quest thì nền thế giới tối.
+ *
+ * Màn chiến đấu và màn kết quả của Quest là màn tập trung (ẩn nav để dồn sự
+ * chú ý vào câu hỏi), nên chúng đi qua nhánh này chứ không qua nhánh duyệt —
+ * nơi nền Quest được vẽ. Thiếu chỗ rẽ này, cả HUD chữ trắng của trận đánh nằm
+ * trên nền lưới sáng và gần như biến mất.
+ */
+function FocusBackdrop({ quest, children }: { quest: boolean; children: React.ReactNode }) {
+  if (!quest) return <LightGrid>{children}</LightGrid>;
+  return (
+    <View className="flex-1 bg-[#091126]">
+      <View pointerEvents="none" className="absolute inset-0 overflow-hidden">
+        <Image source={QUEST_WORLD_BACKGROUND} className="absolute inset-0 h-full w-full" contentFit="cover" />
+        <View className="absolute inset-0 bg-[#07112D]/60" />
+      </View>
+      {children}
+    </View>
   );
 }

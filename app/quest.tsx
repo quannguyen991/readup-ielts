@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,6 +12,10 @@ import { QUEST_MAPS } from '@/services/quest/maps';
 import { useQuestStore } from '@/store/useQuestStore';
 
 export default function QuestHome() {
+  // Chữ 58px trên màn 375px làm "Tiến lên." gãy đôi ngay trong khối xanh.
+  const wide = useWindowDimensions().width >= 768;
+  const heroSize = wide ? 58 : 38;
+  const heroLine = wide ? 64 : 44;
   const xp = useQuestStore((s) => s.xp);
   const level = useQuestStore((s) => s.level);
   const stars = useQuestStore((s) => Object.values(s.stars).reduce((sum, value) => sum + value, 0));
@@ -23,16 +27,16 @@ export default function QuestHome() {
       <View className="relative">
         <View className="relative">
           <View className="relative overflow-hidden" style={{ minHeight: 440, borderRadius: 32 }}>
-            <Image source={require('../assets/quest/quest-hero-bg.png')} className="absolute inset-0 h-full w-full" contentFit="cover" />
+            <Image source={require('../assets/quest/quest-hero-bg.webp')} className="absolute inset-0 h-full w-full" contentFit="cover" />
             <LinearGradient colors={['#050A1DEB', '#071637C9', '#0A1026B5']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} className="absolute inset-0" />
-            <LinearGradient colors={['#07102D00', '#07102D33', '#090B1DE0']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} className="relative flex-1" style={{ minHeight: 440, padding: 48 }}>
+            <LinearGradient colors={['#07102D00', '#07102D33', '#090B1DE0']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} className="relative flex-1" style={{ minHeight: 440, padding: wide ? 48 : 22 }}>
             <View className="max-w-4xl">
               <View className="self-start rounded-pill border border-amber-200/45 bg-[#1B2337CC] px-3 py-1.5 shadow-sm">
                 <Text className="font-strong text-label tracking-[1.2px] text-amber-100">READUP QUEST · HỌC &amp; CHIẾN</Text>
               </View>
-              <Text className="mt-7 font-heavy text-white" style={{ fontSize: 58, lineHeight: 64 }}>Học. Đánh.</Text>
+              <Text className="mt-7 font-heavy text-white" style={{ fontSize: heroSize, lineHeight: heroLine }}>Học. Đánh.</Text>
               <View className="mt-2 self-start rounded-md border border-cyan-200/70 bg-[#246BFFFF] px-4 py-1.5 shadow-sm">
-                <Text className="font-heavy text-white" style={{ fontSize: 58, lineHeight: 64 }}>Tiến lên.</Text>
+                <Text className="font-heavy text-white" style={{ fontSize: heroSize, lineHeight: heroLine }}>Tiến lên.</Text>
               </View>
               <Text className="mt-5 max-w-2xl font-sans text-bodyLg leading-7 text-white/80">
                 Mỗi câu SAT đúng là một phát bắn. Giữ combo, hạ boss và mở khóa vùng đất tiếp theo.
@@ -63,10 +67,10 @@ export default function QuestHome() {
 
       <View className="mt-7 flex-row items-end justify-between gap-3">
         <View>
-          <Text className="font-heavy text-sectionTitle text-ink">Chọn chiến trường</Text>
-          <Text className="mt-1 font-sans text-body text-muted">Mỗi map là một hành trình SAT khác nhau.</Text>
+          <Text className="font-heavy text-sectionTitle text-white">Chọn chiến trường</Text>
+          <Text className="mt-1 font-sans text-body text-white/70">Mỗi map là một hành trình SAT khác nhau.</Text>
         </View>
-        <Text className="font-strong text-label text-primary-600">{unlocked.length} node đã mở</Text>
+        <Text className="font-strong text-label text-cyan-200">{unlocked.length} node đã mở</Text>
       </View>
 
       <View className="mt-4 gap-4">

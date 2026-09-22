@@ -7,15 +7,15 @@ import Animated, { Easing, interpolate, useAnimatedStyle, useReducedMotion, useS
 import type { QuestMap } from '@/services/quest/types';
 
 const ART: Record<QuestMap['id'], number> = {
-  'iron-frontier': require('../../../assets/quest/iron-frontier.png'),
-  'fjord-runes': require('../../../assets/quest/fjord-runes.png'),
-  'infinite-dungeon': require('../../../assets/quest/infinite-dungeon.png'),
+  'iron-frontier': require('../../../assets/quest/iron-frontier.webp'),
+  'fjord-runes': require('../../../assets/quest/fjord-runes.webp'),
+  'infinite-dungeon': require('../../../assets/quest/infinite-dungeon.webp'),
 };
-const QUEST_WORLD_BACKGROUND = require('../../../assets/quest/quest-world-bg.png');
+const QUEST_WORLD_BACKGROUND = require('../../../assets/quest/quest-world-bg.webp');
 const SPRITES: Record<QuestMap['id'], number> = {
-  'iron-frontier': require('../../../assets/quest/iron-sprites.png'),
-  'fjord-runes': require('../../../assets/quest/fjord-sprites.png'),
-  'infinite-dungeon': require('../../../assets/quest/dungeon-sprites.png'),
+  'iron-frontier': require('../../../assets/quest/iron-sprites.webp'),
+  'fjord-runes': require('../../../assets/quest/fjord-sprites.webp'),
+  'infinite-dungeon': require('../../../assets/quest/dungeon-sprites.webp'),
 };
 
 /** Nền thế giới chung cho Quest home: một panorama game liền mạch. */
