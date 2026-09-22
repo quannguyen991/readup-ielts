@@ -27,7 +27,7 @@ import { color, shadow } from '@/theme/tokens';
  * card streak vượt chiều cao màn hình laptop 13 inch, mà cuộn cả thẻ thì logo
  * trôi mất.
  */
-const RAIL_WIDTH = 68;
+const RAIL_WIDTH = 76;
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -98,8 +98,8 @@ function RailItem({ item, active }: { item: NavItem; active: boolean }) {
           onHoverIn={() => setHovered(true)}
           onHoverOut={() => setHovered(false)}
           className={[
-            'h-11 w-11 items-center justify-center rounded-panel',
-            active ? 'bg-primary-50' : 'bg-transparent',
+            'w-12 items-center justify-center rounded-panel',
+            active ? 'min-h-[68px] bg-primary-50 py-1' : 'h-12 bg-transparent',
           ].join(' ')}
         >
           {active ? (
@@ -110,13 +110,22 @@ function RailItem({ item, active }: { item: NavItem; active: boolean }) {
           ) : null}
           <Icon
             name={item.icon}
-            size={20}
+            size={22}
             color={active ? color.primary : color.muted}
             strokeWidth={active ? 2.1 : 1.8}
           />
+          {active ? (
+            <Text
+              numberOfLines={2}
+              className="mt-1 px-0.5 text-center font-semi text-[9px] leading-3"
+              style={{ color: color.primary }}
+            >
+              {item.label}
+            </Text>
+          ) : null}
         </Pressable>
       </Link>
-      {hovered ? <TooltipCard label={item.label} /> : null}
+      {hovered && !active ? <TooltipCard label={item.label} /> : null}
     </View>
   );
 }

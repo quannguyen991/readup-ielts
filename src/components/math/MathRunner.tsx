@@ -209,7 +209,7 @@ export function MathRunner({
           gần giống nhau. Không dịch chuyển, vì câu hỏi không có trước/sau về
           không gian — chỉ đơn giản là câu khác.
         */}
-        <CrossFade swapKey={current.id}>
+        <CrossFade swapKey={`${current.id}-${revealed[current.id] ? 'revealed' : 'open'}`}>
           <MathQuestionView
             surface={surface}
             item={current}

@@ -93,3 +93,59 @@ export function playCorrectChime(): boolean {
     return false;
   }
 }
+
+function questTone(ac: AudioContext, hz: number, startAt: number, seconds: number, gain: number, type: OscillatorType): void {
+  const osc = ac.createOscillator();
+  const amp = ac.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(hz, startAt);
+  amp.gain.setValueAtTime(0.0001, startAt);
+  amp.gain.exponentialRampToValueAtTime(gain, startAt + 0.008);
+  amp.gain.exponentialRampToValueAtTime(0.0001, startAt + seconds);
+  osc.connect(amp).connect(ac.destination);
+  osc.start(startAt);
+  osc.stop(startAt + seconds + 0.02);
+}
+
+/** Âm thanh ngắn cho các nhịp chiến đấu của Quest, không cần tải file ngoài. */
+export function playQuestAttackSound(): boolean {
+  const ac = context();
+  if (!ac) return false;
+  try {
+    if (ac.state === 'suspended') void ac.resume();
+    const t = ac.currentTime;
+    questTone(ac, 150, t, 0.12, 0.08, 'sawtooth');
+    questTone(ac, 420, t + 0.05, 0.16, 0.1, 'square');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function playQuestHitSound(): boolean {
+  const ac = context();
+  if (!ac) return false;
+  try {
+    if (ac.state === 'suspended') void ac.resume();
+    const t = ac.currentTime;
+    questTone(ac, 95, t, 0.18, 0.14, 'square');
+    questTone(ac, 180, t + 0.035, 0.12, 0.08, 'triangle');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export function playQuestDamageSound(): boolean {
+  const ac = context();
+  if (!ac) return false;
+  try {
+    if (ac.state === 'suspended') void ac.resume();
+    const t = ac.currentTime;
+    questTone(ac, 280, t, 0.12, 0.1, 'sawtooth');
+    questTone(ac, 110, t + 0.07, 0.2, 0.12, 'square');
+    return true;
+  } catch {
+    return false;
+  }
+}

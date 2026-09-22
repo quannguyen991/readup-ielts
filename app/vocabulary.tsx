@@ -4,9 +4,10 @@ import { router } from 'expo-router';
 import * as Speech from 'expo-speech';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, HeroBanner, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
+import { Badge, Button, Card, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
 import { VOCAB_MODES, modeAvailability } from '@/services/vocab/modes';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
@@ -63,10 +64,18 @@ export default function VocabularyScreen() {
 
   return (
     <Screen>
-      <HeroBanner
-        title="Vocabulary"
+      <LightHero
+        badge="VOCABULARY PRACTICE"
+        line1="Vocabulary"
+        line2="gặp lại đúng lúc sắp quên"
         subtitle="Mỗi từ lưu kèm nguyên câu gặp nó. Ôn theo FSRS nên bạn chỉ gặp lại đúng lúc sắp quên."
-        illustration="vocabulary-hero"
+        footer={
+          <>
+            <HeroStat value={String(words.length)} label="tổng số từ" />
+            <HeroStat value={String(dueCards.length)} label="đến hạn ôn" />
+            <HeroStat value={`${avgMastery}%`} label="mastery trung bình" />
+          </>
+        }
       >
         <View className="flex-row gap-2">
           <Button
@@ -82,7 +91,7 @@ export default function VocabularyScreen() {
             onPress={() => setTab('review')}
           />
         </View>
-      </HeroBanner>
+      </LightHero>
 
       <View className="mt-4">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>

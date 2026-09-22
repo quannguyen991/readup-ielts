@@ -1,18 +1,16 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import {
   FilterChip,
-  ProgressRing,
   SetCard,
   UnitCard,
 } from '@/components/math/CurriculumCards';
-import { AssetImage, Badge, Button, Card, Icon, ProgressBar, SectionHeader } from '@/components/ui';
-import { assetKeys } from '@/services/assets/useAssets';
+import { Badge, Button, Card, Icon, ProgressBar, SectionHeader } from '@/components/ui';
 import { MATH_DOMAIN_STYLE, MATH_SET_KIND_STYLE, type MathSetKind } from '@/lib/math/theme';
 import {
   MATH_DOMAIN_LABEL,
@@ -44,7 +42,7 @@ import {
   useMathStore,
   useMathTotals,
 } from '@/store/useMathStore';
-import { color, gradient } from '@/theme/tokens';
+import { color } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
 
 /**
@@ -135,95 +133,60 @@ function MathHero({
   nextSetTitle: string | null;
   hasDiagnostic: boolean;
 }) {
-  const { width } = useWindowDimensions();
-  const wide = width >= 900;
-  const ratio = doneCount / CURRICULUM_TOTALS.sets;
-
   return (
-    <LinearGradient
-      colors={[...gradient.hero]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ borderRadius: 20, padding: 20 }}
+    <LightHero
+      badge="SAT MATH · 19 KỸ NĂNG"
+      line1="SAT Math"
+      line2="học chắc từng kỹ năng"
+      subtitle={`${CURRICULUM_TOTALS.units} bài học · ${CURRICULUM_TOTALS.sets} bộ đề · ${CURRICULUM_TOTALS.questions} câu. Đề sinh mới mỗi lượt, đáp án tính bằng code nên không cần API key.`}
+      footer={
+        <>
+          <HeroStat value={`${doneCount}/${CURRICULUM_TOTALS.sets}`} label="bộ đề hoàn thành" />
+          <HeroStat value={String(CURRICULUM_TOTALS.units)} label="bài học" />
+          <HeroStat value={String(CURRICULUM_TOTALS.questions)} label="câu hỏi" />
+        </>
+      }
     >
-      <View className="flex-row flex-wrap items-center justify-between gap-4">
-        <View className="flex-1" style={{ minWidth: 260 }}>
-          <View className="flex-row items-center gap-2">
-            <Text className="font-heavy text-hero text-white">SAT Math</Text>
-            <View className="rounded-pill bg-white/25 px-2.5 py-1">
-              <Text className="font-strong text-label text-white">19 kỹ năng</Text>
-            </View>
-          </View>
-          <Text className="mt-1.5 font-sans text-bodyLg text-white/90">
-            {CURRICULUM_TOTALS.units} bài học · {CURRICULUM_TOTALS.sets} bộ đề ·{' '}
-            {CURRICULUM_TOTALS.questions} câu. Đề sinh mới mỗi lượt, đáp án tính bằng code nên không
-            cần API key.
-          </Text>
-
-          <View className="mt-4 flex-row flex-wrap gap-2">
-            {nextSetId ? (
-              <Button
-                label={hasDiagnostic ? 'Học tiếp' : 'Bắt đầu học'}
-                variant="onDarkSolid"
-                iconRight="arrow-right"
-                onPress={() => router.push(`/math/set/${nextSetId}` as never)}
-              />
-            ) : (
-              <Button
-                label="Đã xong lộ trình — thi thử"
-                variant="onDarkSolid"
-                iconRight="trophy"
-                onPress={() => router.push('/math/mock' as never)}
-              />
-            )}
-            <Button
-              label={hasDiagnostic ? 'Chẩn đoán lại' : `Chẩn đoán ${DIAGNOSTIC_LENGTH} câu`}
-              variant="onDark"
-              onPress={() => router.push('/math/diagnostic' as never)}
-            />
-            <Button
-              label="Thi thử"
-              variant="onDark"
-              onPress={() => router.push('/math/mock' as never)}
-            />
-            <Button
-              label="Từ vựng"
-              variant="onDark"
-              iconLeft="letters"
-              onPress={() => router.push('/math/vocab' as never)}
-            />
-          </View>
-
-          {nextSetTitle ? (
-            <Text className="mt-3 font-mid text-label text-white/80">
-              Bài kế tiếp: {nextSetTitle}
-            </Text>
-          ) : null}
-        </View>
-
-        {/*
-          Ring và ảnh minh hoạ đứng CHUNG một cột bên phải, ring trên - ảnh dưới.
-
-          Bản trước đặt ảnh làm một khối riêng SAU cả `flex-row`, nên nó rơi
-          xuống hàng mới và dạt về mép trái — cùng phía với cột chữ, không phải
-          cạnh ring như ý đồ ban đầu. Gộp cả hai vào một cột `items-end` thì cả
-          ring lẫn ảnh đều áp sát mép phải, đúng vị trí "góc phải banner".
-        */}
-        <View className="items-end gap-3">
-          <ProgressRing ratio={ratio} label={`${doneCount}/${CURRICULUM_TOTALS.sets} bộ đề`} />
-          {/*
-            Ảnh CHỈ hiện ở khổ rộng.
-
-            Hero xếp bằng `flex-wrap`, nên ở khổ hẹp ảnh rớt xuống một dòng riêng
-            và để lại một mảng trống cao 150px ngay giữa banner — trông như lỗi
-            layout chứ không như trang trí. Rộng thì nó đứng cạnh chữ, đúng chỗ.
-          */}
-          {wide ? (
-            <AssetImage assetKey={assetKeys.illustration('math-hero')} preset="heroCompact" />
-          ) : null}
-        </View>
-      </View>
-      </LinearGradient>
+      {nextSetId ? (
+        <Button
+          label={hasDiagnostic ? 'Học tiếp' : 'Bắt đầu học'}
+          variant="brand"
+          size="lg"
+          iconRight="arrow-right"
+          onPress={() => router.push(`/math/set/${nextSetId}` as never)}
+        />
+      ) : (
+        <Button
+          label="Đã xong lộ trình — thi thử"
+          variant="brand"
+          size="lg"
+          iconRight="trophy"
+          onPress={() => router.push('/math/mock' as never)}
+        />
+      )}
+      <Button
+        label={hasDiagnostic ? 'Chẩn đoán lại' : `Chẩn đoán ${DIAGNOSTIC_LENGTH} câu`}
+        variant="outline"
+        size="lg"
+        onPress={() => router.push('/math/diagnostic' as never)}
+      />
+      <Button
+        label="Thi thử"
+        variant="outline"
+        size="lg"
+        onPress={() => router.push('/math/mock' as never)}
+      />
+      <Button
+        label="Từ vựng"
+        variant="outline"
+        size="lg"
+        iconLeft="letters"
+        onPress={() => router.push('/math/vocab' as never)}
+      />
+      {nextSetTitle ? (
+        <Text className="basis-full font-mid text-label text-paper-muted">Bài kế tiếp: {nextSetTitle}</Text>
+      ) : null}
+    </LightHero>
   );
 }
 

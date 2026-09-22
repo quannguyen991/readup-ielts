@@ -1,9 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Image } from 'expo-image';
 
-import { Icon } from '@/components/ui/Icon';
-import { color, gradient } from '@/theme/tokens';
 
 /**
  * Logo — tách khỏi thanh điều hướng vì giờ có hai chỗ dùng: sidebar ở desktop
@@ -22,14 +20,17 @@ export function Logo({
 }) {
   return (
     <View className="flex-row items-center gap-2.5">
-      <LinearGradient
-        colors={[...gradient.primaryButton]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ height: 36, width: 36, alignItems: 'center', justifyContent: 'center', borderRadius: 11 }}
+      <View
+        className="items-center justify-center rounded-panel bg-white"
+        style={{ height: 36, width: 36 }}
       >
-        <Icon name="book" size={20} color={color.white} strokeWidth={1.9} />
-      </LinearGradient>
+        <Image
+          source={require('../../../assets/brand/readup-logo-mark.png')}
+          contentFit="contain"
+          style={{ width: 31, height: 31 }}
+          accessibilityIgnoresInvertColors
+        />
+      </View>
       {markOnly ? null : (
         <Text
           className={`font-heavy text-ink ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`}

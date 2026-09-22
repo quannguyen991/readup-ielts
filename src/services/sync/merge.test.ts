@@ -11,7 +11,7 @@ import {
   unionByKey,
   unionStrings,
 } from './merge';
-import { mergeBilling, mergeMath, mergeStudy, mergeVocab } from './store-merges';
+import { mergeBilling, mergeMath, mergeQuest, mergeStudy, mergeVocab } from './store-merges';
 
 /**
  * Kịch bản gốc mà mọi test dưới đây bám vào:
@@ -44,6 +44,17 @@ test('một trong hai bên rỗng vẫn ra đủ', () => {
   assert.equal(unionByKey([{ id: 'a' }], [], (x) => x.id).length, 1);
   assert.equal(unionByKey([], [{ id: 'a' }], (x) => x.id).length, 1);
   assert.equal(unionByKey([], [], (x: { id: string }) => x.id).length, 0);
+});
+
+test('Quest hợp lịch sử trận, giữ sao cao nhất và không nhân đôi trận', () => {
+  const merged = mergeQuest(
+    { xp: 100, level: 1, stars: { 'iron-frontier-node-1': 1 }, unlockedNodes: ['a'], completedBattles: [{ battleId: 'one', nodeId: 'a', mapId: 'iron-frontier', correct: 6, total: 8, stars: 1, xp: 100, damage: 100, wrongQuestionIds: [], completedAt: '2026-09-01T00:00:00.000Z' }], wrongQuestionIds: ['q1'] },
+    { xp: 300, level: 2, stars: { 'iron-frontier-node-1': 3 }, unlockedNodes: ['b'], completedBattles: [{ battleId: 'one', nodeId: 'a', mapId: 'iron-frontier', correct: 6, total: 8, stars: 1, xp: 100, damage: 100, wrongQuestionIds: [], completedAt: '2026-09-01T00:00:00.000Z' }, { battleId: 'two', nodeId: 'b', mapId: 'iron-frontier', correct: 8, total: 8, stars: 3, xp: 300, damage: 200, wrongQuestionIds: [], completedAt: '2026-09-02T00:00:00.000Z' }], wrongQuestionIds: ['q2'] },
+  );
+  assert.equal(merged.completedBattles.length, 2);
+  assert.equal(merged.stars['iron-frontier-node-1'], 3);
+  assert.deepEqual(merged.unlockedNodes.sort(), ['a', 'b']);
+  assert.deepEqual(merged.wrongQuestionIds.sort(), ['q1', 'q2']);
 });
 
 test('gộp xong xếp lại mới nhất lên đầu', () => {

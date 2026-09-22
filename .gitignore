@@ -56,3 +56,7 @@ bench-out/
 # Dữ liệu phép đo: sinh ra bằng lời gọi model, không phải mã nguồn.
 # Kết quả đã chốt thì công bố riêng, có ghim ngày và tên model.
 data/provenance/
+
+# Kho tri thuc: corpus dung lai duoc tu seed + so tien do khi nap len LightRAG.
+# Sinh ra bang `npm run kb:ingest`, khong phai ma nguon.
+.kb/

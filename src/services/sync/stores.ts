@@ -3,16 +3,19 @@ import {
   mergeBilling,
   mergeMath,
   mergeStudy,
+  mergeQuest,
   mergeVocab,
   type BillingPayload,
   type MathPayload,
   type StudyPayload,
+  type QuestPayload,
   type VocabPayload,
 } from './store-merges';
 import { useBillingStore } from '@/store/useBillingStore';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
+import { useQuestStore } from '@/store/useQuestStore';
 
 /**
  * Nối từng zustand store vào engine đồng bộ.
@@ -99,10 +102,33 @@ const billingStore: SyncedStore = {
   merge: mergeBilling,
 };
 
+const questStore: SyncedStore = {
+  key: 'quest',
+  read: () => {
+    const s = useQuestStore.getState();
+    return { xp: s.xp, level: s.level, stars: s.stars, unlockedNodes: s.unlockedNodes, completedBattles: s.completedBattles, wrongQuestionIds: s.wrongQuestionIds, ownedCosmetics: s.ownedCosmetics, equippedCosmetic: s.equippedCosmetic };
+  },
+  write: (payload) => {
+    const data = payload as QuestPayload;
+    useQuestStore.setState({
+      xp: data.xp ?? 0,
+      level: data.level ?? 1,
+      stars: data.stars ?? {},
+      unlockedNodes: data.unlockedNodes ?? [],
+      completedBattles: data.completedBattles ?? [],
+      wrongQuestionIds: data.wrongQuestionIds ?? [],
+      ownedCosmetics: data.ownedCosmetics ?? [],
+      equippedCosmetic: data.equippedCosmetic ?? null,
+    });
+  },
+  merge: mergeQuest,
+};
+
 /** Gọi một lần lúc khởi động app. */
 export function registerAllSyncedStores(): void {
   registerSyncedStore(mathStore);
   registerSyncedStore(studyStore);
   registerSyncedStore(vocabStore);
   registerSyncedStore(billingStore);
+  registerSyncedStore(questStore);
 }

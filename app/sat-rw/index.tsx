@@ -3,6 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import {
   SAT_RW_STAGES,
   type SatRwCurriculumUnit,
@@ -13,7 +14,7 @@ import {
   mixedSetStats,
 } from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Card, Icon, IconCircle } from '@/components/ui';
+import { Badge, Button, Card, Icon, IconCircle } from '@/components/ui';
 import { satRwStats } from '@/data/sat-rw-repository';
 import { color } from '@/theme/tokens';
 
@@ -34,26 +35,34 @@ export default function SatRwHubScreen() {
 
   return (
     <Screen>
-      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Digital SAT · Reading & Writing
-        </Text>
-      </View>
-
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">SAT Verbal</Text>
-      <Text className="mt-1.5 max-w-[640px] font-sans text-bodyLg text-muted">
-        {stats.questions} câu phủ đủ bốn mảng của đề Digital SAT, xếp thành {stats.units} unit theo
-        từng luật một. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.
-      </Text>
-
-      <View className="mt-5">
-        <Grid columns={4} tabletColumns={2} mobileColumns={2} gap={12}>
-          <StatTile icon="clipboard" label="Câu hỏi" value={String(stats.questions)} />
-          <StatTile icon="list" label="Unit" value={String(stats.units)} />
-          <StatTile icon="grid" label="Mảng đề" value={String(stats.domains)} />
-          <StatTile icon="target" label="Kỹ năng" value={String(stats.skills)} />
-        </Grid>
-      </View>
+      <LightHero
+        badge="DIGITAL SAT · READING & WRITING"
+        line1="SAT Verbal"
+        line2="luyện đúng luật đề"
+        subtitle={`${stats.questions} câu phủ đủ bốn mảng của đề Digital SAT, xếp thành ${stats.units} unit theo từng luật một. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.`}
+        footer={
+          <>
+            <HeroStat value={String(stats.questions)} label="câu hỏi" />
+            <HeroStat value={String(stats.units)} label="unit" />
+            <HeroStat value={String(stats.domains)} label="mảng đề" />
+            <HeroStat value={String(stats.skills)} label="kỹ năng" />
+          </>
+        }
+      >
+        <Button
+          label="Đề trộn"
+          variant="brand"
+          size="lg"
+          iconRight="arrow-right"
+          onPress={() => router.push(`/sat-rw/mix/${SAT_RW_MIXED_SETS[0]!.id}` as never)}
+        />
+        <Button
+          label="Bắt đầu unit 1"
+          variant="outline"
+          size="lg"
+          onPress={() => router.push('/sat-rw/1' as never)}
+        />
+      </LightHero>
 
       {/*
         Đề trộn đặt TRƯỚC danh sách unit.
@@ -200,27 +209,3 @@ function CurriculumUnitCard({
 /** Mỗi chặng một tông icon — cuộn dọc trang thì màu báo đã sang chặng khác. */
 const STAGE_TONES = ['primary', 'info', 'accent', 'warning'] as const;
 
-
-function StatTile({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ComponentProps<typeof Icon>['name'];
-  label: string;
-  value: string;
-}) {
-  return (
-    <View className="flex-row items-center gap-3 rounded-card border border-border bg-surface px-4 py-3.5">
-      <View className="h-10 w-10 items-center justify-center rounded-panel bg-primary-50">
-        <Icon name={icon} size={18} color={color.primary} strokeWidth={1.9} />
-      </View>
-      <View className="min-w-0 flex-1">
-        <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 9 }}>
-          {label}
-        </Text>
-        <Text className="font-heavy text-sectionTitle text-ink">{value}</Text>
-      </View>
-    </View>
-  );
-}

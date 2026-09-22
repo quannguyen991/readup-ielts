@@ -43,11 +43,13 @@ export function GridBackdrop({
   cell = 34,
   colors = BASE_STOPS,
   line = 'rgba(255,255,255,0.12)',
+  showGrid = true,
   children,
 }: {
   cell?: number;
   colors?: readonly string[];
   line?: string;
+  showGrid?: boolean;
   children?: React.ReactNode;
 }) {
   return (
@@ -86,7 +88,7 @@ export function GridBackdrop({
           <Ellipse cx="18%" cy="12%" rx="55%" ry="45%" fill="url(#grid-blob-a)" />
           <Ellipse cx="88%" cy="82%" rx="50%" ry="55%" fill="url(#grid-blob-b)" />
 
-          <Rect x={0} y={0} width="100%" height="100%" fill="url(#grid-cell)" />
+          {showGrid ? <Rect x={0} y={0} width="100%" height="100%" fill="url(#grid-cell)" /> : null}
         </Svg>
       </View>
       {children}

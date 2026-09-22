@@ -4,14 +4,15 @@ import { router } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, Icon, PaperCard, SectionHeader, StatCard } from '@/components/ui';
+import { Badge, Button, PaperCard, SectionHeader } from '@/components/ui';
 import { filterArticles, type ArticleMeta, topicLabel } from '@/data/articles';
 import { FULL_SET_ARTICLE_IDS } from '@/data/full-question-sets';
 import { formatBand } from '@/lib/band';
 import { usePlan } from '@/store/useBillingStore';
 import { useStudyStore } from '@/store/useStudyStore';
-import { color, stickerGradient } from '@/theme/tokens';
+import { color } from '@/theme/tokens';
 import type { PlanId } from '@/lib/billing/plans';
 
 /**
@@ -31,64 +32,26 @@ export default function MockTestsScreen() {
   const bestBand = bands.length === 0 ? null : Math.max(...bands);
 
   return (
-    <MockBackdrop>
-      {/*
-        KHÔNG còn `HeroBanner` ở đây. Nền trang đã là gradient xanh rồi; đặt thêm
-        một banner gradient lên trên là hai lớp cùng họ màu chồng nhau và mép banner
-        biến mất — đúng cái đã gặp ở màn mở đầu bài thi SAT. Tiêu đề viết thẳng
-        lên nền.
-      */}
-      <View className="flex-row flex-wrap items-start justify-between gap-4">
-        <View className="min-w-0 flex-1" style={{ minWidth: 260 }}>
-          <View className="flex-row items-center gap-3">
-            <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/20">
-              <Icon name="clipboard" size={22} color="#FFFFFF" strokeWidth={1.9} />
-            </View>
-            <Text className="font-heavy text-hero text-white">Mock Tests</Text>
-          </View>
-          <Text
-            className="mt-3 max-w-[620px] font-sans text-bodyLg text-white/80"
-            style={{ lineHeight: 24 }}
-          >
-            {tests.length} đề dựng sẵn, mỗi đề 3 passage trong 60 phút, độ khó tăng dần —
-            đúng nhịp bài thi thật. Không đề nào dùng lại passage của đề khác.
-          </Text>
-          <View className="mt-5">
-            <Button
-              label="Đổi bộ đề"
-              variant="onDark"
-              iconLeft="refresh"
-              onPress={() => setSeed((s) => s + 1)}
-            />
-          </View>
-        </View>
-      </View>
-
-      <View className="mt-4">
-        <Grid columns={3} tabletColumns={2} mobileColumns={1}>
-          <StatCard
-            variant="sticker"
-            label="Đã thi thử"
-            value={String(mockSessions.length)}
-            icon="clipboard"
-            tone="primary"
-          />
-          <StatCard
-            variant="sticker"
-            label="Band cao nhất"
-            value={formatBand(bestBand)}
-            icon="trophy"
-            tone="accent"
-          />
-          <StatCard
-            variant="sticker"
-            label="Bài vào được đề thi"
-            value={String(FULL_SET_ARTICLE_IDS.size)}
-            icon="book"
-            tone="success"
-          />
-        </Grid>
-      </View>
+    <Screen>
+      <LightHero
+        badge="IELTS · MOCK TESTS"
+        line1="Mock Tests"
+        line2="đúng nhịp bài thi thật"
+        subtitle={`${tests.length} đề dựng sẵn, mỗi đề 3 passage trong 60 phút, độ khó tăng dần — không đề nào dùng lại passage của đề khác.`}
+        footer={
+          <>
+            <HeroStat value={String(mockSessions.length)} label="đã thi thử" />
+            <HeroStat value={formatBand(bestBand)} label="band cao nhất" />
+            <HeroStat value={String(FULL_SET_ARTICLE_IDS.size)} label="bài vào được đề" />
+          </>
+        }
+      >
+        <Button
+          label="Đổi bộ đề"
+          iconLeft="refresh"
+          onPress={() => setSeed((s) => s + 1)}
+        />
+      </LightHero>
 
       <View className="mt-4">
         <Grid columns={2} tabletColumns={1} mobileColumns={1}>
@@ -124,32 +87,7 @@ export default function MockTestsScreen() {
           ) : null}
         </View>
       </PaperCard>
-    </MockBackdrop>
-  );
-}
-
-/**
- * Nền gradient xanh của trang Thi thử.
- *
- * Lấy ĐÚNG `stickerGradient.primary` — gradient của thẻ "Reading" ở trang giới
- * thiệu — chứ không pha một bộ màu mới gần giống. Thẻ ấy là cửa vào mảng
- * Reading, và thi thử là phần cuối của chính mảng đó; dùng chung một gradient thì
- * hai chỗ nói được rằng chúng là một đường. Pha riêng thì sau vài lần sửa là hai
- * bên trôi khỏi nhau mà không ai thấy.
- *
- * `SafeAreaView` nằm TRONG gradient: bọc ngoài thì máy có tai thỏ có một dải
- * trắng cắt ngang đỉnh.
- */
-function MockBackdrop({ children }: { children: React.ReactNode }) {
-  return (
-    <LinearGradient
-      colors={[...stickerGradient.primary]}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={{ flex: 1 }}
-    >
-      <Screen>{children}</Screen>
-    </LinearGradient>
+    </Screen>
   );
 }
 

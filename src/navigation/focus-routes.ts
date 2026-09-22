@@ -45,6 +45,9 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Đăng nhập và thanh toán: dẫn người dùng đi thẳng, không mời rẽ ngang.
   /^\/auth(\/|$)/,
   /^\/checkout$/,
+  // Quest battle: full attention on the question and battle feedback.
+  /^\/quest\/battle\//,
+  /^\/quest\/result\//,
 ];
 
 export function isFocusRoute(pathname: string): boolean {

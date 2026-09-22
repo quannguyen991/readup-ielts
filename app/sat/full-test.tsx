@@ -3,6 +3,7 @@ import { Text, useWindowDimensions, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { MathQuestionView } from '@/components/math/MathQuestionView';
 import { MathRunner } from '@/components/math/MathRunner';
 import { ExamShell } from '@/components/layout/ExamShell';
@@ -22,7 +23,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 import {
   BREAK_MINUTES,
-  FULL_TEST_ELAPSED_MINUTES,
   FULL_TEST_QUESTIONS,
   FULL_TEST_TESTING_MINUTES,
   endBreak,
@@ -177,46 +177,32 @@ const STAGES: readonly Stage[] = [
 function Intro({ onStart }: { onStart: () => void }) {
   return (
     <ExamShell>
-      {/*
-        Nền đã là gradient xanh tím rồi, nên KHÔNG còn `HeroBanner`: một banner
-        gradient đặt trên nền gradient cùng tone là hai lớp cùng màu chồng nhau,
-        và mép banner biến mất. Tiêu đề viết thẳng lên nền, đúng cách `TaskShell`
-        làm ở mọi màn tác vụ khác.
-      */}
-      <View className="flex-row flex-wrap items-start justify-between gap-4">
-        <View className="min-w-0 flex-1" style={{ minWidth: 260 }}>
-          <View className="flex-row items-center gap-3">
-            <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/15">
-              <Icon name="clipboard" size={22} color="#FFFFFF" strokeWidth={1.9} />
-            </View>
-            <Text className="font-heavy text-hero text-white">Thi thử SAT đầy đủ</Text>
-          </View>
-          <Text
-            className="mt-3 max-w-[560px] font-sans text-bodyLg text-white/75"
-            style={{ lineHeight: 24 }}
-          >
-            Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module,
-            module sau khó dễ tuỳ module trước. Làm một mạch từ đầu tới cuối.
-          </Text>
-          <View className="mt-5 flex-row flex-wrap gap-2">
-            <Button
-              label="Bắt đầu thi"
-              variant="onDarkSolid"
-              iconRight="chevron-right"
-              onPress={onStart}
-            />
-            {/*
-              Đi thẳng tới /sat chứ không `router.back()`: route này ẩn hết thanh
-              điều hướng (nó là phòng thi), nên nếu người học mở thẳng bằng đường
-              dẫn thì `back()` không có chỗ để lùi và màn hình thành ngõ cụt.
-            */}
-            <Button label="Để sau" variant="onDark" onPress={() => router.replace('/sat')} />
-          </View>
-        </View>
-        <View className="hidden lg:flex">
-          <TimeFigures />
-        </View>
-      </View>
+      <LightHero
+        badge="DIGITAL SAT · FULL TEST"
+        line1="Thi thử SAT đầy đủ"
+        line2="một mạch từ đầu tới cuối"
+        subtitle="Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module; module sau khó dễ tuỳ module trước."
+        footer={
+          <>
+            <HeroStat value="98" label="câu hỏi" />
+            <HeroStat value="134" label="phút làm bài" />
+            <HeroStat value="144" label="phút tính cả nghỉ" />
+          </>
+        }
+      >
+        <Button
+          label="Bắt đầu thi"
+          variant="brand"
+          size="lg"
+          iconRight="chevron-right"
+          onPress={onStart}
+        />
+        {/*
+          Đi thẳng tới /sat chứ không `router.back()`: mở trực tiếp bằng đường
+          dẫn vẫn phải có một nơi lùi rõ ràng, không phụ thuộc lịch sử trình duyệt.
+        */}
+        <Button label="Để sau" variant="outline" size="lg" onPress={() => router.replace('/sat')} />
+      </LightHero>
 
       {/*
         Hai cột trên desktop. Một thẻ dòng thời gian trải hết bề ngang trang để
@@ -292,45 +278,6 @@ function Note({
 }
 
 /**
- * Ba con số ở góc phải banner — chỗ `/math` để vòng tiến độ.
- *
- * HAI CON SỐ THỜI GIAN ĐỨNG RIÊNG, và đó là lý do khối này tồn tại chứ không
- * phải để lấp chỗ trống. `full-test.ts` cố ý tách `FULL_TEST_TESTING_MINUTES`
- * (134) khỏi `FULL_TEST_ELAPSED_MINUTES` (144) vì lẫn hai cái là nói sai về đề
- * thi: mọi tài liệu College Board ghi "2 giờ 14 phút" và đó là thời gian LÀM
- * BÀI. Người học cần biết trước là mình ngồi 144 phút, không phải 134.
- */
-function TimeFigures() {
-  return (
-    <View className="rounded-panel bg-white/15 px-5 py-4" style={{ minWidth: 176 }}>
-      <Figure value={String(FULL_TEST_QUESTIONS)} unit="câu" note="27+27 và 22+22" />
-      <View className="my-3 h-px bg-white/25" />
-      <Figure value={String(FULL_TEST_TESTING_MINUTES)} unit="phút" note="thời gian làm bài" />
-      <View className="my-3 h-px bg-white/25" />
-      <Figure
-        value={String(FULL_TEST_ELAPSED_MINUTES)}
-        unit="phút"
-        note={`ngồi phòng thi, kể cả ${BREAK_MINUTES} phút nghỉ`}
-      />
-    </View>
-  );
-}
-
-function Figure({ value, unit, note }: { value: string; unit: string; note: string }) {
-  return (
-    <View>
-      <View className="flex-row items-baseline gap-1.5">
-        <Text className="font-heavy text-white" style={{ fontSize: 26, lineHeight: 30 }}>
-          {value}
-        </Text>
-        <Text className="font-strong text-body text-white/80">{unit}</Text>
-      </View>
-      <Text className="font-sans text-label text-white/70">{note}</Text>
-    </View>
-  );
-}
-
-/**
  * Một chặng trong dòng thời gian.
  *
  * Vẽ thành dòng thời gian có đường nối chứ không phải năm dòng gạch đầu dòng:
@@ -392,11 +339,13 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
  */
 function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () => void }) {
   const [remainingMs, setRemainingMs] = useState(minutes * 60_000);
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
   const done = useRef(false);
 
   const continueRef = useRef(onContinue);
-  continueRef.current = onContinue;
+  useEffect(() => {
+    continueRef.current = onContinue;
+  }, [onContinue]);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -919,7 +868,7 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
                 Module này không sai câu nào
               </Text>
               <Text className="mt-1 font-sans text-body text-paper-body" style={{ lineHeight: 22 }}>
-                Bấm "Tất cả" nếu muốn soát lại lời giải của cả {rows.length} câu.
+                Bấm &quot;Tất cả&quot; nếu muốn soát lại lời giải của cả {rows.length} câu.
               </Text>
             </View>
           </View>

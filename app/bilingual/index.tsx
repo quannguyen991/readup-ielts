@@ -3,6 +3,7 @@ import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-nati
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade, PressScale } from '@/components/motion/Motion';
 import { Icon, Pagination } from '@/components/ui';
@@ -64,22 +65,19 @@ function PortalView() {
   return (
     <View>
       <Appear>
-        <View className="self-start flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ borderWidth: 1.5, borderColor: INK, backgroundColor: '#FFFDF7' }}>
-          <Icon name="book" size={12} color={INK} strokeWidth={2.2} />
-          <Text style={{ fontFamily: readingFont.mono, fontSize: 10, letterSpacing: 1.6, color: INK, fontWeight: '700' }}>
-            BILINGUAL PRESS PORTAL · MIỄN PHÍ
-          </Text>
-        </View>
-
-        <Text style={{ marginTop: 14, fontFamily: readingFont.display, fontWeight: '800', fontSize: 44, lineHeight: 50, color: INK }}>
-          Đọc Báo{' '}
-          <Text style={{ fontStyle: 'italic', color: '#6B7B3F' }}>Song Ngữ</Text>
-        </Text>
-        <Text style={{ marginTop: 8, maxWidth: 640, fontFamily: readingFont.body, fontSize: 17, lineHeight: 27, color: '#3F4636' }}>
-          {stats.articles} bài báo và bài phân tích, tiếng Anh nguyên văn đặt cạnh bản dịch.{' '}
-          <Text style={{ fontStyle: 'italic' }}>Rê chuột vào từ là có nghĩa, bấm vào là có ví dụ và từ đồng nghĩa</Text> —
-          chọn một tờ báo để bắt đầu.
-        </Text>
+        <LightHero
+          badge="BILINGUAL PRESS · MIỄN PHÍ"
+          line1="Đọc báo"
+          line2="song ngữ"
+          subtitle={`${stats.articles} bài báo và bài phân tích, tiếng Anh nguyên văn đặt cạnh bản dịch. Rê chuột vào từ để xem nghĩa, ví dụ và từ đồng nghĩa.`}
+          footer={
+            <>
+              <HeroStat value={String(stats.articles)} label="bài báo" />
+              <HeroStat value={String(BILINGUAL_OUTLETS.length)} label="tờ báo" />
+              <HeroStat value="100%" label="miễn phí" />
+            </>
+          }
+        />
       </Appear>
 
       <View className="mt-8">

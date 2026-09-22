@@ -7,6 +7,7 @@ import { ChartFigure } from '@/components/writing/ChartFigure';
 import { matchesWritingFilter } from '@/lib/writing/prompt-filter';
 import { PlanNudge } from '@/components/billing/PlanUi';
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import {
@@ -15,12 +16,10 @@ import {
   type RailSelection,
   type RailSkill,
 } from '@/components/practice/FilterRail';
-import { Badge, Button, Card, Icon, Pagination, type IconName } from '@/components/ui';
+import { Badge, Button, Card, Icon, Pagination } from '@/components/ui';
 import { ARTICLES, filterArticles, isReadable, type ArticleMeta } from '@/data/articles';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { AVAILABLE_IELTS_TYPES, QUESTION_TYPE_LABEL } from '@/services/questions/types';
-import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
-import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 import type { CefrLevel, PassageTier } from '@/types/database';
 
@@ -331,48 +330,54 @@ export default function PracticeScreen() {
 
   return (
     <Screen>
-      {/*
-        Đầu trang nhẹ, không phải banner gradient choán màn.
-
-        Banner cũ cao gần 200px và bão hoà màu, trong khi thứ người dùng vào đây
-        để làm nằm ngay dưới nó. Giữ đúng ba thứ cần: tên trang, một câu nói rõ
-        cách dùng, và ba con số cho biết kho có gì.
-      */}
       <Appear>
-        <View className="flex-row flex-wrap items-start justify-between gap-3">
-          <View className="flex-1" style={{ minWidth: 220 }}>
-            <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-              <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-                Practice hub
-              </Text>
-            </View>
-            <Text className="mt-3 font-heavy text-pageTitle text-ink">Luyện tập</Text>
-            <Text className="mt-1.5 font-sans text-bodyLg text-muted" style={{ maxWidth: 560 }}>
-              Chọn kỹ năng và khổ bài ở cột trái, rồi làm bài có bấm giờ và xem lại từng câu kèm
-              bằng chứng trong bài.
-            </Text>
-          </View>
-
-          {!wide ? (
-            <Button
-              label={railOpen ? 'Đóng bộ lọc' : 'Bộ lọc'}
-              variant="outline"
-              iconLeft="filter"
-              onPress={() => setRailOpen((v) => !v)}
-            />
-          ) : null}
-        </View>
-
-        <View className="mt-4 flex-row flex-wrap gap-2">
-          <StatPill value={READABLE_TOTAL.toLocaleString('vi-VN')} label="bài đọc" />
-          <StatPill value={String(WRITING_PROMPTS.length)} label="đề Writing" />
-          <StatPill value={String(CURRICULUM_TOTALS.sets)} label="bộ đề Math" />
-        </View>
+        <LightHero
+          badge="IELTS · READING"
+          line1="Reading"
+          line2="đọc để hiểu, không chỉ chọn đáp án"
+          subtitle="Chọn khổ bài và dạng câu hỏi, làm bài có bấm giờ, rồi xem lại từng câu cùng bằng chứng ngay trong bài đọc."
+          footer={
+            <>
+              <HeroStat value={READABLE_TOTAL.toLocaleString('vi-VN')} label="bài đọc" />
+              <HeroStat value="15" label="dạng câu hỏi" />
+              <HeroStat value="60" label="phút full đề" />
+            </>
+          }
+        >
+          <Button
+            label="Bài ngắn"
+            variant="brand"
+            size="lg"
+            iconRight="arrow-right"
+            onPress={() => setSelection({ skill: 'reading', option: 'single', child: 'short' })}
+          />
+          <Button
+            label="Full đề Reading"
+            variant="outline"
+            size="lg"
+            iconLeft="clipboard"
+            onPress={() => router.push('/mock-tests' as never)}
+          />
+          <Button
+            label="Xen kẽ dạng bài"
+            variant="outline"
+            size="lg"
+            iconLeft="refresh"
+            onPress={() => router.push('/practice-mixed' as never)}
+          />
+        </LightHero>
       </Appear>
 
-      <Appear index={1}>
-        <QuickStart onPick={setSelection} />
-      </Appear>
+      {!wide ? (
+        <View className="mt-3">
+          <Button
+            label={railOpen ? 'Đóng bộ lọc' : 'Bộ lọc'}
+            variant="outline"
+            iconLeft="filter"
+            onPress={() => setRailOpen((v) => !v)}
+          />
+        </View>
+      ) : null}
 
       <PlanNudge />
 
@@ -437,111 +442,6 @@ export default function PracticeScreen() {
         </View>
       </View>
     </Screen>
-  );
-}
-
-/** Ô số liệu trên nền SÁNG — đầu trang không còn là banner gradient nữa. */
-function StatPill({ value, label }: { value: string; label: string }) {
-  return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill border border-border bg-surface px-3.5 py-1.5">
-      <Text className="font-heavy text-body text-ink">{value}</Text>
-      <Text className="font-sans text-label text-muted">{label}</Text>
-    </View>
-  );
-}
-
-/**
- * Hàng lối tắt ngay dưới tiêu đề.
- *
- * Thanh lọc ba tầng mạnh nhưng chậm: muốn làm một bài ngắn phải bấm ba lần mới
- * tới. Bốn lối tắt này là bốn ý định hay gặp nhất, mỗi cái đúng MỘT lần bấm.
- *
- * Ô "Đọc tiếp" chỉ hiện khi thật sự có bài đang đọc dở — thà bỏ trống còn hơn
- * để một nút bấm vào không ra gì.
- */
-function QuickStart({ onPick }: { onPick: (next: RailSelection) => void }) {
-  const progress = useStudyStore((s) => s.progress);
-
-  const resume = useMemo(() => {
-    const open = Object.values(progress)
-      .filter((p) => p.percentCompleted > 0 && p.percentCompleted < 100)
-      .sort((a, b) => b.lastReadAt.localeCompare(a.lastReadAt))[0];
-    if (!open) return null;
-    const article = ARTICLES.find((a) => a.id === open.articleId);
-    return article ? { article, percent: Math.round(open.percentCompleted) } : null;
-  }, [progress]);
-
-  return (
-    <View className="mt-3 flex-row flex-wrap gap-2">
-      {resume ? (
-        <Shortcut
-          icon="play"
-          tint="#16A34A"
-          title="Đọc tiếp"
-          note={`${resume.article.title} · ${resume.percent}%`}
-          onPress={() => router.push(`/read/${resume.article.id}` as never)}
-        />
-      ) : null}
-      <Shortcut
-        icon="clock"
-        tint="#2563EB"
-        title="Bài ngắn"
-        note="Vừa một lượt 15 phút"
-        onPress={() => onPick({ skill: 'reading', option: 'single', child: 'short' })}
-      />
-      <Shortcut
-        icon="clipboard"
-        tint="#A855F7"
-        title="Full đề Reading"
-        note="3 passage · 60 phút"
-        onPress={() => router.push('/mock-tests' as never)}
-      />
-      <Shortcut
-        icon="refresh"
-        tint="#F97316"
-        title="Xen kẽ dạng bài"
-        note="Trộn dạng, không theo khối"
-        onPress={() => router.push('/practice-mixed' as never)}
-      />
-    </View>
-  );
-}
-
-function Shortcut({
-  icon,
-  tint,
-  title,
-  note,
-  onPress,
-}: {
-  icon: IconName;
-  tint: string;
-  title: string;
-  note: string;
-  onPress: () => void;
-}) {
-  return (
-    <PressScale onPress={onPress} style={{ flexGrow: 1, flexBasis: 190 }}>
-      <View
-        className="flex-row items-center gap-2.5 rounded-card border bg-surface px-3 py-2.5"
-        style={{ borderColor: `${tint}33` }}
-      >
-        <View
-          className="h-8 w-8 items-center justify-center rounded-panel"
-          style={{ backgroundColor: `${tint}18` }}
-        >
-          <Icon name={icon} size={15} color={tint} />
-        </View>
-        <View className="min-w-0 flex-1">
-          <Text className="font-strong text-body text-ink" numberOfLines={1}>
-            {title}
-          </Text>
-          <Text className="font-sans text-label text-muted" numberOfLines={1}>
-            {note}
-          </Text>
-        </View>
-      </View>
-    </PressScale>
   );
 }
 
@@ -656,5 +556,3 @@ function Meta({ icon, text }: { icon: 'clock' | 'list'; text: string }) {
     </View>
   );
 }
-
-
