@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import Svg, { Circle } from 'react-native-svg';
 
@@ -12,12 +12,24 @@ import { color } from '@/theme/tokens';
  *
  * Mỗi mảng đề (domain) là một khối; trong khối, mỗi kỹ năng một thẻ: bên trái
  * là tên và quy mô kho, bên phải là "mình đang ở đâu" (vòng độ chính xác, số
- * câu đúng/sai, đã làm bao nhiêu) và một nút Luyện. Người học quét cả trang là
- * thấy ngay chỗ trống: thẻ nào còn 0% là chỗ chưa đụng tới.
+ * câu đúng/sai, đã làm bao nhiêu) và nút Luyện. Quét cả trang là thấy chỗ
+ * trống: thẻ nào còn "—" là chỗ chưa đụng tới.
+ *
+ * TIẾT CHẾ: không hình nền mờ, không chữ in hoa đậm, không nút nổi 3D. Bản đầu
+ * có đủ ba thứ đó và trông thô — thẻ dày đặc chi tiết trang trí trong khi thứ
+ * người học cần đọc chỉ là một con số và một nút bấm. Màu chỉ dùng cho số liệu
+ * (xanh lá đúng, đỏ sai, xanh dương tiến độ).
  */
 
 const GREEN = '#16A34A';
-const RED = '#DC2626';
+const RED = '#E11D48';
+const LINE = '#E6EAF2';
+const SOFT = '#F7F9FC';
+
+const cardShadow =
+  Platform.OS === 'web'
+    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 6px 20px rgba(15,23,42,0.05)' } as object)
+    : { elevation: 2 };
 
 export type BankInfo = {
   eyebrow: string;
@@ -30,43 +42,78 @@ export type BankInfo = {
 };
 
 /**
- * Hai thẻ ngân hàng ở đầu trang: thẻ của trang đang mở (lớn, viền xanh) và thẻ
- * của môn còn lại (nhỏ, bấm để sang). Đi giữa Math và Verbal là một cú bấm.
+ * Hai thẻ ngân hàng ở đầu trang: thẻ của trang đang mở (viền xanh) và thẻ của
+ * môn còn lại (viền xám, có mũi tên, bấm để sang). Cùng chiều cao.
  */
 export function BankHeader({ current, other }: { current: BankInfo; other: BankInfo }) {
   return (
     <View className="flex-row flex-wrap items-stretch gap-4">
-      <BankCard info={current} big />
-      <BankCard info={other} />
+      <View style={{ flexGrow: 3, flexShrink: 1, flexBasis: 420, minWidth: 0 }}>
+        <BankCard info={current} active />
+      </View>
+      <View style={{ flexGrow: 2, flexShrink: 1, flexBasis: 300, minWidth: 0 }}>
+        <BankCard info={other} />
+      </View>
     </View>
   );
 }
 
-function BankCard({ info, big = false }: { info: BankInfo; big?: boolean }) {
+function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }) {
+  const [hovered, setHovered] = useState(false);
   const pct = info.total > 0 ? Math.min(1, info.done / info.total) : 0;
+
   const body = (
     <View
-      className={`overflow-hidden rounded-card bg-surface ${big ? 'border-2 border-primary-500 p-7' : 'border border-border p-5'}`}
-      style={{ flexGrow: big ? 1.4 : 1, flexShrink: 1, flexBasis: big ? 480 : 340, minWidth: 0 }}
+      className="h-full rounded-[20px] bg-surface px-6 py-5"
+      style={[
+        cardShadow,
+        {
+          borderWidth: active ? 1.5 : 1,
+          borderColor: active ? '#93B4F5' : hovered ? '#CBD5E1' : LINE,
+        },
+      ]}
     >
-      <View pointerEvents="none" className="absolute" style={{ right: -24, top: -18, opacity: 0.07, transform: [{ rotate: '-18deg' }] }}>
-        <Icon name={info.icon} size={big ? 190 : 150} color={color.primary} strokeWidth={1.2} />
+      <View className="flex-row items-center justify-between gap-3">
+        <View className="flex-row items-center gap-2.5">
+          <View
+            className="h-9 w-9 items-center justify-center rounded-xl"
+            style={{ backgroundColor: active ? '#EAF1FF' : SOFT }}
+          >
+            <Icon name={info.icon} size={18} color={active ? color.primary : color.muted} strokeWidth={2} />
+          </View>
+          <Text className="font-semi text-label text-muted">{info.eyebrow}</Text>
+        </View>
+        {info.href ? <Icon name="arrow-right" size={18} color={hovered ? color.primary : color.muted} /> : null}
       </View>
-      <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{info.eyebrow}</Text>
-      <Text className={`mt-1.5 font-heavy text-ink ${big ? 'text-pageTitle' : 'text-sectionTitle'}`}>{info.title}</Text>
-      <Text className="mt-1.5 max-w-[420px] font-sans text-body text-muted">{info.blurb}</Text>
-      <View className="mt-4 flex-row items-baseline gap-1.5">
-        <Text className={`font-heavy text-primary-600 ${big ? 'text-stat' : 'text-sectionTitle'}`}>{info.done.toLocaleString('vi-VN')}</Text>
-        <Text className="font-semi text-body text-muted">/{info.total.toLocaleString('vi-VN')} câu</Text>
+
+      <Text className="mt-3 font-strong text-[22px] leading-7 text-ink">{info.title}</Text>
+      <Text className="mt-1 font-sans text-body text-muted" numberOfLines={2}>
+        {info.blurb}
+      </Text>
+
+      <View className="mt-5 flex-row items-baseline justify-between">
+        <Text className="font-sans text-body text-muted">
+          <Text className="font-strong text-ink">{info.done.toLocaleString('vi-VN')}</Text> /{' '}
+          {info.total.toLocaleString('vi-VN')} câu
+        </Text>
+        <Text className="font-semi text-label text-muted">{Math.round(pct * 100)}%</Text>
       </View>
-      <View className="mt-2 h-2 max-w-[420px] overflow-hidden rounded-pill bg-surfaceAlt">
-        <View className="h-2 rounded-pill bg-primary-500" style={{ width: `${Math.round(pct * 100)}%` }} />
+      <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#EEF2F7' }}>
+        <View className="h-1.5 rounded-pill bg-primary-500" style={{ width: `${Math.max(pct * 100, pct > 0 ? 2 : 0)}%` }} />
       </View>
     </View>
   );
+
   if (!info.href) return body;
   return (
-    <Pressable accessibilityRole="link" accessibilityLabel={`Sang ${info.title}`} onPress={() => router.push(info.href as never)} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 340, minWidth: 0 }}>
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={`Sang ${info.title}`}
+      onPress={() => router.push(info.href as never)}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
+      className="h-full"
+    >
       {body}
     </Pressable>
   );
@@ -88,28 +135,27 @@ export function DomainSection({
 }) {
   const [open, setOpen] = useState(true);
   return (
-    <View className="mt-6 rounded-card border border-border bg-surface p-5 lg:p-6">
-      <View className="flex-row items-center gap-4">
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={open ? `Thu gọn ${title}` : `Mở ${title}`}
-          onPress={() => setOpen((v) => !v)}
-          className="h-10 w-10 items-center justify-center rounded-panel bg-surfaceAlt"
-        >
-          <Text className="font-heavy text-sectionTitle text-muted">{open ? '–' : '+'}</Text>
-        </Pressable>
+    <View className="mt-8">
+      <Pressable
+        accessibilityRole="button"
+        accessibilityState={{ expanded: open }}
+        accessibilityLabel={open ? `Thu gọn ${title}` : `Mở ${title}`}
+        onPress={() => setOpen((v) => !v)}
+        className="flex-row items-center gap-3"
+      >
+        <View style={{ transform: [{ rotate: open ? '0deg' : '-90deg' }] }}>
+          <Icon name="chevron-down" size={20} color={color.muted} />
+        </View>
         <View className="min-w-0 flex-1">
-          <Text className="font-heavy text-sectionTitle text-ink">{title}</Text>
-          <Text className="mt-0.5 font-sans text-body text-muted">{subtitle}</Text>
+          <Text className="font-strong text-[21px] leading-7 text-ink">{title}</Text>
+          <Text className="font-sans text-body text-muted">{subtitle}</Text>
         </View>
-        <View className="rounded-pill bg-primary-600 px-4 py-1.5">
-          <Text className="font-strong text-body text-white">
-            {done}/{total}
-          </Text>
-        </View>
-      </View>
+        <Text className="font-sans text-body text-muted">
+          <Text className="font-strong text-ink">{done}</Text> / {total}
+        </Text>
+      </Pressable>
       {open ? (
-        <View className="mt-5">
+        <View className="mt-4">
           <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>
             {children}
           </Grid>
@@ -131,69 +177,70 @@ export type SkillCardProps = {
   accuracy: number | null;
   totalMs: number;
   href: string;
-  icon: IconName;
+  /** Giữ để hai trang gọi như cũ; thẻ không còn vẽ biểu tượng nền. */
+  icon?: IconName;
 };
 
+/** Cả thẻ bấm được — không bắt người học ngắm trúng một nút nhỏ ở góc. */
 export function SkillCard(p: SkillCardProps) {
+  const [hovered, setHovered] = useState(false);
   return (
-    <View className="flex-row overflow-hidden rounded-card border border-border bg-surface" style={{ minHeight: 210 }}>
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={`Luyện ${p.title}`}
+      onPress={() => router.push(p.href as never)}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
+      className="h-full flex-row overflow-hidden rounded-[18px] bg-surface"
+      style={[cardShadow, { borderWidth: 1, borderColor: hovered ? '#C9D6EE' : LINE, minHeight: 188 }]}
+    >
       <View className="min-w-0 flex-1 justify-between p-5">
-        <View pointerEvents="none" className="absolute" style={{ right: -30, bottom: -26, opacity: 0.06, transform: [{ rotate: '-18deg' }] }}>
-          <Icon name={p.icon} size={150} color={color.primary} strokeWidth={1.2} />
-        </View>
         <View>
-          <Text className="font-strong text-cardTitle text-ink">{p.title}</Text>
-          <Text className="mt-1 font-sans text-label text-muted">{p.subtitle}</Text>
+          <Text className="font-semi text-[17px] leading-6 text-ink">{p.title}</Text>
+          <Text className="mt-1 font-sans text-[14px] leading-5 text-muted">{p.subtitle}</Text>
         </View>
-        <View className="flex-row items-center justify-between gap-2">
-          <Text className="font-semi text-body text-muted">{p.bank} câu</Text>
+        <View className="mt-4 flex-row items-center gap-4">
+          <Text className="font-sans text-[14px] text-muted">{p.bank} câu</Text>
           <View className="flex-row items-center gap-1">
-            <Icon name="clock" size={15} color={color.muted} />
-            <Text className="font-semi text-body text-muted">{formatDuration(p.totalMs)}</Text>
+            <Icon name="clock" size={14} color={color.subtle} />
+            <Text className="font-sans text-[14px] text-muted">{formatDuration(p.totalMs)}</Text>
           </View>
         </View>
       </View>
 
-      <View className="w-[150px] items-center justify-between border-l border-border px-3 py-4">
+      <View
+        className="w-[132px] items-center justify-between px-3 py-4"
+        style={{ backgroundColor: SOFT, borderLeftWidth: 1, borderLeftColor: LINE }}
+      >
         <Ring accuracy={p.accuracy} />
         <View className="flex-row items-center gap-3">
-          <Count value={p.correct} tone={GREEN} mark="✓" label="câu đúng" />
-          <Count value={p.wrong} tone={RED} mark="✕" label="câu sai" />
+          <Count value={p.correct} tone={GREEN} label="câu đúng" />
+          <Count value={p.wrong} tone={RED} label="câu sai" />
         </View>
-        <View className="h-px w-full bg-border" />
-        <Text className="font-semi text-body text-muted">
-          <Text className="font-strong text-primary-600">{p.answered}</Text>/{p.bank}
+        <Text className="font-sans text-[13px] text-muted">
+          <Text className="font-semi text-ink">{p.answered}</Text> / {p.bank}
         </Text>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={`Luyện ${p.title}`}
-          onPress={() => router.push(p.href as never)}
-          className="w-full flex-row items-center justify-center gap-1.5 rounded-panel bg-primary-600 py-2.5"
-          style={{ borderBottomWidth: 3, borderBottomColor: '#1D4ED8' }}
-        >
-          <Icon name="play" size={14} color="#FFFFFF" strokeWidth={2.2} />
-          <Text className="font-heavy text-[14px] uppercase tracking-[0.6px] text-white">Luyện</Text>
-        </Pressable>
+        <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#1D4ED8' : color.primary }}>
+          <Text className="font-semi text-[14px] text-white">Luyện</Text>
+        </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 
-function Count({ value, tone, mark, label }: { value: number; tone: string; mark: string; label: string }) {
+function Count({ value, tone, label }: { value: number; tone: string; label: string }) {
   return (
-    <View accessibilityLabel={`${value} ${label}`} className="flex-row items-center gap-1">
-      <View className="h-5 w-5 items-center justify-center rounded-pill" style={{ backgroundColor: tone }}>
-        <Text className="font-heavy text-[11px] text-white">{mark}</Text>
-      </View>
-      <Text className="font-strong text-body" style={{ color: tone }}>{value}</Text>
+    <View accessibilityLabel={`${value} ${label}`} className="flex-row items-center gap-1.5">
+      <View className="h-2 w-2 rounded-pill" style={{ backgroundColor: tone }} />
+      <Text className="font-semi text-[14px] text-ink">{value}</Text>
     </View>
   );
 }
 
 /** Vòng độ chính xác. Chưa làm câu nào thì hiện "—", không phải "0%": chưa làm khác làm sai hết. */
 function Ring({ accuracy }: { accuracy: number | null }) {
-  const size = 68;
-  const stroke = 7;
+  const size = 58;
+  const stroke = 4;
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const pct = accuracy ?? 0;
@@ -201,7 +248,7 @@ function Ring({ accuracy }: { accuracy: number | null }) {
   return (
     <View style={{ width: size, height: size }} className="items-center justify-center">
       <Svg width={size} height={size} style={{ position: 'absolute' }}>
-        <Circle cx={size / 2} cy={size / 2} r={r} stroke="#E9EDF5" strokeWidth={stroke} fill="none" />
+        <Circle cx={size / 2} cy={size / 2} r={r} stroke="#E6EAF2" strokeWidth={stroke} fill="none" />
         {accuracy !== null && pct > 0 ? (
           <Circle
             cx={size / 2}
@@ -216,7 +263,7 @@ function Ring({ accuracy }: { accuracy: number | null }) {
           />
         ) : null}
       </Svg>
-      <Text className="font-heavy text-body" style={{ color: tone }}>
+      <Text className="font-semi text-[14px]" style={{ color: accuracy === null ? color.subtle : tone }}>
         {accuracy === null ? '—' : `${Math.round(pct * 100)}%`}
       </Text>
     </View>

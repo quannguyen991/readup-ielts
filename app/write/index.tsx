@@ -109,15 +109,13 @@ function BranchCard({
         borderRadius: 20,
         overflow: 'hidden',
         backgroundColor: t.bg,
-        borderWidth: 2.5,
-        borderColor: '#0F172A',
         ...(Platform.OS === 'web'
-          ? ({ boxShadow: '5px 5px 0 #0F172A' } as never)
+          ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 28px rgba(15,23,42,0.10)' } as never)
           : {
               shadowColor: '#0F172A',
-              shadowOffset: { width: 4, height: 4 },
-              shadowOpacity: 1,
-              shadowRadius: 0,
+              shadowOffset: { width: 0, height: 6 },
+              shadowOpacity: 0.1,
+              shadowRadius: 16,
               elevation: 6,
             }),
       }}
