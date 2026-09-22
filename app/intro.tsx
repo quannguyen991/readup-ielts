@@ -7,7 +7,7 @@ import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
-import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
+import { Badge, Button, Card, Icon, type IconName } from '@/components/ui';
 import { PLANS } from '@/lib/billing/plans';
 import { ARTICLES } from '@/data/articles';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
@@ -430,25 +430,19 @@ export default function IntroScreen() {
 }
 
 /**
- * Viền đen dày + bóng lệch CỨNG — cùng cách dựng với `StickerCard`, khác mỗi
- * ruột trắng thay vì gradient.
+ * Thẻ trắng viền mảnh, bóng mềm — cùng vật liệu với thẻ kỹ năng ở trang SAT.
  *
- * Nửa trên trang có giọng riêng rất rõ (thẻ sticker viền đen), rồi ba khối dưới
- * bỏ hẳn giọng ấy để về thẻ trắng trơn. Trang đọc như hai người viết. Dùng lại
- * đúng bộ vật liệu, chỉ đổi ruột, là cách nối lại mà không phải bịa thêm ngôn
- * ngữ thứ ba.
+ * Bản trước dùng viền đen dày + bóng lệch cứng kiểu sticker, cạnh các thẻ
+ * gradient đặc có ngôi sao trang trí: nhiều giọng quá, trông thô. Giờ mọi thẻ
+ * trên trang cùng một chất liệu; màu chỉ còn ở ô biểu tượng.
  */
-const hardEdge = (Platform.OS === 'web'
-  ? { borderWidth: 2.5, borderColor: '#0F172A', boxShadow: '5px 5px 0 #0F172A' }
-  : {
-      borderWidth: 2.5,
-      borderColor: '#0F172A',
-      shadowColor: '#0F172A',
-      shadowOffset: { width: 4, height: 4 },
-      shadowOpacity: 1,
-      shadowRadius: 0,
-      elevation: 6,
-    }) as never;
+const softCard = (Platform.OS === 'web'
+  ? {
+      borderWidth: 1,
+      borderColor: '#E6EAF2',
+      boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 6px 20px rgba(15,23,42,0.05)',
+    }
+  : { borderWidth: 1, borderColor: '#E6EAF2', elevation: 2 }) as never;
 
 
 /**
@@ -460,7 +454,7 @@ const hardEdge = (Platform.OS === 'web'
  */
 function StepCard({ step }: { step: (typeof STEPS)[number] }) {
   return (
-    <View className="h-full overflow-hidden rounded-card bg-white" style={hardEdge}>
+    <View className="h-full overflow-hidden rounded-card bg-white" style={softCard}>
       <LinearGradient
         colors={step.colors}
         start={{ x: 0, y: 0 }}
@@ -499,52 +493,32 @@ function StatPill({ value, label }: { value: string; label: string }) {
 
 /** Một mảng học: thẻ sticker màu đặc, viên thuốc ghim đáy là con số thật của mảng đó. */
 function AreaCard({ area }: { area: Area }) {
+  const tone = area.colors[1];
   return (
     <PressScale onPress={() => enterApp(area.href)} style={{ height: '100%' }}>
-      <StickerCard colors={area.colors} style={{ height: '100%' }}>
-        {/* Hai ngôi sao chỉ để trang trí — chặn chạm để chúng không nuốt cú bấm
-            vào thẻ ở góc trên phải. */}
-        <View
-          pointerEvents="none"
-          style={{ position: 'absolute', right: 14, top: 12, opacity: 0.45 }}
-        >
-          <Icon name="sparkle" size={18} color="#fff" strokeWidth={1.6} />
-        </View>
-        <View
-          pointerEvents="none"
-          style={{ position: 'absolute', right: 38, top: 44, opacity: 0.28 }}
-        >
-          <Icon name="sparkle" size={12} color="#fff" strokeWidth={1.6} />
+      <View className="h-full rounded-[18px] bg-surface p-5" style={softCard}>
+        <View className="flex-row items-center justify-between">
+          <View className="h-11 w-11 items-center justify-center rounded-xl" style={{ backgroundColor: `${tone}1A` }}>
+            <Icon name={area.icon} size={21} color={tone} strokeWidth={2} />
+          </View>
+          <Icon name="arrow-right" size={18} color="#94A3B8" />
         </View>
 
-        <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/90">
-          <Icon name={area.icon} size={22} color={area.colors[1]} strokeWidth={1.9} />
-        </View>
-
-        <Text className="mt-3.5 font-heavy text-sectionTitle text-white">{area.title}</Text>
-
-        {/* Chữ trắng đặc, không giảm độ mờ: đầu sáng của gradient (thẻ cam, thẻ
-            xanh lá) làm chữ mờ 90% tụt xuống dưới ngưỡng đọc được. */}
-        <View className="mt-2 gap-1.5">
+        <Text className="mt-4 font-strong text-[19px] leading-7 text-ink">{area.title}</Text>
+        <View className="mt-1 gap-1">
           {area.lines.map((line) => (
-            <Text key={line} className="font-sans text-label text-white">
+            <Text key={line} className="font-sans text-[15px] leading-6 text-muted">
               {line}
             </Text>
           ))}
         </View>
 
-        {/* Đẩy viên thuốc xuống đáy để sáu thẻ có badge thẳng hàng dù chữ dài ngắn khác nhau. */}
+        {/* Đẩy con số xuống đáy để các thẻ thẳng hàng dù chữ dài ngắn khác nhau. */}
         <View className="flex-1" />
-
-        <View className="mt-5 flex-row items-center justify-between gap-2">
-          <View className="rounded-pill bg-white/25 px-3 py-1">
-            <Text className="font-heavy text-label text-white" style={{ letterSpacing: 0.6 }}>
-              {area.badge}
-            </Text>
-          </View>
-          <Icon name="arrow-right" size={16} color="#fff" />
-        </View>
-      </StickerCard>
+        <Text className="mt-4 font-semi text-[14px]" style={{ color: tone }}>
+          {area.badge}
+        </Text>
+      </View>
     </PressScale>
   );
 }

@@ -4,7 +4,6 @@ import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 
-import { AuroraBackground } from './AuroraBackground';
 import { LightGrid } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
@@ -88,11 +87,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
       ) : null}
       {/*
-        Nền loang nằm ở đây chứ không ở trong `Screen`: `Screen` bị gắn lại mỗi
-        lần đổi trang, nên đặt trong đó thì các vệt màu nhảy về vị trí đầu sau
-        mỗi cú điều hướng. Ở AppShell nó sống suốt phiên và trôi liên tục.
+        NỀN TRƠN, không còn nền loang xanh tím. Các vệt màu trôi phía sau tranh
+        chú ý với chính thẻ nội dung — trang nào cũng như đang có thứ gì chuyển
+        động ở rìa mắt. Nền xám rất nhạt (`canvas`) để thẻ trắng tự nổi lên.
       */}
-      {!isQuestRoute ? <AuroraBackground /> : null}
       {/*
         Ẩn/hiện theo breakpoint của NativeWind chứ không đo width bằng JS: bản
         render phía máy chủ không biết màn thật rộng bao nhiêu.

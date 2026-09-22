@@ -184,7 +184,6 @@ export default function DashboardScreen() {
       <View className="mt-4 lg:mt-6">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
           <StatCard
-            variant="sticker"
             label="Daily Goal"
             value={String(minutesToday)}
             unit={`/ ${dailyGoal} min`}
@@ -195,7 +194,6 @@ export default function DashboardScreen() {
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
-            variant="sticker"
             label="Estimated Band Score"
             value={formatBand(currentBand)}
             icon="trending"
@@ -208,7 +206,6 @@ export default function DashboardScreen() {
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
-            variant="sticker"
             label="Practice Streak"
             value={String(streak.current)}
             unit="days"
@@ -218,7 +215,6 @@ export default function DashboardScreen() {
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
-            variant="sticker"
             label="Total Practice Time"
             value={formatMinutes(weekMinutes)}
             icon="trophy"

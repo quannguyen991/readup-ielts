@@ -170,31 +170,26 @@ function EntryCard({
   onPress: () => void;
 }) {
   const strong = tint === 'primary' ? color.primary : color.accent;
+  // Xếp DỌC: biểu tượng, tên, một đoạn mô tả, liên kết ở đáy. Bản xếp ngang
+  // (biểu tượng | chữ | liên kết) ép phần chữ còn một cột hẹp khi ba thẻ
+  // đứng cạnh nhau, và mô tả chảy thành một cột dọc chín dòng.
   return (
     <Pressable
       accessibilityRole="link"
       onPress={onPress}
-      className={`min-w-[280px] flex-1 flex-row items-center gap-4 rounded-card border p-4 ${
-        tint === 'primary' ? 'border-primary-200 bg-primary-50' : 'border-accent-200 bg-accent-50'
-      }`}
+      className="min-w-[260px] flex-1 rounded-[18px] border border-border bg-surface p-5"
       style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
     >
       <View
-        className="h-12 w-12 items-center justify-center rounded-panel"
-        style={{ backgroundColor: strong }}
+        className="h-11 w-11 items-center justify-center rounded-xl"
+        style={{ backgroundColor: tint === 'primary' ? '#EAF1FF' : '#F1EAFE' }}
       >
-        <Icon name={icon} size={22} color="#FFFFFF" strokeWidth={1.9} />
+        <Icon name={icon} size={20} color={strong} strokeWidth={2} />
       </View>
-      <View className="min-w-0 flex-1">
-        <Text className={`font-heavy text-cardTitle ${tint === 'primary' ? 'text-primary-900' : 'text-accent-900'}`}>
-          {title}
-        </Text>
-        <Text className={`mt-0.5 font-sans text-body ${tint === 'primary' ? 'text-primary-800' : 'text-accent-800'}`}>
-          {body}
-        </Text>
-      </View>
-      <View className="flex-row items-center gap-1.5">
-        <Text className="font-strong text-body" style={{ color: strong }}>
+      <Text className="mt-4 font-strong text-[19px] leading-7 text-ink">{title}</Text>
+      <Text className="mt-1 flex-1 font-sans text-[15px] leading-6 text-muted">{body}</Text>
+      <View className="mt-4 flex-row items-center gap-1.5">
+        <Text className="font-semi text-[15px]" style={{ color: strong }}>
           {cta}
         </Text>
         <Icon name="arrow-right" size={16} color={strong} strokeWidth={2} />
