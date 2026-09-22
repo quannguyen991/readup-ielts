@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 import Svg, { Circle } from 'react-native-svg';
 
 import { Grid } from '@/components/layout/Grid';
+import { LightSweep } from '@/components/layout/LightHero';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { color } from '@/theme/tokens';
 
@@ -182,9 +183,13 @@ export type SkillCardProps = {
   /** null = chưa làm câu nào. */
   accuracy: number | null;
   totalMs: number;
+  /** Dòng nhỏ cạnh cỡ kho, ví dụ "Lượt 2/7 · 10 câu". */
+  meta?: string;
   href: string;
   /** Giữ để hai trang gọi như cũ; thẻ không còn vẽ biểu tượng nền. */
   icon?: IconName;
+  /** Thứ tự thẻ trong lưới — lệch nhịp dải sáng để nó chạy thành làn sóng. */
+  index?: number;
 };
 
 /** Cả thẻ bấm được — không bắt người học ngắm trúng một nút nhỏ ở góc. */
@@ -205,7 +210,8 @@ export function SkillCard(p: SkillCardProps) {
           <Text className="font-semi text-[17px] leading-6 text-ink">{p.title}</Text>
           <Text className="mt-1 font-sans text-[14px] leading-5 text-muted">{p.subtitle}</Text>
         </View>
-        <View className="mt-4 flex-row items-center gap-4">
+        {p.meta ? <Text className="mt-3 font-semi text-[13px] text-primary-600">{p.meta}</Text> : null}
+        <View className="mt-2 flex-row items-center gap-4">
           <Text className="font-sans text-[14px] text-muted">{p.bank} câu</Text>
           <View className="flex-row items-center gap-1">
             <Icon name="clock" size={14} color={color.subtle} />
@@ -230,6 +236,9 @@ export function SkillCard(p: SkillCardProps) {
           <Text className="font-semi text-[14px] text-white">Luyện</Text>
         </View>
       </View>
+      {/* Ánh sáng lướt qua, lệch nhịp theo vị trí thẻ nên chạy thành làn sóng
+          qua cả lưới. Ánh xanh nhạt chứ không trắng: thẻ nền trắng. */}
+      <LightSweep band={150} pause={6500} duration={1300} offset={(p.index ?? 0) * 240} strength={0.6} tint="147,180,245" />
     </Pressable>
   );
 }

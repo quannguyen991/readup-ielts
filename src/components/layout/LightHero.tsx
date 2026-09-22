@@ -115,7 +115,26 @@ const BAND = 260;
  * Chạy bằng shared value của Reanimated chứ không dùng `entering=` (làm trắng
  * trang trên web). Người đặt "giảm chuyển động" thì không chạy.
  */
-export function LightSweep() {
+export function LightSweep({
+  band = BAND,
+  pause = 2600,
+  duration = 1500,
+  offset = 0,
+  strength = 0.9,
+  tint = '255,255,255',
+}: {
+  /** Bề ngang dải sáng. */
+  band?: number;
+  /** Nghỉ giữa hai lần lướt, ms. */
+  pause?: number;
+  duration?: number;
+  /** Trễ lần đầu, ms — để nhiều thẻ cạnh nhau lướt lệch nhịp thành một làn sóng. */
+  offset?: number;
+  /** Độ sáng lõi dải, 0–1. */
+  strength?: number;
+  /** Màu dải dạng "r,g,b". Trên nền trắng, dải trắng không thấy được — dùng ánh xanh nhạt. */
+  tint?: string;
+} = {}) {
   const reduced = useReducedMotion();
   const [width, setWidth] = useState(0);
   const progress = useSharedValue(0);
@@ -123,19 +142,22 @@ export function LightSweep() {
   useEffect(() => {
     if (reduced || width === 0) return;
     progress.value = 0;
-    progress.value = withRepeat(
-      withSequence(
-        withDelay(2600, withTiming(1, { duration: 1500, easing: Easing.inOut(Easing.cubic) })),
-        withTiming(0, { duration: 0 }),
+    progress.value = withDelay(
+      offset,
+      withRepeat(
+        withSequence(
+          withDelay(pause, withTiming(1, { duration, easing: Easing.inOut(Easing.cubic) })),
+          withTiming(0, { duration: 0 }),
+        ),
+        -1,
+        false,
       ),
-      -1,
-      false,
     );
     return () => cancelAnimation(progress);
-  }, [reduced, width, progress]);
+  }, [reduced, width, progress, offset, pause, duration]);
 
   const bandStyle = useAnimatedStyle(() => ({
-    transform: [{ translateX: -BAND * 1.5 + progress.value * (width + BAND * 3) }, { skewX: '-22deg' }],
+    transform: [{ translateX: -band * 1.5 + progress.value * (width + band * 3) }, { skewX: '-22deg' }],
   }));
 
   return (
@@ -146,17 +168,17 @@ export function LightSweep() {
     >
       {reduced ? null : (
         <Animated.View
-          style={[{ position: 'absolute', top: -60, bottom: -60, left: 0, width: BAND, flexDirection: 'row' }, bandStyle]}
+          style={[{ position: 'absolute', top: -60, bottom: -60, left: 0, width: band, flexDirection: 'row' }, bandStyle]}
         >
           {/* Dải chính: lõi gần trắng đặc, hai mép tan dần — nền hero vốn đã
               sáng, dải trắng mờ đều sẽ không nhìn thấy được. */}
           <LinearGradient
             colors={[
-              'rgba(255,255,255,0)',
-              'rgba(255,255,255,0.35)',
-              'rgba(255,255,255,0.9)',
-              'rgba(255,255,255,0.35)',
-              'rgba(255,255,255,0)',
+              `rgba(${tint},0)`,
+              `rgba(${tint},${strength * 0.4})`,
+              `rgba(${tint},${strength})`,
+              `rgba(${tint},${strength * 0.4})`,
+              `rgba(${tint},0)`,
             ]}
             locations={[0, 0.3, 0.5, 0.7, 1]}
             start={{ x: 0, y: 0.5 }}
@@ -164,12 +186,12 @@ export function LightSweep() {
             style={{ flex: 1 }}
           />
           {/* Vệt mảnh đi sau, như ánh thứ hai phản chiếu trên mặt kính. */}
-          <View style={{ width: 34 }} />
+          <View style={{ width: band * 0.13 }} />
           <LinearGradient
-            colors={['rgba(255,255,255,0)', 'rgba(255,255,255,0.7)', 'rgba(255,255,255,0)']}
+            colors={[`rgba(${tint},0)`, `rgba(${tint},${strength * 0.75})`, `rgba(${tint},0)`]}
             start={{ x: 0, y: 0.5 }}
             end={{ x: 1, y: 0.5 }}
-            style={{ width: 26 }}
+            style={{ width: band * 0.1 }}
           />
         </Animated.View>
       )}

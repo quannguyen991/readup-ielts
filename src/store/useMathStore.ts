@@ -11,6 +11,7 @@ import type {
   MathSkill,
 } from '@/lib/math/types';
 import { readDiagnostic, type DiagnosticReading } from '@/services/math/diagnostic';
+import { bankProgress } from '@/services/math/bank';
 import type { ModuleTier } from '@/services/math/scoring';
 import {
   countErrorTags,
@@ -103,6 +104,12 @@ function allAttempts(sessions: MathSessionRecord[]): MathAttemptRecord[] {
 export function useMathSkillStats() {
   const sessions = useMathStore((s) => s.sessions);
   return useMemo(() => summarizeBySkill(allAttempts(sessions)), [sessions]);
+}
+
+/** Tiến độ trong ngân hàng kỹ năng (lượt nào đã làm, bao nhiêu câu khác nhau). */
+export function useMathBankProgress() {
+  const sessions = useMathStore((s) => s.sessions);
+  return useMemo(() => bankProgress(sessions), [sessions]);
 }
 
 export function useMathDomainStats() {

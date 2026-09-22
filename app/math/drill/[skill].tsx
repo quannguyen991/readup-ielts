@@ -6,25 +6,32 @@ import { Screen } from '@/components/layout/Screen';
 import { MathRunner } from '@/components/math/MathRunner';
 import { Button, Card } from '@/components/ui';
 import { MATH_SKILL_DOMAIN, MATH_SKILL_LABEL, type MathSkill } from '@/lib/math/types';
-import { generateMathSet } from '@/services/math/generator';
+import { ROUND_SIZE, bankProgress, bankRoundId, bankRoundItems, roundsFor } from '@/services/math/bank';
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 
-/** Sáu câu đủ để xác nhận một nhận định từ bài chẩn đoán mà chưa thành buổi học dài. */
-const DRILL_LENGTH = 6;
-const DRILL_MINUTES = 12;
+/** Hai phút mỗi câu — nhịp của đề thật (22 câu / 35 phút ≈ 1,6 phút). */
+const MINUTES_PER_QUESTION = 2;
 
 export default function MathDrillScreen() {
-  const params = useLocalSearchParams<{ skill?: string }>();
+  const params = useLocalSearchParams<{ skill?: string; round?: string }>();
   const skill = params.skill as MathSkill | undefined;
   const valid = !!skill && skill in MATH_SKILL_DOMAIN;
 
-  const [seed] = useState(() => String(Date.now()));
-  const items = useMemo(
-    () => (valid ? generateMathSet({ skills: [skill], count: DRILL_LENGTH, seed }) : []),
-    [seed, skill, valid],
-  );
+  /*
+    Làm LƯỢT KẾ TIẾP của ngân hàng kỹ năng (xem `services/math/bank.ts`), chốt
+    một lần lúc mở màn. Trước đây màn này bốc 6 câu ngẫu nhiên, không thuộc kho
+    "148 câu" ghi trên thẻ — làm bao nhiêu lần con số trên thẻ cũng không nói
+    lên mình đã đi được bao xa trong kho.
+  */
+  const [round] = useState(() => {
+    if (!valid) return 0;
+    const asked = Number(params.round);
+    if (Number.isInteger(asked) && asked >= 0 && asked < roundsFor(skill)) return asked;
+    return bankProgress(useMathStore.getState().sessions)[skill].nextRound;
+  });
+  const items = useMemo(() => (valid ? bankRoundItems(skill, round) : []), [round, skill, valid]);
 
   const addSession = useMathStore((s) => s.addSession);
   const logStudyTime = useStudyStore((s) => s.logStudyTime);
@@ -36,7 +43,7 @@ export default function MathDrillScreen() {
       const id = addSession({
         mode: 'drill',
         skill: skill ?? null,
-        setId: null,
+        setId: skill ? bankRoundId(skill, round) : null,
         attempts,
         rawScore: countCorrect(attempts),
         total: attempts.length,
@@ -49,7 +56,7 @@ export default function MathDrillScreen() {
       logQuestions(attempts.length);
       router.replace(`/math/review/${id}`);
     },
-    [addSession, items, logQuestions, logStudyTime, skill],
+    [addSession, items, logQuestions, logStudyTime, round, skill],
   );
 
   if (!valid) {
@@ -69,10 +76,10 @@ export default function MathDrillScreen() {
   return (
     <MathRunner
       surface="paper"
-      title={`Drill · ${MATH_SKILL_LABEL[skill]}`}
-      subtitle={`${DRILL_LENGTH} câu cùng một kỹ năng. Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`}
+      title={`${MATH_SKILL_LABEL[skill]} · lượt ${round + 1}/${roundsFor(skill)}`}
+      subtitle={`${items.length} câu của ngân hàng kỹ năng này (mỗi lượt ${ROUND_SIZE} câu). Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`}
       items={items}
-      minutes={DRILL_MINUTES}
+      minutes={items.length * MINUTES_PER_QUESTION}
       submitLabel="Nộp và xem lại"
       onFinish={finish}
     />

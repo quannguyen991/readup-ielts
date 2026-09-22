@@ -41,13 +41,14 @@ import {
   useMathDomainStats,
   useMathErrorTags,
   useMathSetProgress,
+  useMathBankProgress,
   useMathSkillStats,
   useMathStore,
   useMathTotals,
 } from '@/store/useMathStore';
 import { color } from '@/theme/tokens';
 import { SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
-import { BANK_PER_SKILL, MATH_BANK_TOTAL, MATH_SKILLS, answeredInBank, mathBankDone } from '@/services/math/bank';
+import { BANK_PER_SKILL, MATH_BANK_TOTAL, MATH_SKILLS, ROUND_SIZE, mathBankDone, roundsFor } from '@/services/math/bank';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { CrossFade } from '@/components/motion/Motion';
 
@@ -129,9 +130,9 @@ function nextSetLabel(setId: string): string {
  * màn đầu để nói lại những con số mà thẻ ngân hàng nói gọn trong một dòng.
  */
 function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDiagnostic: boolean }) {
-  const skillStats = useMathSkillStats();
+  const bank = useMathBankProgress();
   const rwAttempts = useSatRwStore((s) => s.attempts);
-  const mathDone = mathBankDone(skillStats);
+  const mathDone = mathBankDone(bank);
 
   return (
     <View>
@@ -216,33 +217,37 @@ const DOMAIN_WEIGHT: Record<MathDomain, string> = {
 };
 
 /**
- * Tab mặc định: mỗi mảng một khối, mỗi kỹ năng một thẻ. "Đã làm" là số lượt
- * làm, chặn trần ở cỡ kho — đề Math sinh mới mỗi lượt nên không có "câu đã
- * gặp" để đếm như bên Verbal.
+ * Tab mặc định: mỗi mảng một khối, mỗi kỹ năng một thẻ. "Đã làm" là số câu
+ * KHÁC NHAU của ngân hàng kỹ năng đã làm (theo lượt 10 câu, xem
+ * `services/math/bank.ts`); đúng/sai và thời gian gộp mọi lần làm kỹ năng đó,
+ * kể cả trong bộ đề lộ trình.
  */
 function SkillsView() {
   const stats = useMathSkillStats();
+  const bank = useMathBankProgress();
   return (
     <View className="mt-2">
       {DOMAINS.map((domain) => {
         const skills = SKILLS.filter((k) => MATH_SKILL_DOMAIN[k] === domain);
-        const done = skills.reduce((sum, k) => sum + answeredInBank(k, stats[k]), 0);
+        const done = skills.reduce((sum, k) => sum + bank[k].answered, 0);
         const total = skills.reduce((sum, k) => sum + BANK_PER_SKILL[k], 0);
         return (
           <DomainSection key={domain} title={MATH_DOMAIN_LABEL[domain]} subtitle={DOMAIN_WEIGHT[domain]} done={done} total={total}>
-            {skills.map((k) => {
+            {skills.map((k, i) => {
               const st = stats[k];
               return (
                 <SkillCard
                   key={k}
+                  index={i}
                   title={MATH_SKILL_LABEL[k]}
                   subtitle={SKILL_UNIT_TITLE[k] ?? ''}
                   bank={BANK_PER_SKILL[k]}
-                  answered={answeredInBank(k, st)}
+                  answered={bank[k].answered}
                   correct={st.correct}
                   wrong={st.total - st.correct}
                   accuracy={st.accuracy}
                   totalMs={(st.avgTimeMs ?? 0) * st.total}
+                  meta={`Lượt ${bank[k].nextRound + 1}/${roundsFor(k)} · ${ROUND_SIZE} câu`}
                   href={`/math/drill/${k}`}
                   icon="grid"
                 />
