@@ -39,6 +39,19 @@ export const LIGHT_STOPS = ['#E9F0FE', '#E3EAFC', '#EBE6FB'] as const;
 /** Nét kẻ cho bản sáng — chàm rất mờ, không phải trắng. */
 export const LIGHT_LINE = 'rgba(60, 82, 160, 0.10)';
 
+/**
+ * Nền CHUNG của các màn duyệt: xanh cornflower, kẻ caro.
+ *
+ * Trước đây là `bg-canvas` — một mảng xám bạc phẳng. Thẻ trắng trên nền gần
+ * trắng thì không còn ranh giới, và cả app trông nhạt. Xanh đủ đậm để thẻ trắng
+ * bật hẳn lên; ô kẻ để mặt nền không phẳng lì.
+ *
+ * LƯU Ý KHI ĐẶT CHỮ TRỰC TIẾP LÊN NỀN NÀY: chữ xám nhạt (`text-muted`) đọc
+ * không nổi nữa. Chữ nằm ngoài thẻ phải là `text-ink` hoặc trắng.
+ */
+export const CANVAS_STOPS = ['#93B5FC', '#89ACFB', '#9BA9FA'] as const;
+export const CANVAS_LINE = 'rgba(23, 47, 110, 0.13)';
+
 export function GridBackdrop({
   cell = 34,
   colors = BASE_STOPS,

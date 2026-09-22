@@ -311,7 +311,7 @@ export default function IntroScreen() {
       {/* ---------------------------------------------------------- sáu mảng */}
       <Appear index={1}>
         <Text className="mt-14 font-heavy text-sectionTitle text-ink">App có gì</Text>
-        <Text className="mt-1 font-sans text-body text-muted">
+        <Text className="mt-1 font-sans text-body" style={{ color: '#1E293B' }}>
           Bảy mảng, dùng chung một sổ từ và một bảng tiến độ.
         </Text>
       </Appear>
