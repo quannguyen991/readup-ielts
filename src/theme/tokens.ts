@@ -125,15 +125,16 @@ export const spacing = {
   '3xl': 32,
 } as const;
 
+/** Khớp với `fontSize` trong tailwind.config.js — sửa một bên thì sửa cả bên kia. */
 export const fontSize = {
-  label: 12,
-  body: 14,
-  bodyLg: 15,
-  cardTitle: 16,
-  sectionTitle: 18,
-  stat: 26,
-  pageTitle: 30,
-  hero: 32,
+  label: 13,
+  body: 16,
+  bodyLg: 17,
+  cardTitle: 18,
+  sectionTitle: 22,
+  stat: 30,
+  pageTitle: 34,
+  hero: 38,
 } as const;
 
 export const fontFamily = {

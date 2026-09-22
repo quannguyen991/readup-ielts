@@ -80,15 +80,19 @@ module.exports = {
         strong: ['PlusJakartaSans_700Bold', 'Inter', 'system-ui', 'sans-serif'],
         heavy: ['PlusJakartaSans_800ExtraBold', 'Inter', 'system-ui', 'sans-serif'],
       },
+      // Thang chữ nâng một bậc (22/09/2026): chữ thường 14px -> 16px. Bản cũ
+      // đọc như app thu nhỏ trên màn laptop — người dùng so với các app luyện
+      // thi khác và thấy của mình "bị thu nhỏ quá". Giữ khớp với `fontSize`
+      // trong src/theme/tokens.ts.
       fontSize: {
-        label: ['12px', '16px'],
-        body: ['14px', '21px'],
-        bodyLg: ['15px', '23px'],
-        cardTitle: ['16px', '22px'],
-        sectionTitle: ['18px', '26px'],
-        stat: ['26px', '32px'],
-        pageTitle: ['30px', '38px'],
-        hero: ['32px', '40px'],
+        label: ['13px', '18px'],
+        body: ['16px', '24px'],
+        bodyLg: ['17px', '27px'],
+        cardTitle: ['18px', '25px'],
+        sectionTitle: ['22px', '30px'],
+        stat: ['30px', '36px'],
+        pageTitle: ['34px', '42px'],
+        hero: ['38px', '46px'],
       },
       boxShadow: {
         card: '0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.05)',

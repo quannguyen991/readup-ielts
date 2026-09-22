@@ -1,95 +1,188 @@
-import React, { useState } from 'react';
-import { Platform, Pressable, ScrollView, Text, View } from 'react-native';
-import { Link, router, usePathname } from 'expo-router';
+import React, { useState } from "react";
+import { Platform, Pressable, ScrollView, Text, View } from "react-native";
+import { Link, router, usePathname } from "expo-router";
 
-import { Logo } from './Logo';
-import { Icon } from '@/components/ui/Icon';
-import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, type NavItem } from '@/navigation/nav-items';
-import { usePlan } from '@/store/useBillingStore';
-import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
-import { useRewardStore } from '@/store/useRewardStore';
-import { findItem } from '@/services/gamification/shop';
-import { color, shadow } from '@/theme/tokens';
+import { Logo } from "./Logo";
+import { Icon } from "@/components/ui/Icon";
+import {
+  ADMIN_GROUP,
+  NAV_GROUPS,
+  activeNavKey,
+  parentNavKey,
+  type NavItem,
+} from "@/navigation/nav-items";
+import { usePlan } from "@/store/useBillingStore";
+import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
+import { useRewardStore } from "@/store/useRewardStore";
+import { SIDEBAR_WIDTH, useSidebarStore } from "@/store/useSidebarStore";
+import { findItem } from "@/services/gamification/shop";
+import { color } from "@/theme/tokens";
 
 /**
- * Sidebar trái — THANH BIỂU TƯỢNG, tên mục hiện khi rê chuột.
+ * Thanh bên trái — HIỆN ĐẦY ĐỦ TÊN, thu gọn được về dải biểu tượng.
  *
- * Rộng đúng 68px và không bao giờ đổi bề ngang: rê vào một biểu tượng thì tên
- * mục hiện ra trong một thẻ nhỏ bên phải nó, chứ cả cột không bung. Bản trước
- * bung cả cột ra 232px, và mỗi lần chuột đi ngang mép trái là một lần mảng đen
- * lớn trồi lên che mất chỗ đang đọc.
+ * Bản trước chỉ có biểu tượng, tên hiện khi rê chuột: gọn, nhưng người học phải
+ * rê qua từng biểu tượng mới biết cái nào là SAT Verbal, cái nào là Từ vựng.
+ * Làm được như vậy vì điều hướng đã gộp từ 27 mục phẳng còn 13 mục chính (xem
+ * `nav-items.ts`), đủ ngắn để cả cột tên nằm vừa màn laptop.
  *
- * Mục đang mở nhận ra bằng nền xanh nhạt cộng vạch dọc bên trái. Tiêu đề nhóm
- * nhường chỗ cho một đường kẻ, để dải biểu tượng không thành một cột dài không
- * đầu không cuối.
+ * Trang con (Thi thử Reading, Kho bài đọc…) chỉ mở ra dưới mục cha khi đang
+ * ở trong mục đó, thụt vào và nhỏ hơn một bậc.
  *
- * Danh sách mục cuộn được riêng, còn logo và tài khoản đứng yên: 11 mục cộng
- * card streak vượt chiều cao màn hình laptop 13 inch, mà cuộn cả thẻ thì logo
- * trôi mất.
+ * Nền trắng liền mép trái, không phải thẻ nổi: thẻ nổi bo góc ăn thêm 12px
+ * mỗi bên và đọc như một khối nội dung, trong khi đây là khung của app.
+ *
+ * `compact`: màn làm bài (phòng thi Reading, đề SAT…) luôn dùng dải biểu tượng —
+ * mỗi 170px nhường lại là thêm một cột chữ cho bài đọc. Nút thu gọn ẩn đi vì
+ * ở đây không có gì để mở rộng.
  */
-const RAIL_WIDTH = 76;
-
-export function Sidebar() {
+export function Sidebar({ compact = false }: { compact?: boolean }) {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
+  const activeParent = parentNavKey(activeKey);
+  const stored = useSidebarStore((s) => s.collapsed);
+  const collapsed = compact || stored;
+  const toggle = useSidebarStore((s) => s.toggle);
 
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
-  const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
+  const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
   const groups = isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS;
+  const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
 
   return (
-    <View className="h-full py-3 pl-3" style={{ width: RAIL_WIDTH + 12, zIndex: 40 }}>
-      <View
-        className="flex-1 items-center rounded-card border border-border bg-surface px-2 pb-3 pt-4"
-        style={[Platform.OS === 'web' ? webShadow : shadow.card, { width: RAIL_WIDTH }]}
+    <View
+      className="h-full border-r border-border bg-surface"
+      style={[{ width, zIndex: 40 }, Platform.OS === "web" ? webShadow : null]}
+    >
+      <View className={collapsed ? "items-center pb-2 pt-5" : "px-5 pb-2 pt-5"}>
+        <Logo compact markOnly={collapsed} />
+      </View>
+
+      <ScrollView
+        className="mt-2 flex-1"
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingHorizontal: collapsed ? 12 : 14,
+          paddingBottom: 12,
+        }}
       >
-        <Logo compact markOnly />
+        {groups.map((group, groupIndex) => (
+          <View key={group.key} className={groupIndex === 0 ? "" : "mt-4"}>
+            {group.title ? (
+              collapsed ? (
+                <View className="mx-2 mb-2 h-px bg-border" />
+              ) : (
+                <Text className="mb-1.5 px-3 font-strong text-[12px] uppercase tracking-[1.2px] text-muted">
+                  {group.title}
+                </Text>
+              )
+            ) : null}
 
-        <ScrollView
-          className="mt-4 flex-1"
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 8 }}
-        >
-          {groups.map((group, groupIndex) => (
-            <View key={group.key} className={groupIndex === 0 ? '' : 'mt-3'}>
-              {group.title ? <View className="mx-2 mb-2 mt-2 h-px bg-border" /> : null}
-
-              <View className="gap-0.5">
-                {group.items.map((item) => (
-                  <RailItem key={item.key} item={item} active={activeKey === item.key} />
-                ))}
-              </View>
+            <View className="gap-1">
+              {group.items.map((item) => {
+                const open = activeParent === item.key;
+                return (
+                  <View key={item.key}>
+                    <NavRow
+                      item={item}
+                      active={activeKey === item.key}
+                      parentOfActive={open}
+                      collapsed={collapsed}
+                    />
+                    {open && item.children?.length ? (
+                      <View
+                        className={
+                          collapsed
+                            ? "mt-1 gap-1"
+                            : "mb-1 ml-6 mt-1 gap-0.5 border-l border-border pl-3"
+                        }
+                      >
+                        {item.children.map((child) => (
+                          <NavRow
+                            key={child.key}
+                            item={child}
+                            active={activeKey === child.key}
+                            collapsed={collapsed}
+                            child
+                          />
+                        ))}
+                      </View>
+                    ) : null}
+                  </View>
+                );
+              })}
             </View>
-          ))}
-        </ScrollView>
+          </View>
+        ))}
+      </ScrollView>
 
-        <AccountRow />
+      <View
+        className={
+          collapsed
+            ? "items-center gap-3 px-3 pb-4 pt-2"
+            : "gap-3 px-4 pb-4 pt-2"
+        }
+      >
+        {compact ? null : (
+          <Pressable
+            accessibilityRole="button"
+            accessibilityLabel={
+              collapsed ? "Mở rộng thanh bên" : "Thu gọn thanh bên"
+            }
+            onPress={toggle}
+            className="flex-row items-center gap-2 rounded-panel px-2 py-1.5"
+          >
+            <View
+              style={
+                collapsed ? { transform: [{ rotate: "180deg" }] } : undefined
+              }
+            >
+              <Icon name="chevron-left" size={18} color={color.muted} />
+            </View>
+            {collapsed ? null : (
+              <Text className="font-semi text-body text-muted">Thu gọn</Text>
+            )}
+          </Pressable>
+        )}
+        <AccountRow collapsed={collapsed} />
       </View>
     </View>
   );
 }
 
-/** Bóng đổ mềm hơn `shadow.card` một chút, vì thẻ này cao gần hết màn hình. */
-const webShadow = {
-  boxShadow: '0 8px 28px rgba(15, 23, 42, 0.07)',
-} as const;
+const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
 
 /**
- * Một biểu tượng trên thanh, kèm thẻ tên hiện khi rê chuột.
+ * Một dòng điều hướng.
  *
- * Thẻ tên đặt tuyệt đối BÊN PHẢI biểu tượng và `pointerEvents="none"`: nó nằm
- * đè lên nội dung, nên nếu ăn được chuột thì con trỏ vừa chạm vào tên là mục
- * bên dưới mất trạng thái rê, thẻ chớp tắt liên tục.
- *
- * Dùng `Pressable` chứ không `View` vì react-native-web chỉ chuyển tiếp
- * `onHoverIn`/`onHoverOut` cho Pressable.
+ * Mục cha của trang đang mở cũng được tô (nhạt hơn), để người đang ở "Thi thử
+ * SAT đầy đủ" vẫn thấy mình đang trong khu SAT Math.
  */
-function RailItem({ item, active }: { item: NavItem; active: boolean }) {
+function NavRow({
+  item,
+  active,
+  parentOfActive = false,
+  collapsed,
+  child = false,
+}: {
+  item: NavItem;
+  active: boolean;
+  parentOfActive?: boolean;
+  collapsed: boolean;
+  child?: boolean;
+}) {
   const [hovered, setHovered] = useState(false);
+  const lit = active || (parentOfActive && !child);
+  const tint = active ? color.primary : lit ? color.primary : color.muted;
+  const bg = active
+    ? "bg-primary-50"
+    : hovered
+      ? "bg-surfaceAlt"
+      : "bg-transparent";
 
   return (
-    <View style={{ position: 'relative' }}>
+    <View style={{ position: "relative" }}>
       <Link href={item.href as never} asChild>
         <Pressable
           accessibilityRole="link"
@@ -98,51 +191,41 @@ function RailItem({ item, active }: { item: NavItem; active: boolean }) {
           onHoverIn={() => setHovered(true)}
           onHoverOut={() => setHovered(false)}
           className={[
-            'w-12 items-center justify-center rounded-panel',
-            active ? 'min-h-[68px] bg-primary-50 py-1' : 'h-12 bg-transparent',
-          ].join(' ')}
+            "flex-row items-center rounded-panel",
+            collapsed
+              ? `justify-center ${child ? "h-10" : "h-12"}`
+              : child
+                ? "gap-2.5 px-3 py-2"
+                : "gap-3 px-3 py-2.5",
+            bg,
+          ].join(" ")}
         >
-          {active ? (
-            <View
-              className="absolute left-0 h-5 w-1 rounded-pill bg-primary-600"
-              style={{ marginLeft: -6 }}
-            />
-          ) : null}
           <Icon
             name={item.icon}
-            size={22}
-            color={active ? color.primary : color.muted}
-            strokeWidth={active ? 2.1 : 1.8}
+            size={child ? 17 : 21}
+            color={tint}
+            strokeWidth={lit ? 2.1 : 1.8}
           />
-          {active ? (
+          {collapsed ? null : (
             <Text
-              numberOfLines={2}
-              className="mt-1 px-0.5 text-center font-semi text-[9px] leading-3"
-              style={{ color: color.primary }}
+              numberOfLines={1}
+              className={`flex-1 ${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
+              style={{ color: lit ? color.primary : color.ink }}
             >
               {item.label}
             </Text>
-          ) : null}
+          )}
         </Pressable>
       </Link>
-      {hovered && !active ? <TooltipCard label={item.label} /> : null}
+      {collapsed && hovered ? <TooltipCard label={item.label} /> : null}
     </View>
   );
 }
 
-/** Bọc một thứ bất kỳ để nó có thẻ tên khi rê chuột. */
-function Tooltip({ label, children }: { label: string; children: React.ReactNode }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <View style={{ position: 'relative' }}>
-      <Pressable onHoverIn={() => setHovered(true)} onHoverOut={() => setHovered(false)}>
-        {children}
-      </Pressable>
-      {hovered ? <TooltipCard label={label} /> : null}
-    </View>
-  );
-}
-
+/**
+ * Thẻ tên khi thanh bên thu gọn. `pointerEvents="none"`: nếu nó ăn chuột thì
+ * con trỏ vừa chạm vào tên là mục bên dưới mất trạng thái rê, thẻ chớp tắt.
+ */
 function TooltipCard({ label }: { label: string }) {
   return (
     <View
@@ -151,11 +234,17 @@ function TooltipCard({ label }: { label: string }) {
       style={{
         marginLeft: 12,
         transform: [{ translateY: -16 }],
-        backgroundColor: '#111827',
-        ...(Platform.OS === 'web' ? ({ boxShadow: '0 8px 20px rgba(15,23,42,0.28)' } as object) : null),
+        backgroundColor: "#111827",
+        ...(Platform.OS === "web"
+          ? ({ boxShadow: "0 8px 20px rgba(15,23,42,0.28)" } as object)
+          : null),
       }}
     >
-      <Text numberOfLines={1} className="font-semi text-label" style={{ color: '#FFFFFF' }}>
+      <Text
+        numberOfLines={1}
+        className="font-semi text-label"
+        style={{ color: "#FFFFFF" }}
+      >
         {label}
       </Text>
     </View>
@@ -163,19 +252,17 @@ function TooltipCard({ label }: { label: string }) {
 }
 
 function planLabel(plan: string): string {
-  return plan === 'free' ? 'Gói Free' : `Gói ${plan.charAt(0).toUpperCase()}${plan.slice(1)}`;
+  return plan === "free"
+    ? "Gói Free"
+    : `Gói ${plan.charAt(0).toUpperCase()}${plan.slice(1)}`;
 }
 
 /**
- * Hàng tài khoản dưới đáy sidebar.
- *
- * Chưa đăng nhập thì đây là lời mời, không phải rào chắn: nói rõ dữ liệu đang
- * nằm trên máy này và đăng nhập để mang đi nơi khác. Đã đăng nhập thì nó dẫn
- * sang Cài đặt, nơi có trạng thái đồng bộ và nút đăng xuất.
+ * Chân thanh bên: chưa đăng nhập thì một nút Đăng nhập rõ ràng; đã đăng nhập
+ * thì avatar + tên, dẫn sang Cài đặt.
  */
-function AccountRow() {
-  const signedIn = useAuthStore((s) => s.status === 'signed_in');
-  const available = useAuthStore((s) => s.available);
+function AccountRow({ collapsed }: { collapsed: boolean }) {
+  const signedIn = useAuthStore((s) => s.status === "signed_in");
   const name = useDisplayName();
   const plan = usePlan();
   // Avatar mua ở Cửa hàng hiện luôn ở đây, để thứ đã đổi điểm có chỗ để thấy.
@@ -187,14 +274,13 @@ function AccountRow() {
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Đăng nhập"
-        onPress={() => router.push('/auth/sign-in' as never)}
-        className="mt-3 items-center rounded-panel border border-dashed border-borderStrong p-2"
+        onPress={() => router.push("/auth/sign-in" as never)}
+        className={`flex-row items-center justify-center gap-2 rounded-panel bg-primary-600 ${collapsed ? "h-11 w-11" : "py-3"}`}
       >
-        <Tooltip label={available ? 'Đăng nhập để giữ tiến độ' : 'Đăng nhập (chưa nối máy chủ)'}>
-          <View className="h-9 w-9 items-center justify-center rounded-pill bg-surfaceAlt">
-            <Icon name="plus" size={17} color={color.muted} />
-          </View>
-        </Tooltip>
+        <Icon name="arrow-right" size={17} color="#FFFFFF" strokeWidth={2.2} />
+        {collapsed ? null : (
+          <Text className="font-strong text-[15px] text-white">Đăng nhập</Text>
+        )}
       </Pressable>
     );
   }
@@ -203,16 +289,27 @@ function AccountRow() {
     <Pressable
       accessibilityRole="button"
       accessibilityLabel="Tài khoản"
-      onPress={() => router.push('/settings' as never)}
-      className="mt-3 items-center rounded-panel border border-border p-2"
+      onPress={() => router.push("/settings" as never)}
+      className={`flex-row items-center gap-3 rounded-panel border border-border ${collapsed ? "p-1.5" : "px-3 py-2"}`}
     >
-      <Tooltip label={`${name} · ${planLabel(plan)}`}>
-        <View className="h-9 w-9 items-center justify-center rounded-pill bg-accent-100">
-          <Text className="font-strong text-body text-accent-700" style={glyph ? { fontSize: 18 } : undefined}>
-            {glyph ?? name.slice(0, 1).toUpperCase()}
+      <View className="h-9 w-9 items-center justify-center rounded-pill bg-accent-100">
+        <Text
+          className="font-strong text-body text-accent-700"
+          style={glyph ? { fontSize: 18 } : undefined}
+        >
+          {glyph ?? name.slice(0, 1).toUpperCase()}
+        </Text>
+      </View>
+      {collapsed ? null : (
+        <View className="min-w-0 flex-1">
+          <Text numberOfLines={1} className="font-strong text-[15px] text-ink">
+            {name}
+          </Text>
+          <Text numberOfLines={1} className="font-sans text-label text-muted">
+            {planLabel(plan)}
           </Text>
         </View>
-      </Tooltip>
+      )}
     </Pressable>
   );
 }

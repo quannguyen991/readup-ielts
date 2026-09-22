@@ -25,6 +25,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/sat-rw\/[^/]+$/,
   /^\/sat-rw\/mix\/[^/]+$/,
   /^\/sat-rw\/set\/[^/]+$/,
+  /^\/sat-rw\/skill\/[^/]+$/,
 
   // Reading: đọc bài, đọc song ngữ, và xem lại phiên.
   /^\/read\/[^/]+$/,

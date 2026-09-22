@@ -1,6 +1,4 @@
 import type { IconName } from '@/components/ui/Icon';
-import { PLANS } from '@/lib/billing/plans';
-import { REWARD_PLAN } from '@/services/referral/rewards';
 
 export type NavItem = {
   key: string;
@@ -11,6 +9,11 @@ export type NavItem = {
   icon: IconName;
   /** Có mặt ở bottom tab trên mobile. Phần còn lại vào tab "More". */
   inBottomTabs?: boolean;
+  /**
+   * Trang con — chỉ hiện dưới mục cha khi người dùng ĐANG Ở trong mục đó.
+   * Xem ghi chú đầu `NAV_GROUPS`.
+   */
+  children?: NavItem[];
 };
 
 export type NavGroup = {
@@ -21,80 +24,94 @@ export type NavGroup = {
 };
 
 /**
- * Điều hướng, GOM THEO KỲ THI rồi mới tới nhóm việc.
+ * Điều hướng: 13 mục chính, trang phụ nằm LỒNG trong mục của nó.
  *
- * Bản trước là 12 mục phẳng xếp thành một cột dài: Dashboard, Practice, Writing,
- * SAT Math, Library, Vocabulary, Progress, Mock Tests, Notes, Bookmarks, Nâng
- * cấp, Settings. Danh sách phẳng dài như vậy buộc mắt phải đọc từng dòng mới
- * tìm được thứ cần, vì không có gì cho biết mục nào gần mục nào.
+ * Bản trước bày phẳng 27 mục — Reading, Thi thử Reading, Kho bài đọc, Đọc
+ * báo song ngữ, Sổ từ, Luyện từ vựng, Từ vựng chủ đề, Ghi chú, Đã lưu… Thanh
+ * bên phải thu về chỉ còn biểu tượng mới nhét vừa màn laptop, và 27 biểu tượng
+ * không tên thì không ai nhớ nổi cái nào là cái nào.
  *
- * Ba nhóm dưới đây trả lời ba câu hỏi khác nhau:
+ * Giờ mỗi mục chính là MỘT VIỆC người học đến làm (luyện Reading, luyện SAT
+ * Math…). Trang phụ của việc đó — thi thử, kho bài, bộ đề — là `children`, chỉ
+ * mở ra dưới mục cha khi đang ở trong mục ấy. Nhờ vậy thanh bên đủ chỗ hiện
+ * đầy đủ tên, mà không trang nào mất lối vào (có test canh ở nav-items.test.ts).
  *
- *   IELTS     — Reading, Writing, thi thử Reading
- *   SAT       — Math, Verbal, bài thi đầy đủ
- *   NGHE & VIẾT CÂU — chép chính tả, dịch câu: dùng chung cho cả hai kỳ thi
- *   THƯ VIỆN  — "tôi tra lại cái đã lưu ở đâu" (bài đọc, từ, ghi chú, đánh dấu)
- *   THEO DÕI  — "tôi đang tiến tới đâu"
+ * VẪN TÁCH IELTS VÀ SAT thành hai nhóm có tiêu đề: gần như không ai luyện cả
+ * hai trong cùng một buổi, và người ôn SAT không nên phải đọc qua mục IELTS.
  *
- * TÁCH IELTS VÀ SAT LÀ CHỦ Ý. Gộp chung thành một khối "Luyện tập" thì người
- * đang ôn SAT phải đọc qua bốn mục IELTS mới tới phần của mình, và ngược lại —
- * mà gần như không ai luyện cả hai trong cùng một buổi.
- *
- * Tổng quan đứng riêng trên đầu vì nó không thuộc nhóm nào — nó là chỗ nhìn
- * thấy cả ba. Nâng cấp và Cài đặt xuống chân, tách khỏi việc học.
- *
- * Tên mục dùng tiếng Việt, TRỪ tên bốn kỹ năng thi (Reading, Writing…) và tên
- * kỳ thi: đó là từ người luyện thi đọc trong mọi tài liệu, dịch ra lại thành xa lạ.
+ * Tên mục dùng tiếng Việt, TRỪ tên kỹ năng thi (Reading, Writing…) và tên kỳ
+ * thi: đó là từ người luyện thi đọc trong mọi tài liệu.
  */
 export const NAV_GROUPS: NavGroup[] = [
   {
     key: 'overview',
     title: null,
     items: [
-      // Trang chủ = trang giới thiệu: hero, bảy thẻ chọn mảng học, ba bước bắt đầu.
-      // Nó là thứ người dùng thấy khi mở app, nên phải có lối quay lại từ thanh bên.
       { key: 'home', label: 'Trang chủ', href: '/intro', icon: 'home', inBottomTabs: true },
-      { key: 'dashboard', label: 'Tổng quan', href: '/dashboard', icon: 'gauge', inBottomTabs: true },
+      { key: 'dashboard', label: 'Hôm nay', href: '/dashboard', icon: 'gauge', inBottomTabs: true },
     ],
   },
   {
     key: 'ielts',
     title: 'IELTS',
     items: [
-      { key: 'reading', label: 'Reading', href: '/practice', icon: 'book', inBottomTabs: true },
+      {
+        key: 'reading',
+        label: 'Reading',
+        href: '/practice',
+        icon: 'book',
+        inBottomTabs: true,
+        children: [
+          { key: 'mock-tests', label: 'Thi thử Reading', href: '/mock-tests', icon: 'clipboard' },
+          { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
+          { key: 'bilingual', label: 'Đọc báo song ngữ', href: '/bilingual', icon: 'languages' },
+        ],
+      },
       { key: 'writing', label: 'Writing', href: '/write', icon: 'pencil', inBottomTabs: true },
-      { key: 'mock-tests', label: 'Thi thử Reading', shortLabel: 'Thi thử', href: '/mock-tests', icon: 'clipboard' },
     ],
   },
   {
     key: 'sat',
     title: 'SAT',
     items: [
-      { key: 'math', label: 'SAT Math', href: '/math', icon: 'grid', inBottomTabs: true },
+      {
+        key: 'math',
+        label: 'SAT Math',
+        href: '/math',
+        icon: 'grid',
+        inBottomTabs: true,
+        children: [{ key: 'sat-full-test', label: 'Thi thử SAT đầy đủ', href: '/sat/full-test', icon: 'clock' }],
+      },
       { key: 'sat-rw', label: 'SAT Verbal', href: '/sat-rw', icon: 'letters' },
-      { key: 'sat-full-test', label: 'Thi thử SAT đầy đủ', href: '/sat/full-test', icon: 'clock' },
     ],
   },
   {
     key: 'skills',
-    title: 'Nghe & viết câu',
+    title: 'Luyện thêm',
     items: [
-      { key: 'sentence', label: 'Luyện câu', href: '/sentence', icon: 'volume' },
-      { key: 'dictation-sets', label: 'Bộ đề chép chính tả', href: '/sentence/sets', icon: 'play' },
-      { key: 'dictation-youtube', label: 'Chép chính tả theo video', href: '/sentence/youtube', icon: 'volume' },
-    ],
-  },
-  {
-    key: 'library',
-    title: 'Thư viện',
-    items: [
-      { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
-      { key: 'bilingual', label: 'Đọc báo song ngữ', href: '/bilingual', icon: 'languages' },
-      { key: 'vocabulary', label: 'Sổ từ', shortLabel: 'Sổ từ', href: '/vocabulary', icon: 'letters', inBottomTabs: true },
-      { key: 'vocab-practice', label: 'Luyện từ vựng', href: '/vocabulary/practice', icon: 'refresh' },
-      { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
-      { key: 'notes', label: 'Ghi chú', href: '/notes', icon: 'note' },
-      { key: 'bookmarks', label: 'Đã lưu', href: '/bookmarks', icon: 'bookmark' },
+      {
+        key: 'sentence',
+        label: 'Nghe & chép',
+        href: '/sentence',
+        icon: 'volume',
+        children: [
+          { key: 'dictation-sets', label: 'Bộ đề chép chính tả', href: '/sentence/sets', icon: 'play' },
+          { key: 'dictation-youtube', label: 'Chép theo video', href: '/sentence/youtube', icon: 'play' },
+        ],
+      },
+      {
+        key: 'vocabulary',
+        label: 'Từ vựng',
+        href: '/vocabulary',
+        icon: 'letters',
+        children: [
+          { key: 'vocab-practice', label: 'Luyện từ vựng', href: '/vocabulary/practice', icon: 'refresh' },
+          { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
+          { key: 'notes', label: 'Ghi chú', href: '/notes', icon: 'note' },
+          { key: 'bookmarks', label: 'Đã lưu', href: '/bookmarks', icon: 'bookmark' },
+        ],
+      },
+      { key: 'quest', label: 'ReadUp Quest', shortLabel: 'Quest', href: '/quest', icon: 'sparkle' },
     ],
   },
   {
@@ -102,35 +119,40 @@ export const NAV_GROUPS: NavGroup[] = [
     title: 'Theo dõi',
     items: [
       { key: 'plan', label: 'Lộ trình 60 tuần', href: '/plan', icon: 'calendar' },
-      { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
-      { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
-      { key: 'shop', label: 'Cửa hàng đổi điểm', href: '/shop', icon: 'gift' },
-      { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
-      /*
-        Đài quan sát nằm ở nhóm THEO DÕI chứ không phải một nhóm riêng: nó trả
-        lời đúng câu hỏi của nhóm này — "đang tiến tới đâu" — nhưng hỏi về CHÍNH
-        BỘ ĐỀ chứ không phải về người học. Đề mà không đo được cái nó tự nhận
-        đang đo thì mọi con số tiến độ bên trên đều rỗng, nên hai thứ thuộc về
-        cùng một chỗ.
-      */
-      { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
-      { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
+      {
+        key: 'progress',
+        label: 'Tiến độ',
+        href: '/progress',
+        icon: 'trending',
+        children: [
+          { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
+          // Đo CHÍNH BỘ ĐỀ chứ không đo người học — nhưng đề không đo được cái nó
+          // tự nhận đang đo thì mọi con số tiến độ bên trên đều rỗng.
+          { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
+          { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
+        ],
+      },
+      {
+        key: 'leaderboard',
+        label: 'Xếp hạng',
+        href: '/leaderboard',
+        icon: 'trophy',
+        children: [{ key: 'shop', label: 'Cửa hàng đổi điểm', href: '/shop', icon: 'gift' }],
+      },
     ],
-  },
-  {
-    key: 'quest',
-    title: 'Game học tập',
-    items: [{ key: 'quest', label: 'ReadUp Quest', shortLabel: 'Quest', href: '/quest', icon: 'sparkle', inBottomTabs: true }],
   },
   {
     key: 'account',
     title: null,
     items: [
-      // Nhãn lấy từ chính luật thưởng: đổi gói thưởng ở `rewards.ts` mà quên sửa
-      // chỗ này thì thanh điều hướng hứa một gói, trang mời trả một gói khác.
-      { key: 'invite', label: `Mời bạn, nhận ${PLANS[REWARD_PLAN].name}`, href: '/invite', icon: 'sparkle' },
-      { key: 'upgrade', label: 'Nâng cấp', href: '/upgrade', icon: 'sparkle' },
-      { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
+      { key: 'invite', label: 'Mời bạn, học miễn phí', href: '/invite', icon: 'sparkle' },
+      {
+        key: 'settings',
+        label: 'Cài đặt',
+        href: '/settings',
+        icon: 'settings',
+        children: [{ key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' }],
+      },
     ],
   },
 ];
@@ -149,7 +171,13 @@ export const ADMIN_GROUP: NavGroup = {
   items: [{ key: 'admin', label: 'Người dùng & gói', href: '/admin', icon: 'lock' }],
 };
 
-export const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((g) => g.items);
+/** Trải phẳng một danh sách mục, kể cả trang con, theo thứ tự hiển thị. */
+export function flattenItems(items: readonly NavItem[]): NavItem[] {
+  return items.flatMap((item) => [item, ...(item.children ?? [])]);
+}
+
+/** Mọi đích đến trong điều hướng, kể cả trang con. */
+export const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((g) => flattenItems(g.items));
 
 export const BOTTOM_TAB_ITEMS = NAV_ITEMS.filter((i) => i.inBottomTabs);
 /** Những mục không nằm trong bottom tab sẽ gom vào tab "More" trên mobile. */
@@ -158,9 +186,10 @@ export const MORE_ITEMS = NAV_ITEMS.filter((i) => !i.inBottomTabs);
 /**
  * Mục đang mở, tính theo đường dẫn dài nhất khớp tiền tố.
  *
- * So bằng `startsWith` đơn thuần là hỏng: `/math` khớp cả `/math` lẫn
- * `/mock-tests`? không, nhưng `/write` khớp cả `/write/sat`, và nếu có hai mục
- * cùng khớp thì cả hai cùng sáng. Lấy mục có href DÀI NHẤT khớp được là đúng.
+ * So bằng `startsWith` đơn thuần là hỏng: `/write` khớp cả `/write/sat`, và nếu
+ * hai mục cùng khớp thì cả hai cùng sáng. Lấy mục có href DÀI NHẤT là đúng.
+ * Trả về khoá của TRANG CON nếu trang con khớp — muốn biết mục cha thì dùng
+ * `parentNavKey`.
  */
 export function activeNavKey(pathname: string): string | null {
   let best: NavItem | null = null;
@@ -170,4 +199,15 @@ export function activeNavKey(pathname: string): string | null {
     }
   }
   return best?.key ?? null;
+}
+
+/** Khoá của mục CHÍNH chứa `key` (chính nó nếu nó đã là mục chính). */
+export function parentNavKey(key: string | null): string | null {
+  if (!key) return null;
+  for (const group of [...NAV_GROUPS, ADMIN_GROUP]) {
+    for (const item of group.items) {
+      if (item.key === key || item.children?.some((c) => c.key === key)) return item.key;
+    }
+  }
+  return null;
 }

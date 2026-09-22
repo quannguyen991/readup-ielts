@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Logo } from './Logo';
 import { Icon } from '@/components/ui/Icon';
-import { ADMIN_GROUP, NAV_GROUPS, activeNavKey } from '@/navigation/nav-items';
+import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems } from '@/navigation/nav-items';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { usePlan } from '@/store/useBillingStore';
 import { color, paper, shadow } from '@/theme/tokens';
@@ -35,7 +35,7 @@ const webBarShadow = { boxShadow: '0 6px 22px rgba(26, 26, 51, 0.10)' } as const
 function isTopLevel(pathname: string): boolean {
   if (pathname === '/' || pathname === '/intro') return true;
   for (const group of [...NAV_GROUPS, ADMIN_GROUP]) {
-    for (const item of group.items) if (item.href === pathname) return true;
+    for (const item of flattenItems(group.items)) if (item.href === pathname) return true;
   }
   return false;
 }
@@ -313,7 +313,7 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
                     </Text>
                   ) : null}
                   <View className="flex-row flex-wrap gap-2">
-                    {group.items.map((item) => {
+                    {flattenItems(group.items).map((item) => {
                       const active = activeKey === item.key;
                       return (
                         <Link key={item.key} href={item.href as never} asChild>
