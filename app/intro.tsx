@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
+import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, type IconName } from '@/components/ui';
@@ -237,7 +238,7 @@ export default function IntroScreen() {
           chữ phải lật từ trắng sang mực, và hai nút bỏ variant "trên nền tối".
           Đổi nền mà giữ chữ trắng thì câu tiêu đề biến mất — đổi thì phải đổi cả cặp.
         */}
-        <View style={{ flexDirection: 'row', borderRadius: 24, overflow: 'hidden' }}>
+        <View style={HERO_FRAME}>
           <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
             <View
               style={{
@@ -305,6 +306,7 @@ export default function IntroScreen() {
               </View>
             </View>
           </GridBackdrop>
+          <LightSweep />
         </View>
       </Appear>
 
