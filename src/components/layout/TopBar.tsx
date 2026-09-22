@@ -224,7 +224,8 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
                   }}
                 >
                   <Icon name="sparkle" size={14} color={paper.ink} strokeWidth={2} />
-                  <Text className="font-heavy uppercase tracking-wide text-paper-ink" style={{ fontSize: 11 }}>
+                  {/* Màn điện thoại chỉ giữ biểu tượng, như nút Khám phá: đủ chữ thì viên này tràn khỏi thanh và bị cắt còn "PREM". */}
+                  <Text className="hidden font-heavy uppercase tracking-wide text-paper-ink sm:flex" style={{ fontSize: 11 }}>
                     Premium
                   </Text>
                 </LinearGradient>

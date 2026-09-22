@@ -1,4 +1,5 @@
 import '../global.css';
+import '@/lib/nativewind-interop';
 
 import React, { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
