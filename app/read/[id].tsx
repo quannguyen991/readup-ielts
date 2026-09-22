@@ -33,6 +33,7 @@ import { useReaderStore } from '@/store/useReaderStore';
 import { rawScoreToBand, useStudyStore, type AttemptRecord } from '@/store/useStudyStore';
 import { useUserArticleStore } from '@/store/useUserArticleStore';
 import { useVocabStore } from '@/store/useVocabStore';
+import { LightGrid } from '@/components/layout/LightGrid';
 import { HoverPressable } from '@/components/ui/HoverPressable';
 import { color, highlightColors, type HighlightColorKey } from '@/theme/tokens';
 
@@ -650,7 +651,7 @@ export default function ReadScreen() {
   );
 
   return (
-    <View className="flex-1" style={{ backgroundColor: EXAM_BG }}>
+    <LightGrid>
       <View className="flex-1 px-3 pt-3 lg:px-6">
         {/* ------------------------------------------------------ thanh phòng thi */}
         <View onLayout={(e) => setToolbarH(e.nativeEvent.layout.height)}>
@@ -825,7 +826,7 @@ export default function ReadScreen() {
       <WordSheet target={sheet} articleId={article.id} articleTitle={article.title} onClose={() => setSheet(null)} />
 
       <ChatPanel articleId={article.id} visible={chatOpen} onClose={() => setChatOpen(false)} />
-    </View>
+    </LightGrid>
   );
 }
 
@@ -880,7 +881,6 @@ function formatTime(totalSeconds: number): string {
 const EXAM_INK = '#1E293B';
 const EXAM_LINE = '#D7DEE8';
 const EXAM_ACCENT = '#2563EB';
-const EXAM_BG = '#EEF2F7';
 
 const PAPER_THEMES = [
   { key: 'white', label: 'trắng', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA' },

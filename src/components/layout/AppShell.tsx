@@ -4,6 +4,7 @@ import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Image } from 'expo-image';
 
+import { CANVAS_LINE, CANVAS_STOPS, GridBackdrop } from './GridBackdrop';
 import { LightGrid } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
@@ -78,7 +79,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <SafeAreaView edges={['top']} className="relative flex-1 bg-canvas">
+    <SafeAreaView
+      edges={['top']}
+      className="relative flex-1"
+      // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
+      // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
+      style={isQuestRoute ? undefined : { backgroundColor: CANVAS_STOPS[1] }}
+    >
       {isQuestRoute ? (
         <View pointerEvents="none" className="absolute inset-0 overflow-hidden bg-[#091126]">
           <Image source={QUEST_WORLD_BACKGROUND} className="absolute inset-0 h-full w-full" contentFit="cover" />
@@ -87,10 +94,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
       ) : null}
       {/*
-        NỀN TRƠN, không còn nền loang xanh tím. Các vệt màu trôi phía sau tranh
-        chú ý với chính thẻ nội dung — trang nào cũng như đang có thứ gì chuyển
-        động ở rìa mắt. Nền xám rất nhạt (`canvas`) để thẻ trắng tự nổi lên.
+        NỀN XANH KẺ CARO cho mọi màn duyệt (xem `CANVAS_STOPS`). Trước đây là
+        mảng xám bạc phẳng: thẻ trắng nằm trên nền gần trắng thì không còn ranh
+        giới nào. Nền loang xanh tím cũ thì ngược lại — các vệt màu trôi liên
+        tục tranh chú ý với nội dung. Ô kẻ đứng yên, chỉ làm nền có bề mặt.
       */}
+      {!isQuestRoute ? (
+        <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+          <GridBackdrop colors={CANVAS_STOPS} line={CANVAS_LINE} />
+        </View>
+      ) : null}
       {/*
         Ẩn/hiện theo breakpoint của NativeWind chứ không đo width bằng JS: bản
         render phía máy chủ không biết màn thật rộng bao nhiêu.

@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { BankHeader, DomainSection, SkillCard } from '@/components/practice/SkillBank';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import {
   FilterChip,
@@ -134,11 +135,24 @@ function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDi
 
   return (
     <View>
-      <View className="mb-5 flex-row flex-wrap justify-end gap-2">
+      <LightHero
+        badge="DIGITAL SAT · MATH"
+        line1="SAT Math"
+        line2="học chắc từng kỹ năng"
+        subtitle={`${CURRICULUM_TOTALS.units} bài học · ${CURRICULUM_TOTALS.sets} bộ đề · ${MATH_BANK_TOTAL} câu. Đề sinh mới mỗi lượt, đáp án tính bằng code.`}
+        footer={
+          <>
+            <HeroStat value={String(mathDone)} label="câu đã làm" />
+            <HeroStat value={String(CURRICULUM_TOTALS.units)} label="bài học" />
+            <HeroStat value="19" label="kỹ năng" />
+          </>
+        }
+      >
         {nextSetId ? (
           <Button
             label={hasDiagnostic ? 'Học tiếp lộ trình' : 'Bắt đầu lộ trình'}
             variant="brand"
+            size="lg"
             iconRight="arrow-right"
             onPress={() => router.push(`/math/set/${nextSetId}` as never)}
           />
@@ -146,11 +160,14 @@ function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDi
         <Button
           label={hasDiagnostic ? 'Chẩn đoán lại' : `Chẩn đoán ${DIAGNOSTIC_LENGTH} câu`}
           variant="outline"
+          size="lg"
           onPress={() => router.push('/math/diagnostic' as never)}
         />
-        <Button label="Thi thử" variant="outline" onPress={() => router.push('/math/mock' as never)} />
-        <Button label="Từ vựng toán" variant="outline" iconLeft="letters" onPress={() => router.push('/math/vocab' as never)} />
-      </View>
+        <Button label="Thi thử" variant="outline" size="lg" onPress={() => router.push('/math/mock' as never)} />
+        <Button label="Từ vựng toán" variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/math/vocab' as never)} />
+      </LightHero>
+
+      <View className="mt-5" />
       <BankHeader
         current={{
           eyebrow: 'Math',

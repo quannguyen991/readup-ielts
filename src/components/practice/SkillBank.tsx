@@ -25,6 +25,8 @@ const GREEN = '#16A34A';
 const RED = '#E11D48';
 const LINE = '#E6EAF2';
 const SOFT = '#F7F9FC';
+/** Chữ phụ đặt trên nền xanh của app (ngoài thẻ trắng). */
+const ON_CANVAS = '#1E293B';
 
 const cardShadow =
   Platform.OS === 'web'
@@ -148,9 +150,13 @@ export function DomainSection({
         </View>
         <View className="min-w-0 flex-1">
           <Text className="font-strong text-[21px] leading-7 text-ink">{title}</Text>
-          <Text className="font-sans text-body text-muted">{subtitle}</Text>
+          {/* Chữ ở đây nằm TRỰC TIẾP trên nền xanh của app, không trong thẻ
+              trắng: `text-muted` trên nền ấy chỉ còn tỉ lệ tương phản 2,1. */}
+          <Text className="font-sans text-body" style={{ color: ON_CANVAS }}>
+            {subtitle}
+          </Text>
         </View>
-        <Text className="font-sans text-body text-muted">
+        <Text className="font-sans text-body" style={{ color: ON_CANVAS }}>
           <Text className="font-strong text-ink">{done}</Text> / {total}
         </Text>
       </Pressable>

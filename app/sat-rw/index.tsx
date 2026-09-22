@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { BankHeader, DomainSection, SkillCard } from '@/components/practice/SkillBank';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { CrossFade } from '@/components/motion/Motion';
 import {
   SAT_RW_STAGES,
@@ -16,7 +17,7 @@ import {
 } from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon, IconCircle } from '@/components/ui';
-import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
+import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS, SAT_RW_UNITS } from '@/data/sat-rw-repository';
 import { MATH_BANK_TOTAL, mathBankDone } from '@/services/math/bank';
 import { summarizeRwBySkill } from '@/services/sat-rw/progress';
 import { useMathSkillStats } from '@/store/useMathStore';
@@ -68,16 +69,30 @@ export default function SatRwHubScreen() {
 
   return (
     <Screen>
-      <View className="mb-5 flex-row flex-wrap justify-end gap-2">
+      <LightHero
+        badge="DIGITAL SAT · READING & WRITING"
+        line1="SAT Verbal"
+        line2="luyện đúng luật đề"
+        subtitle={`${SAT_RW_QUESTIONS.length} câu phủ đủ bốn mảng của đề Digital SAT, xếp thành ${SAT_RW_UNITS.length} unit theo từng luật một. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.`}
+        footer={
+          <>
+            <HeroStat value={String(Object.keys(attempts).length)} label="câu đã làm" />
+            <HeroStat value={String(SAT_RW_UNITS.length)} label="unit" />
+            <HeroStat value={String(SAT_RW_DOMAINS.length)} label="mảng đề" />
+          </>
+        }
+      >
         <Button
           label="Làm đề trộn"
           variant="brand"
+          size="lg"
           iconRight="arrow-right"
           onPress={() => router.push(`/sat-rw/mix/${SAT_RW_MIXED_SETS[0]!.id}` as never)}
         />
-        <Button label="Bắt đầu unit 1" variant="outline" onPress={() => router.push('/sat-rw/1' as never)} />
-      </View>
+        <Button label="Bắt đầu unit 1" variant="outline" size="lg" onPress={() => router.push('/sat-rw/1' as never)} />
+      </LightHero>
 
+      <View className="mt-5" />
       <BankHeader
         current={{
           eyebrow: 'Verbal',
