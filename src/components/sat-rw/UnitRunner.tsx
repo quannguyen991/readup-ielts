@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
@@ -7,6 +7,7 @@ import { TaskShell } from '@/components/layout/TaskShell';
 import { Badge, Button, Icon, PaperCard } from '@/components/ui';
 import { SAT_RW_SKILL_LABEL, type SatRwQuestion } from '@/data/sat-rw-repository';
 import { useStudyStore } from '@/store/useStudyStore';
+import { recordRwAttempt } from '@/store/useSatRwStore';
 import { paper } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
 
@@ -65,6 +66,11 @@ export function UnitRunner({
   const [showRule, setShowRule] = useState(false);
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
+  // Mốc bắt đầu nghĩ câu hiện tại — để trang Verbal biết thời gian theo kỹ năng.
+  const shownAt = useRef(0);
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [index]);
 
   const question = questions[index];
   if (!question) return null;
@@ -80,6 +86,7 @@ export function UnitRunner({
       return next;
     });
     if (choice === question.answerIndex) setCorrect((n) => n + 1);
+    recordRwAttempt(question.id, choice === question.answerIndex, Date.now() - shownAt.current);
   };
 
   const next = () => {

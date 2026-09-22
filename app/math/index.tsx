@@ -3,7 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { BankHeader, DomainSection, SkillCard } from '@/components/practice/SkillBank';
 import { Screen } from '@/components/layout/Screen';
 import {
   FilterChip,
@@ -15,8 +15,10 @@ import { MATH_DOMAIN_STYLE, MATH_SET_KIND_STYLE, type MathSetKind } from '@/lib/
 import {
   MATH_DOMAIN_LABEL,
   MATH_ERROR_LABEL,
+  MATH_SKILL_DOMAIN,
   MATH_SKILL_LABEL,
   type MathDomain,
+  type MathSkill,
 } from '@/lib/math/types';
 import {
   ALL_SETS,
@@ -43,6 +45,9 @@ import {
   useMathTotals,
 } from '@/store/useMathStore';
 import { color } from '@/theme/tokens';
+import { SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
+import { BANK_PER_SKILL, MATH_BANK_TOTAL, MATH_SKILLS, answeredInBank, mathBankDone } from '@/services/math/bank';
+import { useSatRwStore } from '@/store/useSatRwStore';
 import { CrossFade } from '@/components/motion/Motion';
 
 /**
@@ -58,10 +63,10 @@ import { CrossFade } from '@/components/motion/Motion';
  * Nó liệt kê đủ mọi thứ luyện được, nhưng không trả lời được câu hỏi duy nhất
  * người mới cần trả lời — bắt đầu từ đâu.
  */
-type Tab = 'path' | 'library' | 'stats';
+type Tab = 'skills' | 'path' | 'library' | 'stats';
 
 export default function MathScreen() {
-  const [tab, setTab] = useState<Tab>('path');
+  const [tab, setTab] = useState<Tab>('skills');
 
   const progressBySet = useMathSetProgress();
   const diagnostic = useLatestDiagnostic();
@@ -74,20 +79,16 @@ export default function MathScreen() {
 
   return (
     <Screen>
-      <MathHero
-        doneCount={doneSetIds.size}
-        nextSetId={nextSet?.id ?? null}
-        nextSetTitle={nextSet ? nextSetLabel(nextSet.id) : null}
-        hasDiagnostic={!!diagnostic}
-      />
+      <MathTop nextSetId={nextSet?.id ?? null} hasDiagnostic={!!diagnostic} />
 
       <PlanNudge />
 
       <View className="mt-4 flex-row flex-wrap gap-2">
+        <TabButton label="Kỹ năng" icon="grid" active={tab === 'skills'} onPress={() => setTab('skills')} />
         <TabButton label="Lộ trình" icon="list" active={tab === 'path'} onPress={() => setTab('path')} />
         <TabButton
-          label={`Thư viện · ${CURRICULUM_TOTALS.sets} bộ đề`}
-          icon="grid"
+          label={`Bộ đề · ${CURRICULUM_TOTALS.sets}`}
+          icon="clipboard"
           active={tab === 'library'}
           onPress={() => setTab('library')}
         />
@@ -100,6 +101,7 @@ export default function MathScreen() {
       </View>
 
       <CrossFade swapKey={tab}>
+        {tab === 'skills' ? <SkillsView /> : null}
         {tab === 'path' ? (
           <PathView progressBySet={progressBySet} nextSetId={nextSet?.id ?? null} />
         ) : null}
@@ -120,73 +122,119 @@ function nextSetLabel(setId: string): string {
   return `${unit?.title ?? stage?.title ?? ''} · ${set.title}`;
 }
 
-// ------------------------------------------------------------------ banner
+/**
+ * Đầu trang: hàng lối tắt (học tiếp, chẩn đoán, thi thử, từ vựng) rồi hai thẻ
+ * ngân hàng Math / Verbal. Thay cho khối hero lớn trước đây — khối đó chiếm cả
+ * màn đầu để nói lại những con số mà thẻ ngân hàng nói gọn trong một dòng.
+ */
+function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDiagnostic: boolean }) {
+  const skillStats = useMathSkillStats();
+  const rwAttempts = useSatRwStore((s) => s.attempts);
+  const mathDone = mathBankDone(skillStats);
 
-function MathHero({
-  doneCount,
-  nextSetId,
-  nextSetTitle,
-  hasDiagnostic,
-}: {
-  doneCount: number;
-  nextSetId: string | null;
-  nextSetTitle: string | null;
-  hasDiagnostic: boolean;
-}) {
   return (
-    <LightHero
-      badge="SAT MATH · 19 KỸ NĂNG"
-      line1="SAT Math"
-      line2="học chắc từng kỹ năng"
-      subtitle={`${CURRICULUM_TOTALS.units} bài học · ${CURRICULUM_TOTALS.sets} bộ đề · ${CURRICULUM_TOTALS.questions} câu. Đề sinh mới mỗi lượt, đáp án tính bằng code nên không cần API key.`}
-      footer={
-        <>
-          <HeroStat value={`${doneCount}/${CURRICULUM_TOTALS.sets}`} label="bộ đề hoàn thành" />
-          <HeroStat value={String(CURRICULUM_TOTALS.units)} label="bài học" />
-          <HeroStat value={String(CURRICULUM_TOTALS.questions)} label="câu hỏi" />
-        </>
-      }
-    >
-      {nextSetId ? (
+    <View>
+      <View className="mb-5 flex-row flex-wrap justify-end gap-2">
+        {nextSetId ? (
+          <Button
+            label={hasDiagnostic ? 'Học tiếp lộ trình' : 'Bắt đầu lộ trình'}
+            variant="brand"
+            iconRight="arrow-right"
+            onPress={() => router.push(`/math/set/${nextSetId}` as never)}
+          />
+        ) : null}
         <Button
-          label={hasDiagnostic ? 'Học tiếp' : 'Bắt đầu học'}
-          variant="brand"
-          size="lg"
-          iconRight="arrow-right"
-          onPress={() => router.push(`/math/set/${nextSetId}` as never)}
+          label={hasDiagnostic ? 'Chẩn đoán lại' : `Chẩn đoán ${DIAGNOSTIC_LENGTH} câu`}
+          variant="outline"
+          onPress={() => router.push('/math/diagnostic' as never)}
         />
-      ) : (
-        <Button
-          label="Đã xong lộ trình — thi thử"
-          variant="brand"
-          size="lg"
-          iconRight="trophy"
-          onPress={() => router.push('/math/mock' as never)}
-        />
-      )}
-      <Button
-        label={hasDiagnostic ? 'Chẩn đoán lại' : `Chẩn đoán ${DIAGNOSTIC_LENGTH} câu`}
-        variant="outline"
-        size="lg"
-        onPress={() => router.push('/math/diagnostic' as never)}
+        <Button label="Thi thử" variant="outline" onPress={() => router.push('/math/mock' as never)} />
+        <Button label="Từ vựng toán" variant="outline" iconLeft="letters" onPress={() => router.push('/math/vocab' as never)} />
+      </View>
+      <BankHeader
+        current={{
+          eyebrow: 'Math',
+          title: 'Ngân hàng SAT Math',
+          blurb: '19 kỹ năng của đề Digital SAT. Đề sinh mới mỗi lượt, đáp án tính bằng code.',
+          done: mathDone,
+          total: MATH_BANK_TOTAL,
+          icon: 'grid',
+        }}
+        other={{
+          eyebrow: 'Verbal',
+          title: 'Ngân hàng SAT Verbal',
+          blurb: 'Reading & Writing, bốn mảng đề.',
+          done: Object.keys(rwAttempts).length,
+          total: SAT_RW_QUESTIONS.length,
+          icon: 'letters',
+          href: '/sat-rw',
+        }}
       />
-      <Button
-        label="Thi thử"
-        variant="outline"
-        size="lg"
-        onPress={() => router.push('/math/mock' as never)}
-      />
-      <Button
-        label="Từ vựng"
-        variant="outline"
-        size="lg"
-        iconLeft="letters"
-        onPress={() => router.push('/math/vocab' as never)}
-      />
-      {nextSetTitle ? (
-        <Text className="basis-full font-mid text-label text-paper-muted">Bài kế tiếp: {nextSetTitle}</Text>
-      ) : null}
-    </LightHero>
+    </View>
+  );
+}
+
+// ------------------------------------------------------------------ kỹ năng
+
+const SKILLS = MATH_SKILLS;
+
+/** Tên bài học tiếng Việt của mỗi kỹ năng — dòng phụ dưới tên College Board. */
+const SKILL_UNIT_TITLE = Object.fromEntries(
+  // Chỉ bài học của RIÊNG một kỹ năng: bài tổng hợp chứa cả 19 kỹ năng, lấy nó thì thẻ nào cũng ghi "Đề khó thật".
+  MATH_CURRICULUM.flatMap((stage) => stage.units)
+    .filter((u) => u.skills.length === 1)
+    .map((u) => [u.skills[0], u.title]),
+) as Partial<Record<MathSkill, string>>;
+
+/**
+ * Tỉ trọng mỗi mảng trong đề Digital SAT Math — số của College Board. Không
+ * chia tiếp xuống từng kỹ năng: College Board không công bố con số đó, và bịa
+ * ra một tỉ lệ trông chính xác còn tệ hơn không ghi gì.
+ */
+const DOMAIN_WEIGHT: Record<MathDomain, string> = {
+  algebra: '~35% đề SAT Math',
+  advanced_math: '~35% đề SAT Math',
+  problem_solving_data: '~15% đề SAT Math',
+  geometry_trig: '~15% đề SAT Math',
+};
+
+/**
+ * Tab mặc định: mỗi mảng một khối, mỗi kỹ năng một thẻ. "Đã làm" là số lượt
+ * làm, chặn trần ở cỡ kho — đề Math sinh mới mỗi lượt nên không có "câu đã
+ * gặp" để đếm như bên Verbal.
+ */
+function SkillsView() {
+  const stats = useMathSkillStats();
+  return (
+    <View className="mt-2">
+      {DOMAINS.map((domain) => {
+        const skills = SKILLS.filter((k) => MATH_SKILL_DOMAIN[k] === domain);
+        const done = skills.reduce((sum, k) => sum + answeredInBank(k, stats[k]), 0);
+        const total = skills.reduce((sum, k) => sum + BANK_PER_SKILL[k], 0);
+        return (
+          <DomainSection key={domain} title={MATH_DOMAIN_LABEL[domain]} subtitle={DOMAIN_WEIGHT[domain]} done={done} total={total}>
+            {skills.map((k) => {
+              const st = stats[k];
+              return (
+                <SkillCard
+                  key={k}
+                  title={MATH_SKILL_LABEL[k]}
+                  subtitle={SKILL_UNIT_TITLE[k] ?? ''}
+                  bank={BANK_PER_SKILL[k]}
+                  answered={answeredInBank(k, st)}
+                  correct={st.correct}
+                  wrong={st.total - st.correct}
+                  accuracy={st.accuracy}
+                  totalMs={(st.avgTimeMs ?? 0) * st.total}
+                  href={`/math/drill/${k}`}
+                  icon="grid"
+                />
+              );
+            })}
+          </DomainSection>
+        );
+      })}
+    </View>
   );
 }
 
@@ -197,7 +245,7 @@ function TabButton({
   onPress,
 }: {
   label: string;
-  icon: 'list' | 'grid' | 'trending';
+  icon: 'list' | 'grid' | 'trending' | 'clipboard';
   active: boolean;
   onPress: () => void;
 }) {

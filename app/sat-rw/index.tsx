@@ -1,9 +1,10 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { BankHeader, DomainSection, SkillCard } from '@/components/practice/SkillBank';
+import { CrossFade } from '@/components/motion/Motion';
 import {
   SAT_RW_STAGES,
   type SatRwCurriculumUnit,
@@ -15,123 +16,188 @@ import {
 } from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon, IconCircle } from '@/components/ui';
-import { satRwStats } from '@/data/sat-rw-repository';
+import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
+import { MATH_BANK_TOTAL, mathBankDone } from '@/services/math/bank';
+import { summarizeRwBySkill } from '@/services/sat-rw/progress';
+import { useMathSkillStats } from '@/store/useMathStore';
+import { useSatRwStore } from '@/store/useSatRwStore';
 import { color } from '@/theme/tokens';
 
 /**
- * Hub SAT Reading & Writing.
+ * Tên College Board (to) và tên tiếng Việt (dòng phụ) của 12 kỹ năng trong kho.
+ * Tên tiếng Anh là tên người học gặp trong mọi tài liệu SAT; tên tiếng Việt để
+ * nhìn là hiểu kỹ năng đó hỏi gì.
+ */
+const SKILL_NAME: Record<string, { en: string; vi: string }> = {
+  boundaries: { en: 'Boundaries', vi: 'Ranh giới câu, dấu câu' },
+  form: { en: 'Form, Structure & Sense', vi: 'Dạng từ và hoà hợp' },
+  pronoun: { en: 'Pronouns', vi: 'Đại từ' },
+  tense: { en: 'Verb Tense', vi: 'Thì động từ' },
+  possessive: { en: 'Possessives', vi: 'Sở hữu cách' },
+  transition: { en: 'Transitions', vi: 'Từ nối' },
+  words: { en: 'Words in Context', vi: 'Nghĩa từ trong ngữ cảnh' },
+  structure: { en: 'Text Structure & Purpose', vi: 'Cấu trúc và mục đích' },
+  crosstext: { en: 'Cross-Text Connections', vi: 'Liên hệ hai văn bản' },
+  central: { en: 'Central Ideas & Details', vi: 'Ý chính và chi tiết' },
+  evidence: { en: 'Command of Evidence', vi: 'Dùng bằng chứng' },
+  inference: { en: 'Inferences', vi: 'Suy luận' },
+};
+
+/** Kỹ năng → mảng đề, suy từ chính kho câu hỏi. */
+const SKILL_DOMAIN: Record<string, string> = Object.fromEntries(SAT_RW_QUESTIONS.map((q) => [q.skill, q.domain]));
+const SKILLS_IN_ORDER = Object.keys(SKILL_NAME).filter((k) => SKILL_DOMAIN[k]);
+
+type Tab = 'skills' | 'mix' | 'units';
+
+/**
+ * Hub SAT Reading & Writing — cùng bố cục với trang SAT Math.
  *
- * Xếp theo BỐN MẢNG của đề thật chứ không phải một danh sách 16 unit phẳng:
- * người luyện SAT tra tài liệu theo tên mảng, và tỷ trọng của mảng là thứ quyết
- * định nên dồn sức vào đâu. Danh sách phẳng giấu mất cả hai thông tin đó.
+ * Mặc định là tab KỸ NĂNG: bốn mảng của đề thật, mỗi kỹ năng một thẻ kèm độ
+ * chính xác và số câu đã làm. Đề trộn và lộ trình theo unit vẫn còn nguyên, ở
+ * hai tab bên cạnh.
  *
  * Tỷ trọng ghi trên mỗi mảng là tỷ trọng CỦA ĐỀ THẬT, không phải tỷ lệ câu
- * trong kho này — hai con số khác nhau và nói hai chuyện khác nhau, nên số câu
- * của kho ghi riêng bên cạnh.
+ * trong kho này — hai con số khác nhau và nói hai chuyện khác nhau.
  */
 export default function SatRwHubScreen() {
-  const stats = useMemo(() => satRwStats(), []);
+  const [tab, setTab] = useState<Tab>('skills');
+  const attempts = useSatRwStore((s) => s.attempts);
+  const progress = useMemo(() => summarizeRwBySkill(SAT_RW_QUESTIONS, attempts), [attempts]);
+  const mathStats = useMathSkillStats();
   const mixStats = useMemo(() => mixedSetStats(), []);
 
   return (
     <Screen>
-      <LightHero
-        badge="DIGITAL SAT · READING & WRITING"
-        line1="SAT Verbal"
-        line2="luyện đúng luật đề"
-        subtitle={`${stats.questions} câu phủ đủ bốn mảng của đề Digital SAT, xếp thành ${stats.units} unit theo từng luật một. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.`}
-        footer={
-          <>
-            <HeroStat value={String(stats.questions)} label="câu hỏi" />
-            <HeroStat value={String(stats.units)} label="unit" />
-            <HeroStat value={String(stats.domains)} label="mảng đề" />
-            <HeroStat value={String(stats.skills)} label="kỹ năng" />
-          </>
-        }
-      >
+      <View className="mb-5 flex-row flex-wrap justify-end gap-2">
         <Button
-          label="Đề trộn"
+          label="Làm đề trộn"
           variant="brand"
-          size="lg"
           iconRight="arrow-right"
           onPress={() => router.push(`/sat-rw/mix/${SAT_RW_MIXED_SETS[0]!.id}` as never)}
         />
-        <Button
-          label="Bắt đầu unit 1"
-          variant="outline"
-          size="lg"
-          onPress={() => router.push('/sat-rw/1' as never)}
-        />
-      </LightHero>
-
-      {/*
-        Đề trộn đặt TRƯỚC danh sách unit.
-
-        Unit là chỗ học từng luật một, và nó phải có. Nhưng làm hết một unit thì
-        tới câu thứ năm là đoán được đáp án mà không cần đọc — vì đã biết trước
-        câu này hỏi luật gì. Đề trộn mới là thứ giống lúc thi, nên nó là lối vào
-        mặc định; ai muốn học lại một luật cụ thể thì cuộn xuống.
-      */}
-      <View className="mt-6">
-        <View className="flex-row flex-wrap items-end justify-between gap-2">
-          <View className="min-w-0 flex-1">
-            <Text className="font-strong text-cardTitle text-ink">Đề trộn</Text>
-            <Text className="mt-1 max-w-[620px] font-sans text-body text-muted">
-              {mixStats.sets} đề, mỗi đề {QUESTIONS_PER_SET} câu lấy từ cả bốn mảng và xếp xen kẽ —
-              bạn phải tự nhận ra câu đang hỏi luật gì, giống lúc thi thật.
-            </Text>
-          </View>
-        </View>
-
-        <View className="mt-3">
-          <Grid columns={5} tabletColumns={4} mobileColumns={3} gap={10}>
-            {SAT_RW_MIXED_SETS.map((set) => (
-              <Pressable
-                key={set.id}
-                accessibilityRole="link"
-                onPress={() => router.push(`/sat-rw/mix/${set.id}` as never)}
-                className="items-center rounded-panel border border-border bg-surface px-2 py-3"
-                style={({ pressed }) => (pressed ? { opacity: 0.9 } : undefined)}
-              >
-                <Text className="font-heavy text-cardTitle text-ink">{set.order}</Text>
-                <Text className="mt-0.5 font-mid text-label text-muted">
-                  {set.questions.length} câu
-                </Text>
-              </Pressable>
-            ))}
-          </Grid>
-        </View>
+        <Button label="Bắt đầu unit 1" variant="outline" onPress={() => router.push('/sat-rw/1' as never)} />
       </View>
 
-      {/*
-        BỐN CHẶNG THEO THỨ TỰ NÊN HỌC, không phải bốn domain xếp cạnh nhau.
+      <BankHeader
+        current={{
+          eyebrow: 'Verbal',
+          title: 'Ngân hàng SAT Verbal',
+          blurb: 'Reading & Writing của đề Digital SAT. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.',
+          done: Object.keys(attempts).length,
+          total: SAT_RW_QUESTIONS.length,
+          icon: 'letters',
+        }}
+        other={{
+          eyebrow: 'Math',
+          title: 'Ngân hàng SAT Math',
+          blurb: '19 kỹ năng, đề sinh mới mỗi lượt.',
+          done: mathBankDone(mathStats),
+          total: MATH_BANK_TOTAL,
+          icon: 'grid',
+          href: '/math',
+        }}
+      />
 
-        Bản trước liệt kê bốn domain, mỗi domain một lưới unit — đúng về phân loại
-        nhưng không trả lời câu hỏi người học thực sự hỏi khi mở trang: "bắt đầu từ
-        đâu". Mười sáu ô ngang hàng nhau thì ai cũng bấm vào ô đầu tiên, mà ô đầu tiên
-        tuỳ thứ tự domain chứ không tuỳ độ khó.
-      */}
-      {SAT_RW_STAGES.map((stage, stageIndex) => (
-        <View key={stage.id} className="mt-8">
-          <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-heavy text-sectionTitle text-ink">{stage.title}</Text>
-            <Badge label={`${stage.units.length} bài`} tone="primary" />
+      <View className="mt-6 flex-row flex-wrap gap-2">
+        <TabPill label="Kỹ năng" active={tab === 'skills'} onPress={() => setTab('skills')} />
+        <TabPill label={`Đề trộn · ${mixStats.sets}`} active={tab === 'mix'} onPress={() => setTab('mix')} />
+        <TabPill label="Học theo unit" active={tab === 'units'} onPress={() => setTab('units')} />
+      </View>
+
+      <CrossFade swapKey={tab}>
+        {tab === 'skills' ? (
+          <View>
+            {SAT_RW_DOMAINS.map((d) => {
+              const skills = SKILLS_IN_ORDER.filter((k) => SKILL_DOMAIN[k] === d.key);
+              const done = skills.reduce((sum, k) => sum + (progress[k]?.answered ?? 0), 0);
+              const total = skills.reduce((sum, k) => sum + (progress[k]?.bank ?? 0), 0);
+              return (
+                <DomainSection key={d.key} title={d.key} subtitle={`${d.percent} đề SAT Verbal · ${d.labelVi}`} done={done} total={total}>
+                  {skills.map((k) => {
+                    const p = progress[k]!;
+                    return (
+                      <SkillCard
+                        key={k}
+                        title={SKILL_NAME[k]!.en}
+                        subtitle={SKILL_NAME[k]!.vi}
+                        bank={p.bank}
+                        answered={p.answered}
+                        correct={p.correct}
+                        wrong={p.wrong}
+                        accuracy={p.accuracy}
+                        totalMs={p.totalMs}
+                        href={`/sat-rw/skill/${k}`}
+                        icon="letters"
+                      />
+                    );
+                  })}
+                </DomainSection>
+              );
+            })}
           </View>
-          <Text
-            className="mt-1 max-w-[760px] font-sans text-body text-muted"
-            style={{ lineHeight: 22 }}
-          >
-            {stage.blurb}
-          </Text>
+        ) : null}
 
-          <View className="mt-3 gap-3">
-            {stage.units.map((unit) => (
-              <CurriculumUnitCard key={unit.number} unit={unit} stageIndex={stageIndex} />
+        {tab === 'mix' ? (
+          <View className="mt-6">
+            {/*
+              Unit là chỗ học từng luật một. Nhưng làm hết một unit thì tới câu
+              thứ năm là đoán được đáp án mà không cần đọc — vì đã biết trước câu
+              này hỏi luật gì. Đề trộn mới giống lúc thi.
+            */}
+            <Text className="max-w-[640px] font-sans text-body text-muted">
+              Mỗi đề {QUESTIONS_PER_SET} câu lấy từ cả bốn mảng, xếp xen kẽ — bạn phải tự nhận ra câu đang hỏi luật gì, giống lúc thi thật.
+            </Text>
+            <View className="mt-4">
+              <Grid columns={6} tabletColumns={4} mobileColumns={3} gap={12}>
+                {SAT_RW_MIXED_SETS.map((set) => (
+                  <Pressable
+                    key={set.id}
+                    accessibilityRole="link"
+                    onPress={() => router.push(`/sat-rw/mix/${set.id}` as never)}
+                    className="items-center rounded-card border border-border bg-surface px-2 py-4"
+                  >
+                    <Text className="font-heavy text-sectionTitle text-ink">{set.order}</Text>
+                    <Text className="mt-0.5 font-semi text-label text-muted">{set.questions.length} câu</Text>
+                  </Pressable>
+                ))}
+              </Grid>
+            </View>
+          </View>
+        ) : null}
+
+        {tab === 'units' ? (
+          <View>
+            {SAT_RW_STAGES.map((stage, stageIndex) => (
+              <View key={stage.id} className="mt-8">
+                <View className="flex-row flex-wrap items-center gap-2">
+                  <Text className="font-heavy text-sectionTitle text-ink">{stage.title}</Text>
+                  <Badge label={`${stage.units.length} bài`} tone="primary" />
+                </View>
+                <Text className="mt-1 max-w-[760px] font-sans text-body text-muted">{stage.blurb}</Text>
+                <View className="mt-3 gap-3">
+                  {stage.units.map((unit) => (
+                    <CurriculumUnitCard key={unit.number} unit={unit} stageIndex={stageIndex} />
+                  ))}
+                </View>
+              </View>
             ))}
           </View>
-        </View>
-      ))}
+        ) : null}
+      </CrossFade>
     </Screen>
+  );
+}
+
+function TabPill({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected: active }}
+      onPress={onPress}
+      className={['rounded-pill border px-5 py-2.5', active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface'].join(' ')}
+    >
+      <Text className={active ? 'font-strong text-body text-white' : 'font-semi text-body text-muted'}>{label}</Text>
+    </Pressable>
   );
 }
 

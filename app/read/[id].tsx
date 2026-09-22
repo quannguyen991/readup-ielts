@@ -14,7 +14,6 @@ import type { EvidenceMark } from '@/services/proofloop/types';
 import { readingSkillFor } from '@/services/mastery/reading-skill';
 import { observeSkill } from '@/store/useMasteryStore';
 import { useBilingual } from '@/components/reader/useBilingual';
-import { OliveGrid } from '@/components/layout/OliveGrid';
 import { CrossFade } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon } from '@/components/ui';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
@@ -518,7 +517,7 @@ export default function ReadScreen() {
               onPress={() => setHighlightColor(key)}
               accessibilityLabel={`Bút ${highlightColors[key].label}`}
               className="h-6 w-6 items-center justify-center rounded-pill"
-              style={{ borderWidth: 2, borderColor: highlightColor === key ? EXAM_INK : 'transparent' }}
+              style={{ borderWidth: 2, borderColor: highlightColor === key ? EXAM_ACCENT : 'transparent' }}
             >
               <View className="h-4 w-4 rounded-pill" style={{ backgroundColor: highlightColors[key].dot }} />
             </Pressable>
@@ -600,10 +599,10 @@ export default function ReadScreen() {
   const questionsPane = (
     <ExamSheet bg={theme.bg}>
       <ScrollView contentContainerStyle={{ padding: pad, paddingBottom: 72 }}>
-        <View style={{ borderWidth: 2, borderColor: EXAM_INK, borderRadius: 18, padding: wide ? 22 : 14, backgroundColor: '#FFFFFF' }}>
+        <View style={{ borderWidth: 1, borderColor: EXAM_LINE, borderRadius: 18, padding: wide ? 22 : 14, backgroundColor: '#FFFFFF' }}>
           {loadingQuestions && questions.length === 0 ? (
             <View className="items-center py-10">
-              <ActivityIndicator color={EXAM_INK} />
+              <ActivityIndicator color={EXAM_ACCENT} />
               <Text className="mt-2 font-sans text-body text-muted">Đang chuẩn bị bộ đề…</Text>
             </View>
           ) : (
@@ -651,7 +650,7 @@ export default function ReadScreen() {
   );
 
   return (
-    <OliveGrid>
+    <View className="flex-1" style={{ backgroundColor: EXAM_BG }}>
       <View className="flex-1 px-3 pt-3 lg:px-6">
         {/* ------------------------------------------------------ thanh phòng thi */}
         <View onLayout={(e) => setToolbarH(e.nativeEvent.layout.height)}>
@@ -661,14 +660,14 @@ export default function ReadScreen() {
               accessibilityRole="button"
               accessibilityLabel="Quay lại"
               className="h-9 w-9 items-center justify-center rounded-md"
-              style={{ borderWidth: 2, borderColor: EXAM_INK }}
+              style={{ borderWidth: 1, borderColor: EXAM_LINE }}
             >
               <View style={{ transform: [{ rotate: '180deg' }] }}>
                 <Icon name="arrow-right" size={16} color={EXAM_INK} strokeWidth={2.4} />
               </View>
             </Pressable>
 
-            <View className="rounded-md px-2.5 py-1.5" style={{ backgroundColor: EXAM_INK }}>
+            <View className="rounded-md px-2.5 py-1.5" style={{ backgroundColor: EXAM_ACCENT }}>
               <Text style={{ fontSize: 12, fontWeight: '800', color: '#FFFFFF' }}>{article.exam === 'sat' ? 'SAT' : 'READING'}</Text>
             </View>
 
@@ -681,7 +680,7 @@ export default function ReadScreen() {
                     <View
                       key={q.id}
                       className="h-6 min-w-6 items-center justify-center rounded-pill px-1"
-                      style={{ borderWidth: 1.5, borderColor: EXAM_INK, backgroundColor: done ? EXAM_INK : '#FFFFFF' }}
+                      style={{ borderWidth: 1, backgroundColor: done ? EXAM_ACCENT : '#FFFFFF', borderColor: done ? EXAM_ACCENT : EXAM_LINE }}
                     >
                       <Text style={{ fontSize: 10.5, fontWeight: '700', color: done ? '#FFFFFF' : EXAM_INK }}>{i + 1}</Text>
                       {marked[q.id] ? (
@@ -692,14 +691,14 @@ export default function ReadScreen() {
                 })}
               </View>
             </ScrollView>
-            <Text style={{ fontSize: 11.5, fontWeight: '700', color: '#6B6F5E' }}>
+            <Text style={{ fontSize: 11.5, fontWeight: '700', color: '#64748B' }}>
               {answeredCount}/{questions.length}
             </Text>
 
             <View className="flex-1" />
 
             {!wide ? (
-              <View className="flex-row rounded-md p-0.5" style={{ backgroundColor: '#EEF0E6' }}>
+              <View className="flex-row rounded-md p-0.5" style={{ backgroundColor: '#EEF2F7' }}>
                 {(['passage', 'questions'] as const).map((t) => (
                   <Pressable
                     key={t}
@@ -707,7 +706,7 @@ export default function ReadScreen() {
                     accessibilityState={{ selected: narrowTab === t }}
                     onPress={() => setNarrowTab(t)}
                     className="rounded-md px-2.5 py-1.5"
-                    style={{ backgroundColor: narrowTab === t ? EXAM_INK : 'transparent' }}
+                    style={{ backgroundColor: narrowTab === t ? EXAM_ACCENT : 'transparent' }}
                   >
                     <Text style={{ fontSize: 12, fontWeight: '700', color: narrowTab === t ? '#FFFFFF' : EXAM_INK }}>
                       {t === 'passage' ? 'Bài đọc' : 'Câu hỏi'}
@@ -727,7 +726,7 @@ export default function ReadScreen() {
                   accessibilityState={{ selected: paperKey === t.key }}
                   onPress={() => setPaperKey(t.key)}
                   className="h-6 w-6 rounded-md"
-                  style={{ backgroundColor: t.bg, borderWidth: paperKey === t.key ? 2.5 : 1, borderColor: paperKey === t.key ? EXAM_INK : '#C8CCB8' }}
+                  style={{ backgroundColor: t.bg, borderWidth: paperKey === t.key ? 2.5 : 1, borderColor: paperKey === t.key ? EXAM_ACCENT : EXAM_LINE }}
                 />
               ))}
             </View>
@@ -740,13 +739,13 @@ export default function ReadScreen() {
                 setFontKey(EXAM_FONTS[(i + 1) % EXAM_FONTS.length]!.key);
               }}
               className="h-8 flex-row items-center gap-1.5 rounded-md px-2.5"
-              style={{ borderWidth: 1.5, borderColor: EXAM_INK }}
+              style={{ borderWidth: 1, borderColor: EXAM_LINE }}
             >
               <Text style={{ fontFamily: passageFont.title, fontSize: 12.5, color: EXAM_INK }}>{passageFont.label}</Text>
               <Icon name="chevron-down" size={12} color={EXAM_INK} strokeWidth={2.4} />
             </Pressable>
 
-            <View className="h-8 flex-row items-center rounded-md" style={{ borderWidth: 1.5, borderColor: EXAM_INK }}>
+            <View className="h-8 flex-row items-center rounded-md" style={{ borderWidth: 1, borderColor: EXAM_LINE }}>
               <Pressable accessibilityLabel="Giảm cỡ chữ" onPress={() => setFontScale(fontScale - 0.1)} className="px-2">
                 <Text style={{ fontSize: 14, fontWeight: '800', color: EXAM_INK }}>−</Text>
               </Pressable>
@@ -764,7 +763,7 @@ export default function ReadScreen() {
                 accessibilityLabel="Toàn màn hình"
                 onPress={toggleFullscreen}
                 className="h-8 w-8 items-center justify-center rounded-md"
-                style={{ borderWidth: 1.5, borderColor: EXAM_INK }}
+                style={{ borderWidth: 1, borderColor: EXAM_LINE }}
               >
                 <Text style={{ fontSize: 14, color: EXAM_INK }}>⤢</Text>
               </Pressable>
@@ -775,7 +774,7 @@ export default function ReadScreen() {
               accessibilityLabel={paused ? 'Chạy tiếp đồng hồ' : 'Tạm dừng đồng hồ'}
               onPress={() => setPaused((p) => !p)}
               className="h-9 flex-row items-center gap-1.5 rounded-md px-3"
-              style={{ borderWidth: 2, borderColor: EXAM_INK }}
+              style={{ borderWidth: 1, borderColor: EXAM_LINE }}
             >
               <View className="h-2 w-2 rounded-pill" style={{ backgroundColor: paused ? '#D97706' : '#16A34A' }} />
               <Text style={{ fontSize: 13, fontWeight: '800', color: EXAM_INK, fontVariant: ['tabular-nums'] }}>
@@ -789,13 +788,11 @@ export default function ReadScreen() {
               disabled={submitting || questions.length === 0}
               className="h-9 items-center justify-center rounded-md px-4"
               style={({ hovered }) => ({
-                backgroundColor: hovered ? '#E9A92F' : '#F2B84B',
-                borderWidth: 2,
-                borderColor: EXAM_INK,
+                backgroundColor: hovered ? '#1D4ED8' : EXAM_ACCENT,
                 opacity: questions.length === 0 ? 0.5 : 1,
               })}
             >
-              <Text style={{ fontSize: 13, fontWeight: '800', color: EXAM_INK }}>{submitting ? 'Đang chấm…' : 'Kiểm Tra'}</Text>
+              <Text style={{ fontSize: 14, fontWeight: '800', color: '#FFFFFF' }}>{submitting ? 'Đang chấm…' : 'Nộp bài'}</Text>
             </HoverPressable>
           </View>
         </View>
@@ -820,7 +817,7 @@ export default function ReadScreen() {
         onPress={() => setChatOpen(true)}
         accessibilityLabel="Mở trợ giảng"
         className="absolute bottom-6 right-6 h-14 w-14 items-center justify-center rounded-pill"
-        style={{ backgroundColor: EXAM_INK, borderWidth: 2, borderColor: '#F2B84B', boxShadow: '0 12px 32px rgba(20,30,8,0.35)' } as never}
+        style={{ backgroundColor: EXAM_ACCENT, boxShadow: '0 12px 32px rgba(37,99,235,0.35)' } as never}
       >
         <Icon name="chat" size={24} color={color.white} strokeWidth={1.9} />
       </Pressable>
@@ -828,7 +825,7 @@ export default function ReadScreen() {
       <WordSheet target={sheet} articleId={article.id} articleTitle={article.title} onClose={() => setSheet(null)} />
 
       <ChatPanel articleId={article.id} visible={chatOpen} onClose={() => setChatOpen(false)} />
-    </OliveGrid>
+    </View>
   );
 }
 
@@ -871,7 +868,19 @@ function formatTime(totalSeconds: number): string {
 /*                          bộ phận của bố cục phòng thi                    */
 /* ====================================================================== */
 
-const EXAM_INK = '#1F2A12';
+/*
+  Phòng thi mang MÀU CỦA READUP, không mượn áo của app khác.
+
+  Bản trước là nền lưới rêu, giấy kem, viền mực đen dày với bóng lệch cứng và
+  nút "Kiểm Tra" vàng — đẹp, nhưng giống IELTS Dictionary tới mức người dùng
+  nhận ra ngay. Giờ: nền xám xanh trơn, tấm giấy trắng viền mảnh bóng mềm, màu
+  nhấn là xanh của cả app. Chỗ nào cần đập vào mắt (nút Nộp bài, câu đã làm)
+  thì dùng EXAM_ACCENT; còn lại để chữ và bài đọc nói.
+*/
+const EXAM_INK = '#1E293B';
+const EXAM_LINE = '#D7DEE8';
+const EXAM_ACCENT = '#2563EB';
+const EXAM_BG = '#EEF2F7';
 
 const PAPER_THEMES = [
   { key: 'white', label: 'trắng', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA' },
@@ -886,11 +895,13 @@ const EXAM_FONTS = [
   { key: 'sans', label: 'Jakarta', title: readingFont.sans, body: readingFont.sans },
 ] as const;
 
-/** Viền mực + bóng lệch cứng của tấm giấy phòng thi. */
+/** Tấm giấy phòng thi: viền mảnh, bóng mềm. */
 const examSticker = {
-  borderWidth: 2,
-  borderColor: EXAM_INK,
-  ...(Platform.OS === 'web' ? ({ boxShadow: `4px 5px 0 ${EXAM_INK}` } as object) : { elevation: 4 }),
+  borderWidth: 1,
+  borderColor: EXAM_LINE,
+  ...(Platform.OS === 'web'
+    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 14px 36px rgba(15,23,42,0.07)' } as object)
+    : { elevation: 3 }),
 };
 
 function ExamSheet({ bg, children }: { bg: string; children: React.ReactNode }) {
@@ -920,13 +931,13 @@ function ToolPill({
       onPress={onPress}
       className="rounded-pill px-3 py-1"
       style={({ hovered }) => ({
-        borderWidth: 1.5,
-        borderColor: EXAM_INK,
-        backgroundColor: active ? EXAM_INK : hovered ? 'rgba(31,42,18,0.08)' : 'transparent',
+        borderWidth: 1,
+        borderColor: active ? EXAM_ACCENT : EXAM_LINE,
+        backgroundColor: active ? EXAM_ACCENT : hovered ? '#F1F5F9' : '#FFFFFF',
         opacity: disabled ? 0.6 : 1,
       })}
     >
-      <Text style={{ fontSize: 11.5, fontWeight: '700', color: active ? '#FFFFFF' : EXAM_INK }}>{label}</Text>
+      <Text style={{ fontSize: 13, fontWeight: '700', color: active ? '#FFFFFF' : EXAM_INK }}>{label}</Text>
     </HoverPressable>
   );
 }

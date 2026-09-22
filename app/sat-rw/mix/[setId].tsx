@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -9,6 +9,7 @@ import { Badge, Button, PaperCard } from '@/components/ui';
 import { SAT_RW_SKILL_LABEL } from '@/data/sat-rw-repository';
 import { getMixedSet } from '@/services/sat-rw/mixed-sets';
 import { observeSkill } from '@/store/useMasteryStore';
+import { recordRwAttempt } from '@/store/useSatRwStore';
 import { useStudyStore } from '@/store/useStudyStore';
 
 /**
@@ -36,6 +37,10 @@ export default function SatRwMixScreen() {
   const [done, setDone] = useState(false);
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
+  const shownAt = useRef(0);
+  useEffect(() => {
+    shownAt.current = Date.now();
+  }, [index]);
 
   if (!set) {
     return (
@@ -63,6 +68,7 @@ export default function SatRwMixScreen() {
     if (picked !== null || !question) return;
     setPicked(choice);
     if (choice === question.answerIndex) setCorrect((n) => n + 1);
+    recordRwAttempt(question.id, choice === question.answerIndex, Date.now() - shownAt.current);
   };
 
   const next = () => {

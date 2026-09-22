@@ -9,6 +9,7 @@ import { LightGrid } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { isFocusRoute } from '@/navigation/focus-routes';
+import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 
 const QUEST_WORLD_BACKGROUND = require('../../../assets/quest/quest-world-bg.webp');
@@ -38,6 +39,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const focus = isFocusRoute(pathname);
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
+  // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
+  const collapsed = useSidebarStore((st) => st.collapsed);
 
   if (focus) {
     /*
@@ -62,9 +65,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             className="hidden lg:flex"
             style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
           >
-            <Sidebar />
+            <Sidebar compact />
           </View>
-          <View className="min-w-0 flex-1 lg:pl-20">
+          <View className="min-w-0 flex-1 lg:pl-[76px]">
             <View className="lg:hidden">
               <TopBar />
             </View>
@@ -103,7 +106,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         >
           <Sidebar />
         </View>
-        <View className="min-w-0 flex-1 lg:pl-20">
+        <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`}>
           <View className="lg:hidden">
             <TopBar />
           </View>

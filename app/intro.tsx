@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Platform, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -7,18 +7,8 @@ import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
-import { AssetImage, Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
-import { assetKeys } from '@/services/assets/useAssets';
-import {
-  PLANS,
-  PLAN_ORDER,
-  PLUS_TRIAL_DAYS,
-  PLUS_TRIAL_PLAN,
-  TRIAL_DAYS,
-  TRIAL_PLAN,
-  formatVnd,
-  type PlanId,
-} from '@/lib/billing/plans';
+import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
+import { PLANS } from '@/lib/billing/plans';
 import { ARTICLES } from '@/data/articles';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
@@ -35,7 +25,7 @@ import {
 } from '@/services/referral/rewards';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
-import { paper, stickerGradient } from '@/theme/tokens';
+import { stickerGradient } from '@/theme/tokens';
 
 /**
  * Trang giới thiệu — thứ người mở app lần đầu nhìn thấy.
@@ -128,50 +118,6 @@ const BILINGUAL_AREA: Area = {
   badge: `${bilingualStats().articles} BÀI`,
   href: '/bilingual',
 };
-
-/**
- * Mỗi lời tuyên bố đi kèm VẬT CHỨNG, không đi kèm tính từ.
- *
- * `proof` là những mẩu lấy thẳng từ ruột app — tên lỗi thật trong bộ sinh đề,
- * số hạt bộ kiểm chứng chạy, số tài khoản cần để bắt đầu. Đó là thứ trang giới
- * thiệu của người khác không chép được, vì họ không có nó trong máy.
- *
- * Ba tên lỗi dưới đây là khoá thật trong `MATH_ERROR_LABEL`, không phải chữ
- * viết cho đẹp — cùng luật với mọi con số khác trên trang này.
- */
-const DIFFERENCES: {
-  icon: IconName;
-  colors: readonly [string, string];
-  title: string;
-  body: string;
-  proof: string[];
-}[] = [
-  {
-    icon: 'check',
-    colors: stickerGradient.success,
-    title: 'Đáp án toán tính bằng code, không do AI đoán',
-    body:
-      'Đề dựng từ tham số rồi suy ngược ra đáp án, nên đề và đáp án không thể lệch nhau.',
-    proof: ['200 hạt mỗi dạng', 'thế nghiệm → 0', '0 lần AI tính đáp án'],
-  },
-  {
-    icon: 'info',
-    colors: stickerGradient.warning,
-    title: 'Sai ở đâu được gọi đúng tên chỗ đó',
-    body:
-      'Mỗi đáp án nhiễu dựng từ một sai lầm có tên, nên chọn nhầm cái nào là biết mình hay hỏng kiểu gì.',
-    proof: ['sign_flip', 'forgot_distribute', 'used_diameter_not_radius'],
-  },
-  {
-    icon: 'flame',
-    colors: stickerGradient.info,
-    title: 'Học được ngay, không cần tài khoản',
-    body:
-      'Mở lên là học. Đăng nhập chỉ để mang tiến độ sang máy khác, không phải cửa vào.',
-    proof: ['0 tài khoản để bắt đầu', 'dữ liệu nằm trên máy bạn'],
-  },
-];
-
 /**
  * Ba bước, và ở đây đánh số là ĐÚNG chứ không phải trang trí: thứ tự mang thông
  * tin thật — không làm bài chẩn đoán trước thì lộ trình không biết xếp gì.
@@ -248,7 +194,6 @@ export default function IntroScreen() {
   );
   const didMath = useMathStore((s) => s.sessions.length > 0);
   const returning = studied || didMath;
-  const [yearly, setYearly] = useState(false);
 
   return (
     <Screen>
@@ -400,84 +345,55 @@ export default function IntroScreen() {
         </Grid>
       </View>
 
-      {/* ------------------------------------------------------ khác biệt */}
-      <Appear index={5}>
-        <Text className="mt-14 font-heavy text-sectionTitle text-ink">Khác gì các app khác</Text>
-      </Appear>
-      <View className="mt-5 gap-3">
-        {DIFFERENCES.map((item, index) => (
-          <Appear key={item.title} index={index + 6}>
-            <DifferenceCard item={item} />
-          </Appear>
-        ))}
-      </View>
+      {/* ------------------------------------------------------- mời bạn */}
+      {/*
+        Trang chủ KHÔNG bày bảng giá nữa. Người mới tới cần biết học được gì và
+        học miễn phí bằng cách nào; bốn cột giá ngay trang đầu làm app trông như
+        một trang bán hàng trước khi kịp là một chỗ học. Giá vẫn nằm nguyên ở
+        trang Gói học (Cài đặt → Gói học) cho ai tự đi tìm.
 
-      {/* ------------------------------------------------------------ giá */}
+        Thay vào đó là con đường KHÔNG MẤT TIỀN: mời bạn cùng học.
+      */}
       <Appear index={7}>
-        <Text className="mt-14 font-heavy text-sectionTitle text-ink">Gói và giá</Text>
-        <Text className="mt-1 font-sans text-body text-muted">
-          Bản Free dùng học thật được — trọn bài chẩn đoán và trọn chặng Đại số, không phải bản xem
-          thử. Nâng cấp khi cần phần còn lại, không phải để bắt đầu.
-        </Text>
-
-        {/*
-          Chuyển tháng/năm ngay tại đây thay vì bắt sang trang Nâng cấp mới thấy
-          giá năm. Giá năm rẻ hơn đáng kể, mà người đang cân nhắc thì cân nhắc
-          NGAY LÚC NÀY — bắt họ bấm sang trang khác để biết con số thứ hai là
-          đánh mất đúng lúc họ còn đang quan tâm.
-        */}
-        <View className="mt-4 flex-row items-center gap-2">
-          <CycleTab label="Trả tháng" active={!yearly} onPress={() => setYearly(false)} />
-          <CycleTab label="Trả năm" active={yearly} onPress={() => setYearly(true)} />
-          {yearly ? <Badge label="Tiết kiệm tới 29%" tone="success" shape="tag" /> : null}
-        </View>
-      </Appear>
-
-      <View className="mt-5">
-        <Grid columns={4} tabletColumns={2} mobileColumns={1}>
-          {PLAN_ORDER.map((id, index) => (
-            <Appear key={id} index={index + 8} style={{ height: '100%' }}>
-              <PlanCard plan={PLANS[id]} yearly={yearly} />
-            </Appear>
-          ))}
-        </Grid>
-      </View>
-
-      {/* Mời bạn: cách duy nhất lên gói trả phí mà không mất tiền, nên nó xứng
-          đáng một khối riêng chứ không phải một dòng chú thích. */}
-      <Appear index={12}>
-        <Card className="mt-4">
-          <View className="flex-row flex-wrap items-center gap-4">
-            <AssetImage assetKey={assetKeys.illustration('referral-hero')} preset="card" />
-            <View className="flex-1" style={{ minWidth: 220 }}>
-              <Text className="font-strong text-cardTitle text-ink">
-                Mời {REFERRALS_PER_REWARD} người, nhận {REWARD_MONTHS} tháng gói{' '}
-                {PLANS[REWARD_PLAN].name}
+        <View
+          className="mt-14 overflow-hidden rounded-card border-2 border-primary-500 bg-surface p-7 lg:p-10"
+        >
+          <View className="flex-row flex-wrap items-center gap-8">
+            <View className="flex-1" style={{ minWidth: 280 }}>
+              <Text className="font-strong text-label uppercase tracking-[1.4px] text-primary-600">Học miễn phí</Text>
+              <Text className="mt-2 font-heavy text-pageTitle text-ink">
+                Rủ bạn cùng học,{'\n'}mở khoá toàn bộ app.
               </Text>
-              <Text className="mt-1 font-sans text-body text-muted">
-                Mỗi người bạn mời tạo tài khoản và học thật sẽ cộng cho bạn một mốc. Đủ{' '}
-                {REFERRALS_PER_REWARD} mốc là {REWARD_MONTHS} tháng gói{' '}
-                {PLANS[REWARD_PLAN].name}; đủ {MAX_TIER_REFERRALS} mốc thì lên gói{' '}
-                {PLANS[MAX_REWARD_PLAN].name}. Không phải trả đồng nào.
+              <Text className="mt-3 max-w-[520px] font-sans text-bodyLg text-muted">
+                Mỗi người bạn mời tạo tài khoản và học thật được tính một mốc. Không cần thẻ, không phải trả đồng nào.
               </Text>
+              <View className="mt-6 flex-row flex-wrap gap-2">
+                <Button
+                  label="Lấy link mời"
+                  variant="brand"
+                  size="lg"
+                  iconRight="arrow-right"
+                  onPress={() => router.push('/invite' as never)}
+                />
+              </View>
             </View>
-            <Button
-              label="Lấy link mời"
-              variant="brandOutline"
-              iconRight="arrow-right"
-              onPress={() => router.push('/invite' as never)}
-            />
-          </View>
-        </Card>
-      </Appear>
 
-      <Appear index={13}>
-        <Text className="mt-3 text-center font-sans text-label text-subtle">
-          Thanh toán bằng chuyển khoản QR. Dùng thử {PLUS_TRIAL_DAYS} ngày gói{' '}
-          {PLANS[PLUS_TRIAL_PLAN].name} hoặc {TRIAL_DAYS} ngày gói {PLANS[TRIAL_PLAN].name}, không
-          cần thẻ. Rủ bạn mua chung Plus/Pro/Max gói năm để được giảm tới 30% —
-          xem chi tiết ở trang Nâng cấp.
-        </Text>
+            <View className="gap-3" style={{ flexBasis: 360, flexGrow: 1 }}>
+              <InviteMilestone n={1} title="Lấy link mời của bạn" note="Gửi qua Zalo, Messenger, nhóm lớp." />
+              <InviteMilestone
+                n={REFERRALS_PER_REWARD}
+                title={`${REFERRALS_PER_REWARD} bạn học thật`}
+                note={`${REWARD_MONTHS} tháng gói ${PLANS[REWARD_PLAN].name}: trợ giảng AI, chấm Writing, mọi bộ đề.`}
+              />
+              <InviteMilestone
+                n={MAX_TIER_REFERRALS}
+                title={`${MAX_TIER_REFERRALS} bạn học thật`}
+                note={`Lên gói ${PLANS[MAX_REWARD_PLAN].name} — gói cao nhất.`}
+                last
+              />
+            </View>
+          </View>
+        </View>
       </Appear>
 
       {/* ------------------------------------------------------- CTA cuối */}
@@ -534,8 +450,6 @@ const hardEdge = (Platform.OS === 'web'
       elevation: 6,
     }) as never;
 
-/** Chữ máy — dùng cho những mẩu lấy thẳng từ ruột app, xem `DIFFERENCES.proof`. */
-const MONO = Platform.OS === 'web' ? 'ui-monospace, SFMono-Regular, Menlo, monospace' : 'monospace';
 
 /**
  * Một bước trong ba bước mở đầu.
@@ -574,64 +488,6 @@ function StepCard({ step }: { step: (typeof STEPS)[number] }) {
     </View>
   );
 }
-
-/**
- * Một lời tuyên bố, kèm vật chứng.
- *
- * KHÔNG đánh số, và đó là chủ ý: ba mục này không phải một chuỗi, đánh số vào
- * sẽ hứa một thứ tự không có thật. Dải màu dọc cạnh trái thay cho bóng cứng vì
- * thẻ ở đây trải hết chiều ngang — ba khối rộng cùng đổ bóng cứng đọc rất nặng.
- */
-function DifferenceCard({ item }: { item: (typeof DIFFERENCES)[number] }) {
-  return (
-    <View
-      className="flex-row overflow-hidden rounded-card bg-white"
-      style={{ borderWidth: 1.5, borderColor: '#0F172A' }}
-    >
-      <LinearGradient
-        colors={item.colors}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 0, y: 1 }}
-        style={{ width: 9 }}
-      />
-      <View className="flex-1 flex-row items-start gap-3 p-4">
-        <View
-          className="h-11 w-11 items-center justify-center overflow-hidden rounded-panel"
-          style={{ borderWidth: 2, borderColor: '#0F172A' }}
-        >
-          <LinearGradient
-            colors={item.colors}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={{ position: 'absolute', inset: 0 } as never}
-          />
-          <View style={{ zIndex: 1 }}>
-            <Icon name={item.icon} size={19} color="#fff" strokeWidth={2} />
-          </View>
-        </View>
-
-        <View className="flex-1">
-          <Text className="font-strong text-cardTitle text-ink">{item.title}</Text>
-          <Text className="mt-1 font-sans text-body text-muted">{item.body}</Text>
-
-          {/* Vật chứng. Chữ máy vì đây đúng là thứ máy in ra, không phải lời quảng cáo. */}
-          <View className="mt-3 flex-row flex-wrap gap-2">
-            {item.proof.map((chip) => (
-              <View
-                key={chip}
-                className="rounded-pill px-2.5 py-1"
-                style={{ backgroundColor: `${item.colors[1]}14`, borderWidth: 1, borderColor: `${item.colors[1]}33` }}
-              >
-                <Text style={{ fontFamily: MONO, fontSize: 12, color: item.colors[1] }}>{chip}</Text>
-              </View>
-            ))}
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-}
-
 function StatPill({ value, label }: { value: string; label: string }) {
   return (
     <View className="flex-row items-baseline gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5">
@@ -693,81 +549,20 @@ function AreaCard({ area }: { area: Area }) {
   );
 }
 
-/** Nút chọn chu kỳ thanh toán. */
-function CycleTab({
-  label,
-  active,
-  onPress,
-}: {
-  label: string;
-  active: boolean;
-  onPress: () => void;
-}) {
+/** Một mốc trên đường mời bạn: số người, phần thưởng. Đường nối dọc giữa các mốc. */
+function InviteMilestone({ n, title, note, last = false }: { n: number; title: string; note: string; last?: boolean }) {
   return (
-    <PressScale onPress={onPress}>
-      <View
-        className={`rounded-pill border px-4 py-2 ${
-          active ? 'border-brand bg-brand-tint' : 'border-border bg-surface'
-        }`}
-      >
-        <Text className={`font-strong text-label ${active ? 'text-paper-ink' : 'text-muted'}`}>
-          {label}
-        </Text>
+    <View className="flex-row gap-4">
+      <View className="items-center">
+        <View className="h-11 w-11 items-center justify-center rounded-pill bg-primary-600">
+          <Text className="font-heavy text-body text-white">{n}</Text>
+        </View>
+        {last ? null : <View className="mt-1 w-0.5 flex-1 bg-primary-100" style={{ minHeight: 18 }} />}
       </View>
-    </PressScale>
-  );
-}
-
-/**
- * Thẻ một gói.
- *
- * Hiện ĐỦ tính năng của gói chứ không chỉ tên và giá. Bản trước chỉ có ba dòng —
- * tên, giá, một câu mô tả — nên người đọc không có gì để so sánh giữa các gói và
- * phải bấm sang trang khác mới biết mình mua cái gì. Bảng giá mà không nói bán
- * gì thì không phải bảng giá.
- */
-function PlanCard({ plan, yearly }: { plan: (typeof PLANS)[PlanId]; yearly: boolean }) {
-  const price = yearly ? plan.yearlyVnd : plan.monthlyVnd;
-  const free = plan.monthlyVnd === 0;
-
-  return (
-    <Card className={`h-full ${plan.recommended ? 'border-brand' : ''}`}>
-      <View className="flex-row items-center justify-between gap-2">
-        <Text className="font-strong text-cardTitle text-ink">{plan.name}</Text>
-        {plan.recommended ? (
-          <View className="self-start rounded-md bg-brand-mid px-2.5 py-1">
-            <Text className="font-semi text-label text-white">Phổ biến</Text>
-          </View>
-        ) : null}
+      <View className="flex-1 pb-3">
+        <Text className="font-strong text-cardTitle text-ink">{title}</Text>
+        <Text className="mt-0.5 font-sans text-body text-muted">{note}</Text>
       </View>
-
-      <Text className="mt-2 font-heavy text-stat text-ink">
-        {free ? 'Miễn phí' : formatVnd(price)}
-      </Text>
-      {!free ? (
-        <Text className="font-sans text-label text-muted">{yearly ? 'mỗi năm' : 'mỗi tháng'}</Text>
-      ) : null}
-
-      <Text className="mt-2 font-sans text-label text-muted">{plan.tagline}</Text>
-
-      <View className="mt-3 gap-1.5">
-        {plan.highlights.map((line) => (
-          <View key={line} className="flex-row items-start gap-2">
-            <Icon name="check" size={14} color={paper.brandMid} />
-            <Text className="flex-1 font-sans text-label text-ink">{line}</Text>
-          </View>
-        ))}
-      </View>
-
-      <View className="flex-1" />
-
-      <Button
-        className="mt-4"
-        label={free ? 'Bắt đầu miễn phí' : `Chọn ${plan.name}`}
-        variant={plan.recommended ? 'brand' : 'brandOutline'}
-        fullWidth
-        onPress={() => free ? enterApp('/dashboard') : router.push('/upgrade' as never)}
-      />
-    </Card>
+    </View>
   );
 }
