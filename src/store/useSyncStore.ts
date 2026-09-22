@@ -7,6 +7,7 @@ import { useAuthStore } from './useAuthStore';
 import { useMathStore } from './useMathStore';
 import { useStudyStore } from './useStudyStore';
 import { useVocabStore } from './useVocabStore';
+import { useQuestStore } from './useQuestStore';
 
 /**
  * Điều phối đồng bộ.
@@ -110,6 +111,7 @@ export function useSyncBootstrap() {
       useMathStore.subscribe(schedule),
       useStudyStore.subscribe(schedule),
       useVocabStore.subscribe(schedule),
+      useQuestStore.subscribe(schedule),
     ];
 
     return () => {

@@ -3,8 +3,9 @@ import { Image, Pressable, ScrollView, Text, TextInput, View } from 'react-nativ
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Card, Icon } from '@/components/ui';
+import { Badge, Button, Card, Icon } from '@/components/ui';
 import {
   VIDEO_LEVELS,
   VIDEO_TOPICS,
@@ -42,17 +43,21 @@ export default function VideoLibraryScreen() {
 
   return (
     <Screen>
-      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Listening video library
-        </Text>
-      </View>
-
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">Thư viện video</Text>
-      <Text className="mt-1.5 max-w-[680px] font-sans text-bodyLg text-muted">
-        {stats.videos} video từ {stats.channels} kênh, chia theo trình độ. Nghe từng câu rồi chép lại,
-        hoặc chuyển sang phần nghe hiểu để làm đề sinh từ chính phụ đề video đó.
-      </Text>
+      <LightHero
+        badge="LISTENING VIDEO LIBRARY"
+        line1="Thư viện video"
+        line2="nghe câu thật, chép lại"
+        subtitle={`${stats.videos} video từ ${stats.channels} kênh, chia theo trình độ. Nghe từng câu rồi chép lại, hoặc chuyển sang phần nghe hiểu để làm đề sinh từ chính phụ đề video đó.`}
+        footer={
+          <>
+            <HeroStat value={String(stats.videos)} label="video" />
+            <HeroStat value={String(stats.channels)} label="kênh" />
+            <HeroStat value={String(prepared.length)} label="đã chuẩn bị" />
+          </>
+        }
+      >
+        <Button label="Tìm video" variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
+      </LightHero>
 
       <View className="mt-4 flex-row items-start gap-2.5 rounded-panel border border-warning bg-warning-soft p-3.5">
         <Icon name="info" size={17} color={color.warning} strokeWidth={2} />

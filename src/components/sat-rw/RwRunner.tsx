@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Pressable, Text, useWindowDimensions, View } from 'react-native';
 
-import { CrossFade } from '@/components/motion/Motion';
+import { CrossFade, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, PaperCard } from '@/components/ui';
 import { ExamShell } from '@/components/layout/ExamShell';
 import { ItemBody } from '@/components/sat-rw/ItemBody';
@@ -62,7 +62,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
   const { width } = useWindowDimensions();
   const split = width >= SPLIT_MIN_WIDTH;
 
-  const startedAt = useRef(Date.now());
+  const startedAt = useRef(0);
   const finished = useRef(false);
 
   const submit = useCallback(() => {
@@ -72,7 +72,9 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
   }, [answers, onFinish]);
 
   const submitRef = useRef(submit);
-  submitRef.current = submit;
+  useEffect(() => {
+    submitRef.current = submit;
+  }, [submit]);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -185,7 +187,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
                 {item.options.map((option, i) => {
                   const picked = answers[index] === i;
                   return (
-                    <Pressable
+                    <PressScale
                       key={option}
                       accessibilityRole="radio"
                       accessibilityState={{ selected: picked }}
@@ -213,7 +215,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
                       >
                         {option}
                       </Text>
-                    </Pressable>
+                    </PressScale>
                   );
                 })}
               </View>

@@ -45,7 +45,9 @@ export function LightHero({
   */
   return (
     <View style={{ flexDirection: 'row', borderRadius: 24, overflow: 'hidden' }}>
-      <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE}>
+      {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
+          đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
+      <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
         <View style={{ paddingHorizontal: wide ? 40 : 22, paddingVertical: wide ? 52 : 30 }}>
           <Badge label={badge} tone="neutral" shape="tag" />
 

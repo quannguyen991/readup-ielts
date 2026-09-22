@@ -4,7 +4,8 @@ import { router } from 'expo-router';
 
 import { Appear } from '@/components/motion/Motion';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Card, Icon, StickerCard } from '@/components/ui';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { Badge, Button, Card, Icon, StickerCard } from '@/components/ui';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { dictationSetStats } from '@/data/dictation-sets';
 import { translationSetStats } from '@/data/translation-sets';
@@ -28,12 +29,30 @@ export default function SentenceHubScreen() {
   return (
     <Screen>
       <Appear>
-        <Text className="font-heavy text-pageTitle text-ink">Luyện câu</Text>
-        <Text className="mt-1.5 max-w-[560px] font-sans text-bodyLg text-muted">
-          Nghe rồi gõ lại nguyên văn, hoặc đọc một câu tiếng Việt rồi tự dịch sang tiếng Anh.{' '}
-          {dictationSetStats().sets + translationSetStats().sets} bài có chủ đề và{' '}
-          {DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} câu lẻ để ôn rải.
-        </Text>
+        <LightHero
+          badge="SENTENCE PRACTICE"
+          line1="Luyện câu"
+          line2="nghe kỹ, viết đúng"
+          subtitle={`Nghe rồi gõ lại nguyên văn, hoặc đọc một câu tiếng Việt rồi tự dịch sang tiếng Anh. ${dictationSetStats().sets + translationSetStats().sets} bài có chủ đề và ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} câu lẻ để ôn rải.`}
+          footer={
+            <>
+              <HeroStat value={String(DICTATION_SENTENCES.length)} label="câu chép chính tả" />
+              <HeroStat value={String(TRANSLATION_SENTENCES.length)} label="câu dịch" />
+              <HeroStat value={String(audioLibraryStats().items)} label="bài nghe" />
+            </>
+          }
+        >
+          <Button
+            label="Chép chính tả"
+            iconRight="arrow-right"
+            onPress={() => router.push('/sentence/dictation' as never)}
+          />
+          <Button
+            label="Dịch câu"
+            variant="outline"
+            onPress={() => router.push('/sentence/translate' as never)}
+          />
+        </LightHero>
       </Appear>
 
       <View className="mt-5 flex-row flex-wrap gap-4">

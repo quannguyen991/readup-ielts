@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Screen } from '@/components/layout/Screen';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { DictationLibrary } from '@/components/sentence/DictationLibrary';
 import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
 import { CrossFade } from '@/components/motion/Motion';
+import { Button } from '@/components/ui';
+import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
+import { dictationSetStats } from '@/data/dictation-sets';
+import { translationSetStats } from '@/data/translation-sets';
 
 /**
  * Thư viện bài của cả hai kiểu luyện câu.
@@ -28,37 +33,29 @@ export default function SentenceSetsScreen() {
 
   return (
     <Screen>
-      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Sentence practice library
-        </Text>
-      </View>
-
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">Thư viện bộ đề</Text>
-      <Text className="mt-1.5 max-w-[640px] font-sans text-bodyLg text-muted">
-        Bài có chủ đề, các câu trong một bài nối tiếp nhau. Chọn bài thay vì bốc câu ngẫu nhiên.
-      </Text>
-
-      <View className="mt-5 flex-row flex-wrap gap-1.5">
+      <LightHero
+        badge="SENTENCE PRACTICE LIBRARY"
+        line1="Thư viện bộ đề"
+        line2="luyện câu theo chủ đề"
+        subtitle="Bài có chủ đề, các câu trong một bài nối tiếp nhau. Chọn bài thay vì bốc câu ngẫu nhiên."
+        footer={
+          <>
+            <HeroStat value={String(dictationSetStats().sets)} label="bài chép chính tả" />
+            <HeroStat value={String(translationSetStats().sets)} label="bài dịch câu" />
+            <HeroStat value={String(DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length)} label="câu lẻ" />
+          </>
+        }
+      >
         {TABS.map((t) => (
-          <Pressable
+          <Button
             key={t.key}
-            accessibilityRole="tab"
-            accessibilityState={{ selected: tab === t.key }}
+            label={t.label}
+            variant={tab === t.key ? 'brand' : 'outline'}
+            size="lg"
             onPress={() => setTab(t.key)}
-            className={[
-              'rounded-pill border px-4 py-2',
-              tab === t.key ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
-            ].join(' ')}
-          >
-            <Text
-              className={['font-semi text-body', tab === t.key ? 'text-white' : 'text-muted'].join(' ')}
-            >
-              {t.label}
-            </Text>
-          </Pressable>
+          />
         ))}
-      </View>
+      </LightHero>
 
       <View className="mt-5">
         <CrossFade swapKey={tab}>

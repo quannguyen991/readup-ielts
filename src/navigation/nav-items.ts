@@ -118,6 +118,11 @@ export const NAV_GROUPS: NavGroup[] = [
     ],
   },
   {
+    key: 'quest',
+    title: 'Game học tập',
+    items: [{ key: 'quest', label: 'ReadUp Quest', shortLabel: 'Quest', href: '/quest', icon: 'sparkle', inBottomTabs: true }],
+  },
+  {
     key: 'account',
     title: null,
     items: [

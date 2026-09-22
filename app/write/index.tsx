@@ -1,8 +1,9 @@
 import React from 'react';
 import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
-import Svg, { Circle, Path, Rect } from 'react-native-svg';
+import { Image } from 'expo-image';
 
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Icon } from '@/components/ui';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
@@ -30,31 +31,40 @@ export default function WritingHome() {
 
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Writing</Text>
-      <Text className="mt-1 font-sans text-bodyLg text-muted">
-        Dựng đúng câu trước, rồi mới dựng cả bài.
-      </Text>
+      <LightHero
+        badge="WRITING PRACTICE"
+        line1="Writing"
+        line2="củng cố cấu trúc, mở rộng từ vựng"
+        subtitle="Dựng đúng câu trước, rồi mới dựng cả bài — mỗi bước dài thêm một bậc."
+        footer={
+          <>
+            <HeroStat value={String(PATH_STEPS.length)} label="bước luyện dịch" />
+            <HeroStat value={String(WRITING_PROMPTS.length)} label="đề viết" />
+            <HeroStat value="Task 1 + 2" label="dạng bài" />
+          </>
+        }
+      />
 
-      <View className="mt-6 gap-4">
-        <BranchCard
-          wide={wide}
-          tone="moss"
-          eyebrow="BẬC MỘT"
-          title="Luyện dịch"
-          blurb="Tái tạo đúng câu mẫu, từng từ một. Năm bước siết dần, từ một câu tới trọn đoạn văn."
-          stat={`${PATH_STEPS.length} bước · ${TRANSLATION_UNITS.toLocaleString('vi-VN')} lượt · ${TRANSLATION_SETS.length} chủ đề`}
-          onPress={() => router.push('/write/translation' as never)}
-        />
-        <BranchCard
-          wide={wide}
-          tone="amber"
-          eyebrow="BẬC HAI"
-          title="Luyện viết"
-          blurb="Viết trọn bài theo đề thi thật, AI chấm theo từng tiêu chí và chỉ đúng chỗ hỏng."
-          stat={`${WRITING_PROMPTS.length} đề · Task 1 và Task 2`}
-          onPress={() => router.push('/write/tests' as never)}
-        />
-      </View>
+        <View className="mt-6 gap-4">
+          <BranchCard
+            wide={wide}
+            tone="moss"
+            eyebrow="BẬC MỘT"
+            title="Luyện dịch"
+            blurb="Tái tạo đúng câu mẫu, từng từ một. Năm bước siết dần, từ một câu tới trọn đoạn văn."
+            stat={`${PATH_STEPS.length} bước · ${TRANSLATION_UNITS.toLocaleString('vi-VN')} lượt · ${TRANSLATION_SETS.length} chủ đề`}
+            onPress={() => router.push('/write/translation' as never)}
+          />
+          <BranchCard
+            wide={wide}
+            tone="amber"
+            eyebrow="BẬC HAI"
+            title="Luyện viết"
+            blurb="Viết trọn bài theo đề thi thật, AI chấm theo từng tiêu chí và chỉ đúng chỗ hỏng."
+            stat={`${WRITING_PROMPTS.length} đề · Task 1 và Task 2`}
+            onPress={() => router.push('/write/tests' as never)}
+          />
+        </View>
     </Screen>
   );
 }
@@ -67,8 +77,8 @@ export default function WritingHome() {
   bằng chữ.
 */
 const TONES = {
-  moss: { bg: '#3F7D58', ink: '#F2F7F0', pattern: '#2F6242', chip: '#2F6242' },
-  amber: { bg: '#E8842B', ink: '#FFF8F0', pattern: '#C56A17', chip: '#C56A17' },
+  moss: { bg: '#126B80', ink: '#F2FBFF', pattern: '#0B5265', chip: '#0B5265' },
+  amber: { bg: '#A7193F', ink: '#FFF5F7', pattern: '#7E1232', chip: '#7E1232' },
 } as const;
 
 function BranchCard({
@@ -141,7 +151,7 @@ function BranchCard({
         </View>
 
         {/* Mảng hoạ tiết chỉ có ở khổ rộng: ở khổ hẹp nó ăn mất chỗ của chữ. */}
-        {wide ? <Pattern color={t.pattern} /> : null}
+        {wide ? <Pattern tone={tone} /> : null}
       </View>
     </Pressable>
   );
@@ -153,16 +163,16 @@ function BranchCard({
  * Vẽ bằng SVG chứ không dùng ảnh: nó co giãn theo mọi khổ màn, đổi màu theo tông
  * thẻ, và không thêm một byte nào vào bundle ảnh.
  */
-function Pattern({ color }: { color: string }) {
+function Pattern({ tone }: { tone: keyof typeof TONES }) {
   return (
-    <View style={{ width: 260 }} pointerEvents="none">
-      <Svg width="100%" height="100%" viewBox="0 0 120 100" preserveAspectRatio="none">
-        <Rect x={0} y={0} width={120} height={100} fill={color} opacity={0.55} />
-        <Path d="M0 0 H40 A40 40 0 0 1 0 40 Z" fill={color} />
-        <Path d="M120 100 H80 A40 40 0 0 1 120 60 Z" fill={color} />
-        <Circle cx={70} cy={38} r={16} fill={color} />
-        <Path d="M40 100 H80 A40 40 0 0 0 40 60 Z" fill={color} opacity={0.7} />
-      </Svg>
+    <View style={{ width: 280, height: 210, justifyContent: 'center' }} pointerEvents="none">
+      <Image
+        source={tone === 'moss' ? require('../../assets/illustrations/writing-translation.png') : require('../../assets/illustrations/writing-essay.png')}
+        contentFit="contain"
+        transition={180}
+        style={{ width: '100%', height: '100%' }}
+        accessibilityIgnoresInvertColors
+      />
     </View>
   );
 }

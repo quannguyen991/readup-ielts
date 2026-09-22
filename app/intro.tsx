@@ -293,7 +293,7 @@ export default function IntroScreen() {
           Đổi nền mà giữ chữ trắng thì câu tiêu đề biến mất — đổi thì phải đổi cả cặp.
         */}
         <View style={{ flexDirection: 'row', borderRadius: 24, overflow: 'hidden' }}>
-          <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE}>
+          <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
             <View
               style={{
                 paddingHorizontal: wide ? 40 : 22,

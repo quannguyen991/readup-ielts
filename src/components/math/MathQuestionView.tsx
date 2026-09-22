@@ -1,9 +1,10 @@
 import React from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 
 import { MathFigure } from './MathFigure';
 import { MathText } from './MathText';
 import { Badge } from '@/components/ui';
+import { PressScale } from '@/components/motion/Motion';
 import { MATH_ERROR_LABEL, MATH_SKILL_LABEL } from '@/lib/math/types';
 import type { MathItem } from '@/lib/math/types';
 import { gradeMathItem } from '@/services/math/grade';
@@ -339,7 +340,7 @@ function ChoiceRow({
     kiểu khác nhau thì người dùng phải học lại cách nghe giữa lúc đang tính giờ.
   */
   return (
-    <Pressable
+    <PressScale
       accessibilityRole="radio"
       accessibilityState={{ selected, disabled }}
       onPress={disabled ? undefined : onPress}
@@ -349,6 +350,6 @@ function ChoiceRow({
       <View className="flex-1">
         <MathText size={15}>{display}</MathText>
       </View>
-    </Pressable>
+    </PressScale>
   );
 }

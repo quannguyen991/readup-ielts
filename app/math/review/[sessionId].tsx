@@ -11,7 +11,6 @@ import {
   MATH_ERROR_LABEL,
   MATH_SKILL_LABEL,
   type MathDomain,
-  type MathSkill,
 } from '@/lib/math/types';
 import { getSet, getUnitOfSet } from '@/services/math/curriculum';
 import { diagnosticHeadline, readDiagnostic } from '@/services/math/diagnostic';
@@ -124,6 +123,12 @@ export default function MathReviewScreen() {
             . Điểm {session.estimatedScore} là <Text className="font-strong text-ink">ước lượng</Text>{' '}
             — dùng để so với chính bạn lần trước, không phải để dự đoán điểm thi thật.
           </Text>
+          <Button
+            className="mt-4"
+            label="Dùng kiến thức vừa học để vào Quest"
+            iconRight="arrow-right"
+            onPress={() => router.push('/quest' as never)}
+          />
         </Card>
       ) : null}
 

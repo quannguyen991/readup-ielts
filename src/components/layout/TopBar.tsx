@@ -40,7 +40,7 @@ function isTopLevel(pathname: string): boolean {
   return false;
 }
 
-export function TopBar() {
+export function TopBar({ fixed = false }: { fixed?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
   /*
@@ -72,7 +72,14 @@ export function TopBar() {
         liên tục phía sau, và mắt đọc nó như một thanh công cụ chứ không phải
         một tầng riêng của trang.
       */}
-      <View className="px-3 pb-1 pt-3">
+      <View
+        className="px-3 pb-1 pt-3"
+        style={
+          fixed
+            ? ({ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100 } as const)
+            : undefined
+        }
+      >
         {/*
           Nút lùi đứng NGOÀI thanh, không nằm trong.
 

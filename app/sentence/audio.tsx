@@ -3,8 +3,9 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Card, Icon } from '@/components/ui';
+import { Badge, Button, Card, Icon } from '@/components/ui';
 import {
   AUDIO_LEVELS,
   AUDIO_NGUON,
@@ -38,18 +39,20 @@ export default function AudioLibraryScreen() {
 
   return (
     <Screen>
-      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Listening audio library
-        </Text>
-      </View>
-
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">Thư viện nghe</Text>
-      <Text className="mt-1.5 max-w-[680px] font-sans text-bodyLg text-muted">
-        {stats.items} bài nghe từ {stats.programs} chuyên mục, đã có sẵn lời đọc —{' '}
-        <Text className="font-strong text-ink">bấm vào là làm được ngay, không phải dán gì</Text>.
-        Nghe rồi trả lời, và chỉ ra đoạn nào chứa đáp án.
-      </Text>
+      <LightHero
+        badge="LISTENING AUDIO LIBRARY"
+        line1="Thư viện nghe"
+        line2="nghe rồi chỉ ra bằng chứng"
+        subtitle={`${stats.items} bài nghe từ ${stats.programs} chuyên mục, đã có sẵn lời đọc — bấm vào là làm được ngay, không phải dán gì.`}
+        footer={
+          <>
+            <HeroStat value={String(stats.items)} label="bài nghe" />
+            <HeroStat value={String(stats.programs)} label="chuyên mục" />
+          </>
+        }
+      >
+        <Button label="Bắt đầu nghe" variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
+      </LightHero>
 
       <View className="mt-4 flex-row items-start gap-2.5 rounded-panel border border-border bg-surface p-3.5">
         <Icon name="info" size={17} color={color.subtle} strokeWidth={2} />

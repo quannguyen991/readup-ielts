@@ -34,6 +34,7 @@ export function TaskShell({
   subtitle,
   icon = 'book',
   tone = 'brand',
+  paperGrid = true,
   right,
   children,
 }: {
@@ -43,6 +44,8 @@ export function TaskShell({
   subtitle?: string;
   icon?: React.ComponentProps<typeof Icon>['name'];
   tone?: TaskTone;
+  /** Tắt lưới cho các workspace cần nền trang chủ sạch, không bị chia ô. */
+  paperGrid?: boolean;
   right?: React.ReactNode;
   children: React.ReactNode;
 }) {
@@ -124,9 +127,8 @@ export function TaskShell({
     tối — hai tông là hai độ sáng của cùng một thứ, không phải hai thiết kế.
   */
   return (
-    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE}>
+    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={paperGrid}>
       {body}
     </GridBackdrop>
   );
 }
-

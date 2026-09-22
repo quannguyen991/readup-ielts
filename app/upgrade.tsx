@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { PlanBadge, planTone } from '@/components/billing/PlanUi';
-import { AssetImage, Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
-import { assetKeys } from '@/services/assets/useAssets';
+import { planTone } from '@/components/billing/PlanUi';
+import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { hasFeature } from '@/lib/billing/entitlements';
 import { hasBankConfig } from '@/lib/env';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
@@ -26,7 +25,7 @@ import {
   type Quota,
 } from '@/lib/billing/plans';
 import { usePlanStatus, useBillingStore } from '@/store/useBillingStore';
-import { color, gradient } from '@/theme/tokens';
+import { color } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
 
 /**
@@ -48,41 +47,21 @@ export default function UpgradeScreen() {
   const startPlusTrial = useBillingStore((s) => s.startPlusTrial);
   const startProTrial = useBillingStore((s) => s.startVipTrial);
 
-  const { width } = useWindowDimensions();
-  const wideHero = width >= 900;
-
   return (
     <Screen>
-      <LinearGradient
-        colors={[...gradient.hero]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ borderRadius: 20, padding: 20 }}
-      >
-        <View className="flex-row flex-wrap items-center justify-between gap-3">
-          <View className="flex-1" style={{ minWidth: 240 }}>
-            <Text className="font-heavy text-hero text-white">Chọn gói</Text>
-            <Text className="mt-1.5 font-sans text-bodyLg text-white/90">
-              Bản Free dùng học thật được — trọn bài chẩn đoán và trọn chặng Đại số. Nâng cấp khi bạn
-              cần phần còn lại, không phải để bắt đầu.
-            </Text>
-          </View>
-          <View className="items-end gap-2">
-            <Text className="font-mid text-label text-white/80">Gói hiện tại</Text>
-            <PlanBadge plan={status.plan} />
-            {status.daysLeft !== null ? (
-              <Text className="font-sans text-label text-white/80">còn {status.daysLeft} ngày</Text>
-            ) : null}
-            {/* Chỉ hiện ở khổ rộng: khổ hẹp ảnh rớt dòng và để lại mảng trống. */}
-            {wideHero ? (
-              <AssetImage
-                assetKey={assetKeys.illustration('upgrade-hero')}
-                preset="heroCompact"
-              />
-            ) : null}
-          </View>
-        </View>
-      </LinearGradient>
+      <LightHero
+        badge="READUP · GÓI HỌC"
+        line1="Chọn gói"
+        line2="học đúng phần mình cần"
+        subtitle="Bản Free dùng học thật được — nâng cấp khi bạn cần mở thêm nội dung, không phải để bắt đầu."
+        footer={
+          <>
+            <HeroStat value={status.plan === 'free' ? 'Free' : PLANS[status.plan].name} label="gói hiện tại" />
+            <HeroStat value={status.daysLeft === null ? '∞' : String(status.daysLeft)} label="ngày còn lại" />
+            <HeroStat value={String(PLAN_ORDER.length)} label="gói lựa chọn" />
+          </>
+        }
+      />
 
       <View className="mt-4 flex-row items-center justify-center gap-2">
         <CycleTab label="Trả tháng" active={!yearly} onPress={() => setYearly(false)} />

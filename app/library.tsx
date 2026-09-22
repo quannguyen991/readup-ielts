@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
 import { Grid } from '@/components/layout/Grid';
+import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Button, Card, Icon, Pagination } from '@/components/ui';
 import {
@@ -106,26 +107,35 @@ export default function LibraryScreen() {
 
   return (
     <Screen>
-      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Reading library
-        </Text>
-      </View>
-
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">Kho bài đọc</Text>
-      <Text className="mt-1.5 max-w-[640px] font-sans text-bodyLg text-muted">
-        Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng
-        lúc sắp quên.
-      </Text>
-
-      <View className="mt-5">
-        <Grid columns={4} tabletColumns={2} mobileColumns={2} gap={12}>
-          <StatTile icon="book" label="Bài đọc đầy đủ" value={String(stats.readable)} />
-          <StatTile icon="clipboard" label="Passage IELTS" value={String(stats.ielts)} />
-          <StatTile icon="grid" label="Passage SAT" value={String(stats.sat)} />
-          <StatTile icon="letters" label="Từ đã lưu" value={String(savedCount)} />
-        </Grid>
-      </View>
+      <LightHero
+        badge="READING LIBRARY"
+        line1="Kho bài đọc"
+        line2="đọc kỹ, nhớ lâu hơn"
+        subtitle="Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng lúc sắp quên."
+        footer={
+          <>
+            <HeroStat value={String(stats.readable)} label="bài đọc đầy đủ" />
+            <HeroStat value={String(stats.ielts)} label="passage IELTS" />
+            <HeroStat value={String(stats.sat)} label="passage SAT" />
+            <HeroStat value={String(savedCount)} label="từ đã lưu" />
+          </>
+        }
+      >
+        <Button
+          label="Đọc song ngữ"
+          variant="brand"
+          size="lg"
+          iconRight="arrow-right"
+          onPress={() => router.push('/bilingual' as never)}
+        />
+        <Button
+          label="Mở sổ từ"
+          variant="outline"
+          size="lg"
+          iconLeft="letters"
+          onPress={() => router.push('/vocabulary' as never)}
+        />
+      </LightHero>
 
       {/*
         Lối sang kho song ngữ đặt NGAY TRÊN bộ lọc, không nhét xuống chân trang.
@@ -382,30 +392,6 @@ const SORT_LABEL: Record<'newest' | 'shortest' | 'easiest' | 'hardest', string> 
   easiest: 'Dễ nhất',
   hardest: 'Khó nhất',
 };
-
-function StatTile({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ComponentProps<typeof Icon>['name'];
-  label: string;
-  value: string;
-}) {
-  return (
-    <View className="flex-row items-center gap-3 rounded-card border border-border bg-surface px-4 py-3.5">
-      <View className="h-10 w-10 items-center justify-center rounded-panel bg-primary-50">
-        <Icon name={icon} size={18} color={color.primary} strokeWidth={1.9} />
-      </View>
-      <View className="min-w-0 flex-1">
-        <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 9 }}>
-          {label}
-        </Text>
-        <Text className="font-heavy text-sectionTitle text-ink">{value}</Text>
-      </View>
-    </View>
-  );
-}
 
 function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
