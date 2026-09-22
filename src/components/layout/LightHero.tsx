@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, useWindowDimensions } from 'react-native';
+import { Platform, Text, View, useWindowDimensions } from 'react-native';
 
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { Badge } from '@/components/ui/Badge';
@@ -44,7 +44,20 @@ export function LightHero({
     hàng ngang, flex-1 ăn theo bề ngang còn chiều cao do nội dung quyết định.
   */
   return (
-    <View style={{ flexDirection: 'row', borderRadius: 24, overflow: 'hidden' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        borderRadius: 24,
+        overflow: 'hidden',
+        // Viền trắng mảnh + bóng mềm: khung hero phải tách khỏi nền trang dù
+        // nền là xanh kẻ ô, loang hay trắng.
+        borderWidth: 1.5,
+        borderColor: 'rgba(255,255,255,0.9)',
+        ...(Platform.OS === 'web'
+          ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 16px 40px rgba(30,41,99,0.14)' } as object)
+          : { elevation: 3 }),
+      }}
+    >
       {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
           đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
       <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>

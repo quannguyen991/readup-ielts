@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { View } from 'react-native';
 import Svg, { Defs, Ellipse, LinearGradient, Pattern, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
@@ -65,12 +65,20 @@ export function GridBackdrop({
   showGrid?: boolean;
   children?: React.ReactNode;
 }) {
+  /*
+    Id RIÊNG cho mỗi lần vẽ. Id cố định ("grid-base"…) nằm chung một không
+    gian tên trong cả trang web: khi trang có hai nền lưới — nền xanh của app
+    và nền sáng của hero — hero lấy nhầm gradient của nền app, hoà vào nền và
+    mất hẳn đường viền.
+  */
+  const uid = useId().replace(/[^a-zA-Z0-9_-]/g, '');
+  const id = (name: string) => `${name}-${uid}`;
   return (
     <View className="flex-1" style={{ backgroundColor: colors[0] }}>
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
         <Svg width="100%" height="100%">
           <Defs>
-            <LinearGradient id="grid-base" x1="0" y1="0" x2="1" y2="1">
+            <LinearGradient id={id('grid-base')} x1="0" y1="0" x2="1" y2="1">
               {colors.map((stop, index) => (
                 <Stop
                   key={index}
@@ -80,28 +88,28 @@ export function GridBackdrop({
               ))}
             </LinearGradient>
 
-            <RadialGradient id="grid-blob-a" cx="0.5" cy="0.5" r="0.5">
+            <RadialGradient id={id('grid-blob-a')} cx="0.5" cy="0.5" r="0.5">
               <Stop offset={0} stopColor="#60A5FA" stopOpacity={0.45} />
               <Stop offset={1} stopColor="#60A5FA" stopOpacity={0} />
             </RadialGradient>
 
-            <RadialGradient id="grid-blob-b" cx="0.5" cy="0.5" r="0.5">
+            <RadialGradient id={id('grid-blob-b')} cx="0.5" cy="0.5" r="0.5">
               <Stop offset={0} stopColor="#C084FC" stopOpacity={0.4} />
               <Stop offset={1} stopColor="#C084FC" stopOpacity={0} />
             </RadialGradient>
 
-            <Pattern id="grid-cell" width={cell} height={cell} patternUnits="userSpaceOnUse">
+            <Pattern id={id('grid-cell')} width={cell} height={cell} patternUnits="userSpaceOnUse">
               <Path d={`M ${cell} 0 L 0 0 L 0 ${cell}`} fill="none" stroke={line} strokeWidth={1} />
             </Pattern>
           </Defs>
 
-          <Rect x={0} y={0} width="100%" height="100%" fill="url(#grid-base)" />
+          <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id('grid-base')})`} />
 
           {/* Vệt loang: bán kính tính theo phần trăm nên chúng co giãn theo khung. */}
-          <Ellipse cx="18%" cy="12%" rx="55%" ry="45%" fill="url(#grid-blob-a)" />
-          <Ellipse cx="88%" cy="82%" rx="50%" ry="55%" fill="url(#grid-blob-b)" />
+          <Ellipse cx="18%" cy="12%" rx="55%" ry="45%" fill={`url(#${id('grid-blob-a')})`} />
+          <Ellipse cx="88%" cy="82%" rx="50%" ry="55%" fill={`url(#${id('grid-blob-b')})`} />
 
-          {showGrid ? <Rect x={0} y={0} width="100%" height="100%" fill="url(#grid-cell)" /> : null}
+          {showGrid ? <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id('grid-cell')})`} /> : null}
         </Svg>
       </View>
       {children}
