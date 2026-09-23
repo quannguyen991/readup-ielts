@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
@@ -95,6 +96,9 @@ export default function SatRwHubScreen() {
         <Button label="Bài từ vựng" variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/sat-rw/learn?tab=vocab' as never)} />
       </LightHero>
 
+      <View className="mt-5">
+        <ScorePredictionCard section="verbal" />
+      </View>
       <View className="mt-5" />
       <BankHeader
         current={{

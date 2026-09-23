@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
@@ -181,6 +182,10 @@ export default function DashboardScreen() {
       </LightHero>
 
       <TodayPlan />
+
+      <View className="mt-4">
+        <ScorePredictionCard section="total" />
+      </View>
 
       <View className="mt-4 lg:mt-6">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
