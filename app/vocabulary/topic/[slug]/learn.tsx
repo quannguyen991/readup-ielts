@@ -36,17 +36,18 @@ import { Icon } from "@/components/ui/Icon";
 import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import {
   activeKinds,
-  advanceQueue,
+  answerLearn,
   directionFor,
   filterWords,
-  initialQueue,
   isFinalKind,
   isTypedCorrect,
   makeChoices,
   passesStage,
+  learnProgress,
+  pickNext,
   pickRound,
+  startLearn,
   seededRng,
-  type LearnItem,
   type LearnSettings,
   type StudyWord,
 } from "@/services/vocab/topic-study";
@@ -81,7 +82,10 @@ const KIND_LABEL = {
  * qua phần cuối đang bật. Người học tắt bớt phần, đổi chiều hỏi, lọc từ gắn
  * sao… trong bảng Cài đặt.
  *
- * Sai ở phần nào thì câu đó quay lại sau vài câu khác (`advanceQueue`).
+ * Các dạng câu XEN KẼ nhau (`pickNext`): từ mới được đưa vào dần, câu kế tiếp
+ * ưu tiên dạng khác câu vừa làm — không phải mười thẻ lật liền nhau rồi mới
+ * tới trắc nghiệm. Mỗi từ vẫn đi đúng thứ tự của riêng nó. Sai thì câu đó quay
+ * lại sau hai câu; sửa đúng phải xác nhận thêm một lần.
  */
 export default function LearnScreen() {
   const { slug = "" } = useLocalSearchParams<{ slug: string }>();
@@ -119,9 +123,7 @@ export default function LearnScreen() {
   const [round, setRound] = useState<StudyWord[]>(() => freshRound(settings));
   // Các phần của vòng ĐANG CHẠY — chỉ đổi khi bắt đầu vòng mới.
   const [kinds, setKinds] = useState(() => activeKinds(settings.kinds));
-  const [queue, setQueue] = useState<LearnItem[]>(() =>
-    initialQueue(round, kinds),
-  );
+  const [plan, setPlan] = useState(() => startLearn(round));
   const [asked, setAsked] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -136,7 +138,7 @@ export default function LearnScreen() {
   // Đếm số câu đã qua — khoá cho hiệu ứng chuyển câu, chỉ đổi khi sang câu mới.
   const [step, setStep] = useState(0);
 
-  const head = queue[0];
+  const head = useMemo(() => pickNext(plan, kinds), [plan, kinds]);
   const word = round.find((w) => w.word === head?.word);
   const pool = useMemo(() => topic?.words ?? [], [topic]);
   const starredSet = useMemo(() => new Set(starred), [starred]);
@@ -165,19 +167,15 @@ export default function LearnScreen() {
   }, [step, dir, word?.word]);
 
   const done = !head;
-  // Mỗi đoạn một từ: xong mọi phần = đầy, đã qua ít nhất một phần = nửa.
-  const segments = round.map((w): 0 | 1 | 2 => {
-    const pending = queue.filter((q) => q.word === w.word);
-    if (pending.length === 0) return 2;
-    return pending.some((q) => q.kind !== kinds[0]) ? 1 : 0;
-  });
+  // Mỗi đoạn một từ: chưa vào vòng = trống, đang học = nửa, xong mọi phần = đầy.
+  const segments = round.map((w): 0 | 1 | 2 => learnProgress(plan, w.word));
 
   const restart = (s: LearnSettings = settings) => {
     const r = freshRound(s);
     const k = activeKinds(s.kinds);
     setRound(r);
     setKinds(k);
-    setQueue(initialQueue(r, k));
+    setPlan(startLearn(r));
     setAsked(0);
     setWrong(0);
     setPicked(null);
@@ -220,7 +218,7 @@ export default function LearnScreen() {
   };
 
   const advance = (ok: boolean) => {
-    setQueue((q) => advanceQueue(q, ok, kinds));
+    setPlan((p) => answerLearn(p, ok, kinds));
     setPicked(null);
     setTyped("");
     setVerdict(null);

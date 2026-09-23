@@ -3,6 +3,10 @@ import { test } from 'node:test';
 
 import {
   advanceQueue,
+  answerLearn,
+  pickNext,
+  startLearn,
+  type LearnItem,
   directionFor,
   filterWords,
   GAP_CONFIRM,
@@ -153,4 +157,57 @@ test('điền từ không hỏi theo chiều thấy từ tiếng Anh', () => {
   }
   const seen = new Set(Array.from({ length: 6 }, (_, s) => directionFor('habitat', s, ['enToVi', 'viToEn', 'listen'], 'mcq')));
   assert.equal(seen.size, 3, 'Trắc nghiệm phải xoay đủ các chiều đang bật.');
+});
+
+test('xếp xen kẽ: các dạng đan nhau chứ không dồn thành dãy dài', () => {
+  const words = Array.from({ length: 10 }, (_, i) => W(`w${i}`, `nghĩa ${i}`));
+  let s = startLearn(words);
+  const seen: string[] = [];
+  const typedWords: string[] = [];
+  let guard = 0;
+  for (let item = pickNext(s); item && guard < 200; item = pickNext(s)) {
+    seen.push(item.kind);
+    if (item.kind === 'type') typedWords.push(item.word);
+    s = answerLearn(s, true);
+    guard += 1;
+  }
+  assert.equal(seen.length, 30, 'Làm đúng hết: mỗi từ đúng ba câu.');
+  assert.deepEqual([...typedWords].sort(), words.map((w) => w.word).sort());
+  // Không có dãy nào quá ba câu cùng dạng.
+  let run = 1;
+  let longest = 1;
+  for (let i = 1; i < seen.length; i += 1) {
+    run = seen[i] === seen[i - 1] ? run + 1 : 1;
+    longest = Math.max(longest, run);
+  }
+  assert.ok(longest <= 3, `dãy cùng dạng dài ${longest}: ${seen.join(' ')}`);
+  // Mười câu đầu đã có đủ ba dạng.
+  assert.equal(new Set(seen.slice(0, 10)).size, 3, seen.slice(0, 10).join(' '));
+});
+
+test('xếp xen kẽ: mỗi từ vẫn đi đúng thứ tự lật thẻ → trắc nghiệm → điền từ', () => {
+  const words = Array.from({ length: 6 }, (_, i) => W(`w${i}`, `n${i}`));
+  let s = startLearn(words);
+  const order = new Map<string, string[]>();
+  for (let item = pickNext(s), g = 0; item && g < 100; item = pickNext(s), g += 1) {
+    order.set(item.word, [...(order.get(item.word) ?? []), item.kind]);
+    s = answerLearn(s, true);
+  }
+  for (const [, ks] of order) assert.deepEqual(ks, ['flash', 'mcq', 'type']);
+});
+
+test('xếp xen kẽ: sai thì hỏi lại, sửa đúng còn một lần xác nhận, không hỏi lại ngay câu vừa hỏi', () => {
+  const words = Array.from({ length: 5 }, (_, i) => W(`w${i}`, `n${i}`));
+  let s = startLearn(words);
+  const first = pickNext(s, ['mcq'])!;
+  s = answerLearn(s, false, ['mcq']);
+  assert.notEqual(pickNext(s, ['mcq'])?.word, first.word);
+  const hist: LearnItem[] = [];
+  for (let item = pickNext(s, ['mcq']), g = 0; item && g < 50; item = pickNext(s, ['mcq']), g += 1) {
+    hist.push(item);
+    s = answerLearn(s, true, ['mcq']);
+  }
+  const again = hist.filter((i) => i.word === first.word);
+  assert.deepEqual(again.map((i) => i.lapse), ['retry', 'confirm']);
+  assert.equal(pickNext(s, ['mcq']), null);
 });

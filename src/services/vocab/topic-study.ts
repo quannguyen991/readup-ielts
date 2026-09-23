@@ -261,3 +261,95 @@ export function advanceQueue(queue: readonly LearnItem[], correct: boolean, kind
   const nextKind = k[k.indexOf(head.kind) + 1];
   return nextKind ? insertAt({ word: head.word, kind: nextKind }, REQUEUE_GAP) : rest;
 }
+
+/* ======================================================================
+ * XẾP CÂU XEN KẼ
+ *
+ * Hàng đợi tuần tự ở trên cho mỗi từ đi đúng thứ tự dễ → khó, nhưng vì mọi từ
+ * cùng bắt đầu ở phần đầu tiên, đầu vòng là mười thẻ lật liền nhau, rồi tới một
+ * dãy trắc nghiệm, rồi một dãy điền từ. Người học chán và các dạng không trộn.
+ *
+ * Bộ xếp này giữ luật của từng từ (dễ → khó, sai hỏi lại sớm, sửa đúng phải xác
+ * nhận xa hơn) nhưng thay "vị trí trong hàng" bằng "đến hạn ở câu thứ mấy":
+ *
+ *   1. Từ mới được đưa vào DẦN DẦN, không dồn hết lên đầu.
+ *   2. Trong các câu đã đến hạn, ưu tiên câu có DẠNG KHÁC câu vừa làm.
+ *   3. Nếu mọi câu đến hạn đều cùng dạng với câu vừa làm, đưa một từ mới vào
+ *      (dạng đầu tiên) để đổi nhịp.
+ *   4. Không hỏi lại đúng từ vừa hỏi khi còn câu khác.
+ * ==================================================================== */
+
+export type DueItem = LearnItem & { due: number };
+
+/**
+ * Làm đúng thì phần sau của từ đến hạn sau 2 câu (không phải 3 như hàng đợi
+ * tuần tự): chờ 3 câu thì đầu vòng thành bốn thẻ lật liền nhau.
+ */
+export const INTERLEAVE_GAP = 2;
+
+export type LearnState = {
+  /** Số câu đã trả lời trong vòng. */
+  now: number;
+  /** Câu đã lên lịch (từ đã được đưa vào vòng). */
+  items: DueItem[];
+  /** Từ chưa đưa vào vòng, theo thứ tự. */
+  pending: string[];
+  lastKind: StageKind | null;
+  lastWord: string | null;
+};
+
+export function startLearn(words: readonly StudyWord[]): LearnState {
+  return { now: 0, items: [], pending: words.map((w) => w.word), lastKind: null, lastWord: null };
+}
+
+/** Câu sẽ hỏi tiếp theo; null khi vòng đã xong. Hàm thuần — gọi mỗi lần render đều ra cùng một câu. */
+export function pickNext(state: LearnState, kinds: readonly StageKind[] = STAGE_ORDER): LearnItem | null {
+  const first = activeKinds(kinds)[0]!;
+  const fresh = state.pending[0];
+  const byDue = (a: DueItem, b: DueItem) => a.due - b.due;
+  const due = state.items.filter((i) => i.due <= state.now && i.word !== state.lastWord).sort(byDue);
+  const differing = due.find((i) => i.kind !== state.lastKind);
+  if (differing) return strip(differing);
+  // Mọi câu đến hạn đều cùng dạng câu vừa làm → đưa từ mới vào nếu nó đổi được nhịp.
+  if (fresh && (due.length === 0 || first !== state.lastKind)) return { word: fresh, kind: first };
+  if (due[0]) return strip(due[0]);
+  if (fresh) return { word: fresh, kind: first };
+  // Chưa câu nào đến hạn và hết từ mới: hỏi câu gần hạn nhất, tránh lặp từ vừa hỏi.
+  const rest = [...state.items].sort(byDue);
+  const pick = rest.find((i) => i.word !== state.lastWord) ?? rest[0];
+  return pick ? strip(pick) : null;
+}
+
+function strip(i: DueItem): LearnItem {
+  return i.lapse ? { word: i.word, kind: i.kind, lapse: i.lapse } : { word: i.word, kind: i.kind };
+}
+
+/** Chấm câu hiện tại (= `pickNext`) và lên lịch cho lần gặp sau. */
+export function answerLearn(state: LearnState, correct: boolean, kinds: readonly StageKind[] = STAGE_ORDER): LearnState {
+  const head = pickNext(state, kinds);
+  if (!head) return state;
+  const pending = state.pending[0] === head.word && !state.items.some((i) => i.word === head.word) ? state.pending.slice(1) : state.pending;
+  const items = state.items.filter((i) => !(i.word === head.word && i.kind === head.kind));
+  const at = (gap: number) => state.now + 1 + gap;
+  let next: DueItem | null;
+  if (!correct) next = { word: head.word, kind: head.kind, lapse: 'retry', due: at(GAP_WRONG) };
+  else if (head.lapse === 'retry') next = { word: head.word, kind: head.kind, lapse: 'confirm', due: at(GAP_CONFIRM) };
+  else {
+    const k = activeKinds(kinds);
+    const nextKind = k[k.indexOf(head.kind) + 1];
+    next = nextKind ? { word: head.word, kind: nextKind, due: at(INTERLEAVE_GAP) } : null;
+  }
+  return {
+    now: state.now + 1,
+    items: next ? [...items, next] : items,
+    pending,
+    lastKind: head.kind,
+    lastWord: head.word,
+  };
+}
+
+/** Tiến độ một từ cho thanh đoạn: 0 chưa vào vòng, 1 đang học, 2 xong. */
+export function learnProgress(state: LearnState, word: string): 0 | 1 | 2 {
+  if (state.pending.includes(word)) return 0;
+  return state.items.some((i) => i.word === word) ? 1 : 2;
+}
