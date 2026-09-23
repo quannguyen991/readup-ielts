@@ -13,11 +13,11 @@ type StickerCardProps = ViewProps & {
   ornament?: React.ReactNode;
 };
 
-/** Màu bóng lệch: gần đen, đúng như bản thẻ người dùng chọn lại (commit fadf32e). */
+/** Màu mực dùng cho bóng chữ và các chi tiết nhỏ trên thẻ. */
 export const INK = '#0F172A';
 
 /** Bóng chữ trắng trên mặt thẻ: tiêu đề in nổi bằng mực, dòng phụ có quầng mờ. */
-export const STICKER_TITLE_SHADOW = { textShadowColor: INK, textShadowOffset: { width: 0, height: 2 }, textShadowRadius: 0 };
+export const STICKER_TITLE_SHADOW = { textShadowColor: 'rgba(15,23,42,0.35)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 4 };
 export const STICKER_TEXT_SHADOW = { textShadowColor: 'rgba(15,23,42,0.55)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 3 };
 
 /** Thẻ đang được rê chuột hay nhấn — vật trang trí bên trong đọc để sáng hơn, nhanh hơn. */
@@ -54,13 +54,10 @@ function glideTo(v: SharedValue<number>, to: number): void {
 type Pose = 'rest' | 'hover' | 'press';
 
 /**
- * Thẻ KHỐI: mặt gradient, bóng lệch cứng màu gần đen xuống phải — đúng bóng của
- * bản cũ người dùng chọn lại ("phần đổ bóng đen làm giống ảnh 2"); viền đen thì
- * người dùng bảo bỏ.
+ * Thẻ màu: mặt gradient, bóng mềm cùng tông màu thẻ. Người dùng đã bảo bỏ cả
+ * viền đen lẫn bóng lệch đen — đừng thêm lại.
  *
- * Có vật lý của một phím bấm: rê chuột thì mặt thẻ nhô lên phía trên trái và bóng
- * dài ra, nhấn thì lún xuống sát bóng — ĐÁY BÓNG ĐỨNG YÊN, nên nhìn ra là khối
- * nổi lên chứ không phải cả thẻ trượt.
+ * Rê chuột thì thẻ nhấc lên và bóng loang rộng hơn, nhấn thì hạ xuống.
  *
  * CHỈ DÙNG Ở NHỮNG CHỖ CHỌN LỰA CHỌN (chủ đề từ vựng, chế độ luyện tập, lưới
  * "App có gì", kệ tính năng) — KHÔNG thay `Card` mặc định của cả app.
@@ -68,32 +65,29 @@ type Pose = 'rest' | 'hover' | 'press';
 export function StickerCard({ colors, children, className, style, bold, ornament, ...rest }: StickerCardProps) {
   const reduced = useReducedMotion();
   const [pose, setPose] = useState<Pose>('rest');
-  const tx = useSharedValue(0);
   const ty = useSharedValue(0);
 
-  const offset = bold ? 5 : 4;
+  const tone = colors[1];
   // Mặt thẻ: đầu sáng kéo nhẹ về phía màu đậm để chữ trắng không chìm ở góc trên trái.
   const face: readonly [string, string] = [mix(colors[0], colors[1], 0.18), colors[1]];
 
   const moveTo = (p: Pose) => {
     setPose(p);
-    const d = p === 'hover' ? -2 : p === 'press' ? offset - 1 : 0;
-    glideTo(tx, d);
-    glideTo(ty, d);
+    glideTo(ty, p === 'hover' ? -3 : p === 'press' ? 1 : 0);
   };
 
-  const shown = pose === 'hover' ? offset + 2 : pose === 'press' ? 1 : offset;
+  const lifted = pose === 'hover';
   const shadow =
     Platform.OS === 'web'
       ? ({
-          boxShadow: `${shown}px ${shown}px 0 ${INK}`,
+          boxShadow: `0 1px 2px rgba(15,23,42,0.06), 0 ${lifted ? 16 : bold ? 10 : 8}px ${lifted ? 32 : 24}px ${tone}${lifted ? '59' : '40'}`,
           transitionProperty: 'box-shadow',
           transitionDuration: '140ms',
           transitionTimingFunction: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
         } as never)
-      : { shadowColor: INK, shadowOffset: { width: offset, height: offset }, shadowOpacity: 1, shadowRadius: 0, elevation: 6 };
+      : { shadowColor: tone, shadowOffset: { width: 0, height: 6 }, shadowOpacity: 0.3, shadowRadius: 14, elevation: 4 };
 
-  const motion = useAnimatedStyle(() => ({ transform: [{ translateX: tx.value }, { translateY: ty.value }] }));
+  const motion = useAnimatedStyle(() => ({ transform: [{ translateY: ty.value }] }));
 
   // Chỉ web có chuột; RN web chuyển tiếp sự kiện chuột/chạm xuống thẻ div.
   const handlers =
