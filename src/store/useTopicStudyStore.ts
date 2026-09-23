@@ -3,6 +3,11 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
 import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/services/vocab/topic-study';
+import type { MistakeKind } from '@/services/vocab/mistake';
+
+/** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
+export type MistakeEntry = { kind: MistakeKind; word: string; slug: string; at: string };
+const MISTAKE_LOG_CAP = 400;
 
 /**
  * Tiến độ học theo từng bộ từ chủ đề: mỗi từ đang ở chặng nào, và điểm cao của
@@ -25,6 +30,9 @@ type TopicStudyState = {
   /** slug → từ → số lần làm sai trong màn Học. Vòng sau hỏi từ sai nhiều trước. */
   lapses: Record<string, Record<string, number>>;
   addLapse: (slug: string, word: string) => void;
+  /** Nhật ký lỗi đã gọi tên (mới nhất cuối), giữ tối đa 400 dòng. */
+  mistakeLog: MistakeEntry[];
+  logMistake: (slug: string, word: string, kind: MistakeKind) => void;
   /** Cài đặt màn Học — dùng chung mọi bộ, như một thói quen học của người dùng. */
   learnSettings: LearnSettings;
   toggleStar: (slug: string, word: string) => void;
@@ -41,6 +49,9 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       scores: {},
       starred: {},
       lapses: {},
+      mistakeLog: [],
+      logMistake: (slug, word, kind) =>
+        set((s) => ({ mistakeLog: [...s.mistakeLog, { kind, word, slug, at: new Date().toISOString() }].slice(-MISTAKE_LOG_CAP) })),
       addLapse: (slug, word) =>
         set((s) => ({ lapses: { ...s.lapses, [slug]: { ...(s.lapses[slug] ?? {}), [word]: (s.lapses[slug]?.[word] ?? 0) + 1 } } })),
       learnSettings: DEFAULT_LEARN_SETTINGS,
@@ -76,7 +87,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, learnSettings: s.learnSettings }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         const p = (persisted ?? {}) as Partial<TopicStudyState>;
