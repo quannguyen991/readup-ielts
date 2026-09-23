@@ -146,7 +146,10 @@ export const NAV_GROUPS: NavGroup[] = [
         label: 'Xếp hạng',
         href: '/leaderboard',
         icon: 'trophy',
-        children: [{ key: 'shop', label: 'Cửa hàng đổi điểm', href: '/shop', icon: 'gift' }],
+        children: [
+          { key: 'weekly', label: 'Đề của tuần', href: '/weekly', icon: 'trophy' },
+          { key: 'shop', label: 'Cửa hàng đổi điểm', href: '/shop', icon: 'gift' },
+        ],
       },
     ],
   },

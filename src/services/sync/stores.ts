@@ -16,6 +16,8 @@ import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { useQuestStore } from '@/store/useQuestStore';
+import { useWeeklyStore } from '@/store/useWeeklyStore';
+import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
 
 /**
  * Nối từng zustand store vào engine đồng bộ.
@@ -124,6 +126,21 @@ const questStore: SyncedStore = {
   merge: mergeQuest,
 };
 
+/** Đề của tuần: máy chủ đọc khoá này để xếp hạng cả nước (`/api/weekly`). */
+const weeklyStore: SyncedStore = {
+  key: 'weekly',
+  read: () => ({ results: useWeeklyStore.getState().results }),
+  write: (payload) => {
+    useWeeklyStore.setState({ results: ((payload as { results?: Record<string, WeeklyResult> }).results ?? {}) as never });
+  },
+  merge: (local, remote) => ({
+    results: mergeWeekly(
+      (local as { results?: Record<string, WeeklyResult> } | null)?.results,
+      (remote as { results?: Record<string, WeeklyResult> } | null)?.results,
+    ),
+  }),
+};
+
 /** Gọi một lần lúc khởi động app. */
 export function registerAllSyncedStores(): void {
   registerSyncedStore(mathStore);
@@ -131,4 +148,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(vocabStore);
   registerSyncedStore(billingStore);
   registerSyncedStore(questStore);
+  registerSyncedStore(weeklyStore);
 }

@@ -1,5 +1,6 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { currentStreak, monthPoints, type DayLog } from '@/services/gamification/points';
+import { anonymousName, displayableName } from '@/services/gamification/display-name';
 
 /**
  * GET /api/leaderboard — bảng xếp hạng điểm THÁNG NÀY.
@@ -19,20 +20,6 @@ import { currentStreak, monthPoints, type DayLog } from '@/services/gamification
  * họ. Một bộ luật, hai nơi chạy.
  */
 type StudyRow = { user_id: string; daily: Record<string, DayLog> | null };
-
-/**
- * Tên chỉ được hiện khi trông như tên người TỰ ĐẶT.
- *
- * Bỏ qua mọi chuỗi có '@', và mọi chuỗi kiểu định danh máy — một từ liền, chỉ
- * chữ thường, số, dấu chấm hoặc gạch (vd "quannguyen.ulis207"): đó gần như
- * luôn là phần trước @ của email do hệ thống điền sẵn.
- */
-function displayableName(raw: string | null): string | null {
-  const name = raw?.trim();
-  if (!name || name.includes('@')) return null;
-  if (/^[a-z0-9._-]+$/.test(name)) return null;
-  return name.slice(0, 28);
-}
 
 export async function GET(): Promise<Response> {
   try {
@@ -63,7 +50,7 @@ export async function GET(): Promise<Response> {
         const daily = row.daily ?? {};
         return {
           id: row.user_id.slice(0, 8),
-          name: names.get(row.user_id) ?? `Học viên ${row.user_id.slice(0, 4).toUpperCase()}`,
+          name: names.get(row.user_id) ?? anonymousName(row.user_id),
           points: monthPoints(daily, now),
           streak: currentStreak(daily, now),
         };
