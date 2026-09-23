@@ -17,7 +17,7 @@ import { SAT_VOCAB_LESSONS } from './lessons/vocab-lessons';
 
 export type StudyDeck = {
   slug: string;
-  kind: 'topic' | 'sat' | 'notebook';
+  kind: 'topic' | 'sat' | 'notebook' | 'custom';
   name: string;
   nameVi: string;
   blurb: string;
@@ -83,7 +83,10 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
 
 /** Nhóm từ để hiện danh sách: bộ IELTS theo band (dễ → khó), bộ khác một nhóm. */
 export function groupDeckWords(deck: StudyDeck): { label: string; words: StudyWord[] }[] {
-  if (deck.kind !== 'topic') return deck.words.length ? [{ label: deck.kind === 'notebook' ? 'Từ đã lưu' : 'Thuật ngữ', words: deck.words }] : [];
+  if (deck.kind !== 'topic')
+    return deck.words.length
+      ? [{ label: deck.kind === 'notebook' ? 'Từ đã lưu' : deck.kind === 'custom' ? 'Từ trong bài' : 'Thuật ngữ', words: deck.words }]
+      : [];
   return BAND_ORDER.map((band) => ({ label: `Band ${band}`, words: deck.words.filter((w) => w.band === band) })).filter((g) => g.words.length > 0);
 }
 

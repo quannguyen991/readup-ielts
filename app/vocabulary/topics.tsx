@@ -10,6 +10,7 @@ import { Card, Icon, StickerCard, type IconName } from '@/components/ui';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS, type VocabTopic } from '@/data/vocab-topics';
 import { useVocabStore } from '@/store/useVocabStore';
 import { notebookDeck, type StudyDeck } from '@/data/study-decks';
+import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { SAT_MATH_VOCAB_LESSONS, SAT_VERBAL_VOCAB_LESSONS, type VocabLesson } from '@/data/lessons/vocab-lessons';
 import { color } from '@/theme/tokens';
 
@@ -76,6 +77,8 @@ export default function VocabTopicsScreen() {
   );
 
   const notebook = useMemo(() => notebookDeck(Object.values(entries)), [entries]);
+  const customMap = useCustomDeckStore((st) => st.decks);
+  const customDecks = useMemo(() => Object.values(customMap).sort((a, b) => b.createdAt.localeCompare(a.createdAt)), [customMap]);
 
   const topics = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -161,6 +164,18 @@ export default function VocabTopicsScreen() {
         <Appear index={4} style={{ height: '100%' }}>
           <SatLessonsCard title="SAT Verbal" lessons={SAT_VERBAL_VOCAB_LESSONS} href="/sat-rw/learn?tab=vocab" colors={['#C4ADF8', '#7C3AED']} icon="letters" />
         </Appear>
+        {customDecks.map((d, i) => (
+          <Appear key={d.id} index={5 + i} style={{ height: '100%' }}>
+            <DeckCard
+              deck={{ slug: `${CUSTOM_PREFIX}${d.id}`, kind: 'custom', name: 'My deck', nameVi: d.name, blurb: d.words.slice(0, 4).map((w) => w.word).join(', '), words: d.words }}
+              colors={['#6EE7B7', '#059669']}
+              icon="note"
+            />
+          </Appear>
+        ))}
+        <Appear index={5 + customDecks.length} style={{ height: '100%' }}>
+          <SatLessonsCard title="từ bài bạn thích" lessons={[]} href="/vocabulary/import" colors={['#FDA4AF', '#E11D48']} icon="plus" />
+        </Appear>
       </Grid>
 
       <View className="h-6" />
@@ -189,13 +204,11 @@ function SatLessonsCard({
         <View className="h-11 w-11 items-center justify-center rounded-pill bg-white/90">
           <Icon name={icon} size={20} color={colors[1]} strokeWidth={1.9} />
         </View>
-        <Text className="mt-3 font-heavy text-cardTitle text-white">Từ vựng {title}</Text>
+        <Text className="mt-3 font-heavy text-cardTitle text-white">{lessons.length ? `Từ vựng ${title}` : `Tạo bộ ${title}`}</Text>
         <Text className="mt-1.5 font-sans text-label text-white/85" numberOfLines={2}>
-          {lessons.slice(0, 3).map((l) => l.title).join(' · ')}…
+          {lessons.length ? `${lessons.slice(0, 3).map((l) => l.title).join(' · ')}…` : 'Dán bài tiếng Anh bất kỳ — app lọc từ đáng học và tạo bộ cho bạn.'}
         </Text>
-        <Text className="mt-3 font-mid text-label text-white/90">
-          {lessons.length} bài · {words} từ
-        </Text>
+        <Text className="mt-3 font-mid text-label text-white/90">{lessons.length ? `${lessons.length} bài · ${words} từ` : 'Tạo bộ mới →'}</Text>
       </StickerCard>
     </PressScale>
   );

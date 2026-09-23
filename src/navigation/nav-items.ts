@@ -116,6 +116,7 @@ export const NAV_GROUPS: NavGroup[] = [
         children: [
           { key: 'vocab-practice', label: 'Luyện từ vựng', href: '/vocabulary/practice', icon: 'refresh' },
           { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
+          { key: 'vocab-import', label: 'Học từ bài bạn thích', href: '/vocabulary/import', icon: 'plus' },
           { key: 'notes', label: 'Ghi chú', href: '/notes', icon: 'note' },
           { key: 'bookmarks', label: 'Đã lưu', href: '/bookmarks', icon: 'bookmark' },
         ],
