@@ -13,7 +13,7 @@ type StickerCardProps = ViewProps & {
   ornament?: React.ReactNode;
 };
 
-/** Màu viền và bóng lệch: gần đen, đúng như bản thẻ người dùng chọn lại (commit fadf32e). */
+/** Màu bóng lệch: gần đen, đúng như bản thẻ người dùng chọn lại (commit fadf32e). */
 export const INK = '#0F172A';
 
 /** Bóng chữ trắng trên mặt thẻ: tiêu đề in nổi bằng mực, dòng phụ có quầng mờ. */
@@ -54,8 +54,9 @@ function glideTo(v: SharedValue<number>, to: number): void {
 type Pose = 'rest' | 'hover' | 'press';
 
 /**
- * Thẻ KHỐI: mặt gradient, viền gần đen 2,5px, bóng lệch cứng xuống phải —
- * đúng kiểu bản cũ người dùng gửi ảnh chọn lại ("phần đổ bóng đen làm giống ảnh 2").
+ * Thẻ KHỐI: mặt gradient, bóng lệch cứng màu gần đen xuống phải — đúng bóng của
+ * bản cũ người dùng chọn lại ("phần đổ bóng đen làm giống ảnh 2"); viền đen thì
+ * người dùng bảo bỏ.
  *
  * Có vật lý của một phím bấm: rê chuột thì mặt thẻ nhô lên phía trên trái và bóng
  * dài ra, nhấn thì lún xuống sát bóng — ĐÁY BÓNG ĐỨNG YÊN, nên nhìn ra là khối
@@ -111,7 +112,7 @@ export function StickerCard({ colors, children, className, style, bold, ornament
   return (
     <CardHoverContext.Provider value={pose !== 'rest'}>
       <Animated.View className={['rounded-card', className ?? ''].filter(Boolean).join(' ')} style={[shadow, motion, style]} {...(handlers as object)} {...rest}>
-        <View className="flex-1 overflow-hidden rounded-card" style={{ borderWidth: 2.5, borderColor: INK }}>
+        <View className="flex-1 overflow-hidden rounded-card">
           <LinearGradient colors={face} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 16, flex: 1 }}>
             {children}
           </LinearGradient>

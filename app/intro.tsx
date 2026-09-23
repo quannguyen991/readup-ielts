@@ -509,7 +509,7 @@ function AreaCard({ area }: { area: Area }) {
       <StickerCard bold colors={area.colors} style={{ flex: 1 }} ornament={<GlowStars />}>
         <View
           className="h-12 w-12 items-center justify-center rounded-panel bg-white"
-          style={{ borderWidth: 2, borderColor: INK, ...(Platform.OS === 'web' ? ({ boxShadow: `1.5px 3px 0 ${INK}` } as object) : null) }}
+          style={Platform.OS === 'web' ? ({ boxShadow: '0 2px 6px rgba(15,23,42,0.18)' } as object) : undefined}
         >
           <Icon name={area.icon} size={22} color={area.colors[1]} strokeWidth={2} />
         </View>
@@ -537,7 +537,7 @@ function AreaCard({ area }: { area: Area }) {
               {area.badge}
             </Text>
           </View>
-          <View className="h-8 w-8 items-center justify-center rounded-pill bg-white" style={{ borderWidth: 2, borderColor: INK }}>
+          <View className="h-8 w-8 items-center justify-center rounded-pill bg-white">
             <Icon name="arrow-right" size={15} color={INK} strokeWidth={2.4} />
           </View>
         </View>
