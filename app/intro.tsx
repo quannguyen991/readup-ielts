@@ -11,7 +11,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
 import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
-import { Gem3D, type Cut, type GemColor } from '@/components/three/Gem3D';
+import { GlowStars } from '@/components/ui/GlowStars';
 import { PLANS } from '@/lib/billing/plans';
 import { ARTICLES } from '@/data/articles';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
@@ -56,8 +56,6 @@ type Area = {
   /** Chữ trong viên thuốc ghim đáy thẻ — con số thật, hoặc điều kiện dùng. */
   badge: string;
   href: string;
-  /** Viên đá quý 3D ở góc thẻ — màu đá TƯƠNG PHẢN với nền thẻ để nó nổi lên. */
-  gem: { cut: Cut; color: GemColor; companion?: GemColor };
 };
 
 const AREAS: Area[] = [
@@ -68,7 +66,6 @@ const AREAS: Area[] = [
     lines: [`${ieltsCount} passage IELTS · ${satCount} passage SAT`],
     badge: `${readableCount.toLocaleString('vi-VN')} BÀI`,
     href: '/practice',
-    gem: { cut: 'brilliant', color: 'topaz' },
   },
   {
     icon: 'pencil',
@@ -77,7 +74,6 @@ const AREAS: Area[] = [
     lines: ['Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng'],
     badge: `${WRITING_PROMPTS.length} ĐỀ`,
     href: '/write',
-    gem: { cut: 'brilliant', color: 'clear' },
   },
   {
     icon: 'grid',
@@ -86,7 +82,6 @@ const AREAS: Area[] = [
     lines: ['Đáp án tính bằng code, không do AI đoán'],
     badge: `${(CURRICULUM_TOTALS.questions + satRwStats().questions).toLocaleString('vi-VN')} CÂU`,
     href: '/sat',
-    gem: { cut: 'princess', color: 'clear' },
   },
   {
     icon: 'volume',
@@ -95,7 +90,6 @@ const AREAS: Area[] = [
     lines: ['Chép chính tả và dịch câu, chấm từng từ'],
     badge: `${sentenceCount} CÂU`,
     href: '/sentence',
-    gem: { cut: 'oval', color: 'ruby' },
   },
   {
     icon: 'letters',
@@ -104,7 +98,6 @@ const AREAS: Area[] = [
     lines: ['Mỗi từ lưu kèm nguyên câu gặp nó'],
     badge: 'FSRS',
     href: '/vocabulary',
-    gem: { cut: 'brilliant', color: 'pink' },
   },
   {
     icon: 'trending',
@@ -113,7 +106,6 @@ const AREAS: Area[] = [
     lines: [`${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`],
     badge: 'MIỄN PHÍ',
     href: '/math',
-    gem: { cut: 'emerald', color: 'sapphire' },
   },
 ];
 
@@ -129,7 +121,6 @@ const BILINGUAL_AREA: Area = {
   lines: ['VOA, NASA, Global Voices và bài phân tích ReadUp · Anh–Việt · miễn phí cho mọi người'],
   badge: `${bilingualStats().articles} BÀI`,
   href: '/bilingual',
-  gem: { cut: 'brilliant', color: 'clear', companion: 'sapphire' },
 };
 /**
  * Ba bước, và ở đây đánh số là ĐÚNG chứ không phải trang trí: thứ tự mang thông
@@ -336,9 +327,8 @@ export default function IntroScreen() {
         </Text>
       </Appear>
 
-      {/* Khoảng trống trên và giữa các hàng rộng hơn thường lệ: vật thể 3D nhô qua mép trên của thẻ. */}
-      <View className="mt-9">
-        <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={30}>
+      <View className="mt-5">
+        <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={18}>
           {AREAS.map((area, index) => (
             <Appear key={area.title} index={index + 2} style={{ flex: 1 }}>
               <AreaCard area={area} />
@@ -346,7 +336,7 @@ export default function IntroScreen() {
           ))}
         </Grid>
         <Appear index={AREAS.length + 2}>
-          <View className="mt-9">
+          <View className="mt-5">
             <AreaCard area={BILINGUAL_AREA} />
           </View>
         </Appear>
@@ -512,11 +502,11 @@ function StatPill({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** Một mảng học: thẻ khối 3D, vật thể xoay ở góc, viên nhãn ghim đáy là con số thật của mảng đó. */
+/** Một mảng học: thẻ khối bóng lệch, chùm sao phát sáng ở góc, viên nhãn ghim đáy là con số thật của mảng đó. */
 function AreaCard({ area }: { area: Area }) {
   return (
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
-      <StickerCard bold colors={area.colors} style={{ flex: 1 }} ornament={<Gem3D cut={area.gem.cut} color={area.gem.color} companion={area.gem.companion} size={108} />}>
+      <StickerCard bold colors={area.colors} style={{ flex: 1 }} ornament={<GlowStars />}>
         <View
           className="h-12 w-12 items-center justify-center rounded-panel bg-white"
           style={{ borderWidth: 2, borderColor: INK, ...(Platform.OS === 'web' ? ({ boxShadow: `1.5px 3px 0 ${INK}` } as object) : null) }}
