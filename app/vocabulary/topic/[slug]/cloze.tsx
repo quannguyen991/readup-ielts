@@ -4,7 +4,7 @@ import { useLocalSearchParams } from 'expo-router';
 
 import { ChoiceGrid, FeedbackPanel, GhostButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
-import { getVocabTopic } from '@/data/vocab-topics';
+import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { clozeOf, makeChoices, seededRng, shuffled } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -18,7 +18,7 @@ import { useStudyStore } from '@/store/useStudyStore';
  */
 export default function ClozeScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
-  const topic = getVocabTopic(slug);
+  const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const [seed] = useState(() => Date.now() % 100000);
 

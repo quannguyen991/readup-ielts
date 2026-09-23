@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { levelLabel, posIpa } from '@/data/study-decks';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
@@ -72,10 +73,10 @@ export function FlipCard({
 export function WordFace({ word, hint }: { word: StudyWord; hint?: string }) {
   return (
     <>
-      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">Band {word.band}</Text>
+      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{levelLabel(word.band)}</Text>
       <Text className="mt-3 text-center font-heavy text-hero text-ink">{word.word}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">
-        {word.pos} · {word.ipa}
+        {posIpa(word)}
       </Text>
       {hint ? <Text className="absolute bottom-5 font-sans text-label text-subtle">{hint}</Text> : null}
     </>

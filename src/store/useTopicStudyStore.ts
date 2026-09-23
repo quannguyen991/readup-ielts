@@ -22,6 +22,9 @@ type TopicStudyState = {
   scores: Record<string, GameScore[]>;
   /** slug → các từ người học gắn sao để học riêng. */
   starred: Record<string, string[]>;
+  /** slug → từ → số lần làm sai trong màn Học. Vòng sau hỏi từ sai nhiều trước. */
+  lapses: Record<string, Record<string, number>>;
+  addLapse: (slug: string, word: string) => void;
   /** Cài đặt màn Học — dùng chung mọi bộ, như một thói quen học của người dùng. */
   learnSettings: LearnSettings;
   toggleStar: (slug: string, word: string) => void;
@@ -37,6 +40,9 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       stages: {},
       scores: {},
       starred: {},
+      lapses: {},
+      addLapse: (slug, word) =>
+        set((s) => ({ lapses: { ...s.lapses, [slug]: { ...(s.lapses[slug] ?? {}), [word]: (s.lapses[slug]?.[word] ?? 0) + 1 } } })),
       learnSettings: DEFAULT_LEARN_SETTINGS,
       toggleStar: (slug, word) =>
         set((s) => {
@@ -60,7 +66,9 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         set((s) => {
           const stages = { ...s.stages };
           delete stages[slug];
-          return { stages };
+          const lapses = { ...s.lapses };
+          delete lapses[slug];
+          return { stages, lapses };
         }),
     }),
     {
@@ -68,7 +76,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, learnSettings: s.learnSettings }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, learnSettings: s.learnSettings }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         const p = (persisted ?? {}) as Partial<TopicStudyState>;

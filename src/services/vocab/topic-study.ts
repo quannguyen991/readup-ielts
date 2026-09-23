@@ -180,10 +180,13 @@ export function pickRound<W extends StudyWord>(
   stageOf: (w: string) => WordStage,
   size = 10,
   rng?: () => number,
+  lapsesOf: (w: string) => number = () => 0,
 ): W[] {
   const open = words.filter((w) => stageOf(w.word) < 2);
   const source = open.length > 0 ? open : words;
-  return (rng ? shuffled(source, rng) : [...source]).slice(0, size);
+  const ordered = rng ? shuffled(source, rng) : [...source];
+  // Từ hay sai lên trước; sort ổn định nên các từ bằng nhau giữ thứ tự cũ.
+  return ordered.sort((a, b) => lapsesOf(b.word) - lapsesOf(a.word)).slice(0, size);
 }
 
 /**
@@ -200,7 +203,12 @@ export function directionFor(word: string, step: number, dirs: readonly Directio
   return list[(word.length + step) % list.length]!;
 }
 
-export type LearnItem = { word: string; kind: StageKind };
+/**
+ * Một câu trong hàng đợi. `lapse`:
+ * - `retry`   — vừa làm sai, đang hỏi lại sớm.
+ * - `confirm` — đã sửa đúng một lần, hỏi lại lần nữa xa hơn cho chắc.
+ */
+export type LearnItem = { word: string; kind: StageKind; lapse?: 'retry' | 'confirm' };
 
 /** Hàng đợi ban đầu: mọi từ ở phần đầu tiên đang bật. */
 export function initialQueue(words: readonly StudyWord[], kinds: readonly StageKind[] = STAGE_ORDER): LearnItem[] {
@@ -208,7 +216,17 @@ export function initialQueue(words: readonly StudyWord[], kinds: readonly StageK
   return words.map((w) => ({ word: w.word, kind: first }));
 }
 
-/** Khoảng cách (số câu) trước khi gặp lại một câu. */
+/**
+ * Ôn giãn cách TRONG MỘT BUỔI (kiểu Learn của Quizlet): một từ không xong
+ * ngay khi làm đúng một lần, mà quay lại vài lúc sau, cách càng lúc càng xa.
+ *
+ * - SAI → hỏi lại sớm, sau GAP_WRONG câu, khi dấu vết còn mới.
+ * - Sửa ĐÚNG → chưa tin: hỏi lại cùng phần đó thêm một lần, xa hơn
+ *   (GAP_CONFIRM câu), để chắc là nhớ chứ không phải vừa nhìn đáp án xong.
+ * - ĐÚNG → sang phần kế tiếp sau REQUEUE_GAP câu.
+ */
+export const GAP_WRONG = 2;
+export const GAP_CONFIRM = 5;
 export const REQUEUE_GAP = 3;
 
 /** Phần này có phải phần cuối từ phải qua không. */
@@ -218,19 +236,25 @@ export function isFinalKind(kind: StageKind, kinds: readonly StageKind[]): boole
 }
 
 /**
- * Qua một câu. Đúng thì từ được xếp sang phần kế tiếp — không ngay sau, để giữa
- * hai lần gặp có vài câu khác chen vào. Sai thì câu ấy quay lại sau vài lượt.
- * Vòng kết thúc khi mọi từ qua phần cuối.
+ * Câu đúng này có ĐƯA TỪ QUA ĐƯỢC phần hiện tại không. Câu `retry` đúng thì
+ * chưa — còn phải qua lần xác nhận.
  */
+export function passesStage(item: LearnItem): boolean {
+  return item.lapse !== 'retry';
+}
+
+/** Qua một câu. Vòng kết thúc khi mọi từ qua phần cuối. */
 export function advanceQueue(queue: readonly LearnItem[], correct: boolean, kinds: readonly StageKind[] = STAGE_ORDER): LearnItem[] {
   const [head, ...rest] = queue;
   if (!head) return [];
-  const insertAt = (item: LearnItem) => {
-    const at = Math.min(REQUEUE_GAP, rest.length);
+  // Chèn sau `gap` câu, nhưng không bao giờ ngay đầu hàng khi còn câu khác.
+  const insertAt = (item: LearnItem, gap: number) => {
+    const at = Math.min(Math.max(1, gap), rest.length);
     return [...rest.slice(0, at), item, ...rest.slice(at)];
   };
-  if (!correct) return insertAt(head);
+  if (!correct) return insertAt({ word: head.word, kind: head.kind, lapse: 'retry' }, GAP_WRONG);
+  if (head.lapse === 'retry') return insertAt({ word: head.word, kind: head.kind, lapse: 'confirm' }, GAP_CONFIRM);
   const k = activeKinds(kinds);
   const nextKind = k[k.indexOf(head.kind) + 1];
-  return nextKind ? insertAt({ word: head.word, kind: nextKind }) : rest;
+  return nextKind ? insertAt({ word: head.word, kind: nextKind }, REQUEUE_GAP) : rest;
 }
