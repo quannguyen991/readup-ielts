@@ -285,7 +285,7 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
 const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
   { key: 'learn', label: 'Học', note: 'Lật thẻ · trắc nghiệm · điền từ', icon: 'book', tone: '#2563EB', recommended: true },
   { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
-  { key: 'cloze', label: 'Điền vào câu', note: 'Dùng từ trong câu ví dụ', icon: 'pencil', tone: '#7C3AED' },
+  { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#7C3AED' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
   { key: 'test', label: 'Kiểm tra', note: '20 câu trộn 4 dạng, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
   { key: 'game', label: 'Bóng bay', note: 'Trò chơi, có bảng điểm', icon: 'sparkle', tone: '#16A34A' },
