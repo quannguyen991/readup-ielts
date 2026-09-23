@@ -139,7 +139,10 @@ export default function ClozeScreen() {
       return;
     }
     setMistake(m);
-    if (m) setMistakes((list) => [...list, { word: q.word.word, m }]);
+    if (m) {
+      setMistakes((list) => [...list, { word: q.word.word, m }]);
+      useTopicStudyStore.getState().logMistake(slug, q.word.word, m.kind);
+    }
     addLapse(slug, q.word.word);
   };
 

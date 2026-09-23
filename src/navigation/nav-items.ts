@@ -134,6 +134,7 @@ export const NAV_GROUPS: NavGroup[] = [
         href: '/progress',
         icon: 'trending',
         children: [
+          { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },
           { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
           // Đo CHÍNH BỘ ĐỀ chứ không đo người học — nhưng đề không đo được cái nó
           // tự nhận đang đo thì mọi con số tiến độ bên trên đều rỗng.

@@ -211,7 +211,10 @@ export default function LearnScreen() {
     if (!word || !head) return;
     setVerdict(ok);
     setMistake(ok ? null : m);
-    if (!ok && m) setMistakes((list) => [...list, { word: word.word, m }]);
+    if (!ok && m) {
+      setMistakes((list) => [...list, { word: word.word, m }]);
+      useTopicStudyStore.getState().logMistake(slug, word.word, m.kind);
+    }
     if (ok) playCorrectChime();
     record(ok);
   };

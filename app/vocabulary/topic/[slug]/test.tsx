@@ -9,6 +9,7 @@ import { buildQuiz, isAnswered, isQuizCorrect, QUIZ_KIND_LABEL, type QuizAnswer,
 import { diagnoseTyped } from '@/services/vocab/mistake';
 import { seededRng } from '@/services/vocab/topic-study';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
 
 const LENGTH = 20;
@@ -44,6 +45,15 @@ export default function TestScreen() {
   const submit = () => {
     setSubmitted(true);
     logQuestions(questions.length);
+    // Ghi kiểu lỗi của câu gõ sai vào Hồ sơ lỗi (câu chọn sai không gọi được tên lỗi chính tả).
+    const log = useTopicStudyStore.getState().logMistake;
+    questions.forEach((qq, i) => {
+      const a = answers[i] ?? null;
+      if (qq.kind === 'type' && typeof a === 'string' && isAnswered(a) && !isQuizCorrect(qq, a)) {
+        const why = diagnoseTyped(a, qq.word.word);
+        if (why) log(slug, qq.word.word, why.kind);
+      }
+    });
   };
   const retry = () => {
     setSeed((s) => s + 1);
