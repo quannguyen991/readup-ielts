@@ -8,7 +8,7 @@ import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridB
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
-import { Badge, Button, Card, Icon, type IconName } from '@/components/ui';
+import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
 import { PLANS } from '@/lib/billing/plans';
 import { ARTICLES } from '@/data/articles';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
@@ -495,32 +495,52 @@ function StatPill({ value, label }: { value: string; label: string }) {
 
 /** Một mảng học: thẻ sticker màu đặc, viên thuốc ghim đáy là con số thật của mảng đó. */
 function AreaCard({ area }: { area: Area }) {
-  const tone = area.colors[1];
   return (
     <PressScale onPress={() => enterApp(area.href)} style={{ height: '100%' }}>
-      <View className="h-full rounded-[18px] bg-surface p-5" style={softCard}>
-        <View className="flex-row items-center justify-between">
-          <View className="h-11 w-11 items-center justify-center rounded-xl" style={{ backgroundColor: `${tone}1A` }}>
-            <Icon name={area.icon} size={21} color={tone} strokeWidth={2} />
-          </View>
-          <Icon name="arrow-right" size={18} color="#94A3B8" />
+      <StickerCard bold colors={area.colors} style={{ height: '100%' }}>
+        {/* Hai ngôi sao chỉ để trang trí — chặn chạm để chúng không nuốt cú bấm
+            vào thẻ ở góc trên phải. */}
+        <View
+          pointerEvents="none"
+          style={{ position: 'absolute', right: 14, top: 12, opacity: 0.45 }}
+        >
+          <Icon name="sparkle" size={18} color="#fff" strokeWidth={1.6} />
+        </View>
+        <View
+          pointerEvents="none"
+          style={{ position: 'absolute', right: 38, top: 44, opacity: 0.28 }}
+        >
+          <Icon name="sparkle" size={12} color="#fff" strokeWidth={1.6} />
         </View>
 
-        <Text className="mt-4 font-strong text-[19px] leading-7 text-ink">{area.title}</Text>
-        <View className="mt-1 gap-1">
+        <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/90">
+          <Icon name={area.icon} size={22} color={area.colors[1]} strokeWidth={1.9} />
+        </View>
+
+        <Text className="mt-3.5 font-heavy text-sectionTitle text-white">{area.title}</Text>
+
+        {/* Chữ trắng đặc, không giảm độ mờ: đầu sáng của gradient (thẻ cam, thẻ
+            xanh lá) làm chữ mờ 90% tụt xuống dưới ngưỡng đọc được. */}
+        <View className="mt-2 gap-1.5">
           {area.lines.map((line) => (
-            <Text key={line} className="font-sans text-[15px] leading-6 text-muted">
+            <Text key={line} className="font-sans text-label text-white">
               {line}
             </Text>
           ))}
         </View>
 
-        {/* Đẩy con số xuống đáy để các thẻ thẳng hàng dù chữ dài ngắn khác nhau. */}
+        {/* Đẩy viên thuốc xuống đáy để sáu thẻ có badge thẳng hàng dù chữ dài ngắn khác nhau. */}
         <View className="flex-1" />
-        <Text className="mt-4 font-semi text-[14px]" style={{ color: tone }}>
-          {area.badge}
-        </Text>
-      </View>
+
+        <View className="mt-5 flex-row items-center justify-between gap-2">
+          <View className="rounded-pill bg-white/25 px-3 py-1">
+            <Text className="font-heavy text-label text-white" style={{ letterSpacing: 0.6 }}>
+              {area.badge}
+            </Text>
+          </View>
+          <Icon name="arrow-right" size={16} color="#fff" />
+        </View>
+      </StickerCard>
     </PressScale>
   );
 }
