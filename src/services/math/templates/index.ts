@@ -3,6 +3,7 @@ import { ALGEBRA_TEMPLATES } from './algebra';
 import { DATA_TEMPLATES } from './data';
 import { GEOMETRY_TEMPLATES } from './geometry';
 import { MORE_ADVANCED_TEMPLATES } from './more-advanced';
+import { MORE_ADVANCED_TEMPLATES_2 } from './more-advanced-2';
 import { MORE_ALGEBRA_TEMPLATES } from './more-algebra';
 import { MORE_DATA_TEMPLATES } from './more-data';
 import { MORE_GEOMETRY_TEMPLATES } from './more-geometry';
@@ -35,6 +36,8 @@ export const MATH_TEMPLATES: readonly MathTemplate[] = [
   // Dạng thứ ba và thứ tư của mỗi kỹ năng — xem đầu mỗi file `more-*.ts`.
   ...MORE_ALGEBRA_TEMPLATES,
   ...MORE_ADVANCED_TEMPLATES,
+  // Advanced Math có kho lớn nhất, nên có thêm đợt hai: 7 dạng mỗi kỹ năng.
+  ...MORE_ADVANCED_TEMPLATES_2,
   ...MORE_DATA_TEMPLATES,
   ...MORE_GEOMETRY_TEMPLATES,
 ];

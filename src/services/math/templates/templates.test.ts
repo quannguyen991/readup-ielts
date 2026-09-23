@@ -9,6 +9,7 @@ import { equalsValue, formatValue, rat, toDecimal } from '@/lib/math/value';
 import { generateMathItem } from '@/services/math/generator';
 import { fitsGrid } from '@/services/math/grid-in';
 import { MORE_VERIFIERS } from './more.verify';
+import { MORE_ADVANCED_VERIFIERS_2 } from './more-advanced-2.verify';
 
 /**
  * Property test của bộ sinh đề Math.
@@ -1227,20 +1228,21 @@ const VERIFIERS: Record<string, Verifier> = {
 };
 
 // Bộ kiểm chứng của dạng thứ ba và thứ tư mỗi kỹ năng (`more-*.ts`).
-Object.assign(VERIFIERS, MORE_VERIFIERS);
+Object.assign(VERIFIERS, MORE_VERIFIERS, MORE_ADVANCED_VERIFIERS_2);
 
 // ------------------------------------------------------------ tính chất chung
 
 test('taxonomy 19 kỹ năng đã được phủ hết', () => {
   assert.deepEqual(uncoveredSkills(), [], 'Còn kỹ năng chưa có template.');
-  assert.equal(MATH_TEMPLATES.length, 76);
+  assert.equal(MATH_TEMPLATES.length, 85);
 });
 
-test('mỗi kỹ năng có đủ bốn dạng câu', () => {
+test('mỗi kỹ năng có ít nhất bốn dạng câu, Advanced Math có bảy', () => {
   const bySkill = new Map<string, number>();
   for (const t of MATH_TEMPLATES) bySkill.set(t.skill, (bySkill.get(t.skill) ?? 0) + 1);
   for (const skill of Object.keys(MATH_SKILL_DOMAIN)) {
-    assert.equal(bySkill.get(skill), 4, `${skill} có ${bySkill.get(skill) ?? 0} dạng.`);
+    const need = MATH_SKILL_DOMAIN[skill as keyof typeof MATH_SKILL_DOMAIN] === 'advanced_math' ? 7 : 4;
+    assert.ok((bySkill.get(skill) ?? 0) >= need, `${skill} có ${bySkill.get(skill) ?? 0} dạng, cần ${need}.`);
   }
 });
 
