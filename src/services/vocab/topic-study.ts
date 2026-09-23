@@ -15,6 +15,9 @@ export type StudyWord = {
   example: string;
   collocation: string;
   band: string;
+  /** Chỉ bộ có dữ liệu viết tay (SAT Verbal): từ đồng nghĩa, trái nghĩa. */
+  synonyms?: string[];
+  antonyms?: string[];
 };
 
 /** RNG gieo hạt — cùng hạt ra cùng thứ tự, để test tái lập được. */

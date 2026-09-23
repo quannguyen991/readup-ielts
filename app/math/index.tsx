@@ -165,7 +165,8 @@ function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDi
           onPress={() => router.push('/math/diagnostic' as never)}
         />
         <Button label="Thi thử" variant="outline" size="lg" onPress={() => router.push('/math/mock' as never)} />
-        <Button label="Từ vựng toán" variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/math/vocab' as never)} />
+        <Button label="Bài học lý thuyết" variant="outline" size="lg" iconLeft="book" onPress={() => router.push('/math/learn' as never)} />
+        <Button label="Bài từ vựng" variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/math/learn?tab=vocab' as never)} />
       </LightHero>
 
       <View className="mt-5" />

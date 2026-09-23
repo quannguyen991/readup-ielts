@@ -348,6 +348,7 @@ export function FeedbackPanel({
               <Text className="font-semi text-ink">{word.collocation}</Text>
             </Text>
           ) : null}
+          <SynAnt word={word} />
         </View>
         <PrimaryButton label="Tiếp tục" hint="Enter" onPress={onNext} />
       </View>
@@ -400,5 +401,30 @@ export function GhostButton({
         {label}
       </Text>
     </Pressable>
+  );
+}
+
+/** Đồng nghĩa / trái nghĩa — chỉ bộ có dữ liệu viết tay mới có; không có thì không vẽ gì. */
+export function SynAnt({ word, center }: { word: StudyWord; center?: boolean }) {
+  const rows = [
+    { label: 'Đồng nghĩa', words: word.synonyms ?? [], tone: GREEN, bg: '#ECFDF3' },
+    { label: 'Trái nghĩa', words: word.antonyms ?? [], tone: RED, bg: '#FFF1F2' },
+  ].filter((r) => r.words.length > 0);
+  if (rows.length === 0) return null;
+  return (
+    <View className="mt-3 gap-1.5">
+      {rows.map((r) => (
+        <View key={r.label} className={`flex-row flex-wrap items-center gap-1.5 ${center ? 'justify-center' : ''}`}>
+          <Text className="mr-1 font-strong text-label text-muted">{r.label}</Text>
+          {r.words.map((w) => (
+            <View key={w} className="rounded-pill px-2.5 py-1" style={{ backgroundColor: r.bg }}>
+              <Text className="font-semi text-label" style={{ color: r.tone }}>
+                {w}
+              </Text>
+            </View>
+          ))}
+        </View>
+      ))}
+    </View>
   );
 }

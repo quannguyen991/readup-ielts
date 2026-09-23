@@ -1,0 +1,101 @@
+/**
+ * Bài từ vựng SAT — chia kho từ thành những bài ngắn (6–13 từ), mỗi bài là một
+ * "bộ học" chạy được mọi chế độ của màn Từ vựng (thẻ lật, Học, Nghe chép, Điền
+ * câu, Kiểm tra, Bóng bay).
+ *
+ * VÌ SAO CHIA NHỎ: các nền tảng luyện SAT (PrepScholar, PrepMaven…) đều khuyên
+ * học từ theo nhóm nhỏ và ôn lặp, không cày một danh sách vài trăm từ. Một bài
+ * vừa đủ cho một buổi 15 phút.
+ *
+ * - SAT Math: thuật ngữ đề bài, cắt theo mảng kiến thức.
+ * - SAT Verbal: từ của dạng Words in Context gom theo CHỦ ĐỀ NGHĨA, để các cặp
+ *   trái nghĩa (provisional ↔ permanent, candid ↔ reticent) nằm cùng một bài;
+ *   từ nối gom theo quan hệ logic.
+ */
+import { SAT_VOCAB_CATEGORY_LABEL, SAT_VOCAB_CATEGORY_ORDER, SAT_VOCAB_TERMS } from '../sat-math-vocab';
+import { SAT_RW_LEXICON } from '../sat-rw-lexicon';
+import type { StudyWord } from '@/services/vocab/topic-study';
+
+export type VocabLesson = {
+  slug: string;
+  subject: 'math' | 'verbal';
+  title: string;
+  blurb: string;
+  words: StudyWord[];
+};
+
+// ------------------------------------------------------------------ Math
+function chunk<T>(list: T[]): T[][] {
+  if (list.length <= 8) return [list];
+  const parts = Math.ceil(list.length / 8);
+  const size = Math.ceil(list.length / parts);
+  const out: T[][] = [];
+  for (let i = 0; i < list.length; i += size) out.push(list.slice(i, i + size));
+  return out;
+}
+
+const mathLessons: VocabLesson[] = [];
+for (const cat of SAT_VOCAB_CATEGORY_ORDER) {
+  const terms = SAT_VOCAB_TERMS.filter((t) => t.category === cat);
+  const parts = chunk(terms);
+  parts.forEach((part, i) => {
+    mathLessons.push({
+      slug: `sat-math-bai-${mathLessons.length + 1}`,
+      subject: 'math',
+      title: parts.length > 1 ? `${SAT_VOCAB_CATEGORY_LABEL[cat]} · phần ${i + 1}` : SAT_VOCAB_CATEGORY_LABEL[cat],
+      blurb: part.slice(0, 4).map((t) => t.term).join(', ') + (part.length > 4 ? '…' : ''),
+      words: part.map((t) => ({
+        word: t.term,
+        pos: '',
+        ipa: '',
+        meaningVi: t.meaningVi,
+        definitionEn: t.definitionEn,
+        example: t.example,
+        collocation: '',
+        band: SAT_VOCAB_CATEGORY_LABEL[cat],
+      })),
+    });
+  });
+}
+
+// ---------------------------------------------------------------- Verbal
+/** Thứ tự từ trong mỗi bài = thứ tự học; cặp trái nghĩa đặt cạnh nhau. */
+export const VERBAL_THEMES: { title: string; blurb: string; words: string[] }[] = [
+  { title: 'Từ nối: kết quả và bổ sung', blurb: 'therefore, thus, as a result, moreover…', words: ['therefore', 'thus', 'consequently', 'as a result', 'moreover', 'furthermore', 'in addition'] },
+  { title: 'Từ nối: tương phản và nhượng bộ', blurb: 'however, by contrast, nevertheless, even so', words: ['however', 'by contrast', 'nevertheless', 'even so'] },
+  { title: 'Từ nối: ví dụ, diễn giải, thời gian', blurb: 'for example, that is, previously, meanwhile…', words: ['for example', 'for instance', 'that is', 'in other words', 'previously', 'subsequently', 'meanwhile'] },
+  { title: 'Chắc chắn hay còn bỏ ngỏ', blurb: 'provisional ↔ permanent, undisputed ↔ controversial', words: ['provisional', 'permanent', 'temporary', 'settled', 'undisputed', 'controversial', 'contentious', 'tenuous', 'inevitable', 'preliminary', 'hypothetical', 'theoretical'] },
+  { title: 'Thật, giả và trung thực', blurb: 'candid ↔ reticent, accurate ↔ fabricated', words: ['accurate', 'inaccurate', 'mistaken', 'fabricated', 'fraudulent', 'dishonest', 'candid', 'reticent', 'fictional', 'original', 'derivative'] },
+  { title: 'Kỹ lưỡng hay qua loa', blurb: 'meticulous ↔ cursory, intentional ↔ accidental', words: ['meticulous', 'thorough', 'cursory', 'exhaustive', 'selective', 'arbitrary', 'intentional', 'accidental', 'incremental', 'immediate', 'brief'] },
+  { title: 'Thấy được, nghe được', blurb: 'conspicuous ↔ camouflaged, audible ↔ inaudible', words: ['obvious', 'obscure', 'conspicuous', 'camouflaged', 'invisible', 'audible', 'inaudible', 'illegible', 'silent', 'motionless', 'static'] },
+  { title: 'Mạnh, yếu, lợi, hại', blurb: 'fragile ↔ resilient, harmless ↔ invasive', words: ['fragile', 'resilient', 'harmless', 'innocuous', 'invasive', 'useful', 'irrelevant', 'insignificant', 'urgent', 'expensive'] },
+  { title: 'Phổ biến, hiếm và đều đặn', blurb: 'ubiquitous ↔ unprecedented, uniform ↔ uneven', words: ['ubiquitous', 'unprecedented', 'predictable', 'uniform', 'uneven', 'monotonous', 'eclectic', 'seasonal', 'regional', 'recent', 'prolific'] },
+  { title: 'Con người, thái độ và nơi chốn', blurb: 'indifferent, ambivalent, unanimous, austere…', words: ['indifferent', 'ambivalent', 'uninformed', 'unanimous', 'amateur', 'technical', 'experimental', 'austere', 'cluttered', 'crowded', 'confidential', 'illegal', 'unfinished'] },
+  { title: 'Dữ liệu và cụm từ cố định', blurb: 'statistical ↔ anecdotal, consistent with ↔ at odds with', words: ['statistical', 'anecdotal', 'derived from', 'indifferent to', 'consistent with', 'at odds with'] },
+];
+
+const verbalLessons: VocabLesson[] = VERBAL_THEMES.map((theme, i) => ({
+  slug: `sat-verbal-bai-${i + 1}`,
+  subject: 'verbal',
+  title: theme.title,
+  blurb: theme.blurb,
+  words: theme.words.map((w) => {
+    const e = SAT_RW_LEXICON[w]!;
+    return {
+      word: w,
+      pos: e.logic ? `từ nối · ${e.logic}` : e.pos,
+      ipa: '',
+      meaningVi: e.meaningVi,
+      definitionEn: e.definitionEn,
+      example: e.example,
+      collocation: '',
+      band: e.logic ? 'Từ nối' : 'Words in Context',
+      synonyms: e.synonyms,
+      antonyms: e.antonyms,
+    };
+  }),
+}));
+
+export const SAT_MATH_VOCAB_LESSONS = mathLessons;
+export const SAT_VERBAL_VOCAB_LESSONS = verbalLessons;
+export const SAT_VOCAB_LESSONS: VocabLesson[] = [...mathLessons, ...verbalLessons];

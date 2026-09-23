@@ -5,6 +5,7 @@
  *
  * - `<slug chủ đề>`       — 50 bộ từ theo chủ đề IELTS.
  * - `sat-math-<nhóm>`     — thuật ngữ SAT Math theo nhóm (Đại số, Hình học…).
+ * - `sat-math-bai-N`, `sat-verbal-bai-N` — bài từ vựng SAT (xem `lessons/vocab-lessons.ts`).
  * - `so-tu`               — sổ từ cá nhân: những từ người học tự lưu lúc đọc.
  *
  * Hàm thuần, không đọc store — sổ từ được dựng từ danh sách mục truyền vào.
@@ -12,6 +13,7 @@
 import { SAT_VOCAB_CATEGORY_BLURB, SAT_VOCAB_CATEGORY_LABEL, SAT_VOCAB_CATEGORY_ORDER, SAT_VOCAB_TERMS } from './sat-math-vocab';
 import { BAND_ORDER, getVocabTopic } from './vocab-topics';
 import type { StudyWord } from '@/services/vocab/topic-study';
+import { SAT_VOCAB_LESSONS } from './lessons/vocab-lessons';
 
 export type StudyDeck = {
   slug: string;
@@ -49,6 +51,17 @@ export const SAT_MATH_DECKS: StudyDeck[] = SAT_VOCAB_CATEGORY_ORDER.map((cat) =>
 
 /** Bộ không phụ thuộc dữ liệu người dùng: chủ đề IELTS và thuật ngữ SAT Math. */
 export function getStaticDeck(slug: string): StudyDeck | undefined {
+  const lesson = SAT_VOCAB_LESSONS.find((l) => l.slug === slug);
+  if (lesson) {
+    return {
+      slug: lesson.slug,
+      kind: 'sat-math',
+      name: lesson.subject === 'math' ? 'SAT Math vocabulary' : 'SAT Verbal vocabulary',
+      nameVi: `${lesson.subject === 'math' ? 'SAT Math' : 'SAT Verbal'} · ${lesson.title}`,
+      blurb: lesson.blurb,
+      words: lesson.words,
+    };
+  }
   const sat = SAT_MATH_DECKS.find((d) => d.slug === slug);
   if (sat) return sat;
   const t = getVocabTopic(slug);

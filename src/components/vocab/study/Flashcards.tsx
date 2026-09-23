@@ -67,6 +67,7 @@ export function Flashcards<W extends StudyWord>({
       <View>
         <CrossFade swapKey={`${order}-${seed}-${index}`}>
           <FlipCard
+            height={word.synonyms?.length ? 430 : 340}
             cardKey={`${order}-${seed}-${index}`}
             flipped={flipped}
             onFlip={() => setFlipped((f) => !f)}
