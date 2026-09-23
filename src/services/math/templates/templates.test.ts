@@ -8,6 +8,7 @@ import type { MathItem, MathValue } from '@/lib/math/types';
 import { equalsValue, formatValue, rat, toDecimal } from '@/lib/math/value';
 import { generateMathItem } from '@/services/math/generator';
 import { fitsGrid } from '@/services/math/grid-in';
+import { MORE_VERIFIERS } from './more.verify';
 
 /**
  * Property test của bộ sinh đề Math.
@@ -1225,11 +1226,22 @@ const VERIFIERS: Record<string, Verifier> = {
 
 };
 
+// Bộ kiểm chứng của dạng thứ ba và thứ tư mỗi kỹ năng (`more-*.ts`).
+Object.assign(VERIFIERS, MORE_VERIFIERS);
+
 // ------------------------------------------------------------ tính chất chung
 
 test('taxonomy 19 kỹ năng đã được phủ hết', () => {
   assert.deepEqual(uncoveredSkills(), [], 'Còn kỹ năng chưa có template.');
-  assert.equal(MATH_TEMPLATES.length, 38);
+  assert.equal(MATH_TEMPLATES.length, 76);
+});
+
+test('mỗi kỹ năng có đủ bốn dạng câu', () => {
+  const bySkill = new Map<string, number>();
+  for (const t of MATH_TEMPLATES) bySkill.set(t.skill, (bySkill.get(t.skill) ?? 0) + 1);
+  for (const skill of Object.keys(MATH_SKILL_DOMAIN)) {
+    assert.equal(bySkill.get(skill), 4, `${skill} có ${bySkill.get(skill) ?? 0} dạng.`);
+  }
 });
 
 test('mọi template đều có bộ kiểm chứng riêng', () => {
@@ -1313,7 +1325,8 @@ for (const template of MATH_TEMPLATES) {
       assert.ok(!/NaN|Infinity|undefined|null/.test(rendered), `Đề in ra rác: ${rendered}`);
       assert.ok(!/-0\b/.test(rendered), `Đề in ra số âm 0: ${rendered}`);
       assert.ok(!/\+ -|- -/.test(rendered), `Đề in ra dấu chồng dấu: ${rendered}`);
-      assert.ok(!/\b1x\b/.test(rendered), `Đề in ra hệ số 1 thừa: ${rendered}`);
+      // Không tính số thập phân: "2.1x" là hệ số 2,1 hợp lệ, không phải hệ số 1 thừa.
+      assert.ok(!/(?<![\d.])1x\b/.test(rendered), `Đề in ra hệ số 1 thừa: ${rendered}`);
       // Ngoặc rỗng nghĩa là có một số hạng bị rút mất trong lúc ghép chuỗi. Đã
       // bắt được thật: nghiệm 0 làm `(x - 0)` in ra thành "()" sau khi rút.
       assert.ok(!/\(\s*\)/.test(rendered), `Đề in ra ngoặc rỗng: ${rendered}`);

@@ -2,6 +2,10 @@ import { ADVANCED_TEMPLATES } from './advanced';
 import { ALGEBRA_TEMPLATES } from './algebra';
 import { DATA_TEMPLATES } from './data';
 import { GEOMETRY_TEMPLATES } from './geometry';
+import { MORE_ADVANCED_TEMPLATES } from './more-advanced';
+import { MORE_ALGEBRA_TEMPLATES } from './more-algebra';
+import { MORE_DATA_TEMPLATES } from './more-data';
+import { MORE_GEOMETRY_TEMPLATES } from './more-geometry';
 import { MATH_SKILL_DOMAIN } from '@/lib/math/types';
 import type { MathDomain, MathSkill, MathTemplate } from '@/lib/math/types';
 
@@ -14,7 +18,7 @@ import type { MathDomain, MathSkill, MathTemplate } from '@/lib/math/types';
  * vào đây.
  *
  * MỌI KỸ NĂNG trong 19 kỹ năng của Digital SAT Math đều phải có template, và
- * mỗi kỹ năng có NHIỀU HƠN MỘT — hai dạng câu hỏi khác nhau về cấu trúc cho
+ * mỗi kỹ năng có NHIỀU HƠN MỘT — bốn dạng câu hỏi khác nhau về cấu trúc cho
  * cùng một kỹ năng, để người luyện không nhận ra khuôn rồi giải theo phản xạ
  * thay vì theo hiểu. `everySkillCovered()` chốt phần "không thiếu kỹ năng nào"
  * lại, và property test gọi nó — thêm kỹ năng vào taxonomy mà quên viết
@@ -28,6 +32,11 @@ export const MATH_TEMPLATES: readonly MathTemplate[] = [
   ...ADVANCED_TEMPLATES,
   ...DATA_TEMPLATES,
   ...GEOMETRY_TEMPLATES,
+  // Dạng thứ ba và thứ tư của mỗi kỹ năng — xem đầu mỗi file `more-*.ts`.
+  ...MORE_ALGEBRA_TEMPLATES,
+  ...MORE_ADVANCED_TEMPLATES,
+  ...MORE_DATA_TEMPLATES,
+  ...MORE_GEOMETRY_TEMPLATES,
 ];
 
 export function getTemplate(slug: string): MathTemplate | undefined {
