@@ -4,6 +4,7 @@ import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/data/study-decks";
 import { router } from "expo-router";
 import * as Speech from "expo-speech";
+import { englishVoice } from "@/services/audio/voice";
 
 import { Icon } from "@/components/ui/Icon";
 import type { StudyWord } from "@/services/vocab/topic-study";
@@ -38,7 +39,7 @@ export function speak(
   Speech.speak(text, {
     language: "en-US",
     rate: opts.rate ?? 0.9,
-    voice: opts.voice ?? undefined,
+    voice: opts.voice ?? englishVoice(),
   });
 }
 
@@ -72,11 +73,14 @@ export function StudyFrame({
   children,
   footer,
   right,
+  progress,
 }: {
   backHref: string;
   title: string;
   /** 0 chưa, 1 đang (nửa), 2 xong — mỗi đoạn một từ. */
   segments?: (0 | 1 | 2)[];
+  /** Như `segments` nhưng là phần đã xong của từng đoạn (0–1) — đầy dần đúng nhịp học. */
+  progress?: number[];
   children: React.ReactNode;
   footer?: string;
   right?: React.ReactNode;
@@ -99,7 +103,11 @@ export function StudyFrame({
         <View style={{ minWidth: 90, alignItems: "flex-end" }}>{right}</View>
       </View>
 
-      {segments ? <SegmentBar segments={segments} /> : null}
+      {progress ? (
+        <SegmentBar fractions={progress} />
+      ) : segments ? (
+        <SegmentBar fractions={segments.map((x) => x / 2)} />
+      ) : null}
 
       <View className="mt-5">{children}</View>
 
@@ -115,20 +123,25 @@ export function StudyFrame({
   );
 }
 
-function SegmentBar({ segments }: { segments: (0 | 1 | 2)[] }) {
+function SegmentBar({ fractions }: { fractions: number[] }) {
   return (
     <View className="mt-5 flex-row gap-1.5">
-      {segments.map((s, i) => (
+      {fractions.map((s, i) => (
         <View
           key={i}
           className="h-2.5 flex-1 overflow-hidden rounded-pill"
           style={{ backgroundColor: "rgba(255,255,255,0.7)" }}
         >
+          {/* Đầy dần bằng transform (không đụng bố cục); xong hẳn thì chuyển xanh lá. */}
           <View
-            className="h-2.5 rounded-pill"
+            className="h-2.5 w-full rounded-pill"
             style={{
-              width: s === 0 ? "0%" : s === 1 ? "50%" : "100%",
-              backgroundColor: s === 2 ? GREEN : color.primary,
+              backgroundColor: s >= 1 ? GREEN : color.primary,
+              transform: [{ scaleX: Math.max(0, Math.min(1, s)) }],
+              transformOrigin: "left",
+              ...(Platform.OS === "web"
+                ? ({ transition: "transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 320ms ease" } as object)
+                : null),
             }}
           />
         </View>

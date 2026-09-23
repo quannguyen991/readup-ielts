@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
+import { englishVoice } from '@/services/audio/voice';
 
 /**
  * Hai đầu âm thanh của màn Đọc theo:
@@ -116,6 +117,7 @@ export function speakSentence(text: string, opts: { rate: number; onChar?: (char
   };
   Speech.speak(text, {
     language: 'en-US',
+    voice: englishVoice(),
     rate: opts.rate,
     onStart: () => {
       if (!live()) return;

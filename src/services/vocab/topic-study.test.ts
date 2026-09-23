@@ -4,6 +4,7 @@ import { test } from 'node:test';
 import {
   advanceQueue,
   answerLearn,
+  learnFraction,
   pickNext,
   startLearn,
   type LearnItem,
@@ -210,4 +211,24 @@ test('xếp xen kẽ: sai thì hỏi lại, sửa đúng còn một lần xác n
   const again = hist.filter((i) => i.word === first.word);
   assert.deepEqual(again.map((i) => i.lapse), ['retry', 'confirm']);
   assert.equal(pickNext(s, ['mcq']), null);
+});
+
+test('thanh tiến độ: mỗi từ đầy dần theo phần đã qua, sai thì đứng yên', () => {
+  const words = [W('a', 'một'), W('b', 'hai')];
+  let s = startLearn(words);
+  assert.equal(learnFraction(s, 'a'), 0);
+  // Đi hết từ "a" qua ba phần, ghi lại phần trăm sau mỗi câu của nó.
+  const seen: number[] = [];
+  for (let item = pickNext(s), g = 0; item && g < 50; item = pickNext(s), g += 1) {
+    const ok = !(item.word === 'a' && item.kind === 'mcq' && !seen.includes(-1));
+    if (!ok) seen.push(-1);
+    s = answerLearn(s, ok);
+    if (item.word === 'a') seen.push(Math.round(learnFraction(s, 'a') * 3));
+  }
+  // flash xong → 1/3; mcq sai → vẫn 1/3; hỏi lại đúng rồi xác nhận → 2/3; type → đầy.
+  assert.equal(seen.filter((x) => x >= 0).at(-1), 3);
+  assert.deepEqual(seen.filter((x) => x >= 0).slice(0, 2), [1, 1]);
+  const mono = seen.filter((x) => x >= 0);
+  for (let i = 1; i < mono.length; i += 1) assert.ok(mono[i]! >= mono[i - 1]!, `lùi: ${mono.join(',')}`);
+  assert.equal(learnFraction(s, 'b'), 1);
 });

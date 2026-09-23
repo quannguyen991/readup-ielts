@@ -1,6 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import * as Speech from 'expo-speech';
+import { englishVoice } from '@/services/audio/voice';
 
 import { Badge, Button, Icon, IconButton } from '@/components/ui';
 import { useWordLookup } from '@/services/dictionary/lookup';
@@ -44,7 +45,7 @@ export function WordSheet({
 
   const speak = () => {
     Speech.stop();
-    Speech.speak(target.word, { language: 'en-US', rate: 0.9 });
+    Speech.speak(target.word, { language: 'en-US', rate: 0.9, voice: englishVoice() });
   };
 
   const save = () => {

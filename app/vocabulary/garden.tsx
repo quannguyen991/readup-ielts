@@ -50,7 +50,7 @@ export default function GardenScreen() {
             </Text>
           </View>
           {sum.needWater > 0 ? (
-            <Button label={`Tưới ${sum.needWater} cây sắp héo`} iconLeft="refresh" onPress={() => router.push('/vocabulary/practice' as never)} />
+            <Button label={`Tưới ${sum.needWater} cây sắp héo`} iconLeft="refresh" onPress={() => router.push('/vocabulary/topic/so-tu/learn' as never)} />
           ) : null}
         </View>
       </Appear>
@@ -155,7 +155,7 @@ function PlantPanel({ plant }: { plant: Plant }) {
         {due ? ` · ôn lần tới ${due.getDate()}/${due.getMonth() + 1}` : ''}
         {plant.flower ? ' · đã nở hoa 🌸' : ''}
       </Text>
-      <Button className="mt-4 self-start" label="Tưới (ôn ngay)" iconRight="arrow-right" onPress={() => router.push('/vocabulary/practice' as never)} />
+      <Button className="mt-4 self-start" label="Tưới (ôn ngay)" iconRight="arrow-right" onPress={() => router.push('/vocabulary/topic/so-tu/learn' as never)} />
     </View>
   );
 }

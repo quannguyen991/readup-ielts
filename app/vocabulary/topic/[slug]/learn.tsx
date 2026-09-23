@@ -25,6 +25,7 @@ import {
 } from "@/components/vocab/study/StudyKit";
 import {
   DetailFace,
+  detailHeight,
   FlipCard,
   ListenFace,
   MeaningFace,
@@ -44,7 +45,7 @@ import {
   isTypedCorrect,
   makeChoices,
   passesStage,
-  learnProgress,
+  learnFraction,
   pickNext,
   pickRound,
   startLearn,
@@ -166,8 +167,9 @@ export default function LearnScreen() {
   }, [step, dir, word?.word]);
 
   const done = !head;
-  // Mỗi đoạn một từ: chưa vào vòng = trống, đang học = nửa, xong mọi phần = đầy.
-  const segments = round.map((w): 0 | 1 | 2 => learnProgress(plan, w.word));
+  // Mỗi đoạn một từ, đầy dần theo phần đã qua (vòng ba phần → mỗi phần một phần ba).
+  const progress = round.map((w) => learnFraction(plan, w.word, kinds));
+  const wordsDone = progress.filter((f) => f >= 1).length;
 
   const restart = (s: LearnSettings = settings) => {
     const r = freshRound(s);
@@ -333,7 +335,8 @@ export default function LearnScreen() {
   }
 
   const backHref = `/vocabulary/topic/${slug}`;
-  const footer = `Đã nhớ: ${masteredCount(stages)} / ${topic.words.length}  •  Câu đã làm: ${asked}`;
+  // Cùng mốc với thanh tiến độ ở trên (từ của VÒNG NÀY), rồi mới tới số của cả bộ.
+  const footer = `Vòng này: ${wordsDone}/${round.length} từ xong  •  ${asked} câu đã làm  •  Cả bộ đã nhớ ${masteredCount(stages)}/${topic.words.length}`;
   const stageOf = (w: string) => stages?.[w] ?? 0;
 
   const settingsButton = (
@@ -456,7 +459,7 @@ export default function LearnScreen() {
     <StudyFrame
       backHref={backHref}
       title={topic.nameVi}
-      segments={segments}
+      progress={progress}
       footer={footer}
       right={settingsButton}
     >
@@ -500,7 +503,7 @@ export default function LearnScreen() {
               <FlipCard
                 flipped={flipped}
                 onFlip={() => setFlipped((f) => !f)}
-                height={w.synonyms?.length ? 440 : 360}
+                height={detailHeight(w, dir !== "enToVi")}
                 front={
                   dir === "enToVi" ? (
                     <WordFace word={w} hint="Bấm thẻ hoặc Space để lật" />

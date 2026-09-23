@@ -21,6 +21,9 @@ export type VocabTopicWord = {
   example: string;
   collocation: string;
   band: '5-6' | '6-7' | '7-8' | '8+';
+  /** Đồng nghĩa cùng nghĩa, cùng từ loại (soạn tay, máy kiểm khi gộp). Không có thì bỏ trống. */
+  synonyms?: string[];
+  antonyms?: string[];
 };
 
 export type VocabTopic = {
