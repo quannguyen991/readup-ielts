@@ -137,6 +137,7 @@ function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDi
   return (
     <View>
       <LightHero
+        scene="math"
         badge="DIGITAL SAT · MATH"
         line1="SAT Math"
         line2="học chắc từng kỹ năng"

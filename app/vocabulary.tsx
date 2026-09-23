@@ -65,6 +65,7 @@ export default function VocabularyScreen() {
   return (
     <Screen>
       <LightHero
+        scene="vocab"
         badge="VOCABULARY PRACTICE"
         line1="Vocabulary"
         line2="gặp lại đúng lúc sắp quên"

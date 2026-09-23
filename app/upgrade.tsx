@@ -50,6 +50,7 @@ export default function UpgradeScreen() {
   return (
     <Screen>
       <LightHero
+        scene="progress"
         badge="READUP · GÓI HỌC"
         line1="Chọn gói"
         line2="học đúng phần mình cần"

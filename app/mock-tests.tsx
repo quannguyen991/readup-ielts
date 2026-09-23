@@ -34,6 +34,7 @@ export default function MockTestsScreen() {
   return (
     <Screen>
       <LightHero
+        scene="verbal"
         badge="IELTS · MOCK TESTS"
         line1="Mock Tests"
         line2="đúng nhịp bài thi thật"

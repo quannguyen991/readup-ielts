@@ -141,6 +141,7 @@ export default function DashboardScreen() {
         trang này nói về buổi học hôm nay.
       */}
       <LightHero
+        scene="progress"
         badge="Tổng quan"
         line1="Hôm nay học tiếp,"
         line2="đúng chỗ đang dở"

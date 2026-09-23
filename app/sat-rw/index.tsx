@@ -70,6 +70,7 @@ export default function SatRwHubScreen() {
   return (
     <Screen>
       <LightHero
+        scene="verbal"
         badge="DIGITAL SAT · READING & WRITING"
         line1="SAT Verbal"
         line2="luyện đúng luật đề"

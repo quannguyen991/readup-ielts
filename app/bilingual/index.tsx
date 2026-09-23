@@ -66,6 +66,7 @@ function PortalView() {
     <View>
       <Appear>
         <LightHero
+        scene="home"
           badge="BILINGUAL PRESS · MIỄN PHÍ"
           line1="Đọc báo"
           line2="song ngữ"
