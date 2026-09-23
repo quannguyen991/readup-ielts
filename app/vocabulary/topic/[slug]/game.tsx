@@ -142,7 +142,7 @@ export default function GameScreen() {
   };
 
   useHotkeys((e) => {
-    if (e.key === ' ' && phase !== 'playing') {
+    if ((e.key === ' ' || e.code === 'Space') && phase !== 'playing') {
       e.preventDefault();
       start();
       return;

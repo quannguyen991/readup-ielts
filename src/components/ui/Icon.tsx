@@ -41,6 +41,8 @@ export type IconName =
   | 'chat'
   | 'volume'
   | 'mic'
+  | 'star'
+  | 'star-fill'
   | 'grid'
   | 'list'
   | 'filter'
@@ -289,6 +291,10 @@ function renderPaths(name: IconName, p: CommonProps) {
           <Path {...p} d="M8.2 9.2h7.6M8.2 12.4h5" />
         </>
       );
+    case 'star':
+      return <Path {...p} d="m12 3.8 2.5 5.1 5.6.8-4 3.9 1 5.6-5.1-2.7-5 2.7 1-5.6-4.1-3.9 5.6-.8z" />;
+    case 'star-fill':
+      return <Path {...p} fill={p.stroke} d="m12 3.8 2.5 5.1 5.6.8-4 3.9 1 5.6-5.1-2.7-5 2.7 1-5.6-4.1-3.9 5.6-.8z" />;
     case 'mic':
       return (
         <>

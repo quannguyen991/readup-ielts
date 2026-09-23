@@ -3,6 +3,9 @@ import { test } from 'node:test';
 
 import {
   advanceQueue,
+  directionFor,
+  filterWords,
+  isFinalKind,
   clozeOf,
   initialQueue,
   isTypedCorrect,
@@ -75,17 +78,49 @@ test('một vòng ưu tiên từ chưa thuộc, học hết thì ôn lại', () 
   assert.equal(pickRound(POOL, () => 2, 3).length, 3);
 });
 
-test('hàng đợi Học: đúng chặng một thì thêm chặng hai, sai thì quay lại sau', () => {
+test('hàng đợi Học: lật thẻ → trắc nghiệm → điền từ, sai thì quay lại sau', () => {
   let q = initialQueue(POOL.slice(0, 4));
+  assert.equal(q[0]?.kind, 'flash');
   q = advanceQueue(q, true);
-  assert.deepEqual(q.map((i) => `${i.word}:${i.kind}`), ['species:recognize', 'predator:recognize', 'prey:recognize', 'habitat:recall']);
+  assert.deepEqual(q.map((i) => `${i.word}:${i.kind}`), ['species:flash', 'predator:flash', 'prey:flash', 'habitat:mcq']);
   q = advanceQueue(q, false);
   assert.equal(q[3]?.word, 'species', 'Câu sai phải quay lại sau ba câu khác.');
-  // Đi hết: vòng kết thúc khi mọi từ qua chặng nhớ lại.
   let guard = 0;
-  while (q.length > 0 && guard < 50) {
+  let typed = 0;
+  while (q.length > 0 && guard < 80) {
+    if ((q[0]!.kind as string) === 'type') typed += 1;
     q = advanceQueue(q, true);
     guard += 1;
   }
   assert.equal(q.length, 0);
+  assert.equal(typed, 4, 'Mỗi từ phải qua phần điền từ đúng một lần.');
+});
+
+test('tắt bớt phần thì từ bỏ qua phần đó', () => {
+  const kinds = ['type', 'mcq'] as const;
+  let q = initialQueue(POOL.slice(0, 1), kinds);
+  assert.equal(q[0]?.kind, 'mcq', 'Thứ tự học luôn theo lật thẻ → trắc nghiệm → điền từ.');
+  q = advanceQueue(q, true, kinds);
+  assert.equal(q[0]?.kind, 'type');
+  assert.ok(isFinalKind('type', kinds));
+  assert.deepEqual(advanceQueue(q, true, kinds), []);
+  // Không bật phần nào: không để vòng rỗng.
+  assert.equal(initialQueue(POOL.slice(0, 1), [])[0]?.kind, 'flash');
+});
+
+test('lọc từ gắn sao và từ chưa thuộc', () => {
+  const stages: Record<string, 0 | 1 | 2> = { habitat: 2 };
+  const star = new Set(['habitat', 'prey']);
+  const of = (w: string) => stages[w] ?? 0;
+  assert.deepEqual(filterWords(POOL, { starredOnly: true, unmasteredOnly: false }, of, star).map((w) => w.word), ['habitat', 'prey']);
+  assert.deepEqual(filterWords(POOL, { starredOnly: true, unmasteredOnly: true }, of, star).map((w) => w.word), ['prey']);
+});
+
+test('điền từ không hỏi theo chiều thấy từ tiếng Anh', () => {
+  for (let step = 0; step < 10; step += 1) {
+    assert.notEqual(directionFor('habitat', step, ['enToVi', 'viToEn'], 'type'), 'enToVi');
+    assert.equal(directionFor('habitat', step, ['enToVi'], 'type'), 'viToEn');
+  }
+  const seen = new Set(Array.from({ length: 6 }, (_, s) => directionFor('habitat', s, ['enToVi', 'viToEn', 'listen'], 'mcq')));
+  assert.equal(seen.size, 3, 'Trắc nghiệm phải xoay đủ các chiều đang bật.');
 });
