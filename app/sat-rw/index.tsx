@@ -90,6 +90,8 @@ export default function SatRwHubScreen() {
           onPress={() => router.push(`/sat-rw/mix/${SAT_RW_MIXED_SETS[0]!.id}` as never)}
         />
         <Button label="Bắt đầu unit 1" variant="outline" size="lg" onPress={() => router.push('/sat-rw/1' as never)} />
+        <Button label="Bài học lý thuyết" variant="outline" size="lg" iconLeft="book" onPress={() => router.push('/sat-rw/learn' as never)} />
+        <Button label="Bài từ vựng" variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/sat-rw/learn?tab=vocab' as never)} />
       </LightHero>
 
       <View className="mt-5" />

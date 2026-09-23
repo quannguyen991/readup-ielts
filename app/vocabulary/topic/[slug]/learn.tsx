@@ -500,7 +500,7 @@ export default function LearnScreen() {
               <FlipCard
                 flipped={flipped}
                 onFlip={() => setFlipped((f) => !f)}
-                height={360}
+                height={w.synonyms?.length ? 440 : 360}
                 front={
                   dir === "enToVi" ? (
                     <WordFace word={w} hint="Bấm thẻ hoặc Space để lật" />
