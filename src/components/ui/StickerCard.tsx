@@ -6,6 +6,8 @@ type StickerCardProps = ViewProps & {
   /** Hai màu cùng tông, sáng → đậm — nền gradient chéo của thẻ. */
   colors: readonly [string, string];
   children: React.ReactNode;
+  /** Viền đen dày + bóng lệch cứng — chỉ lưới "App có gì" ở trang giới thiệu dùng (người dùng chọn lại kiểu này). */
+  bold?: boolean;
 };
 
 /**
@@ -22,14 +24,19 @@ type StickerCardProps = ViewProps & {
  * chục màn đã ổn định (thanh toán, quản trị, danh sách bài đọc...) không đáng
  * đánh đổi cho một yêu cầu chỉ nhắc tới lưới thẻ chủ đề.
  */
-export function StickerCard({ colors, children, className, style, ...rest }: StickerCardProps) {
+export function StickerCard({ colors, children, className, style, bold, ...rest }: StickerCardProps) {
   return (
     <View
       className={['overflow-hidden rounded-card', className ?? ''].filter(Boolean).join(' ')}
       style={[
-        Platform.OS === 'web'
+        bold ? { borderWidth: 2.5, borderColor: '#0F172A' } : null,
+        bold
+          ? Platform.OS === 'web'
+            ? ({ boxShadow: '5px 5px 0 #0F172A' } as never)
+            : { shadowColor: '#0F172A', shadowOffset: { width: 4, height: 4 }, shadowOpacity: 1, shadowRadius: 0, elevation: 6 }
+          : Platform.OS === 'web'
           ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 24px rgba(15,23,42,0.08)' } as never)
-          : {
+            : {
               shadowColor: '#0F172A',
               shadowOffset: { width: 0, height: 6 },
               shadowOpacity: 0.08,
