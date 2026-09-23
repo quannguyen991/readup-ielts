@@ -287,7 +287,7 @@ const MODES: { key: string; label: string; note: string; icon: IconName; tone: s
   { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
   { key: 'cloze', label: 'Điền vào câu', note: 'Dùng từ trong câu ví dụ', icon: 'pencil', tone: '#7C3AED' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
-  { key: 'test', label: 'Kiểm tra', note: '20 câu, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
+  { key: 'test', label: 'Kiểm tra', note: '20 câu trộn 4 dạng, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
   { key: 'game', label: 'Bóng bay', note: 'Trò chơi, có bảng điểm', icon: 'sparkle', tone: '#16A34A' },
 ];
 
