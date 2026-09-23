@@ -173,8 +173,8 @@ function DrillRunner() {
   return (
     <MathRunner
       surface="paper"
-      title={`${MATH_SKILL_LABEL[skill]} · lượt ${round + 1}/${roundsFor(skill)}`}
-      subtitle={`${items.length} câu của ngân hàng kỹ năng này (mỗi lượt ${ROUND_SIZE} câu). Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`}
+      title={`${MATH_SKILL_LABEL[skill]} · Bộ đề ${round + 1}/${roundsFor(skill)}`}
+      subtitle={`${items.length} câu của ngân hàng kỹ năng này (mỗi bộ ${ROUND_SIZE} câu). Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`}
       items={items}
       minutes={items.length * MINUTES_PER_QUESTION}
       submitLabel="Nộp và xem lại"
