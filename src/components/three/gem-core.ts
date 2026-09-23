@@ -1,6 +1,6 @@
 /**
- * LÕI ĐÁ QUÝ — dùng chung cho viên lớn ở đầu trang (`hero-gem.ts`) và viên nhỏ ở
- * góc thẻ (`gem-kit.ts`). CHỈ CHẠY TRÊN WEB.
+ * LÕI ĐÁ QUÝ — viên đá ở phần đầu trang (`hero-gem.ts`) dựng từ đây. CHỈ CHẠY
+ * TRÊN WEB. (Góc thẻ không dùng đá mà dùng chùm sao `GlowStars` — người dùng chọn.)
  *
  * VÌ SAO ĐÁ QUÝ TRÔNG THẬT ĐƯỢC MÀ KHÔNG CẦN MÔ HÌNH HAY ẢNH:
  *

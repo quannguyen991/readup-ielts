@@ -4,8 +4,8 @@ import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
-import { Gem3D } from '@/components/three/Gem3D';
 import { Icon, StickerCard } from '@/components/ui';
+import { GlowStars } from '@/components/ui/GlowStars';
 import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { PATH_STEPS, stepUnits, topicsForStep, type PathStep } from '@/services/writing/translation-path';
@@ -18,7 +18,7 @@ import { color } from '@/theme/tokens';
  * thấp nhất bên trái là chỗ bắt đầu, và mỗi bậc cao thêm đúng theo số câu phải
  * dịch liền trong một lượt (1 → 1 → 3 → 4 → 6). Dải con nhộng dưới đáy mỗi bậc
  * đếm đúng số câu ấy, nên độ khó tăng dần là thứ NHÌN thấy, không phải đọc thấy.
- * Viên kim cương nằm trên bậc cao nhất: đích là dịch trọn một đoạn văn.
+ * Chùm sao sáng nhất nằm trên bậc cao nhất: đích là dịch trọn một đoạn văn.
  *
  * Số mục, số lượt đếm từ dữ liệu thật lúc dựng màn, không gõ tay. Trang giới
  * thiệu một lộ trình là chỗ dễ nói quá nhất, và cũng là chỗ bị bắt quả tang
@@ -59,8 +59,7 @@ export default function TranslationPathScreen() {
       </Appear>
 
       {wide ? (
-        // Khoảng trống phía trên: viên kim cương trên bậc cao nhất nhô qua mép khối.
-        <View className="mt-12 flex-row items-end" style={{ gap: 18 }}>
+        <View className="mt-8 flex-row items-end" style={{ gap: 18 }}>
           {PATH_STEPS.map((step, i) => (
             <Appear key={step.id} index={i + 1} style={{ flex: 1, height: 292 + i * 36 }}>
               <StepBlock step={step} index={i} />
@@ -94,7 +93,7 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
         style={{ flex: 1 }}
         accessibilityRole="button"
         accessibilityLabel={`Bậc ${step.order}: ${step.title}`}
-        ornament={last ? <Gem3D cut="brilliant" color="clear" size={96} /> : undefined}
+        ornament={last ? <GlowStars /> : undefined}
       >
         <Text className="font-heavy text-white" style={[STICKER_TITLE_SHADOW, { fontSize: 46, lineHeight: 50 }]}>
           {step.order}

@@ -4,8 +4,8 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Appear, PressScale } from '@/components/motion/Motion';
-import { Gem3D, type Cut, type GemColor } from '@/components/three/Gem3D';
 import { Icon, StickerCard, type IconName } from '@/components/ui';
+import { GlowStars } from '@/components/ui/GlowStars';
 import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
 import { weekId } from '@/services/weekly/challenge';
 import { useCustomDeckStore } from '@/store/useCustomDeckStore';
@@ -21,8 +21,6 @@ type Shelf = {
   href: string;
   icon: IconName;
   colors: readonly [string, string];
-  /** Viên đá quý 3D ở góc thẻ, màu đá tương phản với nền thẻ. */
-  gem: { cut: Cut; color: GemColor; companion?: GemColor };
 };
 
 /**
@@ -44,7 +42,6 @@ export function FeatureShelf() {
       href: '/weekly',
       icon: 'trophy',
       colors: stickerGradient.warning,
-      gem: { cut: 'princess', color: 'sapphire' },
     },
     {
       key: 'duel',
@@ -53,7 +50,6 @@ export function FeatureShelf() {
       href: '/duel',
       icon: 'target',
       colors: stickerGradient.rose,
-      gem: { cut: 'brilliant', color: 'clear', companion: 'ruby' },
     },
     {
       key: 'shadow',
@@ -62,7 +58,6 @@ export function FeatureShelf() {
       href: '/shadow',
       icon: 'mic',
       colors: stickerGradient.accent,
-      gem: { cut: 'oval', color: 'emerald' },
     },
     {
       key: 'garden',
@@ -71,7 +66,6 @@ export function FeatureShelf() {
       href: '/vocabulary/garden',
       icon: 'leaf',
       colors: stickerGradient.success,
-      gem: { cut: 'brilliant', color: 'pink' },
     },
     {
       key: 'import',
@@ -80,7 +74,6 @@ export function FeatureShelf() {
       href: '/vocabulary/import',
       icon: 'plus',
       colors: stickerGradient.info,
-      gem: { cut: 'emerald', color: 'topaz' },
     },
     {
       key: 'errors',
@@ -89,7 +82,6 @@ export function FeatureShelf() {
       href: '/errors',
       icon: 'gauge',
       colors: stickerGradient.primary,
-      gem: { cut: 'brilliant', color: 'clear' },
     },
   ];
 
@@ -97,13 +89,12 @@ export function FeatureShelf() {
     <View className="mt-6">
       <Text className="font-heavy text-sectionTitle text-ink">Mới trên ReadUp</Text>
       <Text className="mt-1 font-sans text-body text-muted">Sáu cách học khác đi một chút — chọn một cái cho hôm nay.</Text>
-      {/* Khoảng trống rộng: vật thể 3D nhô qua mép trên của thẻ. */}
-      <View className="mt-7">
-        <Grid columns={3} tabletColumns={3} mobileColumns={2} gap={24}>
+      <View className="mt-3">
+        <Grid columns={3} tabletColumns={3} mobileColumns={2} gap={16}>
           {items.map((it, i) => (
             <Appear key={it.key} index={i} style={{ flex: 1 }}>
               <PressScale fill onPress={() => router.push(it.href as never)} style={{ flex: 1 }}>
-                <StickerCard colors={it.colors} style={{ flex: 1 }} ornament={<Gem3D cut={it.gem.cut} color={it.gem.color} companion={it.gem.companion} size={88} />}>
+                <StickerCard colors={it.colors} style={{ flex: 1 }} ornament={<GlowStars scale={0.8} />}>
                   <View
                     className="h-10 w-10 items-center justify-center rounded-panel bg-white"
                     style={{ borderWidth: 2, borderColor: INK, ...(Platform.OS === 'web' ? ({ boxShadow: `1px 2.5px 0 ${INK}` } as object) : null) }}
