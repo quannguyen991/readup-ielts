@@ -6,7 +6,7 @@ import { Grid } from '@/components/layout/Grid';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Icon, StickerCard, type IconName } from '@/components/ui';
 import { GlowStars } from '@/components/ui/GlowStars';
-import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
+import { STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
 import { weekId } from '@/services/weekly/challenge';
 import { useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { useShadowStore } from '@/store/useShadowStore';
@@ -97,7 +97,7 @@ export function FeatureShelf() {
                 <StickerCard colors={it.colors} style={{ flex: 1 }} ornament={<GlowStars scale={0.8} />}>
                   <View
                     className="h-10 w-10 items-center justify-center rounded-panel bg-white"
-                    style={{ borderWidth: 2, borderColor: INK, ...(Platform.OS === 'web' ? ({ boxShadow: `1px 2.5px 0 ${INK}` } as object) : null) }}
+                    style={Platform.OS === 'web' ? ({ boxShadow: '0 2px 6px rgba(15,23,42,0.18)' } as object) : undefined}
                   >
                     <Icon name={it.icon} size={19} color={it.colors[1]} strokeWidth={2} />
                   </View>

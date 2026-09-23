@@ -117,7 +117,7 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
         {/* Dải con nhộng: mỗi viên một câu phải dịch liền trong một lượt. */}
         <View className="mt-4 flex-row flex-wrap items-center gap-1">
           {Array.from({ length: step.chunk }, (_, k) => (
-            <View key={k} style={{ width: 18, height: 8, borderRadius: 4, backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: INK }} />
+            <View key={k} style={{ width: 18, height: 8, borderRadius: 4, backgroundColor: '#FFFFFF' }} />
           ))}
           <Text className="ml-1.5 font-strong text-label text-white" style={STICKER_TEXT_SHADOW}>
             {step.chunk === 1 ? '1 câu mỗi lượt' : `${step.chunk} câu liền`}
@@ -127,7 +127,7 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
           <Text className="font-semi text-label text-white" style={STICKER_TEXT_SHADOW}>
             {topics.length} mục · {stepUnits(step).toLocaleString('vi-VN')} lượt
           </Text>
-          <View className="h-8 w-8 items-center justify-center rounded-pill bg-white" style={{ borderWidth: 2, borderColor: INK }}>
+          <View className="h-8 w-8 items-center justify-center rounded-pill bg-white">
             <Icon name="arrow-right" size={15} color={INK} strokeWidth={2.4} />
           </View>
         </View>
