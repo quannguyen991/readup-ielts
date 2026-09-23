@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { FeatureShelf } from '@/components/dashboard/FeatureShelf';
 import { ParentReportCard } from '@/components/dashboard/ParentReportCard';
 import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
@@ -192,6 +193,8 @@ export default function DashboardScreen() {
           <ParentReportCard />
         </View>
       </View>
+
+      <FeatureShelf />
 
       <View className="mt-4 lg:mt-6">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>

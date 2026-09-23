@@ -37,6 +37,9 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
 
   // Luyện câu: dịch câu và chép chính tả.
   /^\/sentence\/(translate|dictation|youtube)$/,
+  // Đọc theo một bài VOA và phòng đấu 1–1: có micro / đồng hồ, không mời rẽ ngang.
+  /^\/shadow\/[^/]+$/,
+  /^\/duel\/[^/]+$/,
 
   // Từ vựng theo chủ đề — đây là màn học thẻ, không phải màn duyệt.
   /^\/vocabulary\/topic\/[^/]+$/,
