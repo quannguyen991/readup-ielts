@@ -5,7 +5,10 @@ import {
   advanceQueue,
   directionFor,
   filterWords,
+  GAP_CONFIRM,
+  GAP_WRONG,
   isFinalKind,
+  passesStage,
   clozeOf,
   initialQueue,
   isTypedCorrect,
@@ -78,13 +81,11 @@ test('một vòng ưu tiên từ chưa thuộc, học hết thì ôn lại', () 
   assert.equal(pickRound(POOL, () => 2, 3).length, 3);
 });
 
-test('hàng đợi Học: lật thẻ → trắc nghiệm → điền từ, sai thì quay lại sau', () => {
+test('hàng đợi Học: lật thẻ → trắc nghiệm → điền từ', () => {
   let q = initialQueue(POOL.slice(0, 4));
   assert.equal(q[0]?.kind, 'flash');
   q = advanceQueue(q, true);
   assert.deepEqual(q.map((i) => `${i.word}:${i.kind}`), ['species:flash', 'predator:flash', 'prey:flash', 'habitat:mcq']);
-  q = advanceQueue(q, false);
-  assert.equal(q[3]?.word, 'species', 'Câu sai phải quay lại sau ba câu khác.');
   let guard = 0;
   let typed = 0;
   while (q.length > 0 && guard < 80) {
@@ -93,7 +94,36 @@ test('hàng đợi Học: lật thẻ → trắc nghiệm → điền từ, sai 
     guard += 1;
   }
   assert.equal(q.length, 0);
-  assert.equal(typed, 4, 'Mỗi từ phải qua phần điền từ đúng một lần.');
+  assert.equal(typed, 4, 'Làm đúng hết thì mỗi từ qua phần điền từ đúng một lần.');
+});
+
+test('sai thì gặp lại sớm, sửa đúng thì còn một lần xác nhận ở xa hơn', () => {
+  const words = POOL.slice(0, 5);
+  let q = initialQueue(words, ['mcq']);
+  q = advanceQueue(q, false, ['mcq']);
+  assert.deepEqual(q[GAP_WRONG], { word: 'habitat', kind: 'mcq', lapse: 'retry' }, 'Câu sai quay lại sau hai câu.');
+  // Làm đúng hai câu chen giữa, rồi sửa đúng câu sai.
+  q = advanceQueue(q, true, ['mcq']);
+  q = advanceQueue(q, true, ['mcq']);
+  assert.equal(q[0]?.word, 'habitat');
+  assert.ok(!passesStage(q[0]!), 'Lần hỏi lại ngay sau khi sai chưa tính là qua.');
+  q = advanceQueue(q, true, ['mcq']);
+  const at = q.findIndex((i) => i.word === 'habitat');
+  assert.equal(q[at]?.lapse, 'confirm');
+  assert.equal(at, Math.min(GAP_CONFIRM, q.length - 1), 'Lần xác nhận đặt xa hơn lần hỏi lại.');
+  // Xác nhận đúng thì từ xong.
+  let guard = 0;
+  while (q.length > 0 && guard < 30) {
+    q = advanceQueue(q, true, ['mcq']);
+    guard += 1;
+  }
+  assert.equal(q.length, 0);
+});
+
+test('không bao giờ hỏi lại ngay câu vừa sai khi còn câu khác', () => {
+  let q = initialQueue(POOL.slice(0, 2), ['mcq']);
+  q = advanceQueue(q, false, ['mcq']);
+  assert.equal(q[0]?.word, 'species');
 });
 
 test('tắt bớt phần thì từ bỏ qua phần đó', () => {

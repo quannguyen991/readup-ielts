@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
+import { posIpa } from '@/data/study-decks';
 import { useLocalSearchParams } from 'expo-router';
 
 import { GhostButton, GREEN, PrimaryButton, RED, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
-import { getVocabTopic } from '@/data/vocab-topics';
+import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { normalizeAnswer } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
 import { color } from '@/theme/tokens';
@@ -43,7 +44,7 @@ function makeRecognition(): Recognition | null {
  */
 export default function SpeakScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
-  const topic = getVocabTopic(slug);
+  const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
 
   const [supported] = useState(() => makeRecognition() !== null);
@@ -123,7 +124,7 @@ export default function SpeakScreen() {
           <View className="mt-4 items-center">
             <Text className="font-heavy text-hero text-ink">{word.word}</Text>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              {word.pos} · {word.ipa} · {word.meaningVi}
+              {[posIpa(word), word.meaningVi].filter(Boolean).join(' · ')}
             </Text>
             <View className="mt-3">
               <SpeakButton text={word.word} rate={0.8} />

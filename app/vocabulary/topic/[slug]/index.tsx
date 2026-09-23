@@ -5,7 +5,9 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon } from '@/components/ui';
-import { getVocabTopic, groupByBand, type VocabTopicWord } from '@/data/vocab-topics';
+import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
+import { groupDeckWords } from '@/data/study-decks';
+import type { StudyWord } from '@/services/vocab/topic-study';
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { color } from '@/theme/tokens';
@@ -29,7 +31,7 @@ import { masteredCount, useTopicStudyStore } from '@/store/useTopicStudyStore';
  */
 export default function VocabTopicScreen() {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
-  const topic = typeof slug === 'string' ? getVocabTopic(slug) : undefined;
+  const topic = useStudyDeck(typeof slug === 'string' ? slug : '');
 
   const entries = useVocabStore((s) => s.entries);
   const saveWord = useVocabStore((s) => s.saveWord);
@@ -59,7 +61,7 @@ export default function VocabTopicScreen() {
     );
   }
 
-  const save = (word: VocabTopicWord) => {
+  const save = (word: StudyWord) => {
     saveWord({
       word: word.word,
       lemma: lemmatize(word.word),
@@ -87,7 +89,7 @@ export default function VocabTopicScreen() {
   };
 
   const learned = topic.words.length - remaining.length;
-  const groups = groupByBand(topic.words);
+  const groups = groupDeckWords(topic);
 
   return (
     <Screen>
@@ -96,7 +98,7 @@ export default function VocabTopicScreen() {
           <View className="flex-1" style={{ minWidth: 220 }}>
             <Button
               className="mb-2 self-start"
-              label="Chủ đề khác"
+              label="Bộ từ khác"
               variant="ghost"
               size="sm"
               iconLeft="chevron-left"
@@ -182,10 +184,10 @@ export default function VocabTopicScreen() {
       )}
 
       {groups.map((group, gi) => (
-        <Appear key={group.band} index={gi + 2}>
+        <Appear key={group.label} index={gi + 2}>
           <View className="mt-5">
             <View className="flex-row items-center gap-2">
-              <Text className="font-heavy text-sectionTitle text-ink">Band {group.band}</Text>
+              <Text className="font-heavy text-sectionTitle text-ink">{group.label}</Text>
               <Text className="font-sans text-label text-muted">{group.words.length} từ</Text>
             </View>
 
@@ -213,7 +215,7 @@ function WordRow({
   saved,
   onSave,
 }: {
-  word: VocabTopicWord;
+  word: StudyWord;
   saved: boolean;
   onSave: () => void;
 }) {
@@ -226,7 +228,7 @@ function WordRow({
           <View className="flex-row flex-wrap items-baseline gap-2">
             <Text className="font-heavy text-cardTitle text-ink">{word.word}</Text>
             <Text className="font-sans text-label text-subtle">{word.ipa}</Text>
-            <Badge label={word.pos} tone="neutral" shape="tag" />
+            {word.pos ? <Badge label={word.pos} tone="neutral" shape="tag" /> : null}
           </View>
           <Text className="mt-0.5 font-strong text-body text-ink">{word.meaningVi}</Text>
         </View>

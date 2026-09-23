@@ -9,6 +9,7 @@ import { Appear, PressScale } from '@/components/motion/Motion';
 import { Card, Icon, StickerCard, type IconName } from '@/components/ui';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS, type VocabTopic } from '@/data/vocab-topics';
 import { useVocabStore } from '@/store/useVocabStore';
+import { notebookDeck, SAT_MATH_DECKS, type StudyDeck } from '@/data/study-decks';
 import { color, gradient } from '@/theme/tokens';
 
 /**
@@ -72,6 +73,8 @@ export default function VocabTopicsScreen() {
     () => new Set(Object.values(entries).map((e) => e.lemma.toLowerCase())),
     [entries],
   );
+
+  const notebook = useMemo(() => notebookDeck(Object.values(entries)), [entries]);
 
   const topics = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -151,8 +154,44 @@ export default function VocabTopicsScreen() {
         </Grid>
       </View>
 
+      {/* Các chế độ học (thẻ lật, Học, Nghe chép, Kiểm tra, Bóng bay…) chạy được
+          trên mọi nguồn từ của app, không chỉ 50 bộ chủ đề. */}
+      <Text className="mb-1 mt-8 font-heavy text-sectionTitle text-ink">Bộ học khác</Text>
+      <Text className="mb-4 font-sans text-body text-muted">Sổ từ bạn tự lưu khi đọc, và thuật ngữ SAT Math theo từng mảng.</Text>
+      <Grid columns={3} tabletColumns={2} mobileColumns={1}>
+        {[notebook, ...SAT_MATH_DECKS].map((deck, i) => (
+          <Appear key={deck.slug} index={i + 2} style={{ height: '100%' }}>
+            <DeckCard deck={deck} colors={i === 0 ? ['#FCD34D', '#D97706'] : ['#93B4FD', '#4F46E5']} icon={i === 0 ? 'bookmark' : 'grid'} />
+          </Appear>
+        ))}
+      </Grid>
+
       <View className="h-6" />
     </Screen>
+  );
+}
+
+/** Thẻ một bộ học ngoài chủ đề IELTS. Sổ từ dưới 4 từ thì chưa học được (trắc nghiệm cần 4 lựa chọn). */
+function DeckCard({ deck, colors, icon }: { deck: StudyDeck; colors: readonly [string, string]; icon: IconName }) {
+  const ready = deck.words.length >= 4;
+  return (
+    <PressScale
+      onPress={() => (ready ? router.push(`/vocabulary/topic/${deck.slug}` as never) : router.push('/read' as never))}
+      style={{ height: '100%' }}
+    >
+      <StickerCard colors={colors} style={{ height: '100%' }}>
+        <View className="h-11 w-11 items-center justify-center rounded-pill bg-white/90">
+          <Icon name={icon} size={20} color={colors[1]} strokeWidth={1.9} />
+        </View>
+        <Text className="mt-3 font-heavy text-cardTitle text-white" numberOfLines={2}>
+          {deck.nameVi}
+        </Text>
+        <Text className="mt-1.5 font-sans text-label text-white/85" numberOfLines={2}>
+          {ready ? deck.blurb : 'Cần ít nhất 4 từ có nghĩa tiếng Việt. Chạm vào từ khi đọc bài để lưu.'}
+        </Text>
+        <Text className="mt-3 font-mid text-label text-white/90">{deck.words.length} từ</Text>
+      </StickerCard>
+    </PressScale>
   );
 }
 

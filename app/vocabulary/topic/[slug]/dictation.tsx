@@ -6,7 +6,7 @@ import { GhostButton, GREEN, PrimaryButton, RED, StudyCard, StudyFrame, speak, u
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
 import { preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
-import { getVocabTopic } from '@/data/vocab-topics';
+import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { isTypedCorrect, letterDiff } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -23,7 +23,7 @@ const SPEEDS = [0.7, 0.9, 1] as const;
  */
 export default function DictationScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
-  const topic = getVocabTopic(slug);
+  const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
   const logQuestions = useStudyStore((s) => s.logQuestions);
 
