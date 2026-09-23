@@ -65,21 +65,3 @@ export function dictationSetStats() {
   };
 }
 
-/**
- * Màu của thẻ bộ đề.
- *
- * Chọn theo `order` chứ không ngẫu nhiên: cùng một bài thì lần nào cũng đúng
- * màu ấy, nên người học nhớ được "bài cam" hay "bài tím" mà không phải đọc tên.
- */
-export const SET_PALETTE: ReadonlyArray<readonly [string, string]> = [
-  ['#F0A04B', '#E4762B'],
-  ['#E4739B', '#D4497A'],
-  ['#D9614F', '#C0402E'],
-  ['#8B6FE0', '#6B46C1'],
-  ['#4C9BE8', '#2563EB'],
-  ['#3FAE8E', '#1E8168'],
-];
-
-export function paletteFor(order: number): readonly [string, string] {
-  return SET_PALETTE[(order - 1) % SET_PALETTE.length] ?? SET_PALETTE[0]!;
-}

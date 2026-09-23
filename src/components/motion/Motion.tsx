@@ -169,8 +169,18 @@ function Enter({
 export function PressScale({
   children,
   style,
+  fill,
   ...rest
-}: PressableProps & { children: React.ReactNode; style?: ViewStyle }) {
+}: PressableProps & {
+  children: React.ReactNode;
+  style?: ViewStyle;
+  /**
+   * Vùng bấm lấp đầy khung (đặt `style={{ flex: 1 }}` cho khung). Dùng trong
+   * lưới cần các thẻ cùng hàng cao bằng nhau: không có nó, lớp Pressable ở giữa
+   * cao theo nội dung và thẻ bên trong không kéo giãn theo hàng được.
+   */
+  fill?: boolean;
+}) {
   const reduced = useReducedMotion();
   const scale = useSharedValue(1);
   const animated = useAnimatedStyle(() => ({ transform: [{ scale: scale.value }] }));
@@ -184,6 +194,7 @@ export function PressScale({
       */}
       <Pressable
         {...rest}
+        style={fill ? { flex: 1 } : undefined}
         onPressIn={(e) => {
           // eslint-disable-next-line react-hooks/immutability
           if (!reduced) scale.value = withTiming(0.98, { duration: MOTION.press });
