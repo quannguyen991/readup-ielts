@@ -43,3 +43,16 @@ export function summarizeRwBySkill(
   for (const p of Object.values(out)) p.accuracy = p.answered > 0 ? p.correct / p.answered : null;
   return out;
 }
+
+/** Gộp lượt làm Verbal giữa hai máy: mỗi câu giữ LẦN LÀM GẦN NHẤT (theo `at`). */
+export function mergeRwAttempts(
+  local: Readonly<Record<string, RwAttempt>> | undefined,
+  remote: Readonly<Record<string, RwAttempt>> | undefined,
+): Record<string, RwAttempt> {
+  const out: Record<string, RwAttempt> = { ...(remote ?? {}) };
+  for (const [id, a] of Object.entries(local ?? {})) {
+    const other = out[id];
+    if (!other || a.at > other.at) out[id] = a;
+  }
+  return out;
+}
