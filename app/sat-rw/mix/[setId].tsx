@@ -44,7 +44,7 @@ export default function SatRwMixScreen() {
 
   if (!set) {
     return (
-      <TaskShell backHref="/sat-rw" backLabel="Về SAT Verbal" title="Không tìm thấy đề này" icon="clipboard">
+      <TaskShell tone="paper" backHref="/sat-rw" backLabel="Về SAT Verbal" title="Không tìm thấy đề này" icon="clipboard">
         <PaperCard className="max-w-[520px]">
           <Text className="font-sans text-body text-paper-body">
             Đề bạn vừa mở không có trong kho. Quay lại danh sách để chọn đề khác.
@@ -87,7 +87,7 @@ export default function SatRwMixScreen() {
     const nextSet = set.order < 50 ? `satrw-mix-${String(set.order + 1).padStart(2, '0')}` : null;
 
     return (
-      <TaskShell
+      <TaskShell tone="paper"
         backHref="/sat-rw"
         backLabel="Về SAT Verbal"
         title="Xong đề"
@@ -103,7 +103,7 @@ export default function SatRwMixScreen() {
 
         <View className="mt-4 flex-row flex-wrap gap-2">
           <Button
-            variant="onDarkSolid"
+            variant="brand"
             label="Làm lại đề này"
             iconLeft="refresh"
             onPress={() => {
@@ -116,13 +116,13 @@ export default function SatRwMixScreen() {
           />
           {nextSet ? (
             <Button
-              variant="onDark"
+              variant="brandOutline"
               label={`Đề trộn ${set.order + 1}`}
               iconRight="arrow-right"
               onPress={() => router.replace(`/sat-rw/mix/${nextSet}` as never)}
             />
           ) : null}
-          <Button variant="onDark" label="Chọn đề khác" onPress={() => router.replace('/sat-rw' as never)} />
+          <Button variant="brandOutline" label="Chọn đề khác" onPress={() => router.replace('/sat-rw' as never)} />
         </View>
       </TaskShell>
     );
@@ -131,15 +131,15 @@ export default function SatRwMixScreen() {
   if (!question) return null;
 
   return (
-    <TaskShell
+    <TaskShell tone="paper"
       backHref="/sat-rw"
       backLabel="Về SAT Verbal"
       title={set.title}
       subtitle="Trộn bốn mảng, như một module thi thu nhỏ"
       icon="clipboard"
       right={
-        <View className="rounded-pill bg-white/20 px-3.5 py-1.5">
-          <Text className="font-strong text-label text-white">
+        <View className="rounded-pill bg-white px-3.5 py-1.5">
+          <Text className="font-strong text-label text-paper-ink">
             {index + 1} / {questions.length} · đúng {correct}
           </Text>
         </View>
@@ -177,13 +177,13 @@ export default function SatRwMixScreen() {
         <View className="flex-1" />
         {answered && ruleAsked ? (
           <Button
-            variant="onDarkSolid"
+            variant="brand"
             label={index + 1 < questions.length ? 'Câu tiếp theo' : 'Xem kết quả'}
             iconRight="arrow-right"
             onPress={next}
           />
         ) : (
-          <Text className="font-sans text-label text-white/80">
+          <Text className="font-sans text-label text-paper-muted">
             {answered ? 'Chọn tên luật ở trên để xem lời giải' : 'Chọn một phương án để tiếp tục'}
           </Text>
         )}
