@@ -126,6 +126,22 @@ export function SpeakButton({ text, rate, size = 20 }: { text: string; rate?: nu
   );
 }
 
+/** Ngôi sao gắn từ để học riêng. Đặt nổi ở góc trên phải của thẻ cha (thẻ cha cần relative). */
+export function StarButton({ on, onPress, inline }: { on: boolean; onPress: () => void; inline?: boolean }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={on ? 'Bỏ đánh dấu sao' : 'Đánh dấu sao'}
+      onPress={onPress}
+      hitSlop={8}
+      className="h-10 w-10 items-center justify-center rounded-pill"
+      style={[inline ? null : { position: 'absolute', top: 14, right: 14, zIndex: 2 }, { backgroundColor: on ? '#FEF3C7' : '#F1F5F9' }]}
+    >
+      <Icon name={on ? 'star-fill' : 'star'} size={19} color={on ? '#F59E0B' : '#64748B'} />
+    </Pressable>
+  );
+}
+
 /** Bốn lựa chọn đánh số 1–4; phím số chọn được (màn cha bắt phím). */
 export function ChoiceGrid({
   options,

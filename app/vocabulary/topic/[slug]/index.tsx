@@ -35,6 +35,9 @@ export default function VocabTopicScreen() {
   const saveWord = useVocabStore((s) => s.saveWord);
   const [justSaved, setJustSaved] = useState(0);
   const stages = useTopicStudyStore((s) => (typeof slug === 'string' ? s.stages[slug] : undefined));
+  const starredList = useTopicStudyStore((s) => (typeof slug === 'string' ? s.starred[slug] : undefined));
+  const toggleStar = useTopicStudyStore((s) => s.toggleStar);
+  const starredWords = useMemo(() => new Set(starredList ?? []), [starredList]);
 
   const savedLemmas = useMemo(
     () => new Set(Object.values(entries).map((e) => e.lemma.toLowerCase())),
@@ -140,7 +143,13 @@ export default function VocabTopicScreen() {
       {/* ------------------------------------------------ thẻ ghi nhớ */}
       <Appear index={2}>
         <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
-          <Flashcards words={topic.words} savedWords={savedLemmas} onSave={save} />
+          <Flashcards
+            words={topic.words}
+            savedWords={savedLemmas}
+            onSave={save}
+            starredWords={starredWords}
+            onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
+          />
         </View>
       </Appear>
 
@@ -272,7 +281,7 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
 const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
-  { key: 'learn', label: 'Học', note: 'Trắc nghiệm rồi gõ lại', icon: 'book', tone: '#2563EB', recommended: true },
+  { key: 'learn', label: 'Học', note: 'Lật thẻ · trắc nghiệm · điền từ', icon: 'book', tone: '#2563EB', recommended: true },
   { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
   { key: 'cloze', label: 'Điền vào câu', note: 'Dùng từ trong câu ví dụ', icon: 'pencil', tone: '#7C3AED' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },

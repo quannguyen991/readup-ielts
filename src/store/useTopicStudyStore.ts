@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
-import type { WordStage } from '@/services/vocab/topic-study';
+import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/services/vocab/topic-study';
 
 /**
  * Tiến độ học theo từng bộ từ chủ đề: mỗi từ đang ở chặng nào, và điểm cao của
@@ -20,6 +20,12 @@ type TopicStudyState = {
   stages: Record<string, Record<string, WordStage>>;
   /** slug → năm điểm cao nhất của trò chơi, giảm dần. */
   scores: Record<string, GameScore[]>;
+  /** slug → các từ người học gắn sao để học riêng. */
+  starred: Record<string, string[]>;
+  /** Cài đặt màn Học — dùng chung mọi bộ, như một thói quen học của người dùng. */
+  learnSettings: LearnSettings;
+  toggleStar: (slug: string, word: string) => void;
+  setLearnSettings: (s: LearnSettings) => void;
   setStage: (slug: string, word: string, stage: WordStage) => void;
   addScore: (slug: string, score: number) => void;
   resetTopic: (slug: string) => void;
@@ -30,6 +36,15 @@ export const useTopicStudyStore = create<TopicStudyState>()(
     (set) => ({
       stages: {},
       scores: {},
+      starred: {},
+      learnSettings: DEFAULT_LEARN_SETTINGS,
+      toggleStar: (slug, word) =>
+        set((s) => {
+          const cur = s.starred[slug] ?? [];
+          const next = cur.includes(word) ? cur.filter((w) => w !== word) : [...cur, word];
+          return { starred: { ...s.starred, [slug]: next } };
+        }),
+      setLearnSettings: (learnSettings) => set({ learnSettings }),
       setStage: (slug, word, stage) =>
         set((s) => ({ stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stage } } })),
       addScore: (slug, score) =>
@@ -52,7 +67,13 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       name: `${STORAGE_PREFIX}topic-study`,
       storage: storage<TopicStudyState>(),
       version: 1,
-      partialize: (s) => ({ stages: s.stages, scores: s.scores }) as TopicStudyState,
+      partialize: (s) =>
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, learnSettings: s.learnSettings }) as TopicStudyState,
+      // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
+      merge: (persisted, current) => {
+        const p = (persisted ?? {}) as Partial<TopicStudyState>;
+        return { ...current, ...p, learnSettings: { ...DEFAULT_LEARN_SETTINGS, ...(p.learnSettings ?? {}) } };
+      },
     },
   ),
 );
