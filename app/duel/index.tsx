@@ -1,0 +1,107 @@
+import React, { useMemo, useState } from 'react';
+import { Pressable, Text, TextInput, View } from 'react-native';
+import { router } from 'expo-router';
+
+import { LightHero } from '@/components/layout/LightHero';
+import { Screen } from '@/components/layout/Screen';
+import { Appear } from '@/components/motion/Motion';
+import { Button } from '@/components/ui';
+import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
+import { VOCAB_TOPICS } from '@/data/vocab-topics';
+import { isRoomCode, makeRoomCode } from '@/services/duel/duel';
+import { color } from '@/theme/tokens';
+
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+
+const DECKS = [
+  ...VOCAB_TOPICS.map((t) => ({ slug: t.slug, name: t.nameVi })),
+  ...SAT_VOCAB_LESSONS.map((l) => ({ slug: l.slug, name: `${l.subject === 'math' ? 'SAT Math' : 'SAT Verbal'} · ${l.title}` })),
+];
+
+/**
+ * Sảnh ĐẤU 1–1: chọn bộ từ rồi tạo phòng (nhận mã 5 ký tự để gửi bạn), hoặc
+ * nhập mã bạn gửi để vào phòng.
+ */
+export default function DuelLobby() {
+  const [deck, setDeck] = useState(DECKS[0]!.slug);
+  const [filter, setFilter] = useState('');
+  const [code, setCode] = useState('');
+  const shown = useMemo(() => {
+    const f = filter.trim().toLowerCase();
+    return DECKS.filter((d) => !f || d.name.toLowerCase().includes(f)).slice(0, 24);
+  }, [filter]);
+  const joinCode = code.trim().toUpperCase();
+
+  return (
+    <Screen>
+      <Appear>
+        <LightHero
+          scene="vocab"
+          badge="ĐẤU 1–1"
+          line1="Thách bạn đấu từ vựng,"
+          line2="ai nhớ nhanh hơn"
+          subtitle="Hai người cùng làm 10 câu của một bộ từ, cùng lúc. Đúng được 100 điểm, trả lời càng nhanh càng được thưởng thêm. Thấy điểm của bạn mình chạy theo thời gian thực."
+        />
+      </Appear>
+
+      <View className="mt-5 flex-row flex-wrap gap-4">
+        <Appear index={1} style={{ flexGrow: 2, flexBasis: 420 }}>
+          <View className="rounded-[22px] bg-white p-5" style={CARD}>
+            <Text className="font-heavy text-sectionTitle text-ink">Tạo phòng</Text>
+            <Text className="mt-1 font-sans text-body text-muted">Chọn bộ từ để đấu:</Text>
+            <TextInput
+              value={filter}
+              onChangeText={setFilter}
+              placeholder="Tìm bộ từ…"
+              placeholderTextColor="#94A3B8"
+              className="mt-3 rounded-2xl px-4 py-2.5 font-sans text-body text-ink"
+              style={{ borderWidth: 1.5, borderColor: '#E2E8F0', backgroundColor: '#F8FAFC' }}
+            />
+            <View className="mt-3 flex-row flex-wrap gap-2">
+              {shown.map((d) => {
+                const on = d.slug === deck;
+                return (
+                  <Pressable
+                    key={d.slug}
+                    onPress={() => setDeck(d.slug)}
+                    className="rounded-pill px-3.5 py-2"
+                    style={{ backgroundColor: on ? color.primary : '#F1F5F9' }}
+                  >
+                    <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
+                      {d.name}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+            <Button
+              className="mt-4 self-start"
+              label="Tạo phòng và mời bạn"
+              iconRight="arrow-right"
+              onPress={() => router.push(`/duel/${makeRoomCode()}?deck=${deck}&host=1` as never)}
+            />
+          </View>
+        </Appear>
+
+        <Appear index={2} style={{ flexGrow: 1, flexBasis: 280 }}>
+          <View className="rounded-[22px] bg-white p-5" style={CARD}>
+            <Text className="font-heavy text-sectionTitle text-ink">Vào phòng</Text>
+            <Text className="mt-1 font-sans text-body text-muted">Nhập mã 5 ký tự bạn của bạn gửi:</Text>
+            <TextInput
+              value={code}
+              onChangeText={setCode}
+              autoCapitalize="characters"
+              maxLength={5}
+              placeholder="VD: K7Q2M"
+              placeholderTextColor="#94A3B8"
+              className="mt-3 rounded-2xl px-4 py-3 text-center font-heavy text-sectionTitle text-ink"
+              style={{ borderWidth: 1.5, borderColor: '#E2E8F0', backgroundColor: '#F8FAFC', letterSpacing: 6 }}
+            />
+            <Button className="mt-3 self-start" label="Vào phòng" disabled={!isRoomCode(joinCode)} onPress={() => router.push(`/duel/${joinCode}` as never)} />
+          </View>
+        </Appear>
+      </View>
+      <View className="h-8" />
+    </Screen>
+  );
+}
