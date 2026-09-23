@@ -32,15 +32,20 @@ export const QUIZ_KIND_LABEL: Record<QuizKind, string> = {
 };
 
 /**
- * Dãy dạng câu: chia đều bốn dạng, rồi xếp sao cho không có hai dạng giống
+ * Dãy dạng câu: chia đều các dạng, rồi xếp sao cho không có hai dạng giống
  * nhau liền kề (luôn chọn dạng còn nhiều nhất khác dạng vừa đặt — cách này
- * không bao giờ bị kẹt khi số lượng các dạng lệch nhau tối đa 1).
+ * không bao giờ bị kẹt khi số lượng các dạng lệch nhau tối đa 1). Dùng chung
+ * cho đề Kiểm tra và màn Điền vào câu.
  */
 export function kindSequence(size: number, rng: () => number, available: readonly QuizKind[] = ['mcq', 'type', 'cloze', 'tf']): QuizKind[] {
-  const counts = new Map<QuizKind, number>(available.map((k) => [k, Math.floor(size / available.length)]));
+  return spreadKinds(size, rng, available);
+}
+
+export function spreadKinds<K extends string>(size: number, rng: () => number, available: readonly K[]): K[] {
+  const counts = new Map<K, number>(available.map((k) => [k, Math.floor(size / available.length)]));
   const extra = shuffled(available, rng);
   for (let i = 0; i < size % available.length; i += 1) counts.set(extra[i]!, counts.get(extra[i]!)! + 1);
-  const out: QuizKind[] = [];
+  const out: K[] = [];
   for (let i = 0; i < size; i += 1) {
     const prev = out[out.length - 1];
     const options = shuffled(available, rng)
