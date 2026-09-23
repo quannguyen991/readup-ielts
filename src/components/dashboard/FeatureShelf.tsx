@@ -1,10 +1,12 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Appear, PressScale } from '@/components/motion/Motion';
+import { Gem3D, type Cut, type GemColor } from '@/components/three/Gem3D';
 import { Icon, StickerCard, type IconName } from '@/components/ui';
+import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
 import { weekId } from '@/services/weekly/challenge';
 import { useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { useShadowStore } from '@/store/useShadowStore';
@@ -12,10 +14,16 @@ import { useDueCards } from '@/store/useVocabStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { stickerGradient } from '@/theme/tokens';
 
-/** Bóng chữ mờ để chữ trắng vẫn đọc được ở đầu sáng của gradient (thẻ vàng, thẻ xanh ngọc). */
-const INK_SHADOW = { textShadowColor: 'rgba(15,23,42,0.28)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 6 };
-
-type Shelf = { key: string; title: string; note: string; href: string; icon: IconName; colors: readonly [string, string] };
+type Shelf = {
+  key: string;
+  title: string;
+  note: string;
+  href: string;
+  icon: IconName;
+  colors: readonly [string, string];
+  /** Viên đá quý 3D ở góc thẻ, màu đá tương phản với nền thẻ. */
+  gem: { cut: Cut; color: GemColor; companion?: GemColor };
+};
 
 /**
  * KỆ "MỚI TRÊN READUP" ở trang Hôm nay: một lối vào cho mỗi cách học mới, mỗi
@@ -36,6 +44,7 @@ export function FeatureShelf() {
       href: '/weekly',
       icon: 'trophy',
       colors: stickerGradient.warning,
+      gem: { cut: 'princess', color: 'sapphire' },
     },
     {
       key: 'duel',
@@ -44,6 +53,7 @@ export function FeatureShelf() {
       href: '/duel',
       icon: 'target',
       colors: stickerGradient.rose,
+      gem: { cut: 'brilliant', color: 'clear', companion: 'ruby' },
     },
     {
       key: 'shadow',
@@ -52,6 +62,7 @@ export function FeatureShelf() {
       href: '/shadow',
       icon: 'mic',
       colors: stickerGradient.accent,
+      gem: { cut: 'oval', color: 'emerald' },
     },
     {
       key: 'garden',
@@ -60,6 +71,7 @@ export function FeatureShelf() {
       href: '/vocabulary/garden',
       icon: 'leaf',
       colors: stickerGradient.success,
+      gem: { cut: 'brilliant', color: 'pink' },
     },
     {
       key: 'import',
@@ -68,6 +80,7 @@ export function FeatureShelf() {
       href: '/vocabulary/import',
       icon: 'plus',
       colors: stickerGradient.info,
+      gem: { cut: 'emerald', color: 'topaz' },
     },
     {
       key: 'errors',
@@ -76,6 +89,7 @@ export function FeatureShelf() {
       href: '/errors',
       icon: 'gauge',
       colors: stickerGradient.primary,
+      gem: { cut: 'brilliant', color: 'clear' },
     },
   ];
 
@@ -83,19 +97,23 @@ export function FeatureShelf() {
     <View className="mt-6">
       <Text className="font-heavy text-sectionTitle text-ink">Mới trên ReadUp</Text>
       <Text className="mt-1 font-sans text-body text-muted">Sáu cách học khác đi một chút — chọn một cái cho hôm nay.</Text>
-      <View className="mt-3">
-        <Grid columns={3} tabletColumns={3} mobileColumns={2} gap={14}>
+      {/* Khoảng trống rộng: vật thể 3D nhô qua mép trên của thẻ. */}
+      <View className="mt-7">
+        <Grid columns={3} tabletColumns={3} mobileColumns={2} gap={24}>
           {items.map((it, i) => (
-            <Appear key={it.key} index={i} style={{ height: '100%' }}>
-              <PressScale onPress={() => router.push(it.href as never)} style={{ height: '100%' }}>
-                <StickerCard colors={it.colors} style={{ height: '100%' }}>
-                  <View className="h-10 w-10 items-center justify-center rounded-panel bg-white/90">
-                    <Icon name={it.icon} size={20} color={it.colors[1]} strokeWidth={1.9} />
+            <Appear key={it.key} index={i} style={{ flex: 1 }}>
+              <PressScale fill onPress={() => router.push(it.href as never)} style={{ flex: 1 }}>
+                <StickerCard colors={it.colors} style={{ flex: 1 }} ornament={<Gem3D cut={it.gem.cut} color={it.gem.color} companion={it.gem.companion} size={88} />}>
+                  <View
+                    className="h-10 w-10 items-center justify-center rounded-panel bg-white"
+                    style={{ borderWidth: 2, borderColor: INK, ...(Platform.OS === 'web' ? ({ boxShadow: `1px 2.5px 0 ${INK}` } as object) : null) }}
+                  >
+                    <Icon name={it.icon} size={19} color={it.colors[1]} strokeWidth={2} />
                   </View>
-                  <Text className="mt-3 font-heavy text-cardTitle text-white" style={INK_SHADOW}>
+                  <Text className="mt-3 font-heavy text-cardTitle text-white" style={STICKER_TITLE_SHADOW}>
                     {it.title}
                   </Text>
-                  <Text className="mt-1 font-semi text-label text-white" style={[INK_SHADOW, { lineHeight: 18 }]}>
+                  <Text className="mt-1 font-semi text-label text-white" style={[STICKER_TEXT_SHADOW, { lineHeight: 18 }]}>
                     {it.note}
                   </Text>
                 </StickerCard>

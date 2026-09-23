@@ -10,6 +10,8 @@ import { Hero3D } from '@/components/three/Hero3D';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
+import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
+import { Gem3D, type Cut, type GemColor } from '@/components/three/Gem3D';
 import { PLANS } from '@/lib/billing/plans';
 import { ARTICLES } from '@/data/articles';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
@@ -54,6 +56,8 @@ type Area = {
   /** Chữ trong viên thuốc ghim đáy thẻ — con số thật, hoặc điều kiện dùng. */
   badge: string;
   href: string;
+  /** Viên đá quý 3D ở góc thẻ — màu đá TƯƠNG PHẢN với nền thẻ để nó nổi lên. */
+  gem: { cut: Cut; color: GemColor; companion?: GemColor };
 };
 
 const AREAS: Area[] = [
@@ -64,6 +68,7 @@ const AREAS: Area[] = [
     lines: [`${ieltsCount} passage IELTS · ${satCount} passage SAT`],
     badge: `${readableCount.toLocaleString('vi-VN')} BÀI`,
     href: '/practice',
+    gem: { cut: 'brilliant', color: 'topaz' },
   },
   {
     icon: 'pencil',
@@ -72,6 +77,7 @@ const AREAS: Area[] = [
     lines: ['Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng'],
     badge: `${WRITING_PROMPTS.length} ĐỀ`,
     href: '/write',
+    gem: { cut: 'brilliant', color: 'clear' },
   },
   {
     icon: 'grid',
@@ -80,6 +86,7 @@ const AREAS: Area[] = [
     lines: ['Đáp án tính bằng code, không do AI đoán'],
     badge: `${(CURRICULUM_TOTALS.questions + satRwStats().questions).toLocaleString('vi-VN')} CÂU`,
     href: '/sat',
+    gem: { cut: 'princess', color: 'clear' },
   },
   {
     icon: 'volume',
@@ -88,6 +95,7 @@ const AREAS: Area[] = [
     lines: ['Chép chính tả và dịch câu, chấm từng từ'],
     badge: `${sentenceCount} CÂU`,
     href: '/sentence',
+    gem: { cut: 'oval', color: 'ruby' },
   },
   {
     icon: 'letters',
@@ -96,6 +104,7 @@ const AREAS: Area[] = [
     lines: ['Mỗi từ lưu kèm nguyên câu gặp nó'],
     badge: 'FSRS',
     href: '/vocabulary',
+    gem: { cut: 'brilliant', color: 'pink' },
   },
   {
     icon: 'trending',
@@ -104,6 +113,7 @@ const AREAS: Area[] = [
     lines: [`${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`],
     badge: 'MIỄN PHÍ',
     href: '/math',
+    gem: { cut: 'emerald', color: 'sapphire' },
   },
 ];
 
@@ -119,6 +129,7 @@ const BILINGUAL_AREA: Area = {
   lines: ['VOA, NASA, Global Voices và bài phân tích ReadUp · Anh–Việt · miễn phí cho mọi người'],
   badge: `${bilingualStats().articles} BÀI`,
   href: '/bilingual',
+  gem: { cut: 'brilliant', color: 'clear', companion: 'sapphire' },
 };
 /**
  * Ba bước, và ở đây đánh số là ĐÚNG chứ không phải trang trí: thứ tự mang thông
@@ -325,16 +336,17 @@ export default function IntroScreen() {
         </Text>
       </Appear>
 
-      <View className="mt-5">
-        <Grid columns={3} tabletColumns={2} mobileColumns={1}>
+      {/* Khoảng trống trên và giữa các hàng rộng hơn thường lệ: vật thể 3D nhô qua mép trên của thẻ. */}
+      <View className="mt-9">
+        <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={30}>
           {AREAS.map((area, index) => (
-            <Appear key={area.title} index={index + 2} style={{ height: '100%' }}>
+            <Appear key={area.title} index={index + 2} style={{ flex: 1 }}>
               <AreaCard area={area} />
             </Appear>
           ))}
         </Grid>
         <Appear index={AREAS.length + 2}>
-          <View className="mt-4">
+          <View className="mt-9">
             <AreaCard area={BILINGUAL_AREA} />
           </View>
         </Appear>
@@ -500,52 +512,44 @@ function StatPill({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** Một mảng học: thẻ sticker màu đặc, viên thuốc ghim đáy là con số thật của mảng đó. */
+/** Một mảng học: thẻ khối 3D, vật thể xoay ở góc, viên nhãn ghim đáy là con số thật của mảng đó. */
 function AreaCard({ area }: { area: Area }) {
   return (
-    <PressScale onPress={() => enterApp(area.href)} style={{ height: '100%' }}>
-      <StickerCard bold colors={area.colors} style={{ height: '100%' }}>
-        {/* Hai ngôi sao chỉ để trang trí — chặn chạm để chúng không nuốt cú bấm
-            vào thẻ ở góc trên phải. */}
+    <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
+      <StickerCard bold colors={area.colors} style={{ flex: 1 }} ornament={<Gem3D cut={area.gem.cut} color={area.gem.color} companion={area.gem.companion} size={108} />}>
         <View
-          pointerEvents="none"
-          style={{ position: 'absolute', right: 14, top: 12, opacity: 0.45 }}
+          className="h-12 w-12 items-center justify-center rounded-panel bg-white"
+          style={{ borderWidth: 2, borderColor: INK, ...(Platform.OS === 'web' ? ({ boxShadow: `1.5px 3px 0 ${INK}` } as object) : null) }}
         >
-          <Icon name="sparkle" size={18} color="#fff" strokeWidth={1.6} />
-        </View>
-        <View
-          pointerEvents="none"
-          style={{ position: 'absolute', right: 38, top: 44, opacity: 0.28 }}
-        >
-          <Icon name="sparkle" size={12} color="#fff" strokeWidth={1.6} />
+          <Icon name={area.icon} size={22} color={area.colors[1]} strokeWidth={2} />
         </View>
 
-        <View className="h-12 w-12 items-center justify-center rounded-panel bg-white/90">
-          <Icon name={area.icon} size={22} color={area.colors[1]} strokeWidth={1.9} />
-        </View>
+        <Text className="mt-3.5 font-heavy text-sectionTitle text-white" style={STICKER_TITLE_SHADOW}>
+          {area.title}
+        </Text>
 
-        <Text className="mt-3.5 font-heavy text-sectionTitle text-white">{area.title}</Text>
-
-        {/* Chữ trắng đặc, không giảm độ mờ: đầu sáng của gradient (thẻ cam, thẻ
-            xanh lá) làm chữ mờ 90% tụt xuống dưới ngưỡng đọc được. */}
+        {/* Chữ trắng đặc có quầng mực mờ: đầu sáng của gradient (thẻ cam, thẻ
+            xanh lá) không làm chữ chìm. */}
         <View className="mt-2 gap-1.5">
           {area.lines.map((line) => (
-            <Text key={line} className="font-sans text-label text-white">
+            <Text key={line} className="font-semi text-label text-white" style={STICKER_TEXT_SHADOW}>
               {line}
             </Text>
           ))}
         </View>
 
-        {/* Đẩy viên thuốc xuống đáy để sáu thẻ có badge thẳng hàng dù chữ dài ngắn khác nhau. */}
+        {/* Đẩy viên nhãn xuống đáy để các thẻ có nhãn thẳng hàng dù chữ dài ngắn khác nhau. */}
         <View className="flex-1" />
 
         <View className="mt-5 flex-row items-center justify-between gap-2">
-          <View className="rounded-pill bg-white/25 px-3 py-1">
+          <View className="rounded-pill px-3 py-1" style={{ backgroundColor: 'rgba(27,24,64,0.62)' }}>
             <Text className="font-heavy text-label text-white" style={{ letterSpacing: 0.6 }}>
               {area.badge}
             </Text>
           </View>
-          <Icon name="arrow-right" size={16} color="#fff" />
+          <View className="h-8 w-8 items-center justify-center rounded-pill bg-white" style={{ borderWidth: 2, borderColor: INK }}>
+            <Icon name="arrow-right" size={15} color={INK} strokeWidth={2.4} />
+          </View>
         </View>
       </StickerCard>
     </PressScale>

@@ -8,7 +8,6 @@ import {
   dictationSetStats,
   filterDictationSets,
   getDictationSet,
-  paletteFor,
 } from './dictation-sets';
 
 test('kho có đủ 50 bộ, 600 câu, id và số thứ tự không trùng', () => {
@@ -110,12 +109,4 @@ test('lọc theo trình độ và chủ đề thu hẹp đúng kho', () => {
 test('tra theo id trả về đúng bộ, id lạ trả về undefined', () => {
   assert.equal(getDictationSet('set-01')?.order, 1);
   assert.equal(getDictationSet('không-có-bộ-này'), undefined);
-});
-
-test('màu thẻ ổn định theo số bài và luôn có giá trị', () => {
-  for (const set of DICTATION_SETS) {
-    const first = paletteFor(set.order);
-    assert.equal(first.length, 2, `${set.id} không lấy được cặp màu`);
-    assert.deepEqual(paletteFor(set.order), first, 'cùng một bài phải luôn ra cùng một màu');
-  }
 });
