@@ -17,6 +17,8 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { useQuestStore } from '@/store/useQuestStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
+import { useSatRwStore } from '@/store/useSatRwStore';
+import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
 import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
 
 /**
@@ -141,6 +143,21 @@ const weeklyStore: SyncedStore = {
   }),
 };
 
+/** SAT Verbal: lượt làm theo câu — để đổi máy không mất, và báo cáo phụ huynh đọc được. */
+const satRwStore: SyncedStore = {
+  key: 'satrw',
+  read: () => ({ attempts: useSatRwStore.getState().attempts }),
+  write: (payload) => {
+    useSatRwStore.setState({ attempts: ((payload as { attempts?: Record<string, RwAttempt> }).attempts ?? {}) as never });
+  },
+  merge: (local, remote) => ({
+    attempts: mergeRwAttempts(
+      (local as { attempts?: Record<string, RwAttempt> } | null)?.attempts,
+      (remote as { attempts?: Record<string, RwAttempt> } | null)?.attempts,
+    ),
+  }),
+};
+
 /** Gọi một lần lúc khởi động app. */
 export function registerAllSyncedStores(): void {
   registerSyncedStore(mathStore);
@@ -149,4 +166,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(billingStore);
   registerSyncedStore(questStore);
   registerSyncedStore(weeklyStore);
+  registerSyncedStore(satRwStore);
 }

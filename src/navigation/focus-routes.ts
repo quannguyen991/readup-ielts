@@ -18,6 +18,8 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/write\/result\/[^/]+$/,
 
   // SAT Math: chẩn đoán, drill, xem lại, thi thử, bộ bài, từ vựng toán.
+  // Báo cáo phụ huynh: người mở không phải học sinh, không cần thanh điều hướng của app.
+  /^\/report\/[^/]+$/,
   /^\/math\/(diagnostic|mock|vocab)$/,
   /^\/math\/(drill|review|set)\/[^/]+$/,
 

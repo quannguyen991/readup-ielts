@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
+import { ParentReportCard } from '@/components/dashboard/ParentReportCard';
 import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
@@ -183,8 +184,13 @@ export default function DashboardScreen() {
 
       <TodayPlan />
 
-      <View className="mt-4">
-        <ScorePredictionCard section="total" />
+      <View className="mt-4 flex-row flex-wrap gap-4">
+        <View style={{ flexGrow: 1, flexBasis: 320 }}>
+          <ScorePredictionCard section="total" />
+        </View>
+        <View style={{ flexGrow: 1, flexBasis: 320 }}>
+          <ParentReportCard />
+        </View>
       </View>
 
       <View className="mt-4 lg:mt-6">
