@@ -5,6 +5,7 @@ import { EvidenceTable, NotesList } from '@/components/sat-rw/ItemBody';
 import { PassageText } from '@/components/sat-rw/PassageText';
 import { Icon, PaperCard } from '@/components/ui';
 import type { SatRwQuestion } from '@/data/sat-rw-repository';
+import { WordNotes } from '@/components/sat-rw/WordNotes';
 import { color, paper } from '@/theme/tokens';
 
 /**
@@ -119,6 +120,9 @@ export function QuestionCard({
           </Text>
         </View>
       ) : null}
+
+      {/* Từ điển của bốn phương án: định nghĩa, đồng nghĩa, trái nghĩa, ví dụ. */}
+      {answered && showSolution ? <WordNotes options={question.options} answerIndex={question.answerIndex} /> : null}
     </PaperCard>
   );
 }

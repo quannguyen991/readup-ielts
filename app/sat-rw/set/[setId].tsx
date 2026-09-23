@@ -45,7 +45,7 @@ export default function SatRwSetScreen() {
 
   if (!set || !unit || questions.length === 0) {
     return (
-      <TaskShell
+      <TaskShell tone="paper"
         backHref="/sat-rw"
         backLabel="Về SAT Verbal"
         title="Không tìm thấy bộ đề này"

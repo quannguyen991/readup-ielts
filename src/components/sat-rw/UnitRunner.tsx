@@ -110,7 +110,7 @@ export function UnitRunner({
   if (done) {
     const percent = Math.round((correct / questions.length) * 100);
     return (
-      <TaskShell backHref={backHref} backLabel={backLabel} title="Xong bộ này" subtitle={subtitle} icon="clipboard">
+      <TaskShell tone="paper" backHref={backHref} backLabel={backLabel} title="Xong bộ này" subtitle={subtitle} icon="clipboard">
         <PaperCard className="items-center py-8">
           <Text className="font-heavy text-hero text-paper-ink">
             {correct}/{questions.length}
@@ -125,7 +125,7 @@ export function UnitRunner({
         */}
         {!instantSolution ? (
           <View className="mt-4 gap-3">
-            <Text className="font-strong text-bodyLg text-white">Xem lại từng câu</Text>
+            <Text className="font-strong text-bodyLg text-paper-ink">Xem lại từng câu</Text>
             {questions.map((q, i) => (
               <QuestionCard key={q.id} question={q} picked={answers[i] ?? null} onPick={() => {}} />
             ))}
@@ -133,23 +133,23 @@ export function UnitRunner({
         ) : null}
 
         <View className="mt-4 flex-row flex-wrap gap-2">
-          <Button variant="onDarkSolid" label="Làm lại bộ này" iconLeft="refresh" onPress={restart} />
-          <Button variant="onDark" label={doneLabel} onPress={() => router.replace(doneHref as never)} />
+          <Button variant="brand" label="Làm lại bộ này" iconLeft="refresh" onPress={restart} />
+          <Button variant="brandOutline" label={doneLabel} onPress={() => router.replace(doneHref as never)} />
         </View>
       </TaskShell>
     );
   }
 
   return (
-    <TaskShell
+    <TaskShell tone="paper"
       backHref={backHref}
       backLabel={backLabel}
       title={title}
       subtitle={subtitle}
       icon="clipboard"
       right={
-        <View className="rounded-pill bg-white/20 px-3.5 py-1.5">
-          <Text className="font-strong text-label text-white">
+        <View className="rounded-pill bg-white px-3.5 py-1.5">
+          <Text className="font-strong text-label text-paper-ink">
             {index + 1} / {questions.length}
             {instantSolution ? ` · đúng ${correct}` : ''}
           </Text>
@@ -195,13 +195,13 @@ export function UnitRunner({
         <View className="flex-1" />
         {answered ? (
           <Button
-            variant="onDarkSolid"
+            variant="brand"
             label={index + 1 < questions.length ? 'Câu tiếp theo' : 'Xem kết quả'}
             iconRight="arrow-right"
             onPress={next}
           />
         ) : (
-          <Text className="font-sans text-label text-white/80">
+          <Text className="font-sans text-label text-paper-muted">
             {instantSolution ? 'Chọn một phương án để xem lời giải' : 'Chọn một phương án để đi tiếp'}
           </Text>
         )}
