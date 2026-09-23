@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -9,6 +9,11 @@ import { getVocabTopic, groupByBand, type VocabTopicWord } from '@/data/vocab-to
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { color } from '@/theme/tokens';
+import { Flashcards } from '@/components/vocab/study/Flashcards';
+import { Grid } from '@/components/layout/Grid';
+import { CARD_SHADOW } from '@/components/vocab/study/StudyKit';
+import type { IconName } from '@/components/ui/Icon';
+import { masteredCount, useTopicStudyStore } from '@/store/useTopicStudyStore';
 
 /**
  * Một bộ từ vựng: 50 từ, xếp theo mức band từ dễ tới khó.
@@ -29,6 +34,7 @@ export default function VocabTopicScreen() {
   const entries = useVocabStore((s) => s.entries);
   const saveWord = useVocabStore((s) => s.saveWord);
   const [justSaved, setJustSaved] = useState(0);
+  const stages = useTopicStudyStore((s) => (typeof slug === 'string' ? s.stages[slug] : undefined));
 
   const savedLemmas = useMemo(
     () => new Set(Object.values(entries).map((e) => e.lemma.toLowerCase())),
@@ -105,6 +111,36 @@ export default function VocabTopicScreen() {
             </Text>
             <Text className="font-sans text-label text-muted">đã lưu vào sổ từ</Text>
           </View>
+        </View>
+      </Appear>
+
+      {/* ---------------------------------------------- tiến độ + chế độ học */}
+      <Appear index={1}>
+        <View className="mt-5">
+          <View className="flex-row items-center justify-between">
+            <Text className="font-semi text-body text-ink">
+              Đã nhớ <Text className="font-heavy">{masteredCount(stages)}</Text> / {topic.words.length} từ
+            </Text>
+            <Text className="font-sans text-label text-muted">Nhớ = gõ lại đúng từ khi chỉ thấy nghĩa</Text>
+          </View>
+          <View className="mt-2 h-2 overflow-hidden rounded-pill bg-white/70">
+            <View className="h-2 rounded-pill bg-success" style={{ width: `${(masteredCount(stages) / topic.words.length) * 100}%` }} />
+          </View>
+
+          <View className="mt-4">
+            <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={12}>
+              {MODES.map((m) => (
+                <ModeTile key={m.key} mode={m} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
+              ))}
+            </Grid>
+          </View>
+        </View>
+      </Appear>
+
+      {/* ------------------------------------------------ thẻ ghi nhớ */}
+      <Appear index={2}>
+        <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
+          <Flashcards words={topic.words} savedWords={savedLemmas} onSave={save} />
         </View>
       </Appear>
 
@@ -228,5 +264,50 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
         {value}
       </Text>
     </View>
+  );
+}
+
+/**
+ * Sáu cách học cùng một bộ từ. "Học" đứng đầu và được đề xuất: nó dẫn qua cả
+ * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
+ */
+const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
+  { key: 'learn', label: 'Học', note: 'Trắc nghiệm rồi gõ lại', icon: 'book', tone: '#2563EB', recommended: true },
+  { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
+  { key: 'cloze', label: 'Điền vào câu', note: 'Dùng từ trong câu ví dụ', icon: 'pencil', tone: '#7C3AED' },
+  { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
+  { key: 'test', label: 'Kiểm tra', note: '20 câu, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
+  { key: 'game', label: 'Bóng bay', note: 'Trò chơi, có bảng điểm', icon: 'sparkle', tone: '#16A34A' },
+];
+
+function ModeTile({ mode, onPress }: { mode: (typeof MODES)[number]; onPress: () => void }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Pressable
+      accessibilityRole="button"
+      onPress={onPress}
+      onHoverIn={() => setHovered(true)}
+      onHoverOut={() => setHovered(false)}
+      className="flex-row items-center gap-3 rounded-2xl bg-surface px-4 py-3.5"
+      style={[CARD_SHADOW, { borderWidth: 1.5, borderColor: hovered ? mode.tone : 'transparent' }]}
+    >
+      <View className="h-10 w-10 items-center justify-center rounded-xl" style={{ backgroundColor: `${mode.tone}1A` }}>
+        <Icon name={mode.icon} size={20} color={mode.tone} />
+      </View>
+      <View className="min-w-0 flex-1">
+        <View className="flex-row items-center gap-2">
+          <Text className="font-strong text-bodyLg text-ink">{mode.label}</Text>
+          {mode.recommended ? (
+            <View className="rounded-pill bg-primary-50 px-2 py-0.5">
+              <Text className="font-semi text-[11px] text-primary-700">Đề xuất</Text>
+            </View>
+          ) : null}
+        </View>
+        <Text className="font-sans text-label text-muted" numberOfLines={1}>
+          {mode.note}
+        </Text>
+      </View>
+      <Icon name="chevron-right" size={16} color={hovered ? mode.tone : '#94A3B8'} />
+    </Pressable>
   );
 }

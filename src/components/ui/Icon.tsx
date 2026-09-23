@@ -40,6 +40,7 @@ export type IconName =
   | 'refresh'
   | 'chat'
   | 'volume'
+  | 'mic'
   | 'grid'
   | 'list'
   | 'filter'
@@ -286,6 +287,13 @@ function renderPaths(name: IconName, p: CommonProps) {
         <>
           <Path {...p} d="M5.5 4.8h13a1.6 1.6 0 0 1 1.6 1.6v8.2a1.6 1.6 0 0 1-1.6 1.6H10l-4.3 3.3v-3.3h-.2A1.6 1.6 0 0 1 3.9 14.6V6.4a1.6 1.6 0 0 1 1.6-1.6z" />
           <Path {...p} d="M8.2 9.2h7.6M8.2 12.4h5" />
+        </>
+      );
+    case 'mic':
+      return (
+        <>
+          <Path {...p} d="M12 3.5a2.8 2.8 0 0 0-2.8 2.8v5.4a2.8 2.8 0 0 0 5.6 0V6.3A2.8 2.8 0 0 0 12 3.5z" />
+          <Path {...p} d="M6.5 11.2a5.5 5.5 0 0 0 11 0M12 16.7v3.8M9 20.5h6" />
         </>
       );
     case 'volume':

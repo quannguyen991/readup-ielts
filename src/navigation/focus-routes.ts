@@ -37,6 +37,8 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
 
   // Từ vựng theo chủ đề — đây là màn học thẻ, không phải màn duyệt.
   /^\/vocabulary\/topic\/[^/]+$/,
+  // Các màn học một bộ từ: Học, Nghe chép, Điền câu, Phát âm, Kiểm tra, Bóng bay.
+  /^\/vocabulary\/topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)$/,
   /^\/vocabulary\/practice$/,
 
   // Thi thử SAT đầy đủ: 98 câu, hơn hai tiếng. Đây là màn tập trung nhất trong
