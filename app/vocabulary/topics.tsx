@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { router } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
+import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Card, Icon, StickerCard, type IconName } from '@/components/ui';
@@ -11,7 +11,7 @@ import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS, type VocabTopic } from '@/data/vocab-
 import { useVocabStore } from '@/store/useVocabStore';
 import { notebookDeck, type StudyDeck } from '@/data/study-decks';
 import { SAT_MATH_VOCAB_LESSONS, SAT_VERBAL_VOCAB_LESSONS, type VocabLesson } from '@/data/lessons/vocab-lessons';
-import { color, gradient } from '@/theme/tokens';
+import { color } from '@/theme/tokens';
 
 /**
  * Màu + icon riêng cho từng chủ đề, phong cách "sticker" tham khảo từ The
@@ -105,21 +105,13 @@ export default function VocabTopicsScreen() {
   return (
     <Screen>
       <Appear>
-        <LinearGradient
-          colors={[...gradient.hero]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 1 }}
-          style={{ borderRadius: 20, padding: 22 }}
-        >
-          <Text className="font-heavy text-white" style={{ fontSize: 28 }}>
-            Từ vựng theo chủ đề
-          </Text>
-          <Text className="mt-2 font-sans text-body text-white/90" style={{ maxWidth: 560 }}>
-            {VOCAB_TOPIC_TOTALS.topics} chủ đề hay ra trong đề IELTS,{' '}
-            {VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ. Mỗi từ có phiên âm, nghĩa tiếng
-            Việt, một câu ví dụ và một collocation đi kèm.
-          </Text>
-        </LinearGradient>
+        <LightHero
+          scene="vocab"
+          badge="TỪ VỰNG"
+          line1="Từ vựng theo chủ đề"
+          line2="học trong câu, nhớ bằng ôn lặp"
+          subtitle={`${VOCAB_TOPIC_TOTALS.topics} chủ đề hay ra trong đề IELTS, ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ. Mỗi từ có phiên âm, nghĩa tiếng Việt, một câu ví dụ và một collocation đi kèm.`}
+        />
       </Appear>
 
       <Appear index={1}>

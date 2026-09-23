@@ -18,6 +18,7 @@ import {
 
 import { AppShell } from '@/components/layout/AppShell';
 import { PageTransition } from '@/components/motion/Motion';
+import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
 import { color } from '@/theme/tokens';
@@ -62,6 +63,7 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
         <StatusBar style="dark" />
+        <VercelAnalytics />
         <AppShell>
           <PageTransition routeKey={pathname}>
             <Slot />

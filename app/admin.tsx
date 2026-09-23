@@ -143,6 +143,10 @@ export default function AdminScreen() {
       </Appear>
 
       <Appear index={1}>
+        <StatsPanel token={token} />
+      </Appear>
+
+      <Appear index={1}>
         {/* Đối chiếu thanh toán đứng TRƯỚC vì đó là việc phải làm hằng ngày;
             danh sách người dùng chỉ tra khi cần. */}
         <View className="mt-4 flex-row gap-2">
@@ -909,4 +913,75 @@ function Blocked({ reason }: { reason: string }) {
 function formatDate(iso: string): string {
   const d = new Date(iso);
   return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+}
+
+type Stats = import('@/services/admin/stats').UserStats;
+
+/**
+ * Tổng quan người dùng: số tài khoản, người học thật 7/30 ngày, gói đang dùng.
+ * Lượt xem của người dùng chế độ Khách không có ở đây — xem Vercel Analytics.
+ */
+function StatsPanel({ token }: { token: string | null }) {
+  const [stats, setStats] = useState<Stats | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!token) return;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const res = await fetch('/api/admin/stats', { headers: { Authorization: `Bearer ${token}` } });
+        const body = (await res.json()) as { stats?: Stats; error?: string };
+        if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+        if (!cancelled) setStats(body.stats ?? null);
+      } catch (err) {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Không tải được thống kê.');
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [token]);
+
+  if (error) {
+    return (
+      <Card className="mt-4">
+        <Text className="font-sans text-body" style={{ color: color.danger }}>
+          Thống kê: {error}
+        </Text>
+      </Card>
+    );
+  }
+  if (!stats) return null;
+
+  const tiles: [string, string, string][] = [
+    [String(stats.accounts), 'tài khoản', `+${stats.signups7} trong 7 ngày · +${stats.signups30} trong 30 ngày`],
+    [String(stats.learners7), 'người học trong 7 ngày', `${stats.learners30} trong 30 ngày · ${stats.learnersEver} từng học`],
+    [String(stats.signedIn7), 'đăng nhập trong 7 ngày', `${stats.signedIn30} trong 30 ngày`],
+  ];
+  return (
+    <Card className="mt-4">
+      <Text className="font-strong text-cardTitle text-ink">Tổng quan người dùng</Text>
+      <View className="mt-3 flex-row flex-wrap gap-3">
+        {tiles.map(([value, label, sub]) => (
+          <View key={label} className="rounded-2xl bg-canvas px-4 py-3" style={{ minWidth: 190, flexGrow: 1 }}>
+            <Text className="font-heavy text-stat text-ink">{value}</Text>
+            <Text className="font-semi text-body text-ink">{label}</Text>
+            <Text className="mt-0.5 font-sans text-label text-muted">{sub}</Text>
+          </View>
+        ))}
+      </View>
+      <View className="mt-3 flex-row flex-wrap gap-2">
+        {Object.entries(stats.plans).map(([plan, n]) => (
+          <Badge key={plan} label={`${plan}: ${n}`} tone="neutral" />
+        ))}
+        {stats.signupsByMonth.map(([month, n]) => (
+          <Badge key={month} label={`Đăng ký ${month}: ${n}`} tone="info" />
+        ))}
+      </View>
+      <Text className="mt-3 font-sans text-label text-muted">
+        Người dùng chế độ Khách không đăng nhập nên không có trong các số này — lượt truy cập của họ xem ở Vercel → Analytics.
+      </Text>
+    </Card>
+  );
 }

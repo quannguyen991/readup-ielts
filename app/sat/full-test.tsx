@@ -178,6 +178,7 @@ function Intro({ onStart }: { onStart: () => void }) {
   return (
     <ExamShell>
       <LightHero
+        scene="math"
         badge="DIGITAL SAT · FULL TEST"
         line1="Thi thử SAT đầy đủ"
         line2="một mạch từ đầu tới cuối"
