@@ -3,6 +3,7 @@ import { ActivityIndicator, Platform, Pressable, ScrollView, Text, View, useWind
 import { router, useLocalSearchParams } from 'expo-router';
 import type { QuestionType } from '@/types/database';
 import * as Speech from 'expo-speech';
+import { englishVoice } from '@/services/audio/voice';
 import * as WebBrowser from 'expo-web-browser';
 
 import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround } from '@/components/reader/PassageView';
@@ -291,6 +292,7 @@ export default function ReadScreen() {
     setSpeakingParagraph(index);
     Speech.speak(paragraph, {
       language: 'en-US',
+      voice: englishVoice(),
       rate: ttsRate,
       onDone: () => setSpeakingParagraph(null),
       onStopped: () => setSpeakingParagraph(null),

@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import { CrossFade } from "@/components/motion/Motion";
-import { DetailFace, FlipCard, WordFace } from "./FlipCard";
+import { DetailFace, detailHeight, FlipCard, WordFace } from "./FlipCard";
 import { CARD_SHADOW, SpeakButton, StarButton, useHotkeys } from "./StudyKit";
 import { Icon } from "@/components/ui/Icon";
 import {
@@ -67,7 +67,7 @@ export function Flashcards<W extends StudyWord>({
       <View>
         <CrossFade swapKey={`${order}-${seed}-${index}`}>
           <FlipCard
-            height={word.synonyms?.length ? 430 : 340}
+            height={detailHeight(word)}
             cardKey={`${order}-${seed}-${index}`}
             flipped={flipped}
             onFlip={() => setFlipped((f) => !f)}

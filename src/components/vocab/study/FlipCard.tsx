@@ -3,7 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { levelLabel, posIpa } from '@/data/study-decks';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { CARD_SHADOW, ExampleLine, SpeakButton, SynAnt } from './StudyKit';
+import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
 import type { StudyWord } from '@/services/vocab/topic-study';
 
 /**
@@ -109,28 +109,87 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
   );
 }
 
-/** Mặt sau đầy đủ: từ, nghĩa, định nghĩa, ví dụ, cụm đi kèm. */
+/**
+ * Chiều cao thẻ đủ chứa mặt sau — mặt thẻ đặt tuyệt đối nên thẻ không tự co giãn
+ * theo nội dung; tính từ những mục thật sự có.
+ */
+export function detailHeight(word: StudyWord, showWord = false): number {
+  let h = 190;
+  if (showWord) h += 36;
+  if (word.definitionEn) h += word.definitionEn.length > 90 ? 48 : 26;
+  if (word.example) h += word.example.length > 80 ? 96 : 74;
+  if (word.synonyms?.length) h += 44;
+  if (word.antonyms?.length) h += 44;
+  if (word.collocation) h += 44;
+  return Math.max(340, h);
+}
+
+/** Nhãn nhỏ của từng mục trên mặt sau. */
+function Label({ children }: { children: string }) {
+  return <Text className="mb-1.5 font-strong text-label uppercase tracking-[1.2px] text-muted">{children}</Text>;
+}
+
+function Chips({ words, tone, bg }: { words: string[]; tone: string; bg: string }) {
+  return (
+    <View className="flex-row flex-wrap gap-1.5">
+      {words.map((w) => (
+        <View key={w} className="rounded-pill px-2.5 py-1" style={{ backgroundColor: bg }}>
+          <Text className="font-semi text-label" style={{ color: tone }}>
+            {w}
+          </Text>
+        </View>
+      ))}
+    </View>
+  );
+}
+
+/**
+ * Mặt sau đầy đủ, CHIA MỤC CÓ NHÃN: nghĩa + định nghĩa ở trên, rồi Ví dụ, Đồng
+ * nghĩa, Trái nghĩa, Hay đi cùng — mục nào không có dữ liệu thì không hiện.
+ * (Bản trước để câu ví dụ và cụm từ trôi không nhãn, người học không biết đó là gì.)
+ */
 export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boolean }) {
   return (
-    <>
+    <View>
       {showWord ? (
-        <Text className="text-center font-heavy text-sectionTitle text-primary-700">
-          {word.word} <Text className="font-sans text-body text-muted">{word.ipa}</Text>
-        </Text>
-      ) : null}
-      <Text className="mt-1 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
-      <Text className="mt-2 text-center font-sans text-body text-muted">{word.definitionEn}</Text>
-      {word.example ? (
-        <View className="mt-5 rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F6FF' }}>
-          <ExampleLine example={word.example} word={word.word} />
+        <View className="flex-row items-center justify-center gap-2">
+          <Text className="text-center font-heavy text-sectionTitle text-primary-700">
+            {word.word} <Text className="font-sans text-body text-muted">{word.ipa}</Text>
+          </Text>
+          <SpeakButton text={word.word} rate={0.85} size={16} />
         </View>
       ) : null}
-      {word.collocation ? (
-        <Text className="mt-3 text-center font-sans text-body text-muted">
-          Hay đi cùng: <Text className="font-semi text-ink">{word.collocation}</Text>
-        </Text>
-      ) : null}
-      <SynAnt word={word} center />
-    </>
+      <Text className="mt-1 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
+      {word.definitionEn ? <Text className="mt-1.5 text-center font-sans text-body text-muted">{word.definitionEn}</Text> : null}
+
+      <View className="mt-4 gap-3.5">
+        {word.example ? (
+          <View>
+            <Label>Ví dụ</Label>
+            <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F6FF' }}>
+              <ExampleLine example={word.example} word={word.word} />
+            </View>
+          </View>
+        ) : null}
+        {word.synonyms?.length ? (
+          <View>
+            <Label>Đồng nghĩa</Label>
+            <Chips words={word.synonyms} tone="#15803D" bg="#ECFDF3" />
+          </View>
+        ) : null}
+        {word.antonyms?.length ? (
+          <View>
+            <Label>Trái nghĩa</Label>
+            <Chips words={word.antonyms} tone="#BE123C" bg="#FFF1F2" />
+          </View>
+        ) : null}
+        {word.collocation ? (
+          <View>
+            <Label>Hay đi cùng</Label>
+            <Text className="font-semi text-body text-ink">{word.collocation}</Text>
+          </View>
+        ) : null}
+      </View>
+    </View>
   );
 }

@@ -2,13 +2,13 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import * as Speech from 'expo-speech';
+import { englishVoice } from '@/services/audio/voice';
 
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon, IconButton, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
-import { VOCAB_MODES, modeAvailability } from '@/services/vocab/modes';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/store/useVocabStore';
 import { color, wordStatusColor } from '@/theme/tokens';
@@ -189,54 +189,47 @@ export default function VocabularyScreen() {
 }
 
 /**
- * Lối vào phòng luyện, đặt NGAY TRÊN danh sách từ.
- *
- * Sổ từ trước đây chỉ có hai tab: xem danh sách và ôn theo FSRS bằng bốn nút
- * Again/Hard/Good/Easy. Cả bảy cách ôn nằm ở `/vocabulary/practice`, mà không
- * có một đường nào từ đây dẫn sang — nên người dùng mở sổ từ ra chỉ thấy một
- * cái danh sách và kết luận app không có phần luyện tập. Đúng như họ thấy.
- *
- * Mỗi chế độ hiện kèm SỐ TỪ dùng được cho nó. Chế độ không có từ nào đủ liệu
- * thì mờ và không bấm được, thay vì mời bấm vào rồi hiện màn trống.
+ * Lối vào luyện sổ từ, đặt NGAY TRÊN danh sách từ: ba kiểu của Quiz từ vựng chạy
+ * thẳng trên chính sổ từ của người học (bộ `so-tu`). Sổ dưới 4 từ thì chưa đủ
+ * làm phương án nhiễu cho trắc nghiệm — nói rõ thay vì mở ra màn trống.
  */
+const NOTEBOOK_MODES: { id: string; label: string; icon: React.ComponentProps<typeof Icon>['name'] }[] = [
+  { id: 'learn', label: 'Học xen kẽ', icon: 'book' },
+  { id: 'test', label: 'Kiểm tra', icon: 'clipboard' },
+  { id: 'cloze', label: 'Điền vào câu', icon: 'pencil' },
+];
+
 function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
-  const counts = useMemo(() => modeAvailability(entries), [entries]);
   if (entries.length === 0) return null;
+  const enough = entries.length >= 4;
 
   return (
     <Card className="mt-4">
       <SectionHeader
-        title="Luyện tập"
-        subtitle={`${VOCAB_MODES.length} cách ôn — chọn một kiểu, hoặc để app trộn cả bảy`}
+        title="Luyện sổ từ"
+        subtitle={enough ? 'Ba kiểu quiz chạy trên chính những từ bạn đã lưu' : `Lưu thêm ${4 - entries.length} từ nữa là luyện được`}
         icon="target"
         action={{
-          label: 'Mở phòng luyện',
-          onPress: () => router.push('/vocabulary/practice' as never),
+          label: 'Quiz từ vựng',
+          onPress: () => router.push('/vocabulary/quiz' as never),
         }}
       />
       <View className="mt-3 flex-row flex-wrap gap-2">
-        {VOCAB_MODES.map((mode) => {
-          const count = counts[mode.id] ?? 0;
-          const off = count === 0;
-          return (
-            <Pressable
-              key={mode.id}
-              accessibilityRole="button"
-              accessibilityState={{ disabled: off }}
-              disabled={off}
-              onPress={() => router.push(`/vocabulary/practice?mode=${mode.id}` as never)}
-              className={`flex-row items-center gap-2 rounded-pill border px-3 py-2 ${
-                off ? 'border-border bg-surfaceAlt' : 'border-primary-200 bg-primary-50'
-              }`}
-            >
-              <Icon name={mode.icon} size={15} color={off ? color.subtle : color.primary} />
-              <Text className={off ? 'font-mid text-label text-subtle' : 'font-strong text-label text-ink'}>
-                {mode.label}
-              </Text>
-              <Text className="font-mid text-label text-muted">{count}</Text>
-            </Pressable>
-          );
-        })}
+        {NOTEBOOK_MODES.map((mode) => (
+          <Pressable
+            key={mode.id}
+            accessibilityRole="button"
+            accessibilityState={{ disabled: !enough }}
+            disabled={!enough}
+            onPress={() => router.push(`/vocabulary/topic/so-tu/${mode.id}` as never)}
+            className={`flex-row items-center gap-2 rounded-pill border px-3 py-2 ${
+              enough ? 'border-primary-200 bg-primary-50' : 'border-border bg-surfaceAlt'
+            }`}
+          >
+            <Icon name={mode.icon} size={15} color={enough ? color.primary : color.subtle} />
+            <Text className={enough ? 'font-strong text-label text-ink' : 'font-mid text-label text-subtle'}>{mode.label}</Text>
+          </Pressable>
+        ))}
       </View>
     </Card>
   );
@@ -268,7 +261,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
         <IconButton
           name="volume"
           accessibilityLabel="Phát âm"
-          onPress={() => Speech.speak(entry.word, { language: 'en-US', rate: 0.9 })}
+          onPress={() => Speech.speak(entry.word, { language: 'en-US', rate: 0.9, voice: englishVoice() })}
         />
 
         <View className="flex-1" />

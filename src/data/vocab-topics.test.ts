@@ -207,3 +207,24 @@ test('gộp theo band giữ đủ số từ và đúng thứ tự dễ → khó'
     }
   }
 });
+
+test('đồng nghĩa/trái nghĩa: gọn, không lặp từ gốc, không trùng nhau, phủ phần lớn kho', () => {
+  let withSyn = 0;
+  let total = 0;
+  for (const t of VOCAB_TOPICS) {
+    for (const w of t.words) {
+      total += 1;
+      const syn = w.synonyms ?? [];
+      const ant = w.antonyms ?? [];
+      if (syn.length) withSyn += 1;
+      assert.ok(syn.length <= 4 && ant.length <= 2, `${w.word}: quá nhiều mục`);
+      for (const s of [...syn, ...ant]) {
+        assert.notEqual(s.toLowerCase(), w.word.toLowerCase(), `${w.word}: lặp từ gốc`);
+        assert.ok(s.trim().split(/\s+/).length <= 3, `${w.word}: "${s}" quá dài`);
+      }
+      assert.equal(new Set(syn.map((s) => s.toLowerCase())).size, syn.length, `${w.word}: đồng nghĩa lặp`);
+      assert.ok(!ant.some((a) => syn.includes(a)), `${w.word}: vừa đồng vừa trái nghĩa`);
+    }
+  }
+  assert.ok(withSyn / total > 0.8, `chỉ ${withSyn}/${total} từ có đồng nghĩa`);
+});

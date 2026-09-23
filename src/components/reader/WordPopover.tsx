@@ -8,6 +8,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import * as Speech from 'expo-speech';
+import { englishVoice } from '@/services/audio/voice';
 
 import { Icon } from '@/components/ui';
 import { readingFont } from '@/lib/readingFonts';
@@ -98,7 +99,7 @@ export function WordPopover({
 
   const speak = (text: string) => {
     Speech.stop();
-    Speech.speak(text, { language: 'en-GB', rate: 0.9 });
+    Speech.speak(text, { language: 'en-GB', rate: 0.9, voice: englishVoice() });
   };
 
   const save = () => {

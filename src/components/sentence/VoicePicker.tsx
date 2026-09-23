@@ -3,6 +3,7 @@ import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import * as Speech from 'expo-speech';
 
 import { Icon } from '@/components/ui';
+import { bestVoice } from '@/services/audio/voice-pick';
 import { paper } from '@/theme/tokens';
 
 /**
@@ -117,35 +118,8 @@ export function useEnglishVoices(): EnglishVoice[] {
  * phải chờ tôi bổ sung danh sách.
  */
 export function preferredVoice(voices: EnglishVoice[]): string | null {
-  if (voices.length === 0) return null;
-
-  const has = (v: EnglishVoice, needle: string) =>
-    v.name.toLowerCase().includes(needle.toLowerCase());
-
-  const first = (test: (v: EnglishVoice) => boolean) => voices.find(test);
-
-  const byLang = (prefix: string) =>
-    voices.find((v) => v.language.replace('_', '-').toLowerCase().startsWith(prefix));
-
-  const pick =
-    /* Thế hệ nơ-ron, bất kể hãng nào. */
-    first((v) => has(v, 'natural')) ??
-    first((v) => has(v, 'premium')) ??
-    first((v) => has(v, 'enhanced')) ??
-    first((v) => has(v, 'neural')) ??
-    /* Giọng Apple nghe được, tên không kèm từ khoá nào ở trên. */
-    first((v) => has(v, 'ava')) ??
-    first((v) => has(v, 'samantha')) ??
-    first((v) => has(v, 'serena')) ??
-    /* Hết giọng mới thì mới tới lớp cũ. */
-    first((v) => has(v, 'google us english')) ??
-    first((v) => has(v, 'google uk english male')) ??
-    first((v) => has(v, 'google uk english')) ??
-    byLang('en-gb') ??
-    byLang('en-us') ??
-    voices[0];
-
-  return pick?.identifier ?? null;
+  // Giọng NỮ tiếng Anh, nơ-ron trước — cùng luật với giọng chung của app (`services/audio/voice-pick`).
+  return bestVoice(voices)?.identifier ?? voices[0]?.identifier ?? null;
 }
 
 export function VoicePicker({

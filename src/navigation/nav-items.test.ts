@@ -11,7 +11,7 @@ import { NAV_GROUPS, NAV_ITEMS, activeNavKey, parentNavKey } from './nav-items';
 const MUST_STAY_REACHABLE = [
   '/intro', '/dashboard', '/practice', '/write', '/mock-tests', '/math', '/sat-rw', '/sat/full-test',
   '/sentence', '/sentence/sets', '/sentence/youtube', '/library', '/bilingual', '/vocabulary',
-  '/vocabulary/practice', '/vocabulary/topics', '/notes', '/bookmarks', '/plan', '/progress',
+  '/vocabulary/quiz', '/vocabulary/topics', '/notes', '/bookmarks', '/plan', '/progress',
   '/leaderboard', '/shop', '/mastery', '/observatory', '/teacher', '/quest', '/invite', '/upgrade', '/settings',
 ];
 

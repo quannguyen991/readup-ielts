@@ -115,7 +115,7 @@ export const NAV_GROUPS: NavGroup[] = [
         href: '/vocabulary',
         icon: 'letters',
         children: [
-          { key: 'vocab-practice', label: 'Luyện từ vựng', href: '/vocabulary/practice', icon: 'refresh' },
+          { key: 'vocab-quiz', label: 'Quiz từ vựng', href: '/vocabulary/quiz', icon: 'target' },
           { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
           { key: 'vocab-import', label: 'Học từ bài bạn thích', href: '/vocabulary/import', icon: 'plus' },
           { key: 'vocab-garden', label: 'Vườn từ', href: '/vocabulary/garden', icon: 'leaf' },

@@ -349,6 +349,20 @@ export function answerLearn(state: LearnState, correct: boolean, kinds: readonly
 }
 
 /** Tiến độ một từ cho thanh đoạn: 0 chưa vào vòng, 1 đang học, 2 xong. */
+/**
+ * Phần đã xong của một từ trong vòng (0–1) — để thanh tiến độ đầy dần đúng nhịp
+ * học: vòng có ba phần thì mỗi phần qua được một phần ba đoạn. Câu hỏi lại sau
+ * khi sai không cộng thêm (từ vẫn đứng ở phần đó cho tới khi qua).
+ */
+export function learnFraction(state: LearnState, word: string, kinds: readonly StageKind[] = STAGE_ORDER): number {
+  if (state.pending.includes(word)) return 0;
+  const item = state.items.find((i) => i.word === word);
+  if (!item) return 1;
+  const order = activeKinds(kinds);
+  const at = Math.max(0, order.indexOf(item.kind));
+  return at / order.length;
+}
+
 export function learnProgress(state: LearnState, word: string): 0 | 1 | 2 {
   if (state.pending.includes(word)) return 0;
   return state.items.some((i) => i.word === word) ? 1 : 2;

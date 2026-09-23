@@ -125,7 +125,7 @@ export function todaySlots(today: Date, week: number = weekNumber(today)): PlanS
       when: '08:50 · 50 phút',
       title: 'Từ vựng',
       detail: plan.vocab ? `${plan.vocab} — quiz rồi làm bài tập của chính unit đó` : 'Quiz từ vựng',
-      href: '/vocabulary/practice',
+      href: '/vocabulary/quiz',
     },
   ];
 

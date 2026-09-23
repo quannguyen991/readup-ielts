@@ -11,6 +11,7 @@ import {
 import { router, useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
+import { englishVoice } from '@/services/audio/voice';
 
 import { OliveGrid } from '@/components/layout/OliveGrid';
 import { Appear, CrossFade } from '@/components/motion/Motion';
@@ -959,7 +960,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                   accessibilityLabel={`Nghe từ ${v.word}`}
                   onPress={() => {
                     Speech.stop();
-                    Speech.speak(v.word, { language: 'en-GB', rate: 0.9 });
+                    Speech.speak(v.word, { language: 'en-GB', rate: 0.9, voice: englishVoice() });
                   }}
                   className="px-1"
                 >
