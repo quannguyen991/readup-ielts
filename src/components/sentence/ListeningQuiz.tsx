@@ -7,6 +7,7 @@ import type { GeneratedQuestion } from '@/services/questions/types';
 import type { TranscriptSentence } from '@/services/youtube/transcript';
 import { observeSkill } from '@/store/useMasteryStore';
 import { color, paper } from '@/theme/tokens';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Nghe hiểu: câu hỏi sinh thẳng từ phụ đề của chính video đang xem.
@@ -205,7 +206,11 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
             picked={answers[q.id] ?? null}
             paragraphCount={paragraphs.length}
             markedPart={marks[q.id] ?? null}
-            onPick={(value) => setAnswers((prev) => (prev[q.id] ? prev : { ...prev, [q.id]: value }))}
+            onPick={(value) => {
+              if (answers[q.id]) return;
+              setAnswers((prev) => (prev[q.id] ? prev : { ...prev, [q.id]: value }));
+              useGameStore.getState().answer(sameAnswer(value, q.correctAnswer), 'listen');
+            }}
             onMark={(part) => {
               if (marks[q.id] !== undefined) return;
               setMarks((prev) => ({ ...prev, [q.id]: part }));

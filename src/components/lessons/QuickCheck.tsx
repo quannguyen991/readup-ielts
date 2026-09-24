@@ -9,6 +9,7 @@ import { SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
 import type { MathSkill } from '@/lib/math/types';
 import { generateMathSet } from '@/services/math/generator';
 import { gradeMathItem } from '@/services/math/grade';
+import { useGameStore } from '@/store/useGameStore';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
 const SIZE = 3;
@@ -41,7 +42,9 @@ export function MathQuickCheck({ skill }: { skill: MathSkill }) {
               disabled={answer === null || answer === ''}
               onPress={() => {
                 setRevealed(true);
-                if (gradeMathItem(item, answer).isCorrect) setScore((n) => n + 1);
+                const ok = gradeMathItem(item, answer).isCorrect;
+                if (ok) setScore((n) => n + 1);
+                useGameStore.getState().answer(ok, 'math');
               }}
             />
           ) : (
@@ -82,6 +85,7 @@ export function VerbalQuickCheck({ skill }: { skill: string }) {
           onPick={(c) => {
             setPicked(c);
             if (c === q.answerIndex) setScore((n) => n + 1);
+            useGameStore.getState().answer(c === q.answerIndex, 'verbal');
           }}
         />
         {picked !== null ? (

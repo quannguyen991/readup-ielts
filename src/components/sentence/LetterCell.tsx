@@ -37,6 +37,7 @@ export function LetterCell({
   liveResult,
   celebrate = false,
   delayMs = 0,
+  size = 32,
 }: {
   char: string;
   state: LetterCellState;
@@ -46,6 +47,8 @@ export function LetterCell({
   celebrate?: boolean;
   /** Độ trễ của ô này trong đợt sóng, tính theo vị trí chữ cái. */
   delayMs?: number;
+  /** Bề ngang ô (px) — lưới tự thu nhỏ để từ dài nhất vừa một dòng, xem `fitCells`. */
+  size?: number;
 }) {
   const wrong = liveResult && state === 'wrong';
   const filled = char.length > 0;
@@ -138,11 +141,11 @@ export function LetterCell({
     <Animated.View
       style={[
         {
-          height: 36,
-          width: 32,
+          height: Math.round(size * 1.125),
+          width: size,
           alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: 8,
+          borderRadius: size >= 24 ? 8 : 5,
           borderStyle: 'solid',
         },
         style,
@@ -150,7 +153,7 @@ export function LetterCell({
     >
       <Text
         className="font-strong text-body"
-        style={{ color: celebrate ? color.success : wrong ? color.danger : paper.ink }}
+        style={{ color: celebrate ? color.success : wrong ? color.danger : paper.ink, ...(size < 24 ? { fontSize: Math.max(10, Math.round(size * 0.62)), lineHeight: Math.round(size * 1.05) } : null) }}
       >
         {char}
       </Text>

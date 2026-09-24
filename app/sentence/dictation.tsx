@@ -7,7 +7,6 @@ import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
 import { DictationLibrary } from '@/components/sentence/DictationLibrary';
 import { LetterGrid } from '@/components/sentence/LetterGrid';
-import { PixelTrack } from '@/components/sentence/PixelTrack';
 import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
 import { Badge, Button, Icon, type IconName } from '@/components/ui';
 import { DICTATION_SENTENCES, type DictationItem } from '@/data/sentence-drills';
@@ -18,6 +17,7 @@ import { gradeDictation } from '@/services/sentence/dictation-grade';
 import {
   buildLetterBoard,
   gradeLetters,
+  revealNextWord,
   sanitizeTyped,
 } from '@/services/sentence/letter-cells';
 import { useSentenceStore, type DictationAttempt } from '@/store/useSentenceStore';
@@ -25,7 +25,8 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
 import { CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
-import { useGameStore } from '@/store/useGameStore';
+import { useOwlHint } from '@/components/game/useOwlHint';
+import { useSentenceStrike } from '@/components/game/useSentenceStrike';
 
 /**
  * Bài luyện chép chính tả — MỖI CHỮ CÁI MỘT Ô.
@@ -124,8 +125,6 @@ export default function DictationScreen() {
 
   const finishItem = useCallback(
     (attempt: DictationAttempt) => {
-      // Game khi học: chép đúng từ 80% trở lên là một đòn trúng.
-      useGameStore.getState().answer(attempt.accuracy >= 0.8, 'listen');
       const next = [...attempts, attempt];
       setAttempts(next);
       if (index + 1 < items.length) {
@@ -299,6 +298,31 @@ function RunningView({
       ? grade.done && grade.correctCount === grade.total
       : freeGrade !== null && freeGrade.accuracy === 1;
 
+  /*
+    Game khi học: chấm câu này ĐÚNG MỘT LẦN, ngay lúc câu được phân xử — gõ đúng
+    trọn câu (ô chữ) hay bấm chấm (tự gõ) — chứ không đợi bấm sang câu sau. Nhát
+    chém phải rơi đúng lúc tia nạp đòn chạm quái.
+  */
+  const strike = useSentenceStrike(item.id, 'listen');
+  useEffect(() => {
+    if (revealed) return;
+    if (mode === 'cells' && grade.done) strike(true);
+    else if (mode === 'free' && freeGrade) strike(freeGrade.accuracy >= 0.8);
+  }, [mode, grade.done, freeGrade, revealed, strike]);
+
+  // Hỏi Cú (ô chữ): mở hộ từ đầu tiên chưa đúng. Tự gõ thì không có gì để mở.
+  useOwlHint(
+    mode === 'cells' && !done
+      ? () => {
+          const filled = revealNextWord(board, letters);
+          if (filled === null) return false;
+          setLetters(filled);
+          inputRef.current?.focus();
+          return true;
+        }
+      : null,
+  );
+
   useEffect(() => {
     enteredAt.current = Date.now();
     return () => {
@@ -364,6 +388,8 @@ function RunningView({
           ? grade.correctCount / grade.total
           : 0
         : (freeGrade?.accuracy ?? 0);
+    // Sang câu mà câu này chưa được phân xử (bỏ qua giữa chừng): chấm theo độ chính xác.
+    strike(accuracy >= 0.8);
     onSubmit({
       itemId: item.id,
       topic: item.topic,
@@ -428,7 +454,6 @@ function RunningView({
         </View>
       }
     >
-      <BattleStrip className="mb-4" />
       <View className="gap-4 lg:flex-row">
         {/* --------------------------------------------------------- vùng làm */}
         <View className="lg:flex-1">
@@ -436,17 +461,15 @@ function RunningView({
             {allCorrect && !revealed ? <Confetti seed={item.id} /> : null}
 
             {/*
-              Đường chạy đặt TRÊN CÙNG, trước cả nút nghe: nó trả lời câu "còn
-              bao nhiêu nữa" — thứ người học hỏi ngay khi mở màn, trước khi hỏi
-              "câu này đọc thế nào".
+              THANH TRẬN ĐẤU đặt TRÊN CÙNG, đúng chỗ đường chạy cũ: mặt đất của
+              nó là con đường tới đích (còn bao nhiêu câu), còn tia nạp đòn đầy
+              dần theo số từ đã chép đúng — đủ câu là chém.
             */}
-            <View className="mb-4">
-              <PixelTrack
-                progress={total > 0 ? index / total : 0}
-                seed={`dictation:${total}`}
-                label={`Câu ${index + 1} trên ${total}`}
-              />
-            </View>
+            <BattleStrip
+              className="mb-4"
+              step={{ index, total }}
+              charge={mode === 'cells' ? { value: solvedWords.filter(Boolean).length, total: board.words.length, unit: 'từ' } : undefined}
+            />
 
             {/* ------------------------------------------------- trình đọc */}
             <View className="flex-row flex-wrap items-center gap-3 rounded-panel bg-paper-canvas p-3.5">
@@ -469,7 +492,8 @@ function RunningView({
                 </Text>
               </View>
 
-              <View className="flex-row flex-wrap items-center gap-1.5">
+              {/* `max-w-full`: không có nó hàng này dài bằng nội dung và tràn khỏi thẻ trên điện thoại, cắt mất nút tốc độ. */}
+              <View className="max-w-full flex-row flex-wrap items-center gap-1.5">
                 <VoicePicker
                   voices={voices}
                   voiceId={voiceId}
@@ -676,7 +700,10 @@ function RunningView({
                   size="sm"
                   label="Xem đáp án"
                   iconLeft="info"
-                  onPress={() => setRevealed(true)}
+                  onPress={() => {
+                    strike(false);
+                    setRevealed(true);
+                  }}
                 />
               ) : null}
 

@@ -28,6 +28,10 @@ ensureGameKeyframes();
 
 const ITEM_ORDER: ItemKind[] = ['potion', 'shield', 'double', 'hint'];
 const GOLD = '#FACC15';
+/** Bề ngang cột nhân vật (hàng tim 5 × 11 + khe) và khung quái — để đặt tia nạp đòn giữa hai bên. */
+const HERO_BOX = 63;
+const ENEMY_BOX = 132;
+const ENEMY_SPRITE_SIZE = 58;
 
 type Kind = FxEvent['kind'];
 
@@ -40,13 +44,23 @@ function lastOf<K extends Kind>(events: FxEvent[], since: number, kinds: K[]): E
   return undefined;
 }
 
-export function BattleStrip({ className }: { className?: string }) {
+export type StripStep = { index: number; total: number };
+export type StripCharge = { value: number; total: number; unit: string };
+
+export function BattleStrip({ className, step, charge }: { className?: string; step?: StripStep; charge?: StripCharge }) {
   const enabled = useGameStore((s) => s.enabled);
   if (!enabled) return null;
-  return <Strip className={className} />;
+  return <Strip className={className} step={step} charge={charge} />;
 }
 
-function Strip({ className }: { className?: string }) {
+/**
+ * `step` — bài nhiều câu (chép chính tả, dịch câu): mặt đất thành CON ĐƯỜNG TỚI
+ * ĐÍCH, mỗi câu một chặng, cờ ở cuối. Thay cho thanh "đường chạy" cũ.
+ *
+ * `charge` — câu dài gõ từng chữ: thanh "chạy tới đích" của câu thành TIA NẠP ĐÒN
+ * vươn từ nhân vật sang quái; đủ câu là tia chạm quái và nhát chém bổ xuống.
+ */
+function Strip({ className, step, charge }: { className?: string; step?: StripStep; charge?: StripCharge }) {
   // Chỉ tính là "đang hiện" khi thanh nằm trong khung nhìn — cuộn khuất thì lớp
   // hiệu ứng toàn app hiện số XP ở góc màn thay, không để lỡ đòn nào.
   const box = useRef<View>(null);
@@ -77,7 +91,13 @@ function Strip({ className }: { className?: string }) {
   const [since] = useState(staleBefore);
   const [bag, setBag] = useState(false);
   const [note, setNote] = useState<string | null>(null);
-  const narrow = useWindowDimensions().width < 520;
+  // Hẹp theo BỀ RỘNG THẬT của thanh, không theo cửa sổ: thanh còn nằm trong cột
+  // hẹp của màn chép chính tả / dịch câu trên máy tính.
+  const windowWidth = useWindowDimensions().width;
+  const [width, setWidth] = useState(0);
+  const narrow = (width || windowWidth) < 520;
+  const heroLeft = (width || windowWidth) * (narrow ? 0.08 : 0.14);
+  const enemyRight = (width || windowWidth) * (narrow ? 0.06 : 0.12);
   const web = Platform.OS === 'web';
 
   const xp = useGameStore((s) => s.xp);
@@ -133,7 +153,7 @@ function Strip({ className }: { className?: string }) {
 
   return (
     <View className={className} accessibilityLabel={`Cấp ${lv.level}, ${hearts} tim, đang đánh ${enemy.name}`}>
-      <View ref={box} style={{ height: 152, borderRadius: 20, overflow: 'hidden', backgroundColor: '#17123A' }}>
+      <View ref={box} onLayout={(e) => setWidth(Math.round(e.nativeEvent.layout.width))} style={{ height: 152, borderRadius: 20, overflow: 'hidden', backgroundColor: '#17123A' }}>
         <Backdrop tint={enemy.color} />
 
         {/* HUD: cấp + XP bên trái; combo, túi đồ, Cú bên phải. */}
@@ -165,7 +185,7 @@ function Strip({ className }: { className?: string }) {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 3, borderRadius: 8, paddingHorizontal: 6, paddingVertical: 3, backgroundColor: 'rgba(250,204,21,0.18)' }}>
               <Text style={{ fontSize: 11 }}>⚡</Text>
               <Text className="font-strong" style={{ fontSize: 11, color: GOLD }}>
-                ×2 · {doubleLeft}
+                {narrow ? doubleLeft : `×2 · ${doubleLeft}`}
               </Text>
             </View>
           ) : null}
@@ -183,7 +203,7 @@ function Strip({ className }: { className?: string }) {
         </View>
 
         {/* Nhân vật */}
-        <View style={{ position: 'absolute', left: narrow ? '8%' : '14%', bottom: 16, alignItems: 'center', zIndex: 2 }}>
+        <View style={{ position: 'absolute', left: heroLeft, bottom: 16, alignItems: 'center', zIndex: 2 }}>
           <Hearts hearts={hearts} />
           <View style={{ marginTop: 4 }}>
             <View key={heroKey} style={hit || hurt ? anim(heroAttacks ? 'rg-lunge' : 'rg-hurt', heroAttacks ? 360 : 520) : undefined} {...MOVE}>
@@ -200,7 +220,7 @@ function Strip({ className }: { className?: string }) {
         </View>
 
         {/* Quái */}
-        <View style={{ position: 'absolute', right: narrow ? '6%' : '12%', bottom: 16, width: 132, alignItems: 'center', zIndex: 2 }}>
+        <View style={{ position: 'absolute', right: enemyRight, bottom: 16, width: ENEMY_BOX, alignItems: 'center', zIndex: 2 }}>
           <Text className="font-strong" numberOfLines={1} style={{ fontSize: 11, color: '#F8FAFC' }}>
             {enemy.name}
             {enemy.round > 0 ? <Text style={{ color: GOLD }}>{`  ★${enemy.round + 1}`}</Text> : null}
@@ -221,13 +241,13 @@ function Strip({ className }: { className?: string }) {
             <View key={`e${enemyIndex}`} style={anim('rg-enter', 520, { delay: defeat ? 420 : 0 })} {...MOVE}>
               <View key={`h${hit?.id ?? 0}-${hurt?.id ?? 0}`} style={hit && !killing && heroAttacks ? anim('rg-hit', 420, { delay: 110 }) : hurt && !heroAttacks ? anim('rg-enemy-lunge', 380) : undefined} {...MOVE}>
                 <View style={anim('rg-bob', 1200, { loop: true, timing: 'ease-in-out', delay: 300 })} {...MOVE}>
-                  <PixelSprite name={ENEMY_SPRITE[enemy.id] ?? 'slime'} color={enemy.color} size={58} />
+                  <PixelSprite name={ENEMY_SPRITE[enemy.id] ?? 'slime'} color={enemy.color} size={ENEMY_SPRITE_SIZE} />
                 </View>
               </View>
             </View>
             {defeat && Platform.OS === 'web' ? (
               <View key={`d${defeat.id}`} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, ...anim('rg-die', 620, { delay: 90, fill: 'forwards' }) }}>
-                <PixelSprite name={ENEMY_SPRITE[enemyAt(defeat.enemyIndex).id] ?? 'slime'} color={enemyAt(defeat.enemyIndex).color} size={58} />
+                <PixelSprite name={ENEMY_SPRITE[enemyAt(defeat.enemyIndex).id] ?? 'slime'} color={enemyAt(defeat.enemyIndex).color} size={ENEMY_SPRITE_SIZE} />
               </View>
             ) : null}
             {hit && heroAttacks && Platform.OS === 'web' ? (
@@ -236,7 +256,7 @@ function Strip({ className }: { className?: string }) {
           </View>
           <Shadow />
           {web ? floats.filter((e) => e.kind === 'hit').map((e) => <DamageFloat key={e.id} e={e} />) : null}
-          {!narrow ? (
+          {!narrow && !charge ? (
             <View key={`t${enemyIndex}`} pointerEvents="none" style={{ position: 'absolute', right: 116, bottom: 26, width: 176, ...anim('rg-bubble', 3200, { delay: defeat ? 900 : 400, fill: 'forwards' }) }}>
               <View style={{ borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 9, paddingVertical: 6 }}>
                 <Text className="font-semi" style={{ fontSize: 11, color: '#1B1330' }}>
@@ -246,6 +266,9 @@ function Strip({ className }: { className?: string }) {
             </View>
           ) : null}
         </View>
+
+        {charge && charge.total > 0 ? <ChargeBeam charge={charge} left={heroLeft + HERO_BOX + 6} right={enemyRight + (ENEMY_BOX + ENEMY_SPRITE_SIZE) / 2 + 6} /> : null}
+        {step && step.total > 0 ? <Road step={step} /> : null}
 
         {/* Thông báo giữa cảnh: khiên chặn, bị đánh lui, hạ quái, dùng đồ */}
         {web ? floats.filter((e) => e.kind !== 'hit' && e.kind !== 'hurt').map((e) => <CenterFloat key={e.id} e={e} />) : null}
@@ -463,6 +486,83 @@ function CenterFloat({ e }: { e: FxEvent }) {
           {text.t}
         </Text>
       </View>
+    </View>
+  );
+}
+
+/** Tia nạp đòn: mỗi từ gõ đúng vươn dài thêm một đoạn về phía quái; đủ câu là chạm. */
+function ChargeBeam({ charge, left, right }: { charge: StripCharge; left: number; right: number }) {
+  const value = Math.max(0, Math.min(charge.total, charge.value));
+  const ratio = value / charge.total;
+  const full = value >= charge.total;
+  return (
+    <View
+      pointerEvents="none"
+      accessibilityLabel={`Nạp đòn ${value} trên ${charge.total} ${charge.unit}`}
+      style={{ position: 'absolute', left, right, bottom: 50, zIndex: 3 }}
+    >
+      <Text className="font-strong" numberOfLines={1} style={{ marginBottom: 3, fontSize: 10, textAlign: 'center', color: full ? GOLD : 'rgba(255,255,255,0.72)' }}>
+        {full ? 'Chém!' : `Nạp đòn ${value}/${charge.total} ${charge.unit}`}
+      </Text>
+      <View style={{ height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.12)', overflow: 'hidden' }}>
+        <View
+          style={{
+            height: 6,
+            width: '100%',
+            backgroundColor: full ? '#FEF3C7' : GOLD,
+            transform: [{ scaleX: Math.max(0.001, ratio) }],
+            transformOrigin: 'left',
+            ...(Platform.OS === 'web' ? ({ transition: 'transform 260ms cubic-bezier(0.2, 0.8, 0.2, 1), background-color 200ms ease', boxShadow: '0 0 10px rgba(250,204,21,0.8)' } as object) : null),
+          }}
+        />
+      </View>
+      {value > 0 && !full ? (
+        <View
+          key={`spark-${value}`}
+          style={{ position: 'absolute', left: `${ratio * 100}%`, bottom: -2, width: 10, height: 10, marginLeft: -5, borderRadius: 5, backgroundColor: '#FFFFFF', ...anim('rg-pop', 320) }}
+        />
+      ) : null}
+    </View>
+  );
+}
+
+const FLAG = ['wr...', 'wrrr.', 'wrrrr', 'wrr..', 'w....', 'w....'];
+
+/** Con đường tới đích dưới chân hai bên: mỗi câu một chặng, cờ ở cuối. */
+function Road({ step }: { step: StripStep }) {
+  const done = Math.max(0, Math.min(step.total, step.index));
+  const segments = step.total <= 30;
+  return (
+    <View
+      pointerEvents="none"
+      accessibilityLabel={`Câu ${Math.min(step.total, done + 1)} trên ${step.total}`}
+      style={{ position: 'absolute', left: 12, right: 12, bottom: 3, height: 11, flexDirection: 'row', alignItems: 'center', gap: 8, zIndex: 3 }}
+    >
+      <Text className="font-strong" style={{ fontSize: 10, color: 'rgba(255,255,255,0.75)' }}>
+        Câu {Math.min(step.total, done + 1)}/{step.total}
+      </Text>
+      <View style={{ flex: 1, height: 4, flexDirection: 'row', gap: segments ? 2 : 0, borderRadius: 2, overflow: 'hidden', backgroundColor: segments ? 'transparent' : 'rgba(255,255,255,0.14)' }}>
+        {segments ? (
+          Array.from({ length: step.total }, (_, i) => (
+            <View
+              key={i}
+              style={{
+                flex: 1,
+                height: 4,
+                backgroundColor: i < done ? GOLD : i === done ? 'rgba(250,204,21,0.45)' : 'rgba(255,255,255,0.14)',
+                ...(i === done ? anim('rg-twinkle', 1400, { loop: true, timing: 'ease-in-out' }) : null),
+              }}
+            />
+          ))
+        ) : (
+          <View style={{ height: 4, width: '100%', backgroundColor: GOLD, transform: [{ scaleX: done / step.total }], transformOrigin: 'left' }} />
+        )}
+      </View>
+      <Svg width={10} height={12} viewBox="0 0 5 6" {...CRISP}>
+        {FLAG.flatMap((row, y) =>
+          [...row].map((ch, x) => (ch === '.' ? null : <Rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill={ch === 'w' ? '#E2E8F0' : '#EF4444'} />)),
+        )}
+      </Svg>
     </View>
   );
 }
