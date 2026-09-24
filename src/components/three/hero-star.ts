@@ -1,32 +1,33 @@
 /**
- * VIÊN ĐÁ QUÝ LỚN Ở PHẦN ĐẦU TRANG — dấu hiệu riêng của ReadUp. CHỈ CHẠY TRÊN
- * WEB, tải lúc cần (`Hero3D.tsx`). Đá dựng ở `gem-core.ts`.
+ * NGÔI SAO PHÁT SÁNG Ở PHẦN ĐẦU TRANG — dấu hiệu riêng của ReadUp. CHỈ CHẠY TRÊN
+ * WEB, tải lúc cần (`Hero3D.tsx`). Sao dựng ở `glow-core.ts`.
  *
- * Mỗi mảng một giác cắt và một màu đá, nên nhìn phần đầu trang là biết đang ở
- * đâu: trang chủ kim cương trắng, SAT Math thạch anh tím giác vuông, SAT Verbal
- * ruby bầu dục, Từ vựng ngọc lục bảo giác bậc thang, Tiến độ topaz vàng. Quanh
- * viên chính là vài viên nhỏ bay trên một quỹ đạo nghiêng.
+ * Mỗi mảng một màu sao, nên nhìn phần đầu trang là biết đang ở đâu: trang chủ
+ * sao vàng, SAT Math tím, SAT Verbal hồng, Từ vựng xanh ngọc, Tiến độ hổ phách.
+ * Sau sao là quầng màu và vành tia sáng xoay chậm; quanh sao là vài ngôi sao nhỏ
+ * bay trên một quỹ đạo nghiêng. Sao đung đưa nhẹ, thở sáng theo nhịp, và cứ vài
+ * giây lại xoay một vòng — như ngôi sao thưởng trong game.
  *
  * TIẾT KIỆM MÁY: ngừng vẽ khi khung ra khỏi màn hình hoặc tab bị ẩn; người đặt
  * "giảm chuyển động" chỉ được một khung tĩnh; độ phân giải tối đa 2x.
  */
 import * as THREE from 'three';
 
-import { disposeScene, gemEnvironment, gemGeometry, gemMaterial, glints, glintTexture, halo, releaseEnvironment, rng, GEM_COLORS, type Cut, type GemColor } from './gem-core';
+import { disposeScene, glintTexture, halo, raysSprite, releaseEnvironment, rng, starGeometry, starMaterial, studioEnvironment } from './glow-core';
 
 export type SceneKind = 'home' | 'math' | 'verbal' | 'vocab' | 'progress';
 
-type Preset = { cut: Cut; color: GemColor; glow: string; moons: GemColor[] };
+type Preset = { tint: string; glow: string; moons: string[] };
 
 const PRESETS: Record<SceneKind, Preset> = {
-  home: { cut: 'brilliant', color: 'clear', glow: '#8B7CFF', moons: ['sapphire', 'ruby', 'emerald'] },
-  math: { cut: 'princess', color: 'amethyst', glow: '#A78BFA', moons: ['clear', 'topaz'] },
-  verbal: { cut: 'oval', color: 'ruby', glow: '#FB7185', moons: ['clear', 'pink'] },
-  vocab: { cut: 'emerald', color: 'emerald', glow: '#34D399', moons: ['clear', 'sapphire'] },
-  progress: { cut: 'brilliant', color: 'topaz', glow: '#FBBF24', moons: ['clear', 'amethyst', 'sapphire'] },
+  home: { tint: '#FFC933', glow: '#FFB020', moons: ['#FFFFFF', '#A78BFA', '#38BDF8'] },
+  math: { tint: '#A78BFA', glow: '#8B5CF6', moons: ['#FFFFFF', '#FDE68A'] },
+  verbal: { tint: '#FB7185', glow: '#F43F5E', moons: ['#FFFFFF', '#F9A8D4'] },
+  vocab: { tint: '#34D399', glow: '#10B981', moons: ['#FFFFFF', '#93C5FD'] },
+  progress: { tint: '#FBBF24', glow: '#F59E0B', moons: ['#FFFFFF', '#C4B5FD', '#7DD3FC'] },
 };
 
-/** Bóng mềm dưới viên đá: viên đá lơ lửng trên nền chứ không dán lên trang. */
+/** Bóng mềm dưới ngôi sao: sao lơ lửng trên nền chứ không dán lên trang. */
 function groundShadow(): THREE.Sprite {
   const S = 128;
   const c = document.createElement('canvas');
@@ -34,8 +35,8 @@ function groundShadow(): THREE.Sprite {
   c.height = S;
   const g = c.getContext('2d')!;
   const grad = g.createRadialGradient(S / 2, S / 2, 0, S / 2, S / 2, S / 2);
-  grad.addColorStop(0, 'rgba(49,46,129,0.38)');
-  grad.addColorStop(0.5, 'rgba(49,46,129,0.14)');
+  grad.addColorStop(0, 'rgba(49,46,129,0.34)');
+  grad.addColorStop(0.5, 'rgba(49,46,129,0.12)');
   grad.addColorStop(1, 'rgba(49,46,129,0)');
   g.fillStyle = grad;
   g.fillRect(0, 0, S, S);
@@ -44,44 +45,74 @@ function groundShadow(): THREE.Sprite {
   return new THREE.Sprite(new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false }));
 }
 
-/** Gắn viên đá của mảng `kind` vào `host`; trả về hàm huỷ. */
-export function mountHeroGem(host: HTMLElement, kind: SceneKind): () => void {
+/** Nhịp xoay một vòng: 0 lúc đứng, lên 2π trong 0,9 giây mỗi 7 giây, êm hai đầu. */
+function spinAt(t: number): number {
+  const period = 7;
+  const spin = 0.9;
+  const k = (t % period) / spin;
+  if (k >= 1) return 0;
+  const eased = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+  return eased * Math.PI * 2;
+}
+
+/** Gắn ngôi sao của mảng `kind` vào `host`; trả về hàm huỷ. */
+export function mountHeroStar(host: HTMLElement, kind: SceneKind): () => void {
   const preset = PRESETS[kind];
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1;
   renderer.setClearColor(0x000000, 0);
   const canvas = renderer.domElement;
   Object.assign(canvas.style, { width: '100%', height: '100%', display: 'block' });
   host.appendChild(canvas);
 
-  const env = gemEnvironment(renderer);
+  const env = studioEnvironment(renderer);
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
 
   const stage = new THREE.Group();
   scene.add(stage);
 
-  const back = halo(preset.glow, 6.2, 0.5);
-  back.position.set(0, 0.1, -2.2);
+  const back = halo(preset.glow, 6.6, 0.55);
+  back.position.set(0, 0.1, -2.4);
   stage.add(back);
+
+  const rays = raysSprite(preset.glow, 7.4, 0.42);
+  rays.position.set(0, 0.1, -2);
+  stage.add(rays);
 
   const shadow = groundShadow();
   shadow.position.set(0, -2.15, -0.5);
-  shadow.scale.set(3.4, 0.7, 1);
+  shadow.scale.set(3, 0.6, 1);
   stage.add(shadow);
 
-  const main = new THREE.Mesh(gemGeometry(preset.cut), gemMaterial(env, GEM_COLORS[preset.color], { body: preset.color === 'clear' ? 0.12 : 0.92, fire: preset.color === 'clear' ? 1.6 : 1 }));
-  main.scale.setScalar(1.62);
-  main.rotation.x = 0.1;
+  const mainMat = starMaterial(env, preset.tint);
+  const main = new THREE.Mesh(starGeometry(), mainMat);
+  main.scale.setScalar(1.45);
   const floatGroup = new THREE.Group();
   floatGroup.add(main);
   stage.add(floatGroup);
-  const sparkle = glints(main, 7, 1, 5);
 
-  // Quỹ đạo nghiêng: một vệt sáng mảnh và các viên nhỏ chạy trên đó.
+  // Loé sáng ở lõi và ở bốn đầu cánh, lệch nhịp nhau.
+  const flareMat = new THREE.SpriteMaterial({ map: glintTexture(), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true });
+  const core = new THREE.Sprite(flareMat);
+  core.position.set(0, 0, 0.42);
+  main.add(core);
+  const tips = [
+    [0, 1.18],
+    [1, 0],
+    [0, -1.18],
+    [-1, 0],
+  ].map(([x, y], i) => {
+    const s = new THREE.Sprite(flareMat);
+    s.position.set(x! * 0.96, y! * 0.96, 0.08);
+    main.add(s);
+    return { s, phase: i * 1.7 };
+  });
+
+  // Quỹ đạo nghiêng: một vệt sáng mảnh và các ngôi sao nhỏ chạy trên đó.
   const orbit = new THREE.Group();
   orbit.rotation.set(0.42, 0, -0.26);
   stage.add(orbit);
@@ -92,16 +123,18 @@ export function mountHeroGem(host: HTMLElement, kind: SceneKind): () => void {
   );
   trail.rotation.x = Math.PI / 2;
   orbit.add(trail);
+  const moonGeo = starGeometry(96, 0.3);
   const moons = preset.moons.map((c, i) => {
-    const m = new THREE.Mesh(gemGeometry(i % 2 === 0 ? 'brilliant' : 'princess'), gemMaterial(env, GEM_COLORS[c], { body: c === 'clear' ? 0.12 : 0.92, fire: c === 'clear' ? 1.6 : 1 }));
-    m.scale.setScalar(0.42);
+    const mat = starMaterial(env, c);
+    const m = new THREE.Mesh(moonGeo, mat);
+    m.scale.setScalar(0.34);
     orbit.add(m);
-    return { m, spark: glints(m, 1, 1, 30 + i), phase: (i / preset.moons.length) * Math.PI * 2 };
+    return { m, mat, phase: (i / preset.moons.length) * Math.PI * 2 };
   });
 
-  // Bụi sáng li ti bay lên chậm quanh viên đá.
+  // Bụi sáng li ti bay lên chậm quanh ngôi sao.
   const rand = rng(kind.length * 7 + 3);
-  const dustCount = 22;
+  const dustCount = 26;
   const dustPos = new Float32Array(dustCount * 3);
   for (let i = 0; i < dustCount; i += 1) {
     dustPos[i * 3] = (rand() - 0.5) * 5.2;
@@ -112,7 +145,7 @@ export function mountHeroGem(host: HTMLElement, kind: SceneKind): () => void {
   dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
   const dust = new THREE.Points(
     dustGeo,
-    new THREE.PointsMaterial({ map: glintTexture(), size: 0.16, transparent: true, opacity: 0.75, depthWrite: false, blending: THREE.AdditiveBlending }),
+    new THREE.PointsMaterial({ map: glintTexture(), size: 0.16, transparent: true, opacity: 0.8, depthWrite: false, blending: THREE.AdditiveBlending }),
   );
   stage.add(dust);
 
@@ -121,7 +154,7 @@ export function mountHeroGem(host: HTMLElement, kind: SceneKind): () => void {
     const h = Math.max(1, host.clientHeight);
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
-    // Khung hẹp thì lùi camera ra để cả viên đá lẫn quỹ đạo nằm trọn trong khung.
+    // Khung hẹp thì lùi camera ra để cả ngôi sao lẫn quỹ đạo nằm trọn trong khung.
     const d = Math.max(8.2, 11.4 / camera.aspect);
     camera.position.set(0, 1.1, d);
     camera.lookAt(0, -0.1, 0);
@@ -136,21 +169,34 @@ export function mountHeroGem(host: HTMLElement, kind: SceneKind): () => void {
   };
 
   const place = (t: number, dt: number) => {
-    main.rotation.y += dt * 0.38;
-    main.rotation.z = Math.sin(t * 0.6) * 0.05;
+    // Đung đưa nhẹ (không quay ngang hẳn — sao phẳng nhìn nghiêng thì mất dáng),
+    // và cứ bảy giây xoay trọn một vòng.
+    main.rotation.y = Math.sin(t * 0.7) * 0.5 + spinAt(t);
+    main.rotation.z = Math.sin(t * 0.5) * 0.08;
     const bob = Math.sin(t * 1.1) * 0.12;
     floatGroup.position.y = bob;
-    // Viên đá càng lên cao, bóng dưới càng nhạt và rộng.
     shadow.material.opacity = 0.9 - bob * 1.6;
-    shadow.scale.set(3.4 + bob * 1.2, 0.7 + bob * 0.2, 1);
+    shadow.scale.set(3 + bob * 1.2, 0.6 + bob * 0.2, 1);
+
+    const pulse = 0.5 + 0.5 * Math.sin(t * 2.4);
+    mainMat.uniforms.pulse!.value = pulse;
+    back.material.opacity = 0.42 + pulse * 0.2;
+    rays.material.rotation = t * 0.12;
+    rays.material.opacity = 0.3 + pulse * 0.18;
+    rays.scale.setScalar(7.1 + pulse * 0.5);
+    core.scale.setScalar(0.45 + pulse * 0.35);
+    for (const tip of tips) {
+      // Nhọn và ngắn: phần lớn thời gian tắt, loé trong chốc lát.
+      const k = Math.pow(Math.max(0, Math.sin(t * 0.9 + tip.phase)), 18);
+      tip.s.scale.setScalar(k * 0.7);
+    }
+
     for (const moon of moons) {
       const a = moon.phase + t * 0.42;
       moon.m.position.set(Math.cos(a) * R, 0, Math.sin(a) * R);
-      moon.m.rotation.y += dt * 1.4;
-      moon.m.rotation.x = 0.3;
-      moon.spark(t);
+      moon.m.rotation.y += dt * 1.6;
+      moon.mat.uniforms.pulse!.value = 0.5 + 0.5 * Math.sin(t * 3 + moon.phase);
     }
-    sparkle(t);
     const p = dust.geometry.attributes.position as THREE.BufferAttribute;
     for (let i = 0; i < dustCount; i += 1) {
       let y = p.getY(i) + dt * 0.18;
@@ -198,6 +244,7 @@ export function mountHeroGem(host: HTMLElement, kind: SceneKind): () => void {
     ro.disconnect();
     io.disconnect();
     disposeScene(scene);
+    moonGeo.dispose();
     dustGeo.dispose();
     dust.material.dispose();
     releaseEnvironment(renderer);
