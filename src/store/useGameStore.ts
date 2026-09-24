@@ -3,6 +3,8 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
 import { useGameFx } from './useGameFx';
+import { mascotOf, useRewardStore } from './useRewardStore';
+import { MASCOTS, perksOf, STAR_BONUS } from '@/services/game/mascots';
 import { setSfxMuted, sfx } from '@/services/audio/sfx';
 import { dateKey } from '@/services/gamification/points';
 import {
@@ -73,7 +75,32 @@ function initial(): GamePayload {
     today: { ...EMPTY_DAY },
     claimed: [],
     achievements: {},
+    bonusStars: 0,
+    perkDay: dateKey(new Date()),
+    perkHints: 0,
+    perkShieldUsed: false,
   };
+}
+
+/** Linh vật đang đeo (đọc từ kho đồ) và lượt dùng quyền hôm nay (sang ngày mới thì làm lại). */
+function mascotNow(s: GamePayload) {
+  const id = mascotOf(useRewardStore.getState().mascot);
+  const day = dateKey(new Date());
+  const fresh = s.perkDay !== day;
+  return {
+    id,
+    perks: perksOf(id),
+    perkDay: day,
+    perkHints: fresh ? 0 : s.perkHints ?? 0,
+    perkShieldUsed: fresh ? false : Boolean(s.perkShieldUsed),
+  };
+}
+
+/** Cộng sao thưởng và bắn sự kiện "+N ⭐" cho giao diện. */
+function starGain(amount: number, reason: string): number {
+  if (amount <= 0) return 0;
+  useGameFx.getState().push({ kind: 'stars', amount, reason });
+  return amount;
 }
 
 /** Sang ngày mới thì nhiệm vụ ngày làm lại từ đầu. */
@@ -102,6 +129,12 @@ function awardAchievements(life: Lifetime, have: Record<string, string>): Record
   return next;
 }
 
+/** Sao thưởng cho huy hiệu vừa mở trong lượt này. */
+function achievementStars(before: Record<string, string>, after: Record<string, string>): number {
+  const n = Object.keys(after).length - Object.keys(before).length;
+  return n > 0 ? starGain(n * STAR_BONUS.achievement, 'huy hiệu mới') : 0;
+}
+
 /** Hạ quái xong mà con kế tiếp là boss thì nó gầm lên lúc bước vào. */
 function roarIfBoss(nextEnemyIndex: number, at: number): void {
   if (enemyAt(nextEnemyIndex).boss) sfx.bossRoar(at);
@@ -122,7 +155,10 @@ export const useGameStore = create<GameState>()(
           return null;
         }
         const fx = useGameFx.getState();
-        const o = resolveAnswer(s, correct);
+        // Linh vật: Cáo đỡ câu sai đầu tiên trong ngày (như một chiếc khiên tự bật), Rồng Con chém mạnh hơn.
+        const pet = mascotNow(s);
+        const foxSaves = !correct && pet.perks.firstMissShield && !pet.perkShieldUsed && !s.shield;
+        const o = resolveAnswer(foxSaves ? { ...s, shield: true } : s, correct, pet.perks.damageMult);
         const { day, today: before, claimed } = rolled(s);
         const today: DayStats = {
           correct: before.correct + (correct ? 1 : 0),
@@ -142,12 +178,24 @@ export const useGameStore = create<GameState>()(
         const items = { ...s.items };
         for (const k of o.defeated?.loot ?? []) items[k] += 1;
 
+        // Mèo Lười: cứ đủ số câu đúng thì hồi một tim.
+        let hearts = o.state.hearts;
+        const catHeals = correct && pet.perks.healEvery > 0 && life.correct % pet.perks.healEvery === 0 && hearts < MAX_HEARTS;
+        if (catHeals) hearts += 1;
+
         if (correct) fx.push({ kind: 'hit', xp: o.xpGained - (o.defeated?.bonusXp ?? 0), damage: o.damage, crit: o.crit, combo: o.state.combo });
         else fx.push({ kind: o.blocked ? 'blocked' : o.knockedOut ? 'knockout' : 'hurt' });
         if (o.defeated) fx.push({ kind: 'defeat', enemyIndex: s.enemyIndex, name: o.defeated.name, loot: o.defeated.loot, bonusXp: o.defeated.bonusXp, boss: o.defeated.boss });
         if (o.levelUp) fx.push({ kind: 'levelup', level: o.levelUp });
         const doneQuests = questsJustDone(day, before, today);
         for (const title of doneQuests) fx.push({ kind: 'quest', title });
+        if (foxSaves && pet.id) fx.push({ kind: 'mascot', line: MASCOTS[pet.id].line });
+        if (catHeals && pet.id) fx.push({ kind: 'mascot', line: MASCOTS[pet.id].line, heal: true });
+
+        // Sao thưởng: hạ quái (boss nhiều hơn), lên cấp.
+        let stars = 0;
+        if (o.defeated) stars += starGain(o.defeated.boss ? STAR_BONUS.boss : STAR_BONUS.defeat, o.defeated.boss ? 'hạ boss' : 'hạ quái');
+        if (o.levelUp) stars += starGain((o.levelUp - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp');
 
         // Tiếng xếp đúng nhịp hoạt cảnh của thanh trận đấu: chém → nổ tan → gầm boss → lên cấp.
         if (correct) {
@@ -165,8 +213,24 @@ export const useGameStore = create<GameState>()(
         }
         if (o.levelUp) sfx.levelUp(o.defeated ? 0.8 : 0.4);
         if (doneQuests.length > 0) sfx.sparkle(1.2);
+        if (catHeals) sfx.potion();
 
-        set({ ...o.state, items, day, today, claimed, life, achievements: awardAchievements(life, s.achievements) });
+        const achievements = awardAchievements(life, s.achievements);
+        stars += achievementStars(s.achievements, achievements);
+        set({
+          ...o.state,
+          hearts,
+          items,
+          day,
+          today,
+          claimed,
+          life,
+          achievements,
+          bonusStars: (s.bonusStars ?? 0) + stars,
+          perkDay: pet.perkDay,
+          perkHints: pet.perkHints,
+          perkShieldUsed: pet.perkShieldUsed || foxSaves,
+        });
         return o;
       },
 
@@ -174,7 +238,7 @@ export const useGameStore = create<GameState>()(
         const s = get();
         if (!s.enabled || total <= 0) return;
         const fx = useGameFx.getState();
-        const o = resolveBatch(s, correct);
+        const o = resolveBatch(s, correct, mascotNow(s).perks.damageMult);
         const { day, today: before, claimed } = rolled(s);
         const today: DayStats = {
           correct: before.correct + correct,
@@ -208,7 +272,12 @@ export const useGameStore = create<GameState>()(
         if (o.levelUp) sfx.levelUp(o.defeated.length > 0 ? 0.95 : 0.55);
         if (doneQuests.length > 0) sfx.sparkle(1.3);
 
-        set({ ...o.state, items, day, today, claimed, life, achievements: awardAchievements(life, s.achievements) });
+        let stars = 0;
+        for (const d of o.defeated) stars += starGain(d.boss ? STAR_BONUS.boss : STAR_BONUS.defeat, d.boss ? 'hạ boss' : 'hạ quái');
+        if (o.levelUp) stars += starGain((o.levelUp - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp');
+        const achievements = awardAchievements(life, s.achievements);
+        stars += achievementStars(s.achievements, achievements);
+        set({ ...o.state, items, day, today, claimed, life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
       },
 
       gainXp: (amount, correct, total) => {
@@ -222,18 +291,34 @@ export const useGameStore = create<GameState>()(
         const levelBefore = levelForXp(s.xp);
         const levelAfter = levelForXp(xp);
         fx.push({ kind: 'batch', xp: Math.round(amount), correct, total, defeated: 0 });
+        let stars = 0;
         if (levelAfter > levelBefore) {
           fx.push({ kind: 'levelup', level: levelAfter });
           sfx.levelUp(0.3);
+          stars += starGain((levelAfter - levelBefore) * STAR_BONUS.levelUp, 'lên cấp');
         }
         for (const title of questsJustDone(day, before, today)) fx.push({ kind: 'quest', title });
-        set({ xp, day, today, claimed, life, achievements: awardAchievements(life, s.achievements) });
+        const achievements = awardAchievements(life, s.achievements);
+        stars += achievementStars(s.achievements, achievements);
+        set({ xp, day, today, claimed, life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
       },
 
       spendItem: (kind) => {
         const s = get();
-        if ((s.items[kind] ?? 0) <= 0) return false;
         const fx = useGameFx.getState();
+        // Cú Thông Thái: vài lượt Hỏi Cú miễn phí mỗi ngày, dùng trước khi đụng tới túi đồ.
+        if (kind === 'hint') {
+          const pet = mascotNow(s);
+          if (pet.perks.freeHints > pet.perkHints) {
+            if (!fx.hint || !fx.hint()) return false;
+            set({ perkDay: pet.perkDay, perkHints: pet.perkHints + 1, perkShieldUsed: pet.perkShieldUsed });
+            if (pet.id) fx.push({ kind: 'mascot', line: MASCOTS[pet.id].line });
+            fx.push({ kind: 'item', item: kind, title: `${ITEMS.hint.name} (miễn phí)` });
+            sfx.owl();
+            return true;
+          }
+        }
+        if ((s.items[kind] ?? 0) <= 0) return false;
         if (kind === 'potion') {
           if (s.hearts >= MAX_HEARTS) return false;
           set({ hearts: Math.min(MAX_HEARTS, s.hearts + 2) });
@@ -270,12 +355,16 @@ export const useGameStore = create<GameState>()(
         if (quest.rewardItem) items[quest.rewardItem] += 1;
         const fx = useGameFx.getState();
         fx.push({ kind: 'batch', xp: quest.rewardXp, correct: 0, total: 0, defeated: 0 });
+        const questStars = starGain(STAR_BONUS.quest, 'nhiệm vụ ngày');
         if (levelForXp(xp) > levelForXp(s.xp)) {
           fx.push({ kind: 'levelup', level: levelForXp(xp) });
           sfx.levelUp();
         } else sfx.sparkle();
         const life = { ...s.life, xp };
-        set({ xp, items, day, today, claimed: [...claimed, id], life, achievements: awardAchievements(life, s.achievements) });
+        const levelStars = levelForXp(xp) > levelForXp(s.xp) ? starGain((levelForXp(xp) - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp') : 0;
+        const achievements = awardAchievements(life, s.achievements);
+        const stars = questStars + levelStars + achievementStars(s.achievements, achievements);
+        set({ xp, items, day, today, claimed: [...claimed, id], life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
         return true;
       },
 

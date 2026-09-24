@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Svg, { Rect } from 'react-native-svg';
 
-import { paletteFor, SPRITES, spriteRuns, type SpriteName } from './sprites';
+import { paletteFor, SPRITES, spriteRuns, type SkinId, type SpriteName } from './sprites';
 
 /** Cạnh sắc cho pixel (react-native-svg chưa khai kiểu thuộc tính này, nhưng web vẫn nhận). */
 const CRISP = { shapeRendering: 'crispEdges' } as object;
@@ -17,6 +17,7 @@ export function PixelSprite({
   color,
   flip = false,
   silhouette,
+  skin,
 }: {
   name: SpriteName;
   size: number;
@@ -25,12 +26,14 @@ export function PixelSprite({
   flip?: boolean;
   /** Tô cả hình một màu — dùng cho quái chưa gặp trong sổ quái. */
   silhouette?: string;
+  /** Skin của nhân vật (chỉ có tác dụng với `hero`). */
+  skin?: SkinId;
 }) {
   const runs = useMemo(() => {
-    const palette = paletteFor(name, color);
+    const palette = paletteFor(name, color, skin);
     const all = spriteRuns(SPRITES[name], palette);
     return silhouette ? all.map((r) => ({ ...r, fill: silhouette })) : all;
-  }, [name, color, silhouette]);
+  }, [name, color, silhouette, skin]);
 
   return (
     <Svg width={size} height={size} viewBox="0 0 16 16" {...CRISP}>

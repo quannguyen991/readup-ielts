@@ -1,17 +1,20 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
+import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
+import { ProfileCover } from '@/components/profile/ProfileCover';
 import { Badge, Button, Card, ProgressBar, SectionHeader } from '@/components/ui';
+import { sfx } from '@/services/audio/sfx';
+import { MONTH_PRIZES, prizeForRank } from '@/services/gamification/monthly';
 import {
   currentStreak,
   dailyPoints,
   dateKey,
   daysUntilReset,
-  lifetimePoints,
   monthPoints,
   nextTier,
   rawEffort,
@@ -21,9 +24,11 @@ import {
   DAILY_POINT_CAP,
   MAX_MULTIPLIER,
 } from '@/services/gamification/points';
-import { balanceOf, findItem } from '@/services/gamification/shop';
-import { useDisplayName } from '@/store/useAuthStore';
-import { useRewardStore } from '@/store/useRewardStore';
+import { findItem, formatStars } from '@/services/gamification/shop';
+import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
+import { useGameFx } from '@/store/useGameFx';
+import { skinOf, useRewardStore } from '@/store/useRewardStore';
+import { useStarBalance } from '@/store/useStarBalance';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 
@@ -38,17 +43,26 @@ import { color } from '@/theme/tokens';
  * mỗi ngày là bao nhiêu. Bảng điểm không giải thích được thì người học chỉ đoán,
  * và khi đoán sai họ sẽ học theo cách sai.
  *
+ * CÓ GIẢI THƯỞNG: hết tháng, top 10 nhận sao (`services/gamification/monthly.ts`)
+ * để đổi vé gói, linh vật, skin. Bảng hiện avatar động và bìa mà mỗi người đang đeo.
+ *
  * BẢNG XẾP HẠNG CẦN MÁY CHỦ. Chưa đăng nhập hoặc chưa nối được thì trang vẫn
  * đủ dùng: thẻ hạng, chuỗi ngày và lưới hoạt động đều tính trên máy.
  */
-type BoardRow = { id: string; name: string; points: number; streak: number };
+type BoardRow = { id: string; name: string; points: number; streak: number; avatar?: string | null; cover?: string | null; skin?: string | null };
+type PastRow = { id: string; name: string; points: number };
+type BoardData = { board: BoardRow[]; previous: { month: string; board: PastRow[] } | null };
 
 export default function LeaderboardScreen() {
   const daily = useStudyStore((s) => s.daily);
   const frozenDays = useRewardStore((s) => s.frozenDays);
-  const spent = useRewardStore((s) => s.spent);
   const avatarId = useRewardStore((s) => s.avatar);
+  const coverId = useRewardStore((s) => s.cover);
+  const skin = skinOf(useRewardStore((s) => s.skin));
   const name = useDisplayName();
+  const userId = useAuthStore((s) => s.user?.id ?? null);
+  const stars = useStarBalance();
+  const { data, error } = useBoard();
 
   const today = useMemo(() => new Date(), []);
   const todayKey = dateKey(today);
@@ -60,8 +74,7 @@ export default function LeaderboardScreen() {
   const multiplier = streakMultiplier(Math.max(0, streak - 1));
   const todayEffort = Math.round(rawEffort(daily[todayKey]));
   const todayPoints = dailyPoints(daily[todayKey], Math.max(0, streak - 1));
-  const coins = balanceOf(lifetimePoints(daily, frozenDays), spent);
-  const avatarGlyph = avatarId ? (findItem(avatarId)?.glyph ?? null) : null;
+  const me = userId ? userId.slice(0, 8) : null;
 
   return (
     <Screen>
@@ -69,82 +82,72 @@ export default function LeaderboardScreen() {
         <View className="flex-row flex-wrap items-center gap-3">
           <Text className="font-heavy text-pageTitle text-ink">🏆 Xếp hạng</Text>
           <View className="flex-1" />
-          <View className="flex-row items-center gap-1.5 rounded-pill border border-warning-soft bg-warning-soft px-3 py-1.5">
-            <Text style={{ fontSize: 14 }}>🪙</Text>
-            <Text className="font-heavy text-body text-ink">{coins}</Text>
+          <View className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#FEF3C7' }} accessibilityLabel={`Đang có ${stars} sao`}>
+            <Text style={{ fontSize: 14 }}>⭐</Text>
+            <Text className="font-heavy text-body text-ink">{formatStars(stars)}</Text>
           </View>
-          <Button
-            label="Cửa hàng"
-            variant="outline"
-            size="sm"
-            iconLeft="gift"
-            onPress={() => router.push('/shop' as never)}
-          />
+          <Button label="Đổi sao" variant="outline" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+          <Button label="Hồ sơ" variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
         </View>
         <Text className="mt-1 font-sans text-body text-muted">
-          Điểm tính từ chính thời gian học và số câu đã làm — không có nút nào cộng điểm.
+          Điểm tính từ chính thời gian học và số câu đã làm — không có nút nào cộng điểm. Hết tháng, top 10 được thưởng sao.
         </Text>
       </Appear>
 
       <View className="mt-5">
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={16}>
           <Appear index={1} style={{ height: '100%' }}>
-            <Card className="h-full">
-              <View className="flex-row items-start justify-between gap-3">
-                <View className="min-w-0 flex-1 flex-row items-center gap-3">
-                  <View className="h-14 w-14 items-center justify-center rounded-pill bg-accent-100">
-                    <Text style={{ fontSize: avatarGlyph ? 26 : 20 }}>
-                      {avatarGlyph ?? name.slice(0, 1).toUpperCase()}
-                    </Text>
+            <Card className="h-full overflow-hidden" padded={false}>
+              <ProfileCover cover={findItem(coverId)?.cover ?? null} height={84} />
+              <View className="px-4 pb-4">
+                <View className="flex-row items-start justify-between gap-3">
+                  <View className="min-w-0 flex-1 flex-row items-start gap-3">
+                    <View style={{ marginTop: -30, borderRadius: 999, borderWidth: 3, borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
+                      <AvatarBadge avatarId={avatarId} name={name} size={60} skin={skin} />
+                    </View>
+                    <View className="min-w-0 flex-1 pt-2">
+                      <Text className="font-heavy text-sectionTitle text-ink" numberOfLines={1}>
+                        {tier.name}
+                      </Text>
+                      <Text className="font-sans text-label text-muted">
+                        {'★'.repeat(tier.stars)}
+                        <Text style={{ color: color.subtle }}>{'★'.repeat(5 - tier.stars)}</Text>
+                      </Text>
+                    </View>
                   </View>
-                  <View className="min-w-0 flex-1">
-                    <Text className="font-heavy text-sectionTitle text-ink" numberOfLines={1}>
-                      {tier.name}
-                    </Text>
-                    <Text className="mt-0.5 font-sans text-label text-muted">
-                      {'★'.repeat(tier.stars)}
-                      <Text style={{ color: color.subtle }}>{'★'.repeat(5 - tier.stars)}</Text>
-                    </Text>
+                  <View className="pt-2">
+                    <Badge label={`Reset sau ${daysUntilReset(today)} ngày`} tone="neutral" shape="tag" />
                   </View>
                 </View>
-                <Badge label={`Reset sau ${daysUntilReset(today)} ngày`} tone="neutral" shape="tag" />
-              </View>
 
-              <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-                Tổng điểm tháng này
-              </Text>
-              <Text className="font-heavy text-ink" style={{ fontSize: 40, lineHeight: 46 }}>
-                {month}
-              </Text>
+                <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+                  Tổng điểm tháng này
+                </Text>
+                <Text className="font-heavy text-ink" style={{ fontSize: 40, lineHeight: 46 }}>
+                  {month}
+                </Text>
 
-              {upcoming ? (
-                <>
-                  <ProgressBar
-                    className="mt-2"
-                    value={upcoming.tier.from > 0 ? (month / upcoming.tier.from) * 100 : 100}
-                    tone="accent"
-                  />
-                  <Text className="mt-1.5 font-sans text-label text-muted">
-                    Còn {upcoming.remaining} điểm nữa lên {upcoming.tier.name}.
+                {upcoming ? (
+                  <>
+                    <ProgressBar className="mt-2" value={upcoming.tier.from > 0 ? (month / upcoming.tier.from) * 100 : 100} tone="accent" />
+                    <Text className="mt-1.5 font-sans text-label text-muted">
+                      Còn {upcoming.remaining} điểm nữa lên {upcoming.tier.name}.
+                    </Text>
+                  </>
+                ) : (
+                  <Text className="mt-2 font-sans text-label text-muted">Bậc cao nhất — giữ nhịp thôi.</Text>
+                )}
+
+                {/* Nói thẳng cách tính, để không ai phải đoán */}
+                <View className="mt-4 gap-1 rounded-panel bg-surfaceAlt p-3">
+                  <Text className="font-sans text-label text-muted">
+                    Hệ số hôm nay: 1 + 🔥 {(multiplier - 1).toFixed(1)} = <Text className="font-heavy text-ink">{multiplier}</Text> (tối đa {MAX_MULTIPLIER})
                   </Text>
-                </>
-              ) : (
-                <Text className="mt-2 font-sans text-label text-muted">Bậc cao nhất — giữ nhịp thôi.</Text>
-              )}
-
-              {/* Nói thẳng cách tính, để không ai phải đoán */}
-              <View className="mt-4 gap-1 rounded-panel bg-surfaceAlt p-3">
-                <Text className="font-sans text-label text-muted">
-                  Hệ số hôm nay: 1 + 🔥 {(multiplier - 1).toFixed(1)} ={' '}
-                  <Text className="font-heavy text-ink">{multiplier}</Text> (tối đa {MAX_MULTIPLIER})
-                </Text>
-                <Text className="font-sans text-label text-muted">
-                  Điểm hôm nay: {multiplier} × {todayEffort} ={' '}
-                  <Text className="font-heavy text-ink">{todayPoints}</Text> (tối đa {DAILY_POINT_CAP})
-                </Text>
-                <Text className="font-sans text-label text-subtle">
-                  Công: 1 điểm mỗi phút học, 0,5 điểm mỗi câu đã làm.
-                </Text>
+                  <Text className="font-sans text-label text-muted">
+                    Điểm hôm nay: {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> (tối đa {DAILY_POINT_CAP})
+                  </Text>
+                  <Text className="font-sans text-label text-subtle">Công: 1 điểm mỗi phút học, 0,5 điểm mỗi câu đã làm. Mỗi điểm cũng là một sao để đổi quà.</Text>
+                </View>
               </View>
             </Card>
           </Appear>
@@ -174,31 +177,135 @@ export default function LeaderboardScreen() {
       </View>
 
       <Appear index={3}>
-        <SectionHeader
-          className="mt-6"
-          title="Bảng xếp hạng"
-          subtitle="Điểm tháng này của những người đã đăng nhập"
-          icon="trophy"
-        />
+        <PrizeCard data={data} me={me} today={today} />
       </Appear>
 
-      <Board you={{ name, points: month, streak }} />
+      <Appear index={4}>
+        <SectionHeader className="mt-6" title="Bảng xếp hạng tháng này" subtitle="Điểm tháng này của những người đã đăng nhập" icon="trophy" />
+      </Appear>
+
+      <Board data={data} error={error} me={me} you={{ name, points: month }} />
 
       <View className="h-6" />
     </Screen>
   );
 }
 
+function useBoard(): { data: BoardData | null; error: string | null } {
+  const [data, setData] = useState<BoardData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    fetch('/api/leaderboard')
+      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
+      .then((d: { board?: BoardRow[]; previous?: { month: string; board?: PastRow[] } }) => {
+        if (alive) setData({ board: d.board ?? [], previous: d.previous ? { month: d.previous.month, board: d.previous.board ?? [] } : null });
+      })
+      .catch(() => {
+        if (alive) setError('Chưa nối được máy chủ — bảng này cần đăng nhập và có mạng.');
+      });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
+  return { data, error };
+}
+
+const MEDAL = ['🥇', '🥈', '🥉'];
+
+/** "2026-08" → "tháng 8/2026". */
+function monthLabel(key: string): string {
+  const [y, m] = key.split('-');
+  return `tháng ${Number(m)}/${y}`;
+}
+
+/**
+ * Giải thưởng tháng: bậc thưởng, hạng hiện tại của bạn, và — nếu tháng trước
+ * bạn trong top 10 — nút nhận sao (mỗi tháng một lần).
+ */
+function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | null; today: Date }) {
+  const prizes = useRewardStore((s) => s.prizes);
+  const claimPrize = useRewardStore((s) => s.claimPrize);
+  const [claimedNow, setClaimedNow] = useState<number | null>(null);
+
+  const rankNow = me && data ? data.board.findIndex((r) => r.id === me) + 1 : 0;
+  const prev = data?.previous ?? null;
+  const prevRank = me && prev ? prev.board.findIndex((r) => r.id === me) + 1 : 0;
+  const prize = prizeForRank(prevRank);
+  const already = prev ? (prizes?.[prev.month] ?? 0) : 0;
+
+  const claim = () => {
+    if (!prev || prize <= 0) return;
+    if (claimPrize(prev.month, prize)) {
+      setClaimedNow(prize);
+      sfx.coins(8);
+      useGameFx.getState().push({ kind: 'stars', amount: prize, reason: 'thưởng hạng tháng' });
+    }
+  };
+
+  return (
+    <Card className="mt-6">
+      <SectionHeader title="Giải thưởng tháng" subtitle={`Chốt bảng sau ${daysUntilReset(today)} ngày nữa`} icon="gift" iconTone="warning" />
+      <Text className="mt-2 font-sans text-label text-muted">Hết tháng, top 10 bảng dưới đây được thưởng sao. Đầu tháng sau quay lại trang này bấm nhận.</Text>
+
+      <View className="mt-3 flex-row flex-wrap gap-2">
+        {MONTH_PRIZES.map((p, i) => (
+          <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#FEF3C7' : '#F6F7FB' }}>
+            <Text style={{ fontSize: 20 }}>{MEDAL[i] ?? '🏅'}</Text>
+            <View className="min-w-0 flex-1">
+              <Text className="font-strong text-label text-ink">{p.label}</Text>
+              <Text className="font-heavy text-body text-ink">+{p.stars} ⭐</Text>
+            </View>
+          </View>
+        ))}
+      </View>
+
+      {me && rankNow > 0 ? (
+        <Text className="mt-3 font-sans text-body text-ink">
+          Bạn đang đứng <Text className="font-heavy">hạng {rankNow}</Text>
+          {prizeForRank(rankNow) > 0 ? ` — giữ tới hết tháng là nhận ${prizeForRank(rankNow)} sao.` : ' — lọt vào top 10 để có thưởng.'}
+        </Text>
+      ) : me && data ? (
+        <Text className="mt-3 font-sans text-body text-muted">Bạn chưa có tên trên bảng tháng này. Học một buổi là có điểm.</Text>
+      ) : !me ? (
+        <Text className="mt-3 font-sans text-body text-muted">Đăng nhập để lên bảng và nhận thưởng tháng.</Text>
+      ) : null}
+
+      {prev && prev.board.length > 0 ? (
+        <View className="mt-4 rounded-panel bg-surfaceAlt p-3">
+          <Text className="font-strong text-label text-muted">Vinh danh {monthLabel(prev.month)}</Text>
+          <View className="mt-1.5 flex-row flex-wrap gap-x-4 gap-y-1">
+            {prev.board.slice(0, 3).map((r, i) => (
+              <Text key={r.id} className="font-semi text-body text-ink" numberOfLines={1}>
+                {MEDAL[i]} {r.name} · {r.points}
+              </Text>
+            ))}
+          </View>
+
+          {prize > 0 ? (
+            already > 0 || claimedNow ? (
+              <Text className="mt-3 font-semi text-body" style={{ color: '#15803D' }}>
+                ✓ Đã nhận {already || claimedNow} sao thưởng hạng {prevRank} {monthLabel(prev.month)}.
+              </Text>
+            ) : (
+              <View className="mt-3 flex-row flex-wrap items-center gap-3">
+                <Text className="min-w-0 flex-1 font-semi text-body text-ink">
+                  {monthLabel(prev.month)} bạn đứng hạng {prevRank}. Phần thưởng: {prize} sao.
+                </Text>
+                <Button label={`Nhận ${prize} ⭐`} size="sm" iconLeft="gift" onPress={claim} />
+              </View>
+            )
+          ) : null}
+        </View>
+      ) : null}
+    </Card>
+  );
+}
+
 /** Lưới ô vuông 12 tuần gần nhất, đậm dần theo số phút học. */
-function Heatmap({
-  daily,
-  frozen,
-  today,
-}: {
-  daily: Record<string, { minutes: number; questions: number }>;
-  frozen: string[];
-  today: Date;
-}) {
+function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: number; questions: number }>; frozen: string[]; today: Date }) {
   const weeks = 12;
   const columns: { key: string; minutes: number; frozen: boolean }[][] = [];
   // Bắt đầu từ thứ Hai của tuần cách đây 11 tuần, để mỗi cột là một tuần đủ.
@@ -234,7 +341,7 @@ function Heatmap({
           </View>
         ))}
       </View>
-      <View className="mt-2 flex-row items-center gap-1.5">
+      <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
         <Text className="font-sans text-label text-subtle">Ít</Text>
         {['#EEF1F7', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
           <View key={c} style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: c }} />
@@ -249,24 +356,10 @@ function Heatmap({
   );
 }
 
-function Board({ you }: { you: { name: string; points: number; streak: number } }) {
-  const [rows, setRows] = useState<BoardRow[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+const PODIUM_RING = ['#F59E0B', '#94A3B8', '#D97706'];
 
-  useEffect(() => {
-    let alive = true;
-    fetch('/api/leaderboard')
-      .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((data: { board?: BoardRow[] }) => {
-        if (alive) setRows(data.board ?? []);
-      })
-      .catch(() => {
-        if (alive) setError('Chưa nối được máy chủ — bảng này cần đăng nhập và có mạng.');
-      });
-    return () => {
-      alive = false;
-    };
-  }, []);
+function Board({ data, error, me, you }: { data: BoardData | null; error: string | null; me: string | null; you: { name: string; points: number } }) {
+  const narrow = useWindowDimensions().width < 640;
 
   if (error) {
     return (
@@ -279,7 +372,7 @@ function Board({ you }: { you: { name: string; points: number; streak: number } 
     );
   }
 
-  if (!rows) {
+  if (!data) {
     return (
       <Card className="mt-3 items-center py-8">
         <ActivityIndicator color={color.primary} />
@@ -287,36 +380,89 @@ function Board({ you }: { you: { name: string; points: number; streak: number } 
     );
   }
 
-  const medal = (i: number) => (i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`);
+  const rows = data.board;
+  if (rows.length === 0) {
+    return (
+      <Card className="mt-3">
+        <Text className="font-sans text-body text-muted">Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.</Text>
+      </Card>
+    );
+  }
+
+  const podium = rows.slice(0, 3);
+  // Bục: hạng nhì bên trái, nhất ở giữa, ba bên phải.
+  const order = podium.length === 3 ? [podium[1]!, podium[0]!, podium[2]!] : podium;
+  const rest = rows.slice(3);
+  const inBoard = me ? rows.some((r) => r.id === me) : false;
 
   return (
-    <Card className="mt-3" padded={false}>
-      <ScrollView style={{ maxHeight: 520 }}>
-        {rows.length === 0 ? (
-          <Text className="p-5 font-sans text-body text-muted">
-            Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.
-          </Text>
-        ) : (
-          rows.map((row, i) => (
+    <View className="mt-3">
+      <View className="flex-row items-end gap-3">
+        {order.map((row) => {
+          const rank = rows.indexOf(row);
+          const first = rank === 0;
+          const mine = row.id === me;
+          return (
             <View
               key={row.id}
-              className="flex-row items-center gap-3 border-b border-border px-5 py-3 last:border-b-0"
+              style={{
+                flex: 1,
+                minWidth: 0,
+                marginTop: first ? 0 : 22,
+                borderRadius: 20,
+                overflow: 'hidden',
+                backgroundColor: '#FFFFFF',
+                borderWidth: 2,
+                borderColor: mine ? color.primary : PODIUM_RING[rank],
+              }}
             >
-              <Text className="w-8 text-center font-heavy text-body text-muted">{medal(i)}</Text>
-              <View className="h-9 w-9 items-center justify-center rounded-pill bg-surfaceAlt">
-                <Text className="font-strong text-body text-muted">{row.name.slice(0, 1).toUpperCase()}</Text>
+              <ProfileCover cover={findItem(row.cover)?.cover ?? null} height={first ? 64 : 52} />
+              <View style={{ alignItems: 'center', paddingHorizontal: 8, paddingBottom: 12, marginTop: first ? -34 : -28 }}>
+                <View style={{ borderRadius: 999, borderWidth: 3, borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
+                  <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={narrow ? (first ? 52 : 44) : first ? 64 : 52} skin={skinOf(row.skin ?? null)} />
+                </View>
+                <Text style={{ marginTop: 4, fontSize: first ? 24 : 20 }}>{MEDAL[rank]}</Text>
+                <Text className="text-center font-strong text-body text-ink" numberOfLines={1}>
+                  {mine ? 'Bạn' : row.name}
+                </Text>
+                <Text className="font-heavy text-ink" style={{ fontSize: first ? 22 : 18 }}>
+                  {row.points}
+                </Text>
+                {row.streak > 0 ? <Text className="font-sans text-label text-muted">🔥 {row.streak}</Text> : null}
               </View>
-              <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                {row.name}
-              </Text>
-              {row.streak > 0 ? (
-                <Text className="font-sans text-label text-muted">🔥 {row.streak}</Text>
-              ) : null}
-              <Text className="font-heavy text-body text-ink">{row.points}</Text>
             </View>
-          ))
-        )}
-      </ScrollView>
-    </Card>
+          );
+        })}
+      </View>
+
+      {rest.length > 0 || (!inBoard && me) ? (
+        <Card className="mt-3" padded={false}>
+          {rest.map((row, i) => {
+            const mine = row.id === me;
+            return (
+              <View key={row.id} className="flex-row items-center gap-3 border-b border-border px-5 py-3" style={mine ? { backgroundColor: '#EEF2FF' } : undefined}>
+                <Text className="w-8 text-center font-heavy text-body text-muted">{i + 4}</Text>
+                <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={36} skin={skinOf(row.skin ?? null)} />
+                <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
+                  {mine ? `${row.name} (bạn)` : row.name}
+                </Text>
+                {i + 4 <= 10 ? <Badge label="Top 10" tone="warning" shape="tag" /> : null}
+                {row.streak > 0 ? <Text className="font-sans text-label text-muted">🔥 {row.streak}</Text> : null}
+                <Text className="font-heavy text-body text-ink">{row.points}</Text>
+              </View>
+            );
+          })}
+          {!inBoard && me ? (
+            <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#EEF2FF' }}>
+              <Text className="w-8 text-center font-heavy text-body text-muted">—</Text>
+              <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
+                Bạn — chưa vào top {rows.length}
+              </Text>
+              <Text className="font-heavy text-body text-ink">{you.points}</Text>
+            </View>
+          ) : null}
+        </Card>
+      ) : null}
+    </View>
   );
 }

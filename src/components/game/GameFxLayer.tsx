@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Platform, Text, View } from 'react-native';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { PixelSprite } from './PixelSprite';
 import { titleForLevel } from '@/services/game/rules';
+import { lifetimePoints } from '@/services/gamification/points';
 import { useGameFx, type FxEvent } from '@/store/useGameFx';
+import { useGameStore } from '@/store/useGameStore';
+import { useRewardStore } from '@/store/useRewardStore';
+import { useStudyStore } from '@/store/useStudyStore';
 
 /**
  * LỚP HIỆU ỨNG TOÀN APP, nằm trên mọi màn: băng rôn LÊN CẤP giữa màn, thẻ báo
@@ -28,10 +32,11 @@ export function GameFxLayer() {
   const level = [...fresh].reverse().find((e): e is Extract<FxEvent, { kind: 'levelup' }> => e.kind === 'levelup');
   // Thẻ XP của bài chấm một lượt chỉ hiện ở đây khi không có thanh trận đấu diễn thay.
   const toasts = fresh.filter((e) => TOAST_KINDS.includes(e.kind) && (e.kind !== 'batch' || e.global)).slice(-3);
-  const chips = fresh.filter((e) => e.global && (e.kind === 'hit' || e.kind === 'hurt' || e.kind === 'defeat')).slice(-3);
+  const chips = fresh.filter((e) => e.global && (e.kind === 'hit' || e.kind === 'hurt' || e.kind === 'defeat' || e.kind === 'stars')).slice(-3);
 
   return (
     <View pointerEvents="none" style={{ position: 'fixed' as 'absolute', left: 0, top: 0, right: 0, bottom: 0, zIndex: 80 }}>
+      <StudyStarWatcher />
       {level ? <LevelBanner key={level.id} level={level.level} /> : null}
 
       <View style={{ position: 'absolute', right: 16, bottom: 88, gap: 8, alignItems: 'flex-end', maxWidth: 340 }}>
@@ -48,7 +53,9 @@ export function GameFxLayer() {
               ? { text: '−1 ♥ · mất combo', c: '#FDA4AF', top: 116 }
               : e.kind === 'defeat'
                 ? { text: `Hạ ${e.name}! +${e.bonusXp} XP`, c: '#FACC15', top: 150 }
-                : null;
+                : e.kind === 'stars'
+                  ? { text: `+${e.amount} ⭐ ${e.reason}`, c: '#FDE68A', top: 184 }
+                  : null;
         if (!chip) return null;
         return (
           <View key={e.id} style={{ position: 'absolute', right: 16, top: chip.top, ...anim('rg-float', e.kind === 'defeat' ? 1800 : 1100) }}>
@@ -123,4 +130,25 @@ function Toast({ e }: { e: FxEvent }) {
       </View>
     </View>
   );
+}
+
+/**
+ * Sao từ VIỆC HỌC (thời gian + số câu) tăng dần trong lúc học — mỗi lần tăng thì
+ * bắn "+N ⭐" để người học thấy sao rơi vào túi ngay trong bài, không chỉ ở trang
+ * Đổi sao. Bỏ qua cú nhảy lớn (dữ liệu vừa nạp từ máy hay từ tài khoản).
+ */
+function StudyStarWatcher() {
+  useEffect(() => {
+    const total = () => Math.round(lifetimePoints(useStudyStore.getState().daily, useRewardStore.getState().frozenDays));
+    let last = total();
+    return useStudyStore.subscribe(() => {
+      const now = total();
+      const gain = now - last;
+      last = now;
+      if (gain > 0 && gain <= 20 && useGameStore.getState().enabled) {
+        useGameFx.getState().push({ kind: 'stars', amount: gain, reason: 'học' });
+      }
+    });
+  }, []);
+  return null;
 }

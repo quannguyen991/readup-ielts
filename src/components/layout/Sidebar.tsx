@@ -13,9 +13,11 @@ import {
 } from "@/navigation/nav-items";
 import { usePlan } from "@/store/useBillingStore";
 import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
-import { useRewardStore } from "@/store/useRewardStore";
+import { skinOf, useRewardStore } from "@/store/useRewardStore";
+import { useStarBalance } from "@/store/useStarBalance";
+import { AvatarBadge } from "@/components/profile/AnimatedAvatar";
 import { SIDEBAR_WIDTH, useSidebarStore } from "@/store/useSidebarStore";
-import { findItem } from "@/services/gamification/shop";
+import { formatStars } from "@/services/gamification/shop";
 import { color } from "@/theme/tokens";
 
 /**
@@ -259,15 +261,16 @@ function planLabel(plan: string): string {
 
 /**
  * Chân thanh bên: chưa đăng nhập thì một nút Đăng nhập rõ ràng; đã đăng nhập
- * thì avatar + tên, dẫn sang Cài đặt.
+ * thì avatar + tên + số sao, dẫn sang trang Hồ sơ.
  */
 function AccountRow({ collapsed }: { collapsed: boolean }) {
   const signedIn = useAuthStore((s) => s.status === "signed_in");
   const name = useDisplayName();
   const plan = usePlan();
-  // Avatar mua ở Cửa hàng hiện luôn ở đây, để thứ đã đổi điểm có chỗ để thấy.
+  // Avatar đổi bằng sao hiện luôn ở đây (kể cả avatar động), để thứ đã đổi có chỗ để thấy.
   const avatarId = useRewardStore((s) => s.avatar);
-  const glyph = avatarId ? findItem(avatarId)?.glyph : undefined;
+  const skin = skinOf(useRewardStore((s) => s.skin));
+  const stars = useStarBalance();
 
   if (!signedIn) {
     return (
@@ -287,26 +290,19 @@ function AccountRow({ collapsed }: { collapsed: boolean }) {
 
   return (
     <Pressable
-      accessibilityRole="button"
-      accessibilityLabel="Tài khoản"
-      onPress={() => router.push("/settings" as never)}
+      accessibilityRole="link"
+      accessibilityLabel={`Hồ sơ của ${name}`}
+      onPress={() => router.push("/profile" as never)}
       className={`flex-row items-center gap-3 rounded-panel border border-border ${collapsed ? "p-1.5" : "px-3 py-2"}`}
     >
-      <View className="h-9 w-9 items-center justify-center rounded-pill bg-accent-100">
-        <Text
-          className="font-strong text-body text-accent-700"
-          style={glyph ? { fontSize: 18 } : undefined}
-        >
-          {glyph ?? name.slice(0, 1).toUpperCase()}
-        </Text>
-      </View>
+      <AvatarBadge avatarId={avatarId} name={name} size={36} skin={skin} />
       {collapsed ? null : (
         <View className="min-w-0 flex-1">
           <Text numberOfLines={1} className="font-strong text-[15px] text-ink">
             {name}
           </Text>
           <Text numberOfLines={1} className="font-sans text-label text-muted">
-            {planLabel(plan)}
+            {planLabel(plan)} · ⭐ {formatStars(stars)}
           </Text>
         </View>
       )}

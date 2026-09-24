@@ -138,7 +138,8 @@ export type AnswerOutcome = {
   levelUp: number | null;
 };
 
-export function resolveAnswer(s: BattleState, correct: boolean): AnswerOutcome {
+/** `damageMult` — linh vật Rồng Con làm mỗi nhát mạnh hơn (1 = bình thường). */
+export function resolveAnswer(s: BattleState, correct: boolean, damageMult = 1): AnswerOutcome {
   const before = levelForXp(s.xp);
   if (!correct) {
     if (s.shield) {
@@ -167,7 +168,7 @@ export function resolveAnswer(s: BattleState, correct: boolean): AnswerOutcome {
   const crit = combo % CRIT_EVERY === 0;
   const multiplier = (crit ? 2 : 1) * (s.doubleLeft > 0 ? 2 : 1);
   let xpGained = (XP_CORRECT + comboBonus(combo)) * multiplier;
-  const damage = damageFor(combo, crit);
+  const damage = Math.round(damageFor(combo, crit) * damageMult);
   let enemyIndex = s.enemyIndex;
   let enemyHp = s.enemyHp - damage;
   let defeated: AnswerOutcome['defeated'] = null;
@@ -200,12 +201,13 @@ export function resolveAnswer(s: BattleState, correct: boolean): AnswerOutcome {
 export function resolveBatch(
   s: BattleState,
   correct: number,
+  damageMult = 1,
 ): { state: BattleState; xpGained: number; damage: number; defeated: Defeat[]; levelUp: number | null } {
   const before = levelForXp(s.xp);
   const hits = Math.max(0, Math.floor(correct));
   const doubled = Math.min(hits, s.doubleLeft);
   let xpGained = hits * XP_CORRECT + doubled * XP_CORRECT;
-  const damage = hits * 20;
+  const damage = Math.round(hits * 20 * damageMult);
   let enemyIndex = s.enemyIndex;
   let enemyHp = s.enemyHp - damage;
   const defeated: Defeat[] = [];
@@ -297,6 +299,12 @@ export function newAchievements(l: Lifetime, have: Record<string, string>): Achi
 
 export type GamePayload = BattleState & {
   items: Record<ItemKind, number>;
+  /** Sao thưởng từ trận đấu (hạ quái, boss, lên cấp, nhiệm vụ, huy hiệu) — cộng vào số sao đổi quà. */
+  bonusStars: number;
+  /** Ngày tính lượt dùng quyền linh vật, và số lượt đã dùng trong ngày đó. */
+  perkDay: string;
+  perkHints: number;
+  perkShieldUsed: boolean;
   life: Lifetime;
   day: string;
   today: DayStats;
@@ -330,5 +338,5 @@ export function mergeGame(local: GamePayload | null, remote: GamePayload | null)
     for (const k of Object.keys(today) as (keyof DayStats)[]) today[k] = Math.max(base.today?.[k] ?? 0, other.today?.[k] ?? 0);
     claimed = [...new Set([...(base.claimed ?? []), ...(other.claimed ?? [])])];
   }
-  return { ...base, life, achievements, today, claimed };
+  return { ...base, life, achievements, today, claimed, bonusStars: Math.max(local.bonusStars ?? 0, remote.bonusStars ?? 0) };
 }

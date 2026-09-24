@@ -163,7 +163,8 @@ export const NAV_GROUPS: NavGroup[] = [
         children: [
           { key: 'weekly', label: 'Đề của tuần', href: '/weekly', icon: 'trophy' },
           { key: 'duel', label: 'Đấu 1–1', href: '/duel', icon: 'target' },
-          { key: 'shop', label: 'Cửa hàng đổi điểm', href: '/shop', icon: 'gift' },
+          { key: 'shop', label: 'Đổi sao', href: '/shop', icon: 'gift' },
+          { key: 'profile', label: 'Hồ sơ của tôi', href: '/profile', icon: 'star' },
         ],
       },
     ],
