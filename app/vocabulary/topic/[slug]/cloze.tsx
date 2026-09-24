@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
 import {
   ChoiceGrid,
@@ -50,6 +51,7 @@ import { color } from '@/theme/tokens';
  */
 export default function ClozeScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const addLapse = useTopicStudyStore((s) => s.addLapse);
@@ -249,7 +251,7 @@ export default function ClozeScreen() {
 
   if (!topic || order.length === 0) {
     return (
-      <StudyFrame backHref="/vocabulary/topics" title="Điền vào câu">
+      <StudyFrame backHref="/vocabulary/quiz" title="Điền vào câu">
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">Không có câu nào để điền trong bộ này.</Text>
         </StudyCard>

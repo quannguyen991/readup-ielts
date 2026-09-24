@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
 import { GhostButton, GREEN, PrimaryButton, RED, StudyCard, StudyFrame, speak, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
@@ -24,6 +25,7 @@ const SPEEDS = [0.7, 0.9, 1] as const;
  */
 export default function DictationScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -97,7 +99,7 @@ export default function DictationScreen() {
 
   if (!topic || !word) {
     return (
-      <StudyFrame backHref="/vocabulary/topics" title="Nghe chép">
+      <StudyFrame backHref="/vocabulary/quiz" title="Nghe chép">
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này.</Text>
         </StudyCard>

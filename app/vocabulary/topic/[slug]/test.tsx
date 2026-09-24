@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
 import { GhostButton, GREEN, PrimaryButton, RED, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
@@ -25,6 +26,7 @@ const LENGTH = 20;
  */
 export default function TestScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const [seed, setSeed] = useState(() => Date.now() % 100000);
@@ -80,7 +82,7 @@ export default function TestScreen() {
 
   if (!topic || !q) {
     return (
-      <StudyFrame backHref="/vocabulary/topics" title="Kiểm tra">
+      <StudyFrame backHref="/vocabulary/quiz" title="Kiểm tra">
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này.</Text>
         </StudyCard>
