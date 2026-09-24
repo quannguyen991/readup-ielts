@@ -1,14 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { ActivityIndicator, Text, View, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
+import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
-import { Badge, Button, Card, ProgressBar, SectionHeader } from '@/components/ui';
+import { Badge, Button, Card, Icon, ProgressBar, SectionHeader } from '@/components/ui';
 import { sfx } from '@/services/audio/sfx';
+import { goldenOf } from '@/services/gamification/golden';
 import { MONTH_PRIZES, prizeForRank } from '@/services/gamification/monthly';
 import {
   currentStreak,
@@ -26,6 +28,7 @@ import {
 } from '@/services/gamification/points';
 import { findItem, formatStars } from '@/services/gamification/shop';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
+import { useGameStore } from '@/store/useGameStore';
 import { useGameFx } from '@/store/useGameFx';
 import { skinOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
@@ -46,12 +49,17 @@ import { color } from '@/theme/tokens';
  * CÓ GIẢI THƯỞNG: hết tháng, top 10 nhận sao (`services/gamification/monthly.ts`)
  * để đổi vé gói, linh vật, skin. Bảng hiện avatar động và bìa mà mỗi người đang đeo.
  *
+ * BẢNG VÀNG HÔM NAY đứng đầu trang: mỗi ngày ai được bao nhiêu sao, đúng bao
+ * nhiêu câu, ôn bao nhiêu lượt từ vựng (`services/gamification/golden.ts`), kèm
+ * số của chính mình và nút đổi quà bằng sao.
+ *
  * BẢNG XẾP HẠNG CẦN MÁY CHỦ. Chưa đăng nhập hoặc chưa nối được thì trang vẫn
  * đủ dùng: thẻ hạng, chuỗi ngày và lưới hoạt động đều tính trên máy.
  */
 type BoardRow = { id: string; name: string; points: number; streak: number; avatar?: string | null; cover?: string | null; skin?: string | null };
 type PastRow = { id: string; name: string; points: number };
-type BoardData = { board: BoardRow[]; previous: { month: string; board: PastRow[] } | null };
+type GoldenRow = { id: string; name: string; stars: number; correct: number; vocab: number; avatar?: string | null; skin?: string | null };
+type BoardData = { board: BoardRow[]; previous: { month: string; board: PastRow[] } | null; golden: { day: string; board: GoldenRow[] } | null };
 
 export default function LeaderboardScreen() {
   const daily = useStudyStore((s) => s.daily);
@@ -86,7 +94,7 @@ export default function LeaderboardScreen() {
             <Text style={{ fontSize: 14 }}>⭐</Text>
             <Text className="font-heavy text-body text-ink">{formatStars(stars)}</Text>
           </View>
-          <Button label="Đổi sao" variant="outline" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+          <Button label="Đổi quà" variant="outline" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
           <Button label="Hồ sơ" variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
         </View>
         <Text className="mt-1 font-sans text-body text-muted">
@@ -94,9 +102,13 @@ export default function LeaderboardScreen() {
         </Text>
       </Appear>
 
+      <Appear index={1}>
+        <GoldenBoard data={data} error={error} me={me} />
+      </Appear>
+
       <View className="mt-5">
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={16}>
-          <Appear index={1} style={{ height: '100%' }}>
+          <Appear index={2} style={{ height: '100%' }}>
             <Card className="h-full overflow-hidden" padded={false}>
               <ProfileCover cover={findItem(coverId)?.cover ?? null} height={84} />
               <View className="px-4 pb-4">
@@ -199,8 +211,13 @@ function useBoard(): { data: BoardData | null; error: string | null } {
     let alive = true;
     fetch('/api/leaderboard')
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
-      .then((d: { board?: BoardRow[]; previous?: { month: string; board?: PastRow[] } }) => {
-        if (alive) setData({ board: d.board ?? [], previous: d.previous ? { month: d.previous.month, board: d.previous.board ?? [] } : null });
+      .then((d: { board?: BoardRow[]; previous?: { month: string; board?: PastRow[] }; golden?: { day: string; board?: GoldenRow[] } }) => {
+        if (alive)
+          setData({
+            board: d.board ?? [],
+            previous: d.previous ? { month: d.previous.month, board: d.previous.board ?? [] } : null,
+            golden: d.golden ? { day: d.golden.day, board: d.golden.board ?? [] } : null,
+          });
       })
       .catch(() => {
         if (alive) setError('Chưa nối được máy chủ — bảng này cần đăng nhập và có mạng.');
@@ -214,6 +231,172 @@ function useBoard(): { data: BoardData | null; error: string | null } {
 }
 
 const MEDAL = ['🥇', '🥈', '🥉'];
+
+const WEEKDAY = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+
+/** "2026-09-24" → "Thứ Năm, 24/09". */
+function dayLabel(key: string): string {
+  const [y, m, d] = key.split('-').map(Number);
+  const date = new Date(y!, m! - 1, d!);
+  return `${WEEKDAY[date.getDay()]}, ${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
+}
+
+const GOLD_INK = '#3B2503';
+const ROW_TINT = ['#FFFBEB', '#F8FAFC', '#FFF7ED'];
+
+/**
+ * BẢNG VÀNG HÔM NAY: sao, câu đúng và lượt ôn từ vựng của mọi người trong ngày,
+ * cùng số của chính mình (tính ngay trên máy, không chờ đồng bộ) và lối đổi quà.
+ */
+function GoldenBoard({ data, error, me }: { data: BoardData | null; error: string | null; me: string | null }) {
+  const narrow = useWindowDimensions().width < 640;
+  const daily = useStudyStore((s) => s.daily);
+  const frozen = useRewardStore((s) => s.frozenDays);
+  const gameDay = useGameStore((s) => s.day);
+  const gameToday = useGameStore((s) => s.today);
+  const stars = useStarBalance();
+  const now = useMemo(() => new Date(), []);
+  const key = dateKey(now);
+  const mine = goldenOf({ userId: 'me', daily, frozen, game: { day: gameDay, today: gameToday } }, key, now);
+  const rows = data?.golden?.board ?? [];
+  const inBoard = me ? rows.findIndex((r) => r.id === me) : -1;
+  // Màn hẹp: cột số hẹp lại, khoảng cách nhỏ đi để tên người học không bị cắt.
+  const W = narrow ? { rank: 22, star: 40, correct: 34, vocab: 38 } : { rank: 28, star: 56, correct: 64, vocab: 72 };
+  const rowClass = narrow ? 'flex-row items-center gap-2 px-3.5' : 'flex-row items-center gap-3 px-5';
+
+  return (
+    <View className="mt-5 overflow-hidden rounded-[24px]" style={{ backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#FCD34D' }}>
+      <LinearGradient colors={['#FEF3C7', '#FDE68A', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: narrow ? 16 : 20 }}>
+        <View className="flex-row flex-wrap items-center gap-3">
+          <Text style={{ fontSize: 30 }}>🏅</Text>
+          <View className="min-w-0 flex-1">
+            <Text className="font-heavy" style={{ fontSize: 22, color: GOLD_INK }}>
+              Bảng vàng hôm nay
+            </Text>
+            <Text className="font-semi" style={{ fontSize: 13, color: '#78350F' }}>
+              {dayLabel(data?.golden?.day ?? key)} · sao, câu đúng, lượt ôn từ vựng · chốt lúc 0 giờ
+            </Text>
+          </View>
+        </View>
+
+        {/* Số của chính mình — tính trên máy, luôn có kể cả khi chưa đăng nhập. */}
+        <View className="mt-4 flex-row flex-wrap items-center gap-2 rounded-2xl p-3" style={{ backgroundColor: 'rgba(255,255,255,0.72)' }}>
+          <Text className="font-strong" style={{ fontSize: 13, color: GOLD_INK }}>
+            Hôm nay của bạn
+          </Text>
+          <Stat icon="⭐" value={mine.stars} label="sao" />
+          <Stat icon="✅" value={mine.correct} label="câu đúng" />
+          <Stat icon="📚" value={mine.vocab} label="lượt ôn từ" />
+          <View className="flex-1" />
+          <Pressable
+            accessibilityRole="link"
+            onPress={() => router.push('/shop' as never)}
+            className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
+            style={{ backgroundColor: GOLD_INK }}
+          >
+            <Icon name="gift" size={14} color="#FDE68A" strokeWidth={2.2} />
+            <Text className="font-strong" style={{ fontSize: 13, color: '#FDE68A' }}>
+              Đổi quà · {formatStars(stars)} ⭐
+            </Text>
+          </Pressable>
+        </View>
+      </LinearGradient>
+
+      <View style={{ paddingVertical: 6 }}>
+        {error ? (
+          <Text className="px-5 py-4 font-sans text-body text-muted">Bảng của mọi người cần mạng và đăng nhập — số của bạn ở trên vẫn tính đủ.</Text>
+        ) : !data ? (
+          <View className="items-center py-6">
+            <ActivityIndicator color="#D97706" />
+          </View>
+        ) : rows.length === 0 ? (
+          <Text className="px-5 py-4 font-sans text-body text-muted">
+            Hôm nay chưa ai ghi tên. {me ? 'Làm một câu đúng là lên bảng vàng.' : 'Đăng nhập rồi làm một câu đúng là lên bảng vàng.'}
+          </Text>
+        ) : (
+          <>
+            <View className={`${rowClass} py-2`}>
+              <Text className="text-center font-strong text-label text-subtle" style={{ width: W.rank }}>#</Text>
+              <Text className="min-w-0 flex-1 font-strong text-label text-subtle">Người học</Text>
+              <Text className="font-strong text-label text-subtle" style={{ width: W.star, textAlign: 'right' }}>
+                {narrow ? '⭐' : '⭐ Sao'}
+              </Text>
+              <Text className="font-strong text-label text-subtle" style={{ width: W.correct, textAlign: 'right' }}>
+                {narrow ? '✅' : '✅ Đúng'}
+              </Text>
+              <Text className="font-strong text-label text-subtle" style={{ width: W.vocab, textAlign: 'right' }}>
+                {narrow ? '📚' : '📚 Ôn từ'}
+              </Text>
+            </View>
+            {rows.slice(0, 10).map((r, i) => {
+              const mineRow = r.id === me;
+              return (
+                <View
+                  key={r.id}
+                  className={`${rowClass} py-2.5`}
+                  style={{ backgroundColor: mineRow ? '#EEF2FF' : (ROW_TINT[i] ?? 'transparent') }}
+                >
+                  <Text className="text-center font-heavy text-body" style={{ width: W.rank, color: '#92400E' }}>
+                    {MEDAL[i] ?? i + 1}
+                  </Text>
+                  <View className="min-w-0 flex-1 flex-row items-center gap-2.5">
+                    <AvatarBadge avatarId={r.avatar ?? null} name={r.name} size={narrow ? 26 : 30} skin={skinOf(r.skin ?? null)} />
+                    <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
+                      {mineRow ? `${r.name} (bạn)` : r.name}
+                    </Text>
+                  </View>
+                  <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#B45309' }}>
+                    {r.stars}
+                  </Text>
+                  <Text className="font-semi text-body text-ink" style={{ width: W.correct, textAlign: 'right' }}>
+                    {r.correct}
+                  </Text>
+                  <Text className="font-semi text-body text-ink" style={{ width: W.vocab, textAlign: 'right' }}>
+                    {r.vocab}
+                  </Text>
+                </View>
+              );
+            })}
+            {!me ? (
+              <Text className="px-5 py-3 font-sans text-label text-muted">Đăng nhập để tên bạn lên bảng vàng cùng mọi người.</Text>
+            ) : null}
+            {me && inBoard < 0 && (mine.stars > 0 || mine.correct > 0) ? (
+              <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#EEF2FF' }}>
+                <Text className="text-center font-heavy text-body text-muted" style={{ width: W.rank }}>—</Text>
+                <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
+                  Bạn — số của bạn lên bảng sau vài giây đồng bộ
+                </Text>
+                <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#B45309' }}>
+                  {mine.stars}
+                </Text>
+                <Text className="font-semi text-body text-ink" style={{ width: W.correct, textAlign: 'right' }}>
+                  {mine.correct}
+                </Text>
+                <Text className="font-semi text-body text-ink" style={{ width: W.vocab, textAlign: 'right' }}>
+                  {mine.vocab}
+                </Text>
+              </View>
+            ) : null}
+          </>
+        )}
+      </View>
+    </View>
+  );
+}
+
+function Stat({ icon, value, label }: { icon: string; value: number; label: string }) {
+  return (
+    <View className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: '#FFFFFF' }}>
+      <Text style={{ fontSize: 12 }}>{icon}</Text>
+      <Text className="font-heavy" style={{ fontSize: 14, color: GOLD_INK }}>
+        {value.toLocaleString('vi-VN')}
+      </Text>
+      <Text className="font-sans" style={{ fontSize: 12, color: '#78350F' }}>
+        {label}
+      </Text>
+    </View>
+  );
+}
 
 /** "2026-08" → "tháng 8/2026". */
 function monthLabel(key: string): string {

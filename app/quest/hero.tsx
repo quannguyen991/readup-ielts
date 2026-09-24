@@ -240,7 +240,7 @@ export default function HeroScreen() {
             <SectionTitle title="Túi đồ" sub="Dùng ngay trong bài: bấm Túi đồ trên thanh trận đấu." />
             <Pressable accessibilityRole="link" onPress={() => router.push('/shop?tab=battle' as never)}>
               <Text className="font-strong" style={{ fontSize: 13, color: GOLD }}>
-                Đổi sao →
+                Đổi quà →
               </Text>
             </Pressable>
           </View>
@@ -333,7 +333,7 @@ export default function HeroScreen() {
               'Hết tim: bị đánh lui — tim hồi đầy, quái hồi máu. Bài học không bao giờ bị khoá.',
               'Hạ quái: thưởng thêm XP, cứ hai con thì rơi một món đồ.',
               'Bài chỉ chấm lúc nộp (kiểm tra, đề tuần): mỗi câu đúng +10 XP và một nhát, không tính combo, không mất tim.',
-              `Sao thưởng: hạ quái +${STAR_BONUS.defeat} ⭐, hạ boss +${STAR_BONUS.boss} ⭐, lên cấp +${STAR_BONUS.levelUp} ⭐ mỗi cấp, xong nhiệm vụ +${STAR_BONUS.quest} ⭐, mở huy hiệu +${STAR_BONUS.achievement} ⭐. Sao đổi được vé gói, linh vật, skin ở trang Đổi sao.`,
+              `Sao thưởng: hạ quái +${STAR_BONUS.defeat} ⭐, hạ boss +${STAR_BONUS.boss} ⭐, lên cấp +${STAR_BONUS.levelUp} ⭐ mỗi cấp, xong nhiệm vụ +${STAR_BONUS.quest} ⭐, mở huy hiệu +${STAR_BONUS.achievement} ⭐. Sao đổi được vé gói, linh vật, skin ở trang Đổi quà.`,
               'Linh vật đứng sau lưng nhân vật và giúp theo cách riêng: Cú cho lượt Hỏi Cú miễn phí, Cáo đỡ câu sai đầu ngày, Mèo hồi tim, Rồng chém mạnh hơn. Không con nào làm bài hộ.',
               'Phím tắt trên thanh trận đấu: I mở túi đồ · H hỏi Cú · M bật/tắt âm thanh.',
             ].map((line) => (

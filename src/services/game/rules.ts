@@ -232,7 +232,12 @@ export function resolveBatch(
 
 // ---------------------------------------------------------------- nhiệm vụ ngày
 
-export type DayStats = { correct: number; answers: number; bestCombo: number; defeated: number; xp: number };
+/**
+ * Số liệu của MỘT NGÀY (đồng bộ lên tài khoản, bảng vàng đọc từ đây):
+ * `vocab` — lượt ôn từ vựng (mỗi câu ở màn học từ là một lượt);
+ * `stars` — sao thưởng trận đấu kiếm trong ngày (hạ quái, lên cấp, nhiệm vụ, huy hiệu).
+ */
+export type DayStats = { correct: number; answers: number; bestCombo: number; defeated: number; xp: number; vocab: number; stars: number };
 
 export type DailyQuest = { id: string; title: string; metric: keyof DayStats; goal: number; rewardXp: number; rewardItem: ItemKind | null };
 
@@ -245,6 +250,13 @@ const QUEST_POOL: DailyQuest[] = [
   { id: 'defeat-2', title: 'Hạ 2 con quái', metric: 'defeated', goal: 2, rewardXp: 70, rewardItem: 'potion' },
   { id: 'defeat-4', title: 'Hạ 4 con quái', metric: 'defeated', goal: 4, rewardXp: 140, rewardItem: 'hint' },
   { id: 'xp-300', title: 'Kiếm 300 XP', metric: 'xp', goal: 300, rewardXp: 90, rewardItem: null },
+];
+
+/** Nhiệm vụ ôn từ vựng — vào bộ nhiệm vụ từ ngày này, để nhiệm vụ của hôm nay không đổi giữa chừng. */
+const VOCAB_QUESTS_FROM = '2026-09-25';
+const VOCAB_QUESTS: DailyQuest[] = [
+  { id: 'vocab-30', title: 'Ôn 30 lượt từ vựng', metric: 'vocab', goal: 30, rewardXp: 70, rewardItem: 'hint' },
+  { id: 'vocab-60', title: 'Ôn 60 lượt từ vựng', metric: 'vocab', goal: 60, rewardXp: 130, rewardItem: 'shield' },
 ];
 
 function hashDay(day: string): number {
@@ -261,8 +273,9 @@ export function dailyQuests(day: string): DailyQuest[] {
   const h = hashDay(day);
   const picks: DailyQuest[] = [];
   const used = new Set<string>();
+  const pool = day >= VOCAB_QUESTS_FROM ? [...QUEST_POOL, ...VOCAB_QUESTS] : QUEST_POOL;
   for (let k = 0; picks.length < 3 && k < 40; k += 1) {
-    const q = QUEST_POOL[(h + k * 7 + (h >>> (k % 16))) % QUEST_POOL.length]!;
+    const q = pool[(h + k * 7 + (h >>> (k % 16))) % pool.length]!;
     // Không lấy hai nhiệm vụ cùng thước đo trong một ngày.
     if (used.has(q.metric)) continue;
     used.add(q.metric);
@@ -313,7 +326,7 @@ export type GamePayload = BattleState & {
 };
 
 export const EMPTY_LIFE: Lifetime = { correct: 0, answers: 0, bestCombo: 0, defeated: 0, xp: 0, knockouts: 0 };
-export const EMPTY_DAY: DayStats = { correct: 0, answers: 0, bestCombo: 0, defeated: 0, xp: 0 };
+export const EMPTY_DAY: DayStats = { correct: 0, answers: 0, bestCombo: 0, defeated: 0, xp: 0, vocab: 0, stars: 0 };
 
 /**
  * Gộp hai máy: máy nào nhiều XP hơn thì giữ nguyên trận đấu và túi đồ của máy đó

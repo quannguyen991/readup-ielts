@@ -238,7 +238,7 @@ export type SkinId = 'knight' | 'ninja' | 'mage' | 'samurai' | 'astronaut' | 'go
 
 /**
  * Skin nhân vật = đổi màu từng phần của cùng một hình (tóc/mũ, áo, áo choàng,
- * kiếm, chuôi, giày, thắt lưng). Mua bằng sao ở trang Đổi sao.
+ * kiếm, chuôi, giày, thắt lưng). Mua bằng sao ở trang Đổi quà.
  */
 export const HERO_SKINS: Record<SkinId, { name: string; colors: Partial<Record<string, string>> }> = {
   knight: { name: 'Hiệp sĩ xanh', colors: {} },

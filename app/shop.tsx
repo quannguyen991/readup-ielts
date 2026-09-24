@@ -26,7 +26,8 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 
 /**
- * ĐỔI SAO — nơi tiêu sao kiếm được từ việc học.
+ * ĐỔI QUÀ — nơi tiêu sao kiếm được từ việc học (trước tên "Đổi sao"; người dùng
+ * gọi là đổi quà, đổi điểm — đổi tên cho khớp, 24/09/2026).
  *
  * Sao chỉ đến từ việc học (thời gian, số câu, trận đấu khi học) — luật ở
  * `services/gamification/shop.ts`. Đổi được vé gói có hạn, linh vật giúp câu hỏi,
@@ -181,7 +182,7 @@ export default function ShopScreen() {
           >
             <Icon name="chevron-left" size={17} color={color.muted} strokeWidth={2.2} />
           </Pressable>
-          <Text className="font-heavy text-pageTitle text-ink">Đổi sao</Text>
+          <Text className="font-heavy text-pageTitle text-ink">Đổi quà</Text>
           <View className="flex-1" />
           <Button label="Hồ sơ của tôi" variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
           <View className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2" style={{ backgroundColor: GOLD_SOFT }} accessibilityLabel={`Đang có ${stars} sao`}>
