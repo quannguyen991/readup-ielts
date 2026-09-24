@@ -6,19 +6,25 @@ import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
 import { LetterCell } from '@/components/sentence/LetterCell';
 import { ListeningQuiz } from '@/components/sentence/ListeningQuiz';
-import { PixelTrack } from '@/components/sentence/PixelTrack';
 import { Badge, Button, Icon } from '@/components/ui';
 import { parsePastedTranscript } from '@/services/youtube/paste-transcript';
 import { parseVideoId, type TranscriptSentence } from '@/services/youtube/transcript';
 import {
   buildLetterBoard,
+  fitCells,
   gradeLetters,
+  longestWordLetters,
+  revealNextWord,
   sanitizeTyped,
+  solvedWordCount,
 } from '@/services/sentence/letter-cells';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVideoTranscriptStore } from '@/store/useVideoTranscriptStore';
 import { color, paper } from '@/theme/tokens';
 import { CrossFade, PageTransition } from '@/components/motion/Motion';
+import { BattleStrip } from '@/components/game/BattleStrip';
+import { useOwlHint } from '@/components/game/useOwlHint';
+import { useSentenceStrike } from '@/components/game/useSentenceStrike';
 
 /**
  * Chép chính tả theo video YouTube.
@@ -323,6 +329,32 @@ function PracticeView({
   const board = useMemo(() => buildLetterBoard(sentence.text), [sentence.text]);
   const grade = useMemo(() => gradeLetters(board.answer, typed), [board.answer, typed]);
   const solved = grade.done || revealed;
+  // Ô chữ tự thu nhỏ để từ dài nhất vừa một dòng (điện thoại).
+  const [gridWidth, setGridWidth] = useState(0);
+  const cells = fitCells(gridWidth - 8, longestWordLetters(board));
+
+  /*
+    Game khi học (chế độ chép chính tả): chấm câu ĐÚNG MỘT LẦN, ngay lúc gõ đúng
+    trọn câu. "Xem đáp án" là bỏ cuộc — trúng đòn. Bỏ qua câu thì không tính gì:
+    phụ đề tự động của YouTube có câu nghe không ra, phạt câu đó là phạt oan.
+  */
+  const strike = useSentenceStrike(`${videoId}:${index}`, 'listen');
+  useEffect(() => {
+    if (mode === 'dictation' && grade.done && !revealed) strike(true);
+  }, [mode, grade.done, revealed, strike]);
+
+  // Hỏi Cú: mở hộ từ đầu tiên chưa đúng.
+  useOwlHint(
+    mode === 'dictation' && !solved
+      ? () => {
+          const filled = revealNextWord(board, typed);
+          if (filled === null) return false;
+          setTyped(filled);
+          inputRef.current?.focus();
+          return true;
+        }
+      : null,
+  );
 
   /**
    * Tua video về đúng đầu câu rồi phát.
@@ -518,17 +550,21 @@ function PracticeView({
           <View className="overflow-hidden rounded-card border border-white/10 bg-[#121A12] p-5">
             {grade.done && !revealed ? <Confetti seed={`yt-${videoId}-${index}`} /> : null}
 
-            <PixelTrack
-              progress={sentences.length > 0 ? index / sentences.length : 0}
-              seed={`yt-${videoId}`}
-              label={`Câu ${index + 1} trên ${sentences.length} · khớp ${grade.correctCount}/${grade.total} chữ`}
+            {/* Đường chạy cũ thành trận đấu: mặt đất là các câu của video, tia nạp đòn theo từ chép đúng. */}
+            <BattleStrip
+              step={{ index, total: sentences.length }}
+              charge={{ value: solvedWordCount(board, grade), total: board.words.length, unit: 'từ' }}
             />
 
             <View className="mt-4 rounded-panel border-2 p-4" style={{ borderColor: paper.brandSoft }}>
               <View>
-                <View className="flex-row flex-wrap gap-x-4 gap-y-2.5">
+                <View
+                  className="flex-row flex-wrap gap-y-2.5"
+                  style={{ columnGap: cells.gap >= 4 ? 16 : 10 }}
+                  onLayout={(e) => setGridWidth(Math.round(e.nativeEvent.layout.width))}
+                >
                   {board.words.map((word, wordIndex) => (
-                    <View key={wordIndex} className="flex-row items-center gap-1">
+                    <View key={wordIndex} className="flex-row items-center" style={{ gap: cells.gap }}>
                       {word.units.map((unit, unitIndex) =>
                         unit.kind === 'mark' ? (
                           <Text key={unitIndex} className="font-strong text-bodyLg text-paper-muted">
@@ -545,6 +581,7 @@ function PracticeView({
                             state={revealed ? 'correct' : grade.states[unit.index] ?? 'empty'}
                             caret={!revealed && typed.length === unit.index}
                             liveResult
+                            size={cells.size}
                           />
                         ),
                       )}
@@ -624,7 +661,10 @@ function PracticeView({
                   size="sm"
                   label="Xem đáp án"
                   iconLeft="info"
-                  onPress={() => setRevealed(true)}
+                  onPress={() => {
+                    strike(false);
+                    setRevealed(true);
+                  }}
                 />
               ) : null}
               <View className="flex-1" />

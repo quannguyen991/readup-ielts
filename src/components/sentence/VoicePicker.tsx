@@ -149,10 +149,11 @@ export function VoicePicker({
         accessibilityRole="button"
         accessibilityLabel="Chọn giọng đọc"
         onPress={() => setOpen(true)}
-        className="flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5"
+        className="max-w-full flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5"
       >
         <Icon name="volume" size={14} color={paper.body} strokeWidth={1.9} />
-        <Text className="font-semi text-label text-paper-body" numberOfLines={1}>
+        {/* Tên giọng dài ("Microsoft Zira - English (United States)") co lại thành "…" thay vì đẩy tràn hàng. */}
+        <Text className="shrink font-semi text-label text-paper-body" numberOfLines={1}>
           {current ? current.name : 'Giọng mặc định'}
         </Text>
         <Icon name="chevron-down" size={13} color={paper.muted} />

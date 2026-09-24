@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { buildLetterBoard, gradeLetters, sanitizeTyped } from './letter-cells';
+import { buildLetterBoard, fitCells, gradeLetters, longestWordLetters, revealNextWord, sanitizeTyped, solvedWordCount } from './letter-cells';
 
 test('mỗi chữ cái một ô, dấu cách tách thành từ', () => {
   const board = buildLetterBoard('Two cats run.');
@@ -69,4 +69,34 @@ test('lọc phím: dấu câu và dấu cách không ăn ô nào', () => {
 
 test('lọc phím: cắt đúng sức chứa', () => {
   assert.equal(sanitizeTyped('abcdefgh', 3), 'abc');
+});
+
+test('đếm từ đã đúng trọn vẹn', () => {
+  const board = buildLetterBoard("It's a big day.");
+  assert.equal(solvedWordCount(board, gradeLetters(board.answer, '')), 0);
+  // "ITS" đúng, "A" đúng, "BIG" sai một chữ.
+  assert.equal(solvedWordCount(board, gradeLetters(board.answer, 'ITSABXG')), 2);
+  assert.equal(solvedWordCount(board, gradeLetters(board.answer, board.answer)), board.words.length);
+});
+
+test('mở hộ từ đầu tiên chưa đúng, sửa luôn chữ sai phía trước', () => {
+  const board = buildLetterBoard('The cat sat.');
+  assert.equal(revealNextWord(board, ''), 'THE');
+  assert.equal(revealNextWord(board, 'THECXT'), 'THECAT');
+  // Gõ sai ở từ đầu nhưng đã gõ lấn sang từ sau: mở từ đầu, bỏ phần lấn.
+  assert.equal(revealNextWord(board, 'TXECATS'), 'THE');
+  assert.equal(revealNextWord(board, board.answer), null);
+});
+
+test('ô chữ tự thu nhỏ để từ dài nhất nằm trọn một dòng', () => {
+  const board = buildLetterBoard('An extraordinarily long word.');
+  assert.equal(longestWordLetters(board), 15);
+  // Khung rộng thì giữ cỡ chuẩn 32px, khe 4px.
+  assert.deepEqual(fitCells(800, 15), { size: 32, gap: 4 });
+  // Khung điện thoại ~267px: 15 ô phải lọt cả khe.
+  const { size, gap } = fitCells(267, 15);
+  assert.ok(size * 15 + gap * 14 <= 267, `${size}px × 15 + khe ${gap}px vẫn tràn`);
+  assert.ok(size >= 12);
+  // Chưa đo được bề rộng thì dùng cỡ chuẩn.
+  assert.deepEqual(fitCells(0, 15), { size: 32, gap: 4 });
 });

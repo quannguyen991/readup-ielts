@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 
 import { Icon } from '@/components/ui';
-import type { LetterCellState, LetterWord } from '@/services/sentence/letter-cells';
+import { fitCells, type LetterCellState, type LetterWord } from '@/services/sentence/letter-cells';
 import { paper } from '@/theme/tokens';
 
 import { LetterCell } from './LetterCell';
@@ -56,6 +56,10 @@ export function LetterGrid({
   /** Dòng nhắc phím tắt ở chân lưới — mỗi màn một bộ phím riêng. */
   hint: string;
 }) {
+  // Đo bề rộng thật của lưới để thu nhỏ ô khi từ dài không vừa một dòng.
+  const [gridWidth, setGridWidth] = useState(0);
+  const longest = words.reduce((max, w) => Math.max(max, w.units.filter((u) => u.kind === 'letter').length), 0);
+  const fit = fitCells(gridWidth - 8, longest);
   useEffect(() => {
     const timer = setTimeout(() => inputRef.current?.focus(), 80);
     return () => clearTimeout(timer);
@@ -68,9 +72,13 @@ export function LetterGrid({
         có nút "Xoá hết", mà một nút nằm dưới lớp phủ thì bấm không tới.
       */}
       <View>
-        <View className="flex-row flex-wrap gap-x-4 gap-y-2.5">
+        <View
+          className="flex-row flex-wrap gap-y-2.5"
+          style={{ columnGap: fit.gap >= 4 ? 16 : 10 }}
+          onLayout={(e) => setGridWidth(Math.round(e.nativeEvent.layout.width))}
+        >
           {words.map((word, wordIndex) => (
-            <View key={wordIndex} className="flex-row items-center gap-1">
+            <View key={wordIndex} className="flex-row items-center" style={{ gap: fit.gap }}>
               {word.units.map((unit, unitIndex) =>
                 unit.kind === 'mark' ? (
                   <Text key={unitIndex} className="font-strong text-bodyLg text-paper-muted">
@@ -85,6 +93,7 @@ export function LetterGrid({
                     liveResult={liveResult}
                     celebrate={celebrate}
                     delayMs={unit.index * 18}
+                    size={fit.size}
                   />
                 ),
               )}

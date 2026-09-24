@@ -15,14 +15,15 @@ import { SENTENCE_ENRICHMENT } from '@/data/sentence-enrichment';
 import { getTranslationSet } from '@/data/translation-sets';
 import { TranslationLibrary } from '@/components/sentence/TranslationLibrary';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
-import { buildLetterBoard, gradeLetters, sanitizeTyped } from '@/services/sentence/letter-cells';
+import { buildLetterBoard, gradeLetters, revealNextWord as revealThroughNextWord, sanitizeTyped } from '@/services/sentence/letter-cells';
 import { chunkItems, itemsForStructure } from '@/services/writing/translation-path';
 import { useSentenceStore, type TranslationAttempt } from '@/store/useSentenceStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
 import { Appear, CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
-import { useGameStore } from '@/store/useGameStore';
+import { useOwlHint } from '@/components/game/useOwlHint';
+import { useSentenceStrike } from '@/components/game/useSentenceStrike';
 
 /**
  * Luyện dịch Việt → Anh bằng cách TÁI TẠO ĐÚNG CÂU MẪU.
@@ -117,8 +118,6 @@ export default function TranslateScreen() {
   };
 
   const finishItem = (attempt: TranslationAttempt) => {
-    // Máy chấm (gõ khớp câu mẫu, không mở gợi ý) — cùng điều kiện với sổ tiến độ.
-    useGameStore.getState().answer(attempt.selfCorrect, 'translate');
     const next = [...attempts, attempt];
     setAttempts(next);
     if (index + 1 < items.length) {
@@ -247,6 +246,29 @@ function RunningView({
   /** Đã xong câu: tự gõ đúng hết, hoặc đã bấm xem đáp án. */
   const finished = done || revealed;
 
+  /*
+    Game khi học: chấm câu ĐÚNG MỘT LẦN, ngay lúc gõ đúng trọn câu — tia nạp đòn
+    chạm quái đúng lúc đó. Xong nhờ gợi ý miễn phí (Ctrl+Space, "Xem gợi ý") thì
+    không chém mà cũng không mất tim; "Xem đáp án" là bỏ cuộc, trúng đòn.
+  */
+  const strike = useSentenceStrike(item.id, 'translate');
+  useEffect(() => {
+    if (done && !revealed) strike(showHint ? null : true);
+  }, [done, revealed, showHint, strike]);
+
+  // Hỏi Cú: mở hộ từ đầu tiên chưa đúng. Trả bằng lượt Cú nên KHÔNG tính là mở gợi ý.
+  useOwlHint(
+    !finished
+      ? () => {
+          const filled = revealThroughNextWord(board, letters);
+          if (filled === null) return false;
+          setLetters(filled);
+          inputRef.current?.focus();
+          return true;
+        }
+      : null,
+  );
+
   /** Từ nào đã đúng trọn vẹn — để đếm "x/y từ đúng" và biết từ tiếp theo là từ nào. */
   const solvedWords = useMemo(
     () =>
@@ -258,7 +280,6 @@ function RunningView({
   const solvedCount = solvedWords.filter(Boolean).length;
   const nextWord = board.words[solvedWords.indexOf(false)] ?? null;
   const nextWordLength = nextWord ? nextWord.units.filter((u) => u.kind === 'letter').length : 0;
-  const percent = board.words.length > 0 ? (solvedCount / board.words.length) * 100 : 0;
 
   const enteredAt = useRef(0);
   useEffect(() => {
@@ -345,7 +366,6 @@ function RunningView({
         </View>
       }
     >
-      <BattleStrip className="mb-4" />
       <View className="gap-4 lg:flex-row">
         {/* ---------------------------------------------------------- đề bài */}
         <View className="lg:w-[38%]">
@@ -436,22 +456,18 @@ function RunningView({
           <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
             {done && !revealed ? <Confetti seed={item.id} /> : null}
 
-            <View className="flex-row items-center justify-between">
-              <Text className="font-heavy text-cardTitle text-paper-ink">Bài dịch của em</Text>
-              <Text
-                className="font-strong text-label"
-                style={{ color: done ? color.success : paper.muted }}
-              >
-                {solvedCount}/{board.words.length} từ đúng
-              </Text>
-            </View>
+            <Text className="font-heavy text-cardTitle text-paper-ink">Bài dịch của em</Text>
 
-            <View className="mt-2.5 h-2 overflow-hidden rounded-pill bg-brand-soft">
-              <View
-                className="h-full rounded-pill"
-                style={{ width: `${percent}%`, backgroundColor: done ? color.success : paper.brandMid }}
-              />
-            </View>
+            {/*
+              Thanh "chạy tới đích" cũ thành TRẬN ĐẤU: mỗi từ dịch đúng nạp thêm
+              một đoạn tia vươn sang quái, đủ câu là chém; mặt đất là con đường
+              qua các câu của bài.
+            */}
+            <BattleStrip
+              className="mt-3"
+              step={{ index, total }}
+              charge={{ value: solvedCount, total: board.words.length, unit: 'từ' }}
+            />
 
             <LetterGrid
               answer={board.answer}
@@ -509,7 +525,10 @@ function RunningView({
                   variant="brandOutline"
                   size="sm"
                   iconLeft="info"
-                  onPress={() => setRevealed(true)}
+                  onPress={() => {
+                    strike(false);
+                    setRevealed(true);
+                  }}
                 />
               )}
             </View>

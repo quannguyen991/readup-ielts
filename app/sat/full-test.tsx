@@ -37,6 +37,7 @@ import {
 } from '@/services/sat-rw/mock/full-test';
 import { color, spacing as space } from '@/theme/tokens';
 import { PageTransition } from '@/components/motion/Motion';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -86,6 +87,7 @@ export default function SatFullTestScreen() {
         minutes={stage.minutes}
         onFinish={(answers) => {
           const correct = countRwCorrect(stage.items, answers);
+          useGameStore.getState().awardBatch(correct, stage.items.length, 'verbal');
           setState((s) =>
             s
               ? submitModule(s, { correct, total: stage.items.length }, { kind: 'rw', answers })

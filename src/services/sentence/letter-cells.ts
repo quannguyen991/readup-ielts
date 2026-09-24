@@ -112,3 +112,45 @@ export function gradeLetters(answer: string, typed: string): LetterGrade {
 export function sanitizeTyped(input: string, capacity: number): string {
   return input.replace(/[^a-zA-Z0-9]/g, '').slice(0, capacity);
 }
+
+/** Số từ đã điền đúng trọn vẹn — dùng cho thanh nạp đòn của game khi học. */
+export function solvedWordCount(board: LetterBoard, grade: LetterGrade): number {
+  return board.words.filter((word) =>
+    word.units.every((u) => u.kind !== 'letter' || grade.states[u.index] === 'correct'),
+  ).length;
+}
+
+/**
+ * Chuỗi gõ sau khi MỞ HỘ từ đầu tiên chưa đúng: điền đúng mọi chữ từ đầu câu tới
+ * hết từ đó (sửa luôn chữ sai phía trước), bỏ phần gõ lấn sang sau. Trả về `null`
+ * khi câu đã đúng hết — không còn gì để mở.
+ */
+export function revealNextWord(board: LetterBoard, typed: string): string | null {
+  const grade = gradeLetters(board.answer, typed);
+  for (const word of board.words) {
+    const letters = word.units.filter((u): u is Extract<LetterUnit, { kind: 'letter' }> => u.kind === 'letter');
+    if (letters.length === 0) continue;
+    if (letters.every((u) => grade.states[u.index] === 'correct')) continue;
+    return board.answer.slice(0, letters[letters.length - 1]!.index + 1);
+  }
+  return null;
+}
+
+/** Số ô của từ dài nhất trong câu. */
+export function longestWordLetters(board: LetterBoard): number {
+  return board.words.reduce((max, word) => Math.max(max, word.units.filter((u) => u.kind === 'letter').length), 0);
+}
+
+/**
+ * Cỡ ô chữ sao cho TỪ DÀI NHẤT nằm trọn một dòng trong khung rộng `available` px
+ * (từ không bao giờ bị bẻ đôi giữa hai dòng, nên từ dài mà ô cố định là bị cắt
+ * mất đuôi trên điện thoại). Cỡ chuẩn 32px; ô nhỏ thì khe cũng hẹp lại. Ô chỉ để
+ * NHÌN — gõ đi qua một ô nhập ẩn — nên nhỏ tới 12px vẫn dùng được.
+ */
+export function fitCells(available: number, longest: number): { size: number; gap: number } {
+  const BASE = 32;
+  if (available <= 0 || longest <= 0) return { size: BASE, gap: 4 };
+  const fit = (gap: number) => Math.floor((available - gap * (longest - 1)) / longest);
+  if (fit(4) >= 24) return { size: Math.min(BASE, fit(4)), gap: 4 };
+  return { size: Math.max(12, Math.min(BASE, fit(2))), gap: 2 };
+}
