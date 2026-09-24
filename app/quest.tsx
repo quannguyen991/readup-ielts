@@ -160,7 +160,7 @@ export default function QuestHome() {
               </Pressable>
               <GhostLink label="Bản đồ ReadUp" icon="grid" href="/quest/world" />
               <GhostLink label="Nhân vật & nhiệm vụ" icon="shield" href="/quest/hero" />
-              <GhostLink label="Đổi sao" icon="gift" href="/shop" />
+              <GhostLink label="Đổi quà" icon="gift" href="/shop" />
             </View>
             <Text className="font-sans" style={{ marginTop: 10, fontSize: 13, color: MUTED }}>
               {next ? `Gợi ý tiếp theo: ${next.island.name} · ${next.mission.title}` : 'Bạn đã đi hết Bản đồ ReadUp — vào bài nào cũng đánh được.'}

@@ -10,7 +10,7 @@ import { findItem, type AvatarLook } from '@/services/gamification/shop';
 
 /**
  * AVATAR ĐỘNG — nhân vật pixel chuyển động trong một vòng tròn có viền màu.
- * Đổi bằng sao ở trang Đổi sao; hiện ở hồ sơ, thanh bên, bảng xếp hạng.
+ * Đổi bằng sao ở trang Đổi quà; hiện ở hồ sơ, thanh bên, bảng xếp hạng.
  */
 
 ensureProfileKeyframes();

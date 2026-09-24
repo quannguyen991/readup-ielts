@@ -26,7 +26,7 @@ import { color } from '@/theme/tokens';
  * ra, đã tiêu bao nhiêu) và huy hiệu.
  *
  * ĐỔI ĐỒ NGAY TẠI ĐÂY: tủ đồ liệt kê mọi món đã có, bấm là đeo / bỏ — không phải
- * quay lại trang Đổi sao chỉ để thay bìa.
+ * quay lại trang Đổi quà chỉ để thay bìa.
  */
 
 const SLOTS: { slot: WearSlot; title: string; kinds: ShopItem['kind'][]; tab: string; empty: string }[] = [
@@ -99,7 +99,7 @@ export default function ProfileScreen() {
                 </View>
               </View>
               <View className="flex-row flex-wrap gap-2" style={{ paddingTop: wide ? 14 : 0 }}>
-                <Button label="Đổi sao" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+                <Button label="Đổi quà" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
                 <Button label="Nhân vật" size="sm" variant="outline" iconLeft="shield" onPress={() => router.push('/quest/hero' as never)} />
                 <Button label="Xếp hạng" size="sm" variant="outline" iconLeft="trophy" onPress={() => router.push('/leaderboard' as never)} />
               </View>
@@ -125,7 +125,7 @@ export default function ProfileScreen() {
 
       {/* Đang đeo */}
       <Appear index={2}>
-        <SectionHeader className="mt-6" title="Đang dùng" subtitle="Bấm Đổi để chọn món khác ở trang Đổi sao." icon="sparkle" />
+        <SectionHeader className="mt-6" title="Đang dùng" subtitle="Bấm Đổi để chọn món khác ở trang Đổi quà." icon="sparkle" />
         <View className="mt-3 flex-row flex-wrap gap-3">
           {SLOTS.map((s) => {
             const item = findItem(reward[s.slot]);

@@ -115,7 +115,7 @@ export function useSyncBootstrap() {
       useMathStore.subscribe(schedule),
       useStudyStore.subscribe(schedule),
       useVocabStore.subscribe(schedule),
-      // Đổi sao, vé gói, XP trận đấu, đề tuần… cũng phải được đẩy lên, không chờ lần học kế tiếp.
+      // Đổi quà, vé gói, XP trận đấu, đề tuần… cũng phải được đẩy lên, không chờ lần học kế tiếp.
       useGameStore.subscribe(schedule),
       useRewardStore.subscribe(schedule),
       useBillingStore.subscribe(schedule),

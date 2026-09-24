@@ -135,7 +135,7 @@ function Toast({ e }: { e: FxEvent }) {
 /**
  * Sao từ VIỆC HỌC (thời gian + số câu) tăng dần trong lúc học — mỗi lần tăng thì
  * bắn "+N ⭐" để người học thấy sao rơi vào túi ngay trong bài, không chỉ ở trang
- * Đổi sao. Bỏ qua cú nhảy lớn (dữ liệu vừa nạp từ máy hay từ tài khoản).
+ * Đổi quà. Bỏ qua cú nhảy lớn (dữ liệu vừa nạp từ máy hay từ tài khoản).
  */
 function StudyStarWatcher() {
   useEffect(() => {

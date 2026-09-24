@@ -209,3 +209,18 @@ test('Rồng Con: nhát chém mạnh thêm 20%', () => {
   assert.equal(boosted.damage, Math.round(base.damage * 1.2));
   assert.equal(resolveBatch({ ...fresh(), enemyHp: 1000 }, 5, 1.2).damage, 120);
 });
+
+test('nhiệm vụ ôn từ vựng vào bộ từ 25/09/2026: nhiệm vụ của những ngày trước không đổi', () => {
+  const metrics = (month: string, days: number) => {
+    const seen = new Set<string>();
+    for (let d = 1; d <= days; d += 1) for (const q of dailyQuests(`${month}-${String(d).padStart(2, '0')}`)) seen.add(q.metric);
+    return seen;
+  };
+  assert.ok(!metrics('2026-09', 24).has('vocab'));
+  assert.ok(metrics('2026-10', 31).has('vocab'), 'tháng sau có ngày gặp nhiệm vụ ôn từ');
+  for (let d = 1; d <= 31; d += 1) {
+    const qs = dailyQuests(`2026-10-${String(d).padStart(2, '0')}`);
+    assert.equal(qs.length, 3);
+    assert.equal(new Set(qs.map((q) => q.metric)).size, 3, 'không hai nhiệm vụ cùng thước đo');
+  }
+});

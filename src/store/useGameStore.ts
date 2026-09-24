@@ -104,7 +104,7 @@ function starGain(amount: number, reason: string): number {
 /** Sang ngày mới thì nhiệm vụ ngày làm lại từ đầu. */
 function rolled(s: GamePayload): Pick<GamePayload, 'day' | 'today' | 'claimed'> {
   const day = dateKey(new Date());
-  return s.day === day ? { day, today: s.today, claimed: s.claimed } : { day, today: { ...EMPTY_DAY }, claimed: [] };
+  return s.day === day ? { day, today: { ...EMPTY_DAY, ...s.today }, claimed: s.claimed } : { day, today: { ...EMPTY_DAY }, claimed: [] };
 }
 
 /** Nhiệm vụ nào vừa chạm đích trong lượt này — để báo "xong nhiệm vụ, vào nhận thưởng". */
@@ -145,7 +145,7 @@ export const useGameStore = create<GameState>()(
       enabled: true,
       sound: true,
 
-      answer: (correct) => {
+      answer: (correct, source) => {
         const s = get();
         if (!s.enabled) {
           // Tắt game vẫn giữ tiếng "đúng" — tín hiệu học, không phải trang trí.
@@ -164,6 +164,8 @@ export const useGameStore = create<GameState>()(
           bestCombo: Math.max(before.bestCombo, o.state.combo),
           defeated: before.defeated + (o.defeated ? 1 : 0),
           xp: before.xp + o.xpGained,
+          vocab: before.vocab + (source === 'vocab' ? 1 : 0),
+          stars: before.stars,
         };
         const life: Lifetime = {
           correct: s.life.correct + (correct ? 1 : 0),
@@ -220,7 +222,7 @@ export const useGameStore = create<GameState>()(
           hearts,
           items,
           day,
-          today,
+          today: { ...today, stars: today.stars + stars },
           claimed,
           life,
           achievements,
@@ -232,7 +234,7 @@ export const useGameStore = create<GameState>()(
         return o;
       },
 
-      awardBatch: (correct, total) => {
+      awardBatch: (correct, total, source) => {
         const s = get();
         if (!s.enabled || total <= 0) return;
         const fx = useGameFx.getState();
@@ -244,6 +246,8 @@ export const useGameStore = create<GameState>()(
           bestCombo: before.bestCombo,
           defeated: before.defeated + o.defeated.length,
           xp: before.xp + o.xpGained,
+          vocab: before.vocab + (source === 'vocab' ? total : 0),
+          stars: before.stars,
         };
         const life: Lifetime = {
           ...s.life,
@@ -275,7 +279,7 @@ export const useGameStore = create<GameState>()(
         if (o.levelUp) stars += starGain((o.levelUp - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp');
         const achievements = awardAchievements(life, s.achievements);
         stars += achievementStars(s.achievements, achievements);
-        set({ ...o.state, items, day, today, claimed, life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
+        set({ ...o.state, items, day, today: { ...today, stars: today.stars + stars }, claimed, life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
       },
 
       spendItem: (kind) => {
@@ -339,7 +343,7 @@ export const useGameStore = create<GameState>()(
         const levelStars = levelForXp(xp) > levelForXp(s.xp) ? starGain((levelForXp(xp) - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp') : 0;
         const achievements = awardAchievements(life, s.achievements);
         const stars = questStars + levelStars + achievementStars(s.achievements, achievements);
-        set({ xp, items, day, today, claimed: [...claimed, id], life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
+        set({ xp, items, day, today: { ...today, stars: today.stars + stars }, claimed: [...claimed, id], life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
         return true;
       },
 

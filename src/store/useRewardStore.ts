@@ -8,7 +8,7 @@ import type { MascotId } from '@/services/game/mascots';
 import type { SkinId } from '@/components/game/sprites';
 
 /**
- * Những gì người học ĐÃ ĐỔI và ĐANG ĐEO ở trang Đổi sao.
+ * Những gì người học ĐÃ ĐỔI và ĐANG ĐEO ở trang Đổi quà.
  *
  * Kho này KHÔNG giữ số sao kiếm được: sao luôn tính lại từ nhật ký học
  * (`services/gamification/points.ts`) cộng sao thưởng của game. Giữ thêm một biến
