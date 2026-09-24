@@ -10,7 +10,9 @@
  * `currentStreak`. Nếu nó chỉ là huy hiệu thì đó là bán lời hứa suông.
  */
 
-export type ShopItemKind = 'freeze' | 'avatar' | 'theme';
+import type { ItemKind } from '@/services/game/rules';
+
+export type ShopItemKind = 'freeze' | 'avatar' | 'theme' | 'powerup';
 
 export type ShopItem = {
   id: string;
@@ -24,6 +26,8 @@ export type ShopItem = {
   repeatable: boolean;
   /** Số ngày chuỗi mà một thẻ giữ được. */
   freezeDays?: number;
+  /** Đồ chiến đấu: mua xong vào thẳng túi đồ của nhân vật (`useGameStore`). */
+  grants?: ItemKind;
 };
 
 export const SHOP_ITEMS: ShopItem[] = [
@@ -47,6 +51,10 @@ export const SHOP_ITEMS: ShopItem[] = [
     repeatable: true,
     freezeDays: 3,
   },
+  { id: 'power-potion', kind: 'powerup', name: 'Bình máu', detail: 'Hồi 2 tim giữa trận.', price: 30, glyph: '🧪', repeatable: true, grants: 'potion' },
+  { id: 'power-shield', kind: 'powerup', name: 'Khiên', detail: 'Chặn một câu sai, giữ combo.', price: 40, glyph: '🛡️', repeatable: true, grants: 'shield' },
+  { id: 'power-hint', kind: 'powerup', name: 'Gợi ý của Cú', detail: 'Bỏ bớt 2 phương án sai.', price: 25, glyph: '🦉', repeatable: true, grants: 'hint' },
+  { id: 'power-double', kind: 'powerup', name: 'Nhân đôi XP', detail: '10 câu đúng tiếp theo gấp đôi XP.', price: 60, glyph: '⚡', repeatable: true, grants: 'double' },
   { id: 'avatar-owl', kind: 'avatar', name: 'Cú đêm', detail: 'Avatar', price: 100, glyph: '🦉', repeatable: false },
   { id: 'avatar-cat', kind: 'avatar', name: 'Mèo lười', detail: 'Avatar', price: 100, glyph: '🐱', repeatable: false },
   { id: 'avatar-fox', kind: 'avatar', name: 'Cáo tinh ranh', detail: 'Avatar', price: 180, glyph: '🦊', repeatable: false },

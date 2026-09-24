@@ -6,6 +6,7 @@ import { router } from "expo-router";
 import * as Speech from "expo-speech";
 import { englishVoice } from "@/services/audio/voice";
 
+import { BattleStrip } from "@/components/game/BattleStrip";
 import { Icon } from "@/components/ui/Icon";
 import type { StudyWord } from "@/services/vocab/topic-study";
 import { color } from "@/theme/tokens";
@@ -74,9 +75,12 @@ export function StudyFrame({
   footer,
   right,
   progress,
+  battle = false,
 }: {
   backHref: string;
   title: string;
+  /** Hiện thanh trận đấu của game khi học — chỉ bật ở màn gọi `useGameStore.answer()`. */
+  battle?: boolean;
   /** 0 chưa, 1 đang (nửa), 2 xong — mỗi đoạn một từ. */
   segments?: (0 | 1 | 2)[];
   /** Như `segments` nhưng là phần đã xong của từng đoạn (0–1) — đầy dần đúng nhịp học. */
@@ -108,6 +112,8 @@ export function StudyFrame({
       ) : segments ? (
         <SegmentBar fractions={segments.map((x) => x / 2)} />
       ) : null}
+
+      {battle ? <BattleStrip className="mt-4" /> : null}
 
       <View className="mt-5">{children}</View>
 
@@ -217,11 +223,14 @@ export function ChoiceGrid({
   picked,
   correctIndex,
   onPick,
+  hidden = [],
 }: {
   options: string[];
   picked: number | null;
   correctIndex: number;
   onPick: (i: number) => void;
+  /** Phương án Cú đã loại — mờ đi, gạch ngang, không bấm được. */
+  hidden?: number[];
 }) {
   const revealed = picked !== null;
   return (
@@ -231,11 +240,13 @@ export function ChoiceGrid({
         const isWrong = revealed && i === picked && i !== correctIndex;
         const border = isCorrect ? GREEN : isWrong ? RED : "#E2E8F0";
         const bg = isCorrect ? "#ECFDF3" : isWrong ? "#FFF1F2" : "#FFFFFF";
+        const out = hidden.includes(i) && !isCorrect;
         return (
           <Pressable
             key={`${i}-${opt}`}
             accessibilityRole="button"
-            disabled={revealed}
+            accessibilityLabel={out ? `${opt} — Cú đã loại` : undefined}
+            disabled={revealed || out}
             onPress={() => onPick(i)}
             className="flex-row items-center gap-3 rounded-2xl px-4 py-4"
             style={{
@@ -244,6 +255,8 @@ export function ChoiceGrid({
               borderWidth: 1.5,
               borderColor: border,
               backgroundColor: bg,
+              opacity: out ? 0.38 : 1,
+              ...(Platform.OS === "web" ? ({ transition: "opacity 260ms ease" } as object) : null),
             }}
           >
             <View
@@ -261,8 +274,15 @@ export function ChoiceGrid({
                 {i + 1}
               </Text>
             </View>
-            <Text className="flex-1 font-semi text-bodyLg text-ink">{opt}</Text>
-            {isCorrect ? (
+            <Text
+              className="flex-1 font-semi text-bodyLg text-ink"
+              style={out ? { textDecorationLine: "line-through" } : undefined}
+            >
+              {opt}
+            </Text>
+            {out ? (
+              <Text className="font-semi text-label text-muted">Cú đã loại</Text>
+            ) : isCorrect ? (
               <Icon name="check" size={18} color={GREEN} />
             ) : isWrong ? (
               <Icon name="close" size={18} color={RED} />

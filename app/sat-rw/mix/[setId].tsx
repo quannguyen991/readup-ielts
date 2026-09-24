@@ -11,6 +11,9 @@ import { getMixedSet } from '@/services/sat-rw/mixed-sets';
 import { observeSkill } from '@/store/useMasteryStore';
 import { recordRwAttempt } from '@/store/useSatRwStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useGameStore } from '@/store/useGameStore';
+import { BattleStrip } from '@/components/game/BattleStrip';
+import { useOwlHint } from '@/components/game/useOwlHint';
 
 /**
  * Làm một đề trộn SAT Reading & Writing.
@@ -35,12 +38,28 @@ export default function SatRwMixScreen() {
   /** Đã hỏi "câu này kiểm luật gì" cho câu hiện tại chưa. */
   const [ruleAsked, setRuleAsked] = useState(false);
   const [done, setDone] = useState(false);
+  // Phương án Cú đã loại ở câu đang mở.
+  const [hidden, setHidden] = useState<number[]>([]);
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
   const shownAt = useRef(0);
   useEffect(() => {
     shownAt.current = Date.now();
   }, [index]);
+
+  const open = set?.questions[index];
+  // Gợi ý của Cú: loại bớt hai phương án sai của câu đang mở.
+  useOwlHint(
+    open && picked === null && !done
+      ? () => {
+          if (hidden.length > 0) return false;
+          const wrong = open.options.map((_, i) => i).filter((i) => i !== open.answerIndex);
+          const from = index % wrong.length;
+          setHidden([wrong[from]!, wrong[(from + 1) % wrong.length]!]);
+          return true;
+        }
+      : null,
+  );
 
   if (!set) {
     return (
@@ -69,12 +88,14 @@ export default function SatRwMixScreen() {
     setPicked(choice);
     if (choice === question.answerIndex) setCorrect((n) => n + 1);
     recordRwAttempt(question.id, choice === question.answerIndex, Date.now() - shownAt.current);
+    useGameStore.getState().answer(choice === question.answerIndex, 'verbal');
   };
 
   const next = () => {
     if (index + 1 < questions.length) {
       setIndex(index + 1);
       setPicked(null);
+      setHidden([]);
       setRuleAsked(false);
       return;
     }
@@ -109,6 +130,7 @@ export default function SatRwMixScreen() {
             onPress={() => {
               setIndex(0);
               setPicked(null);
+              setHidden([]);
               setRuleAsked(false);
               setCorrect(0);
               setDone(false);
@@ -145,7 +167,8 @@ export default function SatRwMixScreen() {
         </View>
       }
     >
-      <QuestionCard question={question} picked={picked} onPick={submit} showSolution={ruleAsked} />
+      <BattleStrip className="mb-4" />
+      <QuestionCard question={question} picked={picked} onPick={submit} showSolution={ruleAsked} hidden={hidden} />
 
 
       {/*

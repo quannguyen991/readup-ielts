@@ -56,6 +56,8 @@ import {
 import { masteredCount, useTopicStudyStore } from "@/store/useTopicStudyStore";
 import { useStudyStore } from "@/store/useStudyStore";
 import { playCorrectChime } from "@/services/audio/chime";
+import { useGameStore } from "@/store/useGameStore";
+import { useOwlHint } from "@/components/game/useOwlHint";
 import {
   diagnosePick,
   diagnoseTyped,
@@ -128,6 +130,8 @@ export default function LearnScreen() {
   const [wrong, setWrong] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [typed, setTyped] = useState("");
+  // Phương án Cú đã loại ở câu đang mở.
+  const [hidden, setHidden] = useState<number[]>([]);
   const [verdict, setVerdict] = useState<boolean | null>(null);
   // Lỗi của câu vừa chấm (null khi đúng), và mọi lỗi của vòng để phân tích cuối vòng.
   const [mistake, setMistake] = useState<Mistake | null>(null);
@@ -181,6 +185,7 @@ export default function LearnScreen() {
     setWrong(0);
     setPicked(null);
     setTyped("");
+    setHidden([]);
     setVerdict(null);
     setMistake(null);
     setMistakes([]);
@@ -219,12 +224,15 @@ export default function LearnScreen() {
     }
     if (ok) playCorrectChime();
     record(ok);
+    // Game khi học: đúng thì chém quái, sai thì trúng đòn. Lật thẻ tự chấm nên không tính.
+    useGameStore.getState().answer(ok, "vocab");
   };
 
   const advance = (ok: boolean) => {
     setPlan((p) => answerLearn(p, ok, kinds));
     setPicked(null);
     setTyped("");
+    setHidden([]);
     setVerdict(null);
     setMistake(null);
     setFlipped(false);
@@ -321,6 +329,31 @@ export default function LearnScreen() {
       submitTyped();
     }
   });
+
+  // Gợi ý của Cú: trắc nghiệm thì loại bớt phương án sai; gõ từ thì lộ một phần ba chữ đầu.
+  useOwlHint(
+    verdict === null && word && head && head.kind !== "flash"
+      ? () => {
+          if (mcq) {
+            if (hidden.length > 0) return false;
+            const wrong = mcq.options
+              .map((_, i) => i)
+              .filter((i) => i !== mcq.correctIndex);
+            const drop = Math.min(2, wrong.length - 1);
+            if (drop <= 0) return false;
+            const from = step % wrong.length;
+            setHidden(
+              Array.from({ length: drop }, (_, k) => wrong[(from + k) % wrong.length]!),
+            );
+            return true;
+          }
+          const lead = word.word.slice(0, Math.max(1, Math.ceil(word.word.length / 3)));
+          if (typed.toLowerCase().startsWith(lead.toLowerCase())) return false;
+          setTyped(lead);
+          return true;
+        }
+      : null,
+  );
 
   if (!topic) {
     return (
@@ -462,6 +495,7 @@ export default function LearnScreen() {
       progress={progress}
       footer={footer}
       right={settingsButton}
+      battle
     >
       {/* Ba phần của vòng — phần đang làm được tô. */}
       <View className="mb-4 flex-row flex-wrap justify-center gap-2">
@@ -593,6 +627,7 @@ export default function LearnScreen() {
                     picked={picked}
                     correctIndex={mcq.correctIndex}
                     onPick={pick}
+                    hidden={hidden}
                   />
                 </View>
                 {verdict === null ? (

@@ -18,6 +18,8 @@ import { useVocabStore } from '@/store/useVocabStore';
 import { useQuestStore } from '@/store/useQuestStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
+import { gamePayload, useGameStore } from '@/store/useGameStore';
+import { mergeGame, type GamePayload } from '@/services/game/rules';
 import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
 import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
 
@@ -158,6 +160,19 @@ const satRwStore: SyncedStore = {
   }),
 };
 
+/**
+ * Game khi học: máy nào nhiều XP hơn thì giữ nguyên trận đấu và túi đồ của máy
+ * đó; huy hiệu, kỷ lục và số câu lấy phần lớn nhất. Công tắc bật/tắt không đồng bộ.
+ */
+const gameStore: SyncedStore = {
+  key: 'game',
+  read: () => gamePayload(),
+  write: (payload) => {
+    if (payload) useGameStore.setState(payload as GamePayload);
+  },
+  merge: (local, remote) => mergeGame(local as GamePayload | null, remote as GamePayload | null),
+};
+
 /** Gọi một lần lúc khởi động app. */
 export function registerAllSyncedStores(): void {
   registerSyncedStore(mathStore);
@@ -167,4 +182,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(questStore);
   registerSyncedStore(weeklyStore);
   registerSyncedStore(satRwStore);
+  registerSyncedStore(gameStore);
 }

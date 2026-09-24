@@ -37,6 +37,7 @@ import { useVocabStore } from '@/store/useVocabStore';
 import { LightGrid } from '@/components/layout/LightGrid';
 import { HoverPressable } from '@/components/ui/HoverPressable';
 import { color, highlightColors, type HighlightColorKey } from '@/theme/tokens';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Màn luyện Reading — bố cục PHÒNG THI.
@@ -403,6 +404,7 @@ export default function ReadScreen() {
 
     const correct = attempts.filter((a) => a.isCorrect).length;
     const durationMs = Date.now() - startedAt.current;
+    useGameStore.getState().awardBatch(correct, attempts.length, 'read');
 
     const sessionId = addSession({
       articleId: article.id,

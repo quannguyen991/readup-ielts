@@ -62,12 +62,15 @@ export function MathQuestionView({
   index,
   showGrade = true,
   surface = 'light',
+  hidden = [],
 }: {
   item: MathItem;
   answer: string | null;
   onAnswer?: (answer: string) => void;
   revealed?: boolean;
   index?: number;
+  /** Phương án Cú đã loại (game khi học) — mờ đi, không bấm được. */
+  hidden?: number[];
   /**
    * Nền đang đặt câu hỏi này lên.
    *
@@ -131,7 +134,8 @@ export function MathQuestionView({
               revealed={revealed}
               correct={choiceIndex === item.correctIndex}
               onPress={() => onAnswer?.(String(choiceIndex))}
-              disabled={locked}
+              disabled={locked || (!revealed && hidden.includes(choiceIndex))}
+              out={!revealed && hidden.includes(choiceIndex) && choiceIndex !== item.correctIndex}
               surface={surface}
             />
           ))}
@@ -312,6 +316,7 @@ function ChoiceRow({
   onPress,
   disabled,
   surface,
+  out = false,
 }: {
   index: number;
   display: string;
@@ -321,6 +326,8 @@ function ChoiceRow({
   onPress: () => void;
   disabled: boolean;
   surface: MathSurface;
+  /** Cú đã loại phương án này. */
+  out?: boolean;
 }) {
   // Sau khi chấm: đáp án đúng luôn được tô, lựa chọn sai của người học tô đỏ.
   const sf = SURFACE[surface];
@@ -343,13 +350,16 @@ function ChoiceRow({
     <PressScale
       accessibilityRole="radio"
       accessibilityState={{ selected, disabled }}
+      accessibilityLabel={out ? `Phương án ${'ABCD'[index]} — Cú đã loại` : undefined}
       onPress={disabled ? undefined : onPress}
       className={`flex-row items-center gap-3 rounded-card border p-3 ${tone}`}
+      style={out ? { opacity: 0.38 } : undefined}
     >
       <Text className="font-strong text-body text-muted">{'ABCD'[index]}</Text>
       <View className="flex-1">
         <MathText size={15}>{display}</MathText>
       </View>
+      {out ? <Text className="font-semi text-label text-muted">Cú đã loại</Text> : null}
     </PressScale>
   );
 }

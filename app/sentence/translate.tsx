@@ -21,6 +21,8 @@ import { useSentenceStore, type TranslationAttempt } from '@/store/useSentenceSt
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
 import { Appear, CrossFade, PageTransition } from '@/components/motion/Motion';
+import { BattleStrip } from '@/components/game/BattleStrip';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Luyện dịch Việt → Anh bằng cách TÁI TẠO ĐÚNG CÂU MẪU.
@@ -115,6 +117,8 @@ export default function TranslateScreen() {
   };
 
   const finishItem = (attempt: TranslationAttempt) => {
+    // Máy chấm (gõ khớp câu mẫu, không mở gợi ý) — cùng điều kiện với sổ tiến độ.
+    useGameStore.getState().answer(attempt.selfCorrect, 'translate');
     const next = [...attempts, attempt];
     setAttempts(next);
     if (index + 1 < items.length) {
@@ -341,6 +345,7 @@ function RunningView({
         </View>
       }
     >
+      <BattleStrip className="mb-4" />
       <View className="gap-4 lg:flex-row">
         {/* ---------------------------------------------------------- đề bài */}
         <View className="lg:w-[38%]">

@@ -149,3 +149,32 @@ export function playQuestDamageSound(): boolean {
     return false;
   }
 }
+
+/** Lên cấp: bốn nốt đi lên (Đô–Mi–Sol–Đô), kiểu máy chơi game 8-bit. */
+export function playLevelUpSound(): boolean {
+  const ac = context();
+  if (!ac) return false;
+  try {
+    if (ac.state === 'suspended') void ac.resume();
+    const t = ac.currentTime;
+    [523.25, 659.25, 783.99, 1046.5].forEach((hz, i) => questTone(ac, hz, t + i * 0.09, 0.22, 0.07, 'square'));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** Hạ quái / nhặt đồ: hai nốt cao rất ngắn. */
+export function playLootSound(): boolean {
+  const ac = context();
+  if (!ac) return false;
+  try {
+    if (ac.state === 'suspended') void ac.resume();
+    const t = ac.currentTime;
+    questTone(ac, 987.77, t, 0.08, 0.06, 'square');
+    questTone(ac, 1318.5, t + 0.07, 0.14, 0.06, 'square');
+    return true;
+  } catch {
+    return false;
+  }
+}

@@ -24,6 +24,8 @@ import { useSentenceStore, type DictationAttempt } from '@/store/useSentenceStor
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
 import { CrossFade, PageTransition } from '@/components/motion/Motion';
+import { BattleStrip } from '@/components/game/BattleStrip';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Bài luyện chép chính tả — MỖI CHỮ CÁI MỘT Ô.
@@ -122,6 +124,8 @@ export default function DictationScreen() {
 
   const finishItem = useCallback(
     (attempt: DictationAttempt) => {
+      // Game khi học: chép đúng từ 80% trở lên là một đòn trúng.
+      useGameStore.getState().answer(attempt.accuracy >= 0.8, 'listen');
       const next = [...attempts, attempt];
       setAttempts(next);
       if (index + 1 < items.length) {
@@ -424,6 +428,7 @@ function RunningView({
         </View>
       }
     >
+      <BattleStrip className="mb-4" />
       <View className="gap-4 lg:flex-row">
         {/* --------------------------------------------------------- vùng làm */}
         <View className="lg:flex-1">
