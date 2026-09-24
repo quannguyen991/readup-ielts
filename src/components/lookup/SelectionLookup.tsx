@@ -17,7 +17,8 @@ import { color } from '@/theme/tokens';
  *
  * Bôi một từ hay một cụm tiếng Anh ngắn: một nhãn nhỏ hiện ngay trên vùng bôi,
  * có sẵn nghĩa nhanh nếu từ điển trong máy có; bấm "Tra" thì mở thẻ đủ phiên âm,
- * loa, nghĩa tiếng Việt, nghĩa theo câu, nghĩa tiếng Anh, ví dụ và nút lưu vào
+ * loa, nghĩa tiếng Việt, nghĩa theo câu, ví dụ (không kèm nghĩa tiếng Anh — người
+ * dùng bảo bỏ, 24/09/2026) và nút lưu vào
  * sổ từ (chung lịch ôn FSRS với từ lưu lúc đọc bài).
  *
  * KHÔNG CHẠY ở màn làm đề (thi thử, chẩn đoán, đề của tuần, đấu 1–1, kiểm tra
@@ -240,7 +241,6 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
           <View style={{ marginTop: 8, gap: 8 }}>
             {data.definitionVi ? <Line label="Nghĩa" value={data.definitionVi} strong /> : null}
             {data.definitionContext ? <Line label="Trong câu này" value={data.definitionContext} /> : null}
-            {data.definitionGeneral ? <Line label="Tiếng Anh" value={data.definitionGeneral} /> : null}
             {data.examples[0] ? <Line label="Ví dụ" value={data.examples[0]} italic /> : null}
           </View>
         ) : null}
