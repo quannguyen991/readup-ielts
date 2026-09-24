@@ -8,7 +8,6 @@ import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { GREEN, RED, useHotkeys } from '@/components/vocab/study/StudyKit';
-import { playCorrectChime } from '@/services/audio/chime';
 import { buildDuel, emptyTally, isRoomCode, QUESTION_MS, verdictTitle, type PlayerTally } from '@/services/duel/duel';
 import { useDuelRoom, type DuelPlayer } from '@/services/duel/useDuelRoom';
 import { displayableName } from '@/services/gamification/display-name';
@@ -76,7 +75,6 @@ export default function DuelRoom() {
     const ms = Math.max(0, Date.now() - shownAt);
     const ok = i !== null && i === q.correctIndex;
     setPicked(i ?? -1);
-    if (ok) playCorrectChime();
     useGameStore.getState().answer(ok, 'duel');
     room.answer(index, ok, ms);
     setTimeout(() => {

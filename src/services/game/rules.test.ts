@@ -9,6 +9,9 @@ import {
   EMPTY_LIFE,
   enemyAt,
   ENEMIES,
+  FEVER_AT,
+  damageFor,
+  isBoss,
   levelForXp,
   levelProgress,
   lootFor,
@@ -74,14 +77,15 @@ test('hạ quái: thưởng XP, rơi đồ con chẵn, quái sau khoẻ hơn', (
     if (o.defeated) {
       defeatedAt = k;
       assert.equal(o.defeated.name, ENEMIES[0]!.name);
-      assert.equal(o.defeated.loot, 'potion');
+      assert.deepEqual(o.defeated.loot, ['potion']);
+      assert.equal(o.defeated.boss, false);
       assert.equal(o.state.enemyIndex, 1);
       assert.equal(o.state.enemyHp, enemyAt(1).hp);
     }
     s = o.state;
   }
   assert.ok(defeatedAt >= 1 && defeatedAt <= 4, `hạ quái đầu sau ${defeatedAt + 1} câu`);
-  assert.equal(lootFor(1), null);
+  assert.deepEqual(lootFor(1), []);
   assert.ok(enemyAt(ENEMIES.length).hp > enemyAt(0).hp, 'vòng hai khoẻ hơn');
 });
 
@@ -166,4 +170,26 @@ test('huy hiệu: chỉ trao cái mới đạt, không trao lại', () => {
   assert.ok(!got.includes('thousand'));
   assert.equal(newAchievements(life, Object.fromEntries(got.map((id) => [id, 'x']))).length, 0);
   assert.equal(new Set(ACHIEVEMENTS.map((a) => a.id)).size, ACHIEVEMENTS.length);
+});
+
+test('boss: con cuối mỗi vòng, máu thêm 25%, hạ được thưởng trọn máu và rơi hai món', () => {
+  assert.equal(isBoss(6), true);
+  assert.equal(isBoss(13), true);
+  assert.equal(isBoss(5), false);
+  const boss = enemyAt(6);
+  assert.equal(boss.boss, true);
+  assert.equal(boss.hp, Math.round(ENEMIES[6]!.baseHp * 1.25));
+  assert.deepEqual(lootFor(6), ['shield', 'double']);
+  const o = resolveAnswer({ ...fresh(), enemyIndex: 6, enemyHp: 1 }, true);
+  assert.ok(o.defeated?.boss);
+  assert.equal(o.defeated?.bonusXp, boss.hp);
+  assert.deepEqual(o.defeated?.loot, ['shield', 'double']);
+  assert.equal(o.state.enemyIndex, 7);
+  assert.equal(enemyAt(7).boss, false);
+});
+
+test('bùng cháy: từ combo 10 mỗi nhát mạnh gấp rưỡi', () => {
+  assert.equal(damageFor(FEVER_AT - 1, false), 20 + 3 * (FEVER_AT - 1));
+  assert.equal(damageFor(FEVER_AT, true), Math.round((20 + 3 * FEVER_AT) * 2 * 1.5));
+  assert.equal(damageFor(11, false), Math.round((20 + 33) * 1.5));
 });

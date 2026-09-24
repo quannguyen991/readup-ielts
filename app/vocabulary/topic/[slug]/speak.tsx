@@ -81,9 +81,9 @@ export default function SpeakScreen() {
       setHeard(alts);
       const target = normalizeAnswer(word.word);
       const ok = alts.some((a) => normalizeAnswer(a) === target || normalizeAnswer(a).split(' ').includes(target));
-      judge(ok);
       // Game khi học chỉ tính lần MÁY nghe chấm; tự bấm "giống mẫu" thì không.
       useGameStore.getState().answer(ok, 'vocab');
+      judge(ok);
     };
     rec.onerror = (e) => {
       setHeard([e.error === 'no-speech' ? '(không nghe thấy gì)' : `(lỗi micro: ${e.error})`]);

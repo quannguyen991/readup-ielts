@@ -55,7 +55,6 @@ import {
 } from "@/services/vocab/topic-study";
 import { masteredCount, useTopicStudyStore } from "@/store/useTopicStudyStore";
 import { useStudyStore } from "@/store/useStudyStore";
-import { playCorrectChime } from "@/services/audio/chime";
 import { useGameStore } from "@/store/useGameStore";
 import { useOwlHint } from "@/components/game/useOwlHint";
 import {
@@ -222,9 +221,8 @@ export default function LearnScreen() {
       setMistakes((list) => [...list, { word: word.word, m }]);
       useTopicStudyStore.getState().logMistake(slug, word.word, m.kind);
     }
-    if (ok) playCorrectChime();
     record(ok);
-    // Game khi học: đúng thì chém quái, sai thì trúng đòn. Lật thẻ tự chấm nên không tính.
+    // Game khi học: đúng thì chém quái, sai thì trúng đòn — kèm tiếng. Lật thẻ tự chấm nên không tính.
     useGameStore.getState().answer(ok, "vocab");
   };
 

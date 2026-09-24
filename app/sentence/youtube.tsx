@@ -25,6 +25,7 @@ import { CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useSentenceStrike } from '@/components/game/useSentenceStrike';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Chép chính tả theo video YouTube.
@@ -338,6 +339,8 @@ function PracticeView({
     trọn câu. "Xem đáp án" là bỏ cuộc — trúng đòn. Bỏ qua câu thì không tính gì:
     phụ đề tự động của YouTube có câu nghe không ra, phạt câu đó là phạt oan.
   */
+  // Bật game thì nhát chém đã có tiếng; pháo giấy im cho khỏi kêu đôi.
+  const gameOn = useGameStore((s) => s.enabled);
   const strike = useSentenceStrike(`${videoId}:${index}`, 'listen');
   useEffect(() => {
     if (mode === 'dictation' && grade.done && !revealed) strike(true);
@@ -548,7 +551,7 @@ function PracticeView({
         {/* -------------------------------------------------------- vùng gõ */}
         <View className="lg:flex-1">
           <View className="overflow-hidden rounded-card border border-white/10 bg-[#121A12] p-5">
-            {grade.done && !revealed ? <Confetti seed={`yt-${videoId}-${index}`} /> : null}
+            {grade.done && !revealed ? <Confetti seed={`yt-${videoId}-${index}`} silent={gameOn} /> : null}
 
             {/* Đường chạy cũ thành trận đấu: mặt đất là các câu của video, tia nạp đòn theo từ chép đúng. */}
             <BattleStrip

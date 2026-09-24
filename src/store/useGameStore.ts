@@ -3,13 +3,14 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
 import { useGameFx } from './useGameFx';
-import { playLevelUpSound, playLootSound } from '@/services/audio/chime';
+import { setSfxMuted, sfx } from '@/services/audio/sfx';
 import { dateKey } from '@/services/gamification/points';
 import {
   dailyQuests,
   EMPTY_DAY,
   EMPTY_LIFE,
   enemyAt,
+  FEVER_AT,
   ITEMS,
   levelForXp,
   MAX_HEARTS,
@@ -31,6 +32,10 @@ import {
  * Mọi màn học gọi đúng MỘT chỗ: `answer(đúng/sai, nguồn)` khi chấm từng câu, hoặc
  * `awardBatch(số đúng, tổng, nguồn)` khi bài chỉ chấm lúc nộp. Tắt game ở trang
  * Nhân vật thì hai hàm này không làm gì — việc học vẫn y nguyên.
+ *
+ * ÂM THANH CŨNG PHÁT Ở ĐÂY, không ở từng màn: nhờ vậy mọi phần học — từ vựng,
+ * SAT, chép chính tả, đọc theo… — có đủ tiếng đúng, tiếng chém, tiếng trúng đòn
+ * mà không màn nào phải nhớ tự gọi. Tắt game thì câu đúng vẫn còn tiếng "đúng".
  */
 
 export type GameSource = 'vocab' | 'math' | 'verbal' | 'listen' | 'translate' | 'read' | 'shadow' | 'weekly' | 'quest' | 'duel';
@@ -40,6 +45,9 @@ const STARTER_ITEMS: Record<ItemKind, number> = { potion: 1, shield: 1, double: 
 
 type GameState = GamePayload & {
   enabled: boolean;
+  /** Âm thanh hiệu ứng — mỗi máy tự chọn, không đồng bộ. */
+  sound: boolean;
+  setSound: (on: boolean) => void;
   answer: (correct: boolean, source: GameSource) => AnswerOutcome | null;
   awardBatch: (correct: number, total: number, source: GameSource) => void;
   /** XP tính sẵn từ nơi khác (trận Quest): cộng thẳng, kèm số câu cho nhiệm vụ ngày. */
@@ -90,7 +98,13 @@ function awardAchievements(life: Lifetime, have: Record<string, string>): Record
     next[a.id] = at;
     useGameFx.getState().push({ kind: 'achievement', title: a.title, glyph: a.glyph });
   }
+  sfx.sparkle(0.9);
   return next;
+}
+
+/** Hạ quái xong mà con kế tiếp là boss thì nó gầm lên lúc bước vào. */
+function roarIfBoss(nextEnemyIndex: number, at: number): void {
+  if (enemyAt(nextEnemyIndex).boss) sfx.bossRoar(at);
 }
 
 export const useGameStore = create<GameState>()(
@@ -98,10 +112,15 @@ export const useGameStore = create<GameState>()(
     (set, get) => ({
       ...initial(),
       enabled: true,
+      sound: true,
 
       answer: (correct) => {
         const s = get();
-        if (!s.enabled) return null;
+        if (!s.enabled) {
+          // Tắt game vẫn giữ tiếng "đúng" — tín hiệu học, không phải trang trí.
+          if (correct) sfx.correct(1);
+          return null;
+        }
         const fx = useGameFx.getState();
         const o = resolveAnswer(s, correct);
         const { day, today: before, claimed } = rolled(s);
@@ -121,15 +140,31 @@ export const useGameStore = create<GameState>()(
           knockouts: s.life.knockouts + (o.knockedOut ? 1 : 0),
         };
         const items = { ...s.items };
-        if (o.defeated?.loot) items[o.defeated.loot] += 1;
+        for (const k of o.defeated?.loot ?? []) items[k] += 1;
 
         if (correct) fx.push({ kind: 'hit', xp: o.xpGained - (o.defeated?.bonusXp ?? 0), damage: o.damage, crit: o.crit, combo: o.state.combo });
         else fx.push({ kind: o.blocked ? 'blocked' : o.knockedOut ? 'knockout' : 'hurt' });
-        if (o.defeated) fx.push({ kind: 'defeat', enemyIndex: s.enemyIndex, name: o.defeated.name, loot: o.defeated.loot, bonusXp: o.defeated.bonusXp });
+        if (o.defeated) fx.push({ kind: 'defeat', enemyIndex: s.enemyIndex, name: o.defeated.name, loot: o.defeated.loot, bonusXp: o.defeated.bonusXp, boss: o.defeated.boss });
         if (o.levelUp) fx.push({ kind: 'levelup', level: o.levelUp });
-        if (o.levelUp) playLevelUpSound();
-        else if (o.defeated) playLootSound();
-        for (const title of questsJustDone(day, before, today)) fx.push({ kind: 'quest', title });
+        const doneQuests = questsJustDone(day, before, today);
+        for (const title of doneQuests) fx.push({ kind: 'quest', title });
+
+        // Tiếng xếp đúng nhịp hoạt cảnh của thanh trận đấu: chém → nổ tan → gầm boss → lên cấp.
+        if (correct) {
+          sfx.hit(o.state.combo, o.crit);
+          if (o.state.combo === FEVER_AT) sfx.fever(0.3);
+        } else if (o.blocked) sfx.block();
+        else if (o.knockedOut) sfx.knockout();
+        else {
+          sfx.hurt();
+          if (o.state.hearts === 1) sfx.heartbeat(0.55);
+        }
+        if (o.defeated) {
+          sfx.defeat(o.defeated.boss, 0.24);
+          roarIfBoss(o.state.enemyIndex, 1.05);
+        }
+        if (o.levelUp) sfx.levelUp(o.defeated ? 0.8 : 0.4);
+        if (doneQuests.length > 0) sfx.sparkle(1.2);
 
         set({ ...o.state, items, day, today, claimed, life, achievements: awardAchievements(life, s.achievements) });
         return o;
@@ -156,14 +191,22 @@ export const useGameStore = create<GameState>()(
           xp: o.state.xp,
         };
         const items = { ...s.items };
-        for (const d of o.defeated) if (d.loot) items[d.loot] += 1;
+        for (const d of o.defeated) for (const k of d.loot) items[k] += 1;
 
         fx.push({ kind: 'batch', xp: o.xpGained, correct, total, defeated: o.defeated.length });
-        o.defeated.forEach((d, i) => fx.push({ kind: 'defeat', enemyIndex: s.enemyIndex + i, name: d.name, loot: d.loot, bonusXp: d.bonusXp }));
+        o.defeated.forEach((d, i) => fx.push({ kind: 'defeat', enemyIndex: s.enemyIndex + i, name: d.name, loot: d.loot, bonusXp: d.bonusXp, boss: d.boss }));
         if (o.levelUp) fx.push({ kind: 'levelup', level: o.levelUp });
-        if (o.levelUp) playLevelUpSound();
-        else if (o.defeated.length > 0) playLootSound();
-        for (const title of questsJustDone(day, before, today)) fx.push({ kind: 'quest', title });
+        const doneQuests = questsJustDone(day, before, today);
+        for (const title of doneQuests) fx.push({ kind: 'quest', title });
+
+        // Nộp bài: tiếng xu đếm theo số câu đúng, rồi nổ quái / lên cấp nếu có.
+        if (correct > 0) sfx.coins(correct);
+        if (o.defeated.length > 0) {
+          sfx.defeat(o.defeated.some((d) => d.boss), 0.45);
+          roarIfBoss(o.state.enemyIndex, 1.2);
+        }
+        if (o.levelUp) sfx.levelUp(o.defeated.length > 0 ? 0.95 : 0.55);
+        if (doneQuests.length > 0) sfx.sparkle(1.3);
 
         set({ ...o.state, items, day, today, claimed, life, achievements: awardAchievements(life, s.achievements) });
       },
@@ -181,7 +224,7 @@ export const useGameStore = create<GameState>()(
         fx.push({ kind: 'batch', xp: Math.round(amount), correct, total, defeated: 0 });
         if (levelAfter > levelBefore) {
           fx.push({ kind: 'levelup', level: levelAfter });
-          playLevelUpSound();
+          sfx.levelUp(0.3);
         }
         for (const title of questsJustDone(day, before, today)) fx.push({ kind: 'quest', title });
         set({ xp, day, today, claimed, life, achievements: awardAchievements(life, s.achievements) });
@@ -205,6 +248,10 @@ export const useGameStore = create<GameState>()(
         }
         set({ items: { ...get().items, [kind]: s.items[kind] - 1 } });
         fx.push({ kind: 'item', item: kind, title: ITEMS[kind].name });
+        if (kind === 'potion') sfx.potion();
+        else if (kind === 'shield') sfx.shieldUp();
+        else if (kind === 'double') sfx.powerUp();
+        else sfx.owl();
         return true;
       },
 
@@ -225,29 +272,39 @@ export const useGameStore = create<GameState>()(
         fx.push({ kind: 'batch', xp: quest.rewardXp, correct: 0, total: 0, defeated: 0 });
         if (levelForXp(xp) > levelForXp(s.xp)) {
           fx.push({ kind: 'levelup', level: levelForXp(xp) });
-          playLevelUpSound();
-        } else playLootSound();
+          sfx.levelUp();
+        } else sfx.sparkle();
         const life = { ...s.life, xp };
         set({ xp, items, day, today, claimed: [...claimed, id], life, achievements: awardAchievements(life, s.achievements) });
         return true;
       },
 
       setEnabled: (on) => set({ enabled: on }),
+
+      setSound: (on) => {
+        setSfxMuted(!on);
+        set({ sound: on });
+        if (on) sfx.correct(1);
+      },
     }),
     {
       name: `${STORAGE_PREFIX}game`,
       storage: storage(),
       version: 1,
       partialize: (s) => {
-        const { answer: _a, awardBatch: _b, gainXp: _g, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, ...data } = s;
+        const { answer: _a, awardBatch: _b, gainXp: _g, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = s;
         return data;
+      },
+      // Máy đã tắt tiếng từ lần trước thì im ngay từ tiếng đầu tiên của phiên mới.
+      onRehydrateStorage: () => (state) => {
+        if (state) setSfxMuted(!state.sound);
       },
     },
   ),
 );
 
-/** Dữ liệu để đồng bộ: mọi thứ trừ công tắc bật/tắt (mỗi máy tự chọn). */
+/** Dữ liệu để đồng bộ: mọi thứ trừ hai công tắc game và âm thanh (mỗi máy tự chọn). */
 export function gamePayload(): GamePayload {
-  const { enabled: _on, answer: _a, awardBatch: _b, gainXp: _g, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, ...data } = useGameStore.getState();
+  const { enabled: _on, sound: _snd, answer: _a, awardBatch: _b, gainXp: _g, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = useGameStore.getState();
   return data;
 }

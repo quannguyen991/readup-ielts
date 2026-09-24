@@ -11,7 +11,7 @@ export type FxEvent = (
   | { id: number; kind: 'hurt' }
   | { id: number; kind: 'blocked' }
   | { id: number; kind: 'knockout' }
-  | { id: number; kind: 'defeat'; enemyIndex: number; name: string; loot: ItemKind | null; bonusXp: number }
+  | { id: number; kind: 'defeat'; enemyIndex: number; name: string; loot: ItemKind[]; bonusXp: number; boss: boolean }
   | { id: number; kind: 'levelup'; level: number }
   | { id: number; kind: 'achievement'; title: string; glyph: string }
   | { id: number; kind: 'quest'; title: string }

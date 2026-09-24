@@ -31,7 +31,6 @@ import {
 } from '@/services/vocab/cloze-drill';
 import { diagnosePick, diagnoseTyped, MISTAKE_TITLE, type Mistake } from '@/services/vocab/mistake';
 import { seededRng, shuffled, type StudyWord } from '@/services/vocab/topic-study';
-import { playCorrectChime } from '@/services/audio/chime';
 import { useGameStore } from '@/store/useGameStore';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -140,7 +139,6 @@ export default function ClozeScreen() {
     logQuestions(1);
     useGameStore.getState().answer(ok, 'vocab');
     if (ok) {
-      playCorrectChime();
       if (!head.retry) setFirstTry((n) => n + 1);
       return;
     }

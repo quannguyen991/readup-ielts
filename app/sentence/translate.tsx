@@ -24,6 +24,7 @@ import { Appear, CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useSentenceStrike } from '@/components/game/useSentenceStrike';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Luyện dịch Việt → Anh bằng cách TÁI TẠO ĐÚNG CÂU MẪU.
@@ -251,6 +252,8 @@ function RunningView({
     chạm quái đúng lúc đó. Xong nhờ gợi ý miễn phí (Ctrl+Space, "Xem gợi ý") thì
     không chém mà cũng không mất tim; "Xem đáp án" là bỏ cuộc, trúng đòn.
   */
+  // Bật game thì nhát chém đã có tiếng; pháo giấy im cho khỏi kêu đôi.
+  const gameOn = useGameStore((s) => s.enabled);
   const strike = useSentenceStrike(item.id, 'translate');
   useEffect(() => {
     if (done && !revealed) strike(showHint ? null : true);
@@ -454,7 +457,7 @@ function RunningView({
         {/* ------------------------------------------------------- bài dịch */}
         <View className="lg:flex-1">
           <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
-            {done && !revealed ? <Confetti seed={item.id} /> : null}
+            {done && !revealed ? <Confetti seed={item.id} silent={gameOn} /> : null}
 
             <Text className="font-heavy text-cardTitle text-paper-ink">Bài dịch của em</Text>
 
