@@ -187,7 +187,7 @@ function NavRow({
         <Pressable
           accessibilityRole="link"
           accessibilityLabel={item.label}
-          accessibilityState={{ selected: active }}
+          aria-selected={active}
           onHoverIn={() => setHovered(true)}
           onHoverOut={() => setHovered(false)}
           className={[

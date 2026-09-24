@@ -153,7 +153,7 @@ export default function ParentReportScreen() {
 
 function Tile({ icon, tone, title, lines }: { icon: IconName; tone: string; title: string; lines: string[] }) {
   return (
-    <View className="rounded-[20px] bg-white p-5" style={[{ flexGrow: 1, flexBasis: 300 }, CARD]}>
+    <View className="rounded-[20px] bg-white p-5" style={[{ flexGrow: 1, flexShrink: 1, flexBasis: 300 }, CARD]}>
       <View className="flex-row items-center gap-2">
         <Icon name={icon} size={18} color={tone} />
         <Text className="font-heavy text-bodyLg text-ink">{title}</Text>

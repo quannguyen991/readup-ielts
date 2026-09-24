@@ -128,7 +128,8 @@ function Row({ model }: { model: ModelRow }) {
       <Text style={{ width: 88, color: color.muted, fontVariant: ['tabular-nums'] }}>
         {model.blindRejections}/{model.blindRuns}
       </Text>
-      <Text style={{ flex: 1, color: color.body }} numberOfLines={1}>
+      {/* Hai dòng: màn hẹp mà một dòng thì ghi chú "too few runs" bị cắt mất. */}
+      <Text style={{ flex: 1, color: color.body }} numberOfLines={2}>
         {model.model}
         {weak ? (
           <Text style={{ color: color.warning, fontSize: 12 }}>

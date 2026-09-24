@@ -89,7 +89,7 @@ export function SelfDiagnose({
             <Pressable
               key={tag}
               accessibilityRole="button"
-              accessibilityState={{ selected: isPicked, disabled: answered }}
+              aria-selected={isPicked} aria-disabled={answered}
               disabled={answered}
               onPress={() => {
                 setPicked(tag);

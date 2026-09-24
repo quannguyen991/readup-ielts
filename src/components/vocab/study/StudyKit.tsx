@@ -250,7 +250,7 @@ export function ChoiceGrid({
             onPress={() => onPick(i)}
             className="flex-row items-center gap-3 rounded-2xl px-4 py-4"
             style={{
-              flexBasis: 300,
+              flexShrink: 1, flexBasis: 300,
               flexGrow: 1,
               borderWidth: 1.5,
               borderColor: border,

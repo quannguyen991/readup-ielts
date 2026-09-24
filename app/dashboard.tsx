@@ -186,10 +186,10 @@ export default function DashboardScreen() {
       <TodayPlan />
 
       <View className="mt-4 flex-row flex-wrap gap-4">
-        <View style={{ flexGrow: 1, flexBasis: 320 }}>
+        <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>
           <ScorePredictionCard section="total" />
         </View>
-        <View style={{ flexGrow: 1, flexBasis: 320 }}>
+        <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>
           <ParentReportCard />
         </View>
       </View>

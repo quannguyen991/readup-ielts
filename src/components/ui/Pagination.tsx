@@ -36,7 +36,7 @@ export function Pagination({
           key={n}
           accessibilityRole="button"
           accessibilityLabel={`Trang ${n + 1}`}
-          accessibilityState={{ selected: n === page }}
+          aria-selected={n === page}
           onPress={() => onChange(n)}
           className={[
             'h-9 min-w-[36px] items-center justify-center rounded-md border px-2',

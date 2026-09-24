@@ -161,7 +161,7 @@ function SkillCard({ rec }: { rec: SkillRecord }) {
     <View className="h-full overflow-hidden rounded-card border border-border bg-surface">
       <Pressable
         accessibilityRole="button"
-        accessibilityState={{ expanded: open }}
+        aria-expanded={open}
         onPress={() => setOpen((v) => !v)}
         className="flex-row items-start gap-3 p-3.5"
       >
@@ -225,7 +225,7 @@ function LanguageToggle() {
         <Pressable
           key={code}
           accessibilityRole="button"
-          accessibilityState={{ selected: locale === code }}
+          aria-selected={locale === code}
           onPress={() => setLocale(code)}
           className={[
             'rounded-pill border px-3 py-1.5',

@@ -216,7 +216,7 @@ function TabPill({ label, active, onPress }: { label: string; active: boolean; o
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className={['rounded-pill border px-5 py-2.5', active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface'].join(' ')}
     >

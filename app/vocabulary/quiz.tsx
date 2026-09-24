@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { LightHero } from '@/components/layout/LightHero';
@@ -20,6 +20,11 @@ import { color } from '@/theme/tokens';
  * chọn BỘ TỪ (sổ từ của bạn, bộ tự tạo, 50 chủ đề IELTS, bài từ vựng SAT).
  */
 type Mode = 'learn' | 'test' | 'cloze';
+
+/** Chuyển màu và cỡ mượt khi đổi lựa chọn (web). */
+const SELECT_MOTION = (Platform.OS === 'web'
+  ? { transition: 'border-color 200ms ease, background-color 200ms ease, transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1)' }
+  : {}) as object;
 
 const MODES: { id: Mode; title: string; note: string; icon: IconName; tone: string; soft: string }[] = [
   {
@@ -104,13 +109,22 @@ export default function VocabQuizHub() {
             <Pressable
               key={m.id}
               accessibilityRole="radio"
-              accessibilityState={{ selected: on }}
+              aria-selected={on}
               onPress={() => setMode(m.id)}
               className="rounded-[20px] bg-white p-4"
-              style={{ flexGrow: 1, flexBasis: 240, borderWidth: 2, borderColor: on ? m.tone : '#E6E8F2' }}
+              style={{
+                flexGrow: 1,
+                flexShrink: 1,
+                flexBasis: 240,
+                borderWidth: 2,
+                borderColor: on ? m.tone : '#E6E8F2',
+                // Chọn kiểu luyện: viền đổi màu mượt và thẻ được chọn nhô lên một chút, không nhảy phựt.
+                transform: [{ scale: on ? 1 : 0.985 }],
+                ...SELECT_MOTION,
+              }}
             >
               <View className="flex-row items-center gap-3">
-                <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: on ? m.tone : m.soft }}>
+                <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: on ? m.tone : m.soft, ...SELECT_MOTION }}>
                   <Icon name={m.icon} size={18} color={on ? '#FFFFFF' : m.tone} strokeWidth={2} />
                 </View>
                 <Text className="flex-1 font-heavy text-cardTitle text-ink">{m.title}</Text>
@@ -147,7 +161,7 @@ export default function VocabQuizHub() {
                     key={d.slug}
                     onPress={() => setDeck(d.slug)}
                     className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
-                    style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#E2E8F0' }}
+                    style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#E2E8F0', ...SELECT_MOTION }}
                   >
                     <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                       {d.name}

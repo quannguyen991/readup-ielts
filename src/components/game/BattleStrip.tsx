@@ -234,7 +234,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           {!narrow ? (
             <Pressable
               accessibilityRole="switch"
-              accessibilityState={{ checked: sound }}
+              aria-checked={sound}
               accessibilityLabel={sound ? 'Tắt âm thanh hiệu ứng (phím M)' : 'Bật âm thanh hiệu ứng (phím M)'}
               onPress={() => useGameStore.getState().setSound(!sound)}
               style={({ hovered }: { hovered?: boolean }) => ({ width: 28, height: 28, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.1)' })}
@@ -364,7 +364,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
                 accessibilityRole="button"
                 accessibilityLabel={`Dùng ${ITEMS[k].name}, còn ${items[k] ?? 0}`}
                 onPress={() => tryItem(k)}
-                style={{ flexBasis: 220, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 9, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.07)', opacity: (items[k] ?? 0) > 0 ? 1 : 0.45 }}
+                style={{ flexShrink: 1, flexBasis: 220, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 9, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.07)', opacity: (items[k] ?? 0) > 0 ? 1 : 0.45 }}
               >
                 <Text style={{ fontSize: 22 }}>{ITEMS[k].glyph}</Text>
                 <View style={{ flex: 1 }}>
@@ -381,7 +381,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           <View style={{ marginTop: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
             <Pressable
               accessibilityRole="switch"
-              accessibilityState={{ checked: sound }}
+              aria-checked={sound}
               onPress={() => useGameStore.getState().setSound(!sound)}
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: 'rgba(255,255,255,0.07)' }}
             >

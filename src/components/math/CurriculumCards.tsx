@@ -212,7 +212,7 @@ export function FilterChip({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className="rounded-pill border px-3 py-1.5"
       style={{

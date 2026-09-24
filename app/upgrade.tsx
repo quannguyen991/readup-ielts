@@ -202,7 +202,7 @@ function CycleTab({ label, active, onPress }: { label: string; active: boolean; 
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className={`rounded-pill border px-4 py-2 ${
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface'

@@ -472,7 +472,7 @@ function PracticeView({
           <Pressable
             key={m.key}
             accessibilityRole="tab"
-            accessibilityState={{ selected: mode === m.key }}
+            aria-selected={mode === m.key}
             onPress={() => setMode(m.key)}
             className={[
               'flex-row items-center gap-2 rounded-pill border px-4 py-2',
@@ -522,7 +522,7 @@ function PracticeView({
                 <Pressable
                   key={i}
                   accessibilityRole="button"
-                  accessibilityState={{ selected: i === index }}
+                  aria-selected={i === index}
                   onPress={() => {
                     setIndex(i);
                     setTyped('');

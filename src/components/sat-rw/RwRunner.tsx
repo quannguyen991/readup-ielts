@@ -190,7 +190,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
                     <PressScale
                       key={option}
                       accessibilityRole="radio"
-                      accessibilityState={{ selected: picked }}
+                      aria-selected={picked}
                       onPress={() => choose(i)}
                       className={`flex-row items-start gap-3 rounded-panel border px-3.5 py-3 ${
                         picked ? 'border-brand-mid bg-brand-tint' : 'border-brand-soft bg-paper'

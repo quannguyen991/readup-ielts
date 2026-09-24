@@ -195,7 +195,7 @@ export default function QuestBattleScreen() {
                   const wrong = revealed && picked && !correct;
                   return (
                     <PressScale key={`${question.id}:${optionIndex}`}>
-                      <Pressable onPress={() => choose(optionIndex)} accessibilityRole="radio" accessibilityState={{ selected: picked, disabled: revealed }} className={`flex-row items-center gap-3 rounded-panel border px-3.5 py-3 ${correct ? 'border-emerald-300 bg-emerald-400/15' : wrong ? 'border-rose-300 bg-rose-400/15' : picked ? 'border-cyan-300 bg-cyan-400/15' : 'border-white/10 bg-slate-800'}`}>
+                      <Pressable onPress={() => choose(optionIndex)} accessibilityRole="radio" aria-selected={picked} aria-disabled={revealed} className={`flex-row items-center gap-3 rounded-panel border px-3.5 py-3 ${correct ? 'border-emerald-300 bg-emerald-400/15' : wrong ? 'border-rose-300 bg-rose-400/15' : picked ? 'border-cyan-300 bg-cyan-400/15' : 'border-white/10 bg-slate-800'}`}>
                         <View className={`h-7 w-7 items-center justify-center rounded-full border ${correct ? 'border-emerald-300 bg-emerald-400/20' : wrong ? 'border-rose-300 bg-rose-400/20' : 'border-white/20'}`}><Text className="font-strong text-label text-white">{'ABCD'[optionIndex]}</Text></View>
                         {question.subject === 'math' ? (
                           <View className="flex-1"><MathText size={15} tone="#FFFFFF">{option}</MathText></View>

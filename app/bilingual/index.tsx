@@ -343,7 +343,7 @@ function SortTab({ label, active, onPress }: { label: string; active: boolean; o
   return (
     <Pressable
       accessibilityRole="tab"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className="px-3.5 py-2"
       style={{
@@ -373,7 +373,7 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       className="rounded-pill px-3 py-1.5"
       style={{ borderWidth: 1.5, borderColor: active ? INK : 'rgba(31,42,18,0.2)', backgroundColor: active ? '#E3EACF' : 'rgba(255,255,255,0.7)' }}
     >

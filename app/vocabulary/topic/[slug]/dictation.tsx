@@ -120,7 +120,7 @@ export default function DictationScreen() {
       right={
         <Pressable
           accessibilityRole="switch"
-          accessibilityState={{ checked: sentenceMode }}
+          aria-checked={sentenceMode}
           onPress={() => {
             setSentenceMode((v) => !v);
             setTyped('');

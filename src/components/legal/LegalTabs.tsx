@@ -24,7 +24,7 @@ export function LegalTabs({ active }: { active: LegalLink['key'] }) {
           <Pressable
             key={link.key}
             accessibilityRole="link"
-            accessibilityState={{ selected: on }}
+            aria-selected={on}
             onPress={() => {
               if (!on) router.replace(link.href as never);
             }}

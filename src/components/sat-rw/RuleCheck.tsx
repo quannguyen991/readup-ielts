@@ -87,7 +87,7 @@ export function RuleCheck({
             <Pressable
               key={skill}
               accessibilityRole="button"
-              accessibilityState={{ selected: isPicked, disabled: answered }}
+              aria-selected={isPicked} aria-disabled={answered}
               disabled={answered}
               onPress={() => {
                 setPicked(skill);

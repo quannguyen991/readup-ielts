@@ -187,7 +187,7 @@ export function UnitRunner({
         <PaperCard className="mb-4">
           <Pressable
             accessibilityRole="button"
-            accessibilityState={{ expanded: showRule }}
+            aria-expanded={showRule}
             onPress={() => setShowRule((v) => !v)}
             className="flex-row items-center gap-2"
           >

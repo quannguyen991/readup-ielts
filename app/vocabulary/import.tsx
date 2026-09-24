@@ -133,7 +133,7 @@ export default function ImportDeckScreen() {
                         className="rounded-2xl px-4 py-3"
                         style={{ borderWidth: 1.5, borderColor: on ? '#93C5FD' : '#E2E8F0', backgroundColor: on ? '#F3F8FF' : '#FFFFFF' }}
                       >
-                        <Pressable accessibilityRole="checkbox" accessibilityState={{ checked: on }} onPress={() => toggle(c.word)} className="flex-row items-center gap-3">
+                        <Pressable accessibilityRole="checkbox" aria-checked={on} onPress={() => toggle(c.word)} className="flex-row items-center gap-3">
                           <View
                             className="h-6 w-6 items-center justify-center rounded-lg"
                             style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: on ? 0 : 1.5, borderColor: '#CBD5E1' }}

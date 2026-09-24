@@ -140,7 +140,8 @@ export function AuroraBackdrop({
 
   return (
     <View className="flex-1" style={{ backgroundColor: colors[0] }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+      {/* `overflow: hidden`: vệt loang trôi bằng transform có lúc dạt ra ngoài mép — không cắt thì trang sinh thanh cuộn ngang lúc có lúc không. */}
+      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
         <LinearGradient
           colors={[...colors] as [string, string, ...string[]]}
           start={{ x: 0, y: 0 }}

@@ -349,7 +349,7 @@ function ChoiceRow({
   return (
     <PressScale
       accessibilityRole="radio"
-      accessibilityState={{ selected, disabled }}
+      aria-selected={selected} aria-disabled={disabled}
       accessibilityLabel={out ? `Phương án ${'ABCD'[index]} — Cú đã loại` : undefined}
       onPress={disabled ? undefined : onPress}
       className={`flex-row items-center gap-3 rounded-card border p-3 ${tone}`}

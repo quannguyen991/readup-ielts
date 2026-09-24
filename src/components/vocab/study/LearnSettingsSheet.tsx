@@ -206,7 +206,7 @@ function Row({ on, onPress, children }: { on: boolean; onPress: () => void; chil
   return (
     <Pressable
       accessibilityRole="checkbox"
-      accessibilityState={{ checked: on }}
+      aria-checked={on}
       onPress={onPress}
       className="flex-row items-center gap-3 rounded-2xl px-4 py-3.5"
       style={{ borderWidth: 1.5, borderColor: on ? '#93C5FD' : '#E2E8F0', backgroundColor: on ? '#F3F8FF' : '#FFFFFF' }}

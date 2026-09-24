@@ -33,7 +33,7 @@ export function BottomTabs() {
           <Link key={tab.key} href={tab.href as never} asChild>
             <View
               accessibilityRole="link"
-              accessibilityState={{ selected: active }}
+              aria-selected={active}
               className="flex-1 items-center gap-1 py-1"
             >
               <Icon

@@ -141,7 +141,7 @@ export function DomainSection({
     <View className="mt-8">
       <Pressable
         accessibilityRole="button"
-        accessibilityState={{ expanded: open }}
+        aria-expanded={open}
         accessibilityLabel={open ? `Thu gọn ${title}` : `Mở ${title}`}
         onPress={() => setOpen((v) => !v)}
         className="flex-row items-center gap-3"

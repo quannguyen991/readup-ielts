@@ -319,7 +319,7 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
                         <Link key={item.key} href={item.href as never} asChild>
                           <Pressable
                             accessibilityRole="link"
-                            accessibilityState={{ selected: active }}
+                            aria-selected={active}
                             onPress={onClose}
                             className={[
                               'flex-row items-center gap-2.5 rounded-panel border px-3.5 py-3',
