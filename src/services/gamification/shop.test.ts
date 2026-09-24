@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { SHOP_ITEMS, balanceOf, buy, findItem } from './shop';
+import { ITEMS } from '@/services/game/rules';
 
 const empty = { owned: {}, spent: 0 };
 
@@ -31,8 +32,11 @@ test('số dư không bao giờ âm', () => {
 
 test('cửa hàng KHÔNG bán nội dung học', () => {
   for (const item of SHOP_ITEMS) {
-    assert.ok(['freeze', 'avatar', 'theme'].includes(item.kind), `${item.id} là loại lạ`);
+    assert.ok(['freeze', 'avatar', 'theme', 'powerup'].includes(item.kind), `${item.id} là loại lạ`);
     assert.ok(item.price > 0);
+    // Đồ chiến đấu chỉ được trao VẬT PHẨM GAME (bình máu, khiên…), không trao bài hay lời giải.
+    if (item.kind === 'powerup') assert.ok(item.grants && item.grants in ITEMS, `${item.id} trao thứ lạ`);
+    else assert.equal(item.grants, undefined, `${item.id} không phải đồ chiến đấu mà lại trao vật phẩm`);
   }
   assert.equal(findItem('bai-doc-vip'), undefined);
 });

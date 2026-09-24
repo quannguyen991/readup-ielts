@@ -25,10 +25,13 @@ export function QuestionCard({
   picked,
   onPick,
   showSolution = true,
+  hidden = [],
 }: {
   question: SatRwQuestion;
   picked: number | null;
   onPick: (choice: number) => void;
+  /** Phương án Cú đã loại (game khi học) — mờ, gạch ngang, không bấm được. */
+  hidden?: number[];
   /**
    * Có được hiện lời giải chưa.
    *
@@ -60,6 +63,7 @@ export function QuestionCard({
         {question.options.map((option, i) => {
           const isAnswer = i === question.answerIndex;
           const isPicked = picked === i;
+          const out = !answered && hidden.includes(i) && !isAnswer;
 
           const tone = !answered
             ? { border: paper.brandSoft, bg: '#FFFFFF' }
@@ -73,11 +77,12 @@ export function QuestionCard({
             <Pressable
               key={i}
               accessibilityRole="button"
-              accessibilityState={{ selected: isPicked, disabled: answered }}
-              disabled={answered}
+              accessibilityState={{ selected: isPicked, disabled: answered || out }}
+              accessibilityLabel={out ? `${'ABCD'[i]}. ${option} — Cú đã loại` : undefined}
+              disabled={answered || out}
               onPress={() => onPick(i)}
               className="flex-row items-start gap-3 rounded-panel border px-3.5 py-3"
-              style={{ borderColor: tone.border, backgroundColor: tone.bg }}
+              style={{ borderColor: tone.border, backgroundColor: tone.bg, opacity: out ? 0.38 : 1 }}
             >
               <View
                 className="h-6 w-6 items-center justify-center rounded-pill"
@@ -90,7 +95,12 @@ export function QuestionCard({
                   {'ABCD'[i]}
                 </Text>
               </View>
-              <Text className="min-w-0 flex-1 font-sans text-body text-paper-ink">{option}</Text>
+              <Text
+                className="min-w-0 flex-1 font-sans text-body text-paper-ink"
+                style={out ? { textDecorationLine: 'line-through' } : undefined}
+              >
+                {option}
+              </Text>
             </Pressable>
           );
         })}

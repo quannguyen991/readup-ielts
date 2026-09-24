@@ -32,6 +32,8 @@ import {
 import { diagnosePick, diagnoseTyped, MISTAKE_TITLE, type Mistake } from '@/services/vocab/mistake';
 import { seededRng, shuffled, type StudyWord } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
+import { useGameStore } from '@/store/useGameStore';
+import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
@@ -76,6 +78,8 @@ export default function ClozeScreen() {
   const [plannedFor, setPlannedFor] = useState(order);
   const [step, setStep] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
+  // Phương án Cú đã loại ở câu đang mở.
+  const [hidden, setHidden] = useState<number[]>([]);
   const [typed, setTyped] = useState('');
   const [used, setUsed] = useState<number[]>([]);
   const [verdict, setVerdict] = useState<boolean | null>(null);
@@ -93,6 +97,7 @@ export default function ClozeScreen() {
     setRoundWords(w);
     setQueue(planClozeRound(w, seededRng(seed + n * 131)));
     setPicked(null);
+    setHidden([]);
     setTyped('');
     setUsed([]);
     setVerdict(null);
@@ -133,6 +138,7 @@ export default function ClozeScreen() {
     setVerdict(ok);
     setAsked((n) => n + 1);
     logQuestions(1);
+    useGameStore.getState().answer(ok, 'vocab');
     if (ok) {
       playCorrectChime();
       if (!head.retry) setFirstTry((n) => n + 1);
@@ -147,6 +153,21 @@ export default function ClozeScreen() {
   };
 
   const others = useMemo(() => (topic && q ? topic.words.filter((w) => w.word !== q.word.word) : []), [topic, q]);
+
+  // Gợi ý của Cú (chỉ câu chọn): loại bớt hai phương án sai.
+  useOwlHint(
+    q && q.kind === 'pick' && verdict === null
+      ? () => {
+          if (hidden.length > 0) return false;
+          const wrong = q.options.map((_, i) => i).filter((i) => i !== q.correctIndex);
+          const drop = Math.min(2, wrong.length - 1);
+          if (drop <= 0) return false;
+          const from = step % wrong.length;
+          setHidden(Array.from({ length: drop }, (_, k) => wrong[(from + k) % wrong.length]!));
+          return true;
+        }
+      : null,
+  );
 
   const pick = (i: number) => {
     if (!q || q.kind !== 'pick' || verdict !== null) return;
@@ -183,6 +204,7 @@ export default function ClozeScreen() {
     if (verdict === null) return;
     setQueue((list) => advanceCloze(list, verdict));
     setPicked(null);
+    setHidden([]);
     setTyped('');
     setUsed([]);
     setVerdict(null);
@@ -268,7 +290,7 @@ export default function ClozeScreen() {
 
   const revealed = verdict !== null;
   return (
-    <StudyFrame backHref={backHref} title={topic.nameVi} segments={segments} footer={footer}>
+    <StudyFrame backHref={backHref} title={topic.nameVi} segments={segments} footer={footer} battle>
       <CrossFade swapKey={`c-${step}`}>
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
@@ -294,7 +316,7 @@ export default function ClozeScreen() {
 
           {q.kind === 'pick' ? (
             <View className="mt-6">
-              <ChoiceGrid options={q.options} picked={picked} correctIndex={q.correctIndex} onPick={pick} />
+              <ChoiceGrid options={q.options} picked={picked} correctIndex={q.correctIndex} onPick={pick} hidden={hidden} />
             </View>
           ) : null}
 

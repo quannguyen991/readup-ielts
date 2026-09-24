@@ -10,6 +10,9 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { recordRwAttempt } from '@/store/useSatRwStore';
 import { paper } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
+import { BattleStrip } from '@/components/game/BattleStrip';
+import { useOwlHint } from '@/components/game/useOwlHint';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Bộ chạy câu hỏi SAT Verbal — một câu một màn.
@@ -64,6 +67,8 @@ export function UnitRunner({
   const [correct, setCorrect] = useState(0);
   const [done, setDone] = useState(false);
   const [showRule, setShowRule] = useState(false);
+  // Phương án Cú đã loại ở câu đang mở.
+  const [hidden, setHidden] = useState<number[]>([]);
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
   // Mốc bắt đầu nghĩ câu hiện tại — để trang Verbal biết thời gian theo kỹ năng.
@@ -73,6 +78,20 @@ export function UnitRunner({
   }, [index]);
 
   const question = questions[index];
+
+  // Gợi ý của Cú chỉ có ở chế độ học (có lời giải ngay); bộ chốt để đo thì không.
+  useOwlHint(
+    instantSolution && question && picked === null
+      ? () => {
+          if (hidden.length > 0) return false;
+          const wrong = question.options.map((_, i) => i).filter((i) => i !== question.answerIndex);
+          const from = index % wrong.length;
+          setHidden([wrong[from]!, wrong[(from + 1) % wrong.length]!]);
+          return true;
+        }
+      : null,
+  );
+
   if (!question) return null;
 
   const answered = picked !== null;
@@ -87,21 +106,27 @@ export function UnitRunner({
     });
     if (choice === question.answerIndex) setCorrect((n) => n + 1);
     recordRwAttempt(question.id, choice === question.answerIndex, Date.now() - shownAt.current);
+    // Game khi học: có lời giải ngay thì mỗi câu là một đòn. Bộ chốt chấm cả bài lúc
+    // xong — đòn đánh từng câu sẽ để lộ đúng sai trước khi nộp.
+    if (instantSolution) useGameStore.getState().answer(choice === question.answerIndex, 'verbal');
   };
 
   const next = () => {
     if (index + 1 < questions.length) {
       setIndex(index + 1);
       setPicked(null);
+      setHidden([]);
       return;
     }
     logQuestions(questions.length);
+    if (!instantSolution) useGameStore.getState().awardBatch(correct, questions.length, 'verbal');
     setDone(true);
   };
 
   const restart = () => {
     setIndex(0);
     setPicked(null);
+    setHidden([]);
     setAnswers(questions.map(() => null));
     setCorrect(0);
     setDone(false);
@@ -156,6 +181,8 @@ export function UnitRunner({
         </View>
       }
     >
+      {instantSolution ? <BattleStrip className="mb-4" /> : null}
+
       {ruleVi ? (
         <PaperCard className="mb-4">
           <Pressable
@@ -187,6 +214,7 @@ export function UnitRunner({
           picked={picked}
           onPick={submit}
           showSolution={instantSolution}
+          hidden={hidden}
         />
       </CrossFade>
 

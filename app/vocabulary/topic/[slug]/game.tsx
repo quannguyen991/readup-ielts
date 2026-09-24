@@ -19,6 +19,7 @@ import {
   type StudyWord,
 } from "@/services/vocab/topic-study";
 import { playCorrectChime, playQuestDamageSound } from "@/services/audio/chime";
+import { useGameStore } from "@/store/useGameStore";
 import { useTopicStudyStore, type GameScore } from "@/store/useTopicStudyStore";
 import { color } from "@/theme/tokens";
 
@@ -162,10 +163,12 @@ export default function GameScreen() {
       setScore(scoreRef.current);
       setCombo((c) => c + 1);
       playCorrectChime();
+      useGameStore.getState().answer(true, "vocab");
     } else {
       b.popped = "bad";
       r.balloons[r.correctLane]!.popped = "ok";
       loseLife();
+      useGameStore.getState().answer(false, "vocab");
     }
     setTimeout(newRound, 450);
   };

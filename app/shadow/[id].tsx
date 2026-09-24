@@ -25,6 +25,7 @@ import {
 import { canRecognize, speakSentence, startListening, type ListenEnd, type Listening } from '@/services/shadow/speech';
 import { useShadowStore } from '@/store/useShadowStore';
 import { color } from '@/theme/tokens';
+import { useGameStore } from '@/store/useGameStore';
 
 const AMBER = '#D97706';
 const RATES = [
@@ -147,6 +148,8 @@ export default function ShadowLesson() {
       return out;
     });
     if (a.score >= 85) playCorrectChime();
+    // Game khi học: đọc theo đạt từ 60 điểm là một đòn trúng.
+    useGameStore.getState().answer(a.score >= 60, 'shadow');
   };
 
   const startMic = () => {
@@ -244,6 +247,7 @@ export default function ShadowLesson() {
     <StudyFrame
       backHref="/shadow"
       title="Đọc theo"
+      battle
       right={
         <Text className="font-strong text-body" style={{ color: color.primary }}>
           {index + 1}/{sentences.length}

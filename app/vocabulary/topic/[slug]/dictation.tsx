@@ -9,6 +9,8 @@ import { preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePic
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { isTypedCorrect, letterDiff } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
+import { useGameStore } from '@/store/useGameStore';
+import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 
@@ -63,7 +65,20 @@ export default function DictationScreen() {
       playCorrectChime();
     }
     logQuestions(1);
+    useGameStore.getState().answer(ok, 'listen');
   };
+
+  // Gợi ý của Cú: lộ một phần ba đầu của đáp án.
+  useOwlHint(
+    verdict === null && word
+      ? () => {
+          const lead = target.slice(0, Math.max(1, Math.ceil(target.length / 3)));
+          if (typed.toLowerCase().startsWith(lead.toLowerCase())) return false;
+          setTyped(lead);
+          return true;
+        }
+      : null,
+  );
 
   const next = () => {
     setTyped('');
@@ -103,6 +118,7 @@ export default function DictationScreen() {
     <StudyFrame
       backHref={`/vocabulary/topic/${slug}`}
       title={topic.nameVi}
+      battle
       segments={segments}
       footer={`Từ ${index + 1} / ${words.length}  •  Đúng ${correct}  •  Phím Ctrl để nghe lại`}
       right={
@@ -186,6 +202,7 @@ export default function DictationScreen() {
                 onPress={() => {
                   setVerdict(false);
                   logQuestions(1);
+                  useGameStore.getState().answer(false, 'listen');
                 }}
               />
             </>

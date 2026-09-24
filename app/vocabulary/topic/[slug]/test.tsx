@@ -11,6 +11,7 @@ import { seededRng } from '@/services/vocab/topic-study';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
+import { useGameStore } from '@/store/useGameStore';
 
 const LENGTH = 20;
 
@@ -45,6 +46,9 @@ export default function TestScreen() {
   const submit = () => {
     setSubmitted(true);
     logQuestions(questions.length);
+    useGameStore
+      .getState()
+      .awardBatch(questions.filter((qq, i) => isQuizCorrect(qq, answers[i] ?? null)).length, questions.length, 'vocab');
     // Ghi kiểu lỗi của câu gõ sai vào Hồ sơ lỗi (câu chọn sai không gọi được tên lỗi chính tả).
     const log = useTopicStudyStore.getState().logMistake;
     questions.forEach((qq, i) => {

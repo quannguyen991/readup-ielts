@@ -17,6 +17,7 @@ import {
 } from '@expo-google-fonts/plus-jakarta-sans';
 
 import { AppShell } from '@/components/layout/AppShell';
+import { GameFxLayer } from '@/components/game/GameFxLayer';
 import { PageTransition } from '@/components/motion/Motion';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useAuthBootstrap } from '@/store/useAuthStore';
@@ -69,6 +70,7 @@ export default function RootLayout() {
             <Slot />
           </PageTransition>
         </AppShell>
+        <GameFxLayer />
       </QueryClientProvider>
     </SafeAreaProvider>
   );

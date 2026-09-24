@@ -9,6 +9,7 @@ import { Icon } from '@/components/ui/Icon';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { normalizeAnswer } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
+import { useGameStore } from '@/store/useGameStore';
 import { color } from '@/theme/tokens';
 
 type Recognition = {
@@ -79,7 +80,10 @@ export default function SpeakScreen() {
       const alts = Array.from(e.results[0] ?? []).map((a) => a.transcript);
       setHeard(alts);
       const target = normalizeAnswer(word.word);
-      judge(alts.some((a) => normalizeAnswer(a) === target || normalizeAnswer(a).split(' ').includes(target)));
+      const ok = alts.some((a) => normalizeAnswer(a) === target || normalizeAnswer(a).split(' ').includes(target));
+      judge(ok);
+      // Game khi học chỉ tính lần MÁY nghe chấm; tự bấm "giống mẫu" thì không.
+      useGameStore.getState().answer(ok, 'vocab');
     };
     rec.onerror = (e) => {
       setHeard([e.error === 'no-speech' ? '(không nghe thấy gì)' : `(lỗi micro: ${e.error})`]);
@@ -115,7 +119,7 @@ export default function SpeakScreen() {
   }
 
   return (
-    <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={topic.nameVi} footer={`Từ ${index + 1} / ${words.length}  •  Đọc đúng ${correct}`}>
+    <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={topic.nameVi} footer={`Từ ${index + 1} / ${words.length}  •  Đọc đúng ${correct}`} battle>
       <CrossFade swapKey={`s-${index}`}>
         <StudyCard>
           <Text className="text-center font-semi text-label uppercase tracking-[1.2px] text-muted">

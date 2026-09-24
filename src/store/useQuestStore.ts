@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage, uid } from './persist';
+import { useGameStore } from './useGameStore';
 import { QUEST_MAPS, getQuestNode } from '@/services/quest/maps';
 import { buildQuestQuestions } from '@/services/quest/question-pool';
 import { xpForBattle, starsForAccuracy } from '@/services/quest/combat';
@@ -57,6 +58,8 @@ export const useQuestStore = create<QuestState>()(
         const xp = xpForBattle(result.correct, result.total, stars);
         const completedAt = new Date().toISOString();
         const completed: QuestBattleResult = { ...result, stars, xp, completedAt };
+        // XP trận Quest cộng vào cấp chung của game khi học — một nhân vật, một thanh cấp.
+        useGameStore.getState().gainXp(xp, result.correct, result.total, 'quest');
         set((state) => {
           const currentStars = state.stars[result.nodeId] ?? 0;
           const starsForNode = Math.max(currentStars, stars);

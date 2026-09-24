@@ -10,14 +10,17 @@ import { Button, Card } from '@/components/ui';
 import { QuestBackdrop } from '@/components/quest/QuestVisual';
 import { QUEST_MAPS } from '@/services/quest/maps';
 import { useQuestStore } from '@/store/useQuestStore';
+import { useGameStore } from '@/store/useGameStore';
+import { levelForXp } from '@/services/game/rules';
 
 export default function QuestHome() {
   // Chữ 58px trên màn 375px làm "Tiến lên." gãy đôi ngay trong khối xanh.
   const wide = useWindowDimensions().width >= 768;
   const heroSize = wide ? 58 : 38;
   const heroLine = wide ? 64 : 44;
-  const xp = useQuestStore((s) => s.xp);
-  const level = useQuestStore((s) => s.level);
+  // Cấp và XP là của NHÂN VẬT chung: cộng từ mọi màn học lẫn trận Quest.
+  const xp = useGameStore((s) => s.xp);
+  const level = levelForXp(xp);
   const stars = useQuestStore((s) => Object.values(s.stars).reduce((sum, value) => sum + value, 0));
   const unlocked = useQuestStore((s) => s.unlockedNodes);
   const recent = useQuestStore((s) => s.completedBattles[0]);
@@ -44,6 +47,7 @@ export default function QuestHome() {
               <View className="mt-7 flex-row flex-wrap gap-2">
                 <Button label="Tiếp tục hành trình" iconRight="arrow-right" onPress={() => router.push('/quest/map/iron-frontier' as never)} />
                 <Button label="Bản đồ ReadUp" iconLeft="grid" variant="outline" onPress={() => router.push('/quest/world' as never)} />
+                <Button label="Nhân vật & nhiệm vụ" iconLeft="shield" variant="outline" onPress={() => router.push('/quest/hero' as never)} />
               </View>
               <Text className="mt-4 font-sans text-label text-white/70">Nhiệm vụ tiếp theo: Iron Frontier · Node 01</Text>
               <View className="mt-7 flex-row flex-wrap gap-2">

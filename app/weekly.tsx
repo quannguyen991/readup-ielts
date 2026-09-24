@@ -28,6 +28,7 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { useSyncStore } from '@/store/useSyncStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { color } from '@/theme/tokens';
+import { useGameStore } from '@/store/useGameStore';
 
 type Board = {
   participants: number;
@@ -96,6 +97,8 @@ export default function WeeklyScreen() {
     const wrong = items.filter((it) => !isCorrect(it, answers[it.id] ?? null)).map((it) => it.id);
     const result: WeeklyResult = { score: items.length - wrong.length, total: items.length, ms, at: new Date().toISOString(), wrong };
     setAttempt(result);
+    // XP game chỉ cho lượt được tính — làm lại đề đã biết đáp án thì không cộng.
+    if (!practice) useGameStore.getState().awardBatch(result.score, result.total, 'weekly');
     if (!practice && record(week, result) && userId) {
       // Đẩy kết quả lên ngay để bảng cả nước có mình, rồi tải lại bảng.
       void syncNow(userId, 'push').then(loadBoard);

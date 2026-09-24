@@ -14,6 +14,7 @@ import { useDuelRoom, type DuelPlayer } from '@/services/duel/useDuelRoom';
 import { displayableName } from '@/services/gamification/display-name';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
+import { useGameStore } from '@/store/useGameStore';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
 
@@ -76,6 +77,7 @@ export default function DuelRoom() {
     const ok = i !== null && i === q.correctIndex;
     setPicked(i ?? -1);
     if (ok) playCorrectChime();
+    useGameStore.getState().answer(ok, 'duel');
     room.answer(index, ok, ms);
     setTimeout(() => {
       if (index + 1 >= questions.length) room.finish();

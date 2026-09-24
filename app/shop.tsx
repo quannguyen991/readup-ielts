@@ -9,6 +9,7 @@ import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { currentStreak, lifetimePoints } from '@/services/gamification/points';
 import { SHOP_ITEMS, balanceOf, type ShopItem } from '@/services/gamification/shop';
 import { useRewardStore } from '@/store/useRewardStore';
+import { useGameStore } from '@/store/useGameStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 
@@ -26,6 +27,7 @@ export default function ShopScreen() {
   const daily = useStudyStore((s) => s.daily);
   const { owned, spent, avatar, frozenDays, buy, equipAvatar, spendFreeze } = useRewardStore();
   const [note, setNote] = useState<string | null>(null);
+  const bag = useGameStore((s) => s.items);
 
   const earned = useMemo(() => lifetimePoints(daily, frozenDays), [daily, frozenDays]);
   const coins = balanceOf(earned, spent);
@@ -33,6 +35,7 @@ export default function ShopScreen() {
 
   const groups: { key: ShopItem['kind']; title: string; subtitle: string }[] = [
     { key: 'freeze', title: 'Vật phẩm', subtitle: 'Giữ chuỗi những ngày bạn không kịp học' },
+    { key: 'powerup', title: 'Đồ chiến đấu', subtitle: 'Vào thẳng túi đồ của nhân vật, dùng ngay trong bài học' },
     { key: 'avatar', title: 'Bộ sưu tập avatar', subtitle: 'Hiện ở thẻ hạng và bảng xếp hạng' },
     { key: 'theme', title: 'Giao diện', subtitle: 'Thêm tông giấy cho màn đọc' },
   ];
@@ -80,7 +83,7 @@ export default function ShopScreen() {
                 className="mt-6"
                 title={group.title}
                 subtitle={group.subtitle}
-                icon={group.key === 'freeze' ? 'sparkle' : group.key === 'avatar' ? 'heart' : 'book'}
+                icon={group.key === 'freeze' ? 'sparkle' : group.key === 'powerup' ? 'shield' : group.key === 'avatar' ? 'heart' : 'book'}
               />
             </Appear>
 
@@ -109,9 +112,10 @@ export default function ShopScreen() {
                           return;
                         }
                         const result = buy(item.id, coins);
+                        if (result.ok && item.grants) useGameStore.getState().addItem(item.grants, 1);
                         setNote(
                           result.ok
-                            ? `Đã mua ${item.name}. Còn ${coins - item.price} xu.`
+                            ? `Đã mua ${item.name}${item.grants ? ' — đã vào túi đồ' : ''}. Còn ${coins - item.price} xu.`
                             : result.reason === 'không-đủ-xu'
                               ? `Còn thiếu ${item.price - coins} xu cho ${item.name}.`
                               : `Không mua được ${item.name}.`,
@@ -141,10 +145,13 @@ export default function ShopScreen() {
                               <Text className="font-heavy text-label text-ink">{item.price}</Text>
                             </View>
                           )}
-                          {item.repeatable && count > 0 ? (
+                          {!item.grants && item.repeatable && count > 0 ? (
                             <Text className="font-sans text-label text-muted">×{count}</Text>
                           ) : null}
                         </View>
+                        {item.grants ? (
+                          <Text className="mt-1.5 font-sans text-label text-muted">Trong túi: {bag[item.grants] ?? 0}</Text>
+                        ) : null}
                       </Card>
                     </PressScale>
                   );

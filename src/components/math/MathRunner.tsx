@@ -11,6 +11,9 @@ import { gradeMathItem, type MathResponse } from '@/services/math/grade';
 
 import { MathQuestionView } from './MathQuestionView';
 import { observeSkill } from '@/store/useMasteryStore';
+import { BattleStrip } from '@/components/game/BattleStrip';
+import { useOwlHint } from '@/components/game/useOwlHint';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Màn làm bài Math — dùng chung cho chẩn đoán, drill và mock.
@@ -85,6 +88,8 @@ export function MathRunner({
   // sửa được lựa chọn thì con số đúng/sai không còn nói lên điều gì.
   const [revealed, setRevealed] = useState<Record<string, boolean>>({});
   const [spent, setSpent] = useState<Record<string, number>>({});
+  // Phương án Cú đã loại, theo từng câu.
+  const [hints, setHints] = useState<Record<string, number[]>>({});
   const [remainingMs, setRemainingMs] = useState(minutes * 60_000);
 
   const startedAt = useRef(0);
@@ -142,8 +147,16 @@ export function MathRunner({
       timeSpentMs: totals[it.id] ?? 0,
     }));
 
+    // Game khi học: câu nào chưa chấm lúc xem lời giải thì chấm cả lượt lúc nộp.
+    const pending = items.filter((it) => !revealed[it.id]);
+    const right = pending.filter((it) => {
+      const given = answers[it.id];
+      return given !== undefined && given.trim() !== '' && gradeMathItem(it, given).isCorrect;
+    }).length;
+    if (pending.length > 0) useGameStore.getState().awardBatch(right, pending.length, 'math');
+
     onFinish(responses, now - startedAt.current);
-  }, [answers, index, items, onFinish, spent]);
+  }, [answers, index, items, onFinish, revealed, spent]);
 
   // Đồng hồ đếm lùi. Hết giờ là nộp, không hỏi lại — phòng thi không hỏi lại.
   useEffect(() => {
@@ -163,6 +176,27 @@ export function MathRunner({
   const answered = useMemo(
     () => items.filter((item) => (answers[item.id] ?? '').trim() !== '').length,
     [answers, items],
+  );
+
+  // Gợi ý của Cú: câu trắc nghiệm chưa xem lời giải thì loại bớt hai phương án sai.
+  useOwlHint(
+    instantSolution && current?.choices && current.correctIndex !== null && !revealed[current.id]
+      ? () => {
+          if (hints[current.id]) return false;
+          const wrong = current.choices!.map((_, i) => i).filter((i) => i !== current.correctIndex);
+          const drop = Math.min(2, wrong.length - 1);
+          if (drop <= 0) return false;
+          const from = index % wrong.length;
+          const out = Array.from({ length: drop }, (_, k) => wrong[(from + k) % wrong.length]!);
+          setHints((prev) => ({ ...prev, [current.id]: out }));
+          // Phương án đang chọn mà bị loại thì bỏ chọn.
+          const picked = answers[current.id];
+          if (picked !== undefined && picked !== '' && out.includes(Number(picked))) {
+            setAnswers((prev) => ({ ...prev, [current.id]: '' }));
+          }
+          return true;
+        }
+      : null,
   );
 
   if (!current) return null;
@@ -202,6 +236,8 @@ export function MathRunner({
         </View>
       </View>
 
+      {instantSolution ? <BattleStrip className="mt-4" /> : null}
+
       <Panel className="mt-4">
         {/*
           Hiện dần tại chỗ mỗi khi đổi câu. Đề toán đổi mà khung đứng im thì rất
@@ -216,6 +252,7 @@ export function MathRunner({
             index={index}
             answer={answers[current.id] ?? null}
             revealed={revealed[current.id] ?? false}
+            hidden={hints[current.id]}
             onAnswer={
               revealed[current.id]
                 ? undefined
@@ -262,7 +299,12 @@ export function MathRunner({
               }
               variant="outline"
               iconRight="chevron-down"
-              onPress={() => setRevealed((prev) => ({ ...prev, [current.id]: true }))}
+              onPress={() => {
+                // Xem lời giải = chấm câu này cho game; chưa trả lời mà xem luôn thì tính là sai.
+                const given = answers[current.id] ?? '';
+                useGameStore.getState().answer(given.trim() !== '' && gradeMathItem(current, given).isCorrect, 'math');
+                setRevealed((prev) => ({ ...prev, [current.id]: true }));
+              }}
             />
             <Text className={`mt-2 font-sans text-label ${mutedClass}`}>
               Xem lời giải xong thì câu này bị khoá, không đổi đáp án được nữa.
