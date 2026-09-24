@@ -323,7 +323,6 @@ function WordRow({
 
       {open ? (
         <View className="mt-3 gap-2 border-t border-border pt-3">
-          <Detail label="Nghĩa tiếng Anh" value={word.definitionEn} />
           <Detail label="Ví dụ" value={word.example} italic />
           <Detail label="Cụm hay đi kèm" value={word.collocation} />
         </View>

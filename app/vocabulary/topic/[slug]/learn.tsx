@@ -62,6 +62,7 @@ import {
   type LoopOptions,
 } from "@/services/vocab/learn-loop";
 import { canRecognize, startListening, type Listening } from "@/services/shadow/speech";
+import { sfx } from "@/services/audio/sfx";
 import { masteredCount, useTopicStudyStore } from "@/store/useTopicStudyStore";
 import { useStudyStore } from "@/store/useStudyStore";
 import { useGameStore } from "@/store/useGameStore";
@@ -297,6 +298,10 @@ export default function LearnScreen() {
   // Phần Lật thẻ không có bảng phản hồi — mặt sau của thẻ đã là phản hồi.
   const rateCard = (knew: boolean) => {
     if (!flipped || head?.kind !== "flash") return;
+    // Tự chấm nên không chém quái, không cộng XP — nhưng vẫn có tiếng để biết máy đã nhận:
+    // "Đã biết" kêu tiếng đúng, "Chưa nhớ" một tiếng tích nhẹ. Tắt tiếng (phím M) thì im cả hai.
+    if (knew) sfx.correct(1);
+    else sfx.tick(0);
     record(knew);
     if (!knew && word)
       setMistakes((list) => [

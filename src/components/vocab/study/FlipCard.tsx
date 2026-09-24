@@ -116,7 +116,6 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
 export function detailHeight(word: StudyWord, showWord = false): number {
   let h = 190;
   if (showWord) h += 36;
-  if (word.definitionEn) h += word.definitionEn.length > 90 ? 48 : 26;
   if (word.example) h += word.example.length > 80 ? 96 : 74;
   if (word.synonyms?.length) h += 44;
   if (word.antonyms?.length) h += 44;
@@ -144,7 +143,8 @@ function Chips({ words, tone, bg }: { words: string[]; tone: string; bg: string 
 }
 
 /**
- * Mặt sau đầy đủ, CHIA MỤC CÓ NHÃN: nghĩa + định nghĩa ở trên, rồi Ví dụ, Đồng
+ * Mặt sau đầy đủ, CHIA MỤC CÓ NHÃN: nghĩa tiếng Việt ở trên (bỏ định nghĩa tiếng
+ * Anh theo ý người dùng, 24/09/2026), rồi Ví dụ, Đồng
  * nghĩa, Trái nghĩa, Hay đi cùng — mục nào không có dữ liệu thì không hiện.
  * (Bản trước để câu ví dụ và cụm từ trôi không nhãn, người học không biết đó là gì.)
  */
@@ -160,7 +160,6 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
         </View>
       ) : null}
       <Text className="mt-1 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
-      {word.definitionEn ? <Text className="mt-1.5 text-center font-sans text-body text-muted">{word.definitionEn}</Text> : null}
 
       <View className="mt-4 gap-3.5">
         {word.example ? (
