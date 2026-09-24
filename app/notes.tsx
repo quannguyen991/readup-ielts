@@ -21,7 +21,7 @@ export default function NotesScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Notes"
+        title="Ghi chú"
         subtitle="Ghi chú và đoạn bôi màu bạn tạo khi đọc."
         illustration="notes-hero"
       >

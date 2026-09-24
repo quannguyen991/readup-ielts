@@ -28,7 +28,7 @@ export default function BookmarksScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Bookmarks"
+        title="Đã lưu"
         subtitle="Bài đọc bạn đánh dấu để quay lại sau."
         illustration="bookmarks-hero"
       />
