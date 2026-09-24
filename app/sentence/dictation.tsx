@@ -27,6 +27,7 @@ import { CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useSentenceStrike } from '@/components/game/useSentenceStrike';
+import { useGameStore } from '@/store/useGameStore';
 
 /**
  * Bài luyện chép chính tả — MỖI CHỮ CÁI MỘT Ô.
@@ -303,6 +304,8 @@ function RunningView({
     trọn câu (ô chữ) hay bấm chấm (tự gõ) — chứ không đợi bấm sang câu sau. Nhát
     chém phải rơi đúng lúc tia nạp đòn chạm quái.
   */
+  // Bật game thì nhát chém đã có tiếng; pháo giấy im cho khỏi kêu đôi.
+  const gameOn = useGameStore((s) => s.enabled);
   const strike = useSentenceStrike(item.id, 'listen');
   useEffect(() => {
     if (revealed) return;
@@ -458,7 +461,7 @@ function RunningView({
         {/* --------------------------------------------------------- vùng làm */}
         <View className="lg:flex-1">
           <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
-            {allCorrect && !revealed ? <Confetti seed={item.id} /> : null}
+            {allCorrect && !revealed ? <Confetti seed={item.id} silent={gameOn} /> : null}
 
             {/*
               THANH TRẬN ĐẤU đặt TRÊN CÙNG, đúng chỗ đường chạy cũ: mặt đất của

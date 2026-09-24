@@ -76,23 +76,41 @@ export const ENEMIES: EnemyDef[] = [
   { id: 'blank-dragon', name: 'Rồng Trang Trắng', baseHp: 190, color: '#ef4444', taunt: 'Tờ giấy trắng là của ta!' },
 ];
 
-/** Quái thứ `index` (đếm từ 0, tính cả những con đã hạ). Mỗi vòng qua đủ bảy loài, máu +40%. */
-export function enemyAt(index: number): EnemyDef & { hp: number; round: number } {
+/** Từ combo này trở lên là BÙNG CHÁY: mỗi nhát chém mạnh gấp rưỡi. */
+export const FEVER_AT = 10;
+
+/** Con cuối mỗi vòng (Rồng Trang Trắng) là BOSS: nhiều máu hơn, hạ được thì thưởng gấp đôi và rơi hai món. */
+export function isBoss(index: number): boolean {
+  return index % ENEMIES.length === ENEMIES.length - 1;
+}
+
+/** Quái thứ `index` (đếm từ 0, tính cả những con đã hạ). Mỗi vòng qua đủ bảy loài, máu +40%; boss thêm 25%. */
+export function enemyAt(index: number): EnemyDef & { hp: number; round: number; boss: boolean } {
   const def = ENEMIES[index % ENEMIES.length]!;
   const round = Math.floor(index / ENEMIES.length);
-  return { ...def, hp: Math.round(def.baseHp * (1 + round * 0.4)), round };
+  const boss = isBoss(index);
+  return { ...def, hp: Math.round(def.baseHp * (1 + round * 0.4) * (boss ? 1.25 : 1)), round, boss };
 }
 
-/** Sát thương một câu đúng: 20 + 3 × combo, chí mạng thì gấp đôi. */
+/** Sát thương một câu đúng: 20 + 3 × combo; chí mạng gấp đôi; đang Bùng cháy thì gấp rưỡi nữa. */
 export function damageFor(combo: number, crit: boolean): number {
-  return (20 + 3 * combo) * (crit ? 2 : 1);
+  return Math.round((20 + 3 * combo) * (crit ? 2 : 1) * (combo >= FEVER_AT ? 1.5 : 1));
 }
 
-/** Đồ rơi khi hạ quái: con chẵn rơi đồ, xoay vòng bốn món — đoán trước được, không phải quay xổ số. */
-export function lootFor(defeatedIndex: number): ItemKind | null {
-  if (defeatedIndex % 2 === 1) return null;
+/** Đồ rơi khi hạ quái: con chẵn rơi một món xoay vòng bốn món, boss rơi khiên + nhân đôi — đoán trước được, không phải quay xổ số. */
+export function lootFor(defeatedIndex: number): ItemKind[] {
+  if (isBoss(defeatedIndex)) return ['shield', 'double'];
+  if (defeatedIndex % 2 === 1) return [];
   const order: ItemKind[] = ['potion', 'hint', 'shield', 'double'];
-  return order[(defeatedIndex / 2) % order.length]!;
+  return [order[(defeatedIndex / 2) % order.length]!];
+}
+
+export type Defeat = { name: string; bonusXp: number; loot: ItemKind[]; boss: boolean };
+
+/** Phần thưởng khi hạ quái thứ `index`: nửa lượng máu của nó thành XP; boss thì trọn lượng máu. */
+function defeatOf(index: number): Defeat {
+  const enemy = enemyAt(index);
+  return { name: enemy.name, bonusXp: Math.round(enemy.boss ? enemy.hp : enemy.hp / 2), loot: lootFor(index), boss: enemy.boss };
 }
 
 // ---------------------------------------------------------------- một lượt trả lời
@@ -116,7 +134,7 @@ export type AnswerOutcome = {
   blocked: boolean;
   hurt: boolean;
   knockedOut: boolean;
-  defeated: { name: string; bonusXp: number; loot: ItemKind | null } | null;
+  defeated: Defeat | null;
   levelUp: number | null;
 };
 
@@ -154,10 +172,8 @@ export function resolveAnswer(s: BattleState, correct: boolean): AnswerOutcome {
   let enemyHp = s.enemyHp - damage;
   let defeated: AnswerOutcome['defeated'] = null;
   if (enemyHp <= 0) {
-    const enemy = enemyAt(s.enemyIndex);
-    const bonusXp = Math.round(enemy.hp / 2);
-    xpGained += bonusXp;
-    defeated = { name: enemy.name, bonusXp, loot: lootFor(s.enemyIndex) };
+    defeated = defeatOf(s.enemyIndex);
+    xpGained += defeated.bonusXp;
     enemyIndex += 1;
     enemyHp = enemyAt(enemyIndex).hp;
   }
@@ -184,7 +200,7 @@ export function resolveAnswer(s: BattleState, correct: boolean): AnswerOutcome {
 export function resolveBatch(
   s: BattleState,
   correct: number,
-): { state: BattleState; xpGained: number; damage: number; defeated: { name: string; bonusXp: number; loot: ItemKind | null }[]; levelUp: number | null } {
+): { state: BattleState; xpGained: number; damage: number; defeated: Defeat[]; levelUp: number | null } {
   const before = levelForXp(s.xp);
   const hits = Math.max(0, Math.floor(correct));
   const doubled = Math.min(hits, s.doubleLeft);
@@ -192,12 +208,11 @@ export function resolveBatch(
   const damage = hits * 20;
   let enemyIndex = s.enemyIndex;
   let enemyHp = s.enemyHp - damage;
-  const defeated: { name: string; bonusXp: number; loot: ItemKind | null }[] = [];
+  const defeated: Defeat[] = [];
   while (enemyHp <= 0) {
-    const enemy = enemyAt(enemyIndex);
-    const bonusXp = Math.round(enemy.hp / 2);
-    xpGained += bonusXp;
-    defeated.push({ name: enemy.name, bonusXp, loot: lootFor(enemyIndex) });
+    const down = defeatOf(enemyIndex);
+    xpGained += down.bonusXp;
+    defeated.push(down);
     const overflow = -enemyHp;
     enemyIndex += 1;
     enemyHp = enemyAt(enemyIndex).hp - overflow;
@@ -264,11 +279,11 @@ export const ACHIEVEMENTS: Achievement[] = [
   { id: 'first-blood', title: 'Nhát chém đầu', detail: 'Trả lời đúng câu đầu tiên.', glyph: '🗡️', test: (l) => l.correct >= 1 },
   { id: 'hundred', title: 'Trăm câu đúng', detail: 'Đúng tổng cộng 100 câu.', glyph: '💯', test: (l) => l.correct >= 100 },
   { id: 'thousand', title: 'Nghìn câu đúng', detail: 'Đúng tổng cộng 1.000 câu.', glyph: '🏔️', test: (l) => l.correct >= 1000 },
-  { id: 'combo-10', title: 'Chuỗi lửa', detail: 'Đạt combo 10.', glyph: '🔥', test: (l) => l.bestCombo >= 10 },
+  { id: 'combo-10', title: 'Bùng cháy', detail: 'Đạt combo 10 — lần đầu vào chế độ Bùng cháy.', glyph: '🔥', test: (l) => l.bestCombo >= FEVER_AT },
   { id: 'combo-25', title: 'Không thể cản', detail: 'Đạt combo 25.', glyph: '☄️', test: (l) => l.bestCombo >= 25 },
   { id: 'hunter-5', title: 'Thợ săn', detail: 'Hạ 5 con quái.', glyph: '🏹', test: (l) => l.defeated >= 5 },
   { id: 'hunter-7', title: 'Đủ bộ quái', detail: 'Hạ đủ bảy loài quái.', glyph: '📖', test: (l) => l.defeated >= ENEMIES.length },
-  { id: 'dragon', title: 'Diệt Rồng Trang Trắng', detail: 'Hạ 14 con quái — hai vòng.', glyph: '🐉', test: (l) => l.defeated >= ENEMIES.length * 2 },
+  { id: 'dragon', title: 'Diệt Rồng Trang Trắng', detail: 'Hạ boss hai lần — 14 con quái.', glyph: '🐉', test: (l) => l.defeated >= ENEMIES.length * 2 },
   { id: 'level-5', title: 'Cấp 5', detail: 'Lên cấp 5.', glyph: '⭐', test: (l) => levelForXp(l.xp) >= 5 },
   { id: 'level-10', title: 'Cấp 10', detail: 'Lên cấp 10.', glyph: '🌟', test: (l) => levelForXp(l.xp) >= 10 },
   { id: 'rise-again', title: 'Ngã rồi đứng dậy', detail: 'Bị đánh lui rồi vẫn học tiếp.', glyph: '🩹', test: (l) => l.knockouts >= 1 && l.correct >= 10 },

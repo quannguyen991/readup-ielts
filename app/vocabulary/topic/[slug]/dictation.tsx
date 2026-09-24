@@ -8,7 +8,6 @@ import { Icon } from '@/components/ui/Icon';
 import { preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { isTypedCorrect, letterDiff } from '@/services/vocab/topic-study';
-import { playCorrectChime } from '@/services/audio/chime';
 import { useGameStore } from '@/store/useGameStore';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -60,10 +59,7 @@ export default function DictationScreen() {
     if (verdict !== null || !typed.trim() || !word) return;
     const ok = isTypedCorrect(typed, target);
     setVerdict(ok);
-    if (ok) {
-      setCorrect((n) => n + 1);
-      playCorrectChime();
-    }
+    if (ok) setCorrect((n) => n + 1);
     logQuestions(1);
     useGameStore.getState().answer(ok, 'listen');
   };

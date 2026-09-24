@@ -1,180 +1,44 @@
-import { Platform } from 'react-native';
+import { sfx } from './sfx';
 
 /**
- * Tiếng chuông ngắn khi làm đúng.
+ * Các tiếng cũ của app — giờ chỉ là lối gọi vào bộ âm thanh game (`sfx.ts`).
  *
- * TỰ TỔNG HỢP BẰNG WEB AUDIO, KHÔNG NẠP TỆP. Một tệp mp3 dù ngắn cũng là thêm
- * một thứ phải tải, phải đặt tên, phải nhớ chép vào bản build, và phải chọn giấy
- * phép cho nó. Hai nốt sin có bao đóng nhanh thì dựng bằng mười dòng và nặng
- * đúng không byte nào.
+ * Giữ nguyên tên để các màn đang gọi (chuông đúng ở màn từ vựng, pháo giấy ở
+ * màn chép chính tả, trận Quest) không phải sửa, nhưng mọi tiếng giờ đi chung
+ * MỘT `AudioContext`, cùng một bộ nén, cùng nút tắt tiếng, và cùng luật chống
+ * kêu đôi: màn học báo "đúng" rồi luật game cũng báo "đúng" cho cùng một câu thì
+ * chỉ nghe một tiếng.
  *
- * MỘT `AudioContext` DÙNG LẠI cho cả phiên. Trình duyệt giới hạn số context mở
- * được (Chrome cho khoảng sáu), và màn chép chính tả thì bắn tiếng này mỗi câu —
- * tạo mới mỗi lần là sau mươi câu trình duyệt lặng thinh không báo gì.
- *
- * TẠO MUỘN, sau cú bấm đầu tiên. Dựng `AudioContext` lúc trang vừa mở thì nó ra
- * đời ở trạng thái `suspended` (chính sách tự phát của trình duyệt) và Chrome in
- * một cảnh báo vào console mỗi lần tải trang.
- *
- * NATIVE THÌ IM LẶNG — có chủ ý, không phải bỏ sót. Bản native chưa cài
- * `expo-audio`; thêm một phụ thuộc gốc chỉ để kêu hai nốt là cái giá phải bàn
- * riêng, còn phần web thì không nên đợi nó.
+ * Nuốt mọi lỗi: tiếng không kêu được thì không đáng làm hỏng màn làm bài. Trả
+ * về `true` khi thực sự phát.
  */
 
-let ctx: AudioContext | null = null;
-
-/** Trình duyệt cũ để `AudioContext` sau tiền tố. */
-function audioContextClass(): typeof AudioContext | null {
-  if (Platform.OS !== 'web' || typeof window === 'undefined') return null;
-  const w = window as unknown as {
-    AudioContext?: typeof AudioContext;
-    webkitAudioContext?: typeof AudioContext;
-  };
-  return w.AudioContext ?? w.webkitAudioContext ?? null;
-}
-
-function context(): AudioContext | null {
-  const Ctor = audioContextClass();
-  if (!Ctor) return null;
-  if (!ctx) {
-    try {
-      ctx = new Ctor();
-    } catch {
-      return null;
-    }
-  }
-  return ctx;
-}
-
-/** Một nốt sin, vào nhanh ra chậm. */
-function note(ac: AudioContext, hz: number, startAt: number, seconds: number, gain: number): void {
-  const osc = ac.createOscillator();
-  const amp = ac.createGain();
-
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(hz, startAt);
-
-  /*
-    Bao đóng phải có, không được bật/tắt thẳng. Một sóng sin bị cắt ngang giữa
-    chu kỳ tạo ra tiếng "tách" ở loa — nghe như lỗi chứ không như tiếng chuông.
-  */
-  amp.gain.setValueAtTime(0, startAt);
-  amp.gain.linearRampToValueAtTime(gain, startAt + 0.012);
-  amp.gain.exponentialRampToValueAtTime(0.0001, startAt + seconds);
-
-  osc.connect(amp).connect(ac.destination);
-  osc.start(startAt);
-  osc.stop(startAt + seconds + 0.02);
-}
-
-/**
- * Hai nốt đi lên — E6 rồi A6.
- *
- * ĐI LÊN chứ không đi xuống: quãng lên nghe như "xong rồi, tiếp đi", quãng
- * xuống nghe như báo hỏng. Đây là quy ước người dùng đã quen từ mọi phần mềm
- * khác, không phải chỗ để sáng tạo.
- *
- * Nuốt mọi lỗi: một tiếng chuông không kêu được thì không đáng làm hỏng màn làm
- * bài. Trả về `true` khi thực sự phát, để test hoặc nơi gọi biết.
- */
+/** Tiếng "đúng": hai nốt đi lên — quãng lên nghe như "xong rồi, tiếp đi". */
 export function playCorrectChime(): boolean {
-  const ac = context();
-  if (!ac) return false;
-
-  try {
-    /* Trình duyệt treo context khi tab ẩn; đánh thức trước rồi mới xếp nốt. */
-    if (ac.state === 'suspended') void ac.resume();
-
-    const t = ac.currentTime;
-    note(ac, 1318.51, t, 0.12, 0.16); // E6
-    note(ac, 1760.0, t + 0.085, 0.22, 0.13); // A6
-    return true;
-  } catch {
-    return false;
-  }
+  return sfx.correct(1);
 }
 
-function questTone(ac: AudioContext, hz: number, startAt: number, seconds: number, gain: number, type: OscillatorType): void {
-  const osc = ac.createOscillator();
-  const amp = ac.createGain();
-  osc.type = type;
-  osc.frequency.setValueAtTime(hz, startAt);
-  amp.gain.setValueAtTime(0.0001, startAt);
-  amp.gain.exponentialRampToValueAtTime(gain, startAt + 0.008);
-  amp.gain.exponentialRampToValueAtTime(0.0001, startAt + seconds);
-  osc.connect(amp).connect(ac.destination);
-  osc.start(startAt);
-  osc.stop(startAt + seconds + 0.02);
-}
-
-/** Âm thanh ngắn cho các nhịp chiến đấu của Quest, không cần tải file ngoài. */
+/** Trận Quest: vung vũ khí. */
 export function playQuestAttackSound(): boolean {
-  const ac = context();
-  if (!ac) return false;
-  try {
-    if (ac.state === 'suspended') void ac.resume();
-    const t = ac.currentTime;
-    questTone(ac, 150, t, 0.12, 0.08, 'sawtooth');
-    questTone(ac, 420, t + 0.05, 0.16, 0.1, 'square');
-    return true;
-  } catch {
-    return false;
-  }
+  return sfx.slash();
 }
 
+/** Trận Quest: trúng quái. */
 export function playQuestHitSound(): boolean {
-  const ac = context();
-  if (!ac) return false;
-  try {
-    if (ac.state === 'suspended') void ac.resume();
-    const t = ac.currentTime;
-    questTone(ac, 95, t, 0.18, 0.14, 'square');
-    questTone(ac, 180, t + 0.035, 0.12, 0.08, 'triangle');
-    return true;
-  } catch {
-    return false;
-  }
+  return sfx.impact(false, 0.08);
 }
 
+/** Trận Quest: bị quái đánh trúng. */
 export function playQuestDamageSound(): boolean {
-  const ac = context();
-  if (!ac) return false;
-  try {
-    if (ac.state === 'suspended') void ac.resume();
-    const t = ac.currentTime;
-    questTone(ac, 280, t, 0.12, 0.1, 'sawtooth');
-    questTone(ac, 110, t + 0.07, 0.2, 0.12, 'square');
-    return true;
-  } catch {
-    return false;
-  }
+  return sfx.hurt();
 }
 
-/** Lên cấp: bốn nốt đi lên (Đô–Mi–Sol–Đô), kiểu máy chơi game 8-bit. */
+/** Lên cấp. */
 export function playLevelUpSound(): boolean {
-  const ac = context();
-  if (!ac) return false;
-  try {
-    if (ac.state === 'suspended') void ac.resume();
-    const t = ac.currentTime;
-    [523.25, 659.25, 783.99, 1046.5].forEach((hz, i) => questTone(ac, hz, t + i * 0.09, 0.22, 0.07, 'square'));
-    return true;
-  } catch {
-    return false;
-  }
+  return sfx.levelUp();
 }
 
-/** Hạ quái / nhặt đồ: hai nốt cao rất ngắn. */
+/** Hạ quái / nhặt đồ. */
 export function playLootSound(): boolean {
-  const ac = context();
-  if (!ac) return false;
-  try {
-    if (ac.state === 'suspended') void ac.resume();
-    const t = ac.currentTime;
-    questTone(ac, 987.77, t, 0.08, 0.06, 'square');
-    questTone(ac, 1318.5, t + 0.07, 0.14, 0.06, 'square');
-    return true;
-  } catch {
-    return false;
-  }
+  return sfx.loot();
 }

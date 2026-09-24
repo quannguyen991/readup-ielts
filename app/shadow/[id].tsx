@@ -8,7 +8,6 @@ import { Icon } from '@/components/ui/Icon';
 import { GREEN, RED, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { AUDIO_NGUON, getLibraryAudio } from '@/data/audio-library';
 import { getAudioTranscript } from '@/data/audio-repository';
-import { playCorrectChime } from '@/services/audio/chime';
 import {
   alignWords,
   heardWords,
@@ -147,8 +146,7 @@ export default function ShadowLesson() {
       for (const w of missed) out[w] = (out[w] ?? 0) + 1;
       return out;
     });
-    if (a.score >= 85) playCorrectChime();
-    // Game khi học: đọc theo đạt từ 60 điểm là một đòn trúng.
+    // Game khi học: đọc theo đạt từ 60 điểm là một đòn trúng — kèm tiếng chém.
     useGameStore.getState().answer(a.score >= 60, 'shadow');
   };
 

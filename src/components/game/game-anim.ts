@@ -35,6 +35,9 @@ export function ensureGameKeyframes(): void {
 @keyframes rg-toast { 0% { opacity: 0; transform: translateX(40px); } 7% { opacity: 1; transform: translateX(0); } 90% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; transform: translateX(24px); } }
 @keyframes rg-bubble { 0% { opacity: 0; transform: translateY(6px) scale(0.9); } 10% { opacity: 1; transform: translateY(0) scale(1); } 85% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes rg-twinkle { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+@keyframes rg-shake-a { 0%, 100% { transform: translate(0, 0); } 15% { transform: translate(-6px, 3px); } 30% { transform: translate(5px, -4px); } 45% { transform: translate(-4px, 2px); } 60% { transform: translate(3px, -1px); } 80% { transform: translate(-1px, 1px); } }
+@keyframes rg-shake-b { 0%, 100% { transform: translate(0, 0); } 15% { transform: translate(6px, -3px); } 30% { transform: translate(-5px, 4px); } 45% { transform: translate(4px, -2px); } 60% { transform: translate(-3px, 1px); } 80% { transform: translate(1px, -1px); } }
+@keyframes rg-aura { 0%, 100% { transform: scale(0.88); opacity: 0.55; } 50% { transform: scale(1.12); opacity: 0.95; } }
 @media (prefers-reduced-motion: reduce) { [data-game-move] { animation: none !important; } }`;
   document.head.appendChild(el);
 }

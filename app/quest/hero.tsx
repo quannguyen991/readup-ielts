@@ -12,6 +12,8 @@ import {
   ACHIEVEMENTS,
   CRIT_EVERY,
   dailyQuests,
+  FEVER_AT,
+  isBoss,
   EMPTY_DAY,
   enemyAt,
   ENEMIES,
@@ -101,35 +103,28 @@ export default function HeroScreen() {
 
       {/* Công tắc */}
       <Appear index={2}>
-        <View style={{ ...PANEL, marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
-          <View style={{ flex: 1 }}>
-            <Text className="font-strong" style={{ fontSize: 15, color: '#FFFFFF' }}>
-              Chế độ game khi học
-            </Text>
-            <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: MUTED }}>
-              {g.enabled
+        <View style={{ ...PANEL, marginTop: 12, gap: 14 }}>
+          <SwitchRow
+            title="Chế độ game khi học"
+            detail={
+              g.enabled
                 ? 'Đang bật: màn học có thanh trận đấu, mỗi câu đúng cộng XP và chém quái.'
-                : 'Đang tắt: màn học gọn như cũ, không cộng XP game. Tiến độ học vẫn tính đủ.'}
-            </Text>
-          </View>
-          <Pressable
-            accessibilityRole="switch"
-            accessibilityState={{ checked: g.enabled }}
-            accessibilityLabel="Bật tắt chế độ game khi học"
-            onPress={() => g.setEnabled(!g.enabled)}
-            style={{ width: 58, height: 32, borderRadius: 999, padding: 3, backgroundColor: g.enabled ? '#22C55E' : 'rgba(255,255,255,0.2)', justifyContent: 'center' }}
-          >
-            <View
-              style={{
-                width: 26,
-                height: 26,
-                borderRadius: 999,
-                backgroundColor: '#FFFFFF',
-                transform: [{ translateX: g.enabled ? 26 : 0 }],
-                ...(Platform.OS === 'web' ? ({ transition: 'transform 200ms ease' } as object) : null),
-              }}
-            />
-          </Pressable>
+                : 'Đang tắt: màn học gọn như cũ, không cộng XP game. Tiến độ học vẫn tính đủ.'
+            }
+            on={g.enabled}
+            onToggle={() => g.setEnabled(!g.enabled)}
+          />
+          <View style={{ height: 1, backgroundColor: 'rgba(255,255,255,0.08)' }} />
+          <SwitchRow
+            title="Âm thanh hiệu ứng"
+            detail={
+              g.sound
+                ? 'Đang bật: tiếng đúng cao dần theo combo, tiếng chém, trúng đòn, hạ quái, lên cấp. Phím M để tắt nhanh.'
+                : 'Đang tắt: học trong im lặng. Phím M trên thanh trận đấu để bật lại.'
+            }
+            on={g.sound}
+            onToggle={() => g.setSound(!g.sound)}
+          />
         </View>
       </Appear>
 
@@ -251,6 +246,13 @@ export default function HeroScreen() {
                   <Text className="font-strong" numberOfLines={1} style={{ marginTop: 6, fontSize: 13, color: seen ? '#FFFFFF' : MUTED }}>
                     {seen ? e.name : '???'}
                   </Text>
+                  {isBoss(i) ? (
+                    <View style={{ marginTop: 3, borderRadius: 4, paddingHorizontal: 5, backgroundColor: '#DC2626' }}>
+                      <Text className="font-heavy" style={{ fontSize: 10, letterSpacing: 1, color: '#FFFFFF' }}>
+                        BOSS
+                      </Text>
+                    </View>
+                  ) : null}
                   <Text className="font-sans" style={{ fontSize: 12, color: kills > 0 ? GOLD : MUTED }}>
                     {kills > 0 ? `Đã hạ ${kills} lần` : seen ? 'Đang đánh' : `${e.baseHp} máu`}
                   </Text>
@@ -293,11 +295,15 @@ export default function HeroScreen() {
           <View style={{ marginTop: 10, gap: 6 }}>
             {[
               `Đúng một câu: +${XP_CORRECT} XP và chém quái. Từ câu đúng thứ 3 liên tiếp, mỗi câu cộng thêm XP.`,
-              `Cứ ${CRIT_EVERY} câu đúng liên tiếp là một đòn chí mạng: gấp đôi XP và sát thương.`,
+              `Cứ ${CRIT_EVERY} câu đúng liên tiếp là một đòn chí mạng: gấp đôi XP và sát thương, khung trận rung lên.`,
+              `Combo từ ${FEVER_AT} là BÙNG CHÁY: mỗi nhát chém mạnh gấp rưỡi, nhân vật bốc lửa.`,
+              'Con thứ bảy mỗi vòng là BOSS: nhiều máu hơn, hạ được thưởng trọn lượng máu thành XP và rơi 2 món.',
+              'Còn một tim thì khung trận viền đỏ và tim đập — cẩn thận câu kế tiếp.',
               'Sai một câu: mất combo và một tim. Khiên chặn được một câu sai.',
               'Hết tim: bị đánh lui — tim hồi đầy, quái hồi máu. Bài học không bao giờ bị khoá.',
               'Hạ quái: thưởng thêm XP, cứ hai con thì rơi một món đồ.',
               'Bài chỉ chấm lúc nộp (kiểm tra, đề tuần): mỗi câu đúng +10 XP và một nhát, không tính combo, không mất tim.',
+              'Phím tắt trên thanh trận đấu: I mở túi đồ · H hỏi Cú · M bật/tắt âm thanh.',
             ].map((line) => (
               <Text key={line} className="font-sans" style={{ fontSize: 13, lineHeight: 20, color: 'rgba(255,255,255,0.82)' }}>
                 •  {line}
@@ -345,5 +351,38 @@ function GoButton({ label, href }: { label: string; href: string }) {
         {label} →
       </Text>
     </Pressable>
+  );
+}
+
+function SwitchRow({ title, detail, on, onToggle }: { title: string; detail: string; on: boolean; onToggle: () => void }) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 14 }}>
+      <View style={{ flex: 1 }}>
+        <Text className="font-strong" style={{ fontSize: 15, color: '#FFFFFF' }}>
+          {title}
+        </Text>
+        <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: MUTED }}>
+          {detail}
+        </Text>
+      </View>
+      <Pressable
+        accessibilityRole="switch"
+        accessibilityState={{ checked: on }}
+        accessibilityLabel={title}
+        onPress={onToggle}
+        style={{ width: 58, height: 32, borderRadius: 999, padding: 3, backgroundColor: on ? '#22C55E' : 'rgba(255,255,255,0.2)', justifyContent: 'center' }}
+      >
+        <View
+          style={{
+            width: 26,
+            height: 26,
+            borderRadius: 999,
+            backgroundColor: '#FFFFFF',
+            transform: [{ translateX: on ? 26 : 0 }],
+            ...(Platform.OS === 'web' ? ({ transition: 'transform 200ms ease' } as object) : null),
+          }}
+        />
+      </Pressable>
+    </View>
   );
 }

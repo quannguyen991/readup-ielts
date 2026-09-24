@@ -6,7 +6,8 @@ import Svg, { Rect } from 'react-native-svg';
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { PixelSprite } from './PixelSprite';
 import { ENEMY_SPRITE } from './sprites';
-import { CRIT_EVERY, enemyAt, ITEMS, levelProgress, MAX_HEARTS, type ItemKind } from '@/services/game/rules';
+import { sfx } from '@/services/audio/sfx';
+import { CRIT_EVERY, enemyAt, FEVER_AT, ITEMS, levelProgress, MAX_HEARTS, type ItemKind } from '@/services/game/rules';
 import { staleBefore, useGameFx, type FxEvent } from '@/store/useGameFx';
 import { useGameStore } from '@/store/useGameStore';
 
@@ -32,6 +33,8 @@ const GOLD = '#FACC15';
 const HERO_BOX = 63;
 const ENEMY_BOX = 132;
 const ENEMY_SPRITE_SIZE = 58;
+/** Boss to hơn một cỡ — và đứng thấp hơn (gần người xem) để tên không lấn lên hàng nút. */
+const BOSS_SPRITE_SIZE = 68;
 
 type Kind = FxEvent['kind'];
 
@@ -108,6 +111,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   const shield = useGameStore((s) => s.shield);
   const doubleLeft = useGameStore((s) => s.doubleLeft);
   const items = useGameStore((s) => s.items);
+  const sound = useGameStore((s) => s.sound);
   const hint = useGameFx((s) => s.hint);
   const events = useGameFx((s) => s.events);
 
@@ -122,6 +126,19 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   const heroAttacks = hit && (!hurt || hit.id > hurt.id);
   const heroKey = `${hit?.id ?? 0}-${hurt?.id ?? 0}`;
   const itemTotal = ITEM_ORDER.reduce((n, k) => n + (items[k] ?? 0), 0);
+  const fever = combo >= FEVER_AT;
+  const lowHp = hearts === 1;
+  const enemySize = enemy.boss ? BOSS_SPRITE_SIZE : ENEMY_SPRITE_SIZE;
+  // Chí mạng rung cả khung. Đổi tên hoạt cảnh (a/b) là cách cho nó chạy lại mà không phải dựng lại cả cảnh.
+  const shake = hit?.crit && heroAttacks ? (hit.id % 2 ? 'rg-shake-a' : 'rg-shake-b') : null;
+
+  // Bài gõ cả câu: mỗi từ vừa đúng thêm một tiếng tích, cao dần theo tia nạp đòn.
+  const chargeValue = charge?.value ?? 0;
+  const lastCharge = useRef(chargeValue);
+  useEffect(() => {
+    if (chargeValue > lastCharge.current && charge && chargeValue < charge.total) sfx.tick(chargeValue);
+    lastCharge.current = chargeValue;
+  }, [chargeValue, charge]);
 
   const tryItem = (k: ItemKind) => {
     if ((items[k] ?? 0) <= 0) return setNote(`Hết ${ITEMS[k].name}. Hạ quái hoặc làm nhiệm vụ ngày để kiếm thêm.`);
@@ -142,6 +159,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
       const k = e.key.toLowerCase();
       if (k === 'i') setBag((b) => !b);
       else if (k === 'h') tryItem('hint');
+      else if (k === 'm') useGameStore.getState().setSound(!useGameStore.getState().sound);
     };
   });
   useEffect(() => {
@@ -153,8 +171,21 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
 
   return (
     <View className={className} accessibilityLabel={`Cấp ${lv.level}, ${hearts} tim, đang đánh ${enemy.name}`}>
-      <View ref={box} onLayout={(e) => setWidth(Math.round(e.nativeEvent.layout.width))} style={{ height: 152, borderRadius: 20, overflow: 'hidden', backgroundColor: '#17123A' }}>
+      <View
+        ref={box}
+        onLayout={(e) => setWidth(Math.round(e.nativeEvent.layout.width))}
+        style={{ height: 152, borderRadius: 20, overflow: 'hidden', backgroundColor: '#17123A', ...(shake ? anim(shake, 420) : null) }}
+        {...MOVE}
+      >
         <Backdrop tint={enemy.color} />
+        {/* Bùng cháy: cả cảnh ửng cam, nhịp theo lửa. */}
+        {fever ? (
+          <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: 'rgba(249,115,22,0.16)', ...anim('rg-twinkle', 1100, { loop: true, timing: 'ease-in-out' }) }} />
+        ) : null}
+        {/* Boss: nền đỏ sậm dần phía quái. */}
+        {enemy.boss ? (
+          <View pointerEvents="none" style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '55%', backgroundColor: 'rgba(220,38,38,0.12)' }} />
+        ) : null}
 
         {/* HUD: cấp + XP bên trái; combo, túi đồ, Cú bên phải. */}
         <View style={{ position: 'absolute', left: 12, right: 12, top: 10, flexDirection: 'row', alignItems: 'center', gap: 8, zIndex: 3 }}>
@@ -189,7 +220,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               </Text>
             </View>
           ) : null}
-          {combo >= 2 ? <Combo combo={combo} compact={narrow} /> : null}
+          {combo >= 2 ? <Combo combo={combo} compact={narrow} fever={fever} /> : null}
           <HudButton label={narrow ? undefined : 'Túi đồ'} hotkey={narrow ? undefined : 'I'} glyph="🎒" count={itemTotal} active={bag} onPress={() => setBag((b) => !b)} a11y="Mở túi đồ (phím I)" />
           <HudButton
             label={narrow ? undefined : 'Hỏi Cú'}
@@ -200,12 +231,30 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             onPress={() => tryItem('hint')}
             a11y="Hỏi Cú: dùng một gợi ý cho câu đang làm (phím H)"
           />
+          {!narrow ? (
+            <Pressable
+              accessibilityRole="switch"
+              accessibilityState={{ checked: sound }}
+              accessibilityLabel={sound ? 'Tắt âm thanh hiệu ứng (phím M)' : 'Bật âm thanh hiệu ứng (phím M)'}
+              onPress={() => useGameStore.getState().setSound(!sound)}
+              style={({ hovered }: { hovered?: boolean }) => ({ width: 28, height: 28, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.1)' })}
+            >
+              <Text style={{ fontSize: 13, opacity: sound ? 1 : 0.6 }}>{sound ? '🔊' : '🔇'}</Text>
+            </Pressable>
+          ) : null}
         </View>
 
         {/* Nhân vật */}
         <View style={{ position: 'absolute', left: heroLeft, bottom: 16, alignItems: 'center', zIndex: 2 }}>
           <Hearts hearts={hearts} />
           <View style={{ marginTop: 4 }}>
+            {fever ? (
+              <View
+                pointerEvents="none"
+                style={{ position: 'absolute', left: -6, right: -6, top: -4, bottom: -2, borderRadius: 40, backgroundColor: 'rgba(249,115,22,0.35)', boxShadow: '0 0 22px 8px rgba(249,115,22,0.55)', ...anim('rg-aura', 700, { loop: true, timing: 'ease-in-out' }) } as object}
+                {...MOVE}
+              />
+            ) : null}
             <View key={heroKey} style={hit || hurt ? anim(heroAttacks ? 'rg-lunge' : 'rg-hurt', heroAttacks ? 360 : 520) : undefined} {...MOVE}>
               <View style={anim('rg-bob', 1400, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
                 <PixelSprite name="hero" size={54} />
@@ -220,17 +269,26 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
         </View>
 
         {/* Quái */}
-        <View style={{ position: 'absolute', right: enemyRight, bottom: 16, width: ENEMY_BOX, alignItems: 'center', zIndex: 2 }}>
-          <Text className="font-strong" numberOfLines={1} style={{ fontSize: 11, color: '#F8FAFC' }}>
-            {enemy.name}
-            {enemy.round > 0 ? <Text style={{ color: GOLD }}>{`  ★${enemy.round + 1}`}</Text> : null}
-          </Text>
+        <View style={{ position: 'absolute', right: enemyRight, bottom: enemy.boss ? 8 : 16, width: ENEMY_BOX, alignItems: 'center', zIndex: 2 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, maxWidth: ENEMY_BOX }}>
+            {enemy.boss ? (
+              <View style={{ borderRadius: 4, paddingHorizontal: 4, backgroundColor: '#DC2626' }}>
+                <Text className="font-heavy" style={{ fontSize: 9, letterSpacing: 1, color: '#FFFFFF' }}>
+                  BOSS
+                </Text>
+              </View>
+            ) : null}
+            <Text className="font-strong" numberOfLines={1} style={{ flexShrink: 1, fontSize: 11, color: '#F8FAFC' }}>
+              {enemy.name}
+              {enemy.round > 0 ? <Text style={{ color: GOLD }}>{`  ★${enemy.round + 1}`}</Text> : null}
+            </Text>
+          </View>
           <View style={{ marginTop: 3, width: 104, height: 8, borderRadius: 3, backgroundColor: 'rgba(0,0,0,0.45)', overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.25)' }}>
             <View
               style={{
                 height: '100%',
                 width: '100%',
-                backgroundColor: enemyHp / enemy.hp > 0.5 ? '#22C55E' : enemyHp / enemy.hp > 0.25 ? '#F59E0B' : '#EF4444',
+                backgroundColor: enemy.boss ? '#F43F5E' : enemyHp / enemy.hp > 0.5 ? '#22C55E' : enemyHp / enemy.hp > 0.25 ? '#F59E0B' : '#EF4444',
                 transform: [{ scaleX: Math.max(0, enemyHp / enemy.hp) }],
                 transformOrigin: 'left',
                 ...(Platform.OS === 'web' ? ({ transition: 'transform 360ms ease-out, background-color 360ms ease' } as object) : null),
@@ -238,16 +296,23 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             />
           </View>
           <View style={{ marginTop: 4 }}>
+            {enemy.boss ? (
+              <View
+                pointerEvents="none"
+                style={{ position: 'absolute', left: 6, right: 6, top: 6, bottom: 0, borderRadius: 40, backgroundColor: 'rgba(239,68,68,0.28)', boxShadow: '0 0 26px 10px rgba(239,68,68,0.45)', ...anim('rg-aura', 1300, { loop: true, timing: 'ease-in-out' }) } as object}
+                {...MOVE}
+              />
+            ) : null}
             <View key={`e${enemyIndex}`} style={anim('rg-enter', 520, { delay: defeat ? 420 : 0 })} {...MOVE}>
               <View key={`h${hit?.id ?? 0}-${hurt?.id ?? 0}`} style={hit && !killing && heroAttacks ? anim('rg-hit', 420, { delay: 110 }) : hurt && !heroAttacks ? anim('rg-enemy-lunge', 380) : undefined} {...MOVE}>
                 <View style={anim('rg-bob', 1200, { loop: true, timing: 'ease-in-out', delay: 300 })} {...MOVE}>
-                  <PixelSprite name={ENEMY_SPRITE[enemy.id] ?? 'slime'} color={enemy.color} size={ENEMY_SPRITE_SIZE} />
+                  <PixelSprite name={ENEMY_SPRITE[enemy.id] ?? 'slime'} color={enemy.color} size={enemySize} />
                 </View>
               </View>
             </View>
             {defeat && Platform.OS === 'web' ? (
               <View key={`d${defeat.id}`} pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, ...anim('rg-die', 620, { delay: 90, fill: 'forwards' }) }}>
-                <PixelSprite name={ENEMY_SPRITE[enemyAt(defeat.enemyIndex).id] ?? 'slime'} color={enemyAt(defeat.enemyIndex).color} size={ENEMY_SPRITE_SIZE} />
+                <PixelSprite name={ENEMY_SPRITE[enemyAt(defeat.enemyIndex).id] ?? 'slime'} color={enemyAt(defeat.enemyIndex).color} size={defeat.boss ? BOSS_SPRITE_SIZE : ENEMY_SPRITE_SIZE} />
               </View>
             ) : null}
             {hit && heroAttacks && Platform.OS === 'web' ? (
@@ -256,7 +321,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           </View>
           <Shadow />
           {web ? floats.filter((e) => e.kind === 'hit').map((e) => <DamageFloat key={e.id} e={e} />) : null}
-          {!narrow && !charge ? (
+          {!narrow && !charge && !enemy.boss ? (
             <View key={`t${enemyIndex}`} pointerEvents="none" style={{ position: 'absolute', right: 116, bottom: 26, width: 176, ...anim('rg-bubble', 3200, { delay: defeat ? 900 : 400, fill: 'forwards' }) }}>
               <View style={{ borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 9, paddingVertical: 6 }}>
                 <Text className="font-semi" style={{ fontSize: 11, color: '#1B1330' }}>
@@ -267,8 +332,24 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           ) : null}
         </View>
 
-        {charge && charge.total > 0 ? <ChargeBeam charge={charge} left={heroLeft + HERO_BOX + 6} right={enemyRight + (ENEMY_BOX + ENEMY_SPRITE_SIZE) / 2 + 6} /> : null}
+        {charge && charge.total > 0 ? <ChargeBeam charge={charge} left={heroLeft + HERO_BOX + 6} right={enemyRight + (ENEMY_BOX + enemySize) / 2 + 6} /> : null}
         {step && step.total > 0 ? <Road step={step} /> : null}
+
+        {/* Boss vừa bước ra: một dòng cảnh báo giữa cảnh. */}
+        {enemy.boss && web ? (
+          <View key={`boss-${enemyIndex}`} pointerEvents="none" style={{ position: 'absolute', left: 8, right: 8, top: 44, zIndex: 4, alignItems: 'center', ...anim('rg-bubble', 2800, { delay: defeat ? 700 : 150, fill: 'forwards' }) }}>
+            <View style={{ borderRadius: 10, paddingHorizontal: 12, paddingVertical: 5, backgroundColor: 'rgba(127,29,29,0.9)', borderWidth: 1, borderColor: '#F87171' }}>
+              <Text className="font-heavy" style={{ fontSize: 13, color: '#FEE2E2' }}>
+                ⚠ BOSS: {enemy.name} — hạ được rơi 2 món
+              </Text>
+            </View>
+          </View>
+        ) : null}
+
+        {/* Còn một tim: viền đỏ đập theo nhịp tim. */}
+        {lowHp ? (
+          <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, borderRadius: 20, boxShadow: 'inset 0 0 26px 4px rgba(244,63,94,0.6)', ...anim('rg-twinkle', 900, { loop: true, timing: 'ease-in-out' }) } as object} />
+        ) : null}
 
         {/* Thông báo giữa cảnh: khiên chặn, bị đánh lui, hạ quái, dùng đồ */}
         {web ? floats.filter((e) => e.kind !== 'hit' && e.kind !== 'hurt').map((e) => <CenterFloat key={e.id} e={e} />) : null}
@@ -297,11 +378,24 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               </Pressable>
             ))}
           </View>
-          <Pressable accessibilityRole="link" onPress={() => router.push('/shop' as never)} style={{ marginTop: 8, alignSelf: 'flex-end' }}>
-            <Text className="font-semi" style={{ fontSize: 12, color: GOLD }}>
-              Mua thêm ở Cửa hàng →
-            </Text>
-          </Pressable>
+          <View style={{ marginTop: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+            <Pressable
+              accessibilityRole="switch"
+              accessibilityState={{ checked: sound }}
+              onPress={() => useGameStore.getState().setSound(!sound)}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: 'rgba(255,255,255,0.07)' }}
+            >
+              <Text style={{ fontSize: 13 }}>{sound ? '🔊' : '🔇'}</Text>
+              <Text className="font-semi" style={{ fontSize: 12, color: '#FFFFFF' }}>
+                Âm thanh: {sound ? 'bật' : 'tắt'}
+              </Text>
+            </Pressable>
+            <Pressable accessibilityRole="link" onPress={() => router.push('/shop' as never)}>
+              <Text className="font-semi" style={{ fontSize: 12, color: GOLD }}>
+                Mua thêm ở Cửa hàng →
+              </Text>
+            </Pressable>
+          </View>
         </View>
       ) : null}
       {note ? (
@@ -374,15 +468,20 @@ function Hearts({ hearts }: { hearts: number }) {
   );
 }
 
-function Combo({ combo, compact }: { combo: number; compact: boolean }) {
+function Combo({ combo, compact, fever }: { combo: number; compact: boolean; fever: boolean }) {
   // Chấm tiến tới đòn chí mạng; đúng lúc vừa chí mạng thì đầy cả hàng.
   const pips = combo % CRIT_EVERY === 0 ? CRIT_EVERY : combo % CRIT_EVERY;
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 8, paddingHorizontal: 7, paddingVertical: 3, backgroundColor: 'rgba(249,115,22,0.2)' }}>
-      <View style={anim('rg-flame', 700, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 8, paddingHorizontal: 7, paddingVertical: 3, backgroundColor: fever ? '#EA580C' : 'rgba(249,115,22,0.2)' }}>
+      <View style={anim('rg-flame', fever ? 420 : 700, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
         <Text style={{ fontSize: 12 }}>🔥</Text>
       </View>
-      <Text className="font-heavy" style={{ fontSize: 12, color: '#FDBA74' }}>
+      {fever && !compact ? (
+        <Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 0.5, color: '#FFF7ED' }}>
+          BÙNG CHÁY
+        </Text>
+      ) : null}
+      <Text className="font-heavy" style={{ fontSize: 12, color: fever ? '#FFFFFF' : '#FDBA74' }}>
         ×{combo}
       </Text>
       {compact ? null : (
@@ -472,7 +571,11 @@ function CenterFloat({ e }: { e: FxEvent }) {
       : e.kind === 'knockout'
         ? { t: 'Bị đánh lui! Tim hồi đầy, quái hồi máu', c: '#FDA4AF', ms: 1800 }
         : e.kind === 'defeat'
-          ? { t: `Hạ ${e.name}! +${e.bonusXp} XP${e.loot ? ` · rơi ${ITEMS[e.loot].glyph} ${ITEMS[e.loot].name}` : ''}`, c: GOLD, ms: 2000 }
+          ? {
+              t: `${e.boss ? '🏆 Hạ BOSS ' : 'Hạ '}${e.name}! +${e.bonusXp} XP${e.loot.length > 0 ? ` · rơi ${e.loot.map((k) => `${ITEMS[k].glyph} ${ITEMS[k].name}`).join(', ')}` : ''}`,
+              c: GOLD,
+              ms: e.boss ? 2600 : 2000,
+            }
           : e.kind === 'item'
             ? { t: `${ITEMS[e.item].glyph} Dùng ${e.title}`, c: '#FFFFFF', ms: 1300 }
             : e.kind === 'batch' && e.xp > 0
