@@ -2,7 +2,8 @@ import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { Platform, Pressable, Text, View } from "react-native";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/data/study-decks";
-import { router } from "expo-router";
+import { router, usePathname } from "expo-router";
+import { isVocabStudyRoute } from "@/navigation/focus-routes";
 import * as Speech from "expo-speech";
 import { englishVoice } from "@/services/audio/voice";
 
@@ -16,8 +17,9 @@ import { color } from "@/theme/tokens";
  * Phát âm, Kiểm tra).
  *
  * Ngôn ngữ thiết kế của ReadUp chứ không phải của app tham khảo: thẻ trắng
- * trên nền lưới sáng, nhấn bằng xanh của app, chữ đậm vừa phải. Không nền tối,
- * không hiệu ứng tuyết, không khung vòm.
+ * trên nền chàm kẻ ô (cùng nền màn Đọc song ngữ — người dùng chọn ngày
+ * 24/09/2026), nhấn bằng xanh của app, chữ đậm vừa phải. Không hiệu ứng tuyết,
+ * không khung vòm. Chữ nằm ngoài thẻ đổi sang màu sáng theo `isVocabStudyRoute`.
  */
 
 export const CARD_SHADOW =
@@ -89,6 +91,7 @@ export function StudyFrame({
   footer?: string;
   right?: React.ReactNode;
 }) {
+  const navy = isVocabStudyRoute(usePathname());
   return (
     <View
       className="w-full self-center px-4 pb-10 pt-6"
@@ -103,14 +106,16 @@ export function StudyFrame({
           <Icon name="chevron-left" size={18} color={color.ink} />
           <Text className="font-semi text-body text-ink">Thoát</Text>
         </Pressable>
-        <Text className="font-strong text-body text-ink">{title}</Text>
+        <Text className="font-strong text-body" style={{ color: navy ? "#FFFFFF" : color.ink }}>
+          {title}
+        </Text>
         <View style={{ minWidth: 90, alignItems: "flex-end" }}>{right}</View>
       </View>
 
       {progress ? (
-        <SegmentBar fractions={progress} />
+        <SegmentBar fractions={progress} navy={navy} />
       ) : segments ? (
-        <SegmentBar fractions={segments.map((x) => x / 2)} />
+        <SegmentBar fractions={segments.map((x) => x / 2)} navy={navy} />
       ) : null}
 
       {battle ? <BattleStrip className="mt-4" /> : null}
@@ -120,7 +125,7 @@ export function StudyFrame({
       {footer ? (
         <Text
           className="mt-5 text-center font-sans text-body"
-          style={{ color: "#1E293B" }}
+          style={{ color: navy ? "rgba(255,255,255,0.86)" : "#1E293B" }}
         >
           {footer}
         </Text>
@@ -129,20 +134,20 @@ export function StudyFrame({
   );
 }
 
-function SegmentBar({ fractions }: { fractions: number[] }) {
+function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean }) {
   return (
     <View className="mt-5 flex-row gap-1.5">
       {fractions.map((s, i) => (
         <View
           key={i}
           className="h-2.5 flex-1 overflow-hidden rounded-pill"
-          style={{ backgroundColor: "rgba(255,255,255,0.7)" }}
+          style={{ backgroundColor: navy ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.7)" }}
         >
           {/* Đầy dần bằng transform (không đụng bố cục); xong hẳn thì chuyển xanh lá. */}
           <View
             className="h-2.5 w-full rounded-pill"
             style={{
-              backgroundColor: s >= 1 ? GREEN : color.primary,
+              backgroundColor: s >= 1 ? GREEN : navy ? "#60A5FA" : color.primary,
               transform: [{ scaleX: Math.max(0, Math.min(1, s)) }],
               transformOrigin: "left",
               ...(Platform.OS === "web"

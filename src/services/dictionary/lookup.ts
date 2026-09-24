@@ -53,9 +53,9 @@ function normalizeStem(stem: string): string {
 }
 
 async function fetchEnglish(word: string): Promise<Partial<WordLookup>> {
-  const res = await fetch(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,
-  );
+  const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`, {
+    signal: AbortSignal.timeout(5000),
+  });
   if (!res.ok) return {};
 
   const data = (await res.json()) as DictionaryApiEntry[];
@@ -162,6 +162,8 @@ async function fetchBase(
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ word, lemma }),
+      // Route tự cắt mỗi dịch vụ ở 4 giây; quá 9 giây là route có chuyện — rơi xuống đường gọi thẳng.
+      signal: AbortSignal.timeout(9000),
     });
 
     if (res.ok) {

@@ -39,21 +39,29 @@ import { Icon } from "@/components/ui/Icon";
 import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import {
   activeKinds,
-  answerLearn,
+  clozeOf,
   directionFor,
   filterWords,
-  isFinalKind,
   isTypedCorrect,
   makeChoices,
-  passesStage,
-  learnFraction,
-  pickNext,
+  makeWordChoices,
   pickRound,
-  startLearn,
   seededRng,
+  synonymMatch,
   type LearnSettings,
+  type StageKind,
   type StudyWord,
 } from "@/services/vocab/topic-study";
+import {
+  answerLoop,
+  finishesWord,
+  loopFraction,
+  pickNext,
+  slotOf,
+  startLoop,
+  type LoopOptions,
+} from "@/services/vocab/learn-loop";
+import { canRecognize, startListening, type Listening } from "@/services/shadow/speech";
 import { masteredCount, useTopicStudyStore } from "@/store/useTopicStudyStore";
 import { useStudyStore } from "@/store/useStudyStore";
 import { useGameStore } from "@/store/useGameStore";
@@ -66,28 +74,29 @@ import {
 import { color } from "@/theme/tokens";
 
 const NO_STARS: string[] = [];
-const KIND_LABEL = {
+const KIND_LABEL: Record<StageKind, string> = {
   flash: "Lật thẻ",
   mcq: "Trắc nghiệm",
-  type: "Điền từ",
-} as const;
+  fill: "Điền chỗ trống",
+  type: "Gõ từ",
+};
+/** Chữ trên nền chàm của màn học (ngoài thẻ trắng). */
+const ON_NAVY = "rgba(255,255,255,0.86)";
+const AMBER_ON_NAVY = "#FCD34D";
 
 /**
- * Học một bộ từ theo VÒNG 10 TỪ, qua ba phần:
+ * Học một bộ từ theo VÒNG 10 TỪ, bốn dạng câu:
  *
- * 1. LẬT THẺ — gặp từ, lật xem mặt sau, tự nói "đã biết" hay "chưa nhớ".
- * 2. TRẮC NGHIỆM — nhận ra đúng giữa bốn lựa chọn.
- * 3. ĐIỀN TỪ — chỉ thấy nghĩa (hoặc chỉ nghe), gõ ra từ tiếng Anh.
+ * - LẬT THẺ — gặp từ lần đầu, lật xem mặt sau, tự nói "đã biết" hay "chưa nhớ".
+ * - TRẮC NGHIỆM — nhận ra đúng giữa bốn lựa chọn.
+ * - ĐIỀN CHỖ TRỐNG — kiểu đề THPT: chọn từ đúng cho chỗ trống trong câu ví dụ.
+ * - GÕ TỪ — chỉ thấy nghĩa (hoặc chỉ nghe), gõ (hoặc nói) ra từ tiếng Anh.
  *
- * Dễ trước khó: nhận ra dễ hơn nhớ lại nhiều — làm được trắc nghiệm chưa có
- * nghĩa là viết được từ đó trong bài Writing — nên từ chỉ tính là "đã nhớ" khi
- * qua phần cuối đang bật. Người học tắt bớt phần, đổi chiều hỏi, lọc từ gắn
- * sao… trong bảng Cài đặt.
- *
- * Các dạng câu XEN KẼ nhau (`pickNext`): từ mới được đưa vào dần, câu kế tiếp
- * ưu tiên dạng khác câu vừa làm — không phải mười thẻ lật liền nhau rồi mới
- * tới trắc nghiệm. Mỗi từ vẫn đi đúng thứ tự của riêng nó. Sai thì câu đó quay
- * lại sau hai câu; sửa đúng phải xác nhận thêm một lần.
+ * Lịch gặp lại do VÒNG PHÂN PHỐI quyết định (`services/vocab/learn-loop.ts`):
+ * sai thì gặp lại sau 2 câu bằng dạng dễ hơn; đúng cũng gặp lại, cách xa dần;
+ * lần cuối để xong một từ là dạng khó nhất đang bật. Học xen kẽ (mặc định) trộn
+ * các dạng; tắt đi thì mỗi từ đi tuần tự. Từ chỉ tính "đã nhớ" khi xong vòng
+ * mà không sai lần nào.
  */
 export default function LearnScreen() {
   // `?only=starred` (nút "Học riêng từ gắn sao" ở trang bộ từ): chỉ lượt này học
@@ -127,9 +136,9 @@ export default function LearnScreen() {
     );
   };
   const [round, setRound] = useState<StudyWord[]>(() => freshRound(settings));
-  // Các phần của vòng ĐANG CHẠY — chỉ đổi khi bắt đầu vòng mới.
-  const [kinds, setKinds] = useState(() => activeKinds(settings.kinds));
-  const [plan, setPlan] = useState(() => startLearn(round));
+  // Dạng câu và kiểu xếp của vòng ĐANG CHẠY — chỉ đổi khi bắt đầu vòng mới.
+  const [cfg, setCfg] = useState(() => ({ kinds: activeKinds(settings.kinds), interleave: settings.interleave }));
+  const [plan, setPlan] = useState(() => startLoop(round));
   const [asked, setAsked] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
@@ -137,16 +146,29 @@ export default function LearnScreen() {
   // Phương án Cú đã loại ở câu đang mở.
   const [hidden, setHidden] = useState<number[]>([]);
   const [verdict, setVerdict] = useState<boolean | null>(null);
+  // Từ đồng nghĩa được chấp nhận ở câu gõ vừa chấm.
+  const [synonymUsed, setSynonymUsed] = useState<string | null>(null);
   // Lỗi của câu vừa chấm (null khi đúng), và mọi lỗi của vòng để phân tích cuối vòng.
   const [mistake, setMistake] = useState<Mistake | null>(null);
   const [mistakes, setMistakes] = useState<{ word: string; m: Mistake }[]>([]);
   const [flipped, setFlipped] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [micNote, setMicNote] = useState<string | null>(null);
   const [seed] = useState(() => Date.now() % 100000);
   // Đếm số câu đã qua — khoá cho hiệu ứng chuyển câu, chỉ đổi khi sang câu mới.
   const [step, setStep] = useState(0);
 
-  const head = useMemo(() => pickNext(plan, kinds), [plan, kinds]);
+  // Từ nào khoét được chỗ trống trong câu ví dụ thì mới có dạng Điền chỗ trống.
+  const fillable = useMemo(
+    () => new Set(round.filter((w) => clozeOf(w.example, w.word)).map((w) => w.word)),
+    [round],
+  );
+  const opts = useMemo<LoopOptions>(
+    () => ({ kinds: cfg.kinds, interleave: cfg.interleave, canFill: (w) => fillable.has(w) }),
+    [cfg, fillable],
+  );
+  const head = useMemo(() => pickNext(plan, opts), [plan, opts]);
   const word = round.find((w) => w.word === head?.word);
   const pool = useMemo(() => topic?.words ?? [], [topic]);
   const starredSet = useMemo(() => new Set(starred), [starred]);
@@ -165,32 +187,49 @@ export default function LearnScreen() {
       seededRng(seed + step),
     );
   }, [word, head?.kind, pool, dir, seed, step]);
+  // Điền chỗ trống kiểu THPT: câu ví dụ khoét từ, bốn từ cùng từ loại để chọn.
+  const fill = useMemo(() => {
+    if (!word || head?.kind !== "fill") return null;
+    const blank = clozeOf(word.example, word.word);
+    if (!blank) return null;
+    return { ...blank, ...makeWordChoices(word, pool, seededRng(seed + step)) };
+  }, [word, head?.kind, pool, seed, step]);
+  const choice = head?.kind === "fill" ? fill : mcq;
 
   // Chiều nghe: đọc to ngay khi câu hiện ra.
   useEffect(() => {
-    if (dir === "listen" && word && verdict === null)
+    if (dir === "listen" && word && verdict === null && head?.kind !== "fill")
       speak(word.word, { rate: 0.85 });
     // Chỉ khi sang câu mới, không phải mỗi lần chấm.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, dir, word?.word]);
 
+  // Micro đang nghe thì tắt khi sang câu khác hoặc rời màn.
+  const listenRef = useRef<Listening | null>(null);
+  useEffect(() => {
+    return () => {
+      listenRef.current?.stop();
+      listenRef.current = null;
+    };
+  }, [step]);
+
   const done = !head;
-  // Mỗi đoạn một từ, đầy dần theo phần đã qua (vòng ba phần → mỗi phần một phần ba).
-  const progress = round.map((w) => learnFraction(plan, w.word, kinds));
+  // Mỗi đoạn một từ, đầy dần theo mức của từ trong vòng.
+  const progress = round.map((w) => loopFraction(plan, w.word, opts));
   const wordsDone = progress.filter((f) => f >= 1).length;
 
   const restart = (s: LearnSettings = settings) => {
     const r = freshRound(s);
-    const k = activeKinds(s.kinds);
     setRound(r);
-    setKinds(k);
-    setPlan(startLearn(r));
+    setCfg({ kinds: activeKinds(s.kinds), interleave: s.interleave });
+    setPlan(startLoop(r));
     setAsked(0);
     setWrong(0);
     setPicked(null);
     setTyped("");
     setHidden([]);
     setVerdict(null);
+    setSynonymUsed(null);
     setMistake(null);
     setMistakes([]);
     setFlipped(false);
@@ -207,11 +246,13 @@ export default function LearnScreen() {
     if (ok) {
       const current =
         useTopicStudyStore.getState().stages[slug]?.[word.word] ?? 0;
-      // Câu hỏi lại ngay sau khi sai chưa tính là qua phần — còn lần xác nhận.
-      // Từ đã sai trong vòng này chưa tính "đã nhớ" — cần qua sạch ở một vòng sau.
-      const slipped = mistakes.some((x) => x.word === word.word);
+      // "Đã nhớ" chỉ khi câu này làm xong từ VÀ cả vòng chưa sai từ đó lần nào —
+      // sai rồi thì cần qua sạch ở một vòng sau.
+      const slipped =
+        slotOf(plan, word.word).lapses > 0 ||
+        mistakes.some((x) => x.word === word.word);
       const next =
-        isFinalKind(head.kind, kinds) && passesStage(head) && !slipped
+        finishesWord(plan, head, true, opts) && !slipped
           ? 2
           : Math.max(current, 1);
       setStage(slug, word.word, next as 1 | 2);
@@ -232,11 +273,16 @@ export default function LearnScreen() {
   };
 
   const advance = (ok: boolean) => {
-    setPlan((p) => answerLearn(p, ok, kinds));
+    listenRef.current?.stop();
+    listenRef.current = null;
+    setListening(false);
+    setMicNote(null);
+    setPlan((p) => answerLoop(p, ok, opts));
     setPicked(null);
     setTyped("");
     setHidden([]);
     setVerdict(null);
+    setSynonymUsed(null);
     setMistake(null);
     setFlipped(false);
     setStep((n) => n + 1);
@@ -264,30 +310,72 @@ export default function LearnScreen() {
   };
 
   const pick = (i: number) => {
-    if (verdict !== null || !mcq) return;
+    if (verdict !== null || !choice) return;
     setPicked(i);
-    const ok = i === mcq.correctIndex;
-    judge(ok, ok || !word ? null : diagnosePick(mcq.options[i]!, word, pool));
+    const ok = i === choice.correctIndex;
+    judge(ok, ok || !word ? null : diagnosePick(choice.options[i]!, word, pool));
   };
 
-  const submitTyped = () => {
-    if (verdict !== null || !word || !typed.trim()) return;
-    const ok = isTypedCorrect(typed, word.word);
+  const submitTyped = (text: string = typed) => {
+    if (verdict !== null || !word || !text.trim()) return;
+    const exact = isTypedCorrect(text, word.word);
+    const syn = !exact && settings.acceptSynonyms ? synonymMatch(text, word) : null;
+    const ok = exact || syn !== null;
+    setSynonymUsed(syn);
     judge(
       ok,
       ok
         ? null
         : diagnoseTyped(
-            typed,
+            text,
             word.word,
             pool.filter((p) => p.word !== word.word),
           ),
     );
   };
+  const submitRef = useRef(submitTyped);
+  useLayoutEffect(() => {
+    submitRef.current = submitTyped;
+  });
+
+  // Trả lời bằng giọng nói: nghe xong (kết quả chốt) là chấm luôn.
+  const micOk = settings.speakAnswer && canRecognize();
+  const toggleMic = () => {
+    if (listening) {
+      listenRef.current?.stop();
+      listenRef.current = null;
+      setListening(false);
+      return;
+    }
+    setMicNote(null);
+    const handle = startListening({
+      onText: (text, final) => {
+        setTyped(text);
+        if (final && text.trim()) {
+          listenRef.current?.stop();
+          listenRef.current = null;
+          setListening(false);
+          submitRef.current(text);
+        }
+      },
+      onEnd: (reason) => {
+        setListening(false);
+        listenRef.current = null;
+        if (reason === "denied") setMicNote("Trình duyệt chưa cho dùng micro — bấm biểu tượng ổ khoá trên thanh địa chỉ để cho phép.");
+        else if (reason === "no-speech") setMicNote("Chưa nghe thấy gì, bấm micro rồi nói lại.");
+      },
+    });
+    if (!handle) {
+      setMicNote("Trình duyệt này chưa nghe được giọng nói — gõ từ nhé.");
+      return;
+    }
+    listenRef.current = handle;
+    setListening(true);
+  };
 
   const dontKnow = () => {
     if (verdict !== null) return;
-    if (mcq) setPicked(-1);
+    if (choice) setPicked(-1);
     judge(false, {
       kind: "unknown",
       title: "Chưa nhớ từ",
@@ -323,7 +411,7 @@ export default function LearnScreen() {
       }
       return;
     }
-    if (head?.kind === "mcq") {
+    if (head?.kind === "mcq" || head?.kind === "fill") {
       const n = Number(e.key);
       if (n >= 1 && n <= 4) pick(n - 1);
       if (n === 5) dontKnow();
@@ -333,20 +421,20 @@ export default function LearnScreen() {
     }
   });
 
-  // Gợi ý của Cú: trắc nghiệm thì loại bớt phương án sai; gõ từ thì lộ một phần ba chữ đầu.
+  // Gợi ý của Cú: câu chọn thì loại bớt phương án sai; gõ từ thì lộ một phần ba chữ đầu.
   useOwlHint(
     verdict === null && word && head && head.kind !== "flash"
       ? () => {
-          if (mcq) {
+          if (choice) {
             if (hidden.length > 0) return false;
-            const wrong = mcq.options
+            const wrongOnes = choice.options
               .map((_, i) => i)
-              .filter((i) => i !== mcq.correctIndex);
-            const drop = Math.min(2, wrong.length - 1);
+              .filter((i) => i !== choice.correctIndex);
+            const drop = Math.min(2, wrongOnes.length - 1);
             if (drop <= 0) return false;
-            const from = step % wrong.length;
+            const from = step % wrongOnes.length;
             setHidden(
-              Array.from({ length: drop }, (_, k) => wrong[(from + k) % wrong.length]!),
+              Array.from({ length: drop }, (_, k) => wrongOnes[(from + k) % wrongOnes.length]!),
             );
             return true;
           }
@@ -447,9 +535,7 @@ export default function LearnScreen() {
               Xong vòng này
             </Text>
             <Text className="mt-2 font-heavy text-pageTitle text-ink">
-              {round.length} từ đã qua{" "}
-              {kinds.length === 1 ? "phần" : `cả ${kinds.length} phần`}:{" "}
-              {kinds.map((k) => KIND_LABEL[k]).join(" → ")}
+              {round.length} từ đã qua đủ các lần gặp lại
             </Text>
             <Text className="mt-2 font-sans text-bodyLg text-muted">
               {asked} câu, đúng {accuracy}%.
@@ -490,6 +576,7 @@ export default function LearnScreen() {
       inline
     />
   );
+  const revealed = verdict !== null;
 
   return (
     <StudyFrame
@@ -500,39 +587,20 @@ export default function LearnScreen() {
       right={settingsButton}
       battle
     >
-      {/* Ba phần của vòng — phần đang làm được tô. */}
-      <View className="mb-4 flex-row flex-wrap justify-center gap-2">
-        {kinds.map((k, i) => {
-          const on = head!.kind === k;
-          return (
-            <View
-              key={k}
-              className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-1.5"
-              style={{
-                backgroundColor: on ? color.primary : "rgba(255,255,255,0.8)",
-              }}
-            >
-              <Text
-                className="font-strong text-label"
-                style={{ color: on ? "#FFFFFF" : "#475569" }}
-              >
-                {i + 1}. {KIND_LABEL[k]}
-              </Text>
-            </View>
-          );
-        })}
+      {/* Dạng câu đang làm, và vì sao từ này quay lại. */}
+      <View className="mb-4 flex-row flex-wrap items-center justify-center gap-2">
+        <View className="rounded-pill px-3.5 py-1.5" style={{ backgroundColor: "#FFFFFF" }}>
+          <Text className="font-strong text-label" style={{ color: color.primary }}>
+            {KIND_LABEL[head!.kind]}
+          </Text>
+        </View>
+        {head!.tag ? (
+          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? AMBER_ON_NAVY : ON_NAVY }}>
+            {head!.tag === "retry" ? "↻ Gặp lại từ vừa sai" : "↻ Gặp lại cho nhớ lâu"}
+          </Text>
+        ) : null}
       </View>
 
-      {head!.lapse ? (
-        <Text
-          className="mb-3 text-center font-semi text-label"
-          style={{ color: "#B45309" }}
-        >
-          {head!.lapse === "retry"
-            ? "↻ Hỏi lại từ bạn vừa sai"
-            : "✓ Xác nhận lần cuối — đúng lần này là qua"}
-        </Text>
-      ) : null}
       <CrossFade swapKey={`step-${step}`}>
         {head!.kind === "flash" ? (
           <View>
@@ -593,7 +661,38 @@ export default function LearnScreen() {
           </View>
         ) : (
           <StudyCard>
-            {head!.kind === "mcq" && mcq ? (
+            {head!.kind === "fill" && fill ? (
+              <View>
+                <View className="flex-row items-start justify-between gap-3">
+                  <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
+                    Chọn từ điền vào chỗ trống
+                  </Text>
+                  {star}
+                </View>
+                <Text className="mt-3 font-semi text-sectionTitle leading-9 text-ink">
+                  {fill.before}
+                  <Text
+                    className="font-strong"
+                    style={{ color: revealed ? (verdict ? "#15803D" : "#1D4ED8") : "#94A3B8" }}
+                  >
+                    {revealed ? fill.answer : " _______ "}
+                  </Text>
+                  {fill.after}
+                </Text>
+                <View className="mt-6">
+                  <ChoiceGrid
+                    options={fill.options}
+                    picked={picked}
+                    correctIndex={fill.correctIndex}
+                    onPick={pick}
+                    hidden={hidden}
+                  />
+                </View>
+                {verdict === null ? (
+                  <GhostButton label="5 · Tôi không biết" onPress={dontKnow} />
+                ) : null}
+              </View>
+            ) : head!.kind === "mcq" && mcq ? (
               <View>
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
@@ -643,7 +742,7 @@ export default function LearnScreen() {
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
                     {dir === "listen"
                       ? "Nghe rồi gõ lại từ"
-                      : "Điền từ tiếng Anh"}
+                      : "Gõ từ tiếng Anh"}
                   </Text>
                   {star}
                 </View>
@@ -669,31 +768,51 @@ export default function LearnScreen() {
                     </Text>
                   </>
                 )}
-                <TextInput
-                  value={typed}
-                  onChangeText={setTyped}
-                  editable={verdict === null}
-                  autoFocus
-                  autoCapitalize="none"
-                  autoCorrect={false}
-                  placeholder="Gõ từ tiếng Anh…"
-                  placeholderTextColor="#94A3B8"
-                  onSubmitEditing={submitTyped}
-                  className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
-                  style={{
-                    borderWidth: 1.5,
-                    borderColor:
-                      verdict === null ? "#CBD5E1" : verdict ? GREEN : RED,
-                    backgroundColor: "#F8FAFC",
-                  }}
-                />
+                <View className="mt-6 flex-row items-center gap-2">
+                  <TextInput
+                    value={typed}
+                    onChangeText={setTyped}
+                    editable={verdict === null}
+                    autoFocus
+                    autoCapitalize="none"
+                    autoCorrect={false}
+                    placeholder={micOk ? "Gõ hoặc bấm micro để nói…" : "Gõ từ tiếng Anh…"}
+                    placeholderTextColor="#94A3B8"
+                    onSubmitEditing={() => submitTyped()}
+                    className="min-w-0 flex-1 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
+                    style={{
+                      borderWidth: 1.5,
+                      borderColor:
+                        verdict === null ? (listening ? color.primary : "#CBD5E1") : verdict ? GREEN : RED,
+                      backgroundColor: "#F8FAFC",
+                    }}
+                  />
+                  {micOk && verdict === null ? (
+                    <Pressable
+                      accessibilityRole="button"
+                      accessibilityLabel={listening ? "Dừng nghe" : "Nói từ"}
+                      onPress={toggleMic}
+                      className="h-14 w-14 items-center justify-center rounded-2xl"
+                      style={{ backgroundColor: listening ? RED : color.primary }}
+                    >
+                      <Icon name="mic" size={22} color="#FFFFFF" strokeWidth={2.2} />
+                    </Pressable>
+                  ) : null}
+                </View>
+                {listening ? (
+                  <Text className="mt-2 text-center font-semi text-label" style={{ color: color.primary }}>
+                    Đang nghe… nói từ tiếng Anh
+                  </Text>
+                ) : micNote ? (
+                  <Text className="mt-2 text-center font-sans text-label text-muted">{micNote}</Text>
+                ) : null}
                 {verdict === null ? (
                   <>
                     <PrimaryButton
                       label="Kiểm tra"
                       hint="Enter"
                       disabled={!typed.trim()}
-                      onPress={submitTyped}
+                      onPress={() => submitTyped()}
                     />
                     <GhostButton label="Tôi không biết" onPress={dontKnow} />
                   </>
@@ -701,6 +820,11 @@ export default function LearnScreen() {
               </View>
             )}
 
+            {verdict === true && synonymUsed ? (
+              <Text className="mt-3 font-semi text-body" style={{ color: "#15803D" }}>
+                Chấp nhận “{synonymUsed}” — từ đồng nghĩa. Từ của bộ: {w.word}.
+              </Text>
+            ) : null}
             {verdict === false && mistake ? <MistakeBox m={mistake} /> : null}
             {verdict !== null ? (
               <FeedbackPanel ok={verdict} word={w} onNext={next} />

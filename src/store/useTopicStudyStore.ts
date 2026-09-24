@@ -107,7 +107,11 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         const p = (persisted ?? {}) as Partial<TopicStudyState>;
-        return { ...current, ...p, learnSettings: { ...DEFAULT_LEARN_SETTINGS, ...(p.learnSettings ?? {}) } };
+        const learnSettings = { ...DEFAULT_LEARN_SETTINGS, ...(p.learnSettings ?? {}) };
+        // Bản lưu từ trước khi có dạng Điền chỗ trống: ai đang dùng đúng bộ dạng mặc định cũ thì có luôn dạng mới.
+        const k = learnSettings.kinds;
+        if (k.length === 3 && ['flash', 'mcq', 'type'].every((x) => k.includes(x as never))) learnSettings.kinds = [...DEFAULT_LEARN_SETTINGS.kinds];
+        return { ...current, ...p, learnSettings };
       },
     },
   ),
