@@ -17,6 +17,10 @@ export type FxEvent = (
   | { id: number; kind: 'quest'; title: string }
   | { id: number; kind: 'batch'; xp: number; correct: number; total: number; defeated: number }
   | { id: number; kind: 'item'; item: ItemKind; title: string }
+  /** Vừa được thêm sao (học hoặc thưởng trận đấu). */
+  | { id: number; kind: 'stars'; amount: number; reason: string }
+  /** Linh vật vừa giúp: đỡ câu sai, hồi tim, gợi ý miễn phí. */
+  | { id: number; kind: 'mascot'; line: string; heal?: boolean }
 ) & {
   /** Lúc xảy ra KHÔNG có thanh trận đấu nào trong khung nhìn — lớp toàn app diễn thay. Chốt một lần, không tính lại. */
   global?: boolean;

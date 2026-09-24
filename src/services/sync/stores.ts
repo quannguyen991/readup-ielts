@@ -19,6 +19,8 @@ import { useQuestStore } from '@/store/useQuestStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { gamePayload, useGameStore } from '@/store/useGameStore';
+import { rewardPayload, useRewardStore } from '@/store/useRewardStore';
+import { mergeReward, type RewardPayload } from '@/services/gamification/shop';
 import { mergeGame, type GamePayload } from '@/services/game/rules';
 import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
 import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
@@ -173,6 +175,20 @@ const gameStore: SyncedStore = {
   merge: (local, remote) => mergeGame(local as GamePayload | null, remote as GamePayload | null),
 };
 
+/**
+ * Đồ đã đổi bằng sao: món đã mua, sao đã tiêu, ngày giữ chuỗi, đồ đang đeo. Đồng bộ
+ * để mua trên máy này thì máy kia cũng có — và để bảng xếp hạng hiện được avatar,
+ * bìa của từng người (máy chủ đọc phần đồ đang đeo, không đọc gì khác).
+ */
+const rewardStore: SyncedStore = {
+  key: 'reward',
+  read: () => rewardPayload(),
+  write: (payload) => {
+    if (payload) useRewardStore.setState(payload as RewardPayload);
+  },
+  merge: (local, remote) => mergeReward(local as RewardPayload | null, remote as RewardPayload | null),
+};
+
 /** Gọi một lần lúc khởi động app. */
 export function registerAllSyncedStores(): void {
   registerSyncedStore(mathStore);
@@ -183,4 +199,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(weeklyStore);
   registerSyncedStore(satRwStore);
   registerSyncedStore(gameStore);
+  registerSyncedStore(rewardStore);
 }

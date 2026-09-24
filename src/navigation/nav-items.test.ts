@@ -12,7 +12,7 @@ const MUST_STAY_REACHABLE = [
   '/intro', '/dashboard', '/practice', '/write', '/mock-tests', '/math', '/sat-rw', '/sat/full-test',
   '/sentence', '/sentence/sets', '/sentence/youtube', '/library', '/bilingual', '/vocabulary',
   '/vocabulary/quiz', '/vocabulary/topics', '/notes', '/bookmarks', '/plan', '/progress',
-  '/leaderboard', '/shop', '/mastery', '/observatory', '/teacher', '/quest', '/quest/hero', '/invite', '/upgrade', '/settings',
+  '/leaderboard', '/shop', '/profile', '/mastery', '/observatory', '/teacher', '/quest', '/quest/hero', '/invite', '/upgrade', '/settings',
 ];
 
 test('không trang nào mất lối vào sau khi gộp', () => {
@@ -36,4 +36,5 @@ test('đang ở trang con thì mục cha được đánh dấu', () => {
   assert.equal(parentNavKey(activeNavKey('/vocabulary/topics')), 'vocabulary');
   assert.equal(parentNavKey(activeNavKey('/math/drill/linear')), 'math');
   assert.equal(parentNavKey(activeNavKey('/shop')), 'leaderboard');
+  assert.equal(parentNavKey(activeNavKey('/profile')), 'leaderboard');
 });

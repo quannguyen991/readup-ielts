@@ -7,7 +7,9 @@ import { Appear } from '@/components/motion/Motion';
 import { anim, MOVE } from '@/components/game/game-anim';
 import { PixelSprite } from '@/components/game/PixelSprite';
 import { ENEMY_SPRITE } from '@/components/game/sprites';
+import { MASCOTS, STAR_BONUS } from '@/services/game/mascots';
 import { dateKey } from '@/services/gamification/points';
+import { findItem, formatStars } from '@/services/gamification/shop';
 import {
   ACHIEVEMENTS,
   CRIT_EVERY,
@@ -25,6 +27,8 @@ import {
   type ItemKind,
 } from '@/services/game/rules';
 import { useGameStore } from '@/store/useGameStore';
+import { mascotOf, skinOf, useRewardStore } from '@/store/useRewardStore';
+import { useStarBalance } from '@/store/useStarBalance';
 
 /**
  * TRANG NHÂN VẬT: cấp và XP, nhiệm vụ ngày (bấm nhận thưởng), trận đang đánh,
@@ -48,6 +52,11 @@ export default function HeroScreen() {
   const quests = dailyQuests(dateKey(new Date()));
   const enemy = enemyAt(g.enemyIndex);
   const accuracy = g.life.answers > 0 ? Math.round((g.life.correct / g.life.answers) * 100) : 0;
+  const skinItem = useRewardStore((s) => s.skin);
+  const skin = skinOf(skinItem);
+  const petId = mascotOf(useRewardStore((s) => s.mascot));
+  const pet = petId ? MASCOTS[petId] : null;
+  const stars = useStarBalance();
 
   return (
     <Screen>
@@ -70,9 +79,22 @@ export default function HeroScreen() {
           <View style={{ alignItems: 'center', justifyContent: 'flex-end', width: wide ? 200 : undefined, height: 170, borderRadius: 18, backgroundColor: '#2B1F66', overflow: 'hidden' }}>
             <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 34, backgroundColor: '#140F33' }} />
             <View style={anim('rg-bob', 1500, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-              <PixelSprite name="hero" size={124} />
+              <PixelSprite name="hero" size={124} skin={skin} />
             </View>
             <View style={{ marginBottom: 20, marginTop: -6, width: 80, height: 10, borderRadius: 999, backgroundColor: 'rgba(0,0,0,0.4)' }} />
+            {/* Linh vật đang đồng hành đứng cạnh nhân vật. */}
+            {pet ? (
+              <View style={{ position: 'absolute', left: 14, bottom: 28 }}>
+                <View style={anim('rg-bob', 1100, { loop: true, timing: 'ease-in-out', delay: 300 })} {...MOVE}>
+                  <PixelSprite name={pet.look} color={pet.color} size={46} />
+                </View>
+              </View>
+            ) : null}
+            <View style={{ position: 'absolute', right: 10, top: 10, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: 'rgba(250,204,21,0.18)' }}>
+              <Text className="font-heavy" style={{ fontSize: 12, color: GOLD }}>
+                ⭐ {formatStars(stars)}
+              </Text>
+            </View>
           </View>
           <View style={{ flex: 1 }}>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 12, flexWrap: 'wrap' }}>
@@ -91,6 +113,14 @@ export default function HeroScreen() {
             <Text className="font-semi" style={{ marginTop: 6, fontSize: 13, color: MUTED }}>
               {lv.into}/{lv.need} XP tới cấp {lv.level + 1} · tổng {g.xp.toLocaleString('vi-VN')} XP
             </Text>
+            <Text className="font-semi" style={{ marginTop: 4, fontSize: 13, color: MUTED }}>
+              {findItem(skinItem)?.name ?? 'Hiệp sĩ xanh'}
+              {pet ? ` · đồng hành: ${pet.name} — ${pet.perk}` : ' · chưa có linh vật'}
+            </Text>
+            <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+              <GoButton label="Đổi skin & linh vật" href="/shop?tab=skin" />
+              <GoButton label="Hồ sơ của tôi" href="/profile" />
+            </View>
             <View style={{ marginTop: 14, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
               <Stat value={g.life.correct.toLocaleString('vi-VN')} label="câu đúng" />
               <Stat value={`${accuracy}%`} label="tỉ lệ đúng" />
@@ -208,9 +238,9 @@ export default function HeroScreen() {
         <View style={{ ...PANEL, marginTop: 12 }}>
           <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 10 }}>
             <SectionTitle title="Túi đồ" sub="Dùng ngay trong bài: bấm Túi đồ trên thanh trận đấu." />
-            <Pressable accessibilityRole="link" onPress={() => router.push('/shop' as never)}>
+            <Pressable accessibilityRole="link" onPress={() => router.push('/shop?tab=battle' as never)}>
               <Text className="font-strong" style={{ fontSize: 13, color: GOLD }}>
-                Cửa hàng →
+                Đổi sao →
               </Text>
             </Pressable>
           </View>
@@ -303,6 +333,8 @@ export default function HeroScreen() {
               'Hết tim: bị đánh lui — tim hồi đầy, quái hồi máu. Bài học không bao giờ bị khoá.',
               'Hạ quái: thưởng thêm XP, cứ hai con thì rơi một món đồ.',
               'Bài chỉ chấm lúc nộp (kiểm tra, đề tuần): mỗi câu đúng +10 XP và một nhát, không tính combo, không mất tim.',
+              `Sao thưởng: hạ quái +${STAR_BONUS.defeat} ⭐, hạ boss +${STAR_BONUS.boss} ⭐, lên cấp +${STAR_BONUS.levelUp} ⭐ mỗi cấp, xong nhiệm vụ +${STAR_BONUS.quest} ⭐, mở huy hiệu +${STAR_BONUS.achievement} ⭐. Sao đổi được vé gói, linh vật, skin ở trang Đổi sao.`,
+              'Linh vật đứng sau lưng nhân vật và giúp theo cách riêng: Cú cho lượt Hỏi Cú miễn phí, Cáo đỡ câu sai đầu ngày, Mèo hồi tim, Rồng chém mạnh hơn. Không con nào làm bài hộ.',
               'Phím tắt trên thanh trận đấu: I mở túi đồ · H hỏi Cú · M bật/tắt âm thanh.',
             ].map((line) => (
               <Text key={line} className="font-sans" style={{ fontSize: 13, lineHeight: 20, color: 'rgba(255,255,255,0.82)' }}>

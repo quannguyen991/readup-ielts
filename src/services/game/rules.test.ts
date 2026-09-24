@@ -138,6 +138,10 @@ test('gộp hai máy: giữ trận của máy nhiều XP, huy hiệu và kỷ l�
     today: { ...EMPTY_DAY, correct: 10 },
     claimed: ['correct-20'],
     achievements: { 'first-blood': '2026-09-01' },
+    bonusStars: 40,
+    perkDay: day,
+    perkHints: 0,
+    perkShieldUsed: false,
   };
   const b: GamePayload = {
     ...fresh(),
@@ -149,6 +153,10 @@ test('gộp hai máy: giữ trận của máy nhiều XP, huy hiệu và kỷ l�
     today: { ...EMPTY_DAY, correct: 14, bestCombo: 6 },
     claimed: ['combo-8'],
     achievements: { 'first-blood': '2026-08-30', 'combo-10': '2026-09-02' },
+    bonusStars: 55,
+    perkDay: day,
+    perkHints: 2,
+    perkShieldUsed: true,
   };
   const m = mergeGame(a, b)!;
   assert.equal(m.xp, 500);
@@ -159,6 +167,7 @@ test('gộp hai máy: giữ trận của máy nhiều XP, huy hiệu và kỷ l�
   assert.equal(m.today.correct, 14);
   assert.deepEqual([...m.claimed].sort(), ['combo-8', 'correct-20']);
   assert.equal(m.achievements['first-blood'], '2026-08-30');
+  assert.equal(m.bonusStars, 55, 'sao thưởng chỉ tăng: lấy phần lớn');
   assert.ok(m.achievements['combo-10']);
   assert.equal(mergeGame(null, b), b);
 });
@@ -192,4 +201,11 @@ test('bùng cháy: từ combo 10 mỗi nhát mạnh gấp rưỡi', () => {
   assert.equal(damageFor(FEVER_AT - 1, false), 20 + 3 * (FEVER_AT - 1));
   assert.equal(damageFor(FEVER_AT, true), Math.round((20 + 3 * FEVER_AT) * 2 * 1.5));
   assert.equal(damageFor(11, false), Math.round((20 + 33) * 1.5));
+});
+
+test('Rồng Con: nhát chém mạnh thêm 20%', () => {
+  const base = resolveAnswer({ ...fresh(), enemyHp: 1000 }, true);
+  const boosted = resolveAnswer({ ...fresh(), enemyHp: 1000 }, true, 1.2);
+  assert.equal(boosted.damage, Math.round(base.damage * 1.2));
+  assert.equal(resolveBatch({ ...fresh(), enemyHp: 1000 }, 5, 1.2).damage, 120);
 });

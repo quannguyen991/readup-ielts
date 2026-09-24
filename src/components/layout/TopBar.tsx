@@ -6,8 +6,10 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Logo } from './Logo';
 import { Icon } from '@/components/ui/Icon';
 import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems } from '@/navigation/nav-items';
+import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { usePlan } from '@/store/useBillingStore';
+import { skinOf, useRewardStore } from '@/store/useRewardStore';
 import { color, paper, shadow } from '@/theme/tokens';
 
 const webBarShadow = { boxShadow: '0 6px 22px rgba(26, 26, 51, 0.10)' } as const;
@@ -50,6 +52,9 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
   */
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const name = useDisplayName();
+  // Avatar đổi bằng sao (kể cả avatar động) hiện luôn ở nút tài khoản.
+  const avatarId = useRewardStore((s) => s.avatar);
+  const skinId = useRewardStore((s) => s.skin);
   const plan = usePlan();
   const pathname = usePathname();
 
@@ -149,15 +154,17 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={signedIn ? 'Tài khoản' : 'Đăng nhập'}
-            onPress={() => router.push((signedIn ? '/settings' : '/auth/sign-in') as never)}
+            accessibilityLabel={signedIn ? `Hồ sơ của ${name}` : 'Đăng nhập'}
+            onPress={() => router.push((signedIn ? '/profile' : '/auth/sign-in') as never)}
             className="flex-row items-center gap-2 rounded-pill border border-brand-soft bg-white py-1 pl-1 pr-3"
           >
-            <View className="h-7 w-7 items-center justify-center rounded-pill bg-brand">
-              <Text className="font-strong text-label text-white">
-                {signedIn ? name.slice(0, 1).toUpperCase() : '?'}
-              </Text>
-            </View>
+            {signedIn ? (
+              <AvatarBadge avatarId={avatarId} name={name} size={28} skin={skinOf(skinId)} />
+            ) : (
+              <View className="h-7 w-7 items-center justify-center rounded-pill bg-brand">
+                <Text className="font-strong text-label text-white">?</Text>
+              </View>
+            )}
             <View className="hidden md:flex">
               <Text className="font-semi text-label text-paper-ink" numberOfLines={1}>
                 {signedIn ? name : 'Khách'}

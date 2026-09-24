@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 import Svg, { Rect } from 'react-native-svg';
@@ -7,6 +7,11 @@ import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { PixelSprite } from './PixelSprite';
 import { ENEMY_SPRITE } from './sprites';
 import { sfx } from '@/services/audio/sfx';
+import { MASCOTS } from '@/services/game/mascots';
+import { formatStars } from '@/services/gamification/shop';
+import { dateKey } from '@/services/gamification/points';
+import { mascotOf, skinOf, useRewardStore } from '@/store/useRewardStore';
+import { useStarBalance } from '@/store/useStarBalance';
 import { CRIT_EVERY, enemyAt, FEVER_AT, ITEMS, levelProgress, MAX_HEARTS, type ItemKind } from '@/services/game/rules';
 import { staleBefore, useGameFx, type FxEvent } from '@/store/useGameFx';
 import { useGameStore } from '@/store/useGameStore';
@@ -111,6 +116,12 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   const shield = useGameStore((s) => s.shield);
   const doubleLeft = useGameStore((s) => s.doubleLeft);
   const items = useGameStore((s) => s.items);
+  const perkDay = useGameStore((s) => s.perkDay);
+  const perkHints = useGameStore((s) => s.perkHints ?? 0);
+  const skin = skinOf(useRewardStore((s) => s.skin));
+  const petId = mascotOf(useRewardStore((s) => s.mascot));
+  const pet = petId ? MASCOTS[petId] : null;
+  const stars = useStarBalance();
   const sound = useGameStore((s) => s.sound);
   const hint = useGameFx((s) => s.hint);
   const events = useGameFx((s) => s.events);
@@ -121,6 +132,12 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   const hurt = lastOf(events, since, ['hurt', 'blocked', 'knockout']);
   const defeat = lastOf(events, since, ['defeat']);
   const floats = events.filter((e) => e.id > since && e.kind !== 'levelup' && e.kind !== 'achievement' && e.kind !== 'quest').slice(-6);
+  const starPops = events.filter((e): e is Extract<FxEvent, { kind: 'stars' }> => e.id > since && e.kind === 'stars').slice(-3);
+  const petTalk = [...events].reverse().find((e): e is Extract<FxEvent, { kind: 'mascot' }> => e.id > since && e.kind === 'mascot');
+  // Lượt Hỏi Cú miễn phí còn lại hôm nay (Cú Thông Thái), cộng với gợi ý trong túi.
+  const todayKey = useMemo(() => dateKey(new Date()), []);
+  const freeHintsLeft = pet ? Math.max(0, pet.perks.freeHints - (perkDay === todayKey ? perkHints : 0)) : 0;
+  const hintCount = (items.hint ?? 0) + freeHintsLeft;
   // Đòn kết liễu thì quái MỚI không rung theo — nó vừa bước vào.
   const killing = Boolean(hit && defeat && defeat.id > hit.id);
   const heroAttacks = hit && (!hurt || hit.id > hurt.id);
@@ -226,8 +243,8 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             label={narrow ? undefined : 'Hỏi Cú'}
             hotkey={narrow ? undefined : 'H'}
             owl
-            count={items.hint ?? 0}
-            dim={!hint || (items.hint ?? 0) <= 0}
+            count={hintCount}
+            dim={!hint || hintCount <= 0}
             onPress={() => tryItem('hint')}
             a11y="Hỏi Cú: dùng một gợi ý cho câu đang làm (phím H)"
           />
@@ -257,7 +274,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             ) : null}
             <View key={heroKey} style={hit || hurt ? anim(heroAttacks ? 'rg-lunge' : 'rg-hurt', heroAttacks ? 360 : 520) : undefined} {...MOVE}>
               <View style={anim('rg-bob', 1400, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-                <PixelSprite name="hero" size={54} />
+                <PixelSprite name="hero" size={54} skin={skin} />
               </View>
             </View>
             {shield ? (
@@ -266,6 +283,44 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           </View>
           <Shadow />
           {web ? floats.filter((e) => e.kind === 'hit' || e.kind === 'hurt').map((e) => <HeroFloat key={e.id} e={e} />) : null}
+        </View>
+
+        {/* Linh vật đứng sau lưng nhân vật; nói một câu mỗi khi giúp. */}
+        {pet ? (
+          <View style={{ position: 'absolute', left: Math.max(4, heroLeft - 34), bottom: 22, alignItems: 'center', zIndex: 2 }}>
+            <View style={anim('rg-bob', 1100, { loop: true, timing: 'ease-in-out', delay: 250 })} {...MOVE}>
+              <PixelSprite name={pet.look} color={pet.color} size={30} />
+            </View>
+            {petTalk && web ? (
+              <View key={`talk-${petTalk.id}`} pointerEvents="none" style={{ position: 'absolute', left: -4, bottom: 34, width: narrow ? 150 : 190, zIndex: 5, ...anim('rg-bubble', 2600, { fill: 'forwards' }) }}>
+                <View style={{ borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 8, paddingVertical: 5 }}>
+                  <Text className="font-semi" style={{ fontSize: 11, color: '#1B1330' }}>
+                    {petTalk.heal ? '💚 ' : ''}
+                    {petTalk.line}
+                  </Text>
+                </View>
+              </View>
+            ) : null}
+          </View>
+        ) : null}
+
+        {/* Sao đang có: mỗi lần được thêm sao, ô nảy lên và "+N ⭐" bay ra. */}
+        <View style={{ position: 'absolute', left: 12, top: 42, zIndex: 3 }} accessibilityLabel={`${stars} sao`}>
+          <View key={`star-${stars}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 3, borderRadius: 8, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: 'rgba(250,204,21,0.16)', ...(starPops.length ? anim('rg-pop', 320) : null) }}>
+            <Text style={{ fontSize: 11 }}>⭐</Text>
+            <Text className="font-heavy" style={{ fontSize: 11, color: GOLD }}>
+              {formatStars(stars)}
+            </Text>
+          </View>
+          {web
+            ? starPops.map((e) => (
+                <View key={`sp-${e.id}`} pointerEvents="none" style={{ position: 'absolute', left: 56, top: -2, ...anim('rg-float', 1300) }}>
+                  <Text className="font-heavy" numberOfLines={1} style={{ fontSize: 12, color: GOLD, textShadowColor: 'rgba(0,0,0,0.6)', textShadowOffset: { width: 0, height: 1 }, textShadowRadius: 0 }}>
+                    +{e.amount} ⭐
+                  </Text>
+                </View>
+              ))
+            : null}
         </View>
 
         {/* Quái */}
