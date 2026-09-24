@@ -219,7 +219,7 @@ function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
           <Pressable
             key={mode.id}
             accessibilityRole="button"
-            accessibilityState={{ disabled: !enough }}
+            aria-disabled={!enough}
             disabled={!enough}
             onPress={() => router.push(`/vocabulary/topic/so-tu/${mode.id}` as never)}
             className={`flex-row items-center gap-2 rounded-pill border px-3 py-2 ${

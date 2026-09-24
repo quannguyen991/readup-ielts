@@ -356,7 +356,7 @@ function Toolbar(props: {
             <Pressable
               key={v.key}
               accessibilityRole="tab"
-              accessibilityState={{ selected: on }}
+              aria-selected={on}
               onPress={() => props.onView(v.key)}
               className="rounded-pill px-3 py-1.5"
               style={[{ backgroundColor: on ? CREAM : 'transparent' }, webTransition]}
@@ -871,7 +871,7 @@ function QuestionsPane({
                   <HoverPressable
                     key={oi}
                     accessibilityRole="radio"
-                    accessibilityState={{ checked: chosen }}
+                    aria-checked={chosen}
                     onPress={() => onAnswer(qi, oi)}
                     className="flex-row items-start gap-3 rounded-panel px-3.5 py-2.5"
                     style={({ hovered }) => [

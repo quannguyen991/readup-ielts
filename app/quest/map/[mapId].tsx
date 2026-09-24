@@ -99,7 +99,7 @@ export default function QuestMapScreen() {
               >
                   <Pressable
                     accessibilityRole="button"
-                    accessibilityState={{ disabled: !open }}
+                    aria-disabled={!open}
                     disabled={!open}
                     onPress={() => router.push(`/quest/battle/${node.id}` as never)}
                     className={`h-24 w-24 items-center justify-center rounded-full border-4 shadow-lg ${open ? 'bg-white' : 'bg-slate-100/75 opacity-70'}`}

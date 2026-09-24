@@ -141,7 +141,7 @@ export default function WritingDrillScreen() {
               key={p.key}
               onPress={() => switchPart(p.key)}
               accessibilityRole="button"
-              accessibilityState={{ selected: part === p.key }}
+              aria-selected={part === p.key}
               className={[
                 'flex-row items-center gap-1.5 rounded-pill border px-3 py-1.5',
                 part === p.key ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',

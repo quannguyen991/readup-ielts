@@ -390,7 +390,7 @@ export default function IntroScreen() {
               </View>
             </View>
 
-            <View className="gap-3" style={{ flexBasis: 360, flexGrow: 1 }}>
+            <View className="gap-3" style={{ flexShrink: 1, flexBasis: 360, flexGrow: 1 }}>
               <InviteMilestone n={1} title="Lấy link mời của bạn" note="Gửi qua Zalo, Messenger, nhóm lớp." />
               <InviteMilestone
                 n={REFERRALS_PER_REWARD}

@@ -43,7 +43,7 @@ function Entry({ word, letter, entry, correct }: { word: string; letter: string;
       className="rounded-panel border p-3.5"
       style={{ borderColor: correct ? '#BBF7D0' : paper.brandSoft, backgroundColor: correct ? '#F0FDF4' : '#FFFFFF' }}
     >
-      <Pressable accessibilityRole="button" accessibilityState={{ expanded: open }} onPress={() => setOpen((v) => !v)} className="flex-row items-center gap-2">
+      <Pressable accessibilityRole="button" aria-expanded={open} onPress={() => setOpen((v) => !v)} className="flex-row items-center gap-2">
         <Text className="font-strong text-label" style={{ color: correct ? color.success : paper.muted }}>
           {letter}
         </Text>

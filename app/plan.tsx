@@ -253,7 +253,7 @@ function StageCard({
 
   return (
     <Card className={current ? 'border-2 border-primary-300' : ''}>
-      <Pressable accessibilityRole="button" accessibilityState={{ expanded: open }} onPress={onToggle}>
+      <Pressable accessibilityRole="button" aria-expanded={open} onPress={onToggle}>
         <View className="flex-row flex-wrap items-center justify-between gap-2">
           <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
             <View className="flex-row flex-wrap items-center gap-2">

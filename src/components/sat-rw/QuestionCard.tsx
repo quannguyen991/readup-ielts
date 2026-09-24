@@ -77,7 +77,7 @@ export function QuestionCard({
             <Pressable
               key={i}
               accessibilityRole="button"
-              accessibilityState={{ selected: isPicked, disabled: answered || out }}
+              aria-selected={isPicked} aria-disabled={answered || out}
               accessibilityLabel={out ? `${'ABCD'[i]}. ${option} — Cú đã loại` : undefined}
               disabled={answered || out}
               onPress={() => onPick(i)}

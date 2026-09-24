@@ -364,7 +364,7 @@ function QuizItem({
             <Pressable
               key={option}
               accessibilityRole="button"
-              accessibilityState={{ selected: isPicked, disabled: answered }}
+              aria-selected={isPicked} aria-disabled={answered}
               disabled={answered}
               onPress={() => onPick(option)}
               className="rounded-panel border px-3.5 py-2.5"

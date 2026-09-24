@@ -280,7 +280,7 @@ function TabButton({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className={[
         'flex-row items-center gap-2 rounded-pill border px-4 py-2.5',

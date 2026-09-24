@@ -636,7 +636,7 @@ function TabPill({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className={small ? 'rounded-pill px-3 py-1.5' : 'rounded-pill px-4 py-2'}
       style={{ backgroundColor: active ? color.primary : color.surface }}
@@ -852,7 +852,7 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className="rounded-pill border px-3 py-1.5"
       style={{

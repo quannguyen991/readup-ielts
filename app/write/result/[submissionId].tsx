@@ -306,7 +306,7 @@ export default function WritingResultScreen() {
                   <Pressable
                     key={t.key}
                     accessibilityRole="tab"
-                    accessibilityState={{ selected: tab === t.key }}
+                    aria-selected={tab === t.key}
                     onPress={() => setTab(t.key)}
                     className="rounded-pill border px-3.5 py-2"
                     style={{
@@ -586,7 +586,7 @@ function FilterChip({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       onPress={onPress}
       className="rounded-pill px-3 py-1.5"
       style={{ backgroundColor: active ? '#FFFFFF' : 'transparent' }}

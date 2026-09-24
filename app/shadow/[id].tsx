@@ -596,7 +596,7 @@ function Summary({
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F5F9', flexGrow: 1, flexBasis: 150 }}>
+    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F5F9', flexGrow: 1, flexShrink: 1, flexBasis: 150 }}>
       <Text className="font-heavy text-sectionTitle text-ink">{value}</Text>
       <Text className="mt-0.5 font-sans text-label text-muted">{label}</Text>
     </View>

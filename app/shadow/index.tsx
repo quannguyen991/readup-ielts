@@ -89,7 +89,7 @@ export default function ShadowHub() {
       {started.length || hardWords.length ? (
         <View className="mt-5 flex-row flex-wrap gap-4">
           {started.length ? (
-            <Appear index={1} style={{ flexGrow: 1, flexBasis: 320 }}>
+            <Appear index={1} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>
               <View className="rounded-[22px] bg-white p-5" style={CARD}>
                 <Text className="font-heavy text-sectionTitle text-ink">Đang đọc dở</Text>
                 <View className="mt-3 gap-2">
@@ -119,7 +119,7 @@ export default function ShadowHub() {
             </Appear>
           ) : null}
           {hardWords.length ? (
-            <Appear index={2} style={{ flexGrow: 1, flexBasis: 320 }}>
+            <Appear index={2} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>
               <View className="rounded-[22px] bg-white p-5" style={CARD}>
                 <Text className="font-heavy text-sectionTitle text-ink">Từ bạn hay đọc hụt</Text>
                 <Text className="mt-1 font-sans text-body text-muted">Nghe lại từng từ, để ý âm cuối — lỗi hay gặp nhất của người Việt.</Text>

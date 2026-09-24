@@ -545,7 +545,7 @@ function RunningView({
                 <Pressable
                   key={key}
                   accessibilityRole="button"
-                  accessibilityState={{ selected: mode === key }}
+                  aria-selected={mode === key}
                   onPress={() => onChangeMode(key)}
                   className="rounded-pill border px-3.5 py-1.5"
                   style={{
@@ -672,7 +672,7 @@ function RunningView({
               {mode === 'cells' ? (
                 <Pressable
                   accessibilityRole="checkbox"
-                  accessibilityState={{ checked: liveResult }}
+                  aria-checked={liveResult}
                   onPress={() => setLiveResult((v) => !v)}
                   className="flex-row items-center gap-2 py-1"
                 >

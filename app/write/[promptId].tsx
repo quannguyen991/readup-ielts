@@ -257,7 +257,7 @@ export default function WritingRoomScreen() {
                   <Pressable
                     key={f.key}
                     accessibilityRole="button"
-                    accessibilityState={{ selected: fontKey === f.key }}
+                    aria-selected={fontKey === f.key}
                     onPress={() => setFontKey(f.key)}
                     className="rounded-md px-2 py-1"
                     style={{ backgroundColor: fontKey === f.key ? paper.brandMid : 'transparent' }}
@@ -283,7 +283,7 @@ export default function WritingRoomScreen() {
                   <Pressable
                     key={s}
                     accessibilityRole="button"
-                    accessibilityState={{ selected: fontSize === s }}
+                    aria-selected={fontSize === s}
                     onPress={() => setFontSize(s)}
                     className="rounded-md px-2 py-1"
                     style={{ backgroundColor: fontSize === s ? paper.brandMid : 'transparent' }}

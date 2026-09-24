@@ -249,7 +249,7 @@ export default function DuelRoom() {
 
 function ScoreBar({ name, t, total, tone, done }: { name: string; t: PlayerTally; total: number; tone: string; done: boolean }) {
   return (
-    <Appear style={{ flexGrow: 1, flexBasis: 260 }}>
+    <Appear style={{ flexGrow: 1, flexShrink: 1, flexBasis: 260 }}>
       <View className="rounded-2xl bg-white px-4 py-3" style={CARD}>
         <View className="flex-row items-center justify-between gap-2">
           <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>

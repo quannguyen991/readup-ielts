@@ -189,7 +189,7 @@ export default function LibraryScreen() {
 
         <Pressable
           accessibilityRole="button"
-          accessibilityState={{ expanded: showFilters }}
+          aria-expanded={showFilters}
           onPress={() => setShowFilters((v) => !v)}
           className="h-11 flex-row items-center gap-2 rounded-card border border-border bg-surface px-4"
         >
@@ -420,7 +420,7 @@ export function Chip({
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       className={[
         'rounded-pill border px-3 py-1.5',
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',

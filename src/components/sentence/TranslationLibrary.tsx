@@ -92,7 +92,7 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
     <Pressable
       onPress={onPress}
       accessibilityRole="button"
-      accessibilityState={{ selected: active }}
+      aria-selected={active}
       className={[
         'rounded-pill border px-3 py-1.5',
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',

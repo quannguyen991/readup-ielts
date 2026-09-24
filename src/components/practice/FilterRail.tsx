@@ -69,7 +69,7 @@ export function FilterRail({
           >
             <Pressable
               accessibilityRole="button"
-              accessibilityState={{ selected: active, disabled }}
+              aria-selected={active} aria-disabled={disabled}
               disabled={disabled}
               onPress={() => {
                 if (skill.href) {
@@ -166,7 +166,7 @@ function Radio({
   return (
     <Pressable
       accessibilityRole="radio"
-      accessibilityState={{ selected }}
+      aria-selected={selected}
       onPress={onPress}
       className="flex-row items-center gap-2.5 py-1.5"
     >
@@ -228,7 +228,7 @@ export function CheckGroup({
               <Pressable
                 key={option.key}
                 accessibilityRole="checkbox"
-                accessibilityState={{ checked: on }}
+                aria-checked={on}
                 onPress={() => onToggle(option.key)}
                 className="flex-row items-center gap-2.5 py-1.5"
               >

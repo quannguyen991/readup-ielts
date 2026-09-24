@@ -240,7 +240,7 @@ function VoiceRow({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityState={{ selected }}
+      aria-selected={selected}
       onPress={onPress}
       className="flex-row items-center gap-3 rounded-panel border px-3.5 py-3"
       style={{

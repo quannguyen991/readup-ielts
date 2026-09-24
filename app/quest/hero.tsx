@@ -216,7 +216,7 @@ export default function HeroScreen() {
           </View>
           <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {ITEM_ORDER.map((k) => (
-              <View key={k} style={{ flexBasis: 220, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 16, padding: 12, backgroundColor: 'rgba(255,255,255,0.06)' }}>
+              <View key={k} style={{ flexShrink: 1, flexBasis: 220, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 16, padding: 12, backgroundColor: 'rgba(255,255,255,0.06)' }}>
                 {k === 'hint' ? <PixelSprite name="owl" size={30} color="#A16207" /> : <Text style={{ fontSize: 26 }}>{ITEMS[k].glyph}</Text>}
                 <View style={{ flex: 1 }}>
                   <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
@@ -241,7 +241,7 @@ export default function HeroScreen() {
               const seen = g.enemyIndex >= i;
               const kills = g.enemyIndex > i ? Math.floor((g.enemyIndex - i - 1) / ENEMIES.length) + 1 : 0;
               return (
-                <View key={e.id} style={{ flexBasis: 140, flexGrow: 1, alignItems: 'center', borderRadius: 16, paddingVertical: 12, paddingHorizontal: 8, backgroundColor: 'rgba(255,255,255,0.06)' }}>
+                <View key={e.id} style={{ flexShrink: 1, flexBasis: 140, flexGrow: 1, alignItems: 'center', borderRadius: 16, paddingVertical: 12, paddingHorizontal: 8, backgroundColor: 'rgba(255,255,255,0.06)' }}>
                   <PixelSprite name={ENEMY_SPRITE[e.id] ?? 'slime'} color={e.color} size={56} silhouette={seen ? undefined : 'rgba(255,255,255,0.14)'} />
                   <Text className="font-strong" numberOfLines={1} style={{ marginTop: 6, fontSize: 13, color: seen ? '#FFFFFF' : MUTED }}>
                     {seen ? e.name : '???'}
@@ -271,7 +271,7 @@ export default function HeroScreen() {
             {ACHIEVEMENTS.map((a) => {
               const at = g.achievements[a.id];
               return (
-                <View key={a.id} style={{ flexBasis: 200, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 16, padding: 12, backgroundColor: at ? 'rgba(250,204,21,0.12)' : 'rgba(255,255,255,0.05)', borderWidth: 1, borderColor: at ? 'rgba(250,204,21,0.45)' : 'transparent' }}>
+                <View key={a.id} style={{ flexShrink: 1, flexBasis: 200, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 16, padding: 12, backgroundColor: at ? 'rgba(250,204,21,0.12)' : 'rgba(255,255,255,0.05)', borderWidth: 1, borderColor: at ? 'rgba(250,204,21,0.45)' : 'transparent' }}>
                   <Text style={{ fontSize: 24, opacity: at ? 1 : 0.3 }}>{a.glyph}</Text>
                   <View style={{ flex: 1 }}>
                     <Text className="font-strong" style={{ fontSize: 13, color: at ? '#FFFFFF' : MUTED }}>
@@ -367,7 +367,7 @@ function SwitchRow({ title, detail, on, onToggle }: { title: string; detail: str
       </View>
       <Pressable
         accessibilityRole="switch"
-        accessibilityState={{ checked: on }}
+        aria-checked={on}
         accessibilityLabel={title}
         onPress={onToggle}
         style={{ width: 58, height: 32, borderRadius: 999, padding: 3, backgroundColor: on ? '#22C55E' : 'rgba(255,255,255,0.2)', justifyContent: 'center' }}

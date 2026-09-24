@@ -45,7 +45,7 @@ export default function DuelLobby() {
       </Appear>
 
       <View className="mt-5 flex-row flex-wrap gap-4">
-        <Appear index={1} style={{ flexGrow: 2, flexBasis: 420 }}>
+        <Appear index={1} style={{ flexGrow: 2, flexShrink: 1, flexBasis: 420 }}>
           <View className="rounded-[22px] bg-white p-5" style={CARD}>
             <Text className="font-heavy text-sectionTitle text-ink">Tạo phòng</Text>
             <Text className="mt-1 font-sans text-body text-muted">Chọn bộ từ để đấu:</Text>
@@ -83,7 +83,7 @@ export default function DuelLobby() {
           </View>
         </Appear>
 
-        <Appear index={2} style={{ flexGrow: 1, flexBasis: 280 }}>
+        <Appear index={2} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 280 }}>
           <View className="rounded-[22px] bg-white p-5" style={CARD}>
             <Text className="font-heavy text-sectionTitle text-ink">Vào phòng</Text>
             <Text className="mt-1 font-sans text-body text-muted">Nhập mã 5 ký tự bạn của bạn gửi:</Text>

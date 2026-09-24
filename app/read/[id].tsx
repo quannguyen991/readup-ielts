@@ -708,7 +708,7 @@ export default function ReadScreen() {
                   <Pressable
                     key={t}
                     accessibilityRole="tab"
-                    accessibilityState={{ selected: narrowTab === t }}
+                    aria-selected={narrowTab === t}
                     onPress={() => setNarrowTab(t)}
                     className="rounded-md px-2.5 py-1.5"
                     style={{ backgroundColor: narrowTab === t ? EXAM_ACCENT : 'transparent' }}
@@ -728,7 +728,7 @@ export default function ReadScreen() {
                   key={t.key}
                   accessibilityRole="button"
                   accessibilityLabel={`Giấy ${t.label}`}
-                  accessibilityState={{ selected: paperKey === t.key }}
+                  aria-selected={paperKey === t.key}
                   onPress={() => setPaperKey(t.key)}
                   className="h-6 w-6 rounded-md"
                   style={{ backgroundColor: t.bg, borderWidth: paperKey === t.key ? 2.5 : 1, borderColor: paperKey === t.key ? EXAM_ACCENT : EXAM_LINE }}
@@ -930,7 +930,7 @@ function ToolPill({
   return (
     <HoverPressable
       accessibilityRole="button"
-      accessibilityState={{ selected: active, disabled }}
+      aria-selected={active} aria-disabled={disabled}
       disabled={disabled}
       onPress={onPress}
       className="rounded-pill px-3 py-1"

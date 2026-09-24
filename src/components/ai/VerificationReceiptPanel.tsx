@@ -44,7 +44,7 @@ export function VerificationReceiptPanel({ receipt }: { receipt: VerificationRec
     <View className="mt-4 overflow-hidden rounded-panel border border-paper-line bg-white">
       <Pressable
         accessibilityRole="button"
-        accessibilityState={{ expanded: open }}
+        aria-expanded={open}
         onPress={() => setOpen((v) => !v)}
         className="flex-row items-center gap-2.5 px-3.5 py-3"
       >

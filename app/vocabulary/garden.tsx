@@ -82,7 +82,7 @@ export default function GardenScreen() {
         </Appear>
       ) : (
         <View className="mt-5 flex-row flex-wrap gap-4">
-          <Appear index={2} style={{ flexGrow: 3, flexBasis: 480 }}>
+          <Appear index={2} style={{ flexGrow: 3, flexShrink: 1, flexBasis: 480 }}>
             <View
               className="overflow-hidden rounded-[26px]"
               style={[{ height: 480, backgroundColor: '#E0F2FE', borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.9)' }, CARD]}
@@ -96,7 +96,7 @@ export default function GardenScreen() {
             </View>
           </Appear>
 
-          <Appear index={3} style={{ flexGrow: 2, flexBasis: 280 }}>
+          <Appear index={3} style={{ flexGrow: 2, flexShrink: 1, flexBasis: 280 }}>
             <View className="rounded-[22px] bg-white p-5" style={CARD}>
               <CrossFade swapKey={picked?.id ?? 'none'}>
                 {picked ? (

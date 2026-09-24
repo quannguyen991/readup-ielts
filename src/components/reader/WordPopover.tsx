@@ -256,7 +256,7 @@ export function WordPopover({
         {/* ------------------------------------------------- nút lưu */}
         <Pressable
           accessibilityRole="button"
-          accessibilityState={{ disabled: saved }}
+          aria-disabled={saved}
           disabled={saved}
           onPress={save}
           className="mt-3.5 flex-row items-center justify-center gap-2 rounded-panel py-3"
