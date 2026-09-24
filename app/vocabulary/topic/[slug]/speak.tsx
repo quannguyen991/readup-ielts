@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { posIpa } from '@/data/study-decks';
 import { useLocalSearchParams } from 'expo-router';
+import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
 import { GhostButton, GREEN, PrimaryButton, RED, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
@@ -45,6 +46,7 @@ function makeRecognition(): Recognition | null {
  */
 export default function SpeakScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
 
@@ -110,7 +112,7 @@ export default function SpeakScreen() {
 
   if (!topic || !word) {
     return (
-      <StudyFrame backHref="/vocabulary/topics" title="Phát âm">
+      <StudyFrame backHref="/vocabulary/quiz" title="Phát âm">
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này.</Text>
         </StudyCard>

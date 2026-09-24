@@ -35,6 +35,10 @@ type TopicStudyState = {
   logMistake: (slug: string, word: string, kind: MistakeKind) => void;
   /** Cài đặt màn Học — dùng chung mọi bộ, như một thói quen học của người dùng. */
   learnSettings: LearnSettings;
+  /** slug → lần cuối mở một màn luyện của bộ (thẻ "Học lần cuối" ở thư viện bộ từ). */
+  lastAt: Record<string, string>;
+  /** Ghi mốc "vừa học bộ này" — mỗi màn luyện gọi một lần khi mở. */
+  touch: (slug: string) => void;
   toggleStar: (slug: string, word: string) => void;
   setLearnSettings: (s: LearnSettings) => void;
   setStage: (slug: string, word: string, stage: WordStage) => void;
@@ -50,10 +54,18 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       starred: {},
       lapses: {},
       mistakeLog: [],
+      lastAt: {},
+      touch: (slug) => set((s) => ({ lastAt: { ...s.lastAt, [slug]: new Date().toISOString() } })),
       logMistake: (slug, word, kind) =>
-        set((s) => ({ mistakeLog: [...s.mistakeLog, { kind, word, slug, at: new Date().toISOString() }].slice(-MISTAKE_LOG_CAP) })),
+        set((s) => ({
+          mistakeLog: [...s.mistakeLog, { kind, word, slug, at: new Date().toISOString() }].slice(-MISTAKE_LOG_CAP),
+          lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
+        })),
       addLapse: (slug, word) =>
-        set((s) => ({ lapses: { ...s.lapses, [slug]: { ...(s.lapses[slug] ?? {}), [word]: (s.lapses[slug]?.[word] ?? 0) + 1 } } })),
+        set((s) => ({
+          lapses: { ...s.lapses, [slug]: { ...(s.lapses[slug] ?? {}), [word]: (s.lapses[slug]?.[word] ?? 0) + 1 } },
+          lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
+        })),
       learnSettings: DEFAULT_LEARN_SETTINGS,
       toggleStar: (slug, word) =>
         set((s) => {
@@ -63,7 +75,10 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         }),
       setLearnSettings: (learnSettings) => set({ learnSettings }),
       setStage: (slug, word, stage) =>
-        set((s) => ({ stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stage } } })),
+        set((s) => ({
+          stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stage } },
+          lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
+        })),
       addScore: (slug, score) =>
         set((s) => ({
           scores: {
@@ -72,6 +87,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
               .sort((a, b) => b.score - a.score)
               .slice(0, 5),
           },
+          lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
         })),
       resetTopic: (slug) =>
         set((s) => {
@@ -87,7 +103,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         const p = (persisted ?? {}) as Partial<TopicStudyState>;

@@ -8,6 +8,7 @@ import React, {
 import { Pressable, Text, TextInput, View } from "react-native";
 import { posIpa } from "@/data/study-decks";
 import { router, useLocalSearchParams } from "expo-router";
+import { useDeckVisit } from "@/components/vocab/study/useDeckVisit";
 
 import {
   ChoiceGrid,
@@ -89,7 +90,11 @@ const KIND_LABEL = {
  * lại sau hai câu; sửa đúng phải xác nhận thêm một lần.
  */
 export default function LearnScreen() {
-  const { slug = "" } = useLocalSearchParams<{ slug: string }>();
+  // `?only=starred` (nút "Học riêng từ gắn sao" ở trang bộ từ): chỉ lượt này học
+  // riêng từ gắn sao, không đổi cài đặt chung của mọi bộ.
+  const { slug = "", only } = useLocalSearchParams<{ slug: string; only?: string }>();
+  const starredRun = only === "starred";
+  useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const stages = useTopicStudyStore((s) => s.stages[slug]);
   const starred = useTopicStudyStore((s) => s.starred[slug] ?? NO_STARS);
@@ -109,7 +114,7 @@ export default function LearnScreen() {
     const stageOf = (w: string) => st.stages[slug]?.[w] ?? 0;
     const pool = filterWords(
       topic.words,
-      s,
+      starredRun ? { ...s, starredOnly: true } : s,
       stageOf,
       new Set(st.starred[slug] ?? []),
     );
@@ -355,7 +360,7 @@ export default function LearnScreen() {
 
   if (!topic) {
     return (
-      <StudyFrame backHref="/vocabulary/topics" title="Học">
+      <StudyFrame backHref="/vocabulary/quiz" title="Học">
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">
             Không có bộ từ này.

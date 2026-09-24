@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { CrossFade } from "@/components/motion/Motion";
 import { useLocalSearchParams } from "expo-router";
+import { useDeckVisit } from "@/components/vocab/study/useDeckVisit";
 import { LinearGradient } from "expo-linear-gradient";
 
 import {
@@ -51,6 +52,7 @@ type Round = { target: StudyWord; correctLane: number; balloons: Balloon[] };
 
 export default function GameScreen() {
   const { slug = "" } = useLocalSearchParams<{ slug: string }>();
+  useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   // Mảng rỗng phải là CÙNG MỘT tham chiếu: `?? []` tạo mảng mới mỗi lần, zustand
   // tưởng dữ liệu đổi liên tục và render vòng vô hạn.
@@ -184,7 +186,7 @@ export default function GameScreen() {
 
   if (!topic) {
     return (
-      <StudyFrame backHref="/vocabulary/topics" title="Trò chơi">
+      <StudyFrame backHref="/vocabulary/quiz" title="Trò chơi">
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">
             Không có bộ từ này.
