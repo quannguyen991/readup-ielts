@@ -123,7 +123,14 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'bookmarks', label: 'Đã lưu', href: '/bookmarks', icon: 'bookmark' },
         ],
       },
-      { key: 'quest', label: 'ReadUp Quest', shortLabel: 'Quest', href: '/quest', icon: 'sparkle' },
+      {
+        key: 'quest',
+        label: 'ReadUp Quest',
+        shortLabel: 'Quest',
+        href: '/quest',
+        icon: 'sparkle',
+        children: [{ key: 'quest-world', label: 'Bản đồ ReadUp', href: '/quest/world', icon: 'grid' }],
+      },
     ],
   },
   {
