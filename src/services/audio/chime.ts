@@ -4,7 +4,7 @@ import { sfx } from './sfx';
  * Các tiếng cũ của app — giờ chỉ là lối gọi vào bộ âm thanh game (`sfx.ts`).
  *
  * Giữ nguyên tên để các màn đang gọi (chuông đúng ở màn từ vựng, pháo giấy ở
- * màn chép chính tả, trận Quest) không phải sửa, nhưng mọi tiếng giờ đi chung
+ * màn chép chính tả) không phải sửa, nhưng mọi tiếng giờ đi chung
  * MỘT `AudioContext`, cùng một bộ nén, cùng nút tắt tiếng, và cùng luật chống
  * kêu đôi: màn học báo "đúng" rồi luật game cũng báo "đúng" cho cùng một câu thì
  * chỉ nghe một tiếng.

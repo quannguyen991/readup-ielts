@@ -3,9 +3,10 @@ import { test } from 'node:test';
 
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
+import { ENEMIES } from '@/services/game/rules';
 import { buildIslands, islandPosition, nextMission, type WorldProgress } from './islands';
 
-const empty: WorldProgress = { lessonDone: {}, stages: {}, dictationSets: new Set(), translationSets: new Set(), questStars: {} };
+const empty: WorldProgress = { lessonDone: {}, stages: {}, dictationSets: new Set(), translationSets: new Set(), enemiesDefeated: 0 };
 
 test('bản đồ mới: sáu đảo, đảo nào cũng có nhiệm vụ, chưa xong gì', () => {
   const islands = buildIslands(empty);
@@ -32,6 +33,15 @@ test('bộ từ tính là xong khi nhớ chắc từ 70% số từ', () => {
   const vocab = (n: number) => buildIslands({ ...empty, stages: stages(n) })[2]!.missions[0]!.done;
   assert.equal(vocab(need - 1), false);
   assert.equal(vocab(need), true);
+});
+
+test('Đấu trường là bảy loài quái của game khi học: hạ tới đâu, xong tới đó', () => {
+  const arena = (n: number) => buildIslands({ ...empty, enemiesDefeated: n }).find((i) => i.id === 'arena')!;
+  assert.equal(arena(0).missions.length, ENEMIES.length);
+  assert.equal(arena(3).done, 3);
+  assert.equal(arena(ENEMIES.length + 2).done, ENEMIES.length, 'sang vòng hai thì đảo đã xong hết');
+  assert.match(arena(0).missions.at(-1)!.title, /^Hạ Boss /);
+  for (const m of arena(0).missions) assert.ok(m.href.startsWith('/') && !m.href.startsWith('/quest'), m.href);
 });
 
 test('nhiệm vụ tiếp theo nằm ở đảo dở nhất; xong hết thì không còn gì', () => {

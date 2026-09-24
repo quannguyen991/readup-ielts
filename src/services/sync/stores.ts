@@ -3,19 +3,16 @@ import {
   mergeBilling,
   mergeMath,
   mergeStudy,
-  mergeQuest,
   mergeVocab,
   type BillingPayload,
   type MathPayload,
   type StudyPayload,
-  type QuestPayload,
   type VocabPayload,
 } from './store-merges';
 import { useBillingStore } from '@/store/useBillingStore';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
-import { useQuestStore } from '@/store/useQuestStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { gamePayload, useGameStore } from '@/store/useGameStore';
@@ -110,28 +107,6 @@ const billingStore: SyncedStore = {
   merge: mergeBilling,
 };
 
-const questStore: SyncedStore = {
-  key: 'quest',
-  read: () => {
-    const s = useQuestStore.getState();
-    return { xp: s.xp, level: s.level, stars: s.stars, unlockedNodes: s.unlockedNodes, completedBattles: s.completedBattles, wrongQuestionIds: s.wrongQuestionIds, ownedCosmetics: s.ownedCosmetics, equippedCosmetic: s.equippedCosmetic };
-  },
-  write: (payload) => {
-    const data = payload as QuestPayload;
-    useQuestStore.setState({
-      xp: data.xp ?? 0,
-      level: data.level ?? 1,
-      stars: data.stars ?? {},
-      unlockedNodes: data.unlockedNodes ?? [],
-      completedBattles: data.completedBattles ?? [],
-      wrongQuestionIds: data.wrongQuestionIds ?? [],
-      ownedCosmetics: data.ownedCosmetics ?? [],
-      equippedCosmetic: data.equippedCosmetic ?? null,
-    });
-  },
-  merge: mergeQuest,
-};
-
 /** Đề của tuần: máy chủ đọc khoá này để xếp hạng cả nước (`/api/weekly`). */
 const weeklyStore: SyncedStore = {
   key: 'weekly',
@@ -195,7 +170,6 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(studyStore);
   registerSyncedStore(vocabStore);
   registerSyncedStore(billingStore);
-  registerSyncedStore(questStore);
   registerSyncedStore(weeklyStore);
   registerSyncedStore(satRwStore);
   registerSyncedStore(gameStore);
