@@ -2,21 +2,12 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
 import {
-  advanceQueue,
-  answerLearn,
-  learnFraction,
-  pickNext,
-  startLearn,
-  type LearnItem,
   directionFor,
   filterWords,
-  GAP_CONFIRM,
-  GAP_WRONG,
-  isFinalKind,
-  passesStage,
   clozeOf,
-  initialQueue,
   isTypedCorrect,
+  makeWordChoices,
+  synonymMatch,
   letterDiff,
   makeChoices,
   normalizeAnswer,
@@ -86,63 +77,6 @@ test('một vòng ưu tiên từ chưa thuộc, học hết thì ôn lại', () 
   assert.equal(pickRound(POOL, () => 2, 3).length, 3);
 });
 
-test('hàng đợi Học: lật thẻ → trắc nghiệm → điền từ', () => {
-  let q = initialQueue(POOL.slice(0, 4));
-  assert.equal(q[0]?.kind, 'flash');
-  q = advanceQueue(q, true);
-  assert.deepEqual(q.map((i) => `${i.word}:${i.kind}`), ['species:flash', 'predator:flash', 'prey:flash', 'habitat:mcq']);
-  let guard = 0;
-  let typed = 0;
-  while (q.length > 0 && guard < 80) {
-    if ((q[0]!.kind as string) === 'type') typed += 1;
-    q = advanceQueue(q, true);
-    guard += 1;
-  }
-  assert.equal(q.length, 0);
-  assert.equal(typed, 4, 'Làm đúng hết thì mỗi từ qua phần điền từ đúng một lần.');
-});
-
-test('sai thì gặp lại sớm, sửa đúng thì còn một lần xác nhận ở xa hơn', () => {
-  const words = POOL.slice(0, 5);
-  let q = initialQueue(words, ['mcq']);
-  q = advanceQueue(q, false, ['mcq']);
-  assert.deepEqual(q[GAP_WRONG], { word: 'habitat', kind: 'mcq', lapse: 'retry' }, 'Câu sai quay lại sau hai câu.');
-  // Làm đúng hai câu chen giữa, rồi sửa đúng câu sai.
-  q = advanceQueue(q, true, ['mcq']);
-  q = advanceQueue(q, true, ['mcq']);
-  assert.equal(q[0]?.word, 'habitat');
-  assert.ok(!passesStage(q[0]!), 'Lần hỏi lại ngay sau khi sai chưa tính là qua.');
-  q = advanceQueue(q, true, ['mcq']);
-  const at = q.findIndex((i) => i.word === 'habitat');
-  assert.equal(q[at]?.lapse, 'confirm');
-  assert.equal(at, Math.min(GAP_CONFIRM, q.length - 1), 'Lần xác nhận đặt xa hơn lần hỏi lại.');
-  // Xác nhận đúng thì từ xong.
-  let guard = 0;
-  while (q.length > 0 && guard < 30) {
-    q = advanceQueue(q, true, ['mcq']);
-    guard += 1;
-  }
-  assert.equal(q.length, 0);
-});
-
-test('không bao giờ hỏi lại ngay câu vừa sai khi còn câu khác', () => {
-  let q = initialQueue(POOL.slice(0, 2), ['mcq']);
-  q = advanceQueue(q, false, ['mcq']);
-  assert.equal(q[0]?.word, 'species');
-});
-
-test('tắt bớt phần thì từ bỏ qua phần đó', () => {
-  const kinds = ['type', 'mcq'] as const;
-  let q = initialQueue(POOL.slice(0, 1), kinds);
-  assert.equal(q[0]?.kind, 'mcq', 'Thứ tự học luôn theo lật thẻ → trắc nghiệm → điền từ.');
-  q = advanceQueue(q, true, kinds);
-  assert.equal(q[0]?.kind, 'type');
-  assert.ok(isFinalKind('type', kinds));
-  assert.deepEqual(advanceQueue(q, true, kinds), []);
-  // Không bật phần nào: không để vòng rỗng.
-  assert.equal(initialQueue(POOL.slice(0, 1), [])[0]?.kind, 'flash');
-});
-
 test('lọc từ gắn sao và từ chưa thuộc', () => {
   const stages: Record<string, 0 | 1 | 2> = { habitat: 2 };
   const star = new Set(['habitat', 'prey']);
@@ -160,75 +94,28 @@ test('điền từ không hỏi theo chiều thấy từ tiếng Anh', () => {
   assert.equal(seen.size, 3, 'Trắc nghiệm phải xoay đủ các chiều đang bật.');
 });
 
-test('xếp xen kẽ: các dạng đan nhau chứ không dồn thành dãy dài', () => {
-  const words = Array.from({ length: 10 }, (_, i) => W(`w${i}`, `nghĩa ${i}`));
-  let s = startLearn(words);
-  const seen: string[] = [];
-  const typedWords: string[] = [];
-  let guard = 0;
-  for (let item = pickNext(s); item && guard < 200; item = pickNext(s)) {
-    seen.push(item.kind);
-    if (item.kind === 'type') typedWords.push(item.word);
-    s = answerLearn(s, true);
-    guard += 1;
+test('điền chỗ trống kiểu THPT: bốn từ khác nhau, ưu tiên cùng từ loại', () => {
+  const pool = [
+    { ...W('habitat', 'môi trường sống'), pos: 'noun' },
+    { ...W('species', 'loài'), pos: 'noun' },
+    { ...W('predator', 'kẻ săn mồi'), pos: 'noun' },
+    { ...W('prey', 'con mồi'), pos: 'noun' },
+    { ...W('adapt', 'thích nghi'), pos: 'verb' },
+    { ...W('migrate', 'di cư'), pos: 'verb' },
+  ];
+  for (let seed = 1; seed < 20; seed += 1) {
+    const { options, correctIndex } = makeWordChoices(pool[0]!, pool, seededRng(seed));
+    assert.equal(options.length, 4);
+    assert.equal(new Set(options).size, 4);
+    assert.equal(options[correctIndex], 'habitat');
+    assert.ok(options.every((o) => pool.find((w) => w.word === o)!.pos === 'noun'), `seed ${seed}: ${options.join(', ')}`);
   }
-  assert.equal(seen.length, 30, 'Làm đúng hết: mỗi từ đúng ba câu.');
-  assert.deepEqual([...typedWords].sort(), words.map((w) => w.word).sort());
-  // Không có dãy nào quá ba câu cùng dạng.
-  let run = 1;
-  let longest = 1;
-  for (let i = 1; i < seen.length; i += 1) {
-    run = seen[i] === seen[i - 1] ? run + 1 : 1;
-    longest = Math.max(longest, run);
-  }
-  assert.ok(longest <= 3, `dãy cùng dạng dài ${longest}: ${seen.join(' ')}`);
-  // Mười câu đầu đã có đủ ba dạng.
-  assert.equal(new Set(seen.slice(0, 10)).size, 3, seen.slice(0, 10).join(' '));
 });
 
-test('xếp xen kẽ: mỗi từ vẫn đi đúng thứ tự lật thẻ → trắc nghiệm → điền từ', () => {
-  const words = Array.from({ length: 6 }, (_, i) => W(`w${i}`, `n${i}`));
-  let s = startLearn(words);
-  const order = new Map<string, string[]>();
-  for (let item = pickNext(s), g = 0; item && g < 100; item = pickNext(s), g += 1) {
-    order.set(item.word, [...(order.get(item.word) ?? []), item.kind]);
-    s = answerLearn(s, true);
-  }
-  for (const [, ks] of order) assert.deepEqual(ks, ['flash', 'mcq', 'type']);
-});
-
-test('xếp xen kẽ: sai thì hỏi lại, sửa đúng còn một lần xác nhận, không hỏi lại ngay câu vừa hỏi', () => {
-  const words = Array.from({ length: 5 }, (_, i) => W(`w${i}`, `n${i}`));
-  let s = startLearn(words);
-  const first = pickNext(s, ['mcq'])!;
-  s = answerLearn(s, false, ['mcq']);
-  assert.notEqual(pickNext(s, ['mcq'])?.word, first.word);
-  const hist: LearnItem[] = [];
-  for (let item = pickNext(s, ['mcq']), g = 0; item && g < 50; item = pickNext(s, ['mcq']), g += 1) {
-    hist.push(item);
-    s = answerLearn(s, true, ['mcq']);
-  }
-  const again = hist.filter((i) => i.word === first.word);
-  assert.deepEqual(again.map((i) => i.lapse), ['retry', 'confirm']);
-  assert.equal(pickNext(s, ['mcq']), null);
-});
-
-test('thanh tiến độ: mỗi từ đầy dần theo phần đã qua, sai thì đứng yên', () => {
-  const words = [W('a', 'một'), W('b', 'hai')];
-  let s = startLearn(words);
-  assert.equal(learnFraction(s, 'a'), 0);
-  // Đi hết từ "a" qua ba phần, ghi lại phần trăm sau mỗi câu của nó.
-  const seen: number[] = [];
-  for (let item = pickNext(s), g = 0; item && g < 50; item = pickNext(s), g += 1) {
-    const ok = !(item.word === 'a' && item.kind === 'mcq' && !seen.includes(-1));
-    if (!ok) seen.push(-1);
-    s = answerLearn(s, ok);
-    if (item.word === 'a') seen.push(Math.round(learnFraction(s, 'a') * 3));
-  }
-  // flash xong → 1/3; mcq sai → vẫn 1/3; hỏi lại đúng rồi xác nhận → 2/3; type → đầy.
-  assert.equal(seen.filter((x) => x >= 0).at(-1), 3);
-  assert.deepEqual(seen.filter((x) => x >= 0).slice(0, 2), [1, 1]);
-  const mono = seen.filter((x) => x >= 0);
-  for (let i = 1; i < mono.length; i += 1) assert.ok(mono[i]! >= mono[i - 1]!, `lùi: ${mono.join(',')}`);
-  assert.equal(learnFraction(s, 'b'), 1);
+test('chấp nhận từ đồng nghĩa chỉ khi khớp đúng một từ trong danh sách', () => {
+  const w = { synonyms: ['traineeship', 'internship'] };
+  assert.equal(synonymMatch(' Internship. ', w), 'internship');
+  assert.equal(synonymMatch('intern', w), null);
+  assert.equal(synonymMatch('', w), null);
+  assert.equal(synonymMatch('anything', {}), null);
 });

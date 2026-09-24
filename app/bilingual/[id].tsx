@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import {
   Linking,
+  Modal,
   Platform,
   Pressable,
   ScrollView,
@@ -298,15 +299,74 @@ function Toolbar(props: {
   onDark: () => void;
   savedCount: number;
 }) {
-  const { wide } = props;
-  // Đủ chỗ cho nhãn chữ đầy đủ trên một hàng; hẹp hơn thì các viên chỉ còn biểu tượng.
-  const roomy = useWindowDimensions().width >= 1500;
-  const [fontOpen, setFontOpen] = useState(false);
-  const [fullscreen, setFullscreen] = useState(false);
+  // Đủ chỗ cho dòng phụ "THE READUP PRESS" cạnh tên trang.
+  const roomy = useWindowDimensions().width >= 1200;
+  const [open, setOpen] = useState(false);
 
+  /*
+    MỌI NÚT CHỈNH GOM VÀO MỘT BẢNG CÀI ĐẶT. Bản trước là một hàng sáu viên
+    (chọn tấm, mặt chữ, cỡ chữ, số từ đã lưu, nền tối, toàn màn hình) — màn
+    laptop nhỏ thì hàng ấy gãy làm hai và ăn chỗ của bài đọc. Người dùng muốn
+    thanh trên chỉ còn đường về, tên trang và một nút Cài đặt (24/09/2026).
+  */
+  return (
+    <View className="flex-row items-center gap-x-3 py-1.5" style={{ zIndex: 30 }}>
+      <Pressable
+        accessibilityRole="link"
+        accessibilityLabel="Về kho đọc báo song ngữ"
+        onPress={() => (router.canGoBack() ? router.back() : router.replace('/bilingual' as never))}
+        className="h-9 w-9 items-center justify-center"
+      >
+        <View style={{ transform: [{ rotate: '180deg' }] }}>
+          <Icon name="arrow-right" size={22} color={CREAM} strokeWidth={2} />
+        </View>
+      </Pressable>
+
+      <View className="min-w-0 flex-row items-baseline gap-2.5" style={{ flexShrink: 1 }}>
+        <Text numberOfLines={1} style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: CREAM }}>
+          đọc song ngữ
+        </Text>
+        {roomy ? (
+          <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 2, color: 'rgba(244,241,228,0.8)' }}>
+            •  THE READUP PRESS
+          </Text>
+        ) : null}
+      </View>
+
+      <View className="flex-1" />
+
+      <HoverPressable
+        accessibilityRole="button"
+        accessibilityLabel="Cài đặt đọc"
+        aria-expanded={open}
+        onPress={() => setOpen(true)}
+        style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
+      >
+        <View className="h-10 flex-row items-center gap-2 rounded-pill px-4" style={{ backgroundColor: PILL_BG, borderWidth: 1, borderColor: PILL_BORDER }}>
+          <Icon name="settings" size={16} color={CREAM} strokeWidth={2} />
+          <Text style={{ fontSize: 13, fontWeight: '700', color: CREAM }}>Cài đặt</Text>
+        </View>
+      </HoverPressable>
+
+      <ReaderSettings {...props} open={open} onClose={() => setOpen(false)} />
+    </View>
+  );
+}
+
+const PAPER = { bg: '#FBF8EF', ink: '#1B2310', muted: '#7C8069', rule: '#ECE7D6', chip: '#F1ECDA', accent: '#3F4C9C' };
+
+/** Bảng cài đặt của màn đọc song ngữ: tấm hiển thị, mặt chữ, cỡ chữ, nền, toàn màn hình, từ đã lưu. */
+function ReaderSettings(
+  props: {
+    open: boolean;
+    onClose: () => void;
+  } & Omit<React.ComponentProps<typeof Toolbar>, never>,
+) {
+  const { width } = useWindowDimensions();
+  const [fullscreen, setFullscreen] = useState(false);
   const views = [
-    ...(wide ? [] : [{ key: 'en', label: 'English' }]),
-    { key: 'vi', label: wide ? 'Bản dịch' : 'Tiếng Việt' },
+    ...(props.wide ? [] : [{ key: 'en', label: 'English' }]),
+    { key: 'vi', label: props.wide ? 'Bản dịch' : 'Tiếng Việt' },
     { key: 'questions', label: `Câu hỏi ${props.answered}/${props.questionCount}` },
     { key: 'vocab', label: 'Từ vựng' },
   ];
@@ -323,162 +383,137 @@ function Toolbar(props: {
   };
 
   return (
-    <View className="flex-row flex-wrap items-center gap-x-3 gap-y-2.5 py-1.5" style={{ zIndex: 30 }}>
-      <Pressable
-        accessibilityRole="link"
-        accessibilityLabel="Về kho đọc báo song ngữ"
-        onPress={() => (router.canGoBack() ? router.back() : router.replace('/bilingual' as never))}
-        className="h-9 w-9 items-center justify-center"
-      >
-        <View style={{ transform: [{ rotate: '180deg' }] }}>
-          <Icon name="arrow-right" size={22} color={CREAM} strokeWidth={2} />
-        </View>
-      </Pressable>
-
-      <View className="flex-row items-baseline gap-2.5">
-        <Text style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: CREAM }}>
-          đọc song ngữ
-        </Text>
-        {roomy ? (
-          <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 2, color: 'rgba(244,241,228,0.8)' }}>
-            •  THE READUP PRESS
-          </Text>
-        ) : null}
-      </View>
-
-      <View className="flex-1" />
-
-      {/* chọn tấm bên phải (màn hẹp: chọn tấm duy nhất) */}
-      <View className="flex-row items-center rounded-pill p-1" style={{ backgroundColor: PILL_BG, borderWidth: 1, borderColor: PILL_BORDER }}>
-        {views.map((v) => {
-          const on = props.view === v.key;
-          return (
-            <Pressable
-              key={v.key}
-              accessibilityRole="tab"
-              aria-selected={on}
-              onPress={() => props.onView(v.key)}
-              className="rounded-pill px-3 py-1.5"
-              style={[{ backgroundColor: on ? CREAM : 'transparent' }, webTransition]}
-            >
-              <Text style={{ fontSize: 12, fontWeight: '700', color: on ? '#26301A' : CREAM }}>{v.label}</Text>
+    <Modal visible={props.open} transparent animationType="fade" onRequestClose={props.onClose}>
+      <Pressable onPress={props.onClose} style={{ flex: 1, backgroundColor: 'rgba(12,16,40,0.28)' }}>
+        <Pressable
+          onPress={() => {}}
+          style={{
+            position: 'absolute',
+            top: 64,
+            right: Math.max(12, (width - MAX_WIDTH - 64) / 2 + 16),
+            width: Math.min(360, width - 24),
+            borderRadius: 22,
+            backgroundColor: PAPER.bg,
+            padding: 18,
+            cursor: 'auto',
+            ...(Platform.OS === 'web' ? ({ boxShadow: '0 24px 60px rgba(10,14,40,0.35)' } as object) : { elevation: 10 }),
+          } as object}
+        >
+          <View className="flex-row items-center justify-between">
+            <Text style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 22, color: PAPER.ink }}>Cài đặt đọc</Text>
+            <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={props.onClose} className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: PAPER.chip }}>
+              <Icon name="close" size={16} color={PAPER.ink} />
             </Pressable>
-          );
-        })}
-      </View>
+          </View>
 
-      {/* mặt chữ */}
-      <View style={{ position: 'relative' }}>
-        <Pill onPress={() => setFontOpen((o) => !o)} label="Đổi mặt chữ" minWidth={roomy ? 150 : undefined}>
-          <PillCaption>FONT</PillCaption>
-          <Text style={{ fontSize: 12.5, fontWeight: '700', color: CREAM, fontFamily: FONTS.find((f) => f.key === props.fontKey)?.family }}>
-            {FONTS.find((f) => f.key === props.fontKey)?.label}
-          </Text>
-          <View className="flex-1" />
-          <Icon name="chevron-down" size={14} color={CREAM} strokeWidth={2.2} />
-        </Pill>
-        {fontOpen ? (
-          <Appear duration={160}>
-            <View
-              className="absolute right-0 top-11 overflow-hidden rounded-panel py-1"
-              style={{ minWidth: 180, backgroundColor: '#26301A', borderWidth: 1, borderColor: PILL_BORDER, zIndex: 40 }}
+          <SettingLabel>{props.wide ? 'Tấm bên phải' : 'Tấm đang xem'}</SettingLabel>
+          <View className="flex-row flex-wrap gap-2">
+            {views.map((v) => (
+              <Choice
+                key={v.key}
+                on={props.view === v.key}
+                onPress={() => {
+                  props.onView(v.key);
+                  props.onClose();
+                }}
+              >
+                {v.label}
+              </Choice>
+            ))}
+          </View>
+
+          <SettingLabel>Mặt chữ</SettingLabel>
+          <View className="flex-row flex-wrap gap-2">
+            {FONTS.map((f) => (
+              <Choice key={f.key} on={props.fontKey === f.key} onPress={() => props.onFont(f.key)} fontFamily={f.family}>
+                {f.label}
+              </Choice>
+            ))}
+          </View>
+
+          <SettingLabel>Cỡ chữ</SettingLabel>
+          <View className="flex-row items-center gap-3">
+            <SizeButton label="−" a11y="Giảm cỡ chữ" disabled={props.fontSize <= MIN_SIZE} onPress={() => props.onSize(-1)} />
+            <Text style={{ fontSize: 18, fontWeight: '800', color: PAPER.ink, minWidth: 28, textAlign: 'center' }}>{props.fontSize}</Text>
+            <SizeButton label="+" a11y="Tăng cỡ chữ" disabled={props.fontSize >= MAX_SIZE} onPress={() => props.onSize(1)} />
+          </View>
+
+          <SettingLabel>Nền giấy</SettingLabel>
+          <View className="flex-row flex-wrap gap-2">
+            <Choice on={!props.dark} onPress={() => props.dark && props.onDark()}>
+              ☀ Sáng
+            </Choice>
+            <Choice on={props.dark} onPress={() => !props.dark && props.onDark()}>
+              ☾ Tối
+            </Choice>
+          </View>
+
+          {Platform.OS === 'web' ? (
+            <>
+              <SettingLabel>Màn hình</SettingLabel>
+              <Choice on={fullscreen} onPress={toggleFullscreen}>
+                {fullscreen ? '⤡ Thoát toàn màn hình' : '⛶ Toàn màn hình'}
+              </Choice>
+            </>
+          ) : null}
+
+          <View className="mt-4 flex-row items-center gap-2 border-t pt-3" style={{ borderColor: PAPER.rule }}>
+            <Icon name="bookmark" size={14} color={PAPER.accent} strokeWidth={2} />
+            <Text style={{ flex: 1, fontSize: 13, color: PAPER.ink }}>
+              Đã lưu <Text style={{ fontWeight: '800' }}>{props.savedCount} từ</Text> từ bài này
+            </Text>
+            <Pressable
+              accessibilityRole="link"
+              onPress={() => {
+                props.onClose();
+                router.push('/vocabulary' as never);
+              }}
             >
-              {FONTS.map((f) => (
-                <HoverPressable
-                  key={f.key}
-                  accessibilityRole="menuitem"
-                  onPress={() => {
-                    props.onFont(f.key);
-                    setFontOpen(false);
-                  }}
-                  className="flex-row items-center justify-between px-4 py-2.5"
-                  style={({ hovered }) => [{ backgroundColor: hovered ? 'rgba(255,255,255,0.08)' : 'transparent' }, webTransition]}
-                >
-                  <Text style={{ fontFamily: f.family, fontSize: 15, color: CREAM }}>{f.label}</Text>
-                  {props.fontKey === f.key ? <Icon name="check" size={14} color="#C9DA92" strokeWidth={2.4} /> : null}
-                </HoverPressable>
-              ))}
-            </View>
-          </Appear>
-        ) : null}
-      </View>
-
-      {/* cỡ chữ */}
-      <Pill label="Cỡ chữ">
-        <PillCaption>CỠ CHỮ</PillCaption>
-        <RoundButton label="−" a11y="Giảm cỡ chữ" onPress={() => props.onSize(-1)} />
-        <Text style={{ fontSize: 13, fontWeight: '800', color: CREAM, minWidth: 20, textAlign: 'center' }}>{props.fontSize}</Text>
-        <RoundButton label="+" a11y="Tăng cỡ chữ" onPress={() => props.onSize(1)} />
-      </Pill>
-
-      <Pill label="Số từ đã lưu">
-        <Icon name="bookmark" size={13} color={CREAM} strokeWidth={2} />
-        <Text style={{ fontSize: 12.5, fontWeight: '700', color: CREAM }}>{props.savedCount} từ</Text>
-      </Pill>
-
-      <Pill onPress={props.onDark} label={props.dark ? 'Chuyển nền sáng' : 'Chuyển nền tối'}>
-        <Text style={{ fontSize: 13, color: '#F2C94C' }}>{props.dark ? '☀' : '☾'}</Text>
-        <Text style={{ fontSize: 12.5, fontWeight: '700', color: CREAM }}>{props.dark ? 'Sáng' : 'Tối'}</Text>
-      </Pill>
-
-      {Platform.OS === 'web' ? (
-        <Pill onPress={toggleFullscreen} label="Toàn màn hình">
-          <Text style={{ fontSize: 13, color: CREAM }}>{fullscreen ? '⤡' : '⛶'}</Text>
-
-        </Pill>
-      ) : null}
-    </View>
+              <Text style={{ fontSize: 13, fontWeight: '700', color: PAPER.accent }}>Mở sổ từ →</Text>
+            </Pressable>
+          </View>
+        </Pressable>
+      </Pressable>
+    </Modal>
   );
 }
 
-function Pill({
-  children,
-  onPress,
-  label,
-  minWidth,
-}: {
-  children: React.ReactNode;
-  onPress?: () => void;
-  label: string;
-  minWidth?: number;
-}) {
-  const inner = (
-    <View
-      className="h-9 flex-row items-center gap-2 rounded-pill px-3.5"
-      style={{ backgroundColor: PILL_BG, borderWidth: 1, borderColor: PILL_BORDER, minWidth }}
-    >
-      {children}
-    </View>
+function SettingLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <Text style={{ marginTop: 16, marginBottom: 8, fontSize: 11, fontWeight: '700', letterSpacing: 1.3, color: PAPER.muted }}>
+      {String(children).toUpperCase()}
+    </Text>
   );
-  if (!onPress) return <View accessibilityLabel={label}>{inner}</View>;
+}
+
+function Choice({ on, onPress, fontFamily, children }: { on: boolean; onPress: () => void; fontFamily?: string; children: React.ReactNode }) {
   return (
     <HoverPressable
       accessibilityRole="button"
-      accessibilityLabel={label}
+      aria-pressed={on}
       onPress={onPress}
-      style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
+      className="rounded-pill px-3.5 py-2"
+      style={({ hovered }) => [
+        { backgroundColor: on ? PAPER.accent : hovered ? '#E9E3CD' : PAPER.chip },
+        webTransition,
+      ]}
     >
-      {inner}
+      <Text style={{ fontSize: 13.5, fontWeight: '700', color: on ? '#FFFFFF' : PAPER.ink, fontFamily }}>{children}</Text>
     </HoverPressable>
   );
 }
 
-function PillCaption({ children }: { children: React.ReactNode }) {
-  return (
-    <Text style={{ fontSize: 10.5, fontWeight: '700', letterSpacing: 1.4, color: 'rgba(244,241,228,0.62)' }}>{children}</Text>
-  );
-}
-
-function RoundButton({ label, a11y, onPress }: { label: string; a11y: string; onPress: () => void }) {
+function SizeButton({ label, a11y, disabled, onPress }: { label: string; a11y: string; disabled?: boolean; onPress: () => void }) {
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={a11y}
+      disabled={disabled}
       onPress={onPress}
-      className="h-6 w-6 items-center justify-center rounded-pill"
-      style={{ backgroundColor: 'rgba(255,255,255,0.14)' }}
+      className="h-10 w-10 items-center justify-center rounded-pill"
+      style={{ backgroundColor: PAPER.chip, opacity: disabled ? 0.45 : 1 }}
     >
-      <Text style={{ fontSize: 13, fontWeight: '800', color: CREAM, lineHeight: 15 }}>{label}</Text>
+      <Text style={{ fontSize: 18, fontWeight: '800', color: PAPER.ink, lineHeight: 20 }}>{label}</Text>
     </Pressable>
   );
 }
@@ -532,8 +567,9 @@ function Sheet({
 }
 
 function Kicker({ theme, label, hint }: { theme: Theme; label: string; hint?: string }) {
+  // Chừa chỗ cho nhãn EN/VI ở góc tấm giấy: màn hẹp thì dòng gợi ý xuống hàng và chạy vào dưới nhãn.
   return (
-    <Text>
+    <Text style={{ paddingRight: 44 }}>
       <Text style={{ fontFamily: readingFont.sans, fontWeight: '700', fontSize: 11.5, letterSpacing: 1.8, color: theme.accent }}>
         {label}
       </Text>

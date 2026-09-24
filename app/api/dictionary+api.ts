@@ -13,6 +13,14 @@ import { pickBestTranslation, type MyMemoryResponse } from '@/services/dictionar
  * thì không đụng CORS lẫn bộ lọc trình duyệt.
  */
 
+/**
+ * Mỗi dịch vụ tối đa 4 giây. dictionaryapi.dev có lúc không trả lời cả chục giây
+ * (đo ngày 24/09/2026: quá 15 giây chưa có byte nào); chờ cả hai bằng
+ * `Promise.all` thì một bên treo kéo cả thẻ tra treo theo, mất luôn nghĩa tiếng
+ * Việt vốn về trong một giây.
+ */
+const UPSTREAM_TIMEOUT_MS = 4000;
+
 type DictionaryApiEntry = {
   phonetic?: string;
   phonetics?: Array<{ text?: string; audio?: string }>;
@@ -49,9 +57,9 @@ export async function POST(request: Request): Promise<Response> {
 
 async function fetchEnglish(word: string): Promise<Record<string, unknown>> {
   try {
-    const res = await fetch(
-      `https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`,
-    );
+    const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURIComponent(word)}`, {
+      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
+    });
     if (!res.ok) return {};
 
     const data = (await res.json()) as DictionaryApiEntry[];
@@ -78,9 +86,9 @@ async function fetchEnglish(word: string): Promise<Record<string, unknown>> {
 
 async function fetchVietnamese(text: string): Promise<string | null> {
   try {
-    const res = await fetch(
-      `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|vi`,
-    );
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|vi`, {
+      signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
+    });
     if (!res.ok) return null;
 
     return pickBestTranslation(text, (await res.json()) as MyMemoryResponse);

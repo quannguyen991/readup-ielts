@@ -57,6 +57,35 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/quest\/world(\/[^/]+)?$/,
 ];
 
+/**
+ * Các màn học một bộ từ (Học, Nghe chép, Điền câu, Phát âm, Kiểm tra, Bóng bay):
+ * nền chàm kẻ ô như màn Đọc song ngữ — người dùng chọn nền này cho phần học từ
+ * vựng (24/09/2026). AppShell vẽ nền, `StudyFrame` đổi chữ ngoài thẻ sang màu sáng.
+ */
+const VOCAB_STUDY = /^\/vocabulary\/topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)$/;
+
+/**
+ * Màn KHÔNG bật "bôi đen là tra": màn làm đề (tra được là lộ đáp án) và màn đọc
+ * bài / đọc song ngữ (đã có thẻ tra riêng theo đoạn văn, hai thẻ chồng nhau).
+ */
+const NO_LOOKUP: readonly RegExp[] = [
+  /^\/read\/[^/]+$/,
+  /^\/bilingual\/[^/]+$/,
+  /^\/sat\/full-test$/,
+  /^\/math\/(mock|diagnostic)$/,
+  /^\/weekly(\/|$)/,
+  /^\/duel\/[^/]+$/,
+  /^\/vocabulary\/topic\/[^/]+\/test$/,
+];
+
+export function isLookupBlocked(pathname: string): boolean {
+  return NO_LOOKUP.some((re) => re.test(pathname));
+}
+
+export function isVocabStudyRoute(pathname: string): boolean {
+  return VOCAB_STUDY.test(pathname);
+}
+
 export function isFocusRoute(pathname: string): boolean {
   return FOCUS_PATTERNS.some((pattern) => pattern.test(pathname));
 }

@@ -3,6 +3,7 @@ import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { CARD_SHADOW } from './StudyKit';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { canRecognize } from '@/services/shadow/speech';
 import type { Direction, LearnSettings, StageKind } from '@/services/vocab/topic-study';
 import { color } from '@/theme/tokens';
 
@@ -10,8 +11,11 @@ import { color } from '@/theme/tokens';
  * Bảng Cài đặt của màn Học.
  *
  * Sửa trên một BẢN NHÁP; chỉ khi bấm "Áp dụng" mới ghi vào store và bắt đầu
- * lại vòng. Đổi cài đặt giữa chừng mà vòng đang chạy tự đổi theo thì hàng đợi
- * đang có câu của phần vừa bị tắt — dễ ra câu hỏi hỏng.
+ * lại vòng. Đổi cài đặt giữa chừng mà vòng đang chạy tự đổi theo thì lịch gặp
+ * lại đang có câu của dạng vừa bị tắt — dễ ra câu hỏi hỏng.
+ *
+ * GỌN: mỗi dòng một nhãn, không kèm dòng chú thích nhỏ bên dưới — người dùng
+ * thấy bảng cũ nhiều chữ nhỏ thừa (24/09/2026).
  */
 export function LearnSettingsSheet({
   visible,
@@ -36,6 +40,7 @@ export function LearnSettingsSheet({
   const [draft, setDraft] = useState(initial);
   const [confirmReset, setConfirmReset] = useState(false);
   const [openedWith, setOpenedWith] = useState<LearnSettings | null>(null);
+  const micOk = canRecognize();
 
   // Mỗi lần mở lại bảng, bản nháp lấy từ cài đặt đang dùng (điều chỉnh state
   // trong lúc render theo prop — cách React khuyên, không cần effect).
@@ -46,6 +51,8 @@ export function LearnSettingsSheet({
   }
 
   const toggleIn = <T,>(list: T[], v: T) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
+  const flip = (key: 'interleave' | 'ordered' | 'autoAdvance' | 'acceptSynonyms' | 'speakAnswer' | 'starredOnly' | 'unmasteredOnly') =>
+    setDraft({ ...draft, [key]: !draft[key] });
   const noDir = draft.directions.length === 0;
   const noKind = draft.kinds.length === 0;
   const matches = matchCount(draft);
@@ -56,94 +63,86 @@ export function LearnSettingsSheet({
     { key: 'viToEn', label: <>Thấy <B>nghĩa tiếng Việt</B>, tìm từ tiếng Anh</> },
     { key: 'listen', label: <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
   ];
-  const KINDS: { key: StageKind; label: string; note: string; icon: IconName }[] = [
-    { key: 'flash', label: 'Lật thẻ', note: 'Gặp từ, lật xem mặt sau, tự đánh giá đã biết chưa', icon: 'note' },
-    { key: 'mcq', label: 'Trắc nghiệm 4 đáp án', note: 'Nhận ra đúng từ hoặc đúng nghĩa giữa bốn lựa chọn', icon: 'list' },
-    { key: 'type', label: 'Điền từ', note: 'Gõ ra từ tiếng Anh — phần khó nhất, qua được mới tính là nhớ', icon: 'pencil' },
+  const KINDS: { key: StageKind; label: string; icon: IconName }[] = [
+    { key: 'flash', label: 'Lật thẻ', icon: 'note' },
+    { key: 'mcq', label: 'Trắc nghiệm 4 đáp án', icon: 'list' },
+    { key: 'fill', label: 'Điền chỗ trống (kiểu đề THPT)', icon: 'clipboard' },
+    { key: 'type', label: 'Gõ từ', icon: 'pencil' },
   ];
 
   return (
     <Modal visible={visible} transparent animationType="fade" onRequestClose={onClose}>
-      <Pressable onPress={onClose} className="flex-1 items-center justify-center px-4 py-6" style={{ backgroundColor: 'rgba(15,23,42,0.38)' }}>
+      <Pressable onPress={onClose} className="flex-1 items-center justify-center px-4 py-6" style={{ backgroundColor: 'rgba(15,23,42,0.45)' }}>
         {/* Chặn bấm xuyên qua thẻ xuống lớp nền (lớp nền bấm là đóng). */}
-        <Pressable onPress={() => {}} className="w-full rounded-[26px] bg-white" style={[{ maxWidth: 580, maxHeight: '92%', cursor: 'auto' } as object, CARD_SHADOW]}>
-          <View className="flex-row items-start justify-between px-5 pb-3 pt-6 sm:px-6">
-            <View className="flex-1 pr-4">
-              <Text className="font-heavy text-sectionTitle text-ink">Cài đặt học</Text>
-              <Text className="mt-1 font-sans text-body text-muted">Chọn phần học, chiều hỏi và nhóm từ. Bấm Áp dụng để bắt đầu vòng mới.</Text>
-            </View>
+        <Pressable onPress={() => {}} className="w-full rounded-[26px] bg-white" style={[{ maxWidth: 560, maxHeight: '92%', cursor: 'auto' } as object, CARD_SHADOW]}>
+          <View className="flex-row items-center justify-between px-5 pb-2 pt-5 sm:px-6">
+            <Text className="font-heavy text-sectionTitle text-ink">Cài đặt học</Text>
             <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F1F5F9' }}>
               <Icon name="close" size={18} color={color.ink} />
             </Pressable>
           </View>
 
           <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 8 }}>
-            <Section title="Phần học" warn={noKind ? 'Phải bật ít nhất một phần.' : undefined}>
-              <View className="gap-2.5">
-                {KINDS.map((k, i) => {
-                  const on = draft.kinds.includes(k.key);
-                  return (
-                    <Row key={k.key} on={on} onPress={() => setDraft({ ...draft, kinds: toggleIn(draft.kinds, k.key) })}>
-                      <View className="h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: on ? '#DBEAFE' : '#F1F5F9' }}>
-                        <Icon name={k.icon} size={18} color={on ? color.primary : '#64748B'} />
-                      </View>
-                      <View className="flex-1">
-                        <Text className="font-strong text-bodyLg text-ink">
-                          <Text className="text-muted">{i + 1}. </Text>
-                          {k.label}
-                        </Text>
-                        <Text className="mt-0.5 font-sans text-label text-muted">{k.note}</Text>
-                      </View>
-                    </Row>
-                  );
-                })}
-              </View>
-              <Hint>Mỗi từ đi lần lượt qua các phần đang bật, theo thứ tự trên.</Hint>
+            <Section title="Dạng câu" warn={noKind ? 'Phải bật ít nhất một dạng.' : undefined}>
+              {KINDS.map((k) => {
+                const on = draft.kinds.includes(k.key);
+                return (
+                  <Row key={k.key} on={on} onPress={() => setDraft({ ...draft, kinds: toggleIn(draft.kinds, k.key) })}>
+                    <Icon name={k.icon} size={18} color={on ? color.primary : '#64748B'} />
+                    <Text className="flex-1 font-semi text-bodyLg text-ink">{k.label}</Text>
+                  </Row>
+                );
+              })}
+            </Section>
+
+            <Section title="Cách học">
+              <Row on={draft.interleave} onPress={() => flip('interleave')}>
+                <Icon name="refresh" size={18} color={draft.interleave ? color.primary : '#64748B'} />
+                <Text className="flex-1 font-sans text-bodyLg text-ink">
+                  <B>Học xen kẽ</B> <Text className="text-muted">· trộn dạng câu, gặp lại cả từ đã đúng</Text>
+                </Text>
+              </Row>
+              <Row on={draft.ordered} onPress={() => flip('ordered')}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">Học theo thứ tự trong bộ (không xáo trộn)</Text>
+              </Row>
+              <Row on={draft.autoAdvance} onPress={() => flip('autoAdvance')}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">Tự sang câu tiếp khi trả lời đúng</Text>
+              </Row>
             </Section>
 
             <Section title="Chiều hỏi" warn={noDir ? 'Phải chọn ít nhất một chiều hỏi.' : undefined}>
-              <View className="gap-2.5">
-                {DIRS.map((d) => (
-                  <Row key={d.key} on={draft.directions.includes(d.key)} onPress={() => setDraft({ ...draft, directions: toggleIn(draft.directions, d.key) })}>
-                    <Text className="flex-1 font-sans text-bodyLg text-ink">{d.label}</Text>
-                  </Row>
-                ))}
-              </View>
-              <Hint>Phần Điền từ luôn gõ ra từ tiếng Anh, nên hỏi bằng nghĩa hoặc bằng giọng đọc.</Hint>
+              {DIRS.map((d) => (
+                <Row key={d.key} on={draft.directions.includes(d.key)} onPress={() => setDraft({ ...draft, directions: toggleIn(draft.directions, d.key) })}>
+                  <Text className="flex-1 font-sans text-bodyLg text-ink">{d.label}</Text>
+                </Row>
+              ))}
+            </Section>
+
+            <Section title="Trả lời">
+              <Row on={draft.acceptSynonyms} onPress={() => flip('acceptSynonyms')}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">Chấp nhận từ đồng nghĩa khi gõ</Text>
+              </Row>
+              <Row on={draft.speakAnswer && micOk} disabled={!micOk} onPress={() => flip('speakAnswer')}>
+                <Icon name="mic" size={18} color={draft.speakAnswer && micOk ? color.primary : '#64748B'} />
+                <Text className="flex-1 font-sans text-bodyLg text-ink">
+                  Trả lời bằng giọng nói{micOk ? '' : <Text className="text-muted"> (trình duyệt này chưa hỗ trợ)</Text>}
+                </Text>
+              </Row>
             </Section>
 
             <Section title="Nhóm từ" warn={matches === 0 && !noDir && !noKind ? 'Không còn từ nào khớp bộ lọc này.' : undefined}>
-              <View className="gap-2.5">
-                <Row on={draft.starredOnly} onPress={() => setDraft({ ...draft, starredOnly: !draft.starredOnly })}>
-                  <Icon name="star-fill" size={18} color="#F59E0B" />
-                  <Text className="flex-1 font-sans text-bodyLg text-ink">
-                    Chỉ từ đánh dấu sao <Text className="text-muted">({starredCount} từ)</Text>
-                  </Text>
-                </Row>
-                <Row on={draft.unmasteredOnly} onPress={() => setDraft({ ...draft, unmasteredOnly: !draft.unmasteredOnly })}>
-                  <Icon name="target" size={18} color={color.primary} />
-                  <Text className="flex-1 font-sans text-bodyLg text-ink">
-                    Chỉ từ chưa thuộc <Text className="text-muted">({unmasteredCount} từ)</Text>
-                  </Text>
-                </Row>
-              </View>
-            </Section>
-
-            <Section title="Thứ tự và nhịp">
-              <View className="gap-2.5">
-                <Row on={draft.ordered} onPress={() => setDraft({ ...draft, ordered: !draft.ordered })}>
-                  <View className="flex-1">
-                    <Text className="font-sans text-bodyLg text-ink">Học theo thứ tự trong bộ</Text>
-                    <Text className="mt-0.5 font-sans text-label text-muted">Bộ đã xếp từ dễ tới khó. Tắt để xáo trộn.</Text>
-                  </View>
-                </Row>
-                <Row on={draft.autoAdvance} onPress={() => setDraft({ ...draft, autoAdvance: !draft.autoAdvance })}>
-                  <View className="flex-1">
-                    <Text className="font-sans text-bodyLg text-ink">Tự sang câu tiếp khi trả lời đúng</Text>
-                    <Text className="mt-0.5 font-sans text-label text-muted">Trả lời sai vẫn dừng lại để bạn xem đáp án.</Text>
-                  </View>
-                </Row>
-              </View>
+              <Row on={draft.starredOnly} onPress={() => flip('starredOnly')}>
+                <Icon name="star-fill" size={18} color="#F59E0B" />
+                <Text className="flex-1 font-sans text-bodyLg text-ink">
+                  Chỉ từ đánh dấu sao <Text className="text-muted">({starredCount})</Text>
+                </Text>
+              </Row>
+              <Row on={draft.unmasteredOnly} onPress={() => flip('unmasteredOnly')}>
+                <Icon name="target" size={18} color={color.primary} />
+                <Text className="flex-1 font-sans text-bodyLg text-ink">
+                  Chỉ từ chưa thuộc <Text className="text-muted">({unmasteredCount})</Text>
+                </Text>
+              </Row>
             </Section>
           </ScrollView>
 
@@ -185,9 +184,9 @@ function B({ children }: { children: React.ReactNode }) {
 
 function Section({ title, warn, children }: { title: string; warn?: string; children: React.ReactNode }) {
   return (
-    <View className="mt-5">
-      <Text className="mb-2.5 font-strong text-label uppercase tracking-[1.2px] text-muted">{title}</Text>
-      {children}
+    <View className="mt-4">
+      <Text className="mb-2 font-strong text-label uppercase tracking-[1.2px] text-muted">{title}</Text>
+      <View className="gap-2">{children}</View>
       {warn ? (
         <Text className="mt-2 font-semi text-label" style={{ color: '#E11D48' }}>
           {warn}
@@ -197,19 +196,17 @@ function Section({ title, warn, children }: { title: string; warn?: string; chil
   );
 }
 
-function Hint({ children }: { children: React.ReactNode }) {
-  return <Text className="mt-2 font-sans text-label text-muted">{children}</Text>;
-}
-
 /** Một dòng bật/tắt: ô vuông đánh dấu bên trái, nội dung bên phải. */
-function Row({ on, onPress, children }: { on: boolean; onPress: () => void; children: React.ReactNode }) {
+function Row({ on, onPress, disabled, children }: { on: boolean; onPress: () => void; disabled?: boolean; children: React.ReactNode }) {
   return (
     <Pressable
       accessibilityRole="checkbox"
       aria-checked={on}
+      aria-disabled={disabled}
+      disabled={disabled}
       onPress={onPress}
-      className="flex-row items-center gap-3 rounded-2xl px-4 py-3.5"
-      style={{ borderWidth: 1.5, borderColor: on ? '#93C5FD' : '#E2E8F0', backgroundColor: on ? '#F3F8FF' : '#FFFFFF' }}
+      className="flex-row items-center gap-3 rounded-2xl px-4 py-3"
+      style={{ borderWidth: 1.5, borderColor: on ? '#93C5FD' : '#E2E8F0', backgroundColor: on ? '#F3F8FF' : '#FFFFFF', opacity: disabled ? 0.55 : 1 }}
     >
       <View
         className="h-6 w-6 items-center justify-center rounded-lg"

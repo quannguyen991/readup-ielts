@@ -7,10 +7,15 @@ import { CANVAS_LINE, CANVAS_STOPS, GridBackdrop } from './GridBackdrop';
 import { LightGrid } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
-import { isFocusRoute } from '@/navigation/focus-routes';
+import { OliveGrid } from './OliveGrid';
+import { isFocusRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
+import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
+
+/** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
+const STUDY_NAVY = '#2B3668';
 
 /**
  * Khung app dùng chung — cột điều hướng cố định bên trái trên desktop, thanh
@@ -57,7 +62,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
     */
     return (
-      <FocusBackdrop quest={isQuestRoute}>
+      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)}>
         <View className="flex-1 lg:flex-row">
           <View
             className="hidden lg:flex"
@@ -72,6 +77,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <View className="flex-1">{children}</View>
           </View>
         </View>
+        <SelectionLookup />
       </FocusBackdrop>
     );
   }
@@ -123,6 +129,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         giờ làm đề mà có nút "hỏi AI" cạnh màn hình thì đó không còn là thi thử.
       */}
       <AskBubble />
+      <SelectionLookup />
     </SafeAreaView>
   );
 }
@@ -132,7 +139,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  * màn tập trung) thì trời đêm pixel — chữ trắng của bản đồ nằm trên nền lưới
  * sáng là gần như biến mất.
  */
-function FocusBackdrop({ quest, children }: { quest: boolean; children: React.ReactNode }) {
+function FocusBackdrop({ quest, navy, children }: { quest: boolean; navy: boolean; children: React.ReactNode }) {
+  // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
+  if (navy) return <OliveGrid color={STUDY_NAVY}>{children}</OliveGrid>;
   if (!quest) return <LightGrid>{children}</LightGrid>;
   return (
     <View className="flex-1 bg-[#07061A]">

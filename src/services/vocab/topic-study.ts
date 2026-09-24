@@ -126,12 +126,15 @@ export function clozeOf(example: string, word: string): { before: string; answer
 }
 
 /**
- * Ba phần của màn Học, theo thứ tự một từ đi qua: LẬT THẺ (gặp từ, tự đánh giá)
- * → TRẮC NGHIỆM (nhận ra giữa bốn lựa chọn) → ĐIỀN TỪ (gõ ra từ tiếng Anh).
- * Người học tắt bớt phần nào thì từ bỏ qua phần đó, thứ tự còn lại giữ nguyên.
+ * Các dạng câu của màn Học, từ dễ tới khó:
+ * - LẬT THẺ: gặp từ, lật xem mặt sau, tự đánh giá (chỉ là lần gặp đầu);
+ * - TRẮC NGHIỆM: nhận ra đúng giữa bốn lựa chọn;
+ * - ĐIỀN CHỖ TRỐNG (kiểu đề THPT): chọn từ đúng cho chỗ trống trong câu ví dụ;
+ * - GÕ TỪ: chỉ thấy nghĩa (hoặc chỉ nghe), gõ ra từ tiếng Anh.
+ * Lịch gặp lại từng từ nằm ở `learn-loop.ts`.
  */
-export type StageKind = 'flash' | 'mcq' | 'type';
-export const STAGE_ORDER: readonly StageKind[] = ['flash', 'mcq', 'type'];
+export type StageKind = 'flash' | 'mcq' | 'fill' | 'type';
+export const STAGE_ORDER: readonly StageKind[] = ['flash', 'mcq', 'fill', 'type'];
 
 /** Hỏi theo chiều nào: thấy từ chọn nghĩa, thấy nghĩa ra từ, hay chỉ NGHE giọng đọc. */
 export type Direction = 'enToVi' | 'viToEn' | 'listen';
@@ -144,6 +147,12 @@ export type LearnSettings = {
   ordered: boolean;
   autoAdvance: boolean;
   kinds: StageKind[];
+  /** Học xen kẽ: trộn các dạng câu, từ đã đúng cũng quay lại (vòng phân phối). Tắt thì mỗi từ đi tuần tự. */
+  interleave: boolean;
+  /** Gõ đúng một từ đồng nghĩa của từ cần học cũng tính đúng. */
+  acceptSynonyms: boolean;
+  /** Câu gõ từ có nút micro: nói từ thay vì gõ. */
+  speakAnswer: boolean;
 };
 
 export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
@@ -152,7 +161,10 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   unmasteredOnly: false,
   ordered: true,
   autoAdvance: false,
-  kinds: ['flash', 'mcq', 'type'],
+  kinds: ['flash', 'mcq', 'fill', 'type'],
+  interleave: true,
+  acceptSynonyms: false,
+  speakAnswer: false,
 };
 
 /** Các phần đang bật, đúng thứ tự học. Không bật phần nào thì dùng mặc định — không để vòng rỗng. */
@@ -161,7 +173,7 @@ export function activeKinds(kinds: readonly StageKind[]): StageKind[] {
   return k.length > 0 ? k : [...DEFAULT_LEARN_SETTINGS.kinds];
 }
 
-/** Mức thuộc của một từ trong bộ: 0 chưa học, 1 đã qua ít nhất một phần, 2 đã qua phần cuối. */
+/** Mức thuộc của một từ trong bộ: 0 chưa học, 1 đang học, 2 đã nhớ (xong một vòng không sai). */
 export type WordStage = 0 | 1 | 2;
 
 /** Lọc từ theo cài đặt: chỉ từ gắn sao, chỉ từ chưa thuộc. */
@@ -207,163 +219,34 @@ export function directionFor(word: string, step: number, dirs: readonly Directio
 }
 
 /**
- * Một câu trong hàng đợi. `lapse`:
- * - `retry`   — vừa làm sai, đang hỏi lại sớm.
- * - `confirm` — đã sửa đúng một lần, hỏi lại lần nữa xa hơn cho chắc.
+ * Bốn lựa chọn cho câu ĐIỀN CHỖ TRỐNG kiểu đề THPT: đáp án + ba từ khác trong
+ * bộ, ưu tiên CÙNG TỪ LOẠI — chỗ trống cần danh từ mà ba phương án kia là động
+ * từ thì nhìn ngữ pháp là loại được, câu hỏi không còn đo từ vựng nữa.
  */
-export type LearnItem = { word: string; kind: StageKind; lapse?: 'retry' | 'confirm' };
-
-/** Hàng đợi ban đầu: mọi từ ở phần đầu tiên đang bật. */
-export function initialQueue(words: readonly StudyWord[], kinds: readonly StageKind[] = STAGE_ORDER): LearnItem[] {
-  const first = activeKinds(kinds)[0]!;
-  return words.map((w) => ({ word: w.word, kind: first }));
-}
-
-/**
- * Ôn giãn cách TRONG MỘT BUỔI (kiểu Learn của Quizlet): một từ không xong
- * ngay khi làm đúng một lần, mà quay lại vài lúc sau, cách càng lúc càng xa.
- *
- * - SAI → hỏi lại sớm, sau GAP_WRONG câu, khi dấu vết còn mới.
- * - Sửa ĐÚNG → chưa tin: hỏi lại cùng phần đó thêm một lần, xa hơn
- *   (GAP_CONFIRM câu), để chắc là nhớ chứ không phải vừa nhìn đáp án xong.
- * - ĐÚNG → sang phần kế tiếp sau REQUEUE_GAP câu.
- */
-export const GAP_WRONG = 2;
-export const GAP_CONFIRM = 5;
-export const REQUEUE_GAP = 3;
-
-/** Phần này có phải phần cuối từ phải qua không. */
-export function isFinalKind(kind: StageKind, kinds: readonly StageKind[]): boolean {
-  const k = activeKinds(kinds);
-  return k[k.length - 1] === kind;
-}
-
-/**
- * Câu đúng này có ĐƯA TỪ QUA ĐƯỢC phần hiện tại không. Câu `retry` đúng thì
- * chưa — còn phải qua lần xác nhận.
- */
-export function passesStage(item: LearnItem): boolean {
-  return item.lapse !== 'retry';
-}
-
-/** Qua một câu. Vòng kết thúc khi mọi từ qua phần cuối. */
-export function advanceQueue(queue: readonly LearnItem[], correct: boolean, kinds: readonly StageKind[] = STAGE_ORDER): LearnItem[] {
-  const [head, ...rest] = queue;
-  if (!head) return [];
-  // Chèn sau `gap` câu, nhưng không bao giờ ngay đầu hàng khi còn câu khác.
-  const insertAt = (item: LearnItem, gap: number) => {
-    const at = Math.min(Math.max(1, gap), rest.length);
-    return [...rest.slice(0, at), item, ...rest.slice(at)];
-  };
-  if (!correct) return insertAt({ word: head.word, kind: head.kind, lapse: 'retry' }, GAP_WRONG);
-  if (head.lapse === 'retry') return insertAt({ word: head.word, kind: head.kind, lapse: 'confirm' }, GAP_CONFIRM);
-  const k = activeKinds(kinds);
-  const nextKind = k[k.indexOf(head.kind) + 1];
-  return nextKind ? insertAt({ word: head.word, kind: nextKind }, REQUEUE_GAP) : rest;
-}
-
-/* ======================================================================
- * XẾP CÂU XEN KẼ
- *
- * Hàng đợi tuần tự ở trên cho mỗi từ đi đúng thứ tự dễ → khó, nhưng vì mọi từ
- * cùng bắt đầu ở phần đầu tiên, đầu vòng là mười thẻ lật liền nhau, rồi tới một
- * dãy trắc nghiệm, rồi một dãy điền từ. Người học chán và các dạng không trộn.
- *
- * Bộ xếp này giữ luật của từng từ (dễ → khó, sai hỏi lại sớm, sửa đúng phải xác
- * nhận xa hơn) nhưng thay "vị trí trong hàng" bằng "đến hạn ở câu thứ mấy":
- *
- *   1. Từ mới được đưa vào DẦN DẦN, không dồn hết lên đầu.
- *   2. Trong các câu đã đến hạn, ưu tiên câu có DẠNG KHÁC câu vừa làm.
- *   3. Nếu mọi câu đến hạn đều cùng dạng với câu vừa làm, đưa một từ mới vào
- *      (dạng đầu tiên) để đổi nhịp.
- *   4. Không hỏi lại đúng từ vừa hỏi khi còn câu khác.
- * ==================================================================== */
-
-export type DueItem = LearnItem & { due: number };
-
-/**
- * Làm đúng thì phần sau của từ đến hạn sau 2 câu (không phải 3 như hàng đợi
- * tuần tự): chờ 3 câu thì đầu vòng thành bốn thẻ lật liền nhau.
- */
-export const INTERLEAVE_GAP = 2;
-
-export type LearnState = {
-  /** Số câu đã trả lời trong vòng. */
-  now: number;
-  /** Câu đã lên lịch (từ đã được đưa vào vòng). */
-  items: DueItem[];
-  /** Từ chưa đưa vào vòng, theo thứ tự. */
-  pending: string[];
-  lastKind: StageKind | null;
-  lastWord: string | null;
-};
-
-export function startLearn(words: readonly StudyWord[]): LearnState {
-  return { now: 0, items: [], pending: words.map((w) => w.word), lastKind: null, lastWord: null };
-}
-
-/** Câu sẽ hỏi tiếp theo; null khi vòng đã xong. Hàm thuần — gọi mỗi lần render đều ra cùng một câu. */
-export function pickNext(state: LearnState, kinds: readonly StageKind[] = STAGE_ORDER): LearnItem | null {
-  const first = activeKinds(kinds)[0]!;
-  const fresh = state.pending[0];
-  const byDue = (a: DueItem, b: DueItem) => a.due - b.due;
-  const due = state.items.filter((i) => i.due <= state.now && i.word !== state.lastWord).sort(byDue);
-  const differing = due.find((i) => i.kind !== state.lastKind);
-  if (differing) return strip(differing);
-  // Mọi câu đến hạn đều cùng dạng câu vừa làm → đưa từ mới vào nếu nó đổi được nhịp.
-  if (fresh && (due.length === 0 || first !== state.lastKind)) return { word: fresh, kind: first };
-  if (due[0]) return strip(due[0]);
-  if (fresh) return { word: fresh, kind: first };
-  // Chưa câu nào đến hạn và hết từ mới: hỏi câu gần hạn nhất, tránh lặp từ vừa hỏi.
-  const rest = [...state.items].sort(byDue);
-  const pick = rest.find((i) => i.word !== state.lastWord) ?? rest[0];
-  return pick ? strip(pick) : null;
-}
-
-function strip(i: DueItem): LearnItem {
-  return i.lapse ? { word: i.word, kind: i.kind, lapse: i.lapse } : { word: i.word, kind: i.kind };
-}
-
-/** Chấm câu hiện tại (= `pickNext`) và lên lịch cho lần gặp sau. */
-export function answerLearn(state: LearnState, correct: boolean, kinds: readonly StageKind[] = STAGE_ORDER): LearnState {
-  const head = pickNext(state, kinds);
-  if (!head) return state;
-  const pending = state.pending[0] === head.word && !state.items.some((i) => i.word === head.word) ? state.pending.slice(1) : state.pending;
-  const items = state.items.filter((i) => !(i.word === head.word && i.kind === head.kind));
-  const at = (gap: number) => state.now + 1 + gap;
-  let next: DueItem | null;
-  if (!correct) next = { word: head.word, kind: head.kind, lapse: 'retry', due: at(GAP_WRONG) };
-  else if (head.lapse === 'retry') next = { word: head.word, kind: head.kind, lapse: 'confirm', due: at(GAP_CONFIRM) };
-  else {
-    const k = activeKinds(kinds);
-    const nextKind = k[k.indexOf(head.kind) + 1];
-    next = nextKind ? { word: head.word, kind: nextKind, due: at(INTERLEAVE_GAP) } : null;
+export function makeWordChoices(
+  target: StudyWord,
+  pool: readonly StudyWord[],
+  rng: () => number,
+): { options: string[]; correctIndex: number } {
+  const others = pool.filter((w) => w.word !== target.word);
+  const same = others.filter((w) => w.pos && w.pos === target.pos);
+  const rest = others.filter((w) => !(w.pos && w.pos === target.pos));
+  const seen = new Set([normalizeAnswer(target.word)]);
+  const distractors: string[] = [];
+  for (const w of [...shuffled(same, rng), ...shuffled(rest, rng)]) {
+    if (distractors.length === 3) break;
+    const key = normalizeAnswer(w.word);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    distractors.push(w.word);
   }
-  return {
-    now: state.now + 1,
-    items: next ? [...items, next] : items,
-    pending,
-    lastKind: head.kind,
-    lastWord: head.word,
-  };
+  const options = shuffled([target.word, ...distractors], rng);
+  return { options, correctIndex: options.indexOf(target.word) };
 }
 
-/** Tiến độ một từ cho thanh đoạn: 0 chưa vào vòng, 1 đang học, 2 xong. */
-/**
- * Phần đã xong của một từ trong vòng (0–1) — để thanh tiến độ đầy dần đúng nhịp
- * học: vòng có ba phần thì mỗi phần qua được một phần ba đoạn. Câu hỏi lại sau
- * khi sai không cộng thêm (từ vẫn đứng ở phần đó cho tới khi qua).
- */
-export function learnFraction(state: LearnState, word: string, kinds: readonly StageKind[] = STAGE_ORDER): number {
-  if (state.pending.includes(word)) return 0;
-  const item = state.items.find((i) => i.word === word);
-  if (!item) return 1;
-  const order = activeKinds(kinds);
-  const at = Math.max(0, order.indexOf(item.kind));
-  return at / order.length;
-}
-
-export function learnProgress(state: LearnState, word: string): 0 | 1 | 2 {
-  if (state.pending.includes(word)) return 0;
-  return state.items.some((i) => i.word === word) ? 1 : 2;
+/** Từ đồng nghĩa người học vừa gõ (khi bật "Chấp nhận từ đồng nghĩa"), hoặc null. */
+export function synonymMatch(input: string, word: Pick<StudyWord, 'synonyms'>): string | null {
+  const key = normalizeAnswer(input);
+  if (!key) return null;
+  return (word.synonyms ?? []).find((s) => normalizeAnswer(s) === key) ?? null;
 }
