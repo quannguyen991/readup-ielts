@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
-import { Hero3D } from '@/components/three/Hero3D';
+import { Hero3D, useHeroStar } from '@/components/three/Hero3D';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
@@ -184,6 +184,8 @@ export default function IntroScreen() {
     void rememberInviteCode(typeof ref === 'string' ? ref : null);
   }, [ref]);
   const wide = width >= 768;
+  // Ngôi sao to chỉ có trên máy tính; điện thoại và máy tính bảng bỏ hẳn cho nhẹ máy.
+  const star = useHeroStar();
 
   /*
     Người ĐÃ HỌC được mời quay lại chỗ đang dở, ngay dòng đầu tiên.
@@ -243,15 +245,15 @@ export default function IntroScreen() {
         */}
         <View style={HERO_FRAME}>
           <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
-            {/* Cảnh 3D: sách, bút chì, địa cầu, mũ tốt nghiệp — bên phải khi màn rộng. */}
-            {wide ? (
+            {/* Ngôi sao phát sáng bên phải — chỉ trên máy tính. */}
+            {star ? (
               <Hero3D scene="home" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '42%' }} />
             ) : null}
             <View
               style={{
                 paddingHorizontal: wide ? 40 : 22,
                 paddingVertical: wide ? 52 : 30,
-                paddingRight: wide ? '40%' : 22,
+                paddingRight: star ? '40%' : wide ? 40 : 22,
               }}
             >
               <Badge label="IELTS · SAT" tone="neutral" shape="tag" />
@@ -312,7 +314,6 @@ export default function IntroScreen() {
                 />
                 <StatPill value={String(WRITING_PROMPTS.length)} label="đề Writing" />
               </View>
-              {!wide ? <Hero3D scene="home" style={{ height: 200, marginTop: 18, marginHorizontal: -10 }} /> : null}
             </View>
           </GridBackdrop>
           <LightSweep />
