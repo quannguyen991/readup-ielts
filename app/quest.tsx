@@ -43,7 +43,7 @@ export default function QuestHome() {
               </Text>
               <View className="mt-7 flex-row flex-wrap gap-2">
                 <Button label="Tiếp tục hành trình" iconRight="arrow-right" onPress={() => router.push('/quest/map/iron-frontier' as never)} />
-                <Button label="Cách chơi" variant="outline" onPress={() => router.push('/quest/map/iron-frontier' as never)} />
+                <Button label="Bản đồ ReadUp" iconLeft="grid" variant="outline" onPress={() => router.push('/quest/world' as never)} />
               </View>
               <Text className="mt-4 font-sans text-label text-white/70">Nhiệm vụ tiếp theo: Iron Frontier · Node 01</Text>
               <View className="mt-7 flex-row flex-wrap gap-2">

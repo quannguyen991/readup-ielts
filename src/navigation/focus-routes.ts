@@ -55,6 +55,8 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/checkout$/,
   // Quest battle: full attention on the question and battle feedback.
   /^\/quest\/battle\//,
+  // Bản đồ ReadUp: thế giới pixel chiếm trọn màn hình.
+  /^\/quest\/world(\/[^/]+)?$/,
   /^\/quest\/result\//,
 ];
 
