@@ -6,12 +6,12 @@ Commit hiện tại: `6de5761` — `Polish learning workspace and quest experien
 ## 1. Mục tiêu sản phẩm
 
 ReadUp là ứng dụng luyện IELTS và SAT, chạy bằng Expo Router trên web, iOS và Android.
-Ứng dụng kết hợp học theo bài, chấm câu, tiến độ, đồng bộ tài khoản, AI tutor và một chế độ game học SAT tên **ReadUp Quest**.
+Ứng dụng kết hợp học theo bài, chấm câu, tiến độ, đồng bộ tài khoản, AI tutor và **game khi học** (ReadUp Quest): mỗi câu đúng ở các màn học là một nhát chém.
 
 Nguyên tắc quan trọng:
 
 - Không làm hỏng logic câu hỏi/chấm điểm hiện có khi chỉnh giao diện.
-- Câu hỏi SAT trong Quest phải lấy từ ngân hàng hiện tại, không nhân đôi logic chấm.
+- Game chỉ đọc kết quả chấm của màn học (`useGameStore.answer` / `awardBatch`), không tự chấm lại câu nào.
 - Key bí mật chỉ nằm server-side trong `.env.local`; không đưa API key vào client hoặc commit.
 - Khi chỉnh UI, ưu tiên responsive web nhưng không phá native layout.
 
@@ -33,7 +33,7 @@ npm run web -- --port 8082
 Mở:
 
 - `http://localhost:8082/intro` — trang giới thiệu/trang chủ.
-- `http://localhost:8082/quest` — Quest home.
+- `http://localhost:8082/quest` — trang chính của game khi học.
 - `http://localhost:8082/sentence/videos` — thư viện video luyện nghe.
 - `http://localhost:8082/sentence/youtube?v=pEO9-iPZQWA` — workspace chép chính tả theo video.
 
@@ -48,31 +48,27 @@ npm run build:web
 
 ## 3. Những phần đã hoàn thành
 
-### ReadUp Quest
+### ReadUp Quest — game khi học
+
+Quest cũ (các khu Iron Frontier, Fjord of Runes, Infinite Dungeon với màn chiến
+đấu riêng) đã BỎ HẲN ngày 24/09/2026 cùng toàn bộ route, store `useQuestStore`,
+khoá đồng bộ `quest` và ảnh trong `assets/quest/`. Game giờ chạy NGAY TRONG màn học.
 
 Các route:
 
-- `app/quest.tsx` — Quest home.
-- `app/quest/map/[mapId].tsx` — bản đồ và node tiến trình.
-- `app/quest/battle/[battleId].tsx` — màn chiến đấu SAT.
-- `app/quest/result/[battleId].tsx` — kết quả, XP, sao và phần thưởng.
+- `app/quest.tsx` — trang chính: sân đấu pixel (nhân vật, linh vật, quái đang chặn đường), cấp, sao, nhiệm vụ ngày, các màn vào trận.
+- `app/quest/hero.tsx` — Nhân vật & nhiệm vụ: túi đồ, sổ quái, huy hiệu, công tắc game và âm thanh, luật chơi.
+- `app/quest/world.tsx`, `app/quest/world/[island].tsx` — Bản đồ ReadUp: sáu đảo, nhiệm vụ là bài học thật; đảo Đấu trường là bảy loài quái.
+- `app/shop.tsx` (Đổi sao), `app/profile.tsx` (Hồ sơ), `app/leaderboard.tsx` (Xếp hạng, thưởng tháng).
 
 Các phần dùng chung:
 
-- `src/services/quest/types.ts` — kiểu dữ liệu Quest.
-- `src/services/quest/maps.ts` — ba map Iron Frontier, Fjord of Runes, Infinite Dungeon.
-- `src/services/quest/combat.ts` — damage, combo, phản công, sao và XP.
-- `src/services/quest/question-pool.ts` — adapter câu hỏi SAT cho battle.
-- `src/store/useQuestStore.ts` — cache tiến trình Quest bằng Zustand.
-- `src/components/quest/QuestHud.tsx` và `QuestVisual.tsx` — HUD/visual battle.
-
-Assets Quest nằm trong `assets/quest/`:
-
-- background map/battle cho ba khu vực;
-- sprite nhân vật/quái;
-- sticker nền trong suốt và quest world background.
-
-Combat hiện có đúng/sai, combo, HP, damage, boss, screen shake/feedback và hiệu ứng âm thanh nền tảng. Cần tiếp tục kiểm tra trên desktop và mobile.
+- `src/services/game/rules.ts` — luật thuần: XP, combo, chí mạng, Bùng cháy, quái/boss, đồ rơi, nhiệm vụ ngày, huy hiệu, gộp hai máy.
+- `src/services/game/mascots.ts` — linh vật và quyền của từng con.
+- `src/store/useGameStore.ts` — trạng thái trận, đồng bộ khoá `game`; `src/store/useGameFx.ts` — sự kiện hiệu ứng.
+- `src/components/game/` — `BattleStrip` (thanh trận đấu trên màn học), `GameFxLayer`, `PixelSprite`/`sprites.ts` (sprite vẽ bằng mã, có skin), `GameBackdrop` (nền trời đêm pixel của các trang /quest).
+- `src/services/audio/sfx.ts` — âm thanh tổng hợp bằng Web Audio.
+- `src/services/gamification/shop.ts`, `monthly.ts`, `src/lib/billing/star-pass.ts` — sao, đổi sao, thưởng hạng tháng, vé gói.
 
 ### Workspace luyện video YouTube
 
@@ -116,13 +112,12 @@ Navigation source of truth: `src/navigation/nav-items.ts`.
 app/                         Expo Router routes và API routes
 src/components/layout/       AppShell, Sidebar, TaskShell, backdrop
 src/components/ui/           Button, Card, Icon, Badge, ProgressBar...
-src/components/quest/        Quest HUD và visual battle
+src/components/game/         game khi học: thanh trận đấu, sprite, hiệu ứng
 src/navigation/               NAV_GROUPS, activeNavKey, bottom tabs
-src/services/quest/           combat, map, question adapter, types
+src/services/game/            luật game khi học, linh vật
 src/services/youtube/         parse video, transcript, InnerTube/fallback
 src/store/                    Zustand stores
 src/theme/tokens.ts           màu, typography, spacing, shadow
-assets/quest/                 visual assets của Quest
 supabase/migrations/          schema database
 ```
 

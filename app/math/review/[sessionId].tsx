@@ -125,9 +125,9 @@ export default function MathReviewScreen() {
           </Text>
           <Button
             className="mt-4"
-            label="Dùng kiến thức vừa học để vào Quest"
+            label="Luyện tiếp SAT Math"
             iconRight="arrow-right"
-            onPress={() => router.push('/quest' as never)}
+            onPress={() => router.push('/math' as never)}
           />
         </Card>
       ) : null}

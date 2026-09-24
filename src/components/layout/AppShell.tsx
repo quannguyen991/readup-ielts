@@ -2,7 +2,6 @@ import React from 'react';
 import { View } from 'react-native';
 import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from 'expo-image';
 
 import { CANVAS_LINE, CANVAS_STOPS, GridBackdrop } from './GridBackdrop';
 import { LightGrid } from './LightGrid';
@@ -11,8 +10,7 @@ import { TopBar } from './TopBar';
 import { isFocusRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
-
-const QUEST_WORLD_BACKGROUND = require('../../../assets/quest/quest-world-bg.webp');
+import { GameBackdrop } from '@/components/game/GameBackdrop';
 
 /**
  * Khung app dùng chung — cột điều hướng cố định bên trái trên desktop, thanh
@@ -84,15 +82,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={isQuestRoute ? undefined : { backgroundColor: CANVAS_STOPS[1] }}
+      style={{ backgroundColor: isQuestRoute ? '#15113A' : CANVAS_STOPS[1] }}
     >
-      {isQuestRoute ? (
-        <View pointerEvents="none" className="absolute inset-0 overflow-hidden bg-[#091126]">
-          <Image source={QUEST_WORLD_BACKGROUND} className="absolute inset-0 h-full w-full" contentFit="cover" />
-          <View className="absolute inset-0 bg-[#07112D]/45" />
-          <Image source={require('../../../assets/quest/quest-stickers.webp')} className="absolute inset-0 h-full w-full opacity-20" contentFit="cover" />
-        </View>
-      ) : null}
+      {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
+      {isQuestRoute ? <GameBackdrop /> : null}
       {/*
         NỀN XANH KẺ CARO cho mọi màn duyệt (xem `CANVAS_STOPS`). Trước đây là
         mảng xám bạc phẳng: thẻ trắng nằm trên nền gần trắng thì không còn ranh
@@ -135,21 +128,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 }
 
 /**
- * Nền cho màn tập trung: lưới sáng mặc định, riêng Quest thì nền thế giới tối.
- *
- * Màn chiến đấu và màn kết quả của Quest là màn tập trung (ẩn nav để dồn sự
- * chú ý vào câu hỏi), nên chúng đi qua nhánh này chứ không qua nhánh duyệt —
- * nơi nền Quest được vẽ. Thiếu chỗ rẽ này, cả HUD chữ trắng của trận đánh nằm
- * trên nền lưới sáng và gần như biến mất.
+ * Nền cho màn tập trung: lưới sáng mặc định, riêng trang game (Bản đồ ReadUp là
+ * màn tập trung) thì trời đêm pixel — chữ trắng của bản đồ nằm trên nền lưới
+ * sáng là gần như biến mất.
  */
 function FocusBackdrop({ quest, children }: { quest: boolean; children: React.ReactNode }) {
   if (!quest) return <LightGrid>{children}</LightGrid>;
   return (
-    <View className="flex-1 bg-[#091126]">
-      <View pointerEvents="none" className="absolute inset-0 overflow-hidden">
-        <Image source={QUEST_WORLD_BACKGROUND} className="absolute inset-0 h-full w-full" contentFit="cover" />
-        <View className="absolute inset-0 bg-[#07112D]/60" />
-      </View>
+    <View className="flex-1 bg-[#07061A]">
+      <GameBackdrop />
       {children}
     </View>
   );

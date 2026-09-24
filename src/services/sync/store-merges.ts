@@ -1,7 +1,6 @@
 import { planRank, type PlanId } from '@/lib/billing/plans';
 
 import { mergeRecords, sortByFinishedDesc, unionByKey, unionStrings } from './merge';
-import type { QuestBattleResult } from '@/services/quest/types';
 
 /**
  * Luật gộp của từng store, viết dưới dạng HÀM THUẦN.
@@ -189,40 +188,4 @@ export function mergeBilling(local: unknown, remote: unknown | null): BillingPay
 
 function emptyBilling(): BillingPayload {
   return { plan: 'free', expiresAt: null, source: 'local', usage: {} };
-}
-
-export type QuestPayload = {
-  xp: number;
-  level: number;
-  stars: Record<string, number>;
-  unlockedNodes: string[];
-  completedBattles: QuestBattleResult[];
-    wrongQuestionIds: string[];
-    ownedCosmetics: string[];
-    equippedCosmetic: string | null;
-};
-
-/** Quest is an append-only history plus monotonic unlocks; never downgrade progress on merge. */
-export function mergeQuest(local: unknown, remote: unknown | null): QuestPayload {
-  const a = (local as QuestPayload | null) ?? emptyQuest();
-  const b = (remote as QuestPayload | null) ?? emptyQuest();
-  const battles = unionByKey(a.completedBattles ?? [], b.completedBattles ?? [], (battle) => battle.battleId)
-    .sort((x, y) => y.completedAt.localeCompare(x.completedAt))
-    .slice(0, 50);
-  const stars: Record<string, number> = { ...(b.stars ?? {}) };
-  for (const [nodeId, value] of Object.entries(a.stars ?? {})) stars[nodeId] = Math.max(stars[nodeId] ?? 0, value);
-  return {
-    xp: Math.max(a.xp ?? 0, b.xp ?? 0, battles.reduce((sum, battle) => sum + battle.xp, 0)),
-    level: Math.max(a.level ?? 1, b.level ?? 1),
-    stars,
-    unlockedNodes: unionStrings(a.unlockedNodes ?? [], b.unlockedNodes ?? []),
-    completedBattles: battles,
-      wrongQuestionIds: unionStrings(a.wrongQuestionIds ?? [], b.wrongQuestionIds ?? []).slice(0, 100),
-      ownedCosmetics: unionStrings(a.ownedCosmetics ?? [], b.ownedCosmetics ?? []),
-      equippedCosmetic: a.equippedCosmetic ?? b.equippedCosmetic ?? null,
-  };
-}
-
-function emptyQuest(): QuestPayload {
-    return { xp: 0, level: 1, stars: {}, unlockedNodes: [], completedBattles: [], wrongQuestionIds: [], ownedCosmetics: [], equippedCosmetic: null };
 }

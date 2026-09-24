@@ -40,7 +40,7 @@ import {
  * mà không màn nào phải nhớ tự gọi. Tắt game thì câu đúng vẫn còn tiếng "đúng".
  */
 
-export type GameSource = 'vocab' | 'math' | 'verbal' | 'listen' | 'translate' | 'read' | 'shadow' | 'weekly' | 'quest' | 'duel';
+export type GameSource = 'vocab' | 'math' | 'verbal' | 'listen' | 'translate' | 'read' | 'shadow' | 'weekly' | 'duel';
 
 /** Túi đồ khởi đầu — đủ để thấy mỗi món làm gì trước khi phải kiếm. */
 const STARTER_ITEMS: Record<ItemKind, number> = { potion: 1, shield: 1, double: 0, hint: 3 };
@@ -52,8 +52,6 @@ type GameState = GamePayload & {
   setSound: (on: boolean) => void;
   answer: (correct: boolean, source: GameSource) => AnswerOutcome | null;
   awardBatch: (correct: number, total: number, source: GameSource) => void;
-  /** XP tính sẵn từ nơi khác (trận Quest): cộng thẳng, kèm số câu cho nhiệm vụ ngày. */
-  gainXp: (amount: number, correct: number, total: number, source: GameSource) => void;
   spendItem: (kind: ItemKind) => boolean;
   addItem: (kind: ItemKind, n?: number) => void;
   claimQuest: (id: string) => boolean;
@@ -280,29 +278,6 @@ export const useGameStore = create<GameState>()(
         set({ ...o.state, items, day, today, claimed, life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
       },
 
-      gainXp: (amount, correct, total) => {
-        const s = get();
-        if (!s.enabled || amount <= 0) return;
-        const fx = useGameFx.getState();
-        const xp = s.xp + Math.round(amount);
-        const { day, today: before, claimed } = rolled(s);
-        const today: DayStats = { ...before, correct: before.correct + correct, answers: before.answers + total, xp: before.xp + Math.round(amount) };
-        const life: Lifetime = { ...s.life, correct: s.life.correct + correct, answers: s.life.answers + total, xp };
-        const levelBefore = levelForXp(s.xp);
-        const levelAfter = levelForXp(xp);
-        fx.push({ kind: 'batch', xp: Math.round(amount), correct, total, defeated: 0 });
-        let stars = 0;
-        if (levelAfter > levelBefore) {
-          fx.push({ kind: 'levelup', level: levelAfter });
-          sfx.levelUp(0.3);
-          stars += starGain((levelAfter - levelBefore) * STAR_BONUS.levelUp, 'lên cấp');
-        }
-        for (const title of questsJustDone(day, before, today)) fx.push({ kind: 'quest', title });
-        const achievements = awardAchievements(life, s.achievements);
-        stars += achievementStars(s.achievements, achievements);
-        set({ xp, day, today, claimed, life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
-      },
-
       spendItem: (kind) => {
         const s = get();
         const fx = useGameFx.getState();
@@ -381,7 +356,7 @@ export const useGameStore = create<GameState>()(
       storage: storage(),
       version: 1,
       partialize: (s) => {
-        const { answer: _a, awardBatch: _b, gainXp: _g, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = s;
+        const { answer: _a, awardBatch: _b, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = s;
         return data;
       },
       // Máy đã tắt tiếng từ lần trước thì im ngay từ tiếng đầu tiên của phiên mới.
@@ -394,6 +369,6 @@ export const useGameStore = create<GameState>()(
 
 /** Dữ liệu để đồng bộ: mọi thứ trừ hai công tắc game và âm thanh (mỗi máy tự chọn). */
 export function gamePayload(): GamePayload {
-  const { enabled: _on, sound: _snd, answer: _a, awardBatch: _b, gainXp: _g, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = useGameStore.getState();
+  const { enabled: _on, sound: _snd, answer: _a, awardBatch: _b, spendItem: _u, addItem: _i, claimQuest: _c, setEnabled: _e, setSound: _s, ...data } = useGameStore.getState();
   return data;
 }

@@ -2,8 +2,9 @@
  * BẢN ĐỒ READUP — sáu hòn đảo quanh một trạm xuất phát, mỗi đảo là một mảng học.
  *
  * NHIỆM VỤ LÀ BÀI HỌC THẬT, TIẾN ĐỘ LÀ TIẾN ĐỘ THẬT: không có điểm game tách rời.
- * Học xong một bài lý thuyết, làm một bài chép chính tả, thắng một trận Quest…
- * thì đúng nhiệm vụ đó được đánh dấu, và sợi sáng nối đảo với trạm dài thêm.
+ * Học xong một bài lý thuyết, làm một bài chép chính tả, hạ một loài quái trong
+ * game khi học… thì đúng nhiệm vụ đó được đánh dấu, và sợi sáng nối đảo với trạm
+ * dài thêm.
  * (Ý tưởng từ FreeCareerPath: "cùng bài học, cùng tiến độ với danh sách".)
  *
  * Hàm thuần: nhận dữ liệu tiến độ đã đọc từ các kho, trả về đảo + nhiệm vụ.
@@ -13,7 +14,7 @@ import { VERBAL_LESSONS } from '@/data/lessons/verbal-lessons';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { DICTATION_SETS } from '@/data/dictation-sets';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
-import { QUEST_MAPS } from '@/services/quest/maps';
+import { ENEMIES, isBoss } from '@/services/game/rules';
 
 export type IslandId = 'math' | 'verbal' | 'vocab' | 'listen' | 'translate' | 'arena';
 
@@ -39,8 +40,23 @@ export type WorldProgress = {
   /** Các bài chép chính tả / dịch câu đã làm ít nhất một lượt. */
   dictationSets: ReadonlySet<string>;
   translationSets: ReadonlySet<string>;
-  /** useQuestStore.stars — node → số sao. */
-  questStars: Record<string, number>;
+  /** useGameStore.enemyIndex — số quái đã hạ trong game khi học (tính cả các vòng). */
+  enemiesDefeated: number;
+};
+
+/**
+ * Đấu trường: bảy loài quái của game khi học, theo đúng thứ tự chúng xuất hiện.
+ * Quái nào cũng đánh được ở MỌI màn học; đường dẫn chỉ gợi một chỗ hợp với loài
+ * đó (Bọ Lỗi Chính Tả → chép chính tả, Người Đá Phương Trình → phương trình…).
+ */
+const ARENA_HREF: Record<string, string> = {
+  'typo-bug': '/sentence/dictation',
+  'comma-slime': '/sat-rw/skill/boundaries',
+  'tense-ghost': '/sat-rw/skill/tense',
+  'math-golem': '/math/drill/linear_equations_one_var',
+  'idiom-bat': '/sentence/translate',
+  'false-friend': '/sat-rw/skill/words',
+  'blank-dragon': '/weekly',
 };
 
 /** Bộ từ tính là xong khi đã nhớ chắc từ 70% số từ trở lên. */
@@ -95,11 +111,14 @@ export function buildIslands(p: WorldProgress): Island[] {
     island(
       'arena',
       'Đấu trường',
-      'Trận đánh boss bằng câu SAT',
+      'Hạ đủ bảy loài quái của game khi học',
       '#A855F7',
-      QUEST_MAPS.flatMap((m) =>
-        m.nodes.map((n) => ({ id: `arena:${n.id}`, title: `${m.title} · ${n.title}`, href: `/quest/map/${m.id}`, done: (p.questStars[n.id] ?? 0) > 0 })),
-      ),
+      ENEMIES.map((e, i) => ({
+        id: `arena:${e.id}`,
+        title: `Hạ ${isBoss(i) ? 'Boss ' : ''}${e.name}`,
+        href: ARENA_HREF[e.id] ?? '/vocabulary/quiz',
+        done: p.enemiesDefeated > i,
+      })),
     ),
   ];
 }

@@ -7,7 +7,11 @@ import { useAuthStore } from './useAuthStore';
 import { useMathStore } from './useMathStore';
 import { useStudyStore } from './useStudyStore';
 import { useVocabStore } from './useVocabStore';
-import { useQuestStore } from './useQuestStore';
+import { useGameStore } from './useGameStore';
+import { useRewardStore } from './useRewardStore';
+import { useBillingStore } from './useBillingStore';
+import { useWeeklyStore } from './useWeeklyStore';
+import { useSatRwStore } from './useSatRwStore';
 
 /**
  * Điều phối đồng bộ.
@@ -111,7 +115,12 @@ export function useSyncBootstrap() {
       useMathStore.subscribe(schedule),
       useStudyStore.subscribe(schedule),
       useVocabStore.subscribe(schedule),
-      useQuestStore.subscribe(schedule),
+      // Đổi sao, vé gói, XP trận đấu, đề tuần… cũng phải được đẩy lên, không chờ lần học kế tiếp.
+      useGameStore.subscribe(schedule),
+      useRewardStore.subscribe(schedule),
+      useBillingStore.subscribe(schedule),
+      useWeeklyStore.subscribe(schedule),
+      useSatRwStore.subscribe(schedule),
     ];
 
     return () => {
