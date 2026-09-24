@@ -2,10 +2,11 @@
  * NGÔI SAO PHÁT SÁNG Ở PHẦN ĐẦU TRANG — dấu hiệu riêng của ReadUp. CHỈ CHẠY TRÊN
  * WEB, tải lúc cần (`Hero3D.tsx`). Sao dựng ở `glow-core.ts`.
  *
- * Mỗi mảng một màu sao, nên nhìn phần đầu trang là biết đang ở đâu: trang chủ
- * sao vàng, SAT Math tím, SAT Verbal hồng, Từ vựng xanh ngọc, Tiến độ hổ phách.
- * Sau sao là quầng màu và vành tia sáng xoay chậm; quanh sao là vài ngôi sao nhỏ
- * bay trên một quỹ đạo nghiêng. Sao đung đưa nhẹ, thở sáng theo nhịp, và cứ vài
+ * Sao TRẮNG (người dùng chọn), còn quầng và vành tia sáng phía sau mang màu của
+ * mảng, nên nhìn phần đầu trang vẫn biết đang ở đâu: trang chủ vàng, SAT Math tím,
+ * SAT Verbal hồng, Từ vựng xanh ngọc, Tiến độ hổ phách. Quầng màu cũng là thứ viền
+ * cho sao trắng nổi lên trên nền sáng. Quanh sao là vài ngôi sao nhỏ bay trên một
+ * quỹ đạo nghiêng. Sao đung đưa nhẹ, thở sáng theo nhịp, và cứ vài
  * giây lại xoay một vòng — như ngôi sao thưởng trong game.
  *
  * TIẾT KIỆM MÁY: ngừng vẽ khi khung ra khỏi màn hình hoặc tab bị ẩn; người đặt
@@ -19,12 +20,14 @@ export type SceneKind = 'home' | 'math' | 'verbal' | 'vocab' | 'progress';
 
 type Preset = { tint: string; glow: string; moons: string[] };
 
+const WHITE = '#FFFFFF';
+
 const PRESETS: Record<SceneKind, Preset> = {
-  home: { tint: '#FFC933', glow: '#FFB020', moons: ['#FFFFFF', '#A78BFA', '#38BDF8'] },
-  math: { tint: '#A78BFA', glow: '#8B5CF6', moons: ['#FFFFFF', '#FDE68A'] },
-  verbal: { tint: '#FB7185', glow: '#F43F5E', moons: ['#FFFFFF', '#F9A8D4'] },
-  vocab: { tint: '#34D399', glow: '#10B981', moons: ['#FFFFFF', '#93C5FD'] },
-  progress: { tint: '#FBBF24', glow: '#F59E0B', moons: ['#FFFFFF', '#C4B5FD', '#7DD3FC'] },
+  home: { tint: WHITE, glow: '#FFB020', moons: [WHITE, WHITE, WHITE] },
+  math: { tint: WHITE, glow: '#8B5CF6', moons: [WHITE, WHITE] },
+  verbal: { tint: WHITE, glow: '#F43F5E', moons: [WHITE, WHITE] },
+  vocab: { tint: WHITE, glow: '#10B981', moons: [WHITE, WHITE] },
+  progress: { tint: WHITE, glow: '#F59E0B', moons: [WHITE, WHITE, WHITE] },
 };
 
 /** Bóng mềm dưới ngôi sao: sao lơ lửng trên nền chứ không dán lên trang. */
@@ -180,9 +183,9 @@ export function mountHeroStar(host: HTMLElement, kind: SceneKind): () => void {
 
     const pulse = 0.5 + 0.5 * Math.sin(t * 2.4);
     mainMat.uniforms.pulse!.value = pulse;
-    back.material.opacity = 0.42 + pulse * 0.2;
+    back.material.opacity = 0.5 + pulse * 0.2;
     rays.material.rotation = t * 0.12;
-    rays.material.opacity = 0.3 + pulse * 0.18;
+    rays.material.opacity = 0.36 + pulse * 0.18;
     rays.scale.setScalar(7.1 + pulse * 0.5);
     core.scale.setScalar(0.45 + pulse * 0.35);
     for (const tip of tips) {

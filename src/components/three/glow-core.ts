@@ -177,6 +177,8 @@ export function starGeometry(samples = 160, depth = 0.34): THREE.BufferGeometry 
  */
 export function starMaterial(env: THREE.CubeTexture, color: string): THREE.ShaderMaterial {
   return new THREE.ShaderMaterial({
+    // Không qua tone mapping: ACES kéo màu trắng về xám nhạt, sao trắng thành sao bạc.
+    toneMapped: false,
     uniforms: {
       env: { value: env },
       tint: { value: new THREE.Color(color) },
@@ -206,12 +208,14 @@ export function starMaterial(env: THREE.CubeTexture, color: string): THREE.Shade
         float facing = max(dot(n, v), 0.0);
         float rim = pow(1.0 - facing, 2.4);
         float r = length(vLocal.xy);
-        // Lõi trắng nhỏ ở tâm; phần lớn thân sao giữ màu đậm của mảng.
+        // Mặt khuất ngả xanh lạnh nhạt: sao trắng vẫn thấy khối trên nền sáng.
         float core = smoothstep(0.55, 0.0, r);
         vec3 refl = textureCube(env, reflect(-v, n)).rgb;
-        vec3 body = tint * (0.78 + 0.34 * facing);
-        vec3 glow = mix(tint, vec3(1.0), 0.45) * core * (0.5 + 0.4 * pulse);
-        vec3 col = body + glow + refl * 0.16 + mix(tint, vec3(1.0), 0.5) * rim * (0.45 + 0.35 * pulse);
+        vec3 shade = mix(vec3(0.62, 0.67, 0.84), vec3(1.0), pow(facing, 0.8));
+        vec3 body = tint * shade * 0.9;
+        vec3 glow = mix(tint, vec3(1.0), 0.45) * core * (0.25 + 0.2 * pulse);
+        vec3 col = body + glow + refl * 0.1 + mix(tint, vec3(1.0), 0.5) * rim * (0.25 + 0.2 * pulse);
+        col = min(col, vec3(1.0));
         gl_FragColor = vec4(col, 1.0);
         #include <tonemapping_fragment>
         #include <colorspace_fragment>
