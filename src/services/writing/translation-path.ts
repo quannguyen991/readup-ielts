@@ -97,7 +97,19 @@ export type PathTopic = {
   units: number;
   /** Đường dẫn màn luyện, kèm tham số đã dựng sẵn. */
   href: string;
+  /** Độ khó của bộ gốc; `null` với nhóm cấu trúc (gom từ mọi độ khó). */
+  level: TranslationSet['level'] | null;
+  /** Một câu nói mục này luyện gì. */
+  blurb: string;
+  /** Ba lượt đầu (đã gộp câu theo bước) — để thẻ vẽ dấu vân Việt–Anh thật. */
+  sample: { vi: string; en: string }[];
+  /** Mã bộ gốc, để đếm số lần đã luyện; `null` với nhóm cấu trúc. */
+  setId: string | null;
 };
+
+function sampleOf(items: readonly TranslationItem[]): { vi: string; en: string }[] {
+  return items.slice(0, 3).map((it) => ({ vi: it.vi, en: it.en }));
+}
 
 /**
  * Tám nhóm cấu trúc của Bước 1.
@@ -150,14 +162,18 @@ function allItems(): TranslationItem[] {
 export function structureTopics(): PathTopic[] {
   const items = allItems();
   return STRUCTURE_GROUPS.map((group, i) => {
-    const count = items.filter((it) => structureOf(it) === group.id).length;
+    const mine = items.filter((it) => structureOf(it) === group.id);
     return {
       id: group.id,
       index: i + 1,
       title: group.title,
       subtitle: 'Gom từ mọi chủ đề',
-      units: count,
+      units: mine.length,
       href: `/sentence/translate?structure=${group.id}`,
+      level: null,
+      blurb: `Mọi câu ${group.title.toLowerCase()} trong kho, gom từ tất cả các chủ đề.`,
+      sample: sampleOf(mine),
+      setId: null,
     };
   }).filter((t) => t.units > 0);
 }
@@ -170,6 +186,10 @@ function topicTopics(): PathTopic[] {
     subtitle: null,
     units: set.items.length,
     href: `/sentence/translate?set=${set.id}`,
+    level: set.level,
+    blurb: set.blurb,
+    sample: sampleOf(set.items),
+    setId: set.id,
   }));
 }
 
@@ -197,6 +217,10 @@ function chunkTopics(step: PathStep): PathTopic[] {
         subtitle: `${step.chunk} câu mỗi lượt`,
         units,
         href: `/sentence/translate?set=${set.id}&chunk=${step.chunk}`,
+        level: set.level,
+        blurb: set.blurb,
+        sample: sampleOf(chunkItems(set.items, step.chunk)),
+        setId: set.id,
       };
     })
     // Bộ không đủ câu cho một lượt thì không hiện: một thẻ mở ra rỗng tệ hơn

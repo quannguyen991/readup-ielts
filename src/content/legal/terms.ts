@@ -1,8 +1,7 @@
 import {
   PLANS,
   PLAN_ORDER,
-  PLUS_TRIAL_DAYS,
-  PLUS_TRIAL_PLAN,
+  TRIAL_AI_PLAN,
   TRIAL_DAYS,
   TRIAL_PLAN,
   formatVnd,
@@ -96,7 +95,7 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
         blocks: [
           {
             kind: 'p',
-            text: `Mỗi tài khoản được dùng thử ${PLUS_TRIAL_DAYS} ngày gói ${PLANS[PLUS_TRIAL_PLAN].name} và ${TRIAL_DAYS} ngày gói ${PLANS[TRIAL_PLAN].name}, mỗi loại một lần. Dùng thử không cần thẻ và không tự chuyển thành gói trả phí; hết hạn là về Free.`,
+            text: `Mỗi tài khoản được học thử ${TRIAL_DAYS} ngày gói ${PLANS[TRIAL_PLAN].name}, một lần. Trong thời gian học thử, số lượt dùng AI vẫn theo gói ${PLANS[TRIAL_AI_PLAN].name} (${PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month} lượt mỗi tháng). Học thử không cần thẻ và không tự chuyển thành gói trả phí; hết hạn là về Free.`,
           },
         ],
       },

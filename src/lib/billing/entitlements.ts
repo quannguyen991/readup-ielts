@@ -2,6 +2,7 @@ import {
   PLANS,
   PLAN_ORDER,
   QUOTA_PERIOD,
+  TRIAL_AI_PLAN,
   planOf,
   type Feature,
   type PlanId,
@@ -46,6 +47,14 @@ export function requiredPlanFor(feature: Feature): PlanId {
   }
   // Không gói nào mở được: đòi gói cao nhất, vì đó là câu trả lời ít sai nhất.
   return PLAN_ORDER[PLAN_ORDER.length - 1]!;
+}
+
+/**
+ * Gói dùng để TÍNH HẠN MỨC. Đang học thử thì mọi thứ theo gói thử, riêng lượt
+ * AI vẫn theo `TRIAL_AI_PLAN` (Free) — khớp với máy chủ, xem plans.ts.
+ */
+export function quotaPlan(plan: PlanId, quota: Quota, onTrial: boolean): PlanId {
+  return onTrial && quota === 'ai_calls_per_month' ? TRIAL_AI_PLAN : plan;
 }
 
 /** `null` = không giới hạn. */

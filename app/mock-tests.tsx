@@ -205,7 +205,7 @@ function MockTestCard({
   return (
     <View
       className="h-full overflow-hidden rounded-card bg-surface"
-      style={{ borderWidth: 1.5, borderColor: '#0F172A' }}
+      style={{ borderWidth: 1, borderColor: '#E6E8F2' }}
     >
       <View className="flex-row gap-3.5 p-4">
         <TestCover index={index} />
@@ -319,7 +319,7 @@ function TestCover({ index }: { index: number }) {
   return (
     <View
       className="items-center justify-center overflow-hidden rounded-panel"
-      style={{ width: 62, height: 82, borderWidth: 1.5, borderColor: '#0F172A' }}
+      style={{ width: 62, height: 82 }}
     >
       <LinearGradient
         colors={[...tone] as [string, string]}
