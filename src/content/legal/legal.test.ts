@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { PLANS, PLAN_ORDER, PLUS_TRIAL_DAYS, TRIAL_DAYS, formatVnd } from '@/lib/billing/plans';
+import { PLANS, PLAN_ORDER, TRIAL_AI_PLAN, TRIAL_DAYS, formatVnd } from '@/lib/billing/plans';
 import { buildContact } from '@/lib/contact';
 import { BOOK_TOTALS } from '@/services/books/catalog';
 import { ACTIVATION_SLA_HOURS, REFUND_WINDOW_DAYS } from '@/services/payment/refund';
@@ -49,7 +49,8 @@ test('Điều khoản in đúng giá của mọi gói trả phí, lấy từ b�
     assert.ok(text.includes(formatVnd(plan.monthlyVnd)), `${id} tháng`);
     assert.ok(text.includes(formatVnd(plan.yearlyVnd)), `${id} năm`);
   }
-  assert.ok(text.includes(`${PLUS_TRIAL_DAYS} ngày`) && text.includes(`${TRIAL_DAYS} ngày`), 'số ngày dùng thử');
+  assert.ok(text.includes(`học thử ${TRIAL_DAYS} ngày`), 'số ngày học thử');
+  assert.ok(text.includes(`${PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month} lượt`), 'lượt AI khi học thử');
   assert.ok(text.includes(`${BOOK_TOTALS.count} cuốn`), 'số sách');
 });
 

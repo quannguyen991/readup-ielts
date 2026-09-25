@@ -476,7 +476,7 @@ function StepCard({ step }: { step: (typeof STEPS)[number] }) {
       <View className="p-4">
         <View
           className="h-11 w-11 items-center justify-center overflow-hidden rounded-pill"
-          style={{ borderWidth: 2, borderColor: '#0F172A' }}
+          style={{ borderWidth: 2, borderColor: '#FFFFFF' }}
         >
           <LinearGradient
             colors={step.colors}

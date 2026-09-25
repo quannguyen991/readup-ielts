@@ -254,38 +254,25 @@ export function planRank(id: PlanId): number {
 }
 
 /**
- * HAI lượt dùng thử, phục vụ hai mục đích khác nhau — thêm 03/09/2026.
+ * HỌC THỬ 5 NGÀY — một lượt duy nhất, thay cho cặp Plus 3 ngày + Pro 7 ngày cũ
+ * (đổi ngày 25/09/2026 theo lời người dùng: "thêm học thử 5 ngày, nhưng vẫn
+ * giới hạn số lượt gọi AI").
  *
- *   Plus 3 ngày  — nếm NỘI DUNG (151 bộ đề Math, đọc/từ vựng không giới hạn).
- *                  CTA đầu tiên mọi tài khoản Free thấy, một chạm, không tự
- *                  động kích hoạt lúc đăng ký — tự động kích hoạt tạo cảm giác
- *                  "bị lấy mất" khi hết hạn mà không ai chủ động bấm gì.
- *   Pro  7 ngày  — nếm TRỢ GIẢNG AI (chatbox, bài mẫu). Giữ nguyên như cũ.
+ * Mở NỘI DUNG của gói Pro (mọi bộ đề, mọi bài, trợ giảng, bài mẫu) nhưng lượt
+ * AI vẫn giữ nguyên mức Free — `TRIAL_AI_PLAN`. Lý do: nội dung sinh bằng code
+ * gần như không tốn gì, còn mỗi lượt AI là tiền thật; cho 5 ngày × 120 lượt
+ * Pro miễn phí là mời người ta tạo tài khoản mới liên tục để lấy AI.
  *
- * Dùng NỐI TIẾP được (Plus trước, Pro sau — tối đa 10 ngày trải nghiệm trả phí
- * trọn đời), mỗi loại đúng MỘT LẦN/tài khoản — theo dõi bằng hai cờ riêng
- * `plusTrialUsed`/`proTrialUsed` trong `useBillingStore.ts`, không suy ra từ
- * gói hiện tại như bản một-cờ cũ (suy như thế thì hết hạn Plus trial là cờ tự
- * "quên", cho dùng lại được).
+ * Máy chủ vốn đã chặn đúng như thế: `services/ai/usage.ts` đọc gói từ bảng
+ * `profiles`, mà lượt thử chỉ nằm ở máy người dùng, nên máy chủ luôn thấy Free.
+ * `TRIAL_AI_PLAN` là để GIAO DIỆN nói cùng một con số với máy chủ.
  *
- * KHÔNG có nhánh đặc biệt xử lý "đang dùng thử Plus mà bấm nút Pro": nút Pro
- * chỉ hiện lại sau khi Plus trial đã hết hạn (`plan==='free'`), nên tình huống
- * chồng lấn không xảy ra trong luồng bình thường. Nếu có cách nào đó vẫn bấm
- * được (link cũ, tab khác), `startVipTrial()` ghi đè thẳng — không cộng dồn
- * ngày Plus còn dư — vì nó chỉ `set()` lại cả ba trường, không đọc giá trị cũ.
- */
-export const PLUS_TRIAL_PLAN: PlanId = 'plus';
-export const PLUS_TRIAL_DAYS = 3;
-
-/**
- * Dùng thử gói PRO, không phải Max.
- *
- * Cho thử gói đắt nhất rồi tụt xuống Free là cú rơi mạnh nhất có thể, và nó tạo
- * ấn tượng "bị lấy mất" chứ không phải "được cho dùng". Pro là gói ta thật sự
- * muốn người dùng chọn, nên đó mới là thứ đáng cho họ nếm.
+ * Mỗi tài khoản một lần (cờ `proTrialUsed`, giữ tên cũ để máy đã dùng thử Pro 7
+ * ngày không được thử lại). Không cần thẻ, không tự gia hạn.
  */
 export const TRIAL_PLAN: PlanId = 'pro';
-export const TRIAL_DAYS = 7;
+export const TRIAL_DAYS = 5;
+export const TRIAL_AI_PLAN: PlanId = 'free';
 
 export function planOf(id: PlanId | null | undefined): Plan {
   return PLANS[id ?? 'free'] ?? PLANS.free;

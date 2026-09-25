@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { planTone } from '@/components/billing/PlanUi';
+import { TrialCard, planTone } from '@/components/billing/PlanUi';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { hasFeature } from '@/lib/billing/entitlements';
 import { hasBankConfig } from '@/lib/env';
@@ -13,8 +13,6 @@ import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import {
   PLANS,
   PLAN_ORDER,
-  PLUS_TRIAL_DAYS,
-  PLUS_TRIAL_PLAN,
   QUOTA_LABEL,
   TRIAL_DAYS,
   TRIAL_PLAN,
@@ -44,8 +42,6 @@ import { CrossFade } from '@/components/motion/Motion';
 export default function UpgradeScreen() {
   const [yearly, setYearly] = useState(true);
   const status = usePlanStatus();
-  const startPlusTrial = useBillingStore((s) => s.startPlusTrial);
-  const startProTrial = useBillingStore((s) => s.startVipTrial);
 
   return (
     <Screen>
@@ -90,46 +86,7 @@ export default function UpgradeScreen() {
         </CrossFade>
       </View>
 
-      {/*
-        HAI banner dùng thử, không phải một. Plus 3 ngày đứng TRƯỚC — nó là lời
-        mời ít cam kết hơn ("nếm nội dung"), Pro 7 ngày đứng sau ("nếm trợ giảng
-        AI"). Cả hai chỉ hiện khi CÒN ĐỦ ĐIỀU KIỆN (`canStart*Trial` đã tự trừ
-        cả trường hợp đang giữa một trial khác — xem comment ở usePlanStatus()),
-        nên không bao giờ thấy cả hai nút cùng lúc trong luồng bình thường.
-      */}
-      {status.canStartPlusTrial ? (
-        <Card className="mt-4">
-          <View className="flex-row flex-wrap items-center justify-between gap-3">
-            <View className="flex-1" style={{ minWidth: 220 }}>
-              <Text className="font-strong text-cardTitle text-ink">
-                Dùng thử {PLANS[PLUS_TRIAL_PLAN].name} {PLUS_TRIAL_DAYS} ngày
-              </Text>
-              <Text className="mt-1 font-sans text-body text-muted">
-                {PLANS[PLUS_TRIAL_PLAN].tagline}. Không cần thẻ, không tự động gia hạn. Hết{' '}
-                {PLUS_TRIAL_DAYS} ngày là quay về Free — dữ liệu học giữ nguyên.
-              </Text>
-            </View>
-            <Button label="Bật dùng thử" iconRight="sparkle" onPress={startPlusTrial} />
-          </View>
-        </Card>
-      ) : null}
-
-      {status.canStartProTrial ? (
-        <Card className="mt-4">
-          <View className="flex-row flex-wrap items-center justify-between gap-3">
-            <View className="flex-1" style={{ minWidth: 220 }}>
-              <Text className="font-strong text-cardTitle text-ink">
-                Dùng thử {PLANS[TRIAL_PLAN].name} {TRIAL_DAYS} ngày
-              </Text>
-              <Text className="mt-1 font-sans text-body text-muted">
-                {PLANS[TRIAL_PLAN].tagline}. Không cần thẻ, không tự động gia hạn. Hết{' '}
-                {TRIAL_DAYS} ngày là quay về Free — dữ liệu học giữ nguyên.
-              </Text>
-            </View>
-            <Button label="Bật dùng thử" iconRight="sparkle" onPress={startProTrial} />
-          </View>
-        </Card>
-      ) : null}
+      <TrialCard />
 
       <SectionHeader
         className="mt-6"

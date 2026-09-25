@@ -18,7 +18,20 @@ import { ENEMIES, isBoss } from '@/services/game/rules';
 
 export type IslandId = 'math' | 'verbal' | 'vocab' | 'listen' | 'translate' | 'arena';
 
-export type Mission = { id: string; title: string; href: string; done: boolean };
+export type Mission = {
+  id: string;
+  title: string;
+  href: string;
+  done: boolean;
+  /** Một câu nói bài này luyện gì — hiện trên thẻ ở màn chọn bài. */
+  blurb?: string;
+  /** Nhãn độ khó hiển thị ("Nền tảng", "B1", "Khó"…). */
+  level?: string;
+  /** Bậc khó 0–3 để tô màu, không phải để xếp hạng. */
+  tier?: number;
+  /** Dòng phụ ngắn: "12 phút", "12 câu", "8 từ". */
+  meta?: string;
+};
 
 export type Island = {
   id: IslandId;
@@ -62,6 +75,11 @@ const ARENA_HREF: Record<string, string> = {
 /** Bộ từ tính là xong khi đã nhớ chắc từ 70% số từ trở lên. */
 export const VOCAB_DONE_SHARE = 0.7;
 
+const LESSON_TIER: Record<string, number> = { 'Nền tảng': 0, 'Trung bình': 1, 'Nâng cao': 3 };
+const CEFR_TIER: Record<string, number> = { A2: 0, B1: 1, B2: 2, C1: 3 };
+const SENTENCE_TIER: Record<string, number> = { easy: 0, medium: 1, hard: 3 };
+const SENTENCE_LEVEL: Record<string, string> = { easy: 'Dễ', medium: 'Trung bình', hard: 'Khó' };
+
 function island(id: IslandId, name: string, tagline: string, color: string, missions: Mission[]): Island {
   const done = missions.filter((m) => m.done).length;
   return { id, name, tagline, color, missions, done, progress: missions.length ? done / missions.length : 0 };
@@ -74,14 +92,14 @@ export function buildIslands(p: WorldProgress): Island[] {
       'Đảo SAT Math',
       'Bài lý thuyết Toán, mỗi bài một dạng đề',
       '#6366F1',
-      MATH_LESSONS.map((l) => ({ id: `math:${l.skill}`, title: l.title, href: `/math/learn/${l.skill}`, done: !!p.lessonDone[`math:${l.skill}`] })),
+      MATH_LESSONS.map((l) => ({ id: `math:${l.skill}`, title: l.title, href: `/math/learn/${l.skill}`, done: !!p.lessonDone[`math:${l.skill}`], blurb: l.goal, level: l.level, tier: LESSON_TIER[l.level] ?? 1, meta: `${l.minutes} phút` })),
     ),
     island(
       'verbal',
       'Đảo SAT Verbal',
       'Đọc hiểu, ngữ pháp và cách viết câu',
       '#F43F5E',
-      VERBAL_LESSONS.map((l) => ({ id: `verbal:${l.skill}`, title: l.title, href: `/sat-rw/learn/${l.skill}`, done: !!p.lessonDone[`verbal:${l.skill}`] })),
+      VERBAL_LESSONS.map((l) => ({ id: `verbal:${l.skill}`, title: l.title, href: `/sat-rw/learn/${l.skill}`, done: !!p.lessonDone[`verbal:${l.skill}`], blurb: l.goal, level: l.level, tier: LESSON_TIER[l.level] ?? 1, meta: `${l.minutes} phút` })),
     ),
     island(
       'vocab',
@@ -91,7 +109,7 @@ export function buildIslands(p: WorldProgress): Island[] {
       SAT_VOCAB_LESSONS.map((l) => {
         const st = p.stages[l.slug] ?? {};
         const mastered = l.words.filter((w) => (st[w.word] ?? 0) >= 2).length;
-        return { id: `vocab:${l.slug}`, title: l.title, href: `/vocabulary/topic/${l.slug}/learn`, done: l.words.length > 0 && mastered / l.words.length >= VOCAB_DONE_SHARE };
+        return { id: `vocab:${l.slug}`, title: l.title, href: `/vocabulary/topic/${l.slug}/learn`, done: l.words.length > 0 && mastered / l.words.length >= VOCAB_DONE_SHARE, blurb: l.blurb, level: l.subject === 'math' ? 'SAT Math' : 'SAT Verbal', tier: l.subject === 'math' ? 1 : 2, meta: `${mastered}/${l.words.length} từ đã nhớ` };
       }),
     ),
     island(
@@ -99,14 +117,14 @@ export function buildIslands(p: WorldProgress): Island[] {
       'Đảo Nghe & chép',
       '50 bài chép chính tả theo chủ đề',
       '#0EA5E9',
-      DICTATION_SETS.map((s) => ({ id: `listen:${s.id}`, title: s.title, href: `/sentence/dictation?set=${s.id}`, done: p.dictationSets.has(s.id) })),
+      DICTATION_SETS.map((s) => ({ id: `listen:${s.id}`, title: s.title, href: `/sentence/dictation?set=${s.id}`, done: p.dictationSets.has(s.id), blurb: s.blurb, level: s.level, tier: CEFR_TIER[s.level] ?? 1, meta: `${s.sentences.length} câu` })),
     ),
     island(
       'translate',
       'Đảo Dịch câu',
       '50 bài dịch Việt → Anh',
       '#F59E0B',
-      TRANSLATION_SETS.map((s) => ({ id: `translate:${s.id}`, title: s.title, href: `/sentence/translate?set=${s.id}`, done: p.translationSets.has(s.id) })),
+      TRANSLATION_SETS.map((s) => ({ id: `translate:${s.id}`, title: s.title, href: `/sentence/translate?set=${s.id}`, done: p.translationSets.has(s.id), blurb: s.blurb, level: SENTENCE_LEVEL[s.level], tier: SENTENCE_TIER[s.level] ?? 1, meta: `${s.items.length} câu` })),
     ),
     island(
       'arena',

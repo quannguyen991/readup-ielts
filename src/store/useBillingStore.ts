@@ -9,12 +9,11 @@ import {
   daysLeft,
   effectivePlan,
   quotaPeriodKey,
+  quotaPlan,
   remainingQuota,
   type Entitlement,
 } from '@/lib/billing/entitlements';
 import {
-  PLUS_TRIAL_DAYS,
-  PLUS_TRIAL_PLAN,
   TRIAL_DAYS,
   TRIAL_PLAN,
   type Feature,
@@ -58,7 +57,7 @@ type BillingState = {
   /** Ghi một lượt dùng. Tự reset khi sang chu kỳ mới. */
   consume: (quota: Quota, amount?: number) => void;
   usedOf: (quota: Quota) => number;
-  startPlusTrial: () => void;
+  /** Bật học thử `TRIAL_DAYS` ngày gói `TRIAL_PLAN`. */
   startVipTrial: () => void;
   /** Chỉ dùng khi chưa có thanh toán, và luôn đánh dấu nguồn là `local`. */
   setPlanLocally: (plan: PlanId, expiresAt?: string | null) => void;
@@ -95,19 +94,9 @@ export const useBillingStore = create<BillingState>()(
         });
       },
 
-      startPlusTrial: () => {
-        const until = new Date();
-        until.setDate(until.getDate() + PLUS_TRIAL_DAYS);
-        set({ plan: PLUS_TRIAL_PLAN, expiresAt: until.toISOString(), source: 'trial', plusTrialUsed: true });
-      },
-
       startVipTrial: () => {
         const until = new Date();
         until.setDate(until.getDate() + TRIAL_DAYS);
-        // `set()` GHI ĐÈ toàn bộ plan/expiresAt, không đọc giá trị cũ — nên nếu
-        // gọi hàm này trong lúc đang có Plus trial (source:'trial', hạn 3 ngày),
-        // nó tự nhiên overwrite thành Pro 7 ngày kể từ bây giờ, không cộng dồn
-        // số ngày Plus còn dư. Đúng hành vi mong muốn, không cần code thêm.
         set({ plan: TRIAL_PLAN, expiresAt: until.toISOString(), source: 'trial', proTrialUsed: true });
       },
 
@@ -152,18 +141,16 @@ export function usePlanStatus() {
       plusTrialUsed,
       proTrialUsed,
       /*
-        Đủ điều kiện bấm nút dùng thử: gói HIỆU LỰC (đã trừ hết hạn) đang là
-        Free, và loại đó chưa dùng lần nào. Dùng `plan` (đã decay qua
+        Đủ điều kiện bấm nút học thử: gói HIỆU LỰC (đã trừ hết hạn) đang là
+        Free, và chưa học thử lần nào. Dùng `plan` (đã decay qua
         `effectivePlan`) chứ không dùng `rawPlan` — trial hết hạn thì `rawPlan`
         vẫn kẹt ở giá trị cũ (ví dụ 'plus') mãi mãi vì không có gì tự đặt lại
         nó, chỉ `plan` mới đúng là "bây giờ có đang Free hay không".
 
-        Hệ quả tự nhiên: đang GIỮA một trial (Plus hoặc Pro) thì `plan !== 'free'`,
-        nên CẢ HAI nút cùng ẩn — không hiện nút Pro chồng lên lúc đang dùng thử
-        Plus. Nút Pro chỉ hiện lại sau khi Plus trial hết hạn.
       */
-      canStartPlusTrial: plan === 'free' && !plusTrialUsed,
-      canStartProTrial: plan === 'free' && !proTrialUsed,
+      canStartTrial: plan === 'free' && !proTrialUsed,
+      /** Đang học thử (còn hạn). Lượt AI khi đó vẫn theo Free. */
+      onTrial: source === 'trial' && plan !== 'free',
       expired: rawPlan !== 'free' && plan === 'free',
     }),
     [expiresAt, plan, plusTrialUsed, proTrialUsed, rawPlan, source],
@@ -183,10 +170,12 @@ export function useFeature(feature: Feature): Entitlement {
  * chỉ gây bực.
  */
 export function useQuota(quota: Quota) {
-  const plan = usePlan();
+  const effective = usePlan();
+  const source = useBillingStore((s) => s.source);
   const usage = useBillingStore((s) => s.usage);
 
   return useMemo(() => {
+    const plan = quotaPlan(effective, quota, source === 'trial' && effective !== 'free');
     const entry = usage[quota];
     const used = !entry || entry.periodKey !== quotaPeriodKey(quota) ? 0 : entry.count;
     return {
@@ -194,5 +183,5 @@ export function useQuota(quota: Quota) {
       remaining: remainingQuota(plan, quota, used),
       entitlement: checkQuota(plan, quota, used),
     };
-  }, [plan, quota, usage]);
+  }, [effective, quota, source, usage]);
 }

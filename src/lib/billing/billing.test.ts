@@ -11,6 +11,7 @@ import {
   periodKey,
   quotaLimit,
   quotaPeriodKey,
+  quotaPlan,
   remainingQuota,
   requiredPlanFor,
   unlockedStageCount,
@@ -18,6 +19,8 @@ import {
 import {
   PLANS,
   PLAN_ORDER,
+  TRIAL_AI_PLAN,
+  TRIAL_DAYS,
   TRIAL_PLAN,
   formatVnd,
   planOf,
@@ -351,4 +354,15 @@ test('đúng MỘT gói được đánh dấu gợi ý', () => {
 test('gói dùng thử là một gói có thật và không phải gói đắt nhất', () => {
   assert.ok(PLAN_ORDER.includes(TRIAL_PLAN));
   assert.ok(planRank(TRIAL_PLAN) > 0, 'Dùng thử gói Free thì không có nghĩa gì.');
+});
+
+test('học thử 5 ngày: mở nội dung gói thử, nhưng lượt AI vẫn là mức Free', () => {
+  assert.equal(TRIAL_DAYS, 5);
+  assert.equal(TRIAL_AI_PLAN, 'free');
+  // Đang học thử: AI theo Free, mọi hạn mức khác theo gói thử.
+  assert.equal(quotaPlan(TRIAL_PLAN, 'ai_calls_per_month', true), 'free');
+  assert.equal(quotaLimit(quotaPlan(TRIAL_PLAN, 'ai_calls_per_month', true), 'ai_calls_per_month'), quotaLimit('free', 'ai_calls_per_month'));
+  assert.equal(quotaPlan(TRIAL_PLAN, 'reading_per_day', true), TRIAL_PLAN);
+  // Gói trả tiền thật thì không bị kéo xuống.
+  assert.equal(quotaPlan('pro', 'ai_calls_per_month', false), 'pro');
 });

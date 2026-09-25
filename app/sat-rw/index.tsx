@@ -172,17 +172,17 @@ export default function SatRwHubScreen() {
               Mỗi đề {QUESTIONS_PER_SET} câu lấy từ cả bốn mảng, xếp xen kẽ — bạn phải tự nhận ra câu đang hỏi luật gì, giống lúc thi thật.
             </Text>
             <View className="mt-4">
-              <Grid columns={6} tabletColumns={4} mobileColumns={3} gap={12}>
+              <View className="mb-3 flex-row flex-wrap gap-x-4 gap-y-1">
+                {SAT_RW_DOMAINS.map((d) => (
+                  <View key={d.key} className="flex-row items-center gap-1.5">
+                    <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: DOMAIN_TONE[d.key] ?? color.primary }} />
+                    <Text className="font-mid text-label text-muted">{d.labelVi}</Text>
+                  </View>
+                ))}
+              </View>
+              <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={12}>
                 {SAT_RW_MIXED_SETS.map((set) => (
-                  <Pressable
-                    key={set.id}
-                    accessibilityRole="link"
-                    onPress={() => router.push(`/sat-rw/mix/${set.id}` as never)}
-                    className="items-center rounded-card border border-border bg-surface px-2 py-4"
-                  >
-                    <Text className="font-heavy text-sectionTitle text-ink">{set.order}</Text>
-                    <Text className="mt-0.5 font-semi text-label text-muted">{set.questions.length} câu</Text>
-                  </Pressable>
+                  <MixTile key={set.id} set={set} attempts={attempts} />
                 ))}
               </Grid>
             </View>
@@ -209,6 +209,94 @@ export default function SatRwHubScreen() {
         ) : null}
       </CrossFade>
     </Screen>
+  );
+}
+
+/** Màu từng mảng đề — dùng cho dải "dấu vân" trên thẻ đề trộn. */
+const DOMAIN_TONE: Record<string, string> = {
+  'Information and Ideas': '#0EA5E9',
+  'Craft and Structure': '#8B5CF6',
+  'Expression of Ideas': '#F59E0B',
+  'Standard English Conventions': '#F43F5E',
+};
+
+/**
+ * Thẻ một đề trộn.
+ *
+ * Bản cũ là ô vuông chỉ có SỐ ĐỀ to + "10 câu" — năm mươi ô giống hệt nhau, dáng
+ * ô số của IELTS Dictionary (người dùng bắt bỏ ngày 25/09/2026). Giờ mỗi thẻ mang
+ * dải vân vẽ từ chính đề: mỗi vạch là một câu theo đúng thứ tự, màu theo mảng;
+ * câu đã làm thì đặc, câu sai có chấm đỏ. Nhìn là biết đề nào nặng ngữ pháp, đề
+ * nào làm dở.
+ */
+function MixTile({
+  set,
+  attempts,
+}: {
+  set: (typeof SAT_RW_MIXED_SETS)[number];
+  attempts: Record<string, { correct: boolean }>;
+}) {
+  const [hover, setHover] = useState(false);
+  const answered = set.questions.filter((q) => attempts[q.id]).length;
+  const correct = set.questions.filter((q) => attempts[q.id]?.correct).length;
+  const finished = answered === set.questions.length;
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={`${set.title}: ${answered}/${set.questions.length} câu đã làm`}
+      onPress={() => router.push(`/sat-rw/mix/${set.id}` as never)}
+      onHoverIn={() => setHover(true)}
+      onHoverOut={() => setHover(false)}
+      className="rounded-[18px] bg-white p-3.5"
+      style={{
+        borderWidth: 1,
+        borderColor: hover ? '#C7CCE0' : '#E6E8F2',
+        ...({
+          boxShadow: hover ? '0 14px 30px rgba(30,41,99,0.12)' : '0 1px 2px rgba(15,23,42,0.05)',
+          transform: hover ? 'translateY(-2px)' : 'none',
+          transition: 'box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease',
+        } as object),
+      }}
+    >
+      <View className="flex-row items-center justify-between">
+        <Text className="font-semi text-label text-muted" style={{ letterSpacing: 0.6 }}>
+          {set.questions.length} CÂU · XEN KẼ
+        </Text>
+        {finished ? (
+          <View className="flex-row items-center gap-1 rounded-pill px-2 py-0.5" style={{ backgroundColor: '#ECFDF3' }}>
+            <Icon name="check" size={11} color="#16A34A" strokeWidth={2.6} />
+            <Text className="font-strong text-label" style={{ color: '#15803D' }}>
+              {correct}/{set.questions.length}
+            </Text>
+          </View>
+        ) : null}
+      </View>
+      <Text className="mt-0.5 font-heavy text-ink" style={{ fontSize: 17 }} numberOfLines={1}>
+        {set.title}
+      </Text>
+      <View className="mt-3 flex-row items-end gap-[3px]" style={{ height: 30 }}>
+        {set.questions.map((q) => {
+          const a = attempts[q.id];
+          const tone = DOMAIN_TONE[q.domain] ?? color.primary;
+          return (
+            <View key={q.id} style={{ flex: 1, alignItems: 'center', gap: 2 }}>
+              {a && !a.correct ? <View style={{ width: 4, height: 4, borderRadius: 2, backgroundColor: '#EF4444' }} /> : null}
+              <View
+                style={{
+                  width: '100%',
+                  height: a ? 22 : 16,
+                  borderRadius: 3,
+                  backgroundColor: a ? tone : `${tone}4D`,
+                }}
+              />
+            </View>
+          );
+        })}
+      </View>
+      <Text className="mt-2.5 font-mid text-label text-muted">
+        {answered === 0 ? 'Chưa làm' : finished ? `Xong · đúng ${correct}/${set.questions.length}` : `Làm dở · ${answered}/${set.questions.length} câu`}
+      </Text>
+    </Pressable>
   );
 }
 

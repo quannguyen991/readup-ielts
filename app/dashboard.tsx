@@ -6,6 +6,7 @@ import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
+import { TrialCard } from '@/components/billing/PlanUi';
 import { BarChart } from '@/components/charts';
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
@@ -182,6 +183,8 @@ export default function DashboardScreen() {
           onPress={() => router.push('/leaderboard' as never)}
         />
       </LightHero>
+
+      <TrialCard />
 
       <TodayPlan />
 

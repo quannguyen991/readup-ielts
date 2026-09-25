@@ -61,3 +61,15 @@ test('vị trí đảo nằm trong khung, không đè lên nhau', () => {
       for (let b = a + 1; b < 6; b += 1) assert.ok(Math.hypot(ps[a]!.x - ps[b]!.x, ps[a]!.y - ps[b]!.y) > 0.15);
   }
 });
+
+test('màn chọn trận: mọi bài của năm mảng học đều có dòng mô tả, độ khó và thời lượng/số câu', () => {
+  for (const i of buildIslands(empty)) {
+    if (i.id === 'arena') continue;
+    for (const m of i.missions) {
+      assert.ok(m.blurb && m.blurb.length > 0, `${m.id} thiếu mô tả`);
+      assert.ok(m.level, `${m.id} thiếu độ khó`);
+      assert.ok(typeof m.tier === 'number' && m.tier >= 0 && m.tier <= 3, `${m.id} bậc khó sai`);
+      assert.ok(m.meta, `${m.id} thiếu dòng phụ`);
+    }
+  }
+});
