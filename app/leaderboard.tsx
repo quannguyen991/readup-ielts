@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Grid } from '@/components/layout/Grid';
@@ -10,7 +10,8 @@ import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { Badge, Button, Card, Icon, ProgressBar, SectionHeader } from '@/components/ui';
 import { sfx } from '@/services/audio/sfx';
-import { goldenOf } from '@/services/gamification/golden';
+import { demoLeaderboard } from '@/services/gamification/demo-board';
+import { goldenOf, vnToday } from '@/services/gamification/golden';
 import { MONTH_PRIZES, prizeForRank } from '@/services/gamification/monthly';
 import {
   currentStreak,
@@ -70,7 +71,9 @@ export default function LeaderboardScreen() {
   const name = useDisplayName();
   const userId = useAuthStore((s) => s.user?.id ?? null);
   const stars = useStarBalance();
-  const { data, error } = useBoard();
+  const { demo: demoParam } = useLocalSearchParams<{ demo?: string }>();
+  const demo = demoParam === '1';
+  const { data, error } = useBoard(demo);
 
   const today = useMemo(() => new Date(), []);
   const todayKey = dateKey(today);
@@ -86,6 +89,15 @@ export default function LeaderboardScreen() {
 
   return (
     <Screen>
+      {demo ? (
+        <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#FEF3C7' }}>
+          <Text style={{ fontSize: 16 }}>🧪</Text>
+          <Text className="flex-1 font-semi text-body text-ink" style={{ minWidth: 220 }}>
+            Dữ liệu minh hoạ — tên và điểm là mẫu, không phải học viên thật. Chỉ hiện khi đường dẫn có ?demo=1.
+          </Text>
+          <Button label="Xem bảng thật" variant="outline" size="sm" onPress={() => router.replace('/leaderboard' as never)} />
+        </View>
+      ) : null}
       <Appear>
         <View className="flex-row flex-wrap items-center gap-3">
           <Text className="font-heavy text-pageTitle text-ink">🏆 Xếp hạng</Text>
@@ -203,11 +215,13 @@ export default function LeaderboardScreen() {
   );
 }
 
-function useBoard(): { data: BoardData | null; error: string | null } {
+function useBoard(demo: boolean): { data: BoardData | null; error: string | null } {
   const [data, setData] = useState<BoardData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Chế độ minh hoạ không gọi máy chủ — dữ liệu sinh tại chỗ ở `demoData` bên dưới.
+    if (demo) return;
     let alive = true;
     fetch('/api/leaderboard')
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
@@ -225,9 +239,17 @@ function useBoard(): { data: BoardData | null; error: string | null } {
     return () => {
       alive = false;
     };
-  }, []);
+  }, [demo]);
 
-  return { data, error };
+  const demoData = useMemo<BoardData | null>(() => {
+    if (!demo) return null;
+    const now = new Date();
+    const prev = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+    const prevKey = `${prev.getFullYear()}-${String(prev.getMonth() + 1).padStart(2, '0')}`;
+    return demoLeaderboard(vnToday(now).key, prevKey);
+  }, [demo]);
+
+  return demo ? { data: demoData, error: null } : { data, error };
 }
 
 const MEDAL = ['🥇', '🥈', '🥉'];
