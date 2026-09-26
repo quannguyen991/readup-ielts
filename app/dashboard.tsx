@@ -7,20 +7,16 @@ import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
 import { TrialCard } from '@/components/billing/PlanUi';
+import { PlanBlockRow } from '@/components/plan/PlanBlockRow';
+import { blocksOn, nextStudyDayIso, planWeekOf } from '@/services/plan/custom';
+import { todayKey } from '@/store/persist';
+import { useCustomPlan, useRoadmapStore } from '@/store/useRoadmapStore';
+import { color } from '@/theme/tokens';
 import { BarChart } from '@/components/charts';
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
-import {
-  AssetImage,
-  Badge,
-  Button,
-  Card,
-  ProgressBar,
-  QuestionTypeIcon,
-  SectionHeader,
-  StatCard,
-} from '@/components/ui';
+import { AssetImage, Badge, Button, Card, Icon, ProgressBar, QuestionTypeIcon, SectionHeader, StatCard } from '@/components/ui';
 import { filterArticles, isReadable, libraryStats, topicLabel } from '@/data/articles';
 import { bandDelta, formatBand } from '@/lib/band';
 import { MATH_SKILL_LABEL } from '@/lib/math/types';
@@ -30,61 +26,58 @@ import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useLatestDiagnostic, useMathPriority, useMathTotals } from '@/store/useMathStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useDueCards } from '@/store/useVocabStore';
-import { PLAN_TOTAL_WEEKS, stageOf, todaySlots, weekNumber } from '@/services/plan/roadmap';
 
 /**
- * "Hôm nay học gì" — ba khối của lộ trình 60 tuần, ngay trên Tổng quan.
+ * "Hôm nay học gì" — các khối của LỘ TRÌNH TỰ LẬP, ngay trên Tổng quan.
  *
- * Lộ trình vốn nằm ở trang riêng, và ở một file HTML ngoài app trước đó. Mở app
- * lên mà không thấy nó thì người học vẫn phải tự nhớ hôm nay tới đâu — đúng thứ
- * lộ trình sinh ra để khỏi phải nhớ.
- *
- * Chỉ hiện khi lộ trình ĐANG CHẠY (tuần 1–60). Trước ngày bắt đầu hoặc sau khi
- * kết thúc thì không có việc nào để nhắc, và một thẻ rỗng chỉ tổ chiếm chỗ.
+ * Chưa lập lộ trình thì mời lập (6 câu hỏi) chứ không hiện lộ trình mẫu: bản cũ
+ * lấy lộ trình 60 tuần của người làm app và hiện cho mọi người, nên người vừa
+ * mở app đã thấy "Tuần 3/60 · Từ vựng Unit 3" — số liệu giả (sửa 26/09/2026).
  */
 function TodayPlan() {
-  const today = useMemo(() => new Date(), []);
-  const week = weekNumber(today);
-  const stage = stageOf(week);
-  const slots = todaySlots(today, week);
+  const input = useRoadmapStore((s) => s.input);
+  const plan = useCustomPlan();
+  const today = todayKey();
 
-  if (week < 1 || week > PLAN_TOTAL_WEEKS || slots.length === 0) return null;
+  if (!input || !plan) {
+    return (
+      <Card className="mt-4 lg:mt-6">
+        <View className="flex-row flex-wrap items-center gap-4">
+          <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: '#EEF2FF' }}>
+            <Icon name="calendar" size={22} color={color.primary} />
+          </View>
+          <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
+            <Text className="font-heavy text-cardTitle text-ink">Chưa có lộ trình của bạn</Text>
+            <Text className="mt-0.5 font-sans text-body text-muted">
+              Khai mục tiêu, ngày thi và số phút mỗi ngày — app xếp từng buổi học vào đúng bài trong app.
+            </Text>
+          </View>
+          <Button label="Lập lộ trình" iconRight="arrow-right" onPress={() => router.push('/plan' as never)} />
+        </View>
+      </Card>
+    );
+  }
+
+  const blocks = blocksOn(plan, today);
+  const week = Math.min(Math.max(planWeekOf(input, today), 1), plan.totalWeeks);
+  const next = blocks.length === 0 ? nextStudyDayIso(plan, today) : null;
 
   return (
     <Card className="mt-4 lg:mt-6">
       <SectionHeader
         title="Hôm nay học gì"
-        subtitle={`Tuần ${week}/${PLAN_TOTAL_WEEKS}${stage ? ` · chặng ${stage.id} — ${stage.name}` : ''}`}
+        subtitle={`Tuần ${week}/${plan.totalWeeks} của lộ trình bạn lập`}
         icon="calendar"
         action={{ label: 'Xem lộ trình', onPress: () => router.push('/plan' as never) }}
       />
       <View className="mt-3 gap-2">
-        {slots.map((slot) => (
-          <View
-            key={slot.id}
-            className="flex-row flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surfaceAlt px-3 py-2.5"
-          >
-            <View className="min-w-0 flex-1" style={{ minWidth: 180 }}>
-              <Text className="font-mid text-label text-muted">{slot.when}</Text>
-              <Text className="mt-0.5 font-strong text-body text-ink">{slot.title}</Text>
-              {slot.detail ? (
-                <Text className="mt-0.5 font-sans text-label text-muted" numberOfLines={2}>
-                  {slot.detail}
-                </Text>
-              ) : null}
-            </View>
-            {slot.href ? (
-              <Button
-                label="Vào học"
-                size="sm"
-                iconRight="arrow-right"
-                onPress={() => router.push(slot.href as never)}
-              />
-            ) : (
-              <Text className="font-mid text-label text-subtle">Học trong sách</Text>
-            )}
-          </View>
-        ))}
+        {blocks.length > 0 ? (
+          blocks.map((b) => <PlanBlockRow key={b.id} block={b} compact />)
+        ) : (
+          <Text className="font-sans text-body text-muted">
+            {next ? `Hôm nay nghỉ theo lộ trình. Buổi học tiếp: ${next.iso.split('-').reverse().join('/')}.` : 'Lộ trình đã đi hết — vào Lộ trình để đặt mục tiêu mới.'}
+          </Text>
+        )}
       </View>
     </Card>
   );
@@ -208,7 +201,7 @@ export default function DashboardScreen() {
             icon="target"
             tone="primary"
             progress={{ value: (minutesToday / dailyGoal) * 100 }}
-            caption={minutesToday >= dailyGoal ? 'Xong mục tiêu hôm nay 🎯' : 'Còn tiếp tục nhé'}
+            caption={minutesToday >= dailyGoal ? 'Xong mục tiêu hôm nay 🎯' : minutesToday === 0 ? 'Hôm nay chưa học phút nào' : `Còn ${dailyGoal - minutesToday} phút nữa`}
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard

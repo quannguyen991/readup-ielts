@@ -4,15 +4,16 @@ import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
-import { ChartFigure } from '@/components/writing/ChartFigure';
+import { Button, Card, SectionHeader } from '@/components/ui';
+import { LessonCard } from '@/components/sentence/LessonCard';
+import { ChartPrint, EssayPrint } from '@/components/writing/PromptPrint';
 import {
   filterWritingPrompts,
   writingLibraryStats,
   type WritingPromptFilters,
 } from '@/data/writing-repository';
 import { TOPICS } from '@/data/articles';
-import { color } from '@/theme/tokens';
+import { useWritingStore } from '@/store/useWritingStore';
 import type { Task2Essay, WritingPrompt, WritingTask } from '@/lib/writing/types';
 import { CrossFade } from '@/components/motion/Motion';
 
@@ -62,7 +63,7 @@ export default function WritingLibraryScreen() {
   const [maxBand, setMaxBand] = useState<number | undefined>(undefined);
   /** Loại biểu đồ (Task 1) hoặc dạng luận (Task 2) — hai tab dùng chung một ô trạng thái. */
   const [kind, setKind] = useState<string | undefined>(undefined);
-  const [visible, setVisible] = useState(6);
+  const [visible, setVisible] = useState(8);
 
   const stats = useMemo(() => writingLibraryStats(), []);
 
@@ -108,7 +109,7 @@ export default function WritingLibraryScreen() {
     setTopic(undefined);
     setMaxBand(undefined);
     setKind(undefined);
-    setVisible(6);
+    setVisible(8);
   };
 
   return (
@@ -192,9 +193,9 @@ export default function WritingLibraryScreen() {
               </Text>
             </Card>
           ) : (
-            <Grid columns={2} tabletColumns={1} mobileColumns={1}>
-              {prompts.slice(0, visible).map((prompt) => (
-                <PromptCard key={prompt.id} prompt={prompt} />
+            <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={16}>
+              {prompts.slice(0, visible).map((prompt, i) => (
+                <PromptCard key={prompt.id} prompt={prompt} index={i} />
               ))}
             </Grid>
           )}
@@ -203,8 +204,8 @@ export default function WritingLibraryScreen() {
             <View className="mt-4 items-center">
               <Button
                 variant="outline"
-                label={`Xem thêm ${Math.min(6, prompts.length - visible)} đề`}
-                onPress={() => setVisible((v) => v + 6)}
+                label={`Xem thêm ${Math.min(8, prompts.length - visible)} đề`}
+                onPress={() => setVisible((v) => v + 8)}
               />
             </View>
           ) : null}
@@ -216,103 +217,53 @@ export default function WritingLibraryScreen() {
 }
 
 /*
-  Thẻ đề dạng LƯỚI: ảnh bên trái, chữ bên phải.
+  Thẻ đề = THẺ BÀI chung của ReadUp (`LessonCard`), cùng dáng với lộ trình dịch.
 
-  Bản trước xếp dọc — nhãn, đề bài, rồi biểu đồ rộng 600px, rồi hai nút. Một
-  thẻ như vậy cao gần một màn hình, nên duyệt 24 đề là cuộn hai chục lần và
-  không lần nào thấy được hai đề cạnh nhau để so.
-
-  Ảnh nằm trái và chữ nằm phải thì một thẻ cao bằng một phần tư, hai thẻ đứng
-  cạnh nhau, và cái người ta thật sự dùng để chọn đề — LOẠI BIỂU ĐỒ trông ra
-  sao — hiện ngay chứ không phải cuộn xuống mới thấy.
+  Bản trước là thẻ ngang: nguyên cái biểu đồ có tiêu đề + trục + chú thích nhét
+  vào cột trái 168px, nửa phải chỉ có hai dòng chữ rồi trống tới đáy — người
+  dùng chê ngày 26/09/2026 và đưa trang Dịch câu làm mẫu. Giờ dấu vân là hình thu
+  nhỏ vẽ từ chính số liệu của đề (Task 1) hoặc dàn bài của dạng luận (Task 2).
 */
-function PromptCard({ prompt }: { prompt: WritingPrompt }) {
-  const kindLabel =
-    prompt.task === 'ielts_task1'
-      ? (CHART_LABEL[prompt.chartKind ?? ''] ?? 'Task 1')
-      : prompt.essayKind
-        ? ESSAY_LABEL[prompt.essayKind]
-        : 'Task 2';
-
-  return (
-    <View
-      className="h-full overflow-hidden rounded-card bg-surface"
-      style={{ borderWidth: 1.5, borderColor: color.border }}
-    >
-      <View className="flex-row">
-        <View
-          className="items-center justify-center p-2.5"
-          style={{ width: 168, backgroundColor: color.surfaceAlt }}
-        >
-          {prompt.chartData ? (
-            <ChartFigure data={prompt.chartData} width={148} />
-          ) : (
-            <EssayTile kind={kindLabel} />
-          )}
-        </View>
-
-        <View className="min-w-0 flex-1 p-4">
-          <View className="flex-row flex-wrap items-center gap-1.5">
-            <Badge tone="primary" label={prompt.task === 'ielts_task1' ? 'Task 1' : 'Task 2'} />
-            <Badge tone="neutral" label={kindLabel} />
-          </View>
-
-          <Text className="mt-2 font-semi text-body text-ink" numberOfLines={4}>
-            {prompt.promptText}
-          </Text>
-
-          <View className="mt-2 flex-row flex-wrap items-center gap-x-3 gap-y-1">
-            <View className="flex-row items-center gap-1">
-              <Icon name="clock" size={13} color={color.muted} />
-              <Text className="font-sans text-label text-muted">
-                {Math.round(prompt.timeLimitSeconds / 60)} phút
-              </Text>
-            </View>
-            <Text className="font-sans text-label text-muted">≥ {prompt.minWords} từ</Text>
-            <Text className="font-sans text-label text-muted">
-              Band {prompt.difficultyBand.toFixed(1)}
-            </Text>
-          </View>
-
-          <View className="flex-1" />
-
-          <View className="mt-3 flex-row flex-wrap gap-2">
-            <Button
-              size="sm"
-              label="Vào phòng viết"
-              onPress={() => router.push(`/write/${prompt.id}` as never)}
-            />
-            <Button
-              size="sm"
-              variant="outline"
-              label="Luyện từng phần"
-              onPress={() => router.push(`/write/drill/${prompt.id}` as never)}
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  );
+function bandLevel(band: number): string {
+  return band <= 6 ? 'easy' : band <= 6.5 ? 'medium' : 'hard';
 }
 
-/**
- * Ô hình cho đề Task 2 — dạng luận không có biểu đồ để hiện.
- *
- * Không mượn ảnh minh hoạ từ đâu: đề Task 2 là chữ, và một tấm ảnh stock gắn
- * vào chỉ để lấp chỗ trống sẽ gợi sai chủ đề nhiều hơn là giúp chọn đề. Cái ô
- * này nói đúng thứ có thật — đây là dạng luận gì.
- */
-function EssayTile({ kind }: { kind: string }) {
+function PromptCard({ prompt, index }: { prompt: WritingPrompt; index: number }) {
+  const submissions = useWritingStore((s) => s.submissions);
+  const done = useMemo(() => submissions.filter((x) => x.promptId === prompt.id).length, [submissions, prompt.id]);
+  const task1 = prompt.task === 'ielts_task1';
+  const kindLabel = task1
+    ? (CHART_LABEL[prompt.chartKind ?? ''] ?? 'Task 1')
+    : prompt.essayKind
+      ? ESSAY_LABEL[prompt.essayKind]
+      : 'Task 2';
+  const title = task1 && prompt.chartData ? prompt.chartData.title : prompt.promptText;
+  const blurb = task1 ? prompt.promptText : `Dạng ${kindLabel}. Viết ít nhất ${prompt.minWords} từ.`;
+
   return (
-    <View
-      className="h-[92px] w-full items-center justify-center rounded-panel bg-surface px-2"
-      style={{ borderWidth: 1, borderColor: color.border }}
-    >
-      <Icon name="pencil" size={20} color={color.muted} />
-      <Text className="mt-1.5 text-center font-semi text-label text-muted" numberOfLines={2}>
-        {kind}
-      </Text>
-    </View>
+    <LessonCard
+      number={index + 1}
+      eyebrow={`${task1 ? 'TASK 1' : 'TASK 2'} · ${kindLabel.toUpperCase()}`}
+      level={bandLevel(prompt.difficultyBand)}
+      levelLabel={`Band ${prompt.difficultyBand.toFixed(1)}`}
+      icon={task1 ? 'trending' : 'pencil'}
+      title={title}
+      blurb={blurb}
+      meta={[
+        { icon: 'clock', label: `${Math.round(prompt.timeLimitSeconds / 60)} phút` },
+        { icon: 'note', label: `≥ ${prompt.minWords} từ` },
+      ]}
+      done={done}
+      visual={(tone, active) =>
+        prompt.chartData ? (
+          <ChartPrint data={prompt.chartData} tone={tone} active={active} />
+        ) : (
+          <EssayPrint kind={prompt.essayKind} tone={tone} active={active} />
+        )
+      }
+      onPress={() => router.push(`/write/${prompt.id}` as never)}
+      secondary={{ label: 'Luyện từng phần', onPress: () => router.push(`/write/drill/${prompt.id}` as never) }}
+    />
   );
 }
 

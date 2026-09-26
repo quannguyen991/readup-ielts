@@ -17,6 +17,7 @@ import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { gamePayload, useGameStore } from '@/store/useGameStore';
 import { rewardPayload, useRewardStore } from '@/store/useRewardStore';
+import { mergeRoadmap, useRoadmapStore, type RoadmapPayload } from '@/store/useRoadmapStore';
 import { mergeReward, type RewardPayload } from '@/services/gamification/shop';
 import { mergeGame, type GamePayload } from '@/services/game/rules';
 import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
@@ -165,7 +166,22 @@ const rewardStore: SyncedStore = {
 };
 
 /** Gọi một lần lúc khởi động app. */
+/** Lộ trình tự lập: bản khai + dấu đã làm. */
+const roadmapStore: SyncedStore = {
+  key: 'roadmap',
+  read: () => {
+    const s = useRoadmapStore.getState();
+    return { input: s.input, done: s.done, updatedAt: s.updatedAt };
+  },
+  write: (payload) => {
+    const data = payload as RoadmapPayload;
+    useRoadmapStore.setState({ input: data.input ?? null, done: data.done ?? {}, updatedAt: data.updatedAt ?? null });
+  },
+  merge: (local, remote) => mergeRoadmap(local as RoadmapPayload | null, remote as RoadmapPayload | null),
+};
+
 export function registerAllSyncedStores(): void {
+  registerSyncedStore(roadmapStore);
   registerSyncedStore(mathStore);
   registerSyncedStore(studyStore);
   registerSyncedStore(vocabStore);

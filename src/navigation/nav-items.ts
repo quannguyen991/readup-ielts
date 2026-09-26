@@ -116,6 +116,7 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'letters',
         children: [
           { key: 'vocab-quiz', label: 'Quiz từ vựng', href: '/vocabulary/quiz', icon: 'target' },
+          { key: 'vocab-sat-quiz', label: 'Ôn từ vựng SAT', href: '/vocabulary/sat-quiz', icon: 'trophy' },
           { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
           { key: 'vocab-import', label: 'Học từ bài bạn thích', href: '/vocabulary/import', icon: 'plus' },
           { key: 'vocab-garden', label: 'Vườn từ', href: '/vocabulary/garden', icon: 'leaf' },
@@ -140,7 +141,7 @@ export const NAV_GROUPS: NavGroup[] = [
     key: 'track',
     title: 'Theo dõi',
     items: [
-      { key: 'plan', label: 'Lộ trình 60 tuần', href: '/plan', icon: 'calendar' },
+      { key: 'plan', label: 'Lộ trình của tôi', href: '/plan', icon: 'calendar' },
       {
         key: 'progress',
         label: 'Tiến độ',

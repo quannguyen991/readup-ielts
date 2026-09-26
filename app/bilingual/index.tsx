@@ -6,6 +6,7 @@ import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade, PressScale } from '@/components/motion/Motion';
+import { BilingualLines, LEVEL_TONE, LessonCard } from '@/components/sentence/LessonCard';
 import { Icon, Pagination } from '@/components/ui';
 import {
   BILINGUAL_LEVELS,
@@ -17,8 +18,8 @@ import {
   type BilingualOutlet,
 } from '@/data/bilingual-repository';
 import { stripInline } from '@/lib/inlineMarkup';
-import { HoverPressable } from '@/components/ui/HoverPressable';
-import { readingFont, useReadingFonts } from '@/lib/readingFonts';
+import { useReadingFonts } from '@/lib/readingFonts';
+import { color } from '@/theme/tokens';
 
 /**
  * Cổng "Đọc báo song ngữ".
@@ -34,10 +35,35 @@ import { readingFont, useReadingFonts } from '@/lib/readingFonts';
  * phép ở cuối. Kho này MIỄN PHÍ cho mọi người — không nằm sau gói trả phí.
  *
  * Tờ báo đang chọn nằm trên URL (`?s=voa`), để gửi link cho bạn là mở đúng chỗ.
+ *
+ * THIẾT KẾ (26/09/2026): bỏ dáng "sạp báo giấy" cũ — viền đen 2px, bóng lệch đen,
+ * nút sắp xếp chữ máy đánh — vì người dùng thấy giống IELTS Dictionary. Giờ dùng
+ * đúng ngôn ngữ của ReadUp: thẻ trắng bóng mềm, dấu vân vẽ từ dữ liệu (thanh phân
+ * bố trình độ của tờ báo, cặp vạch Anh–Việt theo độ dài từng đoạn của bài).
  */
 
 const PAGE_SIZE = 12;
-const INK = '#1F2A12';
+const INK = '#1E2748';
+const MUTED = '#5A6485';
+
+/** "B1 – B2" → "B2": tô màu theo mức cao hơn của khoảng. */
+function levelKey(level: string): string {
+  return level.split(/\s*[–-]\s*/).pop() ?? level;
+}
+
+/** Hai–ba chữ cái đầu tên báo, làm con dấu thay logo (không mượn logo của ai). */
+function monogram(name: string): string {
+  const caps = name.split(/\s+/).filter(Boolean).map((w) => w[0]!.toUpperCase());
+  return caps.slice(0, 3).join('');
+}
+
+const SOFT_CARD = {
+  borderWidth: 1,
+  borderColor: '#E6E8F2',
+  ...(Platform.OS === 'web'
+    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(30,41,99,0.08)' } as object)
+    : { elevation: 2 }),
+};
 
 type SortKey = 'new' | 'easy' | 'short';
 
@@ -92,7 +118,7 @@ function PortalView() {
       </View>
 
       <Appear index={6}>
-        <Text style={{ marginTop: 22, fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 13, lineHeight: 20, color: '#5B6350' }}>
+        <Text className="font-sans" style={{ marginTop: 22, fontSize: 13, lineHeight: 20, color: INK, opacity: 0.75 }}>
           Chỉ đăng lại bài từ những nơi cho phép dùng lại toàn văn (public domain hoặc Creative Commons). Mỗi bài có link bài gốc và ghi
           giấy phép. Bài của ReadUp Analysis do ReadUp tự viết.
         </Text>
@@ -103,6 +129,18 @@ function PortalView() {
 
 function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number }) {
   const featured = outlet.key === 'readup';
+  const articles = useMemo(() => articlesOfOutlet(outlet.key), [outlet.key]);
+  const byLevel = useMemo(() => {
+    const out: { level: string; n: number }[] = [];
+    for (const l of BILINGUAL_LEVELS) {
+      const n = articles.filter((x) => x.level === l).length;
+      if (n > 0) out.push({ level: l, n });
+    }
+    return out;
+  }, [articles]);
+  const minutes = articles.map((x) => x.estMinutes);
+  const span = minutes.length ? `${Math.min(...minutes)}–${Math.max(...minutes)} phút/bài` : '';
+
   return (
     <PressScale
       accessibilityRole="link"
@@ -110,46 +148,63 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
       onPress={() => router.setParams({ s: outlet.key })}
       style={{ height: '100%' }}
     >
-      <View className="h-full overflow-hidden rounded-card bg-white" style={sticker}>
-        {/* bìa — chữ tên báo là hình minh hoạ, không mượn logo của ai */}
-        <View className="justify-between p-6" style={{ backgroundColor: outlet.cover, minHeight: 190 }}>
-          <View className="flex-row items-start justify-between gap-3">
-            <Text
-              style={{
-                fontFamily: readingFont.display,
-                fontWeight: '800',
-                fontStyle: outlet.key === 'gv' || featured ? 'italic' : 'normal',
-                fontSize: 34,
-                lineHeight: 38,
-                color: outlet.ink,
-                flexShrink: 1,
-              }}
-            >
-              {outlet.name}
+      <View className="h-full rounded-[22px] bg-white p-5" style={SOFT_CARD}>
+        <View className="flex-row items-center gap-4">
+          <View className="items-center justify-center rounded-2xl" style={{ width: 58, height: 58, backgroundColor: outlet.cover }}>
+            <Text className="font-heavy" style={{ fontSize: 18, letterSpacing: 0.5, color: outlet.ink }}>
+              {monogram(outlet.name)}
             </Text>
-            {featured ? (
-              <View className="rounded-pill px-2.5 py-1" style={{ backgroundColor: INK, transform: [{ rotate: '4deg' }] }}>
-                <Text style={{ fontSize: 9.5, fontWeight: '800', letterSpacing: 1, color: '#F2B84B' }}>RECOMMENDED</Text>
-              </View>
-            ) : null}
           </View>
-          <View className="mt-6 flex-row items-end justify-between">
-            <Text style={{ fontFamily: readingFont.display, fontWeight: '800', fontSize: 56, lineHeight: 58, color: outlet.ink, opacity: 0.95 }}>
-              {count}
-              <Text style={{ fontFamily: readingFont.body, fontStyle: 'italic', fontWeight: '400', fontSize: 18 }}> bài</Text>
-            </Text>
-            <View className="h-11 w-11 items-center justify-center rounded-pill" style={{ backgroundColor: 'rgba(255,255,255,0.22)' }}>
-              <Icon name="arrow-right" size={20} color={outlet.ink} strokeWidth={2.2} />
+          <View className="min-w-0 flex-1">
+            <View className="flex-row flex-wrap items-center gap-2">
+              <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 25, color: INK }}>
+                {outlet.name}
+              </Text>
+              {featured ? (
+                <View className="rounded-pill px-2 py-0.5" style={{ backgroundColor: '#EEF2FF' }}>
+                  <Text className="font-strong" style={{ fontSize: 11, color: color.primary }}>
+                    Nên đọc trước
+                  </Text>
+                </View>
+              ) : null}
             </View>
+            <Text className="mt-0.5 font-sans" style={{ fontSize: 14, lineHeight: 20, color: MUTED }} numberOfLines={2}>
+              {outlet.tagline}
+            </Text>
+          </View>
+          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F1F4FB' }}>
+            <Icon name="arrow-right" size={18} color={INK} strokeWidth={2.2} />
           </View>
         </View>
-        <View className="px-6 py-4">
-          <Text style={{ fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 15.5, lineHeight: 23, color: '#33402A' }}>
-            {outlet.tagline}
+
+        {/* Dấu vân: tờ báo này nặng trình độ nào — chia đúng theo số bài thật. */}
+        <View className="mt-5 flex-row overflow-hidden rounded-pill" style={{ height: 10, backgroundColor: '#F1F4FB' }}>
+          {byLevel.map((l) => (
+            <View key={l.level} style={{ flexGrow: l.n, flexBasis: 0, backgroundColor: (LEVEL_TONE[levelKey(l.level)] ?? LEVEL_TONE.B1!).mid }} />
+          ))}
+        </View>
+        <View className="mt-2 flex-row flex-wrap gap-x-3 gap-y-1">
+          {byLevel.map((l) => (
+            <View key={l.level} className="flex-row items-center gap-1">
+              <View style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: (LEVEL_TONE[levelKey(l.level)] ?? LEVEL_TONE.B1!).mid }} />
+              <Text className="font-mid text-label" style={{ color: MUTED }}>
+                {l.level} · {l.n}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <View className="flex-1" />
+        <View className="mt-4 flex-row flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3" style={{ borderColor: '#EEF0F6' }}>
+          <Text className="font-strong" style={{ fontSize: 14, color: INK }}>
+            {count} bài
           </Text>
-          <Text style={{ marginTop: 6, fontFamily: readingFont.mono, fontSize: 10.5, letterSpacing: 1.2, color: '#7A8466' }}>
-            {outlet.license.toUpperCase()}
-          </Text>
+          {span ? <Text className="font-mid text-label" style={{ color: MUTED }}>{span}</Text> : null}
+          <View className="ml-auto rounded-pill px-2 py-0.5" style={{ backgroundColor: '#F1F4FB' }}>
+            <Text className="font-semi" style={{ fontSize: 11, color: MUTED }}>
+              {outlet.license}
+            </Text>
+          </View>
         </View>
       </View>
     </PressScale>
@@ -189,39 +244,45 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
         onPress={() => router.setParams({ s: undefined })}
         className="self-start flex-row items-center gap-1.5 py-1"
       >
-        <Icon name="chevron-left" size={16} color="#3F4636" strokeWidth={2.2} />
-        <Text className="font-semi" style={{ fontSize: 13, color: '#3F4636' }}>
-          Quay lại danh sách báo
+        <Icon name="chevron-left" size={16} color={INK} strokeWidth={2.2} />
+        <Text className="font-semi" style={{ fontSize: 14, color: INK }}>
+          Tất cả tờ báo
         </Text>
       </Pressable>
 
       {/* đầu báo */}
       <Appear>
-        <View className="mt-4 items-center border-b border-t py-7" style={{ borderColor: 'rgba(31,42,18,0.18)' }}>
-          <Text
-            style={{
-              fontFamily: readingFont.display,
-              fontWeight: '800',
-              fontStyle: outlet.key === 'gv' || outlet.key === 'readup' ? 'italic' : 'normal',
-              fontSize: 46,
-              lineHeight: 52,
-              color: INK,
-              textAlign: 'center',
-            }}
-          >
-            {outlet.name}
-          </Text>
-          <Text style={{ marginTop: 6, fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 16, color: '#4A5236', textAlign: 'center' }}>
-            {outlet.tagline}
-          </Text>
+        <View className="mt-3 flex-row flex-wrap items-center gap-4 rounded-[22px] bg-white p-5" style={SOFT_CARD}>
+          <View className="items-center justify-center rounded-2xl" style={{ width: 64, height: 64, backgroundColor: outlet.cover }}>
+            <Text className="font-heavy" style={{ fontSize: 20, color: outlet.ink }}>
+              {monogram(outlet.name)}
+            </Text>
+          </View>
+          <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
+            <Text className="font-heavy" style={{ fontSize: 28, lineHeight: 34, color: INK }}>
+              {outlet.name}
+            </Text>
+            <Text className="mt-0.5 font-sans" style={{ fontSize: 15, lineHeight: 22, color: MUTED }}>
+              {outlet.tagline}
+            </Text>
+          </View>
+          <View className="flex-row flex-wrap gap-2">
+            <StatPill value={String(all.length)} label="bài" />
+            <StatPill value={levels.length > 1 ? `${levels[0]} → ${levels[levels.length - 1]}` : (levels[0] ?? '—')} label="trình độ" />
+          </View>
         </View>
       </Appear>
 
       {/* sắp xếp + lọc */}
-      <View className="mt-6 flex-row flex-wrap items-center gap-2.5">
-        <SortTab label="↓ Mới nhất" active={sort === 'new'} onPress={() => { setSort('new'); setPage(0); }} />
-        <SortTab label="◔ Dễ trước" active={sort === 'easy'} onPress={() => { setSort('easy'); setPage(0); }} />
-        <SortTab label="≡ Ngắn trước" active={sort === 'short'} onPress={() => { setSort('short'); setPage(0); }} />
+      <View className="mt-5 flex-row flex-wrap items-center gap-3">
+        <View className="flex-row rounded-pill p-1" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
+          <SortTab label="Mới nhất" active={sort === 'new'} onPress={() => { setSort('new'); setPage(0); }} />
+          <SortTab label="Dễ trước" active={sort === 'easy'} onPress={() => { setSort('easy'); setPage(0); }} />
+          <SortTab label="Ngắn trước" active={sort === 'short'} onPress={() => { setSort('short'); setPage(0); }} />
+        </View>
+        <Text className="font-semi text-label" style={{ color: INK, opacity: 0.7 }}>
+          {list.length} bài khớp
+        </Text>
       </View>
 
       <FilterRow>
@@ -242,7 +303,7 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
       <View className="mt-6">
         <CrossFade swapKey={`${sort}-${level}-${topic}-${current}`}>
           {shown.length > 0 ? (
-            <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={26}>
+            <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>
               {shown.map((a, i) => (
                 <Appear key={a.id} index={i} style={{ height: '100%' }}>
                   <ArticleCard article={a} outlet={outlet} />
@@ -250,7 +311,7 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
               ))}
             </Grid>
           ) : (
-            <Text style={{ fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 16, color: '#5B6350' }}>
+            <Text className="font-sans" style={{ fontSize: 15, color: INK }}>
               Không có bài nào khớp bộ lọc — thử bỏ bớt một điều kiện.
             </Text>
           )}
@@ -262,80 +323,39 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
   );
 }
 
-const TOPIC_TINT: Record<string, string> = {
-  'Khoa học & môi trường': '#CFE3C0',
-  'Ngôn ngữ & giáo dục': '#E9D9F2',
-  'Đời sống & xã hội': '#F6DCC6',
-  'Lịch sử & văn hoá': '#EFE2B8',
-  'Công nghệ & kinh tế': '#CFDDF3',
-  'Sức khoẻ & cơ thể': '#F4CFCF',
-  'Việt Nam & khu vực': '#F3E6A6',
-};
-
 function ArticleCard({ article, outlet }: { article: BilingualArticle; outlet: BilingualOutlet }) {
-  const tint = TOPIC_TINT[article.topic] ?? '#E8EBDD';
   const source = article.source;
-
   return (
-    <HoverPressable
-      accessibilityRole="link"
-      onPress={() => router.push(`/bilingual/${article.id}` as never)}
-      className="h-full"
-      style={({ hovered, pressed }) => [
-        { transform: [{ translateY: hovered ? -3 : 0 }], opacity: pressed ? 0.94 : 1 },
-        Platform.OS === 'web' ? ({ transitionProperty: 'transform', transitionDuration: '200ms' } as object) : null,
+    <LessonCard
+      number={article.order}
+      eyebrow={`${article.topic.toUpperCase()}`}
+      level={levelKey(article.level)}
+      levelLabel={`${article.level} · ${article.estMinutes} phút đọc`}
+      icon="book"
+      title={stripInline(article.titleEn)}
+      blurb={stripInline(article.titleVi)}
+      meta={[
+        { icon: 'list', label: `${article.wordCount} từ` },
+        { icon: 'note', label: `${article.paragraphs.length} đoạn` },
       ]}
-    >
-      {/* bìa chữ: tiêu đề làm tranh, màu theo chủ đề — không dùng ảnh của báo */}
-      <View className="overflow-hidden rounded-card p-5" style={{ backgroundColor: tint, minHeight: 170, borderWidth: 1.5, borderColor: 'rgba(31,42,18,0.15)' }}>
-        <Text style={{ fontFamily: readingFont.mono, fontSize: 10, letterSpacing: 1.4, color: 'rgba(31,42,18,0.6)' }}>
-          {article.level} · {article.estMinutes} MIN
-        </Text>
-        <Text
-          numberOfLines={4}
-          style={{ marginTop: 10, fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '800', fontSize: 25, lineHeight: 29, color: INK }}
-        >
-          “{stripInline(article.titleEn)}”
-        </Text>
-        <View className="absolute -bottom-6 -right-4 h-24 w-24 rounded-pill" style={{ backgroundColor: 'rgba(255,255,255,0.35)' }} />
-      </View>
+      done={0}
+      visual={(tone, active) => <BilingualLines pairs={article.paragraphs} tone={tone} active={active} />}
+      onPress={() => router.push(`/bilingual/${article.id}` as never)}
+      secondary={source ? { label: `Bài gốc · ${outlet.name}`, onPress: () => void Linking.openURL(source.url) } : undefined}
+    />
+  );
+}
 
-      <View className="mt-3.5 flex-1">
-        <Text style={{ fontFamily: readingFont.mono, fontSize: 10.5, letterSpacing: 1.2, color: '#6B7B3F' }}>
-          ▤ {article.topic.toUpperCase()}
-        </Text>
-        <Text numberOfLines={3} style={{ marginTop: 6, fontFamily: readingFont.display, fontWeight: '700', fontSize: 20, lineHeight: 26, color: INK }}>
-          {stripInline(article.titleEn)}
-        </Text>
-
-        {source ? (
-          <Pressable
-            accessibilityRole="link"
-            onPress={() => void Linking.openURL(source.url)}
-            className="mt-2 self-start flex-row items-center gap-1 rounded-pill px-2.5 py-0.5"
-            style={{ borderWidth: 1.2, borderColor: '#93A7F5', backgroundColor: 'rgba(147,167,245,0.12)' }}
-          >
-            <Text style={{ fontFamily: readingFont.display, fontWeight: '700', fontSize: 10, letterSpacing: 0.6, color: '#3B4FB8' }}>
-              LINK BÀI VIẾT GỐC | {outlet.name.toUpperCase()}
-            </Text>
-            <Icon name="external" size={10} color="#3B4FB8" strokeWidth={2.2} />
-          </Pressable>
-        ) : null}
-
-        <Text numberOfLines={2} style={{ marginTop: 8, fontFamily: readingFont.body, fontStyle: 'italic', fontSize: 15, lineHeight: 22, color: '#55604A' }}>
-          {stripInline(article.titleVi)}
-        </Text>
-        <View className="flex-1" />
-        <View className="mt-4 flex-row items-center justify-between border-t pt-2.5" style={{ borderColor: 'rgba(31,42,18,0.12)' }}>
-          <Text numberOfLines={1} style={{ flexShrink: 1, fontFamily: readingFont.mono, fontSize: 10, letterSpacing: 1, color: '#7A8466' }}>
-            {source?.author ? `BY ${source.author.toUpperCase()}` : 'READUP ANALYSIS'}
-          </Text>
-          <Text style={{ fontFamily: readingFont.mono, fontSize: 10, letterSpacing: 1, color: '#7A8466' }}>
-            {article.wordCount} TỪ
-          </Text>
-        </View>
-      </View>
-    </HoverPressable>
+function StatPill({ value, label }: { value: string; label: string }) {
+  return (
+    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F1F4FB' }}>
+      <Text className="font-heavy" style={{ fontSize: 15, color: INK }}>
+        {value}
+      </Text>
+      <Text className="font-mid text-label" style={{ color: MUTED }}>
+        {label}
+      </Text>
+    </View>
   );
 }
 
@@ -345,16 +365,14 @@ function SortTab({ label, active, onPress }: { label: string; active: boolean; o
       accessibilityRole="tab"
       aria-selected={active}
       onPress={onPress}
-      className="px-3.5 py-2"
+      className="rounded-pill px-3.5 py-1.5"
       style={{
-        borderWidth: 2,
-        borderColor: INK,
-        backgroundColor: active ? INK : '#FFFFFF',
-        ...(Platform.OS === 'web' ? ({ boxShadow: `3px 3px 0 ${INK}` } as object) : null),
+        backgroundColor: active ? color.primary : 'transparent',
+        ...(Platform.OS === 'web' ? ({ transition: 'background-color 160ms ease' } as object) : null),
       }}
     >
-      <Text style={{ fontFamily: readingFont.mono, fontSize: 11.5, letterSpacing: 1, fontWeight: '700', color: active ? '#FFFFFF' : INK }}>
-        {label.toUpperCase()}
+      <Text className="font-strong" style={{ fontSize: 13, color: active ? '#FFFFFF' : INK }}>
+        {label}
       </Text>
     </Pressable>
   );
@@ -375,15 +393,9 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
       accessibilityRole="button"
       aria-selected={active}
       className="rounded-pill px-3 py-1.5"
-      style={{ borderWidth: 1.5, borderColor: active ? INK : 'rgba(31,42,18,0.2)', backgroundColor: active ? '#E3EACF' : 'rgba(255,255,255,0.7)' }}
+      style={{ borderWidth: 1, borderColor: active ? color.primary : '#E0E4F0', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
     >
-      <Text style={{ fontSize: 12.5, fontWeight: '600', color: INK }}>{label}</Text>
+      <Text className="font-semi" style={{ fontSize: 13, color: active ? '#FFFFFF' : INK }}>{label}</Text>
     </Pressable>
   );
 }
-
-const sticker = {
-  borderWidth: 2,
-  borderColor: INK,
-  ...(Platform.OS === 'web' ? ({ boxShadow: `5px 6px 0 ${INK}` } as object) : { elevation: 4 }),
-};

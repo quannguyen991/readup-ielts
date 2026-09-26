@@ -74,7 +74,7 @@ export default function VocabularyScreen() {
           <>
             <HeroStat value={String(words.length)} label="tổng số từ" />
             <HeroStat value={String(dueCards.length)} label="đến hạn ôn" />
-            <HeroStat value={`${avgMastery}%`} label="mastery trung bình" />
+            <HeroStat value={words.length === 0 ? '—' : `${avgMastery}%`} label="mastery trung bình" />
           </>
         }
       >
@@ -113,11 +113,13 @@ export default function VocabularyScreen() {
           />
           <StatCard
             label="Mastery trung bình"
-            value={`${avgMastery}`}
-            unit="%"
+            // Sổ trống thì không có gì để lấy trung bình — "0%" đọc như đã đo mà kém.
+            value={words.length === 0 ? '—' : `${avgMastery}`}
+            unit={words.length === 0 ? undefined : '%'}
             icon="target"
             tone="accent"
-            progress={{ value: avgMastery, tone: 'accent' }}
+            caption={words.length === 0 ? 'Chưa có từ nào trong sổ' : undefined}
+            progress={words.length === 0 ? undefined : { value: avgMastery, tone: 'accent' }}
           />
         </Grid>
       </View>
