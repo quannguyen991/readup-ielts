@@ -4,14 +4,21 @@ import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon } from '@/components/ui';
-import { publicEnv } from '@/lib/env';
 import {
   UNKNOWN_CAPABILITIES,
   fetchAuthCapabilities,
   type AuthCapabilities,
 } from '@/services/auth/capabilities';
 import { PHONE_ERROR_LABEL, parsePhone } from '@/services/auth/phone';
-import { isAuthAvailable, sendEmailOtp, sendPhoneOtp, signInWithOAuth } from '@/services/auth/session';
+import { MIN_PASSWORD, validateSignUp } from '@/services/auth/password';
+import {
+  isAuthAvailable,
+  sendEmailOtp,
+  sendPhoneOtp,
+  signInWithOAuth,
+  signInWithPassword,
+  signUpWithPassword,
+} from '@/services/auth/session';
 import { color } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
 
@@ -52,11 +59,17 @@ export default function SignInScreen() {
     };
   }, []);
 
-  // Gói free của Supabase không sửa được mẫu email nên nó gửi liên kết, không
-  // gửi mã. Nút bấm phải nói đúng thứ sắp xảy ra, xem `publicEnv.emailAuthMode`.
-  const emailByLink = publicEnv.emailAuthMode === 'link';
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  /**
+   * Email dùng MẬT KHẨU (26/09/2026, người dùng: "cho là phần tạo tài khoản
+   * mk đi, không cần gửi link về gmail nữa"). Liên kết qua email chỉ còn là lối
+   * phụ cho tài khoản cũ chưa có mật khẩu và người quên mật khẩu.
+   */
+  const [emailMode, setEmailMode] = useState<'signin' | 'signup'>('signin');
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -86,6 +99,48 @@ export default function SignInScreen() {
     router.push(`/auth/otp?channel=sms&target=${encodeURIComponent(parsed.e164)}` as never);
   };
 
+  const submitPassword = async () => {
+    setError(null);
+    if (emailMode === 'signup') {
+      const checked = validateSignUp(email, password, name);
+      if (!checked.ok) {
+        setError(checked.error);
+        return;
+      }
+      setBusy('email');
+      const result = await signUpWithPassword(checked.email, checked.password, checked.name ?? undefined);
+      setBusy(null);
+      if (!result.ok) {
+        setError(result.error.message);
+        if (result.taken) setEmailMode('signin');
+        return;
+      }
+      router.replace('/dashboard' as never);
+      return;
+    }
+    const value = email.trim().toLowerCase();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
+      setError('Email chưa đúng định dạng.');
+      return;
+    }
+    if (!password) {
+      setError('Nhập mật khẩu.');
+      return;
+    }
+    setBusy('email');
+    const result = await signInWithPassword(value, password);
+    setBusy(null);
+    if (!result.ok) {
+      setError(
+        result.error.kind === 'invalid_credentials'
+          ? 'Sai email hoặc mật khẩu. Tài khoản cũ tạo bằng liên kết chưa có mật khẩu — bấm "Nhận liên kết qua email" bên dưới.'
+          : result.error.message,
+      );
+      return;
+    }
+    router.replace('/dashboard' as never);
+  };
+
   const startEmail = async () => {
     setError(null);
     const value = email.trim().toLowerCase();
@@ -107,7 +162,7 @@ export default function SignInScreen() {
   return (
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 460 }}>
-        <Text className="font-heavy text-pageTitle text-ink">Đăng nhập</Text>
+        <Text className="font-heavy text-pageTitle text-ink">{mode === 'email' && emailMode === 'signup' ? 'Tạo tài khoản' : 'Đăng nhập'}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
           Không đăng nhập vẫn học bình thường — dữ liệu lưu ngay trên thiết bị này. Tài khoản chỉ để
           mang tiến độ sang máy khác và giữ lại khi đổi máy.
@@ -201,7 +256,27 @@ export default function SignInScreen() {
             </View>
           ) : (
             <View className="mt-3">
-              <Text className="font-mid text-label text-muted">Email</Text>
+              <View className="flex-row gap-2">
+                <TabPill label="Đăng nhập" active={emailMode === 'signin'} onPress={() => { setEmailMode('signin'); setError(null); }} />
+                <TabPill label="Tạo tài khoản" active={emailMode === 'signup'} onPress={() => { setEmailMode('signup'); setError(null); }} />
+              </View>
+
+              {emailMode === 'signup' ? (
+                <>
+                  <Text className="mt-3 font-mid text-label text-muted">Tên hiển thị (không bắt buộc)</Text>
+                  <TextInput
+                    value={name}
+                    onChangeText={setName}
+                    placeholder="Tên hiện trên bảng xếp hạng"
+                    placeholderTextColor={color.subtle}
+                    autoComplete="name"
+                    editable={available && busy === null}
+                    className="mt-1.5 rounded-card border border-borderStrong bg-surface px-3 py-2.5 font-sans text-body text-ink"
+                  />
+                </>
+              ) : null}
+
+              <Text className="mt-3 font-mid text-label text-muted">Email</Text>
               <TextInput
                 value={email}
                 onChangeText={setEmail}
@@ -213,20 +288,53 @@ export default function SignInScreen() {
                 editable={available && busy === null}
                 className="mt-1.5 rounded-card border border-borderStrong bg-surface px-3 py-2.5 font-sans text-body text-ink"
               />
+
+              <Text className="mt-3 font-mid text-label text-muted">Mật khẩu</Text>
+              <View className="mt-1.5 flex-row items-center rounded-card border border-borderStrong bg-surface">
+                <TextInput
+                  value={password}
+                  onChangeText={setPassword}
+                  placeholder={emailMode === 'signup' ? `Ít nhất ${MIN_PASSWORD} ký tự` : 'Mật khẩu của bạn'}
+                  placeholderTextColor={color.subtle}
+                  secureTextEntry={!showPassword}
+                  autoCapitalize="none"
+                  autoComplete={emailMode === 'signup' ? 'new-password' : 'current-password'}
+                  editable={available && busy === null}
+                  onSubmitEditing={() => void submitPassword()}
+                  className="flex-1 px-3 py-2.5 font-sans text-body text-ink"
+                />
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                  onPress={() => setShowPassword((v) => !v)}
+                  className="px-3 py-2"
+                >
+                  <Text className="font-semi text-label" style={{ color: color.primary }}>
+                    {showPassword ? 'Ẩn' : 'Hiện'}
+                  </Text>
+                </Pressable>
+              </View>
+
               <Button
                 className="mt-3"
-                label={emailByLink ? 'Gửi liên kết đăng nhập' : 'Gửi mã qua email'}
+                label={emailMode === 'signup' ? 'Tạo tài khoản' : 'Đăng nhập'}
                 iconRight="arrow-right"
                 fullWidth
                 loading={busy === 'email'}
                 disabled={!available || busy !== null}
-                onPress={startEmail}
+                onPress={() => void submitPassword()}
               />
               <Text className="mt-2 font-sans text-label text-muted">
-                {emailByLink
-                  ? 'Không cần mật khẩu — bạn sẽ nhận một liên kết dùng một lần.'
-                  : 'Không cần mật khẩu — mỗi lần đăng nhập là một mã dùng một lần.'}
+                {emailMode === 'signup'
+                  ? 'Tạo xong là vào học ngay — không cần mở Gmail xác nhận.'
+                  : 'Chưa có tài khoản? Chọn "Tạo tài khoản" ở trên.'}
               </Text>
+
+              <Pressable accessibilityRole="button" onPress={() => void startEmail()} disabled={!available || busy !== null} className="mt-3 self-start">
+                <Text className="font-semi text-label" style={{ color: color.primary }}>
+                  Quên mật khẩu / tài khoản cũ chưa có mật khẩu? Nhận liên kết qua email
+                </Text>
+              </Pressable>
             </View>
           )}
           </CrossFade>

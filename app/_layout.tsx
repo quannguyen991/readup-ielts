@@ -19,6 +19,7 @@ import {
 import { AppShell } from '@/components/layout/AppShell';
 import { GameFxLayer } from '@/components/game/GameFxLayer';
 import { PageTransition } from '@/components/motion/Motion';
+import { PageViewTracker } from '@/services/analytics/PageViewTracker';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
@@ -65,6 +66,7 @@ export default function RootLayout() {
       <QueryClientProvider client={queryClient}>
         <StatusBar style="dark" />
         <VercelAnalytics />
+        <PageViewTracker />
         <AppShell>
           <PageTransition routeKey={pathname}>
             <Slot />
