@@ -15,7 +15,7 @@ import {
 } from '@/lib/billing/entitlements';
 import {
   TRIAL_DAYS,
-  TRIAL_PLAN,
+  TRIAL_PLANS,
   type Feature,
   type PlanId,
   type Quota,
@@ -58,7 +58,8 @@ type BillingState = {
   consume: (quota: Quota, amount?: number) => void;
   usedOf: (quota: Quota) => number;
   /** Bật học thử `TRIAL_DAYS` ngày gói `TRIAL_PLAN`. */
-  startVipTrial: () => void;
+  /** Học thử `TRIAL_DAYS` ngày một gói trong `TRIAL_PLANS`; gói khác thì bỏ qua. */
+  startTrial: (plan: PlanId) => void;
   /** Chỉ dùng khi chưa có thanh toán, và luôn đánh dấu nguồn là `local`. */
   setPlanLocally: (plan: PlanId, expiresAt?: string | null) => void;
   applyServerPlan: (plan: PlanId, expiresAt: string | null) => void;
@@ -94,10 +95,12 @@ export const useBillingStore = create<BillingState>()(
         });
       },
 
-      startVipTrial: () => {
+      startTrial: (trialPlan) => {
+        if (!TRIAL_PLANS.includes(trialPlan)) return;
         const until = new Date();
         until.setDate(until.getDate() + TRIAL_DAYS);
-        set({ plan: TRIAL_PLAN, expiresAt: until.toISOString(), source: 'trial', proTrialUsed: true });
+        // Một cờ cho cả hai gói: đã thử Plus thì không thử Pro nữa, và ngược lại.
+        set({ plan: trialPlan, expiresAt: until.toISOString(), source: 'trial', proTrialUsed: true });
       },
 
       setPlanLocally: (plan, expiresAt = null) => set({ plan, expiresAt, source: 'local' }),

@@ -3,7 +3,7 @@ import {
   PLAN_ORDER,
   TRIAL_AI_PLAN,
   TRIAL_DAYS,
-  TRIAL_PLAN,
+  TRIAL_PLANS,
   formatVnd,
 } from '@/lib/billing/plans';
 import { BOOK_TOTALS } from '@/services/books/catalog';
@@ -95,7 +95,7 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
         blocks: [
           {
             kind: 'p',
-            text: `Mỗi tài khoản được học thử ${TRIAL_DAYS} ngày gói ${PLANS[TRIAL_PLAN].name}, một lần. Trong thời gian học thử, số lượt dùng AI vẫn theo gói ${PLANS[TRIAL_AI_PLAN].name} (${PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month} lượt mỗi tháng). Học thử không cần thẻ và không tự chuyển thành gói trả phí; hết hạn là về Free.`,
+            text: `Mỗi tài khoản được học thử ${TRIAL_DAYS} ngày một trong hai gói ${TRIAL_PLANS.map((id) => PLANS[id].name).join(' hoặc ')}, một lần. Trong thời gian học thử, số lượt dùng AI vẫn theo gói ${PLANS[TRIAL_AI_PLAN].name} (${PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month} lượt mỗi tháng). Học thử không cần thẻ và không tự chuyển thành gói trả phí; hết hạn là về Free.`,
           },
         ],
       },

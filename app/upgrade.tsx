@@ -14,8 +14,6 @@ import {
   PLANS,
   PLAN_ORDER,
   QUOTA_LABEL,
-  TRIAL_DAYS,
-  TRIAL_PLAN,
   formatVnd,
   yearlySavingPercent,
   type Feature,

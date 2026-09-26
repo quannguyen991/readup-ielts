@@ -175,6 +175,7 @@ function PickView({
     <TaskShell
       backHref="/sentence"
       backLabel="Quay lại Luyện câu"
+      variant="full"
       title="Chép chính tả theo video"
       subtitle="YouTube dictation"
       icon="play"
