@@ -2,15 +2,27 @@ import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 
 import { hasActiveSelection } from './useTextSelection';
-import { color, highlightColors, wordStatusColor, type HighlightColorKey } from '@/theme/tokens';
+import { highlightRanges, sentenceAround, sentenceBounds } from './passage-text';
+import { color, highlightColors, wordStatusColor } from '@/theme/tokens';
 import { lemmatize } from '@/services/dictionary/lookup';
 import type { Highlight } from '@/store/useReaderStore';
 import type { WordStatusKind } from '@/types/database';
 
+export { highlightRanges, sentenceAround, sentenceBounds, snapToWords } from './passage-text';
+
 /**
- * Khối bài đọc: đánh số đoạn, chạm vào từ để tra, giữ lâu để giải thích cả câu,
- * và tô sẵn những từ đã lưu ở bài trước.
+ * Khối bài đọc: chạm vào từ để tra, giữ lâu để giải thích cả câu, tô sẵn những
+ * từ đã lưu ở bài trước — và highlight.
+ *
+ * CHẠM LÀM GÌ TUỲ CÔNG CỤ ĐANG BẬT (`tool`), người dùng chốt 26/09/2026:
+ *   - 'read'      : chạm không làm gì, như đề thi thật. Mặc định.
+ *   - 'highlight' : chạm một từ = tô cả câu; chạm vào vệt đã tô = xoá vệt đó.
+ *                   (Kéo bôi để tô đúng một đoạn chữ thì màn cha lo, qua DOM.)
+ *   - 'vocab'     : chạm từ mới mở thẻ nghĩa; giữ lâu để giải thích cả câu.
+ * Bản cũ lúc nào chạm cũng mở thẻ dịch — đang làm đề mà lỡ tay là thẻ bật lên.
  */
+
+export type ReaderTool = 'read' | 'highlight' | 'vocab';
 
 export type PassageViewProps = {
   paragraphs: string[];
@@ -36,6 +48,12 @@ export type PassageViewProps = {
   /** Mặt chữ và màu chữ của bài — màn luyện Reading cho người học tự chọn. */
   fontFamily?: string;
   textColor?: string;
+  /** Công cụ đang bật; không truyền = 'vocab' (giữ hành vi cũ cho nơi khác dùng). */
+  tool?: ReaderTool;
+  /** Công cụ highlight: tô đoạn [start, end) của đoạn văn `paragraphIndex`. */
+  onHighlightRange?: (paragraphIndex: number, start: number, end: number) => void;
+  /** Công cụ highlight: chạm vào một vệt đã tô. */
+  onHighlightPress?: (highlightId: string) => void;
 };
 
 type Token = { text: string; isWord: boolean; start: number; end: number };
@@ -60,6 +78,9 @@ export function PassageView({
   translations = null,
   fontFamily,
   textColor,
+  tool = 'vocab',
+  onHighlightRange,
+  onHighlightPress,
 }: PassageViewProps) {
   return (
     <View className="gap-4" nativeID={PASSAGE_CONTAINER_ID}>
@@ -80,6 +101,9 @@ export function PassageView({
           translation={translations ? (translations[index] ?? '') : null}
           fontFamily={fontFamily}
           textColor={textColor}
+          tool={tool}
+          onHighlightRange={onHighlightRange}
+          onHighlightPress={onHighlightPress}
         />
       ))}
     </View>
@@ -101,7 +125,13 @@ function Paragraph({
   translation,
   fontFamily,
   textColor,
+  tool,
+  onHighlightRange,
+  onHighlightPress,
 }: {
+  tool: ReaderTool;
+  onHighlightRange?: PassageViewProps['onHighlightRange'];
+  onHighlightPress?: PassageViewProps['onHighlightPress'];
   fontFamily?: string;
   textColor?: string;
   index: number;
@@ -145,11 +175,38 @@ function Paragraph({
         className="font-sans text-body"
         style={{ fontSize, lineHeight, color: textColor ?? '#334155', ...(fontFamily ? { fontFamily } : null) }}
         selectable
+        {...({ dataSet: { para: String(index) } } as object)}
       >
         {tokens.map((token, tokenIndex) => {
-          if (!token.isWord) return <Text key={tokenIndex}>{token.text}</Text>;
-
           const highlightColor = ranges.find((r) => token.start >= r.start && token.end <= r.end);
+
+          // Dấu cách và dấu câu nằm GIỮA một vệt tô cũng phải tô, không thì vệt
+          // bị đứt thành từng ô chữ rời — lý do người dùng thấy highlight "không mượt".
+          if (!token.isWord) {
+            return (
+              <Text
+                key={tokenIndex}
+                // Ở chế độ highlight, chạm trúng dấu cách / dấu câu cũng tô (hoặc xoá) câu đó —
+                // khe giữa hai chữ nhỏ, chạm lệch một chút không được thành "không có gì xảy ra".
+                onPress={
+                  tool === 'highlight' && !phraseMode
+                    ? () => {
+                        if (hasActiveSelection()) return;
+                        if (highlightColor) onHighlightPress?.(highlightColor.id);
+                        else {
+                          const b = sentenceBounds(text, token.start);
+                          onHighlightRange?.(index, b.start, b.end);
+                        }
+                      }
+                    : undefined
+                }
+                style={highlightColor ? { backgroundColor: highlightColors[highlightColor.color].fill } : undefined}
+              >
+                {token.text}
+              </Text>
+            );
+          }
+
           const status = statusOf(lemmatize(token.text));
           const inPhrase = phraseMode && phraseAnchor !== null && tokenIndex >= phraseAnchor;
 
@@ -169,11 +226,28 @@ function Paragraph({
                 // cuối cùng. Không chặn thì thẻ tra MỘT từ đó sẽ đè lên nghĩa
                 // của cả cụm vừa bôi.
                 if (hasActiveSelection()) return;
-                if (phraseMode) onPhraseToken(index, tokenIndex, token.text);
-                else onWordPress(token.text, sentenceAround(text, token.start), index);
+                if (phraseMode) {
+                  onPhraseToken(index, tokenIndex, token.text);
+                  return;
+                }
+                if (tool === 'highlight') {
+                  if (highlightColor) onHighlightPress?.(highlightColor.id);
+                  else {
+                    const b = sentenceBounds(text, token.start);
+                    onHighlightRange?.(index, b.start, b.end);
+                  }
+                  return;
+                }
+                if (tool === 'vocab') onWordPress(token.text, sentenceAround(text, token.start), index);
               }}
-              onLongPress={() => onSentenceLongPress(sentenceAround(text, token.start), index)}
-              style={background ? { backgroundColor: background, borderRadius: 3 } : undefined}
+              onLongPress={tool === 'vocab' ? () => onSentenceLongPress(sentenceAround(text, token.start), index) : undefined}
+              style={
+                background
+                  ? { backgroundColor: background, borderRadius: highlightColor ? 0 : 3 }
+                  : tool === 'read'
+                    ? ({ cursor: 'text' } as object)
+                    : undefined
+              }
             >
               {token.text}
             </Text>
@@ -244,35 +318,4 @@ function tokenize(text: string): Token[] {
   }
 
   return tokens;
-}
-
-function highlightRanges(
-  text: string,
-  highlights: Highlight[],
-): Array<{ start: number; end: number; color: HighlightColorKey }> {
-  const ranges: Array<{ start: number; end: number; color: HighlightColorKey }> = [];
-
-  for (const highlight of highlights) {
-    const start = text.indexOf(highlight.text);
-    if (start === -1) continue;
-    ranges.push({ start, end: start + highlight.text.length, color: highlight.color });
-  }
-
-  return ranges;
-}
-
-/** Câu chứa vị trí ký tự đã cho — dùng làm ngữ cảnh khi tra từ. */
-export function sentenceAround(text: string, position: number): string {
-  const before = text.slice(0, position);
-  const after = text.slice(position);
-
-  const start = Math.max(
-    before.lastIndexOf('. '),
-    before.lastIndexOf('! '),
-    before.lastIndexOf('? '),
-  );
-  const endMatch = after.match(/[.!?](\s|$)/);
-  const end = endMatch?.index !== undefined ? position + endMatch.index + 1 : text.length;
-
-  return text.slice(start === -1 ? 0 : start + 2, end).trim();
 }

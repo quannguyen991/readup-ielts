@@ -11,6 +11,12 @@ export type Highlight = {
   articleId: string;
   paragraphIndex: number;
   text: string;
+  /**
+   * Vị trí ký tự đầu của vệt tô trong đoạn. Có thì tô đúng chỗ người học bôi,
+   * kể cả khi cùng cụm chữ xuất hiện hai lần trong đoạn; highlight cũ không có
+   * trường này thì lùi về lần xuất hiện đầu tiên.
+   */
+  start?: number;
   color: HighlightColorKey;
   note: string | null;
   evidenceForQuestionId: string | null;
