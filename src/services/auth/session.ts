@@ -156,6 +156,45 @@ export async function verifyPhoneOtp(e164: string, code: string): Promise<AuthRe
   }
 }
 
+// ------------------------------------------------------- email + mật khẩu
+
+/**
+ * Đăng nhập bằng email + mật khẩu (từ 26/09/2026 là lối chính cho email —
+ * người dùng bỏ bước gửi liên kết về Gmail).
+ */
+export async function signInWithPassword(email: string, password: string): Promise<AuthResult<Session | null>> {
+  if (!hasSupabaseConfig()) return fail(NOT_CONFIGURED);
+  try {
+    const { data, error } = await getSupabase().auth.signInWithPassword({ email: email.trim().toLowerCase(), password });
+    if (error) return fail(error);
+    return { ok: true, data: data.session ?? null };
+  } catch (error) {
+    return fail(error);
+  }
+}
+
+/**
+ * Tạo tài khoản qua `/api/auth/sign-up` (máy chủ tạo sẵn ở trạng thái đã xác
+ * nhận, không gửi thư) rồi đăng nhập luôn bằng chính mật khẩu vừa đặt.
+ */
+export async function signUpWithPassword(email: string, password: string, name?: string): Promise<AuthResult<Session | null> & { taken?: boolean }> {
+  if (!hasSupabaseConfig()) return fail(NOT_CONFIGURED);
+  try {
+    const res = await fetch('/api/auth/sign-up', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password, name }),
+    });
+    const body = (await res.json().catch(() => ({}))) as { error?: string; code?: string };
+    if (!res.ok) {
+      return { ok: false, error: { ...describeAuthError(body.error ?? 'sign_up_failed'), message: body.error ?? 'Chưa tạo được tài khoản.' }, taken: body.code === 'email_taken' };
+    }
+    return signInWithPassword(email, password);
+  } catch (error) {
+    return fail(error);
+  }
+}
+
 // ---------------------------------------------------------------- email (OTP)
 
 /**

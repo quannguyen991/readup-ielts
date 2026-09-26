@@ -10,6 +10,8 @@ import { PLANS, PLAN_ORDER, formatVnd, type PlanId } from '@/lib/billing/plans';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
 import { type UserActivity } from '@/services/admin/activity';
+import { BarChart } from '@/components/charts';
+import type { TrafficSummary } from '@/services/analytics/traffic';
 
 /**
  * Trang quản trị: xem người dùng và CẤP GÓI BẰNG TAY.
@@ -144,6 +146,10 @@ export default function AdminScreen() {
 
       <Appear index={1}>
         <StatsPanel token={token} />
+      </Appear>
+
+      <Appear index={1}>
+        <TrafficPanel token={token} />
       </Appear>
 
       <Appear index={1}>
@@ -983,5 +989,136 @@ function StatsPanel({ token }: { token: string | null }) {
         Người dùng chế độ Khách không đăng nhập nên không có trong các số này — lượt truy cập của họ xem ở Vercel → Analytics.
       </Text>
     </Card>
+  );
+}
+
+const DEVICE_LABEL: Record<string, string> = { mobile: '📱 Điện thoại', tablet: '📟 Máy tính bảng', desktop: '💻 Máy tính' };
+
+/**
+ * LƯỢT TRUY CẬP WEB — bộ đếm riêng của app (`/api/track` → bảng `page_views`),
+ * đếm cả người KHÔNG đăng nhập. Người dùng muốn xem ngay ở đây thay vì mở Vercel
+ * (26/09/2026). Số chia thiết bị / hệ điều hành / trình duyệt đếm theo NGƯỜI.
+ */
+function TrafficPanel({ token }: { token: string | null }) {
+  const [days, setDays] = useState<7 | 30>(7);
+  const [summary, setSummary] = useState<TrafficSummary | null>(null);
+  const [setupNeeded, setSetupNeeded] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!token) return;
+    let cancelled = false;
+    void (async () => {
+      try {
+        const res = await fetch(`/api/admin/traffic?days=${days}`, { headers: { Authorization: `Bearer ${token}` } });
+        const body = (await res.json()) as { summary?: TrafficSummary; setupNeeded?: boolean; error?: string };
+        if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+        if (cancelled) return;
+        setSetupNeeded(!!body.setupNeeded);
+        setSummary(body.summary ?? null);
+        setError(null);
+      } catch (err) {
+        if (!cancelled) setError(err instanceof Error ? err.message : 'Không tải được lượt truy cập.');
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [token, days]);
+
+  return (
+    <Card className="mt-4">
+      <View className="flex-row flex-wrap items-center justify-between gap-2">
+        <Text className="font-strong text-cardTitle text-ink">Lượt truy cập web</Text>
+        <View className="flex-row gap-2">
+          <TabPill label="7 ngày" active={days === 7} onPress={() => setDays(7)} small />
+          <TabPill label="30 ngày" active={days === 30} onPress={() => setDays(30)} small />
+        </View>
+      </View>
+
+      {error ? (
+        <Text className="mt-2 font-sans text-body" style={{ color: color.danger }}>
+          {error}
+        </Text>
+      ) : setupNeeded ? (
+        <View className="mt-3 gap-2 rounded-2xl bg-canvas p-4">
+          <Text className="font-strong text-body text-ink">Chưa tạo bảng đếm trên Supabase</Text>
+          <Text className="font-sans text-body text-muted">
+            Mở Supabase → SQL Editor, dán toàn bộ nội dung file supabase/migrations/20260926000100_page_views.sql rồi bấm Run.
+            Làm một lần; từ lúc đó app bắt đầu đếm (không có số liệu những ngày trước).
+          </Text>
+        </View>
+      ) : !summary ? (
+        <Text className="mt-2 font-sans text-body text-muted">Đang tải…</Text>
+      ) : (
+        <View>
+          <View className="mt-3 flex-row flex-wrap gap-3">
+            {(
+              [
+                [summary.visitors, 'người truy cập', `hôm nay ${summary.today.visitors}`],
+                [summary.views, 'lượt xem trang', `hôm nay ${summary.today.views}`],
+                [summary.sessions, 'lượt mở web', `${summary.signedInVisitors} người có đăng nhập`],
+              ] as [number, string, string][]
+            ).map(([value, label, sub]) => (
+              <View key={label} className="rounded-2xl bg-canvas px-4 py-3" style={{ minWidth: 170, flexGrow: 1 }}>
+                <Text className="font-heavy text-stat text-ink">{value.toLocaleString('vi-VN')}</Text>
+                <Text className="font-semi text-body text-ink">{label}</Text>
+                <Text className="mt-0.5 font-sans text-label text-muted">{sub}</Text>
+              </View>
+            ))}
+          </View>
+
+          <Text className="mt-4 font-semi text-label text-muted">NGƯỜI TRUY CẬP MỖI NGÀY (cột xanh) · LƯỢT XEM (cột cam)</Text>
+          <View className="mt-2">
+            <BarChart
+              height={170}
+              showSecondary
+              data={summary.daily.map((d) => ({ label: d.day.slice(8, 10) + '/' + d.day.slice(5, 7), value: d.visitors, secondary: d.views }))}
+            />
+          </View>
+
+          <View className="mt-4 flex-row flex-wrap gap-4">
+            <Split title="Thiết bị" rows={summary.devices.map(([k, n]) => [DEVICE_LABEL[k] ?? k, n])} total={summary.visitors} />
+            <Split title="Hệ điều hành" rows={summary.os} total={summary.visitors} />
+            <Split title="Trình duyệt / app mở link" rows={summary.browsers} total={summary.visitors} />
+            <Split title="Nguồn vào" rows={summary.referrers} total={summary.visitors} empty="Chưa có ai vào từ trang khác" />
+            <Split title="Nước" rows={summary.countries} total={summary.visitors} />
+            <Split title="Trang xem nhiều (lượt)" rows={summary.pages} total={summary.views} />
+          </View>
+          <Text className="mt-3 font-sans text-label text-muted">
+            Đếm ẩn danh: không IP, không email. Không đếm bot, bản chạy trên máy và chính trang quản trị.
+          </Text>
+        </View>
+      )}
+    </Card>
+  );
+}
+
+function Split({ title, rows, total, empty = 'Chưa có số liệu' }: { title: string; rows: [string, number][]; total: number; empty?: string }) {
+  return (
+    <View style={{ minWidth: 240, flexGrow: 1, flexBasis: 240 }}>
+      <Text className="font-strong text-body text-ink">{title}</Text>
+      {rows.length === 0 ? (
+        <Text className="mt-1 font-sans text-label text-muted">{empty}</Text>
+      ) : (
+        <View className="mt-1.5 gap-1.5">
+          {rows.map(([label, n]) => (
+            <View key={label}>
+              <View className="flex-row justify-between gap-2">
+                <Text className="flex-1 font-sans text-label text-ink" numberOfLines={1}>
+                  {label}
+                </Text>
+                <Text className="font-semi text-label text-muted">
+                  {n} · {total > 0 ? Math.round((n / total) * 100) : 0}%
+                </Text>
+              </View>
+              <View className="mt-0.5 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#EEF0F6' }}>
+                <View style={{ height: 6, width: '100%', backgroundColor: color.primary, transform: [{ scaleX: total > 0 ? Math.min(1, n / total) : 0 }], transformOrigin: 'left' }} />
+              </View>
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
   );
 }
