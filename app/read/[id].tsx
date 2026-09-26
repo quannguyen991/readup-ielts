@@ -6,7 +6,7 @@ import * as Speech from 'expo-speech';
 import { englishVoice } from '@/services/audio/voice';
 import * as WebBrowser from 'expo-web-browser';
 
-import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround } from '@/components/reader/PassageView';
+import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround, highlightRanges, snapToWords, type ReaderTool } from '@/components/reader/PassageView';
 import { QuestionPanel } from '@/components/reader/QuestionPanel';
 import { useTextSelection } from '@/components/reader/useTextSelection';
 import { WordSheet, type WordSheetTarget } from '@/components/reader/WordSheet';
@@ -89,6 +89,7 @@ export default function ReadScreen() {
   const setTtsRate = useReaderStore((s) => s.setTtsRate);
   const addHighlight = useReaderStore((s) => s.addHighlight);
   const clearHighlights = useReaderStore((s) => s.clearHighlights);
+  const removeHighlight = useReaderStore((s) => s.removeHighlight);
   const highlights = useReaderStore((s) => s.highlights);
   const addNote = useReaderStore((s) => s.addNote);
 
@@ -115,6 +116,11 @@ export default function ReadScreen() {
   const [chatOpen, setChatOpen] = useState(false);
   const [highlightColor, setHighlightColor] = useState<HighlightColorKey>('yellow');
   const [phraseMode, setPhraseMode] = useState(false);
+  /**
+   * Công cụ đang bật. Mặc định 'read': chạm vào bài không làm gì, như đề thật.
+   * Thẻ dịch chỉ bật ở 'vocab'; tô màu chỉ ở 'highlight' (người dùng chốt 26/09/2026).
+   */
+  const [tool, setTool] = useState<ReaderTool>('read');
   const [phraseAnchor, setPhraseAnchor] = useState<{
     paragraphIndex: number;
     tokenIndex: number;
@@ -208,6 +214,55 @@ export default function ReadScreen() {
     };
   }, [logStudyTime]);
 
+  /** Tô đoạn [start, end) của một đoạn văn: nới cho trọn từ, vệt mới thay vệt cũ chồng lên nó. */
+  function applyHighlight(paragraphIndex: number, rawStart: number, rawEnd: number) {
+    if (!article) return;
+    const text = article.paragraphs[paragraphIndex];
+    if (!text) return;
+    const { start, end } = snapToWords(text, rawStart, rawEnd);
+    if (end - start < 2) return;
+    const mine = articleHighlights.filter((h) => h.paragraphIndex === paragraphIndex);
+    for (const r of highlightRanges(text, mine)) {
+      if (r.start < end && start < r.end) removeHighlight(r.id);
+    }
+    addHighlight({
+      articleId: article.id,
+      paragraphIndex,
+      text: text.slice(start, end),
+      start,
+      color: highlightColor,
+      note: null,
+      evidenceForQuestionId: null,
+    });
+  }
+
+  /**
+   * Kéo bôi ở chế độ highlight: đọc vùng bôi của trình duyệt, quy ra vị trí ký
+   * tự trong TỪNG đoạn văn nó đi qua (bôi vắt hai đoạn thì tô cả hai), rồi xoá
+   * vùng bôi để vệt màu hiện ra ngay — không để lớp bôi xanh của trình duyệt che.
+   */
+  function highlightDomSelection() {
+    if (Platform.OS !== 'web' || typeof document === 'undefined' || !article) return;
+    const sel = window.getSelection();
+    if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return;
+    const range = sel.getRangeAt(0);
+    const paras = Array.from(document.querySelectorAll(`#${PASSAGE_CONTAINER_ID} [data-para]`)) as HTMLElement[];
+    for (const el of paras) {
+      if (!range.intersectsNode(el)) continue;
+      const index = Number(el.dataset.para);
+      const offsetOf = (node: Node, offset: number) => {
+        const r = document.createRange();
+        r.selectNodeContents(el);
+        r.setEnd(node, offset);
+        return r.toString().length;
+      };
+      const start = el.contains(range.startContainer) ? offsetOf(range.startContainer, range.startOffset) : 0;
+      const end = el.contains(range.endContainer) ? offsetOf(range.endContainer, range.endOffset) : (el.textContent ?? '').length;
+      applyHighlight(index, start, end);
+    }
+    sel.removeAllRanges();
+  }
+
   /**
    * Bôi đen bất kỳ chỗ nào trong bài → mở luôn thẻ nghĩa cho đúng cụm đó, kèm
    * nguyên câu chứa nó làm ngữ cảnh. Không phải bật chế độ gì trước.
@@ -215,8 +270,14 @@ export default function ReadScreen() {
    * Gọi ở đây, trước mấy nhánh return sớm bên dưới, vì hook không được nằm sau
    * điều kiện. `article` chưa nạp xong thì bỏ qua.
    */
-  useTextSelection(PASSAGE_CONTAINER_ID, (selected) => {
+  useTextSelection(
+    PASSAGE_CONTAINER_ID,
+    (selected) => {
     if (!article) return;
+    if (tool === 'highlight') {
+      highlightDomSelection();
+      return;
+    }
 
     const paragraphIndex = article.paragraphs.findIndex((p) => p.includes(selected));
     const paragraph = paragraphIndex === -1 ? undefined : article.paragraphs[paragraphIndex];
@@ -229,7 +290,9 @@ export default function ReadScreen() {
       paragraphIndex: paragraphIndex === -1 ? 0 : paragraphIndex,
       mode: selectionMode(selected),
     });
-  });
+    },
+    tool !== 'read',
+  );
 
   if (!meta) {
     return (
@@ -298,6 +361,15 @@ export default function ReadScreen() {
       onDone: () => setSpeakingParagraph(null),
       onStopped: () => setSpeakingParagraph(null),
     });
+  };
+
+  const pickTool = (next: ReaderTool) => {
+    setTool((cur) => (cur === next && next !== 'read' ? 'read' : next));
+    // Đổi công cụ thì bỏ dở việc chọn cụm — trừ khi đang khoanh bằng chứng cho một câu hỏi.
+    if (!evidenceFor) {
+      setPhraseMode(false);
+      setPhraseAnchor(null);
+    }
   };
 
   const handleWordPress = (word: string, sentence: string, paragraphIndex: number) => {
@@ -507,27 +579,47 @@ export default function ReadScreen() {
               }}
             />
           ) : null}
-          <ToolPill
-            label={phraseMode ? 'Đang chọn cụm…' : 'Chọn cụm'}
-            active={phraseMode}
-            onPress={() => {
-              setPhraseMode((p) => !p);
-              setPhraseAnchor(null);
-            }}
-          />
           <View className="mx-1 h-5 w-px" style={{ backgroundColor: theme.rule }} />
-          {(Object.keys(highlightColors) as HighlightColorKey[]).map((key) => (
-            <Pressable
-              key={key}
-              onPress={() => setHighlightColor(key)}
-              accessibilityLabel={`Bút ${highlightColors[key].label}`}
-              className="h-6 w-6 items-center justify-center rounded-pill"
-              style={{ borderWidth: 2, borderColor: highlightColor === key ? EXAM_ACCENT : 'transparent' }}
-            >
-              <View className="h-4 w-4 rounded-pill" style={{ backgroundColor: highlightColors[key].dot }} />
-            </Pressable>
-          ))}
+          <ToolPill label="Đọc" active={tool === 'read'} onPress={() => pickTool('read')} />
+          <ToolPill label="Highlight" active={tool === 'highlight'} onPress={() => pickTool('highlight')} />
+          <ToolPill label="Tra từ" active={tool === 'vocab'} onPress={() => pickTool('vocab')} />
+          {tool === 'highlight' ? (
+            <>
+              <View className="mx-1 h-5 w-px" style={{ backgroundColor: theme.rule }} />
+              {(Object.keys(highlightColors) as HighlightColorKey[]).map((key) => (
+                <Pressable
+                  key={key}
+                  accessibilityRole="button"
+                  onPress={() => setHighlightColor(key)}
+                  accessibilityLabel={`Bút ${highlightColors[key].label}`}
+                  aria-selected={highlightColor === key}
+                  className="h-6 w-6 items-center justify-center rounded-pill"
+                  style={{ borderWidth: 2, borderColor: highlightColor === key ? EXAM_ACCENT : 'transparent' }}
+                >
+                  <View className="h-4 w-4 rounded-pill" style={{ backgroundColor: highlightColors[key].dot }} />
+                </Pressable>
+              ))}
+              {articleHighlights.length > 0 ? <ToolPill label="Xoá hết highlight" onPress={() => clearHighlights(article.id)} /> : null}
+            </>
+          ) : null}
+          {tool === 'vocab' ? (
+            <ToolPill
+              label={phraseMode ? 'Đang chọn cụm…' : 'Chọn cụm'}
+              active={phraseMode}
+              onPress={() => {
+                setPhraseMode((p) => !p);
+                setPhraseAnchor(null);
+              }}
+            />
+          ) : null}
         </View>
+        <Text style={{ marginTop: 6, fontSize: 12, color: theme.muted }}>
+          {tool === 'highlight'
+            ? 'Kéo chuột bôi đoạn muốn tô · chạm một từ để tô cả câu · chạm vào vệt đã tô để xoá.'
+            : tool === 'vocab'
+              ? 'Chạm vào từ để xem nghĩa · bôi đen để tra cả cụm · giữ lâu để giải thích cả câu.'
+              : 'Đang ở chế độ đọc: chạm vào bài không mở gì. Bật Highlight hoặc Tra từ khi cần.'}
+        </Text>
 
         {bilingual.error ? (
           <Text className="mt-2 font-sans text-label" style={{ color: color.danger }}>
@@ -552,6 +644,9 @@ export default function ReadScreen() {
             phraseAnchor={phraseAnchor}
             onPhraseToken={handlePhraseToken}
             speakingParagraph={speakingParagraph}
+            tool={tool}
+            onHighlightRange={applyHighlight}
+            onHighlightPress={removeHighlight}
           />
         </View>
 
@@ -564,22 +659,6 @@ export default function ReadScreen() {
         {/* Công cụ phụ ở cuối bài */}
         <View className="mt-6 flex-row flex-wrap items-center gap-1.5 border-t pt-3" style={{ borderColor: theme.rule }}>
           <ToolPill
-            label="Highlight câu đang đọc"
-            onPress={() => {
-              const paragraphIndex = speakingParagraph ?? 0;
-              const paragraph = article.paragraphs[paragraphIndex];
-              if (!paragraph) return;
-              addHighlight({
-                articleId: article.id,
-                paragraphIndex,
-                text: sentenceAround(paragraph, 0),
-                color: highlightColor,
-                note: null,
-                evidenceForQuestionId: null,
-              });
-            }}
-          />
-          <ToolPill
             label="Ghi chú"
             onPress={() =>
               addNote({
@@ -590,7 +669,6 @@ export default function ReadScreen() {
               })
             }
           />
-          <ToolPill label="Xoá highlight" onPress={() => clearHighlights(article.id)} />
           <View className="flex-1" />
           <Text style={{ fontSize: 11, color: theme.muted, marginRight: 4 }}>Tốc độ đọc</Text>
           {[0.75, 1, 1.5, 2].map((rate) => (
