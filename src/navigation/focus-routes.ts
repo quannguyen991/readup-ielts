@@ -45,6 +45,8 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/vocabulary\/topic\/[^/]+$/,
   // Các màn học một bộ từ: Học, Nghe chép, Điền câu, Phát âm, Kiểm tra, Bóng bay.
   /^\/vocabulary\/topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)$/,
+  // Quiz ôn từ SAT (một chủ đề, một mức).
+  /^\/vocabulary\/sat-quiz\/[^/]+$/,
 
   // Thi thử SAT đầy đủ: 98 câu, hơn hai tiếng. Đây là màn tập trung nhất trong
   // cả app — mọi lối rẽ ngang đều là một cách bỏ dở bài thi.
@@ -62,7 +64,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
  * nền chàm kẻ ô như màn Đọc song ngữ — người dùng chọn nền này cho phần học từ
  * vựng (24/09/2026). AppShell vẽ nền, `StudyFrame` đổi chữ ngoài thẻ sang màu sáng.
  */
-const VOCAB_STUDY = /^\/vocabulary\/topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)$/;
+const VOCAB_STUDY = /^\/vocabulary\/(topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)|sat-quiz\/[^/]+)$/;
 
 /**
  * Màn KHÔNG bật "bôi đen là tra": màn làm đề (tra được là lộ đáp án) và màn đọc
@@ -76,6 +78,8 @@ const NO_LOOKUP: readonly RegExp[] = [
   /^\/weekly(\/|$)/,
   /^\/duel\/[^/]+$/,
   /^\/vocabulary\/topic\/[^/]+\/test$/,
+  // Quiz ôn từ SAT: tra được là lộ đáp án.
+  /^\/vocabulary\/sat-quiz\/[^/]+$/,
 ];
 
 export function isLookupBlocked(pathname: string): boolean {

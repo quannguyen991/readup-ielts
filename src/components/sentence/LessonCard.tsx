@@ -55,6 +55,8 @@ export function LessonCard({
   done,
   visual,
   onPress,
+  eyebrow,
+  secondary,
 }: {
   number: number;
   level: string;
@@ -67,6 +69,10 @@ export function LessonCard({
   done: number;
   visual: (tone: LessonTone, active: boolean) => React.ReactNode;
   onPress: () => void;
+  /** Nhãn nhỏ phía trên, mặc định "BÀI 01". */
+  eyebrow?: string;
+  /** Lối phụ ở góc dưới phải (ví dụ "Luyện từng phần"). */
+  secondary?: { label: string; onPress: () => void };
 }) {
   const tone = LEVEL_TONE[level] ?? SKY;
   const [hover, setHover] = useState(false);
@@ -84,7 +90,7 @@ export function LessonCard({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`Bài ${number}: ${title}`}
+      accessibilityLabel={`${eyebrow ?? `Bài ${number}`}: ${title}`}
       onPress={onPress}
       onHoverIn={() => setHover(true)}
       onHoverOut={() => setHover(false)}
@@ -97,7 +103,7 @@ export function LessonCard({
         </View>
         <View className="min-w-0 flex-1">
           <Text className="font-semi text-label text-muted" style={{ letterSpacing: 0.6, fontVariant: ['tabular-nums'] }}>
-            BÀI {String(number).padStart(2, '0')}
+            {eyebrow ?? `BÀI ${String(number).padStart(2, '0')}`}
           </Text>
           <Text className="font-heavy text-label" style={{ color: tone.ink }}>
             {levelLabel}
@@ -131,6 +137,23 @@ export function LessonCard({
             <Text className="font-mid text-label text-muted">{m.label}</Text>
           </View>
         ))}
+        {secondary ? (
+          <Pressable
+            accessibilityRole="button"
+            onPress={(e) => {
+              // Không để cú bấm lan lên thẻ, kẻo mở luôn lối chính.
+              (e as unknown as { stopPropagation?: () => void }).stopPropagation?.();
+              secondary.onPress();
+            }}
+            className="ml-auto flex-row items-center gap-1 rounded-pill px-2.5 py-1"
+            style={{ backgroundColor: tone.soft }}
+          >
+            <Text className="font-strong text-label" style={{ color: tone.ink }}>
+              {secondary.label}
+            </Text>
+            <Icon name="arrow-right" size={12} color={tone.ink} />
+          </Pressable>
+        ) : null}
       </View>
     </Pressable>
   );

@@ -101,6 +101,22 @@ export default function SatHubScreen() {
           <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2} />
         </Pressable>
       </Card>
+
+      <Card className="mt-4">
+        <Text className="font-strong text-cardTitle text-ink">Ôn từ vựng SAT theo chủ đề</Text>
+        <Text className="mt-1.5 font-sans text-body text-muted">
+          23 chủ đề (thuật ngữ đề Math, từ Words in Context, từ nối), mỗi chủ đề ba mức Dễ → Vừa → Khó: chọn nghĩa, khớp định
+          nghĩa, rồi điền từ vào câu.
+        </Text>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push('/vocabulary/sat-quiz' as never)}
+          className="mt-3 flex-row items-center gap-1.5 self-start rounded-panel bg-primary-600 px-4 py-2.5"
+        >
+          <Text className="font-semi text-body text-white">Ôn từ vựng SAT</Text>
+          <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2} />
+        </Pressable>
+      </Card>
     </Screen>
   );
 }

@@ -30,8 +30,15 @@ export function storage<T>(): PersistStorage<T> | undefined {
 
 export const STORAGE_PREFIX = 'readup:';
 
+/**
+ * Ngày theo giờ MÁY người dùng, không phải UTC. Bản cũ dùng `toISOString()` nên
+ * ở Việt Nam từ 00:00 tới 06:59 "hôm nay" vẫn là hôm qua, lệch với chuỗi ngày ở
+ * trang Hồ sơ/Xếp hạng (vốn tính theo giờ máy — `gamification/points.ts`).
+ */
 export function todayKey(date = new Date()): string {
-  return date.toISOString().slice(0, 10);
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${date.getFullYear()}-${m}-${d}`;
 }
 
 export function uid(): string {

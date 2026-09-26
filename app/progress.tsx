@@ -191,7 +191,9 @@ export default function ProgressScreen() {
 
             <ProgressBar value={Math.min(100, onTrack)} className="mt-2" />
             <Text className="mt-2 font-mid text-label text-muted">
-              {onTrack}% on track · band hiện tại {formatBand(currentBand)}
+              {currentBand == null
+                ? 'Chưa có bài chấm band nào — làm một bài đọc để có con số đầu tiên.'
+                : `${onTrack}% on track · band hiện tại ${formatBand(currentBand)}`}
             </Text>
           </View>
         }
@@ -223,10 +225,13 @@ export default function ProgressScreen() {
             value={formatBand(currentBand)}
             icon="trending"
             tone="primary"
+            // Chưa có band thì không gắn nhãn "Đang lên": không có gì để lên cả.
             status={
-              (currentBand ?? 0) >= 6.5
-                ? { label: 'Good', tone: 'success' }
-                : { label: 'Đang lên', tone: 'warning' }
+              currentBand == null
+                ? undefined
+                : currentBand >= 6.5
+                  ? { label: 'Good', tone: 'success' }
+                  : { label: 'Đang lên', tone: 'warning' }
             }
           />
           <StatCard
@@ -245,8 +250,8 @@ export default function ProgressScreen() {
           />
           <StatCard
             label="Accuracy"
-            value={`${accuracy}`}
-            unit="%"
+            value={inRange.length === 0 ? '—' : `${accuracy}`}
+            unit={inRange.length === 0 ? undefined : '%'}
             icon="target"
             tone="success"
             caption={`${inRange.length} lượt làm bài`}

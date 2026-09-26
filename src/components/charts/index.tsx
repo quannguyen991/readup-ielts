@@ -121,7 +121,9 @@ export function BarChart({
 }) {
   const [measured, setMeasured] = React.useState<number | null>(null);
 
-  if (data.length === 0) return <EmptyChart height={height} />;
+  // Bảy ngày toàn số 0 không phải là dữ liệu: vẽ bảy mẩu cột 2px trông như
+  // người học có làm chút ít, trong khi họ chưa làm gì. Hiện trạng thái trống.
+  if (data.length === 0 || data.every((d) => !d.value && !d.secondary)) return <EmptyChart height={height} />;
 
   if (width === undefined) {
     return (
