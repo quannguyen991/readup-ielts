@@ -12,10 +12,11 @@ import {
   unitsByDomain,
 } from './sat-rw-repository';
 
-test('kho có đủ 16 unit và 384 câu, id không trùng', () => {
+test('kho có đủ 16 unit và 384 + 240 câu, id không trùng', () => {
   assert.equal(SAT_RW_UNITS.length, 16);
-  assert.equal(SAT_RW_QUESTIONS.length, 384);
-  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.id)).size, 384, 'có id bị trùng');
+  assert.equal(SAT_RW_QUESTIONS.length, 624);
+  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.id)).size, 624, 'có id bị trùng');
+  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.passage)).size >= 600, true, 'đoạn văn trùng nhiều bất thường');
 });
 
 test('mỗi unit khai đúng số câu thật sự có trong kho', () => {
@@ -122,4 +123,22 @@ test('mọi kỹ năng xuất hiện trong kho đều có nhãn tiếng Việt',
 test('tra unit theo số trả về đúng unit, số lạ trả về undefined', () => {
   assert.equal(getSatRwUnit(1)?.unit, 1);
   assert.equal(getSatRwUnit(999), undefined);
+});
+
+test('câu từ nối: không phương án nhiễu nào cùng nhóm quan hệ với đáp án (thế vào vẫn đúng)', () => {
+  // Bộ sinh gốc từng bốc ngẫu nhiên trong "họ" từ nối, ra câu hai đáp án (sửa 26/09/2026).
+  const GROUP: Record<string, string> = {
+    'By contrast': 'contrast', However: 'contrast', Nevertheless: 'contrast', 'Even so': 'contrast', Still: 'contrast', Nonetheless: 'contrast',
+    'As a result': 'result', Consequently: 'result', Therefore: 'result', Thus: 'result', Hence: 'result', Accordingly: 'result',
+    'For example': 'example', 'For instance': 'example',
+    'That is': 'restate', 'In other words': 'restate',
+    'In addition': 'add', Moreover: 'add', Furthermore: 'add', Additionally: 'add', Likewise: 'add', Similarly: 'add',
+  };
+  for (const q of SAT_RW_QUESTIONS.filter((x) => x.skill === 'transition')) {
+    const key = GROUP[q.options[q.answerIndex]!];
+    if (!key) continue;
+    q.options.forEach((o, i) => {
+      if (i !== q.answerIndex) assert.notEqual(GROUP[o], key, `${q.id}: "${o}" cùng nhóm với đáp án "${q.options[q.answerIndex]}"`);
+    });
+  }
 });
