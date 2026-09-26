@@ -1,4 +1,4 @@
-import { SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
+import { SAT_RW_BASE_QUESTIONS } from '@/data/sat-rw-repository';
 import { hashString, mulberry32 } from '@/services/questions/rng';
 import { buildEvidenceItem, EVIDENCE_SLUGS } from '@/services/sat-rw/evidence/generate';
 import { allSynthesisItems } from '@/services/sat-rw/synthesis/generate';
@@ -72,7 +72,8 @@ export function rwPool(): MockItem[] {
   if (cached) return cached;
 
   const items: MockItem[] = [
-    ...SAT_RW_QUESTIONS.map(fromRepository),
+    // Chỉ kho gốc: đề đã gieo hạt phải giữ nguyên khi kho luyện tập lớn thêm.
+    ...SAT_RW_BASE_QUESTIONS.map(fromRepository),
     ...scanCandidates().map(buildVocabItem).map(fromVocab),
     ...allSynthesisItems().map(fromSynthesis),
   ];

@@ -1,4 +1,5 @@
 import seed from './seed/sat-rw/index.json';
+import generated2 from './seed/sat-rw/generated-2.json';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 
 /**
@@ -6,7 +7,7 @@ import type { MockItem } from '@/services/sat-rw/mock/item';
  *
  * NGUỒN: dự án `sat-rw-luyen-tap`. Unit 1–10 sinh từ luật ngữ pháp (ghép mảnh,
  * nhiễu tạo bằng cách phá đúng một luật đã biết), unit 11–16 soạn tay vì không
- * có luật nào tính được "ý chính của đoạn này là gì". Toàn bộ 384 câu đã qua
+ * có luật nào tính được "ý chính của đoạn này là gì". Toàn bộ 384 câu gốc đã qua
  * bộ kiểm của dự án ấy: bốn phương án phân biệt, đáp án hợp lệ, không trùng đề,
  * đáp án rải đều A/B/C/D.
  *
@@ -63,8 +64,28 @@ type Seed = { units: SatRwUnit[]; questions: SatRwQuestion[] };
 
 const data = seed as Seed;
 
-export const SAT_RW_UNITS: SatRwUnit[] = data.units;
-export const SAT_RW_QUESTIONS: SatRwQuestion[] = data.questions;
+/** 384 câu gốc — đề thi thử đầy đủ chỉ rút từ đây để đề đã gieo hạt không đổi. */
+export const SAT_RW_BASE_QUESTIONS: SatRwQuestion[] = data.questions;
+
+/**
+ * 240 câu sinh thêm (26/09/2026) cho unit 1–10 — Conventions và Transitions.
+ *
+ * Cùng bộ sinh bằng luật của `sat-rw-luyen-tap` (`export_app.py`), chạy trên một
+ * kho mảnh câu thứ hai (`bank2.py`) viết mới: kho gốc đã dùng gần hết cho 240 câu
+ * đầu, sinh lại chỉ ra câu trùng. Đáp án do luật tính; không trùng đoạn với kho
+ * gốc; đáp án rải đều 6/6/6/6 mỗi unit. Từ nối có thêm bảng khoá đúng theo từng
+ * cặp câu — bộ sinh gốc bốc ngẫu nhiên trong "họ" từ nối nên có câu khoá sai
+ * (đã sửa 15 câu trong kho gốc cùng ngày).
+ */
+export const SAT_RW_EXTRA_QUESTIONS: SatRwQuestion[] = (generated2 as { questions: SatRwQuestion[] }).questions;
+
+export const SAT_RW_QUESTIONS: SatRwQuestion[] = [...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS];
+
+/** Số câu mỗi unit đếm lại từ kho đã gộp, không lấy con số ghi sẵn trong seed. */
+export const SAT_RW_UNITS: SatRwUnit[] = data.units.map((u) => ({
+  ...u,
+  count: SAT_RW_QUESTIONS.filter((q) => q.unit === u.unit).length,
+}));
 
 /**
  * Bốn mảng của đề Digital SAT R&W, kèm tỷ trọng trong đề thật.

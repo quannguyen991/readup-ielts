@@ -3421,13 +3421,13 @@
    "passage": "Street lighting in the district was switched to a warmer, dimmer spectrum. ______, the number of moths recorded on summer nights roughly doubled.",
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
-    "Subsequently",
+    "For instance",
     "That is",
     "Consequently",
     "Nevertheless"
    ],
    "answerIndex": 2,
-   "solutionVi": "Quan hệ giữa hai câu là hệ quả — vế sau là kết quả của vế trước . Câu sau nói: the number of moths recorded on summer nights roughly doubled — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, tương phản, trình tự thời gian), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Đèn đường trong khu được đổi sang quang phổ ấm hơn và mờ hơn. Nhờ đó số bướm đêm ghi nhận được vào các đêm hè tăng gần gấp đôi."
+   "solutionVi": "Quan hệ giữa hai câu là hệ quả — vế sau là kết quả của vế trước . Câu sau nói: the number of moths recorded on summer nights roughly doubled — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, diễn giải lại, tương phản), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Đèn đường trong khu được đổi sang quang phổ ấm hơn và mờ hơn. Nhờ đó số bướm đêm ghi nhận được vào các đêm hè tăng gần gấp đôi."
   },
   {
    "id": "satrw-u09-04",
@@ -3490,12 +3490,12 @@
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
     "For example",
-    "Even so",
-    "Meanwhile",
+    "By contrast",
+    "As a result",
     "In other words"
    ],
    "answerIndex": 1,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: the weathering steel used on this viaduct forms a protective rust layer and is left bare — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, diễn giải lại, trình tự thời gian), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cầu thép thường được sơn lại bảy tám năm một lần. Ngược lại, loại thép phong hoá dùng cho cầu cạn này tự tạo lớp gỉ bảo vệ nên được để trần."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: the weathering steel used on this viaduct forms a protective rust layer and is left bare — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, hệ quả, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cầu thép thường được sơn lại bảy tám năm một lần. Ngược lại, loại thép phong hoá dùng cho cầu cạn này tự tạo lớp gỉ bảo vệ nên được để trần."
   },
   {
    "id": "satrw-u09-08",
@@ -3523,13 +3523,13 @@
    "passage": "Written constitutions are usually amended by a formal vote. ______, the British one changes through ordinary legislation and long habit.",
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
-    "Nevertheless",
+    "By contrast",
     "For instance",
     "That is",
     "In addition"
    ],
    "answerIndex": 0,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: the British one changes through ordinary legislation and long habit — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, minh hoạ, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Hiến pháp thành văn thường được sửa bằng một cuộc bỏ phiếu chính thức. Trái lại, hiến pháp Anh thay đổi qua luật thường và qua tập quán lâu đời."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: the British one changes through ordinary legislation and long habit — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, diễn giải lại, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Hiến pháp thành văn thường được sửa bằng một cuộc bỏ phiếu chính thức. Trái lại, hiến pháp Anh thay đổi qua luật thường và qua tập quán lâu đời."
   },
   {
    "id": "satrw-u09-10",
@@ -3540,13 +3540,13 @@
    "passage": "Most volcanic islands sink slowly once eruptions stop. ______, coral growth can keep an atoll at the surface long after the island beneath has gone.",
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
-    "Meanwhile",
+    "For instance",
     "In addition",
-    "By contrast",
+    "However",
     "That is"
    ],
    "answerIndex": 2,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: coral growth can keep an atoll at the surface long after the island beneath has gone — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (trình tự thời gian, bổ sung, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Phần lớn đảo núi lửa chìm dần khi ngừng phun trào. Ngược lại, san hô phát triển có thể giữ một rạn vòng ở mặt nước rất lâu sau khi hòn đảo bên dưới đã biến mất."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: coral growth can keep an atoll at the surface long after the island beneath has gone — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, bổ sung, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Phần lớn đảo núi lửa chìm dần khi ngừng phun trào. Tuy nhiên, san hô phát triển có thể giữ một rạn vòng ở mặt nước rất lâu sau khi hòn đảo bên dưới đã biến mất."
   },
   {
    "id": "satrw-u09-11",
@@ -3576,11 +3576,11 @@
    "options": [
     "That is",
     "In addition",
-    "By contrast",
+    "However",
     "For instance"
    ],
    "answerIndex": 2,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: installing them on older buildings remains expensive, because the roofs often need structural work first — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, minh hoạ, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Pin mặt trời đã rẻ đi rất nhiều trong thập niên qua. Tuy nhiên, lắp lên nhà cũ vẫn tốn kém, vì mái thường phải gia cố trước."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: installing them on older buildings remains expensive, because the roofs often need structural work first — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, bổ sung, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Pin mặt trời đã rẻ đi rất nhiều trong thập niên qua. Tuy nhiên, lắp lên nhà cũ vẫn tốn kém, vì mái thường phải gia cố trước."
   },
   {
    "id": "satrw-u09-13",
@@ -3594,10 +3594,10 @@
     "That is",
     "Consequently",
     "For example",
-    "Nevertheless"
+    "However"
    ],
    "answerIndex": 3,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: young cranes learn the way by following adults and get lost without them — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, hệ quả, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Di cư của chim thường được mô tả như một lộ trình di truyền. Trái lại, sếu non học đường bay bằng cách theo con trưởng thành và lạc nếu không có chúng."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: young cranes learn the way by following adults and get lost without them — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, hệ quả, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Di cư của chim thường được mô tả như một lộ trình di truyền. Tuy nhiên, sếu non học đường bay bằng cách theo con trưởng thành và lạc nếu không có chúng."
   },
   {
    "id": "satrw-u09-14",
@@ -3712,11 +3712,11 @@
    "options": [
     "As a result",
     "In addition",
-    "Meanwhile",
+    "For example",
     "In other words"
    ],
    "answerIndex": 0,
-   "solutionVi": "Quan hệ giữa hai câu là hệ quả — vế sau là kết quả của vế trước . Câu sau nói: property prices on the quieter side of the river rose by a third within two years — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (bổ sung, diễn giải lại, trình tự thời gian), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cây cầu mới rút hành trình giữa hai thị trấn từ chín mươi phút xuống mười hai. Kết quả là giá nhà bên bờ vắng hơn tăng một phần ba chỉ trong hai năm."
+   "solutionVi": "Quan hệ giữa hai câu là hệ quả — vế sau là kết quả của vế trước . Câu sau nói: property prices on the quieter side of the river rose by a third within two years — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (bổ sung, minh hoạ, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cây cầu mới rút hành trình giữa hai thị trấn từ chín mươi phút xuống mười hai. Kết quả là giá nhà bên bờ vắng hơn tăng một phần ba chỉ trong hai năm."
   },
   {
    "id": "satrw-u09-21",
@@ -3744,13 +3744,13 @@
    "passage": "Ancient Greek statues are remembered as plain white marble. ______, traces of pigment show that they were originally painted in strong colors.",
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
-    "By contrast",
+    "However",
     "For instance",
     "As a result",
     "In other words"
    ],
    "answerIndex": 0,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: traces of pigment show that they were originally painted in strong colors — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (hệ quả, minh hoạ, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Tượng Hy Lạp cổ được nhớ tới như đá cẩm thạch trắng trơn. Tuy nhiên, vết sắc tố cho thấy ban đầu chúng được sơn màu rất đậm."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: traces of pigment show that they were originally painted in strong colors — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, hệ quả, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Tượng Hy Lạp cổ được nhớ tới như đá cẩm thạch trắng trơn. Tuy nhiên, vết sắc tố cho thấy ban đầu chúng được sơn màu rất đậm."
   },
   {
    "id": "satrw-u09-23",
@@ -3778,13 +3778,13 @@
    "passage": "The manuscript was long attributed to a single anonymous scribe. ______, at least four different hands appear in the surviving pages.",
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
-    "Even so",
+    "However",
     "For instance",
     "Previously",
     "In addition"
    ],
    "answerIndex": 0,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: at least four different hands appear in the surviving pages — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (trình tự thời gian, minh hoạ, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Bản thảo từ lâu được cho là của một người chép ẩn danh duy nhất. Trái lại, có ít nhất bốn nét chữ khác nhau xuất hiện trong những trang còn lại."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: at least four different hands appear in the surviving pages — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, trình tự thời gian, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Bản thảo từ lâu được cho là của một người chép ẩn danh duy nhất. Tuy nhiên, có ít nhất bốn nét chữ khác nhau xuất hiện trong những trang còn lại."
   },
   {
    "id": "satrw-u10-01",
@@ -3899,11 +3899,11 @@
    "options": [
     "Moreover",
     "By contrast",
-    "Therefore",
+    "For instance",
     "In other words"
    ],
    "answerIndex": 3,
-   "solutionVi": "Quan hệ giữa hai câu là diễn giải lại — vế sau nói lại vế trước cho rõ hơn . Câu sau nói: it describes the language rather than ruling on it — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (bổ sung, tương phản, hệ quả), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cuốn từ điển ghi lại cách người ta thật sự viết, không phải cách người ta được bảo phải viết. Nói cách khác, nó mô tả ngôn ngữ chứ không phán xử ngôn ngữ."
+   "solutionVi": "Quan hệ giữa hai câu là diễn giải lại — vế sau nói lại vế trước cho rõ hơn . Câu sau nói: it describes the language rather than ruling on it — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (bổ sung, tương phản, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cuốn từ điển ghi lại cách người ta thật sự viết, không phải cách người ta được bảo phải viết. Nói cách khác, nó mô tả ngôn ngữ chứ không phán xử ngôn ngữ."
   },
   {
    "id": "satrw-u10-08",
@@ -4019,10 +4019,10 @@
     "Furthermore",
     "Therefore",
     "Subsequently",
-    "However"
+    "For example"
    ],
    "answerIndex": 2,
-   "solutionVi": "Quan hệ giữa hai câu là trình tự thời gian — vế sau xảy ra ở một thời điểm khác . Câu sau nói: it disappeared from the record for almost two centuries — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (bổ sung, tương phản, hệ quả), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Bản thảo được đóng lại năm 1712 và vào mục lục mùa xuân năm sau. Sau đó, nó biến mất khỏi hồ sơ suốt gần hai thế kỷ."
+   "solutionVi": "Quan hệ giữa hai câu là trình tự thời gian — vế sau xảy ra ở một thời điểm khác . Câu sau nói: it disappeared from the record for almost two centuries — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (bổ sung, hệ quả, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Bản thảo được đóng lại năm 1712 và vào mục lục mùa xuân năm sau. Sau đó, nó biến mất khỏi hồ sơ suốt gần hai thế kỷ."
   },
   {
    "id": "satrw-u10-15",
@@ -4035,11 +4035,11 @@
    "options": [
     "Meanwhile",
     "Moreover",
-    "Consequently",
+    "For example",
     "That is"
    ],
    "answerIndex": 3,
-   "solutionVi": "Quan hệ giữa hai câu là diễn giải lại — vế sau nói lại vế trước cho rõ hơn . Câu sau nói: what matters is that the river can move, not that the view stays the same — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (hệ quả, trình tự thời gian, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Công viên được quản lý theo tiến trình chứ không theo diện mạo. Nói cách khác, điều đáng kể là dòng sông được phép dịch chuyển, chứ không phải cảnh quan giữ nguyên."
+   "solutionVi": "Quan hệ giữa hai câu là diễn giải lại — vế sau nói lại vế trước cho rõ hơn . Câu sau nói: what matters is that the river can move, not that the view stays the same — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (trình tự thời gian, bổ sung, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Công viên được quản lý theo tiến trình chứ không theo diện mạo. Nói cách khác, điều đáng kể là dòng sông được phép dịch chuyển, chứ không phải cảnh quan giữ nguyên."
   },
   {
    "id": "satrw-u10-16",
@@ -4052,11 +4052,11 @@
    "options": [
     "Subsequently",
     "That is",
-    "Even so",
+    "Therefore",
     "For example"
    ],
-   "answerIndex": 2,
-   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: a cheap electrolytic process turned it into the metal used for drink cans — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (minh hoạ, diễn giải lại, trình tự thời gian), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Nhôm từng có giá hơn vàng. Vậy mà một quy trình điện phân rẻ tiền đã biến nó thành thứ kim loại dùng làm lon nước."
+   "answerIndex": 0,
+   "solutionVi": "Quan hệ giữa hai câu là trình tự thời gian — vế sau xảy ra ở một thời điểm khác . Câu sau nói: a cheap electrolytic process turned it into the metal used for drink cans — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, hệ quả, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Nhôm từng có giá hơn vàng. Về sau, một quy trình điện phân rẻ tiền đã biến nó thành thứ kim loại dùng làm lon nước."
   },
   {
    "id": "satrw-u10-17",
@@ -4086,11 +4086,11 @@
    "options": [
     "In other words",
     "Consequently",
-    "Meanwhile",
-    "By contrast"
+    "However",
+    "For instance"
    ],
    "answerIndex": 2,
-   "solutionVi": "Quan hệ giữa hai câu là trình tự thời gian — vế sau xảy ra ở một thời điểm khác . Câu sau nói: no work began for another twenty-two years — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (hệ quả, tương phản, diễn giải lại), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Đường hầm đã được khảo sát và tính chi phí xong cuối năm 1889. Sau đó, suốt hai mươi hai năm nữa không có công việc nào bắt đầu."
+   "solutionVi": "Quan hệ giữa hai câu là tương phản — vế sau đi ngược điều vừa nói . Câu sau nói: no work began for another twenty-two years — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (diễn giải lại, hệ quả, minh hoạ), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Đường hầm đã được khảo sát và tính chi phí xong cuối năm 1889. Tuy vậy, suốt hai mươi hai năm sau vẫn chưa có công việc nào bắt đầu."
   },
   {
    "id": "satrw-u10-19",
@@ -4169,13 +4169,13 @@
    "passage": "The survey counted nests rather than adult birds. ______, it measured breeding pairs, not the total population.",
    "stem": "Which choice completes the text with the most logical transition?",
    "options": [
-    "Thus",
+    "Meanwhile",
     "In addition",
     "Even so",
     "In other words"
    ],
    "answerIndex": 3,
-   "solutionVi": "Quan hệ giữa hai câu là diễn giải lại — vế sau nói lại vế trước cho rõ hơn . Câu sau nói: it measured breeding pairs, not the total population — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (hệ quả, tương phản, bổ sung), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cuộc khảo sát đếm tổ chứ không đếm chim trưởng thành. Tức là nó đo số cặp sinh sản, không phải tổng quần thể."
+   "solutionVi": "Quan hệ giữa hai câu là diễn giải lại — vế sau nói lại vế trước cho rõ hơn . Câu sau nói: it measured breeding pairs, not the total population — đối chiếu với câu trước sẽ thấy ngay quan hệ ấy. Ba phương án còn lại thuộc ba nhóm quan hệ khác (trình tự thời gian, bổ sung, tương phản), nên đặt vào đây thì câu vẫn đọc trôi nhưng nối sai logic — và đó chính là điều đề kiểm tra. Nghĩa: Cuộc khảo sát đếm tổ chứ không đếm chim trưởng thành. Tức là nó đo số cặp sinh sản, không phải tổng quần thể."
   },
   {
    "id": "satrw-u10-24",
