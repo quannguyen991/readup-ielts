@@ -258,8 +258,12 @@ export function planRank(id: PlanId): number {
  * (đổi ngày 25/09/2026 theo lời người dùng: "thêm học thử 5 ngày, nhưng vẫn
  * giới hạn số lượt gọi AI").
  *
- * Mở NỘI DUNG của gói Pro (mọi bộ đề, mọi bài, trợ giảng, bài mẫu) nhưng lượt
- * AI vẫn giữ nguyên mức Free — `TRIAL_AI_PLAN`. Lý do: nội dung sinh bằng code
+ * NGƯỜI HỌC CHỌN GÓI THỬ: Plus HOẶC Pro, không có Max (26/09/2026: "cho dùng
+ * thử 5 ngày gói plus hoặc pro thôi"). Chọn một là hết lượt — không thử Plus
+ * xong rồi thử tiếp Pro.
+ *
+ * Mở NỘI DUNG của gói đã chọn nhưng lượt AI vẫn giữ nguyên mức Free —
+ * `TRIAL_AI_PLAN`. Lý do: nội dung sinh bằng code
  * gần như không tốn gì, còn mỗi lượt AI là tiền thật; cho 5 ngày × 120 lượt
  * Pro miễn phí là mời người ta tạo tài khoản mới liên tục để lấy AI.
  *
@@ -270,6 +274,9 @@ export function planRank(id: PlanId): number {
  * Mỗi tài khoản một lần (cờ `proTrialUsed`, giữ tên cũ để máy đã dùng thử Pro 7
  * ngày không được thử lại). Không cần thẻ, không tự gia hạn.
  */
+/** Các gói được học thử. */
+export const TRIAL_PLANS: readonly PlanId[] = ['plus', 'pro'];
+/** Gói gợi ý khi chỉ có chỗ cho một nút (Pro: gói ta muốn người học chọn). */
 export const TRIAL_PLAN: PlanId = 'pro';
 export const TRIAL_DAYS = 5;
 export const TRIAL_AI_PLAN: PlanId = 'free';

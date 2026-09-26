@@ -50,6 +50,7 @@ test('Điều khoản in đúng giá của mọi gói trả phí, lấy từ b�
     assert.ok(text.includes(formatVnd(plan.yearlyVnd)), `${id} năm`);
   }
   assert.ok(text.includes(`học thử ${TRIAL_DAYS} ngày`), 'số ngày học thử');
+  assert.ok(text.includes('Plus hoặc Pro'), 'hai gói được thử');
   assert.ok(text.includes(`${PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month} lượt`), 'lượt AI khi học thử');
   assert.ok(text.includes(`${BOOK_TOTALS.count} cuốn`), 'số sách');
 });

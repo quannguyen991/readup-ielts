@@ -23,6 +23,12 @@ export type TaskTone = 'brand' | 'paper';
  *      thật sự bị kẹt — vì thế nó là tham số bắt buộc, không phải tuỳ chọn.
  *   3. Giới hạn bề ngang nội dung, để dòng chữ không kéo dài hết màn 27 inch.
  *
+ * ĐẦU MÀN GỌN LÀ MẶC ĐỊNH (`variant="compact"`): một hàng mảnh — đường về, tên
+ * bài chữ nhỏ, phần bên phải. Đã vào làm bài thì ô biểu tượng to, tiêu đề cỡ
+ * trang và dòng phụ tiếng Anh ("LISTENING DICTATION PRACTICE") chỉ chiếm chỗ
+ * của bài — người dùng bắt bỏ ngày 26/09/2026. `variant="full"` chỉ dành cho
+ * màn CHỌN BÀI (danh sách), nơi tiêu đề còn giúp định hướng.
+ *
  * Hai tông: `brand` (nền xanh tím, thẻ giấy kem nổi lên — dùng cho màn có nhiều chữ
  * cần đọc kỹ) và `paper` (nền sáng, thẻ trắng — dùng cho màn thao tác nhiều,
  * nơi nền tối làm mỏi mắt khi nhìn lâu vào ô nhập).
@@ -37,7 +43,10 @@ export function TaskShell({
   paperGrid = true,
   right,
   children,
+  variant = 'compact',
 }: {
+  /** 'full' = đầu màn có biểu tượng + tiêu đề lớn (màn chọn bài); 'compact' = một hàng mảnh (màn làm bài). */
+  variant?: 'full' | 'compact';
   backHref: string;
   backLabel: string;
   title: string;
@@ -60,6 +69,32 @@ export function TaskShell({
           className="w-full self-center px-4 pb-4 pt-3 lg:px-8"
           style={{ maxWidth: layout.contentMaxWidth }}
         >
+          {variant === 'compact' ? (
+            <View className="mb-4 flex-row flex-wrap items-center gap-x-3 gap-y-2">
+              <Link href={backHref as never} asChild>
+                <Pressable
+                  accessibilityRole="link"
+                  accessibilityLabel={backLabel}
+                  className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5"
+                  style={{ backgroundColor: onBrand ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.75)' }}
+                >
+                  <View style={{ transform: [{ rotate: '180deg' }] }}>
+                    <Icon name="arrow-right" size={14} color={onBrand ? color.white : paper.ink} strokeWidth={2.2} />
+                  </View>
+                  <Text className="font-semi text-label" style={{ color: onBrand ? color.white : paper.ink }}>
+                    Thoát
+                  </Text>
+                </Pressable>
+              </Link>
+              <Text className="min-w-0 flex-1 font-strong text-body" style={{ color: titleColor }} numberOfLines={1}>
+                {title}
+              </Text>
+              {right}
+            </View>
+          ) : null}
+
+          {variant === 'full' ? (
+          <>
           <Link href={backHref as never} asChild>
             <Pressable
               accessibilityRole="link"
@@ -99,6 +134,8 @@ export function TaskShell({
             </View>
             {right}
           </View>
+          </>
+          ) : null}
 
           {children}
         </View>

@@ -187,6 +187,7 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
     <TaskShell
       backHref="/sentence"
       backLabel="Quay lại Luyện câu"
+      variant="full"
       title="Dịch câu"
       subtitle="Vietnamese → English"
       icon="languages"

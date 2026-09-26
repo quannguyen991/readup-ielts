@@ -310,15 +310,24 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
           <Stat icon="✅" value={mine.correct} label="câu đúng" />
           <Stat icon="📚" value={mine.vocab} label="lượt ôn từ" />
           <View className="flex-1" />
+          {/*
+            Số dư tách hẳn khỏi số HÔM NAY và ghi rõ là tích luỹ. Bản cũ in
+            "Đổi quà · 369 ⭐" ngay cạnh "5 sao" của hôm nay — hai con số khác
+            nghĩa đặt sát nhau, người dùng đọc thành số liệu sai (26/09/2026).
+          */}
+          <Text className="font-semi" style={{ fontSize: 12.5, color: '#78350F' }}>
+            Đang có <Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text> tích luỹ
+          </Text>
           <Pressable
             accessibilityRole="link"
+            accessibilityLabel={`Đổi quà — đang có ${formatStars(stars)} sao tích luỹ`}
             onPress={() => router.push('/shop' as never)}
             className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
             style={{ backgroundColor: GOLD_INK }}
           >
             <Icon name="gift" size={14} color="#FDE68A" strokeWidth={2.2} />
             <Text className="font-strong" style={{ fontSize: 13, color: '#FDE68A' }}>
-              Đổi quà · {formatStars(stars)} ⭐
+              Đổi quà
             </Text>
           </Pressable>
         </View>

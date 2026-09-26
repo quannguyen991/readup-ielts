@@ -22,6 +22,7 @@ import {
   TRIAL_AI_PLAN,
   TRIAL_DAYS,
   TRIAL_PLAN,
+  TRIAL_PLANS,
   formatVnd,
   planOf,
   planRank,
@@ -358,6 +359,10 @@ test('gói dùng thử là một gói có thật và không phải gói đắt n
 
 test('học thử 5 ngày: mở nội dung gói thử, nhưng lượt AI vẫn là mức Free', () => {
   assert.equal(TRIAL_DAYS, 5);
+  // Chỉ Plus hoặc Pro — không thử Max, không "thử" Free.
+  assert.deepEqual([...TRIAL_PLANS], ['plus', 'pro']);
+  assert.ok(TRIAL_PLANS.includes(TRIAL_PLAN));
+  for (const id of TRIAL_PLANS) assert.equal(quotaPlan(id, 'ai_calls_per_month', true), 'free');
   assert.equal(TRIAL_AI_PLAN, 'free');
   // Đang học thử: AI theo Free, mọi hạn mức khác theo gói thử.
   assert.equal(quotaPlan(TRIAL_PLAN, 'ai_calls_per_month', true), 'free');

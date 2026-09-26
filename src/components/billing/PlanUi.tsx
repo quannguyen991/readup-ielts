@@ -7,7 +7,7 @@ import {
   PLANS,
   TRIAL_AI_PLAN,
   TRIAL_DAYS,
-  TRIAL_PLAN,
+  TRIAL_PLANS,
   formatVnd,
   planOf,
   type Feature,
@@ -59,7 +59,8 @@ export const TRIAL_AI_CALLS = PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month ?? 
 /**
  * Thẻ HỌC THỬ 5 NGÀY.
  *
- * Nói rõ ba thứ ngay trên thẻ: mở gì (toàn bộ nội dung gói Pro), GIỮ NGUYÊN gì
+ * Người học CHỌN thử Plus hoặc Pro (một lượt cho cả hai).
+ * Nói rõ ba thứ ngay trên thẻ: mở gì (nội dung của gói đã chọn), GIỮ NGUYÊN gì
  * (lượt AI vẫn là mức Free), và hết hạn thì sao (về Free, dữ liệu còn nguyên).
  * Giấu chuyện AI bị giới hạn đến lúc bấm chấm bài mới lộ ra là kiểu gài khiến
  * người ta thấy bị lừa, dù hạn mức đó hoàn toàn hợp lý.
@@ -68,8 +69,8 @@ export const TRIAL_AI_CALLS = PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month ?? 
  */
 export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   const status = usePlanStatus();
-  const start = useBillingStore((s) => s.startVipTrial);
-  const tone = PLAN_TONE[TRIAL_PLAN];
+  const start = useBillingStore((s) => s.startTrial);
+  const tone = PLAN_TONE[status.onTrial ? status.plan : 'pro'];
 
   if (status.onTrial) {
     return (
@@ -80,7 +81,7 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
         <Icon name="clock" size={18} color={tone.solid} />
         <Text className="flex-1 font-sans text-body text-ink" style={{ minWidth: 200 }}>
           <Text className="font-strong" style={{ color: tone.ink }}>
-            Đang học thử {PLANS[TRIAL_PLAN].name} · còn {status.daysLeft ?? 0} ngày.
+            Đang học thử {PLANS[status.plan].name} · còn {status.daysLeft ?? 0} ngày.
           </Text>{' '}
           Mở hết nội dung; lượt AI vẫn {TRIAL_AI_CALLS} lượt mỗi tháng như gói Free.
         </Text>
@@ -109,24 +110,34 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
         </View>
         <View className="flex-1" style={{ minWidth: 220 }}>
           <Text className="font-strong text-cardTitle text-white">
-            Học thử {TRIAL_DAYS} ngày, mở hết nội dung
+            Học thử {TRIAL_DAYS} ngày gói Plus hoặc Pro
           </Text>
           <Text className="mt-1 font-sans text-label" style={{ color: 'rgba(255,255,255,0.82)' }}>
-            Mọi bộ đề, bài học, bài mẫu của gói {PLANS[TRIAL_PLAN].name}. Lượt AI vẫn giữ{' '}
-            {TRIAL_AI_CALLS} lượt/tháng như gói Free. Không cần thẻ, hết hạn tự về Free, dữ liệu
-            học giữ nguyên.
+            Chọn một gói, một lượt cho mỗi tài khoản. Lượt AI vẫn giữ {TRIAL_AI_CALLS} lượt/tháng
+            như gói Free. Không cần thẻ, hết hạn tự về Free, dữ liệu học giữ nguyên.
           </Text>
         </View>
-        <Pressable
-          accessibilityRole="button"
-          onPress={start}
-          className="flex-row items-center gap-2 rounded-pill bg-white px-4 py-2.5"
-        >
-          <Text className="font-strong text-label" style={{ color: tone.ink }}>
-            Bắt đầu học thử
-          </Text>
-          <Icon name="arrow-right" size={15} color={tone.ink} />
-        </Pressable>
+        <View className="gap-2" style={{ minWidth: 200 }}>
+          {TRIAL_PLANS.map((id) => (
+            <Pressable
+              key={id}
+              accessibilityRole="button"
+              accessibilityLabel={`Học thử gói ${PLANS[id].name} ${TRIAL_DAYS} ngày`}
+              onPress={() => start(id)}
+              className="flex-row items-center gap-2 rounded-2xl bg-white px-4 py-2"
+            >
+              <View className="flex-1">
+                <Text className="font-strong text-label" style={{ color: PLAN_TONE[id].ink }}>
+                  Thử {PLANS[id].name}
+                </Text>
+                <Text className="font-sans" style={{ fontSize: 11.5, color: '#475569' }} numberOfLines={1}>
+                  {PLANS[id].tagline}
+                </Text>
+              </View>
+              <Icon name="arrow-right" size={15} color={PLAN_TONE[id].ink} />
+            </Pressable>
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -151,9 +162,9 @@ export function FeaturePaywall({
   const plan = PLANS[required];
   const tone = PLAN_TONE[required];
   const status = usePlanStatus();
-  const startTrial = useBillingStore((s) => s.startVipTrial);
-  // Học thử mở được đúng tính năng này thì mời học thử trước khi mời trả tiền.
-  const trialOpens = status.canStartTrial && planOf(TRIAL_PLAN).features.includes(feature);
+  const startTrial = useBillingStore((s) => s.startTrial);
+  // Gói cần để mở tính năng này thử được (Plus/Pro) thì mời học thử đúng gói ấy trước khi mời trả tiền.
+  const trialOpens = status.canStartTrial && TRIAL_PLANS.includes(required);
 
   return (
     <Card>
@@ -193,10 +204,10 @@ export function FeaturePaywall({
           {trialOpens ? (
             <Button
               className="mt-2 self-start"
-              label={`Học thử ${TRIAL_DAYS} ngày miễn phí`}
+              label={`Học thử ${plan.name} ${TRIAL_DAYS} ngày miễn phí`}
               variant="outline"
               iconRight="sparkle"
-              onPress={startTrial}
+              onPress={() => startTrial(required)}
             />
           ) : null}
         </View>
