@@ -11,7 +11,7 @@ import { color } from '@/theme/tokens';
 /** Màu và biểu tượng từng kỹ năng — dùng chung ở trang Lộ trình và Tổng quan. */
 export const SKILL_TONE: Record<Skill | 'check', { tone: string; soft: string; icon: IconName }> = {
   vocab: { tone: '#10B981', soft: '#E7F8F1', icon: 'letters' },
-  reading: { tone: '#2563EB', soft: '#EAF1FF', icon: 'book' },
+  reading: { tone: '#5B8BEE', soft: '#EAF1FF', icon: 'book' },
   listening: { tone: '#0EA5E9', soft: '#E6F6FD', icon: 'volume' },
   writing: { tone: '#8B5CF6', soft: '#F1ECFF', icon: 'pencil' },
   math: { tone: '#6366F1', soft: '#EEEFFE', icon: 'grid' },

@@ -308,7 +308,7 @@ export default function ClozeScreen() {
 
           <Text className="mt-3 font-semi text-sectionTitle leading-9 text-ink">
             {q.before}
-            <Text className="font-strong" style={{ color: revealed ? (verdict ? '#15803D' : '#1D4ED8') : '#94A3B8' }}>
+            <Text className="font-strong" style={{ color: revealed ? (verdict ? '#15803D' : '#4A7FE8') : '#94A3B8' }}>
               {revealed ? q.answer : ' _______ '}
             </Text>
             {q.after}

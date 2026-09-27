@@ -66,7 +66,7 @@ const CATEGORY_HIGHLIGHT: Record<AnnotationCategory, { fill: string; edge: strin
   lexis: { fill: '#E8F8EE', edge: '#16A34A' },
   cohesion: { fill: '#E6F6FE', edge: '#0EA5E9' },
   expression: { fill: '#F5F1FE', edge: '#7C3AED' },
-  task: { fill: '#EFF5FF', edge: '#2563EB' },
+  task: { fill: '#EFF5FF', edge: '#5B8BEE' },
 };
 
 type Tab = 'essay' | 'review' | 'errors' | 'fixed' | 'model';

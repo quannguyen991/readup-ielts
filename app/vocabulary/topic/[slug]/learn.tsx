@@ -678,7 +678,7 @@ export default function LearnScreen() {
                   {fill.before}
                   <Text
                     className="font-strong"
-                    style={{ color: revealed ? (verdict ? "#15803D" : "#1D4ED8") : "#94A3B8" }}
+                    style={{ color: revealed ? (verdict ? "#15803D" : "#4A7FE8") : "#94A3B8" }}
                   >
                     {revealed ? fill.answer : " _______ "}
                   </Text>

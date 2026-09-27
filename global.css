@@ -11,3 +11,16 @@
     background-color: #f7f8fc;
   }
 }
+
+/*
+ * Nút và khối tô màu chính: dải xanh nhạt giống mục đang chọn ở thanh bên
+ * (người dùng chọn 27/09/2026). Màu nền đặc vẫn là primary-600 cho bản native.
+ */
+@layer utilities {
+  .bg-primary-600,
+  .bg-primary-700,
+  .bg-brand,
+  .bg-brand-mid {
+    background-image: linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%);
+  }
+}

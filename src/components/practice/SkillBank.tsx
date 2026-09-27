@@ -232,7 +232,7 @@ export function SkillCard(p: SkillCardProps) {
         <Text className="font-sans text-[13px] text-muted">
           <Text className="font-semi text-ink">{p.answered}</Text> / {p.bank}
         </Text>
-        <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#1D4ED8' : color.primary }}>
+        <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#4A7FE8' : color.primary }}>
           <Text className="font-semi text-[14px] text-white">Luyện</Text>
         </View>
       </View>
