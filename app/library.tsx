@@ -379,7 +379,7 @@ export default function LibraryScreen() {
           <Button
             label="Ôn ngay"
             disabled={dueCount === 0}
-            onPress={() => router.push('/vocabulary?tab=review' as never)}
+            onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
           />
         </View>
       </Card>

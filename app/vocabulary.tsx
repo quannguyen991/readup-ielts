@@ -86,11 +86,11 @@ export default function VocabularyScreen() {
             onPress={() => setTab('list')}
           />
           <Button
-            label={`Ôn ngay (${dueCards.length})`}
-            variant={tab === 'review' ? 'primary' : 'outline'}
+            label={dueCards.length > 0 ? `Ôn ngay (${dueCards.length})` : 'Ôn tập'}
+            variant="outline"
             iconLeft="refresh"
-            disabled={dueCards.length === 0}
-            onPress={() => setTab('review')}
+            disabled={words.length === 0}
+            onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
           />
         </View>
       </LightHero>

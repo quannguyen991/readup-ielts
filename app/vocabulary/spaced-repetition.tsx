@@ -34,9 +34,6 @@ export default function SpacedRepetitionScreen() {
 
   const [search, setSearch] = useState('');
   const [filterMode, setFilterMode] = useState<'all' | 'due' | 'forgetful' | 'mastered'>('all');
-  const [isReviewing, setIsReviewing] = useState(false);
-  const [revealed, setRevealed] = useState(false);
-  const [reviewIndex, setReviewIndex] = useState(0);
 
   // Tự động đồng bộ các từ học ở bộ chủ đề vào sổ từ FSRS nếu chưa có
   useEffect(() => {
@@ -107,25 +104,6 @@ export default function SpacedRepetitionScreen() {
     return list.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   }, [entries, cards, lapses, dueEntries, search, filterMode]);
 
-  // Ôn tập
-  const reviewList = dueEntries.length > 0 ? dueEntries : Object.values(entries).slice(0, 20);
-  const currentWord = reviewList[reviewIndex];
-
-  const handleGrade = (rating: 1 | 2 | 3 | 4) => {
-    if (!currentWord) return;
-    gradeCard(currentWord.id, 'word_to_meaning', rating);
-    logWordsReviewed(1);
-    logStudyTime('review', 1);
-    setRevealed(false);
-
-    if (reviewIndex + 1 < reviewList.length) {
-      setReviewIndex((prev) => prev + 1);
-    } else {
-      setIsReviewing(false);
-      setReviewIndex(0);
-    }
-  };
-
   const maxLevel = Math.max(
     1,
     levels.unmemorized,
@@ -163,12 +141,8 @@ export default function SpacedRepetitionScreen() {
         <View className="flex-row items-center gap-2">
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Ôn tất cả"
-            onPress={() => {
-              setReviewIndex(0);
-              setRevealed(false);
-              setIsReviewing(true);
-            }}
+            accessibilityLabel="Ôn ngay với bộ thẻ"
+            onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
             style={{
               flexDirection: 'row',
               alignItems: 'center',
@@ -188,103 +162,6 @@ export default function SpacedRepetitionScreen() {
           </Pressable>
         </View>
       </View>
-
-      {/* Màn hình ôn tập FSRS nếu đang bật */}
-      {isReviewing && currentWord ? (
-        <Card className="mb-6 border-primary-200 bg-surface p-6 shadow-lg">
-          <View className="flex-row items-center justify-between border-b border-border pb-3">
-            <Badge label={`Ôn tập FSRS (${reviewIndex + 1}/${reviewList.length})`} tone="primary" />
-            <Pressable onPress={() => setIsReviewing(false)}>
-              <Text className="font-semi text-label text-muted">Đóng [✕]</Text>
-            </Pressable>
-          </View>
-
-          <View className="my-6 items-center">
-            <Text className="font-heavy text-pageTitle text-ink">{currentWord.word}</Text>
-            {currentWord.phonetic ? (
-              <Text className="mt-1 font-sans text-label text-muted">{currentWord.phonetic}</Text>
-            ) : null}
-
-            <Pressable
-              onPress={() =>
-                Speech.speak(currentWord.word, {
-                  language: 'en-US',
-                  rate: 0.9,
-                  voice: englishVoice(),
-                })
-              }
-              className="mt-3 flex-row items-center gap-1.5 rounded-full bg-surfaceAlt px-3 py-1.5"
-            >
-              <Icon name="volume" size={14} color="#64748B" />
-              <Text style={{ fontSize: 12, color: '#64748B', fontWeight: '500' }}>Nghe phát âm</Text>
-            </Pressable>
-
-            {revealed ? (
-              <View className="mt-6 w-full rounded-2xl bg-surfaceAlt p-4">
-                <Text className="font-strong text-sectionTitle text-primary-700">
-                  {currentWord.definitionVi ?? '—'}
-                </Text>
-                {currentWord.definitionGeneral ? (
-                  <Text className="mt-1 font-sans text-body text-body">
-                    {currentWord.definitionGeneral}
-                  </Text>
-                ) : null}
-                {currentWord.exampleSentence ? (
-                  <Text className="mt-2 font-sans text-label italic text-muted">
-                    “{currentWord.exampleSentence}”
-                  </Text>
-                ) : null}
-              </View>
-            ) : (
-              <View className="mt-8 w-full max-w-xs">
-                <Button
-                  label="Lật xem nghĩa"
-                  variant="primary"
-                  onPress={() => setRevealed(true)}
-                />
-              </View>
-            )}
-          </View>
-
-          {revealed ? (
-            <View className="border-t border-border pt-4">
-              <Text className="mb-3 text-center font-semi text-label text-muted">
-                Bạn nhớ từ này thế nào?
-              </Text>
-              <View className="flex-row gap-2">
-                <Pressable
-                  onPress={() => handleGrade(1)}
-                  style={{ flex: 1, backgroundColor: '#FEE2E2', borderRadius: 12, paddingVertical: 12, alignItems: 'center' }}
-                >
-                  <Text style={{ fontWeight: '700', color: '#DC2626', fontSize: 13 }}>Quên (1)</Text>
-                  <Text style={{ fontSize: 10, color: '#EF4444', marginTop: 2 }}>Ôn lại ngay</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => handleGrade(2)}
-                  style={{ flex: 1, backgroundColor: '#FEF3C7', borderRadius: 12, paddingVertical: 12, alignItems: 'center' }}
-                >
-                  <Text style={{ fontWeight: '700', color: '#D97706', fontSize: 13 }}>Khó (2)</Text>
-                  <Text style={{ fontSize: 10, color: '#F59E0B', marginTop: 2 }}>Sau 1-2 ngày</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => handleGrade(3)}
-                  style={{ flex: 1, backgroundColor: '#DBEAFE', borderRadius: 12, paddingVertical: 12, alignItems: 'center' }}
-                >
-                  <Text style={{ fontWeight: '700', color: '#2563EB', fontSize: 13 }}>Nhớ (3)</Text>
-                  <Text style={{ fontSize: 10, color: '#3B82F6', marginTop: 2 }}>Sau 3-4 ngày</Text>
-                </Pressable>
-                <Pressable
-                  onPress={() => handleGrade(4)}
-                  style={{ flex: 1, backgroundColor: '#DCFCE7', borderRadius: 12, paddingVertical: 12, alignItems: 'center' }}
-                >
-                  <Text style={{ fontWeight: '700', color: '#16A34A', fontSize: 13 }}>Dễ (4)</Text>
-                  <Text style={{ fontSize: 10, color: '#22C55E', marginTop: 2 }}>Sau 1 tuần</Text>
-                </Pressable>
-              </View>
-            </View>
-          ) : null}
-        </Card>
-      ) : null}
 
       {/* Hai khối: Mức độ nhớ & Dự báo ôn tập 7 ngày tới */}
       <View style={{ flexDirection: wide ? 'row' : 'column', gap: 16, marginBottom: 20 }}>
