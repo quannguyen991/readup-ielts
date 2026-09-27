@@ -13,6 +13,8 @@ import { analyseDraft } from '@/services/writing/analyzer';
 import { applyFixes, countApplicableFixes } from '@/services/writing/apply-fixes';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useWritingStore } from '@/store/useWritingStore';
+import { useRoadmapStore } from '@/store/useRoadmapStore';
+import { modelEssayBand } from '@/services/progress/goal';
 import { color, paper } from '@/theme/tokens';
 import type { AnnotationCategory, WritingAnnotation, WritingEvaluation } from '@/lib/writing/types';
 import { CrossFade } from '@/components/motion/Motion';
@@ -895,7 +897,10 @@ function FixedTab({ text, annotations }: { text: string; annotations: WritingAnn
  */
 function ModelEssayPanel({ promptId }: { promptId: string }) {
   const token = useAuthStore((s) => s.session?.access_token ?? null);
-  const TARGET = 7;
+  // Bài mẫu ở đúng mức người học nhắm tới (Lộ trình → hồ sơ), không cố định band 7.
+  const goalBand = useRoadmapStore((s) => s.input?.ielts?.target ?? null);
+  const profileBand = useAuthStore((s) => s.profile?.targetBand ?? null);
+  const TARGET = modelEssayBand(goalBand ?? profileBand);
   const essay = useWritingStore((s) => s.modelEssays[`${promptId}:${TARGET}`]);
   const saveModelEssay = useWritingStore((s) => s.saveModelEssay);
 
