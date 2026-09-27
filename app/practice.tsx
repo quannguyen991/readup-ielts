@@ -48,7 +48,7 @@ const SKILLS: RailSkill[] = [
     key: 'reading',
     label: 'Reading',
     icon: 'book',
-    tint: '#2563EB',
+    tint: '#5B8BEE',
     options: [
       {
         key: 'single',

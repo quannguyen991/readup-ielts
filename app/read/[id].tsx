@@ -871,7 +871,7 @@ export default function ReadScreen() {
               disabled={submitting || questions.length === 0}
               className="h-9 items-center justify-center rounded-md px-4"
               style={({ hovered }) => ({
-                backgroundColor: hovered ? '#1D4ED8' : EXAM_ACCENT,
+                backgroundColor: hovered ? '#4A7FE8' : EXAM_ACCENT,
                 opacity: questions.length === 0 ? 0.5 : 1,
               })}
             >
@@ -962,7 +962,7 @@ function formatTime(totalSeconds: number): string {
 */
 const EXAM_INK = '#1E293B';
 const EXAM_LINE = '#D7DEE8';
-const EXAM_ACCENT = '#2563EB';
+const EXAM_ACCENT = '#5B8BEE';
 
 const PAPER_THEMES = [
   { key: 'white', label: 'trắng', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA' },

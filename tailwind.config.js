@@ -17,17 +17,20 @@ module.exports = {
         muted: '#64748B',
         subtle: '#94A3B8',
         primary: {
-          DEFAULT: '#2563EB',
+          // 27/09/2026: người dùng bỏ xanh đậm #2563EB, lấy tông xanh nhạt của
+          // mục đang chọn ở thanh bên (#7FA3F6 → #4A7FE8). Nút web còn có dải
+          // chuyển màu ở global.css.
+          DEFAULT: '#5B8BEE',
           50: '#EFF5FF',
-          100: '#DBE7FE',
-          200: '#BFD4FE',
-          300: '#93B4FD',
-          400: '#608BFA',
-          500: '#3B6DF6',
-          600: '#2563EB',
-          700: '#1D4FD7',
-          800: '#1E40AF',
-          900: '#1E3A8A',
+          100: '#DFE9FE',
+          200: '#C6D8FD',
+          300: '#A5C0FA',
+          400: '#7FA3F6',
+          500: '#6A93F0',
+          600: '#5B8BEE',
+          700: '#4A7FE8',
+          800: '#3F6DD6',
+          900: '#345CC0',
         },
         accent: {
           DEFAULT: '#7C3AED',
@@ -44,10 +47,11 @@ module.exports = {
         },
         // Bảng "giấy kẻ ô" cho màn tác vụ — mirror src/theme/tokens.ts `paper`.
         brand: {
-          DEFAULT: '#3B3BBF',
-          dark: '#2F2FA0',
+          // 27/09/2026: chàm đậm đổi sang tông xanh nhạt của thanh bên (người dùng chọn).
+          DEFAULT: '#4A7FE8',
+          dark: '#3F6DD6',
           deep: '#1E1B6B',
-          mid: '#4F46E5',
+          mid: '#5B8BEE',
           soft: '#E1E2F6',
           tint: '#F2F3FD',
         },

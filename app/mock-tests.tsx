@@ -307,7 +307,7 @@ function MockTestCard({
  */
 function TestCover({ index }: { index: number }) {
   const tones = [
-    ['#93B4FD', '#2563EB'],
+    ['#93B4FD', '#5B8BEE'],
     ['#C4ADF8', '#7C3AED'],
     ['#6EE7A8', '#16A34A'],
     ['#FCD34D', '#D97706'],

@@ -169,7 +169,7 @@ export function LessonView({
   );
 }
 
-const RULE_TONES = ['#2563EB', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#0EA5E9'];
+const RULE_TONES = ['#5B8BEE', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#0EA5E9'];
 
 type RuleBlock = Extract<LessonBlock, { kind: 'rule' }>;
 type ExampleBlock = Extract<LessonBlock, { kind: 'example' }>;

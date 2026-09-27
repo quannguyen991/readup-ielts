@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Badge, Button, Card, Icon } from '@/components/ui';
@@ -29,7 +29,7 @@ import { color } from '@/theme/tokens';
 /** Màu đi lên theo bậc: xám → lam → tím → cam. Nhìn thứ tự là đoán được thứ hạng. */
 const PLAN_TONE: Record<PlanId, { solid: string; soft: string; ink: string }> = {
   free: { solid: '#64748B', soft: '#F1F4FB', ink: '#334155' },
-  plus: { solid: '#2563EB', soft: '#EFF5FF', ink: '#1D4FD7' },
+  plus: { solid: '#5B8BEE', soft: '#EFF5FF', ink: '#4A7FE8' },
   pro: { solid: '#A855F7', soft: '#F8EFFF', ink: '#7E22CE' },
   max: { solid: '#F97316', soft: '#FFF0E4', ink: '#C2410C' },
 };
@@ -94,7 +94,11 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   return (
     <View
       className={`${className} overflow-hidden rounded-card`}
-      style={{ backgroundColor: tone.ink }}
+      // Dải xanh nhạt cùng tông thanh bên (người dùng chọn 27/09/2026), thay khối tím đậm.
+      style={{
+        backgroundColor: '#5B8BEE',
+        ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)' } as object) : null),
+      }}
     >
       <View className="flex-row flex-wrap items-center gap-4 p-4 md:p-5">
         <View

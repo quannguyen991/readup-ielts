@@ -16,8 +16,8 @@ export const color = {
   muted: '#64748B',
   subtle: '#94A3B8',
 
-  primary: '#2563EB',
-  primaryDark: '#1D4FD7',
+  primary: '#5B8BEE',
+  primaryDark: '#4A7FE8',
   primarySoft: '#EFF5FF',
 
   accent: '#7C3AED',
@@ -49,12 +49,12 @@ export const color = {
  */
 export const paper = {
   /** Tông chàm giữa của nền loang — dùng khi cần MỘT màu đại diện, không gradient. */
-  brand: '#3B3BBF',
-  brandDark: '#2F2FA0',
+  brand: '#4A7FE8',
+  brandDark: '#3F6DD6',
   /** Chàm rất đậm — chip nổi bật, chữ nhấn trên nền sáng. */
   brandDeep: '#1E1B6B',
   /** Chàm vừa — nút chính, nút phát, viền ô chữ đang nhập. */
-  brandMid: '#4F46E5',
+  brandMid: '#5B8BEE',
   /** Nhạt — nền chip, viền mảnh trên nền giấy. */
   brandSoft: '#E1E2F6',
   brandTint: '#F2F3FD',
@@ -90,7 +90,7 @@ export const gradient = {
    */
   hero: ['#6A93F0', '#4F7FE6', '#3F6DD6'] as const,
   heroSoft: ['#EFF5FF', '#F5F1FE'] as const,
-  primaryButton: ['#2563EB', '#4F46E5'] as const,
+  primaryButton: ['#7FA3F6', '#4A7FE8'] as const,
 } as const;
 
 /** Màu highlight 5 tông cho công cụ bôi màu trong màn hình đọc (ảnh 2). */
@@ -186,7 +186,7 @@ export const layout = {
  * nhau giữa các lần tự gõ tay ở từng file.
  */
 export const stickerGradient = {
-  primary: ['#93B4FD', '#2563EB'],
+  primary: ['#A5C0FA', '#5B8BEE'],
   accent: ['#C4ADF8', '#7C3AED'],
   success: ['#6EE7A8', '#16A34A'],
   warning: ['#FCD34D', '#D97706'],

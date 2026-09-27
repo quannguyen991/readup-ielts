@@ -82,9 +82,9 @@ export const MATH_SET_KIND_STYLE: Record<MathSetKind, SetKindStyle> = {
   },
   practice: {
     label: 'Luyện kỹ',
-    solid: '#2563EB',
+    solid: '#5B8BEE',
     soft: '#EFF5FF',
-    ink: '#1D4FD7',
+    ink: '#4A7FE8',
     icon: 'pencil',
     purpose: 'Bộ chính của kỹ năng này. Làm chậm cũng được, miễn hiểu từng bước.',
   },
