@@ -84,9 +84,11 @@ export const gradient = {
   /**
    * Khối đầu trang tối (Lộ trình, Thanh toán, Mua chung, Mời bạn, Thi thử SAT…).
    * Từng là xanh dương → tím (#1D4FD7 → #7C3AED); người dùng "rất ghét màu xanh
-   * kiểu này" (27/09/2026) nên đổi sang đá than ấm — chữ trắng vẫn rõ.
+   * kiểu này" (27/09/2026). Thử đá than thì bị chê "màu đen lạc quẻ". Chốt dải
+   * xanh sáng cùng tông mục đang chọn ở thanh bên (ảnh người dùng đưa), chỉ
+   * đậm hơn chút để chữ trắng còn đọc được.
    */
-  hero: ['#1C1917', '#292524', '#44403C'] as const,
+  hero: ['#6A93F0', '#4F7FE6', '#3F6DD6'] as const,
   heroSoft: ['#EFF5FF', '#F5F1FE'] as const,
   primaryButton: ['#2563EB', '#4F46E5'] as const,
 } as const;
