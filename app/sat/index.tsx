@@ -43,7 +43,6 @@ export default function SatHubScreen() {
       subtitle: 'Một nửa số điểm',
       lines: [
         `${CURRICULUM_TOTALS.sets} bộ đề, đủ 19 kỹ năng Digital SAT`,
-        'Đáp án tính bằng code, không do AI đoán',
         'Thi thử hai module có điều hướng độ khó',
       ],
       badge: `${CURRICULUM_TOTALS.questions.toLocaleString('vi-VN')} CÂU`,
@@ -57,7 +56,6 @@ export default function SatHubScreen() {
       lines: [
         `${verbal.questions} câu, ${verbal.units} unit theo từng luật một`,
         `${mix.sets} đề trộn bốn mảng, giống module thi thu nhỏ`,
-        'Mỗi câu giải thích vì sao ba phương án kia sai',
       ],
       badge: `${verbal.questions} CÂU`,
       href: '/sat-rw',
@@ -66,17 +64,10 @@ export default function SatHubScreen() {
 
   return (
     <Screen>
-      <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-        <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
-          Digital SAT
-        </Text>
-      </View>
-
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">SAT</Text>
-      <Text className="mt-1.5 max-w-[640px] font-sans text-bodyLg text-muted">
-        Bài thi có hai phần, mỗi phần một nửa số điểm. Chọn nửa bạn muốn luyện — cả hai đều làm
-        được ngay, không cần thi thử trước.
+      <Text className="font-strong text-label uppercase tracking-[1.4px] text-ink" style={{ opacity: 0.55 }}>
+        Digital SAT
       </Text>
+      <Text className="mt-1 font-heavy text-pageTitle text-ink">Chọn phần muốn luyện</Text>
 
       <View className="mt-5">
         <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={16}>
@@ -89,8 +80,7 @@ export default function SatHubScreen() {
       <Card className="mt-5">
         <Text className="font-strong text-cardTitle text-ink">Chưa biết bắt đầu từ đâu?</Text>
         <Text className="mt-1.5 font-sans text-body text-muted">
-          Làm bài chẩn đoán 19 câu của phần Math trước. Nó không chấm điểm — nó vẽ bản đồ xem bạn
-          thủng chỗ nào trong 19 kỹ năng, rồi mới giao bài đúng chỗ đó.
+          19 câu Math, xem bạn hổng kỹ năng nào.
         </Text>
         <Pressable
           accessibilityRole="button"
@@ -105,8 +95,7 @@ export default function SatHubScreen() {
       <Card className="mt-4">
         <Text className="font-strong text-cardTitle text-ink">Ôn từ vựng SAT theo chủ đề</Text>
         <Text className="mt-1.5 font-sans text-body text-muted">
-          23 chủ đề (thuật ngữ đề Math, từ Words in Context, từ nối), mỗi chủ đề ba mức Dễ → Vừa → Khó: chọn nghĩa, khớp định
-          nghĩa, rồi điền từ vào câu.
+          23 chủ đề, ba mức Dễ → Vừa → Khó.
         </Text>
         <Pressable
           accessibilityRole="button"

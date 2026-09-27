@@ -42,22 +42,35 @@ export type NavGroup = {
  * Tên mục dùng tiếng Việt, TRỪ tên kỹ năng thi (Reading, Writing…) và tên kỳ
  * thi: đó là từ người luyện thi đọc trong mọi tài liệu.
  */
+/**
+ * TRANG CHỦ + SÁU MỤC LỚN (27/09/2026). Người dùng muốn thanh bên gọn như The IELTS
+ * Dictionary: ít biểu tượng, gộp thành các mục lớn, thu gọn được, mục đang học
+ * được tô thành khối kèm tên trang con. Trang con chỉ mở ra dưới mục đang học.
+ * Mọi đích đến cũ vẫn còn (xem MUST_STAY_REACHABLE trong test).
+ */
 export const NAV_GROUPS: NavGroup[] = [
   {
-    key: 'overview',
+    key: 'main',
     title: null,
     items: [
-      { key: 'home', label: 'Trang chủ', href: '/intro', icon: 'home', inBottomTabs: true },
-      { key: 'dashboard', label: 'Hôm nay', href: '/dashboard', icon: 'gauge', inBottomTabs: true },
-    ],
-  },
-  {
-    key: 'ielts',
-    title: 'IELTS',
-    items: [
+      // Trang chủ đứng đầu như bản cũ — app mở ra ở đây (app/index.tsx → /intro).
+      { key: 'home', label: 'Trang chủ', href: '/intro', icon: 'home' },
       {
-        key: 'reading',
-        label: 'Reading',
+        key: 'dashboard',
+        label: 'Hôm nay',
+        href: '/dashboard',
+        icon: 'gauge',
+        inBottomTabs: true,
+        children: [
+          { key: 'plan', label: 'Lộ trình của tôi', href: '/plan', icon: 'calendar' },
+          { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
+          { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },
+          { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
+        ],
+      },
+      {
+        key: 'ielts',
+        label: 'IELTS',
         href: '/practice',
         icon: 'book',
         inBottomTabs: true,
@@ -65,59 +78,37 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'mock-tests', label: 'Thi thử Reading', href: '/mock-tests', icon: 'clipboard' },
           { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
           { key: 'bilingual', label: 'Đọc báo song ngữ', href: '/bilingual', icon: 'languages' },
-        ],
-      },
-      { key: 'writing', label: 'Writing', href: '/write', icon: 'pencil', inBottomTabs: true },
-    ],
-  },
-  {
-    key: 'sat',
-    title: 'SAT',
-    items: [
-      {
-        key: 'math',
-        label: 'SAT Math',
-        href: '/math',
-        icon: 'grid',
-        inBottomTabs: true,
-        children: [
-          { key: 'math-learn', label: 'Bài học SAT Math', href: '/math/learn', icon: 'book' },
-          { key: 'sat-full-test', label: 'Thi thử SAT đầy đủ', href: '/sat/full-test', icon: 'clock' },
-        ],
-      },
-      {
-        key: 'sat-rw',
-        label: 'SAT Verbal',
-        href: '/sat-rw',
-        icon: 'letters',
-        children: [{ key: 'sat-rw-learn', label: 'Bài học SAT Verbal', href: '/sat-rw/learn', icon: 'book' }],
-      },
-    ],
-  },
-  {
-    key: 'skills',
-    title: 'Luyện thêm',
-    items: [
-      {
-        key: 'sentence',
-        label: 'Nghe & chép',
-        href: '/sentence',
-        icon: 'volume',
-        children: [
+          { key: 'writing', label: 'Writing', href: '/write', icon: 'pencil' },
+          { key: 'sentence', label: 'Nghe & chép', href: '/sentence', icon: 'volume' },
           { key: 'dictation-sets', label: 'Bộ đề chép chính tả', href: '/sentence/sets', icon: 'play' },
           { key: 'dictation-youtube', label: 'Chép theo video', href: '/sentence/youtube', icon: 'play' },
           { key: 'shadow', label: 'Đọc theo VOA', href: '/shadow', icon: 'mic' },
         ],
       },
       {
+        key: 'sat',
+        label: 'SAT',
+        href: '/sat',
+        icon: 'grid',
+        inBottomTabs: true,
+        children: [
+          { key: 'math', label: 'SAT Math', href: '/math', icon: 'grid' },
+          { key: 'math-learn', label: 'Bài học SAT Math', href: '/math/learn', icon: 'book' },
+          { key: 'sat-rw', label: 'SAT Verbal', href: '/sat-rw', icon: 'letters' },
+          { key: 'sat-rw-learn', label: 'Bài học SAT Verbal', href: '/sat-rw/learn', icon: 'book' },
+          { key: 'sat-full-test', label: 'Thi thử SAT đầy đủ', href: '/sat/full-test', icon: 'clock' },
+        ],
+      },
+      {
         key: 'vocabulary',
         label: 'Từ vựng',
-        href: '/vocabulary',
+        href: '/vocabulary/quiz',
         icon: 'letters',
+        inBottomTabs: true,
         children: [
-          { key: 'vocab-quiz', label: 'Quiz từ vựng', href: '/vocabulary/quiz', icon: 'target' },
+          { key: 'vocab-book', label: 'Sổ từ', href: '/vocabulary', icon: 'bookmark' },
+          { key: 'vocab-topics', label: 'Chủ đề IELTS', href: '/vocabulary/topics', icon: 'grid' },
           { key: 'vocab-sat-quiz', label: 'Ôn từ vựng SAT', href: '/vocabulary/sat-quiz', icon: 'trophy' },
-          { key: 'vocab-topics', label: 'Từ vựng chủ đề', href: '/vocabulary/topics', icon: 'grid' },
           { key: 'vocab-import', label: 'Học từ bài bạn thích', href: '/vocabulary/import', icon: 'plus' },
           { key: 'vocab-garden', label: 'Vườn từ', href: '/vocabulary/garden', icon: 'leaf' },
           { key: 'notes', label: 'Ghi chú', href: '/notes', icon: 'note' },
@@ -126,61 +117,32 @@ export const NAV_GROUPS: NavGroup[] = [
       },
       {
         key: 'quest',
-        label: 'ReadUp Quest',
+        label: 'Quest',
         shortLabel: 'Quest',
         href: '/quest',
         icon: 'sparkle',
+        inBottomTabs: true,
         children: [
           { key: 'quest-world', label: 'Bản đồ ReadUp', href: '/quest/world', icon: 'grid' },
           { key: 'quest-hero', label: 'Nhân vật & nhiệm vụ', href: '/quest/hero', icon: 'shield' },
-        ],
-      },
-    ],
-  },
-  {
-    key: 'track',
-    title: 'Theo dõi',
-    items: [
-      { key: 'plan', label: 'Lộ trình của tôi', href: '/plan', icon: 'calendar' },
-      {
-        key: 'progress',
-        label: 'Tiến độ',
-        href: '/progress',
-        icon: 'trending',
-        children: [
-          { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },
-          { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
-          // Đo CHÍNH BỘ ĐỀ chứ không đo người học — nhưng đề không đo được cái nó
-          // tự nhận đang đo thì mọi con số tiến độ bên trên đều rỗng.
-          { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
-          { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
-        ],
-      },
-      {
-        key: 'leaderboard',
-        label: 'Xếp hạng',
-        href: '/leaderboard',
-        icon: 'trophy',
-        children: [
+          { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
           { key: 'weekly', label: 'Đề của tuần', href: '/weekly', icon: 'trophy' },
           { key: 'duel', label: 'Đấu 1–1', href: '/duel', icon: 'target' },
           { key: 'shop', label: 'Đổi quà', href: '/shop', icon: 'gift' },
-          { key: 'profile', label: 'Hồ sơ của tôi', href: '/profile', icon: 'star' },
         ],
       },
-    ],
-  },
-  {
-    key: 'account',
-    title: null,
-    items: [
-      { key: 'invite', label: 'Mời bạn, học miễn phí', href: '/invite', icon: 'sparkle' },
       {
-        key: 'settings',
-        label: 'Cài đặt',
-        href: '/settings',
-        icon: 'settings',
-        children: [{ key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' }],
+        key: 'me',
+        label: 'Cá nhân',
+        href: '/profile',
+        icon: 'star',
+        children: [
+          { key: 'invite', label: 'Mời bạn, học miễn phí', href: '/invite', icon: 'sparkle' },
+          { key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' },
+          { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
+          { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
+          { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
+        ],
       },
     ],
   },

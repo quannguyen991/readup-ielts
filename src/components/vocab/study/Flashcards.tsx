@@ -9,6 +9,7 @@ import {
   seededRng,
   shuffled,
   type StudyWord,
+  type WordStage,
 } from "@/services/vocab/topic-study";
 import { color } from "@/theme/tokens";
 
@@ -27,12 +28,18 @@ export function Flashcards<W extends StudyWord>({
   onSave,
   starredWords,
   onStar,
+  onRate,
+  accent = color.primary,
 }: {
   words: W[];
   savedWords: Set<string>;
   onSave: (w: W) => void;
   starredWords: ReadonlySet<string>;
   onStar: (w: W) => void;
+  /** Tự chấm sau khi lật (Quên / Mơ hồ / Nhớ rồi) — ghi mức nhớ rồi sang thẻ sau. */
+  onRate?: (w: W, stage: WordStage) => void;
+  /** Màu của bộ, cho nút Lật thẻ. */
+  accent?: string;
 }) {
   const [order, setOrder] = useState<"original" | "shuffled">("original");
   const [seed, setSeed] = useState(1);
@@ -51,6 +58,10 @@ export function Flashcards<W extends StudyWord>({
   useHotkeys((e) => {
     const tag = (e.target as HTMLElement | null)?.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA") return;
+    if (onRate && flipped && (e.key === "1" || e.key === "2" || e.key === "3")) {
+      rate((Number(e.key) - 1) as WordStage);
+      return;
+    }
     if (e.key === "ArrowRight") go(1);
     else if (e.key === "ArrowLeft") go(-1);
     else if (e.key === " " || e.code === "Space" || e.key === "Enter") {
@@ -58,6 +69,12 @@ export function Flashcards<W extends StudyWord>({
       setFlipped((f) => !f);
     }
   });
+
+  function rate(stage: WordStage) {
+    if (!word || !onRate) return;
+    onRate(word, stage);
+    go(1);
+  }
 
   if (!word) return null;
   const saved = savedWords.has(word.word.toLowerCase());
@@ -80,6 +97,38 @@ export function Flashcards<W extends StudyWord>({
           onPress={() => onStar(word)}
         />
       </View>
+
+      {/* Kiểu The IELTS Dictionary: một nút Lật thẻ to, lật rồi thì tự chấm. */}
+      {onRate ? (
+        <View className="mt-4 flex-row gap-2">
+          {flipped ? (
+            RATINGS.map((r, i) => (
+              <Pressable
+                key={r.label}
+                accessibilityRole="button"
+                accessibilityLabel={`${r.label} (phím ${i + 1})`}
+                onPress={() => rate(r.stage)}
+                className="h-12 flex-1 items-center justify-center rounded-2xl"
+                style={{ backgroundColor: r.bg }}
+              >
+                <Text className="font-heavy text-body" style={{ color: r.ink }}>
+                  {r.label}
+                </Text>
+              </Pressable>
+            ))
+          ) : (
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => setFlipped(true)}
+              className="h-12 flex-1 flex-row items-center justify-center gap-2 rounded-2xl"
+              style={{ backgroundColor: accent }}
+            >
+              <Icon name="refresh" size={17} color="#FFFFFF" />
+              <Text className="font-heavy text-body text-white">Lật thẻ</Text>
+            </Pressable>
+          )}
+        </View>
+      ) : null}
 
       {/* Hàng điều khiển dưới thẻ. */}
       <View className="mt-4 flex-row items-center justify-between gap-2">
@@ -147,13 +196,19 @@ export function Flashcards<W extends StudyWord>({
       </View>
       <Text
         className="mt-3 text-center font-sans text-label"
-        style={{ color: "#1E293B" }}
+        style={{ color: "#78716C" }}
       >
-        Phím tắt: ← → chuyển thẻ · Space / Enter lật thẻ
+        {onRate ? "Space lật · 1 2 3 chấm · ← → chuyển thẻ" : "Space lật · ← → chuyển thẻ"}
       </Text>
     </View>
   );
 }
+
+const RATINGS: { label: string; stage: WordStage; bg: string; ink: string }[] = [
+  { label: "Quên", stage: 0, bg: "#FDE2DF", ink: "#B42318" },
+  { label: "Mơ hồ", stage: 1, bg: "#FDF0C8", ink: "#92400E" },
+  { label: "Nhớ rồi", stage: 2, bg: "#D9F2E3", ink: "#166534" },
+];
 
 function NavBtn({
   icon,

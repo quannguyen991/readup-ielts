@@ -84,6 +84,7 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
             <View className="gap-1">
               {group.items.map((item) => {
                 const open = activeParent === item.key;
+                const activeChild = item.children?.find((c) => c.key === activeKey);
                 return (
                   <View key={item.key}>
                     <NavRow
@@ -91,15 +92,11 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
                       active={activeKey === item.key}
                       parentOfActive={open}
                       collapsed={collapsed}
+                      subtitle={open && activeChild ? activeChild.label : undefined}
                     />
-                    {open && item.children?.length ? (
-                      <View
-                        className={
-                          collapsed
-                            ? "mt-1 gap-1"
-                            : "mb-1 ml-6 mt-1 gap-0.5 border-l border-border pl-3"
-                        }
-                      >
+                    {/* Thu gọn thì chỉ còn sáu biểu tượng lớn — không bày trang con. */}
+                    {open && !collapsed && item.children?.length ? (
+                      <View className="mb-2 ml-4 mt-1.5 gap-0.5">
                         {item.children.map((child) => (
                           <NavRow
                             key={child.key}
@@ -161,27 +158,33 @@ const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
  * Mục cha của trang đang mở cũng được tô (nhạt hơn), để người đang ở "Thi thử
  * SAT đầy đủ" vẫn thấy mình đang trong khu SAT Math.
  */
+/** Khối tô của mục lớn đang học — dải xanh sáng dần sang đậm, chữ trắng (người dùng chọn, 27/09/2026). */
+const ACTIVE_FILL = "#5B8BEE";
+const ACTIVE_GRADIENT = "linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)";
+const ACTIVE_INK = "#FFFFFF";
+
 function NavRow({
   item,
   active,
   parentOfActive = false,
   collapsed,
   child = false,
+  subtitle,
 }: {
   item: NavItem;
   active: boolean;
   parentOfActive?: boolean;
   collapsed: boolean;
   child?: boolean;
+  /** Tên trang con đang mở, in nhỏ dưới tên mục lớn. */
+  subtitle?: string;
 }) {
   const [hovered, setHovered] = useState(false);
-  const lit = active || (parentOfActive && !child);
-  const tint = active ? color.primary : lit ? color.primary : color.muted;
-  const bg = active
-    ? "bg-primary-50"
-    : hovered
-      ? "bg-surfaceAlt"
-      : "bg-transparent";
+  // Mục lớn: tô khối khi chính nó hoặc một trang con của nó đang mở.
+  const filled = !child && (active || parentOfActive);
+  const lit = filled || active;
+  const tint = filled ? ACTIVE_INK : active ? color.ink : color.muted;
+  const bg = filled ? "" : active ? "bg-surfaceAlt" : hovered ? "bg-surfaceAlt" : "bg-transparent";
 
   return (
     <View style={{ position: "relative" }}>
@@ -193,14 +196,24 @@ function NavRow({
           onHoverIn={() => setHovered(true)}
           onHoverOut={() => setHovered(false)}
           className={[
-            "flex-row items-center rounded-panel",
+            "flex-row items-center rounded-2xl",
             collapsed
               ? `justify-center ${child ? "h-10" : "h-12"}`
               : child
                 ? "gap-2.5 px-3 py-2"
-                : "gap-3 px-3 py-2.5",
+                : "gap-3 px-3 py-3",
             bg,
           ].join(" ")}
+          style={
+            filled
+              ? ({
+                  backgroundColor: ACTIVE_FILL,
+                  ...(Platform.OS === "web"
+                    ? { backgroundImage: ACTIVE_GRADIENT, boxShadow: "0 6px 16px rgba(74,127,232,0.32)" }
+                    : null),
+                } as object)
+              : undefined
+          }
         >
           <Icon
             name={item.icon}
@@ -209,13 +222,20 @@ function NavRow({
             strokeWidth={lit ? 2.1 : 1.8}
           />
           {collapsed ? null : (
-            <Text
-              numberOfLines={1}
-              className={`flex-1 ${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
-              style={{ color: lit ? color.primary : color.ink }}
-            >
-              {item.label}
-            </Text>
+            <View className="min-w-0 flex-1">
+              <Text
+                numberOfLines={1}
+                className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
+                style={{ color: filled ? ACTIVE_INK : child && !active ? color.muted : color.ink }}
+              >
+                {item.label}
+              </Text>
+              {subtitle ? (
+                <Text numberOfLines={1} className="font-semi text-[12px]" style={{ color: ACTIVE_INK, opacity: 0.85 }}>
+                  {subtitle}
+                </Text>
+              ) : null}
+            </View>
           )}
         </Pressable>
       </Link>

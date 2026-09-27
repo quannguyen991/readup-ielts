@@ -20,9 +20,9 @@ test('không trang nào mất lối vào sau khi gộp', () => {
   for (const href of MUST_STAY_REACHABLE) assert.ok(hrefs.has(href), `${href} không còn trong điều hướng`);
 });
 
-test('thanh bên đủ gọn để hiện đầy đủ tên: không quá 14 mục chính', () => {
+test('thanh bên gộp thành ít mục lớn: Trang chủ + không quá 6 mục chính', () => {
   const top = NAV_GROUPS.flatMap((g) => g.items).length;
-  assert.ok(top <= 14, `${top} mục chính`);
+  assert.ok(top <= 7, `${top} mục chính`);
 });
 
 test('khoá không trùng nhau', () => {
@@ -32,9 +32,11 @@ test('khoá không trùng nhau', () => {
 
 test('đang ở trang con thì mục cha được đánh dấu', () => {
   assert.equal(activeNavKey('/sat/full-test'), 'sat-full-test');
-  assert.equal(parentNavKey(activeNavKey('/sat/full-test')), 'math');
+  assert.equal(parentNavKey(activeNavKey('/sat/full-test')), 'sat');
   assert.equal(parentNavKey(activeNavKey('/vocabulary/topics')), 'vocabulary');
-  assert.equal(parentNavKey(activeNavKey('/math/drill/linear')), 'math');
-  assert.equal(parentNavKey(activeNavKey('/shop')), 'leaderboard');
-  assert.equal(parentNavKey(activeNavKey('/profile')), 'leaderboard');
+  assert.equal(parentNavKey(activeNavKey('/vocabulary/topic/education/learn')), 'vocabulary');
+  assert.equal(parentNavKey(activeNavKey('/math/drill/linear')), 'sat');
+  assert.equal(parentNavKey(activeNavKey('/sentence/dictation')), 'ielts');
+  assert.equal(parentNavKey(activeNavKey('/shop')), 'quest');
+  assert.equal(parentNavKey(activeNavKey('/profile')), 'me');
 });
