@@ -1,7 +1,11 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { ActivityIndicator, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
+import { anim, ensureGameKeyframes, MOVE } from '@/components/game/game-anim';
+import { PixelSprite } from '@/components/game/PixelSprite';
 import { Icon } from '@/components/ui';
+import { MASCOTS } from '@/services/game/mascots';
+import { mascotOf, useRewardStore } from '@/store/useRewardStore';
 import { color } from '@/theme/tokens';
 
 /**
@@ -11,9 +15,13 @@ import { color } from '@/theme/tokens';
  * quay lại việc đang làm. Mở thành một màn riêng là bắt người ta rời việc; để nó
  * chiếm nửa màn hình là biến một câu hỏi phụ thành trung tâm.
  *
- * KHÔNG HIỆN Ở MÀN LÀM BÀI. `AppShell` chỉ gắn nó ở những màn không thuộc chế độ
- * tập trung — giữa lúc đang tính giờ làm đề mà có một nút "hỏi AI" nhấp nháy
- * cạnh màn hình thì đó không còn là bài thi thử nữa.
+ * GHIM CỐ ĐỊNH Ở MỌI MÀN, kể cả màn làm bài (người dùng yêu cầu 27/09/2026 —
+ * màn chép chính tả trống trơn góc phải); chỉ ẩn lúc đang thi (`isExamRoute`).
+ * `position: fixed` trên web để cuộn trang nó vẫn đứng yên ở góc.
+ *
+ * LINH VẬT THAY BIỂU TƯỢNG: ai đã đổi và đang đeo linh vật (trang Đổi quà) thì
+ * chính con linh vật đứng ở góc làm nút trợ lý, nhún nhảy, và khung chat mang
+ * tên nó — phần thưởng đổi sao nhìn thấy được mỗi ngày chứ không nằm trong kho.
  */
 
 type Msg = { role: 'user' | 'assistant'; content: string };
@@ -21,8 +29,13 @@ type Msg = { role: 'user' | 'assistant'; content: string };
 const GREETING =
   'Hỏi mình về ngữ pháp, từ vựng, cách làm từng dạng câu, hay cách dùng app. Mình không xem được tài khoản hay bài viết của bạn.';
 
+const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
+
 export function AskBubble() {
   const [open, setOpen] = useState(false);
+  const petId = mascotOf(useRewardStore((s) => s.mascot));
+  const pet = petId ? MASCOTS[petId] : null;
+  React.useEffect(ensureGameKeyframes, []);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
@@ -77,15 +90,53 @@ export function AskBubble() {
   }, [busy, draft, messages]);
 
   if (!open) {
+    if (pet) {
+      return (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={`Hỏi ${pet.name}`}
+          onPress={() => setOpen(true)}
+          style={{ position: FIXED, right: 16, bottom: 14, zIndex: 60, alignItems: 'center' }}
+        >
+          {({ hovered }: { hovered?: boolean }) => (
+            <>
+              {hovered ? (
+                <View className="mb-1 rounded-pill bg-white px-3 py-1" style={{ ...(Platform.OS === 'web' ? ({ boxShadow: '0 6px 18px rgba(15,23,42,0.12)' } as object) : null) }}>
+                  <Text className="font-strong text-label text-ink">Hỏi {pet.name}</Text>
+                </View>
+              ) : null}
+              <View
+                style={{
+                  width: 66,
+                  height: 66,
+                  borderRadius: 33,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: '#FFFFFF',
+                  borderWidth: 3,
+                  borderColor: pet.color,
+                  ...(Platform.OS === 'web' ? ({ boxShadow: `0 10px 26px ${pet.color}55` } as object) : null),
+                }}
+              >
+                <View style={anim('rg-bob', 1300, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
+                  <PixelSprite name={pet.look} color={pet.color} size={46} />
+                </View>
+              </View>
+            </>
+          )}
+        </Pressable>
+      );
+    }
     return (
       <Pressable
         accessibilityRole="button"
         accessibilityLabel="Mở hỏi nhanh"
         onPress={() => setOpen(true)}
         style={{
-          position: 'absolute',
+          position: FIXED,
           right: 18,
           bottom: 18,
+          zIndex: 60,
           height: 52,
           width: 52,
           borderRadius: 26,
@@ -111,7 +162,8 @@ export function AskBubble() {
   return (
     <View
       style={{
-        position: 'absolute',
+        position: FIXED,
+        zIndex: 60,
         right: 18,
         bottom: 18,
         width: 340,
@@ -135,7 +187,7 @@ export function AskBubble() {
         className="flex-row items-center justify-between px-3 py-2.5"
         style={{ backgroundColor: color.primary }}
       >
-        <Text className="font-strong text-body text-white">Hỏi nhanh</Text>
+        <Text className="font-strong text-body text-white">{pet ? `Hỏi ${pet.name}` : 'Hỏi nhanh'}</Text>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel="Đóng hỏi nhanh"

@@ -28,7 +28,7 @@ import { findItem, type ShopItemKind } from '@/services/gamification/shop';
  * khớp số trong thẻ của họ. Một bộ luật, hai nơi chạy.
  */
 type StudyRow = { user_id: string; daily: Record<string, DayLog> | null };
-type LookRow = { user_id: string; avatar: string | null; cover: string | null; skin: string | null; frozen: unknown };
+type LookRow = { user_id: string; avatar: string | null; cover: string | null; effect: string | null; skin: string | null; frozen: unknown };
 type GameRow = { user_id: string; day: string | null; today: DayStatsLite | null };
 
 /** Chỉ trả mã món có thật trong danh mục, đúng loại — không chuyển chuỗi lạ từ máy người khác sang. */
@@ -45,7 +45,7 @@ export async function GET(): Promise<Response> {
       admin.from('user_state').select('user_id, daily:payload->daily').eq('store_key', 'study'),
       admin
         .from('user_state')
-        .select('user_id, avatar:payload->>avatar, cover:payload->>cover, skin:payload->>skin, frozen:payload->frozenDays')
+        .select('user_id, avatar:payload->>avatar, cover:payload->>cover, effect:payload->>effect, skin:payload->>skin, frozen:payload->frozenDays')
         .eq('store_key', 'reward'),
       // Chỉ hai trường của game: ngày của số liệu và số liệu hôm đó — không kéo cả túi đồ, huy hiệu.
       admin.from('user_state').select('user_id, day:payload->>day, today:payload->today').eq('store_key', 'game'),
@@ -109,6 +109,7 @@ export async function GET(): Promise<Response> {
       streak: s.streak,
       avatar: known(s.look?.avatar, ['avatar', 'avatarAnim']),
       cover: known(s.look?.cover, ['cover']),
+      effect: known(s.look?.effect, ['effect']),
       skin: known(s.look?.skin, ['skin']),
     }));
     const previous = prevTop.map((s) => ({ id: s.userId.slice(0, 8), name: nameOf(s.userId), points: s.previous }));

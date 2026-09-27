@@ -8,6 +8,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
+import { ProfileEffect } from '@/components/profile/ProfileEffect';
 import { Badge, Button, Card, Icon, ProgressBar, SectionHeader } from '@/components/ui';
 import { sfx } from '@/services/audio/sfx';
 import { demoLeaderboard } from '@/services/gamification/demo-board';
@@ -57,7 +58,7 @@ import { color } from '@/theme/tokens';
  * BẢNG XẾP HẠNG CẦN MÁY CHỦ. Chưa đăng nhập hoặc chưa nối được thì trang vẫn
  * đủ dùng: thẻ hạng, chuỗi ngày và lưới hoạt động đều tính trên máy.
  */
-type BoardRow = { id: string; name: string; points: number; streak: number; avatar?: string | null; cover?: string | null; skin?: string | null };
+type BoardRow = { id: string; name: string; points: number; streak: number; avatar?: string | null; cover?: string | null; effect?: string | null; skin?: string | null };
 type PastRow = { id: string; name: string; points: number };
 type GoldenRow = { id: string; name: string; stars: number; correct: number; vocab: number; avatar?: string | null; skin?: string | null };
 type BoardData = { board: BoardRow[]; previous: { month: string; board: PastRow[] } | null; golden: { day: string; board: GoldenRow[] } | null };
@@ -630,6 +631,8 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
                 borderColor: mine ? color.primary : PODIUM_RING[rank],
               }}
             >
+              {/* Hiệu ứng hồ sơ (kiểu Discord) của người trên bục phủ cả thẻ. */}
+              <ProfileEffect effect={findItem(row.effect)?.effect ?? null} intensity={0.7} />
               <ProfileCover cover={findItem(row.cover)?.cover ?? null} height={first ? 64 : 52} />
               <View style={{ alignItems: 'center', paddingHorizontal: 8, paddingBottom: 12, marginTop: first ? -34 : -28 }}>
                 <View style={{ borderRadius: 999, borderWidth: 3, borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>

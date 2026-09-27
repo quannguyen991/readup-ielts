@@ -1,56 +1,63 @@
 import React, { useEffect, useMemo } from 'react';
-import { View } from 'react-native';
+import { Platform, View, useWindowDimensions } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { playCorrectChime } from '@/services/audio/chime';
 import { hashString, mulberry32 } from '@/services/questions/rng';
 
-const COLORS = ['#F0B429', '#4C6122', '#7FB069', '#8FA9E8', '#E9A6C0', '#FBF6D0'];
+/**
+ * PHÁO GIẤY khi làm đúng cả câu.
+ *
+ * Bản cũ rơi lất phất 26 mảnh màu nhạt trong dải 340px đầu thẻ — người dùng
+ * thấy "cần hiện mạnh hơn, rõ hơn" (27/09/2026). Bản này phủ CẢ MÀN HÌNH:
+ *
+ *   - hai ống pháo bắn chéo lên từ hai góc dưới,
+ *   - một chùm nổ tỏa tròn ở giữa màn,
+ *   - mảnh giấy rơi theo trọng lực thật (x = x0 + vx·t, y = y0 + vy·t + ½g·t²),
+ *     lật như giấy (co giãn chiều dọc) nên lấp lánh chứ không trôi phẳng.
+ *
+ * Vẫn một shared value chung cho mọi mảnh, không dùng `entering=` (trên web làm
+ * trắng trang). Vị trí sinh từ RNG gieo hạt theo `seed` nên cùng một câu thì
+ * pháo bắn giống hệt nhau, React render lại không làm nó nhảy.
+ *
+ * Tắt chuyển động (prefers-reduced-motion) thì không bắn — chỉ còn tiếng chuông.
+ */
+const COLORS = ['#FF3B6B', '#FFB020', '#FFE14D', '#2EE6A6', '#28C3FF', '#7B61FF', '#FF6EE7', '#FFFFFF'];
+const DURATION = 3200;
+/** Giây mô phỏng ứng với toàn bộ thời gian chạy. */
+const T = 2.6;
 
 type Piece = {
-  left: number;
-  size: number;
+  x0: number;
+  y0: number;
+  vx: number;
+  vy: number;
+  w: number;
+  h: number;
+  round: boolean;
   color: string;
   delay: number;
-  drift: number;
   spin: number;
+  flutter: number;
 };
 
-/**
- * Mưa giấy màu khi làm đúng cả câu.
- *
- * Hiệu ứng chạy bằng MỘT shared value chung rồi mỗi mảnh tự suy ra vị trí của
- * nó, chứ không dùng `entering=` của Reanimated: trên bản web, `entering` làm
- * trắng cả trang. Một shared value cũng rẻ hơn 24 animation độc lập.
- *
- * Vị trí các mảnh sinh từ RNG gieo hạt theo `seed`, nên cùng một câu thì mưa
- * giấy rơi giống hệt nhau — không có gì nhảy loạn khi React render lại.
- *
- * CÓ CẢ TIẾNG, không chỉ có hình. Đây là khoảnh khắc "bạn làm đúng" duy nhất
- * của app, và nó nằm ở màn chép chính tả — nơi người học đang nhìn vào ô chữ
- * chứ không nhìn ra rìa màn hình, nên mưa giấy rơi ở mép rất dễ lọt qua mắt.
- * Một tiếng chuông thì không lọt được.
- *
- * Tiếng gắn ở ĐÂY chứ không ở từng màn: hai màn đang dùng, và mỗi màn tự viết
- * một `useEffect` "chỉ kêu khi vừa chuyển sang đúng" là hai chỗ để sai cùng một
- * kiểu. Chỗ nào không muốn tiếng thì truyền `silent`.
- */
+function reducedMotion(): boolean {
+  return Platform.OS === 'web' && typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+}
+
 export function Confetti({
   seed,
-  pieces = 26,
+  pieces = 120,
   silent = false,
 }: {
   seed: string;
   pieces?: number;
   silent?: boolean;
 }) {
+  const { width: W, height: H } = useWindowDimensions();
   const progress = useSharedValue(0);
+  const still = useMemo(() => reducedMotion(), []);
 
-  /*
-    Phụ thuộc `seed` chứ không phải mảng rỗng. Component này KHÔNG gắn lại khi
-    đổi câu — React thấy cùng một loại component ở cùng một chỗ nên chỉ cập
-    nhật. Để mảng rỗng thì tiếng chuông kêu đúng một lần trong cả buổi học.
-  */
   useEffect(() => {
     if (silent) return;
     playCorrectChime();
@@ -58,42 +65,109 @@ export function Confetti({
 
   const items = useMemo<Piece[]>(() => {
     const rng = mulberry32(hashString(seed));
-    return Array.from({ length: pieces }, () => ({
-      left: rng() * 100,
-      size: 5 + rng() * 6,
-      color: COLORS[Math.floor(rng() * COLORS.length)] ?? COLORS[0]!,
-      delay: rng() * 0.35,
-      drift: (rng() - 0.5) * 80,
-      spin: 240 + rng() * 480,
-    }));
-  }, [seed, pieces]);
+    const out: Piece[] = [];
+    for (let i = 0; i < pieces; i++) {
+      const group = i % 3; // 0: ống trái, 1: ống phải, 2: chùm giữa
+      const size = 7 + rng() * 9;
+      const round = rng() < 0.28;
+      let x0: number, y0: number, vx: number, vy: number;
+      if (group === 2) {
+        const a = rng() * Math.PI * 2;
+        const sp = H * (0.35 + rng() * 0.55);
+        x0 = W * 0.5;
+        y0 = H * 0.32;
+        vx = Math.cos(a) * sp;
+        vy = Math.sin(a) * sp - H * 0.25;
+      } else {
+        const left = group === 0;
+        const a = ((left ? -1 : 1) * (8 + rng() * 32) - 90) * (Math.PI / 180); // 58–82° so với phương ngang
+        const sp = H * (0.8 + rng() * 0.35);
+        x0 = left ? W * 0.02 : W * 0.98;
+        y0 = H * 1.02;
+        vx = Math.cos(a) * sp;
+        vy = Math.sin(a) * sp;
+      }
+      out.push({
+        x0,
+        y0,
+        vx,
+        vy,
+        w: round ? size * 0.9 : size,
+        h: round ? size * 0.9 : size * 1.7,
+        round,
+        color: COLORS[Math.floor(rng() * COLORS.length)]!,
+        delay: group === 2 ? 0.08 + rng() * 0.08 : rng() * 0.1,
+        spin: (rng() < 0.5 ? -1 : 1) * (360 + rng() * 900),
+        flutter: 6 + rng() * 10,
+      });
+    }
+    return out;
+  }, [seed, pieces, W, H]);
 
   useEffect(() => {
+    if (still) return;
     progress.value = 0;
-    progress.value = withTiming(1, { duration: 2400, easing: Easing.out(Easing.quad) });
-  }, [seed, progress]);
+    progress.value = withTiming(1, { duration: DURATION, easing: Easing.linear });
+  }, [seed, progress, still]);
+
+  if (still || W === 0) return null;
+  const g = H * 1.15;
 
   return (
-    <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 340, overflow: 'hidden' }}>
+    <View
+      pointerEvents="none"
+      style={{
+        position: (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute',
+        top: 0,
+        left: 0,
+        width: W,
+        height: H,
+        zIndex: 80,
+        overflow: 'hidden',
+      }}
+    >
+      <Flash progress={progress} W={W} H={H} />
       {items.map((piece, index) => (
-        <Flake key={index} piece={piece} progress={progress} />
+        <Flake key={index} piece={piece} g={g} H={H} progress={progress} />
       ))}
     </View>
   );
 }
 
-function Flake({ piece, progress }: { piece: Piece; progress: { value: number } }) {
+/** Chớp sáng tròn ở tâm chùm nổ — cho mắt bắt được khoảnh khắc "bùm". */
+function Flash({ progress, W, H }: { progress: { value: number }; W: number; H: number }) {
   const style = useAnimatedStyle(() => {
-    // Mỗi mảnh bắt đầu trễ một chút rồi chạy hết quãng còn lại, nên chúng
-    // không rơi thành một hàng ngang.
-    const local = Math.max(0, Math.min(1, (progress.value - piece.delay) / (1 - piece.delay)));
+    const p = Math.max(0, Math.min(1, (progress.value - 0.06) / 0.14));
+    return { opacity: p === 0 ? 0 : 0.55 * (1 - p), transform: [{ scale: 0.2 + p * 2.2 }] };
+  });
+  const size = Math.min(W, H) * 0.35;
+  return (
+    <Animated.View
+      style={[
+        { position: 'absolute', left: W * 0.5 - size / 2, top: H * 0.32 - size / 2, width: size, height: size, borderRadius: size / 2, backgroundColor: '#FFF4B8' },
+        style,
+      ]}
+    />
+  );
+}
+
+function Flake({ piece, g, H, progress }: { piece: Piece; g: number; H: number; progress: { value: number } }) {
+  const style = useAnimatedStyle(() => {
+    const local = Math.max(0, (progress.value - piece.delay) / (1 - piece.delay));
+    const t = local * T;
+    // Lực cản không khí: vận tốc ngang tắt dần, rơi chậm lại như giấy.
+    const drag = 1 - Math.min(0.55, t * 0.22);
+    const x = piece.x0 + piece.vx * t * drag;
+    const y = piece.y0 + piece.vy * t + 0.5 * g * t * t * 0.62;
+    const fade = local > 0.78 ? 1 - (local - 0.78) / 0.22 : 1;
     return {
+      opacity: local === 0 || y > H + 40 ? 0 : Math.max(0, fade),
       transform: [
-        { translateY: -20 + local * 340 },
-        { translateX: local * piece.drift },
+        { translateX: x },
+        { translateY: y },
         { rotate: `${local * piece.spin}deg` },
+        { scaleY: Math.cos(t * piece.flutter) },
       ],
-      opacity: local === 0 ? 0 : 1 - local * local,
     };
   });
 
@@ -102,10 +176,11 @@ function Flake({ piece, progress }: { piece: Piece; progress: { value: number } 
       style={[
         {
           position: 'absolute',
-          left: `${piece.left}%`,
-          width: piece.size,
-          height: piece.size * 1.8,
-          borderRadius: 1.5,
+          left: -piece.w / 2,
+          top: -piece.h / 2,
+          width: piece.w,
+          height: piece.h,
+          borderRadius: piece.round ? piece.w : 2,
           backgroundColor: piece.color,
         },
         style,

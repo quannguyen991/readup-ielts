@@ -8,6 +8,7 @@ import { anim, MOVE } from '@/components/game/game-anim';
 import { PixelSprite } from '@/components/game/PixelSprite';
 import { AnimatedAvatar, AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
+import { ProfileEffect } from '@/components/profile/ProfileEffect';
 import { Badge, Button, Card, SectionHeader } from '@/components/ui';
 import { MASCOTS, STAR_BONUS } from '@/services/game/mascots';
 import { ACHIEVEMENTS, levelProgress, titleForLevel } from '@/services/game/rules';
@@ -32,6 +33,7 @@ import { color } from '@/theme/tokens';
 const SLOTS: { slot: WearSlot; title: string; kinds: ShopItem['kind'][]; tab: string; empty: string }[] = [
   { slot: 'avatar', title: 'Avatar', kinds: ['avatarAnim', 'avatar'], tab: 'avatarAnim', empty: 'Chữ cái đầu tên' },
   { slot: 'cover', title: 'Bìa hồ sơ', kinds: ['cover'], tab: 'cover', empty: 'Bìa mặc định' },
+  { slot: 'effect', title: 'Hiệu ứng hồ sơ', kinds: ['effect'], tab: 'effect', empty: 'Chưa có hiệu ứng' },
   { slot: 'skin', title: 'Skin nhân vật', kinds: ['skin'], tab: 'skin', empty: 'Hiệp sĩ xanh' },
   { slot: 'mascot', title: 'Linh vật', kinds: ['mascot'], tab: 'mascot', empty: 'Chưa có bạn đồng hành' },
 ];
@@ -56,11 +58,12 @@ export default function ProfileScreen() {
   const petId = mascotOf(reward.mascot);
   const pet = petId ? MASCOTS[petId] : null;
   const coverLook = findItem(reward.cover)?.cover ?? null;
+  const effectLook = findItem(reward.effect)?.effect ?? null;
   const opened = ACHIEVEMENTS.filter((a) => achievements[a.id]);
 
   const wardrobe = SHOP_ITEMS.filter((i) => (reward.owned[i.id] ?? 0) > 0 && SLOTS.some((s) => s.kinds.includes(i.kind)));
   const slotOf = (item: ShopItem) => SLOTS.find((s) => s.kinds.includes(item.kind))!.slot;
-  const worn = new Set([reward.avatar, reward.cover, reward.skin, reward.mascot].filter((x): x is string => !!x));
+  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.skin, reward.mascot].filter((x): x is string => !!x));
 
   const avatarSize = wide ? 112 : 88;
 
@@ -69,6 +72,8 @@ export default function ProfileScreen() {
       {/* Bìa + avatar đè lên mép bìa */}
       <Appear>
         <View style={{ borderRadius: 24, overflow: 'hidden', backgroundColor: '#FFFFFF' }}>
+          {/* Hiệu ứng hồ sơ phủ cả thẻ (bìa + tên), như Profile Effects của Discord. */}
+          <ProfileEffect effect={effectLook} />
           <ProfileCover cover={coverLook} height={wide ? 210 : 150}>
             <View style={{ position: 'absolute', right: 12, top: 12 }}>
               <Pressable
@@ -276,6 +281,14 @@ function SlotPreview({ slot, item, name, skin }: { slot: WearSlot; item: ShopIte
       </View>
     );
   }
+  if (slot === 'effect') {
+    return (
+      <View style={{ width: 84, height: 56, borderRadius: 12, overflow: 'hidden', backgroundColor: NIGHT }}>
+        <ProfileEffect effect={item?.effect ?? null} intensity={0.6} />
+        {item ? null : <Text style={{ fontSize: 20, opacity: 0.4, textAlign: 'center', marginTop: 14 }}>✨</Text>}
+      </View>
+    );
+  }
   if (slot === 'skin') {
     return (
       <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: NIGHT, alignItems: 'center', justifyContent: 'center' }}>
@@ -306,6 +319,13 @@ function MiniPreview({ item, skin }: { item: ShopItem; skin: ReturnType<typeof s
     return (
       <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: NIGHT, alignItems: 'center', justifyContent: 'center' }}>
         {pet ? <PixelSprite name={pet.look} color={pet.color} size={24} /> : <PixelSprite name="hero" size={24} skin={item.skin} />}
+      </View>
+    );
+  }
+  if (item.effect) {
+    return (
+      <View style={{ width: 30, height: 30, borderRadius: 999, overflow: 'hidden', backgroundColor: NIGHT }}>
+        <ProfileEffect effect={item.effect} intensity={0.35} />
       </View>
     );
   }

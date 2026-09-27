@@ -8,7 +8,7 @@ import { LightGrid } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
-import { isFocusRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
+import { isExamRoute, isFocusRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
@@ -77,6 +77,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <View className="flex-1">{children}</View>
           </View>
         </View>
+        {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
+        {isExamRoute(pathname) ? null : <AskBubble />}
         <SelectionLookup />
       </FocusBackdrop>
     );
@@ -123,11 +125,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <View className="flex-1">{children}</View>
         </View>
       </View>
-      {/*
-        Bong bóng hỏi nhanh chỉ sống ở nhánh này, tức là ở màn KHÔNG phải làm bài.
-        Nhánh `focus` phía trên trả về sớm và không gắn nó — giữa lúc đang tính
-        giờ làm đề mà có nút "hỏi AI" cạnh màn hình thì đó không còn là thi thử.
-      */}
       <AskBubble />
       <SelectionLookup />
     </SafeAreaView>
