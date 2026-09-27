@@ -25,6 +25,9 @@ import { useMathDomainStats, useMathErrorTags, useMathTotals } from '@/store/use
 import { useQuestionStore } from '@/store/useQuestionStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
+import { useRoadmapStore } from '@/store/useRoadmapStore';
+import { useAuthStore } from '@/store/useAuthStore';
+import { goalProgress } from '@/services/progress/goal';
 import { chartPalette, color } from '@/theme/tokens';
 
 /**
@@ -104,7 +107,9 @@ export default function ProgressScreen() {
   const recentDays = useRecentDays(range);
   const streak = useStreak();
   const accuracyByType = useAccuracyByType();
-  const targetBand = useStudyStore((s) => s.targetBand);
+  // Mục tiêu và điểm xuất phát lấy từ chính người dùng khai (xem services/progress/goal.ts).
+  const roadmapIelts = useRoadmapStore((s) => s.input?.ielts ?? null);
+  const profileTarget = useAuthStore((s) => s.profile?.targetBand ?? null);
   const readingWpm = useStudyStore((s) => s.readingWpm);
   const words = useVocabStore((s) => Object.keys(s.entries).length);
   const focusSet = useQuestionStore((s) => s.focusSet);
@@ -155,8 +160,20 @@ export default function ProgressScreen() {
   }, [recentDays]);
 
   const weakest = accuracyByType[0];
-  const onTrack =
-    targetBand === 0 || currentBand == null ? 0 : Math.round((currentBand / targetBand) * 100);
+  // Bài chấm band đầu tiên TỪNG làm (không chỉ trong khung ngày đang xem).
+  const firstBand = useMemo(() => {
+    const scored = sessions.filter((s) => s.estimatedBand != null);
+    scored.sort((a, b) => a.finishedAt.localeCompare(b.finishedAt));
+    return scored[0]?.estimatedBand ?? null;
+  }, [sessions]);
+  const latestEver = latestBand(sessions.map((s) => s.estimatedBand));
+  const goal = goalProgress({
+    roadmapTarget: roadmapIelts?.target,
+    profileTarget,
+    roadmapNow: roadmapIelts?.now,
+    firstBand,
+    current: latestEver,
+  });
 
   const practiceWeakest = async () => {
     if (!weakest) return;
@@ -177,24 +194,41 @@ export default function ProgressScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Your Progress"
+        title="Tiến độ của bạn"
         subtitle="Theo dõi kết quả, giữ nhịp đều, và biết chính xác nên luyện dạng nào tiếp theo."
         illustration="progress-hero"
         right={
           <View className="w-[260px] rounded-card bg-white p-4">
             <View className="flex-row items-center justify-between">
-              <Text className="font-strong text-cardTitle text-ink">Goals</Text>
-              <Text className="font-semi text-label text-primary-600">Target Band</Text>
+              <Text className="font-strong text-cardTitle text-ink">Mục tiêu</Text>
+              <Text className="font-semi text-label text-primary-600">Band IELTS</Text>
             </View>
 
-            <Text className="mt-2 font-heavy text-hero text-ink">{targetBand.toFixed(1)}</Text>
-
-            <ProgressBar value={Math.min(100, onTrack)} className="mt-2" />
-            <Text className="mt-2 font-mid text-label text-muted">
-              {currentBand == null
-                ? 'Chưa có bài chấm band nào — làm một bài đọc để có con số đầu tiên.'
-                : `${onTrack}% on track · band hiện tại ${formatBand(currentBand)}`}
-            </Text>
+            {goal.state === 'no-goal' ? (
+              <>
+                <Text className="mt-2 font-heavy text-hero text-subtle">—</Text>
+                <Text className="mt-1 font-mid text-label text-muted">Bạn chưa đặt band mục tiêu.</Text>
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => router.push('/plan' as never)}
+                  className="mt-3 self-start rounded-pill bg-primary-600 px-3.5 py-2"
+                >
+                  <Text className="font-semi text-label text-white">Đặt mục tiêu</Text>
+                </Pressable>
+              </>
+            ) : (
+              <>
+                <Text className="mt-2 font-heavy text-hero text-ink">{goal.target.toFixed(1)}</Text>
+                <ProgressBar value={goal.state === 'no-score' ? 0 : goal.pct} className="mt-2" />
+                <Text className="mt-2 font-mid text-label text-muted">
+                  {goal.state === 'no-score'
+                    ? 'Chưa có bài chấm band — làm một bài đọc để có điểm đầu.'
+                    : goal.state === 'reached'
+                      ? `Đã đạt mục tiêu · band hiện tại ${formatBand(goal.current)}`
+                      : `${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)} band · ${goal.pct}% quãng đường`}
+                </Text>
+              </>
+            )}
           </View>
         }
       />
