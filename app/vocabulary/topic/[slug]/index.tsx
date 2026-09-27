@@ -17,6 +17,7 @@ import type { IconName } from '@/components/ui/Icon';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { deckLook } from '@/components/vocab/deck-style';
 import { deckProgress } from '@/services/vocab/deck-library';
+import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
 
 /**
@@ -46,6 +47,7 @@ export default function VocabTopicScreen() {
   const toggleStar = useTopicStudyStore((s) => s.toggleStar);
   const setStage = useTopicStudyStore((s) => s.setStage);
   const addLapse = useTopicStudyStore((s) => s.addLapse);
+  const lapseMap = useTopicStudyStore((s) => (typeof slug === 'string' ? s.lapses[slug] : undefined));
   const touch = useTopicStudyStore((s) => s.touch);
   const starredWords = useMemo(() => new Set(starredList ?? []), [starredList]);
   const lastAt = useTopicStudyStore((s) => (typeof slug === 'string' ? (s.lastAt?.[slug] ?? null) : null));
@@ -102,6 +104,7 @@ export default function VocabTopicScreen() {
   const bg = look.accent[1];
   const progress = deckProgress(topic.words, stages, lastAt);
   const starredEntries = topic.words.filter((w) => starredWords.has(w.word));
+  const status = groupByStatus(topic.words, stages, lapseMap);
   const pct = topic.words.length > 0 ? Math.round((progress.mastered / topic.words.length) * 100) : 0;
 
   return (
@@ -139,12 +142,26 @@ export default function VocabTopicScreen() {
         <View className="mt-5">
           <Text className="font-heavy text-sectionTitle text-ink">Cách luyện</Text>
           <View className="mt-3">
-            <Grid columns={6} tabletColumns={3} mobileColumns={2} gap={12}>
+            <Grid columns={7} tabletColumns={4} mobileColumns={2} gap={12}>
               {MODES.map((m) => (
                 <ModeTile key={m.key} mode={m} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
               ))}
             </Grid>
           </View>
+        </View>
+      </Appear>
+
+      {/* ------------------------------------------ ba nhóm từ + ôn nhanh */}
+      <Appear index={1}>
+        <View className="mt-4 flex-row flex-wrap gap-3">
+          {STATUS_TILES.map((t) => (
+            <StatusTile
+              key={t.key}
+              tile={t}
+              count={status[t.key].length}
+              onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz?only=${t.only}` as never)}
+            />
+          ))}
         </View>
       </Appear>
 
@@ -332,12 +349,43 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  */
 const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
   { key: 'learn', label: 'Học xen kẽ', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', icon: 'book', tone: '#2563EB', recommended: true },
+  { key: 'quiz', label: 'Quiz ôn tập', note: 'Trắc nghiệm cả bộ, đổi chiều Việt ↔ Anh', icon: 'target', tone: '#EA580C' },
   { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
   { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#7C3AED' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
   { key: 'test', label: 'Kiểm tra', note: '20 câu trộn 4 dạng, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
   { key: 'game', label: 'Bóng bay', note: 'Trò chơi, có bảng điểm', icon: 'sparkle', tone: '#16A34A' },
 ];
+
+const STATUS_TILES: { key: DeckStatus; label: string; only: string; icon: IconName; tone: string; soft: string }[] = [
+  { key: 'mastered', label: 'Đã nhớ', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },
+  { key: 'new', label: 'Chưa nhớ', only: 'new', icon: 'info', tone: '#4F7FE6', soft: '#E0EAFF' },
+  { key: 'review', label: 'Cần ôn tập', only: 'review', icon: 'refresh', tone: '#EA580C', soft: '#FFEDD5' },
+];
+
+/** Một nhóm từ: số từ + bấm là vào Quiz chỉ với nhóm đó (Đã nhớ thì ôn cả bộ). */
+function StatusTile({ tile, count, onPress }: { tile: (typeof STATUS_TILES)[number]; count: number; onPress: () => void }) {
+  const empty = count === 0 && tile.key !== 'mastered';
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityLabel={`${tile.label}: ${count} từ. ${empty ? 'Chưa có từ nào.' : 'Bấm để ôn bằng Quiz.'}`}
+      disabled={empty}
+      onPress={onPress}
+      className="min-w-[180px] flex-1 flex-row items-center gap-3 rounded-2xl bg-white px-4 py-3"
+      style={{ opacity: empty ? 0.6 : 1, boxShadow: '0 3px 10px rgba(15,23,42,0.06)' } as object}
+    >
+      <View className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: tile.soft }}>
+        <Icon name={tile.icon} size={17} color={tile.tone} />
+      </View>
+      <Text className="flex-1 font-strong text-body text-ink">{tile.label}</Text>
+      <Text className="font-heavy text-sectionTitle" style={{ color: tile.tone }}>
+        {count}
+      </Text>
+      {empty ? null : <Icon name="chevron-right" size={15} color="#94A3B8" />}
+    </Pressable>
+  );
+}
 
 function ModeTile({ mode, onPress }: { mode: (typeof MODES)[number]; onPress: () => void }) {
   const [hovered, setHovered] = useState(false);
