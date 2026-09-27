@@ -4,6 +4,7 @@ import '@/lib/nativewind-interop';
 import React, { useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { Slot, usePathname } from 'expo-router';
+import Head from 'expo-router/head';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -56,6 +57,7 @@ export default function RootLayout() {
   if (!fontsLoaded) {
     return (
       <View className="flex-1 items-center justify-center bg-canvas">
+        <AppTitle />
         <ActivityIndicator color={color.primary} />
       </View>
     );
@@ -64,6 +66,7 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <QueryClientProvider client={queryClient}>
+        <AppTitle />
         <StatusBar style="dark" />
         <VercelAnalytics />
         <PageViewTracker />
@@ -75,5 +78,17 @@ export default function RootLayout() {
         <GameFxLayer />
       </QueryClientProvider>
     </SafeAreaProvider>
+  );
+}
+
+/**
+ * Tên tab trình duyệt. Không đặt thì thẻ <title> rỗng và tab hiện nguyên đường
+ * dẫn "readup-ielts.vercel.app/..." — người dùng muốn thấy "ReadUp" (27/09/2026).
+ */
+function AppTitle() {
+  return (
+    <Head>
+      <title>ReadUp</title>
+    </Head>
   );
 }
