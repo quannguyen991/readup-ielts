@@ -284,11 +284,6 @@ export default function IntroScreen() {
                 </Text>
               </View>
 
-              <Text className="mt-4 font-sans text-bodyLg text-paper-body" style={{ maxWidth: 620 }}>
-                Đề dựng bằng code chứ không gọi AI, đáp án kiểm được từ chính bài đọc, và mỗi câu
-                sai được gọi đúng tên lỗi.
-              </Text>
-
               <View className="mt-6 flex-row flex-wrap gap-2">
                 <Button
                   label="Bắt đầu học"

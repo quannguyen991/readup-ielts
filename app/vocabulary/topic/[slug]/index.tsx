@@ -13,12 +13,11 @@ import { lemmatize } from '@/services/dictionary/lookup';
 import { color } from '@/theme/tokens';
 import { Flashcards } from '@/components/vocab/study/Flashcards';
 import { Grid } from '@/components/layout/Grid';
-import { CARD_SHADOW } from '@/components/vocab/study/StudyKit';
 import type { IconName } from '@/components/ui/Icon';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
-import { DeckProgressBar, FlagVN } from '@/components/vocab/DeckCard';
 import { deckLook } from '@/components/vocab/deck-style';
-import { deckProgress, relativeTimeVi } from '@/services/vocab/deck-library';
+import { deckProgress } from '@/services/vocab/deck-library';
+import { ProgressRing } from '@/components/vocab/DeckCard';
 
 /**
  * Một bộ từ vựng: 50 từ, xếp theo mức band từ dễ tới khó.
@@ -45,9 +44,11 @@ export default function VocabTopicScreen() {
   const stages = useTopicStudyStore((s) => (typeof slug === 'string' ? s.stages[slug] : undefined));
   const starredList = useTopicStudyStore((s) => (typeof slug === 'string' ? s.starred[slug] : undefined));
   const toggleStar = useTopicStudyStore((s) => s.toggleStar);
+  const setStage = useTopicStudyStore((s) => s.setStage);
+  const addLapse = useTopicStudyStore((s) => s.addLapse);
+  const touch = useTopicStudyStore((s) => s.touch);
   const starredWords = useMemo(() => new Set(starredList ?? []), [starredList]);
   const lastAt = useTopicStudyStore((s) => (typeof slug === 'string' ? (s.lastAt?.[slug] ?? null) : null));
-  const now = useMemo(() => new Date(), []);
 
   const savedLemmas = useMemo(
     () => new Set(Object.values(entries).map((e) => e.lemma.toLowerCase())),
@@ -96,11 +97,12 @@ export default function VocabTopicScreen() {
     setJustSaved(remaining.length);
   };
 
-  const learned = topic.words.length - remaining.length;
   const groups = groupDeckWords(topic);
   const look = deckLook(topic.slug);
+  const bg = look.accent[1];
   const progress = deckProgress(topic.words, stages, lastAt);
   const starredEntries = topic.words.filter((w) => starredWords.has(w.word));
+  const pct = topic.words.length > 0 ? Math.round((progress.mastered / topic.words.length) * 100) : 0;
 
   return (
     <Screen>
@@ -113,58 +115,51 @@ export default function VocabTopicScreen() {
           iconLeft="chevron-left"
           onPress={() => router.push('/vocabulary/quiz' as never)}
         />
-        <View className="rounded-[24px] bg-white p-5" style={[CARD_SHADOW, { borderWidth: 1.5, borderColor: '#E9ECF5' }]}>
-          <View className="flex-row flex-wrap items-start gap-4">
-            <View className="h-14 w-14 items-center justify-center rounded-2xl" style={{ backgroundColor: look.accent[0] }}>
-              <Icon name={look.icon} size={26} color={look.accent[1]} strokeWidth={2} />
+        {/* Cùng kiểu thẻ giấy có gáy màu như ở thư viện bộ từ. */}
+        <View className="flex-row overflow-hidden rounded-[20px] bg-white" style={{ boxShadow: '0 4px 14px rgba(15,23,42,0.08)' } as object}>
+          <View style={{ width: 8, backgroundColor: bg }} />
+          <View className="flex-1 flex-row flex-wrap items-center gap-4 p-5">
+            <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: look.accent[0] }}>
+              <Icon name={look.icon} size={22} color={bg} strokeWidth={2.1} />
             </View>
-            <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
+            <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
               <Text className="font-heavy text-pageTitle text-ink">{topic.nameVi}</Text>
-              <View className="mt-1 flex-row flex-wrap items-center gap-x-2 gap-y-1">
-                <FlagVN size={12} />
-                <Text className="font-sans text-body text-muted">Nghĩa tiếng Việt</Text>
-                <Text className="font-sans text-body text-subtle">·</Text>
-                <Text className="font-strong text-body" style={{ color: look.accent[1] }}>
-                  {look.sourceLabel}
-                </Text>
-                <Text className="font-sans text-body text-subtle">·</Text>
-                <Text className="font-sans text-body text-muted">{topic.words.length} từ</Text>
-              </View>
-              <Text className="mt-1 font-sans text-label text-muted" numberOfLines={2}>
+              <Text className="font-sans text-body text-muted">
                 {topic.name !== topic.nameVi ? `${topic.name} · ` : ''}
-                {topic.blurb}
+                {topic.words.length} từ
               </Text>
             </View>
-            <View className="items-end">
-              <Text className="font-heavy text-stat text-ink">
-                {progress.mastered}
-                <Text className="font-sans text-body text-muted">/{topic.words.length}</Text>
-              </Text>
-              <Text className="font-sans text-label text-muted">từ đã nhớ</Text>
-            </View>
-          </View>
-
-          <View className="mt-4 flex-row items-center gap-3">
-            <DeckProgressBar progress={progress} color={look.accent[1]} height={10} />
-          </View>
-          <View className="mt-2 flex-row flex-wrap items-center gap-x-4 gap-y-1">
-            <Legend color={look.accent[1]} label={`Đã nhớ ${progress.mastered}`} />
-            <Legend color={look.accent[1]} faded label={`Đang học ${progress.learning}`} />
-            <Text className="font-sans text-label text-muted">Lưu vào sổ từ: {learned}</Text>
-            <View className="flex-row items-center gap-1">
-              <Icon name="clock" size={13} color="#94A3B8" />
-              <Text className="font-sans text-label text-muted">Học lần cuối: {relativeTimeVi(progress.lastAt, now)}</Text>
-            </View>
+            <ProgressRing pct={pct} color={bg} size={60} />
           </View>
         </View>
       </Appear>
 
-      {/* ---------------------------------------------- mọi cách luyện của bộ */}
+      {/* ------------------------------------------------ thẻ ghi nhớ */}
       <Appear index={1}>
-        <View className="mt-6">
-          <SectionHeader title="Chọn cách luyện" subtitle="Sáu cách luyện, tiến độ tính chung" icon="target" />
+        <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
+          <Flashcards
+            words={topic.words}
+            savedWords={savedLemmas}
+            onSave={save}
+            starredWords={starredWords}
+            onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
+            accent={bg}
+            onRate={(w, stage) => {
+              if (typeof slug !== 'string') return;
+              setStage(slug, w.word, stage);
+              if (stage === 0) addLapse(slug, w.word);
+              touch(slug);
+            }}
+          />
+        </View>
+      </Appear>
+
+      {/* ---------------------------------------------- mọi cách luyện của bộ */}
+      <Appear index={2}>
+        <View className="mt-8">
+          <Text className="font-heavy text-sectionTitle text-ink">Cách luyện khác</Text>
           <View className="mt-3">
-            <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={12}>
+            <Grid columns={6} tabletColumns={3} mobileColumns={2} gap={12}>
               {MODES.map((m) => (
                 <ModeTile key={m.key} mode={m} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
               ))}
@@ -173,25 +168,12 @@ export default function VocabTopicScreen() {
         </View>
       </Appear>
 
-      {/* ------------------------------------------------ thẻ ghi nhớ */}
-      <Appear index={2}>
-        <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
-          <Flashcards
-            words={topic.words}
-            savedWords={savedLemmas}
-            onSave={save}
-            starredWords={starredWords}
-            onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
-          />
-        </View>
-      </Appear>
-
       {starredEntries.length > 0 ? (
         <Appear index={3}>
           <View className="mt-6">
             <View className="flex-row flex-wrap items-center justify-between gap-2">
               <View className="min-w-0 flex-1">
-                <SectionHeader title="Từ gắn sao" subtitle={`${starredEntries.length} từ bạn đánh dấu để học riêng`} icon="star" iconTone="warning" />
+                <SectionHeader title="Từ gắn sao" icon="star" iconTone="warning" />
               </View>
               <Button
                 label={`Học riêng ${starredEntries.length} từ này`}
@@ -227,8 +209,7 @@ export default function VocabTopicScreen() {
         <View className="mt-3 flex-row items-start gap-2 rounded-card bg-success-soft p-3">
           <Icon name="check" size={16} color={color.success} />
           <Text className="flex-1 font-sans text-body text-ink">
-            Đã thêm {justSaved} từ vào sổ. Chúng vào chung lịch ôn FSRS với những từ bạn lưu lúc
-            đọc bài, nên không bị ôn trùng.
+            Đã thêm {justSaved} từ vào sổ.
           </Text>
         </View>
       ) : null}
@@ -363,38 +344,17 @@ function ModeTile({ mode, onPress }: { mode: (typeof MODES)[number]; onPress: ()
   return (
     <Pressable
       accessibilityRole="button"
+      accessibilityLabel={`${mode.label}: ${mode.note}`}
       onPress={onPress}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
-      className="flex-row items-center gap-3 rounded-2xl bg-surface px-4 py-3.5"
-      style={[CARD_SHADOW, { borderWidth: 1.5, borderColor: hovered ? mode.tone : 'transparent' }]}
+      className="items-center rounded-2xl bg-white px-3 py-4"
+      style={{ borderWidth: 1.5, borderColor: hovered ? mode.tone : 'transparent', boxShadow: '0 3px 10px rgba(15,23,42,0.06)' } as object}
     >
-      <View className="h-10 w-10 items-center justify-center rounded-xl" style={{ backgroundColor: `${mode.tone}1A` }}>
+      <View className="h-11 w-11 items-center justify-center rounded-2xl" style={{ backgroundColor: `${mode.tone}1A` }}>
         <Icon name={mode.icon} size={20} color={mode.tone} />
       </View>
-      <View className="min-w-0 flex-1">
-        <View className="flex-row items-center gap-2">
-          <Text className="font-strong text-bodyLg text-ink">{mode.label}</Text>
-          {mode.recommended ? (
-            <View className="rounded-pill bg-primary-50 px-2 py-0.5">
-              <Text className="font-semi text-[11px] text-primary-700">Đề xuất</Text>
-            </View>
-          ) : null}
-        </View>
-        <Text className="font-sans text-label text-muted" numberOfLines={1}>
-          {mode.note}
-        </Text>
-      </View>
-      <Icon name="chevron-right" size={16} color={hovered ? mode.tone : '#94A3B8'} />
+      <Text className="mt-2 text-center font-strong text-body text-ink">{mode.label}</Text>
     </Pressable>
-  );
-}
-
-function Legend({ color: c, label, faded }: { color: string; label: string; faded?: boolean }) {
-  return (
-    <View className="flex-row items-center gap-1.5">
-      <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: c, opacity: faded ? 0.32 : 1 }} />
-      <Text className="font-semi text-label text-ink">{label}</Text>
-    </View>
   );
 }

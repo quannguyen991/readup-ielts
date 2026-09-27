@@ -113,11 +113,10 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
             Học thử {TRIAL_DAYS} ngày gói Plus hoặc Pro
           </Text>
           <Text className="mt-1 font-sans text-label" style={{ color: 'rgba(255,255,255,0.82)' }}>
-            Chọn một gói, một lượt cho mỗi tài khoản. Lượt AI vẫn giữ {TRIAL_AI_CALLS} lượt/tháng
-            như gói Free. Không cần thẻ, hết hạn tự về Free, dữ liệu học giữ nguyên.
+            Không cần thẻ · AI vẫn {TRIAL_AI_CALLS} lượt/tháng · hết hạn tự về Free.
           </Text>
         </View>
-        <View className="gap-2" style={{ minWidth: 200 }}>
+        <View className="flex-row gap-2">
           {TRIAL_PLANS.map((id) => (
             <Pressable
               key={id}
@@ -126,14 +125,9 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
               onPress={() => start(id)}
               className="flex-row items-center gap-2 rounded-2xl bg-white px-4 py-2"
             >
-              <View className="flex-1">
-                <Text className="font-strong text-label" style={{ color: PLAN_TONE[id].ink }}>
-                  Thử {PLANS[id].name}
-                </Text>
-                <Text className="font-sans" style={{ fontSize: 11.5, color: '#475569' }} numberOfLines={1}>
-                  {PLANS[id].tagline}
-                </Text>
-              </View>
+              <Text className="flex-1 font-strong text-label" style={{ color: PLAN_TONE[id].ink }}>
+                Thử {PLANS[id].name}
+              </Text>
               <Icon name="arrow-right" size={15} color={PLAN_TONE[id].ink} />
             </Pressable>
           ))}
