@@ -4,6 +4,7 @@ import { levelLabel, posIpa } from '@/data/study-decks';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
 import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
+import { SkyEffect } from '@/components/effects/SkyEffect';
 import type { StudyWord } from '@/services/vocab/topic-study';
 
 /**
@@ -58,13 +59,21 @@ export function FlipCard({
     borderRadius: 24,
     backgroundColor: '#FFFFFF',
     padding: 28,
+    overflow: 'hidden' as const,
     ...(CARD_SHADOW as object),
   };
 
   return (
     <Pressable accessibilityRole="button" accessibilityLabel="Lật thẻ" onPress={onFlip} style={{ height }}>
-      <Animated.View style={[face, frontStyle, { alignItems: 'center', justifyContent: 'center' }]}>{front}</Animated.View>
-      <Animated.View style={[face, backStyle, { justifyContent: 'center' }]}>{back}</Animated.View>
+      {/* Bầu trời sáng có sao băng: mặt trước đủ, mặt sau nhạt cho dễ đọc chữ. */}
+      <Animated.View style={[face, frontStyle, { alignItems: 'center', justifyContent: 'center' }]}>
+        <SkyEffect />
+        {front}
+      </Animated.View>
+      <Animated.View style={[face, backStyle, { justifyContent: 'center' }]}>
+        <SkyEffect intensity={0.45} />
+        {back}
+      </Animated.View>
     </Pressable>
   );
 }
