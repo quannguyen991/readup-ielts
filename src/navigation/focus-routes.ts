@@ -44,7 +44,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Từ vựng theo chủ đề — đây là màn học thẻ, không phải màn duyệt.
   /^\/vocabulary\/topic\/[^/]+$/,
   // Các màn học một bộ từ: Học, Nghe chép, Điền câu, Phát âm, Kiểm tra, Bóng bay.
-  /^\/vocabulary\/topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)$/,
+  /^\/vocabulary\/topic\/[^/]+\/(learn|quiz|dictation|cloze|speak|test|game)$/,
   // Quiz ôn từ SAT (một chủ đề, một mức).
   /^\/vocabulary\/sat-quiz\/[^/]+$/,
 
@@ -64,7 +64,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
  * nền chàm kẻ ô như màn Đọc song ngữ — người dùng chọn nền này cho phần học từ
  * vựng (24/09/2026). AppShell vẽ nền, `StudyFrame` đổi chữ ngoài thẻ sang màu sáng.
  */
-const VOCAB_STUDY = /^\/vocabulary\/(topic\/[^/]+\/(learn|dictation|cloze|speak|test|game)|sat-quiz\/[^/]+)$/;
+const VOCAB_STUDY = /^\/vocabulary\/(topic\/[^/]+\/(learn|quiz|dictation|cloze|speak|test|game)|sat-quiz\/[^/]+)$/;
 
 /**
  * Màn KHÔNG bật "bôi đen là tra": màn làm đề (tra được là lộ đáp án) và màn đọc
