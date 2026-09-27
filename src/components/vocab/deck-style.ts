@@ -84,7 +84,7 @@ const TOPIC_INDEX = new Map(VOCAB_TOPICS.map((t, i) => [t.slug, i]));
 const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
 export function deckLook(slug: string): DeckLook {
-  if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', accent: ['#FEF3C7', '#D97706'], icon: 'bookmark' };
+  if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', accent: ['#EDE9FE', '#7C3AED'], icon: 'book' };
   if (slug.startsWith(CUSTOM_PREFIX)) return { source: 'mine', sourceLabel: 'Bộ bạn tạo', accent: ['#D1FAE5', '#059669'], icon: 'note' };
   const subject = SAT_SUBJECT.get(slug);
   if (subject === 'math') return { source: 'satMath', sourceLabel: 'SAT Math', accent: ['#E0E7FF', '#4F46E5'], icon: 'grid' };

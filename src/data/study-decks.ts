@@ -65,20 +65,21 @@ export function notebookDeck(entries: readonly NotebookSource[]): StudyDeck {
   const words: StudyWord[] = [];
   for (const e of entries) {
     const key = (e.lemma || e.word).toLowerCase();
-    if (!e.definitionVi || seen.has(key)) continue;
+    if (seen.has(key)) continue;
+    const meaning = e.definitionVi || e.definitionGeneral || e.definitionContext || 'Từ vựng đã lưu';
     seen.add(key);
     words.push({
       word: e.lemma || e.word,
       pos: e.partOfSpeech ?? '',
       ipa: e.phonetic ?? '',
-      meaningVi: e.definitionVi,
+      meaningVi: meaning,
       definitionEn: e.definitionGeneral ?? e.definitionContext ?? '',
       example: e.exampleSentence || e.sourceSentence || '',
-      collocation: '',
+      collocation: e.definitionContext ?? '',
       band: e.isCollocation ? 'Cụm từ' : 'Sổ từ',
     });
   }
-  return { slug: NOTEBOOK_SLUG, kind: 'notebook', name: 'My notebook', nameVi: 'Sổ từ của bạn', blurb: 'Những từ bạn tự lưu khi đọc.', words };
+  return { slug: NOTEBOOK_SLUG, kind: 'notebook', name: 'My notebook', nameVi: 'Sổ từ của bạn', blurb: 'Những từ bạn tự lưu khi đọc và học.', words };
 }
 
 /** Nhóm từ để hiện danh sách: bộ IELTS theo band (dễ → khó), bộ khác một nhóm. */

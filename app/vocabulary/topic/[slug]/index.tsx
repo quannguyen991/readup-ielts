@@ -6,7 +6,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
-import { groupDeckWords } from '@/data/study-decks';
+import { groupDeckWords, NOTEBOOK_SLUG } from '@/data/study-decks';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
@@ -112,11 +112,17 @@ export default function VocabTopicScreen() {
       <Appear>
         <Button
           className="mb-3 self-start"
-          label="Tất cả bộ từ"
+          label={slug === NOTEBOOK_SLUG ? 'Quay lại' : 'Tất cả bộ từ'}
           variant="ghost"
           size="sm"
           iconLeft="chevron-left"
-          onPress={() => router.push('/vocabulary/quiz' as never)}
+          onPress={() => {
+            if (slug === NOTEBOOK_SLUG) {
+              router.back();
+            } else {
+              router.push('/vocabulary/quiz' as never);
+            }
+          }}
         />
         {/* Cùng kiểu thẻ giấy có gáy màu như ở thư viện bộ từ. */}
         <View className="flex-row overflow-hidden rounded-[20px] bg-white" style={{ boxShadow: '0 4px 14px rgba(15,23,42,0.08)' } as object}>
@@ -168,20 +174,44 @@ export default function VocabTopicScreen() {
       {/* ------------------------------------------------ thẻ ghi nhớ */}
       <Appear index={2}>
         <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
-          <Flashcards
-            words={topic.words}
-            savedWords={savedLemmas}
-            onSave={save}
-            starredWords={starredWords}
-            onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
-            accent={bg}
-            onRate={(w, stage) => {
-              if (typeof slug !== 'string') return;
-              setStage(slug, w.word, stage);
-              if (stage === 0) addLapse(slug, w.word);
-              touch(slug);
-            }}
-          />
+          {topic.words.length > 0 ? (
+            <Flashcards
+              words={topic.words}
+              savedWords={savedLemmas}
+              onSave={save}
+              starredWords={starredWords}
+              onStar={(w) => typeof slug === 'string' && toggleStar(slug, w.word)}
+              accent={bg}
+              onRate={(w, stage) => {
+                if (typeof slug !== 'string') return;
+                setStage(slug, w.word, stage);
+                if (stage === 0) addLapse(slug, w.word);
+                touch(slug);
+              }}
+            />
+          ) : (
+            <Card className="items-center py-10">
+              <View className="h-12 w-12 items-center justify-center rounded-2xl bg-primary-100">
+                <Icon name="book" size={24} color={color.primary} />
+              </View>
+              <Text className="mt-4 font-strong text-cardTitle text-ink">
+                {slug === NOTEBOOK_SLUG ? 'Chưa có từ nào trong sổ từ' : 'Bộ từ đang trống'}
+              </Text>
+              <Text className="mt-1.5 max-w-md text-center font-sans text-body text-muted">
+                {slug === NOTEBOOK_SLUG
+                  ? 'Hãy học các từ trong bộ từ IELTS hoặc lưu từ mới khi đọc báo để hệ thống FSRS tự động xếp lịch ôn tập ngắt quãng.'
+                  : 'Chưa có từ nào trong bộ này.'}
+              </Text>
+              {slug === NOTEBOOK_SLUG ? (
+                <Button
+                  className="mt-4"
+                  label="Khám phá 50 bộ từ IELTS"
+                  iconRight="arrow-right"
+                  onPress={() => router.push('/vocabulary/quiz' as never)}
+                />
+              ) : null}
+            </Card>
+          )}
         </View>
       </Appear>
 
