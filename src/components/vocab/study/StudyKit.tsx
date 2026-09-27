@@ -231,7 +231,10 @@ export function ChoiceGrid({
   correctIndex,
   onPick,
   hidden = [],
+  labels,
 }: {
+  /** Nhãn thay cho số 1–4, vd. A B C D của đề THPT. */
+  labels?: readonly string[];
   options: string[];
   picked: number | null;
   correctIndex: number;
@@ -278,7 +281,7 @@ export function ChoiceGrid({
                   color: isCorrect || isWrong ? "#FFFFFF" : color.muted,
                 }}
               >
-                {i + 1}
+                {labels?.[i] ?? i + 1}
               </Text>
             </View>
             <Text
