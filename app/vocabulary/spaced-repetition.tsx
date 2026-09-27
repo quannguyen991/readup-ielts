@@ -169,7 +169,17 @@ export default function SpacedRepetitionScreen() {
               setRevealed(false);
               setIsReviewing(true);
             }}
-            className="flex-row items-center gap-2 rounded-xl bg-ink px-4 py-2"
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 8,
+              borderRadius: 14,
+              backgroundColor: '#5B8BEE',
+              backgroundImage: 'linear-gradient(105deg, #7FA3F6 0%, #4A7FE8 100%)',
+              boxShadow: '0 4px 14px rgba(74, 127, 232, 0.3)',
+              paddingHorizontal: 16,
+              paddingVertical: 10,
+            } as never}
           >
             <Icon name="book" size={16} color="#FFFFFF" />
             <Text style={{ fontSize: 13, fontWeight: '700', color: '#FFFFFF' }}>
@@ -282,20 +292,24 @@ export default function SpacedRepetitionScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: '#0F172A',
+            backgroundColor: '#5B8BEE',
+            backgroundImage: 'linear-gradient(105deg, #7FA3F6 0%, #4A7FE8 100%)',
+            boxShadow: '0 8px 24px rgba(74, 127, 232, 0.28)',
             borderRadius: 20,
             padding: 20,
             borderWidth: 1,
-            borderColor: '#1E293B',
-          }}
+            borderColor: 'rgba(255, 255, 255, 0.25)',
+          } as never}
         >
           <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
             <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF', flex: 1 }}>
               Mức độ nhớ
             </Text>
-            <Text style={{ fontSize: 12, color: '#F59E0B', fontWeight: '600' }}>
-              {levels.dueCount} từ đến hạn ôn
-            </Text>
+            <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 }}>
+              <Text style={{ fontSize: 12, color: '#FFFFFF', fontWeight: '700' }}>
+                {levels.dueCount} từ đến hạn ôn
+              </Text>
+            </View>
           </View>
 
           {/* Biểu đồ 5 cột mức độ nhớ */}
@@ -309,16 +323,16 @@ export default function SpacedRepetitionScreen() {
             }}
           >
             {[
-              { label: 'Chưa nhớ', count: levels.unmemorized, color: '#64748B' },
-              { label: 'Cần học', count: levels.needLearning, color: '#38BDF8' },
-              { label: 'Hay quên', count: levels.forgetful, color: '#EF4444' },
-              { label: 'Nhớ tạm', count: levels.temporary, color: '#F59E0B' },
-              { label: 'Nhớ sâu', count: levels.mastered, color: '#10B981' },
+              { label: 'Chưa nhớ', count: levels.unmemorized, color: 'rgba(255, 255, 255, 0.45)' },
+              { label: 'Cần học', count: levels.needLearning, color: '#BAE6FD' },
+              { label: 'Hay quên', count: levels.forgetful, color: '#FECACA' },
+              { label: 'Nhớ tạm', count: levels.temporary, color: '#FDE047' },
+              { label: 'Nhớ sâu', count: levels.mastered, color: '#86EFAC' },
             ].map((col) => {
               const h = col.count > 0 ? Math.max(14, (col.count / maxLevel) * 60) : 6;
               return (
                 <View key={col.label} style={{ alignItems: 'center', flex: 1, marginHorizontal: 2 }}>
-                  <Text style={{ fontSize: 11, fontWeight: '600', color: '#94A3B8', marginBottom: 4 }}>
+                  <Text style={{ fontSize: 11, fontWeight: '600', color: '#FFFFFF', marginBottom: 4 }}>
                     {col.count}
                   </Text>
                   <View
@@ -330,7 +344,7 @@ export default function SpacedRepetitionScreen() {
                       backgroundColor: col.color,
                     }}
                   />
-                  <Text style={{ fontSize: 10, color: '#94A3B8', marginTop: 6, fontWeight: '500' }}>
+                  <Text style={{ fontSize: 10, color: 'rgba(255, 255, 255, 0.9)', marginTop: 6, fontWeight: '600' }}>
                     {col.label}
                   </Text>
                 </View>
@@ -343,12 +357,14 @@ export default function SpacedRepetitionScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: '#0F172A',
+            backgroundColor: '#5B8BEE',
+            backgroundImage: 'linear-gradient(105deg, #7FA3F6 0%, #4A7FE8 100%)',
+            boxShadow: '0 8px 24px rgba(74, 127, 232, 0.28)',
             borderRadius: 20,
             padding: 20,
             borderWidth: 1,
-            borderColor: '#1E293B',
-          }}
+            borderColor: 'rgba(255, 255, 255, 0.25)',
+          } as never}
         >
           <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF' }}>
             Dự báo ôn tập 7 ngày tới
@@ -374,7 +390,7 @@ export default function SpacedRepetitionScreen() {
                     style={{
                       fontSize: 11,
                       fontWeight: '600',
-                      color: isToday ? '#F97316' : '#94A3B8',
+                      color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                       marginBottom: 4,
                     }}
                   >
@@ -386,13 +402,13 @@ export default function SpacedRepetitionScreen() {
                       maxWidth: 30,
                       height: h,
                       borderRadius: 5,
-                      backgroundColor: isToday ? '#EA580C' : '#64748B',
+                      backgroundColor: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.4)',
                     }}
                   />
                   <Text
                     style={{
                       fontSize: 10,
-                      color: isToday ? '#F97316' : '#94A3B8',
+                      color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                       fontWeight: isToday ? '700' : '500',
                       marginTop: 6,
                     }}
@@ -431,7 +447,7 @@ export default function SpacedRepetitionScreen() {
               paddingHorizontal: 12,
               paddingVertical: 8,
               borderRadius: 10,
-              backgroundColor: filterMode === 'all' ? '#0F172A' : '#F1F5F9',
+              backgroundColor: filterMode === 'all' ? '#4A7FE8' : '#F1F5F9',
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'all' ? '#FFFFFF' : '#64748B' }}>
@@ -487,38 +503,39 @@ export default function SpacedRepetitionScreen() {
             <View
               key={entry.id}
               style={{
-                borderRadius: 14,
-                backgroundColor: '#0F172A',
+                borderRadius: 16,
+                backgroundColor: '#FFFFFF',
                 borderWidth: 1,
-                borderColor: '#1E293B',
-                paddingHorizontal: 16,
+                borderColor: '#E2E8F0',
+                boxShadow: '0 2px 10px rgba(15, 23, 42, 0.04)',
+                paddingHorizontal: 18,
                 paddingVertical: 14,
                 flexDirection: wide ? 'row' : 'column',
                 alignItems: wide ? 'center' : 'flex-start',
                 justifyContent: 'space-between',
                 gap: 12,
-              }}
+              } as never}
             >
               {/* Cột trái: Từ + phiên âm + từ loại + đồng nghĩa */}
               <View style={{ flex: wide ? 1.2 : undefined, minWidth: 0 }}>
-                <Text style={{ fontSize: 16, fontWeight: '700', color: '#FFFFFF' }}>
+                <Text style={{ fontSize: 16, fontWeight: '700', color: '#0F172A' }}>
                   {entry.word}
                 </Text>
-                <Text style={{ fontSize: 12, color: '#94A3B8', marginTop: 3 }}>
+                <Text style={{ fontSize: 12, color: '#64748B', marginTop: 3 }}>
                   {entry.partOfSpeech ?? 'word'}
-                  {entry.phonetic ? ` - ${entry.phonetic}` : ''}
-                  {entry.synonyms?.length ? ` - ${entry.synonyms.slice(0, 2).join(', ')}` : ''}
+                  {entry.phonetic ? ` · ${entry.phonetic}` : ''}
+                  {entry.synonyms?.length ? ` · ${entry.synonyms.slice(0, 2).join(', ')}` : ''}
                   {entry.antonyms?.length ? ` (Trái nghĩa: ${entry.antonyms.slice(0, 2).join(', ')})` : ''}
                 </Text>
               </View>
 
               {/* Cột giữa: Nghĩa tiếng Việt + ví dụ */}
               <View style={{ flex: wide ? 1.8 : undefined, minWidth: 0 }}>
-                <Text style={{ fontSize: 13, fontWeight: '600', color: '#F1F5F9' }}>
+                <Text style={{ fontSize: 13, fontWeight: '600', color: '#1E293B' }}>
                   {entry.definitionVi ?? entry.definitionGeneral ?? '—'}
                 </Text>
                 {entry.exampleSentence ? (
-                  <Text style={{ fontSize: 12, color: '#94A3B8', marginTop: 3 }} numberOfLines={2}>
+                  <Text style={{ fontSize: 12, color: '#64748B', marginTop: 3 }} numberOfLines={2}>
                     {entry.exampleSentence}
                   </Text>
                 ) : null}
@@ -526,7 +543,7 @@ export default function SpacedRepetitionScreen() {
 
               {/* Cột phải: Thời gian + nút phát âm */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, alignSelf: wide ? 'center' : 'flex-end' }}>
-                <Text style={{ fontSize: 11, color: '#64748B' }}>
+                <Text style={{ fontSize: 11, color: '#94A3B8' }}>
                   {formatRelativeTime(entry.createdAt)}
                 </Text>
 
@@ -543,10 +560,10 @@ export default function SpacedRepetitionScreen() {
                   style={{
                     padding: 8,
                     borderRadius: 999,
-                    backgroundColor: 'rgba(148, 163, 184, 0.1)',
+                    backgroundColor: '#EFF6FF',
                   }}
                 >
-                  <Icon name="volume" size={15} color="#94A3B8" />
+                  <Icon name="volume" size={15} color="#4A7FE8" />
                 </Pressable>
               </View>
             </View>

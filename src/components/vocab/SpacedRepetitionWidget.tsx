@@ -48,11 +48,13 @@ export function SpacedRepetitionWidget() {
     <View
       style={{
         borderRadius: 20,
-        backgroundColor: '#0F172A',
+        backgroundColor: '#5B8BEE',
+        backgroundImage: 'linear-gradient(105deg, #7FA3F6 0%, #4A7FE8 100%)',
+        boxShadow: '0 8px 24px rgba(74, 127, 232, 0.28)',
         padding: 20,
         borderWidth: 1,
-        borderColor: '#1E293B',
-      }}
+        borderColor: 'rgba(255, 255, 255, 0.25)',
+      } as never}
     >
       {/* Tiêu đề & số liệu tóm tắt */}
       <Text className="font-heavy text-inkInverse" style={{ fontSize: 18, color: '#FFFFFF' }}>
@@ -60,15 +62,15 @@ export function SpacedRepetitionWidget() {
       </Text>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 6 }}>
-        <Text style={{ fontSize: 13, color: '#94A3B8' }}>
+        <Text style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.9)' }}>
           Từ đến hạn:{' '}
-          <Text style={{ fontWeight: '700', color: levels.dueCount > 0 ? '#F97316' : '#FFFFFF' }}>
+          <Text style={{ fontWeight: '700', color: levels.dueCount > 0 ? '#FEF08A' : '#FFFFFF' }}>
             {levels.dueCount}
           </Text>
         </Text>
-        <Text style={{ fontSize: 13, color: '#94A3B8' }}>
+        <Text style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.9)' }}>
           Thuần thục:{' '}
-          <Text style={{ fontWeight: '700', color: '#10B981' }}>{levels.mastered}</Text>
+          <Text style={{ fontWeight: '700', color: '#BBF7D0' }}>{levels.mastered}</Text>
         </Text>
       </View>
 
@@ -77,9 +79,9 @@ export function SpacedRepetitionWidget() {
         style={{
           marginTop: 16,
           fontSize: 12,
-          color: '#94A3B8',
+          color: 'rgba(255, 255, 255, 0.85)',
           borderBottomWidth: 1,
-          borderBottomColor: 'rgba(148, 163, 184, 0.25)',
+          borderBottomColor: 'rgba(255, 255, 255, 0.25)',
           alignSelf: 'flex-start',
           paddingBottom: 2,
         }}
@@ -110,7 +112,7 @@ export function SpacedRepetitionWidget() {
                 style={{
                   fontSize: 11,
                   fontWeight: '600',
-                  color: isToday ? '#F97316' : '#94A3B8',
+                  color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                   marginBottom: 4,
                 }}
               >
@@ -124,7 +126,7 @@ export function SpacedRepetitionWidget() {
                   maxWidth: 36,
                   height: barHeight,
                   borderRadius: 6,
-                  backgroundColor: isToday ? '#EA580C' : '#64748B',
+                  backgroundColor: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.4)',
                 }}
               />
 
@@ -133,7 +135,7 @@ export function SpacedRepetitionWidget() {
                 style={{
                   fontSize: 11,
                   fontWeight: isToday ? '700' : '500',
-                  color: isToday ? '#F97316' : '#94A3B8',
+                  color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                   marginTop: 6,
                 }}
               >
@@ -158,10 +160,11 @@ export function SpacedRepetitionWidget() {
           backgroundColor: '#FFFFFF',
           borderRadius: 14,
           paddingVertical: 12,
-        }}
+          boxShadow: '0 4px 12px rgba(15, 23, 42, 0.08)',
+        } as never}
       >
-        <Icon name="calendar" size={18} color="#0F172A" />
-        <Text style={{ fontSize: 14, fontWeight: '700', color: '#0F172A' }}>
+        <Icon name="calendar" size={18} color="#4A7FE8" />
+        <Text style={{ fontSize: 14, fontWeight: '700', color: '#4A7FE8' }}>
           Lặp lại ngắt quãng
         </Text>
       </Pressable>
