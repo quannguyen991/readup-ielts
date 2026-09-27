@@ -81,7 +81,12 @@ export const paper = {
 
 /** Gradient xanh → tím dùng cho banner hero (ảnh 3, 4, 5). */
 export const gradient = {
-  hero: ['#1D4FD7', '#2563EB', '#7C3AED'] as const,
+  /**
+   * Khối đầu trang tối (Lộ trình, Thanh toán, Mua chung, Mời bạn, Thi thử SAT…).
+   * Từng là xanh dương → tím (#1D4FD7 → #7C3AED); người dùng "rất ghét màu xanh
+   * kiểu này" (27/09/2026) nên đổi sang đá than ấm — chữ trắng vẫn rõ.
+   */
+  hero: ['#1C1917', '#292524', '#44403C'] as const,
   heroSoft: ['#EFF5FF', '#F5F1FE'] as const,
   primaryButton: ['#2563EB', '#4F46E5'] as const,
 } as const;

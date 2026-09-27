@@ -6,7 +6,7 @@ import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade, PressScale } from '@/components/motion/Motion';
-import { BilingualLines, LEVEL_TONE, LessonCard } from '@/components/sentence/LessonCard';
+import { BilingualLines, LessonCard } from '@/components/sentence/LessonCard';
 import { Icon, Pagination } from '@/components/ui';
 import {
   BILINGUAL_LEVELS,
@@ -127,19 +127,19 @@ function PortalView() {
   );
 }
 
+/**
+ * Thẻ một tờ báo = BÌA TẠP CHÍ: tên báo in lớn trên màu riêng của báo, bên dưới
+ * là ba tiêu đề mới nhất THẬT của chính tờ ấy — nhìn là biết báo này viết về gì,
+ * thay cho thanh phân bố trình độ + chú thích lặt vặt của bản trước (người dùng
+ * chê "thiết kế xấu quá", 27/09/2026).
+ */
 function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number }) {
   const featured = outlet.key === 'readup';
   const articles = useMemo(() => articlesOfOutlet(outlet.key), [outlet.key]);
-  const byLevel = useMemo(() => {
-    const out: { level: string; n: number }[] = [];
-    for (const l of BILINGUAL_LEVELS) {
-      const n = articles.filter((x) => x.level === l).length;
-      if (n > 0) out.push({ level: l, n });
-    }
-    return out;
-  }, [articles]);
-  const minutes = articles.map((x) => x.estMinutes);
-  const span = minutes.length ? `${Math.min(...minutes)}–${Math.max(...minutes)} phút/bài` : '';
+  const headlines = articles.slice(0, 3);
+  const levels = BILINGUAL_LEVELS.filter((l) => articles.some((x) => x.level === l));
+  const levelSpan = levels.length > 1 ? `${levels[0]} → ${levels[levels.length - 1]}` : (levels[0] ?? '');
+  const [hover, setHover] = useState(false);
 
   return (
     <PressScale
@@ -148,62 +148,64 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
       onPress={() => router.setParams({ s: outlet.key })}
       style={{ height: '100%' }}
     >
-      <View className="h-full rounded-[22px] bg-white p-5" style={SOFT_CARD}>
-        <View className="flex-row items-center gap-4">
-          <View className="items-center justify-center rounded-2xl" style={{ width: 58, height: 58, backgroundColor: outlet.cover }}>
-            <Text className="font-heavy" style={{ fontSize: 18, letterSpacing: 0.5, color: outlet.ink }}>
-              {monogram(outlet.name)}
+      <View
+        className="h-full overflow-hidden rounded-[22px] bg-white"
+        {...({ onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) } as object)}
+        style={{
+          ...SOFT_CARD,
+          ...(Platform.OS === 'web'
+            ? ({
+                transform: hover ? 'translateY(-3px)' : 'none',
+                transition: 'transform 200ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 200ms ease',
+                boxShadow: hover ? '0 18px 40px rgba(30,41,99,0.16)' : (SOFT_CARD as { boxShadow?: string }).boxShadow,
+              } as object)
+            : null),
+        }}
+      >
+        {/* Bìa */}
+        <View className="px-5 pb-4 pt-5" style={{ backgroundColor: outlet.cover }}>
+          <View className="flex-row items-center justify-between gap-3">
+            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.4, color: outlet.ink, opacity: 0.75 }}>
+              {featured ? 'NÊN ĐỌC TRƯỚC' : outlet.license.toUpperCase()}
+            </Text>
+            <Text className="font-strong" style={{ fontSize: 12, color: outlet.ink, opacity: 0.85 }}>
+              {count} bài · {levelSpan}
             </Text>
           </View>
-          <View className="min-w-0 flex-1">
-            <View className="flex-row flex-wrap items-center gap-2">
-              <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 25, color: INK }}>
-                {outlet.name}
-              </Text>
-              {featured ? (
-                <View className="rounded-pill px-2 py-0.5" style={{ backgroundColor: '#EEF2FF' }}>
-                  <Text className="font-strong" style={{ fontSize: 11, color: color.primary }}>
-                    Nên đọc trước
-                  </Text>
-                </View>
-              ) : null}
-            </View>
-            <Text className="mt-0.5 font-sans" style={{ fontSize: 14, lineHeight: 20, color: MUTED }} numberOfLines={2}>
-              {outlet.tagline}
-            </Text>
-          </View>
-          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F1F4FB' }}>
-            <Icon name="arrow-right" size={18} color={INK} strokeWidth={2.2} />
-          </View>
-        </View>
-
-        {/* Dấu vân: tờ báo này nặng trình độ nào — chia đúng theo số bài thật. */}
-        <View className="mt-5 flex-row overflow-hidden rounded-pill" style={{ height: 10, backgroundColor: '#F1F4FB' }}>
-          {byLevel.map((l) => (
-            <View key={l.level} style={{ flexGrow: l.n, flexBasis: 0, backgroundColor: (LEVEL_TONE[levelKey(l.level)] ?? LEVEL_TONE.B1!).mid }} />
-          ))}
-        </View>
-        <View className="mt-2 flex-row flex-wrap gap-x-3 gap-y-1">
-          {byLevel.map((l) => (
-            <View key={l.level} className="flex-row items-center gap-1">
-              <View style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: (LEVEL_TONE[levelKey(l.level)] ?? LEVEL_TONE.B1!).mid }} />
-              <Text className="font-mid text-label" style={{ color: MUTED }}>
-                {l.level} · {l.n}
-              </Text>
-            </View>
-          ))}
-        </View>
-
-        <View className="flex-1" />
-        <View className="mt-4 flex-row flex-wrap items-center gap-x-3 gap-y-1 border-t pt-3" style={{ borderColor: '#EEF0F6' }}>
-          <Text className="font-strong" style={{ fontSize: 14, color: INK }}>
-            {count} bài
+          <Text className="mt-3 font-heavy" style={{ fontSize: 28, lineHeight: 32, color: outlet.ink }} numberOfLines={1}>
+            {outlet.name}
           </Text>
-          {span ? <Text className="font-mid text-label" style={{ color: MUTED }}>{span}</Text> : null}
-          <View className="ml-auto rounded-pill px-2 py-0.5" style={{ backgroundColor: '#F1F4FB' }}>
-            <Text className="font-semi" style={{ fontSize: 11, color: MUTED }}>
-              {outlet.license}
-            </Text>
+          <Text className="mt-1 font-sans" style={{ fontSize: 14, lineHeight: 20, color: outlet.ink, opacity: 0.85 }} numberOfLines={2}>
+            {outlet.tagline}
+          </Text>
+        </View>
+
+        {/* Ba tiêu đề thật */}
+        <View className="flex-1 px-5 py-3">
+          {headlines.map((h, i) => (
+            <View key={h.id} className={`flex-row items-start gap-2.5 py-2 ${i > 0 ? 'border-t' : ''}`} style={{ borderColor: '#EEF0F6' }}>
+              <View style={{ width: 4, height: 16, borderRadius: 2, marginTop: 2, backgroundColor: outlet.cover }} />
+              <View className="min-w-0 flex-1">
+                <Text className="font-strong" style={{ fontSize: 14.5, lineHeight: 20, color: INK }} numberOfLines={1}>
+                  {stripInline(h.titleEn)}
+                </Text>
+                <Text className="font-sans" style={{ fontSize: 12.5, color: MUTED }} numberOfLines={1}>
+                  {stripInline(h.titleVi)}
+                </Text>
+              </View>
+              <Text className="font-semi" style={{ fontSize: 11.5, color: MUTED }}>
+                {h.level}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        <View className="flex-row items-center justify-between px-5 pb-4">
+          <Text className="font-semi" style={{ fontSize: 13, color: MUTED }}>
+            Xem cả {count} bài
+          </Text>
+          <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: hover ? outlet.cover : '#F1F4FB' }}>
+            <Icon name="arrow-right" size={17} color={hover ? outlet.ink : INK} strokeWidth={2.2} />
           </View>
         </View>
       </View>

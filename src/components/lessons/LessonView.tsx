@@ -8,6 +8,7 @@ import { Appear } from '@/components/motion/Motion';
 import { Button } from '@/components/ui';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import type { LessonBlock, TheoryLesson } from '@/data/lessons/types';
+import { choicesIn, matchingChoice } from './example-choice';
 import { color } from '@/theme/tokens';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
@@ -94,19 +95,65 @@ export function LessonView({
           </View>
         </Appear>
 
-        <Step n={1} title="Học" />
-        <View className="gap-3">
-          {lesson.blocks.map((b, i) => (
-            <Appear key={i} index={i + 1}>
-              <Block block={b} math={!!math} />
-            </Appear>
-          ))}
-        </View>
+        {/* LUẬT CẦN NHỚ — mọi ý kiến thức trong MỘT khung, đọc một lượt là nắm cả bài. */}
+        <Section icon="book" title="Luật cần nhớ" sub={`${rulesOf(lesson).length} ý — đọc hết một lượt trước khi sang ví dụ`} />
+        <Appear index={1}>
+          <View className="rounded-[22px] bg-white p-5 md:p-6" style={CARD}>
+            {rulesOf(lesson).map((r, i) => (
+              <View key={i} className={i > 0 ? 'mt-4 border-t pt-4' : ''} style={{ borderColor: '#EEF0F6' }}>
+                <View className="flex-row items-start gap-3">
+                  <View className="mt-1.5 h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: RULE_TONES[i % RULE_TONES.length] }} />
+                  <View className="min-w-0 flex-1">
+                    <Text className="font-heavy text-ink" style={{ fontSize: 17, lineHeight: 23 }}>
+                      {r.title}
+                    </Text>
+                    <View className="mt-1">
+                      <RichText math={!!math}>{r.body}</RichText>
+                    </View>
+                    {r.formula ? (
+                      <View className="mt-2.5 self-start rounded-xl px-4 py-2.5" style={{ backgroundColor: '#F4F6FB' }}>
+                        <RichText math={!!math} size={17} bold>
+                          {r.formula}
+                        </RichText>
+                      </View>
+                    ) : null}
+                  </View>
+                </View>
+              </View>
+            ))}
+          </View>
+        </Appear>
 
-        <Step n={2} title="Tự kiểm tra — 3 câu" />
+        {/* VÍ DỤ — tự chọn trước, rồi mới mở lời giải. */}
+        {examplesOf(lesson).length > 0 ? (
+          <>
+            <Section icon="pencil" title="Thử với ví dụ" sub="Tự trả lời trước, rồi mới mở lời giải từng bước" />
+            <View className="gap-3">
+              {examplesOf(lesson).map((ex, i) => (
+                <Appear key={i} index={i + 2}>
+                  <ExampleCard block={ex} math={!!math} n={i + 1} total={examplesOf(lesson).length} />
+                </Appear>
+              ))}
+            </View>
+          </>
+        ) : null}
+
+        {/* BẪY + MẸO — tách riêng khỏi phần luật để không lẫn. */}
+        {notesOf(lesson).length > 0 ? (
+          <>
+            <Section icon="info" title="Cẩn thận khi làm đề" sub="Bẫy đề hay giăng và mẹo làm nhanh" />
+            <View className="flex-row flex-wrap gap-3">
+              {notesOf(lesson).map((n, i) => (
+                <NoteCard key={i} block={n} math={!!math} />
+              ))}
+            </View>
+          </>
+        ) : null}
+
+        <Section icon="target" title="Tự kiểm tra" sub="3 câu, chấm ngay — sai câu nào xem lại luật tương ứng ở trên" />
         {check}
 
-        <Step n={3} title="Chứng minh bằng bộ đề" />
+        <Section icon="trophy" title="Luyện bằng bộ đề" sub="Đạt 8/10 ở một bộ là nắm được bài" />
         <View className="rounded-[22px] bg-white p-6" style={CARD}>
           <Text className="font-sans text-bodyLg text-ink">
             Làm các bộ đề 10 câu của đúng kỹ năng này. Đạt từ 8/10 trở lên ở một bộ là bạn đã nắm được bài.
@@ -122,13 +169,126 @@ export function LessonView({
   );
 }
 
-function Step({ n, title }: { n: number; title: string }) {
+const RULE_TONES = ['#2563EB', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#0EA5E9'];
+
+type RuleBlock = Extract<LessonBlock, { kind: 'rule' }>;
+type ExampleBlock = Extract<LessonBlock, { kind: 'example' }>;
+type NoteBlock = Extract<LessonBlock, { kind: 'trap' | 'tip' }>;
+
+const rulesOf = (l: TheoryLesson) => l.blocks.filter((x): x is RuleBlock => x.kind === 'rule');
+const examplesOf = (l: TheoryLesson) => l.blocks.filter((x): x is ExampleBlock => x.kind === 'example');
+const notesOf = (l: TheoryLesson) => l.blocks.filter((x): x is NoteBlock => x.kind === 'trap' || x.kind === 'tip');
+
+/**
+ * Tiêu đề một phần của bài. Bản cũ là ô số tròn "1 Học / 2 / 3" — người dùng
+ * thấy bài lý thuyết khó hiểu, khó dùng (27/09/2026): luật rời từng thẻ, ví dụ
+ * lộ sẵn đáp án, bẫy/mẹo lẫn giữa các luật. Giờ bài chia theo VIỆC người học
+ * làm: đọc luật → tự thử ví dụ → xem bẫy → tự kiểm tra → luyện bộ đề.
+ */
+function Section({ icon, title, sub }: { icon: IconName; title: string; sub?: string }) {
   return (
     <View className="mb-3 mt-8 flex-row items-center gap-3">
-      <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: color.primary }}>
-        <Text className="font-heavy text-body text-white">{n}</Text>
+      <View className="h-9 w-9 items-center justify-center rounded-xl bg-white" style={CARD}>
+        <Icon name={icon} size={17} color={color.ink} />
       </View>
-      <Text className="font-heavy text-sectionTitle text-ink">{title}</Text>
+      <View className="min-w-0 flex-1">
+        <Text className="font-heavy text-sectionTitle text-ink">{title}</Text>
+        {sub ? <Text className="font-sans text-label text-ink" style={{ opacity: 0.7 }}>{sub}</Text> : null}
+      </View>
+    </View>
+  );
+}
+
+function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boolean; n: number; total: number }) {
+  const choices = choicesIn(block.problem);
+  const [picked, setPicked] = React.useState<string | null>(null);
+  const [open, setOpen] = React.useState(false);
+  const revealed = open || picked !== null;
+  const correct = picked !== null && choices !== null && matchingChoice(choices, block.answer) === picked;
+
+  return (
+    <View className="rounded-[22px] bg-white p-5" style={CARD}>
+      <Text className="font-semi text-label text-muted">
+        Ví dụ {n}/{total}
+      </Text>
+      <View className="mt-1.5">
+        <RichText math={math} bold size={17}>
+          {block.problem}
+        </RichText>
+      </View>
+
+      {choices && !revealed ? (
+        <View className="mt-4 flex-row flex-wrap gap-2">
+          {choices.map((c) => (
+            <Pressable
+              key={c}
+              accessibilityRole="button"
+              onPress={() => setPicked(c)}
+              className="rounded-xl px-5 py-2.5"
+              style={{ borderWidth: 1.5, borderColor: '#DCE1EE', backgroundColor: '#FFFFFF' }}
+            >
+              <Text className="font-strong text-body text-ink">{c}</Text>
+            </Pressable>
+          ))}
+        </View>
+      ) : null}
+
+      {!revealed ? (
+        <Pressable accessibilityRole="button" onPress={() => setOpen(true)} className="mt-3 self-start">
+          <Text className="font-semi text-label" style={{ color: color.primary }}>
+            {choices ? 'Chưa chắc? Xem luôn lời giải' : 'Tự nghĩ xong rồi bấm để xem lời giải'} →
+          </Text>
+        </Pressable>
+      ) : (
+        <Appear>
+          {picked !== null ? (
+            <View className="mt-4 flex-row items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: correct ? '#ECFDF3' : '#FFF1F2' }}>
+              <Icon name={correct ? 'check' : 'close'} size={16} color={correct ? '#15803D' : '#BE123C'} strokeWidth={2.4} />
+              <Text className="font-strong text-body" style={{ color: correct ? '#15803D' : '#BE123C' }}>
+                {correct ? `Đúng — "${picked}"` : `Chưa đúng — bạn chọn "${picked}"`}
+              </Text>
+            </View>
+          ) : null}
+          <View className="mt-4 gap-0">
+            {block.steps.map((st, i) => (
+              <View key={i} className="flex-row gap-3">
+                <View className="items-center" style={{ width: 14 }}>
+                  <View className="mt-1.5 h-2.5 w-2.5 rounded-pill" style={{ backgroundColor: color.primary }} />
+                  {i < block.steps.length - 1 ? <View style={{ width: 2, flex: 1, backgroundColor: '#DCE6FB', marginTop: 2 }} /> : null}
+                </View>
+                <View className="min-w-0 flex-1 pb-3">
+                  <RichText math={math}>{st}</RichText>
+                </View>
+              </View>
+            ))}
+          </View>
+          <View className="mt-1 flex-row flex-wrap items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: '#F4F6FB' }}>
+            <Text className="font-strong text-body text-ink">Đáp án:</Text>
+            <View className="min-w-0 flex-1">
+              <RichText math={math} bold>
+                {block.answer}
+              </RichText>
+            </View>
+          </View>
+        </Appear>
+      )}
+    </View>
+  );
+}
+
+function NoteCard({ block, math }: { block: NoteBlock; math: boolean }) {
+  const trap = block.kind === 'trap';
+  return (
+    <View className="flex-row gap-3 rounded-2xl p-4" style={{ flexGrow: 1, flexBasis: 300, backgroundColor: trap ? '#FFF1F2' : '#FFFBEB' }}>
+      <Icon name={trap ? 'info' : 'sparkle'} size={18} color={trap ? '#BE123C' : '#B45309'} />
+      <View className="min-w-0 flex-1">
+        <Text className="font-strong text-body" style={{ color: trap ? '#BE123C' : '#B45309' }}>
+          {trap ? 'Bẫy hay gặp' : 'Mẹo phòng thi'}
+        </Text>
+        <View className="mt-0.5">
+          <RichText math={math}>{block.text}</RichText>
+        </View>
+      </View>
     </View>
   );
 }
@@ -143,83 +303,5 @@ function RichText({ math, children, size = 16, bold }: { math: boolean; children
     <Text className={bold ? 'font-semi text-ink' : 'font-sans text-ink'} style={{ fontSize: size, lineHeight: size * 1.5 }}>
       {children}
     </Text>
-  );
-}
-
-function Block({ block, math }: { block: LessonBlock; math: boolean }) {
-  if (block.kind === 'rule') {
-    return (
-      <View className="rounded-2xl bg-white p-5" style={CARD}>
-        <Text className="font-strong text-cardTitle text-ink">{block.title}</Text>
-        <View className="mt-1.5">
-          <RichText math={math}>{block.body}</RichText>
-        </View>
-        {block.formula ? (
-          <View className="mt-3 rounded-xl px-4 py-3" style={{ backgroundColor: '#F5F3FF', borderLeftWidth: 3, borderLeftColor: '#7C3AED' }}>
-            <RichText math={math} size={17} bold>
-              {block.formula}
-            </RichText>
-          </View>
-        ) : null}
-      </View>
-    );
-  }
-  if (block.kind === 'example') {
-    return (
-      <View className="rounded-2xl bg-white p-5" style={CARD}>
-        <Label icon="pencil" text="Ví dụ" tone={color.primary} />
-        <View className="mt-2">
-          <RichText math={math} bold>{block.problem}</RichText>
-        </View>
-        <View className="mt-3 gap-2">
-          {block.steps.map((s, i) => (
-            <View key={i} className="flex-row items-start gap-3">
-              <View className="mt-0.5 h-6 w-6 items-center justify-center rounded-pill bg-primary-50">
-                <Text className="font-strong text-label text-primary-700">{i + 1}</Text>
-              </View>
-              <View className="min-w-0 flex-1">
-                <RichText math={math}>{s}</RichText>
-              </View>
-            </View>
-          ))}
-        </View>
-        <View className="mt-3 flex-row flex-wrap items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: '#ECFDF3' }}>
-          <Text className="font-strong text-body" style={{ color: '#15803D' }}>
-            Đáp án:
-          </Text>
-          <View className="min-w-0 flex-1">
-            <RichText math={math} bold>{block.answer}</RichText>
-          </View>
-        </View>
-      </View>
-    );
-  }
-  const trap = block.kind === 'trap';
-  return (
-    <View
-      className="flex-row gap-3 rounded-2xl p-4"
-      style={{ backgroundColor: trap ? '#FFF1F2' : '#FFFBEB', borderWidth: 1, borderColor: trap ? '#FECDD3' : '#FDE68A' }}
-    >
-      <Icon name={trap ? 'info' : 'sparkle'} size={18} color={trap ? '#BE123C' : '#B45309'} />
-      <View className="min-w-0 flex-1">
-        <Text className="font-strong text-body" style={{ color: trap ? '#BE123C' : '#B45309' }}>
-          {trap ? 'Bẫy hay gặp' : 'Mẹo phòng thi'}
-        </Text>
-        <View className="mt-0.5">
-          <RichText math={math}>{block.text}</RichText>
-        </View>
-      </View>
-    </View>
-  );
-}
-
-function Label({ icon, text, tone }: { icon: IconName; text: string; tone: string }) {
-  return (
-    <View className="flex-row items-center gap-1.5">
-      <Icon name={icon} size={15} color={tone} />
-      <Text className="font-strong text-label uppercase tracking-[1.1px]" style={{ color: tone }}>
-        {text}
-      </Text>
-    </View>
   );
 }
