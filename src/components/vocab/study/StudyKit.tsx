@@ -11,6 +11,7 @@ import { BattleStrip } from "@/components/game/BattleStrip";
 import { Icon } from "@/components/ui/Icon";
 import type { StudyWord } from "@/services/vocab/topic-study";
 import { color } from "@/theme/tokens";
+import { SkyEffect } from "@/components/effects/SkyEffect";
 
 /**
  * Bộ khung dùng chung cho các màn học một bộ từ (Học, Nghe chép, Điền câu,
@@ -161,10 +162,11 @@ function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean })
   );
 }
 
-/** Thẻ trắng chứa câu hỏi. */
+/** Thẻ câu hỏi — nền trời sáng có sao lấp lánh, cùng thẻ lật. */
 export function StudyCard({ children }: { children: React.ReactNode }) {
   return (
-    <View className="rounded-[22px] bg-surface p-6 lg:p-8" style={CARD_SHADOW}>
+    <View className="overflow-hidden rounded-[22px] bg-surface p-6 lg:p-8" style={CARD_SHADOW}>
+      <SkyEffect intensity={0.7} radius={22} />
       {children}
     </View>
   );
