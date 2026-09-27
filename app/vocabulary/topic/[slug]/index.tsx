@@ -349,7 +349,7 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  */
 const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
   { key: 'learn', label: 'Học xen kẽ', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', icon: 'book', tone: '#2563EB', recommended: true },
-  { key: 'quiz', label: 'Quiz ôn tập', note: 'Trắc nghiệm cả bộ, đổi chiều Việt ↔ Anh', icon: 'target', tone: '#EA580C' },
+  { key: 'quiz', label: 'Quiz ôn tập', note: 'Trắc nghiệm A/B/C/D kiểu đề THPT', icon: 'target', tone: '#EA580C' },
   { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
   { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#7C3AED' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
