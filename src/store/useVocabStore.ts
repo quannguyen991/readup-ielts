@@ -39,6 +39,8 @@ export type VocabEntry = {
   isCollocation: boolean;
   masteryPercent: number;
   createdAt: string;
+  synonyms?: string[];
+  antonyms?: string[];
 };
 
 /*

@@ -3,15 +3,18 @@ import {
   mergeBilling,
   mergeMath,
   mergeStudy,
+  mergeTopicStudy,
   mergeVocab,
   type BillingPayload,
   type MathPayload,
   type StudyPayload,
+  type TopicStudyPayload,
   type VocabPayload,
 } from './store-merges';
 import { useBillingStore } from '@/store/useBillingStore';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
@@ -180,11 +183,42 @@ const roadmapStore: SyncedStore = {
   merge: (local, remote) => mergeRoadmap(local as RoadmapPayload | null, remote as RoadmapPayload | null),
 };
 
+/** Tiến độ 50 bộ từ chủ đề (stages, scores, starred, lapses, mistakeLog, lastAt). */
+const topicStudyStore: SyncedStore = {
+  key: 'topic_study',
+  read: () => {
+    const s = useTopicStudyStore.getState();
+    return {
+      stages: s.stages,
+      scores: s.scores,
+      starred: s.starred,
+      lapses: s.lapses,
+      mistakeLog: s.mistakeLog,
+      learnSettings: s.learnSettings,
+      lastAt: s.lastAt,
+    };
+  },
+  write: (payload) => {
+    const data = payload as TopicStudyPayload;
+    useTopicStudyStore.setState({
+      stages: (data.stages ?? {}) as never,
+      scores: (data.scores ?? {}) as never,
+      starred: (data.starred ?? {}) as never,
+      lapses: (data.lapses ?? {}) as never,
+      mistakeLog: (data.mistakeLog ?? []) as never,
+      learnSettings: (data.learnSettings ?? useTopicStudyStore.getState().learnSettings) as never,
+      lastAt: (data.lastAt ?? {}) as never,
+    });
+  },
+  merge: mergeTopicStudy,
+};
+
 export function registerAllSyncedStores(): void {
   registerSyncedStore(roadmapStore);
   registerSyncedStore(mathStore);
   registerSyncedStore(studyStore);
   registerSyncedStore(vocabStore);
+  registerSyncedStore(topicStudyStore);
   registerSyncedStore(billingStore);
   registerSyncedStore(weeklyStore);
   registerSyncedStore(satRwStore);
