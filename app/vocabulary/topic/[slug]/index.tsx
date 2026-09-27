@@ -134,8 +134,22 @@ export default function VocabTopicScreen() {
         </View>
       </Appear>
 
-      {/* ------------------------------------------------ thẻ ghi nhớ */}
+      {/* ---------------------------------------------- mọi cách luyện của bộ */}
       <Appear index={1}>
+        <View className="mt-5">
+          <Text className="font-heavy text-sectionTitle text-ink">Cách luyện</Text>
+          <View className="mt-3">
+            <Grid columns={6} tabletColumns={3} mobileColumns={2} gap={12}>
+              {MODES.map((m) => (
+                <ModeTile key={m.key} mode={m} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
+              ))}
+            </Grid>
+          </View>
+        </View>
+      </Appear>
+
+      {/* ------------------------------------------------ thẻ ghi nhớ */}
+      <Appear index={2}>
         <View className="mt-6 w-full self-center" style={{ maxWidth: 720 }}>
           <Flashcards
             words={topic.words}
@@ -151,20 +165,6 @@ export default function VocabTopicScreen() {
               touch(slug);
             }}
           />
-        </View>
-      </Appear>
-
-      {/* ---------------------------------------------- mọi cách luyện của bộ */}
-      <Appear index={2}>
-        <View className="mt-8">
-          <Text className="font-heavy text-sectionTitle text-ink">Cách luyện khác</Text>
-          <View className="mt-3">
-            <Grid columns={6} tabletColumns={3} mobileColumns={2} gap={12}>
-              {MODES.map((m) => (
-                <ModeTile key={m.key} mode={m} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
-              ))}
-            </Grid>
-          </View>
         </View>
       </Appear>
 
