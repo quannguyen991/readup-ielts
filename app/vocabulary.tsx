@@ -14,6 +14,7 @@ import { useDueCards, useVocabStore, type CardKind, type VocabEntry } from '@/st
 import { color, wordStatusColor } from '@/theme/tokens';
 import type { WordStatusKind } from '@/types/database';
 import { CrossFade } from '@/components/motion/Motion';
+import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
 
 const CARD_KIND_LABEL: Record<CardKind, string> = {
   word_to_meaning: 'Từ → nghĩa',
@@ -122,6 +123,10 @@ export default function VocabularyScreen() {
             progress={words.length === 0 ? undefined : { value: avgMastery, tone: 'accent' }}
           />
         </Grid>
+
+        <View className="mt-4">
+          <SpacedRepetitionWidget />
+        </View>
       </View>
 
       {/* Đổi tab Danh sách / Ôn ngay: nội dung mờ dần sang, không nhảy cụt. */}

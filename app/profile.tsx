@@ -10,6 +10,7 @@ import { AnimatedAvatar, AvatarBadge } from '@/components/profile/AnimatedAvatar
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { ProfileEffect } from '@/components/profile/ProfileEffect';
 import { Badge, Button, Card, SectionHeader } from '@/components/ui';
+import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
 import { MASCOTS, STAR_BONUS } from '@/services/game/mascots';
 import { ACHIEVEMENTS, levelProgress, titleForLevel } from '@/services/game/rules';
 import { currentStreak, monthPoints, tierFor } from '@/services/gamification/points';
@@ -118,8 +119,15 @@ export default function ProfileScreen() {
         </View>
       </Appear>
 
-      {/* Số liệu nhanh */}
+      {/* Lặp lại ngắt quãng (FSRS / Spaced Repetition) */}
       <Appear index={1}>
+        <View className="mt-4">
+          <SpacedRepetitionWidget />
+        </View>
+      </Appear>
+
+      {/* Số liệu nhanh */}
+      <Appear index={2}>
         <View className="mt-4 flex-row flex-wrap gap-3">
           <Stat glyph="⭐" value={formatStars(ledger.balance)} label="sao đang có" tint="#FEF3C7" />
           <Stat glyph="🔥" value={String(streak)} label="ngày liên tiếp" tint="#FFEDD5" />

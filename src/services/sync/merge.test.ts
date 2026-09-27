@@ -11,7 +11,7 @@ import {
   unionByKey,
   unionStrings,
 } from './merge';
-import { mergeBilling, mergeMath, mergeStudy, mergeVocab } from './store-merges';
+import { mergeBilling, mergeMath, mergeStudy, mergeTopicStudy, mergeVocab } from './store-merges';
 
 /**
  * Kịch bản gốc mà mọi test dưới đây bám vào:
@@ -200,6 +200,87 @@ test('Gói: bộ đếm của chu kỳ CŨ không đè lên chu kỳ hiện tạ
   assert.equal(merged.usage.reading_per_day?.count, 1, 'Số của hôm qua không được tính vào hôm nay.');
 });
 
+test('TopicStudy: lần đầu đăng nhập thì dữ liệu trên máy được mang lên tài khoản', () => {
+  const local = {
+    stages: { 'environment-nature': { forest: 2 } },
+    scores: { 'environment-nature': [{ score: 100, at: '2026-09-27T10:00:00.000Z' }] },
+    starred: { 'environment-nature': ['forest'] },
+    lapses: { 'environment-nature': { forest: 1 } },
+    mistakeLog: [{ kind: 'confused_meaning', word: 'forest', slug: 'environment-nature', at: '2026-09-27T10:00:00.000Z' }],
+    learnSettings: {},
+    lastAt: { 'environment-nature': '2026-09-27T10:00:00.000Z' },
+  };
+  const merged = mergeTopicStudy(local, null);
+  assert.deepEqual(merged.stages, local.stages);
+  assert.deepEqual(merged.scores, local.scores);
+  assert.deepEqual(merged.starred, local.starred);
+});
+
+test('TopicStudy: gộp stages lấy chặng cao hơn, scores lấy top 5, starred hợp hai bên, lapses lấy max', () => {
+  const local = {
+    stages: {
+      topicA: { word1: 1, word2: 2 },
+      topicB: { word3: 0 },
+    },
+    scores: {
+      topicA: [
+        { score: 80, at: '2026-09-27T08:00:00.000Z' },
+        { score: 60, at: '2026-09-27T07:00:00.000Z' },
+      ],
+    },
+    starred: { topicA: ['word1'] },
+    lapses: { topicA: { word1: 2, word2: 1 } },
+    mistakeLog: [],
+    learnSettings: { autoAdvance: true },
+    lastAt: { topicA: '2026-09-27T08:00:00.000Z' },
+  };
+
+  const remote = {
+    stages: {
+      topicA: { word1: 2, word2: 1 },
+      topicC: { word4: 2 },
+    },
+    scores: {
+      topicA: [
+        { score: 95, at: '2026-09-27T09:00:00.000Z' },
+        { score: 80, at: '2026-09-27T08:00:00.000Z' }, // trùng
+        { score: 70, at: '2026-09-27T06:00:00.000Z' },
+      ],
+    },
+    starred: { topicA: ['word2'], topicC: ['word4'] },
+    lapses: { topicA: { word1: 1, word2: 3 } },
+    mistakeLog: [],
+    learnSettings: { autoAdvance: false },
+    lastAt: { topicA: '2026-09-27T09:00:00.000Z', topicC: '2026-09-27T07:00:00.000Z' },
+  };
+
+  const merged = mergeTopicStudy(local, remote);
+
+  // stages: word1 lấy 2 (remote), word2 lấy 2 (local), word3: 0, word4: 2
+  assert.equal(merged.stages.topicA?.word1, 2);
+  assert.equal(merged.stages.topicA?.word2, 2);
+  assert.equal(merged.stages.topicB?.word3, 0);
+  assert.equal(merged.stages.topicC?.word4, 2);
+
+  // scores: 95, 80, 70, 60 (không nhân đôi 80)
+  assert.deepEqual(
+    merged.scores.topicA?.map((s) => s.score),
+    [95, 80, 70, 60],
+  );
+
+  // starred: hợp hai bên
+  assert.deepEqual(merged.starred.topicA?.sort(), ['word1', 'word2']);
+  assert.deepEqual(merged.starred.topicC, ['word4']);
+
+  // lapses: word1 lấy 2, word2 lấy 3
+  assert.equal(merged.lapses.topicA?.word1, 2);
+  assert.equal(merged.lapses.topicA?.word2, 3);
+
+  // lastAt: lấy mốc mới hơn
+  assert.equal(merged.lastAt.topicA, '2026-09-27T09:00:00.000Z');
+  assert.equal(merged.lastAt.topicC, '2026-09-27T07:00:00.000Z');
+});
+
 test('mọi store đều chịu được payload thiếu trường', () => {
   // Bản cũ trên máy chủ có thể thiếu trường mới thêm sau này, và bản trên máy
   // có thể là của một phiên bản app cũ hơn.
@@ -208,6 +289,7 @@ test('mọi store đều chịu được payload thiếu trường', () => {
     ['study', mergeStudy],
     ['vocab', mergeVocab],
     ['billing', mergeBilling],
+    ['topic_study', mergeTopicStudy],
   ];
   for (const [name, merge] of merges) {
     assert.doesNotThrow(() => merge({}, {}), `${name} nổ với payload rỗng`);

@@ -189,3 +189,118 @@ export function mergeBilling(local: unknown, remote: unknown | null): BillingPay
 function emptyBilling(): BillingPayload {
   return { plan: 'free', expiresAt: null, source: 'local', usage: {} };
 }
+
+export type TopicStudyGameScore = { score: number; at: string };
+export type TopicStudyMistake = { kind: string; word: string; slug: string; at: string };
+
+export type TopicStudyPayload = {
+  stages: Record<string, Record<string, number>>;
+  scores: Record<string, TopicStudyGameScore[]>;
+  starred: Record<string, string[]>;
+  lapses: Record<string, Record<string, number>>;
+  mistakeLog: TopicStudyMistake[];
+  learnSettings?: Record<string, unknown>;
+  lastAt: Record<string, string>;
+};
+
+export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicStudyPayload {
+  const a = (local as TopicStudyPayload | null) ?? emptyTopicStudy();
+  const b = remote as TopicStudyPayload | null;
+  if (!b) return a;
+
+  // Stages: hợp theo từng slug, với mỗi từ lấy stage lớn hơn (0: chưa học, 1: nhận ra, 2: nhớ được)
+  const allStageSlugs = unionStrings(Object.keys(a.stages ?? {}), Object.keys(b.stages ?? {}));
+  const stages: TopicStudyPayload['stages'] = {};
+  for (const slug of allStageSlugs) {
+    const lWords = a.stages?.[slug] ?? {};
+    const rWords = b.stages?.[slug] ?? {};
+    const words = unionStrings(Object.keys(lWords), Object.keys(rWords));
+    stages[slug] = {};
+    for (const w of words) {
+      stages[slug][w] = Math.max(lWords[w] ?? 0, rWords[w] ?? 0);
+    }
+  }
+
+  // Scores: top 5 điểm cao nhất mỗi bộ
+  const allScoreSlugs = unionStrings(Object.keys(a.scores ?? {}), Object.keys(b.scores ?? {}));
+  const scores: TopicStudyPayload['scores'] = {};
+  for (const slug of allScoreSlugs) {
+    const combined = [...(a.scores?.[slug] ?? []), ...(b.scores?.[slug] ?? [])];
+    const seen = new Set<string>();
+    const unique: TopicStudyGameScore[] = [];
+    for (const item of combined) {
+      const k = `${item.score}_${item.at}`;
+      if (!seen.has(k)) {
+        seen.add(k);
+        unique.push(item);
+      }
+    }
+    unique.sort((x, y) => y.score - x.score || y.at.localeCompare(x.at));
+    scores[slug] = unique.slice(0, 5);
+  }
+
+  // Starred: hợp hai danh sách từ gắn sao
+  const allStarSlugs = unionStrings(Object.keys(a.starred ?? {}), Object.keys(b.starred ?? {}));
+  const starred: TopicStudyPayload['starred'] = {};
+  for (const slug of allStarSlugs) {
+    starred[slug] = unionStrings(a.starred?.[slug] ?? [], b.starred?.[slug] ?? []);
+  }
+
+  // Lapses: số lần sai lấy số lớn hơn để vòng sau ưu tiên hỏi lại
+  const allLapseSlugs = unionStrings(Object.keys(a.lapses ?? {}), Object.keys(b.lapses ?? {}));
+  const lapses: TopicStudyPayload['lapses'] = {};
+  for (const slug of allLapseSlugs) {
+    const lMap = a.lapses?.[slug] ?? {};
+    const rMap = b.lapses?.[slug] ?? {};
+    const words = unionStrings(Object.keys(lMap), Object.keys(rMap));
+    lapses[slug] = {};
+    for (const w of words) {
+      lapses[slug][w] = Math.max(lMap[w] ?? 0, rMap[w] ?? 0);
+    }
+  }
+
+  // Mistake log: hợp danh sách, khử trùng, giữ tối đa 400 dòng mới nhất
+  const mistakesCombined = [...(b.mistakeLog ?? []), ...(a.mistakeLog ?? [])];
+  const mistakeSeen = new Set<string>();
+  const mistakeLog: TopicStudyMistake[] = [];
+  for (const m of mistakesCombined) {
+    const k = `${m.at}_${m.slug}_${m.word}_${m.kind}`;
+    if (!mistakeSeen.has(k)) {
+      mistakeSeen.add(k);
+      mistakeLog.push(m);
+    }
+  }
+  mistakeLog.sort((x, y) => x.at.localeCompare(y.at));
+  const trimmedMistakes = mistakeLog.slice(-400);
+
+  // Last at: mốc thời gian học gần nhất
+  const allLastAtSlugs = unionStrings(Object.keys(a.lastAt ?? {}), Object.keys(b.lastAt ?? {}));
+  const lastAt: TopicStudyPayload['lastAt'] = {};
+  for (const slug of allLastAtSlugs) {
+    const lTime = a.lastAt?.[slug] ?? '';
+    const rTime = b.lastAt?.[slug] ?? '';
+    lastAt[slug] = lTime >= rTime ? lTime : rTime;
+  }
+
+  return {
+    stages,
+    scores,
+    starred,
+    lapses,
+    mistakeLog: trimmedMistakes,
+    learnSettings: { ...(b.learnSettings ?? {}), ...(a.learnSettings ?? {}) },
+    lastAt,
+  };
+}
+
+function emptyTopicStudy(): TopicStudyPayload {
+  return {
+    stages: {},
+    scores: {},
+    starred: {},
+    lapses: {},
+    mistakeLog: [],
+    learnSettings: {},
+    lastAt: {},
+  };
+}
