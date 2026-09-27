@@ -23,12 +23,14 @@ import type { ItemKind } from '@/services/game/rules';
 import type { MascotId } from '@/services/game/mascots';
 import type { SkinId } from '@/components/game/sprites';
 
-export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'powerup' | 'freeze' | 'avatar' | 'theme';
+export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'powerup' | 'freeze' | 'avatar' | 'theme';
 
 /** Kiểu avatar động — `components/profile/AnimatedAvatar.tsx` vẽ theo mã này. */
 export type AvatarLook = 'hero' | 'slime' | 'ghost' | 'owl' | 'dragon' | 'star';
 /** Kiểu bìa hồ sơ chuyển động — `components/profile/ProfileCover.tsx`. */
 export type CoverLook = 'stars' | 'aurora' | 'sunset' | 'ocean';
+/** Hiệu ứng hồ sơ kiểu Discord — `components/profile/ProfileEffect.tsx`. */
+export type EffectLook = 'sakura' | 'flame' | 'meteor' | 'snow' | 'bubbles' | 'sparkle';
 
 export type ShopItem = {
   id: string;
@@ -50,6 +52,7 @@ export type ShopItem = {
   skin?: SkinId;
   avatarLook?: AvatarLook;
   cover?: CoverLook;
+  effect?: EffectLook;
 };
 
 export const SHOP_ITEMS: ShopItem[] = [
@@ -85,6 +88,14 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: 'cover-sunset', kind: 'cover', name: 'Hoàng hôn pixel', detail: 'Mặt trời lặn sau đồi, mây trôi.', price: 300, glyph: '🌅', repeatable: false, cover: 'sunset' },
   { id: 'cover-ocean', kind: 'cover', name: 'Sóng biển', detail: 'Sóng vỗ, mặt trời lấp lánh trên nước.', price: 300, glyph: '🌊', repeatable: false, cover: 'ocean' },
   { id: 'cover-aurora', kind: 'cover', name: 'Cực quang', detail: 'Dải sáng loang chậm trên nền đêm.', price: 350, glyph: '🌠', repeatable: false, cover: 'aurora' },
+
+  // ---------------------------------------------------------------- hiệu ứng hồ sơ (kiểu Discord)
+  { id: 'fx-sakura', kind: 'effect', name: 'Hoa anh đào', detail: 'Cánh hoa hồng rơi chậm phủ cả thẻ hồ sơ.', price: 400, glyph: '🌸', repeatable: false, effect: 'sakura' },
+  { id: 'fx-snow', kind: 'effect', name: 'Tuyết đầu mùa', detail: 'Tuyết trắng rơi lất phất, quầng sáng lạnh.', price: 400, glyph: '❄️', repeatable: false, effect: 'snow' },
+  { id: 'fx-bubbles', kind: 'effect', name: 'Bong bóng', detail: 'Bong bóng trong suốt nổi lên từ đáy thẻ.', price: 450, glyph: '🫧', repeatable: false, effect: 'bubbles' },
+  { id: 'fx-sparkle', kind: 'effect', name: 'Kim tuyến', detail: 'Sao lấp lánh nhiều màu nhấp nháy khắp thẻ.', price: 500, glyph: '✨', repeatable: false, effect: 'sparkle' },
+  { id: 'fx-meteor', kind: 'effect', name: 'Mưa sao băng', detail: 'Vệt sao băng lao chéo qua thẻ hồ sơ.', price: 600, glyph: '🌠', repeatable: false, effect: 'meteor' },
+  { id: 'fx-flame', kind: 'effect', name: 'Lửa tím', detail: 'Tàn lửa cam tím bốc lên, rực cả đáy thẻ — bản hiếm.', price: 800, glyph: '🔥', repeatable: false, effect: 'flame' },
 
   // ---------------------------------------------------------------- đồ chiến đấu
   { id: 'power-potion', kind: 'powerup', name: 'Bình máu', detail: 'Hồi 2 tim giữa trận.', price: 30, glyph: '🧪', repeatable: true, grants: 'potion' },
@@ -179,6 +190,8 @@ export function formatStars(n: number): string {
 export type RewardPayload = PurchaseState & {
   avatar: string | null;
   cover: string | null;
+  /** Hiệu ứng hồ sơ đang đeo (thêm 27/09/2026 — bản cũ không có trường này). */
+  effect?: string | null;
   skin: string | null;
   mascot: string | null;
   frozenDays: string[];
@@ -207,6 +220,7 @@ export function mergeReward(local: RewardPayload | null, remote: RewardPayload |
     frozenDays: [...new Set([...(local.frozenDays ?? []), ...(remote.frozenDays ?? [])])].sort(),
     avatar: worn.avatar ?? null,
     cover: worn.cover ?? null,
+    effect: worn.effect ?? null,
     skin: worn.skin ?? null,
     mascot: worn.mascot ?? null,
     wornAt: worn.wornAt ?? '',

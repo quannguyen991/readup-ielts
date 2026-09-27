@@ -16,12 +16,14 @@ import type { SkinId } from '@/components/game/sprites';
  * lệch — lúc ấy không ai biết số nào đúng. Ở đây chỉ có phần KHÔNG suy ra được:
  * đã tiêu bao nhiêu, sở hữu món gì, đang đeo gì, và những ngày đã dùng thẻ giữ chuỗi.
  */
-export type WearSlot = 'avatar' | 'cover' | 'skin' | 'mascot';
+export type WearSlot = 'avatar' | 'cover' | 'effect' | 'skin' | 'mascot';
 
 type RewardState = PurchaseState & {
   /** Avatar đang đeo — mã món (emoji hoặc avatar động), hoặc null là chữ cái đầu tên. */
   avatar: string | null;
   cover: string | null;
+  /** Hiệu ứng hồ sơ kiểu Discord đang đeo. */
+  effect: string | null;
   skin: string | null;
   mascot: string | null;
   wornAt: string;
@@ -46,6 +48,7 @@ export const useRewardStore = create<RewardState>()(
       spent: 0,
       avatar: null,
       cover: null,
+      effect: null,
       skin: null,
       mascot: null,
       wornAt: '',
@@ -103,7 +106,7 @@ export const useRewardStore = create<RewardState>()(
       name: `${STORAGE_PREFIX}reward`,
       storage: storage(),
       version: 1,
-      partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
+      partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
     },
   ),
 );
@@ -121,5 +124,5 @@ export function mascotOf(mascotItemId: string | null): MascotId | null {
 /** Dữ liệu để đồng bộ tài khoản (`services/sync/stores.ts`). */
 export function rewardPayload(): RewardPayload {
   const s = useRewardStore.getState();
-  return { owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes ?? {} };
+  return { owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes ?? {} };
 }

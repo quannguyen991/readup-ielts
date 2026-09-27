@@ -18,7 +18,7 @@ import { seededRng } from '@/services/vocab/topic-study';
  * `points.ts`: vài chục điểm mỗi ngày học đều).
  */
 
-export type DemoBoardRow = { id: string; name: string; points: number; streak: number; avatar: string | null; cover: string | null; skin: string | null };
+export type DemoBoardRow = { id: string; name: string; points: number; streak: number; avatar: string | null; cover: string | null; effect: string | null; skin: string | null };
 export type DemoPastRow = { id: string; name: string; points: number };
 export type DemoGoldenRow = { id: string; name: string; stars: number; correct: number; vocab: number; avatar: string | null; skin: string | null };
 
@@ -60,6 +60,8 @@ export function demoLeaderboard(todayKey: string, prevMonthKey: string) {
     return {
       ...p,
       cover: null,
+      // Top 3 bảng mẫu đeo hiệu ứng hồ sơ để xem được món đổi quà trông ra sao.
+      effect: i < 3 ? (['fx-flame', 'fx-sakura', 'fx-meteor'] as const)[i]! : null,
       points: Math.max(12, Math.round(pace * dayOfMonth * (0.75 + rng() * 0.25))),
       streak: Math.max(1, Math.round(dayOfMonth * (1 - i / 24) * (0.6 + rng() * 0.4))),
     };

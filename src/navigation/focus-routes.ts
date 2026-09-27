@@ -93,3 +93,21 @@ export function isVocabStudyRoute(pathname: string): boolean {
 export function isFocusRoute(pathname: string): boolean {
   return FOCUS_PATTERNS.some((pattern) => pattern.test(pathname));
 }
+
+/**
+ * Màn THI / CHẤM ĐIỂM: ẩn trợ lý AI ở góc. Người dùng muốn trợ lý ghim cố định
+ * trên mọi màn, kể cả màn làm bài (27/09/2026) — trừ lúc đang thi, vì hỏi AI
+ * giữa bài thi thử là không còn đo được gì.
+ */
+const EXAM: readonly RegExp[] = [
+  /^\/sat\/full-test$/,
+  /^\/math\/(mock|diagnostic)$/,
+  /^\/weekly(\/|$)/,
+  /^\/duel\/[^/]+$/,
+  /^\/vocabulary\/topic\/[^/]+\/test$/,
+  /^\/vocabulary\/sat-quiz\/[^/]+$/,
+];
+
+export function isExamRoute(pathname: string): boolean {
+  return EXAM.some((pattern) => pattern.test(pathname));
+}

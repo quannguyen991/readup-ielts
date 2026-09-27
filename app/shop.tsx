@@ -10,6 +10,7 @@ import type { SkinId } from '@/components/game/sprites';
 import { anim, MOVE } from '@/components/game/game-anim';
 import { AnimatedAvatar } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
+import { ProfileEffect } from '@/components/profile/ProfileEffect';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { effectivePlan } from '@/lib/billing/entitlements';
@@ -61,13 +62,20 @@ const SECTIONS: Section[] = [
   { kind: 'skin', title: 'Skin nhân vật', subtitle: 'Bộ đồ cho nhân vật trên thanh trận đấu.', icon: 'shield' },
   { kind: 'avatarAnim', title: 'Avatar động', subtitle: 'Hiện ở hồ sơ, thanh bên và bảng xếp hạng.', icon: 'sparkle' },
   { kind: 'cover', title: 'Bìa hồ sơ chuyển động', subtitle: 'Đầu trang Hồ sơ và thẻ trên bảng xếp hạng.', icon: 'star' },
+  {
+    kind: 'effect',
+    title: 'Hiệu ứng hồ sơ',
+    subtitle: 'Lớp hoạt hình phủ cả thẻ hồ sơ — như Profile Effects của Discord.',
+    icon: 'sparkle',
+    note: 'Hiện ở trang Hồ sơ và ở thẻ top 3 trên bảng xếp hạng. Chỉ để đẹp, không cộng gì vào bài.',
+  },
   { kind: 'powerup', title: 'Đồ chiến đấu', subtitle: 'Vào thẳng túi đồ, dùng ngay trong bài.', icon: 'shield' },
   { kind: 'freeze', title: 'Thẻ giữ chuỗi', subtitle: 'Giữ chuỗi cho ngày không kịp học.', icon: 'flame' },
   { kind: 'avatar', title: 'Avatar emoji', subtitle: 'Gọn, nhẹ, hiện ở mọi nơi.', icon: 'heart' },
   { kind: 'theme', title: 'Giao diện', subtitle: 'Thêm tông giấy cho màn đọc.', icon: 'book' },
 ];
 
-type TabKey = 'all' | 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'battle';
+type TabKey = 'all' | 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'battle';
 
 const TABS: { key: TabKey; label: string; kinds: ShopItemKind[] }[] = [
   { key: 'all', label: 'Tất cả', kinds: SECTIONS.map((s) => s.kind) },
@@ -76,11 +84,12 @@ const TABS: { key: TabKey; label: string; kinds: ShopItemKind[] }[] = [
   { key: 'skin', label: 'Skin', kinds: ['skin'] },
   { key: 'avatarAnim', label: 'Avatar', kinds: ['avatarAnim', 'avatar'] },
   { key: 'cover', label: 'Bìa hồ sơ', kinds: ['cover', 'theme'] },
+  { key: 'effect', label: 'Hiệu ứng ✨', kinds: ['effect'] },
   { key: 'battle', label: 'Đồ & thẻ', kinds: ['powerup', 'freeze'] },
 ];
 
 /** Món nào đeo ở ô nào. */
-const SLOT: Partial<Record<ShopItemKind, WearSlot>> = { mascot: 'mascot', skin: 'skin', avatarAnim: 'avatar', avatar: 'avatar', cover: 'cover' };
+const SLOT: Partial<Record<ShopItemKind, WearSlot>> = { mascot: 'mascot', skin: 'skin', avatarAnim: 'avatar', avatar: 'avatar', cover: 'cover', effect: 'effect' };
 
 const NIGHT = '#1B1540';
 const GOLD_SOFT = '#FEF3C7';
@@ -101,7 +110,7 @@ export default function ShopScreen() {
   const today = useMemo(() => new Date(), []);
   const streak = currentStreak(daily, today, reward.frozenDays);
   const skin = skinOf(reward.skin);
-  const worn = new Set([reward.avatar, reward.cover, reward.skin, reward.mascot].filter((x): x is string => !!x));
+  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.skin, reward.mascot].filter((x): x is string => !!x));
   const activePlan = effectivePlan(billingPlan, billingExpires, today);
   const planUntil = activePlan !== 'free' && billingExpires ? new Date(billingExpires).toLocaleDateString('vi-VN') : null;
 
@@ -410,6 +419,14 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
     return (
       <View style={{ height: 84, borderRadius: 14, overflow: 'hidden' }}>
         <ProfileCover cover={item.cover} height={84} />
+      </View>
+    );
+  }
+  if (item.effect) {
+    // Xem trước trên nền tối như thẻ hồ sơ thật, để hạt sáng nổi lên.
+    return (
+      <View style={{ height: 84, borderRadius: 14, overflow: 'hidden', backgroundColor: NIGHT }}>
+        <ProfileEffect effect={item.effect} intensity={0.8} />
       </View>
     );
   }
