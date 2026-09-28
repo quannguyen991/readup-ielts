@@ -1,3 +1,4 @@
+import { fetchAllPages } from '@/services/admin/fetch-all';
 import { requireAdmin } from '@/services/admin/guard';
 import { summarizeUsers, type StatsProfile, type StatsState, type StatsUser } from '@/services/admin/stats';
 
@@ -22,14 +23,20 @@ export async function GET(request: Request): Promise<Response> {
       if (data.users.length < 1000) break;
     }
 
-    const { data: profiles, error: pErr } = await admin.from('profiles').select('plan, plan_expires_at, role');
+    // Đọc theo trang: PostgREST cắt im lặng ở 1.000 dòng mỗi lần (xem `fetch-all.ts`).
+    // `user_state` có ~10 dòng mỗi người, nên tới khoảng 100 người là đã chạm trần.
+    const { rows: profiles, error: pErr } = await fetchAllPages<StatsProfile>((from, to) =>
+      admin.from('profiles').select('plan, plan_expires_at, role').order('id').range(from, to),
+    );
     if (pErr) return Response.json({ error: pErr.message }, { status: 500 });
 
-    const { data: states, error: sErr } = await admin.from('user_state').select('user_id, updated_at');
+    const { rows: states, error: sErr } = await fetchAllPages<StatsState>((from, to) =>
+      admin.from('user_state').select('user_id, updated_at').order('user_id').order('store_key').range(from, to),
+    );
     if (sErr) return Response.json({ error: sErr.message }, { status: 500 });
 
     return Response.json({
-      stats: summarizeUsers(users, (profiles ?? []) as StatsProfile[], (states ?? []) as StatsState[], Date.now()),
+      stats: summarizeUsers(users, profiles, states, Date.now()),
     });
   } catch (err) {
     return Response.json({ error: err instanceof Error ? err.message : 'Không đọc được thống kê.' }, { status: 500 });
