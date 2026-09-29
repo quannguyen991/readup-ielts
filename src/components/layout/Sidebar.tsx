@@ -20,7 +20,6 @@ import { SIDEBAR_WIDTH, useSidebarStore } from "@/store/useSidebarStore";
 import { formatStars } from "@/services/gamification/shop";
 import {
   SidebarAtmosphereOverlay,
-  SidebarThemeQuickSwitcher,
   useSidebarTheme,
   type SidebarThemeConfig,
 } from "./SidebarAtmosphere";
@@ -154,10 +153,6 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
             : "gap-2 px-4 pb-4 pt-2"
         }
       >
-        {compact ? null : (
-          <SidebarThemeQuickSwitcher collapsed={collapsed} />
-        )}
-
         {compact ? null : (
           <Pressable
             accessibilityRole="button"
@@ -337,7 +332,12 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
         accessibilityLabel="Đăng nhập"
         onPress={() => router.push("/auth/sign-in" as never)}
         className={`flex-row items-center justify-center gap-2 rounded-panel ${collapsed ? "h-11 w-11" : "py-3"}`}
-        style={{ backgroundColor: themeConfig.activeFill }}
+        style={
+          {
+            backgroundColor: themeConfig.activeFill,
+            ...(Platform.OS === "web" ? { backgroundImage: themeConfig.activeGradient } : null),
+          } as object
+        }
       >
         <Icon name="arrow-right" size={17} color={themeConfig.activeTextColor} strokeWidth={2.2} />
         {collapsed ? null : (

@@ -1,7 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import React, { useEffect, useMemo } from 'react';
+import { Platform, View } from 'react-native';
 
-import { Icon } from '@/components/ui/Icon';
 import type { EffectLook } from '@/services/gamification/shop';
 import { mulberry32 } from '@/services/questions/rng';
 import { useRewardStore } from '@/store/useRewardStore';
@@ -23,22 +22,24 @@ export type SidebarThemeConfig = {
   defaultEffect: EffectLook | null;
 };
 
+export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
+  id: 'default',
+  name: 'Mặc định (Sáng)',
+  isDark: false,
+  bgStyle: { backgroundColor: '#FFFFFF' },
+  borderRightColor: '#EEF0F6',
+  textPrimary: color.ink,
+  textMuted: color.muted,
+  activeFill: '#5B8BEE',
+  activeGradient: 'linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)',
+  activeTextColor: '#FFFFFF',
+  activeGlow: '0 6px 16px rgba(74,127,232,0.32)',
+  hoverBg: 'rgba(241, 245, 249, 0.7)',
+  defaultEffect: null,
+};
+
 export const SIDEBAR_THEMES: Record<string, SidebarThemeConfig> = {
-  default: {
-    id: 'default',
-    name: 'Mặc định (Sáng)',
-    isDark: false,
-    bgStyle: { backgroundColor: '#FFFFFF' },
-    borderRightColor: '#EEF0F6',
-    textPrimary: color.ink,
-    textMuted: color.muted,
-    activeFill: '#5B8BEE',
-    activeGradient: 'linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)',
-    activeTextColor: '#FFFFFF',
-    activeGlow: '0 6px 16px rgba(74,127,232,0.32)',
-    hoverBg: 'rgba(241, 245, 249, 0.7)',
-    defaultEffect: null,
-  },
+  default: DEFAULT_SIDEBAR_THEME,
   'theme-midnight': {
     id: 'theme-midnight',
     name: 'Vũ trụ sao đêm',
@@ -225,7 +226,8 @@ export function useSidebarTheme() {
   const themeId = useRewardStore((s) => s.theme);
   const effectId = useRewardStore((s) => s.effect);
 
-  const themeConfig = SIDEBAR_THEMES[themeId ?? ''] ?? SIDEBAR_THEMES.default;
+  const themeConfig: SidebarThemeConfig =
+    (themeId && SIDEBAR_THEMES[themeId]) ? (SIDEBAR_THEMES[themeId] as SidebarThemeConfig) : DEFAULT_SIDEBAR_THEME;
 
   // Nếu người dùng chọn hiệu ứng riêng thì ưu tiên hiệu ứng đó, ngược lại lấy hiệu ứng mặc định của theme
   const activeEffect: EffectLook | null = (effectId as EffectLook | null) ?? themeConfig.defaultEffect;
@@ -404,115 +406,6 @@ export function SidebarAtmosphereOverlay({ effect, isDark }: { effect: EffectLoo
           </div>
         );
       })}
-    </View>
-  );
-}
-
-/**
- * Nút nhỏ tinh tế ở thanh bên để người dùng có thể thử ngay các hiệu ứng và giao diện.
- */
-export function SidebarThemeQuickSwitcher({ collapsed }: { collapsed: boolean }) {
-  const [open, setOpen] = useState(false);
-  const equip = useRewardStore((s) => s.equip);
-  const currentTheme = useRewardStore((s) => s.theme);
-  const currentEffect = useRewardStore((s) => s.effect);
-
-  const themeList = Object.values(SIDEBAR_THEMES);
-
-  const effects: { id: EffectLook | null; label: string; glyph: string }[] = [
-    { id: null, label: 'Theo giao diện', glyph: '✨' },
-    { id: 'sakura', label: 'Hoa anh đào', glyph: '🌸' },
-    { id: 'meteor', label: 'Sao & Mưa sao băng', glyph: '🌠' },
-    { id: 'snow', label: 'Tuyết rơi', glyph: '❄️' },
-    { id: 'autumn', label: 'Lá phong mùa thu', glyph: '🍁' },
-    { id: 'matrix', label: 'Cyberpunk Matrix', glyph: '⚡' },
-    { id: 'fireflies', label: 'Đom đóm mùa hè', glyph: '🪲' },
-    { id: 'bubbles', label: 'Bong bóng đại dương', glyph: '🫧' },
-    { id: 'flame', label: 'Lửa tím huyền bí', glyph: '🔥' },
-  ];
-
-  return (
-    <View style={{ position: 'relative' }}>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel="Đổi hiệu ứng thanh bên"
-        onPress={() => setOpen(!open)}
-        className={`flex-row items-center gap-2 rounded-panel py-1.5 ${collapsed ? 'justify-center px-1' : 'px-2'}`}
-        style={{ backgroundColor: 'rgba(125, 125, 125, 0.1)' }}
-      >
-        <Text style={{ fontSize: 15 }}>🎨</Text>
-        {collapsed ? null : (
-          <Text className="font-semi text-[13px]" style={{ color: 'inherit', opacity: 0.85 }}>
-            Đổi giao diện / Hiệu ứng
-          </Text>
-        )}
-      </Pressable>
-
-      {open ? (
-        <View
-          style={{
-            position: 'absolute',
-            bottom: '100%',
-            left: 0,
-            width: 250,
-            marginBottom: 8,
-            backgroundColor: '#1E293B',
-            borderRadius: 16,
-            padding: 12,
-            boxShadow: '0 12px 32px rgba(0,0,0,0.5)',
-            zIndex: 999,
-            borderWidth: 1,
-            borderColor: 'rgba(255,255,255,0.15)',
-          } as object}
-        >
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-            <Text style={{ color: '#F8FAFC', fontWeight: '700', fontSize: 13 }}>🎨 Đổi giao diện thanh bên</Text>
-            <Pressable onPress={() => setOpen(false)}>
-              <Icon name="close" size={14} color="#94A3B8" />
-            </Pressable>
-          </View>
-
-          <Text style={{ color: '#94A3B8', fontSize: 11, fontWeight: '600', marginBottom: 4 }}>CHỦ ĐỀ GIAO DIỆN</Text>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4, marginBottom: 10 }}>
-            {themeList.map((t) => (
-              <Pressable
-                key={t.id}
-                onPress={() => equip('theme', t.id === 'default' ? null : t.id)}
-                style={{
-                  paddingHorizontal: 8,
-                  paddingVertical: 4,
-                  borderRadius: 8,
-                  backgroundColor: (currentTheme ?? 'default') === t.id ? '#38BDF8' : 'rgba(255,255,255,0.08)',
-                }}
-              >
-                <Text style={{ color: (currentTheme ?? 'default') === t.id ? '#0F172A' : '#E2E8F0', fontSize: 11, fontWeight: '600' }}>
-                  {t.name}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-
-          <Text style={{ color: '#94A3B8', fontSize: 11, fontWeight: '600', marginBottom: 4 }}>HIỆU ỨNG KHÍ QUYỂN</Text>
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 4 }}>
-            {effects.map((e) => (
-              <Pressable
-                key={e.label}
-                onPress={() => equip('effect', e.id)}
-                style={{
-                  paddingHorizontal: 8,
-                  paddingVertical: 4,
-                  borderRadius: 8,
-                  backgroundColor: currentEffect === e.id ? '#EC4899' : 'rgba(255,255,255,0.08)',
-                }}
-              >
-                <Text style={{ color: currentEffect === e.id ? '#FFFFFF' : '#E2E8F0', fontSize: 11, fontWeight: '600' }}>
-                  {e.glyph} {e.label}
-                </Text>
-              </Pressable>
-            ))}
-          </View>
-        </View>
-      ) : null}
     </View>
   );
 }
