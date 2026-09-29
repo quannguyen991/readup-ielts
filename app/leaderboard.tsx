@@ -25,7 +25,7 @@ import {
   shiftDays,
   streakMultiplier,
   tierFor,
-  DAILY_POINT_CAP,
+  dailyCapFor,
   MAX_MULTIPLIER,
 } from '@/services/gamification/points';
 import { findItem, formatStars } from '@/services/gamification/shop';
@@ -85,7 +85,7 @@ export default function LeaderboardScreen() {
   const upcoming = nextTier(month);
   const multiplier = streakMultiplier(Math.max(0, streak - 1));
   const todayEffort = Math.round(rawEffort(daily[todayKey]));
-  const todayPoints = dailyPoints(daily[todayKey], Math.max(0, streak - 1));
+  const todayPoints = dailyPoints(daily[todayKey], Math.max(0, streak - 1), todayKey);
   const me = userId ? userId.slice(0, 8) : null;
 
   return (
@@ -169,7 +169,7 @@ export default function LeaderboardScreen() {
                     Hệ số hôm nay: 1 + 🔥 {(multiplier - 1).toFixed(1)} = <Text className="font-heavy text-ink">{multiplier}</Text> (tối đa {MAX_MULTIPLIER})
                   </Text>
                   <Text className="font-sans text-label text-muted">
-                    Điểm hôm nay: {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> (tối đa {DAILY_POINT_CAP})
+                    Điểm hôm nay: {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> (tối đa {dailyCapFor(todayKey)})
                   </Text>
                   <Text className="font-sans text-label text-subtle">Công: 1 điểm mỗi phút học, 0,5 điểm mỗi câu đã làm. Mỗi điểm cũng là một sao để đổi quà.</Text>
                 </View>

@@ -57,3 +57,49 @@ export const STUDY_BACKGROUNDS: Record<StudyBgLook, StudyBackground> = {
 export function studyBackground(look: string | null | undefined): StudyBackground | null {
   return look && look in STUDY_BACKGROUNDS ? STUDY_BACKGROUNDS[look as StudyBgLook] : null;
 }
+
+/**
+ * NỀN TRANG THEO GIAO DIỆN (theme đổi bằng sao): áp dụng ở MỌI trang khi người
+ * dùng chưa chọn Nền học riêng. Tông vừa (như nền xanh mặc định) để thẻ trắng
+ * nổi lên và chữ đen đặt thẳng trên nền vẫn đọc được — kể cả với giao diện có
+ * thanh bên tối (Vũ trụ sao đêm, Cyberpunk…), nền trang vẫn sáng.
+ */
+export const THEME_PAGE_BACKGROUNDS: Record<string, StudyBackground> = {
+  'theme-midnight': { stops: ['#9AA8EC', '#8A96DE', '#A395E2'], line: 'rgba(30,35,110,0.14)', pattern: 'grid', blobs: ['#818CF8', '#C084FC'] },
+  'theme-sakura': { stops: ['#F8BBD5', '#F3A9C9', '#F6B6DA'], line: 'rgba(150,30,90,0.12)', pattern: 'grid', blobs: ['#F9A8D4', '#FBCFE8'] },
+  'theme-cyberpunk': { stops: ['#9EE3F4', '#B6A8F6', '#F0A6D4'], line: 'rgba(60,20,120,0.14)', pattern: 'grid', blobs: ['#22D3EE', '#F472B6'] },
+  'theme-ocean': { stops: ['#94D5F1', '#82C6EA', '#93BCEE'], line: 'rgba(10,70,130,0.14)', pattern: 'grid', blobs: ['#38BDF8', '#60A5FA'] },
+  'theme-sunset': { stops: ['#FBC39D', '#F6ABB9', '#DCA8E7'], line: 'rgba(140,50,60,0.12)', pattern: 'grid', blobs: ['#FB923C', '#E879F9'] },
+  'theme-lavender': { stops: ['#CBBAF8', '#BDAAF4', '#D6BAF3'], line: 'rgba(80,40,160,0.13)', pattern: 'dots', blobs: ['#A78BFA', '#E9D5FF'], cell: 24 },
+  'theme-nord': { stops: ['#B6C8DD', '#A8BCD4', '#BAC6DC'], line: 'rgba(40,60,90,0.14)', pattern: 'grid', blobs: ['#88C0D0', '#E5E9F0'] },
+  'theme-matcha': { stops: ['#BCE4AB', '#AADA9C', '#C3E6B5'], line: 'rgba(30,90,30,0.12)', pattern: 'grid', blobs: ['#86EFAC', '#D9F99D'] },
+  'theme-sepia': { stops: ['#F1DBB3', '#E9CE9F', '#F0D8B7'], line: 'rgba(120,80,20,0.14)', pattern: 'ruled', blobs: ['#FCD34D', '#FDBA74'], cell: 30 },
+  'theme-emerald': { stops: ['#A0E7C7', '#89DBB8', '#A1DAD2'], line: 'rgba(10,90,60,0.13)', pattern: 'grid', blobs: ['#34D399', '#5EEAD4'] },
+};
+
+/** Pha một màu hex về phía trắng (0..1) — bản nhạt cho màn học. */
+export function lighten(hex: string, amount: number): string {
+  const h = hex.replace('#', '');
+  const n = parseInt(h.length === 3 ? h.split('').map((c) => c + c).join('') : h, 16);
+  const ch = (v: number) => Math.round(v + (255 - v) * amount).toString(16).padStart(2, '0');
+  return `#${ch((n >> 16) & 255)}${ch((n >> 8) & 255)}${ch(n & 255)}`;
+}
+
+/** Bản NHẠT của một nền trang, cho màn học (đọc lâu không chói). */
+export function studyVariant(bg: StudyBackground): StudyBackground {
+  return { ...bg, stops: [lighten(bg.stops[0], 0.62), lighten(bg.stops[1], 0.62), lighten(bg.stops[2], 0.62)] };
+}
+
+/**
+ * Nền cho một trang. Ưu tiên: Nền học người dùng chọn → nền theo Giao diện đang
+ * dùng → null (nền mặc định của loại trang đó).
+ *  - `browse`: trang duyệt (trang chủ, thư viện…) — dùng tông vừa.
+ *  - `study`: màn học — Nền học giữ nguyên (đã nhạt sẵn), nền theo giao diện thì pha nhạt.
+ */
+export function pageBackgroundFor(kind: 'browse' | 'study', studyBgLook: string | null | undefined, themeId: string | null | undefined): StudyBackground | null {
+  const own = studyBackground(studyBgLook);
+  if (own) return own;
+  const byTheme = themeId ? THEME_PAGE_BACKGROUNDS[themeId] : undefined;
+  if (byTheme) return kind === 'study' ? studyVariant(byTheme) : byTheme;
+  return null;
+}

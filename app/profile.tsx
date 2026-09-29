@@ -211,7 +211,7 @@ export default function ProfileScreen() {
           <View className="mt-3 gap-2">
             <LedgerRow label="Từ việc học (phút học, số câu, nhân theo chuỗi)" value={`+${formatStars(ledger.study)}`} />
             <LedgerRow label="Thưởng trận đấu (hạ quái, boss, lên cấp, nhiệm vụ, huy hiệu)" value={`+${formatStars(ledger.battle)}`} />
-            <LedgerRow label="Thưởng hạng tháng" value={`+${formatStars(ledger.prizes)}`} />
+            <LedgerRow label="Thưởng hạng tháng & quà" value={`+${formatStars(ledger.prizes)}`} />
             <LedgerRow label="Đã đổi quà" value={`−${formatStars(ledger.spent)}`} />
             <View style={{ height: 1, backgroundColor: color.border }} />
             <LedgerRow label="Còn lại" value={`${formatStars(ledger.balance)} ⭐`} strong />

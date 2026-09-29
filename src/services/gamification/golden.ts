@@ -31,7 +31,7 @@ export function vnToday(now: Date): { key: string; date: Date } {
 /** Một người hôm nay (`key` là ngày, `date` là mốc trong ngày đó). */
 export function goldenOf(u: GoldenInput, key: string, date: Date): GoldenRow {
   const log = u.daily?.[key];
-  const study = log && u.daily ? dailyPoints(log, Math.max(0, currentStreak(u.daily, date, u.frozen) - 1)) : 0;
+  const study = log && u.daily ? dailyPoints(log, Math.max(0, currentStreak(u.daily, date, u.frozen) - 1), key) : 0;
   const today = u.game?.day === key ? (u.game.today ?? {}) : {};
   return {
     userId: u.userId,

@@ -5,6 +5,7 @@ import type { EffectLook } from '@/services/gamification/shop';
 import { mulberry32 } from '@/services/questions/rng';
 import { useRewardStore } from '@/store/useRewardStore';
 import { color } from '@/theme/tokens';
+import { useHydrated } from './useHydrated';
 
 export type SidebarThemeConfig = {
   id: string;
@@ -223,8 +224,13 @@ export const SIDEBAR_THEMES: Record<string, SidebarThemeConfig> = {
 };
 
 export function useSidebarTheme() {
-  const themeId = useRewardStore((s) => s.theme);
-  const effectId = useRewardStore((s) => s.effect);
+  // Lượt hydrate đầu vẽ như máy chủ (mặc định), rồi mới áp giao diện đã lưu —
+  // nếu không, thuộc tính của HTML máy chủ bị giữ lại và giao diện "mất" sau F5.
+  const hydrated = useHydrated();
+  const storedTheme = useRewardStore((s) => s.theme);
+  const storedEffect = useRewardStore((s) => s.effect);
+  const themeId = hydrated ? storedTheme : null;
+  const effectId = hydrated ? storedEffect : null;
 
   const themeConfig: SidebarThemeConfig =
     (themeId && SIDEBAR_THEMES[themeId]) ? (SIDEBAR_THEMES[themeId] as SidebarThemeConfig) : DEFAULT_SIDEBAR_THEME;
