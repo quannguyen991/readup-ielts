@@ -13,6 +13,7 @@ import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
+import { ZaloPromoBanner } from './ZaloPromoBanner';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#2B3668';
@@ -122,6 +123,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <View className="lg:hidden">
             <TopBar />
           </View>
+          {/* Không chen quảng cáo vào màn đang làm bài. */}
+          {focus ? null : <ZaloPromoBanner />}
           <View className="flex-1">{children}</View>
         </View>
       </View>
