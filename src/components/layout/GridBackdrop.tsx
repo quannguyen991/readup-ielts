@@ -57,12 +57,21 @@ export function GridBackdrop({
   colors = BASE_STOPS,
   line = 'rgba(255,255,255,0.12)',
   showGrid = true,
+  pattern = 'grid',
+  blobs = ['#60A5FA', '#C084FC'],
+  margin,
   children,
 }: {
   cell?: number;
   colors?: readonly string[];
   line?: string;
   showGrid?: boolean;
+  /** Hoạ tiết: kẻ ô (mặc định), chấm bi, kẻ dòng, kẻ chéo, trơn — nền học đổi bằng sao dùng các kiểu khác. */
+  pattern?: 'grid' | 'dots' | 'ruled' | 'diagonal' | 'plain';
+  /** Màu hai vệt loang (trên trái, dưới phải). */
+  blobs?: readonly [string, string];
+  /** Đường lề dọc bên trái (kiểu vở học trò). */
+  margin?: string;
   children?: React.ReactNode;
 }) {
   /*
@@ -89,17 +98,25 @@ export function GridBackdrop({
             </LinearGradient>
 
             <RadialGradient id={id('grid-blob-a')} cx="0.5" cy="0.5" r="0.5">
-              <Stop offset={0} stopColor="#60A5FA" stopOpacity={0.45} />
-              <Stop offset={1} stopColor="#60A5FA" stopOpacity={0} />
+              <Stop offset={0} stopColor={blobs[0]} stopOpacity={0.45} />
+              <Stop offset={1} stopColor={blobs[0]} stopOpacity={0} />
             </RadialGradient>
 
             <RadialGradient id={id('grid-blob-b')} cx="0.5" cy="0.5" r="0.5">
-              <Stop offset={0} stopColor="#C084FC" stopOpacity={0.4} />
-              <Stop offset={1} stopColor="#C084FC" stopOpacity={0} />
+              <Stop offset={0} stopColor={blobs[1]} stopOpacity={0.4} />
+              <Stop offset={1} stopColor={blobs[1]} stopOpacity={0} />
             </RadialGradient>
 
             <Pattern id={id('grid-cell')} width={cell} height={cell} patternUnits="userSpaceOnUse">
-              <Path d={`M ${cell} 0 L 0 0 L 0 ${cell}`} fill="none" stroke={line} strokeWidth={1} />
+              {pattern === 'dots' ? (
+                <Ellipse cx={cell / 2} cy={cell / 2} rx={1.4} ry={1.4} fill={line} />
+              ) : pattern === 'ruled' ? (
+                <Path d={`M 0 ${cell - 0.5} L ${cell} ${cell - 0.5}`} fill="none" stroke={line} strokeWidth={1} />
+              ) : pattern === 'diagonal' ? (
+                <Path d={`M 0 ${cell} L ${cell} 0`} fill="none" stroke={line} strokeWidth={1} />
+              ) : (
+                <Path d={`M ${cell} 0 L 0 0 L 0 ${cell}`} fill="none" stroke={line} strokeWidth={1} />
+              )}
             </Pattern>
           </Defs>
 
@@ -109,7 +126,8 @@ export function GridBackdrop({
           <Ellipse cx="18%" cy="12%" rx="55%" ry="45%" fill={`url(#${id('grid-blob-a')})`} />
           <Ellipse cx="88%" cy="82%" rx="50%" ry="55%" fill={`url(#${id('grid-blob-b')})`} />
 
-          {showGrid ? <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id('grid-cell')})`} /> : null}
+          {showGrid && pattern !== 'plain' ? <Rect x={0} y={0} width="100%" height="100%" fill={`url(#${id('grid-cell')})`} /> : null}
+          {margin ? <Rect x={64} y={0} width={1.5} height="100%" fill={margin} /> : null}
         </Svg>
       </View>
       {children}

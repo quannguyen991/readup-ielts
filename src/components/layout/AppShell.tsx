@@ -14,6 +14,7 @@ import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
 import { ZaloPromoBanner } from './ZaloPromoBanner';
+import { useStreakGlass } from '@/services/city/useStreakGlass';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#2B3668';
@@ -41,8 +42,12 @@ const STUDY_NAVY = '#2B3668';
  */
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  // Kính của Thành Phố Tri Thức theo mốc chuỗi ngày — chạy ở mọi thiết bị.
+  useStreakGlass();
   const focus = isFocusRoute(pathname);
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
+  // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
+  const isCityRoute = pathname.startsWith('/quest/city');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
 
@@ -79,7 +84,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </View>
         </View>
         {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
-        {isExamRoute(pathname) ? null : <AskBubble />}
+        {isExamRoute(pathname) || isCityRoute ? null : <AskBubble />}
         <SelectionLookup />
       </FocusBackdrop>
     );
@@ -128,7 +133,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <View className="flex-1">{children}</View>
         </View>
       </View>
-      <AskBubble />
+      {isCityRoute ? null : <AskBubble />}
       <SelectionLookup />
     </SafeAreaView>
   );

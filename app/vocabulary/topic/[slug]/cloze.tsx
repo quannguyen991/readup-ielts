@@ -139,7 +139,7 @@ export default function ClozeScreen() {
     setVerdict(ok);
     setAsked((n) => n + 1);
     logQuestions(1);
-    useGameStore.getState().answer(ok, 'vocab');
+    useGameStore.getState().answer(ok, 'vocab', { key: `cloze:${slug}:${q.word.word}:${q.kind}` });
     if (ok) {
       if (!head.retry) setFirstTry((n) => n + 1);
       return;

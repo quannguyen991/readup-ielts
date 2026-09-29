@@ -209,7 +209,7 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
             onPick={(value) => {
               if (answers[q.id]) return;
               setAnswers((prev) => (prev[q.id] ? prev : { ...prev, [q.id]: value }));
-              useGameStore.getState().answer(sameAnswer(value, q.correctAnswer), 'listen');
+              useGameStore.getState().answer(sameAnswer(value, q.correctAnswer), 'listen', { key: `lq:${q.id}` });
             }}
             onMark={(part) => {
               if (marks[q.id] !== undefined) return;

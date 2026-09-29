@@ -3,6 +3,8 @@ import { Platform, Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
+import { GridBackdrop } from '@/components/layout/GridBackdrop';
+import { STUDY_BACKGROUNDS } from '@/components/layout/study-backgrounds';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { PixelSprite } from '@/components/game/PixelSprite';
@@ -73,6 +75,13 @@ const SECTIONS: Section[] = [
   { kind: 'freeze', title: 'Thẻ giữ chuỗi', subtitle: 'Giữ chuỗi cho ngày không kịp học.', icon: 'flame' },
   { kind: 'avatar', title: 'Avatar emoji', subtitle: 'Gọn, nhẹ, hiện ở mọi nơi.', icon: 'heart' },
   {
+    kind: 'studyBg',
+    title: 'Nền học',
+    subtitle: 'Nền phía sau mọi màn học — đọc bài, làm bài, luyện nghe, tra từ.',
+    icon: 'book',
+    note: 'Đổi rồi bấm "Dùng" để áp dụng; bấm lần nữa là về nền lưới mặc định. Nền được lưu theo tài khoản — lần sau vào (kể cả máy khác) vẫn đang dùng đúng nền đó.',
+  },
+  {
     kind: 'theme',
     title: 'Giao diện toàn diện',
     subtitle: 'Đổi phong cách, bảng màu thanh bên và màn hình.',
@@ -81,10 +90,11 @@ const SECTIONS: Section[] = [
   },
 ];
 
-type TabKey = 'all' | 'theme' | 'effect' | 'cover' | 'plan' | 'avatarAnim' | 'mascot' | 'skin' | 'battle';
+type TabKey = 'all' | 'studyBg' | 'theme' | 'effect' | 'cover' | 'plan' | 'avatarAnim' | 'mascot' | 'skin' | 'battle';
 
 const TABS: { key: TabKey; label: string; kinds: ShopItemKind[] }[] = [
   { key: 'all', label: 'Tất cả', kinds: SECTIONS.map((s) => s.kind) },
+  { key: 'studyBg', label: 'Nền học 🖼️', kinds: ['studyBg'] },
   { key: 'theme', label: 'Giao diện 🎨', kinds: ['theme'] },
   { key: 'effect', label: 'Hiệu ứng ✨', kinds: ['effect'] },
   { key: 'cover', label: 'Bìa hồ sơ', kinds: ['cover'] },
@@ -104,6 +114,7 @@ const SLOT: Partial<Record<ShopItemKind, WearSlot>> = {
   cover: 'cover',
   effect: 'effect',
   theme: 'theme',
+  studyBg: 'studyBg',
 };
 
 const NIGHT = '#1B1540';
@@ -125,7 +136,7 @@ export default function ShopScreen() {
   const today = useMemo(() => new Date(), []);
   const streak = currentStreak(daily, today, reward.frozenDays);
   const skin = skinOf(reward.skin);
-  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.theme, reward.skin, reward.mascot].filter((x): x is string => !!x));
+  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.theme, reward.studyBg, reward.skin, reward.mascot].filter((x): x is string => !!x));
   const activePlan = effectivePlan(billingPlan, billingExpires, today);
   const planUntil = activePlan !== 'free' && billingExpires ? new Date(billingExpires).toLocaleDateString('vi-VN') : null;
 
@@ -455,6 +466,21 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
     return (
       <View style={{ height: 84, borderRadius: 14, overflow: 'hidden', backgroundColor: NIGHT }}>
         <ProfileEffect effect={item.effect} intensity={0.8} />
+      </View>
+    );
+  }
+  if (item.studyBg) {
+    // Xem trước bằng chính nền đó, kèm một "thẻ bài học" trắng như màn học thật.
+    const bg = STUDY_BACKGROUNDS[item.studyBg];
+    return (
+      <View style={{ height: 84, borderRadius: 14, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(15,23,42,0.08)' }}>
+        <GridBackdrop colors={bg.stops} line={bg.line} pattern={bg.pattern} blobs={bg.blobs} margin={bg.margin} cell={Math.round((bg.cell ?? 34) * 0.6)}>
+          <View style={{ position: 'absolute', left: '22%', right: '22%', top: 16, bottom: 16, borderRadius: 8, backgroundColor: '#FFFFFF', padding: 7, gap: 4, shadowColor: '#0F172A', shadowOpacity: 0.08, shadowRadius: 6 }}>
+            <View style={{ height: 5, width: '70%', borderRadius: 3, backgroundColor: '#CBD5E1' }} />
+            <View style={{ height: 4, width: '92%', borderRadius: 3, backgroundColor: '#E2E8F0' }} />
+            <View style={{ height: 4, width: '84%', borderRadius: 3, backgroundColor: '#E2E8F0' }} />
+          </View>
+        </GridBackdrop>
       </View>
     );
   }

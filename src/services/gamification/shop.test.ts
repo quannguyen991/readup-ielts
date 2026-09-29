@@ -85,3 +85,48 @@ test('gộp hai máy: thưởng hạng tháng chỉ tính một lần mỗi thá
   const m = mergeReward({ ...base, prizes: { '2026-08': 300 } }, { ...base, prizes: { '2026-08': 300, '2026-07': 50 } })!;
   assert.deepEqual(m.prizes, { '2026-08': 300, '2026-07': 50 });
 });
+
+// ---------------------------------------------------------------- nền học + lưu đồ đang đeo (30/09/2026)
+
+test('mỗi món Nền học có mẫu vẽ, giá dương, chỉ mua một lần', async () => {
+  const { STUDY_BACKGROUNDS } = await import('@/components/layout/study-backgrounds');
+  const bgs = SHOP_ITEMS.filter((i) => i.kind === 'studyBg');
+  assert.ok(bgs.length >= 12);
+  for (const i of bgs) {
+    assert.ok(i.studyBg && STUDY_BACKGROUNDS[i.studyBg], `${i.id} thiếu mẫu vẽ`);
+    assert.ok(i.price > 0 && !i.repeatable);
+  }
+});
+
+test('gộp hai máy giữ nguyên giao diện và nền học đang dùng', () => {
+  const base = { owned: {}, spent: 0, avatar: null, cover: null, skin: null, mascot: null, frozenDays: [] };
+  const local = { ...base, theme: 'theme-ocean', studyBg: 'bg-mint', wornAt: '2026-09-30T10:00:00Z' };
+  const remote = { ...base, theme: null, studyBg: null, wornAt: '2026-09-29T10:00:00Z' };
+  const m = mergeReward(local, remote)!;
+  assert.equal(m.theme, 'theme-ocean');
+  assert.equal(m.studyBg, 'bg-mint');
+});
+
+test('dữ liệu đồng bộ phần thưởng mang ĐỦ mọi ô đang đeo (lỗi cũ: quên theme)', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const src = fs.readFileSync(path.join(__dirname, '../../store/useRewardStore.ts'), 'utf8');
+  const slots = [...(src.match(/export type WearSlot = ([^;]+);/)?.[1] ?? '').matchAll(/'(\w+)'/g)].map((m) => m[1]!);
+  assert.ok(slots.includes('theme') && slots.includes('studyBg'));
+  const body = src.slice(src.indexOf('export function rewardPayload'));
+  for (const slot of slots) assert.match(body, new RegExp(`\\b${slot}:`), `rewardPayload thiếu ${slot}`);
+});
+
+test('F5 khi đã đăng nhập: payload cũ trên máy chủ THIẾU trường theme không xoá giao diện đang dùng', () => {
+  const base = { owned: { 'theme-sakura': 1 }, spent: 280, avatar: null, cover: null, skin: null, mascot: null, frozenDays: [] };
+  // Máy này vừa áp dụng Vườn hoa anh đào; bản trên máy chủ do app cũ gửi, không có trường theme.
+  const local: RewardPayload = { ...base, theme: 'theme-sakura', wornAt: '2026-09-30T10:00:00Z' };
+  const oldRemote = { ...base, wornAt: '2026-09-30T10:00:00Z' } as RewardPayload;
+  assert.equal(mergeReward(local, oldRemote)!.theme, 'theme-sakura');
+  // Bản trên máy chủ MỚI HƠN nhưng vẫn thiếu trường (máy khác chạy app cũ): vẫn giữ.
+  const newerOld = { ...base, wornAt: '2026-09-30T11:00:00Z' } as RewardPayload;
+  assert.equal(mergeReward(local, newerOld)!.theme, 'theme-sakura');
+  // Bỏ đeo thật (null) ở máy mới hơn thì phải bỏ.
+  const removed: RewardPayload = { ...base, theme: null, wornAt: '2026-09-30T12:00:00Z' };
+  assert.equal(mergeReward(local, removed)!.theme, null);
+});

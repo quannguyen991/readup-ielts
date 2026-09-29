@@ -19,6 +19,8 @@
  * có giá trị nhất.
  */
 
+import type { CityKey } from './city';
+
 export type Locale = 'vi' | 'en';
 
 /**
@@ -96,6 +98,8 @@ export type MessageKey =
   | 'diagnose.title'
   | 'diagnose.hint'
   | 'diagnose.rightTag'
-  | 'diagnose.wrongTag';
+  | 'diagnose.wrongTag'
+  // ------------------------------------------- Thành Phố Tri Thức (./city.ts)
+  | CityKey;
 
 export type Dictionary = Readonly<Record<MessageKey, string>>;

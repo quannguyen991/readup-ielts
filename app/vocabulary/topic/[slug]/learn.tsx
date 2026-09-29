@@ -270,7 +270,7 @@ export default function LearnScreen() {
     }
     record(ok);
     // Game khi học: đúng thì chém quái, sai thì trúng đòn — kèm tiếng. Lật thẻ tự chấm nên không tính.
-    useGameStore.getState().answer(ok, "vocab");
+    useGameStore.getState().answer(ok, "vocab", { key: `learn:${slug}:${word.word}:${head.kind}` });
   };
 
   const advance = (ok: boolean) => {

@@ -16,7 +16,7 @@ import type { SkinId } from '@/components/game/sprites';
  * lệch — lúc ấy không ai biết số nào đúng. Ở đây chỉ có phần KHÔNG suy ra được:
  * đã tiêu bao nhiêu, sở hữu món gì, đang đeo gì, và những ngày đã dùng thẻ giữ chuỗi.
  */
-export type WearSlot = 'avatar' | 'cover' | 'effect' | 'skin' | 'mascot' | 'theme';
+export type WearSlot = 'avatar' | 'cover' | 'effect' | 'skin' | 'mascot' | 'theme' | 'studyBg';
 
 type RewardState = PurchaseState & {
   /** Avatar đang đeo — mã món (emoji hoặc avatar động), hoặc null là chữ cái đầu tên. */
@@ -26,6 +26,8 @@ type RewardState = PurchaseState & {
   effect: string | null;
   /** Giao diện toàn diện đang áp dụng. */
   theme: string | null;
+  /** Nền học đang dùng (sau mọi màn học), hoặc null là nền lưới mặc định. */
+  studyBg: string | null;
   skin: string | null;
   mascot: string | null;
   wornAt: string;
@@ -41,8 +43,6 @@ type RewardState = PurchaseState & {
   spendFreeze: (itemId: string, today?: Date) => boolean;
   /** Nhận thưởng hạng của một tháng; đã nhận tháng đó rồi thì trả false. */
   claimPrize: (month: string, stars: number) => boolean;
-  /** Tiêu sao cho việc khác ngoài cửa hàng (vd. Chợ vật liệu của Thành phố). Không đủ sao thì false. */
-  spendStars: (amount: number, balance: number) => boolean;
 };
 
 export const useRewardStore = create<RewardState>()(
@@ -54,6 +54,7 @@ export const useRewardStore = create<RewardState>()(
       cover: null,
       effect: null,
       theme: null,
+      studyBg: null,
       skin: null,
       mascot: null,
       wornAt: '',
@@ -66,13 +67,6 @@ export const useRewardStore = create<RewardState>()(
         if (!result.ok) return { ok: false, reason: result.reason };
         set({ owned: result.owned, spent: result.spent });
         return { ok: true };
-      },
-
-      spendStars: (amount, balance) => {
-        const n = Math.floor(amount);
-        if (!(n > 0) || n > balance) return false;
-        set({ spent: get().spent + n });
-        return true;
       },
 
       equipAvatar: (itemId) => get().equip('avatar', itemId),
@@ -118,7 +112,7 @@ export const useRewardStore = create<RewardState>()(
       name: `${STORAGE_PREFIX}reward`,
       storage: storage(),
       version: 1,
-      partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, theme: s.theme ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
+      partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, theme: s.theme ?? null, studyBg: s.studyBg ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
     },
   ),
 );
@@ -136,5 +130,20 @@ export function mascotOf(mascotItemId: string | null): MascotId | null {
 /** Dữ liệu để đồng bộ tài khoản (`services/sync/stores.ts`). */
 export function rewardPayload(): RewardPayload {
   const s = useRewardStore.getState();
-  return { owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes ?? {} };
+  // Phải mang ĐỦ mọi ô đang đeo. Bản cũ quên `theme` → mỗi lần đồng bộ, giao diện
+  // đang dùng bị gộp thành rỗng và người dùng vào lại thấy mất (sửa 30/09/2026).
+  return {
+    owned: s.owned,
+    spent: s.spent,
+    avatar: s.avatar,
+    cover: s.cover,
+    effect: s.effect ?? null,
+    theme: s.theme ?? null,
+    studyBg: s.studyBg ?? null,
+    skin: s.skin,
+    mascot: s.mascot,
+    wornAt: s.wornAt,
+    frozenDays: s.frozenDays,
+    prizes: s.prizes ?? {},
+  };
 }

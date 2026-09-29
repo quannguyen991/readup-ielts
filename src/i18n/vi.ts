@@ -1,3 +1,4 @@
+import { CITY_VI } from './city';
 import type { Dictionary } from './keys';
 
 /** Bản gốc. Mọi câu ở đây được viết trước, bản tiếng Anh dịch theo. */
@@ -88,4 +89,6 @@ export const vi: Dictionary = {
     'Bạn gọi đúng tên lỗi của mình. Chỗ vướng là ở thao tác, không phải ở chỗ nhận ra vấn đề — luyện thêm vài câu cùng dạng là được.',
   'diagnose.wrongTag':
     'Lỗi thật nằm ở dòng được tô xanh. Gọi sai tên lỗi nghĩa là chưa nhìn thấy chỗ hỏng, nên đọc lời giải xong vẫn dễ lặp lại — app sẽ đưa thêm một câu cùng dạng để kiểm.',
+
+  ...CITY_VI,
 };

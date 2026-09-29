@@ -47,7 +47,7 @@ export default function SatQuizRun() {
     if (!item || picked !== null) return;
     const ok = i === item.answerIndex;
     setPicked(i);
-    useGameStore.getState().answer(ok, 'vocab');
+    useGameStore.getState().answer(ok, 'vocab', { key: `sat:${slug}:${item.id}` });
     setResults((r) => [...r, ok]);
   };
 

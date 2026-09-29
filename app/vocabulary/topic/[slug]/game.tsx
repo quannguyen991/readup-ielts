@@ -164,11 +164,11 @@ export default function GameScreen() {
       scoreRef.current += gain;
       setScore(scoreRef.current);
       setCombo((c) => c + 1);
-      useGameStore.getState().answer(true, "vocab");
+      useGameStore.getState().answer(true, "vocab", { key: `game:${slug}:${r.target.word}` });
     } else {
       b.popped = "bad";
       r.balloons[r.correctLane]!.popped = "ok";
-      useGameStore.getState().answer(false, "vocab");
+      useGameStore.getState().answer(false, "vocab", { key: `game:${slug}:${r.target.word}` });
       loseLife();
     }
     setTimeout(newRound, 450);

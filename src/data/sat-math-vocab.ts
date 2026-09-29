@@ -1,4 +1,5 @@
 import { MATH_DOMAIN_LABEL, type MathDomain } from '@/lib/math/types';
+import { SAT_VOCAB_TERMS_MORE } from './sat-math-vocab-more';
 
 /**
  * Từ vựng SAT Math — một chuyên đề RIÊNG, tách khỏi 30 chủ đề IELTS.
@@ -72,7 +73,7 @@ export const SAT_VOCAB_CATEGORY_ORDER: SatVocabCategory[] = [
   'word_problem_language',
 ];
 
-export const SAT_VOCAB_TERMS: SatVocabTerm[] = [
+const SAT_VOCAB_TERMS_BASE: SatVocabTerm[] = [
   // ---------------------------------------------------------- foundations
   {
     term: 'sum',
@@ -661,6 +662,9 @@ export const SAT_VOCAB_TERMS: SatVocabTerm[] = [
     example: 'Find the value of x that satisfies the equation 2x + 3 = 11.',
   },
 ];
+
+/** Kho đầy đủ: bộ gốc + bộ bổ sung 30/09/2026 (mỗi mảng ≥ 30 thuật ngữ). */
+export const SAT_VOCAB_TERMS: SatVocabTerm[] = [...SAT_VOCAB_TERMS_BASE, ...SAT_VOCAB_TERMS_MORE];
 
 export const SAT_VOCAB_TOTALS = {
   terms: SAT_VOCAB_TERMS.length,

@@ -1,3 +1,4 @@
+import { CITY_EN } from './city';
 import type { Dictionary } from './keys';
 
 /**
@@ -100,4 +101,6 @@ export const en: Dictionary = {
     'You named your own mistake correctly. The difficulty is in carrying out the steps, not in spotting the problem — a few more questions of the same kind will do.',
   'diagnose.wrongTag':
     'The real mistake is the line highlighted in green. Naming it wrongly means you cannot yet see where it breaks, so reading the solution will not stop it happening again — the app will give you another question of the same kind to check.',
+
+  ...CITY_EN,
 };

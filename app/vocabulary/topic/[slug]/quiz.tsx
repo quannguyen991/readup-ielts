@@ -58,7 +58,7 @@ export default function QuizScreen() {
     const st = useTopicStudyStore.getState();
     st.setStage(slug, q.word.word, stageAfterQuiz(st.stages[slug]?.[q.word.word], ok));
     if (!ok) st.addLapse(slug, q.word.word);
-    useGameStore.getState().answer(ok, 'vocab');
+    useGameStore.getState().answer(ok, 'vocab', { key: `quiz:${slug}:${q.word.word}:${q.kind}` });
   };
   const next = () => {
     if (picked === null) return;

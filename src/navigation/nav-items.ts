@@ -14,6 +14,11 @@ export type NavItem = {
    * Xem ghi chú đầu `NAV_GROUPS`.
    */
   children?: NavItem[];
+  /**
+   * Chỉ hiện trên MÁY TÍNH (web, chuột, rộng ≥ 1024) — Thành Phố Tri Thức 3D.
+   * Điện thoại / máy tính bảng không thấy mục này (xem `visibleGroups`).
+   */
+  desktopOnly?: boolean;
 };
 
 export type NavGroup = {
@@ -123,7 +128,7 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'sparkle',
         inBottomTabs: true,
         children: [
-          { key: 'quest-city', label: 'Thành phố Tri thức', href: '/quest/city', icon: 'building' },
+          { key: 'quest-city', label: 'Thành phố Tri thức', href: '/quest/city', icon: 'building', desktopOnly: true },
           { key: 'quest-world', label: 'Bản đồ ReadUp', href: '/quest/world', icon: 'grid' },
           { key: 'quest-hero', label: 'Nhân vật & nhiệm vụ', href: '/quest/hero', icon: 'shield' },
           { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
@@ -202,4 +207,14 @@ export function parentNavKey(key: string | null): string | null {
     }
   }
   return null;
+}
+
+/** Bỏ các mục chỉ-máy-tính khi thiết bị không đủ điều kiện (không để lại dấu vết). */
+export function visibleGroups(groups: readonly NavGroup[], desktop: boolean): NavGroup[] {
+  if (desktop) return [...groups];
+  const keep = (i: NavItem): boolean => !i.desktopOnly;
+  return groups.map((g) => ({
+    ...g,
+    items: g.items.filter(keep).map((i) => (i.children ? { ...i, children: i.children.filter(keep) } : i)),
+  }));
 }

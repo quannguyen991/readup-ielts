@@ -7,10 +7,12 @@ import { Icon } from "@/components/ui/Icon";
 import {
   ADMIN_GROUP,
   NAV_GROUPS,
+  visibleGroups,
   activeNavKey,
   parentNavKey,
   type NavItem,
 } from "@/navigation/nav-items";
+import { useCityAvailable } from "@/services/city/availability";
 import { usePlan } from "@/store/useBillingStore";
 import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
 import { skinOf, useRewardStore } from "@/store/useRewardStore";
@@ -55,7 +57,8 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
   const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
-  const groups = isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS;
+  const desktop = useCityAvailable();
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
   const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
 
   return (

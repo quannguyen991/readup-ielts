@@ -38,6 +38,7 @@ import {
 import { color, spacing as space } from '@/theme/tokens';
 import { PageTransition } from '@/components/motion/Motion';
 import { useGameStore } from '@/store/useGameStore';
+import { useCityStore } from '@/store/useCityStore';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -60,6 +61,13 @@ export default function SatFullTestScreen() {
     setReviewing(false);
     setState(startFullTest(`full-${Date.now()}`));
   }, []);
+
+  // Xong cả bài thi thử đầy đủ → thép cho Thành Phố Tri Thức. Mã = hạt giống lượt thi,
+  // nên mở lại màn kết quả hay tải lại trang không cộng lần hai.
+  const finishedSeed = state?.stage.kind === 'result' ? state.seed : null;
+  useEffect(() => {
+    if (finishedSeed) useCityStore.getState().earn({ type: 'mock_test', id: `sat-full:${finishedSeed}` });
+  }, [finishedSeed]);
 
   /*
     Mỗi chặng của bài thi — giới thiệu, hai module R&W, nghỉ, hai module Math,
@@ -87,7 +95,7 @@ export default function SatFullTestScreen() {
         minutes={stage.minutes}
         onFinish={(answers) => {
           const correct = countRwCorrect(stage.items, answers);
-          useGameStore.getState().awardBatch(correct, stage.items.length, 'verbal');
+          useGameStore.getState().awardBatch(correct, stage.items.length, 'verbal', `${state.seed}:rw${stage.module}`);
           setState((s) =>
             s
               ? submitModule(s, { correct, total: stage.items.length }, { kind: 'rw', answers })

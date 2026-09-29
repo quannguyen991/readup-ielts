@@ -4,7 +4,7 @@ import { Link } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AuroraBackdrop } from './AuroraBackdrop';
-import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
+import { StudyBackdrop } from './LightGrid';
 import { Icon } from '@/components/ui/Icon';
 import { color, layout, paper } from '@/theme/tokens';
 
@@ -163,9 +163,6 @@ export function TaskShell({
     nhạt kẻ ô vừa tách được thẻ ra khỏi nền, vừa giữ đúng một họa tiết với tông
     tối — hai tông là hai độ sáng của cùng một thứ, không phải hai thiết kế.
   */
-  return (
-    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={paperGrid}>
-      {body}
-    </GridBackdrop>
-  );
+  // Nền học đổi bằng sao (nếu đang dùng) — cùng nền với mọi màn học khác.
+  return <StudyBackdrop showGrid={paperGrid}>{body}</StudyBackdrop>;
 }

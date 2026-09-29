@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
+import { studyBackground } from './study-backgrounds';
+import { findItem } from '@/services/gamification/shop';
+import { useRewardStore } from '@/store/useRewardStore';
 
 /**
  * Nền lưới SÁNG, tràn viền — cho các màn tác vụ nhiều chữ.
@@ -21,8 +24,24 @@ import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
  * chúng (màn đọc chia hai cột cuộn riêng). Ai cần thì tự bọc.
  */
 export function LightGrid({ children }: { children: React.ReactNode }) {
+  return <StudyBackdrop>{children}</StudyBackdrop>;
+}
+
+/**
+ * Nền sáng của MỌI màn học (LightGrid, TaskShell tông giấy). Có NỀN HỌC đổi
+ * bằng sao (Đổi quà → Nền học) thì vẽ mẫu đó; chưa chọn thì lưới sáng mặc định.
+ */
+export function StudyBackdrop({ children, showGrid = true }: { children: React.ReactNode; showGrid?: boolean }) {
+  const bg = studyBackground(findItem(useRewardStore((s) => s.studyBg))?.studyBg);
+  if (bg) {
+    return (
+      <GridBackdrop colors={bg.stops} line={bg.line} pattern={bg.pattern} blobs={bg.blobs} margin={bg.margin} cell={bg.cell ?? 34}>
+        {children}
+      </GridBackdrop>
+    );
+  }
   return (
-    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE}>
+    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={showGrid}>
       {children}
     </GridBackdrop>
   );
