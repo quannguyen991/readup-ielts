@@ -41,6 +41,8 @@ type RewardState = PurchaseState & {
   spendFreeze: (itemId: string, today?: Date) => boolean;
   /** Nhận thưởng hạng của một tháng; đã nhận tháng đó rồi thì trả false. */
   claimPrize: (month: string, stars: number) => boolean;
+  /** Tiêu sao cho việc khác ngoài cửa hàng (vd. Chợ vật liệu của Thành phố). Không đủ sao thì false. */
+  spendStars: (amount: number, balance: number) => boolean;
 };
 
 export const useRewardStore = create<RewardState>()(
@@ -64,6 +66,13 @@ export const useRewardStore = create<RewardState>()(
         if (!result.ok) return { ok: false, reason: result.reason };
         set({ owned: result.owned, spent: result.spent });
         return { ok: true };
+      },
+
+      spendStars: (amount, balance) => {
+        const n = Math.floor(amount);
+        if (!(n > 0) || n > balance) return false;
+        set({ spent: get().spent + n });
+        return true;
       },
 
       equipAvatar: (itemId) => get().equip('avatar', itemId),

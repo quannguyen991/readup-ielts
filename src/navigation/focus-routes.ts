@@ -12,6 +12,8 @@
  * không — ở đó người dùng đang duyệt và cần đường đi tiếp.
  */
 const FOCUS_PATTERNS: readonly RegExp[] = [
+  // Thành phố Tri thức: cảnh 3D chiếm trọn màn hình, không thanh bên.
+  /^\/quest\/city$/,
   // Writing: phòng viết, luyện từng phần, bảng chấm, drill SAT.
   /^\/write\/[^/]+$/,
   /^\/write\/drill\/[^/]+$/,

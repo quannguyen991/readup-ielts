@@ -123,6 +123,7 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'sparkle',
         inBottomTabs: true,
         children: [
+          { key: 'quest-city', label: 'Thành phố Tri thức', href: '/quest/city', icon: 'building' },
           { key: 'quest-world', label: 'Bản đồ ReadUp', href: '/quest/world', icon: 'grid' },
           { key: 'quest-hero', label: 'Nhân vật & nhiệm vụ', href: '/quest/hero', icon: 'shield' },
           { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
