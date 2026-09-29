@@ -18,7 +18,12 @@ import { useStarBalance } from "@/store/useStarBalance";
 import { AvatarBadge } from "@/components/profile/AnimatedAvatar";
 import { SIDEBAR_WIDTH, useSidebarStore } from "@/store/useSidebarStore";
 import { formatStars } from "@/services/gamification/shop";
-import { color } from "@/theme/tokens";
+import {
+  SidebarAtmosphereOverlay,
+  SidebarThemeQuickSwitcher,
+  useSidebarTheme,
+  type SidebarThemeConfig,
+} from "./SidebarAtmosphere";
 
 /**
  * Thanh bên trái — HIỆN ĐẦY ĐỦ TÊN, thu gọn được về dải biểu tượng.
@@ -46,6 +51,8 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
   const collapsed = compact || stored;
   const toggle = useSidebarStore((s) => s.toggle);
 
+  const { themeConfig, activeEffect } = useSidebarTheme();
+
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
   const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
@@ -54,9 +61,21 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
 
   return (
     <View
-      className="h-full border-r border-border bg-surface"
-      style={[{ width, zIndex: 40 }, Platform.OS === "web" ? webShadow : null]}
+      className="h-full relative overflow-hidden"
+      style={[
+        {
+          width,
+          zIndex: 40,
+          borderRightWidth: 1,
+          borderRightColor: themeConfig.borderRightColor,
+        },
+        themeConfig.bgStyle,
+        Platform.OS === "web" ? webShadow : null,
+      ]}
     >
+      {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}
+      <SidebarAtmosphereOverlay effect={activeEffect} isDark={themeConfig.isDark} />
+
       <View className={collapsed ? "items-center pb-2 pt-5" : "px-5 pb-2 pt-5"}>
         <Logo compact markOnly={collapsed} />
       </View>
@@ -73,9 +92,19 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
           <View key={group.key} className={groupIndex === 0 ? "" : "mt-4"}>
             {group.title ? (
               collapsed ? (
-                <View className="mx-2 mb-2 h-px bg-border" />
+                <View
+                  className="mx-2 mb-2 h-px"
+                  style={{
+                    backgroundColor: themeConfig.isDark
+                      ? "rgba(255,255,255,0.12)"
+                      : "#EEF0F6",
+                  }}
+                />
               ) : (
-                <Text className="mb-1.5 px-3 font-strong text-[12px] uppercase tracking-[1.2px] text-muted">
+                <Text
+                  className="mb-1.5 px-3 font-strong text-[12px] uppercase tracking-[1.2px]"
+                  style={{ color: themeConfig.textMuted }}
+                >
                   {group.title}
                 </Text>
               )
@@ -93,6 +122,7 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
                       parentOfActive={open}
                       collapsed={collapsed}
                       subtitle={open && activeChild ? activeChild.label : undefined}
+                      themeConfig={themeConfig}
                     />
                     {/* Thu gọn thì chỉ còn sáu biểu tượng lớn — không bày trang con. */}
                     {open && !collapsed && item.children?.length ? (
@@ -104,6 +134,7 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
                             active={activeKey === child.key}
                             collapsed={collapsed}
                             child
+                            themeConfig={themeConfig}
                           />
                         ))}
                       </View>
@@ -119,10 +150,14 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
       <View
         className={
           collapsed
-            ? "items-center gap-3 px-3 pb-4 pt-2"
-            : "gap-3 px-4 pb-4 pt-2"
+            ? "items-center gap-2 px-3 pb-4 pt-2"
+            : "gap-2 px-4 pb-4 pt-2"
         }
       >
+        {compact ? null : (
+          <SidebarThemeQuickSwitcher collapsed={collapsed} />
+        )}
+
         {compact ? null : (
           <Pressable
             accessibilityRole="button"
@@ -131,20 +166,26 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
             }
             onPress={toggle}
             className="flex-row items-center gap-2 rounded-panel px-2 py-1.5"
+            style={{ backgroundColor: themeConfig.hoverBg }}
           >
             <View
               style={
                 collapsed ? { transform: [{ rotate: "180deg" }] } : undefined
               }
             >
-              <Icon name="chevron-left" size={18} color={color.muted} />
+              <Icon name="chevron-left" size={18} color={themeConfig.textMuted} />
             </View>
             {collapsed ? null : (
-              <Text className="font-semi text-body text-muted">Thu gọn</Text>
+              <Text
+                className="font-semi text-body"
+                style={{ color: themeConfig.textMuted }}
+              >
+                Thu gọn
+              </Text>
             )}
           </Pressable>
         )}
-        <AccountRow collapsed={collapsed} />
+        <AccountRow collapsed={collapsed} themeConfig={themeConfig} />
       </View>
     </View>
   );
@@ -158,11 +199,6 @@ const webShadow = { boxShadow: "4px 0 24px rgba(15, 23, 42, 0.04)" } as const;
  * Mục cha của trang đang mở cũng được tô (nhạt hơn), để người đang ở "Thi thử
  * SAT đầy đủ" vẫn thấy mình đang trong khu SAT Math.
  */
-/** Khối tô của mục lớn đang học — dải xanh sáng dần sang đậm, chữ trắng (người dùng chọn, 27/09/2026). */
-const ACTIVE_FILL = "#5B8BEE";
-const ACTIVE_GRADIENT = "linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)";
-const ACTIVE_INK = "#FFFFFF";
-
 function NavRow({
   item,
   active,
@@ -170,6 +206,7 @@ function NavRow({
   collapsed,
   child = false,
   subtitle,
+  themeConfig,
 }: {
   item: NavItem;
   active: boolean;
@@ -178,13 +215,13 @@ function NavRow({
   child?: boolean;
   /** Tên trang con đang mở, in nhỏ dưới tên mục lớn. */
   subtitle?: string;
+  themeConfig: SidebarThemeConfig;
 }) {
   const [hovered, setHovered] = useState(false);
   // Mục lớn: tô khối khi chính nó hoặc một trang con của nó đang mở.
   const filled = !child && (active || parentOfActive);
   const lit = filled || active;
-  const tint = filled ? ACTIVE_INK : active ? color.ink : color.muted;
-  const bg = filled ? "" : active ? "bg-surfaceAlt" : hovered ? "bg-surfaceAlt" : "bg-transparent";
+  const tint = filled ? themeConfig.activeTextColor : active ? themeConfig.textPrimary : themeConfig.textMuted;
 
   return (
     <View style={{ position: "relative" }}>
@@ -202,17 +239,18 @@ function NavRow({
               : child
                 ? "gap-2.5 px-3 py-2"
                 : "gap-3 px-3 py-3",
-            bg,
           ].join(" ")}
           style={
             filled
               ? ({
-                  backgroundColor: ACTIVE_FILL,
+                  backgroundColor: themeConfig.activeFill,
                   ...(Platform.OS === "web"
-                    ? { backgroundImage: ACTIVE_GRADIENT, boxShadow: "0 6px 16px rgba(74,127,232,0.32)" }
+                    ? { backgroundImage: themeConfig.activeGradient, boxShadow: themeConfig.activeGlow }
                     : null),
                 } as object)
-              : undefined
+              : hovered || active
+                ? { backgroundColor: themeConfig.hoverBg }
+                : undefined
           }
         >
           <Icon
@@ -226,12 +264,12 @@ function NavRow({
               <Text
                 numberOfLines={1}
                 className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
-                style={{ color: filled ? ACTIVE_INK : child && !active ? color.muted : color.ink }}
+                style={{ color: filled ? themeConfig.activeTextColor : child && !active ? themeConfig.textMuted : themeConfig.textPrimary }}
               >
                 {item.label}
               </Text>
               {subtitle ? (
-                <Text numberOfLines={1} className="font-semi text-[12px]" style={{ color: ACTIVE_INK, opacity: 0.85 }}>
+                <Text numberOfLines={1} className="font-semi text-[12px]" style={{ color: themeConfig.activeTextColor, opacity: 0.85 }}>
                   {subtitle}
                 </Text>
               ) : null}
@@ -283,7 +321,7 @@ function planLabel(plan: string): string {
  * Chân thanh bên: chưa đăng nhập thì một nút Đăng nhập rõ ràng; đã đăng nhập
  * thì avatar + tên + số sao, dẫn sang trang Hồ sơ.
  */
-function AccountRow({ collapsed }: { collapsed: boolean }) {
+function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfig: SidebarThemeConfig }) {
   const signedIn = useAuthStore((s) => s.status === "signed_in");
   const name = useDisplayName();
   const plan = usePlan();
@@ -298,11 +336,14 @@ function AccountRow({ collapsed }: { collapsed: boolean }) {
         accessibilityRole="button"
         accessibilityLabel="Đăng nhập"
         onPress={() => router.push("/auth/sign-in" as never)}
-        className={`flex-row items-center justify-center gap-2 rounded-panel bg-primary-600 ${collapsed ? "h-11 w-11" : "py-3"}`}
+        className={`flex-row items-center justify-center gap-2 rounded-panel ${collapsed ? "h-11 w-11" : "py-3"}`}
+        style={{ backgroundColor: themeConfig.activeFill }}
       >
-        <Icon name="arrow-right" size={17} color="#FFFFFF" strokeWidth={2.2} />
+        <Icon name="arrow-right" size={17} color={themeConfig.activeTextColor} strokeWidth={2.2} />
         {collapsed ? null : (
-          <Text className="font-strong text-[15px] text-white">Đăng nhập</Text>
+          <Text className="font-strong text-[15px]" style={{ color: themeConfig.activeTextColor }}>
+            Đăng nhập
+          </Text>
         )}
       </Pressable>
     );
@@ -313,15 +354,20 @@ function AccountRow({ collapsed }: { collapsed: boolean }) {
       accessibilityRole="link"
       accessibilityLabel={`Hồ sơ của ${name}`}
       onPress={() => router.push("/profile" as never)}
-      className={`flex-row items-center gap-3 rounded-panel border border-border ${collapsed ? "p-1.5" : "px-3 py-2"}`}
+      className={`flex-row items-center gap-3 rounded-panel ${collapsed ? "p-1.5" : "px-3 py-2"}`}
+      style={{
+        borderWidth: 1,
+        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : "#EEF0F6",
+        backgroundColor: themeConfig.hoverBg,
+      }}
     >
       <AvatarBadge avatarId={avatarId} name={name} size={36} skin={skin} />
       {collapsed ? null : (
         <View className="min-w-0 flex-1">
-          <Text numberOfLines={1} className="font-strong text-[15px] text-ink">
+          <Text numberOfLines={1} className="font-strong text-[15px]" style={{ color: themeConfig.textPrimary }}>
             {name}
           </Text>
-          <Text numberOfLines={1} className="font-sans text-label text-muted">
+          <Text numberOfLines={1} className="font-sans text-label" style={{ color: themeConfig.textMuted }}>
             {planLabel(plan)} · ⭐ {formatStars(stars)}
           </Text>
         </View>

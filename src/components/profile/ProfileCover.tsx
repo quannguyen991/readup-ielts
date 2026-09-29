@@ -31,6 +31,22 @@ export function ProfileCover({ cover, height, children }: { cover: CoverLook | n
         <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}>
           <AuroraBackdrop />
         </View>
+      ) : cover === 'cyberpunk' ? (
+        <CyberpunkCover />
+      ) : cover === 'sakura' ? (
+        <SakuraCover />
+      ) : cover === 'mountain' ? (
+        <MountainCover />
+      ) : cover === 'galaxy' ? (
+        <GalaxyCover />
+      ) : cover === 'library' ? (
+        <LibraryCover />
+      ) : cover === 'bamboo' ? (
+        <BambooCover />
+      ) : cover === 'autumn' ? (
+        <AutumnCover />
+      ) : cover === 'vaporwave' ? (
+        <VaporwaveCover />
       ) : (
         <DefaultCover />
       )}
@@ -131,6 +147,115 @@ function OceanCover() {
       {[12, 30, 47, 66, 84].map((x, i) => (
         <View key={x} style={{ position: 'absolute', left: `${x}%`, bottom: `${10 + (i % 3) * 7}%`, width: 3, height: 3, backgroundColor: '#FFFFFF', ...loop('rp-twinkle', 1400 + i * 300, { delay: i * 250 }) }} {...MOVE} />
       ))}
+    </LinearGradient>
+  );
+}
+
+function CyberpunkCover() {
+  return (
+    <LinearGradient colors={['#050814', '#160B28', '#260B3C']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 22, height: 1.5, backgroundColor: '#00F2FE' }} />
+      <View style={{ position: 'absolute', left: '16%', bottom: 20, width: 24, height: 38, backgroundColor: '#0A0E17', borderTopWidth: 2, borderColor: '#FF007A' }} />
+      <View style={{ position: 'absolute', left: '32%', bottom: 22, width: 32, height: 46, backgroundColor: '#0A0E17', borderTopWidth: 2, borderColor: '#00F2FE' }} />
+      <View style={{ position: 'absolute', left: '54%', bottom: 18, width: 28, height: 34, backgroundColor: '#0A0E17', borderTopWidth: 2, borderColor: '#FACC15' }} />
+      <View style={{ position: 'absolute', left: '74%', bottom: 22, width: 38, height: 42, backgroundColor: '#0A0E17', borderTopWidth: 2, borderColor: '#A855F7' }} />
+      <View style={{ position: 'absolute', right: 18, top: 10 }}>
+        <GlowStars scale={1.1} />
+      </View>
+    </LinearGradient>
+  );
+}
+
+function SakuraCover() {
+  return (
+    <LinearGradient colors={['#FCE7F3', '#FBCFE8', '#F472B6']} start={{ x: 0, y: 0 }} end={{ x: 0.3, y: 1 }} style={FILL}>
+      <Svg width="100%" height="60%" viewBox="0 0 200 40" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
+        <Path d="M40 40 L90 8 L100 8 L150 40 Z" fill="#9D4EDD" opacity="0.4" />
+        <Path d="M85 12 L90 8 L100 8 L105 12 L100 15 L95 12 L90 15 Z" fill="#FFFFFF" opacity="0.9" />
+        <Path d="M0 40 Q 50 28 100 36 T 200 32 V 40 H 0 Z" fill="#7B2CBF" opacity="0.6" />
+      </Svg>
+      {[15, 35, 55, 75, 90].map((x, i) => (
+        <View key={x} style={{ position: 'absolute', left: `${x}%`, top: `${15 + (i % 3) * 16}%`, width: 8, height: 5, borderRadius: 6, backgroundColor: '#FF85A1', ...loop('rp-drift', 4000 + i * 800) }} {...MOVE} />
+      ))}
+    </LinearGradient>
+  );
+}
+
+function MountainCover() {
+  return (
+    <LinearGradient colors={['#FEF3C7', '#FDE68A', '#F59E0B']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: '72%', top: '15%', width: 40, height: 40, borderRadius: 40, backgroundColor: '#FEF9C3', ...loop('rp-glow', 5000) }} {...MOVE} />
+      <Svg width="100%" height="70%" viewBox="0 0 200 50" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
+        <Path d="M0 50 L35 15 L70 50 Z" fill="#475569" opacity="0.5" />
+        <Path d="M50 50 L95 10 L140 50 Z" fill="#334155" opacity="0.7" />
+        <Path d="M110 50 L160 18 L200 45 V 50 H 0 Z" fill="#1E293B" />
+      </Svg>
+    </LinearGradient>
+  );
+}
+
+function GalaxyCover() {
+  return (
+    <LinearGradient colors={['#030712', '#1E1B4B', '#4C1D95']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: '48%', top: '26%', width: 28, height: 28, borderRadius: 28, backgroundColor: '#E0E7FF', ...loop('rp-spin', 25000, { timing: 'linear' }) }} {...MOVE}>
+        <View style={{ position: 'absolute', top: 12, left: -8, width: 44, height: 4, borderRadius: 4, backgroundColor: '#A78BFA', transform: [{ rotate: '-25deg' }] }} />
+      </View>
+      {[10, 24, 40, 68, 82, 92].map((x, i) => (
+        <View key={x} style={{ position: 'absolute', left: `${x}%`, top: `${10 + (i % 4) * 18}%`, width: 2 + (i % 2), height: 2 + (i % 2), backgroundColor: '#FFFFFF', ...loop('rp-twinkle', 1800 + i * 350) }} {...MOVE} />
+      ))}
+    </LinearGradient>
+  );
+}
+
+function LibraryCover() {
+  return (
+    <LinearGradient colors={['#1C130E', '#382215', '#57361E']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: '15%', top: '30%', width: 14, height: 14, borderRadius: 14, backgroundColor: '#FDE047' }} />
+      <Svg width="100%" height="65%" viewBox="0 0 200 40" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
+        <Rect x={10} y={10} width={8} height={30} fill="#B45309" />
+        <Rect x={20} y={6} width={9} height={34} fill="#92400E" />
+        <Rect x={31} y={12} width={7} height={28} fill="#78350F" />
+        <Rect x={40} y={8} width={10} height={32} fill="#B45309" />
+        <Rect x={140} y={8} width={9} height={32} fill="#92400E" />
+        <Rect x={151} y={12} width={8} height={28} fill="#78350F" />
+        <Rect x={161} y={6} width={11} height={34} fill="#B45309" />
+        <Rect x={174} y={10} width={9} height={30} fill="#D97706" />
+        <Rect x={0} y={36} width={200} height={4} fill="#451A03" />
+      </Svg>
+    </LinearGradient>
+  );
+}
+
+function BambooCover() {
+  return (
+    <LinearGradient colors={['#06241D', '#0D4738', '#146852']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+      <Svg width="100%" height="80%" viewBox="0 0 200 50" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
+        {[18, 42, 75, 115, 148, 178].map((x, i) => (
+          <Rect key={x} x={x} y={4 + (i % 3) * 4} width={5} height={46} fill="#34D399" opacity={0.6 + (i % 3) * 0.15} rx={2} />
+        ))}
+        <Path d="M0 50 Q 50 42 100 46 T 200 44 V 50 H 0 Z" fill="#064E3B" />
+      </Svg>
+    </LinearGradient>
+  );
+}
+
+function AutumnCover() {
+  return (
+    <LinearGradient colors={['#451A03', '#78350F', '#B45309']} start={{ x: 0, y: 0 }} end={{ x: 0.2, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: '78%', top: '16%', width: 38, height: 38, borderRadius: 38, backgroundColor: '#FDE68A', opacity: 0.9, ...loop('rp-sun', 6000) }} {...MOVE} />
+      <Svg width="100%" height="60%" viewBox="0 0 200 40" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
+        <Path d="M0 40 Q 60 22 120 32 T 200 28 V 40 H 0 Z" fill="#991B1B" opacity="0.8" />
+        <Path d="M30 40 Q 90 26 150 36 T 200 34 V 40 H 0 Z" fill="#7C2D12" />
+      </Svg>
+    </LinearGradient>
+  );
+}
+
+function VaporwaveCover() {
+  return (
+    <LinearGradient colors={['#1E1135', '#4A154B', '#831843']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+      <View style={{ position: 'absolute', left: '42%', bottom: '26%', width: 50, height: 50, borderRadius: 50, backgroundColor: '#FDE047', ...loop('rp-glow', 4000) }} {...MOVE} />
+      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '32%', backgroundColor: '#0F051D', borderTopWidth: 1.5, borderColor: '#EC4899' }} />
     </LinearGradient>
   );
 }

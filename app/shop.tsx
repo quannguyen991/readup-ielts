@@ -72,24 +72,39 @@ const SECTIONS: Section[] = [
   { kind: 'powerup', title: 'Đồ chiến đấu', subtitle: 'Vào thẳng túi đồ, dùng ngay trong bài.', icon: 'shield' },
   { kind: 'freeze', title: 'Thẻ giữ chuỗi', subtitle: 'Giữ chuỗi cho ngày không kịp học.', icon: 'flame' },
   { kind: 'avatar', title: 'Avatar emoji', subtitle: 'Gọn, nhẹ, hiện ở mọi nơi.', icon: 'heart' },
-  { kind: 'theme', title: 'Giao diện', subtitle: 'Thêm tông giấy cho màn đọc.', icon: 'book' },
+  {
+    kind: 'theme',
+    title: 'Giao diện toàn diện',
+    subtitle: 'Đổi phong cách, bảng màu thanh bên và màn hình.',
+    icon: 'book',
+    note: 'Đổi và bấm áp dụng để thay đổi diện mạo thanh bên cùng bầu không khí học tập.',
+  },
 ];
 
-type TabKey = 'all' | 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'battle';
+type TabKey = 'all' | 'theme' | 'effect' | 'cover' | 'plan' | 'avatarAnim' | 'mascot' | 'skin' | 'battle';
 
 const TABS: { key: TabKey; label: string; kinds: ShopItemKind[] }[] = [
   { key: 'all', label: 'Tất cả', kinds: SECTIONS.map((s) => s.kind) },
+  { key: 'theme', label: 'Giao diện 🎨', kinds: ['theme'] },
+  { key: 'effect', label: 'Hiệu ứng ✨', kinds: ['effect'] },
+  { key: 'cover', label: 'Bìa hồ sơ', kinds: ['cover'] },
   { key: 'plan', label: 'Vé gói', kinds: ['plan'] },
+  { key: 'avatarAnim', label: 'Avatar', kinds: ['avatarAnim', 'avatar'] },
   { key: 'mascot', label: 'Linh vật', kinds: ['mascot'] },
   { key: 'skin', label: 'Skin', kinds: ['skin'] },
-  { key: 'avatarAnim', label: 'Avatar', kinds: ['avatarAnim', 'avatar'] },
-  { key: 'cover', label: 'Bìa hồ sơ', kinds: ['cover', 'theme'] },
-  { key: 'effect', label: 'Hiệu ứng ✨', kinds: ['effect'] },
   { key: 'battle', label: 'Đồ & thẻ', kinds: ['powerup', 'freeze'] },
 ];
 
 /** Món nào đeo ở ô nào. */
-const SLOT: Partial<Record<ShopItemKind, WearSlot>> = { mascot: 'mascot', skin: 'skin', avatarAnim: 'avatar', avatar: 'avatar', cover: 'cover', effect: 'effect' };
+const SLOT: Partial<Record<ShopItemKind, WearSlot>> = {
+  mascot: 'mascot',
+  skin: 'skin',
+  avatarAnim: 'avatar',
+  avatar: 'avatar',
+  cover: 'cover',
+  effect: 'effect',
+  theme: 'theme',
+};
 
 const NIGHT = '#1B1540';
 const GOLD_SOFT = '#FEF3C7';
@@ -110,7 +125,7 @@ export default function ShopScreen() {
   const today = useMemo(() => new Date(), []);
   const streak = currentStreak(daily, today, reward.frozenDays);
   const skin = skinOf(reward.skin);
-  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.skin, reward.mascot].filter((x): x is string => !!x));
+  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.theme, reward.skin, reward.mascot].filter((x): x is string => !!x));
   const activePlan = effectivePlan(billingPlan, billingExpires, today);
   const planUntil = activePlan !== 'free' && billingExpires ? new Date(billingExpires).toLocaleDateString('vi-VN') : null;
 
@@ -326,7 +341,7 @@ function ItemCard({
   onCancel: () => void;
 }) {
   const have = owned > 0 && !item.repeatable;
-  const wornLabel = item.kind === 'mascot' ? 'Đang đồng hành' : item.kind === 'skin' ? 'Đang mặc' : 'Đang dùng';
+  const wornLabel = item.kind === 'mascot' ? 'Đang đồng hành' : item.kind === 'skin' ? 'Đang mặc' : item.kind === 'theme' ? 'Đang áp dụng' : 'Đang dùng';
   return (
     <View
       style={{
@@ -388,6 +403,19 @@ function Stage({ children }: { children: React.ReactNode }) {
   return <View style={{ height: 84, borderRadius: 14, backgroundColor: NIGHT, alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>{children}</View>;
 }
 
+const THEME_PREVIEWS: Record<string, { bg: string; accent: string; text: string }> = {
+  'theme-midnight': { bg: '#0A0F1D', accent: '#38BDF8', text: '#FFFFFF' },
+  'theme-sakura': { bg: '#FFF0F5', accent: '#EC4899', text: '#831843' },
+  'theme-cyberpunk': { bg: '#090D16', accent: '#00F2FE', text: '#FF007A' },
+  'theme-ocean': { bg: '#061528', accent: '#06B6D4', text: '#E0F2FE' },
+  'theme-sunset': { bg: '#1C102A', accent: '#F97316', text: '#FDE047' },
+  'theme-lavender': { bg: '#FAF5FF', accent: '#A855F7', text: '#581C87' },
+  'theme-nord': { bg: '#2E3440', accent: '#88C0D0', text: '#ECEFF4' },
+  'theme-matcha': { bg: '#F2F7F2', accent: '#16A34A', text: '#14532D' },
+  'theme-sepia': { bg: '#FAF6ED', accent: '#B45309', text: '#451A03' },
+  'theme-emerald': { bg: '#06241D', accent: '#10B981', text: '#ECFDF5' },
+};
+
 function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
   if (item.mascot) {
     const m = MASCOTS[item.mascot];
@@ -427,6 +455,28 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
     return (
       <View style={{ height: 84, borderRadius: 14, overflow: 'hidden', backgroundColor: NIGHT }}>
         <ProfileEffect effect={item.effect} intensity={0.8} />
+      </View>
+    );
+  }
+  if (item.kind === 'theme') {
+    const p = THEME_PREVIEWS[item.id] ?? { bg: '#F6F7FB', accent: color.primary, text: color.ink };
+    return (
+      <View
+        style={{
+          height: 84,
+          borderRadius: 14,
+          backgroundColor: p.bg,
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          borderWidth: 1,
+          borderColor: 'rgba(255,255,255,0.15)',
+        }}
+      >
+        <View style={{ position: 'absolute', top: 8, left: 8, width: 12, height: 12, borderRadius: 6, backgroundColor: p.accent }} />
+        <Text style={{ fontSize: 32 }}>{item.glyph}</Text>
+        <Text style={{ fontSize: 11, fontWeight: '700', color: p.text, marginTop: 2 }}>Giao diện</Text>
       </View>
     );
   }

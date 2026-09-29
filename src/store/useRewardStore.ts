@@ -16,7 +16,7 @@ import type { SkinId } from '@/components/game/sprites';
  * lệch — lúc ấy không ai biết số nào đúng. Ở đây chỉ có phần KHÔNG suy ra được:
  * đã tiêu bao nhiêu, sở hữu món gì, đang đeo gì, và những ngày đã dùng thẻ giữ chuỗi.
  */
-export type WearSlot = 'avatar' | 'cover' | 'effect' | 'skin' | 'mascot';
+export type WearSlot = 'avatar' | 'cover' | 'effect' | 'skin' | 'mascot' | 'theme';
 
 type RewardState = PurchaseState & {
   /** Avatar đang đeo — mã món (emoji hoặc avatar động), hoặc null là chữ cái đầu tên. */
@@ -24,6 +24,8 @@ type RewardState = PurchaseState & {
   cover: string | null;
   /** Hiệu ứng hồ sơ kiểu Discord đang đeo. */
   effect: string | null;
+  /** Giao diện toàn diện đang áp dụng. */
+  theme: string | null;
   skin: string | null;
   mascot: string | null;
   wornAt: string;
@@ -49,6 +51,7 @@ export const useRewardStore = create<RewardState>()(
       avatar: null,
       cover: null,
       effect: null,
+      theme: null,
       skin: null,
       mascot: null,
       wornAt: '',
@@ -106,7 +109,7 @@ export const useRewardStore = create<RewardState>()(
       name: `${STORAGE_PREFIX}reward`,
       storage: storage(),
       version: 1,
-      partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
+      partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, theme: s.theme ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
     },
   ),
 );
