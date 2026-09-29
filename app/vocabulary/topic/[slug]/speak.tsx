@@ -84,7 +84,7 @@ export default function SpeakScreen() {
       const target = normalizeAnswer(word.word);
       const ok = alts.some((a) => normalizeAnswer(a) === target || normalizeAnswer(a).split(' ').includes(target));
       // Game khi học chỉ tính lần MÁY nghe chấm; tự bấm "giống mẫu" thì không.
-      useGameStore.getState().answer(ok, 'vocab');
+      useGameStore.getState().answer(ok, 'vocab', { key: `speak:${slug}:${word.word}` });
       judge(ok);
     };
     rec.onerror = (e) => {

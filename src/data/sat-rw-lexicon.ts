@@ -12,50 +12,28 @@
  * tương phản…) — đúng thứ người học cần phân biệt khi làm dạng Transitions.
  */
 
-export type LexEntry = {
-  pos: string;
-  meaningVi: string;
-  definitionEn: string;
-  synonyms: string[];
-  antonyms: string[];
-  example: string;
-  /** Chỉ từ nối: quan hệ logic mà từ nối này báo hiệu. */
-  logic?: string;
-};
+import { T, W, type LexEntry } from './sat-rw-lex-helpers';
+import { MORE as MORE_A } from './sat-rw-lexicon-more-a';
+import { MORE as MORE_B } from './sat-rw-lexicon-more-b';
 
-const T = (
-  logic: string,
-  meaningVi: string,
-  definitionEn: string,
-  synonyms: string[],
-  antonyms: string[],
-  example: string,
-): LexEntry => ({ pos: 'transition', logic, meaningVi, definitionEn, synonyms, antonyms, example });
+export type { LexEntry };
 
-const W = (
-  pos: string,
-  meaningVi: string,
-  definitionEn: string,
-  synonyms: string[],
-  antonyms: string[],
-  example: string,
-): LexEntry => ({ pos, meaningVi, definitionEn, synonyms, antonyms, example });
-
-export const SAT_RW_LEXICON: Record<string, LexEntry> = {
+/** Bộ gốc (trước 30/09/2026). */
+export const SAT_RW_LEXICON_BASE: Record<string, LexEntry> = {
   // ------------------------------------------------------------ từ nối
   'by contrast': T('Tương phản', 'ngược lại, trái lại', 'Used to show that the next idea is very different from the one before.', ['in contrast', 'on the other hand', 'conversely'], ['similarly', 'likewise'], 'City rents rose sharply last year. By contrast, rural rents barely changed.'),
   consequently: T('Kết quả', 'do đó, vì vậy', 'As a result of what has just been said.', ['as a result', 'therefore', 'thus'], ['however', 'nevertheless'], 'The bridge was closed for repairs; consequently, traffic moved to the old road.'),
   'for example': T('Ví dụ', 'ví dụ như', 'Used to introduce a specific case that illustrates a general point.', ['for instance', 'to illustrate'], ['in general', 'overall'], 'Some birds travel huge distances. For example, the Arctic tern flies from pole to pole.'),
   'that is': T('Diễn giải lại', 'tức là, nghĩa là', 'Used to explain or restate the previous idea more exactly.', ['in other words', 'namely', 'i.e.'], [], 'The plant is deciduous; that is, it loses its leaves every autumn.'),
   subsequently: T('Trình tự thời gian', 'sau đó, về sau', 'At a later time; afterwards.', ['later', 'afterward', 'then'], ['previously', 'earlier'], 'She trained as a nurse and subsequently became a hospital director.'),
-  nevertheless: T('Nhượng bộ', 'tuy vậy, dù vậy', 'Despite what has just been said; still.', ['even so', 'nonetheless', 'however'], ['therefore', 'consequently'], 'The test was difficult. Nevertheless, most students passed.'),
+  nevertheless: T('Nhượng bộ', 'tuy vậy, dù vậy', 'Despite what has just been said; still.', ['even so', 'nonetheless', 'however', 'on the other hand'], ['therefore', 'consequently'], 'The test was difficult. Nevertheless, most students passed.'),
   'as a result': T('Kết quả', 'kết quả là', 'Because of the situation or action just described.', ['consequently', 'therefore', 'thus'], ['nevertheless', 'even so'], 'The river flooded for weeks. As a result, the harvest was delayed.'),
-  'even so': T('Nhượng bộ', 'dù vậy, mặc dù thế', 'Although that is true; despite that.', ['nevertheless', 'nonetheless', 'still'], ['therefore', 'as a result'], 'The data were incomplete. Even so, the pattern was hard to ignore.'),
+  'even so': T('Nhượng bộ', 'dù vậy, mặc dù thế', 'Although that is true; despite that.', ['nevertheless', 'nonetheless', 'still', 'however', 'on the other hand'], ['therefore', 'as a result'], 'The data were incomplete. Even so, the pattern was hard to ignore.'),
   previously: T('Trình tự thời gian', 'trước đó, trước đây', 'At an earlier time; before the time being discussed.', ['earlier', 'formerly', 'before'], ['subsequently', 'afterward'], 'The museum now opens on Mondays; previously, it was closed that day.'),
-  meanwhile: T('Đồng thời / đối chiếu', 'trong khi đó', 'At the same time, or used to compare two situations happening together.', ['at the same time', 'simultaneously'], ['afterward', 'previously'], 'One team collected samples in the field. Meanwhile, the other analyzed them in the lab.'),
+  meanwhile: T('Đồng thời / đối chiếu', 'trong khi đó', 'At the same time, or used to compare two situations happening together.', ['at the same time', 'simultaneously'], ['afterward', 'previously'], 'All morning, one team collected new samples in the field. Meanwhile, during those same hours, the other team analyzed yesterday’s samples in the lab.'),
   'in addition': T('Bổ sung', 'ngoài ra, thêm vào đó', 'Used to add another point that supports the previous one.', ['moreover', 'furthermore', 'also'], ['however', 'by contrast'], 'The new bus line is cheaper. In addition, it runs later at night.'),
   'in other words': T('Diễn giải lại', 'nói cách khác', 'Used to express the same idea in a simpler or clearer way.', ['that is', 'put differently', 'namely'], [], 'The species is nocturnal; in other words, it is active at night.'),
-  however: T('Tương phản', 'tuy nhiên', 'Used to introduce a statement that contrasts with the previous one.', ['but', 'nevertheless', 'by contrast'], ['therefore', 'moreover'], 'The plan looked simple on paper. However, it proved costly to carry out.'),
+  however: T('Tương phản', 'tuy nhiên', 'Used to introduce a statement that contrasts with the previous one.', ['but', 'nevertheless', 'by contrast', 'even so'], ['therefore', 'moreover'], 'The plan looked simple on paper. However, it proved costly to carry out.'),
   'for instance': T('Ví dụ', 'chẳng hạn', 'Used to give a particular example of a general statement.', ['for example', 'such as', 'to illustrate'], ['in general', 'overall'], 'Many fruits are rich in vitamin C. For instance, one orange provides a full day’s need.'),
   therefore: T('Kết quả', 'vì thế, do đó', 'For that reason; as a logical consequence.', ['thus', 'consequently', 'hence'], ['however', 'nevertheless'], 'All the samples tested negative; therefore, the water was declared safe.'),
   thus: T('Kết quả', 'như vậy, do đó', 'As a result of this; in this way.', ['therefore', 'hence', 'consequently'], ['however', 'even so'], 'The glacier is melting faster, thus raising the level of the lake below.'),
@@ -76,22 +54,22 @@ export const SAT_RW_LEXICON: Record<string, LexEntry> = {
   expensive: W('adjective', 'đắt tiền', 'Costing a lot of money.', ['costly', 'pricey', 'high-priced'], ['cheap', 'inexpensive'], 'Repairing the old engine turned out to be more expensive than buying a new one.'),
   controversial: W('adjective', 'gây tranh cãi', 'Causing a lot of public disagreement.', ['contentious', 'disputed', 'divisive'], ['undisputed', 'uncontroversial'], 'The new tax was controversial, and protests followed.'),
   fabricated: W('adjective', 'bịa đặt, ngụy tạo', 'Invented in order to deceive; made up.', ['invented', 'fake', 'falsified'], ['genuine', 'authentic', 'accurate'], 'The journalist was fired for publishing fabricated quotes.'),
-  tenuous: W('adjective', 'mong manh, lỏng lẻo', 'Very weak or slight; not firmly supported.', ['weak', 'flimsy', 'shaky'], ['strong', 'solid', 'firm'], 'The link between the two events is tenuous at best.'),
+  tenuous: W('adjective', 'mong manh, lỏng lẻo', 'Very weak or slight; not firmly supported.', ['weak', 'flimsy', 'shaky'], ['strong', 'solid', 'firm'], 'With only one blurry photo as proof, the link between the two events is tenuous at best.'),
   undisputed: W('adjective', 'không thể bàn cãi', 'Accepted by everyone as true or valid.', ['unquestioned', 'accepted', 'indisputable'], ['controversial', 'contested', 'disputed'], 'She is the undisputed expert on the region’s history.'),
   uneven: W('adjective', 'không đều', 'Not level, smooth, or equal in quality or amount.', ['irregular', 'inconsistent', 'unequal'], ['even', 'uniform', 'consistent'], 'Progress across the schools was uneven: some improved, others fell behind.'),
   brief: W('adjective', 'ngắn gọn, ngắn ngủi', 'Lasting only a short time or using few words.', ['short', 'concise', 'fleeting'], ['long', 'lengthy', 'extended'], 'After a brief pause, the speaker continued.'),
   obscure: W('adjective', 'ít người biết, khó hiểu', 'Not well known, or not clearly expressed.', ['unknown', 'little-known', 'unclear'], ['famous', 'well-known', 'obvious'], 'The poem was written by an obscure author from the 1800s.'),
   prolific: W('adjective', 'sáng tác/sản xuất nhiều', 'Producing a large amount of work or results.', ['productive', 'fruitful', 'fertile'], ['unproductive', 'sparse'], 'He was a prolific writer, publishing more than sixty novels.'),
-  unanimous: W('adjective', 'nhất trí hoàn toàn', 'Agreed on by everyone involved.', ['united', 'undivided', 'in agreement'], ['divided', 'split'], 'The board reached a unanimous decision to approve the budget.'),
+  unanimous: W('adjective', 'nhất trí hoàn toàn', 'Agreed on by everyone involved.', ['united', 'undivided', 'in agreement'], ['divided', 'split'], 'All nine members voted yes, so the board reached a unanimous decision to approve the budget.'),
   illegal: W('adjective', 'bất hợp pháp', 'Not allowed by law.', ['unlawful', 'illicit', 'prohibited'], ['legal', 'lawful', 'permitted'], 'Fishing in the protected bay is illegal.'),
   arbitrary: W('adjective', 'tùy tiện, không có lý do', 'Based on chance or personal choice rather than reason.', ['random', 'unreasoned', 'capricious'], ['reasoned', 'systematic', 'principled'], 'The cutoff date seemed arbitrary, since no one could explain it.'),
   fraudulent: W('adjective', 'gian lận, lừa đảo', 'Intended to deceive people, often for money.', ['deceitful', 'dishonest', 'fake'], ['honest', 'legitimate', 'genuine'], 'The bank blocked several fraudulent transactions on her card.'),
-  thorough: W('adjective', 'kỹ lưỡng, triệt để', 'Complete and careful, covering every detail.', ['meticulous', 'exhaustive', 'comprehensive'], ['cursory', 'superficial', 'careless'], 'The inspector made a thorough check of the building.'),
+  thorough: W('adjective', 'kỹ lưỡng, triệt để', 'Complete and careful, covering every detail.', ['meticulous', 'exhaustive', 'comprehensive'], ['cursory', 'superficial', 'careless'], 'The inspector spent two full days on a thorough check of the building, testing every pipe and wire.'),
   cursory: W('adjective', 'qua loa, sơ sài', 'Done quickly and without attention to detail.', ['hasty', 'superficial', 'perfunctory'], ['thorough', 'meticulous', 'careful'], 'A cursory glance at the report missed the key error.'),
   illegible: W('adjective', 'không đọc được (chữ viết)', 'Impossible or very hard to read because it is unclear.', ['unreadable', 'indecipherable'], ['legible', 'readable', 'clear'], 'The doctor’s handwriting was nearly illegible.'),
   innocuous: W('adjective', 'vô hại, không gây phản cảm', 'Not harmful or offensive.', ['harmless', 'inoffensive', 'benign'], ['harmful', 'offensive', 'dangerous'], 'What seemed an innocuous question upset the whole room.'),
   urgent: W('adjective', 'khẩn cấp', 'Needing immediate attention or action.', ['pressing', 'critical', 'immediate'], ['unimportant', 'minor', 'deferrable'], 'The patient needed urgent surgery.'),
-  contentious: W('adjective', 'gây tranh cãi', 'Likely to cause disagreement or argument.', ['controversial', 'disputed', 'divisive'], ['undisputed', 'settled', 'agreed'], 'Land ownership remained a contentious issue in the village.'),
+  contentious: W('adjective', 'dễ gây bất đồng, gay gắt', 'Likely to cause disagreement or argument.', ['controversial', 'disputed', 'divisive'], ['undisputed', 'settled', 'agreed'], 'Families still argued bitterly at every meeting; land ownership remained a contentious issue in the village.'),
   settled: W('adjective', 'đã được giải quyết, đã chốt', 'Decided or resolved; no longer in doubt.', ['decided', 'resolved', 'established'], ['unsettled', 'contentious', 'open'], 'Once the matter was settled, the two sides signed the agreement.'),
   technical: W('adjective', 'thuộc chuyên môn, kỹ thuật', 'Relating to specialized knowledge of a subject or machine.', ['specialized', 'expert', 'scientific'], ['general', 'everyday', 'nontechnical'], 'The manual was too technical for most beginners.'),
   unfinished: W('adjective', 'chưa hoàn thành', 'Not yet completed.', ['incomplete', 'partial', 'in progress'], ['finished', 'complete'], 'The painter died leaving several unfinished canvases.'),
@@ -103,7 +81,7 @@ export const SAT_RW_LEXICON: Record<string, LexEntry> = {
   reticent: W('adjective', 'kín đáo, ít nói về bản thân', 'Not willing to reveal one’s thoughts or feelings.', ['reserved', 'taciturn', 'restrained'], ['candid', 'outspoken', 'forthcoming'], 'The usually reticent author spoke openly about her childhood.'),
   uniform: W('adjective', 'đồng đều, như nhau', 'The same in every part or case; not varying.', ['consistent', 'even', 'identical'], ['uneven', 'varied', 'irregular'], 'The bricks were of uniform size and colour.'),
   invasive: W('adjective', 'xâm lấn', 'Spreading harmfully into new areas, or entering the body.', ['intrusive', 'encroaching', 'aggressive'], ['native', 'non-invasive', 'contained'], 'An invasive plant species has taken over the riverbank.'),
-  fragile: W('adjective', 'mong manh, dễ vỡ', 'Easily broken or damaged.', ['delicate', 'breakable', 'frail'], ['sturdy', 'robust', 'resilient'], 'Coral reefs are fragile ecosystems.'),
+  fragile: W('adjective', 'mong manh, dễ vỡ', 'Easily broken or damaged.', ['delicate', 'breakable', 'frail'], ['sturdy', 'robust', 'resilient'], 'Coral reefs are fragile ecosystems: a small rise in water temperature can break them down.'),
   resilient: W('adjective', 'kiên cường, phục hồi nhanh', 'Able to recover quickly from difficulty or damage.', ['tough', 'hardy', 'robust'], ['fragile', 'vulnerable', 'weak'], 'The forest proved resilient and regrew within a decade.'),
   inevitable: W('adjective', 'không thể tránh khỏi', 'Certain to happen; unavoidable.', ['unavoidable', 'certain', 'inescapable'], ['avoidable', 'uncertain', 'preventable'], 'Some delay was inevitable given the bad weather.'),
   invisible: W('adjective', 'vô hình, không nhìn thấy', 'Impossible to see.', ['unseen', 'hidden', 'imperceptible'], ['visible', 'conspicuous', 'obvious'], 'Ultraviolet light is invisible to the human eye.'),
@@ -122,9 +100,9 @@ export const SAT_RW_LEXICON: Record<string, LexEntry> = {
   fictional: W('adjective', 'hư cấu', 'Invented for a story; not real.', ['imaginary', 'invented', 'made-up'], ['real', 'factual', 'historical'], 'The town in the novel is fictional, though it resembles many real ones.'),
   candid: W('adjective', 'thẳng thắn, bộc trực', 'Honest and direct, even about difficult things.', ['frank', 'open', 'forthright'], ['reticent', 'guarded', 'evasive'], 'In a candid interview, the coach admitted his mistakes.'),
   indifferent: W('adjective', 'thờ ơ, không quan tâm', 'Having no interest or concern.', ['unconcerned', 'apathetic', 'detached'], ['interested', 'concerned', 'passionate'], 'Most voters seemed indifferent to the new policy.'),
-  uninformed: W('adjective', 'thiếu hiểu biết, không được thông tin', 'Not having enough knowledge or information.', ['ignorant', 'unaware', 'ill-informed'], ['informed', 'knowledgeable', 'aware'], 'The article was written by an uninformed critic.'),
+  uninformed: W('adjective', 'thiếu hiểu biết, không được thông tin', 'Not having enough knowledge or information.', ['ignorant', 'unaware', 'ill-informed'], ['informed', 'knowledgeable', 'aware'], 'The article was written by an uninformed critic who had never actually visited the museum.'),
   dishonest: W('adjective', 'không trung thực', 'Willing to lie, cheat or deceive.', ['deceitful', 'fraudulent', 'untruthful'], ['honest', 'truthful', 'candid'], 'The dishonest seller hid the damage from the buyer.'),
-  ambivalent: W('adjective', 'phân vân, có cảm xúc trái chiều', 'Having mixed feelings about something.', ['uncertain', 'torn', 'conflicted'], ['certain', 'decided', 'resolute'], 'She felt ambivalent about moving abroad.'),
+  ambivalent: W('adjective', 'phân vân, có cảm xúc trái chiều', 'Having mixed feelings about something.', ['uncertain', 'torn', 'conflicted'], ['certain', 'decided', 'resolute'], 'She felt ambivalent about moving abroad: excited by the new job but sad to leave her family.'),
   immediate: W('adjective', 'ngay lập tức', 'Happening or done at once.', ['instant', 'prompt', 'direct'], ['delayed', 'gradual', 'eventual'], 'The medicine had an immediate effect.'),
   theoretical: W('adjective', 'thuộc lý thuyết', 'Based on ideas and principles rather than practice or experience.', ['abstract', 'hypothetical', 'conceptual'], ['practical', 'applied', 'empirical'], 'The course moves from theoretical physics to lab work.'),
   accidental: W('adjective', 'tình cờ, ngẫu nhiên', 'Happening by chance, not on purpose.', ['unintentional', 'chance', 'inadvertent'], ['intentional', 'deliberate', 'planned'], 'Penicillin was an accidental discovery.'),
@@ -138,17 +116,23 @@ export const SAT_RW_LEXICON: Record<string, LexEntry> = {
   crowded: W('adjective', 'đông đúc', 'Full of people or things.', ['packed', 'congested', 'crammed'], ['empty', 'deserted', 'sparse'], 'The crowded train had no free seats.'),
   accurate: W('adjective', 'chính xác', 'Correct in every detail; free from error.', ['correct', 'precise', 'exact'], ['inaccurate', 'mistaken', 'wrong'], 'The map was surprisingly accurate for its time.'),
   confidential: W('adjective', 'bí mật, mật', 'Meant to be kept private.', ['private', 'secret', 'classified'], ['public', 'open', 'published'], 'Patient records are confidential.'),
-  statistical: W('adjective', 'thuộc thống kê', 'Relating to numbers collected and analysed to show patterns.', ['numerical', 'quantitative', 'data-based'], ['anecdotal', 'qualitative'], 'The claim was supported by strong statistical evidence.'),
-  anecdotal: W('adjective', 'dựa trên giai thoại, chuyện kể', 'Based on personal stories rather than careful research.', ['informal', 'unscientific', 'hearsay'], ['statistical', 'empirical', 'scientific'], 'The evidence that the diet works is mostly anecdotal.'),
+  statistical: W('adjective', 'thuộc thống kê', 'Relating to numbers collected and analysed to show patterns.', ['numerical', 'quantitative', 'data-based', 'empirical'], ['anecdotal', 'qualitative'], 'The claim was supported by strong statistical evidence: surveys of 5,000 households, analyzed with standard tests, all showed the same pattern.'),
+  anecdotal: W('adjective', 'dựa trên giai thoại, chuyện kể', 'Based on personal stories rather than careful research.', ['informal', 'unscientific', 'hearsay'], ['statistical', 'empirical', 'scientific'], 'The evidence that the diet works is mostly anecdotal, coming from a few customers’ personal stories rather than from any study.'),
   preliminary: W('adjective', 'sơ bộ, ban đầu', 'Coming before the main part; early and not final.', ['initial', 'early', 'tentative'], ['final', 'definitive', 'conclusive'], 'Preliminary results suggest the vaccine is effective.'),
   selective: W('adjective', 'có chọn lọc', 'Choosing carefully, or affecting only some things.', ['choosy', 'discriminating', 'particular'], ['exhaustive', 'indiscriminate', 'comprehensive'], 'The university is highly selective in its admissions.'),
   exhaustive: W('adjective', 'đầy đủ, toàn diện', 'Including every possible part or detail.', ['comprehensive', 'thorough', 'complete'], ['selective', 'partial', 'cursory'], 'The team carried out an exhaustive search of the archives.'),
   inaccurate: W('adjective', 'không chính xác', 'Not correct or exact.', ['incorrect', 'wrong', 'mistaken'], ['accurate', 'correct', 'precise'], 'The early figures were inaccurate and had to be revised.'),
   'derived from': W('phrase', 'bắt nguồn từ', 'Taken or developed from a particular source.', ['based on', 'drawn from', 'originating in'], ['independent of', 'unrelated to'], 'Many English words are derived from Latin.'),
-  'indifferent to': W('phrase', 'thờ ơ với', 'Not interested in or affected by something.', ['unconcerned about', 'uninterested in'], ['concerned about', 'passionate about'], 'The cat seemed indifferent to the noise outside.'),
-  'consistent with': W('phrase', 'phù hợp với, khớp với', 'In agreement with; not contradicting.', ['in line with', 'compatible with', 'in keeping with'], ['at odds with', 'inconsistent with', 'contrary to'], 'The new data are consistent with the earlier study.'),
+  'indifferent to': W('phrase', 'thờ ơ với', 'Not interested in or affected by something.', ['unconcerned about', 'uninterested in'], ['concerned about', 'passionate about'], 'The cat seemed indifferent to the noise outside: it kept sleeping and did not even lift its head.'),
+  'consistent with': W('phrase', 'phù hợp với, khớp với', 'In agreement with; not contradicting.', ['in line with', 'compatible with', 'in keeping with'], ['at odds with', 'inconsistent with', 'contrary to'], 'The new data are consistent with the earlier study, which also found that the lake warmed by about one degree.'),
   'at odds with': W('phrase', 'mâu thuẫn với', 'In disagreement or conflict with.', ['in conflict with', 'inconsistent with', 'contrary to'], ['consistent with', 'in line with'], 'His account of events is at odds with the video evidence.'),
 };
+
+/**
+ * Kho đầy đủ: bộ gốc + bổ sung 30/09/2026 (mỗi chủ đề từ vựng SAT Verbal ≥ 30
+ * từ): `more-a` từ nối + dữ liệu/lập luận, `more-b` các chủ đề tính từ.
+ */
+export const SAT_RW_LEXICON: Record<string, LexEntry> = { ...SAT_RW_LEXICON_BASE, ...MORE_A, ...MORE_B };
 
 /** Mục từ điển cho một phương án, không phân biệt hoa thường và dấu câu cuối. */
 export function lookupLex(option: string): LexEntry | undefined {

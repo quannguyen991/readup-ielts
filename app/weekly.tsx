@@ -98,7 +98,7 @@ export default function WeeklyScreen() {
     const result: WeeklyResult = { score: items.length - wrong.length, total: items.length, ms, at: new Date().toISOString(), wrong };
     setAttempt(result);
     // XP game chỉ cho lượt được tính — làm lại đề đã biết đáp án thì không cộng.
-    if (!practice) useGameStore.getState().awardBatch(result.score, result.total, 'weekly');
+    if (!practice) useGameStore.getState().awardBatch(result.score, result.total, 'weekly', `weekly:${week}`);
     if (!practice && record(week, result) && userId) {
       // Đẩy kết quả lên ngay để bảng cả nước có mình, rồi tải lại bảng.
       void syncNow(userId, 'push').then(loadBoard);

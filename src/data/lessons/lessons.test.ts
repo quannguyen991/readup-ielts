@@ -82,10 +82,12 @@ test('mọi thuật ngữ SAT Math nằm trong một bài từ vựng', () => {
   assert.equal(all.length, SAT_VOCAB_TERMS.length);
 });
 
-test('bài từ vựng đủ từ để làm trắc nghiệm 4 lựa chọn, và mở được như một bộ học', () => {
+test('mỗi chủ đề từ vựng SAT có ít nhất 30 từ, và mở được như một bộ học', () => {
+  // Người dùng yêu cầu 30/09/2026: "mỗi cái ít phải 30 từ cho từng chủ đề".
   for (const l of [...SAT_MATH_VOCAB_LESSONS, ...SAT_VERBAL_VOCAB_LESSONS]) {
-    assert.ok(l.words.length >= 4, `${l.slug} chỉ có ${l.words.length} từ`);
-    assert.ok(l.words.length <= 13, `${l.slug} quá dài`);
+    assert.ok(l.words.length >= 30, `${l.slug} "${l.title}" chỉ có ${l.words.length} từ`);
+    assert.ok(l.words.length <= 60, `${l.slug} quá dài`);
+    assert.equal(new Set(l.words.map((w) => w.word)).size, l.words.length, `${l.slug} lặp từ`);
     assert.equal(getStaticDeck(l.slug)?.words.length, l.words.length);
   }
 });

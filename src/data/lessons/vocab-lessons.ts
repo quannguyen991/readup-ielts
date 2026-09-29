@@ -1,11 +1,9 @@
 /**
- * Bài từ vựng SAT — chia kho từ thành những bài ngắn (6–13 từ), mỗi bài là một
- * "bộ học" chạy được mọi chế độ của màn Từ vựng (thẻ lật, Học, Nghe chép, Điền
- * câu, Kiểm tra, Bóng bay).
- *
- * VÌ SAO CHIA NHỎ: các nền tảng luyện SAT (PrepScholar, PrepMaven…) đều khuyên
- * học từ theo nhóm nhỏ và ôn lặp, không cày một danh sách vài trăm từ. Một bài
- * vừa đủ cho một buổi 15 phút.
+ * Bài từ vựng SAT — mỗi CHỦ ĐỀ là một bài, ít nhất 30 từ (người dùng yêu cầu
+ * 30/09/2026: "mỗi cái ít phải 30 từ cho từng chủ đề"; trước đó bài bị cắt còn
+ * 4–13 từ). Mỗi bài là một "bộ học" chạy được mọi chế độ của màn Từ vựng (thẻ
+ * lật, Học, Nghe chép, Điền câu, Kiểm tra, Bóng bay) — các chế độ đó tự chia
+ * lượt học nhỏ nên một bài 30+ từ vẫn học được theo từng buổi ngắn.
  *
  * - SAT Math: thuật ngữ đề bài, cắt theo mảng kiến thức.
  * - SAT Verbal: từ của dạng Words in Context gom theo CHỦ ĐỀ NGHĨA, để các cặp
@@ -14,6 +12,8 @@
  */
 import { SAT_VOCAB_CATEGORY_LABEL, SAT_VOCAB_CATEGORY_ORDER, SAT_VOCAB_TERMS } from '../sat-math-vocab';
 import { SAT_RW_LEXICON } from '../sat-rw-lexicon';
+import { THEME_ADDITIONS as ADD_A } from '../sat-rw-lexicon-more-a';
+import { THEME_ADDITIONS as ADD_B } from '../sat-rw-lexicon-more-b';
 import type { StudyWord } from '@/services/vocab/topic-study';
 
 export type VocabLesson = {
@@ -25,25 +25,17 @@ export type VocabLesson = {
 };
 
 // ------------------------------------------------------------------ Math
-function chunk<T>(list: T[]): T[][] {
-  if (list.length <= 8) return [list];
-  const parts = Math.ceil(list.length / 8);
-  const size = Math.ceil(list.length / parts);
-  const out: T[][] = [];
-  for (let i = 0; i < list.length; i += size) out.push(list.slice(i, i + size));
-  return out;
-}
-
+/** Mỗi mảng kiến thức một bài (không cắt nhỏ). */
 const mathLessons: VocabLesson[] = [];
 for (const cat of SAT_VOCAB_CATEGORY_ORDER) {
   const terms = SAT_VOCAB_TERMS.filter((t) => t.category === cat);
-  const parts = chunk(terms);
-  parts.forEach((part, i) => {
+  const parts = [terms];
+  parts.forEach((part) => {
     mathLessons.push({
       slug: `sat-math-bai-${mathLessons.length + 1}`,
       subject: 'math',
-      title: parts.length > 1 ? `${SAT_VOCAB_CATEGORY_LABEL[cat]} · phần ${i + 1}` : SAT_VOCAB_CATEGORY_LABEL[cat],
-      blurb: part.slice(0, 4).map((t) => t.term).join(', ') + (part.length > 4 ? '…' : ''),
+      title: SAT_VOCAB_CATEGORY_LABEL[cat],
+      blurb: `${part.length} thuật ngữ · ` + part.slice(0, 4).map((t) => t.term).join(', ') + '…',
       words: part.map((t) => ({
         word: t.term,
         pos: '',
@@ -60,7 +52,7 @@ for (const cat of SAT_VOCAB_CATEGORY_ORDER) {
 
 // ---------------------------------------------------------------- Verbal
 /** Thứ tự từ trong mỗi bài = thứ tự học; cặp trái nghĩa đặt cạnh nhau. */
-export const VERBAL_THEMES: { title: string; blurb: string; words: string[] }[] = [
+export const VERBAL_THEMES_BASE: { title: string; blurb: string; words: string[] }[] = [
   { title: 'Từ nối: kết quả và bổ sung', blurb: 'therefore, thus, as a result, moreover…', words: ['therefore', 'thus', 'consequently', 'as a result', 'moreover', 'furthermore', 'in addition'] },
   { title: 'Từ nối: tương phản và nhượng bộ', blurb: 'however, by contrast, nevertheless, even so', words: ['however', 'by contrast', 'nevertheless', 'even so'] },
   { title: 'Từ nối: ví dụ, diễn giải, thời gian', blurb: 'for example, that is, previously, meanwhile…', words: ['for example', 'for instance', 'that is', 'in other words', 'previously', 'subsequently', 'meanwhile'] },
@@ -74,11 +66,14 @@ export const VERBAL_THEMES: { title: string; blurb: string; words: string[] }[] 
   { title: 'Dữ liệu và cụm từ cố định', blurb: 'statistical ↔ anecdotal, consistent with ↔ at odds with', words: ['statistical', 'anecdotal', 'derived from', 'indifferent to', 'consistent with', 'at odds with'] },
 ];
 
+/** Chủ đề đầy đủ: từ gốc + từ bổ sung 30/09/2026 (mỗi chủ đề ≥ 30 từ). */
+export const VERBAL_THEMES = VERBAL_THEMES_BASE.map((t, i) => ({ ...t, words: [...t.words, ...(ADD_A[i] ?? []), ...(ADD_B[i] ?? [])] }));
+
 const verbalLessons: VocabLesson[] = VERBAL_THEMES.map((theme, i) => ({
   slug: `sat-verbal-bai-${i + 1}`,
   subject: 'verbal',
   title: theme.title,
-  blurb: theme.blurb,
+  blurb: `${theme.words.length} từ · ${theme.blurb}`,
   words: theme.words.map((w) => {
     const e = SAT_RW_LEXICON[w]!;
     return {

@@ -34,9 +34,15 @@ import { nextMission, type Island } from '@/services/world/islands';
 import { useGameStore } from '@/store/useGameStore';
 import { mascotOf, skinOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
+import { useCityAvailable } from '@/services/city/availability';
+import { QuestCityHero } from '@/components/city/QuestCityHero';
 
 /**
  * READUP QUEST — trang chính của GAME KHI HỌC.
+ *
+ * Trên máy tính, THÀNH PHỐ TRI THỨC là phần chính (khối đầu trang,
+ * `QuestCityHero`): câu đúng thành vật liệu xây thành phố 3D. Sân đấu bên
+ * dưới vẫn chạy song song (cùng một lượt trả lời vừa chém quái vừa ra vật liệu).
  *
  * Không có màn chơi riêng: ở mọi màn học, trả lời đúng là một nhát chém vào con
  * quái đang chặn đường, sai thì quái đánh lại (`services/game/rules.ts`). Trang
@@ -67,6 +73,7 @@ const ARENA_STARS: [number, number][] = [
 export default function QuestHome() {
   const { width } = useWindowDimensions();
   const wide = width >= 900;
+  const cityAvailable = useCityAvailable();
   const g = useGameStore(
     useShallow((st) => ({
       xp: st.xp,
@@ -101,9 +108,20 @@ export default function QuestHome() {
 
   return (
     <Screen>
+      {/*
+        Thành phố Tri thức là phần CHÍNH của Quest trên máy tính: đứng đầu trang,
+        sân đấu lùi xuống dưới. Điện thoại / máy tính bảng không có thành phố
+        (3D chỉ chạy trên máy tính) nên vẫn mở đầu bằng sân đấu như cũ.
+      */}
+      {cityAvailable ? (
+        <Appear>
+          <QuestCityHero />
+        </Appear>
+      ) : null}
+
       {/* Sân đấu + thông số nhân vật */}
-      <Appear>
-        <View style={{ ...PANEL, padding: 0, overflow: 'hidden', flexDirection: wide ? 'row' : 'column' }}>
+      <Appear index={cityAvailable ? 1 : 0}>
+        <View style={{ ...PANEL, padding: 0, overflow: 'hidden', flexDirection: wide ? 'row' : 'column', marginTop: cityAvailable ? 12 : 0 }}>
           <Arena wide={wide} skin={skin} petLook={pet?.look ?? null} petColor={pet?.color ?? null} enemyIndex={g.enemyIndex} enemyHp={g.enemyHp} />
 
           <View style={{ flex: 1, padding: wide ? 28 : 18 }}>
@@ -217,28 +235,6 @@ export default function QuestHome() {
           </View>
         </Appear>
       ) : null}
-
-      {/* Thành phố Tri thức: câu đúng ra vật liệu để xây nhà. */}
-      <Appear index={1}>
-        <Pressable
-          accessibilityRole="link"
-          onPress={() => router.push('/quest/city' as never)}
-          style={{ ...PANEL, marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 14, borderColor: 'rgba(125,211,252,0.5)' }}
-        >
-          <Text style={{ fontSize: 30 }}>🏙️</Text>
-          <View style={{ flex: 1 }}>
-            <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
-              Thành phố Tri thức
-            </Text>
-            <Text className="font-sans" style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
-              Mỗi câu đúng là một viên gạch — xây nhà, chung cư, tòa chọc trời.
-            </Text>
-          </View>
-          <Text className="font-strong" style={{ fontSize: 13, color: GOLD }}>
-            Vào xây →
-          </Text>
-        </Pressable>
-      </Appear>
 
       {/* Chọn mảng — cùng thẻ với bước 1 của màn chọn trận. */}
       <Appear index={1}>

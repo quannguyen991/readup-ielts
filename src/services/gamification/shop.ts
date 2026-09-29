@@ -14,6 +14,7 @@
  *  - Linh vật đồng hành: giúp câu hỏi bằng mã (bỏ bớt phương án sai, đỡ một câu
  *    sai, hồi tim, chém mạnh hơn) — không bao giờ làm hộ.
  *  - Skin nhân vật, avatar động, bìa hồ sơ chuyển động, avatar emoji, nền đọc.
+ *  - NỀN HỌC: nền phía sau mọi màn học (đọc, làm bài, tra từ) — thêm 30/09/2026.
  *  - Thẻ giữ chuỗi (có tác dụng THẬT với `currentStreak`) và đồ chiến đấu.
  *
  * KHÔNG BÁN: bài đọc, đề thi hay lời giải lẻ — nội dung chỉ mở theo gói.
@@ -22,8 +23,9 @@
 import type { ItemKind } from '@/services/game/rules';
 import type { MascotId } from '@/services/game/mascots';
 import type { SkinId } from '@/components/game/sprites';
+import type { StudyBgLook } from '@/components/layout/study-backgrounds';
 
-export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'powerup' | 'freeze' | 'avatar' | 'theme';
+export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'powerup' | 'freeze' | 'avatar' | 'theme' | 'studyBg';
 
 /** Kiểu avatar động — `components/profile/AnimatedAvatar.tsx` vẽ theo mã này. */
 export type AvatarLook = 'hero' | 'slime' | 'ghost' | 'owl' | 'dragon' | 'star';
@@ -56,6 +58,8 @@ export type ShopItem = {
   cover?: CoverLook;
   effect?: EffectLook;
   themeLook?: ThemeLook;
+  /** Nền học: mẫu nền sau mọi màn học (`components/layout/study-backgrounds.ts`). */
+  studyBg?: StudyBgLook;
 };
 
 export const SHOP_ITEMS: ShopItem[] = [
@@ -310,6 +314,20 @@ export const SHOP_ITEMS: ShopItem[] = [
     repeatable: false,
     themeLook: 'matcha',
   },
+
+  // ---------------------------------------------------------------- nền học (sau mọi màn học)
+  { id: 'bg-mint', kind: 'studyBg', name: 'Giấy kẻ ô bạc hà', detail: 'Xanh bạc hà mát mắt, lưới ô mảnh như vở luyện chữ.', price: 180, glyph: '🌿', repeatable: false, studyBg: 'mint' },
+  { id: 'bg-peach', kind: 'studyBg', name: 'Hồng đào buổi sớm', detail: 'Tông đào ấm pha hồng, kẻ ô nhạt — dịu cho buổi học dài.', price: 180, glyph: '🍑', repeatable: false, studyBg: 'peach' },
+  { id: 'bg-lemon', kind: 'studyBg', name: 'Chanh vàng nắng nhẹ', detail: 'Vàng chanh rất nhạt, lưới chấm bi kiểu sổ bullet journal.', price: 200, glyph: '🍋', repeatable: false, studyBg: 'lemon' },
+  { id: 'bg-lavender', kind: 'studyBg', name: 'Oải hương chấm bi', detail: 'Tím oải hương thư thái với lưới chấm tròn tinh tế.', price: 200, glyph: '🪻', repeatable: false, studyBg: 'lavender' },
+  { id: 'bg-sky', kind: 'studyBg', name: 'Trời sớm kẻ dòng', detail: 'Xanh trời trong, kẻ dòng ngang như trang giấy viết.', price: 200, glyph: '☁️', repeatable: false, studyBg: 'sky' },
+  { id: 'bg-kraft', kind: 'studyBg', name: 'Giấy kraft thủ công', detail: 'Nâu kraft mộc mạc, chấm nhỏ như sổ tay giấy tái chế.', price: 220, glyph: '📦', repeatable: false, studyBg: 'kraft' },
+  { id: 'bg-notebook', kind: 'studyBg', name: 'Vở học trò', detail: 'Giấy trắng ngà kẻ dòng xanh, đường lề đỏ bên trái — đúng cuốn vở ngày đi học.', price: 250, glyph: '📓', repeatable: false, studyBg: 'notebook' },
+  { id: 'bg-sage', kind: 'studyBg', name: 'Xô thơm kẻ chéo', detail: 'Xanh xô thơm nhã nhặn với đường chéo mảnh chạy đều.', price: 220, glyph: '🍃', repeatable: false, studyBg: 'sage' },
+  { id: 'bg-sand', kind: 'studyBg', name: 'Cát biển trơn', detail: 'Màu cát ấm, không hoạ tiết — cho ai thích nền thật sạch.', price: 150, glyph: '🏖️', repeatable: false, studyBg: 'sand' },
+  { id: 'bg-rose', kind: 'studyBg', name: 'Hoa hồng phấn', detail: 'Hồng phấn nhẹ nhàng, lưới ô mảnh cùng tông.', price: 180, glyph: '🌹', repeatable: false, studyBg: 'rose' },
+  { id: 'bg-aqua', kind: 'studyBg', name: 'Hồ nước trong', detail: 'Xanh ngọc nước hồ, kẻ chéo như gợn sóng.', price: 220, glyph: '💧', repeatable: false, studyBg: 'aqua' },
+  { id: 'bg-dusk', kind: 'studyBg', name: 'Chiều tím hoàng hôn', detail: 'Tím nhạt chuyển sang cam đào ở góc dưới — bản hiếm.', price: 300, glyph: '🌆', repeatable: false, studyBg: 'dusk' },
 ];
 
 export function findItem(id: string | null | undefined): ShopItem | undefined {
@@ -363,6 +381,8 @@ export type RewardPayload = PurchaseState & {
   effect?: string | null;
   /** Giao diện toàn diện đang áp dụng (thêm 29/09/2026). */
   theme?: string | null;
+  /** Nền học đang dùng (thêm 30/09/2026). */
+  studyBg?: string | null;
   skin: string | null;
   mascot: string | null;
   frozenDays: string[];
@@ -382,6 +402,14 @@ export function mergeReward(local: RewardPayload | null, remote: RewardPayload |
   const owned: Record<string, number> = { ...remote.owned };
   for (const [id, n] of Object.entries(local.owned ?? {})) owned[id] = Math.max(owned[id] ?? 0, n);
   const worn = (local.wornAt ?? '') >= (remote.wornAt ?? '') ? local : remote;
+  const other = worn === local ? remote : local;
+  /*
+    Ô mới (effect, theme, studyBg) có thể THIẾU HẲN trong payload do bản app cũ
+    gửi lên — bản cũ quên gửi `theme` nên mỗi lần F5 (đồng bộ) giao diện bị gộp
+    thành null. Thiếu trường (undefined) nghĩa là "không ghi nhận", không phải
+    "đã bỏ đeo": lấy giá trị của bên kia. Chỉ `null` mới là bỏ đeo thật.
+  */
+  const slot = (k: 'effect' | 'theme' | 'studyBg') => (worn[k] !== undefined ? worn[k] : other[k]) ?? null;
   // Thưởng tháng: mỗi tháng một lần — hai máy cùng nhận thì vẫn chỉ là một khoản.
   const prizes: Record<string, number> = { ...(remote.prizes ?? {}) };
   for (const [month, n] of Object.entries(local.prizes ?? {})) prizes[month] = Math.max(prizes[month] ?? 0, n);
@@ -391,8 +419,9 @@ export function mergeReward(local: RewardPayload | null, remote: RewardPayload |
     frozenDays: [...new Set([...(local.frozenDays ?? []), ...(remote.frozenDays ?? [])])].sort(),
     avatar: worn.avatar ?? null,
     cover: worn.cover ?? null,
-    effect: worn.effect ?? null,
-    theme: worn.theme ?? null,
+    effect: slot('effect'),
+    theme: slot('theme'),
+    studyBg: slot('studyBg'),
     skin: worn.skin ?? null,
     mascot: worn.mascot ?? null,
     wornAt: worn.wornAt ?? '',

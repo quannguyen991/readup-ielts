@@ -60,3 +60,7 @@ data/provenance/
 # Kho tri thuc: corpus dung lai duoc tu seed + so tien do khi nap len LightRAG.
 # Sinh ra bang `npm run kb:ingest`, khong phai ma nguon.
 .kb/
+
+# Thành Phố Tri Thức: file model THÔ tải về (trước khi chuẩn hoá). Không commit —
+# chỉ commit bản đã xử lý trong public/city/models và dòng giấy phép trong LICENSES.json.
+assets/city/_raw/

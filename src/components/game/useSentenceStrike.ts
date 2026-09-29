@@ -18,7 +18,7 @@ export function useSentenceStrike(key: string, source: GameSource): (result: boo
     (result: boolean | null) => {
       if (scored.current === key) return;
       scored.current = key;
-      if (result !== null) useGameStore.getState().answer(result, source);
+      if (result !== null) useGameStore.getState().answer(result, source, { key });
     },
     [key, source],
   );

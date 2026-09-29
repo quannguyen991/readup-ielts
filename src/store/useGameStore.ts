@@ -51,8 +51,14 @@ type GameState = GamePayload & {
   /** Âm thanh hiệu ứng — mỗi máy tự chọn, không đồng bộ. */
   sound: boolean;
   setSound: (on: boolean) => void;
-  answer: (correct: boolean, source: GameSource) => AnswerOutcome | null;
-  awardBatch: (correct: number, total: number, source: GameSource) => void;
+  /**
+   * Chấm một câu. `opts.key` định danh câu hỏi (để Thành Phố Tri Thức chỉ thưởng
+   * vật liệu ở lần thử đầu, không thưởng lặp khi mở lại); `opts.selfGraded` cho
+   * câu người học tự chấm — không ra vật liệu.
+   */
+  answer: (correct: boolean, source: GameSource, opts?: { key?: string; selfGraded?: boolean }) => AnswerOutcome | null;
+  /** Chấm cả bài lúc nộp. `eventId` định danh lần nộp (chống cộng vật liệu / ca hai lần). */
+  awardBatch: (correct: number, total: number, source: GameSource, eventId?: string) => void;
   spendItem: (kind: ItemKind) => boolean;
   addItem: (kind: ItemKind, n?: number) => void;
   claimQuest: (id: string) => boolean;
@@ -146,10 +152,10 @@ export const useGameStore = create<GameState>()(
       enabled: true,
       sound: true,
 
-      answer: (correct, source) => {
+      answer: (correct, source, opts) => {
         const s = get();
-        // Thành phố Tri thức: câu đúng ra vật liệu — kể cả khi người học tắt game.
-        if (correct) useCityStore.getState().earn(source, 1);
+        // Thành Phố Tri Thức: vật liệu + ca làm việc — ở mọi thiết bị, kể cả khi tắt game.
+        useCityStore.getState().earn({ type: 'answer', source, correct, key: opts?.key, selfGraded: opts?.selfGraded });
         if (!s.enabled) {
           // Tắt game vẫn giữ tiếng "đúng" — tín hiệu học, không phải trang trí.
           if (correct) sfx.correct(1);
@@ -237,9 +243,10 @@ export const useGameStore = create<GameState>()(
         return o;
       },
 
-      awardBatch: (correct, total, source) => {
+      awardBatch: (correct, total, source, eventId) => {
         const s = get();
-        if (total > 0 && correct > 0) useCityStore.getState().earn(source, correct);
+        // Bài có thao tác nộp và được chấm → 1 ca; Reading → đá theo số câu đúng.
+        if (total > 0) useCityStore.getState().earn({ type: 'submission', source, id: eventId ?? `${source}:${Date.now()}`, correct, total });
         if (!s.enabled || total <= 0) return;
         const fx = useGameFx.getState();
         const o = resolveBatch(s, correct, mascotNow(s).perks.damageMult);

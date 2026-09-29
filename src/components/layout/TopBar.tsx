@@ -5,7 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Logo } from './Logo';
 import { Icon } from '@/components/ui/Icon';
-import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems } from '@/navigation/nav-items';
+import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, visibleGroups } from '@/navigation/nav-items';
+import { useCityAvailable } from '@/services/city/availability';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { usePlan } from '@/store/useBillingStore';
@@ -281,7 +282,8 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
-  const groups = isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS;
+  const desktop = useCityAvailable();
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
 
   return (
     <Modal visible={open} transparent animationType="fade" onRequestClose={onClose}>

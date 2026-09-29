@@ -63,7 +63,7 @@ export default function DictationScreen() {
     setVerdict(ok);
     if (ok) setCorrect((n) => n + 1);
     logQuestions(1);
-    useGameStore.getState().answer(ok, 'vocab');
+    useGameStore.getState().answer(ok, 'vocab', { key: `dict:${slug}:${word.word}:${sentenceMode ? 's' : 'w'}` });
   };
 
   // Gợi ý của Cú: lộ một phần ba đầu của đáp án.
@@ -200,7 +200,7 @@ export default function DictationScreen() {
                 onPress={() => {
                   setVerdict(false);
                   logQuestions(1);
-                  useGameStore.getState().answer(false, 'vocab');
+                  if (word) useGameStore.getState().answer(false, 'vocab', { key: `dict:${slug}:${word.word}:${sentenceMode ? 's' : 'w'}` });
                 }}
               />
             </>

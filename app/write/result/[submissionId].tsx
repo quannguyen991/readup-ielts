@@ -13,6 +13,7 @@ import { analyseDraft } from '@/services/writing/analyzer';
 import { applyFixes, countApplicableFixes } from '@/services/writing/apply-fixes';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useWritingStore } from '@/store/useWritingStore';
+import { useCityStore } from '@/store/useCityStore';
 import { useRoadmapStore } from '@/store/useRoadmapStore';
 import { modelEssayBand } from '@/services/progress/goal';
 import { color, paper } from '@/theme/tokens';
@@ -154,6 +155,8 @@ export default function WritingResultScreen() {
           submissionId: submission.id,
           evaluatedAt: new Date().toISOString(),
         });
+        // Bài Writing đã được chấm → thép + 1 ca cho Thành Phố Tri Thức (mã = bài nộp, chấm lại không cộng lần hai).
+        useCityStore.getState().earn({ type: 'writing_graded', id: submission.id });
       })
       .catch((e: unknown) => {
         setError(e instanceof Error ? e.message : 'Chấm bài thất bại.');

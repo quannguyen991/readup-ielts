@@ -476,7 +476,8 @@ export default function ReadScreen() {
 
     const correct = attempts.filter((a) => a.isCorrect).length;
     const durationMs = Date.now() - startedAt.current;
-    useGameStore.getState().awardBatch(correct, attempts.length, 'read');
+    // Mã = bài đọc: nộp lại cùng bài không cộng đá / ca lần nữa (Thành Phố Tri Thức).
+    useGameStore.getState().awardBatch(correct, attempts.length, 'read', `read:${article.id}`);
 
     const sessionId = addSession({
       articleId: article.id,
