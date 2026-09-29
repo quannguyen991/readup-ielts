@@ -218,6 +218,28 @@ export default function QuestHome() {
         </Appear>
       ) : null}
 
+      {/* Thành phố Tri thức: câu đúng ra vật liệu để xây nhà. */}
+      <Appear index={1}>
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => router.push('/quest/city' as never)}
+          style={{ ...PANEL, marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 14, borderColor: 'rgba(125,211,252,0.5)' }}
+        >
+          <Text style={{ fontSize: 30 }}>🏙️</Text>
+          <View style={{ flex: 1 }}>
+            <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
+              Thành phố Tri thức
+            </Text>
+            <Text className="font-sans" style={{ fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
+              Mỗi câu đúng là một viên gạch — xây nhà, chung cư, tòa chọc trời.
+            </Text>
+          </View>
+          <Text className="font-strong" style={{ fontSize: 13, color: GOLD }}>
+            Vào xây →
+          </Text>
+        </Pressable>
+      </Appear>
+
       {/* Chọn mảng — cùng thẻ với bước 1 của màn chọn trận. */}
       <Appear index={1}>
         <View style={{ marginTop: 22, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>

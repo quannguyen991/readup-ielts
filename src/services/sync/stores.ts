@@ -21,6 +21,8 @@ import { useSatRwStore } from '@/store/useSatRwStore';
 import { gamePayload, useGameStore } from '@/store/useGameStore';
 import { rewardPayload, useRewardStore } from '@/store/useRewardStore';
 import { mergeRoadmap, useRoadmapStore, type RoadmapPayload } from '@/store/useRoadmapStore';
+import { cityPayload, useCityStore } from '@/store/useCityStore';
+import { mergeCity, type CityPayload } from '@/services/city/sync';
 import { mergeReward, type RewardPayload } from '@/services/gamification/shop';
 import { mergeGame, type GamePayload } from '@/services/game/rules';
 import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
@@ -168,6 +170,16 @@ const rewardStore: SyncedStore = {
   merge: (local, remote) => mergeReward(local as RewardPayload | null, remote as RewardPayload | null),
 };
 
+/** Thành phố Tri thức: vật liệu, nhà đã xây. Bản sửa sau thắng (xem `mergeCity`). */
+const cityStore: SyncedStore = {
+  key: 'city',
+  read: () => cityPayload(),
+  write: (payload) => {
+    if (payload) useCityStore.setState(payload as CityPayload);
+  },
+  merge: (local, remote) => mergeCity(local as CityPayload | null, remote as CityPayload | null),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -224,4 +236,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(satRwStore);
   registerSyncedStore(gameStore);
   registerSyncedStore(rewardStore);
+  registerSyncedStore(cityStore);
 }

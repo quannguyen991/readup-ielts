@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
 import { useGameFx } from './useGameFx';
+import { useCityStore } from './useCityStore';
 import { mascotOf, useRewardStore } from './useRewardStore';
 import { MASCOTS, perksOf, STAR_BONUS } from '@/services/game/mascots';
 import { setSfxMuted, sfx } from '@/services/audio/sfx';
@@ -147,6 +148,8 @@ export const useGameStore = create<GameState>()(
 
       answer: (correct, source) => {
         const s = get();
+        // Thành phố Tri thức: câu đúng ra vật liệu — kể cả khi người học tắt game.
+        if (correct) useCityStore.getState().earn(source, 1);
         if (!s.enabled) {
           // Tắt game vẫn giữ tiếng "đúng" — tín hiệu học, không phải trang trí.
           if (correct) sfx.correct(1);
@@ -236,6 +239,7 @@ export const useGameStore = create<GameState>()(
 
       awardBatch: (correct, total, source) => {
         const s = get();
+        if (total > 0 && correct > 0) useCityStore.getState().earn(source, correct);
         if (!s.enabled || total <= 0) return;
         const fx = useGameFx.getState();
         const o = resolveBatch(s, correct, mascotNow(s).perks.damageMult);
