@@ -38,7 +38,7 @@ type Spec = {
   anim: 'pe-fall' | 'pe-rise' | 'pe-meteor' | 'pe-twinkle';
   colors: string[];
   /** Vẽ một hạt. */
-  shape: 'petal' | 'ember' | 'meteor' | 'flake' | 'bubble' | 'spark';
+  shape: 'petal' | 'ember' | 'meteor' | 'flake' | 'bubble' | 'spark' | 'leaf' | 'matrix' | 'orb';
   size: [number, number];
   duration: [number, number];
   /** Quầng sáng nền của hiệu ứng. */
@@ -53,6 +53,15 @@ export const EFFECT_SPECS: Record<EffectLook, Spec> = {
   snow: { count: 30, anim: 'pe-fall', colors: ['#FFFFFF', '#E6F4FF'], shape: 'flake', size: [3, 7], duration: [5, 10], glow: 'rgba(200,230,255,0.3)', glowAt: 'top' },
   bubbles: { count: 16, anim: 'pe-rise', colors: ['rgba(120,220,255,0.9)', 'rgba(150,255,210,0.9)', 'rgba(255,255,255,0.9)'], shape: 'bubble', size: [8, 20], duration: [3.5, 6.5], glow: 'rgba(80,200,255,0.3)', glowAt: 'bottom' },
   sparkle: { count: 20, anim: 'pe-twinkle', colors: ['#FFE14D', '#FFFFFF', '#FF9CF5', '#8FE3FF'], shape: 'spark', size: [8, 16], duration: [1.4, 2.8], glow: 'rgba(255,225,77,0.25)', glowAt: 'none' },
+  autumn: { count: 22, anim: 'pe-fall', colors: ['#EA580C', '#D97706', '#F59E0B', '#DC2626'], shape: 'leaf', size: [10, 18], duration: [4.5, 8], glow: 'rgba(234,88,12,0.35)', glowAt: 'top' },
+  matrix: { count: 24, anim: 'pe-fall', colors: ['#00FF66', '#00F2FE', '#22C55E', '#10B981'], shape: 'matrix', size: [12, 22], duration: [1.8, 3.6], glow: 'rgba(0,255,102,0.3)', glowAt: 'top' },
+  fireflies: { count: 22, anim: 'pe-rise', colors: ['#FACC15', '#A3E635', '#FEF08A'], shape: 'orb', size: [6, 11], duration: [3.5, 6.5], glow: 'rgba(250,204,21,0.35)', glowAt: 'bottom' },
+  butterflies: { count: 16, anim: 'pe-rise', colors: ['#38BDF8', '#818CF8', '#C084FC', '#F472B6'], shape: 'spark', size: [10, 16], duration: [3.8, 6.5], glow: 'rgba(56,189,248,0.3)', glowAt: 'bottom' },
+  lightning: { count: 12, anim: 'pe-twinkle', colors: ['#C084FC', '#E879F9', '#FFFFFF', '#67E8F9'], shape: 'spark', size: [14, 26], duration: [0.9, 2], glow: 'rgba(192,132,252,0.4)', glowAt: 'top' },
+  galaxy: { count: 26, anim: 'pe-twinkle', colors: ['#E879F9', '#818CF8', '#38BDF8', '#FFFFFF'], shape: 'spark', size: [6, 14], duration: [2, 4.2], glow: 'rgba(168,85,247,0.35)', glowAt: 'top' },
+  starlight: { count: 10, anim: 'pe-meteor', colors: ['#FFFFFF', '#BAE6FD', '#FEF08A'], shape: 'meteor', size: [50, 95], duration: [2, 4], glow: 'rgba(56,189,248,0.32)', glowAt: 'top' },
+  neon_pulse: { count: 20, anim: 'pe-rise', colors: ['#00F2FE', '#FF007A', '#A855F7'], shape: 'ember', size: [4, 9], duration: [1.6, 3.2], glow: 'rgba(255,0,122,0.4)', glowAt: 'bottom' },
+  rainbow: { count: 22, anim: 'pe-fall', colors: ['#F87171', '#FBBF24', '#34D399', '#60A5FA', '#A78BFA'], shape: 'petal', size: [8, 14], duration: [4, 7.5], glow: 'rgba(251,191,36,0.3)', glowAt: 'top' },
 };
 
 function hashLook(look: string): number {
@@ -138,6 +147,35 @@ function shapeStyle(shape: Spec['shape'], size: number, c: string): Record<strin
         backgroundColor: c,
         clipPath: 'polygon(50% 0%, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0% 50%, 39% 39%)',
         filter: `drop-shadow(0 0 4px ${c})`,
+      };
+    case 'leaf':
+      return {
+        width: size,
+        height: size * 0.8,
+        backgroundColor: c,
+        borderTopLeftRadius: size,
+        borderBottomRightRadius: size,
+        borderTopRightRadius: 3,
+        borderBottomLeftRadius: 3,
+        opacity: 0.9,
+        filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+      };
+    case 'matrix':
+      return {
+        width: 2.5,
+        height: size,
+        background: `linear-gradient(180deg, ${c}, rgba(0,0,0,0))`,
+        borderRadius: 2,
+        boxShadow: `0 0 8px ${c}`,
+      };
+    case 'orb':
+      return {
+        width: size,
+        height: size,
+        borderRadius: size,
+        backgroundColor: c,
+        boxShadow: `0 0 ${size * 2}px ${c}`,
+        opacity: 0.85,
       };
   }
 }

@@ -28,9 +28,11 @@ export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' |
 /** Kiểu avatar động — `components/profile/AnimatedAvatar.tsx` vẽ theo mã này. */
 export type AvatarLook = 'hero' | 'slime' | 'ghost' | 'owl' | 'dragon' | 'star';
 /** Kiểu bìa hồ sơ chuyển động — `components/profile/ProfileCover.tsx`. */
-export type CoverLook = 'stars' | 'aurora' | 'sunset' | 'ocean';
-/** Hiệu ứng hồ sơ kiểu Discord — `components/profile/ProfileEffect.tsx`. */
-export type EffectLook = 'sakura' | 'flame' | 'meteor' | 'snow' | 'bubbles' | 'sparkle';
+export type CoverLook = 'stars' | 'aurora' | 'sunset' | 'ocean' | 'cyberpunk' | 'sakura' | 'mountain' | 'galaxy' | 'library' | 'bamboo' | 'autumn' | 'vaporwave';
+/** Hiệu ứng hồ sơ & thanh bên — `components/profile/ProfileEffect.tsx`. */
+export type EffectLook = 'sakura' | 'flame' | 'meteor' | 'snow' | 'bubbles' | 'sparkle' | 'autumn' | 'matrix' | 'fireflies' | 'butterflies' | 'lightning' | 'galaxy' | 'starlight' | 'neon_pulse' | 'rainbow';
+/** Kiểu giao diện toàn diện — đổi màu thanh bên và màn hình. */
+export type ThemeLook = 'sepia' | 'emerald' | 'midnight' | 'sakura' | 'cyberpunk' | 'ocean' | 'sunset' | 'lavender' | 'nord' | 'matcha';
 
 export type ShopItem = {
   id: string;
@@ -53,14 +55,19 @@ export type ShopItem = {
   avatarLook?: AvatarLook;
   cover?: CoverLook;
   effect?: EffectLook;
+  themeLook?: ThemeLook;
 };
 
 export const SHOP_ITEMS: ShopItem[] = [
   // ---------------------------------------------------------------- vé gói
   // Vé ghi ở máy như bản dùng thử: mở phần nội dung bị khoá. Lượt gọi AI do máy
   // chủ đếm theo gói ĐÃ TRẢ TIỀN — vé không cộng lượt AI, nên mô tả không hứa điều đó.
+  { id: 'pass-plus-1', kind: 'plan', name: 'Vé Plus 1 ngày', detail: 'Trải nghiệm toàn bộ bài đọc, thi thử và sổ từ trong 24 giờ.', price: 120, glyph: '🎫', repeatable: true, plan: { id: 'plus', days: 1 } },
+  { id: 'pass-pro-1', kind: 'plan', name: 'Vé Pro 1 ngày', detail: 'Trải nghiệm trợ giảng AI và bài mẫu thẩm định trong 24 giờ.', price: 250, glyph: '👑', repeatable: true, plan: { id: 'pro', days: 1 } },
   { id: 'pass-plus-7', kind: 'plan', name: 'Vé Plus 7 ngày', detail: 'Đọc, thi thử và sổ từ không giới hạn trong 7 ngày. Đang có vé Plus thì cộng dồn.', price: 700, glyph: '🎟️', repeatable: true, plan: { id: 'plus', days: 7 } },
   { id: 'pass-pro-7', kind: 'plan', name: 'Vé Pro 7 ngày', detail: 'Mọi thứ của Plus, thêm bài mẫu đã kiểm định và chatbox trợ giảng, trong 7 ngày.', price: 1400, glyph: '👑', repeatable: true, plan: { id: 'pro', days: 7 } },
+  { id: 'pass-plus-14', kind: 'plan', name: 'Vé Plus 14 ngày', detail: 'Hai tuần luyện đọc và giải đề không giới hạn với giá tiết kiệm.', price: 1300, glyph: '🎟️', repeatable: true, plan: { id: 'plus', days: 14 } },
+  { id: 'pass-pro-14', kind: 'plan', name: 'Vé Pro 14 ngày', detail: 'Hai tuần luyện thi trọn vẹn mọi tính năng cao cấp cho giai đoạn nước rút.', price: 2600, glyph: '💎', repeatable: true, plan: { id: 'pro', days: 14 } },
 
   // ---------------------------------------------------------------- linh vật
   { id: 'mascot-owl', kind: 'mascot', name: 'Cú Thông Thái', detail: '3 lượt Hỏi Cú miễn phí mỗi ngày.', price: 500, glyph: '🦉', repeatable: false, mascot: 'owl' },
@@ -88,14 +95,31 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: 'cover-sunset', kind: 'cover', name: 'Hoàng hôn pixel', detail: 'Mặt trời lặn sau đồi, mây trôi.', price: 300, glyph: '🌅', repeatable: false, cover: 'sunset' },
   { id: 'cover-ocean', kind: 'cover', name: 'Sóng biển', detail: 'Sóng vỗ, mặt trời lấp lánh trên nước.', price: 300, glyph: '🌊', repeatable: false, cover: 'ocean' },
   { id: 'cover-aurora', kind: 'cover', name: 'Cực quang', detail: 'Dải sáng loang chậm trên nền đêm.', price: 350, glyph: '🌠', repeatable: false, cover: 'aurora' },
+  { id: 'cover-cyberpunk', kind: 'cover', name: 'Đêm Neon tương lai', detail: 'Tòa nhà chọc trời ánh đèn neon và lưới laser Cyberpunk.', price: 380, glyph: '🏙️', repeatable: false, cover: 'cyberpunk' },
+  { id: 'cover-sakura', kind: 'cover', name: 'Cổng Torii & Hoa anh đào', detail: 'Khung cảnh mùa xuân Nhật Bản ngập tràn cánh hoa rơi.', price: 360, glyph: '🌸', repeatable: false, cover: 'sakura' },
+  { id: 'cover-mountain', kind: 'cover', name: 'Đỉnh núi mây sương', detail: 'Dãy núi hùng vĩ bồng bềnh trong ánh bình minh vàng.', price: 340, glyph: '⛰️', repeatable: false, cover: 'mountain' },
+  { id: 'cover-galaxy', kind: 'cover', name: 'Trái tim Ngân Hà', detail: 'Hố đen vũ trụ với đĩa phát quang lung linh huyền bí.', price: 450, glyph: '🪐', repeatable: false, cover: 'galaxy' },
+  { id: 'cover-library', kind: 'cover', name: 'Thư viện cổ tích', detail: 'Giá sách gỗ ấm áp với ánh nến vàng hoài niệm.', price: 320, glyph: '🕯️', repeatable: false, cover: 'library' },
+  { id: 'cover-bamboo', kind: 'cover', name: 'Rừng trúc Thiền định', detail: 'Khóm trúc xanh mát thanh tịnh bên dòng suối nhỏ.', price: 300, glyph: '🎋', repeatable: false, cover: 'bamboo' },
+  { id: 'cover-autumn', kind: 'cover', name: 'Rừng phong lá đỏ', detail: 'Thung lũng mùa thu rực rỡ sắc đỏ và vàng cam.', price: 350, glyph: '🍂', repeatable: false, cover: 'autumn' },
+  { id: 'cover-vaporwave', kind: 'cover', name: 'Hoàng hôn Retrowave', detail: 'Mặt trời lưới laser phong cách Synthwave thập niên 80.', price: 400, glyph: '🌇', repeatable: false, cover: 'vaporwave' },
 
-  // ---------------------------------------------------------------- hiệu ứng hồ sơ (kiểu Discord)
-  { id: 'fx-sakura', kind: 'effect', name: 'Hoa anh đào', detail: 'Cánh hoa hồng rơi chậm phủ cả thẻ hồ sơ.', price: 400, glyph: '🌸', repeatable: false, effect: 'sakura' },
-  { id: 'fx-snow', kind: 'effect', name: 'Tuyết đầu mùa', detail: 'Tuyết trắng rơi lất phất, quầng sáng lạnh.', price: 400, glyph: '❄️', repeatable: false, effect: 'snow' },
-  { id: 'fx-bubbles', kind: 'effect', name: 'Bong bóng', detail: 'Bong bóng trong suốt nổi lên từ đáy thẻ.', price: 450, glyph: '🫧', repeatable: false, effect: 'bubbles' },
-  { id: 'fx-sparkle', kind: 'effect', name: 'Kim tuyến', detail: 'Sao lấp lánh nhiều màu nhấp nháy khắp thẻ.', price: 500, glyph: '✨', repeatable: false, effect: 'sparkle' },
-  { id: 'fx-meteor', kind: 'effect', name: 'Mưa sao băng', detail: 'Vệt sao băng lao chéo qua thẻ hồ sơ.', price: 600, glyph: '🌠', repeatable: false, effect: 'meteor' },
-  { id: 'fx-flame', kind: 'effect', name: 'Lửa tím', detail: 'Tàn lửa cam tím bốc lên, rực cả đáy thẻ — bản hiếm.', price: 800, glyph: '🔥', repeatable: false, effect: 'flame' },
+  // ---------------------------------------------------------------- hiệu ứng hồ sơ & thanh bên (kiểu Discord)
+  { id: 'fx-sakura', kind: 'effect', name: 'Hoa anh đào', detail: 'Cánh hoa hồng rơi chậm phủ cả thẻ hồ sơ và thanh bên.', price: 400, glyph: '🌸', repeatable: false, effect: 'sakura' },
+  { id: 'fx-snow', kind: 'effect', name: 'Tuyết đầu mùa', detail: 'Tuyết trắng rơi lất phất, quầng sáng lạnh dịu mát.', price: 400, glyph: '❄️', repeatable: false, effect: 'snow' },
+  { id: 'fx-bubbles', kind: 'effect', name: 'Bong bóng đại dương', detail: 'Bong bóng trong suốt nổi lên từ đáy thẻ và thanh bên.', price: 450, glyph: '🫧', repeatable: false, effect: 'bubbles' },
+  { id: 'fx-sparkle', kind: 'effect', name: 'Kim tuyến phép thuật', detail: 'Sao lấp lánh nhiều màu nhấp nháy lung linh.', price: 500, glyph: '✨', repeatable: false, effect: 'sparkle' },
+  { id: 'fx-meteor', kind: 'effect', name: 'Mưa sao băng', detail: 'Vệt sao băng lao chéo qua thẻ hồ sơ và thanh bên.', price: 600, glyph: '🌠', repeatable: false, effect: 'meteor' },
+  { id: 'fx-flame', kind: 'effect', name: 'Lửa tím huyền bí', detail: 'Tàn lửa cam tím bốc lên, rực cả đáy thẻ — bản hiếm.', price: 800, glyph: '🔥', repeatable: false, effect: 'flame' },
+  { id: 'fx-autumn', kind: 'effect', name: 'Lá phong mùa thu', detail: 'Những chiếc lá phong vàng cam lượn bay nhẹ nhàng chao nghiêng.', price: 450, glyph: '🍁', repeatable: false, effect: 'autumn' },
+  { id: 'fx-matrix', kind: 'effect', name: 'Ma trận số Cyberpunk', detail: 'Dòng mã số và chùm sáng xanh neon tuôn rơi liên tục.', price: 500, glyph: '⚡', repeatable: false, effect: 'matrix' },
+  { id: 'fx-fireflies', kind: 'effect', name: 'Đom đóm đêm hè', detail: 'Đốm sáng đom đóm lơ lửng, chớp tắt êm đềm trong đêm.', price: 420, glyph: '✨', repeatable: false, effect: 'fireflies' },
+  { id: 'fx-butterflies', kind: 'effect', name: 'Bướm ngọc ảo ảnh', detail: 'Đàn bướm phát sáng dập dờn huyền ảo.', price: 480, glyph: '🦋', repeatable: false, effect: 'butterflies' },
+  { id: 'fx-lightning', kind: 'effect', name: 'Tia chớp sấm sét', detail: 'Những tia sấm sét điện tím chớp sáng rực rỡ.', price: 520, glyph: '🌩️', repeatable: false, effect: 'lightning' },
+  { id: 'fx-galaxy', kind: 'effect', name: 'Vòng xoáy thiên hà', detail: 'Bụi tinh vân lấp lánh chuyển động nhẹ nhàng.', price: 650, glyph: '🌌', repeatable: false, effect: 'galaxy' },
+  { id: 'fx-starlight', kind: 'effect', name: 'Bầu trời sao băng', detail: 'Ngàn vì sao lấp lánh điểm xuyết sao băng bay qua.', price: 550, glyph: '🌠', repeatable: false, effect: 'starlight' },
+  { id: 'fx-neon-pulse', kind: 'effect', name: 'Nhịp đập Synthwave', detail: 'Dải sáng neon tím lam nhấp nháy theo nhịp điệu tương lai.', price: 580, glyph: '🌆', repeatable: false, effect: 'neon_pulse' },
+  { id: 'fx-rainbow', kind: 'effect', name: 'Lăng kính cầu vồng', detail: 'Ánh sáng 7 sắc lăng kính dịu dàng phủ khắp khung hình.', price: 460, glyph: '🌈', repeatable: false, effect: 'rainbow' },
 
   // ---------------------------------------------------------------- đồ chiến đấu
   { id: 'power-potion', kind: 'powerup', name: 'Bình máu', detail: 'Hồi 2 tim giữa trận.', price: 30, glyph: '🧪', repeatable: true, grants: 'potion' },
@@ -103,7 +127,7 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: 'power-hint', kind: 'powerup', name: 'Gợi ý của Cú', detail: 'Bỏ bớt 2 phương án sai.', price: 25, glyph: '🦉', repeatable: true, grants: 'hint' },
   { id: 'power-double', kind: 'powerup', name: 'Nhân đôi XP', detail: '10 câu đúng tiếp theo gấp đôi XP.', price: 60, glyph: '⚡', repeatable: true, grants: 'double' },
 
-  // ---------------------------------------------------------------- vật phẩm
+  // ---------------------------------------------------------------- vật phẩm (thẻ giữ chuỗi)
   {
     id: 'freeze-1',
     kind: 'freeze',
@@ -124,6 +148,36 @@ export const SHOP_ITEMS: ShopItem[] = [
     repeatable: true,
     freezeDays: 3,
   },
+  {
+    id: 'freeze-7',
+    kind: 'freeze',
+    name: 'Thẻ kỳ nghỉ 7 ngày',
+    detail: 'Bảo vệ chuỗi học tập trọn 1 tuần khi bạn đi du lịch hoặc bận thi cử.',
+    price: 280,
+    glyph: '🏔️',
+    repeatable: true,
+    freezeDays: 7,
+  },
+  {
+    id: 'freeze-14',
+    kind: 'freeze',
+    name: 'Thẻ nghỉ dưỡng 14 ngày',
+    detail: 'Bảo vệ chuỗi học tập trọn vẹn 2 tuần cho chuyến đi xa.',
+    price: 480,
+    glyph: '✈️',
+    repeatable: true,
+    freezeDays: 14,
+  },
+  {
+    id: 'freeze-30',
+    kind: 'freeze',
+    name: 'Thẻ nghỉ hè 30 ngày',
+    detail: 'Gói bảo vệ chuỗi tối thượng trọn một tháng.',
+    price: 950,
+    glyph: '🏖️',
+    repeatable: true,
+    freezeDays: 30,
+  },
 
   // ---------------------------------------------------------------- avatar emoji & giao diện
   { id: 'avatar-owl', kind: 'avatar', name: 'Cú đêm', detail: 'Avatar', price: 100, glyph: '🦉', repeatable: false },
@@ -132,14 +186,129 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: 'avatar-whale', kind: 'avatar', name: 'Cá voi', detail: 'Avatar', price: 180, glyph: '🐳', repeatable: false },
   { id: 'avatar-dragon', kind: 'avatar', name: 'Rồng', detail: 'Avatar', price: 400, glyph: '🐉', repeatable: false },
   { id: 'avatar-rocket', kind: 'avatar', name: 'Tên lửa', detail: 'Avatar', price: 400, glyph: '🚀', repeatable: false },
+  { id: 'avatar-lion', kind: 'avatar', name: 'Sư tử', detail: 'Avatar dũng mãnh, kiên định vượt qua mọi đề thi.', price: 150, glyph: '🦁', repeatable: false },
+  { id: 'avatar-panda', kind: 'avatar', name: 'Gấu trúc', detail: 'Avatar cần mẫn, từng bước tích lũy từng điểm số.', price: 150, glyph: '🐼', repeatable: false },
+  { id: 'avatar-tiger', kind: 'avatar', name: 'Hổ chiến binh', detail: 'Avatar bùng nổ năng lượng trong mọi phiên làm bài.', price: 180, glyph: '🐯', repeatable: false },
+  { id: 'avatar-eagle', kind: 'avatar', name: 'Đại bàng', detail: 'Avatar mắt biếc, nhìn thấu mọi bẫy của đề thi.', price: 200, glyph: '🦅', repeatable: false },
+  { id: 'avatar-unicorn', kind: 'avatar', name: 'Kỳ lân', detail: 'Avatar phép thuật mang lại cảm hứng học tập diệu kỳ.', price: 350, glyph: '🦄', repeatable: false },
+  { id: 'avatar-koala', kind: 'avatar', name: 'Gấu túi', detail: 'Avatar điềm tĩnh, học tập nhẹ nhàng không âu lo.', price: 120, glyph: '🐨', repeatable: false },
+  { id: 'avatar-dino', kind: 'avatar', name: 'Khủng long', detail: 'Avatar kỷ Jura bền bỉ, không lùi bước trước câu khó.', price: 220, glyph: '🦖', repeatable: false },
+  { id: 'avatar-crown', kind: 'avatar', name: 'Vương miện', detail: 'Avatar vinh quang dành cho học viên kiên trì nhất.', price: 500, glyph: '👑', repeatable: false },
+  { id: 'avatar-lightning', kind: 'avatar', name: 'Tia chớp', detail: 'Avatar tốc độ phản xạ câu hỏi nhanh như chớp.', price: 220, glyph: '⚡', repeatable: false },
+  { id: 'avatar-earth', kind: 'avatar', name: 'Địa cầu', detail: 'Avatar nhà thám hiểm, mở rộng vốn từ không biên giới.', price: 160, glyph: '🌍', repeatable: false },
+  { id: 'avatar-trophy', kind: 'avatar', name: 'Cúp vàng', detail: 'Avatar danh dự ghi nhận chuỗi thành tích xuất sắc.', price: 380, glyph: '🏆', repeatable: false },
+  { id: 'avatar-phoenix', kind: 'avatar', name: 'Phượng hoàng', detail: 'Avatar hồi sinh chuỗi ngày học tập và bứt phá band điểm.', price: 450, glyph: '🪶', repeatable: false },
+  { id: 'avatar-books', kind: 'avatar', name: 'Sách tri thức', detail: 'Avatar mọt sách chân chính, đọc sâu nhớ lâu.', price: 160, glyph: '📚', repeatable: false },
+  { id: 'avatar-graduate', kind: 'avatar', name: 'Mũ cử nhân', detail: 'Avatar biểu trưng cho ngày chạm tới mục tiêu du học.', price: 250, glyph: '🎓', repeatable: false },
+  { id: 'avatar-fox-spirit', kind: 'avatar', name: 'Hồ ly chín đuôi', detail: 'Avatar linh thú huyền thoại phương Đông thông thái.', price: 420, glyph: '🦊', repeatable: false },
+  { id: 'avatar-pegasus', kind: 'avatar', name: 'Ngựa thần Pegasus', detail: 'Avatar ngựa có cánh sải bước bay lượn.', price: 380, glyph: '🎠', repeatable: false },
+  { id: 'avatar-ninja-cat', kind: 'avatar', name: 'Mèo Ninja', detail: 'Avatar mèo đen bí ẩn, thoắt ẩn thoắt hiện.', price: 260, glyph: '🐱‍👤', repeatable: false },
+  { id: 'avatar-shiba', kind: 'avatar', name: 'Chó Shiba', detail: 'Avatar chú chó Shiba Nhật Bản đáng yêu và tràn đầy năng lượng.', price: 180, glyph: '🐕', repeatable: false },
+  { id: 'avatar-black-cat', kind: 'avatar', name: 'Mèo đen mắt ngọc', detail: 'Avatar mèo đen huyền bí với đôi mắt sáng ngời.', price: 190, glyph: '🐈‍⬛', repeatable: false },
+  { id: 'avatar-alien', kind: 'avatar', name: 'Người ngoài hành tinh', detail: 'Avatar người bạn từ vũ trụ tò mò học ngôn ngữ Trái Đất.', price: 240, glyph: '👽', repeatable: false },
+  { id: 'avatar-ghost', kind: 'avatar', name: 'Hồn ma tinh nghịch', detail: 'Avatar ma nhỏ đáng yêu, không sợ đề thi nào.', price: 170, glyph: '👻', repeatable: false },
+  { id: 'avatar-magic-hat', kind: 'avatar', name: 'Nón phù thủy', detail: 'Avatar biểu trưng cho phép thuật tri thức diệu kỳ.', price: 220, glyph: '🧙', repeatable: false },
+
+  // Giao diện (Theme) toàn diện — áp dụng cho cả thanh bên và trải nghiệm đọc
   {
     id: 'theme-sepia',
     kind: 'theme',
     name: 'Nền giấy ngà',
-    detail: 'Thêm một tông giấy cho màn đọc.',
+    detail: 'Tông sách cổ điển ngả vàng, phong cách vintage êm dịu.',
     price: 220,
     glyph: '📜',
     repeatable: false,
+    themeLook: 'sepia',
+  },
+  {
+    id: 'theme-emerald',
+    kind: 'theme',
+    name: 'Nền ngọc bích',
+    detail: 'Tông xanh ngọc bích thư thái, mát mẻ dịu mắt khi đọc lâu.',
+    price: 250,
+    glyph: '🍃',
+    repeatable: false,
+    themeLook: 'emerald',
+  },
+  {
+    id: 'theme-midnight',
+    kind: 'theme',
+    name: 'Vũ trụ sao đêm',
+    detail: 'Giao diện bầu trời đêm ngàn sao với mưa sao băng lướt nhẹ trên thanh bên.',
+    price: 300,
+    glyph: '🌌',
+    repeatable: false,
+    themeLook: 'midnight',
+  },
+  {
+    id: 'theme-sakura',
+    kind: 'theme',
+    name: 'Vườn hoa anh đào',
+    detail: 'Giao diện hồng phấn thanh lịch với những cánh hoa đào rơi êm đềm trên thanh bên.',
+    price: 280,
+    glyph: '🌸',
+    repeatable: false,
+    themeLook: 'sakura',
+  },
+  {
+    id: 'theme-cyberpunk',
+    kind: 'theme',
+    name: 'Cyberpunk 2077',
+    detail: 'Giao diện đen công nghệ với viền neon xanh lam và hồng tím huyền ảo.',
+    price: 350,
+    glyph: '🕶️',
+    repeatable: false,
+    themeLook: 'cyberpunk',
+  },
+  {
+    id: 'theme-ocean',
+    kind: 'theme',
+    name: 'Đại dương sâu',
+    detail: 'Giao diện xanh thẳm của đáy biển với bong bóng nước trôi nổi dịu êm.',
+    price: 280,
+    glyph: '🌊',
+    repeatable: false,
+    themeLook: 'ocean',
+  },
+  {
+    id: 'theme-sunset',
+    kind: 'theme',
+    name: 'Hoàng hôn rực rỡ',
+    detail: 'Giao diện cam tím pastel ấm áp như ráng chiều hoàng hôn buông xuống.',
+    price: 260,
+    glyph: '🌇',
+    repeatable: false,
+    themeLook: 'sunset',
+  },
+  {
+    id: 'theme-lavender',
+    kind: 'theme',
+    name: 'Giấc mộng Lavender',
+    detail: 'Giao diện tím oải hương mộng mơ, mang lại cảm giác thư giãn tuyệt đối.',
+    price: 260,
+    glyph: '🪻',
+    repeatable: false,
+    themeLook: 'lavender',
+  },
+  {
+    id: 'theme-nord',
+    kind: 'theme',
+    name: 'Băng tuyết Bắc Âu',
+    detail: 'Giao diện phong cách tối giản Scandinavia với tuyết rơi trắng muốt.',
+    price: 270,
+    glyph: '❄️',
+    repeatable: false,
+    themeLook: 'nord',
+  },
+  {
+    id: 'theme-matcha',
+    kind: 'theme',
+    name: 'Trà đạo Matcha',
+    detail: 'Giao diện xanh cốm dịu nhẹ đậm chất thiền định thanh bình.',
+    price: 250,
+    glyph: '🍵',
+    repeatable: false,
+    themeLook: 'matcha',
   },
 ];
 
@@ -192,6 +361,8 @@ export type RewardPayload = PurchaseState & {
   cover: string | null;
   /** Hiệu ứng hồ sơ đang đeo (thêm 27/09/2026 — bản cũ không có trường này). */
   effect?: string | null;
+  /** Giao diện toàn diện đang áp dụng (thêm 29/09/2026). */
+  theme?: string | null;
   skin: string | null;
   mascot: string | null;
   frozenDays: string[];
@@ -221,6 +392,7 @@ export function mergeReward(local: RewardPayload | null, remote: RewardPayload |
     avatar: worn.avatar ?? null,
     cover: worn.cover ?? null,
     effect: worn.effect ?? null,
+    theme: worn.theme ?? null,
     skin: worn.skin ?? null,
     mascot: worn.mascot ?? null,
     wornAt: worn.wornAt ?? '',
