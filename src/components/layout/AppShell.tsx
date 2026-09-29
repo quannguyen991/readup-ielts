@@ -4,7 +4,7 @@ import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CANVAS_LINE, CANVAS_STOPS, GridBackdrop } from './GridBackdrop';
-import { LightGrid } from './LightGrid';
+import { LightGrid, usePageBackground } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
@@ -15,6 +15,7 @@ import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
 import { ZaloPromoBanner } from './ZaloPromoBanner';
 import { useStreakGlass } from '@/services/city/useStreakGlass';
+import { PromoGiftOverlay } from '@/components/promo/PromoGiftOverlay';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#2B3668';
@@ -50,6 +51,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const isCityRoute = pathname.startsWith('/quest/city');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
+  const pageBg = usePageBackground('browse');
 
   if (focus) {
     /*
@@ -96,7 +98,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={{ backgroundColor: isQuestRoute ? '#15113A' : CANVAS_STOPS[1] }}
+      style={{ backgroundColor: isQuestRoute ? '#15113A' : (pageBg?.stops[1] ?? CANVAS_STOPS[1]) }}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
@@ -108,7 +110,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       */}
       {!isQuestRoute ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-          <GridBackdrop colors={CANVAS_STOPS} line={CANVAS_LINE} />
+          {/* Nền học / giao diện đổi bằng sao áp dụng cho MỌI trang; không có thì nền xanh mặc định. */}
+          {pageBg ? (
+            <GridBackdrop colors={pageBg.stops} line={pageBg.line} pattern={pageBg.pattern} blobs={pageBg.blobs} margin={pageBg.margin} cell={pageBg.cell ?? 34} />
+          ) : (
+            <GridBackdrop colors={CANVAS_STOPS} line={CANVAS_LINE} />
+          )}
         </View>
       ) : null}
       {/*
@@ -135,6 +142,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       </View>
       {isCityRoute ? null : <AskBubble />}
       <SelectionLookup />
+      {/* Quà cuối tháng 9 (+2.000 sao, 7 ngày Pro) — phủ màn hình ở trang duyệt, không chen vào màn làm bài. */}
+      <PromoGiftOverlay />
     </SafeAreaView>
   );
 }

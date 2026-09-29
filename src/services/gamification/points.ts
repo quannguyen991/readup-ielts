@@ -13,6 +13,8 @@
  * tổng ấy; số dư = tổng điểm mọi thời − đã tiêu.
  */
 
+import { dayBoost } from './promo';
+
 export type DayLog = { minutes: number; questions: number };
 
 /** Công mỗi phút học và mỗi câu đã làm, trước khi nhân hệ số chuỗi. */
@@ -35,9 +37,20 @@ export function rawEffort(day: DayLog | undefined): number {
   return Math.max(0, day.minutes) * POINT_PER_MINUTE + Math.max(0, day.questions) * POINT_PER_QUESTION;
 }
 
-export function dailyPoints(day: DayLog | undefined, streakDays: number): number {
-  const points = rawEffort(day) * streakMultiplier(streakDays);
-  return Math.min(DAILY_POINT_CAP, Math.round(points));
+/**
+ * Sao của một ngày. `dayKey` (YYYY-MM-DD) để áp mùa khuyến mãi — trong mùa sao
+ * nhân đôi và trần ngày cao hơn (`gamification/promo.ts`). Không truyền ngày thì
+ * tính theo luật thường.
+ */
+export function dailyPoints(day: DayLog | undefined, streakDays: number, dayKey?: string): number {
+  const boost = dayBoost(dayKey, DAILY_POINT_CAP);
+  const points = rawEffort(day) * streakMultiplier(streakDays) * boost.multiplier;
+  return Math.min(boost.cap, Math.round(points));
+}
+
+/** Trần sao của một ngày cụ thể (để hiện đúng "tối đa bao nhiêu" trên giao diện). */
+export function dailyCapFor(dayKey: string): number {
+  return dayBoost(dayKey, DAILY_POINT_CAP).cap;
 }
 
 export function dateKey(date: Date): string {
@@ -94,7 +107,7 @@ export function monthPoints(
     if (date > month) break;
     const key = dateKey(date);
     if (!daily[key]) continue;
-    total += dailyPoints(daily[key], currentStreak(daily, date, frozen) - 1);
+    total += dailyPoints(daily[key], currentStreak(daily, date, frozen) - 1, key);
   }
   return total;
 }
@@ -105,7 +118,7 @@ export function lifetimePoints(daily: Record<string, DayLog>, frozen: readonly s
   for (const key of Object.keys(daily)) {
     const [y, m, d] = key.split('-').map(Number);
     if (!y || !m || !d) continue;
-    total += dailyPoints(daily[key], currentStreak(daily, new Date(y, m - 1, d), frozen) - 1);
+    total += dailyPoints(daily[key], currentStreak(daily, new Date(y, m - 1, d), frozen) - 1, key);
   }
   return total;
 }

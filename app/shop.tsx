@@ -19,7 +19,8 @@ import { effectivePlan } from '@/lib/billing/entitlements';
 import { PLANS } from '@/lib/billing/plans';
 import { applyStarPass, type PassResult } from '@/lib/billing/star-pass';
 import { MASCOTS } from '@/services/game/mascots';
-import { currentStreak, DAILY_POINT_CAP } from '@/services/gamification/points';
+import { currentStreak, dailyCapFor, dateKey } from '@/services/gamification/points';
+import { inPromo } from '@/services/gamification/promo';
 import { SHOP_ITEMS, formatStars, type ShopItem, type ShopItemKind } from '@/services/gamification/shop';
 import { useBillingStore } from '@/store/useBillingStore';
 import { useGameStore } from '@/store/useGameStore';
@@ -226,7 +227,7 @@ export default function ShopScreen() {
           </View>
         </View>
         <Text className="mt-1 font-sans text-body text-muted">
-          Sao chỉ đến từ việc học: 1 sao mỗi phút, 0,5 sao mỗi câu (tối đa {DAILY_POINT_CAP} sao/ngày, chuỗi dài được nhân thêm), cộng sao thưởng khi hạ quái, lên cấp, xong nhiệm vụ.
+          Sao chỉ đến từ việc học: 1 sao mỗi phút, 0,5 sao mỗi câu (tối đa {dailyCapFor(dateKey(today))} sao/ngày{inPromo(dateKey(today)) ? ' — đang mùa sao ×2 tới hết 30/10' : ''}, chuỗi dài được nhân thêm), cộng sao thưởng khi hạ quái, lên cấp, xong nhiệm vụ.
           {planUntil ? ` Gói đang dùng: ${PLANS[activePlan].name} tới ${planUntil}.` : ''}
         </Text>
       </Appear>

@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
-import { studyBackground } from './study-backgrounds';
+import { pageBackgroundFor } from './study-backgrounds';
+import { useHydrated } from './useHydrated';
 import { findItem } from '@/services/gamification/shop';
 import { useRewardStore } from '@/store/useRewardStore';
 
@@ -29,10 +30,11 @@ export function LightGrid({ children }: { children: React.ReactNode }) {
 
 /**
  * Nền sáng của MỌI màn học (LightGrid, TaskShell tông giấy). Có NỀN HỌC đổi
- * bằng sao (Đổi quà → Nền học) thì vẽ mẫu đó; chưa chọn thì lưới sáng mặc định.
+ * bằng sao thì vẽ mẫu đó; không có thì theo GIAO DIỆN đang dùng (bản nhạt);
+ * không có gì thì lưới sáng mặc định.
  */
 export function StudyBackdrop({ children, showGrid = true }: { children: React.ReactNode; showGrid?: boolean }) {
-  const bg = studyBackground(findItem(useRewardStore((s) => s.studyBg))?.studyBg);
+  const bg = usePageBackground('study');
   if (bg) {
     return (
       <GridBackdrop colors={bg.stops} line={bg.line} pattern={bg.pattern} blobs={bg.blobs} margin={bg.margin} cell={bg.cell ?? 34}>
@@ -45,4 +47,13 @@ export function StudyBackdrop({ children, showGrid = true }: { children: React.R
       {children}
     </GridBackdrop>
   );
+}
+
+/** Nền đang áp dụng cho một loại trang (null = nền mặc định). */
+export function usePageBackground(kind: 'browse' | 'study') {
+  const studyBgId = useRewardStore((s) => s.studyBg);
+  const themeId = useRewardStore((s) => s.theme);
+  const hydrated = useHydrated();
+  if (!hydrated) return null;
+  return pageBackgroundFor(kind, findItem(studyBgId)?.studyBg, themeId);
 }
