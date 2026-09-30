@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, Text, View } from 'react-native';
-import { usePathname } from 'expo-router';
 
-import { useTravelBackdropOn } from '@/components/rail/TravelBackdrop';
-import { isVocabStudyRoute } from '@/navigation/focus-routes';
+import { useTravelActive } from '@/components/rail/TravelBackdrop';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { PixelSprite } from './PixelSprite';
@@ -31,9 +29,7 @@ export function GameFxLayer() {
   const [since] = useState(() => useGameFx.getState().events.at(-1)?.id ?? 0);
   const events = useGameFx((s) => s.events);
   // Màn học từ đang dùng nền toa tàu: không có trận đấu, nên không hiện số đánh / mất tim.
-  const travelOn = useTravelBackdropOn();
-  const pathname = usePathname();
-  const travel = travelOn && isVocabStudyRoute(pathname);
+  const travel = useTravelActive();
   if (Platform.OS !== 'web') return null;
 
   const fresh = events.filter((e) => e.id > since);

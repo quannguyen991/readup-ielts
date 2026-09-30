@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Pressable, ScrollView, Text, View } from 'react-native';
-import { Link } from 'expo-router';
+import { Link, usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AuroraBackdrop } from './AuroraBackdrop';
 import { StudyBackdrop } from './LightGrid';
+import { useTravelActive } from '@/components/rail/TravelBackdrop';
+import { isTravelLightRoute } from '@/navigation/focus-routes';
+import { useTravelPractice } from '@/store/useTravelPractice';
 import { Icon } from '@/components/ui/Icon';
 import { color, layout, paper } from '@/theme/tokens';
 
@@ -58,7 +61,18 @@ export function TaskShell({
   right?: React.ReactNode;
   children: React.ReactNode;
 }) {
-  const onBrand = tone === 'brand';
+  const pathname = usePathname();
+  // Màn làm bài của chép chính tả / viết câu báo "đang làm bài" để nền toa tàu chạy
+  // (trang chọn bộ đề dùng variant 'full' nên không báo — nền giữ như cũ).
+  const practice = variant === 'compact' && isTravelLightRoute(pathname);
+  useEffect(() => {
+    if (!practice) return;
+    useTravelPractice.getState().enter();
+    return () => useTravelPractice.getState().leave();
+  }, [practice]);
+  const travel = useTravelActive() && practice;
+  // Nền toa tàu phủ lớp sáng: chữ luôn dùng màu mực tối cho dễ đọc.
+  const onBrand = tone === 'brand' && !travel;
   const titleColor = onBrand ? color.white : paper.ink;
   const subColor = onBrand ? 'rgba(255,255,255,0.72)' : paper.muted;
 
@@ -153,6 +167,8 @@ export function TaskShell({
     viết lên — và một nền đang chuyển động chậm ngay sau con trỏ là thứ gây phân
     tâm đúng vào lúc cần tập trung nhất.
   */
+  // Màn có nền toa tàu (chép chính tả, viết câu): khung trong suốt để cảnh thành phố lộ ra.
+  if (travel) return <>{body}</>;
   if (onBrand) return <AuroraBackdrop>{body}</AuroraBackdrop>;
 
   /*

@@ -7,6 +7,7 @@ import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { PixelSprite } from './PixelSprite';
 import { ENEMY_SPRITE } from './sprites';
 import { sfx } from '@/services/audio/sfx';
+import { useTravelActive } from '@/components/rail/TravelBackdrop';
 import { MASCOTS } from '@/services/game/mascots';
 import { formatStars } from '@/services/gamification/shop';
 import { dateKey } from '@/services/gamification/points';
@@ -57,7 +58,9 @@ export type StripCharge = { value: number; total: number; unit: string };
 
 export function BattleStrip({ className, step, charge }: { className?: string; step?: StripStep; charge?: StripCharge }) {
   const enabled = useGameStore((s) => s.enabled);
-  if (!enabled) return null;
+  // Màn đang có nền toa tàu: không có trận đấu (người dùng yêu cầu 30/09) — câu trả lời vẫn tính XP / sao.
+  const travel = useTravelActive();
+  if (!enabled || travel) return null;
   return <Strip className={className} step={step} charge={charge} />;
 }
 

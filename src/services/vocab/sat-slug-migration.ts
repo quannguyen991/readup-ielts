@@ -55,6 +55,7 @@ type TopicLike = {
   lapses?: Record<string, Record<string, number>>;
   starred?: Record<string, string[]>;
   scores?: Record<string, { score: number; at: string }[]>;
+  reviews?: Record<string, Record<string, { box: number; due: string; last: string }>>;
 };
 
 export function remapTopicStudy<T extends TopicLike>(p: T): T {
@@ -73,6 +74,7 @@ export function remapTopicStudy<T extends TopicLike>(p: T): T {
   const out: T = { ...p };
   if (p.stages) out.stages = remapPerWord(p.stages, (a, b) => Math.max(a, b));
   if (p.lapses) out.lapses = remapPerWord(p.lapses, (a, b) => a + b);
+  if (p.reviews) out.reviews = remapPerWord(p.reviews, (a, b) => (a.last >= b.last ? a : b));
   if (p.starred && starred) out.starred = Object.fromEntries(Object.entries(starred).map(([s, m]) => [s, Object.keys(m)]));
   if (p.scores) out.scores = scores;
   return out;

@@ -1,27 +1,20 @@
 import React, { useMemo } from 'react';
 import { Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
-import { LinearGradient } from 'expo-linear-gradient';
-import Svg, { Rect } from 'react-native-svg';
 import { useShallow } from 'zustand/react/shallow';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
-import { anim, MOVE } from '@/components/game/game-anim';
-import { PixelSprite } from '@/components/game/PixelSprite';
 import { AreaCard, PICK_AREAS, QUICK_FIGHTS, QuickFight } from '@/components/game/QuestPicker';
-import { ENEMY_SPRITE } from '@/components/game/sprites';
 import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { useWorldIslands } from '@/components/world/useWorldIslands';
-import { MASCOTS } from '@/services/game/mascots';
 import {
   CRIT_EVERY,
   dailyQuests,
   EMPTY_DAY,
   ENEMIES,
-  enemyAt,
   ITEMS,
   levelProgress,
   MAX_HEARTS,
@@ -32,10 +25,10 @@ import { dateKey } from '@/services/gamification/points';
 import { formatStars } from '@/services/gamification/shop';
 import { nextMission, type Island } from '@/services/world/islands';
 import { useGameStore } from '@/store/useGameStore';
-import { mascotOf, skinOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
 import { useCityAvailable } from '@/services/city/availability';
 import { QuestCityHero } from '@/components/city/QuestCityHero';
+import { QuestJourneyHero } from '@/components/rail/QuestJourneyHero';
 
 /**
  * READUP QUEST — trang chính của GAME KHI HỌC.
@@ -63,12 +56,6 @@ const PANEL = { borderRadius: 22, backgroundColor: 'rgba(23,18,58,0.92)', border
 const GOLD = '#FACC15';
 const MUTED = 'rgba(255,255,255,0.7)';
 const WEB = Platform.OS === 'web';
-const CRISP = { shapeRendering: 'crispEdges' } as object;
-
-/** Vị trí sao trên nền sân đấu, theo % khung. */
-const ARENA_STARS: [number, number][] = [
-  [8, 12], [22, 30], [37, 9], [55, 22], [68, 7], [83, 18], [92, 34], [14, 44], [47, 38],
-];
 
 export default function QuestHome() {
   const { width } = useWindowDimensions();
@@ -89,9 +76,6 @@ export default function QuestHome() {
       setEnabled: st.setEnabled,
     })),
   );
-  const skin = skinOf(useRewardStore((s) => s.skin));
-  const petId = mascotOf(useRewardStore((s) => s.mascot));
-  const pet = petId ? MASCOTS[petId] : null;
   const stars = useStarBalance();
   const islands = useWorldIslands();
   const next = nextMission(islands);
@@ -113,29 +97,33 @@ export default function QuestHome() {
         sân đấu lùi xuống dưới. Điện thoại / máy tính bảng không có thành phố
         (3D chỉ chạy trên máy tính) nên vẫn mở đầu bằng sân đấu như cũ.
       */}
+      {/*
+        Màn hình chính của Quest (người dùng yêu cầu 30/09/2026): HÀNH TRÌNH HỌC
+        bằng toa tàu đứng đầu, rồi Thành phố Tri thức (chỉ máy tính). Thẻ nhân vật
+        lùi xuống dưới, không còn sân đấu lớn vì các màn có nền toa tàu đã bỏ trận đấu.
+      */}
+      <Appear>
+        <QuestJourneyHero />
+      </Appear>
       {cityAvailable ? (
-        <Appear>
-          <QuestCityHero />
+        <Appear index={1}>
+          <View style={{ marginTop: 12 }}>
+            <QuestCityHero />
+          </View>
         </Appear>
       ) : null}
 
-      {/* Sân đấu + thông số nhân vật */}
-      <Appear index={cityAvailable ? 1 : 0}>
-        <View style={{ ...PANEL, padding: 0, overflow: 'hidden', flexDirection: wide ? 'row' : 'column', marginTop: cityAvailable ? 12 : 0 }}>
-          <Arena wide={wide} skin={skin} petLook={pet?.look ?? null} petColor={pet?.color ?? null} enemyIndex={g.enemyIndex} enemyHp={g.enemyHp} />
-
-          <View style={{ flex: 1, padding: wide ? 28 : 18 }}>
+      {/* Nhân vật: cấp, XP, sao, lối vào học */}
+      <Appear index={2}>
+        <View style={{ ...PANEL, padding: 0, overflow: 'hidden', flexDirection: wide ? 'row' : 'column', marginTop: 12 }}>
+          <View style={{ flex: 1, padding: wide ? 24 : 18 }}>
             <View style={{ alignSelf: 'flex-start', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(250,204,21,0.4)', backgroundColor: 'rgba(250,204,21,0.1)', paddingHorizontal: 12, paddingVertical: 5 }}>
               <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#FDE68A' }}>
-                READUP QUEST · GAME KHI HỌC
+                NHÂN VẬT CỦA BẠN
               </Text>
             </View>
-            <Text className="font-heavy" style={{ marginTop: 12, fontSize: wide ? 34 : 26, lineHeight: wide ? 40 : 32, color: '#FFFFFF' }}>
-              Mỗi câu đúng là{' '}
-              <Text style={{ color: GOLD }}>một nhát chém.</Text>
-            </Text>
-            <Text className="font-sans" style={{ marginTop: 8, fontSize: 14, lineHeight: 21, color: MUTED, maxWidth: 520 }}>
-              Chọn bài, học như bình thường: đúng thì chém quái, sai thì quái đánh lại. Hạ quái được XP, sao và đồ rơi.
+            <Text className="font-sans" style={{ marginTop: 10, fontSize: 14, lineHeight: 21, color: MUTED, maxWidth: 560 }}>
+              Mỗi câu đúng cộng XP và sao, lên cấp mở thêm đội thợ cho thành phố. Chọn bài bên dưới hoặc học tiếp bài đang dở.
             </Text>
 
             {/* Cấp + XP */}
@@ -326,95 +314,6 @@ export default function QuestHome() {
       </View>
 
     </Screen>
-  );
-}
-
-/**
- * Sân đấu pixel: nhân vật (và linh vật) bên trái, con quái đang chặn đường bên
- * phải với tên, thanh máu và câu khiêu khích.
- */
-function Arena({
-  wide,
-  skin,
-  petLook,
-  petColor,
-  enemyIndex,
-  enemyHp,
-}: {
-  wide: boolean;
-  skin: ReturnType<typeof skinOf>;
-  petLook: 'owl' | 'fox' | 'cat' | 'dragon' | null;
-  petColor: string | null;
-  enemyIndex: number;
-  enemyHp: number;
-}) {
-  const enemy = enemyAt(enemyIndex);
-  const hero = wide ? 108 : 88;
-  const foe = (wide ? 100 : 82) * (enemy.boss ? 1.15 : 1);
-  return (
-    <View style={{ width: wide ? 440 : '100%', minHeight: wide ? 320 : 230, overflow: 'hidden' }}>
-      <LinearGradient colors={['#2B1F66', '#1B1540']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }} />
-      {ARENA_STARS.map(([x, y], i) => (
-        <View key={i} style={{ position: 'absolute', left: `${x}%`, top: `${y}%`, width: i % 3 ? 2 : 3, height: i % 3 ? 2 : 3, backgroundColor: '#FFFFFF', ...anim('rg-twinkle', 1600 + i * 230, { loop: true, delay: i * 180, timing: 'ease-in-out' }) }} {...MOVE} />
-      ))}
-      {/* Trăng pixel. */}
-      <View style={{ position: 'absolute', left: '7%', top: '9%', width: 30, height: 30 }}>
-        <Svg width={30} height={30} viewBox="0 0 14 14" {...CRISP}>
-          <Rect x={4} y={0} width={6} height={14} fill="#FEF3C7" />
-          <Rect x={2} y={1} width={10} height={12} fill="#FEF3C7" />
-          <Rect x={1} y={2} width={12} height={10} fill="#FEF3C7" />
-          <Rect x={0} y={4} width={14} height={6} fill="#FEF3C7" />
-          <Rect x={4} y={3} width={2} height={2} fill="#FDE68A" />
-          <Rect x={8} y={6} width={3} height={3} fill="#FDE68A" />
-          <Rect x={3} y={9} width={2} height={2} fill="#FDE68A" />
-        </Svg>
-      </View>
-      {/* Mặt đất: dải cỏ trên nền đất tối. */}
-      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 52, backgroundColor: '#140F33' }} />
-      <View style={{ position: 'absolute', left: 0, right: 0, bottom: 48, height: 6, backgroundColor: '#3F6212' }} />
-
-      {/* Quái: tên + máu + câu khiêu khích ở trên đầu. */}
-      <View style={{ position: 'absolute', right: '6%', bottom: 52, alignItems: 'center', width: Math.max(foe, 150) }}>
-        <View style={{ marginBottom: 6, borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 9, paddingVertical: 5, maxWidth: 170 }}>
-          <Text className="font-semi" style={{ fontSize: 11, color: '#1B1330' }} numberOfLines={2}>
-            “{enemy.taunt}”
-          </Text>
-        </View>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
-          {enemy.boss ? (
-            <View style={{ borderRadius: 4, paddingHorizontal: 5, backgroundColor: '#DC2626' }}>
-              <Text className="font-heavy" style={{ fontSize: 10, letterSpacing: 1, color: '#FFFFFF' }}>
-                BOSS
-              </Text>
-            </View>
-          ) : null}
-          <Text className="font-strong" numberOfLines={1} style={{ fontSize: 12, color: '#FFFFFF' }}>
-            {enemy.name}
-          </Text>
-        </View>
-        <View style={{ marginTop: 4, width: 110, height: 7, borderRadius: 2, backgroundColor: 'rgba(0,0,0,0.45)', overflow: 'hidden' }}>
-          <View style={{ height: 7, width: '100%', backgroundColor: '#22C55E', transform: [{ scaleX: Math.max(0, Math.min(1, enemyHp / enemy.hp)) }], transformOrigin: 'left' }} />
-        </View>
-        <Text className="font-semi" style={{ marginTop: 2, fontSize: 10, color: MUTED }}>
-          {enemyHp}/{enemy.hp} máu{enemy.round > 0 ? ` · vòng ${enemy.round + 1}` : ''}
-        </Text>
-        <View style={{ marginTop: 2, ...anim('rg-bob', 1200, { loop: true, timing: 'ease-in-out' }) }} {...MOVE}>
-          <PixelSprite name={ENEMY_SPRITE[enemy.id] ?? 'slime'} color={enemy.color} size={foe} />
-        </View>
-      </View>
-
-      {/* Nhân vật + linh vật. */}
-      <View style={{ position: 'absolute', left: '8%', bottom: 52, flexDirection: 'row', alignItems: 'flex-end' }}>
-        {petLook && petColor ? (
-          <View style={{ marginRight: -6, marginBottom: 2, ...anim('rg-bob', 1100, { loop: true, timing: 'ease-in-out', delay: 300 }) }} {...MOVE}>
-            <PixelSprite name={petLook} color={petColor} size={Math.round(hero * 0.42)} />
-          </View>
-        ) : null}
-        <View style={anim('rg-bob', 1500, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-          <PixelSprite name="hero" size={hero} skin={skin} />
-        </View>
-      </View>
-    </View>
   );
 }
 

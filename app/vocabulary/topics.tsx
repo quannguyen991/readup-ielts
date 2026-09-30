@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
+import { DueToday } from '@/components/vocab/DueToday';
 import { Card } from '@/components/ui';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
@@ -42,6 +43,7 @@ export default function VocabTopicsScreen() {
           subtitle={`${VOCAB_TOPIC_TOTALS.topics} chủ đề hay ra trong đề IELTS, ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ. Mỗi từ có phiên âm, nghĩa tiếng Việt, một câu ví dụ và một collocation đi kèm.`}
         />
       </Appear>
+      <DueToday />
       <DeckLibrary initialFilter="ielts" />
       <View className="h-10" />
     </Screen>

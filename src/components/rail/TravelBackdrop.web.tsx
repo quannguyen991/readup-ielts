@@ -13,14 +13,18 @@
  */
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
+import { router, usePathname } from 'expo-router';
 
+import { LightGrid } from '@/components/layout/LightGrid';
 import { OliveGrid } from '@/components/layout/OliveGrid';
 import { useHydrated } from '@/components/layout/useHydrated';
+import { setTravelSfx, sfx } from '@/services/audio/sfx';
 import { RailScene } from '@/services/rail/scene';
 import { localClock, nextOnRoute, routeById, routeOf, stationById, timeOfDayAt } from '@/services/rail/stations';
 import { useGameStore } from '@/store/useGameStore';
 import { useRailStore } from '@/store/useRailStore';
+import { useTravelPractice } from '@/store/useTravelPractice';
+import { isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 
 /**
  * Nền toa tàu có đang bật không. Khi bật, màn học bỏ thanh đánh quái ở trên
@@ -33,15 +37,34 @@ export function useTravelBackdropOn(): boolean {
   return hydrated && on;
 }
 
-export function TravelBackdrop({ color, children }: { color: string; children: React.ReactNode }) {
+/**
+ * `tone`: 'dark' cho màn ôn từ (chữ trắng trên nền chàm) — phủ lớp tối;
+ * 'light' cho màn luyện câu (chữ đậm, thẻ trắng) — phủ lớp sáng, cảnh vẫn lộ ở mép.
+ */
+/**
+ * Màn hiện tại có đang chạy nền toa tàu không: bật trong cài đặt VÀ đang làm bài
+ * — màn ôn từ vựng luôn là làm bài; chép chính tả / viết câu chỉ khi đã mở một bộ.
+ */
+export function useTravelActive(): boolean {
+  const on = useTravelBackdropOn();
+  const pathname = usePathname();
+  const practicing = useTravelPractice((s) => s.count > 0);
+  return on && (isVocabStudyRoute(pathname) || (isTravelLightRoute(pathname) && practicing));
+}
+
+export function TravelBackdrop({ color, tone = 'dark', children }: { color: string; tone?: 'dark' | 'light'; children: React.ReactNode }) {
   const hydrated = useHydrated();
   const on = useRailStore((s) => s.backdrop);
   // Trước khi hydrate (và khi người dùng tắt) giữ nền cũ: máy chủ không biết cài đặt của máy này.
-  if (!hydrated || !on) return <OliveGrid color={color}>{children}</OliveGrid>;
-  return <Travel color={color}>{children}</Travel>;
+  if (!hydrated || !on) return tone === 'light' ? <LightGrid>{children}</LightGrid> : <OliveGrid color={color}>{children}</OliveGrid>;
+  return (
+    <Travel color={color} tone={tone}>
+      {children}
+    </Travel>
+  );
 }
 
-function Travel({ color, children }: { color: string; children: React.ReactNode }) {
+function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'light'; children: React.ReactNode }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sceneRef = useRef<RailScene | null>(null);
   const boost = useRef(0);
@@ -55,6 +78,11 @@ function Travel({ color, children }: { color: string; children: React.ReactNode 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 60_000);
     return () => clearInterval(id);
+  }, []);
+  // Đang ngồi toa: câu đúng / sai phát tiếng tàu thay cho tiếng trận đấu.
+  useEffect(() => {
+    setTravelSfx(true);
+    return () => setTravelSfx(false);
   }, []);
   const time = st.time === 'auto' ? timeOfDayAt(localClock(station.tz, now).h) : st.time;
 
@@ -97,7 +125,10 @@ function Travel({ color, children }: { color: string; children: React.ReactNode 
         if (s.life.correct <= prev.life.correct) return;
         boost.current = 1;
         const r = useRailStore.getState().step();
-        if (r.arrived) setArrived(r.arrived);
+        if (r.arrived) {
+          setArrived(r.arrived);
+          sfx.railArrive();
+        }
       }),
     [],
   );
@@ -120,7 +151,16 @@ function Travel({ color, children }: { color: string; children: React.ReactNode 
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 100%', imageRendering: 'pixelated' }}
         />
         {/* Lớp tối: đậm ở giữa (nơi thẻ học nằm), nhạt ở mép để cảnh vẫn lộ ra. */}
-        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 75% 85% at 50% 42%, rgba(9,16,34,.66), rgba(9,16,34,.42) 65%, rgba(9,16,34,.22))' }} />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              tone === 'light'
+                ? 'radial-gradient(ellipse 80% 90% at 50% 40%, rgba(238,243,251,.80), rgba(238,243,251,.62) 60%, rgba(238,243,251,.30))'
+                : 'radial-gradient(ellipse 75% 85% at 50% 42%, rgba(9,16,34,.66), rgba(9,16,34,.42) 65%, rgba(9,16,34,.22))',
+          }}
+        />
       </View>
       {children}
       <View style={{ position: 'absolute', left: 12, bottom: 12, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
