@@ -9,10 +9,11 @@ import { useCityStore } from '@/store/useCityStore';
 import { CostRow, roadNeedText, useL, ZoneDot } from './common';
 import { CG } from './theme';
 
-export type Tool = 'select' | 'build' | 'road' | 'erase' | 'zone' | 'land' | 'expand';
+export type Tool = 'select' | 'walk' | 'build' | 'road' | 'erase' | 'zone' | 'land' | 'expand';
 
 export const TOOLS: readonly { id: Tool; glyph: string; key: string }[] = [
   { id: 'select', glyph: '🖐️', key: 'V' },
+  { id: 'walk', glyph: '🚶', key: 'P' },
   { id: 'build', glyph: '🏗️', key: 'B' },
   { id: 'road', glyph: '🛣️', key: 'G' },
   { id: 'erase', glyph: '🧽', key: 'X' },

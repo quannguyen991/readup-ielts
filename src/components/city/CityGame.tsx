@@ -9,7 +9,7 @@
  * store và báo lại MỘT lý do cụ thể khi thao tác không hợp lệ.
  */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { CATALOG, catalogItem, ERA_INFO, ROADS, type Era, type RoadKind, type ZoneKind } from '@/data/city/catalog';
 import { CREW_ORDER, CREWS, isDone } from '@/services/city/construction';
@@ -30,8 +30,14 @@ import { BuildPalette, ExpandOptions, LandOptions, RoadOptions, ToolRail, ZoneOp
 import { TopBar } from './ui/TopBar';
 import { SampleView } from './ui/SampleView';
 import { Credits } from './ui/Credits';
+import { avatarColors, CatchGame, CollectionSheet, WalkPrompt } from './ui/Life';
+import { VisitView } from './ui/VisitView';
+import { HomeRoom } from './home/HomeRoom';
+import type { WalkProps } from './scene/WalkLayer';
+import type { Activity, CatchKind } from '@/services/city/life';
+import { skinOf, useRewardStore } from '@/store/useRewardStore';
 
-type Sheet = { kind: 'earn'; focus?: MaterialKind } | { kind: 'credits' } | { kind: 'era'; era: number } | null;
+type Sheet = { kind: 'earn'; focus?: MaterialKind } | { kind: 'credits' } | { kind: 'era'; era: number } | { kind: 'catch'; what: CatchKind } | { kind: 'bag' } | { kind: 'home' } | null;
 type ToastState = { text: string; tone: 'ok' | 'bad' | 'info'; id: number } | null;
 
 const rand = () => Math.floor(Math.random() * 1e9);
@@ -56,6 +62,8 @@ export default function CityGame() {
   // `/quest/city?mau=1` (nút "Xem thành phố mẫu" ở trang Quest).
   const { mau } = useLocalSearchParams<{ mau?: string }>();
   const [opened, setOpened] = useState(false);
+  const [visiting, setVisiting] = useState(false);
+  const openVisit = useCallback(() => setVisiting(true), []);
   const [closed, setClosed] = useState(false);
   const sample = opened || (mau === '1' && !closed);
   const openSample = useCallback(() => setOpened(true), []);
@@ -65,10 +73,12 @@ export default function CityGame() {
   }, []);
   return (
     <div style={{ position: 'relative', flex: 1, width: '100%', height: '100%', minHeight: 560 }}>
-      {sample ? (
+      {visiting ? (
+        <VisitView reduced={reduced} onBack={() => setVisiting(false)} />
+      ) : sample ? (
         <SampleView reduced={reduced} hasCity={!!terrain} onBack={closeSample} />
       ) : terrain ? (
-        <CityView reduced={reduced} onSample={openSample} />
+        <CityView reduced={reduced} onSample={openSample} onVisit={openVisit} />
       ) : (
         <TerrainPicker reducedMotion={reduced} onConfirm={(k, seed) => chooseTerrain(k, seed)} onSample={openSample} />
       )}
@@ -76,7 +86,7 @@ export default function CityGame() {
   );
 }
 
-function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => void }) {
+function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: () => void; onVisit: () => void }) {
   const { t, L } = useL();
   const level = useLearnerLevel();
   const city = useCityStore();
@@ -110,6 +120,32 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
   }, []);
   const strokeFailed = useRef(false);
 
+  // ------------------------------------------------------------ đi dạo (kiểu Play Together)
+  const skinId = useRewardStore((s) => s.skin);
+  const [activity, setActivity] = useState<Activity | null>(null);
+  const [walkGoal, setWalkGoal] = useState<WalkProps['goal']>(null);
+  const walking = tool === 'walk';
+  const walkNear = useMemo<[number, number]>(() => {
+    if (!city.sites.length) return [20, 20];
+    let x = 0;
+    let y = 0;
+    for (const s of city.sites) {
+      x += s.x;
+      y += s.y;
+    }
+    return [x / city.sites.length, y / city.sites.length];
+  }, [city.sites]);
+  const walk = useMemo<WalkProps | null>(
+    () => (walking ? { colors: avatarColors(skinOf(skinId)), goal: walkGoal, paused: !!sheet, onActivity: setActivity, near: walkNear, start: lastWalkPos, onRest: rememberWalkPos } : null),
+    [walking, skinId, walkGoal, sheet, walkNear],
+  );
+  const doActivity = useCallback(() => {
+    if (!activity) return;
+    if (activity.kind === 'enter') router.push(activity.route as never);
+    else if (activity.kind === 'home') setSheet({ kind: 'home' });
+    else setSheet({ kind: 'catch', what: activity.kind });
+  }, [activity]);
+
   const say = useCallback((text: string, tone: 'ok' | 'bad' | 'info' = 'info') => setToast({ text, tone, id: Date.now() }), []);
   useEffect(() => {
     if (!toast) return;
@@ -119,6 +155,11 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
 
   const setTool = useCallback((x: Tool) => {
     setToolState(x);
+    // Bật Dạo phố: phóng gần để thấy nhân vật, thu bảng bên phải cho rộng chỗ.
+    if (x === 'walk') {
+      cameraApi.current?.zoomTo(58);
+      setPanelOpen(false);
+    }
     if (x !== 'build') setBuildType(null);
     if (x !== 'select') setSelected(null);
   }, []);
@@ -195,6 +236,10 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
   const onTileClick = useCallback(
     (tile: [number, number]) => {
       const st = useCityStore.getState();
+      if (tool === 'walk') {
+        setWalkGoal({ tile, id: Date.now() });
+        return;
+      }
       if (tool === 'select') {
         const id = occupancy(st.sites).get(`${tile[0]},${tile[1]}`) ?? null;
         setSelected(id);
@@ -275,7 +320,7 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
       if (el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable)) return;
       if (sheet || e.ctrlKey || e.metaKey || e.altKey) return;
       const k = e.key.toLowerCase();
-      const toolKeys: Record<string, Tool> = { v: 'select', b: 'build', g: 'road', x: 'erase', z: 'zone', l: 'land', m: 'expand' };
+      const toolKeys: Record<string, Tool> = { v: 'select', p: 'walk', b: 'build', g: 'road', x: 'erase', z: 'zone', l: 'land', m: 'expand' };
       const api = cameraApi.current;
       if (toolKeys[k]) return setTool(toolKeys[k]!);
       if (k === 'r' && tool === 'build') return setBuildRot((r) => ((r + 1) % 4) as 0 | 1 | 2 | 3);
@@ -284,6 +329,15 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
       if (k === 'h') return api?.home();
       if (k === '+' || k === '=') return api?.zoomBy(1.2);
       if (k === '-' || k === '_') return api?.zoomBy(1 / 1.2);
+      if (tool === 'walk') {
+        // WASD / mũi tên do nhân vật nhận (WalkLayer); Space làm việc ở chỗ đứng.
+        if (k === ' ' || k === 'enter') {
+          e.preventDefault();
+          doActivity();
+        }
+        if (k === 'escape') setTool('select');
+        return;
+      }
       const pan: Record<string, [number, number]> = { arrowup: [0, 1], w: [0, 1], arrowdown: [0, -1], s: [0, -1], arrowleft: [-1, 0], a: [-1, 0], arrowright: [1, 0], d: [1, 0] };
       if (pan[k]) {
         e.preventDefault();
@@ -298,7 +352,7 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [sheet, tool, buildType, selected, setTool, rotateCam]);
+  }, [sheet, tool, buildType, selected, setTool, rotateCam, doActivity]);
 
   const eraUp = () => {
     const before = useCityStore.getState().era;
@@ -316,7 +370,7 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
       <CityCanvas
         data={data}
         interactive={!sheet}
-        showGrid={tool !== 'select'}
+        showGrid={tool !== 'select' && tool !== 'walk'}
         showZones={tool === 'zone' || tool === 'build'}
         regionHints={regionHints}
         hover={tool === 'select' || tool === 'build' ? null : hover}
@@ -329,7 +383,8 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
         onTileDrag={onTileDrag}
         onTileClick={onTileClick}
         paintMode={paintMode}
-        trackHover={tool !== 'select'}
+        trackHover={tool !== 'select' && tool !== 'walk'}
+        walk={walk}
         rot={camRot}
         zoom={zoom}
         onCameraApi={onCameraApi}
@@ -375,14 +430,30 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
         </button>
       )}
 
+      {walking && !sheet ? <WalkPrompt activity={activity} onAct={doActivity} /> : null}
+      <div className="cg-panel" style={{ position: 'absolute', left: 16, bottom: 16, padding: 6, display: 'flex', gap: 4, zIndex: 12 }}>
+        <button className={`cg-btn small${walking ? ' primary' : ''}`} onClick={() => setTool(walking ? 'select' : 'walk')}>
+          🚶 {L({ vi: 'Dạo phố', en: 'Stroll' })}
+        </button>
+        <button className="cg-btn small" onClick={() => setSheet({ kind: 'home' })}>
+          🏠 {L({ vi: 'Nhà của tôi', en: 'My home' })}
+        </button>
+        <button className="cg-btn small" onClick={() => setSheet({ kind: 'bag' })}>
+          🎒 {L({ vi: 'Bộ sưu tập', en: 'Collection' })}
+        </button>
+        <button className="cg-btn small" onClick={onVisit}>
+          👥 {L({ vi: 'Thăm bạn', en: 'Visit friends' })}
+        </button>
+      </div>
+
       {hint ? (
-        <div className="cg-chip" style={{ position: 'absolute', left: '50%', bottom: 16, transform: 'translateX(-50%)', fontSize: 14, zIndex: 9, boxShadow: '0 6px 18px rgba(16,33,63,.14)' }}>
+        <div className="cg-chip" style={{ position: 'absolute', left: '50%', bottom: 70, transform: 'translateX(-50%)', fontSize: 14, zIndex: 9, boxShadow: '0 6px 18px rgba(16,33,63,.14)' }}>
           {hint}
         </div>
       ) : null}
 
       {toast ? (
-        <div key={toast.id} className={`cg-toast ${toast.tone}`} role={toast.tone === 'bad' ? 'alert' : 'status'} style={{ bottom: hint ? 62 : 28 }}>
+        <div key={toast.id} className={`cg-toast ${toast.tone}`} role={toast.tone === 'bad' ? 'alert' : 'status'} style={{ bottom: hint ? 116 : 70 }}>
           <span aria-hidden>{toast.tone === 'bad' ? '⛔' : toast.tone === 'ok' ? '✅' : 'ℹ️'}</span>
           <span>{toast.text}</span>
         </div>
@@ -393,11 +464,21 @@ function CityView({ reduced, onSample }: { reduced: boolean; onSample: () => voi
       {sheet?.kind === 'earn' ? <EarnSheet focus={sheet.focus} onClose={() => setSheet(null)} /> : null}
       {sheet?.kind === 'credits' ? <Credits onClose={() => setSheet(null)} /> : null}
       {sheet?.kind === 'era' ? <EraSheet era={sheet.era} onClose={() => setSheet(null)} /> : null}
+      {sheet?.kind === 'catch' ? <CatchGame kind={sheet.what} onClose={() => setSheet(null)} /> : null}
+      {sheet?.kind === 'bag' ? <CollectionSheet onClose={() => setSheet(null)} /> : null}
+      {sheet?.kind === 'home' ? <HomeRoom onClose={() => setSheet(null)} /> : null}
     </div>
   );
 }
 
+/** Chỗ nhân vật đứng lần cuối (trong phiên) — bật lại Dạo phố thì đứng đúng chỗ cũ. */
+let lastWalkPos: [number, number] | null = null;
+function rememberWalkPos(p: [number, number]) {
+  lastWalkPos = p;
+}
+
 function hintFor(tool: Tool, buildType: string | null, t: ReturnType<typeof useL>['t']): string | null {
+  if (tool === 'walk') return t('city.hint.walk');
   if (tool === 'build') return buildType ? t('city.hint.buildPlace') : t('city.hint.buildPick');
   if (tool === 'road') return t('city.hint.road');
   if (tool === 'erase') return t('city.hint.erase');

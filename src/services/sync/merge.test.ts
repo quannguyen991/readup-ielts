@@ -297,3 +297,17 @@ test('mọi store đều chịu được payload thiếu trường', () => {
     assert.doesNotThrow(() => merge(null, null), `${name} nổ khi cả hai null`);
   }
 });
+
+test('gói: vé Pro còn hạn thắng vé Pro đã hết hạn, và thắng Free (hai máy cùng tài khoản)', () => {
+  const soon = new Date(Date.now() + 5 * 86_400_000).toISOString();
+  const past = new Date(Date.now() - 86_400_000).toISOString();
+  const valid = { plan: 'pro', expiresAt: soon, source: 'local', usage: {} };
+  const expired = { plan: 'pro', expiresAt: past, source: 'local', usage: {} };
+  const free = { plan: 'free', expiresAt: null, source: 'local', usage: {} };
+  assert.equal((mergeBilling(expired, valid) as typeof valid).expiresAt, soon);
+  assert.equal((mergeBilling(valid, expired) as typeof valid).expiresAt, soon);
+  assert.equal((mergeBilling(free, valid) as typeof valid).plan, 'pro');
+  // Hết hạn thì máy kia (Free) không bị kéo thành gói đã chết.
+  assert.equal((mergeBilling(free, expired) as typeof valid).plan, 'free');
+});
+

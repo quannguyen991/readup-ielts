@@ -37,6 +37,7 @@ export const CITY_VI = {
   'city.terrain.mountain.desc': 'Nhiều bậc cao độ và suối. Phải san thềm đất trước khi dựng nhà lớn.',
 
   'city.tool.select': 'Chọn',
+  'city.tool.walk': 'Dạo phố',
   'city.tool.build': 'Xây',
   'city.tool.road': 'Làm đường',
   'city.tool.erase': 'Gỡ đường',
@@ -50,6 +51,7 @@ export const CITY_VI = {
   'city.cam.home': 'Về giữa bản đồ',
 
   'city.hint.select': 'Bấm vào công trình để xem tiến độ · kéo để di chuyển · Q/E xoay',
+  'city.hint.walk': 'WASD / mũi tên để đi · bấm bản đồ để tự đi tới · Space: vào nhà, câu cá, bắt bọ',
   'city.hint.buildPick': 'Chọn một công trình trong danh sách bên trái',
   'city.hint.buildPlace': 'Bấm để đặt · R xoay hướng · Esc bỏ chọn',
   'city.hint.road': 'Nhấn giữ và kéo để làm đường · chuột phải để di chuyển bản đồ',
@@ -125,6 +127,7 @@ export const CITY_VI = {
   'city.toast.expanded': 'Đã mở thêm một vùng đất.',
 
   'city.tab.tasks': 'Nhiệm vụ',
+  'city.tab.goals': 'Mục tiêu',
   'city.tab.sites': 'Công trường',
   'city.tab.crews': 'Đội thợ',
   'city.tab.shifts': 'Ca làm',
@@ -258,6 +261,7 @@ export const CITY_EN: Readonly<Record<CityKey, string>> = {
   'city.terrain.mountain.desc': 'Many height levels and streams. Level terraces before raising large buildings.',
 
   'city.tool.select': 'Select',
+  'city.tool.walk': 'Stroll',
   'city.tool.build': 'Build',
   'city.tool.road': 'Roads',
   'city.tool.erase': 'Remove road',
@@ -271,6 +275,7 @@ export const CITY_EN: Readonly<Record<CityKey, string>> = {
   'city.cam.home': 'Back to centre',
 
   'city.hint.select': 'Click a building to see progress · drag to move · Q/E rotate',
+  'city.hint.walk': 'WASD / arrows to walk · click the map to walk there · Space: enter, fish, catch bugs',
   'city.hint.buildPick': 'Pick a building from the list on the left',
   'city.hint.buildPlace': 'Click to place · R rotates · Esc deselects',
   'city.hint.road': 'Press and drag to lay road · right-drag moves the map',
@@ -346,6 +351,7 @@ export const CITY_EN: Readonly<Record<CityKey, string>> = {
   'city.toast.expanded': 'New land opened.',
 
   'city.tab.tasks': 'Tasks',
+  'city.tab.goals': 'Goals',
   'city.tab.sites': 'Sites',
   'city.tab.crews': 'Crews',
   'city.tab.shifts': 'Shifts',

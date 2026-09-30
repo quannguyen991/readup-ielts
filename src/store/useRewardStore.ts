@@ -43,6 +43,8 @@ type RewardState = PurchaseState & {
   spendFreeze: (itemId: string, today?: Date) => boolean;
   /** Nhận thưởng hạng của một tháng; đã nhận tháng đó rồi thì trả false. */
   claimPrize: (month: string, stars: number) => boolean;
+  /** Cộng dồn sao vào một khoá thưởng, không vượt `cap` (sao câu cá theo ngày). Trả về số sao thật sự cộng. */
+  addCappedPrize: (key: string, stars: number, cap: number) => number;
 };
 
 export const useRewardStore = create<RewardState>()(
@@ -99,6 +101,14 @@ export const useRewardStore = create<RewardState>()(
           frozenDays: [...state.frozenDays, ...days],
         });
         return true;
+      },
+
+      addCappedPrize: (key, stars, cap) => {
+        const prizes = get().prizes ?? {};
+        const cur = prizes[key] ?? 0;
+        const add = Math.max(0, Math.min(stars, cap - cur));
+        if (add > 0) set({ prizes: { ...prizes, [key]: cur + add } });
+        return add;
       },
 
       claimPrize: (month, stars) => {

@@ -29,6 +29,7 @@ import { buildField, SUB, vx, type Field, type Pin } from './surface';
 import { decorInstances, loadDecor } from './decor';
 import { toVisual } from './visual';
 import type { DecorModel } from '@/data/city/decor-map';
+import { WalkLayer, type WalkProps } from './WalkLayer';
 import { natureInstances, natureTemplates, roadGeometry, terrainGeometry, tileOf, topY, waterGeometry, waterMaterial, type NatureKind } from './world';
 
 export type SceneData = {
@@ -73,15 +74,21 @@ export type SceneProps = {
   zoom: number;
   /** Nhận bộ lệnh camera cho bàn phím / nút bấm ngoài canvas (null khi gỡ). */
   onCameraApi?: (api: CameraApi | null) => void;
+  /** Điểm nhìn khi mở / bấm "về giữa" (toạ độ thế giới x, z). Mặc định: khu cao ốc, rồi trung tâm công trình. */
+  focus?: [number, number];
   onCameraChange?: (zoom: number) => void;
   reducedMotion: boolean;
   autoSpin?: boolean;
+  /** Chế độ đi dạo: có nhân vật, camera bám theo. */
+  walk?: WalkProps | null;
 };
 
 export type CameraApi = {
   /** Dời tâm nhìn theo hướng màn hình (dx phải, dy lên), đơn vị ô. */
   pan: (dx: number, dy: number) => void;
   zoomBy: (factor: number) => void;
+  /** Zoom tới một mức cụ thể (đi dạo: phóng gần để thấy nhân vật). */
+  zoomTo: (zoom: number) => void;
   /** Quay về tâm bản đồ. */
   home: () => void;
 };
@@ -106,6 +113,26 @@ function buildingOf(site: { type: string; seed: number }): ProcBuilding {
 
 /** Mật độ điểm ảnh tối đa khi đứng yên (màn Retina / laptop 150% vẫn đủ nét). */
 const MAX_DPR = 1.5;
+
+/**
+ * Điểm nhìn mặc định: tâm khu CAO ỐC (người dùng muốn mở thành phố là thấy nhà
+ * cao tầng trước); chưa có cao ốc thì tâm các công trình; chưa có gì thì giữa bản đồ.
+ */
+export function cityFocus(data: SceneData): [number, number] {
+  const half = data.terrain.size / 2;
+  const center = (list: readonly Site[]): [number, number] | null => {
+    if (!list.length) return null;
+    let x = 0;
+    let z = 0;
+    for (const s of list) {
+      const [w, d] = footprint(catalogItem(s.type)!.size, s.rot);
+      x += s.x + w / 2 - half;
+      z += s.y + d / 2 - half;
+    }
+    return [x / list.length, z / list.length];
+  };
+  return center(data.sites.filter((s) => isTower(catalogItem(s.type)))) ?? center(data.sites) ?? [0, 0];
+}
 
 // ------------------------------------------------------------------ bóng đổ theo yêu cầu
 
@@ -147,7 +174,11 @@ function useShadowDirty(dep: unknown) {
  * Camera là camera mặc định của Canvas (`orthographic`), R3F tự chỉnh khung
  * khi đổi kích thước.
  */
-function CameraRig({ size, rot, interactive, autoSpin, reducedMotion, paintMode, onApi, onChange }: { size: number; rot: number; interactive: boolean; autoSpin?: boolean; reducedMotion: boolean; paintMode: boolean; onApi?: (api: CameraApi | null) => void; onChange?: (zoom: number) => void }) {
+function CameraRig({ size, rot, interactive, autoSpin, reducedMotion, paintMode, onApi, onChange, focus, followRef }: { size: number; rot: number; interactive: boolean; autoSpin?: boolean; reducedMotion: boolean; paintMode: boolean; onApi?: (api: CameraApi | null) => void; onChange?: (zoom: number) => void; focus: [number, number]; followRef?: React.MutableRefObject<[number, number] | null> }) {
+  const focusRef = useRef(focus);
+  useEffect(() => {
+    focusRef.current = focus;
+  }, [focus]);
   const get = useThree((s) => s.get);
   const controls = useRef<MapControls | null>(null);
   const az = useRef(Math.PI / 4 + (rot * Math.PI) / 2);
@@ -192,7 +223,7 @@ function CameraRig({ size, rot, interactive, autoSpin, reducedMotion, paintMode,
     k.minZoom = Math.min(9, (camera as THREE.OrthographicCamera).zoom);
     k.maxZoom = 90;
     k.zoomSpeed = 0.9;
-    k.target.set(0, 0.5, 0);
+    k.target.set(focusRef.current[0], 0.5, focusRef.current[1]);
     controls.current = k;
     place(az.current);
     let timer: ReturnType<typeof setTimeout> | null = null;
@@ -263,6 +294,22 @@ function CameraRig({ size, rot, interactive, autoSpin, reducedMotion, paintMode,
 
   useFrame((_, dt) => {
     if (autoSpin) return;
+    // Bám theo nhân vật đi dạo: dời tâm nhìn (và camera) về phía nhân vật.
+    const f = followRef?.current;
+    const k = controls.current;
+    if (f && k) {
+      const ex = f[0] - k.target.x;
+      const ez = f[1] - k.target.z;
+      if (Math.abs(ex) > 0.002 || Math.abs(ez) > 0.002) {
+        const s = reducedMotion ? 1 : Math.min(1, dt * 6);
+        k.target.x += ex * s;
+        k.target.z += ez * s;
+        k.object.position.x += ex * s;
+        k.object.position.z += ez * s;
+        k.update();
+        get().invalidate();
+      }
+    }
     let diff = targetAz - az.current;
     while (diff > Math.PI) diff -= Math.PI * 2;
     while (diff < -Math.PI) diff += Math.PI * 2;
@@ -303,10 +350,20 @@ function CameraRig({ size, rot, interactive, autoSpin, reducedMotion, paintMode,
         onChange?.(c.zoom);
         get().invalidate();
       },
+      zoomTo: (z) => {
+        const k = controls.current;
+        if (!k) return;
+        const c = k.object as THREE.OrthographicCamera;
+        c.zoom = THREE.MathUtils.clamp(z, 9, 90);
+        c.updateProjectionMatrix();
+        k.update();
+        onChange?.(c.zoom);
+        get().invalidate();
+      },
       home: () => {
         const k = controls.current;
         if (!k) return;
-        k.target.set(0, 0.5, 0);
+        k.target.set(focusRef.current[0], 0.5, focusRef.current[1]);
         place(az.current);
         get().invalidate();
       },
@@ -1014,6 +1071,7 @@ function Scene(props: SceneProps) {
   const data = useMemo<SceneWorld>(() => ({ ...props.data, field }), [props.data, field]);
   const placeSite = useCallback((s: Site) => siteMatrix(props.data.terrain, props.data.works, s), [props.data.terrain, props.data.works]);
   const { invalidate } = useThree();
+  const followRef = useRef<[number, number] | null>(null);
   const down = useRef<{ x: number; y: number } | null>(null);
   const painting = useRef(false);
   const last = useRef<string>('');
@@ -1135,7 +1193,7 @@ function Scene(props: SceneProps) {
 
   return (
     <>
-      <CameraRig size={data.terrain.size} rot={props.rot} interactive={props.interactive} autoSpin={props.autoSpin} reducedMotion={props.reducedMotion} paintMode={props.paintMode} onApi={props.onCameraApi} onChange={props.onCameraChange} />
+      <CameraRig size={data.terrain.size} rot={props.rot} interactive={props.interactive} autoSpin={props.autoSpin} reducedMotion={props.reducedMotion} paintMode={props.paintMode} onApi={props.onCameraApi} onChange={props.onCameraChange} focus={props.focus ?? cityFocus(data)} followRef={followRef} />
       <ShadowController />
       <hemisphereLight args={['#EAF4FF', '#8FB86A', 1.15]} />
       <directionalLight
@@ -1170,6 +1228,7 @@ function Scene(props: SceneProps) {
       {props.showZones ? <ZoneLayer data={data} /> : null}
       {props.regionHints ? <RegionLayer data={data} hints={props.regionHints} /> : null}
       {props.preview ? <PreviewLayer data={data} preview={props.preview} /> : null}
+      {props.walk ? <WalkLayer data={data} walk={props.walk} rot={props.rot} followRef={followRef} /> : null}
       {props.hover && !props.preview ? <TileQuads data={data} tiles={[props.hover]} color="#FFFFFF" opacity={0.35} lift={0.05} /> : null}
     </>
   );

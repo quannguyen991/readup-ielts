@@ -1,3 +1,4 @@
+import { effectivePlan } from '@/lib/billing/entitlements';
 import { planRank, type PlanId } from '@/lib/billing/plans';
 
 import { mergeRecords, sortByFinishedDesc, unionByKey, unionStrings } from './merge';
@@ -163,7 +164,14 @@ export function mergeBilling(local: unknown, remote: unknown | null): BillingPay
   // Thứ hạng lấy thẳng từ bảng giá (`planRank`), không chép tay. Bản trước là
   // một object viết tay; thêm một gói vào bảng giá mà quên sửa ở đây thì gói mới
   // xếp hạng 0 và ĐỒNG BỘ SẼ HẠ CẤP người đã trả tiền xuống Free.
-  const winner = planRank(b.plan ?? 'free') > planRank(a.plan ?? 'free') ? b : a;
+  // So theo gói CÒN HIỆU LỰC (vé Pro hết hạn coi như Free), cùng hạng thì lấy hạn
+  // xa hơn (null = không hết hạn). Bản chỉ so hạng gói để một máy có vé Pro ĐÃ
+  // HẾT HẠN thắng máy có vé Pro còn hạn — người dùng mất Pro ở máy kia.
+  const now = new Date();
+  const rankA = planRank(effectivePlan(a.plan ?? 'free', a.expiresAt ?? null, now));
+  const rankB = planRank(effectivePlan(b.plan ?? 'free', b.expiresAt ?? null, now));
+  const later = (x: string | null | undefined, y: string | null | undefined) => (x === null || x === undefined ? true : y === null || y === undefined ? false : x > y);
+  const winner = rankB > rankA ? b : rankA > rankB ? a : later(b.expiresAt, a.expiresAt) && !later(a.expiresAt, b.expiresAt) ? b : a;
 
   const usage: BillingPayload['usage'] = { ...(b.usage ?? {}) };
   for (const [quota, entry] of Object.entries(a.usage ?? {})) {

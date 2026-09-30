@@ -91,6 +91,17 @@ const CSS = `
 @keyframes cg-slide{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
 @keyframes cg-fall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(110vh) rotate(540deg);opacity:.9}}
 .cg-slide{animation:cg-slide .22s ease both}
+@keyframes cg-bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(7px) rotate(4deg)}}
+@keyframes cg-ripple{0%{transform:scale(.4);opacity:.7}100%{transform:scale(1.8);opacity:0}}
+@keyframes cg-catch{0%{transform:scale(.3) rotate(-20deg);opacity:0}60%{transform:scale(1.15) rotate(6deg);opacity:1}100%{transform:none}}
+.cg-bob{display:inline-block;animation:cg-bob 1.1s ease-in-out infinite}
+.cg-ripple{position:absolute;inset:0;border-radius:999px;border:2px solid rgba(56,189,248,.6);animation:cg-ripple 1.4s ease-out infinite}
+.cg-catch{display:inline-block;animation:cg-catch .55s cubic-bezier(.2,.9,.3,1.3) both}
+.cg-prompt{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);z-index:12;display:flex;align-items:center;gap:10px;padding:10px 12px 10px 16px;animation:cg-in .2s ease both}
+.cg-opt{appearance:none;border:0;font:inherit;text-align:left;background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;box-shadow:0 0 0 1px ${CG.line} inset;font-size:16px;color:${CG.ink}}
+.cg-opt:hover{box-shadow:0 0 0 2px #A9C6FB inset}
+.cg-opt.right{box-shadow:0 0 0 2px ${CG.ok} inset;background:#EEFBF2}
+.cg-opt.wrong{box-shadow:0 0 0 2px ${CG.bad} inset;background:#FFF1F0}
 @media (prefers-reduced-motion: reduce){
   .cg-root *,.cg-root *::before,.cg-root *::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
   .cg-confetti{display:none}

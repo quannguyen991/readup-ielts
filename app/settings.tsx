@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 
 import { AccountCard } from '@/components/account/AccountCard';
 import { Screen } from '@/components/layout/Screen';
+import { ReminderCard } from '@/components/reminder/Reminder';
 
 /**
  * Cài đặt tài khoản.
@@ -24,6 +25,7 @@ export default function SettingsScreen() {
     <Screen>
       <Text className="font-heavy text-pageTitle text-ink">Cài đặt</Text>
       <AccountCard />
+      <ReminderCard />
     </Screen>
   );
 }

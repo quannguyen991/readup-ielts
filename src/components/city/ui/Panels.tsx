@@ -3,7 +3,7 @@
  * "Tầng x/y", việc còn thiếu, giao vật liệu, thuê đội, ưu tiên, "Học để tiếp
  * tục"); khi không chọn gì → bốn thẻ Nhiệm vụ / Công trường / Đội thợ / Ca làm.
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { router } from 'expo-router';
 
 import { catalogItem, ERA_INFO, isTower, ZONE_INFO, type CrewId, type Era, type SkillMetric } from '@/data/city/catalog';
@@ -29,6 +29,9 @@ import { MATERIAL_INFO, MATERIAL_KINDS, type MaterialKind } from '@/services/cit
 import { eraChecklist } from '@/services/city/progression';
 import { vnToday } from '@/services/gamification/golden';
 import { useCityStore } from '@/store/useCityStore';
+import { useCityLifeStore } from '@/store/useCityLifeStore';
+import { cityGoals } from '@/services/city/goals';
+import { SPECIES } from '@/services/city/life';
 import { Bar, CostRow, useL, useLearnerLevel, useSkillReading, ZoneDot } from './common';
 import { CG } from './theme';
 
@@ -274,15 +277,15 @@ function crewLockText(t: ReturnType<typeof useL>['t'], L: ReturnType<typeof useL
 
 // ------------------------------------------------------------------ bảng tổng
 
-type Tab = 'tasks' | 'sites' | 'crews' | 'shifts';
+type Tab = 'tasks' | 'goals' | 'sites' | 'crews' | 'shifts';
 
 export function OverviewPanel({ onSelect, onEarn, onEraUp }: { onSelect: (id: string) => void; onEarn: (k?: MaterialKind) => void; onEraUp: () => void }) {
   const { t } = useL();
   const [tab, setTab] = useState<Tab>('tasks');
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, minHeight: 0, flex: 1 }}>
-      <div className="cg-row" role="tablist" style={{ gap: 2 }}>
-        {(['tasks', 'sites', 'crews', 'shifts'] as Tab[]).map((x) => (
+      <div className="cg-row" role="tablist" style={{ gap: 2, flexWrap: 'wrap' }}>
+        {(['tasks', 'goals', 'sites', 'crews', 'shifts'] as Tab[]).map((x) => (
           <button key={x} role="tab" aria-selected={tab === x} className={`cg-tab${tab === x ? ' on' : ''}`} onClick={() => setTab(x)}>
             {t(`city.tab.${x}` as const)}
           </button>
@@ -290,6 +293,7 @@ export function OverviewPanel({ onSelect, onEarn, onEraUp }: { onSelect: (id: st
       </div>
       <div className="cg-scroll" style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
         {tab === 'tasks' ? <Tasks onSelect={onSelect} onEarn={onEarn} onEraUp={onEraUp} /> : null}
+        {tab === 'goals' ? <Goals /> : null}
         {tab === 'sites' ? <SiteList onSelect={onSelect} /> : null}
         {tab === 'crews' ? <Crews /> : null}
         {tab === 'shifts' ? <Shifts /> : null}
@@ -465,6 +469,43 @@ function Shifts() {
       <button className="cg-btn primary" style={{ justifyContent: 'center' }} onClick={() => router.push('/practice' as never)}>
         📚 {t('city.site.learnToContinue')}
       </button>
+    </>
+  );
+}
+
+/** Mục tiêu dài hạn (`services/city/goals.ts`): đích để nhắm sau khi đã lên Kỷ 5. */
+function Goals() {
+  const { L } = useL();
+  const era = useCityStore((s) => s.era);
+  const regions = useCityStore((s) => s.regions.length);
+  const sites = useCityStore((s) => s.sites);
+  const collection = useCityLifeStore((s) => s.collection);
+  const furniture = useCityLifeStore((s) => s.home.items.length);
+  const goals = useMemo(
+    () => cityGoals({ era, regions, sites, species: Object.values(collection).filter((c) => c.n > 0).length, speciesTotal: SPECIES.length, furniture }),
+    [era, regions, sites, collection, furniture],
+  );
+  const done = goals.reduce((a, g) => a + g.tier, 0);
+  const all = goals.reduce((a, g) => a + g.tiers, 0);
+  return (
+    <>
+      <span className="cg-muted" style={{ fontSize: 14 }}>
+        {L({ vi: `Đã xong ${done}/${all} bậc mục tiêu. Mỗi bậc mở bậc tiếp theo — thành phố không bao giờ "hết việc".`, en: `${done}/${all} goal tiers done. Each tier unlocks the next — your city never runs out of things to do.` })}
+      </span>
+      {goals.map((g) => (
+        <div key={g.id} className="cg-card" style={{ cursor: 'default', display: 'flex', flexDirection: 'column', alignItems: 'stretch', gap: 6 }}>
+          <span className="cg-row" style={{ justifyContent: 'space-between' }}>
+            <span className="cg-b" style={{ fontSize: 15 }}>
+              <span aria-hidden>{g.glyph}</span> {L(g)}
+            </span>
+            <span className="cg-muted" style={{ fontSize: 14 }}>{g.done ? '✅' : `${g.value}/${g.target}`}</span>
+          </span>
+          <div className="cg-bar">
+            <i style={{ width: `${g.done ? 100 : (g.value / g.target) * 100}%`, background: g.done ? CG.ok : undefined }} />
+          </div>
+          <span className="cg-muted" style={{ fontSize: 14 }}>{L({ vi: `Bậc ${Math.min(g.tier + 1, g.tiers)}/${g.tiers}`, en: `Tier ${Math.min(g.tier + 1, g.tiers)}/${g.tiers}` })}</span>
+        </div>
+      ))}
     </>
   );
 }
