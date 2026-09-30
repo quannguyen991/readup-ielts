@@ -7,6 +7,10 @@ import { MORE_ADVANCED_TEMPLATES_2 } from './more-advanced-2';
 import { MORE_ALGEBRA_TEMPLATES } from './more-algebra';
 import { MORE_DATA_TEMPLATES } from './more-data';
 import { MORE_GEOMETRY_TEMPLATES } from './more-geometry';
+import { PANDA_A_TEMPLATES } from './panda-a';
+import { PANDA_B_TEMPLATES } from './panda-b';
+import { PANDA_C_TEMPLATES } from './panda-c';
+import { PANDA_D_TEMPLATES } from './panda-d';
 import { MATH_SKILL_DOMAIN } from '@/lib/math/types';
 import type { MathDomain, MathSkill, MathTemplate } from '@/lib/math/types';
 
@@ -42,8 +46,23 @@ export const MATH_TEMPLATES: readonly MathTemplate[] = [
   ...MORE_GEOMETRY_TEMPLATES,
 ];
 
+/**
+ * Template riêng của Lộ trình SAT Math theo chủ đề (`/sat/lo-trinh`), tiền tố
+ * `pd-`. Tách khỏi `MATH_TEMPLATES` để bài chẩn đoán và luyện theo kỹ năng giữ
+ * nguyên cơ cấu; bộ kiểm chứng của chúng nằm trong `panda-a.test.ts` và
+ * `panda-b.test.ts`. `getTemplate()` vẫn tìm thấy, nên màn làm bài và màn xem
+ * lại dùng chung được.
+ */
+export const ROADMAP_TEMPLATES: readonly MathTemplate[] = [
+  ...PANDA_A_TEMPLATES,
+  ...PANDA_B_TEMPLATES,
+  // Dạng bám sách (bộ bài theo thứ tự bài tập cuối chương).
+  ...PANDA_C_TEMPLATES,
+  ...PANDA_D_TEMPLATES,
+];
+
 export function getTemplate(slug: string): MathTemplate | undefined {
-  return MATH_TEMPLATES.find((t) => t.slug === slug);
+  return MATH_TEMPLATES.find((t) => t.slug === slug) ?? ROADMAP_TEMPLATES.find((t) => t.slug === slug);
 }
 
 export function templatesForSkill(skill: MathSkill): MathTemplate[] {

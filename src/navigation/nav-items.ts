@@ -99,6 +99,7 @@ export const NAV_GROUPS: NavGroup[] = [
         children: [
           { key: 'math', label: 'SAT Math', href: '/math', icon: 'grid' },
           { key: 'math-learn', label: 'Bài học SAT Math', href: '/math/learn', icon: 'book' },
+          { key: 'sat-roadmap', label: 'Lộ trình SAT Math', href: '/sat/lo-trinh', icon: 'compass' },
           { key: 'sat-knowledge', label: 'Kiến thức SAT', href: '/sat/kien-thuc', icon: 'book' },
           { key: 'sat-rw', label: 'SAT Verbal', href: '/sat-rw', icon: 'letters' },
           { key: 'sat-rw-learn', label: 'Bài học SAT Verbal', href: '/sat-rw/learn', icon: 'book' },

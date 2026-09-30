@@ -23,6 +23,7 @@ import { gamePayload, useGameStore } from '@/store/useGameStore';
 import { rewardPayload, useRewardStore } from '@/store/useRewardStore';
 import { mergeRoadmap, useRoadmapStore, type RoadmapPayload } from '@/store/useRoadmapStore';
 import { cityPayload, useCityStore } from '@/store/useCityStore';
+import { mergeRoadmapProgress, useSatRoadmapStore, type RoadmapProgress } from '@/store/useSatRoadmapStore';
 import { cityLifePayload, mergeCityLife, useCityLifeStore, type CityLifePayload } from '@/store/useCityLifeStore';
 import { mergeCity, type CityPayload } from '@/services/city/sync';
 import { mergeReward, type RewardPayload } from '@/services/gamification/shop';
@@ -192,6 +193,19 @@ const cityLifeStore: SyncedStore = {
   merge: (local, remote) => mergeCityLife(local as CityLifePayload | null, remote as CityLifePayload | null),
 };
 
+/** Lộ trình SAT Math theo chủ đề: điểm cao nhất từng chương × mức. */
+const satRoadmapStore: SyncedStore = {
+  key: 'sat_roadmap',
+  read: () => ({ progress: useSatRoadmapStore.getState().progress }),
+  write: (payload) => {
+    const p = (payload as { progress?: RoadmapProgress } | null)?.progress;
+    if (p) useSatRoadmapStore.setState({ progress: p });
+  },
+  merge: (local, remote) => ({
+    progress: mergeRoadmapProgress((local as { progress?: RoadmapProgress } | null)?.progress, (remote as { progress?: RoadmapProgress } | null)?.progress),
+  }),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -251,4 +265,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(rewardStore);
   registerSyncedStore(cityStore);
   registerSyncedStore(cityLifeStore);
+  registerSyncedStore(satRoadmapStore);
 }

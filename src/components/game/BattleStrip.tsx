@@ -56,7 +56,41 @@ function lastOf<K extends Kind>(events: FxEvent[], since: number, kinds: K[]): E
 export type StripStep = { index: number; total: number };
 export type StripCharge = { value: number; total: number; unit: string };
 
-export function BattleStrip({ className, step, charge }: { className?: string; step?: StripStep; charge?: StripCharge }) {
+/**
+ * TẠM ẨN thanh trận đấu ở mọi màn học (người dùng yêu cầu 30/09/2026: "bỏ tạm
+ * cái này đi"). Việc chấm câu và cộng XP vẫn chạy như cũ, chỉ không vẽ thanh.
+ * Bật lại: đổi thành `true`.
+ */
+export const BATTLE_STRIP_ENABLED = false;
+
+export function BattleStrip(props: { className?: string; step?: StripStep; charge?: StripCharge }) {
+  if (BATTLE_STRIP_ENABLED) return <BattleStripInner {...props} />;
+  // Màn nào dùng thanh để báo "câu thứ mấy" thì vẫn giữ một thanh tiến độ gọn.
+  return props.step ? <StepBar className={props.className} step={props.step} charge={props.charge} /> : null;
+}
+
+function StepBar({ className, step, charge }: { className?: string; step: StripStep; charge?: StripCharge }) {
+  const pct = step.total > 0 ? Math.min(1, (step.index + 1) / step.total) : 0;
+  return (
+    <View className={className} accessibilityRole="progressbar" aria-valuenow={step.index + 1} aria-valuemax={step.total} style={{ gap: 6 }}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+        <Text className="font-strong" style={{ fontSize: 14, color: '#334155' }}>
+          Câu {Math.min(step.index + 1, step.total)}/{step.total}
+        </Text>
+        {charge ? (
+          <Text className="font-semi" style={{ fontSize: 14, color: '#64748B' }}>
+            {charge.value}/{charge.total} {charge.unit}
+          </Text>
+        ) : null}
+      </View>
+      <View style={{ height: 8, borderRadius: 999, backgroundColor: '#E2E8F0', overflow: 'hidden' }}>
+        <View style={{ width: `${pct * 100}%`, height: '100%', borderRadius: 999, backgroundColor: '#4A7FE8', transition: 'width 300ms ease' } as object} />
+      </View>
+    </View>
+  );
+}
+
+function BattleStripInner({ className, step, charge }: { className?: string; step?: StripStep; charge?: StripCharge }) {
   const enabled = useGameStore((s) => s.enabled);
   // Màn đang có nền toa tàu: không có trận đấu (người dùng yêu cầu 30/09) — câu trả lời vẫn tính XP / sao.
   const travel = useTravelActive();

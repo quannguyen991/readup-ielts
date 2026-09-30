@@ -38,7 +38,8 @@ const SYMBOLS: Array<[RegExp, string]> = [
   [/>=/g, '≥'],
   [/!=/g, '≠'],
   [/\bpi\b/g, 'π'],
-  [/\bdeg\b/g, '°'],
+  // Cả `60 deg` lẫn `60deg` (giữa số và chữ không có ranh giới từ).
+  [/(?<![A-Za-z])deg\b/g, '°'],
 ];
 
 function normalizeText(value: string): string {
