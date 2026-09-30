@@ -21,6 +21,11 @@ import { mascotOf, skinOf, useRewardStore, type WearSlot } from '@/store/useRewa
 import { useStarLedger } from '@/store/useStarBalance';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as SealBadge } from '@/components/illust/Cute';
+import { CuteStar, Motion } from '@/components/illust/CuteMore';
+import type { IconName } from '@/components/ui/Icon';
 
 /**
  * HỒ SƠ CỦA TÔI — nơi những thứ đổi bằng sao được mặc lên: bìa chuyển động,
@@ -76,6 +81,10 @@ export default function ProfileScreen() {
           {/* Hiệu ứng hồ sơ phủ cả thẻ (bìa + tên), như Profile Effects của Discord. */}
           <ProfileEffect effect={effectLook} />
           <ProfileCover cover={coverLook} height={wide ? 210 : 150}>
+            {/* Cụm sticker trang trí ở góc dưới bìa (điện thoại: 1 hình nhỏ). */}
+            <View aria-hidden style={{ pointerEvents: 'none', position: 'absolute', right: wide ? 28 : 12, bottom: wide ? 14 : 10 }}>
+              <PageStickers scene="profile" size={80} />
+            </View>
             <View style={{ position: 'absolute', right: 12, top: 12 }}>
               <Pressable
                 accessibilityRole="link"
@@ -129,10 +138,10 @@ export default function ProfileScreen() {
       {/* Số liệu nhanh */}
       <Appear index={2}>
         <View className="mt-4 flex-row flex-wrap gap-3">
-          <Stat glyph="⭐" value={formatStars(ledger.balance)} label="sao đang có" tint="#FEF3C7" />
-          <Stat glyph="🔥" value={String(streak)} label="ngày liên tiếp" tint="#FFEDD5" />
-          <Stat glyph="📅" value={String(month)} label="điểm tháng này" tint="#E0E7FF" />
-          <Stat glyph="⚔️" value={life.correct.toLocaleString('vi-VN')} label="câu đúng" tint="#DCFCE7" />
+          <Stat seal="star" tone="#F2B632" value={formatStars(ledger.balance)} label="sao đang có" />
+          <Stat seal="flame" tone="#F0703F" value={String(streak)} label="ngày liên tiếp" />
+          <Stat seal="calendar" tone="#4A7FE8" value={String(month)} label="điểm tháng này" />
+          <Stat seal="check" tone="#22A06B" value={life.correct.toLocaleString('vi-VN')} label="câu đúng" />
         </View>
       </Appear>
 
@@ -144,9 +153,16 @@ export default function ProfileScreen() {
             const item = findItem(reward[s.slot]);
             return (
               <Card key={s.slot} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 220 }}>
-                <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-                  {s.title}
-                </Text>
+                <View className="flex-row items-center justify-between gap-2">
+                  <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+                    {s.title}
+                  </Text>
+                  {item ? (
+                    <View aria-hidden>
+                      <SealBadge icon="check" color="#22A06B" size={22} />
+                    </View>
+                  ) : null}
+                </View>
                 <View className="mt-2 flex-row items-center gap-3">
                   <SlotPreview slot={s.slot} item={item} name={name} skin={skin} />
                   <View className="min-w-0 flex-1">
@@ -172,6 +188,16 @@ export default function ProfileScreen() {
         <SectionHeader className="mt-6" title="Tủ đồ" subtitle={wardrobe.length ? 'Mọi món bạn đã đổi. Bấm để đeo hoặc bỏ.' : undefined} icon="gift" />
         {wardrobe.length === 0 ? (
           <Card className="mt-3">
+            <View aria-hidden className="mb-2 flex-row items-end gap-2">
+              <Motion kind="float">
+                <Sticker tilt={-8}>
+                  <CuteStar size={52} />
+                </Sticker>
+              </Motion>
+              <Motion kind="pop" delay={0.2}>
+                <Label text="Đổi sao lấy đồ 🎁" color="#F472B6" ink="#FFFFFF" tilt={-4} size={12} />
+              </Motion>
+            </View>
             <Text className="font-sans text-body text-muted">
               Tủ đồ còn trống. Bạn đang có {formatStars(ledger.balance)} sao — avatar động rẻ nhất 150 sao, skin từ 300 sao.
             </Text>
@@ -238,7 +264,13 @@ export default function ProfileScreen() {
                   className="items-center justify-center rounded-panel"
                   style={{ width: 52, height: 52, backgroundColor: at ? '#FEF3C7' : '#F1F5F9' }}
                 >
-                  <Text style={{ fontSize: 24, opacity: at ? 1 : 0.28 }}>{a.glyph}</Text>
+                  {at ? (
+                    <Motion kind="hover">
+                      <Text style={{ fontSize: 24 }}>{a.glyph}</Text>
+                    </Motion>
+                  ) : (
+                    <Text style={{ fontSize: 24, opacity: 0.28 }}>{a.glyph}</Text>
+                  )}
                 </View>
               );
             })}
@@ -251,11 +283,11 @@ export default function ProfileScreen() {
   );
 }
 
-function Stat({ glyph, value, label, tint }: { glyph: string; value: string; label: string; tint: string }) {
+function Stat({ seal, tone, value, label }: { seal: IconName; tone: string; value: string; label: string }) {
   return (
     <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: '#EEF0F6' }}>
-      <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: tint }}>
-        <Text style={{ fontSize: 18 }}>{glyph}</Text>
+      <View aria-hidden>
+        <SealIcon name={seal} color={tone} size={42} />
       </View>
       <View className="min-w-0 flex-1">
         <Text className="font-heavy text-ink" style={{ fontSize: 20 }}>

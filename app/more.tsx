@@ -8,12 +8,30 @@ import { MORE_ITEMS } from '@/navigation/nav-items';
 import { assetKeys, useAssetUrl } from '@/services/assets/useAssets';
 import { color } from '@/theme/tokens';
 import type { IconName } from '@/components/ui/Icon';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Motion } from '@/components/illust/CuteMore';
 
 /** Tab "More" trên mobile: chứa các mục sidebar không nằm trong 5 tab chính. */
 export default function MoreScreen() {
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">More</Text>
+      <View className="flex-row items-center justify-between gap-3">
+        <View className="min-w-0 flex-1 flex-row items-center gap-3">
+          <View aria-hidden>
+            <SealIcon name="grid" color="#4A7FE8" size={44} />
+          </View>
+          <View className="min-w-0 flex-1">
+            <Text className="font-heavy text-pageTitle text-ink">More</Text>
+            <View aria-hidden className="mt-1">
+              <Motion kind="pop">
+                <Label text="Tiện ích khác ✨" color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
+              </Motion>
+            </View>
+          </View>
+        </View>
+        <PageStickers scene="settings" compact />
+      </View>
 
       <Card className="mt-4" padded={false}>
         {MORE_ITEMS.map((item, index) => (

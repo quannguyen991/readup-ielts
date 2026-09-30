@@ -200,7 +200,7 @@ export default function WeeklyScreen() {
       <Appear>
         <LightHero
           scene="progress"
-          badge="ĐỀ CỦA TUẦN"
+          badge="ĐỀ CỦA TUẦN" art="test"
           line1={`Tuần ${weekNo} · ${weekLabel(week)}`}
           line2="cả nước cùng một đề"
           subtitle="10 câu SAT (5 Math, 5 Verbal), khoảng 12–15 phút. Không báo đúng sai giữa chừng. Chỉ LẦN LÀM ĐẦU TIÊN được tính điểm; đề mới mỗi thứ Hai."

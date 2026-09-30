@@ -6,6 +6,9 @@ import { Card } from '@/components/ui';
 import rawSummary from '@/data/provenance-summary.json';
 import type { Counts, ModelCounts } from '@/services/provenance/ledger';
 import { color, radius, spacing as space } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Badge } from '@/components/illust/Cute';
+import type { IconName } from '@/components/ui/Icon';
 
 /**
  * Kiểu khai TƯỜNG MINH, không suy từ chính tệp JSON.
@@ -165,12 +168,17 @@ export default function ObservatoryScreen() {
     <Screen>
       <View style={{ maxWidth: 760, gap: space.lg }}>
         <View>
-          <Text style={{ fontSize: 13, color: color.accent, fontWeight: '700', letterSpacing: 0.6 }}>
-            OPEN MEASUREMENT
-          </Text>
-          <Text style={{ fontSize: 30, fontWeight: '800', color: color.ink, marginTop: 4 }}>
-            How often does an AI-written reading question not need the passage?
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: space.md }}>
+            <View style={{ flex: 1, minWidth: 0 }}>
+              <Text style={{ fontSize: 13, color: color.accent, fontWeight: '700', letterSpacing: 0.6 }}>
+                OPEN MEASUREMENT
+              </Text>
+              <Text style={{ fontSize: 30, fontWeight: '800', color: color.ink, marginTop: 4 }}>
+                How often does an AI-written reading question not need the passage?
+              </Text>
+            </View>
+            <PageStickers scene="review" compact />
+          </View>
           <Text style={{ fontSize: 15, color: color.muted, marginTop: space.sm, lineHeight: 22 }}>
             Every question ReadUp generates is answered by a second model that is never shown the
             passage. If that model gets it right and says the answer was determinable, the question
@@ -183,6 +191,10 @@ export default function ObservatoryScreen() {
 
         <Card>
           <View style={{ gap: space.md }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+            <View aria-hidden>
+              <Badge icon="target" color="#F2B632" size={34} />
+            </View>
             <View
               style={{
                 alignSelf: 'flex-start',
@@ -195,6 +207,7 @@ export default function ObservatoryScreen() {
               <Text style={{ color: tone.fg, fontWeight: '800', fontSize: 12, letterSpacing: 0.5 }}>
                 {tone.label}
               </Text>
+            </View>
             </View>
 
             <Text style={{ fontSize: 15, color: color.body, lineHeight: 23 }}>
@@ -215,9 +228,9 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>
+          <CardTitle icon="gauge" tone="#4A7FE8">
             {byModel.length > 1 ? 'By model' : 'Model measured'}
-          </Text>
+          </CardTitle>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>
             {byModel.length > 1
               ? 'Worst first. The generation prompt already forbids this failure in six explicit rules — so this measures how often each model does it anyway, after being told not to.'
@@ -256,7 +269,9 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>By question type</Text>
+          <CardTitle icon="list" tone="#0EA5E9">
+            By question type
+          </CardTitle>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>
             This is the part worth acting on. A True/False statement is a standalone
             proposition, and world knowledge often settles it without the passage. A
@@ -313,9 +328,9 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>
+          <CardTitle icon="lock" tone="#22A06B">
             Registered before measuring
-          </Text>
+          </CardTitle>
           <Text style={{ fontSize: 14, color: color.body, marginTop: space.sm, lineHeight: 22 }}>
             The falsification threshold is {preregistration.threshold * 100}% and the minimum sample
             is {preregistration.minSample} blind runs. Both are constants in{' '}
@@ -327,9 +342,9 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <Text style={{ fontSize: 17, fontWeight: '700', color: color.ink }}>
+          <CardTitle icon="info" tone="#F0703F">
             What these numbers do not say
-          </Text>
+          </CardTitle>
           <View style={{ gap: space.sm, marginTop: space.sm }}>
             {CAVEATS.map((c) => (
               <View key={c} style={{ flexDirection: 'row', gap: space.sm }}>
@@ -356,6 +371,18 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
       <Text style={{ fontSize: 26, fontWeight: '800', color: color.ink }}>{value}</Text>
       <Text style={{ fontSize: 12, color: color.muted }}>{label}</Text>
       {hint ? <Text style={{ fontSize: 11, color: color.subtle }}>{hint}</Text> : null}
+    </View>
+  );
+}
+
+/** Tiêu đề thẻ kèm huy hiệu răng cưa (trang trí, trình đọc màn hình bỏ qua). */
+function CardTitle({ icon, tone, children }: { icon: IconName; tone: string; children: React.ReactNode }) {
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+      <View aria-hidden>
+        <SealIcon name={icon} color={tone} size={34} />
+      </View>
+      <Text style={{ flex: 1, fontSize: 17, fontWeight: '700', color: color.ink }}>{children}</Text>
     </View>
   );
 }

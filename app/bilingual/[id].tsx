@@ -28,6 +28,9 @@ import {
 } from '@/data/bilingual-repository';
 import { parseInline } from '@/lib/inlineMarkup';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteBook } from '@/components/illust/Cute';
+import { CuteBulb, CuteMagnifier, CuteNotebook, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
 import { useVocabStore } from '@/store/useVocabStore';
@@ -96,6 +99,13 @@ export default function BilingualReaderScreen() {
       <Backdrop>
         <SafeAreaView className="flex-1 items-center justify-center p-6">
           <View className="max-w-[460px] rounded-card p-6" style={{ backgroundColor: LIGHT.bg }}>
+            <View aria-hidden className="mb-3">
+              <Motion kind="wobble">
+                <Sticker tilt={-6}>
+                  <CuteMagnifier size={60} />
+                </Sticker>
+              </Motion>
+            </View>
             <Text className="font-heavy text-sectionTitle text-ink">Không tìm thấy bài này</Text>
             <Text className="mt-2 font-sans text-body text-muted">
               Bài bạn vừa mở không có trong kho. Quay lại danh sách để chọn bài khác.
@@ -326,6 +336,13 @@ function Toolbar(props: {
         <Text numberOfLines={1} style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: CREAM }}>
           đọc song ngữ
         </Text>
+        <View aria-hidden style={{ alignSelf: 'center' }}>
+          <Motion kind="float">
+            <Sticker tilt={-8}>
+              <CuteBook size={30} />
+            </Sticker>
+          </Motion>
+        </View>
         {roomy ? (
           <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 2, color: 'rgba(244,241,228,0.8)' }}>
             •  THE READUP PRESS
@@ -885,9 +902,18 @@ function QuestionsPane({
   return (
     <Sheet theme={theme}>
       <Kicker theme={theme} label="HIỂU BÀI" hint={`${questions.length} câu`} />
-      <Text style={{ marginTop: 14, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
-        Bạn đã hiểu bài chưa?
-      </Text>
+      <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
+        <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
+          Bạn đã hiểu bài chưa?
+        </Text>
+        <View aria-hidden>
+          <Motion kind="float">
+            <Sticker tilt={8}>
+              <CuteBulb size={46} />
+            </Sticker>
+          </Motion>
+        </View>
+      </View>
 
       <View className="mt-6 gap-7">
         {questions.map((q, qi) => (
@@ -959,6 +985,22 @@ function QuestionsPane({
           {checked ? `Đúng ${score}/${questions.length} · Làm lại` : 'Xem kết quả'}
         </Text>
       </HoverPressable>
+      {checked ? (
+        <View aria-hidden className="mt-4 flex-row items-center gap-3">
+          <Motion kind="wobble">
+            <Sticker tilt={-8}>
+              <CuteTrophy size={44} />
+            </Sticker>
+          </Motion>
+          <Label
+            text={score === questions.length ? 'Hiểu trọn bài 🏆' : score * 2 >= questions.length ? 'Khá lắm ⭐' : 'Đọc lại nhé 💪'}
+            color={score === questions.length ? '#22A06B' : score * 2 >= questions.length ? '#4A7FE8' : '#F0703F'}
+            ink="#FFFFFF"
+            tilt={-4}
+            size={12}
+          />
+        </View>
+      ) : null}
     </Sheet>
   );
 }
@@ -974,9 +1016,18 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
   return (
     <Sheet theme={theme}>
       <Kicker theme={theme} label="TỪ VỰNG" hint={`${vocab.length} từ đáng giữ lại`} />
-      <Text style={{ marginTop: 14, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
-        Từ của bài này
-      </Text>
+      <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
+        <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
+          Từ của bài này
+        </Text>
+        <View aria-hidden>
+          <Motion kind="float">
+            <Sticker tilt={-8}>
+              <CuteNotebook size={46} />
+            </Sticker>
+          </Motion>
+        </View>
+      </View>
 
       <View className="mt-5">
         {vocab.map((v, i) => {

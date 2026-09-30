@@ -8,6 +8,10 @@ import { Badge, Button, Card, Icon } from '@/components/ui';
 import { AUDIO_NGUON, formatLength, getLibraryAudio } from '@/data/audio-library';
 import { estimateSentences, getAudioTranscript } from '@/data/audio-repository';
 import { paper } from '@/theme/tokens';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker } from '@/components/illust/Cute';
+import { CuteHeadphones, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Nghe hiểu trên thư viện âm thanh — KHÔNG phải dán gì cả.
@@ -65,6 +69,13 @@ export default function ListenScreen() {
         tone="paper"
       >
         <Card>
+          <View aria-hidden className="mb-3">
+            <Motion kind="wobble">
+              <Sticker tilt={-6}>
+                <CuteHeadphones size={60} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-sans text-body text-muted">
             Bài nghe không còn trong thư viện, hoặc phần lời đọc chưa tải được. Quay lại thư viện và
             chọn bài khác.
@@ -89,6 +100,15 @@ export default function ListenScreen() {
         </View>
       }
     >
+      <View aria-hidden className="mb-3 flex-row items-center gap-3">
+        <Motion kind="float">
+          <Sticker tilt={-6}>
+            <CuteHeadphones size={48} />
+          </Sticker>
+        </Motion>
+        <Label text="Nghe hết rồi trả lời 🎧" color="#0EA5E9" ink="#FFFFFF" tilt={-4} size={12} />
+      </View>
+
       <AudioPlayer
         src={meta.audioUrl}
         sourceUrl={meta.sourceUrl}
@@ -97,7 +117,9 @@ export default function ListenScreen() {
       />
 
       <View className="mt-3 flex-row items-start gap-2.5 rounded-panel border border-border bg-surface p-3.5">
-        <Icon name="info" size={16} color={paper.muted} strokeWidth={2} />
+        <View aria-hidden>
+          <BadgeSticker icon="question" color="#F2B632" size={26} />
+        </View>
         <Text className="min-w-0 flex-1 font-sans text-label text-muted" style={{ lineHeight: 20 }}>
           Nghe hết bài rồi trả lời. Khi chọn đáp án, app hỏi thêm{' '}
           <Text className="font-strong">bạn nghe thấy đáp án ở đoạn nào</Text> — đó mới là chỗ phân
@@ -119,7 +141,12 @@ export default function ListenScreen() {
 
       {transcript.glossary.length > 0 ? (
         <Card className="mt-5">
-          <Text className="font-strong text-cardTitle text-ink">Words in This Story</Text>
+          <View className="flex-row items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name="book" color="#22A06B" size={36} />
+            </View>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Words in This Story</Text>
+          </View>
           <Text className="mt-1 font-sans text-label text-muted">
             Chú giải do chính ban biên tập VOA soạn kèm bài, không phải app tự sinh.
           </Text>

@@ -29,6 +29,9 @@ import {
 import { useGameStore } from '@/store/useGameStore';
 import { mascotOf, skinOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Badge as SealBadge } from '@/components/illust/Cute';
+import type { IconName } from '@/components/ui/Icon';
 
 /**
  * TRANG NHÂN VẬT: cấp và XP, nhiệm vụ ngày (bấm nhận thưởng), trận đang đánh,
@@ -70,6 +73,8 @@ export default function HeroScreen() {
           <Text className="font-heavy text-pageTitle" style={{ color: '#FFFFFF' }}>
             Nhân vật
           </Text>
+          <View style={{ flex: 1 }} />
+          <PageStickers scene="duel" />
         </View>
       </Appear>
 
@@ -162,7 +167,7 @@ export default function HeroScreen() {
         {/* Nhiệm vụ ngày */}
         <Appear index={3} style={{ flex: 1.3 }}>
           <View style={{ ...PANEL, flex: 1 }}>
-            <SectionTitle title="Nhiệm vụ hôm nay" sub="Đổi mỗi ngày. Xong thì bấm nhận thưởng." />
+            <SectionTitle seal="target" tone="#F2B632" title="Nhiệm vụ hôm nay" sub="Đổi mỗi ngày. Xong thì bấm nhận thưởng." />
             <View style={{ marginTop: 12, gap: 10 }}>
               {quests.map((q) => {
                 const value = Math.min(q.goal, today[q.metric]);
@@ -202,7 +207,7 @@ export default function HeroScreen() {
         {/* Trận đang đánh */}
         <Appear index={4} style={{ flex: 1 }}>
           <View style={{ ...PANEL, flex: 1 }}>
-            <SectionTitle title="Quái đang chặn đường" sub={`Con thứ ${g.enemyIndex + 1}${enemy.round > 0 ? ` · vòng ${enemy.round + 1}, khoẻ hơn` : ''}`} />
+            <SectionTitle seal="flame" tone="#F0703F" title="Quái đang chặn đường" sub={`Con thứ ${g.enemyIndex + 1}${enemy.round > 0 ? ` · vòng ${enemy.round + 1}, khoẻ hơn` : ''}`} />
             <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', gap: 14 }}>
               <View style={{ width: 96, height: 96, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: '#2B1F66' }}>
                 <View style={anim('rg-bob', 1200, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
@@ -237,7 +242,7 @@ export default function HeroScreen() {
       <Appear index={5}>
         <View style={{ ...PANEL, marginTop: 12 }}>
           <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 10 }}>
-            <SectionTitle title="Túi đồ" sub="Dùng ngay trong bài: bấm Túi đồ trên thanh trận đấu." />
+            <SectionTitle seal="gift" tone="#F472B6" title="Túi đồ" sub="Dùng ngay trong bài: bấm Túi đồ trên thanh trận đấu." />
             <Pressable accessibilityRole="link" onPress={() => router.push('/shop?tab=battle' as never)}>
               <Text className="font-strong" style={{ fontSize: 13, color: GOLD }}>
                 Đổi quà →
@@ -265,7 +270,7 @@ export default function HeroScreen() {
       {/* Sổ quái */}
       <Appear index={6}>
         <View style={{ ...PANEL, marginTop: 12 }}>
-          <SectionTitle title="Sổ quái" sub="Quái lần lượt xuất hiện; hết bảy loài thì quay lại, khoẻ hơn." />
+          <SectionTitle seal="book" tone="#0EA5E9" title="Sổ quái" sub="Quái lần lượt xuất hiện; hết bảy loài thì quay lại, khoẻ hơn." />
           <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {ENEMIES.map((e, i) => {
               const seen = g.enemyIndex >= i;
@@ -296,7 +301,7 @@ export default function HeroScreen() {
       {/* Huy hiệu */}
       <Appear index={7}>
         <View style={{ ...PANEL, marginTop: 12 }}>
-          <SectionTitle title="Huy hiệu" sub={`${Object.keys(g.achievements).length}/${ACHIEVEMENTS.length} đã mở`} />
+          <SectionTitle seal="trophy" tone="#F2B632" title="Huy hiệu" sub={`${Object.keys(g.achievements).length}/${ACHIEVEMENTS.length} đã mở`} />
           <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {ACHIEVEMENTS.map((a) => {
               const at = g.achievements[a.id];
@@ -311,6 +316,11 @@ export default function HeroScreen() {
                       {at ? `Mở ngày ${new Date(at).toLocaleDateString('vi-VN')}` : a.detail}
                     </Text>
                   </View>
+                  {at ? (
+                    <View aria-hidden>
+                      <SealBadge icon="check" color="#22A06B" size={24} />
+                    </View>
+                  ) : null}
                 </View>
               );
             })}
@@ -321,7 +331,7 @@ export default function HeroScreen() {
       {/* Luật chơi */}
       <Appear index={8}>
         <View style={{ ...PANEL, marginTop: 12, marginBottom: 24 }}>
-          <SectionTitle title="Luật chơi" />
+          <SectionTitle seal="info" tone="#4A7FE8" title="Luật chơi" />
           <View style={{ marginTop: 10, gap: 6 }}>
             {[
               `Đúng một câu: +${XP_CORRECT} XP và chém quái. Từ câu đúng thứ 3 liên tiếp, mỗi câu cộng thêm XP.`,
@@ -348,17 +358,24 @@ export default function HeroScreen() {
   );
 }
 
-function SectionTitle({ title, sub }: { title: string; sub?: string }) {
+function SectionTitle({ title, sub, seal, tone = '#F2B632' }: { title: string; sub?: string; seal?: IconName; tone?: string }) {
   return (
-    <View style={{ flexShrink: 1 }}>
-      <Text className="font-heavy" style={{ fontSize: 17, color: '#FFFFFF' }}>
-        {title}
-      </Text>
-      {sub ? (
-        <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: MUTED }}>
-          {sub}
-        </Text>
+    <View style={{ flexShrink: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      {seal ? (
+        <View aria-hidden>
+          <SealIcon name={seal} color={tone} size={36} />
+        </View>
       ) : null}
+      <View style={{ flexShrink: 1, minWidth: 0 }}>
+        <Text className="font-heavy" style={{ fontSize: 17, color: '#FFFFFF' }}>
+          {title}
+        </Text>
+        {sub ? (
+          <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: MUTED }}>
+            {sub}
+          </Text>
+        ) : null}
+      </View>
     </View>
   );
 }

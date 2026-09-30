@@ -22,6 +22,9 @@ import { Icon } from '@/components/ui';
 import { useHotkeys } from '@/components/vocab/study/StudyKit';
 import { useWorldIslands } from '@/components/world/useWorldIslands';
 import type { Island } from '@/services/world/islands';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 /**
  * CHỌN TRẬN — bấm "Vào trận" ở ReadUp Quest là tới đây.
@@ -88,12 +91,17 @@ export default function QuestPick() {
 function AreaStep({ areas }: { areas: Island[] }) {
   return (
     <View style={{ marginTop: 18, marginBottom: 28 }}>
-      <Text className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: '#FFFFFF' }}>
-        Hôm nay đánh ở mảng nào?
-      </Text>
-      <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: QUEST_MUTED, maxWidth: 620 }}>
-        Chọn loại bài học trước, sau đó chọn bài. Bài nào cũng có quái chặn đường: trả lời đúng là chém.
-      </Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <Text className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: '#FFFFFF' }}>
+            Hôm nay đánh ở mảng nào?
+          </Text>
+          <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: QUEST_MUTED, maxWidth: 620 }}>
+            Chọn loại bài học trước, sau đó chọn bài. Bài nào cũng có quái chặn đường: trả lời đúng là chém.
+          </Text>
+        </View>
+        <PageStickers scene="duel" />
+      </View>
 
       <View style={{ marginTop: 18 }}>
         <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
@@ -106,9 +114,17 @@ function AreaStep({ areas }: { areas: Island[] }) {
       </View>
 
       <View style={{ ...PAD, marginTop: 16 }}>
-        <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
-          Trận nhanh
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+          <View aria-hidden>
+            <SealIcon name="flame" color="#F0703F" size={32} />
+          </View>
+          <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
+            Trận nhanh
+          </Text>
+          <View aria-hidden>
+            <Label text="Vào là đánh ⚡" color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
+          </View>
+        </View>
         <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: QUEST_MUTED }}>
           Không cần chọn bài — vào là đánh.
         </Text>
@@ -147,9 +163,18 @@ function LessonStep({ island }: { island: Island }) {
           <Icon name={AREA_ICON[island.id]} size={26} color="#FFFFFF" strokeWidth={2.1} />
         </View>
         <View style={{ flex: 1, minWidth: 220 }}>
-          <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: '#FFFFFF' }}>
-            {island.name.replace(/^Đảo /, '')}
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
+            <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: '#FFFFFF' }}>
+              {island.name.replace(/^Đảo /, '')}
+            </Text>
+            {island.missions.length > 0 && island.done === island.missions.length ? (
+              <View aria-hidden>
+                <Motion kind="pop">
+                  <Label text="Xong hết! 🏆" color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                </Motion>
+              </View>
+            ) : null}
+          </View>
           <Text className="font-sans" style={{ marginTop: 2, fontSize: 14, color: QUEST_MUTED }}>
             {island.tagline}
           </Text>
@@ -209,6 +234,13 @@ function LessonStep({ island }: { island: Island }) {
       <View style={{ marginTop: 14 }}>
         {shown.length === 0 ? (
           <View style={{ ...PAD, alignItems: 'center' }}>
+            <View aria-hidden style={{ marginBottom: 8 }}>
+              <Motion kind="wobble">
+                <Sticker tilt={-8}>
+                  <CuteMagnifier size={48} />
+                </Sticker>
+              </Motion>
+            </View>
             <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
               {filter === 'done' ? 'Chưa qua bài nào ở đây.' : 'Không còn bài nào khớp bộ lọc.'}
             </Text>

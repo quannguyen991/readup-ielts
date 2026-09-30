@@ -29,6 +29,9 @@ import { useStarBalance } from '@/store/useStarBalance';
 import { useCityAvailable } from '@/services/city/availability';
 import { QuestCityHero } from '@/components/city/QuestCityHero';
 import { QuestJourneyHero } from '@/components/rail/QuestJourneyHero';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Motion } from '@/components/illust/CuteMore';
 
 /**
  * READUP QUEST — trang chính của GAME KHI HỌC.
@@ -117,10 +120,13 @@ export default function QuestHome() {
       <Appear index={2}>
         <View style={{ ...PANEL, padding: 0, overflow: 'hidden', flexDirection: wide ? 'row' : 'column', marginTop: 12 }}>
           <View style={{ flex: 1, padding: wide ? 24 : 18 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
             <View style={{ alignSelf: 'flex-start', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(250,204,21,0.4)', backgroundColor: 'rgba(250,204,21,0.1)', paddingHorizontal: 12, paddingVertical: 5 }}>
               <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#FDE68A' }}>
                 NHÂN VẬT CỦA BẠN
               </Text>
+            </View>
+            {wide ? null : <PageStickers scene="quest" compact />}
             </View>
             <Text className="font-sans" style={{ marginTop: 10, fontSize: 14, lineHeight: 21, color: MUTED, maxWidth: 560 }}>
               Mỗi câu đúng cộng XP và sao, lên cấp mở thêm đội thợ cho thành phố. Chọn bài bên dưới hoặc học tiếp bài đang dở.
@@ -205,6 +211,11 @@ export default function QuestHome() {
               <TextLink label="Đổi quà" icon="gift" href="/shop" />
             </View>
           </View>
+          {wide ? (
+            <View aria-hidden style={{ justifyContent: 'center', paddingHorizontal: 32 }}>
+              <PageStickers scene="quest" size={96} />
+            </View>
+          ) : null}
         </View>
       </Appear>
 
@@ -227,7 +238,7 @@ export default function QuestHome() {
       {/* Chọn mảng — cùng thẻ với bước 1 của màn chọn trận. */}
       <Appear index={1}>
         <View style={{ marginTop: 22, flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-          <PanelTitle title="Chọn mảng để vào trận" sub="Bấm một mảng để xem các bài và chọn bài muốn học." />
+          <PanelTitle seal="compass" tone="#22A06B" title="Chọn mảng để vào trận" sub="Bấm một mảng để xem các bài và chọn bài muốn học." />
           <Pressable accessibilityRole="link" onPress={() => router.push('/quest/pick' as never)}>
             <Text className="font-strong" style={{ fontSize: 13, color: GOLD }}>
               Mở màn chọn trận →
@@ -240,9 +251,14 @@ export default function QuestHome() {
               <AreaCard key={island.id} island={island} onPress={() => router.push(`/quest/pick?area=${island.id}` as never)} />
             ))}
             <View style={{ ...PANEL, height: '100%', padding: 14 }}>
-              <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
-                Trận nhanh
-              </Text>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+                <View aria-hidden>
+                  <SealIcon name="flame" color="#F0703F" size={30} />
+                </View>
+                <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
+                  Trận nhanh
+                </Text>
+              </View>
               <View style={{ marginTop: 8, gap: 6 }}>
                 {QUICK_FIGHTS.slice(0, 3).map((q) => (
                   <QuickFight key={q.href} item={q} stacked />
@@ -257,7 +273,7 @@ export default function QuestHome() {
         {/* Nhiệm vụ hôm nay */}
         <Appear index={2} style={{ flex: 1 }}>
           <View style={{ ...PANEL, flex: 1 }}>
-            <PanelTitle title="Nhiệm vụ hôm nay" sub="Đổi mỗi ngày. Xong thì bấm nhận thưởng." />
+            <PanelTitle seal="target" tone="#F2B632" title="Nhiệm vụ hôm nay" sub="Đổi mỗi ngày. Xong thì bấm nhận thưởng." />
             <View style={{ marginTop: 12, gap: 10 }}>
               {quests.map((q) => {
                 const value = Math.min(q.goal, today[q.metric]);
@@ -267,9 +283,18 @@ export default function QuestHome() {
                   <View key={q.id} style={{ borderRadius: 16, padding: 12, backgroundColor: 'rgba(255,255,255,0.06)', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                     <Text style={{ fontSize: 22 }}>{got ? '✅' : done ? '🎁' : '📜'}</Text>
                     <View style={{ flex: 1, minWidth: 0 }}>
-                      <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
-                        {q.title}
-                      </Text>
+                      <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+                        <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
+                          {q.title}
+                        </Text>
+                        {done && !got ? (
+                          <View aria-hidden>
+                            <Motion kind="pop">
+                              <Label text="Xong! 🎁" color="#22A06B" ink="#FFFFFF" tilt={-4} size={10} />
+                            </Motion>
+                          </View>
+                        ) : null}
+                      </View>
                       <View style={{ marginTop: 6, height: 7, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.12)', overflow: 'hidden' }}>
                         <View style={{ height: 7, width: '100%', backgroundColor: done ? '#22C55E' : '#60A5FA', transform: [{ scaleX: Math.max(0.02, value / q.goal) }], transformOrigin: 'left' }} />
                       </View>
@@ -297,7 +322,7 @@ export default function QuestHome() {
         {/* Luật nhanh */}
         <Appear index={3} style={{ flex: wide ? 0.8 : undefined }}>
           <View style={{ ...PANEL, flex: 1 }}>
-            <PanelTitle title="Luật trong 20 giây" />
+            <PanelTitle seal="clock" tone="#0EA5E9" title="Luật trong 20 giây" />
             <View style={{ marginTop: 12, gap: 8 }}>
               <Rule glyph="⚔️" text={`Đúng một câu: +${XP_CORRECT} XP và một nhát chém.`} />
               <Rule glyph="💔" text="Sai: quái đánh lại, mất 1 tim và mất combo." />
@@ -352,17 +377,24 @@ function TextLink({ label, icon, href }: { label: string; icon: IconName; href: 
   );
 }
 
-function PanelTitle({ title, sub }: { title: string; sub?: string }) {
+function PanelTitle({ title, sub, seal, tone = '#F2B632' }: { title: string; sub?: string; seal?: IconName; tone?: string }) {
   return (
-    <View style={{ flexShrink: 1 }}>
-      <Text className="font-heavy" style={{ fontSize: 17, color: '#FFFFFF' }}>
-        {title}
-      </Text>
-      {sub ? (
-        <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: MUTED }}>
-          {sub}
-        </Text>
+    <View style={{ flexShrink: 1, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      {seal ? (
+        <View aria-hidden>
+          <SealIcon name={seal} color={tone} size={38} />
+        </View>
       ) : null}
+      <View style={{ flexShrink: 1, minWidth: 0 }}>
+        <Text className="font-heavy" style={{ fontSize: 17, color: '#FFFFFF' }}>
+          {title}
+        </Text>
+        {sub ? (
+          <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: MUTED }}>
+            {sub}
+          </Text>
+        ) : null}
+      </View>
     </View>
   );
 }

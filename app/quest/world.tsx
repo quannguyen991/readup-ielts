@@ -7,6 +7,9 @@ import { useWorldIslands } from '@/components/world/useWorldIslands';
 import { mountWorld, type WorldHandle } from '@/components/world/world-engine';
 import { useHotkeys } from '@/components/vocab/study/StudyKit';
 import { islandPosition, nextMission, type Island } from '@/services/world/islands';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Motion } from '@/components/illust/CuteMore';
 
 const INTRO_KEY = 'readup:world-intro';
 
@@ -152,7 +155,10 @@ export default function WorldScreen() {
             <Icon name="chevron-left" size={16} color="#E2E8F0" />
             <Text className="font-semi text-label text-white">Quest</Text>
           </Pressable>
-          <View className="rounded-pill px-3 py-2" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}>
+          <View className="flex-row items-center gap-1.5 rounded-pill py-1 pl-1 pr-3" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}>
+            <View aria-hidden>
+              <SealIcon name="compass" color="#22A06B" size={28} />
+            </View>
             <Text className="font-strong text-label text-white">
               Bản đồ ReadUp · <Text style={{ color: '#FDE047' }}>{done}</Text>/{total} nhiệm vụ
             </Text>
@@ -169,7 +175,14 @@ export default function WorldScreen() {
       {/* Bảng nhiệm vụ của đảo đang đứng. */}
       {here && introStep === null ? (
         <View className="absolute bottom-3 right-3 w-[340px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(15,15,40,0.94)', borderWidth: 1.5, borderColor: here.color }}>
-          <Text className="font-heavy text-cardTitle text-white">{here.name}</Text>
+          <View className="flex-row flex-wrap items-center gap-2">
+            <Text className="font-heavy text-cardTitle text-white">{here.name}</Text>
+            <View aria-hidden>
+              <Motion kind="pop">
+                <Label text="Bạn đang ở đây 📍" color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
+              </Motion>
+            </View>
+          </View>
           <Text className="mt-0.5 font-sans text-label" style={{ color: '#CBD5E1' }}>
             {here.tagline}
           </Text>
@@ -199,9 +212,16 @@ export default function WorldScreen() {
       {introStep !== null || owl ? (
         <View className="absolute bottom-3 left-3 w-[380px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(15,15,40,0.96)', borderWidth: 1.5, borderColor: '#F59E0B' }}>
           <View className="flex-row items-center justify-between">
-            <Text className="font-heavy text-body" style={{ color: '#FBBF24' }}>
-              Cú dẫn đường
-            </Text>
+            <View className="flex-row items-center gap-2">
+              <View aria-hidden>
+                <Motion kind="wobble">
+                  <SealIcon name="sparkle" color="#F2B632" size={28} />
+                </Motion>
+              </View>
+              <Text className="font-heavy text-body" style={{ color: '#FBBF24' }}>
+                Cú dẫn đường
+              </Text>
+            </View>
             {introStep !== null ? (
               <Text className="font-semi text-label" style={{ color: '#94A3B8' }}>
                 {introStep + 1}/{OWL_INTRO.length}

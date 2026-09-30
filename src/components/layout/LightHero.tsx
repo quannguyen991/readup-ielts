@@ -16,7 +16,7 @@ import Animated, {
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { Badge } from '@/components/ui/Badge';
 import { type SceneKind } from '@/components/three/Hero3D';
-import { HeroArt } from '@/components/illust/HeroArt';
+import { HeroArt, type ArtScene } from '@/components/illust/HeroArt';
 
 /**
  * Hero nền lưới sáng — kiểu đang dùng ở trang chủ, nay dùng chung.
@@ -38,6 +38,7 @@ export function LightHero({
   children,
   footer,
   scene,
+  art: artScene,
 }: {
   badge: string;
   line1: string;
@@ -50,6 +51,8 @@ export function LightHero({
   footer?: React.ReactNode;
   /** Cảnh 3D trang trí bên phải (web). Bỏ trống thì hero chỉ có chữ. */
   scene?: SceneKind;
+  /** Cụm sticker khác với `scene` (vd. 'quest', 'shop'); mặc định theo `scene`. */
+  art?: ArtScene;
 }) {
   const wide = useWindowDimensions().width >= 768;
   const size = wide ? 44 : 28;
@@ -70,7 +73,7 @@ export function LightHero({
       <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
         {art ? (
           <View style={wide ? { position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' } : { position: 'absolute', top: 16, right: 14 }}>
-            <HeroArt scene={scene} size={wide ? 150 : 64} single={!wide} />
+            <HeroArt scene={artScene ?? scene} size={wide ? 150 : 64} single={!wide} />
           </View>
         ) : null}
         <View

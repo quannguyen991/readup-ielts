@@ -44,7 +44,7 @@ export default function VideoLibraryScreen() {
   return (
     <Screen>
       <LightHero
-        badge="LISTENING VIDEO LIBRARY"
+        badge="LISTENING VIDEO LIBRARY" art="listening"
         line1="Thư viện video"
         line2="nghe câu thật, chép lại"
         subtitle={`${stats.videos} video từ ${stats.channels} kênh, chia theo trình độ. Nghe từng câu rồi chép lại, hoặc chuyển sang phần nghe hiểu để làm đề sinh từ chính phụ đề video đó.`}

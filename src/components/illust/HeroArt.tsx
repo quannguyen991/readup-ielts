@@ -10,7 +10,7 @@
  *   trắng — thay cho vòng tròn nhạt ở tiêu đề các mục.
  */
 import React from 'react';
-import { View } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
@@ -26,6 +26,16 @@ const SCENES: Record<string, [Art, Art, Art]> = {
   verbal: [CuteChat, CuteBook, CutePencil],
   vocab: [CuteBulb, CuteNotebook, CuteStar],
   progress: [CuteFlame, CuteTrophy, CuteCalendar],
+  quest: [CuteGlobe, CuteTrain, CuteTrophy],
+  shop: [CuteStar, CuteTrophy, CuteRocket],
+  profile: [CuteStar, CuteBook, CuteFlame],
+  writing: [CuteBulb, CutePencil, CuteNotebook],
+  listening: [CuteMic, CuteHeadphones, CuteChat],
+  review: [CuteBulb, CuteMagnifier, CuteNotebook],
+  duel: [CuteFlame, CuteRocket, CuteTrophy],
+  settings: [CuteClock, CuteNotebook, CuteBulb],
+  test: [CuteClock, CuteNotebook, CuteTrophy],
+  garden: [CuteStar, CutePlant, CuteCloud],
   default: [CuteCloud, CuteBook, CutePencil],
 };
 
@@ -35,8 +45,21 @@ const LABELS: Record<string, [string, string, string]> = {
   verbal: ['Đọc là hiểu!', '#0EA5E9', '#FFFFFF'],
   vocab: ['+5 từ hôm nay', '#F472B6', '#FFFFFF'],
   progress: ['Cố lên! 💪', '#F0703F', '#FFFFFF'],
+  quest: ['Lên đường! 🚆', '#22A06B', '#FFFFFF'],
+  shop: ['Đổi quà! 🎁', '#F472B6', '#FFFFFF'],
+  profile: ['Là bạn đó! ✨', '#4A7FE8', '#FFFFFF'],
+  writing: ['Viết thật hay!', '#F2B632', '#2A1B02'],
+  listening: ['Nghe kỹ nhé! 🎧', '#0EA5E9', '#FFFFFF'],
+  review: ['Sai đâu sửa đó!', '#E0533D', '#FFFFFF'],
+  duel: ['Thách đấu! ⚔️', '#F0703F', '#FFFFFF'],
+  settings: ['Tuỳ chỉnh ⚙️', '#64748B', '#FFFFFF'],
+  test: ['Thi thử nào! ⏱️', '#4A7FE8', '#FFFFFF'],
+  garden: ['Tưới mỗi ngày 🌱', '#22A06B', '#FFFFFF'],
   default: ['Bắt đầu thôi!', '#F2B632', '#2A1B02'],
 };
+
+/** Các cụm minh hoạ có sẵn cho `HeroArt` / `PageStickers`. */
+export type ArtScene = 'home' | 'math' | 'verbal' | 'vocab' | 'progress' | 'quest' | 'shop' | 'profile' | 'writing' | 'listening' | 'review' | 'duel' | 'settings' | 'test' | 'garden' | 'default';
 
 /**
  * Cụm STICKER cho khối đầu trang: 3 hình bế viền trắng, nghiêng lệch nhau,
@@ -84,6 +107,17 @@ export function HeroArt({ scene, size = 104, single = false, label = true }: { s
       </View>
     </View>
   );
+}
+
+/**
+ * Cụm sticker gắn vào ĐẦU TRANG của những trang không dùng `LightHero`
+ * (30/09/2026: "thêm các icon cả các phần khác nữa"): màn rộng 3 hình + nhãn,
+ * điện thoại 1 hình nhỏ. Đặt ở góc phải hàng tiêu đề.
+ */
+export function PageStickers({ scene, size = 88, compact }: { scene: ArtScene; size?: number; /** Luôn chỉ 1 hình. */ compact?: boolean }) {
+  const wide = useWindowDimensions().width >= 768;
+  if (compact || !wide) return <HeroArt scene={scene} size={Math.round(size * 0.62)} single />;
+  return <HeroArt scene={scene} size={size} />;
 }
 
 const BY_ICON: Partial<Record<IconName, Art>> = {

@@ -19,6 +19,10 @@ import {
   importLearnedTopicWords,
 } from '@/services/vocab/spaced-repetition';
 import { CARD_KINDS, isDue } from '@/services/vocab/schedule';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteBook } from '@/components/illust/Cute';
+import { Motion } from '@/components/illust/CuteMore';
 
 export default function SpacedRepetitionScreen() {
   const { width } = useWindowDimensions();
@@ -117,7 +121,7 @@ export default function SpacedRepetitionScreen() {
   return (
     <Screen>
       {/* Header bar */}
-      <View className="mb-4 flex-row items-center justify-between">
+      <View className="mb-4 flex-row flex-wrap items-center justify-between gap-3">
         <View className="flex-row items-center gap-3">
           <Pressable
             accessibilityRole="button"
@@ -138,7 +142,10 @@ export default function SpacedRepetitionScreen() {
           </View>
         </View>
 
-        <View className="flex-row items-center gap-2">
+        <View className="flex-row items-center gap-3">
+          <View aria-hidden>
+            <PageStickers scene="review" size={76} />
+          </View>
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Ôn ngay với bộ thẻ"
@@ -178,7 +185,10 @@ export default function SpacedRepetitionScreen() {
             borderColor: 'rgba(255, 255, 255, 0.25)',
           } as never}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+            <View aria-hidden>
+              <SealIcon name="gauge" color="#F2B632" size={34} />
+            </View>
             <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF', flex: 1 }}>
               Mức độ nhớ
             </Text>
@@ -243,9 +253,19 @@ export default function SpacedRepetitionScreen() {
             borderColor: 'rgba(255, 255, 255, 0.25)',
           } as never}
         >
-          <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF' }}>
-            Dự báo ôn tập 7 ngày tới
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <View aria-hidden>
+              <SealIcon name="calendar" color="#22A06B" size={34} />
+            </View>
+            <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF', flex: 1 }}>
+              Dự báo ôn tập 7 ngày tới
+            </Text>
+            {dueEntries.length > 0 ? (
+              <View aria-hidden>
+                <Label text="Ôn hôm nay" color="#F2B632" tilt={5} size={11} />
+              </View>
+            ) : null}
+          </View>
 
           {/* Biểu đồ 7 ngày */}
           <View
@@ -449,7 +469,13 @@ export default function SpacedRepetitionScreen() {
 
         {wordList.length === 0 ? (
           <View className="items-center rounded-2xl bg-surfaceAlt px-4 py-12">
-            <Icon name="book" size={32} color="#94A3B8" />
+            <View aria-hidden>
+              <Motion kind="float">
+                <Sticker tilt={-6}>
+                  <CuteBook size={68} />
+                </Sticker>
+              </Motion>
+            </View>
             <Text className="mt-3 font-strong text-cardTitle text-ink">
               Chưa có từ nào trong danh sách này
             </Text>

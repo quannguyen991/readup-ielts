@@ -40,7 +40,7 @@ export default function AudioLibraryScreen() {
   return (
     <Screen>
       <LightHero
-        badge="LISTENING AUDIO LIBRARY"
+        badge="LISTENING AUDIO LIBRARY" art="listening"
         line1="Thư viện nghe"
         line2="nghe rồi chỉ ra bằng chứng"
         subtitle={`${stats.items} bài nghe từ ${stats.programs} chuyên mục, đã có sẵn lời đọc — bấm vào là làm được ngay, không phải dán gì.`}

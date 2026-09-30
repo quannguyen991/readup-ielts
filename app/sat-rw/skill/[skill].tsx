@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { Sticker } from '@/components/illust/Sticker';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 import { TaskShell } from '@/components/layout/TaskShell';
 import { UnitRunner } from '@/components/sat-rw/UnitRunner';
@@ -68,6 +70,13 @@ export default function SatRwSkillScreen() {
     return (
       <TaskShell backHref="/sat-rw" backLabel="Về SAT Verbal" title="Không tìm thấy kỹ năng này" icon="clipboard">
         <PaperCard className="max-w-[520px]">
+          <View aria-hidden className="mb-3">
+            <Motion kind="wobble">
+              <Sticker tilt={-6}>
+                <CuteMagnifier size={56} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-sans text-body text-paper-body">Kỹ năng bạn vừa mở không có câu nào trong kho.</Text>
           <Button className="mt-4" variant="brand" label="Về SAT Verbal" onPress={() => router.replace('/sat-rw' as never)} />
         </PaperCard>

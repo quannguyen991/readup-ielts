@@ -65,7 +65,7 @@ export default function ShadowHub() {
       <Appear>
         <LightHero
           scene="verbal"
-          badge="ĐỌC THEO · SHADOWING"
+          badge="ĐỌC THEO · SHADOWING" art="listening"
           line1="Nghe một câu, nói lại,"
           line2="máy tô từng từ bạn đọc rõ"
           subtitle={`${LIBRARY_AUDIO.length} bài VOA có sẵn lời. Nghe giọng mẫu, bấm micro đọc lại: từ nào máy nghe rõ thì xanh, từ nào hụt thì đỏ — thấy ngay âm nào mình hay nuốt.`}

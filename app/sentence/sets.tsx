@@ -34,7 +34,7 @@ export default function SentenceSetsScreen() {
   return (
     <Screen>
       <LightHero
-        badge="SENTENCE PRACTICE LIBRARY"
+        badge="SENTENCE PRACTICE LIBRARY" art="listening"
         line1="Thư viện bộ đề"
         line2="luyện câu theo chủ đề"
         subtitle="Bài có chủ đề, các câu trong một bài nối tiếp nhau. Chọn bài thay vì bốc câu ngẫu nhiên."

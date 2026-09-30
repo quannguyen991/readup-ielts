@@ -13,6 +13,13 @@ import { useMathStore } from '@/store/useMathStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge } from '@/components/illust/Cute';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
+
+/** Màu huy hiệu răng cưa theo mảng (bảng màu chung, không tím). */
+const SEAL_TONE: Record<ErrorArea, string> = { math: '#4A7FE8', verbal: '#F472B6', vocab: '#22A06B' };
 
 const AREA: Record<ErrorArea, { label: string; tone: string; bg: string; icon: IconName }> = {
   math: { label: 'SAT Math', tone: '#4F46E5', bg: '#EEF2FF', icon: 'grid' },
@@ -61,6 +68,7 @@ export default function ErrorsScreen() {
       <Appear>
         <LightHero
           scene="math"
+          art="review"
           badge="HỒ SƠ LỖI"
           line1="Bạn sai vì đâu,"
           line2="không chỉ sai câu nào"
@@ -95,6 +103,16 @@ export default function ErrorsScreen() {
 
       {shown.length === 0 ? (
         <View className="mt-5 rounded-[22px] bg-white p-6" style={CARD}>
+          <View aria-hidden className="mb-3 flex-row items-end gap-2">
+            <Motion kind="float">
+              <Sticker tilt={-8}>
+                <CuteMagnifier size={64} />
+              </Sticker>
+            </Motion>
+            <Motion kind="pop" delay={0.2}>
+              <Label text="Sạch lỗi ✨" color="#22A06B" ink="#FFFFFF" tilt={-5} size={12} />
+            </Motion>
+          </View>
           <Text className="font-heavy text-sectionTitle text-ink">Chưa có lỗi nào được gọi tên</Text>
           <Text className="mt-1 font-sans text-bodyLg text-muted">
             Làm vài bộ đề SAT Math, SAT Verbal hoặc học một bộ từ vựng — mỗi câu sai sẽ được gọi tên và hồ sơ tự đầy lên.
@@ -124,8 +142,9 @@ function ErrorCard({ e, rank }: { e: ErrorItem; rank: number }) {
   return (
     <View className="flex-row overflow-hidden rounded-[20px] bg-white" style={CARD}>
       <View style={{ width: 6, backgroundColor: a.tone }} />
-      <View className="flex-1 p-5">
-        <View className="flex-row flex-wrap items-center gap-2">
+      <View className="min-w-0 flex-1 p-5">
+        <View className="flex-row items-start gap-3">
+        <View className="min-w-0 flex-1 flex-row flex-wrap items-center gap-2">
           <Text className="font-heavy text-label text-muted">#{rank}</Text>
           <View className="flex-row items-center gap-1.5 rounded-pill px-2.5 py-1" style={{ backgroundColor: a.bg }}>
             <Icon name={a.icon} size={13} color={a.tone} />
@@ -136,6 +155,16 @@ function ErrorCard({ e, rank }: { e: ErrorItem; rank: number }) {
           <Text className="font-semi text-label" style={{ color: t.tone }}>
             {t.text}
           </Text>
+          {rank <= 3 && e.last7 > 0 ? (
+            <View aria-hidden>
+              <Label text="Hot 🔥" color="#F0703F" ink="#FFFFFF" tilt={-4} size={11} />
+            </View>
+          ) : null}
+        </View>
+        <View aria-hidden className="items-center gap-1">
+          <SealIcon name={a.icon} color={SEAL_TONE[e.area]} size={40} />
+          {e.trend === 'down' ? <Badge icon="check" color="#22A06B" size={22} /> : null}
+        </View>
         </View>
         <Text className="mt-2 font-heavy text-cardTitle text-ink">{e.title}</Text>
         <Text className="mt-1 font-sans text-body text-muted">{e.detail}</Text>

@@ -30,6 +30,10 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { usePlan } from '@/store/useBillingStore';
 import { color, highlightColors } from '@/theme/tokens';
 import type { QuestionType } from '@/types/database';
+import { PageStickers } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker } from '@/components/illust/Cute';
+import { CuteMagnifier, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /** Test Review — phần quan trọng nhất, bám ảnh tham chiếu số 1. */
 export default function ReviewScreen() {
@@ -101,6 +105,13 @@ export default function ReviewScreen() {
   if (!session) {
     return (
       <Screen>
+        <View aria-hidden className="mb-3">
+          <Motion kind="wobble">
+            <Sticker tilt={-6}>
+              <CuteMagnifier size={60} />
+            </Sticker>
+          </Motion>
+        </View>
         <Text className="font-strong text-cardTitle text-ink">Không tìm thấy lượt làm bài này.</Text>
         <Button label="Về Practice" className="mt-4" onPress={() => router.push('/practice' as never)} />
       </Screen>
@@ -114,6 +125,8 @@ export default function ReviewScreen() {
   */
   const skipped = session.attempts.filter((a) => !a.isCorrect && !a.userAnswer?.trim()).length;
   const wrong = incorrect - skipped;
+  const accPct = pct(session.rawScore, session.total);
+  const cheer = accPct >= 80 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : accPct >= 60 ? { text: 'Khá lắm ⭐', bg: '#4A7FE8' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
 
   return (
     <Screen>
@@ -130,6 +143,9 @@ export default function ReviewScreen() {
               label={session.exam === 'sat' ? 'SAT Reading' : 'Academic Reading'}
               tone="success"
             />
+            <View aria-hidden>
+              <PageStickers scene="review" size={76} />
+            </View>
           </View>
           <Text className="mt-1 font-sans text-body text-muted">
             Practice Set: {session.articleTitle}
@@ -202,6 +218,15 @@ export default function ReviewScreen() {
         </Grid>
       </View>
 
+      <View aria-hidden className="mt-4 flex-row items-center gap-3">
+        <Motion kind="wobble">
+          <Sticker tilt={-8}>
+            <CuteTrophy size={46} />
+          </Sticker>
+        </Motion>
+        <Label text={cheer.text} color={cheer.bg} ink="#FFFFFF" tilt={-4} size={13} />
+      </View>
+
       <View className="mt-4 flex-row flex-wrap gap-2">
         <Button
           label="Làm lại bài"
@@ -261,6 +286,9 @@ export default function ReviewScreen() {
                   className="rounded-panel border border-border bg-surface p-4"
                 >
                   <View className="flex-row flex-wrap items-center gap-2">
+                    <View aria-hidden>
+                      <BadgeSticker icon={attempt.isCorrect ? 'check' : 'refresh'} color={attempt.isCorrect ? '#22A06B' : '#E0533D'} size={24} />
+                    </View>
                     <View className="rounded-md bg-primary-50 px-2 py-1">
                       <Text className="font-strong text-label text-primary-700">Q{index + 1}</Text>
                     </View>
@@ -467,9 +495,18 @@ export default function ReviewScreen() {
               ))}
 
               {filtered.length === 0 ? (
-                <Text className="py-8 text-center font-sans text-body text-muted">
-                  Không có câu nào khớp bộ lọc.
-                </Text>
+                <View className="items-center py-8">
+                  <View aria-hidden className="mb-2">
+                    <Motion kind="float">
+                      <Sticker tilt={6}>
+                        <CuteMagnifier size={48} />
+                      </Sticker>
+                    </Motion>
+                  </View>
+                  <Text className="text-center font-sans text-body text-muted">
+                    Không có câu nào khớp bộ lọc.
+                  </Text>
+                </View>
               ) : null}
             </View>
           </Card>

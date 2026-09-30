@@ -9,6 +9,10 @@ import { QUESTION_TYPE_LABEL, SAT_WRITING_QUESTION_TYPES } from '@/services/ques
 import { color, layout } from '@/theme/tokens';
 import type { GeneratedQuestion } from '@/services/questions/types';
 import type { QuestionType } from '@/types/database';
+import { PageStickers } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker } from '@/components/illust/Cute';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Luyện SAT Writing — hai domain Expression of Ideas và Standard English
@@ -57,13 +61,28 @@ export default function SatWritingScreen() {
           <Text className="font-semi text-body text-muted">Kho đề</Text>
         </Pressable>
 
-        <Text className="font-heavy text-pageTitle text-ink">SAT Writing</Text>
-        <Text className="mt-1 font-sans text-bodyLg text-muted">
-          Hai nhóm kỹ năng viết của SAT Reading and Writing. Toàn bộ là câu hỏi trắc nghiệm — bài
-          thi số hoá hiện nay không còn phần viết luận.
-        </Text>
+        <View className="flex-row items-center gap-3">
+          <View className="min-w-0 flex-1">
+            <View className="flex-row flex-wrap items-center gap-3">
+              <Text className="font-heavy text-pageTitle text-ink">SAT Writing</Text>
+              <View aria-hidden>
+                <Label text="Không cần AI ⚡" color="#F2B632" tilt={-4} size={12} />
+              </View>
+            </View>
+            <Text className="mt-1 font-sans text-bodyLg text-muted">
+              Hai nhóm kỹ năng viết của SAT Reading and Writing. Toàn bộ là câu hỏi trắc nghiệm — bài
+              thi số hoá hiện nay không còn phần viết luận.
+            </Text>
+          </View>
+          <View aria-hidden>
+            <PageStickers scene="writing" />
+          </View>
+        </View>
 
-        <View className="mt-4 flex-row flex-wrap gap-2">
+        <View className="mt-4 flex-row flex-wrap items-center gap-2">
+          <View aria-hidden>
+            <BadgeSticker icon="target" color="#4A7FE8" size={28} />
+          </View>
           <Chip label="Tất cả" active={focus === 'all'} onPress={() => switchFocus('all')} />
           {SAT_WRITING_QUESTION_TYPES.filter((t) => t !== 'sat_rhetorical_synthesis').map((t) => (
             <Chip
@@ -82,9 +101,18 @@ export default function SatWritingScreen() {
 
         {!question ? (
           <Card className="mt-4">
-            <Text className="font-sans text-body text-muted">
-              Không dựng được câu hỏi nào cho lựa chọn này.
-            </Text>
+            <View className="flex-row items-center gap-3">
+              <View aria-hidden>
+                <Motion kind="wobble">
+                  <Sticker tilt={-6}>
+                    <CuteMagnifier size={52} />
+                  </Sticker>
+                </Motion>
+              </View>
+              <Text className="min-w-0 flex-1 font-sans text-body text-muted">
+                Không dựng được câu hỏi nào cho lựa chọn này.
+              </Text>
+            </View>
           </Card>
         ) : (
           <Card className="mt-4">

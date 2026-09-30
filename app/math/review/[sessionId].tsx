@@ -17,6 +17,9 @@ import { diagnosticHeadline, readDiagnostic } from '@/services/math/diagnostic';
 import { regenerateMathItem } from '@/services/math/generator';
 import { countErrorTags, formatAccuracy, summarizeByDomain } from '@/services/math/scoring';
 import { useMathStore } from '@/store/useMathStore';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteMagnifier, CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Xem lại một lượt làm bài.
@@ -52,6 +55,13 @@ export default function MathReviewScreen() {
     return (
       <Screen>
         <Card>
+          <View aria-hidden className="mb-3">
+            <Motion kind="wobble">
+              <Sticker tilt={-6}>
+                <CuteMagnifier size={60} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-strong text-cardTitle text-ink">Không tìm thấy lượt làm bài</Text>
           <Text className="mt-1 font-sans text-body text-muted">
             Lượt này có thể đã bị xoá khỏi lịch sử trên thiết bị.
@@ -77,13 +87,31 @@ export default function MathReviewScreen() {
             : 'Kết quả lượt làm bài';
 
   const blank = session.attempts.filter((a) => a.userAnswer === null).length;
+  const acc = session.total === 0 ? 0 : session.rawScore / session.total;
+  const cheer = acc >= 0.8 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : acc >= 0.6 ? { text: 'Khá lắm ⭐', bg: '#4A7FE8' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
 
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
-      <Text className="mt-1 font-sans text-body text-muted">
-        {new Date(session.finishedAt).toLocaleString('vi-VN')} · {Math.round(session.durationMs / 60_000)} phút
-      </Text>
+      <View className="flex-row items-center gap-3">
+        <View className="min-w-0 flex-1">
+          <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
+          <Text className="mt-1 font-sans text-body text-muted">
+            {new Date(session.finishedAt).toLocaleString('vi-VN')} · {Math.round(session.durationMs / 60_000)} phút
+          </Text>
+        </View>
+        <View aria-hidden>
+          <PageStickers scene="progress" />
+        </View>
+      </View>
+
+      <View aria-hidden className="mt-4 flex-row items-center gap-3">
+        <Motion kind="wobble">
+          <Sticker tilt={-8}>
+            <CuteTrophy size={46} />
+          </Sticker>
+        </Motion>
+        <Label text={cheer.text} color={cheer.bg} ink="#FFFFFF" tilt={-4} size={13} />
+      </View>
 
       <View className="mt-4">
         <Grid columns={4} tabletColumns={2} mobileColumns={2}>
@@ -115,6 +143,20 @@ export default function MathReviewScreen() {
 
       {session.mode === 'mock' && session.estimatedScore !== null ? (
         <Card className="mt-4">
+          <View aria-hidden className="mb-2 flex-row items-center gap-3">
+            <Motion kind="float">
+              <Sticker tilt={6}>
+                <CuteRocket size={44} />
+              </Sticker>
+            </Motion>
+            <Label
+              text={session.moduleTier === 'harder' ? 'Nhánh khó 🚀' : 'Nhánh dễ 🎯'}
+              color={session.moduleTier === 'harder' ? '#F0703F' : '#0EA5E9'}
+              ink="#FFFFFF"
+              tilt={4}
+              size={12}
+            />
+          </View>
           <Text className="font-sans text-body text-muted">
             Module 2 của bạn ở nhánh{' '}
             <Text className="font-strong text-ink">
@@ -134,7 +176,12 @@ export default function MathReviewScreen() {
 
       {diagnosticReading ? (
         <Card className="mt-4">
-          <Text className="font-strong text-cardTitle text-ink">Đọc kết quả</Text>
+          <View className="flex-row items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name="search" color="#0EA5E9" size={36} />
+            </View>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Đọc kết quả</Text>
+          </View>
           <Text className="mt-1 font-sans text-body text-muted">
             {diagnosticHeadline(diagnosticReading)}
           </Text>

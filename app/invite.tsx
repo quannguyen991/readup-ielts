@@ -19,6 +19,10 @@ import {
 } from '@/services/referral/rewards';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color, gradient } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge } from '@/components/illust/Cute';
+import { CuteChat, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Mời bạn bè, hai mốc: đủ 15 lượt hợp lệ → 3 tháng Pro; từ 30 lượt → 3 tháng Max.
@@ -80,6 +84,13 @@ export default function InviteScreen() {
       <Screen>
         <View className="w-full self-center" style={{ maxWidth: 440 }}>
           <Card>
+            <View aria-hidden className="mb-3 self-start">
+              <Motion kind="float">
+                <Sticker tilt={-8}>
+                  <CuteChat size={60} />
+                </Sticker>
+              </Motion>
+            </View>
             <View className="flex-row items-start gap-3">
               <Icon name="lock" size={18} color={color.muted} />
               <View className="flex-1">
@@ -123,9 +134,19 @@ export default function InviteScreen() {
           end={{ x: 1, y: 1 }}
           style={{ borderRadius: 20, padding: 22 }}
         >
+          <View className="flex-row items-start justify-between gap-3">
+          <View className="min-w-0 flex-1">
+          <View aria-hidden className="mb-2 self-start">
+            <Motion kind="pop">
+              <Label text="Rủ bạn, nhận quà 🎁" color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
+            </Motion>
+          </View>
           <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
             Mời {REFERRALS_PER_REWARD} người học → {REWARD_MONTHS} tháng {PLANS[REWARD_PLAN].name}
           </Text>
+          </View>
+          <PageStickers scene="shop" compact />
+          </View>
           <Text className="mt-2 font-sans text-body text-white/90" style={{ maxWidth: 560 }}>
             Đủ {MAX_TIER_REFERRALS} lượt thì phần thưởng nâng lên gói{' '}
             {PLANS[MAX_REWARD_PLAN].name} — kể cả những tháng đang treo cũng được bật ở mức đó.
@@ -155,7 +176,11 @@ export default function InviteScreen() {
 
       {data?.justApplied ? (
         <View className="mt-3 flex-row items-start gap-2 rounded-card bg-success-soft p-3">
-          <Icon name="trophy" size={16} color={color.success} />
+          <View aria-hidden>
+            <Motion kind="pop">
+              <Badge icon="star" color="#22A06B" size={26} />
+            </Motion>
+          </View>
           <Text className="flex-1 font-sans text-body text-ink">
             Vừa cộng {data.justApplied} tháng gói {PLANS[REWARD_PLAN].name} cho bạn. Cảm ơn!
           </Text>
@@ -176,6 +201,10 @@ export default function InviteScreen() {
       <Appear index={1}>
         <Card className="mt-4">
           <View className="flex-row flex-wrap items-end justify-between gap-2">
+            <View className="flex-row items-center gap-3">
+            <View aria-hidden>
+              <SealIcon name="trophy" color="#F2B632" size={44} />
+            </View>
             <View>
               <Text className="font-mid text-label text-muted">Lượt mời hợp lệ</Text>
               <View className="flex-row items-baseline gap-1.5">
@@ -186,6 +215,7 @@ export default function InviteScreen() {
                   / {REFERRALS_PER_REWARD} tới mốc tiếp theo
                 </Text>
               </View>
+            </View>
             </View>
             {invited > qualified ? (
               <Text className="font-sans text-label text-subtle">
@@ -224,7 +254,15 @@ export default function InviteScreen() {
       {/* -------------------------------------------------- mã và liên kết */}
       <Appear index={2}>
         <Card className="mt-4">
-          <Text className="font-strong text-cardTitle text-ink">Mã mời của bạn</Text>
+          <View className="flex-row flex-wrap items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name="gift" color="#F472B6" size={38} />
+            </View>
+            <Text className="font-strong text-cardTitle text-ink">Mã mời của bạn</Text>
+            <View aria-hidden>
+              <Label text="Của riêng bạn ✨" color="#0EA5E9" ink="#FFFFFF" tilt={4} size={11} />
+            </View>
+          </View>
           <View className="mt-2 flex-row flex-wrap items-center gap-2">
             <View className="rounded-card px-4 py-3" style={{ backgroundColor: tone.soft }}>
               <Text className="font-heavy" style={{ fontSize: 24, letterSpacing: 3, color: tone.ink }}>
@@ -265,7 +303,12 @@ export default function InviteScreen() {
       {/* --------------------------------------------- điều kiện, nói thẳng */}
       <Appear index={3}>
         <Card className="mt-4">
-          <Text className="font-strong text-cardTitle text-ink">Lượt nào được tính</Text>
+          <View className="flex-row items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name="shield" color="#22A06B" size={38} />
+            </View>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Lượt nào được tính</Text>
+          </View>
           <View className="mt-2 gap-2">
             <Rule
               ok

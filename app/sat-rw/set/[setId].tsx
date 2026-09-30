@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { Sticker } from '@/components/illust/Sticker';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 import { TaskShell } from '@/components/layout/TaskShell';
 import { UnitRunner } from '@/components/sat-rw/UnitRunner';
@@ -52,6 +54,13 @@ export default function SatRwSetScreen() {
         icon="clipboard"
       >
         <PaperCard className="max-w-[520px]">
+          <View aria-hidden className="mb-3">
+            <Motion kind="wobble">
+              <Sticker tilt={-6}>
+                <CuteMagnifier size={56} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-sans text-body text-paper-body">
             Bộ đề bạn vừa mở không có trong lộ trình. Quay lại để chọn bộ khác.
           </Text>

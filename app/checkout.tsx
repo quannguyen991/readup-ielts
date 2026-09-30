@@ -18,6 +18,9 @@ import { buildVietQrPayload } from '@/lib/payment/vietqr';
 import { buildOrder, type BillingCycle } from '@/services/payment/order';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color, gradient } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Trang thanh toán: QR chuyển khoản + đối chiếu tay.
@@ -292,6 +295,7 @@ export default function CheckoutScreen() {
                 {reference || '…'}
               </Text>
             </View>
+            <PageStickers scene="shop" compact />
           </View>
 
           <Text className="mt-4 font-sans text-body text-white/80" style={{ lineHeight: 22 }}>
@@ -314,7 +318,12 @@ export default function CheckoutScreen() {
       <View className={wide ? 'mt-4 flex-row gap-4' : 'mt-4 gap-4'}>
         <Appear index={1} style={wide ? { width: 300 } : undefined}>
           <Card>
-            <Text className="font-strong text-cardTitle text-ink">Quét mã</Text>
+            <View className="flex-row items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="grid" color="#4A7FE8" size={36} />
+              </View>
+              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Quét mã</Text>
+            </View>
             <Text className="mt-1 font-sans text-label text-muted">
               Mở app ngân hàng → quét QR. Số tiền và nội dung đã nằm sẵn trong mã.
             </Text>
@@ -335,7 +344,12 @@ export default function CheckoutScreen() {
 
         <Appear index={2} style={{ flex: 1 }}>
           <Card>
-            <Text className="font-strong text-cardTitle text-ink">Hoặc chuyển tay</Text>
+            <View className="flex-row items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="pencil" color="#0EA5E9" size={36} />
+              </View>
+              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Hoặc chuyển tay</Text>
+            </View>
             <Text className="mt-1 font-sans text-label text-muted">
               Bấm vào từng dòng để sao chép.
             </Text>
@@ -397,8 +411,8 @@ export default function CheckoutScreen() {
       <Appear index={3}>
         <Card className="mt-4">
           <View className="flex-row items-start gap-3">
-            <View className="h-9 w-9 items-center justify-center rounded-pill bg-primary-50">
-              <Icon name="clock" size={17} color={color.primary} />
+            <View aria-hidden>
+              <SealIcon name="clock" color="#F2B632" size={40} />
             </View>
             <View className="flex-1">
               <Text className="font-strong text-cardTitle text-ink">Sau khi chuyển thì sao?</Text>
@@ -505,9 +519,21 @@ function Notice({
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 460 }}>
         <Card>
+          {icon === 'check' ? (
+            <View aria-hidden className="mb-3 flex-row items-end gap-2">
+              <Motion kind="float">
+                <Sticker tilt={-8}>
+                  <CuteTrophy size={64} />
+                </Sticker>
+              </Motion>
+              <Motion kind="pop" delay={0.2}>
+                <Label text="Xong rồi! 🎉" color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
+              </Motion>
+            </View>
+          ) : null}
           <View className="flex-row items-start gap-3">
-            <View className="h-10 w-10 items-center justify-center rounded-pill bg-canvas">
-              <Icon name={icon} size={18} color={tint ?? color.muted} />
+            <View aria-hidden>
+              <SealIcon name={icon} color={tint ?? '#64748B'} size={40} />
             </View>
             <View className="flex-1">
               <Text className="font-strong text-cardTitle text-ink">{title}</Text>

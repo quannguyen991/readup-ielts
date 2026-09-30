@@ -9,6 +9,12 @@ import { Button } from '@/components/ui';
 import { gardenSummary, plantsFrom, type Plant, type PlantState } from '@/services/vocab/garden';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge, type BadgeIcon } from '@/components/illust/Cute';
+import { CutePlant, CuteStar, Motion } from '@/components/illust/CuteMore';
+
+const STATE_BADGE: Record<PlantState, BadgeIcon> = { thriving: 'star', ok: 'check', wilting: 'clock', dying: 'bolt', seed: 'plus' };
 
 const STATE_UI: Record<PlantState, { label: string; dot: string; note: string }> = {
   thriving: { label: 'Xanh tốt', dot: '#22C55E', note: 'Nhớ rất chắc — chưa cần ôn.' },
@@ -44,7 +50,12 @@ export default function GardenScreen() {
       <Appear>
         <View className="flex-row flex-wrap items-end justify-between gap-3">
           <View style={{ minWidth: 240, flexShrink: 1 }}>
-            <Text className="font-heavy text-pageTitle text-ink">Vườn từ</Text>
+            <View className="flex-row items-center gap-3">
+              <Text className="min-w-0 flex-1 font-heavy text-pageTitle text-ink">Vườn từ</Text>
+              <View aria-hidden>
+                <PageStickers scene="garden" />
+              </View>
+            </View>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
               Mỗi từ trong sổ từ là một cây. Cây xanh hay héo đúng bằng độ nhớ của bạn lúc này — không ôn là cây héo dần.
             </Text>
@@ -59,7 +70,9 @@ export default function GardenScreen() {
         <View className="mt-4 flex-row flex-wrap gap-2">
           {(['thriving', 'ok', 'wilting', 'dying', 'seed'] as const).map((k) => (
             <View key={k} className="flex-row items-center gap-2 rounded-pill bg-white/90 px-3.5 py-2">
-              <View className="h-3 w-3 rounded-pill" style={{ backgroundColor: STATE_UI[k].dot }} />
+              <View aria-hidden>
+                <Badge icon={STATE_BADGE[k]} color={STATE_UI[k].dot} size={22} />
+              </View>
               <Text className="font-heavy text-body text-ink">{sum[k]}</Text>
               <Text className="font-sans text-label text-muted">{STATE_UI[k].label}</Text>
             </View>
@@ -70,6 +83,14 @@ export default function GardenScreen() {
       {plants.length === 0 ? (
         <Appear index={2}>
           <View className="mt-5 rounded-[22px] bg-white p-6" style={CARD}>
+            <View aria-hidden className="mb-3 flex-row items-center gap-3">
+              <Motion kind="float">
+                <Sticker tilt={-6}>
+                  <CutePlant size={64} />
+                </Sticker>
+              </Motion>
+              <Label text="Gieo hạt đầu tiên 🌱" color="#22A06B" ink="#FFFFFF" tilt={-4} size={13} />
+            </View>
             <Text className="font-heavy text-sectionTitle text-ink">Vườn đang trống</Text>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
               Gieo hạt bằng cách lưu từ: chạm vào từ khi đọc bài, hoặc bấm “Lưu” trên thẻ từ vựng. Mỗi từ lưu vào sổ là một hạt giống.
@@ -103,7 +124,17 @@ export default function GardenScreen() {
                   <PlantPanel plant={picked} />
                 ) : (
                   <View>
-                    <Text className="font-heavy text-cardTitle text-ink">Cây cần tưới trước</Text>
+                    <View className="flex-row items-center gap-2.5">
+                      <View aria-hidden>
+                        <SealIcon name="leaf" color="#F0703F" size={36} />
+                      </View>
+                      <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">Cây cần tưới trước</Text>
+                      {thirsty.length > 0 ? (
+                        <View aria-hidden>
+                          <Label text="Ôn hôm nay" color="#F2B632" tilt={4} size={12} />
+                        </View>
+                      ) : null}
+                    </View>
                     <Text className="mt-1 font-sans text-body text-muted">Những từ độ nhớ thấp nhất. Bấm để xem trên đảo.</Text>
                     <View className="mt-3 gap-2">
                       {thirsty.slice(0, 8).map((p) => (
@@ -116,9 +147,18 @@ export default function GardenScreen() {
                         </Pressable>
                       ))}
                       {thirsty.length === 0 ? (
-                        <Text className="font-semi text-body" style={{ color: '#15803D' }}>
-                          Không cây nào sắp héo. Vườn đang rất tươi!
-                        </Text>
+                        <View className="flex-row items-center gap-3">
+                          <View aria-hidden>
+                            <Motion kind="wobble">
+                              <Sticker tilt={6}>
+                                <CuteStar size={40} />
+                              </Sticker>
+                            </Motion>
+                          </View>
+                          <Text className="min-w-0 flex-1 font-semi text-body" style={{ color: '#15803D' }}>
+                            Không cây nào sắp héo. Vườn đang rất tươi!
+                          </Text>
+                        </View>
                       ) : null}
                     </View>
                   </View>

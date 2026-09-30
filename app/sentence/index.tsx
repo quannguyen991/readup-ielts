@@ -30,7 +30,7 @@ export default function SentenceHubScreen() {
     <Screen>
       <Appear>
         <LightHero
-          badge="SENTENCE PRACTICE"
+          badge="SENTENCE PRACTICE" art="listening"
           line1="Luyện câu"
           line2="nghe kỹ, viết đúng"
           subtitle={`Nghe rồi gõ lại nguyên văn, hoặc đọc một câu tiếng Việt rồi tự dịch sang tiếng Anh. ${dictationSetStats().sets + translationSetStats().sets} bài có chủ đề và ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} câu lẻ để ôn rải.`}

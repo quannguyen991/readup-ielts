@@ -19,6 +19,10 @@ import { modelEssayBand } from '@/services/progress/goal';
 import { color, paper } from '@/theme/tokens';
 import type { AnnotationCategory, WritingAnnotation, WritingEvaluation } from '@/lib/writing/types';
 import { CrossFade } from '@/components/motion/Motion';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker } from '@/components/illust/Cute';
+import { CuteNotebook, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Kết quả chấm bài.
@@ -168,6 +172,13 @@ export default function WritingResultScreen() {
     return (
       <TaskShell backHref="/write" backLabel="Về kho đề" title="Không tìm thấy bài này" icon="pencil">
         <PaperCard className="max-w-[520px]">
+          <View aria-hidden className="mb-3">
+            <Motion kind="float">
+              <Sticker tilt={-6}>
+                <CuteNotebook size={64} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-sans text-body text-paper-body">
             Bài làm này không còn trong máy. Quay lại kho đề để chọn đề khác.
           </Text>
@@ -204,8 +215,11 @@ export default function WritingResultScreen() {
         {/* ------------------------------------------------- cột trái: đề + band */}
         <View className="gap-4 lg:w-[34%]">
           <PaperCard>
-            <View className="flex-row items-center justify-between">
-              <Text className="font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
+            <View className="flex-row items-center justify-between gap-2">
+              <View aria-hidden>
+                <SealIcon name="clipboard" color="#4A7FE8" size={34} />
+              </View>
+              <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
               <Text className="font-semi text-label text-paper-muted">
                 {isTask1 ? 'Task 1 · Academic' : 'Task 2'}
               </Text>
@@ -233,6 +247,14 @@ export default function WritingResultScreen() {
                   <Text className="font-heavy text-pageTitle text-paper-muted">
                     –{formatBand(saved.bandHigh)}
                   </Text>
+                  <View aria-hidden className="ml-auto items-end gap-2 self-center">
+                    <Motion kind="wobble">
+                      <Sticker tilt={8}>
+                        <CuteTrophy size={48} />
+                      </Sticker>
+                    </Motion>
+                    <Label text="Đã chấm ✓" color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                  </View>
                 </View>
                 <Text className="font-sans text-label text-paper-muted">
                   Chấm tự động, có thể lệch so với giám khảo thật. Luôn là một khoảng, không phải
@@ -274,7 +296,12 @@ export default function WritingResultScreen() {
 
           {analysis ? (
             <PaperCard>
-              <Text className="font-heavy text-cardTitle text-paper-ink">Phân tích cấu trúc</Text>
+              <View className="flex-row items-center gap-2">
+                <View aria-hidden>
+                  <SealIcon name="search" color="#0EA5E9" size={34} />
+                </View>
+                <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">Phân tích cấu trúc</Text>
+              </View>
               <Text className="mt-1 font-sans text-label text-paper-muted">Không dùng AI.</Text>
               <View className="mt-3 gap-2">
                 {analysis.hints.length > 0 ? (
@@ -292,9 +319,14 @@ export default function WritingResultScreen() {
                     </View>
                   ))
                 ) : (
-                  <Text className="font-sans text-body text-success-ink">
-                    Cấu trúc bài không có vấn đề nào đáng kể.
-                  </Text>
+                  <View className="flex-row items-center gap-2">
+                    <View aria-hidden>
+                      <BadgeSticker icon="check" color="#22A06B" size={26} />
+                    </View>
+                    <Text className="min-w-0 flex-1 font-sans text-body text-success-ink">
+                      Cấu trúc bài không có vấn đề nào đáng kể.
+                    </Text>
+                  </View>
                 )}
               </View>
             </PaperCard>
@@ -305,7 +337,12 @@ export default function WritingResultScreen() {
         <View className="lg:flex-1">
           <PaperCard padded={false}>
             <View className="px-5 pt-5">
-              <Text className="font-heavy text-sectionTitle text-paper-ink">Nhận xét chi tiết</Text>
+              <View className="flex-row items-center gap-2.5">
+                <View aria-hidden>
+                  <SealIcon name="chat" color="#F0703F" size={38} />
+                </View>
+                <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-paper-ink">Nhận xét chi tiết</Text>
+              </View>
               <View className="mt-3 flex-row flex-wrap gap-1.5">
                 {TABS.map((t) => (
                   <Pressable
@@ -824,7 +861,12 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
 
       {evaluation.nextBandVi ? (
         <View className="mt-4 rounded-panel border border-primary-200 bg-primary-50 p-3.5">
-          <Text className="font-strong text-body text-primary-900">Để lên band kế tiếp</Text>
+          <View className="flex-row items-center gap-2">
+            <View aria-hidden>
+              <BadgeSticker icon="target" color="#F2B632" size={26} />
+            </View>
+            <Text className="min-w-0 flex-1 font-strong text-body text-primary-900">Để lên band kế tiếp</Text>
+          </View>
           <Text className="mt-1 font-sans text-body text-primary-800" style={{ lineHeight: 22 }}>
             {evaluation.nextBandVi}
           </Text>

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 import { validateMath } from '@/lib/math/expr';
 import { getTemplate } from '@/services/math/templates';
-import { ROAD_CHAPTERS, buildBookSet, buildLevelQuiz } from './index';
+import { EXTRA_SIZE, ROAD_CHAPTERS, buildBookSet, buildExtraSet, buildLevelQuiz } from './index';
 import { mergeRoadmapProgress } from './progress';
 
 test('27 chương, đánh số liên tục, mã không trùng, giai đoạn không lùi', () => {
@@ -58,6 +58,18 @@ test('mỗi chương có bộ bài bám sách: đủ bài, template thật, số
   }
   // Trang sách tăng dần theo chương, không chồng lên nhau.
   for (let i = 1; i < ROAD_CHAPTERS.length; i++) assert.ok(ROAD_CHAPTERS[i]!.bookPages![0] > ROAD_CHAPTERS[i - 1]!.bookPages![1], ROAD_CHAPTERS[i]!.id);
+});
+
+test('mỗi chương có bộ Luyện thêm 20 câu, xếp dễ → khó, câu mới mỗi lượt', () => {
+  for (const c of ROAD_CHAPTERS) {
+    const r0 = buildExtraSet(c, 0);
+    assert.equal(r0.length, EXTRA_SIZE, c.id);
+    assert.equal(new Set(r0.map((q) => q.id)).size, EXTRA_SIZE, `${c.id}: trùng câu`);
+    assert.notDeepEqual(buildExtraSet(c, 1).map((q) => q.stem), r0.map((q) => q.stem), c.id);
+    // Mức theo vị trí không lùi (7 dễ, 7 trung bình, 6 khó).
+    const lv = r0.map((_, i) => (i < 7 ? 0 : i < 14 ? 1 : 2));
+    for (let i = 1; i < lv.length; i++) assert.ok(lv[i]! >= lv[i - 1]!);
+  }
 });
 
 test('gộp tiến độ hai máy: lấy tỉ lệ cao hơn, số lượt lớn hơn', () => {
