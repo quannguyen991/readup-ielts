@@ -21,6 +21,7 @@ import { AvatarBadge } from "@/components/profile/AnimatedAvatar";
 import { SIDEBAR_WIDTH, useSidebarStore } from "@/store/useSidebarStore";
 import { formatStars } from "@/services/gamification/shop";
 import {
+  GLASS_SIDEBAR_THEME,
   SidebarAtmosphereOverlay,
   useSidebarTheme,
   type SidebarThemeConfig,
@@ -44,7 +45,7 @@ import {
  * mỗi 170px nhường lại là thêm một cột chữ cho bài đọc. Nút thu gọn ẩn đi vì
  * ở đây không có gì để mở rộng.
  */
-export function Sidebar({ compact = false }: { compact?: boolean }) {
+export function Sidebar({ compact = false, glass = false }: { compact?: boolean; /** Trong suốt, chỉ biểu tượng (màn học có nền toa tàu). */ glass?: boolean }) {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
   const activeParent = parentNavKey(activeKey);
@@ -52,7 +53,9 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
   const collapsed = compact || stored;
   const toggle = useSidebarStore((s) => s.toggle);
 
-  const { themeConfig, activeEffect } = useSidebarTheme();
+  const theme = useSidebarTheme();
+  const themeConfig = glass ? GLASS_SIDEBAR_THEME : theme.themeConfig;
+  const activeEffect = glass ? null : theme.activeEffect;
 
   // Nhóm Quản trị chỉ nối vào khi hồ sơ trên MÁY CHỦ nói vai trò là admin.
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
@@ -72,7 +75,7 @@ export function Sidebar({ compact = false }: { compact?: boolean }) {
           borderRightColor: themeConfig.borderRightColor,
         },
         themeConfig.bgStyle,
-        Platform.OS === "web" ? webShadow : null,
+        Platform.OS === "web" && !glass ? webShadow : null,
       ]}
     >
       {/* Lớp hiệu ứng hạt khí quyển (Hoa anh đào, Bầu trời sao & mưa sao băng, Tuyết, Lá phong, Ma trận...) */}

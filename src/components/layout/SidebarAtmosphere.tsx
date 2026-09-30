@@ -39,6 +39,26 @@ export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
   defaultEffect: null,
 };
 
+/**
+ * Thanh bên TRONG SUỐT cho màn học đang dùng nền toa tàu: không nền, không viền,
+ * chỉ còn biểu tượng trắng nổi trên cảnh thành phố (người dùng yêu cầu 30/09).
+ */
+export const GLASS_SIDEBAR_THEME: SidebarThemeConfig = {
+  id: 'glass',
+  name: 'Trong suốt',
+  isDark: true,
+  bgStyle: { backgroundColor: 'transparent' },
+  borderRightColor: 'transparent',
+  textPrimary: '#FFFFFF',
+  textMuted: 'rgba(255,255,255,0.82)',
+  activeFill: 'rgba(255,255,255,0.22)',
+  activeGradient: 'linear-gradient(100deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.16) 100%)',
+  activeTextColor: '#FFFFFF',
+  activeGlow: '0 4px 14px rgba(0,0,0,0.25)',
+  hoverBg: 'rgba(255,255,255,0.12)',
+  defaultEffect: null,
+};
+
 export const SIDEBAR_THEMES: Record<string, SidebarThemeConfig> = {
   default: DEFAULT_SIDEBAR_THEME,
   'theme-midnight': {
