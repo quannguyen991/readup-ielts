@@ -12,6 +12,7 @@ import {
   type VocabPayload,
 } from './store-merges';
 import { useBillingStore } from '@/store/useBillingStore';
+import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -22,6 +23,7 @@ import { gamePayload, useGameStore } from '@/store/useGameStore';
 import { rewardPayload, useRewardStore } from '@/store/useRewardStore';
 import { mergeRoadmap, useRoadmapStore, type RoadmapPayload } from '@/store/useRoadmapStore';
 import { cityPayload, useCityStore } from '@/store/useCityStore';
+import { cityLifePayload, mergeCityLife, useCityLifeStore, type CityLifePayload } from '@/store/useCityLifeStore';
 import { mergeCity, type CityPayload } from '@/services/city/sync';
 import { mergeReward, type RewardPayload } from '@/services/gamification/shop';
 import { mergeGame, type GamePayload } from '@/services/game/rules';
@@ -180,6 +182,16 @@ const cityStore: SyncedStore = {
   merge: (local, remote) => mergeCity(local as CityPayload | null, remote as CityPayload | null),
 };
 
+/** Đời sống trong thành phố: bộ sưu tập cá / bọ, cách bày trong nhà. */
+const cityLifeStore: SyncedStore = {
+  key: 'city_life',
+  read: () => cityLifePayload(),
+  write: (payload) => {
+    if (payload) useCityLifeStore.setState(payload as CityLifePayload);
+  },
+  merge: (local, remote) => mergeCityLife(local as CityLifePayload | null, remote as CityLifePayload | null),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -222,7 +234,8 @@ const topicStudyStore: SyncedStore = {
       lastAt: (data.lastAt ?? {}) as never,
     });
   },
-  merge: mergeTopicStudy,
+  // Bản trên máy chủ có thể còn mã bài SAT Math cũ: chuyển cả hai bên trước khi gộp.
+  merge: (local, remote) => mergeTopicStudy(remapTopicStudy(local as never), remote ? remapTopicStudy(remote as never) : remote),
 };
 
 export function registerAllSyncedStores(): void {
@@ -237,4 +250,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(gameStore);
   registerSyncedStore(rewardStore);
   registerSyncedStore(cityStore);
+  registerSyncedStore(cityLifeStore);
 }

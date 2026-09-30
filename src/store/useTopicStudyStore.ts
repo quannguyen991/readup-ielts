@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 import { STORAGE_PREFIX, storage } from './persist';
 import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/services/vocab/topic-study';
 import type { MistakeKind } from '@/services/vocab/mistake';
+import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
 
 /** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
 export type MistakeEntry = { kind: MistakeKind; word: string; slug: string; at: string };
@@ -106,7 +107,8 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
-        const p = (persisted ?? {}) as Partial<TopicStudyState>;
+        // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.
+        const p = remapTopicStudy((persisted ?? {}) as Partial<TopicStudyState>);
         const learnSettings = { ...DEFAULT_LEARN_SETTINGS, ...(p.learnSettings ?? {}) };
         // Bản lưu từ trước khi có dạng Điền chỗ trống: ai đang dùng đúng bộ dạng mặc định cũ thì có luôn dạng mới.
         const k = learnSettings.kinds;

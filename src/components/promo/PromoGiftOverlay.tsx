@@ -7,7 +7,8 @@
  * - "Để sau" ẩn tới lần mở app kế tiếp; quà vẫn còn tới hết mùa.
  * - Nhận quà: sao ghi vào `prizes` (đồng bộ, gộp lấy max → không nhận hai lần);
  *   vé Pro 7 ngày theo đúng luật vé đổi sao (không đè gói trả phí, cộng dồn nếu
- *   đang có Pro) — mở nội dung, không cộng lượt AI.
+ *   đang có Pro) — mở nội dung, không cộng lượt AI. Gói đồng bộ theo tài khoản
+ *   (khoá `billing`, gộp theo gói còn hiệu lực).
  */
 import React, { useState } from 'react';
 import { Modal, Platform, Pressable, Text, View } from 'react-native';
@@ -106,7 +107,7 @@ export function PromoGiftOverlay() {
             {done ? (
               <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: '#334155', textAlign: 'center' }}>
                 {done.pro
-                  ? `Đã cộng ${formatStars(PROMO.giftStars)} sao. Gói Pro mở tới hết ngày ${done.pro} trên máy này (không cộng thêm lượt AI).`
+                  ? `Đã cộng ${formatStars(PROMO.giftStars)} sao. Gói Pro mở tới hết ngày ${done.pro} — đăng nhập là dùng được trên mọi máy (không cộng thêm lượt AI).`
                   : `Đã cộng ${formatStars(PROMO.giftStars)} sao. Bạn đang dùng gói trả phí nên 7 ngày Pro không cộng thêm vào gói đó.`}
               </Text>
             ) : (

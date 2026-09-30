@@ -16,6 +16,7 @@ import { GameBackdrop } from '@/components/game/GameBackdrop';
 import { ZaloPromoBanner } from './ZaloPromoBanner';
 import { useStreakGlass } from '@/services/city/useStreakGlass';
 import { PromoGiftOverlay } from '@/components/promo/PromoGiftOverlay';
+import { ReminderRunner } from '@/components/reminder/Reminder';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#2B3668';
@@ -144,6 +145,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <SelectionLookup />
       {/* Quà cuối tháng 9 (+2.000 sao, 7 ngày Pro) — phủ màn hình ở trang duyệt, không chen vào màn làm bài. */}
       <PromoGiftOverlay />
+      <ReminderRunner />
     </SafeAreaView>
   );
 }

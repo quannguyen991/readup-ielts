@@ -21,7 +21,7 @@ import { applyStarPass, type PassResult } from '@/lib/billing/star-pass';
 import { MASCOTS } from '@/services/game/mascots';
 import { currentStreak, dailyCapFor, dateKey } from '@/services/gamification/points';
 import { inPromo } from '@/services/gamification/promo';
-import { SHOP_ITEMS, formatStars, type ShopItem, type ShopItemKind } from '@/services/gamification/shop';
+import { SHOP_ITEMS, formatStars, spendIdeas, type ShopItem, type ShopItemKind } from '@/services/gamification/shop';
 import { useBillingStore } from '@/store/useBillingStore';
 import { useGameStore } from '@/store/useGameStore';
 import { skinOf, useRewardStore, type WearSlot } from '@/store/useRewardStore';
@@ -83,6 +83,13 @@ const SECTIONS: Section[] = [
     note: 'Đổi rồi bấm "Dùng" để áp dụng; bấm lần nữa là về nền lưới mặc định. Nền được lưu theo tài khoản — lần sau vào (kể cả máy khác) vẫn đang dùng đúng nền đó.',
   },
   {
+    kind: 'furniture',
+    title: 'Nội thất nhà bạn',
+    subtitle: 'Bày trong ngôi nhà của bạn ở Thành phố Tri thức.',
+    icon: 'heart',
+    note: 'Mua bao nhiêu món thì bày được bấy nhiêu. Vào nhà bằng cách cho nhân vật đi dạo tới cửa một ngôi nhà đã xây xong, hoặc bấm "Nhà của tôi" trong Thành phố Tri thức (trên máy tính).',
+  },
+  {
     kind: 'theme',
     title: 'Giao diện toàn diện',
     subtitle: 'Đổi phong cách, bảng màu thanh bên và màn hình.',
@@ -91,11 +98,12 @@ const SECTIONS: Section[] = [
   },
 ];
 
-type TabKey = 'all' | 'studyBg' | 'theme' | 'effect' | 'cover' | 'plan' | 'avatarAnim' | 'mascot' | 'skin' | 'battle';
+type TabKey = 'all' | 'furniture' | 'studyBg' | 'theme' | 'effect' | 'cover' | 'plan' | 'avatarAnim' | 'mascot' | 'skin' | 'battle';
 
 const TABS: { key: TabKey; label: string; kinds: ShopItemKind[] }[] = [
   { key: 'all', label: 'Tất cả', kinds: SECTIONS.map((s) => s.kind) },
   { key: 'studyBg', label: 'Nền học 🖼️', kinds: ['studyBg'] },
+  { key: 'furniture', label: 'Nội thất 🛋️', kinds: ['furniture'] },
   { key: 'theme', label: 'Giao diện 🎨', kinds: ['theme'] },
   { key: 'effect', label: 'Hiệu ứng ✨', kinds: ['effect'] },
   { key: 'cover', label: 'Bìa hồ sơ', kinds: ['cover'] },
@@ -202,6 +210,14 @@ export default function ShopScreen() {
     setConfirm(confirm === item.id ? null : item.id);
   };
 
+  const ideas = useMemo(() => spendIdeas(stars, reward.owned), [stars, reward.owned]);
+  const openIdea = (item: ShopItem) => {
+    const t = TABS.find((x) => x.key !== 'all' && x.kinds.includes(item.kind));
+    if (t) setTab(t.key);
+    setNote(null);
+    setConfirm(item.id);
+  };
+
   const kinds = TABS.find((t) => t.key === tab)?.kinds ?? [];
   const shown = SECTIONS.filter((s) => kinds.includes(s.kind));
   const freezeOwned = SHOP_ITEMS.filter((i) => i.kind === 'freeze' && (reward.owned[i.id] ?? 0) > 0);
@@ -254,6 +270,30 @@ export default function ShopScreen() {
           );
         })}
       </View>
+
+      {ideas.now.length > 0 || ideas.next ? (
+        <View className="mt-4 rounded-card border border-border bg-white p-3.5" style={{ gap: 8 }}>
+          <Text className="font-heavy text-body text-ink">💡 Gợi ý đổi sao</Text>
+          {ideas.now.length > 0 ? (
+            <View className="flex-row flex-wrap" style={{ gap: 8 }}>
+              {ideas.now.map((i) => (
+                <Pressable key={i.id} accessibilityRole="button" accessibilityLabel={`Đổi ${i.name}, ${i.price} sao`} onPress={() => openIdea(i)} className="flex-row items-center rounded-pill border border-border px-3 py-2" style={{ gap: 6, ...TAB_MOTION }}>
+                  <Text style={{ fontSize: 16 }}>{i.glyph}</Text>
+                  <Text className="font-semi text-label text-ink">{i.name}</Text>
+                  <Text className="font-sans text-label text-muted">⭐ {formatStars(i.price)}</Text>
+                </Pressable>
+              ))}
+            </View>
+          ) : (
+            <Text className="font-sans text-body text-muted">Chưa đủ sao cho món nào mới — học thêm một buổi là có.</Text>
+          )}
+          {ideas.next ? (
+            <Text className="font-sans text-label text-muted">
+              Đích gần nhất: {ideas.next.glyph} {ideas.next.name} — còn thiếu {formatStars(ideas.next.price - stars)} sao.
+            </Text>
+          ) : null}
+        </View>
+      ) : null}
 
       {note ? (
         <Appear key={note}>

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
-import { SHOP_ITEMS, balanceOf, buy, findItem, formatStars, mergeReward, starBalance, type RewardPayload } from './shop';
+import { SHOP_ITEMS, balanceOf, buy, findItem, formatStars, mergeReward, spendIdeas, starBalance, type RewardPayload } from './shop';
 import { ITEMS } from '@/services/game/rules';
 import { MASCOTS } from '@/services/game/mascots';
 import { HERO_SKINS } from '@/components/game/sprites';
@@ -129,4 +129,17 @@ test('F5 khi đã đăng nhập: payload cũ trên máy chủ THIẾU trường 
   // Bỏ đeo thật (null) ở máy mới hơn thì phải bỏ.
   const removed: RewardPayload = { ...base, theme: null, wornAt: '2026-09-30T12:00:00Z' };
   assert.equal(mergeReward(local, removed)!.theme, null);
+});
+
+test('gợi ý đổi sao: chỉ món đổi được ngay, mỗi loại một món, kèm đích gần nhất', () => {
+  const { now, next } = spendIdeas(200, {});
+  assert.ok(now.length > 0 && now.length <= 3);
+  assert.ok(now.every((i) => i.price <= 200 && !['plan', 'powerup', 'freeze'].includes(i.kind)));
+  assert.equal(new Set(now.map((i) => i.kind)).size, now.length);
+  assert.ok(next && next.price > 200);
+  const none = spendIdeas(0, {});
+  assert.equal(none.now.length, 0);
+  // Món đã có thì không gợi ý lại.
+  const owned = Object.fromEntries(now.map((i) => [i.id, 1]));
+  assert.ok(spendIdeas(200, owned).now.every((i) => !owned[i.id]));
 });

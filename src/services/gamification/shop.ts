@@ -24,8 +24,9 @@ import type { ItemKind } from '@/services/game/rules';
 import type { MascotId } from '@/services/game/mascots';
 import type { SkinId } from '@/components/game/sprites';
 import type { StudyBgLook } from '@/components/layout/study-backgrounds';
+import { FURNITURE, furnitureShopId } from '@/data/city/furniture';
 
-export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'powerup' | 'freeze' | 'avatar' | 'theme' | 'studyBg';
+export type ShopItemKind = 'plan' | 'mascot' | 'skin' | 'avatarAnim' | 'cover' | 'effect' | 'powerup' | 'freeze' | 'avatar' | 'theme' | 'studyBg' | 'furniture';
 
 /** Kiểu avatar động — `components/profile/AnimatedAvatar.tsx` vẽ theo mã này. */
 export type AvatarLook = 'hero' | 'slime' | 'ghost' | 'owl' | 'dragon' | 'star';
@@ -60,7 +61,20 @@ export type ShopItem = {
   themeLook?: ThemeLook;
   /** Nền học: mẫu nền sau mọi màn học (`components/layout/study-backgrounds.ts`). */
   studyBg?: StudyBgLook;
+  /** Nội thất: bày trong nhà ở Thành phố Tri thức (`services/city/life.ts`). */
+  furniture?: string;
 };
+
+const FURNITURE_ITEMS: ShopItem[] = FURNITURE.map((f) => ({
+  id: furnitureShopId(f.id),
+  kind: 'furniture' as const,
+  name: f.vi,
+  detail: f.kind === 'wall' ? 'Treo tường trong nhà của bạn ở Thành phố Tri thức.' : f.kind === 'rug' ? 'Trải sàn, đặt đồ khác lên trên được.' : 'Bày trong nhà của bạn ở Thành phố Tri thức.',
+  price: f.price,
+  glyph: f.glyph,
+  repeatable: true,
+  furniture: f.id,
+}));
 
 export const SHOP_ITEMS: ShopItem[] = [
   // ---------------------------------------------------------------- vé gói
@@ -328,6 +342,7 @@ export const SHOP_ITEMS: ShopItem[] = [
   { id: 'bg-rose', kind: 'studyBg', name: 'Hoa hồng phấn', detail: 'Hồng phấn nhẹ nhàng, lưới ô mảnh cùng tông.', price: 180, glyph: '🌹', repeatable: false, studyBg: 'rose' },
   { id: 'bg-aqua', kind: 'studyBg', name: 'Hồ nước trong', detail: 'Xanh ngọc nước hồ, kẻ chéo như gợn sóng.', price: 220, glyph: '💧', repeatable: false, studyBg: 'aqua' },
   { id: 'bg-dusk', kind: 'studyBg', name: 'Chiều tím hoàng hôn', detail: 'Tím nhạt chuyển sang cam đào ở góc dưới — bản hiếm.', price: 300, glyph: '🌆', repeatable: false, studyBg: 'dusk' },
+  ...FURNITURE_ITEMS,
 ];
 
 export function findItem(id: string | null | undefined): ShopItem | undefined {
@@ -365,6 +380,26 @@ export function starBalance(studyStars: number, bonusStars: number, spent: numbe
 /** Cách cũ (chỉ có sao từ việc học) — giữ cho nơi gọi chưa có sao thưởng. */
 export function balanceOf(lifetimeEarned: number, spent: number): number {
   return starBalance(lifetimeEarned, 0, spent);
+}
+
+/**
+ * GỢI Ý ĐỔI SAO: tối đa 3 món đổi được NGAY (mỗi loại một món — món đắt nhất
+ * trong tầm, vì người học tích sao là để đổi thứ ra hồn) và một món đích gần
+ * nhất chưa đủ sao. Chỉ gợi ý đồ trang trí / nội thất chưa có: vé gói phụ thuộc
+ * gói đang dùng, đồ chiến đấu và thẻ giữ chuỗi thì người học tự biết lúc cần.
+ */
+export function spendIdeas(balance: number, owned: Record<string, number>): { now: ShopItem[]; next: ShopItem | null } {
+  const skip: ShopItemKind[] = ['plan', 'powerup', 'freeze'];
+  const candidates = SHOP_ITEMS.filter((i) => !skip.includes(i.kind) && (owned[i.id] ?? 0) === 0);
+  const bestByKind = new Map<ShopItemKind, ShopItem>();
+  for (const i of candidates) {
+    if (i.price > balance) continue;
+    const cur = bestByKind.get(i.kind);
+    if (!cur || i.price > cur.price) bestByKind.set(i.kind, i);
+  }
+  const now = [...bestByKind.values()].sort((a, b) => b.price - a.price).slice(0, 3);
+  const next = candidates.filter((i) => i.price > balance).sort((a, b) => a.price - b.price)[0] ?? null;
+  return { now, next };
 }
 
 /** Số hiển thị gọn: 1.234 · 12,3k. */
