@@ -9,14 +9,12 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { HERO_SKINS, type SkinId } from '@/components/game/sprites';
-import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
-import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { dateKey } from '@/services/gamification/points';
-import { catchPrizeKey, CATCH_DAILY_CAP, makeQuestion, RARITY_INFO, rollCatch, SPECIES, type Activity, type CatchKind, type CatchQuestion, type QuizWord, type Species } from '@/services/city/life';
+import { catchPrizeKey, CATCH_DAILY_CAP, makeQuestion, RARITY_INFO, rollCatch, SPECIES, type Activity, type CatchKind, type CatchQuestion, type Species } from '@/services/city/life';
 import { catalogItem } from '@/data/city/catalog';
 import { useCityLifeStore } from '@/store/useCityLifeStore';
 import { useRewardStore } from '@/store/useRewardStore';
-import { useTopicStudyStore } from '@/store/useTopicStudyStore';
+import { useWordPools } from '@/components/quiz/useWordPools';
 import type { AvatarColors } from '../scene/WalkLayer';
 import { Modal } from './EarnSheet';
 import { useL } from './common';
@@ -57,30 +55,6 @@ export function WalkPrompt({ activity, onAct }: { activity: Activity | null; onA
       </button>
     </div>
   );
-}
-
-// ------------------------------------------------------------------ nguồn từ
-
-/** Từ đang học (có tiến độ) và kho từ chung để làm nhiễu. */
-function useWordPools(): { focus: QuizWord[]; pool: QuizWord[] } {
-  const stages = useTopicStudyStore((s) => s.stages);
-  return useMemo(() => {
-    const bySlug = new Map<string, QuizWord[]>();
-    for (const t of VOCAB_TOPICS) bySlug.set(t.slug, t.words.map((w) => ({ word: w.word, meaningVi: w.meaningVi })));
-    for (const l of SAT_VOCAB_LESSONS) bySlug.set(l.slug, l.words.map((w) => ({ word: w.word, meaningVi: w.meaningVi })));
-    const focus: QuizWord[] = [];
-    const pool: QuizWord[] = [];
-    for (const [slug, words] of Object.entries(stages ?? {})) {
-      const lesson = bySlug.get(slug);
-      if (!lesson) continue;
-      pool.push(...lesson);
-      const learning = new Set(Object.keys(words ?? {}));
-      focus.push(...lesson.filter((w) => learning.has(w.word)));
-    }
-    // Chưa học bộ nào (hoặc quá ít để làm nhiễu): thêm ba bộ IELTS đầu tiên.
-    if (pool.length < 40) for (const t of VOCAB_TOPICS.slice(0, 3)) pool.push(...t.words.map((w) => ({ word: w.word, meaningVi: w.meaningVi })));
-    return { focus, pool };
-  }, [stages]);
 }
 
 // ------------------------------------------------------------------ câu cá / bắt bọ
