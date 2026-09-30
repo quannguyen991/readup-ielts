@@ -49,7 +49,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const focus = isFocusRoute(pathname);
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
-  const isCityRoute = pathname.startsWith('/quest/city');
+  // Thành phố và Chuyến tàu từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
+  const isCityRoute = pathname.startsWith('/quest/city') || pathname.startsWith('/quest/rail');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
   const pageBg = usePageBackground('browse');

@@ -14,6 +14,8 @@
 const FOCUS_PATTERNS: readonly RegExp[] = [
   // Thành phố Tri thức: cảnh 3D chiếm trọn màn hình, không thanh bên.
   /^\/quest\/city$/,
+  // Chuyến tàu từ vựng: trang riêng nền tối, tự có đầu trang và nút quay lại.
+  /^\/quest\/rail$/,
   // Writing: phòng viết, luyện từng phần, bảng chấm, drill SAT.
   /^\/write\/[^/]+$/,
   /^\/write\/drill\/[^/]+$/,
