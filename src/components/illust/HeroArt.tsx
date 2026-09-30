@@ -1,0 +1,162 @@
+/**
+ * Minh hoạ cho các khung dùng chung (30/09/2026: "thêm các icon vào các trang
+ * tác vụ khác nữa"):
+ *
+ * - `HeroArt`: cụm 2–3 hình dễ thương cho khối đầu trang (`LightHero`), chọn
+ *   theo chủ đề trang (`scene`), nhún nhẹ, lệch nhịp.
+ * - `CuteFor(icon)`: một hình dễ thương ứng với tên biểu tượng của app
+ *   (book → sách, volume → tai nghe…) cho đầu các trang tác vụ.
+ * - `SealIcon`: huy hiệu viền răng cưa kiểu con dấu, trong là biểu tượng nét
+ *   trắng — thay cho vòng tròn nhạt ở tiêu đề các mục.
+ */
+import React from 'react';
+import { View } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
+
+import { Icon, type IconName } from '@/components/ui/Icon';
+import { Label, Sticker } from './Sticker';
+import { CuteBook, CuteCalendar, CuteClock, CuteCloud, CuteGlobe, CutePencil, CuteTrain } from './Cute';
+import { CuteBulb, CuteCalculator, CuteChat, CuteFlame, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CutePlant, CuteRocket, CuteStar, CuteTrophy, Motion } from './CuteMore';
+
+type Art = (p: { size?: number }) => React.ReactElement;
+
+const SCENES: Record<string, [Art, Art, Art]> = {
+  home: [CuteGlobe, CuteBook, CutePencil],
+  math: [CuteRocket, CuteCalculator, CuteStar],
+  verbal: [CuteChat, CuteBook, CutePencil],
+  vocab: [CuteBulb, CuteNotebook, CuteStar],
+  progress: [CuteFlame, CuteTrophy, CuteCalendar],
+  default: [CuteCloud, CuteBook, CutePencil],
+};
+
+const LABELS: Record<string, [string, string, string]> = {
+  home: ['Học mỗi ngày!', '#F2B632', '#2A1B02'],
+  math: ['Giải được hết!', '#22A06B', '#FFFFFF'],
+  verbal: ['Đọc là hiểu!', '#0EA5E9', '#FFFFFF'],
+  vocab: ['+5 từ hôm nay', '#F472B6', '#FFFFFF'],
+  progress: ['Cố lên! 💪', '#F0703F', '#FFFFFF'],
+  default: ['Bắt đầu thôi!', '#F2B632', '#2A1B02'],
+};
+
+/**
+ * Cụm STICKER cho khối đầu trang: 3 hình bế viền trắng, nghiêng lệch nhau,
+ * nhún lệch nhịp, kèm một nhãn dán chữ. `size` = cỡ hình giữa.
+ */
+export function HeroArt({ scene, size = 104, single = false, label = true }: { scene?: string; size?: number; /** Chỉ hình giữa (điện thoại). */ single?: boolean; label?: boolean }) {
+  const key = scene && SCENES[scene] ? scene : 'default';
+  const [A, B, C] = SCENES[key]!;
+  const [text, bg, ink] = LABELS[key]!;
+  if (single)
+    return (
+      <View aria-hidden>
+        <Motion kind="float">
+          <Sticker tilt={-8}>
+            <B size={size} />
+          </Sticker>
+        </Motion>
+      </View>
+    );
+  return (
+    <View aria-hidden style={{ alignItems: 'center' }}>
+      {label ? (
+        <View style={{ marginBottom: -6, zIndex: 2 }}>
+          <Motion kind="pop">
+            <Label text={text} color={bg} ink={ink} tilt={-6} size={Math.round(size * 0.13)} />
+          </Motion>
+        </View>
+      ) : null}
+      <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10 }}>
+        <Motion kind="float" delay={0.5}>
+          <Sticker tilt={-10}>
+            <A size={size * 0.66} />
+          </Sticker>
+        </Motion>
+        <Motion kind="float">
+          <Sticker tilt={4}>
+            <B size={size} />
+          </Sticker>
+        </Motion>
+        <Motion kind="wobble" delay={0.25}>
+          <Sticker tilt={12}>
+            <C size={size * 0.66} />
+          </Sticker>
+        </Motion>
+      </View>
+    </View>
+  );
+}
+
+const BY_ICON: Partial<Record<IconName, Art>> = {
+  book: CuteBook,
+  letters: CuteNotebook,
+  pencil: CutePencil,
+  volume: CuteHeadphones,
+  mic: CuteMic,
+  play: CuteHeadphones,
+  languages: CuteChat,
+  chat: CuteChat,
+  clock: CuteClock,
+  calendar: CuteCalendar,
+  trophy: CuteTrophy,
+  target: CuteTrophy,
+  flame: CuteFlame,
+  trending: CuteRocket,
+  gauge: CuteRocket,
+  search: CuteMagnifier,
+  compass: CuteTrain,
+  leaf: CutePlant,
+  star: CuteStar,
+  sparkle: CuteStar,
+  clipboard: CuteNotebook,
+  note: CuteNotebook,
+  bookmark: CuteBook,
+  grid: CuteCalculator,
+  flask: CuteBulb,
+  gift: CuteStar,
+};
+
+/** Hình dễ thương ứng với một biểu tượng của app (không có thì null). */
+export function CuteFor({ icon, size = 56, motion = 'float' }: { icon: IconName; size?: number; motion?: 'float' | 'wobble' | null }) {
+  const I = BY_ICON[icon];
+  if (!I) return null;
+  if (!motion)
+    return (
+      <Sticker tilt={-6}>
+        <I size={size} />
+      </Sticker>
+    );
+  return (
+    <Motion kind={motion}>
+      <Sticker tilt={-6}>
+        <I size={size} />
+      </Sticker>
+    </Motion>
+  );
+}
+
+/** Đường viền con dấu 12 răng (khung 100 × 100). */
+const SEAL = (() => {
+  const pts: string[] = [];
+  const n = 24;
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2 - Math.PI / 2;
+    const r = i % 2 === 0 ? 48 : 42;
+    pts.push(`${(50 + Math.cos(a) * r).toFixed(1)} ${(50 + Math.sin(a) * r).toFixed(1)}`);
+  }
+  return `M ${pts.join(' L ')} Z`;
+})();
+
+/** Huy hiệu răng cưa màu đặc, biểu tượng nét trắng ở giữa. */
+export function SealIcon({ name, color, size = 36 }: { name: IconName; color: string; size?: number }) {
+  return (
+    <View style={{ width: size, height: size, alignItems: 'center', justifyContent: 'center' }}>
+      <Svg width={size} height={size} viewBox="0 0 100 100" style={{ position: 'absolute' }}>
+        <Path d={SEAL} fill={color} />
+      </Svg>
+      {/* Bọc vị trí tương đối để nằm trên lớp SVG định vị tuyệt đối. */}
+      <View style={{ position: 'relative' }}>
+        <Icon name={name} size={size * 0.46} color="#FFFFFF" strokeWidth={2.4} />
+      </View>
+    </View>
+  );
+}
