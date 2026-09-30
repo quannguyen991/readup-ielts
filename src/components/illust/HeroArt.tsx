@@ -31,6 +31,7 @@ const SCENES: Record<string, [Art, Art, Art]> = {
   profile: [CuteStar, CuteBook, CuteFlame],
   writing: [CuteBulb, CutePencil, CuteNotebook],
   listening: [CuteMic, CuteHeadphones, CuteChat],
+  speaking: [CuteMic, CuteChat, CuteTrophy],
   review: [CuteBulb, CuteMagnifier, CuteNotebook],
   duel: [CuteFlame, CuteRocket, CuteTrophy],
   settings: [CuteClock, CuteNotebook, CuteBulb],
@@ -50,6 +51,7 @@ const LABELS: Record<string, [string, string, string]> = {
   profile: ['Là bạn đó! ✨', '#4A7FE8', '#FFFFFF'],
   writing: ['Viết thật hay!', '#F2B632', '#2A1B02'],
   listening: ['Nghe kỹ nhé! 🎧', '#0EA5E9', '#FFFFFF'],
+  speaking: ['Nói to lên! 🎤', '#22A06B', '#FFFFFF'],
   review: ['Sai đâu sửa đó!', '#E0533D', '#FFFFFF'],
   duel: ['Thách đấu! ⚔️', '#F0703F', '#FFFFFF'],
   settings: ['Tuỳ chỉnh ⚙️', '#64748B', '#FFFFFF'],
@@ -59,7 +61,7 @@ const LABELS: Record<string, [string, string, string]> = {
 };
 
 /** Các cụm minh hoạ có sẵn cho `HeroArt` / `PageStickers`. */
-export type ArtScene = 'home' | 'math' | 'verbal' | 'vocab' | 'progress' | 'quest' | 'shop' | 'profile' | 'writing' | 'listening' | 'review' | 'duel' | 'settings' | 'test' | 'garden' | 'default';
+export type ArtScene = 'home' | 'math' | 'verbal' | 'vocab' | 'progress' | 'quest' | 'shop' | 'profile' | 'writing' | 'listening' | 'speaking' | 'review' | 'duel' | 'settings' | 'test' | 'garden' | 'default';
 
 /**
  * Cụm STICKER cho khối đầu trang: 3 hình bế viền trắng, nghiêng lệch nhau,

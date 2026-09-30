@@ -30,6 +30,8 @@ import { mergeReward, type RewardPayload } from '@/services/gamification/shop';
 import { mergeGame, type GamePayload } from '@/services/game/rules';
 import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
 import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
+import { useSpeakingStore } from '@/store/useSpeakingStore';
+import { mergeSpeakingAttempts, type SpeakingAttempt } from '@/services/speaking/attempts';
 
 /**
  * Nối từng zustand store vào engine đồng bộ.
@@ -206,6 +208,22 @@ const satRoadmapStore: SyncedStore = {
   }),
 };
 
+/** Phòng luyện nói: lượt thi (bản chữ, chỉ số, điểm AI). Hợp theo id, giữ 50 lượt mới nhất. */
+const speakingStore: SyncedStore = {
+  key: 'speaking',
+  read: () => ({ attempts: useSpeakingStore.getState().attempts }),
+  write: (payload) => {
+    const list = (payload as { attempts?: SpeakingAttempt[] } | null)?.attempts;
+    if (Array.isArray(list)) useSpeakingStore.setState({ attempts: list });
+  },
+  merge: (local, remote) => ({
+    attempts: mergeSpeakingAttempts(
+      (local as { attempts?: SpeakingAttempt[] } | null)?.attempts,
+      (remote as { attempts?: SpeakingAttempt[] } | null)?.attempts,
+    ),
+  }),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -266,4 +284,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(cityStore);
   registerSyncedStore(cityLifeStore);
   registerSyncedStore(satRoadmapStore);
+  registerSyncedStore(speakingStore);
 }

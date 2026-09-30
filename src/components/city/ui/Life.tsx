@@ -14,7 +14,8 @@ import { catchPrizeKey, CATCH_DAILY_CAP, makeQuestion, RARITY_INFO, rollCatch, S
 import { catalogItem } from '@/data/city/catalog';
 import { useCityLifeStore } from '@/store/useCityLifeStore';
 import { useRewardStore } from '@/store/useRewardStore';
-import { useWordPools } from '@/components/quiz/useWordPools';
+import { recordQuestAnswer, useWordPools } from '@/components/quiz/useWordPools';
+import { QuestWordPicker } from '@/components/quiz/QuestWordPicker';
 import type { AvatarColors } from '../scene/WalkLayer';
 import { Modal } from './EarnSheet';
 import { useL } from './common';
@@ -100,6 +101,8 @@ export function CatchGame({ kind, onClose }: { kind: CatchKind; onClose: () => v
   const pick = useCallback(
     (i: number) => {
       if (phase.k !== 'ask') return;
+      // Ôn thật: ghi vào lịch ôn của bộ từ gốc (một lần mỗi câu).
+      recordQuestAnswer(focus, phase.q.word, i === phase.q.answer);
       if (i !== phase.q.answer) {
         setPhase({ k: 'lost', q: phase.q, picked: i });
         return;
@@ -110,7 +113,7 @@ export function CatchGame({ kind, onClose }: { kind: CatchKind; onClose: () => v
       const stars = addCappedPrize(catchPrizeKey(today), RARITY_INFO[s.rarity].stars, CATCH_DAILY_CAP);
       setPhase({ k: 'won', s, stars, fast });
     },
-    [phase, kind, addCatch, addCappedPrize, today],
+    [phase, kind, addCatch, addCappedPrize, today, focus],
   );
 
   // Phím 1–4 chọn đáp án; Space / Enter chơi tiếp.
@@ -146,6 +149,9 @@ export function CatchGame({ kind, onClose }: { kind: CatchKind; onClose: () => v
   return (
     <Modal title={title} onClose={onClose}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minHeight: 300 }}>
+        <div style={{ alignSelf: 'flex-start' }}>
+          <QuestWordPicker theme="light" compact />
+        </div>
         {phase.k === 'wait' ? (
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 12, padding: '36px 0' }}>
             <div style={{ position: 'relative', width: 90, height: 90, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

@@ -44,6 +44,9 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Đọc theo một bài VOA và phòng đấu 1–1: có micro / đồng hồ, không mời rẽ ngang.
   /^\/shadow\/[^/]+$/,
   /^\/duel\/[^/]+$/,
+  // Phòng luyện nói: phòng thi (micro + đồng hồ) và phiếu điểm của một lượt.
+  /^\/speaking\/room$/,
+  /^\/speaking\/result\/[^/]+$/,
 
   // Từ vựng theo chủ đề — đây là màn học thẻ, không phải màn duyệt.
   /^\/vocabulary\/topic\/[^/]+$/,

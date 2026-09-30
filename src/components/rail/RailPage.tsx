@@ -15,7 +15,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { router } from 'expo-router';
 
-import { useWordPools } from '@/components/quiz/useWordPools';
+import { recordQuestAnswer, useWordPools } from '@/components/quiz/useWordPools';
+import { QuestWordPicker } from '@/components/quiz/QuestWordPicker';
 import { makeQuestion, type CatchQuestion } from '@/services/city/life';
 import { dateKey } from '@/services/gamification/points';
 import { setTravelSfx, sfx } from '@/services/audio/sfx';
@@ -169,7 +170,7 @@ export default function RailPage() {
   const route = routeById(st.route).stops.includes(station.id) ? routeById(st.route) : routeOf(station.id);
   const next = nextOnRoute(route, station.id);
   const after = nextOnRoute(route, next.id);
-  const { focus, pool } = useWordPools();
+  const { focus, pool, source: wordSource } = useWordPools();
 
   const [now, setNow] = useState(() => new Date());
   useEffect(() => {
@@ -339,6 +340,8 @@ export default function RailPage() {
       if (phase.k !== 'ask') return;
       const right = i === phase.q.answer;
       useGameStore.getState().answer(right, 'vocab', { key: `rail:${phase.q.word}:${dateKey(new Date())}` });
+      // Ôn thật: ghi vào lịch ôn của bộ từ gốc.
+      recordQuestAnswer(focus, phase.q.word, right);
       useRailStore.getState().count(right);
       setPhase({ k: 'done', q: phase.q, picked: i, right });
       if (right) {
@@ -355,8 +358,15 @@ export default function RailPage() {
         }
       }
     },
-    [phase],
+    [phase, focus],
   );
+  // Đổi bộ từ → câu kế tiếp lấy ngay từ bộ mới.
+  const lastSource = useRef(wordSource);
+  useEffect(() => {
+    if (lastSource.current === wordSource) return;
+    lastSource.current = wordSource;
+    newQuestion();
+  }, [wordSource, newQuestion]);
   useEffect(() => {
     if (phase.k !== 'done' || !phase.right) return;
     const id = setTimeout(newQuestion, 950);
@@ -650,7 +660,13 @@ function ArrivalStamp({ id }: { id: string }) {
 }
 
 function Ticket({ phase, onPick, onNext, route, station, next, progress, leftText, auto, seat }: { phase: Phase; onPick: (i: number) => void; onNext: () => void; route: Route; station: string; next: string; progress: number; leftText: string; auto: boolean; seat: string }) {
-  if (phase.k === 'empty') return <div className="tv-ticket" style={{ padding: 18 }}>Chưa có từ nào để hỏi — mở một bộ từ vựng để bắt đầu.</div>;
+  if (phase.k === 'empty')
+    return (
+      <div className="tv-ticket" style={{ padding: 18, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-start' }}>
+        Chưa có từ nào để hỏi ở bộ này — chọn bộ khác nhé.
+        <QuestWordPicker theme="light" />
+      </div>
+    );
   const q = phase.q;
   return (
     <div className="tv-ticket">
@@ -658,6 +674,9 @@ function Ticket({ phase, onPick, onNext, route, station, next, progress, leftTex
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: MONO, fontSize: 12, letterSpacing: '.14em', color: '#7A6A58' }}>
           <span style={{ width: 10, height: 10, borderRadius: 3, background: route.color, flex: 'none' }} />
           VÉ HỌC · {station.toUpperCase()} → {next.toUpperCase()}
+        </div>
+        <div style={{ marginTop: 10 }}>
+          <QuestWordPicker theme="light" compact />
         </div>
         <div key={q.word} className="tv-pop">
           <div style={{ fontFamily: MONO, fontSize: 12, color: '#7A6A58', marginTop: 10 }}>Chọn nghĩa đúng của</div>
