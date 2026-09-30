@@ -34,6 +34,19 @@ export function setSfxMuted(value: boolean): void {
   muted = value;
 }
 
+/**
+ * Chế độ TOA TÀU: màn học đang dùng nền tàu chạy (hoặc đang ở Toa Từ Vựng) thì
+ * không có trận đấu — câu đúng / sai phát tiếng "tàu" thay cho tiếng chém / bị đánh.
+ * Đếm số nơi đang bật để hai màn chồng nhau không tắt nhầm của nhau.
+ */
+let travelUsers = 0;
+export function setTravelSfx(on: boolean): void {
+  travelUsers = Math.max(0, travelUsers + (on ? 1 : -1));
+}
+export function isTravelSfx(): boolean {
+  return travelUsers > 0;
+}
+
 export function isSfxMuted(): boolean {
   return muted;
 }
@@ -141,6 +154,37 @@ export const sfx = {
       tone(e, base, { at, dur: 0.16, gain: 0.13, type: 'triangle' });
       tone(e, base * 1.5, { at: at + 0.07, dur: 0.26, gain: 0.11, type: 'triangle' });
       tone(e, base * 3, { at: at + 0.07, dur: 0.12, gain: 0.025 });
+    });
+  },
+
+  /** Toa tàu — trả lời đúng: chuông hai nốt (cao dần theo combo) + còi tàu ngắn "tu-tu". */
+  railCorrect(combo = 1): boolean {
+    return play('railCorrect', 250, (e) => {
+      const base = shiftHz(784, comboSemitones(combo));
+      tone(e, base, { dur: 0.14, gain: 0.12, type: 'triangle' });
+      tone(e, base * 1.26, { at: 0.08, dur: 0.14, gain: 0.11, type: 'triangle' });
+      tone(e, base * 1.5, { at: 0.16, dur: 0.3, gain: 0.1, type: 'triangle' });
+      // Còi: hai hợp âm ngắn, lọc thấp cho tròn tiếng.
+      for (const at of [0.32, 0.5]) {
+        tone(e, 523.25, { at, dur: 0.14, gain: 0.05, type: 'sawtooth' });
+        tone(e, 659.25, { at, dur: 0.14, gain: 0.04, type: 'sawtooth' });
+      }
+    });
+  },
+
+  /** Toa tàu — trả lời sai: hai nốt trượt xuống, nhẹ nhàng (không phải tiếng "bị đánh"). */
+  railWrong(): boolean {
+    return play('railWrong', 250, (e) => {
+      tone(e, 392, { dur: 0.16, gain: 0.12, type: 'sine', to: 370 });
+      tone(e, 311, { at: 0.13, dur: 0.3, gain: 0.12, type: 'sine', to: 262 });
+      noise(e, { at: 0.02, dur: 0.12, gain: 0.05, filter: 'lowpass', hz: 700 });
+    });
+  },
+
+  /** Toa tàu — tới ga mới: chuông ga ba nốt. */
+  railArrive(): boolean {
+    return play('railArrive', 600, (e) => {
+      for (const [i, hz] of [659.25, 783.99, 1046.5].entries()) tone(e, hz, { at: i * 0.16, dur: 0.5, gain: 0.09, type: 'triangle' });
     });
   },
 

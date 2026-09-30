@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { DueToday } from '@/components/vocab/DueToday';
 import { Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -142,6 +143,7 @@ export default function VocabTopicScreen() {
           </View>
         </View>
       </Appear>
+      <DueToday slug={slug} />
 
       {/* ---------------------------------------------- mọi cách luyện của bộ */}
       <Appear index={1}>

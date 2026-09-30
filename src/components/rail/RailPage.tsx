@@ -18,6 +18,7 @@ import { router } from 'expo-router';
 import { useWordPools } from '@/components/quiz/useWordPools';
 import { makeQuestion, type CatchQuestion } from '@/services/city/life';
 import { dateKey } from '@/services/gamification/points';
+import { setTravelSfx, sfx } from '@/services/audio/sfx';
 import { RailMusic, TRACKS, type MusicStyle } from '@/services/rail/music';
 import { RailScene, type Weather } from '@/services/rail/scene';
 import { localClock, nextOnRoute, ROUTES, routeById, routeOf, STATIONS, stationById, timeOfDayAt, type Route, type TimeOfDay } from '@/services/rail/stations';
@@ -243,6 +244,10 @@ export default function RailPage() {
   };
   useEffect(() => () => musicRef.current?.dispose(), []);
   useEffect(() => {
+    setTravelSfx(true);
+    return () => setTravelSfx(false);
+  }, []);
+  useEffect(() => {
     const m = musicRef.current;
     if (!m) return;
     m.style = st.style;
@@ -342,6 +347,7 @@ export default function RailPage() {
         if (s.auto && s.advanceBy === 'answers') {
           const r = s.step();
           if (r.arrived) {
+            sfx.railArrive();
             setArrived(r.fresh ? r.arrived : null);
             passed.current += 1;
             if (s.autoTrack && musicRef.current?.playing && passed.current % 5 === 0) musicRef.current.skip(1);

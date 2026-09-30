@@ -5,6 +5,8 @@ import { STORAGE_PREFIX, storage } from './persist';
 import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/services/vocab/topic-study';
 import type { MistakeKind } from '@/services/vocab/mistake';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
+import { nextReview, type ReviewEntry } from '@/services/vocab/review-schedule';
+import { todayKey } from './persist';
 
 /** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
 export type MistakeEntry = { kind: MistakeKind; word: string; slug: string; at: string };
@@ -31,6 +33,10 @@ type TopicStudyState = {
   /** slug → từ → số lần làm sai trong màn Học. Vòng sau hỏi từ sai nhiều trước. */
   lapses: Record<string, Record<string, number>>;
   addLapse: (slug: string, word: string) => void;
+  /** slug → từ → hộp ôn + ngày đến hạn (`services/vocab/review-schedule.ts`). */
+  reviews: Record<string, Record<string, ReviewEntry>>;
+  /** Ghi một lần trả lời (đúng / sai) vào lịch ôn theo ngày. */
+  review: (slug: string, word: string, correct: boolean) => void;
   /** Nhật ký lỗi đã gọi tên (mới nhất cuối), giữ tối đa 400 dòng. */
   mistakeLog: MistakeEntry[];
   logMistake: (slug: string, word: string, kind: MistakeKind) => void;
@@ -54,6 +60,11 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       scores: {},
       starred: {},
       lapses: {},
+      reviews: {},
+      review: (slug, word, correct) =>
+        set((s) => ({
+          reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, todayKey()) } },
+        })),
       mistakeLog: [],
       lastAt: {},
       touch: (slug) => set((s) => ({ lastAt: { ...s.lastAt, [slug]: new Date().toISOString() } })),
@@ -96,7 +107,9 @@ export const useTopicStudyStore = create<TopicStudyState>()(
           delete stages[slug];
           const lapses = { ...s.lapses };
           delete lapses[slug];
-          return { stages, lapses };
+          const reviews = { ...s.reviews };
+          delete reviews[slug];
+          return { stages, lapses, reviews };
         }),
     }),
     {
@@ -104,7 +117,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.

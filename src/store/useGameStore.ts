@@ -6,7 +6,7 @@ import { useGameFx } from './useGameFx';
 import { useCityStore } from './useCityStore';
 import { mascotOf, useRewardStore } from './useRewardStore';
 import { MASCOTS, perksOf, STAR_BONUS } from '@/services/game/mascots';
-import { setSfxMuted, sfx } from '@/services/audio/sfx';
+import { isTravelSfx, setSfxMuted, sfx } from '@/services/audio/sfx';
 import { dateKey } from '@/services/gamification/points';
 import {
   dailyQuests,
@@ -207,7 +207,11 @@ export const useGameStore = create<GameState>()(
         if (o.levelUp) stars += starGain((o.levelUp - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp');
 
         // Tiếng xếp đúng nhịp hoạt cảnh của thanh trận đấu: chém → nổ tan → gầm boss → lên cấp.
-        if (correct) {
+        if (isTravelSfx()) {
+          // Đang ngồi toa tàu: không có trận đấu, tiếng đúng / sai kiểu tàu.
+          if (correct) sfx.railCorrect(o.state.combo);
+          else sfx.railWrong();
+        } else if (correct) {
           sfx.hit(o.state.combo, o.crit);
           if (o.state.combo === FEVER_AT) sfx.fever(0.3);
         } else if (o.blocked) sfx.block();
@@ -216,7 +220,7 @@ export const useGameStore = create<GameState>()(
           sfx.hurt();
           if (o.state.hearts === 1) sfx.heartbeat(0.55);
         }
-        if (o.defeated) {
+        if (o.defeated && !isTravelSfx()) {
           sfx.defeat(o.defeated.boss, 0.24);
           roarIfBoss(o.state.enemyIndex, 1.05);
         }

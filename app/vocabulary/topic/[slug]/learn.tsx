@@ -243,6 +243,7 @@ export default function LearnScreen() {
     if (!ok) {
       setWrong((n) => n + 1);
       addLapse(slug, word.word);
+      useTopicStudyStore.getState().review(slug, word.word, false);
     }
     if (ok) {
       const current =
@@ -257,6 +258,8 @@ export default function LearnScreen() {
           ? 2
           : Math.max(current, 1);
       setStage(slug, word.word, next as 1 | 2);
+      // Xong từ trong vòng (lần gặp cuối, dạng khó nhất) mới tính một lần nhớ cho lịch ôn.
+      if (finishesWord(plan, head, true, opts) && !slipped) useTopicStudyStore.getState().review(slug, word.word, true);
     }
   };
 

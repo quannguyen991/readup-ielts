@@ -8,8 +8,8 @@ import { LightGrid, usePageBackground } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
-import { TravelBackdrop, useTravelBackdropOn } from '@/components/rail/TravelBackdrop';
-import { isExamRoute, isFocusRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
+import { TravelBackdrop, useTravelActive } from '@/components/rail/TravelBackdrop';
+import { isExamRoute, isFocusRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
@@ -52,8 +52,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
   // Thành phố và Chuyến tàu từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
   // Màn học từ đang có nền toa tàu: thanh bên trong suốt, chỉ còn biểu tượng.
-  const travelOn = useTravelBackdropOn();
-  const travelGlass = travelOn && isVocabStudyRoute(pathname);
+  const travelGlass = useTravelActive();
   const isCityRoute = pathname.startsWith('/quest/city') || pathname.startsWith('/quest/rail');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
@@ -76,7 +75,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
     */
     return (
-      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)}>
+      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && travelGlass}>
         <View className="flex-1 lg:flex-row">
           <View
             className="hidden lg:flex"
@@ -160,7 +159,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  * màn tập trung) thì trời đêm pixel — chữ trắng của bản đồ nằm trên nền lưới
  * sáng là gần như biến mất.
  */
-function FocusBackdrop({ quest, navy, children }: { quest: boolean; navy: boolean; children: React.ReactNode }) {
+function FocusBackdrop({ quest, navy, light, children }: { quest: boolean; navy: boolean; light: boolean; children: React.ReactNode }) {
+  // Chép chính tả / viết câu: cảnh tàu chạy tông sáng (tắt thì về lưới sáng như cũ).
+  if (light) return <TravelBackdrop color="#EEF3FB" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
   // Màn học từ: cảnh tàu chạy qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
   if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;

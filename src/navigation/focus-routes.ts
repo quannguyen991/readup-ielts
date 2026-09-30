@@ -90,6 +90,18 @@ export function isLookupBlocked(pathname: string): boolean {
   return NO_LOOKUP.some((re) => re.test(pathname));
 }
 
+/** Màn luyện câu có nền toa tàu (tông sáng): chép chính tả, dịch / viết câu. */
+const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate)$/;
+
+/** Màn có nền toa tàu: ôn từ vựng (tông tối) + luyện câu (tông sáng). */
+export function isTravelRoute(pathname: string): boolean {
+  return VOCAB_STUDY.test(pathname) || TRAVEL_LIGHT.test(pathname);
+}
+
+export function isTravelLightRoute(pathname: string): boolean {
+  return TRAVEL_LIGHT.test(pathname);
+}
+
 export function isVocabStudyRoute(pathname: string): boolean {
   return VOCAB_STUDY.test(pathname);
 }

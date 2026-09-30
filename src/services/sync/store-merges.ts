@@ -1,5 +1,6 @@
 import { effectivePlan } from '@/lib/billing/entitlements';
 import { planRank, type PlanId } from '@/lib/billing/plans';
+import { mergeReviewEntry, type ReviewEntry } from '@/services/vocab/review-schedule';
 
 import { mergeRecords, sortByFinishedDesc, unionByKey, unionStrings } from './merge';
 
@@ -209,6 +210,8 @@ export type TopicStudyPayload = {
   mistakeLog: TopicStudyMistake[];
   learnSettings?: Record<string, unknown>;
   lastAt: Record<string, string>;
+  /** Lịch ôn theo ngày (có từ 30/09/2026 — bản cũ không có). */
+  reviews?: Record<string, Record<string, ReviewEntry>>;
 };
 
 export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicStudyPayload {
@@ -281,6 +284,18 @@ export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicSt
   mistakeLog.sort((x, y) => x.at.localeCompare(y.at));
   const trimmedMistakes = mistakeLog.slice(-400);
 
+  // Lịch ôn: từng từ lấy bản ôn gần nhất
+  const reviews: NonNullable<TopicStudyPayload['reviews']> = {};
+  for (const slug of unionStrings(Object.keys(a.reviews ?? {}), Object.keys(b.reviews ?? {}))) {
+    const l = a.reviews?.[slug] ?? {};
+    const r = b.reviews?.[slug] ?? {};
+    reviews[slug] = {};
+    for (const w of unionStrings(Object.keys(l), Object.keys(r))) {
+      const m = mergeReviewEntry(l[w], r[w]);
+      if (m) reviews[slug][w] = m;
+    }
+  }
+
   // Last at: mốc thời gian học gần nhất
   const allLastAtSlugs = unionStrings(Object.keys(a.lastAt ?? {}), Object.keys(b.lastAt ?? {}));
   const lastAt: TopicStudyPayload['lastAt'] = {};
@@ -298,6 +313,7 @@ export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicSt
     mistakeLog: trimmedMistakes,
     learnSettings: { ...(b.learnSettings ?? {}), ...(a.learnSettings ?? {}) },
     lastAt,
+    reviews,
   };
 }
 

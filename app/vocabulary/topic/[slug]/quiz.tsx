@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 
@@ -9,6 +9,8 @@ import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { groupByStatus, stageAfterQuiz } from '@/services/vocab/deck-status';
 import { buildThptQuiz, THPT_KIND_LABEL, type ThptQuestion } from '@/services/vocab/thpt-quiz';
 import { seededRng, shuffled } from '@/services/vocab/topic-study';
+import { dueBySlug } from '@/services/vocab/review-schedule';
+import { todayKey } from '@/store/persist';
 import { useGameStore } from '@/store/useGameStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -35,20 +37,27 @@ export default function QuizScreen() {
 
   const [seed, setSeed] = useState(() => Date.now() % 100000);
   // Nhóm từ chốt lúc vào màn — đề không co lại giữa chừng khi từ đổi nhóm.
-  const [frozen] = useState(() => ({ stages, lapses }));
+  const reviews = useTopicStudyStore((s) => s.reviews?.[slug]);
+  const [frozen] = useState(() => ({ stages, lapses, reviews }));
   const questions = useMemo<ThptQuestion[]>(() => {
     if (!topic) return [];
     const g = groupByStatus(topic.words, frozen.stages, frozen.lapses);
-    const pool = only === 'review' ? g.review : only === 'new' ? g.new : topic.words;
+    const dueNow = new Set(dueBySlug({ [slug]: frozen.reviews ?? {} }, todayKey())[slug] ?? []);
+    const pool = only === 'due' ? topic.words.filter((w) => dueNow.has(w.word)) : only === 'review' ? g.review : only === 'new' ? g.new : topic.words;
     const rng = seededRng(seed);
     return buildThptQuiz(shuffled(pool, rng), topic.words, rng);
   }, [topic, only, seed, frozen]);
 
+  // Hàng câu hỏi của lượt: bắt đầu bằng đề đã sinh, chen thêm câu hỏi lại khi trả lời sai.
+  const [queue, setQueue] = useState<ThptQuestion[] | null>(null);
+  const [wrong, setWrong] = useState<string[]>([]);
+  const retried = useRef(new Set<string>());
+  const list = queue ?? questions;
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);
-  const q = questions[index];
-  const done = questions.length > 0 && index >= questions.length;
+  const q = list[index];
+  const done = list.length > 0 && index >= list.length;
 
   const pick = (i: number) => {
     if (!q || picked !== null) return;
@@ -58,6 +67,20 @@ export default function QuizScreen() {
     const st = useTopicStudyStore.getState();
     st.setStage(slug, q.word.word, stageAfterQuiz(st.stages[slug]?.[q.word.word], ok));
     if (!ok) st.addLapse(slug, q.word.word);
+    st.review(slug, q.word.word, ok);
+    if (!ok) {
+      setWrong((w) => (w.includes(q.word.word) ? w : [...w, q.word.word]));
+      // Hỏi lại từ sai SAU 3 câu, bằng một dạng câu khác (mỗi từ một lần trong lượt).
+      if (topic && !retried.current.has(q.word.word)) {
+        retried.current.add(q.word.word);
+        const again = buildThptQuiz([q.word], topic.words, seededRng(seed + index + 1))[0];
+        if (again) setQueue((cur) => {
+          const list = [...(cur ?? questions)];
+          list.splice(Math.min(list.length, index + 4), 0, { ...again, retry: true } as ThptQuestion);
+          return list;
+        });
+      }
+    }
     useGameStore.getState().answer(ok, 'vocab', { key: `quiz:${slug}:${q.word.word}:${q.kind}` });
   };
   const next = () => {
@@ -66,7 +89,22 @@ export default function QuizScreen() {
     setPicked(null);
     setIndex((n) => n + 1);
   };
+  /** Làm lại riêng các từ sai của lượt vừa xong. */
+  const redoWrong = () => {
+    if (!topic) return;
+    const words = topic.words.filter((w) => wrong.includes(w.word));
+    const rng = seededRng(seed + 999);
+    setQueue(buildThptQuiz(shuffled(words, rng), topic.words, rng));
+    setWrong([]);
+    retried.current = new Set();
+    setIndex(0);
+    setPicked(null);
+    setScore(0);
+  };
   const restart = () => {
+    setQueue(null);
+    setWrong([]);
+    retried.current = new Set();
     setSeed((s) => s + 1);
     setIndex(0);
     setPicked(null);
@@ -86,7 +124,7 @@ export default function QuizScreen() {
   const back = `/vocabulary/topic/${slug}`;
   if (!topic) return <StudyFrame backHref="/vocabulary/quiz" title="Quiz ôn tập">{null}</StudyFrame>;
 
-  if (questions.length === 0) {
+  if (list.length === 0) {
     return (
       <StudyFrame backHref={back} title="Quiz ôn tập">
         <StudyCard>
@@ -98,16 +136,20 @@ export default function QuizScreen() {
   }
 
   if (done) {
-    const pct = Math.round((score / questions.length) * 100);
+    const pct = Math.round((score / list.length) * 100);
     return (
       <StudyFrame backHref={back} title="Quiz ôn tập">
         <StudyCard>
           <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">Xong lượt Quiz</Text>
           <Text className="mt-2 font-heavy text-hero text-ink">
-            {score}/{questions.length}
+            {score}/{list.length}
           </Text>
           <Text className="mt-1 font-sans text-bodyLg text-muted">Đúng {pct}%</Text>
-          <View className="mt-5">
+          <Text className="mt-3 font-sans text-body text-muted">
+            📅 Từ đúng sẽ hẹn ôn lại sau 1 → 2 → 4 → 7 ngày; từ sai hẹn ôn lại ngày mai.
+          </Text>
+          <View className="mt-5 gap-2">
+            {wrong.length > 0 ? <PrimaryButton label={`🔁 Làm lại ${wrong.length} từ sai`} onPress={redoWrong} /> : null}
             <PrimaryButton label="Làm đề khác" onPress={restart} />
           </View>
         </StudyCard>
@@ -123,8 +165,8 @@ export default function QuizScreen() {
       backHref={back}
       title="Quiz ôn tập"
       battle
-      progress={questions.map((_, i) => (i < index || (i === index && revealed) ? 1 : 0))}
-      footer={`Câu ${index + 1}/${questions.length} · đúng ${score} · phím A–D chọn, Enter sang câu`}
+      progress={list.map((_, i) => (i < index || (i === index && revealed) ? 1 : 0))}
+      footer={`Câu ${index + 1}/${list.length} · đúng ${score} · phím A–D chọn, Enter sang câu`}
     >
       <CrossFade swapKey={`${seed}-${index}`}>
         <StudyCard>
@@ -170,7 +212,7 @@ export default function QuizScreen() {
 
           {revealed ? (
             <View className="mt-4">
-              <PrimaryButton label={index + 1 < questions.length ? 'Câu tiếp' : 'Xem kết quả'} onPress={next} />
+              <PrimaryButton label={index + 1 < list.length ? 'Câu tiếp' : 'Xem kết quả'} onPress={next} />
             </View>
           ) : null}
         </StudyCard>

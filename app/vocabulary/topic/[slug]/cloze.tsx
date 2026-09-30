@@ -141,9 +141,13 @@ export default function ClozeScreen() {
     logQuestions(1);
     useGameStore.getState().answer(ok, 'vocab', { key: `cloze:${slug}:${q.word.word}:${q.kind}` });
     if (ok) {
-      if (!head.retry) setFirstTry((n) => n + 1);
+      if (!head.retry) {
+        setFirstTry((n) => n + 1);
+        useTopicStudyStore.getState().review(slug, q.word.word, true);
+      }
       return;
     }
+    useTopicStudyStore.getState().review(slug, q.word.word, false);
     setMistake(m);
     if (m) {
       setMistakes((list) => [...list, { word: q.word.word, m }]);
