@@ -8,6 +8,7 @@ import { LightGrid, usePageBackground } from './LightGrid';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
+import { TravelBackdrop, useTravelBackdropOn } from '@/components/rail/TravelBackdrop';
 import { isExamRoute, isFocusRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
@@ -50,6 +51,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
   // Thành phố và Chuyến tàu từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
+  // Màn học từ đang có nền toa tàu: thanh bên trong suốt, chỉ còn biểu tượng.
+  const travelOn = useTravelBackdropOn();
+  const travelGlass = travelOn && isVocabStudyRoute(pathname);
   const isCityRoute = pathname.startsWith('/quest/city') || pathname.startsWith('/quest/rail');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
@@ -78,7 +82,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             className="hidden lg:flex"
             style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
           >
-            <Sidebar compact />
+            <Sidebar compact glass={travelGlass} />
           </View>
           <View className="min-w-0 flex-1 lg:pl-[76px]">
             <View className="lg:hidden">
@@ -158,7 +162,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  */
 function FocusBackdrop({ quest, navy, children }: { quest: boolean; navy: boolean; children: React.ReactNode }) {
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
-  if (navy) return <OliveGrid color={STUDY_NAVY}>{children}</OliveGrid>;
+  // Màn học từ: cảnh tàu chạy qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
+  if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
   if (!quest) return <LightGrid>{children}</LightGrid>;
   return (
     <View className="flex-1 bg-[#07061A]">

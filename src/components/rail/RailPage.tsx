@@ -268,7 +268,9 @@ export default function RailPage() {
   };
 
   // ---------------------------------------------------------------- chuyển ga
-  const [toward, setToward] = useState(0);
+  // Quãng đã đi tới ga kế lưu trong store: dùng chung với nền tàu ở các màn ôn từ vựng.
+  const toward = st.toward;
+  const setToward = useCallback((v: number) => useRailStore.getState().set({ toward: v }), []);
   const [arrived, setArrived] = useState<string | null>(null);
   const passed = useRef(0);
   const goTo = useCallback((id: string, byTrain: boolean) => {
@@ -338,12 +340,16 @@ export default function RailPage() {
         boost.current = 1;
         const s = useRailStore.getState();
         if (s.auto && s.advanceBy === 'answers') {
-          if (toward + 1 >= s.perStation) goNext();
-          else setToward(toward + 1);
+          const r = s.step();
+          if (r.arrived) {
+            setArrived(r.fresh ? r.arrived : null);
+            passed.current += 1;
+            if (s.autoTrack && musicRef.current?.playing && passed.current % 5 === 0) musicRef.current.skip(1);
+          }
         }
       }
     },
-    [phase, toward, goNext, setToward],
+    [phase],
   );
   useEffect(() => {
     if (phase.k !== 'done' || !phase.right) return;
@@ -466,6 +472,9 @@ export default function RailPage() {
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 12 }}>
                 <button className={`tv-icon${st.auto ? ' on' : ''}`} style={{ padding: '0 12px' }} onClick={() => st.set({ auto: !st.auto })}>
                   {st.auto ? '⏵ Tự chạy' : '⏸ Đang đỗ'}
+                </button>
+                <button className={`tv-icon${st.backdrop ? ' on' : ''}`} style={{ padding: '0 12px' }} title="Cảnh tàu chạy làm nền khi ôn từ vựng (quiz, học từ, kiểm tra)" onClick={() => st.set({ backdrop: !st.backdrop })}>
+                  {st.backdrop ? '🖼️ Nền ôn từ: bật' : '🖼️ Nền ôn từ: tắt'}
                 </button>
                 <select
                   aria-label="Cách chuyển ga"

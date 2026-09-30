@@ -8,6 +8,7 @@ import * as Speech from "expo-speech";
 import { englishVoice } from "@/services/audio/voice";
 
 import { BattleStrip } from "@/components/game/BattleStrip";
+import { useTravelBackdropOn } from "@/components/rail/TravelBackdrop";
 import { Icon } from "@/components/ui/Icon";
 import type { StudyWord } from "@/services/vocab/topic-study";
 import { color } from "@/theme/tokens";
@@ -93,10 +94,13 @@ export function StudyFrame({
   right?: React.ReactNode;
 }) {
   const navy = isVocabStudyRoute(usePathname());
+  // Đang ngồi toa tàu (cảnh thành phố làm nền): bỏ trận đấu để thẻ học nằm cao, lộ cảnh.
+  const travel = useTravelBackdropOn() && navy;
   return (
+    <TravelCompact.Provider value={travel}>
     <View
       className="w-full self-center px-4 pb-10 pt-6"
-      style={{ maxWidth: 820 }}
+      style={{ maxWidth: travel ? 620 : 820 }}
     >
       <View className="flex-row items-center justify-between">
         <Pressable
@@ -119,7 +123,7 @@ export function StudyFrame({
         <SegmentBar fractions={segments.map((x) => x / 2)} navy={navy} />
       ) : null}
 
-      {battle ? <BattleStrip className="mt-4" /> : null}
+      {battle && !travel ? <BattleStrip className="mt-4" /> : null}
 
       <View className="mt-5">{children}</View>
 
@@ -132,8 +136,12 @@ export function StudyFrame({
         </Text>
       ) : null}
     </View>
+    </TravelCompact.Provider>
   );
 }
+
+/** Màn học đang ở nền toa tàu: thẻ học gọn lại (hẹp, đệm nhỏ) để lộ cảnh phía sau. */
+const TravelCompact = React.createContext(false);
 
 function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean }) {
   return (
@@ -164,8 +172,9 @@ function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean })
 
 /** Thẻ câu hỏi — nền trời sáng có sao lấp lánh, cùng thẻ lật. */
 export function StudyCard({ children }: { children: React.ReactNode }) {
+  const compact = React.useContext(TravelCompact);
   return (
-    <View className="overflow-hidden rounded-[22px] bg-surface p-6 lg:p-8" style={CARD_SHADOW}>
+    <View className={`overflow-hidden rounded-[22px] bg-surface ${compact ? "p-4 lg:p-5" : "p-6 lg:p-8"}`} style={CARD_SHADOW}>
       <SkyEffect intensity={0.7} radius={22} />
       {children}
     </View>
@@ -243,8 +252,10 @@ export function ChoiceGrid({
   hidden?: number[];
 }) {
   const revealed = picked !== null;
+  // Nền toa tàu: thẻ hẹp hơn nên phương án co lại để vẫn đủ 2 cột, đệm nhỏ hơn.
+  const compact = React.useContext(TravelCompact);
   return (
-    <View className="flex-row flex-wrap gap-3">
+    <View className={`flex-row flex-wrap ${compact ? "gap-2" : "gap-3"}`}>
       {options.map((opt, i) => {
         const isCorrect = revealed && i === correctIndex;
         const isWrong = revealed && i === picked && i !== correctIndex;
@@ -258,9 +269,9 @@ export function ChoiceGrid({
             accessibilityLabel={out ? `${opt} — Cú đã loại` : undefined}
             disabled={revealed || out}
             onPress={() => onPick(i)}
-            className="flex-row items-center gap-3 rounded-2xl px-4 py-4"
+            className={`flex-row items-center gap-3 rounded-2xl ${compact ? "px-3 py-3" : "px-4 py-4"}`}
             style={{
-              flexShrink: 1, flexBasis: 300,
+              flexShrink: 1, flexBasis: compact ? 220 : 300,
               flexGrow: 1,
               borderWidth: 1.5,
               borderColor: border,
