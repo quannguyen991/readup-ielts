@@ -40,7 +40,7 @@ export function GameBackdrop() {
 
   return (
     <View pointerEvents="none" style={{ ...FILL, overflow: 'hidden' }}>
-      <LinearGradient colors={['#07061A', '#15113A', '#241B5C']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL} />
+      <LinearGradient colors={['#07111F', '#0B1A2E', '#12233D']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL} />
       {stars.map((p, i) => (
         <View
           key={i}
@@ -50,10 +50,10 @@ export function GameBackdrop() {
       ))}
       <Svg width="100%" height="24%" viewBox="0 0 200 40" preserveAspectRatio="none" {...CRISP} style={{ position: 'absolute', left: 0, bottom: 0 }}>
         {FAR_HILLS.map(([x, y, w]) => (
-          <Rect key={`f${x}`} x={x} y={y} width={w} height={40 - y} fill="#1E1850" />
+          <Rect key={`f${x}`} x={x} y={y} width={w} height={40 - y} fill="#15263F" />
         ))}
         {NEAR_HILLS.map(([x, y, w]) => (
-          <Rect key={`n${x}`} x={x} y={y} width={w} height={40 - y} fill="#110D2E" />
+          <Rect key={`n${x}`} x={x} y={y} width={w} height={40 - y} fill="#0C1829" />
         ))}
       </Svg>
     </View>

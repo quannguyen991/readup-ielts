@@ -103,7 +103,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={{ backgroundColor: isQuestRoute ? '#15113A' : (pageBg?.stops[1] ?? CANVAS_STOPS[1]) }}
+      style={{ backgroundColor: isQuestRoute ? '#0B1A2E' : (pageBg?.stops[1] ?? CANVAS_STOPS[1]) }}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
@@ -167,7 +167,7 @@ function FocusBackdrop({ quest, navy, light, children }: { quest: boolean; navy:
   if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
   if (!quest) return <LightGrid>{children}</LightGrid>;
   return (
-    <View className="flex-1 bg-[#07061A]">
+    <View className="flex-1 bg-[#07111F]">
       <GameBackdrop />
       {children}
     </View>

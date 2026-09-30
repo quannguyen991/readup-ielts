@@ -88,6 +88,7 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'dictation-sets', label: 'Bộ đề chép chính tả', href: '/sentence/sets', icon: 'play' },
           { key: 'dictation-youtube', label: 'Chép theo video', href: '/sentence/youtube', icon: 'play' },
           { key: 'shadow', label: 'Đọc theo VOA', href: '/shadow', icon: 'mic' },
+          { key: 'speaking', label: 'Phòng luyện nói', href: '/speaking', icon: 'chat' },
         ],
       },
       {

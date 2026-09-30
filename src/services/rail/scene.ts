@@ -954,6 +954,19 @@ export class RailScene {
    */
   private photo: HTMLImageElement | null = null;
   private photoAlpha = 0;
+  /**
+   * Ga này CÓ ảnh nhưng ảnh đang tải. Trong lúc chờ KHÔNG vẽ nền pixel dựng
+   * bằng code (người dùng 30/09/2026: nền pixel hiện ra rồi bị ảnh đè lên) — giữ
+   * màn tối của đường hầm / nền trời trơn, ảnh về thì hiện dần. Ảnh lỗi mới dùng
+   * nền dựng bằng code.
+   */
+  private photoPending = false;
+  private pendingSince = 0;
+  /** Quãng ảnh nền đã trôi (điểm ảnh khung hiển thị) — ảnh chạy liên tục theo tốc độ tàu. */
+  private photoScroll = 0;
+  /** Ảnh nền lật ngang, ghép xen kẽ với ảnh gốc để cảnh trôi mãi không có đường nối gắt. */
+  private photoFlip: HTMLCanvasElement | null = null;
+  private photoFlipOf: HTMLImageElement | null = null;
   private out: Ctx;
   private dyn: HTMLCanvasElement;
 
@@ -989,9 +1002,14 @@ export class RailScene {
     const cached = PHOTOS.get(src);
     this.photo = cached instanceof HTMLImageElement ? cached : null;
     this.photoAlpha = this.photo ? 1 : 0;
-    if (!this.photo)
+    this.photoPending = !this.photo && cached !== null;
+    this.pendingSince = this.t;
+    if (this.photoPending)
       void loadPhoto(src).then((img) => {
-        if (img && this.key === key) this.photo = img;
+        if (this.key !== key) return;
+        this.photo = img;
+        this.photoAlpha = 0;
+        this.photoPending = false;
       });
     const m = mood(time, weather);
     this.mood = m;
@@ -1047,6 +1065,15 @@ export class RailScene {
     const g = this.g;
     const snow = this.key.endsWith('snow');
     const rain = this.key.endsWith('rain');
+    // Hàng cây / bụi gần lướt qua dưới chân cửa sổ (thị sai nhanh hơn cảnh xa):
+    // cho cảm giác đang chạy rõ ràng cả khi nền là ảnh.
+    if (this.photo) {
+      const nx = -((this.scroll * 2.4) % W);
+      g.globalAlpha = 0.92;
+      g.drawImage(this.near!, Math.floor(nx), 0, W, 40, 0, RAIL - 30, W, 40);
+      g.drawImage(this.near!, Math.floor(nx) + W, 0, W, 40, 0, RAIL - 30, W, 40);
+      g.globalAlpha = 1;
+    }
     // Bờ đất sát toa: vệt ngang chạy rất nhanh.
     const ground = shade(m, snow ? '#D8E0EA' : '#4E6E3E');
     R(g, 0, RAIL - 2, W, H - RAIL + 2, ground);
@@ -1123,20 +1150,39 @@ export class RailScene {
       const scale = Math.max((W * 2 * 1.06) / iw, (H * 2) / ih);
       const dw = iw * scale;
       const dh = ih * scale;
-      const dx = -(dw - W * 2) / 2 + Math.sin(this.t * 0.05) * (dw - W * 2) * 0.45;
-      const dy = -(dh - H * 2) * 0.62;
+      // CẢNH TRÔI THẬT (30/09/2026: "nó chỉ hiện ảnh, không phải hiệu ứng động"):
+      // ảnh chạy ngang liên tục theo tốc độ tàu — ghép ảnh gốc với bản lật ngang
+      // xen kẽ nên trôi mãi không hết ảnh, không có vết cắt. Toa nhún nhẹ khi chạy.
+      this.photoScroll += dt * this.speed * 26;
+      const sway = this.speed > 0.05 ? Math.sin(this.t * 7.3) * 1.4 * Math.min(1, this.speed) + Math.sin(this.t * 2.1) * 0.8 : 0;
+      const dy = -(dh - H * 2) * 0.62 + sway;
       const rain = this.key.endsWith('rain');
       const snow = this.key.endsWith('snow');
       o.imageSmoothingEnabled = true;
       o.imageSmoothingQuality = 'high';
       if (this.photoAlpha < 1) {
-        o.imageSmoothingEnabled = false;
-        o.drawImage(this.bg, 0, 0, W * 2, H * 2);
-        o.imageSmoothingEnabled = true;
+        o.fillStyle = '#07080E';
+        o.fillRect(0, 0, W * 2, H * 2);
       }
       o.globalAlpha = this.photoAlpha;
       o.filter = rain ? 'saturate(0.7) brightness(0.78) contrast(0.95)' : snow ? 'saturate(0.75) brightness(1.04)' : 'none';
-      o.drawImage(this.photo, dx, dy, dw, dh);
+      if (this.photoFlipOf !== this.photo) {
+        const f = document.createElement('canvas');
+        f.width = iw;
+        f.height = ih;
+        const fg = f.getContext('2d')!;
+        fg.translate(iw, 0);
+        fg.scale(-1, 1);
+        fg.drawImage(this.photo, 0, 0);
+        this.photoFlip = f;
+        this.photoFlipOf = this.photo;
+      }
+      const period = dw * 2;
+      const start = -(this.photoScroll % period) - (dw - W * 2) / 2;
+      for (let x = start, k = 0; x < W * 2; x += dw, k++) {
+        if (x + dw <= 0) continue;
+        o.drawImage(k % 2 === 0 ? this.photo : this.photoFlip!, x, dy, dw, dh);
+      }
       o.filter = 'none';
       o.globalAlpha = 1;
       if (rain) {
@@ -1148,7 +1194,17 @@ export class RailScene {
       }
     }
     o.imageSmoothingEnabled = false;
-    if (!this.photo) o.clearRect(0, 0, W * 2, H * 2);
+    if (!this.photo) {
+      o.clearRect(0, 0, W * 2, H * 2);
+      if (this.photoPending) {
+        // Chờ ảnh: nền trời trơn theo buổi, không lộ cảnh pixel.
+        const grad = o.createLinearGradient(0, 0, 0, H * 2);
+        grad.addColorStop(0, this.mood!.sky[0] ?? '#0B1020');
+        grad.addColorStop(1, this.mood!.horizon);
+        o.fillStyle = grad;
+        o.fillRect(0, 0, W * 2, H * 2);
+      }
+    }
     o.drawImage(this.dyn, 0, 0, W * 2, H * 2);
   }
 
@@ -1158,7 +1214,8 @@ export class RailScene {
     const m = this.mood!;
     this.t += dt;
     this.scroll += dt * 60 * this.speed;
-    const photo = !!this.photo && this.photoAlpha >= 1;
+    // Có ảnh (kể cả đang hiện dần) hoặc đang chờ ảnh: không vẽ nền pixel.
+    const photo = !!this.photo || this.photoPending;
     if (!photo) this.drawBackdrop(dt, m);
     else if (this.view === 'window') {
       this.windowForeground(dt, m);
@@ -1258,7 +1315,8 @@ export class RailScene {
     }
     // Chuyển ga: tàu chui hầm — tối dần, đổi cảnh, sáng dần.
     if (this.trans) {
-      this.trans.p += dt / 1.4;
+      const waiting = !this.trans.next && this.photoPending && this.t - this.pendingSince < 3;
+      this.trans.p = waiting ? Math.min(this.trans.p + dt / 1.4, 0.5) : this.trans.p + dt / 1.4;
       const p = this.trans.p;
       if (p >= 0.5 && this.trans.next) {
         const n = this.trans.next;

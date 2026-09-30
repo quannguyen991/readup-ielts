@@ -5,6 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { ensureGameKeyframes } from '@/components/game/game-anim';
 import {
   AREA_ICON,
+  AREA_TONE,
   AreaCard,
   DarkChip,
   PICK_AREAS,
@@ -16,6 +17,7 @@ import {
   StepBar,
 } from '@/components/game/QuestPicker';
 import { Grid } from '@/components/layout/Grid';
+import { BackPill, HUB, Panel } from '@/components/game/quest-hub/kit';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui';
@@ -36,9 +38,9 @@ import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
  * Mảng nằm trên URL (`?area=math`) nên nút Quay lại của trình duyệt đưa về bước 1
  * đúng như người dùng nghĩ. Quái trong game khi học đánh ở MỌI bài, nên chọn bài
  * nào cũng là vào trận.
+ *
+ * Cùng bộ thẻ xanh mực với sảnh game (`components/game/quest-hub/kit`, 30/09/2026).
  */
-
-const PAD = { borderRadius: 22, backgroundColor: 'rgba(23,18,58,0.92)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)', padding: 18 } as const;
 
 type Filter = 'all' | 'open' | 'done';
 
@@ -59,31 +61,16 @@ export default function QuestPick() {
 
   return (
     <Screen>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
-        <Pressable
-          accessibilityRole="link"
-          onPress={() => router.replace((chosen ? '/quest/pick' : '/quest') as never)}
-          style={({ hovered }: { hovered?: boolean }) => ({
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 6,
-            borderRadius: 999,
-            paddingHorizontal: 12,
-            paddingVertical: 7,
-            backgroundColor: hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)',
-          })}
-        >
-          <Icon name="chevron-left" size={15} color="#FFFFFF" />
-          <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
-            {chosen ? 'Đổi mảng' : 'ReadUp Quest'}
-          </Text>
-        </Pressable>
-        <StepBar step={chosen ? 2 : 1} />
-      </View>
+      <View style={{ width: '100%', maxWidth: 1280, alignSelf: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
+          <BackPill label={chosen ? 'Đổi mảng' : 'ReadUp Quest'} onPress={() => router.replace((chosen ? '/quest/pick' : '/quest') as never)} />
+          <StepBar step={chosen ? 2 : 1} />
+        </View>
 
-      <CrossFade swapKey={chosen?.id ?? 'areas'}>
-        {chosen ? <LessonStep island={chosen} /> : <AreaStep areas={areas} />}
-      </CrossFade>
+        <CrossFade swapKey={chosen?.id ?? 'areas'}>
+          {chosen ? <LessonStep island={chosen} /> : <AreaStep areas={areas} />}
+        </CrossFade>
+      </View>
     </Screen>
   );
 }
@@ -93,7 +80,7 @@ function AreaStep({ areas }: { areas: Island[] }) {
     <View style={{ marginTop: 18, marginBottom: 28 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: '#FFFFFF' }}>
+          <Text accessibilityRole="header" className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: HUB.ink }}>
             Hôm nay đánh ở mảng nào?
           </Text>
           <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: QUEST_MUTED, maxWidth: 620 }}>
@@ -113,7 +100,7 @@ function AreaStep({ areas }: { areas: Island[] }) {
         </Grid>
       </View>
 
-      <View style={{ ...PAD, marginTop: 16 }}>
+      <Panel style={{ marginTop: 16 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
           <View aria-hidden>
             <SealIcon name="flame" color="#F0703F" size={32} />
@@ -133,7 +120,7 @@ function AreaStep({ areas }: { areas: Island[] }) {
             <QuickFight key={q.href} item={q} />
           ))}
         </View>
-      </View>
+      </Panel>
     </View>
   );
 }
@@ -155,16 +142,18 @@ function LessonStep({ island }: { island: Island }) {
     (m) => (filter === 'all' || (filter === 'done') === m.done) && (level === 'all' || m.level === level),
   );
   const open = island.missions.length - island.done;
+  const tone = AREA_TONE[island.id] ?? island.color;
 
   return (
     <View style={{ marginTop: 18, marginBottom: 28 }}>
-      <View style={{ ...PAD, overflow: 'hidden', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 16 }}>
-        <View style={{ width: 56, height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: island.color }}>
+      <Panel style={{ overflow: 'hidden', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 16 }}>
+        <View style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 5, backgroundColor: tone }} />
+        <View style={{ width: 56, height: 56, borderRadius: 16, alignItems: 'center', justifyContent: 'center', backgroundColor: tone }}>
           <Icon name={AREA_ICON[island.id]} size={26} color="#FFFFFF" strokeWidth={2.1} />
         </View>
         <View style={{ flex: 1, minWidth: 220 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
-            <Text className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: '#FFFFFF' }}>
+            <Text accessibilityRole="header" className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: HUB.ink }}>
               {island.name.replace(/^Đảo /, '')}
             </Text>
             {island.missions.length > 0 && island.done === island.missions.length ? (
@@ -179,8 +168,8 @@ function LessonStep({ island }: { island: Island }) {
             {island.tagline}
           </Text>
           <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', gap: 10, maxWidth: 420 }}>
-            <View style={{ flex: 1, height: 7, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.1)', overflow: 'hidden' }}>
-              <View style={{ height: 7, width: '100%', backgroundColor: island.color, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
+            <View style={{ flex: 1, height: 7, borderRadius: 3, backgroundColor: HUB.track, overflow: 'hidden' }}>
+              <View style={{ height: 7, width: '100%', backgroundColor: tone, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
             </View>
             <Text className="font-strong" style={{ fontSize: 12, color: '#FFFFFF' }}>
               {island.done}/{island.missions.length} bài đã qua
@@ -214,7 +203,7 @@ function LessonStep({ island }: { island: Island }) {
             <Icon name="arrow-right" size={16} color="#2A1B02" strokeWidth={2.4} />
           </Pressable>
         ) : null}
-      </View>
+      </Panel>
 
       <View style={{ marginTop: 16, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
         <DarkChip label={`Tất cả · ${island.missions.length}`} active={filter === 'all'} onPress={() => setFilter('all')} />
@@ -222,7 +211,7 @@ function LessonStep({ island }: { island: Island }) {
         <DarkChip label={`Đã qua · ${island.done}`} active={filter === 'done'} onPress={() => setFilter('done')} />
         {levels.length > 1 ? (
           <>
-            <View style={{ width: 1, height: 20, backgroundColor: 'rgba(255,255,255,0.15)', marginHorizontal: 4 }} />
+            <View style={{ width: 1, height: 20, backgroundColor: HUB.line, marginHorizontal: 4 }} />
             <DarkChip label="Mọi độ khó" active={level === 'all'} onPress={() => setLevel('all')} />
             {levels.map((l) => (
               <DarkChip key={l} label={l} active={level === l} onPress={() => setLevel(l)} />
@@ -233,7 +222,7 @@ function LessonStep({ island }: { island: Island }) {
 
       <View style={{ marginTop: 14 }}>
         {shown.length === 0 ? (
-          <View style={{ ...PAD, alignItems: 'center' }}>
+          <Panel style={{ alignItems: 'center' }}>
             <View aria-hidden style={{ marginBottom: 8 }}>
               <Motion kind="wobble">
                 <Sticker tilt={-8}>
@@ -244,12 +233,12 @@ function LessonStep({ island }: { island: Island }) {
             <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
               {filter === 'done' ? 'Chưa qua bài nào ở đây.' : 'Không còn bài nào khớp bộ lọc.'}
             </Text>
-          </View>
+          </Panel>
         ) : (
           <CrossFade swapKey={`${filter}-${level}`}>
             <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={12}>
               {shown.map((m) => (
-                <StageTile key={m.id} mission={m} color={island.color} isNext={m.id === next?.id} />
+                <StageTile key={m.id} mission={m} color={tone} isNext={m.id === next?.id} />
               ))}
             </Grid>
           </CrossFade>

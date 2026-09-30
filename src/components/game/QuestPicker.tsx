@@ -8,6 +8,7 @@ import { anim, MOVE } from '@/components/game/game-anim';
 import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import type { Island, IslandId, Mission } from '@/services/world/islands';
+import { HUB } from './quest-hub/kit';
 
 /**
  * Các mảnh của MÀN CHỌN TRẬN (`/quest/pick`) và trang ReadUp Quest.
@@ -16,13 +17,14 @@ import type { Island, IslandId, Mission } from '@/services/world/islands';
  * (loại bài học), rồi CHỌN BÀI (phần học nào), rồi mới vào lý thuyết và luyện —
  * không nhảy thẳng vào một bài lý thuyết do máy tự chọn.
  *
- * Nền tối của game, thẻ mềm cùng tông màu mảng; không viền đen, không ô số tròn
+ * Nền xanh mực của sảnh game (bộ thẻ chung ở `quest-hub/kit`, bỏ tông tím ngày
+ * 30/09/2026), thẻ mềm cùng tông màu mảng; không viền đen, không ô số tròn
  * đầu hàng (dáng IELTS Dictionary). Mỗi bài là một "màn" có lá cờ pixel: cờ màu
  * mảng là chưa qua, cờ vàng là đã qua.
  */
 
 export const QUEST_GOLD = '#FACC15';
-export const QUEST_MUTED = 'rgba(255,255,255,0.68)';
+export const QUEST_MUTED = HUB.muted;
 const WEB = Platform.OS === 'web';
 const CRISP = { shapeRendering: 'crispEdges' } as object;
 
@@ -48,16 +50,31 @@ export const AREA_KIND: Record<IslandId, string> = {
   arena: 'Săn quái',
 };
 
+/**
+ * Màu hiển thị của từng mảng trong game. Màu gốc của đảo (services/world) có
+ * chàm và tím — người dùng không thích tông tím, nên ở các trang game đổi sang
+ * bảng màu chung: Math xanh dương, Verbal đỏ, Từ vựng xanh lá, Nghe xanh trời,
+ * Dịch hồng.
+ */
+export const AREA_TONE: Record<IslandId, string> = {
+  math: HUB.blue,
+  verbal: HUB.red,
+  vocab: HUB.green,
+  listen: HUB.sky,
+  translate: HUB.pink,
+  arena: HUB.amber,
+};
+
 /** Trận nhanh: vào thẳng, không có danh sách bài. */
 export const QUICK_FIGHTS: { title: string; detail: string; href: string; icon: IconName; color: string }[] = [
-  { title: 'Đọc theo VOA', detail: 'Nói lại từng câu', href: '/shadow', icon: 'mic', color: '#14B8A6' },
-  { title: 'Đề của tuần', detail: 'Cả nước cùng một đề', href: '/weekly', icon: 'trophy', color: '#EAB308' },
-  { title: 'Đấu 1–1', detail: 'Thách bạn 10 câu', href: '/duel', icon: 'target', color: '#A855F7' },
-  { title: 'Bản đồ ReadUp', detail: 'Đi bộ qua sáu đảo', href: '/quest/world', icon: 'compass', color: '#6366F1' },
+  { title: 'Đọc theo VOA', detail: 'Nói lại từng câu', href: '/shadow', icon: 'mic', color: HUB.green },
+  { title: 'Đề của tuần', detail: 'Cả nước cùng một đề', href: '/weekly', icon: 'trophy', color: HUB.amber },
+  { title: 'Đấu 1–1', detail: 'Thách bạn 10 câu', href: '/duel', icon: 'target', color: HUB.orange },
+  { title: 'Bản đồ ReadUp', detail: 'Đi bộ qua sáu đảo', href: '/quest/world', icon: 'compass', color: HUB.blue },
 ];
 
 /** Màu theo bậc khó (0 dễ → 3 khó) — màu mang thông tin, không xoay vòng. */
-export const TIER_TONE = ['#4ADE80', '#38BDF8', '#A78BFA', '#FB7185'] as const;
+export const TIER_TONE = ['#4ADE80', '#38BDF8', '#FBBF24', '#FB7185'] as const;
 
 function hoverStyle(hovered: boolean | undefined, lift = 3): object {
   return WEB
@@ -127,6 +144,7 @@ export function StepBar({ step }: { step: 1 | 2 | 3 }) {
 export function AreaCard({ island, onPress }: { island: Island; onPress: () => void }) {
   const next = island.missions.find((m) => !m.done);
   const [hover, setHover] = useState(false);
+  const tone = AREA_TONE[island.id] ?? island.color;
   return (
     <Pressable
       accessibilityRole="button"
@@ -138,22 +156,22 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
         height: '100%',
         borderRadius: 20,
         overflow: 'hidden',
-        backgroundColor: 'rgba(23,18,58,0.92)',
+        backgroundColor: HUB.panel,
         borderWidth: 1,
-        borderColor: hover ? `${island.color}AA` : 'rgba(255,255,255,0.09)',
-        ...(WEB ? ({ boxShadow: hover ? `0 18px 40px ${island.color}33` : 'none' } as object) : null),
+        borderColor: hover ? `${tone}AA` : HUB.line,
+        ...(WEB ? ({ boxShadow: hover ? `0 18px 40px ${tone}33` : '0 10px 26px rgba(2,8,23,0.3)' } as object) : null),
         ...hoverStyle(hover),
       }}
     >
       <LinearGradient
-        colors={[`${island.color}40`, `${island.color}00`]}
+        colors={[`${tone}33`, `${tone}00`]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0.9, y: 0.9 }}
         style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}
       />
       <View style={{ padding: 16, flex: 1 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-          <View style={{ width: 46, height: 46, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: island.color }}>
+          <View style={{ width: 46, height: 46, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: tone }}>
             <Icon name={AREA_ICON[island.id]} size={22} color="#FFFFFF" strokeWidth={2.1} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
@@ -167,14 +185,14 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
           <Icon name="arrow-right" size={18} color={hover ? '#FFFFFF' : 'rgba(255,255,255,0.4)'} />
         </View>
 
-        <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: 'rgba(255,255,255,0.82)' }} numberOfLines={2}>
+        <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: 'rgba(226,232,240,0.86)' }} numberOfLines={2}>
           {island.tagline}
         </Text>
 
         <View style={{ flex: 1 }} />
         <View style={{ marginTop: 14, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <View style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.1)', overflow: 'hidden' }}>
-            <View style={{ height: 6, width: '100%', backgroundColor: island.color, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
+          <View style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: HUB.track, overflow: 'hidden' }}>
+            <View style={{ height: 6, width: '100%', backgroundColor: tone, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
           </View>
           <Text className="font-strong" style={{ fontSize: 12, color: '#FFFFFF', fontVariant: ['tabular-nums'] }}>
             {island.done}/{island.missions.length}
@@ -226,9 +244,9 @@ export function StageTile({
         minHeight: 158,
         borderRadius: 18,
         padding: 14,
-        backgroundColor: hover ? '#27215C' : isNext ? '#2A2548' : '#1D1848',
+        backgroundColor: hover ? '#16294A' : isNext ? '#13243F' : HUB.panel,
         borderWidth: 1,
-        borderColor: isNext ? 'rgba(250,204,21,0.55)' : hover ? `${color}99` : 'rgba(255,255,255,0.08)',
+        borderColor: isNext ? 'rgba(250,204,21,0.55)' : hover ? `${color}99` : HUB.line,
         ...hoverStyle(hover, 2),
       }}
     >
@@ -300,11 +318,13 @@ export function DarkChip({ label, active, onPress }: { label: string; active: bo
         borderRadius: 999,
         paddingHorizontal: 12,
         paddingVertical: 7,
-        backgroundColor: active ? '#FFFFFF' : hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.06)',
+        backgroundColor: active ? '#FFFFFF' : hovered ? HUB.raisedHover : HUB.panel,
+        borderWidth: 1,
+        borderColor: active ? '#FFFFFF' : HUB.line,
         ...(WEB ? ({ transition: 'background-color 150ms ease' } as object) : null),
       })}
     >
-      <Text className="font-strong" style={{ fontSize: 12, color: active ? '#17123A' : 'rgba(255,255,255,0.85)' }}>
+      <Text className="font-strong" style={{ fontSize: 12, color: active ? HUB.panel : 'rgba(226,232,240,0.88)' }}>
         {label}
       </Text>
     </Pressable>
@@ -325,7 +345,7 @@ export function QuickFight({ item, stacked = false }: { item: (typeof QUICK_FIGH
         gap: 10,
         borderRadius: 14,
         padding: stacked ? 8 : 11,
-        backgroundColor: hovered ? 'rgba(255,255,255,0.11)' : 'rgba(255,255,255,0.055)',
+        backgroundColor: hovered ? HUB.raisedHover : HUB.raised,
         ...hoverStyle(hovered, 2),
       })}
     >

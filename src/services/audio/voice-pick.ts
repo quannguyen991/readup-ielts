@@ -2,7 +2,11 @@
  * Chấm điểm giọng đọc tiếng Anh (hàm thuần) — dùng ở `voice.ts`.
  *   - tên nữ quen thuộc: +10; tên nam: loại hẳn;
  *   - giọng nơ-ron ("natural", "neural", "premium", "enhanced", "online"): +5;
- *   - Anh–Mỹ +2, Anh–Anh +1.
+ *   - Anh–Mỹ +2, Anh–Anh +1;
+ *   - giọng Google của Chrome (giọng mạng, tự nhiên) +4;
+ *   - giọng máy đời cũ của Windows (Zira, Hazel, Susan… bản SAPI, không có chữ
+ *     "Online/Natural"): −8 — nghe như rô-bốt. Người dùng 01/10/2026: "giọng này
+ *     khó nghe quá" (khi đó máy chọn "Microsoft Zira" vì hoà điểm với Google).
  */
 export type VoiceInfo = { identifier: string; name: string; language: string };
 
@@ -18,6 +22,8 @@ const MALE = [
   'oliver', 'gordon', 'lee', 'matthew', 'joey', 'justin', 'kevin', 'liam', 'noah', 'richard', 'sam', 'connor',
 ];
 const NEURAL = ['natural', 'neural', 'premium', 'enhanced', 'online'];
+/** Giọng SAPI cài sẵn trên Windows — dùng khi không còn giọng nào khác. */
+const LEGACY = ['zira', 'hazel', 'susan', 'heera', 'linda', 'catherine', 'mark', 'david'];
 
 const hasWord = (name: string, needle: string) => new RegExp(`(^|[^a-z])${needle}([^a-z]|$)`).test(name);
 
@@ -29,7 +35,10 @@ export function scoreVoice(v: VoiceInfo): number | null {
   const female = FEMALE.some((f) => hasWord(name, f));
   if (!female && MALE.some((m) => hasWord(name, m))) return null;
   let score = female ? 10 : 0;
-  if (NEURAL.some((n) => name.includes(n))) score += 5;
+  const neural = NEURAL.some((n) => name.includes(n));
+  if (neural) score += 5;
+  if (name.includes('google')) score += 4;
+  if (!neural && name.includes('microsoft') && LEGACY.some((l) => hasWord(name, l))) score -= 8;
   if (lang.startsWith('en-us')) score += 2;
   else if (lang.startsWith('en-gb')) score += 1;
   return score;
