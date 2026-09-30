@@ -25,6 +25,9 @@ import { canRecognize, speakSentence, startListening, type ListenEnd, type Liste
 import { useShadowStore } from '@/store/useShadowStore';
 import { color } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker, type BadgeIcon } from '@/components/illust/Cute';
+import { CuteMic, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 const AMBER = '#D97706';
 const RATES = [
@@ -231,6 +234,13 @@ export default function ShadowLesson() {
     return (
       <StudyFrame backHref="/shadow" title="Đọc theo">
         <StudyCard>
+          <View aria-hidden className="mb-3">
+            <Motion kind="wobble">
+              <Sticker tilt={-6}>
+                <CuteMic size={56} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-strong text-cardTitle text-ink">Không mở được bài này.</Text>
           <Button className="mt-4 self-start" label="Chọn bài khác" onPress={() => router.replace('/shadow' as never)} />
         </StudyCard>
@@ -476,9 +486,14 @@ function ResultPanel({
             </Text>
           </View>
           <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
-            <Text className="font-heavy text-cardTitle" style={{ color: tone }}>
-              {band.label}
-            </Text>
+            <View className="flex-row items-center gap-2">
+              <View aria-hidden>
+                <BadgeSticker icon={band.tone === 'good' ? 'star' : band.tone === 'ok' ? 'check' : 'refresh'} color={tone} size={24} />
+              </View>
+              <Text className="min-w-0 flex-1 font-heavy text-cardTitle" style={{ color: tone }}>
+                {band.label}
+              </Text>
+            </View>
             <Text className="mt-1 font-sans text-body text-muted">
               Máy nghe rõ {result.hits}/{result.counted} từ{result.nears ? `, ${result.nears} từ gần đúng` : ''}
               {result.counted < tokens.length ? ' · tên riêng máy không nghe ra thì không tính' : ''}.
@@ -564,12 +579,39 @@ function Summary({
     .slice(0, 10);
   return (
     <StudyCard>
-      <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Xong bài</Text>
-      <Text className="mt-1 font-heavy text-pageTitle text-ink">{title}</Text>
+      <View className="flex-row items-center gap-3">
+        <View className="min-w-0 flex-1">
+          <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Xong bài</Text>
+          <Text className="mt-1 font-heavy text-pageTitle text-ink">{title}</Text>
+        </View>
+        <View aria-hidden className="flex-row items-end">
+          <Motion kind="float">
+            <Sticker tilt={-8}>
+              <CuteMic size={44} />
+            </Sticker>
+          </Motion>
+          <Motion kind="wobble" delay={0.3}>
+            <Sticker tilt={8}>
+              <CuteTrophy size={58} />
+            </Sticker>
+          </Motion>
+        </View>
+      </View>
+      {scores.length ? (
+        <View aria-hidden className="mt-3">
+          <Label
+            text={avg >= 85 ? 'Đọc rất rõ 🏆' : avg >= 60 ? 'Khá lắm ⭐' : 'Luyện tiếp nhé 💪'}
+            color={avg >= 85 ? '#22A06B' : avg >= 60 ? '#4A7FE8' : '#F0703F'}
+            ink="#FFFFFF"
+            tilt={-4}
+            size={12}
+          />
+        </View>
+      ) : null}
       <View className="mt-5 flex-row flex-wrap gap-3">
-        <Stat value={`${scores.length}/${total}`} label="câu đã đọc lượt này" />
-        <Stat value={scores.length ? String(avg) : '—'} label="điểm trung bình" />
-        <Stat value={String(clear)} label="câu đọc rất rõ (≥ 85)" />
+        <Stat value={`${scores.length}/${total}`} label="câu đã đọc lượt này" icon="check" tint="#4A7FE8" />
+        <Stat value={scores.length ? String(avg) : '—'} label="điểm trung bình" icon="target" tint="#F2B632" />
+        <Stat value={String(clear)} label="câu đọc rất rõ (≥ 85)" icon="star" tint="#22A06B" />
       </View>
       {top.length ? (
         <View className="mt-5">
@@ -594,10 +636,15 @@ function Summary({
   );
 }
 
-function Stat({ value, label }: { value: string; label: string }) {
+function Stat({ value, label, icon, tint }: { value: string; label: string; icon: BadgeIcon; tint: string }) {
   return (
     <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F5F9', flexGrow: 1, flexShrink: 1, flexBasis: 150 }}>
-      <Text className="font-heavy text-sectionTitle text-ink">{value}</Text>
+      <View className="flex-row items-center gap-2">
+        <View aria-hidden>
+          <BadgeSticker icon={icon} color={tint} size={26} />
+        </View>
+        <Text className="font-heavy text-sectionTitle text-ink">{value}</Text>
+      </View>
       <Text className="mt-0.5 font-sans text-label text-muted">{label}</Text>
     </View>
   );

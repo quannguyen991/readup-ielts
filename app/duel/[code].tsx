@@ -14,6 +14,10 @@ import { displayableName } from '@/services/gamification/display-name';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge } from '@/components/illust/Cute';
+import { CuteChat, CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
 
@@ -126,10 +130,15 @@ export default function DuelRoom() {
             <Icon name="chevron-left" size={18} color={color.ink} />
             <Text className="font-semi text-body text-ink">Sảnh đấu</Text>
           </Pressable>
-          <Text className="font-heavy text-bodyLg text-ink">
+          <View className="min-w-0 flex-row items-center gap-2" style={{ flexShrink: 1 }}>
+          <View aria-hidden>
+            <SealIcon name="flame" color="#F0703F" size={34} />
+          </View>
+          <Text className="min-w-0 font-heavy text-bodyLg text-ink" style={{ flexShrink: 1 }}>
             Phòng <Text style={{ letterSpacing: 3 }}>{code}</Text>
             {deck ? <Text className="font-sans text-body text-muted"> · {deck.nameVi}</Text> : null}
           </Text>
+          </View>
         </View>
 
         {/* Hai thanh điểm, chạy thời gian thực. */}
@@ -144,12 +153,29 @@ export default function DuelRoom() {
               <Text className="font-sans text-bodyLg text-ink">Không kết nối được máy chủ thời gian thực. Kiểm tra mạng rồi tải lại trang.</Text>
             ) : full ? (
               <View className="items-start">
+                <View aria-hidden className="mb-3">
+                  <Motion kind="wobble">
+                    <Badge icon="bolt" color="#F2B632" size={48} />
+                  </Motion>
+                </View>
                 <Text className="font-heavy text-sectionTitle text-ink">Phòng này đã đủ hai người</Text>
                 <Text className="mt-1 font-sans text-bodyLg text-muted">Tạo một phòng mới để thách đấu bạn của bạn.</Text>
                 <Button className="mt-4" label="Về sảnh đấu" onPress={() => router.replace('/duel' as never)} />
               </View>
             ) : bothDone ? (
               <View className="items-center">
+                <View aria-hidden className="mb-3 items-center">
+                  <View style={{ marginBottom: -4, zIndex: 2 }}>
+                    <Motion kind="pop">
+                      <Label text="Về đích! 🏁" color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
+                    </Motion>
+                  </View>
+                  <Motion kind="float">
+                    <Sticker tilt={-6}>
+                      <CuteTrophy size={72} />
+                    </Sticker>
+                  </Motion>
+                </View>
                 <Text className="font-heavy text-hero text-ink">
                   {verdictTitle(mine, opponent ? theirs : null)}
                 </Text>
@@ -163,7 +189,16 @@ export default function DuelRoom() {
                 {!isHost ? <Text className="mt-2 font-sans text-label text-muted">Chủ phòng có thể bấm “Đấu lại”.</Text> : null}
               </View>
             ) : myDone ? (
-              <Text className="text-center font-semi text-bodyLg text-ink">Bạn đã xong — chờ đối thủ về đích…</Text>
+              <View className="items-center">
+                <View aria-hidden className="mb-2">
+                  <Motion kind="float">
+                    <Sticker tilt={8}>
+                      <CuteRocket size={56} />
+                    </Sticker>
+                  </Motion>
+                </View>
+                <Text className="text-center font-semi text-bodyLg text-ink">Bạn đã xong — chờ đối thủ về đích…</Text>
+              </View>
             ) : counting && room.start ? (
               <View className="items-center py-6">
                 <Text className="font-sans text-bodyLg text-muted">Chuẩn bị…</Text>
@@ -207,7 +242,18 @@ export default function DuelRoom() {
               </View>
             ) : (
               <View>
-                <Text className="font-heavy text-sectionTitle text-ink">{opponent ? 'Đủ hai người!' : 'Mời bạn vào phòng'}</Text>
+                <View className="flex-row items-center justify-between gap-3">
+                  <View className="min-w-0 flex-1">
+                    <Text className="font-heavy text-sectionTitle text-ink">{opponent ? 'Đủ hai người!' : 'Mời bạn vào phòng'}</Text>
+                  </View>
+                  <View aria-hidden>
+                    <Motion kind="wobble">
+                      <Sticker tilt={8}>
+                        <CuteChat size={48} />
+                      </Sticker>
+                    </Motion>
+                  </View>
+                </View>
                 <Text className="mt-1 font-sans text-bodyLg text-muted">
                   {opponent
                     ? isHost
@@ -255,6 +301,11 @@ function ScoreBar({ name, t, total, tone, done }: { name: string; t: PlayerTally
           <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
             {name}
           </Text>
+          {done ? (
+            <View aria-hidden>
+              <Badge icon="check" color="#22A06B" size={24} />
+            </View>
+          ) : null}
           <Text className="font-heavy text-bodyLg" style={{ color: tone }}>
             {t.score}
           </Text>

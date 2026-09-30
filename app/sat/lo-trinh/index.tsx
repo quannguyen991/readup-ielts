@@ -7,7 +7,8 @@ import { LightHero, HeroStat } from '@/components/layout/LightHero';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { Appear } from '@/components/motion/Motion';
 import { Label } from '@/components/illust/Sticker';
-import { Sparkles } from '@/components/illust/CuteMore';
+import { CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
+import { Sticker } from '@/components/illust/Sticker';
 import { ChapterSticker, LevelDots, levelState } from '@/components/sat-roadmap/RoadmapUi';
 import { PHASES, ROAD_CHAPTERS, type RoadChapter } from '@/data/sat-roadmap';
 import { useSatRoadmapStore } from '@/store/useSatRoadmapStore';
@@ -80,9 +81,10 @@ export default function SatRoadmap() {
                     {PHASES[ph].title.vi}.
                   </Text>
                 </View>
-                <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
-                  Ch. {list[0]!.n}–{list[list.length - 1]!.n}
-                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                  <Label text={`Ch. ${list[0]!.n}–${list[list.length - 1]!.n}`} color="#FFFFFF" ink="#0F172A" tilt={4} size={13} />
+                  <ChapterSticker art={PHASE_ART[ph]} size={56} tilt={ph % 2 ? 8 : -8} />
+                </View>
               </View>
               <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
                 {list.map((c) => (
@@ -97,6 +99,8 @@ export default function SatRoadmap() {
     </Screen>
   );
 }
+
+const PHASE_ART: Record<1 | 2 | 3 | 4, RoadChapter['art']> = { 1: 'calculator', 2: 'pencil', 3: 'rocket', 4: 'globe' };
 
 function ChapterCard({ c, best, basis }: { c: RoadChapter; best: ReturnType<typeof useSatRoadmapStore.getState>['progress'][string] | undefined; basis: string }) {
   const done = (['easy', 'medium', 'hard'] as const).filter((l) => levelState(best?.[l]) === 'passed').length;
@@ -131,15 +135,22 @@ function ChapterCard({ c, best, basis }: { c: RoadChapter; best: ReturnType<type
             {c.title.en}
           </Text>
         </View>
-        {done === 3 ? <Text style={{ fontSize: 22 }}>🏆</Text> : null}
+        {done === 3 ? (
+          <Motion kind="wobble">
+            <Sticker tilt={10}>
+              <CuteTrophy size={40} />
+            </Sticker>
+          </Motion>
+        ) : null}
       </View>
       <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-        <LevelDots best={best} />
-        {c.bookSet?.length ? (
-          <Text className="font-strong" style={{ fontSize: 12, color: '#475569' }}>
-            📖 {c.bookSet.length} bài theo sách{levelState(best?.book) === 'passed' ? ' 🏅' : ''}
-          </Text>
-        ) : null}
+        <View style={{ flex: 1, minWidth: 90 }}>
+          <LevelDots best={best} />
+        </View>
+        <View style={{ flexDirection: 'row', gap: 6 }}>
+          {c.bookSet?.length ? <Label text={`📖 ${c.bookSet.length}${levelState(best?.book) === 'passed' ? ' 🏅' : ''}`} color="#FFF1B8" ink="#2A1B02" tilt={-4} size={11} /> : null}
+          <Label text={`✏️ +20${levelState(best?.extra) === 'passed' ? ' 🏅' : ''}`} color="#E7F7EF" ink="#14532D" tilt={3} size={11} />
+        </View>
       </View>
     </Pressable>
   );

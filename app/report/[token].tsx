@@ -4,9 +4,15 @@ import { useLocalSearchParams } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
-import { Icon, type IconName } from '@/components/ui/Icon';
+import { type IconName } from '@/components/ui/Icon';
 import type { ParentReport } from '@/services/report/parent-report';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Sticker } from '@/components/illust/Sticker';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
+
+/** Màu huy hiệu cho từng ô (bảng màu chung). */
+const SEAL: Partial<Record<IconName, string>> = { grid: '#4A7FE8', letters: '#F472B6', book: '#22A06B', trophy: '#F2B632' };
 
 type Payload = { name: string | null; generatedAt: string; hasData: boolean; report: ParentReport };
 
@@ -42,6 +48,13 @@ export default function ParentReportScreen() {
     return (
       <Screen>
         <View className="mt-10 w-full self-center rounded-[22px] bg-white p-6" style={[{ maxWidth: 640 }, CARD]}>
+          <View aria-hidden className="mb-3 self-start">
+            <Motion kind="wobble">
+              <Sticker tilt={-8}>
+                <CuteMagnifier size={60} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-heavy text-sectionTitle text-ink">Không mở được báo cáo</Text>
           <Text className="mt-1 font-sans text-bodyLg text-muted">{error} Hãy nhờ con gửi lại đường dẫn mới.</Text>
         </View>
@@ -73,15 +86,25 @@ export default function ParentReportScreen() {
       <View className="w-full self-center" style={{ maxWidth: 760 }}>
         <Appear>
           <View className="rounded-[24px] p-6" style={[{ backgroundColor: '#4F46E5' }, CARD]}>
-            <Text className="font-strong text-label uppercase tracking-[1.4px] text-white/80">ReadUp · Báo cáo tuần</Text>
-            <Text className="mt-2 font-heavy text-pageTitle text-white">Báo cáo học tập của {who}</Text>
+            <View className="flex-row items-start justify-between gap-3">
+              <View className="min-w-0 flex-1">
+                <Text className="font-strong text-label uppercase tracking-[1.4px] text-white/80">ReadUp · Báo cáo tuần</Text>
+                <Text className="mt-2 font-heavy text-pageTitle text-white">Báo cáo học tập của {who}</Text>
+              </View>
+              <PageStickers scene="progress" compact />
+            </View>
             <Text className="mt-2 font-sans text-bodyLg text-white/90">{summary}</Text>
           </View>
         </Appear>
 
         <Appear index={1}>
           <View className="mt-4 rounded-[22px] bg-white p-5" style={CARD}>
-            <Text className="font-heavy text-cardTitle text-ink">Thời gian học 7 ngày qua</Text>
+            <View className="flex-row items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="calendar" color="#0EA5E9" size={36} />
+              </View>
+              <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">Thời gian học 7 ngày qua</Text>
+            </View>
             <View className="mt-4 flex-row items-end justify-between gap-2" style={{ height: 150 }}>
               {r.days.map((d) => {
                 const h = Math.max(4, (d.minutes / maxMin) * 120);
@@ -128,7 +151,12 @@ export default function ParentReportScreen() {
         {r.topErrors.length > 0 ? (
           <Appear index={3}>
             <View className="mt-4 rounded-[22px] bg-white p-5" style={CARD}>
-              <Text className="font-heavy text-cardTitle text-ink">Lỗi {who} đang sửa</Text>
+              <View className="flex-row items-center gap-2.5">
+                <View aria-hidden>
+                  <SealIcon name="target" color="#F0703F" size={36} />
+                </View>
+                <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">Lỗi {who} đang sửa</Text>
+              </View>
               <Text className="mt-1 font-sans text-body text-muted">Những lỗi hay mắc nhất ở SAT Math trong 2 tuần qua — app đã gọi tên và giao bài sửa.</Text>
               <View className="mt-3 gap-2">
                 {r.topErrors.map((e) => (
@@ -155,7 +183,9 @@ function Tile({ icon, tone, title, lines }: { icon: IconName; tone: string; titl
   return (
     <View className="rounded-[20px] bg-white p-5" style={[{ flexGrow: 1, flexShrink: 1, flexBasis: 300 }, CARD]}>
       <View className="flex-row items-center gap-2">
-        <Icon name={icon} size={18} color={tone} />
+        <View aria-hidden>
+          <SealIcon name={icon} color={SEAL[icon] ?? tone} size={34} />
+        </View>
         <Text className="font-heavy text-bodyLg text-ink">{title}</Text>
       </View>
       <View className="mt-2 gap-1">

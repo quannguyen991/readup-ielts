@@ -28,6 +28,9 @@ import { QuotaPaywall } from '@/components/billing/PlanUi';
 import { useBillingStore, useQuota } from '@/store/useBillingStore';
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { PageStickers, SealIcon, type ArtScene } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Thi thử phần Math — hai module, module 2 đổi độ khó theo kết quả module 1.
@@ -108,7 +111,7 @@ export default function MathMockScreen() {
     const blocked = mockQuota.entitlement;
     return (
       <Screen>
-        <Text className="font-heavy text-pageTitle text-ink">Thi thử SAT Math</Text>
+        <PageTitle text="Thi thử SAT Math" scene="test" />
         <View className="mt-4">
           <QuotaPaywall
             title="Hết lượt thi thử tuần này"
@@ -130,10 +133,11 @@ export default function MathMockScreen() {
   if (phase.stage === 'intro') {
     return (
       <Screen>
-        <Text className="font-heavy text-pageTitle text-ink">Thi thử SAT Math</Text>
-        <Text className="mt-1 font-sans text-body text-muted">
-          Hai module liên tiếp, đúng cấu trúc phần Math của đề số hoá.
-        </Text>
+        <PageTitle text="Thi thử SAT Math" scene="test">
+          <Text className="mt-1 font-sans text-body text-muted">
+            Hai module liên tiếp, đúng cấu trúc phần Math của đề số hoá.
+          </Text>
+        </PageTitle>
 
         <View className="mt-4">
           <Grid columns={3} tabletColumns={3} mobileColumns={3}>
@@ -144,7 +148,15 @@ export default function MathMockScreen() {
         </View>
 
         <Card className="mt-4">
-          <Text className="font-strong text-cardTitle text-ink">Trước khi bắt đầu</Text>
+          <View className="flex-row items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name="clock" color="#F0703F" size={36} />
+            </View>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Trước khi bắt đầu</Text>
+            <View aria-hidden>
+              <Label text="Tự nộp khi hết giờ ⏱" color="#F2B632" tilt={4} size={11} />
+            </View>
+          </View>
           <View className="mt-2 gap-2">
             <Bullet>
               Đồng hồ chạy lùi và TỰ NỘP khi hết giờ, từng module một. Không tạm dừng được, đúng như
@@ -190,11 +202,29 @@ export default function MathMockScreen() {
     const correct = countCorrect(phase.attempts);
     return (
       <Screen>
-        <Text className="font-heavy text-pageTitle text-ink">Xong module 1</Text>
+        <PageTitle text="Xong module 1" scene="progress" />
         <Card className="mt-4">
-          <Text className="font-strong text-cardTitle text-ink">
-            Đúng {correct}/{phase.attempts.length}
-          </Text>
+          <View className="flex-row flex-wrap items-center gap-3">
+            <View aria-hidden>
+              <Motion kind="wobble">
+                <Sticker tilt={-8}>
+                  {phase.tier === 'harder' ? <CuteRocket size={52} /> : <CuteTrophy size={52} />}
+                </Sticker>
+              </Motion>
+            </View>
+            <Text className="font-strong text-cardTitle text-ink">
+              Đúng {correct}/{phase.attempts.length}
+            </Text>
+            <View aria-hidden>
+              <Label
+                text={phase.tier === 'harder' ? 'Nhánh khó 🚀' : 'Nhánh dễ 🎯'}
+                color={phase.tier === 'harder' ? '#F0703F' : '#0EA5E9'}
+                ink="#FFFFFF"
+                tilt={4}
+                size={12}
+              />
+            </View>
+          </View>
           <Text className="mt-2 font-sans text-body text-muted">
             {phase.tier === 'harder'
               ? 'Bạn được chuyển sang module 2 KHÓ HƠN. Đây là nhánh duy nhất với tới vùng điểm cao — làm chậm lại một chút cũng được, đổi lại đừng sai câu dễ.'
@@ -226,6 +256,20 @@ export default function MathMockScreen() {
       submitLabel="Nộp bài và xem điểm"
       onFinish={finishModule2}
     />
+  );
+}
+
+function PageTitle({ text, scene, children }: { text: string; scene: ArtScene; children?: React.ReactNode }) {
+  return (
+    <View className="flex-row items-center gap-3">
+      <View className="min-w-0 flex-1">
+        <Text className="font-heavy text-pageTitle text-ink">{text}</Text>
+        {children}
+      </View>
+      <View aria-hidden>
+        <PageStickers scene={scene} />
+      </View>
+    </View>
   );
 }
 

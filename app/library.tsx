@@ -109,7 +109,7 @@ export default function LibraryScreen() {
     <Screen>
       <LightHero
         scene="home"
-        badge="READING LIBRARY"
+        badge="READING LIBRARY" art="verbal"
         line1="Kho bài đọc"
         line2="đọc kỹ, nhớ lâu hơn"
         subtitle="Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng lúc sắp quên."

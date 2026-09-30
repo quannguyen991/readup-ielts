@@ -28,6 +28,10 @@ import { skinOf, useRewardStore, type WearSlot } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Badge as SealBadge } from '@/components/illust/Cute';
+import { Motion } from '@/components/illust/CuteMore';
 
 /**
  * ĐỔI QUÀ — nơi tiêu sao kiếm được từ việc học (trước tên "Đổi sao"; người dùng
@@ -225,6 +229,8 @@ export default function ShopScreen() {
   return (
     <Screen>
       <Appear>
+        <View className="flex-row items-center gap-3">
+        <View className="min-w-0 flex-1">
         <View className="flex-row flex-wrap items-center gap-3">
           <Pressable
             accessibilityRole="link"
@@ -246,6 +252,9 @@ export default function ShopScreen() {
           Sao chỉ đến từ việc học: 1 sao mỗi phút, 0,5 sao mỗi câu (tối đa {dailyCapFor(dateKey(today))} sao/ngày{inPromo(dateKey(today)) ? ' — đang mùa sao ×2 tới hết 30/10' : ''}, chuỗi dài được nhân thêm), cộng sao thưởng khi hạ quái, lên cấp, xong nhiệm vụ.
           {planUntil ? ` Gói đang dùng: ${PLANS[activePlan].name} tới ${planUntil}.` : ''}
         </Text>
+        </View>
+        <PageStickers scene="shop" />
+        </View>
       </Appear>
 
       <View className="mt-4 flex-row flex-wrap gap-2" accessibilityRole="tablist">
@@ -273,7 +282,19 @@ export default function ShopScreen() {
 
       {ideas.now.length > 0 || ideas.next ? (
         <View className="mt-4 rounded-card border border-border bg-white p-3.5" style={{ gap: 8 }}>
-          <Text className="font-heavy text-body text-ink">💡 Gợi ý đổi sao</Text>
+          <View className="flex-row flex-wrap items-center gap-2">
+            <View aria-hidden>
+              <SealIcon name="sparkle" color="#F2B632" size={34} />
+            </View>
+            <Text className="font-heavy text-body text-ink">Gợi ý đổi sao</Text>
+            {ideas.now.length > 0 ? (
+              <View aria-hidden>
+                <Motion kind="pop">
+                  <Label text="Đủ sao rồi! ✨" color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                </Motion>
+              </View>
+            ) : null}
+          </View>
           {ideas.now.length > 0 ? (
             <View className="flex-row flex-wrap" style={{ gap: 8 }}>
               {ideas.now.map((i) => (
@@ -406,6 +427,16 @@ function ItemCard({
         ...CARD_MOTION,
       }}
     >
+      {/* Nhãn dán góc thẻ: món đang đeo có dấu tích, món đủ sao có nhãn nhỏ. */}
+      {worn ? (
+        <View aria-hidden style={{ position: 'absolute', top: -8, right: 6, zIndex: 3, pointerEvents: 'none' }}>
+          <SealBadge icon="check" color="#22A06B" size={28} />
+        </View>
+      ) : !have && affordable ? (
+        <View aria-hidden style={{ position: 'absolute', top: -10, left: 8, zIndex: 3, pointerEvents: 'none' }}>
+          <Label text="Đủ sao" color="#F2B632" ink="#2A1B02" tilt={-6} size={10} />
+        </View>
+      ) : null}
       <Pressable
         accessibilityRole="button"
         accessibilityLabel={have ? `${item.name} — ${worn ? wornLabel.toLowerCase() : 'đã có, bấm để dùng'}` : `${item.name} — ${item.price} sao`}

@@ -35,7 +35,7 @@ export default function MockTestsScreen() {
     <Screen>
       <LightHero
         scene="verbal"
-        badge="IELTS · MOCK TESTS"
+        badge="IELTS · MOCK TESTS" art="test"
         line1="Mock Tests"
         line2="đúng nhịp bài thi thật"
         subtitle={`${tests.length} đề dựng sẵn, mỗi đề 3 passage trong 60 phút, độ khó tăng dần — không đề nào dùng lại passage của đề khác.`}

@@ -36,6 +36,9 @@ import { skinOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Trang Xếp hạng.
@@ -100,6 +103,8 @@ export default function LeaderboardScreen() {
         </View>
       ) : null}
       <Appear>
+        <View className="flex-row items-center gap-3">
+        <View className="min-w-0 flex-1">
         <View className="flex-row flex-wrap items-center gap-3">
           <Text className="font-heavy text-pageTitle text-ink">🏆 Xếp hạng</Text>
           <View className="flex-1" />
@@ -113,6 +118,9 @@ export default function LeaderboardScreen() {
         <Text className="mt-1 font-sans text-body text-muted">
           Điểm tính từ chính thời gian học và số câu đã làm — không có nút nào cộng điểm. Hết tháng, top 10 được thưởng sao.
         </Text>
+        </View>
+        <PageStickers scene="progress" />
+        </View>
       </Appear>
 
       <Appear index={1}>
@@ -131,9 +139,14 @@ export default function LeaderboardScreen() {
                       <AvatarBadge avatarId={avatarId} name={name} size={60} skin={skin} />
                     </View>
                     <View className="min-w-0 flex-1 pt-2">
-                      <Text className="font-heavy text-sectionTitle text-ink" numberOfLines={1}>
-                        {tier.name}
-                      </Text>
+                      <View className="flex-row items-center gap-2">
+                        <View aria-hidden>
+                          <SealIcon name="trophy" color="#F2B632" size={30} />
+                        </View>
+                        <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink" numberOfLines={1}>
+                          {tier.name}
+                        </Text>
+                      </View>
                       <Text className="font-sans text-label text-muted">
                         {'★'.repeat(tier.stars)}
                         <Text style={{ color: color.subtle }}>{'★'.repeat(5 - tier.stars)}</Text>
@@ -291,7 +304,13 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
     <View className="mt-5 overflow-hidden rounded-[24px]" style={{ backgroundColor: '#FFFFFF', borderWidth: 1.5, borderColor: '#FCD34D' }}>
       <LinearGradient colors={['#FEF3C7', '#FDE68A', '#FBBF24']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: narrow ? 16 : 20 }}>
         <View className="flex-row flex-wrap items-center gap-3">
-          <Text style={{ fontSize: 30 }}>🏅</Text>
+          <View aria-hidden>
+            <Motion kind="wobble">
+              <Sticker tilt={-8}>
+                <CuteTrophy size={narrow ? 44 : 54} />
+              </Sticker>
+            </Motion>
+          </View>
           <View className="min-w-0 flex-1">
             <Text className="font-heavy" style={{ fontSize: 22, color: GOLD_INK }}>
               Bảng vàng hôm nay
@@ -490,7 +509,12 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
 
       {prev && prev.board.length > 0 ? (
         <View className="mt-4 rounded-panel bg-surfaceAlt p-3">
-          <Text className="font-strong text-label text-muted">Vinh danh {monthLabel(prev.month)}</Text>
+          <View className="flex-row flex-wrap items-center gap-2">
+            <Text className="font-strong text-label text-muted">Vinh danh {monthLabel(prev.month)}</Text>
+            <View aria-hidden>
+              <Label text="Top 3 🏆" color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
+            </View>
+          </View>
           <View className="mt-1.5 flex-row flex-wrap gap-x-4 gap-y-1">
             {prev.board.slice(0, 3).map((r, i) => (
               <Text key={r.id} className="font-semi text-body text-ink" numberOfLines={1}>
@@ -599,7 +623,16 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
   if (rows.length === 0) {
     return (
       <Card className="mt-3">
-        <Text className="font-sans text-body text-muted">Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.</Text>
+        <View className="flex-row items-center gap-3">
+          <View aria-hidden>
+            <Motion kind="float">
+              <Sticker tilt={-8}>
+                <CuteRocket size={52} />
+              </Sticker>
+            </Motion>
+          </View>
+          <Text className="min-w-0 flex-1 font-sans text-body text-muted">Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.</Text>
+        </View>
       </Card>
     );
   }
@@ -634,6 +667,13 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
               {/* Hiệu ứng hồ sơ (kiểu Discord) của người trên bục phủ cả thẻ. */}
               <ProfileEffect effect={findItem(row.effect)?.effect ?? null} intensity={0.7} />
               <ProfileCover cover={findItem(row.cover)?.cover ?? null} height={first ? 64 : 52} />
+              {first ? (
+                <View aria-hidden style={{ position: 'absolute', top: 8, left: 8, zIndex: 3, pointerEvents: 'none' }}>
+                  <Motion kind="pop">
+                    <Label text="Top 1 👑" color="#F2B632" ink="#2A1B02" tilt={-6} size={narrow ? 9 : 11} />
+                  </Motion>
+                </View>
+              ) : null}
               <View style={{ alignItems: 'center', paddingHorizontal: 8, paddingBottom: 12, marginTop: first ? -34 : -28 }}>
                 <View style={{ borderRadius: 999, borderWidth: 3, borderColor: '#FFFFFF', backgroundColor: '#FFFFFF' }}>
                   <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={narrow ? (first ? 52 : 44) : first ? 64 : 52} skin={skinOf(row.skin ?? null)} />

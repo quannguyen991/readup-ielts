@@ -12,6 +12,9 @@ import {
 } from '@/services/mastery/cohort';
 import { DOMAIN_LABEL, type Domain } from '@/services/mastery/types';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Motion } from '@/components/illust/CuteMore';
 
 /**
  * Màn giáo viên: lớp đang vướng chung ở đâu.
@@ -75,6 +78,8 @@ export default function TeacherScreen() {
 
   return (
     <Screen>
+      <View className="flex-row items-start justify-between gap-3">
+      <View className="min-w-0 flex-1">
       <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
         <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
           Teacher view
@@ -82,6 +87,9 @@ export default function TeacherScreen() {
       </View>
 
       <Text className="mt-3 font-heavy text-pageTitle text-ink">Lớp đang vướng ở đâu</Text>
+      </View>
+      <PageStickers scene="review" />
+      </View>
       <Text className="mt-1.5 max-w-[680px] font-sans text-bodyLg text-muted">
         Học sinh xuất sổ bằng chứng từ máy mình rồi gửi cho bạn; dán vào đây để xem chỗ vướng chung.
         Không cần tài khoản, không có gì rời khỏi máy bạn, và bản xuất không mang tên ai — chỉ có mã
@@ -89,7 +97,12 @@ export default function TeacherScreen() {
       </Text>
 
       <Card className="mt-5">
-        <Text className="font-strong text-body text-ink">Dán bản xuất của học sinh</Text>
+        <View className="flex-row items-center gap-2.5">
+          <View aria-hidden>
+            <SealIcon name="clipboard" color="#4A7FE8" size={36} />
+          </View>
+          <Text className="min-w-0 flex-1 font-strong text-body text-ink">Dán bản xuất của học sinh</Text>
+        </View>
         <Text className="mt-1 font-sans text-label text-muted">
           Mỗi lần một bản, hoặc dán cả một mảng JSON nhiều bản.
         </Text>
@@ -123,7 +136,19 @@ export default function TeacherScreen() {
       {summaries.length === 0 ? null : (
         <>
           <View className="mt-6">
-            <Text className="font-strong text-cardTitle text-ink">Đáng dạy chung buổi tới</Text>
+            <View className="flex-row flex-wrap items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="target" color="#F0703F" size={38} />
+              </View>
+              <Text className="font-strong text-cardTitle text-ink">Đáng dạy chung buổi tới</Text>
+              {teachable.length > 0 ? (
+                <View aria-hidden>
+                  <Motion kind="pop">
+                    <Label text="Buổi tới 🎯" color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
+                  </Motion>
+                </View>
+              ) : null}
+            </View>
             <Text className="mt-1 max-w-[640px] font-sans text-body text-muted">
               Những kỹ năng có từ ba em trở lên đang vướng. Dưới ngưỡng đó thì nói riêng với từng em
               hiệu quả hơn là dừng cả lớp lại.
@@ -145,7 +170,12 @@ export default function TeacherScreen() {
           </View>
 
           <View className="mt-6">
-            <Text className="font-strong text-cardTitle text-ink">Toàn bộ kỹ năng đã quan sát</Text>
+            <View className="flex-row items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="list" color="#0EA5E9" size={38} />
+              </View>
+              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Toàn bộ kỹ năng đã quan sát</Text>
+            </View>
             <View className="mt-3 gap-2">
               {summaries.map((s) => (
                 <SkillRow key={`all-${s.domain}:${s.key}`} summary={s} />

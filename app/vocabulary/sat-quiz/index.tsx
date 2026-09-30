@@ -10,6 +10,12 @@ import type { VocabLesson } from '@/data/lessons/vocab-lessons';
 import { passed, SAT_QUIZ_LEVELS, SAT_QUIZ_TOPICS, type SatQuizLevel } from '@/services/vocab/sat-quiz';
 import { satQuizKey, useSatQuizStore, type SatQuizBest } from '@/store/useSatQuizStore';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge, type BadgeIcon } from '@/components/illust/Cute';
+import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
+
+const LEVEL_BADGE: readonly BadgeIcon[] = ['check', 'target', 'bolt'];
 
 /**
  * ÔN TỪ VỰNG SAT — chọn chủ đề, rồi đi ba mức Dễ → Vừa → Khó.
@@ -35,9 +41,14 @@ export default function SatQuizHub() {
   return (
     <Screen>
       <Appear>
-        <Text className="font-heavy text-pageTitle" style={{ color: INK }}>
-          Ôn từ vựng SAT
-        </Text>
+        <View className="flex-row items-center gap-3">
+          <Text className="min-w-0 flex-1 font-heavy text-pageTitle" style={{ color: INK }}>
+            Ôn từ vựng SAT
+          </Text>
+          <View aria-hidden>
+            <PageStickers scene="vocab" />
+          </View>
+        </View>
         <Text className="mt-1 font-sans text-bodyLg" style={{ color: INK, opacity: 0.8, maxWidth: 680 }}>
           {topicCount} chủ đề, {totalWords} từ. Mỗi chủ đề ba mức từ dễ đến khó — đúng từ 80% là qua mức.
           {doneTopics > 0 ? ` Bạn đã qua mức Khó ở ${doneTopics} chủ đề.` : ''}
@@ -48,7 +59,9 @@ export default function SatQuizHub() {
         <View className="mt-4 flex-row flex-wrap gap-2">
           {SAT_QUIZ_LEVELS.map((l, i) => (
             <View key={l.level} className="flex-row items-center gap-2 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1, borderColor: '#E6E8F2' }}>
-              <View style={{ width: 9, height: 9, borderRadius: 3, backgroundColor: LEVEL_TONE[i] }} />
+              <View aria-hidden>
+                <Badge icon={LEVEL_BADGE[i] ?? 'star'} color={LEVEL_TONE[i] ?? '#4A7FE8'} size={22} />
+              </View>
               <Text className="font-strong text-label" style={{ color: INK }}>
                 {l.name}
               </Text>
@@ -62,9 +75,14 @@ export default function SatQuizHub() {
 
       {SAT_QUIZ_TOPICS.map((group, gi) => (
         <Appear key={group.subject} index={gi + 2}>
-          <Text className="mb-3 mt-7 font-heavy text-sectionTitle" style={{ color: INK }}>
-            {group.label}
-          </Text>
+          <View className="mb-3 mt-7 flex-row items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name={group.subject === 'math' ? 'grid' : 'letters'} color={group.subject === 'math' ? '#4A7FE8' : '#F0703F'} size={38} />
+            </View>
+            <Text className="min-w-0 flex-1 font-heavy text-sectionTitle" style={{ color: INK }}>
+              {group.label}
+            </Text>
+          </View>
           <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
             {group.lessons.map((lesson) => (
               <TopicCard key={lesson.slug} lesson={lesson} best={best} />
@@ -91,8 +109,8 @@ function TopicCard({ lesson, best }: { lesson: VocabLesson; best: Record<string,
       }}
     >
       <View className="flex-row items-center gap-2">
-        <View className="h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: lesson.subject === 'math' ? '#EEEFFE' : '#FEECEF' }}>
-          <Icon name={lesson.subject === 'math' ? 'grid' : 'letters'} size={17} color={lesson.subject === 'math' ? '#6366F1' : '#F43F5E'} />
+        <View className="h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: lesson.subject === 'math' ? '#EAF1FD' : '#FEECEF' }}>
+          <Icon name={lesson.subject === 'math' ? 'grid' : 'letters'} size={17} color={lesson.subject === 'math' ? '#4A7FE8' : '#F43F5E'} />
         </View>
         <Text className="font-mid text-label" style={{ color: MUTED }}>
           {lesson.words.length} từ
@@ -106,9 +124,24 @@ function TopicCard({ lesson, best }: { lesson: VocabLesson; best: Record<string,
           </View>
         ) : null}
       </View>
-      <Text className="mt-2.5 font-heavy" style={{ fontSize: 17, lineHeight: 22, color: INK }} numberOfLines={2}>
-        {lesson.title}
-      </Text>
+      <View className="mt-2.5 flex-row items-start gap-2">
+        <Text className="min-w-0 flex-1 font-heavy" style={{ fontSize: 17, lineHeight: 22, color: INK }} numberOfLines={2}>
+          {lesson.title}
+        </Text>
+        {nextLevel === null ? (
+          <View aria-hidden>
+            <Motion kind="wobble">
+              <Sticker tilt={8}>
+                <CuteTrophy size={34} />
+              </Sticker>
+            </Motion>
+          </View>
+        ) : results.every((r) => !r) ? (
+          <View aria-hidden>
+            <Label text="Mới" color="#0EA5E9" ink="#FFFFFF" tilt={5} size={11} />
+          </View>
+        ) : null}
+      </View>
       <Text className="mt-1 font-sans text-label" style={{ color: MUTED }} numberOfLines={2}>
         {lesson.blurb}
       </Text>

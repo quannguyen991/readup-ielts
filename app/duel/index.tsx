@@ -10,6 +10,9 @@ import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { isRoomCode, makeRoomCode } from '@/services/duel/duel';
 import { color } from '@/theme/tokens';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Motion } from '@/components/illust/CuteMore';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
 
@@ -37,6 +40,7 @@ export default function DuelLobby() {
       <Appear>
         <LightHero
           scene="vocab"
+          art="duel"
           badge="ĐẤU 1–1"
           line1="Thách bạn đấu từ vựng,"
           line2="ai nhớ nhanh hơn"
@@ -47,7 +51,17 @@ export default function DuelLobby() {
       <View className="mt-5 flex-row flex-wrap gap-4">
         <Appear index={1} style={{ flexGrow: 2, flexShrink: 1, flexBasis: 420 }}>
           <View className="rounded-[22px] bg-white p-5" style={CARD}>
-            <Text className="font-heavy text-sectionTitle text-ink">Tạo phòng</Text>
+            <View className="flex-row flex-wrap items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="plus" color="#F0703F" size={40} />
+              </View>
+              <Text className="font-heavy text-sectionTitle text-ink">Tạo phòng</Text>
+              <View aria-hidden>
+                <Motion kind="pop">
+                  <Label text="Mời bạn ⚔️" color="#F0703F" ink="#FFFFFF" tilt={-4} size={12} />
+                </Motion>
+              </View>
+            </View>
             <Text className="mt-1 font-sans text-body text-muted">Chọn bộ từ để đấu:</Text>
             <TextInput
               value={filter}
@@ -85,7 +99,17 @@ export default function DuelLobby() {
 
         <Appear index={2} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 280 }}>
           <View className="rounded-[22px] bg-white p-5" style={CARD}>
-            <Text className="font-heavy text-sectionTitle text-ink">Vào phòng</Text>
+            <View className="flex-row flex-wrap items-center gap-2.5">
+              <View aria-hidden>
+                <SealIcon name="arrow-right" color="#0EA5E9" size={40} />
+              </View>
+              <Text className="font-heavy text-sectionTitle text-ink">Vào phòng</Text>
+              <View aria-hidden>
+                <Motion kind="pop" delay={0.2}>
+                  <Label text="Có mã? 🔑" color="#F2B632" ink="#2A1B02" tilt={4} size={12} />
+                </Motion>
+              </View>
+            </View>
             <Text className="mt-1 font-sans text-body text-muted">Nhập mã 5 ký tự bạn của bạn gửi:</Text>
             <TextInput
               value={code}

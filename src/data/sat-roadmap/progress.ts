@@ -1,7 +1,7 @@
 /** Tiến độ lộ trình (thuần, test được trên Node). */
 export type LevelBest = { correct: number; total: number; rounds: number; at: string };
-/** Ba mức của quiz, cộng `book` là bộ bài bám sách. */
-export type PracticeKey = 'easy' | 'medium' | 'hard' | 'book';
+/** Ba mức của quiz, `book` là bộ bài bám sách, `extra` là bộ Luyện thêm 20 câu. */
+export type PracticeKey = 'easy' | 'medium' | 'hard' | 'book' | 'extra';
 export type RoadmapProgress = Record<string, Partial<Record<PracticeKey, LevelBest>>>;
 
 /** Gộp hai máy: mỗi (chương, mức) lấy điểm tỉ lệ cao hơn, số lượt lớn hơn. */

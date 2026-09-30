@@ -32,7 +32,7 @@ export default function WritingHome() {
   return (
     <Screen>
       <LightHero
-        badge="WRITING PRACTICE"
+        badge="WRITING PRACTICE" art="writing"
         line1="Writing"
         line2="củng cố cấu trúc, mở rộng từ vựng"
         subtitle="Dựng đúng câu trước, rồi mới dựng cả bài — mỗi bước dài thêm một bậc."

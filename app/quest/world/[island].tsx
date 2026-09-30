@@ -6,6 +6,10 @@ import { Icon } from '@/components/ui';
 import { useHotkeys } from '@/components/vocab/study/StudyKit';
 import { mountIsland, type IslandHandle } from '@/components/world/island-engine';
 import { useWorldIslands } from '@/components/world/useWorldIslands';
+import { SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CuteGlobe } from '@/components/illust/Cute';
+import { Motion } from '@/components/illust/CuteMore';
 
 /**
  * MAP TRONG MỘT ĐẢO (`island-engine`): nhiệm vụ là các bệ đá dọc con đường,
@@ -60,6 +64,13 @@ export default function IslandScreen() {
   if (!island) {
     return (
       <View className="flex-1 items-center justify-center bg-[#0b0b24] p-6">
+        <View aria-hidden className="mb-3">
+          <Motion kind="float">
+            <Sticker tilt={-8}>
+              <CuteGlobe size={64} />
+            </Sticker>
+          </Motion>
+        </View>
         <Text className="font-semi text-bodyLg text-white">Không có đảo này.</Text>
         <Pressable onPress={() => router.replace('/quest/world' as never)} className="mt-3 rounded-pill bg-white/10 px-4 py-2">
           <Text className="font-semi text-body text-white">Về bản đồ</Text>
@@ -78,7 +89,10 @@ export default function IslandScreen() {
             <Icon name="chevron-left" size={16} color="#E2E8F0" />
             <Text className="font-semi text-label text-white">Bản đồ</Text>
           </Pressable>
-          <View className="rounded-pill px-3 py-2" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
+          <View className="flex-row items-center gap-1.5 rounded-pill py-1 pl-1 pr-3" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
+            <View aria-hidden>
+              <SealIcon name="compass" color="#22A06B" size={28} />
+            </View>
             <Text className="font-strong text-label text-white">
               {island.name} · <Text style={{ color: '#FDE047' }}>{island.done}</Text>/{island.missions.length}
             </Text>
@@ -99,10 +113,17 @@ export default function IslandScreen() {
               {mission.done ? <Icon name="check" size={18} color="#1F1530" strokeWidth={2.6} /> : <Text className="font-heavy text-body text-white">{selected + 1}</Text>}
             </View>
             <View className="min-w-0 flex-1">
-              <Text className="font-semi text-label" style={{ color: '#94A3B8' }}>
-                Nhiệm vụ {selected + 1}/{island.missions.length}
-                {mission.done ? ' · đã xong' : ''}
-              </Text>
+              <View className="flex-row flex-wrap items-center gap-2">
+                <Text className="font-semi text-label" style={{ color: '#94A3B8' }}>
+                  Nhiệm vụ {selected + 1}/{island.missions.length}
+                  {mission.done ? ' · đã xong' : ''}
+                </Text>
+                {mission.done ? (
+                  <View aria-hidden>
+                    <Label text="Đã qua ⭐" color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
+                  </View>
+                ) : null}
+              </View>
               <Text className="font-heavy text-body text-white" numberOfLines={2}>
                 {mission.title}
               </Text>

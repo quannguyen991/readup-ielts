@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
+import { Sticker } from '@/components/illust/Sticker';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 import { Screen } from '@/components/layout/Screen';
 import { MathRunner } from '@/components/math/MathRunner';
@@ -110,6 +112,13 @@ function DrillRunner() {
     return (
       <Screen>
         <Card>
+          <View aria-hidden className="mb-3">
+            <Motion kind="wobble">
+              <Sticker tilt={-6}>
+                <CuteMagnifier size={56} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-strong text-cardTitle text-ink">Không có kỹ năng này</Text>
           <Text className="mt-1 font-sans text-body text-muted">
             Đường dẫn trỏ tới một kỹ năng không nằm trong 19 kỹ năng của Digital SAT Math.

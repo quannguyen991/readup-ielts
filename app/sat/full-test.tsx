@@ -189,7 +189,7 @@ function Intro({ onStart }: { onStart: () => void }) {
     <ExamShell>
       <LightHero
         scene="math"
-        badge="DIGITAL SAT · FULL TEST"
+        badge="DIGITAL SAT · FULL TEST" art="test"
         line1="Thi thử SAT đầy đủ"
         line2="một mạch từ đầu tới cuối"
         subtitle="Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module; module sau khó dễ tuỳ module trước."

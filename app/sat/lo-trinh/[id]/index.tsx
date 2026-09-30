@@ -7,10 +7,12 @@ import { useHydrated } from '@/components/layout/useHydrated';
 import { Appear } from '@/components/motion/Motion';
 import { MindMap } from '@/components/illust/MindMap';
 import { Label } from '@/components/illust/Sticker';
-import { Sparkles } from '@/components/illust/CuteMore';
+import { CuteBulb, CuteFlame, CuteMagnifier, CutePlant, CuteRocket, CuteStar, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
+import { Badge, CuteBook, CutePencil, type BadgeIcon } from '@/components/illust/Cute';
+import { Sticker } from '@/components/illust/Sticker';
 import { MathText } from '@/components/math/MathText';
 import { BiText, ChapterSticker, LEVEL_TONE, levelState, type Lang } from '@/components/sat-roadmap/RoadmapUi';
-import { LEVEL_LABEL, PASS_RATIO, PHASES, QUIZ_SIZE, ROAD_CHAPTERS, bookSetReady, chapterById, liveTemplates } from '@/data/sat-roadmap';
+import { EXTRA_SIZE, LEVEL_LABEL, PASS_RATIO, PHASES, QUIZ_SIZE, ROAD_CHAPTERS, bookSetReady, chapterById, liveTemplates } from '@/data/sat-roadmap';
 import { useSatRoadmapStore, type LevelBest } from '@/store/useSatRoadmapStore';
 import type { RoadChapter } from '@/data/sat-roadmap';
 
@@ -67,6 +69,11 @@ export default function RoadChapterScreen() {
                 📖 Tương ứng Chương {c.n}, The College Panda · trang {c.bookPages[0]}–{c.bookPages[1]}
               </Text>
             ) : null}
+            <View style={{ marginTop: 14, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
+              <Label text={`💡 ${c.theory.length} ý lý thuyết`} color="#FFFFFF" ink="#0F172A" tilt={-3} size={13} />
+              {c.bookSet?.length ? <Label text={`📖 ${c.bookSet.length} bài theo sách`} color="#FACC15" ink="#2A1B02" tilt={2} size={13} /> : null}
+              <Label text={`✏️ +${EXTRA_SIZE} câu luyện thêm`} color="#0F172A" ink="#FFFFFF" tilt={-2} size={13} />
+            </View>
           </View>
           <ChapterSticker art={c.art} size={wide ? 120 : 76} tilt={6} />
         </View>
@@ -96,7 +103,7 @@ export default function RoadChapterScreen() {
       </View>
 
       {/* ------------------------------------------------ sơ đồ chủ đề con */}
-      <Block title="Sơ đồ chương." kicker="CHỦ ĐỀ CON">
+      <Block title="Sơ đồ chương." kicker="CHỦ ĐỀ CON" art={<CuteMagnifier size={88} />} tag={{ text: `${c.subtopics.length} chủ đề con`, color: '#4A7FE8', ink: '#FFFFFF' }}>
         <MindMap
           height={c.subtopics.length > 3 ? 340 : 280}
           narrowBelow={520}
@@ -106,11 +113,18 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ lý thuyết */}
-      <Block title="Lý thuyết." kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'}>
+      <Block title="Lý thuyết." kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'} art={<CuteBulb size={90} />} tag={{ text: 'VI + EN', color: '#FACC15', ink: '#2A1B02' }}>
         <View style={{ gap: 12 }}>
           {c.theory.map((t, i) => (
             <View key={i} style={{ borderRadius: 20, padding: 16, backgroundColor: '#F8FAFC', borderLeftWidth: 6, borderLeftColor: color, gap: 10 }}>
-              <BiText t={t.title} lang={lang} wide={wide} size={17} strong />
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                <Motion kind="pop" delay={i * 60}>
+                  <Badge icon={THEORY_ICONS[i % THEORY_ICONS.length]!} color={color} size={38} />
+                </Motion>
+                <View style={{ flex: 1 }}>
+                  <BiText t={t.title} lang={lang} wide={wide} size={17} strong />
+                </View>
+              </View>
               <BiText t={t.body} lang={lang} wide={wide} />
               {t.formula ? (
                 <View style={{ alignSelf: 'flex-start', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E2E8F0' }}>
@@ -125,9 +139,10 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ ví dụ */}
-      <Block title="Ví dụ." kicker="GIẢI TỪNG BƯỚC · WORKED EXAMPLE">
+      <Block title="Ví dụ." kicker="GIẢI TỪNG BƯỚC · WORKED EXAMPLE" art={<CutePencil size={86} />} tag={{ text: 'Từng bước', color: '#22A06B', ink: '#FFFFFF' }}>
         {c.examples.map((e, i) => (
-          <View key={i} style={{ gap: 10 }}>
+          <View key={i} style={{ gap: 10, marginTop: i ? 18 : 0 }}>
+            <Label text={`Ví dụ ${i + 1}`} color={i % 2 ? '#FFD6E0' : '#FFF1B8'} ink="#0F172A" tilt={i % 2 ? 3 : -3} size={13} />
             <View style={{ borderRadius: 16, padding: 14, backgroundColor: '#EEF3FF' }}>
               <MathText size={16} weight="semibold">
                 {e.problem}
@@ -145,21 +160,28 @@ export default function RoadChapterScreen() {
                 </View>
               </View>
             ))}
-            <View style={{ alignSelf: 'flex-start', borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6, backgroundColor: '#22A06B' }}>
-              <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
-                ✓ {e.answer}
-              </Text>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <View style={{ borderRadius: 999, paddingHorizontal: 14, paddingVertical: 6, backgroundColor: '#22A06B' }}>
+                <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
+                  ✓ {e.answer}
+                </Text>
+              </View>
+              <Motion kind="twinkle" delay={i * 200}>
+                <Sticker tilt={10}>
+                  <CuteStar size={30} />
+                </Sticker>
+              </Motion>
             </View>
           </View>
         ))}
       </Block>
 
       {/* ------------------------------------------------ bẫy */}
-      <Block title="Bẫy hay gặp." kicker="TRAPS" tone="#FFF1F0">
+      <Block title="Bẫy hay gặp." kicker="TRAPS" tone="#FFF1F0" art={<CuteFlame size={80} />} tag={{ text: 'Cẩn thận!', color: '#E0533D', ink: '#FFFFFF' }}>
         <View style={{ gap: 10 }}>
           {c.traps.map((t, i) => (
             <View key={i} style={{ flexDirection: 'row', gap: 10 }}>
-              <Text style={{ fontSize: 18 }}>⚠️</Text>
+              <Badge icon="bolt" color="#E0533D" size={30} />
               <View style={{ flex: 1 }}>
                 <BiText t={t} lang={lang} wide={wide} />
               </View>
@@ -169,8 +191,9 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ bài tập */}
-      <Block title="Luyện tập." kicker={`BỘ BÀI THEO SÁCH · 3 MỨC ${QUIZ_SIZE} CÂU · CÂU MỚI MỖI LƯỢT`}>
+      <Block title="Luyện tập." kicker={`BỘ BÀI THEO SÁCH · LUYỆN THÊM ${EXTRA_SIZE} CÂU · 3 MỨC ${QUIZ_SIZE} CÂU`} art={<CuteTrophy size={90} />} tag={{ text: 'Câu mới mỗi lượt', color: '#F0703F', ink: '#FFFFFF' }}>
         {c.bookSet?.length ? <BookSetCard c={c} best={hydrated ? best?.book : undefined} color={color} /> : null}
+        <ExtraSetCard c={c} best={hydrated ? best?.extra : undefined} />
         <View style={{ marginTop: c.bookSet?.length ? 12 : 0, flexDirection: wide ? 'row' : 'column', gap: 12 }}>
           {(['easy', 'medium', 'hard'] as const).map((lv, i) => {
             const b = hydrated ? best?.[lv] : undefined;
@@ -182,10 +205,15 @@ export default function RoadChapterScreen() {
             return (
               <View key={lv} style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: tone.soft, borderWidth: 2, borderColor: st === 'passed' ? tone.bg : 'transparent', gap: 8 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Text className="font-heavy" style={{ fontSize: 22, color: tone.ink }}>
-                    {tone.emoji} {LEVEL_LABEL[lv].vi}
-                  </Text>
-                  {st === 'passed' ? <Text style={{ fontSize: 22 }}>🏅</Text> : null}
+                  <View style={{ gap: 6 }}>
+                    <Label text={st === 'passed' ? 'Đã qua 🏅' : st === 'tried' ? 'Đang luyện' : 'Chưa mở'} color={st === 'passed' ? tone.bg : '#FFFFFF'} ink={st === 'passed' ? '#FFFFFF' : tone.ink} tilt={-4} size={12} />
+                    <Text className="font-heavy" style={{ fontSize: 22, color: tone.ink }}>
+                      {LEVEL_LABEL[lv].vi}
+                    </Text>
+                  </View>
+                  <Motion kind="float" delay={i * 250}>
+                    <Sticker tilt={i % 2 ? 8 : -8}>{LEVEL_ART[lv]}</Sticker>
+                  </Motion>
                 </View>
                 <Text className="font-semi" style={{ fontSize: 14, color: tone.ink }}>
                   {b ? `Tốt nhất ${b.correct}/${b.total} · ${b.rounds} lượt` : 'Chưa làm'}
@@ -233,7 +261,14 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
   return (
     <View style={{ borderRadius: 24, padding: 18, backgroundColor: '#0F172A', overflow: 'hidden', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
       <Sparkles count={5} />
-      <Text style={{ fontSize: 40 }}>📖</Text>
+      <View style={{ gap: 8, alignItems: 'center' }}>
+        <Motion kind="wobble">
+          <Sticker tilt={-8}>
+            <CuteBook size={64} />
+          </Sticker>
+        </Motion>
+        <Label text="Theo sách" color="#FACC15" ink="#2A1B02" tilt={4} size={12} />
+      </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
         <Text className="font-heavy" style={{ fontSize: 22, color: '#FFFFFF' }}>
           Bộ bài theo sách · {set.length} bài {st === 'passed' ? '🏅' : ''}
@@ -261,16 +296,78 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
   );
 }
 
-function Block({ title, kicker, tone = '#FFFFFF', children }: { title: string; kicker: string; tone?: string; children: React.ReactNode }) {
+const THEORY_ICONS: BadgeIcon[] = ['star', 'bolt', 'target', 'check', 'plus', 'question'];
+
+const LEVEL_ART: Record<'easy' | 'medium' | 'hard', React.ReactNode> = {
+  easy: <CutePlant size={70} />,
+  medium: <CuteFlame size={64} />,
+  hard: <CuteRocket size={70} />,
+};
+
+/**
+ * LUYỆN THÊM 20 CÂU ngoài bộ bài theo sách: ưu tiên dạng không có trong sách,
+ * 7 dễ → 7 trung bình → 6 khó, câu mới mỗi lượt.
+ */
+function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined }) {
+  const st = levelState(best);
+  return (
+    <View style={{ marginTop: 12, borderRadius: 24, padding: 18, backgroundColor: '#FFF6DD', borderWidth: 2, borderColor: st === 'passed' ? '#F2B632' : 'transparent', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+      <View style={{ gap: 8, alignItems: 'center' }}>
+        <Motion kind="float">
+          <Sticker tilt={7}>
+            <CutePencil size={60} />
+          </Sticker>
+        </Motion>
+        <Label text={`+${EXTRA_SIZE} câu`} color="#0F172A" ink="#FFFFFF" tilt={-4} size={12} />
+      </View>
+      <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
+        <Text className="font-heavy" style={{ fontSize: 22, color: '#2A1B02' }}>
+          Luyện thêm {EXTRA_SIZE} câu {st === 'passed' ? '🏅' : ''}
+        </Text>
+        <Text className="font-semi" style={{ fontSize: 14, color: '#7A4B00' }}>
+          Ngoài bộ bài theo sách · 🌱 7 dễ → 🔥 7 trung bình → 🚀 6 khó · câu mới mỗi lượt
+        </Text>
+        <Text className="font-semi" style={{ fontSize: 13, color: '#7A4B00' }}>
+          {best ? `Tốt nhất ${best.correct}/${best.total} · ${best.rounds} lượt` : 'Chưa làm'}
+        </Text>
+      </View>
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => router.push(`/sat/lo-trinh/${c.id}/extra` as never)}
+        style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: hovered ? '#7A4B00' : '#F2B632' })}
+      >
+        <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
+          {best ? 'Làm lượt mới' : `Làm ${EXTRA_SIZE} câu`}
+        </Text>
+      </Pressable>
+    </View>
+  );
+}
+
+function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title: string; kicker: string; tone?: string; art?: React.ReactNode; tag?: { text: string; color: string; ink: string }; children: React.ReactNode }) {
   return (
     <Appear>
       <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: tone, borderWidth: 1, borderColor: '#E2E8F0' }}>
-        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: '#64748B' }}>
-          {kicker}
-        </Text>
-        <Text className="font-heavy" style={{ fontSize: 28, color: '#0F172A', marginBottom: 14 }}>
-          {title}
-        </Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 14 }}>
+          <View style={{ flex: 1, gap: 2 }}>
+            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: '#64748B' }}>
+              {kicker}
+            </Text>
+            <Text className="font-heavy" style={{ fontSize: 28, color: '#0F172A' }}>
+              {title}
+            </Text>
+            {tag ? (
+              <View style={{ marginTop: 6 }}>
+                <Label text={tag.text} color={tag.color} ink={tag.ink} tilt={-3} size={12} />
+              </View>
+            ) : null}
+          </View>
+          {art ? (
+            <Motion kind="float">
+              <Sticker tilt={8}>{art}</Sticker>
+            </Motion>
+          ) : null}
+        </View>
         {children}
       </View>
     </Appear>

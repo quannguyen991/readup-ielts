@@ -20,6 +20,13 @@ import { deckLook } from '@/components/vocab/deck-style';
 import { deckProgress } from '@/services/vocab/deck-library';
 import { groupByStatus, type DeckStatus } from '@/services/vocab/deck-status';
 import { ProgressRing } from '@/components/vocab/DeckCard';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
+import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
+
+const GROUP_BADGE: readonly BadgeIcon[] = ['check', 'star', 'target', 'bolt'];
+const GROUP_TONE = ['#22A06B', '#4A7FE8', '#F0703F', '#E0533D'] as const;
 
 /**
  * Một bộ từ vựng: 50 từ, xếp theo mức band từ dễ tới khó.
@@ -139,6 +146,9 @@ export default function VocabTopicScreen() {
                 {topic.words.length} từ
               </Text>
             </View>
+            <View aria-hidden>
+              <PageStickers scene="vocab" size={80} />
+            </View>
             <ProgressRing pct={pct} color={bg} size={60} />
           </View>
         </View>
@@ -148,7 +158,12 @@ export default function VocabTopicScreen() {
       {/* ---------------------------------------------- mọi cách luyện của bộ */}
       <Appear index={1}>
         <View className="mt-5">
-          <Text className="font-heavy text-sectionTitle text-ink">Cách luyện</Text>
+          <View className="flex-row items-center gap-2.5">
+            <View aria-hidden>
+              <SealIcon name="target" color="#4A7FE8" size={38} />
+            </View>
+            <Text className="font-heavy text-sectionTitle text-ink">Cách luyện</Text>
+          </View>
           <View className="mt-3">
             <Grid columns={7} tabletColumns={4} mobileColumns={2} gap={12}>
               {MODES.map((m) => (
@@ -193,8 +208,12 @@ export default function VocabTopicScreen() {
             />
           ) : (
             <Card className="items-center py-10">
-              <View className="h-12 w-12 items-center justify-center rounded-2xl bg-primary-100">
-                <Icon name="book" size={24} color={color.primary} />
+              <View aria-hidden>
+                <Motion kind="float">
+                  <Sticker tilt={-6}>
+                    <CuteBook size={72} />
+                  </Sticker>
+                </Motion>
               </View>
               <Text className="mt-4 font-strong text-cardTitle text-ink">
                 {slug === NOTEBOOK_SLUG ? 'Chưa có từ nào trong sổ từ' : 'Bộ từ đang trống'}
@@ -274,7 +293,13 @@ export default function VocabTopicScreen() {
         </Appear>
       ) : (
         <View className="mt-3 flex-row items-center gap-2">
-          <Icon name="trophy" size={16} color={color.success} />
+          <View aria-hidden>
+            <Motion kind="wobble">
+              <Sticker tilt={-8}>
+                <CuteTrophy size={36} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-strong text-body text-ink">
             Đã lưu hết cả bộ này vào sổ từ.
           </Text>
@@ -285,6 +310,9 @@ export default function VocabTopicScreen() {
         <Appear key={group.label} index={gi + 2}>
           <View className="mt-5">
             <View className="flex-row items-center gap-2">
+              <View aria-hidden>
+                <BadgeSticker icon={GROUP_BADGE[gi % GROUP_BADGE.length]!} color={GROUP_TONE[gi % GROUP_TONE.length]!} size={28} />
+              </View>
               <Text className="font-heavy text-sectionTitle text-ink">{group.label}</Text>
               <Text className="font-sans text-label text-muted">{group.words.length} từ</Text>
             </View>
@@ -383,7 +411,7 @@ const MODES: { key: string; label: string; note: string; icon: IconName; tone: s
   { key: 'learn', label: 'Học xen kẽ', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', icon: 'book', tone: '#5B8BEE', recommended: true },
   { key: 'quiz', label: 'Quiz ôn tập', note: 'Trắc nghiệm A/B/C/D kiểu đề THPT', icon: 'target', tone: '#EA580C' },
   { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
-  { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#7C3AED' },
+  { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#E0533D' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
   { key: 'test', label: 'Kiểm tra', note: '20 câu trộn 4 dạng, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
   { key: 'game', label: 'Bóng bay', note: 'Trò chơi, có bảng điểm', icon: 'sparkle', tone: '#16A34A' },
@@ -435,6 +463,11 @@ function ModeTile({ mode, onPress }: { mode: (typeof MODES)[number]; onPress: ()
         <Icon name={mode.icon} size={20} color={mode.tone} />
       </View>
       <Text className="mt-2 text-center font-strong text-body text-ink">{mode.label}</Text>
+      {mode.recommended ? (
+        <View aria-hidden style={{ position: 'absolute', top: -8, right: -4 }}>
+          <Label text="Gợi ý ⭐" color="#F2B632" tilt={6} size={11} />
+        </View>
+      ) : null}
     </Pressable>
   );
 }

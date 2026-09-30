@@ -16,6 +16,10 @@ import { TOPICS } from '@/data/articles';
 import { useWritingStore } from '@/store/useWritingStore';
 import type { Task2Essay, WritingPrompt, WritingTask } from '@/lib/writing/types';
 import { CrossFade } from '@/components/motion/Motion';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { CutePencil } from '@/components/illust/Cute';
+import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Kho đề Writing.
@@ -114,11 +118,18 @@ export default function WritingLibraryScreen() {
 
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Luyện viết</Text>
-      <Text className="mt-1 font-sans text-bodyLg text-muted">
-        {stats.total} đề — {stats.byTask.ielts_task1} đề Task 1 và {stats.byTask.ielts_task2} đề
-        Task 2.
-      </Text>
+      <View className="flex-row items-center gap-3">
+        <View className="min-w-0 flex-1">
+          <Text className="font-heavy text-pageTitle text-ink">Luyện viết</Text>
+          <Text className="mt-1 font-sans text-bodyLg text-muted">
+            {stats.total} đề — {stats.byTask.ielts_task1} đề Task 1 và {stats.byTask.ielts_task2} đề
+            Task 2.
+          </Text>
+        </View>
+        <View aria-hidden>
+          <PageStickers scene="writing" />
+        </View>
+      </View>
 
       <View className="mt-4 flex-row flex-wrap gap-2">
         {TABS.map((t) => (
@@ -129,7 +140,15 @@ export default function WritingLibraryScreen() {
       <CrossFade swapKey={tab}>
       {tab === 'sat' ? (
         <Card className="mt-5">
-          <Text className="font-heavy text-cardTitle text-ink">SAT Writing</Text>
+          <View className="flex-row items-center gap-3">
+            <View aria-hidden>
+              <SealIcon name="pencil" color="#F0703F" size={40} />
+            </View>
+            <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">SAT Writing</Text>
+            <View aria-hidden>
+              <Label text="Trắc nghiệm ✓" color="#22A06B" ink="#FFFFFF" tilt={4} size={12} />
+            </View>
+          </View>
           <Text className="mt-2 font-sans text-body text-muted">
             Hai nhóm kỹ năng viết của SAT Reading and Writing: Expression of Ideas (Transitions,
             Rhetorical Synthesis) và Standard English Conventions (Boundaries, Form / Structure /
@@ -138,8 +157,15 @@ export default function WritingLibraryScreen() {
           <Text className="mt-2 font-sans text-label text-muted">
             Câu hỏi dựng tại chỗ từ kho passage SAT đã có trong app.
           </Text>
-          <View className="mt-4 flex-row">
+          <View className="mt-4 flex-row items-center gap-4">
             <Button label="Bắt đầu luyện" onPress={() => router.push('/write/sat' as never)} />
+            <View aria-hidden>
+              <Motion kind="float">
+                <Sticker tilt={8}>
+                  <CutePencil size={48} />
+                </Sticker>
+              </Motion>
+            </View>
           </View>
         </Card>
       ) : (
@@ -184,13 +210,22 @@ export default function WritingLibraryScreen() {
             ))}
           </View>
 
-          <SectionHeader title={`${prompts.length} đề phù hợp`} />
+          <SectionHeader title={`${prompts.length} đề phù hợp`} icon="clipboard" iconTone="accent" />
 
           {prompts.length === 0 ? (
             <Card>
-              <Text className="font-sans text-body text-muted">
-                Không có đề nào khớp bộ lọc. Bỏ bớt một điều kiện để xem thêm.
-              </Text>
+              <View className="flex-row items-center gap-3">
+                <View aria-hidden>
+                  <Motion kind="wobble">
+                    <Sticker tilt={-6}>
+                      <CuteMagnifier size={52} />
+                    </Sticker>
+                  </Motion>
+                </View>
+                <Text className="min-w-0 flex-1 font-sans text-body text-muted">
+                  Không có đề nào khớp bộ lọc. Bỏ bớt một điều kiện để xem thêm.
+                </Text>
+              </View>
             </Card>
           ) : (
             <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={16}>

@@ -49,3 +49,32 @@ export function buildBookSet(chapter: RoadChapter, round: number): MathItem[] {
   if (!bookSetReady(chapter)) return [];
   return chapter.bookSet!.map((b, i) => generateMathItem(b.slug, `road:${chapter.id}:book:r${round}:${i}`));
 }
+
+/** Số câu của bộ "Luyện thêm" mỗi chương. */
+export const EXTRA_SIZE = 20;
+/** Chia mức của bộ Luyện thêm: 7 dễ → 7 trung bình → 6 khó. */
+const EXTRA_SPLIT: Array<[Level, number]> = [
+  ['easy', 7],
+  ['medium', 7],
+  ['hard', 6],
+];
+
+/**
+ * LUYỆN THÊM 20 CÂU ngoài bộ bài theo sách (người dùng yêu cầu 30/09/2026):
+ * lấy template của cả ba mức, ưu tiên những dạng KHÔNG nằm trong bộ bài theo
+ * sách (còn ít hơn 2 dạng như vậy thì dùng cả mức), xếp dễ → khó. Mỗi lượt
+ * xoay điểm bắt đầu và đổi hạt, nên là 20 câu mới.
+ */
+export function buildExtraSet(chapter: RoadChapter, round: number): MathItem[] {
+  const inBook = new Set((chapter.bookSet ?? []).map((b) => b.slug));
+  const out: MathItem[] = [];
+  let i = 0;
+  for (const [lv, n] of EXTRA_SPLIT) {
+    const all = liveTemplates(chapter, lv);
+    const outside = all.filter((s) => !inBook.has(s));
+    const pool = outside.length >= 2 ? outside : all;
+    if (pool.length === 0) continue;
+    for (let k = 0; k < n; k++, i++) out.push(generateMathItem(pool[(k + round) % pool.length]!, `road:${chapter.id}:extra:r${round}:${i}`));
+  }
+  return out;
+}

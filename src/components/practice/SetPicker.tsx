@@ -8,6 +8,9 @@ import { Appear } from '@/components/motion/Motion';
 import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
 import { color } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker } from '@/components/illust/Cute';
 
 export type PickerSet = {
   /** Số câu của bộ. */
@@ -67,11 +70,18 @@ export function SetPicker({
 
         <Appear index={0}>
           <View className="mt-5 rounded-[22px] bg-white p-6" style={SHADOW}>
-            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{eyebrow}</Text>
-            <Text className="mt-1 font-heavy text-pageTitle text-ink">{title}</Text>
-            <Text className="mt-1 font-sans text-bodyLg text-muted">
-              {total} bộ đề · {questions} câu · đã làm {done}/{total} bộ
-            </Text>
+            <View className="flex-row items-center gap-3">
+              <View className="min-w-0 flex-1">
+                <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{eyebrow}</Text>
+                <Text className="mt-1 font-heavy text-pageTitle text-ink">{title}</Text>
+                <Text className="mt-1 font-sans text-bodyLg text-muted">
+                  {total} bộ đề · {questions} câu · đã làm {done}/{total} bộ
+                </Text>
+              </View>
+              <View aria-hidden>
+                <PageStickers scene={backHref.startsWith('/math') ? 'math' : 'verbal'} size={80} />
+              </View>
+            </View>
             <View className="mt-4 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#E8EEF8' }}>
               <View className="h-2.5 rounded-pill" style={{ width: `${total ? (done / total) * 100 : 0}%`, backgroundColor: '#16A34A' }} />
             </View>
@@ -83,7 +93,17 @@ export function SetPicker({
           </View>
         </Appear>
 
-        <Text className="mb-3 mt-7 font-heavy text-sectionTitle text-ink">Chọn bộ đề</Text>
+        <View className="mb-3 mt-7 flex-row items-center gap-2.5">
+          <View aria-hidden>
+            <SealIcon name="grid" color="#4A7FE8" size={38} />
+          </View>
+          <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink">Chọn bộ đề</Text>
+          {done === total && total > 0 ? (
+            <View aria-hidden>
+              <Label text="Đã xong cả kho ✓" color="#22A06B" ink="#FFFFFF" tilt={4} size={12} />
+            </View>
+          ) : null}
+        </View>
         <Appear index={1}>
           <Grid columns={4} tabletColumns={3} mobileColumns={2} gap={14}>
             {sets.map((s, i) => {
@@ -100,8 +120,21 @@ export function SetPicker({
                 >
                   <View className="flex-row items-center justify-between">
                     <Text className="font-strong text-bodyLg text-ink">Bộ đề {i + 1}</Text>
-                    {s.done ? <Icon name="check" size={18} color={tone} strokeWidth={2.4} /> : null}
+                    {s.done ? (
+                      s.ratio !== null && s.ratio >= 0.8 ? (
+                        <View aria-hidden>
+                          <BadgeSticker icon="star" color="#F2B632" size={24} />
+                        </View>
+                      ) : (
+                        <Icon name="check" size={18} color={tone} strokeWidth={2.4} />
+                      )
+                    ) : null}
                   </View>
+                  {isNext && !s.done ? (
+                    <View aria-hidden style={{ position: 'absolute', top: -10, right: -6 }}>
+                      <Label text="Làm tiếp →" color="#F2B632" tilt={6} size={11} />
+                    </View>
+                  ) : null}
                   <Text className="mt-1 font-sans text-label text-muted">
                     {s.size} câu · ~{s.size * minutesPerQuestion} phút
                   </Text>

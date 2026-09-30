@@ -12,6 +12,10 @@ import { PLANS, PLAN_ORDER, formatVnd, type PlanId } from '@/lib/billing/plans';
 import { GROUP_BUY_SIZES, GROUP_BUY_TIERS, groupBuyDiscountPercent, groupBuyYearlyPrice, type GroupSize } from '@/services/payment/pricing-rules';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color, gradient } from '@/theme/tokens';
+import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
+import { Label } from '@/components/illust/Sticker';
+import { Badge as SealBadge } from '@/components/illust/Cute';
+import { Motion } from '@/components/illust/CuteMore';
 
 /**
  * Mua theo nhóm: càng đông người cùng mua một gói (chu kỳ NĂM), giá càng giảm.
@@ -94,6 +98,13 @@ function CreateGroup() {
           end={{ x: 1, y: 1 }}
           style={{ borderRadius: 20, padding: 22 }}
         >
+          <View className="flex-row items-start justify-between gap-3">
+          <View className="min-w-0 flex-1">
+          <View aria-hidden className="mb-2 self-start">
+            <Motion kind="pop">
+              <Label text="Đông vui, giá rẻ 👥" color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
+            </Motion>
+          </View>
           <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
             Mua theo nhóm, càng đông càng rẻ
           </Text>
@@ -101,14 +112,21 @@ function CreateGroup() {
             Rủ bạn học cùng mua một gói trả năm — mỗi người vẫn tự chuyển khoản QR của riêng mình,
             chỉ khác là số tiền đã giảm theo đúng mốc số người của nhóm.
           </Text>
+          </View>
+          <PageStickers scene="shop" compact />
+          </View>
         </LinearGradient>
       </Appear>
 
       {created ? (
         <Appear index={1}>
           <Card className="mt-4">
-            <View className="flex-row items-start gap-2">
-              <Icon name="check" size={16} color={color.success} />
+            <View className="flex-row items-center gap-2.5">
+              <View aria-hidden>
+                <Motion kind="pop">
+                  <SealBadge icon="check" color="#22A06B" size={36} />
+                </Motion>
+              </View>
               <Text className="flex-1 font-strong text-cardTitle text-ink">
                 Đã tạo nhóm {PLANS[plan].name} · {targetSize} người · giảm {percent}%
               </Text>
@@ -147,14 +165,29 @@ function CreateGroup() {
         <>
           <Appear index={1}>
             <Card className="mt-4">
-              <Text className="font-strong text-cardTitle text-ink">Chọn gói</Text>
+              <View className="flex-row items-center gap-2.5">
+                <View aria-hidden>
+                  <SealIcon name="gift" color="#F472B6" size={36} />
+                </View>
+                <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Chọn gói</Text>
+              </View>
               <View className="mt-2 flex-row flex-wrap gap-2">
                 {CREATABLE_PLANS.map((id) => (
                   <ChoiceChip key={id} label={PLANS[id].name} active={plan === id} onPress={() => setPlan(id)} />
                 ))}
               </View>
 
-              <Text className="mt-4 font-strong text-cardTitle text-ink">Mốc số người</Text>
+              <View className="mt-4 flex-row flex-wrap items-center gap-2.5">
+                <View aria-hidden>
+                  <SealIcon name="target" color="#0EA5E9" size={36} />
+                </View>
+                <Text className="font-strong text-cardTitle text-ink">Mốc số người</Text>
+                {percent > 0 ? (
+                  <View aria-hidden>
+                    <Label text={`−${percent}% 🔥`} color="#F0703F" ink="#FFFFFF" tilt={-4} size={11} />
+                  </View>
+                ) : null}
+              </View>
               <View className="mt-2 flex-row flex-wrap gap-2">
                 {GROUP_BUY_SIZES.map((size) => (
                   <ChoiceChip
@@ -193,7 +226,12 @@ function CreateGroup() {
 
           <Appear index={2}>
             <Card className="mt-4" variant="flat">
-              <Text className="font-strong text-body text-ink">Cách hoạt động</Text>
+              <View className="flex-row items-center gap-2">
+                <View aria-hidden>
+                  <SealIcon name="info" color="#4A7FE8" size={30} />
+                </View>
+                <Text className="min-w-0 flex-1 font-strong text-body text-ink">Cách hoạt động</Text>
+              </View>
               <View className="mt-2 gap-1.5">
                 <Rule text="Chỉ áp dụng gói trả NĂM, không áp dụng gói tháng." />
                 <Rule text="Mỗi người tự thanh toán QR của mình — không ai giữ tiền hộ ai." />
@@ -292,9 +330,19 @@ function JoinGroup({ code }: { code: string }) {
     <Screen>
       <Appear>
         <Card className="mt-4">
-          <View className="flex-row flex-wrap items-center gap-2">
+          <View className="flex-row items-start justify-between gap-3">
+          <View className="min-w-0 flex-1 flex-row flex-wrap items-center gap-2">
             <Badge label={`Nhóm ${group.code}`} tone="neutral" shape="tag" />
             {inactive ? <Badge label="Đã hết hạn nhận thêm người" tone="warning" shape="tag" /> : null}
+            {!inactive ? (
+              <View aria-hidden>
+                <Motion kind="pop">
+                  <Label text="Đang gom người 🙌" color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                </Motion>
+              </View>
+            ) : null}
+          </View>
+          <PageStickers scene="shop" compact />
           </View>
 
           <Text className="mt-2 font-heavy text-pageTitle" style={{ color: tone.ink }}>

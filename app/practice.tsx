@@ -332,7 +332,7 @@ export default function PracticeScreen() {
     <Screen>
       <Appear>
         <LightHero
-          badge="IELTS · READING"
+          badge="IELTS · READING" art="verbal"
           line1="Reading"
           line2="đọc để hiểu, không chỉ chọn đáp án"
           subtitle="Chọn khổ bài và dạng câu hỏi, làm bài có bấm giờ, rồi xem lại từng câu cùng bằng chứng ngay trong bài đọc."

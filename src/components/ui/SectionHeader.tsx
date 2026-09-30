@@ -1,5 +1,5 @@
 import React from 'react';
-import { SealIcon } from '@/components/illust/HeroArt';
+import { CuteFor, SealIcon } from '@/components/illust/HeroArt';
 import { Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from './Icon';
@@ -17,6 +17,8 @@ type SectionHeaderProps = {
   hint?: boolean;
   right?: React.ReactNode;
   className?: string;
+  /** Sticker dễ thương ở cuối hàng tiêu đề (theo `icon`); mặc định bật. */
+  sticker?: boolean;
 };
 
 /** Màu huy hiệu răng cưa theo tông của tiêu đề mục. */
@@ -38,6 +40,7 @@ export function SectionHeader({
   hint = false,
   right,
   className,
+  sticker = true,
 }: SectionHeaderProps) {
   return (
     <View
@@ -62,6 +65,7 @@ export function SectionHeader({
         </View>
       </View>
 
+      {sticker && icon && !right && !action ? <CuteFor icon={icon} size={40} /> : null}
       {right}
 
       {action ? (

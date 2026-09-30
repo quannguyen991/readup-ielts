@@ -20,6 +20,10 @@ import {
 import { assetKeys } from '@/services/assets/useAssets';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color, gradient } from '@/theme/tokens';
+import { PageStickers } from '@/components/illust/HeroArt';
+import { Label, Sticker } from '@/components/illust/Sticker';
+import { Badge as BadgeSticker } from '@/components/illust/Cute';
+import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 /**
  * Từ vựng SAT Math — chuyên đề riêng, tách khỏi 30 chủ đề IELTS.
@@ -101,6 +105,9 @@ export default function SatMathVocabScreen() {
           />
           <View className="flex-row flex-wrap items-center justify-between gap-4">
             <View className="flex-1" style={{ minWidth: 240 }}>
+              <View aria-hidden className="mb-2">
+                <Label text="Thuật ngữ đề thi 📐" color="#F2B632" tilt={-4} size={12} />
+              </View>
               <Text className="font-heavy text-hero text-white">Từ vựng SAT Math</Text>
               <Text className="mt-1.5 font-sans text-bodyLg text-white/90">
                 {SAT_VOCAB_TOTALS.terms} thuật ngữ và cụm diễn đạt hay gặp trong đề, chia theo{' '}
@@ -110,7 +117,11 @@ export default function SatMathVocabScreen() {
             </View>
             {wide ? (
               <AssetImage assetKey={assetKeys.illustration('vocabulary-hero')} preset="heroCompact" />
-            ) : null}
+            ) : (
+              <View aria-hidden>
+                <PageStickers scene="math" compact />
+              </View>
+            )}
           </View>
         </LinearGradient>
       </Appear>
@@ -133,15 +144,22 @@ export default function SatMathVocabScreen() {
             ))}
           </View>
 
-          <Text className="font-mid text-label text-muted">
-            {learned}/{visible.length} đã lưu vào sổ từ
-          </Text>
+          <View className="flex-row items-center gap-2">
+            <View aria-hidden>
+              <BadgeSticker icon="star" color="#F2B632" size={24} />
+            </View>
+            <Text className="font-mid text-label text-muted">
+              {learned}/{visible.length} đã lưu vào sổ từ
+            </Text>
+          </View>
         </View>
       </Appear>
 
       {justSaved > 0 ? (
-        <View className="mt-3 flex-row items-start gap-2 rounded-card bg-success-soft p-3">
-          <Icon name="check" size={16} color={color.success} />
+        <View className="mt-3 flex-row items-center gap-2 rounded-card bg-success-soft p-3">
+          <View aria-hidden>
+            <BadgeSticker icon="check" color="#22A06B" size={26} />
+          </View>
           <Text className="flex-1 font-sans text-body text-ink">
             Đã thêm {justSaved} mục vào sổ. Chúng vào chung lịch ôn FSRS với những từ bạn lưu lúc đọc
             bài, nên không bị ôn trùng.
@@ -160,7 +178,13 @@ export default function SatMathVocabScreen() {
         </Appear>
       ) : (
         <View className="mt-3 flex-row items-center gap-2">
-          <Icon name="trophy" size={16} color={color.success} />
+          <View aria-hidden>
+            <Motion kind="wobble">
+              <Sticker tilt={-8}>
+                <CuteTrophy size={36} />
+              </Sticker>
+            </Motion>
+          </View>
           <Text className="font-strong text-body text-ink">
             Đã lưu hết {filter === 'all' ? 'cả bộ' : 'nhóm này'} vào sổ từ.
           </Text>
