@@ -1,8 +1,9 @@
 import React from 'react';
+import { SealIcon } from '@/components/illust/HeroArt';
 import { Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from './Icon';
-import { IconCircle, type IconTone } from './IconCircle';
+import { type IconTone } from './IconCircle';
 import { color } from '@/theme/tokens';
 
 type SectionHeaderProps = {
@@ -16,6 +17,16 @@ type SectionHeaderProps = {
   hint?: boolean;
   right?: React.ReactNode;
   className?: string;
+};
+
+/** Màu huy hiệu răng cưa theo tông của tiêu đề mục. */
+const SEAL_COLOR: Record<IconTone, string> = {
+  primary: '#4A7FE8',
+  accent: '#F2B632',
+  success: '#22A06B',
+  warning: '#F0703F',
+  danger: '#E0533D',
+  info: '#0EA5E9',
 };
 
 export function SectionHeader({
@@ -35,7 +46,7 @@ export function SectionHeader({
         .join(' ')}
     >
       <View className="min-w-0 flex-1 flex-row items-center gap-2.5">
-        {icon ? <IconCircle name={icon} tone={iconTone} size={32} /> : null}
+        {icon ? <SealIcon name={icon} color={SEAL_COLOR[iconTone]} size={42} /> : null}
         <View className="min-w-0 flex-1">
           <View className="flex-row items-center gap-1.5">
             <Text className="font-strong text-cardTitle text-ink" numberOfLines={1}>

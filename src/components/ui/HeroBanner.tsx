@@ -2,9 +2,8 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { AssetImage } from './AssetImage';
+import { HeroArt } from '@/components/illust/HeroArt';
 import { gradient } from '@/theme/tokens';
-import { assetKeys } from '@/services/assets/useAssets';
 
 type HeroBannerProps = {
   title: string;
@@ -55,17 +54,12 @@ export function HeroBanner({
           {children ? <View className="mt-5">{children}</View> : null}
         </View>
 
+        {/* Cụm minh hoạ dễ thương (theo chủ đề ảnh cũ: progress / library / dashboard). */}
+        <View className="hidden md:flex">
+          <HeroArt scene={illustration?.startsWith('progress') ? 'progress' : illustration?.startsWith('library') ? 'verbal' : 'home'} size={right ? 100 : 140} />
+        </View>
         {right ? (
           <View className="hidden lg:flex">{right}</View>
-        ) : illustration ? (
-          <View className="hidden lg:flex">
-            <AssetImage
-              assetKey={assetKeys.illustration(illustration)}
-              preset="hero" 
-              contentFit="contain"
-              radius={0}
-            />
-          </View>
         ) : null}
       </View>
     </LinearGradient>

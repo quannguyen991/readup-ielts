@@ -9,6 +9,7 @@ import { useTravelActive } from '@/components/rail/TravelBackdrop';
 import { isTravelLightRoute } from '@/navigation/focus-routes';
 import { useTravelPractice } from '@/store/useTravelPractice';
 import { Icon } from '@/components/ui/Icon';
+import { CuteFor } from '@/components/illust/HeroArt';
 import { color, layout, paper } from '@/theme/tokens';
 
 export type TaskTone = 'brand' | 'paper';
@@ -127,12 +128,14 @@ export function TaskShell({
           </Link>
 
           <View className="mb-5 flex-row items-center gap-3">
-            <View
-              className="h-12 w-12 items-center justify-center rounded-panel"
-              style={{ backgroundColor: onBrand ? 'rgba(255,255,255,0.16)' : paper.brandMid }}
-            >
-              <Icon name={icon} size={22} color={color.white} strokeWidth={1.9} />
-            </View>
+            {CuteFor({ icon, size: 84 }) ?? (
+              <View
+                className="h-12 w-12 items-center justify-center rounded-panel"
+                style={{ backgroundColor: onBrand ? 'rgba(255,255,255,0.16)' : paper.brandMid }}
+              >
+                <Icon name={icon} size={22} color={color.white} strokeWidth={1.9} />
+              </View>
+            )}
             <View className="flex-1">
               <Text className="font-heavy text-pageTitle" style={{ color: titleColor }}>
                 {title}

@@ -15,7 +15,8 @@ import Animated, {
 
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { Badge } from '@/components/ui/Badge';
-import { Hero3D, useHeroStar, type SceneKind } from '@/components/three/Hero3D';
+import { type SceneKind } from '@/components/three/Hero3D';
+import { HeroArt } from '@/components/illust/HeroArt';
 
 /**
  * Hero nền lưới sáng — kiểu đang dùng ở trang chủ, nay dùng chung.
@@ -53,9 +54,9 @@ export function LightHero({
   const wide = useWindowDimensions().width >= 768;
   const size = wide ? 44 : 28;
   const line = wide ? 52 : 36;
-  // Ngôi sao to chỉ có trên máy tính; điện thoại và máy tính bảng bỏ hẳn cho nhẹ máy.
-  const laptop = useHeroStar();
-  const star = Boolean(scene) && laptop;
+  // Cụm minh hoạ dễ thương theo chủ đề trang (thay ngôi sao 3D từ 30/09/2026):
+  // bên phải trên màn rộng, góc trên phải (nhỏ) trên điện thoại.
+  const art = true;
 
   /*
     Bọc thêm một HÀNG NGANG quanh nền: `GridBackdrop` lấy cả khung bằng
@@ -67,15 +68,17 @@ export function LightHero({
       {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
           đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
       <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
-        {scene && star ? (
-          <Hero3D scene={scene} style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '42%' }} />
+        {art ? (
+          <View style={wide ? { position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' } : { position: 'absolute', top: 16, right: 14 }}>
+            <HeroArt scene={scene} size={wide ? 150 : 64} single={!wide} />
+          </View>
         ) : null}
         <View
           style={{
             paddingHorizontal: wide ? 40 : 22,
             paddingVertical: wide ? 52 : 30,
             // Chừa chỗ bên phải cho ngôi sao, để chữ không chạy đè lên nó.
-            paddingRight: star ? '40%' : wide ? 40 : 22,
+            paddingRight: wide ? 440 : 84,
           }}
         >
           <Badge label={badge} tone="neutral" shape="tag" />
