@@ -270,7 +270,7 @@ export default function WritingResultScreen() {
                   </View>
                 </View>
                 <Text className="font-sans text-label text-paper-muted">
-                  {L('Chấm tự động, có thể lệch so với giám khảo thật. Luôn là một khoảng, không phải một con số chốt.', 'Automatic grading may differ from a real examiner. Always a range, never a fixed number.')}
+                  {L('Chấm tự động, chỉ là khoảng ước tính.', 'Auto-graded estimate, shown as a range.')}
                 </Text>
 
                 <View className="mt-4 gap-2">
@@ -581,7 +581,7 @@ function ErrorsTab({
   if (annotations.length === 0) {
     return (
       <Text className="font-sans text-body text-paper-body">
-        {L('Chưa có lỗi nào được đánh dấu — hoặc bài chưa được chấm bằng AI, hoặc không có chỗ nào đáng đánh dấu.', "No mistakes marked — either the essay hasn't been graded by AI, or there was nothing worth marking.")}
+        {L('Chưa có lỗi nào được đánh dấu.', 'No mistakes marked yet.')}
       </Text>
     );
   }
@@ -811,7 +811,7 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
   if (!evaluation) {
     return (
       <Text className="font-sans text-body text-paper-body">
-        {L('Bài chưa được chấm bằng AI nên chưa có nhận xét. Phần phân tích cấu trúc ở cột trái vẫn dùng được.', "This essay hasn't been graded by AI, so there's no feedback yet. The structure analysis on the left still works.")}
+        {L('Chưa chấm bằng AI nên chưa có nhận xét.', 'Not AI-graded yet, so no feedback.')}
       </Text>
     );
   }
@@ -928,7 +928,7 @@ function FixedTab({ text, annotations }: { text: string; annotations: WritingAnn
   if (count === 0) {
     return (
       <Text className="font-sans text-body text-paper-body">
-        {L('Chưa có chỗ nào vá được — bài chưa chấm bằng AI, hoặc các lỗi được đánh dấu không kèm bản sửa cụ thể.', "Nothing to patch yet — the essay hasn't been graded by AI, or the marked mistakes have no specific fix.")}
+        {L('Chưa có chỗ nào để sửa.', 'Nothing to fix yet.')}
       </Text>
     );
   }
@@ -1044,7 +1044,7 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
       </Text>
 
       <Text className="mt-3 font-sans text-label text-paper-muted">
-        {L('Đây là bài tham khảo do AI soạn, không phải bài thi thật đạt band này. Đọc để lấy khung câu và cách nhóm ý, đừng học thuộc.', "This is an AI-written reference, not a real exam essay that scored this band. Read it for sentence frames and how ideas are grouped — don't memorise it.")}
+        {L('Bài tham khảo do AI viết. Học cách triển khai ý, đừng học thuộc.', 'AI-written sample. Learn the structure, don\'t memorise it.')}
       </Text>
     </View>
   );

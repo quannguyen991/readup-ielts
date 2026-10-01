@@ -49,7 +49,7 @@ export default function DuelLobby() {
           badge={L('ĐẤU 1–1', '1-ON-1 DUEL')}
           line1={L('Thách bạn đấu từ vựng,', 'Challenge a friend to a word duel,')}
           line2={L('ai nhớ nhanh hơn', 'who remembers faster?')}
-          subtitle={L('Hai người cùng làm 10 câu của một bộ từ, cùng lúc. Đúng được 100 điểm, trả lời càng nhanh càng được thưởng thêm. Thấy điểm của bạn mình chạy theo thời gian thực.', "Two players answer the same 10 questions from one word set at the same time. Each correct answer scores 100, with a bonus for speed. Watch your friend's score update live.")}
+          subtitle={L('Hai người, 10 câu, cùng lúc. Nhanh và đúng thì thắng.', 'Two players, 10 questions, live. Fast and right wins.')}
         />
       </Appear>
 

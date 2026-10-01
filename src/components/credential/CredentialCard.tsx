@@ -56,18 +56,12 @@ export function CredentialCard({ ledger }: { ledger: Ledger }) {
     <Card>
       <Text className="font-sans text-h4 text-ink">{L('Chứng chỉ năng lực bạn tự giữ', 'A skills credential you hold yourself')}</Text>
       <Text className="mt-1 font-sans text-body text-muted">
-        {L(
-          'Sổ bằng chứng ký thành một chứng chỉ chuẩn W3C. Khoá nằm trên máy bạn — không blockchain, không máy chủ, không cần mạng. Ai cũng kiểm được mà không cần tin Band 9.',
-          'Your evidence record, signed as a standard W3C credential. The key stays on your device — no blockchain, no server, no internet needed. Anyone can verify it without having to trust Band 9.',
-        )}
+        {L('Xuất sổ bằng chứng thành chứng chỉ ai cũng kiểm được.', 'Export your evidence as a verifiable certificate.')}
       </Text>
 
       {skillCount === 0 ? (
         <Text className="mt-3 font-sans text-body text-subtle">
-          {L(
-            'Chưa có kỹ năng nào quan sát được, nên chưa có gì để chứng nhận. Làm vài bài có khoanh bằng chứng rồi quay lại.',
-            'No skills observed yet, so there is nothing to certify. Do a few exercises where you mark your evidence, then come back.',
-          )}
+          {L('Làm vài bài có bằng chứng rồi quay lại.', 'Do a few lessons with evidence, then come back.')}
         </Text>
       ) : (
         <>

@@ -158,10 +158,7 @@ export function LessonHub({
           ) : (
             <View className="mt-6">
               <Text className="mb-4 font-sans text-body text-muted">
-                {L(
-                  'Mỗi bài 6–13 từ, học trong khoảng 15 phút: lật thẻ, trắc nghiệm, điền từ, rồi kiểm tra. Từ được tính là thuộc khi qua phần cuối mà không sai.',
-                  'Each lesson has 6–13 words and takes about 15 minutes: flashcards, multiple choice, fill-in, then a test. A word counts as mastered when you pass the final part without a mistake.',
-                )}
+                {L('Mỗi bài 6–13 từ, ~15 phút.', '6–13 words per lesson, ~15 min.')}
                 {subject === 'math' ? (
                   <Text className="font-semi text-primary-700" onPress={() => router.push('/math/vocab' as never)}>
                     {' '}

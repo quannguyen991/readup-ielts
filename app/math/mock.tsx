@@ -164,10 +164,7 @@ export default function MathMockScreen() {
           </View>
           <View className="mt-2 gap-2">
             <Bullet>
-              {L(
-                'Đồng hồ chạy lùi và TỰ NỘP khi hết giờ, từng module một. Không tạm dừng được, đúng như phòng thi.',
-                "The timer counts down and AUTO-SUBMITS when time's up, one module at a time. No pausing — just like the real exam.",
-              )}
+              {L('Hết giờ là tự nộp, không tạm dừng.', 'Auto-submits when time runs out. No pausing.')}
             </Bullet>
             <Bullet>
               {L(
@@ -242,14 +239,8 @@ export default function MathMockScreen() {
           </View>
           <Text className="mt-2 font-sans text-body text-muted">
             {phase.tier === 'harder'
-              ? L(
-                  'Bạn được chuyển sang module 2 KHÓ HƠN. Đây là nhánh duy nhất với tới vùng điểm cao — làm chậm lại một chút cũng được, đổi lại đừng sai câu dễ.',
-                  "You've been routed to the HARDER module 2. It's the only route that reaches the top scores — it's fine to slow down a little, just don't miss the easy ones.",
-                )
-              : L(
-                  'Bạn được chuyển sang module 2 DỄ HƠN. Nhánh này bị chặn trần điểm dù làm đúng hết, nên mục tiêu bây giờ là ăn trọn những câu chắc chắn làm được.',
-                  "You've been routed to the EASIER module 2. This route has a score ceiling even if you get everything right, so the goal now is to bank every question you're sure of.",
-                )}
+              ? L('Module 2 KHÓ HƠN: mở được vùng điểm cao. Đừng sai câu dễ.', 'HARDER module 2: high scores are open. Don\'t miss easy ones.')
+              : L('Module 2 DỄ HƠN: có trần điểm. Ăn chắc từng câu.', 'EASIER module 2: scores are capped. Secure every question.')}
           </Text>
           <Text className="mt-2 font-sans text-label text-muted">
             {L(

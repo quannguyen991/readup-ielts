@@ -339,7 +339,7 @@ export default function PracticeScreen() {
           badge="IELTS · READING" art="verbal"
           line1="Reading"
           line2={L('đọc để hiểu, không chỉ chọn đáp án', 'read to understand, not just to pick answers')}
-          subtitle={L('Chọn khổ bài và dạng câu hỏi, làm bài có bấm giờ, rồi xem lại từng câu cùng bằng chứng ngay trong bài đọc.', 'Pick a passage length and question type, take it timed, then review each question with the evidence right in the text.')}
+          subtitle={L('Chọn dạng câu, làm có giờ, xem lại kèm bằng chứng.', 'Pick a question type, work timed, review with evidence.')}
           footer={
             <>
               <HeroStat value={READABLE_TOTAL.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} label={L('bài đọc', 'readings')} />

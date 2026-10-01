@@ -33,6 +33,30 @@ export function monthKey(now: Date = new Date()): string {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
 }
 
+/**
+ * LOẠI LƯỢT GỌI. `standard` là lượt AI tính vào hạn mức của gói (chấm bài, trợ
+ * giảng…). `search` là lượt "Hỏi AI" trong ô tìm bài: một câu hỏi ngắn tới model
+ * rẻ nhất, trả về vài dòng — đắt bằng một phần nhỏ của một lượt chấm Writing.
+ *
+ * Đếm RIÊNG chứ không trừ vào hạn mức chính: Free chỉ có 3 lượt AI mỗi tháng, và
+ * bắt người học đổi một lượt chấm bài lấy một lần tìm bài là vô lý. Vẫn phải có
+ * trần — mỗi lượt vẫn là tiền thật — nên đếm bằng đúng bảng `ai_usage`, chỉ khác
+ * khoá kỳ (`search:YYYY-MM`). Không cần đổi lược đồ: `period_key` là chuỗi tự do.
+ */
+export type AiCallKind = 'standard' | 'search';
+
+/** Trần lượt "Hỏi AI" khi tìm bài, mỗi tháng. */
+export const SEARCH_AI_LIMIT: Record<PlanId, number> = {
+  free: 30,
+  plus: 150,
+  pro: 600,
+  max: 2000,
+};
+
+function periodFor(kind: AiCallKind, now: Date = new Date()): string {
+  return kind === 'search' ? `search:${monthKey(now)}` : monthKey(now);
+}
+
 /** Gói còn hiệu lực của một người dùng, đọc từ máy chủ. */
 async function planOfUser(admin: Admin, userId: string): Promise<PlanId> {
   const { data } = await admin
@@ -56,10 +80,11 @@ export async function consumeAiCall(
   admin: Admin,
   userId: string,
   locale: LocaleSource = 'vi',
+  kind: AiCallKind = 'standard',
 ): Promise<UsageVerdict> {
   const plan = await planOfUser(admin, userId);
-  const limit = quotaLimit(plan, 'ai_calls_per_month');
-  const period = monthKey();
+  const limit = kind === 'search' ? SEARCH_AI_LIMIT[plan] : quotaLimit(plan, 'ai_calls_per_month');
+  const period = periodFor(kind);
 
   const { data, error } = await admin.rpc('bump_ai_usage', { p_user: userId, p_period: period });
   if (error) {
@@ -80,6 +105,27 @@ export async function consumeAiCall(
 
   const used = typeof data === 'number' ? data : 0;
   if (limit === null) return { allowed: true, used, limit: null, plan };
+
+  if (used > limit && kind === 'search') {
+    return {
+      allowed: false,
+      used,
+      limit,
+      plan,
+      message:
+        plan === 'max'
+          ? msg(
+              locale,
+              `Bạn đã dùng hết ${limit} lượt Hỏi AI khi tìm bài trong tháng này. Ô tìm kiếm thường vẫn dùng được.`,
+              `You've used all ${limit} AI searches this month. Regular search still works.`,
+            )
+          : msg(
+              locale,
+              `Gói ${plan === 'free' ? 'Free' : plan} có ${limit} lượt Hỏi AI khi tìm bài mỗi tháng và bạn đã dùng hết. Ô tìm kiếm thường vẫn dùng được; nâng cấp để có thêm lượt.`,
+              `The ${plan === 'free' ? 'Free' : plan} plan includes ${limit} AI searches per month and you've used them all. Regular search still works; upgrade for more.`,
+            ),
+    };
+  }
 
   if (used > limit) {
     return {
@@ -112,8 +158,8 @@ export async function consumeAiCall(
  * proxy đều chết. Không gọi khi họ đã nhận được kết quả rồi mới có sự cố phụ —
  * lúc đó lượt đã được dùng thật.
  */
-export async function refundAiCall(admin: Admin, userId: string): Promise<void> {
-  const period = monthKey();
+export async function refundAiCall(admin: Admin, userId: string, kind: AiCallKind = 'standard'): Promise<void> {
+  const period = periodFor(kind);
   const { data } = await admin
     .from('ai_usage')
     .select('calls')

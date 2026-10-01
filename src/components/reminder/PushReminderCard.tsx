@@ -149,7 +149,7 @@ export function PushReminderCard() {
           tone: 'warn',
           text:
             out.reason === 'denied'
-              ? L('Trình duyệt đang chặn thông báo của Band 9. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ → Thông báo → Cho phép, rồi bật lại.', 'Your browser is blocking Band 9 notifications. Click the lock icon by the address bar → Notifications → Allow, then turn this on again.')
+              ? L('Thông báo đang bị chặn. Cho phép ở biểu tượng ổ khoá rồi bật lại.', 'Notifications are blocked. Allow them via the lock icon, then retry.')
               : out.reason === 'dismissed'
                 ? L('Bạn chưa cho phép thông báo. Bật lại và chọn "Cho phép" khi trình duyệt hỏi.', 'Notifications were not allowed. Turn this on again and choose "Allow" when asked.')
                 : out.reason === 'unsupported'
@@ -213,10 +213,10 @@ export function PushReminderCard() {
   else if (!hydrated || status === 'loading') statusText = '';
   else if (!signedIn) statusText = L('Cần đăng nhập: lời nhắc dựng từ tiến độ đã đồng bộ lên tài khoản của bạn.', 'Sign in first: reminders are built from the progress synced to your account.');
   else if (support === 'ios-install')
-    statusText = L('Trên iPhone/iPad: bấm nút Chia sẻ → "Thêm vào MH chính", rồi mở Band 9 từ biểu tượng đó và bật lại ở đây (cần iOS 16.4 trở lên).', 'On iPhone/iPad: tap Share → "Add to Home Screen", then open Band 9 from that icon and turn this on there (iOS 16.4 or later).');
-  else if (support === 'unsupported') statusText = L('Trình duyệt này không hỗ trợ thông báo đẩy — dùng email, hoặc mở Band 9 bằng Chrome, Edge, Firefox hay Safari mới.', "This browser doesn't support push notifications — use email, or open Band 9 in a recent Chrome, Edge, Firefox or Safari.");
+    statusText = L('iPhone/iPad: Chia sẻ → "Thêm vào MH chính", mở Band 9 từ đó rồi bật lại.', 'iPhone/iPad: Share → "Add to Home Screen", open Band 9 from there, then turn it on.');
+  else if (support === 'unsupported') statusText = L('Trình duyệt này không hỗ trợ thông báo. Dùng email hoặc Chrome/Edge/Safari mới.', 'This browser can\'t do notifications. Use email or a recent Chrome/Edge/Safari.');
   else if (perm === 'denied' && !pushOn)
-    statusText = L('Thông báo đang bị chặn. Mở lại: bấm biểu tượng ổ khoá cạnh thanh địa chỉ → Thông báo → Cho phép (trên điện thoại: Cài đặt trình duyệt → Cài đặt trang web → Thông báo).', 'Notifications are blocked. To allow them: click the lock icon by the address bar → Notifications → Allow (on phones: browser Settings → Site settings → Notifications).');
+    statusText = L('Thông báo đang bị chặn. Cho phép ở biểu tượng ổ khoá cạnh thanh địa chỉ.', 'Notifications are blocked. Allow them via the lock icon by the address bar.');
   else if (pushOn) statusText = L(`Đang bật trên máy này${prefs && prefs.devices > 1 ? ` và ${prefs.devices - 1} máy khác` : ''}. Nhắc lúc 20:00, chỉ những hôm có điều cần nhắc.`, `On for this device${prefs && prefs.devices > 1 ? ` and ${prefs.devices - 1} other${prefs.devices > 2 ? 's' : ''}` : ''}. Reminders at 8 pm, only on days that need one.`);
   else statusText = L('Tắt trên máy này.', 'Off on this device.');
 

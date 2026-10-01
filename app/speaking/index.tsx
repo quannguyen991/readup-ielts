@@ -48,10 +48,11 @@ export default function SpeakingLobby() {
   const wide = width >= 1000;
 
   // `?mode=p1` — đường dẫn từ bài giáo viên giao (`services/classes/assignments.ts`).
-  const { mode: modeParam } = useLocalSearchParams<{ mode?: string }>();
+  // `&p1=` / `&cue=` — đường dẫn từ Lộ trình học (`app/lo-trinh-hoc.tsx`) mở đúng chủ đề của bài.
+  const { mode: modeParam, p1: p1Param, cue: cueParam } = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string }>();
   const [mode, setMode] = useState<LobbyMode>(() => MODES.find((m) => m.key === modeParam)?.key ?? 'full');
-  const [p1Topic, setP1Topic] = useState(() => pick(PART1_TOPICS).id);
-  const [cue, setCue] = useState(() => pick(CUE_CARDS).id);
+  const [p1Topic, setP1Topic] = useState(() => PART1_TOPICS.find((t) => t.id === p1Param)?.id ?? pick(PART1_TOPICS).id);
+  const [cue, setCue] = useState(() => CUE_CARDS.find((c) => c.id === cueParam)?.id ?? pick(CUE_CARDS).id);
   const [exam, setExam] = useState(true);
   const [typedChoice, setTypedChoice] = useState(false);
   const [choosing, setChoosing] = useState(false);

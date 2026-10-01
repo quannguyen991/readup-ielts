@@ -99,10 +99,7 @@ export default function InviteScreen() {
               <View className="flex-1">
                 <Text className="font-strong text-cardTitle text-ink">{L('Cần đăng nhập', 'Sign in required')}</Text>
                 <Text className="mt-1 font-sans text-body text-muted">
-                  {L(
-                    'Mã mời gắn với tài khoản, nên phải đăng nhập thì mới cấp được — và mới biết cộng lượt cho ai.',
-                    'Invite codes are tied to your account, so sign in to get one — that way we know who to credit.',
-                  )}
+                  {L('Đăng nhập để lấy mã mời.', 'Sign in to get your invite code.')}
                 </Text>
               </View>
             </View>
@@ -335,31 +332,19 @@ export default function InviteScreen() {
           <View className="mt-2 gap-2">
             <Rule
               ok
-              text={L(
-                'Người bạn mời mở link, tạo tài khoản, rồi LÀM XONG ÍT NHẤT MỘT BÀI — đọc, viết hoặc SAT Math đều được.',
-                'Your friend opens the link, creates an account, then FINISHES AT LEAST ONE LESSON — reading, writing or SAT Math all count.',
-              )}
+              text={L('Bạn được mời phải tạo tài khoản và làm xong ít nhất một bài.', 'Your friend signs up and finishes at least one lesson.')}
             />
             <Rule
               ok={false}
-              text={L(
-                'Chỉ tạo tài khoản rồi bỏ đó thì chưa tính. Bạn vẫn thấy họ trong danh sách, ở trạng thái chờ.',
-                "Just creating an account doesn't count yet. You'll still see them in your list as pending.",
-              )}
+              text={L('Chưa học bài nào thì chưa tính.', 'No lesson yet means it doesn\'t count yet.')}
             />
             <Rule
               ok={false}
-              text={L(
-                'Mỗi người chỉ được tính cho đúng một người giới thiệu, và chỉ khai được trong 30 ngày đầu.',
-                'Each person counts for exactly one referrer, and can only be claimed within their first 30 days.',
-              )}
+              text={L('Mỗi người chỉ tính cho một người mời, trong 30 ngày đầu.', 'One referrer per person, within the first 30 days.')}
             />
           </View>
           <Text className="mt-3 font-sans text-label text-subtle">
-            {L(
-              'Điều kiện “phải học thật” không phải để làm khó bạn — nó để phần thưởng đi tới người thật sự rủ được bạn bè vào học, chứ không phải người tạo được mười email.',
-              "The “must actually study” rule isn't there to make things hard — it makes sure rewards go to people who really bring friends to learn, not to whoever can create ten emails.",
-            )}
+            {L('Phải học thật để thưởng đến đúng người.', 'Real study keeps rewards fair.')}
           </Text>
         </Card>
       </Appear>

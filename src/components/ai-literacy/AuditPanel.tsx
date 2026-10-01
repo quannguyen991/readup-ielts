@@ -85,10 +85,7 @@ export function AuditPanel({
         <Badge label={L('ĐỌC KẾT QUẢ CỦA AI', 'READING AI OUTPUT')} tone="accent" />
         <Text className="mt-2 font-strong text-cardTitle text-ink">{L('Soi một bản của AI', 'Inspect an AI answer')}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          {L(
-            'App sẽ đưa bạn một bản do AI viết ra. Một nửa số bản bị cấy sẵn đúng một lỗi, một nửa thì không. Việc của bạn là nói bản này có lỗi hay không — và nếu có thì là lỗi gì.',
-            "The app will show you an answer written by AI. Half of them have exactly one planted error; half don't. Your job is to say whether this one has an error — and if so, what kind.",
-          )}
+          {L('Một nửa số bản AI viết có cài một lỗi. Tìm xem bản này có lỗi không.', 'Half the AI-written texts hide one mistake. Is this one of them?')}
         </Text>
         <Button className="mt-3" label={L('Lấy một bản', 'Get an answer')} size="sm" onPress={start} />
       </Card>

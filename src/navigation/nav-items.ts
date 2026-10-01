@@ -68,6 +68,7 @@ export const NAV_GROUPS: NavGroup[] = [
         inBottomTabs: true,
         children: [
           { key: 'plan', label: 'Lộ trình của tôi', href: '/plan', icon: 'calendar' },
+          { key: 'learning-path', label: 'Lộ trình học', href: '/lo-trinh-hoc', icon: 'compass' },
           { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
           { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },
           { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
@@ -150,7 +151,6 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'invite', label: 'Mời bạn, học miễn phí', href: '/invite', icon: 'sparkle' },
           { key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' },
           { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
-          { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
           { key: 'teacher', label: 'Lớp học (giáo viên)', href: '/teacher', icon: 'clipboard' },
           { key: 'join-class', label: 'Vào lớp bằng mã', href: '/join', icon: 'letters' },
         ],
@@ -232,6 +232,7 @@ export const NAV_LABEL_EN: Record<string, string> = {
   home: 'Home',
   dashboard: 'Today',
   plan: 'My plan',
+  'learning-path': 'Learning path',
   progress: 'Progress',
   errors: 'Mistake log',
   mastery: 'Evidence book',

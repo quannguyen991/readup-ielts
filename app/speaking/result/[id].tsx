@@ -160,30 +160,21 @@ export default function SpeakingResult() {
           <View className="mt-4 gap-2">
             {attempt.typed ? (
               <Notice tone="warn">
-                {L(
-                  'Bài này GÕ PHÍM nên không phải điểm Speaking: không có Fluency, Pronunciation và band tổng. AI chỉ chấm từ vựng và ngữ pháp.',
-                  'These answers were TYPED, so this is not a Speaking score: no Fluency, Pronunciation or overall band. The AI only grades vocabulary and grammar.',
-                )}
+                {L('Bài gõ phím: chỉ chấm từ vựng và ngữ pháp, không có band Speaking.', 'Typed answer: vocabulary and grammar only, no Speaking band.')}
               </Notice>
             ) : null}
             {loading ? (
               <View className="flex-row items-center gap-3 rounded-2xl p-3.5" style={{ backgroundColor: SPK.blueSoft }}>
                 <ActivityIndicator color={SPK.blue} />
                 <Text className="min-w-0 flex-1 font-sans text-body" style={{ color: '#5A4318' }}>
-                  {L(
-                    'AI đang chấm theo 4 tiêu chí… thường mất 10–30 giây. Chỉ số đo tại máy ở bên dưới đã có sẵn.',
-                    'The AI is grading on the 4 criteria… usually 10–30 seconds. The on-device metrics below are ready now.',
-                  )}
+                  {L('AI đang chấm… (10–30 giây)', 'AI is grading… (10–30 s)')}
                 </Text>
               </View>
             ) : null}
             {!loading && needLogin && !g ? (
               <View className="gap-2">
                 <Notice tone="info">
-                  {L(
-                    'Đăng nhập để AI chấm band theo 4 tiêu chí. Chỉ số đo tại máy bên dưới vẫn xem được khi chưa đăng nhập.',
-                    'Sign in to have the AI grade your band on the 4 criteria. The on-device metrics below are visible without signing in.',
-                  )}
+                  {L('Đăng nhập để AI chấm band.', 'Sign in for an AI band score.')}
                 </Notice>
                 <View className="flex-row flex-wrap gap-2">
                   <Button variant="brand" size="sm" label={L('Đăng nhập', 'Sign in')} onPress={() => router.push('/auth/sign-in' as never)} />
@@ -369,10 +360,7 @@ function CriterionCard({ k, en, vi, grade, attempt }: { k: CriterionKey; en: str
             `Estimated mainly from recognition clarity (${m.avgConfidence != null ? Math.round(m.avgConfidence * 100) : '?'}% confidence, ${m.lowConfShare != null ? Math.round(m.lowConfShare * 100) : '?'}% of words uncertain). The AI doesn't hear your voice — for reference only.`,
           )
         : grade.pronunciationBasis === 'text-only'
-          ? L(
-              'Trình duyệt không báo độ tin cậy, nên chỉ đoán từ bản chữ; điểm này bị giới hạn không vượt các tiêu chí khác.',
-              "The browser didn't report confidence, so this is guessed from the text only; it's capped so it can't exceed the other criteria.",
-            )
+          ? L('Chỉ ước từ bản chữ nên điểm này bị giới hạn.', 'Estimated from the transcript only, so this score is capped.')
           : L('Bài gõ phím — không chấm phát âm.', 'Typed answers — pronunciation not graded.');
   return (
     <View className="rounded-[22px] bg-white p-4" style={[SPK_CARD, { flexGrow: 1, flexShrink: 1, flexBasis: 300 }]}>

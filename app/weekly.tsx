@@ -205,7 +205,7 @@ export default function WeeklyScreen() {
           badge={L('ĐỀ CỦA TUẦN', 'WEEKLY CHALLENGE')} art="test"
           line1={L(`Tuần ${weekNo} · ${weekLabel(week)}`, `Week ${weekNo} · ${weekLabel(week)}`)}
           line2={L('cả nước cùng một đề', 'one test for the whole country')}
-          subtitle={L('10 câu SAT (5 Math, 5 Verbal), khoảng 12–15 phút. Không báo đúng sai giữa chừng. Chỉ LẦN LÀM ĐẦU TIÊN được tính điểm; đề mới mỗi thứ Hai.', '10 SAT questions (5 Math, 5 Verbal), about 12–15 minutes. No right/wrong feedback until the end. Only your FIRST attempt counts; a new test every Monday.')}
+          subtitle={L('10 câu SAT, ~15 phút. Chỉ tính lần đầu; đề mới mỗi thứ Hai.', '10 SAT questions, ~15 min. First try counts; new set every Monday.')}
           footer={
             <>
               <HeroStat value={String(board?.participants ?? 0)} label={L('người đã làm', 'people took it')} />
@@ -248,7 +248,7 @@ export default function WeeklyScreen() {
             ) : null}
             {!userId && counted ? (
               <Text className="mt-2 font-sans text-body" style={{ color: '#B45309' }}>
-                {L('Bạn đang ở chế độ Khách: kết quả chỉ lưu trên máy này và chưa vào bảng cả nước. Đăng nhập rồi đồng bộ để có tên trên bảng.', "You're in Guest mode: your result is only saved on this device and isn't on the national board. Sign in and sync to get your name on it.")}
+                {L('Đăng nhập để có tên trên bảng cả nước.', 'Sign in to appear on the national board.')}
               </Text>
             ) : null}
             {share && Platform.OS === 'web' ? (

@@ -21,7 +21,7 @@ export function Credits({ onClose }: { onClose: () => void }) {
             <span className="cg-muted" style={{ fontSize: 14 }}>
               {t('city.credits.by', { author: c.tacGia, source: c.nguon })} · {c.giayPhep}
             </span>
-            <a href={c.url} target="_blank" rel="noreferrer" style={{ fontSize: 14, color: '#2F5FC4' }}>
+            <a href={c.url} target="_blank" rel="noreferrer" style={{ fontSize: 14, color: '#8F6E36' }}>
               {c.url.replace(/^https?:\/\//, '')}
             </a>
           </li>

@@ -192,10 +192,7 @@ export function LessonView({
         />
         <View className="rounded-[22px] bg-white p-6" style={CARD}>
           <Text className="font-sans text-bodyLg text-ink">
-            {L(
-              'Làm các bộ đề 10 câu của đúng kỹ năng này. Đạt từ 8/10 trở lên ở một bộ là bạn đã nắm được bài.',
-              'Do the 10-question sets for this exact skill. Score 8/10 or higher on a set and you’ve mastered the lesson.',
-            )}
+            {L('Đạt 8/10 ở một bộ đề là nắm bài.', 'Score 8/10 on a set to master it.')}
           </Text>
           <View className="mt-4 flex-row flex-wrap gap-2">
             <Button label={L('Luyện bộ đề', 'Practise sets')} iconRight="arrow-right" onPress={() => router.push(practiceHref as never)} />

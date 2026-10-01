@@ -68,10 +68,7 @@ export function RuleCheck({
         <Text className="font-strong text-body text-paper-ink">{L('Câu này kiểm luật gì?', 'Which rule does this question test?')}</Text>
       </View>
       <Text className="mt-1 font-sans text-label text-paper-muted">
-        {L(
-          'Chọn xong mới hiện lời giải. Chọn sai không bị trừ gì — app chỉ cần biết bạn chọn đáp án theo luật hay theo cảm giác.',
-          'The explanation appears once you pick. A wrong pick costs nothing — the app just needs to know whether you chose by rule or by feel.',
-        )}
+        {L('Chọn xong mới hiện lời giải. Sai không bị trừ.', 'The explanation shows after you choose. No penalty.')}
       </Text>
 
       <View className="mt-3 gap-2">

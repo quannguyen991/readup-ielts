@@ -188,7 +188,7 @@ function GridInBox({
   return (
     <View className="mt-3">
       <Text className="font-sans text-label text-muted">
-        {L('Tự gõ đáp án — tối đa 5 ký tự (6 nếu âm). Nhận cả phân số lẫn số thập phân, không nhận hỗn số.', 'Type your answer — up to 5 characters (6 if negative). Fractions and decimals are accepted; mixed numbers are not.')}
+        {L('Gõ đáp án: tối đa 5 ký tự, nhận phân số và số thập phân.', 'Type your answer: up to 5 characters, fractions or decimals.')}
       </Text>
       <TextInput
         value={value}

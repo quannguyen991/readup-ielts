@@ -80,7 +80,7 @@ export function ReminderCard() {
     a.download = `readup-nhac-hoc-${time.replace(':', 'h')}.ics`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 2000);
-    setMsg(L('Đã tải tệp lịch. Mở tệp (hoặc nhập vào Google Calendar) để lịch nhắc mỗi ngày, kể cả khi không mở app.', 'Calendar file downloaded. Open it (or import it into Google Calendar) to get a daily reminder, even when the app is closed.'));
+    setMsg(L('Đã tải tệp lịch. Mở tệp để thêm nhắc vào lịch.', 'Calendar file downloaded. Open it to add the reminder.'));
   };
 
   return (
@@ -125,11 +125,11 @@ export function ReminderCard() {
           ? perm === 'granted'
             ? L(`Đang bật: trình duyệt sẽ nhắc lúc ${time} nếu có một tab Band 9 đang mở.`, `On: your browser will remind you at ${time} if a Band 9 tab is open.`)
             : perm === 'denied'
-              ? L('Trình duyệt đang chặn thông báo của Band 9 — mở lại quyền trong cài đặt trang, hoặc dùng tệp lịch.', "Your browser is blocking Band 9 notifications — allow them in the site settings, or use the calendar file.")
+              ? L('Thông báo đang bị chặn. Mở quyền trong cài đặt trang hoặc dùng tệp lịch.', 'Notifications are blocked. Allow them in site settings or use the calendar file.')
               : perm === 'default'
                 ? L('Chưa cho phép thông báo — tắt rồi bật lại để trình duyệt hỏi quyền, hoặc dùng tệp lịch.', "Notifications aren't allowed yet — turn this off and on again so the browser asks, or use the calendar file.")
                 : L('Trình duyệt này không hỗ trợ thông báo — dùng tệp lịch để được nhắc.', "This browser doesn't support notifications — use the calendar file instead.")
-          : L('Nhắc này chỉ chạy khi còn tab Band 9 đang mở. Muốn được nhắc cả lúc đã đóng app, bật thẻ "Nhắc học" phía trên hoặc thêm tệp lịch vào Google Calendar / lịch của máy.', "This reminder only works while a Band 9 tab is open. To be reminded when the app is closed, use the \"Study reminders\" card above or add the calendar file to Google Calendar or your device calendar.")}
+          : L('Chỉ nhắc khi tab còn mở. Muốn nhắc cả lúc đóng app, bật "Nhắc học" ở trên.', 'Only works while the tab is open. For reminders when closed, use "Study reminders" above.')}
       </Text>
       {msg ? <Text className="mt-2 font-sans text-label text-ink">{msg}</Text> : null}
     </Card>

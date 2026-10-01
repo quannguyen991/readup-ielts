@@ -5,6 +5,7 @@ import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
+import { SidebarSearchTrigger } from "@/components/search/SearchTrigger";
 import { Icon } from "@/components/ui/Icon";
 import {
   ADMIN_GROUP,
@@ -87,6 +88,20 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
 
       <View className={collapsed ? "items-center pb-2 pt-5" : "px-5 pb-2 pt-5"}>
         <Logo compact markOnly={collapsed} />
+      </View>
+
+      {/* Ô tìm bài (mở bảng tìm kiếm có AI) — ngay trên danh sách mục. */}
+      <View className={collapsed ? "mt-2 items-center" : "mt-2 px-[14px]"}>
+        <SidebarSearchTrigger
+          collapsed={collapsed}
+          tone={{
+            text: themeConfig.textPrimary,
+            muted: themeConfig.textMuted,
+            hover: themeConfig.hoverBg,
+            border: themeConfig.isDark ? "rgba(255,255,255,0.16)" : "rgba(184,149,90,0.38)",
+            isDark: themeConfig.isDark,
+          }}
+        />
       </View>
 
       <ScrollView

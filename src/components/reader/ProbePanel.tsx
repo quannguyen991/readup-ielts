@@ -273,10 +273,7 @@ export function ProbePanel({
                     'Câu này ở một bài đọc khác, nên làm được ở đây là đã tách được "hiểu" khỏi "nhớ bài cũ".',
                     'This question is from a different passage, so getting it right separates "understanding" from "remembering the old passage".',
                   )
-                : L(
-                    'Đã làm rõ được chỗ này. Chưa xác nhận là đã nắm kỹ năng — muốn xác nhận thì cần một câu ở bài đọc khác.',
-                    "This point is now clear. The skill isn't confirmed as mastered yet — that needs a question from a different passage.",
-                  )
+                : L('Đã rõ chỗ này. Cần thêm một câu ở bài khác để xác nhận.', 'Cleared up. One more question in another passage confirms it.')
               : L(
                   'Chỗ vướng vẫn còn. Lần sau bám vào chữ quyết định ở trên trước khi chọn.',
                   'The sticking point is still there. Next time, anchor on the decisive phrase above before choosing.',

@@ -316,7 +316,7 @@ function Structure({ wide }: { wide: boolean }) {
           {L('Thi thích ứng theo module', 'Module-adaptive testing')}
         </Text>
         <Text className="font-sans" style={{ marginTop: 6, fontSize: 14, lineHeight: 21, color: '#7A4B00' }}>
-          {L('Mỗi phần có 2 module. Module 1 có độ khó trộn lẫn; kết quả module 1 quyết định module 2 là bản dễ hay bản khó. Chỉ bản khó mới mở được mức điểm cao nhất — vì vậy làm chắc module 1 quan trọng hơn làm nhanh.', 'Each section has 2 modules. Module 1 mixes difficulties; how you do on it decides whether module 2 is the easier or harder version. Only the harder one unlocks the top scores — so getting module 1 right matters more than speed.')}
+          {L('Mỗi phần 2 module. Module 1 tốt thì module 2 khó hơn và mới đạt được điểm cao.', 'Each section has 2 modules. Do well in module 1 to unlock the harder, higher-scoring module 2.')}
         </Text>
       </View>
     </View>

@@ -122,14 +122,8 @@ export function DomainMoveBanner() {
         </Text>
         <Text className="font-sans" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(243,237,225,0.82)', textAlign: 'center' }}>
           {state === 'blocked'
-            ? L(
-                'Trình duyệt đã chặn cửa sổ mới. Cho phép cửa sổ bật lên cho trang này rồi bấm lại, hoặc chọn "Sang luôn".',
-                'Your browser blocked the new window. Allow pop-ups for this site and try again, or choose "Go now".',
-              )
-            : L(
-                'Nhà mới tên là Band 9 — vẫn là app bạn đang học, chỉ đổi tên, logo và địa chỉ. Bấm một lần để mang toàn bộ tiến độ và phiên đăng nhập sang nhà mới.',
-                'The new home is called Band 9 — the same app you’ve been using, with a new name, logo and address. One tap brings all your progress and your sign-in along.',
-              )}
+            ? L('Trình duyệt chặn cửa sổ mới. Cho phép rồi bấm lại, hoặc chọn "Sang luôn".', 'The pop-up was blocked. Allow it and retry, or choose "Go now".')
+            : L('Vẫn là app cũ, chỉ đổi tên và địa chỉ. Bấm một lần để mang theo tiến độ.', 'Same app, new name and address. One tap brings your progress.')}
         </Text>
         <Text className="font-heavy" style={{ fontSize: 16, color: '#E2C88F' }}>
           {SITE_HOST}

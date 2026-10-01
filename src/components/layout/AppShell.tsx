@@ -19,6 +19,7 @@ import { DomainMoveBanner } from './DomainMoveBanner';
 import { useStreakGlass } from '@/services/city/useStreakGlass';
 import { PromoGiftOverlay } from '@/components/promo/PromoGiftOverlay';
 import { ReminderRunner } from '@/components/reminder/Reminder';
+import { SearchPalette } from '@/components/search/SearchPalette';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#0F1D33';
@@ -94,6 +95,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
         {isExamRoute(pathname) || isCityRoute ? null : <AskBubble />}
         <SelectionLookup />
+        <SearchPalette />
       </FocusBackdrop>
     );
   }
@@ -152,6 +154,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       {/* Quà cuối tháng 9 (+2.000 sao, 7 ngày Pro) — phủ màn hình ở trang duyệt, không chen vào màn làm bài. */}
       <PromoGiftOverlay />
       <ReminderRunner />
+      <SearchPalette />
     </SafeAreaView>
   );
 }

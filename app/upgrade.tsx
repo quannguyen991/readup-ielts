@@ -64,7 +64,7 @@ export default function UpgradeScreen() {
         badge={L('BAND 9 · GÓI HỌC', 'BAND 9 · PLANS')} art="shop"
         line1={L('Chọn gói', 'Choose a plan')}
         line2={L('học đúng phần mình cần', 'for exactly what you need')}
-        subtitle={L('Bản Free dùng học thật được — nâng cấp khi bạn cần mở thêm nội dung, không phải để bắt đầu.', "Free is good for real studying — upgrade when you need more content, not to get started.")}
+        subtitle={L('Bản Free đủ để học. Nâng cấp khi cần thêm.', 'Free is enough to study. Upgrade when you need more.')}
         footer={
           <>
             <HeroStat value={status.plan === 'free' ? 'Free' : PLANS[status.plan].name} label={L('gói hiện tại', 'current plan')} />
@@ -122,7 +122,7 @@ export default function UpgradeScreen() {
           <View className="flex-1" style={{ minWidth: 220 }}>
             <Text className="font-strong text-cardTitle text-ink">{L('Mua theo nhóm, càng đông càng rẻ', 'Buy as a group — the more, the cheaper')}</Text>
             <Text className="mt-1 font-sans text-body text-muted">
-              {L('Rủ bạn học cùng mua Plus/Pro/Max trả năm — nhóm 10 người mua Max giảm tới 30%. Mỗi người vẫn tự chuyển khoản QR của riêng mình.', 'Team up with classmates for yearly Plus/Pro/Max — a group of 10 buying Max saves up to 30%. Everyone still pays by their own QR transfer.')}
+              {L('Mua theo nhóm, giảm tới 30%.', 'Buy as a group, save up to 30%.')}
             </Text>
           </View>
           <Button
@@ -149,7 +149,7 @@ export default function UpgradeScreen() {
             <View className="flex-1">
               <Text className="font-strong text-body text-ink">{L('Chưa thanh toán được', "Payments aren't available yet")}</Text>
               <Text className="mt-1 font-sans text-body text-muted">
-                {L('Cổng thanh toán (quét mã QR chuyển khoản) chưa nối. Nút nâng cấp bên trên hiện chỉ ghi nhận lựa chọn trên máy này để bạn xem thử giao diện sau khi mở khoá — chưa trừ tiền và chưa đồng bộ lên máy chủ.', "The payment gateway (QR bank transfer) isn't connected yet. The upgrade buttons above only save your choice on this device so you can preview the unlocked app — nothing is charged or synced to the server.")}
+                {L('Thanh toán chưa mở: nút nâng cấp chỉ để xem thử, chưa trừ tiền.', 'Payment isn\'t live yet: upgrading here is a preview, nothing is charged.')}
               </Text>
             </View>
           </View>

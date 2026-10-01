@@ -5,6 +5,7 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Logo } from './Logo';
+import { SearchIconButton } from '@/components/search/SearchTrigger';
 import { Icon } from '@/components/ui/Icon';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
@@ -27,6 +28,7 @@ export function MobileHeader() {
 
       <View className="flex-row items-center gap-2">
         <LanguageSwitch compact />
+        <SearchIconButton color={color.muted} size={20} />
         <Pressable accessibilityRole="button" accessibilityLabel={L('Thông báo', 'Notifications')} className="p-1.5">
           <View>
             <Icon name="bell" size={20} color={color.muted} />

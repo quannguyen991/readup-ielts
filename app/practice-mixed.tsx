@@ -38,7 +38,7 @@ export default function MixedPracticeScreen() {
     <Screen>
       <HeroBanner
         title={L('Luyện xen kẽ dạng bài', 'Mixed question-type practice')}
-        subtitle={L('Các dạng câu bị trộn lẫn trong cùng một bài, không đi thành khối như đề thi. Dùng khi đang học phân biệt dạng — nhận ra dạng trước, làm sau.', "Question types are shuffled within each passage instead of coming in blocks like the real test. Use it while you're learning to tell types apart — spot the type first, then answer.")}
+        subtitle={L('Trộn các dạng câu để luyện nhận dạng.', 'Mixed question types to practise spotting them.')}
         illustration="mock-tests-hero"
       />
 

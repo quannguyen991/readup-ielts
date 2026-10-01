@@ -124,7 +124,7 @@ export default function ProfileScreen() {
             </View>
             {!signedIn ? (
               <Text className="mt-3 font-sans text-label text-muted">
-                {L('Bạn đang dùng với tư cách Khách — đồ đã đổi lưu trên máy này. Đăng nhập để giữ qua máy khác và lên bảng xếp hạng.', "You're using Band 9 as a Guest — your items are saved on this device. Sign in to keep them across devices and join the leaderboard.")}
+                {L('Đăng nhập để giữ đồ và lên bảng xếp hạng.', 'Sign in to keep your items and join the leaderboard.')}
               </Text>
             ) : null}
           </View>
