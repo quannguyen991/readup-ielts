@@ -13,6 +13,7 @@ import { router } from 'expo-router';
 
 import type { Era } from '@/data/city/catalog';
 import { useAuthStore } from '@/store/useAuthStore';
+import { HUB_DOWNTOWN, type HubSnapshot } from '@/services/city/hub';
 import { useCityStore } from '@/store/useCityStore';
 import { CityPreview } from './CityPreview';
 import { useHubSnapshot } from './useHubSnapshot';
@@ -26,6 +27,8 @@ export function QuestCityHero() {
   const { L } = useL();
   const chosen = useCityStore((s) => !!s.terrain);
   const era = useCityStore((s) => (s.era || 1) as Era);
+  const token = useAuthStore((st) => st.session?.access_token ?? null);
+  const { data } = useHubSnapshot(token);
 
   return (
     <Pressable
@@ -42,12 +45,7 @@ export function QuestCityHero() {
     >
       {/* cảnh 3D: khu cao ốc chung, phủ cả khối */}
       <View style={{ position: 'absolute', top: 0, left: '30%', right: 0, bottom: 0 }}>
-        <CityPreview height={HEIGHT + 40} hub />
-      </View>
-      <View pointerEvents="none" style={{ position: 'absolute', right: 16, top: 16, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5, backgroundColor: 'rgba(11,26,46,0.78)' }}>
-        <Text className="font-strong" style={{ fontSize: 12, color: GOLD }}>
-          {L('Khi hoàn thành', 'When complete')}
-        </Text>
+        <CityPreview height={HEIGHT + 40} hub hubTotal={data?.total} />
       </View>
       {/* lớp mờ phía trái để chữ đọc được trên nền cảnh */}
       <View
@@ -122,18 +120,16 @@ export function QuestCityHero() {
               </Text>
             </Pressable>
           </View>
-          <HubLine />
+          <HubLine data={data} />
         </View>
       </View>
     </Pressable>
   );
 }
 
-/** Một dòng tiến độ THẬT của khu cao ốc chung (từ /api/city-hub); chưa tải được thì không hiện số. */
-function HubLine() {
+/** Một dòng tiến độ THẬT của khu mở rộng (từ /api/city-hub); chưa tải được thì không hiện số. */
+function HubLine({ data }: { data: HubSnapshot | null }) {
   const { L } = useL();
-  const token = useAuthStore((st) => st.session?.access_token ?? null);
-  const { data } = useHubSnapshot(token);
   const p = data?.progress;
   if (!p) return null;
   return (
@@ -146,7 +142,7 @@ function HubLine() {
         ))}
       </View>
       <Text className="font-semi" style={{ marginTop: 8, fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
-        {L(`${p.floorsBuilt}/${p.floorsTotal} tầng · ${data!.people} người góp`, `${p.floorsBuilt}/${p.floorsTotal} floors · ${data!.people} contributors`)}
+        {L(`${HUB_DOWNTOWN.length} tòa xong · khu mở rộng ${p.floorsBuilt}/${p.floorsTotal} tầng`, `${HUB_DOWNTOWN.length} towers done · expansion ${p.floorsBuilt}/${p.floorsTotal} floors`)}
       </Text>
     </View>
   );

@@ -64,3 +64,4 @@ data/provenance/
 # Thành Phố Tri Thức: file model THÔ tải về (trước khi chuẩn hoá). Không commit —
 # chỉ commit bản đã xử lý trong public/city/models và dòng giấy phép trong LICENSES.json.
 assets/city/_raw/
+tmp-art/

@@ -95,14 +95,15 @@ export type PlaceCheck = { ok: true; tiles: [number, number][] } | { ok: false; 
 
 const SMALL_ON_SAND = (it: CatalogBuilding) => it.size[0] * it.size[1] === 1;
 
-export function canPlace(w: World, type: string, x: number, y: number, rot: number): PlaceCheck {
+/** `ignoreMax`: bản đồ dựng sẵn của Trung tâm (nhiều đài quan sát hơn mức một thành phố riêng được xây). */
+export function canPlace(w: World, type: string, x: number, y: number, rot: number, opts: { ignoreMax?: boolean } = {}): PlaceCheck {
   const it = catalogItem(type);
   const tiles = it ? footprintTiles(x, y, it.size, rot) : [];
   const fail = (reason: PlaceReason, bad: [number, number][] = [], zone?: ZoneKind): PlaceCheck => ({ ok: false, reason, tiles, bad, zone });
   if (!it) return fail('outside');
   if (it.era > (w.era as Era)) return fail('era');
   if (it.terrains !== 'all' && !it.terrains.includes(w.terrain.kind)) return fail('terrain');
-  if (it.max !== undefined && w.sites.filter((s) => s.type === type).length >= it.max) return fail('max');
+  if (!opts.ignoreMax && it.max !== undefined && w.sites.filter((s) => s.type === type).length >= it.max) return fail('max');
 
   const occ = occupancy(w.sites);
   const bad = (pred: (x: number, y: number) => boolean) => tiles.filter(([tx, ty]) => pred(tx, ty));

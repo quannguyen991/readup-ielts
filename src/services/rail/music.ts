@@ -1,8 +1,8 @@
 /**
- * NHẠC KHÔNG LỜI cho "Chuyến tàu chậm" — tự tổng hợp bằng Web Audio, không có
+ * NHẠC KHÔNG LỜI cho "Bay qua thành phố" — tự tổng hợp bằng Web Audio, không có
  * tệp âm thanh nào: nền hợp âm (pad), bè trầm, giai điệu ngũ cung ngẫu nhiên
  * có hạt giống (mỗi bài một hạt giống nên nghe lại vẫn đúng bài đó), trống
- * lo-fi nhẹ như nhịp bánh xe trên ray, tiếng mưa bằng nhiễu lọc.
+ * lo-fi nhẹ, tiếng mưa và tiếng gió bằng nhiễu lọc.
  *
  * Trình duyệt chỉ cho phát âm thanh sau một cú bấm của người dùng → `start()`
  * phải gọi trong trình xử lý sự kiện.
@@ -18,18 +18,18 @@ const MIN7 = [0, 3, 7, 10];
 const chord = (root: number, q: number[]) => q.map((n) => n + root);
 
 export const TRACKS: readonly Track[] = [
-  { name: 'Ga sớm mai', bpm: 72, key: 60, prog: [chord(0, MAJ7), chord(9, MIN7), chord(5, MAJ7), chord(7, [0, 4, 7, 10])], seed: 11 },
-  { name: 'Hàng cây bên ô kính', bpm: 68, key: 57, prog: [chord(0, MIN7), chord(5, MIN7), chord(10, MAJ7), chord(3, MAJ7)], seed: 23 },
+  { name: 'Bình minh trên mây', bpm: 72, key: 60, prog: [chord(0, MAJ7), chord(9, MIN7), chord(5, MAJ7), chord(7, [0, 4, 7, 10])], seed: 11 },
+  { name: 'Cánh rừng phía dưới', bpm: 68, key: 57, prog: [chord(0, MIN7), chord(5, MIN7), chord(10, MAJ7), chord(3, MAJ7)], seed: 23 },
   { name: 'Phố đèn vàng', bpm: 76, key: 62, prog: [chord(0, MAJ7), chord(4, MIN7), chord(9, MIN7), chord(5, MAJ7)], seed: 37 },
-  { name: 'Mưa gõ cửa toa', bpm: 64, key: 55, prog: [chord(0, MIN7), chord(8, MAJ7), chord(3, MAJ7), chord(10, [0, 4, 7, 10])], seed: 41 },
-  { name: 'Tuyết trên sân ga', bpm: 60, key: 64, prog: [chord(0, MAJ7), chord(5, MAJ7), chord(2, MIN7), chord(7, MAJ7)], seed: 53 },
-  { name: 'Chuyến đêm về phương Nam', bpm: 70, key: 58, prog: [chord(0, MIN7), chord(3, MAJ7), chord(5, MIN7), chord(7, MIN7)], seed: 67 },
+  { name: 'Mưa trên đôi cánh', bpm: 64, key: 55, prog: [chord(0, MIN7), chord(8, MAJ7), chord(3, MAJ7), chord(10, [0, 4, 7, 10])], seed: 41 },
+  { name: 'Tuyết giữa mây', bpm: 60, key: 64, prog: [chord(0, MAJ7), chord(5, MAJ7), chord(2, MIN7), chord(7, MAJ7)], seed: 53 },
+  { name: 'Bay đêm về phương Nam', bpm: 70, key: 58, prog: [chord(0, MIN7), chord(3, MAJ7), chord(5, MIN7), chord(7, MIN7)], seed: 67 },
   { name: 'Cánh đồng lướt qua', bpm: 80, key: 65, prog: [chord(0, MAJ7), chord(7, MAJ7), chord(9, MIN7), chord(5, MAJ7)], seed: 71 },
   { name: 'Ngọn hải đăng xa', bpm: 66, key: 59, prog: [chord(0, MIN7), chord(10, MAJ7), chord(8, MAJ7), chord(7, [0, 4, 7, 10])], seed: 83 },
-  { name: 'Tách trà trên tàu', bpm: 74, key: 61, prog: [chord(0, MAJ7), chord(2, MIN7), chord(4, MIN7), chord(5, MAJ7)], seed: 97 },
-  { name: 'Nhịp ray đều đều', bpm: 78, key: 56, prog: [chord(0, MIN7), chord(5, MIN7), chord(7, MIN7), chord(3, MAJ7)], seed: 101 },
-  { name: 'Ngân hà ngoài cửa sổ', bpm: 58, key: 63, prog: [chord(0, MAJ7), chord(9, MIN7), chord(2, MIN7), chord(7, MAJ7)], seed: 113 },
-  { name: 'Về tới ga cuối', bpm: 70, key: 60, prog: [chord(0, MAJ7), chord(5, MAJ7), chord(9, MIN7), chord(7, [0, 4, 7, 10])], seed: 127 },
+  { name: 'Tách trà giữa mây', bpm: 74, key: 61, prog: [chord(0, MAJ7), chord(2, MIN7), chord(4, MIN7), chord(5, MAJ7)], seed: 97 },
+  { name: 'Gió thổi đều đều', bpm: 78, key: 56, prog: [chord(0, MIN7), chord(5, MIN7), chord(7, MIN7), chord(3, MAJ7)], seed: 101 },
+  { name: 'Ngân hà trên đỉnh trời', bpm: 58, key: 63, prog: [chord(0, MAJ7), chord(9, MIN7), chord(2, MIN7), chord(7, MAJ7)], seed: 113 },
+  { name: 'Hạ cánh êm', bpm: 70, key: 60, prog: [chord(0, MAJ7), chord(5, MAJ7), chord(9, MIN7), chord(7, [0, 4, 7, 10])], seed: 127 },
 ];
 
 const freq = (midi: number) => 440 * 2 ** ((midi - 69) / 12);
@@ -50,6 +50,7 @@ export class RailMusic {
   private master: GainNode | null = null;
   private musicBus: GainNode | null = null;
   private rainGain: GainNode | null = null;
+  private windGain: GainNode | null = null;
   private noise: AudioBuffer | null = null;
   private timer: ReturnType<typeof setInterval> | null = null;
   private nextTime = 0;
@@ -58,7 +59,7 @@ export class RailMusic {
   track = 0;
   style: MusicStyle = 'piano';
   playing = false;
-  /** Gọi mỗi khi chuyển bài (tự đổi bài sau vài ga, hoặc hết vòng). */
+  /** Gọi mỗi khi chuyển bài (tự đổi bài sau vài thành phố, hoặc hết vòng). */
   onTrack?: (i: number) => void;
 
   private ensure() {
@@ -112,6 +113,36 @@ export class RailMusic {
     }
   }
 
+  /** Tiếng gió lùa bên tai: nhiễu lọc dải, độ sáng lên xuống chậm như từng đợt gió. */
+  setWind(on: boolean, level = 0.07) {
+    const ctx = this.ensure();
+    if (on && !this.windGain) {
+      const src = ctx.createBufferSource();
+      src.buffer = this.noise;
+      src.loop = true;
+      const bp = ctx.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.value = 520;
+      bp.Q.value = 0.6;
+      const lfo = ctx.createOscillator();
+      lfo.frequency.value = 0.11;
+      const lg = ctx.createGain();
+      lg.gain.value = 260;
+      lfo.connect(lg).connect(bp.frequency);
+      this.windGain = ctx.createGain();
+      this.windGain.gain.value = 0;
+      this.windGain.gain.linearRampToValueAtTime(level, ctx.currentTime + 2);
+      src.connect(bp).connect(this.windGain).connect(this.master!);
+      src.start();
+      lfo.start();
+    } else if (!on && this.windGain) {
+      const g = this.windGain;
+      g.gain.linearRampToValueAtTime(0, ctx.currentTime + 1);
+      setTimeout(() => g.disconnect(), 1200);
+      this.windGain = null;
+    }
+  }
+
   start(track = this.track) {
     const ctx = this.ensure();
     void ctx.resume();
@@ -140,6 +171,7 @@ export class RailMusic {
     void this.ctx?.close();
     this.ctx = null;
     this.rainGain = null;
+    this.windGain = null;
   }
 
   private schedule() {

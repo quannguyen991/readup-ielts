@@ -1,8 +1,10 @@
+import type { FlyerId } from '@/services/rail/flyers';
 import type { Route, Station } from '@/services/rail/stations';
 
 /**
- * Tên tuyến / ga theo ngôn ngữ giao diện. Dữ liệu gốc ở `services/rail/stations`
- * đã có `en` cho ga; tuyến thì chỉ có tên Việt nên bảng tiếng Anh nằm ở đây.
+ * Tên hành trình / thành phố / nhân vật bay theo ngôn ngữ giao diện. Dữ liệu gốc ở
+ * `services/rail/stations` đã có `en` cho thành phố; hành trình thì chỉ có tên Việt
+ * nên bảng tiếng Anh nằm ở đây.
  */
 const ROUTE_EN: Record<string, string> = {
   vn: 'North – South Vietnam',
@@ -13,6 +15,10 @@ const ROUTE_EN: Record<string, string> = {
 
 export function routeName(route: Pick<Route, 'id' | 'vi'>, en: boolean): string {
   return en ? (ROUTE_EN[route.id] ?? route.vi) : route.vi;
+}
+
+export function flyerName(f: { id: FlyerId; vi: string; en: string }, en: boolean): string {
+  return en ? f.en : f.vi;
 }
 
 export function stationName(station: Pick<Station, 'vi' | 'en'>, en: boolean): string {
@@ -51,18 +57,18 @@ export function countryName(country: string, en: boolean): string {
 
 /** Tên bài nhạc radio (dữ liệu gốc ở `services/rail/music`). */
 const TRACK_EN: Record<string, string> = {
-  'Ga sớm mai': 'Early morning station',
-  'Hàng cây bên ô kính': 'Trees by the window',
+  'Bình minh trên mây': 'Sunrise above the clouds',
+  'Cánh rừng phía dưới': 'Forest far below',
   'Phố đèn vàng': 'Yellow streetlights',
-  'Mưa gõ cửa toa': 'Rain on the carriage door',
-  'Tuyết trên sân ga': 'Snow on the platform',
-  'Chuyến đêm về phương Nam': 'Night train south',
+  'Mưa trên đôi cánh': 'Rain on the wings',
+  'Tuyết giữa mây': 'Snow in the clouds',
+  'Bay đêm về phương Nam': 'Night flight south',
   'Cánh đồng lướt qua': 'Fields rushing by',
   'Ngọn hải đăng xa': 'Distant lighthouse',
-  'Tách trà trên tàu': 'Tea on the train',
-  'Nhịp ray đều đều': 'Steady rail rhythm',
-  'Ngân hà ngoài cửa sổ': 'Milky Way outside the window',
-  'Về tới ga cuối': 'Last stop',
+  'Tách trà giữa mây': 'Tea among the clouds',
+  'Gió thổi đều đều': 'Steady tailwind',
+  'Ngân hà trên đỉnh trời': 'Milky Way overhead',
+  'Hạ cánh êm': 'Soft landing',
 };
 
 export function trackName(name: string, en: boolean): string {

@@ -1,16 +1,14 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { identify, listCities, localizeDistricts, nameOrAnon, namesOf, shortId, type Admin } from '@/lib/city-server';
+import { identify, localizeDistricts, readHubBase, shortId, type Admin, type HubBase } from '@/lib/city-server';
 import { ECONOMY } from '@/services/city/economy';
 import {
   addHubNote,
-  aggregateHub,
   applyContribution,
   cleanHubUser,
   EMPTY_HUB_USER,
-  hubProgress,
+  HUB,
   hubRoom,
   rankOf,
-  type HubRow,
   type HubSnapshot,
   type HubUser,
 } from '@/services/city/hub';
@@ -32,26 +30,19 @@ import { errorText, msg } from '@/lib/server-locale';
  * ghi đè). GET cộng dồn mọi dòng `city_hub` — đủ nhanh ở quy mô hiện tại, có
  * bộ nhớ đệm 20 giây. Tiến độ tháp tính lại từ tổng đã góp (`hubProgress`).
  *
- * Chống lạm dụng: trần 300 đơn vị / người / ngày (giờ VN), mã lượt góp chống
+ * Chống lạm dụng: trần 600 đơn vị / người / ngày (giờ VN, `HUB.dailyUnitCap`; đổi sao cũng nằm trong số này), mã lượt góp chống
  * cộng trùng khi gửi lại, và mỗi loại không được vượt kho đã đồng bộ của người
  * đó + phần có thể kiếm/đổi trong một ngày (kho trên máy có thể chưa kịp đồng bộ).
  * Tên người theo cùng luật với /api/city-visit; không lộ id đầy đủ hay email.
  */
 
 const TTL_MS = 20_000;
-type Base = { at: number; rows: (HubRow & { userId: string })[]; snapshot: Omit<HubSnapshot, 'me'> };
+type Base = HubBase & { at: number };
 let cache: Base | null = null;
 
 async function loadBase(admin: Admin): Promise<Base> {
   if (cache && Date.now() - cache.at < TTL_MS) return cache;
-  const { data, error } = await admin.from('user_state').select('user_id, payload').eq('store_key', 'city_hub');
-  if (error) throw new Error(error.message);
-  const raw = (data ?? []) as unknown as { user_id: string; payload: unknown }[];
-  const names = await namesOf(admin, raw.map((r) => r.user_id));
-  const rows = raw.map((r) => ({ userId: r.user_id, key: shortId(r.user_id), name: nameOrAnon(names, r.user_id), user: cleanHubUser(r.payload) }));
-  const agg = aggregateHub(rows);
-  const districts = await listCities(admin, 40).catch(() => []);
-  cache = { at: Date.now(), rows, snapshot: { ...agg, progress: hubProgress(agg.total), districts, updatedAt: new Date().toISOString() } };
+  cache = { at: Date.now(), ...(await readHubBase(admin)) };
   return cache;
 }
 
@@ -126,8 +117,8 @@ export async function POST(request: Request): Promise<Response> {
           r.reason === 'daily'
             ? msg(
                 request,
-                `Mỗi ngày mỗi người góp tối đa 300 đơn vị. Hôm nay bạn còn góp được ${r.room}.`,
-                `Each person can contribute up to 300 units a day. You can still contribute ${r.room} today.`,
+                `Mỗi ngày mỗi người góp tối đa ${HUB.dailyUnitCap} đơn vị. Hôm nay bạn còn góp được ${r.room}.`,
+                `Each person can contribute up to ${HUB.dailyUnitCap} units a day. You can still contribute ${r.room} today.`,
               )
             : r.reason === 'empty'
               ? msg(request, 'Chọn ít nhất một vật liệu để góp.', 'Pick at least one material to contribute.')

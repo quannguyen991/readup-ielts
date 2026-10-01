@@ -8,6 +8,7 @@ import { STUDY_BACKGROUNDS } from '@/components/layout/study-backgrounds';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { PixelSprite } from '@/components/game/PixelSprite';
+import { HeroSprite } from '@/components/game/HeroSprite';
 import type { SkinId } from '@/components/game/sprites';
 import { anim, MOVE } from '@/components/game/game-anim';
 import { AnimatedAvatar } from '@/components/profile/AnimatedAvatar';
@@ -625,7 +626,7 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
     return (
       <Stage>
         <View style={anim('rg-bob', 1400, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-          <PixelSprite name="hero" size={62} skin={item.skin} />
+          <HeroSprite size={62} skin={item.skin} />
         </View>
       </Stage>
     );

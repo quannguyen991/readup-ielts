@@ -12,7 +12,6 @@ import {
   newSite,
   settle,
   type HireCheck,
-  type Site,
 } from '@/services/city/construction';
 import { exchange, recordContribution, resolveEconomy, type ExchangeResult, type StudyEvent } from '@/services/city/economy';
 import type { HubSnapshot } from '@/services/city/hub';
@@ -75,11 +74,22 @@ type Actions = {
    * (ghi sổ có mã — gộp hai máy không làm vật liệu đã góp hiện lại).
    */
   contributeToHub: (materials: Partial<Materials>, token: string | null) => Promise<HubContributeResult>;
+  /**
+   * GÓP BẰNG SAO một chạm: máy chủ nhận phần góp TRƯỚC, rồi mới trừ sao và ghi sổ
+   * (đổi + góp, kho ròng không đổi). Máy chủ từ chối / mất mạng → không mất sao,
+   * không đổi kho. `retryId` (lấy từ kết quả `offline`) cho gửi lại không cộng hai lần.
+   */
+  donateWithStars: (order: Partial<Materials>, balance: number, token: string | null, retryId?: string) => Promise<StarDonateResult>;
 };
 
 export type HubContributeResult =
   | { ok: true; given: Partial<Materials>; hub: HubSnapshot | null }
   | { ok: false; reason: 'auth' | 'materials' | 'offline' | 'daily' | 'empty' | 'invalid' | 'server'; message?: string; room?: number };
+
+export type StarDonateResult =
+  | { ok: true; given: Partial<Materials>; cost: number; hub: HubSnapshot | null }
+  | { ok: false; reason: HubContributeFail | 'stars' | 'capped'; message?: string; room?: number; cost?: number; retryId?: string };
+type HubContributeFail = Extract<HubContributeResult, { ok: false }>['reason'];
 
 export type CityState = CityPayload & Actions;
 
@@ -298,6 +308,36 @@ export const useCityStore = create<CityState>()(
         const given = body.given ?? materials;
         set({ ...recordContribution(get(), given, vnToday(now()).key, id), updatedAt: stamp() });
         return { ok: true, given, hub: body.hub ?? null };
+      },
+
+      donateWithStars: async (order, balance, token, retryId) => {
+        if (!token) return { ok: false, reason: 'auth' };
+        const day = vnToday(now()).key;
+        const id = retryId ?? `hubs-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;
+        // 1) Kiểm luật đổi (trần ngày, đủ sao) — CHƯA trừ gì.
+        const ex = exchange(get(), order, balance, day, `${id}-b`);
+        if (!ex.ok) return { ok: false, reason: ex.reason === 'stars' ? 'stars' : ex.reason === 'capped' ? 'capped' : 'invalid', cost: ex.cost, retryId };
+        // 2) Máy chủ nhận phần góp.
+        let res: Response;
+        try {
+          res = await fetch('/api/city-hub', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'contribute', materials: ex.got, id }),
+          });
+        } catch {
+          return { ok: false, reason: 'offline', retryId: id };
+        }
+        const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; code?: string; room?: number; given?: Partial<Materials>; hub?: HubSnapshot };
+        if (!res.ok || !body.ok) {
+          const code = body.code === 'auth' || body.code === 'daily' || body.code === 'empty' || body.code === 'invalid' || body.code === 'materials' ? body.code : 'server';
+          return { ok: false, reason: code, message: body.error, room: body.room };
+        }
+        // 3) Đã nhận: trừ sao, ghi sổ đổi (+) và sổ góp (−) — kho ròng không đổi.
+        const given = body.given ?? ex.got;
+        useRewardStore.getState().spendStars(ex.cost, balance);
+        set({ ...recordContribution(ex.state, given, day, id), updatedAt: stamp() });
+        return { ok: true, given, cost: ex.cost, hub: body.hub ?? null };
       },
     }),
     {

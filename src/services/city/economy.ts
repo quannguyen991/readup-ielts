@@ -62,12 +62,14 @@ export const ECONOMY = {
   /** Giữ mã sự kiện đã thưởng bao nhiêu ngày. */
   keepAwardedDays: 400,
   /**
-   * Chợ vật liệu: giá (sao / 1 đơn vị) và trần mua mỗi ngày (giờ VN) từng loại —
-   * trần bằng trần học trong ngày, để đổi sao không vượt được nhịp học đều.
+   * Chợ vật liệu: giá (sao / 1 đơn vị) và trần mua mỗi ngày (giờ VN) từng loại.
+   * Nâng trần từ bằng-trần-học lên ~2,5× (01/10/2026, "cho thoáng"): sao vẫn chỉ
+   * đến từ học (có trần ngày), nên đổi sao không phải đường tắt; trần này chỉ
+   * để một tay không dồn cả kho sao vào một loại trong một ngày.
    */
   exchange: {
     price: { wood: 4, brick: 5, stone: 6, steel: 15, glass: 20 } as Materials,
-    dailyCap: { wood: 60, stone: 40, brick: 60, steel: 24, glass: 22 } as Materials,
+    dailyCap: { wood: 150, stone: 100, brick: 150, steel: 60, glass: 55 } as Materials,
   },
   /** Sổ giao dịch giữ bao nhiêu ngày / tối đa bao nhiêu dòng. */
   ledger: { keepDays: 30, maxEntries: 400 },

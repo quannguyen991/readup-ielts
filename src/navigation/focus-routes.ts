@@ -14,7 +14,7 @@
 const FOCUS_PATTERNS: readonly RegExp[] = [
   // Thành phố Tri thức: cảnh 3D chiếm trọn màn hình, không thanh bên.
   /^\/quest\/city$/,
-  // Chuyến tàu từ vựng: trang riêng nền tối, tự có đầu trang và nút quay lại.
+  // Chuyến bay từ vựng: trang riêng nền tối, tự có đầu trang và nút quay lại.
   /^\/quest\/rail$/,
   // Writing: phòng viết, luyện từng phần, bảng chấm, drill SAT.
   /^\/write\/[^/]+$/,
@@ -62,6 +62,9 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Đăng nhập và thanh toán: dẫn người dùng đi thẳng, không mời rẽ ngang.
   /^\/auth(\/|$)/,
   /^\/checkout$/,
+  // Du ngoạn Band 9: cảnh thành phố và lượt làm bài ở một địa điểm.
+  /^\/quest\/du-ngoan\/visit\/[^/]+$/,
+  /^\/quest\/du-ngoan\/(hanoi|singapore|london|paris|amsterdam|rome)$/,
   // Bản đồ ReadUp: thế giới pixel chiếm trọn màn hình.
   /^\/quest\/world(\/[^/]+)?$/,
 ];
@@ -93,10 +96,10 @@ export function isLookupBlocked(pathname: string): boolean {
   return NO_LOOKUP.some((re) => re.test(pathname));
 }
 
-/** Màn luyện câu có nền toa tàu (tông sáng): chép chính tả, dịch / viết câu. */
+/** Màn luyện câu có nền cảnh bay (tông sáng): chép chính tả, dịch / viết câu. */
 const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate)$/;
 
-/** Màn có nền toa tàu: ôn từ vựng (tông tối) + luyện câu (tông sáng). */
+/** Màn có nền cảnh bay: ôn từ vựng (tông tối) + luyện câu (tông sáng). */
 export function isTravelRoute(pathname: string): boolean {
   return VOCAB_STUDY.test(pathname) || TRAVEL_LIGHT.test(pathname);
 }

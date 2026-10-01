@@ -72,10 +72,7 @@ export function VisitView({ reduced, onBack, initial }: { reduced: boolean; onBa
           </button>
         </div>
         <p className="cg-muted" style={{ margin: 0 }}>
-          {L({
-            vi: 'Nhân vật của bạn sẽ đi dạo trong thành phố người ta: ngắm cao ốc, câu cá bên hồ, vào nhà xem họ bày biện, rồi để lại lời nhắn. Bạn không sửa được gì của họ.',
-            en: 'Your character strolls through their city: admire the towers, fish by the lake, peek into their home and leave a note. You cannot change anything of theirs.',
-          })}
+          {L({ vi: 'Dạo trong thành phố bạn học, thả tim, ghi sổ lưu bút. Chỉ xem, không sửa được.', en: "Stroll their city, like it, sign the guestbook. View only." })}
         </p>
         <div className="cg-scroll" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 10, minHeight: 0 }}>
           {err ? <span className="cg-muted">{L({ vi: `Không tải được danh sách: ${err}`, en: `Could not load the list: ${err}` })}</span> : null}
@@ -158,8 +155,14 @@ function VisitCity({ id, token, reduced, onBack }: { id: string; token: string |
 
   const post = async (body: Record<string, unknown>) => {
     if (!token) return setMsg(L({ vi: 'Đăng nhập để thích và ghi sổ lưu bút.', en: 'Sign in to like and sign the guestbook.' }));
-    const r = await fetch('/api/city-visit', { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ id, ...body }) });
-    const b = (await r.json()) as { ok?: boolean; error?: string; likes?: number; liked?: boolean; notes?: Note[] };
+    let r: Response;
+    let b: { ok?: boolean; error?: string; likes?: number; liked?: boolean; notes?: Note[] };
+    try {
+      r = await fetch('/api/city-visit', { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ id, ...body }) });
+      b = (await r.json()) as typeof b;
+    } catch {
+      return setMsg(L({ vi: 'Mất kết nối — thử lại sau.', en: 'Offline — try again later.' }));
+    }
     if (!r.ok || !b.ok) return setMsg(b.error ?? L({ vi: `Lỗi ${r.status}`, en: `Error ${r.status}` }));
     setDetail((d) => (d ? { ...d, likes: b.likes ?? d.likes, liked: b.liked ?? d.liked, notes: b.notes ?? d.notes } : d));
     if (body.action === 'note') {

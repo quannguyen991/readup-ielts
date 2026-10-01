@@ -194,7 +194,6 @@ export default function QuizScreen() {
               <Text className="font-semi text-label text-muted">{en ? (KIND_EN[cur.kind] ?? THPT_KIND_LABEL[cur.kind]) : THPT_KIND_LABEL[cur.kind]}</Text>
             </View>
           </View>
-          <Text className="mt-2 font-sans text-body italic text-muted">{cur.instruction}</Text>
 
           {cur.kind === 'definition' ? (
             <Text className="mt-4 font-semi text-sectionTitle text-ink">“{cur.focus}”</Text>

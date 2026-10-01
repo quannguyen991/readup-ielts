@@ -25,9 +25,31 @@ export const HUB_TOWERS: readonly HubTower[] = [
   { id: 'uoc-mo', vi: 'Tháp Ước Mơ', en: 'Tower of Dreams', type: 'tower_glass', floors: 20, floorCost: { wood: 12, stone: 20, brick: 22, steel: 12, glass: 14 }, glyph: '🌟' },
 ];
 
+/**
+ * THÀNH PHỐ CHÍNH: mười cao ốc đã dựng xong sẵn quanh quảng trường (không cần
+ * góp). `floors` nằm trong khoảng của loại cao ốc — `hub.test.ts` canh. Khác
+ * `HUB_TOWERS`: năm tòa kia là KHU MỞ RỘNG, tầng lên theo vật liệu thật.
+ */
+export type HubLandmark = { id: string; vi: string; en: string; type: string; floors: number };
+export const HUB_DOWNTOWN: readonly HubLandmark[] = [
+  { id: 'mui-kim', vi: 'Mũi Kim', en: 'The Needle', type: 'tower_observation', floors: 20 },
+  { id: 'lang-kinh', vi: 'Lăng Kính', en: 'Prism', type: 'tower_glass', floors: 19 },
+  { id: 'song-tu', vi: 'Song Tử', en: 'Gemini', type: 'tower_twin', floors: 17 },
+  { id: 'atlas', vi: 'Atlas', en: 'Atlas', type: 'tower_office', floors: 15 },
+  { id: 'binh-minh', vi: 'Bình Minh', en: 'Aurora', type: 'tower_glass', floors: 18 },
+  { id: 'cang-xanh', vi: 'Cảng Xanh', en: 'Harbour One', type: 'tower_glass', floors: 16 },
+  { id: 'hai-dang', vi: 'Hải Đăng Phố', en: 'Beacon', type: 'tower_observation', floors: 15 },
+  { id: 'lan-quy', vi: 'Lan Quý', en: 'Orchid', type: 'tower_twin', floors: 14 },
+  { id: 'kinh-tuyen', vi: 'Kinh Tuyến', en: 'Meridian', type: 'tower_office', floors: 13 },
+  { id: 'da-hoa', vi: 'Đá Hoa', en: 'Granite', type: 'tower_office', floors: 11 },
+];
+
 export const HUB = {
-  /** Mỗi người góp tối đa bao nhiêu đơn vị vật liệu một ngày (giờ VN). */
-  dailyUnitCap: 300,
+  /**
+   * Mỗi người góp tối đa bao nhiêu đơn vị vật liệu một ngày (giờ VN). Nâng từ
+   * 300 lên 600 (01/10/2026): đổi sao cũng nằm trong số này, 300 là chỗ nghẽn.
+   */
+  dailyUnitCap: 600,
   /** Một lần góp tối đa bao nhiêu đơn vị một loại (chặn số vô lý). */
   maxPerKind: 300,
   notesPerDay: 3,
@@ -235,8 +257,8 @@ export function addHubNote(user: HubUser, text: unknown, at: string, day: string
 
 export type HubRow = { key: string; name: string; user: HubUser };
 export type HubContributor = { key: string; name: string; units: number };
-export type HubActivity = { name: string; materials: Partial<Materials>; units: number; at: string };
-export type HubBoardNote = { name: string; text: string; at: string };
+export type HubActivity = { key: string; name: string; materials: Partial<Materials>; units: number; at: string };
+export type HubBoardNote = { key: string; name: string; text: string; at: string };
 
 export type HubAggregate = {
   total: Materials;
@@ -256,10 +278,10 @@ export function aggregateHub(rows: readonly HubRow[], limits = { contributors: 1
     for (const k of MATERIAL_KINDS) total[k] += r.user.total[k];
     const u = units(r.user.total);
     if (u > 0) contributors.push({ key: r.key, name: r.name, units: u });
-    for (const c of r.user.recent) activity.push({ name: r.name, materials: c.m, units: units(c.m), at: c.at });
-    for (const n of r.user.notes) board.push({ name: r.name, text: n.text, at: n.at });
+    for (const c of r.user.recent) activity.push({ key: r.key, name: r.name, materials: c.m, units: units(c.m), at: c.at });
+    for (const n of r.user.notes) board.push({ key: r.key, name: r.name, text: n.text, at: n.at });
   }
-  contributors.sort((a, b) => b.units - a.units || a.name.localeCompare(b.name));
+  contributors.sort((a, b) => b.units - a.units || (a.key < b.key ? -1 : a.key > b.key ? 1 : 0));
   const byTime = (a: { at: string }, b: { at: string }) => (a.at < b.at ? 1 : a.at > b.at ? -1 : 0);
   activity.sort(byTime);
   board.sort(byTime);
@@ -269,6 +291,21 @@ export function aggregateHub(rows: readonly HubRow[], limits = { contributors: 1
     contributors: contributors.slice(0, limits.contributors),
     activity: activity.slice(0, limits.activity),
     board: board.slice(0, limits.board),
+  };
+}
+
+/** Mã (key) của những người THỰC SỰ hiện trong bản tổng hợp — chỉ cần tra tên cho họ, không cho cả nghìn người đã góp. */
+export function displayedKeys(agg: HubAggregate): string[] {
+  return [...new Set([...agg.contributors.map((c) => c.key), ...agg.activity.map((a) => a.key), ...agg.board.map((n) => n.key)])];
+}
+
+/** Gán tên (theo mã người) vào bản tổng hợp đã dựng với tên tạm. */
+export function withNames(agg: HubAggregate, nameOf: (key: string) => string): HubAggregate {
+  return {
+    ...agg,
+    contributors: agg.contributors.map((c) => ({ ...c, name: nameOf(c.key) })),
+    activity: agg.activity.map((a) => ({ ...a, name: nameOf(a.key) })),
+    board: agg.board.map((n) => ({ ...n, name: nameOf(n.key) })),
   };
 }
 

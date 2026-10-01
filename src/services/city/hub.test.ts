@@ -11,14 +11,19 @@ import {
   EMPTY_HUB_USER,
   floorShortfall,
   HUB,
+  HUB_DOWNTOWN,
   HUB_TOWERS,
   hubProgress,
   hubRoom,
   rankOf,
   type HubRow,
 } from './hub';
-import { hubLayout, hubSites, seedForFloors } from './hub-layout';
+import { HUB_FOCUS, HUB_TERRAIN, hubLayout, hubSites, seedForFloors } from './hub-layout';
 import { floorsFor, isDone } from './construction';
+import { footprintTiles, key, occupancy } from './placement';
+import { generateBuilding } from './procgen/buildings';
+import { MAP, tileAt } from './terrain';
+import { ECONOMY } from './economy';
 import { MATERIAL_KINDS, type Materials } from './materials';
 
 const DAY = '2026-10-01';
@@ -94,7 +99,7 @@ test('góp: cộng dồn, trần ngày, mã trùng không cộng hai lần', () 
   const dup = applyContribution(r1.user, { wood: 10, stone: 5 }, 'c1', AT, DAY);
   assert.ok(dup.ok && dup.duplicate);
   if (dup.ok) assert.equal(dup.user.total.wood, 10);
-  const over = applyContribution(r1.user, { brick: HUB.dailyUnitCap }, 'c2', AT, DAY);
+  const over = applyContribution(r1.user, { brick: HUB.maxPerKind, steel: HUB.maxPerKind }, 'c2', AT, DAY);
   assert.equal(over.ok, false);
   if (!over.ok) {
     assert.equal(over.reason, 'daily');
@@ -161,17 +166,103 @@ test('gộp mọi người: tổng, bảng vàng theo số đã góp, hoạt đ�
   assert.equal(rankOf(rows, 'C'), 0);
 });
 
-test('bản đồ Trung tâm: đặt đủ năm tháp, đúng số tầng, tất định', () => {
+test('thành phố chính: đúng mười cao ốc, số tầng nằm trong khoảng của loại, mã không trùng', () => {
+  assert.equal(HUB_DOWNTOWN.length, 10);
+  assert.equal(new Set(HUB_DOWNTOWN.map((t) => t.id)).size, 10);
+  assert.equal(new Set([...HUB_DOWNTOWN, ...HUB_TOWERS].map((t) => t.id)).size, 15);
+  for (const t of HUB_DOWNTOWN) {
+    const it = catalogItem(t.type);
+    assert.ok(it?.floors && isTowerType(t.type), t.type);
+    assert.ok(t.floors >= it!.floors![0] && t.floors <= it!.floors![1], `${t.id}: ${t.floors}`);
+    assert.ok(t.vi && t.en);
+  }
+  // Có đủ độ cao khác nhau và ít nhất ba loại dáng tháp (đường chân trời không đều tăm tắp).
+  assert.ok(new Set(HUB_DOWNTOWN.map((t) => t.floors)).size >= 8);
+  assert.ok(new Set(HUB_DOWNTOWN.map((t) => t.type)).size >= 3);
+});
+
+function isTowerType(type: string): boolean {
+  return catalogItem(type)?.zone === 'highrise';
+}
+
+test('bản đồ Trung tâm: mười cao ốc xong sẵn (không cần cẩu, không cọc), đúng số tầng, tất định', () => {
+  const l = hubLayout();
+  assert.equal(l.downtown.length, HUB_DOWNTOWN.length);
+  l.downtown.forEach((s, i) => {
+    assert.equal(s.type, HUB_DOWNTOWN[i]!.type);
+    assert.equal(s.floors, HUB_DOWNTOWN[i]!.floors);
+    assert.ok(isDone(s), HUB_DOWNTOWN[i]!.id);
+    assert.equal(s.craneUp, false);
+    assert.equal(s.floor, s.floors);
+  });
+  // Cả mười tòa xong ngay cả khi chưa ai góp gì.
+  const sites = hubSites(l, hubProgress({}));
+  for (const d of l.downtown) assert.ok(isDone(sites.find((s) => s.id === d.id)!));
+  assert.ok(l.decor.some((s) => s.type === 'power_station'));
+  assert.ok(l.decor.some((s) => s.type === 'fountain_plaza'));
+  assert.ok(l.decor.some((s) => s.type === 'station'));
+  assert.equal(hubLayout(), l);
+});
+
+test('bản đồ Trung tâm: mười tòa khác nhau thật (loại + số tầng + seed + hình sinh ra)', () => {
+  const l = hubLayout();
+  assert.equal(new Set(l.downtown.map((s) => `${s.type}:${s.floors}:${s.seed}`)).size, 10);
+  assert.equal(new Set(l.downtown.map((s) => s.seed)).size, 10);
+  const shapes = new Set(l.downtown.map((s) => JSON.stringify(generateBuilding(s.type, s.seed, 5).parts)));
+  assert.equal(shapes.size, 10, 'không có hai tòa giống hệt nhau');
+});
+
+test('bản đồ Trung tâm: năm tháp khu mở rộng đúng loại / số tầng, nằm cạnh đông thành phố chính', () => {
   const l = hubLayout();
   assert.equal(l.towers.length, HUB_TOWERS.length);
   l.towers.forEach((s, i) => {
     assert.equal(s.type, HUB_TOWERS[i]!.type);
     assert.equal(s.floors, HUB_TOWERS[i]!.floors);
+    assert.equal(s.id, `hub-tower-${HUB_TOWERS[i]!.id}`);
   });
-  assert.ok(l.decor.some((s) => s.type === 'power_station'));
-  assert.ok(l.decor.some((s) => s.type === 'fountain_plaza'));
-  const again = hubLayout();
-  assert.equal(again, l);
+  const east = Math.min(...l.towers.map((s) => s.x));
+  const downtownEast = Math.max(...l.downtown.map((s) => s.x));
+  assert.ok(east > downtownEast, 'khu mở rộng ở phía đông');
+});
+
+test('bản đồ Trung tâm: mọi công trình đặt hợp lệ — không chồng lên nhau, không đè đường, đủ phẳng, ngoài nước', () => {
+  const l = hubLayout();
+  const all = [...l.decor, ...l.downtown, ...l.towers];
+  assert.equal(new Set(all.map((s) => s.id)).size, all.length, 'mã công trình không trùng');
+  const occ = occupancy(all);
+  let tiles = 0;
+  for (const s of all) {
+    const it = catalogItem(s.type)!;
+    for (const [x, y] of footprintTiles(s.x, s.y, it.size, s.rot)) {
+      tiles++;
+      assert.ok(x >= 0 && y >= 0 && x < MAP.size && y < MAP.size, `${s.id} ngoài bản đồ`);
+      assert.equal(occ.get(key(x, y)), s.id, `${s.id} chồng lên công trình khác ở ${x},${y}`);
+      assert.ok(!l.roads[key(x, y)], `${s.id} đè lên đường ở ${x},${y}`);
+      const t = tileAt(l.terrain, x, y)!;
+      assert.ok(t.kind === 'grass' || t.kind === 'meadow', `${s.id} trên ô ${t.kind}`);
+      assert.equal(t.h, 1, `${s.id} không phẳng`);
+    }
+  }
+  assert.equal(occ.size, tiles);
+  // Địa hình: đồng bằng, mọi vùng mở sẵn để đường và công trình hợp lệ.
+  assert.equal(l.terrain.kind, HUB_TERRAIN.kind);
+  assert.equal(l.regions.length, 16);
+  assert.ok(Object.keys(l.roads).length > 100);
+  // Điểm nhìn mặc định nằm trong bản đồ.
+  assert.ok(Math.abs(HUB_FOCUS[0]) <= MAP.size / 2 && Math.abs(HUB_FOCUS[1]) <= MAP.size / 2);
+});
+
+test('bản đồ Trung tâm: khu mở rộng chưa ai góp → tháp 1 có cần cẩu, bốn tháp sau mới cắm mốc', () => {
+  const l = hubLayout();
+  const sites = hubSites(l, hubProgress({}));
+  const tw = (i: number) => sites.find((s) => s.id === l.towers[i]!.id)!;
+  assert.equal(tw(0).craneUp, true);
+  assert.equal(tw(0).floor, 0);
+  for (let i = 1; i < 5; i++) {
+    assert.equal(tw(i).stageIdx, 0);
+    assert.ok(!isDone(tw(i)));
+  }
+  assert.equal(sites.length, l.decor.length + l.downtown.length + l.towers.length);
 });
 
 test('bản đồ Trung tâm: tiến độ thật áp vào tháp (xong / đang lên tầng / mới khảo sát)', () => {
@@ -187,5 +278,13 @@ test('bản đồ Trung tâm: tiến độ thật áp vào tháp (xong / đang l
   assert.equal(tw(1).craneUp, true);
   assert.ok(!isDone(tw(1)));
   assert.equal(tw(2).stageIdx, 0);
-  assert.equal(sites.length, l.decor.length + l.towers.length);
+  assert.equal(sites.length, l.decor.length + l.downtown.length + l.towers.length);
+  // Thành phố chính không bị tiến độ khu mở rộng đụng tới.
+  for (const d of l.downtown) assert.deepEqual(sites.find((s) => s.id === d.id), d);
+});
+
+test('trần góp mỗi ngày đủ chứa cả trần đổi sao trong ngày (trần góp không là chỗ nghẽn)', () => {
+  const swapUnits = MATERIAL_KINDS.reduce((s, k) => s + ECONOMY.exchange.dailyCap[k], 0);
+  assert.ok(HUB.dailyUnitCap >= swapUnits, `${HUB.dailyUnitCap} < ${swapUnits}`);
+  assert.ok(HUB.maxPerKind >= Math.max(...MATERIAL_KINDS.map((k) => ECONOMY.exchange.dailyCap[k])));
 });

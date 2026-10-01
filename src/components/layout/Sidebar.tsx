@@ -49,7 +49,7 @@ import {
  * mỗi 170px nhường lại là thêm một cột chữ cho bài đọc. Nút thu gọn ẩn đi vì
  * ở đây không có gì để mở rộng.
  */
-export function Sidebar({ compact = false, glass = false }: { compact?: boolean; /** Trong suốt, chỉ biểu tượng (màn học có nền toa tàu). */ glass?: boolean }) {
+export function Sidebar({ compact = false, glass = false }: { compact?: boolean; /** Trong suốt, chỉ biểu tượng (màn học có nền cảnh bay). */ glass?: boolean }) {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
   const activeParent = parentNavKey(activeKey);

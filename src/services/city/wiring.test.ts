@@ -99,3 +99,38 @@ test('mục điều hướng Thành phố chỉ hiện trên máy tính', async 
   assert.equal(has(true), true);
   assert.equal(has(false), false);
 });
+
+test('góp bằng sao: kiểm luật → máy chủ nhận → mới trừ sao + ghi sổ; từ chối thì không mất sao', () => {
+  const store = read('src/store/useCityStore.ts');
+  const at = store.indexOf('donateWithStars: async');
+  assert.ok(at > 0, 'có hành động donateWithStars');
+  const end = store.indexOf('\n    }),\n    {', at);
+  const body = store.slice(at, end > 0 ? end : undefined);
+  const rule = body.indexOf('exchange(');
+  const fetchAt = body.indexOf('await fetch(');
+  const spend = body.indexOf('spendStars(');
+  const record = body.indexOf('recordContribution(');
+  assert.ok(rule > 0 && fetchAt > rule, 'kiểm luật đổi trước khi gọi máy chủ');
+  assert.ok(spend > fetchAt && record > fetchAt, 'trừ sao và ghi sổ chỉ SAU khi máy chủ nhận');
+  // Mọi nhánh trả lỗi nằm trước chỗ trừ sao.
+  const firstFail = body.indexOf("return { ok: false, reason: code");
+  assert.ok(firstFail > fetchAt && firstFail < spend, 'nhánh máy chủ từ chối trả về trước khi trừ sao');
+  assert.ok(body.includes('retryId'), 'gửi lại cùng mã khi mất mạng');
+});
+
+test('API Trung tâm: tổng hợp đọc theo trang (không bị cắt 1.000 dòng); trần ngày lấy từ HUB', () => {
+  const api = read('app/api/city-hub+api.ts');
+  assert.ok(api.includes('readHubBase('), 'dùng bộ đọc theo trang');
+  assert.ok(!/from\('user_state'\)\s*\.select\('user_id, payload'\)/.test(api), 'không đọc cả bảng một phát');
+  assert.ok(api.includes('HUB.dailyUnitCap'), 'thông báo trần ngày lấy từ hằng số');
+  const visit = read('app/api/city-visit+api.ts');
+  assert.ok(visit.includes('findCityOwner('), 'tìm chủ thành phố bằng khoảng uuid');
+});
+
+test('trang Quest + Trung tâm dùng chung điểm nhìn và bản đồ dựng sẵn; không còn chip "Khi hoàn thành"', () => {
+  const preview = read('src/components/city/preview/CityPreviewCanvas.tsx');
+  const view = read('src/components/city/ui/HubView.tsx');
+  assert.ok(preview.includes('HUB_FOCUS') && view.includes('HUB_FOCUS'));
+  assert.ok(!preview.includes('1_000_000'), 'xem trước không giả vờ khu mở rộng đã xong');
+  assert.ok(!read('src/components/city/QuestCityHero.tsx').includes('Khi hoàn thành'));
+});

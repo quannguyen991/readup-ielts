@@ -30,7 +30,7 @@ import { QuestJourneyHero } from '@/components/rail/QuestJourneyHero';
  * Bố cục dựng lại ngày 30/09/2026 ("chỉn chu hơn", bỏ tông tím), từ trên xuống:
  *   1. THẺ TRẬN ĐẤU — nhân vật (skin, linh vật, cấp, XP, tim, sao, chuỗi ngày)
  *      đối đầu con quái hiện tại, cùng nút chính "Vào trận" và "Học tiếp".
- *   2. HAI THẾ GIỚI — Hành trình học bằng toa tàu, rồi Thành phố Tri thức (chỉ
+ *   2. HAI THẾ GIỚI — Hành trình học bằng cảnh bay qua thành phố, rồi Thành phố Tri thức (chỉ
  *      máy tính). Người dùng yêu cầu 30/09 lấy hai khối này làm phần chính của
  *      Quest, nên chúng vẫn là hai khối lớn ngay dưới thẻ trận đấu.
  *   3. HÔM NAY — nhiệm vụ ngày dạng danh sách đánh dấu + số liệu thật hôm nay.
@@ -108,7 +108,7 @@ export default function QuestHome() {
           <BattleHud next={next} />
         </Appear>
 
-        {/* 2. Toa tàu từ vựng */}
+        {/* 2. Chuyến bay từ vựng */}
         <Appear index={1}>
           <View style={{ marginTop: GAP.md }}>
             <QuestJourneyHero />

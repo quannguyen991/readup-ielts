@@ -1,22 +1,25 @@
 /**
- * KHỐI ĐẦU TRANG QUEST — "Hành trình học": cảnh đoàn tàu đang chạy qua thành
- * phố hiện tại (cùng hành trình với Toa Từ Vựng và nền các màn ôn từ), tuyến
- * đang đi dạng sơ đồ, số dấu hộ chiếu, quãng còn lại tới ga kế, và lối vào học.
+ * KHỐI ĐẦU TRANG QUEST — "Hành trình học": cảnh nhân vật bay lướt qua thành phố
+ * hiện tại (cùng hành trình và nhân vật với Chuyến bay từ vựng và nền các màn ôn
+ * từ), tuyến đang bay dạng sơ đồ, số dấu hộ chiếu, quãng còn lại tới thành phố
+ * kế, và lối vào học.
  *
- * Người dùng yêu cầu 30/09/2026: Quest lấy toa tàu (và thành phố trên máy tính)
- * làm màn hình chính.
+ * Người dùng yêu cầu 30/09/2026: Quest lấy cảnh du lịch (và thành phố trên máy
+ * tính) làm màn hình chính; 01/10: đổi từ tàu sang vật thể bay qua thành phố.
  */
 import React, { useEffect, useRef, useState } from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { useHydrated } from '@/components/layout/useHydrated';
-import { CuteGlobe, CuteTrain } from '@/components/illust/Cute';
+import { CuteGlobe } from '@/components/illust/Cute';
 import { CuteStar, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
+import { flyerById } from '@/services/rail/flyers';
 import { RailScene } from '@/services/rail/scene';
 import { localClock, nextOnRoute, routeById, routeOf, STATIONS, stationById, timeOfDayAt } from '@/services/rail/stations';
 import { useRailStore } from '@/store/useRailStore';
 import { useL } from '@/i18n/useL';
+import { FlyerThumb } from './FlyerThumb';
 import { routeName, stationName } from './rail-i18n';
 
 const INK = '#FFFFFF';
@@ -32,7 +35,7 @@ export function QuestJourneyHero() {
   const sceneRef = useRef<RailScene | null>(null);
   const [now] = useState(() => new Date());
 
-  // Trước khi hydrate dùng ga mặc định (máy chủ không biết hành trình của máy này).
+  // Trước khi hydrate dùng thành phố mặc định (máy chủ không biết hành trình của máy này).
   const station = stationById(hydrated ? st.station : 'hanoi');
   const route = routeById(st.route).stops.includes(station.id) ? routeById(st.route) : routeOf(station.id);
   const next = nextOnRoute(route, station.id);
@@ -44,24 +47,33 @@ export function QuestJourneyHero() {
     const c = canvasRef.current;
     if (!c) return;
     const scene = new RailScene(c);
-    scene.view = 'outside';
     sceneRef.current = scene;
-    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    scene.setFlyer(useRailStore.getState().flyer);
+    scene.flyerY = 0.42;
+    const reduced = !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    scene.calm = reduced;
     let raf = 0;
     let last = performance.now();
     const loop = (t: number) => {
       const dt = Math.min(0.1, (t - last) / 1000);
       last = t;
-      scene.speed = reduced ? 0.2 : 0.9;
+      scene.speed = reduced ? 0.4 : 0.9;
       if (!document.hidden) scene.frame(dt);
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      scene.dispose();
+    };
   }, []);
   useEffect(() => {
     sceneRef.current?.set(station, time, st.weather, false);
   }, [station, time, st.weather]);
+  useEffect(() => {
+    sceneRef.current?.setFlyer(hydrated ? st.flyer : 'plane');
+  }, [st.flyer, hydrated]);
+  const flyer = flyerById(hydrated ? st.flyer : 'plane');
 
   const cta = (label: string, href: string, primary = false) => (
     <Pressable
@@ -86,18 +98,18 @@ export function QuestJourneyHero() {
 
   return (
     <View style={{ borderRadius: 26, overflow: 'hidden', backgroundColor: '#0F2238', flexDirection: wide ? 'row' : 'column', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)' }}>
-      {/* Cảnh tàu chạy */}
+      {/* Cảnh bay qua thành phố */}
       <View style={{ flex: wide ? 1.55 : undefined, position: 'relative', minHeight: wide ? 300 : 190 }}>
         <canvas
           ref={canvasRef}
           role="img"
-          aria-label={L(`Đoàn tàu đang chạy qua ${station.vi}`, `The train passing through ${station.en}`)}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 100%', imageRendering: 'pixelated' }}
+          aria-label={L(`${flyer.vi} đang bay qua ${station.vi}`, `${flyer.en} flying over ${station.en}`)}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 100%' }}
         />
         <View style={{ position: 'absolute', left: 16, top: 14, flexDirection: 'row', gap: 8 }}>
           <View style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(10,18,34,0.7)' }}>
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#FDE68A' }}>
-              {L('ĐANG Ở', 'NOW IN')} {stationName(station, en).toUpperCase()}
+              {L('ĐANG BAY QUA', 'FLYING OVER')} {stationName(station, en).toUpperCase()}
             </Text>
           </View>
         </View>
@@ -112,9 +124,9 @@ export function QuestJourneyHero() {
           </Text>
         </View>
         <Text className="font-heavy" style={{ fontSize: wide ? 30 : 24, lineHeight: wide ? 36 : 30, color: INK }}>
-          {L('Học tới đâu, ', 'The more you learn, ')}<Text style={{ color: '#FACC15' }}>{L('tàu chạy tới đó.', 'the further the train goes.')}</Text>
+          {L('Học tới đâu, ', 'The more you learn, ')}<Text style={{ color: '#FACC15' }}>{L('bay tới đó.', 'the further you fly.')}</Text>
         </Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }} accessibilityLabel={L(`Mỗi câu đúng tàu tiến một quãng; ${st.perStation} câu đúng tới thành phố mới`, `Each correct answer moves the train forward; ${st.perStation} correct answers reach a new city`)}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }} accessibilityLabel={L(`Mỗi câu đúng bay thêm một quãng; ${st.perStation} câu đúng tới thành phố mới`, `Each correct answer flies you further; ${st.perStation} correct answers reach a new city`)}>
           <Motion kind="float">
             <CuteStar size={40} />
           </Motion>
@@ -122,7 +134,7 @@ export function QuestJourneyHero() {
             →
           </Text>
           <Motion kind="float" delay={0.3}>
-            <CuteTrain size={70} />
+            <FlyerThumb id={flyer.id} box={64} />
           </Motion>
           <Text className="font-heavy" style={{ fontSize: 18, color: MUTED }}>
             →
@@ -135,10 +147,10 @@ export function QuestJourneyHero() {
           </Motion>
         </View>
 
-        {/* Tuyến dạng sơ đồ: chấm đã qua / đang ở / chưa tới */}
+        {/* Hành trình dạng sơ đồ: chấm đã qua / đang ở / chưa tới */}
         <View>
           <Text className="font-semi" style={{ fontSize: 12, color: MUTED }}>
-            {route.glyph} {L('Tuyến', 'Line:')} {routeName(route, en)} · {L('ga', 'stop')} {hereIdx + 1}/{route.stops.length}
+            {route.glyph} {L('Hành trình', 'Route:')} {routeName(route, en)} · {L('thành phố', 'city')} {hereIdx + 1}/{route.stops.length}
           </Text>
           <View style={{ marginTop: 8, flexDirection: 'row', alignItems: 'center' }}>
             {route.stops.map((id, i) => (
@@ -158,7 +170,7 @@ export function QuestJourneyHero() {
         </View>
 
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 4 }}>
-          {cta(L('🚆 Lên tàu học từ', '🚆 Board the vocab train'), '/quest/rail', true)}
+          {cta(L(`${flyer.emoji} Cất cánh học từ`, `${flyer.emoji} Take off with vocab`), '/quest/rail', true)}
           {cta(L('Ôn bộ từ', 'Review decks'), '/vocabulary/topics')}
           {cta(L('Chép chính tả', 'Dictation'), '/sentence/dictation')}
         </View>

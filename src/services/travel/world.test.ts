@@ -1,0 +1,82 @@
+import assert from 'node:assert/strict';
+import { test } from 'node:test';
+
+import { CITIES, CITY_ORDER, ROUTES, canFly, cityCompletion, flightCost, isCityUnlocked } from './world';
+import { mainPoisOfCity } from '@/data/travel/pois';
+import type { PoiProgress } from './types';
+
+const prog = (best: 0 | 1 | 2 | 3): PoiProgress => ({ best, runs: 1, level: 1, lastAt: '' });
+const passAll = (city: Parameters<typeof mainPoisOfCity>[0], upTo?: number) =>
+  Object.fromEntries(mainPoisOfCity(city).slice(0, upTo).map((p) => [p.id, prog(2)]));
+
+test('giá vé theo bảng kế hoạch', () => {
+  assert.equal(flightCost('hanoi', 'singapore'), 1);
+  assert.equal(flightCost('singapore', 'london'), 2);
+  assert.equal(flightCost('london', 'paris'), 1);
+  assert.equal(flightCost('paris', 'amsterdam'), 1);
+  assert.equal(flightCost('paris', 'rome'), 1);
+});
+
+test('đường bay hai chiều; cặp không nối thẳng cộng dọc đường ngắn nhất', () => {
+  assert.equal(flightCost('london', 'singapore'), 2);
+  assert.equal(flightCost('hanoi', 'london'), 3);
+  assert.equal(flightCost('london', 'rome'), 2);
+  assert.equal(flightCost('amsterdam', 'rome'), 2);
+});
+
+test('về Hà Nội luôn miễn phí, cùng thành phố thì không bay', () => {
+  for (const c of CITY_ORDER) assert.equal(flightCost(c, 'hanoi'), 0);
+  assert.equal(flightCost('rome', 'rome'), 0);
+});
+
+test('mọi tuyến nối hai thành phố có thật và giá > 0', () => {
+  for (const r of ROUTES) {
+    assert.ok(CITIES[r.a] && CITIES[r.b]);
+    assert.ok(r.tickets > 0);
+  }
+});
+
+test('mở khoá: Singapore mở sẵn; London cần ≥ 60% Singapore; Paris/Amsterdam/Rome cần London', () => {
+  const none = { poi: {} };
+  assert.equal(isCityUnlocked(none, 'singapore'), true);
+  assert.equal(isCityUnlocked(none, 'london'), false);
+  assert.equal(isCityUnlocked({ poi: passAll('singapore', 3) }, 'london'), false, '50%');
+  assert.equal(isCityUnlocked({ poi: passAll('singapore', 4) }, 'london'), true, '67%');
+  for (const c of ['paris', 'amsterdam', 'rome'] as const) {
+    assert.equal(isCityUnlocked({ poi: passAll('singapore') }, c), false);
+    assert.equal(isCityUnlocked({ poi: passAll('london') }, c), true);
+  }
+});
+
+test('một sao chưa tính là đạt', () => {
+  const poi = Object.fromEntries(mainPoisOfCity('singapore').map((p) => [p.id, prog(1)]));
+  assert.equal(cityCompletion({ poi }, 'singapore'), 0);
+});
+
+test('canFly: đủ vé và đã mở thì bay được, nêu rõ lý do khi không được', () => {
+  const base = { city: 'hanoi' as const, poi: {} };
+  assert.deepEqual(canFly({ ...base, tickets: 1 }, 'singapore'), { ok: true, cost: 1 });
+  assert.deepEqual(canFly({ ...base, tickets: 0 }, 'singapore'), { ok: false, reason: 'tickets', cost: 1 });
+  assert.deepEqual(canFly({ ...base, tickets: 9 }, 'london'), { ok: false, reason: 'locked', cost: 3 });
+  assert.equal(canFly({ ...base, tickets: 9 }, 'hanoi').ok, false);
+  const home = canFly({ city: 'rome', poi: {}, tickets: 0 }, 'hanoi');
+  assert.deepEqual(home, { ok: true, cost: 0 });
+});
+
+test('bản đồ thế giới: mỗi thành phố nằm trên đất liền, các thành phố không dính nhau', async () => {
+  const { isLand, landRuns, WORLD_W, WORLD_H } = await import('@/data/travel/world-map');
+  for (const c of CITY_ORDER) {
+    const { x, y } = CITIES[c].mapAt;
+    assert.ok(x >= 0 && y >= 0 && x < WORLD_W && y < WORLD_H, c);
+    assert.equal(isLand(x, y), true, `${c} không nằm trên đất`);
+  }
+  for (const a of CITY_ORDER)
+    for (const b of CITY_ORDER) {
+      if (a >= b) continue;
+      const d = Math.hypot(CITIES[a].mapAt.x - CITIES[b].mapAt.x, CITIES[a].mapAt.y - CITIES[b].mapAt.y);
+      assert.ok(d >= 7, `${a} và ${b} quá gần (${d.toFixed(1)} ô)`);
+    }
+  const runs = landRuns();
+  assert.ok(runs.length > 100);
+  for (const r of runs) assert.ok(r.w > 0 && r.x + r.w <= WORLD_W);
+});

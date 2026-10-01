@@ -1,15 +1,15 @@
 import React, { useMemo } from 'react';
 import Svg, { Rect } from 'react-native-svg';
 
-import { paletteFor, SPRITES, spriteRuns, type SkinId, type SpriteName } from './sprites';
+import { paletteFor, SPRITES, spriteRuns, type SpriteName } from './sprites';
 
 /** Cạnh sắc cho pixel (react-native-svg chưa khai kiểu thuộc tính này, nhưng web vẫn nhận). */
 const CRISP = { shapeRendering: 'crispEdges' } as object;
 
 /**
- * Vẽ một sprite 16×16 bằng SVG, cạnh sắc (`crispEdges`) nên phóng to bao nhiêu
+ * Vẽ một sprite quái/linh vật 16×16 bằng SVG, cạnh sắc (`crispEdges`) nên phóng to bao nhiêu
  * cũng giữ đúng chất pixel. `flip` lật ngang — quái đứng bên phải quay mặt vào
- * nhân vật.
+ * nhân vật (nhân vật chính là `HeroSprite`).
  */
 export function PixelSprite({
   name,
@@ -17,7 +17,6 @@ export function PixelSprite({
   color,
   flip = false,
   silhouette,
-  skin,
 }: {
   name: SpriteName;
   size: number;
@@ -26,14 +25,12 @@ export function PixelSprite({
   flip?: boolean;
   /** Tô cả hình một màu — dùng cho quái chưa gặp trong sổ quái. */
   silhouette?: string;
-  /** Skin của nhân vật (chỉ có tác dụng với `hero`). */
-  skin?: SkinId;
 }) {
   const runs = useMemo(() => {
-    const palette = paletteFor(name, color, skin);
+    const palette = paletteFor(color);
     const all = spriteRuns(SPRITES[name], palette);
     return silhouette ? all.map((r) => ({ ...r, fill: silhouette })) : all;
-  }, [name, color, silhouette, skin]);
+  }, [name, color, silhouette]);
 
   return (
     <Svg width={size} height={size} viewBox="0 0 16 16" {...CRISP}>

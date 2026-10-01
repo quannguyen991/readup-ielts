@@ -1,14 +1,15 @@
 /**
  * NỀN "VỪA HỌC VỪA DU LỊCH" cho các màn ôn từ vựng (quiz, học từ, kiểm tra, điền
- * chỗ trống, chính tả, trò chơi, quiz SAT): cảnh đoàn tàu chạy qua thành phố —
- * đúng cảnh ở Toa Từ Vựng (`/quest/rail`), dùng chung hành trình với trang đó.
+ * chỗ trống, chính tả, trò chơi, quiz SAT): nhân vật bay (máy bay, kỳ lân, rồng…)
+ * lướt qua các thành phố — đúng cảnh ở Chuyến bay từ vựng (`/quest/rail`), dùng
+ * chung hành trình và nhân vật đã chọn với trang đó.
  *
- * - Mỗi câu ĐÚNG (bắt qua `useGameStore`, như mọi màn gọi `answer()`): tàu tăng
- *   tốc một nhịp và tiến một quãng; đủ số câu thì tới ga kế, hộ chiếu được đóng
- *   dấu, cảnh đổi sang thành phố mới (chui hầm).
+ * - Mỗi câu ĐÚNG (bắt qua `useGameStore`, như mọi màn gọi `answer()`): nhân vật
+ *   tăng tốc một nhịp và bay thêm một quãng; đủ số câu thì tới thành phố kế, hộ
+ *   chiếu được đóng dấu, cảnh đổi sang thành phố mới (bay xuyên dải mây).
  * - Lớp tối phủ lên cảnh để chữ trắng của màn học vẫn đọc rõ.
- * - Góc dưới trái: huy hiệu ga đang ở + quãng còn lại, bấm để mở Toa Từ Vựng;
- *   nút ✕ tắt nền (bật lại ở Toa Từ Vựng).
+ * - Góc dưới trái: huy hiệu nhân vật + thành phố đang bay qua + quãng còn lại,
+ *   bấm để mở Chuyến bay từ vựng; nút ✕ tắt nền (bật lại ở Chuyến bay từ vựng).
  * - Người dùng tắt nền → về nền chàm kẻ ô như cũ.
  */
 import React, { useEffect, useRef, useState } from 'react';
@@ -18,7 +19,8 @@ import { router, usePathname } from 'expo-router';
 import { LightGrid } from '@/components/layout/LightGrid';
 import { OliveGrid } from '@/components/layout/OliveGrid';
 import { useHydrated } from '@/components/layout/useHydrated';
-import { setTravelSfx, sfx } from '@/services/audio/sfx';
+import { setFlightSfx, sfx } from '@/services/audio/sfx';
+import { flyerById } from '@/services/rail/flyers';
 import { RailScene } from '@/services/rail/scene';
 import { localClock, nextOnRoute, routeById, routeOf, stationById, timeOfDayAt } from '@/services/rail/stations';
 import { useGameStore } from '@/store/useGameStore';
@@ -26,9 +28,10 @@ import { useRailStore } from '@/store/useRailStore';
 import { useTravelPractice } from '@/store/useTravelPractice';
 import { isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useL } from '@/i18n/useL';
+import { FlyerThumb } from './FlyerThumb';
 
 /**
- * Nền toa tàu có đang bật không. Khi bật, màn học bỏ thanh đánh quái ở trên
+ * Nền cảnh bay có đang bật không. Khi bật, màn học bỏ thanh đánh quái ở trên
  * (người dùng yêu cầu 30/09: đẩy phần ôn tập lên để thấy cảnh phía sau) —
  * câu trả lời vẫn tính XP / sao như cũ, chỉ không vẽ trận đấu.
  */
@@ -43,7 +46,7 @@ export function useTravelBackdropOn(): boolean {
  * 'light' cho màn luyện câu (chữ đậm, thẻ trắng) — phủ lớp sáng, cảnh vẫn lộ ở mép.
  */
 /**
- * Màn hiện tại có đang chạy nền toa tàu không: bật trong cài đặt VÀ đang làm bài
+ * Màn hiện tại có đang chạy nền cảnh bay không: bật trong cài đặt VÀ đang làm bài
  * — màn ôn từ vựng luôn là làm bài; chép chính tả / viết câu chỉ khi đã mở một bộ.
  */
 export function useTravelActive(): boolean {
@@ -52,6 +55,9 @@ export function useTravelActive(): boolean {
   const practicing = useTravelPractice((s) => s.count > 0);
   return on && (isVocabStudyRoute(pathname) || (isTravelLightRoute(pathname) && practicing));
 }
+
+/** Ô nhiễu 128×128 (SVG feTurbulence, xám) — lát kín, dùng để làm mịn dải chuyển sắc. */
+const DITHER = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
 export function TravelBackdrop({ color, tone = 'dark', children }: { color: string; tone?: 'dark' | 'light'; children: React.ReactNode }) {
   const hydrated = useHydrated();
@@ -81,46 +87,57 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
     const id = setInterval(() => setNow(new Date()), 60_000);
     return () => clearInterval(id);
   }, []);
-  // Đang ngồi toa: câu đúng / sai phát tiếng tàu thay cho tiếng trận đấu.
+  // Đang bay qua thành phố: câu đúng / sai phát tiếng gió + chuông thay cho tiếng trận đấu.
   useEffect(() => {
-    setTravelSfx(true);
-    return () => setTravelSfx(false);
+    setFlightSfx(true);
+    return () => setFlightSfx(false);
   }, []);
   const time = st.time === 'auto' ? timeOfDayAt(localClock(station.tz, now).h) : st.time;
 
-  // Cảnh: ngắm tàu từ ngoài (thấy đoàn tàu chạy), vẽ liên tục, dừng vẽ khi tab ẩn.
+  // Cảnh: nhân vật bay lệch sang phải (bên trái là thẻ học), vẽ liên tục, dừng vẽ khi tab ẩn.
   useEffect(() => {
     const c = canvasRef.current;
     if (!c) return;
     const scene = new RailScene(c);
-    scene.view = 'outside';
     sceneRef.current = scene;
     const s0 = useRailStore.getState();
     const st0 = stationById(s0.station);
+    scene.setFlyer(s0.flyer);
     scene.set(st0, s0.time === 'auto' ? timeOfDayAt(localClock(st0.tz, new Date()).h) : s0.time, s0.weather);
-    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const reduced = !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    scene.calm = reduced;
     let raf = 0;
     let last = performance.now();
     const loop = (t: number) => {
       const dt = Math.min(0.1, (t - last) / 1000);
       last = t;
       boost.current = Math.max(0, boost.current - dt * 0.7);
-      scene.speed = reduced ? 0.2 : 0.8 + boost.current * 3;
+      scene.speed = reduced ? 0.4 : 0.8 + boost.current * 3;
+      // Màn rộng: nhân vật bay lệch sang phải (bên trái là thẻ học). Màn hẹp chỉ thấy một lát giữa cảnh nên bay giữa khung, cao hơn thẻ.
+      const wide = window.innerWidth >= 640;
+      scene.flyerX = wide ? 0.67 : 0.5;
+      scene.flyerY = wide ? 0.34 : 0.24;
       if (!document.hidden) scene.frame(dt);
       raf = requestAnimationFrame(loop);
     };
     raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+      scene.dispose();
+    };
   }, []);
 
   useEffect(() => {
     sceneRef.current?.set(station, time, st.weather, true);
   }, [station, time, st.weather]);
   useEffect(() => {
+    sceneRef.current?.setFlyer(st.flyer);
+  }, [st.flyer]);
+  useEffect(() => {
     RailScene.preload(next.id, time);
   }, [next.id, time]);
 
-  // Mỗi câu đúng ở màn học: tàu tăng tốc + tiến một quãng.
+  // Mỗi câu đúng ở màn học: nhân vật tăng tốc + bay thêm một quãng.
   useEffect(
     () =>
       useGameStore.subscribe((s, prev) => {
@@ -129,7 +146,7 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
         const r = useRailStore.getState().step();
         if (r.arrived) {
           setArrived(r.arrived);
-          sfx.railArrive();
+          sfx.flyArrive();
         }
       }),
     [],
@@ -150,7 +167,7 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
         <canvas
           ref={canvasRef}
           aria-hidden
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 100%', imageRendering: 'pixelated' }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 100%' }}
         />
         {/* Lớp tối: đậm ở giữa (nơi thẻ học nằm), nhạt ở mép để cảnh vẫn lộ ra. */}
         <div
@@ -163,16 +180,18 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
                 : 'radial-gradient(ellipse 75% 85% at 50% 42%, rgba(9,16,34,.66), rgba(9,16,34,.42) 65%, rgba(9,16,34,.22))',
           }}
         />
+        {/* Nhiễu rất nhẹ phá dải màu (banding) của lớp tối khi chuyển sắc. */}
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.07, mixBlendMode: 'overlay', backgroundImage: DITHER, backgroundSize: '128px 128px' }} />
       </View>
       {children}
       <View style={{ position: 'absolute', left: 12, bottom: 12, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
         <Pressable
           accessibilityRole="link"
-          accessibilityLabel={L(`Đang ở ${station.vi}, còn ${left} câu đúng tới ${next.vi}. Mở Toa Từ Vựng`,`At ${station.en}, ${left} more correct answers to ${next.en}. Open the Vocab Carriage`)}
+          accessibilityLabel={L(`${flyerById(st.flyer).vi} đang bay qua ${station.vi}, còn ${left} câu đúng tới ${next.vi}. Mở Chuyến bay từ vựng`, `${flyerById(st.flyer).en} over ${station.en}, ${left} more correct answers to ${next.en}. Open Vocab Flight`)}
           onPress={() => router.push('/quest/rail' as never)}
           style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: 'rgba(10,18,34,.72)', borderWidth: 1, borderColor: 'rgba(255,255,255,.14)' }}
         >
-          <Text style={{ fontSize: 14 }}>🚆</Text>
+          <FlyerThumb id={st.flyer} box={22} />
           {narrow ? null : <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '700' }}>{en ? station.en : station.vi}</Text>}
           <View style={{ flexDirection: 'row', gap: 3 }}>
             {Array.from({ length: st.perStation }, (_, i) => (
@@ -183,7 +202,7 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
         </Pressable>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={L('Tắt nền toa tàu', 'Turn off the train background')}
+          accessibilityLabel={L('Tắt nền cảnh bay', 'Turn off the flying background')}
           onPress={() => useRailStore.getState().set({ backdrop: false })}
           style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(10,18,34,.72)', borderWidth: 1, borderColor: 'rgba(255,255,255,.14)' }}
         >

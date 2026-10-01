@@ -19,8 +19,10 @@ export function rememberHub(data: HubSnapshot, token: string | null): void {
 }
 
 export function useHubSnapshot(token: string | null): { data: HubSnapshot | null; error: string | null; loading: boolean; refresh: () => void; replace: (d: HubSnapshot) => void } {
-  const cached = last && last.token === token ? last.data : null;
-  const [data, setData] = useState<HubSnapshot | null>(cached);
+  // Dữ liệu gắn với người xem đã tải nó: đổi người dùng (đăng nhập / đăng xuất) thì phần
+  // "của tôi" của người trước không được hiện sang người sau.
+  const [got, setGot] = useState<{ token: string | null; data: HubSnapshot } | null>(() => (last ? { token: last.token, data: last.data } : null));
+  const data = got && got.token === token ? got.data : last && last.token === token ? last.data : null;
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(() => !(last && last.token === token && Date.now() - last.at < FRESH_MS));
   const [tick, setTick] = useState(0);
@@ -35,7 +37,7 @@ export function useHubSnapshot(token: string | null): { data: HubSnapshot | null
         if (b.error || !b.progress) setError(b.error ?? pick(currentLocale(), 'Lỗi', 'Error'));
         else {
           rememberHub(b, token);
-          setData(b);
+          setGot({ token, data: b });
           setError(null);
         }
       })
@@ -53,7 +55,7 @@ export function useHubSnapshot(token: string | null): { data: HubSnapshot | null
   const replace = useCallback(
     (d: HubSnapshot) => {
       rememberHub(d, token);
-      setData(d);
+      setGot({ token, data: d });
     },
     [token],
   );

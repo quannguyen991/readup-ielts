@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
-import { Platform, Pressable, Text, View } from "react-native";
+import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/data/study-decks";
 import { router, usePathname } from "expo-router";
@@ -98,10 +98,16 @@ export function StudyFrame({
   const navy = isVocabStudyRoute(usePathname());
   // Đang ngồi toa tàu (cảnh thành phố làm nền): bỏ trận đấu để thẻ học nằm cao, lộ cảnh.
   const travel = useTravelBackdropOn() && navy;
+  // Màn học nằm trong chế độ tập trung (không có ScrollView của Screen): không tự cuộn thì trên điện thoại
+  // nội dung dài hơn màn hình (lời giải, nút Tiếp) bị cắt mà không kéo được.
+  const scrollRef = useRef<ScrollView>(null);
+  const scrollTop = React.useCallback(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), []);
   return (
     <TravelCompact.Provider value={travel}>
+    <ScrollTop.Provider value={scrollTop}>
+    <ScrollView ref={scrollRef} className="flex-1" showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
     <View
-      className="w-full self-center px-4 pb-10 pt-6"
+      className="w-full self-center px-4 pb-24 pt-6"
       style={{ maxWidth: travel ? 620 : 820 }}
     >
       <View className="flex-row items-center justify-between">
@@ -138,12 +144,16 @@ export function StudyFrame({
         </Text>
       ) : null}
     </View>
+    </ScrollView>
+    </ScrollTop.Provider>
     </TravelCompact.Provider>
   );
 }
 
 /** Màn học đang ở nền toa tàu: thẻ học gọn lại (hẹp, đệm nhỏ) để lộ cảnh phía sau. */
 const TravelCompact = React.createContext(false);
+/** Cuộn khung học về đầu — gọi khi bấm nút chính (Tiếp / Câu tiếp) để câu mới hiện từ trên xuống. */
+const ScrollTop = React.createContext<(() => void) | null>(null);
 
 function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean }) {
   return (
@@ -426,11 +436,15 @@ export function PrimaryButton({
   hint?: string;
   disabled?: boolean;
 }) {
+  const scrollTop = React.useContext(ScrollTop);
   return (
     <Pressable
       accessibilityRole="button"
       disabled={disabled}
-      onPress={onPress}
+      onPress={() => {
+        onPress();
+        scrollTop?.();
+      }}
       className="mt-4 flex-row items-center justify-center gap-2 rounded-2xl py-4"
       style={{ backgroundColor: disabled ? "#F4E7D1" : color.primary }}
     >
