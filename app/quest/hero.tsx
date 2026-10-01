@@ -311,8 +311,8 @@ export default function HeroScreen() {
                 title={L('Chế độ game khi học', 'Game mode while studying')}
                 detail={
                   g.enabled
-                    ? L('Đang bật: màn học có thanh trận đấu, mỗi câu đúng cộng XP và chém quái.', 'On: lessons show the battle bar; every correct answer earns XP and strikes the monster.')
-                    : L('Đang tắt: màn học gọn như cũ, không cộng XP game. Tiến độ học vẫn tính đủ.', 'Off: lessons stay clean, with no game XP. Your study progress still counts in full.')
+                    ? L('Đang bật: có thanh trận đấu, câu đúng cộng XP.', 'On: battle bar shows, correct answers earn XP.')
+                    : L('Đang tắt: không có game, tiến độ học vẫn tính.', 'Off: no game, study progress still counts.')
                 }
                 on={g.enabled}
                 onToggle={() => g.setEnabled(!g.enabled)}
@@ -322,10 +322,7 @@ export default function HeroScreen() {
                 title={L('Âm thanh hiệu ứng', 'Sound effects')}
                 detail={
                   g.sound
-                    ? L(
-                        'Đang bật: tiếng đúng cao dần theo combo, tiếng chém, trúng đòn, hạ quái, lên cấp. Phím M để tắt nhanh.',
-                        'On: correct-answer chimes rise with your combo, plus strike, hit, defeat and level-up sounds. Press M to mute.',
-                      )
+                    ? L('Đang bật. Phím M để tắt nhanh.', 'On. Press M to mute.')
                     : L('Đang tắt: học trong im lặng. Phím M trên thanh trận đấu để bật lại.', 'Off: study in silence. Press M on the battle bar to turn it back on.')
                 }
                 on={g.sound}
@@ -352,26 +349,17 @@ export default function HeroScreen() {
                     `Combo từ ${FEVER_AT} là BÙNG CHÁY: mỗi nhát chém mạnh gấp rưỡi, nhân vật bốc lửa.`,
                     `A combo of ${FEVER_AT}+ triggers FEVER: every strike hits 1.5× harder and your hero bursts into flames.`,
                   ),
-                  L(
-                    'Con thứ bảy mỗi vòng là BOSS: nhiều máu hơn, hạ được thưởng trọn lượng máu thành XP và rơi 2 món.',
-                    'The seventh monster each round is a BOSS: more HP, and defeating it turns all its HP into XP and drops 2 items.',
-                  ),
+                  L('Con thứ 7 là BOSS: nhiều máu, thưởng lớn.', 'Every 7th is a BOSS: more HP, bigger reward.'),
                   L('Còn một tim thì khung trận viền đỏ và tim đập — cẩn thận câu kế tiếp.', 'On your last heart, the battle frame turns red and the heart pulses — careful with the next question.'),
                   L('Sai một câu: mất combo và một tim. Khiên chặn được một câu sai.', 'A wrong answer costs your combo and one heart. A shield blocks one wrong answer.'),
-                  L('Hết tim: bị đánh lui — tim hồi đầy, quái hồi máu. Bài học không bao giờ bị khoá.', 'Out of hearts: you get knocked back — hearts refill and the monster heals. Lessons are never locked.'),
+                  L('Hết tim thì hồi lại, bài không bị khoá.', 'Out of hearts: you recover, lessons never lock.'),
                   L('Hạ quái: thưởng thêm XP, cứ hai con thì rơi một món đồ.', 'Defeat a monster: bonus XP, and every second one drops an item.'),
-                  L(
-                    'Bài chỉ chấm lúc nộp (kiểm tra, đề tuần): mỗi câu đúng +10 XP và một nhát, không tính combo, không mất tim.',
-                    'Tests graded on submit (quizzes, weekly tests): each correct answer gives +10 XP and one strike — no combo, no hearts lost.',
-                  ),
+                  L('Bài chấm lúc nộp: mỗi câu đúng +10 XP, không mất tim.', 'Graded-on-submit lessons: +10 XP per correct, no heart loss.'),
                   L(
                     `Sao thưởng: hạ quái +${STAR_BONUS.defeat} ⭐, hạ boss +${STAR_BONUS.boss} ⭐, lên cấp +${STAR_BONUS.levelUp} ⭐ mỗi cấp, xong nhiệm vụ +${STAR_BONUS.quest} ⭐, mở huy hiệu +${STAR_BONUS.achievement} ⭐. Sao đổi được vé gói, linh vật, skin ở trang Đổi quà.`,
                     `Star rewards: monster +${STAR_BONUS.defeat} ⭐, boss +${STAR_BONUS.boss} ⭐, +${STAR_BONUS.levelUp} ⭐ per level up, quest done +${STAR_BONUS.quest} ⭐, badge unlocked +${STAR_BONUS.achievement} ⭐. Spend stars on passes, mascots and skins in the Rewards shop.`,
                   ),
-                  L(
-                    'Linh vật đứng sau lưng nhân vật và giúp theo cách riêng: Cú cho lượt Hỏi Cú miễn phí, Cáo đỡ câu sai đầu ngày, Mèo hồi tim, Rồng chém mạnh hơn. Không con nào làm bài hộ.',
-                    'Your mascot stands behind your hero and helps in its own way: Owl gives free Ask Owl hints, Fox blocks your first wrong answer each day, Cat restores hearts, Dragon hits harder. None of them do the work for you.',
-                  ),
+                  L('Linh vật trợ giúp: Cú gợi ý, Cáo đỡ câu sai, Mèo hồi tim, Rồng chém mạnh.', 'Pets help: Owl hints, Fox blocks a miss, Cat heals, Dragon hits harder.'),
                   L('Phím tắt trên thanh trận đấu: I mở túi đồ · H hỏi Cú · M bật/tắt âm thanh.', 'Battle bar shortcuts: I opens inventory · H asks Owl · M toggles sound.'),
                 ].map((line) => (
                   <View key={line} style={{ flexDirection: 'row', gap: 8 }}>

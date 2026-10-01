@@ -62,10 +62,7 @@ export function ParentReportCard() {
         <Text className="font-heavy text-cardTitle text-ink">{L('Báo cáo tuần cho phụ huynh', 'Weekly report for parents')}</Text>
       </View>
       <Text className="mt-1 font-sans text-body text-muted">
-        {L(
-          'Một đường dẫn chỉ-đọc: thời gian học 7 ngày, độ chính xác, điểm dự đoán, lỗi đang sửa. Chỉ có số đếm, không có bài làm.',
-          'A read-only link: 7-day study time, accuracy, predicted score and errors being fixed. Numbers only — no actual work is shared.',
-        )}
+        {L('Link chỉ xem tiến độ 7 ngày, không có bài làm.', 'A view-only link with 7 days of progress.')}
       </Text>
       {!token ? (
         <Button className="mt-3 self-start" variant="outline" label={L('Đăng nhập để tạo báo cáo', 'Sign in to create a report')} onPress={() => router.push('/auth/sign-in' as never)} />

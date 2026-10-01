@@ -199,7 +199,7 @@ function PickView({
       <View className="mb-4 max-w-[760px] flex-row flex-wrap items-center gap-3 rounded-card border border-brand-soft bg-brand-tint p-4">
         <Icon name="sparkle" size={18} color={paper.brandMid} />
         <Text className="min-w-[240px] flex-1 font-sans text-body text-paper-body">
-          {L('Muốn làm ngay thì dùng kho bài nghe có sẵn lời — bấm một cái là vào bài, không phải dán gì.', 'Want to start right away? Use the listening library with transcripts — one tap and you are in, nothing to paste.')}
+          {L('Hoặc chọn bài nghe có sẵn lời.', 'Or pick a ready-made listening lesson.')}
         </Text>
         <Button
           variant="brand"
@@ -211,10 +211,10 @@ function PickView({
 
       <View className="max-w-[760px] rounded-card border border-brand-soft bg-white p-5">
         <Text className="font-sans text-bodyLg text-paper-body">
-          {L('Dán liên kết một video YouTube có phụ đề tiếng Anh. Video phát ngay trong trang, bạn nghe từng câu rồi điền lại vào ô chữ bên cạnh.', 'Paste a link to a YouTube video with English subtitles. It plays right on the page — listen to each sentence and fill it into the letter boxes alongside.')}
+          {L('Dán link YouTube có phụ đề tiếng Anh để nghe chép.', 'Paste a YouTube link with English captions.')}
         </Text>
         <Text className="mt-2 font-sans text-label text-paper-muted">
-          {L('YouTube chặn máy chủ lấy phụ đề, nên phần lớn video sẽ cần bạn dán phụ đề vào — app hướng dẫn ngay bên dưới khi gặp.', "YouTube blocks servers from fetching subtitles, so most videos will need you to paste them in — the app shows you how below when that happens.")}
+          {L('Thường bạn sẽ cần dán phụ đề vào, app hướng dẫn bên dưới.', 'You\'ll usually need to paste the captions; steps below.')}
         </Text>
 
         <View className="mt-4 flex-row flex-wrap items-center gap-2">
@@ -462,7 +462,7 @@ function PracticeView({
         <View className="mb-4 flex-row items-start gap-2 rounded-panel border border-amber-200/30 bg-amber-100/10 p-3">
           <Icon name="info" size={16} color={color.warning} strokeWidth={2} />
           <Text className="flex-1 font-sans text-label text-white/75">
-            {L('Phụ đề này do máy nghe rồi tự sinh, nên có thể sai chính tả hoặc thiếu dấu câu. Bài chấm tới từng chữ, nên chỗ nào bạn nghe đúng mà máy báo sai thì tin tai mình.', 'These subtitles were auto-generated, so they may have spelling mistakes or missing punctuation. Grading is letter by letter — if you heard it right and the app says otherwise, trust your ears.')}
+            {L('Phụ đề tự động có thể sai. Nghe đúng thì tin tai mình.', 'Auto captions can be wrong. Trust your ears.')}
           </Text>
         </View>
       ) : null}

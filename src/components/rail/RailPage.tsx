@@ -594,7 +594,7 @@ export default function RailPage() {
               }),
             )}
           </div>
-          <p style={{ fontSize: 14, color: '#7A6A58', margin: '14px 0 0' }}>{L('Tàu tự tới một ga (bằng câu đúng hoặc theo giờ) là hộ chiếu có thêm một con dấu. Chọn ga bằng tay thì không tính.', "Each time the train reaches a stop on its own (by correct answers or by time), your passport gets a stamp. Picking a stop by hand doesn't count.")}</p>
+          <p style={{ fontSize: 14, color: '#7A6A58', margin: '14px 0 0' }}>{L('Mỗi ga tới bằng việc học là một con dấu.', 'Each station you reach by studying earns a stamp.')}</p>
         </section>
       </div>
 

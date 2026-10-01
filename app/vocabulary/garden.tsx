@@ -59,10 +59,7 @@ export default function GardenScreen() {
               </View>
             </View>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              {L(
-                'Mỗi từ trong sổ từ là một cây. Cây xanh hay héo đúng bằng độ nhớ của bạn lúc này — không ôn là cây héo dần.',
-                'Every word in your notebook is a plant. How green it is matches how well you remember it right now — skip reviews and it wilts.',
-              )}
+              {L('Mỗi từ là một cây. Không ôn là héo.', 'Each word is a plant. Skip reviews and it wilts.')}
             </Text>
           </View>
           {sum.needWater > 0 ? (
@@ -98,10 +95,7 @@ export default function GardenScreen() {
             </View>
             <Text className="font-heavy text-sectionTitle text-ink">{L('Vườn đang trống', 'Your garden is empty')}</Text>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              {L(
-                'Gieo hạt bằng cách lưu từ: chạm vào từ khi đọc bài, hoặc bấm “Lưu” trên thẻ từ vựng. Mỗi từ lưu vào sổ là một hạt giống.',
-                'Plant seeds by saving words: tap a word while reading, or hit “Save” on a vocabulary card. Every saved word is a seed.',
-              )}
+              {L('Lưu từ khi đọc để gieo hạt.', 'Save words while reading to plant seeds.')}
             </Text>
             <View className="mt-4 flex-row flex-wrap gap-2">
               <Button label={L('Từ vựng chủ đề', 'Topic vocabulary')} onPress={() => router.push('/vocabulary/topics' as never)} />

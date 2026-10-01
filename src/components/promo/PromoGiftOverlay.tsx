@@ -128,7 +128,7 @@ export function PromoGiftOverlay() {
               </Text>
             ) : (
               <Text className="font-sans" style={{ fontSize: 14, lineHeight: 21, color: '#334155', textAlign: 'center' }}>
-                {L('Quà nhận được tới hết 30/10, mỗi tài khoản một lần. Sao dùng để đổi nền học, giao diện, linh vật… ở trang Đổi quà.', 'Claim by 30 Oct, once per account. Spend stars on study backgrounds, themes, mascots… in the Rewards shop.')}
+                {L('Nhận tới 30/10, mỗi tài khoản một lần.', 'Claim by 30/10, once per account.')}
               </Text>
             )}
 

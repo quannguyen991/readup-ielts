@@ -21,10 +21,7 @@ export default function MathLearnScreen() {
     <LessonHub
       subject="math"
       title={L('Bài học SAT Math', 'SAT Math lessons')}
-      blurb={L(
-        'Mỗi kỹ năng một bài: kiến thức cốt lõi, ví dụ giải từng bước, bẫy hay gặp, ba câu tự kiểm tra, rồi sang bộ đề.',
-        'One lesson per skill: core ideas, step-by-step worked examples, common traps, three self-check questions, then on to practice sets.',
-      )}
+      blurb={L('Mỗi kỹ năng: kiến thức, ví dụ, bẫy, tự kiểm tra.', 'Each skill: concept, examples, traps, quick check.')}
       backHref="/math"
       backLabel="SAT Math"
       groups={GROUPS}

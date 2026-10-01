@@ -132,7 +132,7 @@ export default function LibraryScreen() {
         badge="READING LIBRARY" art="verbal"
         line1={L('Kho bài đọc', 'Reading library')}
         line2={L('đọc kỹ, nhớ lâu hơn', 'read closely, remember longer')}
-        subtitle={L('Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng lúc sắp quên.', 'Real texts from public sources. Read, tap a word to look it up right in its sentence, then review it just before you forget.')}
+        subtitle={L('Bài thật, chạm từ để tra, ôn đúng lúc sắp quên.', 'Real articles. Tap a word to look it up.')}
         footer={
           <>
             <HeroStat value={String(stats.readable)} label={L('bài đọc đầy đủ', 'full readings')} />

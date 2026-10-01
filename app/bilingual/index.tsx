@@ -125,10 +125,7 @@ function PortalView() {
 
       <Appear index={6}>
         <Text className="font-sans" style={{ marginTop: 22, fontSize: 13, lineHeight: 20, color: INK, opacity: 0.75 }}>
-          {L(
-            'Chỉ đăng lại bài từ những nơi cho phép dùng lại toàn văn (public domain hoặc Creative Commons). Mỗi bài có link bài gốc và ghi giấy phép. Bài của Band 9 Analysis do Band 9 tự viết.',
-            'We only republish from sources that allow full-text reuse (public domain or Creative Commons). Every article links to the original and states its licence. Band 9 Analysis pieces are written by Band 9.',
-          )}
+          {L('Bài có giấy phép dùng lại, kèm link gốc.', 'Openly licensed articles, each linked to its source.')}
         </Text>
       </Appear>
     </View>

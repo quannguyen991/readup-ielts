@@ -4,6 +4,7 @@ import { Link, router, usePathname } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Logo } from './Logo';
+import { SearchIconButton } from '@/components/search/SearchTrigger';
 import { Icon } from '@/components/ui/Icon';
 import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, navLabel, visibleGroups } from '@/navigation/nav-items';
 import { useL } from '@/i18n/useL';
@@ -113,7 +114,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           ) : null}
 
           <View
-            className="min-w-0 flex-1 flex-row items-center gap-3 rounded-pill border border-brand-soft bg-paper px-3 py-2"
+            className="min-w-0 flex-1 flex-row items-center gap-2 rounded-pill border border-brand-soft bg-paper px-3 py-2 sm:gap-3"
             style={Platform.OS === 'web' ? webBarShadow : shadow.card}
           >
           {/*
@@ -143,11 +144,18 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <View className="flex-1" />
 
+          {/*
+            Kính lúp mở bảng tìm bài. Màn điện thoại không đủ chỗ cho cả kính lúp
+            lẫn chuông (thanh tràn, nút Premium bị cắt), nên dưới khổ `sm` chuông
+            nhường chỗ — nó chỉ dẫn sang Tiến độ, vẫn mở được từ bảng Khám phá.
+          */}
+          <SearchIconButton color={paper.body} />
+
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={L('Thông báo', 'Notifications')}
             onPress={() => router.push('/progress' as never)}
-            className="p-1.5"
+            className="hidden p-1.5 sm:flex"
           >
             <View>
               <Icon name="bell" size={19} color={paper.muted} />

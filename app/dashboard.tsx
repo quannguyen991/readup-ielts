@@ -52,10 +52,7 @@ function TodayPlan() {
           <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
             <Text className="font-heavy text-cardTitle text-ink">{L('Chưa có lộ trình của bạn', "You don't have a study plan yet")}</Text>
             <Text className="mt-0.5 font-sans text-body text-muted">
-              {L(
-                'Khai mục tiêu, ngày thi và số phút mỗi ngày — app xếp từng buổi học vào đúng bài trong app.',
-                'Set your goal, exam date and minutes per day — the app maps each session to the right lessons.',
-              )}
+              {L('Đặt mục tiêu và ngày thi, app xếp bài mỗi ngày.', 'Set a goal and exam date; the app plans each day.')}
             </Text>
           </View>
           <Button label={L('Lập lộ trình', 'Build my plan')} iconRight="arrow-right" onPress={() => router.push('/plan' as never)} />

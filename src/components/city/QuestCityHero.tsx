@@ -103,10 +103,7 @@ export function QuestCityHero() {
                 `${cityName} · Kỷ ${era} · ${ERA_INFO[era].vi}. Học ở bất kỳ đâu — kể cả trên điện thoại — vật liệu và ca làm việc đều về đây.`,
                 `${cityName} · Era ${era} · ${ERA_INFO[era].en}. Study anywhere — even on your phone — and your materials and shifts land here.`,
               )
-            : L(
-                'Chọn một vùng đất rồi xây từ túp lều tới tòa chọc trời. Gỗ, đá, gạch, thép, kính chỉ đến từ bài học thật.',
-                'Pick a plot of land and build from a hut to a skyscraper. Wood, stone, brick, steel and glass come only from real lessons.',
-              )}
+            : L('Học để có vật liệu, xây từ túp lều tới tòa chọc trời.', 'Study to earn materials and build from hut to skyscraper.')}
         </Text>
 
         {chosen ? (

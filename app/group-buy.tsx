@@ -89,10 +89,7 @@ function CreateGroup() {
   if (status === 'signed_out') {
     return (
       <SignInNotice
-        body={L(
-          'Tạo nhóm mua chung gắn với tài khoản của bạn — phải đăng nhập mới biết đơn của người tham gia thuộc nhóm nào.',
-          'A group buy is tied to your account — sign in so we know which group each member’s order belongs to.',
-        )}
+        body={L('Đăng nhập để tạo nhóm.', 'Sign in to create a group.')}
       />
     );
   }
@@ -117,10 +114,7 @@ function CreateGroup() {
             {L('Mua theo nhóm, càng đông càng rẻ', 'Buy as a group — the bigger, the cheaper')}
           </Text>
           <Text className="mt-2 font-sans text-body text-white/90" style={{ maxWidth: 560 }}>
-            {L(
-              'Rủ bạn học cùng mua một gói trả năm — mỗi người vẫn tự chuyển khoản QR của riêng mình, chỉ khác là số tiền đã giảm theo đúng mốc số người của nhóm.',
-              'Invite study friends to buy a yearly plan together — everyone still pays with their own QR transfer, just at the price discounted for the group size.',
-            )}
+            {L('Mua gói năm theo nhóm, càng đông càng rẻ. Mỗi người tự trả.', 'Buy a yearly plan as a group: more people, lower price. Everyone pays their own.')}
           </Text>
           </View>
           <PageStickers scene="shop" compact />

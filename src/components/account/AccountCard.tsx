@@ -52,7 +52,7 @@ export function AccountCard() {
           right={<Badge label={available ? L('Chưa đăng nhập', 'Not signed in') : L('Chưa nối máy chủ', 'No server connection')} tone="neutral" />}
         />
         <Text className="mt-3 font-sans text-body text-muted">
-          {L('App chạy được đầy đủ mà không cần tài khoản. Đăng nhập chỉ để hai việc: giữ tiến độ khi đổi máy, và không mất dữ liệu nếu xoá trình duyệt.', "The app works fully without an account. Signing in does just two things: keeps your progress when you switch devices, and protects your data if you clear the browser.")}
+          {L('Không bắt buộc. Đăng nhập để giữ tiến độ khi đổi máy.', 'Optional. Sign in to keep progress across devices.')}
         </Text>
         <PlanRow />
         <Button

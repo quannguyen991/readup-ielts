@@ -371,7 +371,7 @@ export default function IntroScreen() {
                 {L('Rủ bạn cùng học,', 'Invite friends to study,')}{'\n'}{L('mở khoá toàn bộ app.', 'unlock the whole app.')}
               </Text>
               <Text className="mt-3 max-w-[520px] font-sans text-bodyLg text-muted">
-                {L('Mỗi người bạn mời tạo tài khoản và học thật được tính một mốc. Không cần thẻ, không phải trả đồng nào.', "Every friend who signs up and actually studies counts toward a milestone. No card needed, and you don't pay a thing.")}
+                {L('Mời một bạn học thật là được một mốc. Miễn phí.', 'Each friend who signs up and studies counts. Free.')}
               </Text>
               <View className="mt-6 flex-row flex-wrap gap-2">
                 <Button
@@ -410,7 +410,7 @@ export default function IntroScreen() {
               {L('Bắt đầu từ bài chẩn đoán', 'Start with the diagnostic')}
             </Text>
             <Text className="mt-2 max-w-[520px] text-center font-sans text-body text-muted">
-              {L('19 câu, khoảng 30 phút. Xong là biết nên luyện gì trước, thay vì luyện ngẫu nhiên rồi hy vọng trúng chỗ yếu.', "19 questions, about 30 minutes. You'll know what to practise first, instead of practising at random and hoping to hit your weak spots.")}
+              {L('19 câu, ~30 phút. Biết ngay nên luyện gì trước.', '19 questions, ~30 min. See what to practise first.')}
             </Text>
             <View className="mt-4 flex-row flex-wrap justify-center gap-2">
               <Button

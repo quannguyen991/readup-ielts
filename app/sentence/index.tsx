@@ -67,7 +67,7 @@ export default function SentenceHubScreen() {
             icon="volume"
             colors={stickerGradient.primary}
             title={L('Chép chính tả', 'Dictation')}
-            description={L('Nghe một câu tiếng Anh rồi điền lại từng chữ cái vào ô. Biết trước câu có mấy từ, mỗi từ mấy chữ — sai chữ nào đỏ ngay chữ đó.', 'Listen to an English sentence and fill in every letter. You see how many words and letters there are — any wrong letter turns red right away.')}
+            description={L('Nghe một câu, điền lại từng chữ. Sai chữ nào đỏ chữ đó.', 'Hear a sentence, type it back letter by letter.')}
             total={DICTATION_SENTENCES.length}
             stats={dictation}
             scoreLabel={L('chính xác', 'accuracy')}
@@ -79,7 +79,7 @@ export default function SentenceHubScreen() {
             icon="languages"
             colors={stickerGradient.accent}
             title={L('Dịch câu', 'Translation')}
-            description={L('Đọc một câu tiếng Việt rồi gõ bản dịch. Câu mẫu nằm sẵn bên cạnh nhưng bị che — gõ đúng từ nào thì từ đó mở ra.', 'Read a Vietnamese sentence and type your translation. The model sentence sits alongside, hidden — each word you get right is revealed.')}
+            description={L('Dịch câu tiếng Việt. Gõ đúng từ nào, từ đó mở ra.', 'Translate the Vietnamese sentence word by word.')}
             total={TRANSLATION_SENTENCES.length}
             stats={translation}
             scoreLabel={L('tự tái tạo được', 'reproduced')}

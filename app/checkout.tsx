@@ -186,10 +186,7 @@ export default function CheckoutScreen() {
       <Notice
         icon="lock"
         title={L('Đăng nhập trước đã', 'Sign in first')}
-        body={L(
-          'Đơn hàng phải gắn với một tài khoản, nếu không thì lúc chuyển khoản xong không biết bật gói cho ai.',
-          "Orders must be linked to an account — otherwise we won't know whose plan to activate after the transfer.",
-        )}
+        body={L('Đăng nhập để tạo đơn.', 'Sign in to place an order.')}
         action={{ label: L('Đăng nhập', 'Sign in'), onPress: () => router.push('/auth/sign-in' as never) }}
       />
     );
@@ -250,10 +247,7 @@ export default function CheckoutScreen() {
         icon="info"
         tint={color.danger}
         title={L('Đơn này đã bị huỷ', 'This order was cancelled')}
-        body={L(
-          'Người đối chiếu không tìm thấy khoản chuyển khoản khớp mã. Nếu bạn đã chuyển tiền, hãy giữ ảnh chụp giao dịch và liên hệ lại.',
-          "The reviewer couldn't find a transfer matching the code. If you did send money, keep a screenshot of the transaction and contact us.",
-        )}
+        body={L('Chưa thấy khoản chuyển khớp mã. Đã chuyển rồi thì giữ ảnh giao dịch và liên hệ.', 'No matching transfer found. If you paid, keep the receipt and contact us.')}
         action={{ label: L('Tạo đơn mới', 'Create a new order'), onPress: () => router.replace('/upgrade' as never) }}
       />
     );
@@ -313,10 +307,7 @@ export default function CheckoutScreen() {
           </View>
 
           <Text className="mt-4 font-sans text-body text-white/80" style={{ lineHeight: 22 }}>
-            {L(
-              'Chuyển đúng số tiền và đúng nội dung bên dưới. Gói được bật sau khi đối chiếu — thường trong vài giờ, chậm nhất là sang ngày hôm sau.',
-              'Transfer the exact amount with the exact note below. Your plan is activated once we match it — usually within a few hours, by the next day at the latest.',
-            )}
+            {L('Chuyển đúng số tiền và nội dung. Gói bật trong vài giờ, chậm nhất hôm sau.', 'Transfer the exact amount and note. Activated within hours, next day at latest.')}
           </Text>
         </LinearGradient>
       </Appear>
@@ -459,10 +450,7 @@ export default function CheckoutScreen() {
                 {L(', không sinh mã mới.', ' — no new code is created.')}
               </Text>
               <Text className="mt-2 font-sans text-label text-subtle">
-                {L(
-                  'Đối chiếu do người thật làm, không phải máy — nên đừng chuyển khoản lần thứ hai nếu chưa thấy đổi ngay.',
-                  "Matching is done by a real person, not a machine — so please don't transfer a second time if nothing changes right away.",
-                )}
+                {L('Đừng chuyển lần hai nếu chưa thấy bật ngay.', 'Don\'t pay twice if it isn\'t active right away.')}
               </Text>
             </View>
           </View>

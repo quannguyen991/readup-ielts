@@ -19,9 +19,9 @@ export const CG = {
     Nền gần đặc thay cho lớp kính mờ.
   */
   panel: 'rgba(255,255,255,0.965)',
-  brand: '#4A7FE8',
-  brandDeep: '#2F5FC4',
-  brandSoft: '#E8F0FE',
+  brand: '#A8843F',
+  brandDeep: '#8F6E36',
+  brandSoft: '#FBF3E2',
   ok: '#1F9254',
   okSoft: '#E4F6EC',
   warn: '#B7791F',
@@ -44,20 +44,20 @@ const CSS = `
 .cg-btn{appearance:none;border:0;background:#fff;color:${CG.ink};font:inherit;font-family:${CG.fontBold};font-size:15px;border-radius:12px;
   padding:9px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 ${CG.line},0 0 0 1px ${CG.line} inset;
   transition:transform .12s ease,background .15s ease,box-shadow .15s ease}
-.cg-btn:hover{background:#F4F8FF}
+.cg-btn:hover{background:#FBF6EA}
 .cg-btn:active{transform:translateY(1px)}
-.cg-btn:focus-visible,.cg-tool:focus-visible,.cg-card:focus-visible,.cg-tab:focus-visible{outline:3px solid #9CC0FF;outline-offset:2px}
+.cg-btn:focus-visible,.cg-tool:focus-visible,.cg-card:focus-visible,.cg-tab:focus-visible{outline:3px solid #E2C88F;outline-offset:2px}
 .cg-btn[disabled]{opacity:.5;cursor:not-allowed}
-.cg-btn.primary{background:${CG.brand};color:#fff;box-shadow:0 6px 16px rgba(74,127,232,.35)}
+.cg-btn.primary{background:${CG.brand};color:#fff;box-shadow:0 6px 16px rgba(168,132,63,.35)}
 .cg-btn.primary:hover{background:${CG.brandDeep}}
 .cg-btn.ghost{background:transparent;box-shadow:none}
-.cg-btn.ghost:hover{background:rgba(74,127,232,.08)}
+.cg-btn.ghost:hover{background:rgba(168,132,63,.08)}
 .cg-btn.danger{color:${CG.bad}}
 .cg-btn.small{padding:6px 10px;font-size:14px;border-radius:10px}
 .cg-tool{appearance:none;border:0;width:48px;height:48px;border-radius:14px;background:transparent;cursor:pointer;display:flex;
   align-items:center;justify-content:center;font-size:22px;position:relative;color:${CG.ink};transition:background .15s ease}
-.cg-tool:hover{background:rgba(74,127,232,.10)}
-.cg-tool.on{background:${CG.brand};color:#fff;box-shadow:0 6px 14px rgba(74,127,232,.35)}
+.cg-tool:hover{background:rgba(168,132,63,.10)}
+.cg-tool.on{background:${CG.brand};color:#fff;box-shadow:0 6px 14px rgba(168,132,63,.35)}
 .cg-tool .cg-key{position:absolute;right:3px;bottom:1px;font-size:14px;line-height:1;opacity:.55;font-family:${CG.fontBold}}
 .cg-tip{position:absolute;left:58px;top:50%;transform:translateY(-50%);white-space:nowrap;background:${CG.ink};color:#fff;font-size:14px;
   padding:5px 10px;border-radius:8px;pointer-events:none;opacity:0;transition:opacity .12s ease}
@@ -66,8 +66,8 @@ const CSS = `
   font-family:${CG.fontBold};font-size:15px;white-space:nowrap}
 .cg-card{appearance:none;border:0;text-align:left;font:inherit;color:inherit;background:#fff;border-radius:14px;padding:10px 12px;cursor:pointer;
   box-shadow:0 0 0 1px ${CG.line} inset;display:flex;gap:10px;align-items:flex-start;transition:box-shadow .15s ease,transform .12s ease;width:100%}
-.cg-card:hover{box-shadow:0 0 0 2px #A9C6FB inset}
-.cg-card.on{box-shadow:0 0 0 2px ${CG.brand} inset;background:#F4F8FF}
+.cg-card:hover{box-shadow:0 0 0 2px #E2C88F inset}
+.cg-card.on{box-shadow:0 0 0 2px ${CG.brand} inset;background:#FBF6EA}
 .cg-card.locked{opacity:.62}
 .cg-tab{appearance:none;border:0;background:transparent;font:inherit;font-family:${CG.fontBold};font-size:14px;color:${CG.muted};padding:7px 8px;
   border-radius:10px;cursor:pointer;white-space:nowrap}
@@ -104,7 +104,7 @@ const CSS = `
 .cg-catch{display:inline-block;animation:cg-catch .55s cubic-bezier(.2,.9,.3,1.3) both}
 .cg-prompt{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);z-index:12;display:flex;align-items:center;gap:10px;padding:10px 12px 10px 16px;animation:cg-in .2s ease both}
 .cg-opt{appearance:none;border:0;font:inherit;text-align:left;background:#fff;border-radius:14px;padding:12px 14px;cursor:pointer;box-shadow:0 0 0 1px ${CG.line} inset;font-size:16px;color:${CG.ink}}
-.cg-opt:hover{box-shadow:0 0 0 2px #A9C6FB inset}
+.cg-opt:hover{box-shadow:0 0 0 2px #E2C88F inset}
 .cg-opt.right{box-shadow:0 0 0 2px ${CG.ok} inset;background:#EEFBF2}
 .cg-opt.wrong{box-shadow:0 0 0 2px ${CG.bad} inset;background:#FFF1F0}
 @keyframes cg-slide-out{from{opacity:1;transform:none}to{opacity:0;transform:translateX(16px)}}
@@ -114,7 +114,7 @@ const CSS = `
 .cg-modal-bg.closing{animation:cg-fade-out .14s ease both;pointer-events:none}
 .cg-modal-bg.closing .cg-modal{animation:cg-pop-out .14s ease both}
 .cg-num{width:64px;font:inherit;font-family:${CG.fontBold};font-size:15px;text-align:center;padding:6px 4px;border-radius:10px;border:1px solid ${CG.line};background:#fff;color:${CG.ink}}
-.cg-num:focus-visible{outline:3px solid #9CC0FF;outline-offset:1px}
+.cg-num:focus-visible{outline:3px solid #E2C88F;outline-offset:1px}
 .cg-label{position:absolute;left:0;top:0;pointer-events:none;will-change:transform;transition:opacity .2s ease;z-index:6;
   background:rgba(11,26,46,.88);color:#fff;border-radius:10px;padding:5px 10px;font-family:${CG.fontBold};font-size:14px;white-space:nowrap;
   box-shadow:0 6px 16px rgba(11,26,46,.25)}

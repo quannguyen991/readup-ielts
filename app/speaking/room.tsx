@@ -206,10 +206,7 @@ export default function SpeakingRoom() {
     if (!rec) {
       setForceTyped(true);
       setNotice(
-        L(
-          'Không mở được micro trên trình duyệt này — chuyển sang gõ câu trả lời. Phần gõ phím không phải điểm Speaking.',
-          "Couldn't open the mic in this browser — switching to typed answers. Typed answers don't count as a Speaking score.",
-        ),
+        L('Không có micro: gõ câu trả lời thay (không tính điểm Speaking).', 'No mic: type instead (not scored as Speaking).'),
       );
       return;
     }
@@ -235,10 +232,7 @@ export default function SpeakingRoom() {
     const transcript = transcriptOf(snap);
     if (reason === 'denied') {
       setNotice(
-        L(
-          'Trình duyệt chưa cho dùng micro. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ, cho phép Micro rồi bấm "Thử lại".',
-          'Your browser hasn\'t allowed the microphone yet. Click the lock icon next to the address bar, allow Microphone, then tap "Try again".',
-        ),
+        L('Hãy cho phép Micro ở biểu tượng ổ khoá trên thanh địa chỉ rồi bấm "Thử lại".', 'Allow the microphone via the lock icon in the address bar, then tap "Try again".'),
       );
       enter('retry');
       return;

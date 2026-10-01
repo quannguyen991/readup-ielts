@@ -100,7 +100,7 @@ export default function LeaderboardScreen() {
         <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#FEF3C7' }}>
           <Text style={{ fontSize: 16 }}>🧪</Text>
           <Text className="flex-1 font-semi text-body text-ink" style={{ minWidth: 220 }}>
-            {L('Dữ liệu minh hoạ — tên và điểm là mẫu, không phải học viên thật. Chỉ hiện khi đường dẫn có ?demo=1.', 'Sample data — names and scores are examples, not real learners. Only shown when the link has ?demo=1.')}
+            {L('Dữ liệu minh hoạ, không phải học viên thật.', 'Sample data, not real learners.')}
           </Text>
           <Button label={L('Xem bảng thật', 'See the real board')} variant="outline" size="sm" onPress={() => router.replace('/leaderboard' as never)} />
         </View>
@@ -119,7 +119,7 @@ export default function LeaderboardScreen() {
           <Button label={L('Hồ sơ', 'Profile')} variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
         </View>
         <Text className="mt-1 font-sans text-body text-muted">
-          {L('Điểm tính từ chính thời gian học và số câu đã làm — không có nút nào cộng điểm. Hết tháng, top 10 được thưởng sao.', 'Points come from your actual study time and questions answered — no button adds points. At month end, the top 10 win stars.')}
+          {L('Điểm = thời gian học + số câu. Top 10 tháng được thưởng sao.', 'Points = study time + questions. Monthly top 10 win stars.')}
         </Text>
         </View>
         <PageStickers scene="progress" />
@@ -187,7 +187,7 @@ export default function LeaderboardScreen() {
                   <Text className="font-sans text-label text-muted">
                     {L('Điểm hôm nay:', "Today's points:")} {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> ({L('tối đa', 'max')} {dailyCapFor(todayKey)})
                   </Text>
-                  <Text className="font-sans text-label text-subtle">{L('Công: 1 điểm mỗi phút học, 0,5 điểm mỗi câu đã làm. Mỗi điểm cũng là một sao để đổi quà.', 'Effort: 1 point per minute studied, 0.5 per question answered. Every point is also a star to spend on rewards.')}</Text>
+                  <Text className="font-sans text-label text-subtle">{L('1 điểm/phút học, 0,5 điểm/câu.', '1 pt per minute, 0.5 pt per question.')}</Text>
                 </View>
               </View>
             </Card>
@@ -360,7 +360,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
 
       <View style={{ paddingVertical: 6 }}>
         {error ? (
-          <Text className="px-5 py-4 font-sans text-body text-muted">{L('Bảng của mọi người cần mạng và đăng nhập — số của bạn ở trên vẫn tính đủ.', "Everyone's board needs a connection and sign-in — your own numbers above are still complete.")}</Text>
+          <Text className="px-5 py-4 font-sans text-body text-muted">{L('Cần mạng và đăng nhập để xem bảng chung.', 'Sign in and go online to see the shared board.')}</Text>
         ) : !data ? (
           <View className="items-center py-6">
             <ActivityIndicator color="#D97706" />
@@ -491,7 +491,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
   return (
     <Card className="mt-6">
       <SectionHeader title={L('Giải thưởng tháng', 'Monthly prizes')} subtitle={L(`Chốt bảng sau ${daysUntilReset(today)} ngày nữa`, `Board closes in ${daysUntilReset(today)} days`)} icon="gift" iconTone="warning" />
-      <Text className="mt-2 font-sans text-label text-muted">{L('Hết tháng, top 10 bảng dưới đây được thưởng sao. Đầu tháng sau quay lại trang này bấm nhận.', 'At month end, the top 10 on the board below win stars. Come back early next month to claim them.')}</Text>
+      <Text className="mt-2 font-sans text-label text-muted">{L('Top 10 cuối tháng được thưởng sao.', 'The month\'s top 10 win stars.')}</Text>
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         {MONTH_PRIZES.map((p, i) => (

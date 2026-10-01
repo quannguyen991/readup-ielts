@@ -136,10 +136,7 @@ export default function ShadowLesson() {
     const text = heardRef.current;
     if (reason === 'denied') {
       setNotice(
-        L(
-          'Trình duyệt chưa cho dùng micro. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ, cho phép Micro rồi thử lại.',
-          "Your browser hasn't allowed the microphone yet. Click the lock icon next to the address bar, allow Microphone, then try again.",
-        ),
+        L('Hãy cho phép Micro ở biểu tượng ổ khoá trên thanh địa chỉ rồi thử lại.', 'Allow the microphone via the lock icon in the address bar, then retry.'),
       );
       setPhase('idle');
       setLive(null);
@@ -355,10 +352,7 @@ export default function ShadowLesson() {
             ) : (
               <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#FFF7ED' }}>
                 <Text className="font-sans text-body" style={{ color: '#9A3412', lineHeight: 22 }}>
-                  {L(
-                    'Trình duyệt này chưa có bộ nhận giọng nên máy không chấm được. Bạn vẫn nghe mẫu và đọc theo như bình thường; muốn máy tô từng từ thì mở bằng Chrome hoặc Edge trên máy tính.',
-                    "This browser has no speech recognition, so it can't score you. You can still hear the model and read along; to get word-by-word colouring, open this in Chrome or Edge on a computer.",
-                  )}
+                  {L('Trình duyệt này không chấm giọng được. Mở bằng Chrome/Edge để được chấm.', 'This browser can\'t score speech. Use Chrome or Edge.')}
                 </Text>
               </View>
             )}

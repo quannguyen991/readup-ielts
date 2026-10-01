@@ -195,7 +195,7 @@ function Intro({ onStart }: { onStart: () => void }) {
         badge="DIGITAL SAT · FULL TEST" art="test"
         line1={L('Thi thử SAT đầy đủ', 'Full SAT practice test')}
         line2={L('một mạch từ đầu tới cuối', 'start to finish in one sitting')}
-        subtitle={L('Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module; module sau khó dễ tuỳ module trước.', "The College Board's Digital SAT format: two sections of two modules each; the second module adapts to how you did on the first.")}
+        subtitle={L('Đúng khổ Digital SAT: 2 phần, mỗi phần 2 module.', 'Digital SAT format: 2 sections, 2 modules each.')}
         footer={
           <>
             <HeroStat value="98" label={L('câu hỏi', 'questions')} />
@@ -243,13 +243,13 @@ function Intro({ onStart }: { onStart: () => void }) {
               icon="trending"
               tone="accent"
               title={L('Module 2 khó dễ tuỳ module 1', 'Module 2 adapts to module 1')}
-              body={L('Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là cách đề thật hoạt động, không phải hình phạt.', "Do well on the first part and the next gets harder — with a higher score ceiling. That's how the real test works, not a penalty.")}
+              body={L('Module 1 tốt thì module 2 khó hơn và trần điểm cao hơn.', 'Do well in module 1 and module 2 gets harder, with a higher ceiling.')}
             />
             <Note
               icon="lock"
               tone="danger"
               title={L('Nộp module là không quay lại', 'No going back after submitting')}
-              body={L('Hết giờ thì tự nộp, kể cả khi còn câu chưa làm. Đề thật không cho cộng giờ.', "When time's up the module submits itself, even with questions left. The real test gives no extra time.")}
+              body={L('Hết giờ là tự nộp.', 'Time\'s up means auto-submit.')}
             />
           </View>
         </Grid>
@@ -394,7 +394,7 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
             className="mt-1 max-w-[400px] text-center font-sans text-body text-paper-body"
             style={{ lineHeight: 23 }}
           >
-            {L('Xong phần Reading and Writing. Đứng dậy, uống nước, đừng xem lại câu vừa làm — phần sau là Math và nó không liên quan gì tới phần vừa rồi.', "Reading and Writing is done. Stand up, drink some water, and don't go over what you just did — Math is next and has nothing to do with it.")}
+            {L('Xong Reading and Writing. Nghỉ chút rồi sang Math.', 'Reading and Writing done. Take a break, then Math.')}
           </Text>
           <View className="mt-6">
             <Button label={L('Vào phần Math sớm', 'Start Math early')} iconRight="chevron-right" onPress={onContinue} />
@@ -513,7 +513,7 @@ function ResultScreen({
               </Text>
             </View>
             <Text className="mt-2.5 font-sans text-body text-body" style={{ lineHeight: 22 }}>
-              {L('College Board không công bố bảng quy đổi của đề số hoá, và bảng ấy còn đổi theo từng kỳ thi. Đây là phỏng theo — đủ để theo dõi tiến bộ giữa các lần làm, không đủ để dự đoán điểm thi thật.', "The College Board doesn't publish the Digital SAT conversion table, and it changes from test to test. This is an approximation — good for tracking progress between attempts, not for predicting your real score.")}
+              {L('Điểm quy đổi là ước tính, dùng để so với chính bạn.', 'The scaled score is an estimate for tracking yourself.')}
             </Text>
             <Text className="mt-2 font-sans text-body text-body" style={{ lineHeight: 22 }}>
               {L(

@@ -72,7 +72,7 @@ export default function SatWritingScreen() {
               </View>
             </View>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              {L('Hai nhóm kỹ năng viết của SAT Reading and Writing. Toàn bộ là câu hỏi trắc nghiệm — bài thi số hoá hiện nay không còn phần viết luận.', 'The two writing skill groups in SAT Reading and Writing. All multiple choice — the digital SAT no longer has an essay.')}
+              {L('Hai nhóm kỹ năng viết của SAT, toàn trắc nghiệm.', 'SAT\'s two writing skill groups, all multiple choice.')}
             </Text>
           </View>
           <View aria-hidden>
@@ -96,7 +96,7 @@ export default function SatWritingScreen() {
         </View>
 
         <Text className="mt-2 font-sans text-label text-subtle">
-          {L('Rhetorical Synthesis chưa có: dạng đó cho gạch đầu dòng ghi chú chứ không phải văn xuôi, nên không sinh offline được mà không làm lộ đáp án.', "Rhetorical Synthesis isn't here yet: it uses bullet-point notes rather than prose, so it can't be generated offline without giving away the answer.")}
+          {L('Rhetorical Synthesis sắp có.', 'Rhetorical Synthesis is coming soon.')}
         </Text>
 
         {!question ? (

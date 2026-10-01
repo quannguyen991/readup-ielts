@@ -182,7 +182,7 @@ export default function OtpScreen() {
           <Card className="mt-4" variant="flat">
             <Text className="font-strong text-label text-ink">{L('Không thấy email?', "Can't find the email?")}</Text>
             <Text className="mt-1 font-sans text-label text-muted">
-              {L('Kiểm tra cả thư mục Spam và Quảng cáo. Email do Supabase gửi nên người gửi không phải tên Band 9.', "Check your Spam and Promotions folders too. The email comes from Supabase, so the sender won't say Band 9.")}
+              {L('Xem cả thư mục Spam/Quảng cáo.', 'Check Spam/Promotions too.')}
             </Text>
             <Button
               className="mt-3 self-start"
@@ -253,8 +253,8 @@ export default function OtpScreen() {
           <Text className="font-strong text-label text-ink">{L('Không nhận được mã?', "Didn't get the code?")}</Text>
           <Text className="mt-1 font-sans text-label text-muted">
             {isSms
-              ? L('Kiểm tra sóng và hộp thư rác của tin nhắn. Số phải là số di động đang hoạt động — SMS không gửi tới số bàn được.', "Check your signal and your spam messages. It must be an active mobile number — SMS can't reach landlines.")
-              : L('Kiểm tra cả thư mục Spam và Quảng cáo. Mã có hiệu lực trong ít phút.', 'Check your Spam and Promotions folders too. The code is valid for a few minutes.')}
+              ? L('Kiểm tra sóng và tin nhắn rác. Chỉ gửi tới số di động.', 'Check signal and spam SMS. Mobile numbers only.')
+              : L('Xem cả thư mục Spam/Quảng cáo.', 'Check Spam/Promotions too.')}
           </Text>
           <Button
             className="mt-3 self-start"

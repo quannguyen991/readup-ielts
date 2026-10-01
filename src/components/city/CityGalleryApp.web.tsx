@@ -14,7 +14,7 @@ export function CityGalleryApp() {
     <Suspense
       fallback={
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#CFE8F7' }}>
-          <ActivityIndicator color="#4A7FE8" />
+          <ActivityIndicator color="#A8843F" />
         </View>
       }
     >

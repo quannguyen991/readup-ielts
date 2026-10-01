@@ -184,7 +184,7 @@ export default function SignInScreen() {
       <View className="w-full self-center" style={{ maxWidth: 460 }}>
         <Text className="font-heavy text-pageTitle text-ink">{mode === 'email' && emailMode === 'signup' ? L('Tạo tài khoản', 'Create account') : L('Đăng nhập', 'Sign in')}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          {L('Không đăng nhập vẫn học bình thường — dữ liệu lưu ngay trên thiết bị này. Tài khoản chỉ để mang tiến độ sang máy khác và giữ lại khi đổi máy.', 'You can study without signing in — your data is saved on this device. An account just carries your progress to other devices and keeps it when you switch.')}
+          {L('Không bắt buộc. Đăng nhập để giữ tiến độ trên mọi máy.', 'Optional. Sign in to keep your progress on every device.')}
         </Text>
 
         {!available ? (

@@ -831,6 +831,26 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
         </View>
       </Appear>
 
+      {/* ------------------------------------------------ lối sang Lộ trình học theo trình độ */}
+      <Appear index={1}>
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => router.push('/lo-trinh-hoc' as never)}
+          style={{ flexDirection: 'row', alignItems: 'center', gap: 14, borderRadius: 18, borderWidth: 1, borderColor: P.line, backgroundColor: P.paper, paddingHorizontal: 16, paddingVertical: 14 }}
+        >
+          <Icon name="compass" size={22} color={P.gold} />
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text className="font-heavy" style={{ fontSize: 16, color: P.navy }}>
+              {L('Lộ trình học theo trình độ', 'Learning path by level')}
+            </Text>
+            <Text className="font-sans" style={{ fontSize: 13, color: P.muted }}>
+              {L('Học từng bài theo chủ đề, đúng mức điểm bạn đang đứng.', 'Lesson-by-lesson topics matched to your current score.')}
+            </Text>
+          </View>
+          <Icon name="arrow-right" size={18} color={P.navy} />
+        </Pressable>
+      </Appear>
+
       {/* ------------------------------------------------ hôm nay (xanh lá) + tuần này (tím) */}
       <Appear index={1}>
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={14}>
