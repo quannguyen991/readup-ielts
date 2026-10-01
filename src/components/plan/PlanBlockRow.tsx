@@ -11,10 +11,10 @@ import { color } from '@/theme/tokens';
 /** Màu và biểu tượng từng kỹ năng — dùng chung ở trang Lộ trình và Tổng quan. */
 export const SKILL_TONE: Record<Skill | 'check', { tone: string; soft: string; icon: IconName }> = {
   vocab: { tone: '#10B981', soft: '#E7F8F1', icon: 'letters' },
-  reading: { tone: '#B8955A', soft: '#FBF6EE', icon: 'book' },
-  listening: { tone: '#B07A3A', soft: '#FAF4E9', icon: 'volume' },
-  writing: { tone: '#D6B57C', soft: '#FBF7F0', icon: 'pencil' },
-  math: { tone: '#D7B67D', soft: '#FCF7F0', icon: 'grid' },
+  reading: { tone: '#A8843F', soft: '#FBF6EE', icon: 'book' },
+  listening: { tone: '#0D9488', soft: '#E6F6F4', icon: 'volume' },
+  writing: { tone: '#F0703F', soft: '#FEF0E8', icon: 'pencil' },
+  math: { tone: '#24375A', soft: '#EEF1F6', icon: 'grid' },
   verbal: { tone: '#F43F5E', soft: '#FEECEF', icon: 'languages' },
   check: { tone: '#F59E0B', soft: '#FEF4E2', icon: 'target' },
 };

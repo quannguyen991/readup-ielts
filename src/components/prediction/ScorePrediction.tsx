@@ -72,7 +72,7 @@ function RangeBar({ low, mid, high, min, max, tone }: { low: number; mid: number
 export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 'total' }) {
   const all = useSatPredictions();
   const title = section === 'math' ? 'SAT Math' : section === 'verbal' ? 'SAT Verbal' : 'Tổng SAT';
-  const tone = section === 'math' ? '#D7B67D' : section === 'verbal' ? '#EC4899' : '#D6B57C';
+  const tone = section === 'math' ? '#24375A' : section === 'verbal' ? '#EC4899' : '#A8843F';
 
   if (section === 'total') {
     const t = all.total;

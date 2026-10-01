@@ -18,8 +18,8 @@ import { Icon, type IconName } from '@/components/ui';
 export type LessonTone = { ink: string; mid: string; soft: string };
 
 const GREEN: LessonTone = { ink: '#15803D', mid: '#22C55E', soft: '#DCFCE7' };
-const SKY: LessonTone = { ink: '#7D5E27', mid: '#B07A3A', soft: '#F9F2E5' };
-const VIOLET: LessonTone = { ink: '#C3923E', mid: '#D6B57C', soft: '#FBF5EC' };
+const SKY: LessonTone = { ink: '#0F766E', mid: '#0D9488', soft: '#E6F6F4' };
+const VIOLET: LessonTone = { ink: '#0F1D33', mid: '#24375A', soft: '#EEF1F6' };
 const ROSE: LessonTone = { ink: '#BE123C', mid: '#F43F5E', soft: '#FFE4E6' };
 
 export const LEVEL_TONE: Record<string, LessonTone> = {

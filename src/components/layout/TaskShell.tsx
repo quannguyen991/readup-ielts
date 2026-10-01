@@ -43,7 +43,9 @@ export function TaskShell({
   title,
   subtitle,
   icon = 'book',
-  tone = 'brand',
+  // Band 9 (01/10/2026): nền kem vàng là mặc định cho MỌI màn; chỉ đổi khi người
+  // dùng đổi sao lấy Nền học / Giao diện (StudyBackdrop tự đọc lựa chọn đó).
+  tone = 'paper',
   paperGrid = true,
   right,
   children,

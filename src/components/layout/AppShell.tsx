@@ -21,7 +21,7 @@ import { PromoGiftOverlay } from '@/components/promo/PromoGiftOverlay';
 import { ReminderRunner } from '@/components/reminder/Reminder';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
-const STUDY_NAVY = '#635030';
+const STUDY_NAVY = '#0F1D33';
 
 /**
  * Khung app dùng chung — cột điều hướng cố định bên trái trên desktop, thanh
