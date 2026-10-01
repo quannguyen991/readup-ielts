@@ -2,6 +2,7 @@ import { generateMathSet } from './generator';
 import { MATH_SKILL_DOMAIN } from '@/lib/math/types';
 import type { MathDomain, MathItem, MathSkill } from '@/lib/math/types';
 import type { MathSetKind } from '@/lib/math/theme';
+import { dominantDifficulty, type Difficulty, type DifficultyMix } from '@/lib/difficulty';
 
 /**
  * LỘ TRÌNH SAT MATH — giáo trình, không phải một kho đề rời.
@@ -42,6 +43,10 @@ export type MathExerciseSet = {
   minutes: number;
   /** Vị trí trong toàn lộ trình — dùng để tìm "bài kế tiếp". */
   order: number;
+  /** Tỉ lệ dễ / vừa / khó; câu trong bộ luôn xếp dễ → khó. */
+  mix: DifficultyMix;
+  /** Bậc chủ đạo của bộ — nhãn "Dễ / Vừa / Khó" trên thẻ. */
+  difficulty: Difficulty;
   /** Bài học chứa bộ này. Ở tab Thư viện không có ngữ cảnh nào khác. */
   unitTitle: string;
   /** null khi bộ trải cả bốn domain (đề tổng hợp). */
@@ -261,6 +266,8 @@ const SETS_PER_UNIT: Array<{
   blurb: string;
   count: number;
   minutes: number;
+  /** Tỉ lệ dễ / vừa / khó. Bộ đầu nghiêng dễ, bộ thử thách nghiêng khó. */
+  mix: DifficultyMix;
 }> = [
   {
     suffix: 'warmup',
@@ -269,6 +276,7 @@ const SETS_PER_UNIT: Array<{
     blurb: '20 câu, thời gian rộng. Cứ sai — mục tiêu là nhận ra dạng bài và đọc kỹ từng đề.',
     count: 20,
     minutes: 40,
+    mix: { easy: 0.6, medium: 0.4, hard: 0 },
   },
   {
     suffix: 'practice',
@@ -277,6 +285,7 @@ const SETS_PER_UNIT: Array<{
     blurb: '20 câu, nhịp thong thả. Sai câu nào đọc lời giải câu đó ngay, đừng để dồn.',
     count: 20,
     minutes: 34,
+    mix: { easy: 0.3, medium: 0.5, hard: 0.2 },
   },
   {
     suffix: 'practice2',
@@ -285,6 +294,7 @@ const SETS_PER_UNIT: Array<{
     blurb: '24 câu, siết nhẹ thời gian. Bộ dài nhất của bài học — làm hết trong một hơi.',
     count: 24,
     minutes: 38,
+    mix: { easy: 0.15, medium: 0.5, hard: 0.35 },
   },
   {
     suffix: 'speed',
@@ -293,6 +303,7 @@ const SETS_PER_UNIT: Array<{
     blurb: '24 câu trong 26 phút — nhanh hơn đề thật. Chấp nhận sai vài câu, mục tiêu là quen áp lực.',
     count: 24,
     minutes: 26,
+    mix: { easy: 0.35, medium: 0.45, hard: 0.2 },
   },
   {
     suffix: 'checkpoint',
@@ -301,6 +312,7 @@ const SETS_PER_UNIT: Array<{
     blurb: '20 câu, đúng nhịp đề thật. Đúng từ 70% trở lên thì coi như xong kỹ năng này.',
     count: 20,
     minutes: 30,
+    mix: { easy: 0.2, medium: 0.45, hard: 0.35 },
   },
   {
     /*
@@ -316,6 +328,7 @@ const SETS_PER_UNIT: Array<{
       '20 câu trong 20 phút — đúng một phút một câu. Sai nhiều là bình thường; xem lại xem vội thì mình hỏng kiểu gì.',
     count: 20,
     minutes: 20,
+    mix: { easy: 0, medium: 0.3, hard: 0.7 },
   },
   {
     /*
@@ -333,6 +346,7 @@ const SETS_PER_UNIT: Array<{
       '20 câu, làm sau khi đã học sang bài khác vài hôm. Nhớ được lúc đã quên một nửa mới là nhớ thật.',
     count: 20,
     minutes: 30,
+    mix: { easy: 0.2, medium: 0.45, hard: 0.35 },
   },
 ];
 
@@ -351,6 +365,8 @@ function buildUnits(domain: MathDomain, startOrder: number): { units: MathUnit[]
         count: template.count,
         minutes: template.minutes,
         order,
+        mix: template.mix,
+        difficulty: dominantDifficulty(template.mix),
         unitTitle: seed.title,
         domain,
       };
@@ -385,6 +401,9 @@ const ALL_SKILLS: MathSkill[] = UNIT_SEEDS.map((u) => u.skill);
  * TỪNG kỹ năng, còn ở đây đề không báo trước dạng — mà nhận ra "câu này hỏi
  * gì" chính là nửa việc trong phòng thi.
  */
+/** Tỉ lệ của đề trộn và đề khổ thật: gần với phân bố của một module đề thật. */
+const EXAM_MIX: DifficultyMix = { easy: 0.25, medium: 0.45, hard: 0.3 };
+
 function buildReviewStage(startOrder: number): MathStage {
   let order = startOrder;
 
@@ -418,6 +437,8 @@ function buildReviewStage(startOrder: number): MathStage {
       count: variant.count,
       minutes: variant.minutes,
       order: order++,
+      mix: EXAM_MIX,
+      difficulty: dominantDifficulty(EXAM_MIX),
       unitTitle: 'Ôn trộn theo mảng',
       domain: stage.domain,
     }));
@@ -432,6 +453,8 @@ function buildReviewStage(startOrder: number): MathStage {
     count: 22,
     minutes: 35,
     order: order++,
+    mix: EXAM_MIX,
+    difficulty: dominantDifficulty(EXAM_MIX),
     unitTitle: 'Đề khổ thật',
     domain: null,
   }));
@@ -521,7 +544,7 @@ export function getStageOfSet(setId: string): MathStage | undefined {
  * nguyên câu cũ và chỉ đang kiểm tra trí nhớ.
  */
 export function buildSetItems(set: MathExerciseSet, round: number): MathItem[] {
-  return generateMathSet({ skills: set.skills, count: set.count, seed: `${set.id}:r${round}` });
+  return generateMathSet({ skills: set.skills, count: set.count, seed: `${set.id}:r${round}`, mix: set.mix });
 }
 
 /** Bộ đề đầu tiên trong lộ trình chưa hoàn thành — chính là "học tiếp từ đây". */

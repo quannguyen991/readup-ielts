@@ -1,6 +1,10 @@
 import seed from './seed/sat-rw/index.json';
 import generated2 from './seed/sat-rw/generated-2.json';
+import hardConventions from './seed/sat-rw/hard-conventions.json';
+import hardReading from './seed/sat-rw/hard-reading.json';
 import type { MockItem } from '@/services/sat-rw/mock/item';
+import { difficultyScore } from '@/services/sat-rw/mock/difficulty';
+import { sortByDifficulty, type Difficulty } from '@/lib/difficulty';
 
 /**
  * Kho câu hỏi SAT Reading & Writing.
@@ -58,6 +62,18 @@ export type SatRwQuestion = {
   options: string[];
   answerIndex: number;
   solutionVi: string;
+  /**
+   * Bậc dễ / vừa / khó — để màn làm bài gắn nhãn "Dễ / Vừa / Khó" và để bộ đề
+   * xếp dễ → khó. Mọi câu trong `SAT_RW_QUESTIONS` đều có; câu do bộ sinh tạo
+   * ra lúc chạy có thể thiếu, khi ấy đọc bằng `rwDifficulty()`.
+   */
+  difficulty?: Difficulty;
+  /**
+   * Vì sao từng phương án sai, cùng thứ tự với `options`; chuỗi rỗng ở đáp án.
+   * Chỉ câu khó soạn tay (01/10/2026) có — màn xem lại có thể hiện cạnh từng
+   * phương án thay vì chỉ đọc `solutionVi`.
+   */
+  whyWrong?: string[];
 };
 
 type Seed = { units: SatRwUnit[]; questions: SatRwQuestion[] };
@@ -79,7 +95,102 @@ export const SAT_RW_BASE_QUESTIONS: SatRwQuestion[] = data.questions;
  */
 export const SAT_RW_EXTRA_QUESTIONS: SatRwQuestion[] = (generated2 as { questions: SatRwQuestion[] }).questions;
 
-export const SAT_RW_QUESTIONS: SatRwQuestion[] = [...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS];
+/**
+ * Câu KHÓ soạn tay (01/10/2026), sau phản hồi "đề hơi dễ".
+ *
+ * Kho cũ không có câu nào đạt độ khó module 2 của đề thật: đoạn ngắn, nhiễu lộ
+ * ra bằng từ khoá. Bộ này viết riêng cho bậc khó — đoạn học thuật dày hơn,
+ * nhiễu "đúng nhưng lạc đề", "quá mạnh", "đảo quan hệ", bảng số phải ghép hai ô.
+ * 15 câu mỗi unit 1–10, 10 câu mỗi unit 11–16. Mỗi câu có lý do sai cho từng
+ * phương án (`whyWrong`); test ở `sat-rw-hard.test.ts`.
+ */
+type HardSeed = {
+  id: string;
+  unit: number;
+  unitTitle: string;
+  domain: string;
+  skill: string;
+  passage: string;
+  underline?: string;
+  table?: MockItem['table'];
+  stem: string;
+  options: string[];
+  answerIndex: number;
+  explainVi: string;
+  whyWrong: string[];
+  meaningVi: string;
+};
+
+const LETTERS = ['A', 'B', 'C', 'D'];
+
+/** Ghép lời giải theo đúng khuôn của kho cũ: vì sao đúng, vì sao từng phương án sai, rồi nghĩa. */
+function hardSolution(q: HardSeed): string {
+  const wrong = q.options
+    .map((_, i) => (i === q.answerIndex ? null : `${LETTERS[i]} sai: ${q.whyWrong[i]}`))
+    .filter(Boolean)
+    .join('\n');
+  return `${q.explainVi}\n${wrong}\nNghĩa: ${q.meaningVi}`;
+}
+
+function fromHardSeed(q: HardSeed): SatRwQuestion {
+  return {
+    id: q.id,
+    unit: q.unit,
+    unitTitle: q.unitTitle,
+    domain: q.domain,
+    skill: q.skill,
+    passage: q.passage,
+    ...(q.underline ? { underline: q.underline } : {}),
+    ...(q.table ? { table: q.table } : {}),
+    stem: q.stem,
+    options: q.options,
+    answerIndex: q.answerIndex,
+    solutionVi: hardSolution(q),
+    difficulty: 'hard',
+    whyWrong: q.whyWrong,
+  };
+}
+
+export const SAT_RW_HARD_QUESTIONS: SatRwQuestion[] = [
+  ...(hardConventions as { questions: HardSeed[] }).questions,
+  ...(hardReading as { questions: HardSeed[] }).questions,
+].map(fromHardSeed);
+
+/**
+ * Chia câu CŨ của một unit thành Dễ / Vừa: nửa có điểm khó (phỏng theo, xem
+ * `mock/difficulty.ts`) thấp hơn là Dễ, nửa còn lại là Vừa. Bậc Khó chỉ dành
+ * cho câu viết riêng cho bậc ấy — điểm phỏng theo chưa từng hiệu chuẩn, không
+ * đủ để gọi một câu cũ là "khó".
+ */
+function labelOldByUnit(questions: SatRwQuestion[]): SatRwQuestion[] {
+  const byUnit = new Map<number, SatRwQuestion[]>();
+  for (const q of questions) {
+    if (!byUnit.has(q.unit)) byUnit.set(q.unit, []);
+    byUnit.get(q.unit)!.push(q);
+  }
+  const level = new Map<string, Difficulty>();
+  for (const list of byUnit.values()) {
+    const ranked = list
+      .map((q) => ({
+        id: q.id,
+        score: difficultyScore({ id: q.id, domain: q.domain as MockItem['domain'], skill: q.skill, passage: q.passage, stem: q.stem, options: q.options, answerIndex: q.answerIndex, solutionVi: '' }),
+      }))
+      .sort((a, b) => a.score - b.score || a.id.localeCompare(b.id));
+    const cut = Math.ceil(ranked.length / 2);
+    ranked.forEach((r, i) => level.set(r.id, i < cut ? 'easy' : 'medium'));
+  }
+  return questions.map((q) => ({ ...q, difficulty: level.get(q.id) ?? 'medium' }));
+}
+
+export const SAT_RW_QUESTIONS: SatRwQuestion[] = [
+  ...labelOldByUnit([...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS]),
+  ...SAT_RW_HARD_QUESTIONS,
+];
+
+/** Bậc của một câu; câu sinh lúc chạy không mang nhãn thì coi là Vừa. */
+export function rwDifficulty(q: Pick<SatRwQuestion, 'difficulty'>): Difficulty {
+  return q.difficulty ?? 'medium';
+}
 
 /** Số câu mỗi unit đếm lại từ kho đã gộp, không lấy con số ghi sẵn trong seed. */
 export const SAT_RW_UNITS: SatRwUnit[] = data.units.map((u) => ({
@@ -119,8 +230,20 @@ export function getSatRwUnit(unit: number): SatRwUnit | undefined {
   return SAT_RW_UNITS.find((u) => u.unit === unit);
 }
 
+/** Câu của một unit, XẾP DỄ → VỪA → KHÓ (giữ thứ tự kho trong cùng bậc). */
 export function questionsForUnit(unit: number): SatRwQuestion[] {
-  return SAT_RW_QUESTIONS.filter((q) => q.unit === unit);
+  return sortByDifficulty(
+    SAT_RW_QUESTIONS.filter((q) => q.unit === unit),
+    rwDifficulty,
+  );
+}
+
+/** Câu của một kỹ năng, xếp dễ → khó. */
+export function questionsForSkill(skill: string): SatRwQuestion[] {
+  return sortByDifficulty(
+    SAT_RW_QUESTIONS.filter((q) => q.skill === skill),
+    rwDifficulty,
+  );
 }
 
 export function unitsByDomain(domain: string): SatRwUnit[] {

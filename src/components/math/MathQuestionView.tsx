@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Text, TextInput, View } from 'react-native';
 
 import { MathFigure } from './MathFigure';
 import { MathText } from './MathText';
+import { flattenMath } from '@/lib/math/flatten';
 import { Badge } from '@/components/ui';
 import { PressScale } from '@/components/motion/Motion';
 import { MATH_ERROR_LABEL, MATH_SKILL_LABEL } from '@/lib/math/types';
@@ -12,6 +13,8 @@ import { GRID_IN_REASON_LABEL, gridInAcceptedForms } from '@/services/math/grid-
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { mathErrorLabel } from './math-labels-en';
+import { ExamOption } from '@/components/sat-exam/ExamOption';
+import { HighlightHost } from '@/components/sat-exam/HighlightPassage';
 
 /** Bản tiếng Anh của `GRID_IN_REASON_LABEL` (dữ liệu gốc ở services/math/grid-in giữ tiếng Việt). */
 const GRID_IN_REASON_EN: Record<keyof typeof GRID_IN_REASON_LABEL, string> = {
@@ -53,6 +56,14 @@ const SURFACE = {
     picked: 'border-brand-mid bg-brand-tint',
     panel: 'border-brand-soft bg-brand-tint',
     hairline: 'border-brand-soft',
+  },
+  /** Phòng thi SAT (`SatExamShell`): mặt trắng, đề bài không nằm trong khối lõm. */
+  exam: {
+    inset: 'bg-[#F6F3EC]',
+    field: 'border-[#B9BFCB] bg-white',
+    picked: 'border-[#0F1D33] bg-white',
+    panel: 'border-[#E4DDCF] bg-[#FBF8F2]',
+    hairline: 'border-[#E4DDCF]',
   },
 } as const;
 
@@ -105,30 +116,46 @@ export function MathQuestionView({
   const locked = !onAnswer;
   const sf = SURFACE[surface];
   const { L } = useL();
+  const exam = surface === 'exam';
+  // Chuỗi thuần của đề, gốc của vị trí tô màu (xem `flattenMath`).
+  const stemTexts = useMemo(() => [flattenMath(item.stem)], [item.stem]);
 
   return (
     <View>
-      <View className="flex-row flex-wrap items-center gap-2">
-        {index !== undefined ? (
-          <Text className="font-strong text-cardTitle text-ink">{L('Câu', 'Question')} {index + 1}</Text>
-        ) : null}
-        <Badge label={MATH_SKILL_LABEL[item.skill]} tone="neutral" shape="tag" />
-        {item.format === 'grid_in' ? (
-          <Badge label={L('Tự điền đáp án', 'Grid-in')} tone="info" shape="tag" />
-        ) : null}
-        {grade && showGrade ? (
-          <Badge
-            label={grade.isCorrect ? L('Đúng', 'Correct') : answer === null ? L('Bỏ trắng', 'Blank') : L('Sai', 'Wrong')}
-            tone={grade.isCorrect ? 'success' : answer === null ? 'neutral' : 'danger'}
-          />
-        ) : null}
-      </View>
+      {/* Phòng thi: số câu đã ở dải đầu câu của khung, không nhắc lại; nhãn kỹ năng chỉ hiện sau khi chấm. */}
+      {exam && !grade ? null : (
+        <View className={`flex-row flex-wrap items-center gap-2 ${exam ? 'mb-3' : ''}`}>
+          {index !== undefined ? (
+            <Text className="font-strong text-cardTitle text-ink">{L('Câu', 'Question')} {index + 1}</Text>
+          ) : null}
+          <Badge label={MATH_SKILL_LABEL[item.skill]} tone="neutral" shape="tag" />
+          {item.format === 'grid_in' ? (
+            <Badge label={L('Tự điền đáp án', 'Grid-in')} tone="info" shape="tag" />
+          ) : null}
+          {grade && showGrade ? (
+            <Badge
+              label={grade.isCorrect ? L('Đúng', 'Correct') : answer === null ? L('Bỏ trắng', 'Blank') : L('Sai', 'Wrong')}
+              tone={grade.isCorrect ? 'success' : answer === null ? 'neutral' : 'danger'}
+            />
+          ) : null}
+        </View>
+      )}
 
-      <View className={`mt-3 rounded-card p-3 ${sf.inset}`}>
-        <MathText size={15} weight="semibold">
-          {item.stem}
-        </MathText>
-      </View>
+      {exam ? (
+        <HighlightHost texts={stemTexts}>
+          {({ marks, openMark }) => (
+            <MathText size={17} weight="semibold" highlight={{ block: 0, marks, onMarkPress: openMark }}>
+              {item.stem}
+            </MathText>
+          )}
+        </HighlightHost>
+      ) : (
+        <View className={`mt-3 rounded-card p-3 ${sf.inset}`}>
+          <MathText size={15} weight="semibold">
+            {item.stem}
+          </MathText>
+        </View>
+      )}
 
       {item.figure ? (
         <View className="mt-3 items-center">
@@ -136,7 +163,27 @@ export function MathQuestionView({
         </View>
       ) : null}
 
-      {item.choices ? (
+      {item.choices && exam ? (
+        <View className="mt-4 gap-2.5">
+          {item.choices.map((choice, choiceIndex) => {
+            const isOut = !revealed && hidden.includes(choiceIndex) && choiceIndex !== item.correctIndex;
+            const selected = answer === String(choiceIndex);
+            return (
+              <ExamOption
+                key={choiceIndex}
+                index={choiceIndex}
+                selected={selected}
+                state={!revealed ? 'idle' : choiceIndex === item.correctIndex ? 'correct' : selected ? 'wrong' : 'idle'}
+                disabled={locked}
+                out={isOut}
+                onPress={() => onAnswer?.(String(choiceIndex))}
+              >
+                <MathText size={16}>{choice.display}</MathText>
+              </ExamOption>
+            );
+          })}
+        </View>
+      ) : item.choices ? (
         <View className="mt-3 gap-2">
           {item.choices.map((choice, choiceIndex) => (
             <ChoiceRow

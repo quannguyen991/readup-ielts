@@ -14,6 +14,7 @@ import { SAT_VOCAB_CATEGORY_LABEL, SAT_VOCAB_CATEGORY_ORDER, SAT_VOCAB_TERMS } f
 import { SAT_RW_LEXICON } from '../sat-rw-lexicon';
 import { THEME_ADDITIONS as ADD_A } from '../sat-rw-lexicon-more-a';
 import { THEME_ADDITIONS as ADD_B } from '../sat-rw-lexicon-more-b';
+import { THEME_ADDITIONS as ADD_C } from '../sat-rw-lexicon-more-c';
 import type { StudyWord } from '@/services/vocab/topic-study';
 
 export type VocabLesson = {
@@ -66,8 +67,8 @@ export const VERBAL_THEMES_BASE: { title: string; blurb: string; words: string[]
   { title: 'Dữ liệu và cụm từ cố định', blurb: 'statistical ↔ anecdotal, consistent with ↔ at odds with', words: ['statistical', 'anecdotal', 'derived from', 'indifferent to', 'consistent with', 'at odds with'] },
 ];
 
-/** Chủ đề đầy đủ: từ gốc + từ bổ sung 30/09/2026 (mỗi chủ đề ≥ 30 từ). */
-export const VERBAL_THEMES = VERBAL_THEMES_BASE.map((t, i) => ({ ...t, words: [...t.words, ...(ADD_A[i] ?? []), ...(ADD_B[i] ?? [])] }));
+/** Chủ đề đầy đủ: từ gốc + từ bổ sung 30/09/2026 (mỗi chủ đề ≥ 30 từ) + từ của bộ câu khó 01/10/2026. */
+export const VERBAL_THEMES = VERBAL_THEMES_BASE.map((t, i) => ({ ...t, words: [...t.words, ...(ADD_A[i] ?? []), ...(ADD_B[i] ?? []), ...(ADD_C[i] ?? [])] }));
 
 const verbalLessons: VocabLesson[] = VERBAL_THEMES.map((theme, i) => ({
   slug: `sat-verbal-bai-${i + 1}`,

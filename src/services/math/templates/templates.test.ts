@@ -10,6 +10,7 @@ import { generateMathItem } from '@/services/math/generator';
 import { fitsGrid } from '@/services/math/grid-in';
 import { MORE_VERIFIERS } from './more.verify';
 import { MORE_ADVANCED_VERIFIERS_2 } from './more-advanced-2.verify';
+import { TIER_VERIFIERS } from './tiers.verify';
 
 /**
  * Property test của bộ sinh đề Math.
@@ -1228,13 +1229,13 @@ const VERIFIERS: Record<string, Verifier> = {
 };
 
 // Bộ kiểm chứng của dạng thứ ba và thứ tư mỗi kỹ năng (`more-*.ts`).
-Object.assign(VERIFIERS, MORE_VERIFIERS, MORE_ADVANCED_VERIFIERS_2);
+Object.assign(VERIFIERS, MORE_VERIFIERS, MORE_ADVANCED_VERIFIERS_2, TIER_VERIFIERS);
 
 // ------------------------------------------------------------ tính chất chung
 
 test('taxonomy 19 kỹ năng đã được phủ hết', () => {
   assert.deepEqual(uncoveredSkills(), [], 'Còn kỹ năng chưa có template.');
-  assert.equal(MATH_TEMPLATES.length, 85);
+  assert.equal(MATH_TEMPLATES.length, 112);
 });
 
 test('mỗi kỹ năng có ít nhất bốn dạng câu, Advanced Math có bảy', () => {
@@ -1251,6 +1252,19 @@ test('mọi template đều có bộ kiểm chứng riêng', () => {
   // đáp án chưa từng được kiểm. Chặn ngay ở đây.
   for (const template of MATH_TEMPLATES) {
     assert.ok(VERIFIERS[template.slug], `Template "${template.slug}" chưa có verifier.`);
+  }
+});
+
+test('mỗi kỹ năng có đủ ba bậc dễ / vừa / khó', () => {
+  // Bộ đề xếp dễ → khó (generateMathSet({ mix })). Kỹ năng thiếu một bậc thì
+  // bộ "Khó" của nó lặng lẽ mượn câu vừa — người học thấy nhãn Khó mà đề dễ.
+  for (const skill of Object.keys(MATH_SKILL_DOMAIN)) {
+    for (const tier of ['easy', 'medium', 'hard'] as const) {
+      assert.ok(
+        MATH_TEMPLATES.some((t) => t.skill === skill && t.difficulty === tier),
+        `${skill} chưa có template bậc ${tier}.`,
+      );
+    }
   }
 });
 

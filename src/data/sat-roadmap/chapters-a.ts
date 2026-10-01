@@ -334,7 +334,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'psda-two-step-percent-change',
         'psda-percent-of-percent',
       ],
-      hard: ['pd-c-compound-two-accounts', 'pd-c-growth-every-k', 'pd-compound-interest'],
+      hard: ['pd-c-compound-two-accounts', 'pd-c-growth-every-k', 'pd-compound-interest', 'hard-percent-reverse-compound'],
     },
     bookSet: [
       { slug: 'pd-c-pct-larger-than', calc: true },
@@ -456,7 +456,7 @@ export const CHAPTERS_A: RoadChapter[] = [
     templates: {
       easy: ['pd-c-linear-model-from-two-points', 'pd-c-scatter-association', 'pd-c-scenario-classify', 'pd-linear-vs-exp-identify', 'alg-linear-fn-rate-change'],
       medium: ['pd-c-exp-model-from-two-points', 'pd-c-exp-model-params', 'pd-c-scenario-pick', 'adv-exponential-growth-value', 'adv-doubling-growth', 'adv-exponential-decay-percent'],
-      hard: ['pd-c-growth-every-k', 'pd-exp-growth-model-hard'],
+      hard: ['pd-c-growth-every-k', 'pd-exp-growth-model-hard', 'hard-exp-from-two-values', 'hard-exp-model-period'],
     },
     bookSet: [
       { slug: 'pd-c-exp-model-from-two-points', calc: false },
@@ -733,6 +733,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'pd-c-unit-chain-max-grid',
         'pd-c-catch-up-grid',
         'pd-rate-combined-work',
+        'hard-ratio-square-units',
       ],
     },
     bookSet: [
@@ -1037,7 +1038,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'pd-isolate-variable',
         'alg-linear-one-var-distribute',
       ],
-      hard: ['pd-c-high-degree-solve', 'pd-c-all-values-identity', 'pd-c-isolate-exponent-base', 'pd-c-half-life-rate-approx', 'alg-linear-one-var-infinite'],
+      hard: ['pd-c-high-degree-solve', 'pd-c-all-values-identity', 'pd-c-isolate-exponent-base', 'pd-c-half-life-rate-approx', 'alg-linear-one-var-infinite', 'hard-lin1-two-fractions'],
     },
     bookSet: [
       { slug: 'pd-c-sum-power-sub', calc: false },
@@ -1307,7 +1308,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'alg-system-substitution-y',
         'alg-systems-ticket-prices',
       ],
-      hard: ['pd-c-sys-infinite-ratio', 'pd-c-sys-radical-grid', 'pd-c-sys-weights-express', 'alg-system-no-solution-k', 'adv-system-linear-quadratic-sum'],
+      hard: ['pd-c-sys-infinite-ratio', 'pd-c-sys-radical-grid', 'pd-c-sys-weights-express', 'alg-system-no-solution-k', 'adv-system-linear-quadratic-sum', 'hard-system-no-solution-product'],
     },
     bookSet: [
       { slug: 'pd-c-sys-substitution-pair', calc: false },
@@ -1443,7 +1444,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'alg-inequality-min-score',
         'alg-budget-max-items-inequality',
       ],
-      hard: ['pd-c-ineq-point-constants', 'pd-c-ineq-system-hours-earnings', 'pd-c-ineq-must-be-true-compound', 'pd-c-ineq-compound-grid'],
+      hard: ['pd-c-ineq-point-constants', 'pd-c-ineq-system-hours-earnings', 'pd-c-ineq-must-be-true-compound', 'pd-c-ineq-compound-grid', 'hard-ineq-compound-count'],
     },
     bookSet: [
       { slug: 'pd-c-ineq-which-solution', calc: true },
@@ -1726,7 +1727,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'alg-linear-fn-two-points',
         'alg-linear-function-table',
       ],
-      hard: ['pd-c-linear-constant-deduce', 'pd-c-perp-slope-range', 'pd-perpendicular-line'],
+      hard: ['pd-c-linear-constant-deduce', 'pd-c-perp-slope-range', 'pd-perpendicular-line', 'hard-two-var-param-slope'],
     },
     bookSet: [
       { slug: 'pd-c-vertical-horizontal-line', calc: false },
@@ -1836,7 +1837,7 @@ export const CHAPTERS_A: RoadChapter[] = [
         'pd-c-model-inverse-change',
         'psda-fit-coefficient-meaning',
       ],
-      hard: ['pd-c-model-time-left', 'pd-c-model-roman', 'pd-model-interpret-hard'],
+      hard: ['pd-c-model-time-left', 'pd-c-model-roman', 'pd-model-interpret-hard', 'hard-linfn-shift-rate'],
     },
     bookSet: [
       { slug: 'pd-c-model-slope-meaning', calc: false },
@@ -1964,7 +1965,7 @@ export const CHAPTERS_A: RoadChapter[] = [
     templates: {
       easy: ['pd-d-fn-table-formula', 'pd-d-fn-piecewise-equal', 'pd-d-fn-eval-rational', 'pd-d-fn-table-scaled-solve', 'pd-d-fn-point-not-on', 'pd-d-fn-sqrt-solve', 'pd-d-fn-table-lookup-back', 'pd-d-fn-linear-fraction-solve', 'adv-evaluate-quadratic'],
       medium: ['pd-d-fn-intersection-count', 'pd-d-fn-level-count', 'pd-d-fn-even-check', 'pd-d-fn-inner-scale', 'pd-d-fn-table-ax2b', 'pd-d-fn-square-below', 'pd-d-fn-compose-quad', 'pd-d-fn-sqrt-diff', 'pd-d-fn-table-compose', 'pd-d-fn-table-inner', 'pd-d-fn-linear-match', 'pd-d-fn-line-shift-xint', 'adv-function-composition'],
-      hard: ['pd-d-fn-intercepts-formula', 'pd-d-fn-level-count-grid', 'pd-d-fn-parabola-distance', 'pd-d-fn-cubic-three', 'pd-d-fn-line-point-a', 'pd-function-undefined-or-inverse'],
+      hard: ['pd-d-fn-intercepts-formula', 'pd-d-fn-level-count-grid', 'pd-d-fn-parabola-distance', 'pd-d-fn-cubic-three', 'pd-d-fn-line-point-a', 'pd-function-undefined-or-inverse', 'hard-transform-vertex'],
     },
     bookSet: [
       { slug: 'pd-d-fn-table-formula', calc: false },

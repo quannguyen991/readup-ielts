@@ -57,7 +57,8 @@ export function SelectionLookup() {
         const text = sel && sel.rangeCount > 0 ? lookupable(sel.toString()) : null;
         const anchor = sel?.anchorNode ?? null;
         const el = anchor instanceof Element ? anchor : anchor?.parentElement;
-        if (!text || !sel || !el || inside(anchor) || el.closest('input, textarea, [contenteditable="true"]')) {
+        // Đoạn văn phòng thi SAT đang bật "Tô & ghi chú": bôi đen là để tô, không phải để tra.
+        if (!text || !sel || !el || inside(anchor) || el.closest('input, textarea, [contenteditable="true"], [data-examhl="on"]')) {
           setPicked(null);
           setOpen(false);
           return;

@@ -1,20 +1,24 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { TaskShell } from '@/components/layout/TaskShell';
-import { QuestionCard } from '@/components/sat-rw/QuestionCard';
+import { RwSolution } from '@/components/sat-rw/QuestionCard';
 import { RuleCheck } from '@/components/sat-rw/RuleCheck';
 import { Badge, Button, PaperCard } from '@/components/ui';
 import { rwSkillLabel } from '@/components/sat-rw/skill-label';
 import { useL } from '@/i18n/useL';
 import { getMixedSet } from '@/services/sat-rw/mixed-sets';
+import { rwDifficulty, type SatRwQuestion } from '@/data/sat-rw-repository';
 import { observeSkill } from '@/store/useMasteryStore';
-import { recordRwAttempt } from '@/store/useSatRwStore';
 import { useStudyStore } from '@/store/useStudyStore';
-import { useGameStore } from '@/store/useGameStore';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
+import { SatExamShell } from '@/components/sat-exam/SatExamShell';
+import { RwPassagePane, RwQuestionPane } from '@/components/sat-exam/RwExamParts';
+import { useRwPractice } from '@/components/sat-rw/useRwPractice';
+
+const NO_QUESTIONS: SatRwQuestion[] = [];
 
 /**
  * Làm một đề trộn SAT Reading & Writing.
@@ -34,30 +38,24 @@ export default function SatRwMixScreen() {
   const set = useMemo(() => (setId ? getMixedSet(setId) : undefined), [setId]);
   const { L, en } = useL();
 
-  const [index, setIndex] = useState(0);
-  const [picked, setPicked] = useState<number | null>(null);
+  const run = useRwPractice(set?.questions ?? NO_QUESTIONS, true);
+  const { index, picked, hidden } = run;
   const [correct, setCorrect] = useState(0);
-  /** Đã hỏi "câu này kiểm luật gì" cho câu hiện tại chưa. */
-  const [ruleAsked, setRuleAsked] = useState(false);
+  /** Câu nào đã trả lời "câu này kiểm luật gì". */
+  const [ruleAsked, setRuleAsked] = useState<Record<number, boolean>>({});
   const [done, setDone] = useState(false);
-  // Phương án Cú đã loại ở câu đang mở.
-  const [hidden, setHidden] = useState<number[]>([]);
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
-  const shownAt = useRef(0);
-  useEffect(() => {
-    shownAt.current = Date.now();
-  }, [index]);
 
-  const open = set?.questions[index];
+  const open = run.question;
   // Gợi ý của Cú: loại bớt hai phương án sai của câu đang mở.
   useOwlHint(
-    open && picked === null && !done
+    open && !run.locked && !done
       ? () => {
           if (hidden.length > 0) return false;
           const wrong = open.options.map((_, i) => i).filter((i) => i !== open.answerIndex);
           const from = index % wrong.length;
-          setHidden([wrong[from]!, wrong[(from + 1) % wrong.length]!]);
+          run.setHidden([wrong[from]!, wrong[(from + 1) % wrong.length]!]);
           return true;
         }
       : null,
@@ -86,25 +84,12 @@ export default function SatRwMixScreen() {
 
   const questions = set.questions;
   const setTitle = en ? `Mixed set ${set.order}` : set.title;
-  const question = questions[index];
-  const answered = picked !== null;
+  const question = run.question;
+  const answered = run.locked;
+  const asked = !!ruleAsked[index];
 
-  const submit = (choice: number) => {
-    if (picked !== null || !question) return;
-    setPicked(choice);
-    if (choice === question.answerIndex) setCorrect((n) => n + 1);
-    recordRwAttempt(question.id, choice === question.answerIndex, Date.now() - shownAt.current);
-    useGameStore.getState().answer(choice === question.answerIndex, 'verbal');
-  };
-
-  const next = () => {
-    if (index + 1 < questions.length) {
-      setIndex(index + 1);
-      setPicked(null);
-      setHidden([]);
-      setRuleAsked(false);
-      return;
-    }
+  const finish = () => {
+    setCorrect(run.finish());
     logQuestions(questions.length);
     setDone(true);
   };
@@ -134,10 +119,8 @@ export default function SatRwMixScreen() {
             label={L('Làm lại đề này', 'Retry this set')}
             iconLeft="refresh"
             onPress={() => {
-              setIndex(0);
-              setPicked(null);
-              setHidden([]);
-              setRuleAsked(false);
+              run.reset();
+              setRuleAsked({});
               setCorrect(0);
               setDone(false);
             }}
@@ -157,36 +140,56 @@ export default function SatRwMixScreen() {
   }
 
   if (!question) return null;
+  const lastQ = index + 1 >= questions.length;
 
   return (
-    <TaskShell tone="paper"
-      backHref="/sat-rw"
-      backLabel={L('Về SAT Verbal', 'Back to SAT Verbal')}
+    <SatExamShell
+      section="rw"
       title={setTitle}
-      subtitle={L('Trộn bốn mảng, như một module thi thu nhỏ', 'All four domains mixed, like a mini test module')}
-      icon="clipboard"
-      right={
-        <View className="rounded-pill bg-white px-3.5 py-1.5">
-          <Text className="font-strong text-label text-paper-ink">
-            {index + 1} / {questions.length} · {L('đúng', 'correct')} {correct}
-          </Text>
-        </View>
-      }
+      band={L('Trộn bốn mảng, như một module thi thu nhỏ', 'All four domains mixed, like a mini test module')}
+      bandRight={L(`Đúng ${run.correctSoFar}`, `${run.correctSoFar} correct`)}
+      timer={{ kind: 'up' }}
+      questionKeys={questions.map((q) => q.id)}
+      index={index}
+      onJump={run.go}
+      difficulty={rwDifficulty(question)}
+      isAnswered={(i) => run.picks[i] !== null}
+      passage={<RwPassagePane item={question} />}
+      topSlot={<BattleStrip />}
+      onBack={() => run.go(index - 1)}
+      onNext={() => (lastQ ? finish() : run.go(index + 1))}
+      nextLabel={lastQ ? L('Xem kết quả', 'See results') : undefined}
+      check={!answered ? { label: L('Kiểm tra', 'Check'), onPress: () => void run.check(), disabled: picked === null } : null}
+      onExit={() => {
+        const answered = run.picks.filter((c) => c !== null).length;
+        if (answered > 0) {
+          run.finish(true);
+          logQuestions(answered);
+        }
+        router.replace('/sat-rw' as never);
+      }}
+      onChoose={answered ? undefined : run.pick}
+      choiceCount={question.options.length}
     >
-      <BattleStrip className="mb-4" />
-      <QuestionCard question={question} picked={picked} onPick={submit} showSolution={ruleAsked} hidden={hidden} />
-
-
       {/*
-        Trục thứ hai của sổ bằng chứng, chen giữa "đã chọn đáp án" và "xem lời
-        giải". Đặt sau lời giải thì vô nghĩa — đáp án đã nằm trên màn hình.
+        Lời giải (và tô đúng/sai) chỉ hiện SAU câu "câu này kiểm luật gì" — hiện
+        trước thì đáp án và tên luật đã nằm sẵn trên màn hình.
       */}
-      {answered && !ruleAsked ? (
+      <RwQuestionPane
+        item={question}
+        picked={picked}
+        onPick={run.pick}
+        locked={answered}
+        answerIndex={answered && asked ? question.answerIndex : undefined}
+        hidden={hidden}
+      />
+
+      {answered && !asked ? (
         <RuleCheck
           questionId={question.id}
           actualSkill={question.skill}
           onPick={(pickedSkill) => {
-            setRuleAsked(true);
+            setRuleAsked((prev) => ({ ...prev, [index]: true }));
             observeSkill({
               skill: { domain: 'sat-verbal', key: question.skill },
               sourceId: question.id,
@@ -199,26 +202,14 @@ export default function SatRwMixScreen() {
         />
       ) : null}
 
-      <View className="mt-4 flex-row flex-wrap items-center gap-2">
-        {answered && ruleAsked ? (
-          <Badge label={rwSkillLabel(question.skill, en)} tone="neutral" />
-        ) : null}
-        <View className="flex-1" />
-        {answered && ruleAsked ? (
-          <Button
-            variant="brand"
-            label={index + 1 < questions.length ? L('Câu tiếp theo', 'Next question') : L('Xem kết quả', 'See results')}
-            iconRight="arrow-right"
-            onPress={next}
-          />
-        ) : (
-          <Text className="font-sans text-label text-paper-muted">
-            {answered
-              ? L('Chọn tên luật ở trên để xem lời giải', 'Name the rule above to see the explanation')
-              : L('Chọn một phương án để tiếp tục', 'Choose an option to continue')}
-          </Text>
-        )}
-      </View>
-    </TaskShell>
+      {answered && asked ? (
+        <>
+          <RwSolution question={question} picked={picked} />
+          <View className="mt-3 flex-row">
+            <Badge label={rwSkillLabel(question.skill, en)} tone="neutral" />
+          </View>
+        </>
+      ) : null}
+    </SatExamShell>
   );
 }

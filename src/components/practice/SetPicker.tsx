@@ -12,6 +12,8 @@ import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
 import { useL } from '@/i18n/useL';
+import { DifficultyTag } from '@/components/ui/DifficultyTag';
+import type { Difficulty } from '@/lib/difficulty';
 
 export type PickerSet = {
   /** Số câu của bộ. */
@@ -24,6 +26,8 @@ export type PickerSet = {
   score?: string;
   /** Ghi chú góc phải, ví dụ "2 lần" hoặc "6/10 câu". */
   note?: string;
+  /** Bậc của bộ — bộ đề xếp từ dễ tới khó, nhãn nằm cạnh tên bộ. */
+  difficulty?: Difficulty;
 };
 
 const SHADOW = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 20px rgba(94, 72, 35,0.08)' } as object;
@@ -124,7 +128,10 @@ export function SetPicker({
                   style={[{ borderWidth: 2, borderColor: isNext ? color.primary : 'transparent' }, SHADOW]}
                 >
                   <View className="flex-row items-center justify-between">
-                    <Text className="font-strong text-bodyLg text-ink">{L(`Bộ đề ${i + 1}`, `Set ${i + 1}`)}</Text>
+                    <View className="min-w-0 flex-1 flex-row flex-wrap items-center gap-2">
+                      <Text className="font-strong text-bodyLg text-ink">{L(`Bộ đề ${i + 1}`, `Set ${i + 1}`)}</Text>
+                      {s.difficulty ? <DifficultyTag level={s.difficulty} /> : null}
+                    </View>
                     {s.done ? (
                       s.ratio !== null && s.ratio >= 0.8 ? (
                         <View aria-hidden>

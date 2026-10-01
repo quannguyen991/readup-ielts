@@ -4,128 +4,120 @@ import { router } from 'expo-router';
 import Svg, { Circle } from 'react-native-svg';
 
 import { Grid } from '@/components/layout/Grid';
-import { LightSweep } from '@/components/layout/LightHero';
-import { Icon, type IconName } from '@/components/ui/Icon';
-import { color } from '@/theme/tokens';
+import { Icon } from '@/components/ui/Icon';
+import { DIFFICULTIES, difficultyLabel, type Difficulty } from '@/lib/difficulty';
 import { useL } from '@/i18n/useL';
 
 /**
  * Ngân hàng câu theo kỹ năng — bố cục chung của trang SAT Math và SAT Verbal.
  *
- * Mỗi mảng đề (domain) là một khối; trong khối, mỗi kỹ năng một thẻ: bên trái
- * là tên và quy mô kho, bên phải là "mình đang ở đâu" (vòng độ chính xác, số
- * câu đúng/sai, đã làm bao nhiêu) và nút Luyện. Quét cả trang là thấy chỗ
- * trống: thẻ nào còn "—" là chỗ chưa đụng tới.
+ * Bố cục "question bank" (người dùng đưa mẫu 01/10/2026, lấy BỐ CỤC, không lấy
+ * màu): mỗi mảng đề là MỘT khung trắng thu gọn được (− / +), tiêu đề ghi tỉ
+ * trọng chính thức của mảng trong đề thật và một viên "đã làm / tổng" ở bên
+ * phải. Trong khung là lưới thẻ kỹ năng, ba thẻ một hàng trên máy tính:
  *
- * TIẾT CHẾ: không hình nền mờ, không chữ in hoa đậm, không nút nổi 3D. Bản đầu
- * có đủ ba thứ đó và trông thô — thẻ dày đặc chi tiết trang trí trong khi thứ
- * người học cần đọc chỉ là một con số và một nút bấm. Màu chỉ dùng cho số liệu
- * (xanh lá đúng, đỏ sai, xanh dương tiến độ).
+ *   trái  — tên kỹ năng, tỉ trọng trong mảng, "N câu" + "M mới" + thời gian
+ *   phải  — vòng % đúng, ✓ đúng / ✗ sai, đã làm / tổng, nút Luyện
+ *
+ * Mọi con số lấy từ kho và lượt làm thật; chưa có thì hiện "—", không bao giờ
+ * hiện 0% thay cho "chưa làm".
+ *
+ * Màu Band 9: giấy kem, chỉ vàng, mực xanh đêm. Xanh lá / đỏ chỉ dùng cho số
+ * đúng / sai.
  */
+
+export const B9 = {
+  navy: '#0F1D33',
+  gold: '#A8843F',
+  goldMid: '#B8955A',
+  goldDeep: '#8F6E36',
+  goldLight: '#E2C88F',
+  goldWash: '#FBF3E2',
+  paper: '#FFFDF8',
+  line: '#E8DCC0',
+  hair: '#F0E6D2',
+  muted: '#6B6250',
+  faint: '#B7AC95',
+  canvas: '#F3EDE1',
+} as const;
 
 const GREEN = '#16A34A';
 const RED = '#E11D48';
-const LINE = '#F2EEE6';
-const SOFT = '#FCFAF7';
-/** Chữ phụ đặt trên nền xanh của app (ngoài thẻ trắng). */
-const ON_CANVAS = '#1E293B';
 
 const cardShadow =
   Platform.OS === 'web'
-    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 6px 20px rgba(15,23,42,0.05)' } as object)
+    ? ({ boxShadow: '0 1px 2px rgba(15,29,51,0.04), 0 8px 22px rgba(94,72,35,0.06)' } as object)
     : { elevation: 2 };
 
-export type BankInfo = {
-  eyebrow: string;
-  title: string;
-  blurb: string;
-  done: number;
-  total: number;
-  icon: IconName;
-  href?: string;
-};
-
 /**
- * Hai thẻ ngân hàng ở đầu trang: thẻ của trang đang mở (viền xanh) và thẻ của
- * môn còn lại (viền xám, có mũi tên, bấm để sang). Cùng chiều cao.
+ * Điều khiển phân đoạn GÓC VUÔNG, nhỏ và trầm — không dùng hàng viên tròn
+ * (người dùng chê "pill chip" 01/10/2026). Đoạn đang chọn tô vàng, còn lại
+ * chữ xanh đêm trên nền trắng, ngăn bằng chỉ kem.
  */
-export function BankHeader({ current, other }: { current: BankInfo; other: BankInfo }) {
+export function Segmented<K extends string>({
+  options,
+  value,
+  onChange,
+  label,
+}: {
+  options: { key: K; label: string }[];
+  value: K;
+  onChange: (key: K) => void;
+  /** Nhãn cho trình đọc màn hình. */
+  label: string;
+}) {
   return (
-    <View className="flex-row flex-wrap items-stretch gap-4">
-      <View style={{ flexGrow: 3, flexShrink: 1, flexBasis: 420, minWidth: 0 }}>
-        <BankCard info={current} active />
-      </View>
-      <View style={{ flexGrow: 2, flexShrink: 1, flexBasis: 300, minWidth: 0 }}>
-        <BankCard info={other} />
-      </View>
-    </View>
-  );
-}
-
-function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }) {
-  const { L, en } = useL();
-  const numLocale = en ? 'en-US' : 'vi-VN';
-  const [hovered, setHovered] = useState(false);
-  const pct = info.total > 0 ? Math.min(1, info.done / info.total) : 0;
-
-  const body = (
     <View
-      className="h-full rounded-[20px] bg-surface px-6 py-5"
-      style={[
-        cardShadow,
-        {
-          borderWidth: active ? 1.5 : 1,
-          borderColor: active ? '#E9CE9F' : hovered ? '#E1D9CB' : LINE,
-        },
-      ]}
+      accessibilityRole="radiogroup"
+      accessibilityLabel={label}
+      style={{ flexDirection: 'row', alignSelf: 'flex-start', borderRadius: 6, borderWidth: 1, borderColor: B9.line, backgroundColor: '#FFFFFF', overflow: 'hidden' }}
     >
-      <View className="flex-row items-center justify-between gap-3">
-        <View className="flex-row items-center gap-2.5">
-          <View
-            className="h-9 w-9 items-center justify-center rounded-xl"
-            style={{ backgroundColor: active ? '#FBF6EE' : SOFT }}
+      {options.map((o, i) => {
+        const on = o.key === value;
+        return (
+          <Pressable
+            key={o.key}
+            accessibilityRole="radio"
+            accessibilityLabel={o.label}
+            aria-checked={on}
+            onPress={() => onChange(o.key)}
+            style={{
+              paddingHorizontal: 11,
+              paddingVertical: 6,
+              borderLeftWidth: i === 0 ? 0 : 1,
+              borderColor: B9.line,
+              backgroundColor: on ? B9.gold : 'transparent',
+            }}
           >
-            <Icon name={info.icon} size={18} color={active ? color.primary : color.muted} strokeWidth={2} />
-          </View>
-          <Text className="font-semi text-label text-muted">{info.eyebrow}</Text>
-        </View>
-        {info.href ? <Icon name="arrow-right" size={18} color={hovered ? color.primary : color.muted} /> : null}
-      </View>
-
-      <Text className="mt-3 font-strong text-[22px] leading-7 text-ink">{info.title}</Text>
-      <Text className="mt-1 font-sans text-body text-muted" numberOfLines={2}>
-        {info.blurb}
-      </Text>
-
-      <View className="mt-5 flex-row items-baseline justify-between">
-        <Text className="font-sans text-body text-muted">
-          <Text className="font-strong text-ink">{info.done.toLocaleString(numLocale)}</Text> /{' '}
-          {info.total.toLocaleString(numLocale)} {L('câu', 'questions')}
-        </Text>
-        <Text className="font-semi text-label text-muted">{Math.round(pct * 100)}%</Text>
-      </View>
-      <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F7F4EE' }}>
-        <View className="h-1.5 rounded-pill bg-primary-500" style={{ width: `${Math.max(pct * 100, pct > 0 ? 2 : 0)}%` }} />
-      </View>
+            <Text className={on ? 'font-strong' : 'font-semi'} style={{ fontSize: 13, lineHeight: 17, color: on ? '#FFFFFF' : B9.navy }}>
+              {o.label}
+            </Text>
+          </Pressable>
+        );
+      })}
     </View>
-  );
-
-  if (!info.href) return body;
-  return (
-    <Pressable
-      accessibilityRole="link"
-      accessibilityLabel={L(`Sang ${info.title}`, `Go to ${info.title}`)}
-      onPress={() => router.push(info.href as never)}
-      onHoverIn={() => setHovered(true)}
-      onHoverOut={() => setHovered(false)}
-      className="h-full"
-    >
-      {body}
-    </Pressable>
   );
 }
 
-/** Một mảng đề: tiêu đề, tỉ trọng trong đề thật, tổng đã làm, và lưới thẻ kỹ năng. Thu gọn được. */
+/** Bộ lọc độ khó của ngân hàng; nút Luyện của mọi thẻ tôn trọng lựa chọn này. */
+export type DifficultyFilterValue = Difficulty | 'all';
+
+export function DifficultyFilter({ value, onChange }: { value: DifficultyFilterValue; onChange: (v: DifficultyFilterValue) => void }) {
+  const { L, en } = useL();
+  return (
+    <Segmented
+      label={L('Độ khó', 'Difficulty')}
+      value={value}
+      onChange={onChange}
+      options={[
+        { key: 'all' as DifficultyFilterValue, label: L('Mọi mức', 'All levels') },
+        ...DIFFICULTIES.map((d) => ({ key: d as DifficultyFilterValue, label: difficultyLabel(d, en) })),
+      ]}
+    />
+  );
+}
+
+/** Một mảng đề: khung trắng, thu gọn được, tiêu đề + tỉ trọng + viên "đã làm / tổng". */
 export function DomainSection({
   title,
   subtitle,
@@ -134,6 +126,7 @@ export function DomainSection({
   children,
 }: {
   title: string;
+  /** Tỉ trọng của mảng, ví dụ "35% Math". */
   subtitle: string;
   done: number;
   total: number;
@@ -142,32 +135,41 @@ export function DomainSection({
   const { L } = useL();
   const [open, setOpen] = useState(true);
   return (
-    <View className="mt-8">
+    <View className="mt-4 overflow-hidden" style={[{ borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: B9.hair }, cardShadow]}>
       <Pressable
         accessibilityRole="button"
         aria-expanded={open}
         accessibilityLabel={open ? L(`Thu gọn ${title}`, `Collapse ${title}`) : L(`Mở ${title}`, `Expand ${title}`)}
         onPress={() => setOpen((v) => !v)}
         className="flex-row items-center gap-3"
+        style={{ paddingHorizontal: 16, paddingVertical: 12 }}
       >
-        <View style={{ transform: [{ rotate: open ? '0deg' : '-90deg' }] }}>
-          <Icon name="chevron-down" size={20} color={color.muted} />
-        </View>
-        <View className="min-w-0 flex-1">
-          <Text className="font-strong text-[21px] leading-7 text-ink">{title}</Text>
-          {/* Chữ ở đây nằm TRỰC TIẾP trên nền xanh của app, không trong thẻ
-              trắng: `text-muted` trên nền ấy chỉ còn tỉ lệ tương phản 2,1. */}
-          <Text className="font-sans text-body" style={{ color: ON_CANVAS }}>
-            {subtitle}
+        <View
+          aria-hidden
+          style={{ width: 22, height: 22, borderRadius: 4, borderWidth: 1, borderColor: B9.line, alignItems: 'center', justifyContent: 'center' }}
+        >
+          <Text className="font-heavy" style={{ fontSize: 15, lineHeight: 17, color: B9.navy }}>
+            {open ? '−' : '+'}
           </Text>
         </View>
-        <Text className="font-sans text-body" style={{ color: ON_CANVAS }}>
-          <Text className="font-strong text-ink">{done}</Text> / {total}
+        <Text className="min-w-0 flex-1" style={{ fontSize: 17, lineHeight: 23 }}>
+          <Text className="font-heavy" style={{ color: B9.navy }}>
+            {title}
+          </Text>
+          <Text className="font-sans" style={{ color: B9.muted, fontSize: 14 }}>
+            {'  ·  '}
+            {subtitle}
+          </Text>
         </Text>
+        <View style={{ borderRadius: 6, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: B9.paper, borderWidth: 1, borderColor: B9.line }}>
+          <Text className="font-semi" style={{ fontSize: 13, color: B9.navy }}>
+            <Text className="font-heavy">{done}</Text>/{total}
+          </Text>
+        </View>
       </Pressable>
       {open ? (
-        <View className="mt-4">
-          <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>
+        <View style={{ borderTopWidth: 1, borderColor: B9.hair, padding: 14, backgroundColor: B9.paper }}>
+          <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
             {children}
           </Grid>
         </View>
@@ -179,6 +181,8 @@ export function DomainSection({
 export type SkillCardProps = {
   title: string;
   subtitle: string;
+  /** Tỉ trọng của kỹ năng trong mảng, ví dụ "20% Algebra". null = không hiện. */
+  share: string | null;
   /** Số câu trong kho của kỹ năng này. */
   bank: number;
   answered: number;
@@ -186,89 +190,113 @@ export type SkillCardProps = {
   wrong: number;
   /** null = chưa làm câu nào. */
   accuracy: number | null;
+  /** Tổng thời gian đã làm, ms. 0 khi chưa có lượt nào — thẻ hiện "—". */
   totalMs: number;
-  /** Dòng nhỏ cạnh cỡ kho, ví dụ "Lượt 2/7 · 10 câu". */
-  meta?: string;
+  /** Đích của nút Luyện (đã tính theo bộ lọc độ khó). */
   href: string;
-  /** Giữ để hai trang gọi như cũ; thẻ không còn vẽ biểu tượng nền. */
-  icon?: IconName;
-  /** Thứ tự thẻ trong lưới — lệch nhịp dải sáng để nó chạy thành làn sóng. */
-  index?: number;
 };
 
 /** Cả thẻ bấm được — không bắt người học ngắm trúng một nút nhỏ ở góc. */
 export function SkillCard(p: SkillCardProps) {
   const { L } = useL();
   const [hovered, setHovered] = useState(false);
+  const fresh = Math.max(0, p.bank - p.answered);
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={L(`Luyện ${p.title}`, `Practice ${p.title}`)}
+      accessibilityLabel={L(`Luyện ${p.title}`, `Practise ${p.title}`)}
       onPress={() => router.push(p.href as never)}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
-      className="h-full flex-row overflow-hidden rounded-[18px] bg-surface"
-      style={[cardShadow, { borderWidth: 1, borderColor: hovered ? '#EEE0C9' : LINE, minHeight: 188 }]}
+      className="h-full flex-row overflow-hidden"
+      style={{ borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: hovered ? B9.goldLight : B9.hair, minHeight: 176 }}
     >
-      <View className="min-w-0 flex-1 justify-between p-5">
+      <View className="min-w-0 flex-1 justify-between" style={{ padding: 16 }}>
         <View>
-          <Text className="font-semi text-[17px] leading-6 text-ink">{p.title}</Text>
-          <Text className="mt-1 font-sans text-[14px] leading-5 text-muted">{p.subtitle}</Text>
+          <Text className="font-strong" style={{ fontSize: 16, lineHeight: 22, color: B9.navy }}>
+            {p.title}
+          </Text>
+          {p.subtitle ? (
+            <Text className="mt-0.5 font-sans" style={{ fontSize: 13, lineHeight: 18, color: B9.muted }}>
+              {p.subtitle}
+            </Text>
+          ) : null}
+          {p.share ? (
+            <Text className="mt-1.5 font-semi" style={{ fontSize: 13, color: B9.goldDeep }}>
+              {p.share}
+            </Text>
+          ) : null}
         </View>
-        {p.meta ? <Text className="mt-3 font-semi text-[13px] text-primary-600">{p.meta}</Text> : null}
-        <View className="mt-2 flex-row items-center gap-4">
-          <Text className="font-sans text-[14px] text-muted">{L(`${p.bank} câu`, `${p.bank} questions`)}</Text>
+        <View className="mt-3 flex-row flex-wrap items-center" style={{ columnGap: 10, rowGap: 4 }}>
+          <Text className="font-sans" style={{ fontSize: 13, color: B9.muted }}>
+            {L(`${p.bank} câu`, `${p.bank} Qs`)}
+          </Text>
+          {fresh > 0 ? (
+            <View style={{ borderRadius: 999, paddingHorizontal: 7, paddingVertical: 1, backgroundColor: B9.goldWash, borderWidth: 1, borderColor: B9.goldLight }}>
+              <Text className="font-semi" style={{ fontSize: 12, color: B9.goldDeep }}>
+                {L(`${fresh} mới`, `${fresh} new`)}
+              </Text>
+            </View>
+          ) : null}
           <View className="flex-row items-center gap-1">
-            <Icon name="clock" size={14} color={color.subtle} />
-            <Text className="font-sans text-[14px] text-muted">{formatDuration(p.totalMs)}</Text>
+            <Icon name="clock" size={13} color={B9.faint} />
+            <Text className="font-sans" style={{ fontSize: 13, color: B9.muted }}>
+              {p.totalMs > 0 ? formatDuration(p.totalMs) : '—'}
+            </Text>
           </View>
         </View>
       </View>
 
       <View
-        className="w-[132px] items-center justify-between px-3 py-4"
-        style={{ backgroundColor: SOFT, borderLeftWidth: 1, borderLeftColor: LINE }}
+        className="items-center justify-between"
+        style={{ width: 118, paddingHorizontal: 10, paddingVertical: 12, backgroundColor: B9.paper, borderLeftWidth: 1, borderLeftColor: B9.hair }}
       >
         <Ring accuracy={p.accuracy} />
-        <View className="flex-row items-center gap-3">
-          <Count value={p.correct} tone={GREEN} label={L('câu đúng', 'correct')} />
-          <Count value={p.wrong} tone={RED} label={L('câu sai', 'wrong')} />
+        <View className="flex-row items-center gap-2.5">
+          <Count value={p.correct} tone={GREEN} mark="✓" label={L('câu đúng', 'correct')} />
+          <Count value={p.wrong} tone={RED} mark="✗" label={L('câu sai', 'wrong')} />
         </View>
-        <Text className="font-sans text-[13px] text-muted">
-          <Text className="font-semi text-ink">{p.answered}</Text> / {p.bank}
+        <Text className="font-sans" style={{ fontSize: 12, color: B9.muted }}>
+          <Text className="font-semi" style={{ color: B9.navy }}>
+            {p.answered}
+          </Text>
+          /{p.bank}
         </Text>
-        <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#A8843F' : color.primary }}>
-          <Text className="font-semi text-[14px] text-white">{L('Luyện', 'Practice')}</Text>
+        <View className="w-full items-center" style={{ borderRadius: 10, paddingVertical: 7, backgroundColor: hovered ? B9.gold : B9.navy }}>
+          <Text className="font-semi" style={{ fontSize: 14, color: '#FFFFFF' }}>
+            {L('Luyện', 'Practise')}
+          </Text>
         </View>
       </View>
-      {/* Ánh sáng lướt qua, lệch nhịp theo vị trí thẻ nên chạy thành làn sóng
-          qua cả lưới. Ánh xanh nhạt chứ không trắng: thẻ nền trắng. */}
-      <LightSweep band={150} pause={6500} duration={1300} offset={(p.index ?? 0) * 240} strength={0.6} tint="147,180,245" />
     </Pressable>
   );
 }
 
-function Count({ value, tone, label }: { value: number; tone: string; label: string }) {
+function Count({ value, tone, mark, label }: { value: number; tone: string; mark: string; label: string }) {
   return (
-    <View accessibilityLabel={`${value} ${label}`} className="flex-row items-center gap-1.5">
-      <View className="h-2 w-2 rounded-pill" style={{ backgroundColor: tone }} />
-      <Text className="font-semi text-[14px] text-ink">{value}</Text>
+    <View accessibilityLabel={`${value} ${label}`} className="flex-row items-center gap-1">
+      <Text className="font-heavy" style={{ fontSize: 13, color: tone }}>
+        {mark}
+      </Text>
+      <Text className="font-semi" style={{ fontSize: 13, color: B9.navy }}>
+        {value}
+      </Text>
     </View>
   );
 }
 
 /** Vòng độ chính xác. Chưa làm câu nào thì hiện "—", không phải "0%": chưa làm khác làm sai hết. */
 function Ring({ accuracy }: { accuracy: number | null }) {
-  const size = 58;
+  const size = 56;
   const stroke = 4;
   const r = (size - stroke) / 2;
   const c = 2 * Math.PI * r;
   const pct = accuracy ?? 0;
-  const tone = accuracy === null ? color.muted : pct >= 0.8 ? GREEN : pct >= 0.5 ? '#D97706' : RED;
+  const tone = accuracy === null ? B9.faint : pct >= 0.8 ? GREEN : pct >= 0.5 ? B9.gold : RED;
   return (
     <View style={{ width: size, height: size }} className="items-center justify-center">
       <Svg width={size} height={size} style={{ position: 'absolute' }}>
-        <Circle cx={size / 2} cy={size / 2} r={r} stroke="#F2EEE6" strokeWidth={stroke} fill="none" />
+        <Circle cx={size / 2} cy={size / 2} r={r} stroke={B9.hair} strokeWidth={stroke} fill="none" />
         {accuracy !== null && pct > 0 ? (
           <Circle
             cx={size / 2}
@@ -283,7 +311,7 @@ function Ring({ accuracy }: { accuracy: number | null }) {
           />
         ) : null}
       </Svg>
-      <Text className="font-semi text-[14px]" style={{ color: accuracy === null ? color.subtle : tone }}>
+      <Text className="font-semi" style={{ fontSize: 14, color: accuracy === null ? B9.faint : B9.navy }}>
         {accuracy === null ? '—' : `${Math.round(pct * 100)}%`}
       </Text>
     </View>

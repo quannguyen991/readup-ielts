@@ -9,7 +9,7 @@ import { MathRunner } from '@/components/math/MathRunner';
 import { Button, Card } from '@/components/ui';
 import { SetPicker, type PickerSet } from '@/components/practice/SetPicker';
 import { MATH_DOMAIN_LABEL, MATH_SKILL_DOMAIN, MATH_SKILL_LABEL, type MathSkill } from '@/lib/math/types';
-import { ROUND_SIZE, bankProgress, bankRoundId, bankRoundItems, roundLength, roundsFor } from '@/services/math/bank';
+import { ROUND_SIZE, bankProgress, bankRoundId, bankRoundItems, roundLength, roundTier, roundsFor } from '@/services/math/bank';
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
 import { useMathBankProgress, useMathSetProgress, useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -48,6 +48,7 @@ function MathSetPicker({ skill }: { skill: MathSkill }) {
       ratio: p ? p.bestRatio : null,
       score: p ? `${Math.round(p.bestRatio * n)}/${n}` : undefined,
       note: p ? L(`${p.rounds} lần`, `${p.rounds}×`) : undefined,
+      difficulty: roundTier(skill, r),
     };
   });
   return (

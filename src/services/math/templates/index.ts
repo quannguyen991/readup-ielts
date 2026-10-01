@@ -11,6 +11,7 @@ import { PANDA_A_TEMPLATES } from './panda-a';
 import { PANDA_B_TEMPLATES } from './panda-b';
 import { PANDA_C_TEMPLATES } from './panda-c';
 import { PANDA_D_TEMPLATES } from './panda-d';
+import { EASY_TEMPLATES, HARD_TEMPLATES } from './tiers';
 import { MATH_SKILL_DOMAIN } from '@/lib/math/types';
 import type { MathDomain, MathSkill, MathTemplate } from '@/lib/math/types';
 
@@ -44,6 +45,9 @@ export const MATH_TEMPLATES: readonly MathTemplate[] = [
   ...MORE_ADVANCED_TEMPLATES_2,
   ...MORE_DATA_TEMPLATES,
   ...MORE_GEOMETRY_TEMPLATES,
+  // Bậc khó và bậc dễ còn thiếu (01/10/2026) — mỗi kỹ năng đủ dễ / vừa / khó.
+  ...HARD_TEMPLATES,
+  ...EASY_TEMPLATES,
 ];
 
 /**

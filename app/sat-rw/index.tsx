@@ -4,8 +4,11 @@ import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { BankHeader, DomainSection, SkillCard } from '@/components/practice/SkillBank';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { DifficultyFilter, DomainSection, Segmented, SkillCard, type DifficultyFilterValue } from '@/components/practice/SkillBank';
+import { HubLinkRow, HubTitle, HubToolbar } from '@/components/sat-hub/SatHub';
+import { DifficultyTag } from '@/components/ui/DifficultyTag';
+import { RW_HUB_LINKS } from '@/navigation/sat-hub';
+import { rwSetForTier } from '@/services/sat-rw/skill-sets';
 import { CrossFade } from '@/components/motion/Motion';
 import {
   SAT_RW_STAGES,
@@ -17,11 +20,9 @@ import {
   mixedSetStats,
 } from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, Icon, IconCircle } from '@/components/ui';
-import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS, SAT_RW_UNITS } from '@/data/sat-rw-repository';
-import { MATH_BANK_TOTAL, mathBankDone } from '@/services/math/bank';
+import { Badge, Card, Icon, IconCircle } from '@/components/ui';
+import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
 import { summarizeRwBySkill } from '@/services/sat-rw/progress';
-import { useMathBankProgress } from '@/store/useMathStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
@@ -50,14 +51,16 @@ const SKILL_NAME: Record<string, { en: string; vi: string; descEn: string }> = {
 const SKILL_DOMAIN: Record<string, string> = Object.fromEntries(SAT_RW_QUESTIONS.map((q) => [q.skill, q.domain]));
 const SKILLS_IN_ORDER = Object.keys(SKILL_NAME).filter((k) => SKILL_DOMAIN[k]);
 
-type Tab = 'skills' | 'mix' | 'units';
+type Tab = 'skills' | 'mix' | 'units' | 'score';
 
 /**
- * Hub SAT Reading & Writing — cùng bố cục với trang SAT Math.
+ * Hub SAT Reading & Writing — cùng bố cục với trang SAT Math (01/10/2026): tên
+ * trang, một hàng liên kết nhỏ, MỘT thanh công cụ mảnh (chế độ xem + độ khó),
+ * rồi vào thẳng ngân hàng câu. Bốn bước đầy đủ nằm ở `/sat`.
  *
- * Mặc định là tab KỸ NĂNG: bốn mảng của đề thật, mỗi kỹ năng một thẻ kèm độ
- * chính xác và số câu đã làm. Đề trộn và lộ trình theo unit vẫn còn nguyên, ở
- * hai tab bên cạnh.
+ * Mặc định là tab KỸ NĂNG (bố cục "ngân hàng câu"): bốn mảng của đề thật, mỗi
+ * kỹ năng một thẻ kèm độ chính xác và số câu đã làm; bộ lọc Dễ / Vừa / Khó
+ * quyết định nút Luyện mở bộ nào. Đề trộn và lộ trình theo bài ở tab bên cạnh.
  *
  * Tỷ trọng ghi trên mỗi mảng là tỷ trọng CỦA ĐỀ THẬT, không phải tỷ lệ câu
  * trong kho này — hai con số khác nhau và nói hai chuyện khác nhau.
@@ -67,72 +70,34 @@ export default function SatRwHubScreen() {
   const { L, en } = useL();
   const attempts = useSatRwStore((s) => s.attempts);
   const progress = useMemo(() => summarizeRwBySkill(SAT_RW_QUESTIONS, attempts), [attempts]);
-  const mathBank = useMathBankProgress();
   const mixStats = useMemo(() => mixedSetStats(), []);
+  const [level, setLevel] = useState<DifficultyFilterValue>('all');
+
+  const hrefFor = (skill: string) => {
+    if (level === 'all') return `/sat-rw/skill/${skill}`;
+    const i = rwSetForTier(skill, level, (id) => !!attempts[id]);
+    return i === null ? `/sat-rw/skill/${skill}` : `/sat-rw/skill/${skill}?set=${i}`;
+  };
 
   return (
     <Screen>
-      <LightHero
-        scene="verbal"
-        badge="DIGITAL SAT · READING & WRITING"
-        line1="SAT Verbal"
-        line2={L('luyện đúng luật đề', 'practice by the real rules')}
-        subtitle={L(
-          `${SAT_RW_QUESTIONS.length} câu phủ đủ bốn mảng của đề Digital SAT, xếp thành ${SAT_RW_UNITS.length} unit theo từng luật một. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.`,
-          `${SAT_RW_QUESTIONS.length} questions covering all four Digital SAT domains, grouped into ${SAT_RW_UNITS.length} units, one rule at a time. Every question has a Vietnamese explanation of why the other three options are wrong.`,
-        )}
-        footer={
-          <>
-            <HeroStat value={String(Object.keys(attempts).length)} label={L('câu đã làm', 'answered')} />
-            <HeroStat value={String(SAT_RW_UNITS.length)} label="unit" />
-            <HeroStat value={String(SAT_RW_DOMAINS.length)} label={L('mảng đề', 'domains')} />
-          </>
-        }
-      >
-        <Button
-          label={L('Làm đề trộn', 'Take a mixed set')}
-          variant="brand"
-          size="lg"
-          iconRight="arrow-right"
-          onPress={() => router.push(`/sat-rw/mix/${SAT_RW_MIXED_SETS[0]!.id}` as never)}
+      <HubTitle eyebrow="DIGITAL SAT" title="SAT Verbal" line={L('Reading & Writing, mỗi kỹ năng đi Dễ → Khó.', 'Reading & Writing, each skill Easy → Hard.')} />
+      <HubLinkRow links={RW_HUB_LINKS} />
+
+      <HubToolbar>
+        <Segmented
+          label={L('Chế độ', 'View')}
+          value={tab}
+          onChange={setTab}
+          options={[
+            { key: 'skills', label: L('Kỹ năng', 'Skills') },
+            { key: 'mix', label: L(`Đề trộn · ${mixStats.sets}`, `Mixed · ${mixStats.sets}`) },
+            { key: 'units', label: L('Theo bài', 'By unit') },
+            { key: 'score', label: L('Dự đoán', 'Estimate') },
+          ]}
         />
-        <Button label={L('Bắt đầu unit 1', 'Start unit 1')} variant="outline" size="lg" onPress={() => router.push('/sat-rw/1' as never)} />
-        <Button label={L('Bài học lý thuyết', 'Theory lessons')} variant="outline" size="lg" iconLeft="book" onPress={() => router.push('/sat-rw/learn' as never)} />
-        <Button label={L('Bài từ vựng', 'Vocabulary lessons')} variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/sat-rw/learn?tab=vocab' as never)} />
-      </LightHero>
-
-      <View className="mt-5">
-        <ScorePredictionCard section="verbal" />
-      </View>
-      <View className="mt-5" />
-      <BankHeader
-        current={{
-          eyebrow: 'Verbal',
-          title: L('Ngân hàng SAT Verbal', 'SAT Verbal bank'),
-          blurb: L(
-            'Reading & Writing của đề Digital SAT. Mỗi câu có lời giải tiếng Việt nói rõ vì sao ba phương án kia sai.',
-            'Digital SAT Reading & Writing. Every question has a Vietnamese explanation of why the other three options are wrong.',
-          ),
-          done: Object.keys(attempts).length,
-          total: SAT_RW_QUESTIONS.length,
-          icon: 'letters',
-        }}
-        other={{
-          eyebrow: 'Math',
-          title: L('Ngân hàng SAT Math', 'SAT Math bank'),
-          blurb: L('19 kỹ năng, đề sinh mới mỗi lượt.', '19 skills, fresh questions every round.'),
-          done: mathBankDone(mathBank),
-          total: MATH_BANK_TOTAL,
-          icon: 'grid',
-          href: '/math',
-        }}
-      />
-
-      <View className="mt-6 flex-row flex-wrap gap-2">
-        <TabPill label={L('Kỹ năng', 'Skills')} active={tab === 'skills'} onPress={() => setTab('skills')} />
-        <TabPill label={L(`Đề trộn · ${mixStats.sets}`, `Mixed sets · ${mixStats.sets}`)} active={tab === 'mix'} onPress={() => setTab('mix')} />
-        <TabPill label={L('Học theo unit', 'By unit')} active={tab === 'units'} onPress={() => setTab('units')} />
-      </View>
+        {tab === 'skills' ? <DifficultyFilter value={level} onChange={setLevel} /> : null}
+      </HubToolbar>
 
       <CrossFade swapKey={tab}>
         {tab === 'skills' ? (
@@ -141,34 +106,37 @@ export default function SatRwHubScreen() {
               const skills = SKILLS_IN_ORDER.filter((k) => SKILL_DOMAIN[k] === d.key);
               const done = skills.reduce((sum, k) => sum + (progress[k]?.answered ?? 0), 0);
               const total = skills.reduce((sum, k) => sum + (progress[k]?.bank ?? 0), 0);
+              const pct = d.percent.replace('~', '');
               return (
-                <DomainSection key={d.key} title={d.key} subtitle={L(`${d.percent} đề SAT Verbal · ${d.labelVi}`, `${d.percent} of SAT Verbal`)} done={done} total={total}>
-                  {skills.map((k, i) => {
+                <DomainSection key={d.key} title={en ? d.key : d.labelVi} subtitle={L(`${pct} đề Verbal`, `${pct} of Verbal`)} done={done} total={total}>
+                  {skills.map((k) => {
                     const p = progress[k]!;
+                    const share = total > 0 ? Math.round((p.bank / total) * 100) : 0;
                     return (
                       <SkillCard
                         key={k}
-                        index={i}
                         title={SKILL_NAME[k]!.en}
                         subtitle={en ? SKILL_NAME[k]!.descEn : SKILL_NAME[k]!.vi}
+                        share={skills.length > 1 ? L(`${share}% ${d.labelVi}`, `${share}% of ${d.key}`) : null}
                         bank={p.bank}
                         answered={p.answered}
                         correct={p.correct}
                         wrong={p.wrong}
                         accuracy={p.accuracy}
                         totalMs={p.totalMs}
-                        meta={L(
-                          `Lượt ${Math.min(Math.floor(p.answered / 10) + 1, Math.ceil(p.bank / 10))}/${Math.ceil(p.bank / 10)} · 10 câu`,
-                          `Round ${Math.min(Math.floor(p.answered / 10) + 1, Math.ceil(p.bank / 10))}/${Math.ceil(p.bank / 10)} · 10 questions`,
-                        )}
-                        href={`/sat-rw/skill/${k}`}
-                        icon="letters"
+                        href={hrefFor(k)}
                       />
                     );
                   })}
                 </DomainSection>
               );
             })}
+          </View>
+        ) : null}
+
+        {tab === 'score' ? (
+          <View className="mt-4">
+            <ScorePredictionCard section="verbal" />
           </View>
         ) : null}
 
@@ -322,19 +290,6 @@ function MixTile({
   );
 }
 
-function TabPill({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      aria-selected={active}
-      onPress={onPress}
-      className={['rounded-pill border px-5 py-2.5', active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface'].join(' ')}
-    >
-      <Text className={active ? 'font-strong text-body text-white' : 'font-semi text-body text-muted'}>{label}</Text>
-    </Pressable>
-  );
-}
-
 /**
  * Một bài học trong lộ trình: bẫy trung tâm ở trên, ba bốn bộ đề ở dưới.
  *
@@ -382,7 +337,10 @@ function CurriculumUnitCard({
                 }`}
                 style={({ pressed }) => (pressed ? { opacity: 0.92 } : undefined)}
               >
-                <Text className="font-strong text-label text-ink">{setTitleEn(set, en)}</Text>
+                <View className="flex-row items-center gap-1.5">
+                  <Text className="font-strong text-label text-ink">{setTitleEn(set, en)}</Text>
+                  {set.difficulty !== 'mixed' ? <DifficultyTag level={set.difficulty} /> : null}
+                </View>
                 <Text className="mt-0.5 font-sans text-label text-muted">
                   {L(`${set.count} câu · ${set.minutes} phút`, `${set.count} questions · ${set.minutes} min`)}
                   {set.instantSolution ? '' : L(' · không lời giải', ' · no explanations')}
@@ -415,6 +373,7 @@ const GENERATED_SET_EN: Record<number, string> = {
 };
 function setTitleEn(set: SatRwCurriculumUnit['sets'][number], en: boolean): string {
   if (!en) return set.title;
+  if (set.difficulty === 'hard') return 'Hard challenge';
   if (set.kind === 'learn') return 'Get familiar';
   if (set.kind === 'drill') return 'Drill';
   if (set.kind === 'checkpoint') return 'Skill checkpoint';

@@ -99,13 +99,16 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'grid',
         inBottomTabs: true,
         children: [
+          /*
+            Bốn trang con (01/10/2026, "nhiều tác vụ quá, người ta rối"). Bài
+            học, lộ trình 27 chương, kiến thức SAT, chẩn đoán, thi thử Math vẫn
+            còn nguyên — chúng nằm trong bốn bước của trang Tổng quan và trong
+            khung Học → Luyện → Kiểm tra của hai hub (`navigation/sat-hub.ts`).
+          */
+          { key: 'sat-home', label: 'Tổng quan SAT', href: '/sat', icon: 'compass' },
           { key: 'math', label: 'SAT Math', href: '/math', icon: 'grid' },
-          { key: 'math-learn', label: 'Bài học SAT Math', href: '/math/learn', icon: 'book' },
-          { key: 'sat-roadmap', label: 'Lộ trình SAT Math', href: '/sat/lo-trinh', icon: 'compass' },
-          { key: 'sat-knowledge', label: 'Kiến thức SAT', href: '/sat/kien-thuc', icon: 'book' },
           { key: 'sat-rw', label: 'SAT Verbal', href: '/sat-rw', icon: 'letters' },
-          { key: 'sat-rw-learn', label: 'Bài học SAT Verbal', href: '/sat-rw/learn', icon: 'book' },
-          { key: 'sat-full-test', label: 'Thi thử SAT đầy đủ', href: '/sat/full-test', icon: 'clock' },
+          { key: 'sat-full-test', label: 'Thi thử SAT', href: '/sat/full-test', icon: 'clock' },
         ],
       },
       {
@@ -197,7 +200,9 @@ export function activeNavKey(pathname: string): string | null {
   let best: NavItem | null = null;
   for (const item of [...NAV_ITEMS, ...ADMIN_GROUP.items]) {
     if (pathname === item.href || pathname.startsWith(`${item.href}/`)) {
-      if (!best || item.href.length > best.href.length) best = item;
+      // Hoà độ dài thì lấy mục ĐỨNG SAU — tức trang con "Tổng quan SAT" thắng
+      // mục cha cùng đường dẫn `/sat`, để dòng trang con được tô sáng.
+      if (!best || item.href.length >= best.href.length) best = item;
     }
   }
   return best?.key ?? null;
@@ -247,13 +252,10 @@ export const NAV_LABEL_EN: Record<string, string> = {
   shadow: 'VOA shadowing',
   speaking: 'Speaking room',
   sat: 'SAT',
+  'sat-home': 'SAT overview',
   math: 'SAT Math',
-  'math-learn': 'SAT Math lessons',
-  'sat-roadmap': 'SAT Math roadmap',
-  'sat-knowledge': 'SAT knowledge',
   'sat-rw': 'SAT Verbal',
-  'sat-rw-learn': 'SAT Verbal lessons',
-  'sat-full-test': 'Full SAT practice test',
+  'sat-full-test': 'SAT practice test',
   vocabulary: 'Vocabulary',
   'vocab-book': 'Word book',
   'vocab-topics': 'IELTS topics',

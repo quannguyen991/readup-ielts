@@ -1,6 +1,7 @@
 import { MATH_TEMPLATES, getTemplate } from './templates';
 import { MATH_SKILL_DOMAIN } from '@/lib/math/types';
-import type { MathItem, MathSkill, MathTemplate } from '@/lib/math/types';
+import type { MathDifficulty, MathItem, MathSkill, MathTemplate } from '@/lib/math/types';
+import { DIFFICULTIES, allocateByMix, sortByDifficulty, type DifficultyMix } from '@/lib/difficulty';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
 
 /**
@@ -92,7 +93,46 @@ export type MathSetOptions = {
   count: number;
   /** Hạt của cả bộ đề. Cùng hạt ra đúng cùng một bộ, theo đúng thứ tự. */
   seed: string;
+  /**
+   * Tỉ lệ dễ / vừa / khó của bộ. Có thì bộ được chia theo tỉ lệ ấy và XẾP DỄ →
+   * KHÓ; bỏ trống thì giữ cách cũ (vòng tròn qua mọi template, không xếp) —
+   * bài chẩn đoán, mock và thử thách tuần dựa vào cách cũ.
+   */
+  mix?: DifficultyMix;
 };
+
+/** Bậc kế cận để mượn khi một bậc không có template nào. */
+const FALLBACK: Record<MathDifficulty, MathDifficulty[]> = {
+  easy: ['medium', 'hard'],
+  medium: ['easy', 'hard'],
+  hard: ['medium', 'easy'],
+};
+
+/**
+ * Bộ đề có tỉ lệ độ khó, xếp dễ → khó.
+ *
+ * Mỗi bậc đi vòng tròn qua danh sách template CỦA BẬC ĐÓ đã trộn — cùng lý do
+ * với bản không tỉ lệ: bốc ngẫu nhiên từng câu dễ dồn một dạng. Bậc nào không
+ * có template thì mượn bậc kế cận, để bộ luôn đủ số câu.
+ */
+function generateMixedSet(pool: MathTemplate[], count: number, seed: string, mix: DifficultyMix): MathItem[] {
+  const rng = mulberry32(hashString(`set:${seed}`));
+  const byTier: Record<MathDifficulty, MathTemplate[]> = {
+    easy: shuffle(pool.filter((t) => t.difficulty === 'easy'), rng),
+    medium: shuffle(pool.filter((t) => t.difficulty === 'medium'), rng),
+    hard: shuffle(pool.filter((t) => t.difficulty === 'hard'), rng),
+  };
+  const want = allocateByMix(count, mix);
+  const slots: MathTemplate[] = [];
+  for (const tier of DIFFICULTIES) {
+    const own = byTier[tier];
+    const source = own.length > 0 ? own : byTier[FALLBACK[tier].find((d) => byTier[d].length > 0) ?? 'medium'];
+    for (let i = 0; i < want[tier] && source.length > 0; i += 1) slots.push(source[i % source.length]!);
+  }
+  // Xếp lại theo độ khó THẬT của template (bậc mượn có thể lệch), giữ thứ tự trong bậc.
+  const ordered = sortByDifficulty(slots, (t) => t.difficulty);
+  return ordered.map((template, i) => generateMathItem(template.slug, `${seed}#${i}`));
+}
 
 /**
  * Dựng một bộ đề.
@@ -102,7 +142,7 @@ export type MathSetOptions = {
  * trắng kỹ năng khác, mà bài chẩn đoán thì cần trải đều mới đọc được kết quả.
  */
 export function generateMathSet(options: MathSetOptions): MathItem[] {
-  const { skills, count, seed } = options;
+  const { skills, count, seed, mix } = options;
 
   const pool: MathTemplate[] = skills
     ? MATH_TEMPLATES.filter((t) => skills.includes(t.skill))
@@ -111,6 +151,8 @@ export function generateMathSet(options: MathSetOptions): MathItem[] {
   if (pool.length === 0) {
     throw new Error('Không có template nào khớp bộ kỹ năng yêu cầu.');
   }
+
+  if (mix) return generateMixedSet(pool, count, seed, mix);
 
   const rng = mulberry32(hashString(`set:${seed}`));
   const ordered = shuffle(pool, rng);

@@ -36,9 +36,10 @@ test('Writing: không gắn thanh trận đấu; chấm xong ra thép có mã b�
 });
 
 test('SAT Verbal tắt lời giải tức thì: chỉ chấm lúc nộp (giữ nguyên hành vi cũ)', () => {
-  const src = read('src/components/sat-rw/UnitRunner.tsx');
-  assert.ok(src.includes("if (instantSolution) useGameStore.getState().answer("));
-  assert.ok(src.includes("if (!instantSolution) useGameStore.getState().awardBatch("));
+  // Trạng thái lượt làm chuyển từ UnitRunner sang useRwPractice (phòng thi kiểu đề số, 01/10/2026).
+  const src = read('src/components/sat-rw/useRwPractice.ts');
+  assert.ok(src.includes("if (instant) useGameStore.getState().answer("));
+  assert.ok(src.includes("if (!instant && !partial) useGameStore.getState().awardBatch("));
 });
 
 test('màn từ vựng và luyện nghe gửi khoá câu hỏi (chỉ thưởng lần thử đầu)', () => {

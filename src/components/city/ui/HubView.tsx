@@ -69,7 +69,7 @@ function MatChips({ m, size = 14 }: { m: Partial<Materials>; size?: number }) {
   );
 }
 
-export default function HubView({ reduced, onBack, onVisit }: { reduced: boolean; onBack: () => void; onVisit: (id: string) => void }) {
+export default function HubView({ reduced, hasCity, onBack, onVisit }: { reduced: boolean; hasCity: boolean; onBack: () => void; onVisit: (id: string) => void }) {
   const { L } = useL();
   const token = useAuthStore((s) => s.session?.access_token ?? null);
   const { data, error, loading, refresh, replace } = useHubSnapshot(token);
@@ -147,11 +147,11 @@ export default function HubView({ reduced, onBack, onVisit }: { reduced: boolean
       if (k === 'q') setRot((r) => (r + 3) % 4);
       else if (k === 'e') setRot((r) => (r + 1) % 4);
       else if (k === 'h') api.current?.home();
-      else if (k === 'escape') onBack();
+      else if (k === 'escape' && hasCity) onBack();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onBack, sheet]);
+  }, [onBack, sheet, hasCity]);
 
   const floorsPct = progress.floorsTotal ? progress.floorsBuilt / progress.floorsTotal : 0;
 
@@ -203,15 +203,12 @@ export default function HubView({ reduced, onBack, onVisit }: { reduced: boolean
 
       {/* Trái: năm tháp */}
       <aside className="cg-panel cg-slide" style={{ position: 'absolute', left: 16, top: 16, bottom: 16, width: 320, padding: 16, display: 'flex', flexDirection: 'column', gap: 10, zIndex: 10 }}>
-        <button className="cg-btn small" style={{ alignSelf: 'flex-start' }} onClick={onBack}>
-          ← {L({ vi: 'Về khu của tôi', en: 'Back to my district' })}
+        <button className="cg-btn primary small" style={{ alignSelf: 'flex-start' }} onClick={onBack}>
+          {hasCity ? `🏙️ ${L({ vi: 'Thành phố của tôi', en: 'My city' })}` : `＋ ${L({ vi: 'Tạo thành phố của bạn', en: 'Create your city' })}`}
         </button>
         <h1 className="cg-x" style={{ margin: 0, fontSize: 22, lineHeight: 1.2 }}>🏗️ {L({ vi: 'Trung tâm Tương lai', en: 'Future Centre' })}</h1>
         <span className="cg-muted" style={{ fontSize: 14 }}>
-          {L({
-            vi: 'Khu cao ốc chung của mọi người học. Mỗi người góp vật liệu, cả cộng đồng cùng lên tầng. Thành phố của bạn là khu riêng.',
-            en: "Everyone's shared downtown. Each learner donates materials and the towers rise together. Your own city is your private district.",
-          })}
+          {L({ vi: 'Khu cao ốc chung của mọi người học.', en: "Everyone's shared downtown." })}
         </span>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
           <span className="cg-row" style={{ justifyContent: 'space-between', fontSize: 14 }}>
