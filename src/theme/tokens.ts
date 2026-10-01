@@ -196,11 +196,13 @@ export const stickerGradient = {
 } as const satisfies Record<string, readonly [string, string]>;
 
 /** Bảng màu cho biểu đồ (Progress — ảnh 3). */
+// Biểu đồ: mỗi chuỗi số một sắc khác hẳn nhau (vàng kim, xanh đậm, đỏ, lá,
+// trời, hồng) — màu biểu đồ là DỮ LIỆU, không được đồng tông với nhau.
 export const chartPalette = [
-  '#9C7A3A',
-  '#CCA35B',
-  '#D6B57C',
-  '#EEDAB7',
-  '#B07A3A',
+  '#A8843F',
+  '#24375A',
+  '#E0533D',
   '#16A34A',
+  '#0EA5E9',
+  '#F472B6',
 ] as const;
