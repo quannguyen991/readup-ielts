@@ -171,7 +171,8 @@ const PAGE_META: Record<string, { exam?: SearchExam; skill?: SearchSkill; keywor
   bookmarks: { keywords: ['đã lưu', 'bookmark', 'saved'] },
   quest: { keywords: ['game', 'trò chơi', 'quest'] },
   'quest-city': { keywords: ['thành phố', 'city', '3d'] },
-  'quest-rail': { skill: 'vocab', keywords: ['tàu', 'train', 'từ vựng'] },
+  'quest-rail': { skill: 'vocab', keywords: ['bay', 'máy bay', 'thành phố', 'flight', 'fly over cities', 'từ vựng'] },
+  'quest-travel': { skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'thế giới', 'vé máy bay', 'travel', 'world', 'passport', 'hộ chiếu', 'singapore', 'london', 'paris', 'rome', 'amsterdam'] },
   'quest-world': { keywords: ['bản đồ', 'map', 'đảo'] },
   'quest-hero': { keywords: ['nhân vật', 'nhiệm vụ', 'hero'] },
   leaderboard: { keywords: ['xếp hạng', 'bảng xếp hạng', 'leaderboard'] },
@@ -199,6 +200,14 @@ const EXTRA_PAGES: {
   keywords: string[];
 }[] = [
   { key: 'practice-mixed', title: { vi: 'Luyện xen kẽ dạng bài Reading', en: 'Mixed Reading question types' }, href: '/practice-mixed', exam: 'ielts', skill: 'reading', keywords: ['true false not given', 'matching headings', 'điền từ', 'xen kẽ', 'question types'] },
+  { key: 'travel-singapore', title: { vi: 'Du ngoạn: Singapore', en: 'Travel: Singapore' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/singapore', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'changi', 'mrt', 'hawker', 'marina bay'] },
+  { key: 'travel-london', title: { vi: 'Du ngoạn: London', en: 'Travel: London' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/london', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'big ben', 'tube', 'heathrow'] },
+  { key: 'travel-paris', title: { vi: 'Du ngoạn: Paris', en: 'Travel: Paris' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/paris', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'eiffel', 'louvre'] },
+  { key: 'travel-amsterdam', title: { vi: 'Du ngoạn: Amsterdam', en: 'Travel: Amsterdam' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/amsterdam', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'canal', 'tulip'] },
+  { key: 'travel-rome', title: { vi: 'Du ngoạn: Rome', en: 'Travel: Rome' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/rome', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'colosseum', 'trevi', 'vatican'] },
+  { key: 'travel-airport', title: { vi: 'Quầy đổi vé máy bay', en: 'Ticket counter' }, href: '/quest/du-ngoan/airport', exam: 'both', skill: 'vocab', keywords: ['vé', 'hải quan', 'customs', 'tickets', 'du ngoạn'] },
+  { key: 'travel-passport', title: { vi: 'Hộ chiếu du ngoạn', en: 'Travel passport' }, href: '/quest/du-ngoan/passport', exam: 'both', skill: 'general', keywords: ['hộ chiếu', 'con dấu', 'passport', 'stamp'] },
+  { key: 'travel-suitcase', title: { vi: 'Vali quà lưu niệm', en: 'Souvenir suitcase' }, href: '/quest/du-ngoan/suitcase', exam: 'both', skill: 'general', keywords: ['vali', 'quà', 'suitcase', 'souvenir'] },
   { key: 'paste', title: { vi: 'Đọc văn bản tự dán', en: 'Read your own text' }, href: '/paste', exam: 'both', skill: 'reading', keywords: ['dán', 'paste', 'văn bản riêng'] },
   // Bốn trang dưới rời thanh bên ngày 01/10/2026 (nhóm SAT gọn còn 4 mục) — vẫn tìm được.
   { key: 'math-learn', title: { vi: 'Bài học SAT Math', en: 'SAT Math lessons' }, href: '/math/learn', exam: 'sat', skill: 'math', keywords: ['lý thuyết', 'bài học', 'lessons'] },

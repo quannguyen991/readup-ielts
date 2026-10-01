@@ -1,18 +1,20 @@
 /**
- * BỘ VẼ CẢNH PIXEL của "Chuyến tàu chậm" — vẽ ở độ phân giải thấp (W×H điểm),
+ * BỘ VẼ CẢNH PIXEL của "Bay qua thành phố" — vẽ ở độ phân giải thấp (W×H điểm),
  * trình duyệt phóng to bằng `image-rendering: pixelated` để ra nét pixel-art.
  *
- * Mọi thứ sinh bằng code từ công thức ga (`stations.ts`) + hạt giống cố định:
- * trời chuyển màu có hoà sắc (dither), núi, phố, công trình biểu tượng, mặt
- * nước phản chiếu, cây cối, cột điện, đoàn tàu. Không dùng ảnh ngoài.
+ * Mọi thứ sinh bằng code từ công thức thành phố (`stations.ts`) + hạt giống cố
+ * định: trời chuyển màu có hoà sắc (dither), núi, phố, công trình biểu tượng, mặt
+ * nước phản chiếu, cây cối. Không dùng ảnh ngoài ngoài ảnh nền vẽ sẵn của từng
+ * thành phố (`public/rail`).
  *
  * Chia hai phần để nhẹ:
- *  - Nền TĨNH (trời → phố → mặt nước) vẽ một lần mỗi khi đổi ga / buổi / thời tiết.
- *  - Lớp ĐỘNG vẽ mỗi khung: mây trôi, nước lấp lánh, dải cây gần + cột điện +
- *    đường ray trôi theo tốc độ tàu (thị sai), đoàn tàu nhún nhẹ, mưa / tuyết.
+ *  - Nền TĨNH (trời → phố → mặt nước) vẽ một lần mỗi khi đổi thành phố / buổi / thời tiết.
+ *  - Lớp ĐỘNG vẽ mỗi khung: mây ba tầng sâu trôi qua (thị sai), nhân vật bay giữa
+ *    khung (nhún nhẹ, nghiêng, vệt khói / cầu vồng / tia sáng), thành phố trượt
+ *    bên dưới, mưa / tuyết, và dải mây trắng xoá khi đổi thành phố.
  */
-import type { LandmarkKind, Station, Vegetation } from './stations';
-import type { TimeOfDay } from './stations';
+import type { LandmarkKind, Station, TimeOfDay, Vegetation } from './stations';
+import { FLYER_FRAMES, FLYER_META, renderFlyer, SH, SW, type FlyerId, type FlyerMeta, type FlyerOpts } from './flyers';
 
 export type Weather = 'clear' | 'rain' | 'snow';
 
@@ -20,8 +22,6 @@ export const W = 384;
 export const H = 176;
 /** Chân phố / mép nước. */
 const BASE = 116;
-/** Mặt ray. */
-const RAIL = 152;
 
 // ------------------------------------------------------------------ màu
 
@@ -180,23 +180,37 @@ function celestial(g: Ctx, m: Mood, time: TimeOfDay, weather: Weather, r: () => 
 }
 
 /** Mây pixel: vài elip chồng nhau, mặt dưới tối hơn. */
-function cloudSprite(m: Mood, time: TimeOfDay, seed: number): HTMLCanvasElement {
+/** Màu mây theo buổi / thời tiết (đỉnh sáng, đáy tối) — dùng cho cả mây trôi lẫn dải mây chuyển cảnh. */
+function cloudColors(time: TimeOfDay, weather: Weather): { top: string; bottom: string } {
+  let top = time === 'sunset' ? '#F6C2B8' : time === 'night' ? '#2F3C66' : '#FFFFFF';
+  let bottom = time === 'sunset' ? '#B8708F' : time === 'night' ? '#222C52' : '#D5E3F0';
+  if (weather === 'rain') {
+    top = mix(top, time === 'night' ? '#1E2538' : '#8E97A6', 0.55);
+    bottom = mix(bottom, time === 'night' ? '#141A2A' : '#5E6878', 0.55);
+  } else if (weather === 'snow') {
+    top = mix(top, '#E6ECF4', 0.4);
+  }
+  return { top, bottom };
+}
+
+/** `big`: dải mây to bồng bềnh (tầng gần nhất, chỉ ló đỉnh lên từ mép dưới khung). */
+function cloudSprite(m: Mood, time: TimeOfDay, weather: Weather, seed: number, big = false): HTMLCanvasElement {
   const r = rng(seed);
   const c = document.createElement('canvas');
-  c.width = 64;
-  c.height = 18;
+  c.width = big ? 132 : 64;
+  c.height = big ? 44 : 18;
   const g = c.getContext('2d')!;
-  const top = time === 'sunset' ? '#F6C2B8' : time === 'night' ? '#2F3C66' : '#FFFFFF';
-  const bottom = time === 'sunset' ? '#B8708F' : time === 'night' ? '#222C52' : '#D5E3F0';
-  const blobs = 4 + Math.floor(r() * 3);
+  const { top, bottom } = cloudColors(time, weather);
+  const blobs = big ? 7 + Math.floor(r() * 3) : 4 + Math.floor(r() * 3);
   for (let i = 0; i < blobs; i++) {
-    const cx = 10 + r() * 44;
-    const ry = 3 + r() * 5;
-    const rx = 6 + r() * 9;
+    const cx = big ? 14 + r() * 104 : 10 + r() * 44;
+    const ry = big ? 7 + r() * 9 : 3 + r() * 5;
+    const rx = big ? 12 + r() * 14 : 6 + r() * 9;
+    const base = big ? 30 : 12;
     for (let y = -ry; y <= ry; y++) {
       const w = Math.round(rx * Math.sqrt(1 - (y / ry) ** 2));
       g.fillStyle = y > ry * 0.25 ? mix(bottom, m.sky[m.sky.length - 2]!, 0.15) : top;
-      g.fillRect(Math.round(cx - w), Math.round(12 + y), w * 2, 1);
+      g.fillRect(Math.round(cx - w), Math.round(base + y), w * 2, 1);
     }
   }
   return c;
@@ -810,7 +824,7 @@ function ground(g: Ctx, st: Station, m: Mood, weather: Weather, top: number, r: 
       for (let x = 0; x < W; x += 2) if (r() < 0.35) R(g, x, y, 1, 1, shade(m, st.veg === 'flowers' ? ['#F2D03A', '#E86A9A', '#FFFFFF'][Math.floor(r() * 3)]! : '#B8D06A'));
 }
 
-// ------------------------------------------------------------------ lớp động: dải cây gần, cột điện, ray, tàu
+// ------------------------------------------------------------------ lớp động: dải cây ven thành phố
 
 function nearStrip(st: Station, m: Mood, weather: Weather, seed: number): HTMLCanvasElement {
   const c = document.createElement('canvas');
@@ -825,14 +839,14 @@ function nearStrip(st: Station, m: Mood, weather: Weather, seed: number): HTMLCa
   const veg: Vegetation = st.veg === 'rice' ? 'green' : st.veg === 'flowers' ? 'green' : st.veg;
   const waterfront = !!st.water;
   if (waterfront) {
-    // Tàu chạy ven sông / biển: kè đá thấp + lan can, để mặt nước phía sau lộ ra.
+    // Ven sông / biển: kè đá thấp + lan can, để mặt nước phía sau lộ ra.
     R(g, 0, base - 3, W * 2, 3, shade(m, '#8A8F98'));
     for (let x = 0; x < W * 2; x += 6) R(g, x, base - 7, 1, 4, shade(m, '#5A606C'));
     R(g, 0, base - 7, W * 2, 1, shade(m, '#5A606C'));
   }
   for (let x = 4; x < W * 2 - 8; x += waterfront ? 50 + Math.floor(r() * 70) : 10 + Math.floor(r() * 26)) {
     if (!waterfront && r() < 0.22 && st.skyline && st.skyline.style !== 'modern') {
-      // Nhà thấp ven đường ray, đèn cửa sổ ấm.
+      // Nhà thấp ven đường, đèn cửa sổ ấm.
       const w = 14 + Math.floor(r() * 10);
       const h = 10 + Math.floor(r() * 6);
       const pal = PALETTES[st.skyline.style] ?? PALETTES.old!;
@@ -851,52 +865,28 @@ function nearStrip(st: Station, m: Mood, weather: Weather, seed: number): HTMLCa
   return c;
 }
 
-function trainSprite(m: Mood, time: TimeOfDay, weather: Weather): HTMLCanvasElement {
-  const cars = 3;
-  const carW = 86;
-  const c = document.createElement('canvas');
-  c.width = cars * (carW + 2) + 8;
-  c.height = 30;
-  const g = c.getContext('2d')!;
-  const body = shade(m, '#EDE6D6', 0.02);
-  const band = shade(m, '#4A7FE8', 0.02);
-  const dark = shade(m, '#3A4252');
-  const lit = time !== 'day' || weather === 'rain';
-  for (let i = 0; i < cars; i++) {
-    const x = 4 + i * (carW + 2);
-    R(g, x + 2, 6, carW - 4, 1, shade(m, '#C9C2B2'));
-    R(g, x, 7, carW, 17, body);
-    R(g, x, 7, carW, 2, shade(m, '#D8D0BE'));
-    R(g, x, 19, carW, 2, band);
-    for (let wx = x + 5; wx < x + carW - 8; wx += 9) {
-      R(g, wx, 11, 7, 6, dark);
-      R(g, wx + 1, 12, 5, 4, lit ? (wx % 3 ? '#FFD98A' : '#FFE9B8') : shade(m, '#9FC0DA'));
-      R(g, wx + 1, 12, 5, 1, lit ? '#FFF0C8' : shade(m, '#C9DDEC'));
-    }
-    R(g, x + carW - 6, 10, 4, 12, shade(m, '#BFB8A8'));
-    for (const wx of [x + 10, x + 22, x + carW - 24, x + carW - 12]) {
-      R(g, wx, 24, 7, 3, dark);
-      R(g, wx + 1, 27, 2, 2, shade(m, '#1E2330'));
-      R(g, wx + 4, 27, 2, 2, shade(m, '#1E2330'));
-    }
-    if (i < cars - 1) R(g, x + carW, 12, 2, 8, dark);
-  }
-  // Cần lấy điện trên toa đầu.
-  R(g, 20, 1, 1, 5, dark);
-  R(g, 14, 1, 14, 1, dark);
-  // Đèn pha đầu tàu (bên phải — tàu chạy sang phải).
-  const front = 4 + (cars - 1) * (carW + 2) + carW;
-  R(g, front - 3, 20, 3, 2, lit ? '#FFF2B0' : shade(m, '#E8E0D0'));
-  return c;
-}
-
 // ------------------------------------------------------------------ cảnh
 
 type Particle = { x: number; y: number; v: number; s: number };
+type Cloud = { img: HTMLCanvasElement; x: number; y: number; v: number; s: number; a: number; layer: 0 | 1 | 2 };
+type Spark = { x: number; y: number; vx: number; vy: number; age: number; max: number; k: 'puff' | 'smoke' | 'spark' | 'streak'; r0: number; r1: number; c?: string };
+
+const RAINBOW_BANDS = ['#FF5C8A', '#FFA24C', '#FFD84A', '#5BD68A', '#4FB0FF', '#A57BF2'];
+
+/** Nhún lên xuống nhẹ của nhân vật (tổng hai sóng chậm). */
+const bobY = (t: number, amp: number) => (Math.sin(t * 1.6) * 1.1 + Math.sin(t * 0.7 + 1.3) * 0.6) * amp;
+/** Nghiêng theo chiều nhún (radian, rất nhỏ). */
+const bank = (t: number, amp: number) => Math.sin(t * 0.9) * 0.025 - (Math.cos(t * 1.6) * 1.76 + Math.cos(t * 0.7 + 1.3) * 0.42) * amp * 0.006;
+
+/** Những cụm mây dựng sẵn cho màn chuyển thành phố (vị trí cố định, thứ tự nở khác nhau). */
+function transitionPuffs() {
+  const r = rng(4242);
+  return Array.from({ length: 48 }, () => ({ x: r() * (W + 140) - 20, y: r() * H, r: 18 + r() * 30, ph: r() }));
+}
 
 const PHOTOS = new Map<string, HTMLImageElement | Promise<HTMLImageElement | null> | null>();
 
-/** Đường dẫn ảnh nền của ga theo buổi (cực quang chỉ có ảnh đêm). */
+/** Đường dẫn ảnh nền của thành phố theo buổi (cực quang chỉ có ảnh đêm). */
 export function photoSrc(stationId: string, time: TimeOfDay): string {
   return `/rail/${stationId}-${stationId === 'aurora' ? 'night' : time}.webp`;
 }
@@ -927,77 +917,150 @@ export class RailScene {
   private g: Ctx;
   private bg: HTMLCanvasElement | null = null;
   private near: HTMLCanvasElement | null = null;
-  private train: HTMLCanvasElement | null = null;
-  private clouds: { img: HTMLCanvasElement; x: number; y: number; v: number }[] = [];
+  private flyerFrames: HTMLCanvasElement[] = [];
+  private clouds: Cloud[] = [];
   private stars: { x: number; y: number; p: number }[] = [];
   private drops: Particle[] = [];
+  private parts: Spark[] = [];
+  private emitAcc = 0;
   private scroll = 0;
   private t = 0;
   private mood: Mood | null = null;
+  private time: TimeOfDay = 'day';
+  private weather: Weather = 'clear';
   private waterTop = 0;
   private waterBottom = 0;
   private aurora = false;
   private key = '';
-  /** Chuyển ga: 0 → 1 (tối dần rồi sáng dần), đổi nền ở giữa. */
-  private trans: { p: number; next: (() => void) | null } | null = null;
-  /** Tốc độ tàu 0..1 (0: dừng ở ga, 1: chạy đều). */
+  /** Chuyển thành phố: bay xuyên mây — trắng xoá dần rồi tan, đổi cảnh ở giữa. */
+  private trans: { p: number; next: (() => void) | null; puffs: { x: number; y: number; r: number; ph: number }[] } | null = null;
+  /** Tốc độ bay 0..1 (0: lơ lửng, 1: bay đều); trên 1 là đang tăng tốc. */
   speed = 1;
-  /** Góc nhìn: ngồi trong toa nhìn ra cửa sổ (không thấy tàu, có giọt mưa trên kính) hay đứng ngoài nhìn tàu chạy. */
-  view: 'window' | 'outside' = 'window';
-  /** Giọt nước đọng trên kính (chỉ góc nhìn cửa sổ, khi mưa). */
-  private beads: { x: number; y: number; v: number; len: number }[] = [];
+  /** Chế độ êm (giảm chuyển động): không nhún / nghiêng, mây và hoạt cảnh chậm lại. */
+  calm = false;
+  /** Vị trí nhân vật trong khung (tỉ lệ 0..1 của chiều rộng / cao cảnh). */
+  flyerX = 0.5;
+  flyerY = 0.4;
+  private flyerId: FlyerId = 'plane';
 
   /**
-   * Ảnh nền vẽ sẵn của ga (pixel-art do model ảnh vẽ, `public/rail/<ga>-<buổi>.webp`).
+   * Ảnh nền vẽ sẵn của thành phố (pixel-art do model ảnh vẽ, `public/rail/<id>-<buổi>.webp`).
    * Có ảnh thì dùng ảnh làm nền (đúng cảnh thật của thành phố); chưa tải xong hoặc
    * không có thì dùng nền dựng bằng code ở trên.
    */
   private photo: HTMLImageElement | null = null;
   private photoAlpha = 0;
   /**
-   * Ga này CÓ ảnh nhưng ảnh đang tải. Trong lúc chờ KHÔNG vẽ nền pixel dựng
+   * Thành phố này CÓ ảnh nhưng ảnh đang tải. Trong lúc chờ KHÔNG vẽ nền pixel dựng
    * bằng code (người dùng 30/09/2026: nền pixel hiện ra rồi bị ảnh đè lên) — giữ
-   * màn tối của đường hầm / nền trời trơn, ảnh về thì hiện dần. Ảnh lỗi mới dùng
-   * nền dựng bằng code.
+   * nền trời trơn, ảnh về thì hiện dần. Ảnh lỗi mới dùng nền dựng bằng code.
    */
   private photoPending = false;
   private pendingSince = 0;
-  /** Quãng ảnh nền đã trôi (điểm ảnh khung hiển thị) — ảnh chạy liên tục theo tốc độ tàu. */
+  /** Quãng ảnh nền đã trôi (điểm ảnh khung hiển thị) — ảnh trượt liên tục bên dưới nhân vật. */
   private photoScroll = 0;
-  /** Ảnh nền lật ngang, ghép xen kẽ với ảnh gốc để cảnh trôi mãi không có đường nối gắt. */
-  private photoFlip: HTMLCanvasElement | null = null;
-  private photoFlipOf: HTMLImageElement | null = null;
+  /**
+   * Bản phóng to NGUYÊN LẦN của ảnh nền (láng giềng gần nhất, đã bake bộ lọc mưa / tuyết),
+   * rồi mới thu về đúng cỡ bằng nội suy mượt — "sharp bilinear": cạnh khối pixel giữ sắc,
+   * không bị nhoè như phóng lẻ bằng bilinear, không răng cưa như phóng lẻ bằng nearest.
+   */
+  private photoBig: { img: HTMLImageElement; m: number; weather: Weather; canvas: HTMLCanvasElement } | null = null;
   private out: Ctx;
   private dyn: HTMLCanvasElement;
+  /** Số điểm ảnh khung hiển thị cho MỖI điểm ảnh cảnh (nguyên) — khung hiển thị là `W·p × H·p`. */
+  private p = 2;
+  private ro: ResizeObserver | null = null;
 
   constructor(private canvas: HTMLCanvasElement) {
-    // Khung hiển thị gấp đôi độ phân giải lớp động: ảnh nền giữ được chi tiết,
-    // lớp động (tàu, cột, mưa) vẫn là pixel to đúng chất.
-    canvas.width = W * 2;
-    canvas.height = H * 2;
     this.out = canvas.getContext('2d')!;
     this.dyn = document.createElement('canvas');
     this.dyn.width = W;
     this.dyn.height = H;
     this.g = this.dyn.getContext('2d')!;
     this.g.imageSmoothingEnabled = false;
+    this.applySize(2);
+    // Cỡ khung hiển thị đổi (cửa sổ, xoay máy, kéo giãn) hoặc đổi màn hình có mật độ điểm khác thì chọn lại độ phân giải.
+    if (typeof ResizeObserver !== 'undefined') {
+      this.ro = new ResizeObserver(() => this.fit());
+      this.ro.observe(canvas);
+    }
+    this.fit();
   }
 
-  /** Nạp trước ảnh nền của một ga (gọi cho ga kế để chuyển ga không bị chờ). */
-  static preload(stationId: string, time: TimeOfDay): void {
-    void loadPhoto(photoSrc(stationId, time));
+  /** Gỡ bộ theo dõi cỡ khung (gọi khi bỏ cảnh). */
+  dispose() {
+    this.ro?.disconnect();
+    this.ro = null;
+  }
+
+  /**
+   * ĐỘ PHÂN GIẢI KHUNG HIỂN THỊ. Khung vẽ luôn là bội NGUYÊN của lưới cảnh (`W·p × H·p`,
+   * p = số điểm thiết bị trên mỗi điểm ảnh cảnh, làm tròn lên theo cỡ thật × devicePixelRatio),
+   * nên lớp pixel (nhân vật, mây, mưa) phóng đúng p lần — mọi điểm ảnh to đều nhau. Trình
+   * duyệt chỉ còn thu nhẹ (<1 lần) bằng nội suy mượt. Bản cũ vẽ cố định 768×352 rồi để CSS
+   * kéo lên theo hệ số lẻ bằng nearest (thành 1,25 DPR: 0,88 lần; nền toàn màn: 3,5 lần) →
+   * điểm ảnh to nhỏ lẫn lộn, ảnh nền "vỡ".
+   */
+  private fit() {
+    const r = this.canvas.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    const dpr = Math.min(3, window.devicePixelRatio || 1);
+    // `object-fit: cover` (nền toàn màn): lưới cảnh phải phủ kín cạnh lớn hơn.
+    const s = Math.max(r.width / W, r.height / H) * dpr;
+    const p = Math.max(1, Math.min(6, Math.ceil(s - 0.04)));
+    // Chỉ khi vượt trần p quá xa (màn rất to) mới phóng nguyên lần bằng nearest; còn lại (thu nhẹ, hoặc phóng dưới 1,5 lần) để nội suy mượt — nearest ở hệ số lẻ nhỏ làm điểm ảnh to nhỏ lẫn lộn.
+    this.canvas.style.imageRendering = s >= p * 1.9 ? 'pixelated' : 'auto';
+    if (p !== this.p) this.applySize(p);
+  }
+
+  private applySize(p: number) {
+    this.p = p;
+    this.canvas.width = W * p;
+    this.canvas.height = H * p;
+    // Đổi cỡ canvas làm mất mọi trạng thái vẽ: tắt làm mịn lại ngay.
+    this.out.imageSmoothingEnabled = false;
+    this.photoBig = null;
+  }
+
+  /** Nạp trước ảnh nền của một thành phố (gọi cho thành phố kế để chuyển cảnh không bị chờ). */
+  static preload(cityId: string, time: TimeOfDay): void {
+    void loadPhoto(photoSrc(cityId, time));
+  }
+
+  /** Đổi nhân vật bay (vẽ lại các khung theo buổi / thời tiết hiện tại). */
+  setFlyer(id: FlyerId) {
+    if (id === this.flyerId && this.flyerFrames.length) return;
+    this.flyerId = id;
+    this.parts = [];
+    this.buildFlyer();
   }
 
   set(st: Station, time: TimeOfDay, weather: Weather, animate = false) {
     const key = `${st.id}|${time}|${weather}`;
     if (key === this.key) return;
     const apply = () => this.build(st, time, weather, key);
-    if (animate && this.bg) this.trans = { p: 0, next: apply };
+    if (animate && this.bg) this.trans = { p: 0, next: apply, puffs: transitionPuffs() };
     else apply();
+  }
+
+  private buildFlyer() {
+    const m = this.mood;
+    if (!m) return;
+    const o: FlyerOpts = {
+      // Nhân vật là tâm điểm: giảm một nửa độ nhuộm tối để ban đêm / mưa vẫn đọc rõ.
+      tint: (c) => shade({ ...m, amb: m.amb * 0.5 }, c),
+      lit: this.time !== 'day' || this.weather === 'rain',
+      rain: this.weather === 'rain',
+      snow: this.weather === 'snow',
+      outline: shade(m, '#17223D'),
+    };
+    this.flyerFrames = Array.from({ length: FLYER_FRAMES }, (_, i) => renderFlyer(this.flyerId, i, o));
   }
 
   private build(st: Station, time: TimeOfDay, weather: Weather, key: string) {
     this.key = key;
+    this.time = time;
+    this.weather = weather;
     const src = photoSrc(st.id, time);
     const cached = PHOTOS.get(src);
     this.photo = cached instanceof HTMLImageElement ? cached : null;
@@ -1047,165 +1110,119 @@ export class RailScene {
     }
     this.bg = bg;
     this.near = nearStrip(st, m, weather, seed + 6);
-    this.train = trainSprite(m, time, weather);
+    this.buildFlyer();
+    // Mây ba tầng sâu: xa (nhỏ, chậm, sau nhân vật), vừa, và gần (to, nhanh, đi ngang phía trước).
     const cr = rng(seed + 7);
-    this.clouds = Array.from({ length: weather === 'clear' ? 5 : 9 }, (_, i) => ({ img: cloudSprite(m, time, seed + 20 + i), x: cr() * (W + 64) - 64, y: 6 + cr() * 44, v: 0.6 + cr() * 1.4 }));
+    const foggy = weather !== 'clear';
+    const mk = (layer: 0 | 1 | 2, n: number, scale: number, vMin: number, vMax: number, yMin: number, yMax: number, alpha: number, k: number) =>
+      Array.from({ length: n }, (_, i): Cloud => ({ img: cloudSprite(m, time, weather, seed + 20 + k * 10 + i, layer === 2), x: cr() * (W + 120) - 90, y: yMin + cr() * (yMax - yMin), v: vMin + cr() * (vMax - vMin), s: scale, a: time === 'night' ? alpha * 0.65 : alpha, layer }));
+    this.clouds = [
+      ...mk(0, foggy ? 7 : 5, 1, 5, 10, 4, 74, 0.7, 0),
+      ...mk(1, foggy ? 4 : 3, 2, 14, 24, 10, 80, 0.8, 1),
+      ...mk(2, foggy ? 3 : 2, 1, 46, 78, 142, 156, 0.8, 2),
+    ];
     const sr = rng(seed + 8);
     this.stars = time === 'night' && weather === 'clear' ? Array.from({ length: 24 }, () => ({ x: Math.floor(sr() * W), y: Math.floor(sr() * 70), p: sr() * 6 })) : [];
     const pr = rng(seed + 9);
     this.drops = weather === 'clear' ? [] : Array.from({ length: weather === 'rain' ? 160 : 110 }, () => ({ x: pr() * W, y: pr() * H, v: 0.6 + pr() * 0.8, s: pr() < 0.3 ? 2 : 1 }));
   }
 
-  /**
-   * Nhìn qua cửa sổ toa: không thấy đoàn tàu; bờ cỏ sát đường ray vụt qua (vệt
-   * chuyển động), cột điện gần và cao lướt qua cả khung, mưa đọng thành giọt
-   * trượt trên kính, tuyết bám viền kính.
-   */
-  private windowForeground(dt: number, m: Mood) {
-    const g = this.g;
-    const snow = this.key.endsWith('snow');
-    const rain = this.key.endsWith('rain');
-    // Hàng cây / bụi gần lướt qua dưới chân cửa sổ (thị sai nhanh hơn cảnh xa):
-    // cho cảm giác đang chạy rõ ràng cả khi nền là ảnh.
-    if (this.photo) {
-      const nx = -((this.scroll * 2.4) % W);
-      g.globalAlpha = 0.92;
-      g.drawImage(this.near!, Math.floor(nx), 0, W, 40, 0, RAIL - 30, W, 40);
-      g.drawImage(this.near!, Math.floor(nx) + W, 0, W, 40, 0, RAIL - 30, W, 40);
-      g.globalAlpha = 1;
-    }
-    // Bờ đất sát toa: vệt ngang chạy rất nhanh.
-    const ground = shade(m, snow ? '#D8E0EA' : '#4E6E3E');
-    R(g, 0, RAIL - 2, W, H - RAIL + 2, ground);
-    const fast = this.scroll * 4.5;
-    for (let i = 0; i < 30; i++) {
-      const y = RAIL + ((i * 5) % (H - RAIL));
-      const x = (((i * 97 - fast) % (W + 60)) + W + 60) % (W + 60) - 30;
-      R(g, x, y, 14 + (i % 5) * 6, 1, shade(m, snow ? '#F2F5FA' : i % 3 ? '#5E8248' : '#3E5A32'));
-    }
-    // Cột điện sát cửa sổ: cao hết khung, lướt qua nhanh.
-    const gap = 340;
-    const px = (((-this.scroll * 5) % gap) + gap) % gap - 20;
-    for (let x = px; x < W + 20; x += gap) {
-      R(g, x, 0, 6, H, shade(m, '#23262E'));
-      R(g, x + 1, 0, 1, H, shade(m, '#3A3F4A'));
-      R(g, x - 16, 30, 38, 3, shade(m, '#23262E'));
-    }
-    R(g, 0, 32, W, 1, shade(m, '#2A2F3A'));
-    this.weatherAndTransitionGlass(dt, rain, snow);
-  }
-
-  private weatherAndTransitionGlass(dt: number, rain: boolean, snow: boolean) {
-    const g = this.g;
-    // Ngoài trời vẫn mưa / tuyết rơi.
-    this.weatherAndTransition(dt);
-    if (rain) {
-      if (this.beads.length === 0) {
-        const r = rng(99);
-        this.beads = Array.from({ length: 70 }, () => ({ x: r() * W, y: r() * H, v: r(), len: 0 }));
-      }
-      for (const b of this.beads) {
-        // Giọt nhỏ đứng yên, giọt to trượt xuống và bị gió tàu đẩy chéo về sau.
-        if (b.v > 0.72) {
-          b.y += dt * (6 + b.v * 14);
-          b.x -= dt * this.speed * 10 * b.v;
-          b.len = Math.min(10, b.len + dt * 6);
-        }
-        if (b.y > H + 4 || b.x < -4) {
-          b.y = -3;
-          b.x = Math.random() * W;
-          b.len = 0;
-        }
-        g.fillStyle = 'rgba(210,225,245,0.18)';
-        if (b.len > 1) g.fillRect(Math.round(b.x) + 1, Math.round(b.y - b.len), 1, Math.round(b.len));
-        g.fillStyle = 'rgba(230,240,255,0.55)';
-        const big = b.v > 0.72 ? 2 : 1;
-        g.fillRect(Math.round(b.x), Math.round(b.y), big + 1, big + 1);
-        g.fillStyle = 'rgba(255,255,255,0.9)';
-        g.fillRect(Math.round(b.x), Math.round(b.y), 1, 1);
-      }
-    } else if (this.beads.length) this.beads = [];
-    if (snow) {
-      // Sương giá bám viền kính: dày ở góc, thưa dần vào giữa (hoà sắc cố định theo vị trí).
-      g.fillStyle = 'rgba(236,244,255,0.55)';
-      for (let y = 0; y < H; y += 2)
-        for (let x = 0; x < W; x += 2) {
-          const d = Math.min(x, W - x, y, H - y);
-          if (d < 18 && BAYER[((y >> 1) & 3) * 4 + ((x >> 1) & 3)]! * 18 > d) g.fillRect(x, y, 2, 2);
-        }
-    }
+  /** Ảnh nền đã phóng nguyên lần + bake bộ lọc thời tiết (tạo một lần cho mỗi ảnh / cỡ / thời tiết). */
+  private bigPhoto(img: HTMLImageElement, m: number): HTMLCanvasElement | HTMLImageElement {
+    const wx = this.weather;
+    if (m === 1 && wx === 'clear') return img;
+    const hit = this.photoBig;
+    if (hit && hit.img === img && hit.m === m && hit.weather === wx) return hit.canvas;
+    const c = document.createElement('canvas');
+    c.width = img.naturalWidth * m;
+    c.height = img.naturalHeight * m;
+    const g = c.getContext('2d')!;
+    g.imageSmoothingEnabled = false;
+    g.filter = wx === 'rain' ? 'saturate(0.7) brightness(0.78) contrast(0.95)' : wx === 'snow' ? 'saturate(0.75) brightness(1.04)' : 'none';
+    g.drawImage(img, 0, 0, c.width, c.height);
+    this.photoBig = { img, m, weather: wx, canvas: c };
+    return c;
   }
 
   /** Vẽ một khung. `dt` tính bằng giây. */
   frame(dt: number) {
-    if (!this.bg || !this.near || !this.train || !this.mood) return;
+    // Mốc rAF có thể nhỏ hơn performance.now() một chút → dt âm; thời gian không được lùi.
+    dt = Math.max(0, dt);
+    if (!this.bg || !this.near || !this.flyerFrames.length || !this.mood) return;
     this.g.clearRect(0, 0, W, H);
     this.layers(dt);
     const o = this.out;
+    const P = this.p;
+    const BW = W * P;
+    const BH = H * P;
+    o.imageSmoothingEnabled = false;
     if (this.photo) {
+      const fading = this.photoAlpha < 1;
       this.photoAlpha = Math.min(1, this.photoAlpha + dt * 2.5);
-      // Ảnh phủ kín khung, cắt bớt trời phía trên; trôi ngang rất chậm như cảnh xa.
+      // Ảnh phủ kín khung, cắt bớt trời phía trên; trôi ngang chậm như cảnh phía dưới cánh bay.
       const iw = this.photo.naturalWidth;
       const ih = this.photo.naturalHeight;
-      const scale = Math.max((W * 2 * 1.06) / iw, (H * 2) / ih);
+      const scale = Math.max((BW * 1.06) / iw, BH / ih);
       const dw = iw * scale;
       const dh = ih * scale;
       // CẢNH TRÔI THẬT (30/09/2026: "nó chỉ hiện ảnh, không phải hiệu ứng động"):
-      // ảnh chạy ngang liên tục theo tốc độ tàu — ghép ảnh gốc với bản lật ngang
-      // xen kẽ nên trôi mãi không hết ảnh, không có vết cắt. Toa nhún nhẹ khi chạy.
-      this.photoScroll += dt * this.speed * 26;
-      const sway = this.speed > 0.05 ? Math.sin(this.t * 7.3) * 1.4 * Math.min(1, this.speed) + Math.sin(this.t * 2.1) * 0.8 : 0;
-      const dy = -(dh - H * 2) * 0.62 + sway;
-      const rain = this.key.endsWith('rain');
-      const snow = this.key.endsWith('snow');
+      // ảnh chạy ngang liên tục theo tốc độ bay — ghép ảnh gốc với bản lật ngang
+      // xen kẽ nên trôi mãi không hết ảnh, không có vết cắt. Độ trôi làm tròn theo
+      // điểm ảnh khung hiển thị: không dịch nửa điểm ảnh (sẽ nhoè và nhấp nháy cạnh).
+      this.photoScroll += dt * this.speed * (this.calm ? 5 : 13);
+      const dy = Math.round(-(dh - BH) * 0.62);
+      const snow = this.weather === 'snow';
+      const m = Math.max(1, Math.ceil(scale - 0.001));
+      const src = this.bigPhoto(this.photo, m);
+      if (fading) this.paintSky(o);
+      o.globalAlpha = this.photoAlpha;
+      // Thu từ bản phóng nguyên lần xuống đúng cỡ: nội suy mượt, chất lượng cao.
       o.imageSmoothingEnabled = true;
       o.imageSmoothingQuality = 'high';
-      if (this.photoAlpha < 1) {
-        o.fillStyle = '#07080E';
-        o.fillRect(0, 0, W * 2, H * 2);
-      }
-      o.globalAlpha = this.photoAlpha;
-      o.filter = rain ? 'saturate(0.7) brightness(0.78) contrast(0.95)' : snow ? 'saturate(0.75) brightness(1.04)' : 'none';
-      if (this.photoFlipOf !== this.photo) {
-        const f = document.createElement('canvas');
-        f.width = iw;
-        f.height = ih;
-        const fg = f.getContext('2d')!;
-        fg.translate(iw, 0);
-        fg.scale(-1, 1);
-        fg.drawImage(this.photo, 0, 0);
-        this.photoFlip = f;
-        this.photoFlipOf = this.photo;
-      }
       const period = dw * 2;
-      const start = -(this.photoScroll % period) - (dw - W * 2) / 2;
-      for (let x = start, k = 0; x < W * 2; x += dw, k++) {
-        if (x + dw <= 0) continue;
-        o.drawImage(k % 2 === 0 ? this.photo : this.photoFlip!, x, dy, dw, dh);
+      const start = -(Math.round(this.photoScroll * P) % Math.round(period)) - Math.round((dw - BW) / 2);
+      for (let k = 0, x = start; x < BW; k++) {
+        const x2 = Math.round(start + (k + 1) * dw);
+        if (x2 > 0) {
+          const w = x2 - x;
+          if (k % 2 === 0) o.drawImage(src, x, dy, w, Math.round(dh));
+          else {
+            // Bản lật ngang: lật khi vẽ, không giữ thêm một bản sao lớn trong bộ nhớ.
+            o.save();
+            o.translate(x + w, 0);
+            o.scale(-1, 1);
+            o.drawImage(src, 0, dy, w, Math.round(dh));
+            o.restore();
+          }
+        }
+        x = x2;
       }
-      o.filter = 'none';
       o.globalAlpha = 1;
-      if (rain) {
+      o.imageSmoothingEnabled = false;
+      if (this.weather === 'rain') {
         o.fillStyle = 'rgba(40,52,72,0.28)';
-        o.fillRect(0, 0, W * 2, H * 2);
+        o.fillRect(0, 0, BW, BH);
       } else if (snow) {
         o.fillStyle = 'rgba(225,235,248,0.14)';
-        o.fillRect(0, 0, W * 2, H * 2);
+        o.fillRect(0, 0, BW, BH);
       }
+    } else {
+      o.clearRect(0, 0, BW, BH);
+      // Chờ ảnh: nền trời trơn theo buổi, không lộ cảnh pixel.
+      if (this.photoPending) this.paintSky(o);
     }
+    // Lớp pixel: phóng đúng p lần, không làm mịn.
     o.imageSmoothingEnabled = false;
-    if (!this.photo) {
-      o.clearRect(0, 0, W * 2, H * 2);
-      if (this.photoPending) {
-        // Chờ ảnh: nền trời trơn theo buổi, không lộ cảnh pixel.
-        const grad = o.createLinearGradient(0, 0, 0, H * 2);
-        grad.addColorStop(0, this.mood!.sky[0] ?? '#0B1020');
-        grad.addColorStop(1, this.mood!.horizon);
-        o.fillStyle = grad;
-        o.fillRect(0, 0, W * 2, H * 2);
-      }
-    }
-    o.drawImage(this.dyn, 0, 0, W * 2, H * 2);
+    o.drawImage(this.dyn, 0, 0, BW, BH);
+  }
+
+  /** Nền trời trơn theo buổi (lúc ảnh thành phố chưa hiện kịp). */
+  private paintSky(o: Ctx) {
+    const grad = o.createLinearGradient(0, 0, 0, H * this.p);
+    grad.addColorStop(0, this.mood!.sky[0] ?? '#0B1020');
+    grad.addColorStop(1, this.mood!.horizon);
+    o.fillStyle = grad;
+    o.fillRect(0, 0, W * this.p, H * this.p);
   }
 
   /** Các lớp vẽ ở độ phân giải thấp (nền dựng bằng code chỉ vẽ khi chưa có ảnh). */
@@ -1216,26 +1233,23 @@ export class RailScene {
     this.scroll += dt * 60 * this.speed;
     // Có ảnh (kể cả đang hiện dần) hoặc đang chờ ảnh: không vẽ nền pixel.
     const photo = !!this.photo || this.photoPending;
-    if (!photo) this.drawBackdrop(dt, m);
-    else if (this.view === 'window') {
-      this.windowForeground(dt, m);
-      return;
-    }
+    if (!photo) this.drawBackdrop(m);
+    this.drawClouds(dt, 0);
+    this.drawClouds(dt, 1);
     if (!photo) {
-      // Dải cây gần (thị sai ~ nửa tốc độ ray).
-      const nx = -((this.scroll * 0.55) % W);
-      g.drawImage(this.near!, Math.floor(nx), 0, W, 40, 0, RAIL - 36, W, 40);
-      g.drawImage(this.near!, Math.floor(nx) + W, 0, W, 40, 0, RAIL - 36, W, 40);
+      // Dải cây ven thành phố trượt dưới chân khung (thị sai nhanh hơn nền).
+      const nx = -((this.scroll * 0.9) % W);
+      g.drawImage(this.near!, Math.floor(nx), 0, W, 40, 0, H - 40, W, 40);
+      g.drawImage(this.near!, Math.floor(nx) + W, 0, W, 40, 0, H - 40, W, 40);
     }
-    if (this.view === 'window') {
-      this.windowForeground(dt, m);
-      return;
-    }
-    this.outsideForeground(dt, m);
+    this.drawFlyer(dt, m);
+    this.drawClouds(dt, 2);
+    if (this.speed > 1.4) this.windStreaks();
+    this.weatherAndTransition(dt);
   }
 
-  /** Nền dựng bằng code: trời, sao, cực quang, mây, nước lấp lánh. */
-  private drawBackdrop(dt: number, m: Mood) {
+  /** Nền dựng bằng code: trời, sao, cực quang, nước lấp lánh. */
+  private drawBackdrop(m: Mood) {
     const g = this.g;
     g.drawImage(this.bg!, 0, 0);
 
@@ -1248,11 +1262,6 @@ export class RailScene {
       }
       g.globalAlpha = 1;
     }
-    for (const c of this.clouds) {
-      c.x += dt * c.v * 3;
-      if (c.x > W + 4) c.x = -70;
-      g.drawImage(c.img, Math.round(c.x), Math.round(c.y));
-    }
     // Nước lấp lánh: vài vệt sáng chạy ngang.
     if (this.waterBottom > this.waterTop) {
       for (let i = 0; i < 26; i++) {
@@ -1263,38 +1272,175 @@ export class RailScene {
     }
   }
 
-  /** Góc ngắm từ ngoài: dây điện, cột, ray và đoàn tàu. */
-  private outsideForeground(dt: number, m: Mood) {
+  /** Mây trôi: tầng 0, 1 nằm SAU nhân vật; tầng 2 (to, nhanh, mờ) đi ngang PHÍA TRƯỚC. */
+  private drawClouds(dt: number, layer: 0 | 1 | 2) {
     const g = this.g;
-    // Dây điện + cột (trôi nhanh, gần mắt nhất).
-    const wire = shade(m, '#2A2F3A');
-    R(g, 0, 92, W, 1, wire);
-    const poleGap = 150;
-    const px = -(this.scroll * 1.6) % poleGap;
-    for (let x = px; x < W + 10; x += poleGap) {
-      R(g, x, 88, 3, RAIL - 88, wire);
-      R(g, x - 8, 91, 19, 2, wire);
-      R(g, x - 8, 93, 1, 2, wire);
-      R(g, x + 10, 93, 1, 2, wire);
+    const k = Math.max(0.12, this.speed) * (this.calm ? 0.4 : 1);
+    for (const c of this.clouds) {
+      if (c.layer !== layer) continue;
+      c.x += dt * c.v * k;
+      const w = c.img.width * c.s;
+      if (c.x > W + 4) {
+        c.x = -w - Math.random() * 60;
+        c.y = layer === 2 ? 142 + Math.random() * 14 : 4 + Math.random() * 76;
+      }
+      g.globalAlpha = c.a;
+      g.drawImage(c.img, Math.round(c.x), Math.round(c.y), w, c.img.height * c.s);
     }
-    // Nền đá + ray.
-    R(g, 0, RAIL, W, H - RAIL, shade(m, '#3A3F4A'));
-    R(g, 0, RAIL + 1, W, 2, shade(m, '#9AA3AE'));
-    const sx = -(this.scroll * 2) % 8;
-    for (let x = sx; x < W; x += 8) R(g, x, RAIL + 4, 5, 2, shade(m, '#5A4A3E'));
-    for (let x = (-(this.scroll * 2) % 5) + 2; x < W; x += 5) R(g, x, RAIL + 9 + ((x | 0) % 3), 1, 1, shade(m, '#6A707C'));
-    // Đoàn tàu: đứng giữa khung, nhún 1 điểm ảnh theo nhịp ray.
-    const tx = Math.round((W - this.train!.width) / 2);
-    const bob = this.speed > 0.05 && Math.sin(this.t * 9) > 0.7 ? 1 : 0;
-    g.drawImage(this.train!, tx, RAIL - 28 + bob);
-    this.weatherAndTransition(dt);
+    g.globalAlpha = 1;
   }
 
-  /** Mưa / tuyết rơi + màn tối chuyển ga (dùng cho cả hai góc nhìn). */
+  /** Nhân vật bay + vệt phía sau (khói, cầu vồng, tia sáng). */
+  private drawFlyer(dt: number, m: Mood) {
+    const g = this.g;
+    const meta = FLYER_META[this.flyerId];
+    const calm = this.calm;
+    const bob = calm ? 0 : bobY(this.t, meta.bob);
+    const ang = calm ? 0 : bank(this.t, meta.bob);
+    const frame = Math.floor(this.t * meta.fps * (calm ? 0.4 : 1)) % FLYER_FRAMES;
+    const cx = Math.round(W * this.flyerX);
+    const cy = Math.round(H * this.flyerY + bob);
+    const ox = cx - SW / 2;
+    const oy = cy - SH / 2;
+    const k = Math.max(0.15, this.speed) * (calm ? 0.5 : 1);
+
+    // Vệt phía sau.
+    if (meta.trail === 'rainbow') this.rainbow(ox + meta.at.x, oy + meta.at.y, meta);
+    if (meta.trail === 'beam') this.beam(ox + meta.at.x, oy + meta.at.y);
+    this.emit(dt, ox + meta.at.x, oy + meta.at.y, meta.trail);
+    this.drawParts(dt, k, m);
+
+    // Quầng sáng khi trời tối.
+    if (meta.glow && this.time !== 'day') {
+      const gl = meta.glow;
+      const a = this.time === 'night' ? 0.5 : 0.26;
+      const flick = 0.85 + Math.sin(this.t * 17) * 0.1;
+      const rg = g.createRadialGradient(ox + gl.x, oy + gl.y, 1, ox + gl.x, oy + gl.y, gl.r);
+      rg.addColorStop(0, `rgba(${gl.c},${(a * flick).toFixed(3)})`);
+      rg.addColorStop(1, `rgba(${gl.c},0)`);
+      g.fillStyle = rg;
+      g.fillRect(ox + gl.x - gl.r, oy + gl.y - gl.r, gl.r * 2, gl.r * 2);
+    }
+
+    const img = this.flyerFrames[frame]!;
+    if (!ang) g.drawImage(img, ox, oy);
+    else {
+      // Nghiêng kiểu pixel-art: cắt thành cột 1 điểm ảnh rồi dịch lên / xuống nguyên điểm — xoay bằng
+      // nội suy sẽ làm cạnh sprite răng cưa lệch lạc ("vỡ").
+      const tan = Math.tan(ang);
+      for (let i = 0; i < SW; i++) g.drawImage(img, i, 0, 1, SH, ox + i, oy + Math.round((i - SW / 2) * tan), 1, SH);
+    }
+  }
+
+  /** Dải cầu vồng kéo dài sau đuôi kỳ lân, lượn theo đường bay đã qua. */
+  private rainbow(tx: number, ty: number, meta: FlyerMeta) {
+    const g = this.g;
+    const k = Math.max(0.15, this.speed) * (this.calm ? 0.5 : 1);
+    const len = 78;
+    for (let i = 0; i < len; i++) {
+      const x = Math.round(tx - 2 - i);
+      const tt = this.t - i / (34 * k);
+      const y = (this.calm ? 0 : bobY(tt, meta.bob) - bobY(this.t, meta.bob)) + ty + Math.sin(this.t * 2.2 + i * 0.13) * (this.calm ? 0.5 : 1.6);
+      g.globalAlpha = Math.max(0, 1 - i / len) * 0.9;
+      for (let b = 0; b < RAINBOW_BANDS.length; b++) R(g, x, y - 3 + b, 1, 1, RAINBOW_BANDS[b]!);
+    }
+    g.globalAlpha = 1;
+  }
+
+  /** Tia kéo của đĩa bay: hình thang sáng mờ, đậm ở trên, nhạt dần xuống dưới. */
+  private beam(bx: number, by: number) {
+    const g = this.g;
+    const flick = 0.9 + Math.sin(this.t * 9) * 0.08;
+    g.fillStyle = '#C8FFD8';
+    for (let y = Math.round(by); y < H; y += 1) {
+      const u = (y - by) / (H - by);
+      const half = 7 + u * 26;
+      g.globalAlpha = 0.34 * (1 - u * 0.9) * flick * (this.time === 'day' ? 0.55 : 1);
+      g.fillRect(Math.round(bx - half), y, Math.round(half * 2), 1);
+    }
+    g.globalAlpha = 1;
+  }
+
+  private emit(dt: number, x: number, y: number, kind: FlyerMeta['trail']) {
+    const rate: Record<FlyerMeta['trail'], number> = { contrail: 30, smoke: 20, rainbow: 14, sparkle: 12, streak: 6, ember: 3, beam: 6, none: 0 };
+    this.emitAcc += dt * rate[kind] * (this.calm ? 0.5 : 1) * Math.max(0.5, this.speed);
+    const r = Math.random;
+    while (this.emitAcc >= 1) {
+      this.emitAcc -= 1;
+      if (this.parts.length >= 220) continue;
+      if (kind === 'contrail') {
+        const l = r() < 0.5 ? 0 : 3;
+        this.parts.push({ x: x - 1, y: y + l, vx: -26, vy: (r() - 0.5) * 1.2, age: 0, max: 2.6, k: 'puff', r0: 1, r1: 3.2 });
+      } else if (kind === 'smoke') {
+        this.parts.push({ x, y: y + (r() - 0.5) * 4, vx: -34 - r() * 10, vy: (r() - 0.5) * 6, age: 0, max: 1.3, k: 'smoke', r0: 2, r1: 5.5 });
+        if (r() < 0.45) this.parts.push({ x: x - 4, y: y + (r() - 0.5) * 6, vx: -50 - r() * 30, vy: (r() - 0.5) * 22, age: 0, max: 0.55, k: 'spark', r0: 1, r1: 1, c: r() < 0.5 ? '#FFD86B' : '#FF9A3C' });
+      } else if (kind === 'sparkle') {
+        this.parts.push({ x: x + r() * 12, y: y + (r() - 0.5) * 14, vx: -22 - r() * 12, vy: (r() - 0.4) * 6, age: 0, max: 1.1 + r() * 0.8, k: 'spark', r0: 1, r1: 1, c: ['#FFE27A', '#FFFFFF', '#FFB3CF', '#9ADCF2'][Math.floor(r() * 4)]! });
+      } else if (kind === 'rainbow') {
+        this.parts.push({ x: x - 10 - r() * 50, y: y + (r() - 0.5) * 16, vx: -20 - r() * 14, vy: (r() - 0.5) * 6, age: 0, max: 1 + r() * 0.9, k: 'spark', r0: 1, r1: 1, c: ['#FFFFFF', '#FFE27A', '#FFB3CF', '#CFE8FF'][Math.floor(r() * 4)]! });
+      } else if (kind === 'streak') {
+        this.parts.push({ x: x + 2, y: y - 8 + r() * 24, vx: -120 - r() * 50, vy: 0, age: 0, max: 0.45, k: 'streak', r0: 8 + r() * 10, r1: 0 });
+      } else if (kind === 'ember') {
+        if (this.flyerId === 'dragon') this.parts.push({ x, y, vx: -24, vy: -10 - r() * 8, age: 0, max: 1.6, k: 'puff', r0: 1, r1: 3 });
+        else this.parts.push({ x: x + (r() - 0.5) * 3, y, vx: -14 - r() * 8, vy: -14 - r() * 10, age: 0, max: 1.3, k: 'spark', r0: 1, r1: 1, c: r() < 0.5 ? '#FFD86B' : '#FF9A3C' });
+      } else if (kind === 'beam') {
+        this.parts.push({ x: x + (r() - 0.5) * 40, y: y + 8 + r() * Math.max(10, H - y - 20), vx: -18, vy: 6 + r() * 6, age: 0, max: 0.9, k: 'spark', r0: 1, r1: 1, c: '#E8FFEE' });
+      }
+    }
+  }
+
+  private drawParts(dt: number, k: number, m: Mood) {
+    const g = this.g;
+    const puff = this.time === 'night' ? '#98A8D6' : this.time === 'sunset' ? '#FFD9CC' : '#FFFFFF';
+    const smoke = this.time === 'night' ? '#6C7898' : '#D0D5DE';
+    let n = 0;
+    for (const p of this.parts) {
+      p.age += dt;
+      if (p.age >= p.max) continue;
+      p.x += p.vx * dt * k;
+      p.y += p.vy * dt;
+      this.parts[n++] = p;
+      const u = p.age / p.max;
+      if (p.k === 'puff' || p.k === 'smoke') {
+        g.globalAlpha = (1 - u) * (p.k === 'puff' ? 0.9 : 0.75);
+        disc(g, Math.round(p.x), Math.round(p.y), Math.max(1, Math.round(p.r0 + (p.r1 - p.r0) * u)), p.k === 'puff' ? puff : smoke);
+      } else if (p.k === 'spark') {
+        g.globalAlpha = Math.min(1, (1 - u) * 2);
+        const c = p.c ?? '#FFFFFF';
+        const x = Math.round(p.x);
+        const y = Math.round(p.y);
+        R(g, x, y, 1, 1, c);
+        if (Math.sin(this.t * 14 + p.x) > 0) {
+          R(g, x - 1, y, 3, 1, c);
+          R(g, x, y - 1, 1, 3, c);
+        }
+      } else {
+        g.globalAlpha = (1 - u) * 0.55;
+        R(g, Math.round(p.x), Math.round(p.y), p.r0, 1, this.time === 'night' ? mix('#FFFFFF', m.horizon, 0.3) : '#FFFFFF');
+      }
+    }
+    this.parts.length = n;
+    g.globalAlpha = 1;
+  }
+
+  /** Vệt gió khi vừa trả lời đúng (tăng tốc): vài vạch ngang lướt nhanh qua khung. */
+  private windStreaks() {
+    const g = this.g;
+    const s = Math.min(1, (this.speed - 1.4) / 1.6);
+    g.globalAlpha = 0.35 * s;
+    for (let i = 0; i < 9; i++) {
+      const y = 14 + ((i * 53) % (H - 28));
+      const x = (((i * 131 - this.scroll * 6) % (W + 80)) + W + 80) % (W + 80) - 40;
+      R(g, x, y, 18 + (i % 4) * 8, 1, '#FFFFFF');
+    }
+    g.globalAlpha = 1;
+  }
+
+  /** Mưa / tuyết rơi + màn mây chuyển thành phố (bay xuyên mây rồi tan). */
   private weatherAndTransition(dt: number) {
     const g = this.g;
     if (this.drops.length) {
-      const rain = this.key.endsWith('rain');
+      const rain = this.weather === 'rain';
       g.fillStyle = rain ? 'rgba(200,215,235,0.55)' : 'rgba(255,255,255,0.9)';
       for (const d of this.drops) {
         if (rain) {
@@ -1313,19 +1459,28 @@ export class RailScene {
         if (d.x < -6) d.x += W + 6;
       }
     }
-    // Chuyển ga: tàu chui hầm — tối dần, đổi cảnh, sáng dần.
+    // Chuyển thành phố: bay vào một dải mây — trắng xoá dần, đổi cảnh, mây tan.
     if (this.trans) {
+      const dur = this.calm ? 2.4 : 1.5;
       const waiting = !this.trans.next && this.photoPending && this.t - this.pendingSince < 3;
-      this.trans.p = waiting ? Math.min(this.trans.p + dt / 1.4, 0.5) : this.trans.p + dt / 1.4;
+      this.trans.p = waiting ? Math.min(this.trans.p + dt / dur, 0.5) : this.trans.p + dt / dur;
       const p = this.trans.p;
       if (p >= 0.5 && this.trans.next) {
         const n = this.trans.next;
         this.trans.next = null;
         n();
       }
-      const a = p < 0.5 ? p * 2 : Math.max(0, 2 - p * 2);
-      g.globalAlpha = Math.min(1, a);
-      R(g, 0, 0, W, H, '#07080E');
+      const u = p < 0.5 ? p * 2 : Math.max(0, 2 - p * 2);
+      const cc = cloudColors(this.time, this.weather);
+      for (const pf of this.trans.puffs) {
+        const rr = pf.r * Math.max(0, Math.min(1.15, (u - pf.ph * 0.4) / 0.6));
+        if (rr < 1) continue;
+        const x = pf.x - p * 70;
+        disc(g, Math.round(x + 2), Math.round(pf.y + 3), Math.round(rr), cc.bottom);
+        disc(g, Math.round(x), Math.round(pf.y), Math.round(rr), cc.top);
+      }
+      g.globalAlpha = Math.max(0, Math.min(1, (u - 0.6) * 2.5)) * (this.calm ? 0.85 : 1);
+      R(g, 0, 0, W, H, cc.top);
       g.globalAlpha = 1;
       if (p >= 1) this.trans = null;
     }

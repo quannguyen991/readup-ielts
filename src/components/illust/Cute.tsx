@@ -127,6 +127,24 @@ export function CuteTrain({ size = 90 }: P) {
   );
 }
 
+/** Máy bay dễ thương (thay toa tàu — Chuyến bay từ vựng). */
+export function CutePlane({ size = 90 }: P) {
+  return (
+    <Svg width={size} height={size * 0.62} viewBox="0 0 130 80">
+      <Path d="M 14 52 Q 44 50 74 46" stroke="#FFFFFF" strokeWidth={5} strokeLinecap="round" opacity={0.7} fill="none" />
+      <Path d="M 52 40 L 36 14 L 52 14 L 74 38 Z" fill="#F9F1E3" stroke={INK} strokeWidth={2.4} strokeLinejoin="round" />
+      <Path d="M 52 54 L 36 78 L 52 78 L 74 56 Z" fill="#F9F1E3" stroke={INK} strokeWidth={2.4} strokeLinejoin="round" />
+      <Path d="M 36 44 L 28 26 L 40 26 L 46 40 Z" fill="#A8843F" stroke={INK} strokeWidth={2.4} strokeLinejoin="round" />
+      <Path d="M 34 46 Q 36 36 70 36 L 104 38 Q 122 42 122 48 Q 122 54 104 56 L 70 58 Q 36 58 34 48 Z" fill="#F9F1E3" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+      <Path d="M 40 50 L 112 50 L 112 53 L 40 53 Z" fill="#FACC15" />
+      <Circle cx={86} cy={44} r={3.6} fill="#BFE3F5" stroke={INK} strokeWidth={1.8} />
+      <Circle cx={74} cy={44} r={3.6} fill="#BFE3F5" stroke={INK} strokeWidth={1.8} />
+      <Circle cx={62} cy={44} r={3.6} fill="#BFE3F5" stroke={INK} strokeWidth={1.8} />
+      <Path d="M 100 40 Q 110 38 116 44 L 100 46 Z" fill="#BFE3F5" stroke={INK} strokeWidth={2} strokeLinejoin="round" />
+    </Svg>
+  );
+}
+
 // ------------------------------------------------------------------ huy hiệu viền răng cưa
 
 /** Đường viền "con dấu" 12 răng quanh tâm (50, 50). */

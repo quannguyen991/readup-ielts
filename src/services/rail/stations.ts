@@ -1,6 +1,7 @@
 /**
- * GA TÀU của "Chuyến tàu chậm" — mỗi ga là một CÔNG THỨC dựng cảnh (không phải
- * ảnh): kiểu phố, núi, nước, cây, và vài công trình biểu tượng vẽ bằng khối
+ * THÀNH PHỐ của "Bay qua thành phố" (tên kiểu `Station` và khoá `station` giữ lại
+ * để không mất dữ liệu đã lưu) — mỗi thành phố là một CÔNG THỨC dựng cảnh (không
+ * phải ảnh): kiểu phố, núi, nước, cây, và vài công trình biểu tượng vẽ bằng khối
  * pixel. Bộ vẽ ở `scene.ts` đọc công thức này; cùng công thức + cùng hạt giống
  * thì ra đúng một bức, nên không cần lưu ảnh nào.
  *
@@ -52,7 +53,7 @@ export type Station = {
   vi: string;
   en: string;
   country: string;
-  /** Múi giờ IANA — đồng hồ hiện giờ địa phương của ga. */
+  /** Múi giờ IANA — đồng hồ hiện giờ địa phương của thành phố. */
   tz: string;
   /** Bài Wikipedia tiếng Việt cho nút "Khám phá". */
   wiki: string;
@@ -61,7 +62,7 @@ export type Station = {
   water: Water;
   veg: Vegetation;
   landmarks: Landmark[];
-  /** Chủ đề từ vựng gợi ý cho ga (hiện cạnh câu hỏi). */
+  /** Chủ đề từ vựng gợi ý cho thành phố (hiện cạnh câu hỏi). */
   topic: string;
 };
 
@@ -122,7 +123,7 @@ export function nextStation(id: string, dir: 1 | -1 = 1): Station {
   return STATIONS[(i + dir + STATIONS.length) % STATIONS.length]!;
 }
 
-/** Giờ:phút địa phương của ga (HH, MM) — đồng hồ LCD và chế độ "tự theo giờ". */
+/** Giờ:phút địa phương của thành phố (HH, MM) — đồng hồ LCD và chế độ "tự theo giờ". */
 export function localClock(tz: string, now: Date): { h: number; m: number } {
   try {
     const parts = new Intl.DateTimeFormat('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(now);
@@ -148,9 +149,9 @@ export function timeOfDayAt(h: number): TimeOfDay {
 export type Route = { id: string; vi: string; glyph: string; color: string; stops: string[] };
 
 /**
- * Tuyến tàu: mỗi tuyến là một vòng các ga theo đúng thứ tự địa lý (đi hết
- * tuyến thì vòng lại ga đầu). Thay cho danh sách thả xuống dài — người học chọn
- * một hành trình, và thấy nó như sơ đồ tàu điện.
+ * Hành trình bay: mỗi tuyến là một vòng các thành phố theo đúng thứ tự địa lý (bay
+ * hết tuyến thì vòng lại thành phố đầu). Thay cho danh sách thả xuống dài — người
+ * học chọn một hành trình, và thấy nó như sơ đồ chặng bay.
  */
 export const ROUTES: readonly Route[] = [
   { id: 'vn', vi: 'Bắc – Nam Việt Nam', glyph: '🏮', color: '#E4574A', stops: ['sapa', 'hagiang', 'hanoi', 'halong', 'ninhbinh', 'hue', 'danang', 'hoian', 'nhatrang', 'dalat', 'hcm', 'cantho', 'phuquoc'] },
@@ -163,12 +164,12 @@ export function routeById(id: string | null | undefined): Route {
   return ROUTES.find((r) => r.id === id) ?? ROUTES[0]!;
 }
 
-/** Tuyến đang chứa ga (ga không thuộc tuyến nào thì về tuyến đầu). */
+/** Hành trình đang chứa thành phố (không thuộc tuyến nào thì về tuyến đầu). */
 export function routeOf(stationId: string): Route {
   return ROUTES.find((r) => r.stops.includes(stationId)) ?? ROUTES[0]!;
 }
 
-/** Ga kế tiếp TRÊN TUYẾN (vòng lại đầu tuyến). */
+/** Thành phố kế tiếp TRÊN TUYẾN (vòng lại đầu tuyến). */
 export function nextOnRoute(route: Route, stationId: string, dir: 1 | -1 = 1): Station {
   const i = Math.max(0, route.stops.indexOf(stationId));
   return stationById(route.stops[(i + dir + route.stops.length) % route.stops.length]!);

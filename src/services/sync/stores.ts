@@ -33,6 +33,8 @@ import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
 import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
 import { mergeSpeakingAttempts, type SpeakingAttempt } from '@/services/speaking/attempts';
+import { travelPayload, useTravelStore } from '@/store/useTravelStore';
+import { mergeTravel, normalizeTravel } from '@/services/travel/sync';
 
 /**
  * Nối từng zustand store vào engine đồng bộ.
@@ -244,6 +246,19 @@ const speakingStore: SyncedStore = {
   }),
 };
 
+/**
+ * Du ngoạn Band 9: vé / xu tính từ sổ cái (hợp theo mã khoản, không cộng đôi),
+ * tiến độ lấy số lớn, vị trí và tuỳ chọn theo bản mới hơn (xem `services/travel/sync.ts`).
+ */
+const travelStore: SyncedStore = {
+  key: 'travel',
+  read: () => travelPayload(),
+  write: (payload) => {
+    if (payload) useTravelStore.setState(normalizeTravel(payload));
+  },
+  merge: (local, remote) => mergeTravel(local, remote),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -310,4 +325,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(satRoadmapStore);
   registerSyncedStore(localeStore);
   registerSyncedStore(speakingStore);
+  registerSyncedStore(travelStore);
 }

@@ -6,6 +6,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { anim, MOVE } from '@/components/game/game-anim';
 import { PixelSprite } from '@/components/game/PixelSprite';
+import { HeroSprite } from '@/components/game/HeroSprite';
 import { AnimatedAvatar, AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { ProfileEffect } from '@/components/profile/ProfileEffect';
@@ -336,7 +337,7 @@ function SlotPreview({ slot, item, name, skin }: { slot: WearSlot; item: ShopIte
     return (
       <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: NIGHT, alignItems: 'center', justifyContent: 'center' }}>
         <View style={anim('rg-bob', 1400, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-          <PixelSprite name="hero" size={44} skin={skin} />
+          <HeroSprite size={44} skin={skin} />
         </View>
       </View>
     );
@@ -361,7 +362,7 @@ function MiniPreview({ item, skin }: { item: ShopItem; skin: ReturnType<typeof s
     const pet = item.mascot ? MASCOTS[item.mascot] : null;
     return (
       <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: NIGHT, alignItems: 'center', justifyContent: 'center' }}>
-        {pet ? <PixelSprite name={pet.look} color={pet.color} size={24} /> : <PixelSprite name="hero" size={24} skin={item.skin} />}
+        {pet ? <PixelSprite name={pet.look} color={pet.color} size={24} /> : <HeroSprite size={24} skin={item.skin} />}
       </View>
     );
   }

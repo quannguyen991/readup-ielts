@@ -42,7 +42,7 @@ export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
 };
 
 /**
- * Thanh bên TRONG SUỐT cho màn học đang dùng nền toa tàu: không nền, không viền,
+ * Thanh bên TRONG SUỐT cho màn học đang dùng nền cảnh bay: không nền, không viền,
  * chỉ còn biểu tượng trắng nổi trên cảnh thành phố (người dùng yêu cầu 30/09).
  */
 export const GLASS_SIDEBAR_THEME: SidebarThemeConfig = {

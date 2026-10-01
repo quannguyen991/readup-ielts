@@ -120,6 +120,8 @@ const CSS = `
   box-shadow:0 6px 16px rgba(11,26,46,.25)}
 .cg-label small{display:block;font-family:${CG.font};font-size:14px;opacity:.8}
 .cg-label.active{background:${CG.brand}}
+.cg-label.pin{padding:3px 8px;border-radius:999px;font-size:16px;background:rgba(11,26,46,.78)}
+.cg-label.pin small{display:none}
 .cg-hub-dark{background:#0B1A2E;color:#fff}
 @media (prefers-reduced-motion: reduce){
   .cg-root *,.cg-root *::before,.cg-root *::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}

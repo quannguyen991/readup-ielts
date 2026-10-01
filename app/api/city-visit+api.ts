@@ -1,7 +1,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { anonymousName } from '@/services/gamification/display-name';
 import { addNote, cleanNote, EMPTY_HOME, EMPTY_SOCIAL, toggleLike, type CitySocial, type HomeLayout } from '@/services/city/life';
-import { defaultCityName, identify, listCities, namesOf, safeName, shortId } from '@/lib/city-server';
+import { defaultCityName, findCityOwner, identify, listCities, namesOf, safeName, shortId } from '@/lib/city-server';
 import { furnitureById } from '@/data/city/furniture';
 import { errorText, msg } from '@/lib/server-locale';
 
@@ -23,16 +23,6 @@ import { errorText, msg } from '@/lib/server-locale';
  * sách đồng bộ của app, nên máy của chủ không ghi đè lên nó; chỉ API này ghi.
  */
 
-type Admin = ReturnType<typeof getSupabaseAdmin>;
-
-/** Tìm chủ thành phố theo mã rút gọn (chỉ trong những người đã có thành phố). */
-async function findOwner(admin: Admin, id: string): Promise<string | null> {
-  if (!/^[0-9a-f]{12}$/.test(id)) return null;
-  const { data } = await admin.from('user_state').select('user_id').eq('store_key', 'city');
-  const hit = ((data ?? []) as { user_id: string }[]).find((r) => shortId(r.user_id) === id);
-  return hit?.user_id ?? null;
-}
-
 function cleanHome(raw: unknown): HomeLayout {
   const h = (raw ?? {}) as Partial<HomeLayout>;
   const items = Array.isArray(h.items) ? h.items.filter((p) => p && typeof p.item === 'string' && furnitureById(p.item) && Number.isInteger(p.x) && Number.isInteger(p.y)).slice(0, 80) : [];
@@ -50,7 +40,7 @@ export async function GET(request: Request): Promise<Response> {
       return Response.json({ cities: await listCities(admin, 40, request) });
     }
 
-    const owner = await findOwner(admin, id);
+    const owner = await findCityOwner(admin, id);
     if (!owner) return Response.json({ error: msg(request, 'Không tìm thấy thành phố.', 'City not found.') }, { status: 404 });
     const { data } = await admin.from('user_state').select('store_key, payload').eq('user_id', owner).in('store_key', ['city', 'city_life', 'city_social']);
     const by = new Map(((data ?? []) as { store_key: string; payload: Record<string, unknown> | null }[]).map((r) => [r.store_key, r.payload ?? {}]));
@@ -82,7 +72,7 @@ export async function POST(request: Request): Promise<Response> {
     const viewer = await identify(request, admin);
     if (!viewer) return Response.json({ error: msg(request, 'Cần đăng nhập để thích hoặc ghi sổ lưu bút.', 'Sign in to like or write in the guestbook.') }, { status: 401 });
     const body = (await request.json().catch(() => ({}))) as { id?: string; action?: string; text?: unknown };
-    const owner = await findOwner(admin, String(body.id ?? ''));
+    const owner = await findCityOwner(admin, String(body.id ?? ''));
     if (!owner) return Response.json({ error: msg(request, 'Không tìm thấy thành phố.', 'City not found.') }, { status: 404 });
     if (owner === viewer) return Response.json({ error: msg(request, 'Đây là thành phố của bạn.', 'This is your own city.') }, { status: 400 });
 

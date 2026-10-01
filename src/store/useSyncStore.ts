@@ -14,6 +14,7 @@ import { useBillingStore } from './useBillingStore';
 import { useWeeklyStore } from './useWeeklyStore';
 import { useSatRwStore } from './useSatRwStore';
 import { useRoadmapStore } from './useRoadmapStore';
+import { useTravelStore } from './useTravelStore';
 
 /**
  * Điều phối đồng bộ.
@@ -125,6 +126,7 @@ export function useSyncBootstrap() {
       useWeeklyStore.subscribe(schedule),
       useSatRwStore.subscribe(schedule),
       useRoadmapStore.subscribe(schedule),
+      useTravelStore.subscribe(schedule),
     ];
 
     return () => {

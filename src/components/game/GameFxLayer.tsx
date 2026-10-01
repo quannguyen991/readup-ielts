@@ -4,7 +4,7 @@ import { Platform, Text, View } from 'react-native';
 import { useTravelActive } from '@/components/rail/TravelBackdrop';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
-import { PixelSprite } from './PixelSprite';
+import { HeroSprite } from './HeroSprite';
 import { titleForLevel } from '@/services/game/rules';
 import { lifetimePoints } from '@/services/gamification/points';
 import { useGameFx, type FxEvent } from '@/store/useGameFx';
@@ -94,7 +94,7 @@ function LevelBanner({ level }: { level: number }) {
         </View>
       </View>
       <View style={{ alignItems: 'center', minWidth: 200, borderRadius: 22, paddingHorizontal: 30, paddingVertical: 18, backgroundColor: '#1B1540', borderWidth: 3, borderColor: '#FACC15', boxShadow: '0 18px 50px rgba(27,21,64,0.45)' } as object}>
-        <PixelSprite name="hero" size={76} />
+        <HeroSprite size={76} mood="happy" />
         <Text className="font-heavy" style={{ marginTop: 6, fontSize: 14, letterSpacing: 3, color: '#FDE68A' }}>
           {L('LÊN CẤP', 'LEVEL UP')}
         </Text>

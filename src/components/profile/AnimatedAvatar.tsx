@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { ensureProfileKeyframes, loop, MOVE } from './profile-anim';
 import { PixelSprite } from '@/components/game/PixelSprite';
+import { HeroSprite } from '@/components/game/HeroSprite';
 import type { SkinId } from '@/components/game/sprites';
 import { GlowStars } from '@/components/ui/GlowStars';
 import { findItem, type AvatarLook } from '@/services/gamification/shop';
@@ -33,7 +34,7 @@ export function AnimatedAvatar({ look, size, skin }: { look: AvatarLook; size: n
       <View style={{ width: inner + size * 0.1, height: inner + size * 0.1, borderRadius: size, backgroundColor: '#1B1540', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
         {look === 'hero' ? (
           <View style={loop('rp-bob', 1200)} {...MOVE}>
-            <PixelSprite name="hero" size={sprite} skin={skin} />
+            <HeroSprite size={sprite} skin={skin} />
           </View>
         ) : look === 'slime' ? (
           <View style={{ ...loop('rp-bounce', 900), transformOrigin: 'bottom' } as object} {...MOVE}>

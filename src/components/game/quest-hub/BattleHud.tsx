@@ -7,12 +7,13 @@
  * Mọi số đọc thẳng từ kho: useGameStore, useStarBalance, useStreak, useRewardStore.
  */
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import { useShallow } from 'zustand/react/shallow';
 
 import { anim, MOVE } from '@/components/game/game-anim';
 import { PixelSprite } from '@/components/game/PixelSprite';
+import { HeroSprite } from '@/components/game/HeroSprite';
 import { ENEMY_SPRITE } from '@/components/game/sprites';
 import { MASCOTS } from '@/services/game/mascots';
 import { enemyAt, ENEMIES, levelProgress, MAX_HEARTS, titleForLevel } from '@/services/game/rules';
@@ -45,10 +46,13 @@ export function HeroStage({ size = 128 }: { size?: number }) {
       style={{ width: size, height: size, borderRadius: 18, overflow: 'hidden', backgroundColor: HUB.stage, alignItems: 'center', justifyContent: 'flex-end' }}
     >
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: Math.round(size * 0.22), backgroundColor: HUB.ground }} />
+      {Platform.OS === 'web' ? (
+        <View pointerEvents="none" style={{ position: 'absolute', left: '6%', right: '6%', top: '10%', bottom: '2%', backgroundImage: 'radial-gradient(closest-side, rgba(226,200,143,0.34), rgba(226,200,143,0))' } as object} />
+      ) : null}
       <View style={{ position: 'absolute', left: '18%', top: '16%', width: 3, height: 3, backgroundColor: '#FDE68A', opacity: 0.8 }} />
       <View style={{ position: 'absolute', right: '20%', top: '10%', width: 2, height: 2, backgroundColor: '#FFFFFF', opacity: 0.7 }} />
       <View style={anim('rg-bob', 1500, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-        <PixelSprite name="hero" size={Math.round(size * 0.72)} skin={skin} />
+        <HeroSprite size={Math.round(size * 0.78)} skin={skin} />
       </View>
       <View style={{ marginBottom: Math.round(size * 0.12), marginTop: -Math.round(size * 0.05), width: Math.round(size * 0.46), height: Math.max(5, Math.round(size * 0.06)), borderRadius: 999, backgroundColor: 'rgba(0,0,0,0.4)' }} />
       {pet ? (

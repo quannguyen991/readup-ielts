@@ -16,7 +16,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Label, Sticker } from './Sticker';
-import { CuteBook, CuteCalendar, CuteClock, CuteCloud, CuteGlobe, CutePencil, CuteTrain } from './Cute';
+import { CuteBook, CuteCalendar, CuteClock, CuteCloud, CuteGlobe, CutePencil, CutePlane } from './Cute';
 import { CuteBulb, CuteCalculator, CuteChat, CuteFlame, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CutePlant, CuteRocket, CuteStar, CuteTrophy, Motion } from './CuteMore';
 import { useL } from '@/i18n/useL';
 
@@ -28,7 +28,7 @@ const SCENES: Record<string, [Art, Art, Art]> = {
   verbal: [CuteChat, CuteBook, CutePencil],
   vocab: [CuteBulb, CuteNotebook, CuteStar],
   progress: [CuteFlame, CuteTrophy, CuteCalendar],
-  quest: [CuteGlobe, CuteTrain, CuteTrophy],
+  quest: [CuteGlobe, CutePlane, CuteTrophy],
   shop: [CuteStar, CuteTrophy, CuteRocket],
   profile: [CuteStar, CuteBook, CuteFlame],
   writing: [CuteBulb, CutePencil, CuteNotebook],
@@ -167,7 +167,7 @@ const BY_ICON: Partial<Record<IconName, Art>> = {
   trending: CuteRocket,
   gauge: CuteRocket,
   search: CuteMagnifier,
-  compass: CuteTrain,
+  compass: CutePlane,
   leaf: CutePlant,
   star: CuteStar,
   sparkle: CuteStar,

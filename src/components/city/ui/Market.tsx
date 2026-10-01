@@ -12,6 +12,7 @@ import { vnToday } from '@/services/gamification/golden';
 import { useCityStore } from '@/store/useCityStore';
 import { useStarBalance } from '@/store/useStarBalance';
 import { Modal } from './EarnSheet';
+import { QuickSwap } from './QuickSwap';
 import { useL } from './common';
 import { CG } from './theme';
 
@@ -63,12 +64,7 @@ export function MarketSheet({ want, onClose, onEarn, toast }: { want?: Partial<M
   return (
     <Modal title={L({ vi: '🛒 Chợ vật liệu', en: '🛒 Materials market' })} onClose={onClose} width={760}>
       <div className="cg-row" style={{ justifyContent: 'space-between', flexWrap: 'wrap', marginBottom: 10 }}>
-        <span className="cg-muted" style={{ fontSize: 14, maxWidth: 480 }}>
-          {L({
-            vi: 'Đổi sao lấy vật liệu khi còn thiếu vài viên. Mỗi loại có trần đổi mỗi ngày — học vẫn là đường chính.',
-            en: 'Swap stars for materials when you are a few short. Each material has a daily swap cap — studying is still the main road.',
-          })}
-        </span>
+        <QuickSwap want={want} />
         <span className="cg-chip" style={{ background: CG.warnSoft, color: CG.warn, fontSize: 16 }} aria-label={L({ vi: `Số sao: ${stars}`, en: `Stars: ${stars}` })}>
           ⭐ {fmt(stars)}
         </span>

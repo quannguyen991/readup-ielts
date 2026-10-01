@@ -7,10 +7,10 @@ import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { CuteGlobe, CuteTrain } from '@/components/illust/Cute';
+import { CuteGlobe, CutePlane } from '@/components/illust/Cute';
 import { CuteFlame, CuteMic, CuteRocket, CuteStar, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { Sticker } from '@/components/illust/Sticker';
-import { PixelSprite } from '@/components/game/PixelSprite';
+import { HeroSprite } from '@/components/game/HeroSprite';
 import { Icon } from '@/components/ui/Icon';
 import { skinOf, useRewardStore } from '@/store/useRewardStore';
 import { Cols, GAP, HUB, lift, WEB } from './kit';
@@ -19,7 +19,7 @@ import { useL } from '@/i18n/useL';
 type Tile = { title: string; titleEn: string; detail: string; detailEn: string; href: string; tone: string; art: (size: number) => React.ReactNode };
 
 const TILES: Tile[] = [
-  { title: 'Toa Từ Vựng', titleEn: 'Vocabulary Rail', detail: 'Học từ trên chuyến tàu qua các thành phố', detailEn: 'Learn words on a train ride through cities', href: '/quest/rail', tone: HUB.sky, art: (s) => <CuteTrain size={s * 1.25} /> },
+  { title: 'Chuyến bay từ vựng', titleEn: 'Vocab Flight', detail: 'Bay qua các thành phố và học từ', detailEn: 'Fly over cities and learn words', href: '/quest/rail', tone: HUB.sky, art: (s) => <CutePlane size={s * 1.25} /> },
   { title: 'Bản đồ Band 9', titleEn: 'Band 9 map', detail: 'Đi bộ qua sáu đảo bài học', detailEn: 'Walk across six lesson islands', href: '/quest/world', tone: HUB.blue, art: (s) => <CuteGlobe size={s} /> },
   { title: 'Đấu 1–1', titleEn: '1-on-1 duel', detail: 'Thách một người bạn 10 câu', detailEn: 'Challenge a friend to 10 questions', href: '/duel', tone: HUB.orange, art: (s) => <CuteFlame size={s} /> },
   { title: 'Đề của tuần', titleEn: 'Weekly challenge', detail: 'Cả nước làm chung một đề', detailEn: 'The whole country takes the same test', href: '/weekly', tone: HUB.amber, art: (s) => <CuteTrophy size={s} /> },
@@ -31,7 +31,7 @@ const TILES: Tile[] = [
 
 function HeroArtTile({ size }: { size: number }) {
   const skin = skinOf(useRewardStore((s) => s.skin));
-  return <PixelSprite name="hero" size={size} skin={skin} />;
+  return <HeroSprite size={size} skin={skin} />;
 }
 
 function ExploreTile({ tile, compact }: { tile: Tile; compact: boolean }) {

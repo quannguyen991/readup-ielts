@@ -5,6 +5,7 @@ import Svg, { Rect } from 'react-native-svg';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { PixelSprite } from './PixelSprite';
+import { HeroSprite } from './HeroSprite';
 import { ENEMY_SPRITE } from './sprites';
 import { sfx } from '@/services/audio/sfx';
 import { useTravelActive } from '@/components/rail/TravelBackdrop';
@@ -188,6 +189,19 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   const itemTotal = ITEM_ORDER.reduce((n, k) => n + (items[k] ?? 0), 0);
   const fever = combo >= FEVER_AT;
   const lowHp = hearts === 1;
+  // Nét mặt đổi trong chốc lát theo nhịp đánh (trúng đòn → hô to; mất tim → nhăn), còn 1 tim thì mệt.
+  const [flash, setFlash] = useState<'attack' | 'hurt' | null>(null);
+  const [flashKey, setFlashKey] = useState('0-0');
+  if (flashKey !== heroKey) {
+    setFlashKey(heroKey);
+    setFlash(heroAttacks ? 'attack' : 'hurt');
+  }
+  useEffect(() => {
+    if (!flash) return;
+    const t = setTimeout(() => setFlash(null), 850);
+    return () => clearTimeout(t);
+  }, [flash, flashKey]);
+  const heroMood = flash ?? (lowHp ? 'tired' : 'idle');
   const enemySize = enemy.boss ? BOSS_SPRITE_SIZE : ENEMY_SPRITE_SIZE;
   // Chí mạng rung cả khung. Đổi tên hoạt cảnh (a/b) là cách cho nó chạy lại mà không phải dựng lại cả cảnh.
   const shake = hit?.crit && heroAttacks ? (hit.id % 2 ? 'rg-shake-a' : 'rg-shake-b') : null;
@@ -323,7 +337,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             ) : null}
             <View key={heroKey} style={hit || hurt ? anim(heroAttacks ? 'rg-lunge' : 'rg-hurt', heroAttacks ? 360 : 520) : undefined} {...MOVE}>
               <View style={anim('rg-bob', 1400, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-                <PixelSprite name="hero" size={54} skin={skin} />
+                <HeroSprite size={54} skin={skin} mood={heroMood} />
               </View>
             </View>
             {shield ? (

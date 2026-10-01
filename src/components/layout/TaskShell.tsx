@@ -67,7 +67,7 @@ export function TaskShell({
 }) {
   const pathname = usePathname();
   const { L } = useL();
-  // Màn làm bài của chép chính tả / viết câu báo "đang làm bài" để nền toa tàu chạy
+  // Màn làm bài của chép chính tả / viết câu báo "đang làm bài" để nền cảnh bay chạy
   // (trang chọn bộ đề dùng variant 'full' nên không báo — nền giữ như cũ).
   const practice = variant === 'compact' && isTravelLightRoute(pathname);
   useEffect(() => {
@@ -76,7 +76,7 @@ export function TaskShell({
     return () => useTravelPractice.getState().leave();
   }, [practice]);
   const travel = useTravelActive() && practice;
-  // Nền toa tàu phủ lớp sáng: chữ luôn dùng màu mực tối cho dễ đọc.
+  // Nền cảnh bay phủ lớp sáng: chữ luôn dùng màu mực tối cho dễ đọc.
   const onBrand = tone === 'brand' && !travel;
   const titleColor = onBrand ? color.white : paper.ink;
   const subColor = onBrand ? 'rgba(255,255,255,0.72)' : paper.muted;
@@ -174,7 +174,7 @@ export function TaskShell({
     viết lên — và một nền đang chuyển động chậm ngay sau con trỏ là thứ gây phân
     tâm đúng vào lúc cần tập trung nhất.
   */
-  // Màn có nền toa tàu (chép chính tả, viết câu): khung trong suốt để cảnh thành phố lộ ra.
+  // Màn có nền cảnh bay (chép chính tả, viết câu): khung trong suốt để cảnh thành phố lộ ra.
   if (travel) return <>{body}</>;
   if (onBrand) return <AuroraBackdrop>{body}</AuroraBackdrop>;
 

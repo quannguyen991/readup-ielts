@@ -12,6 +12,7 @@ import { MATERIAL_INFO, MATERIAL_KINDS, type MaterialKind, type Materials } from
 import { vnToday } from '@/services/gamification/golden';
 import { useCityStore } from '@/store/useCityStore';
 import { useStarBalance } from '@/store/useStarBalance';
+import { QuickSwap } from './QuickSwap';
 import { Bar, useL } from './common';
 import { CG, prefersReducedMotion } from './theme';
 
@@ -92,20 +93,20 @@ export function EarnSheet({ focus, onClose, onMarket }: { focus?: MaterialKind; 
           <span aria-hidden style={{ fontSize: 26, width: 40, textAlign: 'center' }}>👷</span>
           <span style={{ fontSize: 14 }}>{t('city.shift.rules', { k: ECONOMY.shift.answersPerShift })}</span>
         </div>
-        {onMarket ? (
-          <div className="cg-card" style={{ cursor: 'default', alignItems: 'center', background: CG.warnSoft }}>
-            <span aria-hidden style={{ fontSize: 26, width: 40, textAlign: 'center' }}>⭐</span>
-            <span style={{ flex: 1, fontSize: 14 }}>
-              {L({
-                vi: `Học còn cho sao (thời gian học + số câu làm). Bạn đang có ${stars.toLocaleString('vi-VN')}⭐ — đổi ở Chợ vật liệu khi thiếu gấp.`,
-                en: `Studying also earns stars (study time + questions answered). You have ${stars.toLocaleString('en-US')}⭐ — swap them at the Materials market when you are short.`,
-              })}
+        <div className="cg-card" style={{ cursor: 'default', alignItems: 'center', background: CG.warnSoft }}>
+          <span aria-hidden style={{ fontSize: 26, width: 40, textAlign: 'center' }}>⭐</span>
+          <span style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 6 }}>
+            <span className="cg-b" style={{ fontSize: 15 }}>
+              {L({ vi: `${stars.toLocaleString('vi-VN')}⭐ → vật liệu`, en: `${stars.toLocaleString('en-US')}⭐ → materials` })}
             </span>
-            <button className="cg-btn small" onClick={() => onMarket()} style={{ marginLeft: 6 }}>
-              🛒 {L({ vi: 'Chợ vật liệu', en: 'Market' })}
+            <QuickSwap dense />
+          </span>
+          {onMarket ? (
+            <button className="cg-btn small" onClick={() => onMarket()} style={{ marginLeft: 6, alignSelf: 'flex-start' }}>
+              🛒 {L({ vi: 'Chợ', en: 'Market' })}
             </button>
-          </div>
-        ) : null}
+          ) : null}
+        </div>
       </div>
       <p className="cg-muted" style={{ margin: '12px 0 0', fontSize: 14 }}>{t('city.earn.noBuy')}</p>
     </Modal>

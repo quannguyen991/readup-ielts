@@ -35,16 +35,17 @@ export function setSfxMuted(value: boolean): void {
 }
 
 /**
- * Chế độ TOA TÀU: màn học đang dùng nền tàu chạy (hoặc đang ở Toa Từ Vựng) thì
- * không có trận đấu — câu đúng / sai phát tiếng "tàu" thay cho tiếng chém / bị đánh.
- * Đếm số nơi đang bật để hai màn chồng nhau không tắt nhầm của nhau.
+ * Chế độ BAY QUA THÀNH PHỐ: màn học đang dùng nền cảnh bay (hoặc đang ở Chuyến bay
+ * từ vựng) thì không có trận đấu — câu đúng / sai phát tiếng gió + chuông nhẹ thay
+ * cho tiếng chém / bị đánh. Đếm số nơi đang bật để hai màn chồng nhau không tắt
+ * nhầm của nhau.
  */
-let travelUsers = 0;
-export function setTravelSfx(on: boolean): void {
-  travelUsers = Math.max(0, travelUsers + (on ? 1 : -1));
+let flightUsers = 0;
+export function setFlightSfx(on: boolean): void {
+  flightUsers = Math.max(0, flightUsers + (on ? 1 : -1));
 }
-export function isTravelSfx(): boolean {
-  return travelUsers > 0;
+export function isFlightSfx(): boolean {
+  return flightUsers > 0;
 }
 
 export function isSfxMuted(): boolean {
@@ -157,34 +158,31 @@ export const sfx = {
     });
   },
 
-  /** Toa tàu — trả lời đúng: chuông hai nốt (cao dần theo combo) + còi tàu ngắn "tu-tu". */
-  railCorrect(combo = 1): boolean {
-    return play('railCorrect', 250, (e) => {
+  /** Chuyến bay — trả lời đúng: chuông hai nốt (cao dần theo combo) + một làn gió vụt qua. */
+  flyCorrect(combo = 1): boolean {
+    return play('flyCorrect', 250, (e) => {
       const base = shiftHz(784, comboSemitones(combo));
       tone(e, base, { dur: 0.14, gain: 0.12, type: 'triangle' });
       tone(e, base * 1.26, { at: 0.08, dur: 0.14, gain: 0.11, type: 'triangle' });
       tone(e, base * 1.5, { at: 0.16, dur: 0.3, gain: 0.1, type: 'triangle' });
-      // Còi: hai hợp âm ngắn, lọc thấp cho tròn tiếng.
-      for (const at of [0.32, 0.5]) {
-        tone(e, 523.25, { at, dur: 0.14, gain: 0.05, type: 'sawtooth' });
-        tone(e, 659.25, { at, dur: 0.14, gain: 0.04, type: 'sawtooth' });
-      }
+      noise(e, { at: 0.04, dur: 0.38, gain: 0.07, hz: 700, to: 3400, q: 0.7 });
     });
   },
 
-  /** Toa tàu — trả lời sai: hai nốt trượt xuống, nhẹ nhàng (không phải tiếng "bị đánh"). */
-  railWrong(): boolean {
-    return play('railWrong', 250, (e) => {
+  /** Chuyến bay — trả lời sai: hai nốt trượt xuống, nhẹ nhàng (không phải tiếng "bị đánh"). */
+  flyWrong(): boolean {
+    return play('flyWrong', 250, (e) => {
       tone(e, 392, { dur: 0.16, gain: 0.12, type: 'sine', to: 370 });
       tone(e, 311, { at: 0.13, dur: 0.3, gain: 0.12, type: 'sine', to: 262 });
-      noise(e, { at: 0.02, dur: 0.12, gain: 0.05, filter: 'lowpass', hz: 700 });
+      noise(e, { at: 0.02, dur: 0.18, gain: 0.05, filter: 'lowpass', hz: 700 });
     });
   },
 
-  /** Toa tàu — tới ga mới: chuông ga ba nốt. */
-  railArrive(): boolean {
-    return play('railArrive', 600, (e) => {
-      for (const [i, hz] of [659.25, 783.99, 1046.5].entries()) tone(e, hz, { at: i * 0.16, dur: 0.5, gain: 0.09, type: 'triangle' });
+  /** Chuyến bay — tới thành phố mới: gió xuyên mây rồi chuông ba nốt. */
+  flyArrive(): boolean {
+    return play('flyArrive', 600, (e) => {
+      noise(e, { dur: 0.7, gain: 0.1, hz: 400, to: 2800, q: 0.6 });
+      for (const [i, hz] of [659.25, 783.99, 1046.5].entries()) tone(e, hz, { at: 0.25 + i * 0.16, dur: 0.5, gain: 0.09, type: 'triangle' });
     });
   },
 

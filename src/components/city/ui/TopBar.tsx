@@ -7,6 +7,7 @@ import { dailyProgress } from '@/services/city/economy';
 import { MATERIAL_INFO, MATERIAL_KINDS, type MaterialKind } from '@/services/city/materials';
 import { vnToday } from '@/services/gamification/golden';
 import { useCityStore } from '@/store/useCityStore';
+import { useStarBalance } from '@/store/useStarBalance';
 import { useCityName, useL } from './common';
 import { CG } from './theme';
 
@@ -27,6 +28,7 @@ export const TopBar = React.memo(function TopBar({ onEarn, onMarket, onCredits, 
   const day = vnToday(new Date()).key;
   const pop = populationOf(sites);
   const shown = useCityName();
+  const stars = useStarBalance();
 
   return (
     <div style={{ position: 'absolute', top: 16, left: 16, right: 16, display: 'flex', gap: 12, alignItems: 'stretch', pointerEvents: 'none', zIndex: 10 }}>
@@ -95,8 +97,8 @@ export const TopBar = React.memo(function TopBar({ onEarn, onMarket, onCredits, 
         <button className="cg-btn primary small" onClick={() => onEarn()} aria-label={t('city.earn.title')} title={t('city.earn.title')} style={{ fontSize: 18, width: 40, justifyContent: 'center' }}>
           +
         </button>
-        <button className="cg-btn small" onClick={() => onMarket()} title={L({ vi: 'Đổi sao lấy vật liệu', en: 'Swap stars for materials' })}>
-          🛒 {L({ vi: 'Chợ', en: 'Market' })}
+        <button className="cg-btn small" onClick={() => onMarket()} title={L({ vi: 'Đổi sao lấy vật liệu', en: 'Swap stars for materials' })} aria-label={L({ vi: `Chợ: ${stars} sao`, en: `Market: ${stars} stars` })}>
+          🛒 ⭐ {stars.toLocaleString('vi-VN')}
         </button>
         <span style={{ width: 1, alignSelf: 'stretch', background: CG.line, margin: '0 2px' }} />
         <button className="cg-btn ghost small" onClick={onSample} title={t('city.sample.title')}>

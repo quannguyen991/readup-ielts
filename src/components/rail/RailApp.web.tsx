@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
-/** Bản web: nạp trang tàu (bộ vẽ canvas + nhạc Web Audio) bằng import() động. */
+/** Bản web: nạp trang chuyến bay (bộ vẽ canvas + nhạc Web Audio) bằng import() động. */
 const RailPage = React.lazy(() => import('./RailPage'));
 
 export function RailApp() {

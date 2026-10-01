@@ -52,8 +52,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const focus = isFocusRoute(pathname);
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
-  // Thành phố và Chuyến tàu từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
-  // Màn học từ đang có nền toa tàu: thanh bên trong suốt, chỉ còn biểu tượng.
+  // Thành phố và Chuyến bay từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
+  // Màn học từ đang có nền cảnh bay: thanh bên trong suốt, chỉ còn biểu tượng.
   const travelGlass = useTravelActive();
   const isCityRoute = pathname.startsWith('/quest/city') || pathname.startsWith('/quest/rail');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
@@ -165,10 +165,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  * sáng là gần như biến mất.
  */
 function FocusBackdrop({ quest, navy, light, children }: { quest: boolean; navy: boolean; light: boolean; children: React.ReactNode }) {
-  // Chép chính tả / viết câu: cảnh tàu chạy tông sáng (tắt thì về lưới sáng như cũ).
+  // Chép chính tả / viết câu: cảnh bay qua thành phố tông sáng (tắt thì về lưới sáng như cũ).
   if (light) return <TravelBackdrop color="#FBF6EE" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
-  // Màn học từ: cảnh tàu chạy qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
+  // Màn học từ: cảnh bay qua thành phố qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
   if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
   if (!quest) return <LightGrid>{children}</LightGrid>;
   return (
