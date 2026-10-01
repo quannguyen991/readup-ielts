@@ -9,7 +9,7 @@ import {
   fetchAuthCapabilities,
   type AuthCapabilities,
 } from '@/services/auth/capabilities';
-import { PHONE_ERROR_LABEL, parsePhone } from '@/services/auth/phone';
+import { PHONE_ERROR_LABEL, parsePhone, type PhoneError } from '@/services/auth/phone';
 import { MIN_PASSWORD, validateSignUp } from '@/services/auth/password';
 import {
   isAuthAvailable,
@@ -21,6 +21,25 @@ import {
 } from '@/services/auth/session';
 import { color } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
+import { useL } from '@/i18n/useL';
+
+/** Bản tiếng Anh của `PHONE_ERROR_LABEL` (dữ liệu gốc giữ tiếng Việt). */
+const PHONE_ERROR_LABEL_EN: Record<PhoneError, string> = {
+  empty: 'Enter a phone number.',
+  not_digits: 'A phone number can only contain digits, spaces, dots, dashes and a leading +.',
+  too_short: 'That phone number is too short.',
+  too_long: 'That phone number is too long.',
+  not_vn_mobile: "That isn't a Vietnamese mobile prefix. Mobile numbers start with 03, 05, 07, 08 or 09.",
+};
+
+/** Bản tiếng Anh cho lỗi của `validateSignUp` (hàm dùng chung với máy chủ nên giữ tiếng Việt). */
+const SIGNUP_ERROR_EN: Record<string, string> = {
+  'Email chưa đúng định dạng.': "That email address doesn't look right.",
+  [`Mật khẩu cần ít nhất ${MIN_PASSWORD} ký tự.`]: `Your password needs at least ${MIN_PASSWORD} characters.`,
+  'Mật khẩu dài quá 72 ký tự.': 'Your password is longer than 72 characters.',
+  'Mật khẩu không nên chỉ toàn số — thêm vài chữ cái.': "Don't use only numbers — add a few letters.",
+  'Mật khẩu đừng trùng với email.': "Your password shouldn't match your email.",
+};
 
 /**
  * Màn đăng nhập.
@@ -36,6 +55,7 @@ import { CrossFade } from '@/components/motion/Motion';
  */
 export default function SignInScreen() {
   const available = isAuthAvailable();
+  const { L, en } = useL();
 
   /*
     Cách đăng nhập nào đang bật là do console Supabase quyết định, không phải
@@ -85,7 +105,7 @@ export default function SignInScreen() {
     setError(null);
     const parsed = parsePhone(phone);
     if (!parsed.ok) {
-      setError(PHONE_ERROR_LABEL[parsed.reason]);
+      setError(en ? PHONE_ERROR_LABEL_EN[parsed.reason] : PHONE_ERROR_LABEL[parsed.reason]);
       return;
     }
 
@@ -104,7 +124,7 @@ export default function SignInScreen() {
     if (emailMode === 'signup') {
       const checked = validateSignUp(email, password, name);
       if (!checked.ok) {
-        setError(checked.error);
+        setError(en ? (SIGNUP_ERROR_EN[checked.error] ?? checked.error) : checked.error);
         return;
       }
       setBusy('email');
@@ -120,11 +140,11 @@ export default function SignInScreen() {
     }
     const value = email.trim().toLowerCase();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
-      setError('Email chưa đúng định dạng.');
+      setError(L('Email chưa đúng định dạng.', "That email address doesn't look right."));
       return;
     }
     if (!password) {
-      setError('Nhập mật khẩu.');
+      setError(L('Nhập mật khẩu.', 'Enter your password.'));
       return;
     }
     setBusy('email');
@@ -133,7 +153,7 @@ export default function SignInScreen() {
     if (!result.ok) {
       setError(
         result.error.kind === 'invalid_credentials'
-          ? 'Sai email hoặc mật khẩu. Tài khoản cũ tạo bằng liên kết chưa có mật khẩu — bấm "Nhận liên kết qua email" bên dưới.'
+          ? L('Sai email hoặc mật khẩu. Tài khoản cũ tạo bằng liên kết chưa có mật khẩu — bấm "Nhận liên kết qua email" bên dưới.', 'Wrong email or password. Older accounts created with a link have no password yet — tap "Get a link by email" below.')
           : result.error.message,
       );
       return;
@@ -145,7 +165,7 @@ export default function SignInScreen() {
     setError(null);
     const value = email.trim().toLowerCase();
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
-      setError('Email chưa đúng định dạng.');
+      setError(L('Email chưa đúng định dạng.', "That email address doesn't look right."));
       return;
     }
 
@@ -162,10 +182,9 @@ export default function SignInScreen() {
   return (
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 460 }}>
-        <Text className="font-heavy text-pageTitle text-ink">{mode === 'email' && emailMode === 'signup' ? 'Tạo tài khoản' : 'Đăng nhập'}</Text>
+        <Text className="font-heavy text-pageTitle text-ink">{mode === 'email' && emailMode === 'signup' ? L('Tạo tài khoản', 'Create account') : L('Đăng nhập', 'Sign in')}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          Không đăng nhập vẫn học bình thường — dữ liệu lưu ngay trên thiết bị này. Tài khoản chỉ để
-          mang tiến độ sang máy khác và giữ lại khi đổi máy.
+          {L('Không đăng nhập vẫn học bình thường — dữ liệu lưu ngay trên thiết bị này. Tài khoản chỉ để mang tiến độ sang máy khác và giữ lại khi đổi máy.', 'You can study without signing in — your data is saved on this device. An account just carries your progress to other devices and keeps it when you switch.')}
         </Text>
 
         {!available ? (
@@ -173,8 +192,7 @@ export default function SignInScreen() {
             <View className="flex-row items-start gap-2">
               <Icon name="info" size={17} color={color.warning} />
               <Text className="flex-1 font-sans text-body text-ink">
-                Ứng dụng chưa nối máy chủ tài khoản, nên các nút bên dưới chưa dùng được. Mọi thứ
-                khác vẫn chạy đủ.
+                {L('Ứng dụng chưa nối máy chủ tài khoản, nên các nút bên dưới chưa dùng được. Mọi thứ khác vẫn chạy đủ.', "The app isn't connected to the account server yet, so the buttons below won't work. Everything else runs as normal.")}
               </Text>
             </View>
           </Card>
@@ -185,7 +203,7 @@ export default function SignInScreen() {
             <>
               {caps.google ? (
                 <ProviderButton
-                  label="Tiếp tục với Google"
+                  label={L('Tiếp tục với Google', 'Continue with Google')}
                   mark="G"
                   markColor="#EA4335"
                   markBg="#FFFFFF"
@@ -198,7 +216,7 @@ export default function SignInScreen() {
               {caps.google && caps.facebook ? <View className="h-2" /> : null}
               {caps.facebook ? (
                 <ProviderButton
-                  label="Tiếp tục với Facebook"
+                  label={L('Tiếp tục với Facebook', 'Continue with Facebook')}
                   mark="f"
                   markColor="#FFFFFF"
                   markBg="#C59645"
@@ -210,7 +228,7 @@ export default function SignInScreen() {
 
               <View className="my-4 flex-row items-center gap-3">
                 <View className="h-px flex-1 bg-border" />
-                <Text className="font-mid text-label text-subtle">hoặc</Text>
+                <Text className="font-mid text-label text-subtle">{L('hoặc', 'or')}</Text>
                 <View className="h-px flex-1 bg-border" />
               </View>
             </>
@@ -219,7 +237,7 @@ export default function SignInScreen() {
           {caps.phone ? (
             <View className="flex-row gap-2">
               <TabPill
-                label="Số điện thoại"
+                label={L('Số điện thoại', 'Phone')}
                 active={mode === 'phone'}
                 onPress={() => setMode('phone')}
               />
@@ -230,7 +248,7 @@ export default function SignInScreen() {
           <CrossFade swapKey={mode}>
           {caps.phone && mode === 'phone' ? (
             <View className="mt-3">
-              <Text className="font-mid text-label text-muted">Số di động</Text>
+              <Text className="font-mid text-label text-muted">{L('Số di động', 'Mobile number')}</Text>
               <TextInput
                 value={phone}
                 onChangeText={setPhone}
@@ -243,7 +261,7 @@ export default function SignInScreen() {
               />
               <Button
                 className="mt-3"
-                label="Gửi mã qua SMS"
+                label={L('Gửi mã qua SMS', 'Send code by SMS')}
                 iconRight="arrow-right"
                 fullWidth
                 loading={busy === 'phone'}
@@ -251,23 +269,23 @@ export default function SignInScreen() {
                 onPress={startPhone}
               />
               <Text className="mt-2 font-sans text-label text-muted">
-                Mã gồm 6 chữ số, thường tới trong vòng một phút.
+                {L('Mã gồm 6 chữ số, thường tới trong vòng một phút.', 'A 6-digit code, usually arrives within a minute.')}
               </Text>
             </View>
           ) : (
             <View className="mt-3">
               <View className="flex-row gap-2">
-                <TabPill label="Đăng nhập" active={emailMode === 'signin'} onPress={() => { setEmailMode('signin'); setError(null); }} />
-                <TabPill label="Tạo tài khoản" active={emailMode === 'signup'} onPress={() => { setEmailMode('signup'); setError(null); }} />
+                <TabPill label={L('Đăng nhập', 'Sign in')} active={emailMode === 'signin'} onPress={() => { setEmailMode('signin'); setError(null); }} />
+                <TabPill label={L('Tạo tài khoản', 'Create account')} active={emailMode === 'signup'} onPress={() => { setEmailMode('signup'); setError(null); }} />
               </View>
 
               {emailMode === 'signup' ? (
                 <>
-                  <Text className="mt-3 font-mid text-label text-muted">Tên hiển thị (không bắt buộc)</Text>
+                  <Text className="mt-3 font-mid text-label text-muted">{L('Tên hiển thị (không bắt buộc)', 'Display name (optional)')}</Text>
                   <TextInput
                     value={name}
                     onChangeText={setName}
-                    placeholder="Tên hiện trên bảng xếp hạng"
+                    placeholder={L('Tên hiện trên bảng xếp hạng', 'Name shown on leaderboards')}
                     placeholderTextColor={color.subtle}
                     autoComplete="name"
                     editable={available && busy === null}
@@ -280,7 +298,7 @@ export default function SignInScreen() {
               <TextInput
                 value={email}
                 onChangeText={setEmail}
-                placeholder="ban@example.com"
+                placeholder={L('ban@example.com', 'you@example.com')}
                 placeholderTextColor={color.subtle}
                 keyboardType="email-address"
                 autoCapitalize="none"
@@ -289,12 +307,12 @@ export default function SignInScreen() {
                 className="mt-1.5 rounded-card border border-borderStrong bg-surface px-3 py-2.5 font-sans text-body text-ink"
               />
 
-              <Text className="mt-3 font-mid text-label text-muted">Mật khẩu</Text>
+              <Text className="mt-3 font-mid text-label text-muted">{L('Mật khẩu', 'Password')}</Text>
               <View className="mt-1.5 flex-row items-center rounded-card border border-borderStrong bg-surface">
                 <TextInput
                   value={password}
                   onChangeText={setPassword}
-                  placeholder={emailMode === 'signup' ? `Ít nhất ${MIN_PASSWORD} ký tự` : 'Mật khẩu của bạn'}
+                  placeholder={emailMode === 'signup' ? L(`Ít nhất ${MIN_PASSWORD} ký tự`, `At least ${MIN_PASSWORD} characters`) : L('Mật khẩu của bạn', 'Your password')}
                   placeholderTextColor={color.subtle}
                   secureTextEntry={!showPassword}
                   autoCapitalize="none"
@@ -305,19 +323,19 @@ export default function SignInScreen() {
                 />
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
+                  accessibilityLabel={showPassword ? L('Ẩn mật khẩu', 'Hide password') : L('Hiện mật khẩu', 'Show password')}
                   onPress={() => setShowPassword((v) => !v)}
                   className="px-3 py-2"
                 >
                   <Text className="font-semi text-label" style={{ color: color.primary }}>
-                    {showPassword ? 'Ẩn' : 'Hiện'}
+                    {showPassword ? L('Ẩn', 'Hide') : L('Hiện', 'Show')}
                   </Text>
                 </Pressable>
               </View>
 
               <Button
                 className="mt-3"
-                label={emailMode === 'signup' ? 'Tạo tài khoản' : 'Đăng nhập'}
+                label={emailMode === 'signup' ? L('Tạo tài khoản', 'Create account') : L('Đăng nhập', 'Sign in')}
                 iconRight="arrow-right"
                 fullWidth
                 loading={busy === 'email'}
@@ -326,13 +344,13 @@ export default function SignInScreen() {
               />
               <Text className="mt-2 font-sans text-label text-muted">
                 {emailMode === 'signup'
-                  ? 'Tạo xong là vào học ngay — không cần mở Gmail xác nhận.'
-                  : 'Chưa có tài khoản? Chọn "Tạo tài khoản" ở trên.'}
+                  ? L('Tạo xong là vào học ngay — không cần mở Gmail xác nhận.', 'Start studying right away — no confirmation email needed.')
+                  : L('Chưa có tài khoản? Chọn "Tạo tài khoản" ở trên.', 'No account yet? Choose "Create account" above.')}
               </Text>
 
               <Pressable accessibilityRole="button" onPress={() => void startEmail()} disabled={!available || busy !== null} className="mt-3 self-start">
                 <Text className="font-semi text-label" style={{ color: color.primary }}>
-                  Quên mật khẩu / tài khoản cũ chưa có mật khẩu? Nhận liên kết qua email
+                  {L('Quên mật khẩu / tài khoản cũ chưa có mật khẩu? Nhận liên kết qua email', 'Forgot your password, or an older account without one? Get a link by email')}
                 </Text>
               </Pressable>
             </View>
@@ -349,17 +367,16 @@ export default function SignInScreen() {
 
         <Card className="mt-4" variant="flat">
           <View className="flex-row items-center gap-2">
-            <Badge label="Riêng tư" tone="success" shape="tag" />
+            <Badge label={L('Riêng tư', 'Private')} tone="success" shape="tag" />
             <Text className="flex-1 font-sans text-label text-muted">
-              Chúng tôi chỉ lưu tiến độ học của bạn. Không đọc danh bạ, không đăng gì lên Facebook,
-              không bán dữ liệu cho ai.
+              {L('Chúng tôi chỉ lưu tiến độ học của bạn. Không đọc danh bạ, không đăng gì lên Facebook, không bán dữ liệu cho ai.', "We only store your study progress. We don't read your contacts, post to Facebook, or sell your data.")}
             </Text>
           </View>
         </Card>
 
         <Button
           className="mt-4 self-center"
-          label="Để sau, học trước đã"
+          label={L('Để sau, học trước đã', 'Later — let me study first')}
           variant="ghost"
           onPress={() => router.replace('/dashboard' as never)}
         />

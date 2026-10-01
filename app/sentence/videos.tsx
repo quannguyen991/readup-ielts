@@ -18,6 +18,19 @@ import {
 } from '@/data/video-library';
 import { preparedList, useVideoTranscriptStore } from '@/store/useVideoTranscriptStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+
+/** Tên chủ đề bản tiếng Anh (dữ liệu gốc ở seed/video-library giữ tiếng Việt). */
+const TOPIC_EN: Record<string, string> = {
+  'Tiếng Anh hằng ngày': 'Everyday English',
+  'Phỏng vấn đường phố': 'Street interviews',
+  'Khoa học': 'Science',
+  'Kiến thức phổ thông': 'General knowledge',
+  'Thiên nhiên': 'Nature',
+  'Bài nói': 'Talks',
+  'Thời sự và xã hội': 'News & society',
+  'Kinh tế và hạ tầng': 'Economy & infrastructure',
+};
 
 /**
  * Thư viện video luyện nghe.
@@ -31,6 +44,7 @@ import { color } from '@/theme/tokens';
  * đã chuẩn bị, vào là làm tiếp ngay.
  */
 export default function VideoLibraryScreen() {
+  const { L, en } = useL();
   const [level, setLevel] = useState('all');
   const [topic, setTopic] = useState('all');
   const [search, setSearch] = useState('');
@@ -45,35 +59,35 @@ export default function VideoLibraryScreen() {
     <Screen>
       <LightHero
         badge="LISTENING VIDEO LIBRARY" art="listening"
-        line1="Thư viện video"
-        line2="nghe câu thật, chép lại"
-        subtitle={`${stats.videos} video từ ${stats.channels} kênh, chia theo trình độ. Nghe từng câu rồi chép lại, hoặc chuyển sang phần nghe hiểu để làm đề sinh từ chính phụ đề video đó.`}
+        line1={L('Thư viện video', 'Video library')}
+        line2={L('nghe câu thật, chép lại', 'hear real sentences, write them down')}
+        subtitle={L(`${stats.videos} video từ ${stats.channels} kênh, chia theo trình độ. Nghe từng câu rồi chép lại, hoặc chuyển sang phần nghe hiểu để làm đề sinh từ chính phụ đề video đó.`, `${stats.videos} videos from ${stats.channels} channels, sorted by level. Listen to each sentence and write it down, or switch to comprehension for a quiz built from that video's subtitles.`)}
         footer={
           <>
             <HeroStat value={String(stats.videos)} label="video" />
-            <HeroStat value={String(stats.channels)} label="kênh" />
-            <HeroStat value={String(prepared.length)} label="đã chuẩn bị" />
+            <HeroStat value={String(stats.channels)} label={L('kênh', 'channels')} />
+            <HeroStat value={String(prepared.length)} label={L('đã chuẩn bị', 'prepared')} />
           </>
         }
       >
-        <Button label="Tìm video" variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
+        <Button label={L('Tìm video', 'Find a video')} variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
       </LightHero>
 
       <View className="mt-4 flex-row items-start gap-2.5 rounded-panel border border-warning bg-warning-soft p-3.5">
         <Icon name="info" size={17} color={color.warning} strokeWidth={2} />
         <Text className="min-w-0 flex-1 font-sans text-body text-warning-ink" style={{ lineHeight: 22 }}>
-          YouTube không cho lấy phụ đề tự động nữa, nên lần đầu mở một video bạn cần dán phụ đề vào —
-          mở video trên YouTube, bấm <Text className="font-strong">…more</Text> →{' '}
-          <Text className="font-strong">Show transcript</Text>, chép rồi dán. Chỉ phải làm một lần cho
-          mỗi video; app nhớ lại cho những lần sau.
+          {L('YouTube không cho lấy phụ đề tự động nữa, nên lần đầu mở một video bạn cần dán phụ đề vào — mở video trên YouTube, bấm', "YouTube no longer lets apps fetch subtitles automatically, so the first time you open a video you need to paste them in — open the video on YouTube, tap")}{' '}
+          <Text className="font-strong">…more</Text> →{' '}
+          <Text className="font-strong">Show transcript</Text>
+          {L(', chép rồi dán. Chỉ phải làm một lần cho mỗi video; app nhớ lại cho những lần sau.', ', copy it and paste. You only do this once per video; the app remembers it next time.')}
         </Text>
       </View>
 
       {prepared.length > 0 ? (
         <View className="mt-6">
-          <Text className="font-strong text-cardTitle text-ink">Đang luyện dở</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Đang luyện dở', 'In progress')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            {prepared.length} video đã chuẩn bị phụ đề — vào là làm tiếp ngay.
+            {L(`${prepared.length} video đã chuẩn bị phụ đề — vào là làm tiếp ngay.`, `${prepared.length} videos with subtitles ready — jump right back in.`)}
           </Text>
           <View className="mt-3">
             <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
@@ -91,13 +105,13 @@ export default function VideoLibraryScreen() {
                       meta ?? {
                         id: p.videoId,
                         title: `Video ${p.videoId}`,
-                        channel: 'Không còn trong thư viện',
+                        channel: L('Không còn trong thư viện', 'No longer in the library'),
                         level: '',
                         topic: '',
                         durationSeconds: null,
                       }
                     }
-                    progress={`${p.doneCount}/${p.sentences.length} câu`}
+                    progress={L(`${p.doneCount}/${p.sentences.length} câu`, `${p.doneCount}/${p.sentences.length} sentences`)}
                   />
                 );
               })}
@@ -112,36 +126,36 @@ export default function VideoLibraryScreen() {
           <TextInput
             value={search}
             onChangeText={setSearch}
-            placeholder="Tìm theo tên video hoặc kênh…"
+            placeholder={L('Tìm theo tên video hoặc kênh…', 'Search by video or channel…')}
             placeholderTextColor={color.subtle}
             className="min-w-0 flex-1 font-sans text-body text-ink"
           />
         </View>
 
         <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-          Trình độ
+          {L('Trình độ', 'Level')}
         </Text>
         <View className="flex-row flex-wrap gap-1.5">
-          <Chip label="Tất cả" active={level === 'all'} onPress={() => setLevel('all')} />
+          <Chip label={L('Tất cả', 'All')} active={level === 'all'} onPress={() => setLevel('all')} />
           {VIDEO_LEVELS.map((l) => (
             <Chip key={l} label={l} active={level === l} onPress={() => setLevel(level === l ? 'all' : l)} />
           ))}
         </View>
 
         <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-          Chủ đề
+          {L('Chủ đề', 'Topic')}
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View className="flex-row gap-1.5 py-0.5">
-            <Chip label="Tất cả" active={topic === 'all'} onPress={() => setTopic('all')} />
+            <Chip label={L('Tất cả', 'All')} active={topic === 'all'} onPress={() => setTopic('all')} />
             {VIDEO_TOPICS.map((t) => (
-              <Chip key={t} label={t} active={topic === t} onPress={() => setTopic(topic === t ? 'all' : t)} />
+              <Chip key={t} label={en ? (TOPIC_EN[t] ?? t) : t} active={topic === t} onPress={() => setTopic(topic === t ? 'all' : t)} />
             ))}
           </View>
         </ScrollView>
       </Card>
 
-      <Text className="mt-5 font-strong text-cardTitle text-ink">{videos.length} video</Text>
+      <Text className="mt-5 font-strong text-cardTitle text-ink">{L(`${videos.length} video`, `${videos.length} videos`)}</Text>
 
       <View className="mt-3">
         <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={14}>
@@ -154,7 +168,7 @@ export default function VideoLibraryScreen() {
       {videos.length === 0 ? (
         <Card className="mt-3">
           <Text className="font-sans text-body text-muted">
-            Không có video nào khớp. Bỏ bớt bộ lọc hoặc đổi từ khoá tìm.
+            {L('Không có video nào khớp. Bỏ bớt bộ lọc hoặc đổi từ khoá tìm.', 'No videos match. Remove a filter or try another search.')}
           </Text>
         </Card>
       ) : null}
@@ -171,7 +185,9 @@ function VideoCard({
   prepared?: boolean;
   progress?: string;
 }) {
-  const duration = formatDuration(video.durationSeconds);
+  const { L, en } = useL();
+  const s = video.durationSeconds;
+  const duration = en && s !== null ? (s < 60 ? 'under 1 min' : `${Math.round(s / 60)} min`) : formatDuration(s);
 
   return (
     <Pressable
@@ -210,7 +226,7 @@ function VideoCard({
         <View className="mt-2.5 flex-row flex-wrap items-center gap-1.5">
           {video.level ? <Badge label={video.level} tone="neutral" /> : null}
           {progress ? <Badge label={progress} tone="success" /> : null}
-          {prepared && !progress ? <Badge label="đã có phụ đề" tone="success" /> : null}
+          {prepared && !progress ? <Badge label={L('đã có phụ đề', 'subtitles ready')} tone="success" /> : null}
         </View>
       </View>
     </Pressable>

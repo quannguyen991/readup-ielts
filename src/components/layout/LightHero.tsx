@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Platform, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, {
@@ -55,12 +56,13 @@ export function LightHero({
   /** Cụm sticker khác với `scene` (vd. 'quest', 'shop'); mặc định theo `scene`. */
   art?: ArtScene;
 }) {
-  const wide = useWindowDimensions().width >= 768;
+  const width = useWindowDimensions().width;
+  const wide = width >= 768;
   const size = wide ? 44 : 28;
   const line = wide ? 52 : 36;
-  // Cụm minh hoạ dễ thương theo chủ đề trang (thay ngôi sao 3D từ 30/09/2026):
-  // bên phải trên màn rộng, góc trên phải (nhỏ) trên điện thoại.
-  const art = true;
+  // Cụm minh hoạ chỉ hiện khi màn đủ rộng; máy tính bảng dựng đứng / điện
+  // thoại bỏ hẳn để tiêu đề không bị ép xuống dòng (người dùng 01/10/2026).
+  const art = width >= HEADER_ART_MIN;
 
   /*
     Bọc thêm một HÀNG NGANG quanh nền: `GridBackdrop` lấy cả khung bằng
@@ -73,8 +75,8 @@ export function LightHero({
           đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
       <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
         {art ? (
-          <View style={wide ? { position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' } : { position: 'absolute', top: 16, right: 14 }}>
-            <HeroArt scene={artScene ?? scene} size={wide ? 150 : 64} single={!wide} />
+          <View style={{ position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' }}>
+            <HeroArt scene={artScene ?? scene} size={150} />
           </View>
         ) : null}
         <View
@@ -82,7 +84,7 @@ export function LightHero({
             paddingHorizontal: wide ? 40 : 22,
             paddingVertical: wide ? 52 : 30,
             // Chừa chỗ bên phải cho ngôi sao, để chữ không chạy đè lên nó.
-            paddingRight: wide ? 440 : 84,
+            paddingRight: art ? 440 : wide ? 40 : 22,
           }}
         >
           <Badge label={badge} tone="neutral" shape="tag" />

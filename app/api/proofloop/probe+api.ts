@@ -11,6 +11,7 @@ import { checkProbeValidity, type ProbeWarning } from '@/services/proofloop/prob
 import { probeFor } from '@/services/proofloop/probe-table';
 import { classify } from '@/services/proofloop/state';
 import type { EvidenceMark } from '@/services/proofloop/types';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/proofloop/probe
@@ -80,11 +81,11 @@ export async function POST(request: Request): Promise<Response> {
     const body = (await request.json()) as Body;
 
     if (typeof body.answerCorrect !== 'boolean') {
-      return Response.json({ error: 'Thiếu answerCorrect.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu answerCorrect.', 'answerCorrect is required.') }, { status: 400 });
     }
     if (!body.passage || !body.questionPrompt || !body.correctAnswer) {
       return Response.json(
-        { error: 'Thiếu passage, questionPrompt hoặc correctAnswer.' },
+        { error: msg(request, 'Thiếu passage, questionPrompt hoặc correctAnswer.', 'passage, questionPrompt or correctAnswer is missing.') },
         { status: 400 },
       );
     }
@@ -243,8 +244,8 @@ export async function POST(request: Request): Promise<Response> {
     });
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message, code: err.code }, { status: 502 });
+      return Response.json({ error: errorText(request, err, err.message, "Couldn't build the check question right now. Please try again shortly."), code: err.code }, { status: 502 });
     }
-    return Response.json({ error: 'Không dựng được phép thử.' }, { status: 500 });
+    return Response.json({ error: msg(request, 'Không dựng được phép thử.', "Couldn't build the check question.") }, { status: 500 });
   }
 }

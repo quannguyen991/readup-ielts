@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Platform, Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
@@ -29,7 +29,54 @@ import {
 } from '@/services/plan/custom';
 import { todayKey } from '@/store/persist';
 import { useCustomPlan, useRoadmapStore } from '@/store/useRoadmapStore';
-import { color, gradient } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+
+/* Bản tiếng Anh cho nhãn lấy từ services/plan/custom (bản tiếng Việt giữ ở đó). */
+const SKILL_LABEL_EN: Record<Skill, string> = {
+  reading: 'IELTS Reading',
+  listening: 'Listen & dictate',
+  writing: 'IELTS Writing',
+  vocab: 'Vocabulary',
+  math: 'SAT Math',
+  verbal: 'SAT Verbal',
+};
+const PHASE_LABEL_EN: Record<Phase, string> = {
+  nen: 'Foundations',
+  dang: 'Question types',
+  de: 'Full tests',
+  'nuoc-rut': 'Final sprint',
+};
+const WEEKDAY_LABEL_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+/** Cột mốc / tên cửa kiểm tra do services/plan sinh ra → tiếng Anh; chuỗi lạ thì giữ nguyên. */
+const PLAN_TEXT_EN: Record<string, string> = {
+  'Ngày thi IELTS': 'IELTS exam day',
+  'Ngày thi SAT': 'SAT exam day',
+  'Cửa kiểm tra IELTS': 'IELTS checkpoint',
+  'Cửa kiểm tra SAT': 'SAT checkpoint',
+  'Cửa kiểm tra IELTS · thi thử Reading': 'IELTS checkpoint · Reading mock test',
+  'Cửa kiểm tra SAT · thi thử đủ 98 câu': 'SAT checkpoint · full 98-question mock test',
+};
+
+/** Lỗi của validatePlanInput (tiếng Việt) → tiếng Anh. */
+function problemEn(p: string): string {
+  const fixed: Record<string, string> = {
+    'Chọn ít nhất một kỳ thi: IELTS hoặc SAT.': 'Pick at least one exam: IELTS or SAT.',
+    'Chọn ít nhất một ngày học trong tuần.': 'Pick at least one study day a week.',
+    'Mỗi ngày học ít nhất 20 phút.': 'Study at least 20 minutes a day.',
+  };
+  const f = fixed[p];
+  if (f) return f;
+  let m = /^Chọn ngày thi (\w+)\.$/.exec(p);
+  if (m) return `Pick your ${m[1]} exam date.`;
+  m = /^Ngày thi (\w+) phải cách hôm nay ít nhất 2 tuần/.exec(p);
+  if (m) return `Your ${m[1]} exam date must be at least 2 weeks away so there's time to study.`;
+  m = /^Ngày thi (\w+) xa quá 2 năm/.exec(p);
+  if (m) return `Your ${m[1]} exam date is more than 2 years away — pick a closer date; plans that long are hard to stick to.`;
+  m = /^Điểm mục tiêu (\w+) phải cao hơn/.exec(p);
+  if (m) return `Your ${m[1]} target must be higher than your current score.`;
+  return p;
+}
 
 /**
  * LỘ TRÌNH CỦA TÔI — dựng theo đúng mục tiêu người học khai.
@@ -79,8 +126,35 @@ function fmtDate(iso: string): string {
   return `${d}/${m}/${y}`;
 }
 
+/**
+ * FORM LẬP LỘ TRÌNH = "PHIẾU LỘ TRÌNH" BAND 9 (01/10/2026).
+ *
+ * Bản bento trước (khối vàng to, khối chàm có lịch tháng, chip tròn, tiêu đề
+ * có dấu chấm) bị chê "giống IELTS Dictionary quá". Bản này đi theo hình ảnh
+ * riêng của Band 9: một tờ phiếu giấy kem kẻ chỉ vàng, bốn mục đánh số như
+ * phiếu đăng ký thi, chọn band trên MỘT THƯỚC đo (thấy luôn khoảng cách từ
+ * điểm bây giờ tới mục tiêu), và cuống vé màu xanh đậm bên phải tóm tắt lộ
+ * trình kèm nút lập — đúng cảm giác "vé đi Band 9".
+ */
+const P = {
+  navy: '#0F1D33',
+  gold: '#A8843F',
+  goldDeep: '#8F6E36',
+  goldLight: '#E2C88F',
+  paper: '#FFFDF8',
+  line: '#E8DCC0',
+  muted: '#6B6250',
+  canvas: '#F3EDE1',
+};
+
+/** Thang band trên thước: gộp thang "bây giờ" và thang "mục tiêu". */
+const IELTS_SCALE = [...new Set([...IELTS_NOW, ...IELTS_TARGET])].sort((a, b) => a - b);
+const SAT_SCALE = [...new Set([...SAT_NOW, ...SAT_TARGET])].sort((a, b) => a - b);
+const QUICK_WEEKS = [8, 12, 16, 24];
+
 function PlanSetup({ initial }: { initial: PlanInput | null }) {
   const setInput = useRoadmapStore((s) => s.setInput);
+  const { L, en } = useL();
   const today = todayKey();
   const { width } = useWindowDimensions();
   const wide = width >= 1000;
@@ -90,7 +164,7 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
   const [days, setDays] = useState<number[]>(initial?.studyDays ?? [1, 2, 3, 4, 5, 6]);
   const [weak, setWeak] = useState<Skill[]>(initial?.weak ?? []);
   const [tried, setTried] = useState(false);
-  // Kỳ thi đang chỉnh ở khối "Mục tiêu" (khi chọn cả hai).
+  // Kỳ thi đang chỉnh ở mục 02–03 (khi chọn cả hai).
   const [focusExam, setFocusExam] = useState<'ielts' | 'sat'>(initial?.sat && !initial?.ielts ? 'sat' : 'ielts');
 
   const draft: PlanInput = { ielts, sat, minutesPerDay: minutes, studyDays: days, weak, startIso: today };
@@ -100,12 +174,14 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
   const toggleExam = (e: 'ielts' | 'sat') => {
     if (e === 'ielts') setIelts(ielts ? null : { now: null, target: 6.5, examIso: '' });
     else setSat(sat ? null : { now: null, target: 1400, examIso: '' });
-    setFocusExam(e);
+    // Bỏ chọn một kỳ thì chuyển mục chỉnh sang kỳ còn lại.
+    const turningOff = e === 'ielts' ? !!ielts : !!sat;
+    setFocusExam(turningOff ? (e === 'ielts' ? 'sat' : 'ielts') : e);
   };
   const goal = focusExam === 'ielts' ? ielts : sat;
   const setGoal = (g: GoalInput) => (focusExam === 'ielts' ? setIelts(g) : setSat(g));
   const isIelts = focusExam === 'ielts';
-  const fmt = (v: number) => (isIelts ? v.toFixed(1) : String(v));
+  const minDate = addDaysIso(today, 14);
 
   const submit = () => {
     setTried(true);
@@ -114,8 +190,133 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
     router.replace('/plan' as never);
   };
 
-  const minutesLabel = (m: number) => (m < 60 ? `${m} phút` : `${Number.isInteger(m / 60) ? m / 60 : (m / 60).toFixed(1).replace('.', ',')} giờ`);
-  const row = { flexDirection: wide ? 'row' : 'column', gap: 16, marginTop: 16 } as const;
+  const minutesLabel = (m: number) =>
+    m < 60
+      ? L(`${m} phút`, `${m} min`)
+      : en
+        ? `${Number.isInteger(m / 60) ? m / 60 : (m / 60).toFixed(1)} hr`
+        : `${Number.isInteger(m / 60) ? m / 60 : (m / 60).toFixed(1).replace('.', ',')} giờ`;
+
+  const both = !!ielts && !!sat;
+  const examTabs = both ? <ExamTabs value={focusExam} onChange={setFocusExam} /> : null;
+
+  const sheet = (
+    <View style={{ borderRadius: 22, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, paddingHorizontal: wide ? 28 : 18, paddingVertical: 6 }}>
+      {/* 01 · kỳ thi */}
+      <Section n="01" title={L('Kỳ thi', 'Exam')} hint={L('Chọn một hoặc cả hai', 'Pick one or both')} wide={wide} first>
+        <View style={{ flexDirection: 'row', gap: 10, flexWrap: 'wrap' }}>
+          <ExamTile label="IELTS" sub={L('Band 0 – 9', 'Band 0 – 9')} on={!!ielts} onPress={() => toggleExam('ielts')} />
+          <ExamTile label="SAT" sub={L('400 – 1600 điểm', '400 – 1600 points')} on={!!sat} onPress={() => toggleExam('sat')} />
+        </View>
+      </Section>
+
+      {/* 02 · mục tiêu */}
+      <Section n="02" title={isIelts ? L('Band hiện tại và mục tiêu', 'Current and target band') : L('Điểm hiện tại và mục tiêu', 'Current and target score')} wide={wide} right={examTabs}>
+        {goal ? (
+          <GoalRuler
+            key={focusExam}
+            scale={isIelts ? IELTS_SCALE : SAT_SCALE}
+            nowOptions={isIelts ? IELTS_NOW : SAT_NOW}
+            targetOptions={isIelts ? IELTS_TARGET : SAT_TARGET}
+            goal={goal}
+            onChange={setGoal}
+            fmt={(v) => (isIelts ? v.toFixed(1) : String(v))}
+            unit={isIelts ? 'band' : L('điểm', 'pts')}
+            compact={!wide}
+          />
+        ) : (
+          <Muted text={L('Chọn kỳ thi ở mục 01 trước.', 'Pick an exam in step 01 first.')} />
+        )}
+      </Section>
+
+      {/* 03 · ngày thi */}
+      <Section n="03" title={L('Ngày thi', 'Exam date')} hint={L('Dự kiến cũng được', 'An estimate is fine')} wide={wide} right={examTabs}>
+        {goal ? (
+          <ExamDatePicker
+            value={goal.examIso}
+            today={today}
+            minDate={minDate}
+            onChange={(iso) => setGoal({ ...goal, examIso: iso })}
+          />
+        ) : (
+          <Muted text={L('Chọn kỳ thi ở mục 01 trước.', 'Pick an exam in step 01 first.')} />
+        )}
+      </Section>
+
+      {/* 04 · nhịp học */}
+      <Section n="04" title={L('Nhịp học', 'Study rhythm')} hint={L('Ngày không chọn là ngày nghỉ', 'Unselected days are rest days')} wide={wide}>
+        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: P.goldDeep }}>
+          {L('MỖI BUỔI', 'EACH SESSION')}
+        </Text>
+        <Segmented options={MINUTES} value={minutes} onChange={setMinutes} label={wide ? minutesLabel : (m) => (m < 60 ? `${m}'` : minutesLabel(m))} />
+
+        <Text className="font-strong" style={{ marginTop: 16, fontSize: 12, letterSpacing: 1.2, color: P.goldDeep }}>
+          {L(`NGÀY HỌC · ${days.length} BUỔI/TUẦN`, `STUDY DAYS · ${days.length} PER WEEK`)}
+        </Text>
+        <View style={{ marginTop: 8, flexDirection: 'row', gap: 6 }}>
+          {WEEK_ORDER.map((d) => {
+            const on = days.includes(d);
+            const name = (en ? WEEKDAY_LABEL_EN : WEEKDAY_LABEL)[d];
+            return (
+              <Pressable
+                key={d}
+                accessibilityRole="checkbox"
+                aria-checked={on}
+                accessibilityLabel={name}
+                onPress={() => setDays(on ? days.filter((x) => x !== d) : [...days, d])}
+                style={{ flex: 1, maxWidth: 56, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}
+              >
+                <Text className="font-strong" style={{ fontSize: 13, color: on ? P.goldLight : P.muted }}>
+                  {en ? (name ?? '').slice(0, 2) : WEEKDAY_SHORT[d]}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+
+        <Text className="font-strong" style={{ marginTop: 16, fontSize: 12, letterSpacing: 1.2, color: P.goldDeep }}>
+          {L('PHẦN YẾU · ĐƯỢC THÊM GIỜ (KHÔNG BẮT BUỘC)', 'WEAK SPOTS · GET EXTRA TIME (OPTIONAL)')}
+        </Text>
+        {skills.length === 0 ? (
+          <Muted text={L('Chọn kỳ thi trước.', 'Pick an exam first.')} />
+        ) : (
+          <View style={{ marginTop: 8, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+            {skills.map((s) => {
+              const on = weak.includes(s);
+              return (
+                <Pressable
+                  key={s}
+                  accessibilityRole="checkbox"
+                  aria-checked={on}
+                  onPress={() => setWeak(on ? weak.filter((x) => x !== s) : [...weak, s])}
+                  style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, borderWidth: 1, borderColor: on ? P.gold : P.line, backgroundColor: on ? '#FBF3E2' : '#FFFFFF' }}
+                >
+                  <CheckSquare on={on} />
+                  <Text className="font-strong" style={{ fontSize: 14, color: P.navy }}>
+                    {en ? SKILL_LABEL_EN[s] : SKILL_LABEL[s]}
+                  </Text>
+                </Pressable>
+              );
+            })}
+          </View>
+        )}
+      </Section>
+    </View>
+  );
+
+  const stub = (
+    <TicketStub
+      ielts={ielts}
+      sat={sat}
+      today={today}
+      days={days.length}
+      minutesText={minutesLabel(minutes)}
+      weak={weak.filter((w) => skills.includes(w)).map((w) => (en ? SKILL_LABEL_EN[w] : SKILL_LABEL[w]))}
+      problems={tried ? problems.map((p) => (en ? problemEn(p) : p)) : []}
+      editing={!!initial}
+      onSubmit={submit}
+    />
+  );
 
   return (
     <View style={{ paddingBottom: 40 }}>
@@ -123,229 +324,364 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
       <Appear>
         <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: '#8F6E36' }}>
-              LỘ TRÌNH CỦA TÔI
+            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2.4, color: P.goldDeep }}>
+              {L('BAND 9 · PHIẾU LỘ TRÌNH', 'BAND 9 · STUDY PLAN TICKET')}
             </Text>
-            <Text className="font-heavy" style={{ fontSize: wide ? 40 : 30, lineHeight: wide ? 46 : 36, color: B9.navy }}>
-              {initial ? 'Sửa lộ trình.' : 'Lập lộ trình.'}
+            <Text className="font-heavy" style={{ marginTop: 2, fontSize: wide ? 38 : 28, lineHeight: wide ? 44 : 34, color: P.navy }}>
+              {initial ? L('Sửa lộ trình', 'Edit your plan') : L('Lập lộ trình', 'Build your plan')}
             </Text>
-            <Text className="font-sans" style={{ marginTop: 4, fontSize: 15, color: '#5B5444' }}>
-              Chọn mục tiêu, ngày thi, giờ học — app xếp từng buổi vào đúng bài.
+            <Text className="font-sans" style={{ marginTop: 4, fontSize: 15, color: P.muted }}>
+              {L('Điền bốn mục, app xếp từng buổi vào đúng bài.', 'Fill in four steps and the app maps every session to the right lesson.')}
             </Text>
           </View>
-          <Motion kind="float">
-            <Sticker tilt={8}>
-              <CuteCalendar size={wide ? 76 : 54} />
-            </Sticker>
-          </Motion>
+          {width >= HEADER_ART_MIN ? (
+            <Motion kind="float">
+              <Sticker tilt={8}>
+                <CuteCalendar size={72} />
+              </Sticker>
+            </Motion>
+          ) : null}
         </View>
       </Appear>
 
-      {/* ------------------------------------------------ hàng 1: mục tiêu · ngày thi */}
-      <View style={row}>
-        <Appear style={{ flex: wide ? 1.7 : undefined }}>
-          <View style={[B9CARD, { backgroundColor: '#F2C45A', minHeight: 330 }]}>
-            <Sparkles count={5} />
-            <View style={{ position: 'absolute', right: -60, top: -60, width: 220, height: 220, borderRadius: 110, backgroundColor: 'rgba(255,255,255,0.18)' }} />
-            <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
-              <ExamChip label="IELTS" on={!!ielts} focused={focusExam === 'ielts'} onToggle={() => toggleExam('ielts')} onFocus={() => setFocusExam('ielts')} />
-              <ExamChip label="SAT" on={!!sat} focused={focusExam === 'sat'} onToggle={() => toggleExam('sat')} onFocus={() => setFocusExam('sat')} />
-            </View>
-
-            {goal ? (
-              <View style={{ marginTop: 14, flexDirection: wide ? 'row' : 'column', gap: 18, alignItems: wide ? 'center' : 'stretch' }}>
-                <View style={{ flex: 1, minWidth: 0 }}>
-                  <Text className="font-heavy" style={{ fontSize: wide ? 38 : 30, lineHeight: wide ? 42 : 34, color: B9.navy }}>
-                    Mục tiêu {isIelts ? 'band' : 'điểm'}.
-                  </Text>
-                  <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 6 }}>
-                    <Text className="font-heavy" style={{ fontSize: wide ? 96 : 72, lineHeight: wide ? 100 : 76, color: B9.navy }}>
-                      {fmt(goal.target)}
-                    </Text>
-                    <Text className="font-heavy" style={{ fontSize: 24, color: '#6B5320', marginBottom: 12, marginLeft: 4 }}>
-                      /{isIelts ? '9' : '1600'}
-                    </Text>
-                  </View>
-                  <Text className="font-strong" style={{ marginTop: 8, fontSize: 13, color: '#6B5320' }}>
-                    ĐIỂM BÂY GIỜ
-                  </Text>
-                  <View style={{ marginTop: 6, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-                    <MiniPill label="Chưa biết" on={goal.now === null} onPress={() => setGoal({ ...goal, now: null })} />
-                    {(isIelts ? IELTS_NOW : SAT_NOW).map((v) => (
-                      <MiniPill
-                        key={v}
-                        label={fmt(v)}
-                        on={goal.now === v}
-                        onPress={() => {
-                          const targets = isIelts ? IELTS_TARGET : SAT_TARGET;
-                          setGoal({ ...goal, now: v, target: goal.target > v ? goal.target : (targets.find((t) => t > v) ?? goal.target) });
-                        }}
-                      />
-                    ))}
-                  </View>
-                </View>
-                <ValueWheel
-                  options={(isIelts ? IELTS_TARGET : SAT_TARGET).filter((v) => goal.now === null || v > goal.now)}
-                  value={goal.target}
-                  format={fmt}
-                  onChange={(v) => setGoal({ ...goal, target: v })}
-                  label={isIelts ? 'CHỌN BAND' : 'CHỌN ĐIỂM'}
-                />
-              </View>
-            ) : (
-              <View style={{ marginTop: 18 }}>
-                <Text className="font-heavy" style={{ fontSize: wide ? 38 : 30, lineHeight: wide ? 42 : 34, color: B9.navy }}>
-                  Bạn thi gì?
-                </Text>
-                <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, color: '#5A4318' }}>
-                  Bấm IELTS, SAT hoặc cả hai ở trên để đặt mục tiêu.
-                </Text>
-              </View>
-            )}
-            <View style={{ position: 'absolute', right: 16, bottom: 16 }} aria-hidden>
-              <Motion kind="wobble">
-                <Sticker tilt={10}>
-                  <CuteTrophy size={58} />
-                </Sticker>
-              </Motion>
-            </View>
-          </View>
+      <View style={{ marginTop: 18, flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'flex-start' : 'stretch', gap: wide ? 0 : 16 }}>
+        <Appear index={1} style={{ flex: wide ? 1 : undefined, minWidth: 0 }}>
+          {sheet}
         </Appear>
-
-        <Appear index={1} style={{ flex: wide ? 1 : undefined }}>
-          <ExamDateCard goal={goal} examLabel={isIelts ? 'IELTS' : 'SAT'} today={today} minDate={addDaysIso(today, 14)} onChange={(iso) => goal && setGoal({ ...goal, examIso: iso })} />
+        <Appear
+          index={2}
+          style={wide ? ({ width: 340, marginLeft: 18, position: Platform.OS === 'web' ? 'sticky' : 'relative', top: 16 } as object) : undefined}
+        >
+          {stub}
         </Appear>
       </View>
+    </View>
+  );
+}
 
-      {/* ------------------------------------------------ hàng 2: giờ học · ngày học · phần yếu */}
-      <View style={row}>
-        <Appear index={2} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[B9CARD, { backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EADFC6' }]}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Text className="font-heavy" style={{ fontSize: 24, color: B9.navy }}>
-                Mỗi ngày.
+/** Một mục của phiếu: số thứ tự ở lề trái, tiêu đề, nội dung; ngăn bằng chỉ vàng. */
+function Section({ n, title, hint, right, wide, first, children }: { n: string; title: string; hint?: string; right?: React.ReactNode; wide: boolean; first?: boolean; children: React.ReactNode }) {
+  return (
+    <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 20 : 6, paddingVertical: 20, borderTopWidth: first ? 0 : 1, borderColor: P.line }}>
+      <Text className="font-heavy" style={{ width: wide ? 40 : undefined, fontSize: wide ? 22 : 13, lineHeight: wide ? 28 : 16, letterSpacing: wide ? 0 : 1.6, color: P.gold }}>
+        {n}
+      </Text>
+      <View style={{ flex: wide ? 1 : undefined, minWidth: 0 }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <View style={{ flexShrink: 1 }}>
+            <Text className="font-heavy" style={{ fontSize: 19, lineHeight: 26, color: P.navy }}>
+              {title}
+            </Text>
+            {hint ? (
+              <Text className="font-sans" style={{ fontSize: 13, color: P.muted }}>
+                {hint}
               </Text>
-              <Sticker tilt={-8}>
-                <CuteClock size={44} />
-              </Sticker>
-            </View>
-            <Text className="font-heavy" style={{ marginTop: 4, fontSize: 52, lineHeight: 58, color: B9.gold }}>
-              {minutesLabel(minutes)}
-            </Text>
-            <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-              {MINUTES.map((m) => (
-                <MiniPill key={m} label={minutesLabel(m)} on={minutes === m} onPress={() => setMinutes(m)} light />
-              ))}
-            </View>
+            ) : null}
           </View>
-        </Appear>
+          {right}
+        </View>
+        <View style={{ marginTop: 12 }}>{children}</View>
+      </View>
+    </View>
+  );
+}
 
-        <Appear index={3} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[B9CARD, { backgroundColor: B9.navy }]}>
-            <Sparkles count={4} />
-            <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-              Ngày học.
-            </Text>
-            <Text className="font-semi" style={{ marginTop: 2, fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
-              {days.length} buổi / tuần · ngày không chọn là ngày nghỉ
-            </Text>
-            <View style={{ marginTop: 16, flexDirection: 'row', justifyContent: 'space-between', gap: 4 }}>
-              {WEEK_ORDER.map((d) => {
-                const on = days.includes(d);
-                return (
-                  <Pressable
-                    key={d}
-                    accessibilityRole="checkbox"
-                    aria-checked={on}
-                    accessibilityLabel={WEEKDAY_LABEL[d]}
-                    onPress={() => setDays(on ? days.filter((x) => x !== d) : [...days, d])}
-                    style={{ alignItems: 'center', gap: 6 }}
-                  >
-                    <View
-                      style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: on ? B9.goldLight : 'rgba(255,255,255,0.3)', backgroundColor: on ? B9.gold : 'transparent' }}
-                    >
-                      {on ? <Icon name="check" size={16} color={B9.navy} strokeWidth={3} /> : null}
-                    </View>
-                    <Text className="font-strong" style={{ fontSize: 12, color: on ? B9.goldLight : 'rgba(255,255,255,0.6)' }}>
-                      {WEEKDAY_LABEL[d]}
-                    </Text>
-                  </Pressable>
-                );
-              })}
-            </View>
-          </View>
-        </Appear>
+function Muted({ text }: { text: string }) {
+  return (
+    <Text className="font-sans" style={{ marginTop: 6, fontSize: 14, color: P.muted }}>
+      {text}
+    </Text>
+  );
+}
 
-        <Appear index={4} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[B9CARD, { backgroundColor: '#F6EBD3' }]}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-              <Text className="font-heavy" style={{ fontSize: 24, color: B9.navy }}>
-                Phần yếu.
-              </Text>
-              <Sticker tilt={8}>
-                <CuteRocket size={44} />
-              </Sticker>
-            </View>
-            <Text className="font-semi" style={{ marginTop: 2, fontSize: 13, color: '#6B5320' }}>
-              Được thêm giờ. Không chọn cũng được.
+function CheckSquare({ on, light }: { on: boolean; light?: boolean }) {
+  return (
+    <View style={{ width: 20, height: 20, borderRadius: 5, alignItems: 'center', justifyContent: 'center', borderWidth: 1.5, borderColor: on ? P.gold : light ? 'rgba(255,255,255,0.5)' : '#C9B78F', backgroundColor: on ? P.gold : 'transparent' }}>
+      {on ? <Icon name="check" size={13} color="#FFFFFF" strokeWidth={3} /> : null}
+    </View>
+  );
+}
+
+/** Ô chọn kỳ thi: thẻ chữ nhật có ô tích vuông (không phải chip tròn). */
+function ExamTile({ label, sub, on, onPress }: { label: string; sub: string; on: boolean; onPress: () => void }) {
+  const { L } = useL();
+  return (
+    <Pressable
+      accessibilityRole="checkbox"
+      aria-checked={on}
+      accessibilityLabel={L(`Thi ${label}`, `Taking ${label}`)}
+      onPress={onPress}
+      style={{ flexGrow: 1, flexBasis: 120, maxWidth: 260, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12, borderWidth: on ? 1.5 : 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}
+    >
+      <CheckSquare on={on} light={on} />
+      <View>
+        <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 22, color: on ? '#FFFFFF' : P.navy }}>
+          {label}
+        </Text>
+        <Text className="font-sans" style={{ fontSize: 12, color: on ? 'rgba(255,255,255,0.7)' : P.muted }}>
+          {sub}
+        </Text>
+      </View>
+    </Pressable>
+  );
+}
+
+/** Thẻ gạch chân chọn kỳ đang chỉnh khi thi cả hai. */
+function ExamTabs({ value, onChange }: { value: 'ielts' | 'sat'; onChange: (v: 'ielts' | 'sat') => void }) {
+  return (
+    <View accessibilityRole="tablist" style={{ flexDirection: 'row', gap: 16 }}>
+      {(['ielts', 'sat'] as const).map((e) => {
+        const on = value === e;
+        return (
+          <Pressable key={e} accessibilityRole="tab" aria-selected={on} onPress={() => onChange(e)} style={{ paddingVertical: 4, borderBottomWidth: 2, borderColor: on ? P.gold : 'transparent' }}>
+            <Text className="font-heavy" style={{ fontSize: 14, color: on ? P.navy : P.muted }}>
+              {e === 'ielts' ? 'IELTS' : 'SAT'}
             </Text>
-            <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-              {skills.length === 0 ? (
-                <Text className="font-sans" style={{ fontSize: 14, color: '#6B5320' }}>
-                  Chọn kỳ thi trước.
-                </Text>
-              ) : (
-                skills.map((s) => {
-                  const on = weak.includes(s);
-                  return (
-                    <Pressable
-                      key={s}
-                      accessibilityRole="checkbox"
-                      aria-checked={on}
-                      onPress={() => setWeak(on ? weak.filter((x) => x !== s) : [...weak, s])}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 16, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: on ? B9.navy : '#FFFFFF' }}
-                    >
-                      <Badge icon={on ? 'bolt' : 'target'} color={on ? B9.gold : '#D8C39A'} size={24} />
-                      <Text className="font-strong" style={{ fontSize: 14, color: on ? '#FFFFFF' : B9.navy }}>
-                        {SKILL_LABEL[s]}
-                      </Text>
-                    </Pressable>
-                  );
-                })
-              )}
-            </View>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+/**
+ * THƯỚC BAND: một thang ngang, chấm xanh = điểm bây giờ, chấm vàng = mục tiêu,
+ * đoạn tô vàng giữa hai chấm là quãng phải đi. Chọn đang đặt mốc nào, rồi chạm
+ * vạch trên thước.
+ */
+function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit, compact }: { scale: number[]; nowOptions: number[]; targetOptions: number[]; goal: GoalInput; onChange: (g: GoalInput) => void; fmt: (v: number) => string; unit: string; compact: boolean }) {
+  const { L } = useL();
+  const [mode, setMode] = useState<'target' | 'now'>('target');
+  const pos = (v: number) => ((scale.indexOf(v) + 0.5) / scale.length) * 100;
+  const tPos = pos(goal.target);
+  const nPos = goal.now === null ? null : pos(goal.now);
+  const gap = goal.now === null ? null : goal.target - goal.now;
+
+  const pick = (v: number) => {
+    if (mode === 'target') {
+      if (!targetOptions.includes(v) || (goal.now !== null && v <= goal.now)) return;
+      onChange({ ...goal, target: v });
+    } else {
+      if (!nowOptions.includes(v)) return;
+      onChange({ ...goal, now: v, target: goal.target > v ? goal.target : (targetOptions.find((t) => t > v) ?? goal.target) });
+    }
+  };
+  const allowed = (v: number) => (mode === 'target' ? targetOptions.includes(v) && (goal.now === null || v > goal.now) : nowOptions.includes(v));
+
+  return (
+    <View>
+      {/* số đọc to: bây giờ → mục tiêu */}
+      <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexWrap: 'wrap', gap: 10 }}>
+        <Text className="font-heavy" style={{ fontSize: compact ? 34 : 44, lineHeight: compact ? 40 : 50, color: goal.now === null ? '#B7AC95' : P.navy }}>
+          {goal.now === null ? '?' : fmt(goal.now)}
+        </Text>
+        <Text className="font-heavy" style={{ fontSize: compact ? 22 : 28, lineHeight: compact ? 34 : 44, color: P.gold }}>
+          →
+        </Text>
+        <Text className="font-heavy" style={{ fontSize: compact ? 34 : 44, lineHeight: compact ? 40 : 50, color: P.goldDeep }}>
+          {fmt(goal.target)}
+        </Text>
+        {gap !== null ? (
+          <View style={{ marginBottom: compact ? 6 : 10, borderRadius: 6, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: '#FBF3E2', borderWidth: 1, borderColor: P.goldLight }}>
+            <Text className="font-strong" style={{ fontSize: 12, color: P.goldDeep }}>
+              +{unit === 'band' ? gap.toFixed(1) : gap} {unit}
+            </Text>
           </View>
-        </Appear>
+        ) : null}
       </View>
 
-      {tried && problems.length > 0 ? (
-        <View style={{ marginTop: 14, gap: 4, borderRadius: 18, padding: 14, backgroundColor: '#FFF4DB', borderWidth: 1, borderColor: '#EBCF8E' }}>
-          {problems.map((p) => (
-            <View key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
-              <Icon name="info" size={15} color="#8F6E36" />
-              <Text className="font-sans" style={{ flex: 1, fontSize: 14, color: B9.navy }}>
-                {p}
+      {/* đang đặt mốc nào */}
+      <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
+        <View style={{ flexDirection: 'row', borderRadius: 10, borderWidth: 1, borderColor: P.line, overflow: 'hidden' }}>
+          {(['target', 'now'] as const).map((m) => (
+            <Pressable key={m} accessibilityRole="button" aria-selected={mode === m} onPress={() => setMode(m)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: mode === m ? P.navy : '#FFFFFF' }}>
+              <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: m === 'target' ? P.gold : 'transparent', borderWidth: 2, borderColor: m === 'target' ? P.gold : mode === m ? '#FFFFFF' : P.navy }} />
+              <Text className="font-strong" style={{ fontSize: 13, color: mode === m ? '#FFFFFF' : P.navy }}>
+                {m === 'target' ? L('Đặt mục tiêu', 'Set target') : L('Đặt điểm bây giờ', 'Set current')}
               </Text>
-            </View>
+            </Pressable>
           ))}
         </View>
-      ) : null}
+        {mode === 'now' ? (
+          <Pressable accessibilityRole="button" aria-selected={goal.now === null} onPress={() => onChange({ ...goal, now: null })} style={{ borderRadius: 10, paddingHorizontal: 12, paddingVertical: 7, borderWidth: 1, borderColor: goal.now === null ? P.navy : P.line, backgroundColor: '#FFFFFF' }}>
+            <Text className="font-strong" style={{ fontSize: 13, color: P.navy }}>
+              {L('Chưa biết', "Don't know")}
+            </Text>
+          </Pressable>
+        ) : null}
+      </View>
 
-      {/* ------------------------------------------------ thanh chốt */}
-      <View style={{ marginTop: 18, borderRadius: 24, padding: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EADFC6', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 12 }}>
-        <View style={{ flex: 1, minWidth: 220 }}>
-          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#8F6E36' }}>
-            TÓM TẮT
+      {/* thước */}
+      <View style={{ marginTop: 18 }}>
+        <View style={{ height: 26, justifyContent: 'center' }}>
+          <View style={{ height: 4, borderRadius: 2, backgroundColor: '#EFE6D2' }} />
+          {nPos !== null ? (
+            <View style={{ position: 'absolute', left: `${nPos}%`, width: `${tPos - nPos}%`, height: 4, borderRadius: 2, backgroundColor: P.gold }} />
+          ) : null}
+          {nPos !== null ? (
+            <View style={{ position: 'absolute', left: `${nPos}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#FFFFFF', borderWidth: 3, borderColor: P.navy }} />
+          ) : null}
+          <View style={{ position: 'absolute', left: `${tPos}%`, marginLeft: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.gold, borderWidth: 3, borderColor: '#FFFFFF', boxShadow: '0 4px 10px -3px rgba(143,110,54,0.7)' } as object} />
+        </View>
+        <View style={{ flexDirection: 'row' }}>
+          {scale.map((v, i) => {
+            const ok = allowed(v);
+            const major = Number.isInteger(v) || scale.length < 10;
+            const chosen = v === goal.target || v === goal.now;
+            const showLabel = !compact || i % 2 === 0 || chosen;
+            return (
+              <Pressable key={v} accessibilityRole="button" accessibilityLabel={fmt(v)} disabled={!ok} onPress={() => pick(v)} style={{ flex: 1, alignItems: 'center', paddingTop: 2, paddingBottom: 6 }}>
+                <View style={{ width: 2, height: major ? 12 : 7, borderRadius: 1, backgroundColor: ok ? P.navy : '#D9CEB6' }} />
+                <Text className={chosen ? 'font-heavy' : 'font-semi'} style={{ marginTop: 4, fontSize: compact ? 11 : 13, color: v === goal.target ? P.goldDeep : chosen ? P.navy : ok ? P.muted : '#C9BFA9' }}>
+                  {showLabel ? fmt(v) : ' '}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      </View>
+    </View>
+  );
+}
+
+/** Ngày thi: ô ngày + chọn nhanh "sau N tuần" + đếm ngược. Không lịch tháng. */
+function ExamDatePicker({ value, today, minDate, onChange }: { value: string; today: string; minDate: string; onChange: (iso: string) => void }) {
+  const { L } = useL();
+  const left = value ? daysBetween(today, value) : null;
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 16 }}>
+      <View style={{ flexGrow: 1, flexBasis: 260, gap: 10 }}>
+        <DateField value={value} min={minDate} onChange={onChange} />
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+          {QUICK_WEEKS.map((w) => {
+            const iso = addDaysIso(today, w * 7);
+            const on = value === iso;
+            return (
+              <Pressable key={w} accessibilityRole="button" aria-selected={on} onPress={() => onChange(iso)} style={{ borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}>
+                <Text className="font-strong" style={{ fontSize: 12, color: on ? '#FFFFFF' : P.navy }}>
+                  {L(`Sau ${w} tuần`, `In ${w} weeks`)}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      </View>
+      <View style={{ minWidth: 120, alignItems: 'flex-start', borderLeftWidth: 2, borderColor: P.goldLight, paddingLeft: 14 }}>
+        <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 44, color: left === null ? '#B7AC95' : P.navy }}>
+          {left === null ? '—' : left}
+        </Text>
+        <Text className="font-semi" style={{ fontSize: 13, color: P.muted }}>
+          {left === null ? L('chưa có ngày thi', 'no date yet') : L(`ngày nữa · ~${Math.max(1, Math.round(left / 7))} tuần`, `days to go · ~${Math.max(1, Math.round(left / 7))} weeks`)}
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+/** Thanh chọn liền khối (phút mỗi buổi). */
+function Segmented({ options, value, onChange, label }: { options: number[]; value: number; onChange: (v: number) => void; label: (v: number) => string }) {
+  return (
+    <View style={{ marginTop: 8, flexDirection: 'row', borderRadius: 12, borderWidth: 1, borderColor: P.line, backgroundColor: '#FFFFFF', padding: 3, gap: 3 }}>
+      {options.map((m) => {
+        const on = value === m;
+        return (
+          <Pressable key={m} accessibilityRole="button" aria-selected={on} onPress={() => onChange(m)} style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 9, backgroundColor: on ? P.navy : 'transparent' }}>
+            <Text className="font-strong" numberOfLines={1} style={{ fontSize: 13, color: on ? P.goldLight : P.navy }}>
+              {label(m)}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+/** Cuống vé: tóm tắt lộ trình + nút lập. Có đường xé răng cưa giữa hai nửa. */
+function TicketStub({ ielts, sat, today, days, minutesText, weak, problems, editing, onSubmit }: { ielts: GoalInput | null; sat: GoalInput | null; today: string; days: number; minutesText: string; weak: string[]; problems: string[]; editing: boolean; onSubmit: () => void }) {
+  const { L } = useL();
+  const legs = [ielts ? { key: 'IELTS', g: ielts, fmt: (v: number) => v.toFixed(1) } : null, sat ? { key: 'SAT', g: sat, fmt: (v: number) => String(v) } : null].filter(Boolean) as { key: string; g: GoalInput; fmt: (v: number) => string }[];
+  return (
+    <View style={{ borderRadius: 22, backgroundColor: P.navy, overflow: 'hidden' }}>
+      <View style={{ position: 'absolute', top: 8, left: 8, right: 8, bottom: 8, borderRadius: 16, borderWidth: 1, borderColor: 'rgba(226,200,143,0.35)' }} pointerEvents="none" />
+      <View style={{ padding: 22, paddingBottom: 18 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+          <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 2.4, color: P.goldLight }}>
+            BAND 9
           </Text>
-          <Text className="font-heavy" style={{ fontSize: 16, color: B9.navy }}>
-            {[ielts ? `IELTS ${ielts.target.toFixed(1)}` : null, sat ? `SAT ${sat.target}` : null].filter(Boolean).join(' + ') || 'Chưa chọn kỳ thi'} · {days.length} buổi × {minutesLabel(minutes)}
+          <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+            {L('PHIẾU LỘ TRÌNH', 'PLAN TICKET')}
           </Text>
         </View>
-        <Button label={initial ? 'Lập lại lộ trình' : 'Lập lộ trình'} variant="brand" size="lg" iconRight="arrow-right" onPress={submit} />
-        {initial ? <Button label="Huỷ" variant="outline" onPress={() => router.replace('/plan' as never)} /> : null}
-        <Pressable accessibilityRole="link" onPress={() => router.push('/plan?mau=1' as never)}>
-          <Text className="font-semi" style={{ fontSize: 14, color: '#6B5320' }}>
-            Xem lộ trình mẫu 60 tuần →
+
+        {legs.length === 0 ? (
+          <Text className="font-heavy" style={{ marginTop: 18, fontSize: 22, lineHeight: 28, color: '#FFFFFF' }}>
+            {L('Chưa chọn kỳ thi', 'No exam picked yet')}
+          </Text>
+        ) : (
+          legs.map(({ key, g, fmt }) => {
+            const left = g.examIso ? daysBetween(today, g.examIso) : null;
+            return (
+              <View key={key} style={{ marginTop: 16 }}>
+                <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+                  {key}
+                </Text>
+                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                  <Text className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: '#FFFFFF' }}>
+                    {g.now === null ? '?' : fmt(g.now)}
+                  </Text>
+                  <View style={{ flex: 1, height: 1, borderTopWidth: 1, borderStyle: 'dashed', borderColor: 'rgba(226,200,143,0.6)' }} />
+                  <Icon name="arrow-right" size={16} color={P.goldLight} />
+                  <Text className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: P.goldLight }}>
+                    {fmt(g.target)}
+                  </Text>
+                </View>
+                <Text className="font-sans" style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+                  {g.examIso ? L(`Thi ${fmtDate(g.examIso)} · còn ${left} ngày`, `Exam ${fmtDate(g.examIso)} · ${left} days left`) : L('Chưa đặt ngày thi', 'No exam date yet')}
+                </Text>
+              </View>
+            );
+          })
+        )}
+
+        <View style={{ marginTop: 18, flexDirection: 'row', gap: 10 }}>
+          <StubCell label={L('MỖI BUỔI', 'SESSION')} value={minutesText} />
+          <StubCell label={L('MỖI TUẦN', 'PER WEEK')} value={L(`${days} buổi`, `${days} days`)} />
+        </View>
+        {weak.length > 0 ? (
+          <Text className="font-sans" style={{ marginTop: 10, fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+            {L('Thêm giờ cho: ', 'Extra time for: ')}
+            <Text className="font-strong" style={{ color: '#FFFFFF' }}>
+              {weak.join(', ')}
+            </Text>
+          </Text>
+        ) : null}
+      </View>
+
+      {/* đường xé */}
+      <View style={{ height: 24, justifyContent: 'center' }}>
+        <View style={{ marginHorizontal: 20, borderTopWidth: 2, borderStyle: 'dashed', borderColor: 'rgba(255,255,255,0.18)' }} />
+        <View style={{ position: 'absolute', left: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.canvas }} />
+        <View style={{ position: 'absolute', right: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.canvas }} />
+      </View>
+
+      <View style={{ padding: 22, paddingTop: 14, gap: 12 }}>
+        {problems.length > 0 ? (
+          <View style={{ gap: 6 }}>
+            {problems.map((p) => (
+              <View key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+                <Icon name="info" size={15} color={P.goldLight} />
+                <Text className="font-sans" style={{ flex: 1, fontSize: 13, color: '#FFFFFF' }}>
+                  {p}
+                </Text>
+              </View>
+            ))}
+          </View>
+        ) : null}
+        <Button label={editing ? L('Lập lại lộ trình', 'Rebuild plan') : L('Lập lộ trình', 'Build plan')} variant="brand" size="lg" iconRight="arrow-right" onPress={onSubmit} fullWidth />
+        {editing ? <Button label={L('Huỷ', 'Cancel')} variant="outline" fullWidth onPress={() => router.replace('/plan' as never)} /> : null}
+        <Pressable accessibilityRole="link" onPress={() => router.push('/plan?mau=1' as never)} style={{ alignSelf: 'center' }}>
+          <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+            {L('Xem lộ trình mẫu 60 tuần →', 'See the 60-week sample plan →')}
           </Text>
         </Pressable>
       </View>
@@ -353,178 +689,29 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
   );
 }
 
-const B9 = { navy: '#0F1D33', gold: '#A8843F', goldLight: '#E2C88F' };
-const B9CARD = { borderRadius: 30, padding: 22, overflow: 'hidden' } as const;
-
-function ExamChip({ label, on, focused, onToggle, onFocus }: { label: string; on: boolean; focused: boolean; onToggle: () => void; onFocus: () => void }) {
+function StubCell({ label, value }: { label: string; value: string }) {
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', borderRadius: 999, backgroundColor: on ? (focused ? B9.navy : 'rgba(15,29,51,0.75)') : 'rgba(255,255,255,0.55)', paddingLeft: 4, paddingRight: 12, paddingVertical: 4, gap: 8 }}>
-      <Pressable accessibilityRole="checkbox" aria-checked={on} accessibilityLabel={`Thi ${label}`} onPress={onToggle} style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? B9.goldLight : '#FFFFFF' }}>
-        {on ? <Icon name="check" size={15} color={B9.navy} strokeWidth={3} /> : <Icon name="plus" size={15} color={B9.navy} />}
-      </Pressable>
-      <Pressable accessibilityRole="button" onPress={on ? onFocus : onToggle}>
-        <Text className="font-heavy" style={{ fontSize: 15, color: on ? '#FFFFFF' : B9.navy }}>
-          {label}
-        </Text>
-      </Pressable>
-    </View>
-  );
-}
-
-function MiniPill({ label, on, onPress, light }: { label: string; on: boolean; onPress: () => void; light?: boolean }) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      aria-selected={on}
-      onPress={onPress}
-      style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: on ? B9.navy : light ? '#F6EFE0' : 'rgba(255,255,255,0.6)' }}
-    >
-      <Text className="font-strong" style={{ fontSize: 13, color: on ? '#FFFFFF' : B9.navy }}>
+    <View style={{ flex: 1, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.06)' }}>
+      <Text className="font-strong" style={{ fontSize: 10, letterSpacing: 1.4, color: 'rgba(255,255,255,0.55)' }}>
         {label}
       </Text>
-    </Pressable>
-  );
-}
-
-/**
- * Bánh xe chọn số (kiểu cuộn): số đang chọn nằm trong ô trắng, hai số trên dưới
- * mờ dần. Bấm số khác, bấm mũi tên, hoặc lăn chuột (web) để đổi.
- */
-function ValueWheel({ options, value, onChange, format, label }: { options: number[]; value: number; onChange: (v: number) => void; format: (v: number) => string; label: string }) {
-  const idx = Math.max(0, options.indexOf(value));
-  const step = (d: number) => {
-    const n = options[Math.min(options.length - 1, Math.max(0, idx + d))];
-    if (n !== undefined && n !== value) onChange(n);
-  };
-  const stepRef = React.useRef(step);
-  React.useLayoutEffect(() => {
-    stepRef.current = step;
-  });
-  const boxRef = React.useRef<View | null>(null);
-  React.useEffect(() => {
-    if (Platform.OS !== 'web') return;
-    const el = boxRef.current as unknown as HTMLElement | null;
-    if (!el?.addEventListener) return;
-    let last = 0;
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const now = Date.now();
-      if (now - last < 140) return;
-      last = now;
-      stepRef.current(e.deltaY > 0 ? 1 : -1);
-    };
-    el.addEventListener('wheel', onWheel, { passive: false });
-    return () => el.removeEventListener('wheel', onWheel);
-  }, []);
-  const around = [-2, -1, 0, 1, 2];
-  return (
-    <View style={{ alignItems: 'center', minWidth: 220 }}>
-      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: '#6B5320' }}>
-        {label} ↕
+      <Text className="font-heavy" style={{ marginTop: 2, fontSize: 17, color: '#FFFFFF' }}>
+        {value}
       </Text>
-      <View ref={boxRef} style={{ marginTop: 6, alignItems: 'stretch', width: 240 }}>
-        {around.map((o) => {
-          const v = options[idx + o];
-          if (o === 0)
-            return (
-              <View key={o} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderRadius: 18, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: '#FFFFFF', boxShadow: '0 10px 24px -12px rgba(90,67,24,0.55)' } as object}>
-                <Pressable accessibilityRole="button" accessibilityLabel="Giảm" onPress={() => step(-1)} style={{ padding: 6 }}>
-                  <View style={{ transform: [{ rotate: '180deg' }] }}>
-                    <Icon name="chevron-down" size={18} color={B9.navy} />
-                  </View>
-                </Pressable>
-                <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 46, color: B9.navy }}>
-                  {format(value)}
-                </Text>
-                <Pressable accessibilityRole="button" accessibilityLabel="Tăng" onPress={() => step(1)} style={{ padding: 6 }}>
-                  <Icon name="chevron-down" size={18} color={B9.navy} />
-                </Pressable>
-              </View>
-            );
-          return (
-            <Pressable key={o} disabled={v === undefined} onPress={() => v !== undefined && onChange(v)} style={{ alignItems: 'center', paddingVertical: 2 }}>
-              <Text className="font-heavy" style={{ fontSize: Math.abs(o) === 1 ? 26 : 20, color: `rgba(15,29,51,${Math.abs(o) === 1 ? 0.45 : 0.22})` }}>
-                {v === undefined ? ' ' : format(v)}
-              </Text>
-            </Pressable>
-          );
-        })}
-      </View>
-    </View>
-  );
-}
-
-/** Khối ngày thi: đếm ngược thật + lịch tháng có đánh dấu hôm nay và ngày thi. */
-function ExamDateCard({ goal, examLabel, today, minDate, onChange }: { goal: GoalInput | null; examLabel: string; today: string; minDate: string; onChange: (iso: string) => void }) {
-  const exam = goal?.examIso || '';
-  const left = exam ? daysBetween(today, exam) : null;
-  const show = exam && exam.slice(0, 7) >= today.slice(0, 7) ? exam : today;
-  const [y, m] = show.split('-').map(Number) as [number, number];
-  const first = new Date(Date.UTC(y, m - 1, 1));
-  const lead = (first.getUTCDay() + 6) % 7;
-  const count = new Date(Date.UTC(y, m, 0)).getUTCDate();
-  const cells: (number | null)[] = [...Array.from({ length: lead }, () => null), ...Array.from({ length: count }, (_, i) => i + 1)];
-  const iso = (d: number) => `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-  return (
-    <View style={[B9CARD, { backgroundColor: B9.navy, minHeight: 330 }]}>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-        <View>
-          <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-            Ngày thi.
-          </Text>
-          <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>
-            {goal ? `${examLabel} · dự kiến cũng được` : 'Chọn kỳ thi trước'}
-          </Text>
-        </View>
-        <View style={{ alignItems: 'flex-end' }}>
-          <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 44, color: B9.goldLight }}>
-            {left === null ? '—' : left}
-          </Text>
-          <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
-            ngày nữa
-          </Text>
-        </View>
-      </View>
-      <View style={{ marginTop: 12 }}>
-        <DateField value={exam} min={minDate} onChange={onChange} disabled={!goal} />
-      </View>
-      <Text className="font-strong" style={{ marginTop: 14, fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
-        Tháng {m} · {y}
-      </Text>
-      <View style={{ marginTop: 6, flexDirection: 'row', flexWrap: 'wrap' }}>
-        {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((d) => (
-          <Text key={d} className="font-strong" style={{ width: `${100 / 7}%`, textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.5)', paddingVertical: 3 }}>
-            {d}
-          </Text>
-        ))}
-        {cells.map((d, i) => {
-          const k = d ? iso(d) : '';
-          const isToday = k === today;
-          const isExam = !!exam && k === exam;
-          return (
-            <View key={i} style={{ width: `${100 / 7}%`, alignItems: 'center', paddingVertical: 2 }}>
-              <View style={{ width: 26, height: 26, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: isExam ? '#E0533D' : isToday ? B9.goldLight : 'transparent' }}>
-                <Text className="font-semi" style={{ fontSize: 12, color: isToday && !isExam ? B9.navy : d ? '#FFFFFF' : 'transparent' }}>
-                  {d ?? ''}
-                </Text>
-              </View>
-            </View>
-          );
-        })}
-      </View>
     </View>
   );
 }
 
 function DateField({ value, min, onChange, disabled }: { value: string; min: string; onChange: (iso: string) => void; disabled?: boolean }) {
-  const style = { height: 42, borderWidth: 0, borderRadius: 12, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: B9.navy, backgroundColor: disabled ? 'rgba(255,255,255,0.4)' : '#FFFFFF', width: '100%' as const, maxWidth: 260 };
+  const { L } = useL();
+  const style = { height: 44, borderWidth: 1, borderColor: P.line, borderRadius: 10, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: P.navy, backgroundColor: disabled ? '#F4EFE4' : '#FFFFFF', width: '100%' as const, maxWidth: 280 };
   if (Platform.OS === 'web') {
     return React.createElement('input', {
       type: 'date',
       value,
       min,
       disabled,
-      'aria-label': 'Ngày thi',
+      'aria-label': L('Ngày thi', 'Exam date'),
       onChange: (e: { target: { value: string } }) => onChange(e.target.value),
       style: { ...style, fontFamily: 'inherit', borderStyle: 'solid', boxSizing: 'border-box' },
     });
@@ -537,6 +724,10 @@ function DateField({ value, min, onChange, disabled }: { value: string; min: str
 const PHASE_ORDER: Phase[] = ['nen', 'dang', 'de', 'nuoc-rut'];
 
 function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
+  const { L, en } = useL();
+  const phaseLabel = (p: Phase) => (en ? PHASE_LABEL_EN[p] : PHASE_LABEL[p]);
+  const weekdayLabel = (d: number) => (en ? WEEKDAY_LABEL_EN : WEEKDAY_LABEL)[d];
+  const planText = (s: string) => (en ? (PLAN_TEXT_EN[s] ?? s) : s);
   const today = todayKey();
   const current = Math.min(Math.max(planWeekOf(input, today), 1), plan.totalWeeks);
   const [shown, setShown] = useState(current);
@@ -587,22 +778,22 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
           <View className="flex-row flex-wrap items-start justify-between gap-4">
             <View className="min-w-0 flex-1" style={{ minWidth: 260 }}>
               <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(255,255,255,0.85)' }}>
-                LỘ TRÌNH CỦA BẠN · LẬP NGÀY {fmtDate(input.startIso)}
+                {L(`LỘ TRÌNH CỦA BẠN · LẬP NGÀY ${fmtDate(input.startIso)}`, `YOUR PLAN · CREATED ${fmtDate(input.startIso)}`)}
               </Text>
               <Text className="mt-2 font-heavy text-white" style={{ fontSize: 44, lineHeight: 50 }}>
-                Tuần {current}
+                {L(`Tuần ${current}`, `Week ${current}`)}
                 <Text className="font-sans text-white/70" style={{ fontSize: 22 }}>
                   {' '}
                   / {plan.totalWeeks}
                 </Text>
               </Text>
               <View className="mt-2 flex-row flex-wrap gap-2">
-                <InfoPill glyph="⏱" text={`${input.minutesPerDay}'/ngày`} />
-                <InfoPill glyph="📅" text={`${input.studyDays.length} ngày/tuần`} />
+                <InfoPill glyph="⏱" text={L(`${input.minutesPerDay}'/ngày`, `${input.minutesPerDay} min/day`)} />
+                <InfoPill glyph="📅" text={L(`${input.studyDays.length} ngày/tuần`, `${input.studyDays.length} days/week`)} />
               </View>
             </View>
             <View className="items-end gap-2">
-              <Button label="Sửa lộ trình" variant="outline" size="sm" onPress={() => router.push('/plan?sua=1' as never)} />
+              <Button label={L('Sửa lộ trình', 'Edit plan')} variant="outline" size="sm" onPress={() => router.push('/plan?sua=1' as never)} />
               <View className="flex-row items-end" style={{ gap: 6 }} aria-hidden>
                 <Motion kind="float" delay={0.5}>
                   <CuteCloud size={64} />
@@ -624,7 +815,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                   </Motion>
                   <View style={{ flex: 1 }}>
                   <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#64748B' }}>
-                    {g === 'ielts' ? 'IELTS' : 'SAT'} · MỤC TIÊU
+                    {g === 'ielts' ? 'IELTS' : 'SAT'} · {L('MỤC TIÊU', 'TARGET')}
                   </Text>
                   <Text className="mt-1 font-heavy" style={{ fontSize: 30, color: '#0F172A' }}>
                     {fmt(gi.target)}
@@ -648,11 +839,11 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
             <View className="flex-row items-start justify-between gap-3">
               <View className="min-w-0 flex-1">
                 <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
-                  Hôm nay.
+                  {L('Hôm nay.', 'Today.')}
                 </Text>
                 <View className="mt-2 self-start rounded-pill px-3 py-1" style={{ backgroundColor: 'rgba(255,255,255,0.18)' }}>
                   <Text className="font-strong text-white" style={{ fontSize: 13 }}>
-                    {todayBlocks.length > 0 ? `✓ ${todayDone}/${todayBlocks.length}` : '😴 Nghỉ'}
+                    {todayBlocks.length > 0 ? `✓ ${todayDone}/${todayBlocks.length}` : L('😴 Nghỉ', '😴 Rest')}
                   </Text>
                 </View>
               </View>
@@ -671,7 +862,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
               ) : next ? (
                 <View className="rounded-2xl bg-white p-4">
                   <Text className="font-strong text-body text-ink">
-                    Buổi học tiếp: {WEEKDAY_LABEL[next.weekday]} {fmtDate(next.iso)}
+                    {L('Buổi học tiếp:', 'Next session:')} {weekdayLabel(next.weekday)} {fmtDate(next.iso)}
                   </Text>
                   <View className="mt-3 gap-2">
                     {next.blocks.map((b) => (
@@ -681,7 +872,9 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                 </View>
               ) : (
                 <View className="rounded-2xl bg-white p-4">
-                  <Text className="font-sans text-body text-ink">Lộ trình đã đi hết. Bấm “Sửa lộ trình” để đặt mục tiêu mới.</Text>
+                  <Text className="font-sans text-body text-ink">
+                    {L('Lộ trình đã đi hết. Bấm “Sửa lộ trình” để đặt mục tiêu mới.', "You've finished this plan. Tap “Edit plan” to set a new goal.")}
+                  </Text>
                 </View>
               )}
             </View>
@@ -692,10 +885,12 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
             <View className="flex-row items-start justify-between gap-3">
               <View className="min-w-0 flex-1">
                 <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
-                  Tuần này.
+                  {L('Tuần này.', 'This week.')}
                 </Text>
                 <Text className="mt-1 font-sans" style={{ fontSize: 14, color: 'rgba(255,255,255,0.88)' }}>
-                  {goals.map((g) => `${g === 'ielts' ? 'IELTS' : 'SAT'}: ${plan.weeks[current - 1]?.phases[g] ? PHASE_LABEL[plan.weeks[current - 1]!.phases[g]!] : 'đã thi'}`).join(' · ')}
+                  {goals
+                    .map((g) => `${g === 'ielts' ? 'IELTS' : 'SAT'}: ${plan.weeks[current - 1]?.phases[g] ? phaseLabel(plan.weeks[current - 1]!.phases[g]!) : L('đã thi', 'exam done')}`)
+                    .join(' · ')}
                 </Text>
               </View>
               <View aria-hidden className="flex-row items-end">
@@ -709,8 +904,8 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
             </View>
             <WeekDots week={plan.weeks[current - 1] ?? week} today={today} done={done} />
             <View className="mt-4 flex-row flex-wrap gap-2">
-              <Tile value={`✓ ${doneThisWeek}/${totalThisWeek}`} label="khối" />
-              <Tile value={`⏱ ${Math.round((weekMinutes / 60) * 10) / 10}h`} label="tuần này" />
+              <Tile value={`✓ ${doneThisWeek}/${totalThisWeek}`} label={L('khối', 'blocks')} />
+              <Tile value={`⏱ ${Math.round((weekMinutes / 60) * 10) / 10}h`} label={L('tuần này', 'this week')} />
             </View>
           </View>
         </Grid>
@@ -722,7 +917,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
           <Sparkles count={6} />
           <View className="flex-row flex-wrap items-center justify-between gap-3">
             <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
-              Ngày thi.
+              {L('Ngày thi.', 'Exam day.')}
             </Text>
             <View aria-hidden className="flex-row items-end" style={{ gap: 6 }}>
               <Motion kind="wobble">
@@ -745,11 +940,11 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                     {g === 'ielts' ? 'IELTS' : 'SAT'} · {fmtDate(gi.examIso)}
                   </Text>
                   <Text className="mt-1 font-heavy" style={{ fontSize: 34, color: '#0F172A' }}>
-                    {left > 0 ? left : left === 0 ? 'Hôm nay' : 'Đã thi'}
+                    {left > 0 ? left : left === 0 ? L('Hôm nay', 'Today') : L('Đã thi', 'Done')}
                     {left > 0 ? (
                       <Text className="font-sans" style={{ fontSize: 15, color: '#64748B' }}>
                         {' '}
-                        ngày nữa
+                        {L('ngày nữa', 'days to go')}
                       </Text>
                     ) : null}
                   </Text>
@@ -766,10 +961,10 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
       {/* ------------------------------------------------ ô số */}
       <Appear index={3}>
         <Grid columns={4} tabletColumns={2} mobileColumns={2} gap={12}>
-          <StatTile icon="clock" tone="#F2B632" label="Tổng giờ" value={`${Math.round(plan.totalMinutes / 60)}h`} sub="" />
-          <StatTile icon="check" tone="#22A06B" label="Đã làm" value={`${doneAll}/${allBlocks.length}`} sub="" />
-          <StatTile icon="target" tone="#E0533D" label="Thi thử" value={`${checks.length}`} sub="" />
-          <StatTile icon="star" tone="#A8843F" label="Hoàn thành" value={allBlocks.length ? `${Math.round((doneAll / allBlocks.length) * 100)}%` : '—'} sub="" />
+          <StatTile icon="clock" tone="#F2B632" label={L('Tổng giờ', 'Total hours')} value={`${Math.round(plan.totalMinutes / 60)}h`} sub="" />
+          <StatTile icon="check" tone="#22A06B" label={L('Đã làm', 'Done')} value={`${doneAll}/${allBlocks.length}`} sub="" />
+          <StatTile icon="target" tone="#E0533D" label={L('Thi thử', 'Mock tests')} value={`${checks.length}`} sub="" />
+          <StatTile icon="star" tone="#A8843F" label={L('Hoàn thành', 'Complete')} value={allBlocks.length ? `${Math.round((doneAll / allBlocks.length) * 100)}%` : '—'} sub="" />
         </Grid>
       </Appear>
 
@@ -777,14 +972,14 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
       <Appear index={2}>
         <View className="mt-2 flex-row flex-wrap items-center justify-between gap-3">
           <SectionHeader
-            title={`Tuần ${week.week}${week.week === current ? ' (tuần này)' : ''}`}
-            subtitle={`${goals.map((g) => `${g === 'ielts' ? 'IELTS' : 'SAT'}: ${week.phases[g] ? PHASE_LABEL[week.phases[g]!] : 'đã thi'}`).join(' · ')} · đã làm ${doneThisWeek}/${totalThisWeek}`}
+            title={L(`Tuần ${week.week}${week.week === current ? ' (tuần này)' : ''}`, `Week ${week.week}${week.week === current ? ' (this week)' : ''}`)}
+            subtitle={`${goals.map((g) => `${g === 'ielts' ? 'IELTS' : 'SAT'}: ${week.phases[g] ? phaseLabel(week.phases[g]!) : L('đã thi', 'exam done')}`).join(' · ')} · ${L('đã làm', 'done')} ${doneThisWeek}/${totalThisWeek}`}
             icon="calendar"
           />
           <View className="flex-row gap-2">
-            <Button label="Tuần trước" variant="outline" size="sm" disabled={shown <= 1} onPress={() => setShown((s) => Math.max(1, s - 1))} />
-            {shown !== current ? <Button label="Tuần này" variant="outline" size="sm" onPress={() => setShown(current)} /> : null}
-            <Button label="Tuần sau" variant="outline" size="sm" disabled={shown >= plan.totalWeeks} onPress={() => setShown((s) => Math.min(plan.totalWeeks, s + 1))} />
+            <Button label={L('Tuần trước', 'Previous week')} variant="outline" size="sm" disabled={shown <= 1} onPress={() => setShown((s) => Math.max(1, s - 1))} />
+            {shown !== current ? <Button label={L('Tuần này', 'This week')} variant="outline" size="sm" onPress={() => setShown(current)} /> : null}
+            <Button label={L('Tuần sau', 'Next week')} variant="outline" size="sm" disabled={shown >= plan.totalWeeks} onPress={() => setShown((s) => Math.min(plan.totalWeeks, s + 1))} />
           </View>
         </View>
         {week.milestones.length > 0 ? (
@@ -793,7 +988,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
               <View key={m} className="flex-row items-center gap-1.5 rounded-pill px-3 py-1" style={{ backgroundColor: SKILL_TONE.check.soft }}>
                 <Icon name="target" size={13} color={SKILL_TONE.check.tone} />
                 <Text className="font-strong text-label" style={{ color: '#92400E' }}>
-                  {m}
+                  {planText(m)}
                 </Text>
               </View>
             ))}
@@ -803,7 +998,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
           <View className="mt-3 gap-3">
             {week.days.length === 0 ? (
               <Card>
-                <Text className="font-sans text-body text-muted">Tuần này không có buổi học nào.</Text>
+                <Text className="font-sans text-body text-muted">{L('Tuần này không có buổi học nào.', 'No sessions this week.')}</Text>
               </Card>
             ) : (
               week.days
@@ -811,8 +1006,8 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                 .map((d) => (
                   <View key={d.iso}>
                     <Text className="mb-1.5 font-heavy text-label text-ink" style={{ opacity: d.iso === today ? 1 : 0.75 }}>
-                      {WEEKDAY_LABEL[d.weekday]} {fmtDate(d.iso)}
-                      {d.iso === today ? ' · hôm nay' : ''}
+                      {weekdayLabel(d.weekday)} {fmtDate(d.iso)}
+                      {d.iso === today ? L(' · hôm nay', ' · today') : ''}
                     </Text>
                     <View className="gap-1.5">
                       {d.blocks.map((b) => (
@@ -830,7 +1025,11 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
       <View className="mt-6">
         <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={14}>
           <Card className="h-full">
-            <SectionHeader title="Các giai đoạn" subtitle="Nền → dạng → đề, cuối mỗi giai đoạn là một bài thi thử." icon="list" />
+            <SectionHeader
+              title={L('Các giai đoạn', 'Phases')}
+              subtitle={L('Nền → dạng → đề, cuối mỗi giai đoạn là một bài thi thử.', 'Foundations → question types → full tests, with a mock test at the end of each phase.')}
+              icon="list"
+            />
             <View className="mt-3 gap-2">
               {ranges
                 .sort((a, b) => a.from - b.from || PHASE_ORDER.indexOf(a.phase) - PHASE_ORDER.indexOf(b.phase))
@@ -841,9 +1040,9 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                       <Text className="font-heavy text-label" style={{ width: 44, color: r.goal === 'ielts' ? SKILL_TONE.reading.tone : SKILL_TONE.math.tone }}>
                         {r.goal === 'ielts' ? 'IELTS' : 'SAT'}
                       </Text>
-                      <Text className="flex-1 font-strong text-body text-ink">{PHASE_LABEL[r.phase]}</Text>
+                      <Text className="flex-1 font-strong text-body text-ink">{phaseLabel(r.phase)}</Text>
                       <Text className="font-mid text-label text-muted">
-                        Tuần {r.from}
+                        {L('Tuần', 'Week')} {r.from}
                         {r.to !== r.from ? `–${r.to}` : ''}
                       </Text>
                     </View>
@@ -852,10 +1051,10 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
             </View>
             {checks.length > 0 ? (
               <View className="mt-4">
-                <Text className="font-strong text-label text-ink">Cửa kiểm tra</Text>
+                <Text className="font-strong text-label text-ink">{L('Cửa kiểm tra', 'Checkpoints')}</Text>
                 {checks.map((c) => (
                   <Text key={c.block.id} className="mt-1 font-sans text-label text-muted">
-                    {fmtDate(c.iso)} · {c.block.title}
+                    {fmtDate(c.iso)} · {planText(c.block.title)}
                   </Text>
                 ))}
               </View>
@@ -863,7 +1062,11 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
           </Card>
 
           <Card className="h-full">
-            <SectionHeader title="Chia thời gian" subtitle={`Tổng ${Math.round(plan.totalMinutes / 60)} giờ tới ngày thi.`} icon="gauge" />
+            <SectionHeader
+              title={L('Chia thời gian', 'Time split')}
+              subtitle={L(`Tổng ${Math.round(plan.totalMinutes / 60)} giờ tới ngày thi.`, `${Math.round(plan.totalMinutes / 60)} hours in total until exam day.`)}
+              icon="gauge"
+            />
             <View className="mt-3 gap-2.5">
               {(Object.keys(plan.minutesBySkill) as Skill[])
                 .filter((s) => plan.minutesBySkill[s] > 0)
@@ -874,11 +1077,11 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                     <View key={s}>
                       <View className="flex-row justify-between">
                         <Text className="font-semi text-label text-ink">
-                          {SKILL_LABEL[s]}
-                          {input.weak.includes(s) ? ' · phần yếu' : ''}
+                          {en ? SKILL_LABEL_EN[s] : SKILL_LABEL[s]}
+                          {input.weak.includes(s) ? L(' · phần yếu', ' · weak spot') : ''}
                         </Text>
                         <Text className="font-mid text-label text-muted">
-                          {Math.round(plan.minutesBySkill[s] / 60)} giờ · {Math.round(share * 100)}%
+                          {Math.round(plan.minutesBySkill[s] / 60)} {L('giờ', 'hr')} · {Math.round(share * 100)}%
                         </Text>
                       </View>
                       <View className="mt-1 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#F6F3EE' }}>
@@ -897,6 +1100,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
 
 /** Bảy ngày trong tuần (T2 → CN): đã học xong / hôm nay / bỏ lỡ / chưa tới / nghỉ. */
 function WeekDots({ week, today, done }: { week: CustomPlan['weeks'][number]; today: string; done: Record<string, unknown> }) {
+  const { L, en } = useL();
   const byIso = new Map(week.days.map((d) => [d.iso, d]));
   return (
     <View className="mt-4 flex-row justify-between rounded-2xl px-3 py-3" style={{ backgroundColor: 'rgba(255,255,255,0.14)' }}>
@@ -911,7 +1115,9 @@ function WeekDots({ week, today, done }: { week: CustomPlan['weeks'][number]; to
         return (
           <View key={iso} className="items-center" style={{ gap: 6 }}>
             <View
-              accessibilityLabel={`${WEEKDAY_LABEL[weekday]}: ${!study ? 'nghỉ' : complete ? 'đã học xong' : missed ? 'bỏ lỡ' : 'chưa học'}`}
+              accessibilityLabel={`${(en ? WEEKDAY_LABEL_EN : WEEKDAY_LABEL)[weekday]}: ${
+                !study ? L('nghỉ', 'rest') : complete ? L('đã học xong', 'done') : missed ? L('bỏ lỡ', 'missed') : L('chưa học', 'not yet')
+              }`}
               style={{
                 width: 30,
                 height: 30,
@@ -927,7 +1133,7 @@ function WeekDots({ week, today, done }: { week: CustomPlan['weeks'][number]; to
               {complete ? <Icon name="check" size={16} color="#CAA76B" strokeWidth={3} /> : null}
             </View>
             <Text className="font-strong" style={{ fontSize: 12, color: isToday ? '#FFFFFF' : 'rgba(255,255,255,0.8)' }}>
-              {WEEKDAY_SHORT[weekday]}
+              {(en ? WEEKDAY_LABEL_EN : WEEKDAY_SHORT)[weekday]}
             </Text>
           </View>
         );

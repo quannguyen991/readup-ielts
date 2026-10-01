@@ -6,6 +6,7 @@ import { TaskShell } from '@/components/layout/TaskShell';
 import { UnitRunner } from '@/components/sat-rw/UnitRunner';
 import { Button, PaperCard } from '@/components/ui';
 import { getSatRwUnit, questionsForUnit } from '@/data/sat-rw-repository';
+import { useL } from '@/i18n/useL';
 
 /**
  * Luyện TRỌN một unit SAT Reading & Writing, cả 24 câu một lượt.
@@ -16,6 +17,7 @@ import { getSatRwUnit, questionsForUnit } from '@/data/sat-rw-repository';
  */
 export default function SatRwUnitScreen() {
   const { unit: unitParam } = useLocalSearchParams<{ unit: string }>();
+  const { L } = useL();
   const unitNumber = Number(unitParam);
   const unit = Number.isFinite(unitNumber) ? getSatRwUnit(unitNumber) : undefined;
   const questions = unit ? questionsForUnit(unit.unit) : [];
@@ -24,18 +26,21 @@ export default function SatRwUnitScreen() {
     return (
       <TaskShell tone="paper"
         backHref="/sat-rw"
-        backLabel="Về SAT Verbal"
-        title="Không tìm thấy unit này"
+        backLabel={L('Về SAT Verbal', 'Back to SAT Verbal')}
+        title={L('Không tìm thấy unit này', 'Unit not found')}
         icon="clipboard"
       >
         <PaperCard className="max-w-[520px]">
           <Text className="font-sans text-body text-paper-body">
-            Unit bạn vừa mở không có trong kho. Quay lại danh sách để chọn unit khác.
+            {L(
+              'Unit bạn vừa mở không có trong kho. Quay lại danh sách để chọn unit khác.',
+              'The unit you opened isn’t in the bank. Go back to the list and pick another one.',
+            )}
           </Text>
           <Button
             className="mt-4"
             variant="brand"
-            label="Về SAT Verbal"
+            label={L('Về SAT Verbal', 'Back to SAT Verbal')}
             onPress={() => router.replace('/sat-rw' as never)}
           />
         </PaperCard>
@@ -46,13 +51,13 @@ export default function SatRwUnitScreen() {
   return (
     <UnitRunner
       title={unit.title}
-      subtitle={`Bài ${unit.unit} · ${unit.domain}`}
+      subtitle={L(`Bài ${unit.unit} · ${unit.domain}`, `Unit ${unit.unit} · ${unit.domain}`)}
       questions={questions}
       ruleVi={unit.ruleVi}
       backHref="/sat-rw"
-      backLabel="Về SAT Verbal"
+      backLabel={L('Về SAT Verbal', 'Back to SAT Verbal')}
       doneHref="/sat-rw"
-      doneLabel="Chọn bài khác"
+      doneLabel={L('Chọn bài khác', 'Pick another unit')}
     />
   );
 }

@@ -8,6 +8,7 @@ import type { TranscriptSentence } from '@/services/youtube/transcript';
 import { observeSkill } from '@/store/useMasteryStore';
 import { color, paper } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * Nghe hiểu: câu hỏi sinh thẳng từ phụ đề của chính video đang xem.
@@ -66,6 +67,7 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
   /** Đoạn người học cho là chứa đáp án — trục thứ hai của sổ bằng chứng. */
   const [marks, setMarks] = useState<Record<string, number>>({});
   const [error, setError] = useState<string | null>(null);
+  const { L } = useL();
 
   /**
    * Đoạn văn, kèm mốc thời gian của câu đầu mỗi đoạn.
@@ -104,13 +106,19 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
         paragraphs,
       });
       if (set.questions.length === 0) {
-        throw new Error('Phụ đề này quá ngắn hoặc quá ít từ để dựng được câu hỏi.');
+        throw new Error(
+          pick(
+            currentLocale(),
+            'Phụ đề này quá ngắn hoặc quá ít từ để dựng được câu hỏi.',
+            'These subtitles are too short or have too few words to build questions.',
+          ),
+        );
       }
       setQuestions(set.questions);
       setError(null);
       setStatus('ready');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Lỗi lạ');
+      setError(err instanceof Error ? err.message : pick(currentLocale(), 'Lỗi lạ', 'Unexpected error'));
       setStatus('error');
     }
   }, [paragraphs, videoId]);
@@ -142,7 +150,7 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
     return (
       <PaperCard>
         <Text className="font-sans text-body text-paper-body">
-          Phụ đề của video này quá ngắn để sinh câu hỏi nghe hiểu.
+          {L('Phụ đề của video này quá ngắn để sinh câu hỏi nghe hiểu.', 'This video’s subtitles are too short to generate listening questions.')}
         </Text>
       </PaperCard>
     );
@@ -153,10 +161,10 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
       <PaperCard className="items-center py-10">
         <ActivityIndicator color={paper.brandMid} />
         <Text className="mt-3 font-sans text-body text-paper-muted">
-          Đang đọc phụ đề và ra đề nghe hiểu…
+          {L('Đang đọc phụ đề và ra đề nghe hiểu…', 'Reading the subtitles and building listening questions…')}
         </Text>
         <Text className="mt-1 font-sans text-label text-paper-muted">
-          Mất khoảng 10–20 giây cho một video.
+          {L('Mất khoảng 10–20 giây cho một video.', 'Takes about 10–20 seconds per video.')}
         </Text>
       </PaperCard>
     );
@@ -167,13 +175,13 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
       <PaperCard>
         <View className="flex-row items-center gap-2">
           <Icon name="info" size={18} color={color.warning} strokeWidth={2.2} />
-          <Text className="font-strong text-body text-paper-ink">Chưa ra được đề</Text>
+          <Text className="font-strong text-body text-paper-ink">{L('Chưa ra được đề', 'Couldn’t build questions')}</Text>
         </View>
         <Text className="mt-1.5 font-sans text-body text-paper-body">{error}</Text>
         <Button
           className="mt-4 self-start"
           variant="brand"
-          label="Thử lại"
+          label={L('Thử lại', 'Try again')}
           iconLeft="refresh"
           onPress={reload}
         />
@@ -188,13 +196,13 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
     <View>
       <View className="mb-3 flex-row flex-wrap items-center gap-2">
         <Text className="font-strong text-body text-white">
-          {answered}/{questions.length} câu đã trả lời
+          {L(`${answered}/${questions.length} câu đã trả lời`, `${answered}/${questions.length} answered`)}
         </Text>
         {answered > 0 ? (
-          <Text className="font-sans text-label text-white/80">· đúng {correct}</Text>
+          <Text className="font-sans text-label text-white/80">{L(`· đúng ${correct}`, `· ${correct} correct`)}</Text>
         ) : null}
         <View className="flex-1" />
-        <Button variant="onDark" label="Ra đề khác" iconLeft="refresh" onPress={reload} />
+        <Button variant="onDark" label={L('Ra đề khác', 'New questions')} iconLeft="refresh" onPress={reload} />
       </View>
 
       <View className="gap-3">
@@ -253,6 +261,7 @@ function FillIn({
 }) {
   const [draft, setDraft] = useState('');
   const answered = picked !== null;
+  const { L } = useL();
 
   return (
     <View className="mt-3 flex-row flex-wrap items-center gap-2">
@@ -260,7 +269,7 @@ function FillIn({
         value={answered ? picked : draft}
         onChangeText={setDraft}
         editable={!answered}
-        placeholder="Gõ câu trả lời…"
+        placeholder={L('Gõ câu trả lời…', 'Type your answer…')}
         placeholderTextColor={paper.muted}
         onSubmitEditing={() => draft.trim() && onPick(draft.trim())}
         className="min-w-[220px] flex-1 rounded-panel border px-3.5 py-2.5 font-sans text-body text-paper-ink"
@@ -277,7 +286,7 @@ function FillIn({
         <Button
           variant="brand"
           size="sm"
-          label="Trả lời"
+          label={L('Trả lời', 'Answer')}
           onPress={() => draft.trim() && onPick(draft.trim())}
         />
       ) : null}
@@ -321,6 +330,7 @@ function QuizItem({
   const marked = markedPart !== null;
   const right = sameAnswer(picked, question.correctAnswer);
   const options = optionsFor(question);
+  const { L } = useL();
 
   return (
     <PaperCard>
@@ -391,10 +401,10 @@ function QuizItem({
       {answered && !marked ? (
         <View className="mt-3 rounded-panel border border-paper-line bg-white p-3.5">
           <Text className="font-strong text-label text-paper-ink">
-            Bạn nghe thấy đáp án ở đoạn nào?
+            {L('Bạn nghe thấy đáp án ở đoạn nào?', 'Which part did you hear the answer in?')}
           </Text>
           <Text className="mt-0.5 font-sans text-label text-paper-muted">
-            Chọn xong mới hiện lời giải. Chọn sai không bị trừ gì.
+            {L('Chọn xong mới hiện lời giải. Chọn sai không bị trừ gì.', 'The explanation appears once you pick. A wrong pick costs nothing.')}
           </Text>
           <View className="mt-2.5 flex-row flex-wrap gap-1.5">
             {Array.from({ length: paragraphCount }, (_, i) => (
@@ -404,7 +414,7 @@ function QuizItem({
                 onPress={() => onMark(i)}
                 className="rounded-pill border border-brand-soft bg-white px-3 py-1.5"
               >
-                <Text className="font-semi text-label text-paper-body">Đoạn {i + 1}</Text>
+                <Text className="font-semi text-label text-paper-body">{L('Đoạn', 'Part')} {i + 1}</Text>
               </Pressable>
             ))}
           </View>
@@ -427,7 +437,7 @@ function QuizItem({
               strokeWidth={2.2}
             />
             <Text className="font-strong text-body text-paper-ink">
-              {right ? 'Đúng rồi' : `Đáp án đúng: ${question.correctAnswer}`}
+              {right ? L('Đúng rồi', 'Correct') : L(`Đáp án đúng: ${question.correctAnswer}`, `Correct answer: ${question.correctAnswer}`)}
             </Text>
           </View>
 
@@ -440,8 +450,14 @@ function QuizItem({
           {markedPart !== null ? (
             <Text className="mt-1.5 font-sans text-label text-paper-muted" style={{ lineHeight: 19 }}>
               {markedPart === question.evidenceParagraphIndex
-                ? `Bạn chỉ đúng đoạn ${markedPart + 1} — chỗ thật sự chứa đáp án.`
-                : `Bạn chỉ đoạn ${markedPart + 1}, nhưng đáp án nằm ở đoạn ${question.evidenceParagraphIndex + 1}.`}
+                ? L(
+                    `Bạn chỉ đúng đoạn ${markedPart + 1} — chỗ thật sự chứa đáp án.`,
+                    `You picked part ${markedPart + 1} — exactly where the answer is.`,
+                  )
+                : L(
+                    `Bạn chỉ đoạn ${markedPart + 1}, nhưng đáp án nằm ở đoạn ${question.evidenceParagraphIndex + 1}.`,
+                    `You picked part ${markedPart + 1}, but the answer is in part ${question.evidenceParagraphIndex + 1}.`,
+                  )}
             </Text>
           ) : null}
 
@@ -453,7 +469,7 @@ function QuizItem({
             >
               <Icon name="play" size={14} color={paper.brandMid} strokeWidth={2.2} />
               <Text className="min-w-0 flex-1 font-mid text-label text-paper-body" style={{ lineHeight: 19 }}>
-                “{question.evidenceText}” — bấm để nghe lại đúng chỗ này
+                “{question.evidenceText}” — {L('bấm để nghe lại đúng chỗ này', 'tap to replay this exact spot')}
               </Text>
             </Pressable>
           ) : null}

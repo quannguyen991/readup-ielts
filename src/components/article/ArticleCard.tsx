@@ -10,6 +10,14 @@ import { buildPhotoOwners, coverSource, generatedCover } from '@/services/articl
 import { GeneratedCoverArt } from './GeneratedCoverArt';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+
+/** "Độ khó lớp 9" → "Grade 9 level" khi giao diện tiếng Anh (nhãn gốc ở data/articles). */
+function levelLabelEn(label: string | null): string | null {
+  if (!label) return label;
+  const m = /^Độ khó lớp (\d+)$/.exec(label);
+  return m ? `Grade ${m[1]} level` : label;
+}
 
 /**
  * Card bài đọc dùng ở Library, Dashboard và Practice.
@@ -31,6 +39,7 @@ export function ArticleCard({
   const progress = useStudyStore((s) => s.progress[article.id]);
   const bookmarked = useStudyStore((s) => s.bookmarks.includes(article.id));
   const toggleBookmark = useStudyStore((s) => s.toggleBookmark);
+  const { L, en } = useL();
 
   const readable = isReadable(article);
 
@@ -81,18 +90,18 @@ export function ArticleCard({
             {article.sourceName}
           </Text>
           <Text className="font-mid text-label text-subtle">
-            {article.estMinutes ? `${article.estMinutes} phút` : '—'}
+            {article.estMinutes ? L(`${article.estMinutes} phút`, `${article.estMinutes} min`) : '—'}
           </Text>
           {readable ? (
             <Text className="font-strong text-label text-primary-600">
               {progress?.percentCompleted ?? 0}%
             </Text>
           ) : (
-            <Badge label="Link gốc" tone="neutral" />
+            <Badge label={L('Link gốc', 'Source link')} tone="neutral" />
           )}
           <IconButton
             name="bookmark"
-            accessibilityLabel={bookmarked ? 'Bỏ đánh dấu' : 'Đánh dấu'}
+            accessibilityLabel={bookmarked ? L('Bỏ đánh dấu', 'Remove bookmark') : L('Đánh dấu', 'Bookmark')}
             tone={bookmarked ? 'primary' : 'default'}
             onPress={() => toggleBookmark(article.id)}
           />
@@ -133,7 +142,7 @@ export function ArticleCard({
                 uppercase
               />
             )}
-            {!readable ? <Badge label="Link gốc" tone="neutral" /> : null}
+            {!readable ? <Badge label={L('Link gốc', 'Source link')} tone="neutral" /> : null}
           </View>
 
           <Text className="mt-1.5 font-strong text-cardTitle text-ink" numberOfLines={2}>
@@ -144,7 +153,7 @@ export function ArticleCard({
             <Meta icon="clock" label={article.estMinutes ? `${article.estMinutes} min` : '—'} />
             <Meta icon="book" label={topicLabel(article.topic)} />
             {readingLevelLabel(article) ? (
-              <Meta icon="gauge" label={readingLevelLabel(article)!} />
+              <Meta icon="gauge" label={(en ? levelLabelEn(readingLevelLabel(article)) : readingLevelLabel(article))!} />
             ) : null}
             <Meta icon="info" label={article.sourceName} />
           </View>
@@ -157,7 +166,7 @@ export function ArticleCard({
                 className="flex-1"
               />
               <Text className="font-mid text-label text-muted">
-                {progress?.percentCompleted ?? 0}% hoàn thành
+                {L(`${progress?.percentCompleted ?? 0}% hoàn thành`, `${progress?.percentCompleted ?? 0}% complete`)}
               </Text>
             </View>
           ) : (
@@ -170,7 +179,7 @@ export function ArticleCard({
 
       <IconButton
         name="bookmark"
-        accessibilityLabel={bookmarked ? 'Bỏ đánh dấu' : 'Đánh dấu'}
+        accessibilityLabel={bookmarked ? L('Bỏ đánh dấu', 'Remove bookmark') : L('Đánh dấu', 'Bookmark')}
         tone={bookmarked ? 'primary' : 'default'}
         onPress={() => toggleBookmark(article.id)}
       />

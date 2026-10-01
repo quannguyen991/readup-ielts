@@ -13,6 +13,7 @@ import { useGameStore } from '@/store/useGameStore';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 const SPEEDS = [0.7, 0.9, 1] as const;
 
@@ -25,6 +26,7 @@ const SPEEDS = [0.7, 0.9, 1] as const;
  */
 export default function DictationScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  const { L, en } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
@@ -34,7 +36,7 @@ export default function DictationScreen() {
   const [voiceIdx, setVoiceIdx] = useState(-1);
   const voice = voiceIdx >= 0 ? voices[voiceIdx % voices.length] : undefined;
   const voiceId = voice?.identifier ?? preferredVoice(voices);
-  const voiceName = voice?.name ?? voices.find((v) => v.identifier === voiceId)?.name ?? 'Giọng mặc định';
+  const voiceName = voice?.name ?? voices.find((v) => v.identifier === voiceId)?.name ?? L('Giọng mặc định', 'Default voice');
 
   const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(0.9);
   const [sentenceMode, setSentenceMode] = useState(false);
@@ -99,9 +101,9 @@ export default function DictationScreen() {
 
   if (!topic || !word) {
     return (
-      <StudyFrame backHref="/vocabulary/quiz" title="Nghe chép">
+      <StudyFrame backHref="/vocabulary/quiz" title={L('Nghe chép', 'Dictation')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này.</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có bộ từ này.', 'Word set not found.')}</Text>
         </StudyCard>
       </StudyFrame>
     );
@@ -115,10 +117,13 @@ export default function DictationScreen() {
   return (
     <StudyFrame
       backHref={`/vocabulary/topic/${slug}`}
-      title={topic.nameVi}
+      title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}
       battle
       segments={segments}
-      footer={`Từ ${index + 1} / ${words.length}  •  Đúng ${correct}  •  Phím Ctrl để nghe lại`}
+      footer={L(
+        `Từ ${index + 1} / ${words.length}  •  Đúng ${correct}  •  Phím Ctrl để nghe lại`,
+        `Word ${index + 1} / ${words.length}  •  Correct ${correct}  •  Press Ctrl to replay`,
+      )}
       right={
         <Pressable
           accessibilityRole="switch"
@@ -133,20 +138,20 @@ export default function DictationScreen() {
           <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : '#E1D9CB' }}>
             <View className="h-4 w-4 rounded-pill bg-white" style={{ alignSelf: sentenceMode ? 'flex-end' : 'flex-start' }} />
           </View>
-          <Text className="font-semi text-label text-ink">Chép câu ví dụ</Text>
+          <Text className="font-semi text-label text-ink">{L('Chép câu ví dụ', 'Dictate example sentence')}</Text>
         </Pressable>
       }
     >
       <CrossFade swapKey={`${index}:${sentenceMode}`}>
         <StudyCard>
           <Text className="text-center font-semi text-label uppercase tracking-[1.2px] text-muted">
-            {sentenceMode ? 'Nghe và chép cả câu' : 'Nghe và viết từ'}
+            {sentenceMode ? L('Nghe và chép cả câu', 'Listen and write the sentence') : L('Nghe và viết từ', 'Listen and write the word')}
           </Text>
 
           <View className="mt-5 items-center">
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Nghe lại"
+              accessibilityLabel={L('Nghe lại', 'Replay')}
               onPress={play}
               className="h-24 w-24 items-center justify-center rounded-pill"
               style={{ backgroundColor: color.primary }}
@@ -185,7 +190,7 @@ export default function DictationScreen() {
             autoFocus
             autoCapitalize="none"
             autoCorrect={false}
-            placeholder={sentenceMode ? 'Gõ lại cả câu bạn nghe được…' : 'Nhập từ bạn nghe được…'}
+            placeholder={sentenceMode ? L('Gõ lại cả câu bạn nghe được…', 'Type the sentence you heard…') : L('Nhập từ bạn nghe được…', 'Type the word you heard…')}
             placeholderTextColor="#94A3B8"
             onSubmitEditing={check}
             className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-cardTitle text-ink"
@@ -194,9 +199,9 @@ export default function DictationScreen() {
 
           {verdict === null ? (
             <>
-              <PrimaryButton label="Kiểm tra" hint="Enter" disabled={!typed.trim()} onPress={check} />
+              <PrimaryButton label={L('Kiểm tra', 'Check')} hint="Enter" disabled={!typed.trim()} onPress={check} />
               <GhostButton
-                label="Tôi không biết"
+                label={L('Tôi không biết', "I don't know")}
                 onPress={() => {
                   setVerdict(false);
                   logQuestions(1);
@@ -207,7 +212,7 @@ export default function DictationScreen() {
           ) : (
             <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? '#ECFDF3' : '#FFF1F2' }}>
               <Text className="font-strong text-cardTitle" style={{ color: verdict ? GREEN : RED }}>
-                {verdict ? 'Chính xác!' : 'Đáp án đúng'}
+                {verdict ? L('Chính xác!', 'Correct!') : L('Đáp án đúng', 'Correct answer')}
               </Text>
               {sentenceMode ? (
                 <Text className="mt-2 font-semi text-bodyLg text-ink">{word.example}</Text>
@@ -223,7 +228,7 @@ export default function DictationScreen() {
               <Text className="mt-2 font-sans text-body text-muted">
                 {word.word} · {word.ipa} · {word.meaningVi}
               </Text>
-              <PrimaryButton label="Từ tiếp theo" hint="Enter" onPress={next} />
+              <PrimaryButton label={L('Từ tiếp theo', 'Next word')} hint="Enter" onPress={next} />
             </View>
           )}
         </StudyCard>

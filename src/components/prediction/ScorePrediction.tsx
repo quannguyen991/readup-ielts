@@ -7,6 +7,7 @@ import { combineTotal, MATH_WEIGHTS, predictSection, VERBAL_WEIGHTS, type Predic
 import { useMathStore } from '@/store/useMathStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /** Chỉ lấy tối đa 150 câu GẦN NHẤT mỗi mảng — dự đoán phải theo trình độ hiện tại. */
 const RECENT = 150;
@@ -70,15 +71,16 @@ function RangeBar({ low, mid, high, min, max, tone }: { low: number; mid: number
 }
 
 export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 'total' }) {
+  const { L } = useL();
   const all = useSatPredictions();
-  const title = section === 'math' ? 'SAT Math' : section === 'verbal' ? 'SAT Verbal' : 'Tổng SAT';
+  const title = section === 'math' ? 'SAT Math' : section === 'verbal' ? 'SAT Verbal' : L('Tổng SAT', 'SAT total');
   const tone = section === 'math' ? '#24375A' : section === 'verbal' ? '#EC4899' : '#A8843F';
 
   if (section === 'total') {
     const t = all.total;
     return (
       <View className="rounded-[22px] bg-white p-5" style={CARD}>
-        <Text className="font-strong text-label uppercase tracking-[1.2px] text-muted">Điểm dự đoán · {title}</Text>
+        <Text className="font-strong text-label uppercase tracking-[1.2px] text-muted">{L('Điểm dự đoán', 'Predicted score')} · {title}</Text>
         {t ? (
           <>
             <Text className="mt-1 font-heavy text-pageTitle text-ink">
@@ -86,12 +88,18 @@ export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 
             </Text>
             <RangeBar low={t.low} mid={t.mid} high={t.high} min={400} max={1600} tone={tone} />
             <Text className="mt-2 font-sans text-label text-muted">
-              Khoảng tin cậy 80%, cộng từ hai phần thi. Math {all.math!.low}–{all.math!.high} · Verbal {all.verbal!.low}–{all.verbal!.high}.
+              {L(
+                `Khoảng tin cậy 80%, cộng từ hai phần thi. Math ${all.math!.low}–${all.math!.high} · Verbal ${all.verbal!.low}–${all.verbal!.high}.`,
+                `80% confidence range, summed from both sections. Math ${all.math!.low}–${all.math!.high} · Verbal ${all.verbal!.low}–${all.verbal!.high}.`,
+              )}
             </Text>
           </>
         ) : (
           <Text className="mt-2 font-sans text-body text-muted">
-            Làm ít nhất 10 câu ở mỗi phần (SAT Math và SAT Verbal) để có dự đoán tổng điểm.
+            {L(
+              'Làm ít nhất 10 câu ở mỗi phần (SAT Math và SAT Verbal) để có dự đoán tổng điểm.',
+              'Answer at least 10 questions in each section (SAT Math and SAT Verbal) to get a total score prediction.',
+            )}
           </Text>
         )}
       </View>
@@ -101,31 +109,42 @@ export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 
   const p: Prediction | null = section === 'math' ? all.math : all.verbal;
   return (
     <View className="rounded-[22px] bg-white p-5" style={CARD}>
-      <Text className="font-strong text-label uppercase tracking-[1.2px] text-muted">Điểm dự đoán · {title}</Text>
+      <Text className="font-strong text-label uppercase tracking-[1.2px] text-muted">{L('Điểm dự đoán', 'Predicted score')} · {title}</Text>
       {p ? (
         <>
           <View className="mt-1 flex-row flex-wrap items-baseline gap-2">
             <Text className="font-heavy text-pageTitle text-ink">
               {p.low}–{p.high}
             </Text>
-            <Text className="font-sans text-body text-muted">giữa khoảng {p.mid}</Text>
+            <Text className="font-sans text-body text-muted">{L(`giữa khoảng ${p.mid}`, `midpoint ${p.mid}`)}</Text>
           </View>
           <RangeBar low={p.low} mid={p.mid} high={p.high} min={200} max={800} tone={tone} />
           <Text className="mt-2 font-sans text-label text-muted">
-            Khoảng tin cậy 80% · dựa trên {p.answered} câu gần nhất · quy thẳng tỉ lệ đúng ra thang 200–800 (College Board không công bố bảng quy đổi cho luyện tập).
+            {L(
+              `Khoảng tin cậy 80% · dựa trên ${p.answered} câu gần nhất · quy thẳng tỉ lệ đúng ra thang 200–800 (College Board không công bố bảng quy đổi cho luyện tập).`,
+              `80% confidence range · based on your last ${p.answered} questions · accuracy mapped straight onto the 200–800 scale (College Board doesn't publish a conversion table for practice).`,
+            )}
           </Text>
           {p.needMore ? (
             <Text className="mt-2 font-semi text-body" style={{ color: '#B45309' }}>
-              Làm thêm khoảng {p.needMore} câu{p.widestDomain ? ` — nhất là mảng ${domainName(p.widestDomain)}` : ''} để khoảng hẹp lại còn ±30 điểm.
+              {L(
+                `Làm thêm khoảng ${p.needMore} câu${p.widestDomain ? ` — nhất là mảng ${domainName(p.widestDomain)}` : ''} để khoảng hẹp lại còn ±30 điểm.`,
+                `Answer about ${p.needMore} more questions${p.widestDomain ? ` — especially in ${domainName(p.widestDomain)}` : ''} to narrow the range to ±30 points.`,
+              )}
             </Text>
           ) : (
             <Text className="mt-2 font-semi text-body" style={{ color: '#15803D' }}>
-              Đủ dữ liệu: sai số chỉ còn khoảng ±{p.halfWidth} điểm.
+              {L(`Đủ dữ liệu: sai số chỉ còn khoảng ±${p.halfWidth} điểm.`, `Enough data: the margin of error is now about ±${p.halfWidth} points.`)}
             </Text>
           )}
         </>
       ) : (
-        <Text className="mt-2 font-sans text-body text-muted">Làm ít nhất 10 câu để có dự đoán — một con số từ vài câu chỉ là đoán mò.</Text>
+        <Text className="mt-2 font-sans text-body text-muted">
+          {L(
+            'Làm ít nhất 10 câu để có dự đoán — một con số từ vài câu chỉ là đoán mò.',
+            'Answer at least 10 questions to get a prediction — a number from just a few questions is a guess.',
+          )}
+        </Text>
       )}
     </View>
   );

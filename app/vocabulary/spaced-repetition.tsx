@@ -17,16 +17,23 @@ import {
   calculate7DayForecast,
   calculateMemoryLevels,
   importLearnedTopicWords,
+  WEEKDAY_LABELS,
 } from '@/services/vocab/spaced-repetition';
 import { CARD_KINDS, isDue } from '@/services/vocab/schedule';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteBook } from '@/components/illust/Cute';
 import { Motion } from '@/components/illust/CuteMore';
+import { pick, useL } from '@/i18n/useL';
+import type { Locale } from '@/i18n/keys';
+
+/** Nhãn thứ bằng tiếng Anh, cùng thứ tự với `WEEKDAY_LABELS` (CN → Th7). */
+const WEEKDAY_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export default function SpacedRepetitionScreen() {
   const { width } = useWindowDimensions();
   const wide = width >= 768;
+  const { L, en, locale } = useL();
 
   const entries = useVocabStore((s) => s.entries);
   const cards = useVocabStore((s) => s.cards);
@@ -125,19 +132,19 @@ export default function SpacedRepetitionScreen() {
         <View className="flex-row items-center gap-3">
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Quay lại"
+            accessibilityLabel={L('Quay lại', 'Back')}
             onPress={() => router.back()}
             className="flex-row items-center gap-1 rounded-full bg-surfaceAlt px-3 py-1.5"
           >
             <Icon name="chevron-left" size={16} color="#94A3B8" />
-            <Text style={{ fontSize: 13, fontWeight: '600', color: '#94A3B8' }}>Quay lại</Text>
+            <Text style={{ fontSize: 13, fontWeight: '600', color: '#94A3B8' }}>{L('Quay lại', 'Back')}</Text>
           </Pressable>
           <View>
             <Text className="font-heavy text-ink" style={{ fontSize: 22 }}>
-              Toàn bộ từ đã học
+              {L('Toàn bộ từ đã học', 'All learned words')}
             </Text>
             <Text style={{ fontSize: 13, color: '#64748B', marginTop: 2 }}>
-              {Object.keys(entries).length} từ
+              {L(`${Object.keys(entries).length} từ`, `${Object.keys(entries).length} words`)}
             </Text>
           </View>
         </View>
@@ -148,7 +155,7 @@ export default function SpacedRepetitionScreen() {
           </View>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Ôn ngay với bộ thẻ"
+            accessibilityLabel={L('Ôn ngay với bộ thẻ', 'Review now with flashcards')}
             onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
             style={{
               flexDirection: 'row',
@@ -164,7 +171,7 @@ export default function SpacedRepetitionScreen() {
           >
             <Icon name="book" size={16} color="#FFFFFF" />
             <Text style={{ fontSize: 13, fontWeight: '700', color: '#FFFFFF' }}>
-              {dueEntries.length > 0 ? `Ôn ngay (${dueEntries.length})` : 'Ôn tất cả'}
+              {dueEntries.length > 0 ? L(`Ôn ngay (${dueEntries.length})`, `Review now (${dueEntries.length})`) : L('Ôn tất cả', 'Review all')}
             </Text>
           </Pressable>
         </View>
@@ -190,11 +197,11 @@ export default function SpacedRepetitionScreen() {
               <SealIcon name="gauge" color="#F2B632" size={34} />
             </View>
             <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF', flex: 1 }}>
-              Mức độ nhớ
+              {L('Mức độ nhớ', 'Memory levels')}
             </Text>
             <View style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)', paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999 }}>
               <Text style={{ fontSize: 12, color: '#FFFFFF', fontWeight: '700' }}>
-                {levels.dueCount} từ đến hạn ôn
+                {L(`${levels.dueCount} từ đến hạn ôn`, `${levels.dueCount} words due`)}
               </Text>
             </View>
           </View>
@@ -210,15 +217,15 @@ export default function SpacedRepetitionScreen() {
             }}
           >
             {[
-              { label: 'Chưa nhớ', count: levels.unmemorized, color: 'rgba(255, 255, 255, 0.45)' },
-              { label: 'Cần học', count: levels.needLearning, color: '#F2E1C5' },
-              { label: 'Hay quên', count: levels.forgetful, color: '#FECACA' },
-              { label: 'Nhớ tạm', count: levels.temporary, color: '#FDE047' },
-              { label: 'Nhớ sâu', count: levels.mastered, color: '#86EFAC' },
+              { key: 'unmemorized', label: L('Chưa nhớ', 'Not yet'), count: levels.unmemorized, color: 'rgba(255, 255, 255, 0.45)' },
+              { key: 'needLearning', label: L('Cần học', 'To learn'), count: levels.needLearning, color: '#F2E1C5' },
+              { key: 'forgetful', label: L('Hay quên', 'Often forgot'), count: levels.forgetful, color: '#FECACA' },
+              { key: 'temporary', label: L('Nhớ tạm', 'Short-term'), count: levels.temporary, color: '#FDE047' },
+              { key: 'mastered', label: L('Nhớ sâu', 'Long-term'), count: levels.mastered, color: '#86EFAC' },
             ].map((col) => {
               const h = col.count > 0 ? Math.max(14, (col.count / maxLevel) * 60) : 6;
               return (
-                <View key={col.label} style={{ alignItems: 'center', flex: 1, marginHorizontal: 2 }}>
+                <View key={col.key} style={{ alignItems: 'center', flex: 1, marginHorizontal: 2 }}>
                   <Text style={{ fontSize: 11, fontWeight: '600', color: '#FFFFFF', marginBottom: 4 }}>
                     {col.count}
                   </Text>
@@ -258,11 +265,11 @@ export default function SpacedRepetitionScreen() {
               <SealIcon name="calendar" color="#22A06B" size={34} />
             </View>
             <Text style={{ fontSize: 15, fontWeight: '700', color: '#FFFFFF', flex: 1 }}>
-              Dự báo ôn tập 7 ngày tới
+              {L('Dự báo ôn tập 7 ngày tới', 'Review forecast, next 7 days')}
             </Text>
             {dueEntries.length > 0 ? (
               <View aria-hidden>
-                <Label text="Ôn hôm nay" color="#F2B632" tilt={5} size={11} />
+                <Label text={L('Ôn hôm nay', 'Review today')} color="#F2B632" tilt={5} size={11} />
               </View>
             ) : null}
           </View>
@@ -310,7 +317,7 @@ export default function SpacedRepetitionScreen() {
                       marginTop: 6,
                     }}
                   >
-                    {item.dayLabel}
+                    {en ? (WEEKDAY_EN[WEEKDAY_LABELS.indexOf(item.dayLabel)] ?? item.dayLabel) : item.dayLabel}
                   </Text>
                 </View>
               );
@@ -324,7 +331,7 @@ export default function SpacedRepetitionScreen() {
         <View className="min-w-[200px] flex-1 flex-row items-center rounded-xl border border-border bg-surface px-3 py-2">
           <Icon name="search" size={16} color="#94A3B8" />
           <TextInput
-            placeholder="Tìm theo từ, nghĩa hoặc ví dụ..."
+            placeholder={L('Tìm theo từ, nghĩa hoặc ví dụ...', 'Search by word, meaning or example...')}
             value={search}
             onChangeText={setSearch}
             placeholderTextColor="#94A3B8"
@@ -348,7 +355,7 @@ export default function SpacedRepetitionScreen() {
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'all' ? '#FFFFFF' : '#64748B' }}>
-              Tất cả ({Object.keys(entries).length})
+              {L('Tất cả', 'All')} ({Object.keys(entries).length})
             </Text>
           </Pressable>
           <Pressable
@@ -361,7 +368,7 @@ export default function SpacedRepetitionScreen() {
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'due' ? '#FFFFFF' : '#64748B' }}>
-              Đến hạn ({dueEntries.length})
+              {L('Đến hạn', 'Due')} ({dueEntries.length})
             </Text>
           </Pressable>
           <Pressable
@@ -374,7 +381,7 @@ export default function SpacedRepetitionScreen() {
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'forgetful' ? '#FFFFFF' : '#64748B' }}>
-              Hay quên ({levels.forgetful})
+              {L('Hay quên', 'Often forgot')} ({levels.forgetful})
             </Text>
           </Pressable>
           <Pressable
@@ -387,7 +394,7 @@ export default function SpacedRepetitionScreen() {
             }}
           >
             <Text style={{ fontSize: 12, fontWeight: '600', color: filterMode === 'mastered' ? '#FFFFFF' : '#64748B' }}>
-              Nhớ sâu ({levels.mastered})
+              {L('Nhớ sâu', 'Long-term')} ({levels.mastered})
             </Text>
           </Pressable>
         </View>
@@ -422,7 +429,7 @@ export default function SpacedRepetitionScreen() {
                   {entry.partOfSpeech ?? 'word'}
                   {entry.phonetic ? ` · ${entry.phonetic}` : ''}
                   {entry.synonyms?.length ? ` · ${entry.synonyms.slice(0, 2).join(', ')}` : ''}
-                  {entry.antonyms?.length ? ` (Trái nghĩa: ${entry.antonyms.slice(0, 2).join(', ')})` : ''}
+                  {entry.antonyms?.length ? L(` (Trái nghĩa: ${entry.antonyms.slice(0, 2).join(', ')})`, ` (Antonyms: ${entry.antonyms.slice(0, 2).join(', ')})`) : ''}
                 </Text>
               </View>
 
@@ -441,12 +448,12 @@ export default function SpacedRepetitionScreen() {
               {/* Cột phải: Thời gian + nút phát âm */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, alignSelf: wide ? 'center' : 'flex-end' }}>
                 <Text style={{ fontSize: 11, color: '#94A3B8' }}>
-                  {formatRelativeTime(entry.createdAt)}
+                  {formatRelativeTime(entry.createdAt, locale)}
                 </Text>
 
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Phát âm ${entry.word}`}
+                  accessibilityLabel={L(`Phát âm ${entry.word}`, `Pronounce ${entry.word}`)}
                   onPress={() =>
                     Speech.speak(entry.word, {
                       language: 'en-US',
@@ -477,10 +484,13 @@ export default function SpacedRepetitionScreen() {
               </Motion>
             </View>
             <Text className="mt-3 font-strong text-cardTitle text-ink">
-              Chưa có từ nào trong danh sách này
+              {L('Chưa có từ nào trong danh sách này', 'No words in this list yet')}
             </Text>
             <Text className="mt-1 max-w-sm text-center font-sans text-label text-muted">
-              Học các từ trong thư viện bộ từ hoặc lưu từ lúc đọc báo để FSRS tự động xếp lịch lặp lại ngắt quãng.
+              {L(
+                'Học các từ trong thư viện bộ từ hoặc lưu từ lúc đọc báo để FSRS tự động xếp lịch lặp lại ngắt quãng.',
+                'Learn words from the word-set library or save words while reading, and FSRS will schedule spaced reviews for you.',
+              )}
             </Text>
           </View>
         ) : null}
@@ -489,14 +499,14 @@ export default function SpacedRepetitionScreen() {
   );
 }
 
-function formatRelativeTime(isoDate: string): string {
+function formatRelativeTime(isoDate: string, lc: Locale): string {
   const diff = Date.now() - new Date(isoDate).getTime();
   const minutes = Math.floor(diff / 60000);
-  if (minutes < 1) return 'vừa xong';
-  if (minutes < 60) return `${minutes} phút trước`;
+  if (minutes < 1) return pick(lc, 'vừa xong', 'just now');
+  if (minutes < 60) return pick(lc, `${minutes} phút trước`, `${minutes} min ago`);
   const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours} giờ trước`;
+  if (hours < 24) return pick(lc, `${hours} giờ trước`, `${hours} h ago`);
   const days = Math.floor(hours / 24);
-  if (days === 1) return 'hôm qua';
-  return `${days} ngày trước`;
+  if (days === 1) return pick(lc, 'hôm qua', 'yesterday');
+  return pick(lc, `${days} ngày trước`, `${days} days ago`);
 }

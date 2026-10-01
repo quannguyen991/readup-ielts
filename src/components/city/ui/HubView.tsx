@@ -485,7 +485,7 @@ function BoardTab({ data, token, onDone, say }: { data: HubSnapshot | null; toke
     try {
       const r = await fetch('/api/city-hub', { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'note', text }) });
       const b = (await r.json().catch(() => ({}))) as { ok?: boolean; error?: string; hub?: HubSnapshot };
-      if (!r.ok || !b.ok) say(b.error ?? `Lỗi ${r.status}`, 'bad');
+      if (!r.ok || !b.ok) say(b.error ?? L({ vi: `Lỗi ${r.status}`, en: `Error ${r.status}` }), 'bad');
       else {
         if (b.hub) onDone(b.hub);
         setText('');

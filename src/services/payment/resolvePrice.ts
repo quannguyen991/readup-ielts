@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 
 import type { PlanId } from '@/lib/billing/plans';
+import { msg, type LocaleSource } from '@/lib/server-locale';
 import type { Database } from '@/types/database';
 import { buildOrder, type BillingCycle, type OrderSpec } from './order';
 import {
@@ -34,15 +35,24 @@ export type ResolvedOrder = OrderSpec & {
   groupId: string | null;
 };
 
+/** Tên tiếng Anh của các đợt flash sale (`FLASH_SALE_WINDOWS`); đợt lạ giữ tên gốc. */
+const FLASH_LABEL_EN: Record<string, string> = {
+  'Mùa nộp hồ sơ ED/EA': 'ED/EA application season',
+  'Hè ôn SAT': 'Summer SAT prep',
+  'Mùa IELTS cuối năm': 'Year-end IELTS season',
+};
+
 export async function resolveOrderPrice(
   admin: SupabaseClient<Database>,
   userId: string,
   plan: PlanId,
   cycle: BillingCycle,
   groupCode: string | null,
+  /** Ngôn ngữ của `label` hiện cho người dùng — truyền `request` của route. */
+  locale: LocaleSource = 'vi',
 ): Promise<ResolvedOrder> {
   const base = buildOrder(plan, cycle);
-  const candidates: PriceCandidate[] = [{ source: 'base', amountVnd: base.amountVnd, label: 'Giá niêm yết' }];
+  const candidates: PriceCandidate[] = [{ source: 'base', amountVnd: base.amountVnd, label: msg(locale, 'Giá niêm yết', 'List price') }];
   let groupId: string | null = null;
 
   /*
@@ -67,7 +77,11 @@ export async function resolveOrderPrice(
     candidates.push({
       source: 'grandfather',
       amountVnd: lastPaid.amount_vnd,
-      label: 'Giữ giá cũ — bạn đã mua gói này trước đợt tăng giá 03/09/2026',
+      label: msg(
+        locale,
+        'Giữ giá cũ — bạn đã mua gói này trước đợt tăng giá 03/09/2026',
+        'Old price kept — you bought this plan before the 03/09/2026 price increase',
+      ),
     });
   }
 
@@ -88,7 +102,7 @@ export async function resolveOrderPrice(
       candidates.push({
         source: 'group',
         amountVnd: groupBuyYearlyPrice(plan, group.target_size as GroupSize),
-        label: `Giá mua nhóm ${group.target_size} người`,
+        label: msg(locale, `Giá mua nhóm ${group.target_size} người`, `Group price for ${group.target_size} people`),
       });
     }
   }
@@ -98,7 +112,11 @@ export async function resolveOrderPrice(
     candidates.push({
       source: 'flash_sale',
       amountVnd: applyPercentDiscount(base.amountVnd, flash.percent),
-      label: `${flash.label} — giảm ${flash.percent}%`,
+      label: msg(
+        locale,
+        `${flash.label} — giảm ${flash.percent}%`,
+        `${FLASH_LABEL_EN[flash.label] ?? flash.label} — ${flash.percent}% off`,
+      ),
     });
   }
 
@@ -114,7 +132,11 @@ export async function resolveOrderPrice(
     candidates.push({
       source: 'early_renewal',
       amountVnd: applyPercentDiscount(base.amountVnd, EARLY_RENEWAL_DISCOUNT_PERCENT),
-      label: `Gia hạn sớm — giảm ${EARLY_RENEWAL_DISCOUNT_PERCENT}%`,
+      label: msg(
+        locale,
+        `Gia hạn sớm — giảm ${EARLY_RENEWAL_DISCOUNT_PERCENT}%`,
+        `Early renewal — ${EARLY_RENEWAL_DISCOUNT_PERCENT}% off`,
+      ),
     });
   }
 

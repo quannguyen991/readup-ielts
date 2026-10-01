@@ -17,6 +17,8 @@ import { dailyQuests, EMPTY_DAY, ITEMS } from '@/services/game/rules';
 import { dateKey } from '@/services/gamification/points';
 import { useGameStore } from '@/store/useGameStore';
 import { Bar, GAP, HUB, StatBox, WEB } from './kit';
+import { useL } from '@/i18n/useL';
+import { itemKindName, questTitle } from '@/components/game/game-labels';
 
 function useToday() {
   const g = useGameStore(useShallow((s) => ({ day: s.day, today: s.today, claimed: s.claimed, claimQuest: s.claimQuest })));
@@ -30,17 +32,19 @@ export function DailyQuests() {
   const { todayKey, today, claimed, claimQuest } = useToday();
   const quests = dailyQuests(todayKey);
   const doneCount = quests.filter((q) => claimed.includes(q.id)).length;
+  const { L, locale } = useL();
   return (
     <View style={{ gap: GAP.sm }}>
       <Text className="font-semi" style={{ fontSize: 12, color: HUB.muted }}>
-        Đã nhận {doneCount}/{quests.length} · đổi nhiệm vụ mỗi ngày
+        {L(`Đã nhận ${doneCount}/${quests.length} · đổi nhiệm vụ mỗi ngày`, `Claimed ${doneCount}/${quests.length} · new quests every day`)}
       </Text>
       {quests.map((q) => {
         const value = Math.min(q.goal, today[q.metric]);
         const done = value >= q.goal;
         const got = claimed.includes(q.id);
         const ready = done && !got;
-        const reward = `+${q.rewardXp} XP${q.rewardItem ? ` · ${ITEMS[q.rewardItem].glyph} ${ITEMS[q.rewardItem].name}` : ''}`;
+        const reward = `+${q.rewardXp} XP${q.rewardItem ? ` · ${ITEMS[q.rewardItem].glyph} ${itemKindName(q.rewardItem, ITEMS[q.rewardItem].name, locale)}` : ''}`;
+        const title = questTitle(q, locale);
         return (
           <View
             key={q.id}
@@ -86,22 +90,22 @@ export function DailyQuests() {
                   className="font-strong"
                   style={{ fontSize: 14, color: got ? HUB.muted : HUB.ink, textDecorationLine: got ? 'line-through' : 'none' }}
                 >
-                  {q.title}
+                  {title}
                 </Text>
                 {ready ? (
                   <View aria-hidden>
                     <Motion kind="pop">
-                      <Label text="Xong!" color={HUB.green} ink="#FFFFFF" tilt={-4} size={10} />
+                      <Label text={L('Xong!', 'Done!')} color={HUB.green} ink="#FFFFFF" tilt={-4} size={10} />
                     </Motion>
                   </View>
                 ) : null}
               </View>
               <View style={{ marginTop: 7 }}>
-                <Bar value={value / q.goal} color={done ? HUB.green : HUB.blue} height={6} label={`${q.title}: ${value}/${q.goal}`} />
+                <Bar value={value / q.goal} color={done ? HUB.green : HUB.blue} height={6} label={`${title}: ${value}/${q.goal}`} />
               </View>
               <View style={{ marginTop: 5, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', columnGap: 8, rowGap: 2 }}>
                 <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.green : HUB.muted, fontVariant: ['tabular-nums'] }}>
-                  {got ? 'Đã nhận thưởng' : `${value}/${q.goal}${done ? ' · xong, bấm Nhận' : ''}`}
+                  {got ? L('Đã nhận thưởng', 'Reward claimed') : `${value}/${q.goal}${done ? L(' · xong, bấm Nhận', ' · done, tap Claim') : ''}`}
                 </Text>
                 <Text className="font-semi" style={{ fontSize: 12, color: got ? HUB.faint : HUB.amber }}>
                   {reward}
@@ -113,7 +117,7 @@ export function DailyQuests() {
             {ready ? (
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel={`Nhận thưởng: ${q.title}`}
+                accessibilityLabel={L(`Nhận thưởng: ${q.title}`, `Claim reward: ${title}`)}
                 onPress={() => claimQuest(q.id)}
                 style={({ hovered }: { hovered?: boolean }) => ({
                   alignItems: 'center',
@@ -125,7 +129,7 @@ export function DailyQuests() {
                 })}
               >
                 <Text className="font-strong" style={{ fontSize: 13, color: HUB.ctaInk }}>
-                  Nhận
+                  {L('Nhận', 'Claim')}
                 </Text>
               </Pressable>
             ) : null}
@@ -140,19 +144,21 @@ export function DailyQuests() {
 export function TodayStats() {
   const { today } = useToday();
   const accuracy = today.answers > 0 ? `${Math.round((today.correct / today.answers) * 100)}%` : '—';
+  const { L, en } = useL();
+  const num = (n: number) => n.toLocaleString(en ? 'en-US' : 'vi-VN');
   return (
     <View style={{ gap: 8 }}>
       <View style={{ flexDirection: 'row', gap: 8 }}>
-        <StatBox value={today.correct.toLocaleString('vi-VN')} label="câu đúng" />
-        <StatBox value={accuracy} label="tỉ lệ đúng" />
+        <StatBox value={num(today.correct)} label={L('câu đúng', 'correct')} />
+        <StatBox value={accuracy} label={L('tỉ lệ đúng', 'accuracy')} />
       </View>
       <View style={{ flexDirection: 'row', gap: 8 }}>
-        <StatBox value={`+${today.xp.toLocaleString('vi-VN')}`} label="XP kiếm được" tone={HUB.gold} />
-        <StatBox value={today.bestCombo > 0 ? `×${today.bestCombo}` : '—'} label="combo cao nhất" />
+        <StatBox value={`+${num(today.xp)}`} label={L('XP kiếm được', 'XP earned')} tone={HUB.gold} />
+        <StatBox value={today.bestCombo > 0 ? `×${today.bestCombo}` : '—'} label={L('combo cao nhất', 'best combo')} />
       </View>
       <View style={{ flexDirection: 'row', gap: 8 }}>
-        <StatBox value={String(today.defeated)} label="quái đã hạ" />
-        <StatBox value={String(today.vocab)} label="lượt ôn từ" />
+        <StatBox value={String(today.defeated)} label={L('quái đã hạ', 'monsters defeated')} />
+        <StatBox value={String(today.vocab)} label={L('lượt ôn từ', 'word reviews')} />
       </View>
     </View>
   );

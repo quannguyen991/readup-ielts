@@ -1,6 +1,7 @@
 import { fetchAllPages } from '@/services/admin/fetch-all';
 import { requireAdmin } from '@/services/admin/guard';
 import { summarizeUsers, type StatsProfile, type StatsState, type StatsUser } from '@/services/admin/stats';
+import { errorText } from '@/lib/server-locale';
 
 /**
  * GET /api/admin/stats — tổng quan người dùng cho trang quản trị.
@@ -39,6 +40,6 @@ export async function GET(request: Request): Promise<Response> {
       stats: summarizeUsers(users, profiles, states, Date.now()),
     });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không đọc được thống kê.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không đọc được thống kê.', 'Could not load stats.') }, { status: 500 });
   }
 }

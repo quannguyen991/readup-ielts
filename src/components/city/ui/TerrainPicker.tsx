@@ -7,9 +7,9 @@ import React, { useMemo, useState } from 'react';
 
 import type { TerrainKind } from '@/data/city/catalog';
 import { generateTerrain, REGIONS_PER_SIDE, terrainStats } from '@/services/city/terrain';
-import { useT } from '@/i18n/useT';
 import { CityCanvas, type SceneData } from '../scene/CityScene';
 import { CG } from './theme';
+import { useL } from './common';
 
 const KINDS: readonly TerrainKind[] = ['plains', 'coast', 'mountain'];
 const ALL_REGIONS = Array.from({ length: REGIONS_PER_SIDE * REGIONS_PER_SIDE }, (_, i) => i);
@@ -20,7 +20,7 @@ function newSeed(): number {
 }
 
 export function TerrainPicker({ onConfirm, reducedMotion, onSample }: { onConfirm: (kind: TerrainKind, seed: number) => void; reducedMotion: boolean; onSample: () => void }) {
-  const { t } = useT();
+  const { t } = useL();
   const [kind, setKind] = useState<TerrainKind>('plains');
   const [seeds, setSeeds] = useState<Record<TerrainKind, number>>(() => ({ plains: newSeed(), coast: newSeed(), mountain: newSeed() }));
   const terrain = useMemo(() => generateTerrain(kind, seeds[kind]), [kind, seeds]);

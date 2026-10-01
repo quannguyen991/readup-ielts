@@ -10,6 +10,8 @@ import { SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteGlobe } from '@/components/illust/Cute';
 import { Motion } from '@/components/illust/CuteMore';
+import { islandName, missionTitle } from '@/components/world/island-label';
+import { useL } from '@/i18n/useL';
 
 /**
  * MAP TRONG MỘT ĐẢO (`island-engine`): nhiệm vụ là các bệ đá dọc con đường,
@@ -17,6 +19,7 @@ import { Motion } from '@/components/illust/CuteMore';
  * đúng bài học đó, nhấn E để vào học.
  */
 export default function IslandScreen() {
+  const { L, locale } = useL();
   const { island: id = '' } = useLocalSearchParams<{ island: string }>();
   const islands = useWorldIslands();
   const island = islands.find((i) => i.id === id);
@@ -71,9 +74,9 @@ export default function IslandScreen() {
             </Sticker>
           </Motion>
         </View>
-        <Text className="font-semi text-bodyLg text-white">Không có đảo này.</Text>
+        <Text className="font-semi text-bodyLg text-white">{L('Không có đảo này.', "This island doesn't exist.")}</Text>
         <Pressable onPress={() => router.replace('/quest/world' as never)} className="mt-3 rounded-pill bg-white/10 px-4 py-2">
-          <Text className="font-semi text-body text-white">Về bản đồ</Text>
+          <Text className="font-semi text-body text-white">{L('Về bản đồ', 'Back to map')}</Text>
         </Pressable>
       </View>
     );
@@ -87,19 +90,19 @@ export default function IslandScreen() {
         <View className="flex-row items-center gap-2">
           <Pressable onPress={() => router.replace('/quest/world' as never)} className="flex-row items-center gap-1.5 rounded-pill px-3 py-2" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
             <Icon name="chevron-left" size={16} color="#F0EBE2" />
-            <Text className="font-semi text-label text-white">Bản đồ</Text>
+            <Text className="font-semi text-label text-white">{L('Bản đồ', 'Map')}</Text>
           </Pressable>
           <View className="flex-row items-center gap-1.5 rounded-pill py-1 pl-1 pr-3" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
             <View aria-hidden>
               <SealIcon name="compass" color="#22A06B" size={28} />
             </View>
             <Text className="font-strong text-label text-white">
-              {island.name} · <Text style={{ color: '#FDE047' }}>{island.done}</Text>/{island.missions.length}
+              {islandName(island, locale)} · <Text style={{ color: '#FDE047' }}>{island.done}</Text>/{island.missions.length}
             </Text>
           </View>
         </View>
         <Text className="font-semi text-label" style={{ color: 'rgba(240, 235, 226,0.75)' }}>
-          ← → đi · E vào học · Esc về bản đồ
+          {L('← → đi · E vào học · Esc về bản đồ', '← → walk · E start lesson · Esc back to map')}
         </Text>
       </View>
 
@@ -115,21 +118,21 @@ export default function IslandScreen() {
             <View className="min-w-0 flex-1">
               <View className="flex-row flex-wrap items-center gap-2">
                 <Text className="font-semi text-label" style={{ color: '#94A3B8' }}>
-                  Nhiệm vụ {selected + 1}/{island.missions.length}
-                  {mission.done ? ' · đã xong' : ''}
+                  {L('Nhiệm vụ', 'Quest')} {selected + 1}/{island.missions.length}
+                  {mission.done ? L(' · đã xong', ' · done') : ''}
                 </Text>
                 {mission.done ? (
                   <View aria-hidden>
-                    <Label text="Đã qua ⭐" color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
+                    <Label text={L('Đã qua ⭐', 'Passed ⭐')} color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
                   </View>
                 ) : null}
               </View>
               <Text className="font-heavy text-body text-white" numberOfLines={2}>
-                {mission.title}
+                {missionTitle(mission, locale)}
               </Text>
             </View>
             <Pressable onPress={() => router.push(mission.href as never)} className="rounded-xl px-4 py-2.5" style={{ backgroundColor: island.color }}>
-              <Text className="font-strong text-label text-white">{mission.done ? 'Làm lại' : 'Vào học'} · E</Text>
+              <Text className="font-strong text-label text-white">{mission.done ? L('Làm lại', 'Redo') : L('Vào học', 'Start')} · E</Text>
             </Pressable>
           </View>
         </View>

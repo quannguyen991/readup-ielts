@@ -1,4 +1,5 @@
 import { pickBestTranslation, type MyMemoryResponse } from '@/services/dictionary/lookup';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/dictionary  { word }
@@ -37,7 +38,7 @@ export async function POST(request: Request): Promise<Response> {
     const lemma = body.lemma?.trim() || word;
 
     if (!word) {
-      return Response.json({ error: 'Thiếu từ cần tra.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu từ cần tra.', 'Missing the word to look up.') }, { status: 400 });
     }
 
     // Cụm nhiều từ thì từ điển đơn từ không có mục nào, chỉ dịch thôi.
@@ -50,7 +51,7 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json({ ...english, definitionVi: vietnamese });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

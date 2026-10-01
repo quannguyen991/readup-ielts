@@ -4,6 +4,7 @@ import qrcode from 'qrcode-generator';
 import Svg, { Path, Rect } from 'react-native-svg';
 
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Vẽ mã QR bằng `react-native-svg` — chạy giống hệt nhau ở web và native.
@@ -37,6 +38,7 @@ export function QrCode({
   size?: number;
   errorCorrection?: 'L' | 'M' | 'Q' | 'H';
 }) {
+  const { L } = useL();
   const matrix = useMemo(() => {
     try {
       // typeNumber 0 = tự chọn phiên bản nhỏ nhất chứa vừa dữ liệu.
@@ -65,7 +67,7 @@ export function QrCode({
         style={{ width: size, height: size }}
       >
         <Text className="px-4 text-center font-sans text-label text-muted">
-          Không dựng được mã QR cho nội dung này.
+          {L('Không dựng được mã QR cho nội dung này.', "Couldn't generate a QR code for this content.")}
         </Text>
       </View>
     );

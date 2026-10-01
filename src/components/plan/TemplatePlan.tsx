@@ -21,6 +21,7 @@ import {
 } from '@/services/plan/roadmap';
 import { PLAN_STAGES, PLAN_WEEKS, type PlanStage, type PlanWeek } from '@/services/plan/weeks';
 import { color, gradient } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * LỘ TRÌNH MẪU 60 tuần (của người làm app) — chỉ mở khi người học bấm xem mẫu
@@ -53,18 +54,21 @@ export function TemplatePlan() {
   const daysToSat = daysUntil(SAT_EXAM_ISO, today);
 
   const [openStage, setOpenStage] = useState<string | null>(stage?.id ?? null);
+  const { L } = useL();
 
   return (
     <Screen>
       <Pressable accessibilityRole="link" onPress={() => router.replace('/plan' as never)} className="mb-3 self-start flex-row items-center gap-1.5">
         <Icon name="chevron-left" size={16} color={color.ink} />
-        <Text className="font-semi text-body text-ink">Lộ trình của tôi</Text>
+        <Text className="font-semi text-body text-ink">{L('Lộ trình của tôi', 'My plan')}</Text>
       </Pressable>
       <View className="mb-4 flex-row items-start gap-2 rounded-card bg-warning-soft p-3">
         <Icon name="info" size={16} color={color.warning} />
         <Text className="flex-1 font-sans text-label text-ink">
-          Đây là LỘ TRÌNH MẪU 60 tuần (IELTS + SAT, học theo sách Kaplan, bắt đầu 07/09/2026) — một cách chia tham khảo, không phải
-          lộ trình của bạn. Lộ trình của bạn dựng từ mục tiêu và ngày thi bạn khai ở trang Lộ trình.
+          {L(
+            'Đây là LỘ TRÌNH MẪU 60 tuần (IELTS + SAT, học theo sách Kaplan, bắt đầu 07/09/2026) — một cách chia tham khảo, không phải lộ trình của bạn. Lộ trình của bạn dựng từ mục tiêu và ngày thi bạn khai ở trang Lộ trình.',
+            'This is a SAMPLE 60-week plan (IELTS + SAT, following the Kaplan books, starting 07/09/2026) — a reference split, not your plan. Your plan is built from the goals and exam dates you set on the Plan page.',
+          )}
         </Text>
       </View>
       <Appear>
@@ -77,10 +81,12 @@ export function TemplatePlan() {
           <View className="flex-row flex-wrap items-end justify-between gap-4">
             <View className="min-w-0 flex-1" style={{ minWidth: 240 }}>
               <Text className="font-strong text-label uppercase text-white/75">
-                {rawWeek === 0 ? 'Lộ trình bắt đầu 07/09/2026' : `Chặng ${stage?.id ?? '—'} · ${stage?.name ?? ''}`}
+                {rawWeek === 0
+                  ? L('Lộ trình bắt đầu 07/09/2026', 'Plan starts 07/09/2026')
+                  : L(`Chặng ${stage?.id ?? '—'} · ${stage?.name ?? ''}`, `Stage ${stage?.id ?? '—'} · ${stage?.name ?? ''}`)}
               </Text>
               <Text className="mt-1 font-heavy text-white" style={{ fontSize: 40, lineHeight: 46 }}>
-                Tuần {week}
+                {L('Tuần', 'Week')} {week}
                 <Text className="font-sans text-bodyLg text-white/70"> / {PLAN_TOTAL_WEEKS}</Text>
               </Text>
               <Text className="mt-2 font-sans text-body text-white/85" style={{ maxWidth: 560 }}>
@@ -89,7 +95,7 @@ export function TemplatePlan() {
             </View>
 
             <View className="items-end gap-2">
-              <Badge label={`Còn ${daysToSat} ngày tới SAT`} tone="warning" shape="tag" />
+              <Badge label={L(`Còn ${daysToSat} ngày tới SAT`, `${daysToSat} days to the SAT`)} tone="warning" shape="tag" />
               {plan?.milestone ? <Badge label={plan.milestone.label} tone="info" shape="tag" /> : null}
             </View>
           </View>
@@ -104,8 +110,11 @@ export function TemplatePlan() {
       <Appear index={1}>
         <SectionHeader
           className="mt-6"
-          title="Hôm nay"
-          subtitle="Ba khối theo đúng khung giờ năm học — bấm vào là vào thẳng màn làm được việc ấy."
+          title={L('Hôm nay', 'Today')}
+          subtitle={L(
+            'Ba khối theo đúng khung giờ năm học — bấm vào là vào thẳng màn làm được việc ấy.',
+            'Three blocks that fit the school-year timetable — tap one to jump straight to it.',
+          )}
           icon="clock"
         />
       </Appear>
@@ -125,14 +134,14 @@ export function TemplatePlan() {
         <Appear index={5}>
           <Card className="mt-6">
             <SectionHeader
-              title={`Cả tuần ${week}`}
-              subtitle={`Từ vựng: ${plan.vocab}`}
+              title={L(`Cả tuần ${week}`, `All of week ${week}`)}
+              subtitle={L(`Từ vựng: ${plan.vocab}`, `Vocabulary: ${plan.vocab}`)}
               icon="calendar"
             />
             <View className="mt-3 gap-2">
-              <WeekRow when="Sáng · 90 phút" block={plan.morning} />
-              <WeekRow when="Tối T2 · T4 · T6 · CN" block={plan.eveningA} />
-              <WeekRow when="Tối T3 · T5 · T7" block={plan.eveningB} />
+              <WeekRow when={L('Sáng · 90 phút', 'Morning · 90 min')} block={plan.morning} />
+              <WeekRow when={L('Tối T2 · T4 · T6 · CN', 'Evenings Mon · Wed · Fri · Sun')} block={plan.eveningA} />
+              <WeekRow when={L('Tối T3 · T5 · T7', 'Evenings Tue · Thu · Sat')} block={plan.eveningB} />
             </View>
           </Card>
         </Appear>
@@ -143,11 +152,11 @@ export function TemplatePlan() {
         <Appear index={6}>
           <Card className="mt-4">
             <SectionHeader
-              title={`Cửa ${checkpoint.no} — tuần ${checkpoint.week}`}
+              title={L(`Cửa ${checkpoint.no} — tuần ${checkpoint.week}`, `Checkpoint ${checkpoint.no} — week ${checkpoint.week}`)}
               subtitle={
                 checkpoint.week === week
-                  ? 'Đúng tuần này. Đo xong mới đi tiếp.'
-                  : `Còn ${checkpoint.week - week} tuần nữa phải đo.`
+                  ? L('Đúng tuần này. Đo xong mới đi tiếp.', 'This week. Measure before moving on.')
+                  : L(`Còn ${checkpoint.week - week} tuần nữa phải đo.`, `${checkpoint.week - week} weeks until you measure.`)
               }
               icon="target"
               iconTone="warning"
@@ -182,8 +191,8 @@ export function TemplatePlan() {
       <Appear index={7}>
         <SectionHeader
           className="mt-6"
-          title="Sáu chặng"
-          subtitle="Bấm vào một chặng để xem từng tuần bên trong."
+          title={L('Sáu chặng', 'Six stages')}
+          subtitle={L('Bấm vào một chặng để xem từng tuần bên trong.', 'Tap a stage to see its weeks.')}
           icon="list"
         />
       </Appear>
@@ -206,6 +215,7 @@ export function TemplatePlan() {
 }
 
 function SlotCard({ slot }: { slot: PlanSlot }) {
+  const { L } = useL();
   return (
     <Card className="h-full">
       <Text className="font-strong text-label uppercase text-subtle">{slot.when}</Text>
@@ -219,7 +229,7 @@ function SlotCard({ slot }: { slot: PlanSlot }) {
       {slot.href ? (
         <Button
           className="mt-4 self-start"
-          label="Vào học"
+          label={L('Vào học', 'Start')}
           variant="brand"
           size="sm"
           iconRight="arrow-right"
@@ -228,7 +238,7 @@ function SlotCard({ slot }: { slot: PlanSlot }) {
       ) : (
         <View className="mt-4 flex-row items-center gap-2">
           <Icon name="book" size={15} color={color.subtle} />
-          <Text className="font-mid text-label text-subtle">Học trong sách, app chưa có phần này</Text>
+          <Text className="font-mid text-label text-subtle">{L('Học trong sách, app chưa có phần này', 'Study this in the book — the app doesn’t cover it yet')}</Text>
         </View>
       )}
     </Card>
@@ -237,17 +247,18 @@ function SlotCard({ slot }: { slot: PlanSlot }) {
 
 function WeekRow({ when, block }: { when: string; block: PlanWeek['morning'] }) {
   const href = routeFor(block);
+  const { L } = useL();
   return (
     <View className="flex-row flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surfaceAlt px-3 py-2.5">
       <View className="min-w-0 flex-1" style={{ minWidth: 180 }}>
         <Text className="font-mid text-label text-muted">{when}</Text>
-        <Text className="mt-0.5 font-strong text-body text-ink">{block ? block.label : 'Nghỉ'}</Text>
+        <Text className="mt-0.5 font-strong text-body text-ink">{block ? block.label : L('Nghỉ', 'Rest')}</Text>
         {block?.detail ? (
           <Text className="mt-0.5 font-sans text-label text-muted">{block.detail}</Text>
         ) : null}
       </View>
       {href ? (
-        <Button label="Mở" variant="outline" size="sm" onPress={() => router.push(href as never)} />
+        <Button label={L('Mở', 'Open')} variant="outline" size="sm" onPress={() => router.push(href as never)} />
       ) : null}
     </View>
   );
@@ -265,6 +276,7 @@ function StageCard({
   onToggle: () => void;
 }) {
   const current = currentWeek >= stage.fromWeek && currentWeek <= stage.toWeek;
+  const { L } = useL();
   const weeks = PLAN_WEEKS.filter((w) => w.week >= stage.fromWeek && w.week <= stage.toWeek);
 
   return (
@@ -274,12 +286,12 @@ function StageCard({
           <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
             <View className="flex-row flex-wrap items-center gap-2">
               <Text className="font-heavy text-cardTitle text-ink">
-                Chặng {stage.id} · {stage.name}
+                {L('Chặng', 'Stage')} {stage.id} · {stage.name}
               </Text>
-              {current ? <Badge label="Đang ở đây" tone="success" shape="tag" /> : null}
+              {current ? <Badge label={L('Đang ở đây', 'You are here')} tone="success" shape="tag" /> : null}
             </View>
             <Text className="mt-0.5 font-mid text-label text-muted">
-              Tuần {stage.fromWeek}–{stage.toWeek} · {stage.books}
+              {L('Tuần', 'Weeks')} {stage.fromWeek}–{stage.toWeek} · {stage.books}
             </Text>
           </View>
           <Icon name={open ? 'chevron-down' : 'chevron-right'} size={18} color={color.subtle} />
@@ -313,10 +325,10 @@ function StageCard({
                 }`}
               >
                 <Text className="font-heavy text-label" style={{ color: color.primary, width: 56 }}>
-                  Tuần {item.week}
+                  {L('Tuần', 'Week')} {item.week}
                 </Text>
                 <Text className="flex-1 font-sans text-label text-ink" style={{ minWidth: 180 }}>
-                  {item.morning ? `${item.morning.label} — ${item.morning.detail}` : 'Nghỉ'}
+                  {item.morning ? `${item.morning.label} — ${item.morning.detail}` : L('Nghỉ', 'Rest')}
                 </Text>
                 {item.milestone ? (
                   <Badge

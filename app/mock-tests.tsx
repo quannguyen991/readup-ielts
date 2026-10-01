@@ -14,6 +14,7 @@ import { usePlan } from '@/store/useBillingStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
 import type { PlanId } from '@/lib/billing/plans';
+import { useL } from '@/i18n/useL';
 
 /**
  * Mock test = 3 passage theo đúng cấu trúc IELTS Reading, tăng dần độ khó.
@@ -23,6 +24,7 @@ export default function MockTestsScreen() {
   const sessions = useStudyStore((s) => s.sessions);
   const plan = usePlan();
   const [seed, setSeed] = useState(0);
+  const { L } = useL();
 
   const tests = useMemo(() => buildTests(seed), [seed]);
   const mockSessions = sessions.filter((s) => s.mode === 'mock_test');
@@ -37,18 +39,18 @@ export default function MockTestsScreen() {
         scene="verbal"
         badge="IELTS · MOCK TESTS" art="test"
         line1="Mock Tests"
-        line2="đúng nhịp bài thi thật"
-        subtitle={`${tests.length} đề dựng sẵn, mỗi đề 3 passage trong 60 phút, độ khó tăng dần — không đề nào dùng lại passage của đề khác.`}
+        line2={L('đúng nhịp bài thi thật', 'at the pace of the real exam')}
+        subtitle={L(`${tests.length} đề dựng sẵn, mỗi đề 3 passage trong 60 phút, độ khó tăng dần — không đề nào dùng lại passage của đề khác.`, `${tests.length} ready-made tests, each with 3 passages in 60 minutes, getting harder as you go — no passage is reused across tests.`)}
         footer={
           <>
-            <HeroStat value={String(mockSessions.length)} label="đã thi thử" />
-            <HeroStat value={formatBand(bestBand)} label="band cao nhất" />
-            <HeroStat value={String(FULL_SET_ARTICLE_IDS.size)} label="bài vào được đề" />
+            <HeroStat value={String(mockSessions.length)} label={L('đã thi thử', 'mocks taken')} />
+            <HeroStat value={formatBand(bestBand)} label={L('band cao nhất', 'best band')} />
+            <HeroStat value={String(FULL_SET_ARTICLE_IDS.size)} label={L('bài vào được đề', 'test-ready passages')} />
           </>
         }
       >
         <Button
-          label="Đổi bộ đề"
+          label={L('Đổi bộ đề', 'Shuffle tests')}
           iconLeft="refresh"
           onPress={() => setSeed((s) => s + 1)}
         />
@@ -63,7 +65,7 @@ export default function MockTestsScreen() {
       </View>
 
       <PaperCard className="mt-4">
-        <SectionHeader title="Lịch sử thi thử" icon="clock" />
+        <SectionHeader title={L('Lịch sử thi thử', 'Mock test history')} icon="clock" />
         <View className="mt-3 gap-2">
           {mockSessions.slice(0, 8).map((session) => (
             <Pressable
@@ -83,7 +85,7 @@ export default function MockTestsScreen() {
 
           {mockSessions.length === 0 ? (
             <Text className="py-6 text-center font-sans text-body text-muted">
-              Chưa có lượt thi thử nào.
+              {L('Chưa có lượt thi thử nào.', 'No mock tests yet.')}
             </Text>
           ) : null}
         </View>
@@ -199,6 +201,7 @@ function MockTestCard({
   index: number;
   plan: PlanId;
 }) {
+  const { L } = useL();
   const minutes = test.reduce((sum, a) => sum + (a.estMinutes ?? 0), 0);
   const paid = plan !== 'free';
 
@@ -223,10 +226,10 @@ function MockTestCard({
               thật. Thẻ ghi trơn "8 phút" ngay dưới thì hai con số cãi nhau, và
               người đọc tin con số nhỏ hơn rồi tưởng đề này ngắn bất thường.
             */}
-            <Chip label={`~${minutes} phút đọc`} tone="neutral" />
+            <Chip label={L(`~${minutes} phút đọc`, `~${minutes} min reading`)} tone="neutral" />
           </View>
           <Text className="mt-2 font-sans text-label text-muted">
-            Ba passage, độ khó tăng dần — đúng nhịp bài thi thật.
+            {L('Ba passage, độ khó tăng dần — đúng nhịp bài thi thật.', 'Three passages, rising difficulty — just like the real exam.')}
           </Text>
         </View>
       </View>
@@ -266,7 +269,7 @@ function MockTestCard({
       <View className="flex-row gap-2 p-4">
         <Button
           className="flex-1"
-          label="Luyện tập"
+          label={L('Luyện tập', 'Practice')}
           variant="outline"
           size="sm"
           iconLeft="book"
@@ -279,7 +282,7 @@ function MockTestCard({
         */}
         <Button
           className="flex-1"
-          label={paid ? 'Đi thi' : 'Đi thi'}
+          label={L('Đi thi', 'Take test')}
           size="sm"
           iconLeft={paid ? 'clock' : 'clock'}
           onPress={() => router.push(`/read/${test[0]!.id}` as never)}
@@ -289,7 +292,7 @@ function MockTestCard({
       {!paid ? (
         <Pressable onPress={() => router.push('/upgrade' as never)} className="px-4 pb-4">
           <Text className="font-sans text-label text-muted">
-            Nộp xong muốn AI chấm theo từng tiêu chí thì cần gói trả phí.
+            {L('Nộp xong muốn AI chấm theo từng tiêu chí thì cần gói trả phí.', 'AI marking by criterion after you submit needs a paid plan.')}
           </Text>
         </Pressable>
       ) : null}

@@ -26,6 +26,8 @@ import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as SealBadge } from '@/components/illust/Cute';
 import { CuteStar, Motion } from '@/components/illust/CuteMore';
 import type { IconName } from '@/components/ui/Icon';
+import { useL } from '@/i18n/useL';
+import { achievementTitle, itemDetail, itemName, levelTitle, mascotName, mascotPerk, tierName } from '@/services/gamification/labels-en';
 
 /**
  * HỒ SƠ CỦA TÔI — nơi những thứ đổi bằng sao được mặc lên: bìa chuyển động,
@@ -36,15 +38,16 @@ import type { IconName } from '@/components/ui/Icon';
  * quay lại trang Đổi quà chỉ để thay bìa.
  */
 
-const SLOTS: { slot: WearSlot; title: string; kinds: ShopItem['kind'][]; tab: string; empty: string }[] = [
-  { slot: 'avatar', title: 'Avatar', kinds: ['avatarAnim', 'avatar'], tab: 'avatarAnim', empty: 'Chữ cái đầu tên' },
-  { slot: 'cover', title: 'Bìa hồ sơ', kinds: ['cover'], tab: 'cover', empty: 'Bìa mặc định' },
-  { slot: 'effect', title: 'Hiệu ứng hồ sơ', kinds: ['effect'], tab: 'effect', empty: 'Chưa có hiệu ứng' },
-  { slot: 'skin', title: 'Skin nhân vật', kinds: ['skin'], tab: 'skin', empty: 'Hiệp sĩ xanh' },
-  { slot: 'mascot', title: 'Linh vật', kinds: ['mascot'], tab: 'mascot', empty: 'Chưa có bạn đồng hành' },
+const SLOTS: { slot: WearSlot; title: string; titleEn: string; kinds: ShopItem['kind'][]; tab: string; empty: string; emptyEn: string }[] = [
+  { slot: 'avatar', title: 'Avatar', titleEn: 'Avatar', kinds: ['avatarAnim', 'avatar'], tab: 'avatarAnim', empty: 'Chữ cái đầu tên', emptyEn: 'Your initial' },
+  { slot: 'cover', title: 'Bìa hồ sơ', titleEn: 'Profile cover', kinds: ['cover'], tab: 'cover', empty: 'Bìa mặc định', emptyEn: 'Default cover' },
+  { slot: 'effect', title: 'Hiệu ứng hồ sơ', titleEn: 'Profile effect', kinds: ['effect'], tab: 'effect', empty: 'Chưa có hiệu ứng', emptyEn: 'No effect yet' },
+  { slot: 'skin', title: 'Skin nhân vật', titleEn: 'Hero skin', kinds: ['skin'], tab: 'skin', empty: 'Hiệp sĩ xanh', emptyEn: 'Blue Knight' },
+  { slot: 'mascot', title: 'Linh vật', titleEn: 'Mascot', kinds: ['mascot'], tab: 'mascot', empty: 'Chưa có bạn đồng hành', emptyEn: 'No companion yet' },
 ];
 
 export default function ProfileScreen() {
+  const { L, locale } = useL();
   const wide = useWindowDimensions().width >= 760;
   const name = useDisplayName();
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
@@ -88,12 +91,12 @@ export default function ProfileScreen() {
             <View style={{ position: 'absolute', right: 12, top: 12 }}>
               <Pressable
                 accessibilityRole="link"
-                accessibilityLabel="Đổi bìa hồ sơ"
+                accessibilityLabel={L('Đổi bìa hồ sơ', 'Change profile cover')}
                 onPress={() => router.push('/shop?tab=cover' as never)}
                 style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: 'rgba(15,23,42,0.45)' }}
               >
                 <Text className="font-semi" style={{ fontSize: 13, color: '#FFFFFF' }}>
-                  Đổi bìa
+                  {L('Đổi bìa', 'Change cover')}
                 </Text>
               </Pressable>
             </View>
@@ -108,20 +111,20 @@ export default function ProfileScreen() {
                   {name}
                 </Text>
                 <View className="mt-1 flex-row flex-wrap items-center gap-2">
-                  <Badge label={`Lv ${lv.level} · ${titleForLevel(lv.level)}`} tone="primary" shape="tag" />
-                  <Badge label={`Bậc tháng: ${tier.name} ${'★'.repeat(tier.stars)}`} tone="warning" shape="tag" />
-                  {pet ? <Badge label={`Đồng hành: ${pet.name}`} tone="success" shape="tag" /> : null}
+                  <Badge label={`Lv ${lv.level} · ${levelTitle(titleForLevel(lv.level), locale)}`} tone="primary" shape="tag" />
+                  <Badge label={L(`Bậc tháng: ${tier.name} ${'★'.repeat(tier.stars)}`, `Monthly tier: ${tierName(tier, locale)} ${'★'.repeat(tier.stars)}`)} tone="warning" shape="tag" />
+                  {pet ? <Badge label={L(`Đồng hành: ${pet.name}`, `Companion: ${mascotName(pet, locale)}`)} tone="success" shape="tag" /> : null}
                 </View>
               </View>
               <View className="flex-row flex-wrap gap-2" style={{ paddingTop: wide ? 14 : 0 }}>
-                <Button label="Đổi quà" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
-                <Button label="Nhân vật" size="sm" variant="outline" iconLeft="shield" onPress={() => router.push('/quest/hero' as never)} />
-                <Button label="Xếp hạng" size="sm" variant="outline" iconLeft="trophy" onPress={() => router.push('/leaderboard' as never)} />
+                <Button label={L('Đổi quà', 'Rewards')} size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+                <Button label={L('Nhân vật', 'Hero')} size="sm" variant="outline" iconLeft="shield" onPress={() => router.push('/quest/hero' as never)} />
+                <Button label={L('Xếp hạng', 'Leaderboard')} size="sm" variant="outline" iconLeft="trophy" onPress={() => router.push('/leaderboard' as never)} />
               </View>
             </View>
             {!signedIn ? (
               <Text className="mt-3 font-sans text-label text-muted">
-                Bạn đang dùng với tư cách Khách — đồ đã đổi lưu trên máy này. Đăng nhập để giữ qua máy khác và lên bảng xếp hạng.
+                {L('Bạn đang dùng với tư cách Khách — đồ đã đổi lưu trên máy này. Đăng nhập để giữ qua máy khác và lên bảng xếp hạng.', "You're using Band 9 as a Guest — your items are saved on this device. Sign in to keep them across devices and join the leaderboard.")}
               </Text>
             ) : null}
           </View>
@@ -138,16 +141,16 @@ export default function ProfileScreen() {
       {/* Số liệu nhanh */}
       <Appear index={2}>
         <View className="mt-4 flex-row flex-wrap gap-3">
-          <Stat seal="star" tone="#F2B632" value={formatStars(ledger.balance)} label="sao đang có" />
-          <Stat seal="flame" tone="#F0703F" value={String(streak)} label="ngày liên tiếp" />
-          <Stat seal="calendar" tone="#A8843F" value={String(month)} label="điểm tháng này" />
-          <Stat seal="check" tone="#22A06B" value={life.correct.toLocaleString('vi-VN')} label="câu đúng" />
+          <Stat seal="star" tone="#F2B632" value={formatStars(ledger.balance)} label={L('sao đang có', 'stars')} />
+          <Stat seal="flame" tone="#F0703F" value={String(streak)} label={L('ngày liên tiếp', 'day streak')} />
+          <Stat seal="calendar" tone="#A8843F" value={String(month)} label={L('điểm tháng này', 'points this month')} />
+          <Stat seal="check" tone="#22A06B" value={life.correct.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} label={L('câu đúng', 'correct answers')} />
         </View>
       </Appear>
 
       {/* Đang đeo */}
       <Appear index={2}>
-        <SectionHeader className="mt-6" title="Đang dùng" subtitle="Bấm Đổi để chọn món khác ở trang Đổi quà." icon="sparkle" />
+        <SectionHeader className="mt-6" title={L('Đang dùng', 'Equipped')} subtitle={L('Bấm Đổi để chọn món khác ở trang Đổi quà.', 'Tap Change to pick something else in Rewards.')} icon="sparkle" />
         <View className="mt-3 flex-row flex-wrap gap-3">
           {SLOTS.map((s) => {
             const item = findItem(reward[s.slot]);
@@ -155,7 +158,7 @@ export default function ProfileScreen() {
               <Card key={s.slot} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 220 }}>
                 <View className="flex-row items-center justify-between gap-2">
                   <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-                    {s.title}
+                    {L(s.title, s.titleEn)}
                   </Text>
                   {item ? (
                     <View aria-hidden>
@@ -167,15 +170,15 @@ export default function ProfileScreen() {
                   <SlotPreview slot={s.slot} item={item} name={name} skin={skin} />
                   <View className="min-w-0 flex-1">
                     <Text className="font-strong text-body text-ink" numberOfLines={1}>
-                      {item?.name ?? s.empty}
+                      {item ? itemName(item, locale) : L(s.empty, s.emptyEn)}
                     </Text>
                     <Text className="font-sans text-label text-muted" numberOfLines={3}>
-                      {s.slot === 'mascot' ? (pet ? pet.perk : 'Linh vật giúp câu hỏi: bỏ bớt đáp án sai, đỡ câu sai, hồi tim.') : (item?.detail ?? 'Chưa đeo gì ở ô này.')}
+                      {s.slot === 'mascot' ? (pet ? mascotPerk(pet, locale) : L('Linh vật giúp câu hỏi: bỏ bớt đáp án sai, đỡ câu sai, hồi tim.', 'Mascots help with questions: remove wrong options, block a miss, restore hearts.')) : item ? itemDetail(item, locale) : L('Chưa đeo gì ở ô này.', 'Nothing equipped here yet.')}
                     </Text>
                   </View>
                 </View>
                 <View className="mt-3 flex-row">
-                  <Button label="Đổi" size="sm" variant="outline" onPress={() => router.push(`/shop?tab=${s.tab}` as never)} />
+                  <Button label={L('Đổi', 'Change')} size="sm" variant="outline" onPress={() => router.push(`/shop?tab=${s.tab}` as never)} />
                 </View>
               </Card>
             );
@@ -185,7 +188,7 @@ export default function ProfileScreen() {
 
       {/* Tủ đồ */}
       <Appear index={3}>
-        <SectionHeader className="mt-6" title="Tủ đồ" subtitle={wardrobe.length ? 'Mọi món bạn đã đổi. Bấm để đeo hoặc bỏ.' : undefined} icon="gift" />
+        <SectionHeader className="mt-6" title={L('Tủ đồ', 'Wardrobe')} subtitle={wardrobe.length ? L('Mọi món bạn đã đổi. Bấm để đeo hoặc bỏ.', "Everything you've collected. Tap to put on or take off.") : undefined} icon="gift" />
         {wardrobe.length === 0 ? (
           <Card className="mt-3">
             <View aria-hidden className="mb-2 flex-row items-end gap-2">
@@ -195,14 +198,14 @@ export default function ProfileScreen() {
                 </Sticker>
               </Motion>
               <Motion kind="pop" delay={0.2}>
-                <Label text="Đổi sao lấy đồ 🎁" color="#F472B6" ink="#FFFFFF" tilt={-4} size={12} />
+                <Label text={L('Đổi sao lấy đồ 🎁', 'Trade stars for gear 🎁')} color="#F472B6" ink="#FFFFFF" tilt={-4} size={12} />
               </Motion>
             </View>
             <Text className="font-sans text-body text-muted">
-              Tủ đồ còn trống. Bạn đang có {formatStars(ledger.balance)} sao — avatar động rẻ nhất 150 sao, skin từ 300 sao.
+              {L(`Tủ đồ còn trống. Bạn đang có ${formatStars(ledger.balance)} sao — avatar động rẻ nhất 150 sao, skin từ 300 sao.`, `Your wardrobe is empty. You have ${formatStars(ledger.balance)} stars — animated avatars start at 150 stars, skins at 300.`)}
             </Text>
             <View className="mt-3 flex-row">
-              <Button label="Đi đổi sao" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+              <Button label={L('Đi đổi sao', 'Spend stars')} size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
             </View>
           </Card>
         ) : (
@@ -213,14 +216,14 @@ export default function ProfileScreen() {
                 <Pressable
                   key={item.id}
                   accessibilityRole="button"
-                  accessibilityLabel={on ? `Bỏ ${item.name}` : `Dùng ${item.name}`}
+                  accessibilityLabel={on ? L(`Bỏ ${item.name}`, `Take off ${itemName(item, locale)}`) : L(`Dùng ${item.name}`, `Use ${itemName(item, locale)}`)}
                   aria-selected={on}
                   onPress={() => reward.equip(slotOf(item), on ? null : item.id)}
                   className="flex-row items-center gap-2 rounded-pill py-1.5 pl-1.5 pr-3.5"
                   style={{ backgroundColor: on ? '#FEF3C7' : '#FFFFFF', borderWidth: 2, borderColor: on ? '#F59E0B' : '#F6F3EE' }}
                 >
                   <MiniPreview item={item} skin={skin} />
-                  <Text className="font-semi text-label text-ink">{item.name}</Text>
+                  <Text className="font-semi text-label text-ink">{itemName(item, locale)}</Text>
                   {on ? <Text style={{ fontSize: 12, color: '#B45309' }}>✓</Text> : null}
                 </Pressable>
               );
@@ -232,15 +235,15 @@ export default function ProfileScreen() {
       {/* Sổ sao */}
       <Appear index={4}>
         <Card className="mt-6">
-          <SectionHeader title="Sổ sao" subtitle="Sao đến từ đâu, đã đổi bao nhiêu" icon="star" iconTone="warning" />
-          <Text className="mt-2 font-sans text-label text-muted">Số dư luôn tính lại từ nhật ký học — không có nút nào cộng sao.</Text>
+          <SectionHeader title={L('Sổ sao', 'Star ledger')} subtitle={L('Sao đến từ đâu, đã đổi bao nhiêu', 'Where your stars came from and what you spent')} icon="star" iconTone="warning" />
+          <Text className="mt-2 font-sans text-label text-muted">{L('Số dư luôn tính lại từ nhật ký học — không có nút nào cộng sao.', 'Your balance is always recalculated from your study log — there is no button that adds stars.')}</Text>
           <View className="mt-3 gap-2">
-            <LedgerRow label="Từ việc học (phút học, số câu, nhân theo chuỗi)" value={`+${formatStars(ledger.study)}`} />
-            <LedgerRow label="Thưởng trận đấu (hạ quái, boss, lên cấp, nhiệm vụ, huy hiệu)" value={`+${formatStars(ledger.battle)}`} />
-            <LedgerRow label="Thưởng hạng tháng & quà" value={`+${formatStars(ledger.prizes)}`} />
-            <LedgerRow label="Đã đổi quà" value={`−${formatStars(ledger.spent)}`} />
+            <LedgerRow label={L('Từ việc học (phút học, số câu, nhân theo chuỗi)', 'From studying (minutes, questions, streak multiplier)')} value={`+${formatStars(ledger.study)}`} />
+            <LedgerRow label={L('Thưởng trận đấu (hạ quái, boss, lên cấp, nhiệm vụ, huy hiệu)', 'Battle rewards (monsters, bosses, level-ups, quests, badges)')} value={`+${formatStars(ledger.battle)}`} />
+            <LedgerRow label={L('Thưởng hạng tháng & quà', 'Monthly rank rewards & gifts')} value={`+${formatStars(ledger.prizes)}`} />
+            <LedgerRow label={L('Đã đổi quà', 'Spent on rewards')} value={`−${formatStars(ledger.spent)}`} />
             <View style={{ height: 1, backgroundColor: color.border }} />
-            <LedgerRow label="Còn lại" value={`${formatStars(ledger.balance)} ⭐`} strong />
+            <LedgerRow label={L('Còn lại', 'Balance')} value={`${formatStars(ledger.balance)} ⭐`} strong />
           </View>
         </Card>
       </Appear>
@@ -250,9 +253,9 @@ export default function ProfileScreen() {
         <Card className="mt-4">
           <View className="flex-row flex-wrap items-center justify-between gap-2">
             <View className="min-w-0 flex-1">
-              <SectionHeader title="Huy hiệu" subtitle={`${opened.length}/${ACHIEVEMENTS.length} đã mở · +${STAR_BONUS.achievement} sao mỗi huy hiệu`} icon="trophy" />
+              <SectionHeader title={L('Huy hiệu', 'Badges')} subtitle={L(`${opened.length}/${ACHIEVEMENTS.length} đã mở · +${STAR_BONUS.achievement} sao mỗi huy hiệu`, `${opened.length}/${ACHIEVEMENTS.length} unlocked · +${STAR_BONUS.achievement} stars per badge`)} icon="trophy" />
             </View>
-            <Button label="Xem hết" size="sm" variant="outline" onPress={() => router.push('/quest/hero' as never)} />
+            <Button label={L('Xem hết', 'See all')} size="sm" variant="outline" onPress={() => router.push('/quest/hero' as never)} />
           </View>
           <View className="mt-3 flex-row flex-wrap gap-2">
             {ACHIEVEMENTS.map((a) => {
@@ -260,7 +263,7 @@ export default function ProfileScreen() {
               return (
                 <View
                   key={a.id}
-                  accessibilityLabel={`${a.title}${at ? ' — đã mở' : ' — chưa mở'}`}
+                  accessibilityLabel={L(`${a.title}${at ? ' — đã mở' : ' — chưa mở'}`, `${achievementTitle(a, locale)}${at ? ' — unlocked' : ' — locked'}`)}
                   className="items-center justify-center rounded-panel"
                   style={{ width: 52, height: 52, backgroundColor: at ? '#FEF3C7' : '#F9F6F1' }}
                 >

@@ -7,7 +7,8 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
-import { LEVEL_TONE } from './LessonView';
+import { LEVEL_TONE, levelLabel } from './LessonView';
+import { useL } from '@/i18n/useL';
 import type { TheoryLesson } from '@/data/lessons/types';
 import type { VocabLesson } from '@/data/lessons/vocab-lessons';
 import { masteredCount, useTopicStudyStore } from '@/store/useTopicStudyStore';
@@ -44,6 +45,7 @@ export function LessonHub({
   initialTab?: 'theory' | 'vocab';
 }) {
   const [tab, setTab] = useState(initialTab);
+  const { L, en } = useL();
   const done = useLessonStore((s) => s.done);
   const stages = useTopicStudyStore((s) => s.stages);
   const base = subject === 'math' ? '/math/learn' : '/sat-rw/learn';
@@ -73,19 +75,23 @@ export function LessonHub({
             <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
             <Text className="mt-1 font-sans text-bodyLg text-muted">{blurb}</Text>
             <View className="mt-4 flex-row flex-wrap gap-2">
-              <Stat label="bài lý thuyết đã học" value={`${doneCount}/${all.length}`} />
-              <Stat label="bài từ vựng đã thuộc" value={`${vocabDone}/${vocab.length}`} />
+              <Stat label={L('bài lý thuyết đã học', 'theory lessons done')} value={`${doneCount}/${all.length}`} />
+              <Stat label={L('bài từ vựng đã thuộc', 'vocab lessons mastered')} value={`${vocabDone}/${vocab.length}`} />
             </View>
             <View className="mt-4 flex-row flex-wrap gap-2">
               {nextLesson ? (
                 <Button
-                  label={doneCount === 0 ? `Bắt đầu: ${nextLesson.title}` : `Học tiếp: ${nextLesson.title}`}
+                  label={
+                    doneCount === 0
+                      ? L(`Bắt đầu: ${nextLesson.title}`, `Start: ${nextLesson.englishName}`)
+                      : L(`Học tiếp: ${nextLesson.title}`, `Continue: ${nextLesson.englishName}`)
+                  }
                   iconRight="arrow-right"
                   onPress={() => router.push(`${base}/${nextLesson.skill}` as never)}
                 />
               ) : null}
               {nextVocab ? (
-                <Button variant="secondary" label={`Từ vựng: ${nextVocab.title}`} onPress={() => router.push(`/vocabulary/topic/${nextVocab.slug}` as never)} />
+                <Button variant="secondary" label={L(`Từ vựng: ${nextVocab.title}`, `Vocabulary: ${nextVocab.title}`)} onPress={() => router.push(`/vocabulary/topic/${nextVocab.slug}` as never)} />
               ) : null}
             </View>
           </View>
@@ -94,8 +100,8 @@ export function LessonHub({
         <View className="mt-6 flex-row self-start rounded-2xl bg-white/80 p-1">
           {(
             [
-              ['theory', `Lý thuyết · ${all.length} bài`],
-              ['vocab', `Từ vựng · ${vocab.length} bài`],
+              ['theory', L(`Lý thuyết · ${all.length} bài`, `Theory · ${all.length} lessons`)],
+              ['vocab', L(`Từ vựng · ${vocab.length} bài`, `Vocabulary · ${vocab.length} lessons`)],
             ] as const
           ).map(([k, label]) => (
             <Pressable key={k} onPress={() => setTab(k)} className="rounded-xl px-5 py-2" style={{ backgroundColor: tab === k ? color.primary : 'transparent' }}>
@@ -111,7 +117,7 @@ export function LessonHub({
             <View>
               {groups.map((g) => (
                 <View key={g.domain} className="mt-6">
-                  <Text className="mb-3 font-heavy text-sectionTitle text-ink">{g.domain}</Text>
+                  <Text className="mb-3 font-heavy text-sectionTitle text-ink">{en && g.domain === 'Khác' ? 'Other' : g.domain}</Text>
                   <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
                     {g.lessons.map((l) => {
                       const num = numberOf.get(l.skill);
@@ -126,21 +132,21 @@ export function LessonHub({
                           style={[{ borderWidth: 2, borderColor: isDone ? '#BBF7D0' : 'transparent' }, CARD]}
                         >
                           <View className="flex-row items-center justify-between">
-                            <Text className="font-strong text-label text-muted">Bài {num}</Text>
+                            <Text className="font-strong text-label text-muted">{L('Bài', 'Lesson')} {num}</Text>
                             {isDone ? <Icon name="check" size={18} color="#16A34A" strokeWidth={2.4} /> : null}
                           </View>
-                          <Text className="mt-1 font-heavy text-bodyLg text-ink">{l.title}</Text>
+                          <Text className="mt-1 font-heavy text-bodyLg text-ink">{en ? l.englishName : l.title}</Text>
                           <Text className="mt-0.5 font-sans text-label text-muted" numberOfLines={1}>
-                            {l.englishName}
+                            {en ? l.title : l.englishName}
                           </Text>
                           <View className="flex-1" />
                           <View className="mt-3 flex-row items-center gap-2">
                             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: tone.bg }}>
                               <Text className="font-strong text-label" style={{ color: tone.fg }}>
-                                {l.level}
+                                {levelLabel(l.level, en)}
                               </Text>
                             </View>
-                            <Text className="font-sans text-label text-muted">{l.minutes} phút</Text>
+                            <Text className="font-sans text-label text-muted">{l.minutes} {L('phút', 'min')}</Text>
                           </View>
                         </Pressable>
                       );
@@ -152,10 +158,14 @@ export function LessonHub({
           ) : (
             <View className="mt-6">
               <Text className="mb-4 font-sans text-body text-muted">
-                Mỗi bài 6–13 từ, học trong khoảng 15 phút: lật thẻ, trắc nghiệm, điền từ, rồi kiểm tra. Từ được tính là thuộc khi qua phần cuối mà không sai.
+                {L(
+                  'Mỗi bài 6–13 từ, học trong khoảng 15 phút: lật thẻ, trắc nghiệm, điền từ, rồi kiểm tra. Từ được tính là thuộc khi qua phần cuối mà không sai.',
+                  'Each lesson has 6–13 words and takes about 15 minutes: flashcards, multiple choice, fill-in, then a test. A word counts as mastered when you pass the final part without a mistake.',
+                )}
                 {subject === 'math' ? (
                   <Text className="font-semi text-primary-700" onPress={() => router.push('/math/vocab' as never)}>
-                    {' '}Xem cả bảng thuật ngữ →
+                    {' '}
+                    {L('Xem cả bảng thuật ngữ →', 'See the full glossary →')}
                   </Text>
                 ) : null}
               </Text>
@@ -172,7 +182,7 @@ export function LessonHub({
                       style={CARD}
                     >
                       <View className="flex-row items-center justify-between">
-                        <Text className="font-strong text-label text-muted">Bài từ vựng {i + 1}</Text>
+                        <Text className="font-strong text-label text-muted">{L('Bài từ vựng', 'Vocab lesson')} {i + 1}</Text>
                         {pct >= 1 ? <Icon name="check" size={18} color="#16A34A" strokeWidth={2.4} /> : null}
                       </View>
                       <Text className="mt-1 font-heavy text-bodyLg text-ink">{v.title}</Text>
@@ -184,7 +194,7 @@ export function LessonHub({
                         <View className="h-1.5 rounded-pill" style={{ width: `${pct * 100}%`, backgroundColor: '#16A34A' }} />
                       </View>
                       <Text className="mt-1.5 font-semi text-label text-muted">
-                        Đã thuộc {m}/{v.words.length} từ
+                        {L(`Đã thuộc ${m}/${v.words.length} từ`, `Mastered ${m}/${v.words.length} words`)}
                       </Text>
                     </Pressable>
                   );

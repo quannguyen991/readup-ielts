@@ -6,9 +6,10 @@ import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
 import { MathQuestionView } from '@/components/math/MathQuestionView';
 import { Badge, Button, Card, ProgressBar, SectionHeader, StatCard } from '@/components/ui';
+import { useL } from '@/i18n/useL';
+import { mathErrorLabel } from '@/components/math/math-labels-en';
 import {
   MATH_DOMAIN_LABEL,
-  MATH_ERROR_LABEL,
   MATH_SKILL_LABEL,
   type MathDomain,
 } from '@/lib/math/types';
@@ -29,6 +30,7 @@ import { CuteMagnifier, CuteRocket, CuteTrophy, Motion } from '@/components/illu
  * dòng nói rõ, chứ không lặng lẽ biến mất khỏi danh sách và làm lệch tổng số.
  */
 export default function MathReviewScreen() {
+  const { L, locale, en } = useL();
   const { sessionId } = useLocalSearchParams<{ sessionId?: string }>();
   const session = useMathStore((s) => s.sessions.find((x) => x.id === sessionId));
 
@@ -62,11 +64,14 @@ export default function MathReviewScreen() {
               </Sticker>
             </Motion>
           </View>
-          <Text className="font-strong text-cardTitle text-ink">Không tìm thấy lượt làm bài</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không tìm thấy lượt làm bài', 'Session not found')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            Lượt này có thể đã bị xoá khỏi lịch sử trên thiết bị.
+            {L(
+              'Lượt này có thể đã bị xoá khỏi lịch sử trên thiết bị.',
+              'This session may have been removed from the history on this device.',
+            )}
           </Text>
-          <Button className="mt-3" label="Về trang Math" onPress={() => router.replace('/math')} />
+          <Button className="mt-3" label={L('Về trang Math', 'Back to Math')} onPress={() => router.replace('/math')} />
         </Card>
       </Screen>
     );
@@ -77,18 +82,23 @@ export default function MathReviewScreen() {
 
   const title =
     session.mode === 'diagnostic'
-      ? 'Kết quả bài chẩn đoán'
+      ? L('Kết quả bài chẩn đoán', 'Diagnostic results')
       : session.mode === 'mock'
-        ? 'Kết quả thi thử'
+        ? L('Kết quả thi thử', 'Mock test results')
         : set
           ? `${unit ? `${unit.title} · ` : ''}${set.title}`
           : session.skill
-            ? `Luyện nhanh · ${MATH_SKILL_LABEL[session.skill]}`
-            : 'Kết quả lượt làm bài';
+            ? L(`Luyện nhanh · ${MATH_SKILL_LABEL[session.skill]}`, `Quick drill · ${MATH_SKILL_LABEL[session.skill]}`)
+            : L('Kết quả lượt làm bài', 'Session results');
 
   const blank = session.attempts.filter((a) => a.userAnswer === null).length;
   const acc = session.total === 0 ? 0 : session.rawScore / session.total;
-  const cheer = acc >= 0.8 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : acc >= 0.6 ? { text: 'Khá lắm ⭐', bg: '#A8843F' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
+  const cheer =
+    acc >= 0.8
+      ? { text: L('Xuất sắc 🏆', 'Excellent 🏆'), bg: '#22A06B' }
+      : acc >= 0.6
+        ? { text: L('Khá lắm ⭐', 'Nice work ⭐'), bg: '#A8843F' }
+        : { text: L('Ôn tiếp nhé 💪', 'Keep practising 💪'), bg: '#F0703F' };
 
   return (
     <Screen>
@@ -96,7 +106,8 @@ export default function MathReviewScreen() {
         <View className="min-w-0 flex-1">
           <Text className="font-heavy text-pageTitle text-ink">{title}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            {new Date(session.finishedAt).toLocaleString('vi-VN')} · {Math.round(session.durationMs / 60_000)} phút
+            {new Date(session.finishedAt).toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} ·{' '}
+            {L(`${Math.round(session.durationMs / 60_000)} phút`, `${Math.round(session.durationMs / 60_000)} min`)}
           </Text>
         </View>
         <View aria-hidden>
@@ -116,20 +127,20 @@ export default function MathReviewScreen() {
       <View className="mt-4">
         <Grid columns={4} tabletColumns={2} mobileColumns={2}>
           <StatCard
-            label="Đúng"
+            label={L('Đúng', 'Correct')}
             value={`${session.rawScore}/${session.total}`}
             icon="check"
             tone="primary"
           />
           <StatCard
-            label="Độ chính xác"
+            label={L('Độ chính xác', 'Accuracy')}
             value={formatAccuracy(session.total === 0 ? null : session.rawScore / session.total)}
             icon="target"
             tone="success"
           />
-          <StatCard label="Bỏ trắng" value={String(blank)} icon="close" tone="accent" />
+          <StatCard label={L('Bỏ trắng', 'Blank')} value={String(blank)} icon="close" tone="accent" />
           <StatCard
-            label={session.estimatedScore === null ? 'Thời gian/câu' : 'Điểm ước lượng'}
+            label={session.estimatedScore === null ? L('Thời gian/câu', 'Time/question') : L('Điểm ước lượng', 'Estimated score')}
             value={
               session.estimatedScore === null
                 ? `${Math.round(session.durationMs / 1000 / Math.max(1, session.total))}s`
@@ -150,7 +161,7 @@ export default function MathReviewScreen() {
               </Sticker>
             </Motion>
             <Label
-              text={session.moduleTier === 'harder' ? 'Nhánh khó 🚀' : 'Nhánh dễ 🎯'}
+              text={session.moduleTier === 'harder' ? L('Nhánh khó 🚀', 'Harder route 🚀') : L('Nhánh dễ 🎯', 'Easier route 🎯')}
               color={session.moduleTier === 'harder' ? '#F0703F' : '#B07A3A'}
               ink="#FFFFFF"
               tilt={4}
@@ -158,16 +169,20 @@ export default function MathReviewScreen() {
             />
           </View>
           <Text className="font-sans text-body text-muted">
-            Module 2 của bạn ở nhánh{' '}
+            {L('Module 2 của bạn ở nhánh ', 'Your module 2 was on the ')}
             <Text className="font-strong text-ink">
-              {session.moduleTier === 'harder' ? 'khó hơn' : 'dễ hơn'}
+              {session.moduleTier === 'harder' ? L('khó hơn', 'harder') : L('dễ hơn', 'easier')}
             </Text>
-            . Điểm {session.estimatedScore} là <Text className="font-strong text-ink">ước lượng</Text>{' '}
-            — dùng để so với chính bạn lần trước, không phải để dự đoán điểm thi thật.
+            {L(`. Điểm ${session.estimatedScore} là `, ` route. The score of ${session.estimatedScore} is an `)}
+            <Text className="font-strong text-ink">{L('ước lượng', 'estimate')}</Text>{' '}
+            {L(
+              '— dùng để so với chính bạn lần trước, không phải để dự đoán điểm thi thật.',
+              '— use it to compare with your own previous attempts, not to predict a real exam score.',
+            )}
           </Text>
           <Button
             className="mt-4"
-            label="Luyện tiếp SAT Math"
+            label={L('Luyện tiếp SAT Math', 'Keep practising SAT Math')}
             iconRight="arrow-right"
             onPress={() => router.push('/math' as never)}
           />
@@ -180,7 +195,7 @@ export default function MathReviewScreen() {
             <View aria-hidden>
               <SealIcon name="search" color="#B07A3A" size={36} />
             </View>
-            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Đọc kết quả</Text>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Đọc kết quả', 'What this means')}</Text>
           </View>
           <Text className="mt-1 font-sans text-body text-muted">
             {diagnosticHeadline(diagnosticReading)}
@@ -197,7 +212,7 @@ export default function MathReviewScreen() {
                     {MATH_SKILL_LABEL[stat.skill]}
                   </Text>
                   <Button
-                    label="Drill 6 câu"
+                    label={L('Drill 6 câu', 'Drill 6 questions')}
                     size="sm"
                     variant="outline"
                     onPress={() => router.push(`/math/drill/${stat.skill}`)}
@@ -208,7 +223,7 @@ export default function MathReviewScreen() {
         </Card>
       ) : null}
 
-      <SectionHeader className="mt-6" title="Theo domain" icon="trending" />
+      <SectionHeader className="mt-6" title={L('Theo domain', 'By domain')} icon="trending" />
       <Card className="mt-3">
         <View className="gap-3">
           {(Object.keys(domainStats) as MathDomain[])
@@ -237,8 +252,11 @@ export default function MathReviewScreen() {
         <>
           <SectionHeader
             className="mt-6"
-            title="Lỗi đã mắc trong lượt này"
-            subtitle="Chỉ tính những câu chọn nhầm một đáp án có nhãn — bỏ trắng không bị gán lỗi."
+            title={L('Lỗi đã mắc trong lượt này', 'Mistakes in this session')}
+            subtitle={L(
+              'Chỉ tính những câu chọn nhầm một đáp án có nhãn — bỏ trắng không bị gán lỗi.',
+              'Only counts wrong picks of a labelled answer choice — blanks are never tagged as mistakes.',
+            )}
             icon="info"
           />
           <View className="mt-3 gap-2">
@@ -246,7 +264,7 @@ export default function MathReviewScreen() {
               <Card key={tag} variant="flat">
                 <View className="flex-row items-start gap-3">
                   <Badge label={`${count}×`} tone="danger" />
-                  <Text className="flex-1 font-sans text-body text-ink">{MATH_ERROR_LABEL[tag]}</Text>
+                  <Text className="flex-1 font-sans text-body text-ink">{mathErrorLabel(tag, en)}</Text>
                 </View>
               </Card>
             ))}
@@ -256,8 +274,11 @@ export default function MathReviewScreen() {
 
       <SectionHeader
         className="mt-6"
-        title="Từng câu"
-        subtitle="Đáp án đúng, lời giải từng bước, và tên của lỗi nếu bạn chọn nhầm."
+        title={L('Từng câu', 'Question by question')}
+        subtitle={L(
+          'Đáp án đúng, lời giải từng bước, và tên của lỗi nếu bạn chọn nhầm.',
+          'The correct answer, a step-by-step solution, and the name of the mistake if you picked wrong.',
+        )}
         icon="list"
       />
       <View className="mt-3 gap-4">
@@ -267,30 +288,32 @@ export default function MathReviewScreen() {
               <MathQuestionView item={item} index={index} answer={attempt.userAnswer} revealed />
             ) : (
               <View>
-                <Text className="font-strong text-body text-ink">Câu {index + 1}</Text>
+                <Text className="font-strong text-body text-ink">{L(`Câu ${index + 1}`, `Question ${index + 1}`)}</Text>
                 <Text className="mt-1 font-sans text-body text-muted">
-                  Không dựng lại được câu này ({attempt.itemId}) — template của nó không còn trong
-                  danh bạ. Kết quả đúng/sai của bạn vẫn được giữ nguyên.
+                  {L(
+                    `Không dựng lại được câu này (${attempt.itemId}) — template của nó không còn trong danh bạ. Kết quả đúng/sai của bạn vẫn được giữ nguyên.`,
+                    `This question (${attempt.itemId}) can't be rebuilt — its template is no longer in the catalogue. Your right/wrong result is still kept.`,
+                  )}
                 </Text>
               </View>
             )}
             <Text className="mt-2 font-sans text-label text-muted">
-              Thời gian: {Math.round(attempt.timeSpentMs / 1000)}s
+              {L(`Thời gian: ${Math.round(attempt.timeSpentMs / 1000)}s`, `Time: ${Math.round(attempt.timeSpentMs / 1000)}s`)}
             </Text>
           </Card>
         ))}
       </View>
 
       <View className="mt-6 flex-row flex-wrap gap-2">
-        <Button label="Về trang Math" variant="outline" onPress={() => router.replace('/math')} />
+        <Button label={L('Về trang Math', 'Back to Math')} variant="outline" onPress={() => router.replace('/math')} />
         {set ? (
           <Button
-            label="Làm lại bộ này (đề mới)"
+            label={L('Làm lại bộ này (đề mới)', 'Redo this set (new questions)')}
             onPress={() => router.replace(`/math/set/${set.id}` as never)}
           />
         ) : session.mode === 'drill' && session.skill ? (
           <Button
-            label="Drill tiếp kỹ năng này"
+            label={L('Drill tiếp kỹ năng này', 'Keep drilling this skill')}
             onPress={() => router.replace(`/math/drill/${session.skill}` as never)}
           />
         ) : null}

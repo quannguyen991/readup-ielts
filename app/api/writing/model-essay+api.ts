@@ -1,6 +1,7 @@
 import { getWritingPromptById } from '@/data/writing-repository';
 import { AiError } from '@/services/ai/errors';
 import { generateModelEssay } from '@/services/ai/model-essay';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/writing/model-essay  { promptId, targetBand }
@@ -18,24 +19,31 @@ export async function POST(request: Request): Promise<Response> {
     const body = (await request.json()) as { promptId?: string; targetBand?: number };
 
     if (!body.promptId) {
-      return Response.json({ error: 'Thiếu promptId.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu promptId.', 'promptId is required.') }, { status: 400 });
     }
     const targetBand = body.targetBand ?? 7;
     if (!ALLOWED_BANDS.includes(targetBand)) {
       return Response.json(
-        { error: `targetBand phải là một trong ${ALLOWED_BANDS.join(', ')}.` },
+        { error: msg(request, `targetBand phải là một trong ${ALLOWED_BANDS.join(', ')}.`, `targetBand must be one of ${ALLOWED_BANDS.join(', ')}.`) },
         { status: 400 },
       );
     }
 
     const prompt = getWritingPromptById(body.promptId);
     if (!prompt) {
-      return Response.json({ error: 'Không tìm thấy đề.' }, { status: 404 });
+      return Response.json({ error: msg(request, 'Không tìm thấy đề.', 'Prompt not found.') }, { status: 404 });
     }
 
     if (!process.env.OPENAI_API_KEY) {
       return Response.json(
-        { error: 'Chưa cấu hình OPENAI_API_KEY nên không soạn được bài mẫu.', code: 'missing_config' },
+        {
+          error: msg(
+            request,
+            'Chưa cấu hình OPENAI_API_KEY nên không soạn được bài mẫu.',
+            "OPENAI_API_KEY isn't configured, so a model essay can't be written.",
+          ),
+          code: 'missing_config',
+        },
         { status: 503 },
       );
     }
@@ -44,8 +52,8 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json(essay);
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message, code: err.code }, { status: 502 });
+      return Response.json({ error: errorText(request, err, err.message, "Couldn't write a model essay. Please try again in a few minutes."), code: err.code }, { status: 502 });
     }
-    return Response.json({ error: 'Lỗi không xác định khi soạn bài mẫu.' }, { status: 500 });
+    return Response.json({ error: msg(request, 'Lỗi không xác định khi soạn bài mẫu.', 'Unknown error while writing the model essay.') }, { status: 500 });
   }
 }

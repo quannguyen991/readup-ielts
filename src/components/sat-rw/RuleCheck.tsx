@@ -5,6 +5,8 @@ import { Icon } from '@/components/ui';
 import { SAT_RW_SKILL_LABEL } from '@/data/sat-rw-repository';
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
 import { color, paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+import { rwSkillLabel } from './skill-label';
 
 /**
  * "Câu này kiểm luật gì?" — hỏi sau khi chọn đáp án, trước khi hiện lời giải.
@@ -42,6 +44,7 @@ export function RuleCheck({
   onPick: (picked: string, correct: boolean) => void;
 }) {
   const [picked, setPicked] = useState<string | null>(null);
+  const { L, en } = useL();
 
   /**
    * Ba phương án, gieo hạt theo id câu.
@@ -62,11 +65,13 @@ export function RuleCheck({
     <View className="mt-3 rounded-panel border border-brand-soft bg-white p-3.5">
       <View className="flex-row items-center gap-2">
         <Icon name="target" size={16} color={paper.brandMid} strokeWidth={2.2} />
-        <Text className="font-strong text-body text-paper-ink">Câu này kiểm luật gì?</Text>
+        <Text className="font-strong text-body text-paper-ink">{L('Câu này kiểm luật gì?', 'Which rule does this question test?')}</Text>
       </View>
       <Text className="mt-1 font-sans text-label text-paper-muted">
-        Chọn xong mới hiện lời giải. Chọn sai không bị trừ gì — app chỉ cần biết bạn chọn đáp án theo
-        luật hay theo cảm giác.
+        {L(
+          'Chọn xong mới hiện lời giải. Chọn sai không bị trừ gì — app chỉ cần biết bạn chọn đáp án theo luật hay theo cảm giác.',
+          'The explanation appears once you pick. A wrong pick costs nothing — the app just needs to know whether you chose by rule or by feel.',
+        )}
       </Text>
 
       <View className="mt-3 gap-2">
@@ -97,7 +102,7 @@ export function RuleCheck({
               style={{ borderColor: tone.border, backgroundColor: tone.bg }}
             >
               <Text className="font-sans text-label text-paper-ink">
-                {SAT_RW_SKILL_LABEL[skill] ?? skill}
+                {rwSkillLabel(skill, en)}
               </Text>
             </Pressable>
           );
@@ -114,8 +119,14 @@ export function RuleCheck({
           />
           <Text className="min-w-0 flex-1 font-sans text-label text-paper-body" style={{ lineHeight: 19 }}>
             {picked === actualSkill
-              ? 'Bạn gọi đúng tên luật. Chọn đáp án theo luật thì gặp câu mà tai đánh lừa vẫn chọn được.'
-              : `Luật đang bị hỏi là “${SAT_RW_SKILL_LABEL[actualSkill] ?? actualSkill}”. Gọi sai tên luật nghĩa là lần này bạn chọn theo cảm giác — cách ấy chạy được khá xa, cho tới lúc gặp câu mà tai không giúp được.`}
+              ? L(
+                  'Bạn gọi đúng tên luật. Chọn đáp án theo luật thì gặp câu mà tai đánh lừa vẫn chọn được.',
+                  'You named the right rule. Choosing by rule still works when your ear gets fooled.',
+                )
+              : L(
+                  `Luật đang bị hỏi là “${SAT_RW_SKILL_LABEL[actualSkill] ?? actualSkill}”. Gọi sai tên luật nghĩa là lần này bạn chọn theo cảm giác — cách ấy chạy được khá xa, cho tới lúc gặp câu mà tai không giúp được.`,
+                  `The rule being tested is “${rwSkillLabel(actualSkill, true)}”. Missing the rule name means you chose by feel this time — that works for a while, until you hit a question your ear can’t help with.`,
+                )}
           </Text>
         </View>
       ) : null}

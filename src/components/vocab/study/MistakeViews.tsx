@@ -8,7 +8,38 @@ import {
   MISTAKE_ADVICE,
   summarizeMistakes,
   type Mistake,
+  type MistakeKind,
 } from "@/services/vocab/mistake";
+import { useL } from "@/i18n/useL";
+
+/** Tên lỗi và lời khuyên bản tiếng Anh — dữ liệu gốc ở services/vocab/mistake giữ tiếng Việt. */
+const MISTAKE_TITLE_EN: Record<MistakeKind, string> = {
+  blank: "Left blank",
+  other_word: "Mixed up with another word",
+  inflection: "Wrong word form",
+  double_letter: "Double consonant",
+  suffix: "Wrong suffix",
+  transposition: "Swapped letters",
+  missing_letter: "Missing letter",
+  extra_letter: "Extra letter",
+  wrong_letter: "One wrong letter",
+  spelling: "Spelling",
+  unknown: "Word not learned yet",
+};
+
+const MISTAKE_ADVICE_EN: Record<MistakeKind, string> = {
+  blank: "A guess beats a blank — type the first letter to jog your memory.",
+  other_word: "You're mixing up similar words. Turn on the Vietnamese → English direction and read each word's example carefully to tell them apart.",
+  inflection: "You know the word, just not the form. Check for plural subjects and the tense before filling in.",
+  double_letter: "Double consonants are the most common spelling slip. Say each syllable slowly: ac-com-mo-date.",
+  suffix: "Pairs like -ance/-ence and -able/-ible have to be learned word by word — there's no reliable rule.",
+  transposition: "Slow your typing down a beat; this is usually a finger slip, not a memory gap.",
+  missing_letter: "Spell the word out loud as you type so no letter gets dropped.",
+  extra_letter: "Spell the word out loud as you type so no extra letter sneaks in.",
+  wrong_letter: "Just one letter off — look at the tricky part of the word and type it two or three times.",
+  spelling: "You know the meaning but not the spelling yet. Dictation mode trains exactly this.",
+  unknown: "These words haven't stuck yet. Review them with Flashcards first, then move on to Fill in the word.",
+};
 
 /*
   Hai khối hiển thị phân tích lỗi, dùng chung cho màn Học và màn Điền vào câu:
@@ -17,6 +48,7 @@ import {
 
 /** Hộp "vì sao sai" ngay dưới câu hỏi. */
 export function MistakeBox({ m }: { m: Mistake }) {
+  const { L, en } = useL();
   return (
     <Appear>
       <View
@@ -30,7 +62,7 @@ export function MistakeBox({ m }: { m: Mistake }) {
         <Icon name="sparkle" size={18} color="#B45309" />
         <View className="flex-1">
           <Text className="font-strong text-body" style={{ color: "#92400E" }}>
-            Phân tích lỗi · {m.title}
+            {L("Phân tích lỗi", "Mistake check")} · {en ? MISTAKE_TITLE_EN[m.kind] : m.title}
           </Text>
           {m.detail ? (
             <Text className="mt-0.5 font-sans text-body text-ink">
@@ -52,10 +84,11 @@ export function RoundAnalysis({
 }: {
   mistakes: { word: string; m: Mistake }[];
 }) {
+  const { L, en } = useL();
   if (mistakes.length === 0) {
     return (
       <Text className="mt-4 font-semi text-bodyLg" style={{ color: GREEN }}>
-        Không sai câu nào trong vòng này.
+        {L("Không sai câu nào trong vòng này.", "No mistakes this round.")}
       </Text>
     );
   }
@@ -72,7 +105,7 @@ export function RoundAnalysis({
       }}
     >
       <Text className="font-strong text-cardTitle text-ink">
-        Phân tích vòng học
+        {L("Phân tích vòng học", "Round review")}
       </Text>
       <View className="mt-3 flex-row flex-wrap gap-2">
         {kinds.map((k) => (
@@ -84,21 +117,21 @@ export function RoundAnalysis({
             }}
           >
             <Text className="font-semi text-label text-ink">
-              {k.title} × {k.count}
+              {en ? MISTAKE_TITLE_EN[k.kind] : k.title} × {k.count}
             </Text>
           </View>
         ))}
       </View>
       <Text className="mt-3 font-sans text-body text-ink">
         <Text className="font-strong">
-          Lỗi hay gặp nhất: {top.title.toLowerCase()}.
+          {L("Lỗi hay gặp nhất:", "Most common mistake:")} {(en ? MISTAKE_TITLE_EN[top.kind] : top.title).toLowerCase()}.
         </Text>{" "}
-        {MISTAKE_ADVICE[top.kind]}
+        {en ? MISTAKE_ADVICE_EN[top.kind] : MISTAKE_ADVICE[top.kind]}
       </Text>
       <Text className="mt-3 font-sans text-body text-muted">
-        Từ còn yếu ({weak.length}):{" "}
-        <Text className="font-semi text-ink">{weak.join(", ")}</Text>. Vòng sau
-        sẽ hỏi những từ này trước.
+        {L("Từ còn yếu", "Weak words")} ({weak.length}):{" "}
+        <Text className="font-semi text-ink">{weak.join(", ")}</Text>
+        {L(". Vòng sau sẽ hỏi những từ này trước.", ". Next round will ask these first.")}
       </Text>
     </View>
   );

@@ -26,6 +26,7 @@ import { QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { useLatestDiagnostic, useMathPriority, useMathTotals } from '@/store/useMathStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useDueCards } from '@/store/useVocabStore';
+import { useL } from '@/i18n/useL';
 
 /**
  * "Hôm nay học gì" — các khối của LỘ TRÌNH TỰ LẬP, ngay trên Tổng quan.
@@ -35,6 +36,7 @@ import { useDueCards } from '@/store/useVocabStore';
  * mở app đã thấy "Tuần 3/60 · Từ vựng Unit 3" — số liệu giả (sửa 26/09/2026).
  */
 function TodayPlan() {
+  const { L } = useL();
   const input = useRoadmapStore((s) => s.input);
   const plan = useCustomPlan();
   const today = todayKey();
@@ -47,12 +49,15 @@ function TodayPlan() {
             <Icon name="calendar" size={22} color={color.primary} />
           </View>
           <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
-            <Text className="font-heavy text-cardTitle text-ink">Chưa có lộ trình của bạn</Text>
+            <Text className="font-heavy text-cardTitle text-ink">{L('Chưa có lộ trình của bạn', "You don't have a study plan yet")}</Text>
             <Text className="mt-0.5 font-sans text-body text-muted">
-              Khai mục tiêu, ngày thi và số phút mỗi ngày — app xếp từng buổi học vào đúng bài trong app.
+              {L(
+                'Khai mục tiêu, ngày thi và số phút mỗi ngày — app xếp từng buổi học vào đúng bài trong app.',
+                'Set your goal, exam date and minutes per day — the app maps each session to the right lessons.',
+              )}
             </Text>
           </View>
-          <Button label="Lập lộ trình" iconRight="arrow-right" onPress={() => router.push('/plan' as never)} />
+          <Button label={L('Lập lộ trình', 'Build my plan')} iconRight="arrow-right" onPress={() => router.push('/plan' as never)} />
         </View>
       </Card>
     );
@@ -65,17 +70,22 @@ function TodayPlan() {
   return (
     <Card className="mt-4 lg:mt-6">
       <SectionHeader
-        title="Hôm nay học gì"
-        subtitle={`Tuần ${week}/${plan.totalWeeks} của lộ trình bạn lập`}
+        title={L('Hôm nay học gì', "Today's plan")}
+        subtitle={L(`Tuần ${week}/${plan.totalWeeks} của lộ trình bạn lập`, `Week ${week}/${plan.totalWeeks} of your plan`)}
         icon="calendar"
-        action={{ label: 'Xem lộ trình', onPress: () => router.push('/plan' as never) }}
+        action={{ label: L('Xem lộ trình', 'View plan'), onPress: () => router.push('/plan' as never) }}
       />
       <View className="mt-3 gap-2">
         {blocks.length > 0 ? (
           blocks.map((b) => <PlanBlockRow key={b.id} block={b} compact />)
         ) : (
           <Text className="font-sans text-body text-muted">
-            {next ? `Hôm nay nghỉ theo lộ trình. Buổi học tiếp: ${next.iso.split('-').reverse().join('/')}.` : 'Lộ trình đã đi hết — vào Lộ trình để đặt mục tiêu mới.'}
+            {next
+              ? L(
+                  `Hôm nay nghỉ theo lộ trình. Buổi học tiếp: ${next.iso.split('-').reverse().join('/')}.`,
+                  `Rest day on your plan. Next session: ${next.iso.split('-').reverse().join('/')}.`,
+                )
+              : L('Lộ trình đã đi hết — vào Lộ trình để đặt mục tiêu mới.', "You've finished your plan — open Study plan to set a new goal.")}
           </Text>
         )}
       </View>
@@ -84,6 +94,7 @@ function TodayPlan() {
 }
 
 export default function DashboardScreen() {
+  const { L, en } = useL();
   const dailyGoal = useStudyStore((s) => s.dailyGoalMinutes);
   const recentDays = useRecentDays(7);
   const sessions = useStudyStore((s) => s.sessions);
@@ -139,21 +150,24 @@ export default function DashboardScreen() {
       */}
       <LightHero
         scene="progress"
-        badge="Tổng quan"
-        line1="Hôm nay học tiếp,"
-        line2="đúng chỗ đang dở"
-        subtitle={`${stats.ielts} passage IELTS và ${stats.sat} passage SAT từ ${stats.sources} nguồn công khai. Đọc, tra từ trong ngữ cảnh, làm đề và xem lại từng câu kèm bằng chứng.`}
+        badge={L('Tổng quan', 'Overview')}
+        line1={L('Hôm nay học tiếp,', 'Pick up today')}
+        line2={L('đúng chỗ đang dở', 'right where you left off')}
+        subtitle={L(
+          `${stats.ielts} passage IELTS và ${stats.sat} passage SAT từ ${stats.sources} nguồn công khai. Đọc, tra từ trong ngữ cảnh, làm đề và xem lại từng câu kèm bằng chứng.`,
+          `${stats.ielts} IELTS passages and ${stats.sat} SAT passages from ${stats.sources} public sources. Read, look up words in context, take tests and review every question with evidence.`,
+        )}
         footer={
           <>
-            <HeroStat value={`${minutesToday}`} label={`/ ${dailyGoal} phút hôm nay`} />
-            <HeroStat value={String(streak.current)} label="ngày liên tiếp" />
-            <HeroStat value={currentBand != null ? currentBand.toFixed(1) : '—'} label="band gần nhất" />
-            <HeroStat value={`${dueCards}`} label="thẻ từ tới hạn" />
+            <HeroStat value={`${minutesToday}`} label={L(`/ ${dailyGoal} phút hôm nay`, `/ ${dailyGoal} min today`)} />
+            <HeroStat value={String(streak.current)} label={L('ngày liên tiếp', 'day streak')} />
+            <HeroStat value={currentBand != null ? currentBand.toFixed(1) : '—'} label={L('band gần nhất', 'latest band')} />
+            <HeroStat value={`${dueCards}`} label={L('thẻ từ tới hạn', 'cards due')} />
           </>
         }
       >
         <Button
-          label="Bắt đầu luyện"
+          label={L('Bắt đầu luyện', 'Start practising')}
           iconRight="arrow-right"
           size="lg"
           variant="brand"
@@ -162,14 +176,14 @@ export default function DashboardScreen() {
           }
         />
         <Button
-          label="Mở thư viện"
+          label={L('Mở thư viện', 'Open library')}
           iconLeft="book"
           size="lg"
           variant="outline"
           onPress={() => router.push('/library' as never)}
         />
         <Button
-          label="Xếp hạng"
+          label={L('Xếp hạng', 'Leaderboard')}
           iconLeft="trophy"
           size="lg"
           variant="outline"
@@ -201,7 +215,13 @@ export default function DashboardScreen() {
             icon="target"
             tone="primary"
             progress={{ value: (minutesToday / dailyGoal) * 100 }}
-            caption={minutesToday >= dailyGoal ? 'Xong mục tiêu hôm nay 🎯' : minutesToday === 0 ? 'Hôm nay chưa học phút nào' : `Còn ${dailyGoal - minutesToday} phút nữa`}
+            caption={
+              minutesToday >= dailyGoal
+                ? L('Xong mục tiêu hôm nay 🎯', "Today's goal done 🎯")
+                : minutesToday === 0
+                  ? L('Hôm nay chưa học phút nào', 'No study time yet today')
+                  : L(`Còn ${dailyGoal - minutesToday} phút nữa`, `${dailyGoal - minutesToday} min to go`)
+            }
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
@@ -213,7 +233,7 @@ export default function DashboardScreen() {
               const delta = bandDelta(currentBand, previousBand);
               return delta == null ? undefined : { value: delta };
             })()}
-            caption={currentBand == null ? 'Làm một bài IELTS để có số liệu' : 'Từ lượt làm gần nhất'}
+            caption={currentBand == null ? L('Làm một bài IELTS để có số liệu', 'Take an IELTS test to get a score') : L('Từ lượt làm gần nhất', 'From your latest attempt')}
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
@@ -222,7 +242,7 @@ export default function DashboardScreen() {
             unit="days"
             icon="flame"
             tone="warning"
-            caption={`Dài nhất ${streak.longest} ngày`}
+            caption={L(`Dài nhất ${streak.longest} ngày`, `Longest ${streak.longest} days`)}
             onPress={() => router.push('/progress' as never)}
           />
           <StatCard
@@ -230,7 +250,7 @@ export default function DashboardScreen() {
             value={formatMinutes(weekMinutes)}
             icon="trophy"
             tone="accent"
-            caption="7 ngày gần nhất"
+            caption={L('7 ngày gần nhất', 'Last 7 days')}
             onPress={() => router.push('/progress' as never)}
           />
         </Grid>
@@ -296,7 +316,7 @@ export default function DashboardScreen() {
               </>
             ) : (
               <Text className="mt-4 font-sans text-body text-muted">
-                Chưa có bài nào. Chạy `npm run ingest` để cào thêm.
+                {L('Chưa có bài nào. Chạy `npm run ingest` để cào thêm.', 'No passages yet. Run `npm run ingest` to fetch more.')}
               </Text>
             )}
           </Card>
@@ -322,7 +342,7 @@ export default function DashboardScreen() {
                       </Text>
                     </View>
                     <Text className="mt-0.5 font-sans text-label text-muted">
-                      {row.total} câu đã làm
+                      {L(`${row.total} câu đã làm`, `${row.total} answered`)}
                     </Text>
                     <ProgressBar value={row.percent} className="mt-2" height={5} />
                   </View>
@@ -331,7 +351,7 @@ export default function DashboardScreen() {
 
               {accuracyByType.length === 0 ? (
                 <Text className="py-6 text-center font-sans text-body text-muted">
-                  Làm một bài để thấy tỉ lệ đúng theo từng dạng câu.
+                  {L('Làm một bài để thấy tỉ lệ đúng theo từng dạng câu.', 'Do a passage to see your accuracy by question type.')}
                 </Text>
               ) : null}
             </View>
@@ -343,7 +363,7 @@ export default function DashboardScreen() {
             <View className="mt-4">
               <BarChart
                 data={recentDays.map((d) => ({
-                  label: WEEKDAYS[new Date(d.date).getDay()] ?? '',
+                  label: (en ? WEEKDAYS_EN : WEEKDAYS)[new Date(d.date).getDay()] ?? '',
                   value: d.minutes,
                   secondary: d.questions,
                 }))}
@@ -371,9 +391,9 @@ export default function DashboardScreen() {
                 className="mt-3 flex-row items-center justify-between rounded-panel bg-accent-50 px-3 py-2.5"
               >
                 <Text className="font-semi text-body text-accent-700">
-                  {dueCards} thẻ từ vựng đến hạn ôn
+                  {L(`${dueCards} thẻ từ vựng đến hạn ôn`, `${dueCards} vocab cards due for review`)}
                 </Text>
-                <Text className="font-semi text-label text-accent-700">Ôn ngay →</Text>
+                <Text className="font-semi text-label text-accent-700">{L('Ôn ngay →', 'Review now →')}</Text>
               </Pressable>
             ) : null}
           </Card>
@@ -385,7 +405,7 @@ export default function DashboardScreen() {
       <Card className="mt-4 lg:mt-6">
         <SectionHeader
           title="Featured Practice"
-          subtitle="Bài mới cào về gần đây"
+          subtitle={L('Bài mới cào về gần đây', 'Recently added passages')}
           icon="book"
           action={{ label: 'View all passages', onPress: () => router.push('/library' as never) }}
         />
@@ -412,6 +432,7 @@ function MathCard() {
   const priority = useMathPriority();
   const totals = useMathTotals();
   const next = priority[0];
+  const { L } = useL();
 
   return (
     <Card className="mt-4 lg:mt-6">
@@ -419,29 +440,32 @@ function MathCard() {
         title="SAT Math"
         subtitle={
           diagnostic
-            ? `Đã làm ${totals.questions} câu · đúng ${totals.correct}`
-            : 'Nửa số điểm SAT nằm ở phần này'
+            ? L(`Đã làm ${totals.questions} câu · đúng ${totals.correct}`, `${totals.questions} answered · ${totals.correct} correct`)
+            : L('Nửa số điểm SAT nằm ở phần này', 'Half of your SAT score comes from this section')
         }
         icon="grid"
         iconTone="accent"
-        action={{ label: 'Mở module', onPress: () => router.push('/math' as never) }}
+        action={{ label: L('Mở module', 'Open module'), onPress: () => router.push('/math' as never) }}
       />
 
       {diagnostic && next ? (
         <View className="mt-3 flex-row flex-wrap items-center justify-between gap-3">
           <View className="flex-1" style={{ minWidth: 200 }}>
-            <Text className="font-sans text-label text-muted">Nên luyện tiếp</Text>
+            <Text className="font-sans text-label text-muted">{L('Nên luyện tiếp', 'Practise next')}</Text>
             <Text className="mt-0.5 font-strong text-body text-ink">
               {MATH_SKILL_LABEL[next.skill]}
             </Text>
             <Text className="mt-0.5 font-sans text-label text-muted">
               {next.total === 0
-                ? 'chưa làm câu nào'
-                : `đúng ${next.correct}/${next.total} · ${formatAccuracy(next.accuracy)}`}
+                ? L('chưa làm câu nào', 'no questions yet')
+                : L(
+                    `đúng ${next.correct}/${next.total} · ${formatAccuracy(next.accuracy)}`,
+                    `${next.correct}/${next.total} correct · ${formatAccuracy(next.accuracy)}`,
+                  )}
             </Text>
           </View>
           <Button
-            label="Drill ngay"
+            label={L('Drill ngay', 'Drill now')}
             variant="outline"
             size="sm"
             onPress={() => router.push(`/math/drill/${next.skill}` as never)}
@@ -450,10 +474,13 @@ function MathCard() {
       ) : (
         <View className="mt-3 flex-row flex-wrap items-center justify-between gap-3">
           <Text className="flex-1 font-sans text-body text-muted" style={{ minWidth: 200 }}>
-            Chưa có bản đồ điểm yếu. Bài chẩn đoán 19 câu sẽ chỉ ra nên luyện gì trước.
+            {L(
+              'Chưa có bản đồ điểm yếu. Bài chẩn đoán 19 câu sẽ chỉ ra nên luyện gì trước.',
+              'No weakness map yet. A 19-question diagnostic will show what to practise first.',
+            )}
           </Text>
           <Button
-            label="Làm bài chẩn đoán"
+            label={L('Làm bài chẩn đoán', 'Take the diagnostic')}
             size="sm"
             onPress={() => router.push('/math/diagnostic' as never)}
           />
@@ -464,6 +491,7 @@ function MathCard() {
 }
 
 const WEEKDAYS = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+const WEEKDAYS_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 function formatMinutes(minutes: number): string {
   if (minutes < 60) return `${minutes}m`;

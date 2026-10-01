@@ -24,6 +24,7 @@ import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge } from '@/components/illust/Cute';
 import { CuteChat, Motion } from '@/components/illust/CuteMore';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * Mời bạn bè, hai mốc: đủ 15 lượt hợp lệ → 3 tháng Pro; từ 30 lượt → 3 tháng Max.
@@ -34,6 +35,7 @@ import { CuteChat, Motion } from '@/components/illust/CuteMore';
  * không ai dùng nữa.
  */
 export default function InviteScreen() {
+  const { L } = useL();
   const status = useAuthStore((s) => s.status);
   const session = useAuthStore((s) => s.session);
   const refreshProfile = useAuthStore((s) => s.refreshProfile);
@@ -57,13 +59,13 @@ export default function InviteScreen() {
     try {
       const res = await fetch('/api/referrals', { headers: { Authorization: `Bearer ${token}` } });
       const body = (await res.json()) as typeof data & { error?: string };
-      if (!res.ok || !body) throw new Error(body?.error ?? `Lỗi ${res.status}`);
+      if (!res.ok || !body) throw new Error(body?.error ?? pick(currentLocale(), `Lỗi ${res.status}`, `Error ${res.status}`));
       setData(body);
       // Phần thưởng vừa được kích hoạt ở máy chủ — kéo hồ sơ về để huy hiệu gói
       // trên sidebar đổi ngay, không bắt người dùng tải lại trang.
       if (body.justApplied > 0) void refreshProfile();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không tải được thông tin mời.');
+      setError(err instanceof Error ? err.message : pick(currentLocale(), 'Không tải được thông tin mời.', "Couldn't load your invite info."));
     } finally {
       setLoading(false);
     }
@@ -95,16 +97,18 @@ export default function InviteScreen() {
             <View className="flex-row items-start gap-3">
               <Icon name="lock" size={18} color={color.muted} />
               <View className="flex-1">
-                <Text className="font-strong text-cardTitle text-ink">Cần đăng nhập</Text>
+                <Text className="font-strong text-cardTitle text-ink">{L('Cần đăng nhập', 'Sign in required')}</Text>
                 <Text className="mt-1 font-sans text-body text-muted">
-                  Mã mời gắn với tài khoản, nên phải đăng nhập thì mới cấp được — và mới biết cộng
-                  lượt cho ai.
+                  {L(
+                    'Mã mời gắn với tài khoản, nên phải đăng nhập thì mới cấp được — và mới biết cộng lượt cho ai.',
+                    'Invite codes are tied to your account, so sign in to get one — that way we know who to credit.',
+                  )}
                 </Text>
               </View>
             </View>
             <Button
               className="mt-4 self-start"
-              label="Đăng nhập"
+              label={L('Đăng nhập', 'Sign in')}
               onPress={() => router.push('/auth/sign-in' as never)}
             />
           </Card>
@@ -139,22 +143,29 @@ export default function InviteScreen() {
           <View className="min-w-0 flex-1">
           <View aria-hidden className="mb-2 self-start">
             <Motion kind="pop">
-              <Label text="Rủ bạn, nhận quà 🎁" color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
+              <Label text={L('Rủ bạn, nhận quà 🎁', 'Invite friends, get rewards 🎁')} color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
             </Motion>
           </View>
           <Text className="font-heavy text-white" style={{ fontSize: 26 }}>
-            Mời {REFERRALS_PER_REWARD} người học → {REWARD_MONTHS} tháng {PLANS[REWARD_PLAN].name}
+            {L(
+              `Mời ${REFERRALS_PER_REWARD} người học → ${REWARD_MONTHS} tháng ${PLANS[REWARD_PLAN].name}`,
+              `Invite ${REFERRALS_PER_REWARD} learners → ${REWARD_MONTHS} months of ${PLANS[REWARD_PLAN].name}`,
+            )}
           </Text>
           </View>
           <PageStickers scene="shop" compact />
           </View>
           <Text className="mt-2 font-sans text-body text-white/90" style={{ maxWidth: 560 }}>
-            Đủ {MAX_TIER_REFERRALS} lượt thì phần thưởng nâng lên gói{' '}
-            {PLANS[MAX_REWARD_PLAN].name} — kể cả những tháng đang treo cũng được bật ở mức đó.
+            {L(
+              `Đủ ${MAX_TIER_REFERRALS} lượt thì phần thưởng nâng lên gói ${PLANS[MAX_REWARD_PLAN].name} — kể cả những tháng đang treo cũng được bật ở mức đó.`,
+              `Reach ${MAX_TIER_REFERRALS} and the reward upgrades to ${PLANS[MAX_REWARD_PLAN].name} — including any months still on hold.`,
+            )}
           </Text>
           <Text className="mt-1.5 font-sans text-label text-white/75" style={{ maxWidth: 560 }}>
-            Không giới hạn số lần: cứ đủ thêm {REFERRALS_PER_REWARD} lượt là thêm{' '}
-            {REWARD_MONTHS} tháng nữa.
+            {L(
+              `Không giới hạn số lần: cứ đủ thêm ${REFERRALS_PER_REWARD} lượt là thêm ${REWARD_MONTHS} tháng nữa.`,
+              `No limit: every ${REFERRALS_PER_REWARD} more adds another ${REWARD_MONTHS} months.`,
+            )}
           </Text>
         </LinearGradient>
       </Appear>
@@ -166,7 +177,7 @@ export default function InviteScreen() {
             <Text className="font-sans text-body text-danger-ink">{error}</Text>
             <Button
               className="mt-2 self-start"
-              label="Thử lại"
+              label={L('Thử lại', 'Try again')}
               variant="outline"
               size="sm"
               onPress={() => void load()}
@@ -183,7 +194,10 @@ export default function InviteScreen() {
             </Motion>
           </View>
           <Text className="flex-1 font-sans text-body text-ink">
-            Vừa cộng {data.justApplied} tháng gói {PLANS[REWARD_PLAN].name} cho bạn. Cảm ơn!
+            {L(
+              `Vừa cộng ${data.justApplied} tháng gói ${PLANS[REWARD_PLAN].name} cho bạn. Cảm ơn!`,
+              `We just added ${data.justApplied} months of ${PLANS[REWARD_PLAN].name} to your account. Thank you!`,
+            )}
           </Text>
         </View>
       ) : null}
@@ -192,8 +206,10 @@ export default function InviteScreen() {
         <View className="mt-3 flex-row items-start gap-2 rounded-card bg-warning-soft p-3">
           <Icon name="clock" size={16} color={color.warning} />
           <Text className="flex-1 font-sans text-body text-ink">
-            Bạn đang dùng gói cao hơn {PLANS[REWARD_PLAN].name}, nên {data.creditMonths} tháng phần
-            thưởng đang được giữ lại — chúng tự bật khi gói hiện tại hết hạn. Không mất đi đâu cả.
+            {L(
+              `Bạn đang dùng gói cao hơn ${PLANS[REWARD_PLAN].name}, nên ${data.creditMonths} tháng phần thưởng đang được giữ lại — chúng tự bật khi gói hiện tại hết hạn. Không mất đi đâu cả.`,
+              `You're on a plan above ${PLANS[REWARD_PLAN].name}, so ${data.creditMonths} reward months are on hold — they switch on when your current plan ends. Nothing is lost.`,
+            )}
           </Text>
         </View>
       ) : null}
@@ -207,20 +223,23 @@ export default function InviteScreen() {
               <SealIcon name="trophy" color="#F2B632" size={44} />
             </View>
             <View>
-              <Text className="font-mid text-label text-muted">Lượt mời hợp lệ</Text>
+              <Text className="font-mid text-label text-muted">{L('Lượt mời hợp lệ', 'Qualified invites')}</Text>
               <View className="flex-row items-baseline gap-1.5">
                 <Text className="font-heavy text-ink" style={{ fontSize: 34 }}>
                   {loading && !data ? '—' : qualified}
                 </Text>
                 <Text className="font-sans text-body text-muted">
-                  / {REFERRALS_PER_REWARD} tới mốc tiếp theo
+                  {L(`/ ${REFERRALS_PER_REWARD} tới mốc tiếp theo`, `/ ${REFERRALS_PER_REWARD} to the next reward`)}
                 </Text>
               </View>
             </View>
             </View>
             {invited > qualified ? (
               <Text className="font-sans text-label text-subtle">
-                {invited - qualified} người đã vào nhưng chưa học bài nào
+                {L(
+                  `${invited - qualified} người đã vào nhưng chưa học bài nào`,
+                  `${invited - qualified} joined but haven't finished a lesson yet`,
+                )}
               </Text>
             ) : null}
           </View>
@@ -246,8 +265,8 @@ export default function InviteScreen() {
 
           <Text className="mt-2 font-sans text-label text-muted">
             {qualified === 0
-              ? `Còn ${REFERRALS_PER_REWARD} lượt nữa là tới mốc đầu tiên.`
-              : `Còn ${remaining} lượt nữa.`}
+              ? L(`Còn ${REFERRALS_PER_REWARD} lượt nữa là tới mốc đầu tiên.`, `${REFERRALS_PER_REWARD} more to your first reward.`)
+              : L(`Còn ${remaining} lượt nữa.`, `${remaining} more to go.`)}
           </Text>
         </Card>
       </Appear>
@@ -259,9 +278,9 @@ export default function InviteScreen() {
             <View aria-hidden>
               <SealIcon name="gift" color="#F472B6" size={38} />
             </View>
-            <Text className="font-strong text-cardTitle text-ink">Mã mời của bạn</Text>
+            <Text className="font-strong text-cardTitle text-ink">{L('Mã mời của bạn', 'Your invite code')}</Text>
             <View aria-hidden>
-              <Label text="Của riêng bạn ✨" color="#B07A3A" ink="#FFFFFF" tilt={4} size={11} />
+              <Label text={L('Của riêng bạn ✨', 'All yours ✨')} color="#B07A3A" ink="#FFFFFF" tilt={4} size={11} />
             </View>
           </View>
           <View className="mt-2 flex-row flex-wrap items-center gap-2">
@@ -271,18 +290,21 @@ export default function InviteScreen() {
               </Text>
             </View>
             <Button
-              label={copied === 'link' ? 'Đã chép link' : 'Chép link mời'}
+              label={copied === 'link' ? L('Đã chép link', 'Link copied') : L('Chép link mời', 'Copy invite link')}
               iconLeft={copied === 'link' ? 'check' : 'list'}
               disabled={!link}
               onPress={() => void copy('link', link)}
             />
             <Button
-              label="Chia sẻ"
+              label={L('Chia sẻ', 'Share')}
               variant="outline"
               disabled={!link}
               onPress={() =>
                 void Share.share({
-                  message: `Mình đang luyện IELTS và SAT Math trên Band 9, thấy ổn nên rủ bạn. Vào bằng link này nhé: ${link}`,
+                  message: L(
+                    `Mình đang luyện IELTS và SAT Math trên Band 9, thấy ổn nên rủ bạn. Vào bằng link này nhé: ${link}`,
+                    `I'm prepping for IELTS and SAT Math on Band 9 and it's been great — join me with this link: ${link}`,
+                  ),
                 })
               }
             />
@@ -293,9 +315,9 @@ export default function InviteScreen() {
             onPress={() => void copy('link2', link)}
             className="mt-3 rounded-card border border-border bg-surfaceAlt px-3 py-2.5"
           >
-            <Text className="font-mid text-label text-muted">Liên kết</Text>
+            <Text className="font-mid text-label text-muted">{L('Liên kết', 'Link')}</Text>
             <Text className="mt-0.5 font-sans text-body text-ink" numberOfLines={1}>
-              {link || 'Đang lấy mã…'}
+              {link || L('Đang lấy mã…', 'Getting your code…')}
             </Text>
           </Pressable>
         </Card>
@@ -308,32 +330,43 @@ export default function InviteScreen() {
             <View aria-hidden>
               <SealIcon name="shield" color="#22A06B" size={38} />
             </View>
-            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Lượt nào được tính</Text>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Lượt nào được tính', 'What counts')}</Text>
           </View>
           <View className="mt-2 gap-2">
             <Rule
               ok
-              text={`Người bạn mời mở link, tạo tài khoản, rồi LÀM XONG ÍT NHẤT MỘT BÀI — đọc, viết hoặc SAT Math đều được.`}
+              text={L(
+                'Người bạn mời mở link, tạo tài khoản, rồi LÀM XONG ÍT NHẤT MỘT BÀI — đọc, viết hoặc SAT Math đều được.',
+                'Your friend opens the link, creates an account, then FINISHES AT LEAST ONE LESSON — reading, writing or SAT Math all count.',
+              )}
             />
             <Rule
               ok={false}
-              text="Chỉ tạo tài khoản rồi bỏ đó thì chưa tính. Bạn vẫn thấy họ trong danh sách, ở trạng thái chờ."
+              text={L(
+                'Chỉ tạo tài khoản rồi bỏ đó thì chưa tính. Bạn vẫn thấy họ trong danh sách, ở trạng thái chờ.',
+                "Just creating an account doesn't count yet. You'll still see them in your list as pending.",
+              )}
             />
             <Rule
               ok={false}
-              text="Mỗi người chỉ được tính cho đúng một người giới thiệu, và chỉ khai được trong 30 ngày đầu."
+              text={L(
+                'Mỗi người chỉ được tính cho đúng một người giới thiệu, và chỉ khai được trong 30 ngày đầu.',
+                'Each person counts for exactly one referrer, and can only be claimed within their first 30 days.',
+              )}
             />
           </View>
           <Text className="mt-3 font-sans text-label text-subtle">
-            Điều kiện “phải học thật” không phải để làm khó bạn — nó để phần thưởng đi tới người
-            thật sự rủ được bạn bè vào học, chứ không phải người tạo được mười email.
+            {L(
+              'Điều kiện “phải học thật” không phải để làm khó bạn — nó để phần thưởng đi tới người thật sự rủ được bạn bè vào học, chứ không phải người tạo được mười email.',
+              "The “must actually study” rule isn't there to make things hard — it makes sure rewards go to people who really bring friends to learn, not to whoever can create ten emails.",
+            )}
           </Text>
         </Card>
       </Appear>
 
       <View className="mt-4 flex-row flex-wrap gap-2">
-        <Button label="Tải lại tiến độ" variant="outline" iconLeft="refresh" onPress={() => void load()} />
-        <Button label="Xem các gói" variant="ghost" onPress={() => router.push('/upgrade' as never)} />
+        <Button label={L('Tải lại tiến độ', 'Refresh progress')} variant="outline" iconLeft="refresh" onPress={() => void load()} />
+        <Button label={L('Xem các gói', 'See plans')} variant="ghost" onPress={() => router.push('/upgrade' as never)} />
       </View>
     </Screen>
   );

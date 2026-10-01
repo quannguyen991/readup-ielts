@@ -23,6 +23,7 @@ import { SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
 import { CuteNotebook, CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { currentLocale, useL } from '@/i18n/useL';
 
 /**
  * Kết quả chấm bài.
@@ -45,6 +46,14 @@ const CATEGORY_LABEL: Record<AnnotationCategory, string> = {
   cohesion: 'Liên kết',
   expression: 'Diễn đạt',
   task: 'Bám đề & số liệu',
+};
+
+const CATEGORY_LABEL_EN: Record<AnnotationCategory, string> = {
+  grammar: 'Grammar',
+  lexis: 'Vocabulary',
+  cohesion: 'Cohesion',
+  expression: 'Expression',
+  task: 'Task & data',
 };
 
 /**
@@ -76,12 +85,12 @@ const CATEGORY_HIGHLIGHT: Record<AnnotationCategory, { fill: string; edge: strin
 
 type Tab = 'essay' | 'review' | 'errors' | 'fixed' | 'model';
 
-const TABS: readonly { key: Tab; label: string }[] = [
-  { key: 'essay', label: 'Bài viết của bạn' },
-  { key: 'errors', label: 'Sửa lỗi chi tiết' },
-  { key: 'review', label: 'Nhận xét' },
-  { key: 'fixed', label: 'Bản đã sửa' },
-  { key: 'model', label: 'Bài mẫu' },
+const TABS: readonly { key: Tab; label: string; labelEn: string }[] = [
+  { key: 'essay', label: 'Bài viết của bạn', labelEn: 'Your essay' },
+  { key: 'errors', label: 'Sửa lỗi chi tiết', labelEn: 'Detailed fixes' },
+  { key: 'review', label: 'Nhận xét', labelEn: 'Feedback' },
+  { key: 'fixed', label: 'Bản đã sửa', labelEn: 'Corrected version' },
+  { key: 'model', label: 'Bài mẫu', labelEn: 'Model essay' },
 ];
 
 export default function WritingResultScreen() {
@@ -96,6 +105,7 @@ export default function WritingResultScreen() {
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<Tab>('essay');
   const [focused, setFocused] = useState<number | null>(null);
+  const { L, en } = useL();
 
   const analysis = useMemo(
     () =>
@@ -150,7 +160,7 @@ export default function WritingResultScreen() {
     })
       .then(async (res) => {
         const data = (await res.json()) as Record<string, unknown>;
-        if (!res.ok) throw new Error(String(data.error ?? 'Chấm bài thất bại.'));
+        if (!res.ok) throw new Error(String(data.error ?? (currentLocale() === 'en' ? 'Grading failed.' : 'Chấm bài thất bại.')));
         return data;
       })
       .then((data) => {
@@ -163,14 +173,14 @@ export default function WritingResultScreen() {
         useCityStore.getState().earn({ type: 'writing_graded', id: submission.id });
       })
       .catch((e: unknown) => {
-        setError(e instanceof Error ? e.message : 'Chấm bài thất bại.');
+        setError(e instanceof Error ? e.message : currentLocale() === 'en' ? 'Grading failed.' : 'Chấm bài thất bại.');
       })
       .finally(() => setLoading(false));
   }, [submission, prompt, saved, saveEvaluation]);
 
   if (!submission || !prompt) {
     return (
-      <TaskShell backHref="/write" backLabel="Về kho đề" title="Không tìm thấy bài này" icon="pencil">
+      <TaskShell backHref="/write" backLabel={L('Về kho đề', 'Back to prompts')} title={L('Không tìm thấy bài này', "Couldn't find this essay")} icon="pencil">
         <PaperCard className="max-w-[520px]">
           <View aria-hidden className="mb-3">
             <Motion kind="float">
@@ -180,12 +190,12 @@ export default function WritingResultScreen() {
             </Motion>
           </View>
           <Text className="font-sans text-body text-paper-body">
-            Bài làm này không còn trong máy. Quay lại kho đề để chọn đề khác.
+            {L('Bài làm này không còn trong máy. Quay lại kho đề để chọn đề khác.', "This essay is no longer on this device. Go back to the prompts and pick another.")}
           </Text>
           <Button
             className="mt-4"
             variant="brand"
-            label="Về kho đề"
+            label={L('Về kho đề', 'Back to prompts')}
             onPress={() => router.replace('/write/tests')}
           />
         </PaperCard>
@@ -199,14 +209,17 @@ export default function WritingResultScreen() {
   return (
     <TaskShell
       backHref="/write"
-      backLabel="Quay lại kho đề"
-      title="Chấm bài"
+      backLabel={L('Quay lại kho đề', 'Back to prompts')}
+      title={L('Chấm bài', 'Grading')}
       subtitle={isTask1 ? 'Task 1 · Academic Writing' : 'Task 2 · Essay'}
       icon="clipboard"
       right={
         <View className="rounded-pill bg-white/20 px-3.5 py-1.5">
           <Text className="font-strong text-label text-white">
-            {submission.wordCount} từ · {Math.round(submission.durationSeconds / 60)} phút
+            {L(
+              `${submission.wordCount} từ · ${Math.round(submission.durationSeconds / 60)} phút`,
+              `${submission.wordCount} words · ${Math.round(submission.durationSeconds / 60)} min`,
+            )}
           </Text>
         </View>
       }
@@ -219,7 +232,7 @@ export default function WritingResultScreen() {
               <View aria-hidden>
                 <SealIcon name="clipboard" color="#A8843F" size={34} />
               </View>
-              <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
+              <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">{L('Đề bài', 'Prompt')}</Text>
               <Text className="font-semi text-label text-paper-muted">
                 {isTask1 ? 'Task 1 · Academic' : 'Task 2'}
               </Text>
@@ -253,12 +266,11 @@ export default function WritingResultScreen() {
                         <CuteTrophy size={48} />
                       </Sticker>
                     </Motion>
-                    <Label text="Đã chấm ✓" color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                    <Label text={L('Đã chấm ✓', 'Graded ✓')} color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
                   </View>
                 </View>
                 <Text className="font-sans text-label text-paper-muted">
-                  Chấm tự động, có thể lệch so với giám khảo thật. Luôn là một khoảng, không phải
-                  một con số chốt.
+                  {L('Chấm tự động, có thể lệch so với giám khảo thật. Luôn là một khoảng, không phải một con số chốt.', 'Automatic grading may differ from a real examiner. Always a range, never a fixed number.')}
                 </Text>
 
                 <View className="mt-4 gap-2">
@@ -281,14 +293,15 @@ export default function WritingResultScreen() {
               <View className="mt-3 flex-row items-center gap-3">
                 <ActivityIndicator color={paper.brandMid} />
                 <Text className="flex-1 font-sans text-body text-paper-body">
-                  Đang chấm bài — thường mất 30–60 giây.
+                  {L('Đang chấm bài — thường mất 30–60 giây.', 'Grading — usually takes 30–60 seconds.')}
                 </Text>
               </View>
             ) : (
               <View className="mt-3 flex-row items-start gap-2">
                 <Icon name="info" size={17} color={color.warning} />
                 <Text className="flex-1 font-sans text-body text-paper-body">
-                  {error ?? 'Chưa chấm được bằng AI.'} Phần phân tích cấu trúc vẫn dùng bình thường.
+                  {error ?? L('Chưa chấm được bằng AI.', "Couldn't grade with AI yet.")}{' '}
+                  {L('Phần phân tích cấu trúc vẫn dùng bình thường.', 'The structure analysis still works as normal.')}
                 </Text>
               </View>
             )}
@@ -300,9 +313,9 @@ export default function WritingResultScreen() {
                 <View aria-hidden>
                   <SealIcon name="search" color="#B07A3A" size={34} />
                 </View>
-                <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">Phân tích cấu trúc</Text>
+                <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">{L('Phân tích cấu trúc', 'Structure analysis')}</Text>
               </View>
-              <Text className="mt-1 font-sans text-label text-paper-muted">Không dùng AI.</Text>
+              <Text className="mt-1 font-sans text-label text-paper-muted">{L('Không dùng AI.', 'No AI used.')}</Text>
               <View className="mt-3 gap-2">
                 {analysis.hints.length > 0 ? (
                   analysis.hints.map((h) => (
@@ -324,7 +337,7 @@ export default function WritingResultScreen() {
                       <BadgeSticker icon="check" color="#22A06B" size={26} />
                     </View>
                     <Text className="min-w-0 flex-1 font-sans text-body text-success-ink">
-                      Cấu trúc bài không có vấn đề nào đáng kể.
+                      {L('Cấu trúc bài không có vấn đề nào đáng kể.', 'No significant structural issues.')}
                     </Text>
                   </View>
                 )}
@@ -341,7 +354,7 @@ export default function WritingResultScreen() {
                 <View aria-hidden>
                   <SealIcon name="chat" color="#F0703F" size={38} />
                 </View>
-                <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-paper-ink">Nhận xét chi tiết</Text>
+                <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-paper-ink">{L('Nhận xét chi tiết', 'Detailed feedback')}</Text>
               </View>
               <View className="mt-3 flex-row flex-wrap gap-1.5">
                 {TABS.map((t) => (
@@ -360,7 +373,7 @@ export default function WritingResultScreen() {
                       className="font-strong text-label"
                       style={{ color: tab === t.key ? '#FFFFFF' : paper.body }}
                     >
-                      {t.label}
+                      {en ? t.labelEn : t.label}
                       {t.key === 'errors' && annotations.length > 0 ? ` · ${annotations.length}` : ''}
                     </Text>
                   </Pressable>
@@ -404,11 +417,11 @@ export default function WritingResultScreen() {
           <View className="mt-4 flex-row flex-wrap gap-2">
             <Button
               variant="onDarkSolid"
-              label="Viết lại bài này"
+              label={L('Viết lại bài này', 'Rewrite this essay')}
               iconLeft="refresh"
               onPress={() => router.push(`/write/${prompt.id}` as never)}
             />
-            <Button variant="onDark" label="Về kho đề" onPress={() => router.push('/write/tests')} />
+            <Button variant="onDark" label={L('Về kho đề', 'Back to prompts')} onPress={() => router.push('/write/tests')} />
           </View>
         </View>
       </View>
@@ -434,6 +447,7 @@ function CriterionRow({
   value: number;
   errorCount: number;
 }) {
+  const { L } = useL();
   return (
     <View className="flex-row items-center gap-3 rounded-panel bg-brand-tint px-3 py-2.5">
       <View
@@ -445,7 +459,7 @@ function CriterionRow({
       <View className="flex-1">
         <Text className="font-semi text-label text-paper-ink">{label}</Text>
         <Text className="font-sans text-paper-muted" style={{ fontSize: 10 }}>
-          {errorCount > 0 ? `${errorCount} chỗ được đánh dấu` : 'Không có lỗi được đánh dấu'}
+          {errorCount > 0 ? L(`${errorCount} chỗ được đánh dấu`, `${errorCount} marked`) : L('Không có lỗi được đánh dấu', 'No mistakes marked')}
         </Text>
       </View>
       <Text className="font-heavy text-sectionTitle text-paper-ink">{formatBand(value)}</Text>
@@ -478,6 +492,7 @@ function EssayTab({
   onFocus: (index: number | null) => void;
   submissionId: string;
 }) {
+  const { L } = useL();
   if (annotations.length === 0) {
     return (
       <View>
@@ -485,7 +500,7 @@ function EssayTab({
           {text}
         </Text>
         <Text className="mt-4 font-sans text-label text-paper-muted">
-          Chưa có chỗ nào được đánh dấu.
+          {L('Chưa có chỗ nào được đánh dấu.', 'Nothing has been marked yet.')}
         </Text>
       </View>
     );
@@ -520,7 +535,7 @@ function EssayTab({
   return (
     <View>
       <Text className="font-sans text-label text-paper-muted">
-        Bấm vào chỗ được tô màu để xem vì sao sai và cách sửa.
+        {L('Bấm vào chỗ được tô màu để xem vì sao sai và cách sửa.', "Tap a highlighted part to see why it's wrong and how to fix it.")}
       </Text>
       <Text className="mt-3 font-sans text-bodyLg text-paper-ink" style={{ lineHeight: 28 }}>
         {parts}
@@ -549,6 +564,7 @@ function ErrorsTab({
   submissionId: string;
 }) {
   const [filter, setFilter] = useState<CriterionKey | 'all'>('all');
+  const { L } = useL();
 
   const counts = useMemo(() => {
     const map = new Map<CriterionKey, number>();
@@ -565,8 +581,7 @@ function ErrorsTab({
   if (annotations.length === 0) {
     return (
       <Text className="font-sans text-body text-paper-body">
-        Chưa có lỗi nào được đánh dấu — hoặc bài chưa được chấm bằng AI, hoặc không có chỗ nào đáng
-        đánh dấu.
+        {L('Chưa có lỗi nào được đánh dấu — hoặc bài chưa được chấm bằng AI, hoặc không có chỗ nào đáng đánh dấu.', "No mistakes marked — either the essay hasn't been graded by AI, or there was nothing worth marking.")}
       </Text>
     );
   }
@@ -585,7 +600,7 @@ function ErrorsTab({
     <View>
       <View className="flex-row flex-wrap gap-1.5 rounded-panel bg-brand-tint p-2">
         <FilterChip
-          label={`Tất cả · ${annotations.length}`}
+          label={L(`Tất cả · ${annotations.length}`, `All · ${annotations.length}`)}
           active={filter === 'all'}
           onPress={() => setFilter('all')}
         />
@@ -602,7 +617,7 @@ function ErrorsTab({
       <View className="mt-3 gap-2.5">
         {shown.length === 0 ? (
           <Text className="font-sans text-body text-paper-muted">
-            Không có lỗi nào thuộc tiêu chí này.
+            {L('Không có lỗi nào thuộc tiêu chí này.', 'No mistakes for this criterion.')}
           </Text>
         ) : (
           shown.map(({ a, index }) => (
@@ -654,6 +669,7 @@ function AnnotationCard({
   submissionId?: string;
 }) {
   const tone = CATEGORY_HIGHLIGHT[annotation.category];
+  const { en } = useL();
 
   return (
     <View
@@ -664,7 +680,7 @@ function AnnotationCard({
         <Text className="font-strong text-label text-paper-muted">#{index}</Text>
         <Badge
           tone={annotation.severity === 'major' ? 'danger' : 'warning'}
-          label={CATEGORY_LABEL[annotation.category]}
+          label={en ? CATEGORY_LABEL_EN[annotation.category] : CATEGORY_LABEL[annotation.category]}
         />
       </View>
 
@@ -702,10 +718,10 @@ function AnnotationCard({
 
 /** Bốn tiêu chí, theo đúng khoá mà phần chấm chi tiết trả về. */
 const DETAIL_CRITERIA = [
-  { key: 'task', label: 'Task Achievement', short: 'Bám đề' },
-  { key: 'coherence', label: 'Coherence & Cohesion', short: 'Bố cục & liên kết' },
-  { key: 'lexical', label: 'Lexical Resource', short: 'Từ vựng' },
-  { key: 'grammar', label: 'Grammatical Range', short: 'Ngữ pháp' },
+  { key: 'task', label: 'Task Achievement', short: 'Bám đề', shortEn: 'Answering the task' },
+  { key: 'coherence', label: 'Coherence & Cohesion', short: 'Bố cục & liên kết', shortEn: 'Organisation & linking' },
+  { key: 'lexical', label: 'Lexical Resource', short: 'Từ vựng', shortEn: 'Vocabulary' },
+  { key: 'grammar', label: 'Grammatical Range', short: 'Ngữ pháp', shortEn: 'Grammar' },
 ] as const;
 
 /**
@@ -727,6 +743,7 @@ function CriterionDetailCard({
 }) {
   const tone =
     detail.band >= 7 ? color.success : detail.band >= 6 ? color.warning : color.danger;
+  const { L } = useL();
 
   return (
     <View className="mt-3 overflow-hidden rounded-panel border border-paper-line bg-white">
@@ -742,13 +759,13 @@ function CriterionDetailCard({
 
       <View className="gap-2.5 p-3.5">
         {detail.evidenceVi ? (
-          <DetailRow icon="info" title="Vì sao ở mức này" body={detail.evidenceVi} />
+          <DetailRow icon="info" title={L('Vì sao ở mức này', 'Why this band')} body={detail.evidenceVi} />
         ) : null}
 
         {detail.quotes.length > 0 ? (
           <View className="rounded-panel bg-paper-canvas p-2.5">
             <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-              Dẫn chứng từ bài của bạn
+              {L('Dẫn chứng từ bài của bạn', 'Evidence from your essay')}
             </Text>
             {detail.quotes.map((q) => (
               <Text key={q} className="mt-1 font-mid text-label text-paper-ink" style={{ lineHeight: 19 }}>
@@ -758,8 +775,8 @@ function CriterionDetailCard({
           </View>
         ) : null}
 
-        {detail.gapVi ? <DetailRow icon="arrow-right" title="Thiếu gì để lên nửa bậc" body={detail.gapVi} /> : null}
-        {detail.nextStepVi ? <DetailRow icon="check" title="Làm ngay ở bài sau" body={detail.nextStepVi} /> : null}
+        {detail.gapVi ? <DetailRow icon="arrow-right" title={L('Thiếu gì để lên nửa bậc', "What's missing for the next half band")} body={detail.gapVi} /> : null}
+        {detail.nextStepVi ? <DetailRow icon="check" title={L('Làm ngay ở bài sau', 'Do this in your next essay')} body={detail.nextStepVi} /> : null}
       </View>
     </View>
   );
@@ -790,11 +807,11 @@ function DetailRow({
 }
 
 function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
+  const { L, en } = useL();
   if (!evaluation) {
     return (
       <Text className="font-sans text-body text-paper-body">
-        Bài chưa được chấm bằng AI nên chưa có nhận xét. Phần phân tích cấu trúc ở cột trái vẫn dùng
-        được.
+        {L('Bài chưa được chấm bằng AI nên chưa có nhận xét. Phần phân tích cấu trúc ở cột trái vẫn dùng được.', "This essay hasn't been graded by AI, so there's no feedback yet. The structure analysis on the left still works.")}
       </Text>
     );
   }
@@ -817,7 +834,7 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
           <Icon name="target" size={16} color={color.primary} strokeWidth={2.2} />
           <View className="min-w-0 flex-1">
             <Text className="font-semi uppercase tracking-wide text-primary-800" style={{ fontSize: 9 }}>
-              Nếu chỉ sửa được một thứ
+              {L('Nếu chỉ sửa được một thứ', 'If you fix just one thing')}
             </Text>
             <Text className="mt-1 font-mid text-bodyLg text-primary-900" style={{ lineHeight: 24 }}>
               {evaluation.priorityVi}
@@ -829,14 +846,17 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
       {evaluation.wordCount !== undefined ? (
         <View className="mb-3 flex-row flex-wrap items-center gap-2">
           <Badge
-            label={`${evaluation.wordCount} từ`}
+            label={L(`${evaluation.wordCount} từ`, `${evaluation.wordCount} words`)}
             tone={thieuTu ? 'danger' : 'success'}
           />
           {evaluation.minWords !== undefined ? (
             <Text className="font-sans text-label text-paper-muted">
               {thieuTu
-                ? `Thiếu ${evaluation.minWords - evaluation.wordCount} từ so với mức tối thiểu ${evaluation.minWords} — riêng việc này đã bị trừ Task Response.`
-                : `Đạt mức tối thiểu ${evaluation.minWords} từ.`}
+                ? L(
+                    `Thiếu ${evaluation.minWords - evaluation.wordCount} từ so với mức tối thiểu ${evaluation.minWords} — riêng việc này đã bị trừ Task Response.`,
+                    `${evaluation.minWords - evaluation.wordCount} words short of the ${evaluation.minWords} minimum — that alone costs Task Response.`,
+                  )
+                : L(`Đạt mức tối thiểu ${evaluation.minWords} từ.`, `Meets the ${evaluation.minWords}-word minimum.`)}
             </Text>
           ) : null}
         </View>
@@ -848,9 +868,9 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
 
       {detail ? (
         <View className="mt-5">
-          <Text className="font-strong text-cardTitle text-paper-ink">Chấm theo từng tiêu chí</Text>
+          <Text className="font-strong text-cardTitle text-paper-ink">{L('Chấm theo từng tiêu chí', 'Grading by criterion')}</Text>
           {DETAIL_CRITERIA.map((c) => (
-            <CriterionDetailCard key={c.key} label={c.label} short={c.short} detail={detail[c.key]} />
+            <CriterionDetailCard key={c.key} label={c.label} short={en ? c.shortEn : c.short} detail={detail[c.key]} />
           ))}
         </View>
       ) : null}
@@ -865,7 +885,7 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
             <View aria-hidden>
               <BadgeSticker icon="target" color="#F2B632" size={26} />
             </View>
-            <Text className="min-w-0 flex-1 font-strong text-body text-primary-900">Để lên band kế tiếp</Text>
+            <Text className="min-w-0 flex-1 font-strong text-body text-primary-900">{L('Để lên band kế tiếp', 'To reach the next band')}</Text>
           </View>
           <Text className="mt-1 font-sans text-body text-primary-800" style={{ lineHeight: 22 }}>
             {evaluation.nextBandVi}
@@ -875,7 +895,7 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
 
       {evaluation.strengths.length > 0 ? (
         <View className="mt-4 rounded-panel border border-success bg-success-soft p-3.5">
-          <Text className="font-strong text-body text-success-ink">Làm tốt</Text>
+          <Text className="font-strong text-body text-success-ink">{L('Làm tốt', 'What went well')}</Text>
           {evaluation.strengths.map((s) => (
             <Text key={s} className="mt-1.5 font-sans text-body text-paper-body">
               • {s}
@@ -886,7 +906,7 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
 
       {evaluation.improvements.length > 0 ? (
         <View className="mt-3 rounded-panel border border-warning bg-warning-soft p-3.5">
-          <Text className="font-strong text-body text-warning-ink">Cần sửa</Text>
+          <Text className="font-strong text-body text-warning-ink">{L('Cần sửa', 'To improve')}</Text>
           {evaluation.improvements.map((s) => (
             <Text key={s} className="mt-1.5 font-sans text-body text-paper-body">
               • {s}
@@ -903,12 +923,12 @@ function ReviewTab({ evaluation }: { evaluation: WritingEvaluation | null }) {
 function FixedTab({ text, annotations }: { text: string; annotations: WritingAnnotation[] }) {
   const fixed = useMemo(() => applyFixes(text, annotations), [text, annotations]);
   const count = useMemo(() => countApplicableFixes(text, annotations), [text, annotations]);
+  const { L } = useL();
 
   if (count === 0) {
     return (
       <Text className="font-sans text-body text-paper-body">
-        Chưa có chỗ nào vá được — bài chưa chấm bằng AI, hoặc các lỗi được đánh dấu không kèm bản
-        sửa cụ thể.
+        {L('Chưa có chỗ nào vá được — bài chưa chấm bằng AI, hoặc các lỗi được đánh dấu không kèm bản sửa cụ thể.', "Nothing to patch yet — the essay hasn't been graded by AI, or the marked mistakes have no specific fix.")}
       </Text>
     );
   }
@@ -918,9 +938,11 @@ function FixedTab({ text, annotations }: { text: string; annotations: WritingAnn
       <View className="flex-row items-start gap-2 rounded-panel bg-brand-tint p-3">
         <Icon name="info" size={16} color={paper.brandMid} strokeWidth={2} />
         <Text className="flex-1 font-sans text-label text-paper-body">
-          Đây là <Text className="font-strong">chính bài của bạn</Text> với {count} chỗ đã được thay
-          bằng bản sửa — không phải một bài viết lại. Đọc để thấy câu mình thay đổi thế nào sau khi
-          vá đúng chỗ sai.
+          {L('Đây là', 'This is')} <Text className="font-strong">{L('chính bài của bạn', 'your own essay')}</Text>{' '}
+          {L(
+            `với ${count} chỗ đã được thay bằng bản sửa — không phải một bài viết lại. Đọc để thấy câu mình thay đổi thế nào sau khi vá đúng chỗ sai.`,
+            `with ${count} spots replaced by their fixes — not a rewrite. Read it to see how your sentences change once the mistakes are patched.`,
+          )}
         </Text>
       </View>
 
@@ -951,6 +973,7 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { L } = useL();
 
   const load = () => {
     if (loading) return;
@@ -966,11 +989,11 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
     })
       .then(async (res) => {
         const data = (await res.json()) as Record<string, unknown>;
-        if (!res.ok) throw new Error(String(data.error ?? 'Soạn bài mẫu thất bại.'));
+        if (!res.ok) throw new Error(String(data.error ?? (currentLocale() === 'en' ? "Couldn't write the model essay." : 'Soạn bài mẫu thất bại.')));
         return data;
       })
       .then((data) => saveModelEssay(data as never))
-      .catch((e: unknown) => setError(e instanceof Error ? e.message : 'Soạn bài mẫu thất bại.'))
+      .catch((e: unknown) => setError(e instanceof Error ? e.message : currentLocale() === 'en' ? "Couldn't write the model essay." : 'Soạn bài mẫu thất bại.'))
       .finally(() => setLoading(false));
   };
 
@@ -978,15 +1001,17 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
     return (
       <View>
         <Text className="font-sans text-body text-paper-body">
-          Bài do AI soạn ở mức band {TARGET}, sau đó được chấm ngược bằng chính đường chấm bạn vừa
-          dùng. Mất khoảng 30–60 giây.
+          {L(
+            `Bài do AI soạn ở mức band ${TARGET}, sau đó được chấm ngược bằng chính đường chấm bạn vừa dùng. Mất khoảng 30–60 giây.`,
+            `An essay written by AI at band ${TARGET}, then graded back with the same grader you just used. Takes about 30–60 seconds.`,
+          )}
         </Text>
         {error ? <Text className="mt-2 font-sans text-label text-danger">{error}</Text> : null}
         <View className="mt-3 flex-row items-center gap-2">
           {loading ? <ActivityIndicator color={paper.brandMid} /> : null}
           <Button
             variant="brand"
-            label={loading ? 'Đang soạn…' : `Xem bài mẫu band ${TARGET}`}
+            label={loading ? L('Đang soạn…', 'Writing…') : L(`Xem bài mẫu band ${TARGET}`, `See band ${TARGET} model essay`)}
             disabled={loading}
             onPress={load}
           />
@@ -998,7 +1023,7 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
   return (
     <View>
       <View className="flex-row flex-wrap items-center gap-2">
-        <Badge tone="neutral" label={`Nhắm band ${essay.targetBand}`} />
+        <Badge tone="neutral" label={L(`Nhắm band ${essay.targetBand}`, `Targets band ${essay.targetBand}`)} />
         {essay.verifiedLow != null && essay.verifiedHigh != null ? (
           <Badge
             tone={
@@ -1006,12 +1031,12 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
                 ? 'success'
                 : 'warning'
             }
-            label={`Chấm lại: ${formatBand(essay.verifiedLow)}–${formatBand(essay.verifiedHigh)}`}
+            label={L(`Chấm lại: ${formatBand(essay.verifiedLow)}–${formatBand(essay.verifiedHigh)}`, `Re-graded: ${formatBand(essay.verifiedLow)}–${formatBand(essay.verifiedHigh)}`)}
           />
         ) : (
-          <Badge tone="warning" label="Chưa kiểm định được" />
+          <Badge tone="warning" label={L('Chưa kiểm định được', "Couldn't verify")} />
         )}
-        <Text className="font-sans text-label text-paper-muted">{essay.wordCount} từ</Text>
+        <Text className="font-sans text-label text-paper-muted">{L(`${essay.wordCount} từ`, `${essay.wordCount} words`)}</Text>
       </View>
 
       <Text className="mt-3 font-sans text-bodyLg text-paper-ink" style={{ lineHeight: 28 }}>
@@ -1019,8 +1044,7 @@ function ModelEssayPanel({ promptId }: { promptId: string }) {
       </Text>
 
       <Text className="mt-3 font-sans text-label text-paper-muted">
-        Đây là bài tham khảo do AI soạn, không phải bài thi thật đạt band này. Đọc để lấy khung câu
-        và cách nhóm ý, đừng học thuộc.
+        {L('Đây là bài tham khảo do AI soạn, không phải bài thi thật đạt band này. Đọc để lấy khung câu và cách nhóm ý, đừng học thuộc.', "This is an AI-written reference, not a real exam essay that scored this band. Read it for sentence frames and how ideas are grouped — don't memorise it.")}
       </Text>
     </View>
   );

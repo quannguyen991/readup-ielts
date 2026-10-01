@@ -9,6 +9,7 @@
  * - `SealIcon`: huy hiệu viền răng cưa kiểu con dấu, trong là biểu tượng nét
  *   trắng — thay cho vòng tròn nhạt ở tiêu đề các mục.
  */
+import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
@@ -17,6 +18,7 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { Label, Sticker } from './Sticker';
 import { CuteBook, CuteCalendar, CuteClock, CuteCloud, CuteGlobe, CutePencil, CuteTrain } from './Cute';
 import { CuteBulb, CuteCalculator, CuteChat, CuteFlame, CuteHeadphones, CuteMagnifier, CuteMic, CuteNotebook, CutePlant, CuteRocket, CuteStar, CuteTrophy, Motion } from './CuteMore';
+import { useL } from '@/i18n/useL';
 
 type Art = (p: { size?: number }) => React.ReactElement;
 
@@ -60,6 +62,27 @@ const LABELS: Record<string, [string, string, string]> = {
   default: ['Bắt đầu thôi!', '#F2B632', '#2A1B02'],
 };
 
+/** Chữ nhãn dán khi giao diện ở tiếng Anh (cùng khoá với `LABELS`). */
+const LABELS_EN: Record<string, string> = {
+  home: 'Learn every day!',
+  math: 'You can solve it!',
+  verbal: 'Read to understand!',
+  vocab: '+5 words today',
+  progress: 'Keep going! 💪',
+  quest: 'All aboard! 🚆',
+  shop: 'Treat yourself! 🎁',
+  profile: "That's you! ✨",
+  writing: 'Write it well!',
+  listening: 'Listen closely! 🎧',
+  speaking: 'Speak up! 🎤',
+  review: 'Learn from mistakes!',
+  duel: 'Challenge on! ⚔️',
+  settings: 'Customize ⚙️',
+  test: 'Mock test time! ⏱️',
+  garden: 'Water daily 🌱',
+  default: "Let's go!",
+};
+
 /** Các cụm minh hoạ có sẵn cho `HeroArt` / `PageStickers`. */
 export type ArtScene = 'home' | 'math' | 'verbal' | 'vocab' | 'progress' | 'quest' | 'shop' | 'profile' | 'writing' | 'listening' | 'speaking' | 'review' | 'duel' | 'settings' | 'test' | 'garden' | 'default';
 
@@ -68,9 +91,11 @@ export type ArtScene = 'home' | 'math' | 'verbal' | 'vocab' | 'progress' | 'ques
  * nhún lệch nhịp, kèm một nhãn dán chữ. `size` = cỡ hình giữa.
  */
 export function HeroArt({ scene, size = 104, single = false, label = true }: { scene?: string; size?: number; /** Chỉ hình giữa (điện thoại). */ single?: boolean; label?: boolean }) {
+  const { en } = useL();
   const key = scene && SCENES[scene] ? scene : 'default';
   const [A, B, C] = SCENES[key]!;
-  const [text, bg, ink] = LABELS[key]!;
+  const [textVi, bg, ink] = LABELS[key]!;
+  const text = en ? (LABELS_EN[key] ?? textVi) : textVi;
   if (single)
     return (
       <View aria-hidden>
@@ -117,8 +142,11 @@ export function HeroArt({ scene, size = 104, single = false, label = true }: { s
  * điện thoại 1 hình nhỏ. Đặt ở góc phải hàng tiêu đề.
  */
 export function PageStickers({ scene, size = 88, compact }: { scene: ArtScene; size?: number; /** Luôn chỉ 1 hình. */ compact?: boolean }) {
-  const wide = useWindowDimensions().width >= 768;
-  if (compact || !wide) return <HeroArt scene={scene} size={Math.round(size * 0.62)} single />;
+  const width = useWindowDimensions().width;
+  // Máy tính bảng dựng đứng / điện thoại: không chen sticker vào hàng tiêu đề
+  // (người dùng 01/10/2026: làm chữ xuống dòng không đẹp).
+  if (width < HEADER_ART_MIN) return null;
+  if (compact) return <HeroArt scene={scene} size={Math.round(size * 0.62)} single />;
   return <HeroArt scene={scene} size={size} />;
 }
 

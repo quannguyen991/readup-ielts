@@ -10,6 +10,18 @@ import type { MathItem } from '@/lib/math/types';
 import { gradeMathItem } from '@/services/math/grade';
 import { GRID_IN_REASON_LABEL, gridInAcceptedForms } from '@/services/math/grid-in';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+import { mathErrorLabel } from './math-labels-en';
+
+/** Bản tiếng Anh của `GRID_IN_REASON_LABEL` (dữ liệu gốc ở services/math/grid-in giữ tiếng Việt). */
+const GRID_IN_REASON_EN: Record<keyof typeof GRID_IN_REASON_LABEL, string> = {
+  empty: 'Nothing entered yet.',
+  malformed: 'This box only accepts digits, a decimal point, a fraction bar and a minus sign.',
+  mixed_number: "Mixed numbers don't work — \"1 1/2\" is read as 11/2. Enter 3/2 or 1.5.",
+  too_long: 'Right value, but too long for the box. The real test marks this wrong too.',
+  not_precise_enough: 'The answer is a repeating decimal — fill the box completely for it to count.',
+  wrong: 'Not correct.',
+};
 
 /**
  * Hai mặt nền, khai MỘT CHỖ.
@@ -92,20 +104,21 @@ export function MathQuestionView({
   const grade = revealed ? gradeMathItem(item, answer) : null;
   const locked = !onAnswer;
   const sf = SURFACE[surface];
+  const { L } = useL();
 
   return (
     <View>
       <View className="flex-row flex-wrap items-center gap-2">
         {index !== undefined ? (
-          <Text className="font-strong text-cardTitle text-ink">Câu {index + 1}</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Câu', 'Question')} {index + 1}</Text>
         ) : null}
         <Badge label={MATH_SKILL_LABEL[item.skill]} tone="neutral" shape="tag" />
         {item.format === 'grid_in' ? (
-          <Badge label="Tự điền đáp án" tone="info" shape="tag" />
+          <Badge label={L('Tự điền đáp án', 'Grid-in')} tone="info" shape="tag" />
         ) : null}
         {grade && showGrade ? (
           <Badge
-            label={grade.isCorrect ? 'Đúng' : answer === null ? 'Bỏ trắng' : 'Sai'}
+            label={grade.isCorrect ? L('Đúng', 'Correct') : answer === null ? L('Bỏ trắng', 'Blank') : L('Sai', 'Wrong')}
             tone={grade.isCorrect ? 'success' : answer === null ? 'neutral' : 'danger'}
           />
         ) : null}
@@ -171,16 +184,17 @@ function GridInBox({
   surface: MathSurface;
 }) {
   const sf = SURFACE[surface];
+  const { L } = useL();
   return (
     <View className="mt-3">
       <Text className="font-sans text-label text-muted">
-        Tự gõ đáp án — tối đa 5 ký tự (6 nếu âm). Nhận cả phân số lẫn số thập phân, không nhận hỗn số.
+        {L('Tự gõ đáp án — tối đa 5 ký tự (6 nếu âm). Nhận cả phân số lẫn số thập phân, không nhận hỗn số.', 'Type your answer — up to 5 characters (6 if negative). Fractions and decimals are accepted; mixed numbers are not.')}
       </Text>
       <TextInput
         value={value}
         onChangeText={onChange}
         editable={!disabled && !revealed}
-        placeholder="ví dụ: 3/4"
+        placeholder={L('ví dụ: 3/4', 'e.g. 3/4')}
         placeholderTextColor={color.muted}
         keyboardType="numbers-and-punctuation"
         className={`mt-2 w-44 rounded-card border px-3 py-2 font-sans text-body text-ink ${sf.field}`}
@@ -208,19 +222,20 @@ function Explanation({
   surface: MathSurface;
 }) {
   const sf = SURFACE[surface];
+  const { L, en } = useL();
   return (
     <View className={`mt-3 gap-2 rounded-card border p-3 ${sf.panel}`}>
       {!grade.isCorrect && grade.gridVerdict && !grade.gridVerdict.ok ? (
         <Text className="font-sans text-body text-ink">
-          {GRID_IN_REASON_LABEL[grade.gridVerdict.reason]}
+          {en ? GRID_IN_REASON_EN[grade.gridVerdict.reason] : GRID_IN_REASON_LABEL[grade.gridVerdict.reason]}
         </Text>
       ) : null}
 
       {!grade.isCorrect && grade.errorTag ? (
         <View className="rounded-card bg-warning-soft p-2">
-          <Text className="font-strong text-label text-warning-ink">Lỗi vừa mắc</Text>
+          <Text className="font-strong text-label text-warning-ink">{L('Lỗi vừa mắc', 'The mistake you made')}</Text>
           <Text className="mt-0.5 font-sans text-body text-warning-ink">
-            {MATH_ERROR_LABEL[grade.errorTag]}
+            {en ? mathErrorLabel(grade.errorTag, true) : MATH_ERROR_LABEL[grade.errorTag]}
           </Text>
         </View>
       ) : null}
@@ -233,15 +248,15 @@ function Explanation({
 
       {item.answerValue ? (
         <Text className="font-sans text-label text-muted">
-          Đáp án đúng — mọi cách viết sau đều được chấp nhận:{' '}
+          {L('Đáp án đúng — mọi cách viết sau đều được chấp nhận:', 'Correct answer — any of these forms is accepted:')}{' '}
           <Text className="font-strong text-label text-ink">
             {gridInAcceptedForms(item.answerValue).join('   ·   ')}
           </Text>
-          {answer !== null && answer.trim() !== '' ? `      (bạn gõ: ${answer.trim()})` : ''}
+          {answer !== null && answer.trim() !== '' ? L(`      (bạn gõ: ${answer.trim()})`, `      (you typed: ${answer.trim()})`) : ''}
         </Text>
       ) : null}
 
-      <Text className="mt-1 font-strong text-body text-ink">Lời giải từng bước</Text>
+      <Text className="mt-1 font-strong text-body text-ink">{L('Lời giải từng bước', 'Step-by-step solution')}</Text>
       {item.steps.map((step, stepIndex) => (
         <View key={stepIndex} className="flex-row gap-2">
           <Text className="font-strong text-body text-primary-600">{stepIndex + 1}.</Text>
@@ -273,6 +288,7 @@ function Explanation({
  */
 function WrongChoicesBreakdown({ item, surface }: { item: MathItem; surface: MathSurface }) {
   const sf = SURFACE[surface];
+  const { L, en } = useL();
   if (!item.choices || item.correctIndex === null) return null;
 
   const wrong = item.choices
@@ -284,7 +300,7 @@ function WrongChoicesBreakdown({ item, surface }: { item: MathItem; surface: Mat
 
   return (
     <View className={`mt-3 border-t pt-3 ${sf.hairline}`}>
-      <Text className="font-strong text-body text-ink">Ba đáp án còn lại sai ở đâu</Text>
+      <Text className="font-strong text-body text-ink">{L('Ba đáp án còn lại sai ở đâu', 'Why the other three are wrong')}</Text>
       <View className="mt-2 gap-2">
         {wrong.map(({ choice, index }) => (
           <View key={index} className="flex-row gap-2">
@@ -294,7 +310,7 @@ function WrongChoicesBreakdown({ item, surface }: { item: MathItem; surface: Mat
             <View className="flex-1">
               <MathText size={14}>{choice.display}</MathText>
               <Text className="mt-0.5 font-sans text-label text-muted">
-                {choice.errorTag ? MATH_ERROR_LABEL[choice.errorTag] : choice.note}
+                {choice.errorTag ? (en ? mathErrorLabel(choice.errorTag, true) : MATH_ERROR_LABEL[choice.errorTag]) : choice.note}
               </Text>
               {choice.errorTag && choice.note ? (
                 <Text className="mt-0.5 font-sans text-label text-muted">{choice.note}</Text>
@@ -331,6 +347,7 @@ function ChoiceRow({
 }) {
   // Sau khi chấm: đáp án đúng luôn được tô, lựa chọn sai của người học tô đỏ.
   const sf = SURFACE[surface];
+  const { L } = useL();
   const tone = revealed
     ? correct
       ? 'border-success bg-success-soft'
@@ -350,7 +367,7 @@ function ChoiceRow({
     <PressScale
       accessibilityRole="radio"
       aria-selected={selected} aria-disabled={disabled}
-      accessibilityLabel={out ? `Phương án ${'ABCD'[index]} — Cú đã loại` : undefined}
+      accessibilityLabel={out ? L(`Phương án ${'ABCD'[index]} — Cú đã loại`, `Option ${'ABCD'[index]} — removed by Owl`) : undefined}
       onPress={disabled ? undefined : onPress}
       className={`flex-row items-center gap-3 rounded-card border p-3 ${tone}`}
       style={out ? { opacity: 0.38 } : undefined}
@@ -359,7 +376,7 @@ function ChoiceRow({
       <View className="flex-1">
         <MathText size={15}>{display}</MathText>
       </View>
-      {out ? <Text className="font-semi text-label text-muted">Cú đã loại</Text> : null}
+      {out ? <Text className="font-semi text-label text-muted">{L('Cú đã loại', 'Removed by Owl')}</Text> : null}
     </PressScale>
   );
 }

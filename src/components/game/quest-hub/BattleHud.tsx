@@ -23,6 +23,10 @@ import { mascotOf, skinOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
 import { useStreak } from '@/store/useStudyStore';
 import { Bar, CtaButton, Eyebrow, GAP, HUB, Panel, StatPill, useBoxWidth } from './kit';
+import { useL } from '@/i18n/useL';
+import { itemName, levelTitle, mascotName } from '@/services/gamification/labels-en';
+import { enemyName, islandShortName, missionTitle } from '@/components/world/island-label';
+import { enemyTaunt } from '@/components/game/game-labels';
 
 /** Sân khấu nhỏ: nhân vật nhún nhẹ trên nền đất, linh vật đứng cạnh. */
 export function HeroStage({ size = 128 }: { size?: number }) {
@@ -30,11 +34,14 @@ export function HeroStage({ size = 128 }: { size?: number }) {
   const skin = skinOf(skinItem);
   const petId = mascotOf(useRewardStore((s) => s.mascot));
   const pet = petId ? MASCOTS[petId] : null;
-  const skinName = findItem(skinItem)?.name ?? 'Hiệp sĩ xanh';
+  const { L, locale } = useL();
+  const skin0 = findItem(skinItem);
+  const skinName = skin0 ? itemName(skin0, locale) : L('Hiệp sĩ xanh', 'Blue Knight');
+  const petName = pet && petId ? mascotName({ id: petId, name: pet.name }, locale) : '';
   return (
     <View
       accessibilityRole="image"
-      accessibilityLabel={`Nhân vật: ${skinName}${pet ? `, đi cùng ${pet.name}` : ''}`}
+      accessibilityLabel={L(`Nhân vật: ${skinName}${pet ? `, đi cùng ${pet.name}` : ''}`, `Hero: ${skinName}${pet ? `, with ${petName}` : ''}`)}
       style={{ width: size, height: size, borderRadius: 18, overflow: 'hidden', backgroundColor: HUB.stage, alignItems: 'center', justifyContent: 'flex-end' }}
     >
       <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: Math.round(size * 0.22), backgroundColor: HUB.ground }} />
@@ -67,12 +74,18 @@ export function EnemyBlock({ stage = 96 }: { stage?: number }) {
   const enemy = enemyAt(enemyIndex);
   const ratio = enemy.hp > 0 ? enemyHp / enemy.hp : 0;
   const toBoss = ENEMIES.length - 1 - (enemyIndex % ENEMIES.length);
-  const bossLine = enemy.boss ? 'Boss của vòng — hạ được thưởng lớn' : toBoss === 1 ? 'Boss ngay sau con này' : `Boss sau ${toBoss} con nữa`;
+  const { L, locale } = useL();
+  const eName = enemyName(enemy, locale);
+  const bossLine = enemy.boss
+    ? L('Boss của vòng — hạ được thưởng lớn', "This round's Boss — big reward for defeating it")
+    : toBoss === 1
+      ? L('Boss ngay sau con này', 'Boss comes right after this one')
+      : L(`Boss sau ${toBoss} con nữa`, `Boss in ${toBoss} more`);
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: GAP.md }}>
       <View
         accessibilityRole="image"
-        accessibilityLabel={`Quái: ${enemy.name}`}
+        accessibilityLabel={L(`Quái: ${enemy.name}`, `Monster: ${eName}`)}
         style={{ width: stage, height: stage, borderRadius: 18, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.stage }}
       >
         <View style={{ position: 'absolute', left: 0, right: 0, top: 0, bottom: 0, backgroundColor: `${enemy.color}22` }} />
@@ -83,7 +96,7 @@ export function EnemyBlock({ stage = 96 }: { stage?: number }) {
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-          <Eyebrow text="ĐANG CHẶN ĐƯỜNG" tone="#FCA5A5" />
+          <Eyebrow text={L('ĐANG CHẶN ĐƯỜNG', 'BLOCKING YOUR PATH')} tone="#FCA5A5" />
           {enemy.boss ? (
             <View style={{ borderRadius: 5, paddingHorizontal: 6, paddingVertical: 1, backgroundColor: HUB.red }}>
               <Text className="font-heavy" style={{ fontSize: 10, letterSpacing: 1, color: '#FFFFFF' }}>
@@ -93,16 +106,19 @@ export function EnemyBlock({ stage = 96 }: { stage?: number }) {
           ) : null}
         </View>
         <Text className="font-heavy" style={{ marginTop: 4, fontSize: 17, lineHeight: 22, color: HUB.ink }} numberOfLines={1}>
-          {enemy.name}
+          {eName}
         </Text>
         <Text className="font-sans" style={{ marginTop: 1, fontSize: 13, fontStyle: 'italic', color: HUB.muted }} numberOfLines={1}>
-          “{enemy.taunt}”
+          “{enemyTaunt(enemy, locale)}”
         </Text>
         <View style={{ marginTop: 8 }}>
-          <Bar value={ratio} color={hpTone(ratio)} height={8} label={`Máu quái ${enemyHp}/${enemy.hp}`} />
+          <Bar value={ratio} color={hpTone(ratio)} height={8} label={L(`Máu quái ${enemyHp}/${enemy.hp}`, `Monster HP ${enemyHp}/${enemy.hp}`)} />
         </View>
         <Text className="font-semi" style={{ marginTop: 5, fontSize: 12, color: HUB.muted, fontVariant: ['tabular-nums'] }} numberOfLines={1}>
-          {enemyHp}/{enemy.hp} máu · con thứ {enemyIndex + 1}{enemy.round > 0 ? ` · vòng ${enemy.round + 1}` : ''}
+          {L(
+            `${enemyHp}/${enemy.hp} máu · con thứ ${enemyIndex + 1}${enemy.round > 0 ? ` · vòng ${enemy.round + 1}` : ''}`,
+            `${enemyHp}/${enemy.hp} HP · monster #${enemyIndex + 1}${enemy.round > 0 ? ` · round ${enemy.round + 1}` : ''}`,
+          )}
         </Text>
         <Text className="font-strong" style={{ marginTop: 2, fontSize: 12, color: enemy.boss ? '#FCA5A5' : HUB.amber }} numberOfLines={1}>
           👑 {bossLine}
@@ -121,34 +137,37 @@ function PlayerInfo() {
   const petId = mascotOf(useRewardStore((s) => s.mascot));
   const pet = petId ? MASCOTS[petId] : null;
   const lv = levelProgress(g.xp);
+  const { L, en, locale } = useL();
+  const num = (n: number) => n.toLocaleString(en ? 'en-US' : 'vi-VN');
+  const skin0 = findItem(skinItem);
   return (
     <View style={{ flex: 1, minWidth: 0 }}>
-      <Eyebrow text="NHÂN VẬT CỦA BẠN" />
+      <Eyebrow text={L('NHÂN VẬT CỦA BẠN', 'YOUR HERO')} />
       <View style={{ marginTop: 4, flexDirection: 'row', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
         <Text className="font-heavy" style={{ fontSize: 28, lineHeight: 33, color: HUB.ink }}>
           Lv {lv.level}
         </Text>
         <View style={{ borderRadius: 999, paddingHorizontal: 10, paddingVertical: 3, backgroundColor: 'rgba(250,204,21,0.16)' }}>
           <Text className="font-strong" style={{ fontSize: 12, color: HUB.gold }}>
-            {titleForLevel(lv.level)}
+            {levelTitle(titleForLevel(lv.level), locale)}
           </Text>
         </View>
       </View>
       <Text className="font-sans" style={{ marginTop: 1, fontSize: 12, color: HUB.muted }} numberOfLines={1}>
-        {findItem(skinItem)?.name ?? 'Hiệp sĩ xanh'}
-        {pet ? ` · đi cùng ${pet.name}` : ''}
+        {skin0 ? itemName(skin0, locale) : L('Hiệp sĩ xanh', 'Blue Knight')}
+        {pet && petId ? L(` · đi cùng ${pet.name}`, ` · with ${mascotName({ id: petId, name: pet.name }, locale)}`) : ''}
       </Text>
       <View style={{ marginTop: 10 }}>
-        <Bar value={lv.need > 0 ? lv.into / lv.need : 0} color={HUB.gold} height={9} label={`XP ${lv.into}/${lv.need} tới cấp ${lv.level + 1}`} />
+        <Bar value={lv.need > 0 ? lv.into / lv.need : 0} color={HUB.gold} height={9} label={L(`XP ${lv.into}/${lv.need} tới cấp ${lv.level + 1}`, `XP ${lv.into}/${lv.need} to level ${lv.level + 1}`)} />
       </View>
       <Text className="font-semi" style={{ marginTop: 5, fontSize: 12, color: HUB.muted, fontVariant: ['tabular-nums'] }}>
-        {lv.into.toLocaleString('vi-VN')}/{lv.need.toLocaleString('vi-VN')} XP tới cấp {lv.level + 1}
+        {num(lv.into)}/{num(lv.need)} {L(`XP tới cấp ${lv.level + 1}`, `XP to level ${lv.level + 1}`)}
       </Text>
       <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-        <StatPill glyph="❤️" value={`${g.hearts}/${MAX_HEARTS}`} label="tim" />
-        <StatPill glyph="⭐" value={formatStars(stars)} label="sao" />
-        <StatPill glyph="🔥" value={String(streak.current)} label="ngày liên tiếp" />
-        <StatPill glyph="⚔️" value={g.defeated.toLocaleString('vi-VN')} label="quái đã hạ" />
+        <StatPill glyph="❤️" value={`${g.hearts}/${MAX_HEARTS}`} label={L('tim', 'hearts')} />
+        <StatPill glyph="⭐" value={formatStars(stars)} label={L('sao', 'stars')} />
+        <StatPill glyph="🔥" value={String(streak.current)} label={L('ngày liên tiếp', 'day streak')} />
+        <StatPill glyph="⚔️" value={num(g.defeated)} label={L('quái đã hạ', 'monsters defeated')} />
       </View>
     </View>
   );
@@ -170,12 +189,13 @@ function Versus({ vertical }: { vertical: boolean }) {
 export function BattleHud({ next }: { next: { island: Island; mission: Mission } | null }) {
   const [w, onLayout] = useBoxWidth();
   const mode = w >= 1200 ? 'xl' : w >= 680 ? 'md' : 'sm';
+  const { L, locale } = useL();
   const go = (
     <CtaButton
       glyph="⚔️"
-      label="Vào trận"
-      sub="Chọn mảng → chọn bài"
-      a11yLabel="Vào trận: chọn mảng và bài học"
+      label={L('Vào trận', 'Enter battle')}
+      sub={L('Chọn mảng → chọn bài', 'Choose area → choose lesson')}
+      a11yLabel={L('Vào trận: chọn mảng và bài học', 'Enter battle: choose an area and a lesson')}
       onPress={() => router.push('/quest/pick' as never)}
       full
     />
@@ -183,14 +203,14 @@ export function BattleHud({ next }: { next: { island: Island; mission: Mission }
   const resume = next ? (
     <CtaButton
       variant="ghost"
-      label={next.mission.title}
-      sub={`HỌC TIẾP · ${next.island.name.replace(/^Đảo /, '').toUpperCase()}`}
-      a11yLabel={`Học tiếp: ${next.mission.title}`}
+      label={missionTitle(next.mission, locale)}
+      sub={`${L('HỌC TIẾP', 'CONTINUE')} · ${islandShortName(next.island, locale).toUpperCase()}`}
+      a11yLabel={L(`Học tiếp: ${next.mission.title}`, `Continue: ${missionTitle(next.mission, locale)}`)}
       onPress={() => router.push(next.mission.href as never)}
       full
     />
   ) : (
-    <CtaButton variant="ghost" label="Nhân vật & túi đồ" onPress={() => router.push('/quest/hero' as never)} full />
+    <CtaButton variant="ghost" label={L('Nhân vật & túi đồ', 'Hero & bag')} onPress={() => router.push('/quest/hero' as never)} full />
   );
 
   return (

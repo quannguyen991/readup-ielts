@@ -29,6 +29,7 @@ import { useRoadmapStore } from '@/store/useRoadmapStore';
 import { useAuthStore } from '@/store/useAuthStore';
 import { goalProgress } from '@/services/progress/goal';
 import { chartPalette, color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Tiến độ SAT Math.
@@ -39,6 +40,7 @@ import { chartPalette, color } from '@/theme/tokens';
  * là không có vấn đề gì nổi bật.
  */
 function MathProgressCard() {
+  const { L } = useL();
   const domainStats = useMathDomainStats();
   const errorTags = useMathErrorTags();
   const totals = useMathTotals();
@@ -51,15 +53,15 @@ function MathProgressCard() {
     <Card className="mt-4">
       <SectionHeader
         title="SAT Math"
-        subtitle={`${totals.questions} câu đã làm · đúng ${totals.correct}`}
+        subtitle={L(`${totals.questions} câu đã làm · đúng ${totals.correct}`, `${totals.questions} questions done · ${totals.correct} correct`)}
         icon="grid"
         iconTone="accent"
-        action={{ label: 'Mở module', onPress: () => router.push('/math' as never) }}
+        action={{ label: L('Mở module', 'Open module'), onPress: () => router.push('/math' as never) }}
       />
 
       <View className="mt-4 flex-row flex-wrap gap-6">
         <View className="min-w-[260px] flex-1 gap-3">
-          <Text className="font-mid text-label text-muted">Theo domain</Text>
+          <Text className="font-mid text-label text-muted">{L('Theo domain', 'By domain')}</Text>
           {domains.map((domain) => (
             <View key={domain}>
               <View className="flex-row items-center justify-between">
@@ -80,10 +82,10 @@ function MathProgressCard() {
         </View>
 
         <View className="min-w-[260px] flex-1 gap-2">
-          <Text className="font-mid text-label text-muted">Lỗi hay mắc nhất</Text>
+          <Text className="font-mid text-label text-muted">{L('Lỗi hay mắc nhất', 'Most common mistakes')}</Text>
           {errorTags.length === 0 ? (
             <Text className="font-sans text-body text-muted">
-              Chưa có câu nào chọn nhầm một đáp án mang nhãn lỗi.
+              {L('Chưa có câu nào chọn nhầm một đáp án mang nhãn lỗi.', 'No wrong answers with a tagged mistake yet.')}
             </Text>
           ) : (
             errorTags.slice(0, 4).map(({ tag, count }) => (
@@ -101,6 +103,7 @@ function MathProgressCard() {
 
 /** Progress — bám ảnh tham chiếu số 3, số liệu lấy từ chính hoạt động của bạn. */
 export default function ProgressScreen() {
+  const { L } = useL();
   const [range, setRange] = useState<7 | 30 | 90>(30);
 
   const sessions = useStudyStore((s) => s.sessions);
@@ -194,26 +197,26 @@ export default function ProgressScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Tiến độ của bạn"
-        subtitle="Theo dõi kết quả, giữ nhịp đều, và biết chính xác nên luyện dạng nào tiếp theo."
+        title={L('Tiến độ của bạn', 'Your progress')}
+        subtitle={L('Theo dõi kết quả, giữ nhịp đều, và biết chính xác nên luyện dạng nào tiếp theo.', 'Track your results, keep a steady rhythm, and know exactly what to practise next.')}
         illustration="progress-hero"
         right={
           <View className="w-[260px] rounded-card bg-white p-4">
             <View className="flex-row items-center justify-between">
-              <Text className="font-strong text-cardTitle text-ink">Mục tiêu</Text>
-              <Text className="font-semi text-label text-primary-600">Band IELTS</Text>
+              <Text className="font-strong text-cardTitle text-ink">{L('Mục tiêu', 'Goal')}</Text>
+              <Text className="font-semi text-label text-primary-600">{L('Band IELTS', 'IELTS band')}</Text>
             </View>
 
             {goal.state === 'no-goal' ? (
               <>
                 <Text className="mt-2 font-heavy text-hero text-subtle">—</Text>
-                <Text className="mt-1 font-mid text-label text-muted">Bạn chưa đặt band mục tiêu.</Text>
+                <Text className="mt-1 font-mid text-label text-muted">{L('Bạn chưa đặt band mục tiêu.', "You haven't set a target band yet.")}</Text>
                 <Pressable
                   accessibilityRole="button"
                   onPress={() => router.push('/plan' as never)}
                   className="mt-3 self-start rounded-pill bg-primary-600 px-3.5 py-2"
                 >
-                  <Text className="font-semi text-label text-white">Đặt mục tiêu</Text>
+                  <Text className="font-semi text-label text-white">{L('Đặt mục tiêu', 'Set a goal')}</Text>
                 </Pressable>
               </>
             ) : (
@@ -222,10 +225,10 @@ export default function ProgressScreen() {
                 <ProgressBar value={goal.state === 'no-score' ? 0 : goal.pct} className="mt-2" />
                 <Text className="mt-2 font-mid text-label text-muted">
                   {goal.state === 'no-score'
-                    ? 'Chưa có bài chấm band — làm một bài đọc để có điểm đầu.'
+                    ? L('Chưa có bài chấm band — làm một bài đọc để có điểm đầu.', 'No band score yet — do a reading test to get a starting point.')
                     : goal.state === 'reached'
-                      ? `Đã đạt mục tiêu · band hiện tại ${formatBand(goal.current)}`
-                      : `${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)} band · ${goal.pct}% quãng đường`}
+                      ? L(`Đã đạt mục tiêu · band hiện tại ${formatBand(goal.current)}`, `Goal reached · current band ${formatBand(goal.current)}`)
+                      : L(`${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)} band · ${goal.pct}% quãng đường`, `${formatBand(goal.start)} → ${formatBand(goal.current)} · ${goal.left.toFixed(1)} band to go · ${goal.pct}% of the way`)}
                 </Text>
               </>
             )}
@@ -265,7 +268,7 @@ export default function ProgressScreen() {
                 ? undefined
                 : currentBand >= 6.5
                   ? { label: 'Good', tone: 'success' }
-                  : { label: 'Đang lên', tone: 'warning' }
+                  : { label: L('Đang lên', 'Improving'), tone: 'warning' }
             }
           />
           <StatCard
@@ -273,7 +276,7 @@ export default function ProgressScreen() {
             value={formatMinutes(totalMinutes)}
             icon="clock"
             tone="accent"
-            caption={`${range} ngày gần nhất`}
+            caption={L(`${range} ngày gần nhất`, `Last ${range} days`)}
           />
           <StatCard
             label="Reading Speed"
@@ -288,7 +291,7 @@ export default function ProgressScreen() {
             unit={inRange.length === 0 ? undefined : '%'}
             icon="target"
             tone="success"
-            caption={`${inRange.length} lượt làm bài`}
+            caption={L(`${inRange.length} lượt làm bài`, `${inRange.length} attempts`)}
           />
           <StatCard
             label="Current Streak"
@@ -296,7 +299,7 @@ export default function ProgressScreen() {
             unit="days"
             icon="flame"
             tone="warning"
-            caption={`Dài nhất: ${streak.longest} ngày`}
+            caption={L(`Dài nhất: ${streak.longest} ngày`, `Longest: ${streak.longest} days`)}
           />
         </Grid>
       </View>
@@ -347,7 +350,7 @@ export default function ProgressScreen() {
 
               {accuracyByType.length === 0 ? (
                 <Text className="py-6 text-center font-sans text-body text-muted">
-                  Làm thử một bài để thấy điểm mạnh yếu theo từng dạng câu.
+                  {L('Làm thử một bài để thấy điểm mạnh yếu theo từng dạng câu.', 'Do a test to see your strengths and weaknesses by question type.')}
                 </Text>
               ) : null}
             </View>
@@ -355,10 +358,10 @@ export default function ProgressScreen() {
             {weakest ? (
               <View className="mt-4 rounded-panel bg-danger-soft p-3">
                 <Text className="font-semi text-body text-danger-ink">
-                  Dạng yếu nhất: {QUESTION_TYPE_LABEL[weakest.type]} ({weakest.percent}%)
+                  {L('Dạng yếu nhất:', 'Weakest type:')} {QUESTION_TYPE_LABEL[weakest.type]} ({weakest.percent}%)
                 </Text>
                 <Button
-                  label="Luyện dạng yếu nhất"
+                  label={L('Luyện dạng yếu nhất', 'Practise your weakest type')}
                   size="sm"
                   iconRight="arrow-right"
                   className="mt-2"
@@ -384,7 +387,7 @@ export default function ProgressScreen() {
                   { label: 'Reading Library', value: activityTotals.reading_library },
                 ]}
                 centerValue={formatMinutes(totalMinutes)}
-                centerLabel="Tổng"
+                centerLabel={L('Tổng', 'Total')}
               />
 
               <View className="flex-1 gap-2">
@@ -429,8 +432,8 @@ export default function ProgressScreen() {
                   <Text className="font-strong text-body text-ink">{bestDay(recentDays)}</Text>
                 </View>
                 <View className="rounded-panel bg-surfaceAlt p-3">
-                  <Text className="font-mid text-label text-muted">Từ đã lưu</Text>
-                  <Text className="font-strong text-body text-ink">{words} từ</Text>
+                  <Text className="font-mid text-label text-muted">{L('Từ đã lưu', 'Saved words')}</Text>
+                  <Text className="font-strong text-body text-ink">{words} {L('từ', 'words')}</Text>
                 </View>
               </View>
             </View>
@@ -500,7 +503,7 @@ export default function ProgressScreen() {
 
           {sessions.length === 0 ? (
             <Text className="py-8 text-center font-sans text-body text-muted">
-              Chưa có lượt làm bài nào. Vào Library chọn một bài rồi Submit để thấy số liệu ở đây.
+              {L('Chưa có lượt làm bài nào. Vào Library chọn một bài rồi Submit để thấy số liệu ở đây.', 'No attempts yet. Pick a passage in the Library and submit it to see your stats here.')}
             </Text>
           ) : null}
         </View>

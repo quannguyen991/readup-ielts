@@ -11,6 +11,9 @@ import { useGameFx, type FxEvent } from '@/store/useGameFx';
 import { useGameStore } from '@/store/useGameStore';
 import { useRewardStore } from '@/store/useRewardStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { currentLocale, pick, useL } from '@/i18n/useL';
+import { levelTitle } from '@/services/gamification/labels-en';
+import { achievementByVi, enemyNameByVi, questTitleByVi } from './game-labels';
 
 /**
  * LỚP HIỆU ỨNG TOÀN APP, nằm trên mọi màn: băng rôn LÊN CẤP giữa màn, thẻ báo
@@ -30,6 +33,7 @@ export function GameFxLayer() {
   const events = useGameFx((s) => s.events);
   // Màn học từ đang dùng nền toa tàu: không có trận đấu, nên không hiện số đánh / mất tim.
   const travel = useTravelActive();
+  const { L, locale } = useL();
   if (Platform.OS !== 'web') return null;
 
   const fresh = events.filter((e) => e.id > since);
@@ -52,11 +56,11 @@ export function GameFxLayer() {
       {chips.map((e) => {
         const chip =
           e.kind === 'hit'
-            ? { text: `+${e.xp} XP${e.crit ? ' · CHÍ MẠNG' : e.combo >= 3 ? ` · combo ×${e.combo}` : ''}`, c: '#FACC15', top: 116 }
+            ? { text: `+${e.xp} XP${e.crit ? L(' · CHÍ MẠNG', ' · CRITICAL') : e.combo >= 3 ? ` · combo ×${e.combo}` : ''}`, c: '#FACC15', top: 116 }
             : e.kind === 'hurt'
-              ? { text: '−1 ♥ · mất combo', c: '#FDA4AF', top: 116 }
+              ? { text: L('−1 ♥ · mất combo', '−1 ♥ · combo lost'), c: '#FDA4AF', top: 116 }
               : e.kind === 'defeat'
-                ? { text: `Hạ ${e.name}! +${e.bonusXp} XP`, c: '#FACC15', top: 150 }
+                ? { text: L(`Hạ ${e.name}! +${e.bonusXp} XP`, `Defeated ${enemyNameByVi(e.name, locale)}! +${e.bonusXp} XP`), c: '#FACC15', top: 150 }
                 : e.kind === 'stars'
                   ? { text: `+${e.amount} ⭐ ${e.reason}`, c: '#FDE68A', top: 184 }
                   : null;
@@ -76,6 +80,7 @@ export function GameFxLayer() {
 }
 
 function LevelBanner({ level }: { level: number }) {
+  const { L, locale } = useL();
   return (
     <View style={{ position: 'absolute', left: 0, right: 0, top: '22%', alignItems: 'center', ...anim('rg-banner', 3000, { fill: 'forwards' }) }}>
       <View style={{ width: 300, height: 300, position: 'absolute', top: -96, alignItems: 'center', justifyContent: 'center', opacity: 0.55 }}>
@@ -91,13 +96,13 @@ function LevelBanner({ level }: { level: number }) {
       <View style={{ alignItems: 'center', minWidth: 200, borderRadius: 22, paddingHorizontal: 30, paddingVertical: 18, backgroundColor: '#1B1540', borderWidth: 3, borderColor: '#FACC15', boxShadow: '0 18px 50px rgba(27,21,64,0.45)' } as object}>
         <PixelSprite name="hero" size={76} />
         <Text className="font-heavy" style={{ marginTop: 6, fontSize: 14, letterSpacing: 3, color: '#FDE68A' }}>
-          LÊN CẤP
+          {L('LÊN CẤP', 'LEVEL UP')}
         </Text>
         <Text className="font-heavy" style={{ fontSize: 56, lineHeight: 62, color: '#FFFFFF' }}>
           {level}
         </Text>
         <Text className="font-semi" style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)' }}>
-          Danh hiệu: {titleForLevel(level)}
+          {L('Danh hiệu:', 'Title:')} {levelTitle(titleForLevel(level), locale)}
         </Text>
       </View>
     </View>
@@ -105,19 +110,27 @@ function LevelBanner({ level }: { level: number }) {
 }
 
 function Toast({ e }: { e: FxEvent }) {
+  const { L, locale } = useL();
   const body =
     e.kind === 'achievement'
-      ? { glyph: e.glyph, head: 'Huy hiệu mới', text: e.title }
+      ? { glyph: e.glyph, head: L('Huy hiệu mới', 'New badge'), text: achievementByVi(e.title, locale) }
       : e.kind === 'quest'
-        ? { glyph: '📜', head: 'Xong nhiệm vụ ngày', text: `${e.title} — vào trang Nhân vật nhận thưởng` }
+        ? {
+            glyph: '📜',
+            head: L('Xong nhiệm vụ ngày', 'Daily quest complete'),
+            text: L(`${e.title} — vào trang Nhân vật nhận thưởng`, `${questTitleByVi(e.title, locale)} — claim it on the Hero page`),
+          }
         : e.kind === 'batch'
           ? {
               glyph: '⚔️',
               head: `+${e.xp} XP`,
               text:
                 e.total > 0
-                  ? `${e.correct}/${e.total} câu đúng${e.defeated > 0 ? ` · hạ ${e.defeated} quái` : ''}`
-                  : 'Phần thưởng đã vào túi',
+                  ? L(
+                      `${e.correct}/${e.total} câu đúng${e.defeated > 0 ? ` · hạ ${e.defeated} quái` : ''}`,
+                      `${e.correct}/${e.total} correct${e.defeated > 0 ? ` · ${e.defeated} monsters defeated` : ''}`,
+                    )
+                  : L('Phần thưởng đã vào túi', 'Rewards added to your bag'),
             }
           : null;
   if (!body) return null;
@@ -150,7 +163,7 @@ function StudyStarWatcher() {
       const gain = now - last;
       last = now;
       if (gain > 0 && gain <= 20 && useGameStore.getState().enabled) {
-        useGameFx.getState().push({ kind: 'stars', amount: gain, reason: 'học' });
+        useGameFx.getState().push({ kind: 'stars', amount: gain, reason: pick(currentLocale(), 'học', 'study') });
       }
     });
   }, []);

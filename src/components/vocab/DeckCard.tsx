@@ -5,6 +5,7 @@ import Svg, { Circle, Path, Rect } from 'react-native-svg';
 import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { type DeckProgress } from '@/services/vocab/deck-library';
+import { useL } from '@/i18n/useL';
 
 /**
  * THẺ BỘ TỪ ở thư viện Quiz từ vựng: tên bộ, nghĩa tiếng Việt, thanh tiến độ hai
@@ -92,6 +93,7 @@ export function DeckCard({
 }) {
   const [soft, strong] = accent;
   const pct = progress.total > 0 ? Math.round((progress.mastered / progress.total) * 100) : 0;
+  const { L } = useL();
   const [hovered, setHovered] = React.useState(false);
   const letter = title.trim().charAt(0).toUpperCase();
   const fan = (deg: number, dx: number) =>
@@ -100,7 +102,7 @@ export function DeckCard({
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`${title}. Thuộc ${pct}%, ${progress.total} từ.`}
+      accessibilityLabel={L(`${title}. Thuộc ${pct}%, ${progress.total} từ.`, `${title}. ${pct}% learned, ${progress.total} words.`)}
       onPress={onPress}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
@@ -149,7 +151,7 @@ export function DeckCard({
           </Text>
           <Text className="font-sans text-muted" style={{ marginTop: 2, fontSize: 13 }} numberOfLines={1}>
             {subtitle ? `${subtitle} · ` : ''}
-            {progress.total} từ
+            {progress.total} {L('từ', 'words')}
           </Text>
           <Text className="font-strong" style={{ marginTop: 8, fontSize: 11, letterSpacing: 0.6, color: strong }}>
             {sourceLabel.toUpperCase()}

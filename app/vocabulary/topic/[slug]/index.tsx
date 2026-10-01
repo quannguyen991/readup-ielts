@@ -24,6 +24,14 @@ import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
+
+/** Nhãn nhóm từ không theo band (bản tiếng Việt viết sẵn trong `groupDeckWords`). */
+const GROUP_LABEL_EN: Record<string, string> = {
+  'Từ đã lưu': 'Saved words',
+  'Từ trong bài': 'Words from the article',
+  'Thuật ngữ': 'Terms',
+};
 
 const GROUP_BADGE: readonly BadgeIcon[] = ['check', 'star', 'target', 'bolt'];
 const GROUP_TONE = ['#22A06B', '#A8843F', '#F0703F', '#E0533D'] as const;
@@ -46,6 +54,7 @@ const GROUP_TONE = ['#22A06B', '#A8843F', '#F0703F', '#E0533D'] as const;
 export default function VocabTopicScreen() {
   const { slug } = useLocalSearchParams<{ slug?: string }>();
   const topic = useStudyDeck(typeof slug === 'string' ? slug : '');
+  const { L, en } = useL();
 
   const entries = useVocabStore((s) => s.entries);
   const saveWord = useVocabStore((s) => s.saveWord);
@@ -69,10 +78,10 @@ export default function VocabTopicScreen() {
     return (
       <Screen>
         <Card>
-          <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có bộ từ này', 'Word set not found')}</Text>
           <Button
             className="mt-3 self-start"
-            label="Về thư viện bộ từ"
+            label={L('Về thư viện bộ từ', 'Back to word sets')}
             onPress={() => router.replace('/vocabulary/quiz' as never)}
           />
         </Card>
@@ -94,7 +103,7 @@ export default function VocabTopicScreen() {
       // vào ngữ cảnh, và ở đây ví dụ chính là ngữ cảnh duy nhất ta có.
       sourceSentence: word.example,
       articleId: null,
-      articleTitle: `Chủ đề: ${topic.nameVi}`,
+      articleTitle: L(`Chủ đề: ${topic.nameVi}`, `Topic: ${topic.name}`),
       paragraphIndex: null,
       isCollocation: false,
     });
@@ -120,7 +129,7 @@ export default function VocabTopicScreen() {
       <Appear>
         <Button
           className="mb-3 self-start"
-          label={slug === NOTEBOOK_SLUG ? 'Quay lại' : 'Tất cả bộ từ'}
+          label={slug === NOTEBOOK_SLUG ? L('Quay lại', 'Back') : L('Tất cả bộ từ', 'All word sets')}
           variant="ghost"
           size="sm"
           iconLeft="chevron-left"
@@ -140,10 +149,10 @@ export default function VocabTopicScreen() {
               <Icon name={look.icon} size={22} color={bg} strokeWidth={2.1} />
             </View>
             <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
-              <Text className="font-heavy text-pageTitle text-ink">{topic.nameVi}</Text>
+              <Text className="font-heavy text-pageTitle text-ink">{(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}</Text>
               <Text className="font-sans text-body text-muted">
-                {topic.name !== topic.nameVi ? `${topic.name} · ` : ''}
-                {topic.words.length} từ
+                {!en && topic.name !== topic.nameVi ? `${topic.name} · ` : ''}
+                {L(`${topic.words.length} từ`, `${topic.words.length} words`)}
               </Text>
             </View>
             <View aria-hidden>
@@ -162,12 +171,12 @@ export default function VocabTopicScreen() {
             <View aria-hidden>
               <SealIcon name="target" color="#A8843F" size={38} />
             </View>
-            <Text className="font-heavy text-sectionTitle text-ink">Cách luyện</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('Cách luyện', 'Practice modes')}</Text>
           </View>
           <View className="mt-3">
             <Grid columns={7} tabletColumns={4} mobileColumns={2} gap={12}>
               {MODES.map((m) => (
-                <ModeTile key={m.key} mode={m} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
+                <ModeTile key={m.key} mode={m} en={en} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
               ))}
             </Grid>
           </View>
@@ -181,6 +190,7 @@ export default function VocabTopicScreen() {
             <StatusTile
               key={t.key}
               tile={t}
+              en={en}
               count={status[t.key].length}
               onPress={() => router.push(`/vocabulary/topic/${topic.slug}/quiz?only=${t.only}` as never)}
             />
@@ -216,17 +226,20 @@ export default function VocabTopicScreen() {
                 </Motion>
               </View>
               <Text className="mt-4 font-strong text-cardTitle text-ink">
-                {slug === NOTEBOOK_SLUG ? 'Chưa có từ nào trong sổ từ' : 'Bộ từ đang trống'}
+                {slug === NOTEBOOK_SLUG ? L('Chưa có từ nào trong sổ từ', 'Your notebook has no words yet') : L('Bộ từ đang trống', 'This word set is empty')}
               </Text>
               <Text className="mt-1.5 max-w-md text-center font-sans text-body text-muted">
                 {slug === NOTEBOOK_SLUG
-                  ? 'Hãy học các từ trong bộ từ IELTS hoặc lưu từ mới khi đọc báo để hệ thống FSRS tự động xếp lịch ôn tập ngắt quãng.'
-                  : 'Chưa có từ nào trong bộ này.'}
+                  ? L(
+                      'Hãy học các từ trong bộ từ IELTS hoặc lưu từ mới khi đọc báo để hệ thống FSRS tự động xếp lịch ôn tập ngắt quãng.',
+                      'Learn words from the IELTS word sets or save new words while reading, and FSRS will schedule spaced reviews for you.',
+                    )
+                  : L('Chưa có từ nào trong bộ này.', 'There are no words in this set yet.')}
               </Text>
               {slug === NOTEBOOK_SLUG ? (
                 <Button
                   className="mt-4"
-                  label="Khám phá 50 bộ từ IELTS"
+                  label={L('Khám phá 50 bộ từ IELTS', 'Explore 50 IELTS word sets')}
                   iconRight="arrow-right"
                   onPress={() => router.push('/vocabulary/quiz' as never)}
                 />
@@ -241,10 +254,10 @@ export default function VocabTopicScreen() {
           <View className="mt-6">
             <View className="flex-row flex-wrap items-center justify-between gap-2">
               <View className="min-w-0 flex-1">
-                <SectionHeader title="Từ gắn sao" icon="star" iconTone="warning" />
+                <SectionHeader title={L('Từ gắn sao', 'Starred words')} icon="star" iconTone="warning" />
               </View>
               <Button
-                label={`Học riêng ${starredEntries.length} từ này`}
+                label={L(`Học riêng ${starredEntries.length} từ này`, `Study just these ${starredEntries.length} words`)}
                 size="sm"
                 iconLeft="star"
                 onPress={() => router.push(`/vocabulary/topic/${topic.slug}/learn?only=starred` as never)}
@@ -259,7 +272,7 @@ export default function VocabTopicScreen() {
                   </Text>
                   <Pressable
                     accessibilityRole="button"
-                    accessibilityLabel={`Bỏ sao ${w.word}`}
+                    accessibilityLabel={L(`Bỏ sao ${w.word}`, `Unstar ${w.word}`)}
                     onPress={() => typeof slug === 'string' && toggleStar(slug, w.word)}
                     className="h-7 w-7 items-center justify-center rounded-pill"
                     style={{ backgroundColor: '#FEF3C7' }}
@@ -277,7 +290,7 @@ export default function VocabTopicScreen() {
         <View className="mt-3 flex-row items-start gap-2 rounded-card bg-success-soft p-3">
           <Icon name="check" size={16} color={color.success} />
           <Text className="flex-1 font-sans text-body text-ink">
-            Đã thêm {justSaved} từ vào sổ.
+            {L(`Đã thêm ${justSaved} từ vào sổ.`, `Added ${justSaved} words to your notebook.`)}
           </Text>
         </View>
       ) : null}
@@ -286,7 +299,7 @@ export default function VocabTopicScreen() {
         <Appear index={1}>
           <Button
             className="mt-3 self-start"
-            label={`Thêm cả ${remaining.length} từ chưa lưu vào sổ`}
+            label={L(`Thêm cả ${remaining.length} từ chưa lưu vào sổ`, `Add all ${remaining.length} unsaved words to notebook`)}
             iconRight="plus"
             onPress={saveAll}
           />
@@ -301,7 +314,7 @@ export default function VocabTopicScreen() {
             </Motion>
           </View>
           <Text className="font-strong text-body text-ink">
-            Đã lưu hết cả bộ này vào sổ từ.
+            {L('Đã lưu hết cả bộ này vào sổ từ.', 'This whole set is saved in your notebook.')}
           </Text>
         </View>
       )}
@@ -313,8 +326,8 @@ export default function VocabTopicScreen() {
               <View aria-hidden>
                 <BadgeSticker icon={GROUP_BADGE[gi % GROUP_BADGE.length]!} color={GROUP_TONE[gi % GROUP_TONE.length]!} size={28} />
               </View>
-              <Text className="font-heavy text-sectionTitle text-ink">{group.label}</Text>
-              <Text className="font-sans text-label text-muted">{group.words.length} từ</Text>
+              <Text className="font-heavy text-sectionTitle text-ink">{en ? (GROUP_LABEL_EN[group.label] ?? group.label) : group.label}</Text>
+              <Text className="font-sans text-label text-muted">{L(`${group.words.length} từ`, `${group.words.length} words`)}</Text>
             </View>
 
             <View className="mt-2 gap-2">
@@ -346,6 +359,7 @@ function WordRow({
   onSave: () => void;
 }) {
   const [open, setOpen] = useState(false);
+  const { L } = useL();
 
   return (
     <Card>
@@ -361,7 +375,7 @@ function WordRow({
 
         <View className="flex-row items-center gap-2">
           <Button
-            label={open ? 'Thu gọn' : 'Ví dụ'}
+            label={open ? L('Thu gọn', 'Collapse') : L('Ví dụ', 'Example')}
             variant="ghost"
             size="sm"
             onPress={() => setOpen((v) => !v)}
@@ -370,19 +384,19 @@ function WordRow({
             <View className="flex-row items-center gap-1 rounded-pill bg-success-soft px-2.5 py-1.5">
               <Icon name="check" size={13} color={color.success} />
               <Text className="font-strong text-label" style={{ color: color.success }}>
-                Đã lưu
+                {L('Đã lưu', 'Saved')}
               </Text>
             </View>
           ) : (
-            <Button label="Lưu" size="sm" iconRight="plus" onPress={onSave} />
+            <Button label={L('Lưu', 'Save')} size="sm" iconRight="plus" onPress={onSave} />
           )}
         </View>
       </View>
 
       {open ? (
         <View className="mt-3 gap-2 border-t border-border pt-3">
-          <Detail label="Ví dụ" value={word.example} italic />
-          <Detail label="Cụm hay đi kèm" value={word.collocation} />
+          <Detail label={L('Ví dụ', 'Example')} value={word.example} italic />
+          <Detail label={L('Cụm hay đi kèm', 'Common collocation')} value={word.collocation} />
         </View>
       ) : null}
     </Card>
@@ -407,29 +421,34 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * Sáu cách học cùng một bộ từ. "Học" đứng đầu và được đề xuất: nó dẫn qua cả
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
-const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
-  { key: 'learn', label: 'Học xen kẽ', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', icon: 'book', tone: '#B8955A', recommended: true },
-  { key: 'quiz', label: 'Quiz ôn tập', note: 'Trắc nghiệm A/B/C/D kiểu đề THPT', icon: 'target', tone: '#EA580C' },
-  { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#8E6A2C' },
-  { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#E0533D' },
-  { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
-  { key: 'test', label: 'Kiểm tra', note: '20 câu trộn 4 dạng, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
-  { key: 'game', label: 'Bóng bay', note: 'Trò chơi, có bảng điểm', icon: 'sparkle', tone: '#16A34A' },
+const MODES: { key: string; label: string; labelEn: string; note: string; noteEn: string; icon: IconName; tone: string; recommended?: boolean }[] = [
+  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', noteEn: 'Flashcards · multiple choice · typing; missed words come back', icon: 'book', tone: '#B8955A', recommended: true },
+  { key: 'quiz', label: 'Quiz ôn tập', labelEn: 'Review quiz', note: 'Trắc nghiệm A/B/C/D kiểu đề THPT', noteEn: 'A/B/C/D multiple choice, school-exam style', icon: 'target', tone: '#EA580C' },
+  { key: 'dictation', label: 'Nghe chép', labelEn: 'Dictation', note: 'Nghe từ, viết đúng chính tả', noteEn: 'Hear the word, spell it right', icon: 'volume', tone: '#8E6A2C' },
+  { key: 'cloze', label: 'Điền vào câu', labelEn: 'Fill the gap', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', noteEn: 'Pick, unscramble, type, listen — mixed', icon: 'pencil', tone: '#E0533D' },
+  { key: 'speak', label: 'Phát âm', labelEn: 'Pronunciation', note: 'Đọc to, máy nghe và chấm', noteEn: 'Read aloud, the app listens and scores', icon: 'mic', tone: '#DB2777' },
+  { key: 'test', label: 'Kiểm tra', labelEn: 'Test', note: '20 câu trộn 4 dạng, chấm khi nộp', noteEn: '20 mixed questions, marked on submit', icon: 'clipboard', tone: '#D97706' },
+  { key: 'game', label: 'Bóng bay', labelEn: 'Balloons', note: 'Trò chơi, có bảng điểm', noteEn: 'A game with a leaderboard', icon: 'sparkle', tone: '#16A34A' },
 ];
 
-const STATUS_TILES: { key: DeckStatus; label: string; only: string; icon: IconName; tone: string; soft: string }[] = [
-  { key: 'mastered', label: 'Đã nhớ', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },
-  { key: 'new', label: 'Chưa nhớ', only: 'new', icon: 'info', tone: '#CFA966', soft: '#F9F2E6' },
-  { key: 'review', label: 'Cần ôn tập', only: 'review', icon: 'refresh', tone: '#EA580C', soft: '#FFEDD5' },
+const STATUS_TILES: { key: DeckStatus; label: string; labelEn: string; only: string; icon: IconName; tone: string; soft: string }[] = [
+  { key: 'mastered', label: 'Đã nhớ', labelEn: 'Remembered', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },
+  { key: 'new', label: 'Chưa nhớ', labelEn: 'Not yet', only: 'new', icon: 'info', tone: '#CFA966', soft: '#F9F2E6' },
+  { key: 'review', label: 'Cần ôn tập', labelEn: 'Needs review', only: 'review', icon: 'refresh', tone: '#EA580C', soft: '#FFEDD5' },
 ];
 
 /** Một nhóm từ: số từ + bấm là vào Quiz chỉ với nhóm đó (Đã nhớ thì ôn cả bộ). */
-function StatusTile({ tile, count, onPress }: { tile: (typeof STATUS_TILES)[number]; count: number; onPress: () => void }) {
+function StatusTile({ tile, count, en, onPress }: { tile: (typeof STATUS_TILES)[number]; count: number; en: boolean; onPress: () => void }) {
+  const label = en ? tile.labelEn : tile.label;
   const empty = count === 0 && tile.key !== 'mastered';
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${tile.label}: ${count} từ. ${empty ? 'Chưa có từ nào.' : 'Bấm để ôn bằng Quiz.'}`}
+      accessibilityLabel={
+        en
+          ? `${label}: ${count} words. ${empty ? 'No words yet.' : 'Tap to review with a quiz.'}`
+          : `${label}: ${count} từ. ${empty ? 'Chưa có từ nào.' : 'Bấm để ôn bằng Quiz.'}`
+      }
       disabled={empty}
       onPress={onPress}
       className="min-w-[180px] flex-1 flex-row items-center gap-3 rounded-2xl bg-white px-4 py-3"
@@ -438,7 +457,7 @@ function StatusTile({ tile, count, onPress }: { tile: (typeof STATUS_TILES)[numb
       <View className="h-9 w-9 items-center justify-center rounded-full" style={{ backgroundColor: tile.soft }}>
         <Icon name={tile.icon} size={17} color={tile.tone} />
       </View>
-      <Text className="flex-1 font-strong text-body text-ink">{tile.label}</Text>
+      <Text className="flex-1 font-strong text-body text-ink">{label}</Text>
       <Text className="font-heavy text-sectionTitle" style={{ color: tile.tone }}>
         {count}
       </Text>
@@ -447,12 +466,13 @@ function StatusTile({ tile, count, onPress }: { tile: (typeof STATUS_TILES)[numb
   );
 }
 
-function ModeTile({ mode, onPress }: { mode: (typeof MODES)[number]; onPress: () => void }) {
+function ModeTile({ mode, en, onPress }: { mode: (typeof MODES)[number]; en: boolean; onPress: () => void }) {
   const [hovered, setHovered] = useState(false);
+  const label = en ? mode.labelEn : mode.label;
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${mode.label}: ${mode.note}`}
+      accessibilityLabel={`${label}: ${en ? mode.noteEn : mode.note}`}
       onPress={onPress}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
@@ -462,10 +482,10 @@ function ModeTile({ mode, onPress }: { mode: (typeof MODES)[number]; onPress: ()
       <View className="h-11 w-11 items-center justify-center rounded-2xl" style={{ backgroundColor: `${mode.tone}1A` }}>
         <Icon name={mode.icon} size={20} color={mode.tone} />
       </View>
-      <Text className="mt-2 text-center font-strong text-body text-ink">{mode.label}</Text>
+      <Text className="mt-2 text-center font-strong text-body text-ink">{label}</Text>
       {mode.recommended ? (
         <View aria-hidden style={{ position: 'absolute', top: -8, right: -4 }}>
-          <Label text="Gợi ý ⭐" color="#F2B632" tilt={6} size={11} />
+          <Label text={en ? 'Suggested ⭐' : 'Gợi ý ⭐'} color="#F2B632" tilt={6} size={11} />
         </View>
       ) : null}
     </Pressable>

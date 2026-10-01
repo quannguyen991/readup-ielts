@@ -6,6 +6,7 @@ import { SpeakButton } from '@/components/vocab/study/StudyKit';
 import { Icon } from '@/components/ui/Icon';
 import { lookupLex, type LexEntry } from '@/data/sat-rw-lexicon';
 import { color, paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Từ điển của các phương án, hiện sau khi chọn đáp án ở dạng Từ nối và Từ
@@ -16,6 +17,7 @@ import { color, paper } from '@/theme/tokens';
  * Dữ liệu viết tay trong `data/sat-rw-lexicon.ts`, không gọi AI.
  */
 export function WordNotes({ options, answerIndex }: { options: string[]; answerIndex: number }) {
+  const { L } = useL();
   const rows = options.map((o, i) => ({ o, i, e: lookupLex(o) })).filter((r): r is { o: string; i: number; e: LexEntry } => !!r.e);
   if (rows.length === 0) return null;
   // Đáp án đúng lên đầu.
@@ -24,7 +26,7 @@ export function WordNotes({ options, answerIndex }: { options: string[]; answerI
     <Appear>
       <View className="mt-4">
         <Text className="mb-2 font-strong text-label uppercase tracking-[1.2px]" style={{ color: paper.muted }}>
-          Từ vựng trong các phương án
+          {L('Từ vựng trong các phương án', 'Vocabulary in the options')}
         </Text>
         <View className="gap-2">
           {rows.map((r) => (
@@ -38,6 +40,7 @@ export function WordNotes({ options, answerIndex }: { options: string[]; answerI
 
 function Entry({ word, letter, entry, correct }: { word: string; letter: string; entry: LexEntry; correct: boolean }) {
   const [open, setOpen] = useState(correct);
+  const { L } = useL();
   return (
     <View
       className="rounded-panel border p-3.5"
@@ -49,7 +52,7 @@ function Entry({ word, letter, entry, correct }: { word: string; letter: string;
         </Text>
         <Text className="font-heavy text-bodyLg text-paper-ink">{word}</Text>
         <Text className="font-sans text-label" style={{ color: paper.muted }}>
-          {entry.logic ? `từ nối · ${entry.logic}` : entry.pos}
+          {entry.logic ? L(`từ nối · ${entry.logic}`, `transition · ${entry.logic}`) : entry.pos}
         </Text>
         <Text className="min-w-0 flex-1 font-semi text-body text-paper-body" numberOfLines={open ? undefined : 1}>
           · {entry.meaningVi}
@@ -65,13 +68,13 @@ function Entry({ word, letter, entry, correct }: { word: string; letter: string;
             </Text>
             <SpeakButton text={word} size={16} />
           </View>
-          <Chips label="Đồng nghĩa" words={entry.synonyms} tone={color.success} bg="#ECFDF3" />
+          <Chips label={L('Đồng nghĩa', 'Synonyms')} words={entry.synonyms} tone={color.success} bg="#ECFDF3" />
           {entry.antonyms.length > 0 ? (
-            <Chips label={entry.logic ? 'Ngược chiều logic' : 'Trái nghĩa'} words={entry.antonyms} tone={color.danger} bg="#FFF1F2" />
+            <Chips label={entry.logic ? L('Ngược chiều logic', 'Opposite logic') : L('Trái nghĩa', 'Antonyms')} words={entry.antonyms} tone={color.danger} bg="#FFF1F2" />
           ) : null}
           <View className="rounded-xl px-3 py-2" style={{ backgroundColor: paper.brandTint }}>
             <Text className="font-strong text-label" style={{ color: paper.muted }}>
-              Ví dụ
+              {L('Ví dụ', 'Example')}
             </Text>
             <Text className="mt-0.5 font-sans text-body italic text-paper-ink">{entry.example}</Text>
           </View>

@@ -4,6 +4,7 @@ import { AiError } from '@/services/ai/errors';
 import { evaluateWriting } from '@/services/ai/writing-evaluator';
 import { consumeAiCall, refundAiCall } from '@/services/ai/usage';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/writing/evaluate  { promptId, bodyText }
@@ -35,44 +36,53 @@ export async function POST(request: Request): Promise<Response> {
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
     if (!token) {
       return Response.json(
-        { error: 'Đăng nhập để chấm bài bằng AI. Nhận xét offline vẫn dùng được khi chưa đăng nhập.' },
+        {
+          error: msg(
+            request,
+            'Đăng nhập để chấm bài bằng AI. Nhận xét offline vẫn dùng được khi chưa đăng nhập.',
+            'Sign in to get AI grading. Offline feedback still works without signing in.',
+          ),
+        },
         { status: 401 },
       );
     }
     const { data: auth, error: authError } = await admin.auth.getUser(token);
     if (authError || !auth.user) {
-      return Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
     }
     userId = auth.user.id;
 
     const body = (await request.json()) as { promptId?: string; bodyText?: string };
 
     if (!body.promptId) {
-      return Response.json({ error: 'Thiếu promptId.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu promptId.', 'promptId is required.') }, { status: 400 });
     }
     const text = (body.bodyText ?? '').trim();
     if (text === '') {
-      return Response.json({ error: 'Bài viết đang trống.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Bài viết đang trống.', 'Your essay is empty.') }, { status: 400 });
     }
 
     const words = countWords(text);
     if (words > MAX_WORDS) {
       return Response.json(
-        { error: `Bài dài ${words} từ, vượt giới hạn ${MAX_WORDS} từ.` },
+        { error: msg(request, `Bài dài ${words} từ, vượt giới hạn ${MAX_WORDS} từ.`, `Your essay is ${words} words, over the ${MAX_WORDS}-word limit.`) },
         { status: 413 },
       );
     }
 
     const prompt = getWritingPromptById(body.promptId);
     if (!prompt) {
-      return Response.json({ error: 'Không tìm thấy đề.' }, { status: 404 });
+      return Response.json({ error: msg(request, 'Không tìm thấy đề.', 'Prompt not found.') }, { status: 404 });
     }
 
     if (!process.env.OPENAI_API_KEY) {
       return Response.json(
         {
-          error:
+          error: msg(
+            request,
             'Chưa cấu hình OPENAI_API_KEY nên không chấm bằng AI được. Phần phân tích nhanh vẫn dùng bình thường.',
+            "OPENAI_API_KEY isn't configured, so AI grading is unavailable. Quick analysis still works as usual.",
+          ),
           code: 'missing_config',
         },
         { status: 503 },
@@ -81,7 +91,7 @@ export async function POST(request: Request): Promise<Response> {
 
     // Trừ hạn mức TRƯỚC khi gọi AI. Trừ sau thì bấm rồi huỷ liên tục là cách
     // khai thác đơn giản nhất; hỏng thật thì hoàn lại ngay bên dưới.
-    const verdict = await consumeAiCall(admin, userId);
+    const verdict = await consumeAiCall(admin, userId, request);
     if (!verdict.allowed) {
       return Response.json(
         {
@@ -108,8 +118,8 @@ export async function POST(request: Request): Promise<Response> {
     }
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message, code: err.code }, { status: 502 });
+      return Response.json({ error: errorText(request, err, err.message, "Couldn't grade your essay. Please try again in a few minutes."), code: err.code }, { status: 502 });
     }
-    return Response.json({ error: 'Lỗi không xác định khi chấm bài.' }, { status: 500 });
+    return Response.json({ error: msg(request, 'Lỗi không xác định khi chấm bài.', 'Unknown error while grading your essay.') }, { status: 500 });
   }
 }

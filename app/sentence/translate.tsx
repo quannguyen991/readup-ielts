@@ -25,6 +25,9 @@ import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useSentenceStrike } from '@/components/game/useSentenceStrike';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
+
+const DIFFICULTY_EN = { easy: 'Easy', medium: 'Medium', hard: 'Hard' } as const;
 
 /**
  * Luyện dịch Việt → Anh bằng cách TÁI TẠO ĐÚNG CÂU MẪU.
@@ -183,12 +186,13 @@ export default function TranslateScreen() {
  * bốc ngẫu nhiên được bằng nút trên đầu.
  */
 function LibraryView({ onRandom }: { onRandom: () => void }) {
+  const { L } = useL();
   return (
     <TaskShell
       backHref="/sentence"
-      backLabel="Quay lại Luyện câu"
+      backLabel={L('Quay lại Luyện câu', 'Back to Sentence practice')}
       variant="full"
-      title="Dịch câu"
+      title={L('Dịch câu', 'Translation')}
       subtitle="Vietnamese → English"
       icon="languages"
       tone="paper"
@@ -196,7 +200,7 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
         <Button
           variant="brandOutline"
           size="sm"
-          label="Bốc ngẫu nhiên 10 câu"
+          label={L('Bốc ngẫu nhiên 10 câu', 'Random 10 sentences')}
           iconLeft="refresh"
           onPress={onRandom}
         />
@@ -222,6 +226,7 @@ function RunningView({
   total: number;
   onSubmit: (attempt: TranslationAttempt) => void;
 }) {
+  const { L, en } = useL();
   const [letters, setLetters] = useState('');
   const [showHint, setShowHint] = useState(false);
   /*
@@ -357,8 +362,8 @@ function RunningView({
   return (
     <TaskShell
       backHref="/sentence"
-      backLabel="Quay lại Luyện câu"
-      title="Dịch câu"
+      backLabel={L('Quay lại Luyện câu', 'Back to Sentence practice')}
+      title={L('Dịch câu', 'Translation')}
       subtitle="Vietnamese → English"
       icon="languages"
       tone="paper"
@@ -375,16 +380,16 @@ function RunningView({
         <View className="lg:w-[38%]">
           <PaperCard>
             <View className="flex-row items-center justify-between">
-              <Text className="font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
+              <Text className="font-heavy text-cardTitle text-paper-ink">{L('Đề bài', 'Prompt')}</Text>
               <View className="rounded-pill bg-brand-soft px-2.5 py-1">
                 <Text className="font-semi text-paper-body" style={{ fontSize: 10 }}>
-                  {SENTENCE_DIFFICULTY_LABEL[item.difficulty]}
+                  {en ? DIFFICULTY_EN[item.difficulty] : SENTENCE_DIFFICULTY_LABEL[item.difficulty]}
                 </Text>
               </View>
             </View>
 
             <Text className="mt-4 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
-              Tiếng Việt
+              {L('Tiếng Việt', 'Vietnamese')}
             </Text>
             <Text className="mt-1.5 font-strong text-sectionTitle text-paper-ink">{item.vi}</Text>
 
@@ -400,7 +405,7 @@ function RunningView({
                 strokeWidth={2}
               />
               <Text className="font-strong text-label" style={{ color: paper.brandMid }}>
-                {showHint ? 'Ẩn gợi ý' : 'Xem gợi ý'}
+                {showHint ? L('Ẩn gợi ý', 'Hide hint') : L('Xem gợi ý', 'Show hint')}
               </Text>
             </Pressable>
 
@@ -410,8 +415,8 @@ function RunningView({
                 <Text className="font-sans text-body text-paper-body">{item.hint}</Text>
                 {nextWord ? (
                   <Text className="mt-2 font-sans text-label text-paper-muted">
-                    Từ tiếp theo có <Text className="font-strong">{nextWordLength} chữ cái</Text>, bắt
-                    đầu bằng “{nextWord.text.replace(/[^A-Za-z0-9]/g, '').slice(0, 1)}”.
+                    {L('Từ tiếp theo có ', 'The next word has ')}<Text className="font-strong">{L(`${nextWordLength} chữ cái`, `${nextWordLength} letters`)}</Text>
+                    {L(', bắt đầu bằng', ', starting with')} “{nextWord.text.replace(/[^A-Za-z0-9]/g, '').slice(0, 1)}”.
                   </Text>
                 ) : null}
               </View>
@@ -432,7 +437,7 @@ function RunningView({
           {items.length > 1 ? (
             <PaperCard className="mt-3">
               <Text className="font-heavy text-label text-paper-muted" style={{ letterSpacing: 1 }}>
-                CÁC CÂU CÒN LẠI
+                {L('CÁC CÂU CÒN LẠI', 'REMAINING SENTENCES')}
               </Text>
               <View className="mt-2.5 gap-2.5">
                 {items.map((other, i) =>
@@ -448,7 +453,7 @@ function RunningView({
                   ),
                 )}
                 {index === items.length - 1 ? (
-                  <Text className="font-sans text-label text-paper-muted">Đây là câu cuối.</Text>
+                  <Text className="font-sans text-label text-paper-muted">{L('Đây là câu cuối.', 'This is the last one.')}</Text>
                 ) : null}
               </View>
             </PaperCard>
@@ -460,7 +465,7 @@ function RunningView({
           <View className="overflow-hidden rounded-card border border-brand-soft bg-white p-5">
             {done && !revealed ? <Confetti seed={item.id} silent={gameOn} /> : null}
 
-            <Text className="font-heavy text-cardTitle text-paper-ink">Bài dịch của em</Text>
+            <Text className="font-heavy text-cardTitle text-paper-ink">{L('Bài dịch của em', 'Your translation')}</Text>
 
             {/*
               Thanh "chạy tới đích" cũ thành TRẬN ĐẤU: mỗi từ dịch đúng nạp thêm
@@ -470,7 +475,7 @@ function RunningView({
             <BattleStrip
               className="mt-3"
               step={{ index, total }}
-              charge={{ value: solvedCount, total: board.words.length, unit: 'từ' }}
+              charge={{ value: solvedCount, total: board.words.length, unit: L('từ', 'words') }}
             />
 
             <LetterGrid
@@ -485,7 +490,7 @@ function RunningView({
               onChange={(text) => setLetters(sanitizeTyped(text, board.answer.length))}
               inputRef={inputRef}
               onClear={() => setLetters('')}
-              hint="Mỗi ô là một chữ cái — Ctrl+Space mở hộ một từ · Enter sang câu sau"
+              hint={L('Mỗi ô là một chữ cái — Ctrl+Space mở hộ một từ · Enter sang câu sau', 'One letter per box — Ctrl+Space reveals a word · Enter for the next sentence')}
             />
 
             {finished ? (
@@ -502,10 +507,10 @@ function RunningView({
                     style={{ color: revealed ? paper.brandMid : color.success }}
                   >
                     {revealed
-                      ? 'Đáp án đây — đọc kỹ câu mẫu rồi sang câu sau nhé.'
+                      ? L('Đáp án đây — đọc kỹ câu mẫu rồi sang câu sau nhé.', "Here's the answer — read the model sentence carefully before moving on.")
                       : showHint
-                        ? 'Xong câu — lần sau thử không mở gợi ý nhé!'
-                        : 'Bạn xuất sắc — đúng cả câu!'}
+                        ? L('Xong câu — lần sau thử không mở gợi ý nhé!', 'Done — try it without hints next time!')
+                        : L('Bạn xuất sắc — đúng cả câu!', 'Excellent — the whole sentence is right!')}
                   </Text>
                 </View>
                 <View className="mt-2 rounded-panel bg-paper-canvas p-3.5">
@@ -518,14 +523,14 @@ function RunningView({
               <View className="flex-1" />
               {finished ? (
                 <Button
-                  label={index + 1 < total ? 'Câu tiếp theo' : 'Xem kết quả'}
+                  label={index + 1 < total ? L('Câu tiếp theo', 'Next sentence') : L('Xem kết quả', 'See results')}
                   variant="brand"
                   iconRight="arrow-right"
                   onPress={goNext}
                 />
               ) : (
                 <Button
-                  label="Xem đáp án"
+                  label={L('Xem đáp án', 'Show answer')}
                   variant="brandOutline"
                   size="sm"
                   iconLeft="info"
@@ -541,7 +546,7 @@ function RunningView({
               <View className="mt-4 gap-3">
                 <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
                   <Text className="font-strong text-label text-paper-muted">
-                    Cách diễn đạt khác — câu mẫu không phải bản dịch duy nhất đúng
+                    {L('Cách diễn đạt khác — câu mẫu không phải bản dịch duy nhất đúng', "Other ways to say it — the model isn't the only correct translation")}
                   </Text>
                   <View className="mt-2 gap-1.5">
                     {enrichment.paraphrases.map((p, i) => (
@@ -553,7 +558,7 @@ function RunningView({
                 </View>
 
                 <View className="rounded-panel border border-brand-soft bg-brand-tint p-3.5">
-                  <Text className="font-strong text-label text-paper-muted">Từ vựng mới</Text>
+                  <Text className="font-strong text-label text-paper-muted">{L('Từ vựng mới', 'New vocabulary')}</Text>
                   <View className="mt-2 gap-2.5">
                     {enrichment.vocab.map((v, i) => (
                       <View key={i}>
@@ -584,6 +589,7 @@ function SummaryView({
   items: TranslationItem[];
   onRestart: () => void;
 }) {
+  const { L } = useL();
   const correctCount = useMemo(() => attempts.filter((a) => a.selfCorrect).length, [attempts]);
   const toReview = useMemo(
     () =>
@@ -597,8 +603,8 @@ function SummaryView({
   return (
     <TaskShell
       backHref="/sentence"
-      backLabel="Quay lại Luyện câu"
-      title="Xong buổi luyện"
+      backLabel={L('Quay lại Luyện câu', 'Back to Sentence practice')}
+      title={L('Xong buổi luyện', 'Session complete')}
       subtitle="Translation practice"
       icon="languages"
       tone="paper"
@@ -608,13 +614,13 @@ function SummaryView({
           {correctCount}/{attempts.length}
         </Text>
         <Text className="mt-1 font-sans text-body text-paper-muted">
-          câu tự tái tạo được mà không cần mở gợi ý
+          {L('câu tự tái tạo được mà không cần mở gợi ý', 'sentences reproduced without hints')}
         </Text>
       </PaperCard>
 
       {toReview.length > 0 ? (
         <PaperCard className="mt-4">
-          <Text className="font-strong text-cardTitle text-paper-ink">Câu cần xem lại</Text>
+          <Text className="font-strong text-cardTitle text-paper-ink">{L('Câu cần xem lại', 'Sentences to review')}</Text>
           <View className="mt-3 gap-3">
             {toReview.map((it) => (
               <View key={it.id} className="rounded-panel border border-brand-soft p-3">
@@ -630,9 +636,9 @@ function SummaryView({
       ) : null}
 
       <View className="mt-4 flex-row flex-wrap gap-2">
-        <Button label="Luyện lại" iconLeft="refresh" variant="brand" onPress={onRestart} />
+        <Button label={L('Luyện lại', 'Practise again')} iconLeft="refresh" variant="brand" onPress={onRestart} />
         <Button
-          label="Về Luyện câu"
+          label={L('Về Luyện câu', 'Back to Sentence practice')}
           variant="brandOutline"
           onPress={() => router.replace('/sentence' as never)}
         />

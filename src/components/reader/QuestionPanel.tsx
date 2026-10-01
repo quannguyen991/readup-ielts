@@ -8,6 +8,7 @@ import { groupIntoBlocks, optionsFor } from './QuestionBlocks';
 import type { EvidenceMark } from '@/services/proofloop/types';
 import { color } from '@/theme/tokens';
 import type { QuestionType } from '@/types/database';
+import { useL } from '@/i18n/useL';
 
 /**
  * Panel câu hỏi bên phải màn hình đọc: lưới số câu, lọc theo dạng,
@@ -56,6 +57,7 @@ export function QuestionPanel({
   onStartEvidence?: (questionId: string) => void;
   onClearEvidence?: (questionId: string) => void;
 }) {
+  const { L } = useL();
   const [typeFilter, setTypeFilter] = useState<QuestionType | 'all'>('all');
   const mixed = layout === 'mixed';
 
@@ -74,7 +76,7 @@ export function QuestionPanel({
   if (visible.length === 0) {
     return (
       <PanelShell bare={bare}>
-        <Text className="font-sans text-body text-muted">Chưa có câu hỏi nào cho bài này.</Text>
+        <Text className="font-sans text-body text-muted">{L('Chưa có câu hỏi nào cho bài này.', 'No questions for this passage yet.')}</Text>
       </PanelShell>
     );
   }
@@ -84,7 +86,7 @@ export function QuestionPanel({
       <View className="flex-row items-center justify-between">
         <Text className="font-strong text-cardTitle text-ink">Questions</Text>
         <Text className="font-mid text-label text-muted">
-          {answered} / {questions.length} đã trả lời
+          {L(`${answered} / ${questions.length} đã trả lời`, `${answered} / ${questions.length} answered`)}
         </Text>
       </View>
 
@@ -103,7 +105,7 @@ export function QuestionPanel({
           return (
             <View
               key={q.id}
-              accessibilityLabel={`Câu ${index + 1}`}
+              accessibilityLabel={L(`Câu ${index + 1}`, `Question ${index + 1}`)}
               className={[
                 'h-8 w-8 items-center justify-center rounded-md border',
                 isAnswered ? 'border-primary-200 bg-primary-50' : 'border-border bg-surface',
@@ -128,7 +130,7 @@ export function QuestionPanel({
       <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-3">
         <View className="flex-row gap-2">
           <FilterChip
-            label="Tất cả"
+            label={L('Tất cả', 'All')}
             active={typeFilter === 'all'}
             onPress={() => {
               setTypeFilter('all');
@@ -270,7 +272,7 @@ export function QuestionPanel({
                       <TextInput
                         value={answers[question.id] ?? ''}
                         onChangeText={(text) => onAnswer(question.id, text)}
-                        placeholder="Nhập câu trả lời…"
+                        placeholder={L('Nhập câu trả lời…', 'Type your answer…')}
                         placeholderTextColor={color.subtle}
                         className="h-11 rounded-panel border border-border bg-surface px-3 font-sans text-body text-ink"
                         style={{ outlineStyle: 'none' } as never}
@@ -280,7 +282,7 @@ export function QuestionPanel({
 
                   <View className="mt-2.5 flex-row items-center gap-2">
                     <Pressable onPress={() => onAnswer(question.id, '')}>
-                      <Text className="font-semi text-label text-muted">Xoá</Text>
+                      <Text className="font-semi text-label text-muted">{L('Xoá', 'Clear')}</Text>
                     </Pressable>
                     <Text className="text-muted">·</Text>
                     <Pressable onPress={() => onToggleMark(question.id)}>
@@ -290,7 +292,7 @@ export function QuestionPanel({
                           marked[question.id] ? 'text-accent-700' : 'text-muted',
                         ].join(' ')}
                       >
-                        {marked[question.id] ? 'Bỏ đánh dấu' : 'Đánh dấu xem lại'}
+                        {marked[question.id] ? L('Bỏ đánh dấu', 'Unmark') : L('Đánh dấu xem lại', 'Mark for review')}
                       </Text>
                     </Pressable>
                   </View>

@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { HeroBanner, Pagination } from '@/components/ui';
 import { filterArticles, isReadable, type ArticleMeta } from '@/data/articles';
+import { useL } from '@/i18n/useL';
 
 /**
  * LUYỆN XEN KẼ DẠNG BÀI — nhánh đối lập của Mock Test.
@@ -23,6 +24,7 @@ import { filterArticles, isReadable, type ArticleMeta } from '@/data/articles';
 const PAGE_SIZE = 12;
 
 export default function MixedPracticeScreen() {
+  const { L } = useL();
   const [page, setPage] = useState(0);
 
   const articles = useMemo(
@@ -35,14 +37,14 @@ export default function MixedPracticeScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Luyện xen kẽ dạng bài"
-        subtitle="Các dạng câu bị trộn lẫn trong cùng một bài, không đi thành khối như đề thi. Dùng khi đang học phân biệt dạng — nhận ra dạng trước, làm sau."
+        title={L('Luyện xen kẽ dạng bài', 'Mixed question-type practice')}
+        subtitle={L('Các dạng câu bị trộn lẫn trong cùng một bài, không đi thành khối như đề thi. Dùng khi đang học phân biệt dạng — nhận ra dạng trước, làm sau.', "Question types are shuffled within each passage instead of coming in blocks like the real test. Use it while you're learning to tell types apart — spot the type first, then answer.")}
         illustration="mock-tests-hero"
       />
 
       <View className="mt-4">
         <Text className="font-mid text-label text-muted">
-          <Text className="font-heavy text-ink">{articles.length}</Text> bài đọc
+          <Text className="font-heavy text-ink">{articles.length}</Text>{L(' bài đọc', ' passages')}
         </Text>
       </View>
 

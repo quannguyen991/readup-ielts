@@ -5,6 +5,7 @@ import { getSpeakingQuestion } from '@/services/speaking/bank';
 import { answerMetrics, attemptMetrics, type AnswerMetrics, type RecognizedSegment } from '@/services/speaking/metrics';
 import type { GradeAnswerInput } from '@/services/speaking/prompt';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/speaking/grade
@@ -43,13 +44,19 @@ export async function POST(request: Request): Promise<Response> {
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
     if (!token) {
       return Response.json(
-        { error: 'Đăng nhập để chấm bài nói bằng AI. Chỉ số đo tại máy vẫn xem được khi chưa đăng nhập.' },
+        {
+          error: msg(
+            request,
+            'Đăng nhập để chấm bài nói bằng AI. Chỉ số đo tại máy vẫn xem được khi chưa đăng nhập.',
+            'Sign in to get AI grading for your speaking. On-device metrics still work without signing in.',
+          ),
+        },
         { status: 401 },
       );
     }
     const { data: auth, error: authError } = await admin.auth.getUser(token);
     if (authError || !auth.user) {
-      return Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
     }
     userId = auth.user.id;
 
@@ -57,16 +64,16 @@ export async function POST(request: Request): Promise<Response> {
     const typed = body.typed === true;
     const rawAnswers = Array.isArray(body.answers) ? (body.answers as RawAnswer[]) : [];
     if (rawAnswers.length === 0) {
-      return Response.json({ error: 'Chưa có câu trả lời nào.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Chưa có câu trả lời nào.', 'No answers yet.') }, { status: 400 });
     }
     if (rawAnswers.length > MAX_ANSWERS) {
-      return Response.json({ error: `Tối đa ${MAX_ANSWERS} câu mỗi lượt.` }, { status: 413 });
+      return Response.json({ error: msg(request, `Tối đa ${MAX_ANSWERS} câu mỗi lượt.`, `Up to ${MAX_ANSWERS} answers per attempt.`) }, { status: 413 });
     }
 
     const answers: Array<GradeAnswerInput & { metrics: AnswerMetrics }> = [];
     for (const a of rawAnswers) {
       const q = getSpeakingQuestion(typeof a.questionId === 'string' ? a.questionId : '');
-      if (!q) return Response.json({ error: 'Có câu hỏi không có trong ngân hàng đề.' }, { status: 400 });
+      if (!q) return Response.json({ error: msg(request, 'Có câu hỏi không có trong ngân hàng đề.', "Some questions aren't in the question bank.") }, { status: 400 });
       const transcript = (typeof a.transcript === 'string' ? a.transcript : '').trim().slice(0, MAX_CHARS);
       const segments: RecognizedSegment[] = (Array.isArray(a.segments) ? a.segments : [])
         .slice(0, MAX_SEGMENTS)
@@ -102,16 +109,26 @@ export async function POST(request: Request): Promise<Response> {
 
     const metrics = attemptMetrics(answers.map((a) => ({ part: a.part, transcript: a.transcript, metrics: a.metrics })));
     if (metrics.words === 0) {
-      return Response.json({ error: 'Bài chưa có chữ nào để chấm.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Bài chưa có chữ nào để chấm.', 'There are no words to grade yet.') }, { status: 400 });
     }
     if (metrics.words > MAX_TOTAL_WORDS) {
-      return Response.json({ error: `Bài dài ${metrics.words} từ, vượt giới hạn ${MAX_TOTAL_WORDS} từ.` }, { status: 413 });
+      return Response.json({
+          error: msg(
+            request,
+            `Bài dài ${metrics.words} từ, vượt giới hạn ${MAX_TOTAL_WORDS} từ.`,
+            `Your answer is ${metrics.words} words, over the ${MAX_TOTAL_WORDS}-word limit.`,
+          ),
+        }, { status: 413 });
     }
 
     if (!process.env.OPENAI_API_KEY) {
       return Response.json(
         {
-          error: 'Chưa cấu hình OPENAI_API_KEY nên không chấm bằng AI được. Chỉ số đo tại máy vẫn dùng bình thường.',
+          error: msg(
+            request,
+            'Chưa cấu hình OPENAI_API_KEY nên không chấm bằng AI được. Chỉ số đo tại máy vẫn dùng bình thường.',
+            "OPENAI_API_KEY isn't configured, so AI grading is unavailable. On-device metrics still work as usual.",
+          ),
           code: 'missing_config',
         },
         { status: 503 },
@@ -119,7 +136,7 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     // Trừ hạn mức TRƯỚC khi gọi AI (xem ghi chú ở `usage.ts`).
-    const verdict = await consumeAiCall(admin, userId);
+    const verdict = await consumeAiCall(admin, userId, request);
     if (!verdict.allowed) {
       return Response.json(
         { error: verdict.message, code: 'quota_exceeded', used: verdict.used, limit: verdict.limit, plan: verdict.plan },
@@ -136,8 +153,8 @@ export async function POST(request: Request): Promise<Response> {
     }
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message, code: err.code }, { status: 502 });
+      return Response.json({ error: errorText(request, err, err.message, "Couldn't grade your speaking. Please try again in a few minutes."), code: err.code }, { status: 502 });
     }
-    return Response.json({ error: 'Lỗi không xác định khi chấm bài nói.' }, { status: 500 });
+    return Response.json({ error: msg(request, 'Lỗi không xác định khi chấm bài nói.', 'Unknown error while grading your speaking.') }, { status: 500 });
   }
 }

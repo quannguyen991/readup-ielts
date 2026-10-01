@@ -14,6 +14,7 @@ import {
 } from '@/services/auth/session';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /** Chờ giữa hai lần gửi mã. Mỗi tin SMS tốn tiền thật, nên chặn bấm liên tục. */
 const RESEND_COOLDOWN_SECONDS = 60;
@@ -42,6 +43,7 @@ export default function OtpScreen() {
   const [error, setError] = useState<string | null>(null);
   const [cooldown, setCooldown] = useState(RESEND_COOLDOWN_SECONDS);
   const submitted = useRef(false);
+  const { L } = useL();
 
   const shown = useMemo(() => (isSms ? maskPhone(destination) : destination), [destination, isSms]);
 
@@ -103,13 +105,13 @@ export default function OtpScreen() {
     return (
       <Screen>
         <Card>
-          <Text className="font-strong text-cardTitle text-ink">Thiếu thông tin</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Thiếu thông tin', 'Missing details')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            Không biết gửi mã tới đâu. Quay lại và nhập số điện thoại hoặc email.
+            {L('Không biết gửi mã tới đâu. Quay lại và nhập số điện thoại hoặc email.', "We don't know where to send the code. Go back and enter your phone number or email.")}
           </Text>
           <Button
             className="mt-3 self-start"
-            label="Quay lại đăng nhập"
+            label={L('Quay lại đăng nhập', 'Back to sign-in')}
             onPress={() => router.replace('/auth/sign-in' as never)}
           />
         </Card>
@@ -127,11 +129,11 @@ export default function OtpScreen() {
     return (
       <Screen>
         <View className="w-full self-center" style={{ maxWidth: 420 }}>
-          <Text className="font-heavy text-pageTitle text-ink">Kiểm tra email</Text>
+          <Text className="font-heavy text-pageTitle text-ink">{L('Kiểm tra email', 'Check your email')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            Một liên kết đăng nhập vừa được gửi tới{' '}
-            <Text className="font-strong text-ink">{shown}</Text>. Mở email và bấm vào liên kết đó —
-            bạn sẽ quay lại đây và đăng nhập xong.
+            {L('Một liên kết đăng nhập vừa được gửi tới', 'We just sent a sign-in link to')}{' '}
+            <Text className="font-strong text-ink">{shown}</Text>
+            {L('. Mở email và bấm vào liên kết đó — bạn sẽ quay lại đây và đăng nhập xong.', ". Open the email and tap the link — you'll come back here, signed in.")}
           </Text>
 
           <Card className="mt-4">
@@ -140,7 +142,7 @@ export default function OtpScreen() {
                 <Icon name="info" size={24} color={color.primary} />
               </View>
               <Text className="mt-3 text-center font-sans text-body text-muted">
-                Liên kết dùng được một lần và hết hạn sau ít phút.
+                {L('Liên kết dùng được một lần và hết hạn sau ít phút.', 'The link works once and expires in a few minutes.')}
               </Text>
               {/*
                 Ràng buộc thật của PKCE, không phải lời khuyên chung chung: mã
@@ -149,7 +151,7 @@ export default function OtpScreen() {
                 thông báo lỗi lúc đó rất khó hiểu — nói trước rẻ hơn nhiều.
               */}
               <Text className="mt-2 text-center font-sans text-label text-subtle">
-                Mở liên kết trên chính trình duyệt này — mở ở máy khác sẽ không nhận.
+                {L('Mở liên kết trên chính trình duyệt này — mở ở máy khác sẽ không nhận.', "Open the link in this same browser — it won't work on another device.")}
               </Text>
             </View>
 
@@ -163,11 +165,11 @@ export default function OtpScreen() {
             <View className="mt-2 items-center">
               {cooldown > 0 ? (
                 <Text className="font-sans text-label text-muted">
-                  Gửi lại email sau {cooldown}s
+                  {L(`Gửi lại email sau ${cooldown}s`, `Resend email in ${cooldown}s`)}
                 </Text>
               ) : (
                 <Button
-                  label="Gửi lại email"
+                  label={L('Gửi lại email', 'Resend email')}
                   variant="ghost"
                   size="sm"
                   disabled={busy}
@@ -178,14 +180,13 @@ export default function OtpScreen() {
           </Card>
 
           <Card className="mt-4" variant="flat">
-            <Text className="font-strong text-label text-ink">Không thấy email?</Text>
+            <Text className="font-strong text-label text-ink">{L('Không thấy email?', "Can't find the email?")}</Text>
             <Text className="mt-1 font-sans text-label text-muted">
-              Kiểm tra cả thư mục Spam và Quảng cáo. Email do Supabase gửi nên người gửi không phải
-              tên Band 9.
+              {L('Kiểm tra cả thư mục Spam và Quảng cáo. Email do Supabase gửi nên người gửi không phải tên Band 9.', "Check your Spam and Promotions folders too. The email comes from Supabase, so the sender won't say Band 9.")}
             </Text>
             <Button
               className="mt-3 self-start"
-              label="Đổi cách đăng nhập"
+              label={L('Đổi cách đăng nhập', 'Use another sign-in method')}
               variant="outline"
               size="sm"
               onPress={() => router.replace('/auth/sign-in' as never)}
@@ -199,9 +200,9 @@ export default function OtpScreen() {
   return (
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 420 }}>
-        <Text className="font-heavy text-pageTitle text-ink">Nhập mã xác nhận</Text>
+        <Text className="font-heavy text-pageTitle text-ink">{L('Nhập mã xác nhận', 'Enter verification code')}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          Mã gồm 6 chữ số vừa được gửi tới{' '}
+          {L('Mã gồm 6 chữ số vừa được gửi tới', 'A 6-digit code was just sent to')}{' '}
           <Text className="font-strong text-ink">{shown}</Text>.
         </Text>
 
@@ -230,7 +231,7 @@ export default function OtpScreen() {
 
           <Button
             className="mt-3"
-            label="Xác nhận"
+            label={L('Xác nhận', 'Confirm')}
             fullWidth
             loading={busy}
             disabled={!isValidOtp(code) || busy}
@@ -240,24 +241,24 @@ export default function OtpScreen() {
           <View className="mt-3 items-center">
             {cooldown > 0 ? (
               <Text className="font-sans text-label text-muted">
-                Gửi lại mã sau {cooldown}s
+                {L(`Gửi lại mã sau ${cooldown}s`, `Resend code in ${cooldown}s`)}
               </Text>
             ) : (
-              <Button label="Gửi lại mã" variant="ghost" size="sm" disabled={busy} onPress={resend} />
+              <Button label={L('Gửi lại mã', 'Resend code')} variant="ghost" size="sm" disabled={busy} onPress={resend} />
             )}
           </View>
         </Card>
 
         <Card className="mt-4" variant="flat">
-          <Text className="font-strong text-label text-ink">Không nhận được mã?</Text>
+          <Text className="font-strong text-label text-ink">{L('Không nhận được mã?', "Didn't get the code?")}</Text>
           <Text className="mt-1 font-sans text-label text-muted">
             {isSms
-              ? 'Kiểm tra sóng và hộp thư rác của tin nhắn. Số phải là số di động đang hoạt động — SMS không gửi tới số bàn được.'
-              : 'Kiểm tra cả thư mục Spam và Quảng cáo. Mã có hiệu lực trong ít phút.'}
+              ? L('Kiểm tra sóng và hộp thư rác của tin nhắn. Số phải là số di động đang hoạt động — SMS không gửi tới số bàn được.', "Check your signal and your spam messages. It must be an active mobile number — SMS can't reach landlines.")
+              : L('Kiểm tra cả thư mục Spam và Quảng cáo. Mã có hiệu lực trong ít phút.', 'Check your Spam and Promotions folders too. The code is valid for a few minutes.')}
           </Text>
           <Button
             className="mt-3 self-start"
-            label="Đổi cách đăng nhập"
+            label={L('Đổi cách đăng nhập', 'Use another sign-in method')}
             variant="outline"
             size="sm"
             onPress={() => router.replace('/auth/sign-in' as never)}

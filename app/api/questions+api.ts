@@ -4,6 +4,7 @@ import { generateQuestionsWithClaude } from '@/services/ai/questions';
 import { blueprintFor, type PassageBlueprint } from '@/services/questions/blueprint';
 import { questionCacheKey, readSharedQuestionSet, writeSharedQuestionSet } from '@/services/questions/cache';
 import type { QuestionType } from '@/types/database';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/questions  { articleId, count?, focusType?, types?, passage? }
@@ -39,7 +40,7 @@ export async function POST(request: Request): Promise<Response> {
     };
 
     if (!body.articleId) {
-      return Response.json({ error: 'Thiếu articleId.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu articleId.', 'articleId is required.') }, { status: 400 });
     }
 
     const inline = readInlinePassage(body.passage);
@@ -63,14 +64,17 @@ export async function POST(request: Request): Promise<Response> {
 
     const meta = getArticleById(body.articleId);
     if (!meta) {
-      return Response.json({ error: 'Không tìm thấy bài đọc.' }, { status: 404 });
+      return Response.json({ error: msg(request, 'Không tìm thấy bài đọc.', 'Article not found.') }, { status: 404 });
     }
 
     if (!isReadable(meta)) {
       return Response.json(
         {
-          error:
+          error: msg(
+            request,
             'Bài này thuộc nguồn có bản quyền (chỉ lưu tiêu đề), không sinh đề được. Mở link gốc để đọc.',
+            "This article is from a copyrighted source (title only), so questions can't be generated. Open the original link to read it.",
+          ),
         },
         { status: 422 },
       );
@@ -80,7 +84,13 @@ export async function POST(request: Request): Promise<Response> {
     const article = getArticleWithBody(body.articleId);
     if (!article) {
       return Response.json(
-        { error: 'Không nạp được toàn văn của bài này. Chạy lại `npm run ingest`.' },
+        {
+          error: msg(
+            request,
+            'Không nạp được toàn văn của bài này. Chạy lại `npm run ingest`.',
+            "Couldn't load this article's full text. Run `npm run ingest` again.",
+          ),
+        },
         { status: 422 },
       );
     }
@@ -154,9 +164,9 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ ...questionSet, requestedTypes });
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message, code: err.code }, { status: err.status ?? 502 });
+      return Response.json({ error: errorText(request, err, err.message, "Couldn't generate questions right now. Please try again in a few minutes."), code: err.code }, { status: err.status ?? 502 });
     }
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

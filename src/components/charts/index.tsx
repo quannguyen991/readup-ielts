@@ -3,6 +3,7 @@ import { Text, View } from 'react-native';
 import Svg, { Circle, G, Line, Path, Rect, Text as SvgText } from 'react-native-svg';
 
 import { chartPalette, color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Bộ biểu đồ dựng bằng react-native-svg.
@@ -272,6 +273,7 @@ export function Heatmap({
   data: Array<{ date: string; value: number }>;
   weeks?: number;
 }) {
+  const { L } = useL();
   const cell = 14;
   const gap = 4;
   const max = Math.max(1, ...data.map((d) => d.value));
@@ -304,7 +306,7 @@ export function Heatmap({
       </Svg>
 
       <View className="mt-2 flex-row items-center gap-1.5">
-        <Text className="font-mid text-label text-subtle">Ít</Text>
+        <Text className="font-mid text-label text-subtle">{L('Ít', 'Less')}</Text>
         {[0.25, 0.5, 0.75, 1].map((o) => (
           <View
             key={o}
@@ -312,7 +314,7 @@ export function Heatmap({
             style={{ backgroundColor: color.primary, opacity: o }}
           />
         ))}
-        <Text className="font-mid text-label text-subtle">Nhiều</Text>
+        <Text className="font-mid text-label text-subtle">{L('Nhiều', 'More')}</Text>
       </View>
     </View>
   );
@@ -352,12 +354,13 @@ export function HorizontalBars({
 }
 
 function EmptyChart({ height }: { height: number }) {
+  const { L } = useL();
   return (
     <View
       className="items-center justify-center rounded-panel bg-surfaceAlt"
       style={{ height }}
     >
-      <Text className="font-sans text-label text-muted">Chưa có dữ liệu</Text>
+      <Text className="font-sans text-label text-muted">{L('Chưa có dữ liệu', 'No data yet')}</Text>
     </View>
   );
 }

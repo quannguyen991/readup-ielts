@@ -33,5 +33,13 @@ export function isLaptopLike({
  * thoại bỏ — màn hẹp không có chỗ cạnh chữ. Ngưỡng 768px là bề rộng iPad dọc.
  */
 export function showsHeroLogo({ width }: { width: number }): boolean {
-  return width >= 768;
+  return width >= HEADER_ART_MIN;
 }
+
+/**
+ * Ngưỡng hiện hình trang trí TO ở khối đầu trang (sticker, logo 3D). Người dùng
+ * 01/10/2026: "ở giao diện tablet hay điện thoại, bỏ bớt mấy icon, mô hình 3D
+ * trên thanh tiêu đề to, vì nó khiến chữ bị xuống dòng không đẹp". Dưới ngưỡng
+ * này (máy tính bảng dựng đứng, điện thoại) khối đầu trang chỉ còn chữ.
+ */
+export const HEADER_ART_MIN = 1200;

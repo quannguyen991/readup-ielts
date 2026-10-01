@@ -12,6 +12,7 @@ import { ExploreTiles } from '@/components/game/quest-hub/ExploreTiles';
 import { Cols, Eyebrow, GAP, HUB, lift, Panel, SectionHeader, useBoxWidth, WEB } from '@/components/game/quest-hub/kit';
 import { useWorldIslands } from '@/components/world/useWorldIslands';
 import { SealIcon } from '@/components/illust/HeroArt';
+import { useL } from '@/i18n/useL';
 import { CRIT_EVERY, ENEMIES, XP_CORRECT } from '@/services/game/rules';
 import { nextMission, type Island } from '@/services/world/islands';
 import { useGameStore } from '@/store/useGameStore';
@@ -50,6 +51,7 @@ const MAX_W = 1280;
 
 export default function QuestHome() {
   useEffect(ensureGameKeyframes, []);
+  const { L } = useL();
   const cityAvailable = useCityAvailable();
   const enabled = useGameStore((s) => s.enabled);
   const setEnabled = useGameStore((s) => s.setEnabled);
@@ -73,16 +75,19 @@ export default function QuestHome() {
                 <SealIcon name="info" color={HUB.amber} size={34} />
               </View>
               <Text className="font-sans" style={{ flex: 1, minWidth: 200, fontSize: 14, lineHeight: 20, color: HUB.ink }}>
-                Chế độ game đang tắt: màn học không có thanh trận đấu và không cộng XP game.
+                {L(
+                  'Chế độ game đang tắt: màn học không có thanh trận đấu và không cộng XP game.',
+                  'Game mode is off: lessons show no battle bar and earn no game XP.',
+                )}
               </Text>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Bật lại chế độ game"
+                accessibilityLabel={L('Bật lại chế độ game', 'Turn game mode back on')}
                 onPress={() => setEnabled(true)}
                 style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 12, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: hovered ? HUB.goldHover : HUB.gold })}
               >
                 <Text className="font-strong" style={{ fontSize: 13, color: HUB.ctaInk }}>
-                  Bật lại
+                  {L('Bật lại', 'Turn on')}
                 </Text>
               </Pressable>
             </Panel>
@@ -111,18 +116,18 @@ export default function QuestHome() {
         {/* 3. Hôm nay */}
         <Appear index={3}>
           <View style={{ marginTop: GAP.section }}>
-            <SectionHeader seal="target" tone={HUB.amber} title="Hôm nay" sub="Nhiệm vụ đổi mỗi ngày — làm xong thì bấm nhận thưởng." />
+            <SectionHeader seal="target" tone={HUB.amber} title={L('Hôm nay', 'Today')} sub={L('Nhiệm vụ đổi mỗi ngày — làm xong thì bấm nhận thưởng.', 'Quests change daily — finish one, then claim your reward.')} />
             <View style={{ marginTop: GAP.md, flexDirection: wide ? 'row' : 'column', gap: GAP.md, alignItems: 'stretch' }}>
               <Panel style={wide ? { flex: 1.7 } : undefined}>
-                <Eyebrow text="NHIỆM VỤ HÔM NAY" />
+                <Eyebrow text={L('NHIỆM VỤ HÔM NAY', 'TODAY’S QUESTS')} />
                 <View style={{ marginTop: 6 }}>
                   <DailyQuests />
                 </View>
               </Panel>
               <Panel style={wide ? { flex: 1 } : undefined}>
-                <Eyebrow text="SỐ LIỆU HÔM NAY" tone={HUB.sky} />
+                <Eyebrow text={L('SỐ LIỆU HÔM NAY', 'TODAY’S STATS')} tone={HUB.sky} />
                 <Text className="font-sans" style={{ marginTop: 6, marginBottom: GAP.sm, fontSize: 12, color: HUB.muted }}>
-                  Đếm mọi câu trả lời trong ngày, ở mọi bài.
+                  {L('Đếm mọi câu trả lời trong ngày, ở mọi bài.', 'Counts every answer today, across all lessons.')}
                 </Text>
                 <TodayStats />
               </Panel>
@@ -136,9 +141,9 @@ export default function QuestHome() {
             <SectionHeader
               seal="compass"
               tone={HUB.green}
-              title="Chọn mảng để vào trận"
-              sub="Bấm một mảng để xem các bài và chọn bài muốn học."
-              action={{ label: 'Mở màn chọn trận', href: '/quest/pick' }}
+              title={L('Chọn mảng để vào trận', 'Pick an area to battle')}
+              sub={L('Bấm một mảng để xem các bài và chọn bài muốn học.', 'Tap an area to see its lessons and choose one.')}
+              action={{ label: L('Mở màn chọn trận', 'Open battle picker'), href: '/quest/pick' }}
             />
             <View style={{ marginTop: GAP.md }}>
               <Cols cols={areaCols}>
@@ -154,7 +159,7 @@ export default function QuestHome() {
         {/* 5. Khám phá */}
         <Appear index={5}>
           <View style={{ marginTop: GAP.section }}>
-            <SectionHeader seal="sparkle" tone={HUB.sky} title="Khám phá" sub="Những khu chơi khác của Band 9 Quest." />
+            <SectionHeader seal="sparkle" tone={HUB.sky} title={L('Khám phá', 'Explore')} sub={L('Những khu chơi khác của Band 9 Quest.', 'More places to play in Band 9 Quest.')} />
             <View style={{ marginTop: GAP.md }}>
               <ExploreTiles width={w} />
             </View>
@@ -167,15 +172,19 @@ export default function QuestHome() {
             <SectionHeader
               seal="clock"
               tone={HUB.blue}
-              title="Luật trong 20 giây"
-              action={{ label: 'Luật đầy đủ, túi đồ, sổ quái', href: '/quest/hero' }}
+              title={L('Luật trong 20 giây', 'Rules in 20 seconds')}
+              action={{ label: L('Luật đầy đủ, túi đồ, sổ quái', 'Full rules, inventory, bestiary'), href: '/quest/hero' }}
             />
             <View style={{ marginTop: GAP.md }}>
               <Cols cols={w >= 900 ? 4 : 2} gap={w >= 900 ? GAP.md : GAP.sm}>
-                <Rule glyph="⚔️" tone={HUB.green} text={`Đúng một câu: +${XP_CORRECT} XP và một nhát chém.`} />
-                <Rule glyph="💔" tone={HUB.red} text="Sai: quái đánh lại, mất 1 tim và mất combo." />
-                <Rule glyph="💥" tone={HUB.orange} text={`${CRIT_EVERY} câu đúng liền: đòn chí mạng, gấp đôi XP.`} />
-                <Rule glyph="👑" tone={HUB.amber} text={`Con thứ ${ENEMIES.length} mỗi vòng là Boss — hạ được thưởng lớn.`} />
+                <Rule glyph="⚔️" tone={HUB.green} text={L(`Đúng một câu: +${XP_CORRECT} XP và một nhát chém.`, `Correct answer: +${XP_CORRECT} XP and one strike.`)} />
+                <Rule glyph="💔" tone={HUB.red} text={L('Sai: quái đánh lại, mất 1 tim và mất combo.', 'Wrong: the monster hits back — you lose 1 heart and your combo.')} />
+                <Rule glyph="💥" tone={HUB.orange} text={L(`${CRIT_EVERY} câu đúng liền: đòn chí mạng, gấp đôi XP.`, `${CRIT_EVERY} correct in a row: critical hit, double XP.`)} />
+                <Rule glyph="👑" tone={HUB.amber} text={L(
+                    `Con thứ ${ENEMIES.length} mỗi vòng là Boss — hạ được thưởng lớn.`,
+                    `Monster #${ENEMIES.length} in each round is a Boss — defeat it for a big reward.`,
+                  )}
+                />
               </Cols>
             </View>
           </View>
@@ -187,10 +196,11 @@ export default function QuestHome() {
 
 /** Ô thứ sáu của lưới mảng: mở màn chọn trận đầy đủ. */
 function PickAllCard() {
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel="Mở màn chọn trận: xem tất cả mảng và bài"
+      accessibilityLabel={L('Mở màn chọn trận: xem tất cả mảng và bài', 'Open battle picker: see all areas and lessons')}
       onPress={() => router.push('/quest/pick' as never)}
       style={({ hovered }: { hovered?: boolean }) => ({
         height: '100%',
@@ -211,13 +221,13 @@ function PickAllCard() {
         <SealIcon name="grid" color={HUB.amber} size={44} />
       </View>
       <Text className="font-heavy" style={{ fontSize: 16, color: HUB.ink, textAlign: 'center' }}>
-        Xem tất cả bài
+        {L('Xem tất cả bài', 'See all lessons')}
       </Text>
       <Text className="font-sans" style={{ fontSize: 13, lineHeight: 18, color: HUB.muted, textAlign: 'center', maxWidth: 240 }}>
-        Lọc theo mảng, độ khó và bài đã qua.
+        {L('Lọc theo mảng, độ khó và bài đã qua.', 'Filter by area, difficulty and completed lessons.')}
       </Text>
       <Text className="font-strong" style={{ marginTop: 2, fontSize: 13, color: HUB.gold }}>
-        Mở màn chọn trận →
+        {L('Mở màn chọn trận →', 'Open battle picker →')}
       </Text>
     </Pressable>
   );

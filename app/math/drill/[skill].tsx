@@ -13,6 +13,7 @@ import { ROUND_SIZE, bankProgress, bankRoundId, bankRoundItems, roundLength, rou
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
 import { useMathBankProgress, useMathSetProgress, useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useL } from '@/i18n/useL';
 
 /** Hai phút mỗi câu — nhịp của đề thật (22 câu / 35 phút ≈ 1,6 phút). */
 const MINUTES_PER_QUESTION = 2;
@@ -35,6 +36,7 @@ export default function MathDrillScreen() {
 }
 
 function MathSetPicker({ skill }: { skill: MathSkill }) {
+  const { L } = useL();
   const bank = useMathBankProgress()[skill];
   const progress = useMathSetProgress();
   const sets: PickerSet[] = Array.from({ length: roundsFor(skill) }, (_, r) => {
@@ -45,7 +47,7 @@ function MathSetPicker({ skill }: { skill: MathSkill }) {
       done: !!p,
       ratio: p ? p.bestRatio : null,
       score: p ? `${Math.round(p.bestRatio * n)}/${n}` : undefined,
-      note: p ? `${p.rounds} lần` : undefined,
+      note: p ? L(`${p.rounds} lần`, `${p.rounds}×`) : undefined,
     };
   });
   return (
@@ -58,12 +60,16 @@ function MathSetPicker({ skill }: { skill: MathSkill }) {
       nextIndex={bank.nextRound}
       minutesPerQuestion={MINUTES_PER_QUESTION}
       onOpen={(r) => router.push(`/math/drill/${skill}?round=${r}` as never)}
-      footnote="Điểm trên mỗi bộ là lần làm tốt nhất. Làm lại một bộ thì gặp đúng các câu cũ."
+      footnote={L(
+        'Điểm trên mỗi bộ là lần làm tốt nhất. Làm lại một bộ thì gặp đúng các câu cũ.',
+        'Each set shows your best attempt. Redoing a set gives you the same questions.',
+      )}
     />
   );
 }
 
 function DrillRunner() {
+  const { L } = useL();
   const params = useLocalSearchParams<{ skill?: string; round?: string }>();
   const skill = params.skill as MathSkill | undefined;
   const valid = !!skill && skill in MATH_SKILL_DOMAIN;
@@ -119,11 +125,14 @@ function DrillRunner() {
               </Sticker>
             </Motion>
           </View>
-          <Text className="font-strong text-cardTitle text-ink">Không có kỹ năng này</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có kỹ năng này', 'Skill not found')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            Đường dẫn trỏ tới một kỹ năng không nằm trong 19 kỹ năng của Digital SAT Math.
+            {L(
+              'Đường dẫn trỏ tới một kỹ năng không nằm trong 19 kỹ năng của Digital SAT Math.',
+              "This link points to a skill that isn't one of the 19 Digital SAT Math skills.",
+            )}
           </Text>
-          <Button className="mt-3" label="Về trang Math" onPress={() => router.replace('/math')} />
+          <Button className="mt-3" label={L('Về trang Math', 'Back to Math')} onPress={() => router.replace('/math')} />
         </Card>
       </Screen>
     );
@@ -132,11 +141,17 @@ function DrillRunner() {
   return (
     <MathRunner
       surface="paper"
-      title={`${MATH_SKILL_LABEL[skill]} · Bộ đề ${round + 1}/${roundsFor(skill)}`}
-      subtitle={`${items.length} câu của ngân hàng kỹ năng này (mỗi bộ ${ROUND_SIZE} câu). Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`}
+      title={L(
+        `${MATH_SKILL_LABEL[skill]} · Bộ đề ${round + 1}/${roundsFor(skill)}`,
+        `${MATH_SKILL_LABEL[skill]} · Set ${round + 1}/${roundsFor(skill)}`,
+      )}
+      subtitle={L(
+        `${items.length} câu của ngân hàng kỹ năng này (mỗi bộ ${ROUND_SIZE} câu). Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`,
+        `${items.length} questions from this skill's bank (${ROUND_SIZE} per set). Finish, then review each one — every mistake gets called by its name.`,
+      )}
       items={items}
       minutes={items.length * MINUTES_PER_QUESTION}
-      submitLabel="Nộp và xem lại"
+      submitLabel={L('Nộp và xem lại', 'Submit and review')}
       onFinish={finish}
     />
   );

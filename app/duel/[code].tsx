@@ -18,6 +18,17 @@ import { SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge } from '@/components/illust/Cute';
 import { CuteChat, CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { currentLocale, useL } from '@/i18n/useL';
+
+/** Bản tiếng Anh cho câu kết của `verdictTitle` (dữ liệu gốc giữ tiếng Việt). */
+const VERDICT_EN: Record<string, string> = {
+  'Xong!': 'Done!',
+  'Hoà!': "It's a draw!",
+  'Thắng sát nút! 🏆': 'Won by a whisker! 🏆',
+  'Bạn thắng! 🏆': 'You win! 🏆',
+  'Thua sát nút!': 'Lost by a whisker!',
+  'Thua rồi — phục thù nhé!': 'You lost — time for a rematch!',
+};
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
@@ -28,6 +39,7 @@ const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 7
  */
 export default function DuelRoom() {
   const params = useLocalSearchParams<{ code: string; deck?: string; host?: string }>();
+  const { L, en } = useL();
   const code = (params.code ?? '').toUpperCase();
   const isHost = params.host === '1';
   const session = useAuthStore((s) => s.session);
@@ -36,7 +48,7 @@ export default function DuelRoom() {
   const me = useMemo<DuelPlayer>(() => {
     const id = session?.user.id ?? guestId;
     const named = displayableName((profile as { display_name?: string | null } | null)?.display_name ?? null);
-    return { id, name: named ?? `Khách ${id.slice(-4).toUpperCase()}` };
+    return { id, name: named ?? (currentLocale() === 'en' ? `Guest ${id.slice(-4).toUpperCase()}` : `Khách ${id.slice(-4).toUpperCase()}`) };
   }, [session, profile, guestId]);
 
   const room = useDuelRoom(isRoomCode(code) ? code : '', me, isHost ? params.deck : undefined);
@@ -113,8 +125,8 @@ export default function DuelRoom() {
   if (!isRoomCode(code)) {
     return (
       <Screen>
-        <Text className="mt-10 text-center font-heavy text-sectionTitle text-ink">Mã phòng không hợp lệ.</Text>
-        <Button className="mt-4 self-center" label="Về sảnh đấu" onPress={() => router.replace('/duel' as never)} />
+        <Text className="mt-10 text-center font-heavy text-sectionTitle text-ink">{L('Mã phòng không hợp lệ.', 'Invalid room code.')}</Text>
+        <Button className="mt-4 self-center" label={L('Về sảnh đấu', 'Back to lobby')} onPress={() => router.replace('/duel' as never)} />
       </Screen>
     );
   }
@@ -128,29 +140,29 @@ export default function DuelRoom() {
         <View className="flex-row flex-wrap items-center justify-between gap-2">
           <Pressable onPress={() => router.replace('/duel' as never)} className="flex-row items-center gap-2 rounded-pill bg-white/85 px-4 py-2">
             <Icon name="chevron-left" size={18} color={color.ink} />
-            <Text className="font-semi text-body text-ink">Sảnh đấu</Text>
+            <Text className="font-semi text-body text-ink">{L('Sảnh đấu', 'Duel lobby')}</Text>
           </Pressable>
           <View className="min-w-0 flex-row items-center gap-2" style={{ flexShrink: 1 }}>
           <View aria-hidden>
             <SealIcon name="flame" color="#F0703F" size={34} />
           </View>
           <Text className="min-w-0 font-heavy text-bodyLg text-ink" style={{ flexShrink: 1 }}>
-            Phòng <Text style={{ letterSpacing: 3 }}>{code}</Text>
-            {deck ? <Text className="font-sans text-body text-muted"> · {deck.nameVi}</Text> : null}
+            {L('Phòng', 'Room')} <Text style={{ letterSpacing: 3 }}>{code}</Text>
+            {deck ? <Text className="font-sans text-body text-muted"> · {en && deck.kind !== 'custom' ? deck.name : deck.nameVi}</Text> : null}
           </Text>
           </View>
         </View>
 
         {/* Hai thanh điểm, chạy thời gian thực. */}
         <View className="mt-4 flex-row flex-wrap gap-3">
-          <ScoreBar name={`${me.name} (bạn)`} t={mine} total={questions.length || 10} tone="#CDA45E" done={myDone} />
-          <ScoreBar name={opponent?.name ?? 'Đang chờ đối thủ…'} t={theirs} total={questions.length || 10} tone="#DB2777" done={theirDone} />
+          <ScoreBar name={`${me.name} ${L('(bạn)', '(you)')}`} t={mine} total={questions.length || 10} tone="#CDA45E" done={myDone} />
+          <ScoreBar name={opponent?.name ?? L('Đang chờ đối thủ…', 'Waiting for an opponent…')} t={theirs} total={questions.length || 10} tone="#DB2777" done={theirDone} />
         </View>
 
         <CrossFade swapKey={bothDone ? 'done' : started ? `q-${index}` : counting ? 'count' : 'lobby'}>
           <View className="mt-4 rounded-[22px] bg-white p-6" style={CARD}>
             {room.status === 'offline' ? (
-              <Text className="font-sans text-bodyLg text-ink">Không kết nối được máy chủ thời gian thực. Kiểm tra mạng rồi tải lại trang.</Text>
+              <Text className="font-sans text-bodyLg text-ink">{L('Không kết nối được máy chủ thời gian thực. Kiểm tra mạng rồi tải lại trang.', "Couldn't reach the live server. Check your connection and reload the page.")}</Text>
             ) : full ? (
               <View className="items-start">
                 <View aria-hidden className="mb-3">
@@ -158,16 +170,16 @@ export default function DuelRoom() {
                     <Badge icon="bolt" color="#F2B632" size={48} />
                   </Motion>
                 </View>
-                <Text className="font-heavy text-sectionTitle text-ink">Phòng này đã đủ hai người</Text>
-                <Text className="mt-1 font-sans text-bodyLg text-muted">Tạo một phòng mới để thách đấu bạn của bạn.</Text>
-                <Button className="mt-4" label="Về sảnh đấu" onPress={() => router.replace('/duel' as never)} />
+                <Text className="font-heavy text-sectionTitle text-ink">{L('Phòng này đã đủ hai người', 'This room already has two players')}</Text>
+                <Text className="mt-1 font-sans text-bodyLg text-muted">{L('Tạo một phòng mới để thách đấu bạn của bạn.', 'Create a new room to challenge your friend.')}</Text>
+                <Button className="mt-4" label={L('Về sảnh đấu', 'Back to lobby')} onPress={() => router.replace('/duel' as never)} />
               </View>
             ) : bothDone ? (
               <View className="items-center">
                 <View aria-hidden className="mb-3 items-center">
                   <View style={{ marginBottom: -4, zIndex: 2 }}>
                     <Motion kind="pop">
-                      <Label text="Về đích! 🏁" color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
+                      <Label text={L('Về đích! 🏁', 'Finished! 🏁')} color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
                     </Motion>
                   </View>
                   <Motion kind="float">
@@ -177,16 +189,16 @@ export default function DuelRoom() {
                   </Motion>
                 </View>
                 <Text className="font-heavy text-hero text-ink">
-                  {verdictTitle(mine, opponent ? theirs : null)}
+                  {verdictLabel(verdictTitle(mine, opponent ? theirs : null), en)}
                 </Text>
                 <Text className="mt-2 font-sans text-bodyLg text-muted">
-                  {mine.score} – {theirs.score} điểm · bạn đúng {mine.correct}/{questions.length}
+                  {L(`${mine.score} – ${theirs.score} điểm · bạn đúng ${mine.correct}/${questions.length}`, `${mine.score} – ${theirs.score} points · you got ${mine.correct}/${questions.length} right`)}
                 </Text>
                 <View className="mt-4 flex-row flex-wrap justify-center gap-2">
-                  {isHost ? <Button label="Đấu lại" iconLeft="refresh" onPress={() => room.begin(deckSlug)} /> : null}
-                  <Button variant="outline" label="Về sảnh" onPress={() => router.replace('/duel' as never)} />
+                  {isHost ? <Button label={L('Đấu lại', 'Rematch')} iconLeft="refresh" onPress={() => room.begin(deckSlug)} /> : null}
+                  <Button variant="outline" label={L('Về sảnh', 'Back to lobby')} onPress={() => router.replace('/duel' as never)} />
                 </View>
-                {!isHost ? <Text className="mt-2 font-sans text-label text-muted">Chủ phòng có thể bấm “Đấu lại”.</Text> : null}
+                {!isHost ? <Text className="mt-2 font-sans text-label text-muted">{L('Chủ phòng có thể bấm “Đấu lại”.', 'The host can start a rematch.')}</Text> : null}
               </View>
             ) : myDone ? (
               <View className="items-center">
@@ -197,11 +209,11 @@ export default function DuelRoom() {
                     </Sticker>
                   </Motion>
                 </View>
-                <Text className="text-center font-semi text-bodyLg text-ink">Bạn đã xong — chờ đối thủ về đích…</Text>
+                <Text className="text-center font-semi text-bodyLg text-ink">{L('Bạn đã xong — chờ đối thủ về đích…', "You're done — waiting for your opponent to finish…")}</Text>
               </View>
             ) : counting && room.start ? (
               <View className="items-center py-6">
-                <Text className="font-sans text-bodyLg text-muted">Chuẩn bị…</Text>
+                <Text className="font-sans text-bodyLg text-muted">{L('Chuẩn bị…', 'Get ready…')}</Text>
                 <Text className="font-heavy text-ink" style={{ fontSize: 72, lineHeight: 84 }}>
                   {Math.max(1, Math.ceil((room.start.at - clock) / 1000))}
                 </Text>
@@ -210,7 +222,7 @@ export default function DuelRoom() {
               <View>
                 <View className="flex-row items-center justify-between">
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
-                    Câu {index + 1}/{questions.length} · {q.enToVi ? 'Chọn nghĩa đúng' : 'Chọn từ tiếng Anh'}
+                    {L('Câu', 'Question')} {index + 1}/{questions.length} · {q.enToVi ? L('Chọn nghĩa đúng', 'Pick the right meaning') : L('Chọn từ tiếng Anh', 'Pick the English word')}
                   </Text>
                   <Text className="font-strong text-label" style={{ color: '#B45309' }}>
                     {Math.max(0, Math.ceil((shownAt + QUESTION_MS - clock) / 1000))}s
@@ -244,7 +256,7 @@ export default function DuelRoom() {
               <View>
                 <View className="flex-row items-center justify-between gap-3">
                   <View className="min-w-0 flex-1">
-                    <Text className="font-heavy text-sectionTitle text-ink">{opponent ? 'Đủ hai người!' : 'Mời bạn vào phòng'}</Text>
+                    <Text className="font-heavy text-sectionTitle text-ink">{opponent ? L('Đủ hai người!', 'Both players are here!') : L('Mời bạn vào phòng', 'Invite a friend')}</Text>
                   </View>
                   <View aria-hidden>
                     <Motion kind="wobble">
@@ -257,9 +269,9 @@ export default function DuelRoom() {
                 <Text className="mt-1 font-sans text-bodyLg text-muted">
                   {opponent
                     ? isHost
-                      ? 'Bấm bắt đầu khi cả hai đã sẵn sàng.'
-                      : 'Chờ chủ phòng bắt đầu…'
-                    : `Gửi mã ${code} hoặc đường dẫn dưới đây cho bạn của bạn.`}
+                      ? L('Bấm bắt đầu khi cả hai đã sẵn sàng.', "Press start when you're both ready.")
+                      : L('Chờ chủ phòng bắt đầu…', 'Waiting for the host to start…')
+                    : L(`Gửi mã ${code} hoặc đường dẫn dưới đây cho bạn của bạn.`, `Send your friend the code ${code} or the link below.`)}
                 </Text>
                 {!opponent ? (
                   <View className="mt-3 flex-row flex-wrap items-center gap-2">
@@ -270,10 +282,10 @@ export default function DuelRoom() {
                       <Button
                         size="sm"
                         variant="outline"
-                        label="Gửi lời mời"
+                        label={L('Gửi lời mời', 'Send invite')}
                         onPress={() =>
                           void (navigator.share
-                            ? navigator.share({ text: `Đấu từ vựng với mình trên Band 9 — mã phòng ${code}`, url: link }).catch(() => {})
+                            ? navigator.share({ text: L(`Đấu từ vựng với mình trên Band 9 — mã phòng ${code}`, `Duel me on vocabulary on Band 9 — room code ${code}`), url: link }).catch(() => {})
                             : navigator.clipboard.writeText(link))
                         }
                       />
@@ -281,9 +293,9 @@ export default function DuelRoom() {
                   </View>
                 ) : null}
                 {isHost ? (
-                  <Button className="mt-4 self-start" label="Bắt đầu" iconRight="arrow-right" disabled={!opponent || !deck} onPress={() => room.begin(deckSlug)} />
+                  <Button className="mt-4 self-start" label={L('Bắt đầu', 'Start')} iconRight="arrow-right" disabled={!opponent || !deck} onPress={() => room.begin(deckSlug)} />
                 ) : null}
-                {room.status === 'connecting' ? <Text className="mt-3 font-sans text-label text-muted">Đang kết nối…</Text> : null}
+                {room.status === 'connecting' ? <Text className="mt-3 font-sans text-label text-muted">{L('Đang kết nối…', 'Connecting…')}</Text> : null}
               </View>
             )}
           </View>
@@ -293,7 +305,12 @@ export default function DuelRoom() {
   );
 }
 
+function verdictLabel(vi: string, en: boolean): string {
+  return en ? (VERDICT_EN[vi] ?? vi) : vi;
+}
+
 function ScoreBar({ name, t, total, tone, done }: { name: string; t: PlayerTally; total: number; tone: string; done: boolean }) {
+  const { L } = useL();
   return (
     <Appear style={{ flexGrow: 1, flexShrink: 1, flexBasis: 260 }}>
       <View className="rounded-2xl bg-white px-4 py-3" style={CARD}>
@@ -314,8 +331,8 @@ function ScoreBar({ name, t, total, tone, done }: { name: string; t: PlayerTally
           <View className="h-2.5 rounded-pill" style={{ width: `${(t.answered / Math.max(total, 1)) * 100}%`, backgroundColor: tone }} />
         </View>
         <Text className="mt-1 font-sans text-label text-muted">
-          {t.answered}/{total} câu · đúng {t.correct}
-          {done ? ' · về đích' : ''}
+          {L(`${t.answered}/${total} câu · đúng ${t.correct}`, `${t.answered}/${total} questions · ${t.correct} right`)}
+          {done ? L(' · về đích', ' · finished') : ''}
         </Text>
       </View>
     </Appear>

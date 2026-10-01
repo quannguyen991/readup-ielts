@@ -5,13 +5,14 @@ import { useLocalSearchParams } from 'expo-router';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { ListeningQuiz } from '@/components/sentence/ListeningQuiz';
 import { Badge, Button, Card, Icon } from '@/components/ui';
-import { AUDIO_NGUON, formatLength, getLibraryAudio } from '@/data/audio-library';
+import { AUDIO_NGUON, estimateMinutes, formatLength, getLibraryAudio } from '@/data/audio-library';
 import { estimateSentences, getAudioTranscript } from '@/data/audio-repository';
 import { paper } from '@/theme/tokens';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
 import { CuteHeadphones, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Nghe hiểu trên thư viện âm thanh — KHÔNG phải dán gì cả.
@@ -28,6 +29,7 @@ import { CuteHeadphones, Motion } from '@/components/illust/CuteMore';
  * ở thư viện video, nơi phụ đề có mốc thật.
  */
 export default function ListenScreen() {
+  const { L } = useL();
   const { a } = useLocalSearchParams<{ a?: string }>();
   const id = typeof a === 'string' ? a : '';
   const meta = useMemo(() => (id ? getLibraryAudio(id) : undefined), [id]);
@@ -62,8 +64,8 @@ export default function ListenScreen() {
     return (
       <TaskShell
         backHref="/sentence/audio"
-        backLabel="Quay lại Thư viện nghe"
-        title="Không mở được bài này"
+        backLabel={L('Quay lại Thư viện nghe', 'Back to Listening library')}
+        title={L('Không mở được bài này', "Couldn't open this track")}
         subtitle="Listening"
         icon="play"
         tone="paper"
@@ -77,8 +79,10 @@ export default function ListenScreen() {
             </Motion>
           </View>
           <Text className="font-sans text-body text-muted">
-            Bài nghe không còn trong thư viện, hoặc phần lời đọc chưa tải được. Quay lại thư viện và
-            chọn bài khác.
+            {L(
+              'Bài nghe không còn trong thư viện, hoặc phần lời đọc chưa tải được. Quay lại thư viện và chọn bài khác.',
+              "This track is no longer in the library, or its transcript didn't load. Go back and pick another one.",
+            )}
           </Text>
         </Card>
       </TaskShell>
@@ -88,7 +92,7 @@ export default function ListenScreen() {
   return (
     <TaskShell
       backHref="/sentence/audio"
-      backLabel="Quay lại Thư viện nghe"
+      backLabel={L('Quay lại Thư viện nghe', 'Back to Listening library')}
       title={meta.title}
       subtitle={meta.program}
       icon="play"
@@ -96,7 +100,7 @@ export default function ListenScreen() {
       right={
         <View className="flex-row items-center gap-2">
           <Badge label={meta.level} tone="neutral" />
-          <Badge label={formatLength(meta.words)} tone="neutral" />
+          <Badge label={L(formatLength(meta.words), `~${estimateMinutes(meta.words)} min`)} tone="neutral" />
         </View>
       }
     >
@@ -106,7 +110,7 @@ export default function ListenScreen() {
             <CuteHeadphones size={48} />
           </Sticker>
         </Motion>
-        <Label text="Nghe hết rồi trả lời 🎧" color="#B07A3A" ink="#FFFFFF" tilt={-4} size={12} />
+        <Label text={L('Nghe hết rồi trả lời 🎧', 'Listen through, then answer 🎧')} color="#B07A3A" ink="#FFFFFF" tilt={-4} size={12} />
       </View>
 
       <AudioPlayer
@@ -121,11 +125,13 @@ export default function ListenScreen() {
           <BadgeSticker icon="question" color="#F2B632" size={26} />
         </View>
         <Text className="min-w-0 flex-1 font-sans text-label text-muted" style={{ lineHeight: 20 }}>
-          Nghe hết bài rồi trả lời. Khi chọn đáp án, app hỏi thêm{' '}
-          <Text className="font-strong">bạn nghe thấy đáp án ở đoạn nào</Text> — đó mới là chỗ phân
-          biệt nghe hiểu với đoán trúng. Chấm bài xong, bấm vào{' '}
-          <Text className="font-strong">câu dẫn chứng</Text> để nghe lại đúng chỗ đó; mốc tua là{' '}
-          <Text className="font-strong">ước lượng theo số từ</Text> nên có thể lệch vài giây.
+          {L('Nghe hết bài rồi trả lời. Khi chọn đáp án, app hỏi thêm', 'Listen to the whole track, then answer. When you pick an answer, the app also asks')}{' '}
+          <Text className="font-strong">{L('bạn nghe thấy đáp án ở đoạn nào', 'where you heard it')}</Text>
+          {L(' — đó mới là chỗ phân biệt nghe hiểu với đoán trúng. Chấm bài xong, bấm vào', ' — that is what separates understanding from a lucky guess. After grading, tap the')}{' '}
+          <Text className="font-strong">{L('câu dẫn chứng', 'evidence sentence')}</Text>
+          {L(' để nghe lại đúng chỗ đó; mốc tua là', ' to replay that exact spot; seek points are')}{' '}
+          <Text className="font-strong">{L('ước lượng theo số từ', 'estimated from word counts')}</Text>
+          {L(' nên có thể lệch vài giây.', ', so they may be off by a few seconds.')}
         </Text>
       </View>
 
@@ -135,7 +141,7 @@ export default function ListenScreen() {
         </View>
       ) : (
         <Card className="mt-4">
-          <Text className="font-sans text-body text-muted">Chưa đọc được lời của bài này.</Text>
+          <Text className="font-sans text-body text-muted">{L('Chưa đọc được lời của bài này.', "Couldn't read this track's transcript.")}</Text>
         </Card>
       )}
 
@@ -148,7 +154,7 @@ export default function ListenScreen() {
             <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Words in This Story</Text>
           </View>
           <Text className="mt-1 font-sans text-label text-muted">
-            Chú giải do chính ban biên tập VOA soạn kèm bài, không phải app tự sinh.
+            {L('Chú giải do chính ban biên tập VOA soạn kèm bài, không phải app tự sinh.', 'Glossary written by the VOA editors with the story — not generated by the app.')}
           </Text>
           <View className="mt-3 gap-2">
             {transcript.glossary.map((g) => (
@@ -187,6 +193,7 @@ function AudioPlayer({
   onDuration: (giay: number) => void;
   elementRef: React.MutableRefObject<HTMLAudioElement | null>;
 }) {
+  const { L } = useL();
   useEffect(() => {
     // Đổi bài thì thời lượng cũ phải bỏ đi ngay, không thì mốc câu của bài mới
     // được tính bằng thời lượng của bài trước.
@@ -199,13 +206,13 @@ function AudioPlayer({
         <View className="items-center py-4">
           <Icon name="play" size={24} color={paper.muted} />
           <Text className="mt-2 text-center font-sans text-body text-muted">
-            Trình phát trong app hiện chỉ chạy trên bản web.
+            {L('Trình phát trong app hiện chỉ chạy trên bản web.', 'The in-app player only works on the web for now.')}
           </Text>
           <Button
             className="mt-3"
             variant="brandOutline"
             size="sm"
-            label="Mở bài trên trang VOA"
+            label={L('Mở bài trên trang VOA', 'Open on the VOA site')}
             onPress={() => void Linking.openURL(sourceUrl)}
           />
         </View>
@@ -229,6 +236,7 @@ function AudioPlayer({
 
 /** Ghi nguồn — bắt buộc theo điều khoản dùng lại của VOA. */
 function NguonBai({ sourceUrl, publishedAt }: { sourceUrl: string; publishedAt: string | null }) {
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="link"
@@ -236,13 +244,13 @@ function NguonBai({ sourceUrl, publishedAt }: { sourceUrl: string; publishedAt: 
       className="mt-5 rounded-panel border border-border bg-surface p-3.5"
     >
       <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-        Nguồn
+        {L('Nguồn', 'Source')}
       </Text>
       <Text className="mt-1 font-sans text-label text-muted" style={{ lineHeight: 19 }}>
         {AUDIO_NGUON.ten} — {AUDIO_NGUON.trang}
-        {publishedAt ? ` · đăng ${publishedAt}` : ''}
+        {publishedAt ? L(` · đăng ${publishedAt}`, ` · published ${publishedAt}`) : ''}
         {'\n'}
-        {AUDIO_NGUON.giay_phep}. Bấm để mở bài gốc.
+        {L(`${AUDIO_NGUON.giay_phep}. Bấm để mở bài gốc.`, 'Public domain (a work of the US federal government). Tap to open the original.')}
       </Text>
     </Pressable>
   );

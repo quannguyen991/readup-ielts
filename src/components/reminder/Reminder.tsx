@@ -12,6 +12,7 @@ import { dueNow, parseTime, reminderIcs } from '@/services/reminder/reminder';
 import { useReminderStore } from '@/store/useReminderStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 const PRESETS = ['06:30', '12:00', '17:45', '20:00', '21:30'];
 
@@ -30,7 +31,11 @@ export function ReminderRunner() {
       if (!dueNow(now, time, lastFired, today, studied)) return;
       if (Notification.permission !== 'granted') return;
       fired(today);
-      const n = new Notification('Đến giờ học Band 9 rồi', { body: 'Hôm nay bạn chưa học phút nào — 15 phút thôi là giữ được chuỗi ngày.', tag: 'readup-daily' });
+      const loc = currentLocale();
+      const n = new Notification(pick(loc, 'Đến giờ học Band 9 rồi', 'Time to study on Band 9'), {
+        body: pick(loc, 'Hôm nay bạn chưa học phút nào — 15 phút thôi là giữ được chuỗi ngày.', "You haven't studied today — just 15 minutes keeps your streak alive."),
+        tag: 'readup-daily',
+      });
       n.onclick = () => {
         window.focus();
         n.close();
@@ -48,6 +53,7 @@ export function ReminderCard() {
   const [draft, setDraft] = useState(time);
   const [perm, setPerm] = useState<string>(() => (canNotify() ? Notification.permission : 'unsupported'));
   const [msg, setMsg] = useState<string | null>(null);
+  const { L } = useL();
 
   const turnOn = async () => {
     if (canNotify() && Notification.permission === 'default') {
@@ -59,10 +65,10 @@ export function ReminderCard() {
   };
 
   const saveTime = (t: string) => {
-    if (parseTime(t) === null) return setMsg('Giờ chưa đúng dạng HH:MM, ví dụ 20:30.');
+    if (parseTime(t) === null) return setMsg(L('Giờ chưa đúng dạng HH:MM, ví dụ 20:30.', 'Use the HH:MM format, e.g. 20:30.'));
     set({ time: t });
     setDraft(t);
-    setMsg(`Sẽ nhắc lúc ${t}.`);
+    setMsg(L(`Sẽ nhắc lúc ${t}.`, `You'll be reminded at ${t}.`));
   };
 
   const downloadIcs = () => {
@@ -74,12 +80,16 @@ export function ReminderCard() {
     a.download = `readup-nhac-hoc-${time.replace(':', 'h')}.ics`;
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 2000);
-    setMsg('Đã tải tệp lịch. Mở tệp (hoặc nhập vào Google Calendar) để lịch nhắc mỗi ngày, kể cả khi không mở app.');
+    setMsg(L('Đã tải tệp lịch. Mở tệp (hoặc nhập vào Google Calendar) để lịch nhắc mỗi ngày, kể cả khi không mở app.', 'Calendar file downloaded. Open it (or import it into Google Calendar) to get a daily reminder, even when the app is closed.'));
   };
 
   return (
     <Card className="mt-4">
-      <SectionHeader title="Nhắc học mỗi ngày" subtitle="Một lời nhắc vào giờ bạn chọn, chỉ khi hôm đó chưa học" icon="bell" />
+      <SectionHeader
+        title={L('Nhắc học mỗi ngày', 'Daily study reminder')}
+        subtitle={L('Một lời nhắc vào giờ bạn chọn, chỉ khi hôm đó chưa học', "One reminder at the time you choose, only on days you haven't studied")}
+        icon="bell"
+      />
       <View className="mt-3 flex-row flex-wrap" style={{ gap: 8 }}>
         {PRESETS.map((p) => {
           const on = time === p;
@@ -96,7 +106,7 @@ export function ReminderCard() {
           onChangeText={setDraft}
           onSubmitEditing={() => saveTime(draft)}
           onBlur={() => draft !== time && saveTime(draft)}
-          accessibilityLabel="Giờ nhắc khác (HH:MM)"
+          accessibilityLabel={L('Giờ nhắc khác (HH:MM)', 'Custom reminder time (HH:MM)')}
           placeholder="HH:MM"
           className="rounded-pill border border-border px-3.5 py-2 font-sans text-label text-ink"
           style={{ width: 90 }}
@@ -104,22 +114,22 @@ export function ReminderCard() {
       </View>
       <View className="mt-3 flex-row flex-wrap" style={{ gap: 8 }}>
         {enabled ? (
-          <Button label="Tắt nhắc trên máy này" size="sm" variant="outline" onPress={() => set({ enabled: false })} />
+          <Button label={L('Tắt nhắc trên máy này', 'Turn off on this device')} size="sm" variant="outline" onPress={() => set({ enabled: false })} />
         ) : (
-          <Button label="Bật nhắc trên máy này" size="sm" iconLeft="bell" onPress={() => void turnOn()} />
+          <Button label={L('Bật nhắc trên máy này', 'Turn on for this device')} size="sm" iconLeft="bell" onPress={() => void turnOn()} />
         )}
-        {Platform.OS === 'web' ? <Button label="Thêm vào lịch (.ics)" size="sm" variant="outline" iconLeft="calendar" onPress={downloadIcs} /> : null}
+        {Platform.OS === 'web' ? <Button label={L('Thêm vào lịch (.ics)', 'Add to calendar (.ics)')} size="sm" variant="outline" iconLeft="calendar" onPress={downloadIcs} /> : null}
       </View>
       <Text className="mt-3 font-sans text-label text-muted">
         {enabled
           ? perm === 'granted'
-            ? `Đang bật: trình duyệt sẽ nhắc lúc ${time} nếu có một tab Band 9 đang mở.`
+            ? L(`Đang bật: trình duyệt sẽ nhắc lúc ${time} nếu có một tab Band 9 đang mở.`, `On: your browser will remind you at ${time} if a Band 9 tab is open.`)
             : perm === 'denied'
-              ? 'Trình duyệt đang chặn thông báo của Band 9 — mở lại quyền trong cài đặt trang, hoặc dùng tệp lịch.'
+              ? L('Trình duyệt đang chặn thông báo của Band 9 — mở lại quyền trong cài đặt trang, hoặc dùng tệp lịch.', "Your browser is blocking Band 9 notifications — allow them in the site settings, or use the calendar file.")
               : perm === 'default'
-                ? 'Chưa cho phép thông báo — tắt rồi bật lại để trình duyệt hỏi quyền, hoặc dùng tệp lịch.'
-                : 'Trình duyệt này không hỗ trợ thông báo — dùng tệp lịch để được nhắc.'
-          : 'Band 9 chưa có thông báo đẩy khi đóng app. Muốn được nhắc cả lúc không mở Band 9 (trên điện thoại), hãy thêm tệp lịch vào Google Calendar / lịch của máy.'}
+                ? L('Chưa cho phép thông báo — tắt rồi bật lại để trình duyệt hỏi quyền, hoặc dùng tệp lịch.', "Notifications aren't allowed yet — turn this off and on again so the browser asks, or use the calendar file.")
+                : L('Trình duyệt này không hỗ trợ thông báo — dùng tệp lịch để được nhắc.', "This browser doesn't support notifications — use the calendar file instead.")
+          : L('Band 9 chưa có thông báo đẩy khi đóng app. Muốn được nhắc cả lúc không mở Band 9 (trên điện thoại), hãy thêm tệp lịch vào Google Calendar / lịch của máy.', "Band 9 doesn't send push notifications when closed. To be reminded even when Band 9 isn't open (e.g. on your phone), add the calendar file to Google Calendar or your device calendar.")}
       </Text>
       {msg ? <Text className="mt-2 font-sans text-label text-ink">{msg}</Text> : null}
     </Card>

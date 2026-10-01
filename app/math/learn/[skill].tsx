@@ -9,8 +9,10 @@ import { Button, Card } from '@/components/ui';
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
 import { MATH_DOMAIN_LABEL, MATH_SKILL_DOMAIN, type MathSkill } from '@/lib/math/types';
 import { lessonKey, useLessonStore } from '@/store/useLessonStore';
+import { useL } from '@/i18n/useL';
 
 export default function MathLessonScreen() {
+  const { L } = useL();
   const { skill = '' } = useLocalSearchParams<{ skill: string }>();
   const index = MATH_LESSONS.findIndex((l) => l.skill === skill);
   const lesson = MATH_LESSONS[index];
@@ -22,8 +24,8 @@ export default function MathLessonScreen() {
     return (
       <Screen>
         <Card>
-          <Text className="font-strong text-cardTitle text-ink">Không có bài học này</Text>
-          <Button className="mt-3 self-start" label="Về danh sách bài học" onPress={() => router.replace('/math/learn' as never)} />
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có bài học này', 'Lesson not found')}</Text>
+          <Button className="mt-3 self-start" label={L('Về danh sách bài học', 'Back to lessons')} onPress={() => router.replace('/math/learn' as never)} />
         </Card>
       </Screen>
     );
@@ -33,9 +35,12 @@ export default function MathLessonScreen() {
     <LessonView
       key={skill}
       lesson={lesson}
-      eyebrow={`SAT Math · ${MATH_DOMAIN_LABEL[MATH_SKILL_DOMAIN[skill as MathSkill]]} · Bài ${index + 1}/${MATH_LESSONS.length}`}
+      eyebrow={L(
+        `SAT Math · ${MATH_DOMAIN_LABEL[MATH_SKILL_DOMAIN[skill as MathSkill]]} · Bài ${index + 1}/${MATH_LESSONS.length}`,
+        `SAT Math · ${MATH_DOMAIN_LABEL[MATH_SKILL_DOMAIN[skill as MathSkill]]} · Lesson ${index + 1}/${MATH_LESSONS.length}`,
+      )}
       backHref="/math/learn"
-      backLabel="Bài học SAT Math"
+      backLabel={L('Bài học SAT Math', 'SAT Math lessons')}
       math
       check={<MathQuickCheck key={skill} skill={skill as MathSkill} />}
       done={done}

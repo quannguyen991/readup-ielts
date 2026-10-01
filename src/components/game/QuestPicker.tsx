@@ -9,6 +9,8 @@ import { Icon } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import type { Island, IslandId, Mission } from '@/services/world/islands';
 import { HUB } from './quest-hub/kit';
+import { useL } from '@/i18n/useL';
+import { islandShortName, islandTagline, levelLabel, missionTitle } from '@/components/world/island-label';
 
 /**
  * Các mảnh của MÀN CHỌN TRẬN (`/quest/pick`) và trang Band 9 Quest.
@@ -50,6 +52,26 @@ export const AREA_KIND: Record<IslandId, string> = {
   arena: 'Săn quái',
 };
 
+export const AREA_KIND_EN: Record<IslandId, string> = {
+  math: 'Theory + question-type practice',
+  verbal: 'Theory + skill practice',
+  vocab: 'Mixed word-set study',
+  listen: 'Hear a sentence, type it back',
+  translate: 'Vietnamese → English',
+  arena: 'Monster hunt',
+};
+
+/** Dòng thời lượng / số lượng của bài ("12 phút", "30 câu", "3/20 từ đã nhớ") khi giao diện tiếng Anh. */
+function metaEn(meta: string): string {
+  const min = /^(\d+) phút$/.exec(meta);
+  if (min) return `${min[1]} min`;
+  const words = /^(\d+)\/(\d+) từ đã nhớ$/.exec(meta);
+  if (words) return `${words[1]}/${words[2]} words learned`;
+  const sent = /^(\d+) câu$/.exec(meta);
+  if (sent) return `${sent[1]} sentences`;
+  return meta;
+}
+
 /**
  * Màu hiển thị của từng mảng trong game. Màu gốc của đảo (services/world) có
  * chàm và tím — người dùng không thích tông tím, nên ở các trang game đổi sang
@@ -66,11 +88,11 @@ export const AREA_TONE: Record<IslandId, string> = {
 };
 
 /** Trận nhanh: vào thẳng, không có danh sách bài. */
-export const QUICK_FIGHTS: { title: string; detail: string; href: string; icon: IconName; color: string }[] = [
-  { title: 'Đọc theo VOA', detail: 'Nói lại từng câu', href: '/shadow', icon: 'mic', color: HUB.green },
-  { title: 'Đề của tuần', detail: 'Cả nước cùng một đề', href: '/weekly', icon: 'trophy', color: HUB.amber },
-  { title: 'Đấu 1–1', detail: 'Thách bạn 10 câu', href: '/duel', icon: 'target', color: HUB.orange },
-  { title: 'Bản đồ Band 9', detail: 'Đi bộ qua sáu đảo', href: '/quest/world', icon: 'compass', color: HUB.blue },
+export const QUICK_FIGHTS: { title: string; titleEn: string; detail: string; detailEn: string; href: string; icon: IconName; color: string }[] = [
+  { title: 'Đọc theo VOA', titleEn: 'VOA shadowing', detail: 'Nói lại từng câu', detailEn: 'Repeat each sentence', href: '/shadow', icon: 'mic', color: HUB.green },
+  { title: 'Đề của tuần', titleEn: 'Weekly challenge', detail: 'Cả nước cùng một đề', detailEn: 'One test for the whole country', href: '/weekly', icon: 'trophy', color: HUB.amber },
+  { title: 'Đấu 1–1', titleEn: '1-on-1 duel', detail: 'Thách bạn 10 câu', detailEn: 'Challenge a friend to 10 questions', href: '/duel', icon: 'target', color: HUB.orange },
+  { title: 'Bản đồ Band 9', titleEn: 'Band 9 map', detail: 'Đi bộ qua sáu đảo', detailEn: 'Walk across six islands', href: '/quest/world', icon: 'compass', color: HUB.blue },
 ];
 
 /** Màu theo bậc khó (0 dễ → 3 khó) — màu mang thông tin, không xoay vòng. */
@@ -87,7 +109,8 @@ function hoverStyle(hovered: boolean | undefined, lift = 3): object {
 
 /** Thanh ba bước: Chọn mảng → Chọn bài → Vào học. */
 export function StepBar({ step }: { step: 1 | 2 | 3 }) {
-  const labels = ['Chọn mảng', 'Chọn bài', 'Lý thuyết & luyện'];
+  const { L } = useL();
+  const labels = [L('Chọn mảng', 'Choose area'), L('Chọn bài', 'Choose lesson'), L('Lý thuyết & luyện', 'Theory & practice')];
   const { width } = useWindowDimensions();
   if (width < 640) {
     // Khổ hẹp: ba nhãn không vừa một hàng — hiện ba chấm tiến độ + tên bước đang đứng.
@@ -99,7 +122,7 @@ export function StepBar({ step }: { step: 1 | 2 | 3 }) {
           ))}
         </View>
         <Text className="font-strong" style={{ fontSize: 12, color: '#FDE68A' }}>
-          Bước {step}/3 · {labels[step - 1]}
+          {L('Bước', 'Step')} {step}/3 · {labels[step - 1]}
         </Text>
       </View>
     );
@@ -145,10 +168,11 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
   const next = island.missions.find((m) => !m.done);
   const [hover, setHover] = useState(false);
   const tone = AREA_TONE[island.id] ?? island.color;
+  const { L, en, locale } = useL();
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${island.name}: ${island.done}/${island.missions.length} bài đã qua`}
+      accessibilityLabel={L(`${island.name}: ${island.done}/${island.missions.length} bài đã qua`, `${islandShortName(island, locale)}: ${island.done}/${island.missions.length} lessons passed`)}
       onPress={onPress}
       onHoverIn={() => setHover(true)}
       onHoverOut={() => setHover(false)}
@@ -176,17 +200,17 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text className="font-heavy" style={{ fontSize: 17, color: '#FFFFFF' }} numberOfLines={1}>
-              {island.name.replace(/^Đảo /, '')}
+              {islandShortName(island, locale)}
             </Text>
             <Text className="font-semi" style={{ fontSize: 12, color: QUEST_MUTED }} numberOfLines={1}>
-              {AREA_KIND[island.id]} · {island.missions.length} bài
+              {en ? AREA_KIND_EN[island.id] : AREA_KIND[island.id]} · {L(`${island.missions.length} bài`, `${island.missions.length} lessons`)}
             </Text>
           </View>
           <Icon name="arrow-right" size={18} color={hover ? '#FFFFFF' : 'rgba(255,255,255,0.4)'} />
         </View>
 
         <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: 'rgba(240, 235, 226,0.86)' }} numberOfLines={2}>
-          {island.tagline}
+          {islandTagline(island, locale)}
         </Text>
 
         <View style={{ flex: 1 }} />
@@ -199,7 +223,7 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
           </Text>
         </View>
         <Text className="font-semi" style={{ marginTop: 6, fontSize: 12, color: QUEST_MUTED }} numberOfLines={1}>
-          {next ? `Bài kế: ${next.title}` : 'Đã qua hết — vào lại bài nào cũng được'}
+          {next ? L(`Bài kế: ${next.title}`, `Next: ${missionTitle(next, locale)}`) : L('Đã qua hết — vào lại bài nào cũng được', 'All passed — revisit any lesson you like')}
         </Text>
       </View>
     </Pressable>
@@ -232,10 +256,12 @@ export function StageTile({
 }) {
   const [hover, setHover] = useState(false);
   const tier = TIER_TONE[Math.max(0, Math.min(3, mission.tier ?? 1))];
+  const { L, en, locale } = useL();
+  const title = missionTitle(mission, locale);
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`${mission.title}${mission.done ? ', đã qua' : ''}`}
+      accessibilityLabel={`${title}${mission.done ? L(', đã qua', ', passed') : ''}`}
       onPress={() => router.push(mission.href as never)}
       onHoverIn={() => setHover(true)}
       onHoverOut={() => setHover(false)}
@@ -256,7 +282,7 @@ export function StageTile({
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
             <View style={{ width: 7, height: 7, borderRadius: 2, backgroundColor: tier }} />
             <Text className="font-strong" style={{ fontSize: 12, color: tier }}>
-              {mission.level}
+              {levelLabel(mission.level, locale)}
             </Text>
           </View>
         ) : null}
@@ -265,20 +291,20 @@ export function StageTile({
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: 'rgba(250,204,21,0.16)' }}>
             <Icon name="check" size={11} color={QUEST_GOLD} strokeWidth={2.8} />
             <Text className="font-strong" style={{ fontSize: 11, color: '#FDE68A' }}>
-              Đã qua
+              {L('Đã qua', 'Passed')}
             </Text>
           </View>
         ) : isNext ? (
           <View style={{ borderRadius: 999, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: QUEST_GOLD, ...anim('rg-aura', 1800, { loop: true, timing: 'ease-in-out' }) }} {...MOVE}>
             <Text className="font-heavy" style={{ fontSize: 11, color: '#2A1B02' }}>
-              Nên học tiếp
+              {L('Nên học tiếp', 'Up next')}
             </Text>
           </View>
         ) : null}
       </View>
 
       <Text className="font-heavy" style={{ marginTop: 10, fontSize: 16, lineHeight: 21, color: '#FFFFFF' }} numberOfLines={2}>
-        {mission.title}
+        {title}
       </Text>
       {mission.blurb ? (
         <Text className="font-sans" style={{ marginTop: 4, fontSize: 13, lineHeight: 18, color: QUEST_MUTED }} numberOfLines={2}>
@@ -292,14 +318,14 @@ export function StageTile({
           <>
             <Icon name="clock" size={12} color="rgba(255,255,255,0.5)" />
             <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', flex: 1 }} numberOfLines={1}>
-              {mission.meta}
+              {en ? metaEn(mission.meta) : mission.meta}
             </Text>
           </>
         ) : (
           <View style={{ flex: 1 }} />
         )}
         <Text className="font-strong" style={{ fontSize: 12, color: hover || isNext ? QUEST_GOLD : 'rgba(255,255,255,0.45)' }}>
-          {mission.done ? 'Học lại' : 'Vào học'}
+          {mission.done ? L('Học lại', 'Review') : L('Vào học', 'Start')}
         </Text>
         <Icon name="arrow-right" size={13} color={hover || isNext ? QUEST_GOLD : 'rgba(255,255,255,0.45)'} />
       </View>
@@ -333,10 +359,11 @@ export function DarkChip({ label, active, onPress }: { label: string; active: bo
 
 /** Thẻ trận nhanh (vào thẳng). */
 export function QuickFight({ item, stacked = false }: { item: (typeof QUICK_FIGHTS)[number]; stacked?: boolean }) {
+  const { en } = useL();
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={item.title}
+      accessibilityLabel={en ? item.titleEn : item.title}
       onPress={() => router.push(item.href as never)}
       style={({ hovered }: { hovered?: boolean }) => ({
         ...(stacked ? null : { flexGrow: 1, flexShrink: 1, flexBasis: 200 }),
@@ -354,10 +381,10 @@ export function QuickFight({ item, stacked = false }: { item: (typeof QUICK_FIGH
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
         <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }} numberOfLines={1}>
-          {item.title}
+          {en ? item.titleEn : item.title}
         </Text>
         <Text className="font-sans" style={{ fontSize: 12, color: QUEST_MUTED }} numberOfLines={1}>
-          {item.detail}
+          {en ? item.detailEn : item.detail}
         </Text>
       </View>
     </Pressable>

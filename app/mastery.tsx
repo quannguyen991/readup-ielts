@@ -20,6 +20,17 @@ import { PLANS, type PlanId } from '@/lib/billing/plans';
 import { usePlan } from '@/store/useBillingStore';
 import { color } from '@/theme/tokens';
 import { MAX_TIER_REFERRALS } from '@/services/referral/rewards';
+import { useL, type Bi, bi } from '@/i18n/useL';
+
+/** Tên mảng khi giao diện ở tiếng Anh (bản tiếng Việt ở DOMAIN_LABEL). */
+const DOMAIN_LABEL_EN: Record<Domain, string> = {
+  reading: 'Reading',
+  listening: 'Listening',
+  writing: 'Writing',
+  'sat-math': 'SAT Math',
+  'sat-verbal': 'SAT Verbal',
+  'ai-literacy': 'Reading AI output',
+};
 
 /**
  * Sổ bằng chứng: app nghĩ bạn đã làm được gì, và DỰA VÀO ĐÂU.
@@ -57,6 +68,7 @@ export default function MasteryScreen() {
   const plan = usePlan();
   const credential = checkFeature(plan, 'verifiable_credential');
   const { t } = useT();
+  const { en } = useL();
 
   const records = useMemo(
     () =>
@@ -136,7 +148,7 @@ export default function MasteryScreen() {
       ) : (
         [...byDomain.entries()].map(([domain, list]) => (
           <View key={domain} className="mt-6">
-            <Text className="font-strong text-cardTitle text-ink">{DOMAIN_LABEL[domain]}</Text>
+            <Text className="font-strong text-cardTitle text-ink">{(en ? DOMAIN_LABEL_EN : DOMAIN_LABEL)[domain]}</Text>
             <View className="mt-3">
               <Grid columns={2} tabletColumns={1} mobileColumns={1} gap={12}>
                 {list.map((r) => (
@@ -258,6 +270,7 @@ function ExportCard() {
   const ledger = useMasteryStore((s) => s.ledger);
   const [code, setCode] = useState('');
   const [payload, setPayload] = useState<string | null>(null);
+  const { L } = useL();
 
   const skills = Object.keys(ledger).length;
   if (skills === 0) return null;
@@ -266,23 +279,25 @@ function ExportCard() {
     <Card className="mt-4">
       <View className="flex-row items-center gap-2">
         <Icon name="clipboard" size={16} color={color.primary} strokeWidth={2.1} />
-        <Text className="font-strong text-body text-ink">Gửi sổ cho giáo viên</Text>
+        <Text className="font-strong text-body text-ink">{L('Gửi sổ cho giáo viên', 'Send your ledger to a teacher')}</Text>
       </View>
       <Text className="mt-1 font-sans text-label text-muted" style={{ lineHeight: 19 }}>
-        Bản xuất chỉ mang mã bạn tự đặt và trạng thái {skills} kỹ năng — không có tên, không có bài
-        nào bạn đã làm.
+        {L(
+          `Bản xuất chỉ mang mã bạn tự đặt và trạng thái ${skills} kỹ năng — không có tên, không có bài nào bạn đã làm.`,
+          `The export only carries a code you choose and the status of ${skills} skills — no name, and none of the passages you've done.`,
+        )}
       </Text>
 
       <View className="mt-3 flex-row flex-wrap items-center gap-2">
         <TextInput
           value={code}
           onChangeText={setCode}
-          placeholder="Mã của bạn, ví dụ HS-01"
+          placeholder={L('Mã của bạn, ví dụ HS-01', 'Your code, e.g. HS-01')}
           placeholderTextColor={color.subtle}
           className="min-w-[180px] flex-1 rounded-panel border border-border bg-surface px-3 py-2 font-sans text-body text-ink"
         />
         <Button
-          label="Tạo bản xuất"
+          label={L('Tạo bản xuất', 'Create export')}
           disabled={code.trim() === ''}
           onPress={() => setPayload(JSON.stringify(buildExport(ledger, code)))}
         />
@@ -290,7 +305,7 @@ function ExportCard() {
 
       {payload ? (
         <View className="mt-3">
-          <Text className="font-sans text-label text-muted">Chép toàn bộ dòng dưới rồi gửi đi:</Text>
+          <Text className="font-sans text-label text-muted">{L('Chép toàn bộ dòng dưới rồi gửi đi:', 'Copy the whole line below and send it:')}</Text>
           <TextInput
             value={payload}
             editable={false}
@@ -366,35 +381,40 @@ function AuditSection() {
  * cuối, không phải cái đã học.
  */
 function CredentialLocked({ need }: { need: PlanId }) {
+  const { L, locale } = useL();
   return (
     <Card>
       <View className="flex-row items-start gap-3">
         <IconCircle name="lock" tone="warning" size={40} />
         <View className="min-w-0 flex-1">
           <Text className="font-strong text-cardTitle text-ink">
-            Chứng chỉ ký số — gói {PLANS[need].name}
+            {L(`Chứng chỉ ký số — gói ${PLANS[need].name}`, `Signed credential — ${PLANS[need].name} plan`)}
           </Text>
           <Text className="mt-1.5 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
-            Sổ bằng chứng ở trên là của bạn ở mọi gói, và bản xuất cho giáo viên cũng vậy.
-            Cái nằm sau gói {PLANS[need].name} là tờ giấy ở cuối: một bản ghi được KÝ bằng
-            khoá nằm trên máy bạn.
+            {L(
+              `Sổ bằng chứng ở trên là của bạn ở mọi gói, và bản xuất cho giáo viên cũng vậy. Cái nằm sau gói ${PLANS[need].name} là tờ giấy ở cuối: một bản ghi được KÝ bằng khoá nằm trên máy bạn.`,
+              `The evidence ledger above is yours on every plan, and so is the teacher export. What ${PLANS[need].name} adds is the final certificate: a record SIGNED with a key that lives on your device.`,
+            )}
           </Text>
           <View className="mt-3">
             {CREDENTIAL_POINTS.map((line) => (
-              <View key={line} className="mt-1.5 flex-row gap-2.5">
+              <View key={line.vi} className="mt-1.5 flex-row gap-2.5">
                 <Icon name="check" size={15} color={color.success} strokeWidth={2.4} />
-                <Text className="min-w-0 flex-1 font-sans text-body text-body">{line}</Text>
+                <Text className="min-w-0 flex-1 font-sans text-body text-body">{bi(line, locale)}</Text>
               </View>
             ))}
           </View>
           <View className="mt-4 flex-row flex-wrap gap-2">
             <Button
-              label={`Xem gói ${PLANS[need].name}`}
+              label={L(`Xem gói ${PLANS[need].name}`, `See the ${PLANS[need].name} plan`)}
               iconRight="chevron-right"
               onPress={() => router.push('/upgrade' as never)}
             />
             <Button
-              label={`Mời ${MAX_TIER_REFERRALS} bạn, nhận ${PLANS[need].name} miễn phí`}
+              label={L(
+                `Mời ${MAX_TIER_REFERRALS} bạn, nhận ${PLANS[need].name} miễn phí`,
+                `Invite ${MAX_TIER_REFERRALS} friends, get ${PLANS[need].name} free`,
+              )}
               variant="outline"
               iconLeft="sparkle"
               onPress={() => router.push('/invite' as never)}
@@ -407,8 +427,17 @@ function CredentialLocked({ need }: { need: PlanId }) {
 }
 
 /** Ba việc chứng chỉ làm được — mỗi dòng ứng với code đã chạy, không phải lời quảng cáo. */
-const CREDENTIAL_POINTS = [
-  'Sửa một ký tự trong bản ghi là chữ ký hỏng ngay, ai kiểm cũng thấy.',
-  'Người kiểm không cần tin Band 9: có sẵn trình kiểm chạy độc lập ngoài app.',
-  'Theo chuẩn W3C Verifiable Credential, không phải một định dạng riêng của app.',
+const CREDENTIAL_POINTS: Bi[] = [
+  {
+    vi: 'Sửa một ký tự trong bản ghi là chữ ký hỏng ngay, ai kiểm cũng thấy.',
+    en: 'Change a single character in the record and the signature breaks — anyone checking will see it.',
+  },
+  {
+    vi: 'Người kiểm không cần tin Band 9: có sẵn trình kiểm chạy độc lập ngoài app.',
+    en: "Verifiers don't have to trust Band 9: there's a standalone checker that runs outside the app.",
+  },
+  {
+    vi: 'Theo chuẩn W3C Verifiable Credential, không phải một định dạng riêng của app.',
+    en: 'Follows the W3C Verifiable Credential standard, not an app-specific format.',
+  },
 ];

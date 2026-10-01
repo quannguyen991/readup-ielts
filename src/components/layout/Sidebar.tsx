@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useL, useLocale } from "@/i18n/useL";
+import { LanguageSwitch } from "./LanguageSwitch";
 import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Link, router, usePathname } from "expo-router";
 
@@ -11,6 +13,7 @@ import {
   activeNavKey,
   parentNavKey,
   type NavItem,
+  navLabel,
 } from "@/navigation/nav-items";
 import { useCityAvailable } from "@/services/city/availability";
 import { usePlan } from "@/store/useBillingStore";
@@ -52,6 +55,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
   const stored = useSidebarStore((s) => s.collapsed);
   const collapsed = compact || stored;
   const toggle = useSidebarStore((s) => s.toggle);
+  const { L, locale } = useL();
 
   const theme = useSidebarTheme();
   const themeConfig = glass ? GLASS_SIDEBAR_THEME : theme.themeConfig;
@@ -110,7 +114,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                   className="mb-1.5 px-3 font-strong text-[12px] uppercase tracking-[1.2px]"
                   style={{ color: themeConfig.textMuted }}
                 >
-                  {group.title}
+                  {group.title === "Quản trị" ? L("Quản trị", "Admin") : group.title}
                 </Text>
               )
             ) : null}
@@ -126,7 +130,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                       active={activeKey === item.key}
                       parentOfActive={open}
                       collapsed={collapsed}
-                      subtitle={open && activeChild ? activeChild.label : undefined}
+                      subtitle={open && activeChild ? navLabel(activeChild, locale) : undefined}
                       themeConfig={themeConfig}
                     />
                     {/* Thu gọn thì chỉ còn sáu biểu tượng lớn — không bày trang con. */}
@@ -159,11 +163,12 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
             : "gap-2 px-4 pb-4 pt-2"
         }
       >
+        {compact ? null : <LanguageSwitch tone={themeConfig.isDark ? "dark" : "light"} compact={collapsed} />}
         {compact ? null : (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={
-              collapsed ? "Mở rộng thanh bên" : "Thu gọn thanh bên"
+              collapsed ? L("Mở rộng thanh bên", "Expand sidebar") : L("Thu gọn thanh bên", "Collapse sidebar")
             }
             onPress={toggle}
             className="flex-row items-center gap-2 rounded-panel px-2 py-1.5"
@@ -181,7 +186,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                 className="font-semi text-body"
                 style={{ color: themeConfig.textMuted }}
               >
-                Thu gọn
+                {L("Thu gọn", "Collapse")}
               </Text>
             )}
           </Pressable>
@@ -220,6 +225,8 @@ function NavRow({
 }) {
   const [hovered, setHovered] = useState(false);
   // Mục lớn: tô khối khi chính nó hoặc một trang con của nó đang mở.
+  const locale = useLocale();
+  const label = navLabel(item, locale);
   const filled = !child && (active || parentOfActive);
   const lit = filled || active;
   const tint = filled ? themeConfig.activeTextColor : active ? themeConfig.textPrimary : themeConfig.textMuted;
@@ -229,7 +236,7 @@ function NavRow({
       <Link href={item.href as never} asChild>
         <Pressable
           accessibilityRole="link"
-          accessibilityLabel={item.label}
+          accessibilityLabel={label}
           aria-selected={active}
           onHoverIn={() => setHovered(true)}
           onHoverOut={() => setHovered(false)}
@@ -267,7 +274,7 @@ function NavRow({
                 className={`${child ? "text-[15px]" : "text-[16px]"} ${lit ? "font-strong" : "font-semi"}`}
                 style={{ color: filled ? themeConfig.activeTextColor : child && !active ? themeConfig.textMuted : themeConfig.textPrimary }}
               >
-                {item.label}
+                {label}
               </Text>
               {subtitle ? (
                 <Text numberOfLines={1} className="font-semi text-[12px]" style={{ color: themeConfig.activeTextColor, opacity: 0.85 }}>
@@ -278,7 +285,7 @@ function NavRow({
           )}
         </Pressable>
       </Link>
-      {collapsed && hovered ? <TooltipCard label={item.label} /> : null}
+      {collapsed && hovered ? <TooltipCard label={label} /> : null}
     </View>
   );
 }
@@ -312,10 +319,9 @@ function TooltipCard({ label }: { label: string }) {
   );
 }
 
-function planLabel(plan: string): string {
-  return plan === "free"
-    ? "Gói Free"
-    : `Gói ${plan.charAt(0).toUpperCase()}${plan.slice(1)}`;
+function planLabel(plan: string, en: boolean): string {
+  const name = plan.charAt(0).toUpperCase() + plan.slice(1);
+  return en ? `${name} plan` : `Gói ${name}`;
 }
 
 /**
@@ -326,6 +332,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
   const signedIn = useAuthStore((s) => s.status === "signed_in");
   const name = useDisplayName();
   const plan = usePlan();
+  const { L, en } = useL();
   // Avatar đổi bằng sao hiện luôn ở đây (kể cả avatar động), để thứ đã đổi có chỗ để thấy.
   const avatarId = useRewardStore((s) => s.avatar);
   const skin = skinOf(useRewardStore((s) => s.skin));
@@ -335,7 +342,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Đăng nhập"
+        accessibilityLabel={L("Đăng nhập", "Sign in")}
         onPress={() => router.push("/auth/sign-in" as never)}
         className={`flex-row items-center justify-center gap-2 rounded-panel ${collapsed ? "h-11 w-11" : "py-3"}`}
         style={
@@ -348,7 +355,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
         <Icon name="arrow-right" size={17} color={themeConfig.activeTextColor} strokeWidth={2.2} />
         {collapsed ? null : (
           <Text className="font-strong text-[15px]" style={{ color: themeConfig.activeTextColor }}>
-            Đăng nhập
+            {L("Đăng nhập", "Sign in")}
           </Text>
         )}
       </Pressable>
@@ -358,7 +365,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`Hồ sơ của ${name}`}
+      accessibilityLabel={L(`Hồ sơ của ${name}`, `${name}'s profile`)}
       onPress={() => router.push("/profile" as never)}
       className={`flex-row items-center gap-3 rounded-panel ${collapsed ? "p-1.5" : "px-3 py-2"}`}
       style={{
@@ -374,7 +381,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
             {name}
           </Text>
           <Text numberOfLines={1} className="font-sans text-label" style={{ color: themeConfig.textMuted }}>
-            {planLabel(plan)} · ⭐ {formatStars(stars)}
+            {planLabel(plan, en)} · ⭐ {formatStars(stars)}
           </Text>
         </View>
       )}

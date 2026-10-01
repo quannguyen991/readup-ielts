@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import { useAuthStore } from '@/store/useAuthStore';
+import { currentLocale, pick } from '@/i18n/useL';
 
 /**
  * Bật/tắt bản dịch tiếng Việt cho một bài đọc.
@@ -55,10 +56,11 @@ export function useBilingual(articleId: string): Bilingual {
 
     setLoading(true);
     setError(null);
+    const loc = currentLocale();
     try {
       const cached = await fetch(`/api/translate?articleId=${encodeURIComponent(articleId)}`);
       const first = (await cached.json()) as Res;
-      if (!cached.ok) throw new Error(first.error ?? `Lỗi ${cached.status}`);
+      if (!cached.ok) throw new Error(first.error ?? pick(loc, `Lỗi ${cached.status}`, `Error ${cached.status}`));
 
       // Có phần nào rồi thì hiện ngay phần đó — người đọc bắt đầu đọc được
       // trong lúc phần còn lại đang dịch.
@@ -70,7 +72,13 @@ export function useBilingual(articleId: string): Bilingual {
 
       if (!token) {
         setOn(!!first.paragraphs);
-        setError('Bài này chưa dịch xong. Đăng nhập để dịch tiếp — dịch xong thì ai đọc cũng thấy.');
+        setError(
+          pick(
+            loc,
+            'Bài này chưa dịch xong. Đăng nhập để dịch tiếp — dịch xong thì ai đọc cũng thấy.',
+            "This passage isn't fully translated yet. Sign in to continue — once done, every reader can see it.",
+          ),
+        );
         return;
       }
 
@@ -90,19 +98,19 @@ export function useBilingual(articleId: string): Bilingual {
           body: JSON.stringify({ articleId }),
         });
         const body = (await res.json()) as Res;
-        if (!res.ok || !body.paragraphs) throw new Error(body.error ?? `Lỗi ${res.status}`);
+        if (!res.ok || !body.paragraphs) throw new Error(body.error ?? pick(loc, `Lỗi ${res.status}`, `Error ${res.status}`));
 
         setParagraphs(body.paragraphs);
         setOn(true);
         if (body.done) return;
         if (!body.translated) {
-          setError('Còn vài đoạn chưa dịch được. Bấm lại để thử tiếp.');
+          setError(pick(loc, 'Còn vài đoạn chưa dịch được. Bấm lại để thử tiếp.', "A few paragraphs couldn't be translated. Tap again to retry."));
           return;
         }
       }
-      setError('Bài này dài hơn dự kiến — bấm lại để dịch nốt phần còn lại.');
+      setError(pick(loc, 'Bài này dài hơn dự kiến — bấm lại để dịch nốt phần còn lại.', 'This passage is longer than expected — tap again to translate the rest.'));
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không dịch được bài này.');
+      setError(err instanceof Error ? err.message : pick(loc, 'Không dịch được bài này.', "Couldn't translate this passage."));
     } finally {
       setLoading(false);
     }

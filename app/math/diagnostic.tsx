@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { router } from 'expo-router';
 
 import { MathRunner } from '@/components/math/MathRunner';
+import { useL } from '@/i18n/useL';
 import { DIAGNOSTIC_LENGTH, DIAGNOSTIC_MINUTES, buildDiagnostic } from '@/services/math/diagnostic';
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
 import { useMathStore } from '@/store/useMathStore';
@@ -16,6 +17,7 @@ import { useStudyStore } from '@/store/useStudyStore';
  * chỗ này chọn ĐỀ NÀO, còn bộ sinh vẫn hoàn toàn xác định theo id.
  */
 export default function MathDiagnosticScreen() {
+  const { L } = useL();
   const [seed] = useState(() => String(Date.now()));
   const items = useMemo(() => buildDiagnostic(seed), [seed]);
 
@@ -48,11 +50,14 @@ export default function MathDiagnosticScreen() {
   return (
     <MathRunner
       surface="paper"
-      title="Bài chẩn đoán"
-      subtitle={`${DIAGNOSTIC_LENGTH} câu, mỗi kỹ năng đúng một câu. Không đoán bừa — bỏ trắng cũng là một thông tin.`}
+      title={L('Bài chẩn đoán', 'Diagnostic test')}
+      subtitle={L(
+        `${DIAGNOSTIC_LENGTH} câu, mỗi kỹ năng đúng một câu. Không đoán bừa — bỏ trắng cũng là một thông tin.`,
+        `${DIAGNOSTIC_LENGTH} questions, exactly one per skill. Don't guess blindly — leaving one blank tells us something too.`,
+      )}
       items={items}
       minutes={DIAGNOSTIC_MINUTES}
-      submitLabel="Nộp và xem bản đồ"
+      submitLabel={L('Nộp và xem bản đồ', 'Submit and see your map')}
       onFinish={finish}
     />
   );

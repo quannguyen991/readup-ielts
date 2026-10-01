@@ -3,6 +3,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { fetchAllPages } from '@/services/admin/fetch-all';
 import { requireAdmin } from '@/services/admin/guard';
 import { summarizeTraffic, type PageViewRow } from '@/services/analytics/traffic';
+import { errorText } from '@/lib/server-locale';
 
 /**
  * GET /api/admin/traffic?days=7|30 — lượt truy cập web cho trang quản trị.
@@ -46,6 +47,6 @@ export async function GET(request: Request): Promise<Response> {
 
     return Response.json({ summary: summarizeTraffic(rows, new Date(), days), truncated });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Lỗi không xác định' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Lỗi không xác định', 'Unknown error') }, { status: 500 });
   }
 }

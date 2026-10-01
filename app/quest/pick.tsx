@@ -27,6 +27,8 @@ import type { Island } from '@/services/world/islands';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
+import { islandShortName, islandTagline, levelLabel, missionTitle } from '@/components/world/island-label';
+import { useL } from '@/i18n/useL';
 
 /**
  * CHỌN TRẬN — bấm "Vào trận" ở Band 9 Quest là tới đây.
@@ -45,6 +47,7 @@ import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 type Filter = 'all' | 'open' | 'done';
 
 export default function QuestPick() {
+  const { L } = useL();
   useEffect(ensureGameKeyframes, []);
   const { area } = useLocalSearchParams<{ area?: string }>();
   const islands = useWorldIslands();
@@ -63,7 +66,7 @@ export default function QuestPick() {
     <Screen>
       <View style={{ width: '100%', maxWidth: 1280, alignSelf: 'center' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
-          <BackPill label={chosen ? 'Đổi mảng' : 'Band 9 Quest'} onPress={() => router.replace((chosen ? '/quest/pick' : '/quest') as never)} />
+          <BackPill label={chosen ? L('Đổi mảng', 'Change area') : 'Band 9 Quest'} onPress={() => router.replace((chosen ? '/quest/pick' : '/quest') as never)} />
           <StepBar step={chosen ? 2 : 1} />
         </View>
 
@@ -76,15 +79,19 @@ export default function QuestPick() {
 }
 
 function AreaStep({ areas }: { areas: Island[] }) {
+  const { L } = useL();
   return (
     <View style={{ marginTop: 18, marginBottom: 28 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
         <View style={{ flex: 1, minWidth: 0 }}>
           <Text accessibilityRole="header" className="font-heavy" style={{ fontSize: 30, lineHeight: 36, color: HUB.ink }}>
-            Hôm nay đánh ở mảng nào?
+            {L('Hôm nay đánh ở mảng nào?', 'Where will you fight today?')}
           </Text>
           <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, lineHeight: 22, color: QUEST_MUTED, maxWidth: 620 }}>
-            Chọn loại bài học trước, sau đó chọn bài. Bài nào cũng có quái chặn đường: trả lời đúng là chém.
+            {L(
+              'Chọn loại bài học trước, sau đó chọn bài. Bài nào cũng có quái chặn đường: trả lời đúng là chém.',
+              'Pick a type of lesson first, then a lesson. Every lesson has a monster in the way: each correct answer is a strike.',
+            )}
           </Text>
         </View>
         <PageStickers scene="duel" />
@@ -106,14 +113,14 @@ function AreaStep({ areas }: { areas: Island[] }) {
             <SealIcon name="flame" color="#F0703F" size={32} />
           </View>
           <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
-            Trận nhanh
+            {L('Trận nhanh', 'Quick battle')}
           </Text>
           <View aria-hidden>
-            <Label text="Vào là đánh ⚡" color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
+            <Label text={L('Vào là đánh ⚡', 'Jump right in ⚡')} color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
           </View>
         </View>
         <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, color: QUEST_MUTED }}>
-          Không cần chọn bài — vào là đánh.
+          {L('Không cần chọn bài — vào là đánh.', 'No need to pick a lesson — just start fighting.')}
         </Text>
         <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
           {QUICK_FIGHTS.map((q) => (
@@ -126,6 +133,7 @@ function AreaStep({ areas }: { areas: Island[] }) {
 }
 
 function LessonStep({ island }: { island: Island }) {
+  const { L, locale } = useL();
   const [filter, setFilter] = useState<Filter>('all');
   const [level, setLevel] = useState<string>('all');
   const next = island.missions.find((m) => !m.done) ?? null;
@@ -154,32 +162,32 @@ function LessonStep({ island }: { island: Island }) {
         <View style={{ flex: 1, minWidth: 220 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
             <Text accessibilityRole="header" className="font-heavy" style={{ fontSize: 26, lineHeight: 32, color: HUB.ink }}>
-              {island.name.replace(/^Đảo /, '')}
+              {islandShortName(island, locale)}
             </Text>
             {island.missions.length > 0 && island.done === island.missions.length ? (
               <View aria-hidden>
                 <Motion kind="pop">
-                  <Label text="Xong hết! 🏆" color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
+                  <Label text={L('Xong hết! 🏆', 'All done! 🏆')} color="#22A06B" ink="#FFFFFF" tilt={-4} size={11} />
                 </Motion>
               </View>
             ) : null}
           </View>
           <Text className="font-sans" style={{ marginTop: 2, fontSize: 14, color: QUEST_MUTED }}>
-            {island.tagline}
+            {islandTagline(island, locale)}
           </Text>
           <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', gap: 10, maxWidth: 420 }}>
             <View style={{ flex: 1, height: 7, borderRadius: 3, backgroundColor: HUB.track, overflow: 'hidden' }}>
               <View style={{ height: 7, width: '100%', backgroundColor: tone, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
             </View>
             <Text className="font-strong" style={{ fontSize: 12, color: '#FFFFFF' }}>
-              {island.done}/{island.missions.length} bài đã qua
+              {L(`${island.done}/${island.missions.length} bài đã qua`, `${island.done}/${island.missions.length} lessons passed`)}
             </Text>
           </View>
         </View>
         {next ? (
           <Pressable
             accessibilityRole="link"
-            accessibilityLabel={`Học tiếp: ${next.title}`}
+            accessibilityLabel={L(`Học tiếp: ${missionTitle(next, locale)}`, `Continue: ${missionTitle(next, locale)}`)}
             onPress={() => router.push(next.href as never)}
             style={({ hovered }: { hovered?: boolean }) => ({
               flexDirection: 'row',
@@ -194,10 +202,10 @@ function LessonStep({ island }: { island: Island }) {
           >
             <View style={{ flexShrink: 1 }}>
               <Text className="font-semi" style={{ fontSize: 11, color: '#5B4205' }}>
-                HỌC TIẾP
+                {L('HỌC TIẾP', 'CONTINUE')}
               </Text>
               <Text className="font-heavy" style={{ fontSize: 14, color: '#2A1B02' }} numberOfLines={1}>
-                {next.title}
+                {missionTitle(next, locale)}
               </Text>
             </View>
             <Icon name="arrow-right" size={16} color="#2A1B02" strokeWidth={2.4} />
@@ -206,15 +214,15 @@ function LessonStep({ island }: { island: Island }) {
       </Panel>
 
       <View style={{ marginTop: 16, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
-        <DarkChip label={`Tất cả · ${island.missions.length}`} active={filter === 'all'} onPress={() => setFilter('all')} />
-        <DarkChip label={`Chưa qua · ${open}`} active={filter === 'open'} onPress={() => setFilter('open')} />
-        <DarkChip label={`Đã qua · ${island.done}`} active={filter === 'done'} onPress={() => setFilter('done')} />
+        <DarkChip label={L(`Tất cả · ${island.missions.length}`, `All · ${island.missions.length}`)} active={filter === 'all'} onPress={() => setFilter('all')} />
+        <DarkChip label={L(`Chưa qua · ${open}`, `Not passed · ${open}`)} active={filter === 'open'} onPress={() => setFilter('open')} />
+        <DarkChip label={L(`Đã qua · ${island.done}`, `Passed · ${island.done}`)} active={filter === 'done'} onPress={() => setFilter('done')} />
         {levels.length > 1 ? (
           <>
             <View style={{ width: 1, height: 20, backgroundColor: HUB.line, marginHorizontal: 4 }} />
-            <DarkChip label="Mọi độ khó" active={level === 'all'} onPress={() => setLevel('all')} />
+            <DarkChip label={L('Mọi độ khó', 'All levels')} active={level === 'all'} onPress={() => setLevel('all')} />
             {levels.map((l) => (
-              <DarkChip key={l} label={l} active={level === l} onPress={() => setLevel(l)} />
+              <DarkChip key={l} label={levelLabel(l, locale)} active={level === l} onPress={() => setLevel(l)} />
             ))}
           </>
         ) : null}
@@ -231,7 +239,7 @@ function LessonStep({ island }: { island: Island }) {
               </Motion>
             </View>
             <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
-              {filter === 'done' ? 'Chưa qua bài nào ở đây.' : 'Không còn bài nào khớp bộ lọc.'}
+              {filter === 'done' ? L('Chưa qua bài nào ở đây.', 'No lessons passed here yet.') : L('Không còn bài nào khớp bộ lọc.', 'No lessons match this filter.')}
             </Text>
           </Panel>
         ) : (
@@ -248,7 +256,7 @@ function LessonStep({ island }: { island: Island }) {
       {island.id === 'vocab' ? (
         <Pressable accessibilityRole="link" onPress={() => router.push('/vocabulary/quiz' as never)} style={{ marginTop: 14, alignSelf: 'flex-start' }}>
           <Text className="font-strong" style={{ fontSize: 13, color: QUEST_GOLD }}>
-            Tìm bộ từ khác (IELTS 50 chủ đề, sổ từ của bạn) →
+            {L('Tìm bộ từ khác (IELTS 50 chủ đề, sổ từ của bạn) →', 'Find other word sets (50 IELTS topics, your word notebook) →')}
           </Text>
         </Pressable>
       ) : null}

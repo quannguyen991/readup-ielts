@@ -7,6 +7,7 @@ import { Badge, Button, Icon, IconButton } from '@/components/ui';
 import { useWordLookup } from '@/services/dictionary/lookup';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 export type WordSheetTarget = {
   word: string;
@@ -30,6 +31,7 @@ export function WordSheet({
   articleTitle: string;
   onClose: () => void;
 }) {
+  const { L } = useL();
   const { data, isLoading, isError } = useWordLookup(
     target ? target.word : null,
     target?.sentence ?? '',
@@ -79,7 +81,7 @@ export function WordSheet({
                 {target.word}
               </Text>
               {!isSentence ? (
-                <IconButton name="volume" accessibilityLabel="Phát âm" onPress={speak} />
+                <IconButton name="volume" accessibilityLabel={L('Phát âm', 'Pronounce')} onPress={speak} />
               ) : null}
             </View>
 
@@ -90,24 +92,24 @@ export function WordSheet({
             <View className="mt-2 flex-row flex-wrap gap-2">
               {data?.partOfSpeech ? <Badge label={data.partOfSpeech} tone="primary" /> : null}
               {target.mode === 'phrase' ? <Badge label="Collocation" tone="accent" /> : null}
-              {isSentence ? <Badge label="Giải thích câu" tone="info" /> : null}
+              {isSentence ? <Badge label={L('Giải thích câu', 'Sentence explanation')} tone="info" /> : null}
             </View>
           </View>
 
-          <IconButton name="close" accessibilityLabel="Đóng" onPress={onClose} />
+          <IconButton name="close" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} />
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false}>
           {isLoading ? (
             <View className="items-center py-8">
               <ActivityIndicator color={color.primary} />
-              <Text className="mt-2 font-sans text-label text-muted">Đang tra…</Text>
+              <Text className="mt-2 font-sans text-label text-muted">{L('Đang tra…', 'Looking up…')}</Text>
             </View>
           ) : null}
 
           {isError ? (
             <Text className="py-4 font-sans text-body text-danger-ink">
-              Không tra được từ này. Kiểm tra kết nối mạng rồi thử lại.
+              {L('Không tra được từ này. Kiểm tra kết nối mạng rồi thử lại.', "Couldn't look up this word. Check your connection and try again.")}
             </Text>
           ) : null}
 
@@ -115,28 +117,28 @@ export function WordSheet({
             <View className="gap-3">
               {data.definitionContext ? (
                 <Block
-                  label="Nghĩa trong ngữ cảnh câu này"
+                  label={L('Nghĩa trong ngữ cảnh câu này', 'Meaning in this sentence')}
                   value={data.definitionContext}
                   tone="primary"
                 />
               ) : null}
 
               {data.definitionVi ? (
-                <Block label="Nghĩa tiếng Việt" value={data.definitionVi} tone="accent" />
+                <Block label={L('Nghĩa tiếng Việt', 'Vietnamese meaning')} value={data.definitionVi} tone="accent" />
               ) : null}
 
               {data.definitionGeneral ? (
-                <Block label="Nghĩa tổng quát" value={data.definitionGeneral} />
+                <Block label={L('Nghĩa tổng quát', 'General meaning')} value={data.definitionGeneral} />
               ) : null}
 
               <View className="rounded-panel bg-surfaceAlt p-3">
-                <Text className="font-mid text-label text-muted">Câu gốc trong bài</Text>
+                <Text className="font-mid text-label text-muted">{L('Câu gốc trong bài', 'Original sentence in the passage')}</Text>
                 <Text className="mt-1 font-sans text-body text-body">“{target.sentence}”</Text>
               </View>
 
               {data.examples.length > 0 ? (
                 <View className="gap-2">
-                  <Text className="font-mid text-label text-muted">Ví dụ</Text>
+                  <Text className="font-mid text-label text-muted">{L('Ví dụ', 'Examples')}</Text>
                   {data.examples.map((example, index) => (
                     <View key={index} className="flex-row gap-2">
                       <Icon name="chevron-right" size={14} color={color.subtle} />
@@ -148,8 +150,10 @@ export function WordSheet({
 
               {!data.definitionContext ? (
                 <Text className="font-sans text-label text-subtle">
-                  Nghĩa theo đúng ngữ cảnh cần Claude API. Chưa cấu hình key nên đang hiện nghĩa
-                  tổng quát.
+                  {L(
+                    'Nghĩa theo đúng ngữ cảnh cần Claude API. Chưa cấu hình key nên đang hiện nghĩa tổng quát.',
+                    "In-context meanings need the Claude API. No key is configured, so the general meaning is shown.",
+                  )}
                 </Text>
               ) : null}
             </View>
@@ -158,7 +162,7 @@ export function WordSheet({
 
         {!isSentence ? (
           <Button
-            label={saved ? 'Đã có trong sổ từ' : 'Lưu vào sổ từ'}
+            label={saved ? L('Đã có trong sổ từ', 'Already in notebook') : L('Lưu vào sổ từ', 'Save to notebook')}
             iconLeft={saved ? 'check' : 'plus'}
             variant={saved ? 'outline' : 'primary'}
             disabled={!data || saved}

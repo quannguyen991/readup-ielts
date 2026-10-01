@@ -1,6 +1,8 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 
+import { useL } from '@/i18n/useL';
+
 /**
  * Phân trang có số.
  *
@@ -22,6 +24,7 @@ export function Pagination({
   onChange: (next: number) => void;
   className?: string;
 }) {
+  const { L } = useL();
   if (pageCount <= 1) return null;
 
   const start = Math.max(0, Math.min(page - 2, pageCount - 5));
@@ -29,13 +32,13 @@ export function Pagination({
 
   return (
     <View className={`flex-row flex-wrap items-center justify-center gap-1.5 ${className}`}>
-      <PageButton label="Trước" disabled={page === 0} onPress={() => onChange(page - 1)} />
+      <PageButton label={L('Trước', 'Previous')} disabled={page === 0} onPress={() => onChange(page - 1)} />
 
       {numbers.map((n) => (
         <Pressable
           key={n}
           accessibilityRole="button"
-          accessibilityLabel={`Trang ${n + 1}`}
+          accessibilityLabel={L(`Trang ${n + 1}`, `Page ${n + 1}`)}
           aria-selected={n === page}
           onPress={() => onChange(n)}
           className={[
@@ -52,13 +55,13 @@ export function Pagination({
       ))}
 
       <PageButton
-        label="Sau"
+        label={L('Sau', 'Next')}
         disabled={page >= pageCount - 1}
         onPress={() => onChange(page + 1)}
       />
 
       <Text className="ml-2 font-sans text-label text-subtle">
-        Trang {page + 1} / {pageCount}
+        {L('Trang', 'Page')} {page + 1} / {pageCount}
       </Text>
     </View>
   );

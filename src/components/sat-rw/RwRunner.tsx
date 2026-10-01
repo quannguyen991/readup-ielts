@@ -6,6 +6,7 @@ import { Badge, Button, PaperCard } from '@/components/ui';
 import { ExamShell } from '@/components/layout/ExamShell';
 import { ItemBody } from '@/components/sat-rw/ItemBody';
 import type { MockItem } from '@/services/sat-rw/mock/item';
+import { useL } from '@/i18n/useL';
 
 /**
  * Phòng thi Reading and Writing: một module, đồng hồ đếm ngược, không lời giải.
@@ -60,6 +61,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
   const [flagged, setFlagged] = useState<Set<number>>(() => new Set());
   const [remainingMs, setRemainingMs] = useState(minutes * 60_000);
   const { width } = useWindowDimensions();
+  const { L } = useL();
   const split = width >= SPLIT_MIN_WIDTH;
 
   const startedAt = useRef(0);
@@ -125,7 +127,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
           <View className="flex-1">
             <Text className="font-heavy text-pageTitle text-white">{title}</Text>
             <Text className="mt-1 font-sans text-body text-white/70">
-              Câu {index + 1} / {items.length}
+              {L('Câu', 'Question')} {index + 1} / {items.length}
             </Text>
           </View>
           <View className="items-end">
@@ -142,7 +144,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
             </Text>
             <Text className="font-sans text-label text-white/70">
               {phaseLabel ? `${phaseLabel} · ` : ''}
-              đã trả lời {answered}/{items.length}
+              {L('đã trả lời', 'answered')} {answered}/{items.length}
             </Text>
           </View>
         </View>
@@ -151,7 +153,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
           <Text className="font-heavy text-sectionTitle text-white">{title}</Text>
           <View className="mt-1 flex-row items-baseline justify-between gap-3">
             <Text className="flex-1 font-sans text-body text-white/70">
-              Câu {index + 1} / {items.length} · đã trả lời {answered}
+              {L('Câu', 'Question')} {index + 1} / {items.length} · {L('đã trả lời', 'answered')} {answered}
             </Text>
             <Text
               className="font-heavy text-stat"
@@ -223,7 +225,7 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
               {/* Nút đánh dấu ở CUỐI CỘT CÂU HỎI, không phải cuối thẻ: nó đánh dấu câu hỏi. */}
               <View className="mt-4 border-t border-brand-soft pt-3">
                 <Button
-                  label={isFlagged ? 'Bỏ đánh dấu câu này' : 'Đánh dấu để xem lại'}
+                  label={isFlagged ? L('Bỏ đánh dấu câu này', 'Unmark this question') : L('Đánh dấu để xem lại', 'Mark for review')}
                   variant={isFlagged ? 'secondary' : 'ghost'}
                   iconLeft="bookmark"
                   onPress={toggleFlag}
@@ -237,25 +239,25 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
       <View className="mt-4 flex-row flex-wrap items-center justify-between gap-3">
         <View className="flex-row gap-2">
           <Button
-            label="Câu trước"
+            label={L('Câu trước', 'Previous')}
             variant="outline"
             iconLeft="chevron-left"
             disabled={index === 0}
             onPress={() => setIndex((i) => Math.max(0, i - 1))}
           />
           <Button
-            label="Câu sau"
+            label={L('Câu sau', 'Next')}
             variant="outline"
             iconRight="chevron-right"
             disabled={index === items.length - 1}
             onPress={() => setIndex((i) => Math.min(items.length - 1, i + 1))}
           />
         </View>
-        <Button label="Nộp module" iconRight="check" onPress={submit} />
+        <Button label={L('Nộp module', 'Submit module')} iconRight="check" onPress={submit} />
       </View>
 
       <PaperCard className="mt-4">
-        <Text className="font-strong text-label text-paper-muted">Bảng câu hỏi</Text>
+        <Text className="font-strong text-label text-paper-muted">{L('Bảng câu hỏi', 'Question map')}</Text>
         <View className="mt-2 flex-row flex-wrap gap-2">
           {items.map((_, i) => {
             const active = i === index;
@@ -265,7 +267,10 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
               <Pressable
                 key={items[i]!.id}
                 accessibilityRole="button"
-                accessibilityLabel={`Câu ${i + 1}${done ? ', đã trả lời' : ''}${flag ? ', đã đánh dấu' : ''}`}
+                accessibilityLabel={L(
+                  `Câu ${i + 1}${done ? ', đã trả lời' : ''}${flag ? ', đã đánh dấu' : ''}`,
+                  `Question ${i + 1}${done ? ', answered' : ''}${flag ? ', marked' : ''}`,
+                )}
                 onPress={() => setIndex(i)}
                 className={`h-9 w-9 items-center justify-center rounded-pill border ${
                   active
@@ -295,10 +300,10 @@ export function RwRunner({ title, phaseLabel, items, minutes, onFinish }: RwRunn
           })}
         </View>
         <View className="mt-3 flex-row flex-wrap items-center gap-2">
-          <Badge label="Đang làm" tone="primary" shape="tag" />
-          <Badge label="Đã trả lời" tone="info" shape="tag" />
-          <Badge label="Đã đánh dấu" tone="warning" shape="tag" />
-          <Badge label="Chưa trả lời" tone="neutral" shape="tag" />
+          <Badge label={L('Đang làm', 'Current')} tone="primary" shape="tag" />
+          <Badge label={L('Đã trả lời', 'Answered')} tone="info" shape="tag" />
+          <Badge label={L('Đã đánh dấu', 'Marked')} tone="warning" shape="tag" />
+          <Badge label={L('Chưa trả lời', 'Unanswered')} tone="neutral" shape="tag" />
         </View>
       </PaperCard>
     </ExamShell>

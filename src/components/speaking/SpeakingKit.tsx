@@ -4,6 +4,7 @@ import { Platform, Text, View } from 'react-native';
 import { Icon } from '@/components/ui/Icon';
 import type { SpeakingAttempt } from '@/services/speaking/attempts';
 import { canRecognize } from '@/services/shadow/speech';
+import { useL } from '@/i18n/useL';
 
 const noSubscribe = () => () => undefined;
 
@@ -74,6 +75,19 @@ export const MODE_LABEL: Record<SpeakingAttempt['mode'], string> = {
   q: 'Một câu',
 };
 
+export const MODE_LABEL_EN: Record<SpeakingAttempt['mode'], string> = {
+  full: 'Full test',
+  p1: 'Part 1',
+  p2: 'Part 2',
+  p3: 'Part 3',
+  q: 'Single question',
+};
+
+/** Nhãn chế độ nói theo ngôn ngữ giao diện. */
+export function modeLabel(mode: SpeakingAttempt['mode'], en: boolean): string {
+  return en ? MODE_LABEL_EN[mode] : MODE_LABEL[mode];
+}
+
 /** Ô số liệu nhỏ. `hint` là một dòng giải thích ngắn dưới con số. */
 export function MetricTile({ label, value, hint, tone }: { label: string; value: string; hint?: string; tone?: string }) {
   return (
@@ -99,6 +113,7 @@ export function BandHistory({ attempts }: { attempts: SpeakingAttempt[] }) {
     .filter((a) => !a.typed && a.grade?.overall != null)
     .slice(0, 10)
     .reverse();
+  const { L } = useL();
   if (graded.length < 2) return null;
   return (
     <View>
@@ -117,7 +132,7 @@ export function BandHistory({ attempts }: { attempts: SpeakingAttempt[] }) {
         })}
       </View>
       <Text className="mt-2 font-sans text-label" style={{ color: SPK.muted }}>
-        Band tổng {graded.length} lượt nói gần nhất (cũ → mới)
+        {L(`Band tổng ${graded.length} lượt nói gần nhất (cũ → mới)`, `Overall band, last ${graded.length} speaking attempts (old → new)`)}
       </Text>
     </View>
   );

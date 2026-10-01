@@ -31,6 +31,7 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { PageStickers, SealIcon, type ArtScene } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Thi thử phần Math — hai module, module 2 đổi độ khó theo kết quả module 1.
@@ -46,6 +47,7 @@ type Phase =
   | { stage: 'module2'; tier: ModuleTier; attempts: GradedAttempt[]; elapsedMs: number };
 
 export default function MathMockScreen() {
+  const { L } = useL();
   const [seed] = useState(() => String(Date.now()));
   const [phase, setPhase] = useState<Phase>({ stage: 'intro' });
 
@@ -111,18 +113,18 @@ export default function MathMockScreen() {
     const blocked = mockQuota.entitlement;
     return (
       <Screen>
-        <PageTitle text="Thi thử SAT Math" scene="test" />
+        <PageTitle text={L('Thi thử SAT Math', 'SAT Math mock test')} scene="test" />
         <View className="mt-4">
           <QuotaPaywall
-            title="Hết lượt thi thử tuần này"
+            title={L('Hết lượt thi thử tuần này', "You've used this week's mock tests")}
             used={mockQuota.used}
             limit={blocked.reason === 'quota' ? blocked.limit : 1}
-            resetsIn="vào thứ Hai tuần sau"
+            resetsIn={L('vào thứ Hai tuần sau', 'next Monday')}
           />
         </View>
         <Button
           className="mt-4 self-start"
-          label="Về lộ trình"
+          label={L('Về lộ trình', 'Back to the path')}
           variant="ghost"
           onPress={() => router.replace('/math' as never)}
         />
@@ -133,17 +135,20 @@ export default function MathMockScreen() {
   if (phase.stage === 'intro') {
     return (
       <Screen>
-        <PageTitle text="Thi thử SAT Math" scene="test">
+        <PageTitle text={L('Thi thử SAT Math', 'SAT Math mock test')} scene="test">
           <Text className="mt-1 font-sans text-body text-muted">
-            Hai module liên tiếp, đúng cấu trúc phần Math của đề số hoá.
+            {L(
+              'Hai module liên tiếp, đúng cấu trúc phần Math của đề số hoá.',
+              'Two back-to-back modules, matching the structure of the digital SAT Math section.',
+            )}
           </Text>
         </PageTitle>
 
         <View className="mt-4">
           <Grid columns={3} tabletColumns={3} mobileColumns={3}>
-            <StatCard label="Số câu" value={String(MOCK_TOTAL_QUESTIONS)} icon="clipboard" tone="primary" />
-            <StatCard label="Thời gian" value={`${MOCK_MODULE_MINUTES * 2}′`} icon="clock" tone="accent" />
-            <StatCard label="Mỗi module" value={String(MOCK_MODULE_LENGTH)} icon="grid" tone="success" />
+            <StatCard label={L('Số câu', 'Questions')} value={String(MOCK_TOTAL_QUESTIONS)} icon="clipboard" tone="primary" />
+            <StatCard label={L('Thời gian', 'Time')} value={`${MOCK_MODULE_MINUTES * 2}′`} icon="clock" tone="accent" />
+            <StatCard label={L('Mỗi module', 'Per module')} value={String(MOCK_MODULE_LENGTH)} icon="grid" tone="success" />
           </Grid>
         </View>
 
@@ -152,29 +157,36 @@ export default function MathMockScreen() {
             <View aria-hidden>
               <SealIcon name="clock" color="#F0703F" size={36} />
             </View>
-            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Trước khi bắt đầu</Text>
+            <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Trước khi bắt đầu', 'Before you start')}</Text>
             <View aria-hidden>
-              <Label text="Tự nộp khi hết giờ ⏱" color="#F2B632" tilt={4} size={11} />
+              <Label text={L('Tự nộp khi hết giờ ⏱', 'Auto-submits at time-up ⏱')} color="#F2B632" tilt={4} size={11} />
             </View>
           </View>
           <View className="mt-2 gap-2">
             <Bullet>
-              Đồng hồ chạy lùi và TỰ NỘP khi hết giờ, từng module một. Không tạm dừng được, đúng như
-              phòng thi.
+              {L(
+                'Đồng hồ chạy lùi và TỰ NỘP khi hết giờ, từng module một. Không tạm dừng được, đúng như phòng thi.',
+                "The timer counts down and AUTO-SUBMITS when time's up, one module at a time. No pausing — just like the real exam.",
+              )}
             </Bullet>
             <Bullet>
-              Làm đúng từ khoảng {Math.round(MODULE_ROUTING_THRESHOLD * 100)}% module 1 trở lên thì
-              module 2 sẽ khó hơn — và chỉ nhánh khó mới với tới vùng điểm cao.
+              {L(
+                `Làm đúng từ khoảng ${Math.round(MODULE_ROUTING_THRESHOLD * 100)}% module 1 trở lên thì module 2 sẽ khó hơn — và chỉ nhánh khó mới với tới vùng điểm cao.`,
+                `Get about ${Math.round(MODULE_ROUTING_THRESHOLD * 100)}% or more of module 1 right and module 2 gets harder — only the harder route can reach the top scores.`,
+              )}
             </Bullet>
             <Bullet>
-              Điểm 200–800 ở cuối bài là <Text className="font-strong text-ink">ước lượng</Text>.
-              College Board không công bố bảng quy đổi của đề số hoá, nên con số ấy dùng để so với
-              chính mình lần trước, không phải để so với điểm thi thật.
+              {L('Điểm 200–800 ở cuối bài là ', 'The 200–800 score at the end is an ')}
+              <Text className="font-strong text-ink">{L('ước lượng', 'estimate')}</Text>
+              {L(
+                '. College Board không công bố bảng quy đổi của đề số hoá, nên con số ấy dùng để so với chính mình lần trước, không phải để so với điểm thi thật.',
+                ". College Board doesn't publish a conversion table for the digital test, so use it to compare with your own previous attempts, not with a real exam score.",
+              )}
             </Bullet>
           </View>
           <Button
             className="mt-4"
-            label="Bắt đầu module 1"
+            label={L('Bắt đầu module 1', 'Start module 1')}
             iconRight="arrow-right"
             onPress={() => setPhase({ stage: 'module1' })}
           />
@@ -187,12 +199,15 @@ export default function MathMockScreen() {
     return (
       <MathRunner
         surface="paper"
-        title="Thi thử · Module 1"
-        subtitle="Độ khó trộn lẫn. Kết quả module này quyết định độ khó của module sau."
+        title={L('Thi thử · Module 1', 'Mock test · Module 1')}
+        subtitle={L(
+          'Độ khó trộn lẫn. Kết quả module này quyết định độ khó của module sau.',
+          'Mixed difficulty. Your result here decides how hard the next module is.',
+        )}
         items={module1}
         minutes={MOCK_MODULE_MINUTES}
         phaseLabel="Module 1/2"
-        submitLabel="Nộp module 1"
+        submitLabel={L('Nộp module 1', 'Submit module 1')}
         onFinish={finishModule1}
       />
     );
@@ -202,7 +217,7 @@ export default function MathMockScreen() {
     const correct = countCorrect(phase.attempts);
     return (
       <Screen>
-        <PageTitle text="Xong module 1" scene="progress" />
+        <PageTitle text={L('Xong module 1', 'Module 1 done')} scene="progress" />
         <Card className="mt-4">
           <View className="flex-row flex-wrap items-center gap-3">
             <View aria-hidden>
@@ -213,11 +228,11 @@ export default function MathMockScreen() {
               </Motion>
             </View>
             <Text className="font-strong text-cardTitle text-ink">
-              Đúng {correct}/{phase.attempts.length}
+              {L(`Đúng ${correct}/${phase.attempts.length}`, `${correct}/${phase.attempts.length} correct`)}
             </Text>
             <View aria-hidden>
               <Label
-                text={phase.tier === 'harder' ? 'Nhánh khó 🚀' : 'Nhánh dễ 🎯'}
+                text={phase.tier === 'harder' ? L('Nhánh khó 🚀', 'Harder route 🚀') : L('Nhánh dễ 🎯', 'Easier route 🎯')}
                 color={phase.tier === 'harder' ? '#F0703F' : '#B07A3A'}
                 ink="#FFFFFF"
                 tilt={4}
@@ -227,16 +242,24 @@ export default function MathMockScreen() {
           </View>
           <Text className="mt-2 font-sans text-body text-muted">
             {phase.tier === 'harder'
-              ? 'Bạn được chuyển sang module 2 KHÓ HƠN. Đây là nhánh duy nhất với tới vùng điểm cao — làm chậm lại một chút cũng được, đổi lại đừng sai câu dễ.'
-              : 'Bạn được chuyển sang module 2 DỄ HƠN. Nhánh này bị chặn trần điểm dù làm đúng hết, nên mục tiêu bây giờ là ăn trọn những câu chắc chắn làm được.'}
+              ? L(
+                  'Bạn được chuyển sang module 2 KHÓ HƠN. Đây là nhánh duy nhất với tới vùng điểm cao — làm chậm lại một chút cũng được, đổi lại đừng sai câu dễ.',
+                  "You've been routed to the HARDER module 2. It's the only route that reaches the top scores — it's fine to slow down a little, just don't miss the easy ones.",
+                )
+              : L(
+                  'Bạn được chuyển sang module 2 DỄ HƠN. Nhánh này bị chặn trần điểm dù làm đúng hết, nên mục tiêu bây giờ là ăn trọn những câu chắc chắn làm được.',
+                  "You've been routed to the EASIER module 2. This route has a score ceiling even if you get everything right, so the goal now is to bank every question you're sure of.",
+                )}
           </Text>
           <Text className="mt-2 font-sans text-label text-muted">
-            Ngưỡng chuyển nhánh {Math.round(MODULE_ROUTING_THRESHOLD * 100)}% là phỏng theo tài liệu
-            luyện thi, không phải quy tắc chính thức của College Board.
+            {L(
+              `Ngưỡng chuyển nhánh ${Math.round(MODULE_ROUTING_THRESHOLD * 100)}% là phỏng theo tài liệu luyện thi, không phải quy tắc chính thức của College Board.`,
+              `The ${Math.round(MODULE_ROUTING_THRESHOLD * 100)}% routing threshold is based on prep materials, not an official College Board rule.`,
+            )}
           </Text>
           <Button
             className="mt-4"
-            label="Bắt đầu module 2"
+            label={L('Bắt đầu module 2', 'Start module 2')}
             iconRight="arrow-right"
             onPress={() => setPhase({ ...phase, stage: 'module2' })}
           />
@@ -248,12 +271,18 @@ export default function MathMockScreen() {
   return (
     <MathRunner
       surface="paper"
-      title={`Thi thử · Module 2 (${phase.tier === 'harder' ? 'khó hơn' : 'dễ hơn'})`}
-      subtitle="Module cuối. Nộp xong sẽ ra điểm ước lượng và bảng xem lại từng câu."
+      title={L(
+        `Thi thử · Module 2 (${phase.tier === 'harder' ? 'khó hơn' : 'dễ hơn'})`,
+        `Mock test · Module 2 (${phase.tier === 'harder' ? 'harder' : 'easier'})`,
+      )}
+      subtitle={L(
+        'Module cuối. Nộp xong sẽ ra điểm ước lượng và bảng xem lại từng câu.',
+        "Final module. After submitting you'll get a score estimate and a question-by-question review.",
+      )}
       items={module2}
       minutes={MOCK_MODULE_MINUTES}
       phaseLabel="Module 2/2"
-      submitLabel="Nộp bài và xem điểm"
+      submitLabel={L('Nộp bài và xem điểm', 'Submit and see score')}
       onFinish={finishModule2}
     />
   );

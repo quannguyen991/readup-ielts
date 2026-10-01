@@ -321,33 +321,48 @@ export function mergeCollection(a: Collection | undefined, b: Collection | undef
 
 // ------------------------------------------------------------------ câu hỏi từ vựng
 
-export type QuizWord = { word: string; meaningVi: string };
+export type QuizWord = {
+  word: string;
+  meaningVi: string;
+  /** Định nghĩa tiếng Anh (nếu bộ từ có) — dùng làm lựa chọn khi giao diện là English. */
+  definitionEn?: string;
+};
 export type CatchQuestion = { word: string; options: string[]; answer: number };
 
 const norm = (s: string) => s.trim().toLowerCase();
 
 /**
- * Một câu trắc nghiệm nghĩa tiếng Việt: từ lấy trong `focus` (từ đang học) nếu
- * có, không thì trong `pool`; ba nhiễu là nghĩa KHÁC của từ khác trong `pool`.
+ * Một câu trắc nghiệm nghĩa: từ lấy trong `focus` (từ đang học) nếu có, không
+ * thì trong `pool`; ba nhiễu là nghĩa KHÁC của từ khác trong `pool`.
  * `rand` là hàm ngẫu nhiên [0, 1) (test truyền hàm tất định).
+ *
+ * `en` (giao diện English): lựa chọn là định nghĩa tiếng Anh — chỉ khi từ hỏi
+ * CÓ định nghĩa và đủ ba nhiễu cũng có. Thiếu thì cả câu dùng nghĩa tiếng Việt,
+ * không trộn hai thứ tiếng trong một câu (lựa chọn khác tiếng là lộ đáp án).
  */
-export function makeQuestion(focus: readonly QuizWord[], pool: readonly QuizWord[], rand: () => number): CatchQuestion | null {
+export function makeQuestion(focus: readonly QuizWord[], pool: readonly QuizWord[], rand: () => number, en = false): CatchQuestion | null {
   const src = focus.length > 0 ? focus : pool;
   if (src.length === 0) return null;
   const target = src[Math.floor(rand() * src.length)]!;
-  const seen = new Set([norm(target.meaningVi)]);
-  const wrong: string[] = [];
-  for (let tries = 0; wrong.length < 3 && tries < 200; tries++) {
-    const w = pool[Math.floor(rand() * pool.length)];
-    if (!w || norm(w.word) === norm(target.word) || seen.has(norm(w.meaningVi))) continue;
-    seen.add(norm(w.meaningVi));
-    wrong.push(w.meaningVi);
-  }
-  if (wrong.length < 3) return null;
-  const answer = Math.floor(rand() * 4);
-  const options = [...wrong];
-  options.splice(answer, 0, target.meaningVi);
-  return { word: target.word, options, answer };
+  const hasEn = (w: QuizWord) => !!w.definitionEn?.trim();
+  const pick = (useEn: boolean): CatchQuestion | null => {
+    const text = (w: QuizWord) => (useEn ? w.definitionEn!.trim() : w.meaningVi);
+    const candidates = useEn ? pool.filter(hasEn) : pool;
+    const seen = new Set([norm(text(target))]);
+    const wrong: string[] = [];
+    for (let tries = 0; wrong.length < 3 && tries < 200 && candidates.length > 0; tries++) {
+      const w = candidates[Math.floor(rand() * candidates.length)];
+      if (!w || norm(w.word) === norm(target.word) || seen.has(norm(text(w)))) continue;
+      seen.add(norm(text(w)));
+      wrong.push(text(w));
+    }
+    if (wrong.length < 3) return null;
+    const answer = Math.floor(rand() * 4);
+    const options = [...wrong];
+    options.splice(answer, 0, text(target));
+    return { word: target.word, options, answer };
+  };
+  return (en && hasEn(target) ? pick(true) : null) ?? pick(false);
 }
 
 // ------------------------------------------------------------------ nhà & nội thất

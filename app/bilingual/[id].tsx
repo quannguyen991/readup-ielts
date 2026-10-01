@@ -35,6 +35,8 @@ import { lemmatize } from '@/services/dictionary/lookup';
 import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
 import { useVocabStore } from '@/store/useVocabStore';
 import { HoverPressable } from '@/components/ui/HoverPressable';
+import { useL } from '@/i18n/useL';
+import { bilingualQuestionType, bilingualTopic } from '@/components/bilingual/labels-en';
 
 /**
  * Màn đọc báo song ngữ.
@@ -93,6 +95,7 @@ export default function BilingualReaderScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const article = typeof id === 'string' ? getBilingualArticleById(id) : undefined;
   useReadingFonts();
+  const { L } = useL();
 
   if (!article) {
     return (
@@ -106,14 +109,14 @@ export default function BilingualReaderScreen() {
                 </Sticker>
               </Motion>
             </View>
-            <Text className="font-heavy text-sectionTitle text-ink">Không tìm thấy bài này</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('Không tìm thấy bài này', "We couldn't find this article")}</Text>
             <Text className="mt-2 font-sans text-body text-muted">
-              Bài bạn vừa mở không có trong kho. Quay lại danh sách để chọn bài khác.
+              {L('Bài bạn vừa mở không có trong kho. Quay lại danh sách để chọn bài khác.', "This article isn't in the library. Go back to the list and pick another one.")}
             </Text>
             <Button
               className="mt-4"
               variant="brand"
-              label="Về kho đọc báo song ngữ"
+              label={L('Về kho đọc báo song ngữ', 'Back to bilingual news')}
               onPress={() => router.replace('/bilingual' as never)}
             />
           </View>
@@ -312,6 +315,7 @@ function Toolbar(props: {
   // Đủ chỗ cho dòng phụ "THE BAND 9 PRESS" cạnh tên trang.
   const roomy = useWindowDimensions().width >= 1200;
   const [open, setOpen] = useState(false);
+  const { L } = useL();
 
   /*
     MỌI NÚT CHỈNH GOM VÀO MỘT BẢNG CÀI ĐẶT. Bản trước là một hàng sáu viên
@@ -323,7 +327,7 @@ function Toolbar(props: {
     <View className="flex-row items-center gap-x-3 py-1.5" style={{ zIndex: 30 }}>
       <Pressable
         accessibilityRole="link"
-        accessibilityLabel="Về kho đọc báo song ngữ"
+        accessibilityLabel={L('Về kho đọc báo song ngữ', 'Back to bilingual news')}
         onPress={() => (router.canGoBack() ? router.back() : router.replace('/bilingual' as never))}
         className="h-9 w-9 items-center justify-center"
       >
@@ -334,7 +338,7 @@ function Toolbar(props: {
 
       <View className="min-w-0 flex-row items-baseline gap-2.5" style={{ flexShrink: 1 }}>
         <Text numberOfLines={1} style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: CREAM }}>
-          đọc song ngữ
+          {L('đọc song ngữ', 'bilingual reading')}
         </Text>
         <View aria-hidden style={{ alignSelf: 'center' }}>
           <Motion kind="float">
@@ -354,14 +358,14 @@ function Toolbar(props: {
 
       <HoverPressable
         accessibilityRole="button"
-        accessibilityLabel="Cài đặt đọc"
+        accessibilityLabel={L('Cài đặt đọc', 'Reading settings')}
         aria-expanded={open}
         onPress={() => setOpen(true)}
         style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
       >
         <View className="h-10 flex-row items-center gap-2 rounded-pill px-4" style={{ backgroundColor: PILL_BG, borderWidth: 1, borderColor: PILL_BORDER }}>
           <Icon name="settings" size={16} color={CREAM} strokeWidth={2} />
-          <Text style={{ fontSize: 13, fontWeight: '700', color: CREAM }}>Cài đặt</Text>
+          <Text style={{ fontSize: 13, fontWeight: '700', color: CREAM }}>{L('Cài đặt', 'Settings')}</Text>
         </View>
       </HoverPressable>
 
@@ -381,11 +385,12 @@ function ReaderSettings(
 ) {
   const { width } = useWindowDimensions();
   const [fullscreen, setFullscreen] = useState(false);
+  const { L } = useL();
   const views = [
     ...(props.wide ? [] : [{ key: 'en', label: 'English' }]),
-    { key: 'vi', label: props.wide ? 'Bản dịch' : 'Tiếng Việt' },
-    { key: 'questions', label: `Câu hỏi ${props.answered}/${props.questionCount}` },
-    { key: 'vocab', label: 'Từ vựng' },
+    { key: 'vi', label: props.wide ? L('Bản dịch', 'Translation') : L('Tiếng Việt', 'Vietnamese') },
+    { key: 'questions', label: L(`Câu hỏi ${props.answered}/${props.questionCount}`, `Questions ${props.answered}/${props.questionCount}`) },
+    { key: 'vocab', label: L('Từ vựng', 'Vocabulary') },
   ];
 
   const toggleFullscreen = () => {
@@ -417,13 +422,13 @@ function ReaderSettings(
           } as object}
         >
           <View className="flex-row items-center justify-between">
-            <Text style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 22, color: PAPER.ink }}>Cài đặt đọc</Text>
-            <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={props.onClose} className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: PAPER.chip }}>
+            <Text style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 22, color: PAPER.ink }}>{L('Cài đặt đọc', 'Reading settings')}</Text>
+            <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={props.onClose} className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: PAPER.chip }}>
               <Icon name="close" size={16} color={PAPER.ink} />
             </Pressable>
           </View>
 
-          <SettingLabel>{props.wide ? 'Tấm bên phải' : 'Tấm đang xem'}</SettingLabel>
+          <SettingLabel>{props.wide ? L('Tấm bên phải', 'Right pane') : L('Tấm đang xem', 'Current pane')}</SettingLabel>
           <View className="flex-row flex-wrap gap-2">
             {views.map((v) => (
               <Choice
@@ -439,7 +444,7 @@ function ReaderSettings(
             ))}
           </View>
 
-          <SettingLabel>Mặt chữ</SettingLabel>
+          <SettingLabel>{L('Mặt chữ', 'Typeface')}</SettingLabel>
           <View className="flex-row flex-wrap gap-2">
             {FONTS.map((f) => (
               <Choice key={f.key} on={props.fontKey === f.key} onPress={() => props.onFont(f.key)} fontFamily={f.family}>
@@ -448,28 +453,28 @@ function ReaderSettings(
             ))}
           </View>
 
-          <SettingLabel>Cỡ chữ</SettingLabel>
+          <SettingLabel>{L('Cỡ chữ', 'Text size')}</SettingLabel>
           <View className="flex-row items-center gap-3">
-            <SizeButton label="−" a11y="Giảm cỡ chữ" disabled={props.fontSize <= MIN_SIZE} onPress={() => props.onSize(-1)} />
+            <SizeButton label="−" a11y={L('Giảm cỡ chữ', 'Smaller text')} disabled={props.fontSize <= MIN_SIZE} onPress={() => props.onSize(-1)} />
             <Text style={{ fontSize: 18, fontWeight: '800', color: PAPER.ink, minWidth: 28, textAlign: 'center' }}>{props.fontSize}</Text>
-            <SizeButton label="+" a11y="Tăng cỡ chữ" disabled={props.fontSize >= MAX_SIZE} onPress={() => props.onSize(1)} />
+            <SizeButton label="+" a11y={L('Tăng cỡ chữ', 'Larger text')} disabled={props.fontSize >= MAX_SIZE} onPress={() => props.onSize(1)} />
           </View>
 
-          <SettingLabel>Nền giấy</SettingLabel>
+          <SettingLabel>{L('Nền giấy', 'Paper')}</SettingLabel>
           <View className="flex-row flex-wrap gap-2">
             <Choice on={!props.dark} onPress={() => props.dark && props.onDark()}>
-              ☀ Sáng
+              {L('☀ Sáng', '☀ Light')}
             </Choice>
             <Choice on={props.dark} onPress={() => !props.dark && props.onDark()}>
-              ☾ Tối
+              {L('☾ Tối', '☾ Dark')}
             </Choice>
           </View>
 
           {Platform.OS === 'web' ? (
             <>
-              <SettingLabel>Màn hình</SettingLabel>
+              <SettingLabel>{L('Màn hình', 'Screen')}</SettingLabel>
               <Choice on={fullscreen} onPress={toggleFullscreen}>
-                {fullscreen ? '⤡ Thoát toàn màn hình' : '⛶ Toàn màn hình'}
+                {fullscreen ? L('⤡ Thoát toàn màn hình', '⤡ Exit full screen') : L('⛶ Toàn màn hình', '⛶ Full screen')}
               </Choice>
             </>
           ) : null}
@@ -477,7 +482,9 @@ function ReaderSettings(
           <View className="mt-4 flex-row items-center gap-2 border-t pt-3" style={{ borderColor: PAPER.rule }}>
             <Icon name="bookmark" size={14} color={PAPER.accent} strokeWidth={2} />
             <Text style={{ flex: 1, fontSize: 13, color: PAPER.ink }}>
-              Đã lưu <Text style={{ fontWeight: '800' }}>{props.savedCount} từ</Text> từ bài này
+              {L('Đã lưu ', 'Saved ')}
+              <Text style={{ fontWeight: '800' }}>{L(`${props.savedCount} từ`, `${props.savedCount} words`)}</Text>
+              {L(' từ bài này', ' from this article')}
             </Text>
             <Pressable
               accessibilityRole="link"
@@ -486,7 +493,7 @@ function ReaderSettings(
                 router.push('/vocabulary' as never);
               }}
             >
-              <Text style={{ fontSize: 13, fontWeight: '700', color: PAPER.accent }}>Mở sổ từ →</Text>
+              <Text style={{ fontSize: 13, fontWeight: '700', color: PAPER.accent }}>{L('Mở sổ từ →', 'Open word notebook →')}</Text>
             </Pressable>
           </View>
         </Pressable>
@@ -622,9 +629,14 @@ function EnglishPane({
 }) {
   const source = article.source;
   const titleFont = fontFamily === readingFont.sans ? readingFont.fraunces : fontFamily;
+  const { L, en } = useL();
   return (
     <Sheet theme={theme} scrollRef={scrollRef} badge="EN">
-      <Kicker theme={theme} label="ENGLISH" hint="rê chuột vào từ để xem nghĩa, bấm vào từ để xem chi tiết" />
+      <Kicker
+        theme={theme}
+        label="ENGLISH"
+        hint={L('rê chuột vào từ để xem nghĩa, bấm vào từ để xem chi tiết', 'hover a word to see its meaning, tap it for details')}
+      />
 
       <Text
         style={{
@@ -651,7 +663,7 @@ function EnglishPane({
           ]}
         >
           <Text style={{ fontFamily: readingFont.fraunces, fontWeight: '700', fontSize: 10.5, letterSpacing: 0.8, color: '#AF8948' }}>
-            LINK BÀI VIẾT GỐC | {source.outlet.toUpperCase()}
+            {L('LINK BÀI VIẾT GỐC', 'ORIGINAL ARTICLE')} | {source.outlet.toUpperCase()}
           </Text>
           <Icon name="external" size={10} color="#AF8948" strokeWidth={2.2} />
         </HoverPressable>
@@ -671,7 +683,8 @@ function EnglishPane({
       </Text>
 
       <Text style={{ marginTop: 10, fontFamily: readingFont.sans, fontSize: 11.5, letterSpacing: 0.4, color: theme.muted }}>
-        {article.level} · {article.topic} · {article.wordCount} từ · {article.estMinutes} phút
+        {article.level} · {bilingualTopic(article.topic, en)} · {L(`${article.wordCount} từ`, `${article.wordCount} words`)} ·{' '}
+        {L(`${article.estMinutes} phút`, `${article.estMinutes} min`)}
         {source?.author ? ` · ${source.author}` : ''}
       </Text>
 
@@ -751,9 +764,10 @@ function VietnamesePane({
   onJump: (i: number) => void;
 }) {
   const titleFont = fontFamily === readingFont.sans ? readingFont.fraunces : fontFamily;
+  const { L } = useL();
   return (
     <Sheet theme={theme} scrollRef={scrollRef} badge="VI">
-      <Kicker theme={theme} label="TIẾNG VIỆT" />
+      <Kicker theme={theme} label={L('TIẾNG VIỆT', 'VIETNAMESE')} />
 
       <Text
         style={{
@@ -822,6 +836,7 @@ function ParagraphBlock({
   onMeasure: (i: number, y: number) => void;
   children: React.ReactNode;
 }) {
+  const { L } = useL();
   return (
     <View
       onLayout={(e) => onMeasure(index, e.nativeEvent.layout.y)}
@@ -842,7 +857,7 @@ function ParagraphBlock({
     >
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={`Đối chiếu đoạn ${index + 1}`}
+        accessibilityLabel={L(`Đối chiếu đoạn ${index + 1}`, `Match paragraph ${index + 1}`)}
         onPress={() => onJump(index)}
         style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 12 }}
       >
@@ -868,12 +883,14 @@ function Rich({ text, style }: { text: string; style: object }) {
 
 function SourceNote({ theme, article }: { theme: Theme; article: BilingualArticle }) {
   const s = article.source!;
+  const { L } = useL();
   return (
     <View className="mt-10 border-t pt-4" style={{ borderColor: theme.rule }}>
       <Text style={{ fontFamily: readingFont.fraunces, fontStyle: 'italic', fontSize: 13, lineHeight: 20, color: theme.muted }}>
-        Nguồn: {s.outlet}
-        {s.author ? `, ${s.author}` : ''} — đăng ngày {s.publishedAt}. Giấy phép: {s.license}. Bản tiếng Việt, chú giải và câu hỏi do
-        Band 9 biên soạn.
+        {L(
+          `Nguồn: ${s.outlet}${s.author ? `, ${s.author}` : ''} — đăng ngày ${s.publishedAt}. Giấy phép: ${s.license}. Bản tiếng Việt, chú giải và câu hỏi do Band 9 biên soạn.`,
+          `Source: ${s.outlet}${s.author ? `, ${s.author}` : ''} — published ${s.publishedAt}. Licence: ${s.license}. Vietnamese translation, glosses and questions by Band 9.`,
+        )}
       </Text>
     </View>
   );
@@ -899,12 +916,13 @@ function QuestionsPane({
   onCheck: () => void;
 }) {
   const score = questions.filter((q, i) => answers[i] === q.answerIndex).length;
+  const { L, en } = useL();
   return (
     <Sheet theme={theme}>
-      <Kicker theme={theme} label="HIỂU BÀI" hint={`${questions.length} câu`} />
+      <Kicker theme={theme} label={L('HIỂU BÀI', 'COMPREHENSION')} hint={L(`${questions.length} câu`, `${questions.length} questions`)} />
       <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
         <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
-          Bạn đã hiểu bài chưa?
+          {L('Bạn đã hiểu bài chưa?', 'Did you get it?')}
         </Text>
         <View aria-hidden>
           <Motion kind="float">
@@ -919,7 +937,7 @@ function QuestionsPane({
         {questions.map((q, qi) => (
           <View key={qi}>
             <Text style={{ fontFamily: readingFont.sans, fontSize: 11, fontWeight: '700', letterSpacing: 1.2, color: theme.accent }}>
-              CÂU {qi + 1} · {q.type.toUpperCase()}
+              {L('CÂU', 'QUESTION')} {qi + 1} · {bilingualQuestionType(q.type, en).toUpperCase()}
             </Text>
             <Text style={{ marginTop: 4, fontFamily: readingFont.fraunces, fontSize: 17.5, lineHeight: 26, fontWeight: '600', color: theme.ink }}>
               {q.q}
@@ -965,7 +983,11 @@ function QuestionsPane({
               <Appear>
                 <Text style={{ marginTop: 8, fontFamily: readingFont.sans, fontSize: 13.5, lineHeight: 21, color: theme.body }}>
                   <Text style={{ fontWeight: '700' }}>
-                    {answers[qi] === q.answerIndex ? 'Đúng. ' : answers[qi] === undefined ? 'Chưa chọn. ' : 'Chưa đúng. '}
+                    {answers[qi] === q.answerIndex
+                      ? L('Đúng. ', 'Correct. ')
+                      : answers[qi] === undefined
+                        ? L('Chưa chọn. ', 'Not answered. ')
+                        : L('Chưa đúng. ', 'Not quite. ')}
                   </Text>
                   <Text style={{ fontStyle: 'italic' }}>{q.whyVi}</Text>
                 </Text>
@@ -982,7 +1004,7 @@ function QuestionsPane({
         style={({ hovered }) => [{ backgroundColor: checked ? theme.tint : hovered ? '#7C6338' : theme.accent }, webTransition]}
       >
         <Text style={{ fontSize: 14, fontWeight: '800', color: checked ? theme.ink : '#FFFFFF' }}>
-          {checked ? `Đúng ${score}/${questions.length} · Làm lại` : 'Xem kết quả'}
+          {checked ? L(`Đúng ${score}/${questions.length} · Làm lại`, `${score}/${questions.length} correct · Try again`) : L('Xem kết quả', 'Check answers')}
         </Text>
       </HoverPressable>
       {checked ? (
@@ -993,7 +1015,13 @@ function QuestionsPane({
             </Sticker>
           </Motion>
           <Label
-            text={score === questions.length ? 'Hiểu trọn bài 🏆' : score * 2 >= questions.length ? 'Khá lắm ⭐' : 'Đọc lại nhé 💪'}
+            text={
+              score === questions.length
+                ? L('Hiểu trọn bài 🏆', 'Fully understood 🏆')
+                : score * 2 >= questions.length
+                  ? L('Khá lắm ⭐', 'Nice work ⭐')
+                  : L('Đọc lại nhé 💪', 'Give it another read 💪')
+            }
             color={score === questions.length ? '#22A06B' : score * 2 >= questions.length ? '#A8843F' : '#F0703F'}
             ink="#FFFFFF"
             tilt={-4}
@@ -1012,13 +1040,14 @@ function QuestionsPane({
 function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: Theme; article: BilingualArticle }) {
   const saveWord = useVocabStore((s) => s.saveWord);
   const entries = useVocabStore((s) => s.entries);
+  const { L } = useL();
 
   return (
     <Sheet theme={theme}>
-      <Kicker theme={theme} label="TỪ VỰNG" hint={`${vocab.length} từ đáng giữ lại`} />
+      <Kicker theme={theme} label={L('TỪ VỰNG', 'VOCABULARY')} hint={L(`${vocab.length} từ đáng giữ lại`, `${vocab.length} words worth keeping`)} />
       <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
         <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
-          Từ của bài này
+          {L('Từ của bài này', 'Words from this article')}
         </Text>
         <View aria-hidden>
           <Motion kind="float">
@@ -1044,7 +1073,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                 <View className="flex-1" />
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel={`Nghe từ ${v.word}`}
+                  accessibilityLabel={L(`Nghe từ ${v.word}`, `Hear “${v.word}”`)}
                   onPress={() => {
                     Speech.stop();
                     Speech.speak(v.word, { language: 'en-GB', rate: 0.9, voice: englishVoice() });
@@ -1077,7 +1106,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                   style={{ backgroundColor: saved ? theme.tint : theme.accent }}
                 >
                   <Text style={{ fontSize: 11.5, fontWeight: '800', color: saved ? theme.muted : '#FFFFFF' }}>
-                    {saved ? '✓ Đã lưu' : '+ Lưu'}
+                    {saved ? L('✓ Đã lưu', '✓ Saved') : L('+ Lưu', '+ Save')}
                   </Text>
                 </Pressable>
               </View>
@@ -1086,7 +1115,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
               </Text>
               {v.collocation ? (
                 <Text style={{ marginTop: 4, fontSize: 13, color: theme.muted }}>
-                  Đi với: <Text style={{ fontStyle: 'italic', fontFamily: readingFont.fraunces }}>{v.collocation}</Text>
+                  {L('Đi với: ', 'Goes with: ')}<Text style={{ fontStyle: 'italic', fontFamily: readingFont.fraunces }}>{v.collocation}</Text>
                 </Text>
               ) : null}
               {v.example ? (
@@ -1095,7 +1124,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                 </Text>
               ) : null}
               {v.derivatives && v.derivatives !== '—' ? (
-                <Rich text={`Họ từ: ${v.derivatives}`} style={{ marginTop: 4, fontSize: 13, color: theme.muted }} />
+                <Rich text={L(`Họ từ: ${v.derivatives}`, `Word family: ${v.derivatives}`)} style={{ marginTop: 4, fontSize: 13, color: theme.muted }} />
               ) : null}
             </View>
           );

@@ -62,6 +62,7 @@ export default function CityGame() {
     }
   }, []);
   const [reduced] = useState(prefersReducedMotion);
+  const { L: Lc } = useL();
   const terrain = useCityStore((s) => s.terrain);
   const chooseTerrain = useCityStore((s) => s.chooseTerrain);
   // Thành phố mẫu (chỉ xem): mở từ màn chọn đất, nút trên thanh trên, hoặc
@@ -91,7 +92,7 @@ export default function CityGame() {
         <Suspense
           fallback={
             <div className="cg-root" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span className="cg-muted">Đang mở Trung tâm Tương lai…</span>
+              <span className="cg-muted">{Lc({ vi: 'Đang mở Trung tâm Tương lai…', en: 'Opening the Future Hub…' })}</span>
             </div>
           }
         >

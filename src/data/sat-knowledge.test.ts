@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 import { MATH_LESSONS } from './lessons/math-lessons';
 import { VERBAL_LESSONS } from './lessons/verbal-lessons';
-import { SAT_DOMAINS, SAT_SECTIONS } from './sat-knowledge';
+import { SAT_DOMAINS, SAT_SECTIONS, SAT_STRATEGY } from './sat-knowledge';
 
 test('cấu trúc Digital SAT: 54 câu Đọc & Viết trong 64 phút, 44 câu Toán trong 70 phút', () => {
   const rw = SAT_SECTIONS.find((s) => s.id === 'rw')!;
@@ -29,4 +29,16 @@ test('mọi đường dẫn bài học trỏ tới bài có thật', () => {
       const [, kind, , skill] = l.href.split('/');
       assert.ok(kind === 'math' ? math.has(skill!) : verbal.has(skill!), `${d.id}: ${l.href}`);
     }
+});
+
+test('bản tiếng Anh: đủ dòng như bản Việt, không sót chữ tiếng Việt, công thức giữ nguyên số dòng', () => {
+  const vi = /[ăâđêôơưàáạảãèéẹẻẽìíịỉĩòóọỏõùúụủũỳýỵỷỹ]/i;
+  for (const d of SAT_DOMAINS) {
+    assert.equal(d.coreEn.length, d.core.length, `${d.id} core`);
+    assert.equal(d.trapsEn.length, d.traps.length, `${d.id} traps`);
+    assert.equal(d.formulasEn?.length, d.formulas?.length, `${d.id} formulas`);
+    for (const t of [...d.coreEn, ...d.trapsEn, ...(d.formulasEn ?? []), ...d.lessons.map((l) => l.labelEn)])
+      assert.ok(!vi.test(t), `${d.id}: "${t}"`);
+  }
+  for (const s of SAT_STRATEGY) assert.ok(!vi.test(s.tEn) && !vi.test(s.dEn), s.tEn);
 });

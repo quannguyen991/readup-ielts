@@ -6,6 +6,7 @@ import {
   DICTATION_SET_LEVELS,
   DICTATION_SET_TOPICS,
   dictationSetStats,
+  dictationTopicLabel,
   filterDictationSets,
   getDictationSet,
 } from './dictation-sets';
@@ -109,4 +110,13 @@ test('lọc theo trình độ và chủ đề thu hẹp đúng kho', () => {
 test('tra theo id trả về đúng bộ, id lạ trả về undefined', () => {
   assert.equal(getDictationSet('set-01')?.order, 1);
   assert.equal(getDictationSet('không-có-bộ-này'), undefined);
+});
+
+test('mọi chủ đề chép chính tả đều có tên tiếng Anh', () => {
+  for (const topic of DICTATION_SET_TOPICS) {
+    const en = dictationTopicLabel(topic, true);
+    assert.notEqual(en, topic, `chủ đề "${topic}" chưa có bản tiếng Anh`);
+    assert.match(en, /^[A-Za-z ]+$/);
+  }
+  assert.equal(dictationTopicLabel('Ẩm thực', false), 'Ẩm thực');
 });

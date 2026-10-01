@@ -10,6 +10,7 @@ import { countCorrect, gradeMathSession, type MathResponse } from '@/services/ma
 import { useMathStore } from '@/store/useMathStore';
 import { useSatRoadmapStore } from '@/store/useSatRoadmapStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Quiz một mức của một chương: 10 câu sinh từ template (câu mới mỗi lượt), xem
@@ -32,6 +33,7 @@ export default function RoadLevelQuiz() {
   const addSession = useMathStore((s) => s.addSession);
   const logStudyTime = useStudyStore((s) => s.logStudyTime);
   const logQuestions = useStudyStore((s) => s.logQuestions);
+  const { L, en } = useL();
 
   const finish = useCallback(
     (responses: MathResponse[], elapsedMs: number) => {
@@ -61,7 +63,7 @@ export default function RoadLevelQuiz() {
     return (
       <Screen>
         <Text className="font-heavy text-ink" style={{ fontSize: 20 }}>
-          Mức này chưa có câu hỏi.
+          {L('Mức này chưa có câu hỏi.', 'No questions for this level yet.')}
         </Text>
       </Screen>
     );
@@ -69,12 +71,24 @@ export default function RoadLevelQuiz() {
 
   return (
     <MathRunner
-      title={`Chương ${c.n}. ${c.title.vi}`}
-      subtitle={lv === 'extra' ? `Luyện thêm · ${items.length} câu ngoài sách · dễ → khó` : lv === 'book' ? `Bộ bài theo sách · ${items.length} bài${c.bookPages ? ` · sách trang ${c.bookPages[0]}–${c.bookPages[1]}` : ''}` : `${LEVEL_LABEL[lv as Level].vi} · ${QUIZ_SIZE} câu`}
+      title={L(`Chương ${c.n}. ${c.title.vi}`, `Chapter ${c.n}. ${c.title.en}`)}
+      subtitle={
+        en
+          ? lv === 'extra'
+            ? `Extra practice · ${items.length} questions beyond the book · easy → hard`
+            : lv === 'book'
+              ? `Book set · ${items.length} problems${c.bookPages ? ` · book pages ${c.bookPages[0]}–${c.bookPages[1]}` : ''}`
+              : `${LEVEL_LABEL[lv as Level].en} · ${QUIZ_SIZE} questions`
+          : lv === 'extra'
+            ? `Luyện thêm · ${items.length} câu ngoài sách · dễ → khó`
+            : lv === 'book'
+              ? `Bộ bài theo sách · ${items.length} bài${c.bookPages ? ` · sách trang ${c.bookPages[0]}–${c.bookPages[1]}` : ''}`
+              : `${LEVEL_LABEL[lv as Level].vi} · ${QUIZ_SIZE} câu`
+      }
       items={items}
       minutes={Math.max(QUIZ_SIZE, items.length) * 2}
       instantSolution
-      submitLabel="Nộp bài"
+      submitLabel={L('Nộp bài', 'Submit')}
       onFinish={finish}
     />
   );

@@ -5,6 +5,7 @@ import { Appear } from '@/components/motion/Motion';
 import { Button, Card, Icon } from '@/components/ui';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * Khối "AI xem lại lượt làm bài" ở màn Review.
@@ -43,6 +44,7 @@ export type CoachRequest = {
 };
 
 export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
+  const { L } = useL();
   const token = useAuthStore((s) => s.session?.access_token ?? null);
   const [coaching, setCoaching] = useState<Coaching | null>(null);
   const [loading, setLoading] = useState(false);
@@ -69,14 +71,14 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
         error?: string;
       };
       if (body.skipped) {
-        setError(body.message ?? 'Không có câu sai nào để phân tích.');
+        setError(body.message ?? pick(currentLocale(), 'Không có câu sai nào để phân tích.', 'No wrong answers to analyse.'));
         return;
       }
-      if (!res.ok || !body.coaching) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok || !body.coaching) throw new Error(body.error ?? pick(currentLocale(), `Lỗi ${res.status}`, `Error ${res.status}`));
       setCoaching(body.coaching);
       if (body.usage) setUsage(body.usage);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không lấy được nhận xét.');
+      setError(err instanceof Error ? err.message : pick(currentLocale(), 'Không lấy được nhận xét.', "Couldn't get feedback."));
     } finally {
       setLoading(false);
     }
@@ -87,10 +89,13 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
       <Card className="mt-4">
         <View className="flex-row items-center gap-2">
           <Icon name="trophy" size={17} color={color.success} />
-          <Text className="font-strong text-cardTitle text-ink">Đúng hết — không có gì để chữa</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Đúng hết — không có gì để chữa', 'All correct — nothing to fix')}</Text>
         </View>
         <Text className="mt-1 font-sans text-body text-muted">
-          Lượt này bạn không sai câu nào, nên không gọi AI và không trừ lượt nào của bạn.
+          {L(
+            'Lượt này bạn không sai câu nào, nên không gọi AI và không trừ lượt nào của bạn.',
+            "You didn't get anything wrong this time, so we won't call the AI or use any of your credits.",
+          )}
         </Text>
       </Card>
     );
@@ -105,15 +110,18 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
           </View>
           <View className="flex-1">
             <Text className="font-strong text-cardTitle text-ink">
-              Nhờ AI xem lại {request.wrong.length} câu sai
+              {L(`Nhờ AI xem lại ${request.wrong.length} câu sai`, `Ask AI to review ${request.wrong.length} wrong answers`)}
             </Text>
             <Text className="mt-1 font-sans text-body text-muted">
-              Không phải giải lại từng câu — phần đó đã có sẵn bên dưới. AI tìm{' '}
-              <Text className="font-strong text-ink">mẫu hình lỗi</Text> giữa các câu, rồi chỉ ra
-              chiến lược làm bài cho đúng dạng bạn đang yếu.
+              {L('Không phải giải lại từng câu — phần đó đã có sẵn bên dưới. AI tìm', "It won't re-explain each question — that's already below. AI looks for")}{' '}
+              <Text className="font-strong text-ink">{L('mẫu hình lỗi', 'error patterns')}</Text>{' '}
+              {L(
+                'giữa các câu, rồi chỉ ra chiến lược làm bài cho đúng dạng bạn đang yếu.',
+                'across questions, then points out strategies for the question types you find hardest.',
+              )}
             </Text>
             <Text className="mt-2 font-sans text-label text-subtle">
-              Tốn một lượt AI trong hạn mức tháng của bạn.
+              {L('Tốn một lượt AI trong hạn mức tháng của bạn.', 'Uses one AI credit from your monthly limit.')}
             </Text>
           </View>
         </View>
@@ -127,7 +135,7 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
 
         <Button
           className="mt-3 self-start"
-          label={loading ? 'AI đang đọc lại bài…' : 'Xem nhận xét của AI'}
+          label={loading ? L('AI đang đọc lại bài…', 'AI is rereading your work…') : L('Xem nhận xét của AI', 'See AI feedback')}
           iconRight="arrow-right"
           loading={loading}
           disabled={loading}
@@ -149,8 +157,8 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
               <Text className="font-strong text-cardTitle text-ink">{coaching.headline}</Text>
               {usage ? (
                 <Text className="mt-1 font-sans text-label text-subtle">
-                  Đã dùng {usage.used}
-                  {usage.limit === null ? '' : `/${usage.limit}`} lượt AI tháng này · {coaching.model}
+                  {L('Đã dùng', 'Used')} {usage.used}
+                  {usage.limit === null ? '' : `/${usage.limit}`} {L('lượt AI tháng này', 'AI credits this month')} · {coaching.model}
                 </Text>
               ) : null}
             </View>
@@ -165,7 +173,7 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
               <Text className="font-strong text-cardTitle text-ink">{pattern.typeLabel}</Text>
               <View className="rounded-pill bg-danger-soft px-2 py-0.5">
                 <Text className="font-strong text-label text-danger-ink">
-                  sai {pattern.wrongCount}
+                  {L(`sai ${pattern.wrongCount}`, `${pattern.wrongCount} wrong`)}
                 </Text>
               </View>
             </View>
@@ -195,7 +203,7 @@ export function ReadingCoachPanel({ request }: { request: CoachRequest }) {
                 <Icon name="target" size={18} color={color.warning} />
               </View>
               <View className="flex-1">
-                <Text className="font-mid text-label text-muted">Sửa thứ này trước</Text>
+                <Text className="font-mid text-label text-muted">{L('Sửa thứ này trước', 'Fix this first')}</Text>
                 <Text className="mt-0.5 font-strong text-cardTitle text-ink">
                   {coaching.topPriority}
                 </Text>

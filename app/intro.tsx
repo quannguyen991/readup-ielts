@@ -31,6 +31,7 @@ import {
 import { useMathStore } from '@/store/useMathStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { stickerGradient } from '@/theme/tokens';
+import { bi, useL, type Bi } from '@/i18n/useL';
 
 /**
  * Trang giới thiệu — thứ người mở app lần đầu nhìn thấy.
@@ -52,10 +53,10 @@ type Area = {
   icon: IconName;
   /** Cặp màu sáng → đậm của thẻ sticker; lấy từ bảng chung để sáu thẻ không lệch tông. */
   colors: readonly [string, string];
-  title: string;
-  lines: string[];
+  title: Bi;
+  lines: Bi[];
   /** Chữ trong viên thuốc ghim đáy thẻ — con số thật, hoặc điều kiện dùng. */
-  badge: string;
+  badge: Bi;
   href: string;
 };
 
@@ -63,49 +64,52 @@ const AREAS: Area[] = [
   {
     icon: 'book',
     colors: stickerGradient.primary,
-    title: 'Reading',
-    lines: [`${ieltsCount} passage IELTS · ${satCount} passage SAT`],
-    badge: `${readableCount.toLocaleString('vi-VN')} BÀI`,
+    title: { vi: 'Reading', en: 'Reading' },
+    lines: [{ vi: `${ieltsCount} passage IELTS · ${satCount} passage SAT`, en: `${ieltsCount} IELTS passages · ${satCount} SAT passages` }],
+    badge: { vi: `${readableCount.toLocaleString('vi-VN')} BÀI`, en: `${readableCount.toLocaleString('en-US')} PASSAGES` },
     href: '/practice',
   },
   {
     icon: 'pencil',
     colors: stickerGradient.danger,
-    title: 'Writing',
-    lines: ['Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng'],
-    badge: `${WRITING_PROMPTS.length} ĐỀ`,
+    title: { vi: 'Writing', en: 'Writing' },
+    lines: [{ vi: 'Nhắc lỗi cấu trúc ngay lúc gõ, không cần mạng', en: 'Flags structure mistakes as you type, even offline' }],
+    badge: { vi: `${WRITING_PROMPTS.length} ĐỀ`, en: `${WRITING_PROMPTS.length} PROMPTS` },
     href: '/write',
   },
   {
     icon: 'grid',
     colors: stickerGradient.accent,
-    title: 'SAT',
-    lines: ['Đáp án tính bằng code, không do AI đoán'],
-    badge: `${(CURRICULUM_TOTALS.questions + satRwStats().questions).toLocaleString('vi-VN')} CÂU`,
+    title: { vi: 'SAT', en: 'SAT' },
+    lines: [{ vi: 'Đáp án tính bằng code, không do AI đoán', en: 'Answers computed by code, not guessed by AI' }],
+    badge: {
+      vi: `${(CURRICULUM_TOTALS.questions + satRwStats().questions).toLocaleString('vi-VN')} CÂU`,
+      en: `${(CURRICULUM_TOTALS.questions + satRwStats().questions).toLocaleString('en-US')} QUESTIONS`,
+    },
     href: '/sat',
   },
   {
     icon: 'volume',
     colors: stickerGradient.info,
-    title: 'Luyện câu',
-    lines: ['Chép chính tả và dịch câu, chấm từng từ'],
-    badge: `${sentenceCount} CÂU`,
+    title: { vi: 'Luyện câu', en: 'Sentences' },
+    lines: [{ vi: 'Chép chính tả và dịch câu, chấm từng từ', en: 'Dictation and translation, marked word by word' }],
+    badge: { vi: `${sentenceCount} CÂU`, en: `${sentenceCount} SENTENCES` },
     href: '/sentence',
   },
   {
     icon: 'letters',
     colors: stickerGradient.success,
-    title: 'Sổ từ vựng',
-    lines: ['Mỗi từ lưu kèm nguyên câu gặp nó'],
-    badge: 'FSRS',
+    title: { vi: 'Sổ từ vựng', en: 'Word notebook' },
+    lines: [{ vi: 'Mỗi từ lưu kèm nguyên câu gặp nó', en: 'Every word saved with the sentence you found it in' }],
+    badge: { vi: 'FSRS', en: 'FSRS' },
     href: '/vocabulary',
   },
   {
     icon: 'trending',
     colors: stickerGradient.warning,
-    title: 'Lộ trình',
-    lines: [`${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`],
-    badge: 'MIỄN PHÍ',
+    title: { vi: 'Lộ trình', en: 'Roadmap' },
+    lines: [{ vi: `${CURRICULUM_TOTALS.stages} chặng, ${CURRICULUM_TOTALS.units} bài học xếp sẵn`, en: `${CURRICULUM_TOTALS.stages} stages, ${CURRICULUM_TOTALS.units} lessons laid out for you` }],
+    badge: { vi: 'MIỄN PHÍ', en: 'FREE' },
     href: '/math',
   },
 ];
@@ -118,9 +122,9 @@ const AREAS: Area[] = [
 const BILINGUAL_AREA: Area = {
   icon: 'languages',
   colors: stickerGradient.rose,
-  title: 'Đọc báo song ngữ',
-  lines: ['VOA, NASA, Global Voices và bài phân tích Band 9 · Anh–Việt · miễn phí cho mọi người'],
-  badge: `${bilingualStats().articles} BÀI`,
+  title: { vi: 'Đọc báo song ngữ', en: 'Bilingual news' },
+  lines: [{ vi: 'VOA, NASA, Global Voices và bài phân tích Band 9 · Anh–Việt · miễn phí cho mọi người', en: 'VOA, NASA, Global Voices and Band 9 analysis · English–Vietnamese · free for everyone' }],
+  badge: { vi: `${bilingualStats().articles} BÀI`, en: `${bilingualStats().articles} ARTICLES` },
   href: '/bilingual',
 };
 /**
@@ -133,26 +137,26 @@ const BILINGUAL_AREA: Area = {
 const STEPS: {
   n: string;
   colors: readonly [string, string];
-  title: string;
-  body: string;
+  title: Bi;
+  body: Bi;
 }[] = [
   {
     n: '1',
     colors: stickerGradient.info,
-    title: 'Làm bài chẩn đoán',
-    body: '19 câu, mỗi kỹ năng một câu.',
+    title: { vi: 'Làm bài chẩn đoán', en: 'Take the diagnostic' },
+    body: { vi: '19 câu, mỗi kỹ năng một câu.', en: '19 questions, one per skill.' },
   },
   {
     n: '2',
     colors: stickerGradient.primary,
-    title: 'Đi theo lộ trình',
-    body: 'Mỗi bài học 5 bộ đề, siết dần thời gian.',
+    title: { vi: 'Đi theo lộ trình', en: 'Follow the roadmap' },
+    body: { vi: 'Mỗi bài học 5 bộ đề, siết dần thời gian.', en: 'Five sets per lesson, with the clock tightening as you go.' },
   },
   {
     n: '3',
     colors: stickerGradient.accent,
-    title: 'Thi thử đúng khổ đề',
-    body: 'Hai module × 22 câu × 35 phút, độ khó đổi theo kết quả.',
+    title: { vi: 'Thi thử đúng khổ đề', en: 'Take a real-format mock' },
+    body: { vi: 'Hai module × 22 câu × 35 phút, độ khó đổi theo kết quả.', en: 'Two modules × 22 questions × 35 minutes, adapting to how you do.' },
   },
 ];
 
@@ -174,6 +178,8 @@ function enterApp(href: string): void {
 
 export default function IntroScreen() {
   const { width } = useWindowDimensions();
+  const { L, en } = useL();
+  const num = (n: number) => n.toLocaleString(en ? 'en-US' : 'vi-VN');
 
   /*
     Nhớ mã mời ngay khi vào trang, TRƯỚC cả khi người dùng nghĩ tới việc tạo tài
@@ -209,13 +215,13 @@ export default function IntroScreen() {
           <Card className="mb-4">
             <View className="flex-row flex-wrap items-center justify-between gap-3">
               <View className="flex-1" style={{ minWidth: 200 }}>
-                <Text className="font-strong text-cardTitle text-ink">Bạn đang học dở</Text>
+                <Text className="font-strong text-cardTitle text-ink">{L('Bạn đang học dở', 'Pick up where you left off')}</Text>
                 <Text className="mt-0.5 font-sans text-label text-muted">
-                  Tiến độ vẫn nguyên. Cuộn xuống nếu muốn xem app có thêm gì.
+                  {L('Tiến độ vẫn nguyên. Cuộn xuống nếu muốn xem app có thêm gì.', "Your progress is safe. Scroll down to see what's new.")}
                 </Text>
               </View>
               <Button
-                label="Tiếp tục học"
+                label={L('Tiếp tục học', 'Continue learning')}
                 variant="brand"
                 iconRight="arrow-right"
                 onPress={() => enterApp('/dashboard')}
@@ -263,7 +269,7 @@ export default function IntroScreen() {
                 className="mt-4 font-heavy text-paper-ink"
                 style={{ fontSize: wide ? 44 : 28, lineHeight: wide ? 52 : 36 }}
               >
-                Luyện thi bằng đề thật,
+                {L('Luyện thi bằng đề thật,', 'Practise with real tests,')}
               </Text>
               {/* Dòng hai nằm trên một khối sáng hơn — mắt bắt được câu chốt trước
                   cả khi đọc hết dòng một. Lùi trái đúng bằng padding để hai dòng
@@ -274,19 +280,19 @@ export default function IntroScreen() {
                 thành trắng — đây là chỗ DUY NHẤT còn chữ trắng trong hero.
               */}
               <GoldHighlight fontSize={wide ? 44 : 28} lineHeight={wide ? 52 : 36}>
-                sai chỗ nào biết chỗ đó
+                {L('sai chỗ nào biết chỗ đó', 'see exactly where you slip')}
               </GoldHighlight>
 
               <View className="mt-6 flex-row flex-wrap gap-2">
                 <Button
-                  label="Bắt đầu học"
+                  label={L('Bắt đầu học', 'Start learning')}
                   variant="brand"
                   size="lg"
                   iconRight="arrow-right"
                   onPress={() => enterApp('/dashboard')}
                 />
                 <Button
-                  label="Xem lộ trình SAT Math"
+                  label={L('Xem lộ trình SAT Math', 'See the SAT Math roadmap')}
                   variant="outline"
                   size="lg"
                   onPress={() => enterApp('/math')}
@@ -294,13 +300,13 @@ export default function IntroScreen() {
               </View>
 
               <View className="mt-7 flex-row flex-wrap gap-2">
-                <StatPill value={readableCount.toLocaleString('vi-VN')} label="bài đọc" />
-                <StatPill value={String(CURRICULUM_TOTALS.sets)} label="bộ đề Math" />
+                <StatPill value={num(readableCount)} label={L('bài đọc', 'readings')} />
+                <StatPill value={String(CURRICULUM_TOTALS.sets)} label={L('bộ đề Math', 'Math sets')} />
                 <StatPill
-                  value={CURRICULUM_TOTALS.questions.toLocaleString('vi-VN')}
-                  label="câu toán"
+                  value={num(CURRICULUM_TOTALS.questions)}
+                  label={L('câu toán', 'math questions')}
                 />
-                <StatPill value={String(WRITING_PROMPTS.length)} label="đề Writing" />
+                <StatPill value={String(WRITING_PROMPTS.length)} label={L('đề Writing', 'Writing prompts')} />
               </View>
             </View>
           </GridBackdrop>
@@ -310,16 +316,16 @@ export default function IntroScreen() {
 
       {/* ---------------------------------------------------------- sáu mảng */}
       <Appear index={1}>
-        <Text className="mt-14 font-heavy text-sectionTitle text-ink">App có gì</Text>
+        <Text className="mt-14 font-heavy text-sectionTitle text-ink">{L('App có gì', "What's inside")}</Text>
         <Text className="mt-1 font-sans text-body" style={{ color: '#1E293B' }}>
-          Bảy mảng, dùng chung một sổ từ và một bảng tiến độ.
+          {L('Bảy mảng, dùng chung một sổ từ và một bảng tiến độ.', 'Seven areas sharing one word notebook and one progress board.')}
         </Text>
       </Appear>
 
       <View className="mt-5">
         <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={18}>
           {AREAS.map((area, index) => (
-            <Appear key={area.title} index={index + 2} style={{ flex: 1 }}>
+            <Appear key={area.href} index={index + 2} style={{ flex: 1 }}>
               <AreaCard area={area} />
             </Appear>
           ))}
@@ -333,7 +339,7 @@ export default function IntroScreen() {
 
       {/* -------------------------------------------------------- ba bước */}
       <Appear index={3}>
-        <Text className="mt-14 font-heavy text-sectionTitle text-ink">Bắt đầu thế nào</Text>
+        <Text className="mt-14 font-heavy text-sectionTitle text-ink">{L('Bắt đầu thế nào', 'How to start')}</Text>
       </Appear>
       <View className="mt-5">
         <Grid columns={3} tabletColumns={3} mobileColumns={1}>
@@ -360,16 +366,16 @@ export default function IntroScreen() {
         >
           <View className="flex-row flex-wrap items-center gap-8">
             <View className="flex-1" style={{ minWidth: 280 }}>
-              <Text className="font-strong text-label uppercase tracking-[1.4px] text-primary-600">Học miễn phí</Text>
+              <Text className="font-strong text-label uppercase tracking-[1.4px] text-primary-600">{L('Học miễn phí', 'Study for free')}</Text>
               <Text className="mt-2 font-heavy text-pageTitle text-ink">
-                Rủ bạn cùng học,{'\n'}mở khoá toàn bộ app.
+                {L('Rủ bạn cùng học,', 'Invite friends to study,')}{'\n'}{L('mở khoá toàn bộ app.', 'unlock the whole app.')}
               </Text>
               <Text className="mt-3 max-w-[520px] font-sans text-bodyLg text-muted">
-                Mỗi người bạn mời tạo tài khoản và học thật được tính một mốc. Không cần thẻ, không phải trả đồng nào.
+                {L('Mỗi người bạn mời tạo tài khoản và học thật được tính một mốc. Không cần thẻ, không phải trả đồng nào.', "Every friend who signs up and actually studies counts toward a milestone. No card needed, and you don't pay a thing.")}
               </Text>
               <View className="mt-6 flex-row flex-wrap gap-2">
                 <Button
-                  label="Lấy link mời"
+                  label={L('Lấy link mời', 'Get invite link')}
                   variant="brand"
                   size="lg"
                   iconRight="arrow-right"
@@ -379,16 +385,16 @@ export default function IntroScreen() {
             </View>
 
             <View className="gap-3" style={{ flexShrink: 1, flexBasis: 360, flexGrow: 1 }}>
-              <InviteMilestone n={1} title="Lấy link mời của bạn" note="Gửi qua Zalo, Messenger, nhóm lớp." />
+              <InviteMilestone n={1} title={L('Lấy link mời của bạn', 'Get your invite link')} note={L('Gửi qua Zalo, Messenger, nhóm lớp.', 'Share it on Zalo, Messenger or your class group.')} />
               <InviteMilestone
                 n={REFERRALS_PER_REWARD}
-                title={`${REFERRALS_PER_REWARD} bạn học thật`}
-                note={`${REWARD_MONTHS} tháng gói ${PLANS[REWARD_PLAN].name}: trợ giảng AI, chấm Writing, mọi bộ đề.`}
+                title={L(`${REFERRALS_PER_REWARD} bạn học thật`, `${REFERRALS_PER_REWARD} friends studying`)}
+                note={L(`${REWARD_MONTHS} tháng gói ${PLANS[REWARD_PLAN].name}: trợ giảng AI, chấm Writing, mọi bộ đề.`, `${REWARD_MONTHS} months of ${PLANS[REWARD_PLAN].name}: AI tutor, Writing grading, every test set.`)}
               />
               <InviteMilestone
                 n={MAX_TIER_REFERRALS}
-                title={`${MAX_TIER_REFERRALS} bạn học thật`}
-                note={`Lên gói ${PLANS[MAX_REWARD_PLAN].name} — gói cao nhất.`}
+                title={L(`${MAX_TIER_REFERRALS} bạn học thật`, `${MAX_TIER_REFERRALS} friends studying`)}
+                note={L(`Lên gói ${PLANS[MAX_REWARD_PLAN].name} — gói cao nhất.`, `Upgrade to ${PLANS[MAX_REWARD_PLAN].name} — the top plan.`)}
                 last
               />
             </View>
@@ -401,21 +407,20 @@ export default function IntroScreen() {
         <Card className="mt-8">
           <View className="items-center py-4">
             <Text className="text-center font-heavy text-sectionTitle text-ink">
-              Bắt đầu từ bài chẩn đoán
+              {L('Bắt đầu từ bài chẩn đoán', 'Start with the diagnostic')}
             </Text>
             <Text className="mt-2 max-w-[520px] text-center font-sans text-body text-muted">
-              19 câu, khoảng 30 phút. Xong là biết nên luyện gì trước, thay vì luyện ngẫu nhiên rồi
-              hy vọng trúng chỗ yếu.
+              {L('19 câu, khoảng 30 phút. Xong là biết nên luyện gì trước, thay vì luyện ngẫu nhiên rồi hy vọng trúng chỗ yếu.', "19 questions, about 30 minutes. You'll know what to practise first, instead of practising at random and hoping to hit your weak spots.")}
             </Text>
             <View className="mt-4 flex-row flex-wrap justify-center gap-2">
               <Button
-                label="Làm bài chẩn đoán"
+                label={L('Làm bài chẩn đoán', 'Take the diagnostic')}
                 variant="brand"
                 iconRight="arrow-right"
                 onPress={() => enterApp('/math/diagnostic')}
               />
               <Button
-                label="Vào thẳng app"
+                label={L('Vào thẳng app', 'Go straight to the app')}
                 variant="brandOutline"
                 onPress={() => enterApp('/dashboard')}
               />
@@ -453,6 +458,7 @@ const softCard = (Platform.OS === 'web'
  * đường đi" khi màn hẹp và ba thẻ xếp dọc.
  */
 function StepCard({ step }: { step: (typeof STEPS)[number] }) {
+  const { locale } = useL();
   return (
     <View className="h-full overflow-hidden rounded-card bg-white" style={softCard}>
       <LinearGradient
@@ -476,8 +482,8 @@ function StepCard({ step }: { step: (typeof STEPS)[number] }) {
             {step.n}
           </Text>
         </View>
-        <Text className="mt-3 font-strong text-cardTitle text-ink">{step.title}</Text>
-        <Text className="mt-1 font-sans text-body text-muted">{step.body}</Text>
+        <Text className="mt-3 font-strong text-cardTitle text-ink">{bi(step.title, locale)}</Text>
+        <Text className="mt-1 font-sans text-body text-muted">{bi(step.body, locale)}</Text>
       </View>
     </View>
   );
@@ -493,6 +499,7 @@ function StatPill({ value, label }: { value: string; label: string }) {
 
 /** Một mảng học: thẻ khối bóng lệch, chùm sao phát sáng ở góc, viên nhãn ghim đáy là con số thật của mảng đó. */
 function AreaCard({ area }: { area: Area }) {
+  const { locale } = useL();
   return (
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
       <StickerCard bold colors={area.colors} style={{ flex: 1 }} ornament={<GlowStars />}>
@@ -504,15 +511,15 @@ function AreaCard({ area }: { area: Area }) {
         </View>
 
         <Text className="mt-3.5 font-heavy text-sectionTitle text-white" style={STICKER_TITLE_SHADOW}>
-          {area.title}
+          {bi(area.title, locale)}
         </Text>
 
         {/* Chữ trắng đặc có quầng mực mờ: đầu sáng của gradient (thẻ cam, thẻ
             xanh lá) không làm chữ chìm. */}
         <View className="mt-2 gap-1.5">
           {area.lines.map((line) => (
-            <Text key={line} className="font-semi text-label text-white" style={STICKER_TEXT_SHADOW}>
-              {line}
+            <Text key={line.vi} className="font-semi text-label text-white" style={STICKER_TEXT_SHADOW}>
+              {bi(line, locale)}
             </Text>
           ))}
         </View>
@@ -523,7 +530,7 @@ function AreaCard({ area }: { area: Area }) {
         <View className="mt-5 flex-row items-center justify-between gap-2">
           <View className="rounded-pill px-3 py-1" style={{ backgroundColor: 'rgba(27,24,64,0.62)' }}>
             <Text className="font-heavy text-label text-white" style={{ letterSpacing: 0.6 }}>
-              {area.badge}
+              {bi(area.badge, locale)}
             </Text>
           </View>
           <View className="h-8 w-8 items-center justify-center rounded-pill bg-white">

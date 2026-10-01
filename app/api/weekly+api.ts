@@ -1,6 +1,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { anonymousName, displayableName } from '@/services/gamification/display-name';
 import { better, parseWeekId, weekId, type WeeklyResult } from '@/services/weekly/challenge';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * GET /api/weekly?week=w2026_39 — kết quả Đề của tuần của CẢ NƯỚC.
@@ -17,7 +18,7 @@ type Row = { user_id: string; result: WeeklyResult | null };
 export async function GET(request: Request): Promise<Response> {
   try {
     const asked = new URL(request.url).searchParams.get('week') ?? weekId();
-    if (!parseWeekId(asked)) return Response.json({ error: 'Mã tuần không hợp lệ.' }, { status: 400 });
+    if (!parseWeekId(asked)) return Response.json({ error: msg(request, 'Mã tuần không hợp lệ.', 'Invalid week ID.') }, { status: 400 });
 
     const admin = getSupabaseAdmin();
     const { data, error } = await admin
@@ -60,6 +61,6 @@ export async function GET(request: Request): Promise<Response> {
       })),
     });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không đọc được kết quả tuần.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không đọc được kết quả tuần.', "Could not load this week's results.") }, { status: 500 });
   }
 }

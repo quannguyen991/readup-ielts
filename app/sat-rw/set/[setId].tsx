@@ -10,6 +10,15 @@ import { Button, PaperCard } from '@/components/ui';
 import { getSatRwUnit, questionsForUnit } from '@/data/sat-rw-repository';
 import { getSatRwSet } from '@/services/sat-rw/curriculum';
 import { GENERATED_KIND_OF_UNIT, generateSetQuestions } from '@/services/sat-rw/generated-sets';
+import { useL } from '@/i18n/useL';
+
+/** Tên bộ đề tiếng Anh theo loại (tên tiếng Việt viết sẵn trong services/sat-rw/curriculum). */
+const SET_KIND_EN: Partial<Record<string, string>> = {
+  learn: 'Get familiar',
+  drill: 'Drill',
+  checkpoint: 'Skill checkpoint',
+  generated: 'Fresh set',
+};
 
 /**
  * Làm một bộ đề trong lộ trình SAT Verbal.
@@ -30,6 +39,7 @@ import { GENERATED_KIND_OF_UNIT, generateSetQuestions } from '@/services/sat-rw/
  */
 export default function SatRwSetScreen() {
   const { setId } = useLocalSearchParams<{ setId: string }>();
+  const { L, en } = useL();
   const set = typeof setId === 'string' ? getSatRwSet(setId) : undefined;
   const unit = set ? getSatRwUnit(set.unitNumber) : undefined;
 
@@ -49,8 +59,8 @@ export default function SatRwSetScreen() {
     return (
       <TaskShell tone="paper"
         backHref="/sat-rw"
-        backLabel="Về SAT Verbal"
-        title="Không tìm thấy bộ đề này"
+        backLabel={L('Về SAT Verbal', 'Back to SAT Verbal')}
+        title={L('Không tìm thấy bộ đề này', 'Set not found')}
         icon="clipboard"
       >
         <PaperCard className="max-w-[520px]">
@@ -62,12 +72,12 @@ export default function SatRwSetScreen() {
             </Motion>
           </View>
           <Text className="font-sans text-body text-paper-body">
-            Bộ đề bạn vừa mở không có trong lộ trình. Quay lại để chọn bộ khác.
+            {L('Bộ đề bạn vừa mở không có trong lộ trình. Quay lại để chọn bộ khác.', 'The set you opened isn’t in the roadmap. Go back and pick another one.')}
           </Text>
           <Button
             className="mt-4"
             variant="brand"
-            label="Về lộ trình"
+            label={L('Về lộ trình', 'Back to roadmap')}
             onPress={() => router.replace('/sat-rw' as never)}
           />
         </PaperCard>
@@ -77,15 +87,15 @@ export default function SatRwSetScreen() {
 
   return (
     <UnitRunner
-      title={set.title}
-      subtitle={`Bài ${set.unitNumber} · ${unit.title}`}
+      title={en ? (SET_KIND_EN[set.kind] ?? set.title) : set.title}
+      subtitle={L(`Bài ${set.unitNumber} · ${unit.title}`, `Unit ${set.unitNumber} · ${unit.title}`)}
       questions={questions}
       ruleVi={unit.ruleVi}
       instantSolution={set.instantSolution}
       backHref="/sat-rw"
-      backLabel="Về lộ trình"
+      backLabel={L('Về lộ trình', 'Back to roadmap')}
       doneHref="/sat-rw"
-      doneLabel="Về lộ trình"
+      doneLabel={L('Về lộ trình', 'Back to roadmap')}
     />
   );
 }

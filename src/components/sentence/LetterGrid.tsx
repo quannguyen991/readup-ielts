@@ -4,6 +4,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { Icon } from '@/components/ui';
 import { fitCells, type LetterCellState, type LetterWord } from '@/services/sentence/letter-cells';
 import { paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 import { LetterCell } from './LetterCell';
 
@@ -58,6 +59,7 @@ export function LetterGrid({
 }) {
   // Đo bề rộng thật của lưới để thu nhỏ ô khi từ dài không vừa một dòng.
   const [gridWidth, setGridWidth] = useState(0);
+  const { L } = useL();
   const longest = words.reduce((max, w) => Math.max(max, w.units.filter((u) => u.kind === 'letter').length), 0);
   const fit = fitCells(gridWidth - 8, longest);
   useEffect(() => {
@@ -106,7 +108,7 @@ export function LetterGrid({
           value={value}
           onChangeText={onChange}
           editable={!revealed}
-          accessibilityLabel="Vùng điền chữ cái"
+          accessibilityLabel={L('Vùng điền chữ cái', 'Letter input area')}
           autoCapitalize="characters"
           autoCorrect={false}
           autoComplete="off"
@@ -130,7 +132,7 @@ export function LetterGrid({
         <Pressable accessibilityRole="button" onPress={onClear} className="flex-row items-center gap-1.5 py-1">
           <Icon name="refresh" size={13} color={paper.muted} strokeWidth={2} />
           <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-            Xoá hết
+            {L('Xoá hết', 'Clear all')}
           </Text>
         </Pressable>
       </View>

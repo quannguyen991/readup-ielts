@@ -7,6 +7,7 @@ import { observeSkill, resolveProbe } from '@/store/useMasteryStore';
 import type { WritingAnnotation } from '@/lib/writing/types';
 import { color, paper } from '@/theme/tokens';
 import { CrossFade } from '@/components/motion/Motion';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * "Sửa được lỗi này ở một câu khác chưa?"
@@ -34,6 +35,7 @@ export function TransferCheck({
   /** Nguồn gốc — phép thử phải chạy trên nguồn KHÁC nguồn này mới tính chuyển giao. */
   submissionId: string;
 }) {
+  const { L } = useL();
   const [phase, setPhase] = useState<Phase>('idle');
   const [probe, setProbe] = useState<TransferProbe | null>(null);
   const [draft, setDraft] = useState('');
@@ -58,7 +60,7 @@ export function TransferCheck({
       });
       const data = (await res.json()) as Partial<TransferProbe> & { error?: string };
       if (!res.ok || !data.sentence || !data.fixed) {
-        throw new Error(data.error ?? `Máy chủ trả về ${res.status}`);
+        throw new Error(data.error ?? pick(currentLocale(), `Máy chủ trả về ${res.status}`, `Server returned ${res.status}`));
       }
       setProbe({
         sentence: data.sentence,
@@ -69,7 +71,7 @@ export function TransferCheck({
       setDraft(data.sentence);
       setPhase('answering');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Lỗi lạ');
+      setError(err instanceof Error ? err.message : pick(currentLocale(), 'Lỗi lạ', 'Unexpected error'));
       setPhase('error');
     }
   };
@@ -117,7 +119,7 @@ export function TransferCheck({
         className="mt-3 self-start"
         variant="brandOutline"
         size="sm"
-        label="Kiểm bằng một câu khác"
+        label={L('Kiểm bằng một câu khác', 'Test with a different sentence')}
         iconRight="arrow-right"
         onPress={() => void start()}
       />
@@ -128,7 +130,7 @@ export function TransferCheck({
     return (
       <View className="mt-3 flex-row items-center gap-2.5">
         <ActivityIndicator color={paper.brandMid} />
-        <Text className="font-sans text-label text-paper-muted">Đang soạn một câu khác cùng lỗi…</Text>
+        <Text className="font-sans text-label text-paper-muted">{L('Đang soạn một câu khác cùng lỗi…', 'Writing another sentence with the same mistake…')}</Text>
       </View>
     );
   }
@@ -141,7 +143,7 @@ export function TransferCheck({
           className="mt-2 self-start"
           variant="brandOutline"
           size="sm"
-          label="Thử lại"
+          label={L('Thử lại', 'Try again')}
           iconLeft="refresh"
           onPress={() => void start()}
         />
@@ -154,10 +156,10 @@ export function TransferCheck({
   return (
     <PaperCard className="mt-3">
       <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-        Phép thử chuyển giao
+        {L('Phép thử chuyển giao', 'Transfer test')}
       </Text>
       <Text className="mt-1 font-strong text-body text-paper-ink">
-        Câu dưới đây có cùng loại lỗi. Sửa lại cho đúng.
+        {L('Câu dưới đây có cùng loại lỗi. Sửa lại cho đúng.', 'The sentence below has the same kind of mistake. Fix it.')}
       </Text>
 
       <TextInput
@@ -176,7 +178,7 @@ export function TransferCheck({
 
       <CrossFade swapKey={phase}>
       {phase === 'answering' ? (
-        <Button className="mt-2.5 self-start" variant="brand" size="sm" label="Nộp bản sửa" onPress={submit} />
+        <Button className="mt-2.5 self-start" variant="brand" size="sm" label={L('Nộp bản sửa', 'Submit fix')} onPress={submit} />
       ) : (
         <View className="mt-3">
           <View className="flex-row items-center gap-2">
@@ -188,8 +190,8 @@ export function TransferCheck({
             />
             <Text className="font-strong text-body text-paper-ink">
               {passed
-                ? 'Sửa được ở một câu khác — kỹ năng này được ghi nhận.'
-                : 'Chưa sửa đúng chỗ đó.'}
+                ? L('Sửa được ở một câu khác — kỹ năng này được ghi nhận.', 'Fixed in a different sentence — this skill is recorded.')
+                : L('Chưa sửa đúng chỗ đó.', "That spot isn't fixed yet.")}
             </Text>
           </View>
 
@@ -201,13 +203,13 @@ export function TransferCheck({
 
           <View className="mt-2.5 rounded-panel bg-paper-canvas p-3">
             <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-              Bản sửa mẫu
+              {L('Bản sửa mẫu', 'Model fix')}
             </Text>
             <Text className="mt-1 font-mid text-label text-paper-ink" style={{ lineHeight: 20 }}>
               {probe.fixed}
             </Text>
             <Text className="mt-1.5 font-sans text-label text-paper-muted" style={{ lineHeight: 18 }}>
-              Bản của bạn không cần trùng từng chữ với bản này — chỉ cần sửa đúng chỗ lỗi.
+              {L('Bản của bạn không cần trùng từng chữ với bản này — chỉ cần sửa đúng chỗ lỗi.', "Yours doesn't need to match this word for word — just fix the mistake.")}
             </Text>
           </View>
         </View>

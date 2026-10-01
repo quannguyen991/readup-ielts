@@ -11,7 +11,7 @@ import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
 
 export type DeckSource = 'mine' | 'ielts' | 'satMath' | 'satVerbal';
 
-export type DeckLook = { source: DeckSource; sourceLabel: string; accent: readonly [string, string]; icon: IconName };
+export type DeckLook = { source: DeckSource; sourceLabel: string; sourceLabelEn: string; accent: readonly [string, string]; icon: IconName };
 
 /** Mười cặp (nền nhạt, màu đậm); chủ đề IELTS lấy theo thứ tự để thẻ cạnh nhau không trùng màu. */
 const PALETTE: readonly (readonly [string, string])[] = [
@@ -84,11 +84,11 @@ const TOPIC_INDEX = new Map(VOCAB_TOPICS.map((t, i) => [t.slug, i]));
 const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
 export function deckLook(slug: string): DeckLook {
-  if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', accent: ['#FBF5EC', '#A8843F'], icon: 'book' };
-  if (slug.startsWith(CUSTOM_PREFIX)) return { source: 'mine', sourceLabel: 'Bộ bạn tạo', accent: ['#D1FAE5', '#059669'], icon: 'note' };
+  if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', sourceLabelEn: 'Your notebook', accent: ['#FBF5EC', '#A8843F'], icon: 'book' };
+  if (slug.startsWith(CUSTOM_PREFIX)) return { source: 'mine', sourceLabel: 'Bộ bạn tạo', sourceLabelEn: 'Your deck', accent: ['#D1FAE5', '#059669'], icon: 'note' };
   const subject = SAT_SUBJECT.get(slug);
-  if (subject === 'math') return { source: 'satMath', sourceLabel: 'SAT Math', accent: ['#EEF1F6', '#24375A'], icon: 'grid' };
-  if (subject) return { source: 'satVerbal', sourceLabel: 'SAT Verbal', accent: ['#FFE4E6', '#E11D48'], icon: 'letters' };
+  if (subject === 'math') return { source: 'satMath', sourceLabel: 'SAT Math', sourceLabelEn: 'SAT Math', accent: ['#EEF1F6', '#24375A'], icon: 'grid' };
+  if (subject) return { source: 'satVerbal', sourceLabel: 'SAT Verbal', sourceLabelEn: 'SAT Verbal', accent: ['#FFE4E6', '#E11D48'], icon: 'letters' };
   const i = TOPIC_INDEX.get(slug) ?? 0;
-  return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };
+  return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', sourceLabelEn: 'IELTS topic', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };
 }

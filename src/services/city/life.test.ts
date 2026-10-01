@@ -106,6 +106,28 @@ test('câu hỏi: đáp án đúng nằm đúng chỗ, bốn nghĩa khác nhau',
   assert.equal(makeQuestion([], pool.slice(0, 3), rand), null);
 });
 
+test('câu hỏi giao diện English: dùng định nghĩa tiếng Anh, thiếu thì cả câu về nghĩa tiếng Việt', () => {
+  const pool = Array.from({ length: 12 }, (_, i) => ({ word: `w${i}`, meaningVi: `nghĩa ${i}`, definitionEn: `meaning ${i}` }));
+  let seed = 11;
+  const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  for (let k = 0; k < 30; k++) {
+    const q = makeQuestion([pool[5]!], pool, rand, true)!;
+    assert.equal(q.options[q.answer], 'meaning 5');
+    assert.ok(q.options.every((o) => o.startsWith('meaning ')), 'không trộn hai thứ tiếng');
+    // Giao diện tiếng Việt: vẫn hỏi nghĩa tiếng Việt.
+    assert.equal(makeQuestion([pool[5]!], pool, rand)!.options.filter((o) => o.startsWith('nghĩa ')).length, 4);
+  }
+  // Từ hỏi không có định nghĩa tiếng Anh → cả câu dùng nghĩa tiếng Việt.
+  const noEn = { word: 'x', meaningVi: 'nghĩa x' };
+  const q = makeQuestion([noEn], pool, rand, true)!;
+  assert.equal(q.options[q.answer], 'nghĩa x');
+  assert.ok(q.options.every((o) => o.startsWith('nghĩa ')));
+  // Kho nhiễu không đủ ba định nghĩa tiếng Anh → về tiếng Việt.
+  const sparse = pool.map((w, i) => (i < 2 ? w : { word: w.word, meaningVi: w.meaningVi }));
+  const q2 = makeQuestion([sparse[0]!], sparse, rand, true)!;
+  assert.equal(q2.options[q2.answer], 'nghĩa 0');
+});
+
 test('nội thất: không chồng đồ sàn, thảm nằm dưới được, đồ treo chỉ sát tường', () => {
   const layout = { ...EMPTY_HOME, items: [{ uid: 'a', item: 'bed', x: 0, y: 0, rot: 0 as const }] };
   assert.deepEqual(canPlaceFurniture(layout, { item: 'chair', x: 1, y: 2, rot: 0 }), { ok: false, reason: 'overlap' });

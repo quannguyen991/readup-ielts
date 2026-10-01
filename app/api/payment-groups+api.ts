@@ -2,6 +2,7 @@ import { generateGroupCode, isValidGroupCode } from '@/lib/payment/reference';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { isPaidPlan } from '@/services/payment/order';
 import { GROUP_BUY_SIZES, groupBuyDiscountPercent, groupBuyYearlyPrice, type GroupSize } from '@/services/payment/pricing-rules';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/payment-groups        { plan, targetSize }   → tạo nhóm mới, trả mã chia sẻ
@@ -24,12 +25,12 @@ async function identify(
   const header = request.headers.get('authorization') ?? '';
   const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
   if (!token) {
-    return { ok: false, error: Response.json({ error: 'Thiếu access token.' }, { status: 401 }) };
+    return { ok: false, error: Response.json({ error: msg(request, 'Thiếu access token.', 'Missing access token.') }, { status: 401 }) };
   }
   const admin = getSupabaseAdmin();
   const { data, error } = await admin.auth.getUser(token);
   if (error || !data.user) {
-    return { ok: false, error: Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 }) };
+    return { ok: false, error: Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 }) };
   }
   return { ok: true, admin, userId: data.user.id };
 }
@@ -47,10 +48,10 @@ export async function POST(request: Request): Promise<Response> {
     const plan = String(body.plan ?? '');
 
     if (!isPaidPlan(plan)) {
-      return Response.json({ error: 'Chỉ mua theo nhóm được với gói Plus, Pro hoặc Max.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Chỉ mua theo nhóm được với gói Plus, Pro hoặc Max.', 'Group buying is only available for Plus, Pro or Max.') }, { status: 400 });
     }
     if (!isGroupSize(body.targetSize)) {
-      return Response.json({ error: `Mốc số người chỉ nhận: ${GROUP_BUY_SIZES.join(', ')}.` }, { status: 400 });
+      return Response.json({ error: msg(request, `Mốc số người chỉ nhận: ${GROUP_BUY_SIZES.join(', ')}.`, `Group size must be one of: ${GROUP_BUY_SIZES.join(', ')}.`) }, { status: 400 });
     }
 
     const targetSize = body.targetSize;
@@ -82,9 +83,15 @@ export async function POST(request: Request): Promise<Response> {
       }
     }
 
-    return Response.json({ error: 'Không sinh được mã nhóm chưa trùng. Thử lại sau ít phút.' }, { status: 503 });
+    return Response.json({
+        error: msg(
+          request,
+          'Không sinh được mã nhóm chưa trùng. Thử lại sau ít phút.',
+          "Couldn't generate a unique group code. Please try again in a few minutes.",
+        ),
+      }, { status: 503 });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
@@ -93,7 +100,7 @@ export async function GET(request: Request): Promise<Response> {
     const url = new URL(request.url);
     const code = (url.searchParams.get('code') ?? '').trim().toUpperCase();
     if (!code || !isValidGroupCode(code)) {
-      return Response.json({ error: 'Mã nhóm không hợp lệ.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Mã nhóm không hợp lệ.', 'Invalid group code.') }, { status: 400 });
     }
 
     // GET không cần token — dùng service_role trực tiếp vì đây là dữ liệu công
@@ -106,7 +113,7 @@ export async function GET(request: Request): Promise<Response> {
       .maybeSingle();
 
     if (error) return Response.json({ error: error.message }, { status: 500 });
-    if (!group) return Response.json({ error: 'Không tìm thấy nhóm với mã này.' }, { status: 404 });
+    if (!group) return Response.json({ error: msg(request, 'Không tìm thấy nhóm với mã này.', 'No group found with this code.') }, { status: 404 });
 
     const { count: paidCount } = await admin
       .from('payments')
@@ -121,10 +128,10 @@ export async function GET(request: Request): Promise<Response> {
       expired: group.status === 'collecting' && new Date(group.settle_by).getTime() < Date.now(),
     });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
-function message(err: unknown): string {
-  return err instanceof Error ? err.message : 'Lỗi không xác định';
+function message(request: Request, err: unknown): string {
+  return errorText(request, err, 'Lỗi không xác định', 'Unknown error');
 }

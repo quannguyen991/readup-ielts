@@ -1,5 +1,6 @@
 import { PLAN_ORDER, type PlanId } from '@/lib/billing/plans';
 import { requireAdmin } from '@/services/admin/guard';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/admin/plan
@@ -33,10 +34,16 @@ export async function POST(request: Request): Promise<Response> {
 
     const userId = typeof body.userId === 'string' ? body.userId : '';
     const plan = body.plan as PlanId;
-    if (!userId) return Response.json({ error: 'Thiếu userId.' }, { status: 400 });
+    if (!userId) return Response.json({ error: msg(request, 'Thiếu userId.', 'userId is required.') }, { status: 400 });
     if (!PLAN_ORDER.includes(plan)) {
       return Response.json(
-        { error: `Gói không hợp lệ. Chỉ nhận: ${PLAN_ORDER.join(', ')}.` },
+        {
+          error: msg(
+            request,
+            `Gói không hợp lệ. Chỉ nhận: ${PLAN_ORDER.join(', ')}.`,
+            `Invalid plan. Allowed: ${PLAN_ORDER.join(', ')}.`,
+          ),
+        },
         { status: 400 },
       );
     }
@@ -48,7 +55,13 @@ export async function POST(request: Request): Promise<Response> {
       const value = Number(body.months);
       if (!Number.isInteger(value) || value < 1 || value > MAX_MONTHS) {
         return Response.json(
-          { error: `Số tháng phải là số nguyên từ 1 tới ${MAX_MONTHS}, hoặc để trống.` },
+          {
+            error: msg(
+              request,
+              `Số tháng phải là số nguyên từ 1 tới ${MAX_MONTHS}, hoặc để trống.`,
+              `Months must be a whole number from 1 to ${MAX_MONTHS}, or left empty.`,
+            ),
+          },
           { status: 400 },
         );
       }
@@ -61,7 +74,7 @@ export async function POST(request: Request): Promise<Response> {
       .eq('id', userId)
       .maybeSingle();
     if (beforeError) return Response.json({ error: beforeError.message }, { status: 500 });
-    if (!before) return Response.json({ error: 'Không có hồ sơ cho userId này.' }, { status: 404 });
+    if (!before) return Response.json({ error: msg(request, 'Không có hồ sơ cho userId này.', 'No profile for this userId.') }, { status: 404 });
 
     const now = new Date();
     let expiresAt: string | null = null;
@@ -101,7 +114,7 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json({ ok: true, plan, expiresAt });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

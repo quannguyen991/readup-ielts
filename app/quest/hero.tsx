@@ -30,6 +30,9 @@ import { mascotOf, useRewardStore } from '@/store/useRewardStore';
 import { useStarBalance } from '@/store/useStarBalance';
 import { PageStickers } from '@/components/illust/HeroArt';
 import { Badge as SealBadge } from '@/components/illust/Cute';
+import { useL } from '@/i18n/useL';
+import { enemyName } from '@/components/world/island-label';
+import { achievementDetail, achievementTitle, itemName, levelTitle, mascotName, mascotPerk } from '@/services/gamification/labels-en';
 
 /**
  * TRANG NHÂN VẬT: cấp và XP, nhiệm vụ ngày (bấm nhận thưởng), trận đang đánh,
@@ -45,7 +48,17 @@ import { Badge as SealBadge } from '@/components/illust/Cute';
 const ITEM_ORDER: ItemKind[] = ['potion', 'shield', 'double', 'hint'];
 const MAX_W = 1280;
 
+/** Tên tiếng Anh cho đồ trong túi (dữ liệu gốc ở `services/game/rules.ts` giữ tiếng Việt). */
+const ITEM_KIND_EN: Record<ItemKind, { name: string; detail: string }> = {
+  potion: { name: 'Health potion', detail: 'Restores 2 hearts.' },
+  shield: { name: 'Shield', detail: 'Blocks one wrong answer: no heart lost, combo kept.' },
+  double: { name: 'Double XP', detail: 'Your next 10 correct answers earn double XP.' },
+  hint: { name: "Owl's hint", detail: 'Removes 2 wrong options from the current multiple-choice question.' },
+};
+
 export default function HeroScreen() {
+  const { L, locale, en } = useL();
+  const numLocale = en ? 'en-US' : 'vi-VN';
   useEffect(ensureGameKeyframes, []);
   const [w, onLayout] = useBoxWidth();
   const wide = w >= 900;
@@ -65,7 +78,7 @@ export default function HeroScreen() {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: GAP.sm, flexWrap: 'wrap' }}>
             <BackPill label="Band 9 Quest" onPress={() => router.push('/quest' as never)} />
             <Text accessibilityRole="header" className="font-heavy text-pageTitle" style={{ color: HUB.ink }}>
-              Nhân vật & nhiệm vụ
+              {L('Nhân vật & nhiệm vụ', 'Hero & quests')}
             </Text>
             <View style={{ flex: 1 }} />
             <PageStickers scene="duel" />
@@ -85,35 +98,43 @@ export default function HeroScreen() {
                 </Text>
                 <View style={{ marginBottom: 8, borderRadius: 999, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: 'rgba(250,204,21,0.16)' }}>
                   <Text className="font-strong" style={{ fontSize: 13, color: HUB.gold }}>
-                    {titleForLevel(lv.level)}
+                    {levelTitle(titleForLevel(lv.level), locale)}
                   </Text>
                 </View>
               </View>
               <View style={{ marginTop: 10 }}>
-                <Bar value={lv.need > 0 ? lv.into / lv.need : 0} color={HUB.gold} height={12} label={`XP ${lv.into}/${lv.need} tới cấp ${lv.level + 1}`} />
+                <Bar value={lv.need > 0 ? lv.into / lv.need : 0} color={HUB.gold} height={12} label={L(`XP ${lv.into}/${lv.need} tới cấp ${lv.level + 1}`, `XP ${lv.into}/${lv.need} to level ${lv.level + 1}`)} />
               </View>
               <Text className="font-semi" style={{ marginTop: 6, fontSize: 13, color: HUB.muted, fontVariant: ['tabular-nums'] }}>
-                {lv.into}/{lv.need} XP tới cấp {lv.level + 1} · tổng {g.xp.toLocaleString('vi-VN')} XP
+                {L(
+                  `${lv.into}/${lv.need} XP tới cấp ${lv.level + 1} · tổng ${g.xp.toLocaleString('vi-VN')} XP`,
+                  `${lv.into}/${lv.need} XP to level ${lv.level + 1} · ${g.xp.toLocaleString('en-US')} XP total`,
+                )}
               </Text>
               <Text className="font-semi" style={{ marginTop: 4, fontSize: 13, color: HUB.muted }}>
-                {findItem(skinItem)?.name ?? 'Hiệp sĩ xanh'}
-                {pet ? ` · đồng hành: ${pet.name} — ${pet.perk}` : ' · chưa có linh vật'}
+                {(() => {
+                  const skin = findItem(skinItem);
+                  return skin ? itemName(skin, locale) : L('Hiệp sĩ xanh', 'Blue Knight');
+                })()}
+                {pet
+                  ? L(` · đồng hành: ${pet.name} — ${pet.perk}`, ` · companion: ${mascotName(pet, locale)} — ${mascotPerk(pet, locale)}`)
+                  : L(' · chưa có linh vật', ' · no mascot yet')}
               </Text>
               <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-                <StatPill glyph="⭐" value={formatStars(stars)} label="sao" />
-                <StatPill glyph="❤️" value={`${g.hearts}/${MAX_HEARTS}`} label="tim" />
+                <StatPill glyph="⭐" value={formatStars(stars)} label={L('sao', 'stars')} />
+                <StatPill glyph="❤️" value={`${g.hearts}/${MAX_HEARTS}`} label={L('tim', 'hearts')} />
               </View>
               <View style={{ marginTop: GAP.md }}>
                 <Cols cols={w >= 640 ? 4 : 2} gap={8}>
-                  <StatBox value={g.life.correct.toLocaleString('vi-VN')} label="câu đúng" />
-                  <StatBox value={accuracy} label="tỉ lệ đúng" />
-                  <StatBox value={g.life.bestCombo > 0 ? `×${g.life.bestCombo}` : '—'} label="combo kỷ lục" />
-                  <StatBox value={g.life.defeated.toLocaleString('vi-VN')} label="quái đã hạ" />
+                  <StatBox value={g.life.correct.toLocaleString(numLocale)} label={L('câu đúng', 'correct answers')} />
+                  <StatBox value={accuracy} label={L('tỉ lệ đúng', 'accuracy')} />
+                  <StatBox value={g.life.bestCombo > 0 ? `×${g.life.bestCombo}` : '—'} label={L('combo kỷ lục', 'best combo')} />
+                  <StatBox value={g.life.defeated.toLocaleString(numLocale)} label={L('quái đã hạ', 'monsters defeated')} />
                 </Cols>
               </View>
               <View style={{ marginTop: GAP.md, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-                <GoButton label="Đổi skin & linh vật" href="/shop?tab=skin" />
-                <GoButton label="Hồ sơ của tôi" href="/profile" />
+                <GoButton label={L('Đổi skin & linh vật', 'Change skin & mascot')} href="/shop?tab=skin" />
+                <GoButton label={L('Hồ sơ của tôi', 'My profile')} href="/profile" />
               </View>
             </View>
           </Panel>
@@ -123,7 +144,7 @@ export default function HeroScreen() {
           {/* Nhiệm vụ ngày */}
           <Appear index={2} style={wide ? { flex: 1.3 } : undefined}>
             <Panel style={{ flex: 1 }}>
-              <SectionHeader onDark={false} seal="target" tone={HUB.amber} title="Nhiệm vụ hôm nay" sub="Đổi mỗi ngày. Xong thì bấm nhận thưởng." />
+              <SectionHeader onDark={false} seal="target" tone={HUB.amber} title={L('Nhiệm vụ hôm nay', "Today's quests")} sub={L('Đổi mỗi ngày. Xong thì bấm nhận thưởng.', 'New every day. Tap to claim your reward when done.')} />
               <View style={{ marginTop: GAP.md }}>
                 <DailyQuests />
               </View>
@@ -133,15 +154,15 @@ export default function HeroScreen() {
           {/* Trận đang đánh */}
           <Appear index={3} style={wide ? { flex: 1 } : undefined}>
             <Panel style={{ flex: 1 }}>
-              <SectionHeader onDark={false} seal="flame" tone={HUB.orange} title="Quái đang chặn đường" sub="Trả lời đúng ở bất kỳ bài nào là một nhát chém." />
+              <SectionHeader onDark={false} seal="flame" tone={HUB.orange} title={L('Quái đang chặn đường', 'Monster in your way')} sub={L('Trả lời đúng ở bất kỳ bài nào là một nhát chém.', 'Every correct answer in any lesson is one strike.')} />
               <View style={{ marginTop: GAP.md }}>
                 <EnemyBlock stage={96} />
               </View>
               <Text className="font-semi" style={{ marginTop: GAP.sm, fontSize: 12, color: HUB.muted }}>
-                Tim của bạn {g.hearts}/{MAX_HEARTS}
+                {L('Tim của bạn', 'Your hearts')} {g.hearts}/{MAX_HEARTS}
               </Text>
               <View style={{ marginTop: GAP.md, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-                <GoButton label="Quiz từ vựng" href="/vocabulary/quiz" />
+                <GoButton label={L('Quiz từ vựng', 'Vocabulary quiz')} href="/vocabulary/quiz" />
                 <GoButton label="SAT Math" href="/math" />
                 <GoButton label="SAT Verbal" href="/sat-rw" />
               </View>
@@ -156,9 +177,9 @@ export default function HeroScreen() {
               onDark={false}
               seal="gift"
               tone={HUB.pink}
-              title="Túi đồ"
-              sub="Dùng ngay trong bài: bấm Túi đồ trên thanh trận đấu."
-              action={{ label: 'Đổi quà', href: '/shop?tab=battle' }}
+              title={L('Túi đồ', 'Inventory')}
+              sub={L('Dùng ngay trong bài: bấm Túi đồ trên thanh trận đấu.', 'Use items mid-lesson: tap Inventory on the battle bar.')}
+              action={{ label: L('Đổi quà', 'Rewards shop'), href: '/shop?tab=battle' }}
             />
             <View style={{ marginTop: GAP.md }}>
               <Cols cols={w >= 900 ? 4 : w >= 520 ? 2 : 1} gap={GAP.sm}>
@@ -169,10 +190,10 @@ export default function HeroScreen() {
                     </View>
                     <View style={{ flex: 1, minWidth: 0 }}>
                       <Text className="font-strong" style={{ fontSize: 14, color: HUB.ink }}>
-                        {ITEMS[k].name} <Text style={{ color: HUB.gold }}>×{g.items[k] ?? 0}</Text>
+                        {en ? ITEM_KIND_EN[k].name : ITEMS[k].name} <Text style={{ color: HUB.gold }}>×{g.items[k] ?? 0}</Text>
                       </Text>
                       <Text className="font-sans" style={{ marginTop: 1, fontSize: 12, lineHeight: 16, color: HUB.muted }}>
-                        {ITEMS[k].detail}
+                        {en ? ITEM_KIND_EN[k].detail : ITEMS[k].detail}
                       </Text>
                     </View>
                   </View>
@@ -185,17 +206,22 @@ export default function HeroScreen() {
         {/* Sổ quái */}
         <Appear index={5}>
           <Panel style={{ marginTop: GAP.md }}>
-            <SectionHeader onDark={false} seal="book" tone={HUB.sky} title="Sổ quái" sub="Quái lần lượt xuất hiện; hết bảy loài thì quay lại, khoẻ hơn." />
+            <SectionHeader onDark={false} seal="book" tone={HUB.sky} title={L('Sổ quái', 'Bestiary')} sub={L('Quái lần lượt xuất hiện; hết bảy loài thì quay lại, khoẻ hơn.', 'Monsters appear one by one; after all seven, they come back stronger.')} />
             <View style={{ marginTop: GAP.md }}>
               <Cols cols={w >= 1000 ? 7 : w >= 560 ? 4 : 2} gap={GAP.sm}>
                 {ENEMIES.map((e, i) => {
                   const seen = g.enemyIndex >= i;
                   const kills = g.enemyIndex > i ? Math.floor((g.enemyIndex - i - 1) / ENEMIES.length) + 1 : 0;
                   const current = g.enemyIndex % ENEMIES.length === i && seen;
+                  const eName = enemyName(e, locale);
                   return (
                     <View
                       key={e.id}
-                      accessibilityLabel={seen ? `${e.name}${kills > 0 ? `, đã hạ ${kills} lần` : ''}` : 'Quái chưa gặp'}
+                      accessibilityLabel={
+                        seen
+                          ? `${eName}${kills > 0 ? L(`, đã hạ ${kills} lần`, `, defeated ${kills}×`) : ''}`
+                          : L('Quái chưa gặp', 'Monster not met yet')
+                      }
                       style={{
                         flex: 1,
                         alignItems: 'center',
@@ -209,7 +235,7 @@ export default function HeroScreen() {
                     >
                       <PixelSprite name={ENEMY_SPRITE[e.id] ?? 'slime'} color={e.color} size={56} silhouette={seen ? undefined : 'rgba(205, 193, 172,0.18)'} />
                       <Text className="font-strong" numberOfLines={1} style={{ marginTop: 6, fontSize: 13, color: seen ? HUB.ink : HUB.muted }}>
-                        {seen ? e.name : '???'}
+                        {seen ? eName : '???'}
                       </Text>
                       {isBoss(i) ? (
                         <View style={{ marginTop: 3, borderRadius: 4, paddingHorizontal: 5, backgroundColor: HUB.red }}>
@@ -219,7 +245,7 @@ export default function HeroScreen() {
                         </View>
                       ) : null}
                       <Text className="font-sans" style={{ marginTop: 2, fontSize: 12, color: kills > 0 ? HUB.gold : current ? '#FCA5A5' : HUB.muted }}>
-                        {kills > 0 ? `Đã hạ ${kills} lần` : seen ? 'Đang đánh' : `${e.baseHp} máu`}
+                        {kills > 0 ? L(`Đã hạ ${kills} lần`, `Defeated ${kills}×`) : seen ? L('Đang đánh', 'Fighting') : L(`${e.baseHp} máu`, `${e.baseHp} HP`)}
                       </Text>
                     </View>
                   );
@@ -232,7 +258,7 @@ export default function HeroScreen() {
         {/* Huy hiệu */}
         <Appear index={6}>
           <Panel style={{ marginTop: GAP.md }}>
-            <SectionHeader onDark={false} seal="trophy" tone={HUB.amber} title="Huy hiệu" sub={`${unlocked}/${ACHIEVEMENTS.length} đã mở`} />
+            <SectionHeader onDark={false} seal="trophy" tone={HUB.amber} title={L('Huy hiệu', 'Badges')} sub={L(`${unlocked}/${ACHIEVEMENTS.length} đã mở`, `${unlocked}/${ACHIEVEMENTS.length} unlocked`)} />
             <View style={{ marginTop: GAP.md }}>
               <Cols cols={w >= 900 ? 3 : w >= 560 ? 2 : 1} gap={GAP.sm}>
                 {ACHIEVEMENTS.map((a) => {
@@ -257,10 +283,10 @@ export default function HeroScreen() {
                       </Text>
                       <View style={{ flex: 1, minWidth: 0 }}>
                         <Text className="font-strong" style={{ fontSize: 13, color: at ? HUB.ink : HUB.muted }}>
-                          {a.title}
+                          {achievementTitle(a, locale)}
                         </Text>
                         <Text className="font-sans" style={{ fontSize: 12, color: HUB.muted }}>
-                          {at ? `Mở ngày ${new Date(at).toLocaleDateString('vi-VN')}` : a.detail}
+                          {at ? L(`Mở ngày ${new Date(at).toLocaleDateString('vi-VN')}`, `Unlocked ${new Date(at).toLocaleDateString('en-US')}`) : achievementDetail(a, locale)}
                         </Text>
                       </View>
                       {at ? (
@@ -280,24 +306,27 @@ export default function HeroScreen() {
           {/* Cài đặt game */}
           <Appear index={7} style={wide ? { flex: 1 } : undefined}>
             <Panel style={{ flex: 1, gap: GAP.md }}>
-              <SectionHeader onDark={false} seal="settings" tone={HUB.blue} title="Cài đặt game" />
+              <SectionHeader onDark={false} seal="settings" tone={HUB.blue} title={L('Cài đặt game', 'Game settings')} />
               <SwitchRow
-                title="Chế độ game khi học"
+                title={L('Chế độ game khi học', 'Game mode while studying')}
                 detail={
                   g.enabled
-                    ? 'Đang bật: màn học có thanh trận đấu, mỗi câu đúng cộng XP và chém quái.'
-                    : 'Đang tắt: màn học gọn như cũ, không cộng XP game. Tiến độ học vẫn tính đủ.'
+                    ? L('Đang bật: màn học có thanh trận đấu, mỗi câu đúng cộng XP và chém quái.', 'On: lessons show the battle bar; every correct answer earns XP and strikes the monster.')
+                    : L('Đang tắt: màn học gọn như cũ, không cộng XP game. Tiến độ học vẫn tính đủ.', 'Off: lessons stay clean, with no game XP. Your study progress still counts in full.')
                 }
                 on={g.enabled}
                 onToggle={() => g.setEnabled(!g.enabled)}
               />
               <View style={{ height: 1, backgroundColor: HUB.line }} />
               <SwitchRow
-                title="Âm thanh hiệu ứng"
+                title={L('Âm thanh hiệu ứng', 'Sound effects')}
                 detail={
                   g.sound
-                    ? 'Đang bật: tiếng đúng cao dần theo combo, tiếng chém, trúng đòn, hạ quái, lên cấp. Phím M để tắt nhanh.'
-                    : 'Đang tắt: học trong im lặng. Phím M trên thanh trận đấu để bật lại.'
+                    ? L(
+                        'Đang bật: tiếng đúng cao dần theo combo, tiếng chém, trúng đòn, hạ quái, lên cấp. Phím M để tắt nhanh.',
+                        'On: correct-answer chimes rise with your combo, plus strike, hit, defeat and level-up sounds. Press M to mute.',
+                      )
+                    : L('Đang tắt: học trong im lặng. Phím M trên thanh trận đấu để bật lại.', 'Off: study in silence. Press M on the battle bar to turn it back on.')
                 }
                 on={g.sound}
                 onToggle={() => g.setSound(!g.sound)}
@@ -308,21 +337,42 @@ export default function HeroScreen() {
           {/* Luật chơi */}
           <Appear index={8} style={wide ? { flex: 1.4 } : undefined}>
             <Panel style={{ flex: 1 }}>
-              <SectionHeader onDark={false} seal="info" tone={HUB.sky} title="Luật chơi" />
+              <SectionHeader onDark={false} seal="info" tone={HUB.sky} title={L('Luật chơi', 'How it works')} />
               <View style={{ marginTop: GAP.sm, gap: 6 }}>
                 {[
-                  `Đúng một câu: +${XP_CORRECT} XP và chém quái. Từ câu đúng thứ 3 liên tiếp, mỗi câu cộng thêm XP.`,
-                  `Cứ ${CRIT_EVERY} câu đúng liên tiếp là một đòn chí mạng: gấp đôi XP và sát thương, khung trận rung lên.`,
-                  `Combo từ ${FEVER_AT} là BÙNG CHÁY: mỗi nhát chém mạnh gấp rưỡi, nhân vật bốc lửa.`,
-                  'Con thứ bảy mỗi vòng là BOSS: nhiều máu hơn, hạ được thưởng trọn lượng máu thành XP và rơi 2 món.',
-                  'Còn một tim thì khung trận viền đỏ và tim đập — cẩn thận câu kế tiếp.',
-                  'Sai một câu: mất combo và một tim. Khiên chặn được một câu sai.',
-                  'Hết tim: bị đánh lui — tim hồi đầy, quái hồi máu. Bài học không bao giờ bị khoá.',
-                  'Hạ quái: thưởng thêm XP, cứ hai con thì rơi một món đồ.',
-                  'Bài chỉ chấm lúc nộp (kiểm tra, đề tuần): mỗi câu đúng +10 XP và một nhát, không tính combo, không mất tim.',
-                  `Sao thưởng: hạ quái +${STAR_BONUS.defeat} ⭐, hạ boss +${STAR_BONUS.boss} ⭐, lên cấp +${STAR_BONUS.levelUp} ⭐ mỗi cấp, xong nhiệm vụ +${STAR_BONUS.quest} ⭐, mở huy hiệu +${STAR_BONUS.achievement} ⭐. Sao đổi được vé gói, linh vật, skin ở trang Đổi quà.`,
-                  'Linh vật đứng sau lưng nhân vật và giúp theo cách riêng: Cú cho lượt Hỏi Cú miễn phí, Cáo đỡ câu sai đầu ngày, Mèo hồi tim, Rồng chém mạnh hơn. Không con nào làm bài hộ.',
-                  'Phím tắt trên thanh trận đấu: I mở túi đồ · H hỏi Cú · M bật/tắt âm thanh.',
+                  L(
+                    `Đúng một câu: +${XP_CORRECT} XP và chém quái. Từ câu đúng thứ 3 liên tiếp, mỗi câu cộng thêm XP.`,
+                    `Each correct answer: +${XP_CORRECT} XP and a strike on the monster. From the 3rd correct answer in a row, each one earns bonus XP.`,
+                  ),
+                  L(
+                    `Cứ ${CRIT_EVERY} câu đúng liên tiếp là một đòn chí mạng: gấp đôi XP và sát thương, khung trận rung lên.`,
+                    `Every ${CRIT_EVERY} correct answers in a row land a critical hit: double XP and damage, and the battle frame shakes.`,
+                  ),
+                  L(
+                    `Combo từ ${FEVER_AT} là BÙNG CHÁY: mỗi nhát chém mạnh gấp rưỡi, nhân vật bốc lửa.`,
+                    `A combo of ${FEVER_AT}+ triggers FEVER: every strike hits 1.5× harder and your hero bursts into flames.`,
+                  ),
+                  L(
+                    'Con thứ bảy mỗi vòng là BOSS: nhiều máu hơn, hạ được thưởng trọn lượng máu thành XP và rơi 2 món.',
+                    'The seventh monster each round is a BOSS: more HP, and defeating it turns all its HP into XP and drops 2 items.',
+                  ),
+                  L('Còn một tim thì khung trận viền đỏ và tim đập — cẩn thận câu kế tiếp.', 'On your last heart, the battle frame turns red and the heart pulses — careful with the next question.'),
+                  L('Sai một câu: mất combo và một tim. Khiên chặn được một câu sai.', 'A wrong answer costs your combo and one heart. A shield blocks one wrong answer.'),
+                  L('Hết tim: bị đánh lui — tim hồi đầy, quái hồi máu. Bài học không bao giờ bị khoá.', 'Out of hearts: you get knocked back — hearts refill and the monster heals. Lessons are never locked.'),
+                  L('Hạ quái: thưởng thêm XP, cứ hai con thì rơi một món đồ.', 'Defeat a monster: bonus XP, and every second one drops an item.'),
+                  L(
+                    'Bài chỉ chấm lúc nộp (kiểm tra, đề tuần): mỗi câu đúng +10 XP và một nhát, không tính combo, không mất tim.',
+                    'Tests graded on submit (quizzes, weekly tests): each correct answer gives +10 XP and one strike — no combo, no hearts lost.',
+                  ),
+                  L(
+                    `Sao thưởng: hạ quái +${STAR_BONUS.defeat} ⭐, hạ boss +${STAR_BONUS.boss} ⭐, lên cấp +${STAR_BONUS.levelUp} ⭐ mỗi cấp, xong nhiệm vụ +${STAR_BONUS.quest} ⭐, mở huy hiệu +${STAR_BONUS.achievement} ⭐. Sao đổi được vé gói, linh vật, skin ở trang Đổi quà.`,
+                    `Star rewards: monster +${STAR_BONUS.defeat} ⭐, boss +${STAR_BONUS.boss} ⭐, +${STAR_BONUS.levelUp} ⭐ per level up, quest done +${STAR_BONUS.quest} ⭐, badge unlocked +${STAR_BONUS.achievement} ⭐. Spend stars on passes, mascots and skins in the Rewards shop.`,
+                  ),
+                  L(
+                    'Linh vật đứng sau lưng nhân vật và giúp theo cách riêng: Cú cho lượt Hỏi Cú miễn phí, Cáo đỡ câu sai đầu ngày, Mèo hồi tim, Rồng chém mạnh hơn. Không con nào làm bài hộ.',
+                    'Your mascot stands behind your hero and helps in its own way: Owl gives free Ask Owl hints, Fox blocks your first wrong answer each day, Cat restores hearts, Dragon hits harder. None of them do the work for you.',
+                  ),
+                  L('Phím tắt trên thanh trận đấu: I mở túi đồ · H hỏi Cú · M bật/tắt âm thanh.', 'Battle bar shortcuts: I opens inventory · H asks Owl · M toggles sound.'),
                 ].map((line) => (
                   <View key={line} style={{ flexDirection: 'row', gap: 8 }}>
                     <View aria-hidden style={{ marginTop: 7, width: 5, height: 5, borderRadius: 2, backgroundColor: HUB.gold }} />

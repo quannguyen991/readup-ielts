@@ -5,6 +5,7 @@ import { BrandMark } from '@/components/layout/Logo';
 import { Screen } from '@/components/layout/Screen';
 import { LEGACY_HOSTS } from '@/lib/site';
 import { DATA, DONE, READY, parseMessage, plan, snapshot } from '@/services/migrate/handoff';
+import { useL } from '@/i18n/useL';
 
 /**
  * /chuyen-du-lieu — trang NHẬN dữ liệu ở tên miền Band 9. Trang cũ mở trang này
@@ -15,6 +16,7 @@ import { DATA, DONE, READY, parseMessage, plan, snapshot } from '@/services/migr
 const LEGACY_ORIGINS = LEGACY_HOSTS.map((h) => `https://${h}`);
 
 export default function ReceiveHandoff() {
+  const { L } = useL();
   const [state, setState] = useState<'waiting' | 'done' | 'alone'>('waiting');
   const [written, setWritten] = useState(0);
 
@@ -65,14 +67,24 @@ export default function ReceiveHandoff() {
       <View style={{ alignSelf: 'center', width: '100%', maxWidth: 560, marginTop: 40, borderRadius: 28, padding: 28, backgroundColor: '#0F1D33', alignItems: 'center', gap: 14 }}>
         <BrandMark size={72} />
         <Text className="font-heavy" style={{ fontSize: 26, color: '#F3EDE1', textAlign: 'center' }}>
-          {state === 'done' ? 'Chào mừng về nhà mới Band 9' : state === 'alone' ? 'ReadUp giờ là Band 9' : 'Đang chuyển đồ sang nhà mới…'}
+          {state === 'done'
+            ? L('Chào mừng về nhà mới Band 9', 'Welcome to your new home, Band 9')
+            : state === 'alone'
+              ? L('ReadUp giờ là Band 9', 'ReadUp is now Band 9')
+              : L('Đang chuyển đồ sang nhà mới…', 'Moving your things to the new home…')}
         </Text>
         <Text className="font-sans" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(243,237,225,0.8)', textAlign: 'center' }}>
           {state === 'done'
-            ? `ReadUp đã chuyển sang nhà mới tên Band 9. Đã mang theo ${written} mục dữ liệu học tập và phiên đăng nhập của bạn.`
+            ? L(
+                `ReadUp đã chuyển sang nhà mới tên Band 9. Đã mang theo ${written} mục dữ liệu học tập và phiên đăng nhập của bạn.`,
+                `ReadUp has moved to its new home, Band 9. We brought along ${written} items of your study data and your sign-in.`,
+              )
             : state === 'alone'
-              ? 'ReadUp đã chuyển sang nhà mới tên Band 9. Đăng nhập bằng tài khoản cũ là toàn bộ tiến độ trên máy chủ được đồng bộ về.'
-              : 'Giữ cửa sổ tên miền cũ đang mở trong giây lát.'}
+              ? L(
+                  'ReadUp đã chuyển sang nhà mới tên Band 9. Đăng nhập bằng tài khoản cũ là toàn bộ tiến độ trên máy chủ được đồng bộ về.',
+                  'ReadUp has moved to its new home, Band 9. Sign in with your old account and all your progress on the server syncs back.',
+                )
+              : L('Giữ cửa sổ tên miền cũ đang mở trong giây lát.', 'Keep the old-domain window open for a moment.')}
         </Text>
         {state !== 'waiting' ? (
           <Pressable
@@ -81,7 +93,7 @@ export default function ReceiveHandoff() {
             style={{ marginTop: 6, borderRadius: 999, paddingHorizontal: 22, paddingVertical: 12, backgroundColor: '#B8955A' }}
           >
             <Text className="font-heavy" style={{ fontSize: 15, color: '#0F1D33' }}>
-              Vào Band 9 →
+              {L('Vào Band 9 →', 'Go to Band 9 →')}
             </Text>
           </Pressable>
         ) : null}

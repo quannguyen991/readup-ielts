@@ -1,4 +1,5 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { msg } from '@/lib/server-locale';
 
 /**
  * Cổng vào của mọi route quản trị.
@@ -29,7 +30,7 @@ export async function requireAdmin(request: Request): Promise<GuardResult> {
   const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
 
   if (!token) {
-    return { ok: false, response: Response.json({ error: 'Thiếu access token.' }, { status: 401 }) };
+    return { ok: false, response: Response.json({ error: msg(request, 'Thiếu access token.', 'Missing access token.') }, { status: 401 }) };
   }
 
   const admin = getSupabaseAdmin();
@@ -38,7 +39,7 @@ export async function requireAdmin(request: Request): Promise<GuardResult> {
   if (error || !data.user) {
     return {
       ok: false,
-      response: Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 }),
+      response: Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 }),
     };
   }
 
@@ -61,7 +62,7 @@ export async function requireAdmin(request: Request): Promise<GuardResult> {
     // — địa chỉ route đã nằm sẵn trong bundle client rồi.
     return {
       ok: false,
-      response: Response.json({ error: 'Tài khoản này không có quyền quản trị.' }, { status: 403 }),
+      response: Response.json({ error: msg(request, 'Tài khoản này không có quyền quản trị.', 'This account does not have admin access.') }, { status: 403 }),
     };
   }
 

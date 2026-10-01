@@ -11,6 +11,7 @@ import { ExampleLine } from '@/components/vocab/study/StudyKit';
 import { candidateToStudyWord, extractCandidates, type ImportCandidate } from '@/services/vocab/import';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
@@ -26,6 +27,7 @@ Meanwhile, the team's young goalkeeper made several remarkable saves. Analysts a
  */
 export default function ImportDeckScreen() {
   const decks = useCustomDeckStore((s) => s.decks);
+  const { L } = useL();
   const addDeck = useCustomDeckStore((s) => s.addDeck);
   const removeDeck = useCustomDeckStore((s) => s.removeDeck);
 
@@ -43,7 +45,7 @@ export default function ImportDeckScreen() {
     setMeanings({});
     if (!name) {
       const d = new Date();
-      setName(`Bài của tôi · ${d.getDate()}/${d.getMonth() + 1}`);
+      setName(L(`Bài của tôi · ${d.getDate()}/${d.getMonth() + 1}`, `My article · ${d.getMonth() + 1}/${d.getDate()}`));
     }
   };
 
@@ -77,36 +79,39 @@ export default function ImportDeckScreen() {
       <Appear>
         <LightHero
           scene="vocab"
-          badge="BỘ TỪ CỦA BẠN"
-          line1="Học từ bài bạn thích"
-          line2="tin bóng đá, K-pop, game…"
-          subtitle="Dán một bài tiếng Anh bất kỳ. App lọc ra những từ đáng học, lấy chính câu trong bài làm ví dụ, và tạo thành một bộ học đủ chế độ: lật thẻ, Học, Điền vào câu, Kiểm tra, Bóng bay."
+          badge={L('BỘ TỪ CỦA BẠN', 'YOUR WORD SETS')}
+          line1={L('Học từ bài bạn thích', 'Learn from what you love')}
+          line2={L('tin bóng đá, K-pop, game…', 'football news, K-pop, games…')}
+          subtitle={L(
+            'Dán một bài tiếng Anh bất kỳ. App lọc ra những từ đáng học, lấy chính câu trong bài làm ví dụ, và tạo thành một bộ học đủ chế độ: lật thẻ, Học, Điền vào câu, Kiểm tra, Bóng bay.',
+            'Paste any English article. The app picks out words worth learning, uses the article’s own sentences as examples, and builds a full study set: flashcards, Learn, Fill the gap, Test, Balloons.',
+          )}
         />
       </Appear>
 
       <Appear index={1}>
         <View className="mt-5 rounded-[22px] bg-white p-5" style={CARD}>
-          <Text className="font-heavy text-sectionTitle text-ink">1. Dán bài</Text>
+          <Text className="font-heavy text-sectionTitle text-ink">{L('1. Dán bài', '1. Paste an article')}</Text>
           <TextInput
             value={text}
             onChangeText={setText}
             multiline
-            placeholder="Dán một bài tiếng Anh vào đây…"
+            placeholder={L('Dán một bài tiếng Anh vào đây…', 'Paste an English article here…')}
             placeholderTextColor="#94A3B8"
             className="mt-3 rounded-2xl px-4 py-3 font-sans text-body text-ink"
             style={{ minHeight: 170, borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8', textAlignVertical: 'top' }}
           />
           <View className="mt-3 flex-row flex-wrap items-center gap-2">
-            <Button label="Tìm từ đáng học" iconRight="arrow-right" disabled={text.trim().length < 40} onPress={() => scan(text)} />
+            <Button label={L('Tìm từ đáng học', 'Find words to learn')} iconRight="arrow-right" disabled={text.trim().length < 40} onPress={() => scan(text)} />
             <Button
               variant="outline"
-              label="Dùng bài mẫu"
+              label={L('Dùng bài mẫu', 'Use sample article')}
               onPress={() => {
                 setText(SAMPLE);
                 scan(SAMPLE);
               }}
             />
-            <Text className="font-sans text-label text-muted">{text.trim().split(/\s+/).filter(Boolean).length} từ</Text>
+            <Text className="font-sans text-label text-muted">{text.trim().split(/\s+/).filter(Boolean).length} {L('từ', 'words')}</Text>
           </View>
         </View>
       </Appear>
@@ -114,15 +119,18 @@ export default function ImportDeckScreen() {
       {candidates ? (
         <Appear index={2}>
           <View className="mt-5 rounded-[22px] bg-white p-5" style={CARD}>
-            <Text className="font-heavy text-sectionTitle text-ink">2. Chọn từ muốn học</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('2. Chọn từ muốn học', '2. Pick words to learn')}</Text>
             {candidates.length === 0 ? (
               <Text className="mt-2 font-sans text-body text-muted">
-                Bài này toàn từ thông dụng — thử một bài dài hơn hoặc học thuật hơn.
+                {L('Bài này toàn từ thông dụng — thử một bài dài hơn hoặc học thuật hơn.', 'This article only has common words — try a longer or more academic one.')}
               </Text>
             ) : (
               <>
                 <Text className="mt-1 font-sans text-body text-muted">
-                  Tìm thấy {candidates.length} từ. Đã chọn sẵn những từ có nghĩa trong kho; từ chưa có nghĩa thì bạn tự điền.
+                  {L(
+                    `Tìm thấy ${candidates.length} từ. Đã chọn sẵn những từ có nghĩa trong kho; từ chưa có nghĩa thì bạn tự điền.`,
+                    `Found ${candidates.length} words. Words with a stored meaning are pre-selected; fill in meanings for the rest yourself.`,
+                  )}
                 </Text>
                 <View className="mt-3 gap-2">
                   {candidates.map((c) => {
@@ -151,7 +159,7 @@ export default function ImportDeckScreen() {
                           <TextInput
                             value={meanings[c.word] ?? ''}
                             onChangeText={(v) => setMeanings((m) => ({ ...m, [c.word]: v }))}
-                            placeholder="Nghĩa tiếng Việt (bạn tự điền)…"
+                            placeholder={L('Nghĩa tiếng Việt (bạn tự điền)…', 'Vietnamese meaning (fill in yourself)…')}
                             placeholderTextColor="#94A3B8"
                             className="mt-2 rounded-xl px-3 py-2 font-sans text-body text-ink"
                             style={{ borderWidth: 1, borderColor: '#FDE68A', backgroundColor: '#FFFBEB' }}
@@ -173,19 +181,22 @@ export default function ImportDeckScreen() {
       {candidates && candidates.length > 0 ? (
         <Appear index={3}>
           <View className="mt-5 rounded-[22px] bg-white p-5" style={CARD}>
-            <Text className="font-heavy text-sectionTitle text-ink">3. Đặt tên và tạo bộ</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('3. Đặt tên và tạo bộ', '3. Name it and create the set')}</Text>
             <TextInput
               value={name}
               onChangeText={setName}
-              placeholder="Tên bộ từ"
+              placeholder={L('Tên bộ từ', 'Set name')}
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-3 font-semi text-bodyLg text-ink"
               style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8' }}
             />
             <Text className="mt-2 font-sans text-body text-muted">
-              {ready.length} từ sẵn sàng{missing > 0 ? ` · ${missing} từ đã chọn còn thiếu nghĩa (sẽ bị bỏ qua)` : ''}. Cần ít nhất 4 từ.
+              {L(
+                `${ready.length} từ sẵn sàng${missing > 0 ? ` · ${missing} từ đã chọn còn thiếu nghĩa (sẽ bị bỏ qua)` : ''}. Cần ít nhất 4 từ.`,
+                `${ready.length} words ready${missing > 0 ? ` · ${missing} selected words still need a meaning (they’ll be skipped)` : ''}. You need at least 4 words.`,
+              )}
             </Text>
-            <Button className="mt-3 self-start" label={`Tạo bộ học (${ready.length} từ)`} iconRight="arrow-right" disabled={ready.length < 4} onPress={create} />
+            <Button className="mt-3 self-start" label={L(`Tạo bộ học (${ready.length} từ)`, `Create study set (${ready.length} words)`)} iconRight="arrow-right" disabled={ready.length < 4} onPress={create} />
           </View>
         </Appear>
       ) : null}
@@ -193,7 +204,7 @@ export default function ImportDeckScreen() {
       {existing.length > 0 ? (
         <Appear index={4}>
           <View className="mt-5 rounded-[22px] bg-white p-5" style={CARD}>
-            <Text className="font-heavy text-sectionTitle text-ink">Bộ bạn đã tạo</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('Bộ bạn đã tạo', 'Your sets')}</Text>
             <View className="mt-3 gap-2">
               {existing.map((d) => (
                 <View key={d.id} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: '#FCFBF8' }}>
@@ -202,10 +213,10 @@ export default function ImportDeckScreen() {
                       {d.name}
                     </Text>
                     <Text className="font-sans text-label text-muted">
-                      {d.words.length} từ · {d.words.slice(0, 4).map((w) => w.word).join(', ')}
+                      {d.words.length} {L('từ', 'words')} · {d.words.slice(0, 4).map((w) => w.word).join(', ')}
                     </Text>
                   </Pressable>
-                  <Button size="sm" variant="ghost" label="Xoá" onPress={() => removeDeck(d.id)} />
+                  <Button size="sm" variant="ghost" label={L('Xoá', 'Delete')} onPress={() => removeDeck(d.id)} />
                 </View>
               ))}
             </View>

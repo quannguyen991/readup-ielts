@@ -1,4 +1,5 @@
 import { requireAdmin } from '@/services/admin/guard';
+import { errorText } from '@/lib/server-locale';
 
 /**
  * GET /api/admin/users?q=<tìm theo email>&limit=<số>
@@ -74,7 +75,7 @@ export async function GET(request: Request): Promise<Response> {
       truncated: authData.users.length >= MAX_LIMIT,
     });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

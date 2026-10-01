@@ -7,6 +7,7 @@
  * "Học viên ####"; mã người dùng rút gọn 12 ký tự, id đầy đủ và email không
  * rời máy chủ.
  */
+import { msg, type LocaleSource } from '@/lib/server-locale';
 import type { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { anonymousName, displayableName } from '@/services/gamification/display-name';
 import type { HubDistrict } from '@/services/city/hub';
@@ -59,11 +60,25 @@ export async function likesOf(admin: Admin, userIds: string[]): Promise<Map<stri
   return out;
 }
 
+/** Tên mặc định khi chủ thành phố chưa đặt tên — theo ngôn ngữ người xem. */
+export function defaultCityName(owner: string, locale: LocaleSource = 'vi'): string {
+  return msg(locale, `Thành phố của ${owner}`, `${owner}'s city`);
+}
+
+/**
+ * Đổi tên mặc định của danh sách đã dựng sẵn (bản cache dùng chung, dựng bằng
+ * tiếng Việt) sang ngôn ngữ người xem. Tên do người chơi tự đặt giữ nguyên.
+ */
+export function localizeDistricts(districts: HubDistrict[], locale: LocaleSource): HubDistrict[] {
+  if (msg(locale, 'vi', 'en') === 'vi') return districts;
+  return districts.map((d) => (d.name === defaultCityName(d.owner, 'vi') ? { ...d, name: defaultCityName(d.owner, locale) } : d));
+}
+
 /**
  * Danh sách thành phố để đi thăm ("Khu của mọi người"), xếp theo công học
  * (`lifetime`). Chỉ kéo vài trường nhỏ — `sites` có thể dài, ở đây chỉ đếm.
  */
-export async function listCities(admin: Admin, limit = 40): Promise<HubDistrict[]> {
+export async function listCities(admin: Admin, limit = 40, locale: LocaleSource = 'vi'): Promise<HubDistrict[]> {
   const { data, error } = await admin
     .from('user_state')
     .select('user_id, name:payload->>name, era:payload->era, lifetime:payload->lifetime, terrain:payload->terrain, sites:payload->sites')
@@ -79,7 +94,7 @@ export async function listCities(admin: Admin, limit = 40): Promise<HubDistrict[
     const owner = nameOrAnon(names, r.user_id);
     return {
       id: shortId(r.user_id),
-      name: safeName(r.name) ?? `Thành phố của ${owner}`,
+      name: safeName(r.name) ?? defaultCityName(owner, locale),
       owner,
       era: typeof r.era === 'number' ? r.era : 1,
       buildings: r.sites!.length,

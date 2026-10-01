@@ -39,6 +39,7 @@ import { color, spacing as space } from '@/theme/tokens';
 import { PageTransition } from '@/components/motion/Motion';
 import { useGameStore } from '@/store/useGameStore';
 import { useCityStore } from '@/store/useCityStore';
+import { bi, useL, type Bi } from '@/i18n/useL';
 
 /**
  * Bài thi SAT đầy đủ, đúng khổ đề số hoá.
@@ -56,6 +57,7 @@ import { useCityStore } from '@/store/useCityStore';
 export default function SatFullTestScreen() {
   const [state, setState] = useState<FullTestState | null>(null);
   const [reviewing, setReviewing] = useState(false);
+  const { L } = useL();
 
   const start = useCallback(() => {
     setReviewing(false);
@@ -90,7 +92,7 @@ export default function SatFullTestScreen() {
       <RwRunner
         key={`rw-${stage.module}`}
         title="Reading and Writing"
-        phaseLabel={`Module ${stage.module} / 2 · ${stage.minutes} phút`}
+        phaseLabel={L(`Module ${stage.module} / 2 · ${stage.minutes} phút`, `Module ${stage.module} / 2 · ${stage.minutes} min`)}
         items={stage.items}
         minutes={stage.minutes}
         onFinish={(answers) => {
@@ -113,10 +115,10 @@ export default function SatFullTestScreen() {
       <MathRunner
         key={`math-${stage.module}`}
         title="Math"
-        phaseLabel={`Module ${stage.module} / 2 · ${stage.minutes} phút`}
+        phaseLabel={L(`Module ${stage.module} / 2 · ${stage.minutes} phút`, `Module ${stage.module} / 2 · ${stage.minutes} min`)}
         items={stage.items}
         minutes={stage.minutes}
-        submitLabel="Nộp module"
+        submitLabel={L('Nộp module', 'Submit module')}
         surface="paper"
         onFinish={(responses: MathResponse[]) => {
           const attempts = gradeMathSession(stage.items, responses);
@@ -167,14 +169,14 @@ function countRwCorrect(items: MockItem[], answers: (number | null)[]): number {
 
 /* ------------------------------------------------------------------ mở đầu */
 
-type Stage = { label: string; detail: string; tone: 'work' | 'rest' };
+type Stage = { label: Bi; detail: Bi; tone: 'work' | 'rest' };
 
 const STAGES: readonly Stage[] = [
-  { label: 'Reading and Writing — module 1', detail: '27 câu · 32 phút', tone: 'work' },
-  { label: 'Reading and Writing — module 2', detail: '27 câu · 32 phút', tone: 'work' },
-  { label: 'Nghỉ giữa giờ', detail: `${BREAK_MINUTES} phút`, tone: 'rest' },
-  { label: 'Math — module 1', detail: '22 câu · 35 phút', tone: 'work' },
-  { label: 'Math — module 2', detail: '22 câu · 35 phút', tone: 'work' },
+  { label: { vi: 'Reading and Writing — module 1', en: 'Reading and Writing — module 1' }, detail: { vi: '27 câu · 32 phút', en: '27 questions · 32 min' }, tone: 'work' },
+  { label: { vi: 'Reading and Writing — module 2', en: 'Reading and Writing — module 2' }, detail: { vi: '27 câu · 32 phút', en: '27 questions · 32 min' }, tone: 'work' },
+  { label: { vi: 'Nghỉ giữa giờ', en: 'Break' }, detail: { vi: `${BREAK_MINUTES} phút`, en: `${BREAK_MINUTES} min` }, tone: 'rest' },
+  { label: { vi: 'Math — module 1', en: 'Math — module 1' }, detail: { vi: '22 câu · 35 phút', en: '22 questions · 35 min' }, tone: 'work' },
+  { label: { vi: 'Math — module 2', en: 'Math — module 2' }, detail: { vi: '22 câu · 35 phút', en: '22 questions · 35 min' }, tone: 'work' },
 ];
 
 /**
@@ -185,24 +187,25 @@ const STAGES: readonly Stage[] = [
  * nhẹ hơn cả trang Cài đặt.
  */
 function Intro({ onStart }: { onStart: () => void }) {
+  const { L } = useL();
   return (
     <ExamShell>
       <LightHero
         scene="math"
         badge="DIGITAL SAT · FULL TEST" art="test"
-        line1="Thi thử SAT đầy đủ"
-        line2="một mạch từ đầu tới cuối"
-        subtitle="Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module; module sau khó dễ tuỳ module trước."
+        line1={L('Thi thử SAT đầy đủ', 'Full SAT practice test')}
+        line2={L('một mạch từ đầu tới cuối', 'start to finish in one sitting')}
+        subtitle={L('Đúng khổ đề Digital SAT của College Board: hai phần, mỗi phần hai module; module sau khó dễ tuỳ module trước.', "The College Board's Digital SAT format: two sections of two modules each; the second module adapts to how you did on the first.")}
         footer={
           <>
-            <HeroStat value="98" label="câu hỏi" />
-            <HeroStat value="134" label="phút làm bài" />
-            <HeroStat value="144" label="phút tính cả nghỉ" />
+            <HeroStat value="98" label={L('câu hỏi', 'questions')} />
+            <HeroStat value="134" label={L('phút làm bài', 'testing minutes')} />
+            <HeroStat value="144" label={L('phút tính cả nghỉ', 'minutes incl. break')} />
           </>
         }
       >
         <Button
-          label="Bắt đầu thi"
+          label={L('Bắt đầu thi', 'Start test')}
           variant="brand"
           size="lg"
           iconRight="chevron-right"
@@ -212,7 +215,7 @@ function Intro({ onStart }: { onStart: () => void }) {
           Đi thẳng tới /sat chứ không `router.back()`: mở trực tiếp bằng đường
           dẫn vẫn phải có một nơi lùi rõ ràng, không phụ thuộc lịch sử trình duyệt.
         */}
-        <Button label="Để sau" variant="outline" size="lg" onPress={() => router.replace('/sat')} />
+        <Button label={L('Để sau', 'Later')} variant="outline" size="lg" onPress={() => router.replace('/sat')} />
       </LightHero>
 
       {/*
@@ -226,11 +229,11 @@ function Intro({ onStart }: { onStart: () => void }) {
           <PaperCard>
             <View className="flex-row items-center gap-2.5">
               <IconCircle name="clock" tone="primary" size={34} />
-              <Text className="font-strong text-cardTitle text-paper-ink">Bài thi đi thế nào</Text>
+              <Text className="font-strong text-cardTitle text-paper-ink">{L('Bài thi đi thế nào', 'How the test runs')}</Text>
             </View>
             <View className="mt-3">
               {STAGES.map((s, i) => (
-                <StageRow key={s.label} stage={s} last={i === STAGES.length - 1} />
+                <StageRow key={s.label.vi} stage={s} last={i === STAGES.length - 1} />
               ))}
             </View>
           </PaperCard>
@@ -239,14 +242,14 @@ function Intro({ onStart }: { onStart: () => void }) {
             <Note
               icon="trending"
               tone="accent"
-              title="Module 2 khó dễ tuỳ module 1"
-              body="Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là cách đề thật hoạt động, không phải hình phạt."
+              title={L('Module 2 khó dễ tuỳ module 1', 'Module 2 adapts to module 1')}
+              body={L('Làm tốt phần đầu thì phần sau khó hơn — và trần điểm cũng cao hơn. Đây là cách đề thật hoạt động, không phải hình phạt.', "Do well on the first part and the next gets harder — with a higher score ceiling. That's how the real test works, not a penalty.")}
             />
             <Note
               icon="lock"
               tone="danger"
-              title="Nộp module là không quay lại"
-              body="Hết giờ thì tự nộp, kể cả khi còn câu chưa làm. Đề thật không cho cộng giờ."
+              title={L('Nộp module là không quay lại', 'No going back after submitting')}
+              body={L('Hết giờ thì tự nộp, kể cả khi còn câu chưa làm. Đề thật không cho cộng giờ.', "When time's up the module submits itself, even with questions left. The real test gives no extra time.")}
             />
           </View>
         </Grid>
@@ -300,6 +303,7 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
   const { width } = useWindowDimensions();
   const wide = width >= 640;
   const rest = stage.tone === 'rest';
+  const { locale } = useL();
   return (
     <View className="flex-row">
       <View className="items-center" style={{ width: 22 }}>
@@ -326,9 +330,9 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
       <View className={last ? 'flex-1' : 'flex-1 pb-3.5'}>
         <View className={wide ? 'flex-row items-baseline justify-between gap-3' : ''}>
           <Text className={`font-sans text-body ${rest ? 'text-warning-ink' : 'text-paper-ink'}`}>
-            {stage.label}
+            {bi(stage.label, locale)}
           </Text>
-          <Text className="font-semi text-label text-paper-muted">{stage.detail}</Text>
+          <Text className="font-semi text-label text-paper-muted">{bi(stage.detail, locale)}</Text>
         </View>
       </View>
     </View>
@@ -352,6 +356,7 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
   const [remainingMs, setRemainingMs] = useState(minutes * 60_000);
   const startedAt = useRef(0);
   const done = useRef(false);
+  const { L } = useL();
 
   const continueRef = useRef(onContinue);
   useEffect(() => {
@@ -377,7 +382,7 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
         <PaperCard className="w-full items-center" style={{ maxWidth: 520, paddingVertical: 32 }}>
           <IconCircle name="clock" tone="warning" size={64} />
           <Text className="mt-4 font-strong text-label uppercase text-paper-muted">
-            Nghỉ giữa giờ
+            {L('Nghỉ giữa giờ', 'Break')}
           </Text>
           <Text
             className="font-heavy text-warning-ink"
@@ -389,14 +394,13 @@ function BreakScreen({ minutes, onContinue }: { minutes: number; onContinue: () 
             className="mt-1 max-w-[400px] text-center font-sans text-body text-paper-body"
             style={{ lineHeight: 23 }}
           >
-            Xong phần Reading and Writing. Đứng dậy, uống nước, đừng xem lại câu vừa làm —
-            phần sau là Math và nó không liên quan gì tới phần vừa rồi.
+            {L('Xong phần Reading and Writing. Đứng dậy, uống nước, đừng xem lại câu vừa làm — phần sau là Math và nó không liên quan gì tới phần vừa rồi.', "Reading and Writing is done. Stand up, drink some water, and don't go over what you just did — Math is next and has nothing to do with it.")}
           </Text>
           <View className="mt-6">
-            <Button label="Vào phần Math sớm" iconRight="chevron-right" onPress={onContinue} />
+            <Button label={L('Vào phần Math sớm', 'Start Math early')} iconRight="chevron-right" onPress={onContinue} />
           </View>
           <Text className="mt-3 text-center font-sans text-label text-paper-muted">
-            Hết {minutes} phút là tự vào phần Math.
+            {L(`Hết ${minutes} phút là tự vào phần Math.`, `Math starts automatically after ${minutes} minutes.`)}
           </Text>
         </PaperCard>
       </View>
@@ -423,17 +427,18 @@ function ResultScreen({
 }) {
   const { width } = useWindowDimensions();
   const wide = width >= 900;
+  const { L } = useL();
   const score = fullTestScore(state);
   if (!score) return null;
 
-  const rwTier = state.rw.tier === 'harder' ? 'qua module 2 khó' : 'qua module 2 dễ';
-  const mathTier = state.math.tier === 'harder' ? 'qua module 2 khó' : 'qua module 2 dễ';
+  const rwTier = state.rw.tier === 'harder' ? L('qua module 2 khó', 'via the harder module 2') : L('qua module 2 dễ', 'via the easier module 2');
+  const mathTier = state.math.tier === 'harder' ? L('qua module 2 khó', 'via the harder module 2') : L('qua module 2 dễ', 'via the easier module 2');
 
   return (
     <ExamShell>
-      <Text className="font-heavy text-pageTitle text-white">Kết quả</Text>
+      <Text className="font-heavy text-pageTitle text-white">{L('Kết quả', 'Results')}</Text>
       <Text className="mt-1 font-sans text-body text-white/70">
-        {FULL_TEST_QUESTIONS} câu · {FULL_TEST_TESTING_MINUTES} phút làm bài
+        {L(`${FULL_TEST_QUESTIONS} câu · ${FULL_TEST_TESTING_MINUTES} phút làm bài`, `${FULL_TEST_QUESTIONS} questions · ${FULL_TEST_TESTING_MINUTES} testing minutes`)}
       </Text>
 
       {/*
@@ -458,7 +463,7 @@ function ResultScreen({
           <View style={wide ? { width: 260 } : undefined}>
             <View className="flex-row items-center gap-2">
               <Icon name="trophy" size={18} color="#FFFFFF" strokeWidth={2} />
-              <Text className="font-strong text-label uppercase text-white/80">Tổng điểm</Text>
+              <Text className="font-strong text-label uppercase text-white/80">{L('Tổng điểm', 'Total score')}</Text>
             </View>
             <Text
               className="font-heavy text-white"
@@ -466,7 +471,7 @@ function ResultScreen({
             >
               {score.total}
             </Text>
-            <Text className="font-sans text-body text-primary-100">thang 400–1600</Text>
+            <Text className="font-sans text-body text-primary-100">{L('thang 400–1600', 'out of 400–1600')}</Text>
           </View>
 
           {wide ? <View className="w-px self-stretch bg-white/25" /> : null}
@@ -489,7 +494,7 @@ function ResultScreen({
             <View className="flex-row items-center gap-2.5">
               <IconCircle name="target" tone="primary" size={34} />
               <Text className="font-strong text-cardTitle text-paper-ink">
-                Số câu đúng từng module
+                {L('Số câu đúng từng module', 'Correct answers per module')}
               </Text>
             </View>
             <View className="mt-2">
@@ -504,17 +509,17 @@ function ResultScreen({
             <View className="flex-row items-center gap-2.5">
               <IconCircle name="info" tone="warning" size={34} />
               <Text className="font-strong text-cardTitle text-warning-ink">
-                Con số này là ước lượng
+                {L('Con số này là ước lượng', 'This score is an estimate')}
               </Text>
             </View>
             <Text className="mt-2.5 font-sans text-body text-body" style={{ lineHeight: 22 }}>
-              College Board không công bố bảng quy đổi của đề số hoá, và bảng ấy còn đổi theo
-              từng kỳ thi. Đây là phỏng theo — đủ để theo dõi tiến bộ giữa các lần làm, không
-              đủ để dự đoán điểm thi thật.
+              {L('College Board không công bố bảng quy đổi của đề số hoá, và bảng ấy còn đổi theo từng kỳ thi. Đây là phỏng theo — đủ để theo dõi tiến bộ giữa các lần làm, không đủ để dự đoán điểm thi thật.', "The College Board doesn't publish the Digital SAT conversion table, and it changes from test to test. This is an approximation — good for tracking progress between attempts, not for predicting your real score.")}
             </Text>
             <Text className="mt-2 font-sans text-body text-body" style={{ lineHeight: 22 }}>
-              Trần điểm phụ thuộc module 2 bạn được đưa vào: Reading and Writing {rwTier}, Math{' '}
-              {mathTier}. Đúng như đề thật.
+              {L(
+                `Trần điểm phụ thuộc module 2 bạn được đưa vào: Reading and Writing ${rwTier}, Math ${mathTier}. Đúng như đề thật.`,
+                `Your score ceiling depends on which module 2 you got: Reading and Writing ${rwTier}, Math ${mathTier}. Just like the real test.`,
+              )}
             </Text>
           </PaperCard>
         </Grid>
@@ -526,9 +531,9 @@ function ResultScreen({
         ở lượt thi kế tiếp.
       */}
       <View className="mt-5 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
-        <Button label="Xem lại từng câu" iconRight="chevron-right" onPress={onReview} />
-        <Button label="Thi lại đề khác" variant="onDark" iconLeft="refresh" onPress={onRestart} />
-        <Button variant="onDark" label="Về trang SAT" onPress={() => router.replace('/sat')} />
+        <Button label={L('Xem lại từng câu', 'Review each question')} iconRight="chevron-right" onPress={onReview} />
+        <Button label={L('Thi lại đề khác', 'Try another test')} variant="onDark" iconLeft="refresh" onPress={onRestart} />
+        <Button variant="onDark" label={L('Về trang SAT', 'Back to SAT')} onPress={() => router.replace('/sat')} />
       </View>
     </ExamShell>
   );
@@ -683,10 +688,10 @@ type Status = 'correct' | 'wrong' | 'blank';
 
 const STATUS: Record<
   Status,
-  { label: string; icon: IconName; tone: IconTone; strip: string; text: string; ink: string }
+  { label: Bi; icon: IconName; tone: IconTone; strip: string; text: string; ink: string }
 > = {
   correct: {
-    label: 'Đúng',
+    label: { vi: 'Đúng', en: 'Correct' },
     icon: 'check',
     tone: 'success',
     strip: 'bg-success-soft',
@@ -694,7 +699,7 @@ const STATUS: Record<
     ink: color.success,
   },
   wrong: {
-    label: 'Sai',
+    label: { vi: 'Sai', en: 'Wrong' },
     icon: 'close',
     tone: 'danger',
     strip: 'bg-danger-soft',
@@ -702,7 +707,7 @@ const STATUS: Record<
     ink: color.danger,
   },
   blank: {
-    label: 'Bỏ trống',
+    label: { vi: 'Bỏ trống', en: 'Blank' },
     icon: 'clock',
     tone: 'warning',
     strip: 'bg-warning-soft',
@@ -728,12 +733,13 @@ function statusOf(row: ReviewRow): Status {
  */
 function ReviewCard({ row }: { row: ReviewRow }) {
   const st = STATUS[statusOf(row)];
+  const { L, locale } = useL();
   return (
     <PaperCard className="overflow-hidden" padded={false}>
       <View className={`flex-row items-center gap-2.5 px-5 py-3 ${st.strip}`}>
         <Icon name={st.icon} size={16} color={st.ink} strokeWidth={2.6} />
-        <Text className={`font-strong text-cardTitle ${st.text}`}>Câu {row.index + 1}</Text>
-        <Text className={`ml-auto font-strong text-label uppercase ${st.text}`}>{st.label}</Text>
+        <Text className={`font-strong text-cardTitle ${st.text}`}>{L('Câu', 'Question')} {row.index + 1}</Text>
+        <Text className={`ml-auto font-strong text-label uppercase ${st.text}`}>{bi(st.label, locale)}</Text>
       </View>
       <View className="p-5">{row.node}</View>
     </PaperCard>
@@ -781,6 +787,7 @@ const REVIEW_COLUMN = 880;
 function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => void }) {
   const [filter, setFilter] = useState<ReviewFilter>('wrong');
   const [openModule, setOpenModule] = useState(0);
+  const { L, locale } = useL();
 
   const modules = state.review.map((entry) => ({ entry, rows: rowsOf(entry) }));
   const all = modules.flatMap((m) => m.rows);
@@ -800,14 +807,14 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
             <Icon name="clipboard" size={22} color="#FFFFFF" strokeWidth={1.9} />
           </View>
           <View className="min-w-0 flex-1">
-            <Text className="font-heavy text-pageTitle text-white">Xem lại bài thi</Text>
+            <Text className="font-heavy text-pageTitle text-white">{L('Xem lại bài thi', 'Test review')}</Text>
             <Text className="mt-1 font-sans text-body text-white/70">
-              {all.length - wrongTotal}/{all.length} câu đúng
-              {blankTotal > 0 ? ` · ${blankTotal} câu bỏ trống` : ''}
+              {L(`${all.length - wrongTotal}/${all.length} câu đúng`, `${all.length - wrongTotal}/${all.length} correct`)}
+              {blankTotal > 0 ? L(` · ${blankTotal} câu bỏ trống`, ` · ${blankTotal} left blank`) : ''}
             </Text>
           </View>
         </View>
-        <Button label="Về kết quả" variant="onDark" iconLeft="chevron-left" onPress={onBack} />
+        <Button label={L('Về kết quả', 'Back to results')} variant="onDark" iconLeft="chevron-left" onPress={onBack} />
       </View>
 
       <PaperCard className="mt-4">
@@ -818,7 +825,7 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
             return (
               <Button
                 key={`${entry.kind}-${entry.module}`}
-                label={`${moduleChip(entry)} · ${wrong} chưa đúng`}
+                label={L(`${moduleChip(entry)} · ${wrong} chưa đúng`, `${moduleChip(entry)} · ${wrong} not correct`)}
                 iconLeft={entry.kind === 'rw' ? 'book' : 'grid'}
                 variant={i === openModule ? 'primary' : 'outline'}
                 onPress={() => setOpenModule(i)}
@@ -829,12 +836,12 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
 
         <View className="mt-3 flex-row flex-wrap items-center gap-2 border-t border-brand-soft pt-3">
           <Button
-            label="Câu chưa đúng"
+            label={L('Câu chưa đúng', 'Not correct')}
             variant={filter === 'wrong' ? 'secondary' : 'ghost'}
             onPress={() => setFilter('wrong')}
           />
           <Button
-            label="Tất cả"
+            label={L('Tất cả', 'All')}
             variant={filter === 'all' ? 'secondary' : 'ghost'}
             onPress={() => setFilter('all')}
           />
@@ -843,7 +850,7 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
               <View key={k} className="flex-row items-center gap-1.5">
                 <Icon name={STATUS[k].icon} size={14} color={STATUS[k].ink} strokeWidth={2.6} />
                 <Text className={`font-strong text-label ${STATUS[k].text}`}>
-                  {STATUS[k].label}
+                  {bi(STATUS[k].label, locale)}
                 </Text>
               </View>
             ))}
@@ -864,7 +871,7 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
               {moduleTitle(current.entry)}
             </Text>
             <Text className="font-sans text-label text-white/70">
-              {rightHere}/{rows.length} câu đúng · đang hiện {shown.length} câu
+              {L(`${rightHere}/${rows.length} câu đúng · đang hiện ${shown.length} câu`, `${rightHere}/${rows.length} correct · showing ${shown.length}`)}
             </Text>
           </View>
         </View>
@@ -876,10 +883,10 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
             <IconCircle name="trophy" tone="success" size={44} />
             <View className="min-w-0 flex-1">
               <Text className="font-strong text-cardTitle text-success-ink">
-                Module này không sai câu nào
+                {L('Module này không sai câu nào', 'No mistakes in this module')}
               </Text>
               <Text className="mt-1 font-sans text-body text-paper-body" style={{ lineHeight: 22 }}>
-                Bấm &quot;Tất cả&quot; nếu muốn soát lại lời giải của cả {rows.length} câu.
+                {L(`Bấm "Tất cả" nếu muốn soát lại lời giải của cả ${rows.length} câu.`, `Tap "All" to go over the solutions for all ${rows.length} questions.`)}
               </Text>
             </View>
           </View>
@@ -893,10 +900,10 @@ function ReviewScreen({ state, onBack }: { state: FullTestState; onBack: () => v
       )}
 
       <View className="mt-6 flex-row flex-wrap gap-2" style={{ marginBottom: space['2xl'] }}>
-        <Button label="Về kết quả" variant="onDark" iconLeft="chevron-left" onPress={onBack} />
+        <Button label={L('Về kết quả', 'Back to results')} variant="onDark" iconLeft="chevron-left" onPress={onBack} />
         {openModule < modules.length - 1 ? (
           <Button
-            label={`Sang ${moduleChip(modules[openModule + 1]!.entry)}`}
+            label={L(`Sang ${moduleChip(modules[openModule + 1]!.entry)}`, `Next: ${moduleChip(modules[openModule + 1]!.entry)}`)}
             variant="onDarkSolid"
             iconRight="chevron-right"
             onPress={() => setOpenModule(openModule + 1)}

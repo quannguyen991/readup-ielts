@@ -7,7 +7,9 @@ import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { UnitRunner } from '@/components/sat-rw/UnitRunner';
 import { Button, PaperCard } from '@/components/ui';
-import { SAT_RW_QUESTIONS, SAT_RW_SKILL_LABEL, getSatRwUnit } from '@/data/sat-rw-repository';
+import { SAT_RW_QUESTIONS, getSatRwUnit } from '@/data/sat-rw-repository';
+import { rwSkillLabel } from '@/components/sat-rw/skill-label';
+import { useL } from '@/i18n/useL';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { SetPicker, type PickerSet } from '@/components/practice/SetPicker';
 
@@ -24,6 +26,7 @@ const ROUND = 10;
 export default function SatRwSkillScreen() {
   const { skill = '', set } = useLocalSearchParams<{ skill: string; set?: string }>();
   const attempts = useSatRwStore((s) => s.attempts);
+  const { L, en } = useL();
   const all = useMemo(() => SAT_RW_QUESTIONS.filter((q) => q.skill === skill), [skill]);
   const sets = useMemo(() => {
     const out: (typeof all)[] = [];
@@ -44,7 +47,7 @@ export default function SatRwSkillScreen() {
         done: answered === qs.length,
         ratio: answered > 0 ? correct / answered : null,
         score: answered > 0 ? `${correct}/${qs.length}` : undefined,
-        note: answered > 0 && answered < qs.length ? `làm ${answered}/${qs.length}` : undefined,
+        note: answered > 0 && answered < qs.length ? L(`làm ${answered}/${qs.length}`, `done ${answered}/${qs.length}`) : undefined,
       };
     });
     const next = Math.max(0, view.findIndex((v) => !v.done));
@@ -53,22 +56,22 @@ export default function SatRwSkillScreen() {
         backHref="/sat-rw"
         backLabel="SAT Verbal"
         eyebrow={first.domain}
-        title={SAT_RW_SKILL_LABEL[skill] ?? skill}
+        title={rwSkillLabel(skill, en)}
         sets={view}
         nextIndex={view.every((v) => v.done) ? 0 : next}
         minutesPerQuestion={1}
         onOpen={(i) => router.push(`/sat-rw/skill/${skill}?set=${i}` as never)}
-        footnote="Điểm trên mỗi bộ tính theo lần làm gần nhất của từng câu."
+        footnote={L('Điểm trên mỗi bộ tính theo lần làm gần nhất của từng câu.', 'Each set’s score uses your latest attempt at every question.')}
       />
     );
   }
 
-  const label = SAT_RW_SKILL_LABEL[skill] ?? skill;
+  const label = rwSkillLabel(skill, en);
   const first = questions[0];
 
   if (!first) {
     return (
-      <TaskShell backHref="/sat-rw" backLabel="Về SAT Verbal" title="Không tìm thấy kỹ năng này" icon="clipboard">
+      <TaskShell backHref="/sat-rw" backLabel={L('Về SAT Verbal', 'Back to SAT Verbal')} title={L('Không tìm thấy kỹ năng này', 'Skill not found')} icon="clipboard">
         <PaperCard className="max-w-[520px]">
           <View aria-hidden className="mb-3">
             <Motion kind="wobble">
@@ -77,8 +80,8 @@ export default function SatRwSkillScreen() {
               </Sticker>
             </Motion>
           </View>
-          <Text className="font-sans text-body text-paper-body">Kỹ năng bạn vừa mở không có câu nào trong kho.</Text>
-          <Button className="mt-4" variant="brand" label="Về SAT Verbal" onPress={() => router.replace('/sat-rw' as never)} />
+          <Text className="font-sans text-body text-paper-body">{L('Kỹ năng bạn vừa mở không có câu nào trong kho.', 'This skill has no questions in the bank.')}</Text>
+          <Button className="mt-4" variant="brand" label={L('Về SAT Verbal', 'Back to SAT Verbal')} onPress={() => router.replace('/sat-rw' as never)} />
         </PaperCard>
       </TaskShell>
     );
@@ -87,14 +90,14 @@ export default function SatRwSkillScreen() {
   return (
     <UnitRunner
       key={index}
-      title={`${label} · Bộ đề ${index + 1}/${sets.length}`}
-      subtitle={`${first.domain} · ${questions.length} câu`}
+      title={L(`${label} · Bộ đề ${index + 1}/${sets.length}`, `${label} · Set ${index + 1}/${sets.length}`)}
+      subtitle={L(`${first.domain} · ${questions.length} câu`, `${first.domain} · ${questions.length} questions`)}
       questions={questions}
       ruleVi={getSatRwUnit(first.unit)?.ruleVi ?? ''}
       backHref={`/sat-rw/skill/${skill}`}
-      backLabel="Về danh sách bộ đề"
+      backLabel={L('Về danh sách bộ đề', 'Back to sets')}
       doneHref={`/sat-rw/skill/${skill}`}
-      doneLabel="Về danh sách bộ đề"
+      doneLabel={L('Về danh sách bộ đề', 'Back to sets')}
     />
   );
 }

@@ -23,6 +23,7 @@ import { DATA, DONE, READY, parseMessage, snapshot } from '@/services/migrate/ha
 import { SITE_HOST, SITE_ORIGIN, isLegacyHost, onLegacySite } from '@/lib/site';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useSyncStore } from '@/store/useSyncStore';
+import { useL } from '@/i18n/useL';
 
 /** Mã đếm lượt xem — không phải dữ liệu học, không tính là "có dữ liệu". */
 const IGNORE = new Set(['readup:vid', 'readup:sid']);
@@ -53,6 +54,7 @@ export function DomainMoveBanner() {
   const userId = useAuthStore((s) => s.user?.id ?? null);
   const syncNow = useSyncStore((s) => s.syncNow);
   const winRef = useRef<Window | null>(null);
+  const { L } = useL();
 
   useEffect(() => {
     if (Platform.OS !== 'web' || typeof window === 'undefined' || !onLegacySite()) return;
@@ -116,12 +118,18 @@ export function DomainMoveBanner() {
       <View style={{ width: '100%', maxWidth: 520, borderRadius: 28, padding: 28, backgroundColor: '#0F1D33', borderWidth: 1, borderColor: '#B8955A', alignItems: 'center', gap: 14 }}>
         <BrandMark size={76} />
         <Text className="font-heavy" style={{ fontSize: 26, color: '#F3EDE1', textAlign: 'center' }}>
-          {state === 'done' ? 'Xong! Đang mở Band 9…' : 'ReadUp đã chuyển sang nhà mới'}
+          {state === 'done' ? L('Xong! Đang mở Band 9…', 'Done! Opening Band 9…') : L('ReadUp đã chuyển sang nhà mới', 'ReadUp has moved to a new home')}
         </Text>
         <Text className="font-sans" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(243,237,225,0.82)', textAlign: 'center' }}>
           {state === 'blocked'
-            ? 'Trình duyệt đã chặn cửa sổ mới. Cho phép cửa sổ bật lên cho trang này rồi bấm lại, hoặc chọn "Sang luôn".'
-            : 'Nhà mới tên là Band 9 — vẫn là app bạn đang học, chỉ đổi tên, logo và địa chỉ. Bấm một lần để mang toàn bộ tiến độ và phiên đăng nhập sang nhà mới.'}
+            ? L(
+                'Trình duyệt đã chặn cửa sổ mới. Cho phép cửa sổ bật lên cho trang này rồi bấm lại, hoặc chọn "Sang luôn".',
+                'Your browser blocked the new window. Allow pop-ups for this site and try again, or choose "Go now".',
+              )
+            : L(
+                'Nhà mới tên là Band 9 — vẫn là app bạn đang học, chỉ đổi tên, logo và địa chỉ. Bấm một lần để mang toàn bộ tiến độ và phiên đăng nhập sang nhà mới.',
+                'The new home is called Band 9 — the same app you’ve been using, with a new name, logo and address. One tap brings all your progress and your sign-in along.',
+              )}
         </Text>
         <Text className="font-heavy" style={{ fontSize: 16, color: '#E2C88F' }}>
           {SITE_HOST}
@@ -133,12 +141,16 @@ export function DomainMoveBanner() {
           style={{ marginTop: 4, borderRadius: 999, paddingHorizontal: 24, paddingVertical: 13, backgroundColor: '#B8955A', opacity: state === 'sending' || state === 'done' ? 0.65 : 1 }}
         >
           <Text className="font-heavy" style={{ fontSize: 16, color: '#0F1D33' }}>
-            {state === 'sending' ? 'Đang chuyển…' : state === 'done' ? '✓ Đã chuyển' : 'Mang tiến độ sang Band 9'}
+            {state === 'sending'
+              ? L('Đang chuyển…', 'Moving…')
+              : state === 'done'
+                ? L('✓ Đã chuyển', '✓ Moved')
+                : L('Mang tiến độ sang Band 9', 'Bring my progress to Band 9')}
           </Text>
         </Pressable>
         <Pressable accessibilityRole="link" disabled={state === 'sending' || state === 'done'} onPress={() => void skip()}>
           <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(243,237,225,0.6)' }}>
-            Sang luôn (đăng nhập lại ở Band 9)
+            {L('Sang luôn (đăng nhập lại ở Band 9)', 'Go now (sign in again on Band 9)')}
           </Text>
         </Pressable>
       </View>

@@ -15,6 +15,22 @@ import {
 } from '@/services/writing/translation-path';
 import { useSentenceStore } from '@/store/useSentenceStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+import { STEP_EN } from '@/components/writing/translation-step-en';
+
+const DIFFICULTY_EN: Record<string, string> = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
+
+/** Tên nhóm cấu trúc của Bước 1 khi giao diện tiếng Anh (tra theo id nhóm). */
+const STRUCTURE_EN: Record<string, string> = {
+  passive: 'Passive voice',
+  conditional: 'Conditionals',
+  relative: 'Relative clauses',
+  comparison: 'Comparisons',
+  perfect: 'Perfect tenses',
+  continuous: 'Continuous tenses',
+  past: 'Past tenses',
+  present: 'Present simple',
+};
 
 /**
  * Các mục luyện trong MỘT bước.
@@ -40,14 +56,15 @@ const STEP_TONES: Record<string, string> = {
 export default function TranslationStepScreen() {
   const { stepId } = useLocalSearchParams<{ stepId: string }>();
   const step = typeof stepId === 'string' ? getStep(stepId) : undefined;
+  const { L, en } = useL();
 
   if (!step) {
     return (
       <Screen>
-        <Text className="font-strong text-cardTitle text-ink">Không có bước này.</Text>
+        <Text className="font-strong text-cardTitle text-ink">{L('Không có bước này.', "This step doesn't exist.")}</Text>
         <Button
           className="mt-4"
-          label="Về lộ trình dịch"
+          label={L('Về lộ trình dịch', 'Back to translation path')}
           onPress={() => router.replace('/write/translation' as never)}
         />
       </Screen>
@@ -63,7 +80,7 @@ export default function TranslationStepScreen() {
         className="flex-row items-center gap-1.5"
       >
         <Icon name="chevron-left" size={16} color={color.ink} />
-        <Text className="font-semi text-body text-ink">Danh sách bước</Text>
+        <Text className="font-semi text-body text-ink">{L('Danh sách bước', 'All steps')}</Text>
       </Pressable>
 
       {/* Thanh chọn bước — cuộn ngang ở khổ hẹp thay vì xuống dòng thành hai hàng. */}
@@ -92,32 +109,32 @@ export default function TranslationStepScreen() {
                 className="font-heavy text-label"
                 style={{ color: active ? '#fff' : color.muted, fontSize: 10, letterSpacing: 0.8 }}
               >
-                BƯỚC {s.order}
+                {L('BƯỚC', 'STEP')} {s.order}
               </Text>
               <Text
                 className="font-semi text-label"
                 style={{ color: active ? '#fff' : color.ink }}
               >
-                {s.title}
+                {(en ? STEP_EN[s.id]?.title : undefined) ?? s.title}
               </Text>
             </Pressable>
           );
         })}
       </ScrollView>
 
-      <Text className="mt-5 font-heavy text-pageTitle text-ink">{step.title}</Text>
+      <Text className="mt-5 font-heavy text-pageTitle text-ink">{(en ? STEP_EN[step.id]?.title : undefined) ?? step.title}</Text>
       <Text className="mt-1 font-sans text-body text-ink" style={{ maxWidth: 640, opacity: 0.82 }}>
-        {step.blurb}
+        {(en ? STEP_EN[step.id]?.blurb : undefined) ?? step.blurb}
       </Text>
 
       <Text className="mt-6 font-heavy text-label text-ink" style={{ letterSpacing: 1.2, opacity: 0.75 }}>
-        {topics.length} MỤC
+        {L(`${topics.length} MỤC`, `${topics.length} SETS`)}
       </Text>
 
       <View className="mt-3">
         <Grid columns={4} tabletColumns={2} mobileColumns={1} gap={16}>
           {topics.map((topic) => (
-            <TopicCard key={topic.id} topic={topic} chunk={step.chunk} />
+            <TopicCard key={topic.id} topic={topic} chunk={step.chunk} structure={step.id === 'structure'} />
           ))}
         </Grid>
       </View>
@@ -125,23 +142,31 @@ export default function TranslationStepScreen() {
   );
 }
 
-function TopicCard({ topic, chunk }: { topic: PathTopic; chunk: number }) {
+function TopicCard({ topic, chunk, structure }: { topic: PathTopic; chunk: number; structure: boolean }) {
   const sessions = useSentenceStore((s) => s.sessions);
+  const { L, en } = useL();
+  const structureEn = en && structure ? STRUCTURE_EN[topic.id] : undefined;
   const done = useMemo(
     () => (topic.setId ? sessions.filter((x) => x.mode === 'translation' && x.setId === topic.setId).length : 0),
     [sessions, topic.setId],
   );
-  const meta: { icon: 'list' | 'grid'; label: string }[] = [{ icon: 'list', label: `${topic.units} lượt` }];
-  if (chunk > 1) meta.push({ icon: 'grid', label: `${chunk} câu mỗi lượt` });
+  const meta: { icon: 'list' | 'grid'; label: string }[] = [{ icon: 'list', label: L(`${topic.units} lượt`, `${topic.units} rounds`) }];
+  if (chunk > 1) meta.push({ icon: 'grid', label: L(`${chunk} câu mỗi lượt`, `${chunk} sentences per round`) });
 
   return (
     <LessonCard
       number={topic.index}
       level={topic.level ?? 'B1'}
-      levelLabel={topic.level ? SENTENCE_DIFFICULTY_LABEL[topic.level] : 'Cấu trúc câu'}
+      levelLabel={
+        topic.level
+          ? en
+            ? (DIFFICULTY_EN[topic.level] ?? SENTENCE_DIFFICULTY_LABEL[topic.level])
+            : SENTENCE_DIFFICULTY_LABEL[topic.level]
+          : L('Cấu trúc câu', 'Sentence structure')
+      }
       icon="languages"
-      title={topic.title}
-      blurb={topic.blurb}
+      title={structureEn ?? topic.title}
+      blurb={structureEn ? `Every ${structureEn.toLowerCase()} sentence in the bank, drawn from all topics.` : topic.blurb}
       meta={meta}
       done={done}
       visual={(tone, active) => <BilingualLines pairs={topic.sample} tone={tone} active={active} />}

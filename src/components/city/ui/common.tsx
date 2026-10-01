@@ -1,11 +1,12 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { catalogItem, ZONE_INFO, type CatalogBuilding, type SkillMetric } from '@/data/city/catalog';
 import { MATERIAL_INFO, MATERIAL_KINDS, type Materials } from '@/services/city/materials';
 import type { PlaceReason } from '@/services/city/placement';
 import { levelForXp } from '@/services/game/rules';
-import { useT, type Translate } from '@/i18n/useT';
-import type { MessageKey } from '@/i18n';
+import type { Translate } from '@/i18n/useT';
+import { translate, type MessageKey } from '@/i18n';
+import { useLocale } from '@/i18n/useL';
 import { useGameStore } from '@/store/useGameStore';
 import { useSentenceStore } from '@/store/useSentenceStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -17,9 +18,14 @@ import { CG } from './theme';
 
 export type Named = { vi: string; en: string };
 
-/** `t` + chọn tên hai thứ tiếng trong dữ liệu (catalog, vật liệu, công đoạn). */
+/**
+ * `t` + chọn tên hai thứ tiếng trong dữ liệu (catalog, vật liệu, công đoạn).
+ * Theo đúng ngôn ngữ chung của app (nút VI/EN), qua `useLocale()` để lượt vẽ
+ * đầu vẫn là tiếng Việt như bản dựng máy chủ.
+ */
 export function useL(): { t: Translate; L: (o: Named) => string; locale: 'vi' | 'en' } {
-  const { t, locale } = useT();
+  const locale = useLocale();
+  const t = useCallback<Translate>((key, params) => translate(locale, key, params), [locale]);
   return { t, locale, L: (o) => (locale === 'en' ? o.en : o.vi) };
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LanguageSwitch } from './LanguageSwitch';
 import { Pressable, Text, View } from 'react-native';
 
 import { router } from 'expo-router';
@@ -7,6 +8,7 @@ import { Logo } from './Logo';
 import { Icon } from '@/components/ui/Icon';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Thanh đầu trang CHỈ dùng ở khổ hẹp.
@@ -17,13 +19,15 @@ import { color } from '@/theme/tokens';
 export function MobileHeader() {
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
   const name = useDisplayName();
+  const { L } = useL();
 
   return (
     <View className="flex-row items-center justify-between border-b border-border bg-surface px-4 py-3">
       <Logo compact />
 
       <View className="flex-row items-center gap-2">
-        <Pressable accessibilityRole="button" accessibilityLabel="Thông báo" className="p-1.5">
+        <LanguageSwitch compact />
+        <Pressable accessibilityRole="button" accessibilityLabel={L('Thông báo', 'Notifications')} className="p-1.5">
           <View>
             <Icon name="bell" size={20} color={color.muted} />
             <View className="absolute right-0 top-0 h-2 w-2 rounded-pill bg-danger" />
@@ -31,7 +35,7 @@ export function MobileHeader() {
         </Pressable>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={signedIn ? 'Tài khoản' : 'Đăng nhập'}
+          accessibilityLabel={signedIn ? L('Tài khoản', 'Account') : L('Đăng nhập', 'Sign in')}
           onPress={() => router.push((signedIn ? '/settings' : '/auth/sign-in') as never)}
           className="h-9 w-9 items-center justify-center rounded-pill bg-accent-100"
         >

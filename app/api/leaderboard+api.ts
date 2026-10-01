@@ -4,6 +4,7 @@ import { anonymousName, displayableName } from '@/services/gamification/display-
 import { goldenBoard, type DayStatsLite } from '@/services/gamification/golden';
 import { endOfPreviousMonth, monthKey } from '@/services/gamification/monthly';
 import { findItem, type ShopItemKind } from '@/services/gamification/shop';
+import { errorText } from '@/lib/server-locale';
 
 /**
  * GET /api/leaderboard — bảng xếp hạng điểm THÁNG NÀY, kèm top 10 tháng trước
@@ -37,7 +38,7 @@ function known(id: string | null | undefined, kinds: ShopItemKind[]): string | n
   return item && kinds.includes(item.kind) ? item.id : null;
 }
 
-export async function GET(): Promise<Response> {
+export async function GET(request: Request): Promise<Response> {
   try {
     const admin = getSupabaseAdmin();
 
@@ -131,7 +132,7 @@ export async function GET(): Promise<Response> {
     });
   } catch (err) {
     return Response.json(
-      { error: err instanceof Error ? err.message : 'Không đọc được bảng xếp hạng.' },
+      { error: errorText(request, err, 'Không đọc được bảng xếp hạng.', 'Could not load the leaderboard.') },
       { status: 500 },
     );
   }

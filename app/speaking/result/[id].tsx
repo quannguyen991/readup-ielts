@@ -16,15 +16,26 @@ import { speakSentence } from '@/services/shadow/speech';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useGameStore } from '@/store/useGameStore';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 const CRIT_COLOR: Record<CriterionKey, string> = { fc: SPK.blue, lr: SPK.teal, gr: SPK.amber, pr: SPK.rose };
 const CRIT_ICON: Record<CriterionKey, React.ComponentProps<typeof Icon>['name']> = { fc: 'trending', lr: 'letters', gr: 'pencil', pr: 'mic' };
 
 /** Lỗi máy chủ đôi khi kèm chi tiết từng proxy — người học chỉ cần một câu dễ hiểu. */
 function friendly(message: string, code?: string): string {
+  const lc = currentLocale();
   if (code === 'server_error' || code === 'timeout' || code === 'network' || code === 'rate_limited')
-    return 'AI đang bận hoặc tạm lỗi nên chưa chấm được. Lượt AI của bạn đã được hoàn lại — thử lại sau ít phút.';
-  if (code === 'bad_response') return 'AI trả về phiếu chấm không hợp lệ. Lượt AI đã được hoàn lại — thử chấm lại nhé.';
+    return pick(
+      lc,
+      'AI đang bận hoặc tạm lỗi nên chưa chấm được. Lượt AI của bạn đã được hoàn lại — thử lại sau ít phút.',
+      "The AI is busy or hit an error, so it couldn't grade yet. Your AI credit has been refunded — try again in a few minutes.",
+    );
+  if (code === 'bad_response')
+    return pick(
+      lc,
+      'AI trả về phiếu chấm không hợp lệ. Lượt AI đã được hoàn lại — thử chấm lại nhé.',
+      'The AI returned an invalid score sheet. Your AI credit has been refunded — please try grading again.',
+    );
   return message.split('\n')[0]!.slice(0, 300);
 }
 
@@ -38,6 +49,7 @@ function friendly(message: string, code?: string): string {
  * chấm lại là việc người học bấm, không phải vòng lặp tự động tốn lượt.
  */
 export default function SpeakingResult() {
+  const { L } = useL();
   const { id = '' } = useLocalSearchParams<{ id: string }>();
   const attempt = useSpeakingStore((s) => s.attempts.find((a) => a.id === id));
   const accessToken = useAuthStore((s) => s.session?.access_token ?? null);
@@ -70,7 +82,7 @@ export default function SpeakingResult() {
         const data = (await res.json().catch(() => ({}))) as { grade?: SpeakingGrade; error?: string; code?: string };
         if (!res.ok || !data.grade) {
           if (res.status === 401) setNeedLogin(true);
-          throw Object.assign(new Error(data.error ?? 'Chấm bài thất bại.'), { code: data.code });
+          throw Object.assign(new Error(data.error ?? L('Chấm bài thất bại.', 'Grading failed.')), { code: data.code });
         }
         return data.grade;
       })
@@ -100,10 +112,10 @@ export default function SpeakingResult() {
 
   if (!attempt) {
     return (
-      <StudyFrame backHref="/speaking" title="Phiếu điểm">
+      <StudyFrame backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Lượt này không còn trong máy.</Text>
-          <Button className="mt-4 self-start" label="Về phòng luyện nói" onPress={() => router.replace('/speaking' as never)} />
+          <Text className="font-strong text-cardTitle text-ink">{L('Lượt này không còn trong máy.', 'This session is no longer on this device.')}</Text>
+          <Button className="mt-4 self-start" label={L('Về phòng luyện nói', 'Back to the speaking room')} onPress={() => router.replace('/speaking' as never)} />
         </StudyCard>
       </StudyFrame>
     );
@@ -115,7 +127,7 @@ export default function SpeakingResult() {
   const tone = bandTone(overall);
 
   return (
-    <StudyFrame backHref="/speaking" title="Phiếu điểm">
+    <StudyFrame backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
       <View className="gap-4">
         {/* ------------------------------------------------ band tổng */}
         <StudyCard>
@@ -126,12 +138,13 @@ export default function SpeakingResult() {
               </Motion>
             </View>
             <View className="min-w-0 flex-1" style={{ minWidth: 180 }}>
-              <Label text={attempt.typed ? 'Bài gõ phím' : 'Band ước lượng'} color={attempt.typed ? SPK.amberSoft : '#F3E6C8'} ink={attempt.typed ? '#92400E' : '#5A4318'} size={13} />
+              <Label text={attempt.typed ? L('Bài gõ phím', 'Typed answers') : L('Band ước lượng', 'Estimated band')} color={attempt.typed ? SPK.amberSoft : '#F3E6C8'} ink={attempt.typed ? '#92400E' : '#5A4318'} size={13} />
               <Text className="mt-2 font-strong text-body text-ink" numberOfLines={2}>
                 {MODE_LABEL[attempt.mode]} · {attempt.titleVi}
               </Text>
               <Text className="font-sans text-label" style={{ color: SPK.muted }}>
-                {fmtDate(attempt.finishedAt)} · {attempt.answers.length} câu · {m.words} từ
+                {fmtDate(attempt.finishedAt)} ·{' '}
+                {L(`${attempt.answers.length} câu · ${m.words} từ`, `${attempt.answers.length} questions · ${m.words} words`)}
               </Text>
             </View>
             <View className="items-center justify-center rounded-3xl px-5 py-3" style={{ backgroundColor: tone.bg, minWidth: 110 }}>
@@ -146,29 +159,44 @@ export default function SpeakingResult() {
 
           <View className="mt-4 gap-2">
             {attempt.typed ? (
-              <Notice tone="warn">Bài này GÕ PHÍM nên không phải điểm Speaking: không có Fluency, Pronunciation và band tổng. AI chỉ chấm từ vựng và ngữ pháp.</Notice>
+              <Notice tone="warn">
+                {L(
+                  'Bài này GÕ PHÍM nên không phải điểm Speaking: không có Fluency, Pronunciation và band tổng. AI chỉ chấm từ vựng và ngữ pháp.',
+                  'These answers were TYPED, so this is not a Speaking score: no Fluency, Pronunciation or overall band. The AI only grades vocabulary and grammar.',
+                )}
+              </Notice>
             ) : null}
             {loading ? (
               <View className="flex-row items-center gap-3 rounded-2xl p-3.5" style={{ backgroundColor: SPK.blueSoft }}>
                 <ActivityIndicator color={SPK.blue} />
                 <Text className="min-w-0 flex-1 font-sans text-body" style={{ color: '#5A4318' }}>
-                  AI đang chấm theo 4 tiêu chí… thường mất 10–30 giây. Chỉ số đo tại máy ở bên dưới đã có sẵn.
+                  {L(
+                    'AI đang chấm theo 4 tiêu chí… thường mất 10–30 giây. Chỉ số đo tại máy ở bên dưới đã có sẵn.',
+                    'The AI is grading on the 4 criteria… usually 10–30 seconds. The on-device metrics below are ready now.',
+                  )}
                 </Text>
               </View>
             ) : null}
             {!loading && needLogin && !g ? (
               <View className="gap-2">
-                <Notice tone="info">Đăng nhập để AI chấm band theo 4 tiêu chí. Chỉ số đo tại máy bên dưới vẫn xem được khi chưa đăng nhập.</Notice>
+                <Notice tone="info">
+                  {L(
+                    'Đăng nhập để AI chấm band theo 4 tiêu chí. Chỉ số đo tại máy bên dưới vẫn xem được khi chưa đăng nhập.',
+                    'Sign in to have the AI grade your band on the 4 criteria. The on-device metrics below are visible without signing in.',
+                  )}
+                </Notice>
                 <View className="flex-row flex-wrap gap-2">
-                  <Button variant="brand" size="sm" label="Đăng nhập" onPress={() => router.push('/auth/sign-in' as never)} />
-                  <Button variant="outline" size="sm" label="Đã đăng nhập, chấm ngay" onPress={() => grade(attempt)} />
+                  <Button variant="brand" size="sm" label={L('Đăng nhập', 'Sign in')} onPress={() => router.push('/auth/sign-in' as never)} />
+                  <Button variant="outline" size="sm" label={L('Đã đăng nhập, chấm ngay', "I'm signed in, grade now")} onPress={() => grade(attempt)} />
                 </View>
               </View>
             ) : null}
             {!loading && !needLogin && attempt.gradeError && !g ? (
               <View className="gap-2">
-                <Notice tone="error">{attempt.gradeError} Chỉ số đo tại máy bên dưới vẫn đầy đủ.</Notice>
-                <Button className="self-start" variant="outline" size="sm" label="Chấm lại bằng AI" iconLeft="refresh" onPress={() => grade(attempt)} />
+                <Notice tone="error">
+                  {attempt.gradeError} {L('Chỉ số đo tại máy bên dưới vẫn đầy đủ.', 'The on-device metrics below are still complete.')}
+                </Notice>
+                <Button className="self-start" variant="outline" size="sm" label={L('Chấm lại bằng AI', 'Regrade with AI')} iconLeft="refresh" onPress={() => grade(attempt)} />
               </View>
             ) : null}
             {g?.summaryVi ? (
@@ -200,7 +228,7 @@ export default function SpeakingResult() {
               <>
                 <View className="flex-row items-center gap-2">
                   <SealIcon name="star" color={SPK.green} size={30} />
-                  <Text className="font-heavy text-cardTitle text-ink">Điểm mạnh</Text>
+                  <Text className="font-heavy text-cardTitle text-ink">{L('Điểm mạnh', 'Strengths')}</Text>
                 </View>
                 <View className="mt-2 gap-1.5">
                   {g.strengths.map((s) => (
@@ -215,7 +243,7 @@ export default function SpeakingResult() {
               <>
                 <View className="mt-5 flex-row items-center gap-2">
                   <SealIcon name="pencil" color={SPK.amber} size={30} />
-                  <Text className="font-heavy text-cardTitle text-ink">Sửa ngay ở lượt sau</Text>
+                  <Text className="font-heavy text-cardTitle text-ink">{L('Sửa ngay ở lượt sau', 'Fix these next time')}</Text>
                 </View>
                 <View className="mt-3 gap-3">
                   {g.fixes.map((f, i) => (
@@ -228,7 +256,7 @@ export default function SpeakingResult() {
                       </Text>
                       <Text className="mt-1 font-sans text-label" style={{ color: SPK.muted, lineHeight: 18 }}>
                         {f.problemVi}
-                        {f.questionIndex != null ? ` (câu ${f.questionIndex + 1})` : ''}
+                        {f.questionIndex != null ? L(` (câu ${f.questionIndex + 1})`, ` (question ${f.questionIndex + 1})`) : ''}
                       </Text>
                     </View>
                   ))}
@@ -242,29 +270,57 @@ export default function SpeakingResult() {
         <View className="rounded-[22px] bg-white p-5" style={SPK_CARD}>
           <View className="flex-row items-center gap-2">
             <SealIcon name="gauge" color={SPK.blue} size={30} />
-            <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">Chỉ số đo tại máy</Text>
-            <Label text="Không cần AI" color={SPK.greenSoft} ink="#166534" size={12} tilt={3} />
+            <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">{L('Chỉ số đo tại máy', 'On-device metrics')}</Text>
+            <Label text={L('Không cần AI', 'No AI needed')} color={SPK.greenSoft} ink="#166534" size={12} tilt={3} />
           </View>
           <View className="mt-4 flex-row flex-wrap gap-2.5">
             <MetricTile
-              label="Tốc độ nói"
+              label={L('Tốc độ nói', 'Speaking rate')}
               value={m.wpm != null ? `${m.wpm}` : '—'}
-              hint={m.wpm != null ? 'từ/phút · trôi chảy thường 110–160' : attempt.typed ? 'bài gõ phím' : 'chưa đủ dữ liệu'}
+              hint={
+                m.wpm != null
+                  ? L('từ/phút · trôi chảy thường 110–160', 'words/min · fluent is usually 110–160')
+                  : attempt.typed
+                    ? L('bài gõ phím', 'typed answers')
+                    : L('chưa đủ dữ liệu', 'not enough data')
+              }
               tone={m.wpm == null ? undefined : m.wpm < 90 ? SPK.amber : m.wpm > 190 ? SPK.amber : SPK.green}
             />
-            <MetricTile label="Từ đệm" value={`${m.fillers}`} hint={`${m.fillersPer100} trên 100 từ`} tone={m.fillersPer100 > 5 ? SPK.amber : undefined} />
-            <MetricTile label="Ngắt ≥ 2 giây" value={attempt.typed ? '—' : `${m.longPauses}`} hint="giữa lúc đang nói" />
-            <MetricTile label="Độ dài trung bình" value={`${m.avgWords}`} hint={`từ/câu · ${m.shortAnswers} câu quá ngắn`} tone={m.shortAnswers ? SPK.amber : undefined} />
-            <MetricTile label="Độ đa dạng từ" value={m.lexicalVariety != null ? `${Math.round(m.lexicalVariety * 100)}%` : '—'} hint="từ khác nhau / 50 từ liên tiếp" />
             <MetricTile
-              label="Độ rõ máy nghe"
+              label={L('Từ đệm', 'Fillers')}
+              value={`${m.fillers}`}
+              hint={L(`${m.fillersPer100} trên 100 từ`, `${m.fillersPer100} per 100 words`)}
+              tone={m.fillersPer100 > 5 ? SPK.amber : undefined}
+            />
+            <MetricTile
+              label={L('Ngắt ≥ 2 giây', 'Pauses ≥ 2 s')}
+              value={attempt.typed ? '—' : `${m.longPauses}`}
+              hint={L('giữa lúc đang nói', 'mid-speech')}
+            />
+            <MetricTile
+              label={L('Độ dài trung bình', 'Average length')}
+              value={`${m.avgWords}`}
+              hint={L(`từ/câu · ${m.shortAnswers} câu quá ngắn`, `words/answer · ${m.shortAnswers} too short`)}
+              tone={m.shortAnswers ? SPK.amber : undefined}
+            />
+            <MetricTile
+              label={L('Độ đa dạng từ', 'Word variety')}
+              value={m.lexicalVariety != null ? `${Math.round(m.lexicalVariety * 100)}%` : '—'}
+              hint={L('từ khác nhau / 50 từ liên tiếp', 'distinct words / 50 in a row')}
+            />
+            <MetricTile
+              label={L('Độ rõ máy nghe', 'Recognition clarity')}
               value={m.avgConfidence != null ? `${Math.round(m.avgConfidence * 100)}%` : '—'}
-              hint={m.lowConfShare != null ? `${Math.round(m.lowConfShare * 100)}% từ nghe không chắc` : 'trình duyệt không báo'}
+              hint={
+                m.lowConfShare != null
+                  ? L(`${Math.round(m.lowConfShare * 100)}% từ nghe không chắc`, `${Math.round(m.lowConfShare * 100)}% of words uncertain`)
+                  : L('trình duyệt không báo', 'not reported by browser')
+              }
             />
           </View>
           {m.repeated.length ? (
             <View className="mt-4">
-              <Text className="font-strong text-body text-ink">Từ bạn lặp nhiều</Text>
+              <Text className="font-strong text-body text-ink">{L('Từ bạn lặp nhiều', 'Words you repeat a lot')}</Text>
               <View className="mt-2 flex-row flex-wrap gap-2">
                 {m.repeated.map((r) => (
                   <View key={r.word} className="rounded-pill px-3 py-1" style={{ backgroundColor: SPK.amberSoft }}>
@@ -277,7 +333,10 @@ export default function SpeakingResult() {
             </View>
           ) : null}
           <Text className="mt-4 font-sans text-label" style={{ color: SPK.muted, lineHeight: 18 }}>
-            Mọi chỉ số đọc từ bản chữ của bộ nhận giọng, không từ âm thanh. Bộ nhận giọng hay lược bớt “uh/um”, nên số từ đệm thật có thể cao hơn; khoảng ngắt ước từ nhịp máy nghe thêm chữ.
+            {L(
+              'Mọi chỉ số đọc từ bản chữ của bộ nhận giọng, không từ âm thanh. Bộ nhận giọng hay lược bớt “uh/um”, nên số từ đệm thật có thể cao hơn; khoảng ngắt ước từ nhịp máy nghe thêm chữ.',
+              'All metrics come from the speech recogniser’s text, not the audio. Recognisers often drop “uh/um”, so your real filler count may be higher; pauses are estimated from when new words arrive.',
+            )}
           </Text>
         </View>
 
@@ -289,7 +348,7 @@ export default function SpeakingResult() {
         </View>
 
         <View className="flex-row flex-wrap gap-3">
-          <Button variant="brand" label="Luyện lượt mới" iconRight="arrow-right" onPress={() => router.replace('/speaking' as never)} />
+          <Button variant="brand" label={L('Luyện lượt mới', 'Start a new session')} iconRight="arrow-right" onPress={() => router.replace('/speaking' as never)} />
         </View>
       </View>
     </StudyFrame>
@@ -297,6 +356,7 @@ export default function SpeakingResult() {
 }
 
 function CriterionCard({ k, en, vi, grade, attempt }: { k: CriterionKey; en: string; vi: string; grade: SpeakingGrade; attempt: SpeakingAttempt }) {
+  const { L, en: isEn } = useL();
   const c = grade.criteria[k];
   const tone = bandTone(c.band);
   const m = attempt.metrics;
@@ -304,19 +364,27 @@ function CriterionCard({ k, en, vi, grade, attempt }: { k: CriterionKey; en: str
     k !== 'pr'
       ? null
       : grade.pronunciationBasis === 'clarity+ai'
-        ? `Ước lượng chủ yếu từ độ rõ máy nghe được (${m.avgConfidence != null ? Math.round(m.avgConfidence * 100) : '?'}% tin cậy, ${m.lowConfShare != null ? Math.round(m.lowConfShare * 100) : '?'}% từ nghe không chắc). AI không nghe giọng bạn — chỉ để tham khảo.`
+        ? L(
+            `Ước lượng chủ yếu từ độ rõ máy nghe được (${m.avgConfidence != null ? Math.round(m.avgConfidence * 100) : '?'}% tin cậy, ${m.lowConfShare != null ? Math.round(m.lowConfShare * 100) : '?'}% từ nghe không chắc). AI không nghe giọng bạn — chỉ để tham khảo.`,
+            `Estimated mainly from recognition clarity (${m.avgConfidence != null ? Math.round(m.avgConfidence * 100) : '?'}% confidence, ${m.lowConfShare != null ? Math.round(m.lowConfShare * 100) : '?'}% of words uncertain). The AI doesn't hear your voice — for reference only.`,
+          )
         : grade.pronunciationBasis === 'text-only'
-          ? 'Trình duyệt không báo độ tin cậy, nên chỉ đoán từ bản chữ; điểm này bị giới hạn không vượt các tiêu chí khác.'
-          : 'Bài gõ phím — không chấm phát âm.';
+          ? L(
+              'Trình duyệt không báo độ tin cậy, nên chỉ đoán từ bản chữ; điểm này bị giới hạn không vượt các tiêu chí khác.',
+              "The browser didn't report confidence, so this is guessed from the text only; it's capped so it can't exceed the other criteria.",
+            )
+          : L('Bài gõ phím — không chấm phát âm.', 'Typed answers — pronunciation not graded.');
   return (
     <View className="rounded-[22px] bg-white p-4" style={[SPK_CARD, { flexGrow: 1, flexShrink: 1, flexBasis: 300 }]}>
       <View className="flex-row items-center gap-2.5">
         <SealIcon name={CRIT_ICON[k]} color={CRIT_COLOR[k]} size={34} />
         <View className="min-w-0 flex-1">
           <Text className="font-heavy text-body text-ink">{en}</Text>
-          <Text className="font-sans text-label" style={{ color: SPK.muted }}>
-            {vi}
-          </Text>
+          {isEn ? null : (
+            <Text className="font-sans text-label" style={{ color: SPK.muted }}>
+              {vi}
+            </Text>
+          )}
         </View>
         <View className="items-center justify-center rounded-2xl px-3 py-1.5" style={{ backgroundColor: tone.bg, minWidth: 58 }}>
           <Text className="font-heavy" style={{ fontSize: 22, lineHeight: 28, color: tone.fg }}>
@@ -360,6 +428,7 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
   const stopRef = useRef<(() => void) | null>(null);
   useEffect(() => () => stopRef.current?.(), []);
   const short = a.metrics.words < MIN_WORDS[a.part];
+  const { L } = useL();
 
   const play = () => {
     if (!sample) return;
@@ -378,19 +447,21 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
       <View className="flex-row flex-wrap items-center gap-2">
         <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: SPK.blueSoft }}>
           <Text className="font-strong text-label" style={{ color: SPK.blue }}>
-            Câu {index + 1} · Part {a.part}
+            {L(`Câu ${index + 1} · Part ${a.part}`, `Question ${index + 1} · Part ${a.part}`)}
           </Text>
         </View>
         <Text className="font-sans text-label" style={{ color: short ? SPK.amber : SPK.muted }}>
-          {a.metrics.words} từ{a.metrics.wpm != null ? ` · ${a.metrics.wpm} từ/phút` : ''}
-          {a.metrics.fillers ? ` · ${a.metrics.fillers} đệm` : ''}
-          {short ? ' · hơi ngắn' : ''}
+          {L(`${a.metrics.words} từ`, `${a.metrics.words} words`)}
+          {a.metrics.wpm != null ? L(` · ${a.metrics.wpm} từ/phút`, ` · ${a.metrics.wpm} wpm`) : ''}
+          {a.metrics.fillers ? L(` · ${a.metrics.fillers} đệm`, ` · ${a.metrics.fillers} fillers`) : ''}
+          {short ? L(' · hơi ngắn', ' · a bit short') : ''}
         </Text>
       </View>
       <Text className="mt-2 font-strong text-bodyLg text-ink">{a.question}</Text>
       {a.notes ? (
         <Text className="mt-2 font-sans text-label" style={{ color: '#78350F' }}>
-          Ghi chú chuẩn bị: {a.notes}
+          {L('Ghi chú chuẩn bị: ', 'Prep notes: ')}
+          {a.notes}
         </Text>
       ) : null}
       <Text className="mt-3 rounded-2xl p-3 font-sans text-body text-ink" style={{ backgroundColor: SPK.panel, lineHeight: 23 }}>
@@ -416,9 +487,12 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
           <View className="flex-row items-center gap-2">
             <Icon name="sparkle" size={16} color={SPK.teal} />
             <Text className="min-w-0 flex-1 font-strong text-body" style={{ color: SPK.teal }}>
-              Bản hay hơn
+              {L('Bản hay hơn', 'Better version')}
             </Text>
-            <Pressable accessibilityRole="button" accessibilityLabel={playing ? 'Dừng đọc' : 'Nghe bản hay hơn'} onPress={play} className="h-9 w-9 items-center justify-center rounded-pill bg-white">
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={playing ? L('Dừng đọc', 'Stop') : L('Nghe bản hay hơn', 'Hear the better version')}
+              onPress={play} className="h-9 w-9 items-center justify-center rounded-pill bg-white">
               <Icon name={playing ? 'close' : 'volume'} size={17} color={SPK.teal} />
             </Pressable>
           </View>
@@ -437,7 +511,7 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
         <Button
           variant="outline"
           size="sm"
-          label="Luyện lại câu này"
+          label={L('Luyện lại câu này', 'Practise this question again')}
           iconLeft="refresh"
           onPress={() => router.push(`/speaking/room?mode=q&q=${encodeURIComponent(a.questionId)}${attempt.typed ? '&typed=1' : ''}` as never)}
         />
@@ -445,7 +519,7 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
           <Button
             variant="brandOutline"
             size="sm"
-            label="Nói lại bản hay hơn"
+            label={L('Nói lại bản hay hơn', 'Say the better version')}
             iconLeft="mic"
             onPress={() => router.push(`/speaking/room?mode=q&q=${encodeURIComponent(a.questionId)}&sample=1` as never)}
           />

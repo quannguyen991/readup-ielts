@@ -6,6 +6,7 @@ import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTi
 import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
 import { SkyEffect } from '@/components/effects/SkyEffect';
 import type { StudyWord } from '@/services/vocab/topic-study';
+import { useL } from '@/i18n/useL';
 
 /**
  * Một thẻ hai mặt, xoay quanh trục Y khi lật. Dùng chung cho dải thẻ ở trang bộ
@@ -30,6 +31,7 @@ export function FlipCard({
   cardKey?: string;
   height?: number;
 }) {
+  const { L } = useL();
   const rot = useSharedValue(flipped ? 1 : 0);
 
   useLayoutEffect(() => {
@@ -64,7 +66,7 @@ export function FlipCard({
   };
 
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel="Lật thẻ" onPress={onFlip} style={{ height }}>
+    <Pressable accessibilityRole="button" accessibilityLabel={L('Lật thẻ', 'Flip card')} onPress={onFlip} style={{ height }}>
       {/* Bầu trời sáng có sao băng: mặt trước đủ, mặt sau nhạt cho dễ đọc chữ. */}
       <Animated.View style={[face, frontStyle, { alignItems: 'center', justifyContent: 'center' }]}>
         <SkyEffect />
@@ -94,9 +96,10 @@ export function WordFace({ word, hint }: { word: StudyWord; hint?: string }) {
 
 /** Mặt thẻ chỉ có nghĩa tiếng Việt — cho chiều Việt → Anh. */
 export function MeaningFace({ word, hint }: { word: StudyWord; hint?: string }) {
+  const { L } = useL();
   return (
     <>
-      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">Từ tiếng Anh là gì?</Text>
+      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{L('Từ tiếng Anh là gì?', "What's the English word?")}</Text>
       <Text className="mt-3 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">{word.pos}</Text>
       {hint ? <Text className="absolute bottom-5 font-sans text-label text-subtle">{hint}</Text> : null}
@@ -106,9 +109,10 @@ export function MeaningFace({ word, hint }: { word: StudyWord; hint?: string }) 
 
 /** Mặt thẻ chỉ có giọng đọc và phiên âm — cho chiều nghe. */
 export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
+  const { L } = useL();
   return (
     <>
-      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">Nghe và đoán từ</Text>
+      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{L('Nghe và đoán từ', 'Listen and guess the word')}</Text>
       <View className="mt-4">
         <SpeakButton text={word.word} rate={0.85} size={26} />
       </View>
@@ -158,6 +162,7 @@ function Chips({ words, tone, bg }: { words: string[]; tone: string; bg: string 
  * (Bản trước để câu ví dụ và cụm từ trôi không nhãn, người học không biết đó là gì.)
  */
 export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boolean }) {
+  const { L } = useL();
   return (
     <View>
       {showWord ? (
@@ -173,7 +178,7 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
       <View className="mt-4 gap-3.5">
         {word.example ? (
           <View>
-            <Label>Ví dụ</Label>
+            <Label>{L('Ví dụ', 'Example')}</Label>
             <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#FCF9F4' }}>
               <ExampleLine example={word.example} word={word.word} />
             </View>
@@ -181,19 +186,19 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
         ) : null}
         {word.synonyms?.length ? (
           <View>
-            <Label>Đồng nghĩa</Label>
+            <Label>{L('Đồng nghĩa', 'Synonyms')}</Label>
             <Chips words={word.synonyms} tone="#15803D" bg="#ECFDF3" />
           </View>
         ) : null}
         {word.antonyms?.length ? (
           <View>
-            <Label>Trái nghĩa</Label>
+            <Label>{L('Trái nghĩa', 'Antonyms')}</Label>
             <Chips words={word.antonyms} tone="#BE123C" bg="#FFF1F2" />
           </View>
         ) : null}
         {word.collocation ? (
           <View>
-            <Label>Hay đi cùng</Label>
+            <Label>{L('Hay đi cùng', 'Collocations')}</Label>
             <Text className="font-semi text-body text-ink">{word.collocation}</Text>
           </View>
         ) : null}

@@ -16,12 +16,15 @@ import { CuteStar, CuteTrophy, Motion, Sparkles } from '@/components/illust/Cute
 import { RailScene } from '@/services/rail/scene';
 import { localClock, nextOnRoute, routeById, routeOf, STATIONS, stationById, timeOfDayAt } from '@/services/rail/stations';
 import { useRailStore } from '@/store/useRailStore';
+import { useL } from '@/i18n/useL';
+import { routeName, stationName } from './rail-i18n';
 
 const INK = '#FFFFFF';
 const MUTED = 'rgba(255,255,255,0.74)';
 
 export function QuestJourneyHero() {
   const hydrated = useHydrated();
+  const { L, en } = useL();
   const st = useRailStore();
   const { width } = useWindowDimensions();
   const wide = width >= 900;
@@ -88,13 +91,13 @@ export function QuestJourneyHero() {
         <canvas
           ref={canvasRef}
           role="img"
-          aria-label={`Đoàn tàu đang chạy qua ${station.vi}`}
+          aria-label={L(`Đoàn tàu đang chạy qua ${station.vi}`, `The train passing through ${station.en}`)}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 100%', imageRendering: 'pixelated' }}
         />
         <View style={{ position: 'absolute', left: 16, top: 14, flexDirection: 'row', gap: 8 }}>
           <View style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(10,18,34,0.7)' }}>
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#FDE68A' }}>
-              ĐANG Ở {station.vi.toUpperCase()}
+              {L('ĐANG Ở', 'NOW IN')} {stationName(station, en).toUpperCase()}
             </Text>
           </View>
         </View>
@@ -105,13 +108,13 @@ export function QuestJourneyHero() {
         <Sparkles count={6} color="#FDE68A" />
         <View style={{ alignSelf: 'flex-start', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(250,204,21,0.4)', backgroundColor: 'rgba(250,204,21,0.1)', paddingHorizontal: 12, paddingVertical: 5 }}>
           <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#FDE68A' }}>
-            BAND 9 QUEST · HÀNH TRÌNH HỌC
+            {L('BAND 9 QUEST · HÀNH TRÌNH HỌC', 'BAND 9 QUEST · LEARNING JOURNEY')}
           </Text>
         </View>
         <Text className="font-heavy" style={{ fontSize: wide ? 30 : 24, lineHeight: wide ? 36 : 30, color: INK }}>
-          Học tới đâu, <Text style={{ color: '#FACC15' }}>tàu chạy tới đó.</Text>
+          {L('Học tới đâu, ', 'The more you learn, ')}<Text style={{ color: '#FACC15' }}>{L('tàu chạy tới đó.', 'the further the train goes.')}</Text>
         </Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }} accessibilityLabel={`Mỗi câu đúng tàu tiến một quãng; ${st.perStation} câu đúng tới thành phố mới`}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }} accessibilityLabel={L(`Mỗi câu đúng tàu tiến một quãng; ${st.perStation} câu đúng tới thành phố mới`, `Each correct answer moves the train forward; ${st.perStation} correct answers reach a new city`)}>
           <Motion kind="float">
             <CuteStar size={40} />
           </Motion>
@@ -135,29 +138,29 @@ export function QuestJourneyHero() {
         {/* Tuyến dạng sơ đồ: chấm đã qua / đang ở / chưa tới */}
         <View>
           <Text className="font-semi" style={{ fontSize: 12, color: MUTED }}>
-            {route.glyph} Tuyến {route.vi} · ga {hereIdx + 1}/{route.stops.length}
+            {route.glyph} {L('Tuyến', 'Line:')} {routeName(route, en)} · {L('ga', 'stop')} {hereIdx + 1}/{route.stops.length}
           </Text>
           <View style={{ marginTop: 8, flexDirection: 'row', alignItems: 'center' }}>
             {route.stops.map((id, i) => (
               <React.Fragment key={id}>
                 {i > 0 ? <View style={{ flex: 1, height: 3, backgroundColor: i <= hereIdx ? route.color : 'rgba(255,255,255,0.18)' }} /> : null}
                 <View
-                  accessibilityLabel={stationById(id).vi}
+                  accessibilityLabel={stationName(stationById(id), en)}
                   style={{ width: i === hereIdx ? 14 : 9, height: i === hereIdx ? 14 : 9, borderRadius: 7, backgroundColor: i <= hereIdx ? route.color : 'rgba(255,255,255,0.25)', borderWidth: i === hereIdx ? 3 : 0, borderColor: '#FFFFFF' }}
                 />
               </React.Fragment>
             ))}
           </View>
           <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            <Stat value={`🎫 ${stamps}/${STATIONS.length}`} label="dấu" />
-            <Stat value={`✓ ${Math.max(0, st.perStation - (hydrated ? st.toward : 0))}`} label={`→ ${next.vi}`} />
+            <Stat value={`🎫 ${stamps}/${STATIONS.length}`} label={L('dấu', 'stamps')} />
+            <Stat value={`✓ ${Math.max(0, st.perStation - (hydrated ? st.toward : 0))}`} label={`→ ${stationName(next, en)}`} />
           </View>
         </View>
 
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 4 }}>
-          {cta('🚆 Lên tàu học từ', '/quest/rail', true)}
-          {cta('Ôn bộ từ', '/vocabulary/topics')}
-          {cta('Chép chính tả', '/sentence/dictation')}
+          {cta(L('🚆 Lên tàu học từ', '🚆 Board the vocab train'), '/quest/rail', true)}
+          {cta(L('Ôn bộ từ', 'Review decks'), '/vocabulary/topics')}
+          {cta(L('Chép chính tả', 'Dictation'), '/sentence/dictation')}
         </View>
       </View>
     </View>

@@ -6,6 +6,7 @@ import type { ProbeDraft } from '@/services/proofloop/draft-schema';
 import { probeFor } from '@/services/proofloop/probe-table';
 import type { EvidenceMark, ProbeKind, ProofState } from '@/services/proofloop/types';
 import { Appear } from '@/components/motion/Motion';
+import { bi, useL, type Bi } from '@/i18n/useL';
 
 /**
  * Bảng chạy MỘT phép thử chẩn đoán.
@@ -25,29 +26,67 @@ import { Appear } from '@/components/motion/Motion';
  *    cho có.
  */
 
-const INTRO: Readonly<Record<ProbeKind, string>> = Object.freeze({
-  transfer:
-    'Đáp án đúng và bằng chứng khớp. Chưa xác nhận được là đã nắm — thử một câu ở chỗ khác xem sao.',
-  'evidence-reselect':
-    'Đáp án đúng, nhưng đoạn bạn khoanh chưa đỡ được đáp án đó. Chưa ghi nhận là đã hiểu. Làm một phép thử ngắn nhé.',
-  entailment:
-    'Bạn đã tìm ra đúng đoạn rồi — chỗ vướng nằm ở bước suy ra. Thử câu này.',
-  locate:
-    'Trước hết xem lại bước tìm chỗ đã, chưa bàn tới đáp án.',
+const INTRO: Readonly<Record<ProbeKind, Bi>> = Object.freeze({
+  transfer: {
+    vi: 'Đáp án đúng và bằng chứng khớp. Chưa xác nhận được là đã nắm — thử một câu ở chỗ khác xem sao.',
+    en: "Correct answer and matching evidence. Not confirmed as mastered yet — let's try a question somewhere else.",
+  },
+  'evidence-reselect': {
+    vi: 'Đáp án đúng, nhưng đoạn bạn khoanh chưa đỡ được đáp án đó. Chưa ghi nhận là đã hiểu. Làm một phép thử ngắn nhé.',
+    en: "Correct answer, but the part you marked doesn't support it. Not recorded as understood yet. Let's do a quick check.",
+  },
+  entailment: {
+    vi: 'Bạn đã tìm ra đúng đoạn rồi — chỗ vướng nằm ở bước suy ra. Thử câu này.',
+    en: 'You found the right part — the sticking point is the inference step. Try this one.',
+  },
+  locate: {
+    vi: 'Trước hết xem lại bước tìm chỗ đã, chưa bàn tới đáp án.',
+    en: "First, let's revisit finding the right place — the answer can wait.",
+  },
 });
 
-const FAIL_TEXT: Record<string, string> = {
-  'insufficient-evidence': 'Bài này không đủ căn cứ để ra một phép thử công bằng.',
-  'not-json': 'Chưa dựng được phép thử cho lượt này.',
-  unobserved: 'Lượt này chưa khoanh bằng chứng nên chưa có gì để làm rõ.',
-  'no-transfer-source': 'Chưa tìm được bài đọc khác cùng khổ để thử. Phép thử chuyển giao bắt buộc phải ở bài khác.',
-  'transfer-same-source': 'Câu dựng ra vẫn nằm trên chính bài cũ nên đã bị loại.',
-  'answerable-without-passage': 'Câu dựng ra trả lời được mà không cần đọc bài, nên đã bị loại.',
-  'stem-leaks-decisive-phrase': 'Câu dựng ra để lộ sẵn chữ quyết định trong đề nên đã bị loại.',
-  'evidence-paragraph-mismatch': 'Câu dựng ra chỉ sai đoạn chứa bằng chứng nên đã bị loại.',
-  'transfer-reuses-original-evidence': 'Câu dựng ra dùng lại đúng câu bằng chứng cũ nên đã bị loại.',
-  'transfer-reuses-original-stem': 'Câu dựng ra chỉ chép lại câu hỏi cũ nên đã bị loại.',
-  'duplicate-options': 'Câu dựng ra có hai phương án trùng nhau nên đã bị loại.',
+const FAIL_TEXT: Record<string, Bi> = {
+  'insufficient-evidence': {
+    vi: 'Bài này không đủ căn cứ để ra một phép thử công bằng.',
+    en: "This passage doesn't have enough grounds for a fair check.",
+  },
+  'not-json': { vi: 'Chưa dựng được phép thử cho lượt này.', en: "Couldn't build a check for this attempt." },
+  unobserved: {
+    vi: 'Lượt này chưa khoanh bằng chứng nên chưa có gì để làm rõ.',
+    en: "No evidence was marked this time, so there's nothing to clarify yet.",
+  },
+  'no-transfer-source': {
+    vi: 'Chưa tìm được bài đọc khác cùng khổ để thử. Phép thử chuyển giao bắt buộc phải ở bài khác.',
+    en: "Couldn't find another passage of the same kind to test with. A transfer check must use a different passage.",
+  },
+  'transfer-same-source': {
+    vi: 'Câu dựng ra vẫn nằm trên chính bài cũ nên đã bị loại.',
+    en: 'The generated question was still on the same passage, so it was rejected.',
+  },
+  'answerable-without-passage': {
+    vi: 'Câu dựng ra trả lời được mà không cần đọc bài, nên đã bị loại.',
+    en: 'The generated question could be answered without reading the passage, so it was rejected.',
+  },
+  'stem-leaks-decisive-phrase': {
+    vi: 'Câu dựng ra để lộ sẵn chữ quyết định trong đề nên đã bị loại.',
+    en: 'The generated question gave away the decisive phrase, so it was rejected.',
+  },
+  'evidence-paragraph-mismatch': {
+    vi: 'Câu dựng ra chỉ sai đoạn chứa bằng chứng nên đã bị loại.',
+    en: 'The generated question pointed to the wrong paragraph for its evidence, so it was rejected.',
+  },
+  'transfer-reuses-original-evidence': {
+    vi: 'Câu dựng ra dùng lại đúng câu bằng chứng cũ nên đã bị loại.',
+    en: 'The generated question reused the original evidence sentence, so it was rejected.',
+  },
+  'transfer-reuses-original-stem': {
+    vi: 'Câu dựng ra chỉ chép lại câu hỏi cũ nên đã bị loại.',
+    en: 'The generated question just copied the original question, so it was rejected.',
+  },
+  'duplicate-options': {
+    vi: 'Câu dựng ra có hai phương án trùng nhau nên đã bị loại.',
+    en: 'The generated question had two identical options, so it was rejected.',
+  },
 };
 
 /** Biên nhận từ máy chủ: ba hàng rào đã làm gì với bản nháp của model. */
@@ -75,12 +114,21 @@ export type ProbeResponse =
     };
 
 /** Lời kể của từng kết luận ở hàng rào bịt mắt. */
-const BLIND_TEXT: Record<string, string> = {
-  'blind-model-could-not-answer': 'che bài đi thì một AI khác không trả lời được — đúng là câu phải đọc mới làm được',
-  'blind-model-answered-wrong': 'một AI khác trả lời sai khi không được đọc bài',
-  'blind-guess-hit': 'một AI khác đoán trúng dù không được đọc bài, nhưng tự nhận là đoán',
-  unreadable: 'không đọc được câu trả lời của AI kiểm tra',
-  'check-failed': 'chưa chạy được bước kiểm này',
+const BLIND_TEXT: Record<string, Bi> = {
+  'blind-model-could-not-answer': {
+    vi: 'che bài đi thì một AI khác không trả lời được — đúng là câu phải đọc mới làm được',
+    en: "with the passage hidden, another AI couldn't answer it — so it really does need reading",
+  },
+  'blind-model-answered-wrong': {
+    vi: 'một AI khác trả lời sai khi không được đọc bài',
+    en: 'another AI answered wrong without reading the passage',
+  },
+  'blind-guess-hit': {
+    vi: 'một AI khác đoán trúng dù không được đọc bài, nhưng tự nhận là đoán',
+    en: 'another AI guessed right without reading the passage, but admitted it was guessing',
+  },
+  unreadable: { vi: 'không đọc được câu trả lời của AI kiểm tra', en: "couldn't read the checking AI's answer" },
+  'check-failed': { vi: 'chưa chạy được bước kiểm này', en: "this check couldn't run" },
 };
 
 export function ProbePanel({
@@ -102,6 +150,7 @@ export function ProbePanel({
    */
   onResolved?: (result: { kind: ProbeKind; passed: boolean }) => void;
 }) {
+  const { L, locale } = useL();
   const [phase, setPhase] = useState<'idle' | 'loading' | 'probe' | 'answered' | 'failed'>('idle');
   const [data, setData] = useState<ProbeResponse | null>(null);
   const [chosen, setChosen] = useState<number | null>(null);
@@ -124,8 +173,8 @@ export function ProbePanel({
     const kind = probeFor(state);
     return (
       <Card className="mt-3">
-        <Text className="font-sans text-body text-ink">{kind ? INTRO[kind] : ''}</Text>
-        <Button className="mt-3" label="Làm phép thử" size="sm" onPress={start} />
+        <Text className="font-sans text-body text-ink">{kind ? bi(INTRO[kind], locale) : ''}</Text>
+        <Button className="mt-3" label={L('Làm phép thử', 'Take the check')} size="sm" onPress={start} />
       </Card>
     );
   }
@@ -135,7 +184,7 @@ export function ProbePanel({
       <Card className="mt-3">
         <View className="flex-row items-center gap-2">
           <ActivityIndicator size="small" />
-          <Text className="font-sans text-body text-muted">Đang dựng phép thử…</Text>
+          <Text className="font-sans text-body text-muted">{L('Đang dựng phép thử…', 'Building the check…')}</Text>
         </View>
       </Card>
     );
@@ -145,9 +194,9 @@ export function ProbePanel({
     const reason = data && 'reason' in data ? data.reason : 'not-json';
     return (
       <Card className="mt-3">
-        <Text className="font-semi text-body text-ink">Chưa đủ dữ liệu để kết luận</Text>
+        <Text className="font-semi text-body text-ink">{L('Chưa đủ dữ liệu để kết luận', 'Not enough data to conclude')}</Text>
         <Text className="mt-1 font-sans text-label text-muted">
-          {FAIL_TEXT[reason] ?? FAIL_TEXT['not-json']}
+          {bi(FAIL_TEXT[reason] ?? FAIL_TEXT['not-json'] ?? { vi: '', en: '' }, locale)}
         </Text>
       </Card>
     );
@@ -197,18 +246,18 @@ export function ProbePanel({
       {phase === 'answered' ? (
         <View className="mt-3 border-t border-border pt-3">
           <Text className="font-semi text-label text-ink">
-            {correct ? 'Đúng rồi.' : 'Chưa đúng.'}
+            {correct ? L('Đúng rồi.', 'Correct.') : L('Chưa đúng.', 'Not quite.')}
           </Text>
 
-          <Text className="mt-2 font-mid text-label text-muted">Câu trong bài đỡ điều này</Text>
+          <Text className="mt-2 font-mid text-label text-muted">{L('Câu trong bài đỡ điều này', 'The sentence in the passage that supports this')}</Text>
           <Text className="mt-1 font-sans text-body text-ink">“{draft.evidenceText}”</Text>
 
-          <Text className="mt-2 font-mid text-label text-muted">Chữ quyết định</Text>
+          <Text className="mt-2 font-mid text-label text-muted">{L('Chữ quyết định', 'Decisive phrase')}</Text>
           <Text className="mt-1 font-semi text-body text-ink">{draft.decisivePhrase}</Text>
 
           {mark ? (
             <>
-              <Text className="mt-2 font-mid text-label text-muted">Chỗ bạn đã khoanh</Text>
+              <Text className="mt-2 font-mid text-label text-muted">{L('Chỗ bạn đã khoanh', 'What you marked')}</Text>
               <Text className="mt-1 font-sans text-body text-body">“{mark.phrase}”</Text>
             </>
           ) : null}
@@ -220,9 +269,18 @@ export function ProbePanel({
           <Text className="mt-3 font-sans text-label text-muted">
             {correct
               ? draft.kind === 'transfer'
-                ? 'Câu này ở một bài đọc khác, nên làm được ở đây là đã tách được "hiểu" khỏi "nhớ bài cũ".'
-                : 'Đã làm rõ được chỗ này. Chưa xác nhận là đã nắm kỹ năng — muốn xác nhận thì cần một câu ở bài đọc khác.'
-              : 'Chỗ vướng vẫn còn. Lần sau bám vào chữ quyết định ở trên trước khi chọn.'}
+                ? L(
+                    'Câu này ở một bài đọc khác, nên làm được ở đây là đã tách được "hiểu" khỏi "nhớ bài cũ".',
+                    'This question is from a different passage, so getting it right separates "understanding" from "remembering the old passage".',
+                  )
+                : L(
+                    'Đã làm rõ được chỗ này. Chưa xác nhận là đã nắm kỹ năng — muốn xác nhận thì cần một câu ở bài đọc khác.',
+                    "This point is now clear. The skill isn't confirmed as mastered yet — that needs a question from a different passage.",
+                  )
+              : L(
+                  'Chỗ vướng vẫn còn. Lần sau bám vào chữ quyết định ở trên trước khi chọn.',
+                  'The sticking point is still there. Next time, anchor on the decisive phrase above before choosing.',
+                )}
           </Text>
 
           {/*
@@ -239,17 +297,17 @@ export function ProbePanel({
           */}
           {receipt ? (
             <View className="mt-3 rounded-panel bg-surface-muted px-3 py-3">
-              <Text className="font-mid text-label text-muted">Câu này đã bị kiểm những gì</Text>
+              <Text className="font-mid text-label text-muted">{L('Câu này đã bị kiểm những gì', 'What this question was checked for')}</Text>
 
               <Text className="mt-1 font-sans text-label text-ink">
-                · chữ trích dẫn được đối chiếu nguyên văn với bài đọc
+                {L('· chữ trích dẫn được đối chiếu nguyên văn với bài đọc', '· the quoted text was matched word for word against the passage')}
               </Text>
               <Text className="mt-1 font-sans text-label text-ink">
-                · chỉ số đoạn được đối chiếu với đoạn thật sự chứa câu đó
+                {L('· chỉ số đoạn được đối chiếu với đoạn thật sự chứa câu đó', '· the paragraph number was checked against the paragraph that actually contains it')}
               </Text>
               {draft.kind === 'transfer' ? (
                 <Text className="mt-1 font-sans text-label text-ink">
-                  · bài dùng cho câu này khác bài bạn vừa làm
+                  {L('· bài dùng cho câu này khác bài bạn vừa làm', '· this question uses a different passage from the one you just did')}
                 </Text>
               ) : null}
               {receipt.blind ? (
@@ -261,20 +319,25 @@ export function ProbePanel({
                       : 'text-ink',
                   ].join(' ')}
                 >
-                  · {BLIND_TEXT[receipt.blind] ?? receipt.blind}
+                  · {bi(BLIND_TEXT[receipt.blind] ?? { vi: receipt.blind, en: receipt.blind }, locale)}
                 </Text>
               ) : null}
 
               {receipt.rejections.length > 0 ? (
                 <Text className="mt-2 font-sans text-label text-muted">
-                  Trước câu này, {receipt.rejections.length} bản nháp của AI đã bị loại.
+                  {L(
+                    `Trước câu này, ${receipt.rejections.length} bản nháp của AI đã bị loại.`,
+                    `Before this question, ${receipt.rejections.length} AI draft(s) were rejected.`,
+                  )}
                 </Text>
               ) : null}
 
               {/* Luôn hiện, và luôn khác màu. Xem chú thích ở trên. */}
               <Text className="mt-2 font-sans text-label text-danger-ink">
-                · chưa kiểm được bằng máy: câu chữ có tự nhiên không, và câu hỏi này có đúng là
-                đang đo kỹ năng bạn đang vướng không
+                {L(
+                  '· chưa kiểm được bằng máy: câu chữ có tự nhiên không, và câu hỏi này có đúng là đang đo kỹ năng bạn đang vướng không',
+                  "· not machine-checkable: whether the wording is natural, and whether this question really measures the skill you're stuck on",
+                )}
               </Text>
             </View>
           ) : null}

@@ -29,6 +29,7 @@ import { useSyncStore } from '@/store/useSyncStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { color } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
 
 type Board = {
   participants: number;
@@ -51,6 +52,7 @@ function isCorrect(it: WeeklyItem, a: Answer): boolean {
  * mới chấm, xếp hạng, và cho xem lại. Chỉ lần làm đầu tiên được tính điểm.
  */
 export default function WeeklyScreen() {
+  const { L, en } = useL();
   const [now] = useState(() => Date.now());
   const week = weekId(now);
   const weekNo = parseWeekId(week)?.week ?? 0;
@@ -124,7 +126,7 @@ export default function WeeklyScreen() {
         weekRange: weekLabel(week),
         score: counted.score,
         total: counted.total,
-        time: formatDuration(counted.ms),
+        time: formatDuration(counted.ms, en),
         topPercent: standing && standing.total > 1 ? standing.topPercent : null,
         participants: standing?.total ?? 1,
       }
@@ -140,8 +142,8 @@ export default function WeeklyScreen() {
         <View className="w-full self-center" style={{ maxWidth: 860 }}>
           <View className="flex-row flex-wrap items-center justify-between gap-2">
             <Text className="font-heavy text-sectionTitle text-ink">
-              Đề của tuần {weekNo}
-              {practice ? <Text className="font-sans text-body text-muted"> · luyện tập, không tính điểm</Text> : null}
+              {L(`Đề của tuần ${weekNo}`, `Week ${weekNo} challenge`)}
+              {practice ? <Text className="font-sans text-body text-muted">{L(' · luyện tập, không tính điểm', " · practice, doesn't count")}</Text> : null}
             </Text>
             <Clock startedAt={startedAt} />
           </View>
@@ -179,14 +181,14 @@ export default function WeeklyScreen() {
             </View>
           </CrossFade>
           <View className="mt-4 flex-row flex-wrap items-center gap-2">
-            <Button variant="outline" label="Câu trước" iconLeft="chevron-left" disabled={index === 0} onPress={() => setIndex((i) => i - 1)} />
+            <Button variant="outline" label={L('Câu trước', 'Previous')} iconLeft="chevron-left" disabled={index === 0} onPress={() => setIndex((i) => i - 1)} />
             {index < items.length - 1 ? (
-              <Button label="Câu sau" iconRight="chevron-right" onPress={() => setIndex((i) => i + 1)} />
+              <Button label={L('Câu sau', 'Next')} iconRight="chevron-right" onPress={() => setIndex((i) => i + 1)} />
             ) : null}
             <View className="flex-1" />
             <Button
               variant={answered === items.length ? 'primary' : 'secondary'}
-              label={answered === items.length ? 'Nộp bài' : `Nộp bài (còn ${items.length - answered} câu trống)`}
+              label={answered === items.length ? L('Nộp bài', 'Submit') : L(`Nộp bài (còn ${items.length - answered} câu trống)`, `Submit (${items.length - answered} unanswered)`)}
               onPress={submit}
             />
           </View>
@@ -200,23 +202,23 @@ export default function WeeklyScreen() {
       <Appear>
         <LightHero
           scene="progress"
-          badge="ĐỀ CỦA TUẦN" art="test"
-          line1={`Tuần ${weekNo} · ${weekLabel(week)}`}
-          line2="cả nước cùng một đề"
-          subtitle="10 câu SAT (5 Math, 5 Verbal), khoảng 12–15 phút. Không báo đúng sai giữa chừng. Chỉ LẦN LÀM ĐẦU TIÊN được tính điểm; đề mới mỗi thứ Hai."
+          badge={L('ĐỀ CỦA TUẦN', 'WEEKLY CHALLENGE')} art="test"
+          line1={L(`Tuần ${weekNo} · ${weekLabel(week)}`, `Week ${weekNo} · ${weekLabel(week)}`)}
+          line2={L('cả nước cùng một đề', 'one test for the whole country')}
+          subtitle={L('10 câu SAT (5 Math, 5 Verbal), khoảng 12–15 phút. Không báo đúng sai giữa chừng. Chỉ LẦN LÀM ĐẦU TIÊN được tính điểm; đề mới mỗi thứ Hai.', '10 SAT questions (5 Math, 5 Verbal), about 12–15 minutes. No right/wrong feedback until the end. Only your FIRST attempt counts; a new test every Monday.')}
           footer={
             <>
-              <HeroStat value={String(board?.participants ?? 0)} label="người đã làm" />
-              <HeroStat value={days > 0 ? `${days} ngày` : 'hôm nay'} label={days > 0 ? 'tới đề mới' : 'đổi đề lúc nửa đêm'} />
+              <HeroStat value={String(board?.participants ?? 0)} label={L('người đã làm', 'people took it')} />
+              <HeroStat value={days > 0 ? L(`${days} ngày`, `${days} days`) : L('hôm nay', 'today')} label={days > 0 ? L('tới đề mới', 'until the next test') : L('đổi đề lúc nửa đêm', 'new test at midnight')} />
             </>
           }
         >
           {counted ? (
             <>
-              <Button label="Làm lại (luyện tập)" variant="outline" size="lg" iconLeft="refresh" onPress={() => start(true)} />
+              <Button label={L('Làm lại (luyện tập)', 'Retake (practice)')} variant="outline" size="lg" iconLeft="refresh" onPress={() => start(true)} />
             </>
           ) : (
-            <Button label="Bắt đầu làm đề" variant="brand" size="lg" iconRight="arrow-right" onPress={() => start(false)} />
+            <Button label={L('Bắt đầu làm đề', 'Start the test')} variant="brand" size="lg" iconRight="arrow-right" onPress={() => start(false)} />
           )}
         </LightHero>
       </Appear>
@@ -225,42 +227,42 @@ export default function WeeklyScreen() {
         <Appear index={1}>
           <View className="mt-5 rounded-[22px] bg-white p-6" style={CARD}>
             <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">
-              {attempt && practice ? 'Lần luyện tập vừa rồi' : 'Kết quả được tính của tuần này'}
+              {attempt && practice ? L('Lần luyện tập vừa rồi', 'Your latest practice run') : L('Kết quả được tính của tuần này', "This week's counted result")}
             </Text>
             <View className="mt-2 flex-row flex-wrap items-end gap-4">
               <Text className="font-heavy text-hero text-ink">
                 {shown.score}/{shown.total}
               </Text>
-              <Text className="mb-2 font-sans text-bodyLg text-muted">{formatDuration(shown.ms)}</Text>
+              <Text className="mb-2 font-sans text-bodyLg text-muted">{formatDuration(shown.ms, en)}</Text>
             </View>
             {counted && !(attempt && practice) ? (
               standing ? (
                 <Text className="mt-2 font-semi text-bodyLg text-ink">
                   {standing.total > 1
-                    ? `Hạng ${standing.rank}/${standing.total} · top ${standing.topPercent}% cả nước`
-                    : 'Bạn là người đầu tiên làm đề tuần này — mời bạn bè vào so điểm!'}
+                    ? L(`Hạng ${standing.rank}/${standing.total} · top ${standing.topPercent}% cả nước`, `Rank ${standing.rank}/${standing.total} · top ${standing.topPercent}% nationwide`)
+                    : L('Bạn là người đầu tiên làm đề tuần này — mời bạn bè vào so điểm!', "You're the first to take this week's test — invite your friends to compare!")}
                 </Text>
               ) : boardError ? (
-                <Text className="mt-2 font-sans text-body text-muted">Chưa tải được bảng xếp hạng (có thể đang ngoại tuyến).</Text>
+                <Text className="mt-2 font-sans text-body text-muted">{L('Chưa tải được bảng xếp hạng (có thể đang ngoại tuyến).', "Couldn't load the leaderboard (you may be offline).")}</Text>
               ) : null
             ) : null}
             {!userId && counted ? (
               <Text className="mt-2 font-sans text-body" style={{ color: '#B45309' }}>
-                Bạn đang ở chế độ Khách: kết quả chỉ lưu trên máy này và chưa vào bảng cả nước. Đăng nhập rồi đồng bộ để có tên trên bảng.
+                {L('Bạn đang ở chế độ Khách: kết quả chỉ lưu trên máy này và chưa vào bảng cả nước. Đăng nhập rồi đồng bộ để có tên trên bảng.', "You're in Guest mode: your result is only saved on this device and isn't on the national board. Sign in and sync to get your name on it.")}
               </Text>
             ) : null}
             {share && Platform.OS === 'web' ? (
               <View className="mt-4 flex-row flex-wrap gap-2">
                 <Button
-                  label="Chia sẻ kết quả"
+                  label={L('Chia sẻ kết quả', 'Share result')}
                   iconLeft="external"
                   onPress={() =>
                     void shareResult(share).then((how) =>
-                      setShareNote(how === 'copied' ? 'Đã chép lời mời + đường dẫn — dán vào Zalo/Messenger.' : how === 'failed' ? 'Máy không mở được bảng chia sẻ.' : null),
+                      setShareNote(how === 'copied' ? L('Đã chép lời mời + đường dẫn — dán vào Zalo/Messenger.', 'Invite and link copied — paste it into Zalo/Messenger.') : how === 'failed' ? L('Máy không mở được bảng chia sẻ.', "Couldn't open the share sheet on this device.") : null),
                     )
                   }
                 />
-                <Button variant="outline" label="Tải ảnh kết quả" iconLeft="download" onPress={() => void downloadShareCard(share)} />
+                <Button variant="outline" label={L('Tải ảnh kết quả', 'Download result image')} iconLeft="download" onPress={() => void downloadShareCard(share)} />
               </View>
             ) : null}
             {shareNote ? <Text className="mt-2 font-sans text-label text-muted">{shareNote}</Text> : null}
@@ -274,13 +276,13 @@ export default function WeeklyScreen() {
         <View className="mt-5 rounded-[22px] bg-white p-6" style={CARD}>
           <View className="flex-row items-center gap-2">
             <Icon name="trophy" size={20} color="#D97706" />
-            <Text className="font-heavy text-sectionTitle text-ink">Bảng xếp hạng tuần {weekNo}</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L(`Bảng xếp hạng tuần ${weekNo}`, `Week ${weekNo} leaderboard`)}</Text>
           </View>
-          <Text className="mt-1 font-sans text-body text-muted">Nhiều câu đúng hơn đứng trên; bằng câu đúng thì ai nhanh hơn.</Text>
+          <Text className="mt-1 font-sans text-body text-muted">{L('Nhiều câu đúng hơn đứng trên; bằng câu đúng thì ai nhanh hơn.', 'More correct answers ranks higher; ties go to the faster time.')}</Text>
           {!board ? (
-            <Text className="mt-3 font-sans text-body text-muted">{boardError ? 'Chưa tải được bảng.' : 'Đang tải…'}</Text>
+            <Text className="mt-3 font-sans text-body text-muted">{boardError ? L('Chưa tải được bảng.', "Couldn't load the board.") : L('Đang tải…', 'Loading…')}</Text>
           ) : board.top.length === 0 ? (
-            <Text className="mt-3 font-sans text-body text-muted">Chưa ai làm đề tuần này. Làm đầu tiên để đứng đầu bảng!</Text>
+            <Text className="mt-3 font-sans text-body text-muted">{L('Chưa ai làm đề tuần này. Làm đầu tiên để đứng đầu bảng!', 'Nobody has taken this week\'s test yet. Be first and top the board!')}</Text>
           ) : (
             <View className="mt-3 gap-2">
               {board.top.map((row, i) => (
@@ -296,12 +298,12 @@ export default function WeeklyScreen() {
                   <Text className="font-heavy text-bodyLg text-ink">
                     {row.score}/{row.total}
                   </Text>
-                  <Text className="w-24 text-right font-sans text-label text-muted">{formatDuration(row.ms)}</Text>
+                  <Text className="w-24 text-right font-sans text-label text-muted">{formatDuration(row.ms, en)}</Text>
                 </View>
               ))}
             </View>
           )}
-          <Button className="mt-4 self-start" variant="ghost" label="Về trang Hôm nay" onPress={() => router.push('/dashboard' as never)} />
+          <Button className="mt-4 self-start" variant="ghost" label={L('Về trang Hôm nay', 'Back to Today')} onPress={() => router.push('/dashboard' as never)} />
         </View>
       </Appear>
       <View className="h-8" />
@@ -311,6 +313,7 @@ export default function WeeklyScreen() {
 
 function Clock({ startedAt }: { startedAt: number }) {
   const [elapsed, setElapsed] = useState(0);
+  const { en } = useL();
   useEffect(() => {
     const t = setInterval(() => setElapsed(Date.now() - startedAt), 1000);
     return () => clearInterval(t);
@@ -318,7 +321,7 @@ function Clock({ startedAt }: { startedAt: number }) {
   return (
     <View className="flex-row items-center gap-1.5 rounded-pill bg-white px-3 py-1.5">
       <Icon name="clock" size={15} color={color.muted} />
-      <Text className="font-semi text-body text-ink">{formatDuration(elapsed)}</Text>
+      <Text className="font-semi text-body text-ink">{formatDuration(elapsed, en)}</Text>
     </View>
   );
 }
@@ -357,19 +360,20 @@ function VerbalItem({ q, picked, onPick }: { q: import('@/data/sat-rw-repository
 
 /** Xem lại sau khi nộp: câu sai trước, kèm lời giải. */
 function Review({ items, answers }: { items: WeeklyItem[]; answers: Record<string, Answer> }) {
+  const { L } = useL();
   const wrong = items.filter((it) => !isCorrect(it, answers[it.id] ?? null));
   if (wrong.length === 0) {
     return (
       <Card className="mt-5">
         <Text className="font-semi text-bodyLg" style={{ color: '#15803D' }}>
-          Đúng cả 10 câu. Xuất sắc!
+          {L('Đúng cả 10 câu. Xuất sắc!', 'All 10 correct. Excellent!')}
         </Text>
       </Card>
     );
   }
   return (
     <View className="mt-5">
-      <Text className="mb-3 font-heavy text-sectionTitle text-ink">Xem lại {wrong.length} câu sai</Text>
+      <Text className="mb-3 font-heavy text-sectionTitle text-ink">{L(`Xem lại ${wrong.length} câu sai`, `Review ${wrong.length} wrong answers`)}</Text>
       <View className="gap-3">
         {wrong.map((it) =>
           it.kind === 'math' ? (

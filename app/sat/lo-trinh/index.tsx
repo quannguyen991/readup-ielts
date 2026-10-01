@@ -12,6 +12,7 @@ import { Sticker } from '@/components/illust/Sticker';
 import { ChapterSticker, LevelDots, levelState } from '@/components/sat-roadmap/RoadmapUi';
 import { PHASES, ROAD_CHAPTERS, type RoadChapter } from '@/data/sat-roadmap';
 import { useSatRoadmapStore } from '@/store/useSatRoadmapStore';
+import { useL } from '@/i18n/useL';
 
 /**
  * LỘ TRÌNH SAT MATH THEO CHỦ ĐỀ — 27 chương theo thứ tự chủ đề của giáo trình
@@ -24,6 +25,7 @@ export default function SatRoadmap() {
   const p = hydrated ? progress : {};
   const { width } = useWindowDimensions();
   const cols = width >= 1100 ? 3 : width >= 700 ? 2 : 1;
+  const { L, en } = useL();
 
   const passed = ROAD_CHAPTERS.reduce((a, c) => a + (['easy', 'medium', 'hard'] as const).filter((l) => levelState(p[c.id]?.[l]) === 'passed').length, 0);
   const next = ROAD_CHAPTERS.find((c) => (['easy', 'medium', 'hard'] as const).some((l) => levelState(p[c.id]?.[l]) !== 'passed')) ?? ROAD_CHAPTERS[0]!;
@@ -33,15 +35,15 @@ export default function SatRoadmap() {
       <Appear>
         <LightHero
           scene="math"
-          badge="SAT MATH · LỘ TRÌNH THEO CHỦ ĐỀ"
-          line1="27 chủ đề, từ dễ tới khó"
-          line2="lý thuyết Việt – Anh song song"
-          subtitle="Bám sát giáo trình The College Panda: cùng kiến thức, cùng dạng bài, số mới mỗi lượt. Đọc lý thuyết, xem ví dụ, làm bộ bài theo sách rồi quiz 3 mức."
+          badge={L('SAT MATH · LỘ TRÌNH THEO CHỦ ĐỀ', 'SAT MATH · TOPIC ROADMAP')}
+          line1={L('27 chủ đề, từ dễ tới khó', '27 topics, easy to hard')}
+          line2={L('lý thuyết Việt – Anh song song', 'theory in Vietnamese and English')}
+          subtitle={L('Bám sát giáo trình The College Panda: cùng kiến thức, cùng dạng bài, số mới mỗi lượt. Đọc lý thuyết, xem ví dụ, làm bộ bài theo sách rồi quiz 3 mức.', 'Follows The College Panda closely: same concepts, same question types, fresh numbers every round. Read the theory, study examples, do the book set, then a 3-level quiz.')}
           footer={
             <>
-              <HeroStat value={`${passed}/81`} label="mức đã qua" />
-              <HeroStat value="27" label="chủ đề" />
-              <HeroStat value="∞" label="câu luyện" />
+              <HeroStat value={`${passed}/81`} label={L('mức đã qua', 'levels passed')} />
+              <HeroStat value="27" label={L('chủ đề', 'topics')} />
+              <HeroStat value="∞" label={L('câu luyện', 'practice questions')} />
             </>
           }
         />
@@ -54,13 +56,16 @@ export default function SatRoadmap() {
             <Sparkles count={6} />
             <ChapterSticker art={next.art} size={78} />
             <View style={{ flex: 1 }}>
-              <Label text="Học tiếp →" color="#FACC15" ink="#2A1B02" tilt={-4} size={14} />
+              <Label text={L('Học tiếp →', 'Continue →')} color="#FACC15" ink="#2A1B02" tilt={-4} size={14} />
               <Text className="font-heavy" style={{ marginTop: 8, fontSize: 26, color: '#FFFFFF' }}>
-                Chương {next.n}. {next.title.vi}
+                {L('Chương', 'Chapter')} {next.n}. {en ? next.title.en : next.title.vi}
               </Text>
-              <Text className="font-semi" style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }} lang="en">
-                {next.title.en}
-              </Text>
+              {/* Dòng phụ tiếng Anh chỉ để người học Việt làm quen thuật ngữ; giao diện English thì bỏ. */}
+              {en ? null : (
+                <Text className="font-semi" style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }} lang="en">
+                  {next.title.en}
+                </Text>
+              )}
             </View>
           </View>
         </Pressable>
@@ -75,10 +80,10 @@ export default function SatRoadmap() {
                 <Sparkles count={5} />
                 <View>
                   <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(255,255,255,0.85)' }}>
-                    GIAI ĐOẠN {ph}
+                    {L('GIAI ĐOẠN', 'PHASE')} {ph}
                   </Text>
                   <Text className="font-heavy" style={{ fontSize: 28, color: '#FFFFFF' }}>
-                    {PHASES[ph].title.vi}.
+                    {en ? PHASES[ph].title.en : PHASES[ph].title.vi}.
                   </Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
@@ -104,10 +109,11 @@ const PHASE_ART: Record<1 | 2 | 3 | 4, RoadChapter['art']> = { 1: 'calculator', 
 
 function ChapterCard({ c, best, basis }: { c: RoadChapter; best: ReturnType<typeof useSatRoadmapStore.getState>['progress'][string] | undefined; basis: string }) {
   const done = (['easy', 'medium', 'hard'] as const).filter((l) => levelState(best?.[l]) === 'passed').length;
+  const { L, en } = useL();
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`Chương ${c.n}: ${c.title.vi}, đã qua ${done}/3 mức`}
+      accessibilityLabel={L(`Chương ${c.n}: ${c.title.vi}, đã qua ${done}/3 mức`, `Chapter ${c.n}: ${c.title.en}, ${done}/3 levels passed`)}
       onPress={() => router.push(`/sat/lo-trinh/${c.id}` as never)}
       style={({ hovered }: { hovered?: boolean }) => ({
         flexBasis: basis as never,
@@ -126,14 +132,16 @@ function ChapterCard({ c, best, basis }: { c: RoadChapter; best: ReturnType<type
         <ChapterSticker art={c.art} size={54} motion={false} />
         <View style={{ flex: 1, minWidth: 0 }}>
           <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#64748B' }}>
-            CHƯƠNG {c.n}
+            {L('CHƯƠNG', 'CHAPTER')} {c.n}
           </Text>
           <Text className="font-heavy" style={{ fontSize: 18, color: '#0F172A' }}>
-            {c.title.vi}
+            {en ? c.title.en : c.title.vi}
           </Text>
-          <Text className="font-semi" style={{ fontSize: 13, color: '#64748B' }} lang="en">
-            {c.title.en}
-          </Text>
+          {en ? null : (
+            <Text className="font-semi" style={{ fontSize: 13, color: '#64748B' }} lang="en">
+              {c.title.en}
+            </Text>
+          )}
         </View>
         {done === 3 ? (
           <Motion kind="wobble">

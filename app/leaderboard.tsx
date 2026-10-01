@@ -39,6 +39,8 @@ import { color } from '@/theme/tokens';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { currentLocale, pick, useL } from '@/i18n/useL';
+import { tierName } from '@/services/gamification/labels-en';
 
 /**
  * Trang Xếp hạng.
@@ -67,6 +69,7 @@ type GoldenRow = { id: string; name: string; stars: number; correct: number; voc
 type BoardData = { board: BoardRow[]; previous: { month: string; board: PastRow[] } | null; golden: { day: string; board: GoldenRow[] } | null };
 
 export default function LeaderboardScreen() {
+  const { L, locale } = useL();
   const daily = useStudyStore((s) => s.daily);
   const frozenDays = useRewardStore((s) => s.frozenDays);
   const avatarId = useRewardStore((s) => s.avatar);
@@ -97,26 +100,26 @@ export default function LeaderboardScreen() {
         <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#FEF3C7' }}>
           <Text style={{ fontSize: 16 }}>🧪</Text>
           <Text className="flex-1 font-semi text-body text-ink" style={{ minWidth: 220 }}>
-            Dữ liệu minh hoạ — tên và điểm là mẫu, không phải học viên thật. Chỉ hiện khi đường dẫn có ?demo=1.
+            {L('Dữ liệu minh hoạ — tên và điểm là mẫu, không phải học viên thật. Chỉ hiện khi đường dẫn có ?demo=1.', 'Sample data — names and scores are examples, not real learners. Only shown when the link has ?demo=1.')}
           </Text>
-          <Button label="Xem bảng thật" variant="outline" size="sm" onPress={() => router.replace('/leaderboard' as never)} />
+          <Button label={L('Xem bảng thật', 'See the real board')} variant="outline" size="sm" onPress={() => router.replace('/leaderboard' as never)} />
         </View>
       ) : null}
       <Appear>
         <View className="flex-row items-center gap-3">
         <View className="min-w-0 flex-1">
         <View className="flex-row flex-wrap items-center gap-3">
-          <Text className="font-heavy text-pageTitle text-ink">🏆 Xếp hạng</Text>
+          <Text className="font-heavy text-pageTitle text-ink">{L('🏆 Xếp hạng', '🏆 Leaderboard')}</Text>
           <View className="flex-1" />
-          <View className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#FEF3C7' }} accessibilityLabel={`Đang có ${stars} sao`}>
+          <View className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#FEF3C7' }} accessibilityLabel={L(`Đang có ${stars} sao`, `You have ${stars} stars`)}>
             <Text style={{ fontSize: 14 }}>⭐</Text>
             <Text className="font-heavy text-body text-ink">{formatStars(stars)}</Text>
           </View>
-          <Button label="Đổi quà" variant="outline" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
-          <Button label="Hồ sơ" variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
+          <Button label={L('Đổi quà', 'Rewards')} variant="outline" size="sm" iconLeft="gift" onPress={() => router.push('/shop' as never)} />
+          <Button label={L('Hồ sơ', 'Profile')} variant="outline" size="sm" iconLeft="star" onPress={() => router.push('/profile' as never)} />
         </View>
         <Text className="mt-1 font-sans text-body text-muted">
-          Điểm tính từ chính thời gian học và số câu đã làm — không có nút nào cộng điểm. Hết tháng, top 10 được thưởng sao.
+          {L('Điểm tính từ chính thời gian học và số câu đã làm — không có nút nào cộng điểm. Hết tháng, top 10 được thưởng sao.', 'Points come from your actual study time and questions answered — no button adds points. At month end, the top 10 win stars.')}
         </Text>
         </View>
         <PageStickers scene="progress" />
@@ -144,7 +147,7 @@ export default function LeaderboardScreen() {
                           <SealIcon name="trophy" color="#F2B632" size={30} />
                         </View>
                         <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink" numberOfLines={1}>
-                          {tier.name}
+                          {tierName(tier, locale)}
                         </Text>
                       </View>
                       <Text className="font-sans text-label text-muted">
@@ -154,12 +157,12 @@ export default function LeaderboardScreen() {
                     </View>
                   </View>
                   <View className="pt-2">
-                    <Badge label={`Reset sau ${daysUntilReset(today)} ngày`} tone="neutral" shape="tag" />
+                    <Badge label={L(`Reset sau ${daysUntilReset(today)} ngày`, `Resets in ${daysUntilReset(today)} days`)} tone="neutral" shape="tag" />
                   </View>
                 </View>
 
                 <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-                  Tổng điểm tháng này
+                  {L('Tổng điểm tháng này', 'Total points this month')}
                 </Text>
                 <Text className="font-heavy text-ink" style={{ fontSize: 40, lineHeight: 46 }}>
                   {month}
@@ -169,22 +172,22 @@ export default function LeaderboardScreen() {
                   <>
                     <ProgressBar className="mt-2" value={upcoming.tier.from > 0 ? (month / upcoming.tier.from) * 100 : 100} tone="accent" />
                     <Text className="mt-1.5 font-sans text-label text-muted">
-                      Còn {upcoming.remaining} điểm nữa lên {upcoming.tier.name}.
+                      {L(`Còn ${upcoming.remaining} điểm nữa lên ${upcoming.tier.name}.`, `${upcoming.remaining} more points to reach ${tierName(upcoming.tier, locale)}.`)}
                     </Text>
                   </>
                 ) : (
-                  <Text className="mt-2 font-sans text-label text-muted">Bậc cao nhất — giữ nhịp thôi.</Text>
+                  <Text className="mt-2 font-sans text-label text-muted">{L('Bậc cao nhất — giữ nhịp thôi.', 'Top tier — just keep it up.')}</Text>
                 )}
 
                 {/* Nói thẳng cách tính, để không ai phải đoán */}
                 <View className="mt-4 gap-1 rounded-panel bg-surfaceAlt p-3">
                   <Text className="font-sans text-label text-muted">
-                    Hệ số hôm nay: 1 + 🔥 {(multiplier - 1).toFixed(1)} = <Text className="font-heavy text-ink">{multiplier}</Text> (tối đa {MAX_MULTIPLIER})
+                    {L('Hệ số hôm nay:', "Today's multiplier:")} 1 + 🔥 {(multiplier - 1).toFixed(1)} = <Text className="font-heavy text-ink">{multiplier}</Text> ({L('tối đa', 'max')} {MAX_MULTIPLIER})
                   </Text>
                   <Text className="font-sans text-label text-muted">
-                    Điểm hôm nay: {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> (tối đa {dailyCapFor(todayKey)})
+                    {L('Điểm hôm nay:', "Today's points:")} {multiplier} × {todayEffort} = <Text className="font-heavy text-ink">{todayPoints}</Text> ({L('tối đa', 'max')} {dailyCapFor(todayKey)})
                   </Text>
-                  <Text className="font-sans text-label text-subtle">Công: 1 điểm mỗi phút học, 0,5 điểm mỗi câu đã làm. Mỗi điểm cũng là một sao để đổi quà.</Text>
+                  <Text className="font-sans text-label text-subtle">{L('Công: 1 điểm mỗi phút học, 0,5 điểm mỗi câu đã làm. Mỗi điểm cũng là một sao để đổi quà.', 'Effort: 1 point per minute studied, 0.5 per question answered. Every point is also a star to spend on rewards.')}</Text>
                 </View>
               </View>
             </Card>
@@ -192,19 +195,19 @@ export default function LeaderboardScreen() {
 
           <Appear index={2} style={{ height: '100%' }}>
             <Card className="h-full">
-              <SectionHeader title="Hoạt động học tập" icon="flame" iconTone="warning" />
+              <SectionHeader title={L('Hoạt động học tập', 'Study activity')} icon="flame" iconTone="warning" />
               <View className="mt-3 flex-row gap-6">
                 <View className="items-center">
                   <Text className="font-heavy text-ink" style={{ fontSize: 30 }}>
                     🔥 {streak}
                   </Text>
-                  <Text className="mt-0.5 font-sans text-label text-muted">Chuỗi hiện tại</Text>
+                  <Text className="mt-0.5 font-sans text-label text-muted">{L('Chuỗi hiện tại', 'Current streak')}</Text>
                 </View>
                 <View className="items-center">
                   <Text className="font-heavy text-ink" style={{ fontSize: 30 }}>
                     {Math.round(daily[todayKey]?.minutes ?? 0)}
                   </Text>
-                  <Text className="mt-0.5 font-sans text-label text-muted">Phút hôm nay</Text>
+                  <Text className="mt-0.5 font-sans text-label text-muted">{L('Phút hôm nay', 'Minutes today')}</Text>
                 </View>
               </View>
 
@@ -219,7 +222,7 @@ export default function LeaderboardScreen() {
       </Appear>
 
       <Appear index={4}>
-        <SectionHeader className="mt-6" title="Bảng xếp hạng tháng này" subtitle="Điểm tháng này của những người đã đăng nhập" icon="trophy" />
+        <SectionHeader className="mt-6" title={L('Bảng xếp hạng tháng này', "This month's leaderboard")} subtitle={L('Điểm tháng này của những người đã đăng nhập', "This month's points for signed-in learners")} icon="trophy" />
       </Appear>
 
       <Board data={data} error={error} me={me} you={{ name, points: month }} />
@@ -248,7 +251,7 @@ function useBoard(demo: boolean): { data: BoardData | null; error: string | null
           });
       })
       .catch(() => {
-        if (alive) setError('Chưa nối được máy chủ — bảng này cần đăng nhập và có mạng.');
+        if (alive) setError('offline');
       });
     return () => {
       alive = false;
@@ -269,12 +272,13 @@ function useBoard(demo: boolean): { data: BoardData | null; error: string | null
 const MEDAL = ['🥇', '🥈', '🥉'];
 
 const WEEKDAY = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+const WEEKDAY_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 /** "2026-09-24" → "Thứ Năm, 24/09". */
-function dayLabel(key: string): string {
+function dayLabel(key: string, en = false): string {
   const [y, m, d] = key.split('-').map(Number);
   const date = new Date(y!, m! - 1, d!);
-  return `${WEEKDAY[date.getDay()]}, ${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
+  return `${(en ? WEEKDAY_EN : WEEKDAY)[date.getDay()]}, ${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}`;
 }
 
 const GOLD_INK = '#3B2503';
@@ -285,6 +289,7 @@ const ROW_TINT = ['#FFFBEB', '#FCFBF8', '#FFF7ED'];
  * cùng số của chính mình (tính ngay trên máy, không chờ đồng bộ) và lối đổi quà.
  */
 function GoldenBoard({ data, error, me }: { data: BoardData | null; error: string | null; me: string | null }) {
+  const { L, en } = useL();
   const narrow = useWindowDimensions().width < 640;
   const daily = useStudyStore((s) => s.daily);
   const frozen = useRewardStore((s) => s.frozenDays);
@@ -313,10 +318,10 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
           </View>
           <View className="min-w-0 flex-1">
             <Text className="font-heavy" style={{ fontSize: 22, color: GOLD_INK }}>
-              Bảng vàng hôm nay
+              {L('Bảng vàng hôm nay', "Today's honour board")}
             </Text>
             <Text className="font-semi" style={{ fontSize: 13, color: '#78350F' }}>
-              {dayLabel(data?.golden?.day ?? key)} · sao, câu đúng, lượt ôn từ vựng · chốt lúc 0 giờ
+              {dayLabel(data?.golden?.day ?? key, en)} · {L('sao, câu đúng, lượt ôn từ vựng · chốt lúc 0 giờ', 'stars, correct answers, vocab reviews · closes at midnight')}
             </Text>
           </View>
         </View>
@@ -324,11 +329,11 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
         {/* Số của chính mình — tính trên máy, luôn có kể cả khi chưa đăng nhập. */}
         <View className="mt-4 flex-row flex-wrap items-center gap-2 rounded-2xl p-3" style={{ backgroundColor: 'rgba(255,255,255,0.72)' }}>
           <Text className="font-strong" style={{ fontSize: 13, color: GOLD_INK }}>
-            Hôm nay của bạn
+            {L('Hôm nay của bạn', 'Your day')}
           </Text>
-          <Stat icon="⭐" value={mine.stars} label="sao" />
-          <Stat icon="✅" value={mine.correct} label="câu đúng" />
-          <Stat icon="📚" value={mine.vocab} label="lượt ôn từ" />
+          <Stat icon="⭐" value={mine.stars} label={L('sao', 'stars')} />
+          <Stat icon="✅" value={mine.correct} label={L('câu đúng', 'correct')} />
+          <Stat icon="📚" value={mine.vocab} label={L('lượt ôn từ', 'vocab reviews')} />
           <View className="flex-1" />
           {/*
             Số dư tách hẳn khỏi số HÔM NAY và ghi rõ là tích luỹ. Bản cũ in
@@ -336,18 +341,18 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
             nghĩa đặt sát nhau, người dùng đọc thành số liệu sai (26/09/2026).
           */}
           <Text className="font-semi" style={{ fontSize: 12.5, color: '#78350F' }}>
-            Đang có <Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text> tích luỹ
+            {L('Đang có ', 'Balance: ')}<Text className="font-heavy" style={{ color: GOLD_INK }}>{formatStars(stars)} ⭐</Text>{L(' tích luỹ', ' saved up')}
           </Text>
           <Pressable
             accessibilityRole="link"
-            accessibilityLabel={`Đổi quà — đang có ${formatStars(stars)} sao tích luỹ`}
+            accessibilityLabel={L(`Đổi quà — đang có ${formatStars(stars)} sao tích luỹ`, `Rewards — you have ${formatStars(stars)} stars saved up`)}
             onPress={() => router.push('/shop' as never)}
             className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-2"
             style={{ backgroundColor: GOLD_INK }}
           >
             <Icon name="gift" size={14} color="#FDE68A" strokeWidth={2.2} />
             <Text className="font-strong" style={{ fontSize: 13, color: '#FDE68A' }}>
-              Đổi quà
+              {L('Đổi quà', 'Rewards')}
             </Text>
           </Pressable>
         </View>
@@ -355,28 +360,28 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
 
       <View style={{ paddingVertical: 6 }}>
         {error ? (
-          <Text className="px-5 py-4 font-sans text-body text-muted">Bảng của mọi người cần mạng và đăng nhập — số của bạn ở trên vẫn tính đủ.</Text>
+          <Text className="px-5 py-4 font-sans text-body text-muted">{L('Bảng của mọi người cần mạng và đăng nhập — số của bạn ở trên vẫn tính đủ.', "Everyone's board needs a connection and sign-in — your own numbers above are still complete.")}</Text>
         ) : !data ? (
           <View className="items-center py-6">
             <ActivityIndicator color="#D97706" />
           </View>
         ) : rows.length === 0 ? (
           <Text className="px-5 py-4 font-sans text-body text-muted">
-            Hôm nay chưa ai ghi tên. {me ? 'Làm một câu đúng là lên bảng vàng.' : 'Đăng nhập rồi làm một câu đúng là lên bảng vàng.'}
+            {L('Hôm nay chưa ai ghi tên.', 'Nobody is on the board yet today.')} {me ? L('Làm một câu đúng là lên bảng vàng.', 'Get one answer right to make the board.') : L('Đăng nhập rồi làm một câu đúng là lên bảng vàng.', 'Sign in and get one answer right to make the board.')}
           </Text>
         ) : (
           <>
             <View className={`${rowClass} py-2`}>
               <Text className="text-center font-strong text-label text-subtle" style={{ width: W.rank }}>#</Text>
-              <Text className="min-w-0 flex-1 font-strong text-label text-subtle">Người học</Text>
+              <Text className="min-w-0 flex-1 font-strong text-label text-subtle">{L('Người học', 'Learner')}</Text>
               <Text className="font-strong text-label text-subtle" style={{ width: W.star, textAlign: 'right' }}>
-                {narrow ? '⭐' : '⭐ Sao'}
+                {narrow ? '⭐' : L('⭐ Sao', '⭐ Stars')}
               </Text>
               <Text className="font-strong text-label text-subtle" style={{ width: W.correct, textAlign: 'right' }}>
-                {narrow ? '✅' : '✅ Đúng'}
+                {narrow ? '✅' : L('✅ Đúng', '✅ Correct')}
               </Text>
               <Text className="font-strong text-label text-subtle" style={{ width: W.vocab, textAlign: 'right' }}>
-                {narrow ? '📚' : '📚 Ôn từ'}
+                {narrow ? '📚' : L('📚 Ôn từ', '📚 Vocab')}
               </Text>
             </View>
             {rows.slice(0, 10).map((r, i) => {
@@ -393,7 +398,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
                   <View className="min-w-0 flex-1 flex-row items-center gap-2.5">
                     <AvatarBadge avatarId={r.avatar ?? null} name={r.name} size={narrow ? 26 : 30} skin={skinOf(r.skin ?? null)} />
                     <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                      {mineRow ? `${r.name} (bạn)` : r.name}
+                      {mineRow ? L(`${r.name} (bạn)`, `${r.name} (you)`) : r.name}
                     </Text>
                   </View>
                   <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#B45309' }}>
@@ -409,13 +414,13 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
               );
             })}
             {!me ? (
-              <Text className="px-5 py-3 font-sans text-label text-muted">Đăng nhập để tên bạn lên bảng vàng cùng mọi người.</Text>
+              <Text className="px-5 py-3 font-sans text-label text-muted">{L('Đăng nhập để tên bạn lên bảng vàng cùng mọi người.', 'Sign in to put your name on the honour board.')}</Text>
             ) : null}
             {me && inBoard < 0 && (mine.stars > 0 || mine.correct > 0) ? (
               <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#FCF8F1' }}>
                 <Text className="text-center font-heavy text-body text-muted" style={{ width: W.rank }}>—</Text>
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                  Bạn — số của bạn lên bảng sau vài giây đồng bộ
+                  {L('Bạn — số của bạn lên bảng sau vài giây đồng bộ', 'You — your numbers appear after a few seconds of syncing')}
                 </Text>
                 <Text className="font-heavy text-body" style={{ width: W.star, textAlign: 'right', color: '#B45309' }}>
                   {mine.stars}
@@ -436,11 +441,12 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
 }
 
 function Stat({ icon, value, label }: { icon: string; value: number; label: string }) {
+  const { locale } = useL();
   return (
     <View className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: '#FFFFFF' }}>
       <Text style={{ fontSize: 12 }}>{icon}</Text>
       <Text className="font-heavy" style={{ fontSize: 14, color: GOLD_INK }}>
-        {value.toLocaleString('vi-VN')}
+        {value.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')}
       </Text>
       <Text className="font-sans" style={{ fontSize: 12, color: '#78350F' }}>
         {label}
@@ -450,16 +456,19 @@ function Stat({ icon, value, label }: { icon: string; value: number; label: stri
 }
 
 /** "2026-08" → "tháng 8/2026". */
-function monthLabel(key: string): string {
+function monthLabel(key: string, en = false): string {
   const [y, m] = key.split('-');
-  return `tháng ${Number(m)}/${y}`;
+  return en ? `${Number(m)}/${y}` : `tháng ${Number(m)}/${y}`;
 }
+
+const PRIZE_LABEL_EN: Record<string, string> = { 'Hạng nhất': '1st place', 'Hạng nhì': '2nd place', 'Hạng ba': '3rd place', 'Top 10': 'Top 10' };
 
 /**
  * Giải thưởng tháng: bậc thưởng, hạng hiện tại của bạn, và — nếu tháng trước
  * bạn trong top 10 — nút nhận sao (mỗi tháng một lần).
  */
 function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | null; today: Date }) {
+  const { L, en } = useL();
   const prizes = useRewardStore((s) => s.prizes);
   const claimPrize = useRewardStore((s) => s.claimPrize);
   const [claimedNow, setClaimedNow] = useState<number | null>(null);
@@ -475,21 +484,21 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
     if (claimPrize(prev.month, prize)) {
       setClaimedNow(prize);
       sfx.coins(8);
-      useGameFx.getState().push({ kind: 'stars', amount: prize, reason: 'thưởng hạng tháng' });
+      useGameFx.getState().push({ kind: 'stars', amount: prize, reason: pick(currentLocale(), 'thưởng hạng tháng', 'monthly rank reward') });
     }
   };
 
   return (
     <Card className="mt-6">
-      <SectionHeader title="Giải thưởng tháng" subtitle={`Chốt bảng sau ${daysUntilReset(today)} ngày nữa`} icon="gift" iconTone="warning" />
-      <Text className="mt-2 font-sans text-label text-muted">Hết tháng, top 10 bảng dưới đây được thưởng sao. Đầu tháng sau quay lại trang này bấm nhận.</Text>
+      <SectionHeader title={L('Giải thưởng tháng', 'Monthly prizes')} subtitle={L(`Chốt bảng sau ${daysUntilReset(today)} ngày nữa`, `Board closes in ${daysUntilReset(today)} days`)} icon="gift" iconTone="warning" />
+      <Text className="mt-2 font-sans text-label text-muted">{L('Hết tháng, top 10 bảng dưới đây được thưởng sao. Đầu tháng sau quay lại trang này bấm nhận.', 'At month end, the top 10 on the board below win stars. Come back early next month to claim them.')}</Text>
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         {MONTH_PRIZES.map((p, i) => (
           <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#FEF3C7' : '#FBF9F6' }}>
             <Text style={{ fontSize: 20 }}>{MEDAL[i] ?? '🏅'}</Text>
             <View className="min-w-0 flex-1">
-              <Text className="font-strong text-label text-ink">{p.label}</Text>
+              <Text className="font-strong text-label text-ink">{en ? (PRIZE_LABEL_EN[p.label] ?? p.label) : p.label}</Text>
               <Text className="font-heavy text-body text-ink">+{p.stars} ⭐</Text>
             </View>
           </View>
@@ -498,19 +507,19 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
 
       {me && rankNow > 0 ? (
         <Text className="mt-3 font-sans text-body text-ink">
-          Bạn đang đứng <Text className="font-heavy">hạng {rankNow}</Text>
-          {prizeForRank(rankNow) > 0 ? ` — giữ tới hết tháng là nhận ${prizeForRank(rankNow)} sao.` : ' — lọt vào top 10 để có thưởng.'}
+          {L('Bạn đang đứng ', "You're ")}<Text className="font-heavy">{L(`hạng ${rankNow}`, `#${rankNow}`)}</Text>
+          {prizeForRank(rankNow) > 0 ? L(` — giữ tới hết tháng là nhận ${prizeForRank(rankNow)} sao.`, ` — hold on until month end to win ${prizeForRank(rankNow)} stars.`) : L(' — lọt vào top 10 để có thưởng.', ' — make the top 10 to win a prize.')}
         </Text>
       ) : me && data ? (
-        <Text className="mt-3 font-sans text-body text-muted">Bạn chưa có tên trên bảng tháng này. Học một buổi là có điểm.</Text>
+        <Text className="mt-3 font-sans text-body text-muted">{L('Bạn chưa có tên trên bảng tháng này. Học một buổi là có điểm.', "You're not on this month's board yet. One study session gets you points.")}</Text>
       ) : !me ? (
-        <Text className="mt-3 font-sans text-body text-muted">Đăng nhập để lên bảng và nhận thưởng tháng.</Text>
+        <Text className="mt-3 font-sans text-body text-muted">{L('Đăng nhập để lên bảng và nhận thưởng tháng.', 'Sign in to join the board and win monthly prizes.')}</Text>
       ) : null}
 
       {prev && prev.board.length > 0 ? (
         <View className="mt-4 rounded-panel bg-surfaceAlt p-3">
           <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-strong text-label text-muted">Vinh danh {monthLabel(prev.month)}</Text>
+            <Text className="font-strong text-label text-muted">{L(`Vinh danh ${monthLabel(prev.month)}`, `Hall of fame ${monthLabel(prev.month, true)}`)}</Text>
             <View aria-hidden>
               <Label text="Top 3 🏆" color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
             </View>
@@ -526,14 +535,14 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
           {prize > 0 ? (
             already > 0 || claimedNow ? (
               <Text className="mt-3 font-semi text-body" style={{ color: '#15803D' }}>
-                ✓ Đã nhận {already || claimedNow} sao thưởng hạng {prevRank} {monthLabel(prev.month)}.
+                {L(`✓ Đã nhận ${already || claimedNow} sao thưởng hạng ${prevRank} ${monthLabel(prev.month)}.`, `✓ Claimed ${already || claimedNow} stars for #${prevRank} in ${monthLabel(prev.month, true)}.`)}
               </Text>
             ) : (
               <View className="mt-3 flex-row flex-wrap items-center gap-3">
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink">
-                  {monthLabel(prev.month)} bạn đứng hạng {prevRank}. Phần thưởng: {prize} sao.
+                  {L(`${monthLabel(prev.month)} bạn đứng hạng ${prevRank}. Phần thưởng: ${prize} sao.`, `In ${monthLabel(prev.month, true)} you finished #${prevRank}. Prize: ${prize} stars.`)}
                 </Text>
-                <Button label={`Nhận ${prize} ⭐`} size="sm" iconLeft="gift" onPress={claim} />
+                <Button label={L(`Nhận ${prize} ⭐`, `Claim ${prize} ⭐`)} size="sm" iconLeft="gift" onPress={claim} />
               </View>
             )
           ) : null}
@@ -545,6 +554,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
 
 /** Lưới ô vuông 12 tuần gần nhất, đậm dần theo số phút học. */
 function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: number; questions: number }>; frozen: string[]; today: Date }) {
+  const { L } = useL();
   const weeks = 12;
   const columns: { key: string; minutes: number; frozen: boolean }[][] = [];
   // Bắt đầu từ thứ Hai của tuần cách đây 11 tuần, để mỗi cột là một tuần đủ.
@@ -581,14 +591,14 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
         ))}
       </View>
       <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
-        <Text className="font-sans text-label text-subtle">Ít</Text>
+        <Text className="font-sans text-label text-subtle">{L('Ít', 'Less')}</Text>
         {['#F7F4EE', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
           <View key={c} style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: c }} />
         ))}
-        <Text className="font-sans text-label text-subtle">Nhiều</Text>
+        <Text className="font-sans text-label text-subtle">{L('Nhiều', 'More')}</Text>
         <View className="ml-2 flex-row items-center gap-1">
           <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: '#EAD7AE' }} />
-          <Text className="font-sans text-label text-subtle">ngày dùng thẻ giữ chuỗi</Text>
+          <Text className="font-sans text-label text-subtle">{L('ngày dùng thẻ giữ chuỗi', 'streak freeze used')}</Text>
         </View>
       </View>
     </View>
@@ -599,13 +609,14 @@ const PODIUM_RING = ['#F59E0B', '#94A3B8', '#D97706'];
 
 function Board({ data, error, me, you }: { data: BoardData | null; error: string | null; me: string | null; you: { name: string; points: number } }) {
   const narrow = useWindowDimensions().width < 640;
+  const { L } = useL();
 
   if (error) {
     return (
       <Card className="mt-3">
-        <Text className="font-sans text-body text-muted">{error}</Text>
+        <Text className="font-sans text-body text-muted">{error === 'offline' ? L('Chưa nối được máy chủ — bảng này cần đăng nhập và có mạng.', "Couldn't reach the server — this board needs sign-in and a connection.") : error}</Text>
         <Text className="mt-2 font-sans text-label text-subtle">
-          Điểm tháng này của bạn: <Text className="font-heavy text-ink">{you.points}</Text>
+          {L('Điểm tháng này của bạn:', 'Your points this month:')} <Text className="font-heavy text-ink">{you.points}</Text>
         </Text>
       </Card>
     );
@@ -631,7 +642,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
               </Sticker>
             </Motion>
           </View>
-          <Text className="min-w-0 flex-1 font-sans text-body text-muted">Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.</Text>
+          <Text className="min-w-0 flex-1 font-sans text-body text-muted">{L('Chưa ai có điểm tháng này. Học một buổi là bạn đứng đầu bảng.', 'Nobody has points this month yet. One study session puts you on top.')}</Text>
         </View>
       </Card>
     );
@@ -680,7 +691,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
                 </View>
                 <Text style={{ marginTop: 4, fontSize: first ? 24 : 20 }}>{MEDAL[rank]}</Text>
                 <Text className="text-center font-strong text-body text-ink" numberOfLines={1}>
-                  {mine ? 'Bạn' : row.name}
+                  {mine ? L('Bạn', 'You') : row.name}
                 </Text>
                 <Text className="font-heavy text-ink" style={{ fontSize: first ? 22 : 18 }}>
                   {row.points}
@@ -701,7 +712,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
                 <Text className="w-8 text-center font-heavy text-body text-muted">{i + 4}</Text>
                 <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={36} skin={skinOf(row.skin ?? null)} />
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                  {mine ? `${row.name} (bạn)` : row.name}
+                  {mine ? L(`${row.name} (bạn)`, `${row.name} (you)`) : row.name}
                 </Text>
                 {i + 4 <= 10 ? <Badge label="Top 10" tone="warning" shape="tag" /> : null}
                 {row.streak > 0 ? <Text className="font-sans text-label text-muted">🔥 {row.streak}</Text> : null}
@@ -713,7 +724,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
             <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="w-8 text-center font-heavy text-body text-muted">—</Text>
               <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
-                Bạn — chưa vào top {rows.length}
+                {L(`Bạn — chưa vào top ${rows.length}`, `You — not in the top ${rows.length} yet`)}
               </Text>
               <Text className="font-heavy text-body text-ink">{you.points}</Text>
             </View>

@@ -143,9 +143,10 @@ export function mergeWeekly(
   return out;
 }
 
-/** "12 phút 05 giây" / "58 giây" */
-export function formatDuration(ms: number): string {
+/** "12 phút 05 giây" / "58 giây" — `en`: "12 min 05 s" / "58 s". */
+export function formatDuration(ms: number, en = false): string {
   const s = Math.round(ms / 1000);
   const m = Math.floor(s / 60);
-  return m > 0 ? `${m} phút ${String(s % 60).padStart(2, '0')} giây` : `${s} giây`;
+  const [min, sec] = en ? ['min', 's'] : ['phút', 'giây'];
+  return m > 0 ? `${m} ${min} ${String(s % 60).padStart(2, '0')} ${sec}` : `${s} ${sec}`;
 }

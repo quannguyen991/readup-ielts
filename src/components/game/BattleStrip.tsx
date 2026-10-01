@@ -16,6 +16,9 @@ import { useStarBalance } from '@/store/useStarBalance';
 import { CRIT_EVERY, enemyAt, FEVER_AT, ITEMS, levelProgress, MAX_HEARTS, type ItemKind } from '@/services/game/rules';
 import { staleBefore, useGameFx, type FxEvent } from '@/store/useGameFx';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
+import { enemyName } from '@/components/world/island-label';
+import { enemyNameByVi, enemyTaunt, itemKindDetail, itemKindName } from './game-labels';
 
 /** Cạnh sắc cho pixel (react-native-svg chưa khai kiểu thuộc tính này, nhưng web vẫn nhận). */
 const CRISP = { shapeRendering: 'crispEdges' } as object;
@@ -71,11 +74,12 @@ export function BattleStrip(props: { className?: string; step?: StripStep; charg
 
 function StepBar({ className, step, charge }: { className?: string; step: StripStep; charge?: StripCharge }) {
   const pct = step.total > 0 ? Math.min(1, (step.index + 1) / step.total) : 0;
+  const { L } = useL();
   return (
     <View className={className} accessibilityRole="progressbar" aria-valuenow={step.index + 1} aria-valuemax={step.total} style={{ gap: 6 }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <Text className="font-strong" style={{ fontSize: 14, color: '#334155' }}>
-          Câu {Math.min(step.index + 1, step.total)}/{step.total}
+          {L('Câu', 'Question')} {Math.min(step.index + 1, step.total)}/{step.total}
         </Text>
         {charge ? (
           <Text className="font-semi" style={{ fontSize: 14, color: '#64748B' }}>
@@ -162,8 +166,10 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   const sound = useGameStore((s) => s.sound);
   const hint = useGameFx((s) => s.hint);
   const events = useGameFx((s) => s.events);
+  const { L, locale } = useL();
 
   const enemy = enemyAt(enemyIndex);
+  const eName = enemyName(enemy, locale);
   const lv = levelProgress(xp);
   const hit = lastOf(events, since, ['hit']);
   const hurt = lastOf(events, since, ['hurt', 'blocked', 'knockout']);
@@ -195,12 +201,18 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   }, [chargeValue, charge]);
 
   const tryItem = (k: ItemKind) => {
-    if ((items[k] ?? 0) <= 0) return setNote(`Hết ${ITEMS[k].name}. Hạ quái hoặc làm nhiệm vụ ngày để kiếm thêm.`);
-    if (k === 'potion' && hearts >= MAX_HEARTS) return setNote('Tim đang đầy, để dành bình máu cho lúc cần.');
-    if (k === 'shield' && shield) return setNote('Khiên đang bật rồi.');
-    if (k === 'hint' && !hint) return setNote('Cú chỉ gợi ý được khi đang mở một câu trắc nghiệm hoặc câu gõ từ chưa trả lời.');
+    if ((items[k] ?? 0) <= 0)
+      return setNote(
+        L(
+          `Hết ${ITEMS[k].name}. Hạ quái hoặc làm nhiệm vụ ngày để kiếm thêm.`,
+          `Out of ${itemKindName(k, ITEMS[k].name, 'en')}. Defeat monsters or finish daily quests to get more.`,
+        ),
+      );
+    if (k === 'potion' && hearts >= MAX_HEARTS) return setNote(L('Tim đang đầy, để dành bình máu cho lúc cần.', 'Hearts are full — save the potion for when you need it.'));
+    if (k === 'shield' && shield) return setNote(L('Khiên đang bật rồi.', 'Your shield is already up.'));
+    if (k === 'hint' && !hint) return setNote(L('Cú chỉ gợi ý được khi đang mở một câu trắc nghiệm hoặc câu gõ từ chưa trả lời.', 'The owl can only help on an open multiple-choice or typing question you have not answered yet.'));
     const ok = useGameStore.getState().spendItem(k);
-    setNote(ok ? null : 'Câu này không dùng gợi ý được nữa.');
+    setNote(ok ? null : L('Câu này không dùng gợi ý được nữa.', "You can't use a hint on this question any more."));
     if (ok) setBag(false);
   };
 
@@ -224,7 +236,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
   }, []);
 
   return (
-    <View className={className} accessibilityLabel={`Cấp ${lv.level}, ${hearts} tim, đang đánh ${enemy.name}`}>
+    <View className={className} accessibilityLabel={L(`Cấp ${lv.level}, ${hearts} tim, đang đánh ${enemy.name}`, `Level ${lv.level}, ${hearts} hearts, fighting ${eName}`)}>
       <View
         ref={box}
         onLayout={(e) => setWidth(Math.round(e.nativeEvent.layout.width))}
@@ -275,21 +287,21 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             </View>
           ) : null}
           {combo >= 2 ? <Combo combo={combo} compact={narrow} fever={fever} /> : null}
-          <HudButton label={narrow ? undefined : 'Túi đồ'} hotkey={narrow ? undefined : 'I'} glyph="🎒" count={itemTotal} active={bag} onPress={() => setBag((b) => !b)} a11y="Mở túi đồ (phím I)" />
+          <HudButton label={narrow ? undefined : L('Túi đồ', 'Bag')} hotkey={narrow ? undefined : 'I'} glyph="🎒" count={itemTotal} active={bag} onPress={() => setBag((b) => !b)} a11y={L('Mở túi đồ (phím I)', 'Open bag (I key)')} />
           <HudButton
-            label={narrow ? undefined : 'Hỏi Cú'}
+            label={narrow ? undefined : L('Hỏi Cú', 'Ask Owl')}
             hotkey={narrow ? undefined : 'H'}
             owl
             count={hintCount}
             dim={!hint || hintCount <= 0}
             onPress={() => tryItem('hint')}
-            a11y="Hỏi Cú: dùng một gợi ý cho câu đang làm (phím H)"
+            a11y={L('Hỏi Cú: dùng một gợi ý cho câu đang làm (phím H)', 'Ask Owl: use a hint on this question (H key)')}
           />
           {!narrow ? (
             <Pressable
               accessibilityRole="switch"
               aria-checked={sound}
-              accessibilityLabel={sound ? 'Tắt âm thanh hiệu ứng (phím M)' : 'Bật âm thanh hiệu ứng (phím M)'}
+              accessibilityLabel={sound ? L('Tắt âm thanh hiệu ứng (phím M)', 'Turn sound effects off (M key)') : L('Bật âm thanh hiệu ứng (phím M)', 'Turn sound effects on (M key)')}
               onPress={() => useGameStore.getState().setSound(!sound)}
               style={({ hovered }: { hovered?: boolean }) => ({ width: 28, height: 28, borderRadius: 10, alignItems: 'center', justifyContent: 'center', backgroundColor: hovered ? 'rgba(255,255,255,0.18)' : 'rgba(255,255,255,0.1)' })}
             >
@@ -342,7 +354,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
         ) : null}
 
         {/* Sao đang có: mỗi lần được thêm sao, ô nảy lên và "+N ⭐" bay ra. */}
-        <View style={{ position: 'absolute', left: 12, top: 42, zIndex: 3 }} accessibilityLabel={`${stars} sao`}>
+        <View style={{ position: 'absolute', left: 12, top: 42, zIndex: 3 }} accessibilityLabel={L(`${stars} sao`, `${stars} stars`)}>
           <View key={`star-${stars}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 3, borderRadius: 8, paddingHorizontal: 6, paddingVertical: 2, backgroundColor: 'rgba(250,204,21,0.16)', ...(starPops.length ? anim('rg-pop', 320) : null) }}>
             <Text style={{ fontSize: 11 }}>⭐</Text>
             <Text className="font-heavy" style={{ fontSize: 11, color: GOLD }}>
@@ -371,7 +383,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               </View>
             ) : null}
             <Text className="font-strong" numberOfLines={1} style={{ flexShrink: 1, fontSize: 11, color: '#FCFBF8' }}>
-              {enemy.name}
+              {eName}
               {enemy.round > 0 ? <Text style={{ color: GOLD }}>{`  ★${enemy.round + 1}`}</Text> : null}
             </Text>
           </View>
@@ -417,7 +429,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             <View key={`t${enemyIndex}`} pointerEvents="none" style={{ position: 'absolute', right: 116, bottom: 26, width: 176, ...anim('rg-bubble', 3200, { delay: defeat ? 900 : 400, fill: 'forwards' }) }}>
               <View style={{ borderRadius: 10, backgroundColor: '#FFFFFF', paddingHorizontal: 9, paddingVertical: 6 }}>
                 <Text className="font-semi" style={{ fontSize: 11, color: '#1B1330' }}>
-                  {enemy.taunt}
+                  {enemyTaunt(enemy, locale)}
                 </Text>
               </View>
             </View>
@@ -432,7 +444,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           <View key={`boss-${enemyIndex}`} pointerEvents="none" style={{ position: 'absolute', left: 8, right: 8, top: 44, zIndex: 4, alignItems: 'center', ...anim('rg-bubble', 2800, { delay: defeat ? 700 : 150, fill: 'forwards' }) }}>
             <View style={{ borderRadius: 10, paddingHorizontal: 12, paddingVertical: 5, backgroundColor: 'rgba(127,29,29,0.9)', borderWidth: 1, borderColor: '#F87171' }}>
               <Text className="font-heavy" style={{ fontSize: 13, color: '#FEE2E2' }}>
-                ⚠ BOSS: {enemy.name} — hạ được rơi 2 món
+                {L(`⚠ BOSS: ${enemy.name} — hạ được rơi 2 món`, `⚠ BOSS: ${eName} — drops 2 items when defeated`)}
               </Text>
             </View>
           </View>
@@ -454,17 +466,17 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               <Pressable
                 key={k}
                 accessibilityRole="button"
-                accessibilityLabel={`Dùng ${ITEMS[k].name}, còn ${items[k] ?? 0}`}
+                accessibilityLabel={L(`Dùng ${ITEMS[k].name}, còn ${items[k] ?? 0}`, `Use ${itemKindName(k, ITEMS[k].name, 'en')}, ${items[k] ?? 0} left`)}
                 onPress={() => tryItem(k)}
                 style={{ flexShrink: 1, flexBasis: 220, flexGrow: 1, flexDirection: 'row', alignItems: 'center', gap: 10, padding: 9, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.07)', opacity: (items[k] ?? 0) > 0 ? 1 : 0.45 }}
               >
                 <Text style={{ fontSize: 22 }}>{ITEMS[k].glyph}</Text>
                 <View style={{ flex: 1 }}>
                   <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
-                    {ITEMS[k].name} <Text style={{ color: GOLD }}>×{items[k] ?? 0}</Text>
+                    {itemKindName(k, ITEMS[k].name, locale)} <Text style={{ color: GOLD }}>×{items[k] ?? 0}</Text>
                   </Text>
                   <Text className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)' }}>
-                    {ITEMS[k].detail}
+                    {itemKindDetail(k, ITEMS[k].detail, locale)}
                   </Text>
                 </View>
               </Pressable>
@@ -479,12 +491,12 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
             >
               <Text style={{ fontSize: 13 }}>{sound ? '🔊' : '🔇'}</Text>
               <Text className="font-semi" style={{ fontSize: 12, color: '#FFFFFF' }}>
-                Âm thanh: {sound ? 'bật' : 'tắt'}
+                {sound ? L('Âm thanh: bật', 'Sound: on') : L('Âm thanh: tắt', 'Sound: off')}
               </Text>
             </Pressable>
             <Pressable accessibilityRole="link" onPress={() => router.push('/shop' as never)}>
               <Text className="font-semi" style={{ fontSize: 12, color: GOLD }}>
-                Mua thêm ở Cửa hàng →
+                {L('Mua thêm ở Cửa hàng →', 'Get more in the Shop →')}
               </Text>
             </Pressable>
           </View>
@@ -547,8 +559,9 @@ function Shadow() {
 const HEART = ['.rr.rr.', 'rrrrrrr', 'rrrrrrr', '.rrrrr.', '..rrr..', '...r...'];
 
 function Hearts({ hearts }: { hearts: number }) {
+  const { L } = useL();
   return (
-    <View style={{ flexDirection: 'row', gap: 2 }} accessibilityLabel={`${hearts} trên ${MAX_HEARTS} tim`}>
+    <View style={{ flexDirection: 'row', gap: 2 }} accessibilityLabel={L(`${hearts} trên ${MAX_HEARTS} tim`, `${hearts} of ${MAX_HEARTS} hearts`)}>
       {Array.from({ length: MAX_HEARTS }, (_, i) => (
         <Svg key={i} width={11} height={10} viewBox="0 0 7 6" {...CRISP}>
           {HEART.flatMap((row, y) =>
@@ -563,6 +576,7 @@ function Hearts({ hearts }: { hearts: number }) {
 function Combo({ combo, compact, fever }: { combo: number; compact: boolean; fever: boolean }) {
   // Chấm tiến tới đòn chí mạng; đúng lúc vừa chí mạng thì đầy cả hàng.
   const pips = combo % CRIT_EVERY === 0 ? CRIT_EVERY : combo % CRIT_EVERY;
+  const { L } = useL();
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 8, paddingHorizontal: 7, paddingVertical: 3, backgroundColor: fever ? '#EA580C' : 'rgba(249,115,22,0.2)' }}>
       <View style={anim('rg-flame', fever ? 420 : 700, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
@@ -570,14 +584,14 @@ function Combo({ combo, compact, fever }: { combo: number; compact: boolean; fev
       </View>
       {fever && !compact ? (
         <Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 0.5, color: '#FFF7ED' }}>
-          BÙNG CHÁY
+          {L('BÙNG CHÁY', 'ON FIRE')}
         </Text>
       ) : null}
       <Text className="font-heavy" style={{ fontSize: 12, color: fever ? '#FFFFFF' : '#FDBA74' }}>
         ×{combo}
       </Text>
       {compact ? null : (
-        <View style={{ flexDirection: 'row', gap: 2 }} accessibilityLabel={`Còn ${CRIT_EVERY - (combo % CRIT_EVERY)} câu đúng nữa là chí mạng`}>
+        <View style={{ flexDirection: 'row', gap: 2 }} accessibilityLabel={L(`Còn ${CRIT_EVERY - (combo % CRIT_EVERY)} câu đúng nữa là chí mạng`, `${CRIT_EVERY - (combo % CRIT_EVERY)} more correct for a critical hit`)}>
           {Array.from({ length: CRIT_EVERY }, (_, i) => (
             <View key={i} style={{ width: 4, height: 4, backgroundColor: i < pips ? '#FDBA74' : 'rgba(255,255,255,0.2)' }} />
           ))}
@@ -628,11 +642,12 @@ const NUMBER_SHADOW = { textShadowColor: 'rgba(0,0,0,0.6)', textShadowOffset: { 
 
 /** Số sát thương bay lên trên đầu quái; chí mạng thì to và vàng. */
 function DamageFloat({ e }: { e: Extract<FxEvent, { kind: 'hit' }> }) {
+  const { L } = useL();
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: -20, right: -20, top: 26, alignItems: 'center', ...anim('rg-float', e.crit ? 1100 : 900, { delay: 120 }) }}>
       {e.crit ? (
         <Text className="font-heavy" style={{ fontSize: 11, color: GOLD, letterSpacing: 1 }}>
-          CHÍ MẠNG!
+          {L('CHÍ MẠNG!', 'CRITICAL!')}
         </Text>
       ) : null}
       <Text className="font-heavy" style={{ fontSize: e.crit ? 26 : 20, color: e.crit ? GOLD : '#FFFFFF', ...NUMBER_SHADOW }}>
@@ -657,19 +672,23 @@ function HeroFloat({ e }: { e: FxEvent }) {
 
 /** Thông báo giữa cảnh. */
 function CenterFloat({ e }: { e: FxEvent }) {
+  const { L, locale } = useL();
   const text =
     e.kind === 'blocked'
-      ? { t: '🛡️ Khiên chặn đòn — combo vẫn giữ', c: '#67E8F9', ms: 1400 }
+      ? { t: L('🛡️ Khiên chặn đòn — combo vẫn giữ', '🛡️ Shield blocked it — combo kept'), c: '#67E8F9', ms: 1400 }
       : e.kind === 'knockout'
-        ? { t: 'Bị đánh lui! Tim hồi đầy, quái hồi máu', c: '#FDA4AF', ms: 1800 }
+        ? { t: L('Bị đánh lui! Tim hồi đầy, quái hồi máu', 'Knocked back! Hearts refilled, monster healed'), c: '#FDA4AF', ms: 1800 }
         : e.kind === 'defeat'
           ? {
-              t: `${e.boss ? '🏆 Hạ BOSS ' : 'Hạ '}${e.name}! +${e.bonusXp} XP${e.loot.length > 0 ? ` · rơi ${e.loot.map((k) => `${ITEMS[k].glyph} ${ITEMS[k].name}`).join(', ')}` : ''}`,
+              t: L(
+                `${e.boss ? '🏆 Hạ BOSS ' : 'Hạ '}${e.name}! +${e.bonusXp} XP${e.loot.length > 0 ? ` · rơi ${e.loot.map((k) => `${ITEMS[k].glyph} ${ITEMS[k].name}`).join(', ')}` : ''}`,
+                `${e.boss ? '🏆 Defeated BOSS ' : 'Defeated '}${enemyNameByVi(e.name, locale)}! +${e.bonusXp} XP${e.loot.length > 0 ? ` · dropped ${e.loot.map((k) => `${ITEMS[k].glyph} ${itemKindName(k, ITEMS[k].name, 'en')}`).join(', ')}` : ''}`,
+              ),
               c: GOLD,
               ms: e.boss ? 2600 : 2000,
             }
           : e.kind === 'item'
-            ? { t: `${ITEMS[e.item].glyph} Dùng ${e.title}`, c: '#FFFFFF', ms: 1300 }
+            ? { t: L(`${ITEMS[e.item].glyph} Dùng ${e.title}`, `${ITEMS[e.item].glyph} Used ${itemKindName(e.item, e.title, 'en')}`), c: '#FFFFFF', ms: 1300 }
             : e.kind === 'batch' && e.xp > 0
               ? { t: `+${e.xp} XP`, c: GOLD, ms: 1300 }
               : null;
@@ -690,14 +709,15 @@ function ChargeBeam({ charge, left, right }: { charge: StripCharge; left: number
   const value = Math.max(0, Math.min(charge.total, charge.value));
   const ratio = value / charge.total;
   const full = value >= charge.total;
+  const { L } = useL();
   return (
     <View
       pointerEvents="none"
-      accessibilityLabel={`Nạp đòn ${value} trên ${charge.total} ${charge.unit}`}
+      accessibilityLabel={L(`Nạp đòn ${value} trên ${charge.total} ${charge.unit}`, `Charging ${value} of ${charge.total} ${charge.unit}`)}
       style={{ position: 'absolute', left, right, bottom: 50, zIndex: 3 }}
     >
       <Text className="font-strong" numberOfLines={1} style={{ marginBottom: 3, fontSize: 10, textAlign: 'center', color: full ? GOLD : 'rgba(255,255,255,0.72)' }}>
-        {full ? 'Chém!' : `Nạp đòn ${value}/${charge.total} ${charge.unit}`}
+        {full ? L('Chém!', 'Strike!') : L(`Nạp đòn ${value}/${charge.total} ${charge.unit}`, `Charging ${value}/${charge.total} ${charge.unit}`)}
       </Text>
       <View style={{ height: 6, borderRadius: 3, backgroundColor: 'rgba(255,255,255,0.12)', overflow: 'hidden' }}>
         <View
@@ -727,14 +747,15 @@ const FLAG = ['wr...', 'wrrr.', 'wrrrr', 'wrr..', 'w....', 'w....'];
 function Road({ step }: { step: StripStep }) {
   const done = Math.max(0, Math.min(step.total, step.index));
   const segments = step.total <= 30;
+  const { L } = useL();
   return (
     <View
       pointerEvents="none"
-      accessibilityLabel={`Câu ${Math.min(step.total, done + 1)} trên ${step.total}`}
+      accessibilityLabel={L(`Câu ${Math.min(step.total, done + 1)} trên ${step.total}`, `Question ${Math.min(step.total, done + 1)} of ${step.total}`)}
       style={{ position: 'absolute', left: 12, right: 12, bottom: 3, height: 11, flexDirection: 'row', alignItems: 'center', gap: 8, zIndex: 3 }}
     >
       <Text className="font-strong" style={{ fontSize: 10, color: 'rgba(255,255,255,0.75)' }}>
-        Câu {Math.min(step.total, done + 1)}/{step.total}
+        {L('Câu', 'Question')} {Math.min(step.total, done + 1)}/{step.total}
       </Text>
       <View style={{ flex: 1, height: 4, flexDirection: 'row', gap: segments ? 2 : 0, borderRadius: 2, overflow: 'hidden', backgroundColor: segments ? 'transparent' : 'rgba(255,255,255,0.14)' }}>
         {segments ? (

@@ -23,6 +23,7 @@ import { useDueCards, useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
 import type { CefrLevel } from '@/types/database';
 import { CrossFade } from '@/components/motion/Motion';
+import { useL } from '@/i18n/useL';
 
 /**
  * Kho bài đọc.
@@ -42,7 +43,26 @@ import { CrossFade } from '@/components/motion/Motion';
 
 const PAGE_SIZE = 9;
 
+/** Nhãn tiếng Anh cho bộ lọc (dữ liệu gốc ở `data/articles` giữ tiếng Việt). */
+const TIER_LABEL_EN: Record<keyof typeof TIER_LABEL, string> = {
+  p1: 'Passage 1 (~750 words)',
+  p2: 'Passage 2 (~900 words)',
+  p3: 'Passage 3 (~1050 words)',
+  short_academic: 'Short academic text',
+  headline: 'Official test links',
+  official_practice: 'Official tests',
+  sat_short: 'SAT — short text (25–150 words)',
+  sat_long: 'SAT — long text (500–750 words)',
+};
+const SAT_TEXT_TYPE_EN: Record<string, string> = {
+  literature: 'Literature',
+  history_social: 'History & social studies',
+  humanities: 'Humanities',
+  science: 'Science',
+};
+
 export default function LibraryScreen() {
+  const { L, en } = useL();
   const [search, setSearch] = useState('');
   const [exam, setExam] = useState<NonNullable<ArticleFilters['exam']>>('all');
   const [track, setTrack] = useState<NonNullable<ArticleFilters['track']>>('all');
@@ -110,27 +130,27 @@ export default function LibraryScreen() {
       <LightHero
         scene="home"
         badge="READING LIBRARY" art="verbal"
-        line1="Kho bài đọc"
-        line2="đọc kỹ, nhớ lâu hơn"
-        subtitle="Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng lúc sắp quên."
+        line1={L('Kho bài đọc', 'Reading library')}
+        line2={L('đọc kỹ, nhớ lâu hơn', 'read closely, remember longer')}
+        subtitle={L('Bài thật từ nguồn công khai. Đọc, chạm vào từ để tra ngay trong câu gặp nó, rồi ôn lại đúng lúc sắp quên.', 'Real texts from public sources. Read, tap a word to look it up right in its sentence, then review it just before you forget.')}
         footer={
           <>
-            <HeroStat value={String(stats.readable)} label="bài đọc đầy đủ" />
-            <HeroStat value={String(stats.ielts)} label="passage IELTS" />
-            <HeroStat value={String(stats.sat)} label="passage SAT" />
-            <HeroStat value={String(savedCount)} label="từ đã lưu" />
+            <HeroStat value={String(stats.readable)} label={L('bài đọc đầy đủ', 'full readings')} />
+            <HeroStat value={String(stats.ielts)} label={L('passage IELTS', 'IELTS passages')} />
+            <HeroStat value={String(stats.sat)} label={L('passage SAT', 'SAT passages')} />
+            <HeroStat value={String(savedCount)} label={L('từ đã lưu', 'saved words')} />
           </>
         }
       >
         <Button
-          label="Đọc song ngữ"
+          label={L('Đọc song ngữ', 'Bilingual reading')}
           variant="brand"
           size="lg"
           iconRight="arrow-right"
           onPress={() => router.push('/bilingual' as never)}
         />
         <Button
-          label="Mở sổ từ"
+          label={L('Mở sổ từ', 'Open notebook')}
           variant="outline"
           size="lg"
           iconLeft="letters"
@@ -153,14 +173,16 @@ export default function LibraryScreen() {
           <Icon name="languages" size={22} color="#FFFFFF" strokeWidth={1.9} />
         </View>
         <View className="min-w-[220px] flex-1">
-          <Text className="font-heavy text-cardTitle text-accent-900">Đọc song ngữ Anh–Việt</Text>
+          <Text className="font-heavy text-cardTitle text-accent-900">{L('Đọc song ngữ Anh–Việt', 'English–Vietnamese bilingual reading')}</Text>
           <Text className="mt-0.5 font-sans text-body text-accent-800">
-            {BILINGUAL_ARTICLES.length} bài viết riêng cho người học tiếng Việt, bản gốc và bản dịch
-            nằm cạnh nhau theo từng đoạn.
+            {L(
+              `${BILINGUAL_ARTICLES.length} bài viết riêng cho người học tiếng Việt, bản gốc và bản dịch nằm cạnh nhau theo từng đoạn.`,
+              `${BILINGUAL_ARTICLES.length} articles written for Vietnamese learners, with the original and translation side by side, paragraph by paragraph.`,
+            )}
           </Text>
         </View>
         <View className="flex-row items-center gap-1.5">
-          <Text className="font-strong text-body text-accent-700">Mở kho</Text>
+          <Text className="font-strong text-body text-accent-700">{L('Mở kho', 'Open')}</Text>
           <Icon name="arrow-right" size={16} color={color.accent} strokeWidth={2} />
         </View>
       </Pressable>
@@ -175,13 +197,13 @@ export default function LibraryScreen() {
               setSearch(text);
               setPage(0);
             }}
-            placeholder="Tìm bài đọc, chủ đề hoặc từ vựng…"
+            placeholder={L('Tìm bài đọc, chủ đề hoặc từ vựng…', 'Search readings, topics or words…')}
             placeholderTextColor={color.subtle}
             className="h-11 flex-1 font-sans text-body text-ink"
             style={{ outlineStyle: 'none' } as never}
           />
           {search ? (
-            <Pressable onPress={() => setSearch('')} accessibilityLabel="Xoá tìm kiếm">
+            <Pressable onPress={() => setSearch('')} accessibilityLabel={L('Xoá tìm kiếm', 'Clear search')}>
               <Icon name="close" size={16} color={color.subtle} />
             </Pressable>
           ) : null}
@@ -194,7 +216,7 @@ export default function LibraryScreen() {
           className="h-11 flex-row items-center gap-2 rounded-card border border-border bg-surface px-4"
         >
           <Icon name="filter" size={16} color={color.body} />
-          <Text className="font-semi text-body text-ink">Bộ lọc</Text>
+          <Text className="font-semi text-body text-ink">{L('Bộ lọc', 'Filters')}</Text>
           {activeFilters > 0 ? (
             <View className="h-5 min-w-[20px] items-center justify-center rounded-pill bg-primary-600 px-1.5">
               <Text className="font-strong text-white" style={{ fontSize: 10 }}>
@@ -208,8 +230,8 @@ export default function LibraryScreen() {
 
       {showFilters ? (
         <Card className="mt-3">
-          <FilterRow label="Kỳ thi">
-            <Chip label="Tất cả" active={exam === 'all'} onPress={() => selectExam('all')} />
+          <FilterRow label={L('Kỳ thi', 'Exam')}>
+            <Chip label={L('Tất cả', 'All')} active={exam === 'all'} onPress={() => selectExam('all')} />
             {EXAMS.map((e) => (
               <Chip
                 key={e.value}
@@ -220,18 +242,18 @@ export default function LibraryScreen() {
             ))}
           </FilterRow>
 
-          <FilterRow label={exam === 'sat' ? 'Loại văn bản' : 'Track'}>
+          <FilterRow label={exam === 'sat' ? L('Loại văn bản', 'Text type') : 'Track'}>
             {exam === 'sat' ? (
               <>
                 <Chip
-                  label="Tất cả"
+                  label={L('Tất cả', 'All')}
                   active={satTextType === 'all'}
                   onPress={() => setSatTextType('all')}
                 />
                 {SAT_TEXT_TYPES.map((t) => (
                   <Chip
                     key={t.value}
-                    label={t.label}
+                    label={en ? (SAT_TEXT_TYPE_EN[t.value] ?? t.label) : t.label}
                     active={satTextType === t.value}
                     onPress={() => setSatTextType(satTextType === t.value ? 'all' : t.value)}
                   />
@@ -239,7 +261,7 @@ export default function LibraryScreen() {
               </>
             ) : (
               <>
-                <Chip label="Tất cả" active={track === 'all'} onPress={() => setTrack('all')} />
+                <Chip label={L('Tất cả', 'All')} active={track === 'all'} onPress={() => setTrack('all')} />
                 <Chip
                   label="Academic"
                   active={track === 'academic'}
@@ -255,12 +277,12 @@ export default function LibraryScreen() {
           </FilterRow>
 
           {exam !== 'all' ? (
-            <FilterRow label="Khổ bài">
-              <Chip label="Tất cả" active={tier === 'all'} onPress={() => setTier('all')} />
+            <FilterRow label={L('Khổ bài', 'Length')}>
+              <Chip label={L('Tất cả', 'All')} active={tier === 'all'} onPress={() => setTier('all')} />
               {TIERS_BY_EXAM[exam].map((t) => (
                 <Chip
                   key={t}
-                  label={TIER_LABEL[t]}
+                  label={en ? TIER_LABEL_EN[t] : TIER_LABEL[t]}
                   active={tier === t}
                   onPress={() => setTier(tier === t ? 'all' : t)}
                 />
@@ -268,28 +290,28 @@ export default function LibraryScreen() {
             </FilterRow>
           ) : null}
 
-          <FilterRow label="Độ khó">
-            <Chip label="Tất cả" active={level === 'all'} onPress={() => setLevel('all')} />
+          <FilterRow label={L('Độ khó', 'Level')}>
+            <Chip label={L('Tất cả', 'All')} active={level === 'all'} onPress={() => setLevel('all')} />
             {CEFR_LEVELS.map((l) => (
               <Chip key={l} label={l} active={level === l} onPress={() => setLevel(l)} />
             ))}
           </FilterRow>
 
-          <FilterRow label="Chủ đề">
-            <Chip label="Tất cả" active={!topic} onPress={() => setTopic(undefined)} />
+          <FilterRow label={L('Chủ đề', 'Topic')}>
+            <Chip label={L('Tất cả', 'All')} active={!topic} onPress={() => setTopic(undefined)} />
             {TOPICS.map((t) => (
               <Chip
                 key={t.slug}
-                label={t.nameVi}
+                label={en ? t.name : t.nameVi}
                 active={topic === t.slug}
                 onPress={() => setTopic(topic === t.slug ? undefined : t.slug)}
               />
             ))}
           </FilterRow>
 
-          <FilterRow label="Dạng bài">
+          <FilterRow label={L('Dạng bài', 'Type')}>
             <Chip
-              label="Đọc được toàn văn"
+              label={L('Đọc được toàn văn', 'Full text')}
               active={kind === 'readable'}
               onPress={() => setKind(kind === 'readable' ? 'all' : 'readable')}
             />
@@ -300,7 +322,7 @@ export default function LibraryScreen() {
               thi chủ động đi tìm, không phải một thiếu sót.
             */}
             <Chip
-              label="Link đề chính thức"
+              label={L('Link đề chính thức', 'Official test links')}
               active={kind === 'headline'}
               onPress={() => setKind(kind === 'headline' ? 'all' : 'headline')}
             />
@@ -308,7 +330,7 @@ export default function LibraryScreen() {
 
           <Pressable onPress={reset} className="mt-1 flex-row items-center gap-1 self-start py-1">
             <Icon name="refresh" size={14} color={color.primary} />
-            <Text className="font-semi text-label text-primary-600">Bỏ hết bộ lọc</Text>
+            <Text className="font-semi text-label text-primary-600">{L('Bỏ hết bộ lọc', 'Clear all filters')}</Text>
           </Pressable>
         </Card>
       ) : null}
@@ -316,13 +338,13 @@ export default function LibraryScreen() {
       {/* ------------------------------------------------------- kết quả */}
       <View className="mt-5 flex-row flex-wrap items-center justify-between gap-3">
         <Text className="font-strong text-cardTitle text-ink">
-          {articles.length} bài{activeFilters > 0 || search ? ' khớp bộ lọc' : ''}
+          {L(`${articles.length} bài${activeFilters > 0 || search ? ' khớp bộ lọc' : ''}`, `${articles.length} ${activeFilters > 0 || search ? 'matching readings' : 'readings'}`)}
         </Text>
         <View className="flex-row flex-wrap items-center gap-1.5">
           {(['newest', 'shortest', 'easiest', 'hardest'] as const).map((s) => (
             <Chip
               key={s}
-              label={SORT_LABEL[s]}
+              label={L(SORT_LABEL[s], SORT_LABEL_EN[s])}
               active={sort === s}
               onPress={() => {
                 setSort(s);
@@ -346,9 +368,9 @@ export default function LibraryScreen() {
           <Card className="items-center py-10">
             <Icon name="search" size={26} color={color.subtle} />
             <Text className="mt-2 text-center font-sans text-body text-muted">
-              Không có bài nào khớp. Thử bỏ bớt bộ lọc.
+              {L('Không có bài nào khớp. Thử bỏ bớt bộ lọc.', 'Nothing matches. Try removing some filters.')}
             </Text>
-            <Button className="mt-3" variant="outline" label="Bỏ hết bộ lọc" onPress={reset} />
+            <Button className="mt-3" variant="outline" label={L('Bỏ hết bộ lọc', 'Clear all filters')} onPress={reset} />
           </Card>
         )}
         </CrossFade>
@@ -361,23 +383,23 @@ export default function LibraryScreen() {
       {/* --------------------------------------------------- ôn từ đã lưu */}
       <Card className="mt-5 flex-row flex-wrap items-center justify-between gap-3">
         <View className="min-w-[220px] flex-1">
-          <Text className="font-strong text-cardTitle text-ink">Sổ từ của bạn</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Sổ từ của bạn', 'Your notebook')}</Text>
           <Text className="mt-0.5 font-sans text-body text-muted">
             {savedCount === 0
-              ? 'Chưa có từ nào. Mở một bài rồi chạm vào từ bất kỳ để lưu kèm câu gốc.'
+              ? L('Chưa có từ nào. Mở một bài rồi chạm vào từ bất kỳ để lưu kèm câu gốc.', 'No words yet. Open a reading and tap any word to save it with its sentence.')
               : dueCount > 0
-                ? `${savedCount} từ đã lưu · ${dueCount} thẻ đến hạn ôn hôm nay`
-                : `${savedCount} từ đã lưu · chưa có thẻ nào đến hạn`}
+                ? L(`${savedCount} từ đã lưu · ${dueCount} thẻ đến hạn ôn hôm nay`, `${savedCount} saved words · ${dueCount} cards due today`)
+                : L(`${savedCount} từ đã lưu · chưa có thẻ nào đến hạn`, `${savedCount} saved words · nothing due yet`)}
           </Text>
         </View>
         <View className="flex-row flex-wrap gap-2">
           <Button
             variant="outline"
-            label="Mở sổ từ"
+            label={L('Mở sổ từ', 'Open notebook')}
             onPress={() => router.push('/vocabulary' as never)}
           />
           <Button
-            label="Ôn ngay"
+            label={L('Ôn ngay', 'Review now')}
             disabled={dueCount === 0}
             onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
           />
@@ -392,6 +414,12 @@ const SORT_LABEL: Record<'newest' | 'shortest' | 'easiest' | 'hardest', string> 
   shortest: 'Ngắn nhất',
   easiest: 'Dễ nhất',
   hardest: 'Khó nhất',
+};
+const SORT_LABEL_EN: Record<'newest' | 'shortest' | 'easiest' | 'hardest', string> = {
+  newest: 'Newest',
+  shortest: 'Shortest',
+  easiest: 'Easiest',
+  hardest: 'Hardest',
 };
 
 function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {

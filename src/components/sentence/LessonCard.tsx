@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from '@/components/ui';
+import { useL } from '@/i18n/useL';
 
 /**
  * THẺ BÀI của hai thư viện luyện câu (chép chính tả, dịch câu).
@@ -76,6 +77,7 @@ export function LessonCard({
 }) {
   const tone = LEVEL_TONE[level] ?? SKY;
   const [hover, setHover] = useState(false);
+  const { L } = useL();
   const lift =
     Platform.OS === 'web'
       ? ({
@@ -90,7 +92,7 @@ export function LessonCard({
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`${eyebrow ?? `Bài ${number}`}: ${title}`}
+      accessibilityLabel={`${eyebrow ?? L(`Bài ${number}`, `Lesson ${number}`)}: ${title}`}
       onPress={onPress}
       onHoverIn={() => setHover(true)}
       onHoverOut={() => setHover(false)}
@@ -103,7 +105,7 @@ export function LessonCard({
         </View>
         <View className="min-w-0 flex-1">
           <Text className="font-semi text-label text-muted" style={{ letterSpacing: 0.6, fontVariant: ['tabular-nums'] }}>
-            {eyebrow ?? `BÀI ${String(number).padStart(2, '0')}`}
+            {eyebrow ?? L(`BÀI ${String(number).padStart(2, '0')}`, `LESSON ${String(number).padStart(2, '0')}`)}
           </Text>
           <Text className="font-heavy text-label" style={{ color: tone.ink }}>
             {levelLabel}

@@ -11,6 +11,7 @@ import { useTravelPractice } from '@/store/useTravelPractice';
 import { Icon } from '@/components/ui/Icon';
 import { CuteFor } from '@/components/illust/HeroArt';
 import { color, layout, paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 export type TaskTone = 'brand' | 'paper';
 
@@ -65,6 +66,7 @@ export function TaskShell({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { L } = useL();
   // Màn làm bài của chép chính tả / viết câu báo "đang làm bài" để nền toa tàu chạy
   // (trang chọn bộ đề dùng variant 'full' nên không báo — nền giữ như cũ).
   const practice = variant === 'compact' && isTravelLightRoute(pathname);
@@ -99,7 +101,7 @@ export function TaskShell({
                     <Icon name="arrow-right" size={14} color={onBrand ? color.white : paper.ink} strokeWidth={2.2} />
                   </View>
                   <Text className="font-semi text-label" style={{ color: onBrand ? color.white : paper.ink }}>
-                    Thoát
+                    {L('Thoát', 'Exit')}
                   </Text>
                 </Pressable>
               </Link>

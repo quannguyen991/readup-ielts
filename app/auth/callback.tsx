@@ -8,6 +8,7 @@ import { describeAuthError } from '@/services/auth/errors';
 import { exchangeCode, getCurrentSession } from '@/services/auth/session';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * Trang Google/Facebook trả về sau khi người dùng bấm đồng ý.
@@ -30,6 +31,7 @@ export default function AuthCallbackScreen() {
   const applySession = useAuthStore((s) => s.applySession);
   const refreshProfile = useAuthStore((s) => s.refreshProfile);
   const [message, setMessage] = useState<string | null>(null);
+  const { L } = useL();
 
   useEffect(() => {
     let cancelled = false;
@@ -83,7 +85,7 @@ export default function AuthCallbackScreen() {
           }
         }
 
-        if (!cancelled) setMessage('Thiếu mã xác thực trong đường dẫn quay về.');
+        if (!cancelled) setMessage(pick(currentLocale(), 'Thiếu mã xác thực trong đường dẫn quay về.', 'The sign-in link is missing its verification code.'));
         return;
       }
 
@@ -113,14 +115,14 @@ export default function AuthCallbackScreen() {
             <View className="flex-row items-start gap-2">
               <Icon name="info" size={18} color={color.danger} />
               <View className="flex-1">
-                <Text className="font-strong text-cardTitle text-ink">Chưa đăng nhập được</Text>
+                <Text className="font-strong text-cardTitle text-ink">{L('Chưa đăng nhập được', "Couldn't sign you in")}</Text>
                 <Text className="mt-1 font-sans text-body text-muted">{message}</Text>
               </View>
             </View>
             <View className="mt-4 flex-row flex-wrap gap-2">
-              <Button label="Thử lại" onPress={() => router.replace('/auth/sign-in' as never)} />
+              <Button label={L('Thử lại', 'Try again')} onPress={() => router.replace('/auth/sign-in' as never)} />
               <Button
-                label="Học tiếp không cần tài khoản"
+                label={L('Học tiếp không cần tài khoản', 'Keep learning without an account')}
                 variant="outline"
                 onPress={() => router.replace('/dashboard' as never)}
               />
@@ -135,7 +137,7 @@ export default function AuthCallbackScreen() {
     <Screen>
       <View className="w-full self-center items-center py-16" style={{ maxWidth: 420 }}>
         <ActivityIndicator color={color.primary} />
-        <Text className="mt-3 font-sans text-body text-muted">Đang hoàn tất đăng nhập…</Text>
+        <Text className="mt-3 font-sans text-body text-muted">{L('Đang hoàn tất đăng nhập…', 'Finishing sign-in…')}</Text>
       </View>
     </Screen>
   );

@@ -1,5 +1,5 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { identify, listCities, nameOrAnon, namesOf, shortId, type Admin } from '@/lib/city-server';
+import { identify, listCities, localizeDistricts, nameOrAnon, namesOf, shortId, type Admin } from '@/lib/city-server';
 import { ECONOMY } from '@/services/city/economy';
 import {
   addHubNote,
@@ -16,6 +16,7 @@ import {
 } from '@/services/city/hub';
 import { MATERIAL_KINDS } from '@/services/city/materials';
 import { vnToday } from '@/services/gamification/golden';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * TRUNG TÂM TƯƠNG LAI — khu cao ốc chung, mọi người góp vật liệu cùng xây.
@@ -66,18 +67,22 @@ function meOf(rows: Base['rows'], viewer: string, day: string): NonNullable<HubS
   };
 }
 
-async function snapshotFor(admin: Admin, viewer: string | null): Promise<HubSnapshot> {
+async function snapshotFor(admin: Admin, viewer: string | null, request: Request): Promise<HubSnapshot> {
   const base = await loadBase(admin);
-  return { ...base.snapshot, me: viewer ? meOf(base.rows, viewer, vnToday(new Date()).key) : null };
+  return {
+    ...base.snapshot,
+    districts: localizeDistricts(base.snapshot.districts, request),
+    me: viewer ? meOf(base.rows, viewer, vnToday(new Date()).key) : null,
+  };
 }
 
 export async function GET(request: Request): Promise<Response> {
   try {
     const admin = getSupabaseAdmin();
     const viewer = await identify(request, admin);
-    return Response.json(await snapshotFor(admin, viewer));
+    return Response.json(await snapshotFor(admin, viewer, request));
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không đọc được Trung tâm.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không đọc được Trung tâm.', 'Could not load the Hub.') }, { status: 500 });
   }
 }
 
@@ -85,7 +90,7 @@ export async function POST(request: Request): Promise<Response> {
   try {
     const admin = getSupabaseAdmin();
     const viewer = await identify(request, admin);
-    if (!viewer) return Response.json({ error: 'Cần đăng nhập để góp vật liệu hoặc ghi bảng tin.', code: 'auth' }, { status: 401 });
+    if (!viewer) return Response.json({ error: msg(request, 'Cần đăng nhập để góp vật liệu hoặc ghi bảng tin.', 'Sign in to contribute materials or post on the board.'), code: 'auth' }, { status: 401 });
     const body = (await request.json().catch(() => ({}))) as { action?: string; materials?: unknown; id?: unknown; text?: unknown };
     const now = new Date();
     const day = vnToday(now).key;
@@ -105,30 +110,47 @@ export async function POST(request: Request): Promise<Response> {
         const have = typeof inv[k] === 'number' ? (inv[k] as number) : 0;
         const ask = typeof m[k] === 'number' ? (m[k] as number) : 0;
         if (ask > have + ECONOMY.dailyCap[k] + ECONOMY.exchange.dailyCap[k]) {
-          return Response.json({ error: 'Kho vật liệu trên máy chủ chưa khớp số bạn góp — mở lại thành phố để đồng bộ rồi thử lại.', code: 'materials' }, { status: 409 });
+          return Response.json({
+              error: msg(
+                request,
+                'Kho vật liệu trên máy chủ chưa khớp số bạn góp — mở lại thành phố để đồng bộ rồi thử lại.',
+                "The server's material stock doesn't match what you're contributing — reopen your city to sync, then try again.",
+              ),
+              code: 'materials',
+            }, { status: 409 });
         }
       }
       const r = applyContribution(cur, body.materials, String(body.id ?? ''), at, day);
       if (!r.ok) {
-        const msg =
+        const text =
           r.reason === 'daily'
-            ? `Mỗi ngày mỗi người góp tối đa 300 đơn vị. Hôm nay bạn còn góp được ${r.room}.`
+            ? msg(
+                request,
+                `Mỗi ngày mỗi người góp tối đa 300 đơn vị. Hôm nay bạn còn góp được ${r.room}.`,
+                `Each person can contribute up to 300 units a day. You can still contribute ${r.room} today.`,
+              )
             : r.reason === 'empty'
-              ? 'Chọn ít nhất một vật liệu để góp.'
-              : 'Lượt góp không hợp lệ.';
-        return Response.json({ error: msg, code: r.reason, room: r.room }, { status: 400 });
+              ? msg(request, 'Chọn ít nhất một vật liệu để góp.', 'Pick at least one material to contribute.')
+              : msg(request, 'Lượt góp không hợp lệ.', 'Invalid contribution.');
+        return Response.json({ error: text, code: r.reason, room: r.room }, { status: 400 });
       }
-      if (r.duplicate) return Response.json({ ok: true, duplicate: true, given: r.given, units: r.units, hub: await snapshotFor(admin, viewer) });
+      if (r.duplicate) return Response.json({ ok: true, duplicate: true, given: r.given, units: r.units, hub: await snapshotFor(admin, viewer, request) });
       next = r.user;
       extra = { given: r.given, units: r.units };
     } else if (body.action === 'note') {
       const r = addHubNote(cur, body.text, at, day);
       if (!r.ok) {
-        return Response.json({ error: r.reason === 'daily' ? 'Mỗi ngày bạn ghi được 3 lời trên bảng tin.' : 'Lời nhắn đang trống.', code: r.reason }, { status: 400 });
+        return Response.json({
+            error:
+              r.reason === 'daily'
+                ? msg(request, 'Mỗi ngày bạn ghi được 3 lời trên bảng tin.', 'You can post 3 notes on the board each day.')
+                : msg(request, 'Lời nhắn đang trống.', 'Your note is empty.'),
+            code: r.reason,
+          }, { status: 400 });
       }
       next = r.user;
     } else {
-      return Response.json({ error: 'Thao tác không hợp lệ.', code: 'invalid' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thao tác không hợp lệ.', 'Invalid action.'), code: 'invalid' }, { status: 400 });
     }
 
     const { error } = await admin
@@ -136,8 +158,8 @@ export async function POST(request: Request): Promise<Response> {
       .upsert([{ user_id: viewer, store_key: 'city_hub', payload: next as never, updated_at: at }], { onConflict: 'user_id,store_key' });
     if (error) return Response.json({ error: error.message }, { status: 500 });
     cache = null;
-    return Response.json({ ok: true, ...extra, hub: await snapshotFor(admin, viewer) });
+    return Response.json({ ok: true, ...extra, hub: await snapshotFor(admin, viewer, request) });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không ghi được.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không ghi được.', 'Could not save.') }, { status: 500 });
   }
 }

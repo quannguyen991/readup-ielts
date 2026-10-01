@@ -1,8 +1,9 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { anonymousName } from '@/services/gamification/display-name';
 import { addNote, cleanNote, EMPTY_HOME, EMPTY_SOCIAL, toggleLike, type CitySocial, type HomeLayout } from '@/services/city/life';
-import { identify, listCities, namesOf, safeName, shortId } from '@/lib/city-server';
+import { defaultCityName, identify, listCities, namesOf, safeName, shortId } from '@/lib/city-server';
 import { furnitureById } from '@/data/city/furniture';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * THĂM THÀNH PHỐ BẠN BÈ (kiểu Play Together).
@@ -46,15 +47,15 @@ export async function GET(request: Request): Promise<Response> {
 
     if (!id) {
       // Danh sách dùng chung với "Khu của mọi người" ở Trung tâm Tương lai.
-      return Response.json({ cities: await listCities(admin, 40) });
+      return Response.json({ cities: await listCities(admin, 40, request) });
     }
 
     const owner = await findOwner(admin, id);
-    if (!owner) return Response.json({ error: 'Không tìm thấy thành phố.' }, { status: 404 });
+    if (!owner) return Response.json({ error: msg(request, 'Không tìm thấy thành phố.', 'City not found.') }, { status: 404 });
     const { data } = await admin.from('user_state').select('store_key, payload').eq('user_id', owner).in('store_key', ['city', 'city_life', 'city_social']);
     const by = new Map(((data ?? []) as { store_key: string; payload: Record<string, unknown> | null }[]).map((r) => [r.store_key, r.payload ?? {}]));
     const city = by.get('city') ?? {};
-    if (!city.terrain) return Response.json({ error: 'Thành phố chưa có.' }, { status: 404 });
+    if (!city.terrain) return Response.json({ error: msg(request, 'Thành phố chưa có.', "This city hasn't been built yet.") }, { status: 404 });
     const names = await namesOf(admin, [owner]);
     const ownerName = names.get(owner) ?? anonymousName(owner);
     const soc = (by.get('city_social') ?? EMPTY_SOCIAL) as CitySocial;
@@ -62,7 +63,7 @@ export async function GET(request: Request): Promise<Response> {
     return Response.json({
       id,
       owner: ownerName,
-      name: safeName(city.name) ?? `Thành phố của ${ownerName}`,
+      name: safeName(city.name) ?? defaultCityName(ownerName, request),
       city: { terrain: city.terrain, regions: city.regions ?? [], roads: city.roads ?? {}, zones: city.zones ?? {}, works: city.works ?? {}, sites: city.sites ?? [], era: city.era ?? 1 },
       home: cleanHome((by.get('city_life') as { home?: unknown } | undefined)?.home),
       likes: Array.isArray(soc.likes) ? soc.likes.length : 0,
@@ -71,7 +72,7 @@ export async function GET(request: Request): Promise<Response> {
       notes: (Array.isArray(soc.notes) ? soc.notes : []).slice(0, 20).map((n) => ({ name: n.name, text: n.text, at: n.at })),
     });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không đọc được thành phố.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không đọc được thành phố.', 'Could not load the city.') }, { status: 500 });
   }
 }
 
@@ -79,11 +80,11 @@ export async function POST(request: Request): Promise<Response> {
   try {
     const admin = getSupabaseAdmin();
     const viewer = await identify(request, admin);
-    if (!viewer) return Response.json({ error: 'Cần đăng nhập để thích hoặc ghi sổ lưu bút.' }, { status: 401 });
+    if (!viewer) return Response.json({ error: msg(request, 'Cần đăng nhập để thích hoặc ghi sổ lưu bút.', 'Sign in to like or write in the guestbook.') }, { status: 401 });
     const body = (await request.json().catch(() => ({}))) as { id?: string; action?: string; text?: unknown };
     const owner = await findOwner(admin, String(body.id ?? ''));
-    if (!owner) return Response.json({ error: 'Không tìm thấy thành phố.' }, { status: 404 });
-    if (owner === viewer) return Response.json({ error: 'Đây là thành phố của bạn.' }, { status: 400 });
+    if (!owner) return Response.json({ error: msg(request, 'Không tìm thấy thành phố.', 'City not found.') }, { status: 404 });
+    if (owner === viewer) return Response.json({ error: msg(request, 'Đây là thành phố của bạn.', 'This is your own city.') }, { status: 400 });
 
     const { data } = await admin.from('user_state').select('payload').eq('user_id', owner).eq('store_key', 'city_social').maybeSingle();
     const cur = { ...EMPTY_SOCIAL, ...((data?.payload ?? {}) as Partial<CitySocial>) };
@@ -97,10 +98,15 @@ export async function POST(request: Request): Promise<Response> {
     } else if (body.action === 'note') {
       const names = await namesOf(admin, [viewer]);
       const r = addNote(cur, { by: me, name: names.get(viewer) ?? anonymousName(viewer), text: cleanNote(body.text), at: new Date().toISOString() });
-      if (!r.ok) return Response.json({ error: r.reason === 'daily' ? 'Mỗi ngày bạn ghi được một lời nhắn cho thành phố này.' : 'Lời nhắn đang trống.' }, { status: 400 });
+      if (!r.ok) return Response.json({
+            error:
+              r.reason === 'daily'
+                ? msg(request, 'Mỗi ngày bạn ghi được một lời nhắn cho thành phố này.', 'You can leave one note for this city each day.')
+                : msg(request, 'Lời nhắn đang trống.', 'Your note is empty.'),
+          }, { status: 400 });
       next = r.social;
     } else {
-      return Response.json({ error: 'Thao tác không hợp lệ.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thao tác không hợp lệ.', 'Invalid action.') }, { status: 400 });
     }
     const { error } = await admin
       .from('user_state')
@@ -108,6 +114,6 @@ export async function POST(request: Request): Promise<Response> {
     if (error) return Response.json({ error: error.message }, { status: 500 });
     return Response.json({ ok: true, likes: next.likes.length, liked, notes: next.notes.slice(0, 20).map((n) => ({ name: n.name, text: n.text, at: n.at })) });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không ghi được.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không ghi được.', 'Could not save.') }, { status: 500 });
   }
 }

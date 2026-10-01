@@ -15,6 +15,8 @@ import { STORAGE_PREFIX, storage } from '@/store/persist';
  */
 type LocaleState = {
   locale: Locale;
+  /** Lúc đổi gần nhất — đồng bộ giữa các máy: máy nào đổi sau thì thắng. */
+  changedAt: string;
   setLocale: (locale: Locale) => void;
 };
 
@@ -22,7 +24,8 @@ export const useLocaleStore = create<LocaleState>()(
   persist(
     (set) => ({
       locale: 'vi',
-      setLocale: (locale) => set({ locale }),
+      changedAt: '',
+      setLocale: (locale) => set({ locale, changedAt: new Date().toISOString() }),
     }),
     { name: `${STORAGE_PREFIX}locale`, storage: storage<LocaleState>() },
   ),

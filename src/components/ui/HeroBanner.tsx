@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
+import { Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { HeroArt } from '@/components/illust/HeroArt';
@@ -32,6 +33,7 @@ export function HeroBanner({
   illustration,
   className,
 }: HeroBannerProps) {
+  const { width } = useWindowDimensions();
   return (
     <LinearGradient
       colors={[...gradient.hero]}
@@ -55,9 +57,12 @@ export function HeroBanner({
         </View>
 
         {/* Cụm minh hoạ dễ thương (theo chủ đề ảnh cũ: progress / library / dashboard). */}
-        <View className="hidden md:flex">
-          <HeroArt scene={illustration?.startsWith('progress') ? 'progress' : illustration?.startsWith('library') ? 'verbal' : 'home'} size={right ? 100 : 140} />
-        </View>
+        {/* Chỉ màn đủ rộng: máy tính bảng dựng đứng / điện thoại bỏ để tiêu đề không xuống dòng. */}
+        {width >= HEADER_ART_MIN ? (
+          <View>
+            <HeroArt scene={illustration?.startsWith('progress') ? 'progress' : illustration?.startsWith('library') ? 'verbal' : 'home'} size={right ? 100 : 140} />
+          </View>
+        ) : null}
         {right ? (
           <View className="hidden lg:flex">{right}</View>
         ) : null}

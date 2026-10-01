@@ -240,13 +240,13 @@ export type SkinId = 'knight' | 'ninja' | 'mage' | 'samurai' | 'astronaut' | 'go
  * Skin nhân vật = đổi màu từng phần của cùng một hình (tóc/mũ, áo, áo choàng,
  * kiếm, chuôi, giày, thắt lưng). Mua bằng sao ở trang Đổi quà.
  */
-export const HERO_SKINS: Record<SkinId, { name: string; colors: Partial<Record<string, string>> }> = {
-  knight: { name: 'Hiệp sĩ xanh', colors: {} },
-  ninja: { name: 'Ninja bóng đêm', colors: { h: '#111827', a: '#1F2937', A: '#111827', c: '#DC2626', w: '#CBD5E1', g: '#9CA3AF', b: '#111827', l: '#DC2626' } },
-  mage: { name: 'Pháp sư tím', colors: { h: '#E5E7EB', a: '#7C3AED', A: '#4C1D95', c: '#FACC15', w: '#F0ABFC', g: '#FDE68A', b: '#4C1D95', l: '#FACC15' } },
-  samurai: { name: 'Samurai đỏ', colors: { h: '#0F172A', a: '#B91C1C', A: '#7F1D1D', c: '#0F172A', w: '#F1F5F9', g: '#F59E0B', b: '#1F2937', l: '#F59E0B' } },
-  astronaut: { name: 'Phi hành gia', colors: { h: '#E2E8F0', a: '#F8FAFC', A: '#CBD5E1', c: '#38BDF8', w: '#67E8F9', g: '#0EA5E9', b: '#94A3B8', l: '#0EA5E9' } },
-  gold: { name: 'Hiệp sĩ vàng', colors: { h: '#FDE68A', a: '#EAB308', A: '#A16207', c: '#7C3AED', w: '#FEF9C3', g: '#F59E0B', b: '#713F12', l: '#92400E' } },
+export const HERO_SKINS: Record<SkinId, { name: string; nameEn: string; colors: Partial<Record<string, string>> }> = {
+  knight: { name: 'Hiệp sĩ xanh', nameEn: 'Blue Knight', colors: {} },
+  ninja: { name: 'Ninja bóng đêm', nameEn: 'Shadow Ninja', colors: { h: '#111827', a: '#1F2937', A: '#111827', c: '#DC2626', w: '#CBD5E1', g: '#9CA3AF', b: '#111827', l: '#DC2626' } },
+  mage: { name: 'Pháp sư tím', nameEn: 'Purple Mage', colors: { h: '#E5E7EB', a: '#7C3AED', A: '#4C1D95', c: '#FACC15', w: '#F0ABFC', g: '#FDE68A', b: '#4C1D95', l: '#FACC15' } },
+  samurai: { name: 'Samurai đỏ', nameEn: 'Red Samurai', colors: { h: '#0F172A', a: '#B91C1C', A: '#7F1D1D', c: '#0F172A', w: '#F1F5F9', g: '#F59E0B', b: '#1F2937', l: '#F59E0B' } },
+  astronaut: { name: 'Phi hành gia', nameEn: 'Astronaut', colors: { h: '#E2E8F0', a: '#F8FAFC', A: '#CBD5E1', c: '#38BDF8', w: '#67E8F9', g: '#0EA5E9', b: '#94A3B8', l: '#0EA5E9' } },
+  gold: { name: 'Hiệp sĩ vàng', nameEn: 'Golden Knight', colors: { h: '#FDE68A', a: '#EAB308', A: '#A16207', c: '#7C3AED', w: '#FEF9C3', g: '#F59E0B', b: '#713F12', l: '#92400E' } },
 };
 
 /** Bảng màu của một sprite: quái lấy `main` cho thân, tối/sáng suy từ đó; nhân vật lấy màu theo `skin`. */
