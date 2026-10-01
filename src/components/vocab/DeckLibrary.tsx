@@ -8,6 +8,7 @@ import { Icon, SectionHeader } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { SAT_MATH_VOCAB_LESSONS, SAT_VERBAL_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { NOTEBOOK_SLUG, notebookDeck } from '@/data/study-decks';
+import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { byRecent, deckProgress, fold, isInProgress, type DeckProgress } from '@/services/vocab/deck-library';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
@@ -46,6 +47,7 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'learning', label: 'Đang học', labelEn: 'In progress', icon: 'flame' },
   { key: 'mine', label: 'Của bạn', labelEn: 'Yours', icon: 'bookmark' },
   { key: 'ielts', label: 'Chủ đề IELTS', labelEn: 'IELTS topics', icon: 'book' },
+  { key: 'listening', label: 'Nghe IELTS', labelEn: 'IELTS listening', icon: 'volume' },
   { key: 'satMath', label: 'SAT Math', labelEn: 'SAT Math', icon: 'grid' },
   { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
 ];
@@ -53,9 +55,12 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
 const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
   mine: { title: 'Của bạn', titleEn: 'Yours', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', subtitleEn: 'Words you saved while reading, plus decks you made', icon: 'bookmark' },
   ielts: { title: 'Chủ đề IELTS', titleEn: 'IELTS topics', subtitle: 'Mỗi bộ xếp từ dễ tới khó theo band', subtitleEn: 'Each deck goes from easy to hard by band', icon: 'book' },
+  listening: { title: 'Nghe IELTS', titleEn: 'IELTS listening', subtitle: 'Chia theo từng Section của đề', subtitleEn: 'Grouped by test Section', icon: 'volume' },
   satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
   satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
 };
+
+const LISTENING_SECTION_OF = new Map(LISTENING_DECKS.map((d) => [d.slug, d.section]));
 
 const WEB = Platform.OS === 'web';
 const LEARNING_PREVIEW = 6;
@@ -67,6 +72,7 @@ function lib(slug: string, title: string, words: readonly { word: string }[], su
 
 const STATIC_DECKS: LibDeck[] = [
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
+  ...LISTENING_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
   ...SAT_MATH_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
   ...SAT_VERBAL_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
 ];
@@ -131,6 +137,25 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
     </View>
   );
   const bySource = (s: DeckSource) => decks.filter((d) => d.look.source === s);
+  /** Nội dung một nhóm; bộ Nghe chia tiếp theo từng Section của đề, mỗi Section một dòng tiêu đề. */
+  const sourceBody = (s: DeckSource) => {
+    if (s === 'mine') return grid([...bySource('mine').map(card), notebookHint, createCard].filter(Boolean));
+    if (s !== 'listening') return grid(bySource(s).map(card));
+    const all = bySource('listening');
+    return LISTENING_SECTIONS.map((sec) => {
+      const items = all.filter((d) => LISTENING_SECTION_OF.get(d.slug) === sec.key);
+      if (!items.length) return null;
+      return (
+        <View key={String(sec.key)} className="mt-5">
+          <View className="flex-row flex-wrap items-baseline gap-x-2">
+            <Text className="font-strong text-body text-ink">{L(sec.title, sec.titleEn)}</Text>
+            <Text className="font-sans text-label text-muted">{L(sec.subtitle, sec.subtitleEn)}</Text>
+          </View>
+          {grid(items.map(card))}
+        </View>
+      );
+    });
+  };
 
   return (
     <View>
@@ -215,10 +240,10 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'ielts', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'ielts', 'listening', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
                   <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
-                  {grid(s === 'mine' ? [...bySource('mine').map(card), notebookHint, createCard].filter(Boolean) : bySource(s).map(card))}
+                  {sourceBody(s)}
                 </View>
               ))}
             </>
@@ -230,7 +255,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
           ) : (
             <View className="mt-5">
               <SectionHeader title={L(SECTION[filter].title, SECTION[filter].titleEn)} subtitle={L(SECTION[filter].subtitle, SECTION[filter].subtitleEn)} icon={SECTION[filter].icon} />
-              {grid(filter === 'mine' ? [...bySource('mine').map(card), notebookHint, createCard].filter(Boolean) : bySource(filter).map(card))}
+              {sourceBody(filter)}
             </View>
           )}
         </View>

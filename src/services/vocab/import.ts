@@ -13,6 +13,7 @@
 import commonWords from '@/data/common-words.json';
 import { SAT_RW_LEXICON } from '@/data/sat-rw-lexicon';
 import { SAT_VOCAB_TERMS } from '@/data/sat-math-vocab';
+import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { offlineGloss } from '@/services/dictionary/offline-glossary';
 import type { StudyWord } from './topic-study';
@@ -26,7 +27,7 @@ let INDEX: Map<string, Entry> | null = null;
 function index(): Map<string, Entry> {
   if (INDEX) return INDEX;
   const m = new Map<string, Entry>();
-  for (const t of VOCAB_TOPICS) {
+  for (const t of [...VOCAB_TOPICS, ...LISTENING_DECKS]) {
     for (const w of t.words) {
       const k = w.word.toLowerCase();
       if (!m.has(k)) m.set(k, { word: w.word, meaningVi: w.meaningVi, pos: w.pos, ipa: w.ipa, definitionEn: w.definitionEn, collocation: w.collocation, source: 'topic' });

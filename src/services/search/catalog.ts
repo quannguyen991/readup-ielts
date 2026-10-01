@@ -16,6 +16,7 @@ import { LIBRARY_AUDIO } from '@/data/audio-library';
 import { LIBRARY_VIDEOS } from '@/data/video-library';
 import { DICTATION_SETS, dictationTopicLabel } from '@/data/dictation-sets';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
+import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { SAT_RW_SKILL_LABEL, SAT_RW_UNITS } from '@/data/sat-rw-repository';
@@ -488,6 +489,21 @@ function buildEntries(): SearchEntry[] {
       exam: 'ielts',
       skill: 'vocab',
       href: `/vocabulary/topic/${topic.slug}`,
+    });
+  }
+  for (const deck of LISTENING_DECKS) {
+    out.push({
+      id: `vocab:${deck.slug}`,
+      kind: 'vocab',
+      title: { vi: `Nghe IELTS · ${deck.nameVi}`, en: `IELTS listening · ${deck.name}` },
+      subtitle: {
+        vi: `Từ vựng nghe IELTS · ${deck.words.length} từ`,
+        en: `IELTS listening vocabulary · ${deck.words.length} words`,
+      },
+      keywords: [deck.name, deck.nameVi, 'listening', 'nghe', 'từ vựng nghe', 'ielts listening'],
+      exam: 'ielts',
+      skill: 'vocab',
+      href: `/vocabulary/topic/${deck.slug}`,
     });
   }
   for (const lesson of SAT_VOCAB_LESSONS) {
