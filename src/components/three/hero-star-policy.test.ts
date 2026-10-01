@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { isLaptopLike } from './hero-star-policy';
+import { isLaptopLike, showsHeroLogo } from './hero-star-policy';
 
 const WIN = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0 Safari/537.36';
 const MAC = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15';
@@ -25,4 +25,11 @@ test('điện thoại và máy tính bảng: bỏ ngôi sao', () => {
 
 test('cửa sổ máy tính kéo quá hẹp: không nhồi ngôi sao cạnh chữ', () => {
   assert.equal(isLaptopLike({ width: 820, finePointer: true, userAgent: WIN, touchPoints: 0 }), false);
+});
+
+test('logo Band 9 3D: có trên máy tính bảng và máy tính, không có trên điện thoại', () => {
+  assert.equal(showsHeroLogo({ width: 1366 }), true);
+  assert.equal(showsHeroLogo({ width: 1024 }), true);
+  assert.equal(showsHeroLogo({ width: 768 }), true);
+  assert.equal(showsHeroLogo({ width: 390 }), false);
 });

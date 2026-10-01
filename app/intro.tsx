@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
-import { Hero3D, useHeroStar } from '@/components/three/Hero3D';
+import { Hero3D, useHeroLogo } from '@/components/three/Hero3D';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
@@ -185,8 +185,8 @@ export default function IntroScreen() {
     void rememberInviteCode(typeof ref === 'string' ? ref : null);
   }, [ref]);
   const wide = width >= 768;
-  // Ngôi sao to chỉ có trên máy tính; điện thoại và máy tính bảng bỏ hẳn cho nhẹ máy.
-  const star = useHeroStar();
+  // Logo Band 9 3D: máy tính và máy tính bảng; điện thoại bỏ hẳn cho gọn.
+  const star = useHeroLogo();
 
   /*
     Người ĐÃ HỌC được mời quay lại chỗ đang dở, ngay dòng đầu tiên.

@@ -26,3 +26,12 @@ export function isLaptopLike({
   const tablet = /iPad|iPhone|Android|Mobile/i.test(userAgent) || (/Macintosh/.test(userAgent) && touchPoints > 1);
   return finePointer && !tablet && width >= 900;
 }
+
+/**
+ * Logo Band 9 3D ở trang giới thiệu: hiện trên MÁY TÍNH VÀ MÁY TÍNH BẢNG
+ * (người dùng 01/10/2026: "cho hiện logo 3D trên máy tính bảng"), chỉ điện
+ * thoại bỏ — màn hẹp không có chỗ cạnh chữ. Ngưỡng 768px là bề rộng iPad dọc.
+ */
+export function showsHeroLogo({ width }: { width: number }): boolean {
+  return width >= 768;
+}
