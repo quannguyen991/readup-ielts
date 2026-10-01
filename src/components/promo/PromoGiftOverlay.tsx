@@ -13,6 +13,8 @@
 import React, { useState } from 'react';
 import { Modal, Platform, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { usePathname } from 'expo-router';
+import { onLegacySite } from '@/lib/site';
 
 import { useHydrated } from '@/components/layout/useHydrated';
 import { applyStarPass } from '@/lib/billing/star-pass';
@@ -42,10 +44,12 @@ export function PromoGiftOverlay() {
   const prizes = useRewardStore((s) => s.prizes);
   const claimPrize = useRewardStore((s) => s.claimPrize);
   const [hidden, setHidden] = useState(snoozed);
+  const pathname = usePathname();
   const [done, setDone] = useState<null | { pro: string | null }>(null);
 
   const available = hydrated && giftAvailable(todayKey(), prizes);
-  if (!hydrated || hidden || (!available && !done)) return null;
+  // Trang nhận dữ liệu khi chuyển tên miền: không chen quà vào giữa bước chuyển.
+  if (!hydrated || hidden || (!available && !done) || pathname === '/chuyen-du-lieu' || onLegacySite()) return null;
 
   const claim = () => {
     if (!claimPrize(PROMO.id, PROMO.giftStars)) {
