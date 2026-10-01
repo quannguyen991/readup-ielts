@@ -21,7 +21,7 @@ import { applyStarPass, type PassResult } from '@/lib/billing/star-pass';
 import { MASCOTS } from '@/services/game/mascots';
 import { currentStreak, dailyCapFor, dateKey } from '@/services/gamification/points';
 import { inPromo } from '@/services/gamification/promo';
-import { SHOP_ITEMS, formatStars, spendIdeas, type ShopItem, type ShopItemKind } from '@/services/gamification/shop';
+import { DEFAULT_LOOK, SHOP_ITEMS, formatStars, spendIdeas, type ShopItem, type ShopItemKind } from '@/services/gamification/shop';
 import { useBillingStore } from '@/store/useBillingStore';
 import { useGameStore } from '@/store/useGameStore';
 import { skinOf, useRewardStore, type WearSlot } from '@/store/useRewardStore';
@@ -281,11 +281,11 @@ export default function ShopScreen() {
         })}
       </View>
 
-      {reward.theme || reward.studyBg ? (
+      {reward.theme || (reward.studyBg && reward.studyBg !== DEFAULT_LOOK) ? (
         <View className="mt-4 flex-row flex-wrap items-center gap-3 rounded-card p-3.5" style={{ backgroundColor: '#FBF6EC', borderWidth: 1, borderColor: '#E9D7AE' }}>
           <BrandMark size={34} />
           <Text className="min-w-0 flex-1 font-semi text-body text-ink">
-            Bạn đang dùng {reward.theme && reward.studyBg ? 'giao diện và nền học riêng' : reward.theme ? 'giao diện riêng' : 'nền học riêng'}. Món đã đổi vẫn giữ trong túi, dùng lại lúc nào cũng được.
+            Bạn đang dùng {reward.theme && reward.studyBg && reward.studyBg !== DEFAULT_LOOK ? 'giao diện và nền học riêng' : reward.theme ? 'giao diện riêng' : 'nền học riêng'}. Món đã đổi vẫn giữ trong túi, dùng lại lúc nào cũng được.
           </Text>
           <Button
             label="Về nền vàng kim mặc định"
@@ -357,9 +357,11 @@ export default function ShopScreen() {
                   {section.kind === 'theme' || section.kind === 'studyBg' ? (
                     <DefaultLookCard
                       what={section.kind === 'theme' ? 'Giao diện' : 'Nền học'}
-                      active={section.kind === 'theme' ? !reward.theme : !reward.studyBg}
+                      active={section.kind === 'theme' ? !reward.theme : reward.studyBg === DEFAULT_LOOK || (!reward.studyBg && !reward.theme)}
                       onPress={() => {
-                        reward.equip(section.kind === 'theme' ? 'theme' : 'studyBg', null);
+                        // Nền học: ghi rõ 'mặc định' để Giao diện đang dùng không kéo nền theo màu của nó.
+                        if (section.kind === 'theme') reward.equip('theme', null);
+                        else reward.equip('studyBg', DEFAULT_LOOK);
                         say(section.kind === 'theme' ? 'Đã về giao diện mặc định Band 9.' : 'Đã về nền học mặc định Band 9 — kem vàng kim.');
                       }}
                     />
@@ -423,7 +425,8 @@ const CARD_MOTION = (Platform.OS === 'web' ? { transition: 'border-color 180ms e
  * món đang dùng, về nền kem vàng kim của Band 9 (người dùng 01/10/2026: "thêm
  * cái nền mặc định có thể trở về như cũ").
  */
-function DefaultLookCard({ what, active, onPress }: { what: string; active: boolean; onPress: () => void }) {
+function DefaultLookCard({ what, active, onPress }: { what: 'Giao diện' | 'Nền học'; active: boolean; onPress: () => void }) {
+  const sidebar = what === 'Giao diện';
   return (
     <Pressable
       accessibilityRole="button"
@@ -433,13 +436,25 @@ function DefaultLookCard({ what, active, onPress }: { what: string; active: bool
       className="rounded-card bg-white p-3"
       style={{ borderWidth: active ? 2 : 1, borderColor: active ? '#B8955A' : '#E9DFC8', gap: 10, height: '100%' }}
     >
-      <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4EFE4' }}>
-        <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 26, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: '#B8955A' }) }} />
-        <BrandMark size={44} />
-      </View>
+      {sidebar ? (
+        // Xem trước THANH BÊN mặc định: nền kem, logo, một mục đang mở dải vàng kim.
+        <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', flexDirection: 'row', backgroundColor: '#F4EFE4' }}>
+          <View style={{ width: '46%', padding: 8, gap: 6, backgroundColor: '#FBF8F1', borderRightWidth: 1, borderRightColor: '#E9DFC8' }}>
+            <BrandMark size={18} />
+            <View style={{ height: 14, borderRadius: 7, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: '#B8955A' }) }} />
+            <View style={{ height: 6, width: '70%', borderRadius: 3, backgroundColor: '#E2D6BD' }} />
+            <View style={{ height: 6, width: '55%', borderRadius: 3, backgroundColor: '#E2D6BD' }} />
+          </View>
+        </View>
+      ) : (
+        <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4EFE4' }}>
+          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 26, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: '#B8955A' }) }} />
+          <BrandMark size={44} />
+        </View>
+      )}
       <View>
         <Text className="font-heavy text-body text-ink">Mặc định · Band 9</Text>
-        <Text className="font-sans text-label text-muted">Kem vàng kim · miễn phí</Text>
+        <Text className="font-sans text-label text-muted">{sidebar ? 'Thanh bên vàng kim · miễn phí' : 'Nền kem vàng kim · miễn phí'}</Text>
       </View>
       <View className="items-center rounded-pill py-1.5" style={{ backgroundColor: active ? '#F3E6C8' : '#B8955A' }}>
         <Text className="font-strong text-label" style={{ color: active ? '#6B5320' : '#0F1D33' }}>

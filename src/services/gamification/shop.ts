@@ -431,6 +431,13 @@ export type RewardPayload = PurchaseState & {
  * Gộp hai máy: món đã mua lấy số lớn hơn, sao đã tiêu lấy số lớn hơn (không bao
  * giờ để số dư phình ra vì gộp), ngày giữ chuỗi lấy hợp, đồ đang đeo theo máy đổi sau.
  */
+/**
+ * Ô Nền học = DEFAULT_LOOK nghĩa là người dùng CHỦ ĐỘNG chọn nền kem vàng kim
+ * mặc định của Band 9 — khác với null (chưa chọn gì, khi đó nền đi theo Giao
+ * diện đang dùng). Không phải món trong cửa hàng, không cần sở hữu.
+ */
+export const DEFAULT_LOOK = 'band9-default';
+
 export function mergeReward(local: RewardPayload | null, remote: RewardPayload | null): RewardPayload | null {
   if (!local) return remote;
   if (!remote) return local;
