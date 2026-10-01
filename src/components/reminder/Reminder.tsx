@@ -30,7 +30,7 @@ export function ReminderRunner() {
       if (!dueNow(now, time, lastFired, today, studied)) return;
       if (Notification.permission !== 'granted') return;
       fired(today);
-      const n = new Notification('Đến giờ học ReadUp rồi', { body: 'Hôm nay bạn chưa học phút nào — 15 phút thôi là giữ được chuỗi ngày.', tag: 'readup-daily' });
+      const n = new Notification('Đến giờ học Band 9 rồi', { body: 'Hôm nay bạn chưa học phút nào — 15 phút thôi là giữ được chuỗi ngày.', tag: 'readup-daily' });
       n.onclick = () => {
         window.focus();
         n.close();
@@ -84,7 +84,7 @@ export function ReminderCard() {
         {PRESETS.map((p) => {
           const on = time === p;
           return (
-            <Pressable key={p} accessibilityRole="button" aria-selected={on} onPress={() => saveTime(p)} className="rounded-pill px-3.5 py-2" style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#E2E8F0' }}>
+            <Pressable key={p} accessibilityRole="button" aria-selected={on} onPress={() => saveTime(p)} className="rounded-pill px-3.5 py-2" style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F0EBE2' }}>
               <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                 {p}
               </Text>
@@ -113,13 +113,13 @@ export function ReminderCard() {
       <Text className="mt-3 font-sans text-label text-muted">
         {enabled
           ? perm === 'granted'
-            ? `Đang bật: trình duyệt sẽ nhắc lúc ${time} nếu có một tab ReadUp đang mở.`
+            ? `Đang bật: trình duyệt sẽ nhắc lúc ${time} nếu có một tab Band 9 đang mở.`
             : perm === 'denied'
-              ? 'Trình duyệt đang chặn thông báo của ReadUp — mở lại quyền trong cài đặt trang, hoặc dùng tệp lịch.'
+              ? 'Trình duyệt đang chặn thông báo của Band 9 — mở lại quyền trong cài đặt trang, hoặc dùng tệp lịch.'
               : perm === 'default'
                 ? 'Chưa cho phép thông báo — tắt rồi bật lại để trình duyệt hỏi quyền, hoặc dùng tệp lịch.'
                 : 'Trình duyệt này không hỗ trợ thông báo — dùng tệp lịch để được nhắc.'
-          : 'ReadUp chưa có thông báo đẩy khi đóng app. Muốn được nhắc cả lúc không mở ReadUp (trên điện thoại), hãy thêm tệp lịch vào Google Calendar / lịch của máy.'}
+          : 'Band 9 chưa có thông báo đẩy khi đóng app. Muốn được nhắc cả lúc không mở Band 9 (trên điện thoại), hãy thêm tệp lịch vào Google Calendar / lịch của máy.'}
       </Text>
       {msg ? <Text className="mt-2 font-sans text-label text-ink">{msg}</Text> : null}
     </Card>

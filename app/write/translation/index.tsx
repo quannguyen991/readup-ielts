@@ -27,9 +27,9 @@ import { color } from '@/theme/tokens';
 
 /** Màu đi theo thứ tự bậc, từ lam trời lên hồng đậm — nhìn dải màu là biết đang ở đoạn nào. */
 const STEP_COLORS: readonly (readonly [string, string])[] = [
-  ['#38BDF8', '#0369A1'],
-  ['#818CF8', '#4338CA'],
-  ['#A78BFA', '#6D28D9'],
+  ['#CEA662', '#7D5E27'],
+  ['#E0C699', '#BF9243'],
+  ['#E8CD9D', '#C3923E'],
   ['#E879F9', '#A21CAF'],
   ['#FB7185', '#BE123C'],
 ];
@@ -138,7 +138,7 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
 
 function Pill({ value, label }: { value: string; label: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1.5, borderColor: '#E2E8F0' }}>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1.5, borderColor: '#F0EBE2' }}>
       <Text className="font-heavy text-body" style={{ color: color.primary }}>
         {value}
       </Text>

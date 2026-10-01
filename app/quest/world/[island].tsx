@@ -86,7 +86,7 @@ export default function IslandScreen() {
       <View className="absolute left-3 right-3 top-3 flex-row flex-wrap items-center justify-between gap-2" style={{ zIndex: 5 }}>
         <View className="flex-row items-center gap-2">
           <Pressable onPress={() => router.replace('/quest/world' as never)} className="flex-row items-center gap-1.5 rounded-pill px-3 py-2" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
-            <Icon name="chevron-left" size={16} color="#E2E8F0" />
+            <Icon name="chevron-left" size={16} color="#F0EBE2" />
             <Text className="font-semi text-label text-white">Bản đồ</Text>
           </Pressable>
           <View className="flex-row items-center gap-1.5 rounded-pill py-1 pl-1 pr-3" style={{ backgroundColor: 'rgba(0,0,0,0.35)' }}>
@@ -98,7 +98,7 @@ export default function IslandScreen() {
             </Text>
           </View>
         </View>
-        <Text className="font-semi text-label" style={{ color: 'rgba(226,232,240,0.75)' }}>
+        <Text className="font-semi text-label" style={{ color: 'rgba(240, 235, 226,0.75)' }}>
           ← → đi · E vào học · Esc về bản đồ
         </Text>
       </View>

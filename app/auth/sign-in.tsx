@@ -201,7 +201,7 @@ export default function SignInScreen() {
                   label="Tiếp tục với Facebook"
                   mark="f"
                   markColor="#FFFFFF"
-                  markBg="#1877F2"
+                  markBg="#C59645"
                   busy={busy === 'facebook'}
                   disabled={!available || busy !== null}
                   onPress={() => startOAuth('facebook')}

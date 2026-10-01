@@ -320,7 +320,7 @@ export default function CheckoutScreen() {
           <Card>
             <View className="flex-row items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="grid" color="#4A7FE8" size={36} />
+                <SealIcon name="grid" color="#A8843F" size={36} />
               </View>
               <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Quét mã</Text>
             </View>
@@ -346,7 +346,7 @@ export default function CheckoutScreen() {
           <Card>
             <View className="flex-row items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="pencil" color="#0EA5E9" size={36} />
+                <SealIcon name="pencil" color="#B07A3A" size={36} />
               </View>
               <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Hoặc chuyển tay</Text>
             </View>

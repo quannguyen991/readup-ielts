@@ -14,8 +14,9 @@ import {
   type HireCheck,
   type Site,
 } from '@/services/city/construction';
-import { resolveEconomy, type StudyEvent } from '@/services/city/economy';
-import { add, EMPTY_MATERIALS, subtract, type Materials } from '@/services/city/materials';
+import { exchange, recordContribution, resolveEconomy, type ExchangeResult, type StudyEvent } from '@/services/city/economy';
+import type { HubSnapshot } from '@/services/city/hub';
+import { add, EMPTY_MATERIALS, hasMaterials, subtract, type Materials } from '@/services/city/materials';
 import {
   canLandWork,
   canPlace,
@@ -33,6 +34,7 @@ import { canAdvanceEra } from '@/services/city/progression';
 import { EMPTY_CITY, type CityPayload } from '@/services/city/sync';
 import { generateTerrain, START_REGIONS, type LandWork } from '@/services/city/terrain';
 import { vnToday } from '@/services/gamification/golden';
+import { useRewardStore } from './useRewardStore';
 
 /**
  * THÀNH PHỐ TRI THỨC của người học. Luật ở `src/services/city/*` (thuần, có
@@ -62,7 +64,22 @@ type Actions = {
   rename: (name: string) => void;
   /** Hoàn tất các bước đã đủ điều kiện (móng hết giờ đông cứng…) và dùng ca còn trong kho. */
   settleAll: () => void;
+  /**
+   * CHỢ VẬT LIỆU: đổi sao lấy vật liệu (tất cả hoặc không). Kiểm luật trước
+   * (`exchange`: trần ngày, đủ sao), rồi TRỪ SAO TRƯỚC, sau cùng mới cộng kho —
+   * không có trường hợp mất sao mà không nhận vật liệu.
+   */
+  buyMaterials: (order: Partial<Materials>, balance: number) => ExchangeResult;
+  /**
+   * Góp vật liệu cho Trung tâm Tương lai. Chỉ trừ kho SAU KHI máy chủ xác nhận
+   * (ghi sổ có mã — gộp hai máy không làm vật liệu đã góp hiện lại).
+   */
+  contributeToHub: (materials: Partial<Materials>, token: string | null) => Promise<HubContributeResult>;
 };
+
+export type HubContributeResult =
+  | { ok: true; given: Partial<Materials>; hub: HubSnapshot | null }
+  | { ok: false; reason: 'auth' | 'materials' | 'offline' | 'daily' | 'empty' | 'invalid' | 'server'; message?: string; room?: number };
 
 export type CityState = CityPayload & Actions;
 
@@ -247,6 +264,41 @@ export const useCityStore = create<CityState>()(
         const next = work({ ...s, sites: settled });
         if (JSON.stringify(next.sites) !== JSON.stringify(s.sites) || next.shiftBank !== s.shiftBank) set({ ...next, updatedAt: stamp() });
       },
+
+      buyMaterials: (order, balance) => {
+        const s = get();
+        const id = `buy-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;
+        const r = exchange(s, order, balance, vnToday(now()).key, id);
+        if (!r.ok) return r;
+        // Trừ sao trước; không trừ được (số dư vừa đổi ở tab khác…) thì không cộng gì.
+        if (!useRewardStore.getState().spendStars(r.cost, balance)) return { ok: false, reason: 'stars', cost: r.cost };
+        set({ ...r.state, updatedAt: stamp() });
+        return r;
+      },
+
+      contributeToHub: async (materials, token) => {
+        if (!token) return { ok: false, reason: 'auth' };
+        if (!hasMaterials(get().inventory, materials)) return { ok: false, reason: 'materials' };
+        const id = `hub-${Date.now().toString(36)}-${Math.floor(Math.random() * 1e6).toString(36)}`;
+        let res: Response;
+        try {
+          res = await fetch('/api/city-hub', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'contribute', materials, id }),
+          });
+        } catch {
+          return { ok: false, reason: 'offline' };
+        }
+        const body = (await res.json().catch(() => ({}))) as { ok?: boolean; error?: string; code?: string; room?: number; given?: Partial<Materials>; hub?: HubSnapshot };
+        if (!res.ok || !body.ok) {
+          const code = body.code === 'auth' || body.code === 'daily' || body.code === 'empty' || body.code === 'invalid' || body.code === 'materials' ? body.code : 'server';
+          return { ok: false, reason: code, message: body.error, room: body.room };
+        }
+        const given = body.given ?? materials;
+        set({ ...recordContribution(get(), given, vnToday(now()).key, id), updatedAt: stamp() });
+        return { ok: true, given, hub: body.hub ?? null };
+      },
     }),
     {
       name: `${STORAGE_PREFIX}city`,
@@ -278,6 +330,7 @@ export function cityPayloadOf(s: CityPayload): CityPayload {
     name: s.name,
     lifetime: s.lifetime,
     updatedAt: s.updatedAt,
+    ledger: s.ledger ?? {},
   };
 }
 

@@ -65,11 +65,30 @@ test('lật thẻ tự chấm không gọi answer() (0 vật liệu)', () => {
   assert.ok(!src.includes('.answer('), 'thẻ lật tự chấm không được chấm cho game / vật liệu');
 });
 
-test('không có đường mua vật liệu bằng sao hay tiền', () => {
+test('đổi sao lấy vật liệu (luật mới 30/09/2026): qua `exchange` có trần ngày, trừ sao trước; không có đường trả tiền thật', () => {
   const store = read('src/store/useCityStore.ts');
-  assert.ok(!/spendStars|buy\s*:|price|checkout/i.test(store), 'store thành phố không có hành động mua');
+  assert.ok(!/checkout|payment|billing|useBillingStore/i.test(store), 'store thành phố không nối thanh toán tiền thật');
+  const at = store.indexOf('buyMaterials: (order, balance) => {');
+  assert.ok(at > 0, 'có hành động buyMaterials');
+  const body = store.slice(at, store.indexOf('contributeToHub:', at));
+  const ex = body.indexOf('exchange(');
+  const spend = body.indexOf('spendStars(');
+  const setAt = body.indexOf('set(');
+  assert.ok(ex > 0 && spend > ex && setAt > spend, 'kiểm luật → trừ sao → mới cộng kho');
   const economy = read('src/services/city/economy.ts');
-  assert.ok(!/\bstars?\b|payment|price/i.test(economy), 'kinh tế không có nguồn sao / tiền');
+  assert.ok(!/payment|checkout|billing/i.test(economy), 'kinh tế không có nguồn tiền thật');
+  assert.ok(/exchange:\s*\{[\s\S]*dailyCap/.test(economy), 'chợ vật liệu có trần mua mỗi ngày');
+});
+
+test('góp Trung tâm: chỉ trừ kho SAU KHI máy chủ xác nhận; khoá city_hub không nằm trong danh sách đồng bộ', () => {
+  const store = read('src/store/useCityStore.ts');
+  const at = store.indexOf('contributeToHub: async');
+  const body = store.slice(at);
+  assert.ok(body.indexOf('await fetch(') > 0 && body.indexOf('recordContribution(') > body.indexOf('await fetch('), 'trừ kho sau fetch');
+  const stores = read('src/services/sync/stores.ts');
+  assert.ok(!stores.includes("'city_hub'"), 'city_hub chỉ API ghi');
+  const api = read('app/api/city-hub+api.ts');
+  assert.ok(api.includes("{ user_id: viewer, store_key: 'city_hub'"), 'API chỉ ghi dòng city_hub của chính người gọi');
 });
 
 test('mục điều hướng Thành phố chỉ hiện trên máy tính', async () => {

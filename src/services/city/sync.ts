@@ -1,6 +1,7 @@
 import type { RoadTile } from './placement';
 import type { Site } from './construction';
-import { EMPTY_ECONOMY, type EconomyState } from './economy';
+import { EMPTY_ECONOMY, ECONOMY, shiftDay, type EconomyState, type LedgerEntry } from './economy';
+import { MATERIAL_KINDS } from './materials';
 import type { LandWork } from './terrain';
 import type { TerrainKind, ZoneKind } from '@/data/city/catalog';
 
@@ -46,6 +47,10 @@ export const EMPTY_CITY: CityPayload = {
  *
  * Mã sự kiện đã thưởng thì HỢP của hai bên: một bài đã nhận thép trên điện
  * thoại thì máy tính không nhận lại lần nữa.
+ *
+ * Sổ giao dịch (đổi sao / góp Trung tâm) cũng là HỢP, và dòng nào chỉ bản thua
+ * có thì ÁP BÙ vào kho của bản thắng: vật liệu đã đổi bằng sao không mất, vật
+ * liệu đã góp không hiện lại. Dòng quá hạn giữ sổ thì bỏ qua (bên kia đã tỉa).
  */
 export function mergeCity(local: CityPayload | null, remote: CityPayload | null): CityPayload {
   if (!local) return remote ?? EMPTY_CITY;
@@ -54,5 +59,28 @@ export function mergeCity(local: CityPayload | null, remote: CityPayload | null)
   const rScore = remote.lifetime ?? 0;
   const base = rScore > lScore || (rScore === lScore && (remote.updatedAt ?? '') > (local.updatedAt ?? '')) ? remote : local;
   const other = base === local ? remote : local;
-  return { ...base, awarded: { ...(other.awarded ?? {}), ...(base.awarded ?? {}) } };
+  const merged: CityPayload = { ...base, awarded: { ...(other.awarded ?? {}), ...(base.awarded ?? {}) } };
+  return reconcileLedger(merged, other.ledger);
+}
+
+/** Áp những dòng sổ bản thắng chưa có (trong hạn giữ sổ) vào kho của nó. */
+function reconcileLedger(base: CityPayload, theirs: Record<string, LedgerEntry> | undefined): CityPayload {
+  const mine = base.ledger ?? {};
+  const days = Object.values(mine).map((e) => e.day).concat(Object.values(theirs ?? {}).map((e) => e.day)).sort();
+  const newest = days[days.length - 1];
+  if (!newest) return base;
+  const limit = shiftDay(newest, -ECONOMY.ledger.keepDays);
+  const inventory = { ...base.inventory };
+  const ledger = { ...mine };
+  let changed = false;
+  for (const [id, e] of Object.entries(theirs ?? {})) {
+    if (ledger[id] || !e || typeof e.day !== 'string' || e.day < limit) continue;
+    for (const k of MATERIAL_KINDS) {
+      const d = Math.trunc(e.delta?.[k] ?? 0);
+      if (d) inventory[k] = Math.max(0, inventory[k] + d);
+    }
+    ledger[id] = e;
+    changed = true;
+  }
+  return changed ? { ...base, inventory, ledger } : base;
 }

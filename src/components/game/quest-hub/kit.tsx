@@ -20,23 +20,23 @@ export const WEB = Platform.OS === 'web';
 /** Bảng màu của sảnh game. */
 export const HUB = {
   panel: '#0E1B30',
-  raised: 'rgba(148,178,220,0.08)',
-  raisedHover: 'rgba(148,178,220,0.14)',
-  line: 'rgba(148,178,220,0.16)',
-  track: 'rgba(148,178,220,0.16)',
-  ink: '#F8FAFC',
-  muted: '#A9B9D0',
-  faint: 'rgba(169,185,208,0.62)',
+  raised: 'rgba(215, 192, 153,0.08)',
+  raisedHover: 'rgba(215, 192, 153,0.14)',
+  line: 'rgba(215, 192, 153,0.16)',
+  track: 'rgba(215, 192, 153,0.16)',
+  ink: '#FCFBF8',
+  muted: '#CDC1AC',
+  faint: 'rgba(205, 193, 172,0.62)',
   stage: '#132C4E',
   ground: '#0A1628',
-  blue: '#4A7FE8',
+  blue: '#A8843F',
   gold: '#FACC15',
   goldHover: '#FDE047',
   amber: '#F2B632',
   green: '#22A06B',
   orange: '#F0703F',
   red: '#E0533D',
-  sky: '#0EA5E9',
+  sky: '#B07A3A',
   pink: '#F472B6',
   ctaInk: '#2A1B02',
 } as const;
@@ -104,7 +104,7 @@ export function SectionHeader({
             {title}
           </Text>
           {sub ? (
-            <Text className="font-sans" style={{ marginTop: 1, fontSize: 13, lineHeight: 18, color: onDark ? 'rgba(226,232,240,0.78)' : HUB.muted }}>
+            <Text className="font-sans" style={{ marginTop: 1, fontSize: 13, lineHeight: 18, color: onDark ? 'rgba(240, 235, 226,0.78)' : HUB.muted }}>
               {sub}
             </Text>
           ) : null}

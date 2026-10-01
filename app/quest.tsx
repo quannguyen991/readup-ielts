@@ -20,7 +20,7 @@ import { QuestCityHero } from '@/components/city/QuestCityHero';
 import { QuestJourneyHero } from '@/components/rail/QuestJourneyHero';
 
 /**
- * READUP QUEST — SẢNH GAME KHI HỌC.
+ * BAND 9 QUEST — SẢNH GAME KHI HỌC.
  *
  * Không có màn chơi riêng: ở mọi màn học, trả lời đúng là một nhát chém vào con
  * quái đang chặn đường, sai thì quái đánh lại (`services/game/rules.ts`). Trang
@@ -154,7 +154,7 @@ export default function QuestHome() {
         {/* 5. Khám phá */}
         <Appear index={5}>
           <View style={{ marginTop: GAP.section }}>
-            <SectionHeader seal="sparkle" tone={HUB.sky} title="Khám phá" sub="Những khu chơi khác của ReadUp Quest." />
+            <SectionHeader seal="sparkle" tone={HUB.sky} title="Khám phá" sub="Những khu chơi khác của Band 9 Quest." />
             <View style={{ marginTop: GAP.md }}>
               <ExploreTiles width={w} />
             </View>
@@ -240,7 +240,7 @@ function Rule({ glyph, text, tone }: { glyph: string; text: string; tone: string
       <View aria-hidden style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: `${tone}26` }}>
         <Text style={{ fontSize: 19 }}>{glyph}</Text>
       </View>
-      <Text className="font-sans" style={{ fontSize: 13, lineHeight: 19, color: 'rgba(226,232,240,0.9)' }}>
+      <Text className="font-sans" style={{ fontSize: 13, lineHeight: 19, color: 'rgba(240, 235, 226,0.9)' }}>
         {text}
       </Text>
     </View>

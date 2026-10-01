@@ -47,7 +47,7 @@ export default function RoadChapterScreen() {
   return (
     <Screen>
       <Pressable accessibilityRole="link" onPress={() => router.push('/sat/lo-trinh' as never)} style={{ alignSelf: 'flex-start', marginBottom: 10 }}>
-        <Text className="font-strong" style={{ fontSize: 14, color: '#2F5FC4' }}>
+        <Text className="font-strong" style={{ fontSize: 14, color: '#8F6E36' }}>
           ← Lộ trình SAT Math
         </Text>
       </Pressable>
@@ -93,7 +93,7 @@ export default function RoadChapterScreen() {
             accessibilityRole="radio"
             aria-checked={lang === k}
             onPress={() => setLang(k)}
-            style={{ borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: lang === k ? '#0F172A' : '#FFFFFF', borderWidth: 1, borderColor: lang === k ? '#0F172A' : '#E2E8F0' }}
+            style={{ borderRadius: 999, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: lang === k ? '#0F172A' : '#FFFFFF', borderWidth: 1, borderColor: lang === k ? '#0F172A' : '#F0EBE2' }}
           >
             <Text className="font-strong" style={{ fontSize: 14, color: lang === k ? '#FFFFFF' : '#0F172A' }}>
               {label}
@@ -103,7 +103,7 @@ export default function RoadChapterScreen() {
       </View>
 
       {/* ------------------------------------------------ sơ đồ chủ đề con */}
-      <Block title="Sơ đồ chương." kicker="CHỦ ĐỀ CON" art={<CuteMagnifier size={88} />} tag={{ text: `${c.subtopics.length} chủ đề con`, color: '#4A7FE8', ink: '#FFFFFF' }}>
+      <Block title="Sơ đồ chương." kicker="CHỦ ĐỀ CON" art={<CuteMagnifier size={88} />} tag={{ text: `${c.subtopics.length} chủ đề con`, color: '#A8843F', ink: '#FFFFFF' }}>
         <MindMap
           height={c.subtopics.length > 3 ? 340 : 280}
           narrowBelow={520}
@@ -116,7 +116,7 @@ export default function RoadChapterScreen() {
       <Block title="Lý thuyết." kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'} art={<CuteBulb size={90} />} tag={{ text: 'VI + EN', color: '#FACC15', ink: '#2A1B02' }}>
         <View style={{ gap: 12 }}>
           {c.theory.map((t, i) => (
-            <View key={i} style={{ borderRadius: 20, padding: 16, backgroundColor: '#F8FAFC', borderLeftWidth: 6, borderLeftColor: color, gap: 10 }}>
+            <View key={i} style={{ borderRadius: 20, padding: 16, backgroundColor: '#FCFBF8', borderLeftWidth: 6, borderLeftColor: color, gap: 10 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <Motion kind="pop" delay={i * 60}>
                   <Badge icon={THEORY_ICONS[i % THEORY_ICONS.length]!} color={color} size={38} />
@@ -127,7 +127,7 @@ export default function RoadChapterScreen() {
               </View>
               <BiText t={t.body} lang={lang} wide={wide} />
               {t.formula ? (
-                <View style={{ alignSelf: 'flex-start', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E2E8F0' }}>
+                <View style={{ alignSelf: 'flex-start', borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2' }}>
                   <MathText size={17} weight="semibold">
                     {t.formula}
                   </MathText>
@@ -143,7 +143,7 @@ export default function RoadChapterScreen() {
         {c.examples.map((e, i) => (
           <View key={i} style={{ gap: 10, marginTop: i ? 18 : 0 }}>
             <Label text={`Ví dụ ${i + 1}`} color={i % 2 ? '#FFD6E0' : '#FFF1B8'} ink="#0F172A" tilt={i % 2 ? 3 : -3} size={13} />
-            <View style={{ borderRadius: 16, padding: 14, backgroundColor: '#EEF3FF' }}>
+            <View style={{ borderRadius: 16, padding: 14, backgroundColor: '#F7F0E1' }}>
               <MathText size={16} weight="semibold">
                 {e.problem}
               </MathText>
@@ -227,7 +227,7 @@ export default function RoadChapterScreen() {
                   accessibilityRole="button"
                   disabled={!ready}
                   onPress={() => router.push(`/sat/lo-trinh/${c.id}/${lv}` as never)}
-                  style={({ hovered }: { hovered?: boolean }) => ({ marginTop: 4, borderRadius: 14, paddingVertical: 12, alignItems: 'center', backgroundColor: ready ? (hovered ? tone.ink : tone.bg) : '#CBD5E1' })}
+                  style={({ hovered }: { hovered?: boolean }) => ({ marginTop: 4, borderRadius: 14, paddingVertical: 12, alignItems: 'center', backgroundColor: ready ? (hovered ? tone.ink : tone.bg) : '#E1D9CB' })}
                 >
                   <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
                     {ready ? (b ? 'Làm lượt mới' : `Làm ${QUIZ_SIZE} câu`) : 'Đang soạn câu hỏi'}
@@ -347,7 +347,7 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
 function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title: string; kicker: string; tone?: string; art?: React.ReactNode; tag?: { text: string; color: string; ink: string }; children: React.ReactNode }) {
   return (
     <Appear>
-      <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: tone, borderWidth: 1, borderColor: '#E2E8F0' }}>
+      <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: tone, borderWidth: 1, borderColor: '#F0EBE2' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, marginBottom: 14 }}>
           <View style={{ flex: 1, gap: 2 }}>
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2, color: '#64748B' }}>
@@ -376,7 +376,7 @@ function Block({ title, kicker, tone = '#FFFFFF', art, tag, children }: { title:
 
 function NavCard({ label, title, onPress, align = 'left' }: { label: string; title: string; onPress: () => void; align?: 'left' | 'right' }) {
   return (
-    <Pressable accessibilityRole="link" onPress={onPress} style={{ flex: 1, maxWidth: 360, borderRadius: 20, padding: 14, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E2E8F0', alignItems: align === 'right' ? 'flex-end' : 'flex-start' }}>
+    <Pressable accessibilityRole="link" onPress={onPress} style={{ flex: 1, maxWidth: 360, borderRadius: 20, padding: 14, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2', alignItems: align === 'right' ? 'flex-end' : 'flex-start' }}>
       <Text className="font-strong" style={{ fontSize: 13, color: '#64748B' }}>
         {label}
       </Text>

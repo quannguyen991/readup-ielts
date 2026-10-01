@@ -91,7 +91,7 @@ export function BiText({ t, lang, wide, size = 15, strong = false }: { t: Bi; la
         </Text>
       </View>
       <View style={{ flex: 1, flexDirection: 'row', gap: 8 }}>
-        <Tag text="EN" color="#4A7FE8" />
+        <Tag text="EN" color="#A8843F" />
         <Text className={font} style={{ flex: 1, fontSize: size, lineHeight: size * 1.5, color: '#334155' }} lang="en">
           {t.en}
         </Text>

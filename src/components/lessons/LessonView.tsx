@@ -11,7 +11,7 @@ import type { LessonBlock, TheoryLesson } from '@/data/lessons/types';
 import { choicesIn, matchingChoice } from './example-choice';
 import { color } from '@/theme/tokens';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
 export const LEVEL_TONE: Record<TheoryLesson['level'], { fg: string; bg: string }> = {
   'Nền tảng': { fg: '#15803D', bg: '#DCFCE7' },
@@ -88,7 +88,7 @@ export function LessonView({
                 </View>
               ) : null}
             </View>
-            <View className="mt-4 flex-row gap-3 rounded-2xl p-4" style={{ backgroundColor: '#F1F6FF' }}>
+            <View className="mt-4 flex-row gap-3 rounded-2xl p-4" style={{ backgroundColor: '#FCF9F4' }}>
               <Icon name="target" size={18} color={color.primary} />
               <Text className="min-w-0 flex-1 font-semi text-body text-ink">{lesson.goal}</Text>
             </View>
@@ -100,7 +100,7 @@ export function LessonView({
         <Appear index={1}>
           <View className="rounded-[22px] bg-white p-5 md:p-6" style={CARD}>
             {rulesOf(lesson).map((r, i) => (
-              <View key={i} className={i > 0 ? 'mt-4 border-t pt-4' : ''} style={{ borderColor: '#EEF0F6' }}>
+              <View key={i} className={i > 0 ? 'mt-4 border-t pt-4' : ''} style={{ borderColor: '#F6F3EE' }}>
                 <View className="flex-row items-start gap-3">
                   <View className="mt-1.5 h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: RULE_TONES[i % RULE_TONES.length] }} />
                   <View className="min-w-0 flex-1">
@@ -111,7 +111,7 @@ export function LessonView({
                       <RichText math={!!math}>{r.body}</RichText>
                     </View>
                     {r.formula ? (
-                      <View className="mt-2.5 self-start rounded-xl px-4 py-2.5" style={{ backgroundColor: '#F4F6FB' }}>
+                      <View className="mt-2.5 self-start rounded-xl px-4 py-2.5" style={{ backgroundColor: '#FBF8F4' }}>
                         <RichText math={!!math} size={17} bold>
                           {r.formula}
                         </RichText>
@@ -169,7 +169,7 @@ export function LessonView({
   );
 }
 
-const RULE_TONES = ['#5B8BEE', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6', '#0EA5E9'];
+const RULE_TONES = ['#B8955A', '#10B981', '#F59E0B', '#EC4899', '#D6B57C', '#B07A3A'];
 
 type RuleBlock = Extract<LessonBlock, { kind: 'rule' }>;
 type ExampleBlock = Extract<LessonBlock, { kind: 'example' }>;
@@ -225,7 +225,7 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
               accessibilityRole="button"
               onPress={() => setPicked(c)}
               className="rounded-xl px-5 py-2.5"
-              style={{ borderWidth: 1.5, borderColor: '#DCE1EE', backgroundColor: '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderColor: '#EEE7DC', backgroundColor: '#FFFFFF' }}
             >
               <Text className="font-strong text-body text-ink">{c}</Text>
             </Pressable>
@@ -254,7 +254,7 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
               <View key={i} className="flex-row gap-3">
                 <View className="items-center" style={{ width: 14 }}>
                   <View className="mt-1.5 h-2.5 w-2.5 rounded-pill" style={{ backgroundColor: color.primary }} />
-                  {i < block.steps.length - 1 ? <View style={{ width: 2, flex: 1, backgroundColor: '#DCE6FB', marginTop: 2 }} /> : null}
+                  {i < block.steps.length - 1 ? <View style={{ width: 2, flex: 1, backgroundColor: '#F8EFDF', marginTop: 2 }} /> : null}
                 </View>
                 <View className="min-w-0 flex-1 pb-3">
                   <RichText math={math}>{st}</RichText>
@@ -262,7 +262,7 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
               </View>
             ))}
           </View>
-          <View className="mt-1 flex-row flex-wrap items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: '#F4F6FB' }}>
+          <View className="mt-1 flex-row flex-wrap items-center gap-2 rounded-xl px-4 py-2.5" style={{ backgroundColor: '#FBF8F4' }}>
             <Text className="font-strong text-body text-ink">Đáp án:</Text>
             <View className="min-w-0 flex-1">
               <RichText math={math} bold>

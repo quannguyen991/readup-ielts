@@ -483,7 +483,7 @@ function PracticeView({
             <Icon
               name={m.icon}
               size={15}
-              color={mode === m.key ? '#152238' : '#BFE8FF'}
+              color={mode === m.key ? '#152238' : '#F3E4CB'}
               strokeWidth={2.1}
             />
             <Text

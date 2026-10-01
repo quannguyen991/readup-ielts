@@ -77,7 +77,7 @@ export function LearnSettingsSheet({
         <Pressable onPress={() => {}} className="w-full rounded-[26px] bg-white" style={[{ maxWidth: 560, maxHeight: '92%', cursor: 'auto' } as object, CARD_SHADOW]}>
           <View className="flex-row items-center justify-between px-5 pb-2 pt-5 sm:px-6">
             <Text className="font-heavy text-sectionTitle text-ink">Cài đặt học</Text>
-            <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F1F5F9' }}>
+            <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F9F6F1' }}>
               <Icon name="close" size={18} color={color.ink} />
             </Pressable>
           </View>
@@ -146,7 +146,7 @@ export function LearnSettingsSheet({
             </Section>
           </ScrollView>
 
-          <View className="flex-row items-center justify-between gap-3 border-t px-5 py-4 sm:px-6" style={{ borderColor: '#EEF2F7' }}>
+          <View className="flex-row items-center justify-between gap-3 border-t px-5 py-4 sm:px-6" style={{ borderColor: '#F7F4EE' }}>
             <Pressable
               accessibilityRole="button"
               onPress={() => {
@@ -155,7 +155,7 @@ export function LearnSettingsSheet({
                 setConfirmReset(false);
               }}
               className="flex-row items-center gap-2 rounded-2xl px-4 py-3"
-              style={{ flexShrink: 1, backgroundColor: confirmReset ? '#FFF1F2' : '#F1F5F9' }}
+              style={{ flexShrink: 1, backgroundColor: confirmReset ? '#FFF1F2' : '#F9F6F1' }}
             >
               <Icon name="refresh" size={16} color={confirmReset ? '#E11D48' : '#475569'} />
               <Text className="flex-shrink font-semi text-body" style={{ color: confirmReset ? '#E11D48' : '#475569' }}>
@@ -167,7 +167,7 @@ export function LearnSettingsSheet({
               disabled={blocked}
               onPress={() => onApply(draft)}
               className="rounded-2xl px-6 py-3"
-              style={{ flexShrink: 0, backgroundColor: blocked ? '#C7D2FE' : color.primary }}
+              style={{ flexShrink: 0, backgroundColor: blocked ? '#F4E7D1' : color.primary }}
             >
               <Text className="font-strong text-bodyLg text-white">Áp dụng</Text>
             </Pressable>
@@ -206,11 +206,11 @@ function Row({ on, onPress, disabled, children }: { on: boolean; onPress: () => 
       disabled={disabled}
       onPress={onPress}
       className="flex-row items-center gap-3 rounded-2xl px-4 py-3"
-      style={{ borderWidth: 1.5, borderColor: on ? '#93C5FD' : '#E2E8F0', backgroundColor: on ? '#F3F8FF' : '#FFFFFF', opacity: disabled ? 0.55 : 1 }}
+      style={{ borderWidth: 1.5, borderColor: on ? '#E6D2A6' : '#F0EBE2', backgroundColor: on ? '#FDFAF5' : '#FFFFFF', opacity: disabled ? 0.55 : 1 }}
     >
       <View
         className="h-6 w-6 items-center justify-center rounded-lg"
-        style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: on ? 0 : 1.5, borderColor: '#CBD5E1' }}
+        style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: on ? 0 : 1.5, borderColor: '#E1D9CB' }}
       >
         {on ? <Icon name="check" size={15} color="#FFFFFF" strokeWidth={2.6} /> : null}
       </View>

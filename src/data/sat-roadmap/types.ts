@@ -65,7 +65,7 @@ export type BookExercise = {
 
 export const PHASES: Record<1 | 2 | 3 | 4, { title: Bi; color: string }> = {
   1: { title: { vi: 'Nền tảng số & tỉ lệ', en: 'Numbers & ratios' }, color: '#F2B632' },
-  2: { title: { vi: 'Phương trình & đường thẳng', en: 'Equations & lines' }, color: '#4A7FE8' },
+  2: { title: { vi: 'Phương trình & đường thẳng', en: 'Equations & lines' }, color: '#A8843F' },
   3: { title: { vi: 'Hàm số & đại số nâng cao', en: 'Functions & advanced algebra' }, color: '#F0703F' },
   4: { title: { vi: 'Hình học, lượng giác & dữ liệu', en: 'Geometry, trig & data' }, color: '#22A06B' },
 };

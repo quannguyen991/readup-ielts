@@ -11,7 +11,7 @@ import type { Island, IslandId, Mission } from '@/services/world/islands';
 import { HUB } from './quest-hub/kit';
 
 /**
- * Các mảnh của MÀN CHỌN TRẬN (`/quest/pick`) và trang ReadUp Quest.
+ * Các mảnh của MÀN CHỌN TRẬN (`/quest/pick`) và trang Band 9 Quest.
  *
  * Luồng người dùng chốt ngày 25/09/2026: bấm "Vào trận" thì phải cho CHỌN MẢNG
  * (loại bài học), rồi CHỌN BÀI (phần học nào), rồi mới vào lý thuyết và luyện —
@@ -70,11 +70,11 @@ export const QUICK_FIGHTS: { title: string; detail: string; href: string; icon: 
   { title: 'Đọc theo VOA', detail: 'Nói lại từng câu', href: '/shadow', icon: 'mic', color: HUB.green },
   { title: 'Đề của tuần', detail: 'Cả nước cùng một đề', href: '/weekly', icon: 'trophy', color: HUB.amber },
   { title: 'Đấu 1–1', detail: 'Thách bạn 10 câu', href: '/duel', icon: 'target', color: HUB.orange },
-  { title: 'Bản đồ ReadUp', detail: 'Đi bộ qua sáu đảo', href: '/quest/world', icon: 'compass', color: HUB.blue },
+  { title: 'Bản đồ Band 9', detail: 'Đi bộ qua sáu đảo', href: '/quest/world', icon: 'compass', color: HUB.blue },
 ];
 
 /** Màu theo bậc khó (0 dễ → 3 khó) — màu mang thông tin, không xoay vòng. */
-export const TIER_TONE = ['#4ADE80', '#38BDF8', '#FBBF24', '#FB7185'] as const;
+export const TIER_TONE = ['#4ADE80', '#CEA662', '#FBBF24', '#FB7185'] as const;
 
 function hoverStyle(hovered: boolean | undefined, lift = 3): object {
   return WEB
@@ -185,7 +185,7 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
           <Icon name="arrow-right" size={18} color={hover ? '#FFFFFF' : 'rgba(255,255,255,0.4)'} />
         </View>
 
-        <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: 'rgba(226,232,240,0.86)' }} numberOfLines={2}>
+        <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: 'rgba(240, 235, 226,0.86)' }} numberOfLines={2}>
           {island.tagline}
         </Text>
 
@@ -324,7 +324,7 @@ export function DarkChip({ label, active, onPress }: { label: string; active: bo
         ...(WEB ? ({ transition: 'background-color 150ms ease' } as object) : null),
       })}
     >
-      <Text className="font-strong" style={{ fontSize: 12, color: active ? HUB.panel : 'rgba(226,232,240,0.88)' }}>
+      <Text className="font-strong" style={{ fontSize: 12, color: active ? HUB.panel : 'rgba(240, 235, 226,0.88)' }}>
         {label}
       </Text>
     </Pressable>

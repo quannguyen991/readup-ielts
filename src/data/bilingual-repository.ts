@@ -51,7 +51,7 @@ export type BilingualSource = {
 
 export type BilingualArticle = {
   id: string;
-  /** "press" = bài báo lấy từ nguồn cho phép dùng lại; không có = bài ReadUp tự viết. */
+  /** "press" = bài báo lấy từ nguồn cho phép dùng lại; không có = bài Band 9 tự viết. */
   kind?: 'press';
   source?: BilingualSource;
   /** Số bài trong sách gốc — cũng là thứ tự độ khó tăng dần. */
@@ -150,9 +150,9 @@ export type BilingualOutlet = {
 export const BILINGUAL_OUTLETS: BilingualOutlet[] = [
   {
     key: 'readup',
-    name: 'ReadUp Analysis',
+    name: 'Band 9 Analysis',
     tagline: 'Bài phân tích tự viết — kinh tế, sức khoẻ, khoa học, Việt Nam',
-    license: 'Bản quyền ReadUp',
+    license: 'Bản quyền Band 9',
     cover: '#F2B84B',
     ink: '#1F2A12',
   },

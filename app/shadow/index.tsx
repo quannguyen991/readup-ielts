@@ -13,14 +13,14 @@ import { AUDIO_LEVELS, AUDIO_NGUON, filterAudio, formatLength, getLibraryAudio, 
 import { useShadowStore } from '@/store/useShadowStore';
 import { color } from '@/theme/tokens';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 const PAGE = 24;
 
 /** Màu nhận diện theo trình độ — để lưới bài không là một mảng trắng đều. */
 const LEVEL_TONE: Record<string, { bg: string; fg: string }> = {
   A2: { bg: '#DCFCE7', fg: '#15803D' },
-  B1: { bg: '#E0F2FE', fg: '#0369A1' },
-  B2: { bg: '#EDE9FE', fg: '#6D28D9' },
+  B1: { bg: '#F9F2E5', fg: '#7D5E27' },
+  B2: { bg: '#FBF5EC', fg: '#C3923E' },
   C1: { bg: '#FFE4E6', fg: '#BE123C' },
 };
 
@@ -98,7 +98,7 @@ export default function ShadowHub() {
                       key={meta.id}
                       onPress={() => router.push(`/shadow/${meta.id}` as never)}
                       className="flex-row items-center gap-3 rounded-2xl px-3 py-2.5"
-                      style={{ backgroundColor: '#F8FAFC' }}
+                      style={{ backgroundColor: '#FCFBF8' }}
                     >
                       <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: color.primary }}>
                         <Icon name="mic" size={17} color="#FFFFFF" />
@@ -140,7 +140,7 @@ export default function ShadowHub() {
       ) : null}
 
       <View className="mt-6 rounded-[22px] bg-white p-4" style={CARD}>
-        <View className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#F8FAFC', borderWidth: 1.5, borderColor: '#E2E8F0' }}>
+        <View className="flex-row items-center gap-2 rounded-2xl px-3 py-2" style={{ backgroundColor: '#FCFBF8', borderWidth: 1.5, borderColor: '#F0EBE2' }}>
           <Icon name="search" size={16} color="#94A3B8" />
           <TextInput
             value={search}
@@ -164,7 +164,7 @@ export default function ShadowHub() {
                   setLimit(PAGE);
                 }}
                 className="rounded-pill px-3.5 py-1.5"
-                style={{ backgroundColor: on ? color.primary : '#F1F5F9' }}
+                style={{ backgroundColor: on ? color.primary : '#F9F6F1' }}
               >
                 <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                   {l === 'all' ? 'Mọi trình độ' : l}
@@ -198,7 +198,7 @@ export default function ShadowHub() {
 }
 
 function LessonCard({ item, read }: { item: LibraryAudio; read: number }) {
-  const tone = LEVEL_TONE[item.level] ?? { bg: '#F1F5F9', fg: '#475569' };
+  const tone = LEVEL_TONE[item.level] ?? { bg: '#F9F6F1', fg: '#475569' };
   return (
     <Pressable
       accessibilityRole="link"

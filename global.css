@@ -8,7 +8,7 @@
   }
 
   body {
-    background-color: #f7f8fc;
+    background-color: #fcfaf7;
   }
 }
 
@@ -21,6 +21,7 @@
   .bg-primary-700,
   .bg-brand,
   .bg-brand-mid {
-    background-image: linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%);
+    background-image: linear-gradient(100deg, #D6B774 0%, #B8955A 48%, #967334 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
   }
 }

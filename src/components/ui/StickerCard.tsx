@@ -2,6 +2,7 @@ import React, { createContext, useState } from 'react';
 import { Platform, View, type ViewProps } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated, { Easing, useAnimatedStyle, useReducedMotion, useSharedValue, withTiming, type SharedValue } from 'react-native-reanimated';
+import { radius } from '@/theme/tokens';
 
 type StickerCardProps = ViewProps & {
   /** Hai màu cùng tông, sáng → đậm — nền gradient chéo của thẻ. */
@@ -105,7 +106,7 @@ export function StickerCard({ colors, children, className, style, bold, ornament
 
   return (
     <CardHoverContext.Provider value={pose !== 'rest'}>
-      <Animated.View className={['rounded-card', className ?? ''].filter(Boolean).join(' ')} style={[shadow, motion, style]} {...(handlers as object)} {...rest}>
+      <Animated.View className={['rounded-card', className ?? ''].filter(Boolean).join(' ')} style={[{ borderRadius: radius.card }, shadow, motion, style]} {...(handlers as object)} {...rest}>
         <View className="flex-1 overflow-hidden rounded-card">
           <LinearGradient colors={face} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 16, flex: 1 }}>
             {children}

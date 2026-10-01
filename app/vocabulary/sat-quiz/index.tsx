@@ -25,7 +25,7 @@ const LEVEL_BADGE: readonly BadgeIcon[] = ['check', 'target', 'bolt'];
  * cao nhất — chưa làm thì ghi "chưa làm", không ghi 0/10.
  */
 
-const LEVEL_TONE = ['#22C55E', '#0EA5E9', '#F43F5E'] as const;
+const LEVEL_TONE = ['#22C55E', '#B07A3A', '#F43F5E'] as const;
 const INK = '#1E2748';
 const MUTED = '#5A6485';
 
@@ -58,9 +58,9 @@ export default function SatQuizHub() {
       <Appear index={1}>
         <View className="mt-4 flex-row flex-wrap gap-2">
           {SAT_QUIZ_LEVELS.map((l, i) => (
-            <View key={l.level} className="flex-row items-center gap-2 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1, borderColor: '#E6E8F2' }}>
+            <View key={l.level} className="flex-row items-center gap-2 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1, borderColor: '#F2EEE6' }}>
               <View aria-hidden>
-                <Badge icon={LEVEL_BADGE[i] ?? 'star'} color={LEVEL_TONE[i] ?? '#4A7FE8'} size={22} />
+                <Badge icon={LEVEL_BADGE[i] ?? 'star'} color={LEVEL_TONE[i] ?? '#A8843F'} size={22} />
               </View>
               <Text className="font-strong text-label" style={{ color: INK }}>
                 {l.name}
@@ -77,7 +77,7 @@ export default function SatQuizHub() {
         <Appear key={group.subject} index={gi + 2}>
           <View className="mb-3 mt-7 flex-row items-center gap-2.5">
             <View aria-hidden>
-              <SealIcon name={group.subject === 'math' ? 'grid' : 'letters'} color={group.subject === 'math' ? '#4A7FE8' : '#F0703F'} size={38} />
+              <SealIcon name={group.subject === 'math' ? 'grid' : 'letters'} color={group.subject === 'math' ? '#A8843F' : '#F0703F'} size={38} />
             </View>
             <Text className="min-w-0 flex-1 font-heavy text-sectionTitle" style={{ color: INK }}>
               {group.label}
@@ -104,13 +104,13 @@ function TopicCard({ lesson, best }: { lesson: VocabLesson; best: Record<string,
       className="h-full rounded-[20px] bg-white p-4"
       style={{
         borderWidth: 1,
-        borderColor: '#E6E8F2',
-        ...(Platform.OS === 'web' ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 22px rgba(30,41,99,0.07)' } as object) : null),
+        borderColor: '#F2EEE6',
+        ...(Platform.OS === 'web' ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 22px rgba(94, 72, 35,0.07)' } as object) : null),
       }}
     >
       <View className="flex-row items-center gap-2">
-        <View className="h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: lesson.subject === 'math' ? '#EAF1FD' : '#FEECEF' }}>
-          <Icon name={lesson.subject === 'math' ? 'grid' : 'letters'} size={17} color={lesson.subject === 'math' ? '#4A7FE8' : '#F43F5E'} />
+        <View className="h-9 w-9 items-center justify-center rounded-xl" style={{ backgroundColor: lesson.subject === 'math' ? '#FBF5EC' : '#FEECEF' }}>
+          <Icon name={lesson.subject === 'math' ? 'grid' : 'letters'} size={17} color={lesson.subject === 'math' ? '#A8843F' : '#F43F5E'} />
         </View>
         <Text className="font-mid text-label" style={{ color: MUTED }}>
           {lesson.words.length} từ
@@ -138,7 +138,7 @@ function TopicCard({ lesson, best }: { lesson: VocabLesson; best: Record<string,
           </View>
         ) : results.every((r) => !r) ? (
           <View aria-hidden>
-            <Label text="Mới" color="#0EA5E9" ink="#FFFFFF" tilt={5} size={11} />
+            <Label text="Mới" color="#B07A3A" ink="#FFFFFF" tilt={5} size={11} />
           </View>
         ) : null}
       </View>
@@ -160,7 +160,7 @@ function TopicCard({ lesson, best }: { lesson: VocabLesson; best: Record<string,
               className="flex-1 rounded-xl px-2 py-2"
               style={({ hovered }: { hovered?: boolean }) => ({
                 borderWidth: 1.5,
-                borderColor: suggested ? LEVEL_TONE[i] : hovered ? '#C7CCE0' : '#E6E8F2',
+                borderColor: suggested ? LEVEL_TONE[i] : hovered ? '#E0D7C7' : '#F2EEE6',
                 backgroundColor: ok ? `${LEVEL_TONE[i]}14` : '#FFFFFF',
                 ...(Platform.OS === 'web' ? ({ transition: 'border-color 150ms ease' } as object) : null),
               })}

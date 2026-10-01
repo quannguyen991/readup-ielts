@@ -28,7 +28,7 @@ export const CARD_SHADOW =
   Platform.OS === "web"
     ? ({
         boxShadow:
-          "0 1px 2px rgba(15,23,42,0.05), 0 18px 40px rgba(30,41,99,0.10)",
+          "0 1px 2px rgba(15,23,42,0.05), 0 18px 40px rgba(94, 72, 35,0.10)",
       } as object)
     : { elevation: 3 };
 
@@ -156,7 +156,7 @@ function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean })
           <View
             className="h-2.5 w-full rounded-pill"
             style={{
-              backgroundColor: s >= 1 ? GREEN : navy ? "#60A5FA" : color.primary,
+              backgroundColor: s >= 1 ? GREEN : navy ? "#D9BC7F" : color.primary,
               transform: [{ scaleX: Math.max(0, Math.min(1, s)) }],
               transformOrigin: "left",
               ...(Platform.OS === "web"
@@ -221,7 +221,7 @@ export function StarButton({
       className="h-10 w-10 items-center justify-center rounded-pill"
       style={[
         inline ? null : { position: "absolute", top: 14, right: 14, zIndex: 2 },
-        { backgroundColor: on ? "#FEF3C7" : "#F1F5F9" },
+        { backgroundColor: on ? "#FEF3C7" : "#F9F6F1" },
       ]}
     >
       <Icon
@@ -259,7 +259,7 @@ export function ChoiceGrid({
       {options.map((opt, i) => {
         const isCorrect = revealed && i === correctIndex;
         const isWrong = revealed && i === picked && i !== correctIndex;
-        const border = isCorrect ? GREEN : isWrong ? RED : "#E2E8F0";
+        const border = isCorrect ? GREEN : isWrong ? RED : "#F0EBE2";
         const bg = isCorrect ? "#ECFDF3" : isWrong ? "#FFF1F2" : "#FFFFFF";
         const out = hidden.includes(i) && !isCorrect;
         return (
@@ -283,7 +283,7 @@ export function ChoiceGrid({
             <View
               className="h-8 w-8 items-center justify-center rounded-pill"
               style={{
-                backgroundColor: isCorrect ? GREEN : isWrong ? RED : "#EEF2F7",
+                backgroundColor: isCorrect ? GREEN : isWrong ? RED : "#F7F4EE",
               }}
             >
               <Text
@@ -427,7 +427,7 @@ export function PrimaryButton({
       disabled={disabled}
       onPress={onPress}
       className="mt-4 flex-row items-center justify-center gap-2 rounded-2xl py-4"
-      style={{ backgroundColor: disabled ? "#C7D2FE" : color.primary }}
+      style={{ backgroundColor: disabled ? "#F4E7D1" : color.primary }}
     >
       <Text className="font-strong text-bodyLg text-white">{label}</Text>
       {hint ? (
@@ -449,7 +449,7 @@ export function GhostButton({
       accessibilityRole="button"
       onPress={onPress}
       className="mt-3 items-center rounded-2xl py-3.5"
-      style={{ backgroundColor: "#F1F5F9" }}
+      style={{ backgroundColor: "#F9F6F1" }}
     >
       <Text className="font-semi text-bodyLg" style={{ color: "#475569" }}>
         {label}

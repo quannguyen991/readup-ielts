@@ -22,7 +22,7 @@ export const TOOLS: readonly { id: Tool; glyph: string; key: string }[] = [
   { id: 'expand', glyph: '🧭', key: 'M' },
 ];
 
-export function ToolRail({ tool, onTool, onRotate, onZoom, onHome }: { tool: Tool; onTool: (t: Tool) => void; onRotate: (dir: 1 | -1) => void; onZoom: (f: number) => void; onHome: () => void }) {
+function ToolRailImpl({ tool, onTool, onRotate, onZoom, onHome }: { tool: Tool; onTool: (t: Tool) => void; onRotate: (dir: 1 | -1) => void; onZoom: (f: number) => void; onHome: () => void }) {
   const { t } = useL();
   const cam: { glyph: string; label: string; key?: string; run: () => void }[] = [
     { glyph: '⟲', label: t('city.cam.left'), key: 'Q', run: () => onRotate(-1) },
@@ -53,7 +53,7 @@ export function ToolRail({ tool, onTool, onRotate, onZoom, onHome }: { tool: Too
 
 const optionBox: React.CSSProperties = { position: 'absolute', left: 84, top: 96, width: 320, padding: 14, zIndex: 11, display: 'flex', flexDirection: 'column', gap: 10 };
 
-export function BuildPalette({ picked, onPick, rot }: { picked: string | null; onPick: (type: string | null) => void; rot: number }) {
+function BuildPaletteImpl({ picked, onPick, rot }: { picked: string | null; onPick: (type: string | null) => void; rot: number }) {
   const { t, L } = useL();
   const era = useCityStore((s) => s.era);
   const sites = useCityStore((s) => s.sites);
@@ -129,7 +129,7 @@ export function BuildPalette({ picked, onPick, rot }: { picked: string | null; o
   }
 }
 
-export function RoadOptions({ kind, onKind }: { kind: RoadKind; onKind: (k: RoadKind) => void }) {
+function RoadOptionsImpl({ kind, onKind }: { kind: RoadKind; onKind: (k: RoadKind) => void }) {
   const { t, L } = useL();
   const era = useCityStore((s) => s.era);
   const inv = useCityStore((s) => s.inventory);
@@ -155,7 +155,7 @@ export function RoadOptions({ kind, onKind }: { kind: RoadKind; onKind: (k: Road
   );
 }
 
-export function ZoneOptions({ zone, onZone }: { zone: ZoneKind | null; onZone: (z: ZoneKind | null) => void }) {
+function ZoneOptionsImpl({ zone, onZone }: { zone: ZoneKind | null; onZone: (z: ZoneKind | null) => void }) {
   const { t, L } = useL();
   return (
     <div className="cg-panel cg-slide" style={optionBox}>
@@ -177,7 +177,7 @@ export function ZoneOptions({ zone, onZone }: { zone: ZoneKind | null; onZone: (
   );
 }
 
-export function LandOptions({ work, onWork }: { work: LandWork; onWork: (w: LandWork) => void }) {
+function LandOptionsImpl({ work, onWork }: { work: LandWork; onWork: (w: LandWork) => void }) {
   const { t, L } = useL();
   const era = useCityStore((s) => s.era);
   const inv = useCityStore((s) => s.inventory);
@@ -201,7 +201,7 @@ export function LandOptions({ work, onWork }: { work: LandWork; onWork: (w: Land
   );
 }
 
-export function ExpandOptions() {
+function ExpandOptionsImpl() {
   const { t } = useL();
   const regions = useCityStore((s) => s.regions);
   const inv = useCityStore((s) => s.inventory);
@@ -225,3 +225,11 @@ export function ExpandOptions() {
     </div>
   );
 }
+
+/* Memo: thanh công cụ / bảng tuỳ chọn không render lại khi rê chuột trên bản đồ (props ổn định từ CityGame). */
+export const ToolRail = React.memo(ToolRailImpl);
+export const BuildPalette = React.memo(BuildPaletteImpl);
+export const RoadOptions = React.memo(RoadOptionsImpl);
+export const ZoneOptions = React.memo(ZoneOptionsImpl);
+export const LandOptions = React.memo(LandOptionsImpl);
+export const ExpandOptions = React.memo(ExpandOptionsImpl);

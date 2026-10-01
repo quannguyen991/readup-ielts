@@ -13,7 +13,12 @@ export const CG = {
   body: '#34455F',
   muted: '#5E6E86',
   line: 'rgba(16,33,63,0.10)',
-  panel: 'rgba(255,255,255,0.93)',
+  /*
+    Bảng nổi trên canvas 3D: KHÔNG dùng backdrop-filter blur — mỗi khung canvas
+    vẽ lại (kéo bản đồ, nước gợn) trình duyệt phải làm mờ lại cả vùng dưới bảng.
+    Nền gần đặc thay cho lớp kính mờ.
+  */
+  panel: 'rgba(255,255,255,0.965)',
   brand: '#4A7FE8',
   brandDeep: '#2F5FC4',
   brandSoft: '#E8F0FE',
@@ -34,7 +39,7 @@ const CSS = `
 .cg-root *{box-sizing:border-box}
 .cg-b{font-family:${CG.fontBold}}
 .cg-x{font-family:${CG.fontX}}
-.cg-panel{background:${CG.panel};backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.7);
+.cg-panel{background:${CG.panel};border:1px solid rgba(255,255,255,0.7);
   border-radius:18px;box-shadow:0 10px 30px rgba(22,48,96,0.16),0 1px 0 rgba(255,255,255,0.8) inset}
 .cg-btn{appearance:none;border:0;background:#fff;color:${CG.ink};font:inherit;font-family:${CG.fontBold};font-size:15px;border-radius:12px;
   padding:9px 14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 1px 0 ${CG.line},0 0 0 1px ${CG.line} inset;
@@ -102,6 +107,20 @@ const CSS = `
 .cg-opt:hover{box-shadow:0 0 0 2px #A9C6FB inset}
 .cg-opt.right{box-shadow:0 0 0 2px ${CG.ok} inset;background:#EEFBF2}
 .cg-opt.wrong{box-shadow:0 0 0 2px ${CG.bad} inset;background:#FFF1F0}
+@keyframes cg-slide-out{from{opacity:1;transform:none}to{opacity:0;transform:translateX(16px)}}
+@keyframes cg-fade-out{from{opacity:1}to{opacity:0}}
+@keyframes cg-pop-out{from{opacity:1;transform:none}to{opacity:0;transform:scale(.97) translateY(6px)}}
+.cg-slide-out{animation:cg-slide-out .16s ease both;pointer-events:none}
+.cg-modal-bg.closing{animation:cg-fade-out .14s ease both;pointer-events:none}
+.cg-modal-bg.closing .cg-modal{animation:cg-pop-out .14s ease both}
+.cg-num{width:64px;font:inherit;font-family:${CG.fontBold};font-size:15px;text-align:center;padding:6px 4px;border-radius:10px;border:1px solid ${CG.line};background:#fff;color:${CG.ink}}
+.cg-num:focus-visible{outline:3px solid #9CC0FF;outline-offset:1px}
+.cg-label{position:absolute;left:0;top:0;pointer-events:none;will-change:transform;transition:opacity .2s ease;z-index:6;
+  background:rgba(11,26,46,.88);color:#fff;border-radius:10px;padding:5px 10px;font-family:${CG.fontBold};font-size:14px;white-space:nowrap;
+  box-shadow:0 6px 16px rgba(11,26,46,.25)}
+.cg-label small{display:block;font-family:${CG.font};font-size:14px;opacity:.8}
+.cg-label.active{background:${CG.brand}}
+.cg-hub-dark{background:#0B1A2E;color:#fff}
 @media (prefers-reduced-motion: reduce){
   .cg-root *,.cg-root *::before,.cg-root *::after{animation-duration:1ms!important;animation-iteration-count:1!important;transition-duration:1ms!important}
   .cg-confetti{display:none}

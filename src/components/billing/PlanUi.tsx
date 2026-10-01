@@ -28,9 +28,9 @@ import { color } from '@/theme/tokens';
 
 /** Màu đi lên theo bậc: xám → lam → tím → cam. Nhìn thứ tự là đoán được thứ hạng. */
 const PLAN_TONE: Record<PlanId, { solid: string; soft: string; ink: string }> = {
-  free: { solid: '#64748B', soft: '#F1F4FB', ink: '#334155' },
-  plus: { solid: '#5B8BEE', soft: '#EFF5FF', ink: '#4A7FE8' },
-  pro: { solid: '#A855F7', soft: '#F8EFFF', ink: '#7E22CE' },
+  free: { solid: '#64748B', soft: '#FBF7F1', ink: '#334155' },
+  plus: { solid: '#B8955A', soft: '#F7F0E1', ink: '#A8843F' },
+  pro: { solid: '#D5B377', soft: '#FCF8F2', ink: '#B78939' },
   max: { solid: '#F97316', soft: '#FFF0E4', ink: '#C2410C' },
 };
 
@@ -96,8 +96,8 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
       className={`${className} overflow-hidden rounded-card`}
       // Dải xanh nhạt cùng tông thanh bên (người dùng chọn 27/09/2026), thay khối tím đậm.
       style={{
-        backgroundColor: '#5B8BEE',
-        ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)' } as object) : null),
+        backgroundColor: '#B8955A',
+        ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #D9BC7F 0%, #A8843F 100%)' } as object) : null),
       }}
     >
       <View className="flex-row flex-wrap items-center gap-4 p-4 md:p-5">

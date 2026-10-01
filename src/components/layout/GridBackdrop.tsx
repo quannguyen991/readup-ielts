@@ -22,7 +22,7 @@ import Svg, { Defs, Ellipse, LinearGradient, Pattern, Path, RadialGradient, Rect
  */
 
 /** Xanh dương đậm → chàm → tím. Đủ tối để chữ trắng và thẻ giấy sáng nổi lên. */
-const BASE_STOPS = ['#1E3A9E', '#3B3BBF', '#6D28D9'] as const;
+const BASE_STOPS = ['#0F1D33', '#1A2B48', '#564528'] as const;
 
 /**
  * Bản SÁNG của cùng một nền: xanh nước biển rất nhạt, ngả tím ở góc dưới.
@@ -34,10 +34,10 @@ const BASE_STOPS = ['#1E3A9E', '#3B3BBF', '#6D28D9'] as const;
  * ĐỨNG Ở ĐÂY chứ không nằm riêng trong `TaskShell`: giờ có sáu bảy màn dùng
  * chung, mà hai bộ số gần giống nhau ở hai file là hai bộ số sẽ trôi khỏi nhau.
  */
-export const LIGHT_STOPS = ['#E9F0FE', '#E3EAFC', '#EBE6FB'] as const;
+export const LIGHT_STOPS = ['#FFFDF8', '#FBF6EC', '#F5ECD9'] as const;
 
 /** Nét kẻ cho bản sáng — chàm rất mờ, không phải trắng. */
-export const LIGHT_LINE = 'rgba(60, 82, 160, 0.10)';
+export const LIGHT_LINE = 'rgba(143, 110, 54, 0.10)';
 
 /**
  * Nền CHUNG của các màn duyệt: xanh cornflower, kẻ caro.
@@ -49,8 +49,9 @@ export const LIGHT_LINE = 'rgba(60, 82, 160, 0.10)';
  * LƯU Ý KHI ĐẶT CHỮ TRỰC TIẾP LÊN NỀN NÀY: chữ xám nhạt (`text-muted`) đọc
  * không nổi nữa. Chữ nằm ngoài thẻ phải là `text-ink` hoặc trắng.
  */
-export const CANVAS_STOPS = ['#93B5FC', '#89ACFB', '#9BA9FA'] as const;
-export const CANVAS_LINE = 'rgba(23, 47, 110, 0.13)';
+// 01/10/2026 — Band 9: nền kem ấm, kẻ ô vàng kim rất mờ (thay xanh cornflower).
+export const CANVAS_STOPS = ['#F4EFE4', '#F0E9DA', '#EBE2CE'] as const;
+export const CANVAS_LINE = 'rgba(143, 110, 54, 0.10)';
 
 export function GridBackdrop({
   cell = 34,
@@ -58,7 +59,7 @@ export function GridBackdrop({
   line = 'rgba(255,255,255,0.12)',
   showGrid = true,
   pattern = 'grid',
-  blobs = ['#60A5FA', '#C084FC'],
+  blobs = ['#E9D3A0', '#F1E4C8'],
   margin,
   children,
 }: {

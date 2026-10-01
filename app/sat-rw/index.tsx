@@ -214,8 +214,8 @@ export default function SatRwHubScreen() {
 
 /** Màu từng mảng đề — dùng cho dải "dấu vân" trên thẻ đề trộn. */
 const DOMAIN_TONE: Record<string, string> = {
-  'Information and Ideas': '#0EA5E9',
-  'Craft and Structure': '#8B5CF6',
+  'Information and Ideas': '#B07A3A',
+  'Craft and Structure': '#D6B57C',
   'Expression of Ideas': '#F59E0B',
   'Standard English Conventions': '#F43F5E',
 };
@@ -250,9 +250,9 @@ function MixTile({
       className="rounded-[18px] bg-white p-3.5"
       style={{
         borderWidth: 1,
-        borderColor: hover ? '#C7CCE0' : '#E6E8F2',
+        borderColor: hover ? '#E0D7C7' : '#F2EEE6',
         ...({
-          boxShadow: hover ? '0 14px 30px rgba(30,41,99,0.12)' : '0 1px 2px rgba(15,23,42,0.05)',
+          boxShadow: hover ? '0 14px 30px rgba(94, 72, 35,0.12)' : '0 1px 2px rgba(15,23,42,0.05)',
           transform: hover ? 'translateY(-2px)' : 'none',
           transition: 'box-shadow 180ms ease, transform 180ms ease, border-color 180ms ease',
         } as object),

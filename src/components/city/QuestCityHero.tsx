@@ -10,13 +10,19 @@ import React from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
+import { useShallow } from 'zustand/react/shallow';
+
 import { catalogItem, ERA_INFO, isTower, type Era } from '@/data/city/catalog';
 import { blockers, isDone, populationOf } from '@/services/city/construction';
 import { ECONOMY } from '@/services/city/economy';
 import { MATERIAL_INFO, MATERIAL_KINDS } from '@/services/city/materials';
+import { HUB_TOWERS } from '@/services/city/hub';
+import type { CityPayload } from '@/services/city/sync';
+import { useAuthStore } from '@/store/useAuthStore';
 import { useCityStore } from '@/store/useCityStore';
 import { CityPreview } from './CityPreview';
 import { useCityName } from './ui/common';
+import { useHubSnapshot } from './useHubSnapshot';
 
 const GOLD = '#FACC15';
 const MUTED = 'rgba(255,255,255,0.72)';
@@ -24,7 +30,9 @@ const WEB = Platform.OS === 'web';
 const PREVIEW_H = 340;
 
 /** Đúng một việc nên làm tiếp — cùng thứ tự với bảng "Nhiệm vụ" trong thành phố. */
-function nextStep(s: ReturnType<typeof useCityStore.getState>): string {
+type HeroCity = Pick<CityPayload, 'terrain' | 'sites' | 'priority' | 'inventory' | 'shiftBank' | 'era'>;
+
+function nextStep(s: HeroCity): string {
   if (!s.terrain) return 'Chưa có đất — chọn vùng đất để khởi công.';
   if (s.sites.length === 0) return 'Đất đang trống — đặt công trình đầu tiên, một cái Lều là đủ.';
   const open = s.sites.filter((x) => !isDone(x)).sort((a, b) => (a.id === s.priority ? -1 : b.id === s.priority ? 1 : a.createdAt.localeCompare(b.createdAt)));
@@ -41,7 +49,8 @@ function nextStep(s: ReturnType<typeof useCityStore.getState>): string {
 }
 
 export function QuestCityHero() {
-  const s = useCityStore();
+  // Chỉ phần khối này hiện — học thêm một câu (bộ đếm ca, sổ ngày) không làm cả khối render lại.
+  const s = useCityStore(useShallow((x) => ({ terrain: x.terrain, sites: x.sites, priority: x.priority, inventory: x.inventory, shiftBank: x.shiftBank, era: x.era })));
   const cityName = useCityName();
   const era = (s.era || 1) as Era;
   const done = s.sites.filter((x) => isDone(x)).length;
@@ -64,14 +73,15 @@ export function QuestCityHero() {
         flexDirection: 'row',
         borderWidth: 1,
         borderColor: hovered ? 'rgba(125,211,252,0.75)' : 'rgba(125,211,252,0.45)',
-        backgroundColor: 'rgba(23,18,58,0.92)',
+        // Xanh navy (người dùng không thích tím).
+        backgroundColor: '#0B1A2E',
         ...(WEB ? ({ transition: 'border-color 160ms ease', cursor: 'pointer' } as object) : null),
       })}
     >
       <View style={{ flex: 1, padding: 28, justifyContent: 'center', minWidth: 320 }}>
         <View style={{ alignSelf: 'flex-start', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(125,211,252,0.45)', backgroundColor: 'rgba(125,211,252,0.12)', paddingHorizontal: 12, paddingVertical: 5 }}>
           <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#BAE6FD' }}>
-            READUP QUEST · THÀNH PHỐ TRI THỨC
+            BAND 9 QUEST · THÀNH PHỐ TRI THỨC
           </Text>
         </View>
         <Text className="font-heavy" style={{ marginTop: 12, fontSize: 34, lineHeight: 40, color: '#FFFFFF' }}>
@@ -142,6 +152,26 @@ export function QuestCityHero() {
             accessibilityRole="link"
             onPress={(e) => {
               e.stopPropagation?.();
+              router.push('/quest/city?hub=1' as never);
+            }}
+            style={({ hovered }: { hovered?: boolean }) => ({
+              borderRadius: 14,
+              paddingHorizontal: 16,
+              paddingVertical: 13,
+              borderWidth: 1,
+              borderColor: 'rgba(250,204,21,0.55)',
+              backgroundColor: hovered ? 'rgba(250,204,21,0.18)' : 'rgba(250,204,21,0.08)',
+              ...(WEB ? ({ transition: 'background-color 160ms ease' } as object) : null),
+            })}
+          >
+            <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
+              🏗️ Trung tâm Tương lai
+            </Text>
+          </Pressable>
+          <Pressable
+            accessibilityRole="link"
+            onPress={(e) => {
+              e.stopPropagation?.();
               router.push('/quest/pick' as never);
             }}
             style={({ hovered }: { hovered?: boolean }) => ({
@@ -159,13 +189,15 @@ export function QuestCityHero() {
             </Text>
           </Pressable>
         </View>
+
+        <HubStrip />
       </View>
 
       {/* Khung 3D lấp đầy cả cột, cao bằng khối chữ bên trái. */}
       <View style={{ width: '56%', minHeight: PREVIEW_H, position: 'relative', alignSelf: 'stretch', backgroundColor: 'rgba(125,211,252,0.08)' }}>
         <CityPreview height={PREVIEW_H + 120} sample={showSample} />
         {showSample ? (
-          <View style={{ position: 'absolute', left: 14, top: 14, flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(15,12,40,0.78)' }}>
+          <View style={{ position: 'absolute', left: 14, top: 14, flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(11,26,46,0.82)' }}>
             <Text style={{ fontSize: 13 }}>🏙️</Text>
             <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
               Thành phố mẫu · Kỷ 5 — đích đến của bạn
@@ -173,6 +205,64 @@ export function QuestCityHero() {
           </View>
         ) : null}
       </View>
+    </Pressable>
+  );
+}
+
+/**
+ * Tiến độ THẬT của Trung tâm Tương lai (khu cao ốc chung) — từ /api/city-hub.
+ * Chưa tải được thì không hiện số bịa: chỉ hiện dòng mời vào.
+ */
+function HubStrip() {
+  const token = useAuthStore((st) => st.session?.access_token ?? null);
+  const { data } = useHubSnapshot(token);
+  const p = data?.progress;
+  const cur = p && p.current >= 0 ? p.towers[p.current] : undefined;
+  const tower = cur ? HUB_TOWERS[p!.current] : undefined;
+  const pct = p && p.floorsTotal ? Math.round((p.floorsBuilt / p.floorsTotal) * 100) : 0;
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel="Vào Trung tâm Tương lai"
+      onPress={(e) => {
+        e.stopPropagation?.();
+        router.push('/quest/city?hub=1' as never);
+      }}
+      style={({ hovered }: { hovered?: boolean }) => ({
+        marginTop: 14,
+        maxWidth: 520,
+        borderRadius: 14,
+        paddingHorizontal: 14,
+        paddingVertical: 10,
+        backgroundColor: hovered ? 'rgba(125,211,252,0.14)' : 'rgba(125,211,252,0.07)',
+        borderWidth: 1,
+        borderColor: 'rgba(125,211,252,0.25)',
+        ...(WEB ? ({ transition: 'background-color 160ms ease' } as object) : null),
+      })}
+    >
+      <Text className="font-semi" style={{ fontSize: 12, letterSpacing: 0.6, color: MUTED }}>
+        TRUNG TÂM TƯƠNG LAI · CẢ CỘNG ĐỒNG CÙNG XÂY
+      </Text>
+      {p ? (
+        <>
+          <View style={{ marginTop: 6, flexDirection: 'row', gap: 6 }}>
+            {p.towers.map((t, i) => (
+              <View key={t.id} style={{ flex: 1, height: 8, borderRadius: 99, backgroundColor: 'rgba(255,255,255,0.12)', overflow: 'hidden' }}>
+                <View style={{ width: `${Math.round((t.done ? 1 : (t.floorsBuilt + (t.floor?.fraction ?? 0)) / t.floors) * 100)}%`, height: '100%', backgroundColor: t.done ? '#4ADE80' : i === p.current ? GOLD : '#7DD3FC' }} />
+              </View>
+            ))}
+          </View>
+          <Text className="font-strong" style={{ marginTop: 6, fontSize: 14, lineHeight: 20, color: '#FFFFFF' }}>
+            {tower && cur
+              ? `${tower.glyph} ${tower.vi} đang lên tầng ${cur.floorsBuilt + 1}/${cur.floors} · cả khu ${p.floorsBuilt}/${p.floorsTotal} tầng (${pct}%) · ${data!.people} người đã góp`
+              : `Cả năm tháp đã xong · ${data!.people} người đã góp`}
+          </Text>
+        </>
+      ) : (
+        <Text className="font-strong" style={{ marginTop: 4, fontSize: 14, color: '#FFFFFF' }}>
+          Năm tòa cao ốc chung — góp vật liệu để cả cộng đồng cùng lên tầng →
+        </Text>
+      )}
     </Pressable>
   );
 }

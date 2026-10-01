@@ -15,15 +15,15 @@ export type DeckLook = { source: DeckSource; sourceLabel: string; accent: readon
 
 /** Mười cặp (nền nhạt, màu đậm); chủ đề IELTS lấy theo thứ tự để thẻ cạnh nhau không trùng màu. */
 const PALETTE: readonly (readonly [string, string])[] = [
-  ['#EDE9FE', '#7C3AED'],
+  ['#FBF5EC', '#CCA35B'],
   ['#DCFCE7', '#16A34A'],
   ['#CCFBF1', '#0D9488'],
-  ['#DBEAFE', '#2563EB'],
+  ['#F3E6C8', '#9C7A3A'],
   ['#FEF3C7', '#D97706'],
   ['#FEE2E2', '#DC2626'],
-  ['#E0E7FF', '#4F46E5'],
+  ['#F9F2E6', '#CDA45E'],
   ['#FCE7F3', '#DB2777'],
-  ['#CFFAFE', '#0891B2'],
+  ['#CFFAFE', '#8E6A2C'],
   ['#FFEDD5', '#EA580C'],
 ];
 
@@ -84,10 +84,10 @@ const TOPIC_INDEX = new Map(VOCAB_TOPICS.map((t, i) => [t.slug, i]));
 const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
 export function deckLook(slug: string): DeckLook {
-  if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', accent: ['#EDE9FE', '#7C3AED'], icon: 'book' };
+  if (slug === NOTEBOOK_SLUG) return { source: 'mine', sourceLabel: 'Sổ từ của bạn', accent: ['#FBF5EC', '#CCA35B'], icon: 'book' };
   if (slug.startsWith(CUSTOM_PREFIX)) return { source: 'mine', sourceLabel: 'Bộ bạn tạo', accent: ['#D1FAE5', '#059669'], icon: 'note' };
   const subject = SAT_SUBJECT.get(slug);
-  if (subject === 'math') return { source: 'satMath', sourceLabel: 'SAT Math', accent: ['#E0E7FF', '#4F46E5'], icon: 'grid' };
+  if (subject === 'math') return { source: 'satMath', sourceLabel: 'SAT Math', accent: ['#F9F2E6', '#CDA45E'], icon: 'grid' };
   if (subject) return { source: 'satVerbal', sourceLabel: 'SAT Verbal', accent: ['#FFE4E6', '#E11D48'], icon: 'letters' };
   const i = TOPIC_INDEX.get(slug) ?? 0;
   return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };

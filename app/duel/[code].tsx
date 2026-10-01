@@ -19,7 +19,7 @@ import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge } from '@/components/illust/Cute';
 import { CuteChat, CuteRocket, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
 /**
  * PHÒNG ĐẤU 1–1 (`services/duel`). Chờ đủ hai người → chủ phòng bấm bắt đầu →
@@ -143,7 +143,7 @@ export default function DuelRoom() {
 
         {/* Hai thanh điểm, chạy thời gian thực. */}
         <View className="mt-4 flex-row flex-wrap gap-3">
-          <ScoreBar name={`${me.name} (bạn)`} t={mine} total={questions.length || 10} tone="#4F46E5" done={myDone} />
+          <ScoreBar name={`${me.name} (bạn)`} t={mine} total={questions.length || 10} tone="#CDA45E" done={myDone} />
           <ScoreBar name={opponent?.name ?? 'Đang chờ đối thủ…'} t={theirs} total={questions.length || 10} tone="#DB2777" done={theirDone} />
         </View>
 
@@ -216,7 +216,7 @@ export default function DuelRoom() {
                     {Math.max(0, Math.ceil((shownAt + QUESTION_MS - clock) / 1000))}s
                   </Text>
                 </View>
-                <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#E2E8F0' }}>
+                <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F0EBE2' }}>
                   <View className="h-1.5 rounded-pill" style={{ width: `${Math.max(0, 1 - (clock - shownAt) / QUESTION_MS) * 100}%`, backgroundColor: '#F59E0B' }} />
                 </View>
                 <Text className="mt-4 font-heavy text-pageTitle text-ink">{q.enToVi ? q.word.word : q.word.meaningVi}</Text>
@@ -231,7 +231,7 @@ export default function DuelRoom() {
                         disabled={reveal}
                         onPress={() => submit(i)}
                         className="flex-row items-center gap-3 rounded-2xl px-4 py-3.5"
-                        style={{ borderWidth: 1.5, borderColor: ok ? GREEN : bad ? RED : '#E2E8F0', backgroundColor: ok ? '#ECFDF3' : bad ? '#FFF1F2' : '#FFFFFF' }}
+                        style={{ borderWidth: 1.5, borderColor: ok ? GREEN : bad ? RED : '#F0EBE2', backgroundColor: ok ? '#ECFDF3' : bad ? '#FFF1F2' : '#FFFFFF' }}
                       >
                         <Text className="font-strong text-label text-muted">{i + 1}</Text>
                         <Text className="flex-1 font-semi text-bodyLg text-ink">{opt}</Text>
@@ -263,7 +263,7 @@ export default function DuelRoom() {
                 </Text>
                 {!opponent ? (
                   <View className="mt-3 flex-row flex-wrap items-center gap-2">
-                    <Text selectable className="rounded-xl px-3 py-2 font-sans text-body text-ink" style={{ backgroundColor: '#F1F5F9' }}>
+                    <Text selectable className="rounded-xl px-3 py-2 font-sans text-body text-ink" style={{ backgroundColor: '#F9F6F1' }}>
                       {link}
                     </Text>
                     {Platform.OS === 'web' ? (
@@ -273,7 +273,7 @@ export default function DuelRoom() {
                         label="Gửi lời mời"
                         onPress={() =>
                           void (navigator.share
-                            ? navigator.share({ text: `Đấu từ vựng với mình trên ReadUp — mã phòng ${code}`, url: link }).catch(() => {})
+                            ? navigator.share({ text: `Đấu từ vựng với mình trên Band 9 — mã phòng ${code}`, url: link }).catch(() => {})
                             : navigator.clipboard.writeText(link))
                         }
                       />
@@ -310,7 +310,7 @@ function ScoreBar({ name, t, total, tone, done }: { name: string; t: PlayerTally
             {t.score}
           </Text>
         </View>
-        <View className="mt-2 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#E8EEF8' }}>
+        <View className="mt-2 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
           <View className="h-2.5 rounded-pill" style={{ width: `${(t.answered / Math.max(total, 1)) * 100}%`, backgroundColor: tone }} />
         </View>
         <Text className="mt-1 font-sans text-label text-muted">

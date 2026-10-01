@@ -298,7 +298,7 @@ export default function ClozeScreen() {
       <CrossFade swapKey={`c-${step}`}>
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
-            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#EEF2FF' }}>
+            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
                 {CLOZE_KIND_LABEL[q.kind]}
               </Text>
@@ -312,7 +312,7 @@ export default function ClozeScreen() {
 
           <Text className="mt-3 font-semi text-sectionTitle leading-9 text-ink">
             {q.before}
-            <Text className="font-strong" style={{ color: revealed ? (verdict ? '#15803D' : '#4A7FE8') : '#94A3B8' }}>
+            <Text className="font-strong" style={{ color: revealed ? (verdict ? '#15803D' : '#A8843F') : '#94A3B8' }}>
               {revealed ? q.answer : ' _______ '}
             </Text>
             {q.after}
@@ -354,8 +354,8 @@ export default function ClozeScreen() {
                 className="mt-4 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
                 style={{
                   borderWidth: 1.5,
-                  borderColor: !revealed ? '#CBD5E1' : verdict ? '#16A34A' : '#E11D48',
-                  backgroundColor: '#F8FAFC',
+                  borderColor: !revealed ? '#E1D9CB' : verdict ? '#16A34A' : '#E11D48',
+                  backgroundColor: '#FCFBF8',
                 }}
               />
               {!revealed ? <PrimaryButton label="Kiểm tra" hint="Enter" disabled={!typed.trim()} onPress={() => submitText(typed)} /> : null}
@@ -434,8 +434,8 @@ function ScrambleBoard({
                     width: size,
                     height: size + 8,
                     borderBottomWidth: 3,
-                    borderColor: filled ? color.primary : '#CBD5E1',
-                    backgroundColor: filled ? '#EEF2FF' : '#F8FAFC',
+                    borderColor: filled ? color.primary : '#E1D9CB',
+                    backgroundColor: filled ? '#FCF8F1' : '#FCFBF8',
                   }}
                 >
                   <Text className={small ? 'font-heavy text-bodyLg text-ink' : 'font-heavy text-sectionTitle text-ink'}>{filled}</Text>
@@ -460,9 +460,9 @@ function ScrambleBoard({
               style={{
                 width: 46,
                 height: 50,
-                backgroundColor: isUsed ? '#F1F5F9' : '#FFFFFF',
+                backgroundColor: isUsed ? '#F9F6F1' : '#FFFFFF',
                 borderWidth: 1.5,
-                borderColor: isUsed ? '#F1F5F9' : '#CBD5E1',
+                borderColor: isUsed ? '#F9F6F1' : '#E1D9CB',
                 opacity: isUsed ? 0.35 : 1,
               }}
             >

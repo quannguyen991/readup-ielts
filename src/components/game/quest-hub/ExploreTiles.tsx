@@ -19,7 +19,7 @@ type Tile = { title: string; detail: string; href: string; tone: string; art: (s
 
 const TILES: Tile[] = [
   { title: 'Toa Từ Vựng', detail: 'Học từ trên chuyến tàu qua các thành phố', href: '/quest/rail', tone: HUB.sky, art: (s) => <CuteTrain size={s * 1.25} /> },
-  { title: 'Bản đồ ReadUp', detail: 'Đi bộ qua sáu đảo bài học', href: '/quest/world', tone: HUB.blue, art: (s) => <CuteGlobe size={s} /> },
+  { title: 'Bản đồ Band 9', detail: 'Đi bộ qua sáu đảo bài học', href: '/quest/world', tone: HUB.blue, art: (s) => <CuteGlobe size={s} /> },
   { title: 'Đấu 1–1', detail: 'Thách một người bạn 10 câu', href: '/duel', tone: HUB.orange, art: (s) => <CuteFlame size={s} /> },
   { title: 'Đề của tuần', detail: 'Cả nước làm chung một đề', href: '/weekly', tone: HUB.amber, art: (s) => <CuteTrophy size={s} /> },
   { title: 'Đọc theo VOA', detail: 'Nghe một câu, nói lại theo', href: '/shadow', tone: HUB.green, art: (s) => <CuteMic size={s} /> },

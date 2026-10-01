@@ -203,7 +203,7 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
         borderRadius: 18,
         backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        borderColor: '#E2E8F0',
+        borderColor: '#F0EBE2',
         ...({ boxShadow: '0 18px 44px rgba(15,23,42,0.24)' } as object),
       }}
     >
@@ -211,10 +211,10 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
         <Text className="font-heavy" numberOfLines={2} style={{ flex: 1, fontSize: 18, color: '#0F172A' }}>
           {picked.text}
         </Text>
-        <Pressable accessibilityRole="button" accessibilityLabel="Nghe phát âm" onPress={() => speak(picked.text, { rate: 0.85 })} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EEF2FF' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel="Nghe phát âm" onPress={() => speak(picked.text, { rate: 0.85 })} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}>
           <Icon name="volume" size={16} color={color.primary} />
         </Pressable>
-        <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F1F5F9' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F9F6F1' }}>
           <Icon name="close" size={15} color="#475569" />
         </Pressable>
       </View>

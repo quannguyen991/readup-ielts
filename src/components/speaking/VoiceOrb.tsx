@@ -19,8 +19,8 @@ import { Platform, Pressable, View } from 'react-native';
 export type OrbState = 'idle' | 'speaking' | 'listening' | 'thinking';
 
 const PAL: Record<OrbState, [string, string, string]> = {
-  idle: ['#8FB5FF', '#4A7FE8', '#1E4FC2'],
-  speaking: ['#7DD3FC', '#3B82F6', '#1D4ED8'],
+  idle: ['#EAD0A4', '#A8843F', '#AB8035'],
+  speaking: ['#E0C699', '#B8955A', '#8F6E36'],
   listening: ['#86EFAC', '#14B8A6', '#0F766E'],
   thinking: ['#FDE68A', '#F2B632', '#D97706'],
 };

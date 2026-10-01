@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SITE_ORIGIN } from '@/lib/site';
 import { Platform, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
@@ -7,7 +8,7 @@ import { Icon } from '@/components/ui/Icon';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useSyncStore } from '@/store/useSyncStore';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(94, 72, 35,0.08)' } as object;
 
 /**
  * Học sinh tạo đường dẫn "Báo cáo tuần cho phụ huynh" và gửi qua Zalo /
@@ -30,7 +31,7 @@ export function ParentReportCard() {
       const res = await fetch('/api/report/link', { method: 'POST', headers: { Authorization: `Bearer ${token}` } });
       const body = (await res.json()) as { path?: string; error?: string };
       if (!res.ok || !body.path) throw new Error(body.error ?? `Lỗi ${res.status}`);
-      setUrl(`${Platform.OS === 'web' && typeof window !== 'undefined' ? window.location.origin : 'https://readup-ielts.vercel.app'}${body.path}`);
+      setUrl(`${Platform.OS === 'web' && typeof window !== 'undefined' ? window.location.origin : SITE_ORIGIN}${body.path}`);
     } catch (e) {
       setNote(e instanceof Error ? e.message : 'Không tạo được đường dẫn.');
     } finally {
@@ -40,7 +41,7 @@ export function ParentReportCard() {
 
   const send = async () => {
     if (!url || Platform.OS !== 'web') return;
-    const text = 'Báo cáo học tập tuần này của con trên ReadUp:';
+    const text = 'Báo cáo học tập tuần này của con trên Band 9:';
     try {
       if (navigator.share) await navigator.share({ text, url });
       else {
@@ -55,7 +56,7 @@ export function ParentReportCard() {
   return (
     <View className="rounded-[22px] bg-white p-5" style={CARD}>
       <View className="flex-row items-center gap-2">
-        <Icon name="mail" size={18} color="#4F46E5" />
+        <Icon name="mail" size={18} color="#CDA45E" />
         <Text className="font-heavy text-cardTitle text-ink">Báo cáo tuần cho phụ huynh</Text>
       </View>
       <Text className="mt-1 font-sans text-body text-muted">
@@ -65,7 +66,7 @@ export function ParentReportCard() {
         <Button className="mt-3 self-start" variant="outline" label="Đăng nhập để tạo báo cáo" onPress={() => router.push('/auth/sign-in' as never)} />
       ) : url ? (
         <View className="mt-3">
-          <Text className="rounded-xl px-3 py-2 font-sans text-label text-ink" style={{ backgroundColor: '#F1F5F9' }} selectable numberOfLines={1}>
+          <Text className="rounded-xl px-3 py-2 font-sans text-label text-ink" style={{ backgroundColor: '#F9F6F1' }} selectable numberOfLines={1}>
             {url}
           </Text>
           <View className="mt-2 flex-row flex-wrap gap-2">

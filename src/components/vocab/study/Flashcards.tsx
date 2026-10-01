@@ -139,7 +139,7 @@ export function Flashcards<W extends StudyWord>({
             accessibilityLabel={saved ? "Đã lưu vào sổ từ" : "Lưu vào sổ từ"}
             onPress={() => !saved && onSave(word)}
             className="h-10 flex-row items-center gap-1.5 rounded-pill px-3"
-            style={{ backgroundColor: saved ? "#ECFDF3" : "#F1F5F9" }}
+            style={{ backgroundColor: saved ? "#ECFDF3" : "#F9F6F1" }}
           >
             <Icon
               name={saved ? "check" : "bookmark"}
@@ -178,7 +178,7 @@ export function Flashcards<W extends StudyWord>({
           }}
           className="h-10 flex-row items-center gap-1.5 rounded-pill px-3"
           style={{
-            backgroundColor: order === "shuffled" ? "#EAF1FF" : "#F1F5F9",
+            backgroundColor: order === "shuffled" ? "#FBF6EE" : "#F9F6F1",
           }}
         >
           <Icon

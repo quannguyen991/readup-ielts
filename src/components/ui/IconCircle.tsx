@@ -27,12 +27,12 @@ const strokeColor: Record<IconTone, string> = {
 
 /** Màu huy hiệu răng cưa (không dùng tím). */
 const SEAL: Record<IconTone, string> = {
-  primary: '#4A7FE8',
+  primary: '#A8843F',
   accent: '#F2B632',
   success: '#22A06B',
   warning: '#F0703F',
   danger: '#E0533D',
-  info: '#0EA5E9',
+  info: '#B07A3A',
 };
 
 /** Icon đặt trong hình tròn nền pastel cùng tông — mô-típ lặp lại ở mọi stat card. */

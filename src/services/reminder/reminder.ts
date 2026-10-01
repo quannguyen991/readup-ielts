@@ -2,7 +2,7 @@
  * NHẮC HỌC MỖI NGÀY — luật thuần (test ở `reminder.test.ts`).
  *
  * App chạy trên web, không có máy chủ đẩy thông báo, nên có hai đường:
- *  1. Thông báo của trình duyệt khi có một tab ReadUp đang mở (kể cả tab nền):
+ *  1. Thông báo của trình duyệt khi có một tab Band 9 đang mở (kể cả tab nền):
  *     tới giờ mà hôm nay chưa học phút nào thì nhắc MỘT lần.
  *  2. Tệp lịch .ics lặp lại mỗi ngày (có chuông) — thêm vào Google Calendar /
  *     lịch điện thoại là được nhắc cả khi không mở app. Nói thẳng điều này ở
@@ -42,7 +42,7 @@ export function reminderIcs(time: string, url: string, today: Date, uid: string)
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//ReadUp//Nhac hoc//VI',
+    'PRODID:-//Band 9//Nhac hoc//VI',
     'CALSCALE:GREGORIAN',
     'BEGIN:VEVENT',
     `UID:${uid}@readup`,
@@ -50,12 +50,12 @@ export function reminderIcs(time: string, url: string, today: Date, uid: string)
     `DTSTART:${start}`,
     `DTEND:${end}`,
     'RRULE:FREQ=DAILY',
-    'SUMMARY:Học ReadUp 15 phút',
+    'SUMMARY:Học Band 9 15 phút',
     `DESCRIPTION:Giữ chuỗi ngày học — mở ${url}`,
     `URL:${url}`,
     'BEGIN:VALARM',
     'ACTION:DISPLAY',
-    'DESCRIPTION:Đến giờ học ReadUp',
+    'DESCRIPTION:Đến giờ học Band 9',
     'TRIGGER:PT0M',
     'END:VALARM',
     'END:VEVENT',

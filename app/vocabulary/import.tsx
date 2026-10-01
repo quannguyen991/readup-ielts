@@ -12,7 +12,7 @@ import { candidateToStudyWord, extractCandidates, type ImportCandidate } from '@
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { color } from '@/theme/tokens';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
 /** Bài mẫu tự soạn (không chép báo) để thử ngay khi chưa có bài của mình. */
 const SAMPLE = `The club unveiled a sustainable new stadium on Friday. Its roof collects rainwater, and solar panels generate enough electricity to power every floodlight. Critics were skeptical at first, arguing that the project was an expensive gamble. However, attendance has surged, and the stadium has become a model for other clubs.
@@ -94,7 +94,7 @@ export default function ImportDeckScreen() {
             placeholder="Dán một bài tiếng Anh vào đây…"
             placeholderTextColor="#94A3B8"
             className="mt-3 rounded-2xl px-4 py-3 font-sans text-body text-ink"
-            style={{ minHeight: 170, borderWidth: 1.5, borderColor: '#E2E8F0', backgroundColor: '#F8FAFC', textAlignVertical: 'top' }}
+            style={{ minHeight: 170, borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8', textAlignVertical: 'top' }}
           />
           <View className="mt-3 flex-row flex-wrap items-center gap-2">
             <Button label="Tìm từ đáng học" iconRight="arrow-right" disabled={text.trim().length < 40} onPress={() => scan(text)} />
@@ -131,12 +131,12 @@ export default function ImportDeckScreen() {
                       <View
                         key={c.word}
                         className="rounded-2xl px-4 py-3"
-                        style={{ borderWidth: 1.5, borderColor: on ? '#93C5FD' : '#E2E8F0', backgroundColor: on ? '#F3F8FF' : '#FFFFFF' }}
+                        style={{ borderWidth: 1.5, borderColor: on ? '#E6D2A6' : '#F0EBE2', backgroundColor: on ? '#FDFAF5' : '#FFFFFF' }}
                       >
                         <Pressable accessibilityRole="checkbox" aria-checked={on} onPress={() => toggle(c.word)} className="flex-row items-center gap-3">
                           <View
                             className="h-6 w-6 items-center justify-center rounded-lg"
-                            style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: on ? 0 : 1.5, borderColor: '#CBD5E1' }}
+                            style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: on ? 0 : 1.5, borderColor: '#E1D9CB' }}
                           >
                             {on ? <Icon name="check" size={15} color="#FFFFFF" strokeWidth={2.6} /> : null}
                           </View>
@@ -180,7 +180,7 @@ export default function ImportDeckScreen() {
               placeholder="Tên bộ từ"
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-3 font-semi text-bodyLg text-ink"
-              style={{ borderWidth: 1.5, borderColor: '#E2E8F0', backgroundColor: '#F8FAFC' }}
+              style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8' }}
             />
             <Text className="mt-2 font-sans text-body text-muted">
               {ready.length} từ sẵn sàng{missing > 0 ? ` · ${missing} từ đã chọn còn thiếu nghĩa (sẽ bị bỏ qua)` : ''}. Cần ít nhất 4 từ.
@@ -196,7 +196,7 @@ export default function ImportDeckScreen() {
             <Text className="font-heavy text-sectionTitle text-ink">Bộ bạn đã tạo</Text>
             <View className="mt-3 gap-2">
               {existing.map((d) => (
-                <View key={d.id} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: '#F8FAFC' }}>
+                <View key={d.id} className="flex-row items-center gap-3 rounded-2xl px-4 py-3" style={{ backgroundColor: '#FCFBF8' }}>
                   <Pressable className="min-w-0 flex-1" onPress={() => router.push(`/vocabulary/topic/${CUSTOM_PREFIX}${d.id}` as never)}>
                     <Text className="font-strong text-body text-ink" numberOfLines={1}>
                       {d.name}

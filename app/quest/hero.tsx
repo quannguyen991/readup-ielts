@@ -63,7 +63,7 @@ export default function HeroScreen() {
       <View onLayout={onLayout} style={{ width: '100%', maxWidth: MAX_W, alignSelf: 'center', paddingBottom: 28 }}>
         <Appear>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: GAP.sm, flexWrap: 'wrap' }}>
-            <BackPill label="ReadUp Quest" onPress={() => router.push('/quest' as never)} />
+            <BackPill label="Band 9 Quest" onPress={() => router.push('/quest' as never)} />
             <Text accessibilityRole="header" className="font-heavy text-pageTitle" style={{ color: HUB.ink }}>
               Nhân vật & nhiệm vụ
             </Text>
@@ -207,7 +207,7 @@ export default function HeroScreen() {
                         borderColor: current ? 'rgba(252,165,165,0.55)' : 'transparent',
                       }}
                     >
-                      <PixelSprite name={ENEMY_SPRITE[e.id] ?? 'slime'} color={e.color} size={56} silhouette={seen ? undefined : 'rgba(169,185,208,0.18)'} />
+                      <PixelSprite name={ENEMY_SPRITE[e.id] ?? 'slime'} color={e.color} size={56} silhouette={seen ? undefined : 'rgba(205, 193, 172,0.18)'} />
                       <Text className="font-strong" numberOfLines={1} style={{ marginTop: 6, fontSize: 13, color: seen ? HUB.ink : HUB.muted }}>
                         {seen ? e.name : '???'}
                       </Text>
@@ -326,7 +326,7 @@ export default function HeroScreen() {
                 ].map((line) => (
                   <View key={line} style={{ flexDirection: 'row', gap: 8 }}>
                     <View aria-hidden style={{ marginTop: 7, width: 5, height: 5, borderRadius: 2, backgroundColor: HUB.gold }} />
-                    <Text className="font-sans" style={{ flex: 1, fontSize: 13, lineHeight: 20, color: 'rgba(226,232,240,0.88)' }}>
+                    <Text className="font-sans" style={{ flex: 1, fontSize: 13, lineHeight: 20, color: 'rgba(240, 235, 226,0.88)' }}>
                       {line}
                     </Text>
                   </View>
@@ -349,11 +349,11 @@ function GoButton({ label, href }: { label: string; href: string }) {
         borderRadius: 12,
         paddingHorizontal: 12,
         paddingVertical: 8,
-        backgroundColor: hovered ? 'rgba(74,127,232,0.3)' : 'rgba(74,127,232,0.18)',
+        backgroundColor: hovered ? 'rgba(168,132,63,0.3)' : 'rgba(168,132,63,0.18)',
         ...(WEB ? ({ transition: 'background-color 150ms ease' } as object) : null),
       })}
     >
-      <Text className="font-strong" style={{ fontSize: 13, color: '#BFDBFE' }}>
+      <Text className="font-strong" style={{ fontSize: 13, color: '#EAD7AE' }}>
         {label} →
       </Text>
     </Pressable>
@@ -376,7 +376,7 @@ function SwitchRow({ title, detail, on, onToggle }: { title: string; detail: str
         aria-checked={on}
         accessibilityLabel={title}
         onPress={onToggle}
-        style={{ width: 58, height: 32, borderRadius: 999, padding: 3, backgroundColor: on ? HUB.green : 'rgba(169,185,208,0.3)', justifyContent: 'center' }}
+        style={{ width: 58, height: 32, borderRadius: 999, padding: 3, backgroundColor: on ? HUB.green : 'rgba(205, 193, 172,0.3)', justifyContent: 'center' }}
       >
         <View
           style={{

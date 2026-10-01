@@ -68,7 +68,7 @@ export function ZaloPromoBanner() {
     <View className="relative w-full overflow-hidden border-b border-amber-400/30 z-30">
       {/* Nền gradient hoàng gia tinh tế */}
       <LinearGradient
-        colors={['#17143A', '#2D1254', '#380B5C']}
+        colors={['#0B1526', '#132139', '#1A2B48']}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={{
@@ -103,7 +103,7 @@ export function ZaloPromoBanner() {
           width: 260,
           height: 70,
           borderRadius: 35,
-          backgroundColor: 'rgba(168, 85, 247, 0.25)',
+          backgroundColor: 'rgba(184, 149, 90, 0.22)',
           filter: Platform.OS === 'web' ? 'blur(28px)' : undefined,
         }}
       />
@@ -164,7 +164,7 @@ export function ZaloPromoBanner() {
             <Icon
               name={copied ? 'check' : 'clipboard'}
               size={14}
-              color={copied ? '#4ADE80' : '#E2E8F0'}
+              color={copied ? '#4ADE80' : '#F0EBE2'}
             />
             <Text className={`text-[12px] font-semibold ${copied ? 'text-green-300' : 'text-slate-200'}`}>
               {copied ? 'Đã chép số!' : 'Chép SĐT'}
@@ -178,8 +178,8 @@ export function ZaloPromoBanner() {
             accessibilityLabel="Nhắn Zalo ngay để nhận gói Max 2 tháng"
             className="flex-row items-center gap-1.5 rounded-lg px-3 py-1.5 shadow-md shadow-blue-500/25 transition-all hover:brightness-110 active:scale-95"
             style={{
-              backgroundColor: '#2563EB',
-              backgroundImage: Platform.OS === 'web' ? 'linear-gradient(90deg, #0284C7 0%, #2563EB 100%)' : undefined,
+              backgroundColor: '#9C7A3A',
+              backgroundImage: Platform.OS === 'web' ? 'linear-gradient(90deg, #8F6E36 0%, #9C7A3A 100%)' : undefined,
             }}
           >
             <View
@@ -192,7 +192,7 @@ export function ZaloPromoBanner() {
                 justifyContent: 'center',
               }}
             >
-              <Text style={{ fontSize: 10, fontWeight: '900', color: '#0284C7' }}>Z</Text>
+              <Text style={{ fontSize: 10, fontWeight: '900', color: '#8F6E36' }}>Z</Text>
             </View>
             <Text className="text-[12px] font-bold text-white">Nhắn Zalo ngay</Text>
             <Icon name="external" size={12} color="#FFFFFF" />
@@ -205,7 +205,7 @@ export function ZaloPromoBanner() {
             accessibilityLabel="Đóng thông báo ưu đãi"
             className="ml-1 h-7 w-7 items-center justify-center rounded-full text-slate-300 hover:bg-white/15 hover:text-white active:scale-90"
           >
-            <Icon name="close" size={15} color="#E2E8F0" />
+            <Icon name="close" size={15} color="#F0EBE2" />
           </Pressable>
         </View>
       </View>

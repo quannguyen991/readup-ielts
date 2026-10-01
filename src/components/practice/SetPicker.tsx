@@ -25,7 +25,7 @@ export type PickerSet = {
   note?: string;
 };
 
-const SHADOW = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 20px rgba(30,41,99,0.08)' } as object;
+const SHADOW = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 20px rgba(94, 72, 35,0.08)' } as object;
 
 /**
  * Danh sách bộ đề của một kỹ năng — đích của nút "Luyện" ở SAT Math và SAT
@@ -82,7 +82,7 @@ export function SetPicker({
                 <PageStickers scene={backHref.startsWith('/math') ? 'math' : 'verbal'} size={80} />
               </View>
             </View>
-            <View className="mt-4 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#E8EEF8' }}>
+            <View className="mt-4 h-2.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
               <View className="h-2.5 rounded-pill" style={{ width: `${total ? (done / total) * 100 : 0}%`, backgroundColor: '#16A34A' }} />
             </View>
             <Button
@@ -95,7 +95,7 @@ export function SetPicker({
 
         <View className="mb-3 mt-7 flex-row items-center gap-2.5">
           <View aria-hidden>
-            <SealIcon name="grid" color="#4A7FE8" size={38} />
+            <SealIcon name="grid" color="#A8843F" size={38} />
           </View>
           <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink">Chọn bộ đề</Text>
           {done === total && total > 0 ? (

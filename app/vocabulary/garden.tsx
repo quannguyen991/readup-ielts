@@ -24,7 +24,7 @@ const STATE_UI: Record<PlantState, { label: string; dot: string; note: string }>
   seed: { label: 'Hạt giống', dot: '#A3E635', note: 'Mới lưu, chưa ôn lần nào.' },
 };
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.1)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.1)' } as object;
 
 /**
  * VƯỜN TỪ — sổ từ hiện thành một hòn đảo 3D, mỗi từ một cây. Cây khoẻ hay héo
@@ -106,7 +106,7 @@ export default function GardenScreen() {
           <Appear index={2} style={{ flexGrow: 3, flexShrink: 1, flexBasis: 480 }}>
             <View
               className="overflow-hidden rounded-[26px]"
-              style={[{ height: 480, backgroundColor: '#E0F2FE', borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.9)' }, CARD]}
+              style={[{ height: 480, backgroundColor: '#F9F2E5', borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.9)' }, CARD]}
             >
               {Platform.OS === 'web' ? (
                 <Garden3D plants={plants} selected={selected} onPick={setSelected} style={{ flex: 1 }} />
@@ -187,7 +187,7 @@ function PlantPanel({ plant }: { plant: Plant }) {
       <Text className="mt-2 font-heavy text-pageTitle text-ink">{plant.word}</Text>
       <Text className="mt-0.5 font-semi text-bodyLg text-ink">{plant.meaningVi}</Text>
       <Text className="mt-2 font-sans text-body text-muted">{ui.note}</Text>
-      <View className="mt-4 h-3 overflow-hidden rounded-pill" style={{ backgroundColor: '#E2E8F0' }}>
+      <View className="mt-4 h-3 overflow-hidden rounded-pill" style={{ backgroundColor: '#F0EBE2' }}>
         <View className="h-3 rounded-pill" style={{ width: `${Math.round(plant.memory * 100)}%`, backgroundColor: ui.dot }} />
       </View>
       <Text className="mt-1.5 font-sans text-label text-muted">

@@ -45,7 +45,7 @@ export default function UpgradeScreen() {
     <Screen>
       <LightHero
         scene="progress"
-        badge="READUP · GÓI HỌC" art="shop"
+        badge="BAND 9 · GÓI HỌC" art="shop"
         line1="Chọn gói"
         line2="học đúng phần mình cần"
         subtitle="Bản Free dùng học thật được — nâng cấp khi bạn cần mở thêm nội dung, không phải để bắt đầu."

@@ -15,12 +15,13 @@ import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
 import { ZaloPromoBanner } from './ZaloPromoBanner';
+import { DomainMoveBanner } from './DomainMoveBanner';
 import { useStreakGlass } from '@/services/city/useStreakGlass';
 import { PromoGiftOverlay } from '@/components/promo/PromoGiftOverlay';
 import { ReminderRunner } from '@/components/reminder/Reminder';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
-const STUDY_NAVY = '#2B3668';
+const STUDY_NAVY = '#635030';
 
 /**
  * Khung app dùng chung — cột điều hướng cố định bên trái trên desktop, thanh
@@ -141,6 +142,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <TopBar />
           </View>
           {/* Không chen quảng cáo vào màn đang làm bài. */}
+          <DomainMoveBanner />
           {focus ? null : <ZaloPromoBanner />}
           <View className="flex-1">{children}</View>
         </View>
@@ -161,7 +163,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  */
 function FocusBackdrop({ quest, navy, light, children }: { quest: boolean; navy: boolean; light: boolean; children: React.ReactNode }) {
   // Chép chính tả / viết câu: cảnh tàu chạy tông sáng (tắt thì về lưới sáng như cũ).
-  if (light) return <TravelBackdrop color="#EEF3FB" tone="light">{children}</TravelBackdrop>;
+  if (light) return <TravelBackdrop color="#FBF6EE" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
   // Màn học từ: cảnh tàu chạy qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
   if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;

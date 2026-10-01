@@ -23,7 +23,7 @@ import { SAT_DOMAINS, SAT_FACTS, SAT_SECTIONS, SAT_STRATEGY, type Domain } from 
 
 const INK = '#0F172A';
 const MUTED = '#64748B';
-const LINE = '#E2E8F0';
+const LINE = '#F0EBE2';
 
 export default function SatKnowledge() {
   const { width } = useWindowDimensions();
@@ -35,7 +35,7 @@ export default function SatKnowledge() {
     <Screen>
       {/* ------------------------------------------------ khối đầu */}
       <Appear>
-        <View style={{ borderRadius: 28, padding: wide ? 32 : 20, backgroundColor: '#4A7FE8', overflow: 'hidden' }}>
+        <View style={{ borderRadius: 28, padding: wide ? 32 : 20, backgroundColor: '#A8843F', overflow: 'hidden' }}>
           <View style={{ position: 'absolute', right: -60, top: -60, width: 260, height: 260, borderRadius: 130, backgroundColor: 'rgba(255,255,255,0.10)' }} />
           <Sparkles count={7} />
           {wide ? (
@@ -87,7 +87,7 @@ export default function SatKnowledge() {
       <BigSection color="#FFFFFF" ink={INK} kicker="SƠ ĐỒ TƯ DUY" title="Bản đồ SAT." icon={<CuteGlobe size={56} />}>
         <MindMap
           height={wide ? 480 : 420}
-          center={{ label: 'Digital SAT', sub: '400 – 1600', color: '#4A7FE8', icon: <CuteStar size={34} /> }}
+          center={{ label: 'Digital SAT', sub: '400 – 1600', color: '#A8843F', icon: <CuteStar size={34} /> }}
           branches={SAT_DOMAINS.map((d) => ({
             label: d.vi,
             sub: `${d.section === 'math' ? 'Toán' : 'Đọc & Viết'} · ≈${d.share}%`,
@@ -109,7 +109,7 @@ export default function SatKnowledge() {
       ))}
 
       {/* ------------------------------------------------ Đọc & Viết */}
-      <PartHeader color="#0EA5E9" title="Đọc & Viết." sub="54 câu · 64 phút · đoạn ngắn" icon={<CuteBook size={80} />} />
+      <PartHeader color="#B07A3A" title="Đọc & Viết." sub="54 câu · 64 phút · đoạn ngắn" icon={<CuteBook size={80} />} />
       {rw.map((d) => (
         <DomainSection key={d.id} d={d} wide={wide} />
       ))}
@@ -205,13 +205,13 @@ function DomainSection({ d, wide }: { d: Domain; wide: boolean }) {
             />
           </View>
           <View style={{ flex: wide ? 1 : undefined, gap: 12 }}>
-            <InfoCard emoji="💡" title="Cốt lõi" tone="#EEF6FF">
+            <InfoCard emoji="💡" title="Cốt lõi" tone="#FCF8F1">
               {d.core.slice(0, 3).map((c) => (
                 <Bullet key={c} text={c} color={d.color} />
               ))}
             </InfoCard>
             {d.formulas ? (
-              <InfoCard emoji="📌" title="Cần thuộc" tone="#F8FAFC">
+              <InfoCard emoji="📌" title="Cần thuộc" tone="#FCFBF8">
                 {d.formulas.map((f) => (
                   <Text key={f} className="font-semi" style={{ fontSize: 14, lineHeight: 20, color: INK }}>
                     {f}
@@ -251,7 +251,7 @@ function Structure({ wide }: { wide: boolean }) {
       <View style={{ flexDirection: wide ? 'row' : 'column', gap: 14 }}>
         {SAT_SECTIONS.map((s) => {
           const domains = SAT_DOMAINS.filter((d) => d.section === s.id);
-          const color = s.id === 'rw' ? '#0EA5E9' : '#F2B632';
+          const color = s.id === 'rw' ? '#B07A3A' : '#F2B632';
           return (
             <View key={s.id} style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -339,11 +339,11 @@ function DomainIcon({ id, size = 44 }: { id: string; size?: number }) {
 }
 
 const STRAT_ICON = ['clock', 'check', 'star', 'bolt', 'question', 'target'] as const;
-const STRAT_COLOR = ['#F2B632', '#22A06B', '#0EA5E9', '#4A7FE8', '#E0533D', '#2FA3A0'];
+const STRAT_COLOR = ['#F2B632', '#22A06B', '#B07A3A', '#A8843F', '#E0533D', '#2FA3A0'];
 
 function Big({ value, label }: { value: string; label: string }) {
   return (
-    <View style={{ flex: 1, borderRadius: 16, padding: 12, backgroundColor: '#F8FAFC' }}>
+    <View style={{ flex: 1, borderRadius: 16, padding: 12, backgroundColor: '#FCFBF8' }}>
       <Text className="font-heavy" style={{ fontSize: 24, color: INK }}>
         {value}
       </Text>

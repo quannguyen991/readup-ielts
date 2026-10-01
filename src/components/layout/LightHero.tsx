@@ -17,6 +17,7 @@ import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { Badge } from '@/components/ui/Badge';
 import { type SceneKind } from '@/components/three/Hero3D';
 import { HeroArt, type ArtScene } from '@/components/illust/HeroArt';
+import { GoldHighlight } from './GoldHighlight';
 
 /**
  * Hero nền lưới sáng — kiểu đang dùng ở trang chủ, nay dùng chung.
@@ -91,11 +92,9 @@ export function LightHero({
           </Text>
 
           {line2 ? (
-            <View className="mt-1.5 self-start rounded-md bg-brand-mid px-3 py-1" style={{ marginLeft: -10 }}>
-              <Text className="font-heavy text-white" style={{ fontSize: size, lineHeight: line }}>
-                {line2}
-              </Text>
-            </View>
+            <GoldHighlight fontSize={size} lineHeight={line}>
+              {line2}
+            </GoldHighlight>
           ) : null}
 
           <Text className="mt-4 font-sans text-bodyLg text-paper-body" style={{ maxWidth: 620 }}>
@@ -123,7 +122,7 @@ export const HERO_FRAME = {
   borderWidth: 1.5,
   borderColor: 'rgba(255,255,255,0.9)',
   ...(Platform.OS === 'web'
-    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 16px 40px rgba(30,41,99,0.14)' } as object)
+    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 16px 40px rgba(94, 72, 35,0.14)' } as object)
     : { elevation: 3 }),
 } as const;
 

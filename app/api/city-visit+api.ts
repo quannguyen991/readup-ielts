@@ -1,6 +1,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
-import { anonymousName, displayableName } from '@/services/gamification/display-name';
+import { anonymousName } from '@/services/gamification/display-name';
 import { addNote, cleanNote, EMPTY_HOME, EMPTY_SOCIAL, toggleLike, type CitySocial, type HomeLayout } from '@/services/city/life';
+import { identify, listCities, namesOf, safeName, shortId } from '@/lib/city-server';
 import { furnitureById } from '@/data/city/furniture';
 
 /**
@@ -21,39 +22,7 @@ import { furnitureById } from '@/data/city/furniture';
  * sách đồng bộ của app, nên máy của chủ không ghi đè lên nó; chỉ API này ghi.
  */
 
-type CityRow = { user_id: string; payload: Record<string, unknown> | null };
 type Admin = ReturnType<typeof getSupabaseAdmin>;
-
-const SHORT = 12;
-const shortId = (userId: string) => userId.replace(/-/g, '').slice(0, SHORT);
-
-function safeName(raw: unknown): string | null {
-  if (typeof raw !== 'string') return null;
-  const s = raw.trim().slice(0, 60);
-  return s && !s.includes('@') ? s : null;
-}
-
-async function namesOf(admin: Admin, ids: string[]): Promise<Map<string, string>> {
-  const out = new Map<string, string>();
-  if (ids.length === 0) return out;
-  const { data } = await admin.from('profiles').select('id, display_name').in('id', ids);
-  for (const p of (data ?? []) as { id: string; display_name: string | null }[]) {
-    const n = displayableName(p.display_name);
-    if (n) out.set(p.id, n);
-  }
-  return out;
-}
-
-async function socialOf(admin: Admin, userIds: string[]): Promise<Map<string, CitySocial>> {
-  const out = new Map<string, CitySocial>();
-  if (userIds.length === 0) return out;
-  const { data } = await admin.from('user_state').select('user_id, payload').eq('store_key', 'city_social').in('user_id', userIds);
-  for (const r of (data ?? []) as unknown as CityRow[]) {
-    const p = (r.payload ?? {}) as Partial<CitySocial>;
-    out.set(r.user_id, { likes: Array.isArray(p.likes) ? p.likes.filter((x) => typeof x === 'string') : [], notes: Array.isArray(p.notes) ? p.notes : [] });
-  }
-  return out;
-}
 
 /** Tìm chủ thành phố theo mã rút gọn (chỉ trong những người đã có thành phố). */
 async function findOwner(admin: Admin, id: string): Promise<string | null> {
@@ -70,45 +39,14 @@ function cleanHome(raw: unknown): HomeLayout {
   return { items: items.map((p) => ({ uid: String(p.uid).slice(0, 16), item: p.item, x: p.x, y: p.y, rot: p.rot === 1 ? 1 : 0 })), floor: hex(h.floor, EMPTY_HOME.floor), wall: hex(h.wall, EMPTY_HOME.wall) };
 }
 
-async function identify(request: Request, admin: Admin): Promise<string | null> {
-  const header = request.headers.get('authorization') ?? '';
-  const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
-  if (!token) return null;
-  const { data, error } = await admin.auth.getUser(token);
-  return error || !data.user ? null : data.user.id;
-}
-
 export async function GET(request: Request): Promise<Response> {
   try {
     const admin = getSupabaseAdmin();
     const id = new URL(request.url).searchParams.get('id');
 
     if (!id) {
-      // Chỉ kéo vài trường nhỏ — `sites` có thể dài, ở danh sách chỉ cần đếm.
-      const { data, error } = await admin
-        .from('user_state')
-        .select('user_id, name:payload->>name, era:payload->era, lifetime:payload->lifetime, terrain:payload->terrain, sites:payload->sites')
-        .eq('store_key', 'city');
-      if (error) return Response.json({ error: error.message }, { status: 500 });
-      type Row = { user_id: string; name: string | null; era: number | null; lifetime: number | null; terrain: unknown; sites: unknown[] | null };
-      const rows = ((data ?? []) as unknown as Row[]).filter((r) => r.terrain && Array.isArray(r.sites) && r.sites.length > 0);
-      rows.sort((a, b) => (b.lifetime ?? 0) - (a.lifetime ?? 0));
-      const top = rows.slice(0, 40);
-      const ids = top.map((r) => r.user_id);
-      const [names, social] = await Promise.all([namesOf(admin, ids), socialOf(admin, ids)]);
-      return Response.json({
-        cities: top.map((r) => {
-          const owner = names.get(r.user_id) ?? anonymousName(r.user_id);
-          return {
-            id: shortId(r.user_id),
-            name: safeName(r.name) ?? `Thành phố của ${owner}`,
-            owner,
-            era: typeof r.era === 'number' ? r.era : 1,
-            buildings: r.sites!.length,
-            likes: social.get(r.user_id)?.likes.length ?? 0,
-          };
-        }),
-      });
+      // Danh sách dùng chung với "Khu của mọi người" ở Trung tâm Tương lai.
+      return Response.json({ cities: await listCities(admin, 40) });
     }
 
     const owner = await findOwner(admin, id);

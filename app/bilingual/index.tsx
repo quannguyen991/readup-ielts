@@ -38,7 +38,7 @@ import { color } from '@/theme/tokens';
  *
  * THIẾT KẾ (26/09/2026): bỏ dáng "sạp báo giấy" cũ — viền đen 2px, bóng lệch đen,
  * nút sắp xếp chữ máy đánh — vì người dùng thấy giống IELTS Dictionary. Giờ dùng
- * đúng ngôn ngữ của ReadUp: thẻ trắng bóng mềm, dấu vân vẽ từ dữ liệu (thanh phân
+ * đúng ngôn ngữ của Band 9: thẻ trắng bóng mềm, dấu vân vẽ từ dữ liệu (thanh phân
  * bố trình độ của tờ báo, cặp vạch Anh–Việt theo độ dài từng đoạn của bài).
  */
 
@@ -59,9 +59,9 @@ function monogram(name: string): string {
 
 const SOFT_CARD = {
   borderWidth: 1,
-  borderColor: '#E6E8F2',
+  borderColor: '#F2EEE6',
   ...(Platform.OS === 'web'
-    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(30,41,99,0.08)' } as object)
+    ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(94, 72, 35,0.08)' } as object)
     : { elevation: 2 }),
 };
 
@@ -120,7 +120,7 @@ function PortalView() {
       <Appear index={6}>
         <Text className="font-sans" style={{ marginTop: 22, fontSize: 13, lineHeight: 20, color: INK, opacity: 0.75 }}>
           Chỉ đăng lại bài từ những nơi cho phép dùng lại toàn văn (public domain hoặc Creative Commons). Mỗi bài có link bài gốc và ghi
-          giấy phép. Bài của ReadUp Analysis do ReadUp tự viết.
+          giấy phép. Bài của Band 9 Analysis do Band 9 tự viết.
         </Text>
       </Appear>
     </View>
@@ -157,7 +157,7 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
             ? ({
                 transform: hover ? 'translateY(-3px)' : 'none',
                 transition: 'transform 200ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 200ms ease',
-                boxShadow: hover ? '0 18px 40px rgba(30,41,99,0.16)' : (SOFT_CARD as { boxShadow?: string }).boxShadow,
+                boxShadow: hover ? '0 18px 40px rgba(94, 72, 35,0.16)' : (SOFT_CARD as { boxShadow?: string }).boxShadow,
               } as object)
             : null),
         }}
@@ -183,7 +183,7 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
         {/* Ba tiêu đề thật */}
         <View className="flex-1 px-5 py-3">
           {headlines.map((h, i) => (
-            <View key={h.id} className={`flex-row items-start gap-2.5 py-2 ${i > 0 ? 'border-t' : ''}`} style={{ borderColor: '#EEF0F6' }}>
+            <View key={h.id} className={`flex-row items-start gap-2.5 py-2 ${i > 0 ? 'border-t' : ''}`} style={{ borderColor: '#F6F3EE' }}>
               <View style={{ width: 4, height: 16, borderRadius: 2, marginTop: 2, backgroundColor: outlet.cover }} />
               <View className="min-w-0 flex-1">
                 <Text className="font-strong" style={{ fontSize: 14.5, lineHeight: 20, color: INK }} numberOfLines={1}>
@@ -204,7 +204,7 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
           <Text className="font-semi" style={{ fontSize: 13, color: MUTED }}>
             Xem cả {count} bài
           </Text>
-          <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: hover ? outlet.cover : '#F1F4FB' }}>
+          <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: hover ? outlet.cover : '#FBF7F1' }}>
             <Icon name="arrow-right" size={17} color={hover ? outlet.ink : INK} strokeWidth={2.2} />
           </View>
         </View>
@@ -350,7 +350,7 @@ function ArticleCard({ article, outlet }: { article: BilingualArticle; outlet: B
 
 function StatPill({ value, label }: { value: string; label: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F1F4FB' }}>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#FBF7F1' }}>
       <Text className="font-heavy" style={{ fontSize: 15, color: INK }}>
         {value}
       </Text>
@@ -395,7 +395,7 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
       accessibilityRole="button"
       aria-selected={active}
       className="rounded-pill px-3 py-1.5"
-      style={{ borderWidth: 1, borderColor: active ? color.primary : '#E0E4F0', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
+      style={{ borderWidth: 1, borderColor: active ? color.primary : '#F0EAE0', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
     >
       <Text className="font-semi" style={{ fontSize: 13, color: active ? '#FFFFFF' : INK }}>{label}</Text>
     </Pressable>

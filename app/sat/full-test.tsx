@@ -309,7 +309,7 @@ function StageRow({ stage, last }: { stage: Stage; last: boolean }) {
         />
         {/*
           Ray nối 2px màu `primary-200`, không phải 1px màu `border`. Bản đầu
-          dùng `border` (#E9EDF5) rộng 1px trên nền thẻ trắng: nó CÓ trong DOM,
+          dùng `border` (#F5F1E9) rộng 1px trên nền thẻ trắng: nó CÓ trong DOM,
           đo được 25px chiều cao, nhưng nhìn màn hình thì không thấy gì — năm cái
           chấm rời nhau, đúng cái ý "năm thứ ngang hàng" mà dòng thời gian sinh
           ra để phủ định.
@@ -535,7 +535,7 @@ function ResultScreen({
 }
 
 /** Gradient của phiếu điểm — sáng hơn nền trang một bậy để nổi lên. */
-const SCORE_GRADIENT = ['#3B6DF6', '#4F46E5', '#8B5CF6'] as const;
+const SCORE_GRADIENT = ['#CFA762', '#CDA45E', '#D6B57C'] as const;
 
 /**
  * Điểm một phần, đặt cạnh tổng trên nền gradient.

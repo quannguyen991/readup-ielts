@@ -13,6 +13,16 @@
  * Mọi con số nằm trong `ECONOMY` dưới đây — cân chỉnh ở một chỗ, không rải
  * vào màn hình.
  *
+ * CHỢ VẬT LIỆU (đổi từ 30/09/2026 theo yêu cầu người dùng): sao kiếm từ việc
+ * học đổi được vật liệu theo bảng giá `ECONOMY.exchange`, có TRẦN MUA MỖI NGÀY
+ * riêng từng loại — sao vẫn chỉ đến từ học, nên đổi sao là "học → sao → vật
+ * liệu", không phải đường tắt. Không có đường mua bằng tiền thật.
+ *
+ * SỔ GIAO DỊCH (`ledger`): mỗi lần đổi sao / góp vật liệu cho Trung tâm Tương
+ * lai ghi một dòng có mã. Gộp hai máy (`mergeCity`) cộng bù những dòng máy kia
+ * có mà bản thắng chưa có — đổi sao trên máy này không bị mất vì máy kia "học
+ * nhiều hơn", góp rồi cũng không hiện lại vật liệu để góp lần hai.
+ *
  * Chống cộng trùng:
  * - Câu có `key`: chỉ LẦN GẶP ĐẦU TIÊN trong ngày (giờ VN) được xét; đúng mới
  *   có vật liệu. Gặp lại (mở lại, tải lại, làm lại) không thưởng thêm.
@@ -24,7 +34,7 @@
  * tác nộp và được chấm → 1 ca. Ca vào "kho ca" để đội thi công dùng — thời gian
  * trôi không tự sinh ca.
  */
-import { EMPTY_MATERIALS, type MaterialKind, type Materials } from './materials';
+import { EMPTY_MATERIALS, MATERIAL_KINDS, type MaterialKind, type Materials } from './materials';
 
 export const ECONOMY = {
   /** Nguồn `answer()` → vật liệu. Nguồn không có ở đây: không ra vật liệu (vẫn tính ca). */
@@ -51,7 +61,20 @@ export const ECONOMY = {
   },
   /** Giữ mã sự kiện đã thưởng bao nhiêu ngày. */
   keepAwardedDays: 400,
+  /**
+   * Chợ vật liệu: giá (sao / 1 đơn vị) và trần mua mỗi ngày (giờ VN) từng loại —
+   * trần bằng trần học trong ngày, để đổi sao không vượt được nhịp học đều.
+   */
+  exchange: {
+    price: { wood: 4, brick: 5, stone: 6, steel: 15, glass: 20 } as Materials,
+    dailyCap: { wood: 60, stone: 40, brick: 60, steel: 24, glass: 22 } as Materials,
+  },
+  /** Sổ giao dịch giữ bao nhiêu ngày / tối đa bao nhiêu dòng. */
+  ledger: { keepDays: 30, maxEntries: 400 },
 } as const;
+
+/** Một dòng sổ giao dịch: `delta` dương là nhận (đổi sao), âm là đã góp đi. */
+export type LedgerEntry = { day: string; src: 'buy' | 'hub'; delta: Partial<Materials>; stars?: number };
 
 export type EconomyState = {
   inventory: Materials;
@@ -65,6 +88,8 @@ export type EconomyState = {
   shiftCounter: number;
   /** Ca đã có, chưa dùng. */
   shiftBank: number;
+  /** Sổ giao dịch đổi sao / góp Trung tâm (mã → dòng). Tuỳ chọn: payload cũ không có. */
+  ledger?: Record<string, LedgerEntry>;
 };
 
 export const EMPTY_ECONOMY: EconomyState = {
@@ -74,6 +99,7 @@ export const EMPTY_ECONOMY: EconomyState = {
   seen: null,
   shiftCounter: 0,
   shiftBank: 0,
+  ledger: {},
 };
 
 export type StudyEvent =
@@ -220,7 +246,7 @@ export function resolveEconomy(state: EconomyState, event: StudyEvent, day: stri
 }
 
 /** Đã nhận / trần trong ngày của một loại — cho màn "Học để nhận". */
-export function dailyProgress(state: EconomyState, day: string, kind: MaterialKind): { got: number; cap: number } {
+export function dailyProgress(state: Pick<EconomyState, 'daily'>, day: string, kind: MaterialKind): { got: number; cap: number } {
   const d = state.daily && state.daily.day === day ? state.daily.earned[kind] : 0;
   return { got: d, cap: ECONOMY.dailyCap[kind] };
 }
@@ -228,4 +254,82 @@ export function dailyProgress(state: EconomyState, day: string, kind: MaterialKi
 /** Ngày bắt đầu của chuỗi đang có, để làm mã mốc chuỗi. */
 export function streakStartDay(today: string, streakDays: number): string {
   return shiftDay(today, -(Math.max(1, streakDays) - 1));
+}
+
+// ------------------------------------------------------------------ chợ vật liệu
+
+/** Bỏ dòng sổ quá cũ / quá nhiều (giữ dòng mới nhất). */
+export function pruneLedger(ledger: Record<string, LedgerEntry> | undefined, day: string): Record<string, LedgerEntry> {
+  const limit = shiftDay(day, -ECONOMY.ledger.keepDays);
+  const rows = Object.entries(ledger ?? {}).filter(([, e]) => e && e.day >= limit);
+  rows.sort((a, b) => (a[1].day < b[1].day ? 1 : a[1].day > b[1].day ? -1 : 0));
+  return Object.fromEntries(rows.slice(0, ECONOMY.ledger.maxEntries));
+}
+
+/** Đã đổi bằng sao trong ngày, từng loại (tính lại từ sổ — không có biến đếm thứ hai). */
+export function boughtToday(state: Pick<EconomyState, 'ledger'>, day: string): Materials {
+  const out = { ...EMPTY_MATERIALS };
+  for (const e of Object.values(state.ledger ?? {})) {
+    if (e.src !== 'buy' || e.day !== day) continue;
+    for (const k of MATERIAL_KINDS) out[k] += Math.max(0, e.delta[k] ?? 0);
+  }
+  return out;
+}
+
+/** Còn được đổi bao nhiêu hôm nay, từng loại. */
+export function exchangeRoom(state: Pick<EconomyState, 'ledger'>, day: string): Materials {
+  const b = boughtToday(state, day);
+  const out = { ...EMPTY_MATERIALS };
+  for (const k of MATERIAL_KINDS) out[k] = Math.max(0, ECONOMY.exchange.dailyCap[k] - b[k]);
+  return out;
+}
+
+/** Giá (sao) của một đơn đổi. */
+export function exchangeCost(order: Partial<Materials>): number {
+  return MATERIAL_KINDS.reduce((sum, k) => sum + Math.max(0, Math.floor(order[k] ?? 0)) * ECONOMY.exchange.price[k], 0);
+}
+
+export type ExchangeResult =
+  | { ok: true; state: EconomyState; cost: number; got: Partial<Materials>; units: number }
+  | { ok: false; reason: 'invalid' | 'capped' | 'stars' | 'duplicate'; cost: number; room?: Materials };
+
+/**
+ * Đổi sao lấy vật liệu — TẤT CẢ HOẶC KHÔNG: đơn có nhiều loại thì mọi loại phải
+ * còn trần và đủ sao cho cả đơn. Hàm thuần: không trừ sao (store trừ sao TRƯỚC,
+ * rồi mới áp `state` trả về — xem `useCityStore.buyMaterials`).
+ */
+export function exchange(state: EconomyState, order: Partial<Materials>, balance: number, day: string, id: string): ExchangeResult {
+  const got: Partial<Materials> = {};
+  let units = 0;
+  for (const k of MATERIAL_KINDS) {
+    const raw = order[k];
+    if (raw === undefined || raw === 0) continue;
+    if (!Number.isInteger(raw) || raw < 0) return { ok: false, reason: 'invalid', cost: 0 };
+    got[k] = raw;
+    units += raw;
+  }
+  if (units <= 0 || !id) return { ok: false, reason: 'invalid', cost: 0 };
+  if (state.ledger?.[id]) return { ok: false, reason: 'duplicate', cost: 0 };
+  const cost = exchangeCost(got);
+  const room = exchangeRoom(state, day);
+  if (MATERIAL_KINDS.some((k) => (got[k] ?? 0) > room[k])) return { ok: false, reason: 'capped', cost, room };
+  if (!(balance >= cost)) return { ok: false, reason: 'stars', cost, room };
+  let inventory = state.inventory;
+  for (const k of MATERIAL_KINDS) if (got[k]) inventory = { ...inventory, [k]: inventory[k] + got[k]! };
+  const ledger = { ...pruneLedger(state.ledger, day), [id]: { day, src: 'buy' as const, delta: got, stars: cost } };
+  return { ok: true, state: { ...state, inventory, ledger }, cost, got, units };
+}
+
+/** Ghi phần đã góp cho Trung tâm (máy chủ đã nhận) — trừ kho, ghi sổ. */
+export function recordContribution(state: EconomyState, given: Partial<Materials>, day: string, id: string): EconomyState {
+  if (state.ledger?.[id]) return state;
+  const inventory = { ...state.inventory };
+  const delta: Partial<Materials> = {};
+  for (const k of MATERIAL_KINDS) {
+    const n = Math.max(0, Math.floor(given[k] ?? 0));
+    if (!n) continue;
+    inventory[k] = Math.max(0, inventory[k] - n);
+    delta[k] = -n;
+  }
+  return { ...state, inventory, ledger: { ...pruneLedger(state.ledger, day), [id]: { day, src: 'hub', delta } } };
 }

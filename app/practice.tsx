@@ -48,7 +48,7 @@ const SKILLS: RailSkill[] = [
     key: 'reading',
     label: 'Reading',
     icon: 'book',
-    tint: '#5B8BEE',
+    tint: '#B8955A',
     options: [
       {
         key: 'single',
@@ -75,7 +75,7 @@ const SKILLS: RailSkill[] = [
     key: 'writing',
     label: 'Writing',
     icon: 'pencil',
-    tint: '#A855F7',
+    tint: '#D5B377',
     options: [
       {
         key: 'single',
@@ -91,7 +91,7 @@ const SKILLS: RailSkill[] = [
     key: 'speaking',
     label: 'Speaking',
     icon: 'chat',
-    tint: '#0EA5E9',
+    tint: '#B07A3A',
     options: [],
     comingSoon: true,
   },

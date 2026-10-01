@@ -102,7 +102,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                   style={{
                     backgroundColor: themeConfig.isDark
                       ? "rgba(255,255,255,0.12)"
-                      : "#EEF0F6",
+                      : "#F6F3EE",
                   }}
                 />
               ) : (
@@ -363,7 +363,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
       className={`flex-row items-center gap-3 rounded-panel ${collapsed ? "p-1.5" : "px-3 py-2"}`}
       style={{
         borderWidth: 1,
-        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : "#EEF0F6",
+        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : "#F6F3EE",
         backgroundColor: themeConfig.hoverBg,
       }}
     >

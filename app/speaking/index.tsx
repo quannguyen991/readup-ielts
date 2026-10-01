@@ -24,10 +24,10 @@ const MODES: Array<{ key: LobbyMode; title: string; hint: string }> = [
 ];
 
 const CRIT_ICON: Record<CriterionKey, { icon: React.ComponentProps<typeof SealIcon>['name']; color: string; short: string }> = {
-  fc: { icon: 'chat', color: '#4A7FE8', short: 'Trôi chảy' },
+  fc: { icon: 'chat', color: '#A8843F', short: 'Trôi chảy' },
   lr: { icon: 'book', color: '#22A06B', short: 'Vốn từ' },
   gr: { icon: 'pencil', color: '#F0703F', short: 'Ngữ pháp' },
-  pr: { icon: 'volume', color: '#0EA5E9', short: 'Phát âm ~' },
+  pr: { icon: 'volume', color: '#B07A3A', short: 'Phát âm ~' },
 };
 
 const pick = <T,>(list: T[]): T => list[Math.floor(Math.random() * list.length)]!;
@@ -233,7 +233,7 @@ export default function SpeakingLobby() {
         </Appear>
 
         <Appear index={4} style={{ flex: wide ? 1 : undefined }}>
-          <View style={[CARD, { backgroundColor: '#0EA5E9' }]}>
+          <View style={[CARD, { backgroundColor: '#B07A3A' }]}>
             <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
               Lượt gần đây.
             </Text>
@@ -281,7 +281,7 @@ export default function SpeakingLobby() {
       </View>
 
       <Text className="font-sans" style={{ marginTop: 16, marginBottom: 32, fontSize: 12, color: '#64748B' }}>
-        Câu hỏi do ReadUp tự soạn theo khuôn IELTS. Điểm AI là ước lượng để luyện tập. Chrome đổi giọng thành chữ qua dịch vụ của Google; ReadUp không ghi âm.
+        Câu hỏi do Band 9 tự soạn theo khuôn IELTS. Điểm AI là ước lượng để luyện tập. Chrome đổi giọng thành chữ qua dịch vụ của Google; Band 9 không ghi âm.
       </Text>
     </Screen>
   );

@@ -30,9 +30,9 @@ import { color } from '@/theme/tokens';
  */
 
 const STEP_TONES: Record<string, string> = {
-  structure: '#0EA5E9',
-  topic: '#6366F1',
-  'para-65': '#8B5CF6',
+  structure: '#B07A3A',
+  topic: '#D7B67D',
+  'para-65': '#D6B57C',
   'para-80': '#D946EF',
   essay: '#F43F5E',
 };
@@ -84,7 +84,7 @@ export default function TranslationStepScreen() {
               className="rounded-panel px-3 py-2"
               style={{
                 borderWidth: 2,
-                borderColor: active ? t : '#E6E8F2',
+                borderColor: active ? t : '#F2EEE6',
                 backgroundColor: active ? t : '#fff',
               }}
             >

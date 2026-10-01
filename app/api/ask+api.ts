@@ -17,7 +17,7 @@ import { streamWithFallback } from '@/services/ai/fallback';
  */
 
 const SYSTEM = [
-  'Bạn là trợ giảng của ReadUp, một app luyện IELTS và SAT cho người học Việt Nam.',
+  'Bạn là trợ giảng của Band 9, một app luyện IELTS và SAT cho người học Việt Nam.',
   'Trả lời bằng tiếng Việt, ngắn gọn, đi thẳng vào việc. Không mở đầu bằng lời chào.',
   '',
   // Bong bóng hỏi nhanh vẽ câu trả lời bằng <Text> trần, không có bộ dựng

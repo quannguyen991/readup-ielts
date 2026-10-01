@@ -42,7 +42,7 @@ export function useSatPredictions() {
   }, [sessions, rw]);
 }
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(94, 72, 35,0.08)' } as object;
 
 function domainName(d: string | null): string {
   if (!d) return '';
@@ -54,7 +54,7 @@ function RangeBar({ low, mid, high, min, max, tone }: { low: number; mid: number
   const pct = (x: number) => `${((x - min) / (max - min)) * 100}%` as const;
   return (
     <View className="mt-3">
-      <View className="h-3.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#E8EEF8' }}>
+      <View className="h-3.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
         <View
           className="absolute h-3.5 rounded-pill"
           style={{ left: pct(low), width: `${((high - low) / (max - min)) * 100}%`, backgroundColor: tone, opacity: 0.85 }}
@@ -72,7 +72,7 @@ function RangeBar({ low, mid, high, min, max, tone }: { low: number; mid: number
 export function ScorePredictionCard({ section }: { section: 'math' | 'verbal' | 'total' }) {
   const all = useSatPredictions();
   const title = section === 'math' ? 'SAT Math' : section === 'verbal' ? 'SAT Verbal' : 'Tổng SAT';
-  const tone = section === 'math' ? '#6366F1' : section === 'verbal' ? '#EC4899' : '#8B5CF6';
+  const tone = section === 'math' ? '#D7B67D' : section === 'verbal' ? '#EC4899' : '#D6B57C';
 
   if (section === 'total') {
     const t = all.total;

@@ -126,7 +126,7 @@ export default function SpeakingResult() {
               </Motion>
             </View>
             <View className="min-w-0 flex-1" style={{ minWidth: 180 }}>
-              <Label text={attempt.typed ? 'Bài gõ phím' : 'Band ước lượng'} color={attempt.typed ? SPK.amberSoft : '#DBEAFE'} ink={attempt.typed ? '#92400E' : '#1E3A8A'} size={13} />
+              <Label text={attempt.typed ? 'Bài gõ phím' : 'Band ước lượng'} color={attempt.typed ? SPK.amberSoft : '#F3E6C8'} ink={attempt.typed ? '#92400E' : '#5A4318'} size={13} />
               <Text className="mt-2 font-strong text-body text-ink" numberOfLines={2}>
                 {MODE_LABEL[attempt.mode]} · {attempt.titleVi}
               </Text>
@@ -151,7 +151,7 @@ export default function SpeakingResult() {
             {loading ? (
               <View className="flex-row items-center gap-3 rounded-2xl p-3.5" style={{ backgroundColor: SPK.blueSoft }}>
                 <ActivityIndicator color={SPK.blue} />
-                <Text className="min-w-0 flex-1 font-sans text-body" style={{ color: '#1E3A8A' }}>
+                <Text className="min-w-0 flex-1 font-sans text-body" style={{ color: '#5A4318' }}>
                   AI đang chấm theo 4 tiêu chí… thường mất 10–30 giây. Chỉ số đo tại máy ở bên dưới đã có sẵn.
                 </Text>
               </View>

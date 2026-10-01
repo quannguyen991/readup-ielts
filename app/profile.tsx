@@ -140,7 +140,7 @@ export default function ProfileScreen() {
         <View className="mt-4 flex-row flex-wrap gap-3">
           <Stat seal="star" tone="#F2B632" value={formatStars(ledger.balance)} label="sao đang có" />
           <Stat seal="flame" tone="#F0703F" value={String(streak)} label="ngày liên tiếp" />
-          <Stat seal="calendar" tone="#4A7FE8" value={String(month)} label="điểm tháng này" />
+          <Stat seal="calendar" tone="#A8843F" value={String(month)} label="điểm tháng này" />
           <Stat seal="check" tone="#22A06B" value={life.correct.toLocaleString('vi-VN')} label="câu đúng" />
         </View>
       </Appear>
@@ -217,7 +217,7 @@ export default function ProfileScreen() {
                   aria-selected={on}
                   onPress={() => reward.equip(slotOf(item), on ? null : item.id)}
                   className="flex-row items-center gap-2 rounded-pill py-1.5 pl-1.5 pr-3.5"
-                  style={{ backgroundColor: on ? '#FEF3C7' : '#FFFFFF', borderWidth: 2, borderColor: on ? '#F59E0B' : '#EEF0F6' }}
+                  style={{ backgroundColor: on ? '#FEF3C7' : '#FFFFFF', borderWidth: 2, borderColor: on ? '#F59E0B' : '#F6F3EE' }}
                 >
                   <MiniPreview item={item} skin={skin} />
                   <Text className="font-semi text-label text-ink">{item.name}</Text>
@@ -262,7 +262,7 @@ export default function ProfileScreen() {
                   key={a.id}
                   accessibilityLabel={`${a.title}${at ? ' — đã mở' : ' — chưa mở'}`}
                   className="items-center justify-center rounded-panel"
-                  style={{ width: 52, height: 52, backgroundColor: at ? '#FEF3C7' : '#F1F5F9' }}
+                  style={{ width: 52, height: 52, backgroundColor: at ? '#FEF3C7' : '#F9F6F1' }}
                 >
                   {at ? (
                     <Motion kind="hover">
@@ -285,7 +285,7 @@ export default function ProfileScreen() {
 
 function Stat({ seal, tone, value, label }: { seal: IconName; tone: string; value: string; label: string }) {
   return (
-    <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: '#EEF0F6' }}>
+    <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: '#F6F3EE' }}>
       <View aria-hidden>
         <SealIcon name={seal} color={tone} size={42} />
       </View>
@@ -340,7 +340,7 @@ function SlotPreview({ slot, item, name, skin }: { slot: WearSlot; item: ShopIte
   }
   const pet = item?.mascot ? MASCOTS[item.mascot] : null;
   return (
-    <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: pet ? NIGHT : '#F1F5F9', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: pet ? NIGHT : '#F9F6F1', alignItems: 'center', justifyContent: 'center' }}>
       {pet ? (
         <View style={anim('rg-bob', 1100, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
           <PixelSprite name={pet.look} color={pet.color} size={42} />
@@ -377,7 +377,7 @@ function MiniPreview({ item, skin }: { item: ShopItem; skin: ReturnType<typeof s
     );
   }
   return (
-    <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: '#EDE9FE', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: '#FBF5EC', alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 16 }}>{item.glyph}</Text>
     </View>
   );

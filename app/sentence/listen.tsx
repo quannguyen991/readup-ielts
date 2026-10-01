@@ -106,7 +106,7 @@ export default function ListenScreen() {
             <CuteHeadphones size={48} />
           </Sticker>
         </Motion>
-        <Label text="Nghe hết rồi trả lời 🎧" color="#0EA5E9" ink="#FFFFFF" tilt={-4} size={12} />
+        <Label text="Nghe hết rồi trả lời 🎧" color="#B07A3A" ink="#FFFFFF" tilt={-4} size={12} />
       </View>
 
       <AudioPlayer

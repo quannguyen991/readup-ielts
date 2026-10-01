@@ -180,7 +180,7 @@ export default function ObservatoryScreen() {
             <PageStickers scene="review" compact />
           </View>
           <Text style={{ fontSize: 15, color: color.muted, marginTop: space.sm, lineHeight: 22 }}>
-            Every question ReadUp generates is answered by a second model that is never shown the
+            Every question Band 9 generates is answered by a second model that is never shown the
             passage. If that model gets it right and says the answer was determinable, the question
             does not test reading, and it is thrown away. This page is what those verdicts add up to.
           </Text>
@@ -228,7 +228,7 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <CardTitle icon="gauge" tone="#4A7FE8">
+          <CardTitle icon="gauge" tone="#A8843F">
             {byModel.length > 1 ? 'By model' : 'Model measured'}
           </CardTitle>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>
@@ -269,7 +269,7 @@ export default function ObservatoryScreen() {
         </Card>
 
         <Card>
-          <CardTitle icon="list" tone="#0EA5E9">
+          <CardTitle icon="list" tone="#B07A3A">
             By question type
           </CardTitle>
           <Text style={{ fontSize: 13, color: color.muted, marginTop: 4, marginBottom: space.sm }}>

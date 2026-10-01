@@ -186,7 +186,7 @@ export default function QuizScreen() {
             <Text className="mt-4 font-semi text-sectionTitle text-ink" style={{ lineHeight: 36 }}>
               {cur.before}
               {blank ? (
-                <Text className="font-heavy" style={{ color: revealed ? '#16A34A' : '#4F7FE6' }}>
+                <Text className="font-heavy" style={{ color: revealed ? '#16A34A' : '#CFA966' }}>
                   {revealed ? cur.focus : '________'}
                 </Text>
               ) : (

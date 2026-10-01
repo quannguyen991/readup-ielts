@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
 
 import { ERA_INFO, type Era } from '@/data/city/catalog';
 import { populationOf } from '@/services/city/construction';
@@ -10,17 +11,17 @@ import { useCityName, useL } from './common';
 import { CG } from './theme';
 
 /**
- * Thanh trên: tên thành phố (bấm để đổi), kỷ, dân số, năm vật liệu và nút "+".
- * Nút "+" và mỗi ô vật liệu mở "Học để nhận" — không có chỗ nào để mua.
+ * Thanh trên: tên thành phố (bấm để đổi), kỷ, dân số, năm vật liệu, nút "+"
+ * (Học để nhận) và Chợ vật liệu (đổi sao). Memo + chọn đúng phần store: rê
+ * chuột trên bản đồ không làm thanh này render lại.
  */
-export function TopBar({ onEarn, onCredits, onSample }: { onEarn: (kind?: MaterialKind) => void; onCredits: () => void; onSample: () => void }) {
+export const TopBar = React.memo(function TopBar({ onEarn, onMarket, onCredits, onSample }: { onEarn: (kind?: MaterialKind) => void; onMarket: () => void; onCredits: () => void; onSample: () => void }) {
   const { t, L } = useL();
-  const name = useCityStore((s) => s.name);
-  const era = useCityStore((s) => s.era) as Era;
-  const sites = useCityStore((s) => s.sites);
-  const inv = useCityStore((s) => s.inventory);
-  const eco = useCityStore((s) => s);
-  const rename = useCityStore((s) => s.rename);
+  const { name, era: eraRaw, sites, inv, daily, rename } = useCityStore(
+    useShallow((s) => ({ name: s.name, era: s.era, sites: s.sites, inv: s.inventory, daily: s.daily, rename: s.rename })),
+  );
+  const era = eraRaw as Era;
+  const eco = { daily };
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState('');
   const day = vnToday(new Date()).key;
@@ -94,6 +95,9 @@ export function TopBar({ onEarn, onCredits, onSample }: { onEarn: (kind?: Materi
         <button className="cg-btn primary small" onClick={() => onEarn()} aria-label={t('city.earn.title')} title={t('city.earn.title')} style={{ fontSize: 18, width: 40, justifyContent: 'center' }}>
           +
         </button>
+        <button className="cg-btn small" onClick={() => onMarket()} title={L({ vi: 'Đổi sao lấy vật liệu', en: 'Swap stars for materials' })}>
+          🛒 {L({ vi: 'Chợ', en: 'Market' })}
+        </button>
         <span style={{ width: 1, alignSelf: 'stretch', background: CG.line, margin: '0 2px' }} />
         <button className="cg-btn ghost small" onClick={onSample} title={t('city.sample.title')}>
           🏙️ {t('city.sample.short')}
@@ -104,4 +108,4 @@ export function TopBar({ onEarn, onCredits, onSample }: { onEarn: (kind?: Materi
       </div>
     </div>
   );
-}
+});

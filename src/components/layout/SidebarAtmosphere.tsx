@@ -25,17 +25,19 @@ export type SidebarThemeConfig = {
 
 export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
   id: 'default',
-  name: 'Mặc định (Sáng)',
+  // Band 9 (01/10/2026): nền kem, chữ xanh đậm, mục đang mở là dải VÀNG KIM
+  // như ô vàng trên logo — sang, trầm, không loè.
+  name: 'Mặc định (Vàng kim)',
   isDark: false,
-  bgStyle: { backgroundColor: '#FFFFFF' },
-  borderRightColor: '#EEF0F6',
-  textPrimary: color.ink,
-  textMuted: color.muted,
-  activeFill: '#5B8BEE',
-  activeGradient: 'linear-gradient(100deg, #7FA3F6 0%, #4A7FE8 100%)',
-  activeTextColor: '#FFFFFF',
-  activeGlow: '0 6px 16px rgba(74,127,232,0.32)',
-  hoverBg: 'rgba(241, 245, 249, 0.7)',
+  bgStyle: { backgroundColor: '#FBF8F1', backgroundImage: 'linear-gradient(180deg, #FDFBF6 0%, #F6F0E3 100%)' },
+  borderRightColor: '#E9DFC8',
+  textPrimary: '#0F1D33',
+  textMuted: '#6E6552',
+  activeFill: '#B8955A',
+  activeGradient: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)',
+  activeTextColor: '#0F1D33',
+  activeGlow: '0 6px 18px rgba(143,110,54,0.32), inset 0 1px 0 rgba(255,255,255,0.5)',
+  hoverBg: 'rgba(184, 149, 90, 0.12)',
   defaultEffect: null,
 };
 

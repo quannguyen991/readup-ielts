@@ -218,7 +218,7 @@ export default function MathMockScreen() {
             <View aria-hidden>
               <Label
                 text={phase.tier === 'harder' ? 'Nhánh khó 🚀' : 'Nhánh dễ 🎯'}
-                color={phase.tier === 'harder' ? '#F0703F' : '#0EA5E9'}
+                color={phase.tier === 'harder' ? '#F0703F' : '#B07A3A'}
                 ink="#FFFFFF"
                 tilt={4}
                 size={12}

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { catalogItem, ZONE_INFO, type CatalogBuilding, type SkillMetric } from '@/data/city/catalog';
 import { MATERIAL_INFO, MATERIAL_KINDS, type Materials } from '@/services/city/materials';
@@ -21,6 +21,22 @@ export type Named = { vi: string; en: string };
 export function useL(): { t: Translate; L: (o: Named) => string; locale: 'vi' | 'en' } {
   const { t, locale } = useT();
   return { t, locale, L: (o) => (locale === 'en' ? o.en : o.vi) };
+}
+
+/**
+ * Giữ một khối còn gắn thêm `ms` sau khi đóng để chạy hoạt cảnh đóng (trượt ra,
+ * mờ dần) thay vì biến mất cụt. `ms = 0` (giảm chuyển động) → đóng ngay.
+ */
+export function usePresence(open: boolean, ms: number): { mounted: boolean; leaving: boolean } {
+  const [mounted, setMounted] = useState(open);
+  // Mở lại khi đang đóng dở: gắn lại ngay trong lúc render (không cần hiệu ứng).
+  if (open && !mounted) setMounted(true);
+  useEffect(() => {
+    if (open || !mounted) return;
+    const id = setTimeout(() => setMounted(false), Math.max(0, ms));
+    return () => clearTimeout(id);
+  }, [open, mounted, ms]);
+  return { mounted: open || mounted, leaving: !open && mounted };
 }
 
 /** Cấp người học (XP của game khi học) — mở đội thợ và lên kỷ. */

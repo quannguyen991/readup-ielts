@@ -181,7 +181,7 @@ export default function OtpScreen() {
             <Text className="font-strong text-label text-ink">Không thấy email?</Text>
             <Text className="mt-1 font-sans text-label text-muted">
               Kiểm tra cả thư mục Spam và Quảng cáo. Email do Supabase gửi nên người gửi không phải
-              tên ReadUp.
+              tên Band 9.
             </Text>
             <Button
               className="mt-3 self-start"

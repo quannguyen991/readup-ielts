@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Platform, Pressable, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -10,6 +10,7 @@ import { PlanBlockRow, SKILL_TONE } from '@/components/plan/PlanBlockRow';
 import { TemplatePlan } from '@/components/plan/TemplatePlan';
 import { Badge, CuteBook, CuteCalendar, CuteClock, CuteCloud, CutePencil, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteFlame, CutePlant, CuteRocket, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
+import { Sticker } from '@/components/illust/Sticker';
 import { Button, Card, Icon, SectionHeader } from '@/components/ui';
 import {
   PHASE_LABEL,
@@ -81,16 +82,30 @@ function fmtDate(iso: string): string {
 function PlanSetup({ initial }: { initial: PlanInput | null }) {
   const setInput = useRoadmapStore((s) => s.setInput);
   const today = todayKey();
+  const { width } = useWindowDimensions();
+  const wide = width >= 1000;
   const [ielts, setIelts] = useState<GoalInput | null>(initial?.ielts ?? null);
   const [sat, setSat] = useState<GoalInput | null>(initial?.sat ?? null);
   const [minutes, setMinutes] = useState(initial?.minutesPerDay ?? 60);
   const [days, setDays] = useState<number[]>(initial?.studyDays ?? [1, 2, 3, 4, 5, 6]);
   const [weak, setWeak] = useState<Skill[]>(initial?.weak ?? []);
   const [tried, setTried] = useState(false);
+  // Kỳ thi đang chỉnh ở khối "Mục tiêu" (khi chọn cả hai).
+  const [focusExam, setFocusExam] = useState<'ielts' | 'sat'>(initial?.sat && !initial?.ielts ? 'sat' : 'ielts');
 
   const draft: PlanInput = { ielts, sat, minutesPerDay: minutes, studyDays: days, weak, startIso: today };
   const problems = validatePlanInput(draft);
   const skills: Skill[] = [...(ielts ? (['reading', 'listening', 'writing'] as Skill[]) : []), ...(sat ? (['math', 'verbal'] as Skill[]) : [])];
+
+  const toggleExam = (e: 'ielts' | 'sat') => {
+    if (e === 'ielts') setIelts(ielts ? null : { now: null, target: 6.5, examIso: '' });
+    else setSat(sat ? null : { now: null, target: 1400, examIso: '' });
+    setFocusExam(e);
+  };
+  const goal = focusExam === 'ielts' ? ielts : sat;
+  const setGoal = (g: GoalInput) => (focusExam === 'ielts' ? setIelts(g) : setSat(g));
+  const isIelts = focusExam === 'ielts';
+  const fmt = (v: number) => (isIelts ? v.toFixed(1) : String(v));
 
   const submit = () => {
     setTried(true);
@@ -99,113 +114,237 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
     router.replace('/plan' as never);
   };
 
+  const minutesLabel = (m: number) => (m < 60 ? `${m} phút` : `${Number.isInteger(m / 60) ? m / 60 : (m / 60).toFixed(1).replace('.', ',')} giờ`);
+  const row = { flexDirection: wide ? 'row' : 'column', gap: 16, marginTop: 16 } as const;
+
   return (
-    <View className="pb-8">
+    <View style={{ paddingBottom: 40 }}>
+      {/* ------------------------------------------------ đầu trang */}
       <Appear>
-        <LinearGradient colors={[...gradient.hero]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 22, padding: 22 }}>
-          <Text className="font-strong text-label uppercase text-white/75">Lộ trình của tôi</Text>
-          <Text className="mt-1 font-heavy text-white" style={{ fontSize: 32, lineHeight: 38 }}>
-            {initial ? 'Sửa lộ trình' : 'Lập lộ trình theo mục tiêu của bạn'}
-          </Text>
-          <Text className="mt-2 font-sans text-body text-white/85" style={{ maxWidth: 620 }}>
-            Trả lời vài câu dưới đây. App chia giờ theo khoảng cách tới điểm mục tiêu và số tuần còn lại, mỗi buổi dẫn vào đúng bài
-            trong app. Chưa biết điểm hiện tại cũng được.
-          </Text>
-        </LinearGradient>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-end', justifyContent: 'space-between', gap: 12 }}>
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: '#8F6E36' }}>
+              LỘ TRÌNH CỦA TÔI
+            </Text>
+            <Text className="font-heavy" style={{ fontSize: wide ? 40 : 30, lineHeight: wide ? 46 : 36, color: B9.navy }}>
+              {initial ? 'Sửa lộ trình.' : 'Lập lộ trình.'}
+            </Text>
+            <Text className="font-sans" style={{ marginTop: 4, fontSize: 15, color: '#5B5444' }}>
+              Chọn mục tiêu, ngày thi, giờ học — app xếp từng buổi vào đúng bài.
+            </Text>
+          </View>
+          <Motion kind="float">
+            <Sticker tilt={8}>
+              <CuteCalendar size={wide ? 76 : 54} />
+            </Sticker>
+          </Motion>
+        </View>
       </Appear>
 
-      <Card className="mt-4">
-        <Question no={1} title="Bạn thi gì?" hint="Chọn một hoặc cả hai.">
-          <View className="flex-row flex-wrap gap-3">
-            <ExamToggle
-              label="IELTS"
-              sub="Reading, Listening, Writing, từ vựng"
-              on={!!ielts}
-              onPress={() => setIelts(ielts ? null : { now: null, target: 6.5, examIso: '' })}
-            />
-            <ExamToggle
-              label="SAT"
-              sub="Math, Reading & Writing"
-              on={!!sat}
-              onPress={() => setSat(sat ? null : { now: null, target: 1400, examIso: '' })}
-            />
+      {/* ------------------------------------------------ hàng 1: mục tiêu · ngày thi */}
+      <View style={row}>
+        <Appear style={{ flex: wide ? 1.7 : undefined }}>
+          <View style={[B9CARD, { backgroundColor: '#F2C45A', minHeight: 330 }]}>
+            <Sparkles count={5} />
+            <View style={{ position: 'absolute', right: -60, top: -60, width: 220, height: 220, borderRadius: 110, backgroundColor: 'rgba(255,255,255,0.18)' }} />
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
+              <ExamChip label="IELTS" on={!!ielts} focused={focusExam === 'ielts'} onToggle={() => toggleExam('ielts')} onFocus={() => setFocusExam('ielts')} />
+              <ExamChip label="SAT" on={!!sat} focused={focusExam === 'sat'} onToggle={() => toggleExam('sat')} onFocus={() => setFocusExam('sat')} />
+            </View>
+
+            {goal ? (
+              <View style={{ marginTop: 14, flexDirection: wide ? 'row' : 'column', gap: 18, alignItems: wide ? 'center' : 'stretch' }}>
+                <View style={{ flex: 1, minWidth: 0 }}>
+                  <Text className="font-heavy" style={{ fontSize: wide ? 38 : 30, lineHeight: wide ? 42 : 34, color: B9.navy }}>
+                    Mục tiêu {isIelts ? 'band' : 'điểm'}.
+                  </Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 6 }}>
+                    <Text className="font-heavy" style={{ fontSize: wide ? 96 : 72, lineHeight: wide ? 100 : 76, color: B9.navy }}>
+                      {fmt(goal.target)}
+                    </Text>
+                    <Text className="font-heavy" style={{ fontSize: 24, color: '#6B5320', marginBottom: 12, marginLeft: 4 }}>
+                      /{isIelts ? '9' : '1600'}
+                    </Text>
+                  </View>
+                  <Text className="font-strong" style={{ marginTop: 8, fontSize: 13, color: '#6B5320' }}>
+                    ĐIỂM BÂY GIỜ
+                  </Text>
+                  <View style={{ marginTop: 6, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+                    <MiniPill label="Chưa biết" on={goal.now === null} onPress={() => setGoal({ ...goal, now: null })} />
+                    {(isIelts ? IELTS_NOW : SAT_NOW).map((v) => (
+                      <MiniPill
+                        key={v}
+                        label={fmt(v)}
+                        on={goal.now === v}
+                        onPress={() => {
+                          const targets = isIelts ? IELTS_TARGET : SAT_TARGET;
+                          setGoal({ ...goal, now: v, target: goal.target > v ? goal.target : (targets.find((t) => t > v) ?? goal.target) });
+                        }}
+                      />
+                    ))}
+                  </View>
+                </View>
+                <ValueWheel
+                  options={(isIelts ? IELTS_TARGET : SAT_TARGET).filter((v) => goal.now === null || v > goal.now)}
+                  value={goal.target}
+                  format={fmt}
+                  onChange={(v) => setGoal({ ...goal, target: v })}
+                  label={isIelts ? 'CHỌN BAND' : 'CHỌN ĐIỂM'}
+                />
+              </View>
+            ) : (
+              <View style={{ marginTop: 18 }}>
+                <Text className="font-heavy" style={{ fontSize: wide ? 38 : 30, lineHeight: wide ? 42 : 34, color: B9.navy }}>
+                  Bạn thi gì?
+                </Text>
+                <Text className="font-sans" style={{ marginTop: 6, fontSize: 15, color: '#5A4318' }}>
+                  Bấm IELTS, SAT hoặc cả hai ở trên để đặt mục tiêu.
+                </Text>
+              </View>
+            )}
+            <View style={{ position: 'absolute', right: 16, bottom: 16 }} aria-hidden>
+              <Motion kind="wobble">
+                <Sticker tilt={10}>
+                  <CuteTrophy size={58} />
+                </Sticker>
+              </Motion>
+            </View>
           </View>
-        </Question>
+        </Appear>
 
-        {ielts ? (
-          <Question no={2} title="IELTS: bây giờ, mục tiêu, ngày thi">
-            <GoalFields
-              nowOptions={IELTS_NOW}
-              targetOptions={IELTS_TARGET}
-              value={ielts}
-              onChange={setIelts}
-              format={(v) => v.toFixed(1)}
-              minDate={addDaysIso(today, 14)}
-            />
-          </Question>
-        ) : null}
+        <Appear index={1} style={{ flex: wide ? 1 : undefined }}>
+          <ExamDateCard goal={goal} examLabel={isIelts ? 'IELTS' : 'SAT'} today={today} minDate={addDaysIso(today, 14)} onChange={(iso) => goal && setGoal({ ...goal, examIso: iso })} />
+        </Appear>
+      </View>
 
-        {sat ? (
-          <Question no={ielts ? 3 : 2} title="SAT: bây giờ, mục tiêu, ngày thi">
-            <GoalFields
-              nowOptions={SAT_NOW}
-              targetOptions={SAT_TARGET}
-              value={sat}
-              onChange={setSat}
-              format={(v) => String(v)}
-              minDate={addDaysIso(today, 14)}
-            />
-          </Question>
-        ) : null}
-
-        <Question no={2 + (ielts ? 1 : 0) + (sat ? 1 : 0)} title="Mỗi ngày học bao lâu?" hint="Tính cả thời gian làm bài trong app.">
-          <View className="flex-row flex-wrap gap-2">
-            {MINUTES.map((m) => (
-              <Pill key={m} label={m < 60 ? `${m} phút` : `${m / 60 === Math.floor(m / 60) ? m / 60 : (m / 60).toFixed(1).replace('.', ',')} giờ`} active={minutes === m} onPress={() => setMinutes(m)} />
-            ))}
-          </View>
-        </Question>
-
-        <Question no={3 + (ielts ? 1 : 0) + (sat ? 1 : 0)} title="Học những ngày nào?" hint="Ngày không chọn là ngày nghỉ, lộ trình không xếp bài.">
-          <View className="flex-row flex-wrap gap-2">
-            {WEEK_ORDER.map((d) => (
-              <Pill
-                key={d}
-                label={WEEKDAY_LABEL[d]!}
-                active={days.includes(d)}
-                onPress={() => setDays(days.includes(d) ? days.filter((x) => x !== d) : [...days, d])}
-              />
-            ))}
-          </View>
-        </Question>
-
-        {skills.length > 0 ? (
-          <Question no={4 + (ielts ? 1 : 0) + (sat ? 1 : 0)} title="Phần nào bạn thấy yếu?" hint="Phần yếu được thêm giờ. Không chọn cũng được." last>
-            <View className="flex-row flex-wrap gap-2">
-              {skills.map((s) => (
-                <Pill key={s} label={SKILL_LABEL[s]} active={weak.includes(s)} onPress={() => setWeak(weak.includes(s) ? weak.filter((x) => x !== s) : [...weak, s])} />
+      {/* ------------------------------------------------ hàng 2: giờ học · ngày học · phần yếu */}
+      <View style={row}>
+        <Appear index={2} style={{ flex: wide ? 1 : undefined }}>
+          <View style={[B9CARD, { backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EADFC6' }]}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Text className="font-heavy" style={{ fontSize: 24, color: B9.navy }}>
+                Mỗi ngày.
+              </Text>
+              <Sticker tilt={-8}>
+                <CuteClock size={44} />
+              </Sticker>
+            </View>
+            <Text className="font-heavy" style={{ marginTop: 4, fontSize: 52, lineHeight: 58, color: B9.gold }}>
+              {minutesLabel(minutes)}
+            </Text>
+            <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+              {MINUTES.map((m) => (
+                <MiniPill key={m} label={minutesLabel(m)} on={minutes === m} onPress={() => setMinutes(m)} light />
               ))}
             </View>
-          </Question>
-        ) : null}
-      </Card>
+          </View>
+        </Appear>
+
+        <Appear index={3} style={{ flex: wide ? 1 : undefined }}>
+          <View style={[B9CARD, { backgroundColor: B9.navy }]}>
+            <Sparkles count={4} />
+            <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
+              Ngày học.
+            </Text>
+            <Text className="font-semi" style={{ marginTop: 2, fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+              {days.length} buổi / tuần · ngày không chọn là ngày nghỉ
+            </Text>
+            <View style={{ marginTop: 16, flexDirection: 'row', justifyContent: 'space-between', gap: 4 }}>
+              {WEEK_ORDER.map((d) => {
+                const on = days.includes(d);
+                return (
+                  <Pressable
+                    key={d}
+                    accessibilityRole="checkbox"
+                    aria-checked={on}
+                    accessibilityLabel={WEEKDAY_LABEL[d]}
+                    onPress={() => setDays(on ? days.filter((x) => x !== d) : [...days, d])}
+                    style={{ alignItems: 'center', gap: 6 }}
+                  >
+                    <View
+                      style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: on ? B9.goldLight : 'rgba(255,255,255,0.3)', backgroundColor: on ? B9.gold : 'transparent' }}
+                    >
+                      {on ? <Icon name="check" size={16} color={B9.navy} strokeWidth={3} /> : null}
+                    </View>
+                    <Text className="font-strong" style={{ fontSize: 12, color: on ? B9.goldLight : 'rgba(255,255,255,0.6)' }}>
+                      {WEEKDAY_LABEL[d]}
+                    </Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+        </Appear>
+
+        <Appear index={4} style={{ flex: wide ? 1 : undefined }}>
+          <View style={[B9CARD, { backgroundColor: '#F6EBD3' }]}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Text className="font-heavy" style={{ fontSize: 24, color: B9.navy }}>
+                Phần yếu.
+              </Text>
+              <Sticker tilt={8}>
+                <CuteRocket size={44} />
+              </Sticker>
+            </View>
+            <Text className="font-semi" style={{ marginTop: 2, fontSize: 13, color: '#6B5320' }}>
+              Được thêm giờ. Không chọn cũng được.
+            </Text>
+            <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+              {skills.length === 0 ? (
+                <Text className="font-sans" style={{ fontSize: 14, color: '#6B5320' }}>
+                  Chọn kỳ thi trước.
+                </Text>
+              ) : (
+                skills.map((s) => {
+                  const on = weak.includes(s);
+                  return (
+                    <Pressable
+                      key={s}
+                      accessibilityRole="checkbox"
+                      aria-checked={on}
+                      onPress={() => setWeak(on ? weak.filter((x) => x !== s) : [...weak, s])}
+                      style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 16, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: on ? B9.navy : '#FFFFFF' }}
+                    >
+                      <Badge icon={on ? 'bolt' : 'target'} color={on ? B9.gold : '#D8C39A'} size={24} />
+                      <Text className="font-strong" style={{ fontSize: 14, color: on ? '#FFFFFF' : B9.navy }}>
+                        {SKILL_LABEL[s]}
+                      </Text>
+                    </Pressable>
+                  );
+                })
+              )}
+            </View>
+          </View>
+        </Appear>
+      </View>
 
       {tried && problems.length > 0 ? (
-        <View className="mt-3 gap-1 rounded-card bg-warning-soft p-3">
+        <View style={{ marginTop: 14, gap: 4, borderRadius: 18, padding: 14, backgroundColor: '#FFF4DB', borderWidth: 1, borderColor: '#EBCF8E' }}>
           {problems.map((p) => (
-            <View key={p} className="flex-row items-start gap-2">
-              <Icon name="info" size={15} color={color.warning} />
-              <Text className="flex-1 font-sans text-label text-ink">{p}</Text>
+            <View key={p} style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 8 }}>
+              <Icon name="info" size={15} color="#8F6E36" />
+              <Text className="font-sans" style={{ flex: 1, fontSize: 14, color: B9.navy }}>
+                {p}
+              </Text>
             </View>
           ))}
         </View>
       ) : null}
 
-      <View className="mt-4 flex-row flex-wrap items-center gap-3">
-        <Button label={initial ? 'Lập lại lộ trình' : 'Lập lộ trình'} variant="brand" iconRight="arrow-right" onPress={submit} />
+      {/* ------------------------------------------------ thanh chốt */}
+      <View style={{ marginTop: 18, borderRadius: 24, padding: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#EADFC6', flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 12 }}>
+        <View style={{ flex: 1, minWidth: 220 }}>
+          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#8F6E36' }}>
+            TÓM TẮT
+          </Text>
+          <Text className="font-heavy" style={{ fontSize: 16, color: B9.navy }}>
+            {[ielts ? `IELTS ${ielts.target.toFixed(1)}` : null, sat ? `SAT ${sat.target}` : null].filter(Boolean).join(' + ') || 'Chưa chọn kỳ thi'} · {days.length} buổi × {minutesLabel(minutes)}
+          </Text>
+        </View>
+        <Button label={initial ? 'Lập lại lộ trình' : 'Lập lộ trình'} variant="brand" size="lg" iconRight="arrow-right" onPress={submit} />
         {initial ? <Button label="Huỷ" variant="outline" onPress={() => router.replace('/plan' as never)} /> : null}
         <Pressable accessibilityRole="link" onPress={() => router.push('/plan?mau=1' as never)}>
-          <Text className="font-semi text-label text-ink" style={{ opacity: 0.75 }}>
+          <Text className="font-semi" style={{ fontSize: 14, color: '#6B5320' }}>
             Xem lộ trình mẫu 60 tuần →
           </Text>
         </Pressable>
@@ -214,120 +353,183 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
   );
 }
 
-function Question({ no, title, hint, last, children }: { no: number; title: string; hint?: string; last?: boolean; children: React.ReactNode }) {
+const B9 = { navy: '#0F1D33', gold: '#A8843F', goldLight: '#E2C88F' };
+const B9CARD = { borderRadius: 30, padding: 22, overflow: 'hidden' } as const;
+
+function ExamChip({ label, on, focused, onToggle, onFocus }: { label: string; on: boolean; focused: boolean; onToggle: () => void; onFocus: () => void }) {
   return (
-    <View className={last ? 'py-3' : 'border-b py-4'} style={{ borderColor: '#EEF0F6' }}>
-      <View className="flex-row items-center gap-2.5">
-        <View className="h-7 min-w-7 items-center justify-center rounded-lg px-1.5" style={{ backgroundColor: '#EEF2FF' }}>
-          <Text className="font-heavy text-label" style={{ color: color.primary }}>
-            {no}
-          </Text>
-        </View>
-        <Text className="font-heavy text-cardTitle text-ink">{title}</Text>
-      </View>
-      {hint ? <Text className="ml-9 mt-0.5 font-sans text-label text-muted">{hint}</Text> : null}
-      <View className="ml-9 mt-3">{children}</View>
+    <View style={{ flexDirection: 'row', alignItems: 'center', borderRadius: 999, backgroundColor: on ? (focused ? B9.navy : 'rgba(15,29,51,0.75)') : 'rgba(255,255,255,0.55)', paddingLeft: 4, paddingRight: 12, paddingVertical: 4, gap: 8 }}>
+      <Pressable accessibilityRole="checkbox" aria-checked={on} accessibilityLabel={`Thi ${label}`} onPress={onToggle} style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: on ? B9.goldLight : '#FFFFFF' }}>
+        {on ? <Icon name="check" size={15} color={B9.navy} strokeWidth={3} /> : <Icon name="plus" size={15} color={B9.navy} />}
+      </Pressable>
+      <Pressable accessibilityRole="button" onPress={on ? onFocus : onToggle}>
+        <Text className="font-heavy" style={{ fontSize: 15, color: on ? '#FFFFFF' : B9.navy }}>
+          {label}
+        </Text>
+      </Pressable>
     </View>
   );
 }
 
-function ExamToggle({ label, sub, on, onPress }: { label: string; sub: string; on: boolean; onPress: () => void }) {
-  return (
-    <Pressable
-      accessibilityRole="checkbox"
-      aria-checked={on}
-      onPress={onPress}
-      className="flex-row items-center gap-3 rounded-2xl px-4 py-3"
-      style={{ minWidth: 220, borderWidth: 1.5, borderColor: on ? color.primary : '#E0E4F0', backgroundColor: on ? '#EEF2FF' : '#FFFFFF' }}
-    >
-      <View className="h-6 w-6 items-center justify-center rounded-md" style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: on ? 0 : 1.5, borderColor: '#C7CCE0' }}>
-        {on ? <Icon name="check" size={14} color="#FFFFFF" strokeWidth={2.8} /> : null}
-      </View>
-      <View>
-        <Text className="font-heavy text-body text-ink">{label}</Text>
-        <Text className="font-sans text-label text-muted">{sub}</Text>
-      </View>
-    </Pressable>
-  );
-}
-
-function Pill({ label, active, onPress, disabled }: { label: string; active: boolean; onPress: () => void; disabled?: boolean }) {
+function MiniPill({ label, on, onPress, light }: { label: string; on: boolean; onPress: () => void; light?: boolean }) {
   return (
     <Pressable
       accessibilityRole="button"
-      aria-selected={active}
-      disabled={disabled}
+      aria-selected={on}
       onPress={onPress}
-      className="rounded-pill px-3.5 py-1.5"
-      style={{
-        borderWidth: 1,
-        borderColor: active ? color.primary : '#E0E4F0',
-        backgroundColor: active ? color.primary : '#FFFFFF',
-        opacity: disabled ? 0.35 : 1,
-      }}
+      style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: on ? B9.navy : light ? '#F6EFE0' : 'rgba(255,255,255,0.6)' }}
     >
-      <Text className="font-semi text-label" style={{ color: active ? '#FFFFFF' : color.ink }}>
+      <Text className="font-strong" style={{ fontSize: 13, color: on ? '#FFFFFF' : B9.navy }}>
         {label}
       </Text>
     </Pressable>
   );
 }
 
-function GoalFields({
-  nowOptions,
-  targetOptions,
-  value,
-  onChange,
-  format,
-  minDate,
-}: {
-  nowOptions: number[];
-  targetOptions: number[];
-  value: GoalInput;
-  onChange: (v: GoalInput) => void;
-  format: (v: number) => string;
-  minDate: string;
-}) {
+/**
+ * Bánh xe chọn số (kiểu cuộn): số đang chọn nằm trong ô trắng, hai số trên dưới
+ * mờ dần. Bấm số khác, bấm mũi tên, hoặc lăn chuột (web) để đổi.
+ */
+function ValueWheel({ options, value, onChange, format, label }: { options: number[]; value: number; onChange: (v: number) => void; format: (v: number) => string; label: string }) {
+  const idx = Math.max(0, options.indexOf(value));
+  const step = (d: number) => {
+    const n = options[Math.min(options.length - 1, Math.max(0, idx + d))];
+    if (n !== undefined && n !== value) onChange(n);
+  };
+  const stepRef = React.useRef(step);
+  React.useLayoutEffect(() => {
+    stepRef.current = step;
+  });
+  const boxRef = React.useRef<View | null>(null);
+  React.useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    const el = boxRef.current as unknown as HTMLElement | null;
+    if (!el?.addEventListener) return;
+    let last = 0;
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const now = Date.now();
+      if (now - last < 140) return;
+      last = now;
+      stepRef.current(e.deltaY > 0 ? 1 : -1);
+    };
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => el.removeEventListener('wheel', onWheel);
+  }, []);
+  const around = [-2, -1, 0, 1, 2];
   return (
-    <View className="gap-3">
-      <View>
-        <Text className="mb-1.5 font-semi text-label text-muted">Điểm bây giờ</Text>
-        <View className="flex-row flex-wrap gap-2">
-          <Pill label="Chưa biết" active={value.now === null} onPress={() => onChange({ ...value, now: null })} />
-          {nowOptions.map((v) => (
-            <Pill key={v} label={format(v)} active={value.now === v} onPress={() => onChange({ ...value, now: v, target: value.target > v ? value.target : (targetOptions.find((t) => t > v) ?? value.target) })} />
-          ))}
-        </View>
-      </View>
-      <View>
-        <Text className="mb-1.5 font-semi text-label text-muted">Điểm muốn đạt</Text>
-        <View className="flex-row flex-wrap gap-2">
-          {targetOptions.map((v) => (
-            <Pill key={v} label={format(v)} active={value.target === v} disabled={value.now !== null && v <= value.now} onPress={() => onChange({ ...value, target: v })} />
-          ))}
-        </View>
-      </View>
-      <View>
-        <Text className="mb-1.5 font-semi text-label text-muted">Ngày thi (dự kiến cũng được)</Text>
-        <DateField value={value.examIso} min={minDate} onChange={(iso) => onChange({ ...value, examIso: iso })} />
+    <View style={{ alignItems: 'center', minWidth: 220 }}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: '#6B5320' }}>
+        {label} ↕
+      </Text>
+      <View ref={boxRef} style={{ marginTop: 6, alignItems: 'stretch', width: 240 }}>
+        {around.map((o) => {
+          const v = options[idx + o];
+          if (o === 0)
+            return (
+              <View key={o} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderRadius: 18, paddingHorizontal: 14, paddingVertical: 8, backgroundColor: '#FFFFFF', boxShadow: '0 10px 24px -12px rgba(90,67,24,0.55)' } as object}>
+                <Pressable accessibilityRole="button" accessibilityLabel="Giảm" onPress={() => step(-1)} style={{ padding: 6 }}>
+                  <View style={{ transform: [{ rotate: '180deg' }] }}>
+                    <Icon name="chevron-down" size={18} color={B9.navy} />
+                  </View>
+                </Pressable>
+                <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 46, color: B9.navy }}>
+                  {format(value)}
+                </Text>
+                <Pressable accessibilityRole="button" accessibilityLabel="Tăng" onPress={() => step(1)} style={{ padding: 6 }}>
+                  <Icon name="chevron-down" size={18} color={B9.navy} />
+                </Pressable>
+              </View>
+            );
+          return (
+            <Pressable key={o} disabled={v === undefined} onPress={() => v !== undefined && onChange(v)} style={{ alignItems: 'center', paddingVertical: 2 }}>
+              <Text className="font-heavy" style={{ fontSize: Math.abs(o) === 1 ? 26 : 20, color: `rgba(15,29,51,${Math.abs(o) === 1 ? 0.45 : 0.22})` }}>
+                {v === undefined ? ' ' : format(v)}
+              </Text>
+            </Pressable>
+          );
+        })}
       </View>
     </View>
   );
 }
 
-function DateField({ value, min, onChange }: { value: string; min: string; onChange: (iso: string) => void }) {
-  const style = { height: 42, borderWidth: 1, borderColor: '#E0E4F0', borderRadius: 12, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: color.ink, backgroundColor: '#FFFFFF', maxWidth: 220 };
+/** Khối ngày thi: đếm ngược thật + lịch tháng có đánh dấu hôm nay và ngày thi. */
+function ExamDateCard({ goal, examLabel, today, minDate, onChange }: { goal: GoalInput | null; examLabel: string; today: string; minDate: string; onChange: (iso: string) => void }) {
+  const exam = goal?.examIso || '';
+  const left = exam ? daysBetween(today, exam) : null;
+  const show = exam && exam.slice(0, 7) >= today.slice(0, 7) ? exam : today;
+  const [y, m] = show.split('-').map(Number) as [number, number];
+  const first = new Date(Date.UTC(y, m - 1, 1));
+  const lead = (first.getUTCDay() + 6) % 7;
+  const count = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  const cells: (number | null)[] = [...Array.from({ length: lead }, () => null), ...Array.from({ length: count }, (_, i) => i + 1)];
+  const iso = (d: number) => `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  return (
+    <View style={[B9CARD, { backgroundColor: B9.navy, minHeight: 330 }]}>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+        <View>
+          <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
+            Ngày thi.
+          </Text>
+          <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>
+            {goal ? `${examLabel} · dự kiến cũng được` : 'Chọn kỳ thi trước'}
+          </Text>
+        </View>
+        <View style={{ alignItems: 'flex-end' }}>
+          <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 44, color: B9.goldLight }}>
+            {left === null ? '—' : left}
+          </Text>
+          <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.65)' }}>
+            ngày nữa
+          </Text>
+        </View>
+      </View>
+      <View style={{ marginTop: 12 }}>
+        <DateField value={exam} min={minDate} onChange={onChange} disabled={!goal} />
+      </View>
+      <Text className="font-strong" style={{ marginTop: 14, fontSize: 13, color: 'rgba(255,255,255,0.8)' }}>
+        Tháng {m} · {y}
+      </Text>
+      <View style={{ marginTop: 6, flexDirection: 'row', flexWrap: 'wrap' }}>
+        {['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'].map((d) => (
+          <Text key={d} className="font-strong" style={{ width: `${100 / 7}%`, textAlign: 'center', fontSize: 11, color: 'rgba(255,255,255,0.5)', paddingVertical: 3 }}>
+            {d}
+          </Text>
+        ))}
+        {cells.map((d, i) => {
+          const k = d ? iso(d) : '';
+          const isToday = k === today;
+          const isExam = !!exam && k === exam;
+          return (
+            <View key={i} style={{ width: `${100 / 7}%`, alignItems: 'center', paddingVertical: 2 }}>
+              <View style={{ width: 26, height: 26, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: isExam ? '#E0533D' : isToday ? B9.goldLight : 'transparent' }}>
+                <Text className="font-semi" style={{ fontSize: 12, color: isToday && !isExam ? B9.navy : d ? '#FFFFFF' : 'transparent' }}>
+                  {d ?? ''}
+                </Text>
+              </View>
+            </View>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+function DateField({ value, min, onChange, disabled }: { value: string; min: string; onChange: (iso: string) => void; disabled?: boolean }) {
+  const style = { height: 42, borderWidth: 0, borderRadius: 12, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: B9.navy, backgroundColor: disabled ? 'rgba(255,255,255,0.4)' : '#FFFFFF', width: '100%' as const, maxWidth: 260 };
   if (Platform.OS === 'web') {
     return React.createElement('input', {
       type: 'date',
       value,
       min,
+      disabled,
       'aria-label': 'Ngày thi',
       onChange: (e: { target: { value: string } }) => onChange(e.target.value),
-      style: { ...style, fontFamily: 'inherit', borderStyle: 'solid' },
+      style: { ...style, fontFamily: 'inherit', borderStyle: 'solid', boxSizing: 'border-box' },
     });
   }
-  return <TextInput value={value} onChangeText={onChange} placeholder="YYYY-MM-DD" style={style} />;
+  return <TextInput value={value} onChangeText={onChange} placeholder="YYYY-MM-DD" editable={!disabled} style={style} />;
 }
 
 /* ================================================================ LỘ TRÌNH */
@@ -378,7 +580,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
     <View className="pb-8" style={{ gap: 14 }}>
       {/* ------------------------------------------------ khối đầu (xanh) */}
       <Appear>
-        <View style={{ borderRadius: 28, padding: 24, backgroundColor: '#4A7FE8', overflow: 'hidden' }}>
+        <View style={{ borderRadius: 28, padding: 24, backgroundColor: '#A8843F', overflow: 'hidden' }}>
           <View style={{ position: 'absolute', right: -70, top: -70, width: 280, height: 280, borderRadius: 140, backgroundColor: 'rgba(255,255,255,0.10)' }} />
           <View style={{ position: 'absolute', right: 120, bottom: -90, width: 180, height: 180, borderRadius: 90, backgroundColor: 'rgba(255,255,255,0.07)' }} />
           <Sparkles count={7} />
@@ -485,7 +687,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
             </View>
           </View>
 
-          <View style={{ height: '100%', borderRadius: 28, padding: 20, backgroundColor: '#8A63D2', overflow: 'hidden' }}>
+          <View style={{ height: '100%', borderRadius: 28, padding: 20, backgroundColor: '#CAA76B', overflow: 'hidden' }}>
             <Sparkles count={5} />
             <View className="flex-row items-start justify-between gap-3">
               <View className="min-w-0 flex-1">
@@ -567,7 +769,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
           <StatTile icon="clock" tone="#F2B632" label="Tổng giờ" value={`${Math.round(plan.totalMinutes / 60)}h`} sub="" />
           <StatTile icon="check" tone="#22A06B" label="Đã làm" value={`${doneAll}/${allBlocks.length}`} sub="" />
           <StatTile icon="target" tone="#E0533D" label="Thi thử" value={`${checks.length}`} sub="" />
-          <StatTile icon="star" tone="#4A7FE8" label="Hoàn thành" value={allBlocks.length ? `${Math.round((doneAll / allBlocks.length) * 100)}%` : '—'} sub="" />
+          <StatTile icon="star" tone="#A8843F" label="Hoàn thành" value={allBlocks.length ? `${Math.round((doneAll / allBlocks.length) * 100)}%` : '—'} sub="" />
         </Grid>
       </Appear>
 
@@ -635,7 +837,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                 .map((r) => {
                   const on = current >= r.from && current <= r.to;
                   return (
-                    <View key={`${r.goal}-${r.phase}`} className="flex-row items-center gap-3 rounded-xl px-3 py-2" style={{ backgroundColor: on ? '#EEF2FF' : '#F7F8FC' }}>
+                    <View key={`${r.goal}-${r.phase}`} className="flex-row items-center gap-3 rounded-xl px-3 py-2" style={{ backgroundColor: on ? '#FCF8F1' : '#FCFAF7' }}>
                       <Text className="font-heavy text-label" style={{ width: 44, color: r.goal === 'ielts' ? SKILL_TONE.reading.tone : SKILL_TONE.math.tone }}>
                         {r.goal === 'ielts' ? 'IELTS' : 'SAT'}
                       </Text>
@@ -679,7 +881,7 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
                           {Math.round(plan.minutesBySkill[s] / 60)} giờ · {Math.round(share * 100)}%
                         </Text>
                       </View>
-                      <View className="mt-1 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#EEF0F6' }}>
+                      <View className="mt-1 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#F6F3EE' }}>
                         <View style={{ height: 8, width: '100%', backgroundColor: SKILL_TONE[s].tone, transform: [{ scaleX: share }], transformOrigin: 'left' }} />
                       </View>
                     </View>
@@ -722,7 +924,7 @@ function WeekDots({ week, today, done }: { week: CustomPlan['weeks'][number]; to
                 borderColor: missed ? '#FCA5A5' : isToday ? '#FFFFFF' : 'rgba(255,255,255,0.5)',
               }}
             >
-              {complete ? <Icon name="check" size={16} color="#8A63D2" strokeWidth={3} /> : null}
+              {complete ? <Icon name="check" size={16} color="#CAA76B" strokeWidth={3} /> : null}
             </View>
             <Text className="font-strong" style={{ fontSize: 12, color: isToday ? '#FFFFFF' : 'rgba(255,255,255,0.8)' }}>
               {WEEKDAY_SHORT[weekday]}
