@@ -81,7 +81,15 @@ export type SceneProps = {
   autoSpin?: boolean;
   /** Chế độ đi dạo: có nhân vật, camera bám theo. */
   walk?: WalkProps | null;
+  /**
+   * Nhãn HTML bám theo điểm trong cảnh (tên tháp ở Trung tâm Tương lai). Mỗi
+   * khung hình được vẽ, vị trí màn hình ghi thẳng vào `style.transform` của
+   * phần tử — không qua state React, không làm cảnh vẽ thêm khung nào.
+   */
+  anchors?: readonly SceneAnchor[];
 };
+
+export type SceneAnchor = { pos: [number, number, number]; el: () => HTMLElement | null };
 
 export type CameraApi = {
   /** Dời tâm nhìn theo hướng màn hình (dx phải, dy lên), đơn vị ô. */
@@ -1066,7 +1074,8 @@ function pinsOf(data: SceneData): Pin[] {
 }
 
 function Scene(props: SceneProps) {
-  const pinKey = JSON.stringify(pinsOf(props.data));
+  // Chuỗi san nền chỉ tính lại khi dữ liệu cảnh đổi — không phải mỗi lần rê chuột.
+  const pinKey = useMemo(() => JSON.stringify(pinsOf(props.data)), [props.data]);
   const field = useMemo(() => buildField(props.data.terrain, props.data.works, JSON.parse(pinKey) as Pin[]), [props.data.terrain, props.data.works, pinKey]);
   const data = useMemo<SceneWorld>(() => ({ ...props.data, field }), [props.data, field]);
   const placeSite = useCallback((s: Site) => siteMatrix(props.data.terrain, props.data.works, s), [props.data.terrain, props.data.works]);
@@ -1188,7 +1197,7 @@ function Scene(props: SceneProps) {
   };
 
   // Công trình đang phát lại tiến độ vẫn vẽ riêng tới khi xong hoạt cảnh, kể cả khi đã hoàn thành.
-  const building = data.sites.filter((s) => !isDone(s) || props.replay[s.id]);
+  const building = useMemo(() => data.sites.filter((s) => !isDone(s) || props.replay[s.id]), [data.sites, props.replay]);
   const playing = useMemo(() => new Set(Object.keys(props.replay)), [props.replay]);
 
   return (
@@ -1212,18 +1221,9 @@ function Scene(props: SceneProps) {
         shadow-normalBias={0.03}
       />
       {/* Chỉ nền + nước nhận di chuột (rẻ để raycast); công trình chỉ nhận cú bấm. */}
-      <Terrain3D data={data} />
-      <Water data={data} reducedMotion={props.reducedMotion} />
       <PickMesh data={data} handlers={handlers} />
-      <Roads data={data} />
-      <group>
-        <StaticCity data={data} selected={props.selectedSite} skip={playing} />
-        {building.map((s) => (
-          <SiteMesh key={s.id} data={data} site={s} frames={props.replay[s.id]} onDone={props.onReplayDone} selected={props.selectedSite === s.id} />
-        ))}
-      </group>
-      <Nature data={data} />
-      <DecorLayer sites={data.sites} era={data.era ?? 5} place={placeSite} />
+      <WorldLayers data={data} building={building} replay={props.replay} onReplayDone={props.onReplayDone} selected={props.selectedSite} playing={playing} place={placeSite} reducedMotion={props.reducedMotion} />
+      {props.anchors?.length ? <Anchors anchors={props.anchors} /> : null}
       {props.showGrid ? <Grid data={data} /> : null}
       {props.showZones ? <ZoneLayer data={data} /> : null}
       {props.regionHints ? <RegionLayer data={data} hints={props.regionHints} /> : null}
@@ -1234,7 +1234,46 @@ function Scene(props: SceneProps) {
   );
 }
 
-export function CityCanvas(props: SceneProps) {
+/**
+ * Phần tĩnh của cảnh (nền, nước, đường, nhà, cây, đồ trang trí) tách thành một
+ * khối memo: rê chuột / xem trước khi đặt nhà chỉ làm Scene render lại lớp
+ * xem trước, không chạy lại thân của cả thành phố.
+ */
+const WorldLayers = React.memo(function WorldLayers({ data, building, replay, onReplayDone, selected, playing, place, reducedMotion }: { data: SceneWorld; building: Site[]; replay: Record<string, Visual[]>; onReplayDone: (id: string) => void; selected: string | null; playing: Set<string>; place: (s: Site) => THREE.Matrix4; reducedMotion: boolean }) {
+  return (
+    <>
+      <Terrain3D data={data} />
+      <Water data={data} reducedMotion={reducedMotion} />
+      <Roads data={data} />
+      <group>
+        <StaticCity data={data} selected={selected} skip={playing} />
+        {building.map((s) => (
+          <SiteMesh key={s.id} data={data} site={s} frames={replay[s.id]} onDone={onReplayDone} selected={selected === s.id} />
+        ))}
+      </group>
+      <Nature data={data} />
+      <DecorLayer sites={data.sites} era={data.era ?? 5} place={place} />
+    </>
+  );
+});
+
+/** Ghi vị trí màn hình của các nhãn sau mỗi khung được vẽ (frameloop "demand": không tự vẽ thêm). */
+function Anchors({ anchors }: { anchors: readonly SceneAnchor[] }) {
+  const v = useMemo(() => new THREE.Vector3(), []);
+  useFrame(({ camera, size }) => {
+    for (const a of anchors) {
+      const el = a.el();
+      if (!el) continue;
+      v.set(a.pos[0], a.pos[1], a.pos[2]).project(camera);
+      const visible = v.z < 1 && v.x > -1.2 && v.x < 1.2 && v.y > -1.2 && v.y < 1.2;
+      el.style.opacity = visible ? '1' : '0';
+      el.style.transform = `translate(${Math.round(((v.x + 1) / 2) * size.width)}px, ${Math.round(((1 - v.y) / 2) * size.height)}px) translate(-50%, -100%)`;
+    }
+  });
+  return null;
+}
+
+export const CityCanvas = React.memo(function CityCanvas(props: SceneProps) {
   // Tuỳ chọn camera cố định từ lần đầu: R3F so sánh prop mỗi lần render, đổi
   // object là đặt lại vị trí camera — phá mất chỗ người dùng đang nhìn.
   const [camera] = useState(() => ({ zoom: props.zoom, near: -200, far: 400, position: [40, 40, 40] as [number, number, number] }));
@@ -1252,5 +1291,5 @@ export function CityCanvas(props: SceneProps) {
       <Scene {...props} />
     </Canvas>
   );
-}
+});
 

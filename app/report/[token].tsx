@@ -12,11 +12,11 @@ import { Sticker } from '@/components/illust/Sticker';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 /** Màu huy hiệu cho từng ô (bảng màu chung). */
-const SEAL: Partial<Record<IconName, string>> = { grid: '#4A7FE8', letters: '#F472B6', book: '#22A06B', trophy: '#F2B632' };
+const SEAL: Partial<Record<IconName, string>> = { grid: '#A8843F', letters: '#F472B6', book: '#22A06B', trophy: '#F2B632' };
 
 type Payload = { name: string | null; generatedAt: string; hasData: boolean; report: ParentReport };
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
 const hm = (min: number) => (min >= 60 ? `${Math.floor(min / 60)} giờ ${min % 60} phút` : `${min} phút`);
 const pct = (x: number | null) => (x === null ? '—' : `${Math.round(x * 100)}%`);
@@ -75,7 +75,7 @@ export default function ParentReportScreen() {
   const who = data.name ?? 'con';
   const diff = r.minutes7 - r.minutesPrev7;
   const summary = !data.hasData
-    ? `Chưa có dữ liệu học nào được đồng bộ. Nhờ ${who} đăng nhập và học trên ReadUp, báo cáo sẽ tự cập nhật.`
+    ? `Chưa có dữ liệu học nào được đồng bộ. Nhờ ${who} đăng nhập và học trên Band 9, báo cáo sẽ tự cập nhật.`
     : `Tuần này ${who} học ${hm(r.minutes7)} trong ${r.activeDays7}/7 ngày${
         r.minutesPrev7 > 0 || r.minutes7 > 0 ? `, ${diff >= 0 ? 'nhiều hơn' : 'ít hơn'} tuần trước ${hm(Math.abs(diff))}` : ''
       }${r.streak > 1 ? `, đang giữ chuỗi ${r.streak} ngày học liên tiếp` : ''}.`;
@@ -85,10 +85,10 @@ export default function ParentReportScreen() {
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 760 }}>
         <Appear>
-          <View className="rounded-[24px] p-6" style={[{ backgroundColor: '#4F46E5' }, CARD]}>
+          <View className="rounded-[24px] p-6" style={[{ backgroundColor: '#CDA45E' }, CARD]}>
             <View className="flex-row items-start justify-between gap-3">
               <View className="min-w-0 flex-1">
-                <Text className="font-strong text-label uppercase tracking-[1.4px] text-white/80">ReadUp · Báo cáo tuần</Text>
+                <Text className="font-strong text-label uppercase tracking-[1.4px] text-white/80">Band 9 · Báo cáo tuần</Text>
                 <Text className="mt-2 font-heavy text-pageTitle text-white">Báo cáo học tập của {who}</Text>
               </View>
               <PageStickers scene="progress" compact />
@@ -101,7 +101,7 @@ export default function ParentReportScreen() {
           <View className="mt-4 rounded-[22px] bg-white p-5" style={CARD}>
             <View className="flex-row items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="calendar" color="#0EA5E9" size={36} />
+                <SealIcon name="calendar" color="#B07A3A" size={36} />
               </View>
               <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">Thời gian học 7 ngày qua</Text>
             </View>
@@ -112,7 +112,7 @@ export default function ParentReportScreen() {
                 return (
                   <View key={d.date} className="flex-1 items-center">
                     <Text className="mb-1 font-semi text-label text-ink">{d.minutes > 0 ? d.minutes : ''}</Text>
-                    <View className="w-full rounded-t-lg" style={{ height: h, backgroundColor: d.minutes > 0 ? '#6366F1' : '#E2E8F0' }} />
+                    <View className="w-full rounded-t-lg" style={{ height: h, backgroundColor: d.minutes > 0 ? '#D7B67D' : '#F0EBE2' }} />
                     <Text className="mt-1.5 font-sans text-label text-muted">{label}</Text>
                   </View>
                 );
@@ -125,7 +125,7 @@ export default function ParentReportScreen() {
         <View className="mt-4 flex-row flex-wrap gap-3">
           <Tile
             icon="grid"
-            tone="#4F46E5"
+            tone="#CDA45E"
             title="SAT Math"
             lines={[
               `${r.math.questions7} câu tuần này`,
@@ -171,7 +171,7 @@ export default function ParentReportScreen() {
         ) : null}
 
         <Text className="mt-6 text-center font-sans text-label text-muted">
-          Báo cáo do ReadUp tạo lúc {new Date(data.generatedAt).toLocaleString('vi-VN')} từ dữ liệu học thật — chỉ có số đếm, không có bài làm hay tin nhắn.
+          Báo cáo do Band 9 tạo lúc {new Date(data.generatedAt).toLocaleString('vi-VN')} từ dữ liệu học thật — chỉ có số đếm, không có bài làm hay tin nhắn.
         </Text>
         <View className="h-8" />
       </View>

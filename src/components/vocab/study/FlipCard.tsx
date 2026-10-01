@@ -174,7 +174,7 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
         {word.example ? (
           <View>
             <Label>Ví dụ</Label>
-            <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F6FF' }}>
+            <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#FCF9F4' }}>
               <ExampleLine example={word.example} word={word.word} />
             </View>
           </View>

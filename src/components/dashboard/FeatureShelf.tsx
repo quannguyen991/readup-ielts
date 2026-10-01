@@ -24,7 +24,7 @@ type Shelf = {
 };
 
 /**
- * KỆ "MỚI TRÊN READUP" ở trang Hôm nay: một lối vào cho mỗi cách học mới, mỗi
+ * KỆ "MỚI TRÊN BAND 9" ở trang Hôm nay: một lối vào cho mỗi cách học mới, mỗi
  * thẻ nói luôn trạng thái của CHÍNH người học (tuần này làm đề chưa, bao nhiêu
  * cây đang chờ tưới…) thay vì một câu quảng cáo chung chung.
  */
@@ -87,7 +87,7 @@ export function FeatureShelf() {
 
   return (
     <View className="mt-6">
-      <Text className="font-heavy text-sectionTitle text-ink">Mới trên ReadUp</Text>
+      <Text className="font-heavy text-sectionTitle text-ink">Mới trên Band 9</Text>
       <Text className="mt-1 font-sans text-body text-muted">Sáu cách học khác đi một chút — chọn một cái cho hôm nay.</Text>
       <View className="mt-3">
         <Grid columns={3} tabletColumns={3} mobileColumns={2} gap={16}>

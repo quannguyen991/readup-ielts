@@ -230,7 +230,7 @@ export function HoverGlossText({
                   ...base,
                   color: isActive ? paper.brandMid : color,
                   borderRadius: 4,
-                  backgroundColor: isActive ? 'rgba(79,70,229,0.12)' : 'rgba(79,70,229,0)',
+                  backgroundColor: isActive ? 'rgba(205, 164, 94,0.12)' : 'rgba(205, 164, 94,0)',
                   ...(Platform.OS === 'web' ? WEB_TRANSITION : null),
                   ...(known || isActive
                     ? {

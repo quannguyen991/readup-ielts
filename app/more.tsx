@@ -19,7 +19,7 @@ export default function MoreScreen() {
       <View className="flex-row items-center justify-between gap-3">
         <View className="min-w-0 flex-1 flex-row items-center gap-3">
           <View aria-hidden>
-            <SealIcon name="grid" color="#4A7FE8" size={44} />
+            <SealIcon name="grid" color="#A8843F" size={44} />
           </View>
           <View className="min-w-0 flex-1">
             <Text className="font-heavy text-pageTitle text-ink">More</Text>

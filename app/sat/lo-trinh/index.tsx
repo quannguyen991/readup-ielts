@@ -50,7 +50,7 @@ export default function SatRoadmap() {
       {/* Học tiếp */}
       <Appear>
         <Pressable accessibilityRole="link" onPress={() => router.push(`/sat/lo-trinh/${next.id}` as never)}>
-          <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: '#4A7FE8', overflow: 'hidden', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
+          <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: '#A8843F', overflow: 'hidden', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
             <Sparkles count={6} />
             <ChapterSticker art={next.art} size={78} />
             <View style={{ flex: 1 }}>
@@ -116,7 +116,7 @@ function ChapterCard({ c, best, basis }: { c: RoadChapter; best: ReturnType<type
         padding: 16,
         backgroundColor: '#FFFFFF',
         borderWidth: 1,
-        borderColor: '#E2E8F0',
+        borderColor: '#F0EBE2',
         transform: [{ translateY: hovered ? -3 : 0 }],
         boxShadow: hovered ? '0 12px 26px rgba(15,23,42,0.12)' : '0 2px 8px rgba(15,23,42,0.05)',
         transition: 'transform 160ms ease, box-shadow 160ms ease',

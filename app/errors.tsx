@@ -19,10 +19,10 @@ import { Badge } from '@/components/illust/Cute';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 /** Màu huy hiệu răng cưa theo mảng (bảng màu chung, không tím). */
-const SEAL_TONE: Record<ErrorArea, string> = { math: '#4A7FE8', verbal: '#F472B6', vocab: '#22A06B' };
+const SEAL_TONE: Record<ErrorArea, string> = { math: '#A8843F', verbal: '#F472B6', vocab: '#22A06B' };
 
 const AREA: Record<ErrorArea, { label: string; tone: string; bg: string; icon: IconName }> = {
-  math: { label: 'SAT Math', tone: '#4F46E5', bg: '#EEF2FF', icon: 'grid' },
+  math: { label: 'SAT Math', tone: '#CDA45E', bg: '#FCF8F1', icon: 'grid' },
   verbal: { label: 'SAT Verbal', tone: '#DB2777', bg: '#FDF2F8', icon: 'letters' },
   vocab: { label: 'Từ vựng', tone: '#0D9488', bg: '#F0FDFA', icon: 'book' },
 };
@@ -34,7 +34,7 @@ const TREND: Record<ErrorItem['trend'], { text: string; tone: string }> = {
   new: { text: '• mới xuất hiện', tone: '#D97706' },
 };
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 26px rgba(94, 72, 35,0.08)' } as object;
 
 /**
  * HỒ SƠ LỖI — những lỗi CÓ TÊN bạn hay mắc nhất, gom từ SAT Math, SAT Verbal và
@@ -72,7 +72,7 @@ export default function ErrorsScreen() {
           badge="HỒ SƠ LỖI"
           line1="Bạn sai vì đâu,"
           line2="không chỉ sai câu nào"
-          subtitle="Đề của ReadUp sinh bằng code nên mỗi câu sai được gọi đúng tên lỗi. Đây là những lỗi bạn hay mắc nhất — lỗi đang nóng trong 7 ngày qua đứng đầu, kèm đường sửa ngay."
+          subtitle="Đề của Band 9 sinh bằng code nên mỗi câu sai được gọi đúng tên lỗi. Đây là những lỗi bạn hay mắc nhất — lỗi đang nóng trong 7 ngày qua đứng đầu, kèm đường sửa ngay."
           footer={
             <>
               <HeroStat value={String(profile.length)} label="kiểu lỗi đã gặp" />

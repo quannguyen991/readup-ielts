@@ -105,7 +105,7 @@ export function QuestJourneyHero() {
         <Sparkles count={6} color="#FDE68A" />
         <View style={{ alignSelf: 'flex-start', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(250,204,21,0.4)', backgroundColor: 'rgba(250,204,21,0.1)', paddingHorizontal: 12, paddingVertical: 5 }}>
           <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#FDE68A' }}>
-            READUP QUEST · HÀNH TRÌNH HỌC
+            BAND 9 QUEST · HÀNH TRÌNH HỌC
           </Text>
         </View>
         <Text className="font-heavy" style={{ fontSize: wide ? 30 : 24, lineHeight: wide ? 36 : 30, color: INK }}>

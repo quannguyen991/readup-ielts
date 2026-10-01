@@ -8,12 +8,13 @@
  * Luật nằm ở `services/city/*`; file này chỉ nối thao tác của người dùng với
  * store và báo lại MỘT lý do cụ thể khi thao tác không hợp lệ.
  */
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { router, useLocalSearchParams } from 'expo-router';
+import { useShallow } from 'zustand/react/shallow';
 
 import { CATALOG, catalogItem, ERA_INFO, ROADS, type Era, type RoadKind, type ZoneKind } from '@/data/city/catalog';
 import { CREW_ORDER, CREWS, isDone } from '@/services/city/construction';
-import type { MaterialKind } from '@/services/city/materials';
+import type { MaterialKind, Materials } from '@/services/city/materials';
 import { canPlace, canUnlockRegion, entranceTile, footprint, occupancy, type RoadCheck } from '@/services/city/placement';
 import { generateTerrain, regionOf, START_REGIONS, type LandWork } from '@/services/city/terrain';
 import { useCityStore, worldOf } from '@/store/useCityStore';
@@ -32,15 +33,20 @@ import { SampleView } from './ui/SampleView';
 import { Credits } from './ui/Credits';
 import { avatarColors, CatchGame, CollectionSheet, WalkPrompt } from './ui/Life';
 import { VisitView } from './ui/VisitView';
+import { MarketSheet } from './ui/Market';
+import { usePresence } from './ui/common';
 import { HomeRoom } from './home/HomeRoom';
 import type { WalkProps } from './scene/WalkLayer';
 import type { Activity, CatchKind } from '@/services/city/life';
 import { skinOf, useRewardStore } from '@/store/useRewardStore';
 
-type Sheet = { kind: 'earn'; focus?: MaterialKind } | { kind: 'credits' } | { kind: 'era'; era: number } | { kind: 'catch'; what: CatchKind } | { kind: 'bag' } | { kind: 'home' } | null;
+type Sheet = { kind: 'earn'; focus?: MaterialKind } | { kind: 'market'; want?: Partial<Materials> } | { kind: 'credits' } | { kind: 'era'; era: number } | { kind: 'catch'; what: CatchKind } | { kind: 'bag' } | { kind: 'home' } | null;
 type ToastState = { text: string; tone: 'ok' | 'bad' | 'info'; id: number } | null;
 
 const rand = () => Math.floor(Math.random() * 1e9);
+
+/** Trung tâm Tương lai: nạp động — người không mở thì không tải mã của nó. */
+const HubView = React.lazy(() => import('./ui/HubView'));
 
 function defaultZoom(): number {
   if (typeof window === 'undefined') return 30;
@@ -60,10 +66,16 @@ export default function CityGame() {
   const chooseTerrain = useCityStore((s) => s.chooseTerrain);
   // Thành phố mẫu (chỉ xem): mở từ màn chọn đất, nút trên thanh trên, hoặc
   // `/quest/city?mau=1` (nút "Xem thành phố mẫu" ở trang Quest).
-  const { mau } = useLocalSearchParams<{ mau?: string }>();
+  // `?hub=1`: mở thẳng Trung tâm Tương lai (khối giới thiệu ở trang /quest).
+  const { mau, hub: hubParam } = useLocalSearchParams<{ mau?: string; hub?: string }>();
   const [opened, setOpened] = useState(false);
-  const [visiting, setVisiting] = useState(false);
+  // Thăm khu của người khác: `true` = danh sách, chuỗi = mở thẳng một khu (từ Trung tâm).
+  const [visiting, setVisiting] = useState<boolean | string>(false);
+  const [hub, setHub] = useState(() => hubParam === '1');
   const openVisit = useCallback(() => setVisiting(true), []);
+  const openHub = useCallback(() => setHub(true), []);
+  const closeHub = useCallback(() => setHub(false), []);
+  const visitFromHub = useCallback((id: string) => setVisiting(id), []);
   const [closed, setClosed] = useState(false);
   const sample = opened || (mau === '1' && !closed);
   const openSample = useCallback(() => setOpened(true), []);
@@ -74,11 +86,21 @@ export default function CityGame() {
   return (
     <div style={{ position: 'relative', flex: 1, width: '100%', height: '100%', minHeight: 560 }}>
       {visiting ? (
-        <VisitView reduced={reduced} onBack={() => setVisiting(false)} />
+        <VisitView reduced={reduced} initial={typeof visiting === 'string' ? visiting : undefined} onBack={() => setVisiting(false)} />
+      ) : hub ? (
+        <Suspense
+          fallback={
+            <div className="cg-root" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span className="cg-muted">Đang mở Trung tâm Tương lai…</span>
+            </div>
+          }
+        >
+          <HubView reduced={reduced} onBack={closeHub} onVisit={visitFromHub} />
+        </Suspense>
       ) : sample ? (
         <SampleView reduced={reduced} hasCity={!!terrain} onBack={closeSample} />
       ) : terrain ? (
-        <CityView reduced={reduced} onSample={openSample} onVisit={openVisit} />
+        <CityView reduced={reduced} onSample={openSample} onVisit={openVisit} onHub={openHub} />
       ) : (
         <TerrainPicker reducedMotion={reduced} onConfirm={(k, seed) => chooseTerrain(k, seed)} onSample={openSample} />
       )}
@@ -86,18 +108,21 @@ export default function CityGame() {
   );
 }
 
-function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: () => void; onVisit: () => void }) {
+function CityView({ reduced, onSample, onVisit, onHub }: { reduced: boolean; onSample: () => void; onVisit: () => void; onHub: () => void }) {
   const { t, L } = useL();
   const level = useLearnerLevel();
-  const city = useCityStore();
-  const kind = city.terrain!.kind;
-  const seed = city.terrain!.seed;
+  // Chỉ lấy phần cảnh cần — kiếm vật liệu / ca (đổi kho, bộ đếm) không làm cả màn render lại.
+  const city = useCityStore(
+    useShallow((s) => ({ terrain: s.terrain!, works: s.works, roads: s.roads, zones: s.zones, regions: s.regions, sites: s.sites, era: s.era })),
+  );
+  const kind = city.terrain.kind;
+  const seed = city.terrain.seed;
   const terrain = useMemo(() => generateTerrain(kind, seed), [kind, seed]);
   const data = useMemo<SceneData>(
     () => ({ terrain, works: city.works, roads: city.roads, zones: city.zones, regions: city.regions, sites: city.sites, era: city.era }),
     [terrain, city.works, city.roads, city.zones, city.regions, city.sites, city.era],
   );
-  const world = useMemo(() => worldOf(city), [city.terrain, city.regions, city.zones, city.roads, city.works, city.sites, city.era]); // eslint-disable-line react-hooks/exhaustive-deps
+  const world = useMemo(() => worldOf({ ...useCityStore.getState(), ...city }), [city]);
 
   const [tool, setToolState] = useState<Tool>('select');
   const [buildType, setBuildType] = useState<string | null>(null);
@@ -220,17 +245,19 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
     return { type: buildType, x, y, rot: buildRot, seed: buildSeed, check, entrance };
   }, [tool, buildType, hover, world, buildRot, buildSeed]);
 
+  // Kho vật liệu chỉ cần khi đang mở rộng đất (tô vùng mở được / chưa đủ).
+  const expandInv = useCityStore((s) => (tool === 'expand' ? s.inventory : null));
   const regionHints = useMemo(() => {
-    if (tool !== 'expand' || !world) return undefined;
+    if (tool !== 'expand' || !world || !expandInv) return undefined;
     const out: Record<number, 'can' | 'cannot'> = {};
     for (let id = 0; id < 16; id++) {
       if (world.regions.includes(id)) continue;
-      const r = canUnlockRegion(world, id, city.inventory, START_REGIONS.length);
+      const r = canUnlockRegion(world, id, expandInv, START_REGIONS.length);
       if (!r.ok && r.reason === 'not_adjacent') continue;
       out[id] = r.ok ? 'can' : 'cannot';
     }
     return out;
-  }, [tool, world, city.inventory]);
+  }, [tool, world, expandInv]);
 
   // ------------------------------------------------------------ thao tác trên ô
   const onTileClick = useCallback(
@@ -299,9 +326,19 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
   );
   const onTileDown = useCallback((tile: [number, number]) => paint(tile, true), [paint]);
   const onTileDrag = useCallback((tile: [number, number]) => paint(tile, false), [paint]);
+  // Gộp các lần đổi ô trong cùng một khung hình (chuột lướt nhanh qua vài ô) thành một lần render.
+  const hoverNext = useRef<[number, number] | null>(null);
+  const hoverRaf = useRef(0);
   const onHover = useCallback((tile: [number, number] | null) => {
-    setHover((h) => (h && tile && h[0] === tile[0] && h[1] === tile[1] ? h : tile));
+    hoverNext.current = tile;
+    if (hoverRaf.current) return;
+    hoverRaf.current = requestAnimationFrame(() => {
+      hoverRaf.current = 0;
+      const next = hoverNext.current;
+      setHover((h) => (h === next || (h && next && h[0] === next[0] && h[1] === next[1]) ? h : next));
+    });
   }, []);
+  useEffect(() => () => cancelAnimationFrame(hoverRaf.current), []);
 
   const rotateCam = useCallback((dir: 1 | -1) => setCamRot((r) => (r + dir + 4) % 4), []);
   useEffect(() => {
@@ -354,13 +391,29 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
     return () => window.removeEventListener('keydown', onKey);
   }, [sheet, tool, buildType, selected, setTool, rotateCam, doActivity]);
 
-  const eraUp = () => {
+  const eraUp = useCallback(() => {
     const before = useCityStore.getState().era;
     if (useCityStore.getState().advanceEra(level)) {
       setConfetti(Date.now());
       setSheet({ kind: 'era', era: before + 1 });
     }
-  };
+  }, [level]);
+  // Hàm ổn định cho các khối giao diện đã memo — đổi hàm mỗi lần render là phá memo.
+  const openEarn = useCallback((k?: MaterialKind) => setSheet({ kind: 'earn', focus: k }), []);
+  const openMarket = useCallback((want?: Partial<Materials>) => setSheet({ kind: 'market', want }), []);
+  const openCredits = useCallback(() => setSheet({ kind: 'credits' }), []);
+  const closeSheet = useCallback(() => setSheet(null), []);
+  const zoomBy = useCallback((f: number) => cameraApi.current?.zoomBy(f), []);
+  const goHome = useCallback(() => cameraApi.current?.home(), []);
+  const closeSite = useCallback(() => setSelected(null), []);
+  const selectSite = useCallback(
+    (id: string) => {
+      setTool('select');
+      setSelected(id);
+    },
+    [setTool],
+  );
+  const panel = usePresence(panelOpen, reduced ? 0 : 160);
 
   const paintMode = tool === 'road' || tool === 'erase' || tool === 'zone';
   const hint = hintFor(tool, buildType, t);
@@ -392,8 +445,8 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
         reducedMotion={reduced}
       />
 
-      <TopBar onEarn={(k) => setSheet({ kind: 'earn', focus: k })} onCredits={() => setSheet({ kind: 'credits' })} onSample={onSample} />
-      <ToolRail tool={tool} onTool={setTool} onRotate={rotateCam} onZoom={(f) => cameraApi.current?.zoomBy(f)} onHome={() => cameraApi.current?.home()} />
+      <TopBar onEarn={openEarn} onMarket={openMarket} onCredits={openCredits} onSample={onSample} />
+      <ToolRail tool={tool} onTool={setTool} onRotate={rotateCam} onZoom={zoomBy} onHome={goHome} />
 
       {tool === 'build' ? <BuildPalette picked={buildType} onPick={setBuildType} rot={buildRot} /> : null}
       {tool === 'road' ? <RoadOptions kind={roadKind} onKind={setRoadKind} /> : null}
@@ -401,8 +454,8 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
       {tool === 'land' ? <LandOptions work={landKind} onWork={setLandKind} /> : null}
       {tool === 'expand' ? <ExpandOptions /> : null}
 
-      {panelOpen ? (
-        <aside className="cg-panel cg-slide" style={{ position: 'absolute', right: 16, top: 96, bottom: 16, width: 360, padding: 16, display: 'flex', flexDirection: 'column', gap: 10, zIndex: 11 }}>
+      {panel.mounted ? (
+        <aside className={`cg-panel ${panel.leaving ? 'cg-slide-out' : 'cg-slide'}`} style={{ position: 'absolute', right: 16, top: 96, bottom: 16, width: 360, padding: 16, display: 'flex', flexDirection: 'column', gap: 10, zIndex: 11 }}>
           {selected ? null : (
             <div className="cg-row" style={{ justifyContent: 'space-between' }}>
               <strong className="cg-x" style={{ fontSize: 17 }}>{t('city.panel.show')}</strong>
@@ -412,19 +465,13 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
             </div>
           )}
           {selected ? (
-            <SitePanel key={selected} siteId={selected} onClose={() => setSelected(null)} onEarn={(k) => setSheet({ kind: 'earn', focus: k })} toast={say} />
+            <SitePanel key={selected} siteId={selected} onClose={closeSite} onEarn={openEarn} onMarket={openMarket} toast={say} />
           ) : (
-            <OverviewPanel
-              onSelect={(id) => {
-                setTool('select');
-                setSelected(id);
-              }}
-              onEarn={(k) => setSheet({ kind: 'earn', focus: k })}
-              onEraUp={eraUp}
-            />
+            <OverviewPanel onSelect={selectSite} onEarn={openEarn} onEraUp={eraUp} />
           )}
         </aside>
-      ) : (
+      ) : null}
+      {panelOpen ? null : (
         <button className="cg-btn" style={{ position: 'absolute', right: 16, top: 96, zIndex: 11 }} onClick={() => setPanelOpen(true)} aria-label={t('city.panel.show')}>
           ⟨ {t('city.panel.show')}
         </button>
@@ -444,6 +491,9 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
         <button className="cg-btn small" onClick={onVisit}>
           👥 {L({ vi: 'Thăm bạn', en: 'Visit friends' })}
         </button>
+        <button className="cg-btn small primary" onClick={onHub}>
+          🏗️ {L({ vi: 'Trung tâm Tương lai', en: 'Future Centre' })}
+        </button>
       </div>
 
       {hint ? (
@@ -461,12 +511,13 @@ function CityView({ reduced, onSample, onVisit }: { reduced: boolean; onSample: 
 
       {confetti ? <Confetti key={confetti} /> : null}
 
-      {sheet?.kind === 'earn' ? <EarnSheet focus={sheet.focus} onClose={() => setSheet(null)} /> : null}
-      {sheet?.kind === 'credits' ? <Credits onClose={() => setSheet(null)} /> : null}
-      {sheet?.kind === 'era' ? <EraSheet era={sheet.era} onClose={() => setSheet(null)} /> : null}
-      {sheet?.kind === 'catch' ? <CatchGame kind={sheet.what} onClose={() => setSheet(null)} /> : null}
-      {sheet?.kind === 'bag' ? <CollectionSheet onClose={() => setSheet(null)} /> : null}
-      {sheet?.kind === 'home' ? <HomeRoom onClose={() => setSheet(null)} /> : null}
+      {sheet?.kind === 'earn' ? <EarnSheet focus={sheet.focus} onClose={closeSheet} onMarket={openMarket} /> : null}
+      {sheet?.kind === 'market' ? <MarketSheet want={sheet.want} onClose={closeSheet} onEarn={openEarn} toast={say} /> : null}
+      {sheet?.kind === 'credits' ? <Credits onClose={closeSheet} /> : null}
+      {sheet?.kind === 'era' ? <EraSheet era={sheet.era} onClose={closeSheet} /> : null}
+      {sheet?.kind === 'catch' ? <CatchGame kind={sheet.what} onClose={closeSheet} /> : null}
+      {sheet?.kind === 'bag' ? <CollectionSheet onClose={closeSheet} /> : null}
+      {sheet?.kind === 'home' ? <HomeRoom onClose={closeSheet} /> : null}
     </div>
   );
 }

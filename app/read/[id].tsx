@@ -782,7 +782,7 @@ export default function ReadScreen() {
             <View className="flex-1" />
 
             {!wide ? (
-              <View className="flex-row rounded-md p-0.5" style={{ backgroundColor: '#EEF2F7' }}>
+              <View className="flex-row rounded-md p-0.5" style={{ backgroundColor: '#F7F4EE' }}>
                 {(['passage', 'questions'] as const).map((t) => (
                   <Pressable
                     key={t}
@@ -872,7 +872,7 @@ export default function ReadScreen() {
               disabled={submitting || questions.length === 0}
               className="h-9 items-center justify-center rounded-md px-4"
               style={({ hovered }) => ({
-                backgroundColor: hovered ? '#4A7FE8' : EXAM_ACCENT,
+                backgroundColor: hovered ? '#A8843F' : EXAM_ACCENT,
                 opacity: questions.length === 0 ? 0.5 : 1,
               })}
             >
@@ -901,7 +901,7 @@ export default function ReadScreen() {
         onPress={() => setChatOpen(true)}
         accessibilityLabel="Mở trợ giảng"
         className="absolute bottom-6 right-6 h-14 w-14 items-center justify-center rounded-pill"
-        style={{ backgroundColor: EXAM_ACCENT, boxShadow: '0 12px 32px rgba(37,99,235,0.35)' } as never}
+        style={{ backgroundColor: EXAM_ACCENT, boxShadow: '0 12px 32px rgba(199, 153, 73,0.35)' } as never}
       >
         <Icon name="chat" size={24} color={color.white} strokeWidth={1.9} />
       </Pressable>
@@ -962,8 +962,8 @@ function formatTime(totalSeconds: number): string {
   thì dùng EXAM_ACCENT; còn lại để chữ và bài đọc nói.
 */
 const EXAM_INK = '#1E293B';
-const EXAM_LINE = '#D7DEE8';
-const EXAM_ACCENT = '#5B8BEE';
+const EXAM_LINE = '#E8E2D7';
+const EXAM_ACCENT = '#B8955A';
 
 const PAPER_THEMES = [
   { key: 'white', label: 'trắng', bg: '#FFFFFF', ink: '#1C1B16', body: '#35342C', muted: '#8B8878', rule: '#ECE8DA' },
@@ -1016,7 +1016,7 @@ function ToolPill({
       style={({ hovered }) => ({
         borderWidth: 1,
         borderColor: active ? EXAM_ACCENT : EXAM_LINE,
-        backgroundColor: active ? EXAM_ACCENT : hovered ? '#F1F5F9' : '#FFFFFF',
+        backgroundColor: active ? EXAM_ACCENT : hovered ? '#F9F6F1' : '#FFFFFF',
         opacity: disabled ? 0.6 : 1,
       })}
     >

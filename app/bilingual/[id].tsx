@@ -62,7 +62,7 @@ const LIGHT: Theme = {
   muted: '#8A8E78',
   rule: '#ECE7D6',
   tint: '#F1ECDA',
-  accent: '#3F4C9C',
+  accent: '#957846',
 };
 const DARK: Theme = {
   bg: '#20251A',
@@ -127,7 +127,7 @@ export default function BilingualReaderScreen() {
 
 function Backdrop({ children }: { children: React.ReactNode }) {
   // Chàm đậm: cùng họ màu với thẻ tra từ, để giấy kem nổi lên mà không chói.
-  return <OliveGrid color="#2B3668">{children}</OliveGrid>;
+  return <OliveGrid color="#635030">{children}</OliveGrid>;
 }
 
 function Reader({ article }: { article: BilingualArticle }) {
@@ -309,7 +309,7 @@ function Toolbar(props: {
   onDark: () => void;
   savedCount: number;
 }) {
-  // Đủ chỗ cho dòng phụ "THE READUP PRESS" cạnh tên trang.
+  // Đủ chỗ cho dòng phụ "THE BAND 9 PRESS" cạnh tên trang.
   const roomy = useWindowDimensions().width >= 1200;
   const [open, setOpen] = useState(false);
 
@@ -345,7 +345,7 @@ function Toolbar(props: {
         </View>
         {roomy ? (
           <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 2, color: 'rgba(244,241,228,0.8)' }}>
-            •  THE READUP PRESS
+            •  THE BAND 9 PRESS
           </Text>
         ) : null}
       </View>
@@ -370,7 +370,7 @@ function Toolbar(props: {
   );
 }
 
-const PAPER = { bg: '#FBF8EF', ink: '#1B2310', muted: '#7C8069', rule: '#ECE7D6', chip: '#F1ECDA', accent: '#3F4C9C' };
+const PAPER = { bg: '#FBF8EF', ink: '#1B2310', muted: '#7C8069', rule: '#ECE7D6', chip: '#F1ECDA', accent: '#957846' };
 
 /** Bảng cài đặt của màn đọc song ngữ: tấm hiển thị, mặt chữ, cỡ chữ, nền, toàn màn hình, từ đã lưu. */
 function ReaderSettings(
@@ -569,9 +569,9 @@ function Sheet({
         <View
           pointerEvents="none"
           className="absolute right-7 top-6 z-10 rounded-pill px-2.5 py-0.5"
-          style={{ backgroundColor: badge === 'EN' ? 'rgba(79,70,229,0.12)' : 'rgba(220,38,38,0.10)' }}
+          style={{ backgroundColor: badge === 'EN' ? 'rgba(205, 164, 94,0.12)' : 'rgba(220,38,38,0.10)' }}
         >
-          <Text style={{ fontSize: 10.5, fontWeight: '700', letterSpacing: 0.8, color: badge === 'EN' ? '#4F46E5' : '#DC2626' }}>
+          <Text style={{ fontSize: 10.5, fontWeight: '700', letterSpacing: 0.8, color: badge === 'EN' ? '#CDA45E' : '#DC2626' }}>
             {badge}
           </Text>
         </View>
@@ -646,14 +646,14 @@ function EnglishPane({
           onPress={() => void Linking.openURL(source.url)}
           className="mt-3 flex-row items-center gap-1.5 self-start rounded-pill px-3 py-1"
           style={({ hovered }) => [
-            { borderWidth: 1.2, borderColor: '#9DB0F3', backgroundColor: hovered ? 'rgba(157,176,243,0.22)' : 'rgba(157,176,243,0.10)' },
+            { borderWidth: 1.2, borderColor: '#EAD1A6', backgroundColor: hovered ? 'rgba(234, 209, 166,0.22)' : 'rgba(234, 209, 166,0.10)' },
             webTransition,
           ]}
         >
-          <Text style={{ fontFamily: readingFont.fraunces, fontWeight: '700', fontSize: 10.5, letterSpacing: 0.8, color: '#3F55B8' }}>
+          <Text style={{ fontFamily: readingFont.fraunces, fontWeight: '700', fontSize: 10.5, letterSpacing: 0.8, color: '#AF8948' }}>
             LINK BÀI VIẾT GỐC | {source.outlet.toUpperCase()}
           </Text>
-          <Icon name="external" size={10} color="#3F55B8" strokeWidth={2.2} />
+          <Icon name="external" size={10} color="#AF8948" strokeWidth={2.2} />
         </HoverPressable>
       ) : null}
 
@@ -873,7 +873,7 @@ function SourceNote({ theme, article }: { theme: Theme; article: BilingualArticl
       <Text style={{ fontFamily: readingFont.fraunces, fontStyle: 'italic', fontSize: 13, lineHeight: 20, color: theme.muted }}>
         Nguồn: {s.outlet}
         {s.author ? `, ${s.author}` : ''} — đăng ngày {s.publishedAt}. Giấy phép: {s.license}. Bản tiếng Việt, chú giải và câu hỏi do
-        ReadUp biên soạn.
+        Band 9 biên soạn.
       </Text>
     </View>
   );
@@ -979,7 +979,7 @@ function QuestionsPane({
         accessibilityRole="button"
         onPress={onCheck}
         className="mt-8 items-center self-start rounded-pill px-6 py-3"
-        style={({ hovered }) => [{ backgroundColor: checked ? theme.tint : hovered ? '#323E82' : theme.accent }, webTransition]}
+        style={({ hovered }) => [{ backgroundColor: checked ? theme.tint : hovered ? '#7C6338' : theme.accent }, webTransition]}
       >
         <Text style={{ fontSize: 14, fontWeight: '800', color: checked ? theme.ink : '#FFFFFF' }}>
           {checked ? `Đúng ${score}/${questions.length} · Làm lại` : 'Xem kết quả'}
@@ -994,7 +994,7 @@ function QuestionsPane({
           </Motion>
           <Label
             text={score === questions.length ? 'Hiểu trọn bài 🏆' : score * 2 >= questions.length ? 'Khá lắm ⭐' : 'Đọc lại nhé 💪'}
-            color={score === questions.length ? '#22A06B' : score * 2 >= questions.length ? '#4A7FE8' : '#F0703F'}
+            color={score === questions.length ? '#22A06B' : score * 2 >= questions.length ? '#A8843F' : '#F0703F'}
             ink="#FFFFFF"
             tilt={-4}
             size={12}

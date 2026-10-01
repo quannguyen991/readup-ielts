@@ -114,7 +114,7 @@ export default function TestScreen() {
             <Text className="font-sans text-bodyLg text-muted">{pct}% câu đúng</Text>
             <View className="mt-4 flex-row flex-wrap gap-2">
               {byKind.map((r) => (
-                <View key={r.k} className="rounded-pill px-3 py-1.5" style={{ backgroundColor: r.ok === r.total ? '#ECFDF3' : '#F1F5F9' }}>
+                <View key={r.k} className="rounded-pill px-3 py-1.5" style={{ backgroundColor: r.ok === r.total ? '#ECFDF3' : '#F9F6F1' }}>
                   <Text className="font-semi text-label text-ink">
                     {QUIZ_KIND_LABEL[r.k]}: {r.ok}/{r.total}
                   </Text>
@@ -148,7 +148,7 @@ export default function TestScreen() {
             key={i}
             onPress={() => setIndex(i)}
             className="h-8 w-8 items-center justify-center rounded-lg"
-            style={{ backgroundColor: i === index ? color.primary : isAnswered(answers[i] ?? null) ? '#DBEAFE' : 'rgba(255,255,255,0.8)' }}
+            style={{ backgroundColor: i === index ? color.primary : isAnswered(answers[i] ?? null) ? '#F3E6C8' : 'rgba(255,255,255,0.8)' }}
           >
             <Text className="font-semi text-label" style={{ color: i === index ? '#FFFFFF' : color.ink }}>
               {i + 1}
@@ -160,7 +160,7 @@ export default function TestScreen() {
         <StudyCard>
           <View className="flex-row items-center gap-2">
             <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Câu {index + 1}</Text>
-            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#EEF2FF' }}>
+            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
                 {QUIZ_KIND_LABEL[q.kind]}
               </Text>
@@ -207,7 +207,7 @@ function QuestionBody({
           placeholderTextColor="#94A3B8"
           onSubmitEditing={onEnter}
           className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
-          style={{ borderWidth: 1.5, borderColor: '#CBD5E1', backgroundColor: '#F8FAFC' }}
+          style={{ borderWidth: 1.5, borderColor: '#E1D9CB', backgroundColor: '#FCFBF8' }}
         />
       </View>
     );
@@ -216,7 +216,7 @@ function QuestionBody({
     return (
       <View>
         <Text className="mt-2 font-sans text-body text-muted">Cặp từ – nghĩa này đúng hay sai?</Text>
-        <View className="mt-4 items-center rounded-2xl px-5 py-6" style={{ backgroundColor: '#F8FAFC', borderWidth: 1, borderColor: '#E2E8F0' }}>
+        <View className="mt-4 items-center rounded-2xl px-5 py-6" style={{ backgroundColor: '#FCFBF8', borderWidth: 1, borderColor: '#F0EBE2' }}>
           <View className="flex-row items-center gap-2">
             <Text className="font-heavy text-pageTitle text-ink">{q.word.word}</Text>
             <SpeakButton text={q.word.word} />
@@ -235,7 +235,7 @@ function QuestionBody({
                 key={String(v)}
                 onPress={() => onChoose(v)}
                 className="flex-1 flex-row items-center justify-center gap-2 rounded-2xl py-4"
-                style={{ borderWidth: 1.5, borderColor: sel ? tone : '#E2E8F0', backgroundColor: sel ? (v ? '#ECFDF3' : '#FFF1F2') : '#FFFFFF' }}
+                style={{ borderWidth: 1.5, borderColor: sel ? tone : '#F0EBE2', backgroundColor: sel ? (v ? '#ECFDF3' : '#FFF1F2') : '#FFFFFF' }}
               >
                 <Text className="font-strong text-bodyLg" style={{ color: sel ? tone : color.ink }}>
                   {v ? 'Đúng' : 'Sai'}
@@ -276,9 +276,9 @@ function QuestionBody({
               key={`${i}-${opt}`}
               onPress={() => onChoose(i)}
               className="flex-row items-center gap-3 rounded-2xl px-4 py-4"
-              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#E2E8F0', backgroundColor: sel ? '#EAF1FF' : '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#F0EBE2', backgroundColor: sel ? '#FBF6EE' : '#FFFFFF' }}
             >
-              <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#EEF2F7' }}>
+              <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#F7F4EE' }}>
                 <Text className="font-strong text-label" style={{ color: sel ? '#FFFFFF' : color.muted }}>
                   {i + 1}
                 </Text>

@@ -213,7 +213,7 @@ function Paragraph({
           const background = highlightColor
             ? highlightColors[highlightColor.color].fill
             : inPhrase
-              ? '#DBE7FE'
+              ? '#F8F0E1'
               : status !== 'new' && status !== 'ignored'
                 ? wordStatusColor[status].fill
                 : undefined;

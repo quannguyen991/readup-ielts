@@ -132,7 +132,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
     <View>
       {/* Tìm + lọc */}
       <View className="mt-5 flex-row items-center gap-2">
-        <View className="min-w-0 flex-1 flex-row items-center gap-2 rounded-2xl bg-white px-3.5" style={{ height: 48, borderWidth: 1.5, borderColor: query ? color.primary : '#E2E8F0', ...(WEB ? ({ transition: 'border-color 200ms ease' } as object) : null) }}>
+        <View className="min-w-0 flex-1 flex-row items-center gap-2 rounded-2xl bg-white px-3.5" style={{ height: 48, borderWidth: 1.5, borderColor: query ? color.primary : '#F0EBE2', ...(WEB ? ({ transition: 'border-color 200ms ease' } as object) : null) }}>
           <Icon name="search" size={17} color="#94A3B8" />
           <TextInput
             value={query}
@@ -169,7 +169,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
               style={{
                 backgroundColor: on ? color.primary : '#FFFFFF',
                 borderWidth: 1,
-                borderColor: on ? color.primary : '#E2E8F0',
+                borderColor: on ? color.primary : '#F0EBE2',
                 ...(WEB ? ({ transition: 'background-color 200ms ease, border-color 200ms ease' } as object) : null),
               }}
             >

@@ -69,9 +69,9 @@ type CriterionKey = (typeof CRITERIA)[number]['key'];
 const CATEGORY_HIGHLIGHT: Record<AnnotationCategory, { fill: string; edge: string }> = {
   grammar: { fill: '#FEF4E6', edge: '#F59E0B' },
   lexis: { fill: '#E8F8EE', edge: '#16A34A' },
-  cohesion: { fill: '#E6F6FE', edge: '#0EA5E9' },
-  expression: { fill: '#F5F1FE', edge: '#7C3AED' },
-  task: { fill: '#EFF5FF', edge: '#5B8BEE' },
+  cohesion: { fill: '#FAF4EA', edge: '#B07A3A' },
+  expression: { fill: '#FCF9F3', edge: '#CCA35B' },
+  task: { fill: '#F7F0E1', edge: '#B8955A' },
 };
 
 type Tab = 'essay' | 'review' | 'errors' | 'fixed' | 'model';
@@ -217,7 +217,7 @@ export default function WritingResultScreen() {
           <PaperCard>
             <View className="flex-row items-center justify-between gap-2">
               <View aria-hidden>
-                <SealIcon name="clipboard" color="#4A7FE8" size={34} />
+                <SealIcon name="clipboard" color="#A8843F" size={34} />
               </View>
               <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
               <Text className="font-semi text-label text-paper-muted">
@@ -298,7 +298,7 @@ export default function WritingResultScreen() {
             <PaperCard>
               <View className="flex-row items-center gap-2">
                 <View aria-hidden>
-                  <SealIcon name="search" color="#0EA5E9" size={34} />
+                  <SealIcon name="search" color="#B07A3A" size={34} />
                 </View>
                 <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-paper-ink">Phân tích cấu trúc</Text>
               </View>

@@ -83,12 +83,12 @@ export default function RootLayout() {
 
 /**
  * Tên tab trình duyệt. Không đặt thì thẻ <title> rỗng và tab hiện nguyên đường
- * dẫn "readup-ielts.vercel.app/..." — người dùng muốn thấy "ReadUp" (27/09/2026).
+ * dẫn "band9-ielts.vercel.app/..." — người dùng muốn thấy "Band 9" (27/09/2026).
  */
 function AppTitle() {
   return (
     <Head>
-      <title>ReadUp</title>
+      <title>Band 9</title>
     </Head>
   );
 }

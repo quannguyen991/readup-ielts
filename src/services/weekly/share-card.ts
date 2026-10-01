@@ -5,6 +5,8 @@
  * Ảnh là thứ lan đi được: một tấm thẻ đẹp kèm đường dẫn là lời mời tự nhiên
  * nhất cho bạn bè vào làm cùng đề.
  */
+import { SITE_HOST } from '@/lib/site';
+
 export type ShareCardData = {
   weekNumber: number;
   weekRange: string;
@@ -16,7 +18,7 @@ export type ShareCardData = {
   participants: number;
 };
 
-const SITE = 'readup-ielts.vercel.app/weekly';
+const SITE = `${SITE_HOST}/weekly`;
 
 function roundRect(g: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
   g.beginPath();
@@ -65,7 +67,7 @@ export function drawShareCard(d: ShareCardData): HTMLCanvasElement {
   g.textAlign = 'center';
   g.fillStyle = '#ffffff';
   g.font = font(800, 44);
-  g.fillText('ReadUp · Đề của tuần', S / 2, 120);
+  g.fillText('Band 9 · Đề của tuần', S / 2, 120);
   g.font = font(600, 34);
   g.fillStyle = 'rgba(255,255,255,0.85)';
   g.fillText(`Tuần ${d.weekNumber} · ${d.weekRange}`, S / 2, 176);
@@ -125,7 +127,7 @@ export async function downloadShareCard(d: ShareCardData): Promise<void> {
  * Trả về cách đã dùng để màn hình báo lại cho người dùng.
  */
 export async function shareResult(d: ShareCardData): Promise<'shared' | 'copied' | 'failed'> {
-  const text = `Mình làm Đề của tuần ${d.weekNumber} trên ReadUp được ${d.score}/${d.total} câu${
+  const text = `Mình làm Đề của tuần ${d.weekNumber} trên Band 9 được ${d.score}/${d.total} câu${
     d.topPercent !== null ? ` — top ${d.topPercent}% cả nước` : ''
   }. Bạn thử xem được mấy câu?`;
   const url = `https://${SITE}`;

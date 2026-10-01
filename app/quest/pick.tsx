@@ -29,7 +29,7 @@ import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
 
 /**
- * CHỌN TRẬN — bấm "Vào trận" ở ReadUp Quest là tới đây.
+ * CHỌN TRẬN — bấm "Vào trận" ở Band 9 Quest là tới đây.
  *
  *   Bước 1: chọn MẢNG (loại bài học): SAT Math, SAT Verbal, Từ vựng, Nghe & chép, Dịch câu.
  *   Bước 2: chọn BÀI trong mảng đó (tiến độ thật, bài nên học tiếp được đánh dấu).
@@ -63,7 +63,7 @@ export default function QuestPick() {
     <Screen>
       <View style={{ width: '100%', maxWidth: 1280, alignSelf: 'center' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10 }}>
-          <BackPill label={chosen ? 'Đổi mảng' : 'ReadUp Quest'} onPress={() => router.replace((chosen ? '/quest/pick' : '/quest') as never)} />
+          <BackPill label={chosen ? 'Đổi mảng' : 'Band 9 Quest'} onPress={() => router.replace((chosen ? '/quest/pick' : '/quest') as never)} />
           <StepBar step={chosen ? 2 : 1} />
         </View>
 

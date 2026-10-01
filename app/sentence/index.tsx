@@ -182,7 +182,7 @@ function EntryCard({
     >
       <View
         className="h-11 w-11 items-center justify-center rounded-xl"
-        style={{ backgroundColor: tint === 'primary' ? '#EAF1FF' : '#F1EAFE' }}
+        style={{ backgroundColor: tint === 'primary' ? '#FBF6EE' : '#FBF6ED' }}
       >
         <Icon name={icon} size={20} color={strong} strokeWidth={2} />
       </View>

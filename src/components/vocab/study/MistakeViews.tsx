@@ -66,9 +66,9 @@ export function RoundAnalysis({
     <View
       className="mt-5 rounded-2xl p-5"
       style={{
-        backgroundColor: "#F8FAFC",
+        backgroundColor: "#FCFBF8",
         borderWidth: 1,
-        borderColor: "#E2E8F0",
+        borderColor: "#F0EBE2",
       }}
     >
       <Text className="font-strong text-cardTitle text-ink">
@@ -80,7 +80,7 @@ export function RoundAnalysis({
             key={k.kind}
             className="rounded-pill px-3 py-1.5"
             style={{
-              backgroundColor: k.kind === top.kind ? "#FEF3C7" : "#EEF2F7",
+              backgroundColor: k.kind === top.kind ? "#FEF3C7" : "#F7F4EE",
             }}
           >
             <Text className="font-semi text-label text-ink">

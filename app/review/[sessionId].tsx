@@ -126,7 +126,7 @@ export default function ReviewScreen() {
   const skipped = session.attempts.filter((a) => !a.isCorrect && !a.userAnswer?.trim()).length;
   const wrong = incorrect - skipped;
   const accPct = pct(session.rawScore, session.total);
-  const cheer = accPct >= 80 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : accPct >= 60 ? { text: 'Khá lắm ⭐', bg: '#4A7FE8' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
+  const cheer = accPct >= 80 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : accPct >= 60 ? { text: 'Khá lắm ⭐', bg: '#A8843F' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
 
   return (
     <Screen>

@@ -66,7 +66,7 @@ export function DailyQuests() {
                 justifyContent: 'center',
                 backgroundColor: got ? HUB.green : ready ? HUB.gold : 'transparent',
                 borderWidth: got || ready ? 0 : 2,
-                borderColor: 'rgba(169,185,208,0.4)',
+                borderColor: 'rgba(205, 193, 172,0.4)',
               }}
             >
               {got ? (

@@ -14,7 +14,7 @@ import { color } from '@/theme/tokens';
  * KHÁC GÌ NÚT XUẤT SẴN CÓ Ở TRÊN. Bản xuất cho giáo viên là JSON trần: ai mở ra
  * cũng sửa được một chữ rồi gửi đi, và không ai phát hiện. Bản này được ký bằng
  * khoá nằm trên máy người học, nên sửa một ký tự là chữ ký hỏng — và bất kỳ ai
- * cũng kiểm được điều đó bằng một lệnh, không cần ReadUp còn tồn tại.
+ * cũng kiểm được điều đó bằng một lệnh, không cần Band 9 còn tồn tại.
  *
  * BỐN ĐIỀU PHẢI NÓI THẲNG TRÊN MẶT MÀN HÌNH, không giấu trong tài liệu:
  * chứng chỉ này TỰ CẤP; chữ ký chỉ chứng minh sổ không bị sửa; nó không chứng
@@ -55,7 +55,7 @@ export function CredentialCard({ ledger }: { ledger: Ledger }) {
       <Text className="font-sans text-h4 text-ink">Chứng chỉ năng lực bạn tự giữ</Text>
       <Text className="mt-1 font-sans text-body text-muted">
         Sổ bằng chứng ký thành một chứng chỉ chuẩn W3C. Khoá nằm trên máy bạn — không
-        blockchain, không máy chủ, không cần mạng. Ai cũng kiểm được mà không cần tin ReadUp.
+        blockchain, không máy chủ, không cần mạng. Ai cũng kiểm được mà không cần tin Band 9.
       </Text>
 
       {skillCount === 0 ? (

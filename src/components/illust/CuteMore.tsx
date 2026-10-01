@@ -17,8 +17,8 @@ export function CuteHeadphones({ size = 64 }: P) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
       <Path d="M20 58 Q20 20 50 20 Q80 20 80 58" stroke={INK} strokeWidth={SW + 2} fill="none" strokeLinecap="round" />
-      <Rect x={12} y={52} width={20} height={32} rx={9} fill="#8A63D2" stroke={INK} strokeWidth={SW} />
-      <Rect x={68} y={52} width={20} height={32} rx={9} fill="#8A63D2" stroke={INK} strokeWidth={SW} />
+      <Rect x={12} y={52} width={20} height={32} rx={9} fill="#CAA76B" stroke={INK} strokeWidth={SW} />
+      <Rect x={68} y={52} width={20} height={32} rx={9} fill="#CAA76B" stroke={INK} strokeWidth={SW} />
       <Circle cx={50} cy={64} r={16} fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
       <Face cx={50} cy={64} s={0.6} />
     </Svg>
@@ -39,7 +39,7 @@ export function CuteBulb({ size = 64 }: P) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
       <Path d="M50 10 Q78 10 78 40 Q78 56 64 66 L64 74 L36 74 L36 66 Q22 56 22 40 Q22 10 50 10 Z" fill="#FDE047" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
-      <Rect x={36} y={74} width={28} height={14} rx={4} fill="#CBD5E1" stroke={INK} strokeWidth={SW} />
+      <Rect x={36} y={74} width={28} height={14} rx={4} fill="#E1D9CB" stroke={INK} strokeWidth={SW} />
       <Face cx={50} cy={42} s={0.8} />
     </Svg>
   );
@@ -60,7 +60,7 @@ export function CuteTrophy({ size = 64 }: P) {
 export function CuteFlame({ size = 56, sleepy = false }: P & { sleepy?: boolean }) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
-      <Path d="M50 8 Q70 32 74 48 Q80 84 50 90 Q20 84 26 52 Q30 38 40 30 Q40 46 50 48 Q46 26 50 8 Z" fill={sleepy ? '#E2E8F0' : '#F97316'} stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
+      <Path d="M50 8 Q70 32 74 48 Q80 84 50 90 Q20 84 26 52 Q30 38 40 30 Q40 46 50 48 Q46 26 50 8 Z" fill={sleepy ? '#F0EBE2' : '#F97316'} stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
       <Path d="M50 52 Q62 64 60 76 Q56 86 50 86 Q42 84 42 74 Q42 64 50 52 Z" fill={sleepy ? '#FFFFFF' : '#FDE047'} />
       <Face cx={50} cy={66} s={0.65} sleepy={sleepy} />
     </Svg>
@@ -73,7 +73,7 @@ export function CuteRocket({ size = 64 }: P) {
       <Path d="M30 50 L16 70 L30 66 Z M70 50 L84 70 L70 66 Z" fill="#E4574A" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
       <Path d="M40 62 Q50 92 60 62 Z" fill="#FACC15" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
       <Path d="M50 6 Q72 24 70 62 L30 62 Q28 24 50 6 Z" fill="#FFFFFF" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
-      <Circle cx={50} cy={30} r={8} fill="#5AB0F0" stroke={INK} strokeWidth={2.4} />
+      <Circle cx={50} cy={30} r={8} fill="#D4B276" stroke={INK} strokeWidth={2.4} />
       <Face cx={50} cy={50} s={0.55} />
     </Svg>
   );
@@ -82,7 +82,7 @@ export function CuteRocket({ size = 64 }: P) {
 export function CuteNotebook({ size = 64 }: P) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
-      <Rect x={20} y={10} width={62} height={80} rx={8} fill="#5AB0F0" stroke={INK} strokeWidth={SW} />
+      <Rect x={20} y={10} width={62} height={80} rx={8} fill="#D4B276" stroke={INK} strokeWidth={SW} />
       <Rect x={30} y={20} width={42} height={28} rx={4} fill="#FFFFFF" stroke={INK} strokeWidth={2.4} />
       {[24, 40, 56, 72].map((y) => (
         <Rect key={y} x={14} y={y} width={12} height={5} rx={2.5} fill="#FFFFFF" stroke={INK} strokeWidth={2} />
@@ -110,7 +110,7 @@ export function CuteMagnifier({ size = 64 }: P) {
     <Svg width={size} height={size} viewBox="0 0 100 100">
       <Path d="M62 62 L86 86" stroke={INK} strokeWidth={11} strokeLinecap="round" />
       <Path d="M62 62 L86 86" stroke="#8A5A2B" strokeWidth={5} strokeLinecap="round" />
-      <Circle cx={42} cy={42} r={28} fill="#DDF3FF" stroke={INK} strokeWidth={SW + 1} />
+      <Circle cx={42} cy={42} r={28} fill="#F9F1E3" stroke={INK} strokeWidth={SW + 1} />
       <Face cx={42} cy={44} s={0.8} />
     </Svg>
   );

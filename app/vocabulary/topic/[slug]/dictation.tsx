@@ -130,7 +130,7 @@ export default function DictationScreen() {
           }}
           className="flex-row items-center gap-2 rounded-pill bg-white/80 px-3 py-2"
         >
-          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : '#CBD5E1' }}>
+          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : '#E1D9CB' }}>
             <View className="h-4 w-4 rounded-pill bg-white" style={{ alignSelf: sentenceMode ? 'flex-end' : 'flex-start' }} />
           </View>
           <Text className="font-semi text-label text-ink">Chép câu ví dụ</Text>
@@ -161,7 +161,7 @@ export default function DictationScreen() {
                 key={s}
                 onPress={() => setSpeed(s)}
                 className="rounded-pill px-3 py-1.5"
-                style={{ backgroundColor: speed === s ? '#EAF1FF' : '#F1F5F9', borderWidth: 1, borderColor: speed === s ? '#93B4F5' : 'transparent' }}
+                style={{ backgroundColor: speed === s ? '#FBF6EE' : '#F9F6F1', borderWidth: 1, borderColor: speed === s ? '#E9CE9F' : 'transparent' }}
               >
                 <Text className="font-semi text-label" style={{ color: speed === s ? color.primary : '#475569' }}>
                   {s}×
@@ -169,7 +169,7 @@ export default function DictationScreen() {
               </Pressable>
             ))}
             {voices.length > 1 ? (
-              <Pressable onPress={() => setVoiceIdx((i) => i + 1)} className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F1F5F9' }}>
+              <Pressable onPress={() => setVoiceIdx((i) => i + 1)} className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F9F6F1' }}>
                 <Icon name="refresh" size={13} color="#475569" />
                 <Text className="font-semi text-label" style={{ color: '#475569' }} numberOfLines={1}>
                   {voiceName}
@@ -189,7 +189,7 @@ export default function DictationScreen() {
             placeholderTextColor="#94A3B8"
             onSubmitEditing={check}
             className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-cardTitle text-ink"
-            style={{ borderWidth: 1.5, borderColor: verdict === null ? '#CBD5E1' : verdict ? GREEN : RED, backgroundColor: '#F8FAFC' }}
+            style={{ borderWidth: 1.5, borderColor: verdict === null ? '#E1D9CB' : verdict ? GREEN : RED, backgroundColor: '#FCFBF8' }}
           />
 
           {verdict === null ? (

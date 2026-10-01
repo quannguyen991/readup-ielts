@@ -88,7 +88,7 @@ export default function MathReviewScreen() {
 
   const blank = session.attempts.filter((a) => a.userAnswer === null).length;
   const acc = session.total === 0 ? 0 : session.rawScore / session.total;
-  const cheer = acc >= 0.8 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : acc >= 0.6 ? { text: 'Khá lắm ⭐', bg: '#4A7FE8' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
+  const cheer = acc >= 0.8 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : acc >= 0.6 ? { text: 'Khá lắm ⭐', bg: '#A8843F' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
 
   return (
     <Screen>
@@ -151,7 +151,7 @@ export default function MathReviewScreen() {
             </Motion>
             <Label
               text={session.moduleTier === 'harder' ? 'Nhánh khó 🚀' : 'Nhánh dễ 🎯'}
-              color={session.moduleTier === 'harder' ? '#F0703F' : '#0EA5E9'}
+              color={session.moduleTier === 'harder' ? '#F0703F' : '#B07A3A'}
               ink="#FFFFFF"
               tilt={4}
               size={12}
@@ -178,7 +178,7 @@ export default function MathReviewScreen() {
         <Card className="mt-4">
           <View className="flex-row items-center gap-2.5">
             <View aria-hidden>
-              <SealIcon name="search" color="#0EA5E9" size={36} />
+              <SealIcon name="search" color="#B07A3A" size={36} />
             </View>
             <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Đọc kết quả</Text>
           </View>

@@ -83,8 +83,8 @@ function StepBar({ className, step, charge }: { className?: string; step: StripS
           </Text>
         ) : null}
       </View>
-      <View style={{ height: 8, borderRadius: 999, backgroundColor: '#E2E8F0', overflow: 'hidden' }}>
-        <View style={{ width: `${pct * 100}%`, height: '100%', borderRadius: 999, backgroundColor: '#4A7FE8', transition: 'width 300ms ease' } as object} />
+      <View style={{ height: 8, borderRadius: 999, backgroundColor: '#F0EBE2', overflow: 'hidden' }}>
+        <View style={{ width: `${pct * 100}%`, height: '100%', borderRadius: 999, backgroundColor: '#A8843F', transition: 'width 300ms ease' } as object} />
       </View>
     </View>
   );
@@ -370,7 +370,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
                 </Text>
               </View>
             ) : null}
-            <Text className="font-strong" numberOfLines={1} style={{ flexShrink: 1, fontSize: 11, color: '#F8FAFC' }}>
+            <Text className="font-strong" numberOfLines={1} style={{ flexShrink: 1, fontSize: 11, color: '#FCFBF8' }}>
               {enemy.name}
               {enemy.round > 0 ? <Text style={{ color: GOLD }}>{`  ★${enemy.round + 1}`}</Text> : null}
             </Text>
@@ -504,8 +504,8 @@ function Backdrop({ tint }: { tint: string }) {
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}>
       <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: '#1D1650' }} />
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 50, bottom: 0, backgroundColor: '#2B1F66' }} />
-      <View style={{ position: 'absolute', left: 0, right: 0, top: 78, bottom: 0, backgroundColor: '#3A2878' }} />
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 50, bottom: 0, backgroundColor: '#614B24' }} />
+      <View style={{ position: 'absolute', left: 0, right: 0, top: 78, bottom: 0, backgroundColor: '#72592E' }} />
       <Svg width="100%" height="100%" viewBox="0 0 240 68" preserveAspectRatio="xMidYMax slice" {...CRISP} style={{ position: 'absolute', left: 0, top: 0 }}>
         {STARS.map(([x, y], i) => (
           <Rect key={i} x={x} y={y} width={1} height={1} fill="#FFFFFF" opacity={0.35 + (i % 3) * 0.2} />
@@ -514,7 +514,7 @@ function Backdrop({ tint }: { tint: string }) {
         <Rect x={199} y={7} width={10} height={6} fill="#FDE68A" />
         <Rect x={203} y={8} width={2} height={2} fill="#FBBF24" />
         {HILLS.map(([x, w, h], i) => (
-          <Rect key={`h${i}`} x={x} y={60 - h} width={w} height={h} fill="#261B57" />
+          <Rect key={`h${i}`} x={x} y={60 - h} width={w} height={h} fill="#524020" />
         ))}
         {HILLS_NEAR.map(([x, w, h], i) => (
           <Rect key={`n${i}`} x={x} y={60 - h} width={w} height={h} fill="#1F1648" />
@@ -755,7 +755,7 @@ function Road({ step }: { step: StripStep }) {
       </View>
       <Svg width={10} height={12} viewBox="0 0 5 6" {...CRISP}>
         {FLAG.flatMap((row, y) =>
-          [...row].map((ch, x) => (ch === '.' ? null : <Rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill={ch === 'w' ? '#E2E8F0' : '#EF4444'} />)),
+          [...row].map((ch, x) => (ch === '.' ? null : <Rect key={`${x}-${y}`} x={x} y={y} width={1} height={1} fill={ch === 'w' ? '#F0EBE2' : '#EF4444'} />)),
         )}
       </Svg>
     </View>

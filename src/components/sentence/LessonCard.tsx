@@ -18,8 +18,8 @@ import { Icon, type IconName } from '@/components/ui';
 export type LessonTone = { ink: string; mid: string; soft: string };
 
 const GREEN: LessonTone = { ink: '#15803D', mid: '#22C55E', soft: '#DCFCE7' };
-const SKY: LessonTone = { ink: '#0369A1', mid: '#0EA5E9', soft: '#E0F2FE' };
-const VIOLET: LessonTone = { ink: '#6D28D9', mid: '#8B5CF6', soft: '#EDE9FE' };
+const SKY: LessonTone = { ink: '#7D5E27', mid: '#B07A3A', soft: '#F9F2E5' };
+const VIOLET: LessonTone = { ink: '#C3923E', mid: '#D6B57C', soft: '#FBF5EC' };
 const ROSE: LessonTone = { ink: '#BE123C', mid: '#F43F5E', soft: '#FFE4E6' };
 
 export const LEVEL_TONE: Record<string, LessonTone> = {
@@ -81,7 +81,7 @@ export function LessonCard({
       ? ({
           boxShadow: hover
             ? `0 2px 4px rgba(15,23,42,0.06), 0 18px 36px ${tone.mid}33`
-            : '0 1px 2px rgba(15,23,42,0.05), 0 8px 22px rgba(30,41,99,0.07)',
+            : '0 1px 2px rgba(15,23,42,0.05), 0 8px 22px rgba(94, 72, 35,0.07)',
           transform: hover ? 'translateY(-3px)' : 'none',
           transition: 'box-shadow 200ms ease, transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 200ms ease',
         } as object)
@@ -95,7 +95,7 @@ export function LessonCard({
       onHoverIn={() => setHover(true)}
       onHoverOut={() => setHover(false)}
       className="h-full rounded-[20px] bg-white p-4"
-      style={[{ borderWidth: 1, borderColor: hover ? tone.mid : '#E6E8F2' }, lift]}
+      style={[{ borderWidth: 1, borderColor: hover ? tone.mid : '#F2EEE6' }, lift]}
     >
       <View className="flex-row items-center gap-2.5">
         <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: tone.mid }}>

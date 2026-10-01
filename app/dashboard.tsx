@@ -43,7 +43,7 @@ function TodayPlan() {
     return (
       <Card className="mt-4 lg:mt-6">
         <View className="flex-row flex-wrap items-center gap-4">
-          <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: '#EEF2FF' }}>
+          <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: '#FCF8F1' }}>
             <Icon name="calendar" size={22} color={color.primary} />
           </View>
           <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>

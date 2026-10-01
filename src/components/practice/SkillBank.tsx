@@ -24,8 +24,8 @@ import { color } from '@/theme/tokens';
 
 const GREEN = '#16A34A';
 const RED = '#E11D48';
-const LINE = '#E6EAF2';
-const SOFT = '#F7F9FC';
+const LINE = '#F2EEE6';
+const SOFT = '#FCFAF7';
 /** Chữ phụ đặt trên nền xanh của app (ngoài thẻ trắng). */
 const ON_CANVAS = '#1E293B';
 
@@ -72,7 +72,7 @@ function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }
         cardShadow,
         {
           borderWidth: active ? 1.5 : 1,
-          borderColor: active ? '#93B4F5' : hovered ? '#CBD5E1' : LINE,
+          borderColor: active ? '#E9CE9F' : hovered ? '#E1D9CB' : LINE,
         },
       ]}
     >
@@ -80,7 +80,7 @@ function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }
         <View className="flex-row items-center gap-2.5">
           <View
             className="h-9 w-9 items-center justify-center rounded-xl"
-            style={{ backgroundColor: active ? '#EAF1FF' : SOFT }}
+            style={{ backgroundColor: active ? '#FBF6EE' : SOFT }}
           >
             <Icon name={info.icon} size={18} color={active ? color.primary : color.muted} strokeWidth={2} />
           </View>
@@ -101,7 +101,7 @@ function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }
         </Text>
         <Text className="font-semi text-label text-muted">{Math.round(pct * 100)}%</Text>
       </View>
-      <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#EEF2F7' }}>
+      <View className="mt-2 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F7F4EE' }}>
         <View className="h-1.5 rounded-pill bg-primary-500" style={{ width: `${Math.max(pct * 100, pct > 0 ? 2 : 0)}%` }} />
       </View>
     </View>
@@ -203,7 +203,7 @@ export function SkillCard(p: SkillCardProps) {
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
       className="h-full flex-row overflow-hidden rounded-[18px] bg-surface"
-      style={[cardShadow, { borderWidth: 1, borderColor: hovered ? '#C9D6EE' : LINE, minHeight: 188 }]}
+      style={[cardShadow, { borderWidth: 1, borderColor: hovered ? '#EEE0C9' : LINE, minHeight: 188 }]}
     >
       <View className="min-w-0 flex-1 justify-between p-5">
         <View>
@@ -232,7 +232,7 @@ export function SkillCard(p: SkillCardProps) {
         <Text className="font-sans text-[13px] text-muted">
           <Text className="font-semi text-ink">{p.answered}</Text> / {p.bank}
         </Text>
-        <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#4A7FE8' : color.primary }}>
+        <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#A8843F' : color.primary }}>
           <Text className="font-semi text-[14px] text-white">Luyện</Text>
         </View>
       </View>
@@ -263,7 +263,7 @@ function Ring({ accuracy }: { accuracy: number | null }) {
   return (
     <View style={{ width: size, height: size }} className="items-center justify-center">
       <Svg width={size} height={size} style={{ position: 'absolute' }}>
-        <Circle cx={size / 2} cy={size / 2} r={r} stroke="#E6EAF2" strokeWidth={stroke} fill="none" />
+        <Circle cx={size / 2} cy={size / 2} r={r} stroke="#F2EEE6" strokeWidth={stroke} fill="none" />
         {accuracy !== null && pct > 0 ? (
           <Circle
             cx={size / 2}

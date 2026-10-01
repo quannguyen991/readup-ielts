@@ -295,7 +295,7 @@ export default function ShadowLesson() {
                 label={speaking ? 'Đang đọc mẫu…' : 'Nghe mẫu'}
                 onPress={speaking ? stopVoice : playModel}
               />
-              <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F1F5F9' }}>
+              <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F9F6F1' }}>
                 {RATES.map((r) => {
                   const on = r.value === rate;
                   return (
@@ -386,7 +386,7 @@ function Karaoke({ sentence, tokens, marks, karaoke }: { sentence: string; token
         key={i}
         style={{
           color: current ? color.primary : ahead ? '#94A3B8' : markColor(m),
-          backgroundColor: current ? '#E0E7FF' : m === 'miss' ? '#FFF1F2' : 'transparent',
+          backgroundColor: current ? '#F9F2E6' : m === 'miss' ? '#FFF1F2' : 'transparent',
           borderRadius: 8,
           textDecorationLine: m === 'miss' ? 'underline' : 'none',
           ...(Platform.OS === 'web' ? ({ transition: 'color 180ms ease, background-color 180ms ease' } as object) : null),
@@ -417,7 +417,7 @@ function MicButton({ listening, onPress }: { listening: boolean; onPress: () => 
           ? ({
               boxShadow: listening
                 ? '0 0 0 10px rgba(225,29,72,0.14), 0 14px 30px rgba(225,29,72,0.35)'
-                : '0 6px 0 #3730A3, 0 16px 30px rgba(79,70,229,0.35)',
+                : '0 6px 0 #9A7739, 0 16px 30px rgba(205, 164, 94,0.35)',
               transition: 'box-shadow 200ms ease, background-color 200ms ease',
             } as object)
           : null),
@@ -475,7 +475,7 @@ function ResultPanel({
   const missed = [...new Map(tokens.filter((_, i) => result.marks[i] === 'miss').map((t) => [t.norm, t.text])).values()];
   return (
     <Appear>
-      <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#F8FAFC' }}>
+      <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#FCFBF8' }}>
         <View className="flex-row flex-wrap items-center gap-4">
           <View
             className="h-20 w-20 items-center justify-center rounded-pill bg-white"
@@ -601,7 +601,7 @@ function Summary({
         <View aria-hidden className="mt-3">
           <Label
             text={avg >= 85 ? 'Đọc rất rõ 🏆' : avg >= 60 ? 'Khá lắm ⭐' : 'Luyện tiếp nhé 💪'}
-            color={avg >= 85 ? '#22A06B' : avg >= 60 ? '#4A7FE8' : '#F0703F'}
+            color={avg >= 85 ? '#22A06B' : avg >= 60 ? '#A8843F' : '#F0703F'}
             ink="#FFFFFF"
             tilt={-4}
             size={12}
@@ -609,7 +609,7 @@ function Summary({
         </View>
       ) : null}
       <View className="mt-5 flex-row flex-wrap gap-3">
-        <Stat value={`${scores.length}/${total}`} label="câu đã đọc lượt này" icon="check" tint="#4A7FE8" />
+        <Stat value={`${scores.length}/${total}`} label="câu đã đọc lượt này" icon="check" tint="#A8843F" />
         <Stat value={scores.length ? String(avg) : '—'} label="điểm trung bình" icon="target" tint="#F2B632" />
         <Stat value={String(clear)} label="câu đọc rất rõ (≥ 85)" icon="star" tint="#22A06B" />
       </View>
@@ -618,7 +618,7 @@ function Summary({
           <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Từ hay hụt nhất lượt này</Text>
           <View className="mt-2 flex-row flex-wrap gap-2">
             {top.map(([w, n]) => (
-              <View key={w} className="flex-row items-center gap-1 rounded-pill bg-white py-1 pl-3 pr-1" style={{ borderWidth: 1, borderColor: '#E2E8F0' }}>
+              <View key={w} className="flex-row items-center gap-1 rounded-pill bg-white py-1 pl-3 pr-1" style={{ borderWidth: 1, borderColor: '#F0EBE2' }}>
                 <Text className="font-semi text-body text-ink">
                   {w} <Text className="text-muted">×{n}</Text>
                 </Text>
@@ -638,7 +638,7 @@ function Summary({
 
 function Stat({ value, label, icon, tint }: { value: string; label: string; icon: BadgeIcon; tint: string }) {
   return (
-    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F1F5F9', flexGrow: 1, flexShrink: 1, flexBasis: 150 }}>
+    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#F9F6F1', flexGrow: 1, flexShrink: 1, flexBasis: 150 }}>
       <View className="flex-row items-center gap-2">
         <View aria-hidden>
           <BadgeSticker icon={icon} color={tint} size={26} />

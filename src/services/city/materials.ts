@@ -1,6 +1,7 @@
 /**
- * VẬT LIỆU của Thành Phố Tri Thức. Chỉ kiếm bằng học tập — không mua bằng tiền
- * thật, không đổi bằng sao (sao chỉ đổi đồ trang trí). Luật cộng ở `economy.ts`.
+ * VẬT LIỆU của Thành Phố Tri Thức. Kiếm bằng học tập, hoặc đổi bằng SAO (sao
+ * cũng chỉ đến từ học) ở Chợ vật liệu — có trần mỗi ngày. Không mua bằng tiền
+ * thật. Luật cộng ở `economy.ts`.
  */
 export type MaterialKind = 'wood' | 'stone' | 'brick' | 'steel' | 'glass';
 
@@ -12,7 +13,7 @@ export const EMPTY_MATERIALS: Materials = { wood: 0, stone: 0, brick: 0, steel: 
 
 /**
  * Tên + nơi học để kiếm. `href` là màn học SINH ra vật liệu đó — màn "Học để
- * nhận" dẫn thẳng tới đây, không có đường nào khác để lấy vật liệu.
+ * nhận" dẫn thẳng tới đây (đường còn lại là đổi sao ở Chợ vật liệu).
  */
 export const MATERIAL_INFO: Record<
   MaterialKind,

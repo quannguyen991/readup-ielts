@@ -14,13 +14,13 @@ import { Motion } from '@/components/illust/CuteMore';
 const INTRO_KEY = 'readup:world-intro';
 
 const OWL_INTRO = [
-  'Chào bạn, mình là Cú. Đây là bản đồ ReadUp: sáu hòn đảo, mỗi đảo là một mảng học.',
+  'Chào bạn, mình là Cú. Đây là bản đồ Band 9: sáu hòn đảo, mỗi đảo là một mảng học.',
   'Giữ phím mũi tên (hoặc WASD) để đi trên sợi sáng, hay bấm thẳng vào một đảo. Tới cổng đảo, nhấn E để vào đảo.',
   'Nhiệm vụ là bài học thật của app. Học xong bài nào, sợi sáng nối tới đảo đó dài thêm. Lạc đường thì bấm "Hỏi Cú".',
 ];
 
 /**
- * BẢN ĐỒ READUP — thế giới pixel đi lại được, mỗi đảo là một mảng học, nhiệm vụ
+ * BẢN ĐỒ BAND 9 — thế giới pixel đi lại được, mỗi đảo là một mảng học, nhiệm vụ
  * là bài học thật (`services/world/islands`). Vẽ bằng canvas (`world-engine`);
  * chữ tiếng Việt ở lớp React phía trên vì phông pixel không có dấu.
  */
@@ -115,7 +115,7 @@ export default function WorldScreen() {
   if (Platform.OS !== 'web') {
     return (
       <View className="flex-1 items-center justify-center bg-[#0b0b24] p-6">
-        <Text className="text-center font-semi text-bodyLg text-white">Bản đồ ReadUp hiện chỉ chạy trên bản web.</Text>
+        <Text className="text-center font-semi text-bodyLg text-white">Bản đồ Band 9 hiện chỉ chạy trên bản web.</Text>
       </View>
     );
   }
@@ -152,7 +152,7 @@ export default function WorldScreen() {
       <View className="absolute left-3 right-3 top-3 flex-row flex-wrap items-center justify-between gap-2">
         <View className="flex-row items-center gap-2">
           <Pressable onPress={() => router.replace('/quest' as never)} className="flex-row items-center gap-1.5 rounded-pill px-3 py-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-            <Icon name="chevron-left" size={16} color="#E2E8F0" />
+            <Icon name="chevron-left" size={16} color="#F0EBE2" />
             <Text className="font-semi text-label text-white">Quest</Text>
           </Pressable>
           <View className="flex-row items-center gap-1.5 rounded-pill py-1 pl-1 pr-3" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }}>
@@ -160,7 +160,7 @@ export default function WorldScreen() {
               <SealIcon name="compass" color="#22A06B" size={28} />
             </View>
             <Text className="font-strong text-label text-white">
-              Bản đồ ReadUp · <Text style={{ color: '#FDE047' }}>{done}</Text>/{total} nhiệm vụ
+              Bản đồ Band 9 · <Text style={{ color: '#FDE047' }}>{done}</Text>/{total} nhiệm vụ
             </Text>
           </View>
         </View>
@@ -183,7 +183,7 @@ export default function WorldScreen() {
               </Motion>
             </View>
           </View>
-          <Text className="mt-0.5 font-sans text-label" style={{ color: '#CBD5E1' }}>
+          <Text className="mt-0.5 font-sans text-label" style={{ color: '#E1D9CB' }}>
             {here.tagline}
           </Text>
           <View className="mt-2.5 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}>
@@ -196,7 +196,7 @@ export default function WorldScreen() {
             {[...here.missions.filter((m) => !m.done), ...here.missions.filter((m) => m.done)].slice(0, 12).map((m) => (
               <Pressable key={m.id} onPress={() => router.push(m.href as never)} className="flex-row items-center gap-2 rounded-lg px-2 py-1.5">
                 <Icon name={m.done ? 'check' : 'arrow-right'} size={14} color={m.done ? '#4ADE80' : here.color} />
-                <Text className="min-w-0 flex-1 font-semi text-label" style={{ color: m.done ? '#64748B' : '#F1F5F9' }} numberOfLines={1}>
+                <Text className="min-w-0 flex-1 font-semi text-label" style={{ color: m.done ? '#64748B' : '#F9F6F1' }} numberOfLines={1}>
                   {m.title}
                 </Text>
               </Pressable>

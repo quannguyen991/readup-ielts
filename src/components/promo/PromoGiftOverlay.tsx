@@ -76,10 +76,10 @@ export function PromoGiftOverlay() {
           aria-modal
           style={{ width: '100%', maxWidth: 520, borderRadius: 28, overflow: 'hidden', backgroundColor: '#FFFFFF', shadowColor: '#000', shadowOpacity: 0.3, shadowRadius: 30 }}
         >
-          <LinearGradient colors={['#4A7FE8', '#7C3AED', '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 24, paddingTop: 28, paddingBottom: 24, alignItems: 'center' }}>
+          <LinearGradient colors={['#A8843F', '#CCA35B', '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 24, paddingTop: 28, paddingBottom: 24, alignItems: 'center' }}>
             <Text style={{ fontSize: 54 }}>{done ? '🎉' : '🎁'}</Text>
             <Text className="font-strong" style={{ marginTop: 6, fontSize: 14, letterSpacing: 1.2, color: '#FDE68A' }}>
-              QUÀ CUỐI THÁNG 9 · READUP
+              QUÀ CUỐI THÁNG 9 · BAND 9
             </Text>
             <Text className="font-heavy" style={{ marginTop: 8, fontSize: 30, lineHeight: 36, color: '#FFFFFF', textAlign: 'center' }}>
               {done ? 'Đã nhận quà!' : 'Tặng bạn món quà cuối tháng'}
@@ -117,7 +117,7 @@ export function PromoGiftOverlay() {
             )}
 
             {done ? (
-              <Pressable accessibilityRole="button" onPress={() => setHidden(true)} style={{ borderRadius: 16, paddingVertical: 14, alignItems: 'center', backgroundColor: '#4A7FE8' }}>
+              <Pressable accessibilityRole="button" onPress={() => setHidden(true)} style={{ borderRadius: 16, paddingVertical: 14, alignItems: 'center', backgroundColor: '#A8843F' }}>
                 <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
                   Bắt đầu học
                 </Text>

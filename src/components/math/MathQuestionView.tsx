@@ -79,7 +79,7 @@ export function MathQuestionView({
    *
    * CHỮ KHÔNG ĐỔI, CHỈ ĐỔI MẶT NỀN. `ink` và `paper-ink` cách nhau vài độ sáng,
    * đặt trên nền nào cũng đọc được. Cái lộ ra ngay là mấy khối nền: `bg-canvas`
-   * (#F7F8FC, xám LẠNH) nằm trong một thẻ kem (#FDFBF3, ẤM) trông như một vết ố.
+   * (#FCFAF7, xám LẠNH) nằm trong một thẻ kem (#FDFBF3, ẤM) trông như một vết ố.
    */
   surface?: MathSurface;
   /**

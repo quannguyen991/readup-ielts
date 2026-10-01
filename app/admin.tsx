@@ -1112,7 +1112,7 @@ function Split({ title, rows, total, empty = 'Chưa có số liệu' }: { title:
                   {n} · {total > 0 ? Math.round((n / total) * 100) : 0}%
                 </Text>
               </View>
-              <View className="mt-0.5 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#EEF0F6' }}>
+              <View className="mt-0.5 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F6F3EE' }}>
                 <View style={{ height: 6, width: '100%', backgroundColor: color.primary, transform: [{ scaleX: total > 0 ? Math.min(1, n / total) : 0 }], transformOrigin: 'left' }} />
               </View>
             </View>

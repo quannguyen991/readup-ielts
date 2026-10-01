@@ -24,8 +24,8 @@ import {
   visualProgress,
   type Site,
 } from '@/services/city/construction';
-import { ECONOMY } from '@/services/city/economy';
-import { MATERIAL_INFO, MATERIAL_KINDS, type MaterialKind } from '@/services/city/materials';
+import { ECONOMY, exchangeCost } from '@/services/city/economy';
+import { MATERIAL_INFO, MATERIAL_KINDS, type MaterialKind, type Materials } from '@/services/city/materials';
 import { eraChecklist } from '@/services/city/progression';
 import { vnToday } from '@/services/gamification/golden';
 import { useCityStore } from '@/store/useCityStore';
@@ -55,7 +55,7 @@ export function learnRouteFor(missing: Partial<Record<MaterialKind, number>>): s
 
 // ------------------------------------------------------------------ bảng công trình
 
-export function SitePanel({ siteId, onClose, onEarn, toast }: { siteId: string; onClose: () => void; onEarn: (k?: MaterialKind) => void; toast: Toast }) {
+function SitePanelImpl({ siteId, onClose, onEarn, onMarket, toast }: { siteId: string; onClose: () => void; onEarn: (k?: MaterialKind) => void; onMarket?: (want?: Partial<Materials>) => void; toast: Toast }) {
   const { t, L } = useL();
   const site = useCityStore((s) => s.sites.find((x) => x.id === siteId));
   const inv = useCityStore((s) => s.inventory);
@@ -147,9 +147,16 @@ export function SitePanel({ siteId, onClose, onEarn, toast }: { siteId: string; 
                 <span>{t('city.site.deliverLine')}</span>
                 <CostRow cost={deliverCost(site)} have={inv} />
                 {missing ? (
-                  <button className="cg-btn primary small" onClick={() => onEarn(MATERIAL_KINDS.find((k) => (b.materials[k] ?? 0) > 0))}>
-                    📚 {t('city.site.learnFor')}
-                  </button>
+                  <>
+                    <button className="cg-btn primary small" onClick={() => onEarn(MATERIAL_KINDS.find((k) => (b.materials[k] ?? 0) > 0))}>
+                      📚 {t('city.site.learnFor')}
+                    </button>
+                    {onMarket ? (
+                      <button className="cg-btn small" onClick={() => onMarket(b.materials)} title={L({ vi: 'Đổi sao lấy phần còn thiếu (Chợ vật liệu)', en: 'Swap stars for what is missing (Materials market)' })}>
+                        ⭐ {shortLabel(b.materials, L)}
+                      </button>
+                    ) : null}
+                  </>
                 ) : (
                   <button
                     className="cg-btn primary small"
@@ -226,6 +233,13 @@ function SkillBox({ metric }: { metric: SkillMetric }) {
   );
 }
 
+/** "Thiếu 12 🧱 — đổi 60⭐?" cho nút đổi sao ở công trường. */
+function shortLabel(miss: Partial<Materials>, L: ReturnType<typeof useL>['L']): string {
+  const parts = MATERIAL_KINDS.filter((k) => (miss[k] ?? 0) > 0).map((k) => `${miss[k]} ${L(MATERIAL_INFO[k]).toLowerCase()}`);
+  const cost = exchangeCost(miss).toLocaleString('vi-VN');
+  return L({ vi: `Thiếu ${parts.join(', ')} — đổi ${cost}⭐?`, en: `Short ${parts.join(', ')} — swap ${cost}⭐?` });
+}
+
 function deliverCost(site: Site) {
   return stepCost(site, catalogItem(site.type)!);
 }
@@ -279,7 +293,7 @@ function crewLockText(t: ReturnType<typeof useL>['t'], L: ReturnType<typeof useL
 
 type Tab = 'tasks' | 'goals' | 'sites' | 'crews' | 'shifts';
 
-export function OverviewPanel({ onSelect, onEarn, onEraUp }: { onSelect: (id: string) => void; onEarn: (k?: MaterialKind) => void; onEraUp: () => void }) {
+function OverviewPanelImpl({ onSelect, onEarn, onEraUp }: { onSelect: (id: string) => void; onEarn: (k?: MaterialKind) => void; onEraUp: () => void }) {
   const { t } = useL();
   const [tab, setTab] = useState<Tab>('tasks');
   return (
@@ -509,3 +523,7 @@ function Goals() {
     </>
   );
 }
+
+/* Memo: bảng phải chỉ render lại khi phần store nó đọc đổi, không theo từng lần rê chuột. */
+export const SitePanel = React.memo(SitePanelImpl);
+export const OverviewPanel = React.memo(OverviewPanelImpl);

@@ -409,6 +409,6 @@ function CredentialLocked({ need }: { need: PlanId }) {
 /** Ba việc chứng chỉ làm được — mỗi dòng ứng với code đã chạy, không phải lời quảng cáo. */
 const CREDENTIAL_POINTS = [
   'Sửa một ký tự trong bản ghi là chữ ký hỏng ngay, ai kiểm cũng thấy.',
-  'Người kiểm không cần tin ReadUp: có sẵn trình kiểm chạy độc lập ngoài app.',
+  'Người kiểm không cần tin Band 9: có sẵn trình kiểm chạy độc lập ngoài app.',
   'Theo chuẩn W3C Verifiable Credential, không phải một định dạng riêng của app.',
 ];

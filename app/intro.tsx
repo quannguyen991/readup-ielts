@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { GoldHighlight } from '@/components/layout/GoldHighlight';
 import { Platform, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -118,7 +119,7 @@ const BILINGUAL_AREA: Area = {
   icon: 'languages',
   colors: stickerGradient.rose,
   title: 'Đọc báo song ngữ',
-  lines: ['VOA, NASA, Global Voices và bài phân tích ReadUp · Anh–Việt · miễn phí cho mọi người'],
+  lines: ['VOA, NASA, Global Voices và bài phân tích Band 9 · Anh–Việt · miễn phí cho mọi người'],
   badge: `${bilingualStats().articles} BÀI`,
   href: '/bilingual',
 };
@@ -272,17 +273,9 @@ export default function IntroScreen() {
                 sáng thì một lớp trắng mờ không tạo ra ranh giới nào. Chữ trong khối ấy
                 thành trắng — đây là chỗ DUY NHẤT còn chữ trắng trong hero.
               */}
-              <View
-                className="mt-1.5 self-start rounded-md bg-brand-mid px-3 py-1"
-                style={{ marginLeft: -10 }}
-              >
-                <Text
-                  className="font-heavy text-white"
-                  style={{ fontSize: wide ? 44 : 28, lineHeight: wide ? 52 : 36 }}
-                >
-                  sai chỗ nào biết chỗ đó
-                </Text>
-              </View>
+              <GoldHighlight fontSize={wide ? 44 : 28} lineHeight={wide ? 52 : 36}>
+                sai chỗ nào biết chỗ đó
+              </GoldHighlight>
 
               <View className="mt-6 flex-row flex-wrap gap-2">
                 <Button
@@ -446,10 +439,10 @@ export default function IntroScreen() {
 const softCard = (Platform.OS === 'web'
   ? {
       borderWidth: 1,
-      borderColor: '#E6EAF2',
+      borderColor: '#F2EEE6',
       boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 6px 20px rgba(15,23,42,0.05)',
     }
-  : { borderWidth: 1, borderColor: '#E6EAF2', elevation: 2 }) as never;
+  : { borderWidth: 1, borderColor: '#F2EEE6', elevation: 2 }) as never;
 
 
 /**

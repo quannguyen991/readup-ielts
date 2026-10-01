@@ -44,7 +44,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 /**
  * Trời đêm, không phải nền xanh dương.
  *
- * Bản trước lấy xanh dương đậm → chàm → tím (#1E3A9E → #3B3BBF → #6D28D9). Nền
+ * Bản trước lấy xanh dương đậm → chàm → tím (#906B2C → #B58C45 → #C3923E). Nền
  * ấy đủ tối cho chữ trắng, nhưng nó SÁNG NGANG với các dải sáng vẽ đè lên, nên
  * bốn dải chìm nghỉm và cả khối đọc ra thành một mảng gradient phẳng.
  *
@@ -92,9 +92,9 @@ type Blob = {
 const BLOBS: Blob[] = [
   { color: '#22D3EE', cx: 26, cy: 20, rx: 62, ry: 22, opacity: 0.55, driftX: 52, driftY: 26, seconds: 17, tilt: -18 },
   { color: '#34D399', cx: 70, cy: 32, rx: 54, ry: 18, opacity: 0.4, driftX: -44, driftY: 34, seconds: 23, tilt: 12 },
-  { color: '#A855F7', cx: 58, cy: 76, rx: 68, ry: 26, opacity: 0.62, driftX: 38, driftY: -30, seconds: 29, tilt: -9 },
+  { color: '#D5B377', cx: 58, cy: 76, rx: 68, ry: 26, opacity: 0.62, driftX: 38, driftY: -30, seconds: 29, tilt: -9 },
   { color: '#F472B6', cx: 14, cy: 88, rx: 46, ry: 20, opacity: 0.34, driftX: -32, driftY: -24, seconds: 37, tilt: 16 },
-  { color: '#6366F1', cx: 88, cy: 62, rx: 40, ry: 40, opacity: 0.3, driftX: 26, driftY: 30, seconds: 31 },
+  { color: '#D7B67D', cx: 88, cy: 62, rx: 40, ry: 40, opacity: 0.3, driftX: 26, driftY: 30, seconds: 31 },
 ];
 
 const STYLE_TAG_ID = 'aurora-backdrop-keyframes';

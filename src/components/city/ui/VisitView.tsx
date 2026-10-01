@@ -36,12 +36,13 @@ type CityDetail = {
 
 const noop = () => {};
 
-export function VisitView({ reduced, onBack }: { reduced: boolean; onBack: () => void }) {
+export function VisitView({ reduced, onBack, initial }: { reduced: boolean; onBack: () => void; initial?: string }) {
   const { L } = useL();
   const token = useAuthStore((s) => s.session?.access_token ?? null);
   const [list, setList] = useState<CityCard[] | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  const [open, setOpen] = useState<string | null>(null);
+  // Mở thẳng một khu (bấm từ "Khu của mọi người" ở Trung tâm Tương lai).
+  const [open, setOpen] = useState<string | null>(initial ?? null);
 
   useEffect(() => {
     let dead = false;

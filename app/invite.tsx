@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
+import { SITE_ORIGIN } from '@/lib/site';
 import { Pressable, Share, Text, View } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { router } from 'expo-router';
@@ -113,7 +114,7 @@ export default function InviteScreen() {
   }
 
   const code = data?.code ?? '';
-  const link = code ? `https://readup-ielts.vercel.app/intro?ref=${code}` : '';
+  const link = code ? `${SITE_ORIGIN}/intro?ref=${code}` : '';
   const qualified = data?.qualified ?? 0;
   const invited = data?.invited ?? 0;
   const remaining = toNextReward(qualified);
@@ -260,7 +261,7 @@ export default function InviteScreen() {
             </View>
             <Text className="font-strong text-cardTitle text-ink">Mã mời của bạn</Text>
             <View aria-hidden>
-              <Label text="Của riêng bạn ✨" color="#0EA5E9" ink="#FFFFFF" tilt={4} size={11} />
+              <Label text="Của riêng bạn ✨" color="#B07A3A" ink="#FFFFFF" tilt={4} size={11} />
             </View>
           </View>
           <View className="mt-2 flex-row flex-wrap items-center gap-2">
@@ -281,7 +282,7 @@ export default function InviteScreen() {
               disabled={!link}
               onPress={() =>
                 void Share.share({
-                  message: `Mình đang luyện IELTS và SAT Math trên ReadUp, thấy ổn nên rủ bạn. Vào bằng link này nhé: ${link}`,
+                  message: `Mình đang luyện IELTS và SAT Math trên Band 9, thấy ổn nên rủ bạn. Vào bằng link này nhé: ${link}`,
                 })
               }
             />

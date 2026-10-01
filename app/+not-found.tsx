@@ -46,7 +46,7 @@ export default function NotFound() {
           </View>
           <Text className="mt-4 text-center font-heavy text-pageTitle text-ink">Không tìm thấy trang này</Text>
           <Text className="mt-2 max-w-[520px] text-center font-sans text-bodyLg text-muted">
-            Đường dẫn <Text className="font-strong text-ink">{pathname}</Text> không có trong ReadUp — có thể gõ nhầm, hoặc trang đã đổi chỗ.
+            Đường dẫn <Text className="font-strong text-ink">{pathname}</Text> không có trong Band 9 — có thể gõ nhầm, hoặc trang đã đổi chỗ.
           </Text>
           <View className="mt-7 flex-row flex-wrap justify-center gap-2">
             <Button label="Về trang chủ" iconRight="arrow-right" onPress={() => router.replace('/' as never)} />

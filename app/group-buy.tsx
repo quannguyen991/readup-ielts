@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { SITE_ORIGIN } from '@/lib/site';
 import { Pressable, Share, Text, View } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -76,7 +77,7 @@ function CreateGroup() {
     }
   };
 
-  const link = created ? `https://readup-ielts.vercel.app/group-buy?code=${created.code}` : '';
+  const link = created ? `${SITE_ORIGIN}/group-buy?code=${created.code}` : '';
   const copy = async (label: string, value: string) => {
     await Clipboard.setStringAsync(value);
     setCopied(label);
@@ -148,7 +149,7 @@ function CreateGroup() {
                 variant="outline"
                 onPress={() =>
                   void Share.share({
-                    message: `Mình đang rủ mua chung gói ${PLANS[plan].name} trên ReadUp, đủ ${targetSize} người thì mỗi người giảm ${percent}%. Vào xem: ${link}`,
+                    message: `Mình đang rủ mua chung gói ${PLANS[plan].name} trên Band 9, đủ ${targetSize} người thì mỗi người giảm ${percent}%. Vào xem: ${link}`,
                   })
                 }
               />
@@ -179,7 +180,7 @@ function CreateGroup() {
 
               <View className="mt-4 flex-row flex-wrap items-center gap-2.5">
                 <View aria-hidden>
-                  <SealIcon name="target" color="#0EA5E9" size={36} />
+                  <SealIcon name="target" color="#B07A3A" size={36} />
                 </View>
                 <Text className="font-strong text-cardTitle text-ink">Mốc số người</Text>
                 {percent > 0 ? (
@@ -228,7 +229,7 @@ function CreateGroup() {
             <Card className="mt-4" variant="flat">
               <View className="flex-row items-center gap-2">
                 <View aria-hidden>
-                  <SealIcon name="info" color="#4A7FE8" size={30} />
+                  <SealIcon name="info" color="#A8843F" size={30} />
                 </View>
                 <Text className="min-w-0 flex-1 font-strong text-body text-ink">Cách hoạt động</Text>
               </View>

@@ -205,7 +205,7 @@ function MockTestCard({
   return (
     <View
       className="h-full overflow-hidden rounded-card bg-surface"
-      style={{ borderWidth: 1, borderColor: '#E6E8F2' }}
+      style={{ borderWidth: 1, borderColor: '#F2EEE6' }}
     >
       <View className="flex-row gap-3.5 p-4">
         <TestCover index={index} />
@@ -307,12 +307,12 @@ function MockTestCard({
  */
 function TestCover({ index }: { index: number }) {
   const tones = [
-    ['#93B4FD', '#5B8BEE'],
-    ['#C4ADF8', '#7C3AED'],
+    ['#EAD1A6', '#B8955A'],
+    ['#EEDAB7', '#CCA35B'],
     ['#6EE7A8', '#16A34A'],
     ['#FCD34D', '#D97706'],
     ['#FCA5A5', '#DC2626'],
-    ['#67E8F9', '#0891B2'],
+    ['#67E8F9', '#8E6A2C'],
   ] as const;
   const tone = tones[index % tones.length] as readonly [string, string];
 

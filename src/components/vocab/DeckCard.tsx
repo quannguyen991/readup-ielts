@@ -30,7 +30,7 @@ export function FlagVN({ size = 14 }: { size?: number }) {
 export function DeckProgressBar({ progress, color, height = 8 }: { progress: DeckProgress; color: string; height?: number }) {
   const total = Math.max(1, progress.total);
   return (
-    <View style={{ flex: 1, height, borderRadius: height, backgroundColor: '#EEF1F7', overflow: 'hidden', flexDirection: 'row' }}>
+    <View style={{ flex: 1, height, borderRadius: height, backgroundColor: '#F7F4EE', overflow: 'hidden', flexDirection: 'row' }}>
       <View style={{ width: `${(progress.mastered / total) * 100}%`, backgroundColor: color, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
       <View style={{ width: `${(progress.learning / total) * 100}%`, backgroundColor: color, opacity: 0.32, ...(WEB ? ({ transition: 'width 420ms ease' } as object) : null) }} />
     </View>
@@ -75,7 +75,7 @@ export function DeckCard({
   title,
   subtitle,
   progress,
-  accent = ['#E0E7FF', '#4F46E5'],
+  accent = ['#F9F2E6', '#CDA45E'],
   icon,
   sourceLabel,
   onPress,
@@ -173,15 +173,15 @@ export function DeckActionCard({ title, detail, icon, onPress }: { title: string
         padding: 18,
         borderWidth: 2,
         borderStyle: 'dashed',
-        borderColor: hovered ? '#6366F1' : '#C7CDE0',
+        borderColor: hovered ? '#D7B67D' : '#E0D7C7',
         backgroundColor: hovered ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.7)',
         alignItems: 'center',
         justifyContent: 'center',
         ...(WEB ? ({ transition: 'border-color 200ms ease, background-color 200ms ease' } as object) : null),
       })}
     >
-      <View style={{ width: 44, height: 44, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EEF2FF' }}>
-        <Icon name={icon} size={20} color="#4F46E5" strokeWidth={2.2} />
+      <View style={{ width: 44, height: 44, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}>
+        <Icon name={icon} size={20} color="#CDA45E" strokeWidth={2.2} />
       </View>
       <Text className="mt-3 text-center font-heavy text-ink" style={{ fontSize: 16 }}>
         {title}

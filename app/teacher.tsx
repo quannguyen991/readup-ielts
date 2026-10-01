@@ -99,7 +99,7 @@ export default function TeacherScreen() {
       <Card className="mt-5">
         <View className="flex-row items-center gap-2.5">
           <View aria-hidden>
-            <SealIcon name="clipboard" color="#4A7FE8" size={36} />
+            <SealIcon name="clipboard" color="#A8843F" size={36} />
           </View>
           <Text className="min-w-0 flex-1 font-strong text-body text-ink">Dán bản xuất của học sinh</Text>
         </View>
@@ -172,7 +172,7 @@ export default function TeacherScreen() {
           <View className="mt-6">
             <View className="flex-row items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="list" color="#0EA5E9" size={38} />
+                <SealIcon name="list" color="#B07A3A" size={38} />
               </View>
               <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Toàn bộ kỹ năng đã quan sát</Text>
             </View>

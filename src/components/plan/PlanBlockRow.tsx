@@ -11,10 +11,10 @@ import { color } from '@/theme/tokens';
 /** Màu và biểu tượng từng kỹ năng — dùng chung ở trang Lộ trình và Tổng quan. */
 export const SKILL_TONE: Record<Skill | 'check', { tone: string; soft: string; icon: IconName }> = {
   vocab: { tone: '#10B981', soft: '#E7F8F1', icon: 'letters' },
-  reading: { tone: '#5B8BEE', soft: '#EAF1FF', icon: 'book' },
-  listening: { tone: '#0EA5E9', soft: '#E6F6FD', icon: 'volume' },
-  writing: { tone: '#8B5CF6', soft: '#F1ECFF', icon: 'pencil' },
-  math: { tone: '#6366F1', soft: '#EEEFFE', icon: 'grid' },
+  reading: { tone: '#B8955A', soft: '#FBF6EE', icon: 'book' },
+  listening: { tone: '#B07A3A', soft: '#FAF4E9', icon: 'volume' },
+  writing: { tone: '#D6B57C', soft: '#FBF7F0', icon: 'pencil' },
+  math: { tone: '#D7B67D', soft: '#FCF7F0', icon: 'grid' },
   verbal: { tone: '#F43F5E', soft: '#FEECEF', icon: 'languages' },
   check: { tone: '#F59E0B', soft: '#FEF4E2', icon: 'target' },
 };
@@ -31,7 +31,7 @@ export function PlanBlockRow({ block, compact = false }: { block: PlanBlock; com
   return (
     <View
       className="flex-row items-center gap-3 rounded-2xl bg-white px-3 py-2.5"
-      style={{ borderWidth: 1, borderColor: done ? '#BBF7D0' : '#E6E8F2', opacity: done ? 0.75 : 1 }}
+      style={{ borderWidth: 1, borderColor: done ? '#BBF7D0' : '#F2EEE6', opacity: done ? 0.75 : 1 }}
     >
       <Pressable
         accessibilityRole="checkbox"
@@ -41,7 +41,7 @@ export function PlanBlockRow({ block, compact = false }: { block: PlanBlock; com
         className="h-7 w-7 items-center justify-center rounded-lg"
         style={{
           borderWidth: done ? 0 : 1.5,
-          borderColor: '#C7CCE0',
+          borderColor: '#E0D7C7',
           backgroundColor: done ? '#22C55E' : '#FFFFFF',
           ...(Platform.OS === 'web' ? ({ transition: 'background-color 160ms ease' } as object) : null),
         }}
@@ -76,7 +76,7 @@ export function PlanBlockRow({ block, compact = false }: { block: PlanBlock; com
         accessibilityLabel={`Vào học: ${block.title}`}
         onPress={() => router.push(block.href as never)}
         className="flex-row items-center gap-1 rounded-pill px-3 py-1.5"
-        style={{ backgroundColor: done ? '#F1F4FB' : color.primary }}
+        style={{ backgroundColor: done ? '#FBF7F1' : color.primary }}
       >
         <Text className="font-strong text-label" style={{ color: done ? color.ink : '#FFFFFF' }}>
           {done ? 'Học lại' : 'Vào học'}

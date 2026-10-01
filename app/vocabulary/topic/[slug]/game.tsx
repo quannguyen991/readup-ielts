@@ -37,7 +37,7 @@ import { color } from "@/theme/tokens";
  */
 
 const LANES = [0.12, 0.37, 0.62, 0.87];
-const BALLOON_COLORS = ["#60A5FA", "#F472B6", "#FBBF24", "#34D399"];
+const BALLOON_COLORS = ["#D9BC7F", "#F472B6", "#FBBF24", "#34D399"];
 const ARENA_H = 440;
 const NO_SCORES: GameScore[] = [];
 
@@ -242,7 +242,7 @@ export default function GameScreen() {
                   <View
                     key={s.at}
                     className="flex-row items-center justify-between rounded-2xl px-4 py-3"
-                    style={{ backgroundColor: i === 0 ? "#FEF9C3" : "#F8FAFC" }}
+                    style={{ backgroundColor: i === 0 ? "#FEF9C3" : "#FCFBF8" }}
                   >
                     <Text className="font-strong text-bodyLg text-ink">
                       #{i + 1}
@@ -265,7 +265,7 @@ export default function GameScreen() {
             style={{ height: ARENA_H + 90 }}
           >
             <LinearGradient
-              colors={["#BFDBFE", "#E0F2FE", "#F8FAFC"]}
+              colors={["#EAD7AE", "#F9F2E5", "#FCFBF8"]}
               style={{ flex: 1 }}
             >
               {/* Thanh trên: nghĩa cần tìm, điểm, tim. */}
@@ -288,7 +288,7 @@ export default function GameScreen() {
                   style={{ color: RED }}
                 >
                   {"♥".repeat(Math.max(0, lives))}
-                  <Text style={{ color: "#CBD5E1" }}>
+                  <Text style={{ color: "#E1D9CB" }}>
                     {"♥".repeat(Math.max(0, 3 - lives))}
                   </Text>
                 </Text>

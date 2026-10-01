@@ -14,7 +14,7 @@ import { masteredCount, useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { lessonKey, useLessonStore } from '@/store/useLessonStore';
 import { color } from '@/theme/tokens';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 22px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 8px 22px rgba(94, 72, 35,0.08)' } as object;
 
 /**
  * Trang "Bài học" của một môn SAT: hai tab — LÝ THUYẾT (mỗi kỹ năng một bài,
@@ -180,7 +180,7 @@ export function LessonHub({
                         {v.blurb}
                       </Text>
                       <View className="flex-1" />
-                      <View className="mt-3 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#E8EEF8' }}>
+                      <View className="mt-3 h-1.5 overflow-hidden rounded-pill" style={{ backgroundColor: '#F8F2E8' }}>
                         <View className="h-1.5 rounded-pill" style={{ width: `${pct * 100}%`, backgroundColor: '#16A34A' }} />
                       </View>
                       <Text className="mt-1.5 font-semi text-label text-muted">
@@ -200,7 +200,7 @@ export function LessonHub({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3.5 py-1.5" style={{ backgroundColor: '#F1F6FF' }}>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill px-3.5 py-1.5" style={{ backgroundColor: '#FCF9F4' }}>
       <Text className="font-heavy text-body text-primary-700">{value}</Text>
       <Text className="font-sans text-label text-muted">{label}</Text>
     </View>

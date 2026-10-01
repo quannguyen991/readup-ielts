@@ -14,7 +14,7 @@ import { SealIcon } from '@/components/illust/HeroArt';
 import { Label } from '@/components/illust/Sticker';
 import { Motion } from '@/components/illust/CuteMore';
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
 const DECKS = [
   ...VOCAB_TOPICS.map((t) => ({ slug: t.slug, name: t.nameVi })),
@@ -69,7 +69,7 @@ export default function DuelLobby() {
               placeholder="Tìm bộ từ…"
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-2.5 font-sans text-body text-ink"
-              style={{ borderWidth: 1.5, borderColor: '#E2E8F0', backgroundColor: '#F8FAFC' }}
+              style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8' }}
             />
             <View className="mt-3 flex-row flex-wrap gap-2">
               {shown.map((d) => {
@@ -79,7 +79,7 @@ export default function DuelLobby() {
                     key={d.slug}
                     onPress={() => setDeck(d.slug)}
                     className="rounded-pill px-3.5 py-2"
-                    style={{ backgroundColor: on ? color.primary : '#F1F5F9' }}
+                    style={{ backgroundColor: on ? color.primary : '#F9F6F1' }}
                   >
                     <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                       {d.name}
@@ -101,7 +101,7 @@ export default function DuelLobby() {
           <View className="rounded-[22px] bg-white p-5" style={CARD}>
             <View className="flex-row flex-wrap items-center gap-2.5">
               <View aria-hidden>
-                <SealIcon name="arrow-right" color="#0EA5E9" size={40} />
+                <SealIcon name="arrow-right" color="#B07A3A" size={40} />
               </View>
               <Text className="font-heavy text-sectionTitle text-ink">Vào phòng</Text>
               <View aria-hidden>
@@ -119,7 +119,7 @@ export default function DuelLobby() {
               placeholder="VD: K7Q2M"
               placeholderTextColor="#94A3B8"
               className="mt-3 rounded-2xl px-4 py-3 text-center font-heavy text-sectionTitle text-ink"
-              style={{ borderWidth: 1.5, borderColor: '#E2E8F0', backgroundColor: '#F8FAFC', letterSpacing: 6 }}
+              style={{ borderWidth: 1.5, borderColor: '#F0EBE2', backgroundColor: '#FCFBF8', letterSpacing: 6 }}
             />
             <Button className="mt-3 self-start" label="Vào phòng" disabled={!isRoomCode(joinCode)} onPress={() => router.push(`/duel/${joinCode}` as never)} />
           </View>

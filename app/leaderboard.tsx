@@ -278,7 +278,7 @@ function dayLabel(key: string): string {
 }
 
 const GOLD_INK = '#3B2503';
-const ROW_TINT = ['#FFFBEB', '#F8FAFC', '#FFF7ED'];
+const ROW_TINT = ['#FFFBEB', '#FCFBF8', '#FFF7ED'];
 
 /**
  * BẢNG VÀNG HÔM NAY: sao, câu đúng và lượt ôn từ vựng của mọi người trong ngày,
@@ -385,7 +385,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
                 <View
                   key={r.id}
                   className={`${rowClass} py-2.5`}
-                  style={{ backgroundColor: mineRow ? '#EEF2FF' : (ROW_TINT[i] ?? 'transparent') }}
+                  style={{ backgroundColor: mineRow ? '#FCF8F1' : (ROW_TINT[i] ?? 'transparent') }}
                 >
                   <Text className="text-center font-heavy text-body" style={{ width: W.rank, color: '#92400E' }}>
                     {MEDAL[i] ?? i + 1}
@@ -412,7 +412,7 @@ function GoldenBoard({ data, error, me }: { data: BoardData | null; error: strin
               <Text className="px-5 py-3 font-sans text-label text-muted">Đăng nhập để tên bạn lên bảng vàng cùng mọi người.</Text>
             ) : null}
             {me && inBoard < 0 && (mine.stars > 0 || mine.correct > 0) ? (
-              <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#EEF2FF' }}>
+              <View className={`${rowClass} py-2.5`} style={{ backgroundColor: '#FCF8F1' }}>
                 <Text className="text-center font-heavy text-body text-muted" style={{ width: W.rank }}>—</Text>
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
                   Bạn — số của bạn lên bảng sau vài giây đồng bộ
@@ -486,7 +486,7 @@ function PrizeCard({ data, me, today }: { data: BoardData | null; me: string | n
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         {MONTH_PRIZES.map((p, i) => (
-          <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#FEF3C7' : '#F6F7FB' }}>
+          <View key={p.label} className="flex-row items-center gap-2 rounded-panel px-3 py-2" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 150, backgroundColor: i === 0 ? '#FEF3C7' : '#FBF9F6' }}>
             <Text style={{ fontSize: 20 }}>{MEDAL[i] ?? '🏅'}</Text>
             <View className="min-w-0 flex-1">
               <Text className="font-strong text-label text-ink">{p.label}</Text>
@@ -561,8 +561,8 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
   }
 
   const shade = (minutes: number, isFrozen: boolean) => {
-    if (isFrozen) return '#BFDBFE';
-    if (minutes <= 0) return '#EEF1F7';
+    if (isFrozen) return '#EAD7AE';
+    if (minutes <= 0) return '#F7F4EE';
     if (minutes < 15) return '#BBF7D0';
     if (minutes < 30) return '#6EE7A8';
     if (minutes < 60) return '#34D399';
@@ -582,12 +582,12 @@ function Heatmap({ daily, frozen, today }: { daily: Record<string, { minutes: nu
       </View>
       <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
         <Text className="font-sans text-label text-subtle">Ít</Text>
-        {['#EEF1F7', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
+        {['#F7F4EE', '#BBF7D0', '#6EE7A8', '#34D399', '#16A34A'].map((c) => (
           <View key={c} style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: c }} />
         ))}
         <Text className="font-sans text-label text-subtle">Nhiều</Text>
         <View className="ml-2 flex-row items-center gap-1">
-          <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: '#BFDBFE' }} />
+          <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: '#EAD7AE' }} />
           <Text className="font-sans text-label text-subtle">ngày dùng thẻ giữ chuỗi</Text>
         </View>
       </View>
@@ -697,7 +697,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
           {rest.map((row, i) => {
             const mine = row.id === me;
             return (
-              <View key={row.id} className="flex-row items-center gap-3 border-b border-border px-5 py-3" style={mine ? { backgroundColor: '#EEF2FF' } : undefined}>
+              <View key={row.id} className="flex-row items-center gap-3 border-b border-border px-5 py-3" style={mine ? { backgroundColor: '#FCF8F1' } : undefined}>
                 <Text className="w-8 text-center font-heavy text-body text-muted">{i + 4}</Text>
                 <AvatarBadge avatarId={row.avatar ?? null} name={row.name} size={36} skin={skinOf(row.skin ?? null)} />
                 <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
@@ -710,7 +710,7 @@ function Board({ data, error, me, you }: { data: BoardData | null; error: string
             );
           })}
           {!inBoard && me ? (
-            <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#EEF2FF' }}>
+            <View className="flex-row items-center gap-3 px-5 py-3" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="w-8 text-center font-heavy text-body text-muted">—</Text>
               <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
                 Bạn — chưa vào top {rows.length}

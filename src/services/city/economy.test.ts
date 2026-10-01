@@ -109,7 +109,7 @@ test('ca có trần ngày; kho ca có trần', () => {
   assert.equal(s.shiftBank, ECONOMY.shift.maxPerDay);
 });
 
-test('kho vật liệu không bao giờ âm và không có đường mua bằng sao', () => {
+test('kho vật liệu không bao giờ âm; sự kiện HỌC chỉ có năm loại (đổi sao ở `exchange`, có test riêng)', () => {
   const s = run([{ type: 'answer', source: 'vocab', correct: false }]);
   for (const v of Object.values(s.inventory)) assert.ok(v >= 0);
   // Kinh tế chỉ có năm loại sự kiện học — không có sự kiện "mua".

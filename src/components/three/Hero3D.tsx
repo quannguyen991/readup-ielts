@@ -25,9 +25,12 @@ export function Hero3D({ scene, style }: { scene: SceneKind; style?: StyleProp<V
     if (!el) return;
     let dispose: (() => void) | null = null;
     let cancelled = false;
-    void import('./hero-star')
-      .then(({ mountHeroStar }) => {
-        if (!cancelled) dispose = mountHeroStar(el, scene);
+    // Trang chủ: logo Band 9 dạng 3D (01/10/2026); các mảng khác vẫn là ngôi sao.
+    const load: Promise<(host: HTMLElement) => () => void> =
+      scene === 'home' ? import('./hero-logo').then((m) => m.mountHeroLogo) : import('./hero-star').then((m) => (h: HTMLElement) => m.mountHeroStar(h, scene));
+    void load
+      .then((mount) => {
+        if (!cancelled) dispose = mount(el);
       })
       .catch(() => {
         // Máy không có WebGL: bỏ qua, phần đầu trang vẫn đầy đủ chữ và nút.

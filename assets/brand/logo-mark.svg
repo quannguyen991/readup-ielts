@@ -1,32 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" width="96" height="96" role="img" aria-label="ReadUp">
-  <!--
-    DẤU HIỆU: ba dòng chữ, dòng GIỮA được khoanh.
-
-    Không chọn quyển sách hay cái mũ tốt nghiệp — hai hình ấy nói "giáo dục" và
-    dừng ở đó, mà có hàng nghìn logo giáo dục đã nói đúng câu ấy rồi.
-
-    Thứ riêng của ReadUp là BẰNG CHỨNG: một câu trả lời chỉ tính khi người học
-    chỉ được vào dòng đỡ nó. Nên dấu hiệu là mấy dòng văn bản với đúng một dòng
-    được khoanh sáng — chính là cái người dùng làm hàng ngày trong app, và cũng
-    là cái cả cơ chế xoay quanh.
-
-    Dòng khoanh CỐ Ý không phải dòng đầu: đáp án nằm ở dòng đầu là kiểu đề mà
-    hàng rào trong app tồn tại để loại.
-  -->
-  <defs>
-    <linearGradient id="rz" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2563EB"/>
-      <stop offset="1" stop-color="#7C3AED"/>
-    </linearGradient>
-  </defs>
-
-  <rect width="96" height="96" rx="24" fill="url(#rz)"/>
-
-  <!-- dòng 1 và 3: chữ thường, mờ -->
-  <rect x="24" y="28" width="48" height="7" rx="3.5" fill="#FFFFFF" opacity="0.45"/>
-  <rect x="24" y="61" width="34" height="7" rx="3.5" fill="#FFFFFF" opacity="0.45"/>
-
-  <!-- dòng 2: dòng bằng chứng — đặc, và có gạch chân đánh dấu -->
-  <rect x="24" y="44.5" width="48" height="7" rx="3.5" fill="#FFFFFF"/>
-  <rect x="24" y="54" width="48" height="2.5" rx="1.25" fill="#FFFFFF" opacity="0.8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Band 9">
+  <rect width="100" height="100" rx="6" fill="#0F1D33"/>
+  <rect x="14" y="12" width="19" height="74" fill="#F3EDE1"/>
+  <path d="M37 12 H45 A15 16 0 0 1 45 44 H37 Z" fill="#F3EDE1"/>
+  <path d="M37 47 H46 A15 19.5 0 0 1 46 86 H37 Z" fill="#F3EDE1"/>
+  <rect x="64" y="12" width="25" height="32" fill="#B8955A"/>
+  <path d="M64 47 H89 V86 H82 A18 18 0 0 1 64 68 Z" fill="#F3EDE1"/>
 </svg>

@@ -681,7 +681,7 @@ export default function LearnScreen() {
                   {fill.before}
                   <Text
                     className="font-strong"
-                    style={{ color: revealed ? (verdict ? "#15803D" : "#4A7FE8") : "#94A3B8" }}
+                    style={{ color: revealed ? (verdict ? "#15803D" : "#A8843F") : "#94A3B8" }}
                   >
                     {revealed ? fill.answer : " _______ "}
                   </Text>
@@ -791,8 +791,8 @@ export default function LearnScreen() {
                     style={{
                       borderWidth: 1.5,
                       borderColor:
-                        verdict === null ? (listening ? color.primary : "#CBD5E1") : verdict ? GREEN : RED,
-                      backgroundColor: "#F8FAFC",
+                        verdict === null ? (listening ? color.primary : "#E1D9CB") : verdict ? GREEN : RED,
+                      backgroundColor: "#FCFBF8",
                     }}
                   />
                   {micOk && verdict === null ? (

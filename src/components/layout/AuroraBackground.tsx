@@ -75,9 +75,9 @@ type Blob = {
 const BLOBS: Blob[] = [
   { tint: color.primary, x: 0.14, y: 0.1, size: 0.62, driftX: 130, driftY: 90, durationMs: 17_000, opacity: 0.75 },
   { tint: color.accent, x: 0.86, y: 0.16, size: 0.56, driftX: -115, driftY: 110, durationMs: 21_000, opacity: 0.72 },
-  { tint: '#4F46E5', x: 0.62, y: 0.62, size: 0.7, driftX: 100, driftY: -100, durationMs: 26_000, opacity: 0.55 },
-  { tint: '#38BDF8', x: 0.1, y: 0.74, size: 0.5, driftX: 120, driftY: -80, durationMs: 31_000, opacity: 0.5 },
-  { tint: '#A855F7', x: 0.44, y: 0.94, size: 0.48, driftX: -90, driftY: -95, durationMs: 23_000, opacity: 0.45 },
+  { tint: '#CDA45E', x: 0.62, y: 0.62, size: 0.7, driftX: 100, driftY: -100, durationMs: 26_000, opacity: 0.55 },
+  { tint: '#CEA662', x: 0.1, y: 0.74, size: 0.5, driftX: 120, driftY: -80, durationMs: 31_000, opacity: 0.5 },
+  { tint: '#D5B377', x: 0.44, y: 0.94, size: 0.48, driftX: -90, driftY: -95, durationMs: 23_000, opacity: 0.45 },
 ];
 
 const KEYFRAMES_ID = 'aurora-keyframes';

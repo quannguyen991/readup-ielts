@@ -36,6 +36,12 @@ type RewardState = PurchaseState & {
   /** Thưởng hạng tháng đã nhận: YYYY-MM → số sao. Sao này cộng thẳng vào số dư. */
   prizes: Record<string, number>;
   buy: (itemId: string, balance: number) => { ok: boolean; reason?: string };
+  /**
+   * Tiêu sao cho việc khác ngoài cửa hàng (đổi vật liệu ở Chợ vật liệu). Chỉ
+   * thành công khi `balance ≥ amount` và `amount` là số nguyên dương; trả về
+   * đã tiêu hay chưa. `spent` đồng bộ theo max giữa các máy như `buy`.
+   */
+  spendStars: (amount: number, balance: number) => boolean;
   equipAvatar: (itemId: string | null) => void;
   /** Đeo / bỏ đeo một món ở một ô. Chỉ đeo được món đã sở hữu. */
   equip: (slot: WearSlot, itemId: string | null) => void;
@@ -69,6 +75,12 @@ export const useRewardStore = create<RewardState>()(
         if (!result.ok) return { ok: false, reason: result.reason };
         set({ owned: result.owned, spent: result.spent });
         return { ok: true };
+      },
+
+      spendStars: (amount, balance) => {
+        if (!Number.isInteger(amount) || amount <= 0 || !(balance >= amount)) return false;
+        set({ spent: get().spent + amount });
+        return true;
       },
 
       equipAvatar: (itemId) => get().equip('avatar', itemId),

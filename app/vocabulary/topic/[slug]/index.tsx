@@ -26,7 +26,7 @@ import { Badge as BadgeSticker, CuteBook, type BadgeIcon } from '@/components/il
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
 
 const GROUP_BADGE: readonly BadgeIcon[] = ['check', 'star', 'target', 'bolt'];
-const GROUP_TONE = ['#22A06B', '#4A7FE8', '#F0703F', '#E0533D'] as const;
+const GROUP_TONE = ['#22A06B', '#A8843F', '#F0703F', '#E0533D'] as const;
 
 /**
  * Một bộ từ vựng: 50 từ, xếp theo mức band từ dễ tới khó.
@@ -160,7 +160,7 @@ export default function VocabTopicScreen() {
         <View className="mt-5">
           <View className="flex-row items-center gap-2.5">
             <View aria-hidden>
-              <SealIcon name="target" color="#4A7FE8" size={38} />
+              <SealIcon name="target" color="#A8843F" size={38} />
             </View>
             <Text className="font-heavy text-sectionTitle text-ink">Cách luyện</Text>
           </View>
@@ -408,9 +408,9 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
 const MODES: { key: string; label: string; note: string; icon: IconName; tone: string; recommended?: boolean }[] = [
-  { key: 'learn', label: 'Học xen kẽ', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', icon: 'book', tone: '#5B8BEE', recommended: true },
+  { key: 'learn', label: 'Học xen kẽ', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', icon: 'book', tone: '#B8955A', recommended: true },
   { key: 'quiz', label: 'Quiz ôn tập', note: 'Trắc nghiệm A/B/C/D kiểu đề THPT', icon: 'target', tone: '#EA580C' },
-  { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#0891B2' },
+  { key: 'dictation', label: 'Nghe chép', note: 'Nghe từ, viết đúng chính tả', icon: 'volume', tone: '#8E6A2C' },
   { key: 'cloze', label: 'Điền vào câu', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', icon: 'pencil', tone: '#E0533D' },
   { key: 'speak', label: 'Phát âm', note: 'Đọc to, máy nghe và chấm', icon: 'mic', tone: '#DB2777' },
   { key: 'test', label: 'Kiểm tra', note: '20 câu trộn 4 dạng, chấm khi nộp', icon: 'clipboard', tone: '#D97706' },
@@ -419,7 +419,7 @@ const MODES: { key: string; label: string; note: string; icon: IconName; tone: s
 
 const STATUS_TILES: { key: DeckStatus; label: string; only: string; icon: IconName; tone: string; soft: string }[] = [
   { key: 'mastered', label: 'Đã nhớ', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },
-  { key: 'new', label: 'Chưa nhớ', only: 'new', icon: 'info', tone: '#4F7FE6', soft: '#E0EAFF' },
+  { key: 'new', label: 'Chưa nhớ', only: 'new', icon: 'info', tone: '#CFA966', soft: '#F9F2E6' },
   { key: 'review', label: 'Cần ôn tập', only: 'review', icon: 'refresh', tone: '#EA580C', soft: '#FFEDD5' },
 ];
 

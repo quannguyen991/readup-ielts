@@ -43,7 +43,7 @@ export function CuteBook({ size = 72 }: P) {
       <Path d="M8 22 Q34 12 60 22 Q86 12 112 22 L112 86 Q86 76 60 86 Q34 76 8 86 Z" fill="#2FA36B" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
       <Path d="M14 18 Q36 8 60 18 L60 80 Q36 70 14 80 Z" fill="#FFFFFF" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
       <Path d="M106 18 Q84 8 60 18 L60 80 Q84 70 106 80 Z" fill="#FFFFFF" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
-      <Path d="M22 30 Q36 25 50 30 M70 30 Q84 25 98 30" stroke="#C9D2E3" strokeWidth={2.4} fill="none" strokeLinecap="round" />
+      <Path d="M22 30 Q36 25 50 30 M70 30 Q84 25 98 30" stroke="#E3D9C9" strokeWidth={2.4} fill="none" strokeLinecap="round" />
       <Face cx={37} cy={46} s={0.9} />
       <Face cx={83} cy={46} s={0.9} />
     </Svg>
@@ -56,7 +56,7 @@ export function CutePencil({ size = 64 }: P) {
       <G transform="rotate(-18 55 33)">
         <Rect x={22} y={20} width={62} height={26} rx={4} fill="#FACC15" stroke={INK} strokeWidth={SW} />
         <Rect x={8} y={20} width={16} height={26} rx={4} fill="#F59BB0" stroke={INK} strokeWidth={SW} />
-        <Rect x={20} y={20} width={8} height={26} fill="#CBD5E1" stroke={INK} strokeWidth={SW} />
+        <Rect x={20} y={20} width={8} height={26} fill="#E1D9CB" stroke={INK} strokeWidth={SW} />
         <Path d="M84 20 L104 33 L84 46 Z" fill="#FDE7C2" stroke={INK} strokeWidth={SW} strokeLinejoin="round" />
         <Path d="M97 29 L104 33 L97 37 Z" fill={INK} />
         <Face cx={55} cy={31} s={0.75} />
@@ -104,7 +104,7 @@ export function CuteCalendar({ size = 64 }: P) {
 export function CuteGlobe({ size = 64 }: P) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
-      <Circle cx={50} cy={50} r={38} fill="#5AB0F0" stroke={INK} strokeWidth={SW} />
+      <Circle cx={50} cy={50} r={38} fill="#D4B276" stroke={INK} strokeWidth={SW} />
       <Path d="M22 36 Q34 30 40 40 Q44 50 34 56 Q24 58 18 50 M58 18 Q72 22 76 34 Q70 40 60 36 Q54 28 58 18 M60 70 Q72 64 80 70 Q74 82 62 84 Z" fill="#6CCB7A" stroke={INK} strokeWidth={2.2} strokeLinejoin="round" />
       <Face cx={50} cy={54} s={0.85} />
     </Svg>
@@ -114,10 +114,10 @@ export function CuteGlobe({ size = 64 }: P) {
 export function CuteTrain({ size = 90 }: P) {
   return (
     <Svg width={size} height={size * 0.62} viewBox="0 0 130 80">
-      <Rect x={10} y={16} width={100} height={46} rx={14} fill="#4A7FE8" stroke={INK} strokeWidth={SW} />
-      <Rect x={100} y={30} width={22} height={32} rx={8} fill="#4A7FE8" stroke={INK} strokeWidth={SW} />
-      <Rect x={22} y={24} width={22} height={16} rx={4} fill="#DDEBFF" stroke={INK} strokeWidth={2.4} />
-      <Rect x={78} y={24} width={22} height={16} rx={4} fill="#DDEBFF" stroke={INK} strokeWidth={2.4} />
+      <Rect x={10} y={16} width={100} height={46} rx={14} fill="#A8843F" stroke={INK} strokeWidth={SW} />
+      <Rect x={100} y={30} width={22} height={32} rx={8} fill="#A8843F" stroke={INK} strokeWidth={SW} />
+      <Rect x={22} y={24} width={22} height={16} rx={4} fill="#F9F1E3" stroke={INK} strokeWidth={2.4} />
+      <Rect x={78} y={24} width={22} height={16} rx={4} fill="#F9F1E3" stroke={INK} strokeWidth={2.4} />
       <Rect x={10} y={48} width={112} height={6} fill="#FACC15" />
       <Circle cx={32} cy={66} r={9} fill="#FFFFFF" stroke={INK} strokeWidth={SW} />
       <Circle cx={90} cy={66} r={9} fill="#FFFFFF" stroke={INK} strokeWidth={SW} />

@@ -38,7 +38,7 @@ type Board = {
 
 type Answer = string | null;
 
-const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(30,41,99,0.08)' } as object;
+const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 
 function isCorrect(it: WeeklyItem, a: Answer): boolean {
   if (it.kind === 'math') return gradeMathItem(it.item, a).isCorrect;
@@ -153,7 +153,7 @@ export default function WeeklyScreen() {
                   key={x.id}
                   onPress={() => setIndex(i)}
                   className="h-9 w-9 items-center justify-center rounded-lg"
-                  style={{ backgroundColor: i === index ? color.primary : done ? '#DBEAFE' : 'rgba(255,255,255,0.85)' }}
+                  style={{ backgroundColor: i === index ? color.primary : done ? '#F3E6C8' : 'rgba(255,255,255,0.85)' }}
                 >
                   <Text className="font-semi text-label" style={{ color: i === index ? '#FFFFFF' : color.ink }}>
                     {i + 1}
@@ -287,7 +287,7 @@ export default function WeeklyScreen() {
                 <View
                   key={`${row.name}-${i}`}
                   className="flex-row items-center gap-3 rounded-2xl px-4 py-3"
-                  style={{ backgroundColor: i === 0 ? '#FEF3C7' : i < 3 ? '#F1F6FF' : '#F8FAFC' }}
+                  style={{ backgroundColor: i === 0 ? '#FEF3C7' : i < 3 ? '#FCF9F4' : '#FCFBF8' }}
                 >
                   <Text className="w-8 font-heavy text-bodyLg text-ink">#{i + 1}</Text>
                   <Text className="min-w-0 flex-1 font-semi text-body text-ink" numberOfLines={1}>
@@ -339,9 +339,9 @@ function VerbalItem({ q, picked, onPick }: { q: import('@/data/sat-rw-repository
               key={i}
               onPress={() => onPick(i)}
               className="flex-row items-start gap-3 rounded-2xl px-4 py-3"
-              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#E2E8F0', backgroundColor: sel ? '#EAF1FF' : '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#F0EBE2', backgroundColor: sel ? '#FBF6EE' : '#FFFFFF' }}
             >
-              <View className="h-6 w-6 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#EEF2F7' }}>
+              <View className="h-6 w-6 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#F7F4EE' }}>
                 <Text className="font-strong text-label" style={{ color: sel ? '#FFFFFF' : color.muted }}>
                   {'ABCD'[i]}
                 </Text>
