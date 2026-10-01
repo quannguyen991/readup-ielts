@@ -129,7 +129,7 @@ export function ReminderCard() {
               : perm === 'default'
                 ? L('Chưa cho phép thông báo — tắt rồi bật lại để trình duyệt hỏi quyền, hoặc dùng tệp lịch.', "Notifications aren't allowed yet — turn this off and on again so the browser asks, or use the calendar file.")
                 : L('Trình duyệt này không hỗ trợ thông báo — dùng tệp lịch để được nhắc.', "This browser doesn't support notifications — use the calendar file instead.")
-          : L('Band 9 chưa có thông báo đẩy khi đóng app. Muốn được nhắc cả lúc không mở Band 9 (trên điện thoại), hãy thêm tệp lịch vào Google Calendar / lịch của máy.', "Band 9 doesn't send push notifications when closed. To be reminded even when Band 9 isn't open (e.g. on your phone), add the calendar file to Google Calendar or your device calendar.")}
+          : L('Nhắc này chỉ chạy khi còn tab Band 9 đang mở. Muốn được nhắc cả lúc đã đóng app, bật thẻ "Nhắc học" phía trên hoặc thêm tệp lịch vào Google Calendar / lịch của máy.', "This reminder only works while a Band 9 tab is open. To be reminded when the app is closed, use the \"Study reminders\" card above or add the calendar file to Google Calendar or your device calendar.")}
       </Text>
       {msg ? <Text className="mt-2 font-sans text-label text-ink">{msg}</Text> : null}
     </Card>

@@ -68,6 +68,15 @@ export default function QuestHome() {
   return (
     <Screen>
       <View onLayout={onLayout} style={{ width: '100%', maxWidth: MAX_W, alignSelf: 'center', paddingBottom: 28 }}>
+        {/* 0. Thành phố đặt trên đầu (01/10/2026: "để cái xây thành phố trên đầu"), chỉ máy tính */}
+        {cityAvailable ? (
+          <Appear>
+            <View style={{ marginBottom: GAP.md }}>
+              <QuestCityHero />
+            </View>
+          </Appear>
+        ) : null}
+
         {!enabled ? (
           <Appear>
             <Panel pad={14} style={{ marginBottom: GAP.md, flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: GAP.md, borderColor: 'rgba(250,204,21,0.45)' }}>
@@ -99,19 +108,12 @@ export default function QuestHome() {
           <BattleHud next={next} />
         </Appear>
 
-        {/* 2. Hai thế giới: toa tàu, thành phố (máy tính) */}
+        {/* 2. Toa tàu từ vựng */}
         <Appear index={1}>
           <View style={{ marginTop: GAP.md }}>
             <QuestJourneyHero />
           </View>
         </Appear>
-        {cityAvailable ? (
-          <Appear index={2}>
-            <View style={{ marginTop: GAP.md }}>
-              <QuestCityHero />
-            </View>
-          </Appear>
-        ) : null}
 
         {/* 3. Hôm nay */}
         <Appear index={3}>

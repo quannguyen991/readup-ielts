@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
@@ -18,7 +18,7 @@ import { bi, useL, type Bi } from '@/i18n/useL';
 
 type LobbyMode = Exclude<SessionMode, 'q'>;
 
-const MODES: Array<{ key: LobbyMode; title: string; hint: Bi }> = [
+const MODES: { key: LobbyMode; title: string; hint: Bi }[] = [
   { key: 'full', title: 'Full test', hint: { vi: '11–14 phút · Part 1 → 2 → 3', en: '11–14 min · Part 1 → 2 → 3' } },
   { key: 'p1', title: 'Part 1', hint: { vi: '3–4 phút · 4 câu về bản thân', en: '3–4 min · 4 questions about you' } },
   { key: 'p2', title: 'Part 2', hint: { vi: '1 phút chuẩn bị · nói 2 phút', en: '1 min to prepare · speak for 2 min' } },
@@ -47,7 +47,9 @@ export default function SpeakingLobby() {
   const { width } = useWindowDimensions();
   const wide = width >= 1000;
 
-  const [mode, setMode] = useState<LobbyMode>('full');
+  // `?mode=p1` — đường dẫn từ bài giáo viên giao (`services/classes/assignments.ts`).
+  const { mode: modeParam } = useLocalSearchParams<{ mode?: string }>();
+  const [mode, setMode] = useState<LobbyMode>(() => MODES.find((m) => m.key === modeParam)?.key ?? 'full');
   const [p1Topic, setP1Topic] = useState(() => pick(PART1_TOPICS).id);
   const [cue, setCue] = useState(() => pick(CUE_CARDS).id);
   const [exam, setExam] = useState(true);

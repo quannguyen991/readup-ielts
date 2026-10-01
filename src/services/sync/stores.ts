@@ -269,6 +269,9 @@ const topicStudyStore: SyncedStore = {
       scores: s.scores,
       starred: s.starred,
       lapses: s.lapses,
+      // Lịch ôn Leitner: hàm gộp đã lo từ 30/09 nhưng trước 01/10 chưa được đọc ra
+      // nên không lên máy chủ — lời nhắc "còn N từ cần ôn" (cron) đọc trường này.
+      reviews: s.reviews,
       mistakeLog: s.mistakeLog,
       learnSettings: s.learnSettings,
       lastAt: s.lastAt,
@@ -281,6 +284,7 @@ const topicStudyStore: SyncedStore = {
       scores: (data.scores ?? {}) as never,
       starred: (data.starred ?? {}) as never,
       lapses: (data.lapses ?? {}) as never,
+      reviews: (data.reviews ?? {}) as never,
       mistakeLog: (data.mistakeLog ?? []) as never,
       learnSettings: (data.learnSettings ?? useTopicStudyStore.getState().learnSettings) as never,
       lastAt: (data.lastAt ?? {}) as never,

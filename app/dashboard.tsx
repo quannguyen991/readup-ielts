@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { FeatureShelf } from '@/components/dashboard/FeatureShelf';
 import { ParentReportCard } from '@/components/dashboard/ParentReportCard';
+import { MyClassesCard } from '@/components/classes/MyClassesCard';
 import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
@@ -194,6 +195,8 @@ export default function DashboardScreen() {
       <TrialCard />
 
       <TodayPlan />
+
+      <MyClassesCard />
 
       <View className="mt-4 flex-row flex-wrap gap-4">
         <View style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>

@@ -3,6 +3,7 @@ import { Text } from 'react-native';
 
 import { AccountCard } from '@/components/account/AccountCard';
 import { Screen } from '@/components/layout/Screen';
+import { PushReminderCard } from '@/components/reminder/PushReminderCard';
 import { ReminderCard } from '@/components/reminder/Reminder';
 import { useL } from '@/i18n/useL';
 
@@ -27,6 +28,7 @@ export default function SettingsScreen() {
     <Screen>
       <Text className="font-heavy text-pageTitle text-ink">{L('Cài đặt', 'Settings')}</Text>
       <AccountCard />
+      <PushReminderCard />
       <ReminderCard />
     </Screen>
   );
