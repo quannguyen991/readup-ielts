@@ -151,7 +151,8 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' },
           { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
           { key: 'observatory', label: 'Chất lượng đề AI', href: '/observatory', icon: 'info' },
-          { key: 'teacher', label: 'Cho giáo viên', href: '/teacher', icon: 'letters' },
+          { key: 'teacher', label: 'Lớp học (giáo viên)', href: '/teacher', icon: 'clipboard' },
+          { key: 'join-class', label: 'Vào lớp bằng mã', href: '/join', icon: 'letters' },
         ],
       },
     ],
@@ -274,7 +275,8 @@ export const NAV_LABEL_EN: Record<string, string> = {
   upgrade: 'Plans',
   settings: 'Settings',
   observatory: 'AI question quality',
-  teacher: 'For teachers',
+  teacher: 'Classes (teachers)',
+  'join-class': 'Join a class',
   admin: 'Users & plans',
 };
 

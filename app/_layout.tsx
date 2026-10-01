@@ -94,6 +94,12 @@ function AppTitle() {
   return (
     <Head>
       <title>Band 9</title>
+      {/* Manifest + chế độ standalone: iPhone chỉ nhận thông báo đẩy (nhắc học)
+          khi Band 9 được "Thêm vào MH chính" như một web app. */}
+      <link rel="manifest" href="/manifest.webmanifest" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-title" content="Band 9" />
     </Head>
   );
 }
