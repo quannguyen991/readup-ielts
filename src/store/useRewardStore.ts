@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
-import { buy as applyBuy, findItem, type PurchaseState, type RewardPayload } from '@/services/gamification/shop';
+import { buy as applyBuy, DEFAULT_LOOK, findItem, type PurchaseState, type RewardPayload } from '@/services/gamification/shop';
 import { dateKey, shiftDays } from '@/services/gamification/points';
 import type { MascotId } from '@/services/game/mascots';
 import type { SkinId } from '@/components/game/sprites';
@@ -87,7 +87,7 @@ export const useRewardStore = create<RewardState>()(
 
       equip: (slot, itemId) => {
         // Chỉ đeo được món đã mua; gọi với null là bỏ đeo.
-        if (itemId !== null && (get().owned[itemId] ?? 0) === 0) return;
+        if (itemId !== null && itemId !== DEFAULT_LOOK && (get().owned[itemId] ?? 0) === 0) return;
         set({ [slot]: itemId, wornAt: new Date().toISOString() } as Partial<RewardState>);
       },
 

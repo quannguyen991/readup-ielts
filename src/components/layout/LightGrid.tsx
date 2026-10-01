@@ -3,7 +3,7 @@ import React from 'react';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
 import { pageBackgroundFor } from './study-backgrounds';
 import { useHydrated } from './useHydrated';
-import { findItem } from '@/services/gamification/shop';
+import { findItem, DEFAULT_LOOK } from '@/services/gamification/shop';
 import { useRewardStore } from '@/store/useRewardStore';
 
 /**
@@ -55,5 +55,7 @@ export function usePageBackground(kind: 'browse' | 'study') {
   const themeId = useRewardStore((s) => s.theme);
   const hydrated = useHydrated();
   if (!hydrated) return null;
+  // Chủ động chọn nền mặc định: kem vàng kim, không lấy nền theo Giao diện.
+  if (studyBgId === DEFAULT_LOOK) return null;
   return pageBackgroundFor(kind, findItem(studyBgId)?.studyBg, themeId);
 }
