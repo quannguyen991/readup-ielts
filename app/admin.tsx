@@ -115,6 +115,29 @@ export default function AdminScreen() {
     }
   };
 
+  /** Tặng sao: một người (`user`) hoặc tất cả (`user = null`). */
+  const giftStars = async (user: AdminUser | null, stars: number) => {
+    if (!token) return;
+    setBanner(null);
+    setError(null);
+    try {
+      const res = await fetch('/api/admin/stars', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(user ? { userId: user.id, stars } : { all: true, stars }),
+      });
+      const body = (await res.json()) as { error?: string; recipients?: number; auditWarning?: string };
+      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      setBanner(
+        (user ? `Đã tặng ${stars.toLocaleString('vi-VN')} ⭐ cho ${user.email ?? user.id}` : `Đã tặng ${stars.toLocaleString('vi-VN')} ⭐ cho ${body.recipients ?? 0} tài khoản`) +
+          ' — người nhận thấy sao ở lần đồng bộ kế tiếp (mở app / tải lại trang).' +
+          (body.auditWarning ? ` · ⚠ nhật ký không ghi được: ${body.auditWarning}` : ''),
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Không tặng được sao.');
+    }
+  };
+
   const counts = useMemo(() => {
     const out: Record<string, number> = {};
     for (const u of users) out[u.plan] = (out[u.plan] ?? 0) + 1;
@@ -185,6 +208,12 @@ export default function AdminScreen() {
       ) : null}
 
       {tab === 'users' ? (
+        <Appear index={2}>
+          <GiftAllCard total={total} onGift={(n) => void giftStars(null, n)} />
+        </Appear>
+      ) : null}
+
+      {tab === 'users' ? (
       <Appear index={3}>
         <View className="mt-4 flex-row items-center gap-2">
           <View className="flex-1 flex-row items-center gap-2 rounded-card border border-borderStrong bg-surface px-3">
@@ -231,7 +260,7 @@ export default function AdminScreen() {
         ) : (
           users.map((user, index) => (
             <Appear key={user.id} index={index + 4}>
-              <UserRow user={user} token={token} onSetPlan={setPlan} />
+              <UserRow user={user} token={token} onSetPlan={setPlan} onGift={(u, n) => void giftStars(u, n)} />
             </Appear>
           ))
         )}
@@ -657,16 +686,95 @@ function TabPill({
   );
 }
 
+const GIFT_PRESETS = [100, 500, 1000, 5000];
+
+/** Chọn số sao (nút nhanh hoặc tự gõ) rồi bấm tặng. */
+function GiftPicker({ confirmLabel, onGift }: { confirmLabel: (n: number) => string; onGift: (n: number) => void }) {
+  const [amount, setAmount] = useState(500);
+  const [text, setText] = useState('');
+  const n = text ? Number(text.replace(/[^0-9]/g, '')) : amount;
+  const valid = Number.isInteger(n) && n >= 1 && n <= 100000;
+  return (
+    <View style={{ gap: 8 }}>
+      <Text className="font-mid text-label text-muted">Số sao tặng</Text>
+      <View className="flex-row flex-wrap items-center gap-2">
+        {GIFT_PRESETS.map((v) => (
+          <Chip
+            key={v}
+            label={`${v.toLocaleString('vi-VN')} ⭐`}
+            active={!text && amount === v}
+            onPress={() => {
+              setText('');
+              setAmount(v);
+            }}
+          />
+        ))}
+        <TextInput
+          value={text}
+          onChangeText={setText}
+          placeholder="Số khác"
+          placeholderTextColor={color.subtle}
+          keyboardType="number-pad"
+          className="rounded-pill border border-borderStrong bg-surface px-3 py-2 font-sans text-body text-ink"
+          style={{ width: 110 }}
+        />
+      </View>
+      <View className="flex-row">
+        <Button label={valid ? confirmLabel(n) : 'Nhập từ 1 tới 100.000 sao'} variant="brand" size="sm" iconLeft="star" disabled={!valid} onPress={() => onGift(n)} />
+      </View>
+    </View>
+  );
+}
+
+/** Tặng sao cho TẤT CẢ tài khoản — bấm hai bước để không lỡ tay. */
+function GiftAllCard({ total, onGift }: { total: number; onGift: (n: number) => void }) {
+  const [open, setOpen] = useState(false);
+  const [pending, setPending] = useState<number | null>(null);
+  return (
+    <Card className="mt-4">
+      <View className="flex-row flex-wrap items-center justify-between gap-2">
+        <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
+          <Text className="font-strong text-body text-ink">Tặng sao cho mọi người</Text>
+          <Text className="mt-0.5 font-sans text-label text-muted">
+            Mỗi tài khoản nhận một khoản sao riêng, không trùng, không mất khi đồng bộ. Có ghi nhật ký.
+          </Text>
+        </View>
+        <Button label={open ? 'Đóng' : 'Tặng tất cả'} variant="outline" size="sm" iconLeft="star" onPress={() => { setOpen((v) => !v); setPending(null); }} />
+      </View>
+      {open ? (
+        <View className="mt-3 border-t border-border pt-3">
+          {pending === null ? (
+            <GiftPicker confirmLabel={(n) => `Tặng ${n.toLocaleString('vi-VN')} ⭐ cho tất cả (${total} tài khoản)`} onGift={(n) => setPending(n)} />
+          ) : (
+            <View style={{ gap: 8 }}>
+              <Text className="font-strong text-body text-ink">
+                Chắc chắn tặng {pending.toLocaleString('vi-VN')} ⭐ cho TẤT CẢ {total} tài khoản? Thao tác này không hoàn tác bằng một nút được.
+              </Text>
+              <View className="flex-row flex-wrap gap-2">
+                <Button label="Xác nhận tặng" variant="brand" size="sm" onPress={() => { onGift(pending); setPending(null); setOpen(false); }} />
+                <Button label="Huỷ" variant="outline" size="sm" onPress={() => setPending(null)} />
+              </View>
+            </View>
+          )}
+        </View>
+      ) : null}
+    </Card>
+  );
+}
+
 function UserRow({
   user,
   token,
   onSetPlan,
+  onGift,
 }: {
   user: AdminUser;
   token: string | null;
   onSetPlan: (user: AdminUser, plan: PlanId, months: number | null) => void;
+  onGift: (user: AdminUser, stars: number) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const [gifting, setGifting] = useState(false);
   const [months, setMonths] = useState<number | null>(1);
 
   /*
@@ -733,6 +841,13 @@ function UserRow({
             onPress={() => void toggleActivity()}
           />
           <Button
+            label={gifting ? 'Đóng' : 'Tặng sao'}
+            variant="ghost"
+            size="sm"
+            iconLeft="star"
+            onPress={() => setGifting((v) => !v)}
+          />
+          <Button
             label={open ? 'Đóng' : 'Đổi gói'}
             variant="outline"
             size="sm"
@@ -740,6 +855,18 @@ function UserRow({
           />
         </View>
       </View>
+
+      {gifting ? (
+        <View className="mt-3 border-t border-border pt-3">
+          <GiftPicker
+            confirmLabel={(n) => `Tặng ${n.toLocaleString('vi-VN')} ⭐ cho ${user.email ?? 'tài khoản này'}`}
+            onGift={(n) => {
+              setGifting(false);
+              onGift(user, n);
+            }}
+          />
+        </View>
+      ) : null}
 
       {open ? (
         <View className="mt-3 border-t border-border pt-3">
