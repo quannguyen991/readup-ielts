@@ -146,10 +146,8 @@ function DrillRunner() {
         `${MATH_SKILL_LABEL[skill]} · Bộ đề ${round + 1}/${roundsFor(skill)}`,
         `${MATH_SKILL_LABEL[skill]} · Set ${round + 1}/${roundsFor(skill)}`,
       )}
-      subtitle={L(
-        `${items.length} câu của ngân hàng kỹ năng này (mỗi bộ ${ROUND_SIZE} câu). Làm hết rồi xem lại từng câu — sai chỗ nào sẽ được gọi đúng tên chỗ đó.`,
-        `${items.length} questions from this skill's bank (${ROUND_SIZE} per set). Finish, then review each one — every mistake gets called by its name.`,
-      )}
+      subtitle={L(`${items.length} câu`, `${items.length} questions`)}
+      instantSolution
       items={items}
       minutes={items.length * MINUTES_PER_QUESTION}
       submitLabel={L('Nộp và xem lại', 'Submit and review')}

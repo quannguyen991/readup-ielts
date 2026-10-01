@@ -70,12 +70,6 @@ export function RwQuestionPane({
             <Text className="font-sans text-body" style={{ color: EXAM.ink, lineHeight: 23 }}>
               {option}
             </Text>
-            {/* Sau khi kiểm tra: một dòng lý do dưới mỗi phương án sai. */}
-            {revealed && i !== answerIndex && item.whyWrong?.[i] ? (
-              <Text className="mt-1 font-sans text-label" style={{ color: EXAM.muted, lineHeight: 18 }}>
-                {item.whyWrong[i]}
-              </Text>
-            ) : null}
           </ExamOption>
         ))}
       </View>
