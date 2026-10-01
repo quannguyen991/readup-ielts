@@ -159,7 +159,7 @@ export default function SatRwMixScreen() {
       onBack={() => run.go(index - 1)}
       onNext={() => (lastQ ? finish() : run.go(index + 1))}
       nextLabel={lastQ ? L('Xem kết quả', 'See results') : undefined}
-      check={!answered ? { label: L('Kiểm tra', 'Check'), onPress: () => void run.check(), disabled: picked === null } : null}
+      check={null}
       onExit={() => {
         const answered = run.picks.filter((c) => c !== null).length;
         if (answered > 0) {

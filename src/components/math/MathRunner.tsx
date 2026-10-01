@@ -200,6 +200,16 @@ export function MathRunner({
   const isRevealed = revealed[current.id] ?? false;
   const given = (answers[current.id] ?? '').trim();
   const setAnswer = (value: string) => setAnswers((prev) => ({ ...prev, [current.id]: value }));
+  // Bộ luyện: chạm một phương án là hiện đúng/sai và lời giải ngay (câu điền số vẫn có nút Kiểm tra).
+  const pickChoice = (value: string) => {
+    if (!instantSolution || !current.choices) {
+      setAnswer(value);
+      return;
+    }
+    useGameStore.getState().answer(gradeMathItem(current, value).isCorrect, 'math');
+    setAnswers((prev) => ({ ...prev, [current.id]: value }));
+    setRevealed((prev) => ({ ...prev, [current.id]: true }));
+  };
 
   return (
     <SatExamShell
@@ -233,7 +243,7 @@ export function MathRunner({
       submitLabel={submitLabel ?? L('Nộp bài', 'Submit')}
       onExit={onExit ?? (() => (router.canGoBack() ? router.back() : router.replace('/math' as never)))}
       confirmExit
-      onChoose={current.choices && !isRevealed ? (i) => setAnswer(String(i)) : undefined}
+      onChoose={current.choices && !isRevealed ? (i) => pickChoice(String(i)) : undefined}
       choiceCount={current.choices?.length ?? 0}
       eliminable={!!current.choices}
     >
@@ -243,7 +253,7 @@ export function MathRunner({
         answer={answers[current.id] ?? null}
         revealed={isRevealed}
         hidden={hints[current.id]}
-        onAnswer={isRevealed ? undefined : setAnswer}
+        onAnswer={isRevealed ? undefined : pickChoice}
       />
 
       {/*

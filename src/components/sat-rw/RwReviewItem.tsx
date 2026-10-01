@@ -1,4 +1,5 @@
 import React from 'react';
+import { SolutionBlocks } from './QuestionCard';
 import { Text, View } from 'react-native';
 
 import { ItemBody } from './ItemBody';
@@ -60,9 +61,7 @@ export function RwReviewItem({ item, answer }: { item: MockItem; answer: number 
         </View>
         <View className="min-w-0 flex-1">
           <Text className="font-strong text-label uppercase text-info-ink">{L('Vì sao', 'Why')}</Text>
-          <Text className="mt-1 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
-            {item.solutionVi}
-          </Text>
+          <SolutionBlocks question={item} picked={null} />
         </View>
       </View>
     </View>

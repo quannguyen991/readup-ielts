@@ -41,18 +41,8 @@ export function useRwPractice(questions: SatRwQuestion[], instant: boolean) {
   const question = questions[index];
   const locked = instant && !!graded[index];
 
-  const pick = (choice: number) => {
-    if (locked) return;
-    setPicks((prev) => {
-      const next = [...prev];
-      next[index] = choice;
-      return next;
-    });
-  };
-
-  /** Bấm Kiểm tra ở câu đang mở. Trả về đúng/sai, hoặc null nếu chưa chọn. */
-  const check = (): boolean | null => {
-    const choice = picks[index];
+  /** Chấm câu đang mở với phương án `choice`. Trả về đúng/sai, hoặc null nếu không chấm được. */
+  const grade = (choice: number | null | undefined): boolean | null => {
     if (!question || choice === null || choice === undefined || graded[index]) return null;
     const ok = choice === question.answerIndex;
     recordRwAttempt(question.id, ok, timeOn(index));
@@ -65,6 +55,20 @@ export function useRwPractice(questions: SatRwQuestion[], instant: boolean) {
     });
     return ok;
   };
+
+  /** Bộ luyện có lời giải ngay: chọn là chấm luôn (hiện đúng/sai tức thì). */
+  const pick = (choice: number) => {
+    if (locked) return;
+    setPicks((prev) => {
+      const next = [...prev];
+      next[index] = choice;
+      return next;
+    });
+    if (instant) grade(choice);
+  };
+
+  /** Chấm phương án đang chọn (dùng khi bộ không chấm ngay). */
+  const check = (): boolean | null => grade(picks[index]);
 
   /**
    * Nộp: ghi mọi câu đã chọn mà chưa ghi. Trả số câu đúng của cả bộ.

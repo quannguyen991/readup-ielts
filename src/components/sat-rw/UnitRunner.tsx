@@ -155,11 +155,7 @@ export function UnitRunner({
       onBack={() => run.go(index - 1)}
       onNext={() => (lastQ ? finish() : run.go(index + 1))}
       nextLabel={lastQ ? L('Xem kết quả', 'See results') : undefined}
-      check={
-        instantSolution && !run.locked
-          ? { label: L('Kiểm tra', 'Check'), onPress: () => void run.check(), disabled: picked === null }
-          : null
-      }
+      check={null}
       onExit={() => {
         // Lưu & thoát: câu đã kiểm tra đã ghi sẵn; câu mới chọn chưa kiểm tra ghi nốt ở đây.
         const answered = run.picks.filter((c) => c !== null).length;

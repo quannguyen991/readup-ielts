@@ -8,6 +8,7 @@ import type { SatRwQuestion } from '@/data/sat-rw-repository';
 import { WordNotes } from '@/components/sat-rw/WordNotes';
 import { color, paper } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { formatSolution, type SolutionSource } from '@/services/sat-rw/solution-format';
 
 /**
  * Một câu SAT R&W: đoạn văn, câu hỏi, bốn phương án, và lời giải hiện ngay sau
@@ -114,6 +115,75 @@ export function QuestionCard({
 }
 
 /**
+ * Lời giải chia ý: "Vì sao đúng" (gạch đầu dòng), "Vì sao các đáp án khác sai"
+ * (mỗi phương án một dòng), và bản dịch. Xem `services/sat-rw/solution-format`.
+ */
+export function SolutionBlocks({ question, picked }: { question: SolutionSource; picked: number | null }) {
+  const { L } = useL();
+  const parts = React.useMemo(() => formatSolution(question), [question]);
+  return (
+    <View style={{ marginTop: 10, gap: 14 }}>
+      <View style={{ gap: 6 }}>
+        <Text className="font-strong text-label uppercase" style={{ letterSpacing: 1.2, color: paper.muted }}>
+          {L('Vì sao đúng', 'Why it is right')}
+        </Text>
+        {parts.why.map((line, i) => (
+          <View key={i} style={{ flexDirection: 'row', gap: 8 }}>
+            <Text className="font-strong" style={{ fontSize: 15, lineHeight: 22, color: color.success }}>
+              •
+            </Text>
+            <Text className="min-w-0 flex-1 font-sans text-paper-body" style={{ fontSize: 15, lineHeight: 22 }}>
+              {line}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      {parts.wrong.length > 0 ? (
+        <View style={{ gap: 8 }}>
+          <Text className="font-strong text-label uppercase" style={{ letterSpacing: 1.2, color: paper.muted }}>
+            {L('Vì sao các đáp án khác sai', 'Why the others are wrong')}
+          </Text>
+          {parts.wrong.map((w) => (
+            <View key={w.index} style={{ flexDirection: 'row', gap: 10, alignItems: 'flex-start' }}>
+              <View
+                style={{
+                  width: 24,
+                  height: 24,
+                  borderRadius: 12,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: picked === w.index ? color.warning : '#EFE6D2',
+                }}
+              >
+                <Text className="font-heavy" style={{ fontSize: 12, color: picked === w.index ? '#FFFFFF' : '#0F1D33' }}>
+                  {'ABCD'[w.index]}
+                </Text>
+              </View>
+              <Text className="min-w-0 flex-1 font-sans text-paper-body" style={{ fontSize: 15, lineHeight: 22 }}>
+                {w.reason}
+                {picked === w.index ? <Text className="font-strong" style={{ color: color.warning }}>{L('  ← bạn chọn', '  ← your pick')}</Text> : null}
+              </Text>
+            </View>
+          ))}
+        </View>
+      ) : null}
+
+      {parts.meaning ? (
+        <View style={{ gap: 4 }}>
+          <Text className="font-strong text-label uppercase" style={{ letterSpacing: 1.2, color: paper.muted }}>
+            {L('Dịch', 'Translation')}
+          </Text>
+          <Text className="font-sans text-paper-body" style={{ fontSize: 15, lineHeight: 22, fontStyle: 'italic' }}>
+            {parts.meaning}
+          </Text>
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
+/**
  * Lời giải của một câu R&W (hộp đúng/sai + giải thích + từ điển phương án).
  * Tách ra để phòng thi (`sat-exam`) vẽ đúng hộp này dưới cột câu hỏi.
  */
@@ -134,9 +204,7 @@ export function RwSolution({ question, picked }: { question: SatRwQuestion; pick
               : L(`Đáp án đúng là ${'ABCD'[question.answerIndex]}`, `The correct answer is ${'ABCD'[question.answerIndex]}`)}
           </Text>
         </View>
-        <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
-          {question.solutionVi}
-        </Text>
+        <SolutionBlocks question={question} picked={picked} />
       </View>
       {/* Từ điển của bốn phương án: định nghĩa, đồng nghĩa, trái nghĩa, ví dụ. */}
       <WordNotes options={question.options} answerIndex={question.answerIndex} />
