@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useSyncExternalStore } from 'react';
 import { Platform, View, useWindowDimensions, type StyleProp, type ViewStyle } from 'react-native';
 
-import { isLaptopLike } from './hero-star-policy';
+import { isLaptopLike, showsHeroLogo } from './hero-star-policy';
 import type { SceneKind } from './hero-star';
 
 export type { SceneKind };
@@ -67,4 +67,12 @@ export function useHeroStar(): boolean {
   const { width } = useWindowDimensions();
   if (Platform.OS !== 'web' || typeof navigator === 'undefined') return false;
   return isLaptopLike({ width, finePointer: fine, userAgent: navigator.userAgent, touchPoints: navigator.maxTouchPoints ?? 0 });
+}
+
+/** Có dựng logo Band 9 3D ở trang giới thiệu không: máy tính và máy tính bảng (web). */
+export function useHeroLogo(): boolean {
+  const { width } = useWindowDimensions();
+  const hydrated = useSyncExternalStore(subscribePointer, () => true, () => false);
+  if (Platform.OS !== 'web' || !hydrated) return false;
+  return showsHeroLogo({ width });
 }
