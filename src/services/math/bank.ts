@@ -1,4 +1,5 @@
 import { MATH_SKILL_DOMAIN, type MathDomain, type MathItem, type MathSkill } from '@/lib/math/types';
+import type { Difficulty, DifficultyMix } from '@/lib/difficulty';
 import { generateMathSet } from './generator';
 
 /**
@@ -73,11 +74,46 @@ export function parseBankRoundId(id: string | null): { skill: MathSkill; round: 
   return { skill: m[1] as MathSkill, round: Number(m[2]) };
 }
 
-/** Các câu của một lượt — cùng hạt giống thì cùng câu. */
+/**
+ * Bậc của một lượt trong kho: các lượt đầu DỄ, giữa VỪA, cuối KHÓ.
+ *
+ * Kho chỉ có hai lượt (các kỹ năng Problem-Solving) thì lượt đầu dễ, lượt sau
+ * khó — không bỏ mất bậc khó chỉ vì kho ngắn.
+ */
+export function roundTier(skill: MathSkill, round: number): Difficulty {
+  const n = roundsFor(skill);
+  if (n <= 1) return 'medium';
+  const phase = Math.round((round * 2) / (n - 1));
+  return phase <= 0 ? 'easy' : phase === 1 ? 'medium' : 'hard';
+}
+
+/**
+ * Lượt nên mở khi bấm Luyện với bộ lọc độ khó: lượt CHƯA LÀM đầu tiên của bậc
+ * ấy; làm hết rồi thì lượt đầu của bậc. Không có lượt nào thuộc bậc thì null.
+ */
+export function roundForTier(skill: MathSkill, tier: Difficulty, doneRounds: readonly number[]): number | null {
+  const ofTier = Array.from({ length: roundsFor(skill) }, (_, r) => r).filter((r) => roundTier(skill, r) === tier);
+  if (ofTier.length === 0) return null;
+  return ofTier.find((r) => !doneRounds.includes(r)) ?? ofTier[0]!;
+}
+
+/** Tỉ lệ dễ / vừa / khó trong một lượt theo bậc của lượt ấy. */
+export const ROUND_MIX: Record<Difficulty, DifficultyMix> = {
+  easy: { easy: 0.6, medium: 0.4, hard: 0 },
+  medium: { easy: 0.2, medium: 0.6, hard: 0.2 },
+  hard: { easy: 0, medium: 0.3, hard: 0.7 },
+};
+
+/** Các câu của một lượt — cùng hạt giống thì cùng câu, xếp dễ → khó. */
 export function bankRoundItems(skill: MathSkill, round: number): MathItem[] {
   const count = roundLength(skill, round);
   if (count === 0) return [];
-  return generateMathSet({ skills: [skill], count, seed: bankRoundId(skill, round) });
+  return generateMathSet({
+    skills: [skill],
+    count,
+    seed: bankRoundId(skill, round),
+    mix: ROUND_MIX[roundTier(skill, round)],
+  });
 }
 
 export type SkillBankProgress = {

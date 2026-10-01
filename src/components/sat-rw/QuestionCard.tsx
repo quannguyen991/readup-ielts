@@ -108,35 +108,38 @@ export function QuestionCard({
         })}
       </View>
 
-      {answered && showSolution ? (
-        <View
-          className="mt-4 rounded-panel border-l-4 p-3.5"
-          style={{
-            borderLeftColor: picked === question.answerIndex ? color.success : color.warning,
-            backgroundColor: paper.brandTint,
-          }}
-        >
-          <View className="flex-row items-center gap-2">
-            <Icon
-              name={picked === question.answerIndex ? 'check' : 'info'}
-              size={16}
-              color={picked === question.answerIndex ? color.success : color.warning}
-              strokeWidth={2.2}
-            />
-            <Text className="font-strong text-body text-paper-ink">
-              {picked === question.answerIndex
-                ? L('Đúng rồi', 'Correct')
-                : L(`Đáp án đúng là ${'ABCD'[question.answerIndex]}`, `The correct answer is ${'ABCD'[question.answerIndex]}`)}
-            </Text>
-          </View>
-          <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
-            {question.solutionVi}
+      {answered && showSolution ? <RwSolution question={question} picked={picked} /> : null}
+    </PaperCard>
+  );
+}
+
+/**
+ * Lời giải của một câu R&W (hộp đúng/sai + giải thích + từ điển phương án).
+ * Tách ra để phòng thi (`sat-exam`) vẽ đúng hộp này dưới cột câu hỏi.
+ */
+export function RwSolution({ question, picked }: { question: SatRwQuestion; picked: number | null }) {
+  const { L } = useL();
+  const right = picked === question.answerIndex;
+  return (
+    <>
+      <View
+        className="mt-4 rounded-panel border-l-4 p-3.5"
+        style={{ borderLeftColor: right ? color.success : color.warning, backgroundColor: paper.brandTint }}
+      >
+        <View className="flex-row items-center gap-2">
+          <Icon name={right ? 'check' : 'info'} size={16} color={right ? color.success : color.warning} strokeWidth={2.2} />
+          <Text className="font-strong text-body text-paper-ink">
+            {right
+              ? L('Đúng rồi', 'Correct')
+              : L(`Đáp án đúng là ${'ABCD'[question.answerIndex]}`, `The correct answer is ${'ABCD'[question.answerIndex]}`)}
           </Text>
         </View>
-      ) : null}
-
+        <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
+          {question.solutionVi}
+        </Text>
+      </View>
       {/* Từ điển của bốn phương án: định nghĩa, đồng nghĩa, trái nghĩa, ví dụ. */}
-      {answered && showSolution ? <WordNotes options={question.options} answerIndex={question.answerIndex} /> : null}
-    </PaperCard>
+      <WordNotes options={question.options} answerIndex={question.answerIndex} />
+    </>
   );
 }

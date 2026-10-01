@@ -54,7 +54,11 @@ export function buildDiagnostic(seed: string): MathItem[] {
 
   const bySkill = new Map<MathSkill, (typeof MATH_TEMPLATES)[number]>();
   for (const skill of Object.keys(MATH_SKILL_DOMAIN) as MathSkill[]) {
-    const pool = templatesForSkill(skill);
+    // Bài chẩn đoán là để XẾP CHỖ, nên chỉ bốc dạng dễ và vừa: một câu khó
+    // duy nhất mà sai thì không phân biệt được "chưa nắm" với "chưa tới tầm".
+    const all = templatesForSkill(skill);
+    const placement = all.filter((t) => t.difficulty !== 'hard');
+    const pool = placement.length > 0 ? placement : all;
     if (pool.length === 0) continue;
     bySkill.set(skill, pool[Math.floor(rng() * pool.length)] ?? pool[0]!);
   }

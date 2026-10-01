@@ -12,11 +12,11 @@ import {
   unitsByDomain,
 } from './sat-rw-repository';
 
-test('kho có đủ 16 unit và 384 + 240 câu, id không trùng', () => {
+test('kho có đủ 16 unit và 384 + 240 + 210 câu khó, id không trùng', () => {
   assert.equal(SAT_RW_UNITS.length, 16);
-  assert.equal(SAT_RW_QUESTIONS.length, 624);
-  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.id)).size, 624, 'có id bị trùng');
-  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.passage)).size >= 600, true, 'đoạn văn trùng nhiều bất thường');
+  assert.equal(SAT_RW_QUESTIONS.length, 834);
+  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.id)).size, 834, 'có id bị trùng');
+  assert.equal(new Set(SAT_RW_QUESTIONS.map((q) => q.passage)).size >= 800, true, 'đoạn văn trùng nhiều bất thường');
 });
 
 test('mỗi unit khai đúng số câu thật sự có trong kho', () => {

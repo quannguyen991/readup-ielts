@@ -4,9 +4,10 @@ import { ScorePredictionCard } from '@/components/prediction/ScorePrediction';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
-import { BankHeader, DomainSection, SkillCard } from '@/components/practice/SkillBank';
-import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { DifficultyFilter, DomainSection, Segmented, SkillCard, type DifficultyFilterValue } from '@/components/practice/SkillBank';
+import { HubLinkRow, HubTitle, HubToolbar } from '@/components/sat-hub/SatHub';
 import { Screen } from '@/components/layout/Screen';
+import { MATH_HUB_LINKS } from '@/navigation/sat-hub';
 import {
   FilterChip,
   SetCard,
@@ -23,7 +24,6 @@ import {
 } from '@/lib/math/types';
 import {
   ALL_SETS,
-  CURRICULUM_TOTALS,
   MATH_CURRICULUM,
   findNextSet,
   getStageOfSet,
@@ -47,9 +47,7 @@ import {
   useMathTotals,
 } from '@/store/useMathStore';
 import { color } from '@/theme/tokens';
-import { SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
-import { BANK_PER_SKILL, MATH_BANK_TOTAL, MATH_SKILLS, ROUND_SIZE, mathBankDone, roundsFor } from '@/services/math/bank';
-import { useSatRwStore } from '@/store/useSatRwStore';
+import { BANK_PER_SKILL, MATH_SKILLS, roundForTier } from '@/services/math/bank';
 import { CrossFade } from '@/components/motion/Motion';
 import { bi, useL, type Bi, type L as LFn } from '@/i18n/useL';
 import { mathDomainShort, mathErrorLabel, mathSetKindLabel } from '@/components/math/math-labels-en';
@@ -57,11 +55,13 @@ import { mathDomainShort, mathErrorLabel, mathSetKindLabel } from '@/components/
 /**
  * Trang chủ module SAT Math.
  *
- * Ba tab, và thứ tự của chúng là thứ tự người học cần:
+ * Đầu trang chỉ có tên, một hàng liên kết nhỏ và MỘT thanh công cụ mảnh
+ * (01/10/2026) — bốn bước đầy đủ nằm ở `/sat`. Bốn chế độ xem:
  *
- *   LỘ TRÌNH  — "hôm nay làm bài nào", mặc định mở
- *   THƯ VIỆN  — "tôi muốn tự chọn bài", lọc theo domain / kiểu / trạng thái
- *   KẾT QUẢ   — "tôi đang yếu chỗ nào"
+ *   KỸ NĂNG   — ngân hàng câu theo mảng, lọc Dễ / Vừa / Khó, mặc định mở
+ *   LỘ TRÌNH  — "hôm nay làm bài nào"
+ *   BỘ ĐỀ     — "tôi muốn tự chọn bài", lọc theo domain / kiểu / trạng thái
+ *   KẾT QUẢ   — "tôi đang yếu chỗ nào", kèm điểm dự đoán
  *
  * Bản trước của trang này đổ thẳng 19 nút "Drill" giống hệt nhau ra màn hình.
  * Nó liệt kê đủ mọi thứ luyện được, nhưng không trả lời được câu hỏi duy nhất
@@ -72,9 +72,9 @@ type Tab = 'skills' | 'path' | 'library' | 'stats';
 export default function MathScreen() {
   const { L } = useL();
   const [tab, setTab] = useState<Tab>('skills');
+  const [level, setLevel] = useState<DifficultyFilterValue>('all');
 
   const progressBySet = useMathSetProgress();
-  const diagnostic = useLatestDiagnostic();
 
   const doneSetIds = useMemo(
     () => new Set(Object.keys(progressBySet).filter((id) => (progressBySet[id]?.rounds ?? 0) > 0)),
@@ -84,31 +84,33 @@ export default function MathScreen() {
 
   return (
     <Screen>
-      <MathTop nextSetId={nextSet?.id ?? null} hasDiagnostic={!!diagnostic} />
+      <HubTitle eyebrow="DIGITAL SAT" title="SAT Math" line={L('19 kỹ năng, mỗi kỹ năng đi Dễ → Khó.', '19 skills, each running Easy → Hard.')} />
+      <HubLinkRow links={MATH_HUB_LINKS} />
 
-      <PlanNudge />
-
-      <View className="mt-4 flex-row flex-wrap gap-2">
-        <TabButton label={L('Kỹ năng', 'Skills')} icon="grid" active={tab === 'skills'} onPress={() => setTab('skills')} />
-        <TabButton label={L('Lộ trình', 'Path')} icon="list" active={tab === 'path'} onPress={() => setTab('path')} />
-        <TabButton
-          label={L(`Bộ đề · ${CURRICULUM_TOTALS.sets}`, `Sets · ${CURRICULUM_TOTALS.sets}`)}
-          icon="clipboard"
-          active={tab === 'library'}
-          onPress={() => setTab('library')}
+      <HubToolbar>
+        <Segmented
+          label={L('Chế độ', 'View')}
+          value={tab}
+          onChange={setTab}
+          options={[
+            { key: 'skills', label: L('Kỹ năng', 'Skills') },
+            { key: 'path', label: L('Lộ trình', 'Path') },
+            { key: 'library', label: L('Bộ đề', 'Sets') },
+            { key: 'stats', label: L('Kết quả', 'Results') },
+          ]}
         />
-        <TabButton
-          label={L('Kết quả', 'Results')}
-          icon="trending"
-          active={tab === 'stats'}
-          onPress={() => setTab('stats')}
-        />
-      </View>
+        {tab === 'skills' ? <DifficultyFilter value={level} onChange={setLevel} /> : null}
+      </HubToolbar>
 
       <CrossFade swapKey={tab}>
-        {tab === 'skills' ? <SkillsView /> : null}
+        {tab === 'skills' ? <SkillsView level={level} /> : null}
         {tab === 'path' ? (
-          <PathView progressBySet={progressBySet} nextSetId={nextSet?.id ?? null} />
+          <View>
+            <View className="mt-4">
+              <PlanNudge />
+            </View>
+            <PathView progressBySet={progressBySet} nextSetId={nextSet?.id ?? null} />
+          </View>
         ) : null}
         {tab === 'library' ? <LibraryView progressBySet={progressBySet} /> : null}
         {tab === 'stats' ? <StatsView /> : null}
@@ -128,90 +130,6 @@ function nextSetLabel(setId: string, en = false): string {
   return `${unit?.title ?? stage?.title ?? ''} · ${set.title}`;
 }
 
-/**
- * Đầu trang: hàng lối tắt (học tiếp, chẩn đoán, thi thử, từ vựng) rồi hai thẻ
- * ngân hàng Math / Verbal. Thay cho khối hero lớn trước đây — khối đó chiếm cả
- * màn đầu để nói lại những con số mà thẻ ngân hàng nói gọn trong một dòng.
- */
-function MathTop({ nextSetId, hasDiagnostic }: { nextSetId: string | null; hasDiagnostic: boolean }) {
-  const { L } = useL();
-  const bank = useMathBankProgress();
-  const rwAttempts = useSatRwStore((s) => s.attempts);
-  const mathDone = mathBankDone(bank);
-
-  return (
-    <View>
-      <LightHero
-        scene="math"
-        badge="DIGITAL SAT · MATH"
-        line1="SAT Math"
-        line2={L('học chắc từng kỹ năng', 'master every skill')}
-        subtitle={L(
-          `${CURRICULUM_TOTALS.units} bài học · ${CURRICULUM_TOTALS.sets} bộ đề · ${MATH_BANK_TOTAL} câu. Đề sinh mới mỗi lượt, đáp án tính bằng code.`,
-          `${CURRICULUM_TOTALS.units} lessons · ${CURRICULUM_TOTALS.sets} sets · ${MATH_BANK_TOTAL} questions. Fresh questions every round, answers computed by code.`,
-        )}
-        footer={
-          <>
-            <HeroStat value={String(mathDone)} label={L('câu đã làm', 'questions done')} />
-            <HeroStat value={String(CURRICULUM_TOTALS.units)} label={L('bài học', 'lessons')} />
-            <HeroStat value="19" label={L('kỹ năng', 'skills')} />
-          </>
-        }
-      >
-        {nextSetId ? (
-          <Button
-            label={hasDiagnostic ? L('Học tiếp lộ trình', 'Continue the path') : L('Bắt đầu lộ trình', 'Start the path')}
-            variant="brand"
-            size="lg"
-            iconRight="arrow-right"
-            onPress={() => router.push(`/math/set/${nextSetId}` as never)}
-          />
-        ) : null}
-        <Button
-          label={
-            hasDiagnostic
-              ? L('Chẩn đoán lại', 'Retake diagnostic')
-              : L(`Chẩn đoán ${DIAGNOSTIC_LENGTH} câu`, `${DIAGNOSTIC_LENGTH}-question diagnostic`)
-          }
-          variant="outline"
-          size="lg"
-          onPress={() => router.push('/math/diagnostic' as never)}
-        />
-        <Button label={L('Thi thử', 'Mock test')} variant="outline" size="lg" onPress={() => router.push('/math/mock' as never)} />
-        <Button label={L('Bài học lý thuyết', 'Theory lessons')} variant="outline" size="lg" iconLeft="book" onPress={() => router.push('/math/learn' as never)} />
-        <Button label={L('Bài từ vựng', 'Vocabulary lessons')} variant="outline" size="lg" iconLeft="letters" onPress={() => router.push('/math/learn?tab=vocab' as never)} />
-      </LightHero>
-
-      <View className="mt-5">
-        <ScorePredictionCard section="math" />
-      </View>
-      <View className="mt-5" />
-      <BankHeader
-        current={{
-          eyebrow: 'Math',
-          title: L('Ngân hàng SAT Math', 'SAT Math bank'),
-          blurb: L(
-            '19 kỹ năng của đề Digital SAT. Đề sinh mới mỗi lượt, đáp án tính bằng code.',
-            'The 19 Digital SAT skills. Fresh questions every round, answers computed by code.',
-          ),
-          done: mathDone,
-          total: MATH_BANK_TOTAL,
-          icon: 'grid',
-        }}
-        other={{
-          eyebrow: 'Verbal',
-          title: L('Ngân hàng SAT Verbal', 'SAT Verbal bank'),
-          blurb: L('Reading & Writing, bốn mảng đề.', 'Reading & Writing, four content domains.'),
-          done: Object.keys(rwAttempts).length,
-          total: SAT_RW_QUESTIONS.length,
-          icon: 'letters',
-          href: '/sat-rw',
-        }}
-      />
-    </View>
-  );
-}
-
 // ------------------------------------------------------------------ kỹ năng
 
 const SKILLS = MATH_SKILLS;
@@ -226,54 +144,55 @@ const SKILL_UNIT_TITLE = Object.fromEntries(
 
 /**
  * Tỉ trọng mỗi mảng trong đề Digital SAT Math — số của College Board. Không
- * chia tiếp xuống từng kỹ năng: College Board không công bố con số đó, và bịa
- * ra một tỉ lệ trông chính xác còn tệ hơn không ghi gì.
+ * chia tiếp xuống từng kỹ năng theo tỉ trọng đề thật: College Board không công
+ * bố con số đó. Con số trên thẻ kỹ năng là tỉ lệ CÂU TRONG KHO của mảng.
  */
 const DOMAIN_WEIGHT: Record<MathDomain, Bi> = {
-  algebra: { vi: '~35% đề SAT Math', en: '~35% of SAT Math' },
-  advanced_math: { vi: '~35% đề SAT Math', en: '~35% of SAT Math' },
-  problem_solving_data: { vi: '~15% đề SAT Math', en: '~15% of SAT Math' },
-  geometry_trig: { vi: '~15% đề SAT Math', en: '~15% of SAT Math' },
+  algebra: { vi: '35% đề Math', en: '35% of Math' },
+  advanced_math: { vi: '35% đề Math', en: '35% of Math' },
+  problem_solving_data: { vi: '15% đề Math', en: '15% of Math' },
+  geometry_trig: { vi: '15% đề Math', en: '15% of Math' },
 };
 
 /**
- * Tab mặc định: mỗi mảng một khối, mỗi kỹ năng một thẻ. "Đã làm" là số câu
- * KHÁC NHAU của ngân hàng kỹ năng đã làm (theo lượt 10 câu, xem
- * `services/math/bank.ts`); đúng/sai và thời gian gộp mọi lần làm kỹ năng đó,
- * kể cả trong bộ đề lộ trình.
+ * Tab mặc định — bố cục "ngân hàng câu": mỗi mảng một khung, mỗi kỹ năng một
+ * thẻ. "Đã làm" là số câu KHÁC NHAU của ngân hàng kỹ năng đã làm (lượt 10 câu,
+ * `services/math/bank.ts`); đúng/sai và thời gian gộp mọi lần làm kỹ năng đó.
+ * Bộ lọc độ khó quyết định nút Luyện mở lượt nào: lượt Dễ, Vừa hay Khó kế tiếp.
  */
-function SkillsView() {
+function SkillsView({ level }: { level: DifficultyFilterValue }) {
   const { L, locale, en } = useL();
   const stats = useMathSkillStats();
   const bank = useMathBankProgress();
+  const hrefFor = (k: MathSkill) => {
+    if (level === 'all') return `/math/drill/${k}`;
+    const r = roundForTier(k, level, bank[k].doneRounds);
+    return r === null ? `/math/drill/${k}` : `/math/drill/${k}?round=${r}`;
+  };
   return (
-    <View className="mt-2">
+    <View>
       {DOMAINS.map((domain) => {
         const skills = SKILLS.filter((k) => MATH_SKILL_DOMAIN[k] === domain);
         const done = skills.reduce((sum, k) => sum + bank[k].answered, 0);
         const total = skills.reduce((sum, k) => sum + BANK_PER_SKILL[k], 0);
         return (
           <DomainSection key={domain} title={MATH_DOMAIN_LABEL[domain]} subtitle={bi(DOMAIN_WEIGHT[domain], locale)} done={done} total={total}>
-            {skills.map((k, i) => {
+            {skills.map((k) => {
               const st = stats[k];
+              const share = Math.round((BANK_PER_SKILL[k] / total) * 100);
               return (
                 <SkillCard
                   key={k}
-                  index={i}
                   title={MATH_SKILL_LABEL[k]}
                   subtitle={en ? '' : (SKILL_UNIT_TITLE[k] ?? '')}
+                  share={L(`${share}% ${mathDomainShort(domain, false)}`, `${share}% of ${mathDomainShort(domain, true)}`)}
                   bank={BANK_PER_SKILL[k]}
                   answered={bank[k].answered}
                   correct={st.correct}
                   wrong={st.total - st.correct}
                   accuracy={st.accuracy}
                   totalMs={(st.avgTimeMs ?? 0) * st.total}
-                  meta={L(
-                    `Lượt ${bank[k].nextRound + 1}/${roundsFor(k)} · ${ROUND_SIZE} câu`,
-                    `Round ${bank[k].nextRound + 1}/${roundsFor(k)} · ${ROUND_SIZE} questions`,
-                  )}
-                  href={`/math/drill/${k}`}
-                  icon="grid"
+                  href={hrefFor(k)}
                 />
               );
             })}
@@ -281,35 +200,6 @@ function SkillsView() {
         );
       })}
     </View>
-  );
-}
-
-function TabButton({
-  label,
-  icon,
-  active,
-  onPress,
-}: {
-  label: string;
-  icon: 'list' | 'grid' | 'trending' | 'clipboard';
-  active: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      aria-selected={active}
-      onPress={onPress}
-      className={[
-        'flex-row items-center gap-2 rounded-pill border px-4 py-2.5',
-        active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
-      ].join(' ')}
-    >
-      <Icon name={icon} size={16} color={active ? color.white : color.muted} />
-      <Text className={active ? 'font-strong text-body text-white' : 'font-mid text-body text-muted'}>
-        {label}
-      </Text>
-    </Pressable>
   );
 }
 
@@ -558,6 +448,7 @@ function StatsView() {
 
   return (
     <View className="mt-4 gap-4">
+      <ScorePredictionCard section="math" />
       {diagnostic ? (
         <Card>
           <Text className="font-strong text-cardTitle text-ink">{L('Bản đồ hiện tại', 'Current map')}</Text>

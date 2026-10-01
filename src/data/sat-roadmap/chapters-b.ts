@@ -148,7 +148,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-quad-intercept-distance', 'adv-vertex-form-extreme'],
       medium: ['pd-d-quad-irrational-roots', 'pd-d-quad-fraction-root', 'pd-d-quad-smaller-root-square', 'pd-d-quad-line-meets-vertex', 'pd-d-quad-vertex-root-equation', 'pd-d-quad-max-time', 'pd-d-quad-form-shows-extreme', 'adv-quadratic-positive-root', 'adv-discriminant-count', 'adv-quadratic-sum-of-roots'],
-      hard: ['pd-d-quad-sum-expanded', 'pd-d-quad-system-two-solutions', 'pd-d-quad-break-even', 'pd-d-quad-one-solution-a', 'pd-d-quad-factored-vertex-a', 'pd-d-quad-line-parabola-shared', 'adv-parabola-vertex-from-roots'],
+      hard: ['pd-d-quad-sum-expanded', 'pd-d-quad-system-two-solutions', 'pd-d-quad-break-even', 'pd-d-quad-one-solution-a', 'pd-d-quad-factored-vertex-a', 'pd-d-quad-line-parabola-shared', 'adv-parabola-vertex-from-roots', 'hard-quad-tangent-line', 'hard-quad-no-real-condition'],
     },
     bookSet: [
       { slug: 'pd-d-quad-intercept-distance', calc: false },
@@ -272,7 +272,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-div-linear-over-linear', 'pd-d-div-table-remainder', 'pd-remainder-theorem'],
       medium: ['pd-d-div-find-quotient', 'pd-d-div-factor-k-grid', 'pd-d-div-identity-quotient', 'pd-d-div-root-to-factor', 'pd-d-div-which-divisible', 'pd-polynomial-factor-k'],
-      hard: ['pd-d-div-remainder-fraction', 'pd-d-div-identity-sum', 'pd-d-div-roman-factors', 'pd-d-div-two-factors-a', 'pd-d-div-fraction-root-factor', 'pd-poly-division-quotient'],
+      hard: ['pd-d-div-remainder-fraction', 'pd-d-div-identity-sum', 'pd-d-div-roman-factors', 'pd-d-div-two-factors-a', 'pd-d-div-fraction-root-factor', 'pd-poly-division-quotient', 'hard-expr-rational-division'],
     },
     bookSet: [
       { slug: 'pd-d-div-linear-over-linear', calc: false },
@@ -736,7 +736,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-tri-pyth-setup', 'pd-d-tri-equilateral-parts', 'pd-d-tri-square-diagonal', 'pd-d-tri-third-side-extreme', 'pd-d-tri-deg-to-rad', 'geo-pythagorean-side', 'geo-isosceles-angle'],
       medium: ['pd-d-tri-bowtie-similar', 'pd-d-tri-isosceles-perimeter', 'pd-d-tri-roman-valid', 'pd-d-tri-isosceles-area', 'pd-d-tri-square-equilateral', 'pd-d-tri-similar-perimeter', 'pd-d-tri-count-third-sides', 'pd-d-tri-poles-rope', 'pd-d-tri-legs-hyp-plus', 'pd-d-tri-coord-angle-rad', 'pd-d-tri-inscribed-central', 'pd-d-tri-circle-in-square', 'pd-d-tri-roman-perimeters', 'geo-special-angle-missing-side', 'geo-triangle-angle-algebra'],
-      hard: ['pd-d-tri-cone-slice', 'pd-d-tri-integer-perimeter-max', 'pd-d-tri-nested-parallel', 'pd-d-tri-right-parallel-inside', 'pd-d-tri-isosceles-angle-bound', 'pd-d-tri-right-trapezoid', 'pd-d-tri-square-corner-cut', 'pd-d-tri-parallel-intercepts', 'pd-d-tri-chain-special', 'pd-d-tri-inscribed-equilateral', 'pd-d-tri-two-triangles-diff', 'pd-d-tri-square-equilateral-angle', 'pd-d-tri-semicircle-square', 'pd-d-tri-isosceles-special-area', 'pd-d-tri-point-angle-rad', 'pd-d-tri-square-in-right', 'pd-d-tri-square-diag-intersect', 'pd-d-tri-altitude-similar', 'pd-similar-triangles'],
+      hard: ['pd-d-tri-cone-slice', 'pd-d-tri-integer-perimeter-max', 'pd-d-tri-nested-parallel', 'pd-d-tri-right-parallel-inside', 'pd-d-tri-isosceles-angle-bound', 'pd-d-tri-right-trapezoid', 'pd-d-tri-square-corner-cut', 'pd-d-tri-parallel-intercepts', 'pd-d-tri-chain-special', 'pd-d-tri-inscribed-equilateral', 'pd-d-tri-two-triangles-diff', 'pd-d-tri-square-equilateral-angle', 'pd-d-tri-semicircle-square', 'pd-d-tri-isosceles-special-area', 'pd-d-tri-point-angle-rad', 'pd-d-tri-square-in-right', 'pd-d-tri-square-diag-intersect', 'pd-d-tri-altitude-similar', 'pd-similar-triangles', 'hard-similar-trapezoid-area'],
     },
     bookSet: [
       { slug: 'pd-d-tri-pyth-setup', calc: false },
@@ -874,7 +874,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-cir-inscribed-polygon-arc', 'pd-d-cir-equation-center-area', 'pd-d-cir-cylinder-surface', 'pd-circle-diameter-easy'],
       medium: ['pd-d-cir-circles-on-diameter', 'pd-d-cir-sector-perimeter', 'pd-d-cir-inscribed-arc-fraction', 'pd-d-cir-diameter-chord-angle', 'pd-d-cir-equilateral-arc', 'geo-circle-circumference-area', 'geo-circle-arc-sector-pi', 'geo-circle-radius-from-point'],
-      hard: ['pd-d-cir-sector-angle-rad', 'pd-d-cir-arc-integer-range', 'pd-d-cir-tangent-gap', 'pd-d-cir-two-circles-equilateral', 'pd-d-cir-tangent-lines-angle', 'pd-d-cir-tangent-circles-triangle', 'pd-d-cir-equation-roman', 'geo-circle-equation-radius'],
+      hard: ['pd-d-cir-sector-angle-rad', 'pd-d-cir-arc-integer-range', 'pd-d-cir-tangent-gap', 'pd-d-cir-two-circles-equilateral', 'pd-d-cir-tangent-lines-angle', 'pd-d-cir-tangent-circles-triangle', 'pd-d-cir-equation-roman', 'geo-circle-equation-radius', 'hard-circle-constant-from-radius'],
     },
     bookSet: [
       { slug: 'pd-d-cir-inscribed-polygon-arc', calc: true },
@@ -991,7 +991,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-trig-cofunction-letter', 'pd-d-trig-tan-to-cos', 'pd-d-trig-hyp-side', 'pd-d-trig-sin-decimal-hyp', 'pd-sin-cos-complement'],
       medium: ['pd-d-trig-cofunction-sum', 'pd-d-trig-sin-plus-cos', 'pd-d-trig-similar-tan-cos', 'pd-d-trig-cofunction-solve', 'pd-d-trig-coord-cos', 'geo-right-triangle-trig-ratio', 'geo-trig-opposite-side'],
-      hard: ['pd-d-trig-tan-m', 'pd-d-trig-diameter-area', 'pd-d-trig-quadrant-roman', 'pd-radians-convert'],
+      hard: ['pd-d-trig-tan-m', 'pd-d-trig-diameter-area', 'pd-d-trig-quadrant-roman', 'pd-radians-convert', 'hard-trig-similar-transfer'],
     },
     bookSet: [
       { slug: 'pd-d-trig-cofunction-letter', calc: false },
@@ -1179,7 +1179,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-prob-missing-percent', 'pd-d-prob-row-fraction', 'psda-expected-count'],
       medium: ['pd-d-prob-col-given', 'pd-d-prob-row-atleast', 'pd-d-prob-highest-conditional', 'pd-d-prob-difference', 'pd-d-prob-given-col-percent', 'pd-d-prob-given-col-rows', 'pd-d-prob-incorrect-test', 'psda-probability-not-color', 'psda-two-way-table-conditional', 'psda-independent-events-multiply'],
-      hard: ['pd-d-prob-reverse-conditional', 'pd-d-prob-incomplete-weeks', 'pd-d-prob-incomplete-2x2', 'pd-d-prob-weighted', 'pd-d-prob-ratio-reasoning', 'pd-d-prob-solve-total', 'pd-probability-without-replacement'],
+      hard: ['pd-d-prob-reverse-conditional', 'pd-d-prob-incomplete-weeks', 'pd-d-prob-incomplete-2x2', 'pd-d-prob-weighted', 'pd-d-prob-ratio-reasoning', 'pd-d-prob-solve-total', 'pd-probability-without-replacement', 'hard-conditional-weighted'],
     },
     bookSet: [
       { slug: 'pd-d-prob-col-given', calc: true },
@@ -1287,7 +1287,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-stat-dotplot-mean', 'psda-mean-missing-value'],
       medium: ['pd-d-stat-combined-mean', 'pd-d-stat-mean-first-part', 'pd-d-stat-histogram-median-bin', 'pd-d-stat-sd-remove-two', 'pd-d-stat-sd-compare-freq', 'pd-d-stat-median-compare', 'pd-d-stat-freq-median', 'pd-d-stat-median-must', 'pd-d-stat-range-must', 'pd-d-stat-freq-mean-range', 'psda-median-of-list', 'psda-median-frequency-table', 'psda-mean-after-adding-value'],
-      hard: ['pd-d-stat-list-roman', 'pd-d-stat-compare-mean-median', 'pd-d-stat-add-value-roman', 'pd-d-stat-remove-outlier', 'pd-d-stat-correct-outlier', 'pd-range-stddev-compare'],
+      hard: ['pd-d-stat-list-roman', 'pd-d-stat-compare-mean-median', 'pd-d-stat-add-value-roman', 'pd-d-stat-remove-outlier', 'pd-d-stat-correct-outlier', 'pd-range-stddev-compare', 'hard-mean-outlier-removed'],
     },
     bookSet: [
       { slug: 'pd-d-stat-combined-mean', calc: true },
@@ -1394,7 +1394,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-stat2-count-above-line', 'pd-d-stat2-line-predict', 'pd-d-stat2-best-survey', 'psda-sample-estimate-population'],
       medium: ['pd-d-stat2-poll-difference', 'pd-d-stat2-intercept-meaning', 'pd-d-stat2-slope-units', 'pd-d-stat2-slope-two-points', 'pd-d-stat2-closest-to-line', 'pd-d-stat2-random-assignment', 'pd-d-stat2-least-variability', 'pd-d-stat2-ci-interpret', 'psda-survey-association-only', 'psda-margin-of-error-conclusion', 'psda-ci-margin-or-point-estimate', 'psda-sampling-bias-conclusion', 'psda-margin-sample-size'],
-      hard: ['pd-d-stat2-slope-scaled', 'pd-d-stat2-farthest-total', 'pd-d-stat2-margin-compare', 'psda-study-design-conclusion', 'psda-experiment-causal-scope'],
+      hard: ['pd-d-stat2-slope-scaled', 'pd-d-stat2-farthest-total', 'pd-d-stat2-margin-compare', 'psda-study-design-conclusion', 'psda-experiment-causal-scope', 'hard-moe-population-count', 'hard-claim-study-design'],
     },
     bookSet: [
       { slug: 'pd-d-stat2-count-above-line', calc: true },
@@ -1504,7 +1504,7 @@ export const CHAPTERS_B: RoadChapter[] = [
     templates: {
       easy: ['pd-d-vol-cylinder-half', 'geo-box-missing-height'],
       medium: ['pd-d-vol-box-surface', 'pd-d-vol-cube-symbolic', 'pd-d-vol-fill-time', 'pd-d-vol-balls-cylinder', 'pd-d-vol-water-rise', 'pd-d-vol-crate-inside', 'geo-cube-volume-from-surface', 'geo-cylinder-volume-height', 'geo-rect-area-change'],
-      hard: ['pd-d-vol-painted-cube', 'pd-d-vol-open-box-touching', 'pd-d-vol-block-faces', 'pd-d-vol-cone-hemisphere', 'pd-d-vol-staircase-mass', 'pd-cone-sphere-volume'],
+      hard: ['pd-d-vol-painted-cube', 'pd-d-vol-open-box-touching', 'pd-d-vol-block-faces', 'pd-d-vol-cone-hemisphere', 'pd-d-vol-staircase-mass', 'pd-cone-sphere-volume', 'hard-cylinder-scale-percent'],
     },
     bookSet: [
       { slug: 'pd-d-vol-cylinder-half', calc: true },

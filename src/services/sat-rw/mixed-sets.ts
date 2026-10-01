@@ -1,7 +1,9 @@
 import { hashString, mulberry32, shuffle } from '@/services/questions/rng';
+import { sortByDifficulty } from '@/lib/difficulty';
 import {
   SAT_RW_DOMAINS,
   SAT_RW_QUESTIONS,
+  rwDifficulty,
   type SatRwQuestion,
 } from '@/data/sat-rw-repository';
 
@@ -147,8 +149,12 @@ function buildAll(): SatRwMixedSet[] {
       }
     }
 
-    // Trộn thứ tự trong đề để các mảng không đứng thành từng khối.
-    const questions = shuffle(picked, mulberry32(hashString(`satrw-mix-order-${n}`)));
+    // Trộn thứ tự trong đề để các mảng không đứng thành từng khối, rồi xếp
+    // dễ → khó (giữ thứ tự đã trộn trong cùng một bậc).
+    const questions = sortByDifficulty(
+      shuffle(picked, mulberry32(hashString(`satrw-mix-order-${n}`))),
+      rwDifficulty,
+    );
 
     sets.push({
       id: `satrw-mix-${String(n).padStart(2, '0')}`,

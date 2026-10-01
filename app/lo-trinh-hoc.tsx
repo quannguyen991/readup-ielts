@@ -11,6 +11,7 @@ import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Icon } from '@/components/ui/Icon';
 import { ExamSwitch, LevelPicker, NodeDetail, P, PartTrail, ProgressLine, primaryLabel } from '@/components/learning-path/PathUi';
 import { usePathData } from '@/components/learning-path/usePathData';
+import { PathPlanner } from '@/components/learning-path/PathPlanner';
 import {
   KIND_SKILL,
   defaultExamFor,
@@ -23,7 +24,8 @@ import {
   type PathNode,
 } from '@/data/learning-path';
 import { useL } from '@/i18n/useL';
-import { levelProgress, type LevelProgress } from '@/services/learning-path/progress';
+import { levelProgress, nodeStatus, type LevelProgress } from '@/services/learning-path/progress';
+import { focusNodes } from '@/services/learning-path/schedule';
 import { PATH_RESOLVERS } from '@/services/learning-path/resolvers';
 import { useLearningPathStore } from '@/store/useLearningPathStore';
 import { useRoadmapStore } from '@/store/useRoadmapStore';
@@ -65,6 +67,17 @@ export default function LearningPathScreen() {
 
   const [selectedId, setSelectedId] = useState<string | null>(null);
   // Mã bài là duy nhất giữa các trình độ, nên đổi trình độ thì bài đang chọn tự không khớp nữa — không cần xoá.
+
+  const focus = useLearningPathStore((s) => s.focus[exam]);
+  const focusExtra = useMemo(
+    () => (hydrated && focus?.length ? focusNodes(exam, focus, level, levels, (id) => {
+      const n = levels.flatMap((l) => l.parts.flatMap((p) => p.nodes)).find((x) => x.id === id);
+      return !!n && nodeStatus(n, data, PATH_RESOLVERS).state === 'done';
+    }) : []),
+    [hydrated, focus, exam, level, levels, data],
+  );
+  const goal = input?.[exam] ?? null;
+  const planRhythm = input ? { minutesPerDay: input.minutesPerDay, studyDays: input.studyDays, examIso: goal?.examIso || null } : null;
 
   const allNodes = useMemo(() => level.parts.flatMap((p) => p.nodes), [level]);
   // Máy tính: cột bên luôn hiện một bài — bài đang chọn, mặc định là bài học tiếp.
@@ -211,6 +224,9 @@ export default function LearningPathScreen() {
           )}
         </Text>
       </View>
+      {hydrated ? (
+        <PathPlanner exam={exam} level={level} statuses={prog.statuses} focusExtra={focusExtra} plan={planRhythm} compact={compactPicker} />
+      ) : null}
     </View>
   );
 

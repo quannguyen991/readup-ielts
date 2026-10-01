@@ -1,4 +1,5 @@
-import { SAT_RW_QUESTIONS, SAT_RW_UNITS, type SatRwQuestion } from '@/data/sat-rw-repository';
+import { SAT_RW_QUESTIONS, SAT_RW_UNITS, questionsForUnit, rwDifficulty, type SatRwQuestion } from '@/data/sat-rw-repository';
+import type { Difficulty } from '@/lib/difficulty';
 
 /**
  * Lộ trình SAT Reading & Writing — năm chặng, mười sáu bài học.
@@ -23,6 +24,11 @@ import { SAT_RW_QUESTIONS, SAT_RW_UNITS, type SatRwQuestion } from '@/data/sat-r
  *
  * Ba bộ ấy thật sự khác nhau: hai bộ đầu là học, bộ thứ ba là đo. Gặp lại câu
  * cũ ở bộ chốt là CÓ CHỦ Ý — đó là lúc kiểm xem mình nhớ luật hay nhớ đáp án.
+ *
+ * DỄ → VỪA → KHÓ (01/10/2026). Câu của unit giờ xếp theo bậc
+ * (`questionsForUnit`), và các lát cắt đi theo bậc: "Làm quen" là phần Dễ,
+ * "Luyện kỹ" là phần Vừa, và thêm bộ "Thử thách khó" gồm các câu viết riêng
+ * cho bậc khó. Bộ chốt vẫn là cả bài, đi dễ → khó.
  *
  * BA BÀI HỌC CÓ THÊM BỘ THỨ TƯ "sinh mới". Ba bộ sinh bằng luật
  * (`sat-rw/vocab`, `sat-rw/evidence`, `sat-rw/synthesis`) cho ra câu mới mỗi
@@ -50,6 +56,8 @@ export type SatRwExerciseSet = {
   slice: { from: number; to: number } | null;
   /** Vị trí trong toàn lộ trình — dùng để tìm "bài kế tiếp". */
   order: number;
+  /** Bậc của cả bộ — nhãn "Dễ / Vừa / Khó"; `mixed` khi bộ trải cả ba bậc. */
+  difficulty: Difficulty | 'mixed';
 };
 
 export type SatRwCurriculumUnit = {
@@ -164,54 +172,80 @@ function questionsOfUnit(unit: number): SatRwQuestion[] {
 }
 
 function buildSets(unitNumber: number, unitTitle: string, domain: string, startOrder: number) {
-  const total = questionsOfUnit(unitNumber).length;
-  const half = Math.floor(total / 2);
+  const ordered = questionsForUnit(unitNumber);
+  const total = ordered.length;
+  const easy = ordered.filter((q) => rwDifficulty(q) === 'easy').length;
+  const medium = ordered.filter((q) => rwDifficulty(q) === 'medium').length;
+  const hard = total - easy - medium;
   const base = `satrw-u${unitNumber}`;
+  let order = startOrder;
 
   const sets: SatRwExerciseSet[] = [
     {
       id: `${base}-learn`,
       title: 'Làm quen dạng',
-      blurb: `${half} câu đầu, giờ rộng, lời giải hiện ngay sau mỗi câu. Sai ở đây là chuyện bình thường.`,
+      blurb: `${easy} câu dễ, giờ rộng, lời giải hiện ngay sau mỗi câu.`,
       kind: 'learn',
       unitNumber,
       unitTitle,
       domain,
-      count: half,
-      minutes: Math.max(10, Math.round(half * 1.6)),
+      count: easy,
+      minutes: Math.max(10, Math.round(easy * 1.6)),
       instantSolution: true,
-      slice: { from: 0, to: half },
-      order: startOrder,
+      slice: { from: 0, to: easy },
+      order: order++,
+      difficulty: 'easy',
     },
     {
       id: `${base}-drill`,
       title: 'Luyện kỹ',
-      blurb: `${total - half} câu còn lại, vẫn có lời giải ngay. Tới đây phải bắt đầu gọi được tên lỗi trước khi đọc giải.`,
+      blurb: `${medium} câu mức vừa, vẫn có lời giải ngay. Gọi tên lỗi trước khi đọc giải.`,
       kind: 'drill',
       unitNumber,
       unitTitle,
       domain,
-      count: total - half,
-      minutes: Math.max(10, Math.round((total - half) * 1.4)),
+      count: medium,
+      minutes: Math.max(10, Math.round(medium * 1.4)),
       instantSolution: true,
-      slice: { from: half, to: total },
-      order: startOrder + 1,
+      slice: { from: easy, to: easy + medium },
+      order: order++,
+      difficulty: 'medium',
     },
-    {
-      id: `${base}-checkpoint`,
-      title: 'Chốt kỹ năng',
-      blurb: `Cả ${total} câu, đúng nhịp đề thật, KHÔNG lời giải giữa chừng. Gặp lại câu cũ là có chủ ý — đây là lúc biết mình nhớ luật hay nhớ đáp án.`,
-      kind: 'checkpoint',
+  ];
+
+  if (hard > 0) {
+    sets.push({
+      id: `${base}-hard`,
+      title: 'Thử thách khó',
+      blurb: `${hard} câu khó như module 2 đề thật: đoạn dày, nhiễu tinh.`,
+      kind: 'drill',
       unitNumber,
       unitTitle,
       domain,
-      count: total,
-      minutes: Math.max(12, Math.round(total * 1.1)),
-      instantSolution: false,
-      slice: null,
-      order: startOrder + 2,
-    },
-  ];
+      count: hard,
+      minutes: Math.max(10, Math.round(hard * 1.5)),
+      instantSolution: true,
+      slice: { from: easy + medium, to: total },
+      order: order++,
+      difficulty: 'hard',
+    });
+  }
+
+  sets.push({
+    id: `${base}-checkpoint`,
+    title: 'Chốt kỹ năng',
+    blurb: `Cả ${total} câu, dễ → khó, đúng nhịp đề thật, không lời giải giữa chừng.`,
+    kind: 'checkpoint',
+    unitNumber,
+    unitTitle,
+    domain,
+    count: total,
+    minutes: Math.max(12, Math.round(total * 1.1)),
+    instantSolution: false,
+    slice: null,
+    order: order++,
+    difficulty: 'mixed',
+  });
 
   const extra = GENERATED_SETS[unitNumber];
   if (extra) {
@@ -227,7 +261,8 @@ function buildSets(unitNumber: number, unitTitle: string, domain: string, startO
       minutes: extra.minutes,
       instantSolution: true,
       slice: null,
-      order: startOrder + 3,
+      order: order++,
+      difficulty: 'mixed',
     });
   }
 

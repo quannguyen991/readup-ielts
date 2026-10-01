@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { SAT_RW_QUESTIONS, SAT_RW_UNITS } from '@/data/sat-rw-repository';
+import { SAT_RW_QUESTIONS, SAT_RW_UNITS, questionsForUnit } from '@/data/sat-rw-repository';
 import {
   SAT_RW_ALL_SETS,
   SAT_RW_CURRICULUM_TOTALS,
@@ -50,7 +50,7 @@ test('mọi bài học đều có bẫy trung tâm, và nó không rỗng', () =
   }
 });
 
-test('hai lát cắt của một bài phủ TRỌN 24 câu, không chồng nhau', () => {
+test('ba lát cắt Dễ / Vừa / Khó phủ TRỌN bài, nối liền, không chồng nhau', () => {
   /*
     Chồng nhau thì có câu hiện hai lần trong lúc học; hụt thì có câu không bao
     giờ được luyện ở bộ nào. Cả hai đều không lộ ra khi bấm thử vài cái.
@@ -58,11 +58,20 @@ test('hai lát cắt của một bài phủ TRỌN 24 câu, không chồng nhau'
   for (const stage of SAT_RW_STAGES) {
     for (const unit of stage.units) {
       const sliced = unit.sets.filter((s) => s.slice !== null);
-      assert.equal(sliced.length, 2, `unit ${unit.number} phải có đúng hai bộ cắt lát`);
-      const [a, b] = sliced;
-      assert.equal(a!.slice!.from, 0);
-      assert.equal(a!.slice!.to, b!.slice!.from, 'hai lát không nối liền nhau');
-      assert.equal(b!.slice!.to, unit.questionCount, 'lát cuối không chạm hết bài');
+      assert.equal(sliced.length, 3, `unit ${unit.number} phải có đúng ba bộ cắt lát`);
+      assert.deepEqual(sliced.map((s) => s.difficulty), ['easy', 'medium', 'hard']);
+      assert.equal(sliced[0]!.slice!.from, 0);
+      for (let i = 1; i < sliced.length; i += 1) {
+        assert.equal(sliced[i - 1]!.slice!.to, sliced[i]!.slice!.from, 'hai lát không nối liền nhau');
+      }
+      assert.equal(sliced[2]!.slice!.to, unit.questionCount, 'lát cuối không chạm hết bài');
+      // Lát nào cũng chỉ chứa đúng bậc của nó.
+      const ordered = questionsForUnit(unit.number);
+      for (const set of sliced) {
+        const qs = ordered.slice(set.slice!.from, set.slice!.to);
+        assert.ok(qs.length > 0, `${set.id} rỗng`);
+        assert.ok(qs.every((q) => q.difficulty === set.difficulty), `${set.id} lẫn câu khác bậc`);
+      }
     }
   }
 });

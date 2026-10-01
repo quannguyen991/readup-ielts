@@ -68,11 +68,12 @@ export default function CityGame() {
   // Thành phố mẫu (chỉ xem): mở từ màn chọn đất, nút trên thanh trên, hoặc
   // `/quest/city?mau=1` (nút "Xem thành phố mẫu" ở trang Quest).
   // `?hub=1`: mở thẳng Trung tâm Tương lai (khối giới thiệu ở trang /quest).
-  const { mau, hub: hubParam } = useLocalSearchParams<{ mau?: string; hub?: string }>();
+  // Mặc định vào thẳng Trung tâm Tương lai (khu cao ốc chung); `?own=1` vào thẳng khu riêng.
+  const { mau, own } = useLocalSearchParams<{ mau?: string; own?: string }>();
   const [opened, setOpened] = useState(false);
   // Thăm khu của người khác: `true` = danh sách, chuỗi = mở thẳng một khu (từ Trung tâm).
   const [visiting, setVisiting] = useState<boolean | string>(false);
-  const [hub, setHub] = useState(() => hubParam === '1');
+  const [hub, setHub] = useState(() => own !== '1' && mau !== '1');
   const openVisit = useCallback(() => setVisiting(true), []);
   const openHub = useCallback(() => setHub(true), []);
   const closeHub = useCallback(() => setHub(false), []);
@@ -96,14 +97,14 @@ export default function CityGame() {
             </div>
           }
         >
-          <HubView reduced={reduced} onBack={closeHub} onVisit={visitFromHub} />
+          <HubView reduced={reduced} hasCity={!!terrain} onBack={closeHub} onVisit={visitFromHub} />
         </Suspense>
       ) : sample ? (
         <SampleView reduced={reduced} hasCity={!!terrain} onBack={closeSample} />
       ) : terrain ? (
         <CityView reduced={reduced} onSample={openSample} onVisit={openVisit} onHub={openHub} />
       ) : (
-        <TerrainPicker reducedMotion={reduced} onConfirm={(k, seed) => chooseTerrain(k, seed)} onSample={openSample} />
+        <TerrainPicker reducedMotion={reduced} onConfirm={(k, seed) => chooseTerrain(k, seed)} onSample={openSample} onHub={openHub} />
       )}
     </div>
   );

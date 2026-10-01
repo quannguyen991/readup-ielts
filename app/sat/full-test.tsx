@@ -120,6 +120,7 @@ export default function SatFullTestScreen() {
         minutes={stage.minutes}
         submitLabel={L('Nộp module', 'Submit module')}
         surface="paper"
+        onExit={() => router.replace('/sat' as never)}
         onFinish={(responses: MathResponse[]) => {
           const attempts = gradeMathSession(stage.items, responses);
           const correct = countCorrect(attempts);

@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 
 import { parseMath, type MathNode } from '@/lib/math/expr';
 import { color, fontFamily } from '@/theme/tokens';
+import { segmentsOf, type Mark } from '@/components/sat-exam/highlight-model';
+import { markTextStyle } from '@/components/sat-exam/mark-style';
 
 /**
  * Vẽ markup toán inline (xem `src/lib/math/expr.ts`).
@@ -26,6 +28,16 @@ type MathTextProps = {
   tone?: string;
   /** Đậm cho đề bài, thường cho lời giải. */
   weight?: 'regular' | 'semibold';
+  /**
+   * Phòng thi: cho tô màu / ghi chú lên chữ của đề. Mỗi mẩu chữ mang `data-hloff`
+   * (vị trí đầu trong chuỗi `flattenMath`), nên bôi đen xuyên qua phân số, mũ, căn
+   * vẫn đổi được ra vị trí ký tự; hình và dấu căn/vạch phân số bị bỏ qua.
+   */
+  highlight?: {
+    block: number;
+    marks: readonly Mark[];
+    onMarkPress?: (mark: Mark, target: unknown) => void;
+  };
 };
 
 export function MathText({
@@ -33,15 +45,29 @@ export function MathText({
   size = 15,
   tone = color.ink,
   weight = 'regular',
+  highlight,
 }: MathTextProps) {
+  const hl = highlight
+    ? { marks: highlight.marks.filter((m) => m.block === highlight.block), onMarkPress: highlight.onMarkPress, counter: { n: 0 } }
+    : undefined;
   return (
-    <View className="flex-row flex-wrap items-center">
-      {renderNodes(parseMath(children), { size, tone, weight })}
+    <View
+      className="flex-row flex-wrap items-center"
+      {...(highlight ? ({ dataSet: { hlblock: String(highlight.block) } } as object) : {})}
+    >
+      {renderNodes(parseMath(children), { size, tone, weight, hl })}
     </View>
   );
 }
 
-type Ctx = { size: number; tone: string; weight: 'regular' | 'semibold' };
+type HlCtx = {
+  marks: Mark[];
+  onMarkPress?: (mark: Mark, target: unknown) => void;
+  /** Con trỏ vị trí ký tự, đi theo thứ tự vẽ (xem `flattenMath`). */
+  counter: { n: number };
+};
+
+type Ctx = { size: number; tone: string; weight: 'regular' | 'semibold'; hl?: HlCtx };
 
 function family(weight: Ctx['weight']): string {
   return weight === 'semibold' ? fontFamily.semibold : fontFamily.regular;
@@ -59,14 +85,42 @@ function renderNode(node: MathNode, ctx: Ctx, key: string): React.ReactNode[] {
       return node.value
         .split(/(\s+)/)
         .filter((piece) => piece.length > 0)
-        .map((piece, i) => (
-          <Text
-            key={`${key}-t${i}`}
-            style={{ fontSize: ctx.size, color: ctx.tone, fontFamily: family(ctx.weight) }}
-          >
-            {piece}
-          </Text>
-        ));
+        .map((piece, i) => {
+          const base = { fontSize: ctx.size, color: ctx.tone, fontFamily: family(ctx.weight) };
+          const hl = ctx.hl;
+          if (!hl) {
+            return (
+              <Text key={`${key}-t${i}`} style={base}>
+                {piece}
+              </Text>
+            );
+          }
+          const from = hl.counter.n;
+          hl.counter.n += piece.length;
+          const local = hl.marks
+            .filter((m) => m.end > from && m.start < from + piece.length)
+            .map((m) => ({ ...m, start: m.start - from, end: m.end - from }));
+          return (
+            <Text key={`${key}-t${i}`} style={base} {...({ dataSet: { hloff: String(from) } } as object)}>
+              {local.length === 0
+                ? piece
+                : segmentsOf(piece, local, null).map((seg) =>
+                    seg.mark ? (
+                      <Text
+                        key={seg.start}
+                        style={markTextStyle(seg.mark)}
+                        onPress={hl.onMarkPress ? (e) => hl.onMarkPress?.(seg.mark!, e.currentTarget) : undefined}
+                        {...({ dataSet: { hlmark: seg.mark.id } } as object)}
+                      >
+                        {seg.text}
+                      </Text>
+                    ) : (
+                      seg.text
+                    ),
+                  )}
+            </Text>
+          );
+        });
 
     case 'sup':
     case 'sub': {

@@ -1,20 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
 import { router } from 'expo-router';
 
-import { QuestionCard } from './QuestionCard';
+import { QuestionCard, RwSolution } from './QuestionCard';
 import { TaskShell } from '@/components/layout/TaskShell';
-import { Badge, Button, Icon, PaperCard } from '@/components/ui';
-import type { SatRwQuestion } from '@/data/sat-rw-repository';
+import { Button, PaperCard } from '@/components/ui';
+import { rwDifficulty, type SatRwQuestion } from '@/data/sat-rw-repository';
 import { useL } from '@/i18n/useL';
-import { rwSkillLabel } from './skill-label';
 import { useStudyStore } from '@/store/useStudyStore';
-import { recordRwAttempt } from '@/store/useSatRwStore';
-import { paper } from '@/theme/tokens';
-import { CrossFade } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
-import { useGameStore } from '@/store/useGameStore';
+import { SatExamShell } from '@/components/sat-exam/SatExamShell';
+import { RwPassagePane, RwQuestionPane } from '@/components/sat-exam/RwExamParts';
+import { useRwPractice } from './useRwPractice';
 
 /**
  * Bộ chạy câu hỏi SAT Verbal — một câu một màn.
@@ -33,8 +31,11 @@ import { useGameStore } from '@/store/useGameStore';
  * đáp án sau mỗi câu thì con số cuối bài không còn nói lên điều gì. Khi tắt,
  * lời giải dồn về màn kết quả.
  *
- * KHÔNG BẤM GIỜ ở bất kỳ bộ nào. Đây là bài học, không phải bài thi — chỗ bấm
- * giờ là `/sat/full-test`. Đồng hồ ở đây chỉ tạo áp lực sai chỗ.
+ * KHÔNG ĐẾM NGƯỢC ở bất kỳ bộ nào — đây là bài học, chỗ đếm ngược là
+ * `/sat/full-test`. Phòng thi (`SatExamShell`) chỉ đếm xuôi, ẩn được.
+ *
+ * TRÌNH BÀY KIỂU ĐỀ SỐ (01/10/2026): chọn rồi bấm "Kiểm tra" mới hiện lời giải,
+ * đi tới / lui tự do; trạng thái lượt làm ở `useRwPractice`.
  */
 
 export type UnitRunnerProps = {
@@ -63,33 +64,22 @@ export function UnitRunner({
   doneHref,
   doneLabel,
 }: UnitRunnerProps) {
-  const [index, setIndex] = useState(0);
-  const [picked, setPicked] = useState<number | null>(null);
-  const [answers, setAnswers] = useState<(number | null)[]>(() => questions.map(() => null));
-  const [correct, setCorrect] = useState(0);
   const [done, setDone] = useState(false);
-  const { L, en } = useL();
-  const [showRule, setShowRule] = useState(false);
-  // Phương án Cú đã loại ở câu đang mở.
-  const [hidden, setHidden] = useState<number[]>([]);
+  const [correct, setCorrect] = useState(0);
+  const { L } = useL();
+  const run = useRwPractice(questions, instantSolution);
+  const { question, index, picked, hidden } = run;
 
   const logQuestions = useStudyStore((s) => s.logQuestions);
-  // Mốc bắt đầu nghĩ câu hiện tại — để trang Verbal biết thời gian theo kỹ năng.
-  const shownAt = useRef(0);
-  useEffect(() => {
-    shownAt.current = Date.now();
-  }, [index]);
-
-  const question = questions[index];
 
   // Gợi ý của Cú chỉ có ở chế độ học (có lời giải ngay); bộ chốt để đo thì không.
   useOwlHint(
-    instantSolution && question && picked === null
+    instantSolution && question && !run.locked
       ? () => {
           if (hidden.length > 0) return false;
           const wrong = question.options.map((_, i) => i).filter((i) => i !== question.answerIndex);
           const from = index % wrong.length;
-          setHidden([wrong[from]!, wrong[(from + 1) % wrong.length]!]);
+          run.setHidden([wrong[from]!, wrong[(from + 1) % wrong.length]!]);
           return true;
         }
       : null,
@@ -97,43 +87,19 @@ export function UnitRunner({
 
   if (!question) return null;
 
-  const answered = picked !== null;
-
-  const submit = (choice: number) => {
-    if (answered) return;
-    setPicked(choice);
-    setAnswers((prev) => {
-      const next = [...prev];
-      next[index] = choice;
-      return next;
-    });
-    if (choice === question.answerIndex) setCorrect((n) => n + 1);
-    recordRwAttempt(question.id, choice === question.answerIndex, Date.now() - shownAt.current);
-    // Game khi học: có lời giải ngay thì mỗi câu là một đòn. Bộ chốt chấm cả bài lúc
-    // xong — đòn đánh từng câu sẽ để lộ đúng sai trước khi nộp.
-    if (instantSolution) useGameStore.getState().answer(choice === question.answerIndex, 'verbal');
-  };
-
-  const next = () => {
-    if (index + 1 < questions.length) {
-      setIndex(index + 1);
-      setPicked(null);
-      setHidden([]);
-      return;
-    }
+  const finish = () => {
+    setCorrect(run.finish());
     logQuestions(questions.length);
-    if (!instantSolution) useGameStore.getState().awardBatch(correct, questions.length, 'verbal');
     setDone(true);
   };
 
   const restart = () => {
-    setIndex(0);
-    setPicked(null);
-    setHidden([]);
-    setAnswers(questions.map(() => null));
+    run.reset();
     setCorrect(0);
     setDone(false);
   };
+
+  const answers = run.picks;
 
   if (done) {
     const percent = Math.round((correct / questions.length) * 100);
@@ -168,77 +134,53 @@ export function UnitRunner({
     );
   }
 
+  const revealed = instantSolution && run.locked;
+  const lastQ = index + 1 >= questions.length;
+
   return (
-    <TaskShell tone="paper"
-      backHref={backHref}
-      backLabel={backLabel}
+    <SatExamShell
+      section="rw"
       title={title}
-      subtitle={subtitle}
-      icon="clipboard"
-      right={
-        <View className="rounded-pill bg-white px-3.5 py-1.5">
-          <Text className="font-strong text-label text-paper-ink">
-            {index + 1} / {questions.length}
-            {instantSolution ? L(` · đúng ${correct}`, ` · ${correct} correct`) : ''}
-          </Text>
-        </View>
+      band={subtitle}
+      bandRight={instantSolution ? L(`Đúng ${run.correctSoFar}`, `${run.correctSoFar} correct`) : undefined}
+      info={ruleVi || null}
+      timer={{ kind: 'up' }}
+      questionKeys={questions.map((q) => q.id)}
+      index={index}
+      onJump={run.go}
+      difficulty={rwDifficulty(question)}
+      isAnswered={(i) => answers[i] !== null}
+      passage={<RwPassagePane item={question} />}
+      topSlot={instantSolution ? <BattleStrip /> : null}
+      onBack={() => run.go(index - 1)}
+      onNext={() => (lastQ ? finish() : run.go(index + 1))}
+      nextLabel={lastQ ? L('Xem kết quả', 'See results') : undefined}
+      check={
+        instantSolution && !run.locked
+          ? { label: L('Kiểm tra', 'Check'), onPress: () => void run.check(), disabled: picked === null }
+          : null
       }
+      onExit={() => {
+        // Lưu & thoát: câu đã kiểm tra đã ghi sẵn; câu mới chọn chưa kiểm tra ghi nốt ở đây.
+        const answered = run.picks.filter((c) => c !== null).length;
+        if (answered > 0) {
+          run.finish(true);
+          logQuestions(answered);
+        }
+        router.replace(backHref as never);
+      }}
+      onChoose={run.locked ? undefined : run.pick}
+      choiceCount={question.options.length}
     >
-      {instantSolution ? <BattleStrip className="mb-4" /> : null}
-
-      {ruleVi ? (
-        <PaperCard className="mb-4">
-          <Pressable
-            accessibilityRole="button"
-            aria-expanded={showRule}
-            onPress={() => setShowRule((v) => !v)}
-            className="flex-row items-center gap-2"
-          >
-            <Icon
-              name={showRule ? 'chevron-down' : 'chevron-right'}
-              size={16}
-              color={paper.brandMid}
-              strokeWidth={2}
-            />
-            <Text className="font-strong text-body text-paper-ink">{L('Luật của bài này', 'This unit’s rule')}</Text>
-          </Pressable>
-          {showRule ? (
-            <Text className="mt-2.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
-              {ruleVi}
-            </Text>
-          ) : null}
-        </PaperCard>
-      ) : null}
-
-      {/* Sang câu tiếp theo: câu mới mờ dần vào, không thay chữ tại chỗ. */}
-      <CrossFade swapKey={question.id}>
-        <QuestionCard
-          question={question}
-          picked={picked}
-          onPick={submit}
-          showSolution={instantSolution}
-          hidden={hidden}
-        />
-      </CrossFade>
-
-      <View className="mt-4 flex-row flex-wrap items-center gap-2">
-        <Badge label={rwSkillLabel(question.skill, en)} tone="neutral" />
-        <View className="flex-1" />
-        {answered ? (
-          <Button
-            variant="brand"
-            label={index + 1 < questions.length ? L('Câu tiếp theo', 'Next question') : L('Xem kết quả', 'See results')}
-            iconRight="arrow-right"
-            onPress={next}
-          />
-        ) : (
-          <Text className="font-sans text-label text-paper-muted">
-            {instantSolution
-              ? L('Chọn một phương án để xem lời giải', 'Choose an option to see the explanation')
-              : L('Chọn một phương án để đi tiếp', 'Choose an option to continue')}
-          </Text>
-        )}
-      </View>
-    </TaskShell>
+      <RwQuestionPane
+        item={question}
+        picked={picked}
+        onPick={run.pick}
+        locked={run.locked}
+        answerIndex={revealed ? question.answerIndex : undefined}
+        hidden={hidden}
+      />
+      {revealed ? <RwSolution question={question} picked={picked} /> : null}
+    </SatExamShell>
   );
 }

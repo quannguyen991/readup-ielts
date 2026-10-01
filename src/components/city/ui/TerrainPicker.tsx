@@ -19,8 +19,8 @@ function newSeed(): number {
   return Math.floor(Math.random() * 1e9);
 }
 
-export function TerrainPicker({ onConfirm, reducedMotion, onSample }: { onConfirm: (kind: TerrainKind, seed: number) => void; reducedMotion: boolean; onSample: () => void }) {
-  const { t } = useL();
+export function TerrainPicker({ onConfirm, reducedMotion, onSample, onHub }: { onConfirm: (kind: TerrainKind, seed: number) => void; reducedMotion: boolean; onSample: () => void; onHub: () => void }) {
+  const { t, L } = useL();
   const [kind, setKind] = useState<TerrainKind>('plains');
   const [seeds, setSeeds] = useState<Record<TerrainKind, number>>(() => ({ plains: newSeed(), coast: newSeed(), mountain: newSeed() }));
   const terrain = useMemo(() => generateTerrain(kind, seeds[kind]), [kind, seeds]);
@@ -58,6 +58,9 @@ export function TerrainPicker({ onConfirm, reducedMotion, onSample }: { onConfir
         />
       </div>
       <div className="cg-panel cg-slide" style={{ position: 'absolute', left: 20, top: 20, bottom: 20, width: 340, padding: 22, display: 'flex', flexDirection: 'column', gap: 14 }}>
+        <button className="cg-btn small" style={{ alignSelf: 'flex-start' }} onClick={onHub}>
+          ← {L({ vi: 'Trung tâm Tương lai', en: 'Future Centre' })}
+        </button>
         <div>
           <div className="cg-muted cg-b" style={{ fontSize: 14, letterSpacing: 0.4, textTransform: 'uppercase' }}>{t('city.pick.kicker')}</div>
           <h1 className="cg-x" style={{ margin: '4px 0 6px', fontSize: 26, lineHeight: 1.15 }}>{t('city.pick.title')}</h1>

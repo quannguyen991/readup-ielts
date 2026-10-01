@@ -1,11 +1,8 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { router } from 'expo-router';
 
-import { Screen } from '@/components/layout/Screen';
-import { ExamShell } from '@/components/layout/ExamShell';
 import { SelfDiagnose } from './SelfDiagnose';
-import { CrossFade } from '@/components/motion/Motion';
-import { Badge, Button, Card, PaperCard } from '@/components/ui';
+import { SatExamShell } from '@/components/sat-exam/SatExamShell';
 import { MATH_ERROR_LABEL, type MathErrorTag, type MathItem } from '@/lib/math/types';
 import { gradeMathItem, type MathResponse } from '@/services/math/grade';
 
@@ -56,9 +53,14 @@ export type MathRunnerProps = {
    * Là THAM SỐ chứ không phải đổi thẳng: component này còn phục vụ /math/mock,
    * /math/diagnostic và /math/set/* — những màn vẫn nằm trên nền sáng. Đổi thẳng
    * là thẻ giấy kem rơi xuống nền sáng ở bốn màn khác mà không ai đợi.
+   *
+   * Từ 01/10/2026 mọi màn đều vẽ trong phòng thi `SatExamShell` (mặt trắng), nên
+   * tham số này không còn đổi gì; giữ lại để nơi gọi khỏi phải sửa.
    */
   surface?: 'light' | 'paper';
   onFinish: (responses: MathResponse[], elapsedMs: number) => void;
+  /** Thoát giữa bài. Mặc định quay lại trang trước (hoặc về /math). */
+  onExit?: () => void;
 };
 
 /** Toàn bộ nhãn lỗi, dùng làm kho bốc mồi nhử cho bước tự chẩn đoán. */
@@ -72,18 +74,10 @@ export function MathRunner({
   phaseLabel,
   submitLabel,
   instantSolution = false,
-  surface = 'light',
   onFinish,
+  onExit,
 }: MathRunnerProps) {
-  const onPaper = surface === 'paper';
   const { L } = useL();
-  /* Chu tren nen: toi tren nen sang, trang tren nen cham. */
-  const titleClass = onPaper ? 'text-white' : 'text-ink';
-  const subClass = onPaper ? 'text-white/70' : 'text-muted';
-  const Shell = onPaper ? ExamShell : Screen;
-  const Panel = onPaper ? PaperCard : Card;
-  const hairline = onPaper ? 'border-brand-soft' : 'border-border';
-  const mutedClass = onPaper ? 'text-paper-muted' : 'text-muted';
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   // Đã mở lời giải câu nào. Mở rồi thì KHOÁ câu đó lại — xem đáp án xong còn
@@ -203,198 +197,79 @@ export function MathRunner({
 
   if (!current) return null;
 
-  const lowOnTime = remainingMs <= 5 * 60_000;
+  const isRevealed = revealed[current.id] ?? false;
+  const given = (answers[current.id] ?? '').trim();
+  const setAnswer = (value: string) => setAnswers((prev) => ({ ...prev, [current.id]: value }));
 
   return (
-    <Shell>
-      <View className="flex-row flex-wrap items-start justify-between gap-3">
-        <View className="flex-1">
-          <Text className={`font-heavy text-pageTitle ${titleClass}`}>{title}</Text>
-          {subtitle ? (
-            <Text className={`mt-1 font-sans text-body ${subClass}`}>{subtitle}</Text>
-          ) : null}
-        </View>
-        <View className="items-end">
-          {/*
-            Trên nền chàm tối, đỏ đậm `text-danger` gần như không đọc được — đúng
-            lúc con số ấy cần đập vào mắt nhất — nên hết giờ dùng đỏ SÁNG.
-          */}
-          {onPaper ? (
-            <Text
-              className="font-heavy text-stat"
-              style={{ color: lowOnTime ? '#FCA5A5' : '#FFFFFF' }}
-            >
-              {formatClock(remainingMs)}
-            </Text>
-          ) : (
-            <Text className={`font-heavy text-stat ${lowOnTime ? 'text-danger' : 'text-ink'}`}>
-              {formatClock(remainingMs)}
-            </Text>
-          )}
-          <Text className={`font-sans text-label ${subClass}`}>
-            {phaseLabel ? `${phaseLabel} · ` : ''}
-            {L(`đã trả lời ${answered}/${items.length}`, `answered ${answered}/${items.length}`)}
-          </Text>
-        </View>
-      </View>
-
-      {instantSolution ? <BattleStrip className="mt-4" /> : null}
-
-      <Panel className="mt-4">
-        {/*
-          Hiện dần tại chỗ mỗi khi đổi câu. Đề toán đổi mà khung đứng im thì rất
-          dễ tưởng chưa bấm được, nhất là hai câu liền nhau cùng dạng nên nhìn
-          gần giống nhau. Không dịch chuyển, vì câu hỏi không có trước/sau về
-          không gian — chỉ đơn giản là câu khác.
-        */}
-        <CrossFade swapKey={`${current.id}-${revealed[current.id] ? 'revealed' : 'open'}`}>
-          <MathQuestionView
-            surface={surface}
-            item={current}
-            index={index}
-            answer={answers[current.id] ?? null}
-            revealed={revealed[current.id] ?? false}
-            hidden={hints[current.id]}
-            onAnswer={
-              revealed[current.id]
-                ? undefined
-                : (value) => setAnswers((prev) => ({ ...prev, [current.id]: value }))
-            }
-          />
-        </CrossFade>
-
-        {/*
-          Bước tự chẩn đoán chen vào GIỮA "đã trả lời sai" và "xem lời giải".
-
-          Đặt sau lời giải thì vô nghĩa — lúc ấy đáp án đã nằm trên màn hình. Đặt
-          trước khi trả lời thì cũng vô nghĩa — chưa sai thì chưa có lỗi nào để
-          gọi tên. Chỉ đúng một khe này là hỏi được.
-        */}
-        {answeredWrong && !revealed[current.id] ? (
-          <SelfDiagnose
-            itemId={current.id}
-            actualTag={answeredWrong}
-            allTags={ALL_ERROR_TAGS}
-            onPick={(picked, correct) => {
-              observeSkill({
-                skill: { domain: 'sat-math', key: current.skill },
-                sourceId: current.id,
-                answerCorrect: false,
-                pointer: { kind: 'error-tag', tag: picked },
-                truth: { kind: 'error-tag', tag: answeredWrong },
-                at: new Date().toISOString(),
-              });
-              if (correct) {
-                /* không làm gì thêm: ghi nhận là đủ, không thưởng phạt */
-              }
-            }}
-          />
-        ) : null}
-
-        {instantSolution && !revealed[current.id] ? (
-          <View className={`mt-3 border-t pt-3 ${hairline}`}>
-            <Button
-              label={
-                (answers[current.id] ?? '').trim() === ''
-                  ? L('Chưa trả lời — xem lời giải luôn', 'Not answered — show the solution anyway')
-                  : L('Xem lời giải câu này', 'Show solution')
-              }
-              variant="outline"
-              iconRight="chevron-down"
-              onPress={() => {
+    <SatExamShell
+      section="math"
+      title={title}
+      band={[phaseLabel, L(`đã trả lời ${answered}/${items.length}`, `answered ${answered}/${items.length}`)].filter(Boolean).join(' · ')}
+      info={subtitle ?? null}
+      timer={{ kind: 'down', remainingMs }}
+      questionKeys={items.map((it) => it.id)}
+      index={index}
+      onJump={goTo}
+      // Chỉ bộ luyện hiện độ khó; bài có giờ giữ đúng như đề thật (không nhãn).
+      difficulty={instantSolution ? current.difficulty : undefined}
+      isAnswered={(i) => (answers[items[i]!.id] ?? '').trim() !== ''}
+      topSlot={instantSolution ? <BattleStrip /> : null}
+      onBack={() => goTo(index - 1)}
+      onNext={() => goTo(index + 1)}
+      check={
+        instantSolution && !isRevealed
+          ? {
+              label: given === '' ? L('Xem lời giải', 'Show solution') : L('Kiểm tra', 'Check'),
+              onPress: () => {
                 // Xem lời giải = chấm câu này cho game; chưa trả lời mà xem luôn thì tính là sai.
-                const given = answers[current.id] ?? '';
-                useGameStore.getState().answer(given.trim() !== '' && gradeMathItem(current, given).isCorrect, 'math');
+                useGameStore.getState().answer(given !== '' && gradeMathItem(current, given).isCorrect, 'math');
                 setRevealed((prev) => ({ ...prev, [current.id]: true }));
-              }}
-            />
-            <Text className={`mt-2 font-sans text-label ${mutedClass}`}>
-              {L('Xem lời giải xong thì câu này bị khoá, không đổi đáp án được nữa.', "Once you see the solution, this question locks and your answer can't be changed.")}
-            </Text>
-          </View>
-        ) : null}
-      </Panel>
+              },
+            }
+          : null
+      }
+      onSubmit={submit}
+      submitLabel={submitLabel ?? L('Nộp bài', 'Submit')}
+      onExit={onExit ?? (() => (router.canGoBack() ? router.back() : router.replace('/math' as never)))}
+      confirmExit
+      onChoose={current.choices && !isRevealed ? (i) => setAnswer(String(i)) : undefined}
+      choiceCount={current.choices?.length ?? 0}
+      eliminable={!!current.choices}
+    >
+      <MathQuestionView
+        surface="exam"
+        item={current}
+        answer={answers[current.id] ?? null}
+        revealed={isRevealed}
+        hidden={hints[current.id]}
+        onAnswer={isRevealed ? undefined : setAnswer}
+      />
 
-      <View className="mt-4 flex-row flex-wrap items-center justify-between gap-3">
-        <View className="flex-row gap-2">
-          <Button
-            label={L('Câu trước', 'Previous')}
-            variant="outline"
-            iconLeft="chevron-left"
-            disabled={index === 0}
-            onPress={() => goTo(index - 1)}
-          />
-          <Button
-            label={L('Câu sau', 'Next')}
-            variant="outline"
-            iconRight="chevron-right"
-            disabled={index === items.length - 1}
-            onPress={() => goTo(index + 1)}
-          />
-        </View>
-        <Button label={submitLabel ?? L('Nộp bài', 'Submit')} iconRight="check" onPress={submit} />
-      </View>
+      {/*
+        Bước tự chẩn đoán chen vào GIỮA "đã trả lời sai" và "xem lời giải".
 
-      <Panel className="mt-4">
-        <Text className={`font-strong text-label ${mutedClass}`}>{L('Bảng câu hỏi', 'Question map')}</Text>
-        <View className="mt-2 flex-row flex-wrap gap-2">
-          {items.map((item, itemIndex) => {
-            const done = (answers[item.id] ?? '').trim() !== '';
-            const seen = revealed[item.id] ?? false;
-            const active = itemIndex === index;
-            return (
-              <Pressable
-                key={item.id}
-                onPress={() => goTo(itemIndex)}
-                className={`h-9 w-9 items-center justify-center rounded-pill border ${
-                  active
-                    ? onPaper
-                      ? 'border-brand-mid bg-brand-mid'
-                      : 'border-primary-600 bg-primary-600'
-                    : seen
-                      ? 'border-success bg-success-soft'
-                      : done
-                        ? onPaper
-                          ? 'border-brand-soft bg-brand-tint'
-                          : 'border-primary-200 bg-primary-50'
-                        : onPaper
-                          ? 'border-brand-soft bg-paper'
-                          : 'border-border bg-surface'
-                }`}
-              >
-                <Text
-                  className={`font-strong text-label ${
-                    active
-                      ? 'text-white'
-                      : seen
-                        ? 'text-success'
-                        : done
-                          ? onPaper
-                            ? 'text-brand'
-                            : 'text-primary-700'
-                          : mutedClass
-                  }`}
-                >
-                  {itemIndex + 1}
-                </Text>
-              </Pressable>
-            );
-          })}
-        </View>
-        <View className="mt-3 flex-row flex-wrap items-center gap-2">
-          <Badge label={L('Đang làm', 'Current')} tone="primary" shape="tag" />
-          <Badge label={L('Đã trả lời', 'Answered')} tone="info" shape="tag" />
-          {instantSolution ? <Badge label={L('Đã xem lời giải', 'Solution viewed')} tone="success" shape="tag" /> : null}
-          <Badge label={L('Chưa trả lời', 'Not answered')} tone="neutral" shape="tag" />
-        </View>
-      </Panel>
-    </Shell>
+        Đặt sau lời giải thì vô nghĩa — lúc ấy đáp án đã nằm trên màn hình. Đặt
+        trước khi trả lời thì cũng vô nghĩa — chưa sai thì chưa có lỗi nào để
+        gọi tên. Chỉ đúng một khe này là hỏi được.
+      */}
+      {answeredWrong && !isRevealed ? (
+        <SelfDiagnose
+          itemId={current.id}
+          actualTag={answeredWrong}
+          allTags={ALL_ERROR_TAGS}
+          onPick={(picked) => {
+            observeSkill({
+              skill: { domain: 'sat-math', key: current.skill },
+              sourceId: current.id,
+              answerCorrect: false,
+              pointer: { kind: 'error-tag', tag: picked },
+              truth: { kind: 'error-tag', tag: answeredWrong },
+              at: new Date().toISOString(),
+            });
+          }}
+        />
+      ) : null}
+    </SatExamShell>
   );
-}
-
-function formatClock(ms: number): string {
-  const clamped = Math.max(0, ms);
-  const minutes = Math.floor(clamped / 60_000);
-  const seconds = Math.floor((clamped % 60_000) / 1000);
-  return `${minutes}:${String(seconds).padStart(2, '0')}`;
 }
