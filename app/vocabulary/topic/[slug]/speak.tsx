@@ -12,6 +12,7 @@ import { normalizeAnswer } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
 import { useGameStore } from '@/store/useGameStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 type Recognition = {
   lang: string;
@@ -46,6 +47,7 @@ function makeRecognition(): Recognition | null {
  */
 export default function SpeakScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  const { L, en } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
@@ -88,7 +90,7 @@ export default function SpeakScreen() {
       judge(ok);
     };
     rec.onerror = (e) => {
-      setHeard([e.error === 'no-speech' ? '(không nghe thấy gì)' : `(lỗi micro: ${e.error})`]);
+      setHeard([e.error === 'no-speech' ? L('(không nghe thấy gì)', '(heard nothing)') : L(`(lỗi micro: ${e.error})`, `(mic error: ${e.error})`)]);
     };
     rec.onend = () => setListening(false);
     setHeard(null);
@@ -112,20 +114,22 @@ export default function SpeakScreen() {
 
   if (!topic || !word) {
     return (
-      <StudyFrame backHref="/vocabulary/quiz" title="Phát âm">
+      <StudyFrame backHref="/vocabulary/quiz" title={L('Phát âm', 'Pronunciation')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này.</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có bộ từ này.', 'Word set not found.')}</Text>
         </StudyCard>
       </StudyFrame>
     );
   }
 
   return (
-    <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={topic.nameVi} footer={`Từ ${index + 1} / ${words.length}  •  Đọc đúng ${correct}`} battle>
+    <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)} footer={L(`Từ ${index + 1} / ${words.length}  •  Đọc đúng ${correct}`, `Word ${index + 1} / ${words.length}  •  Said right ${correct}`)} battle>
       <CrossFade swapKey={`s-${index}`}>
         <StudyCard>
           <Text className="text-center font-semi text-label uppercase tracking-[1.2px] text-muted">
-            {supported ? 'Nghe mẫu, rồi bấm micro và đọc' : 'Nghe mẫu, đọc to, rồi tự đánh giá'}
+            {supported
+              ? L('Nghe mẫu, rồi bấm micro và đọc', 'Listen to the model, then tap the mic and say it')
+              : L('Nghe mẫu, đọc to, rồi tự đánh giá', 'Listen to the model, say it aloud, then rate yourself')}
           </Text>
           <View className="mt-4 items-center">
             <Text className="font-heavy text-hero text-ink">{word.word}</Text>
@@ -141,7 +145,7 @@ export default function SpeakScreen() {
             <View className="mt-6 items-center">
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Bấm để đọc"
+                accessibilityLabel={L('Bấm để đọc', 'Tap to speak')}
                 onPress={listen}
                 disabled={listening || verdict !== null}
                 className="h-24 w-24 items-center justify-center rounded-pill"
@@ -149,30 +153,33 @@ export default function SpeakScreen() {
               >
                 <Icon name="mic" size={36} color="#FFFFFF" />
               </Pressable>
-              <Text className="mt-2 font-semi text-body text-muted">{listening ? 'Đang nghe… đọc từ trên' : 'Bấm để đọc'}</Text>
+              <Text className="mt-2 font-semi text-body text-muted">{listening ? L('Đang nghe… đọc từ trên', 'Listening… say the word above') : L('Bấm để đọc', 'Tap to speak')}</Text>
               {heard ? (
                 <Text className="mt-3 text-center font-sans text-body text-ink">
-                  Máy nghe được: <Text className="font-strong">{heard[0]}</Text>
+                  {L('Máy nghe được: ', 'The app heard: ')}<Text className="font-strong">{heard[0]}</Text>
                 </Text>
               ) : null}
             </View>
           ) : verdict === null ? (
             <View className="mt-6">
               <Text className="text-center font-sans text-body text-muted">
-                Trình duyệt này chưa có bộ nhận giọng nói (chỉ Chrome hoặc Edge trên máy tính có). Bạn tự so với giọng mẫu nhé.
+                {L(
+                  'Trình duyệt này chưa có bộ nhận giọng nói (chỉ Chrome hoặc Edge trên máy tính có). Bạn tự so với giọng mẫu nhé.',
+                  'This browser has no speech recognition (only desktop Chrome or Edge do). Compare yourself with the model voice.',
+                )}
               </Text>
-              <PrimaryButton label="Tôi đọc giống mẫu" onPress={() => judge(true)} />
-              <GhostButton label="Chưa giống, đọc lại sau" onPress={() => judge(false)} />
+              <PrimaryButton label={L('Tôi đọc giống mẫu', 'I matched the model')} onPress={() => judge(true)} />
+              <GhostButton label={L('Chưa giống, đọc lại sau', 'Not quite — try again later')} onPress={() => judge(false)} />
             </View>
           ) : null}
 
           {verdict !== null ? (
             <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? '#ECFDF3' : '#FFF1F2' }}>
               <Text className="font-strong text-cardTitle" style={{ color: verdict ? GREEN : RED }}>
-                {verdict ? 'Phát âm rõ!' : 'Chưa khớp — nghe lại mẫu rồi thử lần nữa'}
+                {verdict ? L('Phát âm rõ!', 'Clear pronunciation!') : L('Chưa khớp — nghe lại mẫu rồi thử lần nữa', 'No match — listen to the model and try again')}
               </Text>
-              {!verdict && supported ? <GhostButton label="Thử đọc lại" onPress={() => { setVerdict(null); setHeard(null); }} /> : null}
-              <PrimaryButton label="Từ tiếp theo" hint="Enter" onPress={next} />
+              {!verdict && supported ? <GhostButton label={L('Thử đọc lại', 'Try again')} onPress={() => { setVerdict(null); setHeard(null); }} /> : null}
+              <PrimaryButton label={L('Từ tiếp theo', 'Next word')} hint="Enter" onPress={next} />
             </View>
           ) : null}
         </StudyCard>

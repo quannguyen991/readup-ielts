@@ -7,6 +7,8 @@ import { Icon } from '@/components/ui';
 import { MASCOTS } from '@/services/game/mascots';
 import { mascotOf, useRewardStore } from '@/store/useRewardStore';
 import { color } from '@/theme/tokens';
+import { currentLocale, pick, useL } from '@/i18n/useL';
+import type { MascotId } from '@/services/game/mascots';
 
 /**
  * Bong bóng hỏi nhanh, nổi ở góc màn.
@@ -28,13 +30,20 @@ type Msg = { role: 'user' | 'assistant'; content: string };
 
 const GREETING =
   'Hỏi mình về ngữ pháp, từ vựng, cách làm từng dạng câu, hay cách dùng app. Mình không xem được tài khoản hay bài viết của bạn.';
+const GREETING_EN =
+  "Ask me about grammar, vocabulary, how to tackle each question type, or how to use the app. I can't see your account or your writing.";
+
+/** Tên linh vật bản tiếng Anh (dữ liệu gốc ở services/game/mascots giữ tiếng Việt). */
+const PET_NAME_EN: Record<MascotId, string> = { owl: 'Wise Owl', fox: 'Clever Fox', cat: 'Lazy Cat', dragon: 'Baby Dragon' };
 
 const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
 
 export function AskBubble() {
+  const { L, en } = useL();
   const [open, setOpen] = useState(false);
   const petId = mascotOf(useRewardStore((s) => s.mascot));
   const pet = petId ? MASCOTS[petId] : null;
+  const petName = pet ? (en ? PET_NAME_EN[pet.id] : pet.name) : '';
   React.useEffect(ensureGameKeyframes, []);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState('');
@@ -67,7 +76,7 @@ export function AskBubble() {
 
       if (!res.ok || !res.body) {
         const detail = await res.text().catch(() => '');
-        throw new Error(detail || `Máy chủ trả ${res.status}`);
+        throw new Error(detail || pick(currentLocale(), `Máy chủ trả ${res.status}`, `Server returned ${res.status}`));
       }
 
       const reader = res.body.getReader();
@@ -81,9 +90,10 @@ export function AskBubble() {
         setMessages([...next, { role: 'assistant', content: acc }]);
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+      const locale = currentLocale();
+      const message = err instanceof Error ? err.message : pick(locale, 'Lỗi không xác định', 'Unknown error');
       // Nói ra lỗi thật thay vì nuốt: người hỏi cần biết nên thử lại hay nên thôi.
-      setMessages([...next, { role: 'assistant', content: `Chưa trả lời được — ${message}` }]);
+      setMessages([...next, { role: 'assistant', content: pick(locale, `Chưa trả lời được — ${message}`, `Couldn't answer — ${message}`) }]);
     } finally {
       setBusy(false);
     }
@@ -94,7 +104,7 @@ export function AskBubble() {
       return (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Hỏi ${pet.name}`}
+          accessibilityLabel={L(`Hỏi ${petName}`, `Ask ${petName}`)}
           onPress={() => setOpen(true)}
           style={{ position: FIXED, right: 16, bottom: 14, zIndex: 60, alignItems: 'center' }}
         >
@@ -102,7 +112,7 @@ export function AskBubble() {
             <>
               {hovered ? (
                 <View className="mb-1 rounded-pill bg-white px-3 py-1" style={{ ...(Platform.OS === 'web' ? ({ boxShadow: '0 6px 18px rgba(15,23,42,0.12)' } as object) : null) }}>
-                  <Text className="font-strong text-label text-ink">Hỏi {pet.name}</Text>
+                  <Text className="font-strong text-label text-ink">{L(`Hỏi ${petName}`, `Ask ${petName}`)}</Text>
                 </View>
               ) : null}
               <View
@@ -130,7 +140,7 @@ export function AskBubble() {
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Mở hỏi nhanh"
+        accessibilityLabel={L('Mở hỏi nhanh', 'Open quick ask')}
         onPress={() => setOpen(true)}
         style={{
           position: FIXED,
@@ -187,10 +197,10 @@ export function AskBubble() {
         className="flex-row items-center justify-between px-3 py-2.5"
         style={{ backgroundColor: color.primary }}
       >
-        <Text className="font-strong text-body text-white">{pet ? `Hỏi ${pet.name}` : 'Hỏi nhanh'}</Text>
+        <Text className="font-strong text-body text-white">{pet ? L(`Hỏi ${petName}`, `Ask ${petName}`) : L('Hỏi nhanh', 'Quick ask')}</Text>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Đóng hỏi nhanh"
+          accessibilityLabel={L('Đóng hỏi nhanh', 'Close quick ask')}
           onPress={() => setOpen(false)}
           className="h-7 w-7 items-center justify-center rounded-pill"
         >
@@ -205,7 +215,7 @@ export function AskBubble() {
         onContentSizeChange={() => scroller.current?.scrollToEnd({ animated: true })}
       >
         {messages.length === 0 ? (
-          <Text className="font-sans text-label text-muted">{GREETING}</Text>
+          <Text className="font-sans text-label text-muted">{L(GREETING, GREETING_EN)}</Text>
         ) : (
           messages.map((m, i) => (
             <View
@@ -239,7 +249,7 @@ export function AskBubble() {
         <TextInput
           value={draft}
           onChangeText={setDraft}
-          placeholder="Hỏi một câu…"
+          placeholder={L('Hỏi một câu…', 'Ask a question…')}
           returnKeyType="send"
           blurOnSubmit={false}
           onSubmitEditing={() => void send()}
@@ -248,7 +258,7 @@ export function AskBubble() {
         />
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Gửi câu hỏi"
+          accessibilityLabel={L('Gửi câu hỏi', 'Send question')}
           disabled={busy || draft.trim() === ''}
           onPress={() => void send()}
           className="h-10 w-10 items-center justify-center rounded-panel"

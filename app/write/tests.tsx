@@ -20,6 +20,7 @@ import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CutePencil } from '@/components/illust/Cute';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Kho đề Writing.
@@ -56,9 +57,9 @@ const CHART_LABEL: Record<string, string> = {
 };
 
 const BAND_FILTERS = [
-  { label: 'Tất cả', value: undefined },
-  { label: 'Đến 6.0', value: 6.0 },
-  { label: 'Đến 6.5', value: 6.5 },
+  { label: 'Tất cả', labelEn: 'All', value: undefined },
+  { label: 'Đến 6.0', labelEn: 'Up to 6.0', value: 6.0 },
+  { label: 'Đến 6.5', labelEn: 'Up to 6.5', value: 6.5 },
 ] as const;
 
 export default function WritingLibraryScreen() {
@@ -68,6 +69,7 @@ export default function WritingLibraryScreen() {
   /** Loại biểu đồ (Task 1) hoặc dạng luận (Task 2) — hai tab dùng chung một ô trạng thái. */
   const [kind, setKind] = useState<string | undefined>(undefined);
   const [visible, setVisible] = useState(8);
+  const { L, en } = useL();
 
   const stats = useMemo(() => writingLibraryStats(), []);
 
@@ -120,10 +122,12 @@ export default function WritingLibraryScreen() {
     <Screen>
       <View className="flex-row items-center gap-3">
         <View className="min-w-0 flex-1">
-          <Text className="font-heavy text-pageTitle text-ink">Luyện viết</Text>
+          <Text className="font-heavy text-pageTitle text-ink">{L('Luyện viết', 'Writing practice')}</Text>
           <Text className="mt-1 font-sans text-bodyLg text-muted">
-            {stats.total} đề — {stats.byTask.ielts_task1} đề Task 1 và {stats.byTask.ielts_task2} đề
-            Task 2.
+            {L(
+              `${stats.total} đề — ${stats.byTask.ielts_task1} đề Task 1 và ${stats.byTask.ielts_task2} đề Task 2.`,
+              `${stats.total} prompts — ${stats.byTask.ielts_task1} Task 1 and ${stats.byTask.ielts_task2} Task 2.`,
+            )}
           </Text>
         </View>
         <View aria-hidden>
@@ -146,19 +150,20 @@ export default function WritingLibraryScreen() {
             </View>
             <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">SAT Writing</Text>
             <View aria-hidden>
-              <Label text="Trắc nghiệm ✓" color="#22A06B" ink="#FFFFFF" tilt={4} size={12} />
+              <Label text={L('Trắc nghiệm ✓', 'Multiple choice ✓')} color="#22A06B" ink="#FFFFFF" tilt={4} size={12} />
             </View>
           </View>
           <Text className="mt-2 font-sans text-body text-muted">
-            Hai nhóm kỹ năng viết của SAT Reading and Writing: Expression of Ideas (Transitions,
-            Rhetorical Synthesis) và Standard English Conventions (Boundaries, Form / Structure /
-            Sense). Toàn bộ là câu hỏi trắc nghiệm — bài thi số hoá hiện nay không còn phần viết luận.
+            {L(
+              'Hai nhóm kỹ năng viết của SAT Reading and Writing: Expression of Ideas (Transitions, Rhetorical Synthesis) và Standard English Conventions (Boundaries, Form / Structure / Sense). Toàn bộ là câu hỏi trắc nghiệm — bài thi số hoá hiện nay không còn phần viết luận.',
+              'The two writing skill groups in SAT Reading and Writing: Expression of Ideas (Transitions, Rhetorical Synthesis) and Standard English Conventions (Boundaries, Form / Structure / Sense). All multiple choice — the digital SAT no longer has an essay.',
+            )}
           </Text>
           <Text className="mt-2 font-sans text-label text-muted">
-            Câu hỏi dựng tại chỗ từ kho passage SAT đã có trong app.
+            {L('Câu hỏi dựng tại chỗ từ kho passage SAT đã có trong app.', "Questions are built on the spot from the app's SAT passage bank.")}
           </Text>
           <View className="mt-4 flex-row items-center gap-4">
-            <Button label="Bắt đầu luyện" onPress={() => router.push('/write/sat' as never)} />
+            <Button label={L('Bắt đầu luyện', 'Start practising')} onPress={() => router.push('/write/sat' as never)} />
             <View aria-hidden>
               <Motion kind="float">
                 <Sticker tilt={8}>
@@ -172,9 +177,9 @@ export default function WritingLibraryScreen() {
         <>
           <View className="mt-4 flex-row flex-wrap items-center gap-2">
             <Text className="font-semi text-label text-muted">
-              {tab === 'ielts_task1' ? 'Loại biểu đồ' : 'Dạng luận'}
+              {tab === 'ielts_task1' ? L('Loại biểu đồ', 'Chart type') : L('Dạng luận', 'Essay type')}
             </Text>
-            <Chip label="Tất cả" active={kind === undefined} onPress={() => setKind(undefined)} />
+            <Chip label={L('Tất cả', 'All')} active={kind === undefined} onPress={() => setKind(undefined)} />
             {kindCounts.map((k) => (
               <Chip
                 key={k.key}
@@ -186,8 +191,8 @@ export default function WritingLibraryScreen() {
           </View>
 
           <View className="mt-2 flex-row flex-wrap items-center gap-2">
-            <Text className="font-semi text-label text-muted">Chủ đề</Text>
-            <Chip label="Tất cả" active={topic === undefined} onPress={() => setTopic(undefined)} />
+            <Text className="font-semi text-label text-muted">{L('Chủ đề', 'Topic')}</Text>
+            <Chip label={L('Tất cả', 'All')} active={topic === undefined} onPress={() => setTopic(undefined)} />
             {TOPICS.map((t) => (
               <Chip
                 key={t.slug}
@@ -199,18 +204,18 @@ export default function WritingLibraryScreen() {
           </View>
 
           <View className="mt-2 flex-row flex-wrap items-center gap-2">
-            <Text className="font-semi text-label text-muted">Band mục tiêu</Text>
+            <Text className="font-semi text-label text-muted">{L('Band mục tiêu', 'Target band')}</Text>
             {BAND_FILTERS.map((b) => (
               <Chip
                 key={b.label}
-                label={b.label}
+                label={en ? b.labelEn : b.label}
                 active={maxBand === b.value}
                 onPress={() => setMaxBand(b.value)}
               />
             ))}
           </View>
 
-          <SectionHeader title={`${prompts.length} đề phù hợp`} icon="clipboard" iconTone="accent" />
+          <SectionHeader title={L(`${prompts.length} đề phù hợp`, `${prompts.length} matching prompts`)} icon="clipboard" iconTone="accent" />
 
           {prompts.length === 0 ? (
             <Card>
@@ -223,7 +228,7 @@ export default function WritingLibraryScreen() {
                   </Motion>
                 </View>
                 <Text className="min-w-0 flex-1 font-sans text-body text-muted">
-                  Không có đề nào khớp bộ lọc. Bỏ bớt một điều kiện để xem thêm.
+                  {L('Không có đề nào khớp bộ lọc. Bỏ bớt một điều kiện để xem thêm.', 'No prompts match these filters. Remove one to see more.')}
                 </Text>
               </View>
             </Card>
@@ -239,7 +244,7 @@ export default function WritingLibraryScreen() {
             <View className="mt-4 items-center">
               <Button
                 variant="outline"
-                label={`Xem thêm ${Math.min(8, prompts.length - visible)} đề`}
+                label={L(`Xem thêm ${Math.min(8, prompts.length - visible)} đề`, `Show ${Math.min(8, prompts.length - visible)} more`)}
                 onPress={() => setVisible((v) => v + 8)}
               />
             </View>
@@ -266,6 +271,7 @@ function bandLevel(band: number): string {
 function PromptCard({ prompt, index }: { prompt: WritingPrompt; index: number }) {
   const submissions = useWritingStore((s) => s.submissions);
   const done = useMemo(() => submissions.filter((x) => x.promptId === prompt.id).length, [submissions, prompt.id]);
+  const { L } = useL();
   const task1 = prompt.task === 'ielts_task1';
   const kindLabel = task1
     ? (CHART_LABEL[prompt.chartKind ?? ''] ?? 'Task 1')
@@ -273,7 +279,7 @@ function PromptCard({ prompt, index }: { prompt: WritingPrompt; index: number })
       ? ESSAY_LABEL[prompt.essayKind]
       : 'Task 2';
   const title = task1 && prompt.chartData ? prompt.chartData.title : prompt.promptText;
-  const blurb = task1 ? prompt.promptText : `Dạng ${kindLabel}. Viết ít nhất ${prompt.minWords} từ.`;
+  const blurb = task1 ? prompt.promptText : L(`Dạng ${kindLabel}. Viết ít nhất ${prompt.minWords} từ.`, `${kindLabel} essay. Write at least ${prompt.minWords} words.`);
 
   return (
     <LessonCard
@@ -285,8 +291,8 @@ function PromptCard({ prompt, index }: { prompt: WritingPrompt; index: number })
       title={title}
       blurb={blurb}
       meta={[
-        { icon: 'clock', label: `${Math.round(prompt.timeLimitSeconds / 60)} phút` },
-        { icon: 'note', label: `≥ ${prompt.minWords} từ` },
+        { icon: 'clock', label: L(`${Math.round(prompt.timeLimitSeconds / 60)} phút`, `${Math.round(prompt.timeLimitSeconds / 60)} min`) },
+        { icon: 'note', label: L(`≥ ${prompt.minWords} từ`, `≥ ${prompt.minWords} words`) },
       ]}
       done={done}
       visual={(tone, active) =>
@@ -297,7 +303,7 @@ function PromptCard({ prompt, index }: { prompt: WritingPrompt; index: number })
         )
       }
       onPress={() => router.push(`/write/${prompt.id}` as never)}
-      secondary={{ label: 'Luyện từng phần', onPress: () => router.push(`/write/drill/${prompt.id}` as never) }}
+      secondary={{ label: L('Luyện từng phần', 'Practise by part'), onPress: () => router.push(`/write/drill/${prompt.id}` as never) }}
     />
   );
 }

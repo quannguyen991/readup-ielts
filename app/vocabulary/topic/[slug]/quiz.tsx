@@ -14,8 +14,17 @@ import { todayKey } from '@/store/persist';
 import { useGameStore } from '@/store/useGameStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
+import { useL } from '@/i18n/useL';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
+
+/** Nhãn dạng câu bằng tiếng Anh (bản tiếng Việt: `THPT_KIND_LABEL` trong services). */
+const KIND_EN: Record<string, string> = {
+  complete: 'Fill the gap',
+  closest: 'Closest meaning',
+  opposite: 'Opposite meaning',
+  definition: 'Matches the definition',
+};
 const EMPTY_STAGES = {};
 
 /**
@@ -29,6 +38,7 @@ const EMPTY_STAGES = {};
  */
 export default function QuizScreen() {
   const { slug = '', only } = useLocalSearchParams<{ slug: string; only?: string }>();
+  const { L, en } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const stages = useTopicStudyStore((s) => s.stages[slug] ?? EMPTY_STAGES);
@@ -122,14 +132,14 @@ export default function QuizScreen() {
   });
 
   const back = `/vocabulary/topic/${slug}`;
-  if (!topic) return <StudyFrame backHref="/vocabulary/quiz" title="Quiz ôn tập">{null}</StudyFrame>;
+  if (!topic) return <StudyFrame backHref="/vocabulary/quiz" title={L('Quiz ôn tập', 'Review quiz')}>{null}</StudyFrame>;
 
   if (list.length === 0) {
     return (
-      <StudyFrame backHref={back} title="Quiz ôn tập">
+      <StudyFrame backHref={back} title={L('Quiz ôn tập', 'Review quiz')}>
         <StudyCard>
-          <Text className="font-heavy text-sectionTitle text-ink">Không còn từ nào trong nhóm này</Text>
-          <Text className="mt-1 font-sans text-body text-muted">Chọn ôn cả bộ để làm tiếp.</Text>
+          <Text className="font-heavy text-sectionTitle text-ink">{L('Không còn từ nào trong nhóm này', 'No words left in this group')}</Text>
+          <Text className="mt-1 font-sans text-body text-muted">{L('Chọn ôn cả bộ để làm tiếp.', 'Review the whole set to keep going.')}</Text>
         </StudyCard>
       </StudyFrame>
     );
@@ -138,19 +148,22 @@ export default function QuizScreen() {
   if (done) {
     const pct = Math.round((score / list.length) * 100);
     return (
-      <StudyFrame backHref={back} title="Quiz ôn tập">
+      <StudyFrame backHref={back} title={L('Quiz ôn tập', 'Review quiz')}>
         <StudyCard>
-          <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">Xong lượt Quiz</Text>
+          <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{L('Xong lượt Quiz', 'Quiz complete')}</Text>
           <Text className="mt-2 font-heavy text-hero text-ink">
             {score}/{list.length}
           </Text>
-          <Text className="mt-1 font-sans text-bodyLg text-muted">Đúng {pct}%</Text>
+          <Text className="mt-1 font-sans text-bodyLg text-muted">{L(`Đúng ${pct}%`, `${pct}% correct`)}</Text>
           <Text className="mt-3 font-sans text-body text-muted">
-            📅 Từ đúng sẽ hẹn ôn lại sau 1 → 2 → 4 → 7 ngày; từ sai hẹn ôn lại ngày mai.
+            {L(
+              '📅 Từ đúng sẽ hẹn ôn lại sau 1 → 2 → 4 → 7 ngày; từ sai hẹn ôn lại ngày mai.',
+              '📅 Correct words come back after 1 → 2 → 4 → 7 days; missed words come back tomorrow.',
+            )}
           </Text>
           <View className="mt-5 gap-2">
-            {wrong.length > 0 ? <PrimaryButton label={`🔁 Làm lại ${wrong.length} từ sai`} onPress={redoWrong} /> : null}
-            <PrimaryButton label="Làm đề khác" onPress={restart} />
+            {wrong.length > 0 ? <PrimaryButton label={L(`🔁 Làm lại ${wrong.length} từ sai`, `🔁 Redo ${wrong.length} missed words`)} onPress={redoWrong} /> : null}
+            <PrimaryButton label={L('Làm đề khác', 'New quiz')} onPress={restart} />
           </View>
         </StudyCard>
       </StudyFrame>
@@ -163,10 +176,13 @@ export default function QuizScreen() {
   return (
     <StudyFrame
       backHref={back}
-      title="Quiz ôn tập"
+      title={L('Quiz ôn tập', 'Review quiz')}
       battle
       progress={list.map((_, i) => (i < index || (i === index && revealed) ? 1 : 0))}
-      footer={`Câu ${index + 1}/${list.length} · đúng ${score} · phím A–D chọn, Enter sang câu`}
+      footer={L(
+        `Câu ${index + 1}/${list.length} · đúng ${score} · phím A–D chọn, Enter sang câu`,
+        `Question ${index + 1}/${list.length} · ${score} correct · keys A–D to choose, Enter for next`,
+      )}
     >
       <CrossFade swapKey={`${seed}-${index}`}>
         <StudyCard>
@@ -175,7 +191,7 @@ export default function QuizScreen() {
               Question {index + 1}
             </Text>
             <View className="rounded-pill bg-white/80 px-2.5 py-0.5">
-              <Text className="font-semi text-label text-muted">{THPT_KIND_LABEL[cur.kind]}</Text>
+              <Text className="font-semi text-label text-muted">{en ? (KIND_EN[cur.kind] ?? THPT_KIND_LABEL[cur.kind]) : THPT_KIND_LABEL[cur.kind]}</Text>
             </View>
           </View>
           <Text className="mt-2 font-sans text-body italic text-muted">{cur.instruction}</Text>
@@ -212,7 +228,7 @@ export default function QuizScreen() {
 
           {revealed ? (
             <View className="mt-4">
-              <PrimaryButton label={index + 1 < list.length ? 'Câu tiếp' : 'Xem kết quả'} onPress={next} />
+              <PrimaryButton label={index + 1 < list.length ? L('Câu tiếp', 'Next question') : L('Xem kết quả', 'See results')} onPress={next} />
             </View>
           ) : null}
         </StudyCard>

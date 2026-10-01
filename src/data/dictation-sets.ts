@@ -45,6 +45,65 @@ export const DICTATION_SET_TOPICS: string[] = [
   ...new Set(DICTATION_SETS.map((s) => s.topic)),
 ].sort((a, b) => a.localeCompare(b, 'vi'));
 
+/** Tên chủ đề khi giao diện là tiếng Anh. Giá trị lọc vẫn là tên tiếng Việt. */
+export const DICTATION_TOPIC_EN: Record<string, string> = {
+  'Đời sống thường ngày': 'Daily life',
+  'Ẩm thực': 'Food',
+  'Thời tiết': 'Weather',
+  'Mua sắm': 'Shopping',
+  'Gia đình': 'Family',
+  'Giao thông': 'Transport',
+  'Du lịch': 'Travel',
+  'Kỹ năng học tập': 'Study skills',
+  'Sức khỏe': 'Health',
+  'Nhà ở': 'Housing',
+  'Thể thao': 'Sport',
+  'Đời sống đô thị': 'City life',
+  'Tiền bạc': 'Money',
+  'Công việc': 'Work',
+  'Công nghệ': 'Technology',
+  'Môi trường': 'Environment',
+  'Truyền thông': 'Media',
+  'Học ngoại ngữ': 'Language learning',
+  'Tình nguyện': 'Volunteering',
+  'Lễ hội': 'Festivals',
+  'Khoa học': 'Science',
+  'Lịch sử': 'History',
+  'Nghệ thuật': 'Art',
+  'Thiên nhiên': 'Nature',
+  'Nghề nghiệp': 'Careers',
+  'Giấc ngủ': 'Sleep',
+  'Thú cưng': 'Pets',
+  'Làm vườn': 'Gardening',
+  'Thư viện': 'Libraries',
+  'Bảo tàng': 'Museums',
+  'Nói trước công chúng': 'Public speaking',
+  'Nhiếp ảnh': 'Photography',
+  'Trí nhớ': 'Memory',
+  'Nghề nông': 'Farming',
+  'Học nhạc cụ': 'Learning an instrument',
+  'Đại dương': 'Oceans',
+  'Kiến trúc': 'Architecture',
+  'Vũ trụ': 'Space',
+  'Báo chí': 'Journalism',
+  'Thiết kế': 'Design',
+  'Khởi nghiệp': 'Startups',
+  'Khảo cổ': 'Archaeology',
+  'Năng lượng': 'Energy',
+  'Tâm lý học': 'Psychology',
+  'Quy hoạch đô thị': 'Urban planning',
+  'Y học': 'Medicine',
+  'Đàm phán': 'Negotiation',
+  'Di cư': 'Migration',
+  'Chính sách khí hậu': 'Climate policy',
+  'Đạo đức nghiên cứu': 'Research ethics',
+};
+
+/** Nhãn chủ đề theo ngôn ngữ; chủ đề chưa có bản tiếng Anh thì giữ nguyên. */
+export function dictationTopicLabel(topic: string, en: boolean): string {
+  return en ? DICTATION_TOPIC_EN[topic] ?? topic : topic;
+}
+
 export function getDictationSet(id: string): DictationSet | undefined {
   return DICTATION_SETS.find((s) => s.id === id);
 }

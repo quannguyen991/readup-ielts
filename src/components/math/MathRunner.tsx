@@ -14,6 +14,7 @@ import { observeSkill } from '@/store/useMasteryStore';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Màn làm bài Math — dùng chung cho chẩn đoán, drill và mock.
@@ -69,12 +70,13 @@ export function MathRunner({
   items,
   minutes,
   phaseLabel,
-  submitLabel = 'Nộp bài',
+  submitLabel,
   instantSolution = false,
   surface = 'light',
   onFinish,
 }: MathRunnerProps) {
   const onPaper = surface === 'paper';
+  const { L } = useL();
   /* Chu tren nen: toi tren nen sang, trang tren nen cham. */
   const titleClass = onPaper ? 'text-white' : 'text-ink';
   const subClass = onPaper ? 'text-white/70' : 'text-muted';
@@ -231,7 +233,7 @@ export function MathRunner({
           )}
           <Text className={`font-sans text-label ${subClass}`}>
             {phaseLabel ? `${phaseLabel} · ` : ''}
-            đã trả lời {answered}/{items.length}
+            {L(`đã trả lời ${answered}/${items.length}`, `answered ${answered}/${items.length}`)}
           </Text>
         </View>
       </View>
@@ -294,8 +296,8 @@ export function MathRunner({
             <Button
               label={
                 (answers[current.id] ?? '').trim() === ''
-                  ? 'Chưa trả lời — xem lời giải luôn'
-                  : 'Xem lời giải câu này'
+                  ? L('Chưa trả lời — xem lời giải luôn', 'Not answered — show the solution anyway')
+                  : L('Xem lời giải câu này', 'Show solution')
               }
               variant="outline"
               iconRight="chevron-down"
@@ -307,7 +309,7 @@ export function MathRunner({
               }}
             />
             <Text className={`mt-2 font-sans text-label ${mutedClass}`}>
-              Xem lời giải xong thì câu này bị khoá, không đổi đáp án được nữa.
+              {L('Xem lời giải xong thì câu này bị khoá, không đổi đáp án được nữa.', "Once you see the solution, this question locks and your answer can't be changed.")}
             </Text>
           </View>
         ) : null}
@@ -316,25 +318,25 @@ export function MathRunner({
       <View className="mt-4 flex-row flex-wrap items-center justify-between gap-3">
         <View className="flex-row gap-2">
           <Button
-            label="Câu trước"
+            label={L('Câu trước', 'Previous')}
             variant="outline"
             iconLeft="chevron-left"
             disabled={index === 0}
             onPress={() => goTo(index - 1)}
           />
           <Button
-            label="Câu sau"
+            label={L('Câu sau', 'Next')}
             variant="outline"
             iconRight="chevron-right"
             disabled={index === items.length - 1}
             onPress={() => goTo(index + 1)}
           />
         </View>
-        <Button label={submitLabel} iconRight="check" onPress={submit} />
+        <Button label={submitLabel ?? L('Nộp bài', 'Submit')} iconRight="check" onPress={submit} />
       </View>
 
       <Panel className="mt-4">
-        <Text className={`font-strong text-label ${mutedClass}`}>Bảng câu hỏi</Text>
+        <Text className={`font-strong text-label ${mutedClass}`}>{L('Bảng câu hỏi', 'Question map')}</Text>
         <View className="mt-2 flex-row flex-wrap gap-2">
           {items.map((item, itemIndex) => {
             const done = (answers[item.id] ?? '').trim() !== '';
@@ -380,10 +382,10 @@ export function MathRunner({
           })}
         </View>
         <View className="mt-3 flex-row flex-wrap items-center gap-2">
-          <Badge label="Đang làm" tone="primary" shape="tag" />
-          <Badge label="Đã trả lời" tone="info" shape="tag" />
-          {instantSolution ? <Badge label="Đã xem lời giải" tone="success" shape="tag" /> : null}
-          <Badge label="Chưa trả lời" tone="neutral" shape="tag" />
+          <Badge label={L('Đang làm', 'Current')} tone="primary" shape="tag" />
+          <Badge label={L('Đã trả lời', 'Answered')} tone="info" shape="tag" />
+          {instantSolution ? <Badge label={L('Đã xem lời giải', 'Solution viewed')} tone="success" shape="tag" /> : null}
+          <Badge label={L('Chưa trả lời', 'Not answered')} tone="neutral" shape="tag" />
         </View>
       </Panel>
     </Shell>

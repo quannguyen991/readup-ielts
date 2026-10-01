@@ -25,6 +25,11 @@ import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
 import { color } from '@/theme/tokens';
+import { installLocaleFetch } from '@/i18n/fetch-locale';
+
+// Mọi lượt gọi `/api/...` mang theo ngôn ngữ đang chọn để máy chủ trả lời đúng
+// thứ tiếng. Chạy một lần lúc nạp module; gọi lại (HMR) vẫn chỉ bọc một lớp.
+installLocaleFetch();
 
 export default function RootLayout() {
   // Khoá chuyển cảnh là đường dẫn: đổi trang thì nội dung được gắn lại và hiệu

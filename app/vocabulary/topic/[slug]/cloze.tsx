@@ -37,6 +37,15 @@ import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
+import { currentLocale, pick as pickLocale, useL } from '@/i18n/useL';
+
+/** Nhãn dạng câu bằng tiếng Anh (bản tiếng Việt: `CLOZE_KIND_LABEL` trong services). */
+const CLOZE_KIND_EN: Record<ClozeQuestion['kind'], string> = {
+  pick: 'Pick the word',
+  scramble: 'Unscramble',
+  write: 'Type the word',
+  listen: 'Listen and fill',
+};
 
 /**
  * Điền từ vào câu ví dụ — biết nghĩa một từ chưa phải là biết DÙNG nó.
@@ -51,6 +60,7 @@ import { color } from '@/theme/tokens';
  */
 export default function ClozeScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  const { L, en } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -189,7 +199,7 @@ export default function ClozeScreen() {
   const dontKnow = () => {
     if (!q || verdict !== null) return;
     if (q.kind === 'pick') setPicked(-1);
-    judge(false, { kind: 'unknown', title: MISTAKE_TITLE.unknown, detail: `Đáp án: “${q.answer}”.` });
+    judge(false, { kind: 'unknown', title: MISTAKE_TITLE.unknown, detail: pickLocale(currentLocale(), `Đáp án: “${q.answer}”.`, `Answer: “${q.answer}”.`) });
   };
 
   const tapTile = (i: number) => {
@@ -255,9 +265,9 @@ export default function ClozeScreen() {
 
   if (!topic || order.length === 0) {
     return (
-      <StudyFrame backHref="/vocabulary/quiz" title="Điền vào câu">
+      <StudyFrame backHref="/vocabulary/quiz" title={L('Điền vào câu', 'Fill the gap')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Không có câu nào để điền trong bộ này.</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có câu nào để điền trong bộ này.', 'This set has no sentences to fill in.')}</Text>
         </StudyCard>
       </StudyFrame>
     );
@@ -269,23 +279,29 @@ export default function ClozeScreen() {
     if (!queue.some((i) => i.word === w.word)) return 2;
     return slipped.has(w.word) ? 1 : 0;
   });
-  const footer = `Vòng ${roundNo + 1}  •  Câu đã làm ${asked}  •  Đúng ngay lần đầu ${firstTry}/${roundWords.length}`;
+  const footer = L(
+    `Vòng ${roundNo + 1}  •  Câu đã làm ${asked}  •  Đúng ngay lần đầu ${firstTry}/${roundWords.length}`,
+    `Round ${roundNo + 1}  •  Answered ${asked}  •  Right first time ${firstTry}/${roundWords.length}`,
+  );
 
   if (!head || !q) {
     return (
-      <StudyFrame backHref={backHref} title="Điền vào câu" segments={segments} footer={footer}>
+      <StudyFrame backHref={backHref} title={L('Điền vào câu', 'Fill the gap')} segments={segments} footer={footer}>
         <CrossFade swapKey={`done-${roundNo}`}>
           <StudyCard>
-            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">Xong vòng {roundNo + 1}</Text>
+            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{L(`Xong vòng ${roundNo + 1}`, `Round ${roundNo + 1} complete`)}</Text>
             <Text className="mt-2 font-heavy text-pageTitle text-ink">
-              {firstTry}/{roundWords.length} câu đúng ngay lần đầu
+              {L(`${firstTry}/${roundWords.length} câu đúng ngay lần đầu`, `${firstTry}/${roundWords.length} right first time`)}
             </Text>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              Câu sai đã được hỏi lại bằng dạng khác cho tới khi đúng — tổng cộng {asked} câu.
+              {L(
+                `Câu sai đã được hỏi lại bằng dạng khác cho tới khi đúng — tổng cộng ${asked} câu.`,
+                `Missed questions came back in a different form until you got them right — ${asked} questions in total.`,
+              )}
             </Text>
             <RoundAnalysis mistakes={mistakes} />
-            <PrimaryButton label="Vòng tiếp theo" onPress={() => startRound(roundNo + 1, [...slipped])} />
-            <GhostButton label="Về bộ từ" onPress={() => router.replace(backHref as never)} />
+            <PrimaryButton label={L('Vòng tiếp theo', 'Next round')} onPress={() => startRound(roundNo + 1, [...slipped])} />
+            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => router.replace(backHref as never)} />
           </StudyCard>
         </CrossFade>
       </StudyFrame>
@@ -294,18 +310,18 @@ export default function ClozeScreen() {
 
   const revealed = verdict !== null;
   return (
-    <StudyFrame backHref={backHref} title={topic.nameVi} segments={segments} footer={footer} battle>
+    <StudyFrame backHref={backHref} title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)} segments={segments} footer={footer} battle>
       <CrossFade swapKey={`c-${step}`}>
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
-                {CLOZE_KIND_LABEL[q.kind]}
+                {en ? CLOZE_KIND_EN[q.kind] : CLOZE_KIND_LABEL[q.kind]}
               </Text>
             </View>
             {head.retry ? (
               <Text className="font-semi text-label" style={{ color: '#B45309' }}>
-                ↻ Hỏi lại câu bạn vừa sai
+                {L('↻ Hỏi lại câu bạn vừa sai', '↻ Retrying a question you missed')}
               </Text>
             ) : null}
           </View>
@@ -330,14 +346,18 @@ export default function ClozeScreen() {
             <View className="mt-5">
               {q.kind === 'write' ? (
                 <Text className="font-sans text-body text-muted">
-                  Nghĩa: <Text className="font-semi text-ink">{q.word.meaningVi}</Text> · {letterCount(q.answer)} chữ cái · bắt đầu bằng “
-                  {q.answer[0]}” · gõ đúng dạng trong câu
+                  {L('Nghĩa: ', 'Meaning: ')}
+                  <Text className="font-semi text-ink">{q.word.meaningVi}</Text> ·{' '}
+                  {L(
+                    `${letterCount(q.answer)} chữ cái · bắt đầu bằng “${q.answer[0]}” · gõ đúng dạng trong câu`,
+                    `${letterCount(q.answer)} letters · starts with “${q.answer[0]}” · type the form used in the sentence`,
+                  )}
                 </Text>
               ) : (
                 <View className="flex-row flex-wrap items-center gap-2">
-                  <ListenButton label="Nghe câu" hint="Ctrl" onPress={() => speak(q.word.example, { rate: 0.9 })} />
-                  <ListenButton label="Nghe chậm" onPress={() => speak(q.word.example, { rate: 0.65 })} />
-                  <Text className="font-sans text-body text-muted">{letterCount(q.answer)} chữ cái</Text>
+                  <ListenButton label={L('Nghe câu', 'Play sentence')} hint="Ctrl" onPress={() => speak(q.word.example, { rate: 0.9 })} />
+                  <ListenButton label={L('Nghe chậm', 'Play slowly')} onPress={() => speak(q.word.example, { rate: 0.65 })} />
+                  <Text className="font-sans text-body text-muted">{L(`${letterCount(q.answer)} chữ cái`, `${letterCount(q.answer)} letters`)}</Text>
                 </View>
               )}
               <TextInput
@@ -347,7 +367,7 @@ export default function ClozeScreen() {
                 autoFocus
                 autoCapitalize="none"
                 autoCorrect={false}
-                placeholder="Gõ từ còn thiếu…"
+                placeholder={L('Gõ từ còn thiếu…', 'Type the missing word…')}
                 placeholderTextColor="#94A3B8"
                 // Trên web phím Enter do phím tắt ở cấp cửa sổ xử lý; gắn thêm ở đây là chấm hai lần.
                 onSubmitEditing={Platform.OS === 'web' ? undefined : () => submitText(typed)}
@@ -358,11 +378,11 @@ export default function ClozeScreen() {
                   backgroundColor: '#FCFBF8',
                 }}
               />
-              {!revealed ? <PrimaryButton label="Kiểm tra" hint="Enter" disabled={!typed.trim()} onPress={() => submitText(typed)} /> : null}
+              {!revealed ? <PrimaryButton label={L('Kiểm tra', 'Check')} hint="Enter" disabled={!typed.trim()} onPress={() => submitText(typed)} /> : null}
             </View>
           ) : null}
 
-          {!revealed ? <GhostButton label={q.kind === 'pick' ? '5 · Tôi không biết' : 'Tôi không biết'} onPress={dontKnow} /> : null}
+          {!revealed ? <GhostButton label={q.kind === 'pick' ? L('5 · Tôi không biết', "5 · I don't know") : L('Tôi không biết', "I don't know")} onPress={dontKnow} /> : null}
           {verdict === false && mistake ? <MistakeBox m={mistake} /> : null}
           {revealed ? <FeedbackPanel ok={verdict} word={q.word} onNext={next} /> : null}
         </StudyCard>
@@ -394,6 +414,7 @@ function ScrambleBoard({
     used.map((k) => q.tiles[k]!),
   );
   const chars = [...q.answer];
+  const { L } = useL();
   // Từ dài thì ô nhỏ lại, để một từ 11–12 chữ vẫn nằm gọn trên màn điện thoại.
   const small = letterCount(q.answer) > 9;
   const size = small ? 28 : 38;
@@ -426,7 +447,7 @@ function ScrambleBoard({
                 <Pressable
                   key={pos}
                   accessibilityRole="button"
-                  accessibilityLabel={filled ? `Bỏ chữ ${filled}` : 'Ô trống'}
+                  accessibilityLabel={filled ? L(`Bỏ chữ ${filled}`, `Remove letter ${filled}`) : L('Ô trống', 'Empty slot')}
                   disabled={locked || !filled}
                   onPress={() => onSlot(slot)}
                   className="items-center justify-center rounded-lg"
@@ -453,7 +474,7 @@ function ScrambleBoard({
             <Pressable
               key={i}
               accessibilityRole="button"
-              accessibilityLabel={`Chữ ${t}`}
+              accessibilityLabel={L(`Chữ ${t}`, `Letter ${t}`)}
               disabled={locked || isUsed}
               onPress={() => onTile(i)}
               className="items-center justify-center rounded-xl"
@@ -472,7 +493,12 @@ function ScrambleBoard({
         })}
       </View>
       {!locked ? (
-        <Text className="mt-3 text-center font-sans text-label text-muted">Bấm chữ để xếp · bấm ô đã điền để trả chữ về · gõ phím chữ cái hoặc Backspace</Text>
+        <Text className="mt-3 text-center font-sans text-label text-muted">
+          {L(
+            'Bấm chữ để xếp · bấm ô đã điền để trả chữ về · gõ phím chữ cái hoặc Backspace',
+            'Tap letters to place them · tap a filled slot to send it back · or type letters / Backspace',
+          )}
+        </Text>
       ) : null}
     </View>
   );

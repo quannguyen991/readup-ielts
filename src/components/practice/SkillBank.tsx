@@ -7,6 +7,7 @@ import { Grid } from '@/components/layout/Grid';
 import { LightSweep } from '@/components/layout/LightHero';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Ngân hàng câu theo kỹ năng — bố cục chung của trang SAT Math và SAT Verbal.
@@ -62,6 +63,8 @@ export function BankHeader({ current, other }: { current: BankInfo; other: BankI
 }
 
 function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }) {
+  const { L, en } = useL();
+  const numLocale = en ? 'en-US' : 'vi-VN';
   const [hovered, setHovered] = useState(false);
   const pct = info.total > 0 ? Math.min(1, info.done / info.total) : 0;
 
@@ -96,8 +99,8 @@ function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }
 
       <View className="mt-5 flex-row items-baseline justify-between">
         <Text className="font-sans text-body text-muted">
-          <Text className="font-strong text-ink">{info.done.toLocaleString('vi-VN')}</Text> /{' '}
-          {info.total.toLocaleString('vi-VN')} câu
+          <Text className="font-strong text-ink">{info.done.toLocaleString(numLocale)}</Text> /{' '}
+          {info.total.toLocaleString(numLocale)} {L('câu', 'questions')}
         </Text>
         <Text className="font-semi text-label text-muted">{Math.round(pct * 100)}%</Text>
       </View>
@@ -111,7 +114,7 @@ function BankCard({ info, active = false }: { info: BankInfo; active?: boolean }
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`Sang ${info.title}`}
+      accessibilityLabel={L(`Sang ${info.title}`, `Go to ${info.title}`)}
       onPress={() => router.push(info.href as never)}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
@@ -136,13 +139,14 @@ export function DomainSection({
   total: number;
   children: React.ReactNode;
 }) {
+  const { L } = useL();
   const [open, setOpen] = useState(true);
   return (
     <View className="mt-8">
       <Pressable
         accessibilityRole="button"
         aria-expanded={open}
-        accessibilityLabel={open ? `Thu gọn ${title}` : `Mở ${title}`}
+        accessibilityLabel={open ? L(`Thu gọn ${title}`, `Collapse ${title}`) : L(`Mở ${title}`, `Expand ${title}`)}
         onPress={() => setOpen((v) => !v)}
         className="flex-row items-center gap-3"
       >
@@ -194,11 +198,12 @@ export type SkillCardProps = {
 
 /** Cả thẻ bấm được — không bắt người học ngắm trúng một nút nhỏ ở góc. */
 export function SkillCard(p: SkillCardProps) {
+  const { L } = useL();
   const [hovered, setHovered] = useState(false);
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`Luyện ${p.title}`}
+      accessibilityLabel={L(`Luyện ${p.title}`, `Practice ${p.title}`)}
       onPress={() => router.push(p.href as never)}
       onHoverIn={() => setHovered(true)}
       onHoverOut={() => setHovered(false)}
@@ -212,7 +217,7 @@ export function SkillCard(p: SkillCardProps) {
         </View>
         {p.meta ? <Text className="mt-3 font-semi text-[13px] text-primary-600">{p.meta}</Text> : null}
         <View className="mt-2 flex-row items-center gap-4">
-          <Text className="font-sans text-[14px] text-muted">{p.bank} câu</Text>
+          <Text className="font-sans text-[14px] text-muted">{L(`${p.bank} câu`, `${p.bank} questions`)}</Text>
           <View className="flex-row items-center gap-1">
             <Icon name="clock" size={14} color={color.subtle} />
             <Text className="font-sans text-[14px] text-muted">{formatDuration(p.totalMs)}</Text>
@@ -226,14 +231,14 @@ export function SkillCard(p: SkillCardProps) {
       >
         <Ring accuracy={p.accuracy} />
         <View className="flex-row items-center gap-3">
-          <Count value={p.correct} tone={GREEN} label="câu đúng" />
-          <Count value={p.wrong} tone={RED} label="câu sai" />
+          <Count value={p.correct} tone={GREEN} label={L('câu đúng', 'correct')} />
+          <Count value={p.wrong} tone={RED} label={L('câu sai', 'wrong')} />
         </View>
         <Text className="font-sans text-[13px] text-muted">
           <Text className="font-semi text-ink">{p.answered}</Text> / {p.bank}
         </Text>
         <View className="w-full items-center rounded-xl py-2" style={{ backgroundColor: hovered ? '#A8843F' : color.primary }}>
-          <Text className="font-semi text-[14px] text-white">Luyện</Text>
+          <Text className="font-semi text-[14px] text-white">{L('Luyện', 'Practice')}</Text>
         </View>
       </View>
       {/* Ánh sáng lướt qua, lệch nhịp theo vị trí thẻ nên chạy thành làn sóng

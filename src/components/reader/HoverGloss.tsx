@@ -12,6 +12,7 @@ import { parseInline, stripInline } from '@/lib/inlineMarkup';
 import { lookupWord } from '@/services/dictionary/lookup';
 import { isGlossable, normaliseToken, offlineGloss, splitTokens } from '@/services/dictionary/offline-glossary';
 import { paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Rê chuột vào một từ là hiện nghĩa ngay trên đầu từ đó; BẤM vào là mở thẻ chi tiết.
@@ -272,6 +273,7 @@ function GlossBubble({
   gloss: InlineGloss | null;
   busy: boolean;
 }) {
+  const { L } = useL();
   const reduced = useReducedMotion();
   const t = useSharedValue(reduced ? 1 : 0);
 
@@ -308,14 +310,14 @@ function GlossBubble({
       ]}
     >
       {busy ? (
-        <Text style={{ color: '#FFFFFF', fontSize: 12 }}>đang tra…</Text>
+        <Text style={{ color: '#FFFFFF', fontSize: 12 }}>{L('đang tra…', 'looking up…')}</Text>
       ) : (
         <Text style={{ color: '#FFFFFF', fontSize: 12.5 }} numberOfLines={3}>
           <Text style={{ fontWeight: '700', fontStyle: 'italic' }}>{word}</Text>
-          {gloss ? ` — ${gloss.meaningVi}` : ' — chưa có nghĩa'}
+          {gloss ? ` — ${gloss.meaningVi}` : L(' — chưa có nghĩa', ' — no meaning yet')}
           <Text style={{ color: '#FCD68A', fontSize: 11 }}>
             {gloss?.pos ? `   ${gloss.pos}` : ''}
-            {'   · bấm để xem thêm'}
+            {L('   · bấm để xem thêm', '   · tap for more')}
           </Text>
         </Text>
       )}

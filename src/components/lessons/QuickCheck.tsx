@@ -10,6 +10,7 @@ import type { MathSkill } from '@/lib/math/types';
 import { generateMathSet } from '@/services/math/generator';
 import { gradeMathItem } from '@/services/math/grade';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.08)' } as object;
 const SIZE = 3;
@@ -27,6 +28,7 @@ export function MathQuickCheck({ skill }: { skill: MathSkill }) {
   const [answer, setAnswer] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [score, setScore] = useState(0);
+  const { L } = useL();
   const item = items[i];
 
   if (!item) return <Summary score={score} total={items.length} onRetry={() => { setI(0); setScore(0); }} />;
@@ -38,7 +40,7 @@ export function MathQuickCheck({ skill }: { skill: MathSkill }) {
         <View className="mt-4 flex-row flex-wrap gap-2">
           {!revealed ? (
             <Button
-              label="Kiểm tra"
+              label={L('Kiểm tra', 'Check')}
               disabled={answer === null || answer === ''}
               onPress={() => {
                 setRevealed(true);
@@ -49,7 +51,7 @@ export function MathQuickCheck({ skill }: { skill: MathSkill }) {
             />
           ) : (
             <Button
-              label={i + 1 < items.length ? 'Câu tiếp' : 'Xem kết quả'}
+              label={i + 1 < items.length ? L('Câu tiếp', 'Next question') : L('Xem kết quả', 'See results')}
               iconRight="arrow-right"
               onPress={() => {
                 setI((n) => n + 1);
@@ -59,7 +61,7 @@ export function MathQuickCheck({ skill }: { skill: MathSkill }) {
             />
           )}
           <Text className="self-center font-sans text-label text-muted">
-            Câu {i + 1}/{items.length}
+            {L('Câu', 'Question')} {i + 1}/{items.length}
           </Text>
         </View>
       </View>
@@ -72,6 +74,7 @@ export function VerbalQuickCheck({ skill }: { skill: string }) {
   const [i, setI] = useState(0);
   const [picked, setPicked] = useState<number | null>(null);
   const [score, setScore] = useState(0);
+  const { L } = useL();
   const q = questions[i];
 
   if (!q) return <Summary score={score} total={questions.length} onRetry={() => { setI(0); setScore(0); }} />;
@@ -91,7 +94,7 @@ export function VerbalQuickCheck({ skill }: { skill: string }) {
         {picked !== null ? (
           <View className="mt-3 flex-row">
             <Button
-              label={i + 1 < questions.length ? 'Câu tiếp' : 'Xem kết quả'}
+              label={i + 1 < questions.length ? L('Câu tiếp', 'Next question') : L('Xem kết quả', 'See results')}
               iconRight="arrow-right"
               onPress={() => {
                 setI((n) => n + 1);
@@ -107,19 +110,20 @@ export function VerbalQuickCheck({ skill }: { skill: string }) {
 
 function Summary({ score, total, onRetry }: { score: number; total: number; onRetry: () => void }) {
   const good = score === total;
+  const { L } = useL();
   return (
     <CrossFade swapKey="summary">
       <View className="rounded-[22px] bg-white p-6" style={CARD}>
         <Text className="font-heavy text-pageTitle text-ink">
-          {score}/{total} câu đúng
+          {L(`${score}/${total} câu đúng`, `${score}/${total} correct`)}
         </Text>
         <Text className="mt-1 font-sans text-bodyLg text-muted">
           {good
-            ? 'Nắm được bài rồi — sang bộ đề để chứng minh ở tốc độ phòng thi.'
-            : 'Đọc lại phần ví dụ và bẫy ở trên, rồi thử lại trước khi sang bộ đề.'}
+            ? L('Nắm được bài rồi — sang bộ đề để chứng minh ở tốc độ phòng thi.', 'You’ve got it — now prove it at exam speed with a question set.')
+            : L('Đọc lại phần ví dụ và bẫy ở trên, rồi thử lại trước khi sang bộ đề.', 'Reread the examples and traps above, then try again before the question sets.')}
         </Text>
         <View className="mt-4 flex-row">
-          <Button variant="secondary" label="Làm lại 3 câu" iconLeft="refresh" onPress={onRetry} />
+          <Button variant="secondary" label={L('Làm lại 3 câu', 'Redo the 3 questions')} iconLeft="refresh" onPress={onRetry} />
         </View>
       </View>
     </CrossFade>

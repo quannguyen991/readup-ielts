@@ -13,6 +13,7 @@ import { PageStickers } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Luyện SAT Writing — hai domain Expression of Ideas và Standard English
@@ -30,6 +31,7 @@ export default function SatWritingScreen() {
   const [focus, setFocus] = useState<QuestionType | 'all'>('all');
   const [index, setIndex] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
+  const { L } = useL();
 
   const questions = useMemo(() => buildQuestions(focus), [focus]);
   const question = questions[index];
@@ -58,7 +60,7 @@ export default function SatWritingScreen() {
       >
         <Pressable onPress={() => router.push('/write/tests')} className="mb-3 flex-row items-center gap-1">
           <Icon name="chevron-left" size={18} color={color.muted} />
-          <Text className="font-semi text-body text-muted">Kho đề</Text>
+          <Text className="font-semi text-body text-muted">{L('Kho đề', 'Prompts')}</Text>
         </Pressable>
 
         <View className="flex-row items-center gap-3">
@@ -66,12 +68,11 @@ export default function SatWritingScreen() {
             <View className="flex-row flex-wrap items-center gap-3">
               <Text className="font-heavy text-pageTitle text-ink">SAT Writing</Text>
               <View aria-hidden>
-                <Label text="Không cần AI ⚡" color="#F2B632" tilt={-4} size={12} />
+                <Label text={L('Không cần AI ⚡', 'No AI needed ⚡')} color="#F2B632" tilt={-4} size={12} />
               </View>
             </View>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              Hai nhóm kỹ năng viết của SAT Reading and Writing. Toàn bộ là câu hỏi trắc nghiệm — bài
-              thi số hoá hiện nay không còn phần viết luận.
+              {L('Hai nhóm kỹ năng viết của SAT Reading and Writing. Toàn bộ là câu hỏi trắc nghiệm — bài thi số hoá hiện nay không còn phần viết luận.', 'The two writing skill groups in SAT Reading and Writing. All multiple choice — the digital SAT no longer has an essay.')}
             </Text>
           </View>
           <View aria-hidden>
@@ -83,7 +84,7 @@ export default function SatWritingScreen() {
           <View aria-hidden>
             <BadgeSticker icon="target" color="#A8843F" size={28} />
           </View>
-          <Chip label="Tất cả" active={focus === 'all'} onPress={() => switchFocus('all')} />
+          <Chip label={L('Tất cả', 'All')} active={focus === 'all'} onPress={() => switchFocus('all')} />
           {SAT_WRITING_QUESTION_TYPES.filter((t) => t !== 'sat_rhetorical_synthesis').map((t) => (
             <Chip
               key={t}
@@ -95,8 +96,7 @@ export default function SatWritingScreen() {
         </View>
 
         <Text className="mt-2 font-sans text-label text-subtle">
-          Rhetorical Synthesis chưa có: dạng đó cho gạch đầu dòng ghi chú chứ không phải văn xuôi,
-          nên không sinh offline được mà không làm lộ đáp án.
+          {L('Rhetorical Synthesis chưa có: dạng đó cho gạch đầu dòng ghi chú chứ không phải văn xuôi, nên không sinh offline được mà không làm lộ đáp án.', "Rhetorical Synthesis isn't here yet: it uses bullet-point notes rather than prose, so it can't be generated offline without giving away the answer.")}
         </Text>
 
         {!question ? (
@@ -110,7 +110,7 @@ export default function SatWritingScreen() {
                 </Motion>
               </View>
               <Text className="min-w-0 flex-1 font-sans text-body text-muted">
-                Không dựng được câu hỏi nào cho lựa chọn này.
+                {L('Không dựng được câu hỏi nào cho lựa chọn này.', "Couldn't build any questions for this choice.")}
               </Text>
             </View>
           </Card>
@@ -119,7 +119,7 @@ export default function SatWritingScreen() {
             <View className="flex-row flex-wrap items-center justify-between gap-2">
               <Badge tone="primary" label={QUESTION_TYPE_LABEL[question.type]} />
               <Text className="font-sans text-label text-muted">
-                Câu {index + 1} / {questions.length}
+                {L('Câu', 'Question')} {index + 1} / {questions.length}
               </Text>
             </View>
 
@@ -164,19 +164,19 @@ export default function SatWritingScreen() {
                     picked === question.correctAnswer ? 'text-success-ink' : 'text-danger-ink',
                   ].join(' ')}
                 >
-                  {picked === question.correctAnswer ? 'Đúng' : `Sai — đáp án là "${question.correctAnswer}"`}
+                  {picked === question.correctAnswer ? L('Đúng', 'Correct') : L(`Sai — đáp án là "${question.correctAnswer}"`, `Wrong — the answer is "${question.correctAnswer}"`)}
                 </Text>
                 <Text className="mt-2 font-sans text-body text-body">{question.explanation}</Text>
                 {question.lessonTip ? (
                   <Text className="mt-2 font-sans text-label text-muted">
-                    Mẹo: {question.lessonTip}
+                    {L('Mẹo:', 'Tip:')} {question.lessonTip}
                   </Text>
                 ) : null}
                 <Text className="mt-3 font-sans text-label text-subtle">
-                  Câu gốc: {question.evidenceText}
+                  {L('Câu gốc:', 'Original sentence:')} {question.evidenceText}
                 </Text>
                 <View className="mt-3 flex-row">
-                  <Button label="Câu tiếp theo" onPress={next} />
+                  <Button label={L('Câu tiếp theo', 'Next question')} onPress={next} />
                 </View>
               </View>
             ) : null}

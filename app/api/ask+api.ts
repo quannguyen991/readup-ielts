@@ -1,4 +1,5 @@
 import { streamWithFallback } from '@/services/ai/fallback';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/ask  { messages: [{role, content}] }
@@ -53,7 +54,7 @@ export async function POST(request: Request): Promise<Response> {
     */
     const history = (body.messages ?? []).slice(-12);
     if (history.length === 0) {
-      return new Response('Chưa có câu hỏi nào.', { status: 400 });
+      return new Response(msg(request, 'Chưa có câu hỏi nào.', 'No question yet.'), { status: 400 });
     }
 
     const question = history
@@ -77,8 +78,10 @@ export async function POST(request: Request): Promise<Response> {
         } catch (err) {
           // Đứt giữa chừng thì nói thẳng là đứt: đóng im lặng sẽ để lại một câu
           // cụt trông y như câu đã trả lời xong.
-          const message = err instanceof Error ? err.message : 'lỗi không xác định';
-          controller.enqueue(encoder.encode(`\n\n[Mất kết nối giữa chừng: ${message}]`));
+          const message = errorText(request, err, 'lỗi không xác định', 'unknown error');
+          controller.enqueue(
+            encoder.encode(msg(request, `\n\n[Mất kết nối giữa chừng: ${message}]`, `\n\n[Connection lost midway: ${message}]`)),
+          );
         } finally {
           controller.close();
         }
@@ -89,7 +92,7 @@ export async function POST(request: Request): Promise<Response> {
       headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache' },
     });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return new Response(message, { status: 500 });
   }
 }

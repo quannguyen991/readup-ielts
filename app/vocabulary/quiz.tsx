@@ -5,6 +5,7 @@ import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
+import { useL } from '@/i18n/useL';
 
 /**
  * QUIZ TỪ VỰNG — CHỌN BỘ TỪ TRƯỚC, vào trong rồi mới chọn cách luyện.
@@ -15,15 +16,19 @@ import { DeckLibrary } from '@/components/vocab/DeckLibrary';
  * của bộ đó mới hiện đủ sáu cách luyện, thẻ ghi nhớ và danh sách từ.
  */
 export default function VocabQuizHub() {
+  const { L } = useL();
   return (
     <Screen>
       <Appear>
         <LightHero
           scene="vocab"
-          badge="QUIZ TỪ VỰNG"
-          line1="Chọn một bộ từ,"
-          line2="vào trong là đủ cách luyện"
-          subtitle="Học xen kẽ, Kiểm tra, Điền vào câu, Nghe chép, Phát âm, Bóng bay — cùng một bộ từ, đáp án chấm bằng luật, từ sai quay lại ngay trong lượt."
+          badge={L('QUIZ TỪ VỰNG', 'VOCABULARY QUIZ')}
+          line1={L('Chọn một bộ từ,', 'Pick a word set,')}
+          line2={L('vào trong là đủ cách luyện', 'every practice mode is inside')}
+          subtitle={L(
+            'Học xen kẽ, Kiểm tra, Điền vào câu, Nghe chép, Phát âm, Bóng bay — cùng một bộ từ, đáp án chấm bằng luật, từ sai quay lại ngay trong lượt.',
+            'Mixed learning, Test, Fill the gap, Dictation, Pronunciation, Balloons — one word set, rule-based marking, and missed words come back in the same round.',
+          )}
         />
       </Appear>
       <DeckLibrary />

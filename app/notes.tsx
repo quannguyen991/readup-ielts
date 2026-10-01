@@ -6,8 +6,10 @@ import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, HeroBanner, Icon, SectionHeader } from '@/components/ui';
 import { useReaderStore } from '@/store/useReaderStore';
 import { color, highlightColors } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 export default function NotesScreen() {
+  const { L } = useL();
   const notes = useReaderStore((s) => s.notes);
   const highlights = useReaderStore((s) => s.highlights);
   const updateNote = useReaderStore((s) => s.updateNote);
@@ -21,12 +23,12 @@ export default function NotesScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Ghi chú"
-        subtitle="Ghi chú và đoạn bôi màu bạn tạo khi đọc."
+        title={L('Ghi chú', 'Notes')}
+        subtitle={L('Ghi chú và đoạn bôi màu bạn tạo khi đọc.', 'Notes and highlights you made while reading.')}
         illustration="notes-hero"
       >
         <Button
-          label="Ghi chú mới"
+          label={L('Ghi chú mới', 'New note')}
           iconLeft="plus"
           onPress={() =>
             addNote({ articleId: null, articleTitle: null, paragraphIndex: null, body: '' })
@@ -35,7 +37,7 @@ export default function NotesScreen() {
       </HeroBanner>
 
       <Card className="mt-4">
-        <SectionHeader title="Ghi chú" subtitle={`${notes.length} mục`} icon="note" />
+        <SectionHeader title={L('Ghi chú', 'Notes')} subtitle={L(`${notes.length} mục`, `${notes.length} items`)} icon="note" />
 
         <View className="mt-3 gap-3">
           {notes.map((note) => (
@@ -50,7 +52,7 @@ export default function NotesScreen() {
                     <Badge label={note.articleTitle} tone="primary" />
                   </Pressable>
                 ) : (
-                  <Badge label="Ghi chú tự do" tone="neutral" />
+                  <Badge label={L('Ghi chú tự do', 'Free note')} tone="neutral" />
                 )}
                 <View className="flex-1" />
                 <Text className="font-mid text-label text-subtle">
@@ -69,7 +71,7 @@ export default function NotesScreen() {
                   />
                   <View className="mt-2 flex-row gap-2">
                     <Button
-                      label="Lưu"
+                      label={L('Lưu', 'Save')}
                       size="sm"
                       onPress={() => {
                         updateNote(note.id, draft);
@@ -77,7 +79,7 @@ export default function NotesScreen() {
                       }}
                     />
                     <Button
-                      label="Huỷ"
+                      label={L('Huỷ', 'Cancel')}
                       size="sm"
                       variant="ghost"
                       onPress={() => setEditing(null)}
@@ -92,20 +94,20 @@ export default function NotesScreen() {
                   }}
                 >
                   <Text className="mt-2 font-sans text-body text-body">
-                    {note.body || 'Chạm để viết…'}
+                    {note.body || L('Chạm để viết…', 'Tap to write…')}
                   </Text>
                 </Pressable>
               )}
 
               <Pressable onPress={() => removeNote(note.id)} className="mt-2 self-start">
-                <Text className="font-semi text-label text-danger-ink">Xoá</Text>
+                <Text className="font-semi text-label text-danger-ink">{L('Xoá', 'Delete')}</Text>
               </Pressable>
             </View>
           ))}
 
           {notes.length === 0 ? (
             <Text className="py-6 text-center font-sans text-body text-muted">
-              Chưa có ghi chú nào.
+              {L('Chưa có ghi chú nào.', 'No notes yet.')}
             </Text>
           ) : null}
         </View>
@@ -113,8 +115,8 @@ export default function NotesScreen() {
 
       <Card className="mt-4">
         <SectionHeader
-          title="Đoạn đã bôi màu"
-          subtitle={`${highlights.length} đoạn`}
+          title={L('Đoạn đã bôi màu', 'Highlights')}
+          subtitle={L(`${highlights.length} đoạn`, `${highlights.length} highlights`)}
           icon="pencil"
           iconTone="warning"
         />
@@ -132,7 +134,7 @@ export default function NotesScreen() {
               <View className="flex-1">
                 <Text className="font-sans text-body text-body">“{highlight.text}”</Text>
                 <Text className="mt-1 font-mid text-label text-subtle">
-                  Đoạn {highlight.paragraphIndex + 1} · {highlight.createdAt.slice(0, 10)}
+                  {L('Đoạn', 'Paragraph')} {highlight.paragraphIndex + 1} · {highlight.createdAt.slice(0, 10)}
                 </Text>
               </View>
               <Pressable onPress={() => removeHighlight(highlight.id)}>
@@ -143,7 +145,7 @@ export default function NotesScreen() {
 
           {highlights.length === 0 ? (
             <Text className="py-6 text-center font-sans text-body text-muted">
-              Chưa bôi màu đoạn nào.
+              {L('Chưa bôi màu đoạn nào.', 'No highlights yet.')}
             </Text>
           ) : null}
         </View>

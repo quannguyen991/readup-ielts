@@ -10,7 +10,8 @@ import { Button, Card } from '@/components/ui';
 import { FeaturePaywall } from '@/components/billing/PlanUi';
 import { isStageUnlocked, requiredPlanFor } from '@/lib/billing/entitlements';
 import { PLANS } from '@/lib/billing/plans';
-import { MATH_SET_KIND_STYLE } from '@/lib/math/theme';
+import { mathSetKindPurpose } from '@/components/math/math-labels-en';
+import { useL } from '@/i18n/useL';
 import { buildSetItems, getSet, getUnitOfSet, stageIndexOfSet } from '@/services/math/curriculum';
 import { usePlan } from '@/store/useBillingStore';
 import { countCorrect, gradeMathSession, type MathResponse } from '@/services/math/grade';
@@ -26,6 +27,7 @@ import { useStudyStore } from '@/store/useStudyStore';
  * những câu đã nghĩ.
  */
 export default function MathSetScreen() {
+  const { L, en } = useL();
   const { setId } = useLocalSearchParams<{ setId?: string }>();
   const set = setId ? getSet(setId) : undefined;
   const unit = setId ? getUnitOfSet(setId) : undefined;
@@ -78,11 +80,11 @@ export default function MathSetScreen() {
               </Sticker>
             </Motion>
           </View>
-          <Text className="font-strong text-cardTitle text-ink">Không có bộ đề này</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có bộ đề này', 'Set not found')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            Đường dẫn trỏ tới một bộ đề không nằm trong lộ trình.
+            {L('Đường dẫn trỏ tới một bộ đề không nằm trong lộ trình.', "This link points to a set that isn't in the path.")}
           </Text>
-          <Button className="mt-3" label="Về lộ trình" onPress={() => router.replace('/math' as never)} />
+          <Button className="mt-3" label={L('Về lộ trình', 'Back to the path')} onPress={() => router.replace('/math' as never)} />
         </Card>
       </Screen>
     );
@@ -93,15 +95,15 @@ export default function MathSetScreen() {
       <Screen>
         <FeaturePaywall
           feature="math_all_stages"
-          title={`"${set.title}" thuộc chặng chưa mở`}
-          description={
-            `Bài này nằm ở ${unit?.title ?? 'một chặng sau'}. Gói Free mở trọn chặng Đại số — ` +
-            `25 bộ đề, hơn 500 câu. Bốn chặng còn lại cần gói ${PLANS[requiredPlanFor('math_all_stages')].name} trở lên.`
-          }
+          title={L(`"${set.title}" thuộc chặng chưa mở`, `"${set.title}" is in a locked stage`)}
+          description={L(
+            `Bài này nằm ở ${unit?.title ?? 'một chặng sau'}. Gói Free mở trọn chặng Đại số — 25 bộ đề, hơn 500 câu. Bốn chặng còn lại cần gói ${PLANS[requiredPlanFor('math_all_stages')].name} trở lên.`,
+            `This set is in ${unit?.title ?? 'a later stage'}. The Free plan unlocks the whole Algebra stage — 25 sets, 500+ questions. The other four stages need ${PLANS[requiredPlanFor('math_all_stages')].name} or higher.`,
+          )}
         />
         <Button
           className="mt-4 self-start"
-          label="Về lộ trình"
+          label={L('Về lộ trình', 'Back to the path')}
           variant="ghost"
           onPress={() => router.replace('/math' as never)}
         />
@@ -109,17 +111,15 @@ export default function MathSetScreen() {
     );
   }
 
-  const kind = MATH_SET_KIND_STYLE[set.kind];
-
   return (
     <MathRunner
       surface="paper"
       title={`${unit ? `${unit.title} · ` : ''}${set.title}`}
-      subtitle={kind.purpose}
+      subtitle={mathSetKindPurpose(set.kind, en)}
       items={items}
       minutes={set.minutes}
-      phaseLabel={rounds > 0 ? `Lượt ${rounds + 1}` : undefined}
-      submitLabel="Nộp và xem lời giải"
+      phaseLabel={rounds > 0 ? L(`Lượt ${rounds + 1}`, `Round ${rounds + 1}`) : undefined}
+      submitLabel={L('Nộp và xem lời giải', 'Submit and see solutions')}
       // Bộ học thì cho xem lời giải ngay; bộ tốc độ, kiểm tra và đề thì không —
       // ba loại đó mô phỏng phòng thi.
       instantSolution={set.kind === 'warmup' || set.kind === 'practice'}

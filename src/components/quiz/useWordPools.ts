@@ -17,26 +17,34 @@ import { todayKey } from '@/store/persist';
 import { useQuestVocabStore } from '@/store/useQuestVocabStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
+import { useL } from '@/i18n/useL';
 
-const toQuiz = (w: { word: string; meaningVi: string }): QuizWord => ({ word: w.word, meaningVi: w.meaningVi });
+const toQuiz = (w: { word: string; meaningVi: string; definitionEn?: string }): QuizWord =>
+  w.definitionEn?.trim() ? { word: w.word, meaningVi: w.meaningVi, definitionEn: w.definitionEn } : { word: w.word, meaningVi: w.meaningVi };
 
 const STATIC_DECKS: QuestDeck[] = [
   ...VOCAB_TOPICS.map((t) => ({ slug: t.slug, name: t.nameVi || t.name, group: 'ielts' as const, words: t.words.map(toQuiz) })),
   ...SAT_VOCAB_LESSONS.map((l) => ({ slug: l.slug, name: `${l.subject === 'math' ? 'SAT Math' : 'SAT Verbal'} · ${l.title}`, group: 'sat' as const, words: l.words.map(toQuiz) })),
 ];
+/** Cùng các bộ trên, tên chủ đề IELTS bằng tiếng Anh (giao diện English). */
+const STATIC_DECKS_EN: QuestDeck[] = STATIC_DECKS.map((d) => {
+  const t = d.group === 'ielts' ? VOCAB_TOPICS.find((x) => x.slug === d.slug) : undefined;
+  return t ? { ...d, name: t.name || d.name } : d;
+});
 
 /** Mọi bộ có thể chọn: sổ từ + bộ tự tạo + bộ có sẵn. */
 export function useQuestDecks(): QuestDeck[] {
   const entries = useVocabStore((s) => s.entries);
   const custom = useCustomDeckStore((s) => s.decks);
+  const { en } = useL();
   return useMemo(() => {
     const mine: QuestDeck[] = [];
     const nb = notebookDeck(Object.values(entries));
-    if (nb.words.length >= 4) mine.push({ slug: NOTEBOOK_SLUG, name: 'Sổ từ của bạn', group: 'mine', words: nb.words.filter((w) => !!w.meaningVi).map(toQuiz) });
+    if (nb.words.length >= 4) mine.push({ slug: NOTEBOOK_SLUG, name: en ? 'Your notebook' : 'Sổ từ của bạn', group: 'mine', words: nb.words.filter((w) => !!w.meaningVi).map(toQuiz) });
     for (const d of Object.values(custom).sort((a, b) => b.createdAt.localeCompare(a.createdAt)))
       if (d.words.length >= 4) mine.push({ slug: `${CUSTOM_PREFIX}${d.id}`, name: d.name, group: 'mine', words: d.words.map(toQuiz) });
-    return [...mine, ...STATIC_DECKS];
-  }, [entries, custom]);
+    return [...mine, ...(en ? STATIC_DECKS_EN : STATIC_DECKS)];
+  }, [entries, custom, en]);
 }
 
 export type WordPools = { focus: SlugWord[]; pool: QuizWord[]; label: string; source: QuestSource; due: number };
@@ -47,10 +55,23 @@ export function useWordPools(): WordPools {
   const source = useQuestVocabStore((s) => s.source);
   const stages = useTopicStudyStore((s) => s.stages);
   const reviews = useTopicStudyStore((s) => s.reviews);
+  const { en } = useL();
   return useMemo(() => {
     const today = todayKey();
-    return { ...questWords(source, decks, stages, reviews, today), due: dueCount(reviews, today) };
-  }, [source, decks, stages, reviews]);
+    const r = questWords(source, decks, stages, reviews, today);
+    // Nhãn tiếng Việt dựng sẵn trong services; giao diện English thì dựng lại từ cùng kết quả.
+    let label = r.label;
+    if (en) {
+      const deck = decks.find((d) => d.slug === r.source);
+      label =
+        r.source === 'due'
+          ? `Due today · ${r.focus.length} words`
+          : r.source === 'auto' || !deck
+            ? 'Auto · words in progress'
+            : `${deck.name} · ${deck.words.length} words`;
+    }
+    return { ...r, label, due: dueCount(reviews, today) };
+  }, [source, decks, stages, reviews, en]);
 }
 
 /**

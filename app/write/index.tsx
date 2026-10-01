@@ -9,6 +9,7 @@ import { Icon } from '@/components/ui';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { PATH_STEPS, stepUnits } from '@/services/writing/translation-path';
+import { useL } from '@/i18n/useL';
 
 /**
  * Cửa vào mảng Writing — hai nhánh, không phải một kho phẳng.
@@ -28,19 +29,20 @@ const TRANSLATION_UNITS = PATH_STEPS.reduce((sum, s) => sum + stepUnits(s), 0);
 export default function WritingHome() {
   const { width } = useWindowDimensions();
   const wide = width >= 900;
+  const { L } = useL();
 
   return (
     <Screen>
       <LightHero
         badge="WRITING PRACTICE" art="writing"
         line1="Writing"
-        line2="củng cố cấu trúc, mở rộng từ vựng"
-        subtitle="Dựng đúng câu trước, rồi mới dựng cả bài — mỗi bước dài thêm một bậc."
+        line2={L('củng cố cấu trúc, mở rộng từ vựng', 'stronger structure, wider vocabulary')}
+        subtitle={L('Dựng đúng câu trước, rồi mới dựng cả bài — mỗi bước dài thêm một bậc.', 'Build correct sentences first, then whole essays — each step a little longer.')}
         footer={
           <>
-            <HeroStat value={String(PATH_STEPS.length)} label="bước luyện dịch" />
-            <HeroStat value={String(WRITING_PROMPTS.length)} label="đề viết" />
-            <HeroStat value="Task 1 + 2" label="dạng bài" />
+            <HeroStat value={String(PATH_STEPS.length)} label={L('bước luyện dịch', 'translation steps')} />
+            <HeroStat value={String(WRITING_PROMPTS.length)} label={L('đề viết', 'writing prompts')} />
+            <HeroStat value="Task 1 + 2" label={L('dạng bài', 'task types')} />
           </>
         }
       />
@@ -49,19 +51,22 @@ export default function WritingHome() {
           <BranchCard
             wide={wide}
             tone="moss"
-            eyebrow="BẬC MỘT"
-            title="Luyện dịch"
-            blurb="Tái tạo đúng câu mẫu, từng từ một. Năm bước siết dần, từ một câu tới trọn đoạn văn."
-            stat={`${PATH_STEPS.length} bước · ${TRANSLATION_UNITS.toLocaleString('vi-VN')} lượt · ${TRANSLATION_SETS.length} chủ đề`}
+            eyebrow={L('BẬC MỘT', 'STEP ONE')}
+            title={L('Luyện dịch', 'Translation practice')}
+            blurb={L('Tái tạo đúng câu mẫu, từng từ một. Năm bước siết dần, từ một câu tới trọn đoạn văn.', 'Rebuild model sentences word by word. Five steps that build up from one sentence to a full paragraph.')}
+            stat={L(
+              `${PATH_STEPS.length} bước · ${TRANSLATION_UNITS.toLocaleString('vi-VN')} lượt · ${TRANSLATION_SETS.length} chủ đề`,
+              `${PATH_STEPS.length} steps · ${TRANSLATION_UNITS.toLocaleString('en-US')} exercises · ${TRANSLATION_SETS.length} topics`,
+            )}
             onPress={() => router.push('/write/translation' as never)}
           />
           <BranchCard
             wide={wide}
             tone="amber"
-            eyebrow="BẬC HAI"
-            title="Luyện viết"
-            blurb="Viết trọn bài theo đề thi thật, AI chấm theo từng tiêu chí và chỉ đúng chỗ hỏng."
-            stat={`${WRITING_PROMPTS.length} đề · Task 1 và Task 2`}
+            eyebrow={L('BẬC HAI', 'STEP TWO')}
+            title={L('Luyện viết', 'Essay practice')}
+            blurb={L('Viết trọn bài theo đề thi thật, AI chấm theo từng tiêu chí và chỉ đúng chỗ hỏng.', 'Write full essays to real exam prompts; AI grades each criterion and points out exactly what broke.')}
+            stat={L(`${WRITING_PROMPTS.length} đề · Task 1 và Task 2`, `${WRITING_PROMPTS.length} prompts · Task 1 and Task 2`)}
             onPress={() => router.push('/write/tests' as never)}
           />
         </View>

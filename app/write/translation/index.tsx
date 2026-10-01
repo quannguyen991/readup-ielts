@@ -10,6 +10,8 @@ import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { PATH_STEPS, stepUnits, topicsForStep, type PathStep } from '@/services/writing/translation-path';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+import { STEP_EN } from '@/components/writing/translation-step-en';
 
 /**
  * Năm bậc của lộ trình luyện dịch, dựng thành một CẦU THANG.
@@ -38,6 +40,7 @@ const TOTAL_UNITS = PATH_STEPS.reduce((sum, s) => sum + stepUnits(s), 0);
 
 export default function TranslationPathScreen() {
   const wide = useWindowDimensions().width >= 1100;
+  const { L, en } = useL();
 
   return (
     <Screen>
@@ -47,14 +50,14 @@ export default function TranslationPathScreen() {
       </Pressable>
 
       <Appear>
-        <Text className="mt-3 font-heavy text-pageTitle text-ink">Luyện dịch</Text>
+        <Text className="mt-3 font-heavy text-pageTitle text-ink">{L('Luyện dịch', 'Translation practice')}</Text>
         <Text className="mt-1 max-w-[640px] font-sans text-bodyLg text-muted">
-          Tái tạo đúng câu mẫu, từng từ một. Mỗi bậc dịch liền nhiều câu hơn bậc trước — leo từ một câu lên trọn một đoạn văn.
+          {L('Tái tạo đúng câu mẫu, từng từ một. Mỗi bậc dịch liền nhiều câu hơn bậc trước — leo từ một câu lên trọn một đoạn văn.', 'Rebuild model sentences word by word. Each step translates more sentences in a row — climbing from one sentence to a full paragraph.')}
         </Text>
         <View className="mt-4 flex-row flex-wrap gap-2">
-          <Pill value={String(PATH_STEPS.length)} label="bậc" />
-          <Pill value={TOTAL_UNITS.toLocaleString('vi-VN')} label="lượt dịch" />
-          <Pill value={String(TRANSLATION_SETS.length)} label="chủ đề" />
+          <Pill value={String(PATH_STEPS.length)} label={L('bậc', 'steps')} />
+          <Pill value={TOTAL_UNITS.toLocaleString(en ? 'en-US' : 'vi-VN')} label={L('lượt dịch', 'exercises')} />
+          <Pill value={String(TRANSLATION_SETS.length)} label={L('chủ đề', 'topics')} />
         </View>
       </Appear>
 
@@ -84,6 +87,10 @@ export default function TranslationPathScreen() {
 function StepBlock({ step, index }: { step: PathStep; index: number }) {
   const topics = topicsForStep(step);
   const last = index === PATH_STEPS.length - 1;
+  const { L, en } = useL();
+  const tx = en ? STEP_EN[step.id] : undefined;
+  const title = tx?.title ?? step.title;
+  const badge = tx ? tx.badge : step.badge;
 
   return (
     <PressScale fill onPress={() => router.push(`/write/translation/${step.id}` as never)} style={{ flex: 1 }}>
@@ -92,24 +99,24 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
         colors={STEP_COLORS[index] ?? STEP_COLORS[0]!}
         style={{ flex: 1 }}
         accessibilityRole="button"
-        accessibilityLabel={`Bậc ${step.order}: ${step.title}`}
+        accessibilityLabel={L(`Bậc ${step.order}: ${step.title}`, `Step ${step.order}: ${title}`)}
         ornament={last ? <GlowStars /> : undefined}
       >
         <Text className="font-heavy text-white" style={[STICKER_TITLE_SHADOW, { fontSize: 46, lineHeight: 50 }]}>
           {step.order}
         </Text>
         <Text className="mt-2 font-heavy text-cardTitle text-white" style={STICKER_TITLE_SHADOW}>
-          {step.title}
+          {title}
         </Text>
-        {step.badge ? (
+        {badge ? (
           <View className="mt-2 self-start rounded-pill px-2.5 py-1" style={{ backgroundColor: 'rgba(27,24,64,0.62)' }}>
             <Text className="font-heavy text-white" style={{ fontSize: 10, letterSpacing: 0.8 }}>
-              {step.badge}
+              {badge}
             </Text>
           </View>
         ) : null}
         <Text className="mt-2.5 font-semi text-label text-white" style={[STICKER_TEXT_SHADOW, { lineHeight: 19 }]}>
-          {step.blurb}
+          {tx?.blurb ?? step.blurb}
         </Text>
 
         <View className="flex-1" />
@@ -120,12 +127,15 @@ function StepBlock({ step, index }: { step: PathStep; index: number }) {
             <View key={k} style={{ width: 18, height: 8, borderRadius: 4, backgroundColor: '#FFFFFF' }} />
           ))}
           <Text className="ml-1.5 font-strong text-label text-white" style={STICKER_TEXT_SHADOW}>
-            {step.chunk === 1 ? '1 câu mỗi lượt' : `${step.chunk} câu liền`}
+            {step.chunk === 1 ? L('1 câu mỗi lượt', '1 sentence per round') : L(`${step.chunk} câu liền`, `${step.chunk} sentences in a row`)}
           </Text>
         </View>
         <View className="mt-3 flex-row items-center justify-between gap-2">
           <Text className="font-semi text-label text-white" style={STICKER_TEXT_SHADOW}>
-            {topics.length} mục · {stepUnits(step).toLocaleString('vi-VN')} lượt
+            {L(
+              `${topics.length} mục · ${stepUnits(step).toLocaleString('vi-VN')} lượt`,
+              `${topics.length} sets · ${stepUnits(step).toLocaleString('en-US')} exercises`,
+            )}
           </Text>
           <View className="h-8 w-8 items-center justify-center rounded-pill bg-white">
             <Icon name="arrow-right" size={15} color={INK} strokeWidth={2.4} />

@@ -1,6 +1,7 @@
 import { articleThumbnailSpec, ASSET_CATALOG } from '@/services/ai/asset-catalog';
 import { ensureAsset, listCachedAssets } from '@/services/ai/assets';
 import { AiError } from '@/services/ai/errors';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * API route chạy server-side — nơi duy nhất trong app có quyền gọi OpenAI.
@@ -11,21 +12,21 @@ import { AiError } from '@/services/ai/errors';
  *        body: { key } | { articleId, subject }
  */
 
-export async function GET(): Promise<Response> {
+export async function GET(request: Request): Promise<Response> {
   try {
     const assets = await listCachedAssets();
     return Response.json({
       assets: assets.map((a) => ({ key: a.cache_key, url: a.public_url, kind: a.kind })),
     });
   } catch (err) {
-    return errorResponse(err);
+    return errorResponse(request, err);
   }
 }
 
 export async function POST(request: Request): Promise<Response> {
   const secret = process.env.ASSET_ADMIN_SECRET;
   if (!secret || request.headers.get('x-asset-secret') !== secret) {
-    return Response.json({ error: 'Không có quyền sinh tài nguyên.' }, { status: 401 });
+    return Response.json({ error: msg(request, 'Không có quyền sinh tài nguyên.', 'Not allowed to generate assets.') }, { status: 401 });
   }
 
   try {
@@ -41,7 +42,7 @@ export async function POST(request: Request): Promise<Response> {
       : ASSET_CATALOG.find((a) => a.key === body.key);
 
     if (!spec) {
-      return Response.json({ error: `Không tìm thấy tài nguyên '${body.key}'.` }, { status: 400 });
+      return Response.json({ error: msg(request, `Không tìm thấy tài nguyên '${body.key}'.`, `Asset '${body.key}' not found.`) }, { status: 400 });
     }
 
     const result = await ensureAsset(spec, { force: body.force ?? false });
@@ -52,16 +53,16 @@ export async function POST(request: Request): Promise<Response> {
       cached: result.cached,
     });
   } catch (err) {
-    return errorResponse(err);
+    return errorResponse(request, err);
   }
 }
 
-function errorResponse(err: unknown): Response {
+function errorResponse(request: Request, err: unknown): Response {
   if (err instanceof AiError) {
     const status = err.code === 'missing_config' ? 500 : (err.status ?? 502);
-    return Response.json({ error: err.message, code: err.code }, { status });
+    return Response.json({ error: errorText(request, err, err.message, 'AI service error.'), code: err.code }, { status });
   }
 
-  const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+  const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
   return Response.json({ error: message }, { status: 500 });
 }

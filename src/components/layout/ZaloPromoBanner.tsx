@@ -3,6 +3,7 @@ import { Linking, Platform, Pressable, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Clipboard from 'expo-clipboard';
 import { Icon } from '@/components/ui/Icon';
+import { useL } from '@/i18n/useL';
 
 const ZALO_PHONE = '0921.247.247';
 const ZALO_PHONE_RAW = '0921247247';
@@ -26,6 +27,7 @@ export function ZaloPromoBanner() {
   // Đọc ngay lúc khởi tạo (không setState trong effect).
   const [visible, setVisible] = useState(() => !readHidden());
   const [copied, setCopied] = useState(false);
+  const { L } = useL();
 
   const handleDismiss = () => {
     setVisible(false);
@@ -133,20 +135,20 @@ export function ZaloPromoBanner() {
           <View className="flex-1 flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
             <View className="rounded-full bg-amber-400/20 px-2 py-0.5 border border-amber-300/35">
               <Text className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
-                Ưu Đãi Độc Quyền
+                {L('Ưu Đãi Độc Quyền', 'Exclusive offer')}
               </Text>
             </View>
             <Text className="text-[13px] leading-tight text-white">
-              Nhắn tin Zalo{' '}
+              {L('Nhắn tin Zalo', 'Message us on Zalo at')}{' '}
               <Text
                 className="font-bold text-amber-300 underline cursor-pointer"
                 onPress={handleOpenZalo}
               >
                 {ZALO_PHONE}
               </Text>{' '}
-              để nhận mã mời kích hoạt{' '}
+              {L('để nhận mã mời kích hoạt', 'to get an invite code for')}{' '}
               <Text className="font-extrabold text-amber-200">
-                Gói MAX 2 tháng miễn phí!
+                {L('Gói MAX 2 tháng miễn phí!', '2 months of MAX free!')}
               </Text>
             </Text>
           </View>
@@ -158,7 +160,7 @@ export function ZaloPromoBanner() {
           <Pressable
             onPress={handleCopyPhone}
             accessibilityRole="button"
-            accessibilityLabel="Sao chép số Zalo 0921247247"
+            accessibilityLabel={L('Sao chép số Zalo 0921247247', 'Copy Zalo number 0921247247')}
             className="flex-row items-center gap-1.5 rounded-lg border border-white/20 bg-white/10 px-2.5 py-1.5 transition-all hover:bg-white/20 active:scale-95"
           >
             <Icon
@@ -167,7 +169,7 @@ export function ZaloPromoBanner() {
               color={copied ? '#4ADE80' : '#F0EBE2'}
             />
             <Text className={`text-[12px] font-semibold ${copied ? 'text-green-300' : 'text-slate-200'}`}>
-              {copied ? 'Đã chép số!' : 'Chép SĐT'}
+              {copied ? L('Đã chép số!', 'Number copied!') : L('Chép SĐT', 'Copy number')}
             </Text>
           </Pressable>
 
@@ -175,7 +177,7 @@ export function ZaloPromoBanner() {
           <Pressable
             onPress={handleOpenZalo}
             accessibilityRole="button"
-            accessibilityLabel="Nhắn Zalo ngay để nhận gói Max 2 tháng"
+            accessibilityLabel={L('Nhắn Zalo ngay để nhận gói Max 2 tháng', 'Message on Zalo now to get 2 months of Max')}
             className="flex-row items-center gap-1.5 rounded-lg px-3 py-1.5 shadow-md shadow-blue-500/25 transition-all hover:brightness-110 active:scale-95"
             style={{
               backgroundColor: '#9C7A3A',
@@ -194,7 +196,7 @@ export function ZaloPromoBanner() {
             >
               <Text style={{ fontSize: 10, fontWeight: '900', color: '#8F6E36' }}>Z</Text>
             </View>
-            <Text className="text-[12px] font-bold text-white">Nhắn Zalo ngay</Text>
+            <Text className="text-[12px] font-bold text-white">{L('Nhắn Zalo ngay', 'Message on Zalo')}</Text>
             <Icon name="external" size={12} color="#FFFFFF" />
           </Pressable>
 
@@ -202,7 +204,7 @@ export function ZaloPromoBanner() {
           <Pressable
             onPress={handleDismiss}
             accessibilityRole="button"
-            accessibilityLabel="Đóng thông báo ưu đãi"
+            accessibilityLabel={L('Đóng thông báo ưu đãi', 'Dismiss offer')}
             className="ml-1 h-7 w-7 items-center justify-center rounded-full text-slate-300 hover:bg-white/15 hover:text-white active:scale-90"
           >
             <Icon name="close" size={15} color="#F0EBE2" />

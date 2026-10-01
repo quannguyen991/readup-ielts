@@ -1,5 +1,6 @@
 import { extendExpiry } from '@/services/payment/order';
 import { requireAdmin } from '@/services/admin/guard';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * GET  /api/admin/payments?status=pending   → danh sách đơn để đối chiếu
@@ -48,7 +49,7 @@ export async function GET(request: Request): Promise<Response> {
       payments: (payments ?? []).map((p) => ({ ...p, email: emailById.get(p.user_id) ?? null })),
     });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
@@ -61,9 +62,9 @@ export async function POST(request: Request): Promise<Response> {
     const body = (await request.json()) as { paymentId?: unknown; action?: unknown; note?: unknown };
     const paymentId = typeof body.paymentId === 'string' ? body.paymentId : '';
     const action = body.action;
-    if (!paymentId) return Response.json({ error: 'Thiếu paymentId.' }, { status: 400 });
+    if (!paymentId) return Response.json({ error: msg(request, 'Thiếu paymentId.', 'paymentId is required.') }, { status: 400 });
     if (action !== 'confirm' && action !== 'reject') {
-      return Response.json({ error: "action chỉ nhận 'confirm' hoặc 'reject'." }, { status: 400 });
+      return Response.json({ error: msg(request, "action chỉ nhận 'confirm' hoặc 'reject'.", "action must be 'confirm' or 'reject'.") }, { status: 400 });
     }
     const note =
       typeof body.note === 'string' && body.note.trim() ? body.note.trim().slice(0, 500) : null;
@@ -74,13 +75,19 @@ export async function POST(request: Request): Promise<Response> {
       .eq('id', paymentId)
       .maybeSingle();
     if (readError) return Response.json({ error: readError.message }, { status: 500 });
-    if (!payment) return Response.json({ error: 'Không có đơn này.' }, { status: 404 });
+    if (!payment) return Response.json({ error: msg(request, 'Không có đơn này.', 'Payment not found.') }, { status: 404 });
 
     if (payment.status !== 'pending') {
       // Chặn cộng gói hai lần khi admin bấm nhầm hoặc bấm đúp. Đây là lý do
       // trạng thái được kiểm ở ĐÂY chứ không chỉ ẩn nút ở giao diện.
       return Response.json(
-        { error: `Đơn này đã ở trạng thái "${payment.status}", không xử lý lại được.` },
+        {
+          error: msg(
+            request,
+            `Đơn này đã ở trạng thái "${payment.status}", không xử lý lại được.`,
+            `This payment is already "${payment.status}" and can't be processed again.`,
+          ),
+        },
         { status: 409 },
       );
     }
@@ -112,7 +119,7 @@ export async function POST(request: Request): Promise<Response> {
       .eq('id', payment.user_id)
       .maybeSingle();
     if (profileError) return Response.json({ error: profileError.message }, { status: 500 });
-    if (!profile) return Response.json({ error: 'Người dùng không có hồ sơ.' }, { status: 404 });
+    if (!profile) return Response.json({ error: msg(request, 'Người dùng không có hồ sơ.', 'This user has no profile.') }, { status: 404 });
 
     /*
       Gia hạn cộng dồn nếu gói đang mua TRÙNG gói đang có; đổi sang gói khác thì
@@ -151,7 +158,7 @@ export async function POST(request: Request): Promise<Response> {
       .select('id');
     if (payError) return Response.json({ error: payError.message }, { status: 500 });
     if (!marked || marked.length === 0) {
-      return Response.json({ error: 'Đơn vừa được người khác xử lý.' }, { status: 409 });
+      return Response.json({ error: msg(request, 'Đơn vừa được người khác xử lý.', 'Someone else just processed this payment.') }, { status: 409 });
     }
 
     const { error: auditError } = await admin.from('admin_audit').insert({
@@ -171,10 +178,10 @@ export async function POST(request: Request): Promise<Response> {
       ...(auditError ? { auditWarning: auditError.message } : {}),
     });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
-function message(err: unknown): string {
-  return err instanceof Error ? err.message : 'Lỗi không xác định';
+function message(request: Request, err: unknown): string {
+  return errorText(request, err, 'Lỗi không xác định', 'Unknown error');
 }

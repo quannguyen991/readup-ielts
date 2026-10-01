@@ -9,6 +9,8 @@ import type { MathDomain } from '@/lib/math/types';
 import type { MathExerciseSet, MathUnit } from '@/services/math/curriculum';
 import type { SetProgress } from '@/store/useMathStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+import { mathSetKindLabel } from './math-labels-en';
 
 /**
  * Thẻ bài tập và thẻ bài học của lộ trình.
@@ -39,6 +41,7 @@ export function SetCard({
   const done = (progress?.rounds ?? 0) > 0;
   const best = progress?.bestRatio ?? 0;
   const passed = done && best >= CHECKPOINT_PASS_RATIO;
+  const { L, en } = useL();
 
   return (
     <Pressable
@@ -58,7 +61,7 @@ export function SetCard({
           >
             <Icon name={kind.icon} size={13} color={kind.solid} />
             <Text className="font-strong text-label" style={{ color: kind.ink }}>
-              {kind.label}
+              {mathSetKindLabel(set.kind, en)}
             </Text>
           </View>
 
@@ -98,9 +101,9 @@ export function SetCard({
         )}
 
         <View className="mt-2 flex-row flex-wrap items-center gap-3">
-          <Meta icon="list" text={`${set.count} câu`} />
-          <Meta icon="clock" text={`${set.minutes} phút`} />
-          {done ? <Meta icon="refresh" text={`${progress?.rounds} lượt`} /> : null}
+          <Meta icon="list" text={L(`${set.count} câu`, `${set.count} questions`)} />
+          <Meta icon="clock" text={L(`${set.minutes} phút`, `${set.minutes} min`)} />
+          {done ? <Meta icon="refresh" text={L(`${progress?.rounds} lượt`, `${progress?.rounds} rounds`)} /> : null}
         </View>
       </View>
 
@@ -150,6 +153,7 @@ export function UnitCard({
   const style = MATH_DOMAIN_STYLE[unit.domain];
   const doneCount = unit.sets.filter((s) => (progressBySet[s.id]?.rounds ?? 0) > 0).length;
   const complete = doneCount === unit.sets.length;
+  const { L, en } = useL();
 
   return (
     <View className="overflow-hidden rounded-card border border-border bg-surface">
@@ -164,12 +168,12 @@ export function UnitCard({
             <Text className="font-heavy text-body text-white">{index}</Text>
           </View>
           <View className="flex-1">
-            <Text className="font-heavy text-cardTitle text-white">{unit.title}</Text>
-            <Text className="mt-0.5 font-sans text-label text-white/85">{unit.englishName}</Text>
+            <Text className="font-heavy text-cardTitle text-white">{en ? unit.englishName : unit.title}</Text>
+            <Text className="mt-0.5 font-sans text-label text-white/85">{en ? unit.title : unit.englishName}</Text>
           </View>
           <View className="rounded-pill bg-white/25 px-2.5 py-1">
             <Text className="font-strong text-label text-white">
-              {complete ? 'Xong' : `${doneCount}/${unit.sets.length}`}
+              {complete ? L('Xong', 'Done') : `${doneCount}/${unit.sets.length}`}
             </Text>
           </View>
         </View>

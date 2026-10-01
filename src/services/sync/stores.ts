@@ -1,4 +1,5 @@
 import { registerSyncedStore, type SyncedStore } from './engine';
+import { useLocaleStore } from '@/i18n/useT';
 import {
   mergeBilling,
   mergeMath,
@@ -195,6 +196,25 @@ const cityLifeStore: SyncedStore = {
   merge: (local, remote) => mergeCityLife(local as CityLifePayload | null, remote as CityLifePayload | null),
 };
 
+/** Ngôn ngữ giao diện (VI / EN): máy nào đổi sau thì thắng. */
+type LocalePayload = { locale?: 'vi' | 'en'; changedAt?: string };
+const localeStore: SyncedStore = {
+  key: 'locale',
+  read: () => {
+    const st = useLocaleStore.getState();
+    return { locale: st.locale, changedAt: st.changedAt };
+  },
+  write: (payload) => {
+    const p = payload as LocalePayload | null;
+    if (p?.locale === 'vi' || p?.locale === 'en') useLocaleStore.setState({ locale: p.locale, changedAt: p.changedAt ?? '' });
+  },
+  merge: (local, remote) => {
+    const l = (local ?? {}) as LocalePayload;
+    const r = (remote ?? {}) as LocalePayload;
+    return (r.changedAt ?? '') > (l.changedAt ?? '') ? r : l;
+  },
+};
+
 /** Lộ trình SAT Math theo chủ đề: điểm cao nhất từng chương × mức. */
 const satRoadmapStore: SyncedStore = {
   key: 'sat_roadmap',
@@ -284,5 +304,6 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(cityStore);
   registerSyncedStore(cityLifeStore);
   registerSyncedStore(satRoadmapStore);
+  registerSyncedStore(localeStore);
   registerSyncedStore(speakingStore);
 }

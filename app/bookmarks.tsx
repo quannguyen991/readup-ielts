@@ -5,11 +5,13 @@ import { ArticleCard } from '@/components/article/ArticleCard';
 import { Screen } from '@/components/layout/Screen';
 import { Card, HeroBanner, Icon, SectionHeader } from '@/components/ui';
 import { getArticleById } from '@/data/articles';
+import { useL } from '@/i18n/useL';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
 
 export default function BookmarksScreen() {
+  const { L } = useL();
   const bookmarks = useStudyStore((s) => s.bookmarks);
   // Selector PHẢI trả về thứ ổn định qua các lần render. Object.values dựng
   // mảng mới mỗi lần, zustand thấy snapshot luôn khác nên render lại vô hạn —
@@ -28,13 +30,13 @@ export default function BookmarksScreen() {
   return (
     <Screen>
       <HeroBanner
-        title="Đã lưu"
-        subtitle="Bài đọc bạn đánh dấu để quay lại sau."
+        title={L('Đã lưu', 'Saved')}
+        subtitle={L('Bài đọc bạn đánh dấu để quay lại sau.', 'Passages you bookmarked to come back to later.')}
         illustration="bookmarks-hero"
       />
 
       <Card className="mt-4">
-        <SectionHeader title="Bài đã đánh dấu" subtitle={`${articles.length} bài`} icon="bookmark" />
+        <SectionHeader title={L('Bài đã đánh dấu', 'Bookmarked passages')} subtitle={L(`${articles.length} bài`, `${articles.length} passages`)} icon="bookmark" />
 
         <View className="mt-3 gap-2">
           {articles.map((article) => (
@@ -45,7 +47,7 @@ export default function BookmarksScreen() {
             <View className="items-center rounded-panel bg-surfaceAlt px-4 py-10">
               <Icon name="bookmark" size={30} color={color.subtle} />
               <Text className="mt-3 text-center font-sans text-body text-muted">
-                Chưa đánh dấu bài nào. Bấm biểu tượng bookmark trên card bài đọc.
+                {L('Chưa đánh dấu bài nào. Bấm biểu tượng bookmark trên card bài đọc.', 'No bookmarks yet. Tap the bookmark icon on a passage card.')}
               </Text>
             </View>
           ) : null}
@@ -54,8 +56,8 @@ export default function BookmarksScreen() {
 
       <Card className="mt-4">
         <SectionHeader
-          title="Từ đã lưu gần đây"
-          subtitle={`${words.length} từ`}
+          title={L('Từ đã lưu gần đây', 'Recently saved words')}
+          subtitle={L(`${words.length} từ`, `${words.length} words`)}
           icon="letters"
           iconTone="accent"
         />
@@ -68,7 +70,7 @@ export default function BookmarksScreen() {
           ))}
 
           {words.length === 0 ? (
-            <Text className="font-sans text-body text-muted">Chưa lưu từ nào.</Text>
+            <Text className="font-sans text-body text-muted">{L('Chưa lưu từ nào.', 'No saved words yet.')}</Text>
           ) : null}
         </View>
       </Card>

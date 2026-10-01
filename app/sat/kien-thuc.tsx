@@ -8,6 +8,22 @@ import { MindMap } from '@/components/illust/MindMap';
 import { Badge, CuteBook, CuteClock, CuteGlobe, CutePencil } from '@/components/illust/Cute';
 import { CuteBulb, CuteCalculator, CuteChat, CuteMagnifier, CuteNotebook, CuteRocket, CuteStar, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
 import { SAT_DOMAINS, SAT_FACTS, SAT_SECTIONS, SAT_STRATEGY, type Domain } from '@/data/sat-knowledge';
+import { useL } from '@/i18n/useL';
+
+/** Bản tiếng Anh của bốn ô số liệu đầu trang (dữ liệu gốc `SAT_FACTS` giữ tiếng Việt), theo thứ tự. */
+const FACTS_EN: readonly { k: string; v: string; d: string }[] = [
+  { k: 'Total time', v: '2 h 14 min', d: 'Reading & Writing 64 min + 10-min break + Math 70 min.' },
+  { k: 'Score scale', v: '400 – 1600', d: "Each section 200 – 800. No penalty for wrong answers — don't leave anything blank." },
+  { k: 'Module-adaptive', v: 'Module 2 changes difficulty', d: 'Do well on module 1 and module 2 gets harder, unlocking the top scores; module 1 matters most.' },
+  { k: 'Pretest questions', v: '4 per section', d: "Unscored and unmarked — answer them all like real questions." },
+];
+
+const SECTION_EN: Record<string, string> = { rw: 'Reading and Writing', math: 'Math' };
+
+/** "13–15 câu" → "13–15 questions" khi giao diện tiếng Anh. */
+function questionsLabel(q: string, en: boolean): string {
+  return en ? q.replace(/ câu$/, ' questions') : q;
+}
 
 /**
  * KIẾN THỨC SAT — toàn bộ lý thuyết SAT trong MỘT khung (người dùng yêu cầu
@@ -30,6 +46,7 @@ export default function SatKnowledge() {
   const wide = width >= 900;
   const math = SAT_DOMAINS.filter((d) => d.section === 'math');
   const rw = SAT_DOMAINS.filter((d) => d.section === 'rw');
+  const { L, en } = useL();
 
   return (
     <Screen>
@@ -52,28 +69,29 @@ export default function SatKnowledge() {
             </View>
           ) : null}
           <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(255,255,255,0.85)' }}>
-            KIẾN THỨC SAT · DIGITAL SAT
+            {L('KIẾN THỨC SAT · DIGITAL SAT', 'SAT KNOWLEDGE · DIGITAL SAT')}
           </Text>
           <Text className="font-heavy" style={{ marginTop: 8, fontSize: wide ? 44 : 30, lineHeight: wide ? 50 : 36, color: '#FFFFFF' }}>
-            Toàn bộ SAT trong một khung.
+            {L('Toàn bộ SAT trong một khung.', 'The whole SAT in one frame.')}
           </Text>
           <Text className="font-sans" style={{ marginTop: 8, fontSize: 15, lineHeight: 22, color: 'rgba(255,255,255,0.88)', maxWidth: 620 }}>
-            Cấu trúc đề · 8 mảng · công thức · bẫy hay gặp.
+            {L('Cấu trúc đề · 8 mảng · công thức · bẫy hay gặp.', 'Test structure · 8 domains · formulas · common traps.')}
           </Text>
           <View style={{ marginTop: 20, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
             {SAT_FACTS.map((f, i) => {
               const Icon = FACT_ICONS[i % FACT_ICONS.length]!;
+              const fact = en ? (FACTS_EN[i] ?? f) : f;
               return (
-                <View key={f.k} accessibilityLabel={`${f.k}: ${f.v}. ${f.d}`} style={{ flexGrow: 1, flexBasis: wide ? 200 : 150, borderRadius: 20, padding: 14, backgroundColor: '#FFFFFF', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+                <View key={f.k} accessibilityLabel={`${fact.k}: ${fact.v}. ${fact.d}`} style={{ flexGrow: 1, flexBasis: wide ? 200 : 150, borderRadius: 20, padding: 14, backgroundColor: '#FFFFFF', flexDirection: 'row', alignItems: 'center', gap: 12 }}>
                   <Motion kind="float" delay={i * 0.35}>
                     <Icon size={48} />
                   </Motion>
                   <View style={{ flex: 1, minWidth: 0 }}>
                     <Text className="font-semi" style={{ fontSize: 12, letterSpacing: 1, color: MUTED }}>
-                      {f.k.toUpperCase()}
+                      {fact.k.toUpperCase()}
                     </Text>
                     <Text className="font-heavy" style={{ marginTop: 2, fontSize: 19, color: INK }}>
-                      {f.v}
+                      {fact.v}
                     </Text>
                   </View>
                 </View>
@@ -84,13 +102,13 @@ export default function SatKnowledge() {
       </Appear>
 
       {/* ------------------------------------------------ bản đồ tổng */}
-      <BigSection color="#FFFFFF" ink={INK} kicker="SƠ ĐỒ TƯ DUY" title="Bản đồ SAT." icon={<CuteGlobe size={56} />}>
+      <BigSection color="#FFFFFF" ink={INK} kicker={L('SƠ ĐỒ TƯ DUY', 'MIND MAP')} title={L('Bản đồ SAT.', 'The SAT map.')} icon={<CuteGlobe size={56} />}>
         <MindMap
           height={wide ? 480 : 420}
           center={{ label: 'Digital SAT', sub: '400 – 1600', color: '#A8843F', icon: <CuteStar size={34} /> }}
           branches={SAT_DOMAINS.map((d) => ({
-            label: d.vi,
-            sub: `${d.section === 'math' ? 'Toán' : 'Đọc & Viết'} · ≈${d.share}%`,
+            label: en ? d.en : d.vi,
+            sub: `${d.section === 'math' ? L('Toán', 'Math') : L('Đọc & Viết', 'Reading & Writing')} · ≈${d.share}%`,
             color: d.color,
             icon: <DomainIcon id={d.id} size={30} />,
           }))}
@@ -98,24 +116,24 @@ export default function SatKnowledge() {
       </BigSection>
 
       {/* ------------------------------------------------ cấu trúc đề */}
-      <BigSection color="#FFF7E6" ink="#7A4B00" kicker="CẤU TRÚC ĐỀ" title="Hai phần, bốn module." icon={<CuteClock size={56} />}>
+      <BigSection color="#FFF7E6" ink="#7A4B00" kicker={L('CẤU TRÚC ĐỀ', 'TEST STRUCTURE')} title={L('Hai phần, bốn module.', 'Two sections, four modules.')} icon={<CuteClock size={56} />}>
         <Structure wide={wide} />
       </BigSection>
 
       {/* ------------------------------------------------ Toán */}
-      <PartHeader color="#F2B632" title="Toán." sub="44 câu · 70 phút · Desmos" icon={<CuteCalculator size={70} />} />
+      <PartHeader color="#F2B632" title={L('Toán.', 'Math.')} sub={L('44 câu · 70 phút · Desmos', '44 questions · 70 min · Desmos')} icon={<CuteCalculator size={70} />} />
       {math.map((d) => (
         <DomainSection key={d.id} d={d} wide={wide} />
       ))}
 
       {/* ------------------------------------------------ Đọc & Viết */}
-      <PartHeader color="#B07A3A" title="Đọc & Viết." sub="54 câu · 64 phút · đoạn ngắn" icon={<CuteBook size={80} />} />
+      <PartHeader color="#B07A3A" title={L('Đọc & Viết.', 'Reading & Writing.')} sub={L('54 câu · 64 phút · đoạn ngắn', '54 questions · 64 min · short passages')} icon={<CuteBook size={80} />} />
       {rw.map((d) => (
         <DomainSection key={d.id} d={d} wide={wide} />
       ))}
 
       {/* ------------------------------------------------ chiến lược */}
-      <BigSection color="#FFFFFF" ink={INK} kicker="LÀM BÀI" title="Chiến lược." icon={<CuteTrophy size={56} />}>
+      <BigSection color="#FFFFFF" ink={INK} kicker={L('LÀM BÀI', 'TEST DAY')} title={L('Chiến lược.', 'Strategy.')} icon={<CuteTrophy size={56} />}>
         <Strategy wide={wide} />
       </BigSection>
       <View style={{ height: 36 }} />
@@ -169,6 +187,7 @@ function PartHeader({ color, title, sub, icon }: { color: string; title: string;
 
 /** Một mảng kiến thức: bên trái sơ đồ các bài, bên phải cốt lõi / cần thuộc / bẫy. */
 function DomainSection({ d, wide }: { d: Domain; wide: boolean }) {
+  const { L, en } = useL();
   return (
     <Appear>
       <View style={{ marginTop: 14, borderRadius: 28, overflow: 'hidden', backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: LINE }}>
@@ -180,18 +199,21 @@ function DomainSection({ d, wide }: { d: Domain; wide: boolean }) {
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
             <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-              {d.vi}.
+              {en ? d.en : d.vi}.
             </Text>
-            <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
-              {d.en}
-            </Text>
+            {/* Dòng phụ tên tiếng Anh cho người học Việt; giao diện English thì bỏ. */}
+            {en ? null : (
+              <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
+                {d.en}
+              </Text>
+            )}
           </View>
           <View style={{ alignItems: 'flex-end' }}>
             <Text className="font-heavy" style={{ fontSize: 28, color: '#FFFFFF' }}>
               ≈{d.share}%
             </Text>
             <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.9)' }}>
-              {d.questions}
+              {questionsLabel(d.questions, en)}
             </Text>
           </View>
         </View>
@@ -200,27 +222,27 @@ function DomainSection({ d, wide }: { d: Domain; wide: boolean }) {
             <MindMap
               height={d.lessons.length > 5 ? 380 : 320}
               narrowBelow={440}
-              center={{ label: d.vi, color: d.color, icon: <DomainIcon id={d.id} size={28} /> }}
-              branches={d.lessons.map((l) => ({ label: l.label, color: d.color, onPress: () => router.push(l.href as never) }))}
+              center={{ label: en ? d.en : d.vi, color: d.color, icon: <DomainIcon id={d.id} size={28} /> }}
+              branches={d.lessons.map((l) => ({ label: en ? l.labelEn : l.label, color: d.color, onPress: () => router.push(l.href as never) }))}
             />
           </View>
           <View style={{ flex: wide ? 1 : undefined, gap: 12 }}>
-            <InfoCard emoji="💡" title="Cốt lõi" tone="#FCF8F1">
-              {d.core.slice(0, 3).map((c) => (
+            <InfoCard emoji="💡" title={L('Cốt lõi', 'Core ideas')} tone="#FCF8F1">
+              {(en ? d.coreEn : d.core).slice(0, 3).map((c) => (
                 <Bullet key={c} text={c} color={d.color} />
               ))}
             </InfoCard>
             {d.formulas ? (
-              <InfoCard emoji="📌" title="Cần thuộc" tone="#FCFBF8">
-                {d.formulas.map((f) => (
+              <InfoCard emoji="📌" title={L('Cần thuộc', 'Must know')} tone="#FCFBF8">
+                {(en ? (d.formulasEn ?? d.formulas) : d.formulas).map((f) => (
                   <Text key={f} className="font-semi" style={{ fontSize: 14, lineHeight: 20, color: INK }}>
                     {f}
                   </Text>
                 ))}
               </InfoCard>
             ) : null}
-            <InfoCard emoji="⚠️" title="Bẫy" tone="#FFF1F0">
-              {d.traps.slice(0, 2).map((t) => (
+            <InfoCard emoji="⚠️" title={L('Bẫy', 'Traps')} tone="#FFF1F0">
+              {(en ? d.trapsEn : d.traps).slice(0, 2).map((t) => (
                 <Bullet key={t} text={t} color="#E0533D" />
               ))}
             </InfoCard>
@@ -246,6 +268,7 @@ function InfoCard({ emoji, title, tone, children }: { emoji: string; title: stri
 }
 
 function Structure({ wide }: { wide: boolean }) {
+  const { L, en } = useL();
   return (
     <View style={{ gap: 14 }}>
       <View style={{ flexDirection: wide ? 'row' : 'column', gap: 14 }}>
@@ -257,13 +280,13 @@ function Structure({ wide }: { wide: boolean }) {
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                 <View style={{ width: 12, height: 12, borderRadius: 6, backgroundColor: color }} />
                 <Text className="font-heavy" style={{ fontSize: 19, color: INK }}>
-                  {s.vi}
+                  {en ? (SECTION_EN[s.id] ?? s.vi) : s.vi}
                 </Text>
               </View>
               <View style={{ marginTop: 14, flexDirection: 'row', gap: 8 }}>
-                <Big value={`${s.modules * s.perModule}`} label="câu" />
-                <Big value={`${s.modules * s.minutesPerModule}'`} label="phút" />
-                <Big value={`${s.modules}×${s.perModule}`} label="module × câu" />
+                <Big value={`${s.modules * s.perModule}`} label={L('câu', 'questions')} />
+                <Big value={`${s.modules * s.minutesPerModule}'`} label={L('phút', 'minutes')} />
+                <Big value={`${s.modules}×${s.perModule}`} label={L('module × câu', 'modules × questions')} />
               </View>
               {/* Tỉ trọng các mảng: một thanh chồng màu + chú giải */}
               <View style={{ marginTop: 14, flexDirection: 'row', height: 12, borderRadius: 6, overflow: 'hidden' }}>
@@ -276,10 +299,10 @@ function Structure({ wide }: { wide: boolean }) {
                   <View key={d.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
                     <View style={{ width: 10, height: 10, borderRadius: 3, backgroundColor: d.color }} />
                     <Text className="font-semi" style={{ flex: 1, fontSize: 14, color: INK }}>
-                      {d.vi}
+                      {en ? d.en : d.vi}
                     </Text>
                     <Text className="font-sans" style={{ fontSize: 14, color: MUTED }}>
-                      ≈{d.share}% · {d.questions}
+                      ≈{d.share}% · {questionsLabel(d.questions, en)}
                     </Text>
                   </View>
                 ))}
@@ -290,10 +313,10 @@ function Structure({ wide }: { wide: boolean }) {
       </View>
       <View style={{ borderRadius: 22, padding: 18, backgroundColor: '#FFF7E6', borderWidth: 1, borderColor: '#F6D9A0' }}>
         <Text className="font-heavy" style={{ fontSize: 16, color: '#7A4B00' }}>
-          Thi thích ứng theo module
+          {L('Thi thích ứng theo module', 'Module-adaptive testing')}
         </Text>
         <Text className="font-sans" style={{ marginTop: 6, fontSize: 14, lineHeight: 21, color: '#7A4B00' }}>
-          Mỗi phần có 2 module. Module 1 có độ khó trộn lẫn; kết quả module 1 quyết định module 2 là bản dễ hay bản khó. Chỉ bản khó mới mở được mức điểm cao nhất — vì vậy làm chắc module 1 quan trọng hơn làm nhanh.
+          {L('Mỗi phần có 2 module. Module 1 có độ khó trộn lẫn; kết quả module 1 quyết định module 2 là bản dễ hay bản khó. Chỉ bản khó mới mở được mức điểm cao nhất — vì vậy làm chắc module 1 quan trọng hơn làm nhanh.', 'Each section has 2 modules. Module 1 mixes difficulties; how you do on it decides whether module 2 is the easier or harder version. Only the harder one unlocks the top scores — so getting module 1 right matters more than speed.')}
         </Text>
       </View>
     </View>
@@ -301,6 +324,7 @@ function Structure({ wide }: { wide: boolean }) {
 }
 
 function Strategy({ wide }: { wide: boolean }) {
+  const { en } = useL();
   return (
     <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
       {SAT_STRATEGY.map((s, i) => (
@@ -308,10 +332,10 @@ function Strategy({ wide }: { wide: boolean }) {
           <Badge icon={STRAT_ICON[i % STRAT_ICON.length]!} color={STRAT_COLOR[i % STRAT_COLOR.length]!} size={42} />
           <View style={{ flex: 1 }}>
             <Text className="font-heavy" style={{ fontSize: 16, color: INK }}>
-              {s.t}
+              {en ? s.tEn : s.t}
             </Text>
             <Text className="font-sans" style={{ marginTop: 4, fontSize: 14, lineHeight: 21, color: MUTED }}>
-              {s.d}
+              {en ? s.dEn : s.d}
             </Text>
           </View>
         </View>

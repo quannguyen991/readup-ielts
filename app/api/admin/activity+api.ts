@@ -1,5 +1,6 @@
 import { summarizeUserState, type UserStateRow } from '@/services/admin/activity';
 import { requireAdmin } from '@/services/admin/guard';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * GET /api/admin/activity?userId=...
@@ -24,7 +25,7 @@ export async function GET(request: Request): Promise<Response> {
 
     const userId = (new URL(request.url).searchParams.get('userId') ?? '').trim();
     if (!UUID.test(userId)) {
-      return Response.json({ error: 'Thiếu userId hợp lệ.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu userId hợp lệ.', 'A valid userId is required.') }, { status: 400 });
     }
 
     const { data, error } = await guard.admin
@@ -37,7 +38,7 @@ export async function GET(request: Request): Promise<Response> {
     return Response.json({ activity: summarizeUserState((data ?? []) as unknown as UserStateRow[]) });
   } catch (err) {
     return Response.json(
-      { error: err instanceof Error ? err.message : 'Không đọc được hoạt động.' },
+      { error: errorText(request, err, 'Không đọc được hoạt động.', 'Could not load activity.') },
       { status: 500 },
     );
   }

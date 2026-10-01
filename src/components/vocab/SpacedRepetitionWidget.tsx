@@ -10,9 +10,14 @@ import {
   calculate7DayForecast,
   calculateMemoryLevels,
   importLearnedTopicWords,
+  WEEKDAY_LABELS,
 } from '@/services/vocab/spaced-repetition';
+import { useL } from '@/i18n/useL';
+
+const WEEKDAY_EN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export function SpacedRepetitionWidget() {
+  const { L, en } = useL();
   const entries = useVocabStore((s) => s.entries);
   const cards = useVocabStore((s) => s.cards);
   const stages = useTopicStudyStore((s) => s.stages);
@@ -58,18 +63,18 @@ export function SpacedRepetitionWidget() {
     >
       {/* Tiêu đề & số liệu tóm tắt */}
       <Text className="font-heavy text-inkInverse" style={{ fontSize: 18, color: '#FFFFFF' }}>
-        Lặp lại ngắt quãng
+        {L('Lặp lại ngắt quãng', 'Spaced repetition')}
       </Text>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginTop: 6 }}>
         <Text style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.9)' }}>
-          Từ đến hạn:{' '}
+          {L('Từ đến hạn:', 'Due words:')}{' '}
           <Text style={{ fontWeight: '700', color: levels.dueCount > 0 ? '#FEF08A' : '#FFFFFF' }}>
             {levels.dueCount}
           </Text>
         </Text>
         <Text style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.9)' }}>
-          Thuần thục:{' '}
+          {L('Thuần thục:', 'Mastered:')}{' '}
           <Text style={{ fontWeight: '700', color: '#BBF7D0' }}>{levels.mastered}</Text>
         </Text>
       </View>
@@ -86,7 +91,7 @@ export function SpacedRepetitionWidget() {
           paddingBottom: 2,
         }}
       >
-        Dự báo ôn tập 7 ngày tới
+        {L('Dự báo ôn tập 7 ngày tới', 'Review forecast, next 7 days')}
       </Text>
 
       {/* Biểu đồ cột 7 ngày */}
@@ -139,7 +144,7 @@ export function SpacedRepetitionWidget() {
                   marginTop: 6,
                 }}
               >
-                {item.dayLabel}
+                {en ? (WEEKDAY_EN[WEEKDAY_LABELS.indexOf(item.dayLabel)] ?? item.dayLabel) : item.dayLabel}
               </Text>
             </View>
           );
@@ -149,7 +154,7 @@ export function SpacedRepetitionWidget() {
       {/* Nút mở màn hình Spaced Repetition */}
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Mở màn hình lặp lại ngắt quãng"
+        accessibilityLabel={L('Mở màn hình lặp lại ngắt quãng', 'Open spaced repetition')}
         onPress={() => router.push('/vocabulary/spaced-repetition' as never)}
         style={{
           marginTop: 18,
@@ -165,7 +170,7 @@ export function SpacedRepetitionWidget() {
       >
         <Icon name="calendar" size={18} color="#A8843F" />
         <Text style={{ fontSize: 14, fontWeight: '700', color: '#A8843F' }}>
-          Lặp lại ngắt quãng
+          {L('Lặp lại ngắt quãng', 'Spaced repetition')}
         </Text>
       </Pressable>
     </View>

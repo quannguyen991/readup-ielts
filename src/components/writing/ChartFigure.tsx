@@ -4,6 +4,8 @@ import Svg, { Circle, G, Line, Path, Rect, Text as SvgText } from 'react-native-
 
 import { arcPath, niceTicks, pieSlices, seriesExtent } from '@/services/writing/chart-scale';
 import { chartPalette, color } from '@/theme/tokens';
+import { pick, useLocale } from '@/i18n/useL';
+import type { Locale } from '@/i18n/keys';
 import type { ChartData, LineOrBarChart, PieChart, TableChart } from '@/lib/writing/types';
 
 /**
@@ -22,6 +24,7 @@ import type { ChartData, LineOrBarChart, PieChart, TableChart } from '@/lib/writ
 const PALETTE = chartPalette;
 
 export function ChartFigure({ data, width = 640 }: { data: ChartData; width?: number }) {
+  const locale = useLocale();
   if (data.kind === 'mixed') {
     return (
       <View className="gap-3">
@@ -38,12 +41,12 @@ export function ChartFigure({ data, width = 640 }: { data: ChartData; width?: nu
       {'unit' in data ? (
         <Text className="mb-2 text-center font-sans text-label text-muted">{data.unit}</Text>
       ) : null}
-      {renderBody(data, width)}
+      {renderBody(data, width, locale)}
     </View>
   );
 }
 
-function renderBody(data: Exclude<ChartData, { kind: 'mixed' }>, width: number) {
+function renderBody(data: Exclude<ChartData, { kind: 'mixed' }>, width: number, locale: Locale) {
   switch (data.kind) {
     case 'line':
     case 'bar':
@@ -56,7 +59,7 @@ function renderBody(data: Exclude<ChartData, { kind: 'mixed' }>, width: number) 
       // process và map chưa dựng — nói rõ còn thiếu gì thay vì hiện khung trắng.
       return (
         <Text className="p-4 text-center font-sans text-body text-muted">
-          Loại hình này sẽ được dựng ở lát sau.
+          {pick(locale, 'Loại hình này sẽ được dựng ở lát sau.', "This chart type isn't available yet.")}
         </Text>
       );
   }

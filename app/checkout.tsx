@@ -21,6 +21,7 @@ import { color, gradient } from '@/theme/tokens';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * Trang thanh toán: QR chuyển khoản + đối chiếu tay.
@@ -52,6 +53,7 @@ type Order = {
 const POLL_MS = 15_000;
 
 export default function CheckoutScreen() {
+  const { L } = useL();
   const params = useLocalSearchParams<{ plan?: string; cycle?: string; group?: string }>();
   const { width } = useWindowDimensions();
   const wide = width >= 900;
@@ -101,12 +103,12 @@ export default function CheckoutScreen() {
         priceSource?: string;
         priceLabel?: string;
       };
-      if (!res.ok || !body.order) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok || !body.order) throw new Error(body.error ?? pick(currentLocale(), `Lỗi ${res.status}`, `Error ${res.status}`));
       setOrder(body.order);
       // 'base' = giá niêm yết bình thường, không cần giải thích gì thêm.
       setPriceLabel(body.priceSource && body.priceSource !== 'base' ? (body.priceLabel ?? null) : null);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không tạo được đơn.');
+      setError(err instanceof Error ? err.message : pick(currentLocale(), 'Không tạo được đơn.', "Couldn't create the order."));
     } finally {
       setBusy(false);
     }
@@ -172,9 +174,9 @@ export default function CheckoutScreen() {
     return (
       <Notice
         icon="info"
-        title="Không rõ bạn muốn mua gói nào"
-        body="Đường dẫn thiếu thông tin gói. Quay lại trang giá và chọn lại."
-        action={{ label: 'Xem bảng giá', onPress: () => router.replace('/upgrade' as never) }}
+        title={L('Không rõ bạn muốn mua gói nào', "We couldn't tell which plan you want")}
+        body={L('Đường dẫn thiếu thông tin gói. Quay lại trang giá và chọn lại.', 'The link is missing the plan. Go back to pricing and pick again.')}
+        action={{ label: L('Xem bảng giá', 'See pricing'), onPress: () => router.replace('/upgrade' as never) }}
       />
     );
   }
@@ -183,9 +185,12 @@ export default function CheckoutScreen() {
     return (
       <Notice
         icon="lock"
-        title="Đăng nhập trước đã"
-        body="Đơn hàng phải gắn với một tài khoản, nếu không thì lúc chuyển khoản xong không biết bật gói cho ai."
-        action={{ label: 'Đăng nhập', onPress: () => router.push('/auth/sign-in' as never) }}
+        title={L('Đăng nhập trước đã', 'Sign in first')}
+        body={L(
+          'Đơn hàng phải gắn với một tài khoản, nếu không thì lúc chuyển khoản xong không biết bật gói cho ai.',
+          "Orders must be linked to an account — otherwise we won't know whose plan to activate after the transfer.",
+        )}
+        action={{ label: L('Đăng nhập', 'Sign in'), onPress: () => router.push('/auth/sign-in' as never) }}
       />
     );
   }
@@ -194,13 +199,16 @@ export default function CheckoutScreen() {
     return (
       <Notice
         icon="info"
-        title="Chưa cấu hình tài khoản nhận tiền"
-        body={
+        title={L('Chưa cấu hình tài khoản nhận tiền', 'Payment account not set up')}
+        body={L(
           'Chủ app cần khai EXPO_PUBLIC_BANK_BIN, EXPO_PUBLIC_BANK_ACCOUNT và ' +
-          'EXPO_PUBLIC_BANK_ACCOUNT_NAME rồi deploy lại. Trước khi có ba giá trị đó, ' +
-          'hiện một mã QR ra đây là chỉ dẫn người dùng chuyển tiền đi đâu không rõ.'
-        }
-        action={{ label: 'Quay lại bảng giá', onPress: () => router.replace('/upgrade' as never) }}
+            'EXPO_PUBLIC_BANK_ACCOUNT_NAME rồi deploy lại. Trước khi có ba giá trị đó, ' +
+            'hiện một mã QR ra đây là chỉ dẫn người dùng chuyển tiền đi đâu không rõ.',
+          'The app owner needs to set EXPO_PUBLIC_BANK_BIN, EXPO_PUBLIC_BANK_ACCOUNT and ' +
+            'EXPO_PUBLIC_BANK_ACCOUNT_NAME, then redeploy. Until those three are set, ' +
+            'showing a QR code here would send your money to an unknown destination.',
+        )}
+        action={{ label: L('Quay lại bảng giá', 'Back to pricing'), onPress: () => router.replace('/upgrade' as never) }}
       />
     );
   }
@@ -226,9 +234,12 @@ export default function CheckoutScreen() {
       <Notice
         icon="check"
         tint={color.success}
-        title={`Đã nhận thanh toán — gói ${plan.name} đang chạy`}
-        body="Cảm ơn bạn. Gói đã được bật trên tài khoản này và đồng bộ sang mọi máy bạn đăng nhập."
-        action={{ label: 'Vào học thôi', onPress: () => router.replace('/dashboard' as never) }}
+        title={L(`Đã nhận thanh toán — gói ${plan.name} đang chạy`, `Payment received — ${plan.name} is active`)}
+        body={L(
+          'Cảm ơn bạn. Gói đã được bật trên tài khoản này và đồng bộ sang mọi máy bạn đăng nhập.',
+          "Thank you! Your plan is active on this account and synced to every device you're signed in on.",
+        )}
+        action={{ label: L('Vào học thôi', "Let's study"), onPress: () => router.replace('/dashboard' as never) }}
       />
     );
   }
@@ -238,9 +249,12 @@ export default function CheckoutScreen() {
       <Notice
         icon="info"
         tint={color.danger}
-        title="Đơn này đã bị huỷ"
-        body="Người đối chiếu không tìm thấy khoản chuyển khoản khớp mã. Nếu bạn đã chuyển tiền, hãy giữ ảnh chụp giao dịch và liên hệ lại."
-        action={{ label: 'Tạo đơn mới', onPress: () => router.replace('/upgrade' as never) }}
+        title={L('Đơn này đã bị huỷ', 'This order was cancelled')}
+        body={L(
+          'Người đối chiếu không tìm thấy khoản chuyển khoản khớp mã. Nếu bạn đã chuyển tiền, hãy giữ ảnh chụp giao dịch và liên hệ lại.',
+          "The reviewer couldn't find a transfer matching the code. If you did send money, keep a screenshot of the transaction and contact us.",
+        )}
+        action={{ label: L('Tạo đơn mới', 'Create a new order'), onPress: () => router.replace('/upgrade' as never) }}
       />
     );
   }
@@ -265,7 +279,7 @@ export default function CheckoutScreen() {
           <View className="flex-row flex-wrap items-end justify-between gap-4">
             <View className="min-w-0">
               <Text className="font-strong text-label uppercase text-white/75">
-                {PLANS[spec.plan].name} · {spec.cycle === 'yearly' ? '1 năm' : '1 tháng'}
+                {PLANS[spec.plan].name} · {spec.cycle === 'yearly' ? L('1 năm', '1 year') : L('1 tháng', '1 month')}
               </Text>
               <Text
                 className="font-heavy text-white"
@@ -287,7 +301,7 @@ export default function CheckoutScreen() {
               gian nhất của cả luồng, nên nó phải đập vào mắt ngay từ đầu.
             */}
             <View className="rounded-panel bg-white/15 px-4 py-3">
-              <Text className="font-strong text-label uppercase text-white/75">Mã đối chiếu</Text>
+              <Text className="font-strong text-label uppercase text-white/75">{L('Mã đối chiếu', 'Reference code')}</Text>
               <Text
                 className="mt-0.5 font-heavy text-white"
                 style={{ fontSize: 20, lineHeight: 26, letterSpacing: 1 }}
@@ -299,8 +313,10 @@ export default function CheckoutScreen() {
           </View>
 
           <Text className="mt-4 font-sans text-body text-white/80" style={{ lineHeight: 22 }}>
-            Chuyển đúng số tiền và đúng nội dung bên dưới. Gói được bật sau khi đối chiếu —
-            thường trong vài giờ, chậm nhất là sang ngày hôm sau.
+            {L(
+              'Chuyển đúng số tiền và đúng nội dung bên dưới. Gói được bật sau khi đối chiếu — thường trong vài giờ, chậm nhất là sang ngày hôm sau.',
+              'Transfer the exact amount with the exact note below. Your plan is activated once we match it — usually within a few hours, by the next day at the latest.',
+            )}
           </Text>
         </LinearGradient>
       </Appear>
@@ -310,7 +326,7 @@ export default function CheckoutScreen() {
           <Icon name="info" size={16} color={color.danger} />
           <View className="flex-1">
             <Text className="font-sans text-body text-danger-ink">{error}</Text>
-            <Button className="mt-2 self-start" label="Thử lại" variant="outline" size="sm" onPress={() => void createOrder()} />
+            <Button className="mt-2 self-start" label={L('Thử lại', 'Try again')} variant="outline" size="sm" onPress={() => void createOrder()} />
           </View>
         </View>
       ) : null}
@@ -322,10 +338,13 @@ export default function CheckoutScreen() {
               <View aria-hidden>
                 <SealIcon name="grid" color="#A8843F" size={36} />
               </View>
-              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Quét mã</Text>
+              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Quét mã', 'Scan the code')}</Text>
             </View>
             <Text className="mt-1 font-sans text-label text-muted">
-              Mở app ngân hàng → quét QR. Số tiền và nội dung đã nằm sẵn trong mã.
+              {L(
+                'Mở app ngân hàng → quét QR. Số tiền và nội dung đã nằm sẵn trong mã.',
+                'Open your banking app → scan the QR. The amount and note are already in the code.',
+              )}
             </Text>
             <View className="mt-3 items-center">
               {busy && !qrPayload ? (
@@ -333,7 +352,7 @@ export default function CheckoutScreen() {
                   className="items-center justify-center rounded-card bg-surfaceAlt"
                   style={{ width: 236, height: 236 }}
                 >
-                  <Text className="font-sans text-label text-muted">Đang tạo đơn…</Text>
+                  <Text className="font-sans text-label text-muted">{L('Đang tạo đơn…', 'Creating order…')}</Text>
                 </View>
               ) : qrPayload ? (
                 <QrCode value={qrPayload} size={236} />
@@ -348,45 +367,45 @@ export default function CheckoutScreen() {
               <View aria-hidden>
                 <SealIcon name="pencil" color="#B07A3A" size={36} />
               </View>
-              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Hoặc chuyển tay</Text>
+              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Hoặc chuyển tay', 'Or transfer manually')}</Text>
             </View>
             <Text className="mt-1 font-sans text-label text-muted">
-              Bấm vào từng dòng để sao chép.
+              {L('Bấm vào từng dòng để sao chép.', 'Tap any line to copy it.')}
             </Text>
 
             <View className="mt-3 gap-2">
               <CopyRow
-                label="Ngân hàng"
+                label={L('Ngân hàng', 'Bank')}
                 value={bankLabel(publicEnv.bankBin)}
-                onCopy={() => void copy('Ngân hàng', bankLabel(publicEnv.bankBin))}
-                copied={copied === 'Ngân hàng'}
+                onCopy={() => void copy('bank', bankLabel(publicEnv.bankBin))}
+                copied={copied === 'bank'}
               />
               <CopyRow
-                label="Số tài khoản"
+                label={L('Số tài khoản', 'Account number')}
                 value={publicEnv.bankAccount}
-                onCopy={() => void copy('Số tài khoản', publicEnv.bankAccount)}
-                copied={copied === 'Số tài khoản'}
+                onCopy={() => void copy('account', publicEnv.bankAccount)}
+                copied={copied === 'account'}
               />
               {publicEnv.bankAccountName ? (
                 <CopyRow
-                  label="Chủ tài khoản"
+                  label={L('Chủ tài khoản', 'Account holder')}
                   value={publicEnv.bankAccountName}
-                  onCopy={() => void copy('Chủ tài khoản', publicEnv.bankAccountName)}
-                  copied={copied === 'Chủ tài khoản'}
+                  onCopy={() => void copy('holder', publicEnv.bankAccountName)}
+                  copied={copied === 'holder'}
                 />
               ) : null}
               <CopyRow
-                label="Số tiền"
+                label={L('Số tiền', 'Amount')}
                 value={formatVnd(amount)}
-                onCopy={() => void copy('Số tiền', String(amount))}
-                copied={copied === 'Số tiền'}
+                onCopy={() => void copy('amount', String(amount))}
+                copied={copied === 'amount'}
                 emphasis={tone.ink}
               />
               <CopyRow
-                label="Nội dung chuyển khoản"
+                label={L('Nội dung chuyển khoản', 'Transfer note')}
                 value={description || '…'}
-                onCopy={() => void copy('Nội dung chuyển khoản', description)}
-                copied={copied === 'Nội dung chuyển khoản'}
+                onCopy={() => void copy('description', description)}
+                copied={copied === 'description'}
                 emphasis={tone.ink}
               />
             </View>
@@ -399,9 +418,9 @@ export default function CheckoutScreen() {
             <View className="mt-3 flex-row items-start gap-2 rounded-card bg-warning-soft p-2.5">
               <Icon name="info" size={15} color={color.warning} />
               <Text className="flex-1 font-sans text-label text-ink">
-                Giữ nguyên nội dung chuyển khoản. Thiếu mã{' '}
-                <Text className="font-strong">{reference || '…'}</Text> thì khoản tiền không tự khớp
-                được với tài khoản của bạn.
+                {L('Giữ nguyên nội dung chuyển khoản. Thiếu mã ', "Keep the transfer note as is. Without the code ")}
+                <Text className="font-strong">{reference || '…'}</Text>
+                {L(' thì khoản tiền không tự khớp được với tài khoản của bạn.', " the payment can't be matched to your account automatically.")}
               </Text>
             </View>
           </Card>
@@ -415,10 +434,12 @@ export default function CheckoutScreen() {
               <SealIcon name="clock" color="#F2B632" size={40} />
             </View>
             <View className="flex-1">
-              <Text className="font-strong text-cardTitle text-ink">Sau khi chuyển thì sao?</Text>
+              <Text className="font-strong text-cardTitle text-ink">{L('Sau khi chuyển thì sao?', 'What happens after I transfer?')}</Text>
               <Text className="mt-1 font-sans text-body text-muted">
-                Trang này tự kiểm lại mỗi {POLL_MS / 1000} giây, bạn không cần tải lại. Gói bật xong
-                là hiện ngay ở đây và ở mọi máy bạn đăng nhập.
+                {L(
+                  `Trang này tự kiểm lại mỗi ${POLL_MS / 1000} giây, bạn không cần tải lại. Gói bật xong là hiện ngay ở đây và ở mọi máy bạn đăng nhập.`,
+                  `This page checks again every ${POLL_MS / 1000} seconds — no need to refresh. Once your plan is on, it shows up here and on every device you're signed in on.`,
+                )}
               </Text>
               {/*
                 CÂU NÀY TRƯỚC ĐÂY NÓI SAI. Nó bảo "xem lại được ở Cài đặt", nhưng trang
@@ -430,13 +451,18 @@ export default function CheckoutScreen() {
                 với cùng gói và cùng chu kỳ sẽ ra đúng đơn cũ, đúng mã đối chiếu cũ.
               */}
               <Text className="mt-2 font-sans text-body text-muted">
-                Đóng trang cũng không sao: mở lại trang thanh toán của đúng gói này thì ra lại đúng
-                đơn cũ và đúng mã <Text className="font-strong text-ink">{reference || '…'}</Text>,
-                không sinh mã mới.
+                {L(
+                  'Đóng trang cũng không sao: mở lại trang thanh toán của đúng gói này thì ra lại đúng đơn cũ và đúng mã ',
+                  "It's fine to close this page: reopen checkout for the same plan and you'll get the same order and the same code ",
+                )}
+                <Text className="font-strong text-ink">{reference || '…'}</Text>
+                {L(', không sinh mã mới.', ' — no new code is created.')}
               </Text>
               <Text className="mt-2 font-sans text-label text-subtle">
-                Đối chiếu do người thật làm, không phải máy — nên đừng chuyển khoản lần thứ hai nếu
-                chưa thấy đổi ngay.
+                {L(
+                  'Đối chiếu do người thật làm, không phải máy — nên đừng chuyển khoản lần thứ hai nếu chưa thấy đổi ngay.',
+                  "Matching is done by a real person, not a machine — so please don't transfer a second time if nothing changes right away.",
+                )}
               </Text>
             </View>
           </View>
@@ -445,12 +471,12 @@ export default function CheckoutScreen() {
 
       <View className="mt-4 flex-row flex-wrap gap-2">
         <Button
-          label="Về bảng giá"
+          label={L('Về bảng giá', 'Back to pricing')}
           variant="outline"
           onPress={() => router.replace('/upgrade' as never)}
         />
         <Button
-          label="Học tiếp trong lúc chờ"
+          label={L('Học tiếp trong lúc chờ', 'Keep studying while you wait')}
           variant="ghost"
           onPress={() => router.replace('/dashboard' as never)}
         />
@@ -472,10 +498,11 @@ function CopyRow({
   copied: boolean;
   emphasis?: string;
 }) {
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={`Sao chép ${label}`}
+      accessibilityLabel={L(`Sao chép ${label}`, `Copy ${label}`)}
       onPress={onCopy}
       className="flex-row items-center justify-between gap-3 rounded-card border border-border bg-surfaceAlt px-3 py-2.5"
     >
@@ -495,7 +522,7 @@ function CopyRow({
           className="font-mid text-label"
           style={{ color: copied ? color.success : color.subtle }}
         >
-          {copied ? 'Đã chép' : 'Chép'}
+          {copied ? L('Đã chép', 'Copied') : L('Chép', 'Copy')}
         </Text>
       </View>
     </Pressable>
@@ -515,6 +542,7 @@ function Notice({
   body: string;
   action: { label: string; onPress: () => void };
 }) {
+  const { L } = useL();
   return (
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 460 }}>
@@ -527,7 +555,7 @@ function Notice({
                 </Sticker>
               </Motion>
               <Motion kind="pop" delay={0.2}>
-                <Label text="Xong rồi! 🎉" color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
+                <Label text={L('Xong rồi! 🎉', 'All done! 🎉')} color="#22A06B" ink="#FFFFFF" tilt={-5} size={13} />
               </Motion>
             </View>
           ) : null}

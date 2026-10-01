@@ -13,15 +13,16 @@ import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge, type BadgeIcon } from '@/components/illust/Cute';
 import { CutePlant, CuteStar, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
 
 const STATE_BADGE: Record<PlantState, BadgeIcon> = { thriving: 'star', ok: 'check', wilting: 'clock', dying: 'bolt', seed: 'plus' };
 
-const STATE_UI: Record<PlantState, { label: string; dot: string; note: string }> = {
-  thriving: { label: 'Xanh tốt', dot: '#22C55E', note: 'Nhớ rất chắc — chưa cần ôn.' },
-  ok: { label: 'Khoẻ', dot: '#84CC16', note: 'Còn nhớ tốt, sắp tới lượt ôn.' },
-  wilting: { label: 'Sắp héo', dot: '#EAB308', note: 'Độ nhớ đang tụt — ôn trong hôm nay.' },
-  dying: { label: 'Héo', dot: '#B45309', note: 'Gần như đã quên — ôn ngay để cứu cây.' },
-  seed: { label: 'Hạt giống', dot: '#A3E635', note: 'Mới lưu, chưa ôn lần nào.' },
+const STATE_UI: Record<PlantState, { label: string; labelEn: string; dot: string; note: string; noteEn: string }> = {
+  thriving: { label: 'Xanh tốt', labelEn: 'Thriving', dot: '#22C55E', note: 'Nhớ rất chắc — chưa cần ôn.', noteEn: 'Firmly remembered — no review needed yet.' },
+  ok: { label: 'Khoẻ', labelEn: 'Healthy', dot: '#84CC16', note: 'Còn nhớ tốt, sắp tới lượt ôn.', noteEn: 'Still well remembered; review coming up soon.' },
+  wilting: { label: 'Sắp héo', labelEn: 'Wilting', dot: '#EAB308', note: 'Độ nhớ đang tụt — ôn trong hôm nay.', noteEn: 'Memory is slipping — review it today.' },
+  dying: { label: 'Héo', labelEn: 'Withered', dot: '#B45309', note: 'Gần như đã quên — ôn ngay để cứu cây.', noteEn: 'Almost forgotten — review now to save the plant.' },
+  seed: { label: 'Hạt giống', labelEn: 'Seed', dot: '#A3E635', note: 'Mới lưu, chưa ôn lần nào.', noteEn: 'Just saved, not reviewed yet.' },
 };
 
 const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 72, 35,0.1)' } as object;
@@ -34,6 +35,7 @@ const CARD = { boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 12px 30px rgba(94, 7
 export default function GardenScreen() {
   const entries = useVocabStore((s) => s.entries);
   const cards = useVocabStore((s) => s.cards);
+  const { L } = useL();
   const [now] = useState(() => new Date());
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -51,17 +53,20 @@ export default function GardenScreen() {
         <View className="flex-row flex-wrap items-end justify-between gap-3">
           <View style={{ minWidth: 240, flexShrink: 1 }}>
             <View className="flex-row items-center gap-3">
-              <Text className="min-w-0 flex-1 font-heavy text-pageTitle text-ink">Vườn từ</Text>
+              <Text className="min-w-0 flex-1 font-heavy text-pageTitle text-ink">{L('Vườn từ', 'Word garden')}</Text>
               <View aria-hidden>
                 <PageStickers scene="garden" />
               </View>
             </View>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              Mỗi từ trong sổ từ là một cây. Cây xanh hay héo đúng bằng độ nhớ của bạn lúc này — không ôn là cây héo dần.
+              {L(
+                'Mỗi từ trong sổ từ là một cây. Cây xanh hay héo đúng bằng độ nhớ của bạn lúc này — không ôn là cây héo dần.',
+                'Every word in your notebook is a plant. How green it is matches how well you remember it right now — skip reviews and it wilts.',
+              )}
             </Text>
           </View>
           {sum.needWater > 0 ? (
-            <Button label={`Tưới ${sum.needWater} cây sắp héo`} iconLeft="refresh" onPress={() => router.push('/vocabulary/topic/so-tu/learn' as never)} />
+            <Button label={L(`Tưới ${sum.needWater} cây sắp héo`, `Water ${sum.needWater} wilting plants`)} iconLeft="refresh" onPress={() => router.push('/vocabulary/topic/so-tu/learn' as never)} />
           ) : null}
         </View>
       </Appear>
@@ -74,7 +79,7 @@ export default function GardenScreen() {
                 <Badge icon={STATE_BADGE[k]} color={STATE_UI[k].dot} size={22} />
               </View>
               <Text className="font-heavy text-body text-ink">{sum[k]}</Text>
-              <Text className="font-sans text-label text-muted">{STATE_UI[k].label}</Text>
+              <Text className="font-sans text-label text-muted">{L(STATE_UI[k].label, STATE_UI[k].labelEn)}</Text>
             </View>
           ))}
         </View>
@@ -89,15 +94,18 @@ export default function GardenScreen() {
                   <CutePlant size={64} />
                 </Sticker>
               </Motion>
-              <Label text="Gieo hạt đầu tiên 🌱" color="#22A06B" ink="#FFFFFF" tilt={-4} size={13} />
+              <Label text={L('Gieo hạt đầu tiên 🌱', 'Plant your first seed 🌱')} color="#22A06B" ink="#FFFFFF" tilt={-4} size={13} />
             </View>
-            <Text className="font-heavy text-sectionTitle text-ink">Vườn đang trống</Text>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('Vườn đang trống', 'Your garden is empty')}</Text>
             <Text className="mt-1 font-sans text-bodyLg text-muted">
-              Gieo hạt bằng cách lưu từ: chạm vào từ khi đọc bài, hoặc bấm “Lưu” trên thẻ từ vựng. Mỗi từ lưu vào sổ là một hạt giống.
+              {L(
+                'Gieo hạt bằng cách lưu từ: chạm vào từ khi đọc bài, hoặc bấm “Lưu” trên thẻ từ vựng. Mỗi từ lưu vào sổ là một hạt giống.',
+                'Plant seeds by saving words: tap a word while reading, or hit “Save” on a vocabulary card. Every saved word is a seed.',
+              )}
             </Text>
             <View className="mt-4 flex-row flex-wrap gap-2">
-              <Button label="Từ vựng chủ đề" onPress={() => router.push('/vocabulary/topics' as never)} />
-              <Button variant="outline" label="Đọc bài" onPress={() => router.push('/library' as never)} />
+              <Button label={L('Từ vựng chủ đề', 'Topic vocabulary')} onPress={() => router.push('/vocabulary/topics' as never)} />
+              <Button variant="outline" label={L('Đọc bài', 'Read a passage')} onPress={() => router.push('/library' as never)} />
             </View>
           </View>
         </Appear>
@@ -113,7 +121,7 @@ export default function GardenScreen() {
               ) : (
                 <FlatGarden plants={plants} onPick={setSelected} />
               )}
-              <Text className="absolute bottom-3 left-4 font-sans text-label text-muted">Kéo để xoay đảo · bấm vào cây để xem từ</Text>
+              <Text className="absolute bottom-3 left-4 font-sans text-label text-muted">{L('Kéo để xoay đảo · bấm vào cây để xem từ', 'Drag to rotate the island · tap a plant to see its word')}</Text>
             </View>
           </Appear>
 
@@ -128,14 +136,14 @@ export default function GardenScreen() {
                       <View aria-hidden>
                         <SealIcon name="leaf" color="#F0703F" size={36} />
                       </View>
-                      <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">Cây cần tưới trước</Text>
+                      <Text className="min-w-0 flex-1 font-heavy text-cardTitle text-ink">{L('Cây cần tưới trước', 'Water these first')}</Text>
                       {thirsty.length > 0 ? (
                         <View aria-hidden>
-                          <Label text="Ôn hôm nay" color="#F2B632" tilt={4} size={12} />
+                          <Label text={L('Ôn hôm nay', 'Review today')} color="#F2B632" tilt={4} size={12} />
                         </View>
                       ) : null}
                     </View>
-                    <Text className="mt-1 font-sans text-body text-muted">Những từ độ nhớ thấp nhất. Bấm để xem trên đảo.</Text>
+                    <Text className="mt-1 font-sans text-body text-muted">{L('Những từ độ nhớ thấp nhất. Bấm để xem trên đảo.', 'Your least-remembered words. Tap to find them on the island.')}</Text>
                     <View className="mt-3 gap-2">
                       {thirsty.slice(0, 8).map((p) => (
                         <Pressable key={p.id} onPress={() => setSelected(p.id)} className="flex-row items-center gap-3 rounded-2xl px-3 py-2.5" style={{ backgroundColor: '#FFFBEB' }}>
@@ -156,7 +164,7 @@ export default function GardenScreen() {
                             </Motion>
                           </View>
                           <Text className="min-w-0 flex-1 font-semi text-body" style={{ color: '#15803D' }}>
-                            Không cây nào sắp héo. Vườn đang rất tươi!
+                            {L('Không cây nào sắp héo. Vườn đang rất tươi!', 'No plants are wilting. Your garden is thriving!')}
                           </Text>
                         </View>
                       ) : null}
@@ -175,27 +183,31 @@ export default function GardenScreen() {
 
 function PlantPanel({ plant }: { plant: Plant }) {
   const ui = STATE_UI[plant.state];
+  const { L } = useL();
   const due = plant.nextDue ? new Date(plant.nextDue) : null;
   return (
     <View>
       <View className="flex-row items-center gap-2">
         <View className="h-3.5 w-3.5 rounded-pill" style={{ backgroundColor: ui.dot }} />
         <Text className="font-strong text-label uppercase tracking-[1.2px]" style={{ color: color.muted }}>
-          {ui.label}
+          {L(ui.label, ui.labelEn)}
         </Text>
       </View>
       <Text className="mt-2 font-heavy text-pageTitle text-ink">{plant.word}</Text>
       <Text className="mt-0.5 font-semi text-bodyLg text-ink">{plant.meaningVi}</Text>
-      <Text className="mt-2 font-sans text-body text-muted">{ui.note}</Text>
+      <Text className="mt-2 font-sans text-body text-muted">{L(ui.note, ui.noteEn)}</Text>
       <View className="mt-4 h-3 overflow-hidden rounded-pill" style={{ backgroundColor: '#F0EBE2' }}>
         <View className="h-3 rounded-pill" style={{ width: `${Math.round(plant.memory * 100)}%`, backgroundColor: ui.dot }} />
       </View>
       <Text className="mt-1.5 font-sans text-label text-muted">
-        Độ nhớ {Math.round(plant.memory * 100)}% · nhớ bền khoảng {Math.max(0, Math.round(plant.stability))} ngày
-        {due ? ` · ôn lần tới ${due.getDate()}/${due.getMonth() + 1}` : ''}
-        {plant.flower ? ' · đã nở hoa 🌸' : ''}
+        {L(
+          `Độ nhớ ${Math.round(plant.memory * 100)}% · nhớ bền khoảng ${Math.max(0, Math.round(plant.stability))} ngày`,
+          `Memory ${Math.round(plant.memory * 100)}% · stable for about ${Math.max(0, Math.round(plant.stability))} days`,
+        )}
+        {due ? L(` · ôn lần tới ${due.getDate()}/${due.getMonth() + 1}`, ` · next review ${due.getMonth() + 1}/${due.getDate()}`) : ''}
+        {plant.flower ? L(' · đã nở hoa 🌸', ' · in bloom 🌸') : ''}
       </Text>
-      <Button className="mt-4 self-start" label="Tưới (ôn ngay)" iconRight="arrow-right" onPress={() => router.push('/vocabulary/topic/so-tu/learn' as never)} />
+      <Button className="mt-4 self-start" label={L('Tưới (ôn ngay)', 'Water (review now)')} iconRight="arrow-right" onPress={() => router.push('/vocabulary/topic/so-tu/learn' as never)} />
     </View>
   );
 }

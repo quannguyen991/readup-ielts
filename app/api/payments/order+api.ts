@@ -2,6 +2,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { generateReference } from '@/lib/payment/reference';
 import { isCycle, isPaidPlan } from '@/services/payment/order';
 import { resolveOrderPrice } from '@/services/payment/resolvePrice';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/payments/order   { plan, cycle, group? }   → tạo hoặc lấy lại đơn đang chờ
@@ -35,7 +36,7 @@ async function identify(request: Request): Promise<Identity> {
   const header = request.headers.get('authorization') ?? '';
   const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
   if (!token) {
-    return { ok: false, error: Response.json({ error: 'Thiếu access token.' }, { status: 401 }) };
+    return { ok: false, error: Response.json({ error: msg(request, 'Thiếu access token.', 'Missing access token.') }, { status: 401 }) };
   }
 
   const admin = getSupabaseAdmin();
@@ -43,7 +44,7 @@ async function identify(request: Request): Promise<Identity> {
   if (error || !data.user) {
     return {
       ok: false,
-      error: Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 }),
+      error: Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 }),
     };
   }
   return { ok: true, admin, userId: data.user.id };
@@ -64,7 +65,7 @@ export async function GET(request: Request): Promise<Response> {
     if (error) return Response.json({ error: error.message }, { status: 500 });
     return Response.json({ orders: data ?? [] });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
@@ -78,10 +79,10 @@ export async function POST(request: Request): Promise<Response> {
     const cycle = body.cycle;
 
     if (!isPaidPlan(plan)) {
-      return Response.json({ error: `Gói "${plan}" không mua được.` }, { status: 400 });
+      return Response.json({ error: msg(request, `Gói "${plan}" không mua được.`, `The "${plan}" plan can't be purchased.`) }, { status: 400 });
     }
     if (!isCycle(cycle)) {
-      return Response.json({ error: "Chu kỳ chỉ nhận 'monthly' hoặc 'yearly'." }, { status: 400 });
+      return Response.json({ error: msg(request, "Chu kỳ chỉ nhận 'monthly' hoặc 'yearly'.", "Billing cycle must be 'monthly' or 'yearly'.") }, { status: 400 });
     }
 
     const since = new Date(Date.now() - REUSE_WINDOW_HOURS * 3600_000).toISOString();
@@ -103,11 +104,14 @@ export async function POST(request: Request): Promise<Response> {
     let order;
     try {
       const groupCode = typeof body.group === 'string' && body.group.trim() ? body.group : null;
-      order = await resolveOrderPrice(who.admin, who.userId, plan, cycle, groupCode);
+      order = await resolveOrderPrice(who.admin, who.userId, plan, cycle, groupCode, request);
     } catch (err) {
       // Lỗi do đầu vào của client, không phải lỗi máy chủ — trả 400 kèm lý do
       // thật để trang thanh toán hiện được, thay vì một 500 câm.
-      return Response.json({ error: message(err) }, { status: 400 });
+      return Response.json(
+        { error: errorText(request, err, 'Lỗi không xác định', "This order can't be created.") },
+        { status: 400 },
+      );
     }
 
     /*
@@ -147,14 +151,20 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     return Response.json(
-      { error: 'Không sinh được mã đối chiếu chưa trùng. Thử lại sau ít phút.' },
+      {
+        error: msg(
+          request,
+          'Không sinh được mã đối chiếu chưa trùng. Thử lại sau ít phút.',
+          "Couldn't generate a unique payment reference. Please try again in a few minutes.",
+        ),
+      },
       { status: 503 },
     );
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
-function message(err: unknown): string {
-  return err instanceof Error ? err.message : 'Lỗi không xác định';
+function message(request: Request, err: unknown): string {
+  return errorText(request, err, 'Lỗi không xác định', 'Unknown error');
 }

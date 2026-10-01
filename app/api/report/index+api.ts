@@ -3,6 +3,7 @@ import { displayableName } from '@/services/gamification/display-name';
 import { buildParentReport, type ReportInput } from '@/services/report/parent-report';
 import { verifyToken } from '@/services/report/link-server';
 import { weekId } from '@/services/weekly/challenge';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * GET /api/report?t=<userId>.<chữ ký> — báo cáo tuần cho phụ huynh, chỉ đọc.
@@ -16,7 +17,7 @@ export async function GET(request: Request): Promise<Response> {
   try {
     const t = new URL(request.url).searchParams.get('t') ?? '';
     const userId = verifyToken(t);
-    if (!userId) return Response.json({ error: 'Không tìm thấy báo cáo.' }, { status: 404 });
+    if (!userId) return Response.json({ error: msg(request, 'Không tìm thấy báo cáo.', 'Report not found.') }, { status: 404 });
 
     const admin = getSupabaseAdmin();
     const { data, error } = await admin
@@ -40,6 +41,6 @@ export async function GET(request: Request): Promise<Response> {
       report: buildParentReport(input as ReportInput, now, weekId(now)),
     });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Không đọc được báo cáo.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Không đọc được báo cáo.', 'Could not load the report.') }, { status: 500 });
   }
 }

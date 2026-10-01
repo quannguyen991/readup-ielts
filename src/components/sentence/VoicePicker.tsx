@@ -5,6 +5,7 @@ import * as Speech from 'expo-speech';
 import { Icon } from '@/components/ui';
 import { bestVoice } from '@/services/audio/voice-pick';
 import { paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Chọn giọng đọc cho phần nghe.
@@ -27,20 +28,21 @@ export type EnglishVoice = {
   language: string;
 };
 
-const REGION_LABEL: Record<string, string> = {
-  'en-GB': 'Anh – Anh',
-  'en-US': 'Anh – Mỹ',
-  'en-AU': 'Anh – Úc',
-  'en-IN': 'Anh – Ấn',
-  'en-IE': 'Anh – Ireland',
-  'en-ZA': 'Anh – Nam Phi',
-  'en-NZ': 'Anh – New Zealand',
-  'en-CA': 'Anh – Canada',
+const REGION_LABEL: Record<string, { vi: string; en: string }> = {
+  'en-GB': { vi: 'Anh – Anh', en: 'British English' },
+  'en-US': { vi: 'Anh – Mỹ', en: 'American English' },
+  'en-AU': { vi: 'Anh – Úc', en: 'Australian English' },
+  'en-IN': { vi: 'Anh – Ấn', en: 'Indian English' },
+  'en-IE': { vi: 'Anh – Ireland', en: 'Irish English' },
+  'en-ZA': { vi: 'Anh – Nam Phi', en: 'South African English' },
+  'en-NZ': { vi: 'Anh – New Zealand', en: 'New Zealand English' },
+  'en-CA': { vi: 'Anh – Canada', en: 'Canadian English' },
 };
 
-function regionOf(language: string): string {
+function regionOf(language: string, en: boolean): string {
   const normalized = language.replace('_', '-');
-  return REGION_LABEL[normalized] ?? normalized;
+  const r = REGION_LABEL[normalized];
+  return r ? (en ? r.en : r.vi) : normalized;
 }
 
 /**
@@ -135,6 +137,7 @@ export function VoicePicker({
   onPreview: (identifier: string | null) => void;
 }) {
   const [open, setOpen] = useState(false);
+  const { L, en } = useL();
 
   const current = useMemo(
     () => voices.find((v) => v.identifier === voiceId) ?? null,
@@ -147,14 +150,14 @@ export function VoicePicker({
     <>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Chọn giọng đọc"
+        accessibilityLabel={L('Chọn giọng đọc', 'Choose a voice')}
         onPress={() => setOpen(true)}
         className="max-w-full flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5"
       >
         <Icon name="volume" size={14} color={paper.body} strokeWidth={1.9} />
         {/* Tên giọng dài ("Microsoft Zira - English (United States)") co lại thành "…" thay vì đẩy tràn hàng. */}
         <Text className="shrink font-semi text-label text-paper-body" numberOfLines={1}>
-          {current ? current.name : 'Giọng mặc định'}
+          {current ? current.name : L('Giọng mặc định', 'Default voice')}
         </Text>
         <Icon name="chevron-down" size={13} color={paper.muted} />
       </Pressable>
@@ -162,7 +165,7 @@ export function VoicePicker({
       <Modal visible={open} transparent animationType="fade" onRequestClose={() => setOpen(false)}>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Đóng danh sách giọng"
+          accessibilityLabel={L('Đóng danh sách giọng', 'Close voice list')}
           onPress={() => setOpen(false)}
           style={{ flex: 1, backgroundColor: 'rgba(26,26,51,0.45)', justifyContent: 'center' }}
         >
@@ -174,14 +177,14 @@ export function VoicePicker({
             <View className="max-h-[70vh] overflow-hidden rounded-card bg-white">
               <View className="flex-row items-center justify-between border-b border-brand-soft px-5 py-3.5">
                 <View className="min-w-0 flex-1">
-                  <Text className="font-heavy text-cardTitle text-paper-ink">Giọng đọc</Text>
+                  <Text className="font-heavy text-cardTitle text-paper-ink">{L('Giọng đọc', 'Voice')}</Text>
                   <Text className="font-sans text-label text-paper-muted">
-                    {voices.length} giọng tiếng Anh có trên máy này
+                    {L(`${voices.length} giọng tiếng Anh có trên máy này`, `${voices.length} English voices on this device`)}
                   </Text>
                 </View>
                 <Pressable
                   accessibilityRole="button"
-                  accessibilityLabel="Đóng"
+                  accessibilityLabel={L('Đóng', 'Close')}
                   onPress={() => setOpen(false)}
                   className="h-8 w-8 items-center justify-center rounded-pill bg-brand-tint"
                 >
@@ -191,8 +194,8 @@ export function VoicePicker({
 
               <ScrollView contentContainerStyle={{ padding: 12, gap: 6 }}>
                 <VoiceRow
-                  label="Giọng mặc định của máy"
-                  sub="Dùng giọng hệ thống đang đặt sẵn"
+                  label={L('Giọng mặc định của máy', 'Device default voice')}
+                  sub={L('Dùng giọng hệ thống đang đặt sẵn', 'Uses the system voice currently set')}
                   selected={voiceId === null}
                   onPress={() => {
                     onChange(null);
@@ -203,7 +206,7 @@ export function VoicePicker({
                   <VoiceRow
                     key={voice.identifier}
                     label={voice.name}
-                    sub={regionOf(voice.language)}
+                    sub={regionOf(voice.language, en)}
                     selected={voice.identifier === voiceId}
                     onPress={() => {
                       onChange(voice.identifier);
@@ -215,7 +218,7 @@ export function VoicePicker({
 
               <View className="border-t border-brand-soft px-5 py-3">
                 <Text className="font-sans text-label text-paper-muted">
-                  Chạm vào một giọng để nghe thử ngay. Chọn xong thì đóng bảng lại.
+                  {L('Chạm vào một giọng để nghe thử ngay. Chọn xong thì đóng bảng lại.', 'Tap a voice to hear it right away. Close the panel when you’re done.')}
                 </Text>
               </View>
             </View>

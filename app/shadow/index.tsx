@@ -9,7 +9,8 @@ import { Appear } from '@/components/motion/Motion';
 import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
 import { SpeakButton } from '@/components/vocab/study/StudyKit';
-import { AUDIO_LEVELS, AUDIO_NGUON, filterAudio, formatLength, getLibraryAudio, LIBRARY_AUDIO, type LibraryAudio } from '@/data/audio-library';
+import { AUDIO_LEVELS, AUDIO_NGUON, estimateMinutes, filterAudio, formatLength, getLibraryAudio, LIBRARY_AUDIO, type LibraryAudio } from '@/data/audio-library';
+import { useL } from '@/i18n/useL';
 import { useShadowStore } from '@/store/useShadowStore';
 import { color } from '@/theme/tokens';
 
@@ -32,6 +33,7 @@ const LEVEL_TONE: Record<string, { bg: string; fg: string }> = {
  * người học thấy ngay âm nào mình nuốt mất.
  */
 export default function ShadowHub() {
+  const { L } = useL();
   const best = useShadowStore((s) => s.best);
   const missed = useShadowStore((s) => s.missed);
   const [level, setLevel] = useState('all');
@@ -65,19 +67,22 @@ export default function ShadowHub() {
       <Appear>
         <LightHero
           scene="verbal"
-          badge="ĐỌC THEO · SHADOWING" art="listening"
-          line1="Nghe một câu, nói lại,"
-          line2="máy tô từng từ bạn đọc rõ"
-          subtitle={`${LIBRARY_AUDIO.length} bài VOA có sẵn lời. Nghe giọng mẫu, bấm micro đọc lại: từ nào máy nghe rõ thì xanh, từ nào hụt thì đỏ — thấy ngay âm nào mình hay nuốt.`}
+          badge={L('ĐỌC THEO · SHADOWING', 'SHADOWING')} art="listening"
+          line1={L('Nghe một câu, nói lại,', 'Hear a sentence, say it back,')}
+          line2={L('máy tô từng từ bạn đọc rõ', 'see every word you said clearly')}
+          subtitle={L(
+            `${LIBRARY_AUDIO.length} bài VOA có sẵn lời. Nghe giọng mẫu, bấm micro đọc lại: từ nào máy nghe rõ thì xanh, từ nào hụt thì đỏ — thấy ngay âm nào mình hay nuốt.`,
+            `${LIBRARY_AUDIO.length} VOA lessons with transcripts. Hear the model, tap the mic and read it back: words heard clearly turn green, missed ones turn red — so you spot the sounds you tend to swallow.`,
+          )}
           footer={
             <>
-              <HeroStat value={String(LIBRARY_AUDIO.length)} label="bài để đọc theo" />
-              <HeroStat value={String(readTotal)} label="câu bạn đã đọc" />
+              <HeroStat value={String(LIBRARY_AUDIO.length)} label={L('bài để đọc theo', 'lessons to shadow')} />
+              <HeroStat value={String(readTotal)} label={L('câu bạn đã đọc', 'sentences read')} />
             </>
           }
         >
           <Button
-            label={started[0] ? 'Đọc tiếp bài dở' : 'Đọc thử một bài'}
+            label={started[0] ? L('Đọc tiếp bài dở', 'Continue your lesson') : L('Đọc thử một bài', 'Try a lesson')}
             variant="brand"
             size="lg"
             iconRight="arrow-right"
@@ -91,7 +96,7 @@ export default function ShadowHub() {
           {started.length ? (
             <Appear index={1} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>
               <View className="rounded-[22px] bg-white p-5" style={CARD}>
-                <Text className="font-heavy text-sectionTitle text-ink">Đang đọc dở</Text>
+                <Text className="font-heavy text-sectionTitle text-ink">{L('Đang đọc dở', 'In progress')}</Text>
                 <View className="mt-3 gap-2">
                   {started.map(({ meta, read, avg }) => (
                     <Pressable
@@ -108,7 +113,7 @@ export default function ShadowHub() {
                           {meta.title}
                         </Text>
                         <Text className="font-sans text-label text-muted">
-                          {read} câu đã đọc · trung bình {avg} điểm
+                          {L(`${read} câu đã đọc · trung bình ${avg} điểm`, `${read} sentences read · average ${avg} points`)}
                         </Text>
                       </View>
                       <Icon name="chevron-right" size={18} color="#94A3B8" />
@@ -121,8 +126,13 @@ export default function ShadowHub() {
           {hardWords.length ? (
             <Appear index={2} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 320 }}>
               <View className="rounded-[22px] bg-white p-5" style={CARD}>
-                <Text className="font-heavy text-sectionTitle text-ink">Từ bạn hay đọc hụt</Text>
-                <Text className="mt-1 font-sans text-body text-muted">Nghe lại từng từ, để ý âm cuối — lỗi hay gặp nhất của người Việt.</Text>
+                <Text className="font-heavy text-sectionTitle text-ink">{L('Từ bạn hay đọc hụt', 'Words you often miss')}</Text>
+                <Text className="mt-1 font-sans text-body text-muted">
+                  {L(
+                    'Nghe lại từng từ, để ý âm cuối — lỗi hay gặp nhất của người Việt.',
+                    'Listen to each word again and watch the final sounds — the most common slip for Vietnamese speakers.',
+                  )}
+                </Text>
                 <View className="mt-3 flex-row flex-wrap gap-2">
                   {hardWords.map(([w, n]) => (
                     <View key={w} className="flex-row items-center gap-1 rounded-pill py-1 pl-3 pr-1" style={{ backgroundColor: '#FFF1F2' }}>
@@ -148,7 +158,7 @@ export default function ShadowHub() {
               setSearch(t);
               setLimit(PAGE);
             }}
-            placeholder="Tìm theo tên bài hoặc chuyên mục…"
+            placeholder={L('Tìm theo tên bài hoặc chuyên mục…', 'Search by title or program…')}
             placeholderTextColor="#94A3B8"
             className="min-w-0 flex-1 font-sans text-body text-ink"
           />
@@ -167,7 +177,7 @@ export default function ShadowHub() {
                 style={{ backgroundColor: on ? color.primary : '#F9F6F1' }}
               >
                 <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
-                  {l === 'all' ? 'Mọi trình độ' : l}
+                  {l === 'all' ? L('Mọi trình độ', 'All levels') : l}
                 </Text>
               </Pressable>
             );
@@ -175,7 +185,7 @@ export default function ShadowHub() {
         </View>
       </View>
 
-      <Text className="mt-5 font-strong text-cardTitle text-ink">{items.length} bài</Text>
+      <Text className="mt-5 font-strong text-cardTitle text-ink">{L(`${items.length} bài`, `${items.length} lessons`)}</Text>
       <View className="mt-3">
         <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={14}>
           {items.slice(0, limit).map((a) => (
@@ -184,12 +194,15 @@ export default function ShadowHub() {
         </Grid>
       </View>
       {items.length > limit ? (
-        <Button className="mt-4 self-center" variant="outline" label={`Xem thêm ${Math.min(PAGE, items.length - limit)} bài`} onPress={() => setLimit((n) => n + PAGE)} />
+        <Button className="mt-4 self-center" variant="outline" label={L(`Xem thêm ${Math.min(PAGE, items.length - limit)} bài`, `Show ${Math.min(PAGE, items.length - limit)} more`)} onPress={() => setLimit((n) => n + PAGE)} />
       ) : null}
 
       <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
         <Text className="font-sans text-label text-muted" style={{ lineHeight: 19 }}>
-          Máy chấm dùng bộ nhận giọng có sẵn của trình duyệt (Chrome, Edge). Chrome gửi giọng tới dịch vụ nhận giọng của Google để đổi thành chữ; ReadUp chỉ nhận lại phần chữ, không ghi âm. Lời bài: {AUDIO_NGUON.ten} ({AUDIO_NGUON.trang}), {AUDIO_NGUON.giay_phep.toLowerCase()}.
+          {L(
+            `Máy chấm dùng bộ nhận giọng có sẵn của trình duyệt (Chrome, Edge). Chrome gửi giọng tới dịch vụ nhận giọng của Google để đổi thành chữ; ReadUp chỉ nhận lại phần chữ, không ghi âm. Lời bài: ${AUDIO_NGUON.ten} (${AUDIO_NGUON.trang}), ${AUDIO_NGUON.giay_phep.toLowerCase()}.`,
+            `Scoring uses your browser's built-in speech recognition (Chrome, Edge). Chrome sends your voice to Google's speech service to turn it into text; ReadUp only receives the text and records no audio. Transcripts: ${AUDIO_NGUON.ten} (${AUDIO_NGUON.trang}), public domain (a work of the U.S. federal government).`,
+          )}
         </Text>
       </View>
       <View className="h-8" />
@@ -198,6 +211,7 @@ export default function ShadowHub() {
 }
 
 function LessonCard({ item, read }: { item: LibraryAudio; read: number }) {
+  const { L, en } = useL();
   const tone = LEVEL_TONE[item.level] ?? { bg: '#F9F6F1', fg: '#475569' };
   return (
     <Pressable
@@ -220,16 +234,18 @@ function LessonCard({ item, read }: { item: LibraryAudio; read: number }) {
         {item.title}
       </Text>
       <View className="mt-auto flex-row items-center justify-between pt-3">
-        <Text className="font-sans text-label text-muted">{formatLength(item.words)}</Text>
+        <Text className="font-sans text-label text-muted">
+          {en ? `~${estimateMinutes(item.words)} min` : formatLength(item.words)}
+        </Text>
         {read ? (
           <Text className="font-semi text-label" style={{ color: '#16A34A' }}>
-            đã đọc {read} câu
+            {L(`đã đọc ${read} câu`, `${read} sentences read`)}
           </Text>
         ) : (
           <View className="flex-row items-center gap-1">
             <Icon name="mic" size={14} color={color.primary} />
             <Text className="font-semi text-label" style={{ color: color.primary }}>
-              Đọc theo
+              {L('Đọc theo', 'Shadow')}
             </Text>
           </View>
         )}

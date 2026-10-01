@@ -12,6 +12,7 @@ import {
   type WordStage,
 } from "@/services/vocab/topic-study";
 import { color } from "@/theme/tokens";
+import { useL } from "@/i18n/useL";
 
 /**
  * Thẻ ghi nhớ lật được, đặt ngay trên trang bộ từ.
@@ -41,6 +42,7 @@ export function Flashcards<W extends StudyWord>({
   /** Màu của bộ, cho nút Lật thẻ. */
   accent?: string;
 }) {
+  const { L } = useL();
   const [order, setOrder] = useState<"original" | "shuffled">("original");
   const [seed, setSeed] = useState(1);
   const list = useMemo(
@@ -88,7 +90,7 @@ export function Flashcards<W extends StudyWord>({
             cardKey={`${order}-${seed}-${index}`}
             flipped={flipped}
             onFlip={() => setFlipped((f) => !f)}
-            front={<WordFace word={word} hint="Bấm thẻ hoặc Space để lật" />}
+            front={<WordFace word={word} hint={L("Bấm thẻ hoặc Space để lật", "Tap the card or press Space to flip")} />}
             back={<DetailFace word={word} />}
           />
         </CrossFade>
@@ -106,13 +108,13 @@ export function Flashcards<W extends StudyWord>({
               <Pressable
                 key={r.label}
                 accessibilityRole="button"
-                accessibilityLabel={`${r.label} (phím ${i + 1})`}
+                accessibilityLabel={L(`${r.label} (phím ${i + 1})`, `${r.labelEn} (key ${i + 1})`)}
                 onPress={() => rate(r.stage)}
                 className="h-12 flex-1 items-center justify-center rounded-2xl"
                 style={{ backgroundColor: r.bg }}
               >
                 <Text className="font-heavy text-body" style={{ color: r.ink }}>
-                  {r.label}
+                  {L(r.label, r.labelEn)}
                 </Text>
               </Pressable>
             ))
@@ -124,7 +126,7 @@ export function Flashcards<W extends StudyWord>({
               style={{ backgroundColor: accent }}
             >
               <Icon name="refresh" size={17} color="#FFFFFF" />
-              <Text className="font-heavy text-body text-white">Lật thẻ</Text>
+              <Text className="font-heavy text-body text-white">{L("Lật thẻ", "Flip card")}</Text>
             </Pressable>
           )}
         </View>
@@ -136,7 +138,7 @@ export function Flashcards<W extends StudyWord>({
           <SpeakButton text={word.word} />
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={saved ? "Đã lưu vào sổ từ" : "Lưu vào sổ từ"}
+            accessibilityLabel={saved ? L("Đã lưu vào sổ từ", "Saved to notebook") : L("Lưu vào sổ từ", "Save to notebook")}
             onPress={() => !saved && onSave(word)}
             className="h-10 flex-row items-center gap-1.5 rounded-pill px-3"
             style={{ backgroundColor: saved ? "#ECFDF3" : "#F9F6F1" }}
@@ -150,7 +152,7 @@ export function Flashcards<W extends StudyWord>({
               className="font-semi text-label"
               style={{ color: saved ? "#16A34A" : "#475569" }}
             >
-              {saved ? "Đã lưu" : "Lưu"}
+              {saved ? L("Đã lưu", "Saved") : L("Lưu", "Save")}
             </Text>
           </Pressable>
         </View>
@@ -159,17 +161,17 @@ export function Flashcards<W extends StudyWord>({
           <NavBtn
             icon="chevron-left"
             onPress={() => go(-1)}
-            label="Thẻ trước"
+            label={L("Thẻ trước", "Previous card")}
           />
           <Text className="min-w-[72px] text-center font-semi text-body text-ink">
             {index + 1} / {list.length}
           </Text>
-          <NavBtn icon="chevron-right" onPress={() => go(1)} label="Thẻ sau" />
+          <NavBtn icon="chevron-right" onPress={() => go(1)} label={L("Thẻ sau", "Next card")} />
         </View>
 
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Trộn thẻ"
+          accessibilityLabel={L("Trộn thẻ", "Shuffle cards")}
           onPress={() => {
             setOrder((o) => (o === "original" ? "shuffled" : "original"));
             setSeed((s) => s + 1);
@@ -190,7 +192,7 @@ export function Flashcards<W extends StudyWord>({
             className="font-semi text-label"
             style={{ color: order === "shuffled" ? color.primary : "#475569" }}
           >
-            {order === "shuffled" ? "Đã trộn" : "Trộn"}
+            {order === "shuffled" ? L("Đã trộn", "Shuffled") : L("Trộn", "Shuffle")}
           </Text>
         </Pressable>
       </View>
@@ -198,16 +200,16 @@ export function Flashcards<W extends StudyWord>({
         className="mt-3 text-center font-sans text-label"
         style={{ color: "#78716C" }}
       >
-        {onRate ? "Space lật · 1 2 3 chấm · ← → chuyển thẻ" : "Space lật · ← → chuyển thẻ"}
+        {onRate ? L("Space lật · 1 2 3 chấm · ← → chuyển thẻ", "Space flip · 1 2 3 rate · ← → change card") : L("Space lật · ← → chuyển thẻ", "Space flip · ← → change card")}
       </Text>
     </View>
   );
 }
 
-const RATINGS: { label: string; stage: WordStage; bg: string; ink: string }[] = [
-  { label: "Quên", stage: 0, bg: "#FDE2DF", ink: "#B42318" },
-  { label: "Mơ hồ", stage: 1, bg: "#FDF0C8", ink: "#92400E" },
-  { label: "Nhớ rồi", stage: 2, bg: "#D9F2E3", ink: "#166534" },
+const RATINGS: { label: string; labelEn: string; stage: WordStage; bg: string; ink: string }[] = [
+  { label: "Quên", labelEn: "Forgot", stage: 0, bg: "#FDE2DF", ink: "#B42318" },
+  { label: "Mơ hồ", labelEn: "Fuzzy", stage: 1, bg: "#FDF0C8", ink: "#92400E" },
+  { label: "Nhớ rồi", labelEn: "Got it", stage: 2, bg: "#D9F2E3", ink: "#166534" },
 ];
 
 function NavBtn({

@@ -13,8 +13,17 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
 
 const LENGTH = 20;
+
+/** Nhãn dạng câu bằng tiếng Anh (bản tiếng Việt: `QUIZ_KIND_LABEL` trong services). */
+const KIND_EN: Record<QuizQuestion['kind'], string> = {
+  mcq: 'Multiple choice',
+  type: 'Type the word',
+  cloze: 'Fill the gap',
+  tf: 'True or false',
+};
 
 /**
  * Kiểm tra cả bộ: 20 câu TRỘN bốn dạng — trắc nghiệm, điền từ, điền vào câu,
@@ -26,6 +35,7 @@ const LENGTH = 20;
  */
 export default function TestScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
+  const { L, en } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -82,9 +92,9 @@ export default function TestScreen() {
 
   if (!topic || !q) {
     return (
-      <StudyFrame backHref="/vocabulary/quiz" title="Kiểm tra">
+      <StudyFrame backHref="/vocabulary/quiz" title={L('Kiểm tra', 'Test')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Không có bộ từ này.</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có bộ từ này.', 'Word set not found.')}</Text>
         </StudyCard>
       </StudyFrame>
     );
@@ -104,19 +114,19 @@ export default function TestScreen() {
       })
       .filter((r) => r.total > 0);
     return (
-      <StudyFrame backHref={backHref} title="Kết quả kiểm tra">
+      <StudyFrame backHref={backHref} title={L('Kết quả kiểm tra', 'Test results')}>
         <CrossFade swapKey={`result-${seed}`}>
           <StudyCard>
-            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{topic.nameVi}</Text>
+            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}</Text>
             <Text className="mt-2 font-heavy text-hero text-ink">
               {score}/{questions.length}
             </Text>
-            <Text className="font-sans text-bodyLg text-muted">{pct}% câu đúng</Text>
+            <Text className="font-sans text-bodyLg text-muted">{L(`${pct}% câu đúng`, `${pct}% correct`)}</Text>
             <View className="mt-4 flex-row flex-wrap gap-2">
               {byKind.map((r) => (
                 <View key={r.k} className="rounded-pill px-3 py-1.5" style={{ backgroundColor: r.ok === r.total ? '#ECFDF3' : '#F9F6F1' }}>
                   <Text className="font-semi text-label text-ink">
-                    {QUIZ_KIND_LABEL[r.k]}: {r.ok}/{r.total}
+                    {en ? KIND_EN[r.k] : QUIZ_KIND_LABEL[r.k]}: {r.ok}/{r.total}
                   </Text>
                 </View>
               ))}
@@ -127,12 +137,12 @@ export default function TestScreen() {
               )}
               {score === questions.length ? (
                 <Text className="font-semi text-bodyLg" style={{ color: GREEN }}>
-                  Không sai câu nào.
+                  {L('Không sai câu nào.', 'No mistakes at all.')}
                 </Text>
               ) : null}
             </View>
-            <PrimaryButton label="Làm bài khác" onPress={retry} />
-            <GhostButton label="Về bộ từ" onPress={() => router.replace(backHref as never)} />
+            <PrimaryButton label={L('Làm bài khác', 'New test')} onPress={retry} />
+            <GhostButton label={L('Về bộ từ', 'Back to word set')} onPress={() => router.replace(backHref as never)} />
           </StudyCard>
         </CrossFade>
       </StudyFrame>
@@ -141,7 +151,11 @@ export default function TestScreen() {
 
   const a = answers[index] ?? null;
   return (
-    <StudyFrame backHref={backHref} title="Kiểm tra" footer={`Đã trả lời ${answered} / ${questions.length}  •  ← → để chuyển câu`}>
+    <StudyFrame
+      backHref={backHref}
+      title={L('Kiểm tra', 'Test')}
+      footer={L(`Đã trả lời ${answered} / ${questions.length}  •  ← → để chuyển câu`, `Answered ${answered} / ${questions.length}  •  ← → to switch questions`)}
+    >
       <View className="mb-4 flex-row flex-wrap justify-center gap-1.5">
         {questions.map((_, i) => (
           <Pressable
@@ -159,16 +173,20 @@ export default function TestScreen() {
       <CrossFade swapKey={`t-${index}`}>
         <StudyCard>
           <View className="flex-row items-center gap-2">
-            <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Câu {index + 1}</Text>
+            <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">{L('Câu', 'Question')} {index + 1}</Text>
             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
-                {QUIZ_KIND_LABEL[q.kind]}
+                {en ? KIND_EN[q.kind] : QUIZ_KIND_LABEL[q.kind]}
               </Text>
             </View>
           </View>
           <QuestionBody q={q} a={a} onChoose={choose} onType={setAnswer} onEnter={goNext} />
           <PrimaryButton
-            label={answered < questions.length ? `Nộp bài (còn ${questions.length - answered} câu trống)` : 'Nộp bài'}
+            label={
+              answered < questions.length
+                ? L(`Nộp bài (còn ${questions.length - answered} câu trống)`, `Submit (${questions.length - answered} unanswered)`)
+                : L('Nộp bài', 'Submit')
+            }
             onPress={submit}
           />
         </StudyCard>
@@ -190,12 +208,15 @@ function QuestionBody({
   onType: (a: string) => void;
   onEnter: () => void;
 }) {
+  const { L } = useL();
   if (q.kind === 'type') {
     return (
       <View>
         <Text className="mt-2 font-heavy text-pageTitle text-ink">{q.word.meaningVi}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          {[q.word.pos, `${q.word.word.length} chữ cái`, `bắt đầu bằng “${q.word.word[0]}”`].filter(Boolean).join(' · ')}
+          {[q.word.pos, L(`${q.word.word.length} chữ cái`, `${q.word.word.length} letters`), L(`bắt đầu bằng “${q.word.word[0]}”`, `starts with “${q.word.word[0]}”`)]
+            .filter(Boolean)
+            .join(' · ')}
         </Text>
         <TextInput
           value={typeof a === 'string' ? a : ''}
@@ -203,7 +224,7 @@ function QuestionBody({
           autoFocus
           autoCapitalize="none"
           autoCorrect={false}
-          placeholder="Gõ từ tiếng Anh, Enter để sang câu sau…"
+          placeholder={L('Gõ từ tiếng Anh, Enter để sang câu sau…', 'Type the English word, Enter for the next one…')}
           placeholderTextColor="#94A3B8"
           onSubmitEditing={onEnter}
           className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
@@ -215,13 +236,13 @@ function QuestionBody({
   if (q.kind === 'tf') {
     return (
       <View>
-        <Text className="mt-2 font-sans text-body text-muted">Cặp từ – nghĩa này đúng hay sai?</Text>
+        <Text className="mt-2 font-sans text-body text-muted">{L('Cặp từ – nghĩa này đúng hay sai?', 'Is this word–meaning pair right or wrong?')}</Text>
         <View className="mt-4 items-center rounded-2xl px-5 py-6" style={{ backgroundColor: '#FCFBF8', borderWidth: 1, borderColor: '#F0EBE2' }}>
           <View className="flex-row items-center gap-2">
             <Text className="font-heavy text-pageTitle text-ink">{q.word.word}</Text>
             <SpeakButton text={q.word.word} />
           </View>
-          <Text className="mt-2 font-sans text-body text-muted">nghĩa là</Text>
+          <Text className="mt-2 font-sans text-body text-muted">{L('nghĩa là', 'means')}</Text>
           <Text className="mt-1 text-center font-heavy text-sectionTitle" style={{ color: color.primary }}>
             {q.shownMeaning}
           </Text>
@@ -238,7 +259,7 @@ function QuestionBody({
                 style={{ borderWidth: 1.5, borderColor: sel ? tone : '#F0EBE2', backgroundColor: sel ? (v ? '#ECFDF3' : '#FFF1F2') : '#FFFFFF' }}
               >
                 <Text className="font-strong text-bodyLg" style={{ color: sel ? tone : color.ink }}>
-                  {v ? 'Đúng' : 'Sai'}
+                  {v ? L('Đúng', 'True') : L('Sai', 'False')}
                 </Text>
                 <Text className="font-sans text-label text-muted">{i + 1}</Text>
               </Pressable>
@@ -253,7 +274,7 @@ function QuestionBody({
     <View>
       {q.kind === 'cloze' ? (
         <>
-          <Text className="mt-2 font-sans text-body text-muted">Chọn từ điền vào chỗ trống</Text>
+          <Text className="mt-2 font-sans text-body text-muted">{L('Chọn từ điền vào chỗ trống', 'Choose the word for the blank')}</Text>
           <Text className="mt-2 font-semi text-sectionTitle leading-9 text-ink">
             {q.before}
             <Text className="font-strong" style={{ color: '#94A3B8' }}>
@@ -264,7 +285,7 @@ function QuestionBody({
         </>
       ) : (
         <>
-          <Text className="mt-2 font-sans text-body text-muted">{q.enToVi ? 'Chọn nghĩa đúng' : 'Chọn từ tiếng Anh đúng'}</Text>
+          <Text className="mt-2 font-sans text-body text-muted">{q.enToVi ? L('Chọn nghĩa đúng', 'Choose the right meaning') : L('Chọn từ tiếng Anh đúng', 'Choose the right English word')}</Text>
           <Text className="mt-1 font-heavy text-pageTitle text-ink">{q.enToVi ? q.word.word : q.word.meaningVi}</Text>
         </>
       )}
@@ -294,9 +315,13 @@ function QuestionBody({
 
 /** Một câu sai trong bảng kết quả: từ, nghĩa, bạn đã trả lời gì, và vì sao sai (câu gõ). */
 function WrongRow({ q, a }: { q: QuizQuestion; a: QuizAnswer }) {
+  const { L, en } = useL();
   let yours: string;
-  if (!isAnswered(a)) yours = '(bỏ trống)';
-  else if (q.kind === 'tf') yours = `${a ? 'Đúng' : 'Sai'} — cặp “${q.word.word} = ${q.shownMeaning}” ${q.isTrue ? 'là đúng' : 'là sai'}`;
+  if (!isAnswered(a)) yours = L('(bỏ trống)', '(left blank)');
+  else if (q.kind === 'tf')
+    yours = en
+      ? `${a ? 'True' : 'False'} — the pair “${q.word.word} = ${q.shownMeaning}” ${q.isTrue ? 'is right' : 'is wrong'}`
+      : `${a ? 'Đúng' : 'Sai'} — cặp “${q.word.word} = ${q.shownMeaning}” ${q.isTrue ? 'là đúng' : 'là sai'}`;
   else if (q.kind === 'type') yours = String(a);
   else yours = q.options[a as number] ?? '';
   const why = q.kind === 'type' && typeof a === 'string' && isAnswered(a) ? diagnoseTyped(a, q.word.word) : null;
@@ -306,7 +331,7 @@ function WrongRow({ q, a }: { q: QuizQuestion; a: QuizAnswer }) {
         {q.word.word} <Text className="font-sans text-muted">· {q.word.meaningVi}</Text>
       </Text>
       <Text className="mt-0.5 font-sans text-label" style={{ color: RED }}>
-        {QUIZ_KIND_LABEL[q.kind]} · Bạn trả lời: {yours}
+        {en ? KIND_EN[q.kind] : QUIZ_KIND_LABEL[q.kind]} · {L('Bạn trả lời:', 'Your answer:')} {yours}
       </Text>
       {why ? (
         <Text className="mt-0.5 font-sans text-label" style={{ color: '#92400E' }}>

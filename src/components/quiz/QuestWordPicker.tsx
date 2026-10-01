@@ -11,6 +11,7 @@ import { createPortal } from 'react-dom';
 import { useQuestDecks, useWordPools } from './useWordPools';
 import type { QuestDeck, QuestSource } from '@/services/vocab/quest-words';
 import { useQuestVocabStore } from '@/store/useQuestVocabStore';
+import { useL } from '@/i18n/useL';
 
 type Theme = 'dark' | 'light';
 
@@ -22,6 +23,7 @@ const T = {
 export function QuestWordPicker({ theme = 'dark', compact = false }: { theme?: Theme; compact?: boolean }) {
   const [open, setOpen] = useState(false);
   const { label, due } = useWordPools();
+  const { L } = useL();
   const c = T[theme];
   return (
     <>
@@ -29,13 +31,13 @@ export function QuestWordPicker({ theme = 'dark', compact = false }: { theme?: T
         type="button"
         onClick={() => setOpen(true)}
         aria-haspopup="dialog"
-        aria-label={`Bộ từ đang học: ${label}. Bấm để đổi`}
+        aria-label={L(`Bộ từ đang học: ${label}. Bấm để đổi`, `Current word set: ${label}. Tap to change`)}
         style={{ display: 'inline-flex', alignItems: 'center', gap: 8, maxWidth: '100%', padding: compact ? '6px 10px' : '8px 14px', borderRadius: 999, border: `1px solid ${c.border}`, background: c.btnBg, color: c.btnInk, font: 'inherit', fontSize: compact ? 13 : 14, fontWeight: 600, cursor: 'pointer' }}
       >
         <span aria-hidden>📚</span>
         <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', minWidth: 0 }}>{label}</span>
         {due > 0 ? (
-          <span style={{ borderRadius: 999, padding: '1px 8px', background: '#E0533D', color: '#FFFFFF', fontSize: 12 }} title="Từ đến hạn ôn hôm nay">
+          <span style={{ borderRadius: 999, padding: '1px 8px', background: '#E0533D', color: '#FFFFFF', fontSize: 12 }} title={L('Từ đến hạn ôn hôm nay', 'Words due for review today')}>
             {due}
           </span>
         ) : null}
@@ -53,6 +55,7 @@ function Sheet({ theme, onClose }: { theme: Theme; onClose: () => void }) {
   const source = useQuestVocabStore((s) => s.source);
   const setSource = useQuestVocabStore((s) => s.setSource);
   const [q, setQ] = useState('');
+  const { L } = useL();
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -68,11 +71,11 @@ function Sheet({ theme, onClose }: { theme: Theme; onClose: () => void }) {
   const groups = useMemo(() => {
     const hit = (d: QuestDeck) => !needle || d.name.toLowerCase().includes(needle) || d.slug.includes(needle);
     return [
-      { title: 'Của bạn', items: decks.filter((d) => d.group === 'mine' && hit(d)) },
-      { title: 'Chủ đề IELTS', items: decks.filter((d) => d.group === 'ielts' && hit(d)) },
-      { title: 'Từ vựng SAT', items: decks.filter((d) => d.group === 'sat' && hit(d)) },
+      { title: L('Của bạn', 'Yours'), items: decks.filter((d) => d.group === 'mine' && hit(d)) },
+      { title: L('Chủ đề IELTS', 'IELTS topics'), items: decks.filter((d) => d.group === 'ielts' && hit(d)) },
+      { title: L('Từ vựng SAT', 'SAT vocabulary'), items: decks.filter((d) => d.group === 'sat' && hit(d)) },
     ].filter((g) => g.items.length > 0);
-  }, [decks, needle]);
+  }, [decks, needle, L]);
 
   const choose = (s: QuestSource) => {
     setSource(s);
@@ -84,16 +87,16 @@ function Sheet({ theme, onClose }: { theme: Theme; onClose: () => void }) {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Chọn bộ từ để học"
+        aria-label={L('Chọn bộ từ để học', 'Choose a word set to study')}
         onClick={(e) => e.stopPropagation()}
         style={{ width: 'min(520px, 100%)', maxHeight: 'min(640px, 90vh)', display: 'flex', flexDirection: 'column', borderRadius: 20, background: c.sheet, color: c.ink, border: `1px solid ${c.border}`, boxShadow: '0 24px 60px rgba(0,0,0,0.4)', overflow: 'hidden' }}
       >
         <div style={{ padding: '16px 18px 10px', display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 800, fontSize: 18 }}>Học bộ từ nào?</div>
-            <div style={{ fontSize: 13, color: c.muted }}>Trả lời ở đây được ghi vào lịch ôn của bộ đó.</div>
+            <div style={{ fontWeight: 800, fontSize: 18 }}>{L('Học bộ từ nào?', 'Which word set?')}</div>
+            <div style={{ fontSize: 13, color: c.muted }}>{L('Trả lời ở đây được ghi vào lịch ôn của bộ đó.', 'Answers here count toward that set’s review schedule.')}</div>
           </div>
-          <button type="button" onClick={onClose} aria-label="Đóng" style={{ border: 'none', background: 'transparent', color: c.ink, fontSize: 20, cursor: 'pointer' }}>
+          <button type="button" onClick={onClose} aria-label={L('Đóng', 'Close')} style={{ border: 'none', background: 'transparent', color: c.ink, fontSize: 20, cursor: 'pointer' }}>
             ✕
           </button>
         </div>
@@ -101,28 +104,30 @@ function Sheet({ theme, onClose }: { theme: Theme; onClose: () => void }) {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Tìm bộ từ…"
-            aria-label="Tìm bộ từ"
+            placeholder={L('Tìm bộ từ…', 'Search word sets…')}
+            aria-label={L('Tìm bộ từ', 'Search word sets')}
             style={{ width: '100%', boxSizing: 'border-box', padding: '10px 12px', borderRadius: 12, border: `1px solid ${c.border}`, background: c.row, color: c.ink, font: 'inherit', fontSize: 14 }}
           />
         </div>
         <div role="listbox" style={{ overflowY: 'auto', padding: '0 18px 18px', display: 'flex', flexDirection: 'column', gap: 6 }}>
           {!needle ? (
             <>
-              <GroupTitle c={c} text="Gợi ý" />
-              <Row c={c} onPick={choose} on={source === 'auto'} s="auto" icon="✨" title="Tự động" sub="Từ bạn đang học dở ở mọi bộ" />
-              <Row c={c} onPick={choose} on={source === 'due'} s="due" icon="⏰" title={`Ôn hôm nay${due ? ` · ${due} từ` : ''}`} sub={due ? 'Các từ đến hạn theo lịch ôn' : 'Hôm nay chưa có từ đến hạn'} />
+              <GroupTitle c={c} text={L('Gợi ý', 'Suggested')} />
+              <Row c={c} onPick={choose} on={source === 'auto'} s="auto" icon="✨" title={L('Tự động', 'Auto')} sub={L('Từ bạn đang học dở ở mọi bộ', 'Words you’re mid-way through in any set')} />
+              <Row c={c} onPick={choose} on={source === 'due'} s="due" icon="⏰" title={L(`Ôn hôm nay${due ? ` · ${due} từ` : ''}`, `Review today${due ? ` · ${due} words` : ''}`)}
+                sub={due ? L('Các từ đến hạn theo lịch ôn', 'Words due on your review schedule') : L('Hôm nay chưa có từ đến hạn', 'Nothing due today')}
+              />
             </>
           ) : null}
           {groups.map((g) => (
             <React.Fragment key={g.title}>
               <GroupTitle c={c} text={g.title} />
               {g.items.map((d) => (
-                <Row key={d.slug} c={c} onPick={choose} on={source === d.slug} s={d.slug} icon={d.group === 'mine' ? '📒' : d.group === 'sat' ? '🎯' : '🌏'} title={d.name} sub={`${d.words.length} từ`} />
+                <Row key={d.slug} c={c} onPick={choose} on={source === d.slug} s={d.slug} icon={d.group === 'mine' ? '📒' : d.group === 'sat' ? '🎯' : '🌏'} title={d.name} sub={L(`${d.words.length} từ`, `${d.words.length} words`)} />
               ))}
             </React.Fragment>
           ))}
-          {needle && groups.length === 0 ? <div style={{ color: c.muted, fontSize: 14, padding: 12 }}>Không có bộ nào khớp.</div> : null}
+          {needle && groups.length === 0 ? <div style={{ color: c.muted, fontSize: 14, padding: 12 }}>{L('Không có bộ nào khớp.', 'No matching sets.')}</div> : null}
         </div>
       </div>
     </div>

@@ -9,6 +9,7 @@ import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { satRwStats } from '@/data/sat-rw-repository';
 import { mixedSetStats } from '@/services/sat-rw/mixed-sets';
 import { stickerGradient } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Cửa vào SAT — chọn nửa Toán hay nửa Ngôn ngữ.
@@ -34,18 +35,19 @@ type Half = {
 export default function SatHubScreen() {
   const verbal = useMemo(() => satRwStats(), []);
   const mix = useMemo(() => mixedSetStats(), []);
+  const { L } = useL();
 
   const halves: Half[] = [
     {
       icon: 'grid',
       colors: stickerGradient.accent,
       title: 'SAT Math',
-      subtitle: 'Một nửa số điểm',
+      subtitle: L('Một nửa số điểm', 'Half your score'),
       lines: [
-        `${CURRICULUM_TOTALS.sets} bộ đề, đủ 19 kỹ năng Digital SAT`,
-        'Thi thử hai module có điều hướng độ khó',
+        L(`${CURRICULUM_TOTALS.sets} bộ đề, đủ 19 kỹ năng Digital SAT`, `${CURRICULUM_TOTALS.sets} sets covering all 19 Digital SAT skills`),
+        L('Thi thử hai module có điều hướng độ khó', 'Two-module adaptive mock tests'),
       ],
-      badge: `${CURRICULUM_TOTALS.questions.toLocaleString('vi-VN')} CÂU`,
+      badge: L(`${CURRICULUM_TOTALS.questions.toLocaleString('vi-VN')} CÂU`, `${CURRICULUM_TOTALS.questions.toLocaleString('en-US')} QUESTIONS`),
       href: '/math',
     },
     {
@@ -54,10 +56,10 @@ export default function SatHubScreen() {
       title: 'SAT Verbal',
       subtitle: 'Reading & Writing',
       lines: [
-        `${verbal.questions} câu, ${verbal.units} unit theo từng luật một`,
-        `${mix.sets} đề trộn bốn mảng, giống module thi thu nhỏ`,
+        L(`${verbal.questions} câu, ${verbal.units} unit theo từng luật một`, `${verbal.questions} questions in ${verbal.units} units, one rule at a time`),
+        L(`${mix.sets} đề trộn bốn mảng, giống module thi thu nhỏ`, `${mix.sets} mixed sets across all four domains, like a mini module`),
       ],
-      badge: `${verbal.questions} CÂU`,
+      badge: L(`${verbal.questions} CÂU`, `${verbal.questions} QUESTIONS`),
       href: '/sat-rw',
     },
   ];
@@ -67,7 +69,7 @@ export default function SatHubScreen() {
       <Text className="font-strong text-label uppercase tracking-[1.4px] text-ink" style={{ opacity: 0.55 }}>
         Digital SAT
       </Text>
-      <Text className="mt-1 font-heavy text-pageTitle text-ink">Chọn phần muốn luyện</Text>
+      <Text className="mt-1 font-heavy text-pageTitle text-ink">{L('Chọn phần muốn luyện', 'Choose a section to practise')}</Text>
 
       <View className="mt-5">
         <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={16}>
@@ -78,31 +80,31 @@ export default function SatHubScreen() {
       </View>
 
       <Card className="mt-5">
-        <Text className="font-strong text-cardTitle text-ink">Chưa biết bắt đầu từ đâu?</Text>
+        <Text className="font-strong text-cardTitle text-ink">{L('Chưa biết bắt đầu từ đâu?', 'Not sure where to start?')}</Text>
         <Text className="mt-1.5 font-sans text-body text-muted">
-          19 câu Math, xem bạn hổng kỹ năng nào.
+          {L('19 câu Math, xem bạn hổng kỹ năng nào.', '19 Math questions to find your skill gaps.')}
         </Text>
         <Pressable
           accessibilityRole="button"
           onPress={() => router.push('/math/diagnostic' as never)}
           className="mt-3 flex-row items-center gap-1.5 self-start rounded-panel bg-primary-600 px-4 py-2.5"
         >
-          <Text className="font-semi text-body text-white">Làm bài chẩn đoán</Text>
+          <Text className="font-semi text-body text-white">{L('Làm bài chẩn đoán', 'Take the diagnostic')}</Text>
           <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2} />
         </Pressable>
       </Card>
 
       <Card className="mt-4">
-        <Text className="font-strong text-cardTitle text-ink">Ôn từ vựng SAT theo chủ đề</Text>
+        <Text className="font-strong text-cardTitle text-ink">{L('Ôn từ vựng SAT theo chủ đề', 'Review SAT vocabulary by topic')}</Text>
         <Text className="mt-1.5 font-sans text-body text-muted">
-          23 chủ đề, ba mức Dễ → Vừa → Khó.
+          {L('23 chủ đề, ba mức Dễ → Vừa → Khó.', '23 topics, three levels: Easy → Medium → Hard.')}
         </Text>
         <Pressable
           accessibilityRole="button"
           onPress={() => router.push('/vocabulary/sat-quiz' as never)}
           className="mt-3 flex-row items-center gap-1.5 self-start rounded-panel bg-primary-600 px-4 py-2.5"
         >
-          <Text className="font-semi text-body text-white">Ôn từ vựng SAT</Text>
+          <Text className="font-semi text-body text-white">{L('Ôn từ vựng SAT', 'Review SAT vocabulary')}</Text>
           <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2} />
         </Pressable>
       </Card>

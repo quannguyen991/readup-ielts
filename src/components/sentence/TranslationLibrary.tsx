@@ -13,6 +13,10 @@ import {
   type TranslationSet,
 } from '@/data/translation-sets';
 import { useSentenceStore } from '@/store/useSentenceStore';
+import { useL } from '@/i18n/useL';
+
+/** Nhãn độ khó bằng tiếng Anh (bản tiếng Việt: `SENTENCE_DIFFICULTY_LABEL`). */
+const DIFFICULTY_EN: Record<string, string> = { easy: 'Easy', medium: 'Medium', hard: 'Hard' };
 
 /**
  * Thư viện bộ đề Dịch câu — cùng hình dáng với thư viện Chép chính tả.
@@ -24,6 +28,7 @@ import { useSentenceStore } from '@/store/useSentenceStore';
  */
 export function TranslationLibrary() {
   const [level, setLevel] = useState('all');
+  const { L, en } = useL();
 
   const stats = useMemo(() => translationSetStats(), []);
   const sets = useMemo(() => filterTranslationSets({ level }), [level]);
@@ -32,15 +37,15 @@ export function TranslationLibrary() {
     <View>
       <Card className="mb-5">
         <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
-          Trình độ
+          {L('Trình độ', 'Level')}
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View className="flex-row gap-1.5 py-0.5">
-            <Chip label="Tất cả" active={level === 'all'} onPress={() => setLevel('all')} />
+            <Chip label={L('Tất cả', 'All')} active={level === 'all'} onPress={() => setLevel('all')} />
             {TRANSLATION_SET_LEVELS.map((l) => (
               <Chip
                 key={l}
-                label={SENTENCE_DIFFICULTY_LABEL[l]}
+                label={en ? (DIFFICULTY_EN[l] ?? SENTENCE_DIFFICULTY_LABEL[l]) : SENTENCE_DIFFICULTY_LABEL[l]}
                 active={level === l}
                 onPress={() => setLevel(level === l ? 'all' : l)}
               />
@@ -50,7 +55,7 @@ export function TranslationLibrary() {
       </Card>
 
       <Text className="font-strong text-cardTitle text-ink">
-        {sets.length} bài · {stats.sentences} câu
+        {L(`${sets.length} bài · ${stats.sentences} câu`, `${sets.length} sets · ${stats.sentences} sentences`)}
       </Text>
 
       <View className="mt-3">
@@ -70,16 +75,17 @@ function SetCard({ set }: { set: TranslationSet }) {
     () => sessions.filter((s) => s.mode === 'translation' && s.setId === set.id).length,
     [sessions, set.id],
   );
+  const { L, en } = useL();
 
   return (
     <LessonCard
       number={set.order}
       level={set.level}
-      levelLabel={SENTENCE_DIFFICULTY_LABEL[set.level]}
+      levelLabel={en ? (DIFFICULTY_EN[set.level] ?? SENTENCE_DIFFICULTY_LABEL[set.level]) : SENTENCE_DIFFICULTY_LABEL[set.level]}
       icon="languages"
       title={set.title}
       blurb={set.blurb}
-      meta={[{ icon: 'list', label: `${set.items.length} câu` }]}
+      meta={[{ icon: 'list', label: L(`${set.items.length} câu`, `${set.items.length} sentences`) }]}
       done={doneCount}
       visual={(tone, active) => <BilingualLines pairs={set.items} tone={tone} active={active} />}
       onPress={() => router.push(`/sentence/translate?set=${set.id}` as never)}

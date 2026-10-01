@@ -4,7 +4,8 @@ import { Link } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { AssetImage, Card, Icon } from '@/components/ui';
-import { MORE_ITEMS } from '@/navigation/nav-items';
+import { MORE_ITEMS, navLabel } from '@/navigation/nav-items';
+import { useL } from '@/i18n/useL';
 import { assetKeys, useAssetUrl } from '@/services/assets/useAssets';
 import { color } from '@/theme/tokens';
 import type { IconName } from '@/components/ui/Icon';
@@ -14,6 +15,7 @@ import { Motion } from '@/components/illust/CuteMore';
 
 /** Tab "More" trên mobile: chứa các mục sidebar không nằm trong 5 tab chính. */
 export default function MoreScreen() {
+  const { L, locale } = useL();
   return (
     <Screen>
       <View className="flex-row items-center justify-between gap-3">
@@ -25,7 +27,7 @@ export default function MoreScreen() {
             <Text className="font-heavy text-pageTitle text-ink">More</Text>
             <View aria-hidden className="mt-1">
               <Motion kind="pop">
-                <Label text="Tiện ích khác ✨" color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
+                <Label text={L('Tiện ích khác ✨', 'More tools ✨')} color="#F2B632" ink="#2A1B02" tilt={-4} size={12} />
               </Motion>
             </View>
           </View>
@@ -46,7 +48,7 @@ export default function MoreScreen() {
                 .join(' ')}
             >
               <NavIcon navKey={item.key} fallback={item.icon} />
-              <Text className="flex-1 font-semi text-body text-ink">{item.label}</Text>
+              <Text className="flex-1 font-semi text-body text-ink">{navLabel(item, locale)}</Text>
               <Icon name="chevron-right" size={16} color={color.subtle} />
             </View>
           </Link>

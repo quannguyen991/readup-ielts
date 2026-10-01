@@ -11,6 +11,7 @@ import { offlineGloss } from '@/services/dictionary/offline-glossary';
 import { lookupable } from '@/services/dictionary/selection';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
+import { pick, currentLocale, useL } from '@/i18n/useL';
 
 /**
  * BÔI ĐEN LÀ TRA — ở mọi màn của app (chỉ trên web).
@@ -35,6 +36,7 @@ const CARD_W = 330;
 type Picked = { text: string; sentence: string; x: number; top: number; bottom: number };
 
 export function SelectionLookup() {
+  const { L } = useL();
   const pathname = usePathname();
   const blocked = isLookupBlocked(pathname);
   const [picked, setPicked] = useState<Picked | null>(null);
@@ -118,7 +120,7 @@ export function SelectionLookup() {
       ) : (
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel={`Tra “${picked.text}”`}
+          accessibilityLabel={L(`Tra “${picked.text}”`, `Look up “${picked.text}”`)}
           onPress={() => setOpen(true)}
           style={{
             position: 'fixed' as never,
@@ -147,7 +149,7 @@ export function SelectionLookup() {
             ) : null}
           </View>
           <Text className="font-strong" style={{ fontSize: 12, color: '#FBBF24' }}>
-            Tra
+            {L('Tra', 'Look up')}
           </Text>
         </Pressable>
       )}
@@ -172,6 +174,7 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
   const lemma = picked.text.includes(' ') ? picked.text.toLowerCase() : lemmatize(picked.text);
   const saved = useMemo(() => Object.values(entries).some((e) => e.lemma.toLowerCase() === lemma), [entries, lemma]);
   const scroll = useRef<ScrollView>(null);
+  const { L } = useL();
 
   const save = () => {
     if (!data || saved) return;
@@ -186,7 +189,7 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
       exampleSentence: data.examples[0] ?? null,
       sourceSentence: picked.sentence || data.examples[0] || picked.text,
       articleId: null,
-      articleTitle: 'Tra khi bôi đen',
+      articleTitle: pick(currentLocale(), 'Tra khi bôi đen', 'Highlight lookup'),
       paragraphIndex: null,
       isCollocation: picked.text.includes(' '),
     });
@@ -211,10 +214,10 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
         <Text className="font-heavy" numberOfLines={2} style={{ flex: 1, fontSize: 18, color: '#0F172A' }}>
           {picked.text}
         </Text>
-        <Pressable accessibilityRole="button" accessibilityLabel="Nghe phát âm" onPress={() => speak(picked.text, { rate: 0.85 })} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel={L('Nghe phát âm', 'Play pronunciation')} onPress={() => speak(picked.text, { rate: 0.85 })} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FCF8F1' }}>
           <Icon name="volume" size={16} color={color.primary} />
         </Pressable>
-        <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F9F6F1' }}>
+        <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} style={{ width: 32, height: 32, borderRadius: 999, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F9F6F1' }}>
           <Icon name="close" size={15} color="#475569" />
         </Pressable>
       </View>
@@ -228,20 +231,20 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, paddingVertical: 14 }}>
             <ActivityIndicator color={color.primary} />
             <Text className="font-sans" style={{ fontSize: 13, color: '#64748B' }}>
-              Đang tra…
+              {L('Đang tra…', 'Looking up…')}
             </Text>
           </View>
         ) : null}
         {isError ? (
           <Text className="font-sans" style={{ marginTop: 8, fontSize: 13, color: '#B91C1C' }}>
-            Không tra được. Kiểm tra mạng rồi thử lại.
+            {L('Không tra được. Kiểm tra mạng rồi thử lại.', "Couldn't look that up. Check your connection and try again.")}
           </Text>
         ) : null}
         {data ? (
           <View style={{ marginTop: 8, gap: 8 }}>
-            {data.definitionVi ? <Line label="Nghĩa" value={data.definitionVi} strong /> : null}
-            {data.definitionContext ? <Line label="Trong câu này" value={data.definitionContext} /> : null}
-            {data.examples[0] ? <Line label="Ví dụ" value={data.examples[0]} italic /> : null}
+            {data.definitionVi ? <Line label={L('Nghĩa', 'Meaning')} value={data.definitionVi} strong /> : null}
+            {data.definitionContext ? <Line label={L('Trong câu này', 'In this sentence')} value={data.definitionContext} /> : null}
+            {data.examples[0] ? <Line label={L('Ví dụ', 'Example')} value={data.examples[0]} italic /> : null}
           </View>
         ) : null}
         {data ? (
@@ -253,7 +256,7 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
           >
             <Icon name={saved ? 'check' : 'bookmark'} size={15} color={saved ? '#15803D' : '#FFFFFF'} strokeWidth={2.2} />
             <Text className="font-strong" style={{ fontSize: 13, color: saved ? '#15803D' : '#FFFFFF' }}>
-              {saved ? 'Đã có trong sổ từ' : 'Lưu vào sổ từ'}
+              {saved ? L('Đã có trong sổ từ', 'Already in your notebook') : L('Lưu vào sổ từ', 'Save to notebook')}
             </Text>
           </Pressable>
         ) : null}

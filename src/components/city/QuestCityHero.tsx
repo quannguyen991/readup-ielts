@@ -23,6 +23,7 @@ import { useCityStore } from '@/store/useCityStore';
 import { CityPreview } from './CityPreview';
 import { useCityName } from './ui/common';
 import { useHubSnapshot } from './useHubSnapshot';
+import { useL } from '@/i18n/useL';
 
 const GOLD = '#FACC15';
 const MUTED = 'rgba(255,255,255,0.72)';
@@ -32,15 +33,23 @@ const PREVIEW_H = 340;
 /** Đúng một việc nên làm tiếp — cùng thứ tự với bảng "Nhiệm vụ" trong thành phố. */
 type HeroCity = Pick<CityPayload, 'terrain' | 'sites' | 'priority' | 'inventory' | 'shiftBank' | 'era'>;
 
-function nextStep(s: HeroCity): string {
-  if (!s.terrain) return 'Chưa có đất — chọn vùng đất để khởi công.';
-  if (s.sites.length === 0) return 'Đất đang trống — đặt công trình đầu tiên, một cái Lều là đủ.';
+function nextStep(s: HeroCity, en: boolean): string {
+  if (!s.terrain) return en ? 'No land yet — choose a plot to break ground.' : 'Chưa có đất — chọn vùng đất để khởi công.';
+  if (s.sites.length === 0) return en ? 'Your land is empty — place your first building; a Tent is enough.' : 'Đất đang trống — đặt công trình đầu tiên, một cái Lều là đủ.';
   const open = s.sites.filter((x) => !isDone(x)).sort((a, b) => (a.id === s.priority ? -1 : b.id === s.priority ? 1 : a.createdAt.localeCompare(b.createdAt)));
   const site = open[0];
-  if (!site) return 'Mọi công trình đã xong — xây thêm, hoặc mở bảng Nhiệm vụ để lên kỷ.';
-  const name = catalogItem(site.type)?.vi ?? site.type;
+  if (!site) return en ? 'Every building is finished — build more, or open Tasks to reach the next era.' : 'Mọi công trình đã xong — xây thêm, hoặc mở bảng Nhiệm vụ để lên kỷ.';
+  const item = catalogItem(site.type);
+  const name = (en ? item?.en : item?.vi) ?? site.type;
   const b = blockers(site, s.inventory, s.shiftBank, new Date());
   const miss = MATERIAL_KINDS.find((k) => (b.materials[k] ?? 0) > 0);
+  if (en) {
+    if (b.needDelivery && miss) return `The ${name} needs ${b.materials[miss]} more ${MATERIAL_INFO[miss].en.toLowerCase()} — study to earn it.`;
+    if (b.needDelivery) return `Materials ready — go deliver them to the ${name}.`;
+    if (b.crew) return `The ${name} has no crew yet — go hire one.`;
+    if (b.curingMin > 0) return `The ${name} foundation is curing, ${b.curingMin} min left.`;
+    return `The ${name} is waiting for shifts — every ${ECONOMY.shift.answersPerShift} answers earn 1 shift.`;
+  }
   if (b.needDelivery && miss) return `${name} cần thêm ${b.materials[miss]} ${MATERIAL_INFO[miss].vi.toLowerCase()} — học để nhận.`;
   if (b.needDelivery) return `Đủ vật liệu rồi — vào giao cho ${name}.`;
   if (b.crew) return `${name} chưa có đội thợ — vào thuê đội.`;
@@ -52,6 +61,7 @@ export function QuestCityHero() {
   // Chỉ phần khối này hiện — học thêm một câu (bộ đếm ca, sổ ngày) không làm cả khối render lại.
   const s = useCityStore(useShallow((x) => ({ terrain: x.terrain, sites: x.sites, priority: x.priority, inventory: x.inventory, shiftBank: x.shiftBank, era: x.era })));
   const cityName = useCityName();
+  const { L, en } = useL();
   const era = (s.era || 1) as Era;
   const done = s.sites.filter((x) => isDone(x)).length;
   const building = s.sites.length - done;
@@ -65,7 +75,7 @@ export function QuestCityHero() {
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel="Vào Thành phố Tri thức"
+      accessibilityLabel={L('Vào Thành phố Tri thức', 'Enter the City of Knowledge')}
       onPress={() => router.push('/quest/city' as never)}
       style={({ hovered }: { hovered?: boolean }) => ({
         borderRadius: 22,
@@ -81,31 +91,37 @@ export function QuestCityHero() {
       <View style={{ flex: 1, padding: 28, justifyContent: 'center', minWidth: 320 }}>
         <View style={{ alignSelf: 'flex-start', borderRadius: 999, borderWidth: 1, borderColor: 'rgba(125,211,252,0.45)', backgroundColor: 'rgba(125,211,252,0.12)', paddingHorizontal: 12, paddingVertical: 5 }}>
           <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: '#BAE6FD' }}>
-            BAND 9 QUEST · THÀNH PHỐ TRI THỨC
+            {L('BAND 9 QUEST · THÀNH PHỐ TRI THỨC', 'BAND 9 QUEST · CITY OF KNOWLEDGE')}
           </Text>
         </View>
         <Text className="font-heavy" style={{ marginTop: 12, fontSize: 34, lineHeight: 40, color: '#FFFFFF' }}>
-          Mỗi câu đúng là <Text style={{ color: GOLD }}>một viên gạch.</Text>
+          {L('Mỗi câu đúng là ', 'Every right answer is ')}<Text style={{ color: GOLD }}>{L('một viên gạch.', 'a brick.')}</Text>
         </Text>
         <Text className="font-sans" style={{ marginTop: 8, fontSize: 14, lineHeight: 21, color: MUTED, maxWidth: 520 }}>
           {chosen
-            ? `${cityName} · Kỷ ${era} · ${ERA_INFO[era].vi}. Học ở bất kỳ đâu — kể cả trên điện thoại — vật liệu và ca làm việc đều về đây.`
-            : 'Chọn một vùng đất rồi xây từ túp lều tới tòa chọc trời. Gỗ, đá, gạch, thép, kính chỉ đến từ bài học thật.'}
+            ? L(
+                `${cityName} · Kỷ ${era} · ${ERA_INFO[era].vi}. Học ở bất kỳ đâu — kể cả trên điện thoại — vật liệu và ca làm việc đều về đây.`,
+                `${cityName} · Era ${era} · ${ERA_INFO[era].en}. Study anywhere — even on your phone — and your materials and shifts land here.`,
+              )
+            : L(
+                'Chọn một vùng đất rồi xây từ túp lều tới tòa chọc trời. Gỗ, đá, gạch, thép, kính chỉ đến từ bài học thật.',
+                'Pick a plot of land and build from a hut to a skyscraper. Wood, stone, brick, steel and glass come only from real lessons.',
+              )}
         </Text>
 
         {chosen ? (
           <View style={{ marginTop: 14, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
-            <Stat glyph="👥" value={pop.toLocaleString('vi-VN')} label="dân" />
-            <Stat glyph="🏠" value={String(done)} label="công trình xong" />
-            <Stat glyph="🏗️" value={String(building)} label="đang xây" />
-            <Stat glyph="👷" value={String(s.shiftBank)} label="ca đang chờ" />
+            <Stat glyph="👥" value={pop.toLocaleString(en ? 'en-US' : 'vi-VN')} label={L('dân', 'residents')} />
+            <Stat glyph="🏠" value={String(done)} label={L('công trình xong', 'buildings done')} />
+            <Stat glyph="🏗️" value={String(building)} label={L('đang xây', 'under construction')} />
+            <Stat glyph="👷" value={String(s.shiftBank)} label={L('ca đang chờ', 'shifts waiting')} />
           </View>
         ) : null}
 
         {chosen ? (
           <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
             {MATERIAL_KINDS.map((k) => (
-              <Text key={k} className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }} accessibilityLabel={`${MATERIAL_INFO[k].vi}: ${s.inventory[k]}`}>
+              <Text key={k} className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }} accessibilityLabel={`${en ? MATERIAL_INFO[k].en : MATERIAL_INFO[k].vi}: ${s.inventory[k]}`}>
                 {MATERIAL_INFO[k].glyph} {s.inventory[k]}
               </Text>
             ))}
@@ -114,10 +130,10 @@ export function QuestCityHero() {
 
         <View style={{ marginTop: 14, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.07)', maxWidth: 520 }}>
           <Text className="font-semi" style={{ fontSize: 12, letterSpacing: 0.6, color: MUTED }}>
-            VIỆC TIẾP THEO
+            {L('VIỆC TIẾP THEO', 'NEXT STEP')}
           </Text>
           <Text className="font-strong" style={{ marginTop: 2, fontSize: 14, lineHeight: 20, color: '#FFFFFF' }}>
-            {nextStep(s)}
+            {nextStep(s, en)}
           </Text>
         </View>
 
@@ -125,7 +141,7 @@ export function QuestCityHero() {
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 14, paddingHorizontal: 20, paddingVertical: 13, backgroundColor: GOLD }}>
             <Text style={{ fontSize: 15 }}>🏙️</Text>
             <Text className="font-heavy" style={{ fontSize: 15, color: '#2A1B02' }}>
-              {chosen ? 'Vào thành phố' : 'Chọn vùng đất'}
+              {chosen ? L('Vào thành phố', 'Enter the city') : L('Chọn vùng đất', 'Choose your land')}
             </Text>
           </View>
           <Pressable
@@ -145,7 +161,7 @@ export function QuestCityHero() {
             })}
           >
             <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
-              🏢 Xem thành phố mẫu
+              🏢 {L('Xem thành phố mẫu', 'See a sample city')}
             </Text>
           </Pressable>
           <Pressable
@@ -165,7 +181,7 @@ export function QuestCityHero() {
             })}
           >
             <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
-              🏗️ Trung tâm Tương lai
+              🏗️ {L('Trung tâm Tương lai', 'Future Hub')}
             </Text>
           </Pressable>
           <Pressable
@@ -185,7 +201,7 @@ export function QuestCityHero() {
             })}
           >
             <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }}>
-              📚 Học để lấy vật liệu
+              📚 {L('Học để lấy vật liệu', 'Study to earn materials')}
             </Text>
           </Pressable>
         </View>
@@ -200,7 +216,7 @@ export function QuestCityHero() {
           <View style={{ position: 'absolute', left: 14, top: 14, flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 6, backgroundColor: 'rgba(11,26,46,0.82)' }}>
             <Text style={{ fontSize: 13 }}>🏙️</Text>
             <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
-              Thành phố mẫu · Kỷ 5 — đích đến của bạn
+              {L('Thành phố mẫu · Kỷ 5 — đích đến của bạn', 'Sample city · Era 5 — where you are headed')}
             </Text>
           </View>
         ) : null}
@@ -220,10 +236,11 @@ function HubStrip() {
   const cur = p && p.current >= 0 ? p.towers[p.current] : undefined;
   const tower = cur ? HUB_TOWERS[p!.current] : undefined;
   const pct = p && p.floorsTotal ? Math.round((p.floorsBuilt / p.floorsTotal) * 100) : 0;
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel="Vào Trung tâm Tương lai"
+      accessibilityLabel={L('Vào Trung tâm Tương lai', 'Enter the Future Hub')}
       onPress={(e) => {
         e.stopPropagation?.();
         router.push('/quest/city?hub=1' as never);
@@ -241,7 +258,7 @@ function HubStrip() {
       })}
     >
       <Text className="font-semi" style={{ fontSize: 12, letterSpacing: 0.6, color: MUTED }}>
-        TRUNG TÂM TƯƠNG LAI · CẢ CỘNG ĐỒNG CÙNG XÂY
+        {L('TRUNG TÂM TƯƠNG LAI · CẢ CỘNG ĐỒNG CÙNG XÂY', 'FUTURE HUB · BUILT BY THE WHOLE COMMUNITY')}
       </Text>
       {p ? (
         <>
@@ -254,13 +271,16 @@ function HubStrip() {
           </View>
           <Text className="font-strong" style={{ marginTop: 6, fontSize: 14, lineHeight: 20, color: '#FFFFFF' }}>
             {tower && cur
-              ? `${tower.glyph} ${tower.vi} đang lên tầng ${cur.floorsBuilt + 1}/${cur.floors} · cả khu ${p.floorsBuilt}/${p.floorsTotal} tầng (${pct}%) · ${data!.people} người đã góp`
-              : `Cả năm tháp đã xong · ${data!.people} người đã góp`}
+              ? L(
+                  `${tower.glyph} ${tower.vi} đang lên tầng ${cur.floorsBuilt + 1}/${cur.floors} · cả khu ${p.floorsBuilt}/${p.floorsTotal} tầng (${pct}%) · ${data!.people} người đã góp`,
+                  `${tower.glyph} ${tower.en} is rising to floor ${cur.floorsBuilt + 1}/${cur.floors} · ${p.floorsBuilt}/${p.floorsTotal} floors overall (${pct}%) · ${data!.people} contributors`,
+                )
+              : L(`Cả năm tháp đã xong · ${data!.people} người đã góp`, `All five towers are finished · ${data!.people} contributors`)}
           </Text>
         </>
       ) : (
         <Text className="font-strong" style={{ marginTop: 4, fontSize: 14, color: '#FFFFFF' }}>
-          Năm tòa cao ốc chung — góp vật liệu để cả cộng đồng cùng lên tầng →
+          {L('Năm tòa cao ốc chung — góp vật liệu để cả cộng đồng cùng lên tầng →', 'Five shared towers — donate materials and the whole community climbs together →')}
         </Text>
       )}
     </Pressable>

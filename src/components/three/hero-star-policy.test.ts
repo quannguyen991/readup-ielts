@@ -27,9 +27,10 @@ test('cửa sổ máy tính kéo quá hẹp: không nhồi ngôi sao cạnh ch�
   assert.equal(isLaptopLike({ width: 820, finePointer: true, userAgent: WIN, touchPoints: 0 }), false);
 });
 
-test('logo Band 9 3D: có trên máy tính bảng và máy tính, không có trên điện thoại', () => {
+test('logo Band 9 3D: chỉ khi màn đủ rộng; máy tính bảng dựng đứng và điện thoại bỏ cho chữ khỏi xuống dòng', () => {
   assert.equal(showsHeroLogo({ width: 1366 }), true);
-  assert.equal(showsHeroLogo({ width: 1024 }), true);
-  assert.equal(showsHeroLogo({ width: 768 }), true);
+  assert.equal(showsHeroLogo({ width: 1200 }), true);
+  assert.equal(showsHeroLogo({ width: 1024 }), false);
+  assert.equal(showsHeroLogo({ width: 768 }), false);
   assert.equal(showsHeroLogo({ width: 390 }), false);
 });

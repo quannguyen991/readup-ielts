@@ -14,6 +14,7 @@ import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 import { DeckActionCard, DeckCard } from './DeckCard';
 import { deckLook, type DeckLook, type DeckSource } from './deck-style';
@@ -36,39 +37,42 @@ type LibDeck = {
   words: readonly { word: string }[];
   look: DeckLook;
   haystack: string;
+  /** Tên hiển thị khi giao diện tiếng Anh (bộ người dùng tự đặt tên và bài SAT thì giữ nguyên). */
+  en?: { title: string; subtitle?: string };
 };
 
-const FILTERS: { key: LibraryFilter; label: string; icon: IconName }[] = [
-  { key: 'all', label: 'Tất cả', icon: 'grid' },
-  { key: 'learning', label: 'Đang học', icon: 'flame' },
-  { key: 'mine', label: 'Của bạn', icon: 'bookmark' },
-  { key: 'ielts', label: 'Chủ đề IELTS', icon: 'book' },
-  { key: 'satMath', label: 'SAT Math', icon: 'grid' },
-  { key: 'satVerbal', label: 'SAT Verbal', icon: 'letters' },
+const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconName }[] = [
+  { key: 'all', label: 'Tất cả', labelEn: 'All', icon: 'grid' },
+  { key: 'learning', label: 'Đang học', labelEn: 'In progress', icon: 'flame' },
+  { key: 'mine', label: 'Của bạn', labelEn: 'Yours', icon: 'bookmark' },
+  { key: 'ielts', label: 'Chủ đề IELTS', labelEn: 'IELTS topics', icon: 'book' },
+  { key: 'satMath', label: 'SAT Math', labelEn: 'SAT Math', icon: 'grid' },
+  { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
 ];
 
-const SECTION: Record<DeckSource, { title: string; subtitle: string; icon: IconName }> = {
-  mine: { title: 'Của bạn', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', icon: 'bookmark' },
-  ielts: { title: 'Chủ đề IELTS', subtitle: 'Mỗi bộ xếp từ dễ tới khó theo band', icon: 'book' },
-  satMath: { title: 'Từ vựng SAT Math', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', icon: 'grid' },
-  satVerbal: { title: 'Từ vựng SAT Verbal', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', icon: 'letters' },
+const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
+  mine: { title: 'Của bạn', titleEn: 'Yours', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', subtitleEn: 'Words you saved while reading, plus decks you made', icon: 'bookmark' },
+  ielts: { title: 'Chủ đề IELTS', titleEn: 'IELTS topics', subtitle: 'Mỗi bộ xếp từ dễ tới khó theo band', subtitleEn: 'Each deck goes from easy to hard by band', icon: 'book' },
+  satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
+  satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
 };
 
 const WEB = Platform.OS === 'web';
 const LEARNING_PREVIEW = 6;
 
-function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string): LibDeck {
+function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string, en?: LibDeck['en']): LibDeck {
   const look = deckLook(slug);
-  return { slug, title, subtitle, words, look, haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel}`) };
+  return { slug, title, subtitle, words, look, en, haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
 }
 
 const STATIC_DECKS: LibDeck[] = [
-  ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name)),
+  ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
   ...SAT_MATH_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
   ...SAT_VERBAL_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
 ];
 
 export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: LibraryFilter }) {
+  const { L, en } = useL();
   const entries = useVocabStore((s) => s.entries);
   const customMap = useCustomDeckStore((s) => s.decks);
   const stages = useTopicStudyStore((s) => s.stages);
@@ -85,7 +89,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
       .filter((d) => d.words.length >= 4)
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
       .map((d) => lib(`${CUSTOM_PREFIX}${d.id}`, d.name, d.words, d.words.slice(0, 3).map((w) => w.word).join(', ')));
-    const mine = [...(notebookReady ? [lib(NOTEBOOK_SLUG, 'Sổ từ của bạn', notebook.words, 'từ bạn lưu khi đọc')] : []), ...custom];
+    const mine = [...(notebookReady ? [lib(NOTEBOOK_SLUG, 'Sổ từ của bạn', notebook.words, 'từ bạn lưu khi đọc', { title: 'Your notebook', subtitle: 'words you saved while reading' })] : []), ...custom];
     return [...mine, ...STATIC_DECKS];
   }, [customMap, notebook, notebookReady]);
 
@@ -105,17 +109,17 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const open = (slug: string) => router.push(`/vocabulary/topic/${slug}` as never);
   const card = (d: LibDeck, i: number) => (
     <Appear key={d.slug} index={Math.min(i, 8)} style={{ height: '100%' }}>
-      <DeckCard title={d.title} subtitle={d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={d.look.sourceLabel} now={now} onPress={() => open(d.slug)} />
+      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} now={now} onPress={() => open(d.slug)} />
     </Appear>
   );
   const createCard = (
     <Appear key="create" index={2} style={{ height: '100%' }}>
-      <DeckActionCard title="Tạo bộ từ bài bạn thích" detail="Dán một đoạn tiếng Anh bất kỳ, app lọc ra từ đáng học thành bộ riêng." icon="plus" onPress={() => router.push('/vocabulary/import' as never)} />
+      <DeckActionCard title={L('Tạo bộ từ bài bạn thích', 'Make a deck from any text')} detail={L('Dán một đoạn tiếng Anh bất kỳ, app lọc ra từ đáng học thành bộ riêng.', 'Paste any English passage and the app picks out the words worth learning.')} icon="plus" onPress={() => router.push('/vocabulary/import' as never)} />
     </Appear>
   );
   const notebookHint = notebookReady ? null : (
     <Appear key="notebook-hint" index={1} style={{ height: '100%' }}>
-      <DeckActionCard title="Sổ từ của bạn" detail={`Mới có ${notebook.words.length} từ. Chạm vào từ khi đọc bài để lưu, đủ 4 từ là học được.`} icon="bookmark" onPress={() => router.push('/library' as never)} />
+      <DeckActionCard title={L('Sổ từ của bạn', 'Your notebook')} detail={L(`Mới có ${notebook.words.length} từ. Chạm vào từ khi đọc bài để lưu, đủ 4 từ là học được.`, `Only ${notebook.words.length} words so far. Tap words while reading to save them — 4 words and you can start studying.`)} icon="bookmark" onPress={() => router.push('/library' as never)} />
     </Appear>
   );
 
@@ -137,14 +141,14 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
           <TextInput
             value={query}
             onChangeText={setQuery}
-            placeholder="Tìm bộ từ theo tên… (gõ không dấu cũng được)"
+            placeholder={L('Tìm bộ từ theo tên… (gõ không dấu cũng được)', 'Search decks by name…')}
             placeholderTextColor="#94A3B8"
-            accessibilityLabel="Tìm bộ từ"
+            accessibilityLabel={L('Tìm bộ từ', 'Search decks')}
             className="min-w-0 flex-1 font-sans text-body text-ink"
             style={WEB ? ({ outlineStyle: 'none' } as object) : undefined}
           />
           {query ? (
-            <Pressable accessibilityRole="button" accessibilityLabel="Xoá tìm kiếm" onPress={() => setQuery('')} className="h-7 w-7 items-center justify-center rounded-pill bg-surfaceAlt">
+            <Pressable accessibilityRole="button" accessibilityLabel={L('Xoá tìm kiếm', 'Clear search')} onPress={() => setQuery('')} className="h-7 w-7 items-center justify-center rounded-pill bg-surfaceAlt">
               <Icon name="close" size={14} color="#64748B" strokeWidth={2.4} />
             </Pressable>
           ) : null}
@@ -175,7 +179,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
             >
               <Icon name={f.icon} size={14} color={on ? '#FFFFFF' : '#64748B'} strokeWidth={2} />
               <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
-                {f.label}
+                {L(f.label, f.labelEn)}
               </Text>
               <Text className="font-sans text-label" style={{ color: on ? 'rgba(255,255,255,0.8)' : '#94A3B8' }}>
                 {n}
@@ -189,7 +193,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
         <View>
           {needle ? (
             <View className="mt-5">
-              <SectionHeader title="Kết quả tìm" subtitle={results.length ? `${results.length} bộ khớp “${query.trim()}”` : 'Không có bộ nào khớp'} icon="search" />
+              <SectionHeader title={L('Kết quả tìm', 'Search results')} subtitle={results.length ? L(`${results.length} bộ khớp “${query.trim()}”`, `${results.length} decks match “${query.trim()}”`) : L('Không có bộ nào khớp', 'No matching decks')} icon="search" />
               {results.length ? grid(results.map(card)) : null}
             </View>
           ) : filter === 'all' ? (
@@ -198,12 +202,12 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                 <View className="mt-5">
                   <View className="flex-row flex-wrap items-center justify-between gap-2">
                     <View className="min-w-0 flex-1">
-                      <SectionHeader title="Bộ từ đang học" subtitle="Học gần nhất đứng đầu" icon="flame" iconTone="warning" />
+                      <SectionHeader title={L('Bộ từ đang học', 'Decks in progress')} subtitle={L('Học gần nhất đứng đầu', 'Most recent first')} icon="flame" iconTone="warning" />
                     </View>
                     {learning.length > LEARNING_PREVIEW ? (
                       <Pressable accessibilityRole="button" onPress={() => setFilter('learning')}>
                         <Text className="font-strong text-label" style={{ color: color.primary }}>
-                          Xem cả {learning.length} bộ →
+                          {L(`Xem cả ${learning.length} bộ →`, `See all ${learning.length} decks →`)}
                         </Text>
                       </Pressable>
                     ) : null}
@@ -213,19 +217,19 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
               ) : null}
               {(['mine', 'ielts', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
-                  <SectionHeader title={SECTION[s].title} subtitle={SECTION[s].subtitle} icon={SECTION[s].icon} />
+                  <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
                   {grid(s === 'mine' ? [...bySource('mine').map(card), notebookHint, createCard].filter(Boolean) : bySource(s).map(card))}
                 </View>
               ))}
             </>
           ) : filter === 'learning' ? (
             <View className="mt-5">
-              <SectionHeader title="Bộ từ đang học" subtitle="Học gần nhất đứng đầu" icon="flame" iconTone="warning" />
+              <SectionHeader title={L('Bộ từ đang học', 'Decks in progress')} subtitle={L('Học gần nhất đứng đầu', 'Most recent first')} icon="flame" iconTone="warning" />
               {grid(learning.map(card))}
             </View>
           ) : (
             <View className="mt-5">
-              <SectionHeader title={SECTION[filter].title} subtitle={SECTION[filter].subtitle} icon={SECTION[filter].icon} />
+              <SectionHeader title={L(SECTION[filter].title, SECTION[filter].titleEn)} subtitle={L(SECTION[filter].subtitle, SECTION[filter].subtitleEn)} icon={SECTION[filter].icon} />
               {grid(filter === 'mine' ? [...bySource('mine').map(card), notebookHint, createCard].filter(Boolean) : bySource(filter).map(card))}
             </View>
           )}

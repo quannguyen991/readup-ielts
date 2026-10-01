@@ -10,6 +10,7 @@ import { gradeBrainstorm, gradeOverview, gradeParaphrase } from '@/services/writ
 import { useWritingStore } from '@/store/useWritingStore';
 import { color, layout } from '@/theme/tokens';
 import type { DrillPart, WritingPrompt } from '@/lib/writing/types';
+import { useL } from '@/i18n/useL';
 
 /**
  * Luyện từng phần một.
@@ -26,8 +27,11 @@ import type { DrillPart, WritingPrompt } from '@/lib/writing/types';
 type PartSpec = {
   key: DrillPart;
   label: string;
+  labelEn: string;
   brief: string;
+  briefEn: string;
   placeholder: string;
+  placeholderEn: string;
   /** Chấm được ngay trên máy hay phải chờ AI. */
   offline: boolean;
   /** Chỉ hiện với đúng loại task này; bỏ trống nghĩa là hiện với cả hai. */
@@ -38,44 +42,62 @@ const PARTS: PartSpec[] = [
   {
     key: 'brainstorm',
     label: 'Brainstorm',
+    labelEn: 'Brainstorm',
     brief: 'Liệt kê các ý bạn nhìn ra từ biểu đồ. Viết tiếng Việt cũng được — đây là bước để nghĩ, chưa phải để diễn đạt.',
+    briefEn: "List the points you notice in the chart. Notes in any language are fine — this step is for thinking, not wording.",
     placeholder: '- Country A tăng mạnh\n- Country B giảm đều\n- hai đường cắt nhau quanh 2010',
+    placeholderEn: '- Country A rises sharply\n- Country B falls steadily\n- the lines cross around 2010',
     offline: true,
   },
   {
     key: 'introduction',
     label: 'Introduction',
+    labelEn: 'Introduction',
     brief: 'Viết đúng MỘT câu paraphrase đề bài. Không có số liệu.',
+    briefEn: 'Write exactly ONE sentence paraphrasing the prompt. No figures.',
     placeholder: 'The line graph compares…',
+    placeholderEn: 'The line graph compares…',
     offline: true,
   },
   {
     key: 'overview',
     label: 'Overview',
+    labelEn: 'Overview',
     brief: 'Viết 2 câu nêu xu hướng lớn. Tuyệt đối không có con số.',
+    briefEn: 'Write 2 sentences on the main trends. No numbers at all.',
     placeholder: 'Overall, …',
+    placeholderEn: 'Overall, …',
     offline: true,
     onlyTask: 'ielts_task1',
   },
   {
     key: 'outline',
     label: 'Dàn ý',
+    labelEn: 'Outline',
     brief: 'Ghi khung bốn đoạn: mở bài, overview, thân bài 1, thân bài 2.',
+    briefEn: 'Sketch the four paragraphs: introduction, overview, body 1, body 2.',
     placeholder: '1. Mở bài: …\n2. Overview: …\n3. Thân bài 1: …\n4. Thân bài 2: …',
+    placeholderEn: '1. Introduction: …\n2. Overview: …\n3. Body 1: …\n4. Body 2: …',
     offline: false,
   },
   {
     key: 'body',
     label: 'Thân bài',
+    labelEn: 'Body paragraph',
     brief: 'Viết một đoạn thân bài có số liệu và có so sánh.',
+    briefEn: 'Write one body paragraph with figures and comparisons.',
     placeholder: 'In 2000, …',
+    placeholderEn: 'In 2000, …',
     offline: false,
   },
   {
     key: 'conclusion',
     label: 'Kết luận',
+    labelEn: 'Conclusion',
     brief: 'Viết đoạn kết luận. Chỉ Task 2 mới có — Task 1 không viết kết luận.',
+    briefEn: "Write the conclusion. Only Task 2 has one — Task 1 doesn't need a conclusion.",
     placeholder: 'In conclusion, …',
+    placeholderEn: 'In conclusion, …',
     offline: false,
     onlyTask: 'ielts_task2',
   },
@@ -87,6 +109,7 @@ export default function WritingDrillScreen() {
 
   const saveDraft = useWritingStore((s) => s.saveDraft);
   const getDraft = useWritingStore((s) => s.getDraft);
+  const { L, en } = useL();
 
   const parts = useMemo(
     () => PARTS.filter((p) => !p.onlyTask || p.onlyTask === prompt?.task),
@@ -101,9 +124,9 @@ export default function WritingDrillScreen() {
   if (!prompt || !spec) {
     return (
       <View className="flex-1 items-center justify-center bg-canvas p-6">
-        <Text className="font-heavy text-cardTitle text-ink">Không tìm thấy đề này</Text>
+        <Text className="font-heavy text-cardTitle text-ink">{L('Không tìm thấy đề này', "Couldn't find this prompt")}</Text>
         <View className="mt-4">
-          <Button label="Về kho đề" onPress={() => router.replace('/write/tests')} />
+          <Button label={L('Về kho đề', 'Back to prompts')} onPress={() => router.replace('/write/tests')} />
         </View>
       </View>
     );
@@ -129,10 +152,10 @@ export default function WritingDrillScreen() {
       >
         <Pressable onPress={() => router.push('/write/tests')} className="mb-3 flex-row items-center gap-1">
           <Icon name="chevron-left" size={18} color={color.muted} />
-          <Text className="font-semi text-body text-muted">Kho đề</Text>
+          <Text className="font-semi text-body text-muted">{L('Kho đề', 'Prompts')}</Text>
         </Pressable>
 
-        <Text className="font-heavy text-pageTitle text-ink">Luyện từng phần</Text>
+        <Text className="font-heavy text-pageTitle text-ink">{L('Luyện từng phần', 'Practise part by part')}</Text>
         <Text className="mt-1 font-sans text-bodyLg text-muted">{prompt.promptText}</Text>
 
         <View className="mt-4 flex-row flex-wrap gap-2">
@@ -150,7 +173,7 @@ export default function WritingDrillScreen() {
               <Text
                 className={['font-semi text-label', part === p.key ? 'text-white' : 'text-body'].join(' ')}
               >
-                {p.label}
+                {en ? p.labelEn : p.label}
               </Text>
               {p.offline ? (
                 <View className={part === p.key ? 'opacity-80' : ''}>
@@ -161,7 +184,7 @@ export default function WritingDrillScreen() {
           ))}
         </View>
         <Text className="mt-2 font-sans text-label text-subtle">
-          Phần có dấu ✓ chấm được ngay trên máy, lặp lại bao nhiêu lần cũng được.
+          {L('Phần có dấu ✓ chấm được ngay trên máy, lặp lại bao nhiêu lần cũng được.', 'Parts marked ✓ are graded on your device — repeat them as often as you like.')}
         </Text>
 
         <View className="mt-4 flex-col gap-4 lg:flex-row">
@@ -172,20 +195,20 @@ export default function WritingDrillScreen() {
           <View className="lg:flex-1">
             <Card>
               <View className="flex-row items-center gap-2">
-                <Text className="font-heavy text-cardTitle text-ink">{spec.label}</Text>
+                <Text className="font-heavy text-cardTitle text-ink">{en ? spec.labelEn : spec.label}</Text>
                 <Badge
                   tone={spec.offline ? 'success' : 'neutral'}
-                  label={spec.offline ? 'Chấm ngay' : 'Cần AI'}
+                  label={spec.offline ? L('Chấm ngay', 'Instant grading') : L('Cần AI', 'Needs AI')}
                 />
               </View>
-              <Text className="mt-1 font-sans text-body text-muted">{spec.brief}</Text>
+              <Text className="mt-1 font-sans text-body text-muted">{en ? spec.briefEn : spec.brief}</Text>
 
               <TextInput
                 value={text}
                 onChangeText={onChange}
                 multiline
                 textAlignVertical="top"
-                placeholder={spec.placeholder}
+                placeholder={en ? spec.placeholderEn : spec.placeholder}
                 placeholderTextColor={color.subtle}
                 className="mt-3 min-h-[180px] rounded-md border border-border bg-surface p-3 font-sans text-body text-ink"
                 style={{ lineHeight: 22 }}
@@ -193,7 +216,7 @@ export default function WritingDrillScreen() {
 
               <View className="mt-3 flex-row gap-2">
                 <Button
-                  label={spec.offline ? 'Chấm phần này' : 'Chưa nối AI ở lát này'}
+                  label={spec.offline ? L('Chấm phần này', 'Grade this part') : L('Chưa nối AI ở lát này', 'AI not connected here yet')}
                   disabled={!spec.offline || text.trim() === ''}
                   onPress={() => setChecked(true)}
                 />
@@ -222,6 +245,7 @@ function DrillFeedback({
   prompt: WritingPrompt;
 }) {
   const key = prompt.chartData?.analysisKey;
+  const { L } = useL();
 
   if (part === 'introduction') {
     const r = gradeParaphrase(prompt.promptText, text);
@@ -233,21 +257,21 @@ function DrillFeedback({
           <Badge
             tone={tone}
             label={
-              r.verdict === 'good' ? 'Paraphrase tốt' : r.verdict === 'weak' ? 'Còn yếu' : 'Gần như chép đề'
+              r.verdict === 'good' ? L('Paraphrase tốt', 'Good paraphrase') : r.verdict === 'weak' ? L('Còn yếu', 'Needs work') : L('Gần như chép đề', 'Almost copied')
             }
           />
           <Text className="font-sans text-label text-muted">
-            Giữ lại {Math.round(r.overlapRatio * 100)}% từ nội dung của đề
+            {L(`Giữ lại ${Math.round(r.overlapRatio * 100)}% từ nội dung của đề`, `Kept ${Math.round(r.overlapRatio * 100)}% of the prompt's content words`)}
           </Text>
         </View>
         <Text className="mt-2 font-sans text-body text-body">{r.note}</Text>
         {r.repeatedWords.length > 0 ? (
           <Text className="mt-2 font-sans text-label text-muted">
-            Từ còn nguyên từ đề: {r.repeatedWords.join(', ')}
+            {L('Từ còn nguyên từ đề:', 'Words copied from the prompt:')} {r.repeatedWords.join(', ')}
           </Text>
         ) : null}
         <Text className="mt-3 font-sans text-label text-subtle">
-          Chỉ số này đo số từ giữ lại, không đo việc đổi cấu trúc câu.
+          {L('Chỉ số này đo số từ giữ lại, không đo việc đổi cấu trúc câu.', "This measures words kept, not whether you changed the sentence structure.")}
         </Text>
       </View>
     );
@@ -256,7 +280,7 @@ function DrillFeedback({
   if (!key) {
     return (
       <Text className="font-sans text-body text-muted">
-        Đề này không có dữ liệu biểu đồ nên phần đó chưa chấm tự động được.
+        {L('Đề này không có dữ liệu biểu đồ nên phần đó chưa chấm tự động được.', "This prompt has no chart data, so this part can't be graded automatically yet.")}
       </Text>
     );
   }
@@ -267,7 +291,10 @@ function DrillFeedback({
       <View>
         <Text className="font-sans text-body text-body">{r.note}</Text>
         <Text className="mt-2 font-sans text-label text-muted">
-          {r.ideaCount} ý · bao được {r.matchedSubjects.length}/{key.trends.length} đối tượng
+          {L(
+            `${r.ideaCount} ý · bao được ${r.matchedSubjects.length}/${key.trends.length} đối tượng`,
+            `${r.ideaCount} ideas · covers ${r.matchedSubjects.length}/${key.trends.length} subjects`,
+          )}
         </Text>
       </View>
     );
@@ -283,7 +310,7 @@ function DrillFeedback({
             label={`${r.score}/100`}
           />
           <Text className="font-sans text-label text-muted">
-            Bắt được {r.covered.length}/{key.trends.length} xu hướng
+            {L(`Bắt được ${r.covered.length}/${key.trends.length} xu hướng`, `Caught ${r.covered.length}/${key.trends.length} trends`)}
           </Text>
         </View>
         {r.notes.map((n) => (

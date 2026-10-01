@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
@@ -15,6 +16,7 @@ import { BiText, ChapterSticker, LEVEL_TONE, levelState, type Lang } from '@/com
 import { EXTRA_SIZE, LEVEL_LABEL, PASS_RATIO, PHASES, QUIZ_SIZE, ROAD_CHAPTERS, bookSetReady, chapterById, liveTemplates } from '@/data/sat-roadmap';
 import { useSatRoadmapStore, type LevelBest } from '@/store/useSatRoadmapStore';
 import type { RoadChapter } from '@/data/sat-roadmap';
+import { useL } from '@/i18n/useL';
 
 /**
  * Một chương của Lộ trình SAT Math: các khối lớn xếp dần xuống — đầu chương,
@@ -26,15 +28,18 @@ export default function RoadChapterScreen() {
   const c = chapterById(id);
   const { width } = useWindowDimensions();
   const wide = width >= 900;
-  const [lang, setLang] = useState<Lang>('both');
   const hydrated = useHydrated();
   const best = useSatRoadmapStore((s) => s.progress[id ?? '']);
+  const { L, en } = useL();
+  // Giao diện English → lý thuyết mặc định hiện bản tiếng Anh; người học tự chọn thì theo lựa chọn đó.
+  const [picked, setLang] = useState<Lang | null>(null);
+  const lang: Lang = picked ?? (en ? 'en' : 'both');
 
   if (!c) {
     return (
       <Screen>
         <Text className="font-heavy text-ink" style={{ fontSize: 22 }}>
-          Không tìm thấy chương này.
+          {L('Không tìm thấy chương này.', "We couldn't find this chapter.")}
         </Text>
       </Screen>
     );
@@ -48,7 +53,7 @@ export default function RoadChapterScreen() {
     <Screen>
       <Pressable accessibilityRole="link" onPress={() => router.push('/sat/lo-trinh' as never)} style={{ alignSelf: 'flex-start', marginBottom: 10 }}>
         <Text className="font-strong" style={{ fontSize: 14, color: '#8F6E36' }}>
-          ← Lộ trình SAT Math
+          {L('← Lộ trình SAT Math', '← SAT Math roadmap')}
         </Text>
       </Pressable>
 
@@ -57,25 +62,30 @@ export default function RoadChapterScreen() {
         <View style={{ borderRadius: 28, padding: wide ? 28 : 20, backgroundColor: color, overflow: 'hidden', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
           <Sparkles count={7} />
           <View style={{ flex: 1 }}>
-            <Label text={`Chương ${c.n} · ${PHASES[c.phase].title.vi}`} color="#FFFFFF" ink="#0F172A" tilt={-3} size={13} />
+            <Label text={L(`Chương ${c.n} · ${PHASES[c.phase].title.vi}`, `Chapter ${c.n} · ${PHASES[c.phase].title.en}`)} color="#FFFFFF" ink="#0F172A" tilt={-3} size={13} />
             <Text className="font-heavy" style={{ marginTop: 10, fontSize: wide ? 40 : 30, lineHeight: wide ? 46 : 36, color: '#FFFFFF' }}>
-              {c.title.vi}.
+              {en ? c.title.en : c.title.vi}.
             </Text>
-            <Text className="font-semi" style={{ fontSize: 16, color: 'rgba(255,255,255,0.9)' }} lang="en">
-              {c.title.en}
-            </Text>
+            {en ? null : (
+              <Text className="font-semi" style={{ fontSize: 16, color: 'rgba(255,255,255,0.9)' }} lang="en">
+                {c.title.en}
+              </Text>
+            )}
             {c.bookPages ? (
               <Text className="font-strong" style={{ marginTop: 8, fontSize: 13, color: 'rgba(255,255,255,0.9)' }}>
-                📖 Tương ứng Chương {c.n}, The College Panda · trang {c.bookPages[0]}–{c.bookPages[1]}
+                {L(
+                  `📖 Tương ứng Chương ${c.n}, The College Panda · trang ${c.bookPages[0]}–${c.bookPages[1]}`,
+                  `📖 Matches Chapter ${c.n} of The College Panda · pages ${c.bookPages[0]}–${c.bookPages[1]}`,
+                )}
               </Text>
             ) : null}
             <View style={{ marginTop: 14, flexDirection: 'row', flexWrap: 'wrap', gap: 10 }}>
-              <Label text={`💡 ${c.theory.length} ý lý thuyết`} color="#FFFFFF" ink="#0F172A" tilt={-3} size={13} />
-              {c.bookSet?.length ? <Label text={`📖 ${c.bookSet.length} bài theo sách`} color="#FACC15" ink="#2A1B02" tilt={2} size={13} /> : null}
-              <Label text={`✏️ +${EXTRA_SIZE} câu luyện thêm`} color="#0F172A" ink="#FFFFFF" tilt={-2} size={13} />
+              <Label text={L(`💡 ${c.theory.length} ý lý thuyết`, `💡 ${c.theory.length} theory points`)} color="#FFFFFF" ink="#0F172A" tilt={-3} size={13} />
+              {c.bookSet?.length ? <Label text={L(`📖 ${c.bookSet.length} bài theo sách`, `📖 ${c.bookSet.length} book problems`)} color="#FACC15" ink="#2A1B02" tilt={2} size={13} /> : null}
+              <Label text={L(`✏️ +${EXTRA_SIZE} câu luyện thêm`, `✏️ +${EXTRA_SIZE} extra questions`)} color="#0F172A" ink="#FFFFFF" tilt={-2} size={13} />
             </View>
           </View>
-          <ChapterSticker art={c.art} size={wide ? 120 : 76} tilt={6} />
+          {width >= HEADER_ART_MIN ? <ChapterSticker art={c.art} size={120} tilt={6} /> : null}
         </View>
       </Appear>
 
@@ -83,8 +93,8 @@ export default function RoadChapterScreen() {
       <View style={{ marginTop: 14, flexDirection: 'row', gap: 8 }} accessibilityRole="radiogroup">
         {(
           [
-            ['both', '🇻🇳 + 🇬🇧 Song ngữ'],
-            ['vi', 'Tiếng Việt'],
+            ['both', L('🇻🇳 + 🇬🇧 Song ngữ', '🇻🇳 + 🇬🇧 Bilingual')],
+            ['vi', L('Tiếng Việt', 'Vietnamese')],
             ['en', 'English'],
           ] as const
         ).map(([k, label]) => (
@@ -103,17 +113,17 @@ export default function RoadChapterScreen() {
       </View>
 
       {/* ------------------------------------------------ sơ đồ chủ đề con */}
-      <Block title="Sơ đồ chương." kicker="CHỦ ĐỀ CON" art={<CuteMagnifier size={88} />} tag={{ text: `${c.subtopics.length} chủ đề con`, color: '#A8843F', ink: '#FFFFFF' }}>
+      <Block title={L('Sơ đồ chương.', 'Chapter map.')} kicker={L('CHỦ ĐỀ CON', 'SUBTOPICS')} art={<CuteMagnifier size={88} />} tag={{ text: L(`${c.subtopics.length} chủ đề con`, `${c.subtopics.length} subtopics`), color: '#A8843F', ink: '#FFFFFF' }}>
         <MindMap
           height={c.subtopics.length > 3 ? 340 : 280}
           narrowBelow={520}
-          center={{ label: c.title.vi, sub: c.title.en, color, icon: <ChapterSticker art={c.art} size={30} motion={false} tilt={0} /> }}
+          center={{ label: en ? c.title.en : c.title.vi, sub: en ? undefined : c.title.en, color, icon: <ChapterSticker art={c.art} size={30} motion={false} tilt={0} /> }}
           branches={c.subtopics.map((s) => ({ label: lang === 'en' ? s.en : s.vi, sub: lang === 'both' ? s.en : undefined, color }))}
         />
       </Block>
 
       {/* ------------------------------------------------ lý thuyết */}
-      <Block title="Lý thuyết." kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'} art={<CuteBulb size={90} />} tag={{ text: 'VI + EN', color: '#FACC15', ink: '#2A1B02' }}>
+      <Block title={L('Lý thuyết.', 'Theory.')} kicker={lang === 'en' ? 'THEORY' : 'LÝ THUYẾT · THEORY'} art={<CuteBulb size={90} />} tag={{ text: 'VI + EN', color: '#FACC15', ink: '#2A1B02' }}>
         <View style={{ gap: 12 }}>
           {c.theory.map((t, i) => (
             <View key={i} style={{ borderRadius: 20, padding: 16, backgroundColor: '#FCFBF8', borderLeftWidth: 6, borderLeftColor: color, gap: 10 }}>
@@ -139,10 +149,10 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ ví dụ */}
-      <Block title="Ví dụ." kicker="GIẢI TỪNG BƯỚC · WORKED EXAMPLE" art={<CutePencil size={86} />} tag={{ text: 'Từng bước', color: '#22A06B', ink: '#FFFFFF' }}>
+      <Block title={L('Ví dụ.', 'Examples.')} kicker={L('GIẢI TỪNG BƯỚC · WORKED EXAMPLE', 'WORKED EXAMPLE')} art={<CutePencil size={86} />} tag={{ text: L('Từng bước', 'Step by step'), color: '#22A06B', ink: '#FFFFFF' }}>
         {c.examples.map((e, i) => (
           <View key={i} style={{ gap: 10, marginTop: i ? 18 : 0 }}>
-            <Label text={`Ví dụ ${i + 1}`} color={i % 2 ? '#FFD6E0' : '#FFF1B8'} ink="#0F172A" tilt={i % 2 ? 3 : -3} size={13} />
+            <Label text={L(`Ví dụ ${i + 1}`, `Example ${i + 1}`)} color={i % 2 ? '#FFD6E0' : '#FFF1B8'} ink="#0F172A" tilt={i % 2 ? 3 : -3} size={13} />
             <View style={{ borderRadius: 16, padding: 14, backgroundColor: '#F7F0E1' }}>
               <MathText size={16} weight="semibold">
                 {e.problem}
@@ -177,7 +187,7 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ bẫy */}
-      <Block title="Bẫy hay gặp." kicker="TRAPS" tone="#FFF1F0" art={<CuteFlame size={80} />} tag={{ text: 'Cẩn thận!', color: '#E0533D', ink: '#FFFFFF' }}>
+      <Block title={L('Bẫy hay gặp.', 'Common traps.')} kicker="TRAPS" tone="#FFF1F0" art={<CuteFlame size={80} />} tag={{ text: L('Cẩn thận!', 'Watch out!'), color: '#E0533D', ink: '#FFFFFF' }}>
         <View style={{ gap: 10 }}>
           {c.traps.map((t, i) => (
             <View key={i} style={{ flexDirection: 'row', gap: 10 }}>
@@ -191,7 +201,11 @@ export default function RoadChapterScreen() {
       </Block>
 
       {/* ------------------------------------------------ bài tập */}
-      <Block title="Luyện tập." kicker={`BỘ BÀI THEO SÁCH · LUYỆN THÊM ${EXTRA_SIZE} CÂU · 3 MỨC ${QUIZ_SIZE} CÂU`} art={<CuteTrophy size={90} />} tag={{ text: 'Câu mới mỗi lượt', color: '#F0703F', ink: '#FFFFFF' }}>
+      <Block
+        title={L('Luyện tập.', 'Practice.')}
+        kicker={L(`BỘ BÀI THEO SÁCH · LUYỆN THÊM ${EXTRA_SIZE} CÂU · 3 MỨC ${QUIZ_SIZE} CÂU`, `BOOK SET · ${EXTRA_SIZE} EXTRA QUESTIONS · 3 LEVELS OF ${QUIZ_SIZE}`)}
+        art={<CuteTrophy size={90} />}
+        tag={{ text: L('Câu mới mỗi lượt', 'New questions every round'), color: '#F0703F', ink: '#FFFFFF' }}>
         {c.bookSet?.length ? <BookSetCard c={c} best={hydrated ? best?.book : undefined} color={color} /> : null}
         <ExtraSetCard c={c} best={hydrated ? best?.extra : undefined} />
         <View style={{ marginTop: c.bookSet?.length ? 12 : 0, flexDirection: wide ? 'row' : 'column', gap: 12 }}>
@@ -206,9 +220,9 @@ export default function RoadChapterScreen() {
               <View key={lv} style={{ flex: 1, borderRadius: 22, padding: 18, backgroundColor: tone.soft, borderWidth: 2, borderColor: st === 'passed' ? tone.bg : 'transparent', gap: 8 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                   <View style={{ gap: 6 }}>
-                    <Label text={st === 'passed' ? 'Đã qua 🏅' : st === 'tried' ? 'Đang luyện' : 'Chưa mở'} color={st === 'passed' ? tone.bg : '#FFFFFF'} ink={st === 'passed' ? '#FFFFFF' : tone.ink} tilt={-4} size={12} />
+                    <Label text={st === 'passed' ? L('Đã qua 🏅', 'Passed 🏅') : st === 'tried' ? L('Đang luyện', 'In progress') : L('Chưa mở', 'Not started')} color={st === 'passed' ? tone.bg : '#FFFFFF'} ink={st === 'passed' ? '#FFFFFF' : tone.ink} tilt={-4} size={12} />
                     <Text className="font-heavy" style={{ fontSize: 22, color: tone.ink }}>
-                      {LEVEL_LABEL[lv].vi}
+                      {en ? LEVEL_LABEL[lv].en : LEVEL_LABEL[lv].vi}
                     </Text>
                   </View>
                   <Motion kind="float" delay={i * 250}>
@@ -216,11 +230,14 @@ export default function RoadChapterScreen() {
                   </Motion>
                 </View>
                 <Text className="font-semi" style={{ fontSize: 14, color: tone.ink }}>
-                  {b ? `Tốt nhất ${b.correct}/${b.total} · ${b.rounds} lượt` : 'Chưa làm'}
+                  {b ? L(`Tốt nhất ${b.correct}/${b.total} · ${b.rounds} lượt`, `Best ${b.correct}/${b.total} · ${b.rounds} rounds`) : L('Chưa làm', 'Not attempted')}
                 </Text>
                 {suggestFirst ? (
                   <Text className="font-sans" style={{ fontSize: 13, color: tone.ink }}>
-                    Nên đạt {Math.round(PASS_RATIO * 100)}% ở mức {LEVEL_LABEL[prevLv!].vi} trước.
+                    {L(
+                      `Nên đạt ${Math.round(PASS_RATIO * 100)}% ở mức ${LEVEL_LABEL[prevLv!].vi} trước.`,
+                      `Aim for ${Math.round(PASS_RATIO * 100)}% on ${LEVEL_LABEL[prevLv!].en} first.`,
+                    )}
                   </Text>
                 ) : null}
                 <Pressable
@@ -230,7 +247,7 @@ export default function RoadChapterScreen() {
                   style={({ hovered }: { hovered?: boolean }) => ({ marginTop: 4, borderRadius: 14, paddingVertical: 12, alignItems: 'center', backgroundColor: ready ? (hovered ? tone.ink : tone.bg) : '#E1D9CB' })}
                 >
                   <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
-                    {ready ? (b ? 'Làm lượt mới' : `Làm ${QUIZ_SIZE} câu`) : 'Đang soạn câu hỏi'}
+                    {ready ? (b ? L('Làm lượt mới', 'New round') : L(`Làm ${QUIZ_SIZE} câu`, `Do ${QUIZ_SIZE} questions`)) : L('Đang soạn câu hỏi', 'Questions coming soon')}
                   </Text>
                 </Pressable>
               </View>
@@ -241,8 +258,8 @@ export default function RoadChapterScreen() {
 
       {/* ------------------------------------------------ chương trước / sau */}
       <View style={{ marginTop: 18, marginBottom: 36, flexDirection: 'row', justifyContent: 'space-between', gap: 12 }}>
-        {prev ? <NavCard label={`← Chương ${prev.n}`} title={prev.title.vi} onPress={() => router.push(`/sat/lo-trinh/${prev.id}` as never)} /> : <View />}
-        {next ? <NavCard label={`Chương ${next.n} →`} title={next.title.vi} onPress={() => router.push(`/sat/lo-trinh/${next.id}` as never)} align="right" /> : null}
+        {prev ? <NavCard label={L(`← Chương ${prev.n}`, `← Chapter ${prev.n}`)} title={en ? prev.title.en : prev.title.vi} onPress={() => router.push(`/sat/lo-trinh/${prev.id}` as never)} /> : <View />}
+        {next ? <NavCard label={L(`Chương ${next.n} →`, `Chapter ${next.n} →`)} title={en ? next.title.en : next.title.vi} onPress={() => router.push(`/sat/lo-trinh/${next.id}` as never)} align="right" /> : null}
       </View>
     </Screen>
   );
@@ -258,6 +275,7 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
   const ready = bookSetReady(c);
   const calc = set.filter((b) => b.calc).length;
   const st = levelState(best);
+  const { L } = useL();
   return (
     <View style={{ borderRadius: 24, padding: 18, backgroundColor: '#0F172A', overflow: 'hidden', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
       <Sparkles count={5} />
@@ -267,17 +285,20 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
             <CuteBook size={64} />
           </Sticker>
         </Motion>
-        <Label text="Theo sách" color="#FACC15" ink="#2A1B02" tilt={4} size={12} />
+        <Label text={L('Theo sách', 'From the book')} color="#FACC15" ink="#2A1B02" tilt={4} size={12} />
       </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
         <Text className="font-heavy" style={{ fontSize: 22, color: '#FFFFFF' }}>
-          Bộ bài theo sách · {set.length} bài {st === 'passed' ? '🏅' : ''}
+          {L(`Bộ bài theo sách · ${set.length} bài`, `Book set · ${set.length} problems`)} {st === 'passed' ? '🏅' : ''}
         </Text>
         <Text className="font-semi" style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)' }}>
-          Đúng thứ tự dạng bài cuối chương {c.n} trong sách · {set.length - calc} không máy tính, {calc} có máy tính · số mới mỗi lượt
+          {L(
+            `Đúng thứ tự dạng bài cuối chương ${c.n} trong sách · ${set.length - calc} không máy tính, ${calc} có máy tính · số mới mỗi lượt`,
+            `Same problem order as the end of chapter ${c.n} in the book · ${set.length - calc} no-calculator, ${calc} calculator · fresh numbers each round`,
+          )}
         </Text>
         <Text className="font-semi" style={{ fontSize: 13, color: '#FACC15' }}>
-          {best ? `Tốt nhất ${best.correct}/${best.total} · ${best.rounds} lượt` : 'Chưa làm'}
+          {best ? L(`Tốt nhất ${best.correct}/${best.total} · ${best.rounds} lượt`, `Best ${best.correct}/${best.total} · ${best.rounds} rounds`) : L('Chưa làm', 'Not attempted')}
         </Text>
       </View>
       <Pressable
@@ -288,7 +309,7 @@ function BookSetCard({ c, best, color }: { c: RoadChapter; best: LevelBest | und
       >
         {({ hovered }: { hovered?: boolean }) => (
           <Text className="font-heavy" style={{ fontSize: 15, color: ready && hovered ? '#0F172A' : '#FFFFFF' }}>
-            {ready ? (best ? 'Làm lượt mới' : `Làm ${set.length} bài`) : 'Đang soạn'}
+            {ready ? (best ? L('Làm lượt mới', 'New round') : L(`Làm ${set.length} bài`, `Do ${set.length} problems`)) : L('Đang soạn', 'Coming soon')}
           </Text>
         )}
       </Pressable>
@@ -310,6 +331,7 @@ const LEVEL_ART: Record<'easy' | 'medium' | 'hard', React.ReactNode> = {
  */
 function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined }) {
   const st = levelState(best);
+  const { L } = useL();
   return (
     <View style={{ marginTop: 12, borderRadius: 24, padding: 18, backgroundColor: '#FFF6DD', borderWidth: 2, borderColor: st === 'passed' ? '#F2B632' : 'transparent', flexDirection: 'row', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
       <View style={{ gap: 8, alignItems: 'center' }}>
@@ -318,17 +340,17 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
             <CutePencil size={60} />
           </Sticker>
         </Motion>
-        <Label text={`+${EXTRA_SIZE} câu`} color="#0F172A" ink="#FFFFFF" tilt={-4} size={12} />
+        <Label text={L(`+${EXTRA_SIZE} câu`, `+${EXTRA_SIZE} questions`)} color="#0F172A" ink="#FFFFFF" tilt={-4} size={12} />
       </View>
       <View style={{ flex: 1, minWidth: 220, gap: 4 }}>
         <Text className="font-heavy" style={{ fontSize: 22, color: '#2A1B02' }}>
-          Luyện thêm {EXTRA_SIZE} câu {st === 'passed' ? '🏅' : ''}
+          {L(`Luyện thêm ${EXTRA_SIZE} câu`, `${EXTRA_SIZE} extra questions`)} {st === 'passed' ? '🏅' : ''}
         </Text>
         <Text className="font-semi" style={{ fontSize: 14, color: '#7A4B00' }}>
-          Ngoài bộ bài theo sách · 🌱 7 dễ → 🔥 7 trung bình → 🚀 6 khó · câu mới mỗi lượt
+          {L('Ngoài bộ bài theo sách · 🌱 7 dễ → 🔥 7 trung bình → 🚀 6 khó · câu mới mỗi lượt', 'Beyond the book set · 🌱 7 easy → 🔥 7 medium → 🚀 6 hard · new questions each round')}
         </Text>
         <Text className="font-semi" style={{ fontSize: 13, color: '#7A4B00' }}>
-          {best ? `Tốt nhất ${best.correct}/${best.total} · ${best.rounds} lượt` : 'Chưa làm'}
+          {best ? L(`Tốt nhất ${best.correct}/${best.total} · ${best.rounds} lượt`, `Best ${best.correct}/${best.total} · ${best.rounds} rounds`) : L('Chưa làm', 'Not attempted')}
         </Text>
       </View>
       <Pressable
@@ -337,7 +359,7 @@ function ExtraSetCard({ c, best }: { c: RoadChapter; best: LevelBest | undefined
         style={({ hovered }: { hovered?: boolean }) => ({ borderRadius: 14, paddingHorizontal: 20, paddingVertical: 12, backgroundColor: hovered ? '#7A4B00' : '#F2B632' })}
       >
         <Text className="font-heavy" style={{ fontSize: 15, color: '#FFFFFF' }}>
-          {best ? 'Làm lượt mới' : `Làm ${EXTRA_SIZE} câu`}
+          {best ? L('Làm lượt mới', 'New round') : L(`Làm ${EXTRA_SIZE} câu`, `Do ${EXTRA_SIZE} questions`)}
         </Text>
       </Pressable>
     </View>

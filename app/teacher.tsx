@@ -15,6 +15,25 @@ import { color } from '@/theme/tokens';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label } from '@/components/illust/Sticker';
 import { Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
+
+/** Tên mảng khi giao diện ở tiếng Anh (bản tiếng Việt ở DOMAIN_LABEL). */
+const DOMAIN_LABEL_EN: Record<Domain, string> = {
+  reading: 'Reading',
+  listening: 'Listening',
+  writing: 'Writing',
+  'sat-math': 'SAT Math',
+  'sat-verbal': 'SAT Verbal',
+  'ai-literacy': 'Reading AI output',
+};
+
+/** Lý do từ chối của parseExport (tiếng Việt) → tiếng Anh. */
+const REJECT_EN: Record<string, string> = {
+  'không phải JSON hợp lệ': 'not valid JSON',
+  'thiếu mã người học': 'missing learner code',
+  'thiếu mốc thời gian': 'missing timestamp',
+  'thiếu sổ': 'missing ledger',
+};
 
 /**
  * Màn giáo viên: lớp đang vướng chung ở đâu.
@@ -35,6 +54,7 @@ import { Motion } from '@/components/illust/CuteMore';
  * học sinh không phải việc mà cơ chế này sinh ra để làm.
  */
 export default function TeacherScreen() {
+  const { L } = useL();
   const [raw, setRaw] = useState('');
   const [exports, setExports] = useState<LearnerExport[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -51,7 +71,7 @@ export default function TeacherScreen() {
     try {
       parsedJson = JSON.parse(text);
     } catch {
-      setError('Không đọc được JSON. Dán nguyên nội dung file học sinh gửi.');
+      setError(L('Không đọc được JSON. Dán nguyên nội dung file học sinh gửi.', "Couldn't read the JSON. Paste the student's file exactly as sent."));
       return;
     }
 
@@ -66,12 +86,24 @@ export default function TeacherScreen() {
     }
 
     if (ok.length === 0) {
-      setError(`Không nhận được bản nào (${bad[0] ?? 'sai hình dạng'}).`);
+      setError(
+        L(
+          `Không nhận được bản nào (${bad[0] ?? 'sai hình dạng'}).`,
+          `No exports accepted (${bad[0] ? (REJECT_EN[bad[0]] ?? bad[0]) : 'wrong format'}).`,
+        ),
+      );
       return;
     }
     setExports((prev) => [...prev, ...ok]);
     setRaw('');
-    if (bad.length > 0) setError(`Đã nhận ${ok.length} bản, bỏ qua ${bad.length} bản sai hình dạng.`);
+    if (bad.length > 0) {
+      setError(
+        L(
+          `Đã nhận ${ok.length} bản, bỏ qua ${bad.length} bản sai hình dạng.`,
+          `Added ${ok.length}, skipped ${bad.length} with the wrong format.`,
+        ),
+      );
+    }
   };
 
   const learners = new Set(exports.map((e) => e.learnerCode)).size;
@@ -86,14 +118,15 @@ export default function TeacherScreen() {
         </Text>
       </View>
 
-      <Text className="mt-3 font-heavy text-pageTitle text-ink">Lớp đang vướng ở đâu</Text>
+      <Text className="mt-3 font-heavy text-pageTitle text-ink">{L('Lớp đang vướng ở đâu', 'Where the class is stuck')}</Text>
       </View>
       <PageStickers scene="review" />
       </View>
       <Text className="mt-1.5 max-w-[680px] font-sans text-bodyLg text-muted">
-        Học sinh xuất sổ bằng chứng từ máy mình rồi gửi cho bạn; dán vào đây để xem chỗ vướng chung.
-        Không cần tài khoản, không có gì rời khỏi máy bạn, và bản xuất không mang tên ai — chỉ có mã
-        do chính các em đặt.
+        {L(
+          'Học sinh xuất sổ bằng chứng từ máy mình rồi gửi cho bạn; dán vào đây để xem chỗ vướng chung. Không cần tài khoản, không có gì rời khỏi máy bạn, và bản xuất không mang tên ai — chỉ có mã do chính các em đặt.',
+          "Students export their evidence ledger on their own device and send it to you; paste it here to see where they're stuck together. No account needed, nothing leaves your device, and exports carry no names — only codes the students chose themselves.",
+        )}
       </Text>
 
       <Card className="mt-5">
@@ -101,10 +134,10 @@ export default function TeacherScreen() {
           <View aria-hidden>
             <SealIcon name="clipboard" color="#A8843F" size={36} />
           </View>
-          <Text className="min-w-0 flex-1 font-strong text-body text-ink">Dán bản xuất của học sinh</Text>
+          <Text className="min-w-0 flex-1 font-strong text-body text-ink">{L('Dán bản xuất của học sinh', 'Paste student exports')}</Text>
         </View>
         <Text className="mt-1 font-sans text-label text-muted">
-          Mỗi lần một bản, hoặc dán cả một mảng JSON nhiều bản.
+          {L('Mỗi lần một bản, hoặc dán cả một mảng JSON nhiều bản.', 'One at a time, or paste a JSON array of several.')}
         </Text>
         <TextInput
           value={raw}
@@ -116,11 +149,11 @@ export default function TeacherScreen() {
           style={{ minHeight: 96 }}
         />
         <View className="mt-3 flex-row flex-wrap items-center gap-2">
-          <Button label="Thêm vào lớp" iconRight="plus" onPress={add} />
+          <Button label={L('Thêm vào lớp', 'Add to class')} iconRight="plus" onPress={add} />
           {exports.length > 0 ? (
             <Button
               variant="outline"
-              label="Xoá hết"
+              label={L('Xoá hết', 'Clear all')}
               onPress={() => {
                 setExports([]);
                 setError(null);
@@ -128,7 +161,7 @@ export default function TeacherScreen() {
             />
           ) : null}
           <View className="flex-1" />
-          <Badge label={`${learners} học sinh`} tone={learners > 0 ? 'success' : 'neutral'} />
+          <Badge label={L(`${learners} học sinh`, `${learners} student${learners === 1 ? '' : 's'}`)} tone={learners > 0 ? 'success' : 'neutral'} />
         </View>
         {error ? <Text className="mt-2 font-sans text-label text-warning-ink">{error}</Text> : null}
       </Card>
@@ -140,24 +173,28 @@ export default function TeacherScreen() {
               <View aria-hidden>
                 <SealIcon name="target" color="#F0703F" size={38} />
               </View>
-              <Text className="font-strong text-cardTitle text-ink">Đáng dạy chung buổi tới</Text>
+              <Text className="font-strong text-cardTitle text-ink">{L('Đáng dạy chung buổi tới', 'Worth teaching next lesson')}</Text>
               {teachable.length > 0 ? (
                 <View aria-hidden>
                   <Motion kind="pop">
-                    <Label text="Buổi tới 🎯" color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
+                    <Label text={L('Buổi tới 🎯', 'Next lesson 🎯')} color="#F2B632" ink="#2A1B02" tilt={-4} size={11} />
                   </Motion>
                 </View>
               ) : null}
             </View>
             <Text className="mt-1 max-w-[640px] font-sans text-body text-muted">
-              Những kỹ năng có từ ba em trở lên đang vướng. Dưới ngưỡng đó thì nói riêng với từng em
-              hiệu quả hơn là dừng cả lớp lại.
+              {L(
+                'Những kỹ năng có từ ba em trở lên đang vướng. Dưới ngưỡng đó thì nói riêng với từng em hiệu quả hơn là dừng cả lớp lại.',
+                'Skills where three or more students are stuck. Below that, talking to each student works better than stopping the whole class.',
+              )}
             </Text>
             {teachable.length === 0 ? (
               <Card className="mt-3">
                 <Text className="font-sans text-body text-muted">
-                  Chưa có kỹ năng nào đủ đông người vướng. Cả lớp đang vướng ở những chỗ khác nhau —
-                  danh sách đầy đủ ở dưới.
+                  {L(
+                    'Chưa có kỹ năng nào đủ đông người vướng. Cả lớp đang vướng ở những chỗ khác nhau — danh sách đầy đủ ở dưới.',
+                    'No skill has enough students stuck yet. The class is stuck in different places — see the full list below.',
+                  )}
                 </Text>
               </Card>
             ) : (
@@ -174,7 +211,7 @@ export default function TeacherScreen() {
               <View aria-hidden>
                 <SealIcon name="list" color="#B07A3A" size={38} />
               </View>
-              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">Toàn bộ kỹ năng đã quan sát</Text>
+              <Text className="min-w-0 flex-1 font-strong text-cardTitle text-ink">{L('Toàn bộ kỹ năng đã quan sát', 'All observed skills')}</Text>
             </View>
             <View className="mt-3 gap-2">
               {summaries.map((s) => (
@@ -189,6 +226,7 @@ export default function TeacherScreen() {
 }
 
 function SkillRow({ summary, highlight }: { summary: SkillSummary; highlight?: boolean }) {
+  const { L, en } = useL();
   const stuck = summary.counts['needs-probe'] + summary.counts.probing;
 
   return (
@@ -201,7 +239,7 @@ function SkillRow({ summary, highlight }: { summary: SkillSummary; highlight?: b
       <View className="flex-row flex-wrap items-center gap-2">
         <Text className="font-strong text-body text-ink">{summary.key}</Text>
         <Text className="font-sans text-label text-muted">
-          {DOMAIN_LABEL[summary.domain as Domain] ?? summary.domain}
+          {(en ? DOMAIN_LABEL_EN : DOMAIN_LABEL)[summary.domain as Domain] ?? summary.domain}
         </Text>
         <View className="flex-1" />
         <Text className="font-strong text-body" style={{ color: stuck > 0 ? color.warning : color.success }}>
@@ -210,7 +248,10 @@ function SkillRow({ summary, highlight }: { summary: SkillSummary; highlight?: b
       </View>
 
       <Text className="mt-1 font-sans text-label text-muted">
-        đang vướng · {Math.round(summary.stuckRatio * 100)}% · {summary.observations} lượt làm bài
+        {L(
+          `đang vướng · ${Math.round(summary.stuckRatio * 100)}% · ${summary.observations} lượt làm bài`,
+          `stuck · ${Math.round(summary.stuckRatio * 100)}% · ${summary.observations} attempts`,
+        )}
       </Text>
 
       {/*

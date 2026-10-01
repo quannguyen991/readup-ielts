@@ -9,6 +9,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import type { HubSnapshot } from '@/services/city/hub';
+import { currentLocale, pick } from '@/i18n/useL';
 
 const FRESH_MS = 20_000;
 let last: { at: number; token: string | null; data: HubSnapshot } | null = null;
@@ -31,7 +32,7 @@ export function useHubSnapshot(token: string | null): { data: HubSnapshot | null
       .then((r) => r.json())
       .then((b: HubSnapshot & { error?: string }) => {
         if (dead) return;
-        if (b.error || !b.progress) setError(b.error ?? 'Lỗi');
+        if (b.error || !b.progress) setError(b.error ?? pick(currentLocale(), 'Lỗi', 'Error'));
         else {
           rememberHub(b, token);
           setData(b);

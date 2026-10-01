@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { Icon } from '@/components/ui';
 import type { EvidenceMark } from '@/services/proofloop/types';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Nút khoanh bằng chứng cho MỘT câu hỏi.
@@ -31,6 +32,7 @@ export function EvidenceMarker({
   onStart: () => void;
   onClear: () => void;
 }) {
+  const { L } = useL();
   if (mark) {
     return (
       <View className="mt-3 rounded-panel border border-primary-600 bg-primary-50 px-3 py-2.5">
@@ -38,11 +40,11 @@ export function EvidenceMarker({
           <View className="flex-1 flex-row items-center gap-2">
             <Icon name="check" size={14} color={color.primary} />
             <Text className="font-mid text-label text-primary-600">
-              Bằng chứng · đoạn {mark.paragraphIndex + 1}
+              {L(`Bằng chứng · đoạn ${mark.paragraphIndex + 1}`, `Evidence · paragraph ${mark.paragraphIndex + 1}`)}
             </Text>
           </View>
-          <Pressable onPress={onClear} accessibilityLabel="Bỏ khoanh bằng chứng">
-            <Text className="font-mid text-label text-muted">Chọn lại</Text>
+          <Pressable onPress={onClear} accessibilityLabel={L('Bỏ khoanh bằng chứng', 'Clear evidence mark')}>
+            <Text className="font-mid text-label text-muted">{L('Chọn lại', 'Reselect')}</Text>
           </Pressable>
         </View>
         <Text className="mt-1.5 font-sans text-label text-ink" numberOfLines={3}>
@@ -55,7 +57,7 @@ export function EvidenceMarker({
   return (
     <Pressable
       onPress={onStart}
-      accessibilityLabel="Khoanh câu đỡ đáp án này"
+      accessibilityLabel={L('Khoanh câu đỡ đáp án này', 'Mark the sentence that supports this answer')}
       className={[
         'mt-3 flex-row items-center gap-2 rounded-panel border px-3 py-2.5',
         active ? 'border-primary-600 bg-primary-50' : 'border-dashed border-border bg-surface',
@@ -69,8 +71,8 @@ export function EvidenceMarker({
         ].join(' ')}
       >
         {active
-          ? 'Chạm từ đầu và từ cuối của câu đỡ đáp án…'
-          : 'Khoanh câu trong bài đỡ đáp án này'}
+          ? L('Chạm từ đầu và từ cuối của câu đỡ đáp án…', 'Tap the first and last word of the supporting sentence…')
+          : L('Khoanh câu trong bài đỡ đáp án này', 'Mark the sentence in the passage that supports this answer')}
       </Text>
     </Pressable>
   );

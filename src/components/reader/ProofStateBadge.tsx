@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import type { ProofState } from '@/services/proofloop/types';
+import { bi, useL, type Bi } from '@/i18n/useL';
 
 /**
  * Nhãn trạng thái ProofLoop cho một lượt trả lời.
@@ -15,31 +16,46 @@ import type { ProofState } from '@/services/proofloop/types';
  * khoảnh khắc đáng chú ý nhất trong cả hệ thống — điểm số nói đúng, bằng chứng
  * nói chưa chắc — và tô xanh nó là xoá mất lý do tồn tại của tính năng này.
  */
-const LABEL: Readonly<Record<ProofState, { text: string; hint: string; tone: Tone }>> =
+const LABEL: Readonly<Record<ProofState, { text: Bi; hint: Bi; tone: Tone }>> =
   Object.freeze({
     'unobserved': {
-      text: 'Chưa khoanh bằng chứng',
-      hint: 'Không có gì để so — đây là chưa đo được, không phải khoanh sai.',
+      text: { vi: 'Chưa khoanh bằng chứng', en: 'No evidence marked' },
+      hint: {
+        vi: 'Không có gì để so — đây là chưa đo được, không phải khoanh sai.',
+        en: "Nothing to compare — this is not measured yet, not a wrong mark.",
+      },
       tone: 'neutral',
     },
     'aligned-correct': {
-      text: 'Đáp án đúng · bằng chứng khớp',
-      hint: 'Chưa xác nhận là đã nắm được: cần một câu ở bài khác mới biết.',
+      text: { vi: 'Đáp án đúng · bằng chứng khớp', en: 'Correct answer · evidence matches' },
+      hint: {
+        vi: 'Chưa xác nhận là đã nắm được: cần một câu ở bài khác mới biết.',
+        en: "Not confirmed as mastered yet: we'll know after a question in another passage.",
+      },
       tone: 'good',
     },
     'misaligned-correct': {
-      text: 'Đáp án đúng · bằng chứng chưa khớp',
-      hint: 'Đoạn bạn khoanh chưa đỡ được đáp án đó. Chưa ghi nhận là đã hiểu.',
+      text: { vi: 'Đáp án đúng · bằng chứng chưa khớp', en: "Correct answer · evidence doesn't match" },
+      hint: {
+        vi: 'Đoạn bạn khoanh chưa đỡ được đáp án đó. Chưa ghi nhận là đã hiểu.',
+        en: "The part you marked doesn't support that answer. Not recorded as understood yet.",
+      },
       tone: 'watch',
     },
     'aligned-wrong': {
-      text: 'Tìm đúng chỗ · trả lời chưa đúng',
-      hint: 'Đã tìm ra đúng đoạn rồi. Chỗ vướng nằm ở bước suy ra.',
+      text: { vi: 'Tìm đúng chỗ · trả lời chưa đúng', en: 'Right place · wrong answer' },
+      hint: {
+        vi: 'Đã tìm ra đúng đoạn rồi. Chỗ vướng nằm ở bước suy ra.',
+        en: 'You found the right part. The sticking point is the inference step.',
+      },
       tone: 'warn',
     },
     'misaligned-wrong': {
-      text: 'Chưa tìm ra chỗ chứa đáp án',
-      hint: 'Chỗ vướng nằm ở bước định vị, chưa phải ở bước suy luận.',
+      text: { vi: 'Chưa tìm ra chỗ chứa đáp án', en: "Haven't found where the answer is" },
+      hint: {
+        vi: 'Chỗ vướng nằm ở bước định vị, chưa phải ở bước suy luận.',
+        en: 'The sticking point is locating the answer, not the reasoning.',
+      },
       tone: 'warn',
     },
   });
@@ -54,13 +70,14 @@ const TONE: Readonly<Record<Tone, { box: string; text: string }>> = Object.freez
 });
 
 export function ProofStateBadge({ state }: { state: ProofState }) {
+  const { locale } = useL();
   const entry = LABEL[state];
   const tone = TONE[entry.tone];
 
   return (
     <View className={`mt-3 rounded-panel border px-3 py-2.5 ${tone.box}`}>
-      <Text className={`font-semi text-label ${tone.text}`}>{entry.text}</Text>
-      <Text className="mt-1 font-sans text-label text-body">{entry.hint}</Text>
+      <Text className={`font-semi text-label ${tone.text}`}>{bi(entry.text, locale)}</Text>
+      <Text className="mt-1 font-sans text-label text-body">{bi(entry.hint, locale)}</Text>
     </View>
   );
 }

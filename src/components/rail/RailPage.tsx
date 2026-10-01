@@ -25,6 +25,8 @@ import { RailScene, type Weather } from '@/services/rail/scene';
 import { localClock, nextOnRoute, ROUTES, routeById, routeOf, STATIONS, stationById, timeOfDayAt, type Route, type TimeOfDay } from '@/services/rail/stations';
 import { useGameStore } from '@/store/useGameStore';
 import { useRailStore } from '@/store/useRailStore';
+import { useL } from '@/i18n/useL';
+import { countryName, routeName, stationName, trackName } from './rail-i18n';
 
 const C = {
   wall: '#0F2238',
@@ -160,11 +162,17 @@ const plain = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(
 type Phase = { k: 'ask'; q: CatchQuestion; at: number } | { k: 'done'; q: CatchQuestion; picked: number; right: boolean } | { k: 'empty' };
 
 const TIME_LABEL: Record<TimeOfDay, string> = { day: 'Ban ngày', sunset: 'Hoàng hôn', night: 'Ban đêm' };
+const TIME_LABEL_EN: Record<TimeOfDay, string> = { day: 'Daytime', sunset: 'Sunset', night: 'Night' };
 const WEATHER_LABEL: Record<Weather, string> = { clear: 'Trời quang', rain: 'Mưa', snow: 'Tuyết' };
+const WEATHER_LABEL_EN: Record<Weather, string> = { clear: 'Clear', rain: 'Rain', snow: 'Snow' };
 const STYLE_LABEL: Record<MusicStyle, string> = { piano: 'Piano', lofi: 'Lo-fi', ambient: 'Ambient', bell: 'Chuông' };
+const STYLE_LABEL_EN: Record<MusicStyle, string> = { piano: 'Piano', lofi: 'Lo-fi', ambient: 'Ambient', bell: 'Bells' };
 
 export default function RailPage() {
   useTvCss();
+  const { L, en } = useL();
+  const timeLabel = (t: TimeOfDay) => (en ? TIME_LABEL_EN[t] : TIME_LABEL[t]);
+  const weatherLabel = (w: Weather) => (en ? WEATHER_LABEL_EN[w] : WEATHER_LABEL[w]);
   const st = useRailStore();
   const station = stationById(st.station);
   const route = routeById(st.route).stops.includes(station.id) ? routeById(st.route) : routeOf(station.id);
@@ -326,14 +334,14 @@ export default function RailPage() {
 
   // ---------------------------------------------------------------- câu hỏi
   const ask = (): Phase => {
-    const q = makeQuestion(focus, pool, Math.random);
+    const q = makeQuestion(focus, pool, Math.random, en);
     return q ? { k: 'ask', q, at: Date.now() } : { k: 'empty' };
   };
   const [phase, setPhase] = useState<Phase>(ask);
   const newQuestion = useCallback(() => {
-    const q = makeQuestion(focus, pool, Math.random);
+    const q = makeQuestion(focus, pool, Math.random, en);
     setPhase(q ? { k: 'ask', q, at: Date.now() } : { k: 'empty' });
-  }, [focus, pool]);
+  }, [focus, pool, en]);
 
   const pick = useCallback(
     (i: number) => {
@@ -398,12 +406,12 @@ export default function RailPage() {
   }, []);
 
   const progress = st.advanceBy === 'answers' ? toward / st.perStation : tick / st.seconds;
-  const leftText = st.advanceBy === 'answers' ? `${st.perStation - toward} câu đúng` : `${Math.max(0, st.seconds - tick)} giây`;
+  const leftText = st.advanceBy === 'answers' ? L(`${st.perStation - toward} câu đúng`, `${st.perStation - toward} correct answers`) : L(`${Math.max(0, st.seconds - tick)} giây`, `${Math.max(0, st.seconds - tick)}s`);
   const tickets = Object.keys(st.tickets).length;
   const hereIdx = route.stops.indexOf(station.id);
 
   const ticket = (
-    <Ticket phase={phase} onPick={pick} onNext={newQuestion} route={route} station={station.vi} next={next.vi} progress={progress} leftText={leftText} auto={st.auto} seat={`${String(7 + (hash(station.id) & 3)).padStart(2, '0')}·${(hash(station.id) & 15) + 1}A`} />
+    <Ticket phase={phase} onPick={pick} onNext={newQuestion} route={route} station={stationName(station, en)} next={stationName(next, en)} progress={progress} leftText={leftText} auto={st.auto} seat={`${String(7 + (hash(station.id) & 3)).padStart(2, '0')}·${(hash(station.id) & 15) + 1}A`} />
   );
 
   return (
@@ -412,30 +420,30 @@ export default function RailPage() {
         <div className="tv-rack" aria-hidden />
         {/* ------------------------------------------------ đầu toa */}
         <header style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <button className="tv-btn" aria-label="Về Quest" onClick={() => router.push('/quest' as never)}>
+          <button className="tv-btn" aria-label={L('Về Quest', 'Back to Quest')} onClick={() => router.push('/quest' as never)}>
             ←
           </button>
           <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.1 }}>
-            <span style={{ fontFamily: SERIF, fontSize: 26, fontWeight: 700 }}>Toa Từ Vựng</span>
+            <span style={{ fontFamily: SERIF, fontSize: 26, fontWeight: 700 }}>{L('Toa Từ Vựng', 'Vocab Carriage')}</span>
             <span style={{ fontFamily: MONO, fontSize: 13, color: C.muted, letterSpacing: '.08em' }}>
-              {route.glyph} Tuyến {route.vi}
+              {route.glyph} {L('Tuyến', 'Line:')} {routeName(route, en)}
             </span>
           </div>
           <span style={{ flex: 1 }} />
-          <button className={`tv-btn${st.view === 'outside' ? ' on' : ''}`} onClick={() => st.set({ view: st.view === 'window' ? 'outside' : 'window' })} title="Đổi góc nhìn">
+          <button className={`tv-btn${st.view === 'outside' ? ' on' : ''}`} onClick={() => st.set({ view: st.view === 'window' ? 'outside' : 'window' })} title={L('Đổi góc nhìn', 'Switch view')}>
             {st.view === 'window' ? '🪟' : '🚆'}
-            <span className="tv-hide-sm">{st.view === 'window' ? 'Ghế cạnh cửa sổ' : 'Ngắm tàu từ ngoài'}</span>
+            <span className="tv-hide-sm">{st.view === 'window' ? L('Ghế cạnh cửa sổ', 'Window seat') : L('Ngắm tàu từ ngoài', 'Watch from outside')}</span>
           </button>
-          <button className="tv-btn" onClick={() => setImmersive(true)} title="Phím F">
-            ⛶<span className="tv-hide-sm"> Toàn cảnh</span>
+          <button className="tv-btn" onClick={() => setImmersive(true)} title={L('Phím F', 'Key F')}>
+            ⛶<span className="tv-hide-sm">{L(' Toàn cảnh', ' Full screen')}</span>
           </button>
         </header>
 
         {/* ------------------------------------------------ chọn tuyến + sơ đồ */}
-        <div className="tv-routes" style={{ display: 'flex', gap: 8, margin: '16px 0 8px' }} role="radiogroup" aria-label="Chọn tuyến">
+        <div className="tv-routes" style={{ display: 'flex', gap: 8, margin: '16px 0 8px' }} role="radiogroup" aria-label={L('Chọn tuyến', 'Choose a line')}>
           {ROUTES.map((r) => (
             <button key={r.id} role="radio" aria-checked={route.id === r.id} className={`tv-btn${route.id === r.id ? ' on' : ''}`} onClick={() => pickRoute(r)} style={route.id === r.id ? { background: r.color, borderColor: r.color } : undefined}>
-              {r.glyph} {r.vi}
+              {r.glyph} {routeName(r, en)}
             </button>
           ))}
         </div>
@@ -446,14 +454,14 @@ export default function RailPage() {
           <div>
             <div className="tv-window">
               <div className="tv-glass">
-                <canvas ref={canvasRef} role="img" aria-label={`Ngoài cửa sổ: ${station.vi}, ${TIME_LABEL[time].toLowerCase()}, ${WEATHER_LABEL[st.weather].toLowerCase()}`} />
+                <canvas ref={canvasRef} role="img" aria-label={L(`Ngoài cửa sổ: ${station.vi}, ${TIME_LABEL[time].toLowerCase()}, ${WEATHER_LABEL[st.weather].toLowerCase()}`, `Outside the window: ${station.en}, ${TIME_LABEL_EN[time].toLowerCase()}, ${WEATHER_LABEL_EN[st.weather].toLowerCase()}`)} />
                 <div style={{ position: 'absolute', left: 'max(16px, 8%)', bottom: 14, display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <span style={{ fontFamily: SERIF, fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 700, color: '#fff', textShadow: '0 2px 0 rgba(0,0,0,.45), 0 0 18px rgba(0,0,0,.35)' }}>{station.vi}</span>
-                  <a className="tv-btn tv-hide-sm" href={`https://vi.wikipedia.org/wiki/${station.wiki}`} target="_blank" rel="noreferrer" style={{ background: 'rgba(10,20,35,.55)', fontSize: 13, padding: '5px 10px', textDecoration: 'none' }}>
-                    Tìm hiểu ↗
+                  <span style={{ fontFamily: SERIF, fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 700, color: '#fff', textShadow: '0 2px 0 rgba(0,0,0,.45), 0 0 18px rgba(0,0,0,.35)' }}>{stationName(station, en)}</span>
+                  <a className="tv-btn tv-hide-sm" href={en ? `https://en.wikipedia.org/wiki/${station.en.replace(/ /g, '_')}` : `https://vi.wikipedia.org/wiki/${station.wiki}`} target="_blank" rel="noreferrer" style={{ background: 'rgba(10,20,35,.55)', fontSize: 13, padding: '5px 10px', textDecoration: 'none' }}>
+                    {L('Tìm hiểu ↗', 'Learn more ↗')}
                   </a>
                 </div>
-                <button className="tv-btn" style={{ position: 'absolute', right: 'max(14px, 8%)', bottom: 12, background: 'rgba(10,20,35,.55)', padding: '6px 12px' }} aria-label={paused ? 'Cho tàu chạy tiếp' : 'Dừng tàu'} onClick={() => setPaused((p) => !p)}>
+                <button className="tv-btn" style={{ position: 'absolute', right: 'max(14px, 8%)', bottom: 12, background: 'rgba(10,20,35,.55)', padding: '6px 12px' }} aria-label={paused ? L('Cho tàu chạy tiếp', 'Resume the train') : L('Dừng tàu', 'Stop the train')} onClick={() => setPaused((p) => !p)}>
                   {paused ? '▶' : 'Ⅱ'}
                 </button>
                 {arrived ? <ArrivalStamp id={arrived} /> : null}
@@ -470,30 +478,30 @@ export default function RailPage() {
           {/* ------------------------------------------------ cột phải */}
           <aside style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div className="tv-card" style={{ background: '#101014', borderColor: '#26262C' }}>
-              <h2 className="tv-h">Bảng ga</h2>
+              <h2 className="tv-h">{L('Bảng ga', 'Departures board')}</h2>
               <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '8px 10px', alignItems: 'center' }}>
-                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>Giờ</span>
+                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>{L('Giờ', 'Time')}</span>
                 <Flap text={hhmm} len={5} size={20} />
-                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>Tại</span>
+                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>{L('Tại', 'At')}</span>
                 <Flap text={plain(station.en)} len={12} size={15} />
-                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>Tới</span>
+                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>{L('Tới', 'Next')}</span>
                 <Flap text={plain(next.en)} len={12} size={15} />
-                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>Sau</span>
+                <span className="tv-h" style={{ margin: 0, fontSize: 12 }}>{L('Sau', 'Then')}</span>
                 <Flap text={plain(after.en)} len={12} size={15} />
               </div>
               <div style={{ marginTop: 12, height: 6, borderRadius: 6, background: '#26262C', overflow: 'hidden' }}>
                 <i style={{ display: 'block', height: '100%', width: `${Math.min(100, progress * 100)}%`, background: C.amber, transition: 'width .5s' }} />
               </div>
-              <div style={{ fontFamily: MONO, fontSize: 13, color: '#B9B3A2', marginTop: 8 }}>{st.auto ? `Còn ${leftText} tới ${next.vi}` : 'Đang đỗ — bật tự chạy để đi tiếp'}</div>
+              <div style={{ fontFamily: MONO, fontSize: 13, color: '#B9B3A2', marginTop: 8 }}>{st.auto ? L(`Còn ${leftText} tới ${next.vi}`, `${leftText} to ${next.en}`) : L('Đang đỗ — bật tự chạy để đi tiếp', 'Parked — turn on auto-run to keep going')}</div>
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 12 }}>
                 <button className={`tv-icon${st.auto ? ' on' : ''}`} style={{ padding: '0 12px' }} onClick={() => st.set({ auto: !st.auto })}>
-                  {st.auto ? '⏵ Tự chạy' : '⏸ Đang đỗ'}
+                  {st.auto ? L('⏵ Tự chạy', '⏵ Auto-run') : L('⏸ Đang đỗ', '⏸ Parked')}
                 </button>
-                <button className={`tv-icon${st.backdrop ? ' on' : ''}`} style={{ padding: '0 12px' }} title="Cảnh tàu chạy làm nền khi ôn từ vựng (quiz, học từ, kiểm tra)" onClick={() => st.set({ backdrop: !st.backdrop })}>
-                  {st.backdrop ? '🖼️ Nền ôn từ: bật' : '🖼️ Nền ôn từ: tắt'}
+                <button className={`tv-icon${st.backdrop ? ' on' : ''}`} style={{ padding: '0 12px' }} title={L('Cảnh tàu chạy làm nền khi ôn từ vựng (quiz, học từ, kiểm tra)', 'Use the moving train as a background while reviewing vocab (quiz, learn, test)')} onClick={() => st.set({ backdrop: !st.backdrop })}>
+                  {st.backdrop ? L('🖼️ Nền ôn từ: bật', '🖼️ Review background: on') : L('🖼️ Nền ôn từ: tắt', '🖼️ Review background: off')}
                 </button>
                 <select
-                  aria-label="Cách chuyển ga"
+                  aria-label={L('Cách chuyển ga', 'How to reach the next stop')}
                   className="tv-icon"
                   style={{ padding: '0 10px', flex: 1 }}
                   value={st.advanceBy === 'answers' ? `a${st.perStation}` : `t${st.seconds}`}
@@ -505,33 +513,33 @@ export default function RailPage() {
                     else st.set({ advanceBy: 'time', seconds: Number(v.slice(1)) });
                   }}
                 >
-                  <option value="a3">3 câu đúng / ga</option>
-                  <option value="a5">5 câu đúng / ga</option>
-                  <option value="a10">10 câu đúng / ga</option>
-                  <option value="t60">1 phút / ga</option>
-                  <option value="t120">2 phút / ga</option>
-                  <option value="t300">5 phút / ga</option>
+                  <option value="a3">{L('3 câu đúng / ga', '3 correct / stop')}</option>
+                  <option value="a5">{L('5 câu đúng / ga', '5 correct / stop')}</option>
+                  <option value="a10">{L('10 câu đúng / ga', '10 correct / stop')}</option>
+                  <option value="t60">{L('1 phút / ga', '1 min / stop')}</option>
+                  <option value="t120">{L('2 phút / ga', '2 min / stop')}</option>
+                  <option value="t300">{L('5 phút / ga', '5 min / stop')}</option>
                 </select>
               </div>
             </div>
 
             <div className="tv-card">
-              <h2 className="tv-h">Bầu trời</h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }} role="radiogroup" aria-label="Thời điểm">
+              <h2 className="tv-h">{L('Bầu trời', 'Sky')}</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }} role="radiogroup" aria-label={L('Thời điểm', 'Time of day')}>
                 {(['auto', 'day', 'sunset', 'night'] as const).map((k) => (
-                  <button key={k} role="radio" aria-checked={st.time === k} className={`tv-icon${st.time === k ? ' on' : ''}`} title={k === 'auto' ? 'Theo giờ địa phương của ga' : TIME_LABEL[k]} onClick={() => st.set({ time: k })}>
+                  <button key={k} role="radio" aria-checked={st.time === k} className={`tv-icon${st.time === k ? ' on' : ''}`} title={k === 'auto' ? L('Theo giờ địa phương của ga', "Follow the station's local time") : timeLabel(k)} onClick={() => st.set({ time: k })}>
                     {k === 'auto' ? '🕰️' : k === 'day' ? '☀️' : k === 'sunset' ? '🌇' : '🌙'}
                   </button>
                 ))}
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, marginTop: 6 }} role="radiogroup" aria-label="Thời tiết">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6, marginTop: 6 }} role="radiogroup" aria-label={L('Thời tiết', 'Weather')}>
                 {(['clear', 'rain', 'snow'] as const).map((k) => (
                   <button key={k} role="radio" aria-checked={st.weather === k} className={`tv-icon${st.weather === k ? ' on' : ''}`} onClick={() => st.set({ weather: k })}>
-                    {k === 'clear' ? '🌤️' : k === 'rain' ? '🌧️' : '❄️'} {WEATHER_LABEL[k]}
+                    {k === 'clear' ? '🌤️' : k === 'rain' ? '🌧️' : '❄️'} {weatherLabel(k)}
                   </button>
                 ))}
               </div>
-              <div style={{ fontSize: 13, color: C.muted, marginTop: 8 }}>{st.time === 'auto' ? `Theo giờ ở ${station.vi}: ${TIME_LABEL[time].toLowerCase()}` : TIME_LABEL[time]}</div>
+              <div style={{ fontSize: 13, color: C.muted, marginTop: 8 }}>{st.time === 'auto' ? L(`Theo giờ ở ${station.vi}: ${TIME_LABEL[time].toLowerCase()}`, `Local time in ${station.en}: ${TIME_LABEL_EN[time].toLowerCase()}`) : timeLabel(time)}</div>
             </div>
 
             <Radio
@@ -549,11 +557,11 @@ export default function RailPage() {
         </div>
 
         {/* ------------------------------------------------ hộ chiếu */}
-        <section className="tv-pass" style={{ marginTop: 28 }} aria-label="Hộ chiếu tàu">
+        <section className="tv-pass" style={{ marginTop: 28 }} aria-label={L('Hộ chiếu tàu', 'Rail passport')}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap', marginBottom: 14 }}>
-            <h2 style={{ fontFamily: SERIF, fontSize: 24, margin: 0 }}>Hộ chiếu tàu</h2>
+            <h2 style={{ fontFamily: SERIF, fontSize: 24, margin: 0 }}>{L('Hộ chiếu tàu', 'Rail passport')}</h2>
             <span style={{ fontFamily: MONO, fontSize: 13, color: '#7A6A58' }}>
-              {tickets}/{STATIONS.length} dấu · đúng {st.correct}/{st.answered} câu trên tàu
+              {L(`${tickets}/${STATIONS.length} dấu · đúng ${st.correct}/${st.answered} câu trên tàu`, `${tickets}/${STATIONS.length} stamps · ${st.correct}/${st.answered} correct on board`)}
             </span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(96px, 1fr))', gap: 14 }}>
@@ -566,7 +574,7 @@ export default function RailPage() {
                   <button
                     key={id}
                     onClick={() => goTo(id, false)}
-                    aria-label={`${s.vi}${got ? `, đã đóng dấu ngày ${got}` : ', chưa tới'}`}
+                    aria-label={L(`${s.vi}${got ? `, đã đóng dấu ngày ${got}` : ', chưa tới'}`, `${s.en}${got ? `, stamped on ${got}` : ', not visited yet'}`)}
                     className="tv-st"
                     style={{
                       appearance: 'none',
@@ -579,23 +587,23 @@ export default function RailPage() {
                     }}
                   >
                     <span style={{ fontSize: 18 }}>{got ? r.glyph : '·'}</span>
-                    <strong style={{ textTransform: 'uppercase', fontSize: 11, letterSpacing: '.06em' }}>{plain(s.vi)}</strong>
-                    <span>{got ? got.slice(5).split('-').reverse().join('/') : s.country}</span>
+                    <strong style={{ textTransform: 'uppercase', fontSize: 11, letterSpacing: '.06em' }}>{plain(stationName(s, en))}</strong>
+                    <span>{got ? got.slice(5).split('-').reverse().join('/') : countryName(s.country, en)}</span>
                   </button>
                 );
               }),
             )}
           </div>
-          <p style={{ fontSize: 14, color: '#7A6A58', margin: '14px 0 0' }}>Tàu tự tới một ga (bằng câu đúng hoặc theo giờ) là hộ chiếu có thêm một con dấu. Chọn ga bằng tay thì không tính.</p>
+          <p style={{ fontSize: 14, color: '#7A6A58', margin: '14px 0 0' }}>{L('Tàu tự tới một ga (bằng câu đúng hoặc theo giờ) là hộ chiếu có thêm một con dấu. Chọn ga bằng tay thì không tính.', "Each time the train reaches a stop on its own (by correct answers or by time), your passport gets a stamp. Picking a stop by hand doesn't count.")}</p>
         </section>
       </div>
 
       {immersive && typeof document !== 'undefined'
         ? createPortal(
-            <div className="tv-imm" role="dialog" aria-modal="true" aria-label="Toàn cảnh">
+            <div className="tv-imm" role="dialog" aria-modal="true" aria-label={L('Toàn cảnh', 'Full screen')}>
               <canvas ref={immRef} aria-hidden />
               <div style={{ position: 'absolute', left: 16, top: 16, display: 'flex', gap: 8, alignItems: 'center' }}>
-                <span style={{ fontFamily: SERIF, fontSize: 28, fontWeight: 700, textShadow: '0 2px 0 rgba(0,0,0,.5)' }}>{station.vi}</span>
+                <span style={{ fontFamily: SERIF, fontSize: 28, fontWeight: 700, textShadow: '0 2px 0 rgba(0,0,0,.5)' }}>{stationName(station, en)}</span>
                 <Flap text={hhmm} len={5} size={16} />
               </div>
               <div style={{ position: 'absolute', right: 16, top: 16, display: 'flex', gap: 8 }}>
@@ -603,7 +611,7 @@ export default function RailPage() {
                   📻 {playing ? 'Ⅱ' : '▶'}
                 </button>
                 <button className="tv-btn" style={{ background: 'rgba(10,20,35,.6)' }} onClick={() => setImmersive(false)}>
-                  ✕ Thoát (Esc)
+                  {L('✕ Thoát (Esc)', '✕ Exit (Esc)')}
                 </button>
               </div>
               <div style={{ position: 'absolute', left: '50%', top: 72, transform: 'translateX(-50%)', width: 'min(760px, calc(100% - 24px))' }}>{ticket}</div>
@@ -617,6 +625,7 @@ export default function RailPage() {
 }
 
 function RouteLine({ route, hereIdx, progress, tickets, onPick }: { route: Route; hereIdx: number; progress: number; tickets: Record<string, string>; onPick: (id: string) => void }) {
+  const { L, en } = useL();
   const ref = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
     const box = ref.current;
@@ -627,7 +636,7 @@ function RouteLine({ route, hereIdx, progress, tickets, onPick }: { route: Route
   const n = route.stops.length;
   const done = Math.min(n - 1, hereIdx + Math.min(1, progress));
   return (
-    <div ref={ref} className="tv-line" aria-label={`Sơ đồ tuyến ${route.vi}`}>
+    <div ref={ref} className="tv-line" aria-label={L(`Sơ đồ tuyến ${route.vi}`, `Map of the ${routeName(route, en)} line`)}>
       <div style={{ position: 'relative', display: 'flex', minWidth: n * 84 }}>
         {/* Đường ray nối các ga + đoạn đã đi. */}
         <div aria-hidden style={{ position: 'absolute', left: 42, right: 42, top: 9, height: 4, borderRadius: 4, background: 'rgba(255,255,255,.12)' }} />
@@ -638,7 +647,7 @@ function RouteLine({ route, hereIdx, progress, tickets, onPick }: { route: Route
           return (
             <button key={id} className={`tv-dot${cls}`} onClick={() => onPick(id)} aria-current={i === hereIdx ? 'location' : undefined} style={{ position: 'relative', zIndex: 1, color: route.color, flex: '1 0 84px' }}>
               <i style={i === hereIdx ? { marginTop: -4 } : undefined} />
-              <span style={{ color: i === hereIdx ? C.ink : C.muted, whiteSpace: 'nowrap' }}>{i === hereIdx ? `🚆 ${s.vi}` : s.vi}</span>
+              <span style={{ color: i === hereIdx ? C.ink : C.muted, whiteSpace: 'nowrap' }}>{i === hereIdx ? `🚆 ${stationName(s, en)}` : stationName(s, en)}</span>
             </button>
           );
         })}
@@ -648,22 +657,24 @@ function RouteLine({ route, hereIdx, progress, tickets, onPick }: { route: Route
 }
 
 function ArrivalStamp({ id }: { id: string }) {
+  const { L, en } = useL();
   const s = stationById(id);
   const r = routeOf(id);
   return (
     <div role="status" style={{ position: 'absolute', left: '50%', top: '42%', transform: 'translate(-50%,-50%)', pointerEvents: 'none' }}>
       <div className="tv-stamp" style={{ position: 'static', borderColor: r.color, color: r.color, background: 'rgba(248,241,226,.92)', fontSize: 20, padding: '8px 18px', borderWidth: 4, whiteSpace: 'nowrap' }}>
-        ✦ ĐÃ TỚI {plain(s.vi).toUpperCase()} ✦
+        ✦ {L('ĐÃ TỚI', 'ARRIVED IN')} {plain(stationName(s, en)).toUpperCase()} ✦
       </div>
     </div>
   );
 }
 
 function Ticket({ phase, onPick, onNext, route, station, next, progress, leftText, auto, seat }: { phase: Phase; onPick: (i: number) => void; onNext: () => void; route: Route; station: string; next: string; progress: number; leftText: string; auto: boolean; seat: string }) {
+  const { L } = useL();
   if (phase.k === 'empty')
     return (
       <div className="tv-ticket" style={{ padding: 18, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'flex-start' }}>
-        Chưa có từ nào để hỏi ở bộ này — chọn bộ khác nhé.
+        {L('Chưa có từ nào để hỏi ở bộ này — chọn bộ khác nhé.', 'No words to ask from this deck — pick another one.')}
         <QuestWordPicker theme="light" />
       </div>
     );
@@ -673,13 +684,13 @@ function Ticket({ phase, onPick, onNext, route, station, next, progress, leftTex
       <div style={{ padding: '16px 18px 14px', minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontFamily: MONO, fontSize: 12, letterSpacing: '.14em', color: '#7A6A58' }}>
           <span style={{ width: 10, height: 10, borderRadius: 3, background: route.color, flex: 'none' }} />
-          VÉ HỌC · {station.toUpperCase()} → {next.toUpperCase()}
+          {L('VÉ HỌC', 'STUDY TICKET')} · {station.toUpperCase()} → {next.toUpperCase()}
         </div>
         <div style={{ marginTop: 10 }}>
           <QuestWordPicker theme="light" compact />
         </div>
         <div key={q.word} className="tv-pop">
-          <div style={{ fontFamily: MONO, fontSize: 12, color: '#7A6A58', marginTop: 10 }}>Chọn nghĩa đúng của</div>
+          <div style={{ fontFamily: MONO, fontSize: 12, color: '#7A6A58', marginTop: 10 }}>{L('Chọn nghĩa đúng của', 'Pick the right meaning of')}</div>
           <div lang="en" style={{ fontFamily: SERIF, fontSize: 'clamp(30px, 4vw, 42px)', fontWeight: 700, lineHeight: 1.1, margin: '2px 0 14px', overflowWrap: 'anywhere' }}>
             {q.word}
           </div>
@@ -698,10 +709,10 @@ function Ticket({ phase, onPick, onNext, route, station, next, progress, leftTex
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, minHeight: 36 }}>
           {phase.k === 'done' && !phase.right ? (
             <>
-              <span style={{ color: C.bad }}>Nghĩa đúng: {q.options[q.answer]}</span>
+              <span style={{ color: C.bad }}>{L('Nghĩa đúng:', 'Correct meaning:')} {q.options[q.answer]}</span>
               <span style={{ flex: 1 }} />
               <button className="tv-btn on" onClick={onNext}>
-                Câu tiếp ↵
+                {L('Câu tiếp ↵', 'Next ↵')}
               </button>
             </>
           ) : auto ? (
@@ -712,72 +723,73 @@ function Ticket({ phase, onPick, onNext, route, station, next, progress, leftTex
                 <span style={{ position: 'absolute', top: -2, left: `calc(${Math.min(1, progress) * 100}% - 10px)`, transition: 'left .6s ease', fontSize: 16 }}>🚃</span>
                 <span style={{ position: 'absolute', right: -4, top: 1, width: 12, height: 12, borderRadius: 6, background: route.color }} />
               </div>
-              <span style={{ fontFamily: MONO, fontSize: 13, color: '#7A6A58', whiteSpace: 'nowrap' }}>còn {leftText}</span>
+              <span style={{ fontFamily: MONO, fontSize: 13, color: '#7A6A58', whiteSpace: 'nowrap' }}>{L(`còn ${leftText}`, `${leftText} left`)}</span>
             </>
           ) : null}
         </div>
       </div>
       <div className="tv-stub">
-        <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '.16em', color: '#7A6A58' }}>TOA · GHẾ</span>
+        <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '.16em', color: '#7A6A58' }}>{L('TOA · GHẾ', 'CAR · SEAT')}</span>
         <span style={{ fontFamily: SERIF, fontSize: 24, fontWeight: 700 }}>{seat}</span>
-        <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '.16em', color: '#7A6A58', marginTop: 6 }}>PHÍM</span>
+        <span style={{ fontFamily: MONO, fontSize: 11, letterSpacing: '.16em', color: '#7A6A58', marginTop: 6 }}>{L('PHÍM', 'KEYS')}</span>
         <span style={{ fontFamily: MONO, fontSize: 13 }}>1–4 · Enter</span>
       </div>
-      {phase.k === 'done' && phase.right ? <span className="tv-stamp">ĐÚNG</span> : null}
+      {phase.k === 'done' && phase.right ? <span className="tv-stamp">{L('ĐÚNG', 'CORRECT')}</span> : null}
     </div>
   );
 }
 
 function Radio({ playing, track, onToggle, onSkip, onTrack }: { playing: boolean; track: number; onToggle: () => void; onSkip: (d: 1 | -1) => void; onTrack: (i: number) => void }) {
+  const { L, en } = useL();
   const st = useRailStore();
   return (
     <div className="tv-card" style={{ background: 'linear-gradient(180deg,#5A3A24,#3E2716)', borderColor: '#6E4A30' }}>
       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
         <div aria-hidden style={{ width: 54, height: 54, flex: 'none', borderRadius: 12, background: 'radial-gradient(circle,#2A1A10 1.6px,transparent 1.8px) 0 0/7px 7px, #4A3020', boxShadow: 'inset 0 0 0 2px #2A1A10' }} />
         <div style={{ flex: 1, minWidth: 0 }}>
-          <h2 className="tv-h" style={{ color: '#E8C9A0', margin: 0 }}>📻 Radio toa tàu</h2>
+          <h2 className="tv-h" style={{ color: '#E8C9A0', margin: 0 }}>{L('📻 Radio toa tàu', '📻 Carriage radio')}</h2>
           <div style={{ marginTop: 6, background: '#1A120A', borderRadius: 8, padding: '6px 10px', fontFamily: MONO, fontSize: 14, color: C.amber, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {playing ? '♪ ' : ''}
-            {TRACKS[track]?.name}
+            {TRACKS[track] ? trackName(TRACKS[track].name, en) : null}
           </div>
         </div>
       </div>
       <div style={{ display: 'flex', gap: 6, marginTop: 12 }}>
-        <button className="tv-icon" style={{ flex: 1 }} aria-label="Bài trước" onClick={() => onSkip(-1)}>
+        <button className="tv-icon" style={{ flex: 1 }} aria-label={L('Bài trước', 'Previous track')} onClick={() => onSkip(-1)}>
           ⏮
         </button>
-        <button className="tv-icon" style={{ flex: 2, background: playing ? C.brass : undefined, borderColor: playing ? C.brass : undefined, color: playing ? '#2A1A10' : undefined }} aria-label={playing ? 'Tắt nhạc' : 'Bật nhạc'} onClick={onToggle}>
-          {playing ? 'Ⅱ Tắt' : '▶ Bật nhạc'}
+        <button className="tv-icon" style={{ flex: 2, background: playing ? C.brass : undefined, borderColor: playing ? C.brass : undefined, color: playing ? '#2A1A10' : undefined }} aria-label={playing ? L('Tắt nhạc', 'Stop music') : L('Bật nhạc', 'Play music')} onClick={onToggle}>
+          {playing ? L('Ⅱ Tắt', 'Ⅱ Stop') : L('▶ Bật nhạc', '▶ Play music')}
         </button>
-        <button className="tv-icon" style={{ flex: 1 }} aria-label="Bài sau" onClick={() => onSkip(1)}>
+        <button className="tv-icon" style={{ flex: 1 }} aria-label={L('Bài sau', 'Next track')} onClick={() => onSkip(1)}>
           ⏭
         </button>
       </div>
-      <select aria-label="Chọn bài" className="tv-icon" style={{ width: '100%', marginTop: 6, padding: '0 10px' }} value={track} onChange={(e) => onTrack(Number(e.target.value))}>
+      <select aria-label={L('Chọn bài', 'Choose track')} className="tv-icon" style={{ width: '100%', marginTop: 6, padding: '0 10px' }} value={track} onChange={(e) => onTrack(Number(e.target.value))}>
         {TRACKS.map((t, i) => (
           <option key={t.name} value={i}>
-            {String(i + 1).padStart(2, '0')} · {t.name}
+            {String(i + 1).padStart(2, '0')} · {trackName(t.name, en)}
           </option>
         ))}
       </select>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginTop: 6 }} role="radiogroup" aria-label="Phong cách">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6, marginTop: 6 }} role="radiogroup" aria-label={L('Phong cách', 'Style')}>
         {(Object.keys(STYLE_LABEL) as MusicStyle[]).map((k) => (
           <button key={k} role="radio" aria-checked={st.style === k} className="tv-icon" style={st.style === k ? { background: C.brass, borderColor: C.brass, color: '#2A1A10' } : undefined} onClick={() => st.set({ style: k })}>
-            {STYLE_LABEL[k]}
+            {en ? STYLE_LABEL_EN[k] : STYLE_LABEL[k]}
           </button>
         ))}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 10 }}>
         <span aria-hidden>🔈</span>
-        <input className="tv-range" type="range" min={0} max={1} step={0.05} value={st.volume} onChange={(e) => st.set({ volume: Number(e.target.value) })} aria-label="Âm lượng" />
+        <input className="tv-range" type="range" min={0} max={1} step={0.05} value={st.volume} onChange={(e) => st.set({ volume: Number(e.target.value) })} aria-label={L('Âm lượng', 'Volume')} />
         <span aria-hidden>🔊</span>
       </div>
       <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginTop: 8, fontSize: 14, color: '#E8C9A0' }}>
         <label style={{ display: 'inline-flex', gap: 6, alignItems: 'center', cursor: 'pointer' }}>
-          <input type="checkbox" checked={st.rainSound} onChange={(e) => st.set({ rainSound: e.target.checked })} style={{ accentColor: C.brass }} /> Tiếng mưa
+          <input type="checkbox" checked={st.rainSound} onChange={(e) => st.set({ rainSound: e.target.checked })} style={{ accentColor: C.brass }} /> {L('Tiếng mưa', 'Rain sound')}
         </label>
         <label style={{ display: 'inline-flex', gap: 6, alignItems: 'center', cursor: 'pointer' }}>
-          <input type="checkbox" checked={st.autoTrack} onChange={(e) => st.set({ autoTrack: e.target.checked })} style={{ accentColor: C.brass }} /> Đổi bài mỗi 5 ga
+          <input type="checkbox" checked={st.autoTrack} onChange={(e) => st.set({ autoTrack: e.target.checked })} style={{ accentColor: C.brass }} /> {L('Đổi bài mỗi 5 ga', 'New track every 5 stops')}
         </label>
       </div>
     </div>

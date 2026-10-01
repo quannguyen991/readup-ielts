@@ -25,6 +25,7 @@ import { useGameStore } from '@/store/useGameStore';
 import { useRailStore } from '@/store/useRailStore';
 import { useTravelPractice } from '@/store/useTravelPractice';
 import { isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
+import { useL } from '@/i18n/useL';
 
 /**
  * Nền toa tàu có đang bật không. Khi bật, màn học bỏ thanh đánh quái ở trên
@@ -65,6 +66,7 @@ export function TravelBackdrop({ color, tone = 'dark', children }: { color: stri
 }
 
 function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'light'; children: React.ReactNode }) {
+  const { L, en } = useL();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sceneRef = useRef<RailScene | null>(null);
   const boost = useRef(0);
@@ -166,22 +168,22 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
       <View style={{ position: 'absolute', left: 12, bottom: 12, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
         <Pressable
           accessibilityRole="link"
-          accessibilityLabel={`Đang ở ${station.vi}, còn ${left} câu đúng tới ${next.vi}. Mở Toa Từ Vựng`}
+          accessibilityLabel={L(`Đang ở ${station.vi}, còn ${left} câu đúng tới ${next.vi}. Mở Toa Từ Vựng`,`At ${station.en}, ${left} more correct answers to ${next.en}. Open the Vocab Carriage`)}
           onPress={() => router.push('/quest/rail' as never)}
           style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: 'rgba(10,18,34,.72)', borderWidth: 1, borderColor: 'rgba(255,255,255,.14)' }}
         >
           <Text style={{ fontSize: 14 }}>🚆</Text>
-          {narrow ? null : <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '700' }}>{station.vi}</Text>}
+          {narrow ? null : <Text style={{ color: '#FFFFFF', fontSize: 14, fontWeight: '700' }}>{en ? station.en : station.vi}</Text>}
           <View style={{ flexDirection: 'row', gap: 3 }}>
             {Array.from({ length: st.perStation }, (_, i) => (
               <View key={i} style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: i < st.toward ? route.color : 'rgba(255,255,255,.25)' }} />
             ))}
           </View>
-          {narrow ? null : <Text style={{ color: 'rgba(255,255,255,.75)', fontSize: 14 }}>→ {next.vi}</Text>}
+          {narrow ? null : <Text style={{ color: 'rgba(255,255,255,.75)', fontSize: 14 }}>→ {en ? next.en : next.vi}</Text>}
         </Pressable>
         <Pressable
           accessibilityRole="button"
-          accessibilityLabel="Tắt nền toa tàu"
+          accessibilityLabel={L('Tắt nền toa tàu', 'Turn off the train background')}
           onPress={() => useRailStore.getState().set({ backdrop: false })}
           style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(10,18,34,.72)', borderWidth: 1, borderColor: 'rgba(255,255,255,.14)' }}
         >
@@ -191,7 +193,7 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
       {arrived ? (
         <View pointerEvents="none" style={{ position: 'absolute', left: 0, right: 0, top: '38%', alignItems: 'center' }} accessibilityLiveRegion="polite">
           <View style={{ transform: [{ rotate: '-6deg' }], borderWidth: 4, borderColor: routeOf(arrived).color, borderRadius: 12, paddingHorizontal: 18, paddingVertical: 8, backgroundColor: 'rgba(248,241,226,.95)' }}>
-            <Text style={{ color: routeOf(arrived).color, fontSize: 20, fontWeight: '800', letterSpacing: 2 }}>✦ ĐÃ TỚI {stationById(arrived).vi.toUpperCase()} ✦</Text>
+            <Text style={{ color: routeOf(arrived).color, fontSize: 20, fontWeight: '800', letterSpacing: 2 }}>✦ {L('ĐÃ TỚI', 'ARRIVED IN')} {(en ? stationById(arrived).en : stationById(arrived).vi).toUpperCase()} ✦</Text>
           </View>
         </View>
       ) : null}

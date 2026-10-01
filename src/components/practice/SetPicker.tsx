@@ -11,6 +11,7 @@ import { color } from '@/theme/tokens';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
+import { useL } from '@/i18n/useL';
 
 export type PickerSet = {
   /** Số câu của bộ. */
@@ -53,6 +54,7 @@ export function SetPicker({
   onOpen: (index: number) => void;
   footnote: string;
 }) {
+  const { L } = useL();
   const total = sets.length;
   const done = sets.filter((s) => s.done).length;
   const questions = sets.reduce((n, s) => n + s.size, 0);
@@ -75,7 +77,10 @@ export function SetPicker({
                 <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{eyebrow}</Text>
                 <Text className="mt-1 font-heavy text-pageTitle text-ink">{title}</Text>
                 <Text className="mt-1 font-sans text-bodyLg text-muted">
-                  {total} bộ đề · {questions} câu · đã làm {done}/{total} bộ
+                  {L(
+                    `${total} bộ đề · ${questions} câu · đã làm ${done}/${total} bộ`,
+                    `${total} sets · ${questions} questions · ${done}/${total} sets done`,
+                  )}
                 </Text>
               </View>
               <View aria-hidden>
@@ -87,7 +92,7 @@ export function SetPicker({
             </View>
             <Button
               className="mt-5 self-start"
-              label={done === 0 ? 'Bắt đầu từ Bộ đề 1' : `Làm tiếp: Bộ đề ${nextIndex + 1}`}
+              label={done === 0 ? L('Bắt đầu từ Bộ đề 1', 'Start with Set 1') : L(`Làm tiếp: Bộ đề ${nextIndex + 1}`, `Continue: Set ${nextIndex + 1}`)}
               onPress={() => onOpen(nextIndex)}
             />
           </View>
@@ -97,10 +102,10 @@ export function SetPicker({
           <View aria-hidden>
             <SealIcon name="grid" color="#A8843F" size={38} />
           </View>
-          <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink">Chọn bộ đề</Text>
+          <Text className="min-w-0 flex-1 font-heavy text-sectionTitle text-ink">{L('Chọn bộ đề', 'Choose a set')}</Text>
           {done === total && total > 0 ? (
             <View aria-hidden>
-              <Label text="Đã xong cả kho ✓" color="#22A06B" ink="#FFFFFF" tilt={4} size={12} />
+              <Label text={L('Đã xong cả kho ✓', 'All sets done ✓')} color="#22A06B" ink="#FFFFFF" tilt={4} size={12} />
             </View>
           ) : null}
         </View>
@@ -113,13 +118,13 @@ export function SetPicker({
                 <Pressable
                   key={i}
                   accessibilityRole="button"
-                  accessibilityLabel={`Bộ đề ${i + 1}`}
+                  accessibilityLabel={L(`Bộ đề ${i + 1}`, `Set ${i + 1}`)}
                   onPress={() => onOpen(i)}
                   className="rounded-2xl bg-white p-4"
                   style={[{ borderWidth: 2, borderColor: isNext ? color.primary : 'transparent' }, SHADOW]}
                 >
                   <View className="flex-row items-center justify-between">
-                    <Text className="font-strong text-bodyLg text-ink">Bộ đề {i + 1}</Text>
+                    <Text className="font-strong text-bodyLg text-ink">{L(`Bộ đề ${i + 1}`, `Set ${i + 1}`)}</Text>
                     {s.done ? (
                       s.ratio !== null && s.ratio >= 0.8 ? (
                         <View aria-hidden>
@@ -132,11 +137,11 @@ export function SetPicker({
                   </View>
                   {isNext && !s.done ? (
                     <View aria-hidden style={{ position: 'absolute', top: -10, right: -6 }}>
-                      <Label text="Làm tiếp →" color="#F2B632" tilt={6} size={11} />
+                      <Label text={L('Làm tiếp →', 'Continue →')} color="#F2B632" tilt={6} size={11} />
                     </View>
                   ) : null}
                   <Text className="mt-1 font-sans text-label text-muted">
-                    {s.size} câu · ~{s.size * minutesPerQuestion} phút
+                    {L(`${s.size} câu · ~${s.size * minutesPerQuestion} phút`, `${s.size} questions · ~${s.size * minutesPerQuestion} min`)}
                   </Text>
                   <View className="mt-3 flex-row items-center justify-between">
                     {s.score ? (
@@ -145,7 +150,7 @@ export function SetPicker({
                       </Text>
                     ) : (
                       <Text className="font-semi text-body" style={{ color: isNext ? color.primary : '#94A3B8' }}>
-                        {isNext ? 'Làm tiếp' : 'Chưa làm'}
+                        {isNext ? L('Làm tiếp', 'Continue') : L('Chưa làm', 'Not started')}
                       </Text>
                     )}
                     {s.note ? <Text className="font-sans text-label text-muted">{s.note}</Text> : null}

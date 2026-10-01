@@ -19,6 +19,7 @@ import { HomeRoom } from '../home/HomeRoom';
 import { avatarColors, CatchGame, WalkPrompt } from './Life';
 import { useL } from './common';
 import { CG } from './theme';
+import { currentLocale, pick } from '@/i18n/useL';
 
 type CityCard = { id: string; name: string; owner: string; era: number; buildings: number; likes: number };
 type Note = { name: string; text: string; at: string };
@@ -51,7 +52,7 @@ export function VisitView({ reduced, onBack, initial }: { reduced: boolean; onBa
       .then((b: { cities?: CityCard[]; error?: string }) => {
         if (dead) return;
         if (b.cities) setList(b.cities);
-        else setErr(b.error ?? 'Lỗi');
+        else setErr(b.error ?? pick(currentLocale(), 'Lỗi', 'Error'));
       })
       .catch((e: unknown) => !dead && setErr(e instanceof Error ? e.message : String(e)));
     return () => {
@@ -159,7 +160,7 @@ function VisitCity({ id, token, reduced, onBack }: { id: string; token: string |
     if (!token) return setMsg(L({ vi: 'Đăng nhập để thích và ghi sổ lưu bút.', en: 'Sign in to like and sign the guestbook.' }));
     const r = await fetch('/api/city-visit', { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ id, ...body }) });
     const b = (await r.json()) as { ok?: boolean; error?: string; likes?: number; liked?: boolean; notes?: Note[] };
-    if (!r.ok || !b.ok) return setMsg(b.error ?? `Lỗi ${r.status}`);
+    if (!r.ok || !b.ok) return setMsg(b.error ?? L({ vi: `Lỗi ${r.status}`, en: `Error ${r.status}` }));
     setDetail((d) => (d ? { ...d, likes: b.likes ?? d.likes, liked: b.liked ?? d.liked, notes: b.notes ?? d.notes } : d));
     if (body.action === 'note') {
       setText('');

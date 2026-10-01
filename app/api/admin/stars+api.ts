@@ -1,6 +1,7 @@
 import { requireAdmin } from '@/services/admin/guard';
 import { fetchAllPages } from '@/services/admin/fetch-all';
-import { applyGift, checkGiftAmount, newGiftId } from '@/services/admin/gift-stars';
+import { applyGift, checkGiftAmount, GIFT_MAX, newGiftId } from '@/services/admin/gift-stars';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/admin/stars   (chỉ quản trị viên)
@@ -25,11 +26,16 @@ export async function POST(request: Request): Promise<Response> {
 
     const body = (await request.json().catch(() => ({}))) as { userId?: unknown; all?: unknown; stars?: unknown; note?: unknown };
     const amount = checkGiftAmount(body.stars);
-    if (!amount.ok) return Response.json({ error: amount.error }, { status: 400 });
+    if (!amount.ok) {
+      return Response.json(
+        { error: msg(request, amount.error, `Stars must be a whole number from 1 to ${GIFT_MAX.toLocaleString('en-US')}.`) },
+        { status: 400 },
+      );
+    }
     const note = typeof body.note === 'string' ? body.note.trim().slice(0, 200) : '';
     const all = body.all === true;
     const userId = typeof body.userId === 'string' ? body.userId : '';
-    if (!all && !userId) return Response.json({ error: 'Thiếu userId (hoặc all: true).' }, { status: 400 });
+    if (!all && !userId) return Response.json({ error: msg(request, 'Thiếu userId (hoặc all: true).', 'userId (or all: true) is required.') }, { status: 400 });
 
     // ----------------------------------------------------------- người nhận
     let targets: string[] = [];
@@ -43,7 +49,7 @@ export async function POST(request: Request): Promise<Response> {
     } else {
       targets = [userId];
     }
-    if (targets.length === 0) return Response.json({ error: 'Không có tài khoản nào để tặng.' }, { status: 400 });
+    if (targets.length === 0) return Response.json({ error: msg(request, 'Không có tài khoản nào để tặng.', 'No accounts to gift.') }, { status: 400 });
 
     // ------------------------------------------------- đọc payload reward hiện có
     const existing = new Map<string, unknown>();
@@ -65,7 +71,7 @@ export async function POST(request: Request): Promise<Response> {
     const rows = targets.map((id) => ({ user_id: id, store_key: 'reward', payload: applyGift(existing.get(id) as Record<string, unknown> | null | undefined, giftId, amount.stars) as never, updated_at: now }));
     for (let i = 0; i < rows.length; i += UPSERT_CHUNK) {
       const { error } = await admin.from('user_state').upsert(rows.slice(i, i + UPSERT_CHUNK), { onConflict: 'user_id,store_key' });
-      if (error) return Response.json({ error: `Đã tặng ${i} / ${rows.length} tài khoản rồi dừng: ${error.message}` }, { status: 500 });
+      if (error) return Response.json({ error: msg(request, `Đã tặng ${i} / ${rows.length} tài khoản rồi dừng: ${error.message}`, `Gifted ${i} / ${rows.length} accounts, then stopped: ${error.message}`) }, { status: 500 });
     }
 
     // ------------------------------------------------------------- nhật ký
@@ -81,6 +87,6 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json({ ok: true, giftId, stars: amount.stars, recipients: rows.length, ...(auditError ? { auditWarning: auditError.message } : {}) });
   } catch (err) {
-    return Response.json({ error: err instanceof Error ? err.message : 'Lỗi không xác định.' }, { status: 500 });
+    return Response.json({ error: errorText(request, err, 'Lỗi không xác định.', 'Unknown error.') }, { status: 500 });
   }
 }

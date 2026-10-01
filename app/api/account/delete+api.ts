@@ -1,4 +1,5 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/account/delete
@@ -25,7 +26,7 @@ export async function POST(request: Request): Promise<Response> {
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
 
     if (!token) {
-      return Response.json({ error: 'Thiếu access token.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Thiếu access token.', 'Missing access token.') }, { status: 401 });
     }
 
     const admin = getSupabaseAdmin();
@@ -33,7 +34,7 @@ export async function POST(request: Request): Promise<Response> {
     // Đây là bước xác minh: token hỏng, hết hạn hoặc bịa thì `getUser` trả lỗi.
     const { data, error } = await admin.auth.getUser(token);
     if (error || !data.user) {
-      return Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
     }
 
     const { error: deleteError } = await admin.auth.admin.deleteUser(data.user.id);
@@ -43,7 +44,7 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json({ ok: true, deletedUserId: data.user.id });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     // Thiếu SUPABASE_SERVICE_KEY rơi vào đây — nói rõ để người vận hành biết
     // đây là lỗi cấu hình chứ không phải lỗi của người dùng.
     return Response.json({ error: message }, { status: 500 });

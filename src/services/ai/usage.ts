@@ -1,5 +1,6 @@
 import { PLAN_ORDER, type PlanId } from '@/lib/billing/plans';
 import { quotaLimit } from '@/lib/billing/entitlements';
+import { msg, type LocaleSource } from '@/lib/server-locale';
 import type { getSupabaseAdmin } from '@/lib/supabase-admin';
 
 /**
@@ -50,7 +51,12 @@ async function planOfUser(admin: Admin, userId: string): Promise<PlanId> {
   return plan;
 }
 
-export async function consumeAiCall(admin: Admin, userId: string): Promise<UsageVerdict> {
+/** `locale`: ngôn ngữ của lời nhắn hết lượt — truyền `request` của route vào. */
+export async function consumeAiCall(
+  admin: Admin,
+  userId: string,
+  locale: LocaleSource = 'vi',
+): Promise<UsageVerdict> {
   const plan = await planOfUser(admin, userId);
   const limit = quotaLimit(plan, 'ai_calls_per_month');
   const period = monthKey();
@@ -64,7 +70,11 @@ export async function consumeAiCall(admin: Admin, userId: string): Promise<Usage
       used: 0,
       limit: limit ?? 0,
       plan,
-      message: 'Không đọc được hạn mức AI. Thử lại sau ít phút.',
+      message: msg(
+        locale,
+        'Không đọc được hạn mức AI. Thử lại sau ít phút.',
+        'Could not read your AI quota. Please try again in a few minutes.',
+      ),
     };
   }
 
@@ -79,8 +89,16 @@ export async function consumeAiCall(admin: Admin, userId: string): Promise<Usage
       plan,
       message:
         plan === 'free'
-          ? `Gói Free có ${limit} lượt AI mỗi tháng và bạn đã dùng hết. Nâng cấp để có thêm.`
-          : `Gói ${plan} có ${limit} lượt AI mỗi tháng và bạn đã dùng hết. Hạn mức đặt lại vào đầu tháng sau.`,
+          ? msg(
+              locale,
+              `Gói Free có ${limit} lượt AI mỗi tháng và bạn đã dùng hết. Nâng cấp để có thêm.`,
+              `The Free plan includes ${limit} AI uses per month and you've used them all. Upgrade to get more.`,
+            )
+          : msg(
+              locale,
+              `Gói ${plan} có ${limit} lượt AI mỗi tháng và bạn đã dùng hết. Hạn mức đặt lại vào đầu tháng sau.`,
+              `Your ${plan} plan includes ${limit} AI uses per month and you've used them all. Your quota resets at the start of next month.`,
+            ),
     };
   }
 

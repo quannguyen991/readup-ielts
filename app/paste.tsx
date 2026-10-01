@@ -4,9 +4,11 @@ import { router, useLocalSearchParams } from 'expo-router';
 
 import { useUserArticleStore } from '@/store/useUserArticleStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /** Nhận văn bản tự dán, chấm độ khó rồi mở thẳng màn hình đọc. */
 export default function PasteScreen() {
+  const { L } = useL();
   const { text, title } = useLocalSearchParams<{ text?: string; title?: string }>();
   const addFromText = useUserArticleStore((s) => s.addFromText);
   const created = useRef(false);
@@ -26,7 +28,7 @@ export default function PasteScreen() {
   return (
     <View className="flex-1 items-center justify-center bg-canvas">
       <ActivityIndicator color={color.primary} />
-      <Text className="mt-3 font-sans text-body text-muted">Đang chấm độ khó văn bản…</Text>
+      <Text className="mt-3 font-sans text-body text-muted">{L('Đang chấm độ khó văn bản…', 'Rating text difficulty…')}</Text>
     </View>
   );
 }

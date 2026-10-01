@@ -34,6 +34,7 @@ import { PageStickers } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker } from '@/components/illust/Cute';
 import { CuteMagnifier, CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { currentLocale, useL } from '@/i18n/useL';
 
 /** Test Review — phần quan trọng nhất, bám ảnh tham chiếu số 1. */
 export default function ReviewScreen() {
@@ -42,6 +43,7 @@ export default function ReviewScreen() {
   const questionSet = useQuestionStore((s) => (session ? s.sets[session.articleId] : undefined));
 
   const plan = usePlan();
+  const { L } = useL();
   const [filter, setFilter] = useState<'all' | 'correct' | 'incorrect'>('all');
   const [typeFilter, setTypeFilter] = useState<QuestionType | 'all'>('all');
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
@@ -112,8 +114,8 @@ export default function ReviewScreen() {
             </Sticker>
           </Motion>
         </View>
-        <Text className="font-strong text-cardTitle text-ink">Không tìm thấy lượt làm bài này.</Text>
-        <Button label="Về Practice" className="mt-4" onPress={() => router.push('/practice' as never)} />
+        <Text className="font-strong text-cardTitle text-ink">{L('Không tìm thấy lượt làm bài này.', "We couldn't find this attempt.")}</Text>
+        <Button label={L('Về Practice', 'Back to Practice')} className="mt-4" onPress={() => router.push('/practice' as never)} />
       </Screen>
     );
   }
@@ -126,7 +128,7 @@ export default function ReviewScreen() {
   const skipped = session.attempts.filter((a) => !a.isCorrect && !a.userAnswer?.trim()).length;
   const wrong = incorrect - skipped;
   const accPct = pct(session.rawScore, session.total);
-  const cheer = accPct >= 80 ? { text: 'Xuất sắc 🏆', bg: '#22A06B' } : accPct >= 60 ? { text: 'Khá lắm ⭐', bg: '#A8843F' } : { text: 'Ôn tiếp nhé 💪', bg: '#F0703F' };
+  const cheer = accPct >= 80 ? { text: L('Xuất sắc 🏆', 'Excellent 🏆'), bg: '#22A06B' } : accPct >= 60 ? { text: L('Khá lắm ⭐', 'Nice work ⭐'), bg: '#A8843F' } : { text: L('Ôn tiếp nhé 💪', 'Keep practising 💪'), bg: '#F0703F' };
 
   return (
     <Screen>
@@ -180,7 +182,7 @@ export default function ReviewScreen() {
         <Grid columns={4} tabletColumns={2} mobileColumns={2}>
           <StatCard
             variant="sticker"
-            label="Câu đúng"
+            label={L('Câu đúng', 'Correct')}
             value={String(session.rawScore)}
             unit={`/ ${session.total}`}
             icon="check"
@@ -189,7 +191,7 @@ export default function ReviewScreen() {
           />
           <StatCard
             variant="sticker"
-            label="Bỏ qua"
+            label={L('Bỏ qua', 'Skipped')}
             value={String(skipped)}
             icon="clock"
             tone="warning"
@@ -197,7 +199,7 @@ export default function ReviewScreen() {
           />
           <StatCard
             variant="sticker"
-            label="Câu sai"
+            label={L('Câu sai', 'Wrong')}
             value={String(wrong)}
             icon="close"
             tone="danger"
@@ -205,14 +207,14 @@ export default function ReviewScreen() {
           />
           <StatCard
             variant="sticker"
-            label="Band IELTS"
+            label={L('Band IELTS', 'IELTS band')}
             value={formatBand(session.estimatedBand)}
             icon="trending"
             tone="accent"
             caption={
               session.estimatedBand == null
-                ? 'Bài SAT không quy ra band'
-                : `Làm trong ${formatDuration(session.durationMs)}`
+                ? L('Bài SAT không quy ra band', 'SAT sets have no band score')
+                : L(`Làm trong ${formatDuration(session.durationMs)}`, `Took ${formatDuration(session.durationMs)}`)
             }
           />
         </Grid>
@@ -229,13 +231,13 @@ export default function ReviewScreen() {
 
       <View className="mt-4 flex-row flex-wrap gap-2">
         <Button
-          label="Làm lại bài"
+          label={L('Làm lại bài', 'Retake')}
           variant="outline"
           iconLeft="refresh"
           onPress={() => router.push(`/read/${session.articleId}` as never)}
         />
         <Button
-          label={`Xem bài giải chi tiết (${incorrect})`}
+          label={L(`Xem bài giải chi tiết (${incorrect})`, `See detailed solutions (${incorrect})`)}
           iconRight="arrow-right"
           disabled={incorrect === 0}
           onPress={() => setFilter('incorrect')}
@@ -399,7 +401,7 @@ export default function ReviewScreen() {
                           attempt.isCorrect ? 'text-success-ink' : 'text-danger-ink',
                         ].join(' ')}
                       >
-                        {attempt.userAnswer || '(bỏ trống)'}
+                        {attempt.userAnswer || L('(bỏ trống)', '(blank)')}
                       </Text>
                     </View>
                     <View>
@@ -443,7 +445,7 @@ export default function ReviewScreen() {
                               “{question.evidenceText}”
                             </Text>
                             <Text className="mt-1 font-mid text-label text-muted">
-                              Đoạn {question.evidenceParagraphIndex + 1}
+                              {L('Đoạn', 'Paragraph')} {question.evidenceParagraphIndex + 1}
                             </Text>
                           </View>
 
@@ -482,7 +484,7 @@ export default function ReviewScreen() {
                               });
                               const json = (await res.json()) as { text?: string; error?: string };
                               if (!res.ok || !json.text) {
-                                throw new Error(json.error ?? `Máy chủ trả ${res.status}`);
+                                throw new Error(json.error ?? (currentLocale() === 'en' ? `Server returned ${res.status}` : `Máy chủ trả ${res.status}`));
                               }
                               return json.text;
                             }}
@@ -504,7 +506,7 @@ export default function ReviewScreen() {
                     </Motion>
                   </View>
                   <Text className="text-center font-sans text-body text-muted">
-                    Không có câu nào khớp bộ lọc.
+                    {L('Không có câu nào khớp bộ lọc.', 'No questions match this filter.')}
                   </Text>
                 </View>
               ) : null}
@@ -582,7 +584,10 @@ export default function ReviewScreen() {
 
                       {marked ? (
                         <Text className="mt-1.5 font-mid text-label text-primary-700">
-                          Đáp án câu {evidence.map((e) => e.order + 1).join(', ')} nằm ở đoạn này
+                          {L(
+                            `Đáp án câu ${evidence.map((e) => e.order + 1).join(', ')} nằm ở đoạn này`,
+                            `The answer to question ${evidence.map((e) => e.order + 1).join(', ')} is in this paragraph`,
+                          )}
                         </Text>
                       ) : null}
                     </View>
@@ -592,8 +597,8 @@ export default function ReviewScreen() {
             </View>
 
             <View className="mt-4 flex-row flex-wrap items-center gap-3 border-t border-border pt-3">
-              <LegendDot color={highlightColors.yellow.dot} label="Evidence câu sai" />
-              <LegendDot color={highlightColors.green.dot} label="Evidence câu đúng" />
+              <LegendDot color={highlightColors.yellow.dot} label={L('Evidence câu sai', 'Evidence for wrong answers')} />
+              <LegendDot color={highlightColors.green.dot} label={L('Evidence câu đúng', 'Evidence for correct answers')} />
               <View className="flex-1" />
               <Pressable onPress={() => setShowHighlights(false)}>
                 <Text className="font-semi text-label text-primary-600">Clear all highlights</Text>
@@ -603,10 +608,12 @@ export default function ReviewScreen() {
             <View className="mt-4 flex-row items-start gap-2 rounded-panel bg-primary-50 p-3">
               <QuestionTypeIcon type={worstType(session.attempts)} size={32} />
               <View className="flex-1">
-                <Text className="font-semi text-body text-primary-700">Gợi ý luyện tiếp</Text>
+                <Text className="font-semi text-body text-primary-700">{L('Gợi ý luyện tiếp', 'What to practise next')}</Text>
                 <Text className="mt-0.5 font-sans text-label text-muted">
-                  Dạng yếu nhất lượt này: {QUESTION_TYPE_LABEL[worstType(session.attempts)]}. Vào
-                  Progress để sinh bộ bài tập riêng cho dạng đó.
+                  {L(
+                    `Dạng yếu nhất lượt này: ${QUESTION_TYPE_LABEL[worstType(session.attempts)]}. Vào Progress để sinh bộ bài tập riêng cho dạng đó.`,
+                    `Your weakest type this time: ${QUESTION_TYPE_LABEL[worstType(session.attempts)]}. Head to Progress to generate a practice set for it.`,
+                  )}
                 </Text>
               </View>
             </View>

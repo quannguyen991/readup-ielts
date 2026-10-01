@@ -13,6 +13,7 @@ import {
 } from '@/services/auth/session';
 
 import { claimPendingInvite } from '@/services/referral/pending';
+import { useLocale } from '@/i18n/useL';
 
 import { useBillingStore } from './useBillingStore';
 
@@ -130,13 +131,17 @@ export function useAuthBootstrap() {
   }, [applySession, initialize, refreshProfile]);
 }
 
-/** Tên hiện trên sidebar và màn hồ sơ. */
+/**
+ * Tên hiện trên sidebar và màn hồ sơ. Tên dự phòng (Khách / Bạn) dịch lúc vẽ
+ * theo ngôn ngữ giao diện — tên đã lưu của người dùng thì giữ nguyên.
+ */
 export function useDisplayName(): string {
   const user = useAuthStore((s) => s.user);
   const profile = useAuthStore((s) => s.profile);
   const status = useAuthStore((s) => s.status);
-  if (status !== 'signed_in') return 'Khách';
-  return displayNameOf(user, profile);
+  const en = useLocale() === 'en';
+  if (status !== 'signed_in') return en ? 'Guest' : 'Khách';
+  return displayNameOf(user, profile, en ? 'You' : 'Bạn');
 }
 
 export function useIsSignedIn(): boolean {

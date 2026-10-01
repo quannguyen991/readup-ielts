@@ -5,7 +5,9 @@ import { router } from 'expo-router';
 import { QuestionCard } from './QuestionCard';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Badge, Button, Icon, PaperCard } from '@/components/ui';
-import { SAT_RW_SKILL_LABEL, type SatRwQuestion } from '@/data/sat-rw-repository';
+import type { SatRwQuestion } from '@/data/sat-rw-repository';
+import { useL } from '@/i18n/useL';
+import { rwSkillLabel } from './skill-label';
 import { useStudyStore } from '@/store/useStudyStore';
 import { recordRwAttempt } from '@/store/useSatRwStore';
 import { paper } from '@/theme/tokens';
@@ -66,6 +68,7 @@ export function UnitRunner({
   const [answers, setAnswers] = useState<(number | null)[]>(() => questions.map(() => null));
   const [correct, setCorrect] = useState(0);
   const [done, setDone] = useState(false);
+  const { L, en } = useL();
   const [showRule, setShowRule] = useState(false);
   // Phương án Cú đã loại ở câu đang mở.
   const [hidden, setHidden] = useState<number[]>([]);
@@ -135,12 +138,12 @@ export function UnitRunner({
   if (done) {
     const percent = Math.round((correct / questions.length) * 100);
     return (
-      <TaskShell tone="paper" backHref={backHref} backLabel={backLabel} title="Xong bộ này" subtitle={subtitle} icon="clipboard">
+      <TaskShell tone="paper" backHref={backHref} backLabel={backLabel} title={L('Xong bộ này', 'Set complete')} subtitle={subtitle} icon="clipboard">
         <PaperCard className="items-center py-8">
           <Text className="font-heavy text-hero text-paper-ink">
             {correct}/{questions.length}
           </Text>
-          <Text className="mt-1 font-sans text-body text-paper-muted">câu đúng · {percent}%</Text>
+          <Text className="mt-1 font-sans text-body text-paper-muted">{L(`câu đúng · ${percent}%`, `correct · ${percent}%`)}</Text>
         </PaperCard>
 
         {/*
@@ -150,7 +153,7 @@ export function UnitRunner({
         */}
         {!instantSolution ? (
           <View className="mt-4 gap-3">
-            <Text className="font-strong text-bodyLg text-paper-ink">Xem lại từng câu</Text>
+            <Text className="font-strong text-bodyLg text-paper-ink">{L('Xem lại từng câu', 'Review each question')}</Text>
             {questions.map((q, i) => (
               <QuestionCard key={q.id} question={q} picked={answers[i] ?? null} onPick={() => {}} />
             ))}
@@ -158,7 +161,7 @@ export function UnitRunner({
         ) : null}
 
         <View className="mt-4 flex-row flex-wrap gap-2">
-          <Button variant="brand" label="Làm lại bộ này" iconLeft="refresh" onPress={restart} />
+          <Button variant="brand" label={L('Làm lại bộ này', 'Retry this set')} iconLeft="refresh" onPress={restart} />
           <Button variant="brandOutline" label={doneLabel} onPress={() => router.replace(doneHref as never)} />
         </View>
       </TaskShell>
@@ -176,7 +179,7 @@ export function UnitRunner({
         <View className="rounded-pill bg-white px-3.5 py-1.5">
           <Text className="font-strong text-label text-paper-ink">
             {index + 1} / {questions.length}
-            {instantSolution ? ` · đúng ${correct}` : ''}
+            {instantSolution ? L(` · đúng ${correct}`, ` · ${correct} correct`) : ''}
           </Text>
         </View>
       }
@@ -197,7 +200,7 @@ export function UnitRunner({
               color={paper.brandMid}
               strokeWidth={2}
             />
-            <Text className="font-strong text-body text-paper-ink">Luật của bài này</Text>
+            <Text className="font-strong text-body text-paper-ink">{L('Luật của bài này', 'This unit’s rule')}</Text>
           </Pressable>
           {showRule ? (
             <Text className="mt-2.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
@@ -219,18 +222,20 @@ export function UnitRunner({
       </CrossFade>
 
       <View className="mt-4 flex-row flex-wrap items-center gap-2">
-        <Badge label={SAT_RW_SKILL_LABEL[question.skill] ?? question.skill} tone="neutral" />
+        <Badge label={rwSkillLabel(question.skill, en)} tone="neutral" />
         <View className="flex-1" />
         {answered ? (
           <Button
             variant="brand"
-            label={index + 1 < questions.length ? 'Câu tiếp theo' : 'Xem kết quả'}
+            label={index + 1 < questions.length ? L('Câu tiếp theo', 'Next question') : L('Xem kết quả', 'See results')}
             iconRight="arrow-right"
             onPress={next}
           />
         ) : (
           <Text className="font-sans text-label text-paper-muted">
-            {instantSolution ? 'Chọn một phương án để xem lời giải' : 'Chọn một phương án để đi tiếp'}
+            {instantSolution
+              ? L('Chọn một phương án để xem lời giải', 'Choose an option to see the explanation')
+              : L('Chọn một phương án để đi tiếp', 'Choose an option to continue')}
           </Text>
         )}
       </View>

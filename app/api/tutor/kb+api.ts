@@ -2,6 +2,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { AiError } from '@/services/ai/errors';
 import { consumeAiCall, refundAiCall } from '@/services/ai/usage';
 import { askKnowledgeBase } from '@/services/tutor/knowledge-base';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/tutor/kb
@@ -29,12 +30,12 @@ export async function POST(request: Request): Promise<Response> {
     const header = request.headers.get('authorization') ?? '';
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
     if (!token) {
-      return Response.json({ error: 'Đăng nhập để hỏi đáp trên cả kho bài đọc.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Đăng nhập để hỏi đáp trên cả kho bài đọc.', 'Sign in to ask questions across the whole reading library.') }, { status: 401 });
     }
 
     const { data: auth, error: authError } = await admin.auth.getUser(token);
     if (authError || !auth.user) {
-      return Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
     }
     userId = auth.user.id;
 
@@ -45,7 +46,7 @@ export async function POST(request: Request): Promise<Response> {
 
     const question = typeof body.question === 'string' ? body.question.trim() : '';
     if (!question) {
-      return Response.json({ error: 'Chưa có câu hỏi nào.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Chưa có câu hỏi nào.', 'No question yet.') }, { status: 400 });
     }
 
     const history = (Array.isArray(body.history) ? body.history : []).filter(
@@ -55,7 +56,7 @@ export async function POST(request: Request): Promise<Response> {
         ((m as { role?: unknown }).role === 'user' || (m as { role?: unknown }).role === 'assistant'),
     );
 
-    const verdict = await consumeAiCall(admin, userId);
+    const verdict = await consumeAiCall(admin, userId, request);
     if (!verdict.allowed) {
       return Response.json(
         { error: verdict.message, used: verdict.used, limit: verdict.limit, plan: verdict.plan },
@@ -74,12 +75,12 @@ export async function POST(request: Request): Promise<Response> {
       // Kho tri thức hỏng là lỗi của ta, không phải của người dùng — trả lại lượt.
       await refundAiCall(admin, userId);
       const code = kbError instanceof AiError ? kbError.code : 'server_error';
-      const message = kbError instanceof Error ? kbError.message : 'Kho tri thức không phản hồi.';
+      const message = errorText(request, kbError, 'Kho tri thức không phản hồi.', 'The knowledge base is not responding.');
       // 503: phía ReadUp hiểu đây là tín hiệu rơi về `/api/ask`.
       return Response.json({ error: message, code }, { status: 503 });
     }
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

@@ -7,6 +7,8 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon } from '@/components/ui';
 import { PLANS, PLAN_ORDER, formatVnd, type PlanId } from '@/lib/billing/plans';
+import { currentLocale, pick, useL, type Bi, bi } from '@/i18n/useL';
+import type { Locale } from '@/i18n/keys';
 import { useAuthStore } from '@/store/useAuthStore';
 import { color } from '@/theme/tokens';
 import { type UserActivity } from '@/services/admin/activity';
@@ -27,6 +29,9 @@ import type { TrafficSummary } from '@/services/analytics/traffic';
  * nhận 403 ở mọi lời gọi.
  */
 
+/** Câu cho code ngoài lượt vẽ (xử lý sự kiện, gọi API): đọc ngôn ngữ lúc chạy. */
+const tr = (vi: string, en: string): string => pick(currentLocale(), vi, en);
+
 type AdminUser = {
   id: string;
   email: string | null;
@@ -43,6 +48,7 @@ export default function AdminScreen() {
   const profile = useAuthStore((s) => s.profile);
   const session = useAuthStore((s) => s.session);
   const status = useAuthStore((s) => s.status);
+  const { L } = useL();
 
   const [tab, setTab] = useState<'users' | 'payments' | 'groups'>('payments');
   const [users, setUsers] = useState<AdminUser[]>([]);
@@ -63,11 +69,11 @@ export default function AdminScreen() {
         headers: { Authorization: `Bearer ${token}` },
       });
       const body = (await res.json()) as { users?: AdminUser[]; total?: number; error?: string };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setUsers(body.users ?? []);
       setTotal(body.total ?? 0);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không tải được danh sách.');
+      setError(err instanceof Error ? err.message : tr('Không tải được danh sách.', 'Could not load the list.'));
     } finally {
       setLoading(false);
     }
@@ -103,15 +109,17 @@ export default function AdminScreen() {
         body: JSON.stringify({ userId: user.id, plan, months }),
       });
       const body = (await res.json()) as { error?: string; auditWarning?: string };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setBanner(
         `${user.email ?? user.id} → ${PLANS[plan].name}` +
-          (months ? ` (${months} tháng)` : ' (không hết hạn)') +
-          (body.auditWarning ? ` · ⚠ nhật ký không ghi được: ${body.auditWarning}` : ''),
+          (months
+            ? tr(` (${months} tháng)`, ` (${months} ${months === 1 ? 'month' : 'months'})`)
+            : tr(' (không hết hạn)', ' (no expiry)')) +
+          (body.auditWarning ? tr(` · ⚠ nhật ký không ghi được: ${body.auditWarning}`, ` · ⚠ audit log not written: ${body.auditWarning}`) : ''),
       );
       await load();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không đổi được gói.');
+      setError(err instanceof Error ? err.message : tr('Không đổi được gói.', 'Could not change the plan.'));
     }
   };
 
@@ -127,14 +135,25 @@ export default function AdminScreen() {
         body: JSON.stringify(user ? { userId: user.id, stars } : { all: true, stars }),
       });
       const body = (await res.json()) as { error?: string; recipients?: number; auditWarning?: string };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setBanner(
-        (user ? `Đã tặng ${stars.toLocaleString('vi-VN')} ⭐ cho ${user.email ?? user.id}` : `Đã tặng ${stars.toLocaleString('vi-VN')} ⭐ cho ${body.recipients ?? 0} tài khoản`) +
-          ' — người nhận thấy sao ở lần đồng bộ kế tiếp (mở app / tải lại trang).' +
-          (body.auditWarning ? ` · ⚠ nhật ký không ghi được: ${body.auditWarning}` : ''),
+        (user
+          ? tr(
+              `Đã tặng ${stars.toLocaleString('vi-VN')} ⭐ cho ${user.email ?? user.id}`,
+              `Gifted ${stars.toLocaleString('en-US')} ⭐ to ${user.email ?? user.id}`,
+            )
+          : tr(
+              `Đã tặng ${stars.toLocaleString('vi-VN')} ⭐ cho ${body.recipients ?? 0} tài khoản`,
+              `Gifted ${stars.toLocaleString('en-US')} ⭐ to ${body.recipients ?? 0} accounts`,
+            )) +
+          tr(
+            ' — người nhận thấy sao ở lần đồng bộ kế tiếp (mở app / tải lại trang).',
+            ' — recipients see the stars on their next sync (open the app / reload the page).',
+          ) +
+          (body.auditWarning ? tr(` · ⚠ nhật ký không ghi được: ${body.auditWarning}`, ` · ⚠ audit log not written: ${body.auditWarning}`) : ''),
       );
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không tặng được sao.');
+      setError(err instanceof Error ? err.message : tr('Không tặng được sao.', 'Could not gift stars.'));
     }
   };
 
@@ -144,9 +163,9 @@ export default function AdminScreen() {
     return out;
   }, [users]);
 
-  if (status === 'signed_out') return <Blocked reason="Cần đăng nhập trước." />;
+  if (status === 'signed_out') return <Blocked reason={L('Cần đăng nhập trước.', 'Please sign in first.')} />;
   if (profile && profile.role !== 'admin') {
-    return <Blocked reason="Tài khoản này không có quyền quản trị." />;
+    return <Blocked reason={L('Tài khoản này không có quyền quản trị.', 'This account does not have admin access.')} />;
   }
 
   return (
@@ -155,15 +174,17 @@ export default function AdminScreen() {
         <View className="flex-row flex-wrap items-start justify-between gap-3">
           <View className="flex-1" style={{ minWidth: 240 }}>
             <View className="flex-row items-center gap-2">
-              <Text className="font-heavy text-pageTitle text-ink">Quản trị</Text>
+              <Text className="font-heavy text-pageTitle text-ink">{L('Quản trị', 'Admin')}</Text>
               <Badge label="ADMIN" tone="accent" shape="tag" uppercase />
             </View>
             <Text className="mt-1 font-sans text-body text-muted">
-              Cấp gói bằng tay sau khi đối chiếu chuyển khoản. Mọi thay đổi đều được ghi nhật ký
-              kèm giá trị trước và sau.
+              {L(
+                'Cấp gói bằng tay sau khi đối chiếu chuyển khoản. Mọi thay đổi đều được ghi nhật ký kèm giá trị trước và sau.',
+                'Grant plans manually after matching bank transfers. Every change is logged with before and after values.',
+              )}
             </Text>
           </View>
-          <Button label="Tải lại" variant="outline" iconLeft="refresh" onPress={() => void load()} />
+          <Button label={L('Tải lại', 'Reload')} variant="outline" iconLeft="refresh" onPress={() => void load()} />
         </View>
       </Appear>
 
@@ -179,9 +200,9 @@ export default function AdminScreen() {
         {/* Đối chiếu thanh toán đứng TRƯỚC vì đó là việc phải làm hằng ngày;
             danh sách người dùng chỉ tra khi cần. */}
         <View className="mt-4 flex-row gap-2">
-          <TabPill label="Đối chiếu thanh toán" active={tab === 'payments'} onPress={() => setTab('payments')} />
-          <TabPill label="Nhóm mua chung" active={tab === 'groups'} onPress={() => setTab('groups')} />
-          <TabPill label="Người dùng & gói" active={tab === 'users'} onPress={() => setTab('users')} />
+          <TabPill label={L('Đối chiếu thanh toán', 'Payment matching')} active={tab === 'payments'} onPress={() => setTab('payments')} />
+          <TabPill label={L('Nhóm mua chung', 'Group buys')} active={tab === 'groups'} onPress={() => setTab('groups')} />
+          <TabPill label={L('Người dùng & gói', 'Users & plans')} active={tab === 'users'} onPress={() => setTab('users')} />
         </View>
       </Appear>
 
@@ -199,7 +220,7 @@ export default function AdminScreen() {
       {tab === 'users' ? (
       <Appear index={2}>
         <View className="mt-4 flex-row flex-wrap gap-2">
-          <Stat label="tài khoản" value={String(total)} />
+          <Stat label={L('tài khoản', 'accounts')} value={String(total)} />
           {PLAN_ORDER.map((id) => (
             <Stat key={id} label={PLANS[id].name} value={String(counts[id] ?? 0)} tint={planTone(id).solid} />
           ))}
@@ -221,7 +242,7 @@ export default function AdminScreen() {
             <TextInput
               value={query}
               onChangeText={setQuery}
-              placeholder="Tìm theo email"
+              placeholder={L('Tìm theo email', 'Search by email')}
               placeholderTextColor={color.subtle}
               autoCapitalize="none"
               className="flex-1 py-2.5 font-sans text-body text-ink"
@@ -249,12 +270,12 @@ export default function AdminScreen() {
       <View className="mt-4 gap-3">
         {loading && users.length === 0 ? (
           <Card>
-            <Text className="font-sans text-body text-muted">Đang tải…</Text>
+            <Text className="font-sans text-body text-muted">{L('Đang tải…', 'Loading…')}</Text>
           </Card>
         ) : users.length === 0 ? (
           <Card>
             <Text className="font-sans text-body text-muted">
-              {query ? 'Không có tài khoản nào khớp.' : 'Chưa có tài khoản nào.'}
+              {query ? L('Không có tài khoản nào khớp.', 'No matching accounts.') : L('Chưa có tài khoản nào.', 'No accounts yet.')}
             </Text>
           </Card>
         ) : (
@@ -298,6 +319,7 @@ type AdminPayment = {
  * chuyển đồng nào.
  */
 function PaymentsPanel({ token, onDone }: { token: string | null; onDone: () => void }) {
+  const { L } = useL();
   const [items, setItems] = useState<AdminPayment[]>([]);
   const [status, setStatus] = useState<'pending' | 'all'>('pending');
   const [loading, setLoading] = useState(false);
@@ -313,10 +335,10 @@ function PaymentsPanel({ token, onDone }: { token: string | null; onDone: () => 
         headers: { Authorization: `Bearer ${token}` },
       });
       const body = (await res.json()) as { payments?: AdminPayment[]; error?: string };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setItems(body.payments ?? []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không tải được danh sách đơn.');
+      setError(err instanceof Error ? err.message : tr('Không tải được danh sách đơn.', 'Could not load payments.'));
     } finally {
       setLoading(false);
     }
@@ -344,17 +366,19 @@ function PaymentsPanel({ token, onDone }: { token: string | null; onDone: () => 
         body: JSON.stringify({ paymentId: item.id, action }),
       });
       const body = (await res.json()) as { error?: string; plan?: string; expiresAt?: string };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setBanner(
         action === 'confirm'
-          ? `Đã bật gói ${PLANS[item.plan].name} cho ${item.email ?? item.user_id}` +
-              (body.expiresAt ? ` tới ${formatDate(body.expiresAt)}` : '')
-          : `Đã huỷ đơn ${item.reference ?? item.id}`,
+          ? tr(
+              `Đã bật gói ${PLANS[item.plan].name} cho ${item.email ?? item.user_id}`,
+              `Enabled ${PLANS[item.plan].name} for ${item.email ?? item.user_id}`,
+            ) + (body.expiresAt ? tr(` tới ${formatDate(body.expiresAt, 'vi')}`, ` until ${formatDate(body.expiresAt, 'en')}`) : '')
+          : tr(`Đã huỷ đơn ${item.reference ?? item.id}`, `Cancelled payment ${item.reference ?? item.id}`),
       );
       await load();
       onDone();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không xử lý được đơn.');
+      setError(err instanceof Error ? err.message : tr('Không xử lý được đơn.', 'Could not process the payment.'));
     }
   };
 
@@ -364,10 +388,10 @@ function PaymentsPanel({ token, onDone }: { token: string | null; onDone: () => 
     <View className="mt-4">
       <View className="flex-row flex-wrap items-center justify-between gap-2">
         <View className="flex-row gap-2">
-          <TabPill label={`Đang chờ${status === 'pending' ? ` (${pendingCount})` : ''}`} active={status === 'pending'} onPress={() => setStatus('pending')} small />
-          <TabPill label="Tất cả" active={status === 'all'} onPress={() => setStatus('all')} small />
+          <TabPill label={`${L('Đang chờ', 'Pending')}${status === 'pending' ? ` (${pendingCount})` : ''}`} active={status === 'pending'} onPress={() => setStatus('pending')} small />
+          <TabPill label={L('Tất cả', 'All')} active={status === 'all'} onPress={() => setStatus('all')} small />
         </View>
-        <Button label="Tải lại" variant="outline" size="sm" iconLeft="refresh" onPress={() => void load()} />
+        <Button label={L('Tải lại', 'Reload')} variant="outline" size="sm" iconLeft="refresh" onPress={() => void load()} />
       </View>
 
       {banner ? (
@@ -386,14 +410,14 @@ function PaymentsPanel({ token, onDone }: { token: string | null; onDone: () => 
       <View className="mt-3 gap-3">
         {loading && items.length === 0 ? (
           <Card>
-            <Text className="font-sans text-body text-muted">Đang tải…</Text>
+            <Text className="font-sans text-body text-muted">{L('Đang tải…', 'Loading…')}</Text>
           </Card>
         ) : items.length === 0 ? (
           <Card>
             <Text className="font-sans text-body text-muted">
               {status === 'pending'
-                ? 'Không có đơn nào đang chờ. Sạch sẽ.'
-                : 'Chưa có đơn thanh toán nào.'}
+                ? L('Không có đơn nào đang chờ. Sạch sẽ.', 'No pending payments. All clear.')
+                : L('Chưa có đơn thanh toán nào.', 'No payments yet.')}
             </Text>
           </Card>
         ) : (
@@ -415,12 +439,13 @@ function PaymentRow({
   item: AdminPayment;
   onAct: (item: AdminPayment, action: 'confirm' | 'reject') => void;
 }) {
+  const { L, locale } = useL();
   const tone = planTone(item.plan);
   const STATUS_LABEL: Record<AdminPayment['status'], { text: string; tone: string }> = {
-    pending: { text: 'đang chờ', tone: color.warning },
-    paid: { text: 'đã thanh toán', tone: color.success },
-    failed: { text: 'đã huỷ', tone: color.danger },
-    refunded: { text: 'đã hoàn tiền', tone: color.subtle },
+    pending: { text: L('đang chờ', 'pending'), tone: color.warning },
+    paid: { text: L('đã thanh toán', 'paid'), tone: color.success },
+    failed: { text: L('đã huỷ', 'cancelled'), tone: color.danger },
+    refunded: { text: L('đã hoàn tiền', 'refunded'), tone: color.subtle },
   };
   const label = STATUS_LABEL[item.status];
 
@@ -434,7 +459,7 @@ function PaymentRow({
               {formatVnd(item.amount_vnd)}
             </Text>
             <Text className="font-sans text-label text-muted">
-              {item.billing_cycle === 'yearly' ? '1 năm' : '1 tháng'}
+              {item.billing_cycle === 'yearly' ? L('1 năm', '1 year') : L('1 tháng', '1 month')}
             </Text>
             <Text className="font-mid text-label" style={{ color: label.tone }}>
               · {label.text}
@@ -452,24 +477,24 @@ function PaymentRow({
           <View className="mt-2 flex-row flex-wrap items-center gap-2">
             <View className="rounded-card bg-canvas px-2.5 py-1.5">
               <Text className="font-heavy text-body text-ink" style={{ letterSpacing: 1 }}>
-                {item.reference ?? '(không có mã)'}
+                {item.reference ?? L('(không có mã)', '(no reference)')}
               </Text>
             </View>
             <Text className="font-sans text-label text-subtle">
-              tạo {formatDate(item.created_at)}
-              {item.paid_at ? ` · xác nhận ${formatDate(item.paid_at)}` : ''}
+              {L('tạo', 'created')} {formatDate(item.created_at, locale)}
+              {item.paid_at ? ` · ${L('xác nhận', 'confirmed')} ${formatDate(item.paid_at, locale)}` : ''}
             </Text>
           </View>
 
           {item.admin_note ? (
-            <Text className="mt-1 font-sans text-label text-muted">Ghi chú: {item.admin_note}</Text>
+            <Text className="mt-1 font-sans text-label text-muted">{L('Ghi chú', 'Note')}: {item.admin_note}</Text>
           ) : null}
         </View>
 
         {item.status === 'pending' ? (
           <View className="flex-row items-center gap-2">
-            <Button label="Huỷ đơn" variant="outline" size="sm" onPress={() => onAct(item, 'reject')} />
-            <Button label="Đã nhận tiền" size="sm" iconRight="check" onPress={() => onAct(item, 'confirm')} />
+            <Button label={L('Huỷ đơn', 'Cancel payment')} variant="outline" size="sm" onPress={() => onAct(item, 'reject')} />
+            <Button label={L('Đã nhận tiền', 'Payment received')} size="sm" iconRight="check" onPress={() => onAct(item, 'confirm')} />
           </View>
         ) : null}
       </View>
@@ -505,6 +530,7 @@ type AdminGroup = {
  * ghi trong `app/api/admin/payment-groups+api.ts`.
  */
 function GroupsPanel({ token }: { token: string | null }) {
+  const { L } = useL();
   const [items, setItems] = useState<AdminGroup[]>([]);
   const [status, setStatus] = useState<'collecting' | 'all'>('collecting');
   const [loading, setLoading] = useState(false);
@@ -520,10 +546,10 @@ function GroupsPanel({ token }: { token: string | null }) {
         headers: { Authorization: `Bearer ${token}` },
       });
       const body = (await res.json()) as { groups?: AdminGroup[]; error?: string };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setItems(body.groups ?? []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không tải được danh sách nhóm.');
+      setError(err instanceof Error ? err.message : tr('Không tải được danh sách nhóm.', 'Could not load groups.'));
     } finally {
       setLoading(false);
     }
@@ -551,14 +577,16 @@ function GroupsPanel({ token }: { token: string | null }) {
         body: JSON.stringify({ groupId: item.id }),
       });
       const body = (await res.json()) as { error?: string; settledSize?: number };
-      if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setBanner(
-        `Đã chốt nhóm ${item.code}: ${body.settledSize ?? 0}/${item.target_size} người đã trả` +
-          (item.leaderEmail ? ` (trưởng nhóm ${item.leaderEmail})` : ''),
+        tr(
+          `Đã chốt nhóm ${item.code}: ${body.settledSize ?? 0}/${item.target_size} người đã trả`,
+          `Settled group ${item.code}: ${body.settledSize ?? 0}/${item.target_size} paid`,
+        ) + (item.leaderEmail ? tr(` (trưởng nhóm ${item.leaderEmail})`, ` (leader ${item.leaderEmail})`) : ''),
       );
       await load();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Không chốt được nhóm.');
+      setError(err instanceof Error ? err.message : tr('Không chốt được nhóm.', 'Could not settle the group.'));
     }
   };
 
@@ -566,10 +594,10 @@ function GroupsPanel({ token }: { token: string | null }) {
     <View className="mt-4">
       <View className="flex-row flex-wrap items-center justify-between gap-2">
         <View className="flex-row gap-2">
-          <TabPill label="Đang mở" active={status === 'collecting'} onPress={() => setStatus('collecting')} small />
-          <TabPill label="Tất cả" active={status === 'all'} onPress={() => setStatus('all')} small />
+          <TabPill label={L('Đang mở', 'Open')} active={status === 'collecting'} onPress={() => setStatus('collecting')} small />
+          <TabPill label={L('Tất cả', 'All')} active={status === 'all'} onPress={() => setStatus('all')} small />
         </View>
-        <Button label="Tải lại" variant="outline" size="sm" iconLeft="refresh" onPress={() => void load()} />
+        <Button label={L('Tải lại', 'Reload')} variant="outline" size="sm" iconLeft="refresh" onPress={() => void load()} />
       </View>
 
       {banner ? (
@@ -588,12 +616,12 @@ function GroupsPanel({ token }: { token: string | null }) {
       <View className="mt-3 gap-3">
         {loading && items.length === 0 ? (
           <Card>
-            <Text className="font-sans text-body text-muted">Đang tải…</Text>
+            <Text className="font-sans text-body text-muted">{L('Đang tải…', 'Loading…')}</Text>
           </Card>
         ) : items.length === 0 ? (
           <Card>
             <Text className="font-sans text-body text-muted">
-              {status === 'collecting' ? 'Không có nhóm nào đang mở.' : 'Chưa có nhóm mua chung nào.'}
+              {status === 'collecting' ? L('Không có nhóm nào đang mở.', 'No open groups.') : L('Chưa có nhóm mua chung nào.', 'No group buys yet.')}
             </Text>
           </Card>
         ) : (
@@ -609,11 +637,15 @@ function GroupsPanel({ token }: { token: string | null }) {
 }
 
 function GroupRow({ item, onSettle }: { item: AdminGroup; onSettle: (item: AdminGroup) => void }) {
+  const { L, locale } = useL();
   const tone = planTone(item.plan);
   const STATUS_LABEL: Record<AdminGroup['status'], { text: string; tone: string }> = {
-    collecting: { text: item.pastDeadline ? 'đang mở · đã quá hạn' : 'đang mở', tone: item.pastDeadline ? color.warning : color.success },
-    settled: { text: 'đã chốt', tone: color.subtle },
-    expired: { text: 'đã hết hạn', tone: color.danger },
+    collecting: {
+      text: item.pastDeadline ? L('đang mở · đã quá hạn', 'open · past deadline') : L('đang mở', 'open'),
+      tone: item.pastDeadline ? color.warning : color.success,
+    },
+    settled: { text: L('đã chốt', 'settled'), tone: color.subtle },
+    expired: { text: L('đã hết hạn', 'expired'), tone: color.danger },
   };
   const label = STATUS_LABEL[item.status];
 
@@ -624,9 +656,9 @@ function GroupRow({ item, onSettle }: { item: AdminGroup; onSettle: (item: Admin
           <View className="flex-row flex-wrap items-center gap-2">
             <PlanBadge plan={item.plan} />
             <Text className="font-heavy text-cardTitle" style={{ color: tone.ink }}>
-              {item.paidCount}/{item.target_size} người
+              {item.paidCount}/{item.target_size} {L('người', 'people')}
             </Text>
-            <Text className="font-sans text-label text-muted">giảm {item.discount_percent}%</Text>
+            <Text className="font-sans text-label text-muted">{L(`giảm ${item.discount_percent}%`, `${item.discount_percent}% off`)}</Text>
             <Text className="font-mid text-label" style={{ color: label.tone }}>
               · {label.text}
             </Text>
@@ -643,14 +675,14 @@ function GroupRow({ item, onSettle }: { item: AdminGroup; onSettle: (item: Admin
               </Text>
             </View>
             <Text className="font-sans text-label text-subtle">
-              tạo {formatDate(item.created_at)} · hạn {formatDate(item.settle_by)}
-              {item.settled_at ? ` · chốt ${formatDate(item.settled_at)}` : ''}
+              {L('tạo', 'created')} {formatDate(item.created_at, locale)} · {L('hạn', 'deadline')} {formatDate(item.settle_by, locale)}
+              {item.settled_at ? ` · ${L('chốt', 'settled')} ${formatDate(item.settled_at, locale)}` : ''}
             </Text>
           </View>
         </View>
 
         {item.status === 'collecting' ? (
-          <Button label="Chốt nhóm" size="sm" iconRight="check" onPress={() => onSettle(item)} />
+          <Button label={L('Chốt nhóm', 'Settle group')} size="sm" iconRight="check" onPress={() => onSettle(item)} />
         ) : null}
       </View>
     </Card>
@@ -690,18 +722,19 @@ const GIFT_PRESETS = [100, 500, 1000, 5000];
 
 /** Chọn số sao (nút nhanh hoặc tự gõ) rồi bấm tặng. */
 function GiftPicker({ confirmLabel, onGift }: { confirmLabel: (n: number) => string; onGift: (n: number) => void }) {
+  const { L, locale } = useL();
   const [amount, setAmount] = useState(500);
   const [text, setText] = useState('');
   const n = text ? Number(text.replace(/[^0-9]/g, '')) : amount;
   const valid = Number.isInteger(n) && n >= 1 && n <= 100000;
   return (
     <View style={{ gap: 8 }}>
-      <Text className="font-mid text-label text-muted">Số sao tặng</Text>
+      <Text className="font-mid text-label text-muted">{L('Số sao tặng', 'Stars to gift')}</Text>
       <View className="flex-row flex-wrap items-center gap-2">
         {GIFT_PRESETS.map((v) => (
           <Chip
             key={v}
-            label={`${v.toLocaleString('vi-VN')} ⭐`}
+            label={`${v.toLocaleString(numberLocale(locale))} ⭐`}
             active={!text && amount === v}
             onPress={() => {
               setText('');
@@ -712,7 +745,7 @@ function GiftPicker({ confirmLabel, onGift }: { confirmLabel: (n: number) => str
         <TextInput
           value={text}
           onChangeText={setText}
-          placeholder="Số khác"
+          placeholder={L('Số khác', 'Other')}
           placeholderTextColor={color.subtle}
           keyboardType="number-pad"
           className="rounded-pill border border-borderStrong bg-surface px-3 py-2 font-sans text-body text-ink"
@@ -720,7 +753,7 @@ function GiftPicker({ confirmLabel, onGift }: { confirmLabel: (n: number) => str
         />
       </View>
       <View className="flex-row">
-        <Button label={valid ? confirmLabel(n) : 'Nhập từ 1 tới 100.000 sao'} variant="brand" size="sm" iconLeft="star" disabled={!valid} onPress={() => onGift(n)} />
+        <Button label={valid ? confirmLabel(n) : L('Nhập từ 1 tới 100.000 sao', 'Enter 1 to 100,000 stars')} variant="brand" size="sm" iconLeft="star" disabled={!valid} onPress={() => onGift(n)} />
       </View>
     </View>
   );
@@ -728,31 +761,43 @@ function GiftPicker({ confirmLabel, onGift }: { confirmLabel: (n: number) => str
 
 /** Tặng sao cho TẤT CẢ tài khoản — bấm hai bước để không lỡ tay. */
 function GiftAllCard({ total, onGift }: { total: number; onGift: (n: number) => void }) {
+  const { L, locale } = useL();
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState<number | null>(null);
   return (
     <Card className="mt-4">
       <View className="flex-row flex-wrap items-center justify-between gap-2">
         <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
-          <Text className="font-strong text-body text-ink">Tặng sao cho mọi người</Text>
+          <Text className="font-strong text-body text-ink">{L('Tặng sao cho mọi người', 'Gift stars to everyone')}</Text>
           <Text className="mt-0.5 font-sans text-label text-muted">
-            Mỗi tài khoản nhận một khoản sao riêng, không trùng, không mất khi đồng bộ. Có ghi nhật ký.
+            {L(
+              'Mỗi tài khoản nhận một khoản sao riêng, không trùng, không mất khi đồng bộ. Có ghi nhật ký.',
+              "Each account gets its own star grant — no duplicates, not lost on sync. It's logged.",
+            )}
           </Text>
         </View>
-        <Button label={open ? 'Đóng' : 'Tặng tất cả'} variant="outline" size="sm" iconLeft="star" onPress={() => { setOpen((v) => !v); setPending(null); }} />
+        <Button label={open ? L('Đóng', 'Close') : L('Tặng tất cả', 'Gift all')} variant="outline" size="sm" iconLeft="star" onPress={() => { setOpen((v) => !v); setPending(null); }} />
       </View>
       {open ? (
         <View className="mt-3 border-t border-border pt-3">
           {pending === null ? (
-            <GiftPicker confirmLabel={(n) => `Tặng ${n.toLocaleString('vi-VN')} ⭐ cho tất cả (${total} tài khoản)`} onGift={(n) => setPending(n)} />
+            <GiftPicker confirmLabel={(n) =>
+                L(
+                  `Tặng ${n.toLocaleString('vi-VN')} ⭐ cho tất cả (${total} tài khoản)`,
+                  `Gift ${n.toLocaleString('en-US')} ⭐ to everyone (${total} accounts)`,
+                )
+              } onGift={(n) => setPending(n)} />
           ) : (
             <View style={{ gap: 8 }}>
               <Text className="font-strong text-body text-ink">
-                Chắc chắn tặng {pending.toLocaleString('vi-VN')} ⭐ cho TẤT CẢ {total} tài khoản? Thao tác này không hoàn tác bằng một nút được.
+                {L(
+                  `Chắc chắn tặng ${pending.toLocaleString('vi-VN')} ⭐ cho TẤT CẢ ${total} tài khoản? Thao tác này không hoàn tác bằng một nút được.`,
+                  `Really gift ${pending.toLocaleString(numberLocale(locale))} ⭐ to ALL ${total} accounts? This can't be undone with one button.`,
+                )}
               </Text>
               <View className="flex-row flex-wrap gap-2">
-                <Button label="Xác nhận tặng" variant="brand" size="sm" onPress={() => { onGift(pending); setPending(null); setOpen(false); }} />
-                <Button label="Huỷ" variant="outline" size="sm" onPress={() => setPending(null)} />
+                <Button label={L('Xác nhận tặng', 'Confirm gift')} variant="brand" size="sm" onPress={() => { onGift(pending); setPending(null); setOpen(false); }} />
+                <Button label={L('Huỷ', 'Cancel')} variant="outline" size="sm" onPress={() => setPending(null)} />
               </View>
             </View>
           )}
@@ -773,6 +818,7 @@ function UserRow({
   onSetPlan: (user: AdminUser, plan: PlanId, months: number | null) => void;
   onGift: (user: AdminUser, stars: number) => void;
 }) {
+  const { L, locale } = useL();
   const [open, setOpen] = useState(false);
   const [gifting, setGifting] = useState(false);
   const [months, setMonths] = useState<number | null>(1);
@@ -797,7 +843,7 @@ function UserRow({
         headers: { Authorization: `Bearer ${token}` },
       });
       const body = (await res.json()) as { activity?: UserActivity; error?: string };
-      if (!res.ok || !body.activity) throw new Error(body.error ?? `Lỗi ${res.status}`);
+      if (!res.ok || !body.activity) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
       setActivity(body.activity);
       setActivityState('idle');
     } catch {
@@ -811,15 +857,17 @@ function UserRow({
         <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
           <View className="flex-row flex-wrap items-center gap-2">
             <Text className="font-strong text-body text-ink" numberOfLines={1}>
-              {user.email ?? '(không có email)'}
+              {user.email ?? L('(không có email)', '(no email)')}
             </Text>
             {user.role === 'admin' ? <Badge label="admin" tone="accent" shape="tag" /> : null}
-            {user.missingProfile ? <Badge label="thiếu hồ sơ" tone="danger" shape="tag" /> : null}
+            {user.missingProfile ? <Badge label={L('thiếu hồ sơ', 'no profile')} tone="danger" shape="tag" /> : null}
           </View>
           <Text className="mt-0.5 font-sans text-label text-muted">
             {user.displayName ? `${user.displayName} · ` : ''}
-            tạo {formatDate(user.createdAt)}
-            {user.lastSignInAt ? ` · đăng nhập gần nhất ${formatDate(user.lastSignInAt)}` : ' · chưa đăng nhập lần nào'}
+            {L('tạo', 'created')} {formatDate(user.createdAt, locale)}
+            {user.lastSignInAt
+              ? ` · ${L('đăng nhập gần nhất', 'last sign-in')} ${formatDate(user.lastSignInAt, locale)}`
+              : L(' · chưa đăng nhập lần nào', ' · never signed in')}
           </Text>
         </View>
 
@@ -830,25 +878,25 @@ function UserRow({
               {user.plan === 'free'
                 ? '—'
                 : user.planExpiresAt
-                  ? `hết hạn ${formatDate(user.planExpiresAt)}`
-                  : 'không hết hạn'}
+                  ? `${L('hết hạn', 'expires')} ${formatDate(user.planExpiresAt, locale)}`
+                  : L('không hết hạn', 'no expiry')}
             </Text>
           </View>
           <Button
-            label={activity ? 'Ẩn hoạt động' : 'Hoạt động'}
+            label={activity ? L('Ẩn hoạt động', 'Hide activity') : L('Hoạt động', 'Activity')}
             variant="ghost"
             size="sm"
             onPress={() => void toggleActivity()}
           />
           <Button
-            label={gifting ? 'Đóng' : 'Tặng sao'}
+            label={gifting ? L('Đóng', 'Close') : L('Tặng sao', 'Gift stars')}
             variant="ghost"
             size="sm"
             iconLeft="star"
             onPress={() => setGifting((v) => !v)}
           />
           <Button
-            label={open ? 'Đóng' : 'Đổi gói'}
+            label={open ? L('Đóng', 'Close') : L('Đổi gói', 'Change plan')}
             variant="outline"
             size="sm"
             onPress={() => setOpen((v) => !v)}
@@ -859,7 +907,12 @@ function UserRow({
       {gifting ? (
         <View className="mt-3 border-t border-border pt-3">
           <GiftPicker
-            confirmLabel={(n) => `Tặng ${n.toLocaleString('vi-VN')} ⭐ cho ${user.email ?? 'tài khoản này'}`}
+            confirmLabel={(n) =>
+              L(
+                `Tặng ${n.toLocaleString('vi-VN')} ⭐ cho ${user.email ?? 'tài khoản này'}`,
+                `Gift ${n.toLocaleString('en-US')} ⭐ to ${user.email ?? 'this account'}`,
+              )
+            }
             onGift={(n) => {
               setGifting(false);
               onGift(user, n);
@@ -870,15 +923,15 @@ function UserRow({
 
       {open ? (
         <View className="mt-3 border-t border-border pt-3">
-          <Text className="font-mid text-label text-muted">Thời hạn</Text>
+          <Text className="font-mid text-label text-muted">{L('Thời hạn', 'Duration')}</Text>
           <View className="mt-1.5 flex-row flex-wrap gap-2">
             {[1, 3, 6, 12].map((n) => (
-              <Chip key={n} label={`${n} tháng`} active={months === n} onPress={() => setMonths(n)} />
+              <Chip key={n} label={L(`${n} tháng`, `${n} ${n === 1 ? 'month' : 'months'}`)} active={months === n} onPress={() => setMonths(n)} />
             ))}
-            <Chip label="Không hết hạn" active={months === null} onPress={() => setMonths(null)} />
+            <Chip label={L('Không hết hạn', 'No expiry')} active={months === null} onPress={() => setMonths(null)} />
           </View>
 
-          <Text className="mt-3 font-mid text-label text-muted">Cấp gói</Text>
+          <Text className="mt-3 font-mid text-label text-muted">{L('Cấp gói', 'Grant plan')}</Text>
           <View className="mt-1.5 flex-row flex-wrap gap-2">
             {PLAN_ORDER.map((id) => (
               <Pressable
@@ -903,11 +956,11 @@ function UserRow({
       ) : null}
 
       {activityState === 'loading' ? (
-        <Text className="mt-3 font-sans text-label text-muted">Đang đọc dữ liệu học…</Text>
+        <Text className="mt-3 font-sans text-label text-muted">{L('Đang đọc dữ liệu học…', 'Loading study data…')}</Text>
       ) : null}
       {activityState === 'error' ? (
         <Text className="mt-3 font-sans text-label text-danger">
-          Không đọc được hoạt động của tài khoản này.
+          {L('Không đọc được hoạt động của tài khoản này.', "Couldn't load this account's activity.")}
         </Text>
       ) : null}
       {activity ? (
@@ -927,26 +980,30 @@ function UserRow({
  * nào. Không cần đọc bài viết hay ghi chú của ai, nên API cũng không trả ra.
  */
 function ActivityPanel({ activity, plan }: { activity: UserActivity; plan: PlanId }) {
+  const { L, locale } = useL();
   const items: [string, string][] = [
-    ['Ngày có học', String(activity.activeDays)],
-    ['Tổng thời gian', `${activity.minutes} phút`],
-    ['Số câu đã làm', String(activity.questions)],
-    ['Phiên đọc và đề', String(activity.readingSessions)],
-    ['Phiên SAT Math', String(activity.mathSessions)],
-    ['Bài đọc', `${activity.articlesRead} mở · ${activity.articlesFinished} xong`],
-    ['Sổ từ', `${activity.vocabWords} từ · ${activity.fsrsCards} thẻ`],
-    ['Đã lưu', String(activity.bookmarks)],
+    [L('Ngày có học', 'Study days'), String(activity.activeDays)],
+    [L('Tổng thời gian', 'Total time'), L(`${activity.minutes} phút`, `${activity.minutes} min`)],
+    [L('Số câu đã làm', 'Questions answered'), String(activity.questions)],
+    [L('Phiên đọc và đề', 'Reading & test sessions'), String(activity.readingSessions)],
+    [L('Phiên SAT Math', 'SAT Math sessions'), String(activity.mathSessions)],
+    [
+      L('Bài đọc', 'Articles'),
+      L(`${activity.articlesRead} mở · ${activity.articlesFinished} xong`, `${activity.articlesRead} opened · ${activity.articlesFinished} finished`),
+    ],
+    [L('Sổ từ', 'Word bank'), L(`${activity.vocabWords} từ · ${activity.fsrsCards} thẻ`, `${activity.vocabWords} words · ${activity.fsrsCards} cards`)],
+    [L('Đã lưu', 'Saved'), String(activity.bookmarks)],
   ];
 
   return (
     <View className="mt-3 border-t border-border pt-3">
       <View className="flex-row flex-wrap items-baseline gap-2">
-        <Text className="font-strong text-label text-ink">Hoạt động</Text>
+        <Text className="font-strong text-label text-ink">{L('Hoạt động', 'Activity')}</Text>
         <Text className="font-sans text-label text-subtle">
           {activity.lastSyncAt
-            ? `đồng bộ gần nhất ${formatDate(activity.lastSyncAt)}`
-            : 'chưa đồng bộ lần nào'}
-          {activity.firstDay ? ` · học từ ${activity.firstDay}` : ''}
+            ? `${L('đồng bộ gần nhất', 'last sync')} ${formatDate(activity.lastSyncAt, locale)}`
+            : L('chưa đồng bộ lần nào', 'never synced')}
+          {activity.firstDay ? ` · ${L('học từ', 'studying since')} ${activity.firstDay}` : ''}
         </Text>
       </View>
 
@@ -967,14 +1024,19 @@ function ActivityPanel({ activity, plan }: { activity: UserActivity; plan: PlanI
       */}
       {activity.planOnDevice && activity.planOnDevice !== plan ? (
         <Text className="mt-2 font-sans text-label text-warning-ink">
-          Máy người dùng đang ghi gói {activity.planOnDevice}, hồ sơ là {plan} — họ cần mở app
-          để đồng bộ lại.
+          {L(
+            `Máy người dùng đang ghi gói ${activity.planOnDevice}, hồ sơ là ${plan} — họ cần mở app để đồng bộ lại.`,
+            `The user's device shows plan ${activity.planOnDevice}, but the profile says ${plan} — they need to open the app to sync.`,
+          )}
         </Text>
       ) : null}
 
       {activity.syncedStores.length === 0 ? (
         <Text className="mt-2 font-sans text-label text-subtle">
-          Tài khoản này chưa từng đồng bộ: dữ liệu học (nếu có) vẫn nằm trên trình duyệt của họ.
+          {L(
+            'Tài khoản này chưa từng đồng bộ: dữ liệu học (nếu có) vẫn nằm trên trình duyệt của họ.',
+            "This account has never synced: any study data is still in the user's browser.",
+          )}
         </Text>
       ) : null}
     </View>
@@ -1018,6 +1080,7 @@ function Stat({ label, value, tint }: { label: string; value: string; tint?: str
 }
 
 function Blocked({ reason }: { reason: string }) {
+  const { L } = useL();
   return (
     <Screen>
       <View className="w-full self-center" style={{ maxWidth: 420 }}>
@@ -1025,14 +1088,14 @@ function Blocked({ reason }: { reason: string }) {
           <View className="flex-row items-start gap-2">
             <Icon name="lock" size={18} color={color.danger} />
             <View className="flex-1">
-              <Text className="font-strong text-cardTitle text-ink">Không vào được</Text>
+              <Text className="font-strong text-cardTitle text-ink">{L('Không vào được', 'Access denied')}</Text>
               <Text className="mt-1 font-sans text-body text-muted">{reason}</Text>
             </View>
           </View>
           <View className="mt-4 flex-row flex-wrap gap-2">
-            <Button label="Đăng nhập" onPress={() => router.push('/auth/sign-in' as never)} />
+            <Button label={L('Đăng nhập', 'Sign in')} onPress={() => router.push('/auth/sign-in' as never)} />
             <Button
-              label="Về Tổng quan"
+              label={L('Về Tổng quan', 'Back to dashboard')}
               variant="outline"
               onPress={() => router.replace('/dashboard' as never)}
             />
@@ -1043,9 +1106,24 @@ function Blocked({ reason }: { reason: string }) {
   );
 }
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, locale: Locale = 'vi'): string {
   const d = new Date(iso);
+  if (locale === 'en') return d.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
   return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()}`;
+}
+
+function numberLocale(locale: Locale): string {
+  return locale === 'en' ? 'en-US' : 'vi-VN';
+}
+
+/** Nhãn máy chủ tự dựng bằng tiếng Việt (`services/admin/stats.ts`, `services/analytics/traffic.ts`). */
+function serverLabel(label: string, locale: Locale): string {
+  if (locale !== 'en') return label;
+  return label
+    .replace(' · còn hạn', ' · active')
+    .replace(' · hết hạn', ' · expired')
+    .replace(/^Khác$/, 'Other')
+    .replace(/^Không rõ$/, 'Unknown');
 }
 
 type Stats = import('@/services/admin/stats').UserStats;
@@ -1055,6 +1133,7 @@ type Stats = import('@/services/admin/stats').UserStats;
  * Lượt xem của người dùng chế độ Khách không có ở đây — xem Vercel Analytics.
  */
 function StatsPanel({ token }: { token: string | null }) {
+  const { L, locale } = useL();
   const [stats, setStats] = useState<Stats | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -1065,10 +1144,10 @@ function StatsPanel({ token }: { token: string | null }) {
       try {
         const res = await fetch('/api/admin/stats', { headers: { Authorization: `Bearer ${token}` } });
         const body = (await res.json()) as { stats?: Stats; error?: string };
-        if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+        if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
         if (!cancelled) setStats(body.stats ?? null);
       } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : 'Không tải được thống kê.');
+        if (!cancelled) setError(err instanceof Error ? err.message : tr('Không tải được thống kê.', 'Could not load stats.'));
       }
     })();
     return () => {
@@ -1080,7 +1159,7 @@ function StatsPanel({ token }: { token: string | null }) {
     return (
       <Card className="mt-4">
         <Text className="font-sans text-body" style={{ color: color.danger }}>
-          Thống kê: {error}
+          {L('Thống kê', 'Stats')}: {error}
         </Text>
       </Card>
     );
@@ -1088,13 +1167,21 @@ function StatsPanel({ token }: { token: string | null }) {
   if (!stats) return null;
 
   const tiles: [string, string, string][] = [
-    [String(stats.accounts), 'tài khoản', `+${stats.signups7} trong 7 ngày · +${stats.signups30} trong 30 ngày`],
-    [String(stats.learners7), 'người học trong 7 ngày', `${stats.learners30} trong 30 ngày · ${stats.learnersEver} từng học`],
-    [String(stats.signedIn7), 'đăng nhập trong 7 ngày', `${stats.signedIn30} trong 30 ngày`],
+    [
+      String(stats.accounts),
+      L('tài khoản', 'accounts'),
+      L(`+${stats.signups7} trong 7 ngày · +${stats.signups30} trong 30 ngày`, `+${stats.signups7} in 7 days · +${stats.signups30} in 30 days`),
+    ],
+    [
+      String(stats.learners7),
+      L('người học trong 7 ngày', 'learners in 7 days'),
+      L(`${stats.learners30} trong 30 ngày · ${stats.learnersEver} từng học`, `${stats.learners30} in 30 days · ${stats.learnersEver} ever studied`),
+    ],
+    [String(stats.signedIn7), L('đăng nhập trong 7 ngày', 'signed in within 7 days'), L(`${stats.signedIn30} trong 30 ngày`, `${stats.signedIn30} in 30 days`)],
   ];
   return (
     <Card className="mt-4">
-      <Text className="font-strong text-cardTitle text-ink">Tổng quan người dùng</Text>
+      <Text className="font-strong text-cardTitle text-ink">{L('Tổng quan người dùng', 'User overview')}</Text>
       <View className="mt-3 flex-row flex-wrap gap-3">
         {tiles.map(([value, label, sub]) => (
           <View key={label} className="rounded-2xl bg-canvas px-4 py-3" style={{ minWidth: 190, flexGrow: 1 }}>
@@ -1106,20 +1193,27 @@ function StatsPanel({ token }: { token: string | null }) {
       </View>
       <View className="mt-3 flex-row flex-wrap gap-2">
         {Object.entries(stats.plans).map(([plan, n]) => (
-          <Badge key={plan} label={`${plan}: ${n}`} tone="neutral" />
+          <Badge key={plan} label={`${serverLabel(plan, locale)}: ${n}`} tone="neutral" />
         ))}
         {stats.signupsByMonth.map(([month, n]) => (
-          <Badge key={month} label={`Đăng ký ${month}: ${n}`} tone="info" />
+          <Badge key={month} label={`${L('Đăng ký', 'Sign-ups')} ${month}: ${n}`} tone="info" />
         ))}
       </View>
       <Text className="mt-3 font-sans text-label text-muted">
-        Người dùng chế độ Khách không đăng nhập nên không có trong các số này — lượt truy cập của họ xem ở Vercel → Analytics.
+        {L(
+          'Người dùng chế độ Khách không đăng nhập nên không có trong các số này — lượt truy cập của họ xem ở Vercel → Analytics.',
+          "Guest-mode users don't sign in, so they aren't in these numbers — see their visits in Vercel → Analytics.",
+        )}
       </Text>
     </Card>
   );
 }
 
-const DEVICE_LABEL: Record<string, string> = { mobile: '📱 Điện thoại', tablet: '📟 Máy tính bảng', desktop: '💻 Máy tính' };
+const DEVICE_LABEL: Record<string, Bi> = {
+  mobile: { vi: '📱 Điện thoại', en: '📱 Phone' },
+  tablet: { vi: '📟 Máy tính bảng', en: '📟 Tablet' },
+  desktop: { vi: '💻 Máy tính', en: '💻 Desktop' },
+};
 
 /**
  * LƯỢT TRUY CẬP WEB — bộ đếm riêng của app (`/api/track` → bảng `page_views`),
@@ -1127,6 +1221,7 @@ const DEVICE_LABEL: Record<string, string> = { mobile: '📱 Điện thoại', t
  * (26/09/2026). Số chia thiết bị / hệ điều hành / trình duyệt đếm theo NGƯỜI.
  */
 function TrafficPanel({ token }: { token: string | null }) {
+  const { L, locale } = useL();
   const [days, setDays] = useState<7 | 30>(7);
   const [summary, setSummary] = useState<TrafficSummary | null>(null);
   const [setupNeeded, setSetupNeeded] = useState(false);
@@ -1139,13 +1234,13 @@ function TrafficPanel({ token }: { token: string | null }) {
       try {
         const res = await fetch(`/api/admin/traffic?days=${days}`, { headers: { Authorization: `Bearer ${token}` } });
         const body = (await res.json()) as { summary?: TrafficSummary; setupNeeded?: boolean; error?: string };
-        if (!res.ok) throw new Error(body.error ?? `Lỗi ${res.status}`);
+        if (!res.ok) throw new Error(body.error ?? `${tr('Lỗi', 'Error')} ${res.status}`);
         if (cancelled) return;
         setSetupNeeded(!!body.setupNeeded);
         setSummary(body.summary ?? null);
         setError(null);
       } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : 'Không tải được lượt truy cập.');
+        if (!cancelled) setError(err instanceof Error ? err.message : tr('Không tải được lượt truy cập.', 'Could not load traffic.'));
       }
     })();
     return () => {
@@ -1156,10 +1251,10 @@ function TrafficPanel({ token }: { token: string | null }) {
   return (
     <Card className="mt-4">
       <View className="flex-row flex-wrap items-center justify-between gap-2">
-        <Text className="font-strong text-cardTitle text-ink">Lượt truy cập web</Text>
+        <Text className="font-strong text-cardTitle text-ink">{L('Lượt truy cập web', 'Web traffic')}</Text>
         <View className="flex-row gap-2">
-          <TabPill label="7 ngày" active={days === 7} onPress={() => setDays(7)} small />
-          <TabPill label="30 ngày" active={days === 30} onPress={() => setDays(30)} small />
+          <TabPill label={L('7 ngày', '7 days')} active={days === 7} onPress={() => setDays(7)} small />
+          <TabPill label={L('30 ngày', '30 days')} active={days === 30} onPress={() => setDays(30)} small />
         </View>
       </View>
 
@@ -1169,33 +1264,39 @@ function TrafficPanel({ token }: { token: string | null }) {
         </Text>
       ) : setupNeeded ? (
         <View className="mt-3 gap-2 rounded-2xl bg-canvas p-4">
-          <Text className="font-strong text-body text-ink">Chưa tạo bảng đếm trên Supabase</Text>
+          <Text className="font-strong text-body text-ink">{L('Chưa tạo bảng đếm trên Supabase', 'The counter table has not been created in Supabase')}</Text>
           <Text className="font-sans text-body text-muted">
-            Mở Supabase → SQL Editor, dán toàn bộ nội dung file supabase/migrations/20260926000100_page_views.sql rồi bấm Run.
-            Làm một lần; từ lúc đó app bắt đầu đếm (không có số liệu những ngày trước).
+            {L(
+              'Mở Supabase → SQL Editor, dán toàn bộ nội dung file supabase/migrations/20260926000100_page_views.sql rồi bấm Run. Làm một lần; từ lúc đó app bắt đầu đếm (không có số liệu những ngày trước).',
+              'Open Supabase → SQL Editor, paste the whole file supabase/migrations/20260926000100_page_views.sql and click Run. Do it once; the app starts counting from then on (no data for earlier days).',
+            )}
           </Text>
         </View>
       ) : !summary ? (
-        <Text className="mt-2 font-sans text-body text-muted">Đang tải…</Text>
+        <Text className="mt-2 font-sans text-body text-muted">{L('Đang tải…', 'Loading…')}</Text>
       ) : (
         <View>
           <View className="mt-3 flex-row flex-wrap gap-3">
             {(
               [
-                [summary.visitors, 'người truy cập', `hôm nay ${summary.today.visitors}`],
-                [summary.views, 'lượt xem trang', `hôm nay ${summary.today.views}`],
-                [summary.sessions, 'lượt mở web', `${summary.signedInVisitors} người có đăng nhập`],
+                [summary.visitors, L('người truy cập', 'visitors'), L(`hôm nay ${summary.today.visitors}`, `today ${summary.today.visitors}`)],
+                [summary.views, L('lượt xem trang', 'page views'), L(`hôm nay ${summary.today.views}`, `today ${summary.today.views}`)],
+                [
+                  summary.sessions,
+                  L('lượt mở web', 'sessions'),
+                  L(`${summary.signedInVisitors} người có đăng nhập`, `${summary.signedInVisitors} signed in`),
+                ],
               ] as [number, string, string][]
             ).map(([value, label, sub]) => (
               <View key={label} className="rounded-2xl bg-canvas px-4 py-3" style={{ minWidth: 170, flexGrow: 1 }}>
-                <Text className="font-heavy text-stat text-ink">{value.toLocaleString('vi-VN')}</Text>
+                <Text className="font-heavy text-stat text-ink">{value.toLocaleString(numberLocale(locale))}</Text>
                 <Text className="font-semi text-body text-ink">{label}</Text>
                 <Text className="mt-0.5 font-sans text-label text-muted">{sub}</Text>
               </View>
             ))}
           </View>
 
-          <Text className="mt-4 font-semi text-label text-muted">NGƯỜI TRUY CẬP MỖI NGÀY (cột xanh) · LƯỢT XEM (cột cam)</Text>
+          <Text className="mt-4 font-semi text-label text-muted">{L('NGƯỜI TRUY CẬP MỖI NGÀY (cột xanh) · LƯỢT XEM (cột cam)', 'VISITORS PER DAY (blue bars) · PAGE VIEWS (orange bars)')}</Text>
           <View className="mt-2">
             <BarChart
               height={170}
@@ -1205,15 +1306,27 @@ function TrafficPanel({ token }: { token: string | null }) {
           </View>
 
           <View className="mt-4 flex-row flex-wrap gap-4">
-            <Split title="Thiết bị" rows={summary.devices.map(([k, n]) => [DEVICE_LABEL[k] ?? k, n])} total={summary.visitors} />
-            <Split title="Hệ điều hành" rows={summary.os} total={summary.visitors} />
-            <Split title="Trình duyệt / app mở link" rows={summary.browsers} total={summary.visitors} />
-            <Split title="Nguồn vào" rows={summary.referrers} total={summary.visitors} empty="Chưa có ai vào từ trang khác" />
-            <Split title="Nước" rows={summary.countries} total={summary.visitors} />
-            <Split title="Trang xem nhiều (lượt)" rows={summary.pages} total={summary.views} />
+            <Split
+              title={L('Thiết bị', 'Devices')}
+              rows={summary.devices.map(([k, n]) => [DEVICE_LABEL[k] ? bi(DEVICE_LABEL[k], locale) : serverLabel(k, locale), n])}
+              total={summary.visitors}
+            />
+            <Split title={L('Hệ điều hành', 'Operating systems')} rows={localRows(summary.os, locale)} total={summary.visitors} />
+            <Split title={L('Trình duyệt / app mở link', 'Browsers / in-app browsers')} rows={localRows(summary.browsers, locale)} total={summary.visitors} />
+            <Split
+              title={L('Nguồn vào', 'Referrers')}
+              rows={localRows(summary.referrers, locale)}
+              total={summary.visitors}
+              empty={L('Chưa có ai vào từ trang khác', 'No visits from other sites yet')}
+            />
+            <Split title={L('Nước', 'Countries')} rows={localRows(summary.countries, locale)} total={summary.visitors} />
+            <Split title={L('Trang xem nhiều (lượt)', 'Top pages (views)')} rows={localRows(summary.pages, locale)} total={summary.views} />
           </View>
           <Text className="mt-3 font-sans text-label text-muted">
-            Đếm ẩn danh: không IP, không email. Không đếm bot, bản chạy trên máy và chính trang quản trị.
+            {L(
+              'Đếm ẩn danh: không IP, không email. Không đếm bot, bản chạy trên máy và chính trang quản trị.',
+              "Anonymous counting: no IPs, no emails. Bots, local builds and the admin page itself aren't counted.",
+            )}
           </Text>
         </View>
       )}
@@ -1221,12 +1334,17 @@ function TrafficPanel({ token }: { token: string | null }) {
   );
 }
 
-function Split({ title, rows, total, empty = 'Chưa có số liệu' }: { title: string; rows: [string, number][]; total: number; empty?: string }) {
+function localRows(rows: [string, number][], locale: Locale): [string, number][] {
+  return rows.map(([k, n]) => [serverLabel(k, locale), n]);
+}
+
+function Split({ title, rows, total, empty }: { title: string; rows: [string, number][]; total: number; empty?: string }) {
+  const { L } = useL();
   return (
     <View style={{ minWidth: 240, flexGrow: 1, flexBasis: 240 }}>
       <Text className="font-strong text-body text-ink">{title}</Text>
       {rows.length === 0 ? (
-        <Text className="mt-1 font-sans text-label text-muted">{empty}</Text>
+        <Text className="mt-1 font-sans text-label text-muted">{empty ?? L('Chưa có số liệu', 'No data yet')}</Text>
       ) : (
         <View className="mt-1.5 gap-1.5">
           {rows.map(([label, n]) => (

@@ -23,6 +23,7 @@ import { playQuestDamageSound } from "@/services/audio/chime";
 import { useGameStore } from "@/store/useGameStore";
 import { useTopicStudyStore, type GameScore } from "@/store/useTopicStudyStore";
 import { color } from "@/theme/tokens";
+import { useL } from "@/i18n/useL";
 
 /**
  * Bóng Bay Từ Vựng.
@@ -52,6 +53,7 @@ type Round = { target: StudyWord; correctLane: number; balloons: Balloon[] };
 
 export default function GameScreen() {
   const { slug = "" } = useLocalSearchParams<{ slug: string }>();
+  const { L, en, locale } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   // Mảng rỗng phải là CÙNG MỘT tham chiếu: `?? []` tạo mảng mới mỗi lần, zustand
@@ -186,10 +188,10 @@ export default function GameScreen() {
 
   if (!topic) {
     return (
-      <StudyFrame backHref="/vocabulary/quiz" title="Trò chơi">
+      <StudyFrame backHref="/vocabulary/quiz" title={L("Trò chơi", "Game")}>
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">
-            Không có bộ từ này.
+            {L("Không có bộ từ này.", "Word set not found.")}
           </Text>
         </StudyCard>
       </StudyFrame>
@@ -199,7 +201,7 @@ export default function GameScreen() {
   const best = scores[0]?.score ?? 0;
 
   return (
-    <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={topic.nameVi}>
+    <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}>
       <View className="mb-4 flex-row self-center rounded-2xl bg-white/80 p-1">
         {(["play", "board"] as const).map((t) => (
           <Pressable
@@ -214,7 +216,7 @@ export default function GameScreen() {
               className="font-strong text-body"
               style={{ color: tab === t ? "#FFFFFF" : color.ink }}
             >
-              {t === "play" ? "Chơi" : "Bảng điểm"}
+              {t === "play" ? L("Chơi", "Play") : L("Bảng điểm", "Leaderboard")}
             </Text>
           </Pressable>
         ))}
@@ -230,11 +232,11 @@ export default function GameScreen() {
         {tab === "board" ? (
           <StudyCard>
             <Text className="font-heavy text-sectionTitle text-ink">
-              Điểm cao của bạn · {topic.nameVi}
+              {L("Điểm cao của bạn", "Your high scores")} · {(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}
             </Text>
             {scores.length === 0 ? (
               <Text className="mt-3 font-sans text-body text-muted">
-                Chưa có lượt chơi nào.
+                {L("Chưa có lượt chơi nào.", "No games played yet.")}
               </Text>
             ) : (
               <View className="mt-4 gap-2">
@@ -248,16 +250,16 @@ export default function GameScreen() {
                       #{i + 1}
                     </Text>
                     <Text className="font-heavy text-bodyLg text-ink">
-                      {s.score} điểm
+                      {s.score} {L("điểm", "pts")}
                     </Text>
                     <Text className="font-sans text-label text-muted">
-                      {new Date(s.at).toLocaleDateString("vi-VN")}
+                      {new Date(s.at).toLocaleDateString(locale === "en" ? "en-US" : "vi-VN")}
                     </Text>
                   </View>
                 ))}
               </View>
             )}
-            <PrimaryButton label="Chơi" hint="Space" onPress={start} />
+            <PrimaryButton label={L("Chơi", "Play")} hint="Space" onPress={start} />
           </StudyCard>
         ) : (
           <View
@@ -275,12 +277,12 @@ export default function GameScreen() {
                   style={{ backgroundColor: color.primary }}
                 >
                   <Text className="font-strong text-body text-white">
-                    Điểm: {score}
+                    {L("Điểm", "Score")}: {score}
                   </Text>
                 </View>
                 {combo > 1 ? (
                   <Text className="font-strong text-body text-primary-700">
-                    Chuỗi ×{Math.min(combo, 10)}
+                    {L("Chuỗi", "Combo")} ×{Math.min(combo, 10)}
                   </Text>
                 ) : null}
                 <Text
@@ -366,19 +368,22 @@ export default function GameScreen() {
                   <View className="absolute inset-0 items-center justify-center px-6">
                     <Text className="text-center font-heavy text-hero text-ink">
                       {phase === "over"
-                        ? `Hết lượt · ${score} điểm`
-                        : "Bóng Bay Từ Vựng"}
+                        ? L(`Hết lượt · ${score} điểm`, `Game over · ${score} pts`)
+                        : L("Bóng Bay Từ Vựng", "Vocabulary Balloons")}
                     </Text>
                     <Text className="mt-2 max-w-[460px] text-center font-sans text-bodyLg text-muted">
                       {phase === "over"
                         ? score >= best && score > 0
-                          ? "Điểm cao nhất của bạn ở bộ này!"
-                          : `Điểm cao nhất: ${best}`
-                        : "Đọc nghĩa tiếng Việt, bấm (hoặc phím 1–4) vào quả bóng mang đúng từ tiếng Anh trước khi nó bay mất. Đúng liên tiếp được nhân điểm."}
+                          ? L("Điểm cao nhất của bạn ở bộ này!", "Your best score for this set!")
+                          : L(`Điểm cao nhất: ${best}`, `High score: ${best}`)
+                        : L(
+                            "Đọc nghĩa tiếng Việt, bấm (hoặc phím 1–4) vào quả bóng mang đúng từ tiếng Anh trước khi nó bay mất. Đúng liên tiếp được nhân điểm.",
+                            "Read the Vietnamese meaning, then tap (or press 1–4) the balloon with the matching English word before it floats away. Streaks multiply your score.",
+                          )}
                     </Text>
                     <View style={{ width: 260 }}>
                       <PrimaryButton
-                        label={phase === "over" ? "Chơi lại" : "Bắt đầu"}
+                        label={phase === "over" ? L("Chơi lại", "Play again") : L("Bắt đầu", "Start")}
                         hint="Space"
                         onPress={start}
                       />

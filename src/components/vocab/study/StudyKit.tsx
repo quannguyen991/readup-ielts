@@ -13,6 +13,7 @@ import { Icon } from "@/components/ui/Icon";
 import type { StudyWord } from "@/services/vocab/topic-study";
 import { color } from "@/theme/tokens";
 import { SkyEffect } from "@/components/effects/SkyEffect";
+import { useL } from "@/i18n/useL";
 
 /**
  * Bộ khung dùng chung cho các màn học một bộ từ (Học, Nghe chép, Điền câu,
@@ -93,6 +94,7 @@ export function StudyFrame({
   footer?: string;
   right?: React.ReactNode;
 }) {
+  const { L } = useL();
   const navy = isVocabStudyRoute(usePathname());
   // Đang ngồi toa tàu (cảnh thành phố làm nền): bỏ trận đấu để thẻ học nằm cao, lộ cảnh.
   const travel = useTravelBackdropOn() && navy;
@@ -109,7 +111,7 @@ export function StudyFrame({
           className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"
         >
           <Icon name="chevron-left" size={18} color={color.ink} />
-          <Text className="font-semi text-body text-ink">Thoát</Text>
+          <Text className="font-semi text-body text-ink">{L("Thoát", "Exit")}</Text>
         </Pressable>
         <Text className="font-strong text-body" style={{ color: navy ? "#FFFFFF" : color.ink }}>
           {title}
@@ -212,10 +214,11 @@ export function StarButton({
   onPress: () => void;
   inline?: boolean;
 }) {
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={on ? "Bỏ đánh dấu sao" : "Đánh dấu sao"}
+      accessibilityLabel={on ? L("Bỏ đánh dấu sao", "Unstar") : L("Đánh dấu sao", "Star")}
       onPress={onPress}
       hitSlop={8}
       className="h-10 w-10 items-center justify-center rounded-pill"
@@ -251,6 +254,7 @@ export function ChoiceGrid({
   /** Phương án Cú đã loại — mờ đi, gạch ngang, không bấm được. */
   hidden?: number[];
 }) {
+  const { L } = useL();
   const revealed = picked !== null;
   // Nền toa tàu: thẻ hẹp hơn nên phương án co lại để vẫn đủ 2 cột, đệm nhỏ hơn.
   const compact = React.useContext(TravelCompact);
@@ -266,7 +270,7 @@ export function ChoiceGrid({
           <Pressable
             key={`${i}-${opt}`}
             accessibilityRole="button"
-            accessibilityLabel={out ? `${opt} — Cú đã loại` : undefined}
+            accessibilityLabel={out ? L(`${opt} — Cú đã loại`, `${opt} — removed by Owl`) : undefined}
             disabled={revealed || out}
             onPress={() => onPick(i)}
             className={`flex-row items-center gap-3 rounded-2xl ${compact ? "px-3 py-3" : "px-4 py-4"}`}
@@ -302,7 +306,7 @@ export function ChoiceGrid({
               {opt}
             </Text>
             {out ? (
-              <Text className="font-semi text-label text-muted">Cú đã loại</Text>
+              <Text className="font-semi text-label text-muted">{L("Cú đã loại", "Removed by Owl")}</Text>
             ) : isCorrect ? (
               <Icon name="check" size={18} color={GREEN} />
             ) : isWrong ? (
@@ -351,6 +355,7 @@ export function FeedbackPanel({
   word: StudyWord;
   onNext: () => void;
 }) {
+  const { L } = useL();
   return (
     <Appear>
       <View className="mt-5">
@@ -367,7 +372,7 @@ export function FeedbackPanel({
               className="font-strong text-cardTitle"
               style={{ color: ok ? GREEN : RED }}
             >
-              {ok ? "Chính xác!" : "Chưa đúng — xem lại nhé"}
+              {ok ? L("Chính xác!", "Correct!") : L("Chưa đúng — xem lại nhé", "Not quite — take another look")}
             </Text>
             <SpeakButton text={word.word} />
           </View>
@@ -387,7 +392,7 @@ export function FeedbackPanel({
               className="mt-3 border-t pt-3"
               style={{ borderColor: ok ? "#BBF7D0" : "#FECDD3" }}
             >
-              <Text className="font-strong text-label text-muted">Ví dụ</Text>
+              <Text className="font-strong text-label text-muted">{L("Ví dụ", "Example")}</Text>
               <View className="mt-1 flex-row items-start gap-2">
                 <View className="flex-1">
                   <ExampleLine example={word.example} word={word.word} />
@@ -398,13 +403,13 @@ export function FeedbackPanel({
           ) : null}
           {word.collocation ? (
             <Text className="mt-3 font-sans text-body text-muted">
-              Hay đi cùng:{" "}
+              {L("Hay đi cùng:", "Collocations:")}{" "}
               <Text className="font-semi text-ink">{word.collocation}</Text>
             </Text>
           ) : null}
           <SynAnt word={word} />
         </View>
-        <PrimaryButton label="Tiếp tục" hint="Enter" onPress={onNext} />
+        <PrimaryButton label={L("Tiếp tục", "Continue")} hint="Enter" onPress={onNext} />
       </View>
     </Appear>
   );
@@ -460,9 +465,10 @@ export function GhostButton({
 
 /** Đồng nghĩa / trái nghĩa — chỉ bộ có dữ liệu viết tay mới có; không có thì không vẽ gì. */
 export function SynAnt({ word, center }: { word: StudyWord; center?: boolean }) {
+  const { L } = useL();
   const rows = [
-    { label: 'Đồng nghĩa', words: word.synonyms ?? [], tone: GREEN, bg: '#ECFDF3' },
-    { label: 'Trái nghĩa', words: word.antonyms ?? [], tone: RED, bg: '#FFF1F2' },
+    { label: L('Đồng nghĩa', 'Synonyms'), words: word.synonyms ?? [], tone: GREEN, bg: '#ECFDF3' },
+    { label: L('Trái nghĩa', 'Antonyms'), words: word.antonyms ?? [], tone: RED, bg: '#FFF1F2' },
   ].filter((r) => r.words.length > 0);
   if (rows.length === 0) return null;
   return (

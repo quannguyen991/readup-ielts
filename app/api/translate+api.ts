@@ -2,6 +2,7 @@ import { ARTICLES } from '@/data/articles';
 import { getArticleBody } from '@/data/article-repository';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { TRANSLATE_BATCH, sourceHash, translateParagraphs } from '@/services/ai/translator';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * GET  /api/translate?articleId=…   → bản dịch đã có trong bộ nhớ đệm (ai cũng đọc được)
@@ -65,7 +66,7 @@ export async function GET(request: Request): Promise<Response> {
     const articleId = new URL(request.url).searchParams.get('articleId') ?? '';
     const paragraphs = loadParagraphs(articleId);
     if (!paragraphs) {
-      return Response.json({ error: 'Bài này không có toàn văn để dịch.' }, { status: 404 });
+      return Response.json({ error: msg(request, 'Bài này không có toàn văn để dịch.', 'This article has no full text to translate.') }, { status: 404 });
     }
 
     const cached = await readCache(articleId, sourceHash(paragraphs));
@@ -81,7 +82,7 @@ export async function GET(request: Request): Promise<Response> {
       model: cached.model,
     });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
@@ -91,7 +92,13 @@ export async function POST(request: Request): Promise<Response> {
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
     if (!token) {
       return Response.json(
-        { error: 'Đăng nhập để dịch bài này. Bài đã dịch rồi thì ai cũng đọc được.' },
+        {
+          error: msg(
+            request,
+            'Đăng nhập để dịch bài này. Bài đã dịch rồi thì ai cũng đọc được.',
+            'Sign in to translate this article. Once translated, anyone can read it.',
+          ),
+        },
         { status: 401 },
       );
     }
@@ -99,14 +106,14 @@ export async function POST(request: Request): Promise<Response> {
     const admin = getSupabaseAdmin();
     const { data: auth, error: authError } = await admin.auth.getUser(token);
     if (authError || !auth.user) {
-      return Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
     }
 
     const body = (await request.json()) as { articleId?: unknown };
     const articleId = typeof body.articleId === 'string' ? body.articleId : '';
     const paragraphs = loadParagraphs(articleId);
     if (!paragraphs) {
-      return Response.json({ error: 'Bài này không có toàn văn để dịch.' }, { status: 404 });
+      return Response.json({ error: msg(request, 'Bài này không có toàn văn để dịch.', 'This article has no full text to translate.') }, { status: 404 });
     }
 
     const hash = sourceHash(paragraphs);
@@ -135,7 +142,7 @@ export async function POST(request: Request): Promise<Response> {
     const result = await translateParagraphs(slice.map((i) => paragraphs[i]!));
     if (result.paragraphs.length !== slice.length) {
       return Response.json(
-        { error: 'Bản dịch trả về không khớp số đoạn. Thử lại.' },
+        { error: msg(request, 'Bản dịch trả về không khớp số đoạn. Thử lại.', "The translation doesn't match the paragraph count. Please try again.") },
         { status: 502 },
       );
     }
@@ -166,10 +173,10 @@ export async function POST(request: Request): Promise<Response> {
       ...(writeError ? { cacheWarning: writeError.message } : {}),
     });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
-function message(err: unknown): string {
-  return err instanceof Error ? err.message : 'Lỗi không xác định';
+function message(request: Request, err: unknown): string {
+  return errorText(request, err, 'Lỗi không xác định', 'Unknown error');
 }

@@ -1,5 +1,6 @@
 import { getArticleWithBody } from '@/data/articles';
 import { streamWithFallback } from '@/services/ai/fallback';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/chat  { articleId, messages: [{role, content}] }
@@ -23,9 +24,14 @@ export async function POST(request: Request): Promise<Response> {
     // chunk — hai trường hợp đó với trợ giảng là như nhau: không có gì để đọc.
     const article = body.articleId ? getArticleWithBody(body.articleId) : undefined;
     if (!article) {
-      return new Response('Bài này không có toàn văn nên trợ giảng không đọc được.', {
-        status: 422,
-      });
+      return new Response(
+        msg(
+          request,
+          'Bài này không có toàn văn nên trợ giảng không đọc được.',
+          "This article has no full text, so the tutor can't read it.",
+        ),
+        { status: 422 },
+      );
     }
 
     const passage = article.paragraphs
@@ -80,8 +86,10 @@ export async function POST(request: Request): Promise<Response> {
             Đóng stream im lặng sẽ để lại một câu cụt giữa chừng trông y như câu
             trả lời đã xong — người học đọc rồi tin, mà nửa sau không bao giờ tới.
           */
-          const message = err instanceof Error ? err.message : 'lỗi không xác định';
-          controller.enqueue(encoder.encode(`\n\n[Mất kết nối giữa chừng: ${message}]`));
+          const message = errorText(request, err, 'lỗi không xác định', 'unknown error');
+          controller.enqueue(
+            encoder.encode(msg(request, `\n\n[Mất kết nối giữa chừng: ${message}]`, `\n\n[Connection lost midway: ${message}]`)),
+          );
         } finally {
           controller.close();
         }
@@ -92,7 +100,7 @@ export async function POST(request: Request): Promise<Response> {
       headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache' },
     });
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return new Response(message, { status: 500 });
   }
 }

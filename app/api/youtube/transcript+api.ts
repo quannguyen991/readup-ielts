@@ -9,6 +9,7 @@ import {
   usableSentences,
   type TranscriptSentence,
 } from '@/services/youtube/transcript';
+import { msg } from '@/lib/server-locale';
 
 /** Cầu ở máy nhà trả lời trong ngần này thì thôi, rơi về đường khác. */
 const RELAY_TIMEOUT_MS = 30_000;
@@ -73,7 +74,13 @@ export async function GET(request: Request): Promise<Response> {
   const videoId = parseVideoId(input);
   if (!videoId) {
     return Response.json(
-      { error: 'Liên kết không phải video YouTube. Dán lại đường dẫn hoặc mã video.' },
+      {
+        error: msg(
+          request,
+          'Liên kết không phải video YouTube. Dán lại đường dẫn hoặc mã video.',
+          "That link isn't a YouTube video. Paste the link or video ID again.",
+        ),
+      },
       { status: 400 },
     );
   }
@@ -111,10 +118,18 @@ export async function GET(request: Request): Promise<Response> {
       /* Ba nguyên nhân, ba câu khác nhau — người đọc phải biết nên làm gì tiếp. */
       const message =
         found.reason === 'no_captions'
-          ? 'Video này không có phụ đề nên chưa làm bài chép chính tả được.'
+          ? msg(
+              request,
+              'Video này không có phụ đề nên chưa làm bài chép chính tả được.',
+              "This video has no captions, so it can't be used for dictation yet.",
+            )
           : found.reason === 'blocked'
-            ? 'YouTube không cho lấy phụ đề của video này (video riêng tư, giới hạn tuổi, hoặc chặn nhúng).'
-            : 'Không nối được tới YouTube lúc này. Thử lại sau một lát.';
+            ? msg(
+                request,
+                'YouTube không cho lấy phụ đề của video này (video riêng tư, giới hạn tuổi, hoặc chặn nhúng).',
+                "YouTube won't share this video's captions (private, age-restricted, or embedding blocked).",
+              )
+            : msg(request, 'Không nối được tới YouTube lúc này. Thử lại sau một lát.', "Can't reach YouTube right now. Please try again shortly.");
       return Response.json({ error: message }, { status: found.reason === 'unreachable' ? 502 : 404 });
     }
 
@@ -122,7 +137,7 @@ export async function GET(request: Request): Promise<Response> {
 
     if (!track) {
       return Response.json(
-        { error: 'Video này có phụ đề nhưng không có bản tiếng Anh.' },
+        { error: msg(request, 'Video này có phụ đề nhưng không có bản tiếng Anh.', 'This video has captions, but none in English.') },
         { status: 404 },
       );
     }
@@ -131,7 +146,7 @@ export async function GET(request: Request): Promise<Response> {
       headers: { 'Accept-Language': 'en-US,en;q=0.9' },
     });
     if (!xml.ok) {
-      return Response.json({ error: 'Không tải được phụ đề của video này.' }, { status: 502 });
+      return Response.json({ error: msg(request, 'Không tải được phụ đề của video này.', "Couldn't download this video's captions.") }, { status: 502 });
     }
 
     const sentences = usableSentences(
@@ -140,7 +155,7 @@ export async function GET(request: Request): Promise<Response> {
 
     if (sentences.length === 0) {
       return Response.json(
-        { error: 'Phụ đề của video này quá rời rạc để cắt thành câu.' },
+        { error: msg(request, 'Phụ đề của video này quá rời rạc để cắt thành câu.', "This video's captions are too fragmented to split into sentences.") },
         { status: 422 },
       );
     }
@@ -153,6 +168,6 @@ export async function GET(request: Request): Promise<Response> {
       sentences,
     });
   } catch {
-    return Response.json({ error: 'Không lấy được phụ đề. Thử lại sau ít phút.' }, { status: 502 });
+    return Response.json({ error: msg(request, 'Không lấy được phụ đề. Thử lại sau ít phút.', "Couldn't get the captions. Please try again in a few minutes.") }, { status: 502 });
   }
 }

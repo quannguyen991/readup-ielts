@@ -11,6 +11,7 @@ import type {
   ScatterplotFigure,
 } from '@/lib/math/types';
 import { color, fontFamily } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Hình minh hoạ của đề Math.
@@ -120,7 +121,7 @@ function RightTriangleFigureView({ spec, width }: { spec: RightTriangleFigure; w
         />
       </Svg>
 
-      {notToScale ? <FigureNote text="Hình không vẽ đúng tỉ lệ." /> : null}
+      {notToScale ? <NotToScaleNote /> : null}
     </View>
   );
 }
@@ -409,12 +410,18 @@ function ParallelLinesFigureView({ spec, width }: { spec: ParallelLinesFigure; w
           {`∠${spec.asked.label}`}
         </SvgText>
       </Svg>
-      <FigureNote text="Hình không vẽ đúng tỉ lệ." />
+      <NotToScaleNote />
     </FigureFrame>
   );
 }
 
 // ------------------------------------------------------------------ dùng chung
+
+/** Ghi chú "không đúng tỉ lệ" theo ngôn ngữ giao diện. */
+function NotToScaleNote() {
+  const { L } = useL();
+  return <FigureNote text={L('Hình không vẽ đúng tỉ lệ.', 'Note: Figure not drawn to scale.')} />;
+}
 
 function FigureNote({ text }: { text: string }) {
   return (

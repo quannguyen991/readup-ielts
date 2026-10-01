@@ -66,7 +66,8 @@ const ASK_MS = 12_000;
 const FAST_MS = 4_000;
 
 export function CatchGame({ kind, onClose }: { kind: CatchKind; onClose: () => void }) {
-  const { L } = useL();
+  const { L, locale } = useL();
+  const en = locale === 'en';
   const { focus, pool } = useWordPools();
   const addCatch = useCityLifeStore((s) => s.addCatch);
   const addCappedPrize = useRewardStore((s) => s.addCappedPrize);
@@ -81,11 +82,11 @@ export function CatchGame({ kind, onClose }: { kind: CatchKind; onClose: () => v
   useEffect(() => {
     if (phase.k !== 'wait') return;
     const id = setTimeout(() => {
-      const q = makeQuestion(focus, pool, Math.random);
+      const q = makeQuestion(focus, pool, Math.random, en);
       if (q) setPhase({ k: 'ask', q, at: Date.now() });
     }, 1000 + Math.random() * 1500);
     return () => clearTimeout(id);
-  }, [phase.k, focus, pool, round]);
+  }, [phase.k, focus, pool, round, en]);
 
   // Đồng hồ trả lời: hết giờ là cá / bọ chạy mất.
   useEffect(() => {

@@ -6,6 +6,7 @@ import {
   parseTransferProbe,
 } from '@/services/writing/transfer-probe';
 import type { AnnotationCategory } from '@/lib/writing/types';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/writing/transfer  { category, originalQuote, whyVi }
@@ -21,6 +22,14 @@ import type { AnnotationCategory } from '@/lib/writing/types';
  * mẫu; phần chấm nằm ở `gradeTransfer`, còn quyền công nhận nằm ở
  * `services/mastery`. Ranh giới ấy là thứ giữ cho cả cơ chế có nghĩa.
  */
+
+/** Bản tiếng Anh cho lý do loại của `parseTransferProbe` (câu lạ thì giữ nguyên). */
+const REJECT_EN: Record<string, string> = {
+  'thiếu trường': 'missing fields',
+  'câu sai trùng câu sửa': 'the wrong sentence matches the fix',
+  'không phải câu mới': 'not a new sentence',
+  'câu quá ngắn': 'sentence too short',
+};
 
 const CATEGORIES = new Set<AnnotationCategory>([
   'grammar',
@@ -40,12 +49,12 @@ export async function POST(request: Request): Promise<Response> {
 
     const category = body.category as AnnotationCategory;
     if (!CATEGORIES.has(category)) {
-      return Response.json({ error: 'Loại lỗi không hợp lệ.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Loại lỗi không hợp lệ.', 'Invalid error category.') }, { status: 400 });
     }
 
     const originalQuote = (body.originalQuote ?? '').trim();
     if (originalQuote.length < 3) {
-      return Response.json({ error: 'Thiếu câu gốc.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu câu gốc.', 'The original sentence is missing.') }, { status: 400 });
     }
 
     /*
@@ -72,13 +81,22 @@ export async function POST(request: Request): Promise<Response> {
     }
 
     return Response.json(
-      { error: `Chưa soạn được câu kiểm dùng được (${lastReject}). Thử lại giúp.` },
+      {
+        error: msg(
+          request,
+          `Chưa soạn được câu kiểm dùng được (${lastReject}). Thử lại giúp.`,
+          `Couldn't write a usable check sentence (${REJECT_EN[lastReject] ?? lastReject}). Please try again.`,
+        ),
+      },
       { status: 502 },
     );
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message }, { status: 503 });
+      return Response.json(
+        { error: errorText(request, err, err.message, 'The AI service is unavailable right now. Please try again shortly.') },
+        { status: 503 },
+      );
     }
-    return Response.json({ error: 'Lỗi máy chủ.' }, { status: 500 });
+    return Response.json({ error: msg(request, 'Lỗi máy chủ.', 'Server error.') }, { status: 500 });
   }
 }

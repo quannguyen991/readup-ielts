@@ -9,6 +9,7 @@ import { Button } from '@/components/ui';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteGlobe } from '@/components/illust/Cute';
 import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
+import { useL } from '@/i18n/useL';
 
 /**
  * TRANG KHÔNG TỒN TẠI. Trước đây gõ sai đường dẫn là rơi vào màn mặc định của
@@ -18,6 +19,7 @@ import { CuteMagnifier, Motion } from '@/components/illust/CuteMore';
  */
 export default function NotFound() {
   const pathname = usePathname();
+  const { L } = useL();
   return (
     <Screen>
       <Appear>
@@ -25,7 +27,7 @@ export default function NotFound() {
           <View aria-hidden style={{ alignItems: 'center' }}>
             <View style={{ marginBottom: -4, zIndex: 2 }}>
               <Motion kind="pop">
-                <Label text="Lạc đường rồi 🧭" color="#F2B632" ink="#2A1B02" tilt={-5} size={14} />
+                <Label text={L('Lạc đường rồi 🧭', 'Lost your way? 🧭')} color="#F2B632" ink="#2A1B02" tilt={-5} size={14} />
               </Motion>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 8 }}>
@@ -44,14 +46,14 @@ export default function NotFound() {
               </Motion>
             </View>
           </View>
-          <Text className="mt-4 text-center font-heavy text-pageTitle text-ink">Không tìm thấy trang này</Text>
+          <Text className="mt-4 text-center font-heavy text-pageTitle text-ink">{L('Không tìm thấy trang này', "We can't find this page")}</Text>
           <Text className="mt-2 max-w-[520px] text-center font-sans text-bodyLg text-muted">
-            Đường dẫn <Text className="font-strong text-ink">{pathname}</Text> không có trong Band 9 — có thể gõ nhầm, hoặc trang đã đổi chỗ.
+            {L('Đường dẫn ', 'The link ')}<Text className="font-strong text-ink">{pathname}</Text>{L(' không có trong Band 9 — có thể gõ nhầm, hoặc trang đã đổi chỗ.', " doesn't exist in Band 9 — it may be a typo, or the page has moved.")}
           </Text>
           <View className="mt-7 flex-row flex-wrap justify-center gap-2">
-            <Button label="Về trang chủ" iconRight="arrow-right" onPress={() => router.replace('/' as never)} />
-            <Button label="Hôm nay học gì" variant="outline" onPress={() => router.replace('/dashboard' as never)} />
-            <Button label="Thư viện bài đọc" variant="outline" onPress={() => router.replace('/library' as never)} />
+            <Button label={L('Về trang chủ', 'Go home')} iconRight="arrow-right" onPress={() => router.replace('/' as never)} />
+            <Button label={L('Hôm nay học gì', "Today's study")} variant="outline" onPress={() => router.replace('/dashboard' as never)} />
+            <Button label={L('Thư viện bài đọc', 'Reading library')} variant="outline" onPress={() => router.replace('/library' as never)} />
           </View>
         </View>
       </Appear>

@@ -4,6 +4,7 @@ import { Text } from 'react-native';
 import { AccountCard } from '@/components/account/AccountCard';
 import { Screen } from '@/components/layout/Screen';
 import { ReminderCard } from '@/components/reminder/Reminder';
+import { useL } from '@/i18n/useL';
 
 /**
  * Cài đặt tài khoản.
@@ -21,9 +22,10 @@ import { ReminderCard } from '@/components/reminder/Reminder';
  * Cần kiểm cấu hình thì có `scripts/check-setup.ts` — đúng chỗ cho việc ấy.
  */
 export default function SettingsScreen() {
+  const { L } = useL();
   return (
     <Screen>
-      <Text className="font-heavy text-pageTitle text-ink">Cài đặt</Text>
+      <Text className="font-heavy text-pageTitle text-ink">{L('Cài đặt', 'Settings')}</Text>
       <AccountCard />
       <ReminderCard />
     </Screen>

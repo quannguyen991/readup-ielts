@@ -22,6 +22,7 @@ import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { AVAILABLE_IELTS_TYPES, QUESTION_TYPE_LABEL } from '@/services/questions/types';
 import { color } from '@/theme/tokens';
 import type { CefrLevel, PassageTier } from '@/types/database';
+import { useL, type L as LFn } from '@/i18n/useL';
 
 /**
  * Trang Luyện tập.
@@ -43,7 +44,8 @@ const TIER_BY_CHILD: Record<string, PassageTier> = {
   short: 'short_academic',
 };
 
-const SKILLS: RailSkill[] = [
+/** Dựng theo ngôn ngữ giao diện — nhãn đi thẳng vào `FilterRail`. */
+const buildSkills = (L: LFn): RailSkill[] => [
   {
     key: 'reading',
     label: 'Reading',
@@ -52,15 +54,15 @@ const SKILLS: RailSkill[] = [
     options: [
       {
         key: 'single',
-        label: 'Bài lẻ',
+        label: L('Bài lẻ', 'Single passages'),
         children: [
-          { key: 'p1', label: 'Passage 1 (~750 từ)' },
-          { key: 'p2', label: 'Passage 2 (~900 từ)' },
-          { key: 'p3', label: 'Passage 3 (~1050 từ)' },
-          { key: 'short', label: 'Bài ngắn' },
+          { key: 'p1', label: L('Passage 1 (~750 từ)', 'Passage 1 (~750 words)') },
+          { key: 'p2', label: L('Passage 2 (~900 từ)', 'Passage 2 (~900 words)') },
+          { key: 'p3', label: L('Passage 3 (~1050 từ)', 'Passage 3 (~1050 words)') },
+          { key: 'short', label: L('Bài ngắn', 'Short texts') },
         ],
       },
-      { key: 'full', label: 'Full đề — 3 passage, 60 phút' },
+      { key: 'full', label: L('Full đề — 3 passage, 60 phút', 'Full test — 3 passages, 60 minutes') },
     ],
   },
   {
@@ -79,10 +81,10 @@ const SKILLS: RailSkill[] = [
     options: [
       {
         key: 'single',
-        label: 'Bài lẻ',
+        label: L('Bài lẻ', 'Single tasks'),
         children: [
-          { key: 'task1', label: 'Task 1 — biểu đồ' },
-          { key: 'task2', label: 'Task 2 — luận' },
+          { key: 'task1', label: L('Task 1 — biểu đồ', 'Task 1 — charts') },
+          { key: 'task2', label: L('Task 2 — luận', 'Task 2 — essays') },
         ],
       },
     ],
@@ -134,6 +136,8 @@ const CHART_KINDS = [
 const READABLE_TOTAL = ARTICLES.filter(isReadable).length;
 
 export default function PracticeScreen() {
+  const { L, locale } = useL();
+  const SKILLS = useMemo(() => buildSkills(L), [L]);
   const { width } = useWindowDimensions();
   const wide = width >= 1024;
 
@@ -169,8 +173,8 @@ export default function PracticeScreen() {
     }
     return [...counts.entries()]
       .sort((a, b) => b[1] - a[1])
-      .map(([key, count]) => ({ key, label: key, count }));
-  }, []);
+      .map(([key, count]) => ({ key, label: key === 'Khác' ? L('Khác', 'Other') : key, count }));
+  }, [L]);
 
   const toggle = (list: string[], set: (v: string[]) => void, key: string) =>
     set(list.includes(key) ? list.filter((x) => x !== key) : [...list, key]);
@@ -263,24 +267,24 @@ export default function PracticeScreen() {
         selection.skill === 'reading' ? (
           <View className="mt-2 gap-2">
             <CheckGroup
-              title="Loại câu hỏi"
+              title={L('Loại câu hỏi', 'Question types')}
               note={
                 AVAILABLE_IELTS_TYPES.length > 1
-                  ? 'Chọn rồi thì đề sinh ra chỉ gồm những dạng này.'
-                  : 'Bộ sinh đề hiện mới làm được dạng này. Các dạng khác đang dựng.'
+                  ? L('Chọn rồi thì đề sinh ra chỉ gồm những dạng này.', 'Once picked, generated tests only include these types.')
+                  : L('Bộ sinh đề hiện mới làm được dạng này. Các dạng khác đang dựng.', 'The test generator only supports this type for now. Others are in progress.')
               }
               options={AVAILABLE_IELTS_TYPES.map((t) => ({ key: t, label: QUESTION_TYPE_LABEL[t] }))}
               selected={qTypes}
               onToggle={(k) => toggle(qTypes, setQTypes, k)}
             />
             <CheckGroup
-              title="Nguồn tài liệu"
+              title={L('Nguồn tài liệu', 'Sources')}
               options={sourceOptions}
               selected={sources}
               onToggle={(k) => toggle(sources, setSources, k)}
             />
             <CheckGroup
-              title="Trình độ"
+              title={L('Trình độ', 'Level')}
               options={LEVELS.map((l) => ({ key: l, label: l }))}
               selected={levels}
               onToggle={(k) => toggle(levels, setLevels, k)}
@@ -302,7 +306,7 @@ export default function PracticeScreen() {
             */}
             {selection.child !== 'task2' ? (
               <CheckGroup
-                title="Dạng biểu đồ (Task 1)"
+                title={L('Dạng biểu đồ (Task 1)', 'Chart type (Task 1)')}
                 options={CHART_KINDS}
                 selected={chartKinds}
                 onToggle={(k) => toggle(chartKinds, setChartKinds, k)}
@@ -310,14 +314,14 @@ export default function PracticeScreen() {
             ) : null}
             {selection.child !== 'task1' ? (
               <CheckGroup
-                title="Dạng đề (Task 2)"
+                title={L('Dạng đề (Task 2)', 'Essay type (Task 2)')}
                 options={ESSAY_KINDS}
                 selected={essayKinds}
                 onToggle={(k) => toggle(essayKinds, setEssayKinds, k)}
               />
             ) : null}
             <CheckGroup
-              title="Band mục tiêu"
+              title={L('Band mục tiêu', 'Target band')}
               options={WRITING_BANDS}
               selected={bands}
               onToggle={(k) => toggle(bands, setBands, k)}
@@ -334,32 +338,32 @@ export default function PracticeScreen() {
         <LightHero
           badge="IELTS · READING" art="verbal"
           line1="Reading"
-          line2="đọc để hiểu, không chỉ chọn đáp án"
-          subtitle="Chọn khổ bài và dạng câu hỏi, làm bài có bấm giờ, rồi xem lại từng câu cùng bằng chứng ngay trong bài đọc."
+          line2={L('đọc để hiểu, không chỉ chọn đáp án', 'read to understand, not just to pick answers')}
+          subtitle={L('Chọn khổ bài và dạng câu hỏi, làm bài có bấm giờ, rồi xem lại từng câu cùng bằng chứng ngay trong bài đọc.', 'Pick a passage length and question type, take it timed, then review each question with the evidence right in the text.')}
           footer={
             <>
-              <HeroStat value={READABLE_TOTAL.toLocaleString('vi-VN')} label="bài đọc" />
-              <HeroStat value="15" label="dạng câu hỏi" />
-              <HeroStat value="60" label="phút full đề" />
+              <HeroStat value={READABLE_TOTAL.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} label={L('bài đọc', 'readings')} />
+              <HeroStat value="15" label={L('dạng câu hỏi', 'question types')} />
+              <HeroStat value="60" label={L('phút full đề', 'min full test')} />
             </>
           }
         >
           <Button
-            label="Bài ngắn"
+            label={L('Bài ngắn', 'Short texts')}
             variant="brand"
             size="lg"
             iconRight="arrow-right"
             onPress={() => setSelection({ skill: 'reading', option: 'single', child: 'short' })}
           />
           <Button
-            label="Full đề Reading"
+            label={L('Full đề Reading', 'Full Reading test')}
             variant="outline"
             size="lg"
             iconLeft="clipboard"
             onPress={() => router.push('/mock-tests' as never)}
           />
           <Button
-            label="Xen kẽ dạng bài"
+            label={L('Xen kẽ dạng bài', 'Mixed practice')}
             variant="outline"
             size="lg"
             iconLeft="refresh"
@@ -371,7 +375,7 @@ export default function PracticeScreen() {
       {!wide ? (
         <View className="mt-3">
           <Button
-            label={railOpen ? 'Đóng bộ lọc' : 'Bộ lọc'}
+            label={railOpen ? L('Đóng bộ lọc', 'Close filters') : L('Bộ lọc', 'Filters')}
             variant="outline"
             iconLeft="filter"
             onPress={() => setRailOpen((v) => !v)}
@@ -403,8 +407,8 @@ export default function PracticeScreen() {
               page={page}
               pageSize={PAGE_SIZE}
               onChangePage={setPage}
-              label="bài đọc"
-              empty="Không có bài nào khớp. Bỏ bớt một bộ lọc là ra."
+              label={L('bài đọc', 'readings')}
+              empty={L('Không có bài nào khớp. Bỏ bớt một bộ lọc là ra.', 'Nothing matches. Remove a filter to see more.')}
               onClear={filtersOn ? clearFilters : undefined}
             >
               {readingMatches
@@ -426,8 +430,8 @@ export default function PracticeScreen() {
                 page={page}
                 pageSize={PAGE_SIZE}
                 onChangePage={setPage}
-                label="đề viết"
-                empty="Chưa có đề nào."
+                label={L('đề viết', 'writing prompts')}
+                empty={L('Chưa có đề nào.', 'No prompts yet.')}
               >
                 {writingMatches
                   .slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
@@ -465,17 +469,18 @@ function ResultGrid({
   onClear?: () => void;
   children: React.ReactNode;
 }) {
+  const { L } = useL();
   const pageCount = Math.max(1, Math.ceil(count / pageSize));
 
   return (
     <View>
       <View className="mb-3 flex-row flex-wrap items-center justify-between gap-2">
         <Text className="font-mid text-label text-muted">
-          <Text className="font-heavy text-ink">{count}</Text> {label} khớp bộ lọc
+          <Text className="font-heavy text-ink">{count}</Text> {label} {L('khớp bộ lọc', 'match your filters')}
         </Text>
         {onClear ? (
           <Pressable onPress={onClear} accessibilityRole="button">
-            <Text className="font-strong text-label text-primary-700">Xoá bộ lọc</Text>
+            <Text className="font-strong text-label text-primary-700">{L('Xoá bộ lọc', 'Clear filters')}</Text>
           </Pressable>
         ) : null}
       </View>
@@ -488,7 +493,7 @@ function ResultGrid({
             </View>
             <Text className="mt-3 text-center font-sans text-body text-muted">{empty}</Text>
             {onClear ? (
-              <Button className="mt-3" label="Xoá bộ lọc" variant="outline" onPress={onClear} />
+              <Button className="mt-3" label={L('Xoá bộ lọc', 'Clear filters')} variant="outline" onPress={onClear} />
             ) : null}
           </View>
         </Card>
@@ -505,6 +510,7 @@ function ResultGrid({
 }
 
 function WritingPromptCard({ prompt }: { prompt: (typeof WRITING_PROMPTS)[number] }) {
+  const { L } = useL();
   return (
     <PressScale
       onPress={() => router.push(`/write/${prompt.id}` as never)}
@@ -540,8 +546,8 @@ function WritingPromptCard({ prompt }: { prompt: (typeof WRITING_PROMPTS)[number
         </Text>
         <View className="flex-1" />
         <View className="mt-2 flex-row items-center gap-3">
-          <Meta icon="clock" text={`${Math.round(prompt.timeLimitSeconds / 60)} phút`} />
-          <Meta icon="list" text={`≥ ${prompt.minWords} từ`} />
+          <Meta icon="clock" text={L(`${Math.round(prompt.timeLimitSeconds / 60)} phút`, `${Math.round(prompt.timeLimitSeconds / 60)} min`)} />
+          <Meta icon="list" text={L(`≥ ${prompt.minWords} từ`, `≥ ${prompt.minWords} words`)} />
         </View>
       </Card>
     </PressScale>

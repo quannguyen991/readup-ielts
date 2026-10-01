@@ -1,6 +1,7 @@
 import { getArticleWithBody } from '@/data/articles';
 import { AiError } from '@/services/ai/errors';
 import { chatWithFallback } from '@/services/ai/fallback';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/reading/explain
@@ -50,7 +51,7 @@ export async function POST(request: Request): Promise<Response> {
 
     if (!body.articleId || !body.prompt || !body.correctAnswer) {
       return Response.json(
-        { error: 'Thiếu articleId, prompt hoặc correctAnswer.' },
+        { error: msg(request, 'Thiếu articleId, prompt hoặc correctAnswer.', 'articleId, prompt or correctAnswer is missing.') },
         { status: 400 },
       );
     }
@@ -58,7 +59,7 @@ export async function POST(request: Request): Promise<Response> {
     const article = getArticleWithBody(body.articleId);
     if (!article) {
       return Response.json(
-        { error: 'Không nạp được toàn văn bài này nên không giải được.' },
+        { error: msg(request, 'Không nạp được toàn văn bài này nên không giải được.', "Couldn't load this article's full text, so it can't be explained.") },
         { status: 422 },
       );
     }
@@ -98,9 +99,9 @@ export async function POST(request: Request): Promise<Response> {
     return Response.json({ text: result.text, model: result.model });
   } catch (err) {
     if (err instanceof AiError) {
-      return Response.json({ error: err.message, code: err.code }, { status: 502 });
+      return Response.json({ error: errorText(request, err, err.message, "Couldn't explain this question right now. Please try again in a few minutes."), code: err.code }, { status: 502 });
     }
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

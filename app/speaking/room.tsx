@@ -14,6 +14,7 @@ import {
   getCueCard,
   getPart1Topic,
   getSpeakingQuestion,
+  PART1_TOPICS,
   PART_INTRO,
   PART_TIMING,
   PREP_MS,
@@ -26,6 +27,7 @@ import { startRecorder, transcriptOf, type Recorder, type RecorderEnd, type Reco
 import { speakSentence } from '@/services/shadow/speech';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useL } from '@/i18n/useL';
 
 type Phase = 'intro' | 'asking' | 'prep' | 'answering' | 'retry' | 'review' | 'saving';
 
@@ -56,6 +58,7 @@ function newId(): string {
  * chừng — người đang nói cần tập trung vào câu hỏi.
  */
 export default function SpeakingRoom() {
+  const { L, en } = useL();
   const params = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string; q?: string; exam?: string; typed?: string; sample?: string }>();
   const plan = useMemo<SessionPlan>(() => {
     const mode = (MODES as string[]).includes(params.mode ?? '') ? (params.mode as SessionMode) : 'p1';
@@ -202,7 +205,12 @@ export default function SpeakingRoom() {
     });
     if (!rec) {
       setForceTyped(true);
-      setNotice('Không mở được micro trên trình duyệt này — chuyển sang gõ câu trả lời. Phần gõ phím không phải điểm Speaking.');
+      setNotice(
+        L(
+          'Không mở được micro trên trình duyệt này — chuyển sang gõ câu trả lời. Phần gõ phím không phải điểm Speaking.',
+          "Couldn't open the mic in this browser — switching to typed answers. Typed answers don't count as a Speaking score.",
+        ),
+      );
       return;
     }
     recRef.current = rec;
@@ -226,12 +234,21 @@ export default function SpeakingRoom() {
     clearTimers();
     const transcript = transcriptOf(snap);
     if (reason === 'denied') {
-      setNotice('Trình duyệt chưa cho dùng micro. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ, cho phép Micro rồi bấm "Thử lại".');
+      setNotice(
+        L(
+          'Trình duyệt chưa cho dùng micro. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ, cho phép Micro rồi bấm "Thử lại".',
+          'Your browser hasn\'t allowed the microphone yet. Click the lock icon next to the address bar, allow Microphone, then tap "Try again".',
+        ),
+      );
       enter('retry');
       return;
     }
     if (!transcript) {
-      setNotice(reason === 'error' ? 'Micro gặp trục trặc (thường do mạng). Thử lại nhé.' : 'Chưa nghe thấy gì — nói to, rõ hơn một chút rồi thử lại.');
+      setNotice(
+        reason === 'error'
+          ? L('Micro gặp trục trặc (thường do mạng). Thử lại nhé.', 'The mic ran into a problem (usually the network). Please try again.')
+          : L('Chưa nghe thấy gì — nói to, rõ hơn một chút rồi thử lại.', "Didn't hear anything — speak a little louder and clearer, then try again."),
+      );
       enter('retry');
       return;
     }
@@ -253,7 +270,7 @@ export default function SpeakingRoom() {
     const s = steps[indexRef.current]!;
     const transcript = typedText.trim();
     if (!transcript) {
-      setNotice('Gõ câu trả lời trước khi bấm "Xong câu".');
+      setNotice(L('Gõ câu trả lời trước khi bấm "Xong câu".', 'Type your answer before tapping "Done".'));
       return;
     }
     turnRef.current += 1;
@@ -379,10 +396,10 @@ export default function SpeakingRoom() {
   // ------------------------------------------------------------- hiển thị
   if (!steps.length || !q) {
     return (
-      <StudyFrame backHref="/speaking" title="Phòng luyện nói">
+      <StudyFrame backHref="/speaking" title={L('Phòng luyện nói', 'Speaking room')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Không tìm thấy câu hỏi này.</Text>
-          <Button className="mt-4 self-start" label="Về sảnh" onPress={() => router.replace('/speaking' as never)} />
+          <Text className="font-strong text-cardTitle text-ink">{L('Không tìm thấy câu hỏi này.', 'Question not found.')}</Text>
+          <Button className="mt-4 self-start" label={L('Về sảnh', 'Back to lobby')} onPress={() => router.replace('/speaking' as never)} />
         </StudyCard>
       </StudyFrame>
     );
@@ -396,38 +413,43 @@ export default function SpeakingRoom() {
   const orbState: OrbState = phase === 'asking' ? 'speaking' : phase === 'answering' && !typed ? 'listening' : phase === 'prep' || phase === 'saving' ? 'thinking' : 'idle';
   const status =
     phase === 'intro'
-      ? 'Chạm vào giám khảo để bắt đầu'
+      ? L('Chạm vào giám khảo để bắt đầu', 'Tap the examiner to start')
       : phase === 'asking'
-        ? 'Giám khảo đang hỏi…'
+        ? L('Giám khảo đang hỏi…', 'The examiner is asking…')
         : phase === 'prep'
-          ? `Chuẩn bị · còn ${fmtClock(Math.max(0, PREP_MS - elapsed))}`
+          ? L(`Chuẩn bị · còn ${fmtClock(Math.max(0, PREP_MS - elapsed))}`, `Prepare · ${fmtClock(Math.max(0, PREP_MS - elapsed))} left`)
           : phase === 'answering'
             ? typed
-              ? 'Gõ câu trả lời của bạn'
-              : `Đang nghe bạn · ${fmtClock(elapsed)} / ${fmtClock(timing.maxMs)}`
+              ? L('Gõ câu trả lời của bạn', 'Type your answer')
+              : L(`Đang nghe bạn · ${fmtClock(elapsed)} / ${fmtClock(timing.maxMs)}`, `Listening · ${fmtClock(elapsed)} / ${fmtClock(timing.maxMs)}`)
             : phase === 'retry'
-              ? 'Chưa nghe rõ — thử lại nhé'
+              ? L('Chưa nghe rõ — thử lại nhé', "Didn't catch that — try again")
               : phase === 'review'
                 ? exam
-                  ? 'Sang câu tiếp…'
-                  : 'Xong câu này'
-                : 'Đang lưu bài…';
+                  ? L('Sang câu tiếp…', 'Moving to the next question…')
+                  : L('Xong câu này', 'Question done')
+                : L('Đang lưu bài…', 'Saving…');
   const main =
     phase === 'intro'
-      ? { label: 'Bắt đầu', icon: 'arrow-right' as const, act: 'start' as const }
+      ? { label: L('Bắt đầu', 'Start'), icon: 'arrow-right' as const, act: 'start' as const }
       : phase === 'asking'
-        ? { label: 'Trả lời luôn', icon: 'mic' as const, act: 'skipReading' as const }
+        ? { label: L('Trả lời luôn', 'Answer now'), icon: 'mic' as const, act: 'skipReading' as const }
         : phase === 'prep'
-          ? { label: 'Nói ngay', icon: 'mic' as const, act: 'beginAnswer' as const }
+          ? { label: L('Nói ngay', 'Speak now'), icon: 'mic' as const, act: 'beginAnswer' as const }
           : phase === 'answering'
             ? typed
-              ? { label: 'Xong câu', icon: 'check' as const, act: 'finishTyped' as const }
-              : { label: 'Xong câu', icon: 'check' as const, act: 'stopListening' as const }
+              ? { label: L('Xong câu', 'Done'), icon: 'check' as const, act: 'finishTyped' as const }
+              : { label: L('Xong câu', 'Done'), icon: 'check' as const, act: 'stopListening' as const }
             : phase === 'retry'
-              ? { label: 'Thử lại', icon: 'mic' as const, act: 'beginAnswer' as const }
+              ? { label: L('Thử lại', 'Try again'), icon: 'mic' as const, act: 'beginAnswer' as const }
               : phase === 'review' && !exam
-                ? { label: index + 1 < steps.length ? 'Câu tiếp' : 'Nộp & chấm', icon: 'arrow-right' as const, act: 'goNext' as const }
+                ? {
+                    label: index + 1 < steps.length ? L('Câu tiếp', 'Next question') : L('Nộp & chấm', 'Submit & grade'),
+                    icon: 'arrow-right' as const,
+                    act: 'goNext' as const,
+                  }
                 : null;
+  const topicEn = q.part === 1 ? PART1_TOPICS.find((t) => t.questions.some((x) => x.id === q.id))?.titleEn : undefined;
   const runMain = (act: 'start' | 'skipReading' | 'beginAnswer' | 'finishTyped' | 'stopListening' | 'goNext') => {
     // Nút chính đổi nghĩa ngay dưới con trỏ khi sang bước mới: bỏ cú bấm rơi vào 0,4 giây đầu.
     if (act !== 'start' && Date.now() - phaseStartRef.current < 400) return;
@@ -438,12 +460,12 @@ export default function SpeakingRoom() {
   return (
     <StudyFrame
       backHref="/speaking"
-      title={phase === 'intro' ? 'Phòng luyện nói' : `Part ${q.part} · ${index + 1}/${steps.length}`}
+      title={phase === 'intro' ? L('Phòng luyện nói', 'Speaking room') : `Part ${q.part} · ${index + 1}/${steps.length}`}
       progress={progress}
       right={
         done > 0 && phase !== 'saving' ? (
           <Pressable accessibilityRole="button" onPress={finish} className="rounded-pill bg-white/80 px-3 py-2">
-            <Text className="font-semi text-label text-ink">Nộp & chấm</Text>
+            <Text className="font-semi text-label text-ink">{L('Nộp & chấm', 'Submit & grade')}</Text>
           </Pressable>
         ) : null
       }
@@ -453,7 +475,16 @@ export default function SpeakingRoom() {
         <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
           <View style={PILL}>
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: 'rgba(255,255,255,0.75)' }}>
-              {phase === 'intro' ? `${steps.length} CÂU · ${exam ? 'THI THẬT' : 'LUYỆN TẬP'}` : `PART ${q.part} · ${q.topicVi.toUpperCase()}`}
+              {phase === 'intro'
+                ? L(
+                    `${steps.length} CÂU · ${exam ? 'THI THẬT' : 'LUYỆN TẬP'}`,
+                    `${steps.length} QUESTIONS · ${exam ? 'EXAM MODE' : 'PRACTICE'}`,
+                  )
+                : en
+                  ? topicEn
+                    ? `PART ${q.part} · ${topicEn.toUpperCase()}`
+                    : `PART ${q.part}`
+                  : `PART ${q.part} · ${q.topicVi.toUpperCase()}`}
             </Text>
           </View>
         </View>
@@ -491,14 +522,17 @@ export default function SpeakingRoom() {
             {q.part !== 2 ? (
               <Pressable onPress={() => setShowQ((v) => !v)} style={{ marginTop: 6 }}>
                 <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
-                  {showQ ? 'Ẩn chữ câu hỏi' : 'Hiện chữ câu hỏi'}
+                  {showQ ? L('Ẩn chữ câu hỏi', 'Hide question text') : L('Hiện chữ câu hỏi', 'Show question text')}
                 </Text>
               </Pressable>
             ) : null}
           </View>
         ) : (
           <Text className="font-sans" style={{ marginTop: 16, fontSize: 14, color: 'rgba(255,255,255,0.6)', textAlign: 'center' }}>
-            Giám khảo hỏi bằng giọng nói — bạn trả lời như đang nói chuyện.
+            {L(
+              'Giám khảo hỏi bằng giọng nói — bạn trả lời như đang nói chuyện.',
+              'The examiner asks out loud — answer as if you were having a conversation.',
+            )}
           </Text>
         )}
 
@@ -512,7 +546,7 @@ export default function SpeakingRoom() {
                 notesRef.current = t;
               }}
               multiline
-              placeholder="Ghi vài từ khoá…"
+              placeholder={L('Ghi vài từ khoá…', 'Jot down a few keywords…')}
               placeholderTextColor="rgba(255,255,255,0.4)"
               className="font-sans"
               style={{ width: '100%', maxWidth: 520, minHeight: 80, borderRadius: 16, padding: 12, fontSize: 15, color: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.14)', textAlignVertical: 'top' }}
@@ -525,7 +559,7 @@ export default function SpeakingRoom() {
               onChangeText={setTypedText}
               multiline
               autoFocus
-              placeholder="Gõ như khi bạn nói… (không tính điểm Speaking)"
+              placeholder={L('Gõ như khi bạn nói… (không tính điểm Speaking)', "Type as you'd speak… (not a Speaking score)")}
               placeholderTextColor="rgba(255,255,255,0.4)"
               className="font-sans"
               style={{ width: '100%', maxWidth: 560, minHeight: 110, borderRadius: 16, padding: 12, fontSize: 15, color: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.14)', textAlignVertical: 'top' }}
@@ -534,15 +568,15 @@ export default function SpeakingRoom() {
 
           {phase === 'answering' && !typed ? (
             <Text className="font-sans" style={{ maxWidth: 560, minHeight: 48, fontSize: 16, lineHeight: 24, color: live ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.35)', textAlign: 'center' }}>
-              {tail || 'Cứ nói tự nhiên — chữ sẽ hiện ở đây.'}
+              {tail || L('Cứ nói tự nhiên — chữ sẽ hiện ở đây.', 'Just speak naturally — your words will appear here.')}
             </Text>
           ) : null}
 
           {phase === 'review' && answer ? (
             <View style={{ alignItems: 'center', gap: 6 }}>
               <View style={{ flexDirection: 'row', gap: 8 }}>
-                <Chip text={`✓ ${answer.metrics.words} từ`} />
-                {answer.metrics.wpm != null ? <Chip text={`${answer.metrics.wpm} từ/phút`} /> : null}
+                <Chip text={L(`✓ ${answer.metrics.words} từ`, `✓ ${answer.metrics.words} words`)} />
+                {answer.metrics.wpm != null ? <Chip text={L(`${answer.metrics.wpm} từ/phút`, `${answer.metrics.wpm} wpm`)} /> : null}
               </View>
               <Text className="font-sans" style={{ maxWidth: 560, fontSize: 14, lineHeight: 21, color: 'rgba(255,255,255,0.6)', textAlign: 'center' }} numberOfLines={3}>
                 {answer.transcript}
@@ -562,7 +596,7 @@ export default function SpeakingRoom() {
           {phase !== 'intro' && phase !== 'saving' ? (
             <RoundBtn
               icon="volume"
-              label="Nghe lại câu hỏi"
+              label={L('Nghe lại câu hỏi', 'Replay question')}
               disabled={phase === 'answering' && !typed}
               onPress={() => {
                 stopVoiceRef.current?.();
@@ -582,15 +616,15 @@ export default function SpeakingRoom() {
               </Text>
             </Pressable>
           ) : null}
-          {phase === 'review' && !exam ? <RoundBtn icon="refresh" label="Nói lại câu này" onPress={redo} /> : null}
-          {phase === 'retry' || (phase === 'answering' && !exam) ? <RoundBtn icon="arrow-right" label="Bỏ qua câu này" onPress={skipQuestion} /> : null}
+          {phase === 'review' && !exam ? <RoundBtn icon="refresh" label={L('Nói lại câu này', 'Redo this answer')} onPress={redo} /> : null}
+          {phase === 'retry' || (phase === 'answering' && !exam) ? <RoundBtn icon="arrow-right" label={L('Bỏ qua câu này', 'Skip this question')} onPress={skipQuestion} /> : null}
         </View>
 
         {sample && phase !== 'intro' ? (
           <View style={{ marginTop: 16, alignItems: 'center' }}>
             <Pressable onPress={() => setShowSample((v) => !v)}>
               <Text className="font-semi" style={{ fontSize: 13, color: '#5EEAD4' }}>
-                {showSample ? 'Ẩn bản hay hơn lần trước' : 'Xem bản hay hơn lần trước'}
+                {showSample ? L('Ẩn bản hay hơn lần trước', 'Hide last better version') : L('Xem bản hay hơn lần trước', 'Show last better version')}
               </Text>
             </Pressable>
             {showSample ? (

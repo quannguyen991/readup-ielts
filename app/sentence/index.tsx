@@ -13,6 +13,7 @@ import { audioLibraryStats } from '@/data/audio-library';
 import { videoLibraryStats } from '@/data/video-library';
 import { useSentenceStats, useSentenceStore } from '@/store/useSentenceStore';
 import { color, stickerGradient } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Trang chủ "Luyện câu": hai bài luyện cấp câu, độc lập với nhau.
@@ -23,6 +24,8 @@ import { color, stickerGradient } from '@/theme/tokens';
  * màu (`StickerCard`), thay vì khối gradient bão hoà kiểu banner cũ.
  */
 export default function SentenceHubScreen() {
+  const { L, en } = useL();
+  const dateLoc = en ? 'en-US' : 'vi-VN';
   const { dictation, translation } = useSentenceStats();
   const sessions = useSentenceStore((s) => s.sessions);
 
@@ -31,24 +34,27 @@ export default function SentenceHubScreen() {
       <Appear>
         <LightHero
           badge="SENTENCE PRACTICE" art="listening"
-          line1="Luyện câu"
-          line2="nghe kỹ, viết đúng"
-          subtitle={`Nghe rồi gõ lại nguyên văn, hoặc đọc một câu tiếng Việt rồi tự dịch sang tiếng Anh. ${dictationSetStats().sets + translationSetStats().sets} bài có chủ đề và ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} câu lẻ để ôn rải.`}
+          line1={L('Luyện câu', 'Sentence practice')}
+          line2={L('nghe kỹ, viết đúng', 'listen closely, write accurately')}
+          subtitle={L(
+            `Nghe rồi gõ lại nguyên văn, hoặc đọc một câu tiếng Việt rồi tự dịch sang tiếng Anh. ${dictationSetStats().sets + translationSetStats().sets} bài có chủ đề và ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} câu lẻ để ôn rải.`,
+            `Listen and type it back word for word, or read a Vietnamese sentence and translate it into English yourself. ${dictationSetStats().sets + translationSetStats().sets} topic sets and ${DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length} single sentences for spaced review.`,
+          )}
           footer={
             <>
-              <HeroStat value={String(DICTATION_SENTENCES.length)} label="câu chép chính tả" />
-              <HeroStat value={String(TRANSLATION_SENTENCES.length)} label="câu dịch" />
-              <HeroStat value={String(audioLibraryStats().items)} label="bài nghe" />
+              <HeroStat value={String(DICTATION_SENTENCES.length)} label={L('câu chép chính tả', 'dictation sentences')} />
+              <HeroStat value={String(TRANSLATION_SENTENCES.length)} label={L('câu dịch', 'translation sentences')} />
+              <HeroStat value={String(audioLibraryStats().items)} label={L('bài nghe', 'listening tracks')} />
             </>
           }
         >
           <Button
-            label="Chép chính tả"
+            label={L('Chép chính tả', 'Dictation')}
             iconRight="arrow-right"
             onPress={() => router.push('/sentence/dictation' as never)}
           />
           <Button
-            label="Dịch câu"
+            label={L('Dịch câu', 'Translation')}
             variant="outline"
             onPress={() => router.push('/sentence/translate' as never)}
           />
@@ -60,11 +66,11 @@ export default function SentenceHubScreen() {
           <ModeCard
             icon="volume"
             colors={stickerGradient.primary}
-            title="Chép chính tả"
-            description="Nghe một câu tiếng Anh rồi điền lại từng chữ cái vào ô. Biết trước câu có mấy từ, mỗi từ mấy chữ — sai chữ nào đỏ ngay chữ đó."
+            title={L('Chép chính tả', 'Dictation')}
+            description={L('Nghe một câu tiếng Anh rồi điền lại từng chữ cái vào ô. Biết trước câu có mấy từ, mỗi từ mấy chữ — sai chữ nào đỏ ngay chữ đó.', 'Listen to an English sentence and fill in every letter. You see how many words and letters there are — any wrong letter turns red right away.')}
             total={DICTATION_SENTENCES.length}
             stats={dictation}
-            scoreLabel="chính xác"
+            scoreLabel={L('chính xác', 'accuracy')}
             onPress={() => router.push('/sentence/dictation' as never)}
           />
         </Appear>
@@ -72,11 +78,11 @@ export default function SentenceHubScreen() {
           <ModeCard
             icon="languages"
             colors={stickerGradient.accent}
-            title="Dịch câu"
-            description="Đọc một câu tiếng Việt rồi gõ bản dịch. Câu mẫu nằm sẵn bên cạnh nhưng bị che — gõ đúng từ nào thì từ đó mở ra."
+            title={L('Dịch câu', 'Translation')}
+            description={L('Đọc một câu tiếng Việt rồi gõ bản dịch. Câu mẫu nằm sẵn bên cạnh nhưng bị che — gõ đúng từ nào thì từ đó mở ra.', 'Read a Vietnamese sentence and type your translation. The model sentence sits alongside, hidden — each word you get right is revealed.')}
             total={TRANSLATION_SENTENCES.length}
             stats={translation}
-            scoreLabel="tự tái tạo được"
+            scoreLabel={L('tự tái tạo được', 'reproduced')}
             onPress={() => router.push('/sentence/translate' as never)}
           />
         </Appear>
@@ -92,9 +98,9 @@ export default function SentenceHubScreen() {
           <EntryCard
             icon="play"
             tint="primary"
-            title="Thư viện bộ đề"
-            body={`${dictationSetStats().sets} bài chép chính tả và ${translationSetStats().sets} bài dịch, mỗi bài một chủ đề.`}
-            cta="Mở thư viện"
+            title={L('Thư viện bộ đề', 'Practice sets')}
+            body={L(`${dictationSetStats().sets} bài chép chính tả và ${translationSetStats().sets} bài dịch, mỗi bài một chủ đề.`, `${dictationSetStats().sets} dictation sets and ${translationSetStats().sets} translation sets, each on one topic.`)}
+            cta={L('Mở thư viện', 'Open library')}
             onPress={() => router.push('/sentence/sets' as never)}
           />
           {/*
@@ -107,17 +113,17 @@ export default function SentenceHubScreen() {
           <EntryCard
             icon="volume"
             tint="accent"
-            title="Thư viện nghe"
-            body={`${audioLibraryStats().items} bài nghe có SẴN LỜI từ VOA Learning English — bấm vào là làm được ngay, không phải dán gì.`}
-            cta="Mở thư viện nghe"
+            title={L('Thư viện nghe', 'Listening library')}
+            body={L(`${audioLibraryStats().items} bài nghe có SẴN LỜI từ VOA Learning English — bấm vào là làm được ngay, không phải dán gì.`, `${audioLibraryStats().items} tracks WITH TRANSCRIPTS from VOA Learning English — tap and start, nothing to paste.`)}
+            cta={L('Mở thư viện nghe', 'Open listening library')}
             onPress={() => router.push('/sentence/audio' as never)}
           />
           <EntryCard
             icon="play"
             tint="primary"
-            title="Thư viện video"
-            body={`${videoLibraryStats().videos} video từ TED, BBC, Vox… giọng bản xứ ở tốc độ thật. Lần đầu mỗi video cần dán phụ đề một lần.`}
-            cta="Mở thư viện video"
+            title={L('Thư viện video', 'Video library')}
+            body={L(`${videoLibraryStats().videos} video từ TED, BBC, Vox… giọng bản xứ ở tốc độ thật. Lần đầu mỗi video cần dán phụ đề một lần.`, `${videoLibraryStats().videos} videos from TED, BBC, Vox… native speakers at real speed. Each video needs its subtitles pasted once the first time.`)}
+            cta={L('Mở thư viện video', 'Open video library')}
             onPress={() => router.push('/sentence/videos' as never)}
           />
         </View>
@@ -126,7 +132,7 @@ export default function SentenceHubScreen() {
       {sessions.length > 0 ? (
         <Appear index={4}>
           <Card className="mt-5">
-            <Text className="font-strong text-cardTitle text-ink">Lượt gần đây</Text>
+            <Text className="font-strong text-cardTitle text-ink">{L('Lượt gần đây', 'Recent sessions')}</Text>
             <View className="mt-3 gap-2">
               {sessions.slice(0, 6).map((session) => (
                 <View
@@ -135,11 +141,11 @@ export default function SentenceHubScreen() {
                 >
                   <View className="flex-1" style={{ minWidth: 180 }}>
                     <Text className="font-sans text-body text-ink">
-                      {session.mode === 'dictation' ? 'Chép chính tả' : 'Dịch câu'} · {session.total} câu
+                      {session.mode === 'dictation' ? L('Chép chính tả', 'Dictation') : L('Dịch câu', 'Translation')} · {session.total} {L('câu', 'sentences')}
                     </Text>
                     <Text className="mt-0.5 font-mid text-label text-muted">
-                      {new Date(session.finishedAt).toLocaleDateString('vi-VN')} ·{' '}
-                      {new Date(session.finishedAt).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' })}
+                      {new Date(session.finishedAt).toLocaleDateString(dateLoc)} ·{' '}
+                      {new Date(session.finishedAt).toLocaleTimeString(dateLoc, { hour: '2-digit', minute: '2-digit' })}
                     </Text>
                   </View>
                   <Badge label={sessionScoreLabel(session)} tone={sessionScoreTone(session)} />
@@ -217,6 +223,7 @@ function ModeCard({
   scoreLabel: string;
   onPress: () => void;
 }) {
+  const { L } = useL();
   return (
     <Pressable onPress={onPress} accessibilityRole="button">
       <StickerCard colors={colors} style={{ height: '100%' }}>
@@ -228,18 +235,18 @@ function ModeCard({
 
         <View className="mt-4 flex-row flex-wrap items-center gap-2">
           <View className="rounded-pill bg-white/20 px-2.5 py-1">
-            <Text className="font-strong text-label text-white">{total} câu</Text>
+            <Text className="font-strong text-label text-white">{total} {L('câu', 'sentences')}</Text>
           </View>
           <View className="rounded-pill bg-white/20 px-2.5 py-1">
             <Text className="font-strong text-label text-white">
-              {stats.avgScore !== null ? `${Math.round(stats.avgScore * 100)}% ${scoreLabel}` : 'Chưa luyện lần nào'}
+              {stats.avgScore !== null ? `${Math.round(stats.avgScore * 100)}% ${scoreLabel}` : L('Chưa luyện lần nào', 'Not practised yet')}
             </Text>
           </View>
         </View>
 
         <View className="mt-4 flex-row items-center gap-1.5">
           <Text className="font-strong text-body text-white">
-            {stats.sessions > 0 ? 'Luyện tiếp' : 'Bắt đầu'}
+            {stats.sessions > 0 ? L('Luyện tiếp', 'Continue') : L('Bắt đầu', 'Start')}
           </Text>
           <Icon name="arrow-right" size={16} color="#fff" />
         </View>

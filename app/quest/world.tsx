@@ -10,13 +10,24 @@ import { islandPosition, nextMission, type Island } from '@/services/world/islan
 import { SealIcon } from '@/components/illust/HeroArt';
 import { Label } from '@/components/illust/Sticker';
 import { Motion } from '@/components/illust/CuteMore';
+import { islandName, islandTagline, missionTitle } from '@/components/world/island-label';
+import { bi, currentLocale, useL, type Bi } from '@/i18n/useL';
 
 const INTRO_KEY = 'readup:world-intro';
 
-const OWL_INTRO = [
-  'Chào bạn, mình là Cú. Đây là bản đồ Band 9: sáu hòn đảo, mỗi đảo là một mảng học.',
-  'Giữ phím mũi tên (hoặc WASD) để đi trên sợi sáng, hay bấm thẳng vào một đảo. Tới cổng đảo, nhấn E để vào đảo.',
-  'Nhiệm vụ là bài học thật của app. Học xong bài nào, sợi sáng nối tới đảo đó dài thêm. Lạc đường thì bấm "Hỏi Cú".',
+const OWL_INTRO: Bi[] = [
+  {
+    vi: 'Chào bạn, mình là Cú. Đây là bản đồ Band 9: sáu hòn đảo, mỗi đảo là một mảng học.',
+    en: "Hi, I'm Owl. This is the Band 9 map: six islands, each one a learning area.",
+  },
+  {
+    vi: 'Giữ phím mũi tên (hoặc WASD) để đi trên sợi sáng, hay bấm thẳng vào một đảo. Tới cổng đảo, nhấn E để vào đảo.',
+    en: 'Hold the arrow keys (or WASD) to walk along the glowing path, or click an island directly. At the island gate, press E to go in.',
+  },
+  {
+    vi: 'Nhiệm vụ là bài học thật của app. Học xong bài nào, sợi sáng nối tới đảo đó dài thêm. Lạc đường thì bấm "Hỏi Cú".',
+    en: 'Quests are real lessons in the app. Finish one and the glowing path to that island grows longer. Lost? Tap "Ask Owl".',
+  },
 ];
 
 /**
@@ -25,6 +36,7 @@ const OWL_INTRO = [
  * chữ tiếng Việt ở lớp React phía trên vì phông pixel không có dấu.
  */
 export default function WorldScreen() {
+  const { L, locale } = useL();
   const islands = useWorldIslands();
 
   const host = useRef<View>(null);
@@ -85,12 +97,21 @@ export default function WorldScreen() {
 
   const askOwl = () => {
     const next = nextMission(islands);
+    const loc = currentLocale();
     if (!next) {
-      setOwl('Bạn đã thắp sáng cả bản đồ. Giỏi quá! Giờ ôn lại những bài còn sai trong Hồ sơ lỗi nhé.');
+      setOwl(
+        loc === 'en'
+          ? "You've lit up the whole map. Amazing! Now review the questions you still got wrong in your Mistake log."
+          : 'Bạn đã thắp sáng cả bản đồ. Giỏi quá! Giờ ôn lại những bài còn sai trong Hồ sơ lỗi nhé.',
+      );
       return;
     }
     const idx = islands.indexOf(next.island);
-    setOwl(`Đi ${next.island.name} nhé — đảo đó đang tối nhất. Nhiệm vụ nên làm: “${next.mission.title}”.`);
+    setOwl(
+      loc === 'en'
+        ? `Head to ${islandName(next.island, loc)} — it's the darkest island right now. Suggested quest: “${missionTitle(next.mission, loc)}”.`
+        : `Đi ${next.island.name} nhé — đảo đó đang tối nhất. Nhiệm vụ nên làm: “${next.mission.title}”.`,
+    );
     world.current?.goTo(idx);
   };
 
@@ -115,7 +136,7 @@ export default function WorldScreen() {
   if (Platform.OS !== 'web') {
     return (
       <View className="flex-1 items-center justify-center bg-[#0b0b24] p-6">
-        <Text className="text-center font-semi text-bodyLg text-white">Bản đồ Band 9 hiện chỉ chạy trên bản web.</Text>
+        <Text className="text-center font-semi text-bodyLg text-white">{L('Bản đồ Band 9 hiện chỉ chạy trên bản web.', 'The Band 9 map currently only runs on the web.')}</Text>
       </View>
     );
   }
@@ -139,10 +160,10 @@ export default function WorldScreen() {
             className="items-center"
           >
             <Text className="text-center font-heavy text-label text-white" style={{ textShadowColor: 'rgba(0,0,0,0.8)', textShadowRadius: 4 }}>
-              {isl.name}
+              {islandName(isl, locale)}
             </Text>
             <Text className="font-semi text-label" style={{ color: isl.done ? isl.color : '#94A3B8', fontVariant: ['tabular-nums'] }}>
-              {isl.done}/{isl.missions.length} nhiệm vụ
+              {L(`${isl.done}/${isl.missions.length} nhiệm vụ`, `${isl.done}/${isl.missions.length} quests`)}
             </Text>
           </Pressable>
         );
@@ -160,14 +181,14 @@ export default function WorldScreen() {
               <SealIcon name="compass" color="#22A06B" size={28} />
             </View>
             <Text className="font-strong text-label text-white">
-              Bản đồ Band 9 · <Text style={{ color: '#FDE047' }}>{done}</Text>/{total} nhiệm vụ
+              {L('Bản đồ Band 9', 'Band 9 map')} · <Text style={{ color: '#FDE047' }}>{done}</Text>/{total} {L('nhiệm vụ', 'quests')}
             </Text>
           </View>
         </View>
         <Pressable onPress={askOwl} className="flex-row items-center gap-1.5 rounded-pill px-3 py-2" style={{ backgroundColor: '#F59E0B' }}>
           <Icon name="sparkle" size={15} color="#1F1530" />
           <Text className="font-strong text-label" style={{ color: '#1F1530' }}>
-            Hỏi Cú · H
+            {L('Hỏi Cú · H', 'Ask Owl · H')}
           </Text>
         </Pressable>
       </View>
@@ -176,34 +197,34 @@ export default function WorldScreen() {
       {here && introStep === null ? (
         <View className="absolute bottom-3 right-3 w-[340px] max-w-[92%] rounded-2xl p-4" style={{ backgroundColor: 'rgba(15,15,40,0.94)', borderWidth: 1.5, borderColor: here.color }}>
           <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-heavy text-cardTitle text-white">{here.name}</Text>
+            <Text className="font-heavy text-cardTitle text-white">{islandName(here, locale)}</Text>
             <View aria-hidden>
               <Motion kind="pop">
-                <Label text="Bạn đang ở đây 📍" color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
+                <Label text={L('Bạn đang ở đây 📍', 'You are here 📍')} color="#F2B632" ink="#2A1B02" tilt={-4} size={10} />
               </Motion>
             </View>
           </View>
           <Text className="mt-0.5 font-sans text-label" style={{ color: '#E1D9CB' }}>
-            {here.tagline}
+            {islandTagline(here, locale)}
           </Text>
           <View className="mt-2.5 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}>
             <View className="h-2 rounded-pill" style={{ width: `${Math.max(3, here.progress * 100)}%`, backgroundColor: here.color }} />
           </View>
           <Text className="mt-1 font-semi text-label" style={{ color: '#94A3B8' }}>
-            Đã xong {here.done}/{here.missions.length}
+            {L('Đã xong', 'Done')} {here.done}/{here.missions.length}
           </Text>
           <ScrollView style={{ maxHeight: 190 }} className="mt-2">
             {[...here.missions.filter((m) => !m.done), ...here.missions.filter((m) => m.done)].slice(0, 12).map((m) => (
               <Pressable key={m.id} onPress={() => router.push(m.href as never)} className="flex-row items-center gap-2 rounded-lg px-2 py-1.5">
                 <Icon name={m.done ? 'check' : 'arrow-right'} size={14} color={m.done ? '#4ADE80' : here.color} />
                 <Text className="min-w-0 flex-1 font-semi text-label" style={{ color: m.done ? '#64748B' : '#F9F6F1' }} numberOfLines={1}>
-                  {m.title}
+                  {missionTitle(m, locale)}
                 </Text>
               </Pressable>
             ))}
           </ScrollView>
           <Pressable onPress={enterIsland} className="mt-3 items-center rounded-xl py-2.5" style={{ backgroundColor: here.color }}>
-            <Text className="font-strong text-body text-white">Vào đảo · E</Text>
+            <Text className="font-strong text-body text-white">{L('Vào đảo · E', 'Enter island · E')}</Text>
           </Pressable>
         </View>
       ) : null}
@@ -219,7 +240,7 @@ export default function WorldScreen() {
                 </Motion>
               </View>
               <Text className="font-heavy text-body" style={{ color: '#FBBF24' }}>
-                Cú dẫn đường
+                {L('Cú dẫn đường', 'Owl guide')}
               </Text>
             </View>
             {introStep !== null ? (
@@ -229,14 +250,14 @@ export default function WorldScreen() {
             ) : null}
           </View>
           <Text className="mt-2 font-sans text-body text-white" style={{ lineHeight: 22 }}>
-            {introStep !== null ? OWL_INTRO[introStep] : owl}
+            {introStep !== null ? bi(OWL_INTRO[introStep] ?? { vi: '', en: '' }, locale) : owl}
           </Text>
           <View className="mt-3 flex-row justify-end gap-2">
             {introStep !== null ? (
               <>
                 <Pressable onPress={closeIntro} className="rounded-lg px-3 py-2">
                   <Text className="font-semi text-label" style={{ color: '#94A3B8' }}>
-                    Bỏ qua
+                    {L('Bỏ qua', 'Skip')}
                   </Text>
                 </Pressable>
                 <Pressable
@@ -245,13 +266,13 @@ export default function WorldScreen() {
                   style={{ backgroundColor: '#F59E0B' }}
                 >
                   <Text className="font-strong text-label" style={{ color: '#1F1530' }}>
-                    {introStep + 1 < OWL_INTRO.length ? 'Tiếp' : 'Lên đường'}
+                    {introStep + 1 < OWL_INTRO.length ? L('Tiếp', 'Next') : L('Lên đường', "Let's go")}
                   </Text>
                 </Pressable>
               </>
             ) : (
               <Pressable onPress={() => setOwl(null)} className="rounded-lg px-4 py-2" style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}>
-                <Text className="font-strong text-label text-white">Đã hiểu</Text>
+                <Text className="font-strong text-label text-white">{L('Đã hiểu', 'Got it')}</Text>
               </Pressable>
             )}
           </View>

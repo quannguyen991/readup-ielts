@@ -222,3 +222,63 @@ export function visibleGroups(groups: readonly NavGroup[], desktop: boolean): Na
     items: g.items.filter(keep).map((i) => (i.children ? { ...i, children: i.children.filter(keep) } : i)),
   }));
 }
+
+/**
+ * Nhãn TIẾNG ANH của từng mục điều hướng (theo `key`) — dùng khi người dùng
+ * chọn English. Thiếu khoá thì giữ nhãn tiếng Việt.
+ */
+export const NAV_LABEL_EN: Record<string, string> = {
+  home: 'Home',
+  dashboard: 'Today',
+  plan: 'My plan',
+  progress: 'Progress',
+  errors: 'Mistake log',
+  mastery: 'Evidence book',
+  ielts: 'IELTS',
+  'mock-tests': 'Reading mock tests',
+  library: 'Reading library',
+  bilingual: 'Bilingual news',
+  writing: 'Writing',
+  sentence: 'Listen & dictate',
+  'dictation-sets': 'Dictation sets',
+  'dictation-youtube': 'Dictate from video',
+  shadow: 'VOA shadowing',
+  speaking: 'Speaking room',
+  sat: 'SAT',
+  math: 'SAT Math',
+  'math-learn': 'SAT Math lessons',
+  'sat-roadmap': 'SAT Math roadmap',
+  'sat-knowledge': 'SAT knowledge',
+  'sat-rw': 'SAT Verbal',
+  'sat-rw-learn': 'SAT Verbal lessons',
+  'sat-full-test': 'Full SAT practice test',
+  vocabulary: 'Vocabulary',
+  'vocab-book': 'Word book',
+  'vocab-topics': 'IELTS topics',
+  'vocab-sat-quiz': 'SAT vocabulary review',
+  'vocab-import': 'Learn words from any text',
+  'vocab-garden': 'Word garden',
+  notes: 'Notes',
+  bookmarks: 'Saved',
+  quest: 'Quest',
+  'quest-city': 'Knowledge City',
+  'quest-rail': 'Vocabulary train',
+  'quest-world': 'Band 9 map',
+  'quest-hero': 'Character & quests',
+  leaderboard: 'Leaderboard',
+  weekly: 'Weekly test',
+  duel: '1-on-1 duel',
+  shop: 'Rewards shop',
+  me: 'Me',
+  invite: 'Invite friends, learn free',
+  upgrade: 'Plans',
+  settings: 'Settings',
+  observatory: 'AI question quality',
+  teacher: 'For teachers',
+  admin: 'Users & plans',
+};
+
+/** Nhãn hiển thị của một mục theo ngôn ngữ. */
+export function navLabel(item: { key: string; label: string }, locale: 'vi' | 'en'): string {
+  return locale === 'en' ? (NAV_LABEL_EN[item.key] ?? item.label) : item.label;
+}

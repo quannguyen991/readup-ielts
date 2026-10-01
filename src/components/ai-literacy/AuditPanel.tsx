@@ -7,6 +7,15 @@ import { buildAuditItem, FLAW_KINDS, FLAW_LABEL, type AuditItem, type FlawKind }
 import type { ProbeDraft } from '@/services/proofloop/draft-schema';
 import { observeSkill } from '@/store/useMasteryStore';
 import { Appear } from '@/components/motion/Motion';
+import { useL } from '@/i18n/useL';
+
+/** Tên loại lỗi khi giao diện ở tiếng Anh (bản gốc tiếng Việt ở `FLAW_LABEL`). */
+const FLAW_LABEL_EN: Readonly<Record<FlawKind, string>> = {
+  'fabricated-evidence': "Quote that isn't in the passage",
+  'wrong-source-pointer': 'Points to the wrong place in the passage',
+  overclaim: "States something as certain that it can't verify",
+  'self-contradiction': 'Explanation contradicts the answer',
+};
 
 /**
  * Soi một bản do AI sinh ra, và tìm lỗi đã được cấy vào đó.
@@ -41,6 +50,8 @@ export function AuditPanel({
   sourceId: string;
   fetchDraft: () => Promise<ProbeDraft | null>;
 }) {
+  const { L, en } = useL();
+  const flawLabel = (k: FlawKind) => (en ? FLAW_LABEL_EN[k] : FLAW_LABEL[k]);
   const [phase, setPhase] = useState<'idle' | 'loading' | 'asking' | 'named' | 'done' | 'failed'>('idle');
   const [item, setItem] = useState<AuditItem | null>(null);
   const [answer, setAnswer] = useState<AuditAnswer | null>(null);
@@ -71,13 +82,15 @@ export function AuditPanel({
   if (phase === 'idle') {
     return (
       <Card className="mt-4">
-        <Badge label="ĐỌC KẾT QUẢ CỦA AI" tone="accent" />
-        <Text className="mt-2 font-strong text-cardTitle text-ink">Soi một bản của AI</Text>
+        <Badge label={L('ĐỌC KẾT QUẢ CỦA AI', 'READING AI OUTPUT')} tone="accent" />
+        <Text className="mt-2 font-strong text-cardTitle text-ink">{L('Soi một bản của AI', 'Inspect an AI answer')}</Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          App sẽ đưa bạn một bản do AI viết ra. Một nửa số bản bị cấy sẵn đúng một lỗi, một nửa thì
-          không. Việc của bạn là nói bản này có lỗi hay không — và nếu có thì là lỗi gì.
+          {L(
+            'App sẽ đưa bạn một bản do AI viết ra. Một nửa số bản bị cấy sẵn đúng một lỗi, một nửa thì không. Việc của bạn là nói bản này có lỗi hay không — và nếu có thì là lỗi gì.',
+            "The app will show you an answer written by AI. Half of them have exactly one planted error; half don't. Your job is to say whether this one has an error — and if so, what kind.",
+          )}
         </Text>
-        <Button className="mt-3" label="Lấy một bản" size="sm" onPress={start} />
+        <Button className="mt-3" label={L('Lấy một bản', 'Get an answer')} size="sm" onPress={start} />
       </Card>
     );
   }
@@ -87,7 +100,7 @@ export function AuditPanel({
       <Card className="mt-4">
         <View className="flex-row items-center gap-2">
           <ActivityIndicator size="small" />
-          <Text className="font-sans text-body text-muted">Đang lấy một bản của AI…</Text>
+          <Text className="font-sans text-body text-muted">{L('Đang lấy một bản của AI…', 'Fetching an AI answer…')}</Text>
         </View>
       </Card>
     );
@@ -96,9 +109,12 @@ export function AuditPanel({
   if (phase === 'failed' || !item) {
     return (
       <Card className="mt-4">
-        <Text className="font-semi text-body text-ink">Chưa lấy được bản nào</Text>
+        <Text className="font-semi text-body text-ink">{L('Chưa lấy được bản nào', "Couldn't get an answer")}</Text>
         <Text className="mt-1 font-sans text-label text-muted">
-          Cần một bản AI thật để soi. Thử lại sau khi làm xong một bài đọc có khoanh bằng chứng.
+          {L(
+            'Cần một bản AI thật để soi. Thử lại sau khi làm xong một bài đọc có khoanh bằng chứng.',
+            'You need a real AI answer to inspect. Try again after finishing a reading with marked evidence.',
+          )}
         </Text>
       </Card>
     );
@@ -109,8 +125,8 @@ export function AuditPanel({
 
   return (
     <Card className="mt-4">
-      <Badge label="ĐỌC KẾT QUẢ CỦA AI" tone="accent" />
-      <Text className="mt-2 font-strong text-cardTitle text-ink">Bản này có gì sai không?</Text>
+      <Badge label={L('ĐỌC KẾT QUẢ CỦA AI', 'READING AI OUTPUT')} tone="accent" />
+      <Text className="mt-2 font-strong text-cardTitle text-ink">{L('Bản này có gì sai không?', 'Is anything wrong with this answer?')}</Text>
 
       {/* Bản đem soi. Hiện đúng như AI đã viết, không tô đậm gợi ý chỗ nào cả. */}
       <View className="mt-3 rounded-panel border border-border bg-surface px-3 py-3">
@@ -128,13 +144,13 @@ export function AuditPanel({
           </Text>
         ))}
 
-        <Text className="mt-3 font-mid text-label text-muted">AI trích câu này trong bài</Text>
+        <Text className="mt-3 font-mid text-label text-muted">{L('AI trích câu này trong bài', 'AI quoted this sentence from the passage')}</Text>
         <Text className="mt-1 font-sans text-body text-ink">“{draft.evidenceText}”</Text>
         <Text className="mt-1 font-sans text-label text-muted">
-          AI nói câu đó nằm ở đoạn {draft.evidenceParagraphIndex + 1}
+          {L(`AI nói câu đó nằm ở đoạn ${draft.evidenceParagraphIndex + 1}`, `AI says it's in paragraph ${draft.evidenceParagraphIndex + 1}`)}
         </Text>
 
-        <Text className="mt-3 font-mid text-label text-muted">AI giải thích vì sao các phương án kia sai</Text>
+        <Text className="mt-3 font-mid text-label text-muted">{L('AI giải thích vì sao các phương án kia sai', 'AI explains why the other options are wrong')}</Text>
         {draft.whyEachWrong.map((why) => (
           <Text key={why} className="mt-1 font-sans text-label text-body">
             · {why}
@@ -147,10 +163,10 @@ export function AuditPanel({
       </View>
 
       {/* Đoạn bài để đối chiếu — không có nó thì không kiểm được trích dẫn. */}
-      <Text className="mt-3 font-mid text-label text-muted">Bài gốc</Text>
+      <Text className="mt-3 font-mid text-label text-muted">{L('Bài gốc', 'Original passage')}</Text>
       {paragraphs.map((p, i) => (
         <Text key={i} className="mt-1 font-sans text-label text-body">
-          <Text className="font-semi text-muted">Đoạn {i + 1}. </Text>
+          <Text className="font-semi text-muted">{L(`Đoạn ${i + 1}. `, `Paragraph ${i + 1}. `)}</Text>
           {p}
         </Text>
       ))}
@@ -159,12 +175,12 @@ export function AuditPanel({
       {phase === 'asking' ? (
         <View className="mt-4 flex-row gap-2">
           <Button
-            label="Bản này sạch"
+            label={L('Bản này sạch', 'This one is clean')}
             variant="outline"
             size="sm"
             onPress={() => settle({ flawed: false, kind: null })}
           />
-          <Button label="Có lỗi" size="sm" onPress={() => setPhase('named')} />
+          <Button label={L('Có lỗi', 'It has an error')} size="sm" onPress={() => setPhase('named')} />
         </View>
       ) : null}
       </Appear>
@@ -172,7 +188,7 @@ export function AuditPanel({
       <Appear>
       {phase === 'named' ? (
         <View className="mt-4">
-          <Text className="font-mid text-label text-muted">Lỗi gì?</Text>
+          <Text className="font-mid text-label text-muted">{L('Lỗi gì?', 'What kind of error?')}</Text>
           <View className="mt-2 gap-2">
             {FLAW_KINDS.map((kind: FlawKind) => (
               <Pressable
@@ -180,7 +196,7 @@ export function AuditPanel({
                 onPress={() => settle({ flawed: true, kind })}
                 className="rounded-panel border border-border bg-surface px-3 py-3"
               >
-                <Text className="font-sans text-body text-ink">{FLAW_LABEL[kind]}</Text>
+                <Text className="font-sans text-body text-ink">{flawLabel(kind)}</Text>
               </Pressable>
             ))}
             <Pressable
@@ -191,7 +207,7 @@ export function AuditPanel({
                 Lối ra trung thực. Bỏ nó đi thì người chỉ ngờ ngợ buộc phải bốc
                 một loại, và một lượt bốc trúng sẽ được ghi y như một lượt đọc ra.
               */}
-              <Text className="font-sans text-body text-muted">Thấy sai nhưng chưa gọi được tên</Text>
+              <Text className="font-sans text-body text-muted">{L('Thấy sai nhưng chưa gọi được tên', "Something's off, but I can't name it")}</Text>
             </Pressable>
           </View>
         </View>
@@ -201,7 +217,9 @@ export function AuditPanel({
       {revealed && answer ? (
         <View className="mt-4 border-t border-border pt-3">
           <Text className="font-semi text-body text-ink">
-            {item.planted ? `Bản này bị cấy lỗi: ${FLAW_LABEL[item.planted]}` : 'Bản này sạch.'}
+            {item.planted
+              ? L(`Bản này bị cấy lỗi: ${FLAW_LABEL[item.planted]}`, `This answer had a planted error: ${flawLabel(item.planted)}`)
+              : L('Bản này sạch.', 'This answer was clean.')}
           </Text>
           <Text className="mt-2 font-sans text-body text-muted">{auditFeedback(item, answer)}</Text>
         </View>

@@ -18,6 +18,7 @@ import { findRich, type RichEntry } from '@/services/dictionary/rich-dictionary'
 import { useVocabStore } from '@/store/useVocabStore';
 
 import type { WordPick } from './HoverGloss';
+import { useL } from '@/i18n/useL';
 
 /**
  * Thẻ chi tiết khi BẤM vào một từ trong bài đọc.
@@ -52,6 +53,7 @@ export function WordPopover({
   paragraphIndex: number | null;
   onClose: () => void;
 }) {
+  const { L } = useL();
   const { width: winW, height: winH } = useWindowDimensions();
   const [cardH, setCardH] = useState(0);
   const reduced = useReducedMotion();
@@ -124,7 +126,7 @@ export function WordPopover({
     <Modal visible transparent animationType="none" onRequestClose={onClose}>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Đóng thẻ từ"
+        accessibilityLabel={L('Đóng thẻ từ', 'Close word card')}
         onPress={onClose}
         style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}
       />
@@ -159,7 +161,7 @@ export function WordPopover({
             <Text style={{ color: LIME, fontSize: 11, fontFamily: readingFont.mono }}>VI</Text>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Đóng"
+              accessibilityLabel={L('Đóng', 'Close')}
               onPress={onClose}
               className="h-7 w-7 items-center justify-center rounded-pill"
               style={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
@@ -183,7 +185,7 @@ export function WordPopover({
           </Text>
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Nghe phát âm"
+            accessibilityLabel={L('Nghe phát âm', 'Hear pronunciation')}
             onPress={() => speak(pick.surface || pick.word)}
             className="h-8 w-8 items-center justify-center rounded-pill"
             style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}
@@ -217,7 +219,7 @@ export function WordPopover({
           {rich?.example ? (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Nghe câu ví dụ"
+              accessibilityLabel={L('Nghe câu ví dụ', 'Hear example sentence')}
               onPress={() => speak(rich.example)}
               className="mt-2.5 rounded-md px-3 py-2"
               style={{ borderWidth: 1, borderColor: 'rgba(255,255,255,0.12)', backgroundColor: 'rgba(255,255,255,0.04)' }}
@@ -231,14 +233,14 @@ export function WordPopover({
           {rich?.synonyms?.length ? (
             <View className="mt-3">
               <Text className="font-heavy uppercase" style={{ color: 'rgba(255,255,255,0.5)', fontSize: 9.5, letterSpacing: 1 }}>
-                Từ đồng nghĩa
+                {L('Từ đồng nghĩa', 'Synonyms')}
               </Text>
               <View className="mt-1.5 flex-row flex-wrap gap-1.5">
                 {rich.synonyms.map((s) => (
                   <Pressable
                     key={s}
                     accessibilityRole="button"
-                    accessibilityLabel={`Nghe từ ${s}`}
+                    accessibilityLabel={L(`Nghe từ ${s}`, `Hear ${s}`)}
                     onPress={() => speak(s)}
                     className="rounded-pill px-2.5 py-1"
                     style={{ backgroundColor: 'rgba(251,191,36,0.12)', borderWidth: 1, borderColor: 'rgba(251,191,36,0.32)' }}
@@ -264,7 +266,7 @@ export function WordPopover({
         >
           <Icon name={saved ? 'check' : 'plus'} size={15} color={saved ? LIME : INK} strokeWidth={2.4} />
           <Text className="font-heavy uppercase" style={{ color: saved ? LIME : INK, fontSize: 12.5, letterSpacing: 1.2 }}>
-            {saved ? 'Đã lưu vào sổ từ' : 'Lưu từ'}
+            {saved ? L('Đã lưu vào sổ từ', 'Saved to notebook') : L('Lưu từ', 'Save word')}
           </Text>
         </Pressable>
       </Animated.View>

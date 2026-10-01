@@ -5,7 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import { Logo } from './Logo';
 import { Icon } from '@/components/ui/Icon';
-import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, visibleGroups } from '@/navigation/nav-items';
+import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, navLabel, visibleGroups } from '@/navigation/nav-items';
+import { useL } from '@/i18n/useL';
 import { useCityAvailable } from '@/services/city/availability';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
@@ -45,6 +46,7 @@ function isTopLevel(pathname: string): boolean {
 
 export function TopBar({ fixed = false }: { fixed?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { L } = useL();
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
   /*
     Vai trò đọc từ hồ sơ trên máy chủ, lấy lại mỗi lần tải trang. Nút này chỉ là
@@ -101,7 +103,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           {showBack ? (
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel="Quay lại trang trước"
+              accessibilityLabel={L('Quay lại trang trước', 'Go back')}
               onPress={() => router.back()}
               className="h-10 w-10 items-center justify-center rounded-pill border border-brand-soft bg-paper"
               style={Platform.OS === 'web' ? webBarShadow : shadow.card}
@@ -123,19 +125,19 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             chừng. Người đang học vẫn có nút "Tiếp tục học" ngay đầu trang ấy.
           */}
           <Link href={'/intro' as never} asChild>
-            <Pressable accessibilityRole="link" accessibilityLabel="Về trang giới thiệu">
+            <Pressable accessibilityRole="link" accessibilityLabel={L('Về trang giới thiệu', 'Go to the intro page')}>
               <Logo compact />
             </Pressable>
           </Link>
 
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Mở danh sách mục"
+            accessibilityLabel={L('Mở danh sách mục', 'Open the menu')}
             onPress={() => setMenuOpen(true)}
             className="flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-brand-tint px-3 py-1.5"
           >
             <Icon name="grid" size={15} color={paper.body} strokeWidth={1.9} />
-            <Text className="hidden font-semi text-label text-paper-body sm:flex">Khám phá</Text>
+            <Text className="hidden font-semi text-label text-paper-body sm:flex">{L('Khám phá', 'Explore')}</Text>
           </Pressable>
 
 
@@ -143,7 +145,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel="Thông báo"
+            accessibilityLabel={L('Thông báo', 'Notifications')}
             onPress={() => router.push('/progress' as never)}
             className="p-1.5"
           >
@@ -155,7 +157,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <Pressable
             accessibilityRole="button"
-            accessibilityLabel={signedIn ? `Hồ sơ của ${name}` : 'Đăng nhập'}
+            accessibilityLabel={signedIn ? L(`Hồ sơ của ${name}`, `${name}'s profile`) : L('Đăng nhập', 'Sign in')}
             onPress={() => router.push((signedIn ? '/profile' : '/auth/sign-in') as never)}
             className="flex-row items-center gap-2 rounded-pill border border-brand-soft bg-white py-1 pl-1 pr-3"
           >
@@ -168,7 +170,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             )}
             <View className="hidden md:flex">
               <Text className="font-semi text-label text-paper-ink" numberOfLines={1}>
-                {signedIn ? name : 'Khách'}
+                {signedIn ? name : L('Khách', 'Guest')}
               </Text>
               <View className="flex-row items-center gap-1">
                 <View
@@ -176,7 +178,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
                   style={{ backgroundColor: signedIn ? color.success : color.subtle }}
                 />
                 <Text className="font-sans uppercase text-paper-muted" style={{ fontSize: 9 }}>
-                  {signedIn ? 'online' : 'cục bộ'}
+                  {signedIn ? 'online' : L('cục bộ', 'local')}
                 </Text>
               </View>
             </View>
@@ -184,8 +186,8 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <View className="hidden h-6 w-px bg-brand-soft lg:flex" />
 
-          <QuickLink href="/vocabulary" icon="letters" label="Sổ từ" />
-          <QuickLink href="/progress" icon="clock" label="Tiến độ" />
+          <QuickLink href="/vocabulary" icon="letters" label={L('Sổ từ', 'Word book')} />
+          <QuickLink href="/progress" icon="clock" label={L('Tiến độ', 'Progress')} />
 
           {/*
             Lối vào Quản trị nằm THẲNG trên thanh, không chôn trong bảng "Khám phá".
@@ -198,7 +200,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             <Link href={'/admin' as never} asChild>
               <Pressable
                 accessibilityRole="link"
-                accessibilityLabel="Trang quản trị"
+                accessibilityLabel={L('Trang quản trị', 'Admin page')}
                 className="flex-row items-center gap-1.5 rounded-pill border px-3 py-1.5"
                 style={{ borderColor: paper.brandSoft, backgroundColor: paper.brandTint }}
               >
@@ -207,7 +209,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
                   className="font-heavy uppercase tracking-wide"
                   style={{ fontSize: 11, color: paper.brandMid }}
                 >
-                  Quản trị
+                  {L('Quản trị', 'Admin')}
                 </Text>
               </Pressable>
             </Link>
@@ -215,7 +217,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           {plan === 'free' ? (
             <Link href={'/upgrade' as never} asChild>
-              <Pressable accessibilityRole="link" accessibilityLabel="Nâng cấp Premium">
+              <Pressable accessibilityRole="link" accessibilityLabel={L('Nâng cấp Premium', 'Upgrade to Premium')}>
                 <LinearGradient
                   colors={[paper.goldSoft, paper.gold]}
                   start={{ x: 0, y: 0 }}
@@ -284,12 +286,13 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const desktop = useCityAvailable();
   const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
+  const { L, locale, en } = useL();
 
   return (
     <Modal visible={open} transparent animationType="fade" onRequestClose={onClose}>
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel="Đóng bảng điều hướng"
+        accessibilityLabel={L('Đóng bảng điều hướng', 'Close navigation')}
         onPress={onClose}
         style={{ flex: 1, backgroundColor: 'rgba(31,42,18,0.45)' }}
       >
@@ -302,10 +305,10 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
         >
           <View className="max-h-[86vh] overflow-hidden rounded-card border border-brand-soft bg-paper">
             <View className="flex-row items-center justify-between border-b border-brand-soft px-5 py-3.5">
-              <Text className="font-heavy text-sectionTitle text-paper-ink">Khám phá</Text>
+              <Text className="font-heavy text-sectionTitle text-paper-ink">{L('Khám phá', 'Explore')}</Text>
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel="Đóng"
+                accessibilityLabel={L('Đóng', 'Close')}
                 onPress={onClose}
                 className="h-8 w-8 items-center justify-center rounded-pill bg-brand-tint"
               >
@@ -318,7 +321,7 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
                 <View key={group.key}>
                   {group.title ? (
                     <Text className="mb-2 font-strong text-label uppercase tracking-wide text-paper-muted">
-                      {group.title}
+                      {en && group.key === ADMIN_GROUP.key ? 'Admin' : group.title}
                     </Text>
                   ) : null}
                   <View className="flex-row flex-wrap gap-2">
@@ -350,7 +353,7 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
                                 active ? 'font-strong text-paper-ink' : 'font-mid text-paper-body',
                               ].join(' ')}
                             >
-                              {item.label}
+                              {navLabel(item, locale)}
                             </Text>
                           </Pressable>
                         </Link>

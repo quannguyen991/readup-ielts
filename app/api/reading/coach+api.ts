@@ -1,6 +1,7 @@
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { coachReading, type WrongAnswer } from '@/services/ai/reading-coach';
 import { consumeAiCall, refundAiCall } from '@/services/ai/usage';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/reading/coach
@@ -32,14 +33,14 @@ export async function POST(request: Request): Promise<Response> {
     const token = header.toLowerCase().startsWith('bearer ') ? header.slice(7).trim() : '';
     if (!token) {
       return Response.json(
-        { error: 'Đăng nhập để nhận nhận xét chiến lược từ AI.' },
+        { error: msg(request, 'Đăng nhập để nhận nhận xét chiến lược từ AI.', 'Sign in to get AI strategy feedback.') },
         { status: 401 },
       );
     }
 
     const { data: auth, error: authError } = await admin.auth.getUser(token);
     if (authError || !auth.user) {
-      return Response.json({ error: 'Phiên đăng nhập không hợp lệ.' }, { status: 401 });
+      return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session. Please sign in again.') }, { status: 401 });
     }
     userId = auth.user.id;
 
@@ -66,11 +67,15 @@ export async function POST(request: Request): Promise<Response> {
     if (wrong.length === 0) {
       return Response.json({
         skipped: true,
-        message: 'Lượt này bạn không sai câu nào — chưa có gì để phân tích.',
+        message: msg(
+          request,
+          'Lượt này bạn không sai câu nào — chưa có gì để phân tích.',
+          'You got every question right this time — nothing to analyse yet.',
+        ),
       });
     }
 
-    const verdict = await consumeAiCall(admin, userId);
+    const verdict = await consumeAiCall(admin, userId, request);
     if (!verdict.allowed) {
       return Response.json(
         { error: verdict.message, used: verdict.used, limit: verdict.limit, plan: verdict.plan },
@@ -96,7 +101,7 @@ export async function POST(request: Request): Promise<Response> {
       throw aiError;
     }
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 500 });
   }
 }

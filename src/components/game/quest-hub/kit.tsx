@@ -14,6 +14,7 @@ import { router } from 'expo-router';
 
 import { SealIcon } from '@/components/illust/HeroArt';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { useL } from '@/i18n/useL';
 
 export const WEB = Platform.OS === 'web';
 
@@ -299,10 +300,11 @@ export function Cols({ cols, gap = GAP.md, children }: { cols: number; gap?: num
 
 /** Nút quay lại dạng viên thuốc cho đầu trang con. */
 export function BackPill({ label, onPress }: { label: string; onPress: () => void }) {
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`Quay lại ${label}`}
+      accessibilityLabel={L(`Quay lại ${label}`, `Back to ${label}`)}
       onPress={onPress}
       style={({ hovered }: { hovered?: boolean }) => ({
         flexDirection: 'row',

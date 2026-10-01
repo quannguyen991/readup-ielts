@@ -73,13 +73,14 @@ import {
   type Mistake,
 } from "@/services/vocab/mistake";
 import { color } from "@/theme/tokens";
+import { useL } from "@/i18n/useL";
 
 const NO_STARS: string[] = [];
-const KIND_LABEL: Record<StageKind, string> = {
-  flash: "Lật thẻ",
-  mcq: "Trắc nghiệm",
-  fill: "Điền chỗ trống",
-  type: "Gõ từ",
+const KIND_LABEL: Record<StageKind, { vi: string; en: string }> = {
+  flash: { vi: "Lật thẻ", en: "Flashcard" },
+  mcq: { vi: "Trắc nghiệm", en: "Multiple choice" },
+  fill: { vi: "Điền chỗ trống", en: "Fill the gap" },
+  type: { vi: "Gõ từ", en: "Type the word" },
 };
 /** Chữ trên nền chàm của màn học (ngoài thẻ trắng). */
 const ON_NAVY = "rgba(255,255,255,0.86)";
@@ -104,6 +105,7 @@ export default function LearnScreen() {
   // riêng từ gắn sao, không đổi cài đặt chung của mọi bộ.
   const { slug = "", only } = useLocalSearchParams<{ slug: string; only?: string }>();
   const starredRun = only === "starred";
+  const { L, en } = useL();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const stages = useTopicStudyStore((s) => s.stages[slug]);
@@ -311,7 +313,7 @@ export default function LearnScreen() {
         ...list,
         {
           word: word.word,
-          m: { kind: "unknown", title: "Chưa nhớ từ", detail: "" },
+          m: { kind: "unknown", title: L("Chưa nhớ từ", "Didn't remember"), detail: "" },
         },
       ]);
     advance(knew);
@@ -369,12 +371,17 @@ export default function LearnScreen() {
       onEnd: (reason) => {
         setListening(false);
         listenRef.current = null;
-        if (reason === "denied") setMicNote("Trình duyệt chưa cho dùng micro — bấm biểu tượng ổ khoá trên thanh địa chỉ để cho phép.");
-        else if (reason === "no-speech") setMicNote("Chưa nghe thấy gì, bấm micro rồi nói lại.");
+        if (reason === "denied") setMicNote(
+            L(
+              "Trình duyệt chưa cho dùng micro — bấm biểu tượng ổ khoá trên thanh địa chỉ để cho phép.",
+              "The browser hasn't allowed the microphone — click the lock icon in the address bar to allow it.",
+            ),
+          );
+        else if (reason === "no-speech") setMicNote(L("Chưa nghe thấy gì, bấm micro rồi nói lại.", "Didn't hear anything — tap the mic and try again."));
       },
     });
     if (!handle) {
-      setMicNote("Trình duyệt này chưa nghe được giọng nói — gõ từ nhé.");
+      setMicNote(L("Trình duyệt này chưa nghe được giọng nói — gõ từ nhé.", "This browser can't do speech input — please type the word."));
       return;
     }
     listenRef.current = handle;
@@ -386,8 +393,8 @@ export default function LearnScreen() {
     if (choice) setPicked(-1);
     judge(false, {
       kind: "unknown",
-      title: "Chưa nhớ từ",
-      detail: `Đáp án: “${word!.word}” — ${word!.meaningVi}.`,
+      title: L("Chưa nhớ từ", "Didn't remember"),
+      detail: L(`Đáp án: “${word!.word}” — ${word!.meaningVi}.`, `Answer: “${word!.word}” — ${word!.meaningVi}.`),
     });
   };
 
@@ -456,10 +463,10 @@ export default function LearnScreen() {
 
   if (!topic) {
     return (
-      <StudyFrame backHref="/vocabulary/quiz" title="Học">
+      <StudyFrame backHref="/vocabulary/quiz" title={L("Học", "Learn")}>
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">
-            Không có bộ từ này.
+            {L("Không có bộ từ này.", "Word set not found.")}
           </Text>
         </StudyCard>
       </StudyFrame>
@@ -468,7 +475,10 @@ export default function LearnScreen() {
 
   const backHref = `/vocabulary/topic/${slug}`;
   // Cùng mốc với thanh tiến độ ở trên (từ của VÒNG NÀY), rồi mới tới số của cả bộ.
-  const footer = `Vòng này: ${wordsDone}/${round.length} từ xong  •  ${asked} câu đã làm  •  Cả bộ đã nhớ ${masteredCount(stages)}/${topic.words.length}`;
+  const footer = L(
+    `Vòng này: ${wordsDone}/${round.length} từ xong  •  ${asked} câu đã làm  •  Cả bộ đã nhớ ${masteredCount(stages)}/${topic.words.length}`,
+    `This round: ${wordsDone}/${round.length} words done  •  ${asked} answered  •  Set remembered ${masteredCount(stages)}/${topic.words.length}`,
+  );
   const stageOf = (w: string) => stages?.[w] ?? 0;
 
   const settingsButton = (
@@ -478,7 +488,7 @@ export default function LearnScreen() {
       className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"
     >
       <Icon name="settings" size={17} color={color.ink} />
-      <Text className="font-semi text-body text-ink">Cài đặt</Text>
+      <Text className="font-semi text-body text-ink">{L("Cài đặt", "Settings")}</Text>
     </Pressable>
   );
 
@@ -507,17 +517,19 @@ export default function LearnScreen() {
 
   if (round.length === 0) {
     return (
-      <StudyFrame backHref={backHref} title="Học" right={settingsButton}>
+      <StudyFrame backHref={backHref} title={L("Học", "Learn")} right={settingsButton}>
         <StudyCard>
           <Text className="font-heavy text-pageTitle text-ink">
-            Không có từ nào để học
+            {L("Không có từ nào để học", "No words to learn")}
           </Text>
           <Text className="mt-2 font-sans text-bodyLg text-muted">
-            Bộ lọc trong Cài đặt đang loại hết từ của bộ này — ví dụ chưa gắn
-            sao từ nào, hoặc đã thuộc hết.
+            {L(
+              "Bộ lọc trong Cài đặt đang loại hết từ của bộ này — ví dụ chưa gắn sao từ nào, hoặc đã thuộc hết.",
+              "Your Settings filters exclude every word in this set — for example, no words are starred, or you already know them all.",
+            )}
           </Text>
           <PrimaryButton
-            label="Mở Cài đặt"
+            label={L("Mở Cài đặt", "Open settings")}
             onPress={() => setShowSettings(true)}
           />
         </StudyCard>
@@ -532,7 +544,7 @@ export default function LearnScreen() {
     return (
       <StudyFrame
         backHref={backHref}
-        title="Học"
+        title={L("Học", "Learn")}
         segments={round.map(() => 2)}
         footer={footer}
         right={settingsButton}
@@ -540,13 +552,13 @@ export default function LearnScreen() {
         <CrossFade swapKey="done">
           <StudyCard>
             <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">
-              Xong vòng này
+              {L("Xong vòng này", "Round complete")}
             </Text>
             <Text className="mt-2 font-heavy text-pageTitle text-ink">
-              {round.length} từ đã qua đủ các lần gặp lại
+              {L(`${round.length} từ đã qua đủ các lần gặp lại`, `${round.length} words made it through every repeat`)}
             </Text>
             <Text className="mt-2 font-sans text-bodyLg text-muted">
-              {asked} câu, đúng {accuracy}%.
+              {L(`${asked} câu, đúng ${accuracy}%.`, `${asked} questions, ${accuracy}% correct.`)}
             </Text>
             <RoundAnalysis mistakes={mistakes} />
             <View className="mt-4 flex-row flex-wrap gap-2">
@@ -562,11 +574,11 @@ export default function LearnScreen() {
               ))}
             </View>
             <PrimaryButton
-              label="Học vòng tiếp theo"
+              label={L("Học vòng tiếp theo", "Next round")}
               onPress={() => restart()}
             />
             <GhostButton
-              label="Về bộ từ"
+              label={L("Về bộ từ", "Back to word set")}
               onPress={() => router.replace(backHref as never)}
             />
           </StudyCard>
@@ -589,7 +601,7 @@ export default function LearnScreen() {
   return (
     <StudyFrame
       backHref={backHref}
-      title={topic.nameVi}
+      title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}
       progress={progress}
       footer={footer}
       right={settingsButton}
@@ -599,12 +611,12 @@ export default function LearnScreen() {
       <View className="mb-4 flex-row flex-wrap items-center justify-center gap-2">
         <View className="rounded-pill px-3.5 py-1.5" style={{ backgroundColor: "#FFFFFF" }}>
           <Text className="font-strong text-label" style={{ color: color.primary }}>
-            {KIND_LABEL[head!.kind]}
+            {en ? KIND_LABEL[head!.kind].en : KIND_LABEL[head!.kind].vi}
           </Text>
         </View>
         {head!.tag ? (
           <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? AMBER_ON_NAVY : ON_NAVY }}>
-            {head!.tag === "retry" ? "↻ Gặp lại từ vừa sai" : "↻ Gặp lại cho nhớ lâu"}
+            {head!.tag === "retry" ? L("↻ Gặp lại từ vừa sai", "↻ Back after a miss") : L("↻ Gặp lại cho nhớ lâu", "↻ Repeat for long-term memory")}
           </Text>
         ) : null}
       </View>
@@ -619,16 +631,16 @@ export default function LearnScreen() {
                 height={detailHeight(w, dir !== "enToVi")}
                 front={
                   dir === "enToVi" ? (
-                    <WordFace word={w} hint="Bấm thẻ hoặc Space để lật" />
+                    <WordFace word={w} hint={L("Bấm thẻ hoặc Space để lật", "Tap the card or press Space to flip")} />
                   ) : dir === "viToEn" ? (
                     <MeaningFace
                       word={w}
-                      hint="Nghĩ ra từ, rồi bấm thẻ hoặc Space để lật"
+                      hint={L("Nghĩ ra từ, rồi bấm thẻ hoặc Space để lật", "Think of the word, then tap or press Space to flip")}
                     />
                   ) : (
                     <ListenFace
                       word={w}
-                      hint="Đoán từ, rồi bấm thẻ hoặc Space để lật"
+                      hint={L("Đoán từ, rồi bấm thẻ hoặc Space để lật", "Guess the word, then tap or press Space to flip")}
                     />
                   )
                 }
@@ -644,14 +656,14 @@ export default function LearnScreen() {
               <Appear>
                 <View className="mt-4 flex-row gap-3">
                   <RateButton
-                    label="Chưa nhớ"
+                    label={L("Chưa nhớ", "Not yet")}
                     hint="1"
                     tone={RED}
                     bg="#FFF1F2"
                     onPress={() => rateCard(false)}
                   />
                   <RateButton
-                    label="Đã biết"
+                    label={L("Đã biết", "I knew it")}
                     hint="2"
                     tone={GREEN}
                     bg="#ECFDF3"
@@ -661,7 +673,7 @@ export default function LearnScreen() {
               </Appear>
             ) : (
               <PrimaryButton
-                label="Lật thẻ"
+                label={L("Lật thẻ", "Flip card")}
                 hint="Space"
                 onPress={() => setFlipped(true)}
               />
@@ -673,7 +685,7 @@ export default function LearnScreen() {
               <View>
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
-                    Chọn từ điền vào chỗ trống
+                    {L("Chọn từ điền vào chỗ trống", "Choose the word for the blank")}
                   </Text>
                   {star}
                 </View>
@@ -697,7 +709,7 @@ export default function LearnScreen() {
                   />
                 </View>
                 {verdict === null ? (
-                  <GhostButton label="5 · Tôi không biết" onPress={dontKnow} />
+                  <GhostButton label={L("5 · Tôi không biết", "5 · I don't know")} onPress={dontKnow} />
                 ) : null}
               </View>
             ) : head!.kind === "mcq" && mcq ? (
@@ -705,8 +717,8 @@ export default function LearnScreen() {
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
                     {dir === "viToEn"
-                      ? "Chọn từ tiếng Anh đúng"
-                      : "Chọn nghĩa đúng"}
+                      ? L("Chọn từ tiếng Anh đúng", "Choose the right English word")
+                      : L("Chọn nghĩa đúng", "Choose the right meaning")}
                   </Text>
                   {star}
                 </View>
@@ -714,7 +726,7 @@ export default function LearnScreen() {
                   <View className="flex-1">
                     {dir === "listen" ? (
                       <Text className="font-heavy text-pageTitle text-ink">
-                        Nghe và chọn nghĩa
+                        {L("Nghe và chọn nghĩa", "Listen and choose the meaning")}
                       </Text>
                     ) : (
                       <Text className="font-heavy text-pageTitle text-ink">
@@ -741,7 +753,7 @@ export default function LearnScreen() {
                   />
                 </View>
                 {verdict === null ? (
-                  <GhostButton label="5 · Tôi không biết" onPress={dontKnow} />
+                  <GhostButton label={L("5 · Tôi không biết", "5 · I don't know")} onPress={dontKnow} />
                 ) : null}
               </View>
             ) : (
@@ -749,8 +761,8 @@ export default function LearnScreen() {
                 <View className="flex-row items-start justify-between gap-3">
                   <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
                     {dir === "listen"
-                      ? "Nghe rồi gõ lại từ"
-                      : "Gõ từ tiếng Anh"}
+                      ? L("Nghe rồi gõ lại từ", "Listen and type the word")
+                      : L("Gõ từ tiếng Anh", "Type the English word")}
                   </Text>
                   {star}
                 </View>
@@ -758,7 +770,7 @@ export default function LearnScreen() {
                   <View className="mt-1 flex-row items-center gap-3">
                     <SpeakButton text={w.word} rate={0.85} size={24} />
                     <Text className="font-sans text-bodyLg text-muted">
-                      {[w.pos, `${w.word.length} chữ cái`]
+                      {[w.pos, L(`${w.word.length} chữ cái`, `${w.word.length} letters`)]
                         .filter(Boolean)
                         .join(" · ")}
                     </Text>
@@ -769,10 +781,10 @@ export default function LearnScreen() {
                       {w.meaningVi}
                     </Text>
                     <Text className="mt-1 font-sans text-body text-muted">
-                      {[w.pos, `${w.word.length} chữ cái`]
+                      {[w.pos, L(`${w.word.length} chữ cái`, `${w.word.length} letters`)]
                         .filter(Boolean)
                         .join(" · ")}{" "}
-                      · bắt đầu bằng “{w.word[0]}”
+                      {L(`· bắt đầu bằng “${w.word[0]}”`, `· starts with “${w.word[0]}”`)}
                     </Text>
                   </>
                 )}
@@ -784,7 +796,7 @@ export default function LearnScreen() {
                     autoFocus
                     autoCapitalize="none"
                     autoCorrect={false}
-                    placeholder={micOk ? "Gõ hoặc bấm micro để nói…" : "Gõ từ tiếng Anh…"}
+                    placeholder={micOk ? L("Gõ hoặc bấm micro để nói…", "Type, or tap the mic to speak…") : L("Gõ từ tiếng Anh…", "Type the English word…")}
                     placeholderTextColor="#94A3B8"
                     onSubmitEditing={() => submitTyped()}
                     className="min-w-0 flex-1 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
@@ -798,7 +810,7 @@ export default function LearnScreen() {
                   {micOk && verdict === null ? (
                     <Pressable
                       accessibilityRole="button"
-                      accessibilityLabel={listening ? "Dừng nghe" : "Nói từ"}
+                      accessibilityLabel={listening ? L("Dừng nghe", "Stop listening") : L("Nói từ", "Say the word")}
                       onPress={toggleMic}
                       className="h-14 w-14 items-center justify-center rounded-2xl"
                       style={{ backgroundColor: listening ? RED : color.primary }}
@@ -809,7 +821,7 @@ export default function LearnScreen() {
                 </View>
                 {listening ? (
                   <Text className="mt-2 text-center font-semi text-label" style={{ color: color.primary }}>
-                    Đang nghe… nói từ tiếng Anh
+                    {L("Đang nghe… nói từ tiếng Anh", "Listening… say the English word")}
                   </Text>
                 ) : micNote ? (
                   <Text className="mt-2 text-center font-sans text-label text-muted">{micNote}</Text>
@@ -817,12 +829,12 @@ export default function LearnScreen() {
                 {verdict === null ? (
                   <>
                     <PrimaryButton
-                      label="Kiểm tra"
+                      label={L("Kiểm tra", "Check")}
                       hint="Enter"
                       disabled={!typed.trim()}
                       onPress={() => submitTyped()}
                     />
-                    <GhostButton label="Tôi không biết" onPress={dontKnow} />
+                    <GhostButton label={L("Tôi không biết", "I don't know")} onPress={dontKnow} />
                   </>
                 ) : null}
               </View>
@@ -830,7 +842,10 @@ export default function LearnScreen() {
 
             {verdict === true && synonymUsed ? (
               <Text className="mt-3 font-semi text-body" style={{ color: "#15803D" }}>
-                Chấp nhận “{synonymUsed}” — từ đồng nghĩa. Từ của bộ: {w.word}.
+                {L(
+                  `Chấp nhận “${synonymUsed}” — từ đồng nghĩa. Từ của bộ: ${w.word}.`,
+                  `Accepted “${synonymUsed}” — a synonym. The set's word: ${w.word}.`,
+                )}
               </Text>
             ) : null}
             {verdict === false && mistake ? <MistakeBox m={mistake} /> : null}

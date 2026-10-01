@@ -18,6 +18,23 @@ import { useGameStore } from '@/store/useGameStore';
 import { useSatQuizStore } from '@/store/useSatQuizStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+
+/** Tên mức và việc phải làm bằng tiếng Anh (bản tiếng Việt: `SAT_QUIZ_LEVELS` trong services). */
+const LEVEL_EN: Record<number, { name: string; task: string }> = {
+  1: { name: 'Easy', task: 'See the word, pick its Vietnamese meaning' },
+  2: { name: 'Medium', task: 'Read the English definition, pick the word' },
+  3: { name: 'Hard', task: 'Fill in the sentence, find synonyms / antonyms' },
+};
+
+/** Nhãn dạng câu bằng tiếng Anh (bản tiếng Việt: `SAT_QUIZ_KIND_LABEL`). */
+const KIND_EN: Record<string, string> = {
+  meaning: 'Pick the meaning',
+  definition: 'Which word fits the definition',
+  cloze: 'Fill the gap',
+  synonym: 'Closest in meaning',
+  antonym: 'Opposite meaning',
+};
 
 /**
  * Một lượt quiz ôn từ vựng SAT: một chủ đề, một mức (Dễ / Vừa / Khó).
@@ -31,6 +48,8 @@ export default function SatQuizRun() {
   const lesson = satQuizLesson(slug);
   const level = (Math.min(3, Math.max(1, Number(levelParam) || 1)) as SatQuizLevel);
   const info = SAT_QUIZ_LEVELS[level - 1]!;
+  const { L, en } = useL();
+  const levelName = (lv: number) => (en ? LEVEL_EN[lv]!.name : SAT_QUIZ_LEVELS[lv - 1]!.name);
   const [seed, setSeed] = useState(() => Date.now() % 100000);
   const items = useMemo<SatQuizItem[]>(() => (lesson ? buildSatQuiz(lesson, level, seededRng(seed)) : []), [lesson, level, seed]);
 
@@ -79,9 +98,9 @@ export default function SatQuizRun() {
 
   if (!lesson) {
     return (
-      <StudyFrame backHref="/vocabulary/sat-quiz" title="Ôn từ vựng SAT">
+      <StudyFrame backHref="/vocabulary/sat-quiz" title={L('Ôn từ vựng SAT', 'SAT vocabulary review')}>
         <StudyCard>
-          <Text className="font-strong text-cardTitle text-ink">Không có chủ đề này.</Text>
+          <Text className="font-strong text-cardTitle text-ink">{L('Không có chủ đề này.', 'Topic not found.')}</Text>
         </StudyCard>
       </StudyFrame>
     );
@@ -92,10 +111,10 @@ export default function SatQuizRun() {
     const ok = passed(score, items.length);
     const missed = items.filter((_, i) => !results[i]);
     return (
-      <StudyFrame backHref="/vocabulary/sat-quiz" title={`${lesson.title} · ${info.name}`}>
+      <StudyFrame backHref="/vocabulary/sat-quiz" title={`${lesson.title} · ${levelName(level)}`}>
         <Appear>
           <StudyCard>
-            <Text className="font-semi text-label text-muted">KẾT QUẢ · MỨC {info.name.toUpperCase()}</Text>
+            <Text className="font-semi text-label text-muted">{L(`KẾT QUẢ · MỨC ${info.name.toUpperCase()}`, `RESULT · ${levelName(level).toUpperCase()} LEVEL`)}</Text>
             <Text className="mt-1 font-heavy text-ink" style={{ fontSize: 44, lineHeight: 50 }}>
               {score}
               <Text className="font-sans text-muted" style={{ fontSize: 22 }}>
@@ -106,14 +125,20 @@ export default function SatQuizRun() {
             <Text className="mt-1 font-semi text-bodyLg" style={{ color: ok ? GREEN : RED }}>
               {ok
                 ? level < 3
-                  ? `Qua mức ${info.name}. Lên mức ${SAT_QUIZ_LEVELS[level]!.name} được rồi.`
-                  : 'Qua cả mức Khó — chủ đề này bạn nắm chắc.'
-                : `Cần đúng từ ${Math.ceil(items.length * 0.8)} câu để qua mức này. Ôn lại mấy từ dưới đây rồi làm lại.`}
+                  ? L(
+                      `Qua mức ${info.name}. Lên mức ${SAT_QUIZ_LEVELS[level]!.name} được rồi.`,
+                      `${levelName(level)} passed. You're ready for ${levelName(level + 1)}.`,
+                    )
+                  : L('Qua cả mức Khó — chủ đề này bạn nắm chắc.', 'Hard level passed — you’ve got this topic down.')
+                : L(
+                    `Cần đúng từ ${Math.ceil(items.length * 0.8)} câu để qua mức này. Ôn lại mấy từ dưới đây rồi làm lại.`,
+                    `You need ${Math.ceil(items.length * 0.8)} correct to pass this level. Review the words below and try again.`,
+                  )}
             </Text>
 
             {missed.length > 0 ? (
               <View className="mt-5 gap-2">
-                <Text className="font-strong text-label text-muted">TỪ CẦN ÔN</Text>
+                <Text className="font-strong text-label text-muted">{L('TỪ CẦN ÔN', 'WORDS TO REVIEW')}</Text>
                 {missed.map((m) => (
                   <View key={m.id} className="flex-row flex-wrap items-baseline gap-2 rounded-xl px-3 py-2" style={{ backgroundColor: '#FFF1F2' }}>
                     <Text className="font-heavy text-body text-ink">{m.word.word}</Text>
@@ -125,12 +150,12 @@ export default function SatQuizRun() {
 
             <View className="mt-6 flex-row flex-wrap gap-3">
               {ok && level < 3 ? (
-                <PrimaryButton label={`Lên mức ${SAT_QUIZ_LEVELS[level]!.name}`} onPress={() => restart((level + 1) as SatQuizLevel)} />
+                <PrimaryButton label={L(`Lên mức ${SAT_QUIZ_LEVELS[level]!.name}`, `Go to ${levelName(level + 1)}`)} onPress={() => restart((level + 1) as SatQuizLevel)} />
               ) : (
-                <PrimaryButton label="Làm lại" onPress={() => restart()} />
+                <PrimaryButton label={L('Làm lại', 'Try again')} onPress={() => restart()} />
               )}
-              {ok && level < 3 ? <GhostButton label="Làm lại mức này" onPress={() => restart()} /> : null}
-              <GhostButton label="Chủ đề khác" onPress={() => router.replace('/vocabulary/sat-quiz' as never)} />
+              {ok && level < 3 ? <GhostButton label={L('Làm lại mức này', 'Retry this level')} onPress={() => restart()} /> : null}
+              <GhostButton label={L('Chủ đề khác', 'Another topic')} onPress={() => router.replace('/vocabulary/sat-quiz' as never)} />
             </View>
           </StudyCard>
         </Appear>
@@ -143,19 +168,19 @@ export default function SatQuizRun() {
   return (
     <StudyFrame
       backHref="/vocabulary/sat-quiz"
-      title={`${lesson.title} · ${info.name}`}
+      title={`${lesson.title} · ${levelName(level)}`}
       battle
       segments={items.map((_, i) => (i < results.length ? 2 : i === index ? 1 : 0))}
-      footer="Phím 1–4 để chọn · Enter để sang câu"
+      footer={L('Phím 1–4 để chọn · Enter để sang câu', 'Keys 1–4 to choose · Enter for next')}
     >
       <CrossFade swapKey={item.id}>
         <StudyCard>
           <View className="flex-row items-center justify-between">
             <Text className="font-semi text-label" style={{ color: color.primary }}>
-              {SAT_QUIZ_KIND_LABEL[item.kind].toUpperCase()}
+              {(en ? KIND_EN[item.kind] ?? SAT_QUIZ_KIND_LABEL[item.kind] : SAT_QUIZ_KIND_LABEL[item.kind]).toUpperCase()}
             </Text>
             <Text className="font-mid text-label text-muted">
-              Câu {index + 1}/{items.length}
+              {L('Câu', 'Question')} {index + 1}/{items.length}
             </Text>
           </View>
 
@@ -165,14 +190,18 @@ export default function SatQuizRun() {
             </Text>
           ) : item.kind === 'cloze' ? (
             <>
-              <Text className="mt-2 font-sans text-body text-muted">{item.prompt}</Text>
+              <Text className="mt-2 font-sans text-body text-muted">{en ? 'Choose the word that fills the blank' : item.prompt}</Text>
               <Text className="mt-2 font-semi text-ink" style={{ fontSize: 22, lineHeight: 32 }}>
                 {item.context}
               </Text>
             </>
           ) : (
             <Text className="mt-3 font-semi text-ink" style={{ fontSize: 22, lineHeight: 31 }}>
-              {item.prompt}
+              {en && item.kind === 'synonym'
+                ? `Which word is closest in meaning to “${item.word.word}”?`
+                : en && item.kind === 'antonym'
+                  ? `Which word is OPPOSITE in meaning to “${item.word.word}”?`
+                  : item.prompt}
             </Text>
           )}
 

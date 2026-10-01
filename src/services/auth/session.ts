@@ -350,12 +350,12 @@ export async function deleteAccount(): Promise<AuthResult> {
   }
 }
 
-export function displayNameOf(user: User | null, profile: Profile | null): string {
+export function displayNameOf(user: User | null, profile: Profile | null, fallback = 'Bạn'): string {
   if (profile?.displayName) return profile.displayName;
   const meta = user?.user_metadata as { full_name?: string; name?: string } | undefined;
   if (meta?.full_name) return meta.full_name;
   if (meta?.name) return meta.name;
-  if (user?.email) return user.email.split('@')[0] ?? 'Bạn';
+  if (user?.email) return user.email.split('@')[0] ?? fallback;
   if (user?.phone) return user.phone;
-  return 'Bạn';
+  return fallback;
 }

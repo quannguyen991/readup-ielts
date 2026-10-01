@@ -9,6 +9,7 @@ import {
   TRIAL_DAYS,
   TRIAL_PLANS,
   formatVnd,
+  planName,
   planOf,
   type Feature,
   type PlanId,
@@ -17,6 +18,7 @@ import { requiredPlanFor } from '@/lib/billing/entitlements';
 import { useBillingStore, usePlanStatus } from '@/store/useBillingStore';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Các mảnh giao diện liên quan tới gói.
@@ -38,8 +40,29 @@ export function planTone(plan: PlanId) {
   return PLAN_TONE[plan];
 }
 
+/**
+ * Ba–bốn dòng "gói này mở gì" khi giao diện ở tiếng Anh. Bản tiếng Việt nằm ở
+ * `PLANS[id].highlights` (nguồn sự thật) — sửa bên đó thì sửa cả ở đây.
+ */
+const HIGHLIGHTS_EN: Record<PlanId, string[]> = {
+  free: ['The full 19-skill diagnostic', 'The whole Algebra stage, 500+ questions', '5 reading passages a day'],
+  plus: [
+    `All ${CURRICULUM_TOTALS.stages} stages · ${CURRICULUM_TOTALS.sets} sets unlocked`,
+    'Unlimited reading and mock tests',
+    '20 Writing gradings a month',
+  ],
+  pro: ['Everything in Plus', 'AI tutor right inside each passage', '120 AI requests a month'],
+  max: ['Everything in Pro', 'Signed credential — anyone can verify it', '720 AI requests a month', 'Same-day priority support'],
+};
+
+/** Dòng "gói này mở gì" theo ngôn ngữ; thiếu bản tiếng Anh thì về bản tiếng Việt. */
+export function planHighlights(plan: PlanId, en: boolean): string[] {
+  return en ? HIGHLIGHTS_EN[plan] ?? PLANS[plan].highlights : PLANS[plan].highlights;
+}
+
 export function PlanBadge({ plan, compact = false }: { plan: PlanId; compact?: boolean }) {
   const tone = PLAN_TONE[plan];
+  const { L, en } = useL();
   return (
     <View
       className="flex-row items-center gap-1 rounded-pill px-2 py-0.5"
@@ -47,7 +70,7 @@ export function PlanBadge({ plan, compact = false }: { plan: PlanId; compact?: b
     >
       {plan === 'max' ? <Icon name="trophy" size={12} color={tone.solid} /> : null}
       <Text className="font-strong text-label" style={{ color: tone.ink }}>
-        {compact ? PLANS[plan].name : `Gói ${PLANS[plan].name}`}
+        {compact ? planName(plan, en) : L(`Gói ${PLANS[plan].name}`, `${planName(plan, true)} plan`)}
       </Text>
     </View>
   );
@@ -71,6 +94,7 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   const status = usePlanStatus();
   const start = useBillingStore((s) => s.startTrial);
   const tone = PLAN_TONE[status.onTrial ? status.plan : 'pro'];
+  const { L } = useL();
 
   if (status.onTrial) {
     return (
@@ -81,9 +105,15 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
         <Icon name="clock" size={18} color={tone.solid} />
         <Text className="flex-1 font-sans text-body text-ink" style={{ minWidth: 200 }}>
           <Text className="font-strong" style={{ color: tone.ink }}>
-            Đang học thử {PLANS[status.plan].name} · còn {status.daysLeft ?? 0} ngày.
+            {L(
+              `Đang học thử ${PLANS[status.plan].name} · còn ${status.daysLeft ?? 0} ngày.`,
+              `${PLANS[status.plan].name} trial · ${status.daysLeft ?? 0} days left.`,
+            )}
           </Text>{' '}
-          Mở hết nội dung; lượt AI vẫn {TRIAL_AI_CALLS} lượt mỗi tháng như gói Free.
+          {L(
+            `Mở hết nội dung; lượt AI vẫn ${TRIAL_AI_CALLS} lượt mỗi tháng như gói Free.`,
+            `All content unlocked; AI stays at ${TRIAL_AI_CALLS} requests a month, same as Free.`,
+          )}
         </Text>
       </View>
     );
@@ -109,15 +139,18 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
             {TRIAL_DAYS}
           </Text>
           <Text className="font-strong text-white" style={{ fontSize: 10, letterSpacing: 1 }}>
-            NGÀY
+            {L('NGÀY', 'DAYS')}
           </Text>
         </View>
         <View className="flex-1" style={{ minWidth: 220 }}>
           <Text className="font-strong text-cardTitle text-white">
-            Học thử {TRIAL_DAYS} ngày gói Plus hoặc Pro
+            {L(`Học thử ${TRIAL_DAYS} ngày gói Plus hoặc Pro`, `Try Plus or Pro free for ${TRIAL_DAYS} days`)}
           </Text>
           <Text className="mt-1 font-sans text-label" style={{ color: 'rgba(255,255,255,0.82)' }}>
-            Không cần thẻ · AI vẫn {TRIAL_AI_CALLS} lượt/tháng · hết hạn tự về Free.
+            {L(
+              `Không cần thẻ · AI vẫn ${TRIAL_AI_CALLS} lượt/tháng · hết hạn tự về Free.`,
+              `No card needed · AI stays at ${TRIAL_AI_CALLS} requests/month · returns to Free when it ends.`,
+            )}
           </Text>
         </View>
         <View className="flex-row gap-2">
@@ -125,12 +158,12 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
             <Pressable
               key={id}
               accessibilityRole="button"
-              accessibilityLabel={`Học thử gói ${PLANS[id].name} ${TRIAL_DAYS} ngày`}
+              accessibilityLabel={L(`Học thử gói ${PLANS[id].name} ${TRIAL_DAYS} ngày`, `Try ${PLANS[id].name} free for ${TRIAL_DAYS} days`)}
               onPress={() => start(id)}
               className="flex-row items-center gap-2 rounded-2xl bg-white px-4 py-2"
             >
               <Text className="flex-1 font-strong text-label" style={{ color: PLAN_TONE[id].ink }}>
-                Thử {PLANS[id].name}
+                {L(`Thử ${PLANS[id].name}`, `Try ${PLANS[id].name}`)}
               </Text>
               <Icon name="arrow-right" size={15} color={PLAN_TONE[id].ink} />
             </Pressable>
@@ -163,6 +196,7 @@ export function FeaturePaywall({
   const startTrial = useBillingStore((s) => s.startTrial);
   // Gói cần để mở tính năng này thử được (Plus/Pro) thì mời học thử đúng gói ấy trước khi mời trả tiền.
   const trialOpens = status.canStartTrial && TRIAL_PLANS.includes(required);
+  const { L, en } = useL();
 
   return (
     <Card>
@@ -181,7 +215,7 @@ export function FeaturePaywall({
           <Text className="mt-1 font-sans text-body text-muted">{description}</Text>
 
           <View className="mt-3 gap-1.5">
-            {plan.highlights.map((line) => (
+            {planHighlights(required, en).map((line) => (
               <View key={line} className="flex-row items-start gap-2">
                 <Icon name="check" size={15} color={tone.solid} />
                 <Text className="flex-1 font-sans text-label text-ink">{line}</Text>
@@ -191,18 +225,18 @@ export function FeaturePaywall({
 
           <View className="mt-4 flex-row flex-wrap items-center gap-3">
             <Button
-              label={`Mở khoá · ${formatVnd(plan.monthlyVnd)}/tháng`}
+              label={L(`Mở khoá · ${formatVnd(plan.monthlyVnd)}/tháng`, `Unlock · ${formatVnd(plan.monthlyVnd)}/month`)}
               iconRight="arrow-right"
               onPress={() => router.push('/upgrade' as never)}
             />
             <Text className="font-sans text-label text-muted">
-              hoặc {formatVnd(plan.yearlyVnd)}/năm
+              {L(`hoặc ${formatVnd(plan.yearlyVnd)}/năm`, `or ${formatVnd(plan.yearlyVnd)}/year`)}
             </Text>
           </View>
           {trialOpens ? (
             <Button
               className="mt-2 self-start"
-              label={`Học thử ${plan.name} ${TRIAL_DAYS} ngày miễn phí`}
+              label={L(`Học thử ${plan.name} ${TRIAL_DAYS} ngày miễn phí`, `Try ${plan.name} free for ${TRIAL_DAYS} days`)}
               variant="outline"
               iconRight="sparkle"
               onPress={() => startTrial(required)}
@@ -234,6 +268,7 @@ export function QuotaPaywall({
   resetsIn: string;
   requiredPlan?: PlanId;
 }) {
+  const { L } = useL();
   return (
     <Card>
       <View className="flex-row items-start gap-3">
@@ -246,12 +281,14 @@ export function QuotaPaywall({
         <View className="flex-1">
           <Text className="font-strong text-cardTitle text-ink">{title}</Text>
           <Text className="mt-1 font-sans text-body text-muted">
-            Bạn đã dùng {used}/{limit} lượt. Lượt mới có lại {resetsIn} — hoặc mở khoá không giới hạn
-            với gói {PLANS[requiredPlan].name}.
+            {L(
+              `Bạn đã dùng ${used}/${limit} lượt. Lượt mới có lại ${resetsIn} — hoặc mở khoá không giới hạn với gói ${PLANS[requiredPlan].name}.`,
+              `You've used ${used}/${limit}. More become available ${resetsIn} — or go unlimited with ${PLANS[requiredPlan].name}.`,
+            )}
           </Text>
           <Button
             className="mt-3 self-start"
-            label={`Xem gói ${PLANS[requiredPlan].name}`}
+            label={L(`Xem gói ${PLANS[requiredPlan].name}`, `See ${PLANS[requiredPlan].name}`)}
             variant="outline"
             iconRight="arrow-right"
             onPress={() => router.push('/upgrade' as never)}
@@ -265,6 +302,7 @@ export function QuotaPaywall({
 /** Dải nhắc gói ở đầu trang — chỉ hiện khi đang dùng Free hoặc sắp hết hạn. */
 export function PlanNudge() {
   const { plan, daysLeft: left, expired, source, canStartTrial, onTrial } = usePlanStatus();
+  const { L } = useL();
 
   if (canStartTrial || onTrial) return <TrialCard />;
   if (plan !== 'free' && (left === null || left > 3)) return null;
@@ -283,15 +321,27 @@ export function PlanNudge() {
             />
             <Text className="flex-1 font-sans text-body text-ink">
               {expiringSoon
-                ? `Gói ${planOf(plan).name} còn ${left} ngày. Gia hạn để không mất quyền truy cập.`
+                ? L(
+                    `Gói ${planOf(plan).name} còn ${left} ngày. Gia hạn để không mất quyền truy cập.`,
+                    `${planOf(plan).name} has ${left} days left. Renew to keep your access.`,
+                  )
                 : expired
-                  ? 'Gói đã hết hạn — bạn đang dùng bản Free. Dữ liệu học vẫn còn nguyên.'
+                  ? L(
+                      'Gói đã hết hạn — bạn đang dùng bản Free. Dữ liệu học vẫn còn nguyên.',
+                      "Your plan has expired — you're on Free now. All your study data is still here.",
+                    )
                   : source === 'trial'
-                    ? 'Bản dùng thử đã kết thúc. Nâng cấp để mở lại toàn bộ nội dung.'
-                    : `Bạn đang dùng gói Free. Mở toàn bộ ${CURRICULUM_TOTALS.sets} bộ đề SAT Math và bỏ giới hạn bài đọc.`}
+                    ? L(
+                        'Bản dùng thử đã kết thúc. Nâng cấp để mở lại toàn bộ nội dung.',
+                        'Your trial has ended. Upgrade to unlock all content again.',
+                      )
+                    : L(
+                        `Bạn đang dùng gói Free. Mở toàn bộ ${CURRICULUM_TOTALS.sets} bộ đề SAT Math và bỏ giới hạn bài đọc.`,
+                        `You're on Free. Unlock all ${CURRICULUM_TOTALS.sets} SAT Math sets and unlimited reading.`,
+                      )}
             </Text>
           </View>
-          <Badge label="Xem gói" tone="primary" />
+          <Badge label={L('Xem gói', 'See plans')} tone="primary" />
         </View>
       </Card>
     </Pressable>

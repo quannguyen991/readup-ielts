@@ -98,6 +98,8 @@ export const QUOTA_LABEL: Record<Quota, string> = {
 export type Plan = {
   id: PlanId;
   name: string;
+  /** Tên hiện khi giao diện là tiếng Anh. */
+  nameEn: string;
   tagline: string;
   /** Giá theo tháng, đơn vị đồng. 0 = miễn phí. */
   monthlyVnd: number;
@@ -153,6 +155,7 @@ export const PLANS: Record<PlanId, Plan> = {
   free: {
     id: 'free',
     name: 'Free',
+    nameEn: 'Free',
     tagline: 'Học thật, không phải bản dùng thử',
     monthlyVnd: 0,
     yearlyVnd: 0,
@@ -177,6 +180,7 @@ export const PLANS: Record<PlanId, Plan> = {
   plus: {
     id: 'plus',
     name: 'Plus',
+    nameEn: 'Plus',
     tagline: 'Mở hết nội dung, không giới hạn số lượng',
     monthlyVnd: 49_000,
     yearlyVnd: 470_000,
@@ -199,6 +203,7 @@ export const PLANS: Record<PlanId, Plan> = {
   pro: {
     id: 'pro',
     name: 'Pro',
+    nameEn: 'Pro',
     tagline: 'Có trợ giảng AI kèm bên cạnh',
     monthlyVnd: 140_000,
     // Trả năm giữ đúng mức giảm 25% như trước: 140.000 × 12 × 0,75.
@@ -222,6 +227,7 @@ export const PLANS: Record<PlanId, Plan> = {
   max: {
     id: 'max',
     name: 'Max',
+    nameEn: 'Max',
     tagline: 'Cùng tính năng Pro, ngân sách AI gấp sáu',
     monthlyVnd: 400_000,
     // Trả năm giữ đúng mức giảm 30% như trước: 400.000 × 12 × 0,70.
@@ -285,9 +291,18 @@ export function planOf(id: PlanId | null | undefined): Plan {
   return PLANS[id ?? 'free'] ?? PLANS.free;
 }
 
-/** "99.000đ" — dấu chấm ngăn nghìn theo cách viết Việt Nam. */
-export function formatVnd(amount: number): string {
-  if (amount === 0) return 'Miễn phí';
+/** Tên gói theo ngôn ngữ giao diện. */
+export function planName(id: PlanId | null | undefined, en: boolean): string {
+  const plan = planOf(id);
+  return en ? plan.nameEn : plan.name;
+}
+
+/**
+ * "99.000đ" — dấu chấm ngăn nghìn theo cách viết Việt Nam. Giá vẫn là VND ở cả
+ * hai ngôn ngữ; `en` chỉ đổi chữ "Miễn phí" thành "Free".
+ */
+export function formatVnd(amount: number, en = false): string {
+  if (amount === 0) return en ? 'Free' : 'Miễn phí';
   return `${amount.toLocaleString('vi-VN')}đ`;
 }
 

@@ -3,6 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Thanh lọc phân cấp bên trái trang Luyện tập.
@@ -51,6 +52,7 @@ export function FilterRail({
   /** Các nhóm lọc phụ dạng đánh dấu nhiều lựa chọn. */
   groups?: React.ReactNode;
 }) {
+  const { L } = useL();
   return (
     <View className="gap-2">
       {skills.map((skill) => {
@@ -89,7 +91,7 @@ export function FilterRail({
                 {skill.label}
               </Text>
               {disabled ? (
-                <Text className="font-mid text-label text-subtle">Sắp có</Text>
+                <Text className="font-mid text-label text-subtle">{L('Sắp có', 'Coming soon')}</Text>
               ) : skill.href ? (
                 <Icon name="chevron-right" size={15} color={color.subtle} />
               ) : null}

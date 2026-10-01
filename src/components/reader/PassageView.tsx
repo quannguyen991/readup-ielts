@@ -7,6 +7,7 @@ import { color, highlightColors, wordStatusColor } from '@/theme/tokens';
 import { lemmatize } from '@/services/dictionary/lookup';
 import type { Highlight } from '@/store/useReaderStore';
 import type { WordStatusKind } from '@/types/database';
+import { useL } from '@/i18n/useL';
 
 export { highlightRanges, sentenceAround, sentenceBounds, snapToWords } from './passage-text';
 
@@ -147,6 +148,7 @@ function Paragraph({
   speaking: boolean;
   translation: string | null;
 }) {
+  const { L } = useL();
   const tokens = useMemo(() => tokenize(text), [text]);
   const ranges = useMemo(() => highlightRanges(text, highlights), [text, highlights]);
 
@@ -279,7 +281,7 @@ function Paragraph({
               {translation}
             </Text>
           ) : (
-            <Text className="font-sans text-label text-subtle">Đoạn này chưa dịch được.</Text>
+            <Text className="font-sans text-label text-subtle">{L('Đoạn này chưa dịch được.', "This paragraph couldn't be translated yet.")}</Text>
           )}
         </View>
       ) : null}

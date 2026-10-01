@@ -28,6 +28,7 @@ import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useSentenceStrike } from '@/components/game/useSentenceStrike';
 import { useGameStore } from '@/store/useGameStore';
+import { useL } from '@/i18n/useL';
 
 /**
  * Bài luyện chép chính tả — MỖI CHỮ CÁI MỘT Ô.
@@ -203,12 +204,13 @@ export default function DictationScreen() {
  * ngẫu nhiên ngay trên đầu.
  */
 function LibraryView({ onRandom }: { onRandom: () => void }) {
+  const { L } = useL();
   return (
     <TaskShell
       backHref="/sentence"
-      backLabel="Quay lại Luyện câu"
+      backLabel={L('Quay lại Luyện câu', 'Back to Sentence practice')}
       variant="full"
-      title="Chép chính tả"
+      title={L('Chép chính tả', 'Dictation')}
       subtitle="Listening dictation practice"
       icon="volume"
       tone="paper"
@@ -216,7 +218,7 @@ function LibraryView({ onRandom }: { onRandom: () => void }) {
         <Button
           variant="brandOutline"
           size="sm"
-          label="Bốc ngẫu nhiên 10 câu"
+          label={L('Bốc ngẫu nhiên 10 câu', 'Random 10 sentences')}
           iconLeft="refresh"
           onPress={onRandom}
         />
@@ -251,6 +253,7 @@ function RunningView({
   /** `undefined` ở câu đầu — không có gì để lùi về. */
   onPrev?: () => void;
 }) {
+  const { L } = useL();
   const [letters, setLetters] = useState('');
   const [freeText, setFreeText] = useState('');
   const [speaking, setSpeaking] = useState(false);
@@ -445,8 +448,8 @@ function RunningView({
   return (
     <TaskShell
       backHref="/sentence"
-      backLabel="Quay lại Luyện câu"
-      title="Chép chính tả"
+      backLabel={L('Quay lại Luyện câu', 'Back to Sentence practice')}
+      title={L('Chép chính tả', 'Dictation')}
       subtitle="Listening dictation practice"
       icon="volume"
       tone="paper"
@@ -472,14 +475,14 @@ function RunningView({
             <BattleStrip
               className="mb-4"
               step={{ index, total }}
-              charge={mode === 'cells' ? { value: solvedWords.filter(Boolean).length, total: board.words.length, unit: 'từ' } : undefined}
+              charge={mode === 'cells' ? { value: solvedWords.filter(Boolean).length, total: board.words.length, unit: L('từ', 'words') } : undefined}
             />
 
             {/* ------------------------------------------------- trình đọc */}
             <View className="flex-row flex-wrap items-center gap-3 rounded-panel bg-paper-canvas p-3.5">
               <Pressable
                 accessibilityRole="button"
-                accessibilityLabel={speaking ? 'Dừng đọc' : 'Nghe câu'}
+                accessibilityLabel={speaking ? L('Dừng đọc', 'Stop') : L('Nghe câu', 'Play sentence')}
                 onPress={() => (speaking ? Speech.stop() : play(item.text, rate))}
                 className="h-12 w-12 items-center justify-center rounded-pill"
                 style={{ backgroundColor: paper.brandMid }}
@@ -489,10 +492,10 @@ function RunningView({
 
               <View className="flex-1">
                 <Text className="font-strong text-body text-paper-ink">
-                  {speaking ? 'Đang đọc…' : 'Nghe câu'}
+                  {speaking ? L('Đang đọc…', 'Playing…') : L('Nghe câu', 'Play sentence')}
                 </Text>
                 <Text className="font-sans text-label text-paper-muted">
-                  Bấm để nghe lại bao nhiêu lần cũng được.
+                  {L('Bấm để nghe lại bao nhiêu lần cũng được.', 'Tap to replay as many times as you like.')}
                 </Text>
               </View>
 
@@ -535,12 +538,12 @@ function RunningView({
             {/* ---------------------------------------------- chọn chế độ */}
             <View className="mt-4 flex-row items-center gap-2">
               <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
-                Chế độ
+                {L('Chế độ', 'Mode')}
               </Text>
               {(
                 [
-                  ['cells', 'Ô chữ'],
-                  ['free', 'Tự gõ'],
+                  ['cells', L('Ô chữ', 'Letter boxes')],
+                  ['free', L('Tự gõ', 'Free typing')],
                 ] as const
               ).map(([key, label]) => (
                 <Pressable
@@ -577,7 +580,7 @@ function RunningView({
                 onChange={(text) => setLetters(sanitizeTyped(text, board.answer.length))}
                 inputRef={inputRef}
                 onClear={() => setLetters('')}
-                hint="Mỗi ô là một chữ cái — Tab để nghe lại"
+                hint={L('Mỗi ô là một chữ cái — Tab để nghe lại', 'One letter per box — Tab to replay')}
               />
             ) : (
               <View className="mt-3">
@@ -587,7 +590,7 @@ function RunningView({
                     setFreeText(text);
                     setFreeChecked(false);
                   }}
-                  placeholder="Gõ lại câu bạn vừa nghe…"
+                  placeholder={L('Gõ lại câu bạn vừa nghe…', 'Type the sentence you just heard…')}
                   placeholderTextColor={paper.muted}
                   multiline
                   className="min-h-[96px] rounded-panel border border-brand-soft bg-white p-3.5 font-sans text-bodyLg text-paper-ink"
@@ -615,7 +618,7 @@ function RunningView({
                     </View>
                     <View className="mt-3 flex-row flex-wrap items-center gap-2">
                       <Badge
-                        label={`${Math.round(freeGrade.accuracy * 100)}% chính xác`}
+                        label={L(`${Math.round(freeGrade.accuracy * 100)}% chính xác`, `${Math.round(freeGrade.accuracy * 100)}% accurate`)}
                         tone={
                           freeGrade.accuracy >= 0.8
                             ? 'success'
@@ -624,15 +627,15 @@ function RunningView({
                               : 'danger'
                         }
                       />
-                      <Badge label="Thiếu" tone="danger" />
-                      <Badge label="Thừa (gạch ngang)" tone="warning" />
+                      <Badge label={L('Thiếu', 'Missing')} tone="danger" />
+                      <Badge label={L('Thừa (gạch ngang)', 'Extra (struck through)')} tone="warning" />
                     </View>
                   </View>
                 ) : (
                   <Button
                     className="mt-3 self-start"
                     variant="brand"
-                    label="Kiểm tra"
+                    label={L('Kiểm tra', 'Check')}
                     iconRight="check"
                     onPress={() => setFreeChecked(true)}
                   />
@@ -657,10 +660,10 @@ function RunningView({
                     ].join(' ')}
                   >
                     {revealed
-                      ? `Đã mở đáp án — bạn tự điền đúng ${grade.correctCount}/${grade.total} chữ cái.`
+                      ? L(`Đã mở đáp án — bạn tự điền đúng ${grade.correctCount}/${grade.total} chữ cái.`, `Answer revealed — you got ${grade.correctCount}/${grade.total} letters right on your own.`)
                       : mode === 'cells'
-                        ? 'Bạn xuất sắc — đúng cả câu!'
-                        : `Đã chấm: ${Math.round((freeGrade?.accuracy ?? 0) * 100)}% chính xác`}
+                        ? L('Bạn xuất sắc — đúng cả câu!', 'Excellent — the whole sentence is right!')
+                        : L(`Đã chấm: ${Math.round((freeGrade?.accuracy ?? 0) * 100)}% chính xác`, `Graded: ${Math.round((freeGrade?.accuracy ?? 0) * 100)}% accurate`)}
                   </Text>
                 </View>
                 <View className="mt-3 rounded-panel bg-paper-canvas p-3.5">
@@ -689,7 +692,7 @@ function RunningView({
                     ) : null}
                   </View>
                   <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
-                    Hiện kết quả ngay
+                    {L('Hiện kết quả ngay', 'Show results live')}
                   </Text>
                 </Pressable>
               ) : null}
@@ -702,7 +705,7 @@ function RunningView({
                 <Button
                   variant="brandOutline"
                   size="sm"
-                  label="Xem đáp án"
+                  label={L('Xem đáp án', 'Show answer')}
                   iconLeft="info"
                   onPress={() => {
                     strike(false);
@@ -723,20 +726,20 @@ function RunningView({
             */}
             <View className="mt-3 flex-row gap-2">
               <NavKey
-                label="Câu trước"
+                label={L('Câu trước', 'Previous')}
                 hint="Ctrl ←"
                 icon="chevron-left"
                 disabled={!onPrev}
                 onPress={() => onPrev?.()}
               />
               <NavKey
-                label="Nghe lại"
+                label={L('Nghe lại', 'Replay')}
                 hint="Tab"
                 icon="volume"
                 onPress={() => play(item.text, rate)}
               />
               <NavKey
-                label={index + 1 === total ? 'Xem kết quả' : 'Câu sau'}
+                label={index + 1 === total ? L('Xem kết quả', 'See results') : L('Câu sau', 'Next')}
                 hint="Enter"
                 icon="arrow-right"
                 emphasis={done}
@@ -753,12 +756,12 @@ function RunningView({
               <View className="flex-row items-center gap-2">
                 <Icon name="chat" size={16} color={paper.brandMid} strokeWidth={2} />
                 <Text className="font-strong uppercase tracking-wide text-paper-ink" style={{ fontSize: 11 }}>
-                  Dịch nghĩa
+                  {L('Dịch nghĩa', 'Translation')}
                 </Text>
               </View>
               <View className="rounded-pill bg-gold-soft px-2 py-0.5">
                 <Text className="font-semi uppercase text-paper-body" style={{ fontSize: 9 }}>
-                  Tiếng Việt
+                  {L('Tiếng Việt', 'Vietnamese')}
                 </Text>
               </View>
             </View>
@@ -766,11 +769,11 @@ function RunningView({
             <View className="mt-3 rounded-panel bg-paper-canvas p-3.5">
               {done ? (
                 <Text className="font-mid text-body text-paper-ink">
-                  “{item.vi ?? DICTATION_VI[item.id] ?? 'Chưa có bản dịch cho câu này.'}”
+                  “{item.vi ?? DICTATION_VI[item.id] ?? L('Chưa có bản dịch cho câu này.', 'No translation for this sentence yet.')}”
                 </Text>
               ) : (
                 <Text className="font-sans text-label uppercase tracking-wide text-paper-muted">
-                  Hoàn thành câu để xem bản dịch…
+                  {L('Hoàn thành câu để xem bản dịch…', 'Finish the sentence to see the translation…')}
                 </Text>
               )}
             </View>
@@ -780,11 +783,11 @@ function RunningView({
             <View className="flex-row items-center gap-2">
               <Icon name="volume" size={16} color={paper.brandMid} strokeWidth={2} />
               <Text className="font-strong uppercase tracking-wide text-paper-ink" style={{ fontSize: 11 }}>
-                Luyện phát âm
+                {L('Luyện phát âm', 'Pronunciation')}
               </Text>
             </View>
             <Text className="mt-1 font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-              Bấm vào từ để nghe đọc
+              {L('Bấm vào từ để nghe đọc', 'Tap a word to hear it')}
             </Text>
 
             <View className="mt-3 flex-row flex-wrap gap-x-2 gap-y-1.5">
@@ -802,7 +805,7 @@ function RunningView({
                   <Pressable
                     key={i}
                     accessibilityRole="button"
-                    accessibilityLabel={`Nghe đọc từ ${text}`}
+                    accessibilityLabel={L(`Nghe đọc từ ${text}`, `Hear the word ${text}`)}
                     onPress={() => play(text, 0.85)}
                   >
                     <Text
@@ -840,12 +843,13 @@ function SummaryView({
       attempts.length === 0 ? 0 : attempts.reduce((a, b) => a + b.accuracy, 0) / attempts.length,
     [attempts],
   );
+  const { L } = useL();
 
   return (
     <TaskShell
       backHref="/sentence"
-      backLabel="Quay lại Luyện câu"
-      title="Xong buổi luyện"
+      backLabel={L('Quay lại Luyện câu', 'Back to Sentence practice')}
+      title={L('Xong buổi luyện', 'Session complete')}
       subtitle="Listening dictation practice"
       icon="volume"
       tone="paper"
@@ -853,19 +857,19 @@ function SummaryView({
       <View className="items-center rounded-card border border-brand-soft bg-white py-7">
         <Text className="font-heavy text-hero text-paper-ink">{Math.round(avg * 100)}%</Text>
         <Text className="mt-1 font-sans text-body text-paper-muted">
-          chính xác trung bình · {attempts.length} câu
+          {L(`chính xác trung bình · ${attempts.length} câu`, `average accuracy · ${attempts.length} sentences`)}
         </Text>
       </View>
 
       <View className="mt-4 rounded-card border border-brand-soft bg-white p-5">
-        <Text className="font-strong text-cardTitle text-paper-ink">Từng câu</Text>
+        <Text className="font-strong text-cardTitle text-paper-ink">{L('Từng câu', 'By sentence')}</Text>
         <View className="mt-3 gap-2">
           {attempts.map((a, i) => (
             <View
               key={i}
               className="flex-row items-center justify-between rounded-panel border border-brand-soft p-2.5"
             >
-              <Text className="font-sans text-body text-paper-body">Câu {i + 1}</Text>
+              <Text className="font-sans text-body text-paper-body">{L('Câu', 'Sentence')} {i + 1}</Text>
               <Badge
                 label={`${Math.round(a.accuracy * 100)}%`}
                 tone={a.accuracy >= 0.8 ? 'success' : a.accuracy >= 0.5 ? 'warning' : 'danger'}
@@ -876,9 +880,9 @@ function SummaryView({
       </View>
 
       <View className="mt-4 flex-row flex-wrap gap-2">
-        <Button label="Luyện lại" variant="brand" iconLeft="refresh" onPress={onRestart} />
+        <Button label={L('Luyện lại', 'Practise again')} variant="brand" iconLeft="refresh" onPress={onRestart} />
         <Button
-          label="Về Luyện câu"
+          label={L('Về Luyện câu', 'Back to Sentence practice')}
           variant="brandOutline"
           onPress={() => router.replace('/sentence' as never)}
         />

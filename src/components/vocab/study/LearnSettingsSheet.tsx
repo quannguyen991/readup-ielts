@@ -6,6 +6,7 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { canRecognize } from '@/services/shadow/speech';
 import type { Direction, LearnSettings, StageKind } from '@/services/vocab/topic-study';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Bảng Cài đặt của màn Học.
@@ -37,6 +38,7 @@ export function LearnSettingsSheet({
   onReset: () => void;
   onClose: () => void;
 }) {
+  const { L, en } = useL();
   const [draft, setDraft] = useState(initial);
   const [confirmReset, setConfirmReset] = useState(false);
   const [openedWith, setOpenedWith] = useState<LearnSettings | null>(null);
@@ -59,15 +61,15 @@ export function LearnSettingsSheet({
   const blocked = noDir || noKind || matches === 0;
 
   const DIRS: { key: Direction; label: React.ReactNode }[] = [
-    { key: 'enToVi', label: <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
-    { key: 'viToEn', label: <>Thấy <B>nghĩa tiếng Việt</B>, tìm từ tiếng Anh</> },
-    { key: 'listen', label: <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
+    { key: 'enToVi', label: en ? <>See the <B>English word</B>, pick the Vietnamese meaning</> : <>Thấy <B>từ tiếng Anh</B>, chọn nghĩa tiếng Việt</> },
+    { key: 'viToEn', label: en ? <>See the <B>Vietnamese meaning</B>, find the English word</> : <>Thấy <B>nghĩa tiếng Việt</B>, tìm từ tiếng Anh</> },
+    { key: 'listen', label: en ? <>Just <B>listen to the audio</B>, recognise the word</> : <>Chỉ <B>nghe giọng đọc</B>, nhận ra từ</> },
   ];
   const KINDS: { key: StageKind; label: string; icon: IconName }[] = [
-    { key: 'flash', label: 'Lật thẻ', icon: 'note' },
-    { key: 'mcq', label: 'Trắc nghiệm 4 đáp án', icon: 'list' },
-    { key: 'fill', label: 'Điền chỗ trống (kiểu đề THPT)', icon: 'clipboard' },
-    { key: 'type', label: 'Gõ từ', icon: 'pencil' },
+    { key: 'flash', label: L('Lật thẻ', 'Flashcards'), icon: 'note' },
+    { key: 'mcq', label: L('Trắc nghiệm 4 đáp án', 'Multiple choice (4 options)'), icon: 'list' },
+    { key: 'fill', label: L('Điền chỗ trống (kiểu đề THPT)', 'Fill in the blank (Vietnamese high-school exam style)'), icon: 'clipboard' },
+    { key: 'type', label: L('Gõ từ', 'Type the word'), icon: 'pencil' },
   ];
 
   return (
@@ -76,14 +78,14 @@ export function LearnSettingsSheet({
         {/* Chặn bấm xuyên qua thẻ xuống lớp nền (lớp nền bấm là đóng). */}
         <Pressable onPress={() => {}} className="w-full rounded-[26px] bg-white" style={[{ maxWidth: 560, maxHeight: '92%', cursor: 'auto' } as object, CARD_SHADOW]}>
           <View className="flex-row items-center justify-between px-5 pb-2 pt-5 sm:px-6">
-            <Text className="font-heavy text-sectionTitle text-ink">Cài đặt học</Text>
-            <Pressable accessibilityRole="button" accessibilityLabel="Đóng" onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F9F6F1' }}>
+            <Text className="font-heavy text-sectionTitle text-ink">{L('Cài đặt học', 'Study settings')}</Text>
+            <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#F9F6F1' }}>
               <Icon name="close" size={18} color={color.ink} />
             </Pressable>
           </View>
 
           <ScrollView contentContainerStyle={{ paddingHorizontal: 20, paddingBottom: 8 }}>
-            <Section title="Dạng câu" warn={noKind ? 'Phải bật ít nhất một dạng.' : undefined}>
+            <Section title={L('Dạng câu', 'Question types')} warn={noKind ? L('Phải bật ít nhất một dạng.', 'Turn on at least one type.') : undefined}>
               {KINDS.map((k) => {
                 const on = draft.kinds.includes(k.key);
                 return (
@@ -95,22 +97,22 @@ export function LearnSettingsSheet({
               })}
             </Section>
 
-            <Section title="Cách học">
+            <Section title={L('Cách học', 'Study mode')}>
               <Row on={draft.interleave} onPress={() => flip('interleave')}>
                 <Icon name="refresh" size={18} color={draft.interleave ? color.primary : '#64748B'} />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">
-                  <B>Học xen kẽ</B> <Text className="text-muted">· trộn dạng câu, gặp lại cả từ đã đúng</Text>
+                  <B>{L('Học xen kẽ', 'Interleaved')}</B> <Text className="text-muted">{L('· trộn dạng câu, gặp lại cả từ đã đúng', '· mixes question types and revisits words you got right')}</Text>
                 </Text>
               </Row>
               <Row on={draft.ordered} onPress={() => flip('ordered')}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">Học theo thứ tự trong bộ (không xáo trộn)</Text>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Học theo thứ tự trong bộ (không xáo trộn)', 'Study in deck order (no shuffle)')}</Text>
               </Row>
               <Row on={draft.autoAdvance} onPress={() => flip('autoAdvance')}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">Tự sang câu tiếp khi trả lời đúng</Text>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự sang câu tiếp khi trả lời đúng', 'Auto-advance after a correct answer')}</Text>
               </Row>
             </Section>
 
-            <Section title="Chiều hỏi" warn={noDir ? 'Phải chọn ít nhất một chiều hỏi.' : undefined}>
+            <Section title={L('Chiều hỏi', 'Question direction')} warn={noDir ? L('Phải chọn ít nhất một chiều hỏi.', 'Pick at least one direction.') : undefined}>
               {DIRS.map((d) => (
                 <Row key={d.key} on={draft.directions.includes(d.key)} onPress={() => setDraft({ ...draft, directions: toggleIn(draft.directions, d.key) })}>
                   <Text className="flex-1 font-sans text-bodyLg text-ink">{d.label}</Text>
@@ -118,29 +120,29 @@ export function LearnSettingsSheet({
               ))}
             </Section>
 
-            <Section title="Trả lời">
+            <Section title={L('Trả lời', 'Answering')}>
               <Row on={draft.acceptSynonyms} onPress={() => flip('acceptSynonyms')}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">Chấp nhận từ đồng nghĩa khi gõ</Text>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Chấp nhận từ đồng nghĩa khi gõ', 'Accept synonyms when typing')}</Text>
               </Row>
               <Row on={draft.speakAnswer && micOk} disabled={!micOk} onPress={() => flip('speakAnswer')}>
                 <Icon name="mic" size={18} color={draft.speakAnswer && micOk ? color.primary : '#64748B'} />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">
-                  Trả lời bằng giọng nói{micOk ? '' : <Text className="text-muted"> (trình duyệt này chưa hỗ trợ)</Text>}
+                  {L('Trả lời bằng giọng nói', 'Answer by voice')}{micOk ? '' : <Text className="text-muted">{L(' (trình duyệt này chưa hỗ trợ)', " (not supported in this browser)")}</Text>}
                 </Text>
               </Row>
             </Section>
 
-            <Section title="Nhóm từ" warn={matches === 0 && !noDir && !noKind ? 'Không còn từ nào khớp bộ lọc này.' : undefined}>
+            <Section title={L('Nhóm từ', 'Word filter')} warn={matches === 0 && !noDir && !noKind ? L('Không còn từ nào khớp bộ lọc này.', 'No words match this filter.') : undefined}>
               <Row on={draft.starredOnly} onPress={() => flip('starredOnly')}>
                 <Icon name="star-fill" size={18} color="#F59E0B" />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">
-                  Chỉ từ đánh dấu sao <Text className="text-muted">({starredCount})</Text>
+                  {L('Chỉ từ đánh dấu sao', 'Starred words only')} <Text className="text-muted">({starredCount})</Text>
                 </Text>
               </Row>
               <Row on={draft.unmasteredOnly} onPress={() => flip('unmasteredOnly')}>
                 <Icon name="target" size={18} color={color.primary} />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">
-                  Chỉ từ chưa thuộc <Text className="text-muted">({unmasteredCount})</Text>
+                  {L('Chỉ từ chưa thuộc', 'Words not yet mastered')} <Text className="text-muted">({unmasteredCount})</Text>
                 </Text>
               </Row>
             </Section>
@@ -159,7 +161,7 @@ export function LearnSettingsSheet({
             >
               <Icon name="refresh" size={16} color={confirmReset ? '#E11D48' : '#475569'} />
               <Text className="flex-shrink font-semi text-body" style={{ color: confirmReset ? '#E11D48' : '#475569' }}>
-                {confirmReset ? 'Bấm lần nữa để xoá' : 'Xoá tiến độ'}
+                {confirmReset ? L('Bấm lần nữa để xoá', 'Tap again to reset') : L('Xoá tiến độ', 'Reset progress')}
               </Text>
             </Pressable>
             <Pressable
@@ -169,7 +171,7 @@ export function LearnSettingsSheet({
               className="rounded-2xl px-6 py-3"
               style={{ flexShrink: 0, backgroundColor: blocked ? '#F4E7D1' : color.primary }}
             >
-              <Text className="font-strong text-bodyLg text-white">Áp dụng</Text>
+              <Text className="font-strong text-bodyLg text-white">{L('Áp dụng', 'Apply')}</Text>
             </Pressable>
           </View>
         </Pressable>

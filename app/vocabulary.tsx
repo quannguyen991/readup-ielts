@@ -15,24 +15,26 @@ import { color, wordStatusColor } from '@/theme/tokens';
 import type { WordStatusKind } from '@/types/database';
 import { CrossFade } from '@/components/motion/Motion';
 import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
+import { bi, useL, type Bi } from '@/i18n/useL';
 
-const CARD_KIND_LABEL: Record<CardKind, string> = {
-  word_to_meaning: 'Từ → nghĩa',
-  meaning_to_word: 'Nghĩa → từ',
-  cloze: 'Điền vào câu gốc',
-  multiple_choice: 'Trắc nghiệm 4 đáp án',
+const CARD_KIND_LABEL: Record<CardKind, Bi> = {
+  word_to_meaning: { vi: 'Từ → nghĩa', en: 'Word → meaning' },
+  meaning_to_word: { vi: 'Nghĩa → từ', en: 'Meaning → word' },
+  cloze: { vi: 'Điền vào câu gốc', en: 'Fill in the original sentence' },
+  multiple_choice: { vi: 'Trắc nghiệm 4 đáp án', en: 'Multiple choice (4 options)' },
 };
 
-const STATUS_LABEL: Record<WordStatusKind, string> = {
-  new: 'Mới',
-  learning: 'Đang học',
-  familiar: 'Quen mặt',
-  known: 'Đã thuộc',
-  ignored: 'Bỏ qua',
+const STATUS_LABEL: Record<WordStatusKind, Bi> = {
+  new: { vi: 'Mới', en: 'New' },
+  learning: { vi: 'Đang học', en: 'Learning' },
+  familiar: { vi: 'Quen mặt', en: 'Familiar' },
+  known: { vi: 'Đã thuộc', en: 'Known' },
+  ignored: { vi: 'Bỏ qua', en: 'Ignored' },
 };
 
 export default function VocabularyScreen() {
   const [tab, setTab] = useState<'list' | 'review'>('list');
+  const { L, locale } = useL();
 
   const entries = useVocabStore((s) => s.entries);
   const dueCards = useDueCards();
@@ -69,24 +71,27 @@ export default function VocabularyScreen() {
         scene="vocab"
         badge="VOCABULARY PRACTICE"
         line1="Vocabulary"
-        line2="gặp lại đúng lúc sắp quên"
-        subtitle="Mỗi từ lưu kèm nguyên câu gặp nó. Ôn theo FSRS nên bạn chỉ gặp lại đúng lúc sắp quên."
+        line2={L('gặp lại đúng lúc sắp quên', 'see it again right before you forget')}
+        subtitle={L(
+          'Mỗi từ lưu kèm nguyên câu gặp nó. Ôn theo FSRS nên bạn chỉ gặp lại đúng lúc sắp quên.',
+          'Every word is saved with the sentence you found it in. FSRS reviews bring it back right before you’d forget it.',
+        )}
         footer={
           <>
-            <HeroStat value={String(words.length)} label="tổng số từ" />
-            <HeroStat value={String(dueCards.length)} label="đến hạn ôn" />
-            <HeroStat value={words.length === 0 ? '—' : `${avgMastery}%`} label="mastery trung bình" />
+            <HeroStat value={String(words.length)} label={L('tổng số từ', 'total words')} />
+            <HeroStat value={String(dueCards.length)} label={L('đến hạn ôn', 'due for review')} />
+            <HeroStat value={words.length === 0 ? '—' : `${avgMastery}%`} label={L('mastery trung bình', 'avg. mastery')} />
           </>
         }
       >
         <View className="flex-row gap-2">
           <Button
-            label="Danh sách"
+            label={L('Danh sách', 'List')}
             variant={tab === 'list' ? 'primary' : 'outline'}
             onPress={() => setTab('list')}
           />
           <Button
-            label={dueCards.length > 0 ? `Ôn ngay (${dueCards.length})` : 'Ôn tập'}
+            label={dueCards.length > 0 ? L(`Ôn ngay (${dueCards.length})`, `Review now (${dueCards.length})`) : L('Ôn tập', 'Review')}
             variant="outline"
             iconLeft="refresh"
             disabled={words.length === 0}
@@ -97,29 +102,29 @@ export default function VocabularyScreen() {
 
       <View className="mt-4">
         <Grid columns={4} tabletColumns={2} mobileColumns={1}>
-          <StatCard label="Tổng số từ" value={String(words.length)} icon="letters" tone="primary" />
+          <StatCard label={L('Tổng số từ', 'Total words')} value={String(words.length)} icon="letters" tone="primary" />
           <StatCard
-            label="Đến hạn ôn"
+            label={L('Đến hạn ôn', 'Due for review')}
             value={String(dueCards.length)}
             icon="clock"
             tone="warning"
-            caption="Tính theo lịch FSRS"
+            caption={L('Tính theo lịch FSRS', 'Based on the FSRS schedule')}
           />
           <StatCard
-            label="Đã thuộc"
+            label={L('Đã thuộc', 'Known')}
             value={String(statusCounts.known)}
             icon="check"
             tone="success"
-            caption={`${statusCounts.familiar} từ quen mặt`}
+            caption={L(`${statusCounts.familiar} từ quen mặt`, `${statusCounts.familiar} familiar`)}
           />
           <StatCard
-            label="Mastery trung bình"
+            label={L('Mastery trung bình', 'Average mastery')}
             // Sổ trống thì không có gì để lấy trung bình — "0%" đọc như đã đo mà kém.
             value={words.length === 0 ? '—' : `${avgMastery}`}
             unit={words.length === 0 ? undefined : '%'}
             icon="target"
             tone="accent"
-            caption={words.length === 0 ? 'Chưa có từ nào trong sổ' : undefined}
+            caption={words.length === 0 ? L('Chưa có từ nào trong sổ', 'No words in your notebook yet') : undefined}
             progress={words.length === 0 ? undefined : { value: avgMastery, tone: 'accent' }}
           />
         </Grid>
@@ -138,8 +143,8 @@ export default function VocabularyScreen() {
       ) : (
         <Card className="mt-4">
           <SectionHeader
-            title="Sổ từ"
-            subtitle={`${words.length} từ · sắp theo thời gian lưu`}
+            title={L('Sổ từ', 'Word notebook')}
+            subtitle={L(`${words.length} từ · sắp theo thời gian lưu`, `${words.length} words · sorted by date saved`)}
             icon="book"
           />
 
@@ -162,25 +167,31 @@ export default function VocabularyScreen() {
               <View className="items-center rounded-panel bg-surfaceAlt px-4 py-8">
                 <Icon name="letters" size={32} color={color.subtle} />
                 <Text className="mt-3 text-center font-sans text-body text-muted">
-                  Sổ từ đang trống — và không cần trống lâu.
+                  {L('Sổ từ đang trống — và không cần trống lâu.', 'Your notebook is empty — but it doesn’t have to stay that way.')}
                 </Text>
                 <Text className="mt-1 max-w-[420px] text-center font-sans text-label text-subtle">
                   {VOCAB_TOPIC_TOTALS.topics > 0
-                    ? `Lấy sẵn một bộ ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ IELTS chia theo ${VOCAB_TOPIC_TOTALS.topics} chủ đề, hoặc mở một bài trong Library rồi chạm vào từ bất kỳ.`
-                    : 'Mở một bài trong Library, chạm vào từ bất kỳ rồi bấm “Lưu vào sổ từ”.'}
+                    ? L(
+                        `Lấy sẵn một bộ ${VOCAB_TOPIC_TOTALS.words.toLocaleString('vi-VN')} từ IELTS chia theo ${VOCAB_TOPIC_TOTALS.topics} chủ đề, hoặc mở một bài trong Library rồi chạm vào từ bất kỳ.`,
+                        `Grab a ready-made set of ${VOCAB_TOPIC_TOTALS.words.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} IELTS words across ${VOCAB_TOPIC_TOTALS.topics} topics, or open a passage in the Library and tap any word.`,
+                      )
+                    : L(
+                        'Mở một bài trong Library, chạm vào từ bất kỳ rồi bấm “Lưu vào sổ từ”.',
+                        'Open a passage in the Library, tap any word and hit “Save to notebook”.',
+                      )}
                 </Text>
                 <View className="mt-4 flex-row flex-wrap justify-center gap-2">
                   {/* Nút chỉ hiện khi kho chủ đề thật sự có bộ nào. Mời người
                       dùng vào một trang trống là lời hứa hỏng ngay tại chỗ. */}
                   {VOCAB_TOPIC_TOTALS.topics > 0 ? (
                     <Button
-                      label="Chọn bộ từ theo chủ đề"
+                      label={L('Chọn bộ từ theo chủ đề', 'Choose a topic word set')}
                       iconRight="arrow-right"
                       onPress={() => router.push('/vocabulary/topics' as never)}
                     />
                   ) : null}
                   <Button
-                    label="Mở kho bài đọc"
+                    label={L('Mở kho bài đọc', 'Open the reading library')}
                     variant="outline"
                     onPress={() => router.push('/library' as never)}
                   />
@@ -200,24 +211,29 @@ export default function VocabularyScreen() {
  * thẳng trên chính sổ từ của người học (bộ `so-tu`). Sổ dưới 4 từ thì chưa đủ
  * làm phương án nhiễu cho trắc nghiệm — nói rõ thay vì mở ra màn trống.
  */
-const NOTEBOOK_MODES: { id: string; label: string; icon: React.ComponentProps<typeof Icon>['name'] }[] = [
-  { id: 'learn', label: 'Học xen kẽ', icon: 'book' },
-  { id: 'test', label: 'Kiểm tra', icon: 'clipboard' },
-  { id: 'cloze', label: 'Điền vào câu', icon: 'pencil' },
+const NOTEBOOK_MODES: { id: string; label: Bi; icon: React.ComponentProps<typeof Icon>['name'] }[] = [
+  { id: 'learn', label: { vi: 'Học xen kẽ', en: 'Mixed learning' }, icon: 'book' },
+  { id: 'test', label: { vi: 'Kiểm tra', en: 'Test' }, icon: 'clipboard' },
+  { id: 'cloze', label: { vi: 'Điền vào câu', en: 'Fill the gap' }, icon: 'pencil' },
 ];
 
 function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
+  const { L, locale } = useL();
   if (entries.length === 0) return null;
   const enough = entries.length >= 4;
 
   return (
     <Card className="mt-4">
       <SectionHeader
-        title="Luyện sổ từ"
-        subtitle={enough ? 'Ba kiểu quiz chạy trên chính những từ bạn đã lưu' : `Lưu thêm ${4 - entries.length} từ nữa là luyện được`}
+        title={L('Luyện sổ từ', 'Practise your notebook')}
+        subtitle={
+          enough
+            ? L('Ba kiểu quiz chạy trên chính những từ bạn đã lưu', 'Three quiz types using the words you’ve saved')
+            : L(`Lưu thêm ${4 - entries.length} từ nữa là luyện được`, `Save ${4 - entries.length} more words to start practising`)
+        }
         icon="target"
         action={{
-          label: 'Quiz từ vựng',
+          label: L('Quiz từ vựng', 'Vocabulary quiz'),
           onPress: () => router.push('/vocabulary/quiz' as never),
         }}
       />
@@ -234,7 +250,7 @@ function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
             }`}
           >
             <Icon name={mode.icon} size={15} color={enough ? color.primary : color.subtle} />
-            <Text className={enough ? 'font-strong text-label text-ink' : 'font-mid text-label text-subtle'}>{mode.label}</Text>
+            <Text className={enough ? 'font-strong text-label text-ink' : 'font-mid text-label text-subtle'}>{bi(mode.label, locale)}</Text>
           </Pressable>
         ))}
       </View>
@@ -246,6 +262,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
   const setWordStatus = useVocabStore((s) => s.setWordStatus);
   const removeWord = useVocabStore((s) => s.removeWord);
   const [open, setOpen] = useState(false);
+  const { L, locale } = useL();
 
   return (
     <View className="rounded-panel border border-border p-3">
@@ -255,7 +272,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
           style={{ backgroundColor: wordStatusColor[status].fill }}
         >
           <Text className="font-semi text-label" style={{ color: wordStatusColor[status].ink }}>
-            {STATUS_LABEL[status]}
+            {bi(STATUS_LABEL[status], locale)}
           </Text>
         </View>
 
@@ -267,7 +284,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
 
         <IconButton
           name="volume"
-          accessibilityLabel="Phát âm"
+          accessibilityLabel={L('Phát âm', 'Pronounce')}
           onPress={() => Speech.speak(entry.word, { language: 'en-US', rate: 0.9, voice: englishVoice() })}
         />
 
@@ -276,7 +293,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
         <Badge label={`${entry.masteryPercent}%`} tone="accent" />
         <IconButton
           name={open ? 'chevron-down' : 'chevron-right'}
-          accessibilityLabel="Chi tiết"
+          accessibilityLabel={L('Chi tiết', 'Details')}
           onPress={() => setOpen((v) => !v)}
         />
       </View>
@@ -289,13 +306,13 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
 
       {open ? (
         <View className="mt-3 gap-2 border-t border-border pt-3">
-          <Field label="Câu gốc trong bài" value={`“${entry.sourceSentence}”`} />
+          <Field label={L('Câu gốc trong bài', 'Original sentence')} value={`“${entry.sourceSentence}”`} />
           {entry.definitionGeneral ? (
-            <Field label="Nghĩa tổng quát" value={entry.definitionGeneral} />
+            <Field label={L('Nghĩa tổng quát', 'General meaning')} value={entry.definitionGeneral} />
           ) : null}
-          {entry.definitionVi ? <Field label="Tiếng Việt" value={entry.definitionVi} /> : null}
-          {entry.exampleSentence ? <Field label="Ví dụ" value={entry.exampleSentence} /> : null}
-          {entry.articleTitle ? <Field label="Gặp trong bài" value={entry.articleTitle} /> : null}
+          {entry.definitionVi ? <Field label={L('Tiếng Việt', 'Vietnamese')} value={entry.definitionVi} /> : null}
+          {entry.exampleSentence ? <Field label={L('Ví dụ', 'Example')} value={entry.exampleSentence} /> : null}
+          {entry.articleTitle ? <Field label={L('Gặp trong bài', 'Found in')} value={entry.articleTitle} /> : null}
 
           <View className="mt-1 flex-row flex-wrap gap-2">
             {(['learning', 'familiar', 'known', 'ignored'] as WordStatusKind[]).map((s) => (
@@ -313,7 +330,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
                     status === s ? 'text-white' : 'text-muted',
                   ].join(' ')}
                 >
-                  {STATUS_LABEL[s]}
+                  {bi(STATUS_LABEL[s], locale)}
                 </Text>
               </Pressable>
             ))}
@@ -321,7 +338,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
             <View className="flex-1" />
 
             <Button
-              label="Xoá từ"
+              label={L('Xoá từ', 'Delete word')}
               variant="ghost"
               size="sm"
               onPress={() => removeWord(entry.id)}
@@ -343,6 +360,7 @@ function ReviewSession() {
 
   const [revealed, setRevealed] = useState(false);
   const [done, setDone] = useState(0);
+  const { L, locale } = useL();
 
   const current = dueCards[0];
 
@@ -351,10 +369,11 @@ function ReviewSession() {
       <Card className="mt-4 items-center py-10">
         <Icon name="check" size={32} color={color.success} />
         <Text className="mt-3 font-strong text-cardTitle text-ink">
-          Hết thẻ đến hạn. {done > 0 ? `Bạn vừa ôn ${done} thẻ.` : ''}
+          {L('Hết thẻ đến hạn.', 'No more cards due.')}{' '}
+          {done > 0 ? L(`Bạn vừa ôn ${done} thẻ.`, `You just reviewed ${done} ${done === 1 ? 'card' : 'cards'}.`) : ''}
         </Text>
         <Text className="mt-1 font-sans text-body text-muted">
-          FSRS sẽ hẹn bạn quay lại đúng lúc sắp quên.
+          {L('FSRS sẽ hẹn bạn quay lại đúng lúc sắp quên.', 'FSRS will bring you back right before you forget.')}
         </Text>
       </Card>
     );
@@ -378,8 +397,8 @@ function ReviewSession() {
   return (
     <Card className="mt-4">
       <View className="flex-row items-center justify-between">
-        <Badge label={CARD_KIND_LABEL[kind]} tone="accent" />
-        <Text className="font-mid text-label text-muted">Còn {dueCards.length} thẻ</Text>
+        <Badge label={bi(CARD_KIND_LABEL[kind], locale)} tone="accent" />
+        <Text className="font-mid text-label text-muted">{L(`Còn ${dueCards.length} thẻ`, `${dueCards.length} left`)}</Text>
       </View>
 
       <View className="mt-6 items-center">
@@ -432,7 +451,7 @@ function ReviewSession() {
         </View>
       ) : (
         <Button
-          label="Hiện đáp án"
+          label={L('Hiện đáp án', 'Show answer')}
           variant="outline"
           fullWidth
           className="mt-6"

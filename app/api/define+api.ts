@@ -1,4 +1,5 @@
 import { chatWithFallback } from '@/services/ai/fallback';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * POST /api/define  { word, sentence, mode? }
@@ -23,7 +24,7 @@ export async function POST(request: Request): Promise<Response> {
     const mode = body.mode ?? 'word';
 
     if (!target && mode !== 'sentence') {
-      return Response.json({ error: 'Thiếu từ cần tra.' }, { status: 400 });
+      return Response.json({ error: msg(request, 'Thiếu từ cần tra.', 'Missing the word to look up.') }, { status: 400 });
     }
 
     const prompt =
@@ -54,7 +55,7 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json(parseJson(text));
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Lỗi không xác định';
+    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
     return Response.json({ error: message }, { status: 502 });
   }
 }

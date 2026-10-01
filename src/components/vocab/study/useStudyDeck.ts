@@ -5,16 +5,18 @@ import { useVocabStore } from '@/store/useVocabStore';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { findTopicWordInfo } from '@/services/vocab/spaced-repetition';
+import { useL } from '@/i18n/useL';
 
 /** Bộ học theo slug; sổ từ dựng lại khi người dùng lưu thêm từ hoặc học trong chủ đề. */
 export function useStudyDeck(slug: string): StudyDeck | undefined {
+  const { L } = useL();
   const entries = useVocabStore((s) => s.entries);
   const stages = useTopicStudyStore((s) => s.stages);
   const custom = useCustomDeckStore((s) => (slug.startsWith(CUSTOM_PREFIX) ? s.decks[slug.slice(CUSTOM_PREFIX.length)] : undefined));
   return useMemo(() => {
     if (slug.startsWith(CUSTOM_PREFIX)) {
       return custom && custom.words.length >= 4
-        ? { slug, kind: 'custom' as const, name: 'My deck', nameVi: custom.name, blurb: `Bộ tự tạo · ${custom.words.length} từ`, words: custom.words }
+        ? { slug, kind: 'custom' as const, name: 'My deck', nameVi: custom.name, blurb: L(`Bộ tự tạo · ${custom.words.length} từ`, `Custom deck · ${custom.words.length} words`), words: custom.words }
         : undefined;
     }
     if (slug === NOTEBOOK_SLUG) {
@@ -42,7 +44,7 @@ export function useStudyDeck(slug: string): StudyDeck | undefined {
                   exampleSentence: info.example,
                   sourceSentence: info.example,
                   articleId: null,
-                  articleTitle: `Chủ đề: ${topicSlug}`,
+                  articleTitle: L(`Chủ đề: ${topicSlug}`, `Topic: ${topicSlug}`),
                   paragraphIndex: null,
                   isCollocation: false,
                   masteryPercent: Math.min(100, stage * 33),
@@ -56,5 +58,5 @@ export function useStudyDeck(slug: string): StudyDeck | undefined {
       return notebookDeck(Object.values(allEntries));
     }
     return getStaticDeck(slug);
-  }, [slug, entries, stages, custom]);
+  }, [slug, entries, stages, custom, L]);
 }

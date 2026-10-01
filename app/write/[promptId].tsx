@@ -9,6 +9,7 @@ import { getWritingPromptById } from '@/data/writing-repository';
 import { analyseDraft } from '@/services/writing/analyzer';
 import { useWritingStore } from '@/store/useWritingStore';
 import { color, paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Phòng viết.
@@ -30,9 +31,9 @@ import { color, paper } from '@/theme/tokens';
  * viết trên giấy hay chọn chữ có chân, nên có sẵn một lựa chọn như vậy là đủ.
  */
 const FONTS = [
-  { key: 'sans', label: 'Jakarta', family: 'PlusJakartaSans_400Regular' },
-  { key: 'serif', label: 'Có chân', family: Platform.select({ web: 'Georgia, serif', default: 'serif' }) },
-  { key: 'mono', label: 'Đơn cách', family: Platform.select({ web: 'ui-monospace, monospace', default: 'monospace' }) },
+  { key: 'sans', label: 'Jakarta', labelEn: 'Jakarta', family: 'PlusJakartaSans_400Regular' },
+  { key: 'serif', label: 'Có chân', labelEn: 'Serif', family: Platform.select({ web: 'Georgia, serif', default: 'serif' }) },
+  { key: 'mono', label: 'Đơn cách', labelEn: 'Mono', family: Platform.select({ web: 'ui-monospace, monospace', default: 'monospace' }) },
 ] as const;
 
 const SIZES = [15, 16, 18, 20] as const;
@@ -51,6 +52,7 @@ export default function WritingRoomScreen() {
   const [fontKey, setFontKey] = useState<(typeof FONTS)[number]['key']>('sans');
   const [fontSize, setFontSize] = useState<number>(16);
   const startedAt = useRef<number | null>(null);
+  const { L, en } = useL();
 
   // Đồng hồ chỉ chạy khi người học bấm bắt đầu: mở trang ra để đọc đề mà đã bị
   // tính giờ thì lần luyện nào cũng bị hụt mất một hai phút.
@@ -76,15 +78,15 @@ export default function WritingRoomScreen() {
 
   if (!prompt) {
     return (
-      <TaskShell backHref="/write" backLabel="Về kho đề" title="Không tìm thấy đề này" icon="pencil">
+      <TaskShell backHref="/write" backLabel={L('Về kho đề', 'Back to prompts')} title={L('Không tìm thấy đề này', "Couldn't find this prompt")} icon="pencil">
         <PaperCard className="max-w-[520px]">
           <Text className="font-sans text-body text-paper-body">
-            Đề bạn vừa mở không còn trong kho. Quay lại danh sách để chọn đề khác.
+            {L('Đề bạn vừa mở không còn trong kho. Quay lại danh sách để chọn đề khác.', "This prompt is no longer in the bank. Go back to the list and pick another.")}
           </Text>
           <Button
             className="mt-4"
             variant="brand"
-            label="Về kho đề"
+            label={L('Về kho đề', 'Back to prompts')}
             onPress={() => router.replace('/write/tests')}
           />
         </PaperCard>
@@ -112,8 +114,8 @@ export default function WritingRoomScreen() {
   return (
     <TaskShell
       backHref="/write"
-      backLabel="Quay lại kho đề"
-      title="Phòng viết"
+      backLabel={L('Quay lại kho đề', 'Back to prompts')}
+      title={L('Phòng viết', 'Writing room')}
       subtitle={isTask1 ? 'Task 1 · Academic Writing' : 'Task 2 · Essay'}
       icon="pencil"
       right={
@@ -128,7 +130,7 @@ export default function WritingRoomScreen() {
           <Button
             variant="onDark"
             size="sm"
-            label={running ? 'Tạm dừng' : 'Tính giờ'}
+            label={running ? L('Tạm dừng', 'Pause') : L('Tính giờ', 'Start timer')}
             onPress={() => setRunning((r) => !r)}
           />
         </View>
@@ -139,7 +141,7 @@ export default function WritingRoomScreen() {
         <View className="lg:w-[36%]">
           <PaperCard>
             <View className="flex-row items-center justify-between">
-              <Text className="font-heavy text-cardTitle text-paper-ink">Đề bài</Text>
+              <Text className="font-heavy text-cardTitle text-paper-ink">{L('Đề bài', 'Prompt')}</Text>
               <Text className="font-semi text-label text-paper-muted">
                 {isTask1 ? 'Task 1 · Academic' : 'Task 2 · Essay'}
               </Text>
@@ -163,12 +165,12 @@ export default function WritingRoomScreen() {
                 {isTask1 ? 'Task 1 · Academic' : 'Task 2'}
               </Text>
               <Text className="font-sans text-label text-paper-muted">
-                Tối thiểu <Text className="font-strong text-paper-ink">{prompt.minWords} từ</Text>
+                {L('Tối thiểu', 'Minimum')} <Text className="font-strong text-paper-ink">{L(`${prompt.minWords} từ`, `${prompt.minWords} words`)}</Text>
               </Text>
               <Text className="font-sans text-label text-paper-muted">
-                Gợi ý{' '}
+                {L('Gợi ý', 'Suggested')}{' '}
                 <Text className="font-strong text-paper-ink">
-                  {Math.round(prompt.timeLimitSeconds / 60)} phút
+                  {L(`${Math.round(prompt.timeLimitSeconds / 60)} phút`, `${Math.round(prompt.timeLimitSeconds / 60)} min`)}
                 </Text>
               </Text>
             </View>
@@ -176,25 +178,25 @@ export default function WritingRoomScreen() {
 
           {analysis ? (
             <PaperCard className="mt-4">
-              <Text className="font-heavy text-cardTitle text-paper-ink">Phân tích nhanh</Text>
+              <Text className="font-heavy text-cardTitle text-paper-ink">{L('Phân tích nhanh', 'Quick analysis')}</Text>
               <Text className="mt-1 font-sans text-label text-paper-muted">
-                Chạy ngay trên máy, không dùng AI.
+                {L('Chạy ngay trên máy, không dùng AI.', 'Runs on your device, no AI.')}
               </Text>
 
               <View className="mt-3 rounded-panel bg-brand-tint p-3">
-                <Text className="font-sans text-label text-paper-muted">Ước lượng band</Text>
+                <Text className="font-sans text-label text-paper-muted">{L('Ước lượng band', 'Estimated band')}</Text>
                 {analysis.estimate ? (
                   <>
                     <Text className="font-heavy text-stat" style={{ color: paper.brandMid }}>
                       {analysis.estimate.low.toFixed(1)}–{analysis.estimate.high.toFixed(1)}
                     </Text>
                     <Text className="font-sans text-label text-paper-muted">
-                      Chỉ là ước lượng từ cấu trúc bài, không phải band thật.
+                      {L('Chỉ là ước lượng từ cấu trúc bài, không phải band thật.', 'Just an estimate from your structure, not a real band.')}
                     </Text>
                   </>
                 ) : (
                   <Text className="font-sans text-label text-paper-muted">
-                    Viết thêm đã rồi mới ước lượng được — bài còn quá ngắn để nói gì.
+                    {L('Viết thêm đã rồi mới ước lượng được — bài còn quá ngắn để nói gì.', 'Write a bit more first — too short to estimate yet.')}
                   </Text>
                 )}
               </View>
@@ -202,7 +204,7 @@ export default function WritingRoomScreen() {
               <View className="mt-3 gap-2">
                 {analysis.hints.length === 0 ? (
                   <Text className="font-sans text-body text-success-ink">
-                    Chưa phát hiện vấn đề nào về cấu trúc.
+                    {L('Chưa phát hiện vấn đề nào về cấu trúc.', 'No structural issues found yet.')}
                   </Text>
                 ) : (
                   analysis.hints.map((h) => (
@@ -228,18 +230,18 @@ export default function WritingRoomScreen() {
         <View className="lg:flex-1">
           <PaperCard padded={false}>
             <View className="flex-row flex-wrap items-center justify-between gap-2 px-5 pt-5">
-              <Text className="font-heavy text-cardTitle text-paper-ink">Bài làm</Text>
+              <Text className="font-heavy text-cardTitle text-paper-ink">{L('Bài làm', 'Your answer')}</Text>
               <View className="flex-row items-center gap-3">
                 <Text
                   className="font-strong text-label"
                   style={{ color: wordCount < prompt.minWords ? color.danger : paper.brandMid }}
                 >
-                  {wordCount} / {prompt.minWords} từ
+                  {wordCount} / {prompt.minWords} {L('từ', 'words')}
                 </Text>
                 <Button
                   variant="brand"
                   size="sm"
-                  label="Nộp bài"
+                  label={L('Nộp bài', 'Submit')}
                   iconRight="check"
                   disabled={text.trim() === ''}
                   onPress={onSubmit}
@@ -269,7 +271,7 @@ export default function WritingRoomScreen() {
                         color: fontKey === f.key ? '#FFFFFF' : paper.muted,
                       }}
                     >
-                      {f.label}
+                      {en ? f.labelEn : f.label}
                     </Text>
                   </Pressable>
                 ))}
@@ -277,7 +279,7 @@ export default function WritingRoomScreen() {
 
               <View className="flex-row items-center gap-1.5">
                 <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
-                  Cỡ chữ
+                  {L('Cỡ chữ', 'Size')}
                 </Text>
                 {SIZES.map((s) => (
                   <Pressable
@@ -304,7 +306,10 @@ export default function WritingRoomScreen() {
               onChangeText={onChange}
               multiline
               textAlignVertical="top"
-              placeholder={`Viết bài ${isTask1 ? 'Task 1' : 'Task 2'} của bạn tại đây (tối thiểu ${prompt.minWords} từ)…`}
+              placeholder={L(
+                `Viết bài ${isTask1 ? 'Task 1' : 'Task 2'} của bạn tại đây (tối thiểu ${prompt.minWords} từ)…`,
+                `Write your ${isTask1 ? 'Task 1' : 'Task 2'} answer here (at least ${prompt.minWords} words)…`,
+              )}
               placeholderTextColor={paper.muted}
               className="min-h-[460px] bg-paper px-5 py-4 text-paper-ink"
               style={{ fontFamily, fontSize, lineHeight: fontSize * 1.75 }}
@@ -312,9 +317,12 @@ export default function WritingRoomScreen() {
 
             <View className="flex-row justify-between border-t border-brand-soft px-5 py-3">
               <Text className="font-sans text-label text-paper-muted">
-                {analysis?.paragraphCount ?? 0} đoạn · {analysis?.sentenceCount ?? 0} câu
+                {L(
+                  `${analysis?.paragraphCount ?? 0} đoạn · ${analysis?.sentenceCount ?? 0} câu`,
+                  `${analysis?.paragraphCount ?? 0} paragraphs · ${analysis?.sentenceCount ?? 0} sentences`,
+                )}
               </Text>
-              <Text className="font-sans text-label text-paper-muted">Bản nháp tự lưu</Text>
+              <Text className="font-sans text-label text-paper-muted">{L('Bản nháp tự lưu', 'Draft autosaves')}</Text>
             </View>
           </PaperCard>
         </View>

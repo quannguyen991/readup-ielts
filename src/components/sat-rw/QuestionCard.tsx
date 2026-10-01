@@ -7,6 +7,7 @@ import { Icon, PaperCard } from '@/components/ui';
 import type { SatRwQuestion } from '@/data/sat-rw-repository';
 import { WordNotes } from '@/components/sat-rw/WordNotes';
 import { color, paper } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
 
 /**
  * Một câu SAT R&W: đoạn văn, câu hỏi, bốn phương án, và lời giải hiện ngay sau
@@ -43,6 +44,7 @@ export function QuestionCard({
   showSolution?: boolean;
 }) {
   const answered = picked !== null;
+  const { L } = useL();
 
   return (
     <PaperCard>
@@ -78,7 +80,7 @@ export function QuestionCard({
               key={i}
               accessibilityRole="button"
               aria-selected={isPicked} aria-disabled={answered || out}
-              accessibilityLabel={out ? `${'ABCD'[i]}. ${option} — Cú đã loại` : undefined}
+              accessibilityLabel={out ? L(`${'ABCD'[i]}. ${option} — Cú đã loại`, `${'ABCD'[i]}. ${option} — ruled out by the Owl`) : undefined}
               disabled={answered || out}
               onPress={() => onPick(i)}
               className="flex-row items-start gap-3 rounded-panel border px-3.5 py-3"
@@ -122,7 +124,9 @@ export function QuestionCard({
               strokeWidth={2.2}
             />
             <Text className="font-strong text-body text-paper-ink">
-              {picked === question.answerIndex ? 'Đúng rồi' : `Đáp án đúng là ${'ABCD'[question.answerIndex]}`}
+              {picked === question.answerIndex
+                ? L('Đúng rồi', 'Correct')
+                : L(`Đáp án đúng là ${'ABCD'[question.answerIndex]}`, `The correct answer is ${'ABCD'[question.answerIndex]}`)}
             </Text>
           </View>
           <Text className="mt-1.5 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>

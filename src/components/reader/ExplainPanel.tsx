@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { Icon } from '@/components/ui';
 import { color } from '@/theme/tokens';
+import { currentLocale, pick, useL } from '@/i18n/useL';
 
 /**
  * Giải chi tiết MỘT câu, do AI viết, mở cho gói trả phí.
@@ -27,6 +28,7 @@ export function ExplainPanel({
   paid: boolean;
   fetchExplanation: () => Promise<string>;
 }) {
+  const { L } = useL();
   const [state, setState] = useState<'idle' | 'loading' | 'done' | 'failed'>('idle');
   const [text, setText] = useState('');
 
@@ -39,9 +41,12 @@ export function ExplainPanel({
       >
         <Icon name="lock" size={14} color={color.muted} />
         <Text className="flex-1 font-sans text-label text-muted">
-          Giải chi tiết từng bước cho đúng lượt làm của bạn — có ở gói trả phí.
+          {L(
+            'Giải chi tiết từng bước cho đúng lượt làm của bạn — có ở gói trả phí.',
+            'Step-by-step explanations tailored to your attempt — available on paid plans.',
+          )}
         </Text>
-        <Text className="font-semi text-label text-primary-700">Xem gói</Text>
+        <Text className="font-semi text-label text-primary-700">{L('Xem gói', 'See plans')}</Text>
       </Pressable>
     );
   }
@@ -60,7 +65,7 @@ export function ExplainPanel({
               })
               .catch((err: unknown) => {
                 // Nói ra lỗi thật: người học cần biết nên bấm lại hay nên thôi.
-                setText(err instanceof Error ? err.message : 'Lỗi không xác định');
+                setText(err instanceof Error ? err.message : pick(currentLocale(), 'Lỗi không xác định', 'Unknown error'));
                 setState('failed');
               });
           }}
@@ -68,7 +73,7 @@ export function ExplainPanel({
         >
           <Icon name="sparkle" size={14} color={color.primary} />
           <Text className="font-semi text-label text-primary-700">
-            {state === 'failed' ? 'Thử lại' : 'Giải chi tiết bằng AI'}
+            {state === 'failed' ? L('Thử lại', 'Try again') : L('Giải chi tiết bằng AI', 'Explain in detail with AI')}
           </Text>
         </Pressable>
         {state === 'failed' ? (
@@ -82,7 +87,7 @@ export function ExplainPanel({
     return (
       <View className="mt-3 flex-row items-center gap-2">
         <ActivityIndicator size="small" color={color.primary} />
-        <Text className="font-sans text-label text-muted">Đang giải…</Text>
+        <Text className="font-sans text-label text-muted">{L('Đang giải…', 'Explaining…')}</Text>
       </View>
     );
   }
@@ -92,7 +97,7 @@ export function ExplainPanel({
       <View className="flex-row items-center gap-2">
         <Icon name="sparkle" size={14} color={color.primary} />
         <Text className="font-heavy text-label text-primary-700" style={{ letterSpacing: 0.6 }}>
-          GIẢI CHI TIẾT
+          {L('GIẢI CHI TIẾT', 'DETAILED EXPLANATION')}
         </Text>
       </View>
 

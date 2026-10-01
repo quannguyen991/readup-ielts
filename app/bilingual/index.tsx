@@ -20,6 +20,8 @@ import {
 import { stripInline } from '@/lib/inlineMarkup';
 import { useReadingFonts } from '@/lib/readingFonts';
 import { color } from '@/theme/tokens';
+import { useL } from '@/i18n/useL';
+import { bilingualTagline, bilingualTopic } from '@/components/bilingual/labels-en';
 
 /**
  * Cổng "Đọc báo song ngữ".
@@ -87,21 +89,25 @@ export default function BilingualPortalScreen() {
 /* ====================================================================== */
 
 function PortalView() {
+  const { L } = useL();
   const stats = bilingualStats();
   return (
     <View>
       <Appear>
         <LightHero
         scene="home"
-          badge="BILINGUAL PRESS · MIỄN PHÍ"
-          line1="Đọc báo"
-          line2="song ngữ"
-          subtitle={`${stats.articles} bài báo và bài phân tích, tiếng Anh nguyên văn đặt cạnh bản dịch. Rê chuột vào từ để xem nghĩa, ví dụ và từ đồng nghĩa.`}
+          badge={L('BILINGUAL PRESS · MIỄN PHÍ', 'BILINGUAL PRESS · FREE')}
+          line1={L('Đọc báo', 'Bilingual')}
+          line2={L('song ngữ', 'news reading')}
+          subtitle={L(
+            `${stats.articles} bài báo và bài phân tích, tiếng Anh nguyên văn đặt cạnh bản dịch. Rê chuột vào từ để xem nghĩa, ví dụ và từ đồng nghĩa.`,
+            `${stats.articles} news stories and analyses, original English side by side with a Vietnamese translation. Hover over a word to see its meaning, examples and synonyms.`,
+          )}
           footer={
             <>
-              <HeroStat value={String(stats.articles)} label="bài báo" />
-              <HeroStat value={String(BILINGUAL_OUTLETS.length)} label="tờ báo" />
-              <HeroStat value="100%" label="miễn phí" />
+              <HeroStat value={String(stats.articles)} label={L('bài báo', 'articles')} />
+              <HeroStat value={String(BILINGUAL_OUTLETS.length)} label={L('tờ báo', 'outlets')} />
+              <HeroStat value="100%" label={L('miễn phí', 'free')} />
             </>
           }
         />
@@ -119,8 +125,10 @@ function PortalView() {
 
       <Appear index={6}>
         <Text className="font-sans" style={{ marginTop: 22, fontSize: 13, lineHeight: 20, color: INK, opacity: 0.75 }}>
-          Chỉ đăng lại bài từ những nơi cho phép dùng lại toàn văn (public domain hoặc Creative Commons). Mỗi bài có link bài gốc và ghi
-          giấy phép. Bài của Band 9 Analysis do Band 9 tự viết.
+          {L(
+            'Chỉ đăng lại bài từ những nơi cho phép dùng lại toàn văn (public domain hoặc Creative Commons). Mỗi bài có link bài gốc và ghi giấy phép. Bài của Band 9 Analysis do Band 9 tự viết.',
+            'We only republish from sources that allow full-text reuse (public domain or Creative Commons). Every article links to the original and states its licence. Band 9 Analysis pieces are written by Band 9.',
+          )}
         </Text>
       </Appear>
     </View>
@@ -140,11 +148,12 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
   const levels = BILINGUAL_LEVELS.filter((l) => articles.some((x) => x.level === l));
   const levelSpan = levels.length > 1 ? `${levels[0]} → ${levels[levels.length - 1]}` : (levels[0] ?? '');
   const [hover, setHover] = useState(false);
+  const { L, en } = useL();
 
   return (
     <PressScale
       accessibilityRole="link"
-      accessibilityLabel={`Mở ${outlet.name}`}
+      accessibilityLabel={L(`Mở ${outlet.name}`, `Open ${outlet.name}`)}
       onPress={() => router.setParams({ s: outlet.key })}
       style={{ height: '100%' }}
     >
@@ -166,17 +175,17 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
         <View className="px-5 pb-4 pt-5" style={{ backgroundColor: outlet.cover }}>
           <View className="flex-row items-center justify-between gap-3">
             <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.4, color: outlet.ink, opacity: 0.75 }}>
-              {featured ? 'NÊN ĐỌC TRƯỚC' : outlet.license.toUpperCase()}
+              {featured ? L('NÊN ĐỌC TRƯỚC', 'START HERE') : outlet.license.toUpperCase()}
             </Text>
             <Text className="font-strong" style={{ fontSize: 12, color: outlet.ink, opacity: 0.85 }}>
-              {count} bài · {levelSpan}
+              {L(`${count} bài`, `${count} articles`)} · {levelSpan}
             </Text>
           </View>
           <Text className="mt-3 font-heavy" style={{ fontSize: 28, lineHeight: 32, color: outlet.ink }} numberOfLines={1}>
             {outlet.name}
           </Text>
           <Text className="mt-1 font-sans" style={{ fontSize: 14, lineHeight: 20, color: outlet.ink, opacity: 0.85 }} numberOfLines={2}>
-            {outlet.tagline}
+            {bilingualTagline(outlet.key, outlet.tagline, en)}
           </Text>
         </View>
 
@@ -189,9 +198,12 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
                 <Text className="font-strong" style={{ fontSize: 14.5, lineHeight: 20, color: INK }} numberOfLines={1}>
                   {stripInline(h.titleEn)}
                 </Text>
-                <Text className="font-sans" style={{ fontSize: 12.5, color: MUTED }} numberOfLines={1}>
-                  {stripInline(h.titleVi)}
-                </Text>
+                {/* Giao diện English: chỉ tiêu đề gốc, bỏ dòng dịch tiếng Việt. */}
+                {en ? null : (
+                  <Text className="font-sans" style={{ fontSize: 12.5, color: MUTED }} numberOfLines={1}>
+                    {stripInline(h.titleVi)}
+                  </Text>
+                )}
               </View>
               <Text className="font-semi" style={{ fontSize: 11.5, color: MUTED }}>
                 {h.level}
@@ -202,7 +214,7 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
 
         <View className="flex-row items-center justify-between px-5 pb-4">
           <Text className="font-semi" style={{ fontSize: 13, color: MUTED }}>
-            Xem cả {count} bài
+            {L(`Xem cả ${count} bài`, `See all ${count} articles`)}
           </Text>
           <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: hover ? outlet.cover : '#FBF7F1' }}>
             <Icon name="arrow-right" size={17} color={hover ? outlet.ink : INK} strokeWidth={2.2} />
@@ -222,6 +234,7 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
   const [level, setLevel] = useState<string>('all');
   const [topic, setTopic] = useState<string>('all');
   const [page, setPage] = useState(0);
+  const { L, en } = useL();
 
   const all = useMemo(() => articlesOfOutlet(outlet.key), [outlet.key]);
   const levels = BILINGUAL_LEVELS.filter((l) => all.some((a) => a.level === l));
@@ -248,7 +261,7 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
       >
         <Icon name="chevron-left" size={16} color={INK} strokeWidth={2.2} />
         <Text className="font-semi" style={{ fontSize: 14, color: INK }}>
-          Tất cả tờ báo
+          {L('Tất cả tờ báo', 'All outlets')}
         </Text>
       </Pressable>
 
@@ -265,12 +278,12 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
               {outlet.name}
             </Text>
             <Text className="mt-0.5 font-sans" style={{ fontSize: 15, lineHeight: 22, color: MUTED }}>
-              {outlet.tagline}
+              {bilingualTagline(outlet.key, outlet.tagline, en)}
             </Text>
           </View>
           <View className="flex-row flex-wrap gap-2">
-            <StatPill value={String(all.length)} label="bài" />
-            <StatPill value={levels.length > 1 ? `${levels[0]} → ${levels[levels.length - 1]}` : (levels[0] ?? '—')} label="trình độ" />
+            <StatPill value={String(all.length)} label={L('bài', 'articles')} />
+            <StatPill value={levels.length > 1 ? `${levels[0]} → ${levels[levels.length - 1]}` : (levels[0] ?? '—')} label={L('trình độ', 'level')} />
           </View>
         </View>
       </Appear>
@@ -278,26 +291,26 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
       {/* sắp xếp + lọc */}
       <View className="mt-5 flex-row flex-wrap items-center gap-3">
         <View className="flex-row rounded-pill p-1" style={{ backgroundColor: 'rgba(255,255,255,0.7)' }}>
-          <SortTab label="Mới nhất" active={sort === 'new'} onPress={() => { setSort('new'); setPage(0); }} />
-          <SortTab label="Dễ trước" active={sort === 'easy'} onPress={() => { setSort('easy'); setPage(0); }} />
-          <SortTab label="Ngắn trước" active={sort === 'short'} onPress={() => { setSort('short'); setPage(0); }} />
+          <SortTab label={L('Mới nhất', 'Newest')} active={sort === 'new'} onPress={() => { setSort('new'); setPage(0); }} />
+          <SortTab label={L('Dễ trước', 'Easiest')} active={sort === 'easy'} onPress={() => { setSort('easy'); setPage(0); }} />
+          <SortTab label={L('Ngắn trước', 'Shortest')} active={sort === 'short'} onPress={() => { setSort('short'); setPage(0); }} />
         </View>
         <Text className="font-semi text-label" style={{ color: INK, opacity: 0.7 }}>
-          {list.length} bài khớp
+          {L(`${list.length} bài khớp`, `${list.length} matching`)}
         </Text>
       </View>
 
       <FilterRow>
-        <Chip label="Mọi trình độ" active={level === 'all'} onPress={() => { setLevel('all'); setPage(0); }} />
+        <Chip label={L('Mọi trình độ', 'All levels')} active={level === 'all'} onPress={() => { setLevel('all'); setPage(0); }} />
         {levels.map((l) => (
           <Chip key={l} label={l} active={level === l} onPress={() => { setLevel(level === l ? 'all' : l); setPage(0); }} />
         ))}
       </FilterRow>
       {topics.length > 1 ? (
         <FilterRow>
-          <Chip label="Mọi chủ đề" active={topic === 'all'} onPress={() => { setTopic('all'); setPage(0); }} />
+          <Chip label={L('Mọi chủ đề', 'All topics')} active={topic === 'all'} onPress={() => { setTopic('all'); setPage(0); }} />
           {topics.map((t) => (
-            <Chip key={t} label={t} active={topic === t} onPress={() => { setTopic(topic === t ? 'all' : t); setPage(0); }} />
+            <Chip key={t} label={bilingualTopic(t, en)} active={topic === t} onPress={() => { setTopic(topic === t ? 'all' : t); setPage(0); }} />
           ))}
         </FilterRow>
       ) : null}
@@ -314,7 +327,7 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
             </Grid>
           ) : (
             <Text className="font-sans" style={{ fontSize: 15, color: INK }}>
-              Không có bài nào khớp bộ lọc — thử bỏ bớt một điều kiện.
+              {L('Không có bài nào khớp bộ lọc — thử bỏ bớt một điều kiện.', 'No articles match these filters — try removing one.')}
             </Text>
           )}
         </CrossFade>
@@ -327,23 +340,24 @@ function OutletView({ outlet }: { outlet: BilingualOutlet }) {
 
 function ArticleCard({ article, outlet }: { article: BilingualArticle; outlet: BilingualOutlet }) {
   const source = article.source;
+  const { L, en } = useL();
   return (
     <LessonCard
       number={article.order}
-      eyebrow={`${article.topic.toUpperCase()}`}
+      eyebrow={bilingualTopic(article.topic, en).toUpperCase()}
       level={levelKey(article.level)}
-      levelLabel={`${article.level} · ${article.estMinutes} phút đọc`}
+      levelLabel={L(`${article.level} · ${article.estMinutes} phút đọc`, `${article.level} · ${article.estMinutes} min read`)}
       icon="book"
       title={stripInline(article.titleEn)}
-      blurb={stripInline(article.titleVi)}
+      blurb={stripInline(en ? article.standfirstEn : article.titleVi)}
       meta={[
-        { icon: 'list', label: `${article.wordCount} từ` },
-        { icon: 'note', label: `${article.paragraphs.length} đoạn` },
+        { icon: 'list', label: L(`${article.wordCount} từ`, `${article.wordCount} words`) },
+        { icon: 'note', label: L(`${article.paragraphs.length} đoạn`, `${article.paragraphs.length} paragraphs`) },
       ]}
       done={0}
       visual={(tone, active) => <BilingualLines pairs={article.paragraphs} tone={tone} active={active} />}
       onPress={() => router.push(`/bilingual/${article.id}` as never)}
-      secondary={source ? { label: `Bài gốc · ${outlet.name}`, onPress: () => void Linking.openURL(source.url) } : undefined}
+      secondary={source ? { label: L(`Bài gốc · ${outlet.name}`, `Original · ${outlet.name}`), onPress: () => void Linking.openURL(source.url) } : undefined}
     />
   );
 }

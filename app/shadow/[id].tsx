@@ -28,13 +28,21 @@ import { useGameStore } from '@/store/useGameStore';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { Badge as BadgeSticker, type BadgeIcon } from '@/components/illust/Cute';
 import { CuteMic, CuteTrophy, Motion } from '@/components/illust/CuteMore';
+import { bi, useL, type Bi } from '@/i18n/useL';
 
 const AMBER = '#D97706';
-const RATES = [
-  { value: 0.7, label: 'Chậm' },
-  { value: 0.85, label: 'Vừa' },
-  { value: 1, label: 'Thường' },
-] as const;
+const RATES: readonly { value: number; label: Bi }[] = [
+  { value: 0.7, label: { vi: 'Chậm', en: 'Slow' } },
+  { value: 0.85, label: { vi: 'Vừa', en: 'Medium' } },
+  { value: 1, label: { vi: 'Thường', en: 'Normal' } },
+];
+
+/** Nhãn mức điểm khi giao diện ở tiếng Anh (bản tiếng Việt: `scoreBand` trong services/shadow/align). */
+const BAND_LABEL_EN: Record<'good' | 'ok' | 'low', string> = {
+  good: 'Very clear',
+  ok: 'Pretty good',
+  low: 'Try that again',
+};
 
 const EQ_ID = 'readup-shadow-eq';
 
@@ -54,6 +62,7 @@ function ensureEqKeyframes() {
  * Điểm cao nhất của từng câu được giữ lại (`useShadowStore`).
  */
 export default function ShadowLesson() {
+  const { L, locale } = useL();
   const { id = '' } = useLocalSearchParams<{ id: string }>();
   const meta = useMemo(() => getLibraryAudio(id), [id]);
   const sentences = useMemo(() => {
@@ -126,13 +135,25 @@ export default function ShadowLesson() {
     if (capRef.current) clearTimeout(capRef.current);
     const text = heardRef.current;
     if (reason === 'denied') {
-      setNotice('Trình duyệt chưa cho dùng micro. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ, cho phép Micro rồi thử lại.');
+      setNotice(
+        L(
+          'Trình duyệt chưa cho dùng micro. Bấm biểu tượng ổ khoá cạnh thanh địa chỉ, cho phép Micro rồi thử lại.',
+          "Your browser hasn't allowed the microphone yet. Click the lock icon next to the address bar, allow Microphone, then try again.",
+        ),
+      );
       setPhase('idle');
       setLive(null);
       return;
     }
     if (!text) {
-      setNotice(reason === 'no-speech' ? 'Chưa nghe thấy gì — bấm micro rồi đọc to, rõ hơn một chút nhé.' : 'Micro gặp trục trặc. Thử lại nhé.');
+      setNotice(
+        reason === 'no-speech'
+          ? L(
+              'Chưa nghe thấy gì — bấm micro rồi đọc to, rõ hơn một chút nhé.',
+              "Didn't hear anything — tap the mic and read a little louder and clearer.",
+            )
+          : L('Micro gặp trục trặc. Thử lại nhé.', 'The mic ran into a problem. Please try again.'),
+      );
       setPhase('idle');
       setLive(null);
       return;
@@ -178,7 +199,7 @@ export default function ShadowLesson() {
       },
     });
     if (!l) {
-      setNotice('Không mở được micro trên trình duyệt này.');
+      setNotice(L('Không mở được micro trên trình duyệt này.', "Couldn't open the mic in this browser."));
       setLive(null);
       return;
     }
@@ -232,7 +253,7 @@ export default function ShadowLesson() {
 
   if (!meta || sentences.length === 0) {
     return (
-      <StudyFrame backHref="/shadow" title="Đọc theo">
+      <StudyFrame backHref="/shadow" title={L('Đọc theo', 'Shadowing')}>
         <StudyCard>
           <View aria-hidden className="mb-3">
             <Motion kind="wobble">
@@ -241,8 +262,8 @@ export default function ShadowLesson() {
               </Sticker>
             </Motion>
           </View>
-          <Text className="font-strong text-cardTitle text-ink">Không mở được bài này.</Text>
-          <Button className="mt-4 self-start" label="Chọn bài khác" onPress={() => router.replace('/shadow' as never)} />
+          <Text className="font-strong text-cardTitle text-ink">{L('Không mở được bài này.', "Couldn't open this lesson.")}</Text>
+          <Button className="mt-4 self-start" label={L('Chọn bài khác', 'Pick another lesson')} onPress={() => router.replace('/shadow' as never)} />
         </StudyCard>
       </StudyFrame>
     );
@@ -254,14 +275,17 @@ export default function ShadowLesson() {
   return (
     <StudyFrame
       backHref="/shadow"
-      title="Đọc theo"
+      title={L('Đọc theo', 'Shadowing')}
       battle
       right={
         <Text className="font-strong text-body" style={{ color: color.primary }}>
           {index + 1}/{sentences.length}
         </Text>
       }
-      footer={`${meta.program} · ${meta.level} · đã đọc ${done}/${sentences.length} câu`}
+      footer={L(
+        `${meta.program} · ${meta.level} · đã đọc ${done}/${sentences.length} câu`,
+        `${meta.program} · ${meta.level} · ${done}/${sentences.length} sentences read`,
+      )}
     >
       <Dots scores={keys.map((k) => best?.[k])} index={index} onPick={go} />
 
@@ -292,7 +316,7 @@ export default function ShadowLesson() {
               <Button
                 variant={speaking ? 'brand' : 'outline'}
                 iconLeft="volume"
-                label={speaking ? 'Đang đọc mẫu…' : 'Nghe mẫu'}
+                label={speaking ? L('Đang đọc mẫu…', 'Playing model…') : L('Nghe mẫu', 'Hear model')}
                 onPress={speaking ? stopVoice : playModel}
               />
               <View className="flex-row rounded-pill p-1" style={{ backgroundColor: '#F9F6F1' }}>
@@ -300,13 +324,13 @@ export default function ShadowLesson() {
                   const on = r.value === rate;
                   return (
                     <Pressable
-                      key={r.label}
+                      key={r.value}
                       onPress={() => setRate(r.value)}
                       className="rounded-pill px-3 py-1.5"
                       style={{ backgroundColor: on ? '#FFFFFF' : 'transparent' }}
                     >
                       <Text className="font-semi text-label" style={{ color: on ? color.primary : '#64748B' }}>
-                        {r.label}
+                        {bi(r.label, locale)}
                       </Text>
                     </Pressable>
                   );
@@ -318,7 +342,9 @@ export default function ShadowLesson() {
               <View className="mt-6 items-center">
                 <MicButton listening={phase === 'listening'} onPress={phase === 'listening' ? stopMic : startMic} />
                 <Text className="mt-2 font-sans text-label text-muted">
-                  {phase === 'listening' ? 'Đang nghe… đọc xong máy tự dừng (hoặc bấm để dừng)' : 'Bấm micro rồi đọc to câu trên · phím M'}
+                  {phase === 'listening'
+                    ? L('Đang nghe… đọc xong máy tự dừng (hoặc bấm để dừng)', 'Listening… stops automatically when you finish (or tap to stop)')
+                    : L('Bấm micro rồi đọc to câu trên · phím M', 'Tap the mic and read the sentence aloud · key M')}
                 </Text>
                 {phase === 'listening' && heard ? (
                   <Text className="mt-2 text-center font-sans text-body" style={{ color: '#475569' }}>
@@ -329,7 +355,10 @@ export default function ShadowLesson() {
             ) : (
               <View className="mt-6 rounded-2xl p-4" style={{ backgroundColor: '#FFF7ED' }}>
                 <Text className="font-sans text-body" style={{ color: '#9A3412', lineHeight: 22 }}>
-                  Trình duyệt này chưa có bộ nhận giọng nên máy không chấm được. Bạn vẫn nghe mẫu và đọc theo như bình thường; muốn máy tô từng từ thì mở bằng Chrome hoặc Edge trên máy tính.
+                  {L(
+                    'Trình duyệt này chưa có bộ nhận giọng nên máy không chấm được. Bạn vẫn nghe mẫu và đọc theo như bình thường; muốn máy tô từng từ thì mở bằng Chrome hoặc Edge trên máy tính.',
+                    "This browser has no speech recognition, so it can't score you. You can still hear the model and read along; to get word-by-word colouring, open this in Chrome or Edge on a computer.",
+                  )}
                 </Text>
               </View>
             )}
@@ -345,19 +374,25 @@ export default function ShadowLesson() {
             {phase === 'result' && result ? (
               <ResultPanel result={result} heard={heard} tokens={tokens} onRetry={startMic} onNext={next} last={index + 1 >= sentences.length} />
             ) : !supported ? (
-              <Button className="mt-5 self-end" label={index + 1 >= sentences.length ? 'Xong bài' : 'Câu tiếp'} iconRight="arrow-right" onPress={next} />
+              <Button className="mt-5 self-end" label={index + 1 >= sentences.length ? L('Xong bài', 'Finish') : L('Câu tiếp', 'Next sentence')} iconRight="arrow-right" onPress={next} />
             ) : null}
           </StudyCard>
         )}
       </CrossFade>
 
       <Text className="mt-4 text-center font-sans text-label text-muted">
-        Space: nghe mẫu · M: đọc · Enter: câu tiếp · ← →: đổi câu
+        {L(
+          'Space: nghe mẫu · M: đọc · Enter: câu tiếp · ← →: đổi câu',
+          'Space: hear model · M: read · Enter: next sentence · ← →: switch sentence',
+        )}
       </Text>
       <Text className="mt-2 text-center font-sans text-label text-muted" style={{ lineHeight: 19 }}>
-        Lời bài: {AUDIO_NGUON.ten} ({AUDIO_NGUON.trang}), phạm vi công cộng.{' '}
+        {L(
+          `Lời bài: ${AUDIO_NGUON.ten} (${AUDIO_NGUON.trang}), phạm vi công cộng.`,
+          `Transcript: ${AUDIO_NGUON.ten} (${AUDIO_NGUON.trang}), public domain.`,
+        )}{' '}
         <Text className="font-semi text-primary-600" onPress={() => router.push(`/sentence/listen?a=${meta.id}` as never)}>
-          Nghe cả bài gốc
+          {L('Nghe cả bài gốc', 'Listen to the full original')}
         </Text>
       </Text>
     </StudyFrame>
@@ -405,10 +440,11 @@ function Karaoke({ sentence, tokens, marks, karaoke }: { sentence: string; token
 }
 
 function MicButton({ listening, onPress }: { listening: boolean; onPress: () => void }) {
+  const { L } = useL();
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={listening ? 'Dừng nghe' : 'Bấm để đọc'}
+      accessibilityLabel={listening ? L('Dừng nghe', 'Stop listening') : L('Bấm để đọc', 'Tap to read')}
       onPress={onPress}
       className="h-20 w-20 items-center justify-center rounded-pill"
       style={{
@@ -470,6 +506,7 @@ function ResultPanel({
   onNext: () => void;
   last: boolean;
 }) {
+  const { L, en } = useL();
   const band = scoreBand(result.score);
   const tone = band.tone === 'good' ? GREEN : band.tone === 'ok' ? AMBER : RED;
   const missed = [...new Map(tokens.filter((_, i) => result.marks[i] === 'miss').map((t) => [t.norm, t.text])).values()];
@@ -491,21 +528,27 @@ function ResultPanel({
                 <BadgeSticker icon={band.tone === 'good' ? 'star' : band.tone === 'ok' ? 'check' : 'refresh'} color={tone} size={24} />
               </View>
               <Text className="min-w-0 flex-1 font-heavy text-cardTitle" style={{ color: tone }}>
-                {band.label}
+                {en ? BAND_LABEL_EN[band.tone] : band.label}
               </Text>
             </View>
             <Text className="mt-1 font-sans text-body text-muted">
-              Máy nghe rõ {result.hits}/{result.counted} từ{result.nears ? `, ${result.nears} từ gần đúng` : ''}
-              {result.counted < tokens.length ? ' · tên riêng máy không nghe ra thì không tính' : ''}.
+              {L(`Máy nghe rõ ${result.hits}/${result.counted} từ`, `Clearly heard ${result.hits}/${result.counted} words`)}
+              {result.nears ? L(`, ${result.nears} từ gần đúng`, `, ${result.nears} nearly right`) : ''}
+              {result.counted < tokens.length
+                ? L(' · tên riêng máy không nghe ra thì không tính', " · names the recogniser can't catch aren't counted")
+                : ''}
+              .
             </Text>
             <Text className="mt-1 font-sans text-body" style={{ color: '#475569' }}>
-              Máy nghe được: “{heard}”
+              {L(`Máy nghe được: “${heard}”`, `What it heard: “${heard}”`)}
             </Text>
           </View>
         </View>
         {missed.length ? (
           <View className="mt-4">
-            <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Từ đọc hụt — nghe lại từng từ</Text>
+            <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
+              {L('Từ đọc hụt — nghe lại từng từ', 'Missed words — listen to each one')}
+            </Text>
             <View className="mt-2 flex-row flex-wrap gap-2">
               {missed.map((w) => (
                 <View key={w} className="flex-row items-center gap-1 rounded-pill bg-white py-1 pl-3 pr-1" style={{ borderWidth: 1, borderColor: '#FECDD3' }}>
@@ -519,8 +562,8 @@ function ResultPanel({
           </View>
         ) : null}
         <View className="mt-4 flex-row flex-wrap justify-end gap-2">
-          <Button variant="outline" iconLeft="refresh" label="Đọc lại" onPress={onRetry} />
-          <Button label={last ? 'Xem tổng kết' : 'Câu tiếp'} iconRight="arrow-right" onPress={onNext} />
+          <Button variant="outline" iconLeft="refresh" label={L('Đọc lại', 'Read again')} onPress={onRetry} />
+          <Button label={last ? L('Xem tổng kết', 'See summary') : L('Câu tiếp', 'Next sentence')} iconRight="arrow-right" onPress={onNext} />
         </View>
       </View>
     </Appear>
@@ -529,6 +572,7 @@ function ResultPanel({
 
 /** Dải chấm: mỗi chấm một câu, màu theo điểm cao nhất; bấm để nhảy tới câu đó. */
 function Dots({ scores, index, onPick }: { scores: (number | undefined)[]; index: number; onPick: (i: number) => void }) {
+  const { L } = useL();
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mb-4">
       <View className="flex-row items-center gap-1.5 py-1">
@@ -538,7 +582,10 @@ function Dots({ scores, index, onPick }: { scores: (number | undefined)[]; index
             <Pressable
               key={i}
               accessibilityRole="button"
-              accessibilityLabel={`Câu ${i + 1}${s !== undefined ? `, ${s} điểm` : ''}`}
+              accessibilityLabel={L(
+                `Câu ${i + 1}${s !== undefined ? `, ${s} điểm` : ''}`,
+                `Sentence ${i + 1}${s !== undefined ? `, ${s} points` : ''}`,
+              )}
               onPress={() => onPick(i)}
               hitSlop={4}
               style={{
@@ -571,6 +618,7 @@ function Summary({
   missed: Record<string, number>;
   onRestart: () => void;
 }) {
+  const { L } = useL();
   const scores = Object.values(session);
   const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
   const clear = scores.filter((s) => s >= 85).length;
@@ -581,7 +629,7 @@ function Summary({
     <StudyCard>
       <View className="flex-row items-center gap-3">
         <View className="min-w-0 flex-1">
-          <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Xong bài</Text>
+          <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">{L('Xong bài', 'Lesson done')}</Text>
           <Text className="mt-1 font-heavy text-pageTitle text-ink">{title}</Text>
         </View>
         <View aria-hidden className="flex-row items-end">
@@ -600,7 +648,13 @@ function Summary({
       {scores.length ? (
         <View aria-hidden className="mt-3">
           <Label
-            text={avg >= 85 ? 'Đọc rất rõ 🏆' : avg >= 60 ? 'Khá lắm ⭐' : 'Luyện tiếp nhé 💪'}
+            text={
+              avg >= 85
+                ? L('Đọc rất rõ 🏆', 'Very clear reading 🏆')
+                : avg >= 60
+                  ? L('Khá lắm ⭐', 'Nice work ⭐')
+                  : L('Luyện tiếp nhé 💪', 'Keep practising 💪')
+            }
             color={avg >= 85 ? '#22A06B' : avg >= 60 ? '#A8843F' : '#F0703F'}
             ink="#FFFFFF"
             tilt={-4}
@@ -609,13 +663,15 @@ function Summary({
         </View>
       ) : null}
       <View className="mt-5 flex-row flex-wrap gap-3">
-        <Stat value={`${scores.length}/${total}`} label="câu đã đọc lượt này" icon="check" tint="#A8843F" />
-        <Stat value={scores.length ? String(avg) : '—'} label="điểm trung bình" icon="target" tint="#F2B632" />
-        <Stat value={String(clear)} label="câu đọc rất rõ (≥ 85)" icon="star" tint="#22A06B" />
+        <Stat value={`${scores.length}/${total}`} label={L('câu đã đọc lượt này', 'sentences read this round')} icon="check" tint="#A8843F" />
+        <Stat value={scores.length ? String(avg) : '—'} label={L('điểm trung bình', 'average score')} icon="target" tint="#F2B632" />
+        <Stat value={String(clear)} label={L('câu đọc rất rõ (≥ 85)', 'very clear sentences (≥ 85)')} icon="star" tint="#22A06B" />
       </View>
       {top.length ? (
         <View className="mt-5">
-          <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">Từ hay hụt nhất lượt này</Text>
+          <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
+            {L('Từ hay hụt nhất lượt này', 'Most-missed words this round')}
+          </Text>
           <View className="mt-2 flex-row flex-wrap gap-2">
             {top.map(([w, n]) => (
               <View key={w} className="flex-row items-center gap-1 rounded-pill bg-white py-1 pl-3 pr-1" style={{ borderWidth: 1, borderColor: '#F0EBE2' }}>
@@ -629,8 +685,8 @@ function Summary({
         </View>
       ) : null}
       <View className="mt-6 flex-row flex-wrap gap-2">
-        <Button iconLeft="refresh" label="Đọc lại từ đầu" onPress={onRestart} />
-        <Button variant="outline" label="Chọn bài khác" onPress={() => router.replace('/shadow' as never)} />
+        <Button iconLeft="refresh" label={L('Đọc lại từ đầu', 'Start over')} onPress={onRestart} />
+        <Button variant="outline" label={L('Chọn bài khác', 'Pick another lesson')} onPress={() => router.replace('/shadow' as never)} />
       </View>
     </StudyCard>
   );

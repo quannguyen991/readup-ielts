@@ -1,4 +1,5 @@
 import { requireAdmin } from '@/services/admin/guard';
+import { errorText, msg } from '@/lib/server-locale';
 
 /**
  * GET  /api/admin/payment-groups?status=collecting   → danh sách nhóm mua chung
@@ -75,7 +76,7 @@ export async function GET(request: Request): Promise<Response> {
       })),
     });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
@@ -87,7 +88,7 @@ export async function POST(request: Request): Promise<Response> {
 
     const body = (await request.json()) as { groupId?: unknown };
     const groupId = typeof body.groupId === 'string' ? body.groupId : '';
-    if (!groupId) return Response.json({ error: 'Thiếu groupId.' }, { status: 400 });
+    if (!groupId) return Response.json({ error: msg(request, 'Thiếu groupId.', 'groupId is required.') }, { status: 400 });
 
     const { data: group, error: groupError } = await admin
       .from('payment_groups')
@@ -95,9 +96,9 @@ export async function POST(request: Request): Promise<Response> {
       .eq('id', groupId)
       .maybeSingle();
     if (groupError) return Response.json({ error: groupError.message }, { status: 500 });
-    if (!group) return Response.json({ error: 'Không tìm thấy nhóm.' }, { status: 404 });
+    if (!group) return Response.json({ error: msg(request, 'Không tìm thấy nhóm.', 'Group not found.') }, { status: 404 });
     if (group.status !== 'collecting') {
-      return Response.json({ error: 'Nhóm này đã được chốt rồi.' }, { status: 409 });
+      return Response.json({ error: msg(request, 'Nhóm này đã được chốt rồi.', 'This group has already been settled.') }, { status: 409 });
     }
 
     const { count: paidCount } = await admin
@@ -133,10 +134,10 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json({ settledSize });
   } catch (err) {
-    return Response.json({ error: message(err) }, { status: 500 });
+    return Response.json({ error: message(request, err) }, { status: 500 });
   }
 }
 
-function message(err: unknown): string {
-  return err instanceof Error ? err.message : 'Lỗi không xác định';
+function message(request: Request, err: unknown): string {
+  return errorText(request, err, 'Lỗi không xác định', 'Unknown error');
 }

@@ -9,6 +9,7 @@ import { color, radius, spacing as space } from '@/theme/tokens';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Badge } from '@/components/illust/Cute';
 import type { IconName } from '@/components/ui/Icon';
+import { useL } from '@/i18n/useL';
 
 /**
  * Kiểu khai TƯỜNG MINH, không suy từ chính tệp JSON.
@@ -163,6 +164,7 @@ const CAVEATS: readonly string[] = [
 export default function ObservatoryScreen() {
   const { overall, byModel, verdict, preregistration } = summary;
   const tone = VERDICT_TONE[verdict.kind] ?? VERDICT_TONE['sample-too-small']!;
+  const { L } = useL();
 
   return (
     <Screen>
@@ -185,7 +187,10 @@ export default function ObservatoryScreen() {
             does not test reading, and it is thrown away. This page is what those verdicts add up to.
           </Text>
           <Text style={{ fontSize: 13, color: color.subtle, marginTop: space.sm }}>
-            Bản tiếng Việt của cơ chế nằm trong sổ bằng chứng của app; trang này để người ngoài đọc.
+            {L(
+              'Bản tiếng Việt của cơ chế nằm trong sổ bằng chứng của app; trang này để người ngoài đọc.',
+              'The in-app evidence log explains this mechanism in Vietnamese; this page is for outside readers.',
+            )}
           </Text>
         </View>
 

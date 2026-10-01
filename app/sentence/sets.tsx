@@ -10,6 +10,7 @@ import { Button } from '@/components/ui';
 import { DICTATION_SENTENCES, TRANSLATION_SENTENCES } from '@/data/sentence-drills';
 import { dictationSetStats } from '@/data/dictation-sets';
 import { translationSetStats } from '@/data/translation-sets';
+import { useL } from '@/i18n/useL';
 
 /**
  * Thư viện bài của cả hai kiểu luyện câu.
@@ -23,33 +24,34 @@ import { translationSetStats } from '@/data/translation-sets';
  */
 type Tab = 'dictation' | 'translation';
 
-const TABS: readonly { key: Tab; label: string }[] = [
-  { key: 'dictation', label: 'Chép chính tả' },
-  { key: 'translation', label: 'Dịch câu' },
+const TABS: readonly { key: Tab; label: string; labelEn: string }[] = [
+  { key: 'dictation', label: 'Chép chính tả', labelEn: 'Dictation' },
+  { key: 'translation', label: 'Dịch câu', labelEn: 'Sentence translation' },
 ];
 
 export default function SentenceSetsScreen() {
+  const { L } = useL();
   const [tab, setTab] = useState<Tab>('dictation');
 
   return (
     <Screen>
       <LightHero
         badge="SENTENCE PRACTICE LIBRARY" art="listening"
-        line1="Thư viện bộ đề"
-        line2="luyện câu theo chủ đề"
-        subtitle="Bài có chủ đề, các câu trong một bài nối tiếp nhau. Chọn bài thay vì bốc câu ngẫu nhiên."
+        line1={L('Thư viện bộ đề', 'Practice sets')}
+        line2={L('luyện câu theo chủ đề', 'sentence practice by topic')}
+        subtitle={L('Bài có chủ đề, các câu trong một bài nối tiếp nhau. Chọn bài thay vì bốc câu ngẫu nhiên.', 'Each set has a topic and its sentences follow on from each other. Pick a set instead of random sentences.')}
         footer={
           <>
-            <HeroStat value={String(dictationSetStats().sets)} label="bài chép chính tả" />
-            <HeroStat value={String(translationSetStats().sets)} label="bài dịch câu" />
-            <HeroStat value={String(DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length)} label="câu lẻ" />
+            <HeroStat value={String(dictationSetStats().sets)} label={L('bài chép chính tả', 'dictation sets')} />
+            <HeroStat value={String(translationSetStats().sets)} label={L('bài dịch câu', 'translation sets')} />
+            <HeroStat value={String(DICTATION_SENTENCES.length + TRANSLATION_SENTENCES.length)} label={L('câu lẻ', 'single sentences')} />
           </>
         }
       >
         {TABS.map((t) => (
           <Button
             key={t.key}
-            label={t.label}
+            label={L(t.label, t.labelEn)}
             variant={tab === t.key ? 'brand' : 'outline'}
             size="lg"
             onPress={() => setTab(t.key)}

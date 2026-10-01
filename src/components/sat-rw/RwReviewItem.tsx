@@ -5,6 +5,7 @@ import { ItemBody } from './ItemBody';
 import { Icon } from '@/components/ui';
 import { color } from '@/theme/tokens';
 import type { MockItem } from '@/services/sat-rw/mock/item';
+import { useL } from '@/i18n/useL';
 
 /**
  * Một câu R&W đã lộ đáp án, dùng ở màn xem lại sau khi thi.
@@ -20,6 +21,7 @@ import type { MockItem } from '@/services/sat-rw/mock/item';
  */
 export function RwReviewItem({ item, answer }: { item: MockItem; answer: number | null }) {
   const blank = answer === null;
+  const { L } = useL();
 
   return (
     <View>
@@ -43,7 +45,7 @@ export function RwReviewItem({ item, answer }: { item: MockItem; answer: number 
 
       {blank ? (
         <Text className="mt-2 font-sans text-label text-paper-muted">
-          Câu này bạn chưa chọn phương án nào.
+          {L('Câu này bạn chưa chọn phương án nào.', 'You didn’t choose an option for this question.')}
         </Text>
       ) : null}
 
@@ -57,7 +59,7 @@ export function RwReviewItem({ item, answer }: { item: MockItem; answer: number 
           <Icon name="sparkle" size={17} color={color.info} strokeWidth={2} />
         </View>
         <View className="min-w-0 flex-1">
-          <Text className="font-strong text-label uppercase text-info-ink">Vì sao</Text>
+          <Text className="font-strong text-label uppercase text-info-ink">{L('Vì sao', 'Why')}</Text>
           <Text className="mt-1 font-sans text-body text-paper-body" style={{ lineHeight: 23 }}>
             {item.solutionVi}
           </Text>
@@ -86,6 +88,7 @@ function OptionRow({
   isPicked: boolean;
 }) {
   const wrongPick = isPicked && !isAnswer;
+  const { L } = useL();
 
   const box = isAnswer
     ? 'border-success bg-success-soft'
@@ -123,13 +126,13 @@ function OptionRow({
         <View className="flex-row items-center gap-1.5">
           <Icon name="check" size={15} color={color.success} strokeWidth={2.4} />
           <Text className="font-strong text-label text-success-ink">
-            {isPicked ? 'Bạn chọn · đúng' : 'Đáp án đúng'}
+            {isPicked ? L('Bạn chọn · đúng', 'Your pick · correct') : L('Đáp án đúng', 'Correct answer')}
           </Text>
         </View>
       ) : wrongPick ? (
         <View className="flex-row items-center gap-1.5">
           <Icon name="close" size={15} color={color.danger} strokeWidth={2.4} />
-          <Text className="font-strong text-label text-danger-ink">Bạn chọn</Text>
+          <Text className="font-strong text-label text-danger-ink">{L('Bạn chọn', 'Your pick')}</Text>
         </View>
       ) : null}
     </View>
