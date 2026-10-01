@@ -13,3 +13,14 @@ export const LEGACY_HOSTS: readonly string[] = ['readup-ielts.vercel.app'];
 export function isLegacyHost(host: string | null | undefined): boolean {
   return !!host && LEGACY_HOSTS.includes(host);
 }
+
+/**
+ * Trang đang chạy ở tên miền cũ (hoặc giả lập bằng `?legacy=1` trên máy dev) —
+ * lúc đó màn "Band 9 đã chuyển nhà" phủ cả trang, các popup khác phải nhường.
+ */
+export function onLegacySite(): boolean {
+  if (typeof window === 'undefined') return false;
+  const { host, search } = window.location;
+  if (isLegacyHost(host)) return true;
+  return /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(host) && new URLSearchParams(search).get('legacy') === '1';
+}

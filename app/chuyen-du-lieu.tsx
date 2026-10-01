@@ -65,13 +65,13 @@ export default function ReceiveHandoff() {
       <View style={{ alignSelf: 'center', width: '100%', maxWidth: 560, marginTop: 40, borderRadius: 28, padding: 28, backgroundColor: '#0F1D33', alignItems: 'center', gap: 14 }}>
         <BrandMark size={72} />
         <Text className="font-heavy" style={{ fontSize: 26, color: '#F3EDE1', textAlign: 'center' }}>
-          {state === 'done' ? 'Đã mang tiến độ sang Band 9' : state === 'alone' ? 'Chào mừng tới Band 9' : 'Đang nhận tiến độ…'}
+          {state === 'done' ? 'Chào mừng về nhà mới Band 9' : state === 'alone' ? 'ReadUp giờ là Band 9' : 'Đang chuyển đồ sang nhà mới…'}
         </Text>
         <Text className="font-sans" style={{ fontSize: 15, lineHeight: 22, color: 'rgba(243,237,225,0.8)', textAlign: 'center' }}>
           {state === 'done'
-            ? `Đã chép ${written} mục dữ liệu học tập và phiên đăng nhập. Bấm nút dưới để vào học tiếp.`
+            ? `ReadUp đã chuyển sang nhà mới tên Band 9. Đã mang theo ${written} mục dữ liệu học tập và phiên đăng nhập của bạn.`
             : state === 'alone'
-              ? 'Đăng nhập bằng tài khoản cũ là toàn bộ tiến độ trên máy chủ được đồng bộ về. Muốn mang cả dữ liệu chỉ có trên máy, hãy mở tên miền cũ và bấm "Mang tiến độ sang Band 9".'
+              ? 'ReadUp đã chuyển sang nhà mới tên Band 9. Đăng nhập bằng tài khoản cũ là toàn bộ tiến độ trên máy chủ được đồng bộ về.'
               : 'Giữ cửa sổ tên miền cũ đang mở trong giây lát.'}
         </Text>
         {state !== 'waiting' ? (

@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { isLegacyHost } from '@/lib/site';
 import { Platform } from 'react-native';
 import { usePathname } from 'expo-router';
 
@@ -43,6 +44,9 @@ export function PageViewTracker(): null {
     if (Platform.OS !== 'web' || typeof window === 'undefined') return;
     const host = window.location.hostname;
     if (host === 'localhost' || host === '127.0.0.1' || navigator.webdriver) return;
+    // Tên miền cũ chỉ còn là cửa chuyển sang Band 9: không đếm ở đây, kẻo một
+    // người bị tính hai lần (một ở tên miền cũ, một ở Band 9).
+    if (isLegacyHost(window.location.host)) return;
     if (!pathname || pathname.startsWith('/admin') || last.current === pathname) return;
     last.current = pathname;
 
