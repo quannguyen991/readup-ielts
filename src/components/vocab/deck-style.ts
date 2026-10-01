@@ -1,6 +1,7 @@
 import type { IconName } from '@/components/ui/Icon';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { NOTEBOOK_SLUG } from '@/data/study-decks';
+import { LISTENING_DECKS, type ListeningSection } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
 
@@ -9,7 +10,7 @@ import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
  * viện bộ từ và phần đầu trang một bộ, để bấm vào thẻ nào thì trang bộ đó cùng màu.
  */
 
-export type DeckSource = 'mine' | 'ielts' | 'satMath' | 'satVerbal';
+export type DeckSource = 'mine' | 'ielts' | 'listening' | 'satMath' | 'satVerbal';
 
 export type DeckLook = { source: DeckSource; sourceLabel: string; sourceLabelEn: string; accent: readonly [string, string]; icon: IconName };
 
@@ -80,6 +81,39 @@ const TOPIC_ICON: Record<string, IconName> = {
   'ai-future': 'sparkle',
 };
 
+/** Bộ Nghe: mỗi Section một màu (lấy từ bảng màu trên) để cả nhóm đọc ra là cùng một phần của đề. */
+const LISTENING_ACCENT: Record<ListeningSection, readonly [string, string]> = {
+  1: ['#FBF5EC', '#A8843F'],
+  2: ['#E6F6F4', '#0D9488'],
+  3: ['#EEF1F6', '#24375A'],
+  4: ['#FFEDD5', '#EA580C'],
+  tips: ['#FEF3C7', '#D97706'],
+};
+const LISTENING_ICON: Record<string, IconName> = {
+  'listening-accommodation': 'home',
+  'listening-travel-booking': 'compass',
+  'listening-personal-details': 'note',
+  'listening-shopping-services': 'gift',
+  'listening-membership-events': 'bookmark',
+  'listening-jobs-work': 'briefcase',
+  'listening-tourism-tours': 'compass',
+  'listening-directions-maps': 'target',
+  'listening-community-facilities': 'building',
+  'listening-sports-leisure': 'trophy',
+  'listening-university-life': 'book',
+  'listening-research-methods': 'flask',
+  'listening-presentations-groupwork': 'chat',
+  'listening-courses-library': 'letters',
+  'listening-environment-wildlife': 'leaf',
+  'listening-history-architecture': 'clock',
+  'listening-science-engineering': 'gauge',
+  'listening-psychology-health': 'heart',
+  'listening-business-economics': 'trending',
+  'listening-numbers-dates-money': 'calendar',
+  'listening-signposts-corrections': 'volume',
+};
+const LISTENING_BY_SLUG = new Map(LISTENING_DECKS.map((d) => [d.slug, d]));
+
 const TOPIC_INDEX = new Map(VOCAB_TOPICS.map((t, i) => [t.slug, i]));
 const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
@@ -89,6 +123,8 @@ export function deckLook(slug: string): DeckLook {
   const subject = SAT_SUBJECT.get(slug);
   if (subject === 'math') return { source: 'satMath', sourceLabel: 'SAT Math', sourceLabelEn: 'SAT Math', accent: ['#EEF1F6', '#24375A'], icon: 'grid' };
   if (subject) return { source: 'satVerbal', sourceLabel: 'SAT Verbal', sourceLabelEn: 'SAT Verbal', accent: ['#FFE4E6', '#E11D48'], icon: 'letters' };
+  const listening = LISTENING_BY_SLUG.get(slug);
+  if (listening) return { source: 'listening', sourceLabel: 'Nghe IELTS', sourceLabelEn: 'IELTS listening', accent: LISTENING_ACCENT[listening.section], icon: LISTENING_ICON[slug] ?? 'volume' };
   const i = TOPIC_INDEX.get(slug) ?? 0;
   return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', sourceLabelEn: 'IELTS topic', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };
 }

@@ -1,6 +1,7 @@
 import { State, type Card } from 'ts-fsrs';
 import { CARD_KINDS, cardKey, emptyCard, applyGrade, fromStored, isDue, type CardKind, type StoredCard } from './schedule';
 import type { VocabEntry } from '@/store/useVocabStore';
+import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS, type VocabTopicWord } from '@/data/vocab-topics';
 
 /**
@@ -187,7 +188,8 @@ export function calculateMemoryLevels(
 
 /** Tra cứu thông tin từ theo chủ đề trong bộ 2.500 từ */
 const topicWordsMap = new Map<string, VocabTopicWord>();
-for (const topic of VOCAB_TOPICS) {
+// 50 chủ đề đứng trước: từ trùng thì giữ bản ở chủ đề, bộ Nghe chỉ bổ sung từ còn thiếu.
+for (const topic of [...VOCAB_TOPICS, ...LISTENING_DECKS]) {
   for (const w of topic.words) {
     const key = w.word.trim().toLowerCase();
     if (!topicWordsMap.has(key)) {

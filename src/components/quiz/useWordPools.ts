@@ -9,7 +9,8 @@ import { useMemo } from 'react';
 
 import { NOTEBOOK_SLUG, notebookDeck } from '@/data/study-decks';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
-import { VOCAB_TOPICS } from '@/data/vocab-topics';
+import { LISTENING_DECKS } from '@/data/vocab-listening';
+import { getVocabTopic, VOCAB_TOPICS } from '@/data/vocab-topics';
 import { questWords, dueCount, type QuestDeck, type QuestSource, type SlugWord } from '@/services/vocab/quest-words';
 import type { QuizWord } from '@/services/city/life';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
@@ -23,12 +24,12 @@ const toQuiz = (w: { word: string; meaningVi: string; definitionEn?: string }): 
   w.definitionEn?.trim() ? { word: w.word, meaningVi: w.meaningVi, definitionEn: w.definitionEn } : { word: w.word, meaningVi: w.meaningVi };
 
 const STATIC_DECKS: QuestDeck[] = [
-  ...VOCAB_TOPICS.map((t) => ({ slug: t.slug, name: t.nameVi || t.name, group: 'ielts' as const, words: t.words.map(toQuiz) })),
+  ...[...VOCAB_TOPICS, ...LISTENING_DECKS].map((t) => ({ slug: t.slug, name: t.nameVi || t.name, group: 'ielts' as const, words: t.words.map(toQuiz) })),
   ...SAT_VOCAB_LESSONS.map((l) => ({ slug: l.slug, name: `${l.subject === 'math' ? 'SAT Math' : 'SAT Verbal'} · ${l.title}`, group: 'sat' as const, words: l.words.map(toQuiz) })),
 ];
 /** Cùng các bộ trên, tên chủ đề IELTS bằng tiếng Anh (giao diện English). */
 const STATIC_DECKS_EN: QuestDeck[] = STATIC_DECKS.map((d) => {
-  const t = d.group === 'ielts' ? VOCAB_TOPICS.find((x) => x.slug === d.slug) : undefined;
+  const t = d.group === 'ielts' ? getVocabTopic(d.slug) : undefined;
   return t ? { ...d, name: t.name || d.name } : d;
 });
 
