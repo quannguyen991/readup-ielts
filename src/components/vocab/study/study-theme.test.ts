@@ -6,7 +6,7 @@ import { ALL_THEMES, ART_THEME_IDS, contrast, STUDY_THEMES, themeOf } from './st
 const CHECKED = [...ALL_THEMES, ...ART_THEME_IDS];
 
 test('mỗi chủ đề có đủ màu và id khớp khoá', () => {
-  assert.equal(ALL_THEMES.length, 7);
+  assert.equal(ALL_THEMES.length, 8);
   assert.equal(STUDY_THEMES.plain.fx, false, 'Mặc định phẳng không có lớp trang trí');
   for (const id of ALL_THEMES) {
     const t = STUDY_THEMES[id];

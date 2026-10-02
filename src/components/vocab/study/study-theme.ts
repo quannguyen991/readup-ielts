@@ -8,8 +8,8 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'art-dark' | 'art-light';
-export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain';
+export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'art-dark' | 'art-light';
+export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world';
 
 export type StudyTheme = {
   id: ThemeId;
@@ -253,6 +253,19 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
     onBg: '#3A1A2E',
     pill: 'rgba(255,255,255,0.78)',
   },
+  journey: {
+    ...DARK_BASE,
+    id: 'journey',
+    vi: 'Bản đồ bay',
+    en: 'Flight map',
+    layer: 'world',
+    skyBase: '#0A2A44',
+    skyStops: ['#06182A', '#0A2A44', '#0F3A55'],
+    sky: 'linear-gradient(180deg,#06182A 0%,#0A2A44 55%,#0F3A55 100%)',
+    swatch: 'linear-gradient(180deg,#0A5C74 0%,#0A3F5C 55%,#06182A 100%)',
+    card: 'rgba(8,24,40,0.92)',
+    cardBorder: 'rgba(120,200,220,0.28)',
+  },
   rain: {
     ...DARK_BASE,
     id: 'rain',
@@ -269,7 +282,7 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
 };
 
 /** Chủ đề chọn được khi bật "Nền & hiệu ứng" (Mặc định phẳng là lúc tắt). */
-export const THEME_ORDER: readonly ThemeId[] = ['scene', 'space', 'sakura', 'forest', 'sunset', 'rain'];
+export const THEME_ORDER: readonly ThemeId[] = ['scene', 'journey', 'space', 'sakura', 'forest', 'sunset', 'rain'];
 export const ALL_THEMES: readonly ThemeId[] = ['plain', ...THEME_ORDER];
 
 export function isThemeId(v: unknown): v is ThemeId {
