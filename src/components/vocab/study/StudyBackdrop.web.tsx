@@ -10,6 +10,7 @@ import { View } from 'react-native';
 
 import { ArtBackdrop, ArtCaption, useStudyBackdrop } from '@/components/art/ArtBackdrop';
 import { WorldBackdrop } from '@/components/travel/ambient/WorldBackdrop.web';
+import { PxCityBackdrop } from '@/components/travel/pxscene/PxCityBackdrop.web';
 
 import { isArtTheme, themeOf, type StudyTheme } from './study-theme';
 
@@ -137,6 +138,8 @@ function Layers({ theme }: { theme: StudyTheme }) {
       );
     case 'world':
       return <WorldBackdrop />;
+    case 'pxscene':
+      return <PxCityBackdrop themeId={theme.id} />;
     default:
       return null;
   }

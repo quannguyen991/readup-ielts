@@ -8,8 +8,8 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'art-dark' | 'art-light';
-export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world';
+export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light';
+export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene';
 
 export type StudyTheme = {
   id: ThemeId;
@@ -148,8 +148,25 @@ export function isArtTheme(id: string): boolean {
   return id === 'art-dark' || id === 'art-light';
 }
 
+
+/**
+ * CẢNH THÀNH PHỐ PIXEL CHUYỂN ĐỘNG (vẽ bằng mã, xem components/travel/pxscene): mỗi cảnh một chủ đề, thẻ học tối mờ ~92%
+ * để chữ đạt AA trên mọi vùng của cảnh; chữ ngoài thẻ trắng trên lớp phủ tối của nền. `px-auto` lấy cảnh theo thành phố
+ * người học đang ở trong Du ngoạn.
+ */
+const PX_BASE = { ...DARK_BASE, layer: 'pxscene', card: 'rgba(8,10,28,0.92)', cardBorder: 'rgba(160,170,255,0.24)' } as const;
+const PX_THEMES: Record<'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi', StudyTheme> = {
+  'px-auto': { ...PX_BASE, id: 'px-auto', vi: 'Thành phố đang ở', en: 'City you are in', skyBase: '#0B0F2A', skyStops: ['#070A1E', '#0B0F2A'], sky: '#0B0F2A', swatch: 'linear-gradient(135deg,#14103A,#A44A86 55%,#FFB070)' },
+  'px-tokyo': { ...PX_BASE, id: 'px-tokyo', vi: 'Tokyo đêm mưa', en: 'Tokyo, rainy night', skyBase: '#0A0A24', skyStops: ['#06061A', '#0A0A24'], sky: '#0A0A24', swatch: 'linear-gradient(180deg,#06061A,#2A1B55 60%,#FF4FD8)' },
+  'px-paris': { ...PX_BASE, id: 'px-paris', vi: 'Paris hoàng hôn', en: 'Paris at dusk', skyBase: '#1B1448', skyStops: ['#150F3C', '#1B1448'], sky: '#1B1448', swatch: 'linear-gradient(180deg,#2A1B6A,#A44A86 55%,#FFC080)' },
+  'px-london': { ...PX_BASE, id: 'px-london', vi: 'London chiều mưa', en: 'London, rainy evening', skyBase: '#141B33', skyStops: ['#0E1428', '#141B33'], sky: '#141B33', swatch: 'linear-gradient(180deg,#151C33,#566A8E 70%,#D12B35)' },
+  'px-singapore': { ...PX_BASE, id: 'px-singapore', vi: 'Singapore pháo hoa', en: 'Singapore fireworks', skyBase: '#0A0D30', skyStops: ['#05071F', '#0A0D30'], sky: '#0A0D30', swatch: 'linear-gradient(180deg,#05071F,#27256E 55%,#4FE3FF)' },
+  'px-hanoi': { ...PX_BASE, id: 'px-hanoi', vi: 'Hồ Gươm sớm mai', en: 'Hoan Kiem at dawn', skyBase: '#14202E', skyStops: ['#0E1824', '#14202E'], sky: '#14202E', swatch: 'linear-gradient(180deg,#6C9CC4,#F7D9A8 55%,#C8402A)' },
+};
+
 export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
   ...ART_THEMES,
+  ...PX_THEMES,
   plain: {
     ...LIGHT_BASE,
     id: 'plain',
@@ -282,7 +299,7 @@ export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
 };
 
 /** Chủ đề chọn được khi bật "Nền & hiệu ứng" (Mặc định phẳng là lúc tắt). */
-export const THEME_ORDER: readonly ThemeId[] = ['scene', 'journey', 'space', 'sakura', 'forest', 'sunset', 'rain'];
+export const THEME_ORDER: readonly ThemeId[] = ['scene', 'px-auto', 'px-tokyo', 'px-paris', 'px-london', 'px-singapore', 'px-hanoi', 'journey', 'space', 'sakura', 'forest', 'sunset', 'rain'];
 export const ALL_THEMES: readonly ThemeId[] = ['plain', ...THEME_ORDER];
 
 export function isThemeId(v: unknown): v is ThemeId {
