@@ -380,3 +380,19 @@ test('phóng to/thu nhỏ: hệ số luôn nguyên, bộ đệm khớp canvas, b
     }
   }
 });
+
+/** Dấu RIÊNG của tiếng Việt (bỏ é, è, ò… vì tiếng Pháp/Anh mượn từ như café, Métro cũng dùng). */
+const VI_MARK = /[ăâđêôơưảãạằắẳẵặầấẩẫậẻẽẹềếểễệỉĩịỏõọồốổỗộờớởỡợủũụừứửữựỳỷỹỵ]/i;
+
+test('lời nhân vật (NPC, chuyện phiếm, câu đáp tình huống) chỉ bằng tiếng Anh, không dấu tiếng Việt', async () => {
+  const { CHATTER } = await import('./dialogue');
+  for (const l of CHATTER) assert.ok(!VI_MARK.test(l), `chatter: ${l}`);
+  for (const m of Object.values(CITY_MAPS))
+    for (const n of m.npcs)
+      for (const l of n.lines) {
+        assert.ok(l.en.trim(), `${n.id}: thiếu en`);
+        assert.ok(!VI_MARK.test(l.en), `${n.id}: lời nhân vật có dấu tiếng Việt: ${l.en}`);
+      }
+  const { ALL_REPLY_ITEMS } = await import('@/data/travel/replies');
+  for (const it of ALL_REPLY_ITEMS) for (const x of [it.line, it.setup, it.answer, ...it.wrong]) assert.ok(!VI_MARK.test(x), `reply ${it.id}: ${x}`);
+});

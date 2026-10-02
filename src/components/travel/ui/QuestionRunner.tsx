@@ -216,9 +216,13 @@ function Card({
             {'”'}
           </Text>
         ) : null}
-        <Text className="font-sans" style={{ fontSize: 14, color: T.muted, marginTop: 6, marginBottom: 12 }}>
-          {q.gloss}
-        </Text>
+        {checked ? (
+          <Text className="font-sans" style={{ fontSize: 14, color: T.muted, marginTop: 6, marginBottom: 12 }}>
+            {q.gloss}
+          </Text>
+        ) : (
+          <View style={{ height: 12 }} />
+        )}
         <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark, marginBottom: 8 }}>
           {L('Chọn câu đáp tự nhiên nhất.', 'Choose the most natural reply.')}
         </Text>

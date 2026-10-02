@@ -24,6 +24,7 @@ import { buildSceneWorld, footprintRect, INTERIOR_CELL, interiorKindOf, interior
 import { ambientAt, Lighting, type Light, type RGB } from './Lighting';
 import { Particles, PK } from './Particles';
 import { playSfx } from '@/services/audio/sfx-ui';
+import { CHATTER } from './dialogue';
 import { Camera, computeImageView, computeView, pointerToWorld, viewForK, zoomBounds, type View } from './view';
 
 export type EngineCallbacks = {
@@ -75,10 +76,6 @@ type Bubble = { en: string; vi: string; wx: number; wy: number; until: number } 
 export type EngineStats = { fps: number; frameMs: number; particles: number; drawn: number; k: number; W: number; H: number; dpr: number; mode: 'tile' | 'image' };
 
 /** Câu phiếm ngắn của người đi dạo (bong bóng nhỏ, ngẫu nhiên). */
-const CHATTER = {
-  en: ['Nice weather!', 'Hello!', 'So many people today.', 'Where to next?', 'I love this place.', 'Is it lunchtime yet?', 'Mind the step!', 'Great view, right?'],
-  vi: ['Trời đẹp quá!', 'Xin chào!', 'Hôm nay đông thật.', 'Đi đâu tiếp nhỉ?', 'Mình thích chỗ này.', 'Đến giờ ăn chưa nhỉ?', 'Coi chừng bậc thềm!', 'Cảnh đẹp nhỉ?'],
-};
 
 const PANEL_W = 418;
 const PANEL_H = 235;
@@ -816,7 +813,7 @@ export class CityEngine {
       if (k.chat && nowMs > k.chatUntil) k.chat = null;
       k.nextChat -= dt;
       if (k.nextChat <= 0) {
-        const pool = CHATTER[this.opts.locale === 'vi' ? 'vi' : 'en'];
+        const pool = CHATTER;
         k.chat = pool[hash2(k.seed, Math.floor(this.t), 8) % pool.length]!;
         k.chatUntil = nowMs + 2400;
         k.nextChat = 10 + (hash2(k.seed, Math.floor(this.t), 3) % 100) / 5;
@@ -926,7 +923,7 @@ export class CityEngine {
     if (!it || it.hosted) return;
     it.hosted = true;
     playSfx('greet');
-    this.bubble = { en: 'Welcome! Shall we begin?', vi: 'Xin chào! Mình bắt đầu nhé?', wx: it.layout.host.x, wy: it.layout.host.y - 24, until: this.t * 1000 + 1600 };
+    this.bubble = { en: 'Welcome! Shall we begin?', vi: '', wx: it.layout.host.x, wy: it.layout.host.y - 24, until: this.t * 1000 + 1600 };
     const poi = it.poi;
     window.setTimeout(() => this.cbs.onEnterPoi(poi.id), 450);
   }
@@ -2003,7 +2000,7 @@ export class CityEngine {
       d.font = `600 ${fs}px "Plus Jakarta Sans", system-ui, sans-serif`;
       const l1 = wrap(d, b.en, maxW - px(20));
       d.font = `500 ${fs2}px "Plus Jakarta Sans", system-ui, sans-serif`;
-      const l2 = vi ? wrap(d, b.vi, maxW - px(20)) : [];
+      const l2: string[] = [];
       const w = maxW;
       const h = l1.length * (fs + px(3)) + (l2.length ? l2.length * (fs2 + px(2)) + px(6) : 0) + px(16);
       const x = Math.round(Math.max(px(6), Math.min(v.devW - w - px(6), pos.x - w / 2)));
