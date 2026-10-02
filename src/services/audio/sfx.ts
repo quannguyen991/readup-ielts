@@ -38,7 +38,9 @@ export function setSfxMuted(value: boolean): void {
   gate.setMuted(value);
 }
 
-const BUS_GAIN = 0.6;
+// 02/10/2026: người dùng không nghe thấy hiệu ứng trên web — hiệu ứng ngắn có đỉnh ~0,03 (≈ -30 dBFS)
+// nên gần như im trên loa laptop. Nâng bus ×5; bộ nén phía sau chặn các tiếng to khỏi vỡ.
+const BUS_GAIN = 3.2;
 
 /** Âm lượng chung 0–1 (thanh trượt ở Cài đặt). Áp ngay cho cả tiếng đang chờ phát. */
 export function setSfxVolume(value: number): void {
