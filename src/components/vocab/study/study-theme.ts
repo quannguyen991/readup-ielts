@@ -8,7 +8,7 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain';
+export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'art-dark' | 'art-light';
 export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain';
 
 export type StudyTheme = {
@@ -107,7 +107,49 @@ const DARK_BASE = {
   pillInk: '#F1F5F9',
 } as const;
 
+/**
+ * TRANH NỔI TIẾNG là một "chủ đề" nữa: ảnh nằm sau, thẻ học trong mờ đặc (~92–94%) để chữ và màu đúng/sai
+ * đạt AA trên bất kỳ vùng nào của tranh. Chỉ có hai bộ màu theo TÔNG của tranh (tối / sáng); bức nào thuộc
+ * tông nào do `src/data/backdrops.ts` quyết. Không nằm trong `THEME_ORDER` (người học chọn ở mục Tranh).
+ */
+const ART_THEMES: Record<'art-dark' | 'art-light', StudyTheme> = {
+  'art-dark': {
+    ...DARK_BASE,
+    id: 'art-dark',
+    vi: 'Tranh (nền tối)',
+    en: 'Painting (dark)',
+    layer: 'none',
+    skyBase: '#0B1020',
+    skyStops: ['#0B1020', '#2A3560'],
+    sky: '#0B1020',
+    swatch: '#0B1020',
+    card: 'rgba(10,14,32,0.92)',
+    cardBorder: 'rgba(255,255,255,0.16)',
+    pill: 'rgba(10,14,32,0.72)',
+  },
+  'art-light': {
+    ...LIGHT_BASE,
+    id: 'art-light',
+    vi: 'Tranh (nền sáng)',
+    en: 'Painting (light)',
+    layer: 'none',
+    skyBase: '#EDE9E1',
+    skyStops: ['#F6F0DC', '#D9D2BC'],
+    sky: '#EDE9E1',
+    swatch: '#EDE9E1',
+    card: 'rgba(255,255,255,0.94)',
+    cardBorder: 'rgba(15,23,42,0.08)',
+    onBg: '#1E293B',
+    pill: 'rgba(255,255,255,0.9)',
+  },
+};
+export const ART_THEME_IDS: readonly ThemeId[] = ['art-dark', 'art-light'];
+export function isArtTheme(id: string): boolean {
+  return id === 'art-dark' || id === 'art-light';
+}
+
 export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
+  ...ART_THEMES,
   plain: {
     ...LIGHT_BASE,
     id: 'plain',
