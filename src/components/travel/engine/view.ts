@@ -123,3 +123,28 @@ export function computeImageView(cssW: number, cssH: number, dpr: number, imgW: 
     cssPerPx: k / dpr,
   };
 }
+
+/** Khung nhìn với hệ số phóng `k` do người dùng chọn (nguyên, ≥ 1) — dùng cho nút +/− phóng to. */
+export function viewForK(cssW: number, cssH: number, dpr: number, k: number): View {
+  const devW = Math.max(1, Math.round(cssW * dpr));
+  const devH = Math.max(1, Math.round(cssH * dpr));
+  const kk = Math.max(1, Math.round(k));
+  const W = Math.max(16, Math.floor(devW / kk));
+  const H = Math.max(16, Math.floor(devH / kk));
+  return {
+    k: kk,
+    W,
+    H,
+    devW,
+    devH,
+    offX: Math.max(0, Math.floor((devW - W * kk) / 2)),
+    offY: Math.max(0, Math.floor((devH - H * kk) / 2)),
+    dpr,
+    cssPerPx: kk / dpr,
+  };
+}
+
+/** Mức phóng được phép quanh hệ số gốc `base`: từ thu nhỏ tới k=1 đến phóng thêm 3 bậc. */
+export function zoomBounds(base: number): { min: number; max: number } {
+  return { min: 1 - Math.max(1, base), max: 3 };
+}

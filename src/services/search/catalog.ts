@@ -172,7 +172,7 @@ const PAGE_META: Record<string, { exam?: SearchExam; skill?: SearchSkill; keywor
   quest: { keywords: ['game', 'trò chơi', 'quest'] },
   'quest-city': { keywords: ['thành phố', 'city', '3d'] },
   'quest-rail': { skill: 'vocab', keywords: ['bay', 'máy bay', 'thành phố', 'flight', 'fly over cities', 'từ vựng'] },
-  'quest-travel': { skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'thế giới', 'vé máy bay', 'travel', 'world', 'passport', 'hộ chiếu', 'singapore', 'london', 'paris', 'rome', 'amsterdam'] },
+  'quest-travel': { skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'thế giới', 'vé máy bay', 'travel', 'world', 'passport', 'hộ chiếu', 'singapore', 'london', 'paris', 'rome', 'amsterdam', 'hà nội', 'đà nẵng', 'hồ chí minh', 'sài gòn', 'vietnam'] },
   'quest-world': { keywords: ['bản đồ', 'map', 'đảo'] },
   'quest-hero': { keywords: ['nhân vật', 'nhiệm vụ', 'hero'] },
   leaderboard: { keywords: ['xếp hạng', 'bảng xếp hạng', 'leaderboard'] },
@@ -205,8 +205,10 @@ const EXTRA_PAGES: {
   { key: 'travel-paris', title: { vi: 'Du ngoạn: Paris', en: 'Travel: Paris' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/paris', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'eiffel', 'louvre'] },
   { key: 'travel-amsterdam', title: { vi: 'Du ngoạn: Amsterdam', en: 'Travel: Amsterdam' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/amsterdam', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'canal', 'tulip'] },
   { key: 'travel-rome', title: { vi: 'Du ngoạn: Rome', en: 'Travel: Rome' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/rome', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'colosseum', 'trevi', 'vatican'] },
+  { key: 'travel-danang', title: { vi: 'Du ngoạn: Đà Nẵng', en: 'Travel: Da Nang' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/danang', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'đà nẵng', 'da nang', 'cầu rồng', 'dragon bridge', 'hội an'] },
+  { key: 'travel-hochiminh', title: { vi: 'Du ngoạn: TP. Hồ Chí Minh', en: 'Travel: Ho Chi Minh City' }, subtitle: { vi: 'Tiếng Anh du lịch theo địa điểm', en: 'Travel English, place by place' }, href: '/quest/du-ngoan/hochiminh', exam: 'both', skill: 'vocab', keywords: ['du ngoạn', 'du lịch', 'travel', 'sài gòn', 'saigon', 'hồ chí minh', 'bến thành', 'bánh mì'] },
   { key: 'travel-airport', title: { vi: 'Quầy đổi vé máy bay', en: 'Ticket counter' }, href: '/quest/du-ngoan/airport', exam: 'both', skill: 'vocab', keywords: ['vé', 'hải quan', 'customs', 'tickets', 'du ngoạn'] },
-  { key: 'travel-passport', title: { vi: 'Hộ chiếu du ngoạn', en: 'Travel passport' }, href: '/quest/du-ngoan/passport', exam: 'both', skill: 'general', keywords: ['hộ chiếu', 'con dấu', 'passport', 'stamp'] },
+  { key: 'travel-passport', title: { vi: 'Hộ chiếu du ngoạn: tem, quà, xếp hạng', en: 'Travel passport: stamps, rewards, ranking' }, href: '/quest/du-ngoan/passport', exam: 'both', skill: 'general', keywords: ['hộ chiếu', 'con dấu', 'điểm hộ chiếu', 'passport', 'stamp', 'pro max', 'ai đi nhiều nhất', 'xếp hạng du ngoạn'] },
   { key: 'travel-suitcase', title: { vi: 'Vali quà lưu niệm', en: 'Souvenir suitcase' }, href: '/quest/du-ngoan/suitcase', exam: 'both', skill: 'general', keywords: ['vali', 'quà', 'suitcase', 'souvenir'] },
   { key: 'paste', title: { vi: 'Đọc văn bản tự dán', en: 'Read your own text' }, href: '/paste', exam: 'both', skill: 'reading', keywords: ['dán', 'paste', 'văn bản riêng'] },
   // Bốn trang dưới rời thanh bên ngày 01/10/2026 (nhóm SAT gọn còn 4 mục) — vẫn tìm được.
@@ -228,7 +230,6 @@ const EXTRA_PAGES: {
   { key: 'write-sat', title: { vi: 'Viết câu SAT', en: 'SAT sentence writing' }, href: '/write/sat', exam: 'sat', skill: 'writing', keywords: ['sat writing', 'viết sat'] },
   { key: 'write-translation', title: { vi: 'Lộ trình luyện dịch', en: 'Translation path' }, subtitle: { vi: '5 bước từ câu đơn tới trọn đoạn', en: '5 steps from single sentences to full paragraphs' }, href: '/write/translation', kind: 'path', exam: 'ielts', skill: 'writing', keywords: ['luyện dịch', 'translation', 'dịch đoạn'] },
   { key: 'spaced-repetition', title: { vi: 'Ôn từ theo lịch (lặp lại ngắt quãng)', en: 'Spaced repetition review' }, href: '/vocabulary/spaced-repetition', exam: 'both', skill: 'vocab', keywords: ['ôn tập', 'flashcard', 'srs', 'review', 'lặp lại'] },
-  { key: 'quest-pick', title: { vi: 'Chọn trận Quest', en: 'Pick a Quest battle' }, href: '/quest/pick', exam: 'both', skill: 'general', keywords: ['vào trận', 'battle', 'game'] },
 ];
 
 // ---------------------------------------------------------------------------

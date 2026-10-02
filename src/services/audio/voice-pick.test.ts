@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { bestVoice, scoreVoice } from './voice-pick';
+import { bestVoice, bestVoiceFor, scoreVoice } from './voice-pick';
 
 const v = (name: string, language = 'en-US') => ({ identifier: name, name, language });
 
@@ -42,4 +42,18 @@ test('Edge: giọng Aria Online (Natural) vẫn đứng đầu', () => {
     { identifier: 'g-us', name: 'Google US English', language: 'en-US' },
   ]);
   assert.equal(v?.identifier, 'aria');
+});
+
+test('mỗi giới một giọng tốt nhất, giọng nơ-ron thắng giọng cũ', () => {
+  const list = [
+    v('Microsoft David - English (United States)'),
+    v('Microsoft Guy Online (Natural) - English (United States)'),
+    v('Microsoft Zira - English (United States)'),
+    v('Microsoft Aria Online (Natural) - English (United States)'),
+    v('Google UK English Male', 'en-GB'),
+    v('Microsoft HoaiMy', 'vi-VN'),
+  ];
+  assert.match(bestVoiceFor(list, 'm')!.name, /Guy/);
+  assert.match(bestVoiceFor(list, 'f')!.name, /Aria/);
+  assert.equal(bestVoiceFor([v('Microsoft Aria Online (Natural) - English (United States)')], 'm'), null);
 });

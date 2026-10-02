@@ -238,6 +238,105 @@ function miniFrames(dir: Dir, st: PersonStyle): string[][] {
   return [f(0), f(1), f(2)];
 }
 
+/**
+ * BẢN "CHIBI" kiểu Bến Dừa (16×24, đầu to ~42% chiều cao, viền, đi 3 khung × 4 hướng) cho chế độ đối tượng.
+ * Hàng chân = 21 (bóng ở hàng 22).
+ */
+function chibiPerson(dir: Dir, frame: 0 | 1 | 2, st: PersonStyle): Paint {
+  const p = new Paint(16, 24);
+  const skin = st.skin ?? 'c';
+  const skinD = st.skinD ?? 'C';
+  const shoes = st.shoes ?? 'o';
+  const side = dir === 'left' || dir === 'right';
+  const off = st.kid ? 3 : 0;
+  const bob = frame === 0 ? 0 : 1;
+  const legTop = 17;
+  const legH = 4 - (st.kid ? 1 : 0);
+  const a = frame === 1 ? 1 : 0;
+  const b = frame === 2 ? 1 : 0;
+  const pantsC = st.dress ? skin : st.pants;
+  // chân
+  if (side) {
+    const sw = frame === 0 ? 0 : frame === 1 ? 2 : -2;
+    p.rect(7 + sw, legTop + off, 3, legH, pantsC).rect(7 + sw, legTop + off + legH, 3, 1, shoes);
+    if (frame) p.rect(7 - sw, legTop + off, 3, legH - 1, pantsC).rect(7 - sw, legTop + off + legH - 1, 3, 1, shoes);
+  } else {
+    p.rect(5, legTop + off + a, 2, legH - a, pantsC).rect(9, legTop + off + b, 2, legH - b, pantsC);
+    p.rect(4, legTop + off + legH, 3, 1, shoes).rect(9, legTop + off + legH, 3, 1, shoes);
+    if (a) p.rect(4, legTop + off + legH - 1, 3, 1, shoes);
+    if (b) p.rect(9, legTop + off + legH - 1, 3, 1, shoes);
+  }
+  // thân
+  const ty = 10 + off - bob * 0;
+  p.rect(4, ty, 8, 7, st.shirt).hline(4, ty + 6, 8, st.shirtD).vline(11, ty, 7, st.shirtD);
+  if (!side) {
+    p.rect(3, ty + 1 + a, 1, 4, st.shirt).rect(12, ty + 1 + b, 1, 4, st.shirtD);
+    p.px(3, ty + 5 + a, skin).px(12, ty + 5 + b, skin);
+    if (st.apron) p.rect(5, ty + 2, 6, 5, 'w').hline(5, ty + 2, 6, 'W');
+    if (st.tie) p.vline(8, ty, 4, 'r');
+    if (st.bag && dir === 'up') p.rect(5, ty, 6, 6, 'u').hline(5, ty, 6, 'U');
+    if (st.bag && dir === 'down') p.vline(5, ty, 5, 'U').vline(10, ty, 5, 'U');
+  } else {
+    const sw = frame === 0 ? 0 : frame === 1 ? -1 : 1;
+    p.rect(7 + sw, ty + 1, 2, 5, st.shirtD).px(7 + sw, ty + 6, skin);
+    if (st.bag) p.rect(dir === 'left' ? 9 : 4, ty, 3, 6, 'u').hline(dir === 'left' ? 9 : 4, ty, 3, 'U');
+    if (st.apron) p.rect(dir === 'left' ? 4 : 7, ty + 2, 5, 5, 'w');
+  }
+  if (st.dress) p.hline(4, ty + 6, 8, st.shirtD).rect(3, ty + 6, 10, 1, st.shirtD);
+  // đầu (to)
+  const hy = off;
+  p.rect(3, hy, 10, 10, skin).hline(3, hy + 9, 10, skinD);
+  const hk = st.head ?? 'none';
+  if (dir === 'down') {
+    p.rect(5, hy + 5, 2, 2, 'o').rect(9, hy + 5, 2, 2, 'o').px(5, hy + 5, 'w').px(9, hy + 5, 'w');
+    p.px(4, hy + 7, skinD).px(11, hy + 7, skinD).px(7, hy + 8, skinD).px(8, hy + 8, skinD);
+  } else if (dir === 'up') {
+    p.rect(3, hy, 10, 9, st.hair);
+  } else {
+    const fx = dir === 'left' ? 4 : 10;
+    p.rect(fx, hy + 5, 2, 2, 'o').px(fx, hy + 5, 'w');
+    p.px(dir === 'left' ? 3 : 12, hy + 7, skinD);
+    p.rect(dir === 'left' ? 8 : 3, hy, 5, 8, st.hair);
+  }
+  if (hk !== 'bald') {
+    p.rect(3, hy, 10, 4, st.hair);
+    if (dir === 'down' || side) p.px(3, hy + 4, st.hair).px(12, hy + 4, st.hair);
+  }
+  if (hk === 'long') {
+    if (dir === 'down') p.vline(2, hy + 3, 8, st.hair).vline(13, hy + 3, 8, st.hair);
+    else p.rect(side ? (dir === 'left' ? 8 : 3) : 2, hy + 3, side ? 5 : 12, 9, st.hair);
+  }
+  if (hk === 'bun') p.rect(6, hy - 2, 4, 2, st.hair);
+  if (hk === 'cap') {
+    p.rect(3, hy - 1, 10, 5, st.shirtD);
+    if (dir === 'down') p.hline(4, hy + 4, 8, st.shirtD);
+    if (dir === 'left') p.hline(1, hy + 3, 5, st.shirtD);
+    if (dir === 'right') p.hline(10, hy + 3, 5, st.shirtD);
+  }
+  if (hk === 'hat') p.rect(1, hy + 2, 14, 2, 'e').rect(4, hy - 2, 8, 4, 'u').hline(4, hy + 1, 8, 'U');
+  if (st.stick) p.vline(dir === 'right' ? 3 : 13, ty + 3, 11, 'X');
+  p.outline();
+  p.ellipse(8, 22, 5, 0, 'k');
+  return p;
+}
+
+function chibiFrames(dir: Dir, st: PersonStyle): string[][] {
+  const f = (n: 0 | 1 | 2) => (dir === 'right' ? chibiPerson('left', n, st).flipH().toRows() : chibiPerson(dir, n, st).toRows());
+  return [f(0), f(1), f(2)];
+}
+
+/** Người đi dạo nền: 8 kiểu trang phục khác nhau. */
+export const WALKER_STYLES: PersonStyle[] = [
+  { hair: 'X', shirt: 'z', shirtD: 'A', pants: 'n' },
+  { hair: 'o', shirt: 'r', shirtD: 'R', pants: 'P', head: 'cap' },
+  { hair: 'x', shirt: 'u', shirtD: 'U', pants: 'X', head: 'long' },
+  { hair: 'o', shirt: 'L', shirtD: 'h', pants: 'n', bag: true },
+  { hair: 'X', shirt: 'p', shirtD: 'P', pants: 'k', head: 'bun' },
+  { hair: 'b', shirt: 'w', shirtD: 'B', pants: 'P', head: 'hat' },
+  { hair: 'o', shirt: 'e', shirtD: 'U', pants: 'R', head: 'long', dress: true },
+  { hair: 'X', shirt: 'n', shirtD: 'k', pants: 'k', tie: true },
+];
+
 export const PERSON_SPRITES: Record<string, () => SpriteDef> = {};
 
 /** Mỗi người: 12 khung theo thứ tự hướng down, up, left, right × 3 khung bước. */
@@ -254,6 +353,13 @@ function registerMini(id: string, st: PersonStyle) {
 }
 OUTFITS.forEach((o, i) => registerMini(`player_${i}`, o));
 for (const [id, st] of Object.entries(NPC_STYLES)) registerMini(id, st);
+
+function registerChibi(id: string, st: PersonStyle) {
+  PERSON_SPRITES[`chibi_${id}`] = () => ({ w: 16, h: 24, frames: DIRS.flatMap((d) => chibiFrames(d, st)) });
+}
+OUTFITS.forEach((o, i) => registerChibi(`player_${i}`, o));
+for (const [id, st] of Object.entries(NPC_STYLES)) registerChibi(id, st);
+WALKER_STYLES.forEach((w, i) => registerChibi(`walker_${i}`, w));
 
 register('player', OUTFITS[0]!);
 OUTFITS.forEach((o, i) => register(`player_${i}`, o));

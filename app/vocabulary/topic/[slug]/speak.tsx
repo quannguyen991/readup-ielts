@@ -11,6 +11,9 @@ import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { normalizeAnswer } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
 import { useGameStore } from '@/store/useGameStore';
+import { CoachBubble, CoachToggle } from '@/components/speaking/CoachKit';
+import { playSfx } from '@/services/audio/sfx-ui';
+import { useVoiceCoach } from '@/services/audio/useVoiceCoach';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 
@@ -59,6 +62,7 @@ export default function SpeakScreen() {
   const [verdict, setVerdict] = useState<boolean | null>(null);
   const [correct, setCorrect] = useState(0);
   const recRef = useRef<Recognition | null>(null);
+  const coach = useVoiceCoach();
 
   const word = words[index];
 
@@ -74,6 +78,8 @@ export default function SpeakScreen() {
 
   const listen = () => {
     if (!word || listening) return;
+    // Huấn luyện viên phải im hẳn trước khi micro mở.
+    coach.stop();
     const rec = makeRecognition();
     if (!rec) return;
     recRef.current = rec;
@@ -88,18 +94,25 @@ export default function SpeakScreen() {
       // Game khi học chỉ tính lần MÁY nghe chấm; tự bấm "giống mẫu" thì không.
       useGameStore.getState().answer(ok, 'vocab', { key: `speak:${slug}:${word.word}` });
       judge(ok);
+      coach.feedback({ score: ok ? 100 : 40, missed: ok ? [] : [word.word], sentence: word.word });
     };
     rec.onerror = (e) => {
       setHeard([e.error === 'no-speech' ? L('(không nghe thấy gì)', '(heard nothing)') : L(`(lỗi micro: ${e.error})`, `(mic error: ${e.error})`)]);
     };
-    rec.onend = () => setListening(false);
+    rec.onend = () => {
+      setListening(false);
+      playSfx('micStop');
+    };
     setHeard(null);
     setVerdict(null);
     setListening(true);
+    playSfx('micStart');
     rec.start();
   };
 
   const next = () => {
+    coach.reset();
+    playSfx('next');
     setHeard(null);
     setVerdict(null);
     setIndex((i) => (i + 1) % Math.max(1, words.length));
@@ -126,7 +139,7 @@ export default function SpeakScreen() {
     <StudyFrame backHref={`/vocabulary/topic/${slug}`} title={(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)} footer={L(`Từ ${index + 1} / ${words.length}  •  Đọc đúng ${correct}`, `Word ${index + 1} / ${words.length}  •  Said right ${correct}`)} battle>
       <CrossFade swapKey={`s-${index}`}>
         <StudyCard>
-          <Text className="text-center font-semi text-label uppercase tracking-[1.2px] text-muted">
+          <Text className="text-center font-semi text-label text-muted">
             {supported
               ? L('Nghe mẫu, rồi bấm micro và đọc', 'Listen to the model, then tap the mic and say it')
               : L('Nghe mẫu, đọc to, rồi tự đánh giá', 'Listen to the model, say it aloud, then rate yourself')}
@@ -153,6 +166,7 @@ export default function SpeakScreen() {
               >
                 <Icon name="mic" size={36} color="#FFFFFF" />
               </Pressable>
+              <View className="mt-3"><CoachToggle /></View>
               <Text className="mt-2 font-semi text-body text-muted">{listening ? L('Đang nghe… đọc từ trên', 'Listening… say the word above') : L('Bấm để đọc', 'Tap to speak')}</Text>
               {heard ? (
                 <Text className="mt-3 text-center font-sans text-body text-ink">
@@ -173,12 +187,14 @@ export default function SpeakScreen() {
             </View>
           ) : null}
 
+          <CoachBubble coach={coach} />
+
           {verdict !== null ? (
             <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? '#ECFDF3' : '#FFF1F2' }}>
               <Text className="font-strong text-cardTitle" style={{ color: verdict ? GREEN : RED }}>
                 {verdict ? L('Phát âm rõ!', 'Clear pronunciation!') : L('Chưa khớp — nghe lại mẫu rồi thử lần nữa', 'No match — listen to the model and try again')}
               </Text>
-              {!verdict && supported ? <GhostButton label={L('Thử đọc lại', 'Try again')} onPress={() => { setVerdict(null); setHeard(null); }} /> : null}
+              {!verdict && supported ? <GhostButton label={L('Thử đọc lại', 'Try again')} onPress={() => { coach.stop(); setVerdict(null); setHeard(null); }} /> : null}
               <PrimaryButton label={L('Từ tiếp theo', 'Next word')} hint="Enter" onPress={next} />
             </View>
           ) : null}

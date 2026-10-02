@@ -2,6 +2,13 @@ import { useMemo } from 'react';
 
 import { useHydrated } from '@/components/layout/useHydrated';
 import { mainPoisOfCity } from '@/data/travel/pois';
+import { defaultExamFor, defaultLevelFor, levelsOf } from '@/data/learning-path';
+import { usePathData } from '@/components/learning-path/usePathData';
+import { nodeStatus } from '@/services/learning-path/progress';
+import { PATH_RESOLVERS } from '@/services/learning-path/resolvers';
+import { pathVocabDecks, resolveFocusDecks, type FocusSource } from '@/services/travel/decks';
+import { useLearningPathStore } from '@/store/useLearningPathStore';
+import { useRoadmapStore } from '@/store/useRoadmapStore';
 import { dueBySlug } from '@/services/vocab/review-schedule';
 import { cityCompletion, CITY_ORDER, isCityUnlocked } from '@/services/travel/world';
 import type { CityId } from '@/services/travel/types';
@@ -57,4 +64,39 @@ export function useStudiedDecks(): string[] {
 /** false ở lượt vẽ đầu (khớp bản dựng máy chủ) — các trang phụ thuộc kho lưu trên máy chờ cờ này. */
 export function useTravelReady(): boolean {
   return useHydrated();
+}
+
+/**
+ * Bộ từ theo LỘ TRÌNH của người học: trình độ đã chọn ở màn Lộ trình học, hoặc suy từ lộ trình cá nhân
+ * (mục tiêu / điểm hiện tại họ khai). Chưa biết trình độ thì trả `level: null` và không có bộ nào —
+ * KHÔNG đoán một mức mặc định.
+ */
+export function usePathDecks(): { decks: string[]; levelLabel: string | null } {
+  const hydrated = useHydrated();
+  const input = useRoadmapStore((s) => s.input);
+  const storedExam = useLearningPathStore((s) => s.exam);
+  const storedLevels = useLearningPathStore((s) => s.levels);
+  const data = usePathData();
+  return useMemo(() => {
+    if (!hydrated) return { decks: [], levelLabel: null };
+    const exam = storedExam ?? defaultExamFor(input);
+    const levels = levelsOf(exam);
+    const level = levels.find((l) => l.id === storedLevels[exam]) ?? (input?.[exam] ? defaultLevelFor(exam, input) : null);
+    if (!level) return { decks: [], levelLabel: null };
+    const isDone = (id: string) => {
+      const node = level.parts.flatMap((p) => p.nodes).find((n) => n.id === id);
+      return !!node && nodeStatus(node, data, PATH_RESOLVERS).state === 'done';
+    };
+    return { decks: pathVocabDecks(level, isDone), levelLabel: level.label };
+  }, [hydrated, input, storedExam, storedLevels, data]);
+}
+
+/** Bộ từ đang dùng cho câu hỏi: tự chọn, rồi theo lộ trình, rồi (rỗng) bộ mặc định của địa điểm. */
+export function useFocusDecks(): { decks: string[]; source: FocusSource; chosen: string[]; path: string[]; levelLabel: string | null } {
+  const chosen = useTravelStore((s) => s.decks);
+  const path = usePathDecks();
+  return useMemo(() => {
+    const r = resolveFocusDecks({ chosen, path: path.decks });
+    return { ...r, chosen: chosen ?? [], path: path.decks, levelLabel: path.levelLabel };
+  }, [chosen, path]);
 }

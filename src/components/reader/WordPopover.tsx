@@ -9,6 +9,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Speech from 'expo-speech';
 import { englishVoice } from '@/services/audio/voice';
+import { pronounce, stopPronounce } from '@/services/audio/pronounce';
+import { isSingleWord } from '@/services/audio/pronounce-core';
 
 import { Icon } from '@/components/ui';
 import { readingFont } from '@/lib/readingFonts';
@@ -100,8 +102,11 @@ export function WordPopover({
   const top = cardH === 0 ? below : fitsBelow ? below : Math.max(12, pick.anchor.y - cardH - 10);
 
   const speak = (text: string) => {
-    Speech.stop();
-    Speech.speak(text, { language: 'en-GB', rate: 0.9, voice: englishVoice() });
+    if (isSingleWord(text)) void pronounce(text);
+    else {
+      stopPronounce();
+      Speech.speak(text, { language: 'en-GB', rate: 0.9, voice: englishVoice() });
+    }
   };
 
   const save = () => {

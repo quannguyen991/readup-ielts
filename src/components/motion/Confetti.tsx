@@ -2,7 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Platform, View, useWindowDimensions } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { playCorrectChime } from '@/services/audio/chime';
+import { playSfx } from '@/services/audio/sfx-ui';
 import { hashString, mulberry32 } from '@/services/questions/rng';
 
 /**
@@ -60,7 +60,7 @@ export function Confetti({
 
   useEffect(() => {
     if (silent) return;
-    playCorrectChime();
+    playSfx('success');
   }, [seed, silent]);
 
   const items = useMemo<Piece[]>(() => {

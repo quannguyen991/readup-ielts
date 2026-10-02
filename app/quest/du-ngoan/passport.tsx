@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { useCityStatus, useTravelReady } from '@/components/travel/useTravel';
 import { Eyebrow, PixelPanel, StampGlyph, StarsRow, T } from '@/components/travel/ui/kit';
+import { PassportBoard } from '@/components/travel/ui/PassportBoard';
+import { PassportRewards } from '@/components/travel/ui/PassportRewards';
 import { TravelPage } from '@/components/travel/ui/TravelPage';
 import { Traveller } from '@/components/travel/ui/Traveller';
 import { Icon } from '@/components/ui/Icon';
 import { mainPoisOfCity } from '@/data/travel/pois';
 import { bi, useL } from '@/i18n/useL';
+import { pointsOf, readyTiers } from '@/services/travel/passport';
 import { CITIES, CITY_ORDER } from '@/services/travel/world';
 import { useTravelStore } from '@/store/useTravelStore';
 
-/** /quest/du-ngoan/passport — Hộ chiếu: con dấu từng thành phố, tiến độ, cấp hộ chiếu. */
+/**
+ * /quest/du-ngoan/passport — Hộ chiếu, ba tab: Tem (con dấu từng thành phố, tiến độ), Quà (điểm hộ chiếu và
+ * các mốc quà, kể cả "Pro Max"), Xếp hạng ("Ai đi nhiều nhất" của tháng). Mở thẳng một tab bằng `?tab=gifts|board`.
+ */
+type Tab = 'stamps' | 'gifts' | 'board';
 export default function PassportRoute() {
   const ready = useTravelReady();
   const { L } = useL();
@@ -29,8 +36,13 @@ function Passport() {
   const visited = useTravelStore((s) => s.visited);
   const poi = useTravelStore((s) => s.poi);
   const souvenirs = useTravelStore((s) => s.souvenirs);
+  const params = useLocalSearchParams<{ tab?: string }>();
+  const first = params.tab === 'gifts' || params.tab === 'board' ? params.tab : 'stamps';
+  const [tab, setTab] = useState<Tab>(first);
+  const ledger = useTravelStore((s) => s.ledger);
+  const points = pointsOf(ledger);
+  const ready = readyTiers(ledger).length;
   const stamps = CITY_ORDER.filter((c) => status[c].stamp).length;
-  const runs = Object.values(poi).reduce((n, p) => n + p.runs, 0);
   const starTotal = Object.values(poi).reduce((n, p) => n + p.best, 0);
 
   const fmt = (iso?: string) => {
@@ -57,11 +69,53 @@ function Passport() {
         <View style={{ flexDirection: 'row', gap: 18, flexWrap: 'wrap' }}>
           <Stat n={stamps} label={L('Con dấu', 'Stamps')} />
           <Stat n={Object.keys(souvenirs).length} label={L('Quà', 'Souvenirs')} />
-          <Stat n={runs} label={L('Lượt làm', 'Runs')} />
+          <Stat n={points} label={L('Điểm', 'Points')} />
           <Stat n={starTotal} label={L('Sao', 'Stars')} />
         </View>
       </PixelPanel>
 
+      <View style={{ flexDirection: 'row', gap: 8, marginTop: 16 }} accessibilityRole="tablist">
+        {(
+          [
+            ['stamps', L('Tem', 'Stamps'), 0],
+            ['gifts', L('Quà', 'Rewards'), ready],
+            ['board', L('Xếp hạng', 'Ranking'), 0],
+          ] as [Tab, string, number][]
+        ).map(([id, label, badge]) => (
+          <Pressable
+            key={id}
+            accessibilityRole="tab"
+            accessibilityState={{ selected: tab === id }}
+            onPress={() => setTab(id)}
+            style={{ flex: 1, maxWidth: 200, minHeight: 46, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 6, borderRadius: 6, borderWidth: 2, borderColor: tab === id ? T.navy : T.line, backgroundColor: tab === id ? T.goldLight : T.paper }}
+          >
+            <Text className="font-strong" style={{ fontSize: 15, color: T.ink }}>
+              {label}
+            </Text>
+            {badge ? (
+              <View style={{ minWidth: 20, height: 20, borderRadius: 10, paddingHorizontal: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: T.bad }}>
+                <Text className="font-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>
+                  {badge}
+                </Text>
+              </View>
+            ) : null}
+          </Pressable>
+        ))}
+      </View>
+
+      {tab === 'gifts' ? (
+        <View style={{ marginTop: 16 }}>
+          <PassportRewards />
+        </View>
+      ) : null}
+      {tab === 'board' ? (
+        <View style={{ marginTop: 16 }}>
+          <PassportBoard />
+        </View>
+      ) : null}
+
+      {tab === 'stamps' ? (
+      <>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16, marginTop: 18 }}>
         {CITY_ORDER.map((c) => {
           const st = status[c];
@@ -116,6 +170,8 @@ function Passport() {
           {L('Đạt hết các địa điểm của một thành phố.', 'Pass every place in a city.')}
         </Text>
       </View>
+      </>
+      ) : null}
     </TravelPage>
   );
 }

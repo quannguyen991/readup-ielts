@@ -64,7 +64,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/checkout$/,
   // Du ngoạn Band 9: cảnh thành phố và lượt làm bài ở một địa điểm.
   /^\/quest\/du-ngoan\/visit\/[^/]+$/,
-  /^\/quest\/du-ngoan\/(hanoi|singapore|london|paris|amsterdam|rome)$/,
+  /^\/quest\/du-ngoan\/(hanoi|singapore|london|paris|amsterdam|rome|hochiminh|danang)$/,
   // Bản đồ ReadUp: thế giới pixel chiếm trọn màn hình.
   /^\/quest\/world(\/[^/]+)?$/,
 ];

@@ -15,7 +15,7 @@ export type PassResult =
 
 export function applyStarPass(
   current: { plan: PlanId; expiresAt: string | null; source: 'local' | 'trial' | 'server' },
-  pass: { id: 'plus' | 'pro'; days: number },
+  pass: { id: Exclude<PlanId, 'free'>; days: number },
   now: Date = new Date(),
 ): PassResult {
   const active = effectivePlan(current.plan, current.expiresAt, now);

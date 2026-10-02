@@ -1,5 +1,5 @@
 import { getPoiContent } from '@/data/travel/pois';
-import { CITY_MAPS, TILE_FALLBACKS } from '@/data/travel/maps';
+import { CITY_MAPS, FLAT_FALLBACKS, TILE_FALLBACKS } from '@/data/travel/maps';
 import type { CityId, CityMap } from '@/services/travel/types';
 
 /**
@@ -14,7 +14,7 @@ const RAW: Partial<Record<CityId, CityMap>> = CITY_MAPS;
 
 /** Bản đồ ô dự phòng khi không tải được tranh nền (hiện có cho Singapore). */
 export function getFallbackMap(id: CityId): CityMap | undefined {
-  return TILE_FALLBACKS[id];
+  return FLAT_FALLBACKS[id] ?? TILE_FALLBACKS[id];
 }
 
 function normalize(map: CityMap): CityMap {

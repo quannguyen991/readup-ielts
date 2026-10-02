@@ -1,8 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
-import * as Speech from 'expo-speech';
-import { englishVoice } from '@/services/audio/voice';
+import { pronounce } from '@/services/audio/pronounce';
 
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
@@ -285,7 +284,7 @@ function WordRow({ entry, status }: { entry: VocabEntry; status: WordStatusKind 
         <IconButton
           name="volume"
           accessibilityLabel={L('Phát âm', 'Pronounce')}
-          onPress={() => Speech.speak(entry.word, { language: 'en-US', rate: 0.9, voice: englishVoice() })}
+          onPress={() => void pronounce(entry.word)}
         />
 
         <View className="flex-1" />

@@ -4,20 +4,30 @@
  */
 import type { CityId, CityMap } from '@/services/travel/types';
 import { amsterdam } from './amsterdam';
-import { hanoi } from './hanoi';
+import { amsterdamFlat } from './amsterdam.flat';
+import { danang, danangTiles } from './danang';
+import { hanoi, hanoiTiles } from './hanoi';
+import { hochiminh, hochiminhTiles } from './hochiminh';
 import { london } from './london';
+import { londonFlat } from './london.flat';
 import { paris } from './paris';
+import { parisFlat } from './paris.flat';
 import { rome } from './rome';
+import { romeFlat } from './rome.flat';
 import { singapore } from './singapore';
+import { singaporeFlat } from './singapore.flat';
 import { singaporeTiles } from './singapore.tiles';
 
-export const CITY_MAPS: Record<CityId, CityMap> = { hanoi, singapore, london, paris, amsterdam, rome };
+export const CITY_MAPS: Record<CityId, CityMap> = { hanoi, singapore, london, paris, amsterdam, rome, hochiminh, danang };
 
 /** Bản đồ ô dự phòng (code-drawn) cho thành phố nào đã có. */
-export const TILE_FALLBACKS: Partial<Record<CityId, CityMap>> = { singapore: singaporeTiles };
+export const TILE_FALLBACKS: Partial<Record<CityId, CityMap>> = { singapore: singaporeTiles, hanoi: hanoiTiles, hochiminh: hochiminhTiles, danang: danangTiles };
+
+/** Bản đồ ẢNH PHẲNG cũ: dự phòng của chế độ đối tượng khi chưa có/không tải được ảnh đất. */
+export const FLAT_FALLBACKS: Partial<Record<CityId, CityMap>> = { singapore: singaporeFlat, london: londonFlat, paris: parisFlat, amsterdam: amsterdamFlat, rome: romeFlat };
 
 export function getCityMap(id: CityId): CityMap {
   return CITY_MAPS[id];
 }
 
-export { hanoi, singapore, london, paris, amsterdam, rome, singaporeTiles };
+export { hanoi, hanoiTiles, hochiminh, hochiminhTiles, danang, danangTiles, singapore, london, paris, amsterdam, rome, singaporeTiles, singaporeFlat, londonFlat, parisFlat, amsterdamFlat, romeFlat };

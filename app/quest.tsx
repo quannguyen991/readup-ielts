@@ -1,20 +1,16 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { ensureGameKeyframes } from '@/components/game/game-anim';
-import { AreaCard, PICK_AREAS } from '@/components/game/QuestPicker';
-import { BattleHud } from '@/components/game/quest-hub/BattleHud';
 import { DailyQuests, TodayStats } from '@/components/game/quest-hub/DailyQuests';
 import { ExploreTiles } from '@/components/game/quest-hub/ExploreTiles';
-import { Cols, Eyebrow, GAP, HUB, lift, Panel, SectionHeader, useBoxWidth, WEB } from '@/components/game/quest-hub/kit';
-import { useWorldIslands } from '@/components/world/useWorldIslands';
+import { TravelHero } from '@/components/game/quest-hub/TravelHero';
+import { Cols, Eyebrow, GAP, HUB, Panel, SectionHeader, useBoxWidth, WEB } from '@/components/game/quest-hub/kit';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { useL } from '@/i18n/useL';
 import { CRIT_EVERY, ENEMIES, XP_CORRECT } from '@/services/game/rules';
-import { nextMission, type Island } from '@/services/world/islands';
 import { useGameStore } from '@/store/useGameStore';
 import { useCityAvailable } from '@/services/city/availability';
 import { QuestCityHero } from '@/components/city/QuestCityHero';
@@ -24,24 +20,19 @@ import { QuestJourneyHero } from '@/components/rail/QuestJourneyHero';
  * BAND 9 QUEST — SẢNH GAME KHI HỌC.
  *
  * Không có màn chơi riêng: ở mọi màn học, trả lời đúng là một nhát chém vào con
- * quái đang chặn đường, sai thì quái đánh lại (`services/game/rules.ts`). Trang
- * này cho thấy trận đang tới đâu và dẫn vào học.
+ * quái đang chặn đường, sai thì quái đánh lại (`services/game/rules.ts`).
  *
- * Bố cục dựng lại ngày 30/09/2026 ("chỉn chu hơn", bỏ tông tím), từ trên xuống:
- *   1. THẺ TRẬN ĐẤU — nhân vật (skin, linh vật, cấp, XP, tim, sao, chuỗi ngày)
- *      đối đầu con quái hiện tại, cùng nút chính "Vào trận" và "Học tiếp".
- *   2. HAI THẾ GIỚI — Hành trình học bằng cảnh bay qua thành phố, rồi Thành phố Tri thức (chỉ
- *      máy tính). Người dùng yêu cầu 30/09 lấy hai khối này làm phần chính của
- *      Quest, nên chúng vẫn là hai khối lớn ngay dưới thẻ trận đấu.
- *   3. HÔM NAY — nhiệm vụ ngày dạng danh sách đánh dấu + số liệu thật hôm nay.
- *   4. CHỌN MẢNG — năm mảng bài học + ô mở màn chọn trận.
- *   5. KHÁM PHÁ — tám khu chơi khác, cùng một cỡ ô có sticker.
- *   6. LUẬT TRONG 20 GIÂY.
+ * 02/10/2026 người dùng: "chơi cái map du ngoạn thế giới, ghim ở phần quest, bỏ cái
+ * vào trận đi". Nên đầu trang là THẺ GHIM Du ngoạn Band 9 (bản đồ thế giới + nút
+ * "Du ngoạn"), và thẻ trận đấu + nút "Vào trận" / "Học tiếp" + lưới "Chọn mảng để
+ * vào trận" đã gỡ khỏi trang này. Các route `/quest/pick` và `BattleHud` vẫn còn
+ * (màn khác dùng lại), chỉ không được đưa lên /quest nữa. Từ trên xuống:
+ *   1. DU NGOẠN BAND 9 — thẻ ghim.
+ *   2. THÀNH PHỐ TRI THỨC (chỉ máy tính) và CHUYẾN BAY TỪ VỰNG.
+ *   3. HÔM NAY — nhiệm vụ ngày + số liệu thật hôm nay.
+ *   4. KHÁM PHÁ — các khu chơi khác.
+ *   5. LUẬT TRONG 20 GIÂY.
  * Mọi khối dùng chung bộ thẻ `components/game/quest-hub/kit`.
- *
- * "Vào trận" KHÔNG nhảy thẳng vào một bài do máy chọn (người dùng chê ngày
- * 25/09/2026). Nó mở màn chọn `/quest/pick`: chọn mảng → chọn bài → vào lý
- * thuyết. Ai muốn đi nhanh thì có nút "Học tiếp", ghi rõ tên bài sẽ mở.
  *
  * Quest cũ (các khu Iron Frontier, Fjord of Runes… với trận đánh riêng bằng câu
  * SAT) đã bỏ hẳn ngày 24/09/2026 — đừng dựng lại bản đồ trận riêng.
@@ -55,20 +46,20 @@ export default function QuestHome() {
   const cityAvailable = useCityAvailable();
   const enabled = useGameStore((s) => s.enabled);
   const setEnabled = useGameStore((s) => s.setEnabled);
-  const islands = useWorldIslands();
-  const next = nextMission(islands);
-  const areas = useMemo(
-    () => PICK_AREAS.map((id) => islands.find((i) => i.id === id)).filter((i): i is Island => !!i),
-    [islands],
-  );
   const [w, onLayout] = useBoxWidth();
   const wide = w >= 900;
-  const areaCols = w >= 900 ? 3 : w >= 600 ? 2 : 1;
 
   return (
     <Screen>
       <View onLayout={onLayout} style={{ width: '100%', maxWidth: MAX_W, alignSelf: 'center', paddingBottom: 28 }}>
-        {/* 0. Thành phố đặt trên đầu (01/10/2026: "để cái xây thành phố trên đầu"), chỉ máy tính */}
+        {/* 0. Du ngoạn Band 9 — thẻ ghim */}
+        <Appear>
+          <View style={{ marginBottom: GAP.md }}>
+            <TravelHero />
+          </View>
+        </Appear>
+
+        {/* 1. Thành phố Tri thức (chỉ máy tính) (01/10/2026: "để cái xây thành phố trên đầu"), chỉ máy tính */}
         {cityAvailable ? (
           <Appear>
             <View style={{ marginBottom: GAP.md }}>
@@ -103,14 +94,9 @@ export default function QuestHome() {
           </Appear>
         ) : null}
 
-        {/* 1. Thẻ trận đấu */}
-        <Appear>
-          <BattleHud next={next} />
-        </Appear>
-
         {/* 2. Chuyến bay từ vựng */}
         <Appear index={1}>
-          <View style={{ marginTop: GAP.md }}>
+          <View>
             <QuestJourneyHero />
           </View>
         </Appear>
@@ -133,27 +119,6 @@ export default function QuestHome() {
                 </Text>
                 <TodayStats />
               </Panel>
-            </View>
-          </View>
-        </Appear>
-
-        {/* 4. Chọn mảng */}
-        <Appear index={4}>
-          <View style={{ marginTop: GAP.section }}>
-            <SectionHeader
-              seal="compass"
-              tone={HUB.green}
-              title={L('Chọn mảng để vào trận', 'Pick an area to battle')}
-              sub={L('Bấm một mảng để xem các bài và chọn bài muốn học.', 'Tap an area to see its lessons and choose one.')}
-              action={{ label: L('Mở màn chọn trận', 'Open battle picker'), href: '/quest/pick' }}
-            />
-            <View style={{ marginTop: GAP.md }}>
-              <Cols cols={areaCols}>
-                {areas.map((island) => (
-                  <AreaCard key={island.id} island={island} onPress={() => router.push(`/quest/pick?area=${island.id}` as never)} />
-                ))}
-                <PickAllCard />
-              </Cols>
             </View>
           </View>
         </Appear>
@@ -193,45 +158,6 @@ export default function QuestHome() {
         </Appear>
       </View>
     </Screen>
-  );
-}
-
-/** Ô thứ sáu của lưới mảng: mở màn chọn trận đầy đủ. */
-function PickAllCard() {
-  const { L } = useL();
-  return (
-    <Pressable
-      accessibilityRole="link"
-      accessibilityLabel={L('Mở màn chọn trận: xem tất cả mảng và bài', 'Open battle picker: see all areas and lessons')}
-      onPress={() => router.push('/quest/pick' as never)}
-      style={({ hovered }: { hovered?: boolean }) => ({
-        height: '100%',
-        minHeight: 150,
-        borderRadius: 20,
-        padding: 16,
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 8,
-        borderWidth: 1.5,
-        borderStyle: 'dashed',
-        borderColor: hovered ? 'rgba(250,204,21,0.8)' : 'rgba(250,204,21,0.4)',
-        backgroundColor: hovered ? 'rgba(250,204,21,0.08)' : 'rgba(14,27,48,0.6)',
-        ...lift(hovered, 2),
-      })}
-    >
-      <View aria-hidden>
-        <SealIcon name="grid" color={HUB.amber} size={44} />
-      </View>
-      <Text className="font-heavy" style={{ fontSize: 16, color: HUB.ink, textAlign: 'center' }}>
-        {L('Xem tất cả bài', 'See all lessons')}
-      </Text>
-      <Text className="font-sans" style={{ fontSize: 13, lineHeight: 18, color: HUB.muted, textAlign: 'center', maxWidth: 240 }}>
-        {L('Lọc theo mảng, độ khó và bài đã qua.', 'Filter by area, difficulty and completed lessons.')}
-      </Text>
-      <Text className="font-strong" style={{ marginTop: 2, fontSize: 13, color: HUB.gold }}>
-        {L('Mở màn chọn trận →', 'Open battle picker →')}
-      </Text>
-    </Pressable>
   );
 }
 

@@ -108,6 +108,10 @@ export function weatherPlan(city: CityId, hourFloat: number, dayKey: string): We
       return { kind: 'clear', intensity: 0 };
     case 'amsterdam':
       return { kind: 'wind', intensity: 0.4 + roll * 0.4 };
+    case 'hochiminh':
+      if (hourFloat >= 14 && hourFloat < 18 && roll < 0.5) return { kind: 'shower-evening', intensity: 0.7 };
+      return { kind: 'clear', intensity: 0 };
+    case 'danang':
     case 'hanoi':
       return roll < 0.2 ? { kind: 'drizzle', intensity: 0.3 } : { kind: 'clear', intensity: 0 };
     case 'paris':

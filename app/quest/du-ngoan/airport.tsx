@@ -3,7 +3,7 @@ import { Modal, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { recordAnswer, seenKeys } from '@/components/travel/record';
-import { useStudiedDecks, useStudySnapshot, useTravelReady } from '@/components/travel/useTravel';
+import { useFocusDecks, useStudiedDecks, useStudySnapshot, useTravelReady } from '@/components/travel/useTravel';
 import { Eyebrow, GameButton, PixelPanel, T, TicketGlyph } from '@/components/travel/ui/kit';
 import { QuestionRunner, type RunResult } from '@/components/travel/ui/QuestionRunner';
 import { PixelStage, cssAnim } from '@/components/travel/ui/PixelStage';
@@ -45,6 +45,7 @@ function Airport() {
   const reduced = useReducedMotion();
   const snap = useStudySnapshot();
   const studied = useStudiedDecks();
+  const focus = useFocusDecks();
   const [mode, setMode] = useState<Mode>(null);
   const [outcome, setOutcome] = useState<Outcome>(null);
   const [swap, setSwap] = useState<string | null>(null);
@@ -58,10 +59,10 @@ function Airport() {
   const dueCount = useMemo(() => Object.values(snap.due).reduce((n, w) => n + w.length, 0), [snap.due]);
 
   const startCustoms = useCallback(() => {
-    const qs = pickCustomsQuestions({ ...snap, studiedDecks: studied, day, run: today.custom + 1, seen, nowMs: Date.now() });
+    const qs = pickCustomsQuestions({ ...snap, studiedDecks: studied, focusDecks: focus.decks, day, run: today.custom + 1, seen, nowMs: Date.now() });
     setOutcome(null);
     setMode({ kind: 'customs', questions: qs });
-  }, [snap, studied, day, today.custom, seen]);
+  }, [snap, studied, focus.decks, day, today.custom, seen]);
 
   const startReview = useCallback(() => {
     const qs = pickReviewQuestions({ ...snap, day, run: today.reviewWords ?? 0, seen, nowMs: Date.now() });

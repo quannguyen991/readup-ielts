@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 
 import { comboSemitones, shiftHz } from './sfx-notes';
+import { createSfxGate } from './sfx-core';
 
 /**
  * HIỆU ỨNG ÂM THANH CỦA GAME KHI HỌC — tự tổng hợp bằng Web Audio, không nạp tệp.
@@ -22,17 +23,48 @@ import { comboSemitones, shiftHz } from './sfx-notes';
  * kể cả chuông "đúng" cũ. Native thì im có chủ ý, như tiếng chuông trước đây.
  */
 
-type Engine = { ac: AudioContext; out: AudioNode; now: number };
+export type Engine = { ac: AudioContext; out: AudioNode; now: number };
 
 let ctx: AudioContext | null = null;
 let bus: GainNode | null = null;
 let noiseBuffer: AudioBuffer | null = null;
+export const gate = createSfxGate();
 let muted = false;
+let unlocked = false;
 const lastPlayed: Record<string, number> = {};
 
 export function setSfxMuted(value: boolean): void {
   muted = value;
+  gate.setMuted(value);
 }
+
+const BUS_GAIN = 0.6;
+
+/** Âm lượng chung 0–1 (thanh trượt ở Cài đặt). Áp ngay cho cả tiếng đang chờ phát. */
+export function setSfxVolume(value: number): void {
+  gate.setVolume(value);
+  if (bus && ctx) bus.gain.setTargetAtTime(BUS_GAIN * gate.getVolume(), ctx.currentTime, 0.02);
+}
+
+export function getSfxVolume(): number {
+  return gate.getVolume();
+}
+
+/**
+ * Trình duyệt cấm phát tiếng trước khi người dùng chạm vào trang. Lần chạm / bấm
+ * phím đầu tiên mở khoá; trước đó mọi tiếng im lặng thay vì nổ cảnh báo.
+ */
+function armUnlock(): void {
+  if (Platform.OS !== 'web' || typeof window === 'undefined') return;
+  const events = ['pointerdown', 'keydown', 'touchstart'];
+  const go = () => {
+    unlocked = true;
+    for (const ev of events) window.removeEventListener(ev, go, true);
+    if (!muted) engine();
+  };
+  for (const ev of events) window.addEventListener(ev, go, true);
+}
+armUnlock();
 
 /**
  * Chế độ BAY QUA THÀNH PHỐ: màn học đang dùng nền cảnh bay (hoặc đang ở Chuyến bay
@@ -52,8 +84,10 @@ export function isSfxMuted(): boolean {
   return muted;
 }
 
-function engine(): Engine | null {
+export function engine(): Engine | null {
   if (muted || Platform.OS !== 'web' || typeof window === 'undefined') return null;
+  if (!unlocked && (navigator as { userActivation?: { hasBeenActive: boolean } }).userActivation?.hasBeenActive) unlocked = true;
+  if (!unlocked) return null;
   const w = window as unknown as { AudioContext?: typeof AudioContext; webkitAudioContext?: typeof AudioContext };
   const Ctor = w.AudioContext ?? w.webkitAudioContext;
   if (!Ctor) return null;
@@ -67,7 +101,7 @@ function engine(): Engine | null {
       squash.attack.value = 0.003;
       squash.release.value = 0.15;
       bus = ctx.createGain();
-      bus.gain.value = 0.6;
+      bus.gain.value = BUS_GAIN * gate.getVolume();
       bus.connect(squash).connect(ctx.destination);
     }
     if (ctx.state === 'suspended') void ctx.resume();
@@ -103,7 +137,7 @@ function play(kind: string | null, windowMs: number, draw: (e: Engine) => void):
 type ToneOpts = { at?: number; dur: number; gain: number; type?: OscillatorType; to?: number; attack?: number };
 
 /** Một nốt có bao đóng; `to` là tần số trượt tới cuối nốt. */
-function tone(e: Engine, hz: number, { at = 0, dur, gain, type = 'sine', to, attack = 0.006 }: ToneOpts): void {
+export function tone(e: Engine, hz: number, { at = 0, dur, gain, type = 'sine', to, attack = 0.006 }: ToneOpts): void {
   const t0 = e.now + at;
   const osc = e.ac.createOscillator();
   const amp = e.ac.createGain();
@@ -121,7 +155,7 @@ function tone(e: Engine, hz: number, { at = 0, dur, gain, type = 'sine', to, att
 type NoiseOpts = { at?: number; dur: number; gain: number; filter?: BiquadFilterType; hz?: number; to?: number; q?: number; attack?: number };
 
 /** Một luồng nhiễu trắng qua bộ lọc — tiếng gió kiếm, tiếng va, tiếng nổ. */
-function noise(e: Engine, { at = 0, dur, gain, filter = 'bandpass', hz = 1200, to, q = 1, attack = 0.004 }: NoiseOpts): void {
+export function noise(e: Engine, { at = 0, dur, gain, filter = 'bandpass', hz = 1200, to, q = 1, attack = 0.004 }: NoiseOpts): void {
   if (!noiseBuffer) {
     const length = e.ac.sampleRate;
     noiseBuffer = e.ac.createBuffer(1, length, e.ac.sampleRate);
@@ -145,7 +179,7 @@ function noise(e: Engine, { at = 0, dur, gain, filter = 'bandpass', hz = 1200, t
   src.stop(t0 + dur + 0.03);
 }
 
-const C5 = 523.25;
+export const C5 = 523.25;
 
 export const sfx = {
   /** Đúng: hai nốt đi lên (quãng năm), cao dần theo combo. */

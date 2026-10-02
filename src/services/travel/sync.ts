@@ -6,10 +6,12 @@
  *  - đã đến / quà lưu niệm: hợp; dấu hộ chiếu: bên nào có thì có;
  *  - cấp hộ chiếu: tính lại từ dấu và quà;
  *  - hạn mức ngày: ngày mới hơn thắng, cùng ngày lấy số lớn;
- *  - vị trí, thành phố, tuỳ chọn: bản có `updatedAt` mới hơn thắng;
+ *  - vị trí, thành phố, tuỳ chọn, bộ từ đã chọn: bản có `updatedAt` mới hơn thắng;
+ *  - điểm hộ chiếu (`pp:`) và quà đã nhận (`pc:`): nằm trong sổ cái nên hợp theo mã;
  *  - câu đã làm: hợp, giữ mốc muộn hơn, bỏ mục quá 48 giờ.
  */
 import { coinsOf, emptyCaps, mergeCaps, mergeLedgers, ticketsOf } from './economy';
+import { cleanDecks } from './decks';
 import { passportLevelOf, stampCount } from './rewards';
 import { isCityId } from './world';
 import type { CityId, PoiProgress, TravelState } from './types';
@@ -38,6 +40,7 @@ export function emptyTravel(day = ''): TravelPayload {
     onboarded: false,
     updatedAt: '',
     seen: {},
+    decks: [],
   };
 }
 
@@ -99,6 +102,7 @@ export function normalizeTravel(raw: unknown): TravelPayload {
     onboarded: raw.onboarded === true,
     updatedAt: str(raw.updatedAt),
     seen,
+    decks: cleanDecks(raw.decks),
   });
 }
 
@@ -166,5 +170,6 @@ export function mergeTravel(local: unknown, remote: unknown | null, nowMs: numbe
     onboarded: a.onboarded === true || b.onboarded === true,
     updatedAt: newer.updatedAt,
     seen: pruneSeen(seen, nowMs),
+    decks: newer.decks ?? [],
   });
 }

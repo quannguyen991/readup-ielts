@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
-import * as Speech from 'expo-speech';
 
 import { Screen } from '@/components/layout/Screen';
 import { useNow } from '@/lib/clock';
@@ -9,7 +8,7 @@ import { Icon } from '@/components/ui/Icon';
 import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { englishVoice } from '@/services/audio/voice';
+import { pronounce } from '@/services/audio/pronounce';
 import { useVocabStore, type VocabEntry } from '@/store/useVocabStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -454,13 +453,7 @@ export default function SpacedRepetitionScreen() {
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel={L(`Phát âm ${entry.word}`, `Pronounce ${entry.word}`)}
-                  onPress={() =>
-                    Speech.speak(entry.word, {
-                      language: 'en-US',
-                      rate: 0.9,
-                      voice: englishVoice(),
-                    })
-                  }
+                  onPress={() => void pronounce(entry.word)}
                   style={{
                     padding: 8,
                     borderRadius: 999,

@@ -7,6 +7,7 @@ import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
 import { SkyEffect } from '@/components/effects/SkyEffect';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { useL } from '@/i18n/useL';
+import { playSfx } from '@/services/audio/sfx-ui';
 
 /**
  * Một thẻ hai mặt, xoay quanh trục Y khi lật. Dùng chung cho dải thẻ ở trang bộ
@@ -39,7 +40,10 @@ export function FlipCard({
     rot.value = 0;
   }, [cardKey, rot]);
 
+  const firstFlip = React.useRef(true);
   useEffect(() => {
+    if (firstFlip.current) firstFlip.current = false;
+    else playSfx('flip');
     // eslint-disable-next-line react-hooks/immutability
     rot.value = withTiming(flipped ? 1 : 0, { duration: 420, easing: Easing.out(Easing.cubic) });
   }, [flipped, rot]);
@@ -66,7 +70,7 @@ export function FlipCard({
   };
 
   return (
-    <Pressable accessibilityRole="button" accessibilityLabel={L('Lật thẻ', 'Flip card')} onPress={onFlip} style={{ height }}>
+    <Pressable accessibilityLabel={L('Lật thẻ', 'Flip card')} onPress={onFlip} style={{ height }}>
       {/* Bầu trời sáng có sao băng: mặt trước đủ, mặt sau nhạt cho dễ đọc chữ. */}
       <Animated.View style={[face, frontStyle, { alignItems: 'center', justifyContent: 'center' }]}>
         <SkyEffect />
@@ -84,7 +88,7 @@ export function FlipCard({
 export function WordFace({ word, hint }: { word: StudyWord; hint?: string }) {
   return (
     <>
-      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{levelLabel(word.band)}</Text>
+      <Text className="font-semi text-label text-muted">{levelLabel(word.band)}</Text>
       <Text className="mt-3 text-center font-heavy text-hero text-ink">{word.word}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">
         {posIpa(word)}
@@ -99,7 +103,7 @@ export function MeaningFace({ word, hint }: { word: StudyWord; hint?: string }) 
   const { L } = useL();
   return (
     <>
-      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{L('Từ tiếng Anh là gì?', "What's the English word?")}</Text>
+      <Text className="font-semi text-label text-muted">{L('Từ tiếng Anh là gì?', "What's the English word?")}</Text>
       <Text className="mt-3 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
       <Text className="mt-2 font-sans text-bodyLg text-muted">{word.pos}</Text>
       {hint ? <Text className="absolute bottom-5 font-sans text-label text-subtle">{hint}</Text> : null}
@@ -112,7 +116,7 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
   const { L } = useL();
   return (
     <>
-      <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{L('Nghe và đoán từ', 'Listen and guess the word')}</Text>
+      <Text className="font-semi text-label text-muted">{L('Nghe và đoán từ', 'Listen and guess the word')}</Text>
       <View className="mt-4">
         <SpeakButton text={word.word} rate={0.85} size={26} />
       </View>
@@ -127,28 +131,26 @@ export function ListenFace({ word, hint }: { word: StudyWord; hint?: string }) {
  * theo nội dung; tính từ những mục thật sự có.
  */
 export function detailHeight(word: StudyWord, showWord = false): number {
-  let h = 190;
+  let h = 170;
   if (showWord) h += 36;
-  if (word.example) h += word.example.length > 80 ? 96 : 74;
-  if (word.synonyms?.length) h += 44;
-  if (word.antonyms?.length) h += 44;
-  if (word.collocation) h += 44;
-  return Math.max(340, h);
+  if (word.example) h += word.example.length > 80 ? 82 : 62;
+  if (word.synonyms?.length) h += 40;
+  if (word.antonyms?.length) h += 40;
+  if (word.collocation) h += 40;
+  return Math.max(320, h);
 }
 
 /** Nhãn nhỏ của từng mục trên mặt sau. */
 function Label({ children }: { children: string }) {
-  return <Text className="mb-1.5 font-strong text-label uppercase tracking-[1.2px] text-muted">{children}</Text>;
+  return <Text className="mb-1 font-sans text-label text-muted">{children}</Text>;
 }
 
-function Chips({ words, tone, bg }: { words: string[]; tone: string; bg: string }) {
+function Chips({ words }: { words: string[] }) {
   return (
     <View className="flex-row flex-wrap gap-1.5">
       {words.map((w) => (
-        <View key={w} className="rounded-pill px-2.5 py-1" style={{ backgroundColor: bg }}>
-          <Text className="font-semi text-label" style={{ color: tone }}>
-            {w}
-          </Text>
+        <View key={w} className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#F7F4EE' }}>
+          <Text className="font-mid text-label text-ink">{w}</Text>
         </View>
       ))}
     </View>
@@ -173,33 +175,31 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
           <SpeakButton text={word.word} rate={0.85} size={16} />
         </View>
       ) : null}
-      <Text className="mt-1 text-center font-heavy text-pageTitle text-ink">{word.meaningVi}</Text>
+      <Text className="mt-1 text-center font-heavy text-sectionTitle text-ink">{word.meaningVi}</Text>
 
-      <View className="mt-4 gap-3.5">
+      <View className="mt-3 gap-2.5">
         {word.example ? (
           <View>
             <Label>{L('Ví dụ', 'Example')}</Label>
-            <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#FCF9F4' }}>
-              <ExampleLine example={word.example} word={word.word} />
-            </View>
+            <ExampleLine example={word.example} word={word.word} />
           </View>
         ) : null}
         {word.synonyms?.length ? (
           <View>
             <Label>{L('Đồng nghĩa', 'Synonyms')}</Label>
-            <Chips words={word.synonyms} tone="#15803D" bg="#ECFDF3" />
+            <Chips words={word.synonyms} />
           </View>
         ) : null}
         {word.antonyms?.length ? (
           <View>
             <Label>{L('Trái nghĩa', 'Antonyms')}</Label>
-            <Chips words={word.antonyms} tone="#BE123C" bg="#FFF1F2" />
+            <Chips words={word.antonyms} />
           </View>
         ) : null}
         {word.collocation ? (
           <View>
             <Label>{L('Hay đi cùng', 'Collocations')}</Label>
-            <Text className="font-semi text-body text-ink">{word.collocation}</Text>
+            <Text className="font-mid text-body text-ink">{word.collocation}</Text>
           </View>
         ) : null}
       </View>

@@ -153,6 +153,12 @@ export type LearnSettings = {
   acceptSynonyms: boolean;
   /** Câu gõ từ có nút micro: nói từ thay vì gõ. */
   speakAnswer: boolean;
+  /** Tự đọc to từ tiếng Anh mỗi khi nó hiện ra. */
+  autoPronounce: boolean;
+  /** Giọng người thật ưu tiên: Anh–Mỹ hay Anh–Anh. */
+  accent: 'us' | 'uk';
+  /** Giọng đọc: một giọng nữ hoặc một giọng nam tốt nhất của máy. */
+  voiceGender: 'f' | 'm';
 };
 
 export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
@@ -165,6 +171,9 @@ export const DEFAULT_LEARN_SETTINGS: LearnSettings = {
   interleave: true,
   acceptSynonyms: false,
   speakAnswer: false,
+  autoPronounce: true,
+  accent: 'us',
+  voiceGender: 'f',
 };
 
 /** Các phần đang bật, đúng thứ tự học. Không bật phần nào thì dùng mặc định — không để vòng rỗng. */

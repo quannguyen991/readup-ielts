@@ -40,8 +40,9 @@ test('mở khoá: Singapore mở sẵn; London cần ≥ 60% Singapore; Paris/Am
   const none = { poi: {} };
   assert.equal(isCityUnlocked(none, 'singapore'), true);
   assert.equal(isCityUnlocked(none, 'london'), false);
-  assert.equal(isCityUnlocked({ poi: passAll('singapore', 3) }, 'london'), false, '50%');
-  assert.equal(isCityUnlocked({ poi: passAll('singapore', 4) }, 'london'), true, '67%');
+  const need = Math.ceil(mainPoisOfCity('singapore').length * 0.6);
+  assert.equal(isCityUnlocked({ poi: passAll('singapore', need - 1) }, 'london'), false, 'dưới 60%');
+  assert.equal(isCityUnlocked({ poi: passAll('singapore', need) }, 'london'), true, 'đủ 60%');
   for (const c of ['paris', 'amsterdam', 'rome'] as const) {
     assert.equal(isCityUnlocked({ poi: passAll('singapore') }, c), false);
     assert.equal(isCityUnlocked({ poi: passAll('london') }, c), true);
@@ -74,9 +75,22 @@ test('bản đồ thế giới: mỗi thành phố nằm trên đất liền, c�
     for (const b of CITY_ORDER) {
       if (a >= b) continue;
       const d = Math.hypot(CITIES[a].mapAt.x - CITIES[b].mapAt.x, CITIES[a].mapAt.y - CITIES[b].mapAt.y);
-      assert.ok(d >= 7, `${a} và ${b} quá gần (${d.toFixed(1)} ô)`);
+      assert.ok(d >= 4, `${a} và ${b} quá gần (${d.toFixed(1)} ô)`);
     }
   const runs = landRuns();
   assert.ok(runs.length > 100);
   for (const r of runs) assert.ok(r.w > 0 && r.x + r.w <= WORLD_W);
+});
+
+test('Việt Nam: Đà Nẵng và TP.HCM nối Hà Nội–Singapore, mở sau Singapore', () => {
+  assert.equal(flightCost('hanoi', 'danang'), 1);
+  assert.equal(flightCost('danang', 'hochiminh'), 1);
+  assert.equal(flightCost('singapore', 'hochiminh'), 1);
+  assert.equal(flightCost('hochiminh', 'hanoi'), 0);
+  assert.equal(flightCost('hanoi', 'london'), 3);
+  for (const c of ['danang', 'hochiminh'] as const) {
+    assert.ok(mainPoisOfCity(c).length >= 8, c);
+    assert.equal(isCityUnlocked({ poi: {} }, c), false);
+    assert.equal(isCityUnlocked({ poi: passAll('singapore') }, c), true);
+  }
 });

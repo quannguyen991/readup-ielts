@@ -53,7 +53,7 @@ export function LearnSettingsSheet({
   }
 
   const toggleIn = <T,>(list: T[], v: T) => (list.includes(v) ? list.filter((x) => x !== v) : [...list, v]);
-  const flip = (key: 'interleave' | 'ordered' | 'autoAdvance' | 'acceptSynonyms' | 'speakAnswer' | 'starredOnly' | 'unmasteredOnly') =>
+  const flip = (key: 'interleave' | 'ordered' | 'autoAdvance' | 'acceptSynonyms' | 'speakAnswer' | 'autoPronounce' | 'starredOnly' | 'unmasteredOnly') =>
     setDraft({ ...draft, [key]: !draft[key] });
   const noDir = draft.directions.length === 0;
   const noKind = draft.kinds.length === 0;
@@ -132,6 +132,25 @@ export function LearnSettingsSheet({
               </Row>
             </Section>
 
+            <Section title={L('Phát âm', 'Pronunciation')}>
+              <Row on={draft.autoPronounce} onPress={() => flip('autoPronounce')}>
+                <Icon name="volume" size={18} color={draft.autoPronounce ? color.primary : '#64748B'} />
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự phát âm', 'Auto-pronounce')}</Text>
+              </Row>
+              <Row on={draft.voiceGender !== 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'f' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nữ', 'Female voice')}</Text>
+              </Row>
+              <Row on={draft.voiceGender === 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'm' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nam', 'Male voice')}</Text>
+              </Row>
+              <Row on={draft.accent === 'us'} onPress={() => setDraft({ ...draft, accent: 'us' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Mỹ', 'American')}</Text>
+              </Row>
+              <Row on={draft.accent === 'uk'} onPress={() => setDraft({ ...draft, accent: 'uk' })}>
+                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Anh', 'British')}</Text>
+              </Row>
+            </Section>
+
             <Section title={L('Nhóm từ', 'Word filter')} warn={matches === 0 && !noDir && !noKind ? L('Không còn từ nào khớp bộ lọc này.', 'No words match this filter.') : undefined}>
               <Row on={draft.starredOnly} onPress={() => flip('starredOnly')}>
                 <Icon name="star-fill" size={18} color="#F59E0B" />
@@ -187,7 +206,7 @@ function B({ children }: { children: React.ReactNode }) {
 function Section({ title, warn, children }: { title: string; warn?: string; children: React.ReactNode }) {
   return (
     <View className="mt-4">
-      <Text className="mb-2 font-strong text-label uppercase tracking-[1.2px] text-muted">{title}</Text>
+      <Text className="mb-2 font-strong text-label text-muted">{title}</Text>
       <View className="gap-2">{children}</View>
       {warn ? (
         <Text className="mt-2 font-semi text-label" style={{ color: '#E11D48' }}>

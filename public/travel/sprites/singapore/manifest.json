@@ -1,0 +1,56 @@
+[
+ {
+  "id": "hawker",
+  "file": "hawker.png",
+  "w": 139,
+  "h": 70
+ },
+ {
+  "id": "mrt",
+  "file": "mrt.png",
+  "w": 107,
+  "h": 56
+ },
+ {
+  "id": "hotel",
+  "file": "hotel.png",
+  "w": 128,
+  "h": 80
+ },
+ {
+  "id": "mbs",
+  "file": "mbs.png",
+  "w": 123,
+  "h": 76
+ },
+ {
+  "id": "merlion",
+  "file": "merlion.png",
+  "w": 99,
+  "h": 75
+ },
+ {
+  "id": "supertree",
+  "file": "supertree.png",
+  "w": 101,
+  "h": 77
+ },
+ {
+  "id": "dome",
+  "file": "dome.png",
+  "w": 131,
+  "h": 62
+ },
+ {
+  "id": "airport",
+  "file": "airport.png",
+  "w": 140,
+  "h": 55
+ },
+ {
+  "id": "props",
+  "file": "props.png",
+  "w": 107,
+  "h": 59
+ }
+]

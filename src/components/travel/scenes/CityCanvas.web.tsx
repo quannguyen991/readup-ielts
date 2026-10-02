@@ -7,6 +7,7 @@ import { View } from 'react-native';
 
 import { useLocale } from '@/i18n/useL';
 import { CityEngine } from '../engine/CityEngine';
+import { FullscreenButton, toggleFullscreen } from './fullscreen';
 import type { CityCanvasProps } from './CityCanvas';
 
 export type { CityCanvasProps } from './CityCanvas';
@@ -38,7 +39,7 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
     const L = latest.current;
     const engine = new CityEngine(
       canvas,
-      { onEnterPoi: (id) => cbs.current.onEnterPoi(id), onMove: (t) => cbs.current.onMove(t), onImageError: () => setFailedId(mapProp.id) },
+      { onEnterPoi: (id) => cbs.current.onEnterPoi(id), onMove: (t) => cbs.current.onMove(t), onImageError: () => setFailedId(mapProp.id), onToggleFullscreen: () => toggleFullscreen() },
       map,
       L.state,
       { reducedMotion: L.reducedMotion || !!mq?.matches, locale: L.locale, hour: L.hour, weather: L.weather, debug: debugOn },
@@ -85,6 +86,7 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
           style={{ width: '100%', height: '100%', display: 'block', imageRendering: 'pixelated' }}
         />
       </div>
+      <FullscreenButton />
     </View>
   );
 }

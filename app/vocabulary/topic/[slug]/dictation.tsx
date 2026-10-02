@@ -6,12 +6,13 @@ import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 import { GhostButton, GREEN, PrimaryButton, RED, StudyCard, StudyFrame, speak, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
-import { preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
+import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { isTypedCorrect, letterDiff } from '@/services/vocab/topic-study';
 import { useGameStore } from '@/store/useGameStore';
 import { useOwlHint } from '@/components/game/useOwlHint';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 
@@ -33,10 +34,8 @@ export default function DictationScreen() {
   const logQuestions = useStudyStore((s) => s.logQuestions);
 
   const voices = useEnglishVoices();
-  const [voiceIdx, setVoiceIdx] = useState(-1);
-  const voice = voiceIdx >= 0 ? voices[voiceIdx % voices.length] : undefined;
-  const voiceId = voice?.identifier ?? preferredVoice(voices);
-  const voiceName = voice?.name ?? voices.find((v) => v.identifier === voiceId)?.name ?? L('Giọng mặc định', 'Default voice');
+  useTopicStudyStore((s) => s.learnSettings.voiceGender); // đổi Nữ/Nam thì vẽ lại
+  const voiceId = preferredVoice(voices);
 
   const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(0.9);
   const [sentenceMode, setSentenceMode] = useState(false);
@@ -144,7 +143,7 @@ export default function DictationScreen() {
     >
       <CrossFade swapKey={`${index}:${sentenceMode}`}>
         <StudyCard>
-          <Text className="text-center font-semi text-label uppercase tracking-[1.2px] text-muted">
+          <Text className="text-center font-semi text-label text-muted">
             {sentenceMode ? L('Nghe và chép cả câu', 'Listen and write the sentence') : L('Nghe và viết từ', 'Listen and write the word')}
           </Text>
 
@@ -173,14 +172,7 @@ export default function DictationScreen() {
                 </Text>
               </Pressable>
             ))}
-            {voices.length > 1 ? (
-              <Pressable onPress={() => setVoiceIdx((i) => i + 1)} className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5" style={{ backgroundColor: '#F9F6F1' }}>
-                <Icon name="refresh" size={13} color="#475569" />
-                <Text className="font-semi text-label" style={{ color: '#475569' }} numberOfLines={1}>
-                  {voiceName}
-                </Text>
-              </Pressable>
-            ) : null}
+            <VoicePicker voices={voices} voiceId={voiceId} onChange={() => undefined} onPreview={(id) => target && speak(target, { rate: speed, voice: id })} />
           </View>
 
           <TextInput

@@ -5,7 +5,8 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { TaskShell } from '@/components/layout/TaskShell';
 import { Confetti } from '@/components/motion/Confetti';
 import { recordAnswer, seenKeys } from '@/components/travel/record';
-import { useStudySnapshot, useTravelReady } from '@/components/travel/useTravel';
+import { useFocusDecks, useStudySnapshot, useTravelReady } from '@/components/travel/useTravel';
+import { DeckBar } from '@/components/travel/ui/DeckPicker';
 import { TravelHud } from '@/components/travel/ui/Hud';
 import { CoinGlyph, GameButton, PixelPanel, StampGlyph, StarsRow, T } from '@/components/travel/ui/kit';
 import { QuestionRunner, type RunResult } from '@/components/travel/ui/QuestionRunner';
@@ -58,6 +59,7 @@ function Visit({ poiId }: { poiId: string }) {
   const seen = useTravelStore((s) => s.seen);
   const complete = useTravelStore((s) => s.completeVisit);
   const snap = useStudySnapshot();
+  const focus = useFocusDecks();
   const prog = progress[poiId];
   const unlockedLevel = (prog?.level ?? poi.content.level) as Level;
   const [level, setLevel] = useState<Level>(unlockedLevel);
@@ -67,9 +69,9 @@ function Visit({ poiId }: { poiId: string }) {
   const open = useMemo(() => isPoiUnlocked({ poi: progress }, poi), [progress, poi]);
 
   const start = useCallback(() => {
-    const questions = pickVisitQuestions({ poi, level, runNo: (prog?.runs ?? 0) + 1, seen, nowMs: Date.now(), ...snap });
+    const questions = pickVisitQuestions({ poi, level, runNo: (prog?.runs ?? 0) + 1, seen, nowMs: Date.now(), focusDecks: focus.decks, ...snap });
     setPhase({ kind: 'run', questions, level });
-  }, [poi, level, prog?.runs, seen, snap]);
+  }, [poi, level, prog?.runs, seen, snap, focus.decks]);
 
   const finish = useCallback(
     (r: RunResult) => {
@@ -181,6 +183,7 @@ function Visit({ poiId }: { poiId: string }) {
             ))}
           </View>
         ) : null}
+        <DeckBar compact />
         <GameButton label={L('Bắt đầu', 'Start')} icon="play" onPress={start} />
       </PixelPanel>
     </View>

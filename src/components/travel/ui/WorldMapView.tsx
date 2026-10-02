@@ -12,6 +12,7 @@ import { CITIES, flightCost } from '@/services/travel/world';
 import type { CityId } from '@/services/travel/types';
 import { useReducedMotion } from './hooks';
 import { PlaneGlyph, T, TicketGlyph } from './kit';
+import { FsPortal, useFullscreen } from '@/components/travel/scenes/fullscreen';
 import { PixelStage, cssAnim } from './PixelStage';
 
 export type CityStatus = {
@@ -31,10 +32,12 @@ export const WORLD_ART: Record<CityId, { x: number; y: number }> = {
   amsterdam: { x: 94, y: 49 },
   rome: { x: 102, y: 80 },
   hanoi: { x: 332, y: 107 },
+  danang: { x: 343, y: 127 },
+  hochiminh: { x: 337, y: 143 },
   singapore: { x: 331, y: 155 },
 };
 
-const ORDER: CityId[] = ['hanoi', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
+const ORDER: CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
 
 /** Máy bay đi theo đường cong nhẹ giữa hai điểm sáng (khớp nét đường bay vẽ sẵn). */
 function route(a: CityId, b: CityId, t: number): { x: number; y: number; angle: number } {
@@ -73,6 +76,7 @@ export function WorldMapView({
 }) {
   const { L, locale } = useL();
   const still = useReducedMotion();
+  const fs = useFullscreen();
   const [hover, setHover] = useState<CityId | null>(null);
   const stageRef = useRef<HTMLElement | null>(null);
   // Thành phố mở kế tiếp: đã mở, chưa đến, gần đường bay nhất từ nơi đang ở.
@@ -82,7 +86,9 @@ export function WorldMapView({
   const plane = flight ? route(flight.from, flight.to, flight.t) : null;
 
   return (
-    <PixelStage source={{ uri: '/travel/maps/world.png' }} focus={focus} label={L('Bản đồ thế giới', 'World map')}>
+    <FsPortal active={fs.active}>
+    <View style={fs.active ? { flex: 1, justifyContent: 'center', padding: 8 } : null}>
+    <PixelStage source={{ uri: '/travel/maps/world.png' }} focus={focus} label={L('Bản đồ thế giới', 'World map')} fullscreenButton>
       {(k) => (
         <>
           {/* Chạm ra ngoài các vòng: chọn thành phố GẦN NHẤT trong bán kính 28px (chỉ cho chuột / cảm ứng). */}
@@ -190,5 +196,7 @@ export function WorldMapView({
         </>
       )}
     </PixelStage>
+    </View>
+    </FsPortal>
   );
 }

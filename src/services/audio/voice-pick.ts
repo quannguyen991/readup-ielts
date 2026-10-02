@@ -57,3 +57,39 @@ export function bestVoice(voices: readonly VoiceInfo[]): VoiceInfo | null {
   }
   return best;
 }
+
+export type Gender = 'f' | 'm';
+
+/**
+ * Điểm của giọng theo giới đã chọn; `null` = loại. Giọng nữ chấm như `scoreVoice`;
+ * giọng nam: tên nam quen thuộc +10, loại hẳn giọng nữ, còn lại cùng luật nơ-ron / Google / SAPI cũ.
+ */
+export function scoreVoiceFor(v: VoiceInfo, gender: Gender): number | null {
+  if (gender === 'f') return scoreVoice(v);
+  const lang = v.language.replace('_', '-').toLowerCase();
+  if (!lang.startsWith('en')) return null;
+  const name = v.name.toLowerCase();
+  if (FEMALE.some((f) => hasWord(name, f))) return null;
+  let score = MALE.some((m) => hasWord(name, m)) ? 10 : 0;
+  const neural = NEURAL.some((n) => name.includes(n));
+  if (neural) score += 5;
+  if (name.includes('google')) score += 4;
+  if (!neural && name.includes('microsoft') && LEGACY.some((l) => hasWord(name, l))) score -= 8;
+  if (lang.startsWith('en-us')) score += 2;
+  else if (lang.startsWith('en-gb')) score += 1;
+  return score;
+}
+
+/** Giọng tốt nhất của một giới trên máy này (một nữ, một nam). Không có thì null. */
+export function bestVoiceFor(voices: readonly VoiceInfo[], gender: Gender): VoiceInfo | null {
+  let best: VoiceInfo | null = null;
+  let top = -100;
+  for (const v of voices) {
+    const sc = scoreVoiceFor(v, gender);
+    if (sc !== null && sc > top) {
+      top = sc;
+      best = v;
+    }
+  }
+  return best;
+}
