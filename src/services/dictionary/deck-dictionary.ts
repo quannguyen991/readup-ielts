@@ -1,7 +1,7 @@
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
-import { lemmatize } from './lookup';
+import { lemmaCandidates } from './lemma-candidates';
 
 /**
  * Tra ngay trong máy những từ đã có trong các bộ từ của app (50 chủ đề IELTS và
@@ -29,5 +29,11 @@ function build(): Map<string, DeckEntry> {
 export function findDeckWord(text: string): DeckEntry | null {
   index ??= build();
   const key = text.trim().toLowerCase();
-  return index.get(key) ?? index.get(lemmatize(key)) ?? null;
+  const exact = index.get(key);
+  if (exact || key.includes(' ')) return exact ?? null;
+  for (const c of lemmaCandidates(key)) {
+    const hit = index.get(c);
+    if (hit) return hit;
+  }
+  return null;
 }

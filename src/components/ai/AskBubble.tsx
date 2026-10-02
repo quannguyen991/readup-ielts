@@ -8,6 +8,8 @@ import { MASCOTS } from '@/services/game/mascots';
 import { mascotOf, useRewardStore } from '@/store/useRewardStore';
 import { color } from '@/theme/tokens';
 import { currentLocale, pick, useL } from '@/i18n/useL';
+import { formatWordAnswer, isSingleWordQuestion } from '@/services/dictionary/word-answer';
+import { lookupOffline, resolveWord } from '@/services/dictionary/word-lookup';
 import type { MascotId } from '@/services/game/mascots';
 
 /**
@@ -26,7 +28,11 @@ import type { MascotId } from '@/services/game/mascots';
  * tên nó — phần thưởng đổi sao nhìn thấy được mỗi ngày chứ không nằm trong kho.
  */
 
-type Msg = { role: 'user' | 'assistant'; content: string };
+type Msg = { role: 'user' | 'assistant'; content: string; /** Lỗi AI: hiện nút "Thử lại". */ retry?: boolean };
+
+/** Sau một lần AI hỏng, 15 giây tới không gọi lại — máy chủ có cầu dao riêng, đây là lớp ở máy người học. */
+const COOLDOWN_MS = 15_000;
+let aiBlockedUntil = 0;
 
 const GREETING =
   'Hỏi mình về ngữ pháp, từ vựng, cách làm từng dạng câu, hay cách dùng app. Mình không xem được tài khoản hay bài viết của bạn.';
@@ -50,14 +56,20 @@ export function AskBubble() {
   const [busy, setBusy] = useState(false);
   const scroller = useRef<ScrollView>(null);
 
-  const send = useCallback(async () => {
-    const text = draft.trim();
-    if (!text || busy) return;
-
-    const next: Msg[] = [...messages, { role: 'user', content: text }];
-    setMessages(next);
-    setDraft('');
+  const ask = useCallback(async (next: Msg[]) => {
+    const last = next[next.length - 1]!.content;
+    const word = isSingleWordQuestion(last);
+    const en = currentLocale() === 'en';
+    const busyMsg = pick(currentLocale(), 'AI đang bận, thử lại sau ít phút.', 'The AI is busy. Try again in a few minutes.');
     setBusy(true);
+
+    // Từ đã có trong máy: trả lời ngay, khỏi tốn lượt AI.
+    const local = word ? lookupOffline(word) : null;
+    if (local) {
+      setMessages([...next, { role: 'assistant', content: formatWordAnswer(local, en) }]);
+      setBusy(false);
+      return;
+    }
 
     /*
       Chỗ giữ câu trả lời đang chảy về được thêm NGAY, rồi ghi đè dần.
@@ -67,16 +79,23 @@ export function AskBubble() {
     */
     setMessages([...next, { role: 'assistant', content: '' }]);
 
+    const fail = async () => {
+      // AI hỏng: một từ lẻ vẫn tra được bằng từ điển; còn lại báo bận, chi tiết chỉ ở console.
+      const r = word ? await resolveWord(word, '').catch(() => null) : null;
+      setMessages([...next, r ? { role: 'assistant', content: formatWordAnswer(r, en) } : { role: 'assistant', content: busyMsg, retry: true }]);
+    };
+
     try {
+      if (Date.now() < aiBlockedUntil) throw new Error('cooldown');
       const res = await fetch('/api/ask', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({ messages: next.map(({ role, content }) => ({ role, content })) }),
       });
 
       if (!res.ok || !res.body) {
         const detail = await res.text().catch(() => '');
-        throw new Error(detail || pick(currentLocale(), `Máy chủ trả ${res.status}`, `Server returned ${res.status}`));
+        throw new Error(`HTTP ${res.status} ${detail.slice(0, 80)}`);
       }
 
       const reader = res.body.getReader();
@@ -90,14 +109,33 @@ export function AskBubble() {
         setMessages([...next, { role: 'assistant', content: acc }]);
       }
     } catch (err) {
-      const locale = currentLocale();
-      const message = err instanceof Error ? err.message : pick(locale, 'Lỗi không xác định', 'Unknown error');
-      // Nói ra lỗi thật thay vì nuốt: người hỏi cần biết nên thử lại hay nên thôi.
-      setMessages([...next, { role: 'assistant', content: pick(locale, `Chưa trả lời được — ${message}`, `Couldn't answer — ${message}`) }]);
+      const detail = err instanceof Error ? err.message : String(err);
+      if (detail !== 'cooldown') {
+        aiBlockedUntil = Date.now() + COOLDOWN_MS;
+        console.warn('[ask] AI không trả lời được:', detail);
+      }
+      await fail();
     } finally {
       setBusy(false);
     }
-  }, [busy, draft, messages]);
+  }, []);
+
+  const send = useCallback(async () => {
+    const text = draft.trim();
+    if (!text || busy) return;
+    const next: Msg[] = [...messages, { role: 'user', content: text }];
+    setMessages(next);
+    setDraft('');
+    await ask(next);
+  }, [ask, busy, draft, messages]);
+
+  const retry = useCallback(() => {
+    if (busy) return;
+    // Bỏ câu "đang bận" và hỏi lại đúng câu trước đó.
+    const base = messages.filter((m) => !m.retry);
+    setMessages(base);
+    void ask(base);
+  }, [ask, busy, messages]);
 
   if (!open) {
     if (pet) {
@@ -229,6 +267,11 @@ export function AskBubble() {
               <Text className="font-sans text-body text-ink">
                 {m.content || (busy ? '…' : '')}
               </Text>
+              {m.retry && i === messages.length - 1 ? (
+                <Pressable accessibilityRole="button" disabled={busy} onPress={retry} className="mt-1.5 self-start rounded-pill bg-white px-3 py-1">
+                  <Text className="font-strong text-label text-primary-700">{L('Thử lại', 'Try again')}</Text>
+                </Pressable>
+              ) : null}
             </View>
           ))
         )}
