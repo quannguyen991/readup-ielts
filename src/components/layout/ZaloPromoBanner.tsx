@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Linking, Platform, Pressable, Text, View } from 'react-native';
+import { Linking, Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import * as Clipboard from 'expo-clipboard';
 import { Icon } from '@/components/ui/Icon';
@@ -28,6 +28,8 @@ export function ZaloPromoBanner() {
   const [visible, setVisible] = useState(() => !readHidden());
   const [copied, setCopied] = useState(false);
   const { L } = useL();
+  // Đo bằng JS thay vì breakpoint CSS: banner chỉ hiện sau khi app đã nạp xong (không có bản dựng máy chủ của nó).
+  const compact = useWindowDimensions().width < 640;
 
   const handleDismiss = () => {
     setVisible(false);
@@ -110,7 +112,47 @@ export function ZaloPromoBanner() {
         }}
       />
 
-      {/* Nội dung thông báo */}
+      {/*
+        Điện thoại: MỘT hàng cao 52px thay cho khối 3 hàng ~230px (trước đây banner
+        ăn gần 1/3 màn hình trước khi thấy nội dung). Nút ≥ 44px để bấm bằng ngón cái.
+      */}
+      {compact ? (
+      <View className="flex-row items-center gap-2 pl-3" style={{ minHeight: 52 }}>
+        <Icon name="gift" size={18} color="#FBBF24" />
+        <Pressable
+          onPress={handleOpenZalo}
+          accessibilityRole="link"
+          accessibilityLabel={L('Nhắn Zalo ngay để nhận gói Max 2 tháng', 'Message on Zalo now to get 2 months of Max')}
+          className="min-w-0 flex-1 justify-center"
+          style={{ minHeight: 44 }}
+        >
+          <Text className="text-[13px] font-bold leading-tight text-amber-200" numberOfLines={2}>
+            {L('Gói MAX 2 tháng miễn phí', '2 months of MAX free')}
+            <Text className="font-medium text-white">{L(' · nhắn Zalo để nhận', ' · message us on Zalo')}</Text>
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={handleCopyPhone}
+          accessibilityRole="button"
+          accessibilityLabel={L('Sao chép số Zalo 0921247247', 'Copy Zalo number 0921247247')}
+          className="items-center justify-center rounded-lg bg-white/10 px-3 active:opacity-70"
+          style={{ minHeight: 44 }}
+        >
+          <Text className={`text-[13px] font-semibold ${copied ? 'text-green-300' : 'text-slate-100'}`}>
+            {copied ? L('Đã chép', 'Copied') : L('Chép SĐT', 'Copy')}
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={handleDismiss}
+          accessibilityRole="button"
+          accessibilityLabel={L('Đóng thông báo ưu đãi', 'Dismiss offer')}
+          className="items-center justify-center active:opacity-70"
+          style={{ width: 44, height: 44 }}
+        >
+          <Icon name="close" size={16} color="#F0EBE2" />
+        </Pressable>
+      </View>
+      ) : (
       <View className="mx-auto w-full max-w-7xl flex-row flex-wrap items-center justify-between gap-x-4 gap-y-2.5 px-3.5 py-2.5 sm:px-6">
         {/* Phần thông tin ưu đãi */}
         <View className="flex-1 flex-row items-center gap-3 min-w-[280px]">
@@ -134,7 +176,7 @@ export function ZaloPromoBanner() {
           {/* Text thông điệp */}
           <View className="flex-1 flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
             <View className="rounded-full bg-amber-400/20 px-2 py-0.5 border border-amber-300/35">
-              <Text className="text-[11px] font-bold uppercase tracking-wider text-amber-300">
+              <Text className="text-[12px] font-bold uppercase tracking-wider text-amber-300">
                 {L('Ưu Đãi Độc Quyền', 'Exclusive offer')}
               </Text>
             </View>
@@ -194,7 +236,7 @@ export function ZaloPromoBanner() {
                 justifyContent: 'center',
               }}
             >
-              <Text style={{ fontSize: 10, fontWeight: '900', color: '#8F6E36' }}>Z</Text>
+              <Text style={{ fontSize: 12, fontWeight: '900', color: '#8F6E36' }}>Z</Text>
             </View>
             <Text className="text-[12px] font-bold text-white">{L('Nhắn Zalo ngay', 'Message on Zalo')}</Text>
             <Icon name="external" size={12} color="#FFFFFF" />
@@ -211,6 +253,7 @@ export function ZaloPromoBanner() {
           </Pressable>
         </View>
       </View>
+      )}
     </View>
   );
 }

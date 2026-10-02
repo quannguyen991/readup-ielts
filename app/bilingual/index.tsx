@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Linking, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { Linking, Platform, Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
@@ -7,7 +7,7 @@ import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, CrossFade, PressScale } from '@/components/motion/Motion';
 import { BilingualLines, LessonCard } from '@/components/sentence/LessonCard';
-import { Icon, Pagination } from '@/components/ui';
+import { HScroll, Icon, Pagination } from '@/components/ui';
 import {
   BILINGUAL_LEVELS,
   BILINGUAL_OUTLETS,
@@ -171,7 +171,7 @@ function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number 
         {/* Bìa */}
         <View className="px-5 pb-4 pt-5" style={{ backgroundColor: outlet.cover }}>
           <View className="flex-row items-center justify-between gap-3">
-            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.4, color: outlet.ink, opacity: 0.75 }}>
+            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: outlet.ink, opacity: 0.75 }}>
               {featured ? L('NÊN ĐỌC TRƯỚC', 'START HERE') : outlet.license.toUpperCase()}
             </Text>
             <Text className="font-strong" style={{ fontSize: 12, color: outlet.ink, opacity: 0.85 }}>
@@ -393,9 +393,9 @@ function SortTab({ label, active, onPress }: { label: string; active: boolean; o
 
 function FilterRow({ children }: { children: React.ReactNode }) {
   return (
-    <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mt-3">
+    <HScroll style={{ marginTop: 12 }}>
       <View className="flex-row gap-1.5 py-0.5">{children}</View>
-    </ScrollView>
+    </HScroll>
   );
 }
 
@@ -405,8 +405,8 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
       onPress={onPress}
       accessibilityRole="button"
       aria-selected={active}
-      className="rounded-pill px-3 py-1.5"
-      style={{ borderWidth: 1, borderColor: active ? color.primary : '#F0EAE0', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
+      className="items-center justify-center rounded-pill px-3 py-1.5"
+      style={{ minHeight: 44, borderWidth: 1, borderColor: active ? color.primary : '#F0EAE0', backgroundColor: active ? color.primary : 'rgba(255,255,255,0.85)' }}
     >
       <Text className="font-semi" style={{ fontSize: 13, color: active ? '#FFFFFF' : INK }}>{label}</Text>
     </Pressable>

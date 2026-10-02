@@ -114,7 +114,7 @@ function Row({
             className="rounded-pill px-2 py-0.5"
             style={{ backgroundColor: unverifiable ? paper.brandTint : `${tone}22` }}
           >
-            <Text className="font-semi" style={{ fontSize: 9, color: unverifiable ? paper.body : tone }}>
+            <Text className="font-semi" style={{ fontSize: 12, color: unverifiable ? paper.body : tone }}>
               {methodLabel}
             </Text>
           </View>

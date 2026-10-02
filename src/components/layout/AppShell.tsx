@@ -5,11 +5,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CANVAS_LINE, CANVAS_STOPS, GridBackdrop } from './GridBackdrop';
 import { LightGrid, usePageBackground } from './LightGrid';
+import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
 import { TravelBackdrop, useTravelActive } from '@/components/rail/TravelBackdrop';
-import { isExamRoute, isFocusRoute, isImmersiveRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
+import { isExamRoute, isFocusRoute, isImmersiveRoute, isPhoneChromelessRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
@@ -92,9 +93,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <Sidebar compact glass={travelGlass} />
           </View>
           <View className="min-w-0 flex-1 lg:pl-[76px]">
-            <View className="lg:hidden">
-              <TopBar />
-            </View>
+            {/* Màn thi / luyện từng bài: điện thoại không có thanh đầu trang của app (màn tự có thanh riêng). */}
+            {isPhoneChromelessRoute(pathname) ? null : (
+              <View className="lg:hidden">
+                <TopBar />
+              </View>
+            )}
             <View className="flex-1">{children}</View>
           </View>
         </View>
@@ -153,8 +157,10 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <DomainMoveBanner />
           {focus ? null : <ZaloPromoBanner />}
           <View className="flex-1">{children}</View>
+          <BottomTabsSpacer />
         </View>
       </View>
+      <BottomTabs />
       {isCityRoute ? null : <AskBubble />}
       <SelectionLookup />
       {/* Quà cuối tháng 9 (+2.000 sao, 7 ngày Pro) — phủ màn hình ở trang duyệt, không chen vào màn làm bài. */}

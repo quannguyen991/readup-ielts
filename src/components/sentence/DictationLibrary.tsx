@@ -1,10 +1,10 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, ScrollView, Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { LessonCard, Waveform } from '@/components/sentence/LessonCard';
-import { Card, Icon } from '@/components/ui';
+import { Card, HScroll, Icon } from '@/components/ui';
 import {
   DICTATION_SET_LEVELS,
   DICTATION_SET_TOPICS,
@@ -46,7 +46,7 @@ export function DictationLibrary({ heading = true }: { heading?: boolean }) {
       {heading ? (
         <>
           <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
-            <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 10 }}>
+            <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 12 }}>
               Listening dictation library
             </Text>
           </View>
@@ -155,12 +155,12 @@ function SetCard({ set }: { set: DictationSet }) {
 function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <View className="mb-3 last:mb-0">
-      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
         {label}
       </Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <HScroll>
         <View className="flex-row gap-1.5 py-0.5">{children}</View>
-      </ScrollView>
+      </HScroll>
     </View>
   );
 }
@@ -180,9 +180,10 @@ function Chip({
       accessibilityRole="button"
       aria-selected={active}
       className={[
-        'rounded-pill border px-3 py-1.5',
+        'items-center justify-center rounded-pill border px-3 py-1.5',
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
       ].join(' ')}
+      style={{ minHeight: 44 }}
     >
       <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
         {label}

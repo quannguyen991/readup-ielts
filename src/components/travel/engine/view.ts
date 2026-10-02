@@ -99,6 +99,18 @@ export function pointerToWorld(cssX: number, cssY: number, view: View, camIx: nu
 }
 
 /**
+ * Toạ độ chạm của trình duyệt (clientX/Y + khung canvas) → điểm nguồn trong thế giới. Chia theo tỉ lệ THỰC của
+ * bộ đệm / khung hiển thị (không giả định devW = css × dpr), trừ lề căn giữa, rồi chia hệ số nguyên `k`.
+ */
+export function clientToWorld(clientX: number, clientY: number, rect: { left: number; top: number; width: number; height: number }, view: View, camIx: number, camIy: number): { x: number; y: number } {
+  const sx = rect.width > 0 ? view.devW / rect.width : view.dpr;
+  const sy = rect.height > 0 ? view.devH / rect.height : view.dpr;
+  const dx = (clientX - rect.left) * sx - view.offX;
+  const dy = (clientY - rect.top) * sy - view.offY;
+  return { x: Math.floor(dx / view.k) + camIx, y: Math.floor(dy / view.k) + camIy };
+}
+
+/**
  * Khung nhìn CHẾ ĐỘ ẢNH: ưu tiên thấy trọn tranh bằng hệ số nguyên lớn nhất vừa khung; nếu như vậy mỗi
  * điểm nguồn nhỏ hơn 2 pixel CSS (điện thoại) thì dùng k nhỏ nhất cho ≥ 2 px CSS/điểm và để máy quay
  * đi theo người chơi — không bao giờ thu nhỏ lẻ.

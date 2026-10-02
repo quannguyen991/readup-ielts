@@ -4,6 +4,7 @@ import { Pressable, Text, View } from 'react-native';
 import { useL } from '@/i18n/useL';
 import { EXAM } from './exam-theme';
 import { useExamTools } from './exam-context';
+import { haptic } from '@/lib/mobile/useMobileExam';
 
 export type OptionState = 'idle' | 'correct' | 'wrong';
 
@@ -57,6 +58,7 @@ export function ExamOption({
         onPress={() => {
           // Bấm vào dòng đã gạch: bỏ gạch rồi chọn luôn — như phòng thi thật.
           if (struck) tools?.toggleStrike(index);
+          haptic();
           onPress();
         }}
         className="min-w-0 flex-1 flex-row items-center gap-3 rounded-[10px] px-3.5 py-3"
@@ -94,7 +96,8 @@ export function ExamOption({
             accessibilityRole="button"
             accessibilityLabel={L(`Bỏ gạch ${letter}`, `Undo cross-out ${letter}`)}
             onPress={() => tools.toggleStrike(index)}
-            className="w-16 items-center py-2"
+            className="w-16 items-center justify-center"
+            style={{ minHeight: 48 }}
           >
             <Text className="font-strong underline" style={{ color: EXAM.ink, fontSize: 12.5 }} numberOfLines={1}>
               {L('Hoàn tác', 'Undo')}
@@ -105,7 +108,8 @@ export function ExamOption({
             accessibilityRole="button"
             accessibilityLabel={L(`Gạch phương án ${letter}`, `Cross out ${letter}`)}
             onPress={() => tools.toggleStrike(index)}
-            className="w-16 items-center py-2"
+            className="w-16 items-center justify-center"
+            style={{ minHeight: 48 }}
           >
             <View className="h-6 w-6 items-center justify-center rounded-pill" style={{ borderWidth: 1.2, borderColor: EXAM.ink }}>
               <Text className="font-strong" style={{ fontSize: 11, color: EXAM.ink }}>

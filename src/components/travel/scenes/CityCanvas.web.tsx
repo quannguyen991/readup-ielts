@@ -7,6 +7,7 @@ import { View } from 'react-native';
 
 import { useLocale } from '@/i18n/useL';
 import { CityEngine } from '../engine/CityEngine';
+import { capDpr } from '../mobile';
 import { FullscreenButton, toggleFullscreen } from './fullscreen';
 import type { CityCanvasProps } from './CityCanvas';
 
@@ -45,22 +46,44 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
       { reducedMotion: L.reducedMotion || !!mq?.matches, locale: L.locale, hour: L.hour, weather: L.weather, debug: debugOn },
     );
     engineRef.current = engine;
-    if (handleRef) handleRef.current = { walkToPoi: (id) => engine.walkToPoi(id) };
-    const fit = () => {
+    if (handleRef) handleRef.current = { walkToPoi: (id) => engine.walkToPoi(id), setStick: (d) => engine.setStick(d), interact: () => engine.interactNow() };
+    // Đo lại khung: gộp mọi nguồn (đổi cỡ, xoay màn hình, thanh địa chỉ co/giãn, bàn phím) thành MỘT lần/khung hình.
+    // Engine giữ nguyên trạng thái (vị trí, hội thoại, zoom) — chỉ đổi bộ đệm vẽ + máy quay.
+    let pending = 0;
+    let lastW = 0;
+    let lastH = 0;
+    let lastDpr = 0;
+    const measure = () => {
+      pending = 0;
       const r = box.getBoundingClientRect();
-      if (r.width > 0 && r.height > 0) engine.resize(r.width, r.height, window.devicePixelRatio || 1);
+      if (r.width <= 0 || r.height <= 0) return;
+      const dpr = capDpr(window.devicePixelRatio || 1);
+      if (r.width === lastW && r.height === lastH && dpr === lastDpr) return;
+      lastW = r.width;
+      lastH = r.height;
+      lastDpr = dpr;
+      engine.resize(r.width, r.height, dpr);
     };
-    fit();
+    const fit = () => {
+      if (!pending) pending = window.requestAnimationFrame(measure);
+    };
+    measure();
     const ro = new ResizeObserver(fit);
     ro.observe(box);
+    const vv = window.visualViewport;
     window.addEventListener('resize', fit);
+    window.addEventListener('orientationchange', fit);
+    vv?.addEventListener('resize', fit);
     const onMq = () => engine.setOptions({ reducedMotion: latest.current.reducedMotion || !!mq?.matches });
     mq?.addEventListener?.('change', onMq);
     engine.start();
     if (typeof __DEV__ !== 'undefined' && __DEV__) (window as unknown as { __cityEngine?: CityEngine }).__cityEngine = engine;
     return () => {
       ro.disconnect();
+      if (pending) window.cancelAnimationFrame(pending);
       window.removeEventListener('resize', fit);
+      window.removeEventListener('orientationchange', fit);
+      vv?.removeEventListener('resize', fit);
       mq?.removeEventListener?.('change', onMq);
       engine.dispose();
       if (engineRef.current === engine) engineRef.current = null;
@@ -89,7 +112,7 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
           ref={canvasRef}
           role="application"
           aria-label={locale === 'en' ? `${map.name.en} map. Tap to walk, arrow keys or WASD to move.` : `Bản đồ ${map.name.vi}. Chạm để đi, phím mũi tên hoặc WASD để di chuyển.`}
-          style={{ width: '100%', height: '100%', display: 'block', imageRendering: 'pixelated' }}
+          style={{ width: '100%', height: '100%', display: 'block', imageRendering: 'pixelated', touchAction: 'none', userSelect: 'none', WebkitUserSelect: 'none' }}
         />
       </div>
       {hideFullscreenButton ? null : <FullscreenButton />}

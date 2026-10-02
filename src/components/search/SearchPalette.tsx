@@ -583,7 +583,7 @@ function Section({
   return (
     <View style={{ marginTop: 12 }}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, paddingHorizontal: 8, marginBottom: 4 }}>
-        <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.4, textTransform: 'uppercase', color: C.goldDeep }}>
+        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, textTransform: 'uppercase', color: C.goldDeep }}>
           {title}
         </Text>
         <View style={{ flex: 1, height: 1, backgroundColor: C.hair }} />
@@ -663,7 +663,7 @@ function KindGlyph({ name, tone = 'plain' }: { name: IconName; tone?: 'plain' | 
 function Tag({ label }: { label: string }) {
   return (
     <View style={{ borderWidth: 1, borderColor: C.hair, borderRadius: 4, paddingHorizontal: 5, paddingVertical: 1 }}>
-      <Text className="font-strong" style={{ fontSize: 10.5, letterSpacing: 0.6, color: C.goldDeep }} numberOfLines={1}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.6, color: C.goldDeep }} numberOfLines={1}>
         {label}
       </Text>
     </View>
@@ -858,7 +858,7 @@ function AiBlock({
     <>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 8, paddingBottom: 4 }}>
         <Icon name="sparkle" size={13} color={C.goldMid} strokeWidth={2} />
-        <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.4, textTransform: 'uppercase', color: C.goldDeep }}>
+        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, textTransform: 'uppercase', color: C.goldDeep }}>
           {L('AI gợi ý cho bạn', 'AI picks for you')}
         </Text>
       </View>

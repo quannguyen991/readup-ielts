@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useMemo, useRef } from 'react';
+import React, { forwardRef, memo, useCallback, useEffect, useImperativeHandle, useMemo, useRef } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 
 import { EvidenceMarker } from '@/components/reader/EvidenceMarker';
@@ -11,6 +11,7 @@ import { QUESTION_TYPE_LABEL, type GeneratedQuestion } from '@/services/question
 import { groupIntoBlocks, optionsFor, type QuestionBlockView } from './QuestionBlocks';
 import type { EvidenceMark } from '@/services/proofloop/types';
 import { useL } from '@/i18n/useL';
+import { haptic } from '@/lib/mobile/useMobileExam';
 
 /**
  * Khung câu hỏi của phòng thi Reading, kiểu YouPass: gọn, không viền thẻ.
@@ -66,6 +67,25 @@ export const QuestionPanel = forwardRef<QuestionPanelHandle, Props>(function Que
   const { L } = useL();
   const mixed = layout === 'mixed';
   const blocks = useMemo(() => groupIntoBlocks(questions), [questions]);
+
+  /*
+    Gõ một chữ vào ô điền làm `answers` đổi, và trước đây MỌI câu hỏi dựng lại
+    theo vì các hàm truyền xuống là hàm mới ở mỗi lượt render. Giữ hàm mới nhất
+    trong ref rồi phát xuống các hàm ổn định, để `QuestionItem` (memo) chỉ dựng
+    lại khi câu của nó đổi.
+  */
+  const cb = useRef({ onAnswer, onToggleMark, onActivate, onStartEvidence, onClearEvidence });
+  useEffect(() => {
+    cb.current = { onAnswer, onToggleMark, onActivate, onStartEvidence, onClearEvidence };
+  });
+  const answerOne = useCallback((id: string, number: number, a: string) => {
+    cb.current.onActivate?.(number);
+    cb.current.onAnswer(id, a);
+  }, []);
+  const toggleOne = useCallback((id: string) => cb.current.onToggleMark(id), []);
+  const startEv = useCallback((id: string) => cb.current.onStartEvidence?.(id), []);
+  const clearEv = useCallback((id: string) => cb.current.onClearEvidence?.(id), []);
+  const hasEvidence = Boolean(onStartEvidence);
 
   // Toạ độ đo được: khối → danh sách câu → câu. Cộng lúc cần (onLayout của con
   // và của cha không có thứ tự cố định nên không cộng sẵn).
@@ -144,15 +164,12 @@ export const QuestionPanel = forwardRef<QuestionPanelHandle, Props>(function Que
               answer={answers[question.id] ?? ''}
               marked={Boolean(marked[question.id])}
               active={activeNumber === block.from + i}
-              onAnswer={(a) => {
-                onActivate?.(block.from + i);
-                onAnswer(question.id, a);
-              }}
-              onToggleMark={() => onToggleMark(question.id)}
+              onAnswer={answerOne}
+              onToggleMark={toggleOne}
               evidenceMark={evidenceMarks?.[question.id]}
               evidenceActive={evidenceFor === question.id}
-              onStartEvidence={onStartEvidence ? () => onStartEvidence(question.id) : undefined}
-              onClearEvidence={() => onClearEvidence?.(question.id)}
+              onStartEvidence={hasEvidence ? startEv : undefined}
+              onClearEvidence={clearEv}
             />
           </View>
         ));
@@ -232,7 +249,7 @@ function headingList(block: QuestionBlockView): string[] {
 
 const BLANK = /_{3,}/;
 
-function QuestionItem({
+const QuestionItem = memo(function QuestionItem({
   question,
   number,
   block,
@@ -254,14 +271,23 @@ function QuestionItem({
   answer: string;
   marked: boolean;
   active: boolean;
-  onAnswer: (answer: string) => void;
-  onToggleMark: () => void;
+  onAnswer: (questionId: string, number: number, answer: string) => void;
+  onToggleMark: (questionId: string) => void;
   evidenceMark: EvidenceMark | undefined;
   evidenceActive: boolean;
-  onStartEvidence?: () => void;
-  onClearEvidence: () => void;
+  onStartEvidence?: (questionId: string) => void;
+  onClearEvidence: (questionId: string) => void;
 }) {
   const { L } = useL();
+  const qid = question.id;
+  const setAnswer = useCallback((a: string) => onAnswer(qid, number, a), [onAnswer, qid, number]);
+  const pick = useCallback(
+    (a: string) => {
+      haptic();
+      onAnswer(qid, number, a);
+    },
+    [onAnswer, qid, number],
+  );
   const choices = optionsFor(question);
   const isHeadings = LIST_MATCH_TYPES.has(question.type) && choices !== null;
   const romanLabels = question.type === 'matching_headings';
@@ -278,23 +304,23 @@ function QuestionItem({
           <Text style={{ fontSize: 11.5, fontWeight: '800', color: EXAM.accentDeep, marginBottom: 2 }}>{QUESTION_TYPE_LABEL[question.type]}</Text>
         ) : null}
         {inline ? (
-          <InlineGap text={prompt} number={number} value={answer} onChange={onAnswer} />
+          <InlineGap text={prompt} number={number} value={answer} onChange={setAnswer} />
         ) : (
           <Text style={{ fontSize: 16, lineHeight: 24, color: EXAM.ink, fontWeight: choices && !letters ? '600' : '400' }}>{prompt}</Text>
         )}
       </View>
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
         {answer ? (
-          <Pressable onPress={() => onAnswer('')} accessibilityRole="button" accessibilityLabel={L('Xoá đáp án', 'Clear answer')} style={{ minHeight: 32, paddingHorizontal: 6, justifyContent: 'center' }}>
+          <Pressable onPress={() => setAnswer('')} accessibilityRole="button" accessibilityLabel={L('Xoá đáp án', 'Clear answer')} hitSlop={{ top: 8, bottom: 8 }} style={{ minHeight: 44, paddingHorizontal: 8, justifyContent: 'center' }}>
             <Text style={{ fontSize: 12, fontWeight: '700', color: EXAM.muted }}>{L('Xoá', 'Clear')}</Text>
           </Pressable>
         ) : null}
         <Pressable
-          onPress={onToggleMark}
+          onPress={() => onToggleMark(qid)}
           accessibilityRole="button"
           accessibilityLabel={marked ? L('Bỏ đánh dấu', 'Unmark') : L('Đánh dấu xem lại', 'Mark for review')}
           aria-pressed={marked}
-          style={{ width: 32, height: 32, alignItems: 'center', justifyContent: 'center' }}
+          style={{ width: 44, height: 44, marginRight: -6, alignItems: 'center', justifyContent: 'center' }}
         >
           <Icon name="bookmark" size={16} color={marked ? EXAM.flag : '#B8B3A6'} strokeWidth={2} />
         </Pressable>
@@ -307,7 +333,7 @@ function QuestionItem({
       {header}
       {onStartEvidence ? (
         <View style={{ paddingLeft: 38 }}>
-          <EvidenceMarker mark={evidenceMark} active={evidenceActive} onStart={onStartEvidence} onClear={onClearEvidence} />
+          <EvidenceMarker mark={evidenceMark} active={evidenceActive} onStart={() => onStartEvidence(qid)} onClear={() => onClearEvidence(qid)} />
         </View>
       ) : null}
 
@@ -318,30 +344,30 @@ function QuestionItem({
             {(choices as string[]).map((o, i) => {
               const sel = answer === o;
               const at = headingIndex(block, o, i);
-              return <SquareChip key={o} label={romanLabels ? roman(at + 1) : String.fromCharCode(65 + at)} selected={sel} onPress={() => onAnswer(sel ? '' : o)} wide />;
+              return <SquareChip key={o} label={romanLabels ? roman(at + 1) : String.fromCharCode(65 + at)} selected={sel} onPress={() => pick(sel ? '' : o)} wide />;
             })}
           </View>
         </View>
       ) : letters ? (
         <View style={{ paddingLeft: 38, marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
           {(choices as string[]).map((o) => (
-            <SquareChip key={o} label={o} selected={answer === o} onPress={() => onAnswer(answer === o ? '' : o)} />
+            <SquareChip key={o} label={o} selected={answer === o} onPress={() => pick(answer === o ? '' : o)} />
           ))}
         </View>
       ) : choices ? (
         <View style={{ paddingLeft: 38, marginTop: 4 }} accessibilityRole="radiogroup">
           {choices.map((o) => (
-            <RadioRow key={o} label={o} selected={answer === o} onPress={() => onAnswer(o)} />
+            <RadioRow key={o} label={o} selected={answer === o} onPress={() => pick(o)} />
           ))}
         </View>
       ) : !inline ? (
         <View style={{ paddingLeft: 38, marginTop: 8 }}>
-          <GapInput number={number} value={answer} onChange={onAnswer} width="100%" />
+          <GapInput number={number} value={answer} onChange={setAnswer} width="100%" />
         </View>
       ) : null}
     </View>
   );
-}
+});
 
 function headingIndex(block: QuestionBlockView, option: string, fallback: number): number {
   const i = headingList(block).indexOf(option);
@@ -375,7 +401,7 @@ function RadioRow({ label, selected, onPress }: { label: string; selected: boole
       onPress={onPress}
       accessibilityRole="radio"
       aria-checked={selected}
-      style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 9, minHeight: 40 }}
+      style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 11, minHeight: 44 }}
     >
       <View
         style={{
@@ -403,8 +429,8 @@ function SquareChip({ label, selected, onPress, wide }: { label: string; selecte
       accessibilityRole="radio"
       aria-checked={selected}
       style={{
-        minWidth: wide ? 44 : 40,
-        height: 40,
+        minWidth: 44,
+        height: 44,
         paddingHorizontal: 10,
         borderRadius: 10,
         borderWidth: 1.5,
@@ -424,7 +450,7 @@ function HeadingGap({ number, value }: { number: number; value: string }) {
   return (
     <View
       style={{
-        minHeight: 40,
+        minHeight: 44,
         borderRadius: 10,
         borderWidth: 1.5,
         borderStyle: value ? 'solid' : 'dashed',
@@ -446,7 +472,7 @@ function HeadingGap({ number, value }: { number: number; value: string }) {
 function InlineGap({ text, number, value, onChange }: { text: string; number: number; value: string; onChange: (v: string) => void }) {
   const [before, ...rest] = text.split(BLANK);
   const after = rest.join(' ________ ');
-  const textStyle = { fontSize: 16, lineHeight: 34, color: EXAM.ink } as const;
+  const textStyle = { fontSize: 16, lineHeight: 48, color: EXAM.ink } as const;
   return (
     <Text style={textStyle}>
       {before}
@@ -532,7 +558,7 @@ function MultiChoiceBlock({
               onPress={() => toggle(o)}
               accessibilityRole="checkbox"
               aria-checked={on}
-              style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 9, minHeight: 40 }}
+              style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12, paddingVertical: 11, minHeight: 44 }}
             >
               <View
                 style={{

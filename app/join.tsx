@@ -96,7 +96,7 @@ export default function JoinClassScreen() {
             {lookupError ? <Note text={lookupError} tone="error" /> : null}
             {preview ? (
               <View style={{ marginTop: 12, padding: 14, borderRadius: 14, backgroundColor: P.navy }}>
-                <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+                <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
                   {L('LỚP', 'CLASS')}
                 </Text>
                 <Text className="font-heavy" style={{ marginTop: 2, fontSize: 20, lineHeight: 26, color: '#FFFFFF' }}>

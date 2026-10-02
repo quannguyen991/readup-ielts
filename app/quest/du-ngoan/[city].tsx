@@ -133,7 +133,7 @@ function City({ city }: { city: keyof typeof CITIES }) {
                       {bi(p.name, locale)}
                     </Text>
                     {p.kind === 'secret' ? (
-                      <Text className="font-strong" style={{ fontSize: 13, color: T.goldDark }}>
+                      <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark }}>
                         {L('Bí mật', 'Secret')}
                       </Text>
                     ) : null}

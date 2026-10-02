@@ -103,7 +103,7 @@ export function BiText({ t, lang, wide, size = 15, strong = false }: { t: Bi; la
 function Tag({ text, color }: { text: string; color: string }) {
   return (
     <View style={{ alignSelf: 'flex-start', marginTop: 2, borderRadius: 6, paddingHorizontal: 6, paddingVertical: 1, backgroundColor: color }}>
-      <Text className="font-heavy" style={{ fontSize: 11, color: '#FFFFFF' }}>
+      <Text className="font-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>
         {text}
       </Text>
     </View>

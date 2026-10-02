@@ -66,7 +66,7 @@ export function FloatingPanel({
   useEffect(() => pan.setBounds(winW, winH), [pan, winW, winH]);
 
   const frame = narrow
-    ? { left: 0, right: 0, bottom: 0, height: Math.min(winH * 0.72, 560) }
+    ? { left: 0, right: 0, bottom: 0, height: Math.min(winH * 0.78, 600) }
     : {
         left: Math.min(box.x, Math.max(0, winW - box.w - 8)),
         top: Math.min(box.y, Math.max(0, winH - 120)),
@@ -109,7 +109,8 @@ export function FloatingPanel({
           accessibilityRole="button"
           accessibilityLabel={L('Đóng', 'Close')}
           onPress={onClose}
-          className="h-7 w-7 items-center justify-center rounded-md"
+          className="items-center justify-center rounded-md"
+          style={{ width: 44, height: 44, margin: -8 }}
         >
           <Icon name="close" size={16} color="#FFFFFF" strokeWidth={2} />
         </Pressable>

@@ -2,6 +2,7 @@ import React from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from './Icon';
+import { haptic } from '@/services/haptics';
 import { color, paper } from '@/theme/tokens';
 
 export type ButtonVariant =
@@ -70,7 +71,7 @@ const iconColor: Record<ButtonVariant, string> = {
 };
 
 const sizing: Record<ButtonSize, { box: string; text: string; icon: number }> = {
-  sm: { box: 'h-9 px-3 rounded-md gap-1.5', text: 'text-label', icon: 15 },
+  sm: { box: 'h-11 px-3 rounded-md gap-1.5 md:h-9', text: 'text-label', icon: 15 },
   md: { box: 'h-11 px-4 rounded-panel gap-2', text: 'text-body', icon: 17 },
   lg: { box: 'h-12 px-5 rounded-panel gap-2', text: 'text-bodyLg', icon: 19 },
 };
@@ -95,7 +96,10 @@ export function Button({
       accessibilityRole="button"
       aria-disabled={inactive} aria-busy={loading}
       disabled={inactive}
-      onPress={onPress}
+      onPress={() => {
+        haptic();
+        onPress?.();
+      }}
       className={[
         'flex-row items-center justify-center',
         s.box,
@@ -144,7 +148,7 @@ export function IconButton({
       accessibilityLabel={accessibilityLabel}
       onPress={onPress}
       className={[
-        'h-9 w-9 items-center justify-center rounded-md border border-border bg-surface',
+        'h-11 w-11 items-center justify-center rounded-md border border-border bg-surface md:h-9 md:w-9',
         className ?? '',
       ]
         .filter(Boolean)

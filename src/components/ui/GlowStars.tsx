@@ -28,7 +28,9 @@ function ensureKeyframes() {
 @keyframes readup-star-halo { 0%, 100% { transform: scale(0.7); opacity: 0.35; } 50% { transform: scale(1.3); opacity: 0.9; } }
 @keyframes readup-star-orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes readup-star-rise { 0% { transform: translateY(8px) scale(0.4); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(-26px) scale(1); opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { [data-star-anim] { animation: none !important; } }`;
+@media (prefers-reduced-motion: reduce) { [data-star-anim] { animation: none !important; } }
+/* Điện thoại: 8 phần tử chạy vô hạn mỗi chùm sao (kèm drop-shadow) là quá tay cho GPU di động — để sao đứng yên. */
+@media (max-width: 767px) { [data-star-anim] { animation: none !important; } }`;
   document.head.appendChild(el);
 }
 

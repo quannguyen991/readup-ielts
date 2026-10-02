@@ -537,7 +537,7 @@ function RunningView({
 
             {/* ---------------------------------------------- chọn chế độ */}
             <View className="mt-4 flex-row items-center gap-2">
-              <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
+              <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
                 {L('Chế độ', 'Mode')}
               </Text>
               {(
@@ -691,7 +691,7 @@ function RunningView({
                       <Icon name="check" size={11} color="#FFFFFF" strokeWidth={3} />
                     ) : null}
                   </View>
-                  <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
+                  <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
                     {L('Hiện kết quả ngay', 'Show results live')}
                   </Text>
                 </Pressable>
@@ -755,12 +755,12 @@ function RunningView({
             <View className="flex-row items-center justify-between">
               <View className="flex-row items-center gap-2">
                 <Icon name="chat" size={16} color={paper.brandMid} strokeWidth={2} />
-                <Text className="font-strong uppercase tracking-wide text-paper-ink" style={{ fontSize: 11 }}>
+                <Text className="font-strong uppercase tracking-wide text-paper-ink" style={{ fontSize: 12 }}>
                   {L('Dịch nghĩa', 'Translation')}
                 </Text>
               </View>
               <View className="rounded-pill bg-gold-soft px-2 py-0.5">
-                <Text className="font-semi uppercase text-paper-body" style={{ fontSize: 9 }}>
+                <Text className="font-semi uppercase text-paper-body" style={{ fontSize: 12 }}>
                   {L('Tiếng Việt', 'Vietnamese')}
                 </Text>
               </View>
@@ -782,11 +782,11 @@ function RunningView({
           <View className="rounded-card border border-brand-soft bg-white p-4">
             <View className="flex-row items-center gap-2">
               <Icon name="volume" size={16} color={paper.brandMid} strokeWidth={2} />
-              <Text className="font-strong uppercase tracking-wide text-paper-ink" style={{ fontSize: 11 }}>
+              <Text className="font-strong uppercase tracking-wide text-paper-ink" style={{ fontSize: 12 }}>
                 {L('Luyện phát âm', 'Pronunciation')}
               </Text>
             </View>
-            <Text className="mt-1 font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+            <Text className="mt-1 font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
               {L('Bấm vào từ để nghe đọc', 'Tap a word to hear it')}
             </Text>
 
@@ -947,7 +947,7 @@ function NavKey({
       >
         <Text
           className="font-semi"
-          style={{ fontSize: 10, color: emphasis ? '#FFFFFF' : paper.body }}
+          style={{ fontSize: 12, color: emphasis ? '#FFFFFF' : paper.body }}
         >
           {hint}
         </Text>

@@ -27,13 +27,13 @@ function Progress({ audio, seekable }: { audio: SectionAudio; seekable: boolean 
       onPress={(e) => {
         if (w > 0) audio.seek((e.nativeEvent.locationX / w) * audio.duration);
       }}
-      style={{ flex: 1, height: 22, justifyContent: 'center' }}
+      style={{ flex: 1, height: 36, justifyContent: 'center' }}
     >
       <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE3C8', overflow: 'hidden' }}>
         <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: '#B8955A' }} />
       </View>
       {seekable ? (
-        <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -7, width: 14, height: 14, borderRadius: 7, backgroundColor: '#8F6E36' }} />
+        <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#8F6E36' }} />
       ) : null}
     </Pressable>
   );
@@ -87,10 +87,10 @@ export function SpeedChips({ speed, onChange, disabled }: { speed: number; onCha
               playSfx('tab');
               onChange(v);
             }}
-            className="rounded-pill border px-3 py-1.5"
-            style={{ borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF', opacity: disabled ? 0.45 : 1 }}
+            className="items-center justify-center rounded-pill border px-3.5"
+            style={{ minHeight: 44, minWidth: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF', opacity: disabled ? 0.45 : 1 }}
           >
-            <Text className="font-strong" style={{ fontSize: 12, color: on ? color.primary : color.muted }}>
+            <Text className="font-strong" style={{ fontSize: 14, color: on ? color.primary : color.muted }}>
               {v}x
             </Text>
           </Pressable>
@@ -141,11 +141,11 @@ export function AudioCard({
         <SpeedChips speed={real ? 1 : speed} onChange={onSpeed} disabled={real} />
         {seekable ? (
           <View className="flex-row gap-1.5">
-            <Pressable accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} className="rounded-pill border border-border px-2.5 py-1.5">
-              <Text className="font-strong text-muted" style={{ fontSize: 12 }}>-10s</Text>
+            <Pressable accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} className="items-center justify-center rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 52 }}>
+              <Text className="font-strong text-muted" style={{ fontSize: 14 }}>-10s</Text>
             </Pressable>
-            <Pressable accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} className="rounded-pill border border-border px-2.5 py-1.5">
-              <Text className="font-strong text-muted" style={{ fontSize: 12 }}>+10s</Text>
+            <Pressable accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} className="items-center justify-center rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 52 }}>
+              <Text className="font-strong text-muted" style={{ fontSize: 14 }}>+10s</Text>
             </Pressable>
           </View>
         ) : null}
@@ -177,25 +177,51 @@ export function FallbackNote({ audio }: { audio: SectionAudio }) {
   );
 }
 
-/** Thanh âm thanh dính đáy (điện thoại). */
-export function AudioBar({ audio, real, label }: { audio: SectionAudio; real: boolean; label: string }) {
+/**
+ * Thanh âm thanh dính đáy (điện thoại): nút phát/tạm dừng LỚN 56px bên trái trong
+ * tầm ngón cái, thanh tua + giờ ở giữa, rồi -10s / +10s và tốc độ (chạm để đổi vòng).
+ * Thi thật: không tua, không đổi tốc độ nên các nút phụ ẩn đi.
+ */
+export function AudioBar({
+  audio, real, label, speed = 1, onSpeed,
+}: { audio: SectionAudio; real: boolean; label: string; speed?: number; onSpeed?: (v: number) => void }) {
   const seekable = !real && audio.mode === 'file';
+  const next = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length] ?? 1;
+  const small = {
+    minHeight: 44, minWidth: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 22,
+    borderWidth: 1, borderColor: color.borderStrong, backgroundColor: '#FFFFFF',
+  } as const;
   return (
     <View className="border-t border-border bg-surface px-3 py-2">
-      <View className="flex-row items-center gap-3">
-        <PlayButton audio={audio} real={real} size={40} />
+      <View className="flex-row items-center gap-2.5">
+        <PlayButton audio={audio} real={real} size={56} />
         <View className="min-w-0 flex-1">
           <View className="flex-row items-center justify-between">
-            <Text className="font-strong text-ink" style={{ fontSize: 12 }} numberOfLines={1}>{label}</Text>
-            <Text className="font-mid text-muted" style={{ fontSize: 12 }}>
+            <Text className="font-strong text-ink" style={{ fontSize: 13 }} numberOfLines={1}>{label}</Text>
+            <Text className="font-mid text-muted" style={{ fontSize: 13, fontVariant: ['tabular-nums'] }}>
               {fmtTime(audio.current)} / {audio.duration ? fmtTime(audio.duration) : '--:--'}
             </Text>
           </View>
           <Progress audio={audio} seekable={seekable} />
         </View>
+        {seekable ? (
+          <>
+            <Pressable accessibilityRole="button" accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} style={small}>
+              <Text className="font-strong text-muted" style={{ fontSize: 13 }}>-10</Text>
+            </Pressable>
+            <Pressable accessibilityRole="button" accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} style={small}>
+              <Text className="font-strong text-muted" style={{ fontSize: 13 }}>+10</Text>
+            </Pressable>
+          </>
+        ) : null}
+        {!real && onSpeed ? (
+          <Pressable accessibilityRole="button" accessibilityLabel={`Speed ${speed}x`} onPress={() => onSpeed(next)} style={small}>
+            <Text className="font-strong" style={{ fontSize: 13, color: color.primary }}>{speed}x</Text>
+          </Pressable>
+        ) : null}
       </View>
       {audio.mode === 'tts' ? (
-        <Text className="mt-1 font-mid" style={{ fontSize: 11, color: '#B26A00' }}>
+        <Text className="mt-1 font-mid" style={{ fontSize: 12, color: '#B26A00' }}>
           TTS · chưa có tệp âm thanh / no audio file
         </Text>
       ) : null}

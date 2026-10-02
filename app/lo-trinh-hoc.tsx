@@ -171,7 +171,7 @@ export default function LearningPathScreen() {
       <View style={{ padding: 18 }}>
         {prog.next ? (
           <>
-            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: P.goldLight }}>
+            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: P.goldLight }}>
               {L(`HỌC TIẾP · PART ${nextPartNo} · ${(nextPart?.title.vi ?? '').toUpperCase()}`, `UP NEXT · PART ${nextPartNo} · ${(nextPart?.title.en ?? '').toUpperCase()}`)}
             </Text>
             <Text className="font-heavy" style={{ marginTop: 6, fontSize: 20, lineHeight: 26, color: '#FFFFFF' }}>
@@ -324,7 +324,7 @@ function AllDone({ level, levels, onNext }: { level: PathLevel; levels: readonly
   const next = levels[levels.indexOf(level) + 1];
   return (
     <View style={{ gap: 10 }}>
-      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: P.goldLight }}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: P.goldLight }}>
         {L('HOÀN THÀNH TRÌNH ĐỘ', 'LEVEL COMPLETE')}
       </Text>
       <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 26, color: '#FFFFFF' }}>
@@ -376,7 +376,7 @@ function SidePanel({
           <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 2.4, color: P.goldLight }}>
             BAND 9
           </Text>
-          <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
             {prog.next ? (isNext ? L('HỌC TIẾP', 'UP NEXT') : L('BÀI ĐANG CHỌN', 'SELECTED')) : L('ĐÃ XONG HẾT', 'ALL DONE')}
           </Text>
         </View>
@@ -385,7 +385,7 @@ function SidePanel({
             <AllDone level={level} levels={levels} onNext={onNextLevel} />
           </View>
         ) : null}
-        <Text className="font-strong" style={{ marginTop: 16, fontSize: 11, letterSpacing: 1.4, color: 'rgba(255,255,255,0.55)' }}>
+        <Text className="font-strong" style={{ marginTop: 16, fontSize: 12, letterSpacing: 1.4, color: 'rgba(255,255,255,0.55)' }}>
           {`PART ${partNo} · ${(en ? part.title.en : part.title.vi).toUpperCase()}`}
         </Text>
         <Text className="font-heavy" style={{ marginTop: 4, fontSize: 21, lineHeight: 27, color: '#FFFFFF' }}>
@@ -402,7 +402,7 @@ function SidePanel({
       </View>
 
       <View style={{ paddingHorizontal: 22, paddingBottom: 20, paddingTop: 6, gap: 4 }}>
-        <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)', marginBottom: 4 }}>
+        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)', marginBottom: 4 }}>
           {L(`${level.label} · ${level.parts.length} PART`, `${level.label} · ${level.parts.length} PARTS`)}
         </Text>
         {level.parts.map((p, i) => {

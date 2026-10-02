@@ -161,7 +161,7 @@ export default function LeaderboardScreen() {
                   </View>
                 </View>
 
-                <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+                <Text className="mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
                   {L('Tổng điểm tháng này', 'Total points this month')}
                 </Text>
                 <Text className="font-heavy text-ink" style={{ fontSize: 40, lineHeight: 46 }}>

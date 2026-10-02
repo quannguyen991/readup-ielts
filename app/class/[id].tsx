@@ -192,11 +192,11 @@ function CodeTicket({ d, token, reload }: { d: TeacherDetail; token: string; rel
           <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 2.4, color: P.goldLight }}>
             BAND 9
           </Text>
-          <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
             {L('VÉ VÀO LỚP', 'CLASS PASS')}
           </Text>
         </View>
-        <Text className="font-strong" style={{ marginTop: 18, fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+        <Text className="font-strong" style={{ marginTop: 18, fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
           {L('MÃ LỚP', 'CLASS CODE')}
         </Text>
         <Text selectable className="font-heavy" style={{ fontSize: 40, lineHeight: 48, letterSpacing: 6, color: P.goldLight }}>
@@ -360,7 +360,7 @@ function AssignmentsSheet({ d, token, reload }: { d: TeacherDetail; token: strin
               const overdue = !!a.due_on && a.due_on < today;
               return (
                 <View key={a.id} style={{ paddingVertical: 12, borderTopWidth: i === 0 ? 0 : 1, borderColor: P.line }}>
-                  <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.2, color: P.goldDeep }}>
+                  <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: P.goldDeep }}>
                     {kindLabel(a.kind, en).toUpperCase()}
                   </Text>
                   <Text className="font-heavy" style={{ marginTop: 2, fontSize: 15, lineHeight: 21, color: P.navy }}>
@@ -469,7 +469,7 @@ function AssignPicker({ classId, token, onDone, onCancel }: { classId: string; t
             return (
               <View key={`${it.kind}:${it.ref}`}>
                 {newGroup ? (
-                  <Text className="font-strong" style={{ marginTop: i === 0 ? 0 : 10, marginBottom: 2, fontSize: 11, letterSpacing: 1, color: P.muted }}>
+                  <Text className="font-strong" style={{ marginTop: i === 0 ? 0 : 10, marginBottom: 2, fontSize: 12, letterSpacing: 1, color: P.muted }}>
                     {label(it.group).toUpperCase()}
                   </Text>
                 ) : null}
@@ -585,7 +585,7 @@ function TableHead() {
   return (
     <View style={{ flexDirection: 'row', gap: 8, paddingVertical: 10, borderBottomWidth: 1, borderColor: P.line }}>
       {COLS.map((c) => (
-        <Text key={c.key} className="font-strong" style={{ flex: c.flex, fontSize: 11, letterSpacing: 0.6, color: P.muted }}>
+        <Text key={c.key} className="font-strong" style={{ flex: c.flex, fontSize: 12, letterSpacing: 0.6, color: P.muted }}>
           {L(c.vi, c.en).toUpperCase()}
         </Text>
       ))}
@@ -634,7 +634,7 @@ function MemberRow({ m, d, table, first, open, onToggle, token, reload }: { m: M
             <View style={{ marginTop: 8, flexDirection: 'row', flexWrap: 'wrap', rowGap: 6 }}>
               {COLS.slice(2).map((c, i) => (
                 <View key={c.key} style={{ width: '33.33%', paddingRight: 6 }}>
-                  <Text className="font-sans" style={{ fontSize: 11, color: P.muted }} numberOfLines={1}>
+                  <Text className="font-sans" style={{ fontSize: 12, color: P.muted }} numberOfLines={1}>
                     {L(c.vi, c.en)}
                   </Text>
                   <Text className="font-heavy" style={{ fontSize: 16, color: values[i + 1] === '—' ? '#B7AC95' : P.navy }}>
@@ -757,7 +757,7 @@ function StudentClass({ d, token, reload }: { d: StudentDetail; token: string; r
               return (
                 <View key={a.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingVertical: 12, borderTopWidth: i === 0 ? 0 : 1, borderColor: P.line }}>
                   <View style={{ flex: 1, minWidth: 0 }}>
-                    <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.2, color: P.goldDeep }}>
+                    <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.2, color: P.goldDeep }}>
                       {kindLabel(a.kind, en).toUpperCase()}
                     </Text>
                     <Text className="font-heavy" style={{ marginTop: 2, fontSize: 15, lineHeight: 21, color: P.navy }}>

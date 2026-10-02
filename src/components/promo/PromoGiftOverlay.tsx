@@ -11,12 +11,14 @@
  *   (khoá `billing`, gộp theo gói còn hiệu lực).
  */
 import React, { useState } from 'react';
-import { Modal, Platform, Pressable, Text, View } from 'react-native';
+import { Modal, Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { usePathname } from 'expo-router';
 import { onLegacySite } from '@/lib/site';
 
 import { useHydrated } from '@/components/layout/useHydrated';
+import { Sheet } from '@/components/ui/Sheet';
+import { isFocusRoute, isImmersiveRoute } from '@/navigation/focus-routes';
 import { applyStarPass } from '@/lib/billing/star-pass';
 import { dateKey } from '@/services/gamification/points';
 import { giftAvailable, PROMO } from '@/services/gamification/promo';
@@ -26,8 +28,29 @@ import { useGameFx } from '@/store/useGameFx';
 import { useRewardStore } from '@/store/useRewardStore';
 import { useL } from '@/i18n/useL';
 
-/** "Để sau" trong phiên này (mở lại app thì hiện lại tới khi nhận). */
-let snoozed = false;
+/**
+ * "Để sau" trong phiên này: nhớ cả khi tải lại trang (sessionStorage) — tối đa MỘT lần hiện
+ * mỗi phiên trình duyệt, kẻo F5 lần nào cũng bị phủ màn hình. Mở app ở phiên mới thì hiện
+ * lại tới khi nhận quà.
+ */
+const SNOOZE_KEY = 'band9.promo.snoozed';
+let snoozed = readSnoozed();
+
+function readSnoozed(): boolean {
+  try {
+    return Platform.OS === 'web' && typeof window !== 'undefined' && window.sessionStorage.getItem(SNOOZE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+function writeSnoozed() {
+  snoozed = true;
+  try {
+    if (Platform.OS === 'web' && typeof window !== 'undefined') window.sessionStorage.setItem(SNOOZE_KEY, '1');
+  } catch {
+    // Chặn lưu trữ: chỉ nhớ trong bộ nhớ của lần tải này.
+  }
+}
 
 /** Ngày hôm nay; bản dev cho phép thử bằng `?promoDate=YYYY-MM-DD`. */
 function todayKey(): string {
@@ -47,11 +70,15 @@ export function PromoGiftOverlay() {
   const claimPrize = useRewardStore((s) => s.claimPrize);
   const [hidden, setHidden] = useState(snoozed);
   const pathname = usePathname();
+  // Điện thoại: bảng trượt từ đáy (chạm nền / kéo xuống / Esc là đóng), không phủ cả màn hình.
+  const compact = useWindowDimensions().width < 640;
   const [done, setDone] = useState<null | { pro: string | null }>(null);
 
   const available = hydrated && giftAvailable(todayKey(), prizes);
   // Trang nhận dữ liệu khi chuyển tên miền: không chen quà vào giữa bước chuyển.
+  // Không bao giờ chen vào màn làm bài / toàn khung, dù AppShell chỉ gắn nó ở màn duyệt.
   if (!hydrated || hidden || (!available && !done) || pathname === '/chuyen-du-lieu' || onLegacySite()) return null;
+  if (isFocusRoute(pathname) || isImmersiveRoute(pathname)) return null;
 
   const claim = () => {
     if (!claimPrize(PROMO.id, PROMO.giftStars)) {
@@ -70,39 +97,33 @@ export function PromoGiftOverlay() {
   };
 
   const later = () => {
-    snoozed = true;
+    writeSnoozed();
     setHidden(true);
   };
 
-  return (
-    <Modal visible transparent animationType="fade" onRequestClose={done ? () => setHidden(true) : later}>
-      <View style={{ flex: 1, backgroundColor: 'rgba(12,10,40,0.72)', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
-        <View
-          accessibilityRole="none"
-          aria-modal
-          style={{ width: '100%', maxWidth: 520, borderRadius: 28, overflow: 'hidden', backgroundColor: '#FFFFFF', shadowColor: '#000', shadowOpacity: 0.3, shadowRadius: 30 }}
-        >
-          <LinearGradient colors={['#A8843F', '#CCA35B', '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 24, paddingTop: 28, paddingBottom: 24, alignItems: 'center' }}>
-            <Text style={{ fontSize: 54 }}>{done ? '🎉' : '🎁'}</Text>
+  const content = (
+    <>
+          <LinearGradient colors={['#A8843F', '#CCA35B', '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 20, paddingTop: compact ? 18 : 28, paddingBottom: compact ? 16 : 24, alignItems: 'center' }}>
+            <Text style={{ fontSize: compact ? 40 : 54 }}>{done ? '🎉' : '🎁'}</Text>
             <Text className="font-strong" style={{ marginTop: 6, fontSize: 14, letterSpacing: 1.2, color: '#FDE68A' }}>
               {L('QUÀ CUỐI THÁNG 9 · BAND 9', 'END-OF-SEPTEMBER GIFT · BAND 9')}
             </Text>
-            <Text className="font-heavy" style={{ marginTop: 8, fontSize: 30, lineHeight: 36, color: '#FFFFFF', textAlign: 'center' }}>
+            <Text className="font-heavy" style={{ marginTop: 8, fontSize: compact ? 24 : 30, lineHeight: compact ? 30 : 36, color: '#FFFFFF', textAlign: 'center' }}>
               {done ? L('Đã nhận quà!', 'Gift claimed!') : L('Tặng bạn món quà cuối tháng', 'A month-end gift for you')}
             </Text>
             <View style={{ marginTop: 16, flexDirection: 'row', gap: 10, flexWrap: 'wrap', justifyContent: 'center' }}>
-              <View style={{ borderRadius: 18, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.16)', alignItems: 'center', minWidth: 150 }}>
-                <Text className="font-heavy" style={{ fontSize: 28, color: GOLD }}>+{formatStars(PROMO.giftStars)} ⭐</Text>
+              <View style={{ borderRadius: 18, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.16)', alignItems: 'center', minWidth: compact ? 132 : 150 }}>
+                <Text className="font-heavy" style={{ fontSize: compact ? 22 : 28, color: GOLD }}>+{formatStars(PROMO.giftStars)} ⭐</Text>
                 <Text className="font-semi" style={{ fontSize: 14, color: '#FFFFFF' }}>{L('sao vào tài khoản', 'stars to your account')}</Text>
               </View>
-              <View style={{ borderRadius: 18, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.16)', alignItems: 'center', minWidth: 150 }}>
-                <Text className="font-heavy" style={{ fontSize: 28, color: '#FFFFFF' }}>{L(`${PROMO.proDays} ngày 👑`, `${PROMO.proDays} days 👑`)}</Text>
+              <View style={{ borderRadius: 18, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.16)', alignItems: 'center', minWidth: compact ? 132 : 150 }}>
+                <Text className="font-heavy" style={{ fontSize: compact ? 22 : 28, color: '#FFFFFF' }}>{L(`${PROMO.proDays} ngày 👑`, `${PROMO.proDays} days 👑`)}</Text>
                 <Text className="font-semi" style={{ fontSize: 14, color: '#FFFFFF' }}>{L('dùng thử gói Pro', 'of Pro, free')}</Text>
               </View>
             </View>
           </LinearGradient>
 
-          <View style={{ padding: 22, gap: 12 }}>
+          <View style={{ padding: compact ? 16 : 22, gap: 12 }}>
             <View style={{ flexDirection: 'row', gap: 10, borderRadius: 16, padding: 12, backgroundColor: '#FEF3C7' }}>
               <Text style={{ fontSize: 20 }}>⚡</Text>
               <Text className="font-sans" style={{ flex: 1, fontSize: 14, lineHeight: 21, color: '#78350F' }}>
@@ -133,19 +154,19 @@ export function PromoGiftOverlay() {
             )}
 
             {done ? (
-              <Pressable accessibilityRole="button" onPress={() => setHidden(true)} style={{ borderRadius: 16, paddingVertical: 14, alignItems: 'center', backgroundColor: '#A8843F' }}>
+              <Pressable accessibilityRole="button" onPress={() => setHidden(true)} style={{ borderRadius: 16, minHeight: 48, justifyContent: 'center', alignItems: 'center', backgroundColor: '#A8843F' }}>
                 <Text className="font-heavy" style={{ fontSize: 16, color: '#FFFFFF' }}>
                   {L('Bắt đầu học', 'Start learning')}
                 </Text>
               </Pressable>
             ) : (
               <>
-                <Pressable accessibilityRole="button" onPress={claim} style={{ borderRadius: 16, paddingVertical: 14, alignItems: 'center', backgroundColor: GOLD }}>
+                <Pressable accessibilityRole="button" onPress={claim} style={{ borderRadius: 16, minHeight: 48, justifyContent: 'center', alignItems: 'center', backgroundColor: GOLD }}>
                   <Text className="font-heavy" style={{ fontSize: 16, color: '#2A1B02' }}>
                     {L('🎁 Nhận quà', '🎁 Claim gift')}
                   </Text>
                 </Pressable>
-                <Pressable accessibilityRole="button" onPress={later} style={{ paddingVertical: 8, alignItems: 'center' }}>
+                <Pressable accessibilityRole="button" onPress={later} style={{ minHeight: 44, justifyContent: 'center', alignItems: 'center' }}>
                   <Text className="font-semi" style={{ fontSize: 14, color: '#64748B' }}>
                     {L('Để sau', 'Later')}
                   </Text>
@@ -153,6 +174,26 @@ export function PromoGiftOverlay() {
               </>
             )}
           </View>
+    </>
+  );
+
+  if (compact) {
+    return (
+      <Sheet visible onClose={done ? () => setHidden(true) : later} accessibilityLabel={L('Quà cuối tháng 9', 'End-of-September gift')}>
+        <View style={{ borderRadius: 20, overflow: 'hidden' }}>{content}</View>
+      </Sheet>
+    );
+  }
+
+  return (
+    <Modal visible transparent animationType="fade" onRequestClose={done ? () => setHidden(true) : later}>
+      <View style={{ flex: 1, backgroundColor: 'rgba(12,10,40,0.72)', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+        <View
+          accessibilityRole="none"
+          aria-modal
+          style={{ width: '100%', maxWidth: 520, borderRadius: 28, overflow: 'hidden', backgroundColor: '#FFFFFF', shadowColor: '#000', shadowOpacity: 0.3, shadowRadius: 30 }}
+        >
+          {content}
         </View>
       </View>
     </Modal>

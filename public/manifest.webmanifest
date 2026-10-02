@@ -1,14 +1,24 @@
 {
+  "id": "/",
   "name": "Band 9 — IELTS & SAT",
   "short_name": "Band 9",
-  "start_url": "/",
+  "description": "Luyện IELTS và SAT: đọc, nghe, từ vựng, làm đề.",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#F3EDE1",
-  "theme_color": "#0F1D33",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#FCFAF7",
+  "theme_color": "#FCFAF7",
   "lang": "vi",
+  "dir": "ltr",
+  "categories": ["education"],
   "icons": [
-    { "src": "/notify-icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/notify-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Hôm nay", "short_name": "Hôm nay", "url": "/dashboard?source=shortcut" },
+    { "name": "Ôn từ vựng", "short_name": "Từ vựng", "url": "/vocabulary?source=shortcut" },
+    { "name": "Kho bài đọc", "short_name": "Thư viện", "url": "/library?source=shortcut" }
   ]
 }

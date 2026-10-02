@@ -43,7 +43,7 @@ export function EvidenceMarker({
               {L(`Bằng chứng · đoạn ${mark.paragraphIndex + 1}`, `Evidence · paragraph ${mark.paragraphIndex + 1}`)}
             </Text>
           </View>
-          <Pressable onPress={onClear} accessibilityLabel={L('Bỏ khoanh bằng chứng', 'Clear evidence mark')}>
+          <Pressable onPress={onClear} hitSlop={{ top: 12, bottom: 12, left: 8, right: 8 }} accessibilityLabel={L('Bỏ khoanh bằng chứng', 'Clear evidence mark')}>
             <Text className="font-mid text-label text-muted">{L('Chọn lại', 'Reselect')}</Text>
           </Pressable>
         </View>

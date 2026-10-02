@@ -203,7 +203,7 @@ export function StarsRow({ n, max = 3, size = 16 }: { n: number; max?: number; s
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 }}>
-      <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 1.4, color: T.goldDark, textTransform: 'uppercase' }}>
+      <Text className="font-heavy" style={{ fontSize: 14, letterSpacing: 1.4, color: T.goldDark, textTransform: 'uppercase' }}>
         {children}
       </Text>
       <View style={{ flex: 1, height: 1, backgroundColor: T.line }} />

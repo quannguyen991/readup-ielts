@@ -94,7 +94,7 @@ function Passport() {
             </Text>
             {badge ? (
               <View style={{ minWidth: 20, height: 20, borderRadius: 10, paddingHorizontal: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: T.bad }}>
-                <Text className="font-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>
+                <Text className="font-heavy" style={{ fontSize: 14, color: '#FFFFFF' }}>
                   {badge}
                 </Text>
               </View>
@@ -182,7 +182,7 @@ function Stat({ n, label }: { n: number; label: string }) {
       <Text className="font-heavy" style={{ fontSize: 22, color: T.goldLight }}>
         {n}
       </Text>
-      <Text className="font-sans" style={{ fontSize: 13, color: T.cream }}>
+      <Text className="font-sans" style={{ fontSize: 14, color: T.cream }}>
         {label}
       </Text>
     </View>

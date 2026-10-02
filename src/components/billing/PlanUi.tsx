@@ -138,7 +138,7 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
           <Text className="font-heavy text-white" style={{ fontSize: 30, lineHeight: 32 }}>
             {TRIAL_DAYS}
           </Text>
-          <Text className="font-strong text-white" style={{ fontSize: 10, letterSpacing: 1 }}>
+          <Text className="font-strong text-white" style={{ fontSize: 12, letterSpacing: 1 }}>
             {L('NGÀY', 'DAYS')}
           </Text>
         </View>

@@ -1,5 +1,5 @@
 /**
- * Nút phóng to / thu nhỏ nhỏ gọn (góc dưới-phải) dùng cho cảnh thành phố và bản đồ thế giới. Chỉ là hai nút biểu tượng ≥ 40 px.
+ * Nút phóng to / thu nhỏ nhỏ gọn (góc dưới-phải) dùng cho cảnh thành phố và bản đồ thế giới. Chỉ là hai nút biểu tượng ≥ 44 px.
  */
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
@@ -14,7 +14,7 @@ export function ZoomControls({ z, min, max, onZoom, bottom = 10, right = 10, top
       accessibilityLabel={label}
       disabled={disabled}
       onPress={() => onZoom(delta)}
-      style={{ width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20, backgroundColor: 'rgba(15,29,51,0.72)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.7)', opacity: disabled ? 0.4 : 1 }}
+      style={{ width: 44, height: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 22, backgroundColor: 'rgba(15,29,51,0.72)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.7)', opacity: disabled ? 0.4 : 1 }}
     >
       <Text style={{ color: '#F3EDE1', fontSize: 22, lineHeight: 24, fontWeight: '700' }}>{glyph}</Text>
     </Pressable>

@@ -295,7 +295,7 @@ export default function SpacedRepetitionScreen() {
               const h = col.count > 0 ? Math.max(14, (col.count / maxLevel) * 60) : 6;
               return (
                 <View key={col.key} style={{ alignItems: 'center', flex: 1, marginHorizontal: 2 }}>
-                  <Text style={{ fontSize: 11, fontWeight: '600', color: '#FFFFFF', marginBottom: 4 }}>
+                  <Text style={{ fontSize: 12, fontWeight: '600', color: '#FFFFFF', marginBottom: 4 }}>
                     {col.count}
                   </Text>
                   <View
@@ -307,7 +307,7 @@ export default function SpacedRepetitionScreen() {
                       backgroundColor: col.color,
                     }}
                   />
-                  <Text style={{ fontSize: 10, color: 'rgba(255, 255, 255, 0.9)', marginTop: 6, fontWeight: '600' }}>
+                  <Text style={{ fontSize: 12, color: 'rgba(255, 255, 255, 0.9)', marginTop: 6, fontWeight: '600' }}>
                     {col.label}
                   </Text>
                 </View>
@@ -361,7 +361,7 @@ export default function SpacedRepetitionScreen() {
                 <View key={item.dateKey} style={{ alignItems: 'center', flex: 1, marginHorizontal: 2 }}>
                   <Text
                     style={{
-                      fontSize: 11,
+                      fontSize: 12,
                       fontWeight: '600',
                       color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                       marginBottom: 4,
@@ -380,7 +380,7 @@ export default function SpacedRepetitionScreen() {
                   />
                   <Text
                     style={{
-                      fontSize: 10,
+                      fontSize: 12,
                       color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                       fontWeight: isToday ? '700' : '500',
                       marginTop: 6,
@@ -520,11 +520,11 @@ export default function SpacedRepetitionScreen() {
                   const b = dueLabel(entry);
                   return b ? (
                     <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: b.hot ? '#FFEDD5' : '#F3EEE3' }}>
-                      <Text style={{ fontSize: 11, fontWeight: '700', color: b.hot ? '#9A3412' : '#6A5228' }}>{b.text}</Text>
+                      <Text style={{ fontSize: 12, fontWeight: '700', color: b.hot ? '#9A3412' : '#6A5228' }}>{b.text}</Text>
                     </View>
                   ) : null;
                 })()}
-                <Text style={{ fontSize: 11, color: '#94A3B8' }}>
+                <Text style={{ fontSize: 12, color: '#94A3B8' }}>
                   {formatRelativeTime(entry.createdAt, locale)}
                 </Text>
 

@@ -514,7 +514,7 @@ function PracticeView({
           </View>
 
           <View className="mt-4 overflow-hidden rounded-card border border-white/10 bg-black/25">
-            <Text className="border-b border-white/10 px-4 py-2.5 font-strong uppercase tracking-wide text-white/50" style={{ fontSize: 10 }}>
+            <Text className="border-b border-white/10 px-4 py-2.5 font-strong uppercase tracking-wide text-white/50" style={{ fontSize: 12 }}>
               {L('Danh sách câu', 'Sentences')}
             </Text>
             <ScrollView style={{ maxHeight: 260 }}>
@@ -615,7 +615,7 @@ function PracticeView({
               </View>
 
               <View className="mt-3 flex-row flex-wrap items-center justify-between gap-2">
-                <Text className="font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+                <Text className="font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
                   {L('Mỗi ô là một chữ cái — Tab để nghe lại, Enter để sang câu', 'One letter per box — Tab to replay, Enter for the next sentence')}
                 </Text>
                 <Pressable
@@ -624,7 +624,7 @@ function PracticeView({
                   className="flex-row items-center gap-1.5 py-1"
                 >
                   <Icon name="refresh" size={13} color={paper.muted} strokeWidth={2} />
-                  <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+                  <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
                     {L('Xoá hết', 'Clear all')}
                   </Text>
                 </Pressable>
@@ -740,7 +740,7 @@ function PracticePrepView({
             <YoutubeFrame videoId={videoId} start={0} />
           </View>
           <View className="mt-3 rounded-card border border-white/10 bg-black/25 p-4">
-            <Text className="font-strong uppercase tracking-[2px] text-[#9ED66C]" style={{ fontSize: 11 }}>{L('Video đã chọn', 'Selected video')}</Text>
+            <Text className="font-strong uppercase tracking-[2px] text-[#9ED66C]" style={{ fontSize: 12 }}>{L('Video đã chọn', 'Selected video')}</Text>
             <Text className="mt-2 font-sans text-body text-white/65">{L('Nghe video ở bên trái, sau đó chọn chế độ luyện ở workspace.', 'Watch the video on the left, then pick a practice mode in the workspace.')}</Text>
             <Button className="mt-4 self-start" variant="brandOutline" label={L('Đổi video', 'Change video')} onPress={onExit} />
           </View>
@@ -764,7 +764,7 @@ function PracticePrepView({
             {message ? <Text className="mt-3 font-sans text-label text-[#F7D28C]">{message}</Text> : null}
           </View>
 
-          <Text className="mt-5 font-strong uppercase tracking-[2px] text-white/45" style={{ fontSize: 10 }}>{L('Hoặc dán transcript từ YouTube', 'Or paste a transcript from YouTube')}</Text>
+          <Text className="mt-5 font-strong uppercase tracking-[2px] text-white/45" style={{ fontSize: 12 }}>{L('Hoặc dán transcript từ YouTube', 'Or paste a transcript from YouTube')}</Text>
           <TextInput value={pasted} onChangeText={setPasted} multiline placeholder={'0:00\nHello and welcome…'} placeholderTextColor="#71806D" className="mt-2 min-h-[150px] rounded-panel border border-white/10 bg-black/20 p-4 font-sans text-body text-[#EFF7E9]" />
           <Button className="mt-3 self-start" variant="brandOutline" label={L('Mở màn luyện', 'Start practising')} iconRight="check" disabled={!pasted.trim()} onPress={usePasted} />
         </View>
@@ -787,7 +787,7 @@ function ShadowingView({
     <View className="gap-4 rounded-panel bg-[#0B110D] p-5">
       <View className="flex-row items-center justify-between">
         <View>
-          <Text className="font-strong uppercase tracking-[2px] text-[#9ED66C]" style={{ fontSize: 11 }}>
+          <Text className="font-strong uppercase tracking-[2px] text-[#9ED66C]" style={{ fontSize: 12 }}>
             Shadowing mode
           </Text>
           <Text className="mt-1 font-sans text-body text-white/60">

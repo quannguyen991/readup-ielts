@@ -96,7 +96,7 @@ export default function AudioLibraryScreen() {
           />
         </View>
 
-        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
           {L('Trình độ', 'Level')}
         </Text>
         <View className="flex-row flex-wrap gap-1.5">
@@ -111,7 +111,7 @@ export default function AudioLibraryScreen() {
           ))}
         </View>
 
-        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+        <Text className="mb-1.5 mt-4 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
           {L('Chủ đề', 'Topic')}
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -143,7 +143,7 @@ export default function AudioLibraryScreen() {
       ) : null}
 
       <View className="mt-6 rounded-panel border border-border bg-surface p-3.5">
-        <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+        <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
           {L('Nguồn', 'Source')}
         </Text>
         <Text className="mt-1 font-sans text-label text-muted" style={{ lineHeight: 19 }}>
@@ -195,9 +195,10 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
       accessibilityRole="button"
       aria-selected={active}
       className={[
-        'rounded-pill border px-3 py-1.5',
+        'items-center justify-center rounded-pill border px-3 py-1.5',
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
       ].join(' ')}
+      style={{ minHeight: 44 }}
     >
       <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
         {label}

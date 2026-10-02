@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import { Pressable, Text, TextInput, View } from 'react-native';
 
 import { Icon } from '@/components/ui/Icon';
@@ -7,6 +7,7 @@ import type { ListeningAnswers, ListeningGroup, ListeningOption, ListeningQuesti
 import { playSfx } from '@/services/audio/sfx-ui';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { focusNextGap, registerGap, revealOnFocus } from '@/lib/mobile/gap-focus';
 
 /**
  * Hiển thị các nhóm câu hỏi của một section: điền từ (ghi chú / biểu mẫu /
@@ -29,7 +30,8 @@ export function groupTitle(group: ListeningGroup): string {
   return a === b ? `Question ${a}` : `Questions ${a}-${b}`;
 }
 
-export function GroupBlock({ group, ...common }: { group: ListeningGroup } & Common) {
+// memo: bản thân màn Listening dựng lại ~4 lần/giây theo tiến độ audio; khối câu hỏi chỉ đổi khi đáp án đổi.
+export const GroupBlock = memo(function GroupBlock({ group, ...common }: { group: ListeningGroup } & Common) {
   return (
     <View className="rounded-card border border-border bg-surface p-4" style={{ marginBottom: 16 }}>
       <Text className="font-heavy text-ink" style={{ fontSize: 16 }}>
@@ -51,7 +53,7 @@ export function GroupBlock({ group, ...common }: { group: ListeningGroup } & Com
       </View>
     </View>
   );
-}
+});
 
 // ---------------------------------------------------------------------------
 // Điền từ
@@ -60,6 +62,9 @@ export function GroupBlock({ group, ...common }: { group: ListeningGroup } & Com
 function GapInput({ n, answers, setAnswer, locked }: { n: number } & Common) {
   const { L } = useL();
   const [focus, setFocus] = React.useState(false);
+  const ref = useRef<TextInput>(null);
+  // Phím "Tiếp" trên bàn phím nhảy sang ô kế tiếp; ô cuối thì đóng bàn phím.
+  useEffect(() => registerGap('listening', n, ref.current), [n]);
   const v = typeof answers[n] === 'string' ? (answers[n] as string) : '';
   return (
     <View
@@ -67,27 +72,38 @@ function GapInput({ n, answers, setAnswer, locked }: { n: number } & Common) {
       className="flex-row items-center overflow-hidden rounded-lg"
       style={{
         minWidth: 150,
+        minHeight: 44,
         borderWidth: 1.5,
         borderColor: focus ? color.primary : v ? '#CDAB6C' : color.borderStrong,
         backgroundColor: '#FFFFFF',
       }}
     >
-      <View style={{ width: 28, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBF7EE' }}>
-        <Text className="font-heavy" style={{ fontSize: 12, color: color.primary }}>
+      <View style={{ width: 32, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBF7EE' }}>
+        <Text className="font-heavy" style={{ fontSize: 13, color: color.primary }}>
           {n}
         </Text>
       </View>
       <TextInput
+        ref={ref}
         value={v}
         editable={!locked}
         onChangeText={(t) => setAnswer(n, t)}
-        onFocus={() => setFocus(true)}
+        returnKeyType="next"
+        enterKeyHint="next"
+        submitBehavior="submit"
+        onSubmitEditing={() => focusNextGap('listening', n, ref.current)}
+        inputMode="text"
+        autoComplete="off"
+        onFocus={() => {
+          setFocus(true);
+          revealOnFocus(ref.current);
+        }}
         onBlur={() => setFocus(false)}
         autoCapitalize="none"
         autoCorrect={false}
         spellCheck={false}
         accessibilityLabel={L(`Câu ${n}`, `Question ${n}`)}
-        style={{ flex: 1, minWidth: 110, paddingHorizontal: 8, paddingVertical: 6, fontSize: 15, color: color.ink, outlineStyle: 'none' } as never}
+        style={{ flex: 1, minWidth: 110, paddingHorizontal: 8, paddingVertical: 8, fontSize: 16, color: color.ink, outlineStyle: 'none' } as never}
       />
     </View>
   );
@@ -171,11 +187,11 @@ function OptionRow({
       disabled={disabled}
       onPress={onPress}
       className="flex-row items-center gap-3 rounded-panel border px-3 py-2.5"
-      style={{ borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF' }}
+      style={{ minHeight: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF' }}
     >
       <View
         style={{
-          width: 26, height: 26, borderRadius: multi ? 7 : 13, alignItems: 'center', justifyContent: 'center',
+          width: 28, height: 28, borderRadius: multi ? 7 : 13, alignItems: 'center', justifyContent: 'center',
           backgroundColor: on ? color.primary : '#F5F1E9',
         }}
       >
@@ -318,7 +334,7 @@ function MatchingBody({ group, answers, setAnswer, locked }: { group: ListeningG
                       setAnswer(q.n, on ? '' : o.key);
                     }}
                     style={{
-                      width: 38, height: 38, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1.5,
+                      width: 44, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1.5,
                       borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? color.primary : '#FFFFFF',
                     }}
                   >

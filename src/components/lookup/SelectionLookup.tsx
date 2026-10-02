@@ -269,7 +269,7 @@ function LookupCard({ picked, left, top, onClose }: { picked: Picked; left: numb
 function Line({ label, value, strong, italic }: { label: string; value: string; strong?: boolean; italic?: boolean }) {
   return (
     <View>
-      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 0.6, color: '#94A3B8' }}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.6, color: '#94A3B8' }}>
         {label.toUpperCase()}
       </Text>
       <Text className={strong ? 'font-strong' : 'font-sans'} style={{ fontSize: strong ? 15 : 13, lineHeight: strong ? 21 : 19, color: '#0F172A', fontStyle: italic ? 'italic' : 'normal' }}>

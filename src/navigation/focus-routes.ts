@@ -146,3 +146,23 @@ export function isExamRoute(pathname: string): boolean {
 export function isImmersiveRoute(pathname: string): boolean {
   return /^\/read\/[^/]+$/.test(pathname);
 }
+
+/**
+ * Màn LÀM BÀI giữ cột bên trái ở desktop nhưng, trên ĐIỆN THOẠI, bỏ hẳn thanh đầu
+ * trang của app (cao ~64px + viền): màn tự có thanh đồng hồ / nút thoát của nó, mà
+ * 80px của một màn 360×740 là gần một câu hỏi. Gồm mọi màn thi (`EXAM`) cộng các
+ * màn luyện từng bài của SAT Math / Verbal.
+ *
+ * KHÔNG gồm trang chọn bài (`/listening`, `/sat`, `/math`, `/sat-rw`): ở đó người
+ * dùng đang duyệt và cần thanh điều hướng.
+ */
+const PHONE_CHROMELESS_EXTRA: readonly RegExp[] = [
+  /^\/math\/(drill|review|set)\/[^/]+$/,
+  /^\/sat-rw\/(?!learn$)[^/]+$/,
+  /^\/sat-rw\/(mix|set|skill)\/[^/]+$/,
+  /^\/listening\/(?!history$)[^/]+\/result$/,
+];
+
+export function isPhoneChromelessRoute(pathname: string): boolean {
+  return isExamRoute(pathname) || PHONE_CHROMELESS_EXTRA.some((pattern) => pattern.test(pathname));
+}

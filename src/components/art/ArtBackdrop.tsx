@@ -187,7 +187,7 @@ export function ArtCaption({ backdrop, phone }: { backdrop: Backdrop; phone: boo
           backgroundColor: dark ? 'rgba(10,14,32,0.72)' : 'rgba(255,255,255,0.8)',
         }}
       >
-        <Text numberOfLines={1} style={{ flexShrink: 1, fontSize: 11, color: dark ? '#E9E4D2' : '#3A382F' }}>
+        <Text numberOfLines={1} style={{ flexShrink: 1, fontSize: 12, color: dark ? '#E9E4D2' : '#3A382F' }}>
           {captionOf(backdrop, en)}
         </Text>
         <Pressable

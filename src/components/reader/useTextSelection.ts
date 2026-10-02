@@ -58,12 +58,28 @@ export function useTextSelection(
       }, 0);
     };
 
+    const coarse = typeof window.matchMedia === 'function' && window.matchMedia('(pointer: coarse)').matches;
     document.addEventListener('mouseup', onPointerUp);
-    document.addEventListener('touchend', onPointerUp);
+    if (!coarse) document.addEventListener('touchend', onPointerUp);
+
+    /*
+      CẢM ỨNG: giữ lâu để bôi rồi kéo hai núm điều chỉnh vùng chọn — `touchend`
+      bắn ngay lúc nhả ngón đầu tiên, TRƯỚC khi người học kịp kéo núm, nên thẻ
+      nghĩa mở sai cụm. Trên màn cảm ứng nghe `selectionchange` và chờ vùng bôi
+      đứng yên 450ms mới coi là chốt.
+    */
+    let settle: ReturnType<typeof setTimeout> | undefined;
+    const onSelectionChange = () => {
+      clearTimeout(settle);
+      settle = setTimeout(onPointerUp, 450);
+    };
+    if (coarse) document.addEventListener('selectionchange', onSelectionChange);
 
     return () => {
+      clearTimeout(settle);
       document.removeEventListener('mouseup', onPointerUp);
-      document.removeEventListener('touchend', onPointerUp);
+      if (!coarse) document.removeEventListener('touchend', onPointerUp);
+      if (coarse) document.removeEventListener('selectionchange', onSelectionChange);
     };
   }, [containerId, enabled]);
 }

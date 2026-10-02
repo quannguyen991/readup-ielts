@@ -70,7 +70,7 @@ export function useFullscreen(): { supported: boolean; active: boolean; toggle: 
   return { supported, active, toggle };
 }
 
-/** Nút nhỏ 40 px, đổi biểu tượng theo trạng thái. Không hỗ trợ → không vẽ gì. */
+/** Nút 44 px, đổi biểu tượng theo trạng thái. Không hỗ trợ → không vẽ gì. */
 export function FullscreenButton({ bottom = 10, right = 10, top }: { bottom?: number; right?: number; top?: number }) {
   const { L } = useL();
   const { supported, active, toggle } = useFullscreen();
@@ -81,7 +81,7 @@ export function FullscreenButton({ bottom = 10, right = 10, top }: { bottom?: nu
       accessibilityRole="button"
       accessibilityLabel={active ? L('Thoát toàn màn hình', 'Exit full screen') : L('Toàn màn hình', 'Full screen')}
       onPress={toggle}
-      style={[{ position: 'absolute', right, width: 40, height: 40, alignItems: 'center', justifyContent: 'center', borderRadius: 20, backgroundColor: 'rgba(15,29,51,0.72)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.7)' }, top !== undefined ? { top } : { bottom }]}
+      style={[{ position: 'absolute', right, width: 44, height: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 22, backgroundColor: 'rgba(15,29,51,0.72)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.7)' }, top !== undefined ? { top } : { bottom }]}
     >
       {React.createElement(
         'svg',
