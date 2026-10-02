@@ -13,7 +13,7 @@ import {
   StudyFrame,
   useHotkeys,
 } from '@/components/vocab/study/StudyKit';
-import { MistakeBox, RoundAnalysis } from '@/components/vocab/study/MistakeViews';
+import { RoundAnalysis } from '@/components/vocab/study/MistakeViews';
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
@@ -38,6 +38,8 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
 import { currentLocale, pick as pickLocale, useL } from '@/i18n/useL';
+import { useStoreTheme, useStudyTheme } from '@/components/vocab/study/useStudyTheme';
+import { useAutoPronounce } from '@/services/audio/pronounce';
 
 /** Nhãn dạng câu bằng tiếng Anh (bản tiếng Việt: `CLOZE_KIND_LABEL` trong services). */
 const CLOZE_KIND_EN: Record<ClozeQuestion['kind'], string> = {
@@ -61,6 +63,7 @@ const CLOZE_KIND_EN: Record<ClozeQuestion['kind'], string> = {
 export default function ClozeScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
   const { L, en } = useL();
+  const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -165,6 +168,9 @@ export default function ClozeScreen() {
     }
     addLapse(slug, q.word.word);
   };
+
+  // Đáp án lộ ra (đúng hay sai) thì đọc luôn từ tiếng Anh một lần — dạng nghe đã đọc cả câu rồi.
+  useAutoPronounce(verdict !== null && q && q.kind !== 'listen' ? q.word.word : null, `${step}-reveal`);
 
   const others = useMemo(() => (topic && q ? topic.words.filter((w) => w.word !== q.word.word) : []), [topic, q]);
 
@@ -314,13 +320,13 @@ export default function ClozeScreen() {
       <CrossFade swapKey={`c-${step}`}>
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
-            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
+            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.soft }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
                 {en ? CLOZE_KIND_EN[q.kind] : CLOZE_KIND_LABEL[q.kind]}
               </Text>
             </View>
             {head.retry ? (
-              <Text className="font-semi text-label" style={{ color: '#B45309' }}>
+              <Text className="font-semi text-label" style={{ color: theme.warn }}>
                 {L('↻ Hỏi lại câu bạn vừa sai', '↻ Retrying a question you missed')}
               </Text>
             ) : null}
@@ -328,7 +334,7 @@ export default function ClozeScreen() {
 
           <Text className="mt-3 font-semi text-sectionTitle leading-9 text-ink">
             {q.before}
-            <Text className="font-strong" style={{ color: revealed ? (verdict ? '#15803D' : '#A8843F') : '#94A3B8' }}>
+            <Text className="font-strong" style={{ color: revealed ? (verdict ? theme.good : theme.bad) : theme.muted }}>
               {revealed ? q.answer : ' _______ '}
             </Text>
             {q.after}
@@ -368,14 +374,14 @@ export default function ClozeScreen() {
                 autoCapitalize="none"
                 autoCorrect={false}
                 placeholder={L('Gõ từ còn thiếu…', 'Type the missing word…')}
-                placeholderTextColor="#94A3B8"
+                placeholderTextColor={theme.muted}
                 // Trên web phím Enter do phím tắt ở cấp cửa sổ xử lý; gắn thêm ở đây là chấm hai lần.
                 onSubmitEditing={Platform.OS === 'web' ? undefined : () => submitText(typed)}
                 className="mt-4 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
                 style={{
                   borderWidth: 1.5,
-                  borderColor: !revealed ? '#E1D9CB' : verdict ? '#16A34A' : '#E11D48',
-                  backgroundColor: '#FCFBF8',
+                  borderColor: !revealed ? theme.fieldBorder : verdict ? theme.good : theme.bad,
+                  backgroundColor: theme.field,
                 }}
               />
               {!revealed ? <PrimaryButton label={L('Kiểm tra', 'Check')} hint="Enter" disabled={!typed.trim()} onPress={() => submitText(typed)} /> : null}
@@ -383,8 +389,7 @@ export default function ClozeScreen() {
           ) : null}
 
           {!revealed ? <GhostButton label={q.kind === 'pick' ? L('5 · Tôi không biết', "5 · I don't know") : L('Tôi không biết', "I don't know")} onPress={dontKnow} /> : null}
-          {verdict === false && mistake ? <MistakeBox m={mistake} /> : null}
-          {revealed ? <FeedbackPanel ok={verdict} word={q.word} onNext={next} /> : null}
+          {revealed ? <FeedbackPanel ok={verdict} word={q.word} onNext={next} mistake={mistake} answer={q.kind === 'pick' ? undefined : q.answer} /> : null}
         </StudyCard>
       </CrossFade>
     </StudyFrame>
@@ -415,6 +420,7 @@ function ScrambleBoard({
   );
   const chars = [...q.answer];
   const { L } = useL();
+  const theme = useStudyTheme();
   // Từ dài thì ô nhỏ lại, để một từ 11–12 chữ vẫn nằm gọn trên màn điện thoại.
   const small = letterCount(q.answer) > 9;
   const size = small ? 28 : 38;
@@ -455,8 +461,8 @@ function ScrambleBoard({
                     width: size,
                     height: size + 8,
                     borderBottomWidth: 3,
-                    borderColor: filled ? color.primary : '#E1D9CB',
-                    backgroundColor: filled ? '#FCF8F1' : '#FCFBF8',
+                    borderColor: filled ? color.primary : theme.fieldBorder,
+                    backgroundColor: filled ? theme.soft : theme.field,
                   }}
                 >
                   <Text className={small ? 'font-heavy text-bodyLg text-ink' : 'font-heavy text-sectionTitle text-ink'}>{filled}</Text>
@@ -481,9 +487,9 @@ function ScrambleBoard({
               style={{
                 width: 46,
                 height: 50,
-                backgroundColor: isUsed ? '#F9F6F1' : '#FFFFFF',
+                backgroundColor: isUsed ? theme.soft : theme.optBg,
                 borderWidth: 1.5,
-                borderColor: isUsed ? '#F9F6F1' : '#E1D9CB',
+                borderColor: isUsed ? theme.soft : theme.fieldBorder,
                 opacity: isUsed ? 0.35 : 1,
               }}
             >

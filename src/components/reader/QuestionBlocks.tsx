@@ -22,6 +22,8 @@ export type QuestionBlockView = {
   from: number;
   to: number;
   questions: GeneratedQuestion[];
+  /** Có khi cả khối là MỘT nhóm chung khuôn (Choose TWO, bảng, sơ đồ, ghi chú). */
+  groupId?: string;
 };
 
 export function groupIntoBlocks(questions: GeneratedQuestion[]): QuestionBlockView[] {
@@ -29,7 +31,8 @@ export function groupIntoBlocks(questions: GeneratedQuestion[]): QuestionBlockVi
 
   questions.forEach((q, index) => {
     const last = blocks[blocks.length - 1];
-    if (last && last.type === q.type) {
+    // Hai nhóm cùng dạng nhưng khác khuôn (hai bảng liền nhau) là hai khối.
+    if (last && last.type === q.type && last.groupId === q.groupId) {
       last.questions.push(q);
       last.to = index + 1;
       return;
@@ -40,10 +43,60 @@ export function groupIntoBlocks(questions: GeneratedQuestion[]): QuestionBlockVi
       from: index + 1,
       to: index + 1,
       questions: [q],
+      ...(q.groupId ? { groupId: q.groupId } : {}),
     });
   });
 
+  for (const b of blocks) b.rubric = rubricFor(b);
   return blocks;
+}
+
+const WORDS = ['', 'ONE WORD ONLY', 'NO MORE THAN TWO WORDS', 'NO MORE THAN THREE WORDS'];
+const NOUN: Partial<Record<QuestionType, string>> = {
+  summary_completion: 'summary',
+  note_completion: 'notes',
+  table_completion: 'table',
+  flow_chart_completion: 'flow-chart',
+  diagram_label_completion: 'diagram',
+};
+
+/**
+ * Lời dẫn của khối, tính từ NỘI DUNG khối chứ không chỉ từ dạng.
+ *
+ * Giới hạn số từ nằm trên từng câu (`maxWords`) và đổi theo bộ đề, nên lời dẫn
+ * "NO MORE THAN TWO WORDS" cứng ở `BLOCK_RUBRIC` sẽ nói sai khi đáp án chỉ được
+ * một từ. Dạng có bảng từ thì lời dẫn đổi sang "chọn từ trong bảng".
+ */
+export function rubricFor(block: Pick<QuestionBlockView, 'type' | 'questions'>): string {
+  const base = BLOCK_RUBRIC[block.type] ?? '';
+  const first = block.questions[0];
+  const limit = Math.max(0, ...block.questions.map((q) => q.maxWords ?? 0));
+
+  if (block.type === 'multiple_choice_multi' && first) {
+    const n = block.questions.length;
+    const last = String.fromCharCode(64 + (first.options?.length ?? 5));
+    return `Choose ${n === 3 ? 'THREE' : 'TWO'} letters, A-${last}.`;
+  }
+
+  const noun = NOUN[block.type];
+  if (noun) {
+    if (first?.options && first.options.length > 0) {
+      const last = String.fromCharCode(64 + first.options.length);
+      return `Complete the ${noun} using the list of words, A-${last}, below.`;
+    }
+    const lim = WORDS[Math.min(3, Math.max(1, limit || 2))];
+    const num = block.type === 'summary_completion' ? ' AND/OR A NUMBER' : '';
+    if (block.type === 'diagram_label_completion') return `Label the diagram below. Choose ${lim}${num} from the passage for each answer.`;
+    return `Complete the ${noun} below. Choose ${lim}${num} from the passage for each answer.`;
+  }
+
+  if (block.type === 'sentence_completion' && limit > 0) {
+    return `Complete the sentences below. Choose ${WORDS[Math.min(3, limit)]} from the passage for each answer.`;
+  }
+  if (block.type === 'short_answer' && limit > 0) {
+    return `Answer the questions below. Choose ${WORDS[Math.min(3, limit)]} from the passage for each answer.`;
+  }
+  return base;
 }
 
 /**

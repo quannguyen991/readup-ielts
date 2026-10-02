@@ -4,8 +4,9 @@ import { persist } from 'zustand/middleware';
 import { STORAGE_PREFIX, storage } from './persist';
 import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/services/vocab/topic-study';
 import type { MistakeKind } from '@/services/vocab/mistake';
+import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
-import { nextReview, type ReviewEntry } from '@/services/vocab/review-schedule';
+import { loadByDay, nextReview, type ReviewEntry } from '@/services/vocab/review-schedule';
 import { todayKey } from './persist';
 
 /** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
@@ -42,6 +43,12 @@ type TopicStudyState = {
   logMistake: (slug: string, word: string, kind: MistakeKind) => void;
   /** Cài đặt màn Học — dùng chung mọi bộ, như một thói quen học của người dùng. */
   learnSettings: LearnSettings;
+  /** Chủ đề nền + màu khi bật "Nền & hiệu ứng" (theo máy, không đồng bộ). */
+  studyTheme: ThemeId;
+  setStudyTheme: (id: ThemeId) => void;
+  /** "Nền & hiệu ứng": TẮT mặc định — màn học phẳng, nhẹ, không lớp trang trí nào được dựng. */
+  studyFx: boolean;
+  setStudyFx: (on: boolean) => void;
   /** slug → lần cuối mở một màn luyện của bộ (thẻ "Học lần cuối" ở thư viện bộ từ). */
   lastAt: Record<string, string>;
   /** Ghi mốc "vừa học bộ này" — mỗi màn luyện gọi một lần khi mở. */
@@ -62,9 +69,14 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       lapses: {},
       reviews: {},
       review: (slug, word, correct) =>
-        set((s) => ({
-          reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, todayKey()) } },
-        })),
+        set((s) => {
+          const today = todayKey();
+          // Xếp ngày ôn theo tải của TẤT CẢ các bộ (không tính chính từ này) để ôn rải đều, không dồn cục.
+          const load = loadByDay(s.reviews, today, { slug, word });
+          return {
+            reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, today, load) } },
+          };
+        }),
       mistakeLog: [],
       lastAt: {},
       touch: (slug) => set((s) => ({ lastAt: { ...s.lastAt, [slug]: new Date().toISOString() } })),
@@ -79,6 +91,10 @@ export const useTopicStudyStore = create<TopicStudyState>()(
           lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
         })),
       learnSettings: DEFAULT_LEARN_SETTINGS,
+      studyTheme: 'scene',
+      setStudyTheme: (studyTheme) => set({ studyTheme }),
+      studyFx: false,
+      setStudyFx: (studyFx) => set({ studyFx }),
       toggleStar: (slug, word) =>
         set((s) => {
           const cur = s.starred[slug] ?? [];
@@ -117,7 +133,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.
@@ -126,7 +142,9 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         // Bản lưu từ trước khi có dạng Điền chỗ trống: ai đang dùng đúng bộ dạng mặc định cũ thì có luôn dạng mới.
         const k = learnSettings.kinds;
         if (k.length === 3 && ['flash', 'mcq', 'type'].every((x) => k.includes(x as never))) learnSettings.kinds = [...DEFAULT_LEARN_SETTINGS.kinds];
-        return { ...current, ...p, learnSettings };
+        const studyTheme = isThemeId((p as { studyTheme?: unknown }).studyTheme) ? (p as { studyTheme: ThemeId }).studyTheme : 'scene';
+        const studyFx = (p as { studyFx?: unknown }).studyFx === true;
+        return { ...current, ...p, learnSettings, studyTheme, studyFx };
       },
     },
   ),

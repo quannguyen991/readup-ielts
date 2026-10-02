@@ -1,6 +1,8 @@
+import type { Json } from '@/types/database';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import type { GeneratedQuestion, QuestionSet } from './types';
 import type { QuestionType } from '@/types/database';
+import { blocksKey } from './mix';
 
 /**
  * SERVER-ONLY. Bộ đề AI sinh ra dùng CHUNG cho mọi người mở cùng một bài.
@@ -38,7 +40,12 @@ import type { QuestionType } from '@/types/database';
 export const MIN_CACHEABLE_QUESTIONS = 6;
 
 /** Khoá đơn hàng dạng câu — CÙNG khuôn với `requestedTypes` phía client. */
-export function questionCacheKey(options: { types?: QuestionType[]; focusType?: QuestionType }): string {
+export function questionCacheKey(options: {
+  types?: QuestionType[];
+  focusType?: QuestionType;
+  blocks?: { type: QuestionType; count: number }[];
+}): string {
+  if (options.blocks?.length) return blocksKey(options.blocks);
   if (options.focusType) return options.focusType;
   return options.types?.length ? [...options.types].sort().join(',') : '';
 }
@@ -58,11 +65,21 @@ export async function readSharedQuestionSet(
     .maybeSingle();
   if (!set) return null;
 
-  const { data: rows } = await admin
+  const COLS =
+    'id, order_index, type, prompt, instruction, options, correct_answer, evidence_text, evidence_paragraph_index, explanation, lesson_tip';
+  let { data: rows, error } = await admin
     .from('questions')
-    .select('id, order_index, type, prompt, instruction, options, correct_answer, evidence_text, evidence_paragraph_index, explanation, lesson_tip')
+    .select(`${COLS}, extra`)
     .eq('question_set_id', set.id)
     .order('order_index', { ascending: true });
+  if (error) {
+    // Chưa chạy migration thêm cột `extra`: đọc bản không có nó để cache cũ còn dùng được.
+    ({ data: rows } = (await admin
+      .from('questions')
+      .select(COLS)
+      .eq('question_set_id', set.id)
+      .order('order_index', { ascending: true })) as unknown as { data: typeof rows });
+  }
 
   // Hàng question_sets có mà rỗng câu hỏi là dữ liệu hỏng (ghi dở dang lúc
   // trước) — coi như CACHE MISS để sinh lại, không trả về một bộ đề rỗng.
@@ -80,6 +97,7 @@ export async function readSharedQuestionSet(
     evidenceParagraphIndex: q.evidence_paragraph_index,
     explanation: q.explanation,
     lessonTip: q.lesson_tip,
+    ...readExtra((q as { extra?: unknown }).extra),
   }));
 
   return {
@@ -137,9 +155,31 @@ export async function writeSharedQuestionSet(
         evidence_paragraph_index: q.evidenceParagraphIndex,
         explanation: q.explanation,
         lesson_tip: q.lessonTip,
+        ...(extraOf(q) ? { extra: extraOf(q) as Json } : {}),
       })),
     );
   } catch {
     // Mất mạng, Supabase tạm chậm — bỏ qua, lần mở bài sau sinh lại là xong.
   }
+}
+
+/** Phần dữ liệu nhóm / khuôn / giới hạn từ nằm ở cột jsonb `extra` (null với câu thường). */
+export function extraOf(q: GeneratedQuestion): Record<string, unknown> | null {
+  const e: Record<string, unknown> = {};
+  if (q.groupId) e.groupId = q.groupId;
+  if (q.form) e.form = q.form;
+  if (q.maxWords !== undefined) e.maxWords = q.maxWords;
+  if (q.accept?.length) e.accept = q.accept;
+  return Object.keys(e).length > 0 ? e : null;
+}
+
+export function readExtra(raw: unknown): Partial<GeneratedQuestion> {
+  if (!raw || typeof raw !== 'object') return {};
+  const e = raw as Record<string, unknown>;
+  const out: Partial<GeneratedQuestion> = {};
+  if (typeof e.groupId === 'string') out.groupId = e.groupId;
+  if (e.form && typeof e.form === 'object') out.form = e.form as GeneratedQuestion['form'];
+  if (typeof e.maxWords === 'number') out.maxWords = e.maxWords;
+  if (Array.isArray(e.accept)) out.accept = e.accept.map(String);
+  return out;
 }

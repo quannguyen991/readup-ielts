@@ -1,0 +1,141 @@
+{
+  "n": 4,
+  "title": "Urban Beekeeping in Cities",
+  "context": "You will hear a lecturer discussing the development, benefits and challenges of keeping bees in urban environments.",
+  "transcript": [
+    {
+      "speaker": "Lecturer",
+      "text": "Today I'd like to look at urban beekeeping, a practice which has expanded considerably in many European and North American cities over the last two decades. When people first hear the term, they often imagine hives squeezed into tiny back gardens, but many successful projects actually use rooftops. These provide secure spaces above street level and are often available on offices, hotels and apartment buildings. Balconies can sometimes work too, although they usually offer less room for inspecting the colonies and storing equipment."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "The location of a hive needs more thought than simply finding an unused surface. Bees normally leave the entrance in a fairly direct line, so beekeepers have to consider their flight paths carefully. A hive placed beside a busy doorway, for example, might cause bees and people to cross at head height. Turning the entrance towards a wall or screen encourages the insects to rise before travelling further, and this greatly reduces unwanted contact with pedestrians."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Cities may seem polluted and therefore unsuitable for bees, yet urban colonies can encounter some advantages compared with colonies in intensively farmed landscapes. In particular, pesticide exposure may be lower where there is relatively little commercial agriculture. That doesn't mean cities are chemical-free, of course; pesticides are still used in parks, private gardens and along railway lines. However, the variety of flowering plants in urban areas can provide bees with a surprisingly continuous supply of nectar and pollen."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "There is, however, an important ecological concern. Honey bees are only one group of pollinating insects, and increasing the number of managed hives can create competition for food. Researchers are especially interested in the effects on wild bees, many of which live alone rather than in large colonies. So while installing a few hives may support environmental education, putting hundreds into a small district could place additional pressure on existing pollinator populations."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Let's move on to the practical needs of a colony. New beekeepers often concentrate on flowers but forget that bees also require a reliable water source. In the countryside, this may be a pond or stream, whereas in a city bees sometimes discover swimming pools, dripping taps or even air-conditioning systems. It's far better to provide shallow water close to the hive, ideally with stones or floating material where the insects can land safely."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Food availability also changes throughout the year. People tend to assume that midsummer is the most difficult period because hot weather dries plants out, but in many temperate cities the real challenge comes in early spring. Colonies begin expanding at this time and suddenly need large quantities of pollen, while relatively few plants may yet be flowering. Tree species such as willow and certain maples can therefore be particularly valuable at the start of the season."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Now, many beginners become interested in keeping bees because they expect to produce large amounts of honey. Honey production can certainly be rewarding, but honey yield varies enormously between sites and from one year to another. Weather is crucial, as are colony health and the amount of forage available. So a beekeeper shouldn't assume that a hive in a fashionable city-centre garden will automatically produce more than one located on the outskirts."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "There are also legal and administrative issues to consider. Regulations vary significantly between cities: some require hive registration, others specify minimum distances from neighbouring properties, and certain buildings ban beekeeping altogether. Another matter that beginners sometimes overlook is public liability. Even when bees are generally calm, a member of the public could claim to have been injured or suffered an allergic reaction, so appropriate insurance may be advisable or even compulsory in some schemes."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Good relationships with the surrounding community are equally important. Some enthusiastic beekeepers make the mistake of installing colonies first and explaining them afterwards. A better approach is to speak with local residents before the bees arrive, describing where the hives will be positioned and how swarming will be managed. Offering a short demonstration or sharing a small amount of honey later can also help, but communication at the beginning is more important than giving people gifts."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "Finally, urban beekeeping can contribute to research as well as food production. Because hives are distributed across different neighbourhoods, they can provide information about flowering seasons, environmental conditions and changes in insect behaviour. Several universities now involve volunteer beekeepers in citizen science, asking them to record observations using standard methods. Such projects are useful because professional researchers could never monitor so many locations themselves, although the data still have to be checked carefully for consistency."
+    },
+    {
+      "speaker": "Lecturer",
+      "text": "So, to summarise, urban beekeeping can have educational, social and scientific value, but simply adding more hives is not automatically beneficial for biodiversity. Successful projects consider the physical site, the needs of the colony, possible effects on other pollinators and the concerns of people living nearby. With careful planning, bees can become an interesting part of urban life rather than a source of conflict. In our next lecture, we'll examine how city planners can design public green spaces to support a wider range of pollinating insects."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 31-40",
+      "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS",
+      "lines": [
+        "URBAN BEEKEEPING",
+        "Choosing a site",
+        "• Many city hives are installed on {{31}} rather than in gardens.",
+        "• Beekeepers should consider the bees' {{32}} so that they do not cross areas used by people.",
+        "Environmental factors",
+        "• Compared with agricultural areas, cities may sometimes involve less {{33}}.",
+        "• Too many managed honey-bee colonies may create competition with {{34}}.",
+        "Colony requirements",
+        "• As well as flowers, bees need access to a dependable {{35}}.",
+        "• In some temperate cities, food can be particularly limited in {{36}}.",
+        "Honey production",
+        "• The {{37}} can differ considerably according to location, weather and colony health.",
+        "Legal and social considerations",
+        "• Beekeepers may need insurance relating to {{38}}.",
+        "• Before installing hives, it is advisable to communicate with {{39}}.",
+        "Research",
+        "• Some universities involve volunteer beekeepers in projects known as {{40}}."
+      ],
+      "options": [],
+      "questions": [
+        {
+          "n": 31,
+          "prompt": "Many city hives are installed on ____ rather than in gardens.",
+          "answer": "rooftops",
+          "accept": []
+        },
+        {
+          "n": 32,
+          "prompt": "Beekeepers should consider the bees' ____ so that they do not cross areas used by people.",
+          "answer": "flight paths",
+          "accept": []
+        },
+        {
+          "n": 33,
+          "prompt": "Compared with agricultural areas, cities may sometimes involve less ____.",
+          "answer": "pesticide exposure",
+          "accept": []
+        },
+        {
+          "n": 34,
+          "prompt": "Too many managed honey-bee colonies may create competition with ____.",
+          "answer": "wild bees",
+          "accept": []
+        },
+        {
+          "n": 35,
+          "prompt": "As well as flowers, bees need access to a dependable ____.",
+          "answer": "water source",
+          "accept": []
+        },
+        {
+          "n": 36,
+          "prompt": "In some temperate cities, food can be particularly limited in ____.",
+          "answer": "early spring",
+          "accept": []
+        },
+        {
+          "n": 37,
+          "prompt": "The ____ can differ considerably according to location, weather and colony health.",
+          "answer": "honey yield",
+          "accept": []
+        },
+        {
+          "n": 38,
+          "prompt": "Beekeepers may need insurance relating to ____.",
+          "answer": "public liability",
+          "accept": []
+        },
+        {
+          "n": 39,
+          "prompt": "Before installing hives, it is advisable to communicate with ____.",
+          "answer": "local residents",
+          "accept": []
+        },
+        {
+          "n": 40,
+          "prompt": "Some universities involve volunteer beekeepers in projects known as ____.",
+          "answer": "citizen science",
+          "accept": []
+        }
+      ]
+    }
+  ]
+}

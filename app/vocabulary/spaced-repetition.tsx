@@ -13,12 +13,13 @@ import { useVocabStore, type VocabEntry } from '@/store/useVocabStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import {
-  calculate7DayForecast,
   calculateMemoryLevels,
   importLearnedTopicWords,
   WEEKDAY_LABELS,
 } from '@/services/vocab/spaced-repetition';
 import { CARD_KINDS, isDue } from '@/services/vocab/schedule';
+import { addDays, dueDayByWord, scheduleSummary, unifiedLoad } from '@/services/vocab/review-schedule';
+import { todayKey } from '@/store/persist';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteBook } from '@/components/illust/Cute';
@@ -39,6 +40,7 @@ export default function SpacedRepetitionScreen() {
   const gradeCard = useVocabStore((s) => s.gradeCard);
   const stages = useTopicStudyStore((s) => s.stages);
   const lapses = useTopicStudyStore((s) => s.lapses);
+  const reviews = useTopicStudyStore((s) => s.reviews);
   const logWordsReviewed = useStudyStore((s) => s.logWordsReviewed);
   const logStudyTime = useStudyStore((s) => s.logStudyTime);
 
@@ -47,23 +49,61 @@ export default function SpacedRepetitionScreen() {
 
   // Tự động đồng bộ các từ học ở bộ chủ đề vào sổ từ FSRS nếu chưa có
   useEffect(() => {
-    const hasLearnedWords = Object.values(stages).some((topic) =>
-      Object.values(topic).some((st) => st >= 1),
-    );
+    const hasLearnedWords =
+      Object.values(stages).some((topic) => Object.values(topic).some((st) => st >= 1)) ||
+      Object.values(reviews ?? {}).some((w) => Object.keys(w ?? {}).length > 0);
     if (!hasLearnedWords) return;
 
-    const outcome = importLearnedTopicWords(stages, entries, cards);
+    // Từ đã có lịch Leitner (kể cả mới trả lời một lần, chưa lên chặng 1) cũng vào sổ, đúng ngày đã xếp.
+    const merged: Record<string, Record<string, number>> = { ...stages };
+    for (const [slug, words] of Object.entries(reviews ?? {}))
+      for (const w of Object.keys(words ?? {})) merged[slug] = { ...(merged[slug] ?? {}), [w]: Math.max(1, merged[slug]?.[w] ?? 0) };
+    const outcome = importLearnedTopicWords(merged, entries, cards, new Date(), (slug, w) => reviews?.[slug]?.[w]?.due);
     if (outcome.addedCount > 0) {
       useVocabStore.setState({
         entries: outcome.entries,
         cards: outcome.cards,
       });
     }
-  }, [stages, entries, cards]);
+  }, [stages, reviews, entries, cards]);
 
   const nowMs = useNow();
   const now = useMemo(() => new Date(nowMs), [nowMs]);
-  const forecast = useMemo(() => calculate7DayForecast(entries, cards, now), [entries, cards, now]);
+  const today = todayKey(now);
+
+  // LỊCH ÔN THẬT: lịch Leitner của bộ từ (cập nhật ở MỌI câu trả lời, lưu ngay) + thẻ FSRS của
+  // những từ không nằm trong lịch Leitner. Từ nào có ngày ôn thì hiện nhãn "Đã lên lịch".
+  const leitnerDue = useMemo(() => dueDayByWord(reviews), [reviews]);
+  const fsrsDueDay = useMemo(() => {
+    const out = new Map<string, string>();
+    for (const e of Object.values(entries)) {
+      let best: number | null = null;
+      for (const kind of CARD_KINDS) {
+        const c = cards[`${e.id}:${kind}`];
+        if (c) best = best === null ? new Date(c.due).getTime() : Math.min(best, new Date(c.due).getTime());
+      }
+      if (best !== null) out.set(e.id, todayKey(new Date(best)));
+    }
+    return out;
+  }, [entries, cards]);
+  const extraDue = useMemo(
+    () => Object.values(entries).filter((e) => !leitnerDue.has(e.lemma.trim().toLowerCase())).map((e) => fsrsDueDay.get(e.id)).filter((d): d is string => !!d),
+    [entries, leitnerDue, fsrsDueDay],
+  );
+  const plan = useMemo(() => unifiedLoad(reviews, extraDue, today, 7), [reviews, extraDue, today]);
+  const summary = useMemo(() => scheduleSummary(reviews, today), [reviews, today]);
+  const forecast = useMemo(
+    () => plan.map((d, i) => ({ dateKey: d.day, count: d.count, isToday: i === 0, dayLabel: WEEKDAY_LABELS[new Date(`${d.day}T12:00:00Z`).getUTCDay()]! })),
+    [plan],
+  );
+  const dueLabel = (e: VocabEntry): { text: string; hot: boolean } | null => {
+    const d = leitnerDue.get(e.lemma.trim().toLowerCase()) ?? fsrsDueDay.get(e.id);
+    if (!d) return null;
+    if (d <= today) return { text: L('Ôn hôm nay', 'Due today'), hot: true };
+    if (d === addDays(today, 1)) return { text: L('Ôn mai', 'Due tomorrow'), hot: false };
+    const wd = new Date(`${d}T12:00:00Z`).getUTCDay();
+    return { text: L(`Ôn ${WEEKDAY_LABELS[wd]} ${d.slice(8)}/${d.slice(5, 7)}`, `Due ${WEEKDAY_EN[wd]} ${d.slice(5, 7)}/${d.slice(8)}`), hot: false };
+  };
   const levels = useMemo(
     () => calculateMemoryLevels(entries, cards, lapses, now),
     [entries, cards, lapses, now],
@@ -173,6 +213,36 @@ export default function SpacedRepetitionScreen() {
               {dueEntries.length > 0 ? L(`Ôn ngay (${dueEntries.length})`, `Review now (${dueEntries.length})`) : L('Ôn tất cả', 'Review all')}
             </Text>
           </Pressable>
+        </View>
+      </View>
+
+      {/* Lịch ôn 7 ngày: số từ đến hạn mỗi ngày, cộng dồn khi học thêm */}
+      <View
+        style={{ marginBottom: 16, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#F0EBE2', paddingHorizontal: 16, paddingVertical: 14 } as never}
+        accessibilityLabel={L('Lịch ôn 7 ngày tới', 'Review plan, next 7 days')}
+      >
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <Text className="font-strong text-body text-ink">{L('Lịch ôn của bạn', 'Your review plan')}</Text>
+          <Text className="font-sans text-label text-muted">
+            {summary.scheduled === 0
+              ? L('Học một vòng để xếp lịch', 'Study a round to build the plan')
+              : L(`Đã lên lịch ${summary.scheduled} từ · hôm nay ${summary.dueToday} · mai ${summary.tomorrow} · 7 ngày ${summary.week}`, `${summary.scheduled} scheduled · today ${summary.dueToday} · tomorrow ${summary.tomorrow} · 7 days ${summary.week}`)}
+          </Text>
+        </View>
+        <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+          {plan.map((d, i) => {
+            const wd = new Date(`${d.day}T12:00:00Z`).getUTCDay();
+            const label = i === 0 ? L('Hôm nay', 'Today') : i === 1 ? L('Mai', 'Tmrw') : en ? WEEKDAY_EN[wd]! : WEEKDAY_LABELS[wd]!;
+            return (
+              <View
+                key={d.day}
+                style={{ flexGrow: 1, flexBasis: 74, alignItems: 'center', borderRadius: 12, paddingVertical: 8, backgroundColor: i === 0 ? '#FBF3E2' : '#F9F6F1', borderWidth: i === 0 ? 1 : 0, borderColor: '#D9BC7F' }}
+              >
+                <Text className="font-semi text-label text-muted">{label}</Text>
+                <Text className="font-heavy text-bodyLg text-ink">{d.count}</Text>
+              </View>
+            );
+          })}
         </View>
       </View>
 
@@ -446,6 +516,14 @@ export default function SpacedRepetitionScreen() {
 
               {/* Cột phải: Thời gian + nút phát âm */}
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, alignSelf: wide ? 'center' : 'flex-end' }}>
+                {(() => {
+                  const b = dueLabel(entry);
+                  return b ? (
+                    <View style={{ borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: b.hot ? '#FFEDD5' : '#F3EEE3' }}>
+                      <Text style={{ fontSize: 11, fontWeight: '700', color: b.hot ? '#9A3412' : '#6A5228' }}>{b.text}</Text>
+                    </View>
+                  ) : null;
+                })()}
                 <Text style={{ fontSize: 11, color: '#94A3B8' }}>
                   {formatRelativeTime(entry.createdAt, locale)}
                 </Text>

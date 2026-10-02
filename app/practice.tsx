@@ -71,7 +71,7 @@ const buildSkills = (L: LFn): RailSkill[] => [
     icon: 'volume',
     tint: '#F59E0B',
     options: [],
-    comingSoon: true,
+    href: '/listening',
   },
   {
     key: 'writing',

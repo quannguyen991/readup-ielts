@@ -213,6 +213,8 @@ export default function VocabTopicScreen() {
                 if (typeof slug !== 'string') return;
                 setStage(slug, w.word, stage);
                 if (stage === 0) addLapse(slug, w.word);
+                // Tự chấm thẻ ghi nhớ cũng vào lịch ôn: Quên = sai, Mơ hồ / Nhớ rồi = đúng.
+                useTopicStudyStore.getState().review(slug, w.word, stage !== 0);
                 touch(slug);
               }}
             />

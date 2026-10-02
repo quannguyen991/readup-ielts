@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 
-import { ChoiceGrid, PrimaryButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
+import { ChoiceGrid, FeedbackPanel, PrimaryButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
@@ -15,6 +15,8 @@ import { useGameStore } from '@/store/useGameStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useL } from '@/i18n/useL';
+import { useStoreTheme } from '@/components/vocab/study/useStudyTheme';
+import { useAutoPronounce } from '@/services/audio/pronounce';
 
 const LETTERS = ['A', 'B', 'C', 'D'] as const;
 
@@ -39,6 +41,7 @@ const EMPTY_STAGES = {};
 export default function QuizScreen() {
   const { slug = '', only } = useLocalSearchParams<{ slug: string; only?: string }>();
   const { L, en } = useL();
+  const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const stages = useTopicStudyStore((s) => s.stages[slug] ?? EMPTY_STAGES);
@@ -68,6 +71,8 @@ export default function QuizScreen() {
   const [score, setScore] = useState(0);
   const q = list[index];
   const done = list.length > 0 && index >= list.length;
+  // Đáp án lộ ra (đúng hay sai) thì đọc luôn từ tiếng Anh của câu một lần.
+  useAutoPronounce(picked !== null && q ? q.word.word : null, `${seed}-${index}`);
 
   const pick = (i: number) => {
     if (!q || picked !== null) return;
@@ -187,7 +192,7 @@ export default function QuizScreen() {
       <CrossFade swapKey={`${seed}-${index}`}>
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-strong text-label" style={{ color: '#D97706' }}>
+            <Text className="font-strong text-label" style={{ color: theme.warn }}>
               Question {index + 1}
             </Text>
             <View className="rounded-pill bg-white/80 px-2.5 py-0.5">
@@ -201,11 +206,11 @@ export default function QuizScreen() {
             <Text className="mt-4 font-semi text-sectionTitle text-ink" style={{ lineHeight: 36 }}>
               {cur.before}
               {blank ? (
-                <Text className="font-heavy" style={{ color: revealed ? '#16A34A' : '#CFA966' }}>
+                <Text className="font-heavy" style={{ color: revealed ? theme.good : theme.muted }}>
                   {revealed ? cur.focus : '________'}
                 </Text>
               ) : (
-                <Text className="font-heavy" style={{ textDecorationLine: 'underline', color: '#1E293B' }}>
+                <Text className="font-heavy" style={{ textDecorationLine: 'underline', color: theme.ink }}>
                   {cur.focus}
                 </Text>
               )}
@@ -218,17 +223,12 @@ export default function QuizScreen() {
           </View>
 
           {revealed ? (
-            <View className="mt-4 rounded-2xl bg-white/85 px-4 py-3">
-              <Text className="font-sans text-body text-ink">
-                <Text className="font-heavy">{cur.word.word}</Text> ({cur.word.pos}) — {cur.word.meaningVi}
-              </Text>
-            </View>
-          ) : null}
-
-          {revealed ? (
-            <View className="mt-4">
-              <PrimaryButton label={index + 1 < list.length ? L('Câu tiếp', 'Next question') : L('Xem kết quả', 'See results')} onPress={next} />
-            </View>
+            <FeedbackPanel
+              ok={picked === cur.correctIndex}
+              word={cur.word}
+              onNext={next}
+              nextLabel={index + 1 < list.length ? L('Câu tiếp', 'Next question') : L('Xem kết quả', 'See results')}
+            />
           ) : null}
         </StudyCard>
       </CrossFade>

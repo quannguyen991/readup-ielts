@@ -1,7 +1,12 @@
 
 import { AiError } from './errors';
-import { BLOCK_RUBRIC, totalOf, type PassageBlueprint } from '@/services/questions/blueprint';
-import { chatWithFallback } from './fallback';
+import { BLOCK_RUBRIC, type PassageBlueprint } from '@/services/questions/blueprint';
+import { buildBlock, type RawBlock } from '@/services/questions/block-build';
+import { BLOCK_SYSTEM_PROMPT, blockUserPrompt } from '@/services/questions/block-prompts';
+import { countWords } from '@/services/questions/grade';
+import { verifyQuestion } from '@/services/questions/verify';
+import { COMPLETION_TYPES, STRUCTURED_TYPES, specOf } from '@/services/questions/ielts-types';
+import { chatWithFallback, extractJson } from './fallback';
 import type { GeneratedQuestion, QuestionSet } from '@/services/questions/types';
 import type { ExamKind, QuestionType } from '@/types/database';
 
@@ -18,6 +23,11 @@ const IELTS_TYPES = new Set<QuestionType>([
   'sentence_completion',
   'summary_completion',
   'short_answer',
+  'multiple_choice_multi',
+  'note_completion',
+  'table_completion',
+  'flow_chart_completion',
+  'diagram_label_completion',
 ]);
 
 const SAT_TYPES = new Set<QuestionType>([
@@ -141,6 +151,11 @@ export type GenerateOptions = {
    * câu, đứng liền một khối".
    */
   blueprint?: PassageBlueprint;
+  /**
+   * Bộ trộn dạng tự chọn: danh sách khối {dạng, số câu}. Khác `blueprint` ở chỗ nó do
+   * người học đặt (hộp "Tạo đề"), nhưng được xử lý y hệt — mỗi khối một lô riêng.
+   */
+  blocks?: { type: QuestionType; count: number }[];
 };
 
 export async function generateQuestionsWithClaude(
@@ -159,7 +174,10 @@ export async function generateQuestionsWithClaude(
   // ngắn đúng một câu.
   const defaultCount = exam === 'sat' ? Math.min(8, Math.max(3, article.paragraphs.length * 2)) : 12;
   const { focusType } = options;
-  const count = options.blueprint ? totalOf(options.blueprint) : (options.count ?? defaultCount);
+  const plannedBlocks = options.blocks ?? options.blueprint?.blocks;
+  const count = plannedBlocks
+    ? plannedBlocks.reduce((sum, b) => sum + b.count, 0)
+    : (options.count ?? defaultCount);
 
   if (article.paragraphs.length === 0) {
     throw new AiError('invalid_request', 'Bài này không có toàn văn nên không sinh đề được.');
@@ -180,50 +198,58 @@ export async function generateQuestionsWithClaude(
     Chia thành lô nhỏ rồi gọi song song thì tổng thời gian bằng LÔ CHẬM NHẤT chứ
     không phải tổng các lô. Đổi lại, các lô không nhìn thấy nhau nên có thể ra
     câu trùng ý — khử trùng ở bước gộp bên dưới.
-  */
-  /*
-    CÓ BẢN THIẾT KẾ THÌ MỖI KHỐI LÀ MỘT LÔ, KHÔNG CHIA VÒNG NỮA.
 
-    `planBatches` chia dạng theo vòng để không lô nào bỏ sót dạng khó — đúng khi
-    chưa có cấu trúc đề. Nhưng khi đã có bản thiết kế thì cấu trúc là thứ phải
-    giữ, và cách duy nhất giữ được là mỗi lô xin ĐÚNG một dạng với ĐÚNG số câu
-    của khối ấy. `Promise.allSettled` giữ nguyên thứ tự, nên câu về cũng đã xếp
-    sẵn theo khối.
+    CÓ BẢN THIẾT KẾ / BỘ TRỘN THÌ MỖI KHỐI LÀ MỘT LÔ. Cấu trúc đề là thứ phải giữ,
+    và cách duy nhất giữ được là mỗi lô xin ĐÚNG một dạng với ĐÚNG số câu của khối
+    ấy. `Promise.allSettled` giữ nguyên thứ tự, nên câu về cũng đã xếp sẵn.
   */
-  const batches = options.blueprint
-    ? options.blueprint.blocks.map((b) => ({ count: b.count, types: [b.type] }))
-    : planBatches(count, focusType ? [focusType] : pickTypes(options.types, exam));
+  const jobs = planJobs(plannedBlocks, count, focusType, options.types, exam);
 
   const settled = await Promise.allSettled(
-    batches.map((batch) =>
-      chatWithFallback({
-        purpose: 'questions',
-        system: exam === 'sat' ? SAT_SYSTEM_PROMPT : IELTS_SYSTEM_PROMPT,
-        user: buildUserPrompt(article, passage, batch),
-        temperature: 0.4,
-      }),
+    jobs.map((job) =>
+      job.kind === 'block'
+        ? runBlock(job, article, passage)
+        : runFlat(job, article, passage, exam),
     ),
   );
 
   // Một lô hỏng KHÔNG làm hỏng cả bộ đề: 9 câu vẫn luyện được, còn ném lỗi thì
   // người học không có gì để làm. Chỉ hỏng hết mới báo lỗi.
-  const raws = settled
-    .filter((r) => r.status === 'fulfilled')
-    .map((r) => r.value);
+  const ok = settled.filter((r) => r.status === 'fulfilled').map((r) => r.value);
+  const failedTypes: QuestionType[] = [];
+  jobs.forEach((job, i) => {
+    const r = settled[i];
+    if (job.kind === 'block' && (r?.status !== 'fulfilled' || r.value.questions.length === 0)) {
+      failedTypes.push(job.type);
+    }
+  });
 
-  if (raws.length === 0) {
-    const why = settled
-      .map((r) => (r.status === 'rejected' ? String(r.reason?.message ?? r.reason) : ''))
-      .filter(Boolean)[0];
-    throw new AiError('server_error', `Sinh đề thất bại: ${why ?? 'không rõ nguyên nhân'}`);
+  if (ok.length === 0) {
+    // Chi tiết nhà cung cấp chỉ vào log máy chủ, KHÔNG đi ra phản hồi.
+    for (const r of settled) {
+      if (r.status === 'rejected') console.error('[questions] lô hỏng:', String((r.reason as Error)?.message ?? r.reason).slice(0, 300));
+    }
+    throw new AiError('server_error', 'Chưa sinh được đề lúc này.');
   }
 
-  const questions = dedupe(raws.flatMap((r) => parseQuestions(r.text, article, exam))).slice(0, count);
-  const usedModel = raws[0]?.model ?? '?';
-
+  const flat = dedupe(ok.filter((r) => r.kind === 'flat').flatMap((r) => r.questions)).slice(0, count);
+  // Ghép lại theo đúng thứ tự khối đã đặt.
+  const ordered: GeneratedQuestion[] = [];
+  let flatCursor = 0;
+  settled.forEach((r, i) => {
+    if (r.status !== 'fulfilled') return;
+    if (jobs[i]?.kind === 'block') ordered.push(...r.value.questions);
+    else {
+      const n = r.value.questions.length;
+      ordered.push(...flat.slice(flatCursor, flatCursor + n));
+      flatCursor += n;
+    }
+  });
+  const questions = ordered.map((q, i) => ({ ...q, orderIndex: i }));
+  const usedModel = ok[0]?.model ?? '?';
 
   if (questions.length === 0) {
-    throw new AiError('bad_response', 'Không đọc được câu hỏi hợp lệ nào từ phản hồi của model.');
+    throw new AiError('bad_response', 'Chưa dựng được câu hỏi hợp lệ nào.');
   }
 
   return {
@@ -233,7 +259,105 @@ export async function generateQuestionsWithClaude(
     model: usedModel,
     createdAt: new Date().toISOString(),
     questions,
+    ...(failedTypes.length > 0 ? { failedTypes } : {}),
   };
+}
+
+type Job =
+  | { kind: 'flat'; count: number; types: QuestionType[] }
+  | { kind: 'block'; type: QuestionType; count: number; key: string };
+
+type JobOut = { kind: 'flat' | 'block'; questions: GeneratedQuestion[]; model: string };
+
+/**
+ * Đổi đơn hàng thành danh sách lô. Dạng có cấu trúc (nối tiêu đề, bảng, Choose TWO…)
+ * luôn đi lô KHỐI; dạng phẳng giữ cách chia lô cũ.
+ */
+export function planJobs(
+  blocks: { type: QuestionType; count: number }[] | undefined,
+  count: number,
+  focusType: QuestionType | undefined,
+  types: QuestionType[] | undefined,
+  exam: ExamKind,
+): Job[] {
+  if (blocks) {
+    return blocks.map((b, i) =>
+      exam === 'ielts' && STRUCTURED_TYPES.has(b.type)
+        ? ({ kind: 'block', type: b.type, count: b.count, key: String(i + 1) } as const)
+        : ({ kind: 'flat', count: b.count, types: [b.type] } as const),
+    );
+  }
+  const asked = focusType ? [focusType] : pickTypes(types, exam);
+  if (exam !== 'ielts') return planBatches(count, asked).map((b) => ({ kind: 'flat', ...b }) as const);
+
+  const jobs: Job[] = [];
+  const structured = asked.filter((t) => STRUCTURED_TYPES.has(t));
+  let used = 0;
+  structured.forEach((t, i) => {
+    const n = specOf(t)?.defaultCount ?? 4;
+    used += n;
+    jobs.push({ kind: 'block', type: t, count: n, key: String(i + 1) });
+  });
+  const flatTypes = asked.filter((t) => !STRUCTURED_TYPES.has(t));
+  if (flatTypes.length > 0) {
+    const left = Math.max(flatTypes.length, count - used);
+    for (const b of planBatches(left, flatTypes)) jobs.unshift({ kind: 'flat', ...b });
+  }
+  return jobs;
+}
+
+async function runFlat(
+  job: Extract<Job, { kind: 'flat' }>,
+  article: { id: string; title: string; paragraphs: string[]; cefrLevel?: string | null },
+  passage: string,
+  exam: ExamKind,
+): Promise<JobOut> {
+  const raw = await chatWithFallback({
+    purpose: 'questions',
+    system: exam === 'sat' ? SAT_SYSTEM_PROMPT : IELTS_SYSTEM_PROMPT,
+    user: buildUserPrompt(article, passage, job),
+    temperature: 0.4,
+  });
+  return { kind: 'flat', questions: parseQuestions(raw.text, article, exam), model: raw.model };
+}
+
+/**
+ * Một khối có cấu trúc: gọi model, dựng + kiểm; hỏng thì gọi lại MỘT lần kèm danh
+ * sách lỗi của bộ kiểm. Vẫn hỏng thì trả khối rỗng — khối khác không bị ảnh hưởng.
+ */
+async function runBlock(
+  job: Extract<Job, { kind: 'block' }>,
+  article: { id: string; title: string; paragraphs: string[]; cefrLevel?: string | null },
+  passage: string,
+): Promise<JobOut> {
+  let problems: string[] = [];
+  let model = '?';
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    const raw = await chatWithFallback({
+      purpose: 'questions',
+      system: BLOCK_SYSTEM_PROMPT,
+      user: blockUserPrompt(job.type, job.count, article, passage, article.paragraphs.length, problems),
+      temperature: attempt === 0 ? 0.4 : 0.2,
+    });
+    model = raw.model;
+    let parsed: RawBlock;
+    try {
+      parsed = extractJson<RawBlock>(raw.text);
+    } catch {
+      problems = ['phản hồi không phải JSON hợp lệ'];
+      continue;
+    }
+    const built = buildBlock(job.type, parsed, {
+      articleId: article.id,
+      paragraphs: article.paragraphs,
+      startIndex: 0,
+      blockKey: job.key,
+    });
+    if (built.questions.length > 0) return { kind: 'block', questions: built.questions, model };
+    problems = built.problems;
+  }
+  console.error(`[questions] khối ${job.type} không đạt bộ kiểm:`, problems.slice(0, 4).join(' | '));
+  return { kind: 'block', questions: [], model };
 }
 
 /** Model đôi khi vẫn bọc JSON trong fence dù đã dặn — gỡ trước khi parse. */
@@ -286,7 +410,7 @@ function parseQuestions(
     const paragraphIndex = locateEvidence(q.evidence_text, article.paragraphs);
     if (paragraphIndex === -1) continue;
 
-    out.push({
+    const built: GeneratedQuestion = {
       id: `${article.id}-ai-${out.length}`,
       orderIndex: out.length,
       type,
@@ -298,7 +422,19 @@ function parseQuestions(
       evidenceParagraphIndex: paragraphIndex,
       explanation: typeof q.explanation === 'string' ? q.explanation : '',
       lessonTip: typeof q.lesson_tip === 'string' ? q.lesson_tip : null,
-    });
+      // Giới hạn số từ: đúng theo lời dẫn của dạng, nhưng không thấp hơn đáp án mẫu.
+      ...(COMPLETION_TYPES.has(type)
+        ? {
+            maxWords: Math.min(
+              3,
+              Math.max(type === 'short_answer' ? 3 : type === 'sentence_completion' ? 1 : 2, countWords(q.correct_answer)),
+            ),
+          }
+        : {}),
+    };
+    // Bộ kiểm chung của IELTS (đáp án điền phải có thật trong bài, không chép câu bài…).
+    if (exam === 'ielts' && !verifyQuestion(built, article.paragraphs).ok) continue;
+    out.push(built);
   }
 
   return out;

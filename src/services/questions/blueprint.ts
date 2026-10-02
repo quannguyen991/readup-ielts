@@ -208,6 +208,11 @@ export const BLOCK_RUBRIC: Readonly<Record<QuestionType, string>> = Object.freez
     'Complete the notes below. Choose ONE WORD AND/OR A NUMBER from the passage for each answer.',
   short_answer:
     'Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.',
+  multiple_choice_multi: 'Choose TWO letters, A-E.\nWhich TWO of the following statements are true?',
+  note_completion: 'Complete the notes below. Choose NO MORE THAN TWO WORDS from the passage for each answer.',
+  table_completion: 'Complete the table below. Choose NO MORE THAN TWO WORDS from the passage for each answer.',
+  flow_chart_completion: 'Complete the flow-chart below. Choose NO MORE THAN TWO WORDS from the passage for each answer.',
+  diagram_label_completion: 'Label the diagram below. Choose NO MORE THAN TWO WORDS from the passage for each answer.',
   // Bốn dạng SAT không xuất hiện trong đề IELTS, nhưng kiểu dữ liệu dùng chung
   // nên vẫn phải khai đủ. Để trống thì `Record` không đủ khoá và TypeScript bắt.
   sat_words_in_context: '',

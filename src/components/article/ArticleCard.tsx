@@ -9,6 +9,10 @@ import { ARTICLES, isReadable, readingLevelLabel, topicLabel, type ArticleMeta }
 import { buildPhotoOwners, coverSource, generatedCover } from '@/services/articles/cover';
 import { GeneratedCoverArt } from './GeneratedCoverArt';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useQuestionStore } from '@/store/useQuestionStore';
+import { matchTypes, typeInfoFor } from '@/services/questions/article-types';
+import type { QuestionType } from '@/types/database';
+import { TypeChips } from './TypeChips';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 
@@ -29,16 +33,26 @@ export function ArticleCard({
   article,
   layout = 'grid',
   query,
+  onMake,
+  highlightTypes = [],
 }: {
   article: ArticleMeta;
   /** `cover` = ảnh nằm trên, chữ nằm dưới — dùng cho lưới nhiều cột. */
   layout?: 'grid' | 'list' | 'cover';
   /** Chuỗi query kèm theo khi mở bài, ví dụ `types=matching_headings`. */
   query?: string;
+  /**
+   * Có thì thẻ `cover` hiện hàng chip dạng bài và nút "Tạo đề"; bấm sẽ gọi hàm này
+   * (hộp chọn bộ trộn do màn chứa dựng, để chín thẻ không dựng chín hộp).
+   */
+  onMake?: (article: ArticleMeta, preselect?: QuestionType) => void;
+  /** Dạng bài người học đang lọc — chip tương ứng được tô đặc. */
+  highlightTypes?: readonly QuestionType[];
 }) {
   const progress = useStudyStore((s) => s.progress[article.id]);
   const bookmarked = useStudyStore((s) => s.bookmarks.includes(article.id));
   const toggleBookmark = useStudyStore((s) => s.toggleBookmark);
+  const savedSet = useQuestionStore((s) => (onMake ? s.sets[article.id] : undefined));
   const { L, en } = useL();
 
   const readable = isReadable(article);
@@ -84,6 +98,11 @@ export function ArticleCard({
             </Text>
           </View>
         </Pressable>
+
+        {/* Nằm NGOÀI vùng bấm-để-mở: chip "Tạo đề" là nút riêng, không lồng nút trong nút. */}
+        {onMake && readable ? (
+          <CardTypes article={article} savedSet={savedSet} highlight={highlightTypes} onMake={onMake} />
+        ) : null}
 
         <View className="flex-row items-center gap-3 border-t border-border px-3.5 py-2.5">
           <Text className="min-w-0 flex-1 font-mid text-label text-subtle" numberOfLines={1}>
@@ -266,6 +285,26 @@ function Thumbnail({ article, size }: { article: ArticleMeta; size: number }) {
       size={size}
       radius={12}
     />
+  );
+}
+
+function CardTypes({
+  article,
+  savedSet,
+  highlight,
+  onMake,
+}: {
+  article: ArticleMeta;
+  savedSet: ReturnType<typeof useQuestionStore.getState>['sets'][string] | undefined;
+  highlight: readonly QuestionType[];
+  onMake: (article: ArticleMeta, preselect?: QuestionType) => void;
+}) {
+  const info = typeInfoFor(article, savedSet);
+  const m = matchTypes(article, info, highlight, true);
+  return (
+    <View className="px-3.5 pb-3">
+      <TypeChips info={info} highlight={highlight} makeable={m.makeable} onMake={(t) => onMake(article, t)} />
+    </View>
   );
 }
 

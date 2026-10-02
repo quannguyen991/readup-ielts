@@ -1,5 +1,6 @@
 import type { GeneratedQuestion } from './types';
 import { overlapRatio } from '@/services/proofloop/probe-validity';
+import { COMPLETION_TYPES } from './ielts-types';
 
 /**
  * Bộ kiểm đề đọc — chạy TRƯỚC khi một bộ đề được đóng băng vào seed.
@@ -47,7 +48,7 @@ const TFNG_LABELS = new Set(['TRUE', 'FALSE', 'NOT GIVEN']);
 const YNNG_LABELS = new Set(['YES', 'NO', 'NOT GIVEN']);
 
 /** Dạng bắt người học lấy chữ TỪ TRONG BÀI, nên đáp án phải có thật ở đó. */
-const FROM_PASSAGE = new Set(['sentence_completion', 'summary_completion', 'short_answer']);
+const FROM_PASSAGE: ReadonlySet<string> = COMPLETION_TYPES;
 
 function norm(s: string): string {
   return s

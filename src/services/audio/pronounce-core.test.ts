@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { audioUrlsOf, createLookup, isSingleWord, pickAudioUrl, guessAudioUrls, planPlayback, type FetchLike } from './pronounce-core';
+import { clipKey, clipVoiceFor, createClipLibrary, type ClipFetch, audioUrlsOf, createLookup, isSingleWord, pickAudioUrl, guessAudioUrls, planPlayback, type FetchLike } from './pronounce-core';
 
 const body = [
   { phonetics: [{ text: '/a/', audio: '' }, { audio: '//ssl.gstatic.com/dictionary/static/sounds/20200429/test--1_gb_1.mp3' }] },
@@ -135,4 +135,62 @@ test('từ điển lỗi một lần thì tạm nghỉ, từ sau không phải c
 test('tên tệp đoán sẵn chỉ cho từ chữ cái thuần', () => {
   assert.equal(guessAudioUrls('Occupation', 'uk')[0], 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/occupation--_gb_1.mp3');
   assert.deepEqual(guessAudioUrls("don't", 'us'), []);
+});
+
+/* ---------- Kho clip Gemini ---------- */
+
+test('giọng: Nữ → kore, Nam → fenrir; khoá tra bỏ hoa thường / khoảng trắng / nháy cong', () => {
+  assert.equal(clipVoiceFor('f'), 'kore');
+  assert.equal(clipVoiceFor('m'), 'fenrir');
+  assert.equal(clipKey('  It’s  Fine '), "it's fine");
+});
+
+test('kho clip: tải index một lần, tra không phân biệt hoa thường, ghép đường dẫn', async () => {
+  const calls: string[] = [];
+  const f: ClipFetch = async (url) => {
+    calls.push(url);
+    if (url === '/audio/words/kore/index.json') {
+      return { ok: true, status: 200, json: async () => ({ Accreditation: 'accreditation-1.mp3', 'take off': 'take-off-2.mp3' }) };
+    }
+    return { ok: false, status: 404, json: async () => ({}) };
+  };
+  const lib = createClipLibrary({ sets: ['/audio/words/{voice}/'], fetch: f });
+  assert.equal(lib.peek('kore', 'accreditation'), undefined);
+  assert.equal(await lib.find('kore', 'ACCREDITATION'), '/audio/words/kore/accreditation-1.mp3');
+  assert.equal(await lib.find('kore', 'Take  Off'), '/audio/words/kore/take-off-2.mp3');
+  assert.equal(await lib.find('kore', 'unknown'), null);
+  assert.equal(calls.length, 1, 'index chỉ tải một lần');
+  assert.equal(lib.peek('kore', 'accreditation'), '/audio/words/kore/accreditation-1.mp3');
+});
+
+test('kho clip: thư mục / index thiếu thì bỏ qua, không ném lỗi, thử lại sau thời gian chờ', async () => {
+  let t = 0;
+  let calls = 0;
+  const f: ClipFetch = async () => {
+    calls++;
+    return { ok: false, status: 404, json: async () => ({}) };
+  };
+  const lib = createClipLibrary({ sets: ['/audio/words/{voice}/'], fetch: f, retryMs: 1000, now: () => t });
+  assert.equal(await lib.find('fenrir', 'word'), null);
+  assert.equal(await lib.find('fenrir', 'word'), null);
+  assert.equal(calls, 1, 'trong thời gian chờ không hỏi lại');
+  t = 1500;
+  assert.equal(await lib.find('fenrir', 'word'), null);
+  assert.equal(calls, 2);
+  const boom: ClipFetch = async () => {
+    throw new Error('offline');
+  };
+  assert.equal(await createClipLibrary({ sets: ['/x/{voice}/'], fetch: boom }).find('kore', 'a'), null);
+});
+
+test('kho clip: câu dùng chung cơ chế — bộ words rồi tới bộ lines, khoá = đúng câu', async () => {
+  const f: ClipFetch = async (url) => {
+    if (url === '/audio/lines/kore/index.json') return { ok: true, status: 200, json: async () => ({ 'The university lost its accreditation.': 'line-9.mp3' }) };
+    if (url === '/audio/words/kore/index.json') return { ok: true, status: 200, json: async () => ({ lost: 'lost.mp3' }) };
+    return { ok: false, status: 404, json: async () => ({}) };
+  };
+  const lib = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'], fetch: f });
+  assert.equal(await lib.find('kore', 'the university lost its accreditation.'), '/audio/lines/kore/line-9.mp3');
+  assert.equal(await lib.find('kore', 'lost'), '/audio/words/kore/lost.mp3');
+  assert.equal(await lib.find('fenrir', 'lost'), null, 'giọng nam chưa có thư mục');
 });

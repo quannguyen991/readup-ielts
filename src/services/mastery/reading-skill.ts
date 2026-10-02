@@ -51,11 +51,16 @@ const SKILL_BY_TYPE: Readonly<Record<QuestionType, MicroSkill | null>> = Object.
   matching_sentence_endings: 'entailment',
   sentence_completion: 'locate',
   short_answer: 'locate',
+  note_completion: 'locate',
+  table_completion: 'locate',
+  flow_chart_completion: 'locate',
+  diagram_label_completion: 'locate',
   sat_command_of_evidence: 'locate',
 
   // Nhận ra cùng một ý được nói lại bằng chữ khác.
   matching_headings: 'paraphrase',
   multiple_choice: 'paraphrase',
+  multiple_choice_multi: 'paraphrase',
   summary_completion: 'paraphrase',
   sat_words_in_context: 'paraphrase',
   sat_central_idea: 'paraphrase',

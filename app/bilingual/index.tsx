@@ -96,7 +96,7 @@ function PortalView() {
       <Appear>
         <LightHero
         scene="home"
-          badge={L('BILINGUAL PRESS · MIỄN PHÍ', 'BILINGUAL PRESS · FREE')}
+          badge={L('MIỄN PHÍ', 'FREE')}
           line1={L('Đọc báo', 'Bilingual')}
           line2={L('song ngữ', 'news reading')}
           subtitle={L(

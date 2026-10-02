@@ -33,6 +33,9 @@ import { mergeRwAttempts, type RwAttempt } from '@/services/sat-rw/progress';
 import { mergeWeekly, type WeeklyResult } from '@/services/weekly/challenge';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
 import { mergeSpeakingAttempts, type SpeakingAttempt } from '@/services/speaking/attempts';
+import { useListeningStore } from '@/store/useListeningStore';
+import { mergeListeningAttempts } from '@/services/listening/attempts';
+import type { ListeningAttempt } from '@/services/listening/types';
 import { travelPayload, useTravelStore } from '@/store/useTravelStore';
 import { mergeTravel, normalizeTravel } from '@/services/travel/sync';
 
@@ -246,6 +249,22 @@ const speakingStore: SyncedStore = {
   }),
 };
 
+/** Listening: lượt làm bài lẻ / full đề. Hợp theo id, giữ 100 lượt mới nhất. */
+const listeningStore: SyncedStore = {
+  key: 'listening',
+  read: () => ({ attempts: useListeningStore.getState().attempts }),
+  write: (payload) => {
+    const list = (payload as { attempts?: ListeningAttempt[] } | null)?.attempts;
+    if (Array.isArray(list)) useListeningStore.setState({ attempts: list });
+  },
+  merge: (local, remote) => ({
+    attempts: mergeListeningAttempts(
+      (local as { attempts?: ListeningAttempt[] } | null)?.attempts,
+      (remote as { attempts?: ListeningAttempt[] } | null)?.attempts,
+    ),
+  }),
+};
+
 /**
  * Du ngoạn Band 9: vé / xu tính từ sổ cái (hợp theo mã khoản, không cộng đôi),
  * tiến độ lấy số lớn, vị trí và tuỳ chọn theo bản mới hơn (xem `services/travel/sync.ts`).
@@ -326,4 +345,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(localeStore);
   registerSyncedStore(speakingStore);
   registerSyncedStore(travelStore);
+  registerSyncedStore(listeningStore);
 }

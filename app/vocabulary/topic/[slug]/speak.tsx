@@ -4,7 +4,7 @@ import { posIpa } from '@/data/study-decks';
 import { useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
-import { GhostButton, GREEN, PrimaryButton, RED, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
+import { GhostButton, PrimaryButton, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
@@ -16,6 +16,7 @@ import { playSfx } from '@/services/audio/sfx-ui';
 import { useVoiceCoach } from '@/services/audio/useVoiceCoach';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { useStoreTheme } from '@/components/vocab/study/useStudyTheme';
 
 type Recognition = {
   lang: string;
@@ -51,6 +52,7 @@ function makeRecognition(): Recognition | null {
 export default function SpeakScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
   const { L, en } = useL();
+  const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
@@ -162,7 +164,7 @@ export default function SpeakScreen() {
                 onPress={listen}
                 disabled={listening || verdict !== null}
                 className="h-24 w-24 items-center justify-center rounded-pill"
-                style={{ backgroundColor: listening ? RED : color.primary, opacity: verdict !== null ? 0.5 : 1 }}
+                style={{ backgroundColor: listening ? theme.bad : color.primary, opacity: verdict !== null ? 0.5 : 1 }}
               >
                 <Icon name="mic" size={36} color="#FFFFFF" />
               </Pressable>
@@ -190,8 +192,8 @@ export default function SpeakScreen() {
           <CoachBubble coach={coach} />
 
           {verdict !== null ? (
-            <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? '#ECFDF3' : '#FFF1F2' }}>
-              <Text className="font-strong text-cardTitle" style={{ color: verdict ? GREEN : RED }}>
+            <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? theme.goodBg : theme.badBg }}>
+              <Text className="font-strong text-cardTitle" style={{ color: verdict ? theme.good : theme.bad }}>
                 {verdict ? L('Phát âm rõ!', 'Clear pronunciation!') : L('Chưa khớp — nghe lại mẫu rồi thử lần nữa', 'No match — listen to the model and try again')}
               </Text>
               {!verdict && supported ? <GhostButton label={L('Thử đọc lại', 'Try again')} onPress={() => { coach.stop(); setVerdict(null); setHeard(null); }} /> : null}

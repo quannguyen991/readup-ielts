@@ -44,6 +44,8 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   // Đọc theo một bài VOA và phòng đấu 1–1: có micro / đồng hồ, không mời rẽ ngang.
   /^\/shadow\/[^/]+$/,
   /^\/duel\/[^/]+$/,
+  // Listening: phòng thi và kết quả của một đề (trang thư viện / lịch sử vẫn có điều hướng).
+  /^\/listening\/(?!history$)[^/]+$/,
   // Phòng luyện nói: phòng thi (micro + đồng hồ) và phiếu điểm của một lượt.
   /^\/speaking\/room$/,
   /^\/speaking\/result\/[^/]+$/,
@@ -81,6 +83,8 @@ const VOCAB_STUDY = /^\/vocabulary\/(topic\/[^/]+\/(learn|quiz|dictation|cloze|s
  * bài / đọc song ngữ (đã có thẻ tra riêng theo đoạn văn, hai thẻ chồng nhau).
  */
 const NO_LOOKUP: readonly RegExp[] = [
+  // Listening: bôi đen tra từ lộ đáp án; phần bản chữ sau khi nộp có thẻ tra riêng.
+  /^\/listening\/(?!history$)[^/]+$/,
   /^\/read\/[^/]+$/,
   /^\/bilingual\/[^/]+$/,
   /^\/sat\/full-test$/,
@@ -122,6 +126,7 @@ export function isFocusRoute(pathname: string): boolean {
  * giữa bài thi thử là không còn đo được gì.
  */
 const EXAM: readonly RegExp[] = [
+  /^\/listening\/(?!history$)[^/]+$/,
   /^\/sat\/full-test$/,
   /^\/math\/(mock|diagnostic)$/,
   /^\/weekly(\/|$)/,
@@ -132,4 +137,12 @@ const EXAM: readonly RegExp[] = [
 
 export function isExamRoute(pathname: string): boolean {
   return EXAM.some((pattern) => pattern.test(pathname));
+}
+
+/**
+ * Màn làm bài TOÀN KHUNG: không thanh bên, không thanh trên của app, không bong bóng
+ * trợ lý — màn tự vẽ thanh trên riêng (phòng thi Reading kiểu đề máy).
+ */
+export function isImmersiveRoute(pathname: string): boolean {
+  return /^\/read\/[^/]+$/.test(pathname);
 }

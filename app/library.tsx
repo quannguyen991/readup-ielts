@@ -3,13 +3,16 @@ import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
+import { MixSheet } from '@/components/article/MixSheet';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
 import { Button, Card, Icon, Pagination } from '@/components/ui';
 import {
+  BAND_RANGES,
   CEFR_LEVELS,
   EXAMS,
+  SOURCE_NAMES,
   SAT_TEXT_TYPES,
   TIERS_BY_EXAM,
   TIER_LABEL,
@@ -20,10 +23,16 @@ import {
 } from '@/data/articles';
 import { BILINGUAL_ARTICLES } from '@/data/bilingual-repository';
 import { useDueCards, useVocabStore } from '@/store/useVocabStore';
+import { useQuestionStore } from '@/store/useQuestionStore';
+import { matchTypes, typeInfoFor } from '@/services/questions/article-types';
+import { IELTS_TYPE_SPECS, shortLabel } from '@/services/questions/ielts-types';
+import { AVAILABLE_SAT_TYPES } from '@/services/questions/types';
+import type { QuestionType } from '@/types/database';
 import { color } from '@/theme/tokens';
 import type { CefrLevel } from '@/types/database';
 import { CrossFade } from '@/components/motion/Motion';
 import { useL } from '@/i18n/useL';
+import type { ArticleMeta } from '@/data/articles';
 
 /**
  * Kho bài đọc.
@@ -72,6 +81,12 @@ export default function LibraryScreen() {
   const [level, setLevel] = useState<CefrLevel | 'all'>('all');
   const [topic, setTopic] = useState<string | undefined>(undefined);
   const [kind, setKind] = useState<NonNullable<ArticleFilters['kind']>>('all');
+  const [band, setBand] = useState<string>('all');
+  const [source, setSource] = useState<string>('all');
+  // Dạng bài đang lọc (chọn nhiều = khớp BẤT KỲ dạng nào) và có tính cả bài "tạo được" không.
+  const [types, setTypes] = useState<QuestionType[]>([]);
+  const [makeable, setMakeable] = useState(true);
+  const [mix, setMix] = useState<{ article: ArticleMeta; preselect?: QuestionType } | null>(null);
   const [sort, setSort] = useState<NonNullable<ArticleFilters['sort']>>('newest');
   const [showFilters, setShowFilters] = useState(false);
   const [page, setPage] = useState(0);
@@ -81,10 +96,20 @@ export default function LibraryScreen() {
   const dueCount = useDueCards().length;
   const savedCount = Object.keys(entries).length;
 
-  const articles = useMemo(
-    () => filterArticles({ search, exam, track, tier, satTextType, level, topic, kind, sort }),
-    [search, exam, track, tier, satTextType, level, topic, kind, sort],
-  );
+  const sets = useQuestionStore((st) => st.sets);
+
+  const articles = useMemo(() => {
+    const base = filterArticles({
+      search, exam, track, tier, satTextType, level, topic, kind, sort,
+      bandRange: band, source,
+    });
+    if (types.length === 0) return base;
+    // Lọc theo dạng bài; bài đã CÓ SẴN dạng đó xếp trước bài chỉ "tạo được" (sắp xếp ổn định).
+    const hits = base
+      .map((a) => ({ a, m: matchTypes(a, typeInfoFor(a, sets[a.id]), types, makeable) }))
+      .filter((x) => x.m.match);
+    return [...hits.filter((x) => x.m.ready.length > 0), ...hits.filter((x) => x.m.ready.length === 0)].map((x) => x.a);
+  }, [search, exam, track, tier, satTextType, level, topic, kind, sort, band, source, types, makeable, sets]);
 
   const activeFilters =
     (exam !== 'all' ? 1 : 0) +
@@ -93,7 +118,10 @@ export default function LibraryScreen() {
     (satTextType !== 'all' ? 1 : 0) +
     (level !== 'all' ? 1 : 0) +
     (topic ? 1 : 0) +
-    (kind !== 'all' ? 1 : 0);
+    (kind !== 'all' ? 1 : 0) +
+    (band !== 'all' ? 1 : 0) +
+    (source !== 'all' ? 1 : 0) +
+    (types.length > 0 ? 1 : 0);
 
   /**
    * Đổi kỳ thi thì bỏ hết bộ lọc con của kỳ thi cũ. Không bỏ thì người dùng dễ
@@ -105,6 +133,12 @@ export default function LibraryScreen() {
     setTrack('all');
     setTier('all');
     setSatTextType('all');
+    setTypes([]);
+    setPage(0);
+  };
+
+  const toggleType = (t: QuestionType) => {
+    setTypes((cur) => (cur.includes(t) ? cur.filter((x) => x !== t) : [...cur, t]));
     setPage(0);
   };
 
@@ -117,6 +151,9 @@ export default function LibraryScreen() {
     setLevel('all');
     setTopic(undefined);
     setKind('all');
+    setBand('all');
+    setSource('all');
+    setTypes([]);
     setSort('newest');
     setPage(0);
   };
@@ -230,6 +267,37 @@ export default function LibraryScreen() {
 
       {showFilters ? (
         <Card className="mt-3">
+          <View className="mb-3">
+            <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+              {L('Dạng bài', 'Question types')}
+            </Text>
+            <View className="flex-row flex-wrap gap-1.5">
+              {(exam === 'sat'
+                ? AVAILABLE_SAT_TYPES.map((t) => ({ type: t, short: shortLabel(t) }))
+                : IELTS_TYPE_SPECS.map((sp) => ({ type: sp.type, short: sp.short }))
+              ).map((x) => (
+                <Chip key={x.type} label={x.short} active={types.includes(x.type)} onPress={() => toggleType(x.type)} />
+              ))}
+            </View>
+            {types.length > 0 && exam !== 'sat' ? (
+              <Pressable
+                onPress={() => setMakeable((v) => !v)}
+                accessibilityRole="checkbox"
+                aria-checked={makeable}
+                className="mt-2 flex-row items-center gap-2 self-start py-1"
+              >
+                <View
+                  className={['h-4 w-4 items-center justify-center rounded border', makeable ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface'].join(' ')}
+                >
+                  {makeable ? <Icon name="check" size={11} color="#FFFFFF" strokeWidth={3} /> : null}
+                </View>
+                <Text className="font-sans text-label text-muted">
+                  {L('Gồm cả bài chưa có đề dạng này (tạo được)', 'Include passages without it yet (can create)')}
+                </Text>
+              </Pressable>
+            ) : null}
+          </View>
+
           <FilterRow label={L('Kỳ thi', 'Exam')}>
             <Chip label={L('Tất cả', 'All')} active={exam === 'all'} onPress={() => selectExam('all')} />
             {EXAMS.map((e) => (
@@ -290,6 +358,15 @@ export default function LibraryScreen() {
             </FilterRow>
           ) : null}
 
+          {exam !== 'sat' ? (
+            <FilterRow label="Band">
+              <Chip label={L('Tất cả', 'All')} active={band === 'all'} onPress={() => { setBand('all'); setPage(0); }} />
+              {BAND_RANGES.map((b) => (
+                <Chip key={b} label={b.replace('Band ', '')} active={band === b} onPress={() => { setBand(band === b ? 'all' : b); setPage(0); }} />
+              ))}
+            </FilterRow>
+          ) : null}
+
           <FilterRow label={L('Độ khó', 'Level')}>
             <Chip label={L('Tất cả', 'All')} active={level === 'all'} onPress={() => setLevel('all')} />
             {CEFR_LEVELS.map((l) => (
@@ -309,7 +386,14 @@ export default function LibraryScreen() {
             ))}
           </FilterRow>
 
-          <FilterRow label={L('Dạng bài', 'Type')}>
+          <FilterRow label={L('Nguồn', 'Source')}>
+            <Chip label={L('Tất cả', 'All')} active={source === 'all'} onPress={() => { setSource('all'); setPage(0); }} />
+            {SOURCE_NAMES.map((n) => (
+              <Chip key={n} label={n} active={source === n} onPress={() => { setSource(source === n ? 'all' : n); setPage(0); }} />
+            ))}
+          </FilterRow>
+
+          <FilterRow label={L('Hiển thị', 'Show')}>
             <Chip
               label={L('Đọc được toàn văn', 'Full text')}
               active={kind === 'readable'}
@@ -355,13 +439,36 @@ export default function LibraryScreen() {
         </View>
       </View>
 
+      {types.length > 0 ? (
+        <View className="mt-2 flex-row flex-wrap items-center gap-1.5">
+          {types.map((t) => (
+            <Pressable
+              key={t}
+              onPress={() => toggleType(t)}
+              accessibilityRole="button"
+              accessibilityLabel={L(`Bỏ lọc ${shortLabel(t)}`, `Remove ${shortLabel(t)} filter`)}
+              className="flex-row items-center gap-1 rounded-pill bg-primary-600 px-2.5 py-1"
+            >
+              <Text className="font-semi text-white" style={{ fontSize: 11 }}>{shortLabel(t)}</Text>
+              <Icon name="close" size={11} color="#FFFFFF" strokeWidth={2.4} />
+            </Pressable>
+          ))}
+        </View>
+      ) : null}
+
       <View className="mt-3">
         {/* Đổi trang hay đổi bộ lọc: danh sách mới mờ dần vào. */}
         <CrossFade swapKey={`${current}-${shown[0]?.id ?? 0}`}>
         {shown.length > 0 ? (
           <Grid columns={3} tabletColumns={2} mobileColumns={1} gap={16}>
             {shown.map((article) => (
-              <ArticleCard key={article.id} article={article} layout="cover" />
+              <ArticleCard
+                key={article.id}
+                article={article}
+                layout="cover"
+                highlightTypes={types}
+                onMake={(a, preselect) => setMix({ article: a, ...(preselect ? { preselect } : {}) })}
+              />
             ))}
           </Grid>
         ) : (
@@ -405,6 +512,7 @@ export default function LibraryScreen() {
           />
         </View>
       </Card>
+      {mix ? <MixSheet article={mix.article} visible preselect={mix.preselect} onClose={() => setMix(null)} /> : null}
     </Screen>
   );
 }
