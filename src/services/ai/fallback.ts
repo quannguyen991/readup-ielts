@@ -1,4 +1,5 @@
 import { AiError } from './errors';
+import { breakerKey, isOpen, recordFailure, recordSuccess } from './breaker';
 
 /**
  * Gọi AI qua BA proxy độc lập, tự chuyển cửa khi cửa trước hỏng.
@@ -367,9 +368,16 @@ export async function chatWithFallback(call: ChatCall): Promise<ChatResult> {
       continue;
     }
 
+    const bKey = breakerKey(endpoint.label, endpoint.models[purpose]);
+    if (isOpen(bKey)) {
+      failures.push(`${endpoint.label}: đang nghỉ sau lỗi gần đây`);
+      continue;
+    }
+
     const started = Date.now();
     try {
       const text = await callEndpoint(endpoint, purpose, call, budget);
+      recordSuccess(bKey);
       return {
         text,
         model: endpoint.models[purpose] ?? '?',
@@ -378,6 +386,7 @@ export async function chatWithFallback(call: ChatCall): Promise<ChatResult> {
       };
     } catch (err) {
       const reason = err instanceof Error ? err.message : 'lỗi lạ';
+      recordFailure(bKey, reason);
       failures.push(`${endpoint.label} (${endpoint.models[purpose]}): ${reason.slice(0, 140)}`);
     }
   }
@@ -488,6 +497,12 @@ export async function streamWithFallback(call: ChatCall): Promise<StreamResult> 
       continue;
     }
 
+    const bKey = breakerKey(endpoint.label, endpoint.models[purpose]);
+    if (isOpen(bKey)) {
+      failures.push(`${endpoint.label}: đang nghỉ sau lỗi gần đây`);
+      continue;
+    }
+
     const controller = new AbortController();
     const cap = setTimeout(() => controller.abort(), budget);
 
@@ -527,6 +542,7 @@ export async function streamWithFallback(call: ChatCall): Promise<StreamResult> 
       ]);
 
       if (first.done) throw new Error('stream rỗng');
+      recordSuccess(bKey);
 
       const stream = (async function* () {
         try {
@@ -542,6 +558,7 @@ export async function streamWithFallback(call: ChatCall): Promise<StreamResult> 
       clearTimeout(cap);
       controller.abort();
       const reason = err instanceof Error ? err.message : 'lỗi lạ';
+      recordFailure(bKey, reason);
       failures.push(`${endpoint.label} (${endpoint.models[purpose]}): ${reason.slice(0, 140)}`);
     }
   }

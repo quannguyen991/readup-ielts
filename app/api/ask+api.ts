@@ -61,12 +61,23 @@ export async function POST(request: Request): Promise<Response> {
       .map((m) => `${m.role === 'user' ? 'Người học' : 'Trợ giảng'}: ${m.content}`)
       .join('\n\n');
 
-    const result = await streamWithFallback({
-      purpose: 'chat',
-      system: SYSTEM,
-      user: question,
-      temperature: 0.3,
-    });
+    let result: Awaited<ReturnType<typeof streamWithFallback>>;
+    try {
+      result = await streamWithFallback({
+        purpose: 'chat',
+        system: SYSTEM,
+        user: question,
+        temperature: 0.3,
+      });
+    } catch (err) {
+      /*
+        KHÔNG đưa tên máy chủ, model hay mã HTTP của nhà cung cấp tới người học —
+        họ không làm được gì với "api.groq.com: HTTP 429". Chi tiết chỉ ở log máy
+        chủ; người học nhận một mã ngắn để app hiện câu "AI đang bận".
+      */
+      console.warn('[ask] mọi cửa AI đều hỏng:', err instanceof Error ? err.message : err);
+      return new Response('ai_busy', { status: 503, headers: { 'retry-after': '30' } });
+    }
 
     const stream = new ReadableStream<Uint8Array>({
       async start(controller) {
@@ -92,7 +103,7 @@ export async function POST(request: Request): Promise<Response> {
       headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-cache' },
     });
   } catch (err) {
-    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
-    return new Response(message, { status: 500 });
+    console.warn('[ask] lỗi:', err instanceof Error ? err.message : err);
+    return new Response('ai_busy', { status: 500 });
   }
 }

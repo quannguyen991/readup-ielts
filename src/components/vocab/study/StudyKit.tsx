@@ -1,4 +1,5 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
+import { TappableSentence } from "@/components/lookup/TapWord";
 import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/data/study-decks";
@@ -342,7 +343,7 @@ export function ChoiceGrid({
   );
 }
 
-/** Câu ví dụ với từ đang học in đậm. */
+/** Câu ví dụ với từ đang học in đậm; chạm vào từ nào cũng ra nghĩa (không cần AI). */
 export function ExampleLine({
   example,
   word,
@@ -350,22 +351,7 @@ export function ExampleLine({
   example: string;
   word: string;
 }) {
-  const i = example
-    .toLowerCase()
-    .indexOf(word.toLowerCase().replace(/(e|y)$/, ""));
-  if (i < 0)
-    return <Text className="font-sans text-body text-muted">{example}</Text>;
-  let end = i;
-  while (end < example.length && /\p{L}/u.test(example[end]!)) end += 1;
-  return (
-    <Text className="font-sans text-body text-muted">
-      {example.slice(0, i)}
-      <Text className="font-semi text-ink">
-        {example.slice(i, end)}
-      </Text>
-      {example.slice(end)}
-    </Text>
-  );
+  return <TappableSentence text={example} highlight={word} />;
 }
 
 /** Bảng phản hồi sau mỗi câu: một dải mảnh đúng/sai, rồi từ, nghĩa, ví dụ một dòng. */
