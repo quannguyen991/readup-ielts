@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Button } from '@/components/ui';
@@ -59,6 +59,9 @@ function newId(): string {
  */
 export default function SpeakingRoom() {
   const { L, en } = useL();
+  // Màn thấp (điện thoại nhỏ / nằm ngang): thu nhỏ quả cầu để nút điều khiển còn trong tầm nhìn.
+  const { height: winH } = useWindowDimensions();
+  const orbSize = winH < 640 ? 120 : winH < 760 ? 160 : ORB;
   const params = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string; q?: string; exam?: string; typed?: string; sample?: string }>();
   const plan = useMemo<SessionPlan>(() => {
     const mode = (MODES as string[]).includes(params.mode ?? '') ? (params.mode as SessionMode) : 'p1';
@@ -458,7 +461,7 @@ export default function SpeakingRoom() {
       progress={progress}
       right={
         done > 0 && phase !== 'saving' ? (
-          <Pressable accessibilityRole="button" onPress={finish} className="rounded-pill bg-white/80 px-3 py-2">
+          <Pressable accessibilityRole="button" onPress={finish} className="items-center justify-center rounded-pill bg-white/80 px-3" style={{ minHeight: 44 }}>
             <Text className="font-semi text-label text-ink">{L('Nộp & chấm', 'Submit & grade')}</Text>
           </Pressable>
         ) : null
@@ -468,7 +471,7 @@ export default function SpeakingRoom() {
         {/* ---------------------------------------- nhãn phần thi */}
         <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 8 }}>
           <View style={PILL}>
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: 'rgba(255,255,255,0.75)' }}>
+            <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 1.2, color: 'rgba(255,255,255,0.75)' }}>
               {phase === 'intro'
                 ? L(
                     `${steps.length} CÂU · ${exam ? 'THI THẬT' : 'LUYỆN TẬP'}`,
@@ -485,7 +488,7 @@ export default function SpeakingRoom() {
 
         {/* ---------------------------------------- giám khảo AI */}
         <View style={{ alignItems: 'center', marginTop: 18 }}>
-          <VoiceOrb state={orbState} size={ORB} level={micLevel} onPress={phase === 'intro' ? start : undefined} label={status} />
+          <VoiceOrb state={orbState} size={orbSize} level={micLevel} onPress={phase === 'intro' ? start : undefined} label={status} />
           <Text className="font-strong" style={{ marginTop: 14, fontSize: 15, color: 'rgba(255,255,255,0.85)', textAlign: 'center' }} accessibilityLiveRegion="polite">
             {status}
           </Text>
@@ -514,8 +517,8 @@ export default function SpeakingRoom() {
               </Text>
             ) : null}
             {q.part !== 2 ? (
-              <Pressable onPress={() => setShowQ((v) => !v)} style={{ marginTop: 6 }}>
-                <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.55)' }}>
+              <Pressable onPress={() => setShowQ((v) => !v)} accessibilityRole="button" style={{ marginTop: 2, minHeight: 44, justifyContent: 'center', paddingHorizontal: 12 }}>
+                <Text className="font-semi" style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>
                   {showQ ? L('Ẩn chữ câu hỏi', 'Hide question text') : L('Hiện chữ câu hỏi', 'Show question text')}
                 </Text>
               </Pressable>
@@ -543,7 +546,7 @@ export default function SpeakingRoom() {
               placeholder={L('Ghi vài từ khoá…', 'Jot down a few keywords…')}
               placeholderTextColor="rgba(255,255,255,0.4)"
               className="font-sans"
-              style={{ width: '100%', maxWidth: 520, minHeight: 80, borderRadius: 16, padding: 12, fontSize: 15, color: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.14)', textAlignVertical: 'top' }}
+              style={{ width: '100%', maxWidth: 520, minHeight: 80, borderRadius: 16, padding: 12, fontSize: 16, color: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.14)', textAlignVertical: 'top' }}
             />
           ) : null}
 
@@ -556,7 +559,7 @@ export default function SpeakingRoom() {
               placeholder={L('Gõ như khi bạn nói… (không tính điểm Speaking)', "Type as you'd speak… (not a Speaking score)")}
               placeholderTextColor="rgba(255,255,255,0.4)"
               className="font-sans"
-              style={{ width: '100%', maxWidth: 560, minHeight: 110, borderRadius: 16, padding: 12, fontSize: 15, color: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.14)', textAlignVertical: 'top' }}
+              style={{ width: '100%', maxWidth: 560, minHeight: 110, borderRadius: 16, padding: 12, fontSize: 16, color: '#FFFFFF', backgroundColor: 'rgba(255,255,255,0.06)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.14)', textAlignVertical: 'top' }}
             />
           ) : null}
 
@@ -602,7 +605,7 @@ export default function SpeakingRoom() {
             <Pressable
               accessibilityRole="button"
               onPress={() => runMain(main.act)}
-              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 26, paddingVertical: 15, backgroundColor: hovered ? '#FDE68A' : '#FACC15', transition: 'background-color 150ms ease' }) as object}
+              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 26, minHeight: 56, justifyContent: 'center', backgroundColor: hovered ? '#FDE68A' : '#FACC15', transition: 'background-color 150ms ease' }) as object}
             >
               <Icon name={main.icon} size={18} color="#1A1405" />
               <Text className="font-heavy" style={{ fontSize: 16, color: '#1A1405' }}>
@@ -616,8 +619,8 @@ export default function SpeakingRoom() {
 
         {sample && phase !== 'intro' ? (
           <View style={{ marginTop: 16, alignItems: 'center' }}>
-            <Pressable onPress={() => setShowSample((v) => !v)}>
-              <Text className="font-semi" style={{ fontSize: 13, color: '#5EEAD4' }}>
+            <Pressable onPress={() => setShowSample((v) => !v)} accessibilityRole="button" style={{ minHeight: 44, justifyContent: 'center' }}>
+              <Text className="font-semi" style={{ fontSize: 14, color: '#5EEAD4' }}>
                 {showSample ? L('Ẩn bản hay hơn lần trước', 'Hide last better version') : L('Xem bản hay hơn lần trước', 'Show last better version')}
               </Text>
             </Pressable>
@@ -634,7 +637,7 @@ export default function SpeakingRoom() {
 }
 
 const ORB = 200;
-const STAGE = { borderRadius: 32, paddingHorizontal: 18, paddingVertical: 26, backgroundColor: '#0B1A2E', alignItems: 'center', minHeight: 520, overflow: 'hidden' } as const;
+const STAGE = { borderRadius: 32, paddingHorizontal: 18, paddingVertical: 26, backgroundColor: '#0B1A2E', alignItems: 'center', minHeight: 440, overflow: 'hidden' } as const;
 const PILL = { borderRadius: 999, paddingHorizontal: 12, paddingVertical: 5, backgroundColor: 'rgba(255,255,255,0.08)' } as const;
 
 function Chip({ text }: { text: string }) {

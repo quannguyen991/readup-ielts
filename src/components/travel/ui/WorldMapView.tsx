@@ -171,13 +171,13 @@ export function WorldMapView({
                     style={{ position: 'absolute', top: size + 2, left: size / 2 - 70, width: 140, alignItems: 'center', zIndex: 5 }}
                   >
                     <View style={{ paddingHorizontal: 8, paddingVertical: 4, borderRadius: 4, backgroundColor: T.paper, borderWidth: 2, borderColor: T.navy, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
-                      <Text className="font-strong" style={{ fontSize: 13, color: T.navy }} numberOfLines={1}>
+                      <Text className="font-strong" style={{ fontSize: 14, color: T.navy }} numberOfLines={1}>
                         {name}
                       </Text>
                       {c !== current ? (
                         <>
                           <TicketGlyph size={14} />
-                          <Text className="font-strong" style={{ fontSize: 13, color: T.navy }}>
+                          <Text className="font-strong" style={{ fontSize: 14, color: T.navy }}>
                             {cost}
                           </Text>
                         </>

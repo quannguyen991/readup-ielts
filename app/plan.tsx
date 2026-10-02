@@ -608,7 +608,7 @@ function TicketStub({ ielts, sat, today, days, minutesText, weak, problems, edit
           <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 2.4, color: P.goldLight }}>
             BAND 9
           </Text>
-          <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
             {L('PHIẾU LỘ TRÌNH', 'PLAN TICKET')}
           </Text>
         </View>
@@ -622,7 +622,7 @@ function TicketStub({ ielts, sat, today, days, minutesText, weak, problems, edit
             const left = g.examIso ? daysBetween(today, g.examIso) : null;
             return (
               <View key={key} style={{ marginTop: 16 }}>
-                <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+                <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
                   {key}
                 </Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
@@ -692,7 +692,7 @@ function TicketStub({ ielts, sat, today, days, minutesText, weak, problems, edit
 function StubCell({ label, value }: { label: string; value: string }) {
   return (
     <View style={{ flex: 1, borderRadius: 12, paddingHorizontal: 12, paddingVertical: 10, backgroundColor: 'rgba(255,255,255,0.06)' }}>
-      <Text className="font-strong" style={{ fontSize: 10, letterSpacing: 1.4, color: 'rgba(255,255,255,0.55)' }}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: 'rgba(255,255,255,0.55)' }}>
         {label}
       </Text>
       <Text className="font-heavy" style={{ marginTop: 2, fontSize: 17, color: '#FFFFFF' }}>

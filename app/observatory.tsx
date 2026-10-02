@@ -375,7 +375,7 @@ function Stat({ label, value, hint }: { label: string; value: string; hint?: str
     <View>
       <Text style={{ fontSize: 26, fontWeight: '800', color: color.ink }}>{value}</Text>
       <Text style={{ fontSize: 12, color: color.muted }}>{label}</Text>
-      {hint ? <Text style={{ fontSize: 11, color: color.subtle }}>{hint}</Text> : null}
+      {hint ? <Text style={{ fontSize: 12, color: color.subtle }}>{hint}</Text> : null}
     </View>
   );
 }

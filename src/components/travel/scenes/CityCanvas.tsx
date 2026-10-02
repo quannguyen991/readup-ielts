@@ -4,7 +4,13 @@ import type { PoiHighlights } from '../engine/CityEngine';
 import type { CityMap, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
 
 /** Cần điều khiển từ ngoài: tự đi tới một địa điểm. */
-export type CityCanvasHandle = { walkToPoi(id: string): boolean };
+export type CityCanvasHandle = {
+  walkToPoi(id: string): boolean;
+  /** Cần điều khiển ảo: tập hướng đang giữ (rỗng = thả). */
+  setStick(dirs: readonly ('up' | 'down' | 'left' | 'right')[]): void;
+  /** Nút tương tác (như phím E). */
+  interact(): void;
+};
 
 /**
  * Bản iOS/Android: KHÔNG vẽ canvas — giai đoạn đầu native chỉ có trang danh sách địa điểm

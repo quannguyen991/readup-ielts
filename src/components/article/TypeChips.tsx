@@ -57,7 +57,7 @@ export function TypeChips({
               accessibilityLabel={L(`Tạo đề ${shortLabel(t)}`, `Create ${shortLabel(t)} questions`)}
               className={`${base} border-dashed border-primary-600 bg-primary-50`}
             >
-              <Text className="font-semi text-primary-700" style={{ fontSize: 10.5 }}>
+              <Text className="font-semi text-primary-700" style={{ fontSize: 12 }}>
                 + {shortLabel(t)}
               </Text>
             </Pressable>
@@ -65,14 +65,14 @@ export function TypeChips({
         }
         return (
           <View key={t} className={`${base} ${hit ? 'border-primary-600 bg-primary-600' : 'border-border bg-surfaceAlt'}`}>
-            <Text className={`font-semi ${hit ? 'text-white' : 'text-muted'}`} style={{ fontSize: 10.5 }}>
+            <Text className={`font-semi ${hit ? 'text-white' : 'text-muted'}`} style={{ fontSize: 12 }}>
               {shortLabel(t)}
             </Text>
           </View>
         );
       })}
       {more > 0 ? (
-        <Text className="font-semi text-subtle" style={{ fontSize: 10.5 }}>
+        <Text className="font-semi text-subtle" style={{ fontSize: 12 }}>
           +{more}
         </Text>
       ) : null}
@@ -84,7 +84,7 @@ export function TypeChips({
           className="rounded-pill border border-dashed border-border px-2 py-0.5"
           style={({ pressed }) => (pressed ? { opacity: 0.7 } : undefined)}
         >
-          <Text className="font-semi text-muted" style={{ fontSize: 10.5 }}>
+          <Text className="font-semi text-muted" style={{ fontSize: 12 }}>
             {info.source === 'saved' ? L('Đổi dạng', 'Change mix') : L('+ Tạo đề', '+ Create')}
           </Text>
         </Pressable>

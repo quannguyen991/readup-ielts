@@ -36,7 +36,7 @@ export function TranslationLibrary() {
   return (
     <View>
       <Card className="mb-5">
-        <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+        <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
           {L('Trình độ', 'Level')}
         </Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -100,9 +100,10 @@ function Chip({ label, active, onPress }: { label: string; active: boolean; onPr
       accessibilityRole="button"
       aria-selected={active}
       className={[
-        'rounded-pill border px-3 py-1.5',
+        'items-center justify-center rounded-pill border px-3 py-1.5',
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
       ].join(' ')}
+      style={{ minHeight: 44 }}
     >
       <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
         {label}

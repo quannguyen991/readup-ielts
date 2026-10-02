@@ -201,7 +201,7 @@ function LessonStep({ island }: { island: Island }) {
             })}
           >
             <View style={{ flexShrink: 1 }}>
-              <Text className="font-semi" style={{ fontSize: 11, color: '#5B4205' }}>
+              <Text className="font-semi" style={{ fontSize: 12, color: '#5B4205' }}>
                 {L('HỌC TIẾP', 'CONTINUE')}
               </Text>
               <Text className="font-heavy" style={{ fontSize: 14, color: '#2A1B02' }} numberOfLines={1}>

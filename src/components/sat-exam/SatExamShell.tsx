@@ -5,6 +5,7 @@ import { usePathname } from 'expo-router';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
+import { allowLeave, useExamWebTweaks, useLeaveGuard } from '@/lib/mobile/useMobileExam';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { isExamRoute } from '@/navigation/focus-routes';
 import { useDisplayName } from '@/store/useAuthStore';
@@ -188,7 +189,23 @@ export function SatExamShell(props: SatExamShellProps) {
     else onNext();
   }, [last, onSubmit, onNext]);
 
-  const exit = () => (confirmExit ? setExitOpen(true) : onExit());
+  // Đã xác nhận thoát bằng hộp thoại của bài thì không hỏi lần hai ở lớp chặn Back.
+  const doExit = () => {
+    allowLeave();
+    onExit();
+  };
+  const exit = () => (confirmExit ? setExitOpen(true) : doExit());
+
+  // Điện thoại: chặn kéo-để-tải-lại; vuốt/nhấn Back hay đóng tab giữa bài thì hỏi lại.
+  useExamWebTweaks();
+  const askLeave = useCallback(
+    () =>
+      Platform.OS !== 'web' ||
+      typeof window === 'undefined' ||
+      window.confirm(L('Thoát khỏi bài đang làm? Tiến độ của lượt này sẽ mất.', 'Leave the test in progress? This attempt will be lost.')),
+    [L],
+  );
+  useLeaveGuard(Boolean(confirmExit), askLeave);
 
   // ---- bàn phím: ←/→, A–D, Esc (không bắt khi đang gõ)
   const latest = useRef({ props, next, navOpen, infoOpen, calcOpen, refOpen, exitOpen });
@@ -259,7 +276,7 @@ export function SatExamShell(props: SatExamShellProps) {
     { id: 'exit', label: L('Lưu & thoát', 'Save & Exit'), glyph: <ExitGlyph />, run: exit },
   ];
   // Màn quá hẹp để xếp đủ bốn nút cùng đồng hồ: gom vào một menu "⋯" có nhãn.
-  const tinyBar = width < 360;
+  const tinyBar = width < 480;
 
   const header = (
     <QuestionHeader
@@ -345,14 +362,16 @@ export function SatExamShell(props: SatExamShellProps) {
                 accessibilityLabel={L('Luật của bài này', 'About this set')}
                 aria-expanded={infoOpen}
                 onPress={() => setInfoOpen((v) => !v)}
-                className="h-7 w-7 items-center justify-center rounded-pill"
+                hitSlop={8}
+                className="items-center justify-center rounded-pill"
+                style={{ width: 44, height: 44 }}
               >
                 <Icon name="info" size={18} color={EXAM.navySoft} strokeWidth={2} />
               </Pressable>
             ) : null}
           </View>
 
-          <View className="items-center">
+          <View className="items-center" style={{ flexShrink: 0 }}>
             {timerHidden ? (
               <Icon name="clock" size={20} color={EXAM.ink} />
             ) : (
@@ -367,10 +386,11 @@ export function SatExamShell(props: SatExamShellProps) {
             <Pressable
               accessibilityRole="button"
               onPress={() => setTimerHidden((v) => !v)}
+              hitSlop={{ top: 14, bottom: 14, left: 12, right: 12 }}
               className="mt-0.5 rounded-pill border px-2.5"
-              style={{ borderColor: EXAM.optionLine, paddingVertical: 1 }}
+              style={{ borderColor: EXAM.optionLine, paddingVertical: 2 }}
             >
-              <Text className="font-semi" style={{ fontSize: 11, color: EXAM.body }}>
+              <Text className="font-semi" style={{ fontSize: 12, color: EXAM.body }}>
                 {timerHidden ? L('Hiện', 'Show') : L('Ẩn', 'Hide')}
               </Text>
             </Pressable>
@@ -445,8 +465,8 @@ export function SatExamShell(props: SatExamShellProps) {
             aria-expanded={navOpen}
             accessibilityLabel={L(`Câu ${index + 1} trên ${total}, mở bảng câu hỏi`, `Question ${index + 1} of ${total}, open navigator`)}
             onPress={() => setNavOpen((v) => !v)}
-            className="flex-row items-center gap-1.5 rounded-md py-2"
-            style={{ backgroundColor: EXAM.navy, paddingHorizontal: tinyBar ? 9 : 14 }}
+            className="flex-row items-center gap-1.5 rounded-md"
+            style={{ backgroundColor: EXAM.navy, paddingHorizontal: tinyBar ? 10 : 14, minHeight: 44 }}
           >
             <Text className="font-strong" style={{ color: '#FFFFFF', fontSize: wide ? 14 : 13 }}>
               {wide ? L(`Câu ${index + 1} / ${total}`, `Question ${index + 1} of ${total}`) : `${index + 1} / ${total}`}
@@ -493,19 +513,24 @@ export function SatExamShell(props: SatExamShellProps) {
         ) : null}
 
         {toolsMenu && tinyBar ? (
-          <Overlay onClose={() => setToolsMenu(false)}>
+          <Overlay onClose={() => setToolsMenu(false)} dim>
+            {/* Điện thoại: công cụ là một tấm trượt ở đáy, hàng 52px dễ chạm bằng ngón cái. */}
             <View
-              className="rounded-xl border py-1.5"
+              className="border-t pt-2"
               style={{
                 position: 'absolute',
-                top: menuTop,
-                right: 8,
-                minWidth: 200,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                borderTopLeftRadius: 18,
+                borderTopRightRadius: 18,
                 backgroundColor: '#FFFFFF',
                 borderColor: EXAM.barLine,
-                boxShadow: '0 12px 32px rgba(15,29,51,0.18)',
+                boxShadow: '0 -12px 32px rgba(15,29,51,0.18)',
+                ...({ paddingBottom: 'max(16px, env(safe-area-inset-bottom))' } as object),
               }}
             >
+              <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: EXAM.line, marginBottom: 6 }} />
               {TOOLS.map((t) => (
                 <Pressable
                   key={t.id}
@@ -514,11 +539,11 @@ export function SatExamShell(props: SatExamShellProps) {
                     setToolsMenu(false);
                     t.run();
                   }}
-                  className="flex-row items-center gap-3 px-4 py-2.5"
-                  style={{ backgroundColor: t.active ? '#F0E9DA' : 'transparent' }}
+                  className="flex-row items-center gap-3 px-5"
+                  style={{ minHeight: 52, backgroundColor: t.active ? '#F0E9DA' : 'transparent' }}
                 >
-                  {t.glyph ?? <Icon name={t.icon ?? 'more'} size={18} color={EXAM.ink} strokeWidth={1.9} />}
-                  <Text className="font-semi text-body" style={{ color: EXAM.ink }}>
+                  {t.glyph ?? <Icon name={t.icon ?? 'more'} size={20} color={EXAM.ink} strokeWidth={1.9} />}
+                  <Text className="font-semi text-body" style={{ color: EXAM.ink, fontSize: 16 }}>
                     {t.label}
                   </Text>
                 </Pressable>
@@ -568,7 +593,7 @@ export function SatExamShell(props: SatExamShellProps) {
                 </Text>
                 <View className="mt-4 flex-row justify-end gap-2">
                   <BarButton label={L('Ở lại', 'Stay')} onPress={() => setExitOpen(false)} />
-                  <BarButton label={L('Thoát', 'Exit')} variant="primary" onPress={onExit} />
+                  <BarButton label={L('Thoát', 'Exit')} variant="primary" onPress={doExit} />
                 </View>
               </View>
             </View>
@@ -643,10 +668,11 @@ function QuestionHeader({
         accessibilityRole="button"
         aria-pressed={marked}
         onPress={onMark}
-        className="min-w-0 flex-1 flex-row items-center gap-1.5 self-stretch"
+        className="min-w-0 flex-1 flex-row items-center gap-1.5"
+        style={{ minHeight: 44 }}
       >
         <BookmarkGlyph filled={marked} />
-        <Text className="font-semi text-label" style={{ color: EXAM.ink }} numberOfLines={1}>
+        <Text className="font-semi" style={{ color: EXAM.ink, fontSize: 14 }} numberOfLines={1}>
           {marked ? L('Đã đánh dấu', 'Marked for review') : L('Đánh dấu xem lại', 'Mark for review')}
         </Text>
       </Pressable>
@@ -657,10 +683,10 @@ function QuestionHeader({
           aria-pressed={eliminate}
           accessibilityLabel={L('Loại trừ phương án', 'Answer eliminator')}
           onPress={onEliminate}
-          className="items-center justify-center rounded px-1.5 py-1"
-          style={{ borderWidth: 1.2, borderColor: EXAM.ink, backgroundColor: eliminate ? EXAM.navy : '#FFFFFF' }}
+          className="items-center justify-center rounded px-2"
+          style={{ minHeight: 44, minWidth: 48, borderWidth: 1.2, borderColor: EXAM.ink, backgroundColor: eliminate ? EXAM.navy : '#FFFFFF' }}
         >
-          <Text className="font-strong" style={{ fontSize: 12, color: eliminate ? '#FFFFFF' : EXAM.ink, textDecorationLine: 'line-through' }}>
+          <Text className="font-strong" style={{ fontSize: 13, color: eliminate ? '#FFFFFF' : EXAM.ink, textDecorationLine: 'line-through' }}>
             ABC
           </Text>
         </Pressable>
@@ -729,7 +755,8 @@ function ToolButton({
       onHoverOut={() => setHovered(false)}
       style={{
         backgroundColor: active ? '#E6DCC8' : hovered ? '#EBE3D4' : 'transparent',
-        minWidth: compact ? 36 : 64,
+        minWidth: compact ? 44 : 64,
+        minHeight: 44,
       }}
     >
       {glyph ?? <Icon name={icon ?? 'more'} size={18} color={EXAM.ink} strokeWidth={1.9} />}
@@ -775,8 +802,10 @@ function BarButton({
         backgroundColor: bg,
         borderWidth: variant === 'outline' ? 1.5 : 0,
         borderColor: EXAM.navy,
-        paddingHorizontal: iconOnly ? 9 : compact ? 12 : 18,
-        paddingVertical: 8,
+        paddingHorizontal: iconOnly ? 12 : compact ? 14 : 18,
+        minHeight: 44,
+        minWidth: 44,
+        justifyContent: 'center',
         opacity: disabled ? 0.4 : 1,
       }}
     >
@@ -837,6 +866,7 @@ function Navigator({
         position: 'absolute',
         ...frame,
         maxHeight: '80%',
+        paddingBottom: wide ? 16 : 28,
         backgroundColor: '#FFFFFF',
         borderWidth: 1,
         borderColor: EXAM.barLine,
@@ -847,7 +877,7 @@ function Navigator({
         <Text className="min-w-0 flex-1 font-strong text-body" style={{ color: EXAM.ink }} numberOfLines={1}>
           {title}
         </Text>
-        <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} className="h-7 w-7 items-center justify-center">
+        <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={onClose} className="items-center justify-center" style={{ width: 44, height: 44 }}>
           <Icon name="close" size={18} color={EXAM.ink} strokeWidth={2} />
         </Pressable>
       </View>
@@ -873,8 +903,10 @@ function Navigator({
                   `Question ${i + 1}${done ? ', answered' : ', unanswered'}${flag ? ', marked' : ''}`,
                 )}
                 onPress={() => onJump(i)}
-                className="h-10 w-10 items-center justify-center"
+                className="items-center justify-center"
                 style={{
+                  width: 48,
+                  height: 48,
                   backgroundColor: done ? EXAM.navy : '#FFFFFF',
                   borderWidth: current ? 2 : 1.2,
                   borderStyle: done || current ? 'solid' : 'dashed',

@@ -141,7 +141,7 @@ export function LevelPicker({
             {planLevelId === l.id ? (
               <View style={{ marginTop: 6, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 5, paddingHorizontal: 5, paddingVertical: 1, backgroundColor: on ? 'rgba(226,200,143,0.16)' : P.goldWash }}>
                 <Icon name="target" size={10} color={on ? P.goldLight : P.goldDeep} strokeWidth={2.4} />
-                <Text className="font-strong" style={{ fontSize: 10, letterSpacing: 0.4, color: on ? P.goldLight : P.goldDeep }}>
+                <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.4, color: on ? P.goldLight : P.goldDeep }}>
                   {L('Theo lộ trình', 'Your plan')}
                 </Text>
               </View>
@@ -472,7 +472,7 @@ function NodeCard({
       >
         <SealIcon name={done ? 'check' : KIND_ICON[node.target.kind]} color={seal} size={42} />
         <View style={{ flex: 1, minWidth: 0 }}>
-          <Text className="font-strong" numberOfLines={1} style={{ fontSize: 11, letterSpacing: 1, color: dark ? P.goldLight : P.goldDeep }}>
+          <Text className="font-strong" numberOfLines={1} style={{ fontSize: 12, letterSpacing: 1, color: dark ? P.goldLight : P.goldDeep }}>
             {kicker.toUpperCase()}
           </Text>
           <Text className="font-heavy" style={{ marginTop: 1, fontSize: 15, lineHeight: 20, color: dark ? '#FFFFFF' : P.navy }}>

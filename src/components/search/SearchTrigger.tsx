@@ -52,7 +52,7 @@ export function SidebarSearchTrigger({
           </Text>
           {keys ? (
             <View style={{ borderWidth: 1, borderColor: tone.border, borderRadius: 5, paddingHorizontal: 5, paddingVertical: 1 }}>
-              <Text className="font-semi" style={{ fontSize: 11, color: tone.muted }}>
+              <Text className="font-semi" style={{ fontSize: 12, color: tone.muted }}>
                 {keys}
               </Text>
             </View>
@@ -73,7 +73,7 @@ export function SearchIconButton({ color, size = 19 }: { color: string; size?: n
       accessibilityLabel={L('Tìm bài học', 'Find a lesson')}
       aria-haspopup="dialog"
       onPress={show}
-      className="p-1.5"
+      className="h-11 w-11 items-center justify-center"
     >
       <Icon name="search" size={size} color={color} strokeWidth={1.9} />
     </Pressable>

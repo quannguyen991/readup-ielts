@@ -252,7 +252,7 @@ function MockTestCard({
               className="h-6 w-6 items-center justify-center rounded-pill"
               style={{ backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: color.border }}
             >
-              <Text className="font-heavy text-muted" style={{ fontSize: 11 }}>
+              <Text className="font-heavy text-muted" style={{ fontSize: 12 }}>
                 {i + 1}
               </Text>
             </View>
@@ -331,7 +331,7 @@ function TestCover({ index }: { index: number }) {
         style={{ position: 'absolute', inset: 0 } as never}
       />
       <View style={{ zIndex: 1, alignItems: 'center' }}>
-        <Text className="font-heavy text-white" style={{ fontSize: 11, letterSpacing: 1 }}>
+        <Text className="font-heavy text-white" style={{ fontSize: 12, letterSpacing: 1 }}>
           MOCK
         </Text>
         <Text className="font-heavy text-white" style={{ fontSize: 26, lineHeight: 30 }}>
@@ -348,7 +348,7 @@ function Chip({ label, tone }: { label: string; tone: 'neutral' | 'warning' }) {
   const fg = tone === 'warning' ? '#92400E' : color.muted;
   return (
     <View className="rounded-pill px-2 py-0.5" style={{ backgroundColor: bg }}>
-      <Text className="font-semi" style={{ fontSize: 10.5, color: fg }}>
+      <Text className="font-semi" style={{ fontSize: 12, color: fg }}>
         {label}
       </Text>
     </View>

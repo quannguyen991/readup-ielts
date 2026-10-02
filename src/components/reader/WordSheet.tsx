@@ -78,7 +78,12 @@ export function WordSheet({
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
       <Pressable className="flex-1 bg-black/30" onPress={onClose} />
 
-      <View className="max-h-[70%] rounded-t-[20px] border-t border-border bg-surface p-5">
+      <View
+        className="rounded-t-[20px] border-t border-border bg-surface p-5"
+        style={{ maxHeight: '75%', paddingBottom: 'calc(20px + env(safe-area-inset-bottom, 0px))' as unknown as number }}
+      >
+        {/* Tay cầm: gợi ý đây là bảng trượt, chạm nền mờ phía trên để đóng. */}
+        <View className="mb-3 self-center rounded-pill" style={{ width: 40, height: 4, backgroundColor: '#D9CFB8', marginTop: -8 }} />
         <View className="mb-3 flex-row items-start justify-between gap-3">
           <View className="min-w-0 flex-1">
             <View className="flex-row items-center gap-2">

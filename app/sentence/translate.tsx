@@ -382,13 +382,13 @@ function RunningView({
             <View className="flex-row items-center justify-between">
               <Text className="font-heavy text-cardTitle text-paper-ink">{L('Đề bài', 'Prompt')}</Text>
               <View className="rounded-pill bg-brand-soft px-2.5 py-1">
-                <Text className="font-semi text-paper-body" style={{ fontSize: 10 }}>
+                <Text className="font-semi text-paper-body" style={{ fontSize: 12 }}>
                   {en ? DIFFICULTY_EN[item.difficulty] : SENTENCE_DIFFICULTY_LABEL[item.difficulty]}
                 </Text>
               </View>
             </View>
 
-            <Text className="mt-4 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 10 }}>
+            <Text className="mt-4 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
               {L('Tiếng Việt', 'Vietnamese')}
             </Text>
             <Text className="mt-1.5 font-strong text-sectionTitle text-paper-ink">{item.vi}</Text>
@@ -444,7 +444,7 @@ function RunningView({
                   i <= index ? null : (
                     <View key={other.id} className="flex-row gap-2.5">
                       <View className="h-6 w-6 items-center justify-center rounded-pill bg-brand-tint">
-                        <Text className="font-semi text-label" style={{ color: paper.brandMid, fontSize: 11 }}>
+                        <Text className="font-semi text-label" style={{ color: paper.brandMid, fontSize: 12 }}>
                           {i + 1}
                         </Text>
                       </View>

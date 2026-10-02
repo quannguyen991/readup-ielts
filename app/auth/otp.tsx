@@ -213,6 +213,8 @@ export default function OtpScreen() {
             placeholder="000000"
             placeholderTextColor={color.subtle}
             keyboardType="number-pad"
+            inputMode="numeric"
+            enterKeyHint="done"
             autoComplete="one-time-code"
             textContentType="oneTimeCode"
             maxLength={6}

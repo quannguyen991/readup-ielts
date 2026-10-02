@@ -1,7 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { PanResponder, Pressable, Text, View, type LayoutChangeEvent } from 'react-native';
 
+import { useHydrated } from '@/components/layout/useHydrated';
 import { useL } from '@/i18n/useL';
+import { haptic, hapticsEnabled, hapticsSupported, setHapticsEnabled } from '@/services/haptics';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useAudioPrefs } from '@/store/useAudioPrefs';
 import { useGameStore } from '@/store/useGameStore';
@@ -14,6 +16,7 @@ function Row({ title, on, onToggle }: { title: string; on: boolean; onToggle: ()
       accessibilityState={{ checked: on }}
       onPress={onToggle}
       className="flex-row items-center justify-between gap-3 py-2"
+      style={{ minHeight: 44 }}
     >
       <Text className="min-w-0 flex-1 font-semi text-body text-ink">{title}</Text>
       <View className="h-6 w-11 justify-center rounded-pill px-0.5" style={{ backgroundColor: on ? color.primary : '#CBD5E1' }}>
@@ -77,6 +80,8 @@ export function SoundCard() {
   const setVolume = useAudioPrefs((s) => s.setVolume);
   const coach = useAudioPrefs((s) => s.coach);
   const setCoach = useAudioPrefs((s) => s.setCoach);
+  const hydrated = useHydrated();
+  const [haptics, setHapticsState] = useState(hapticsEnabled);
   return (
     <View className="mt-4 rounded-2xl bg-white p-4" style={{ borderWidth: 1, borderColor: '#F0EBE2' }}>
       <Text className="font-heavy text-cardTitle text-ink">{L('Âm thanh', 'Sound')}</Text>
@@ -88,6 +93,18 @@ export function SoundCard() {
         <VolumeSlider value={volume} onChange={setVolume} label={L('Âm lượng', 'Volume')} />
       </View>
       <Row title={L('Huấn luyện viên giọng nói', 'Voice coach')} on={coach} onToggle={() => setCoach(!coach)} />
+      {/* Chỉ hiện trên máy có rung (Android Chrome); iPhone không có `navigator.vibrate`. */}
+      {hydrated && hapticsSupported() ? (
+        <Row
+          title={L('Rung nhẹ khi chọn đáp án', 'Light haptics when answering')}
+          on={haptics}
+          onToggle={() => {
+            setHapticsEnabled(!haptics);
+            setHapticsState(!haptics);
+            if (!haptics) haptic(12);
+          }}
+        />
+      ) : null}
     </View>
   );
 }

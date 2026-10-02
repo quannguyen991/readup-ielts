@@ -188,7 +188,7 @@ function Airport() {
                   style={(st) => { const { hovered, focused } = st as { hovered?: boolean; focused?: boolean }; return { position: 'absolute', left: r.x * k - 30, top: r.y * k - 28, width: 60, height: 56, alignItems: 'center', justifyContent: 'flex-end', borderRadius: 6, borderWidth: 2, borderColor: focused ? T.paper : hovered ? T.goldLight : 'rgba(226,200,143,0.6)', borderStyle: focused ? 'dashed' : 'solid', backgroundColor: hovered ? 'rgba(226,200,143,0.22)' : 'rgba(15,29,51,0.08)' }; }}
                 >
                   <View style={[{ position: 'absolute', bottom: -14, paddingHorizontal: 8, paddingVertical: 3, borderRadius: 4, backgroundColor: T.paper, borderWidth: 2, borderColor: T.navy }, cssAnim('tvBounce', 1800, reduced)]} className="tv-anim">
-                    <Text className="font-strong" style={{ fontSize: 13, color: T.navy }} numberOfLines={1}>
+                    <Text className="font-strong" style={{ fontSize: 14, color: T.navy }} numberOfLines={1}>
                       {L(r.vi, r.en)}
                     </Text>
                   </View>

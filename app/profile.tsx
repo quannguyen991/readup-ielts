@@ -158,7 +158,7 @@ export default function ProfileScreen() {
             return (
               <Card key={s.slot} style={{ flexGrow: 1, flexShrink: 1, flexBasis: 220 }}>
                 <View className="flex-row items-center justify-between gap-2">
-                  <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+                  <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
                     {L(s.title, s.titleEn)}
                   </Text>
                   {item ? (

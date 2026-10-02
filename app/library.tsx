@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, Text, TextInput, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { ArticleCard } from '@/components/article/ArticleCard';
@@ -7,7 +7,7 @@ import { MixSheet } from '@/components/article/MixSheet';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Button, Card, Icon, Pagination } from '@/components/ui';
+import { Button, Card, HScroll, Icon, Pagination } from '@/components/ui';
 import {
   BAND_RANGES,
   CEFR_LEVELS,
@@ -256,7 +256,7 @@ export default function LibraryScreen() {
           <Text className="font-semi text-body text-ink">{L('Bộ lọc', 'Filters')}</Text>
           {activeFilters > 0 ? (
             <View className="h-5 min-w-[20px] items-center justify-center rounded-pill bg-primary-600 px-1.5">
-              <Text className="font-strong text-white" style={{ fontSize: 10 }}>
+              <Text className="font-strong text-white" style={{ fontSize: 12 }}>
                 {activeFilters}
               </Text>
             </View>
@@ -268,7 +268,7 @@ export default function LibraryScreen() {
       {showFilters ? (
         <Card className="mt-3">
           <View className="mb-3">
-            <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+            <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
               {L('Dạng bài', 'Question types')}
             </Text>
             <View className="flex-row flex-wrap gap-1.5">
@@ -449,7 +449,7 @@ export default function LibraryScreen() {
               accessibilityLabel={L(`Bỏ lọc ${shortLabel(t)}`, `Remove ${shortLabel(t)} filter`)}
               className="flex-row items-center gap-1 rounded-pill bg-primary-600 px-2.5 py-1"
             >
-              <Text className="font-semi text-white" style={{ fontSize: 11 }}>{shortLabel(t)}</Text>
+              <Text className="font-semi text-white" style={{ fontSize: 12 }}>{shortLabel(t)}</Text>
               <Icon name="close" size={11} color="#FFFFFF" strokeWidth={2.4} />
             </Pressable>
           ))}
@@ -533,12 +533,12 @@ const SORT_LABEL_EN: Record<'newest' | 'shortest' | 'easiest' | 'hardest', strin
 function FilterRow({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <View className="mb-3">
-      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+      <Text className="mb-1.5 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
         {label}
       </Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <HScroll>
         <View className="flex-row gap-1.5 py-0.5">{children}</View>
-      </ScrollView>
+      </HScroll>
     </View>
   );
 }
@@ -558,9 +558,10 @@ export function Chip({
       accessibilityRole="button"
       aria-selected={active}
       className={[
-        'rounded-pill border px-3 py-1.5',
+        'items-center justify-center rounded-pill border px-3 py-1.5',
         active ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
       ].join(' ')}
+      style={{ minHeight: 44 }}
     >
       <Text className={['font-semi text-label', active ? 'text-white' : 'text-muted'].join(' ')}>
         {label}

@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Platform, Pressable, Text, TextInput } from 'react-native';
+
+import { focusNextGap, registerGap, revealOnFocus } from '@/lib/mobile/gap-focus';
 
 import { EXAM } from './exam-theme';
 
@@ -17,11 +19,25 @@ export function GapInput({
   onFocus?: () => void;
   width?: number | '100%';
 }) {
+  const ref = useRef<TextInput>(null);
+  // Đăng ký để phím "Tiếp" trên bàn phím nhảy sang ô kế tiếp.
+  useEffect(() => registerGap('reading', number, ref.current), [number]);
   return (
     <TextInput
+      ref={ref}
       value={value}
       onChangeText={onChange}
-      onFocus={onFocus}
+      onFocus={() => {
+        onFocus?.();
+        revealOnFocus(ref.current);
+      }}
+      returnKeyType="next"
+      enterKeyHint="next"
+      submitBehavior="submit"
+      onSubmitEditing={() => focusNextGap('reading', number, ref.current)}
+      inputMode="text"
+      autoComplete="off"
+      spellCheck={false}
       placeholder={String(number)}
       placeholderTextColor={EXAM.accent}
       autoCapitalize="none"
@@ -30,13 +46,13 @@ export function GapInput({
       style={[
         {
           width,
-          height: 36,
-          paddingHorizontal: 12,
-          borderRadius: 18,
+          height: 44,
+          paddingHorizontal: 14,
+          borderRadius: 22,
           borderWidth: 1.5,
           borderColor: value ? EXAM.accent : EXAM.accentLine,
           backgroundColor: value ? EXAM.accentSoft : EXAM.white,
-          fontSize: 15,
+          fontSize: 16, // >=16px: iOS không tự phóng to khi focus
           fontWeight: '600',
           color: EXAM.ink,
           textAlign: value ? 'left' : 'center',
@@ -66,7 +82,7 @@ export function BankGap({
       accessibilityLabel={value ? `Question ${number}: ${value}` : `Question ${number}`}
       style={{
         minWidth: 92,
-        height: 36,
+        height: 44,
         paddingHorizontal: 12,
         borderRadius: 18,
         borderWidth: 1.5,

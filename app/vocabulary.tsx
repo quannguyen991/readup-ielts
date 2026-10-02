@@ -31,8 +31,12 @@ const STATUS_LABEL: Record<WordStatusKind, Bi> = {
   ignored: { vi: 'Bỏ qua', en: 'Ignored' },
 };
 
+const WORDS_PER_PAGE = 40;
+
 export default function VocabularyScreen() {
   const [tab, setTab] = useState<'list' | 'review'>('list');
+  // Sổ vài trăm từ: chỉ dựng từng đợt, không dựng một lượt cả danh sách (mỗi dòng là một cây view khá nặng).
+  const [shown, setShown] = useState(WORDS_PER_PAGE);
   const { L, locale } = useL();
 
   const entries = useVocabStore((s) => s.entries);
@@ -148,13 +152,26 @@ export default function VocabularyScreen() {
           />
 
           <View className="mt-4 gap-3">
-            {words.map((word) => (
-              <WordRow
-                key={word.id}
-                entry={word}
-                status={wordStatus[word.lemma]?.status ?? 'new'}
-              />
+            {words.slice(0, shown).map((word) => (
+              <View key={word.id} className="cv-auto">
+                <WordRow entry={word} status={wordStatus[word.lemma]?.status ?? 'new'} />
+              </View>
             ))}
+            {words.length > shown ? (
+              <Pressable
+                accessibilityRole="button"
+                onPress={() => setShown((n) => n + WORDS_PER_PAGE)}
+                className="items-center justify-center rounded-panel border border-borderStrong bg-surface"
+                style={{ minHeight: 48 }}
+              >
+                <Text className="font-semi text-body text-primary-700">
+                  {L(`Hiện thêm ${Math.min(WORDS_PER_PAGE, words.length - shown)} từ`, `Show ${Math.min(WORDS_PER_PAGE, words.length - shown)} more`)}
+                  {' · '}
+                  {words.length - shown}
+                  {L(' còn lại', ' left')}
+                </Text>
+              </Pressable>
+            ) : null}
 
             {words.length === 0 ? (
               /*

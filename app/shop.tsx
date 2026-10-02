@@ -686,7 +686,7 @@ function Preview({ item, skin }: { item: ShopItem; skin: SkinId }) {
       >
         <View style={{ position: 'absolute', top: 8, left: 8, width: 12, height: 12, borderRadius: 6, backgroundColor: p.accent }} />
         <Text style={{ fontSize: 32 }}>{item.glyph}</Text>
-        <Text style={{ fontSize: 11, fontWeight: '700', color: p.text, marginTop: 2 }}>{L('Giao diện', 'Theme')}</Text>
+        <Text style={{ fontSize: 12, fontWeight: '700', color: p.text, marginTop: 2 }}>{L('Giao diện', 'Theme')}</Text>
       </View>
     );
   }

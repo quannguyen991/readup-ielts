@@ -153,7 +153,7 @@ export function DeckCard({
             {subtitle ? `${subtitle} · ` : ''}
             {progress.total} {L('từ', 'words')}
           </Text>
-          <Text className="font-strong" style={{ marginTop: 8, fontSize: 11, letterSpacing: 0.6, color: strong }}>
+          <Text className="font-strong" style={{ marginTop: 8, fontSize: 12, letterSpacing: 0.6, color: strong }}>
             {sourceLabel.toUpperCase()}
           </Text>
         </View>

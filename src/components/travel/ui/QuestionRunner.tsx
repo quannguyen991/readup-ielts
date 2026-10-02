@@ -180,7 +180,7 @@ function Card({
         </Text>
       </View>
       <View style={{ paddingHorizontal: 10, minHeight: 28, justifyContent: 'center', borderRadius: 4, backgroundColor: T.paperDeep, borderWidth: 1, borderColor: T.line }}>
-        <Text className="font-strong" style={{ fontSize: 13, color: T.goldDark }}>
+        <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark }}>
           {en ? le : lv}
         </Text>
       </View>

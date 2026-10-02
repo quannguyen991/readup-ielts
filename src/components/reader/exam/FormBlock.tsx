@@ -24,7 +24,7 @@ type Props = {
   onActivate?: (number: number) => void;
 };
 
-const TEXT = { fontSize: 15.5, lineHeight: 36, color: EXAM.ink } as const;
+const TEXT = { fontSize: 16, lineHeight: 48, color: EXAM.ink } as const;
 
 export function FormBlock({ questions, from, answers, onAnswer, activeNumber, onActivate }: Props) {
   const form = questions[0]?.form;
@@ -122,7 +122,7 @@ export function FormBlock({ questions, from, answers, onAnswer, activeNumber, on
                     borderLeftColor: EXAM.accentLine,
                   }}
                 >
-                  {line(cell, r === 0 ? { fontSize: 13.5, fontWeight: '800', color: EXAM.accentDeep, lineHeight: 20 } : { fontSize: 14.5, lineHeight: 34, color: EXAM.ink })}
+                  {line(cell, r === 0 ? { fontSize: 13.5, fontWeight: '800', color: EXAM.accentDeep, lineHeight: 20 } : { fontSize: 14.5, lineHeight: 48, color: EXAM.ink })}
                 </View>
               ))}
             </View>

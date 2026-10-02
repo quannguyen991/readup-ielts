@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Platform, Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
 
 import { Icon } from '@/components/ui';
 import type { Note } from '@/store/useReaderStore';
@@ -11,34 +11,67 @@ import { EXAM, PAPER_THEMES } from './exam-theme';
  * Gom công cụ phụ vào đây để thanh trên và bài đọc không phải gánh chúng.
  */
 
+/** Điện thoại (< 700px): bảng nổi thành "bottom sheet" ở đáy, vừa tầm ngón cái. */
 function Popover({ children, width = 300 }: { children: React.ReactNode; width?: number }) {
+  const { width: winW } = useWindowDimensions();
+  const sheet = winW < 700;
   return (
     <View
       style={[
-        {
-          position: 'absolute',
-          top: 56,
-          right: 12,
-          width,
-          maxWidth: '94%',
-          maxHeight: '70%',
-          backgroundColor: EXAM.white,
-          borderRadius: 16,
-          borderWidth: 1,
-          borderColor: EXAM.line,
-          padding: 14,
-          zIndex: 80,
-        },
-        Platform.OS === 'web' ? ({ boxShadow: '0 12px 36px rgba(15,23,42,0.14)' } as object) : { elevation: 8 },
+        sheet
+          ? {
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              maxHeight: '78%',
+              backgroundColor: EXAM.white,
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+              borderTopWidth: 1,
+              borderColor: EXAM.line,
+              paddingHorizontal: 16,
+              paddingTop: 8,
+              paddingBottom: 16,
+              zIndex: 80,
+            }
+          : {
+              position: 'absolute',
+              top: 56,
+              right: 12,
+              width,
+              maxWidth: '94%',
+              maxHeight: '70%',
+              backgroundColor: EXAM.white,
+              borderRadius: 16,
+              borderWidth: 1,
+              borderColor: EXAM.line,
+              padding: 14,
+              zIndex: 80,
+            },
+        Platform.OS === 'web'
+          ? ({
+              boxShadow: sheet ? '0 -8px 32px rgba(15,23,42,0.18)' : '0 12px 36px rgba(15,23,42,0.14)',
+              ...(sheet ? { paddingBottom: 'max(16px, env(safe-area-inset-bottom))' } : null),
+            } as object)
+          : { elevation: 8 },
       ]}
     >
+      {sheet ? <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: EXAM.line, marginBottom: 10 }} /> : null}
       {children}
     </View>
   );
 }
 
 function Backdrop({ onClose }: { onClose: () => void }) {
-  return <Pressable onPress={onClose} accessible={false} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 70 }} />;
+  const { width: winW } = useWindowDimensions();
+  return (
+    <Pressable
+      onPress={onClose}
+      accessible={false}
+      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 70, backgroundColor: winW < 700 ? 'rgba(15,23,42,0.32)' : 'transparent' }}
+    />
+  );
 }
 
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
@@ -58,8 +91,8 @@ function Chip({ label, active, onPress, disabled }: { label: string; active?: bo
       accessibilityRole="button"
       aria-pressed={active}
       style={{
-        minHeight: 34,
-        paddingHorizontal: 12,
+        minHeight: 44,
+        paddingHorizontal: 14,
         justifyContent: 'center',
         borderRadius: 999,
         borderWidth: 1,
@@ -121,7 +154,7 @@ export function SettingsPanel({
                   accessibilityLabel={L(`Giấy ${t.label}`, `${t.labelEn} paper`)}
                   aria-selected={paperKey === t.key}
                   onPress={() => onPaper(t.key)}
-                  style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: t.bg, borderWidth: paperKey === t.key ? 2.5 : 1, borderColor: paperKey === t.key ? EXAM.accent : EXAM.line }}
+                  style={{ width: 44, height: 44, borderRadius: 12, backgroundColor: t.bg, borderWidth: paperKey === t.key ? 2.5 : 1, borderColor: paperKey === t.key ? EXAM.accent : EXAM.line }}
                 />
               ))}
             </View>
@@ -198,7 +231,7 @@ export function NotesPanel({
             placeholder={L('Ghi chú cho bài này…', 'Note for this passage…')}
             placeholderTextColor="#9A9484"
             style={[
-              { flex: 1, height: 40, borderRadius: 10, borderWidth: 1, borderColor: EXAM.line, paddingHorizontal: 12, fontSize: 14, color: EXAM.ink },
+              { flex: 1, height: 44, borderRadius: 10, borderWidth: 1, borderColor: EXAM.line, paddingHorizontal: 12, fontSize: 16, color: EXAM.ink },
               Platform.OS === 'web' ? ({ outlineStyle: 'none' } as object) : null,
             ]}
           />
@@ -206,7 +239,7 @@ export function NotesPanel({
             onPress={submit}
             accessibilityRole="button"
             accessibilityLabel={L('Thêm ghi chú', 'Add note')}
-            style={{ height: 40, paddingHorizontal: 14, borderRadius: 10, backgroundColor: EXAM.accent, justifyContent: 'center' }}
+            style={{ height: 44, paddingHorizontal: 16, borderRadius: 10, backgroundColor: EXAM.accent, justifyContent: 'center' }}
           >
             <Text style={{ fontSize: 13.5, fontWeight: '800', color: '#FFFFFF' }}>{L('Thêm', 'Add')}</Text>
           </Pressable>
@@ -222,7 +255,7 @@ export function NotesPanel({
                   onPress={() => onRemove(n.id)}
                   accessibilityRole="button"
                   accessibilityLabel={L('Xoá ghi chú', 'Delete note')}
-                  style={{ width: 28, height: 28, alignItems: 'center', justifyContent: 'center' }}
+                  style={{ width: 44, height: 44, margin: -8, alignItems: 'center', justifyContent: 'center' }}
                 >
                   <Icon name="close" size={13} color={EXAM.muted} strokeWidth={2.4} />
                 </Pressable>

@@ -249,7 +249,7 @@ export function PathPlanner({ exam, level, statuses, focusExtra, plan, compact }
           {MINUTE_OPTIONS.map((m) => {
             const on = rhythm.minutesPerDay === m;
             return (
-              <Pressable key={m} accessibilityRole="button" aria-selected={on} onPress={() => setRhythm({ ...rhythm, minutesPerDay: m })} style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 8, backgroundColor: on ? P.navy : 'transparent' }}>
+              <Pressable key={m} accessibilityRole="button" aria-selected={on} onPress={() => setRhythm({ ...rhythm, minutesPerDay: m })} style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 8, minHeight: 44, justifyContent: 'center', backgroundColor: on ? P.navy : 'transparent' }}>
                 <Text className="font-strong" style={{ fontSize: 13, color: on ? P.goldLight : P.navy }}>
                   {`${m}'`}
                 </Text>
@@ -271,7 +271,7 @@ export function PathPlanner({ exam, level, statuses, focusExtra, plan, compact }
                   const next = on ? rhythm.studyDays.filter((x) => x !== d) : [...rhythm.studyDays, d];
                   if (next.length > 0) setRhythm({ ...rhythm, studyDays: next });
                 }}
-                style={{ flex: 1, maxWidth: 52, height: 40, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}
+                style={{ flex: 1, maxWidth: 52, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}
               >
                 <Text className="font-strong" style={{ fontSize: 13, color: on ? P.goldLight : P.muted }}>
                   {(en ? DAY_EN : DAY_VI)[d]!.slice(0, en ? 2 : 3)}

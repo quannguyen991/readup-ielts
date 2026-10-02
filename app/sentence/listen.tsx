@@ -243,7 +243,7 @@ function NguonBai({ sourceUrl, publishedAt }: { sourceUrl: string; publishedAt: 
       onPress={() => void Linking.openURL(sourceUrl)}
       className="mt-5 rounded-panel border border-border bg-surface p-3.5"
     >
-      <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+      <Text className="font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
         {L('Nguồn', 'Source')}
       </Text>
       <Text className="mt-1 font-sans text-label text-muted" style={{ lineHeight: 19 }}>

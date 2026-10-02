@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Modal, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import { Platform, Pressable, Text, View } from 'react-native';
 import { Link, router, usePathname } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Logo } from './Logo';
 import { SearchIconButton } from '@/components/search/SearchTrigger';
 import { Icon } from '@/components/ui/Icon';
+import { Sheet } from '@/components/ui/Sheet';
+import { haptic } from '@/services/haptics';
 import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, navLabel, visibleGroups } from '@/navigation/nav-items';
 import { useL } from '@/i18n/useL';
 import { useCityAvailable } from '@/services/city/availability';
@@ -82,7 +84,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
         một tầng riêng của trang.
       */}
       <View
-        className="px-3 pb-1 pt-3"
+        className="px-2 pb-1 pt-2 sm:px-3 sm:pt-3"
         style={
           fixed
             ? ({ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100 } as const)
@@ -106,7 +108,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
               accessibilityRole="button"
               accessibilityLabel={L('Quay lại trang trước', 'Go back')}
               onPress={() => router.back()}
-              className="h-10 w-10 items-center justify-center rounded-pill border border-brand-soft bg-paper"
+              className="h-11 w-11 items-center justify-center rounded-pill border border-brand-soft bg-paper"
               style={Platform.OS === 'web' ? webBarShadow : shadow.card}
             >
               <Icon name="chevron-left" size={18} color={paper.body} strokeWidth={2.2} />
@@ -114,7 +116,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           ) : null}
 
           <View
-            className="min-w-0 flex-1 flex-row items-center gap-2 rounded-pill border border-brand-soft bg-paper px-3 py-2 sm:gap-3"
+            className="min-w-0 flex-1 flex-row items-center gap-1 rounded-pill border border-brand-soft bg-paper py-1 pl-3 pr-1 sm:gap-3 sm:px-3 sm:py-2"
             style={Platform.OS === 'web' ? webBarShadow : shadow.card}
           >
           {/*
@@ -126,7 +128,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             chừng. Người đang học vẫn có nút "Tiếp tục học" ngay đầu trang ấy.
           */}
           <Link href={'/intro' as never} asChild>
-            <Pressable accessibilityRole="link" accessibilityLabel={L('Về trang giới thiệu', 'Go to the intro page')}>
+            <Pressable accessibilityRole="link" accessibilityLabel={L('Về trang giới thiệu', 'Go to the intro page')} className="justify-center" style={{ minHeight: 44 }}>
               <Logo compact />
             </Pressable>
           </Link>
@@ -134,8 +136,13 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={L('Mở danh sách mục', 'Open the menu')}
-            onPress={() => setMenuOpen(true)}
-            className="flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-brand-tint px-3 py-1.5"
+            onPress={() => {
+              haptic();
+              setMenuOpen(true);
+            }}
+            aria-haspopup="dialog"
+            className="h-11 shrink-0 flex-row items-center justify-center gap-1.5 rounded-pill border border-brand-soft bg-brand-tint px-3"
+            style={{ minWidth: 44 }}
           >
             <Icon name="grid" size={15} color={paper.body} strokeWidth={1.9} />
             <Text className="hidden font-semi text-label text-paper-body sm:flex">{L('Khám phá', 'Explore')}</Text>
@@ -167,12 +174,13 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             accessibilityRole="button"
             accessibilityLabel={signedIn ? L(`Hồ sơ của ${name}`, `${name}'s profile`) : L('Đăng nhập', 'Sign in')}
             onPress={() => router.push((signedIn ? '/profile' : '/auth/sign-in') as never)}
-            className="flex-row items-center gap-2 rounded-pill border border-brand-soft bg-white py-1 pl-1 pr-3"
+            className="h-11 shrink-0 flex-row items-center justify-center gap-2 rounded-pill border border-brand-soft bg-white pl-1 pr-1 md:pr-3"
+            style={{ minWidth: 44 }}
           >
             {signedIn ? (
-              <AvatarBadge avatarId={avatarId} name={name} size={28} skin={skinOf(skinId)} />
+              <AvatarBadge avatarId={avatarId} name={name} size={34} skin={skinOf(skinId)} />
             ) : (
-              <View className="h-7 w-7 items-center justify-center rounded-pill bg-brand">
+              <View className="items-center justify-center rounded-pill bg-brand" style={{ width: 34, height: 34 }}>
                 <Text className="font-strong text-label text-white">?</Text>
               </View>
             )}
@@ -185,7 +193,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
                   className="h-1.5 w-1.5 rounded-pill"
                   style={{ backgroundColor: signedIn ? color.success : color.subtle }}
                 />
-                <Text className="font-sans uppercase text-paper-muted" style={{ fontSize: 9 }}>
+                <Text className="font-sans uppercase text-paper-muted" style={{ fontSize: 12 }}>
                   {signedIn ? 'online' : L('cục bộ', 'local')}
                 </Text>
               </View>
@@ -210,12 +218,12 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
                 accessibilityRole="link"
                 accessibilityLabel={L('Trang quản trị', 'Admin page')}
                 className="flex-row items-center gap-1.5 rounded-pill border px-3 py-1.5"
-                style={{ borderColor: paper.brandSoft, backgroundColor: paper.brandTint }}
+                style={{ minHeight: 44, borderColor: paper.brandSoft, backgroundColor: paper.brandTint }}
               >
                 <Icon name="lock" size={14} color={paper.brandMid} strokeWidth={2} />
                 <Text
                   className="font-heavy uppercase tracking-wide"
-                  style={{ fontSize: 11, color: paper.brandMid }}
+                  style={{ fontSize: 12, color: paper.brandMid }}
                 >
                   {L('Quản trị', 'Admin')}
                 </Text>
@@ -238,12 +246,16 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
                     borderWidth: 1.5,
                     borderColor: paper.gold,
                     paddingHorizontal: 14,
-                    paddingVertical: 7,
+                    // ≥ 44px chạm; ở màn rộng thì viên nhỏ gọn như cũ.
+                    minHeight: 44,
+                    minWidth: 44,
+                    flexShrink: 0,
+                    justifyContent: 'center',
                   }}
                 >
                   <Icon name="sparkle" size={14} color={paper.ink} strokeWidth={2} />
                   {/* Màn điện thoại chỉ giữ biểu tượng, như nút Khám phá: đủ chữ thì viên này tràn khỏi thanh và bị cắt còn "PREM". */}
-                  <Text className="hidden font-heavy uppercase tracking-wide text-paper-ink sm:flex" style={{ fontSize: 11 }}>
+                  <Text className="hidden font-heavy uppercase tracking-wide text-paper-ink sm:flex" style={{ fontSize: 12 }}>
                     Premium
                   </Text>
                 </LinearGradient>
@@ -284,9 +296,8 @@ function QuickLink({
 /**
  * Bảng "Khám phá" — toàn bộ điều hướng, mở khi cần rồi đóng.
  *
- * Dùng `Modal` của React Native chứ không phải một `View` phủ tuyệt đối: Modal
- * bắt được phím Esc và nút Back của Android, còn View phủ thì không, và một
- * bảng che kín màn không có đường thoát bằng bàn phím là chỗ dễ mắc kẹt nhất.
+ * Là bảng trượt từ đáy (`Sheet`): ngón cái với tới được, kéo tay cầm xuống /
+ * chạm nền / Esc / nút Back đều đóng. Mỗi mục cao ≥ 48px.
  */
 function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const pathname = usePathname();
@@ -297,83 +308,53 @@ function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { L, locale, en } = useL();
 
   return (
-    <Modal visible={open} transparent animationType="fade" onRequestClose={onClose}>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={L('Đóng bảng điều hướng', 'Close navigation')}
-        onPress={onClose}
-        style={{ flex: 1, backgroundColor: 'rgba(31,42,18,0.45)' }}
-      >
-        <Pressable
-          // Chặn sự kiện chạm lọt xuống lớp nền, nếu không thì bấm vào chính
-          // bảng cũng đóng bảng.
-          onPress={(event) => event.stopPropagation()}
-          className="w-full self-center px-3 pt-3"
-          style={{ maxWidth: 960 }}
-        >
-          <View className="max-h-[86vh] overflow-hidden rounded-card border border-brand-soft bg-paper">
-            <View className="flex-row items-center justify-between border-b border-brand-soft px-5 py-3.5">
-              <Text className="font-heavy text-sectionTitle text-paper-ink">{L('Khám phá', 'Explore')}</Text>
-              <Pressable
-                accessibilityRole="button"
-                accessibilityLabel={L('Đóng', 'Close')}
-                onPress={onClose}
-                className="h-8 w-8 items-center justify-center rounded-pill bg-brand-tint"
-              >
-                <Icon name="close" size={16} color={paper.body} strokeWidth={2} />
-              </Pressable>
+    <Sheet visible={open} onClose={onClose} title={L('Khám phá', 'Explore')} maxWidth={720}>
+      <View style={{ gap: 18 }}>
+        {groups.map((group) => (
+          <View key={group.key}>
+            {group.title ? (
+              <Text className="mb-2 font-strong text-label uppercase tracking-wide text-paper-muted">
+                {en && group.key === ADMIN_GROUP.key ? 'Admin' : group.title}
+              </Text>
+            ) : null}
+            <View className="flex-row flex-wrap gap-2">
+              {flattenItems(group.items).map((item) => {
+                const active = activeKey === item.key;
+                return (
+                  <Link key={item.key} href={item.href as never} asChild>
+                    <Pressable
+                      accessibilityRole="link"
+                      aria-selected={active}
+                      onPress={() => {
+                        haptic();
+                        onClose();
+                      }}
+                      className={[
+                        'flex-row items-center gap-2.5 rounded-panel border px-3.5 py-3',
+                        active ? 'border-brand bg-brand-soft' : 'border-brand-soft bg-white',
+                      ].join(' ')}
+                      style={{ flexGrow: 1, flexBasis: 150, minHeight: 48 }}
+                    >
+                      <Icon
+                        name={item.icon}
+                        size={18}
+                        color={active ? paper.brandMid : paper.body}
+                        strokeWidth={active ? 2 : 1.7}
+                      />
+                      <Text
+                        className={['min-w-0 flex-1 text-body', active ? 'font-strong text-paper-ink' : 'font-mid text-paper-body'].join(' ')}
+                        numberOfLines={2}
+                      >
+                        {navLabel(item, locale)}
+                      </Text>
+                    </Pressable>
+                  </Link>
+                );
+              })}
             </View>
-
-            <ScrollView contentContainerStyle={{ padding: 16, gap: 18 }}>
-              {groups.map((group) => (
-                <View key={group.key}>
-                  {group.title ? (
-                    <Text className="mb-2 font-strong text-label uppercase tracking-wide text-paper-muted">
-                      {en && group.key === ADMIN_GROUP.key ? 'Admin' : group.title}
-                    </Text>
-                  ) : null}
-                  <View className="flex-row flex-wrap gap-2">
-                    {flattenItems(group.items).map((item) => {
-                      const active = activeKey === item.key;
-                      return (
-                        <Link key={item.key} href={item.href as never} asChild>
-                          <Pressable
-                            accessibilityRole="link"
-                            aria-selected={active}
-                            onPress={onClose}
-                            className={[
-                              'flex-row items-center gap-2.5 rounded-panel border px-3.5 py-3',
-                              active
-                                ? 'border-brand bg-brand-soft'
-                                : 'border-brand-soft bg-white',
-                            ].join(' ')}
-                            style={{ minWidth: 168 }}
-                          >
-                            <Icon
-                              name={item.icon}
-                              size={18}
-                              color={active ? paper.brandMid : paper.body}
-                              strokeWidth={active ? 2 : 1.7}
-                            />
-                            <Text
-                              className={[
-                                'text-body',
-                                active ? 'font-strong text-paper-ink' : 'font-mid text-paper-body',
-                              ].join(' ')}
-                            >
-                              {navLabel(item, locale)}
-                            </Text>
-                          </Pressable>
-                        </Link>
-                      );
-                    })}
-                  </View>
-                </View>
-              ))}
-            </ScrollView>
           </View>
-        </Pressable>
-      </Pressable>
-    </Modal>
+        ))}
+      </View>
+    </Sheet>
   );
 }

@@ -44,6 +44,15 @@ const PET_NAME_EN: Record<MascotId, string> = { owl: 'Wise Owl', fox: 'Clever Fo
 
 const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
 
+/**
+ * Cách đáy `px` pixel, CỘNG phần thanh tab dưới đang chiếm (biến `--bb-h` do
+ * `BottomTabs` đặt; 0 ở desktop / màn không có thanh). Trượt mượt khi thanh ẩn/hiện.
+ */
+function lift(px: number): { bottom: number; transition?: string } {
+  if (Platform.OS !== 'web') return { bottom: px };
+  return { bottom: `calc(${px}px + var(--bb-h, 0px))` as unknown as number, transition: 'bottom 200ms ease' } as never;
+}
+
 export function AskBubble() {
   const { L, en } = useL();
   const [open, setOpen] = useState(false);
@@ -144,7 +153,7 @@ export function AskBubble() {
           accessibilityRole="button"
           accessibilityLabel={L(`Hỏi ${petName}`, `Ask ${petName}`)}
           onPress={() => setOpen(true)}
-          style={{ position: FIXED, right: 16, bottom: 14, zIndex: 60, alignItems: 'center' }}
+          style={{ position: FIXED, right: 16, ...lift(14), zIndex: 60, alignItems: 'center' }}
         >
           {({ hovered }: { hovered?: boolean }) => (
             <>
@@ -183,7 +192,7 @@ export function AskBubble() {
         style={{
           position: FIXED,
           right: 18,
-          bottom: 18,
+          ...lift(18),
           zIndex: 60,
           height: 52,
           width: 52,
@@ -213,10 +222,10 @@ export function AskBubble() {
         position: FIXED,
         zIndex: 60,
         right: 18,
-        bottom: 18,
+        ...lift(18),
         width: 340,
         maxWidth: '92%',
-        maxHeight: 460,
+        maxHeight: Platform.OS === 'web' ? ('min(460px, calc(100dvh - 96px))' as unknown as number) : 460,
         borderRadius: 18,
         overflow: 'hidden',
         backgroundColor: '#fff',
@@ -232,7 +241,7 @@ export function AskBubble() {
       }}
     >
       <View
-        className="flex-row items-center justify-between px-3 py-2.5"
+        className="flex-row items-center justify-between py-0.5 pl-3 pr-1"
         style={{ backgroundColor: color.primary }}
       >
         <Text className="font-strong text-body text-white">{pet ? L(`Hỏi ${petName}`, `Ask ${petName}`) : L('Hỏi nhanh', 'Quick ask')}</Text>
@@ -240,9 +249,9 @@ export function AskBubble() {
           accessibilityRole="button"
           accessibilityLabel={L('Đóng hỏi nhanh', 'Close quick ask')}
           onPress={() => setOpen(false)}
-          className="h-7 w-7 items-center justify-center rounded-pill"
+          className="h-11 w-11 items-center justify-center rounded-pill"
         >
-          <Icon name="close" size={16} color="#fff" strokeWidth={2.2} />
+          <Icon name="close" size={18} color="#fff" strokeWidth={2.2} />
         </Pressable>
       </View>
 
@@ -294,6 +303,8 @@ export function AskBubble() {
           onChangeText={setDraft}
           placeholder={L('Hỏi một câu…', 'Ask a question…')}
           returnKeyType="send"
+          enterKeyHint="send"
+          autoCapitalize="sentences"
           blurOnSubmit={false}
           onSubmitEditing={() => void send()}
           className="flex-1 rounded-panel border border-border px-3 py-2 font-sans text-body text-ink"
@@ -304,7 +315,7 @@ export function AskBubble() {
           accessibilityLabel={L('Gửi câu hỏi', 'Send question')}
           disabled={busy || draft.trim() === ''}
           onPress={() => void send()}
-          className="h-10 w-10 items-center justify-center rounded-panel"
+          className="h-11 w-11 items-center justify-center rounded-panel"
           style={{ backgroundColor: busy || draft.trim() === '' ? color.border : color.primary }}
         >
           {busy ? (

@@ -315,7 +315,7 @@ function GlossBubble({
         <Text style={{ color: '#FFFFFF', fontSize: 12.5 }} numberOfLines={3}>
           <Text style={{ fontWeight: '700', fontStyle: 'italic' }}>{word}</Text>
           {gloss ? ` — ${gloss.meaningVi}` : L(' — chưa có nghĩa', ' — no meaning yet')}
-          <Text style={{ color: '#FCD68A', fontSize: 11 }}>
+          <Text style={{ color: '#FCD68A', fontSize: 12 }}>
             {gloss?.pos ? `   ${gloss.pos}` : ''}
             {L('   · bấm để xem thêm', '   · tap for more')}
           </Text>

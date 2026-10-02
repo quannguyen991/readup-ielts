@@ -90,7 +90,7 @@ function RouteTab({ city, onGo }: { city: CityId; onGo: (id: string) => void }) 
           </Text>
         </View>
         <Bar pct={j.pct} height={10} />
-        <Text className="font-sans" style={{ fontSize: 13, color: T.muted }}>
+        <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>
           {j.stamped ? L('Đã đóng dấu hộ chiếu thành phố này.', 'Passport stamp collected for this city.') : L('Đạt 2 sao ở mọi địa điểm để đóng dấu hộ chiếu.', 'Pass every place with 2 stars to earn the passport stamp.')}
         </Text>
       </View>
@@ -104,7 +104,7 @@ function RouteTab({ city, onGo }: { city: CityId; onGo: (id: string) => void }) 
       ) : null}
       {j.next ? (
         <View style={{ gap: 8, padding: 10, borderRadius: 8, borderWidth: 2, borderColor: T.gold, backgroundColor: '#FBF1D3' }}>
-          <Text className="font-strong" style={{ fontSize: 12, color: T.goldDark, letterSpacing: 1 }}>
+          <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark, letterSpacing: 1 }}>
             {L('BƯỚC TIẾP THEO', 'NEXT STEP')}
           </Text>
           <Text className="font-strong" style={{ fontSize: 16, color: T.ink }}>
@@ -132,7 +132,7 @@ function RouteTab({ city, onGo }: { city: CityId; onGo: (id: string) => void }) 
                 {i + 1}. {bi(s.poi.name, locale)}
               </Text>
               {s.state === 'locked' && s.needs ? (
-                <Text className="font-sans" style={{ fontSize: 12, color: T.muted }}>
+                <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>
                   {L(`Sau ${s.needs.name.vi}`, `After ${s.needs.name.en}`)}
                 </Text>
               ) : null}
@@ -170,12 +170,12 @@ function MissionList({ city }: { city: CityId }) {
   };
   return (
     <>
-      <Text className="font-sans" style={{ fontSize: 13, color: T.muted }}>
+      <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>
         {L(`Vé từ nhiệm vụ: tối đa +${MISSION_CAPS.dailyTickets}/ngày và +${MISSION_CAPS.weeklyTickets}/tuần. Mỗi nhiệm vụ nhận một lần mỗi kỳ.`, `Mission tickets: up to +${MISSION_CAPS.dailyTickets} a day and +${MISSION_CAPS.weeklyTickets} a week. Each mission pays once per period.`)}
       </Text>
       {msg ? (
         <View accessibilityLiveRegion="polite" style={{ padding: 8, borderRadius: 6, backgroundColor: T.goodSoft, borderWidth: 1, borderColor: T.good }}>
-          <Text className="font-strong" style={{ fontSize: 13, color: T.good }}>
+          <Text className="font-strong" style={{ fontSize: 14, color: T.good }}>
             {msg}
           </Text>
         </View>
@@ -183,7 +183,7 @@ function MissionList({ city }: { city: CityId }) {
       {groups.map(([key, title, list]) =>
         list.length ? (
           <View key={key} style={{ gap: 8 }}>
-            <Text className="font-heavy" style={{ fontSize: 12, letterSpacing: 1.2, color: T.goldDark, textTransform: 'uppercase' }}>
+            <Text className="font-heavy" style={{ fontSize: 14, letterSpacing: 1.2, color: T.goldDark, textTransform: 'uppercase' }}>
               {title}
             </Text>
             {list.map((m) => {
@@ -194,26 +194,26 @@ function MissionList({ city }: { city: CityId }) {
                     <Text className="font-strong" style={{ flex: 1, fontSize: 14, color: T.ink }}>
                       {bi(m.title, locale)}
                     </Text>
-                    <Text className="font-strong" style={{ fontSize: 13, color: T.goldDark }}>
+                    <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark }}>
                       {m.reward.tickets ? `🎫${m.reward.tickets} ` : ''}
                       {m.reward.coins ? `●${m.reward.coins}` : ''}
                     </Text>
                   </View>
-                  <Text className="font-sans" style={{ fontSize: 12, color: T.muted }}>
+                  <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>
                     {bi(m.hint, locale)}
                   </Text>
                   <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
                     <Bar pct={(st.progress / st.goal) * 100} color={st.done ? T.good : T.gold} style={{ flex: 1 }} />
-                    <Text className="font-strong" style={{ fontSize: 12, color: T.ink }}>
+                    <Text className="font-strong" style={{ fontSize: 14, color: T.ink }}>
                       {st.progress}/{st.goal}
                     </Text>
                   </View>
                   {st.claimed ? (
-                    <Text className="font-strong" style={{ fontSize: 13, color: T.good }}>
+                    <Text className="font-strong" style={{ fontSize: 14, color: T.good }}>
                       ✓ {L('Đã nhận', 'Claimed')}
                     </Text>
                   ) : st.capped ? (
-                    <Text className="font-sans" style={{ fontSize: 12, color: T.muted }}>
+                    <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>
                       {L('Đã hết lượt nhận vé kỳ này — quay lại sau.', 'Ticket limit reached for this period — come back later.')}
                     </Text>
                   ) : (

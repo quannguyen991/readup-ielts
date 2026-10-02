@@ -255,6 +255,8 @@ export default function SignInScreen() {
                 placeholder="09xx xxx xxx"
                 placeholderTextColor={color.subtle}
                 keyboardType="phone-pad"
+                inputMode="tel"
+                enterKeyHint="send"
                 autoComplete="tel"
                 editable={available && busy === null}
                 className="mt-1.5 rounded-card border border-borderStrong bg-surface px-3 py-2.5 font-sans text-body text-ink"
@@ -288,6 +290,7 @@ export default function SignInScreen() {
                     placeholder={L('Tên hiện trên bảng xếp hạng', 'Name shown on leaderboards')}
                     placeholderTextColor={color.subtle}
                     autoComplete="name"
+                    enterKeyHint="next"
                     editable={available && busy === null}
                     className="mt-1.5 rounded-card border border-borderStrong bg-surface px-3 py-2.5 font-sans text-body text-ink"
                   />
@@ -301,7 +304,10 @@ export default function SignInScreen() {
                 placeholder={L('ban@example.com', 'you@example.com')}
                 placeholderTextColor={color.subtle}
                 keyboardType="email-address"
+                inputMode="email"
+                enterKeyHint="next"
                 autoCapitalize="none"
+                autoCorrect={false}
                 autoComplete="email"
                 editable={available && busy === null}
                 className="mt-1.5 rounded-card border border-borderStrong bg-surface px-3 py-2.5 font-sans text-body text-ink"
@@ -315,6 +321,7 @@ export default function SignInScreen() {
                   placeholder={emailMode === 'signup' ? L(`Ít nhất ${MIN_PASSWORD} ký tự`, `At least ${MIN_PASSWORD} characters`) : L('Mật khẩu của bạn', 'Your password')}
                   placeholderTextColor={color.subtle}
                   secureTextEntry={!showPassword}
+                  enterKeyHint="go"
                   autoCapitalize="none"
                   autoComplete={emailMode === 'signup' ? 'new-password' : 'current-password'}
                   editable={available && busy === null}

@@ -42,9 +42,10 @@ export function Pagination({
           aria-selected={n === page}
           onPress={() => onChange(n)}
           className={[
-            'h-9 min-w-[36px] items-center justify-center rounded-md border px-2',
+            'items-center justify-center rounded-md border px-2',
             n === page ? 'border-primary-600 bg-primary-600' : 'border-border bg-surface',
           ].join(' ')}
+          style={{ minHeight: 44, minWidth: 44 }}
         >
           <Text
             className={['font-semi text-label', n === page ? 'text-white' : 'text-muted'].join(' ')}
@@ -82,9 +83,10 @@ function PageButton({
       disabled={disabled}
       onPress={onPress}
       className={[
-        'h-9 items-center justify-center rounded-md border border-border bg-surface px-3',
+        'items-center justify-center rounded-md border border-border bg-surface px-3',
         disabled ? 'opacity-40' : '',
       ].join(' ')}
+      style={{ minHeight: 44 }}
     >
       <Text className="font-semi text-label text-muted">{label}</Text>
     </Pressable>

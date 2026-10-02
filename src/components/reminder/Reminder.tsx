@@ -94,7 +94,7 @@ export function ReminderCard() {
         {PRESETS.map((p) => {
           const on = time === p;
           return (
-            <Pressable key={p} accessibilityRole="button" aria-selected={on} onPress={() => saveTime(p)} className="rounded-pill px-3.5 py-2" style={{ backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F0EBE2' }}>
+            <Pressable key={p} accessibilityRole="button" aria-selected={on} onPress={() => saveTime(p)} className="items-center justify-center rounded-pill px-3.5 py-2" style={{ minHeight: 44, backgroundColor: on ? color.primary : '#FFFFFF', borderWidth: 1, borderColor: on ? color.primary : '#F0EBE2' }}>
               <Text className="font-semi text-label" style={{ color: on ? '#FFFFFF' : color.ink }}>
                 {p}
               </Text>
@@ -108,8 +108,10 @@ export function ReminderCard() {
           onBlur={() => draft !== time && saveTime(draft)}
           accessibilityLabel={L('Giờ nhắc khác (HH:MM)', 'Custom reminder time (HH:MM)')}
           placeholder="HH:MM"
+          inputMode="numeric"
+          enterKeyHint="done"
           className="rounded-pill border border-border px-3.5 py-2 font-sans text-label text-ink"
-          style={{ width: 90 }}
+          style={{ width: 96, minHeight: 44 }}
         />
       </View>
       <View className="mt-3 flex-row flex-wrap" style={{ gap: 8 }}>

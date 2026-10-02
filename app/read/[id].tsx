@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Alert, Platform, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import type { QuestionType } from '@/types/database';
@@ -8,7 +8,7 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { PASSAGE_CONTAINER_ID, PassageView, sentenceAround, highlightRanges, snapToWords, type ReaderTool } from '@/components/reader/PassageView';
 import { QuestionPanel, type QuestionPanelHandle } from '@/components/reader/QuestionPanel';
-import { ExamTopBar, QuestionNav, SplitPane, ToolRail } from '@/components/reader/exam/ExamChrome';
+import { ExamTopBar, FloatingTools, QuestionNav, SplitPane, ToolRail } from '@/components/reader/exam/ExamChrome';
 import { NotesPanel, SettingsPanel } from '@/components/reader/exam/ExamPanels';
 import { EXAM, PAPER_THEMES } from '@/components/reader/exam/exam-theme';
 import { useTextSelection } from '@/components/reader/useTextSelection';
@@ -32,6 +32,8 @@ import { useVocabStore } from '@/store/useVocabStore';
 import { color, type HighlightColorKey } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
 import { useL } from '@/i18n/useL';
+import { examLayout } from '@/lib/mobile/exam-layout';
+import { useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveGuard } from '@/lib/mobile/useMobileExam';
 
 /**
  * Màn luyện Reading — bố cục PHÒNG THI.
@@ -137,11 +139,10 @@ export default function ReadScreen() {
   const [evidenceFor, setEvidenceFor] = useState<string | null>(null);
 
   const [speakingParagraph, setSpeakingParagraph] = useState<number | null>(null);
-  const [secondsLeft, setSecondsLeft] = useState(20 * 60);
   const [paused, setPaused] = useState(false);
 
   // Bố cục phòng thi: màu giấy, mặt chữ, thẻ bài/câu hỏi trên màn hẹp.
-  const { width: winW } = useWindowDimensions();
+  const { width: winW, height: winH } = useWindowDimensions();
   const [paperKey, setPaperKey] = useState<string>('white');
   const [fontKey, setFontKey] = useState<string>('serif');
   const [narrowTab, setNarrowTab] = useState<'passage' | 'questions'>('passage');
@@ -157,18 +158,61 @@ export default function ReadScreen() {
   // được tính ngay trong lúc render. Mốc này chỉ đọc ở handler nên đặt muộn một
   // nhịp không ảnh hưởng gì, mà lại đúng hơn — nó là lúc bài đọc thật sự hiện ra.
   const startedAt = useRef(0);
+
+  /*
+    ĐIỆN THOẠI: chặn kéo-để-tải-lại, tự lưu nháp đáp án, hỏi lại trước khi thoát.
+    Nháp lưu 500ms sau lần đổi cuối (không ghi theo từng phím) và ghi ngay khi
+    ẩn tab / đóng trang — vuốt nhầm quay lại hay hệ điều hành dọn tab nền không
+    còn làm mất bài đang làm dở.
+  */
+  useExamWebTweaks();
+  const keyboardInset = useKeyboardInset();
+  const [done, setDone] = useState(false);
+  const draftState = useMemo(() => ({ answers, marked }), [answers, marked]);
+  const onRestoreDraft = useCallback((d: { answers: Record<string, string>; marked: Record<string, boolean> }) => {
+    setAnswers((prev) => (Object.keys(prev).length ? prev : d.answers));
+    setMarked((prev) => (Object.keys(prev).length ? prev : d.marked));
+  }, []);
+  const draft = useExamDraft('read', id, draftState, !done, onRestoreDraft);
+  const hasAnswers = useMemo(() => Object.values(answers).some((v) => v.trim() !== ''), [answers]);
+  const askLeave = useCallback(() => {
+    if (Platform.OS !== 'web' || typeof window === 'undefined') return true;
+    return window.confirm(
+      L(
+        'Thoát khỏi bài đang làm? Đáp án đã chọn vẫn được lưu nháp 12 giờ.',
+        'Leave this exercise? Your answers stay saved as a draft for 12 hours.',
+      ),
+    );
+  }, [L]);
+  useLeaveGuard(hasAnswers && !done, askLeave);
+  // Các hàm truyền xuống bài đọc phải ĐỨNG YÊN giữa các lượt render, để việc chọn
+  // một đáp án không bắt hàng trăm ô chữ của bài dựng lại (PassageView là memo).
+  const passageHandlers = useRef<{
+    word: (w: string, s: string, p: number) => void;
+    longPress: (s: string, p: number) => void;
+    phrase: (p: number, t: number, tok: string) => void;
+    range: (p: number, a: number, b: number) => void;
+  } | null>(null);
+  const onWord = useCallback((w: string, s2: string, p: number) => passageHandlers.current?.word(w, s2, p), []);
+  const onLongPress = useCallback((s2: string, p: number) => passageHandlers.current?.longPress(s2, p), []);
+  const onPhrase = useCallback((p: number, t: number, tok: string) => passageHandlers.current?.phrase(p, t, tok), []);
+  const onRange = useCallback((p: number, a: number, b: number) => passageHandlers.current?.range(p, a, b), []);
+  const onAnswerQ = useCallback((qid: string, a: string) => setAnswers((prev) => (prev[qid] === a ? prev : { ...prev, [qid]: a })), []);
+  const onToggleMarkQ = useCallback((qid: string) => setMarked((prev) => ({ ...prev, [qid]: !prev[qid] })), []);
+  const onClearEvidenceQ = useCallback(
+    (qid: string) =>
+      setEvidenceMarks((prev) => {
+        const next = { ...prev };
+        delete next[qid];
+        return next;
+      }),
+    [],
+  );
   const articleHighlights = useMemo(
     () => highlights.filter((h) => h.articleId === article?.id),
     [highlights, article?.id],
   );
   const articleNotes = useMemo(() => notes.filter((n) => n.articleId === article?.id), [notes, article?.id]);
-
-  // Đồng hồ đếm ngược, tạm dừng được.
-  useEffect(() => {
-    if (paused) return;
-    const timer = setInterval(() => setSecondsLeft((s) => Math.max(0, s - 1)), 1000);
-    return () => clearInterval(timer);
-  }, [paused]);
 
   useEffect(() => {
     startedAt.current = Date.now();
@@ -265,6 +309,63 @@ export default function ReadScreen() {
     }
     sel.removeAllRanges();
   }
+
+  const handleWordPress = (word: string, sentence: string, paragraphIndex: number) => {
+    setSheet({ word, sentence, paragraphIndex, mode: 'word' });
+  };
+
+  const handlePhraseToken = (paragraphIndex: number, tokenIndex: number, token: string) => {
+    if (!article) return;
+    if (!phraseAnchor || phraseAnchor.paragraphIndex !== paragraphIndex) {
+      setPhraseAnchor({ paragraphIndex, tokenIndex, word: token });
+      return;
+    }
+
+    const paragraph = article.paragraphs[paragraphIndex] ?? '';
+    const start = paragraph.indexOf(phraseAnchor.word);
+    const endWordPos = paragraph.indexOf(token, start);
+    const phrase =
+      start >= 0 && endWordPos >= 0
+        ? paragraph.slice(start, endWordPos + token.length)
+        : `${phraseAnchor.word} ${token}`;
+
+    // Đang khoanh bằng chứng thì ghi vào đó, KHÔNG mở thẻ nghĩa: người học đang
+    // trả lời câu hỏi, mở thẻ nghĩa lúc này là cắt ngang việc họ đang làm.
+    if (evidenceFor) {
+      const startOffset = start >= 0 ? start : 0;
+      setEvidenceMarks((prev) => ({
+        ...prev,
+        [evidenceFor]: {
+          paragraphIndex,
+          phrase,
+          startOffset,
+          endOffset: startOffset + phrase.length,
+        },
+      }));
+      setEvidenceFor(null);
+      setPhraseAnchor(null);
+      setPhraseMode(false);
+      return;
+    }
+
+    setSheet({
+      word: phrase,
+      sentence: sentenceAround(paragraph, start >= 0 ? start : 0),
+      paragraphIndex,
+      mode: 'phrase',
+    });
+    setPhraseAnchor(null);
+    setPhraseMode(false);
+  };
+
+  useEffect(() => {
+    passageHandlers.current = {
+      word: handleWordPress,
+      longPress: (sentence, paragraphIndex) => setSheet({ word: sentence, sentence, paragraphIndex, mode: 'sentence' }),
+      phrase: handlePhraseToken,
+      range: applyHighlight,
+    };
+  });
 
   /**
    * Bôi đen bất kỳ chỗ nào trong bài → mở luôn thẻ nghĩa cho đúng cụm đó, kèm
@@ -384,7 +485,7 @@ export default function ReadScreen() {
   }
 
   const questions = questionSet?.questions ?? [];
-  const answeredCount = Object.values(answers).filter(Boolean).length;
+  const answeredCount = questions.filter((q) => Boolean(answers[q.id])).length;
 
   const speakParagraph = (index: number) => {
     const paragraph = article.paragraphs[index];
@@ -410,55 +511,10 @@ export default function ReadScreen() {
     }
   };
 
-  const handleWordPress = (word: string, sentence: string, paragraphIndex: number) => {
-    setSheet({ word, sentence, paragraphIndex, mode: 'word' });
-  };
-
-  const handlePhraseToken = (paragraphIndex: number, tokenIndex: number, token: string) => {
-    if (!phraseAnchor || phraseAnchor.paragraphIndex !== paragraphIndex) {
-      setPhraseAnchor({ paragraphIndex, tokenIndex, word: token });
-      return;
-    }
-
-    const paragraph = article.paragraphs[paragraphIndex] ?? '';
-    const start = paragraph.indexOf(phraseAnchor.word);
-    const endWordPos = paragraph.indexOf(token, start);
-    const phrase =
-      start >= 0 && endWordPos >= 0
-        ? paragraph.slice(start, endWordPos + token.length)
-        : `${phraseAnchor.word} ${token}`;
-
-    // Đang khoanh bằng chứng thì ghi vào đó, KHÔNG mở thẻ nghĩa: người học đang
-    // trả lời câu hỏi, mở thẻ nghĩa lúc này là cắt ngang việc họ đang làm.
-    if (evidenceFor) {
-      const startOffset = start >= 0 ? start : 0;
-      setEvidenceMarks((prev) => ({
-        ...prev,
-        [evidenceFor]: {
-          paragraphIndex,
-          phrase,
-          startOffset,
-          endOffset: startOffset + phrase.length,
-        },
-      }));
-      setEvidenceFor(null);
-      setPhraseAnchor(null);
-      setPhraseMode(false);
-      return;
-    }
-
-    setSheet({
-      word: phrase,
-      sentence: sentenceAround(paragraph, start >= 0 ? start : 0),
-      paragraphIndex,
-      mode: 'phrase',
-    });
-    setPhraseAnchor(null);
-    setPhraseMode(false);
-  };
-
   const submit = () => {
     setSubmitting(true);
+    setDone(true);
+    draft.clear();
 
     // Chấm cả bộ một lượt: dạng gõ chữ theo bộ chuẩn hoá của Listening + giới hạn số
     // từ, nhóm "Choose TWO" theo tập đáp án.
@@ -558,10 +614,13 @@ export default function ReadScreen() {
     router.push(`/review/${sessionId}` as never);
   };
 
-  const wide = winW >= 1000;
+  const lay = examLayout(winW, winH);
+  const split = lay.split;
+  const wide = lay.toolRail;
+  const phone = winW < 700;
   const theme = PAPER_THEMES.find((t) => t.key === paperKey) ?? PAPER_THEMES[0]!;
   const passageFont = EXAM_FONTS.find((f) => f.key === fontKey) ?? EXAM_FONTS[0]!;
-  const pad = wide ? 28 : 16;
+  const pad = wide ? 28 : phone ? 16 : 20;
   const allAnswered = questions.length > 0 && answeredCount >= questions.length;
 
   const toggleFullscreen = () => {
@@ -590,14 +649,14 @@ export default function ReadScreen() {
 
   const jumpTo = (n: number) => {
     setActiveQ(n);
-    if (!wide) setNarrowTab('questions');
+    if (!split) setNarrowTab('questions');
     // Màn hẹp vừa đổi thẻ nên khung câu hỏi chưa kịp gắn; chờ một nhịp rồi cuộn.
     setTimeout(
       () => {
         const y = panelRef.current?.positionOf(n);
         if (y !== null && y !== undefined) qScroll.current?.scrollTo({ y: Math.max(0, y + pad - 12), animated: true });
       },
-      wide ? 0 : 60,
+      split ? 0 : 60,
     );
   };
 
@@ -608,7 +667,7 @@ export default function ReadScreen() {
 
   const toolRail = (
     <ToolRail
-      row={!wide}
+      row={false}
       tool={tool}
       notesOpen={notesOpen}
       onPick={pickTool}
@@ -626,9 +685,13 @@ export default function ReadScreen() {
   );
 
   const passagePane = (
-    <View style={{ flex: 1, flexDirection: wide ? 'row' : 'column', backgroundColor: theme.bg }}>
-      {toolRail}
-      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: pad, paddingTop: wide ? 22 : 10, paddingBottom: 48, alignItems: 'center' }}>
+    <View style={{ flex: 1, flexDirection: 'row', backgroundColor: theme.bg }}>
+      {wide ? toolRail : null}
+      <ScrollView
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ padding: pad, paddingTop: wide ? 22 : 14, paddingBottom: wide ? 48 : 150, alignItems: 'center' }}
+      >
         <View style={{ width: '100%', maxWidth: 720 }}>
           <Text
             style={{
@@ -644,14 +707,14 @@ export default function ReadScreen() {
           </Text>
 
           {tool !== 'read' ? (
-            <Text style={{ marginTop: 8, textAlign: 'center', fontSize: 12.5, color: theme.muted }}>
+            <Text style={{ marginTop: 8, textAlign: 'center', fontSize: 14, color: theme.muted }}>
               {tool === 'highlight'
                 ? L('Bôi chữ hoặc chạm một câu để tô · chạm vào vệt tô để xoá.', 'Select text or tap a sentence to highlight · tap a highlight to remove it.')
                 : L('Chạm vào từ để xem nghĩa · giữ lâu để giải thích cả câu.', 'Tap a word for its meaning · long-press to explain a sentence.')}
             </Text>
           ) : null}
           {bilingual.error ? (
-            <Text style={{ marginTop: 8, textAlign: 'center', fontSize: 12.5, color: color.danger }}>{bilingual.error}</Text>
+            <Text style={{ marginTop: 8, textAlign: 'center', fontSize: 14, color: color.danger }}>{bilingual.error}</Text>
           ) : null}
 
           <View style={{ marginTop: 18 }}>
@@ -663,19 +726,17 @@ export default function ReadScreen() {
               textColor={theme.body}
               highlights={articleHighlights}
               statusOf={statusOf}
-              onWordPress={handleWordPress}
-              onSentenceLongPress={(sentence, paragraphIndex) =>
-                setSheet({ word: sentence, sentence, paragraphIndex, mode: 'sentence' })
-              }
+              onWordPress={onWord}
+              onSentenceLongPress={onLongPress}
               phraseMode={phraseMode}
               phraseAnchor={phraseAnchor}
-              onPhraseToken={handlePhraseToken}
+              onPhraseToken={onPhrase}
               speakingParagraph={speakingParagraph}
               tool={tool}
-              onHighlightRange={applyHighlight}
+              onHighlightRange={onRange}
               onHighlightPress={removeHighlight}
               letters={article.exam !== 'sat' && article.paragraphs.length > 2}
-              baseSize={wide ? 16 : 15.5}
+              baseSize={wide ? 16 : 16}
             />
           </View>
 
@@ -686,12 +747,29 @@ export default function ReadScreen() {
           ) : null}
         </View>
       </ScrollView>
+      {wide ? null : (
+        <FloatingTools
+          tool={tool}
+          notesOpen={notesOpen}
+          onPick={pickTool}
+          onNotes={toggleNotes}
+          highlightColor={highlightColor}
+          onHighlightColor={setHighlightColor}
+          hasHighlights={articleHighlights.length > 0}
+          onClearHighlights={() => clearHighlights(article.id)}
+          phraseMode={phraseMode}
+          onTogglePhrase={() => {
+            setPhraseMode((p) => !p);
+            setPhraseAnchor(null);
+          }}
+        />
+      )}
     </View>
   );
 
   const questionsPane = (
     <View style={{ flex: 1, backgroundColor: EXAM.white }}>
-      <ScrollView ref={qScroll} style={{ flex: 1 }} contentContainerStyle={{ padding: pad, paddingTop: wide ? 24 : 16, paddingBottom: 64 }}>
+      <ScrollView ref={qScroll} style={{ flex: 1 }} contentContainerStyle={{ padding: pad, paddingTop: wide ? 24 : 16, paddingBottom: 64 + keyboardInset }} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
         {loadingQuestions && questions.length === 0 ? (
           <View className="items-center py-10">
             <ActivityIndicator color={EXAM.accent} />
@@ -706,23 +784,17 @@ export default function ReadScreen() {
             marked={marked}
             activeNumber={activeQ}
             onActivate={setActiveQ}
-            onAnswer={(questionId, answer) => setAnswers((prev) => ({ ...prev, [questionId]: answer }))}
-            onToggleMark={(questionId) => setMarked((prev) => ({ ...prev, [questionId]: !prev[questionId] }))}
+            onAnswer={onAnswerQ}
+            onToggleMark={onToggleMarkQ}
             evidenceMarks={evidenceMarks}
             evidenceFor={evidenceFor}
             onStartEvidence={(questionId) => {
               setEvidenceFor(questionId);
               setPhraseAnchor(null);
               setPhraseMode(true);
-              if (!wide) setNarrowTab('passage');
+              if (!split) setNarrowTab('passage');
             }}
-            onClearEvidence={(questionId) =>
-              setEvidenceMarks((prev) => {
-                const next = { ...prev };
-                delete next[questionId];
-                return next;
-              })
-            }
+            onClearEvidence={onClearEvidenceQ}
           />
         )}
 
@@ -745,8 +817,8 @@ export default function ReadScreen() {
   return (
     <View style={{ flex: 1, backgroundColor: EXAM.page }}>
       <ExamTopBar
-        narrow={!wide}
-        timeLabel={formatTime(secondsLeft)}
+        narrow={phone}
+        compact={lay.compactHeight}
         paused={paused}
         onTogglePause={() => setPaused((p) => !p)}
         onExit={() => router.back()}
@@ -761,7 +833,7 @@ export default function ReadScreen() {
       />
 
       <View style={{ flex: 1, minHeight: 0 }}>
-        {wide ? (
+        {split ? (
           <SplitPane left={passagePane} right={questionsPane} />
         ) : (
           <CrossFade swapKey={`tab-${narrowTab}`} style={{ flex: 1 }}>
@@ -777,7 +849,8 @@ export default function ReadScreen() {
         onFinish={finish}
         allAnswered={allAnswered}
         submitting={submitting}
-        narrow={!wide}
+        narrow={!split}
+        compact={lay.compactHeight}
         tab={narrowTab}
         onTab={setNarrowTab}
       />
@@ -798,7 +871,7 @@ export default function ReadScreen() {
           fonts={EXAM_FONTS}
           fontKey={fontKey}
           onFont={setFontKey}
-          fontPx={Math.round(15 * fontScale)}
+          fontPx={Math.round(16 * fontScale)}
           onFontSize={(d) => setFontScale(fontScale + d)}
           bilingual={{ on: bilingual.on, loading: bilingual.loading, toggle: () => void bilingual.toggle() }}
           speaking={speakingParagraph !== null}
@@ -831,12 +904,6 @@ function selectionMode(selected: string): WordSheetTarget['mode'] {
   // Có dấu kết câu ở giữa, hoặc quá dài để còn là một collocation.
   if (words > 8 || /[.!?]/.test(selected.slice(0, -1))) return 'sentence';
   return 'phrase';
-}
-
-function formatTime(totalSeconds: number): string {
-  const minutes = Math.floor(totalSeconds / 60);
-  const seconds = totalSeconds % 60;
-  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
 /* ====================================================================== */

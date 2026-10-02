@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { Text, View } from 'react-native';
 
 import { hasActiveSelection } from './useTextSelection';
@@ -69,7 +69,7 @@ type Token = { text: string; isWord: boolean; start: number; end: number };
  */
 export const PASSAGE_CONTAINER_ID = 'passage-body';
 
-export function PassageView({
+export const PassageView = memo(function PassageView({
   paragraphs,
   fontScale,
   highlights,
@@ -117,7 +117,7 @@ export function PassageView({
       ))}
     </View>
   );
-}
+});
 
 function Paragraph({
   index,

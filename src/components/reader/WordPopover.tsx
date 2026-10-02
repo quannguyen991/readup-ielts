@@ -159,11 +159,11 @@ export function WordPopover({
       >
         {/* ------------------------------------------------ hàng đầu */}
         <View className="flex-row items-center justify-between">
-          <Text style={{ color: LIME, fontSize: 11, fontFamily: readingFont.mono, letterSpacing: 0.5 }}>
+          <Text style={{ color: LIME, fontSize: 12, fontFamily: readingFont.mono, letterSpacing: 0.5 }}>
             EN{rich?.ipa ? `  ${rich.ipa}` : ''}
           </Text>
           <View className="flex-row items-center gap-3">
-            <Text style={{ color: LIME, fontSize: 11, fontFamily: readingFont.mono }}>VI</Text>
+            <Text style={{ color: LIME, fontSize: 12, fontFamily: readingFont.mono }}>VI</Text>
             <Pressable
               accessibilityRole="button"
               accessibilityLabel={L('Đóng', 'Close')}
@@ -206,7 +206,7 @@ export function WordPopover({
         <View className="mt-3 rounded-panel p-3" style={{ backgroundColor: 'rgba(0,0,0,0.25)' }}>
           {pos ? (
             <View className="self-start rounded-md px-2 py-0.5" style={{ backgroundColor: 'rgba(251,191,36,0.16)' }}>
-              <Text className="font-heavy uppercase" style={{ color: LIME, fontSize: 10, letterSpacing: 0.8 }}>
+              <Text className="font-heavy uppercase" style={{ color: LIME, fontSize: 12, letterSpacing: 0.8 }}>
                 {posLabel(pos)}
               </Text>
             </View>

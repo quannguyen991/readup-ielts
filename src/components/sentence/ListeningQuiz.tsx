@@ -345,7 +345,7 @@ function QuizItem({
         </View>
         <View className="min-w-0 flex-1">
           {question.instruction ? (
-            <Text className="mb-1 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+            <Text className="mb-1 font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
               {question.instruction}
             </Text>
           ) : null}

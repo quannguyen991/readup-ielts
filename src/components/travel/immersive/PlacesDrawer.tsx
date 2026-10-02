@@ -69,14 +69,14 @@ export function PlacesDrawer({
                   {bi(r.poi.name, locale)}
                 </Text>
                 {r.recommended ? (
-                  <Text className="font-strong" style={{ fontSize: 12, color: T.goldDark }}>
+                  <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark }}>
                     {L('Gợi ý', 'Next')}
                   </Text>
                 ) : null}
               </View>
               {!act ? <StarsRow n={r.stars} size={15} /> : null}
               {!r.unlocked && r.needs ? (
-                <Text className="font-sans" style={{ fontSize: 13, color: T.muted }}>
+                <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>
                   {L(`Cần đạt ${r.needs.name.vi} trước`, `Pass ${r.needs.name.en} first`)}
                 </Text>
               ) : null}

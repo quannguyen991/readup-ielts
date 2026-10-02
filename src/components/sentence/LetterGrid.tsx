@@ -126,12 +126,12 @@ export function LetterGrid({
       </View>
 
       <View className="mt-3 flex-row items-center justify-between gap-3">
-        <Text className="flex-1 font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+        <Text className="flex-1 font-sans uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
           {hint}
         </Text>
         <Pressable accessibilityRole="button" onPress={onClear} className="flex-row items-center gap-1.5 py-1">
           <Icon name="refresh" size={13} color={paper.muted} strokeWidth={2} />
-          <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 9 }}>
+          <Text className="font-semi uppercase tracking-wide text-paper-muted" style={{ fontSize: 12 }}>
             {L('Xoá hết', 'Clear all')}
           </Text>
         </Pressable>

@@ -124,7 +124,7 @@ export function TaskShell({
               </View>
               <Text
                 className="font-semi uppercase tracking-wide"
-                style={{ color: subColor, fontSize: 11 }}
+                style={{ color: subColor, fontSize: 12 }}
               >
                 {backLabel}
               </Text>
@@ -147,7 +147,7 @@ export function TaskShell({
               {subtitle ? (
                 <Text
                   className="mt-0.5 font-semi uppercase tracking-wide"
-                  style={{ color: subColor, fontSize: 11 }}
+                  style={{ color: subColor, fontSize: 12 }}
                 >
                   {subtitle}
                 </Text>

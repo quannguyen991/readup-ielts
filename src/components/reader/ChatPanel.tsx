@@ -114,7 +114,7 @@ export function ChatPanel({
     <Modal visible transparent animationType="slide" onRequestClose={onClose}>
       <Pressable className="flex-1 bg-black/30" onPress={onClose} />
 
-      <View className="h-[75%] rounded-t-[20px] border-t border-border bg-surface">
+      <View className="rounded-t-[20px] border-t border-border bg-surface" style={{ height: '75%', maxHeight: '100dvh' as unknown as number }}>
         <View className="flex-row items-center justify-between border-b border-border px-4 py-3">
           <View className="flex-row items-center gap-2">
             <Icon name="chat" size={18} color={color.primary} />
@@ -177,7 +177,7 @@ export function ChatPanel({
           ) : null}
         </ScrollView>
 
-        <View className="border-t border-border p-3">
+        <View className="border-t border-border p-3" style={{ paddingBottom: 'calc(12px + env(safe-area-inset-bottom, 0px))' as unknown as number }}>
           {input.trim().length > 12 ? (
             <Pressable
               onPress={() => savePrompt(input.slice(0, 40), input)}
@@ -198,6 +198,8 @@ export function ChatPanel({
               placeholderTextColor={color.subtle}
               className="h-11 flex-1 rounded-panel border border-border bg-surfaceAlt px-3 font-sans text-body text-ink"
               style={{ outlineStyle: 'none' } as never}
+              returnKeyType="send"
+              enterKeyHint="send"
               onSubmitEditing={() => void send(input)}
             />
             <Button

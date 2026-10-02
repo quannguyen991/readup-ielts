@@ -11,8 +11,9 @@ import { BRAND } from './Logo';
 const CSS_ID = 'band9-gold-highlight';
 const CSS = `
 .b9-gold{position:relative;overflow:hidden;background-image:linear-gradient(100deg,#F4E4B8 0%,#DDBE7C 28%,#B8955A 52%,#D9BA78 74%,#F1DDAA 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(120,88,36,.35),0 8px 22px -10px rgba(143,110,54,.55)}
-.b9-gold::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-40%;width:30%;transform:skewX(-20deg);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));animation:b9-shine 5.5s ease-in-out infinite}
-@keyframes b9-shine{0%,55%{left:-40%}85%,100%{left:120%}}
+.b9-gold::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-40%;width:30%;transform:translateX(0) skewX(-20deg);will-change:transform;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.55),rgba(255,255,255,0));animation:b9-shine 5.5s ease-in-out infinite}
+@keyframes b9-shine{0%,55%{transform:translateX(0) skewX(-20deg)}85%,100%{transform:translateX(533%) skewX(-20deg)}}
+@media (max-width:767px){.b9-gold::after{animation:none;display:none}}
 @media (prefers-reduced-motion:reduce){.b9-gold::after{animation:none;display:none}}
 `;
 

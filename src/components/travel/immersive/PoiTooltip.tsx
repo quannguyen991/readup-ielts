@@ -37,25 +37,25 @@ export function PoiTooltip({ poi, at, locked, needs, stars }: { poi: PoiContent;
         {locked ? '🔒' : (KIND_GLYPH[poi.kind] ?? '📍')} {bi(poi.name, locale)}
       </Text>
       {poi.action ? (
-        <Text className="font-sans" style={{ fontSize: 13, color: HUD.dim }}>
+        <Text className="font-sans" style={{ fontSize: 14, color: HUD.dim }}>
           {poi.action === 'customs' ? L('Đổi vé, ôn từ, kiểm tra hải quan.', 'Tickets, word review and customs checks.') : L('Ra bản đồ thế giới để bay.', 'Open the world map to fly.')}
         </Text>
       ) : (
         <>
           {labels.length ? (
-            <Text className="font-sans" style={{ fontSize: 13, color: HUD.dim }}>
+            <Text className="font-sans" style={{ fontSize: 14, color: HUD.dim }}>
               {L('Học: ', 'Learn: ')}
               {labels.join(' · ')}
             </Text>
           ) : null}
-          <Text className="font-strong" style={{ fontSize: 13, color: HUD.gold }}>
+          <Text className="font-strong" style={{ fontSize: 14, color: HUD.gold }}>
             {'★'.repeat(stars)}
             {'☆'.repeat(3 - stars)}  ·  ●{poi.reward.coins}
             {sv ? `  ·  ${sv.glyph} ${bi(sv.name, locale)}` : ''}
           </Text>
         </>
       )}
-      <Text className="font-sans" style={{ fontSize: 12, color: locked ? '#F2A99E' : HUD.dim }}>
+      <Text className="font-sans" style={{ fontSize: 14, color: locked ? '#F2A99E' : HUD.dim }}>
         {locked ? (needs ? L(`Khoá — cần đạt ${needs.name.vi} (2 sao) trước`, `Locked — pass ${needs.name.en} (2 stars) first`) : L('Đang khoá', 'Locked')) : L('Bấm để đi tới', 'Click to walk there')}
       </Text>
     </View>

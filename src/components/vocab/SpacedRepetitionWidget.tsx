@@ -115,7 +115,7 @@ export function SpacedRepetitionWidget() {
               {/* Con số trên đỉnh cột */}
               <Text
                 style={{
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: '600',
                   color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                   marginBottom: 4,
@@ -138,7 +138,7 @@ export function SpacedRepetitionWidget() {
               {/* Nhãn thứ (CN, Th2, ...) */}
               <Text
                 style={{
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: isToday ? '700' : '500',
                   color: isToday ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)',
                   marginTop: 6,

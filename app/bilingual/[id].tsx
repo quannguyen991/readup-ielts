@@ -614,7 +614,7 @@ function Sheet({
           className="absolute right-7 top-6 z-10 rounded-pill px-2.5 py-0.5"
           style={{ backgroundColor: theme.tint, borderWidth: 1, borderColor: theme.rule }}
         >
-          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 11, color: theme.muted }}>
+          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 12, color: theme.muted }}>
             {badge}
           </Text>
         </View>
@@ -1096,7 +1096,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                   {v.word}
                 </Text>
                 <Text style={{ fontFamily: readingFont.mono, fontSize: 12, color: theme.muted }}>{v.ipa}</Text>
-                <Text style={{ fontSize: 11, fontWeight: '700', color: theme.accent }}>{v.pos}</Text>
+                <Text style={{ fontSize: 12, fontWeight: '700', color: theme.accent }}>{v.pos}</Text>
                 <View className="flex-1" />
                 <Pressable
                   accessibilityRole="button"

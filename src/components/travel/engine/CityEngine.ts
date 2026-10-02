@@ -26,7 +26,8 @@ import { Particles, PK } from './Particles';
 import { getPoiContent } from '@/data/travel/pois';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { CHATTER } from './dialogue';
-import { Camera, computeImageView, computeView, pointerToWorld, viewForK, zoomBounds, type View } from './view';
+import { Camera, clientToWorld, computeImageView, computeView, viewForK, zoomBounds, type View } from './view';
+import { frameInterval, type StickDir } from '../mobile';
 
 export type EngineCallbacks = {
   onEnterPoi(id: string): void;
@@ -101,6 +102,10 @@ export type EngineStats = { fps: number; frameMs: number; particles: number; dra
 
 const PANEL_W = 418;
 const PANEL_H = 235;
+
+const prevent = (e: Event) => {
+  if (e.cancelable) e.preventDefault();
+};
 
 const KEYMAP: Record<string, Dir> = {
   ArrowUp: 'up',
@@ -194,11 +199,18 @@ export class CityEngine {
   private pendingEnter: string | null = null;
   private enterLock: string | null = null;
   private keys: Dir[] = [];
+  /** Hướng từ cần điều khiển ảo (cùng ngữ nghĩa với phím; phím vật lý được ưu tiên). */
+  private stick: Dir[] = [];
+  private lastActiveAt = 0;
+  private lastPlayerCb = { x: NaN, y: NaN };
+  private rectW = 0;
+  private rectH = 0;
   private focused = false;
   private hovered = false;
   private downAt: { x: number; y: number; t: number } | null = null;
 
   private raf = 0;
+  private gate = { hidden: false, offscreen: false, now: 0, lastActiveAt: 0, busy: false, reducedMotion: false, adaptiveInterval: 0 };
   private running = false;
   private visible = true;
   private lastFrame = 0;
@@ -227,7 +239,11 @@ export class CityEngine {
     this.dctx = canvas.getContext('2d', { alpha: false })!;
     this.dctx.imageSmoothingEnabled = false;
     canvas.style.imageRendering = 'pixelated';
-    canvas.style.touchAction = 'pan-y';
+    // Toàn màn hình: không để trình duyệt cuộn / phóng / kéo-làm-mới trên canvas.
+    canvas.style.touchAction = 'none';
+    canvas.style.setProperty('-webkit-touch-callout', 'none');
+    canvas.style.setProperty('-webkit-tap-highlight-color', 'transparent');
+    canvas.style.userSelect = 'none';
     canvas.style.outline = 'none';
     canvas.style.display = 'block';
     canvas.tabIndex = 0;
@@ -319,6 +335,7 @@ export class CityEngine {
   }
 
   setState(state: TravelState) {
+    this.wake();
     const prev = this.state;
     this.state = state;
     if (prev && state.coins > prev.coins) this.coinBurst();
@@ -331,11 +348,13 @@ export class CityEngine {
   }
 
   setHighlights(h: PoiHighlights) {
+    this.wake();
     this.hl = h;
   }
 
   /** Tự đi tới cửa một địa điểm (không vào). Trả về true nếu tìm được đường. */
   walkToPoi(id: string): boolean {
+    this.wake();
     if (this.interior) return false;
     const poi = this.map.pois.find((q) => q.id === id);
     if (!poi) return false;
@@ -355,6 +374,7 @@ export class CityEngine {
   }
 
   setOptions(o: Partial<EngineOptions>) {
+    this.wake();
     this.opts = { ...this.opts, ...o };
     if ('hour' in o || 'weather' in o) this.tickClock(true);
     if (o.reducedMotion) this.particles.clear();
@@ -383,6 +403,7 @@ export class CityEngine {
 
   /** Đặt mức phóng (bậc nguyên so với mức gốc); lưu theo phiên cho từng thành phố. */
   setZoom(z: number) {
+    this.wake();
     if (this.interior) return;
     const b = zoomBounds(this.baseK);
     const nz = Math.max(b.min, Math.min(b.max, Math.round(z)));
@@ -401,6 +422,7 @@ export class CityEngine {
   resize(cssW: number, cssH: number, dpr: number) {
     this.cssW = cssW;
     this.cssH = cssH;
+    this.wake();
     (this.view as View).dpr = dpr;
     this.recomputeView();
     this.cam.snapTo(this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
@@ -412,15 +434,25 @@ export class CityEngine {
     if (this.running) return;
     this.running = true;
     this.lastFrame = performance.now();
+    this.lastActiveAt = this.lastFrame;
     const loop = (now: number) => {
       if (!this.running) return;
       this.raf = requestAnimationFrame(loop);
-      if (document.hidden || !this.visible) {
+      const gate = this.gate;
+      gate.hidden = document.hidden;
+      gate.offscreen = !this.visible;
+      gate.now = now;
+      gate.lastActiveAt = this.lastActiveAt;
+      gate.busy = this.isBusy();
+      gate.reducedMotion = this.opts.reducedMotion;
+      gate.adaptiveInterval = this.minInterval;
+      const wait = frameInterval(gate);
+      if (wait === Infinity) {
         this.lastFrame = now;
         return;
       }
       const elapsed = now - this.lastFrame;
-      if (elapsed < this.minInterval - 1) return;
+      if (elapsed < wait - 1) return;
       const dt = Math.min(0.1, elapsed / 1000);
       this.lastFrame = now;
       const t0 = performance.now();
@@ -444,6 +476,29 @@ export class CityEngine {
   stop() {
     this.running = false;
     cancelAnimationFrame(this.raf);
+  }
+
+  /** Có input / thay đổi từ ngoài → thoát chế độ rảnh (vẽ lại ở tốc độ đầy đủ). */
+  wake() {
+    this.lastActiveAt = performance.now();
+  }
+
+  /** Đang có thứ người chơi điều khiển chuyển động: đi, giữ phím / cần, chuyển cảnh, hội thoại. */
+  private isBusy(): boolean {
+    return !!this.player && (this.player.path.length > 0 || this.keys.length > 0 || this.stick.length > 0 || this.fade.a > 0 || this.fade.target !== 0 || !!this.bubble || !!this.toast || this.pendingEnter !== null);
+  }
+
+  /** Cần điều khiển ảo: tập hướng đang giữ (rỗng = thả). Sao chép vào bộ đệm riêng nên truyền mảng tái dùng được. */
+  setStick(dirs: readonly StickDir[]) {
+    this.stick.length = 0;
+    for (const d of dirs) this.stick.push(d);
+    if (dirs.length) this.wake();
+  }
+
+  /** Nút "tương tác" (như phím E): nói chuyện / vào địa điểm gần nhất. */
+  interactNow() {
+    this.wake();
+    this.interact();
   }
 
   dispose() {
@@ -1108,7 +1163,14 @@ export class CityEngine {
     this.playerCbT -= dt;
     if (this.playerCbT <= 0 && this.cbs.onPlayer && !this.interior) {
       this.playerCbT = 0.2;
-      this.cbs.onPlayer({ x: this.player.x, y: this.player.y });
+      // Chỉ báo lên giao diện khi vị trí đổi ≥ 1 điểm: đứng yên thì không kéo React dựng lại.
+      const px = Math.round(this.player.x);
+      const py = Math.round(this.player.y);
+      if (px !== this.lastPlayerCb.x || py !== this.lastPlayerCb.y) {
+        this.lastPlayerCb.x = px;
+        this.lastPlayerCb.y = py;
+        this.cbs.onPlayer({ x: px, y: py });
+      }
     }
     this.cam.update(dt, this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
     if (this.enterLock) {
@@ -1143,7 +1205,8 @@ export class CityEngine {
 
   private updatePlayer(dt: number) {
     const p = this.player;
-    const held = this.keys.length ? this.keys[this.keys.length - 1]! : null;
+    const keys = this.keys.length ? this.keys : this.stick;
+    const held = keys.length ? keys[keys.length - 1]! : null;
     if (this.isImg) {
       // Ảnh: đi mượt theo phím; chạm thì theo đường đã dựng.
       if (held) {
@@ -1151,7 +1214,7 @@ export class CityEngine {
         this.pendingEnter = null;
         let dx = 0;
         let dy = 0;
-        for (const k of this.keys) {
+        for (const k of keys) {
           dx += DVEC[k][0];
           dy += DVEC[k][1];
         }
@@ -2208,12 +2271,33 @@ export class CityEngine {
       cv.addEventListener(t, f as EventListener);
       this.cleanup.push(() => cv.removeEventListener(t, f as EventListener));
     };
-    const rect = () => cv.getBoundingClientRect();
+    const rect = () => {
+      const r = cv.getBoundingClientRect();
+      this.rectW = r.width;
+      this.rectH = r.height;
+      return r;
+    };
     on('pointerdown', (e) => {
+      this.wake();
       cv.focus({ preventScroll: true });
       this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
-      this.downAt = { x: e.clientX, y: e.clientY, t: performance.now() };
+      rect();
+      // Hai ngón (định phóng / xoay): không coi là chạm để đi.
+      this.downAt = this.pointers.size > 1 ? null : { x: e.clientX, y: e.clientY, t: performance.now() };
     });
+    // Safari: chặn cử chỉ phóng bằng hai ngón trên canvas.
+    for (const g of ['gesturestart', 'gesturechange', 'gestureend', 'contextmenu']) {
+      cv.addEventListener(g, prevent as EventListener, { passive: false });
+      this.cleanup.push(() => cv.removeEventListener(g, prevent as EventListener));
+    }
+    const onVis = () => {
+      if (!document.hidden) {
+        this.lastFrame = performance.now();
+        this.wake();
+      }
+    };
+    document.addEventListener('visibilitychange', onVis);
+    this.cleanup.push(() => document.removeEventListener('visibilitychange', onVis));
     on('pointerup', (e) => {
       this.pointers.delete(e.pointerId);
       const d = this.downAt;
@@ -2228,6 +2312,7 @@ export class CityEngine {
       this.downAt = null;
     });
     on('pointermove', (e) => {
+      if (e.pointerType !== 'touch') this.wake();
       if (this.pointers.has(e.pointerId)) this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (e.pointerType === 'touch') return;
       const r = rect();
@@ -2254,6 +2339,7 @@ export class CityEngine {
     });
     const kd = (e: KeyboardEvent) => {
       if (!this.focused && !this.hovered) return;
+      this.wake();
       const t = e.target as HTMLElement | null;
       if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)) return;
       if (e.ctrlKey || e.metaKey || e.altKey) return;
@@ -2292,7 +2378,7 @@ export class CityEngine {
    */
   private hit(cssX: number, cssY: number): { poi?: Poi; npc: number } {
     const v = this.view;
-    const w = pointerToWorld(cssX, cssY, v, this.cam.ix, this.cam.iy);
+    const w = this.toWorld(cssX, cssY);
     const slop = 22 / v.cssPerPx;
     const npcAt = (s: number): number => {
       let npc = -1;
@@ -2351,6 +2437,12 @@ export class CityEngine {
     return { poi: p, npc: -1 };
   }
 
+  /** Toạ độ CSS tương đối canvas → điểm nguồn; chia theo tỉ lệ thực bộ đệm/khung hiển thị (kể cả dpr bị kẹp, letterbox). */
+  private toWorld(cssX: number, cssY: number): { x: number; y: number } {
+    const r = this.rectW > 0 && this.rectH > 0 ? { left: 0, top: 0, width: this.rectW, height: this.rectH } : { left: 0, top: 0, width: this.cssW, height: this.cssH };
+    return clientToWorld(cssX, cssY, r, this.view, this.cam.ix, this.cam.iy);
+  }
+
   private tap(cssX: number, cssY: number) {
     this.toast = null;
     const h = this.hit(cssX, cssY);
@@ -2369,7 +2461,7 @@ export class CityEngine {
       this.goTo(door, q.id);
       return;
     }
-    const w = pointerToWorld(cssX, cssY, this.view, this.cam.ix, this.cam.iy);
+    const w = this.toWorld(cssX, cssY);
     if (w.x < 0 || w.y < 0 || w.x >= this.worldW || w.y >= this.worldH) return;
     if (!this.goTo({ x: w.x, y: w.y })) this.particles.emit(PK.Ring, w.x, w.y, 0, 0, 0.5);
   }

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { PanResponder, Platform, Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { PanResponder, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 
 import { Icon, type IconName } from '@/components/ui';
 import { highlightColors, type HighlightColorKey } from '@/theme/tokens';
@@ -16,7 +16,6 @@ import { EXAM } from './exam-theme';
 /* ----------------------------------------------------------------- thanh trên */
 
 export function ExamTopBar({
-  timeLabel,
   paused,
   onTogglePause,
   onExit,
@@ -26,8 +25,8 @@ export function ExamTopBar({
   settingsOpen,
   onTutor,
   narrow,
+  compact = false,
 }: {
-  timeLabel: string;
   paused: boolean;
   onTogglePause: () => void;
   onExit: () => void;
@@ -37,12 +36,14 @@ export function ExamTopBar({
   settingsOpen: boolean;
   onTutor: () => void;
   narrow: boolean;
+  /** Màn thấp (điện thoại nằm ngang): thanh mảnh hơn. */
+  compact?: boolean;
 }) {
   const { L } = useL();
   return (
     <View
       className="flex-row items-center justify-between px-3"
-      style={{ height: 52, backgroundColor: EXAM.white, borderBottomWidth: 1, borderBottomColor: EXAM.line }}
+      style={{ height: compact ? 48 : 52, backgroundColor: EXAM.white, borderBottomWidth: 1, borderBottomColor: EXAM.line }}
     >
       <View style={{ flex: narrow ? 0 : 1, flexDirection: 'row', alignItems: 'center' }}>
         <Pressable
@@ -50,32 +51,15 @@ export function ExamTopBar({
           accessibilityRole="button"
           accessibilityLabel={L('Thoát', 'Exit')}
           className="items-center justify-center rounded-pill"
-          style={{ width: 40, height: 40, borderWidth: 1, borderColor: EXAM.line }}
+          style={{ width: 44, height: 44, borderWidth: 1, borderColor: EXAM.line }}
         >
           <Icon name="close" size={16} color={EXAM.ink} strokeWidth={2.4} />
         </Pressable>
       </View>
 
-      <Pressable
-        onPress={onTogglePause}
-        accessibilityRole="button"
-        accessibilityLabel={paused ? L('Chạy tiếp đồng hồ', 'Resume timer') : L('Tạm dừng đồng hồ', 'Pause timer')}
-        className="flex-row items-center rounded-pill"
-        style={{
-          height: narrow ? 40 : 36,
-          paddingHorizontal: narrow ? 10 : 14,
-          gap: 7,
-          backgroundColor: EXAM.accentSoft,
-          borderWidth: 1,
-          borderColor: EXAM.accentLine,
-          opacity: paused ? 0.6 : 1,
-        }}
-      >
-        <Icon name="clock" size={15} color={EXAM.accentDeep} strokeWidth={2.2} />
-        <Text style={{ fontSize: 15, fontWeight: '800', color: EXAM.accentDeep, fontVariant: ['tabular-nums'] }}>{timeLabel}</Text>
-      </Pressable>
+      <TimerPill paused={paused} onToggle={onTogglePause} narrow={narrow} />
 
-      <View style={{ flex: narrow ? 0 : 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: narrow ? 4 : 8 }}>
+      <View style={{ flex: narrow ? 0 : 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: narrow ? 2 : 8 }}>
         <TopPill icon="note" label={L('Xem note', 'Notes')} active={notesOpen} onPress={onNotes} narrow={narrow} />
         <TopPill icon="settings" label={L('Cài đặt', 'Settings')} active={settingsOpen} onPress={onSettings} narrow={narrow} />
         <Pressable
@@ -83,12 +67,47 @@ export function ExamTopBar({
           accessibilityRole="button"
           accessibilityLabel={L('Mở trợ giảng', 'Open tutor')}
           className="items-center justify-center rounded-pill"
-          style={{ width: 40, height: narrow ? 40 : 36, borderWidth: 1, borderColor: EXAM.line }}
+          style={{ width: 44, height: 44, borderWidth: 1, borderColor: EXAM.line }}
         >
           <Icon name="chat" size={16} color={EXAM.ink} strokeWidth={2} />
         </Pressable>
       </View>
     </View>
+  );
+}
+
+/**
+ * Đồng hồ đếm ngược TỰ GIỮ giây của nó. Trước đây giây nằm ở state của cả màn,
+ * nên mỗi giây cả bài đọc (hàng trăm ô chữ) và toàn bộ câu hỏi dựng lại một lượt.
+ */
+function TimerPill({ paused, onToggle, narrow, startSeconds = 20 * 60 }: { paused: boolean; onToggle: () => void; narrow: boolean; startSeconds?: number }) {
+  const { L } = useL();
+  const [left, setLeft] = useState(startSeconds);
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setLeft((v) => Math.max(0, v - 1)), 1000);
+    return () => clearInterval(t);
+  }, [paused]);
+  const label = `${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`;
+  return (
+    <Pressable
+      onPress={onToggle}
+      accessibilityRole="button"
+      accessibilityLabel={paused ? L('Chạy tiếp đồng hồ', 'Resume timer') : L('Tạm dừng đồng hồ', 'Pause timer')}
+      className="flex-row items-center rounded-pill"
+      style={{
+        height: 44,
+        paddingHorizontal: narrow ? 12 : 14,
+        gap: 6,
+        backgroundColor: EXAM.accentSoft,
+        borderWidth: 1,
+        borderColor: EXAM.accentLine,
+        opacity: paused ? 0.6 : 1,
+      }}
+    >
+      <Icon name="clock" size={14} color={EXAM.accentDeep} strokeWidth={2.2} />
+      <Text style={{ fontSize: 14, fontWeight: '800', color: EXAM.accentDeep, fontVariant: ['tabular-nums'] }}>{label}</Text>
+    </Pressable>
   );
 }
 
@@ -113,8 +132,8 @@ function TopPill({
       aria-expanded={active}
       className="flex-row items-center justify-center rounded-pill"
       style={{
-        height: narrow ? 40 : 36,
-        minWidth: 40,
+        height: 44,
+        minWidth: 44,
         paddingHorizontal: narrow ? 0 : 12,
         gap: 6,
         borderWidth: 1,
@@ -259,6 +278,109 @@ export function ToolRail({
   );
 }
 
+/* ------------------------------------------------------- thanh công cụ nổi (điện thoại) */
+
+/**
+ * Điện thoại không có chỗ cho dải công cụ dọc: ba nút tròn 44px nổi ở góc phải
+ * đáy bài đọc, trong tầm ngón cái. Bật Highlight thì mọc thêm hàng chọn màu bút;
+ * bật Tra từ thì mọc nút "Chọn cụm". Ghi chú mở bảng riêng.
+ */
+export function FloatingTools({
+  tool,
+  notesOpen,
+  onPick,
+  onNotes,
+  highlightColor,
+  onHighlightColor,
+  hasHighlights,
+  onClearHighlights,
+  phraseMode,
+  onTogglePhrase,
+}: {
+  tool: ReaderTool;
+  notesOpen: boolean;
+  onPick: (tool: ReaderTool) => void;
+  onNotes: () => void;
+  highlightColor: HighlightColorKey;
+  onHighlightColor: (key: HighlightColorKey) => void;
+  hasHighlights: boolean;
+  onClearHighlights: () => void;
+  phraseMode: boolean;
+  onTogglePhrase: () => void;
+}) {
+  const { L } = useL();
+  const colorKeys = Object.keys(highlightColors) as HighlightColorKey[];
+  const shadow = Platform.OS === 'web' ? ({ boxShadow: '0 6px 20px rgba(15,23,42,0.18)' } as object) : { elevation: 6 };
+
+  const round = (active: boolean) => ({
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    alignItems: 'center' as const,
+    justifyContent: 'center' as const,
+    backgroundColor: active ? EXAM.accent : EXAM.white,
+    borderWidth: 1,
+    borderColor: active ? EXAM.accentDeep : EXAM.line,
+  });
+
+  return (
+    <View pointerEvents="box-none" style={{ position: 'absolute', right: 12, bottom: 12, alignItems: 'flex-end', gap: 8, zIndex: 20 }}>
+      {tool === 'highlight' ? (
+        <View style={[{ flexDirection: 'row', alignItems: 'center', gap: 2, paddingHorizontal: 6, borderRadius: 24, backgroundColor: EXAM.white, borderWidth: 1, borderColor: EXAM.line }, shadow]}>
+          {colorKeys.map((key) => (
+            <Pressable
+              key={key}
+              accessibilityRole="button"
+              accessibilityLabel={L(`Bút ${highlightColors[key].label}`, `${key} pen`)}
+              aria-selected={highlightColor === key}
+              onPress={() => onHighlightColor(key)}
+              className="items-center justify-center rounded-pill"
+              style={{ width: 44, height: 44 }}
+            >
+              <View style={{ width: 26, height: 26, borderRadius: 13, backgroundColor: highlightColors[key].dot, borderWidth: highlightColor === key ? 3 : 0, borderColor: EXAM.accentDeep }} />
+            </Pressable>
+          ))}
+          {hasHighlights ? (
+            <Pressable onPress={onClearHighlights} accessibilityRole="button" accessibilityLabel={L('Xoá hết tô', 'Clear all highlights')} style={{ height: 44, paddingHorizontal: 10, justifyContent: 'center' }}>
+              <Text style={{ fontSize: 14, fontWeight: '700', color: EXAM.muted }}>{L('Xoá hết', 'Clear')}</Text>
+            </Pressable>
+          ) : null}
+        </View>
+      ) : tool === 'vocab' ? (
+        <Pressable
+          onPress={onTogglePhrase}
+          accessibilityRole="button"
+          aria-pressed={phraseMode}
+          style={[{ height: 44, paddingHorizontal: 16, borderRadius: 22, justifyContent: 'center', borderWidth: 1, borderColor: phraseMode ? EXAM.accentDeep : EXAM.line, backgroundColor: phraseMode ? EXAM.accent : EXAM.white }, shadow]}
+        >
+          <Text style={{ fontSize: 14, fontWeight: '700', color: phraseMode ? '#FFFFFF' : EXAM.ink }}>
+            {phraseMode ? L('Đang chọn cụm…', 'Selecting…') : L('Chọn cụm', 'Phrase')}
+          </Text>
+        </Pressable>
+      ) : null}
+
+      <View style={[{ flexDirection: 'row', gap: 8 }, ]}>
+        {TOOLS.map((t) => {
+          const active = t.tool === 'notes' ? notesOpen : tool === t.tool;
+          const label = L(t.vi, t.en);
+          return (
+            <Pressable
+              key={t.tool}
+              onPress={() => (t.tool === 'notes' ? onNotes() : onPick(t.tool))}
+              accessibilityRole="button"
+              accessibilityLabel={label}
+              aria-pressed={active}
+              style={[round(active), shadow]}
+            >
+              <Icon name={t.icon} size={18} color={active ? '#FFFFFF' : EXAM.ink} strokeWidth={2} />
+            </Pressable>
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
 /* ------------------------------------------------------------------- thanh kéo */
 
 /**
@@ -341,6 +463,20 @@ export function SplitPane({ left, right }: { left: React.ReactNode; right: React
 
 export type NavItem = { id: string; answered: boolean; marked: boolean };
 
+const NAV_GAP = 6;
+
+/** Cuộn dải số câu cho câu hiện tại nằm giữa dải. */
+function useStripFollow(current: number, size: number) {
+  const ref = useRef<ScrollView>(null);
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    if (w <= 0) return;
+    const x = Math.max(0, (current - 1) * (size + NAV_GAP) - w / 2 + size / 2 + 8);
+    ref.current?.scrollTo({ x, animated: true });
+  }, [current, size, w]);
+  return { ref, onLayout: (width: number) => setW(width) };
+}
+
 export function QuestionNav({
   items,
   current,
@@ -351,6 +487,7 @@ export function QuestionNav({
   narrow,
   tab,
   onTab,
+  compact = false,
 }: {
   items: NavItem[];
   /** Số câu (từ 1) đang là câu hiện tại. */
@@ -359,20 +496,28 @@ export function QuestionNav({
   onFinish: () => void;
   allAnswered: boolean;
   submitting: boolean;
+  /** Một tấm (< 700px): thêm thanh phân đoạn Bài đọc / Câu hỏi. */
   narrow: boolean;
   tab: 'passage' | 'questions';
   onTab: (tab: 'passage' | 'questions') => void;
+  /** Màn thấp (điện thoại nằm ngang). */
+  compact?: boolean;
 }) {
   const { L } = useL();
-  const size = narrow ? 40 : 34;
+  const { width: winW } = useWindowDimensions();
+  // Mọi màn dưới 1000px là cảm ứng: ô số câu đủ 44px.
+  const size = winW < 1000 ? (compact ? 40 : 44) : 34;
   const ready = allAnswered && items.length > 0;
+  const answered = items.filter((i) => i.answered).length;
+  const { ref: stripRef, onLayout: stripLayout } = useStripFollow(current, size);
+  const bottomPad = Platform.OS === 'web' ? ({ paddingBottom: 'max(10px, env(safe-area-inset-bottom))' } as object) : { paddingBottom: 10 };
 
   const strip = (
     <View
       style={{
         flex: 1,
         minWidth: 0,
-        height: size + 12,
+        height: size + 10,
         borderRadius: 999,
         borderWidth: 1.5,
         borderColor: EXAM.accentLine,
@@ -380,7 +525,16 @@ export function QuestionNav({
         justifyContent: 'center',
       }}
     >
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ alignItems: 'center', gap: 6, paddingHorizontal: 8 }}>
+      <ScrollView
+        ref={stripRef}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        onLayout={(e) => stripLayout(e.nativeEvent.layout.width)}
+        snapToInterval={size + NAV_GAP}
+        decelerationRate="fast"
+        contentContainerStyle={{ alignItems: 'center', gap: NAV_GAP, paddingHorizontal: 8 }}
+        style={Platform.OS === 'web' ? ({ overscrollBehaviorX: 'contain' } as object) : undefined}
+      >
         {items.map((it, i) => {
           const n = i + 1;
           const isCurrent = n === current;
@@ -400,9 +554,9 @@ export function QuestionNav({
                 borderColor: isCurrent ? EXAM.accentDeep : it.answered ? EXAM.accent : EXAM.accentLine,
               }}
             >
-              <Text style={{ fontSize: 13, fontWeight: '800', color: it.answered ? '#FFFFFF' : EXAM.accentDeep }}>{n}</Text>
+              <Text style={{ fontSize: 14, fontWeight: '800', color: it.answered ? '#FFFFFF' : EXAM.accentDeep }}>{n}</Text>
               {it.marked ? (
-                <View style={{ position: 'absolute', top: -1, right: -1, width: 9, height: 9, borderRadius: 5, backgroundColor: EXAM.flag, borderWidth: 1.5, borderColor: '#FFFFFF' }} />
+                <View style={{ position: 'absolute', top: -1, right: -1, width: 10, height: 10, borderRadius: 5, backgroundColor: EXAM.flag, borderWidth: 1.5, borderColor: '#FFFFFF' }} />
               ) : null}
             </Pressable>
           );
@@ -419,13 +573,13 @@ export function QuestionNav({
       aria-disabled={!ready}
       className="items-center justify-center rounded-pill"
       style={{
-        height: narrow ? 44 : 46,
+        height: compact ? 44 : 48,
         paddingHorizontal: narrow ? 16 : 22,
         backgroundColor: ready ? EXAM.accent : '#EFEBE2',
         opacity: items.length === 0 ? 0.5 : 1,
       }}
     >
-      <Text style={{ fontSize: 14.5, fontWeight: '800', color: ready ? '#FFFFFF' : '#9A9484' }}>
+      <Text style={{ fontSize: 15, fontWeight: '800', color: ready ? '#FFFFFF' : '#7A7566' }}>
         {submitting ? L('Đang chấm…', 'Grading…') : L('Hoàn thành', 'Finish')}
       </Text>
     </Pressable>
@@ -433,33 +587,39 @@ export function QuestionNav({
 
   if (!narrow) {
     return (
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingVertical: 10, backgroundColor: EXAM.white, borderTopWidth: 1, borderTopColor: EXAM.line }}>
+      <View style={[{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 16, paddingTop: compact ? 6 : 10, paddingBottom: compact ? 6 : 10, backgroundColor: EXAM.white, borderTopWidth: 1, borderTopColor: EXAM.line }, bottomPad]}>
         {strip}
         {finish}
       </View>
     );
   }
+
+  /*
+    Điện thoại dọc, hai hàng:
+      1. [ Bài đọc | Câu hỏi 3/13 ]  [Hoàn thành]   — luôn ở tầm ngón cái
+      2. dải số câu (chỉ hiện ở thẻ Câu hỏi, để thẻ Bài đọc rộng thêm ~56px)
+  */
   return (
-    <View style={{ gap: 8, paddingHorizontal: 12, paddingTop: 8, paddingBottom: 10, backgroundColor: EXAM.white, borderTopWidth: 1, borderTopColor: EXAM.line }}>
+    <View style={[{ gap: 8, paddingHorizontal: 12, paddingTop: 8, backgroundColor: EXAM.white, borderTopWidth: 1, borderTopColor: EXAM.line }, bottomPad]}>
+      {tab === 'questions' ? strip : null}
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-        {strip}
+        <View style={{ flex: 1, flexDirection: 'row', padding: 3, borderRadius: 999, backgroundColor: '#F3EFE6' }} accessibilityRole="tablist">
+          {(['passage', 'questions'] as const).map((t) => (
+            <Pressable
+              key={t}
+              accessibilityRole="tab"
+              aria-selected={tab === t}
+              onPress={() => onTab(t)}
+              className="flex-1 items-center justify-center rounded-pill"
+              style={{ height: 44, backgroundColor: tab === t ? EXAM.accent : 'transparent' }}
+            >
+              <Text style={{ fontSize: 14, fontWeight: '800', color: tab === t ? '#FFFFFF' : EXAM.ink }}>
+                {t === 'passage' ? L('Bài đọc', 'Passage') : `${L('Câu hỏi', 'Questions')}${items.length ? ` ${answered}/${items.length}` : ''}`}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
         {finish}
-      </View>
-      <View style={{ flexDirection: 'row', padding: 3, borderRadius: 999, backgroundColor: '#F3EFE6' }}>
-        {(['passage', 'questions'] as const).map((t) => (
-          <Pressable
-            key={t}
-            accessibilityRole="tab"
-            aria-selected={tab === t}
-            onPress={() => onTab(t)}
-            className="flex-1 items-center justify-center rounded-pill"
-            style={{ height: 40, backgroundColor: tab === t ? EXAM.accent : 'transparent' }}
-          >
-            <Text style={{ fontSize: 14, fontWeight: '800', color: tab === t ? '#FFFFFF' : EXAM.ink }}>
-              {t === 'passage' ? L('Bài đọc', 'Passage') : L('Câu hỏi', 'Questions')}
-            </Text>
-          </Pressable>
-        ))}
       </View>
     </View>
   );

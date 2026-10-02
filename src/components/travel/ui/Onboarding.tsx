@@ -69,7 +69,7 @@ export function Onboarding() {
             style={{ flex: 1, maxWidth: 130, alignItems: 'center', gap: 6, paddingVertical: 12, borderRadius: 6, borderWidth: 2, borderColor: outfit === i ? T.navy : T.line, backgroundColor: outfit === i ? T.paperDeep : 'transparent' }}
           >
             <Traveller outfit={i} size={44} />
-            <Text className="font-strong" style={{ fontSize: 13, color: T.ink }}>
+            <Text className="font-strong" style={{ fontSize: 14, color: T.ink }}>
               {bi(o.name, locale)}
             </Text>
           </Pressable>

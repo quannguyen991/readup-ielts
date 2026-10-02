@@ -118,7 +118,7 @@ export function MixSheet({
 
           <ScrollView className="px-4" contentContainerStyle={{ paddingVertical: 14, gap: 14 }}>
             <View>
-              <Text className="mb-2 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 10 }}>
+              <Text className="mb-2 font-semi uppercase tracking-wide text-subtle" style={{ fontSize: 12 }}>
                 {L(`Chọn dạng bài (tối đa ${MAX_MIX_BLOCKS})`, `Pick question types (up to ${MAX_MIX_BLOCKS})`)}
               </Text>
               <View className="flex-row flex-wrap gap-1.5">

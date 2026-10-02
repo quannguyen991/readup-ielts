@@ -32,7 +32,7 @@ import Animated, {
 
 /** Thời lượng chuẩn, dùng chung để mọi thứ trong app cùng một nhịp. */
 export const MOTION = {
-  page: 240,
+  page: 180,
   item: 220,
   press: 110,
   /** Khoảng lệch giữa hai phần tử liền nhau khi xếp lớp. */
