@@ -118,7 +118,7 @@ const NPCS: Npc[] = [
     sprite: 'npc_vendor',
     at: { x: 66, y: 96 },
     lines: [
-      { en: 'Phở bò or phở gà? Beef or chicken?', vi: 'Phở bò hay phở gà? (Beef or chicken?)' },
+      { en: 'Beef or chicken noodle soup? Which one would you like?', vi: 'Phở bò hay phở gà? Bạn muốn món nào?' },
       { en: 'Be careful, the broth is hot!', vi: 'Cẩn thận, nước dùng nóng đấy!' },
     ],
   },
