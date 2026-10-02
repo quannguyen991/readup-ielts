@@ -14,6 +14,7 @@ import { isSfxMuted } from '@/services/audio/sfx';
 import { skyAt, formatClock } from '@/services/travel/clock';
 import { recommendedPoi } from '@/services/travel/journey';
 import { isPoiUnlocked } from '@/services/travel/rewards';
+import { hasHistoryGuide } from '@/data/history';
 import { CITIES } from '@/services/travel/world';
 import { useGameStore } from '@/store/useGameStore';
 import { CityCanvas } from '../scenes/CityCanvas';
@@ -105,7 +106,8 @@ export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMov
     const lockedSet = new Set<string>();
     const doneSet = new Set<string>();
     const out: PlaceRow[] = pois.map((p) => {
-      const unlocked = p.action ? true : isPoiUnlocked(state, p);
+      // Điểm hướng dẫn lịch sử luôn mở (không vé, không sao): lượt học từ ở đó vẫn khoá riêng trong màn hướng dẫn.
+      const unlocked = p.action || hasHistoryGuide(p.id) ? true : isPoiUnlocked(state, p);
       if (!unlocked) lockedSet.add(p.id);
       const prog = state.poi[p.id];
       if (!p.action && (prog?.best ?? 0) >= 2) doneSet.add(p.id);

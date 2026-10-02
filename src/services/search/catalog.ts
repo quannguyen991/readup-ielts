@@ -39,6 +39,8 @@ import { CUE_CARDS, PART1_TOPICS } from '@/services/speaking/bank';
 import { PATH_STEPS } from '@/services/writing/translation-path';
 import { STEP_EN } from '@/components/writing/translation-step-en';
 import { SAT_RW_SKILL_LABEL_EN } from '@/components/sat-rw/skill-label-en';
+import { BUNDLES } from '@/data/history';
+import { isTopicVisible, visibleScenes } from '@/services/history/gating';
 import type { Bi } from '@/i18n/useL';
 
 import type { SearchEntry, SearchExam, SearchKind, SearchSkill } from './types';
@@ -442,6 +444,34 @@ function buildEntries(): SearchEntry[] {
   // ---- Bài học lý thuyết SAT
   out.push(...lessonEntries(MATH_LESSONS, 'math'));
   out.push(...lessonEntries(VERBAL_LESSONS, 'rw'));
+
+  // ---- Lịch sử Việt Nam song ngữ: chỉ chủ đề / cảnh đã qua cổng xuất bản
+  for (const bundle of BUNDLES) {
+    if (!isTopicVisible(bundle)) continue;
+    const { topic } = bundle;
+    out.push({
+      id: `history:${topic.id}`,
+      kind: 'reading',
+      title: { vi: topic.titleVi, en: topic.titleEn },
+      subtitle: { vi: `Lịch sử Việt Nam song ngữ · ${topic.periodLabel}`, en: `Vietnamese history, bilingual · ${topic.periodLabel}` },
+      keywords: ['lịch sử', 'history', 'vietnam', 'việt nam', 'song ngữ', 'bilingual', 'kháng chiến', 'resistance', topic.periodLabel],
+      exam: 'both',
+      skill: 'reading',
+      href: `/history/${topic.id}`,
+    });
+    for (const sc of visibleScenes(bundle)) {
+      out.push({
+        id: `history:${topic.id}:${sc.id}`,
+        kind: 'reading',
+        title: { vi: sc.titleVi, en: sc.titleEn },
+        subtitle: { vi: `Lịch sử · ${sc.dateLabel.vi}`, en: `History · ${sc.dateLabel.en}` },
+        keywords: ['lịch sử', 'history', 'vietnam', sc.place.vi, sc.place.en, sc.dateLabel.vi, ...sc.vocab.map((v) => v.word)],
+        exam: 'both',
+        skill: 'reading',
+        href: `/history/${topic.id}?scene=${sc.id}`,
+      });
+    }
+  }
 
   // ---- Luyện theo kỹ năng SAT Math (ngân hàng câu theo kỹ năng)
   const mathTitleVi = new Map(MATH_LESSONS.map((l) => [l.skill, l.title]));

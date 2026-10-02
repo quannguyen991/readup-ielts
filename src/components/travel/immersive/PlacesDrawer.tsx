@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
 import { bi, useL } from '@/i18n/useL';
+import { hasHistoryGuide } from '@/data/history';
 import type { PoiContent } from '@/data/travel/pois';
 import { StarsRow, T } from '../ui/kit';
 import { Drawer } from './Drawer';
@@ -74,6 +75,12 @@ export function PlacesDrawer({
                   </Text>
                 ) : null}
               </View>
+              {hasHistoryGuide(r.poi.id) ? (
+                <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark }}>
+                  {'📜 '}
+                  {L('Có người hướng dẫn kể lịch sử', 'A guide can tell its history')}
+                </Text>
+              ) : null}
               {!act ? <StarsRow n={r.stars} size={15} /> : null}
               {!r.unlocked && r.needs ? (
                 <Text className="font-sans" style={{ fontSize: 14, color: T.muted }}>

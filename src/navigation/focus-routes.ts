@@ -66,6 +66,7 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/checkout$/,
   // Du ngoạn Band 9: cảnh thành phố và lượt làm bài ở một địa điểm.
   /^\/quest\/du-ngoan\/visit\/[^/]+$/,
+  /^\/quest\/du-ngoan\/guide\/[^/]+$/,
   /^\/quest\/du-ngoan\/(hanoi|singapore|london|paris|amsterdam|rome|hochiminh|danang)$/,
   // Bản đồ ReadUp: thế giới pixel chiếm trọn màn hình.
   /^\/quest\/world(\/[^/]+)?$/,
@@ -87,6 +88,8 @@ const NO_LOOKUP: readonly RegExp[] = [
   /^\/listening\/(?!history$)[^/]+$/,
   /^\/read\/[^/]+$/,
   /^\/bilingual\/[^/]+$/,
+  // Trang đọc lịch sử có thanh nghe riêng và tự có đường tra từ; chuyển động nhẹ, không bôi-đen-là-tra chồng thẻ.
+  /^\/history\/[^/]+$/,
   /^\/sat\/full-test$/,
   /^\/math\/(mock|diagnostic)$/,
   /^\/weekly(\/|$)/,

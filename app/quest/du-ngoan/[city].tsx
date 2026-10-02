@@ -13,6 +13,7 @@ import { FsPortal, useFullscreen } from '@/components/travel/scenes/fullscreen';
 import { ImmersiveCity } from '@/components/travel/immersive/ImmersiveCity';
 import { Icon } from '@/components/ui/Icon';
 import { getPoiContent, poisOfCity } from '@/data/travel/pois';
+import { hasHistoryGuide } from '@/data/history';
 import { bi, useL } from '@/i18n/useL';
 import { isPoiUnlocked } from '@/services/travel/rewards';
 import { POS_UNSET } from '@/services/travel/sync';
@@ -81,7 +82,9 @@ function City({ city }: { city: keyof typeof CITIES }) {
     (id: string) => {
       const poi = getPoiContent(id);
       if (!poi) return;
-      if (poi.action === 'customs') router.push('/quest/du-ngoan/airport' as never);
+      // Địa điểm có người hướng dẫn lịch sử: mở màn hướng dẫn (luôn mở, không vé / sao); từ đó chọn nghe lịch sử hoặc luyện từ.
+      if (hasHistoryGuide(poi.id)) router.push(`/quest/du-ngoan/guide/${poi.id}` as never);
+      else if (poi.action === 'customs') router.push('/quest/du-ngoan/airport' as never);
       else if (poi.action === 'gate') router.push('/quest/du-ngoan' as never);
       else if (isPoiUnlocked(state, poi)) router.push(`/quest/du-ngoan/visit/${poi.id}` as never);
     },
@@ -122,7 +125,7 @@ function City({ city }: { city: keyof typeof CITIES }) {
         <Eyebrow>{L('Địa điểm', 'Places')}</Eyebrow>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
           {pois.map((p) => {
-            const open = p.action ? true : isPoiUnlocked(state, p);
+            const open = p.action || hasHistoryGuide(p.id) ? true : isPoiUnlocked(state, p);
             const prog = state.poi[p.id];
             return (
               <View key={p.id} style={{ flexGrow: 1, flexBasis: 280, minWidth: 240, maxWidth: 420 }}>

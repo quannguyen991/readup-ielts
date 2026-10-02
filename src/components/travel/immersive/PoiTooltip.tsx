@@ -6,6 +6,7 @@ import { REPLY_THEME_LABEL, themeOfDeck } from '@/data/travel/replies';
 import { getSouvenir } from '@/data/travel/souvenirs';
 import type { PoiContent } from '@/data/travel/pois';
 import { bi, useL } from '@/i18n/useL';
+import { hasHistoryGuide } from '@/data/history';
 import { HUD, KIND_GLYPH } from './hudKit';
 
 /** Tên các bộ học của một địa điểm ("bạn sẽ học gì"): chủ đề từ vựng, câu đáp tình huống, bài nghe. */
@@ -55,6 +56,12 @@ export function PoiTooltip({ poi, at, locked, needs, stars }: { poi: PoiContent;
           </Text>
         </>
       )}
+      {hasHistoryGuide(poi.id) ? (
+        <Text className="font-strong" style={{ fontSize: 14, color: HUD.gold }}>
+          {'📜 '}
+          {L('Người hướng dẫn kể lịch sử nơi này', 'A guide tells the history here')}
+        </Text>
+      ) : null}
       <Text className="font-sans" style={{ fontSize: 14, color: locked ? '#F2A99E' : HUD.dim }}>
         {locked ? (needs ? L(`Khoá — cần đạt ${needs.name.vi} (2 sao) trước`, `Locked — pass ${needs.name.en} (2 stars) first`) : L('Đang khoá', 'Locked')) : L('Bấm để đi tới', 'Click to walk there')}
       </Text>

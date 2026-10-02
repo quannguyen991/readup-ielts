@@ -1,0 +1,718 @@
+{
+  "scenes": [
+    {
+      "n": 5,
+      "id": "s05-hanoi-first-weeks",
+      "titleVi": "Hà Nội: Những tuần đầu kháng chiến",
+      "titleEn": "Hanoi: The First Weeks of Resistance",
+      "dateLabelVi": "19/12/1946–17/02/1947",
+      "dateLabelEn": "19 Dec 1946–17 Feb 1947",
+      "periodNote": "The dates refer to the main urban defence of Hà Nội from the opening of nationwide resistance to the withdrawal of the Thủ đô Regiment.",
+      "place": {
+        "vi": "Hà Nội",
+        "en": "Hanoi",
+        "modernNote": "The fighting covered central Hà Nội and surrounding streets and positions; the scene should not be presented as one single street or battle."
+      },
+      "passageEn": "Fighting in Hà Nội began on the evening of 19 December 1946. At about 20:03, the city power was cut as fighting opened. Residents and self-defence units built barricades and street obstacles, while soldiers, militia, and civilians supported the defence in different ways. The struggle continued block by block through the winter. Two official sources give the standard duration as 60 days and nights, from 19 December 1946 to 17 February 1947. On 17 February, the Thủ đô Regiment withdrew from the city, ending this phase of the urban defence while preserving forces for the longer war.",
+      "passageVi": "Cuộc chiến đấu ở Hà Nội bắt đầu vào tối 19 tháng 12 năm 1946. Khoảng 20 giờ 03 phút, điện trong thành phố bị cắt khi chiến sự mở màn. Người dân và các đơn vị tự vệ dựng chiến lũy, tạo chướng ngại trên đường phố; bộ đội, dân quân, tự vệ và dân thường tham gia bảo vệ thành phố theo những cách khác nhau. Cuộc chiến diễn ra qua từng khu phố trong mùa đông. Hai nguồn chính thức cùng nêu thời gian cầm cự tiêu chuẩn là 60 ngày đêm, từ 19 tháng 12 năm 1946 đến 17 tháng 2 năm 1947. Ngày 17 tháng 2, Trung đoàn Thủ đô rút khỏi thành phố, kết thúc giai đoạn phòng thủ đô thị này và bảo toàn lực lượng cho cuộc kháng chiến lâu dài.",
+      "captionVi": "Minh họa chiến lũy và lực lượng bảo vệ Hà Nội trong 60 ngày đêm đầu toàn quốc kháng chiến, 1946–1947.",
+      "captionEn": "Illustration of barricades and defenders during Hanoi's 60-day-and-night resistance, 1946–1947.",
+      "claims": [
+        {
+          "id": "c05-1",
+          "text": "Fighting in Hà Nội began on the evening of 19 December 1946, with the cutting of city power at about 20:03 marking the opening of combat.",
+          "textVi": "Cuộc chiến đấu ở Hà Nội bắt đầu tối 19/12/1946; việc cắt điện thành phố vào khoảng 20 giờ 03 phút là một tín hiệu mở đầu chiến sự.",
+          "date": "1946-12-19",
+          "places": [
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Giới thiệu: Danh mục tài liệu ảnh Hà Nội - những ngày đầu toàn quốc kháng chiến 19.12.1946 - 17.02.1947",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3091/9797/gioi-thieu-danh-muc-tai-lieu-anh-ha-noi-nhung-ngay-djau-toan-quoc-khang-chien-19-12-1946-17-02-1947.html",
+              "locator": "Introduction, paragraphs describing the evening of 19 December 1946 and the 20:03 power cut",
+              "supports": "The opening date and the cutting of electricity in Hà Nội at about 20:03."
+            },
+            {
+              "title": "Hà Nội gặp mặt tri ân các cựu chiến binh, cựu thanh niên xung phong tham gia kháng chiến chống Pháp",
+              "publisher": "Sở Văn hóa và Thể thao Hà Nội",
+              "url": "https://sovhtt.hanoi.gov.vn/%EF%BB%BF%EF%BB%BFha-noi-gap-mat-tri-cac-cuu-chien-binh-cuu-thanh-nien-xung-phong-tham-gia-khang-chien-chong-phap/",
+              "locator": "Historical summary of 19 December 1946",
+              "supports": "The start of fighting on 19 December and the 20:03 opening signal."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "Both official institutional sources give the same opening date and approximately the same time."
+        },
+        {
+          "id": "c05-2",
+          "text": "Residents and self-defence forces constructed barricades and other street obstacles, while civilians supported the defence alongside armed units.",
+          "textVi": "Người dân và lực lượng tự vệ dựng chiến lũy, tạo các chướng ngại trên đường phố; dân thường tham gia hỗ trợ việc phòng thủ cùng các lực lượng vũ trang.",
+          "date": "1946-12-19/1947-02-17",
+          "places": [
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Giới thiệu: Danh mục tài liệu ảnh Hà Nội - những ngày đầu toàn quốc kháng chiến 19.12.1946 - 17.02.1947",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3091/9797/gioi-thieu-danh-muc-tai-lieu-anh-ha-noi-nhung-ngay-djau-toan-quoc-khang-chien-19-12-1946-17-02-1947.html",
+              "locator": "Photograph descriptions of self-defence units, trenches, street obstacles and barricades",
+              "supports": "Physical street defences and participation of self-defence forces."
+            },
+            {
+              "title": "Hà Nội gặp mặt tri ân các cựu chiến binh, cựu thanh niên xung phong tham gia kháng chiến chống Pháp",
+              "publisher": "Sở Văn hóa và Thể thao Hà Nội",
+              "url": "https://sovhtt.hanoi.gov.vn/%EF%BB%BF%EF%BB%BFha-noi-gap-mat-tri-cac-cuu-chien-binh-cuu-thanh-nien-xung-phong-tham-gia-khang-chien-chong-phap/",
+              "locator": "Historical summary of the Hà Nội resistance",
+              "supports": "Residents building barricades and the broad participation of Hà Nội's population in the defence."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The scene should distinguish armed self-defence forces from the wider civilian population rather than implying that every civilian was a combatant."
+        },
+        {
+          "id": "c05-3",
+          "text": "The standard official account says Hà Nội was held for 60 days and nights, from 19 December 1946 to 17 February 1947.",
+          "textVi": "Theo cách tính tiêu chuẩn trong các nguồn chính thức, Hà Nội chiến đấu trong 60 ngày đêm, từ 19/12/1946 đến 17/02/1947.",
+          "date": "1946-12-19/1947-02-17",
+          "places": [
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Giới thiệu: Danh mục tài liệu ảnh Hà Nội - những ngày đầu toàn quốc kháng chiến 19.12.1946 - 17.02.1947",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3091/9797/gioi-thieu-danh-muc-tai-lieu-anh-ha-noi-nhung-ngay-djau-toan-quoc-khang-chien-19-12-1946-17-02-1947.html",
+              "locator": "Introduction to the photographic collection",
+              "supports": "The date range 19 December 1946–17 February 1947 and the standard description of 60 days and nights."
+            },
+            {
+              "title": "Hà Nội gặp mặt tri ân các cựu chiến binh, cựu thanh niên xung phong tham gia kháng chiến chống Pháp",
+              "publisher": "Sở Văn hóa và Thể thao Hà Nội",
+              "url": "https://sovhtt.hanoi.gov.vn/%EF%BB%BF%EF%BB%BFha-noi-gap-mat-tri-cac-cuu-chien-binh-cuu-thanh-nien-xung-phong-tham-gia-khang-chien-chong-phap/",
+              "locator": "Historical summary, paragraph on the 60-day-and-night defence",
+              "supports": "The same 60-day-and-night duration and start/end dates."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "This is the standard duration used by both opened official sources."
+        },
+        {
+          "id": "c05-4",
+          "text": "On 17 February 1947, the Thủ đô Regiment withdrew from Hà Nội, ending the main phase of the city's urban defence.",
+          "textVi": "Ngày 17/02/1947, Trung đoàn Thủ đô rút khỏi Hà Nội, kết thúc giai đoạn chính của cuộc phòng thủ trong nội thành.",
+          "date": "1947-02-17",
+          "places": [
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Giới thiệu: Danh mục tài liệu ảnh Hà Nội - những ngày đầu toàn quốc kháng chiến 19.12.1946 - 17.02.1947",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3091/9797/gioi-thieu-danh-muc-tai-lieu-anh-ha-noi-nhung-ngay-djau-toan-quoc-khang-chien-19-12-1946-17-02-1947.html",
+              "locator": "Introduction, endpoint of the photographic chronology",
+              "supports": "The withdrawal of the Thủ đô Regiment on 17 February 1947."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "The 17 February date is also consistent with the second source's overall 19 December–17 February defence period, but the explicit regiment-withdrawal statement was taken from the National Museum page."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "barricade",
+          "pos": "noun",
+          "meaningVi": "chiến lũy; chướng ngại dùng để chặn đường",
+          "ipa": "/ˌbærɪˈkeɪd/"
+        },
+        {
+          "word": "militia",
+          "pos": "noun",
+          "meaningVi": "dân quân",
+          "ipa": "/mɪˈlɪʃə/"
+        },
+        {
+          "word": "withdraw",
+          "pos": "verb",
+          "meaningVi": "rút lui; rút lực lượng",
+          "ipa": "/wɪðˈdrɔː/"
+        },
+        {
+          "word": "defend",
+          "pos": "verb",
+          "meaningVi": "phòng thủ; bảo vệ",
+          "ipa": "/dɪˈfend/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "A winter street in central Hà Nội with improvised barricades, damaged façades, civilians moving supplies, and Vietnamese self-defence fighters in defensive positions.",
+        "period": "19 December 1946–17 February 1947",
+        "viewpoint": "Street-level documentary-style wide view, without identifying a specific unverified street.",
+        "architecture": "Late-colonial Hà Nội shop houses and urban streets appropriate to 1946–1947.",
+        "clothing": "Plain civilian clothing, simple militia/self-defence dress and period-appropriate Vietnamese military clothing; no later-war uniforms.",
+        "objects": "Sandbags, timber, furniture and other improvised barricade materials, trenches or street obstacles, bicycles and hand-carried supplies.",
+        "mustAvoid": "No AK-pattern rifles, M16s, helicopters, later Vietnam War uniforms, modern traffic, modern high-rises, invented portraits of named leaders, or imagery suggesting Vietnam was unified in 1954.",
+        "isGeneralIllustration": false
+      },
+      "openIssues": []
+    },
+    {
+      "n": 6,
+      "id": "s06-viet-bac-base",
+      "titleVi": "Việt Bắc: Căn cứ kháng chiến",
+      "titleEn": "Việt Bắc: The Resistance Base",
+      "dateLabelVi": "1947–1954",
+      "dateLabelEn": "1947–1954",
+      "periodNote": "Việt Bắc was a broad base region, not a single headquarters. This scene focuses on the ATK network and everyday government, military and civilian work rather than one campaign.",
+      "place": {
+        "vi": "Việt Bắc — Định Hóa, Sơn Dương, Chợ Đồn và các khu ATK lân cận",
+        "en": "Việt Bắc — Định Hóa, Sơn Dương, Chợ Đồn and nearby ATK areas",
+        "modernNote": "The historical ATK network lay across areas now in Thái Nguyên, Tuyên Quang and Bắc Kạn provinces; historical sources also use the spelling Bắc Cạn."
+      },
+      "passageEn": "Việt Bắc was not one camp but a broad resistance base across mountainous, forested districts of Thái Nguyên, Tuyên Quang, and Bắc Cạn. The area was chosen because its terrain favored defence and movement, and because the resistance already had local political support. From 1947, central government and military bodies worked from the ATK network. Life and work were deliberately dispersed: leaders used simple leaf-roofed houses, hidden paths, shelters, and changed locations to protect secrecy. Local people also helped with food, transport, and care for the wounded. The base therefore joined administration, military work, and civilian support in the same difficult landscape.",
+      "passageVi": "Việt Bắc không phải một khu trại duy nhất mà là một vùng căn cứ kháng chiến rộng lớn giữa các huyện miền núi, nhiều rừng thuộc Thái Nguyên, Tuyên Quang và Bắc Cạn. Khu vực này được lựa chọn vì địa hình thuận lợi cho phòng thủ, cơ động và vì phong trào cách mạng đã có cơ sở trong nhân dân địa phương. Từ năm 1947, nhiều cơ quan trung ương của Chính phủ và quân đội làm việc trong mạng lưới ATK. Nơi ở và nơi làm việc được bố trí phân tán: những ngôi nhà lợp lá đơn sơ, đường mòn kín đáo, hầm trú ẩn và địa điểm thường xuyên thay đổi để giữ bí mật. Nhân dân địa phương còn góp lương thực, vận chuyển và chăm sóc thương binh.",
+      "captionVi": "Minh họa một khu làm việc phân tán trong căn cứ Việt Bắc, với nhà lợp lá, đường rừng và hoạt động tiếp tế của nhân dân.",
+      "captionEn": "Illustration of a dispersed working site in the Việt Bắc base, with simple shelters, forest paths and civilian supply work.",
+      "claims": [
+        {
+          "id": "c06-1",
+          "text": "The ATK resistance base covered mountainous and forested districts in areas of Thái Nguyên, Tuyên Quang and Bắc Cạn, chosen for defensibility and an established local political base.",
+          "textVi": "Căn cứ ATK trải trên các huyện miền núi, nhiều rừng thuộc Thái Nguyên, Tuyên Quang và Bắc Cạn; địa bàn được lựa chọn vì thuận lợi về phòng thủ và có cơ sở chính trị trong nhân dân.",
+          "date": "1946-1947",
+          "places": [
+            "Định Hóa",
+            "Đại Từ",
+            "Võ Nhai",
+            "Phú Lương",
+            "Sơn Dương",
+            "Yên Sơn",
+            "Chiêm Hóa",
+            "Chợ Đồn",
+            "Chợ Mới"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Giới thiệu khái quát về Khu di tích lịch sử ATK Định Hoá",
+              "publisher": "Khu di tích lịch sử ATK Định Hoá / hochiminh.vn",
+              "url": "https://atkdinhhoa.hochiminh.vn/DinhHoadata/pano/info.html",
+              "locator": "Opening historical overview of the ATK area",
+              "supports": "The districts included in the ATK, its mountain-forest setting, strategic defensibility and local political base."
+            },
+            {
+              "title": "Ôn lại lịch sử 78 năm ngày Chủ tịch Hồ Chí Minh về ATK Định Hóa (20/5/1947 - 20/5/2025)",
+              "publisher": "Thanh tra tỉnh Thái Nguyên",
+              "url": "https://thanhtra.thainguyen.gov.vn/tin-hoat-dong/on-lai-lich-su-78-nam-ngay-chu-tich-ho-chi-minh-ve-atk-dinh-hoa-20-5-1947-20-5-2025-175817",
+              "locator": "Historical background on the late-1946 survey and selection of ATK Định Hóa",
+              "supports": "The role of terrain, local support and security in choosing the base."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The scene represents the wider Việt Bắc/ATK network and should not reduce it to one settlement."
+        },
+        {
+          "id": "c06-2",
+          "text": "From 1947 to 1954, important central government, Party and military bodies worked in the ATK network; Hồ Chí Minh reached Khau Tý in Định Hóa on 20 May 1947.",
+          "textVi": "Trong giai đoạn 1947–1954, nhiều cơ quan trung ương của Đảng, Chính phủ và quân đội làm việc trong mạng lưới ATK; Chủ tịch Hồ Chí Minh đến Khau Tý, Định Hóa ngày 20/05/1947.",
+          "date": "1947-05-20/1954",
+          "places": [
+            "Khau Tý",
+            "Định Hóa",
+            "Việt Bắc"
+          ],
+          "people": [
+            "Hồ Chí Minh"
+          ],
+          "sources": [
+            {
+              "title": "Giới thiệu khái quát về Khu di tích lịch sử ATK Định Hoá",
+              "publisher": "Khu di tích lịch sử ATK Định Hoá / hochiminh.vn",
+              "url": "https://atkdinhhoa.hochiminh.vn/DinhHoadata/pano/info.html",
+              "locator": "Paragraphs on Hồ Chí Minh's arrival and central agencies operating in ATK, 1947–1954",
+              "supports": "The 20 May 1947 arrival at Khau Tý and the presence of central political and military institutions."
+            },
+            {
+              "title": "Ôn lại lịch sử 78 năm ngày Chủ tịch Hồ Chí Minh về ATK Định Hóa (20/5/1947 - 20/5/2025)",
+              "publisher": "Thanh tra tỉnh Thái Nguyên",
+              "url": "https://thanhtra.thainguyen.gov.vn/tin-hoat-dong/on-lai-lich-su-78-nam-ngay-chu-tich-ho-chi-minh-ve-atk-dinh-hoa-20-5-1947-20-5-2025-175817",
+              "locator": "Paragraphs on relocation to ATK and arrival at Khau Tý",
+              "supports": "The relocation process and the date 20 May 1947."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The passage does not imply that all central institutions were located at one site."
+        },
+        {
+          "id": "c06-3",
+          "text": "Work and accommodation in ATK Định Hóa could be simple and dispersed, using leaf-roofed houses, concealed paths and shelters, with locations changed for security.",
+          "textVi": "Nơi ở và làm việc tại ATK Định Hóa có thể rất đơn sơ và phân tán, gồm nhà lợp lá, đường mòn kín đáo và hầm trú ẩn; địa điểm được thay đổi để bảo đảm bí mật, an toàn.",
+          "date": "1947-1954",
+          "places": [
+            "Định Hóa",
+            "Khau Tý"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Ôn lại lịch sử 78 năm ngày Chủ tịch Hồ Chí Minh về ATK Định Hóa (20/5/1947 - 20/5/2025)",
+              "publisher": "Thanh tra tỉnh Thái Nguyên",
+              "url": "https://thanhtra.thainguyen.gov.vn/tin-hoat-dong/on-lai-lich-su-78-nam-ngay-chu-tich-ho-chi-minh-ve-atk-dinh-hoa-20-5-1947-20-5-2025-175817",
+              "locator": "Description of Khau Tý living and working conditions and movement between sites",
+              "supports": "Simple leaf-roofed housing, forest surroundings, shelters, hidden paths and changing work locations."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "These concrete details are used as an ATK Định Hóa example, not as a claim that every Việt Bắc base site had identical structures."
+        },
+        {
+          "id": "c06-4",
+          "text": "Local people in Việt Bắc supplied food, transported materials and helped care for wounded personnel during resistance operations.",
+          "textVi": "Nhân dân địa phương ở Việt Bắc cung cấp lương thực, tham gia vận chuyển và hỗ trợ chăm sóc thương binh trong các hoạt động kháng chiến.",
+          "date": "1947",
+          "places": [
+            "Việt Bắc"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Công tác hậu cần chiến dịch phản công Việt Bắc Thu Đông năm 1947",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/cong-tac-hau-can-chien-dich-phan-cong-viet-bac-thu-dong-nam-1947-481470",
+              "locator": "Sections describing food supply, dân công transport, harvest work and care for wounded soldiers",
+              "supports": "Civilian food contributions, transport labour and assistance to wounded personnel in Việt Bắc."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "The claim is framed as documented wartime support in Việt Bắc rather than a precise measure of participation across the whole region."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "base",
+          "pos": "noun",
+          "meaningVi": "căn cứ",
+          "ipa": "/beɪs/"
+        },
+        {
+          "word": "mountainous",
+          "pos": "adjective",
+          "meaningVi": "nhiều núi; thuộc vùng núi",
+          "ipa": "/ˈmaʊntənəs/"
+        },
+        {
+          "word": "shelter",
+          "pos": "noun",
+          "meaningVi": "nơi trú ẩn; hầm trú ẩn",
+          "ipa": "/ˈʃeltə(r)/"
+        },
+        {
+          "word": "dispersed",
+          "pos": "adjective",
+          "meaningVi": "phân tán",
+          "ipa": "/dɪˈspɜːst/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "A concealed ATK working area in the forested mountains of Việt Bắc, with several small structures separated by trees and paths, civilians carrying food, and officials or soldiers working quietly.",
+        "period": "1947–1954",
+        "viewpoint": "Wide environmental view showing the dispersed character of the base rather than a heroic portrait.",
+        "architecture": "Simple timber or bamboo structures with leaf or thatch roofs, small raised houses where appropriate, forest shelters and narrow paths.",
+        "clothing": "Plain northern rural clothing and simple 1940s–1950s resistance-era military or cadre dress.",
+        "objects": "Bamboo baskets, shoulder poles, paper documents, simple tables, cooking equipment, food sacks, concealed paths and a modest shelter.",
+        "mustAvoid": "No large permanent headquarters complex, modern roads, electric infrastructure, later-war weapons, helicopters, identifiable invented portraits, or imagery suggesting the entire Việt Bắc region was one camp.",
+        "isGeneralIllustration": false
+      },
+      "openIssues": [
+        "The autumn–winter 1947 Việt Bắc campaign is not given a precise date span in this scene because the opened official sources do not use one consistent terminal date. The scene therefore concentrates on the base area itself."
+      ]
+    },
+    {
+      "n": 7,
+      "id": "s07-border-campaign-1950",
+      "titleVi": "Chiến dịch Biên giới 1950",
+      "titleEn": "The Border Campaign, 1950",
+      "dateLabelVi": "16/09–14/10/1950 theo niên đại tác chiến sử dụng trong hồ sơ",
+      "dateLabelEn": "16 Sep–14 Oct 1950, using the operational chronology adopted in this dossier",
+      "periodNote": "Two independent institutions support 16 September–14 October as the campaign chronology used here, but other National Museum articles use 17 or 22 October as the endpoint. The difference is flagged rather than hidden.",
+      "place": {
+        "vi": "Đường số 4, khu vực Cao Bằng–Lạng Sơn; trọng điểm Đông Khê",
+        "en": "Route 4, Cao Bằng–Lạng Sơn area; with Đông Khê as the opening focus",
+        "modernNote": "The scene concerns the northeastern border corridor in present-day Cao Bằng and Lạng Sơn provinces."
+      },
+      "passageEn": "The Border Campaign began on 16 September 1950 with an attack on Đông Khê, a French strongpoint on Route 4 between Cao Bằng and Lạng Sơn. Đông Khê fell on 18 September. Fighting then focused on French columns moving through the Route 4 corridor. This dossier uses 14 October as the operational end, although some museum accounts use later dates as French withdrawals continued. In plain terms, the campaign broke much of the French border defence and opened a more direct connection between resistance-held northern Vietnam and China. This mattered for movement, supplies, and the strategic security of Việt Bắc.",
+      "passageVi": "Chiến dịch Biên giới mở màn ngày 16 tháng 9 năm 1950 bằng trận tiến công Đông Khê, một cứ điểm của Pháp trên Đường số 4 giữa khu vực Cao Bằng và Lạng Sơn. Đông Khê bị đánh chiếm ngày 18 tháng 9. Sau đó, chiến sự tập trung vào các cánh quân Pháp di chuyển trên hành lang Đường số 4. Hồ sơ này dùng ngày 14 tháng 10 làm mốc kết thúc tác chiến, dù một số bài của bảo tàng dùng những ngày muộn hơn khi việc rút quân Pháp còn tiếp diễn. Nhìn tổng quát, chiến dịch phá vỡ phần lớn hệ thống phòng thủ biên giới của Pháp và mở một tuyến liên lạc trực tiếp hơn giữa vùng kháng chiến ở miền Bắc Việt Nam với Trung Quốc, có ý nghĩa đối với vận chuyển, tiếp tế và an toàn chiến lược của Việt Bắc.",
+      "captionVi": "Minh họa chiến trường Đường số 4 trong Chiến dịch Biên giới 1950, với Đông Khê là mục tiêu mở màn.",
+      "captionEn": "Illustration of the Route 4 battlefield during the 1950 Border Campaign, with Đông Khê as the opening objective.",
+      "claims": [
+        {
+          "id": "c07-1",
+          "text": "The campaign opened on 16 September 1950; this dossier uses 14 October as its operational end, while other National Museum articles use later terminal dates.",
+          "textVi": "Chiến dịch mở màn ngày 16/09/1950; hồ sơ này dùng ngày 14/10 làm mốc kết thúc tác chiến, trong khi một số bài khác của Bảo tàng Lịch sử Quốc gia dùng mốc muộn hơn.",
+          "date": "1950-09-16/1950-10-14",
+          "places": [
+            "Cao Bằng",
+            "Lạng Sơn",
+            "Đường số 4"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Cách đây 63 năm (16/9/1950 – 14/10/1950). Ta mở chiến dịch Biên giới thu đông (Chiến dịch Lê Hồng Phong II)",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/15060/cach-djay-63-nam-16-9-1950-14-10-1950-ta-mo-chien-dich-bien-gioi-thu-djong-chien-dich-le-hong-phong-ii.html",
+              "locator": "Title and chronological account of the campaign",
+              "supports": "The 16 September–14 October chronology."
+            },
+            {
+              "title": "Tổng cục cung cấp trong Chiến dịch Biên giới",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/tong-cuc-cung-cap-trong-chien-dich-bien-gioi-481907",
+              "locator": "Campaign chronology, including opening attack and 14 October ending",
+              "supports": "The opening on 16 September and the campaign ending on 14 October."
+            },
+            {
+              "title": "Chiến dịch Biên giới Thu Đông (16/9-17/10/1950) - Sự thành công trong sử dụng kế hoạch tác chiến",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/18574/chien-dich-bien-gioi-thu-djong-16-9-17-10-1950-su-thanh-cong-trong-su-dung-ke-hoach-tac-chien.html",
+              "locator": "Title and campaign chronology",
+              "supports": "Documents an alternative 17 October terminal date."
+            },
+            {
+              "title": "Ngày 22/10/1950, kết thúc chiến dịch Lê Hồng Phong II",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/2002/67939/ngay-22-10-1950-ket-thuc-chien-dich-le-hong-phong-ii.html",
+              "locator": "Title and concluding paragraphs on French withdrawal from Route 4 posts",
+              "supports": "Documents an alternative 22 October endpoint associated with completion of withdrawals from remaining Route 4 positions."
+            }
+          ],
+          "independentSources": 2,
+          "status": "disputed",
+          "notes": "The start date is consistent. For the end, QĐND and one National Museum chronology use 14 October, while other National Museum pages use 17 or 22 October, apparently reflecting different definitions of the operational endpoint and subsequent French withdrawals."
+        },
+        {
+          "id": "c07-2",
+          "text": "The campaign opened with the attack on Đông Khê on Route 4 on 16 September, and Đông Khê was taken on 18 September.",
+          "textVi": "Chiến dịch mở màn bằng trận tiến công Đông Khê trên Đường số 4 ngày 16/09; Đông Khê bị đánh chiếm ngày 18/09/1950.",
+          "date": "1950-09-16/1950-09-18",
+          "places": [
+            "Đông Khê",
+            "Đường số 4",
+            "Cao Bằng",
+            "Lạng Sơn"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Cách đây 63 năm (16/9/1950 – 14/10/1950). Ta mở chiến dịch Biên giới thu đông (Chiến dịch Lê Hồng Phong II)",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/15060/cach-djay-63-nam-16-9-1950-14-10-1950-ta-mo-chien-dich-bien-gioi-thu-djong-chien-dich-le-hong-phong-ii.html",
+              "locator": "Chronology of the Đông Khê attack, 16–18 September",
+              "supports": "The opening attack on Đông Khê and its capture on 18 September."
+            },
+            {
+              "title": "Tổng cục cung cấp trong Chiến dịch Biên giới",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/tong-cuc-cung-cap-trong-chien-dich-bien-gioi-481907",
+              "locator": "Paragraphs on the decision to attack Đông Khê and the opening two days of fighting",
+              "supports": "Đông Khê as the opening objective, attacked on 16 September and taken two days later."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "No casualty figures are used."
+        },
+        {
+          "id": "c07-3",
+          "text": "The campaign broke much of the French defensive system along Route 4 and was followed by French withdrawals from border positions.",
+          "textVi": "Chiến dịch phá vỡ phần lớn hệ thống phòng thủ của Pháp trên Đường số 4 và dẫn tới việc quân Pháp rút khỏi nhiều vị trí ở khu vực biên giới.",
+          "date": "1950-09/1950-10",
+          "places": [
+            "Đường số 4",
+            "Cao Bằng",
+            "Lạng Sơn"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Cách đây 63 năm (16/9/1950 – 14/10/1950). Ta mở chiến dịch Biên giới thu đông (Chiến dịch Lê Hồng Phong II)",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/15060/cach-djay-63-nam-16-9-1950-14-10-1950-ta-mo-chien-dich-bien-gioi-thu-djong-chien-dich-le-hong-phong-ii.html",
+              "locator": "Concluding assessment of Route 4 and the border area",
+              "supports": "The collapse of the French Route 4 defensive system and the changed situation along the border."
+            },
+            {
+              "title": "Tổng cục cung cấp trong Chiến dịch Biên giới",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/tong-cuc-cung-cap-trong-chien-dich-bien-gioi-481907",
+              "locator": "Concluding paragraphs on the result of the campaign",
+              "supports": "The removal of the border blockade and strengthening of the Việt Bắc base."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The wording stays qualitative and avoids casualty or prisoner totals that were not needed for the scene."
+        },
+        {
+          "id": "c07-4",
+          "text": "Opening a more direct connection to China mattered because it improved cross-border movement and access to material support while strengthening the security of Việt Bắc.",
+          "textVi": "Việc mở một tuyến liên lạc trực tiếp hơn với Trung Quốc có ý nghĩa vì tạo điều kiện cho giao thông qua biên giới, tiếp nhận vật chất và củng cố an toàn của căn cứ Việt Bắc.",
+          "date": "1950",
+          "places": [
+            "Việt Bắc",
+            "Vietnam-China border"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Cách đây 63 năm (16/9/1950 – 14/10/1950). Ta mở chiến dịch Biên giới thu đông (Chiến dịch Lê Hồng Phong II)",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/15060/cach-djay-63-nam-16-9-1950-14-10-1950-ta-mo-chien-dich-bien-gioi-thu-djong-chien-dich-le-hong-phong-ii.html",
+              "locator": "Purpose and concluding significance of the campaign",
+              "supports": "Breaking the isolation of Việt Bắc and opening the border connection."
+            },
+            {
+              "title": "Tổng cục cung cấp trong Chiến dịch Biên giới",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/tong-cuc-cung-cap-trong-chien-dich-bien-gioi-481907",
+              "locator": "Campaign objectives and concluding assessment",
+              "supports": "Opening transport links toward China and strengthening Việt Bắc."
+            },
+            {
+              "title": "Asymmetric State Building (1949–1954)",
+              "publisher": "Cambridge University Press",
+              "url": "https://www.cambridge.org/core/books/abs/state-building-in-cold-war-asia/asymmetric-state-building-19491954/0E1D6F5AE001445B1C32988CB97C2C6A",
+              "locator": "Chapter summary on the DRV's territorial connection to China after 1949",
+              "supports": "The wider importance of a connected border for obtaining material resources during the war against French colonial forces."
+            }
+          ],
+          "independentSources": 3,
+          "status": "verified",
+          "notes": "The passage states the logistical and strategic importance without assigning an unsupported single motive or claiming that supplies alone determined the campaign's outcome."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "strongpoint",
+          "pos": "noun",
+          "meaningVi": "cứ điểm; vị trí phòng thủ kiên cố",
+          "ipa": "/ˈstrɒŋpɔɪnt/"
+        },
+        {
+          "word": "corridor",
+          "pos": "noun",
+          "meaningVi": "hành lang; tuyến giao thông nối các khu vực",
+          "ipa": "/ˈkɒrɪdɔː(r)/"
+        },
+        {
+          "word": "supply",
+          "pos": "noun",
+          "meaningVi": "vật tư; nguồn tiếp tế",
+          "ipa": "/səˈplaɪ/"
+        },
+        {
+          "word": "strategic",
+          "pos": "adjective",
+          "meaningVi": "thuộc chiến lược; có ý nghĩa chiến lược",
+          "ipa": "/strəˈtiːdʒɪk/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "Mountainous Route 4 terrain near a small French strongpoint and road corridor, with Vietnamese troops moving through wooded slopes and a road linking border posts.",
+        "period": "September–October 1950",
+        "viewpoint": "Wide elevated documentary-style view emphasizing terrain, road and positions rather than close combat.",
+        "architecture": "Small period military posts, simple local houses and mountain roads appropriate to Cao Bằng–Lạng Sơn in 1950.",
+        "clothing": "Period-appropriate Vietnamese resistance uniforms or simple field clothing; French colonial troops only if clearly generic and historically appropriate.",
+        "objects": "Mountain road, field packs, bicycles or hand-carried supplies, simple fortifications and communication routes.",
+        "mustAvoid": "No casualty spectacle, no invented troop totals, no tanks or aircraft unless specifically documented for the depicted event, no AK-pattern rifles, M16s, helicopters, later Vietnam War equipment, modern highways or identifiable invented portraits.",
+        "isGeneralIllustration": false
+      },
+      "openIssues": [
+        "The campaign's terminal date is not uniform across the opened official sources. Two independent institutions support 14 October for the operational chronology used here, while National Museum pages also use 17 and 22 October. The dossier therefore states the disagreement explicitly."
+      ]
+    },
+    {
+      "n": 8,
+      "id": "s08-life-in-the-rear",
+      "titleVi": "Đời sống ở hậu phương",
+      "titleEn": "Life in the Rear",
+      "dateLabelVi": "1946–1954 — minh họa tổng quát",
+      "dateLabelEn": "1946–1954 — general illustration",
+      "periodNote": "This is deliberately a composite illustration of recurring rear-area activities across the resistance period, not a reconstruction of one date, village or campaign.",
+      "place": {
+        "vi": "Các vùng hậu phương kháng chiến",
+        "en": "Resistance-held rear areas",
+        "modernNote": "The visual combines activities documented in different regions and years; it must not be labelled as one specific village."
+      },
+      "passageEn": "Across the resistance years, life in the rear combined farming, study, and support for the front. People were encouraged to increase food production, save resources, and contribute rice or other supplies. Literacy work also continued: Bình dân học vụ expanded after 1945, and wartime adult education included bổ túc bình dân from 1949. During major campaigns, civilian porters carried rice, medicine, and military supplies over difficult roads, using shoulder poles, baskets, bicycles, boats, and pack animals. These tasks changed by region and year, so this scene should be shown as a general illustration rather than one exact day or village.",
+      "passageVi": "Trong những năm kháng chiến, đời sống ở hậu phương gắn việc sản xuất, học tập với hỗ trợ tiền tuyến. Người dân được vận động tăng gia sản xuất, tiết kiệm và đóng góp gạo cùng các vật phẩm cần thiết. Công tác xóa mù chữ cũng tiếp tục: phong trào Bình dân học vụ phát triển từ sau năm 1945, còn giáo dục bổ túc trong thời chiến có hình thức bổ túc bình dân từ năm 1949. Trong các chiến dịch lớn, dân công vận chuyển gạo, thuốc men và vật tư quân sự qua những tuyến đường khó khăn bằng đòn gánh, quang sọt, xe đạp, thuyền và súc vật thồ. Những hoạt động này thay đổi tùy nơi và tùy năm, vì vậy cảnh này chỉ là minh họa tổng quát, không phải một ngày hay một làng cụ thể.",
+      "captionVi": "Minh họa tổng quát đời sống hậu phương 1946–1954: sản xuất, học chữ và dân công vận chuyển tiếp tế.",
+      "captionEn": "General illustration of rear-area life, 1946–1954: production, literacy study and civilian transport of supplies.",
+      "claims": [
+        {
+          "id": "c08-1",
+          "text": "Increasing food production and conserving or contributing resources were recurring parts of rear-area mobilization during the resistance.",
+          "textVi": "Tăng gia sản xuất, tiết kiệm và đóng góp nguồn lực là những nội dung thường xuyên trong việc huy động hậu phương thời kháng chiến.",
+          "date": "1946-1954",
+          "places": [
+            "Resistance-held areas of Vietnam"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Giá trị sưu tập tranh cổ động giai đoạn 1945-1975 hiện lưu giữ tại Bảo tàng Lịch sử Quốc gia",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3096/72041/gia-tri-suu-tap-tranh-co-djong-giai-djoan-1945-1975-hien-luu-giu-tai-bao-tang-lich-su-quoc-gia.html",
+              "locator": "Section discussing posters from the 1946–1954 resistance period",
+              "supports": "Campaigns encouraging increased production, thrift, anti-hunger efforts and contributions to the resistance."
+            },
+            {
+              "title": "Công tác hậu cần chiến dịch phản công Việt Bắc Thu Đông năm 1947",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/cong-tac-hau-can-chien-dich-phan-cong-viet-bac-thu-dong-nam-1947-481470",
+              "locator": "Logistics directives and paragraphs on food production and supply",
+              "supports": "Increase of production and civilian provision of rice and food during wartime."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "This is a broad pattern, not a claim that every household participated in the same way."
+        },
+        {
+          "id": "c08-2",
+          "text": "Literacy work continued during the resistance: Bình dân học vụ expanded after 1945, and wartime adult supplementary education included bổ túc bình dân from 1949.",
+          "textVi": "Công tác xóa mù chữ tiếp tục trong kháng chiến: Bình dân học vụ phát triển từ sau năm 1945 và giáo dục bổ túc cho người lớn trong thời chiến có hình thức bổ túc bình dân từ năm 1949.",
+          "date": "1945-1954",
+          "places": [
+            "Vietnam"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Chủ tịch Hồ Chí Minh với việc xây dựng nền giáo dục phục vụ kháng chiến (1945-1954)",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3096/18167/chu-tich-ho-chi-minh-voi-viec-xay-dung-nen-giao-duc-phuc-vu-khang-chien-1945-1954.html",
+              "locator": "Sections on Bình dân học vụ, Bổ túc văn hóa and wartime education",
+              "supports": "Continuation of literacy and supplementary education during the resistance."
+            },
+            {
+              "title": "Nền giáo dục của nước Việt Nam độc lập từ tháng 9/1945 đến tháng 12/1946. Kỳ 3: Hoạt động giáo dục năm 1945-1946",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3096/73461/nen-giao-duc-cua-nuoc-viet-nam-djoc-lap-tu-thang-9-1945-djen-thang-12-1946-ky-3-hoat-djong-giao-duc-nam-1945-1946.html",
+              "locator": "Section on the Bình dân học vụ movement and the 6 June 1949 decree on bổ túc bình dân",
+              "supports": "Expansion of mass literacy work and the development of bổ túc bình dân during the war."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "Two opened articles support the claim, but both are from the same institutional publisher, so they count as one independent source."
+        },
+        {
+          "id": "c08-3",
+          "text": "Civilian porters carried food, medicine and military supplies during major campaigns, using means such as shoulder poles, baskets, bicycles, boats and pack animals.",
+          "textVi": "Dân công vận chuyển lương thực, thuốc men và vật tư quân sự trong các chiến dịch lớn bằng các phương tiện như đòn gánh, quang sọt, xe đạp, thuyền và súc vật thồ.",
+          "date": "1950-1954",
+          "places": [
+            "Northern Vietnam"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Tổng cục cung cấp trong Chiến dịch Biên giới",
+              "publisher": "Báo Quân đội nhân dân - Chuyên trang Hậu cần",
+              "url": "https://hc.qdnd.vn/lich-su-hau-can/tong-cuc-cung-cap-trong-chien-dich-bien-gioi-481907",
+              "locator": "Sections on mobilization of dân công and transport of supplies",
+              "supports": "Civilian porter labour and the movement of food and supplies during the 1950 Border Campaign."
+            },
+            {
+              "title": "Một số hiện vật về công tác hậu cần trong chiến dịch Điện Biên Phủ (1954) hiện lưu giữ, trưng bày tại BTLSQG",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3096/72237/mot-so-hien-vat-ve-cong-tac-hau-can-trong-chien-dich-djien-bien-phu-1954-hien-luu-giu-trung-bay-tai-btlsqg.html",
+              "locator": "Overview of transport routes and descriptions of porter equipment in the museum collection",
+              "supports": "Use of dân công and transport by baskets, shoulder poles, bicycles, boats and pack animals for food, medicine and other supplies."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The examples come from different campaigns and are combined only because Scene 8 is explicitly a general illustration across the period."
+        },
+        {
+          "id": "c08-4",
+          "text": "Some households supported soldiers and militia by regularly setting aside part of their rice.",
+          "textVi": "Một số gia đình hỗ trợ bộ đội và dân quân bằng cách thường xuyên dành riêng một phần gạo.",
+          "date": "1948-1952",
+          "places": [
+            "Cổ Đô",
+            "Quốc Oai",
+            "Hà Tây"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Hiện vật khác",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/4103/hien-vat-khac",
+              "locator": "Object entry for the wartime 'Hũ gạo nuôi quân'",
+              "supports": "A documented household example from Cổ Đô, Quốc Oai, 1948–1952, in which rice was regularly set aside to support soldiers and militia."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "This is an illustrative documented example and must not be generalized to every household or locality."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "literacy",
+          "pos": "noun",
+          "meaningVi": "khả năng biết đọc, biết viết; trong ngữ cảnh này liên quan đến xóa mù chữ",
+          "ipa": "/ˈlɪtərəsi/"
+        },
+        {
+          "word": "porter",
+          "pos": "noun",
+          "meaningVi": "người vận chuyển, khuân vác; trong bối cảnh này thường là dân công",
+          "ipa": "/ˈpɔːtə(r)/"
+        },
+        {
+          "word": "production",
+          "pos": "noun",
+          "meaningVi": "sản xuất",
+          "ipa": "/prəˈdʌkʃən/"
+        },
+        {
+          "word": "rear",
+          "pos": "noun",
+          "meaningVi": "hậu phương",
+          "ipa": "/rɪə(r)/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "A composite resistance rear-area scene combining a rural production area, a small literacy class and a forest or village road used by civilian porters.",
+        "period": "1946–1954, deliberately non-specific",
+        "viewpoint": "Wide educational tableau with several clearly separated everyday activities, not a single battle or campaign moment.",
+        "architecture": "Simple northern and upland rural houses, temporary classrooms or communal spaces appropriate to the late 1940s and early 1950s.",
+        "clothing": "Plain rural civilian clothing appropriate to different northern resistance areas; simple scarves, conical hats or other period-appropriate local headwear only where suitable.",
+        "objects": "Farm tools, rice baskets, chalkboard or simple literacy materials, shoulder poles, woven baskets, loaded bicycles, sacks of rice and basic medical or supply packages.",
+        "mustAvoid": "Do not depict all activities as one documented event; no modern machinery, plastic packaging, modern school uniforms, later-war military equipment, helicopters, AK-pattern rifles, M16s, invented famous portraits, or imagery implying that Vietnam was unified in 1954.",
+        "isGeneralIllustration": true
+      },
+      "openIssues": [
+        "Production, literacy work and civilian transport occurred at different intensities in different places and years. The visual must remain explicitly composite and should not be captioned as a specific day, village or campaign."
+      ]
+    }
+  ]
+}

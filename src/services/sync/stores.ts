@@ -38,6 +38,8 @@ import { mergeListeningAttempts } from '@/services/listening/attempts';
 import type { ListeningAttempt } from '@/services/listening/types';
 import { travelPayload, useTravelStore } from '@/store/useTravelStore';
 import { mergeTravel, normalizeTravel } from '@/services/travel/sync';
+import { historyPayload, useHistoryStore } from '@/store/useHistoryStore';
+import { mergeHistory, normalizeHistory } from '@/services/history/progress';
 
 /**
  * Nối từng zustand store vào engine đồng bộ.
@@ -278,6 +280,16 @@ const travelStore: SyncedStore = {
   merge: (local, remote) => mergeTravel(local, remote),
 };
 
+/** Khám phá lịch sử Việt Nam: cảnh đã đọc xong / đang đọc dở / đáp án. Cộng thêm, đã đọc xong là một chiều. */
+const historyStore: SyncedStore = {
+  key: 'history',
+  read: () => historyPayload(),
+  write: (payload) => {
+    if (payload) useHistoryStore.setState({ topics: normalizeHistory(payload).topics });
+  },
+  merge: (local, remote) => mergeHistory(local as never, remote as never),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -346,4 +358,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(speakingStore);
   registerSyncedStore(travelStore);
   registerSyncedStore(listeningStore);
+  registerSyncedStore(historyStore);
 }
