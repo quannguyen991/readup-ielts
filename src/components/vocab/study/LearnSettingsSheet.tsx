@@ -7,6 +7,8 @@ import { canRecognize } from '@/services/shadow/speech';
 import type { Direction, LearnSettings, StageKind } from '@/services/vocab/topic-study';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
+import { STUDY_THEMES, THEME_ORDER } from './study-theme';
 
 /**
  * Bảng Cài đặt của màn Học.
@@ -95,6 +97,10 @@ export function LearnSettingsSheet({
                   </Row>
                 );
               })}
+            </Section>
+
+            <Section title={L('Nền & hiệu ứng', 'Background & effects')}>
+              <ThemePicker />
             </Section>
 
             <Section title={L('Cách học', 'Study mode')}>
@@ -237,5 +243,78 @@ function Row({ on, onPress, disabled, children }: { on: boolean; onPress: () => 
       </View>
       {children}
     </Pressable>
+  );
+}
+
+
+/** Máy yếu / người dùng chọn "giảm chuyển động": gợi ý nên để tắt (không tự ép — người học vẫn bật được). */
+function lowEndHint(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  const nav = navigator as Navigator & { deviceMemory?: number };
+  const reduced = typeof window !== 'undefined' && !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  return reduced || (nav.hardwareConcurrency ?? 8) <= 4 || (nav.deviceMemory ?? 8) <= 4;
+}
+
+/**
+ * "Nền & hiệu ứng": công tắc TẮT mặc định — tắt thì màn học phẳng, không dựng lớp trang trí nào.
+ * Bật thì chọn chủ đề; áp dụng NGAY (không qua bản nháp, không bắt đầu lại vòng) nên nền phía sau bảng
+ * đổi theo như xem trước. Mỗi thẻ là một ô màu nhỏ làm bằng CSS gradient.
+ */
+function ThemePicker() {
+  const { L, en } = useL();
+  const fx = useTopicStudyStore((s) => s.studyFx);
+  const setFx = useTopicStudyStore((s) => s.setStudyFx);
+  const current = useTopicStudyStore((s) => s.studyTheme);
+  const setTheme = useTopicStudyStore((s) => s.setStudyTheme);
+  return (
+    <View className="gap-2.5">
+      <Row on={fx} onPress={() => setFx(!fx)}>
+        <Icon name="sparkle" size={18} color={fx ? color.primary : '#64748B'} />
+        <Text className="flex-1 font-sans text-bodyLg text-ink">
+          {L('Bật nền & hiệu ứng', 'Turn on background & effects')}
+          {!fx ? <Text className="text-muted">{L(' · đang tắt cho nhẹ máy', ' · off for a lighter app')}</Text> : null}
+        </Text>
+      </Row>
+      {fx && lowEndHint() ? (
+        <Text className="font-sans text-label text-muted">{L('Máy này có vẻ yếu hoặc đang giảm chuyển động — nên để tắt cho mượt.', 'This device looks low-end or set to reduce motion — keeping this off is smoother.')}</Text>
+      ) : null}
+      {fx ? (
+        <View className="flex-row flex-wrap gap-2.5" accessibilityRole="radiogroup">
+          {THEME_ORDER.map((id) => {
+            const t = STUDY_THEMES[id];
+            const on = current === id;
+            return (
+              <Pressable
+                key={id}
+                accessibilityRole="radio"
+                accessibilityState={{ selected: on }}
+                accessibilityLabel={en ? t.en : t.vi}
+                onPress={() => setTheme(id)}
+                style={{ width: '31%', minWidth: 96, flexGrow: 1 }}
+              >
+                <View
+                  style={{
+                    height: 58,
+                    borderRadius: 12,
+                    borderWidth: on ? 2.5 : 1,
+                    borderColor: on ? color.primary : '#E1D9CB',
+                    overflow: 'hidden',
+                    justifyContent: 'flex-end',
+                    padding: 6,
+                    backgroundColor: t.skyBase,
+                    ...({ backgroundImage: t.swatch } as object),
+                  }}
+                >
+                  <View style={{ height: 18, width: '62%', borderRadius: 6, backgroundColor: t.card, borderWidth: 1, borderColor: t.dark ? 'rgba(255,255,255,0.25)' : 'rgba(0,0,0,0.06)' }} />
+                </View>
+                <Text className="mt-1 text-center font-semi text-label text-ink" numberOfLines={1}>
+                  {on ? '✓ ' : ''}{en ? t.en : t.vi}
+                </Text>
+              </Pressable>
+            );
+          })}
+        </View>
+      ) : null}
+    </View>
   );
 }

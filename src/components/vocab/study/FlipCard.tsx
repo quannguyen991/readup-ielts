@@ -7,6 +7,7 @@ import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
 import { SkyEffect } from '@/components/effects/SkyEffect';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { useL } from '@/i18n/useL';
+import { useStudyTheme } from './useStudyTheme';
 import { playSfx } from '@/services/audio/sfx-ui';
 
 /**
@@ -55,6 +56,7 @@ export function FlipCard({
     transform: [{ perspective: 1200 }, { rotateY: `${interpolate(rot.value, [0, 1], [180, 360])}deg` }],
   }));
 
+  const theme = useStudyTheme();
   const face = {
     position: 'absolute' as const,
     top: 0,
@@ -63,7 +65,9 @@ export function FlipCard({
     bottom: 0,
     backfaceVisibility: 'hidden' as const,
     borderRadius: 24,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: theme.card,
+    borderWidth: theme.cardBorder === 'transparent' ? 0 : 1,
+    borderColor: theme.cardBorder,
     padding: 28,
     overflow: 'hidden' as const,
     ...(CARD_SHADOW as object),
@@ -73,11 +77,11 @@ export function FlipCard({
     <Pressable accessibilityLabel={L('Lật thẻ', 'Flip card')} onPress={onFlip} style={{ height }}>
       {/* Bầu trời sáng có sao băng: mặt trước đủ, mặt sau nhạt cho dễ đọc chữ. */}
       <Animated.View style={[face, frontStyle, { alignItems: 'center', justifyContent: 'center' }]}>
-        <SkyEffect />
+        {theme.id === 'scene' ? <SkyEffect /> : null}
         {front}
       </Animated.View>
       <Animated.View style={[face, backStyle, { justifyContent: 'center' }]}>
-        <SkyEffect intensity={0.45} />
+        {theme.id === 'scene' ? <SkyEffect intensity={0.45} /> : null}
         {back}
       </Animated.View>
     </Pressable>
@@ -146,11 +150,12 @@ function Label({ children }: { children: string }) {
 }
 
 function Chips({ words }: { words: string[] }) {
+  const theme = useStudyTheme();
   return (
     <View className="flex-row flex-wrap gap-1.5">
       {words.map((w) => (
-        <View key={w} className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#F7F4EE' }}>
-          <Text className="font-mid text-label text-ink">{w}</Text>
+        <View key={w} className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.chipBg }}>
+          <Text className="font-mid text-label" style={{ color: theme.chipInk }}>{w}</Text>
         </View>
       ))}
     </View>

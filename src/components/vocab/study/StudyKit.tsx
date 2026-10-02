@@ -1,4 +1,5 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
+
 import { TappableSentence } from "@/components/lookup/TapWord";
 import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Appear } from "@/components/motion/Motion";
@@ -6,14 +7,16 @@ import { posIpa } from "@/data/study-decks";
 import { router, usePathname } from "expo-router";
 import { isVocabStudyRoute } from "@/navigation/focus-routes";
 import * as Speech from "expo-speech";
-import { englishVoice } from "@/services/audio/voice";
 import { pronounce, stopPronounce } from "@/services/audio/pronounce";
-import { isSingleWord } from "@/services/audio/pronounce-core";
+import { flushPersist } from "@/store/persist";
+import { StudyThemeProvider, useStoreTheme, useStudyTheme } from "./useStudyTheme";
+import { useTopicStudyStore } from "@/store/useTopicStudyStore";
+import { STUDY_THEMES, THEME_ORDER, type StudyTheme } from "./study-theme";
 
 import { BattleStrip } from "@/components/game/BattleStrip";
-import { useTravelBackdropOn } from "@/components/rail/TravelBackdrop";
 import { Icon } from "@/components/ui/Icon";
 import type { StudyWord } from "@/services/vocab/topic-study";
+import type { Mistake } from "@/services/vocab/mistake";
 import { color } from "@/theme/tokens";
 import { SkyEffect } from "@/components/effects/SkyEffect";
 import { useL } from "@/i18n/useL";
@@ -48,7 +51,8 @@ export function speak(
   text: string,
   opts: { rate?: number; voice?: string | null } = {},
 ) {
-  if (!opts.voice && isSingleWord(text)) {
+  // Mọi tiếng đi qua một cửa: clip Gemini (từ/câu có sẵn) → bản ghi âm người → giọng máy.
+  if (!opts.voice) {
     void pronounce(text, { rate: opts.rate });
     return;
   }
@@ -56,7 +60,7 @@ export function speak(
   Speech.speak(text, {
     language: "en-US",
     rate: opts.rate ?? 0.9,
-    voice: opts.voice ?? englishVoice(),
+    voice: opts.voice,
   });
 }
 
@@ -80,6 +84,43 @@ export function useHotkeys(
     window.addEventListener("keydown", on, true);
     return () => window.removeEventListener("keydown", on, true);
   }, [enabled]);
+}
+
+/**
+ * Màu chữ / nền theo class của NativeWind (`text-ink`, `text-muted`, `bg-white/80`…) nằm rải khắp
+ * các màn học. Ở chủ đề nền TỐI, một bộ luật CSS duy nhất (sinh từ `study-theme.ts`) đổi chúng
+ * trong vùng `[data-st="<chủ đề>"]` — không màn nào phải tự xử lý.
+ */
+const THEME_CSS_ID = "readup-study-theme-css";
+function themeCss(): string {
+  let css = "";
+  for (const id of THEME_ORDER) {
+    const t = STUDY_THEMES[id];
+    if (!t.dark) continue;
+    const r = `[data-st="${id}"]`;
+    css +=
+      `${r} .text-body{color:${t.muted}!important}` +
+      `${r} .text-muted,${r} .text-subtle{color:${t.muted}!important}` +
+      `${r} .text-ink{color:${t.ink}!important}` +
+      `${r} .text-primary-600,${r} .text-primary-700{color:#E7C98A!important}` +
+      `${r} .bg-surface,${r} .bg-surfaceAlt{background-color:${t.card}!important}` +
+      `${r} .bg-white\\/80,${r} .bg-white\\/85,${r} .bg-white\\/70,${r} .bg-primary-50,${r} .bg-primary-100{background-color:${t.soft}!important}` +
+      `${r} .border-border{border-color:${t.optBorder}!important}`;
+  }
+  return css;
+}
+function useThemeCss() {
+  useEffect(() => {
+    if (Platform.OS !== "web" || typeof document === "undefined" || document.getElementById(THEME_CSS_ID)) return;
+    const tag = document.createElement("style");
+    tag.id = THEME_CSS_ID;
+    tag.textContent = themeCss();
+    document.head.appendChild(tag);
+  }, []);
+}
+/** Gắn `data-st` để bộ luật CSS ở trên nhận ra chủ đề. */
+export function themeAttrs(t: StudyTheme): object {
+  return Platform.OS === "web" ? { dataSet: { st: t.id } } : {};
 }
 
 /** Khung một màn học: nút thoát, tên màn, thanh tiến độ, nội dung, dòng số liệu dưới. */
@@ -106,16 +147,24 @@ export function StudyFrame({
   right?: React.ReactNode;
 }) {
   const { L } = useL();
+  const theme = useStoreTheme();
+  useThemeCss();
+  // Rời màn học (Thoát, đổi trang; đóng tab đã có `pagehide`): ghi ngay tiến độ đang chờ ghi trễ.
+  useEffect(() => () => flushPersist(), []);
   const navy = isVocabStudyRoute(usePathname());
   // Đang ngồi toa tàu (cảnh thành phố làm nền): bỏ trận đấu để thẻ học nằm cao, lộ cảnh.
-  const travel = useTravelBackdropOn() && navy;
+  const travel = navy && theme.id === "scene";
   // Màn học nằm trong chế độ tập trung (không có ScrollView của Screen): không tự cuộn thì trên điện thoại
   // nội dung dài hơn màn hình (lời giải, nút Tiếp) bị cắt mà không kéo được.
   const scrollRef = useRef<ScrollView>(null);
   const scrollTop = React.useCallback(() => scrollRef.current?.scrollTo({ y: 0, animated: false }), []);
+  const textOn = navy ? theme.onBg : color.ink;
+  const pill = navy ? theme.pill : "rgba(255,255,255,0.8)";
   return (
     <TravelCompact.Provider value={travel}>
     <ScrollTop.Provider value={scrollTop}>
+    <StudyThemeProvider value={theme}>
+    <View className="flex-1" {...themeAttrs(theme)}>
     <ScrollView ref={scrollRef} className="flex-1" showsVerticalScrollIndicator={false} keyboardShouldPersistTaps="handled">
     <View
       className="w-full self-center px-4 pb-24 pt-6"
@@ -125,37 +174,54 @@ export function StudyFrame({
         <Pressable
           accessibilityRole="button"
           onPress={() => router.replace(backHref as never)}
-          className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"
+          className="flex-row items-center gap-2 rounded-pill px-4 py-2"
+          style={{ backgroundColor: pill }}
         >
-          <Icon name="chevron-left" size={18} color={color.ink} />
-          <Text className="font-semi text-body text-ink">{L("Thoát", "Exit")}</Text>
+          <Icon name="chevron-left" size={18} color={navy ? theme.pillInk : color.ink} />
+          <Text className="font-semi text-body" style={{ color: navy ? theme.pillInk : color.ink }}>{L("Thoát", "Exit")}</Text>
         </Pressable>
-        <Text className="font-strong text-body" style={{ color: navy ? "#FFFFFF" : color.ink }}>
+        <Text className="font-strong text-body" style={{ color: textOn }}>
           {title}
         </Text>
         <View style={{ minWidth: 90, alignItems: "flex-end" }}>{right}</View>
       </View>
 
       {progress ? (
-        <SegmentBar fractions={progress} navy={navy} />
+        <SegmentBar fractions={progress} theme={theme} navy={navy} />
       ) : segments ? (
-        <SegmentBar fractions={segments.map((x) => x / 2)} navy={navy} />
+        <SegmentBar fractions={segments.map((x) => x / 2)} theme={theme} navy={navy} />
       ) : null}
 
-      {battle && !travel ? <BattleStrip className="mt-4" /> : null}
+      {/* Trận đấu chỉ khi bật "Nền & hiệu ứng" — mặc định phẳng không dựng gì trang trí. */}
+      {battle && !travel && theme.fx ? <BattleStrip className="mt-4" /> : null}
 
       <View className="mt-5">{children}</View>
 
       {footer ? (
         <Text
-          className="mt-5 text-center font-sans text-body"
-          style={{ color: navy ? "rgba(255,255,255,0.86)" : "#1E293B" }}
+          className="mt-4 text-center font-sans text-label"
+          style={{ color: navy ? theme.onBg : "#1E293B", opacity: 0.82 }}
         >
           {footer}
         </Text>
       ) : null}
+      {/* Tắt nền một chạm (chủ đề Cảnh bay pixel có nút ✕ riêng ở góc dưới trái). */}
+      {theme.fx && theme.id !== "scene" ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={L("Tắt nền và hiệu ứng", "Turn off background and effects")}
+          onPress={() => useTopicStudyStore.getState().setStudyFx(false)}
+          className="mt-3 flex-row items-center gap-1.5 self-center rounded-pill px-3 py-1.5"
+          style={{ backgroundColor: theme.pill }}
+        >
+          <Icon name="close" size={13} color={theme.pillInk} />
+          <Text className="font-semi text-label" style={{ color: theme.pillInk }}>{L("Tắt nền", "Background off")}</Text>
+        </Pressable>
+      ) : null}
     </View>
     </ScrollView>
+    </View>
+    </StudyThemeProvider>
     </ScrollTop.Provider>
     </TravelCompact.Provider>
   );
@@ -166,20 +232,23 @@ const TravelCompact = React.createContext(false);
 /** Cuộn khung học về đầu — gọi khi bấm nút chính (Tiếp / Câu tiếp) để câu mới hiện từ trên xuống. */
 const ScrollTop = React.createContext<(() => void) | null>(null);
 
-function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean }) {
+function SegmentBar({ fractions, theme, navy }: { fractions: number[]; theme: StudyTheme; navy: boolean }) {
+  const lightSky = navy && !theme.dark && theme.id !== "scene";
+  const track = lightSky ? "rgba(15,23,42,0.14)" : navy ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.7)";
+  const fill = lightSky ? theme.accent : navy ? "#D9BC7F" : color.primary;
   return (
     <View className="mt-5 flex-row gap-1.5">
       {fractions.map((s, i) => (
         <View
           key={i}
           className="h-1.5 flex-1 overflow-hidden rounded-pill"
-          style={{ backgroundColor: navy ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.7)" }}
+          style={{ backgroundColor: track }}
         >
           {/* Đầy dần bằng transform (không đụng bố cục); xong hẳn thì chuyển xanh lá. */}
           <View
             className="h-1.5 w-full rounded-pill"
             style={{
-              backgroundColor: s >= 1 ? GREEN : navy ? "#D9BC7F" : color.primary,
+              backgroundColor: s >= 1 ? GREEN : fill,
               transform: [{ scaleX: Math.max(0, Math.min(1, s)) }],
               transformOrigin: "left",
               ...(Platform.OS === "web"
@@ -193,12 +262,21 @@ function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean })
   );
 }
 
-/** Thẻ câu hỏi — nền trời sáng có sao lấp lánh, cùng thẻ lật. */
+/** Thẻ câu hỏi — màu thẻ theo chủ đề; chủ đề Mặc định giữ nền trời sáng có sao lấp lánh. */
 export function StudyCard({ children }: { children: React.ReactNode }) {
   const compact = React.useContext(TravelCompact);
+  const theme = useStudyTheme();
   return (
-    <View className={`overflow-hidden rounded-[22px] bg-surface ${compact ? "p-4 lg:p-5" : "p-6 lg:p-8"}`} style={CARD_SHADOW}>
-      <SkyEffect intensity={0.7} radius={22} />
+    <View
+      className={`overflow-hidden rounded-[22px] ${compact ? "p-4 lg:p-5" : "p-6 lg:p-8"}`}
+      style={[
+        { backgroundColor: theme.card, borderWidth: theme.cardBorder === "transparent" ? 0 : 1, borderColor: theme.cardBorder },
+        theme.dark && Platform.OS === "web"
+          ? ({ boxShadow: "0 1px 2px rgba(0,0,0,0.3), 0 18px 40px rgba(0,0,0,0.35)" } as object)
+          : CARD_SHADOW,
+      ]}
+    >
+      {theme.id === "scene" ? <SkyEffect intensity={0.7} radius={22} /> : null}
       {children}
     </View>
   );
@@ -208,21 +286,26 @@ export function SpeakButton({
   text,
   rate,
   size = 20,
+  small = false,
 }: {
   text: string;
   rate?: number;
   size?: number;
+  /** Nút nhỏ (hàng từ / câu ví dụ trong bảng phản hồi). */
+  small?: boolean;
 }) {
+  const theme = useStudyTheme();
+  const box = small ? 32 : 40;
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={`Nghe "${text}"`}
       onPress={() => speak(text, { rate })}
-      hitSlop={6}
-      className="h-10 w-10 items-center justify-center rounded-pill"
-      style={{ backgroundColor: "#FBF6EC" }}
+      hitSlop={small ? 8 : 6}
+      className="items-center justify-center rounded-pill"
+      style={{ width: box, height: box, backgroundColor: theme.dark ? theme.soft : "#FBF6EC" }}
     >
-      <Icon name="volume" size={size} color={color.primary} />
+      <Icon name="volume" size={small ? 16 : size} color={theme.dark ? "#E7C98A" : theme.accent} />
     </Pressable>
   );
 }
@@ -238,6 +321,7 @@ export function StarButton({
   inline?: boolean;
 }) {
   const { L } = useL();
+  const theme = useStudyTheme();
   return (
     <Pressable
       accessibilityRole="button"
@@ -247,13 +331,13 @@ export function StarButton({
       className="h-10 w-10 items-center justify-center rounded-pill"
       style={[
         inline ? null : { position: "absolute", top: 14, right: 14, zIndex: 2 },
-        { backgroundColor: on ? "#FEF3C7" : "#F9F6F1" },
+        { backgroundColor: on ? (theme.dark ? "rgba(245,158,11,0.22)" : "#FEF3C7") : theme.dark ? theme.soft : "#F9F6F1" },
       ]}
     >
       <Icon
         name={on ? "star-fill" : "star"}
         size={19}
-        color={on ? "#F59E0B" : "#64748B"}
+        color={on ? "#F59E0B" : theme.dark ? theme.muted : "#64748B"}
       />
     </Pressable>
   );
@@ -278,6 +362,7 @@ export function ChoiceGrid({
   hidden?: number[];
 }) {
   const { L } = useL();
+  const theme = useStudyTheme();
   const revealed = picked !== null;
   // Nền toa tàu: thẻ hẹp hơn nên phương án co lại để vẫn đủ 2 cột, đệm nhỏ hơn.
   const compact = React.useContext(TravelCompact);
@@ -286,8 +371,8 @@ export function ChoiceGrid({
       {options.map((opt, i) => {
         const isCorrect = revealed && i === correctIndex;
         const isWrong = revealed && i === picked && i !== correctIndex;
-        const border = isCorrect ? GREEN : isWrong ? RED : "#EDE6D8";
-        const bg = isCorrect ? "#F6FBF7" : isWrong ? "#FEF7F8" : "#FFFFFF";
+        const border = isCorrect ? theme.good : isWrong ? theme.bad : theme.optBorder;
+        const bg = isCorrect ? theme.goodBg : isWrong ? theme.badBg : theme.optBg;
         const out = hidden.includes(i) && !isCorrect;
         return (
           <Pressable
@@ -301,7 +386,7 @@ export function ChoiceGrid({
               flexShrink: 1, flexBasis: compact ? 220 : 300,
               flexGrow: 1,
               minHeight: 48,
-              borderWidth: 1,
+              borderWidth: isCorrect || isWrong ? 1.5 : 1,
               borderColor: border,
               backgroundColor: bg,
               opacity: out ? 0.38 : 1,
@@ -311,13 +396,13 @@ export function ChoiceGrid({
             <View
               className="h-7 w-7 items-center justify-center rounded-pill"
               style={{
-                backgroundColor: isCorrect ? "#DCF3E3" : isWrong ? "#FBE1E6" : "#F7F4EE",
+                backgroundColor: isCorrect ? theme.goodBg : isWrong ? theme.badBg : theme.optNum,
               }}
             >
               <Text
                 className="font-strong text-label"
                 style={{
-                  color: isCorrect ? "#15803D" : isWrong ? "#BE123C" : color.muted,
+                  color: isCorrect ? theme.good : isWrong ? theme.bad : theme.muted,
                 }}
               >
                 {labels?.[i] ?? i + 1}
@@ -332,9 +417,9 @@ export function ChoiceGrid({
             {out ? (
               <Text className="font-semi text-label text-muted">{L("Cú đã loại", "Removed by Owl")}</Text>
             ) : isCorrect ? (
-              <Icon name="check" size={16} color={GREEN} />
+              <Icon name="check" size={16} color={theme.good} />
             ) : isWrong ? (
-              <Icon name="close" size={16} color={RED} />
+              <Icon name="close" size={16} color={theme.bad} />
             ) : null}
           </Pressable>
         );
@@ -354,54 +439,148 @@ export function ExampleLine({
   return <TappableSentence text={example} highlight={word} />;
 }
 
-/** Bảng phản hồi sau mỗi câu: một dải mảnh đúng/sai, rồi từ, nghĩa, ví dụ một dòng. */
+/** Tách chuỗi "cụm 1, cụm 2; cụm 3" thành các chip. */
+function splitList(s: string | undefined): string[] {
+  return (s ?? "")
+    .split(/[,;•·]/)
+    .map((x) => x.trim())
+    .filter(Boolean)
+    .slice(0, 5);
+}
+
+/**
+ * Bảng phản hồi sau mỗi câu — chỉ cho điều CHƯA hiện trên màn, không nhắc lại gì đã thấy:
+ *
+ *   ✓ Chính xác  |  ✗ Chưa đúng · Đáp án: …          loại từ · /phiên âm/ 🔊
+ *   Nghĩa     (chỉ khi đề + phương án chưa hiện nghĩa tiếng Việt)
+ *   Ví dụ     MỘT câu, từ đang học in đậm           🔊
+ *   Đồng nghĩa / Trái nghĩa / Hay đi cùng   chip nhỏ (chỉ khi có)
+ *   Dễ nhầm   chỉ khi chọn nhầm sang một từ khác
+ *
+ * - "Đáp án: …" chỉ in khi đáp án CHƯA lộ ở chỗ khác (câu gõ / nghe); câu chọn đã tô sẵn phương án đúng.
+ * - Không có hàng "Từ": phiên âm + loại từ + nút nghe nằm cùng dòng với kết quả (tắt bằng `pron={false}`
+ *   khi đề đã có sẵn phiên âm + nút nghe, ví dụ trắc nghiệm Anh → Việt).
+ * - Nền trung tính, không khối tô đậm xanh / đỏ: chỉ vạch 3px bên trái + biểu tượng nhỏ báo đúng / sai.
+ * - Hàng trống thì bỏ; thường chỉ còn 2–3 dòng. Khoảng cách 8 / 12 / 16.
+ */
 export function FeedbackPanel({
   ok,
   word,
   onNext,
+  mistake,
+  nextLabel,
+  answer,
+  showMeaning = true,
+  pron = true,
 }: {
   ok: boolean;
   word: StudyWord;
   onNext: () => void;
+  /** Lỗi đã gọi tên của câu sai — chỉ lỗi nhầm sang từ khác mới hiện (một dòng). */
+  mistake?: Mistake | null;
+  /** Nhãn nút sang câu sau (mặc định "Tiếp tục"). */
+  nextLabel?: string;
+  /** Đáp án đúng, in cạnh "Chưa đúng" — chỉ truyền khi câu hỏi chưa tô / hiện đáp án ở chỗ khác. */
+  answer?: string;
+  /** Hiện hàng "Nghĩa" — chỉ khi đề và các phương án chưa hiện nghĩa tiếng Việt. */
+  showMeaning?: boolean;
+  /** Hiện loại từ + phiên âm + nút nghe ở dòng kết quả. */
+  pron?: boolean;
 }) {
   const { L } = useL();
-  const tone = ok ? GREEN : RED;
+  const t = useStudyTheme();
+  const tone = ok ? t.good : t.bad;
+  const confused = !ok && mistake?.kind === "other_word" ? mistake.confused : undefined;
+  const colloc = splitList(word.collocation);
   return (
     <Appear>
-      <View className="mt-4">
-        <View style={{ borderLeftWidth: 3, borderLeftColor: tone, paddingLeft: 12 }}>
-          <View className="flex-row items-center justify-between gap-3">
-            <View className="flex-row items-center gap-1.5">
+      <View style={{ marginTop: 16 }}>
+        <View
+          style={{
+            borderRadius: 12,
+            borderLeftWidth: 3,
+            borderLeftColor: tone,
+            backgroundColor: t.soft,
+            paddingVertical: 12,
+            paddingHorizontal: 16,
+            gap: 8,
+          }}
+        >
+          <View className="flex-row flex-wrap items-center justify-between gap-x-3 gap-y-1">
+            <View className="flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
               <Icon name={ok ? "check" : "close"} size={16} color={tone} />
-              <Text className="font-semi text-body" style={{ color: tone }}>
+              <Text className="font-strong text-body" style={{ color: tone }}>
                 {ok ? L("Chính xác", "Correct") : L("Chưa đúng", "Not quite")}
               </Text>
+              {!ok && answer ? (
+                <Text className="font-sans text-body text-muted">
+                  · {L("Đáp án", "Answer")}: <Text className="font-semi text-ink">{answer}</Text>
+                </Text>
+              ) : null}
             </View>
-            <SpeakButton text={word.word} size={16} />
-          </View>
-          <View className="flex-row flex-wrap items-baseline gap-x-2">
-            <Text className="font-strong text-bodyLg text-ink">{word.word}</Text>
-            <Text className="font-sans text-label text-muted">{posIpa(word)}</Text>
-          </View>
-          <Text className="font-mid text-body text-ink">{word.meaningVi}</Text>
-          {word.example ? (
-            <View className="mt-2 flex-row items-center gap-1">
-              <View className="flex-1">
-                <ExampleLine example={word.example} word={word.word} />
+            {pron ? (
+              <View className="flex-row items-center gap-1.5">
+                <Text className="font-sans text-label text-muted">{posIpa(word)}</Text>
+                <SpeakButton text={word.word} small />
               </View>
-              <SpeakButton text={word.example} size={14} />
-            </View>
+            ) : null}
+          </View>
+
+          {showMeaning ? (
+            <FbRow label={L("Nghĩa", "Meaning")}>
+              <Text className="font-sans text-body text-ink">{word.meaningVi}</Text>
+            </FbRow>
           ) : null}
-          {word.collocation ? (
-            <Text className="mt-1 font-sans text-label text-muted">
-              {L("Hay đi cùng", "Collocations")}: <Text className="font-semi text-ink">{word.collocation}</Text>
-            </Text>
+          {word.example ? (
+            <FbRow label={L("Ví dụ", "Example")} right={<SpeakButton text={word.example} small />}>
+              <ExampleLine example={word.example} word={word.word} />
+            </FbRow>
           ) : null}
-          <SynAnt word={word} />
+          <ChipRow label={L("Đồng nghĩa", "Synonyms")} items={(word.synonyms ?? []).slice(0, 5)} />
+          <ChipRow label={L("Trái nghĩa", "Antonyms")} items={(word.antonyms ?? []).slice(0, 5)} />
+          <ChipRow label={L("Hay đi cùng", "Collocations")} items={colloc} />
+          {confused ? (
+            <FbRow label={L("Dễ nhầm", "Confused")}>
+              <Text className="font-sans text-body text-ink">
+                <Text className="font-semi">{word.word}</Text> ({word.meaningVi}) ≠{" "}
+                <Text className="font-semi">{confused.word}</Text> ({confused.meaningVi})
+              </Text>
+            </FbRow>
+          ) : null}
         </View>
-        <PrimaryButton label={L("Tiếp tục", "Continue")} hint="Enter" onPress={onNext} />
+        <PrimaryButton label={nextLabel ?? L("Tiếp tục", "Continue")} hint="Enter" onPress={onNext} />
       </View>
     </Appear>
+  );
+}
+
+const FB_LABEL_W = 84;
+
+/** Một hàng của bảng phản hồi: nhãn nhỏ mờ (13px) cố định bên trái, giá trị bình thường bên phải, nút nghe nhỏ ở mép phải. */
+function FbRow({ label, children, right }: { label: string; children: React.ReactNode; right?: React.ReactNode }) {
+  return (
+    <View className="flex-row items-start gap-2">
+      <Text className="font-sans text-label text-muted" style={{ width: FB_LABEL_W, paddingTop: 3 }}>{label}</Text>
+      <View className="min-w-0 flex-1">{children}</View>
+      {right ?? null}
+    </View>
+  );
+}
+
+/** Một hàng chip nhỏ có nhãn mờ; không có gì thì không vẽ. */
+function ChipRow({ label, items }: { label: string; items: readonly string[] }) {
+  const t = useStudyTheme();
+  if (items.length === 0) return null;
+  return (
+    <FbRow label={label}>
+      <View className="flex-row flex-wrap gap-1.5">
+        {items.map((w) => (
+          <View key={w} className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: t.chipBg }}>
+            <Text className="font-sans text-label" style={{ color: t.chipInk }}>{w}</Text>
+          </View>
+        ))}
+      </View>
+    </FbRow>
   );
 }
 
@@ -417,6 +596,7 @@ export function PrimaryButton({
   disabled?: boolean;
 }) {
   const scrollTop = React.useContext(ScrollTop);
+  const theme = useStudyTheme();
   return (
     <Pressable
       accessibilityRole="button"
@@ -426,7 +606,7 @@ export function PrimaryButton({
         scrollTop?.();
       }}
       className="mt-3 flex-row items-center justify-center gap-2 rounded-2xl py-3"
-      style={{ backgroundColor: disabled ? "#F4E7D1" : color.primary }}
+      style={{ backgroundColor: disabled ? theme.accentDisabled : theme.accent }}
     >
       <Text className="font-strong text-body text-white">{label}</Text>
       {hint ? (
@@ -443,14 +623,15 @@ export function GhostButton({
   label: string;
   onPress: () => void;
 }) {
+  const theme = useStudyTheme();
   return (
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
       className="mt-2 items-center rounded-2xl py-3"
-      style={{ backgroundColor: "#F9F6F1" }}
+      style={{ backgroundColor: theme.soft }}
     >
-      <Text className="font-semi text-body" style={{ color: "#475569" }}>
+      <Text className="font-semi text-body" style={{ color: theme.dark ? theme.muted : "#475569" }}>
         {label}
       </Text>
     </Pressable>
@@ -460,6 +641,7 @@ export function GhostButton({
 /** Đồng nghĩa / trái nghĩa — chỉ bộ có dữ liệu viết tay mới có; không có thì không vẽ gì. */
 export function SynAnt({ word, center }: { word: StudyWord; center?: boolean }) {
   const { L } = useL();
+  const theme = useStudyTheme();
   const rows = [
     { label: L('Đồng nghĩa', 'Synonyms'), words: word.synonyms ?? [] },
     { label: L('Trái nghĩa', 'Antonyms'), words: word.antonyms ?? [] },
@@ -471,8 +653,8 @@ export function SynAnt({ word, center }: { word: StudyWord; center?: boolean }) 
         <View key={r.label} className={`flex-row flex-wrap items-center gap-1.5 ${center ? 'justify-center' : ''}`}>
           <Text className="mr-0.5 font-sans text-label text-muted">{r.label}</Text>
           {r.words.map((w) => (
-            <View key={w} className="rounded-pill px-2 py-0.5" style={{ backgroundColor: '#F7F4EE' }}>
-              <Text className="font-mid text-label text-ink">{w}</Text>
+            <View key={w} className="rounded-pill px-2 py-0.5" style={{ backgroundColor: theme.chipBg }}>
+              <Text className="font-mid text-label" style={{ color: theme.chipInk }}>{w}</Text>
             </View>
           ))}
         </View>

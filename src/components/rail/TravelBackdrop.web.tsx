@@ -29,6 +29,9 @@ import { useTravelPractice } from '@/store/useTravelPractice';
 import { isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useL } from '@/i18n/useL';
 import { FlyerThumb } from './FlyerThumb';
+import { StudyBackdrop } from '@/components/vocab/study/StudyBackdrop';
+import { useStoreThemeId } from '@/components/vocab/study/useStudyTheme';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 
 /**
  * Nền cảnh bay có đang bật không. Khi bật, màn học bỏ thanh đánh quái ở trên
@@ -53,7 +56,9 @@ export function useTravelActive(): boolean {
   const on = useTravelBackdropOn();
   const pathname = usePathname();
   const practicing = useTravelPractice((s) => s.count > 0);
-  return on && (isVocabStudyRoute(pathname) || (isTravelLightRoute(pathname) && practicing));
+  // Màn ôn từ chỉ chạy cảnh bay khi người học bật "Nền & hiệu ứng" và chọn chủ đề Cảnh bay pixel.
+  const sceneStudy = useStoreThemeId() === 'scene' && isVocabStudyRoute(pathname);
+  return sceneStudy || (on && isTravelLightRoute(pathname) && practicing);
 }
 
 /** Ô nhiễu 128×128 (SVG feTurbulence, xám) — lát kín, dùng để làm mịn dải chuyển sắc. */
@@ -62,6 +67,10 @@ const DITHER = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 export function TravelBackdrop({ color, tone = 'dark', children }: { color: string; tone?: 'dark' | 'light'; children: React.ReactNode }) {
   const hydrated = useHydrated();
   const on = useRailStore((s) => s.backdrop);
+  const themeId = useStoreThemeId();
+  // Màn ôn từ vựng: nền phẳng (mặc định) hoặc chủ đề người học chọn; chỉ chủ đề "Cảnh bay pixel" mới dựng cảnh canvas.
+  if (hydrated && tone === 'dark' && themeId !== 'scene') return <StudyBackdrop id={themeId}>{children}</StudyBackdrop>;
+  if (hydrated && tone === 'dark') return <Travel color={color} tone={tone}>{children}</Travel>;
   // Trước khi hydrate (và khi người dùng tắt) giữ nền cũ: máy chủ không biết cài đặt của máy này.
   if (!hydrated || !on) return tone === 'light' ? <LightGrid>{children}</LightGrid> : <OliveGrid color={color}>{children}</OliveGrid>;
   return (
@@ -203,7 +212,7 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={L('Tắt nền cảnh bay', 'Turn off the flying background')}
-          onPress={() => useRailStore.getState().set({ backdrop: false })}
+          onPress={() => useTopicStudyStore.getState().setStudyFx(false)}
           style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(10,18,34,.72)', borderWidth: 1, borderColor: 'rgba(255,255,255,.14)' }}
         >
           <Text style={{ color: 'rgba(255,255,255,.8)', fontSize: 14 }}>✕</Text>

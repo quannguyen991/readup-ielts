@@ -214,6 +214,8 @@ export function importLearnedTopicWords(
   existingEntries: Record<string, VocabEntry>,
   existingCards: Record<string, StoredCard>,
   now: Date = new Date(),
+  /** Ngày ôn (YYYY-MM-DD, giờ máy) đã xếp cho từ ở lịch Leitner — thẻ FSRS mới đến hạn đúng ngày đó, khỏi dồn cả đống về hôm nay. */
+  dueDayOf?: (slug: string, word: string) => string | undefined,
 ): { entries: Record<string, VocabEntry>; cards: Record<string, StoredCard>; addedCount: number } {
   const existingLemmas = new Set(
     Object.values(existingEntries).map((e) => e.lemma.trim().toLowerCase()),
@@ -262,7 +264,8 @@ export function importLearnedTopicWords(
       for (const kind of CARD_KINDS) {
         const k = cardKey(id, kind);
         const outcome = applyGrade(nextCards, id, kind, stage === 2 ? 3 : 2, now);
-        nextCards[k] = outcome.card;
+        const day = dueDayOf?.(slug, word);
+        nextCards[k] = day ? { ...outcome.card, due: new Date(`${day}T09:00:00`).toISOString() } : outcome.card;
       }
     }
   }

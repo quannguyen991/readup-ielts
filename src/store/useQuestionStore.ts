@@ -2,9 +2,11 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
-import type { Article } from '@/data/articles';
+import { getArticleById, type Article } from '@/data/articles';
 import { buildMixedRuleQuestionSet, buildRuleQuestionSet } from '@/services/questions/build-set';
 import { generateOfflineQuestionSet } from '@/services/questions/offline-generator';
+import type { MixBlock } from '@/services/questions/ielts-types';
+import { generateMixSet, type MixResult } from '@/services/questions/remote';
 import type { QuestionSet } from '@/services/questions/types';
 import type { QuestionType } from '@/types/database';
 
@@ -21,9 +23,14 @@ import type { QuestionType } from '@/types/database';
  * cũng ra đúng bộ đề ấy, và không tốn một lượt gọi nào. Cache vẫn giữ, nhưng chỉ
  * để khỏi dựng lại — mất cache thì dựng lại ra y hệt.
  */
+/** Tiến độ tạo đề theo bộ trộn: bao nhiêu khối đã xong trong tổng số. */
+export type MixProgress = { done: number; total: number };
+
 type QuestionState = {
   sets: Record<string, QuestionSet>;
   loading: Record<string, boolean>;
+  /** Bài nào đang tạo đề theo bộ trộn (không persist). */
+  generating: Record<string, MixProgress | undefined>;
   lastError: string | null;
 
   ensureSet: (
@@ -34,6 +41,18 @@ type QuestionState = {
   /** Bộ trộn dạng cho nhánh luyện xen kẽ — cố tình KHÔNG đi thành khối. */
   mixedSet: (article: Article) => Promise<QuestionSet>;
   getSet: (articleId: string) => QuestionSet | undefined;
+  /**
+   * Tạo đề theo bộ trộn dạng bài (nối tiêu đề, bảng, Choose TWO…). Mỗi khối một lượt
+   * gọi song song nên `generating` cập nhật theo từng khối. Thành công thì bộ mới
+   * thay bộ cũ của bài và được giữ lại.
+   */
+  generateSet: (
+    article: Article,
+    blocks: MixBlock[],
+    options?: { fetchImpl?: typeof fetch },
+  ) => Promise<MixResult>;
+  /** Bỏ bộ đã tạo, quay về bộ mặc định dựng bằng luật. */
+  clearSet: (articleId: string) => void;
 };
 
 /** Vị trí passage suy ra từ mức khó đã gán cho bài. */
@@ -46,6 +65,7 @@ export const useQuestionStore = create<QuestionState>()(
     (set, get) => ({
       sets: {},
       loading: {},
+      generating: {},
       lastError: null,
 
       ensureSet: async (article, options = {}) => {
@@ -59,6 +79,8 @@ export const useQuestionStore = create<QuestionState>()(
         */
         const wanted = options.types?.length ? [...options.types].sort().join(',') : '';
         if (cached && (cached.requestedTypes ?? '') === wanted && !options.force) return cached;
+        // Bộ người học đã TẠO theo bộ trộn không bị bộ mặc định đè khi mở lại bài.
+        if (cached?.requestedTypes?.startsWith('mix:') && !options.types?.length && !options.force) return cached;
 
         /*
           Dựng ngay, không bật cờ chờ.
@@ -108,6 +130,41 @@ export const useQuestionStore = create<QuestionState>()(
       },
 
       getSet: (articleId) => get().sets[articleId],
+
+      generateSet: async (article, blocks, options = {}) => {
+        set((state) => ({ generating: { ...state.generating, [article.id]: { done: 0, total: blocks.length } } }));
+        try {
+          const result = await generateMixSet(
+            {
+              id: article.id,
+              title: article.title,
+              paragraphs: article.paragraphs,
+              passageTier: article.passageTier,
+              inLibrary: !article.id.startsWith('user-') && Boolean(getArticleById(article.id)),
+            },
+            blocks,
+            {
+              ...(options.fetchImpl ? { fetchImpl: options.fetchImpl } : {}),
+              onProgress: (done, total) =>
+                set((state) => ({ generating: { ...state.generating, [article.id]: { done, total } } })),
+            },
+          );
+          if (result.set) {
+            const next = result.set;
+            set((state) => ({ sets: { ...state.sets, [article.id]: next } }));
+          }
+          return result;
+        } finally {
+          set((state) => ({ generating: { ...state.generating, [article.id]: undefined } }));
+        }
+      },
+
+      clearSet: (articleId) =>
+        set((state) => {
+          const next = { ...state.sets };
+          delete next[articleId];
+          return { sets: next };
+        }),
     }),
     {
       name: `${STORAGE_PREFIX}questions`,

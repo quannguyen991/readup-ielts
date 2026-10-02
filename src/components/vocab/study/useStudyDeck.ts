@@ -8,10 +8,16 @@ import { findTopicWordInfo } from '@/services/vocab/spaced-repetition';
 import { useL } from '@/i18n/useL';
 
 /** Bộ học theo slug; sổ từ dựng lại khi người dùng lưu thêm từ hoặc học trong chủ đề. */
+const NO_ENTRIES: Record<string, never> = {};
+const NO_STAGES: Record<string, Record<string, 0 | 1 | 2>> = {};
+
 export function useStudyDeck(slug: string): StudyDeck | undefined {
   const { L } = useL();
-  const entries = useVocabStore((s) => s.entries);
-  const stages = useTopicStudyStore((s) => s.stages);
+  // Chỉ SỔ TỪ mới phụ thuộc tiến độ mọi bộ; bộ thường thì không đăng ký store nào — nếu không,
+  // mỗi câu trả lời (đổi `stages`) làm dựng lại cả bộ và vẽ lại cả màn học.
+  const notebook = slug === NOTEBOOK_SLUG;
+  const entries = useVocabStore((s) => (notebook ? s.entries : NO_ENTRIES));
+  const stages = useTopicStudyStore((s) => (notebook ? s.stages : NO_STAGES));
   const custom = useCustomDeckStore((s) => (slug.startsWith(CUSTOM_PREFIX) ? s.decks[slug.slice(CUSTOM_PREFIX.length)] : undefined));
   return useMemo(() => {
     if (slug.startsWith(CUSTOM_PREFIX)) {

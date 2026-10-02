@@ -14,7 +14,6 @@ import {
   ChoiceGrid,
   FeedbackPanel,
   GhostButton,
-  GREEN,
   PrimaryButton,
   RED,
   speak,
@@ -33,7 +32,8 @@ import {
   WordFace,
 } from "@/components/vocab/study/FlipCard";
 import { LearnSettingsSheet } from "@/components/vocab/study/LearnSettingsSheet";
-import { MistakeBox, RoundAnalysis } from "@/components/vocab/study/MistakeViews";
+import { RoundAnalysis } from "@/components/vocab/study/MistakeViews";
+import { useStoreTheme } from "@/components/vocab/study/useStudyTheme";
 import { Appear, CrossFade } from "@/components/motion/Motion";
 import { Icon } from "@/components/ui/Icon";
 import { preloadPronunciation, useAutoPronounce } from "@/services/audio/pronounce";
@@ -64,7 +64,9 @@ import {
 } from "@/services/vocab/learn-loop";
 import { canRecognize, startListening, type Listening } from "@/services/shadow/speech";
 import { sfx } from "@/services/audio/sfx";
-import { masteredCount, useTopicStudyStore } from "@/store/useTopicStudyStore";
+import { useTopicStudyStore } from "@/store/useTopicStudyStore";
+import { footerLine, learnedCount, roundStats } from "@/services/vocab/progress-counters";
+import { autoSpeakWhen } from "@/services/vocab/auto-speak";
 import { useStudyStore } from "@/store/useStudyStore";
 import { useGameStore } from "@/store/useGameStore";
 import { useOwlHint } from "@/components/game/useOwlHint";
@@ -83,8 +85,6 @@ const KIND_LABEL: Record<StageKind, { vi: string; en: string }> = {
   fill: { vi: "Điền chỗ trống", en: "Fill the gap" },
   type: { vi: "Gõ từ", en: "Type the word" },
 };
-/** Chữ trên nền chàm của màn học (ngoài thẻ trắng). */
-const ON_NAVY = "rgba(255,255,255,0.86)";
 const AMBER_ON_NAVY = "#FCD34D";
 
 /**
@@ -107,9 +107,11 @@ export default function LearnScreen() {
   const { slug = "", only } = useLocalSearchParams<{ slug: string; only?: string }>();
   const starredRun = only === "starred";
   const { L, en } = useL();
+  const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const stages = useTopicStudyStore((s) => s.stages[slug]);
+  const reviewsOfSet = useTopicStudyStore((s) => s.reviews[slug]);
   const starred = useTopicStudyStore((s) => s.starred[slug] ?? NO_STARS);
   const settings = useTopicStudyStore((s) => s.learnSettings);
   const setStage = useTopicStudyStore((s) => s.setStage);
@@ -208,15 +210,12 @@ export default function LearnScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, dir, word?.word]);
 
-  // Từ tiếng Anh hiện ra làm đề (thẻ / trắc nghiệm chiều Anh → Việt) thì đọc luôn;
-  // thẻ chiều Việt → Anh thì đọc khi lật ra từ. Chiều nghe đã tự đọc ở trên.
-  const shownWord =
-    word && verdict === null && dir === "enToVi" && (head?.kind === "flash" || head?.kind === "mcq")
-      ? word.word
-      : word && head?.kind === "flash" && dir === "viToEn" && flipped
-        ? word.word
-        : null;
-  useAutoPronounce(shownWord, `${step}-${flipped ? 1 : 0}`);
+  // TỰ PHÁT ÂM (quy tắc ở `services/vocab/auto-speak.ts`): đọc từ tiếng Anh đúng một lần mỗi câu,
+  // lúc nó xuất hiện — làm đề, lật ra, hoặc lộ ra cùng đáp án (đúng hay sai đều đọc).
+  const speakWhen = word && head ? autoSpeakWhen({ kind: head.kind, dir, flipped, revealed: verdict !== null }) : null;
+  const shownWord: string | null = word && speakWhen ? word.word : null;
+  const speakKey = `${step}-${speakWhen ?? ""}`;
+  useAutoPronounce(shownWord, speakKey);
   useEffect(() => {
     preloadPronunciation(round.map((w) => w.word));
   }, [round]);
@@ -233,7 +232,7 @@ export default function LearnScreen() {
   const done = !head;
   // Mỗi đoạn một từ, đầy dần theo mức của từ trong vòng.
   const progress = round.map((w) => loopFraction(plan, w.word, opts));
-  const wordsDone = progress.filter((f) => f >= 1).length;
+  const stats = roundStats(plan, round);
 
   const restart = (s: LearnSettings = settings) => {
     const r = freshRound(s);
@@ -256,14 +255,15 @@ export default function LearnScreen() {
   const record = (ok: boolean) => {
     if (!word || !head) return;
     setAsked((n) => n + 1);
+    const st = useTopicStudyStore.getState();
+    // MỌI câu trả lời đi vào lịch ôn ngay (không đợi hết vòng): thoát giữa chừng vẫn đã xếp lịch.
+    st.review(slug, word.word, ok);
     if (!ok) {
       setWrong((n) => n + 1);
       addLapse(slug, word.word);
-      useTopicStudyStore.getState().review(slug, word.word, false);
     }
     if (ok) {
-      const current =
-        useTopicStudyStore.getState().stages[slug]?.[word.word] ?? 0;
+      const current = st.stages[slug]?.[word.word] ?? 0;
       // "Đã nhớ" chỉ khi câu này làm xong từ VÀ cả vòng chưa sai từ đó lần nào —
       // sai rồi thì cần qua sạch ở một vòng sau.
       const slipped =
@@ -274,8 +274,6 @@ export default function LearnScreen() {
           ? 2
           : Math.max(current, 1);
       setStage(slug, word.word, next as 1 | 2);
-      // Xong từ trong vòng (lần gặp cuối, dạng khó nhất) mới tính một lần nhớ cho lịch ôn.
-      if (finishesWord(plan, head, true, opts) && !slipped) useTopicStudyStore.getState().review(slug, word.word, true);
     }
   };
 
@@ -488,11 +486,8 @@ export default function LearnScreen() {
   }
 
   const backHref = `/vocabulary/topic/${slug}`;
-  // Cùng mốc với thanh tiến độ ở trên (từ của VÒNG NÀY), rồi mới tới số của cả bộ.
-  const footer = L(
-    `Vòng này: ${wordsDone}/${round.length} từ xong  •  ${asked} câu đã làm  •  Cả bộ đã nhớ ${masteredCount(stages)}/${topic.words.length}`,
-    `This round: ${wordsDone}/${round.length} words done  •  ${asked} answered  •  Set remembered ${masteredCount(stages)}/${topic.words.length}`,
-  );
+  // Một dòng yên lặng: từ đã qua / câu đã làm trong vòng, rồi số từ đã nhớ của cả bộ.
+  const footer = footerLine(stats, learnedCount(topic.words, stages, reviewsOfSet), topic.words.length, en);
   const stageOf = (w: string) => stages?.[w] ?? 0;
 
   const settingsButton = (
@@ -501,7 +496,7 @@ export default function LearnScreen() {
       onPress={() => setShowSettings(true)}
       className="flex-row items-center gap-2 rounded-pill bg-white/80 px-4 py-2"
     >
-      <Icon name="settings" size={17} color={color.ink} />
+      <Icon name="settings" size={17} color={theme.dark ? theme.ink : color.ink} />
       <Text className="font-semi text-body text-ink">{L("Cài đặt", "Settings")}</Text>
     </Pressable>
   );
@@ -629,7 +624,7 @@ export default function LearnScreen() {
           </Text>
         </View>
         {head!.tag ? (
-          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? AMBER_ON_NAVY : ON_NAVY }}>
+          <Text className="font-semi text-label" style={{ color: head!.tag === "retry" ? (theme.dark || theme.id === "scene" ? AMBER_ON_NAVY : "#92400E") : theme.onBg }}>
             {head!.tag === "retry" ? L("↻ Gặp lại từ vừa sai", "↻ Back after a miss") : L("↻ Gặp lại cho nhớ lâu", "↻ Repeat for long-term memory")}
           </Text>
         ) : null}
@@ -672,15 +667,15 @@ export default function LearnScreen() {
                   <RateButton
                     label={L("Chưa nhớ", "Not yet")}
                     hint="1"
-                    tone={RED}
-                    bg="#FFF1F2"
+                    tone={theme.bad}
+                    bg={theme.badBg}
                     onPress={() => rateCard(false)}
                   />
                   <RateButton
                     label={L("Đã biết", "I knew it")}
                     hint="2"
-                    tone={GREEN}
-                    bg="#ECFDF3"
+                    tone={theme.good}
+                    bg={theme.goodBg}
                     onPress={() => rateCard(true)}
                   />
                 </View>
@@ -707,7 +702,7 @@ export default function LearnScreen() {
                   {fill.before}
                   <Text
                     className="font-strong"
-                    style={{ color: revealed ? (verdict ? "#15803D" : "#A8843F") : "#94A3B8" }}
+                    style={{ color: revealed ? (verdict ? theme.good : theme.bad) : theme.muted }}
                   >
                     {revealed ? fill.answer : " _______ "}
                   </Text>
@@ -811,14 +806,14 @@ export default function LearnScreen() {
                     autoCapitalize="none"
                     autoCorrect={false}
                     placeholder={micOk ? L("Gõ hoặc bấm micro để nói…", "Type, or tap the mic to speak…") : L("Gõ từ tiếng Anh…", "Type the English word…")}
-                    placeholderTextColor="#94A3B8"
+                    placeholderTextColor={theme.muted}
                     onSubmitEditing={() => submitTyped()}
                     className="min-w-0 flex-1 rounded-2xl px-5 py-3 text-center font-semi text-cardTitle text-ink"
                     style={{
                       borderWidth: 1,
                       borderColor:
-                        verdict === null ? (listening ? color.primary : "#E1D9CB") : verdict ? GREEN : RED,
-                      backgroundColor: "#FCFBF8",
+                        verdict === null ? (listening ? color.primary : theme.fieldBorder) : verdict ? theme.good : theme.bad,
+                      backgroundColor: theme.field,
                     }}
                   />
                   {micOk && verdict === null ? (
@@ -855,16 +850,24 @@ export default function LearnScreen() {
             )}
 
             {verdict === true && synonymUsed ? (
-              <Text className="mt-3 font-semi text-body" style={{ color: "#15803D" }}>
+              <Text className="mt-3 font-semi text-body" style={{ color: theme.good }}>
                 {L(
                   `Chấp nhận “${synonymUsed}” — từ đồng nghĩa. Từ của bộ: ${w.word}.`,
                   `Accepted “${synonymUsed}” — a synonym. The set's word: ${w.word}.`,
                 )}
               </Text>
             ) : null}
-            {verdict === false && mistake ? <MistakeBox m={mistake} /> : null}
             {verdict !== null ? (
-              <FeedbackPanel ok={verdict} word={w} onNext={next} />
+              <FeedbackPanel
+                ok={verdict}
+                word={w}
+                onNext={next}
+                mistake={mistake}
+                // Chỉ in lại đáp án khi chưa tô sẵn ở chỗ khác (câu gõ, câu nghe); chỉ hiện nghĩa khi đề + phương án chưa có nghĩa.
+                answer={head!.kind === "type" || dir === "listen" ? w.word : undefined}
+                showMeaning={head!.kind !== "mcq" && !(head!.kind === "type" && dir === "viToEn")}
+                pron={!(head!.kind === "mcq" && dir === "enToVi")}
+              />
             ) : null}
           </StudyCard>
         )}

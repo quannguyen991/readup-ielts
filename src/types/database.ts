@@ -83,6 +83,12 @@ export type QuestionType =
   | 'sentence_completion'
   | 'summary_completion'
   | 'short_answer'
+  // Năm dạng bổ sung 10/2026 để phủ trọn bộ dạng bài IELTS Reading.
+  | 'multiple_choice_multi'
+  | 'note_completion'
+  | 'table_completion'
+  | 'flow_chart_completion'
+  | 'diagram_label_completion'
   | 'sat_words_in_context'
   | 'sat_central_idea'
   | 'sat_command_of_evidence'
@@ -388,6 +394,8 @@ export type Question = {
   evidence_paragraph_index: number;
   explanation: string;
   lesson_tip: string | null;
+  /** Nhóm / khuôn / giới hạn từ — xem migration 20261002000100. Thiếu với bộ đề cũ. */
+  extra?: Json | null;
   created_at: string;
 };
 

@@ -5,7 +5,7 @@ import * as Speech from 'expo-speech';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { isSfxMuted } from './sfx';
 import { englishVoice, voiceGender } from './voice';
-import { createLookup, isSingleWord, planPlayback, type Accent } from './pronounce-core';
+import { clipVoiceFor, createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
 
 export type { Accent } from './pronounce-core';
 
@@ -21,6 +21,8 @@ export type { Accent } from './pronounce-core';
  */
 
 const lookup = createLookup();
+/** Kho clip giọng Gemini (Kore / Fenrir): từ + cụm từ, rồi câu. Thiếu thư mục / index thì bỏ qua. */
+export const clips = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'] });
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined' && typeof Audio !== 'undefined';
 
 let token = 0;
@@ -50,8 +52,34 @@ export function stopPronounce(): void {
   }
 }
 
-function tts(text: string, accent: Accent, rate: number) {
-  Speech.speak(text, { language: accent === 'uk' ? 'en-GB' : 'en-US', rate, voice: englishVoice() });
+/** Chrome huỷ tiếng đang đọc rồi nói ngay thì hay nuốt mất câu mới — chờ một nhịp ngắn. */
+function speakSoon(fn: () => void, afterStop: boolean) {
+  if (!afterStop || !isWeb) return fn();
+  setTimeout(fn, 40);
+}
+
+/**
+ * Giọng máy. Trình duyệt chặn nói khi chưa chạm gì vào trang (`not-allowed`):
+ * nhớ lại và nói ở lần chạm / bấm phím đầu tiên, không để mất tiếng im lặng.
+ */
+function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean; my?: number } = {}) {
+  const go = () => {
+    if (opts.my !== undefined && opts.my !== token) return;
+    try {
+      Speech.speak(text, {
+        language: accent === 'uk' ? 'en-GB' : 'en-US',
+        rate,
+        voice: englishVoice(),
+        onError: (e: unknown) => {
+          const msg = String((e as { message?: string; error?: string })?.error ?? (e as { message?: string })?.message ?? e);
+          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate));
+        },
+      });
+    } catch {
+      /* máy không có giọng — im lặng */
+    }
+  };
+  speakSoon(go, true);
 }
 
 /** Autoplay bị trình duyệt chặn (chưa chạm gì vào trang): phát lại ở lần chạm đầu tiên. */
@@ -71,6 +99,68 @@ function retryOnGesture(fn: () => void) {
 
 export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean };
 
+const PLAY_TIMEOUT_MS = 2500;
+
+/**
+ * Phát một mp3 qua bộ quản lý âm thanh DUY NHẤT (mỗi lúc một tiếng, dừng tiếng trước).
+ * Trả `true` khi đã phát được, `false` khi lỗi / quá giờ / bị chặn — người gọi tự lùi về nguồn khác.
+ * `blocked` báo trình duyệt chặn autoplay (chờ cử chỉ đầu tiên rồi thử lại).
+ */
+export async function playClipUrl(
+  url: string,
+  opts: { rate?: number; my?: number } = {},
+): Promise<{ ok: boolean; blocked: boolean }> {
+  if (!isWeb || badUrls.has(url)) return { ok: false, blocked: false };
+  const my = opts.my ?? token;
+  try {
+    const a = new Audio(url);
+    a.playbackRate = (opts.rate ?? 0.9) <= 0.7 ? 0.8 : 1;
+    current = a;
+    a.onended = () => {
+      if (current === a) current = null;
+    };
+    await Promise.race([
+      a.play(),
+      new Promise<never>((_, rej) => setTimeout(() => rej(Object.assign(new Error('timeout'), { name: 'TimeoutError' })), PLAY_TIMEOUT_MS)),
+    ]);
+    if (my !== token) {
+      try {
+        a.pause();
+      } catch {
+        /* bỏ qua */
+      }
+    }
+    return { ok: true, blocked: false };
+  } catch (e) {
+    const name = (e as { name?: string })?.name;
+    if (current && my === token) current = null;
+    if (name === 'NotAllowedError') return { ok: false, blocked: true };
+    badUrls.add(url); // 404 / không giải mã được / quá giờ: lần sau khỏi thử lại
+    return { ok: false, blocked: false };
+  }
+}
+
+/**
+ * Phát MỘT clip theo đường dẫn bất kỳ (ví dụ `/audio/lines/kore/<tên>.mp3` của huấn luyện viên / câu ví dụ)
+ * qua cùng bộ quản lý một-tiếng-một-lúc: dừng tiếng đang đọc rồi mới phát. Trả `true` khi phát được.
+ * Muốn tra theo văn bản (từ / cụm / câu → clip của giọng đang chọn) thì dùng `pronounce(text)`.
+ */
+export async function playClip(url: string, opts: { rate?: number } = {}): Promise<boolean> {
+  stopPronounce();
+  const r = await playClipUrl(url, { rate: opts.rate, my: token });
+  return r.ok;
+}
+
+/** Giọng Gemini đang chọn (Nữ → kore, Nam → fenrir). */
+export function currentClipVoice(): ClipVoice {
+  return clipVoiceFor(voiceGender());
+}
+
+/**
+ * Đọc MỘT từ / cụm từ / câu. Thứ tự: clip giọng Gemini theo giới đã chọn
+ * (khoá = đúng chuỗi văn bản) → bản ghi âm người thật (chỉ từ đơn, chỉ giọng Nữ vì
+ * bản ghi lẫn giới) → giọng máy. Lỗi ở nguồn nào cũng lùi sang nguồn kế, không im lặng.
+ */
 export async function pronounce(text: string, opts: PronounceOpts = {}): Promise<void> {
   const word = text.trim();
   if (!word) return;
@@ -78,46 +168,46 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   const my = token;
   const accent = opts.accent ?? autoPronounceSettings().accent;
   const rate = opts.rate ?? 0.9;
+  const gender = voiceGender();
 
-  // Bản ghi âm có lẫn giọng nam/nữ, không ép được giới: chọn Nam thì từ đơn cũng đọc bằng giọng máy nam.
-  if (!isWeb || !isSingleWord(word) || voiceGender() === 'm') {
-    tts(word, accent, rate);
-    return;
-  }
-  const plan = await planPlayback(word, accent, lookup);
-  if (my !== token) return; // đã có lần phát mới hơn
-  if (plan.kind === 'tts') {
-    tts(word, accent, rate);
-    return;
-  }
-  let blocked = false;
-  for (const url of [plan.url, ...plan.alts]) {
-    if (badUrls.has(url)) continue;
-    try {
-      const a = new Audio(url);
-      a.playbackRate = rate <= 0.7 ? 0.8 : 1;
-      current = a;
-      a.onended = () => {
-        if (current === a) current = null;
-      };
-      await a.play();
-      return;
-    } catch (e) {
+  try {
+    // 1) Clip Gemini.
+    if (isWeb) {
+      const url = await clips.find(clipVoiceFor(gender), word);
       if (my !== token) return;
-      current = null;
-      if ((e as { name?: string })?.name === 'NotAllowedError') {
-        blocked = true;
-        break;
+      if (url) {
+        const r = await playClipUrl(url, { rate, my });
+        if (my !== token) return;
+        if (r.ok) return;
+        if (r.blocked) {
+          if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+          return;
+        }
       }
-      badUrls.add(url); // 404 / không giải mã được: lần sau khỏi thử lại
     }
+    // 2) Bản ghi âm người thật — chỉ từ đơn, giọng Nữ.
+    if (!isWeb || !isSingleWord(word) || gender === 'm') {
+      tts(word, accent, rate, { auto: opts.auto, my });
+      return;
+    }
+    const plan = await planPlayback(word, accent, lookup);
+    if (my !== token) return; // đã có lần phát mới hơn
+    if (plan.kind === 'audio') {
+      for (const u of [plan.url, ...plan.alts]) {
+        const r = await playClipUrl(u, { rate, my });
+        if (my !== token) return;
+        if (r.ok) return;
+        if (r.blocked) {
+          if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
+          return;
+        }
+      }
+    }
+    // 3) Giọng máy.
+    tts(word, accent, rate, { auto: opts.auto, my });
+  } catch {
+    if (my === token) tts(word, accent, rate, { auto: opts.auto, my });
   }
-  if (my !== token) return;
-  if (blocked) {
-    if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
-    return;
-  }
-  tts(word, accent, rate);
 }
 
 /**
@@ -152,7 +242,9 @@ function probe(url: string): Promise<boolean> {
 }
 
 export function preloadPronunciation(words: readonly string[], accent?: Accent): void {
-  if (!isWeb || voiceGender() === 'm') return;
+  if (!isWeb) return;
+  void clips.warm(currentClipVoice());
+  if (voiceGender() === 'm') return;
   const acc = accent ?? autoPronounceSettings().accent;
   void (async () => {
     for (const w of words) {
@@ -174,22 +266,31 @@ let lastAuto = '';
 let lastAutoAt = 0;
 
 /**
+ * Tự đọc `word` nếu người học bật "Tự phát âm" và app không tắt tiếng. Dùng chung cho
+ * lúc từ hiện ra và lúc đáp án lộ ra (đúng hay sai). `id` chống phát hai lần cùng một lần hiện.
+ * Trả `true` khi đã gọi phát.
+ */
+export function autoSpeak(word: string | null | undefined, id: string): boolean {
+  if (!word) return false;
+  const { auto } = autoPronounceSettings();
+  if (!auto || isSfxMuted()) return false;
+  const full = `${id}|${word}`;
+  const now = Date.now();
+  if (full === lastAuto && now - lastAutoAt < 1500) return false;
+  lastAuto = full;
+  lastAutoAt = now;
+  void pronounce(word, { auto: true });
+  return true;
+}
+
+/**
  * Tự đọc `word` khi nó hiện ra (đổi `word` hoặc `key` = thẻ mới). `word` rỗng/null
  * thì im. Tôn trọng công tắc "Tự phát âm" và tắt tiếng của app.
  */
 export function useAutoPronounce(word: string | null | undefined, key: string | number = ''): void {
   useEffect(() => {
     if (!word) return;
-    const { auto } = autoPronounceSettings();
-    if (!auto || isSfxMuted()) return;
-    const id = `${key}|${word}`;
-    const t = setTimeout(() => {
-      const now = Date.now();
-      if (id === lastAuto && now - lastAutoAt < 1500) return;
-      lastAuto = id;
-      lastAutoAt = now;
-      void pronounce(word, { auto: true });
-    }, 150);
+    const t = setTimeout(() => autoSpeak(word, String(key)), 150);
     return () => clearTimeout(t);
   }, [word, key]);
 }

@@ -192,3 +192,113 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
   const cands = [...(first ? [first] : []), ...guessAudioUrls(text, accent)];
   return cands.length ? { kind: 'audio', url: cands[0]!, alts: cands.slice(1) } : { kind: 'tts' };
 }
+
+/* ------------------------------------------------------------------ *
+ * KHO CLIP GIỌNG GEMINI (giọng B: Nữ = Kore, Nam = Fenrir)
+ *
+ * Mỗi bộ clip là một thư mục tĩnh có `index.json` ánh xạ NGUYÊN VĂN chuỗi
+ * (từ / cụm từ / câu) → tên tệp mp3 cùng thư mục. Tải index MỘT lần (lười),
+ * tra không phân biệt hoa thường. Thư mục / index chưa có thì bỏ qua, im lặng —
+ * app lùi về bản ghi âm người thật rồi giọng máy như cũ.
+ * ------------------------------------------------------------------ */
+
+export type ClipVoice = 'kore' | 'fenrir';
+/** Nữ → Kore, Nam → Fenrir. */
+export function clipVoiceFor(gender: 'f' | 'm'): ClipVoice {
+  return gender === 'm' ? 'fenrir' : 'kore';
+}
+
+/** Chuẩn hoá khoá tra clip: bỏ khoảng trắng thừa, thường hoá, dấu nháy cong → thẳng. */
+export function clipKey(text: string): string {
+  return text.trim().replace(/\s+/g, ' ').replace(/[’‘]/g, "'").toLowerCase();
+}
+
+export type ClipFetch = (url: string) => Promise<{ ok: boolean; status: number; json(): Promise<unknown> }>;
+
+export type ClipLibrary = {
+  /** URL clip của `text` ở giọng `voice` trong các bộ đã đăng ký (theo thứ tự), hoặc null. */
+  find(voice: ClipVoice, text: string): Promise<string | null>;
+  /** Tra bộ nhớ, không gọi mạng. undefined = chưa nạp index. */
+  peek(voice: ClipVoice, text: string): string | null | undefined;
+  /** Nạp sẵn index của một giọng (gọi sớm cho đỡ trễ lần phát đầu). */
+  warm(voice: ClipVoice): Promise<void>;
+};
+
+/** `sets`: thư mục gốc theo thứ tự ưu tiên, ví dụ `/audio/words/{voice}/` rồi `/audio/lines/{voice}/`. */
+export function createClipLibrary(
+  deps: { sets: readonly string[]; fetch?: ClipFetch; retryMs?: number; now?: () => number },
+): ClipLibrary {
+  const retryMs = deps.retryMs ?? 60_000;
+  const now = deps.now ?? Date.now;
+  type Idx = { map: Map<string, string> | null; retryAt: number; p?: Promise<void> };
+  const idx = new Map<string, Idx>();
+  const dirOf = (tpl: string, voice: ClipVoice) => tpl.replace('{voice}', voice).replace(/\/?$/, '/');
+
+  const load = (tpl: string, voice: ClipVoice): Promise<void> => {
+    const key = `${tpl}|${voice}`;
+    let e = idx.get(key);
+    if (!e) {
+      e = { map: null, retryAt: 0 };
+      idx.set(key, e);
+    }
+    const entry = e;
+    if (entry.map) return Promise.resolve();
+    if (entry.p) return entry.p;
+    if (now() < entry.retryAt) return Promise.resolve();
+    const f = deps.fetch ?? (typeof fetch === 'function' ? (fetch as unknown as ClipFetch) : null);
+    if (!f) return Promise.resolve();
+    entry.p = (async () => {
+      try {
+        const res = await f(`${dirOf(tpl, voice)}index.json`);
+        if (!res.ok) {
+          // 404: chưa có thư mục — thử lại sau, không chặn phát.
+          entry.retryAt = now() + retryMs;
+          return;
+        }
+        const json = (await res.json()) as unknown;
+        const map = new Map<string, string>();
+        if (json && typeof json === 'object' && !Array.isArray(json)) {
+          for (const [k, v] of Object.entries(json as Record<string, unknown>)) {
+            if (typeof v === 'string' && v) map.set(clipKey(k), v);
+          }
+        }
+        entry.map = map;
+      } catch {
+        entry.retryAt = now() + retryMs;
+      } finally {
+        entry.p = undefined;
+      }
+    })();
+    return entry.p;
+  };
+
+  const lookup = (tpl: string, voice: ClipVoice, text: string): string | null => {
+    const file = idx.get(`${tpl}|${voice}`)?.map?.get(clipKey(text));
+    return file ? `${dirOf(tpl, voice)}${file}` : null;
+  };
+
+  return {
+    async find(voice, text) {
+      await Promise.all(deps.sets.map((s) => load(s, voice)));
+      for (const s of deps.sets) {
+        const u = lookup(s, voice, text);
+        if (u) return u;
+      }
+      return null;
+    },
+    peek(voice, text) {
+      let loadedAll = true;
+      for (const s of deps.sets) {
+        const e = idx.get(`${s}|${voice}`);
+        if (!e?.map) {
+          loadedAll = loadedAll && !!e && now() < e.retryAt;
+          continue;
+        }
+        const u = lookup(s, voice, text);
+        if (u) return u;
+      }
+      return loadedAll ? null : undefined;
+    },
+    warm: (voice) => Promise.all(deps.sets.map((s) => load(s, voice))).then(() => undefined),
+  };
+}

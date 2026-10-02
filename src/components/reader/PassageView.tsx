@@ -55,6 +55,10 @@ export type PassageViewProps = {
   onHighlightRange?: (paragraphIndex: number, start: number, end: number) => void;
   /** Công cụ highlight: chạm vào một vệt đã tô. */
   onHighlightPress?: (highlightId: string) => void;
+  /** In chữ cái đậm (A., B., …) ở lề trái mỗi đoạn, như đề IELTS. Chữ nằm ngoài vùng bôi nên không lệch vị trí tô. */
+  letters?: boolean;
+  /** Cỡ chữ gốc, mặc định 15. */
+  baseSize?: number;
 };
 
 type Token = { text: string; isWord: boolean; start: number; end: number };
@@ -82,6 +86,8 @@ export function PassageView({
   tool = 'vocab',
   onHighlightRange,
   onHighlightPress,
+  letters = false,
+  baseSize = 15,
 }: PassageViewProps) {
   return (
     <View className="gap-4" nativeID={PASSAGE_CONTAINER_ID}>
@@ -105,6 +111,8 @@ export function PassageView({
           tool={tool}
           onHighlightRange={onHighlightRange}
           onHighlightPress={onHighlightPress}
+          letter={letters && index < 26 ? String.fromCharCode(65 + index) : null}
+          baseSize={baseSize}
         />
       ))}
     </View>
@@ -129,7 +137,11 @@ function Paragraph({
   tool,
   onHighlightRange,
   onHighlightPress,
+  letter,
+  baseSize,
 }: {
+  letter: string | null;
+  baseSize: number;
   tool: ReaderTool;
   onHighlightRange?: PassageViewProps['onHighlightRange'];
   onHighlightPress?: PassageViewProps['onHighlightPress'];
@@ -152,7 +164,7 @@ function Paragraph({
   const tokens = useMemo(() => tokenize(text), [text]);
   const ranges = useMemo(() => highlightRanges(text, highlights), [text, highlights]);
 
-  const fontSize = 15 * fontScale;
+  const fontSize = baseSize * fontScale;
   const lineHeight = fontSize * 1.75;
 
   return (
@@ -172,6 +184,11 @@ function Paragraph({
           : undefined
       }
     >
+      {letter ? (
+        <Text style={{ width: 22, fontSize, lineHeight, fontWeight: '800', color: textColor ?? '#334155', ...(fontFamily ? { fontFamily } : null) }}>
+          {letter}.
+        </Text>
+      ) : null}
       <View className="flex-1">
       <Text
         className="font-sans text-body"

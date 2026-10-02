@@ -13,6 +13,29 @@ export type GeneratedQuestion = {
   evidenceParagraphIndex: number;
   explanation: string;
   lessonTip: string | null;
+  /**
+   * Nhóm câu chung một khuôn: "Choose TWO letters" (mỗi đáp án một số câu), bảng /
+   * sơ đồ / ghi chú điền chỗ trống. Câu cùng `groupId` phải đứng liền nhau.
+   * TUỲ CHỌN — mọi bộ đề lưu từ trước không có trường này.
+   */
+  groupId?: string;
+  /** Khuôn của cả nhóm; CHỈ có ở câu ĐẦU nhóm. */
+  form?: QuestionForm;
+  /** Số từ tối đa của đáp án điền ("NO MORE THAN TWO WORDS"); số tính là một từ. */
+  maxWords?: number;
+  /** Đáp án khác cũng được nhận (dạng điền từ). */
+  accept?: string[];
+};
+
+/**
+ * Khuôn dựng sẵn của một nhóm điền chỗ trống. `lines` chứa ô trống `{{k}}`, k đếm
+ * từ 1 trong nhóm. Với bảng, mỗi hàng là một chuỗi `a | b | {{1}}`; hàng đầu là
+ * tiêu đề cột. Với sơ đồ chữ, mỗi dòng là một nút.
+ */
+export type QuestionForm = {
+  kind: 'table' | 'flow' | 'notes' | 'summary' | 'diagram';
+  title?: string;
+  lines: string[];
 };
 
 export type QuestionSet = {
@@ -29,6 +52,8 @@ export type QuestionSet = {
   model: string | null;
   createdAt: string;
   questions: GeneratedQuestion[];
+  /** Dạng của khối nào đã đặt mà không dựng nổi (qua bộ kiểm) — để báo người học. */
+  failedTypes?: QuestionType[];
 };
 
 export const QUESTION_TYPE_LABEL: Record<QuestionType, string> = {
@@ -42,6 +67,11 @@ export const QUESTION_TYPE_LABEL: Record<QuestionType, string> = {
   sentence_completion: 'Sentence Completion',
   summary_completion: 'Summary Completion',
   short_answer: 'Short Answer',
+  multiple_choice_multi: 'Multiple Choice (more than one answer)',
+  note_completion: 'Note Completion',
+  table_completion: 'Table Completion',
+  flow_chart_completion: 'Flow-chart Completion',
+  diagram_label_completion: 'Diagram Label Completion',
   // Giữ nguyên tên tiếng Anh của College Board — người luyện SAT tra tài liệu
   // theo đúng những tên này.
   sat_words_in_context: 'Words in Context',

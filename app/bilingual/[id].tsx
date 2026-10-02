@@ -14,7 +14,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import * as Speech from 'expo-speech';
 import { englishVoice } from '@/services/audio/voice';
 
-import { OliveGrid } from '@/components/layout/OliveGrid';
 import { Appear, CrossFade } from '@/components/motion/Motion';
 import { HoverGlossText, type InlineGloss, type WordPick } from '@/components/reader/HoverGloss';
 import { WordPopover } from '@/components/reader/WordPopover';
@@ -29,7 +28,6 @@ import {
 import { parseInline } from '@/lib/inlineMarkup';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { Label, Sticker } from '@/components/illust/Sticker';
-import { CuteBook } from '@/components/illust/Cute';
 import { CuteBulb, CuteMagnifier, CuteNotebook, CuteTrophy, Motion } from '@/components/illust/CuteMore';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
@@ -58,28 +56,29 @@ import { bilingualQuestionType, bilingualTopic } from '@/components/bilingual/la
 type Theme = { bg: string; ink: string; body: string; muted: string; rule: string; tint: string; accent: string };
 
 const LIGHT: Theme = {
-  bg: '#FBF8EF',
-  ink: '#1B2310',
-  body: '#2E3524',
-  muted: '#8A8E78',
-  rule: '#ECE7D6',
-  tint: '#F1ECDA',
+  bg: '#FFFFFF',
+  ink: '#1A1A17',
+  body: '#34332E',
+  muted: '#85837A',
+  rule: '#E8E5DC',
+  tint: '#F5F3EC',
   accent: '#957846',
 };
 const DARK: Theme = {
-  bg: '#20251A',
-  ink: '#F1EEDF',
-  body: '#D8D5C4',
-  muted: '#8F937F',
-  rule: '#30372A',
-  tint: '#2A3122',
-  accent: '#B9CB83',
+  bg: '#1D1C19',
+  ink: '#F4F2EA',
+  body: '#D6D3C8',
+  muted: '#8E8B80',
+  rule: '#2E2D28',
+  tint: '#272622',
+  accent: '#D6B66E',
 };
+/** Nền trang phẳng, không hoa văn. */
+const PAGE = { light: '#F4F2EB', dark: '#121211' };
 
 const FONTS = [
-  { key: 'fraunces', label: 'Fraunces', family: readingFont.fraunces },
+  { key: 'literata', label: 'Literata', family: readingFont.literata },
   { key: 'lora', label: 'Lora', family: readingFont.body },
-  { key: 'playfair', label: 'Playfair', family: readingFont.display },
   { key: 'sans', label: 'Jakarta', family: readingFont.sans },
 ] as const;
 type FontKey = (typeof FONTS)[number]['key'];
@@ -128,16 +127,19 @@ export default function BilingualReaderScreen() {
   return <Reader article={article} />;
 }
 
-function Backdrop({ children }: { children: React.ReactNode }) {
-  // Chàm đậm: cùng họ màu với thẻ tra từ, để giấy kem nổi lên mà không chói.
-  return <OliveGrid color="#635030">{children}</OliveGrid>;
+function Backdrop({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return (
+    <View className="flex-1" style={{ backgroundColor: dark ? PAGE.dark : PAGE.light }}>
+      {children}
+    </View>
+  );
 }
 
 function Reader({ article }: { article: BilingualArticle }) {
   const { width, height } = useWindowDimensions();
   const wide = width >= 1024;
 
-  const [fontKey, setFontKey] = useState<FontKey>('fraunces');
+  const [fontKey, setFontKey] = useState<FontKey>('literata');
   const [fontSize, setFontSize] = useState(17);
   const [dark, setDark] = useState(false);
   const [right, setRight] = useState<View2>('vi');
@@ -146,10 +148,10 @@ function Reader({ article }: { article: BilingualArticle }) {
   const [pick, setPick] = useState<(WordPick & { paragraph: number | null }) | null>(null);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [checked, setChecked] = useState(false);
-  const [toolbarH, setToolbarH] = useState(64);
+  const [toolbarH, setToolbarH] = useState(56);
 
   const theme = dark ? DARK : LIGHT;
-  const fontFamily = FONTS.find((f) => f.key === fontKey)?.family ?? readingFont.fraunces;
+  const fontFamily = FONTS.find((f) => f.key === fontKey)?.family ?? readingFont.literata;
   const dict = useArticleDictionary(article.id);
 
   const entries = useVocabStore((s) => s.entries);
@@ -199,8 +201,7 @@ function Reader({ article }: { article: BilingualArticle }) {
     <VietnamesePane
       article={article}
       theme={theme}
-      // Playfair không hợp chữ thân dài; bản Việt dùng Fraunces khi người đọc chọn Playfair.
-      fontFamily={fontKey === 'playfair' ? readingFont.fraunces : fontFamily}
+      fontFamily={readingFont.sans}
       fontSize={fontSize}
       scrollRef={viScroll}
       onMeasure={(i, y) => {
@@ -239,7 +240,7 @@ function Reader({ article }: { article: BilingualArticle }) {
   const narrowPane = narrow === 'en' ? enPane : narrow === 'vi' ? viPane : narrow === 'questions' ? questionsPane : vocabPane;
 
   return (
-    <Backdrop>
+    <Backdrop dark={dark}>
       <SafeAreaView edges={['top']} className="flex-1">
         <View className="w-full flex-1 self-center px-4 pt-3 lg:px-8" style={{ maxWidth: MAX_WIDTH + 64 }}>
           <View onLayout={(e) => setToolbarH(e.nativeEvent.layout.height)}>
@@ -294,9 +295,6 @@ function Reader({ article }: { article: BilingualArticle }) {
 /*                                 THANH TRÊN                              */
 /* ====================================================================== */
 
-const CREAM = '#F4F1E4';
-const PILL_BG = 'rgba(30,40,14,0.38)';
-const PILL_BORDER = 'rgba(255,255,255,0.14)';
 
 function Toolbar(props: {
   wide: boolean;
@@ -312,8 +310,7 @@ function Toolbar(props: {
   onDark: () => void;
   savedCount: number;
 }) {
-  // Đủ chỗ cho dòng phụ "THE BAND 9 PRESS" cạnh tên trang.
-  const roomy = useWindowDimensions().width >= 1200;
+  const ink = props.dark ? '#F4F2EA' : '#1A1A17';
   const [open, setOpen] = useState(false);
   const { L } = useL();
 
@@ -332,27 +329,16 @@ function Toolbar(props: {
         className="h-9 w-9 items-center justify-center"
       >
         <View style={{ transform: [{ rotate: '180deg' }] }}>
-          <Icon name="arrow-right" size={22} color={CREAM} strokeWidth={2} />
+          <Icon name="arrow-right" size={22} color={ink} strokeWidth={2} />
         </View>
       </Pressable>
 
-      <View className="min-w-0 flex-row items-baseline gap-2.5" style={{ flexShrink: 1 }}>
-        <Text numberOfLines={1} style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: CREAM }}>
-          {L('đọc song ngữ', 'bilingual reading')}
-        </Text>
-        <View aria-hidden style={{ alignSelf: 'center' }}>
-          <Motion kind="float">
-            <Sticker tilt={-8}>
-              <CuteBook size={30} />
-            </Sticker>
-          </Motion>
-        </View>
-        {roomy ? (
-          <Text style={{ fontFamily: readingFont.mono, fontSize: 11, letterSpacing: 2, color: 'rgba(244,241,228,0.8)' }}>
-            •  THE BAND 9 PRESS
-          </Text>
-        ) : null}
-      </View>
+      <Text
+        numberOfLines={1}
+        style={{ flexShrink: 1, minWidth: 0, fontFamily: readingFont.sansHeavy, fontSize: 20, letterSpacing: -0.4, color: ink }}
+      >
+        {L('Đọc song ngữ', 'Bilingual reading')}
+      </Text>
 
       <View className="flex-1" />
 
@@ -363,9 +349,9 @@ function Toolbar(props: {
         onPress={() => setOpen(true)}
         style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
       >
-        <View className="h-10 flex-row items-center gap-2 rounded-pill px-4" style={{ backgroundColor: PILL_BG, borderWidth: 1, borderColor: PILL_BORDER }}>
-          <Icon name="settings" size={16} color={CREAM} strokeWidth={2} />
-          <Text style={{ fontSize: 13, fontWeight: '700', color: CREAM }}>{L('Cài đặt', 'Settings')}</Text>
+        <View className="h-10 flex-row items-center gap-2 rounded-pill px-4" style={{ backgroundColor: props.dark ? '#1D1C19' : '#FFFFFF', borderWidth: 1, borderColor: props.dark ? '#2E2D28' : '#E3E0D6' }}>
+          <Icon name="settings" size={16} color={ink} strokeWidth={2} />
+          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: ink }}>{L('Cài đặt', 'Settings')}</Text>
         </View>
       </HoverPressable>
 
@@ -374,7 +360,7 @@ function Toolbar(props: {
   );
 }
 
-const PAPER = { bg: '#FBF8EF', ink: '#1B2310', muted: '#7C8069', rule: '#ECE7D6', chip: '#F1ECDA', accent: '#957846' };
+const PAPER = { bg: '#FFFFFF', ink: '#1A1A17', muted: '#85837A', rule: '#E8E5DC', chip: '#F3F1EA', accent: '#957846' };
 
 /** Bảng cài đặt của màn đọc song ngữ: tấm hiển thị, mặt chữ, cỡ chữ, nền, toàn màn hình, từ đã lưu. */
 function ReaderSettings(
@@ -414,15 +400,17 @@ function ReaderSettings(
             top: 64,
             right: Math.max(12, (width - MAX_WIDTH - 64) / 2 + 16),
             width: Math.min(360, width - 24),
-            borderRadius: 22,
+            borderRadius: 20,
             backgroundColor: PAPER.bg,
+            borderWidth: 1,
+            borderColor: PAPER.rule,
             padding: 18,
             cursor: 'auto',
-            ...(Platform.OS === 'web' ? ({ boxShadow: '0 24px 60px rgba(10,14,40,0.35)' } as object) : { elevation: 10 }),
+            ...(Platform.OS === 'web' ? ({ boxShadow: '0 12px 32px rgba(20,20,10,0.16)' } as object) : { elevation: 10 }),
           } as object}
         >
           <View className="flex-row items-center justify-between">
-            <Text style={{ fontFamily: readingFont.display, fontStyle: 'italic', fontWeight: '700', fontSize: 22, color: PAPER.ink }}>{L('Cài đặt đọc', 'Reading settings')}</Text>
+            <Text style={{ fontFamily: readingFont.sansHeavy, fontSize: 20, letterSpacing: -0.3, color: PAPER.ink }}>{L('Cài đặt đọc', 'Reading settings')}</Text>
             <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={props.onClose} className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: PAPER.chip }}>
               <Icon name="close" size={16} color={PAPER.ink} />
             </Pressable>
@@ -504,8 +492,8 @@ function ReaderSettings(
 
 function SettingLabel({ children }: { children: React.ReactNode }) {
   return (
-    <Text style={{ marginTop: 16, marginBottom: 8, fontSize: 11, fontWeight: '700', letterSpacing: 1.3, color: PAPER.muted }}>
-      {String(children).toUpperCase()}
+    <Text style={{ marginTop: 16, marginBottom: 8, fontFamily: readingFont.sansBold, fontSize: 12.5, color: PAPER.muted }}>
+      {String(children)}
     </Text>
   );
 }
@@ -518,7 +506,7 @@ function Choice({ on, onPress, fontFamily, children }: { on: boolean; onPress: (
       onPress={onPress}
       className="rounded-pill px-3.5 py-2"
       style={({ hovered }) => [
-        { backgroundColor: on ? PAPER.accent : hovered ? '#E9E3CD' : PAPER.chip },
+        { backgroundColor: on ? PAPER.accent : hovered ? '#E7E4DA' : PAPER.chip },
         webTransition,
       ]}
     >
@@ -557,17 +545,16 @@ function Sheet({
   badge?: 'EN' | 'VI';
   children: React.ReactNode;
 }) {
-  const pad = useWindowDimensions().width >= 768 ? 40 : 22;
+  const pad = useWindowDimensions().width >= 768 ? 36 : 20;
   return (
     <View
       className="flex-1 overflow-hidden"
       style={[
         {
           backgroundColor: theme.bg,
-          borderRadius: 24,
-          ...(Platform.OS === 'web'
-            ? ({ boxShadow: '0 24px 60px rgba(20,30,8,0.28), 0 2px 6px rgba(20,30,8,0.12)' } as object)
-            : { elevation: 8 }),
+          borderRadius: 20,
+          borderWidth: 1,
+          borderColor: theme.rule,
         },
         webTransition,
       ]}
@@ -576,9 +563,9 @@ function Sheet({
         <View
           pointerEvents="none"
           className="absolute right-7 top-6 z-10 rounded-pill px-2.5 py-0.5"
-          style={{ backgroundColor: badge === 'EN' ? 'rgba(205, 164, 94,0.12)' : 'rgba(220,38,38,0.10)' }}
+          style={{ backgroundColor: theme.tint, borderWidth: 1, borderColor: theme.rule }}
         >
-          <Text style={{ fontSize: 10.5, fontWeight: '700', letterSpacing: 0.8, color: badge === 'EN' ? '#CDA45E' : '#DC2626' }}>
+          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 11, color: theme.muted }}>
             {badge}
           </Text>
         </View>
@@ -591,15 +578,11 @@ function Sheet({
 }
 
 function Kicker({ theme, label, hint }: { theme: Theme; label: string; hint?: string }) {
-  // Chừa chỗ cho nhãn EN/VI ở góc tấm giấy: màn hẹp thì dòng gợi ý xuống hàng và chạy vào dưới nhãn.
+  // Chừa chỗ cho nhãn EN/VI ở góc thẻ.
   return (
-    <Text style={{ paddingRight: 44 }}>
-      <Text style={{ fontFamily: readingFont.sans, fontWeight: '700', fontSize: 11.5, letterSpacing: 1.8, color: theme.accent }}>
-        {label}
-      </Text>
-      {hint ? (
-        <Text style={{ fontFamily: readingFont.sans, fontSize: 12, color: theme.muted }}>{`  ·  ${hint}`}</Text>
-      ) : null}
+    <Text style={{ paddingRight: 44, fontFamily: readingFont.sansSemi, fontSize: 13, color: theme.muted }}>
+      {label}
+      {hint ? `  ·  ${hint}` : ''}
     </Text>
   );
 }
@@ -628,23 +611,22 @@ function EnglishPane({
   onWord: (paragraph: number | null) => (p: WordPick) => void;
 }) {
   const source = article.source;
-  const titleFont = fontFamily === readingFont.sans ? readingFont.fraunces : fontFamily;
   const { L, en } = useL();
   return (
     <Sheet theme={theme} scrollRef={scrollRef} badge="EN">
       <Kicker
         theme={theme}
-        label="ENGLISH"
+        label="English"
         hint={L('rê chuột vào từ để xem nghĩa, bấm vào từ để xem chi tiết', 'hover a word to see its meaning, tap it for details')}
       />
 
       <Text
         style={{
           marginTop: 16,
-          fontFamily: titleFont,
-          fontWeight: '800',
-          fontSize: fontSize + 15,
-          lineHeight: (fontSize + 15) * 1.2,
+          fontFamily: readingFont.sansHeavy,
+          letterSpacing: -0.6,
+          fontSize: fontSize + 11,
+          lineHeight: (fontSize + 11) * 1.22,
           color: theme.ink,
           paddingRight: 36,
         }}
@@ -658,31 +640,30 @@ function EnglishPane({
           onPress={() => void Linking.openURL(source.url)}
           className="mt-3 flex-row items-center gap-1.5 self-start rounded-pill px-3 py-1"
           style={({ hovered }) => [
-            { borderWidth: 1.2, borderColor: '#EAD1A6', backgroundColor: hovered ? 'rgba(234, 209, 166,0.22)' : 'rgba(234, 209, 166,0.10)' },
+            { borderWidth: 1, borderColor: theme.rule, backgroundColor: hovered ? theme.tint : 'transparent' },
             webTransition,
           ]}
         >
-          <Text style={{ fontFamily: readingFont.fraunces, fontWeight: '700', fontSize: 10.5, letterSpacing: 0.8, color: '#AF8948' }}>
-            {L('LINK BÀI VIẾT GỐC', 'ORIGINAL ARTICLE')} | {source.outlet.toUpperCase()}
+          <Text style={{ fontFamily: readingFont.sansSemi, fontSize: 12.5, color: theme.accent }}>
+            {L('Bài gốc', 'Original')} · {source.outlet}
           </Text>
-          <Icon name="external" size={10} color="#AF8948" strokeWidth={2.2} />
+          <Icon name="external" size={11} color={theme.accent} strokeWidth={2.2} />
         </HoverPressable>
       ) : null}
 
       <Text
         style={{
           marginTop: 26,
-          fontFamily: titleFont,
-          fontWeight: '700',
+          fontFamily: fontFamily,
           fontSize: fontSize + 1,
-          lineHeight: (fontSize + 1) * 1.65,
-          color: theme.ink,
+          lineHeight: (fontSize + 1) * 1.6,
+          color: theme.muted,
         }}
       >
         {article.standfirstEn}
       </Text>
 
-      <Text style={{ marginTop: 10, fontFamily: readingFont.sans, fontSize: 11.5, letterSpacing: 0.4, color: theme.muted }}>
+      <Text style={{ marginTop: 10, fontFamily: readingFont.sans, fontSize: 12.5, color: theme.muted }}>
         {article.level} · {bilingualTopic(article.topic, en)} · {L(`${article.wordCount} từ`, `${article.wordCount} words`)} ·{' '}
         {L(`${article.estMinutes} phút`, `${article.estMinutes} min`)}
         {source?.author ? ` · ${source.author}` : ''}
@@ -735,7 +716,7 @@ function EnglishParagraph({
       bundled={bundled}
       fontFamily={fontFamily}
       fontSize={fontSize}
-      lineHeight={fontSize * 1.72}
+      lineHeight={fontSize * 1.75}
       color={theme.body}
       onWordPress={onWord}
     />
@@ -763,20 +744,18 @@ function VietnamesePane({
   onHoverPara: (i: number | null) => void;
   onJump: (i: number) => void;
 }) {
-  const titleFont = fontFamily === readingFont.sans ? readingFont.fraunces : fontFamily;
   const { L } = useL();
   return (
     <Sheet theme={theme} scrollRef={scrollRef} badge="VI">
-      <Kicker theme={theme} label={L('TIẾNG VIỆT', 'VIETNAMESE')} />
+      <Kicker theme={theme} label={L('Tiếng Việt', 'Vietnamese')} />
 
       <Text
         style={{
           marginTop: 16,
-          fontFamily: titleFont,
-          fontStyle: 'italic',
-          fontWeight: '700',
-          fontSize: fontSize + 15,
-          lineHeight: (fontSize + 15) * 1.24,
+          fontFamily: readingFont.sansHeavy,
+          letterSpacing: -0.6,
+          fontSize: fontSize + 11,
+          lineHeight: (fontSize + 11) * 1.26,
           color: theme.ink,
           paddingRight: 36,
         }}
@@ -787,11 +766,10 @@ function VietnamesePane({
       <Text
         style={{
           marginTop: 26,
-          fontFamily: titleFont,
-          fontWeight: '700',
+          fontFamily: readingFont.sansMedium,
           fontSize: fontSize + 1,
-          lineHeight: (fontSize + 1) * 1.65,
-          color: theme.ink,
+          lineHeight: (fontSize + 1) * 1.7,
+          color: theme.muted,
         }}
       >
         {article.standfirstVi}
@@ -807,7 +785,7 @@ function VietnamesePane({
           onJump={onJump}
           onMeasure={onMeasure}
         >
-          <Rich text={p.vi} style={{ fontFamily, fontSize, lineHeight: fontSize * 1.72, color: theme.body }} />
+          <Rich text={p.vi} style={{ fontFamily, fontSize, lineHeight: fontSize * 1.75, color: theme.body }} />
         </ParagraphBlock>
       ))}
     </Sheet>
@@ -886,7 +864,7 @@ function SourceNote({ theme, article }: { theme: Theme; article: BilingualArticl
   const { L } = useL();
   return (
     <View className="mt-10 border-t pt-4" style={{ borderColor: theme.rule }}>
-      <Text style={{ fontFamily: readingFont.fraunces, fontStyle: 'italic', fontSize: 13, lineHeight: 20, color: theme.muted }}>
+      <Text style={{ fontFamily: readingFont.sans, fontSize: 12.5, lineHeight: 20, color: theme.muted }}>
         {L(
           `Nguồn: ${s.outlet}${s.author ? `, ${s.author}` : ''} — đăng ngày ${s.publishedAt}. Giấy phép: ${s.license}. Bản tiếng Việt, chú giải và câu hỏi do Band 9 biên soạn.`,
           `Source: ${s.outlet}${s.author ? `, ${s.author}` : ''} — published ${s.publishedAt}. Licence: ${s.license}. Vietnamese translation, glosses and questions by Band 9.`,
@@ -919,9 +897,9 @@ function QuestionsPane({
   const { L, en } = useL();
   return (
     <Sheet theme={theme}>
-      <Kicker theme={theme} label={L('HIỂU BÀI', 'COMPREHENSION')} hint={L(`${questions.length} câu`, `${questions.length} questions`)} />
+      <Kicker theme={theme} label={L('Hiểu bài', 'Comprehension')} hint={L(`${questions.length} câu`, `${questions.length} questions`)} />
       <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
-        <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
+        <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.sansHeavy, letterSpacing: -0.5, fontSize: 26, lineHeight: 32, color: theme.ink }}>
           {L('Bạn đã hiểu bài chưa?', 'Did you get it?')}
         </Text>
         <View aria-hidden>
@@ -936,10 +914,10 @@ function QuestionsPane({
       <View className="mt-6 gap-7">
         {questions.map((q, qi) => (
           <View key={qi}>
-            <Text style={{ fontFamily: readingFont.sans, fontSize: 11, fontWeight: '700', letterSpacing: 1.2, color: theme.accent }}>
-              {L('CÂU', 'QUESTION')} {qi + 1} · {bilingualQuestionType(q.type, en).toUpperCase()}
+            <Text style={{ fontFamily: readingFont.sansBold, fontSize: 12.5, color: theme.accent }}>
+              {L('Câu', 'Question')} {qi + 1} · {bilingualQuestionType(q.type, en)}
             </Text>
-            <Text style={{ marginTop: 4, fontFamily: readingFont.fraunces, fontSize: 17.5, lineHeight: 26, fontWeight: '600', color: theme.ink }}>
+            <Text style={{ marginTop: 4, fontFamily: readingFont.sansBold, fontSize: 16.5, lineHeight: 25, color: theme.ink }}>
               {q.q}
             </Text>
             <View className="mt-2.5 gap-1.5">
@@ -969,10 +947,10 @@ function QuestionsPane({
                       webTransition,
                     ]}
                   >
-                    <Text style={{ fontFamily: readingFont.fraunces, fontWeight: '700', fontSize: 15, color: theme.muted }}>
+                    <Text style={{ fontFamily: readingFont.sansBold, fontSize: 14, color: theme.muted }}>
                       {'ABCD'[oi]}
                     </Text>
-                    <Text style={{ flex: 1, fontFamily: readingFont.fraunces, fontSize: 15.5, lineHeight: 23, color: theme.body }}>
+                    <Text style={{ flex: 1, fontFamily: readingFont.sans, fontSize: 15, lineHeight: 23, color: theme.body }}>
                       {opt}
                     </Text>
                   </HoverPressable>
@@ -989,7 +967,7 @@ function QuestionsPane({
                         ? L('Chưa chọn. ', 'Not answered. ')
                         : L('Chưa đúng. ', 'Not quite. ')}
                   </Text>
-                  <Text style={{ fontStyle: 'italic' }}>{q.whyVi}</Text>
+                  <Text>{q.whyVi}</Text>
                 </Text>
               </Appear>
             ) : null}
@@ -1044,9 +1022,9 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
 
   return (
     <Sheet theme={theme}>
-      <Kicker theme={theme} label={L('TỪ VỰNG', 'VOCABULARY')} hint={L(`${vocab.length} từ đáng giữ lại`, `${vocab.length} words worth keeping`)} />
+      <Kicker theme={theme} label={L('Từ vựng', 'Vocabulary')} hint={L(`${vocab.length} từ đáng giữ lại`, `${vocab.length} words worth keeping`)} />
       <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
-        <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 30, color: theme.ink }}>
+        <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.sansHeavy, letterSpacing: -0.5, fontSize: 26, lineHeight: 32, color: theme.ink }}>
           {L('Từ của bài này', 'Words from this article')}
         </Text>
         <View aria-hidden>
@@ -1065,7 +1043,7 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
           return (
             <View key={i} className="border-b py-4" style={{ borderColor: theme.rule }}>
               <View className="flex-row flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                <Text style={{ fontFamily: readingFont.fraunces, fontStyle: 'italic', fontWeight: '700', fontSize: 21, color: theme.ink }}>
+                <Text style={{ fontFamily: readingFont.sansHeavy, letterSpacing: -0.3, fontSize: 19, color: theme.ink }}>
                   {v.word}
                 </Text>
                 <Text style={{ fontFamily: readingFont.mono, fontSize: 12, color: theme.muted }}>{v.ipa}</Text>
@@ -1115,11 +1093,11 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
               </Text>
               {v.collocation ? (
                 <Text style={{ marginTop: 4, fontSize: 13, color: theme.muted }}>
-                  {L('Đi với: ', 'Goes with: ')}<Text style={{ fontStyle: 'italic', fontFamily: readingFont.fraunces }}>{v.collocation}</Text>
+                  {L('Đi với: ', 'Goes with: ')}<Text style={{ fontFamily: readingFont.sansSemi }}>{v.collocation}</Text>
                 </Text>
               ) : null}
               {v.example ? (
-                <Text style={{ marginTop: 4, fontFamily: readingFont.fraunces, fontStyle: 'italic', fontSize: 14.5, lineHeight: 22, color: theme.body }}>
+                <Text style={{ marginTop: 4, fontFamily: readingFont.literata, fontSize: 14.5, lineHeight: 22, color: theme.body }}>
                   “{v.example}”
                 </Text>
               ) : null}

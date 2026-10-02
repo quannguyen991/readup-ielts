@@ -1,0 +1,360 @@
+{
+  "n": 3,
+  "title": "Marine Biology Project on Seagrass Meadows",
+  "context": "You will hear a marine biology student, Maya, discussing her research project on seagrass meadows with her tutor, Dr Patel.",
+  "transcript": [
+    {
+      "speaker": "Maya",
+      "text": "Thanks for seeing me, Dr Patel. I wanted to check that my seagrass project is focused enough before I start the main fieldwork."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Of course. Last time, you were thinking of comparing several coastal habitats. Have you narrowed that down?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "Yes. I realised comparing seagrass, salt marsh and rocky shore communities would be too ambitious. So now I'm concentrating on two seagrass meadows in the bay and looking at what seems to explain differences in their condition."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Good. And which factors are you proposing to investigate?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "I made quite a long list initially. I thought about water temperature because that's easy to measure, and I considered boat traffic because one site is close to a marina. But after reading more papers, I think the two factors worth examining properly are nutrient levels and sediment type. Nutrient enrichment seems strongly linked with algal growth on the leaves, while sediment composition may affect how well the roots establish. I won't ignore boat traffic completely, but I don't think I can measure its impact reliably within this project."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "That sounds sensible. Temperature would probably vary too little between your two sites to tell you much anyway."
+    },
+    {
+      "speaker": "Maya",
+      "text": "Right. I was also wondering whether I should make carbon storage the main theme. Seagrass is important for what's called blue carbon, and there are lots of recent articles on that."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "It's certainly topical, but measuring carbon storage properly would require sediment cores and laboratory analysis beyond the scope of your current module. You can discuss it in the background, but I'd keep your actual research question centred on meadow condition."
+    },
+    {
+      "speaker": "Maya",
+      "text": "So perhaps: how do environmental differences between two sites influence seagrass condition?"
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "That's close, though 'environmental differences' is still a bit vague. Since you've already identified nutrients and sediment, name those explicitly. It'll make the project easier to design."
+    },
+    {
+      "speaker": "Maya",
+      "text": "Okay. And for condition, I planned to measure leaf length, shoot density and the percentage of leaf surface covered by algae."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Those are all useful. Which one will be your primary indicator?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "I assumed leaf length, because it's straightforward."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Straightforward, yes, but leaf length can change naturally with water depth and exposure. Shoot density will give you a more robust measure of how well established the meadow is. Keep leaf length as supporting data."
+    },
+    {
+      "speaker": "Maya",
+      "text": "So shoot density should be the main indicator. That makes sense. I've also been looking at the two possible study sites. Site A is near the river mouth, and Site B is farther along the coast near the marina."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "And are they comparable in depth?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "Mostly. At first I thought Site B was much deeper, but that was based on an old chart. I visited both last week at low tide, and if I sample along the inner edge of each meadow, the depth difference is quite small."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Good. What sampling method are you considering?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "My first idea was to choose quadrats randomly across each meadow. But because the meadows are different sizes, I thought that might produce uneven coverage. So I've changed to systematic sampling along three transects at each site, placing a quadrat every five metres."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Yes, that's more defensible. It also makes it easier for somebody else to repeat your method later."
+    },
+    {
+      "speaker": "Maya",
+      "text": "For the preliminary site visit, I've already checked access and photographed the meadow boundaries. I also tried taking water samples."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Did that go smoothly?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "Not entirely. I filled the sample bottles directly beside the shore, and afterwards I realised I may have disturbed the sediment and contaminated them."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "That's exactly why a pilot visit is useful. So for that stage, the key lesson is that you need to revise the procedure before collecting your real data."
+    },
+    {
+      "speaker": "Maya",
+      "text": "I'll use a sampling pole next time so I can collect water slightly farther from where I'm standing."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Good. What about your literature review?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "I've found plenty on seagrass decline globally, but less on our region. I was worried that meant the review would be weak."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Not necessarily. In fact, that gap is useful. You have enough international studies to establish the mechanisms, and the limited local evidence helps justify your project. I'd say that stage is already giving you a clear rationale for the research."
+    },
+    {
+      "speaker": "Maya",
+      "text": "That's reassuring. For the main field sampling, I was planning to do everything in one day at each site."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "I'd avoid that. Weather and tides can change conditions substantially. Repeat the measurements on at least three different dates. That stage needs replication more than anything else."
+    },
+    {
+      "speaker": "Maya",
+      "text": "Three visits to each meadow. I can manage that. Then for laboratory analysis, I was going to measure nitrate and phosphate concentrations myself using the department equipment."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "You can, but the phosphate test is quite sensitive. Have you used that equipment before?"
+    },
+    {
+      "speaker": "Maya",
+      "text": "Only once in a practical."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Then arrange a session with the lab technician before processing your samples. For the laboratory stage, getting specialist guidance early will save you from producing unreliable results."
+    },
+    {
+      "speaker": "Maya",
+      "text": "I'll book that. And once I've got the measurements, I thought I'd compare the average values between the two sites."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "You'll certainly need averages, but don't stop there. The interesting part will be whether nutrient concentrations and sediment characteristics are associated with shoot density. For the data analysis stage, you'll need to look for relationships between variables, not simply describe each site separately."
+    },
+    {
+      "speaker": "Maya",
+      "text": "So correlation analysis, assuming the data are suitable?"
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Exactly. Check the distribution first and then decide which test is appropriate."
+    },
+    {
+      "speaker": "Maya",
+      "text": "And finally the report. I tend to leave figures until the end, but that usually becomes stressful."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Then change that habit. As soon as the analysis is complete, start producing clear graphs and maps. For the report-writing stage, the priority is to present the findings visually and consistently. Don't spend too much time making them decorative; clarity matters more."
+    },
+    {
+      "speaker": "Maya",
+      "text": "So revise the water-sampling procedure after the pilot visit, use the literature review to establish the rationale, repeat the field sampling on several dates, get technical help with the lab work, examine relationships during analysis, and prepare clear visuals for the report."
+    },
+    {
+      "speaker": "Dr Patel",
+      "text": "Exactly. If you follow that sequence, the project should remain manageable and still give you something meaningful to say about the condition of the two seagrass meadows."
+    }
+  ],
+  "groups": [
+    {
+      "type": "mcq-many",
+      "title": "Questions 21-22",
+      "instruction": "Choose TWO letters, A-E. Which TWO environmental factors does Maya decide to investigate in detail?",
+      "wordLimit": "",
+      "lines": [],
+      "options": [
+        {
+          "key": "A",
+          "text": "water temperature"
+        },
+        {
+          "key": "B",
+          "text": "nutrient levels"
+        },
+        {
+          "key": "C",
+          "text": "boat traffic"
+        },
+        {
+          "key": "D",
+          "text": "sediment type"
+        },
+        {
+          "key": "E",
+          "text": "carbon storage"
+        }
+      ],
+      "questions": [
+        {
+          "n": 21,
+          "prompt": "Which TWO environmental factors does Maya decide to investigate in detail?",
+          "answer": [
+            "B",
+            "D"
+          ],
+          "accept": [],
+          "options": []
+        }
+      ]
+    },
+    {
+      "type": "mcq-one",
+      "title": "Questions 23-25",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "wordLimit": "",
+      "lines": [],
+      "options": [],
+      "questions": [
+        {
+          "n": 23,
+          "prompt": "What does Dr Patel advise Maya to do with the topic of carbon storage?",
+          "answer": "B",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "make it the central focus of the project"
+            },
+            {
+              "key": "B",
+              "text": "include it only as background information"
+            },
+            {
+              "key": "C",
+              "text": "remove it completely from the project"
+            }
+          ]
+        },
+        {
+          "n": 24,
+          "prompt": "Which measure should Maya use as her main indicator of seagrass condition?",
+          "answer": "C",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "leaf length"
+            },
+            {
+              "key": "B",
+              "text": "algal cover"
+            },
+            {
+              "key": "C",
+              "text": "shoot density"
+            }
+          ]
+        },
+        {
+          "n": 25,
+          "prompt": "Why does Maya decide to use systematic sampling?",
+          "answer": "A",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "It should provide more even coverage of the sites."
+            },
+            {
+              "key": "B",
+              "text": "It requires fewer quadrats than random sampling."
+            },
+            {
+              "key": "C",
+              "text": "It avoids differences in water depth."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "title": "Questions 26-30",
+      "instruction": "What comment does Dr Patel make about each project stage? Choose the correct letter, A-F.",
+      "wordLimit": "",
+      "lines": [],
+      "options": [
+        {
+          "key": "A",
+          "text": "It provides a strong justification for the research."
+        },
+        {
+          "key": "B",
+          "text": "The procedure should be changed before continuing."
+        },
+        {
+          "key": "C",
+          "text": "Measurements should be repeated on several occasions."
+        },
+        {
+          "key": "D",
+          "text": "Expert assistance should be obtained."
+        },
+        {
+          "key": "E",
+          "text": "Connections between different variables should be examined."
+        },
+        {
+          "key": "F",
+          "text": "Results should be communicated through clear visual material."
+        }
+      ],
+      "questions": [
+        {
+          "n": 26,
+          "prompt": "Preliminary site visit",
+          "answer": "B",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 27,
+          "prompt": "Literature review",
+          "answer": "A",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 28,
+          "prompt": "Main field sampling",
+          "answer": "C",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 29,
+          "prompt": "Laboratory analysis",
+          "answer": "D",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 30,
+          "prompt": "Data analysis and report preparation",
+          "answer": "E",
+          "accept": [
+            "F"
+          ],
+          "options": []
+        }
+      ]
+    }
+  ]
+}

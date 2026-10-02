@@ -1,0 +1,193 @@
+{
+  "n": 2,
+  "title": "Kingsford Botanic Garden",
+  "context": "You will hear a guide giving visitors information about the new greenhouse and gardens at Kingsford Botanic Garden.",
+  "transcript": [
+    {
+      "speaker": "Guide",
+      "text": "Good morning, everyone, and welcome to Kingsford Botanic Garden. My name's Helen, and before we begin our walk, I'd like to tell you a little about the new greenhouse complex and the changes we've made to the surrounding gardens. Some of you may have visited Kingsford before, but quite a lot has changed over the past eighteen months. The new greenhouse officially opens to the general public next Monday. We had originally planned to open it this Saturday, but the final safety inspection took slightly longer than expected. Garden members, however, can come to a special preview on Sunday afternoon.\n\nFrom next week, the greenhouse will be open every day except Tuesday. The rest of the botanic garden remains open seven days a week, so do bear that distinction in mind. Entry to the outdoor gardens is still free. There was some discussion about charging everyone an additional fee for the greenhouse, but we've decided against that. Instead, greenhouse admission is included in the normal visitor ticket for the main exhibition area. Children under twelve enter free when accompanied by an adult.\n\nA few practical points before we set off. The new visitor centre is immediately on your right as you come through the main gate. That's where you'll find the information desk and lockers. We used to provide lockers beside the café, but they've been moved because that area became rather crowded. Large bags aren't allowed inside the greenhouse, so please leave them there. The café itself has been extended and now has an outdoor terrace. Some early publicity said we'd be opening a restaurant as well, but that plan has been postponed. For the moment, the café serves sandwiches, cakes and hot meals at lunchtime.\n\nThere are toilets beside the visitor centre and another set near the greenhouse exit. Wheelchairs can be borrowed free of charge from the information desk. We recommend booking one in advance at weekends, although on weekdays that's rarely necessary. And for those of you arriving by bicycle, you'll find the new cycle racks just outside the east gate, not in the main car park as shown on some older maps.\n\nNow, today's guided walk lasts about seventy-five minutes. It was originally designed as a ninety-minute tour, but visitors told us they preferred a little free time afterwards. We'll finish at the greenhouse café, where you're welcome to stay for refreshments. Please keep together as far as possible. Photography is allowed everywhere on our route, including inside the greenhouse, but we do ask you not to use tripods because they can block the narrow paths. Flash photography is permitted, although it isn't really necessary in most areas.\n\nRight, let's start our walk. The first area we'll visit is the Woodland Garden, just beyond these gates. It's particularly attractive in spring, when the ground is covered with bluebells, but what makes it unusual is its collection of plants that thrive in deep shade. Many visitors assume the most interesting feature is the old oak tree in the centre, but the shade-loving collection is actually what the gardeners want people to notice.\n\nAfter that we'll cross the small stone bridge into the Mediterranean Garden. This area has rosemary, lavender, olives and several varieties of thyme. You'll probably notice the strong scent before you reach it. The special feature here is the demonstration of plants that can survive long periods with very little water. That's increasingly important for gardeners dealing with hotter, drier summers.\n\nNext comes the Children's Garden. We considered putting a playground there, but instead we've created a sensory trail. Children can touch soft leaves, smell herbs and listen to grasses moving in the wind. There's also a small pond, but that's fenced off, so the sensory trail is really the main attraction.\n\nFrom there we'll go into the new Tropical House, the largest section of the greenhouse. It's warm and humid, of course, and contains bananas, cacao and several species of orchid. Look upwards when you enter because the plants we're proudest of are the climbing vines growing across the overhead frames. Some will eventually reach more than fifteen metres in length. The orchid display is beautiful, but it's the vines that are unique to this part of the garden.\n\nFinally, we'll visit the Desert Garden on the southern side of the greenhouse. You'll see plenty of cacti, but the collection isn't limited to them. The most important exhibit is a group of plants that store water in their leaves and stems, including aloes and agaves. We call these succulents. There's a display about desert animals nearby, but that's temporary and will be removed at the end of the summer.\n\nBefore we move on, one final reminder: the greenhouse becomes particularly busy between twelve and two, so if you'd like to return later and look around independently, I'd suggest coming after three o'clock. Now, if everyone's ready, we'll head towards the Woodland Garden."
+    }
+  ],
+  "groups": [
+    {
+      "type": "mcq-one",
+      "title": "Questions 11-15",
+      "instruction": "Choose the correct letter, A, B or C.",
+      "wordLimit": "",
+      "lines": [],
+      "options": [],
+      "questions": [
+        {
+          "n": 11,
+          "prompt": "When will the new greenhouse first open to the general public?",
+          "answer": "C",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "Saturday"
+            },
+            {
+              "key": "B",
+              "text": "Sunday"
+            },
+            {
+              "key": "C",
+              "text": "Monday"
+            }
+          ]
+        },
+        {
+          "n": 12,
+          "prompt": "What does the guide say about admission to the greenhouse?",
+          "answer": "B",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "All visitors must pay an additional fee."
+            },
+            {
+              "key": "B",
+              "text": "It is included in the normal visitor ticket."
+            },
+            {
+              "key": "C",
+              "text": "It is free for everyone."
+            }
+          ]
+        },
+        {
+          "n": 13,
+          "prompt": "Where are visitors now asked to leave large bags?",
+          "answer": "A",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "at the visitor centre"
+            },
+            {
+              "key": "B",
+              "text": "beside the café"
+            },
+            {
+              "key": "C",
+              "text": "at the greenhouse entrance"
+            }
+          ]
+        },
+        {
+          "n": 14,
+          "prompt": "What does the guide recommend regarding wheelchairs at weekends?",
+          "answer": "C",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "Visitors should bring their own."
+            },
+            {
+              "key": "B",
+              "text": "Visitors should pay for one in advance."
+            },
+            {
+              "key": "C",
+              "text": "Visitors should reserve one beforehand."
+            }
+          ]
+        },
+        {
+          "n": 15,
+          "prompt": "Why was the guided walk shortened?",
+          "answer": "A",
+          "accept": [],
+          "options": [
+            {
+              "key": "A",
+              "text": "Visitors wanted more independent time afterwards."
+            },
+            {
+              "key": "B",
+              "text": "Some paths are currently closed."
+            },
+            {
+              "key": "C",
+              "text": "The greenhouse tour takes less time than expected."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "matching",
+      "title": "Questions 16-20",
+      "instruction": "Which feature is associated with each area of Kingsford Botanic Garden? Choose the correct letter, A-F.",
+      "wordLimit": "",
+      "lines": [],
+      "options": [
+        {
+          "key": "A",
+          "text": "plants adapted to very low water use"
+        },
+        {
+          "key": "B",
+          "text": "plants growing across overhead supports"
+        },
+        {
+          "key": "C",
+          "text": "a collection designed for very low light levels"
+        },
+        {
+          "key": "D",
+          "text": "plants that store water in leaves and stems"
+        },
+        {
+          "key": "E",
+          "text": "a route encouraging the use of several senses"
+        },
+        {
+          "key": "F",
+          "text": "a display focusing on local wildlife"
+        }
+      ],
+      "questions": [
+        {
+          "n": 16,
+          "prompt": "Woodland Garden",
+          "answer": "C",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 17,
+          "prompt": "Mediterranean Garden",
+          "answer": "A",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 18,
+          "prompt": "Children's Garden",
+          "answer": "E",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 19,
+          "prompt": "Tropical House",
+          "answer": "B",
+          "accept": [],
+          "options": []
+        },
+        {
+          "n": 20,
+          "prompt": "Desert Garden",
+          "answer": "D",
+          "accept": [],
+          "options": []
+        }
+      ]
+    }
+  ]
+}

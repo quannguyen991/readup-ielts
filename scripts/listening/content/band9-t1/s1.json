@@ -1,0 +1,216 @@
+{
+  "n": 1,
+  "title": "Riverside Cycling Club membership enquiry",
+  "context": "You will hear a conversation between a customer and a receptionist at a cycling club.",
+  "transcript": [
+    {
+      "speaker": "Receptionist",
+      "text": "Good afternoon, Riverside Cycling Club. This is Helen speaking. How can I help?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "Hello. I’m calling because I’m interested in joining the club. I’ve recently moved to the area and I’d like to find out what sort of rides you organise, and what membership costs."
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "Of course. We have three types of membership. The first is our full membership, which is for people who want to join regular rides and use the club’s workshop. That’s forty-eight pounds a year. We also have a social membership for people who mainly come to events and meetings. That one is twenty-six pounds annually."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Right. I’m not sure I’d use the workshop, but I would like to go on rides. Is there a cheaper option for someone who hasn’t cycled with a group before?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "Yes, we offer a beginner membership. It’s thirty-four pounds for the first year. It includes the group rides, but not workshop access. You can move to full membership later if you decide you’d like to use the workshop. The beginner option is quite popular with people who are new to cycling in a group."
+    },
+    {
+      "speaker": "Customer",
+      "text": "That sounds suitable. I’ve been cycling on my own for a while, but I haven’t done much group riding. Could you tell me when the club meets?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "We have a short ride on Tuesday evenings, but that’s arranged by one of our smaller groups and it isn’t a regular club meeting. Our main meeting is on Thursday. Members meet at the clubhouse at half past six, and the ride usually starts at seven."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Thursday would be fine. Is the meeting every week?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "Yes, every Thursday, except for public holidays. We usually have two rides: a gentle route of about twelve miles and a longer one that’s closer to twenty-five. New members can choose whichever feels comfortable. There’s no pressure to keep up with the faster riders, and the group stops at regular points so nobody gets left behind."
+    },
+    {
+      "speaker": "Customer",
+      "text": "That’s reassuring. Where exactly is the clubhouse? I’ve seen the riverside path, but I don’t know that part of town very well."
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "We’re at number fourteen Mill Lane. That’s just behind the old library, not the community centre on Bridge Street. The postcode is RG7 4PL. If you’re coming by bike, there are racks in the courtyard. There’s also a bus stop at the end of the lane, though the buses are less frequent in the evening."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Thank you. I’ll make a note of that. And how do I apply? Can I do it over the phone?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "I can take your details now, then I’ll email you the application form and payment instructions. Once you’ve filled it in, you can send it back by email or bring a printed copy to the clubhouse. We don’t take card details over the phone, but you can pay online or by bank transfer."
+    },
+    {
+      "speaker": "Customer",
+      "text": "All right. My surname is Hargreaves. That’s H-A-R-G-R-E-A-V-E-S. People sometimes write it with an extra ‘a’ after the ‘g’, but there isn’t one."
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "Thank you. Hargreaves, with one ‘a’ after the ‘h’, then ‘r-g-r-e-a-v-e-s’. I’ve got it. And what’s the best telephone number for you?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "It’s 01632 458 271. I’m usually available in the afternoon, but a text message is fine if I miss your call."
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "I’ll add that. We can send the form by text as well, but the full information is easier to read in an email. What’s your email address?"
+    },
+    {
+      "speaker": "Customer",
+      "text": "It’s daniel.hargreaves at mail dot com. I’ll spell the surname there in the same way. Could I start next month, or do I need to wait for a new membership year?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "You can join at any time. The annual fee is the same throughout the year, although if you join after the first of October, we can reduce it by a quarter. Since you’re planning to start next month, you’ll pay the standard beginner rate of thirty-four pounds."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Good. I’ll probably come along for the first time on the twelfth of May. Should I arrive before the meeting starts?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "Yes, if you can get here by ten past six, one of the ride leaders can introduce you to everyone and check your bike. Please bring a helmet, a working front light and a rear light, and a spare inner tube if you have one. We can lend you a high-visibility vest."
+    },
+    {
+      "speaker": "Customer",
+      "text": "I’ve got lights and a helmet, but I’ll need to get an inner tube. Do I need to tell you how much cycling I’ve done before?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "There’s a short question on the form about your experience, but it’s only so we can suggest a suitable ride. You don’t need to give us a detailed record. Just mention that you’re comfortable cycling on your own and are new to group rides."
+    },
+    {
+      "speaker": "Customer",
+      "text": "That’s easy enough. And if I have any questions after I’ve read the form, should I call this number?"
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "Yes, this is the club office number. We’re here from nine until five on weekdays. If you call outside those hours, leave a message and I’ll get back to you the next working day. I’ll send your information shortly."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Thanks very much, Helen. I’ll look out for the email and hopefully see you on Thursday."
+    },
+    {
+      "speaker": "Receptionist",
+      "text": "You’re welcome, Daniel. We’ll be looking forward to meeting you. Goodbye."
+    },
+    {
+      "speaker": "Customer",
+      "text": "Goodbye."
+    }
+  ],
+  "groups": [
+    {
+      "type": "gap",
+      "title": "Questions 1-10",
+      "instruction": "Complete the membership enquiry form. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+      "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+      "lines": [
+        "Surname: {{1}}",
+        "Telephone number: {{2}}",
+        "Membership type: {{3}}",
+        "Annual fee: £{{4}}",
+        "Main club meeting day: {{5}}",
+        "Meeting place address: {{6}}",
+        "Postcode: {{7}}",
+        "Planned first visit: {{8}}",
+        "Arrival time for first visit: {{9}}",
+        "Cycling experience: comfortable cycling {{10}}"
+      ],
+      "options": [],
+      "questions": [
+        {
+          "n": 1,
+          "prompt": "Surname",
+          "answer": "Hargreaves",
+          "accept": []
+        },
+        {
+          "n": 2,
+          "prompt": "Telephone number",
+          "answer": "01632 458 271",
+          "accept": [
+            "01632458271"
+          ]
+        },
+        {
+          "n": 3,
+          "prompt": "Membership type",
+          "answer": "beginner membership",
+          "accept": []
+        },
+        {
+          "n": 4,
+          "prompt": "Annual fee",
+          "answer": "34",
+          "accept": [
+            "thirty-four"
+          ]
+        },
+        {
+          "n": 5,
+          "prompt": "Main club meeting day",
+          "answer": "Thursday",
+          "accept": []
+        },
+        {
+          "n": 6,
+          "prompt": "Meeting place address",
+          "answer": "14 Mill Lane",
+          "accept": [
+            "number 14 Mill Lane"
+          ]
+        },
+        {
+          "n": 7,
+          "prompt": "Postcode",
+          "answer": "RG7 4PL",
+          "accept": [
+            "RG74PL"
+          ]
+        },
+        {
+          "n": 8,
+          "prompt": "Planned first visit",
+          "answer": "12 May",
+          "accept": [
+            "the twelfth of May"
+          ]
+        },
+        {
+          "n": 9,
+          "prompt": "Arrival time for first visit",
+          "answer": "6:10",
+          "accept": [
+            "ten past six"
+          ]
+        },
+        {
+          "n": 10,
+          "prompt": "Cycling experience",
+          "answer": "on my own",
+          "accept": [
+            "cycling on my own"
+          ]
+        }
+      ]
+    }
+  ]
+}

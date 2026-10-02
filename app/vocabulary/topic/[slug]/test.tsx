@@ -3,7 +3,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
-import { GhostButton, GREEN, PrimaryButton, RED, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
+import { GhostButton, PrimaryButton, SpeakButton, StudyCard, StudyFrame, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { buildQuiz, isAnswered, isQuizCorrect, QUIZ_KIND_LABEL, type QuizAnswer, type QuizQuestion } from '@/services/vocab/quiz';
@@ -14,6 +14,7 @@ import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
 import { useL } from '@/i18n/useL';
+import { useStoreTheme, useStudyTheme } from '@/components/vocab/study/useStudyTheme';
 
 const LENGTH = 20;
 
@@ -36,6 +37,7 @@ const KIND_EN: Record<QuizQuestion['kind'], string> = {
 export default function TestScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
   const { L, en } = useL();
+  const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const logQuestions = useStudyStore((s) => s.logQuestions);
@@ -65,6 +67,8 @@ export default function TestScreen() {
     const log = useTopicStudyStore.getState().logMistake;
     questions.forEach((qq, i) => {
       const a = answers[i] ?? null;
+      // Mỗi câu ĐÃ trả lời vào lịch ôn theo ngày (câu bỏ trống không phải bằng chứng).
+      if (isAnswered(a)) useTopicStudyStore.getState().review(slug, qq.word.word, isQuizCorrect(qq, a));
       if (qq.kind === 'type' && typeof a === 'string' && isAnswered(a) && !isQuizCorrect(qq, a)) {
         const why = diagnoseTyped(a, qq.word.word);
         if (why) log(slug, qq.word.word, why.kind);
@@ -124,7 +128,7 @@ export default function TestScreen() {
             <Text className="font-sans text-bodyLg text-muted">{L(`${pct}% câu đúng`, `${pct}% correct`)}</Text>
             <View className="mt-4 flex-row flex-wrap gap-2">
               {byKind.map((r) => (
-                <View key={r.k} className="rounded-pill px-3 py-1.5" style={{ backgroundColor: r.ok === r.total ? '#ECFDF3' : '#F9F6F1' }}>
+                <View key={r.k} className="rounded-pill px-3 py-1.5" style={{ backgroundColor: r.ok === r.total ? theme.goodBg : theme.soft }}>
                   <Text className="font-semi text-label text-ink">
                     {en ? KIND_EN[r.k] : QUIZ_KIND_LABEL[r.k]}: {r.ok}/{r.total}
                   </Text>
@@ -136,7 +140,7 @@ export default function TestScreen() {
                 isQuizCorrect(qq, answers[i] ?? null) ? null : <WrongRow key={qq.word.word} q={qq} a={answers[i] ?? null} />,
               )}
               {score === questions.length ? (
-                <Text className="font-semi text-bodyLg" style={{ color: GREEN }}>
+                <Text className="font-semi text-bodyLg" style={{ color: theme.good }}>
                   {L('Không sai câu nào.', 'No mistakes at all.')}
                 </Text>
               ) : null}
@@ -174,7 +178,7 @@ export default function TestScreen() {
         <StudyCard>
           <View className="flex-row items-center gap-2">
             <Text className="font-semi text-label text-muted">{L('Câu', 'Question')} {index + 1}</Text>
-            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
+            <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: theme.soft }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
                 {en ? KIND_EN[q.kind] : QUIZ_KIND_LABEL[q.kind]}
               </Text>
@@ -209,6 +213,7 @@ function QuestionBody({
   onEnter: () => void;
 }) {
   const { L } = useL();
+  const theme = useStudyTheme();
   if (q.kind === 'type') {
     return (
       <View>
@@ -225,10 +230,10 @@ function QuestionBody({
           autoCapitalize="none"
           autoCorrect={false}
           placeholder={L('Gõ từ tiếng Anh, Enter để sang câu sau…', 'Type the English word, Enter for the next one…')}
-          placeholderTextColor="#94A3B8"
+          placeholderTextColor={theme.muted}
           onSubmitEditing={onEnter}
           className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
-          style={{ borderWidth: 1.5, borderColor: '#E1D9CB', backgroundColor: '#FCFBF8' }}
+          style={{ borderWidth: 1.5, borderColor: theme.fieldBorder, backgroundColor: theme.field }}
         />
       </View>
     );
@@ -237,7 +242,7 @@ function QuestionBody({
     return (
       <View>
         <Text className="mt-2 font-sans text-body text-muted">{L('Cặp từ – nghĩa này đúng hay sai?', 'Is this word–meaning pair right or wrong?')}</Text>
-        <View className="mt-4 items-center rounded-2xl px-5 py-6" style={{ backgroundColor: '#FCFBF8', borderWidth: 1, borderColor: '#F0EBE2' }}>
+        <View className="mt-4 items-center rounded-2xl px-5 py-6" style={{ backgroundColor: theme.field, borderWidth: 1, borderColor: theme.optBorder }}>
           <View className="flex-row items-center gap-2">
             <Text className="font-heavy text-pageTitle text-ink">{q.word.word}</Text>
             <SpeakButton text={q.word.word} />
@@ -250,13 +255,13 @@ function QuestionBody({
         <View className="mt-5 flex-row gap-3">
           {([true, false] as const).map((v, i) => {
             const sel = a === v;
-            const tone = v ? GREEN : RED;
+            const tone = v ? theme.good : theme.bad;
             return (
               <Pressable
                 key={String(v)}
                 onPress={() => onChoose(v)}
                 className="flex-1 flex-row items-center justify-center gap-2 rounded-2xl py-4"
-                style={{ borderWidth: 1.5, borderColor: sel ? tone : '#F0EBE2', backgroundColor: sel ? (v ? '#ECFDF3' : '#FFF1F2') : '#FFFFFF' }}
+                style={{ borderWidth: 1.5, borderColor: sel ? tone : theme.optBorder, backgroundColor: sel ? (v ? theme.goodBg : theme.badBg) : theme.optBg }}
               >
                 <Text className="font-strong text-bodyLg" style={{ color: sel ? tone : color.ink }}>
                   {v ? L('Đúng', 'True') : L('Sai', 'False')}
@@ -277,7 +282,7 @@ function QuestionBody({
           <Text className="mt-2 font-sans text-body text-muted">{L('Chọn từ điền vào chỗ trống', 'Choose the word for the blank')}</Text>
           <Text className="mt-2 font-semi text-sectionTitle leading-9 text-ink">
             {q.before}
-            <Text className="font-strong" style={{ color: '#94A3B8' }}>
+            <Text className="font-strong" style={{ color: theme.muted }}>
               {' _______ '}
             </Text>
             {q.after}
@@ -297,10 +302,10 @@ function QuestionBody({
               key={`${i}-${opt}`}
               onPress={() => onChoose(i)}
               className="flex-row items-center gap-3 rounded-2xl px-4 py-4"
-              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : '#F0EBE2', backgroundColor: sel ? '#FBF6EE' : '#FFFFFF' }}
+              style={{ borderWidth: 1.5, borderColor: sel ? color.primary : theme.optBorder, backgroundColor: sel ? theme.soft : theme.optBg }}
             >
-              <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : '#F7F4EE' }}>
-                <Text className="font-strong text-label" style={{ color: sel ? '#FFFFFF' : color.muted }}>
+              <View className="h-8 w-8 items-center justify-center rounded-pill" style={{ backgroundColor: sel ? color.primary : theme.optNum }}>
+                <Text className="font-strong text-label" style={{ color: sel ? '#FFFFFF' : theme.muted }}>
                   {i + 1}
                 </Text>
               </View>
@@ -316,6 +321,7 @@ function QuestionBody({
 /** Một câu sai trong bảng kết quả: từ, nghĩa, bạn đã trả lời gì, và vì sao sai (câu gõ). */
 function WrongRow({ q, a }: { q: QuizQuestion; a: QuizAnswer }) {
   const { L, en } = useL();
+  const theme = useStudyTheme();
   let yours: string;
   if (!isAnswered(a)) yours = L('(bỏ trống)', '(left blank)');
   else if (q.kind === 'tf')
@@ -326,15 +332,15 @@ function WrongRow({ q, a }: { q: QuizQuestion; a: QuizAnswer }) {
   else yours = q.options[a as number] ?? '';
   const why = q.kind === 'type' && typeof a === 'string' && isAnswered(a) ? diagnoseTyped(a, q.word.word) : null;
   return (
-    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: '#FFF1F2' }}>
+    <View className="rounded-2xl px-4 py-3" style={{ backgroundColor: theme.badBg }}>
       <Text className="font-strong text-body text-ink">
         {q.word.word} <Text className="font-sans text-muted">· {q.word.meaningVi}</Text>
       </Text>
-      <Text className="mt-0.5 font-sans text-label" style={{ color: RED }}>
+      <Text className="mt-0.5 font-sans text-label" style={{ color: theme.bad }}>
         {en ? KIND_EN[q.kind] : QUIZ_KIND_LABEL[q.kind]} · {L('Bạn trả lời:', 'Your answer:')} {yours}
       </Text>
       {why ? (
-        <Text className="mt-0.5 font-sans text-label" style={{ color: '#92400E' }}>
+        <Text className="mt-0.5 font-sans text-label" style={{ color: theme.warn }}>
           {why.title}: {why.detail}
         </Text>
       ) : null}

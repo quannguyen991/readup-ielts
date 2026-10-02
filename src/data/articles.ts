@@ -78,10 +78,34 @@ export type ArticleFilters = {
   tier?: PassageTier | 'all';
   satTextType?: SatTextType | 'all';
   level?: CefrLevel | 'all';
+  /** Dải band IELTS của bài, ví dụ 'Band 6–7' (xem `BAND_RANGES`). */
+  bandRange?: string | 'all';
+  /** Tên nguồn, ví dụ 'Simple Wikipedia'. */
+  source?: string | 'all';
   /** 'readable' = bài có toàn văn; 'headline' = bài chỉ tiêu đề, mở link gốc. */
   kind?: 'all' | 'readable' | 'headline';
   sort?: 'newest' | 'shortest' | 'longest' | 'easiest' | 'hardest' | 'title';
 };
+
+/** Các dải band có thật trong kho, từ thấp lên cao. */
+export const BAND_RANGES: readonly string[] = [
+  'Band 3–4',
+  'Band 4–5',
+  'Band 5–6',
+  'Band 6–7',
+  'Band 7–8',
+  'Band 8–9',
+];
+
+/** Nguồn bài có thể lọc (chỉ nguồn bài đọc được, xếp theo số bài giảm dần). */
+export const SOURCE_NAMES: readonly string[] = (() => {
+  const count = new Map<string, number>();
+  for (const a of ARTICLES) {
+    if (a.licenseType === 'headline_only') continue;
+    count.set(a.sourceName, (count.get(a.sourceName) ?? 0) + 1);
+  }
+  return [...count.entries()].filter(([, n]) => n >= 5).sort((a, b) => b[1] - a[1]).map(([name]) => name);
+})();
 
 export function getArticleById(id: string): ArticleMeta | undefined {
   return ARTICLES.find((a) => a.id === id);
@@ -118,6 +142,8 @@ export function filterArticles(filters: ArticleFilters = {}): ArticleMeta[] {
     tier = 'all',
     satTextType = 'all',
     level = 'all',
+    bandRange = 'all',
+    source = 'all',
     kind = 'all',
     sort = 'newest',
   } = filters;
@@ -133,6 +159,8 @@ export function filterArticles(filters: ArticleFilters = {}): ArticleMeta[] {
     if (tier !== 'all' && a.passageTier !== tier) return false;
     if (satTextType !== 'all' && a.satTextType !== satTextType) return false;
     if (level !== 'all' && a.cefrLevel !== level) return false;
+    if (bandRange !== 'all' && a.bandRange !== bandRange) return false;
+    if (source !== 'all' && a.sourceName !== source) return false;
 
     if (needle) {
       const haystack = `${a.title} ${a.summary ?? ''} ${a.topic} ${a.sourceName}`.toLowerCase();

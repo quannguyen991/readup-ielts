@@ -4,6 +4,7 @@ import { create } from 'zustand';
 import { forgetMerged, markMerged, pushAll, syncAll } from '@/services/sync/engine';
 import { registerAllSyncedStores } from '@/services/sync/stores';
 import { useAuthStore } from './useAuthStore';
+import { flushPersist } from './persist';
 import { useMathStore } from './useMathStore';
 import { useStudyStore } from './useStudyStore';
 import { useVocabStore } from './useVocabStore';
@@ -114,7 +115,21 @@ export function useSyncBootstrap() {
       timer.current = setTimeout(() => void syncNow(userId, 'push'), PUSH_DEBOUNCE_MS);
     };
 
+    // Tab ẩn / đóng: đẩy NGAY thay vì chờ 8 giây, để học xong rồi thoát không mất lịch ôn ở máy khác.
+    const flushNow = () => {
+      if (typeof document !== 'undefined' && document.visibilityState !== 'hidden') return;
+      if (!timer.current) return;
+      clearTimeout(timer.current);
+      timer.current = null;
+      flushPersist();
+      void syncNow(userId, 'push');
+    };
+    if (typeof document !== 'undefined') document.addEventListener('visibilitychange', flushNow);
+
     const unsubscribers = [
+      () => {
+        if (typeof document !== 'undefined') document.removeEventListener('visibilitychange', flushNow);
+      },
       useMathStore.subscribe(schedule),
       useStudyStore.subscribe(schedule),
       useVocabStore.subscribe(schedule),

@@ -9,7 +9,7 @@ import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
 import { TravelBackdrop, useTravelActive } from '@/components/rail/TravelBackdrop';
-import { isExamRoute, isFocusRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
+import { isExamRoute, isFocusRoute, isImmersiveRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
@@ -50,6 +50,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Kính của Thành Phố Tri Thức theo mốc chuỗi ngày — chạy ở mọi thiết bị.
   useStreakGlass();
   const focus = isFocusRoute(pathname);
+  const immersive = isImmersiveRoute(pathname);
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
   // Thành phố và Chuyến bay từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
@@ -59,6 +60,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
   const pageBg = usePageBackground('browse');
+
+  if (immersive) {
+    // Phòng thi Reading tự vẽ thanh trên và phủ trọn màn: chỉ cần nền, không khung điều hướng.
+    return (<View className="flex-1" style={{ backgroundColor: '#F6F3EC' }}>{children}</View>);
+  }
 
   if (focus) {
     /*

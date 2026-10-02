@@ -59,15 +59,15 @@ export function EvidenceMarker({
       onPress={onStart}
       accessibilityLabel={L('Khoanh câu đỡ đáp án này', 'Mark the sentence that supports this answer')}
       className={[
-        'mt-3 flex-row items-center gap-2 rounded-panel border px-3 py-2.5',
-        active ? 'border-primary-600 bg-primary-50' : 'border-dashed border-border bg-surface',
+        'mt-1 min-h-[36px] flex-row items-center gap-2 rounded-panel px-1',
+        active ? 'border border-primary-600 bg-primary-50 px-3 py-2' : '',
       ].join(' ')}
     >
-      <Icon name="letters" size={14} color={active ? color.primary : color.muted} />
+      <Icon name="letters" size={13} color={active ? color.primary : color.subtle} />
       <Text
         className={[
           'flex-1 font-mid text-label',
-          active ? 'text-primary-600' : 'text-muted',
+          active ? 'text-primary-600' : 'text-subtle',
         ].join(' ')}
       >
         {active

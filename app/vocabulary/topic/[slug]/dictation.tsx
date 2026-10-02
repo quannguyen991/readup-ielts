@@ -3,7 +3,7 @@ import { Pressable, Text, TextInput, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 
-import { GhostButton, GREEN, PrimaryButton, RED, StudyCard, StudyFrame, speak, useHotkeys } from '@/components/vocab/study/StudyKit';
+import { GhostButton, PrimaryButton, StudyCard, StudyFrame, speak, useHotkeys } from '@/components/vocab/study/StudyKit';
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
 import { VoicePicker, preferredVoice, useEnglishVoices } from '@/components/sentence/VoicePicker';
@@ -15,6 +15,7 @@ import { useStudyStore } from '@/store/useStudyStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { useStoreTheme } from '@/components/vocab/study/useStudyTheme';
 
 const SPEEDS = [0.7, 0.9, 1] as const;
 
@@ -28,6 +29,7 @@ const SPEEDS = [0.7, 0.9, 1] as const;
 export default function DictationScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
   const { L, en } = useL();
+  const theme = useStoreTheme();
   useDeckVisit(slug);
   const topic = useStudyDeck(slug);
   const words = topic?.words ?? [];
@@ -64,6 +66,7 @@ export default function DictationScreen() {
     setVerdict(ok);
     if (ok) setCorrect((n) => n + 1);
     logQuestions(1);
+    useTopicStudyStore.getState().review(slug, word.word, ok);
     useGameStore.getState().answer(ok, 'vocab', { key: `dict:${slug}:${word.word}:${sentenceMode ? 's' : 'w'}` });
   };
 
@@ -134,7 +137,7 @@ export default function DictationScreen() {
           }}
           className="flex-row items-center gap-2 rounded-pill bg-white/80 px-3 py-2"
         >
-          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : '#E1D9CB' }}>
+          <View className="h-5 w-9 justify-center rounded-pill px-0.5" style={{ backgroundColor: sentenceMode ? color.primary : theme.fieldBorder }}>
             <View className="h-4 w-4 rounded-pill bg-white" style={{ alignSelf: sentenceMode ? 'flex-end' : 'flex-start' }} />
           </View>
           <Text className="font-semi text-label text-ink">{L('Chép câu ví dụ', 'Dictate example sentence')}</Text>
@@ -165,7 +168,7 @@ export default function DictationScreen() {
                 key={s}
                 onPress={() => setSpeed(s)}
                 className="rounded-pill px-3 py-1.5"
-                style={{ backgroundColor: speed === s ? '#FBF6EE' : '#F9F6F1', borderWidth: 1, borderColor: speed === s ? '#E9CE9F' : 'transparent' }}
+                style={{ backgroundColor: speed === s ? theme.soft : theme.soft, borderWidth: 1, borderColor: speed === s ? '#E9CE9F' : 'transparent' }}
               >
                 <Text className="font-semi text-label" style={{ color: speed === s ? color.primary : '#475569' }}>
                   {s}×
@@ -183,10 +186,10 @@ export default function DictationScreen() {
             autoCapitalize="none"
             autoCorrect={false}
             placeholder={sentenceMode ? L('Gõ lại cả câu bạn nghe được…', 'Type the sentence you heard…') : L('Nhập từ bạn nghe được…', 'Type the word you heard…')}
-            placeholderTextColor="#94A3B8"
+            placeholderTextColor={theme.muted}
             onSubmitEditing={check}
             className="mt-6 rounded-2xl px-5 py-4 text-center font-semi text-cardTitle text-ink"
-            style={{ borderWidth: 1.5, borderColor: verdict === null ? '#E1D9CB' : verdict ? GREEN : RED, backgroundColor: '#FCFBF8' }}
+            style={{ borderWidth: 1.5, borderColor: verdict === null ? theme.fieldBorder : verdict ? theme.good : theme.bad, backgroundColor: theme.field }}
           />
 
           {verdict === null ? (
@@ -202,8 +205,8 @@ export default function DictationScreen() {
               />
             </>
           ) : (
-            <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? '#ECFDF3' : '#FFF1F2' }}>
-              <Text className="font-strong text-cardTitle" style={{ color: verdict ? GREEN : RED }}>
+            <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? theme.goodBg : theme.badBg }}>
+              <Text className="font-strong text-cardTitle" style={{ color: verdict ? theme.good : theme.bad }}>
                 {verdict ? L('Chính xác!', 'Correct!') : L('Đáp án đúng', 'Correct answer')}
               </Text>
               {sentenceMode ? (
@@ -211,7 +214,7 @@ export default function DictationScreen() {
               ) : (
                 <View className="mt-2 flex-row flex-wrap">
                   {letterDiff(typed, word.word).map((l, i) => (
-                    <Text key={i} className="font-heavy text-pageTitle" style={{ color: verdict || l.ok ? GREEN : RED }}>
+                    <Text key={i} className="font-heavy text-pageTitle" style={{ color: verdict || l.ok ? theme.good : theme.bad }}>
                       {l.ch}
                     </Text>
                   ))}

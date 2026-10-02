@@ -14,6 +14,7 @@ import articleIndex from '@/data/seed/index.json';
 import { BILINGUAL_ARTICLES } from '@/data/bilingual-repository';
 import { LIBRARY_AUDIO } from '@/data/audio-library';
 import { LIBRARY_VIDEOS } from '@/data/video-library';
+import { LISTENING_TESTS } from '@/data/listening-tests';
 import { DICTATION_SETS, dictationTopicLabel } from '@/data/dictation-sets';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
@@ -151,6 +152,7 @@ const PAGE_META: Record<string, { exam?: SearchExam; skill?: SearchSkill; keywor
   library: { exam: 'both', skill: 'reading', keywords: ['kho bài đọc', 'library', 'passage'] },
   bilingual: { exam: 'ielts', skill: 'reading', keywords: ['song ngữ', 'bilingual', 'báo', 'news'] },
   writing: { exam: 'ielts', skill: 'writing', keywords: ['task 1', 'task 2', 'essay', 'bài luận', 'chấm bài'] },
+  listening: { exam: 'ielts', skill: 'listening', keywords: ['listening', 'nghe', 'bài lẻ', 'full đề', 'section 1', 'section 2', 'section 3', 'section 4', 'luyện nghe'] },
   sentence: { exam: 'ielts', skill: 'listening', keywords: ['nghe chép', 'dictation', 'listening'] },
   'dictation-sets': { exam: 'ielts', skill: 'listening', keywords: ['bộ đề', 'chép chính tả', 'dictation sets'] },
   'dictation-youtube': { exam: 'ielts', skill: 'listening', keywords: ['youtube', 'video', 'chép theo video'] },
@@ -610,6 +612,22 @@ function buildEntries(): SearchEntry[] {
       level: video.level,
       href: `/sentence/youtube?v=${encodeURIComponent(video.id)}`,
     });
+  }
+
+  // Đề Listening (bài lẻ theo section)
+  for (const t of LISTENING_TESTS) {
+    for (const sec of t.sections) {
+      out.push({
+        id: `listening-test:${t.id}:${sec.n}`,
+        kind: 'listening',
+        title: { vi: `${t.titleVi ?? t.title} — Section ${sec.n}`, en: `${t.title} — Section ${sec.n}` },
+        subtitle: { vi: `Luyện nghe IELTS · ${sec.title}`, en: `IELTS Listening · ${sec.title}` },
+        keywords: [t.title, sec.title, t.cover.topic, `section ${sec.n}`, 'listening test', 'bài nghe'],
+        exam: 'ielts',
+        skill: 'listening',
+        href: `/listening/${t.id}?s=${sec.n}`,
+      });
+    }
   }
 
   // ---- Writing + dịch

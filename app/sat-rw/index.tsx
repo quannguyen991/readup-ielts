@@ -43,9 +43,17 @@ const SKILL_NAME: Record<string, { en: string; vi: string; descEn: string }> = {
   structure: { en: 'Text Structure & Purpose', vi: 'Cấu trúc và mục đích', descEn: 'Structure & purpose' },
   crosstext: { en: 'Cross-Text Connections', vi: 'Liên hệ hai văn bản', descEn: 'Linking two texts' },
   central: { en: 'Central Ideas & Details', vi: 'Ý chính và chi tiết', descEn: 'Main ideas & details' },
-  evidence: { en: 'Command of Evidence', vi: 'Dùng bằng chứng', descEn: 'Using evidence' },
+  evidence: { en: 'Command of Evidence', vi: 'Bằng chứng văn bản và số liệu', descEn: 'Textual & quantitative evidence' },
   inference: { en: 'Inferences', vi: 'Suy luận', descEn: 'Drawing inferences' },
 };
+
+/**
+ * Rhetorical Synthesis không nằm trong kho câu soạn tay mà có bộ SINH MỚI riêng (bài 16).
+ * Thẻ trỏ thẳng vào bộ ấy để mảng Expression of Ideas đủ hai kỹ năng như đề thật.
+ */
+const SYNTHESIS_SET = SAT_RW_STAGES.flatMap((st) => st.units)
+  .find((u) => u.number === 16)
+  ?.sets.find((x) => x.kind === 'generated');
 
 /** Kỹ năng → mảng đề, suy từ chính kho câu hỏi. */
 const SKILL_DOMAIN: Record<string, string> = Object.fromEntries(SAT_RW_QUESTIONS.map((q) => [q.skill, q.domain]));
@@ -128,6 +136,21 @@ export default function SatRwHubScreen() {
                       />
                     );
                   })}
+                  {d.key === 'Expression of Ideas' ? (
+                    <SkillCard
+                      key="synthesis"
+                      title="Rhetorical Synthesis"
+                      subtitle={L('Gộp ghi chú thành câu đúng mục đích', 'Turn notes into a purposeful sentence')}
+                      share={null}
+                      bank={SYNTHESIS_SET?.count ?? 0}
+                      answered={0}
+                      correct={0}
+                      wrong={0}
+                      accuracy={null}
+                      totalMs={0}
+                      href={SYNTHESIS_SET ? `/sat-rw/set/${SYNTHESIS_SET.id}` : '/sat-rw'}
+                    />
+                  ) : null}
                 </DomainSection>
               );
             })}

@@ -3,8 +3,9 @@ import { AiError } from '@/services/ai/errors';
 import { generateQuestionsWithClaude } from '@/services/ai/questions';
 import { blueprintFor, type PassageBlueprint } from '@/services/questions/blueprint';
 import { questionCacheKey, readSharedQuestionSet, writeSharedQuestionSet } from '@/services/questions/cache';
+import { sanitizeBlocks } from '@/services/questions/mix';
 import type { QuestionType } from '@/types/database';
-import { errorText, msg } from '@/lib/server-locale';
+import { msg } from '@/lib/server-locale';
 
 /**
  * POST /api/questions  { articleId, count?, focusType?, types?, passage? }
@@ -36,11 +37,18 @@ export async function POST(request: Request): Promise<Response> {
       count?: number;
       focusType?: QuestionType;
       types?: QuestionType[];
+      /** Bộ trộn dạng tự chọn: [{ type, count }] — xem `services/questions/mix.ts`. */
+      blocks?: unknown;
       passage?: { title?: string; paragraphs?: string[]; cefrLevel?: string | null };
     };
 
     if (!body.articleId) {
       return Response.json({ error: msg(request, 'Thiếu articleId.', 'articleId is required.') }, { status: 400 });
+    }
+
+    const blocks = sanitizeBlocks(body.blocks);
+    if (blocks === null) {
+      return Response.json({ error: msg(request, 'Bộ trộn dạng bài không hợp lệ.', 'Invalid question mix.') }, { status: 400 });
     }
 
     const inline = readInlinePassage(body.passage);
@@ -57,6 +65,7 @@ export async function POST(request: Request): Promise<Response> {
           ...(body.count ? { count: body.count } : {}),
           ...(body.focusType ? { focusType: body.focusType } : {}),
           ...(body.types?.length ? { types: body.types } : {}),
+          ...(blocks ? { blocks } : {}),
         },
       );
       return Response.json(questionSet);
@@ -111,13 +120,14 @@ export async function POST(request: Request): Promise<Response> {
     */
     const blueprint: PassageBlueprint | undefined =
       article.exam === 'ielts' &&
+      !blocks &&
       !body.focusType &&
       !body.count &&
       !(Array.isArray(body.types) && body.types.length > 0)
         ? blueprintFor(positionOf(article.passageTier), article.id)
         : undefined;
 
-    const requestedTypes = questionCacheKey({ types: body.types, focusType: body.focusType });
+    const requestedTypes = questionCacheKey({ types: body.types, focusType: body.focusType, ...(blocks ? { blocks } : {}) });
 
     const cached = await readSharedQuestionSet(article.id, requestedTypes);
     if (cached) return Response.json(cached);
@@ -138,6 +148,7 @@ export async function POST(request: Request): Promise<Response> {
         // chứ không phải lọc: đề chưa tồn tại lúc chọn, nó sinh ra theo đơn.
         ...(Array.isArray(body.types) && body.types.length > 0 ? { types: body.types } : {}),
         ...(blueprint ? { blueprint } : {}),
+        ...(blocks ? { blocks } : {}),
       },
     );
 
@@ -163,11 +174,24 @@ export async function POST(request: Request): Promise<Response> {
 
     return Response.json({ ...questionSet, requestedTypes });
   } catch (err) {
+    /*
+      KHÔNG đưa chi tiết nhà cung cấp ra phản hồi.
+
+      `AiError.message` của lớp gọi AI mang tên máy chủ, tên model và thân phản hồi
+      lỗi của proxy — thứ người dùng không cần và không được thấy. Chi tiết đi vào
+      log máy chủ; người dùng nhận một câu chung theo mã lỗi.
+    */
+    console.error('[api/questions]', err instanceof Error ? err.message.slice(0, 400) : String(err));
     if (err instanceof AiError) {
-      return Response.json({ error: errorText(request, err, err.message, "Couldn't generate questions right now. Please try again in a few minutes."), code: err.code }, { status: err.status ?? 502 });
+      const text =
+        err.code === 'invalid_request'
+          ? msg(request, 'Bài này không dùng được để tạo đề.', "This passage can't be used to build questions.")
+          : err.code === 'rate_limited'
+            ? msg(request, 'Đang có quá nhiều yêu cầu tạo đề. Thử lại sau ít phút.', 'Too many requests right now. Try again in a few minutes.')
+            : msg(request, 'Chưa tạo được đề lúc này. Thử lại sau ít phút.', "Couldn't generate questions right now. Please try again in a few minutes.");
+      return Response.json({ error: text, code: err.code }, { status: err.status ?? 502 });
     }
-    const message = errorText(request, err, 'Lỗi không xác định', 'Unknown error');
-    return Response.json({ error: message }, { status: 500 });
+    return Response.json({ error: msg(request, 'Chưa tạo được đề lúc này.', "Couldn't generate questions right now.") }, { status: 500 });
   }
 }
 

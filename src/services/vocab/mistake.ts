@@ -32,6 +32,8 @@ export type Mistake = {
   title: string;
   /** Giải thích cụ thể cho đúng câu này. */
   detail: string;
+  /** Chỉ lỗi nhầm sang từ khác: từ bị nhầm tới, để hiện một dòng "Dễ nhầm". */
+  confused?: { word: string; meaningVi: string };
 };
 
 export const MISTAKE_TITLE: Record<MistakeKind, string> = {
@@ -186,6 +188,7 @@ export function diagnosePick(
     kind: 'other_word',
     title: MISTAKE_TITLE.other_word,
     detail: `Bạn đang lẫn “${target.word}” (${target.meaningVi}) với “${hit.word}” (${hit.meaningVi}).`,
+    confused: { word: hit.word, meaningVi: hit.meaningVi },
   };
 }
 

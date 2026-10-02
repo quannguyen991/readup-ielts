@@ -1,0 +1,227 @@
+{
+  "id": "sample-s1",
+  "title": "Booking a Pottery Class",
+  "titleVi": "Đăng ký lớp gốm",
+  "source": "Band 9 Original",
+  "level": "easy",
+  "cover": {
+    "topic": "pottery",
+    "hue": 28
+  },
+  "sections": [
+    {
+      "n": 1,
+      "title": "Booking a pottery class",
+      "context": "A phone call between a student and a community centre receptionist.",
+      "audio": "/listening/sample/s1.mp3",
+      "durationSec": 150,
+      "transcript": [
+        {
+          "speaker": "Receptionist",
+          "text": "Good morning, Hillside Community Centre. How can I help you?"
+        },
+        {
+          "speaker": "Laura",
+          "text": "Hi, I'd like to sign up for the beginners' pottery course I saw advertised."
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "Of course. Can I take your surname, please?"
+        },
+        {
+          "speaker": "Laura",
+          "text": "It's Jensen. That's J-E-N-S-E-N."
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "Thanks, Laura. The course runs on Wednesdays, but we also have a Thursday evening group if that suits you better."
+        },
+        {
+          "speaker": "Laura",
+          "text": "Thursday would be perfect, I work late on Wednesdays."
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "Lovely. That class starts at half past six, so six thirty. We only take eight people in each group, so the studio doesn't get crowded."
+        },
+        {
+          "speaker": "Laura",
+          "text": "Is it in the main hall? I went there for a yoga class once."
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "No, the pottery classes are held in the art studio, behind the library. Just follow the signs from the car park."
+        },
+        {
+          "speaker": "Laura",
+          "text": "Great. And how much is the fee? Does it include materials?"
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "It's forty-five pounds for six weeks. That covers the clay and the firing of your finished pieces. Tools are free to borrow, but you have to pay for a certificate if you'd like one, and refreshments are not included."
+        },
+        {
+          "speaker": "Laura",
+          "text": "That's fine. What will we be making?"
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "In the first week everyone makes a simple mug. The second week is a bowl, and in the third week you'll try a vase, which is the hardest. After that you can choose your own projects."
+        },
+        {
+          "speaker": "Laura",
+          "text": "Sounds good. Should I bring anything?"
+        },
+        {
+          "speaker": "Receptionist",
+          "text": "Just an apron, because the clay gets everywhere. We'll see you next Thursday, then."
+        }
+      ],
+      "groups": [
+        {
+          "type": "gap",
+          "title": "Questions 1-4",
+          "instruction": "Complete the notes below. Write NO MORE THAN TWO WORDS AND/OR A NUMBER for each answer.",
+          "wordLimit": "NO MORE THAN TWO WORDS AND/OR A NUMBER",
+          "lines": [
+            "## Pottery course booking",
+            "Student's surname: {{1}}",
+            "Day of class: {{2}}",
+            "Maximum group size: {{3}} people",
+            "Student should bring: an {{4}}"
+          ],
+          "questions": [
+            {
+              "n": 1,
+              "answer": "Jensen"
+            },
+            {
+              "n": 2,
+              "answer": "Thursday",
+              "accept": [
+                "Thursdays"
+              ]
+            },
+            {
+              "n": 3,
+              "answer": "8",
+              "accept": [
+                "eight"
+              ]
+            },
+            {
+              "n": 4,
+              "answer": "apron"
+            }
+          ]
+        },
+        {
+          "type": "mcq-one",
+          "title": "Question 5",
+          "instruction": "Choose the correct letter, A, B or C.",
+          "questions": [
+            {
+              "n": 5,
+              "prompt": "Where are the pottery classes held?",
+              "answer": "B",
+              "options": [
+                {
+                  "key": "A",
+                  "text": "in the main hall"
+                },
+                {
+                  "key": "B",
+                  "text": "in the art studio"
+                },
+                {
+                  "key": "C",
+                  "text": "in the garden room"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "mcq-many",
+          "title": "Questions 6-7",
+          "instruction": "Choose TWO letters, A-E. Which TWO things are included in the fee?",
+          "options": [
+            {
+              "key": "A",
+              "text": "clay"
+            },
+            {
+              "key": "B",
+              "text": "a certificate"
+            },
+            {
+              "key": "C",
+              "text": "refreshments"
+            },
+            {
+              "key": "D",
+              "text": "firing of finished pieces"
+            },
+            {
+              "key": "E",
+              "text": "a printed guide"
+            }
+          ],
+          "questions": [
+            {
+              "n": 6,
+              "answer": [
+                "A",
+                "D"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "matching",
+          "title": "Questions 8-10",
+          "instruction": "What will students make in each week? Choose THREE answers from the box and write the correct letter, A-E, next to Questions 8-10.",
+          "options": [
+            {
+              "key": "A",
+              "text": "bowl"
+            },
+            {
+              "key": "B",
+              "text": "vase"
+            },
+            {
+              "key": "C",
+              "text": "plate"
+            },
+            {
+              "key": "D",
+              "text": "mug"
+            },
+            {
+              "key": "E",
+              "text": "tile"
+            }
+          ],
+          "questions": [
+            {
+              "n": 8,
+              "prompt": "Week 1",
+              "answer": "D"
+            },
+            {
+              "n": 9,
+              "prompt": "Week 2",
+              "answer": "A"
+            },
+            {
+              "n": 10,
+              "prompt": "Week 3",
+              "answer": "B"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
