@@ -1,0 +1,1393 @@
+[
+  {
+    "id": "c01-1",
+    "sceneId": "s01",
+    "paragraphId": "s01-p1",
+    "textEn": "A French–Spanish fleet arrived off Đà Nẵng on 31 August 1858 and opened fire on 1 September 1858.",
+    "textVi": "Liên quân Pháp – Tây Ban Nha tới cửa biển Đà Nẵng chiều 31/8/1858 và nổ súng ngày 1/9/1858.",
+    "date": "1858-08-31/1858-09-01",
+    "places": [
+      "Đà Nẵng"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-danang-1858",
+        "locator": "mục 'Liên quân Pháp - Tây Ban Nha tấn công Đà Nẵng năm 1858', đoạn 1 và 5",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-baodanang-dienhai",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Bảo tàng Lịch sử Quốc gia ghi hạm đội tới chiều 31/8 và nổ súng sau tối hậu thư sáng 1/9; Báo Đà Nẵng (dựa báo cáo công binh Pháp) ghi nổ súng ngày 1-9-1858."
+  },
+  {
+    "id": "c01-2",
+    "sceneId": "s01",
+    "paragraphId": "s01-p1",
+    "textEn": "The ships fired on the forts at the river mouth and on the Sơn Trà peninsula on 1 September; the forts at the river entrance were taken by 2 September.",
+    "textVi": "Ngày 1/9 tàu chiến bắn vào các đồn ở cửa sông và bán đảo Sơn Trà; đến 2/9 các đồn ở lối vào sông bị chiếm.",
+    "date": "1858-09-01/1858-09-02",
+    "places": [
+      "Sơn Trà",
+      "cửa sông Hàn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-danang-1858",
+        "locator": "đoạn 'Theo kế hoạch, liên quân gồm hai bộ phận…' và 'Sáng 2/9…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-baodanang-dienhai",
+        "locator": "trích báo cáo của đại úy Gallimard",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Báo Đà Nẵng trích nguyên văn báo cáo của đại úy Gallimard: 'Các pháo đài trên lối vào sông Hàn chiếm được ngày 2 tháng 9'."
+  },
+  {
+    "id": "c01-3",
+    "sceneId": "s01",
+    "paragraphId": "s01-p2",
+    "textEn": "The invaders planned a quick advance to Huế; instead Vietnamese forces under Nguyễn Tri Phương built defensive lines and kept them near the coast for months.",
+    "textVi": "Quân xâm lược định đánh nhanh ra Huế; quân Việt Nam do Nguyễn Tri Phương chỉ huy dựng tuyến phòng thủ và giữ chân họ gần bờ biển nhiều tháng.",
+    "date": "1858-09/1859-02",
+    "places": [
+      "Đà Nẵng",
+      "Huế"
+    ],
+    "people": [
+      "Nguyễn Tri Phương"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-danang-1858",
+        "locator": "các đoạn 'Kế hoạch của địch…' và 'Nguyễn Tri Phương không chủ trương đánh chính diện…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-wiki-tourane",
+        "locator": "phần mở đầu bài",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Nguồn thứ hai là Wikipedia (thứ cấp). Số tháng 'khoảng năm tháng' chỉ lấy từ BTLS nên không nêu số trong bài."
+  },
+  {
+    "id": "c01-4",
+    "sceneId": "s01",
+    "paragraphId": "s01-p2",
+    "textEn": "In February 1859 the main French force moved south toward Sài Gòn (Gia Định).",
+    "textVi": "Tháng 2/1859 đạo quân chính của Pháp chuyển vào phía nam, hướng tới Sài Gòn (Gia Định).",
+    "date": "1859-02",
+    "places": [
+      "Gia Định",
+      "Sài Gòn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-danang-1858",
+        "locator": "đoạn 'Trong tình trạng khó xử ấy, ngày 2 tháng 2 năm 1859…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-wiki-tourane",
+        "locator": "mục diễn biến",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c01-5",
+    "sceneId": "s01",
+    "paragraphId": "s01-p2",
+    "textEn": "The 1858 attack is treated as the opening of French conquest of Vietnam, not the same continuous war as 1945–1954.",
+    "textVi": "Cuộc tấn công 1858 được xem là mở đầu cuộc xâm lược của Pháp, không phải cùng một cuộc chiến liên tục với giai đoạn 1945–1954.",
+    "date": "1858",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-danang-1858",
+        "locator": "tiêu đề và đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-baodanang-dienhai",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Cả hai nguồn gọi đây là 'mở đầu cuộc xâm lược'; việc tách giai đoạn là cách biên tập của bài."
+  },
+  {
+    "id": "c02-1",
+    "sceneId": "s02",
+    "paragraphId": "s02-p1",
+    "textEn": "On 2 September 1945, Hồ Chí Minh announced the Democratic Republic of Vietnam with a Declaration of Independence in Hà Nội.",
+    "textVi": "Ngày 2/9/1945, Hồ Chí Minh tuyên bố thành lập nước Việt Nam Dân chủ Cộng hòa cùng Tuyên ngôn Độc lập tại Hà Nội.",
+    "date": "1945-09-02",
+    "places": [
+      "Hà Nội",
+      "Ba Đình"
+    ],
+    "people": [
+      "Hồ Chí Minh"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-archives-le-doc-lap",
+        "locator": "đoạn thông báo của Ban tổ chức",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-uqam-drv",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-uqam-hanoi",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 3,
+    "status": "verified",
+    "notes": "Địa điểm Ba Đình lấy từ thông báo ngày lễ do Ban tổ chức đăng, được Trung tâm Lưu trữ quốc gia I dẫn lại."
+  },
+  {
+    "id": "c02-2",
+    "sceneId": "s02",
+    "paragraphId": "s02-p1",
+    "textEn": "The new state set up a provisional government and promised elections for a National Assembly (held on 6 January 1946).",
+    "textVi": "Nhà nước mới lập chính phủ lâm thời và hứa bầu cử Quốc hội (Tổng tuyển cử 6/1/1946).",
+    "date": "1945-09-02/1946-01-06",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-uqam-drv",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-tongtuyencu",
+        "locator": "tiêu đề và đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c02-3",
+    "sceneId": "s02",
+    "paragraphId": "s02-p2",
+    "textEn": "A severe famine had struck and illiteracy was widespread when the new state began.",
+    "textVi": "Khi nhà nước mới ra đời, nạn đói nghiêm trọng đã xảy ra và nạn mù chữ còn phổ biến.",
+    "date": "1944/1945",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-uqam-hanoi",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-tongtuyencu",
+        "locator": "đoạn nói về tình thế 'nghìn cân treo sợi tóc'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "UQAM nêu 'severe famine'; Bảo tàng Lịch sử Quốc gia gọi 'nạn đói, nạn dốt'. Không nêu số người chết vì chỉ có một nguồn."
+  },
+  {
+    "id": "c02-4",
+    "sceneId": "s02",
+    "paragraphId": "s02-p2",
+    "textEn": "Chinese Nationalist troops entered the north and British troops the south to disarm the Japanese.",
+    "textVi": "Quân Trung Hoa Dân quốc vào miền Bắc, quân Anh vào miền Nam để giải giáp quân Nhật.",
+    "date": "1945-09",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-uqam-hanoi",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-archives-1945-1946",
+        "locator": "phần 'Những toan tính của Pháp ở Đông Dương năm 1945'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c02-5",
+    "sceneId": "s02",
+    "paragraphId": "s02-p2",
+    "textEn": "France was preparing to restore its position in Indochina.",
+    "textVi": "Pháp chuẩn bị khôi phục vị thế của mình ở Đông Dương.",
+    "date": "1945",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-archives-1945-1946",
+        "locator": "phần 'Những toan tính của Pháp ở Đông Dương năm 1945'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-nambo-23-9",
+        "locator": "mục 'Cuộc bắt tay của 3 nước lớn'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Bài nói 'chuẩn bị quay lại', không khẳng định Pháp đã tái lập quyền cai trị."
+  },
+  {
+    "id": "c03-1",
+    "sceneId": "s03",
+    "paragraphId": "s03-p1",
+    "textEn": "British troops had arrived in Sài Gòn (the first on 6 September) and French soldiers who had been held prisoner were armed again (over 1,400 according to one source).",
+    "textVi": "Quân Anh tới Sài Gòn (nhóm đầu ngày 6/9) và lính Pháp từng bị giam được trang bị lại vũ khí.",
+    "date": "1945-09-06/1945-09-11",
+    "places": [
+      "Sài Gòn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-nambo-23-9",
+        "locator": "mục 'Cuộc bắt tay của 3 nước lớn'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-archives-1945-1946",
+        "locator": "phần diễn biến tháng 9/1945",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Con số 'trên 1.400' chỉ có ở Bảo tàng Lịch sử Quốc gia nên bài không nêu số."
+  },
+  {
+    "id": "c03-2",
+    "sceneId": "s03",
+    "paragraphId": "s03-p1",
+    "textEn": "On 22 September French forces opened fire on the southern government's offices, including the post office and the radio station.",
+    "textVi": "Ngày 22/9 quân Pháp nổ súng vào các cơ quan chính quyền Nam Bộ, trong đó có bưu điện và đài phát thanh.",
+    "date": "1945-09-22",
+    "places": [
+      "Sài Gòn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-nambo-23-9",
+        "locator": "mục 'Cuộc kháng chiến bắt đầu'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Bảo tàng Lịch sử Quốc gia ghi 'chiều 22/9', dẫn Lịch sử Nam bộ kháng chiến (2012). UQAM đặt thời điểm 'đảo chính' ngày 23/9; bài giữ cả hai ngày 22–23/9 thay vì ép thành một khoảnh khắc."
+  },
+  {
+    "id": "c03-3",
+    "sceneId": "s03",
+    "paragraphId": "s03-p1",
+    "textEn": "On 23 September, with British help, French forces pushed Vietnamese forces out of Sài Gòn.",
+    "textVi": "Ngày 23/9, với sự hỗ trợ của người Anh, quân Pháp đẩy các lực lượng Việt Nam ra khỏi Sài Gòn.",
+    "date": "1945-09-23",
+    "places": [
+      "Sài Gòn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-uqam-23sep1945",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-nambo-23-9",
+        "locator": "mục 'Cuộc bắt tay của 3 nước lớn' và 'Cuộc kháng chiến bắt đầu'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "UQAM: 'the British facilitated a French coup de force, ousting forces loyal to or allied with the DRV from Saigon'."
+  },
+  {
+    "id": "c03-4",
+    "sceneId": "s03",
+    "paragraphId": "s03-p2",
+    "textEn": "On the morning of 23 September the southern Party committee, People's Committee and Resistance Committee met at a house on Cây Mai Street (today Nguyễn Trãi Street, District 5) and approved a call to resist.",
+    "textVi": "Sáng 23/9, Xứ ủy, Ủy ban Nhân dân và Ủy ban Kháng chiến Nam Bộ họp tại nhà 629 đường Cây Mai (nay là đường Nguyễn Trãi, quận 5) và thông qua lời kêu gọi kháng chiến.",
+    "date": "1945-09-23",
+    "places": [
+      "đường Cây Mai (nay Nguyễn Trãi), quận 5"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-nambo-23-9",
+        "locator": "mục 'Cuộc kháng chiến bắt đầu'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Chi tiết cuộc họp chỉ có ở một nguồn (dẫn Lịch sử Nam bộ kháng chiến, tập 1, 2012)."
+  },
+  {
+    "id": "c03-5",
+    "sceneId": "s03",
+    "paragraphId": "s03-p2",
+    "textEn": "23 September is remembered as Nam Bộ Resistance Day and marks the first stage of the war that became nationwide in December 1946.",
+    "textVi": "23/9 được nhớ đến là Ngày Nam Bộ kháng chiến, mở đầu giai đoạn đầu của cuộc chiến sau đó lan ra toàn quốc vào tháng 12/1946.",
+    "date": "1945-09-23/1946-12-19",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-nambo-23-9",
+        "locator": "đoạn cuối",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-uqam-23sep1945",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c04-1",
+    "sceneId": "s04",
+    "paragraphId": "s04-p1",
+    "textEn": "Vietnam and France signed a Preliminary Agreement on 6 March 1946 and a temporary agreement (modus vivendi) dated 14 September 1946.",
+    "textVi": "Việt Nam và Pháp ký Hiệp định sơ bộ ngày 6/3/1946 và Tạm ước ngày 14/9/1946.",
+    "date": "1946-03-06/1946-09-14",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-archives-hiepdinh-so-bo",
+        "locator": "phần nội dung Hiệp định sơ bộ và Tạm ước",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Tạm ước mang ngày 14/9 nhưng một số tài liệu ghi ký đầu giờ 15/9; bài chỉ dùng 'tháng 9'."
+  },
+  {
+    "id": "c04-2",
+    "sceneId": "s04",
+    "paragraphId": "s04-p1",
+    "textEn": "The two sides were in conflict over who would control Vietnam, i.e. over sovereignty.",
+    "textVi": "Hai bên xung đột về việc ai sẽ kiểm soát Việt Nam, tức là về chủ quyền.",
+    "date": "1946",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-uqam-19dec1946",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-archives-hiepdinh-so-bo",
+        "locator": "đoạn sau mục nội dung Hiệp định sơ bộ",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "UQAM mô tả trung lập 'clash over two opposing conceptions of who should and would control Vietnam'."
+  },
+  {
+    "id": "c04-3",
+    "sceneId": "s04",
+    "paragraphId": "s04-p1",
+    "textEn": "In November 1946 French forces took control of Hải Phòng and moved toward Lạng Sơn.",
+    "textVi": "Tháng 11/1946 quân Pháp kiểm soát Hải Phòng và tiến về phía Lạng Sơn.",
+    "date": "1946-11",
+    "places": [
+      "Hải Phòng",
+      "Lạng Sơn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn 'Bội ước Hiệp định sơ bộ…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-uqam-19dec1946",
+        "locator": "đoạn giữa",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c04-4",
+    "sceneId": "s04",
+    "paragraphId": "s04-p2",
+    "textEn": "French troops fired in several streets of Hà Nội on 15–17 December, and on 18 December the French commander sent an ultimatum.",
+    "textVi": "Quân Pháp nổ súng ở nhiều phố Hà Nội ngày 15–17/12, và ngày 18/12 chỉ huy Pháp gửi tối hậu thư.",
+    "date": "1946-12-15/1946-12-18",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [
+      "Morlière"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn 'Quân đội Pháp đã liên tiếp nổ súng…' và 'Ngày 18-12…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hcmmuseum-chrono-1946",
+        "locator": "mục ngày 19-12-1946",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Bản BTLSQG có lỗi đánh máy '18-12-1964' (đúng là 1946). Cả hai nguồn nhắc tối hậu thư; phía Việt Nam ghi tướng Morlière gửi."
+  },
+  {
+    "id": "c04-5",
+    "sceneId": "s04",
+    "paragraphId": "s04-p2",
+    "textEn": "Hồ Chí Minh and the Party's Standing Committee met at Vạn Phúc on 18–19 December and decided to call the whole country to resist; on 19 December he wrote the Appeal for Nationwide Resistance.",
+    "textVi": "Hồ Chí Minh và Ban Thường vụ Trung ương Đảng họp ở Vạn Phúc ngày 18–19/12 và quyết định phát động kháng chiến toàn quốc; ngày 19/12 Người viết Lời kêu gọi toàn quốc kháng chiến.",
+    "date": "1946-12-18/1946-12-19",
+    "places": [
+      "Vạn Phúc",
+      "Hà Đông"
+    ],
+    "people": [
+      "Hồ Chí Minh"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn 'Ngày 18 và 19-12-1946 tại Vạn Phúc…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hcmmuseum-chrono-1946",
+        "locator": "mục ngày 19-12-1946",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Hai nguồn đều là bảo tàng Việt Nam (cùng truyền thống sử học chính thống) nên chỉ tính 2 nguồn khác cơ quan. Giờ và ngày phát thanh Lời kêu gọi các nguồn ghi khác nhau (tối 19/12 hay ngày 20/12) nên bài không nêu."
+  },
+  {
+    "id": "c04-6",
+    "sceneId": "s04",
+    "paragraphId": "s04-p2",
+    "textEn": "Responsibility for, and the exact decisions leading to, the outbreak of full-scale war on 19 December 1946 remain contested among historians.",
+    "textVi": "Trách nhiệm và các quyết định cụ thể dẫn tới chiến tranh toàn diện ngày 19/12/1946 vẫn còn tranh luận giữa các nhà sử học.",
+    "date": "1946-12-19",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-uqam-19dec1946",
+        "locator": "câu mở đầu",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "UQAM nêu rõ điểm này; bài dùng nó để không khẳng định ai là bên khơi mào."
+  },
+  {
+    "id": "c05-1",
+    "sceneId": "s05",
+    "paragraphId": "s05-p1",
+    "textEn": "At about 8 p.m. (20:03) on 19 December 1946 the city's electric power was cut, the signal for fighting in Hà Nội to begin.",
+    "textVi": "Khoảng 20 giờ (20 giờ 3 phút) ngày 19/12/1946 điện toàn thành phố bị cắt, hiệu lệnh bắt đầu chiến sự ở Hà Nội.",
+    "date": "1946-12-19",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn 'Chấp hành mệnh lệnh chiến đấu, đúng 20 giờ ngày 19-12-1946…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-anh-hanoi-1946",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hanoimoi-60-ngay-dem",
+        "locator": "đoạn nói về Mệnh lệnh tấn công của Bộ Chỉ huy Chiến khu 11",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 3,
+    "status": "verified",
+    "notes": "Các nguồn thống nhất giờ (20 giờ / 20 giờ 3 phút) nhưng gọi tên nhà máy điện khác nhau (Yên Phụ hoặc Bờ Hồ) nên bài không nêu tên nhà máy."
+  },
+  {
+    "id": "c05-2",
+    "sceneId": "s05",
+    "paragraphId": "s05-p1",
+    "textEn": "Fighters and residents used barricades and linked houses and street corners as strongpoints, fighting from street to street.",
+    "textVi": "Lực lượng chiến đấu và người dân dựa vào chiến lũy và thế liên hoàn của các căn nhà, dãy phố để đánh từng phố, từng nhà.",
+    "date": "1946-12-19/1947-02-17",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-hanoimoi-60-ngay-dem",
+        "locator": "đoạn 'dựa vào công sự, chiến lũy và thế liên hoàn của các căn nhà, dãy phố'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn 'Các chiến lũy được củng cố vững chắc…'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c05-3",
+    "sceneId": "s05",
+    "paragraphId": "s05-p1",
+    "textEn": "Trees were cut down and tram cars were left across the road as obstacles.",
+    "textVi": "Cây bị chặt đổ và các toa xe điện nằm chắn ngang đường làm vật cản.",
+    "date": "1946-12-19",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn 'Các chiến lũy được củng cố vững chắc. Cây bị chặt đổ…'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Chi tiết lấy từ bài của Bảo tàng Lịch sử Quốc gia (dẫn sách '60 năm Toàn quốc kháng chiến', 2007)."
+  },
+  {
+    "id": "c05-4",
+    "sceneId": "s05",
+    "paragraphId": "s05-p2",
+    "textEn": "The defence of Hà Nội is counted as sixty days and nights, from 19 December 1946 to 17 February 1947, when the Capital Regiment left the city.",
+    "textVi": "Cuộc chiến đấu ở Hà Nội được tính là 60 ngày đêm, từ 19/12/1946 đến 17/2/1947, khi Trung đoàn Thủ đô rút khỏi thành phố.",
+    "date": "1946-12-19/1947-02-17",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-anh-hanoi-1946",
+        "locator": "đoạn 'từ 19.12.1946 đến khi trung đoàn thủ đô rút khỏi đô thị ngày 17.02.1947 (60 ngày đêm)'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hanoimoi-60-ngay-dem",
+        "locator": "nhan đề và đoạn kết",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Không nêu số thương vong vì các nguồn là số liệu một phía và không cần cho bài."
+  },
+  {
+    "id": "c05-5",
+    "sceneId": "s05",
+    "paragraphId": "s05-p2",
+    "textEn": "The Capital Regiment was formed in January 1947 and later left the city across the Red River to a safe zone, helping protect the leadership as it moved to the base area.",
+    "textVi": "Trung đoàn Thủ đô thành lập tháng 1/1947 và sau đó rút khỏi thành phố qua sông Hồng lên chiến khu an toàn, góp phần bảo vệ các cơ quan lãnh đạo chuyển lên căn cứ.",
+    "date": "1947-01-06/1947-02-17",
+    "places": [
+      "Hà Nội",
+      "sông Hồng"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-hanoimoi-60-ngay-dem",
+        "locator": "đoạn 'ngày 6-1-1947, Trung đoàn Thủ đô… được thành lập' và đoạn kết",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-19-12-1946",
+        "locator": "đoạn kết",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c06-1",
+    "sceneId": "s06",
+    "paragraphId": "s06-p1",
+    "textEn": "After 19 December 1946 the Party, the government and Hồ Chí Minh chose a large mountain-and-forest region in Thái Nguyên, Tuyên Quang and Bắc Kạn as a safe zone (ATK); a special team had surveyed the area.",
+    "textVi": "Sau ngày toàn quốc kháng chiến (12/1946), Đảng, Chính phủ và Hồ Chí Minh chọn một vùng núi rừng rộng lớn ở Thái Nguyên, Tuyên Quang, Bắc Kạn làm An toàn khu (ATK); một đội công tác đặc biệt đã khảo sát.",
+    "date": "1946-12",
+    "places": [
+      "Thái Nguyên",
+      "Tuyên Quang",
+      "Bắc Kạn"
+    ],
+    "people": [
+      "Hồ Chí Minh"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-atk-dinh-hoa",
+        "locator": "đoạn 'Thủ đô gió ngàn'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-thanhtra-thainguyen-atk",
+        "locator": "đoạn nói về Đội công tác đặc biệt do Trần Đăng Ninh phụ trách (giữa tháng 12/1946)",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Các nguồn viết 'Bắc Cạn' (tên cũ); bài dùng chính tả hiện nay 'Bắc Kạn'."
+  },
+  {
+    "id": "c06-2",
+    "sceneId": "s06",
+    "paragraphId": "s06-p2",
+    "textEn": "The region was chosen because militarily fighters could advance to attack and fall back to defend, and politically it had good local support.",
+    "textVi": "Vùng này được chọn vì về quân sự là nơi 'tiến có thể đánh, lui có thể giữ', và về chính trị có nhân dân tốt, cơ sở chính trị tốt.",
+    "date": "1946-12",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-atk-dinh-hoa",
+        "locator": "đoạn 'Sở dĩ vùng rừng núi rộng lớn này được lựa chọn làm ATK…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-thanhtra-thainguyen-atk",
+        "locator": "đoạn về Thái Nguyên",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c06-3",
+    "sceneId": "s06",
+    "paragraphId": "s06-p2",
+    "textEn": "On 20 May 1947 Hồ Chí Minh reached Khau Tý hill in Định Hóa, where the first Presidential Office was set up.",
+    "textVi": "Ngày 20/5/1947, Hồ Chí Minh tới đồi Khau Tý ở Định Hóa, nơi đặt Phủ Chủ tịch đầu tiên.",
+    "date": "1947-05-20",
+    "places": [
+      "Khau Tý",
+      "Định Hóa"
+    ],
+    "people": [
+      "Hồ Chí Minh"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-atk-dinh-hoa",
+        "locator": "đoạn 'Ngày 20/5/1947 Hồ Chủ Tịch tới đồi Khau Tý…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-thanhtra-thainguyen-atk",
+        "locator": "nhan đề bài",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c07-1",
+    "sceneId": "s07",
+    "paragraphId": "s07-p1",
+    "textEn": "The campaign's aims included breaking the isolation of the Việt Bắc base and opening the Vietnam–China border to receive outside help.",
+    "textVi": "Mục đích gồm phá thế cô lập của căn cứ Việt Bắc và khai thông biên giới Việt – Trung để nhận sự giúp đỡ từ bên ngoài.",
+    "date": "1950-09",
+    "places": [
+      "Việt Bắc"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-bien-gioi-14-10",
+        "locator": "đoạn 'Với mục đích phá thế cô lập của căn cứ địa Việt Bắc…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-qdnd-bien-gioi-hau-can",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Hai nguồn đều từ Bảo tàng Lịch sử Quốc gia; hậu cần QĐND mô tả cùng bối cảnh nhưng không nêu mục đích — chỉ tính 1 nguồn độc lập về mục đích."
+  },
+  {
+    "id": "c07-2",
+    "sceneId": "s07",
+    "paragraphId": "s07-p1",
+    "textEn": "On 16 September 1950 Vietnamese troops attacked the French post at Đông Khê on Route 4, and it fell on 18 September.",
+    "textVi": "Ngày 16/9/1950 quân đội Việt Nam tấn công cứ điểm Đông Khê trên đường số 4; ngày 18/9 cứ điểm thất thủ.",
+    "date": "1950-09-16/1950-09-18",
+    "places": [
+      "Đông Khê",
+      "đường số 4"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-bien-gioi-14-10",
+        "locator": "đoạn 'Ngày 16 tháng 9 năm 1950, Trung đoàn 174 và 209…'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-bien-gioi-17-10",
+        "locator": "đoạn mở đầu chiến dịch",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c07-3",
+    "sceneId": "s07",
+    "paragraphId": "s07-p2",
+    "textEn": "After Đông Khê the French left Cao Bằng; two French columns were defeated near Đông Khê in early October; Cao Bằng town was freed on 3 October 1950.",
+    "textVi": "Sau Đông Khê, Pháp rút khỏi Cao Bằng; hai binh đoàn Pháp bị đánh tan gần Đông Khê đầu tháng 10; thị xã Cao Bằng được giải phóng ngày 3/10/1950.",
+    "date": "1950-09-18/1950-10-08",
+    "places": [
+      "Đông Khê",
+      "Cao Bằng"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-bien-gioi-14-10",
+        "locator": "đoạn 'Mất Đông Khê, Cao Bằng bị cô lập…' và chú thích ảnh 'Thị xã Cao Bằng được giải phóng ngày 3/10/1950'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-bien-gioi-17-10",
+        "locator": "đoạn cuối",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Hai bài của Bảo tàng Lịch sử Quốc gia dựa trên các tài liệu khác nhau (một bài dẫn Đại cương Lịch sử Việt Nam, một bài là tổng thuật chiến dịch)."
+  },
+  {
+    "id": "c07-4",
+    "sceneId": "s07",
+    "paragraphId": "s07-p2",
+    "textEn": "The main fighting lasted about a month (16 September to mid-October); by 22 October the French had left their remaining posts on Route 4.",
+    "textVi": "Trận đánh chính kéo dài khoảng một tháng (16/9 đến giữa tháng 10); đến 22/10 Pháp rút hoàn toàn khỏi các cứ điểm còn lại trên đường số 4.",
+    "date": "1950-09-16/1950-10-22",
+    "places": [
+      "đường số 4"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-bien-gioi-14-10",
+        "locator": "đoạn 'Ngày 14 tháng 10, chiến dịch kết thúc.'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-bien-gioi-17-10",
+        "locator": "đoạn 'Ngày 17-10, Việt Minh chủ động kết thúc chiến dịch… tới ngày 22-10-1950…'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Mốc kết thúc khác nhau giữa các nguồn: 14/10 (nhiều tài liệu), 17/10 (Việt Minh chủ động kết thúc), 22/10 (Pháp rút hoàn toàn khỏi các cứ điểm còn lại). Bài dùng 'giữa tháng 10' và nêu 22/10 riêng."
+  },
+  {
+    "id": "c07-5",
+    "sceneId": "s07",
+    "paragraphId": "s07-p2",
+    "textEn": "The campaign broke the French defence line on Route 4, freed much of the border region and connected the Việt Bắc base with the Chinese border; Vietnamese sources describe it as the moment the army gained the initiative in the northern theatre.",
+    "textVi": "Chiến dịch phá vỡ tuyến phòng thủ của Pháp trên đường số 4, giải phóng phần lớn vùng biên giới, nối căn cứ Việt Bắc với biên giới Trung Quốc; các nguồn Việt Nam coi đây là lúc quân đội giành thế chủ động ở chiến trường Bắc Bộ.",
+    "date": "1950-10",
+    "places": [
+      "đường số 4",
+      "biên giới Việt – Trung"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-bien-gioi-14-10",
+        "locator": "đoạn 'Với chiến dịch Biên giới, sau gần một tháng chiến đấu…' và đoạn kết",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Phần đánh giá 'thế chủ động' là nhận định của sử học Việt Nam nên được nêu rõ là 'các nguồn Việt Nam'. Không dùng số quân, số thu giữ."
+  },
+  {
+    "id": "c08-1",
+    "sceneId": "s08",
+    "paragraphId": "s08-p1",
+    "textEn": "Farmers were encouraged to increase food production and to set aside rice for the soldiers.",
+    "textVi": "Nông dân được khuyến khích tăng gia sản xuất và dành gạo cho bộ đội.",
+    "date": "1946/1954",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-qdnd-bien-gioi-hau-can",
+        "locator": "đoạn nói về vận động nhân dân bán lương thực, thực phẩm cho bộ đội",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-btlsqg-giao-duc-khang-chien",
+        "locator": "phần về nhiệm vụ 'kháng chiến và kiến quốc'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Mô tả khái quát; không khẳng định mọi gia đình đều làm như nhau."
+  },
+  {
+    "id": "c08-2",
+    "sceneId": "s08",
+    "paragraphId": "s08-p1",
+    "textEn": "After 1945 the Bình dân học vụ literacy movement spread; more than 90% of the population could not read; by the end of 1946 more than 2.5 million people had been taught; a slogan said 'To go to school is to resist'.",
+    "textVi": "Sau 1945 phong trào Bình dân học vụ lan rộng; hơn 90% dân số mù chữ; đến cuối 1946 hơn 2,5 triệu người được xóa mù; khẩu hiệu 'Đi học là kháng chiến'.",
+    "date": "1945/1946",
+    "places": [],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-btlsqg-giao-duc-khang-chien",
+        "locator": "đoạn 'Về giáo dục, di hại lớn nhất…', đoạn về phong trào Bình dân học vụ và đoạn thống kê 'đến cuối năm 1946, hơn 2,5 triệu người được xóa mù chữ'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Các con số (hơn 90%, hơn 2,5 triệu) lấy từ một bài của Bảo tàng Lịch sử Quốc gia, dẫn thống kê của Bộ Quốc gia Giáo dục; chưa có nguồn thứ hai độc lập nên được gắn nhãn 'Nguồn đơn'."
+  },
+  {
+    "id": "c08-3",
+    "sceneId": "s08",
+    "paragraphId": "s08-p2",
+    "textEn": "During the Border Campaign (1950) thousands of people from Cao Bằng, Bắc Kạn and Lạng Sơn joined as porters, and local families sold hundreds of tons of food to the army.",
+    "textVi": "Trong Chiến dịch Biên giới (1950), hàng nghìn người ở Cao Bằng, Bắc Kạn, Lạng Sơn đi dân công và đồng bào bán hàng trăm tấn lương thực cho bộ đội.",
+    "date": "1950-08/1950-10",
+    "places": [
+      "Cao Bằng",
+      "Bắc Kạn",
+      "Lạng Sơn"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-qdnd-bien-gioi-hau-can",
+        "locator": "đoạn 'Nhờ cấp ủy, chính quyền địa phương… đồng bào các dân tộc ở Cao Bằng, Bắc Cạn, Lạng Sơn vẫn bán cho bộ đội hàng trăm tấn lương thực…; hàng nghìn người hăng hái đi dân công'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Nguồn là chuyên trang Hậu cần của Báo Quân đội nhân dân; số liệu nêu ở mức 'hàng nghìn', 'hàng trăm tấn' đúng như nguồn."
+  },
+  {
+    "id": "c09-1",
+    "sceneId": "s09",
+    "paragraphId": "s09-p1",
+    "textEn": "At the end of 1953 French forces were established in the Điện Biên Phủ valley (decision of 3 Dec 1953 to accept battle there).",
+    "textVi": "Cuối năm 1953 quân Pháp đóng ở thung lũng Điện Biên Phủ (3/12/1953 Navarre quyết định chấp nhận chiến đấu ở đó).",
+    "date": "1953-11/1953-12",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [
+      "Henri Navarre"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-nda-dbp",
+        "locator": "đoạn 'Ngày 2 tháng 11 năm 1953… Ngày 3 tháng 12 năm 1953'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-baoquankhu2-dbp",
+        "locator": "đoạn 'ngày 6 tháng 12 năm 1953'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Bài chỉ nêu 'cuối năm 1953', không nêu số quân."
+  },
+  {
+    "id": "c09-2",
+    "sceneId": "s09",
+    "paragraphId": "s09-p1",
+    "textEn": "Soldiers opened roads and very large numbers of porters and bicycle-porters carried food, weapons and ammunition under bombing.",
+    "textVi": "Bộ đội mở đường; rất đông dân công gùi, gánh và đẩy xe đạp thồ lương thực, vũ khí, đạn dược dưới bom đạn.",
+    "date": "1953-12/1954-03",
+    "places": [
+      "Tây Bắc"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-baoquankhu2-dbp",
+        "locator": "đoạn 'Lực lượng, phương tiện phục vụ chiến dịch cũng rất lớn'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-nhandan-keo-phao",
+        "locator": "đoạn 'Dân công như nước, Vệ quốc đoàn như nêm'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Các nguồn nêu số liệu (ví dụ ~261.500 dân công, 21.000 xe đạp thồ) nhưng có vẻ cùng một gốc; bài chỉ nói 'rất đông', không nêu số."
+  },
+  {
+    "id": "c09-3",
+    "sceneId": "s09",
+    "paragraphId": "s09-p2",
+    "textEn": "The command first planned a quick attack and pulled the artillery in; at the end of January 1954 it changed to a steadier plan and pulled the guns out.",
+    "textVi": "Ban đầu bộ chỉ huy định đánh nhanh và kéo pháo vào; cuối tháng 1/1954 đổi sang đánh chắc tiến chắc và kéo pháo ra.",
+    "date": "1954-01-25/1954-01-27",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [
+      "Võ Nguyên Giáp"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-nhandan-keo-phao",
+        "locator": "đoạn nói về hai phương châm 'Đánh nhanh, giải quyết nhanh' và 'Đánh chắc, tiến chắc'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-vnexpress-keo-phao",
+        "locator": "đoạn đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-quocphongthudo-dbp",
+        "locator": "đoạn 'Đúng 15 giờ 45 phút ngày 25 tháng 1 năm 1954'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 3,
+    "status": "verified",
+    "notes": "Bài chỉ nói 'cuối tháng 1/1954'. Giờ chính xác (15 giờ 45 phút ngày 25/1) chỉ xuất hiện ở hai bài có vẻ cùng một gốc nên không đưa vào bài; trung đoàn kéo pháo ra khoảng 27/1."
+  },
+  {
+    "id": "c09-4",
+    "sceneId": "s09",
+    "paragraphId": "s09-p2",
+    "textEn": "The change was made because the enemy force in the valley had grown stronger.",
+    "textVi": "Lý do đổi cách đánh là lực lượng đối phương trong thung lũng đã mạnh lên.",
+    "date": "1954-01",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-baoquankhu2-dbp",
+        "locator": "đoạn trước 'Đúng 15 giờ 45 phút ngày 25 tháng 1 năm 1954'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Lý do 'đối phương mạnh lên' lấy từ tường thuật chung; các nguồn đọc được diễn đạt gần nhau."
+  },
+  {
+    "id": "c10-1",
+    "sceneId": "s10",
+    "paragraphId": "s10-p1",
+    "textEn": "On 3 December 1953 Navarre decided to accept battle at Điện Biên Phủ; the post was meant to block the way into Upper Laos.",
+    "textVi": "3/12/1953 Navarre quyết định chấp nhận chiến đấu ở Điện Biên Phủ; vị trí này nhằm chặn đường vào Thượng Lào.",
+    "date": "1953-12-03",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [
+      "Henri Navarre"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-nda-dbp",
+        "locator": "đoạn 'Ngày 3 tháng 12 năm 1953, Navarre đã quyết định…'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Nguồn đọc: bài của Học viện Quốc phòng; các bài khác nhắc ý 'chặn Thượng Lào' nhưng chưa đối chiếu ngày 3/12 độc lập."
+  },
+  {
+    "id": "c10-2",
+    "sceneId": "s10",
+    "paragraphId": "s10-p1",
+    "textEn": "The French garrison was a cluster of strongpoints supplied mainly by air.",
+    "textVi": "Quân Pháp ở đó là cụm cứ điểm được tiếp tế chủ yếu bằng đường không.",
+    "date": "1953-11/1954-05",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-nda-dbp",
+        "locator": "đoạn mô tả lực lượng quân Pháp và các phân khu",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Chỉ xác nhận 'cụm cứ điểm' trong nguồn đã đọc; ý 'tiếp tế chủ yếu bằng đường không' là kiến thức chung nhưng chưa trích nguồn riêng — cần bổ sung nếu muốn nâng lên verified."
+  },
+  {
+    "id": "c10-3",
+    "sceneId": "s10",
+    "paragraphId": "s10-p2",
+    "textEn": "The campaign began on 13 March 1954 and ran in three phases; phase one (13–17 March) took the northern strongpoints such as Him Lam and Độc Lập; phase three ran from 1 to 7 May.",
+    "textVi": "Chiến dịch bắt đầu 13/3/1954, ba đợt; đợt 1 (13–17/3) chiếm Him Lam, Độc Lập…; đợt 3 từ 1 đến 7/5.",
+    "date": "1954-03-13/1954-05-07",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-baocaobang-dbp",
+        "locator": "đoạn 'Trận quyết chiến lược Điện Biên Phủ đã diễn ra 3 đợt'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-quocphongthudo-dbp",
+        "locator": "đoạn 'Thời gian nổ súng dự định vào ngày 13 tháng 3 năm 1954'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-nhandan-keo-phao",
+        "locator": "chú thích ảnh 'Ngày 13/3/1954, mở đầu chiến dịch'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Không nêu số thương vong."
+  },
+  {
+    "id": "c10-4",
+    "sceneId": "s10",
+    "paragraphId": "s10-p2",
+    "textEn": "On 7 May 1954 the enemy headquarters was taken and the garrison ceased fighting.",
+    "textVi": "Ngày 7/5/1954 sở chỉ huy đối phương bị chiếm và tập đoàn cứ điểm ngừng chiến đấu.",
+    "date": "1954-05-07",
+    "places": [
+      "Điện Biên Phủ"
+    ],
+    "people": [
+      "Christian de Castries"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-baocaobang-dbp",
+        "locator": "đoạn 'Đợt 3'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-quocphongthudo-10-10",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Giờ chính xác (17 giờ 30) có trong một nguồn; bài chỉ nói 'chiều 7/5'."
+  },
+  {
+    "id": "c11-1",
+    "sceneId": "s11",
+    "paragraphId": "s11-p1",
+    "textEn": "The Geneva Conference took place from 26 April to 21 July 1954.",
+    "textVi": "Hội nghị Giơnevơ diễn ra từ 26/4 đến 21/7/1954.",
+    "date": "1954-04-26/1954-07-21",
+    "places": [
+      "Geneva"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-wiki-geneva-1954",
+        "locator": "đoạn mở đầu",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-vassar-final-declaration",
+        "locator": "tiêu đề văn kiện",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": ""
+  },
+  {
+    "id": "c11-2",
+    "sceneId": "s11",
+    "paragraphId": "s11-p1",
+    "textEn": "The Agreement on the Cessation of Hostilities in Viet-Nam is dated 20 July 1954 and (Article 47) enters into force at 2400 hours Geneva time on 22 July 1954.",
+    "textVi": "Hiệp định đình chỉ chiến sự ở Việt Nam đề ngày 20/7/1954 và (Điều 47) có hiệu lực lúc 24 giờ giờ Giơnevơ ngày 22/7/1954.",
+    "date": "1954-07-20/1954-07-22",
+    "places": [
+      "Geneva"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-avalon-geneva-agreement",
+        "locator": "Điều 47 và dòng 'Done in Geneva at 2400 hours on the 20th of July 1954'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Nguồn là chính văn hiệp định; các nguồn thứ cấp khác nhau về ngày ký (20 hay 21/7) nên bài viết 'được ghi là làm ngày 20/7' đúng theo văn bản."
+  },
+  {
+    "id": "c11-3",
+    "sceneId": "s11",
+    "paragraphId": "s11-p2",
+    "textEn": "Article 1 fixed a provisional military demarcation line; a demilitarized zone of not more than 5 km on either side; forces of the two parties regrouped on either side.",
+    "textVi": "Điều 1 đặt vĩ tuyến phân định quân sự tạm thời; khu phi quân sự rộng không quá 5 km mỗi bên; quân hai bên tập kết hai phía.",
+    "date": "1954-07-20",
+    "places": [
+      "Việt Nam"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-avalon-geneva-agreement",
+        "locator": "Chương I, Điều 1",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Chính văn hiệp định (Điều 1 và Chương I)."
+  },
+  {
+    "id": "c11-4",
+    "sceneId": "s11",
+    "paragraphId": "s11-p2",
+    "textEn": "The Final Declaration of 21 July says the line is provisional and not a political or territorial boundary, and provides for general elections in July 1956.",
+    "textVi": "Tuyên bố cuối cùng 21/7 nói đường phân định là tạm thời, không phải biên giới chính trị hay lãnh thổ, và quy định tổng tuyển cử tháng 7/1956.",
+    "date": "1954-07-21",
+    "places": [
+      "Geneva"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-vassar-final-declaration",
+        "locator": "điều 6 và điều 7",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Dùng chính văn do Vassar đăng."
+  },
+  {
+    "id": "c11-5",
+    "sceneId": "s11",
+    "paragraphId": "s11-p2",
+    "textEn": "The Final Declaration was not signed by the delegations.",
+    "textVi": "Tuyên bố cuối cùng không được các đoàn ký.",
+    "date": "1954-07-21",
+    "places": [
+      "Geneva"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-wiki-geneva-1954",
+        "locator": "đoạn nói về ICC và Final Declaration",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Chỉ xác nhận từ nguồn thứ cấp (Wikipedia: 'unsigned Final Declaration'); cần nguồn học thuật/FRUS để nâng lên verified."
+  },
+  {
+    "id": "c12-1",
+    "sceneId": "s12",
+    "paragraphId": "s12-p1",
+    "textEn": "On 9 October 1954 the last French troops crossed the Long Biên Bridge out of Hà Nội.",
+    "textVi": "Ngày 9/10/1954 toán lính Pháp cuối cùng rút qua cầu Long Biên.",
+    "date": "1954-10-09",
+    "places": [
+      "Hà Nội",
+      "cầu Long Biên"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-quocphongthudo-10-10",
+        "locator": "đoạn '14h30' ngày 9 tháng 10",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hvtc-10-10",
+        "locator": "phần diễn biến ngày 9–10/10/1954",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Giờ khác nhau giữa các nguồn (14 giờ 30 hay 16 giờ) nên bài không nêu giờ."
+  },
+  {
+    "id": "c12-2",
+    "sceneId": "s12",
+    "paragraphId": "s12-p1",
+    "textEn": "On the morning of 10 October 1954 People's Army units, including the Capital Regiment, entered the inner city and took over Hà Nội.",
+    "textVi": "Sáng 10/10/1954 các đơn vị Quân đội nhân dân, trong đó có Trung đoàn Thủ đô, tiến vào nội thành tiếp quản Hà Nội.",
+    "date": "1954-10-10",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [],
+    "sources": [
+      {
+        "sourceId": "src-quocphongthudo-10-10",
+        "locator": "đoạn 'Đúng 5 giờ sáng ngày 10 tháng 10 năm 1954'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hvtc-10-10",
+        "locator": "đoạn 'Đại đoàn 308… Ủy ban quân chính'",
+        "supports": "full"
+      }
+    ],
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Giờ khác nhau (5 giờ hay 8 giờ sáng) nên bài chỉ nói 'sáng'."
+  },
+  {
+    "id": "c12-3",
+    "sceneId": "s12",
+    "paragraphId": "s12-p2",
+    "textEn": "A Military Administrative Committee was set up to take over and administer the city (resolution of 17 September 1954).",
+    "textVi": "Ủy ban Quân chính thành phố được thành lập để tiếp thu và quản lý thành phố (nghị quyết 17/9/1954).",
+    "date": "1954-09-17",
+    "places": [
+      "Hà Nội"
+    ],
+    "people": [
+      "Vương Thừa Vũ",
+      "Trần Duy Hưng"
+    ],
+    "sources": [
+      {
+        "sourceId": "src-hvtc-10-10",
+        "locator": "đoạn 'Theo nghị quyết ngày 17/9/1954'",
+        "supports": "partial"
+      }
+    ],
+    "independentSources": 1,
+    "status": "single-source",
+    "notes": "Chi tiết 17/9/1954 chỉ có trong bài của Học viện Tài chính; bài chỉ nói 'Ủy ban Quân chính'."
+  }
+]

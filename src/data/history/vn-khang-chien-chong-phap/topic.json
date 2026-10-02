@@ -1,0 +1,124 @@
+{
+  "id": "vn-khang-chien-chong-phap",
+  "titleVi": "Kháng chiến chống Pháp: hành trình 1945–1954",
+  "titleEn": "Vietnam's Resistance to French Colonial Rule, 1945–1954",
+  "periodLabel": "1945–1954",
+  "summary": {
+    "vi": "Đọc song ngữ Việt–Anh về cuộc kháng chiến chống Pháp qua 12 cảnh theo trình tự thời gian, kèm thuyết minh tiếng Anh, ảnh pixel minh hoạ và nguồn đối chiếu.",
+    "en": "A bilingual Vietnamese–English journey through the resistance to French colonial rule in 12 scenes, with English narration, pixel-art illustrations and cross-checked sources."
+  },
+  "objectives": [
+    {
+      "vi": "Nắm trình tự các sự kiện chính của giai đoạn 1945–1954 và phân biệt bối cảnh trước đó.",
+      "en": "Follow the main events of 1945–1954 in order, and tell the earlier background apart."
+    },
+    {
+      "vi": "Đọc và nghe tiếng Anh về một chủ đề lịch sử, học từ vựng trong ngữ cảnh.",
+      "en": "Read and listen to English on a history topic and learn vocabulary in context."
+    },
+    {
+      "vi": "Biết mỗi thông tin dựa trên nguồn nào và mức đối chiếu ra sao.",
+      "en": "See which source supports each piece of information and how well it was cross-checked."
+    }
+  ],
+  "mainPeriod": {
+    "from": 1945,
+    "to": 1954
+  },
+  "status": "draft",
+  "sceneIds": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s06",
+    "s07",
+    "s08",
+    "s09",
+    "s10",
+    "s11",
+    "s12"
+  ],
+  "mapLinks": [
+    {
+      "cityId": "danang",
+      "poiId": "danang-cham",
+      "sceneIds": [
+        "s01"
+      ],
+      "label": {
+        "vi": "Đà Nẵng năm 1858 — bối cảnh",
+        "en": "Da Nang in 1858 — background"
+      },
+      "guideLineEn": "Would you like to hear what happened here, long before the main period of this story?"
+    },
+    {
+      "cityId": "hochiminh",
+      "poiId": "hochiminh-postoffice",
+      "sceneIds": [
+        "s03"
+      ],
+      "label": {
+        "vi": "Sài Gòn tháng 9 năm 1945",
+        "en": "Saigon, September 1945"
+      },
+      "guideLineEn": "In 1945 this city was called Saigon. Would you like to hear what happened here?"
+    },
+    {
+      "cityId": "hanoi",
+      "poiId": "hanoi-mausoleum",
+      "sceneIds": [
+        "s02"
+      ],
+      "label": {
+        "vi": "Hà Nội năm 1945",
+        "en": "Hanoi in 1945"
+      },
+      "guideLineEn": "Would you like to hear what happened in Hanoi in 1945?"
+    },
+    {
+      "cityId": "hanoi",
+      "poiId": "hanoi-thaprua",
+      "sceneIds": [
+        "s04",
+        "s05"
+      ],
+      "label": {
+        "vi": "Hà Nội cuối năm 1946 và những ngày đầu kháng chiến",
+        "en": "Hanoi in late 1946 and the first days of resistance"
+      },
+      "guideLineEn": "Would you like to hear what happened in this city in late 1946?"
+    },
+    {
+      "cityId": "hanoi",
+      "poiId": "hanoi-longbien",
+      "sceneIds": [
+        "s12"
+      ],
+      "label": {
+        "vi": "Hà Nội sau kháng chiến",
+        "en": "Hanoi after the resistance"
+      },
+      "guideLineEn": "Would you like to hear how the city was taken over in October 1954?"
+    },
+    {
+      "cityId": "hanoi",
+      "poiId": "hanoi-doanmon",
+      "sceneIds": [
+        "s06",
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11"
+      ],
+      "otherPlaces": true,
+      "label": {
+        "vi": "Những địa điểm khác ở Việt Nam",
+        "en": "Other places in Vietnam"
+      },
+      "guideLineEn": "These stories took place in other parts of Vietnam, not in Hanoi. Shall I show you the guide?"
+    }
+  ]
+}

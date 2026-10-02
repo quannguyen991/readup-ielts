@@ -1,0 +1,765 @@
+{
+  "scenes": [
+    {
+      "n": 1,
+      "id": "s01-da-nang-1858-background",
+      "titleVi": "Đà Nẵng 1858 — Bối cảnh trước giai đoạn chính",
+      "titleEn": "Da Nang 1858 — Background before the main period",
+      "dateLabelVi": "1–2 tháng 9 năm 1858",
+      "dateLabelEn": "1–2 September 1858",
+      "periodNote": "BACKGROUND before the main 1945–1954 period; this must not be presented as one continuous war from 1858 to 1954.",
+      "place": {
+        "vi": "Đà Nẵng, Đại Nam",
+        "en": "Da Nang, Đại Nam",
+        "modernNote": "Đà Nẵng is now a centrally governed city of Vietnam. French records often called the port Tourane."
+      },
+      "passageEn": "BACKGROUND: On 1 September 1858, a joint French-Spanish expedition attacked Đà Nẵng, then called Tourane in French records. Warships fired on Nguyễn defensive positions around Sơn Trà and the forts of An Hải and Điện Hải. Điện Hải was taken on 2 September, but French engineering records show the coalition soon decided to demolish and leave that fort because it was difficult to defend from its main position. The attack is commonly treated as the opening of France’s invasion of Vietnam. This scene is only historical background: it should not be presented as one continuous war running from 1858 to the 1945–1954 resistance.",
+      "passageVi": "BỐI CẢNH: Ngày 1/9/1858, liên quân Pháp – Tây Ban Nha tấn công Đà Nẵng, nơi trong tài liệu Pháp thường được gọi là Tourane. Tàu chiến bắn vào các vị trí phòng thủ của triều Nguyễn quanh Sơn Trà và hai thành An Hải, Điện Hải. Thành Điện Hải bị chiếm ngày 2/9, nhưng tài liệu công binh Pháp cho thấy liên quân sau đó sớm quyết định phá và rút khỏi thành này vì vị trí khó bảo vệ so với khu vực đóng quân chính. Cuộc tấn công thường được xem là mở đầu quá trình Pháp xâm lược Việt Nam. Đây chỉ là cảnh nền lịch sử, không phải một cuộc chiến liên tục từ 1858 đến giai đoạn kháng chiến 1945–1954.",
+      "captionVi": "Minh họa Đà Nẵng đầu tháng 9/1858: liên quân Pháp – Tây Ban Nha tấn công các vị trí phòng thủ của triều Nguyễn quanh cửa sông Hàn.",
+      "captionEn": "General illustration of Da Nang in early September 1858: Franco-Spanish forces attack Nguyễn defensive positions around the Han River entrance.",
+      "claims": [
+        {
+          "id": "c01-1",
+          "text": "On 1 September 1858, a joint French-Spanish expedition attacked Da Nang, an event widely treated as the opening of the French invasion of Vietnam.",
+          "textVi": "Ngày 1/9/1858, liên quân Pháp – Tây Ban Nha tấn công Đà Nẵng; sự kiện này thường được xem là mở đầu quá trình Pháp xâm lược Việt Nam.",
+          "date": "1858-09-01",
+          "places": [
+            "Đà Nẵng",
+            "Tourane"
+          ],
+          "people": [
+            "Charles Rigault de Genouilly"
+          ],
+          "sources": [
+            {
+              "title": "Ngày 1/9/1858, liên quân Pháp – Tây Ban Nha nổ súng vào thành Đà Nẵng",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/12567/ngay-1-9-1858-lien-quan-phap-tay-ban-nha-no-sung-vao-thanh-dja-nang.html",
+              "locator": "paragraphs around lines 15–26",
+              "supports": "Gives the date 1 September 1858, identifies the Franco-Spanish attack on Da Nang, and describes it as opening the French invasion."
+            },
+            {
+              "title": "Về vụ phá hủy thành Điện Hải của quân Pháp - Tây Ban Nha",
+              "publisher": "Báo và Phát thanh, Truyền hình Đà Nẵng",
+              "url": "https://baodanang.vn/ve-vu-pha-huy-thanh-dien-hai-cua-quan-phap-tay-ban-nha-3232090.html",
+              "locator": "paragraphs around lines 83–92; source list lines 109–111",
+              "supports": "Independently dates the attack to 1 September 1858 and bases detailed operations on a French military engineering report preserved in the French Ministry of Defence archives."
+            },
+            {
+              "title": "Chapter Five — America in Vietnam",
+              "publisher": "Cambridge Core / Anthem Press",
+              "url": "https://www.cambridge.org/core/books/abs/us-military-in-the-print-news-media/america-in-vietnam/6CE999CF7334389F8C6D8469BF700CB3",
+              "locator": "summary, lines 512–516",
+              "supports": "Provides published scholarly context that a joint Franco-Spanish expedition attacked Da Nang (Tourane) in September 1858 as part of the French military invasion."
+            }
+          ],
+          "independentSources": 3,
+          "status": "verified",
+          "notes": "The exact size of the expedition is omitted because published accounts give differing figures for ships and troops."
+        },
+        {
+          "id": "c01-2",
+          "text": "The attack struck Nguyễn defensive positions around Sơn Trà and the forts of An Hải and Điện Hải.",
+          "textVi": "Cuộc tấn công đánh vào các vị trí phòng thủ của triều Nguyễn quanh Sơn Trà và hai thành An Hải, Điện Hải.",
+          "date": "1858-09-01",
+          "places": [
+            "Sơn Trà",
+            "An Hải",
+            "Điện Hải",
+            "Đà Nẵng"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Ngày 1/9/1858, liên quân Pháp – Tây Ban Nha nổ súng vào thành Đà Nẵng",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3097/12567/ngay-1-9-1858-lien-quan-phap-tay-ban-nha-no-sung-vao-thanh-dja-nang.html",
+              "locator": "line 26",
+              "supports": "States that French fire struck Nguyễn fortifications, including An Hải and Điện Hải, and that Sơn Trà was occupied."
+            },
+            {
+              "title": "Về vụ phá hủy thành Điện Hải của quân Pháp - Tây Ban Nha",
+              "publisher": "Báo và Phát thanh, Truyền hình Đà Nẵng",
+              "url": "https://baodanang.vn/ve-vu-pha-huy-thanh-dien-hai-cua-quan-phap-tay-ban-nha-3232090.html",
+              "locator": "lines 87–89",
+              "supports": "Describes attacks on Sơn Trà, An Hải and Điện Hải on 1–2 September 1858."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The passage avoids minute-by-minute timing because Vietnamese museum and French-report-based accounts differ in how they describe the opening hour."
+        },
+        {
+          "id": "c01-3",
+          "text": "Điện Hải was taken on 2 September, and French engineering records show that the coalition then decided to demolish and leave the fort because it was difficult to defend from its main position.",
+          "textVi": "Thành Điện Hải bị chiếm ngày 2/9; tài liệu công binh Pháp cho thấy liên quân sau đó quyết định phá và rút khỏi thành vì vị trí này khó bảo vệ so với khu vực đóng quân chính.",
+          "date": "1858-09-02/1858-09-06",
+          "places": [
+            "Điện Hải",
+            "Sông Hàn",
+            "Sơn Trà"
+          ],
+          "people": [
+            "Charles Rigault de Genouilly",
+            "Gallimard"
+          ],
+          "sources": [
+            {
+              "title": "Về vụ phá hủy thành Điện Hải của quân Pháp - Tây Ban Nha",
+              "publisher": "Báo và Phát thanh, Truyền hình Đà Nẵng",
+              "url": "https://baodanang.vn/ve-vu-pha-huy-thanh-dien-hai-cua-quan-phap-tay-ban-nha-3232090.html",
+              "locator": "lines 83–105 and source list lines 109–111",
+              "supports": "Reports the capture on 2 September and the subsequent order to demolish and evacuate Điện Hải, citing the 15 December 1858 French engineering report."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "The web source reproduces details from a named archival French engineering report; the underlying manuscript itself was not directly inspected here."
+        },
+        {
+          "id": "c01-4",
+          "text": "The 1858 attack is background to colonial conquest and should not be treated as the same continuous war as the 1945–1954 Indochina conflict.",
+          "textVi": "Cuộc tấn công năm 1858 là bối cảnh của quá trình xâm lược thuộc địa, không nên được trình bày như cùng một cuộc chiến liên tục với xung đột Đông Dương 1945–1954.",
+          "date": "1858; 1945-1954",
+          "places": [
+            "Vietnam"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Historical Dictionary of the Indochina War",
+              "publisher": "Université du Québec à Montréal (UQAM)",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary.html",
+              "locator": "lines 26–27",
+              "supports": "Defines the Indochina War covered by the dictionary as the 1945–1954 conflict."
+            },
+            {
+              "title": "Chapter Five — America in Vietnam",
+              "publisher": "Cambridge Core / Anthem Press",
+              "url": "https://www.cambridge.org/core/books/abs/us-military-in-the-print-news-media/america-in-vietnam/6CE999CF7334389F8C6D8469BF700CB3",
+              "locator": "summary, lines 512–517",
+              "supports": "Treats the 1858 attack within the earlier history of French colonial conquest rather than as the 1945–1954 war itself."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "This is a periodization claim used to prevent conflating distinct conflicts."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "invasion",
+          "pos": "noun",
+          "meaningVi": "cuộc xâm lược",
+          "ipa": "/ɪnˈveɪʒən/"
+        },
+        {
+          "word": "fortification",
+          "pos": "noun",
+          "meaningVi": "công sự; hệ thống phòng thủ",
+          "ipa": "/ˌfɔːrtɪfɪˈkeɪʃən/"
+        },
+        {
+          "word": "coalition",
+          "pos": "noun",
+          "meaningVi": "liên quân; liên minh",
+          "ipa": "/ˌkoʊəˈlɪʃən/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "Da Nang Bay and the Han River entrance, with Nguyễn defensive works on both banks and warships offshore.",
+        "period": "Early September 1858, Nguyễn dynasty.",
+        "viewpoint": "Wide elevated coastal view; no heroic close-up.",
+        "architecture": "Historically grounded low masonry-and-earth fortifications representing An Hải and Điện Hải; avoid modern Da Nang skyline.",
+        "clothing": "Mid-19th-century Nguyễn soldiers and Franco-Spanish naval troops only if based on period references; figures small and non-portrait.",
+        "objects": "Sailing/steam warships, coastal cannon, fort walls, Sơn Trà landscape, Han River.",
+        "mustAvoid": "Modern buildings, modern uniforms, later Vietnamese flags, aircraft, tanks, invented portraits, exaggerated explosions, or any visual implying an unbroken 1858–1954 war.",
+        "isGeneralIllustration": true
+      },
+      "openIssues": [
+        "Published accounts differ on expedition ship and troop totals; no number is used.",
+        "The detailed Điện Hải withdrawal sequence is supported here by one opened secondary article that explicitly cites a French archival engineering report."
+      ]
+    },
+    {
+      "n": 2,
+      "id": "s02-ha-noi-independence-1945",
+      "titleVi": "Hà Nội 1945 — Tuyên bố độc lập và những thử thách đầu tiên",
+      "titleEn": "Hanoi 1945 — Independence and the new state’s first challenges",
+      "dateLabelVi": "2 tháng 9 năm 1945 và những tuần sau đó",
+      "dateLabelEn": "2 September 1945 and the following weeks",
+      "periodNote": "Main period: 1945–1954.",
+      "place": {
+        "vi": "Quảng trường Ba Đình, Hà Nội",
+        "en": "Ba Đình Square, Hanoi",
+        "modernNote": "The place remains Ba Đình Square in present-day Hanoi."
+      },
+      "passageEn": "On 2 September 1945, at Ba Đình in Hà Nội, Hồ Chí Minh read the Declaration of Independence and announced the Democratic Republic of Vietnam. Independence did not bring stability at once. The new government faced a severe food crisis and widespread illiteracy, while its international status was not yet secure. Allied surrender arrangements also brought Chinese Nationalist forces into northern Vietnam and British forces into the south to disarm Japanese troops. French authorities were meanwhile preparing to restore their position in Indochina. The state therefore had to organize a new government while dealing with humanitarian, political and security pressures.",
+      "passageVi": "Ngày 2/9/1945, tại Ba Đình, Hà Nội, Hồ Chí Minh đọc Tuyên ngôn Độc lập và tuyên bố thành lập nước Việt Nam Dân chủ Cộng hòa. Độc lập không lập tức đem lại ổn định. Chính quyền mới phải đối mặt với nạn đói nghiêm trọng và nạn mù chữ phổ biến, trong khi địa vị quốc tế của nhà nước chưa được bảo đảm. Theo sự phân công giải giáp quân Nhật của Đồng Minh, quân Trung Hoa Dân quốc vào miền Bắc, còn quân Anh vào miền Nam. Trong lúc đó, phía Pháp đang chuẩn bị khôi phục vị thế của mình ở Đông Dương. Vì vậy, nhà nước mới vừa phải xây dựng bộ máy vừa ứng phó với các sức ép nhân đạo, chính trị và an ninh.",
+      "captionVi": "Ba Đình, Hà Nội, ngày 2/9/1945: lễ tuyên bố độc lập của nước Việt Nam Dân chủ Cộng hòa.",
+      "captionEn": "Ba Đình, Hanoi, 2 September 1945: the independence ceremony of the Democratic Republic of Vietnam.",
+      "claims": [
+        {
+          "id": "c02-1",
+          "text": "On 2 September 1945 at Ba Đình in Hanoi, Hồ Chí Minh read the Declaration of Independence and announced the Democratic Republic of Vietnam.",
+          "textVi": "Ngày 2/9/1945 tại Ba Đình, Hà Nội, Hồ Chí Minh đọc Tuyên ngôn Độc lập và tuyên bố thành lập nước Việt Nam Dân chủ Cộng hòa.",
+          "date": "1945-09-02",
+          "places": [
+            "Ba Đình",
+            "Hà Nội"
+          ],
+          "people": [
+            "Hồ Chí Minh"
+          ],
+          "sources": [
+            {
+              "title": "Lễ Độc lập khai sinh nước Việt Nam được tổ chức thế nào",
+              "publisher": "Trung tâm Lưu trữ quốc gia I",
+              "url": "https://www.archives.org.vn/tin-tong-hop/le-doc-lap-khai-sinh-nuoc-viet-nam-duoc-to-chuc-the-nao.htm",
+              "locator": "lines 12, 25–34",
+              "supports": "Documents the 2 September ceremony at Ba Đình and the public declaration of independence."
+            },
+            {
+              "title": "DEMOCRATIC REPUBLIC OF VIETNAM (DRV)",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary/381-democratic-republic-of-vietnam-drv.html",
+              "locator": "line 28",
+              "supports": "Independently dates Hồ Chí Minh’s announcement of the DRV and Declaration of Independence in Hanoi to 2 September 1945."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "No crowd-size estimate is used because such estimates vary across retellings."
+        },
+        {
+          "id": "c02-2",
+          "text": "The new government faced severe food shortage and widespread illiteracy, and it initially lacked secure international recognition.",
+          "textVi": "Chính quyền mới phải đối mặt với nạn đói, nạn mù chữ phổ biến và tình trạng địa vị quốc tế chưa được bảo đảm.",
+          "date": "1945",
+          "places": [
+            "Vietnam",
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Cuộc tổng tuyển cử (6-1-1946) và Hiến pháp đầu tiên của nước Việt Nam Dân chủ Cộng hòa",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsuquocgia.vn/vi/Articles/3096/18900/cuoc-tong-tuyen-cu-6-1-1946-va-hien-phap-djau-tien-cua-nuoc-viet-nam-dan-chu-cong-hoa.html",
+              "locator": "line 19",
+              "supports": "Lists famine, illiteracy and lack of international legal recognition among the new state’s immediate difficulties."
+            },
+            {
+              "title": "HANOI",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/component/content/article/577-hanoi.html",
+              "locator": "lines 20–22",
+              "supports": "Independently describes the severe famine affecting Hanoi in 1945 and the unstable postwar setting."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The independent scholarly source directly cross-checks the famine, while the museum source additionally supports illiteracy and recognition status."
+        },
+        {
+          "id": "c02-3",
+          "text": "Allied surrender arrangements brought Chinese Nationalist forces into northern Vietnam and British forces into the south to disarm Japanese troops.",
+          "textVi": "Theo sự phân công tiếp nhận việc đầu hàng và giải giáp quân Nhật của Đồng Minh, quân Trung Hoa Dân quốc vào miền Bắc Việt Nam và quân Anh vào miền Nam.",
+          "date": "1945-09",
+          "places": [
+            "Northern Vietnam",
+            "Southern Vietnam",
+            "Hà Nội",
+            "Sài Gòn"
+          ],
+          "people": [
+            "Lu Han"
+          ],
+          "sources": [
+            {
+              "title": "Từ Cách mạng Tháng Tám đến ngày toàn quốc kháng chiến qua tài liệu lưu trữ",
+              "publisher": "Trung tâm Lưu trữ quốc gia I",
+              "url": "https://www.archives.org.vn/gioi-thieu-tai-lieu-nghiep-vu/tu-cach-mang-thang-8-den-ngay-toan-quoc-khang-chien-qua-tai-lieu-luu-tru.htm",
+              "locator": "lines 12 and 28",
+              "supports": "States the Allied division of surrender responsibilities at the 16th parallel and records British arrival at Tân Sơn Nhất and Chinese Nationalist entry into Hanoi."
+            },
+            {
+              "title": "HANOI",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/component/content/article/577-hanoi.html",
+              "locator": "lines 20–23",
+              "supports": "Independently records the arrival of Chinese troops in northern Vietnam to disarm Japanese forces."
+            },
+            {
+              "title": "23 SEPTEMBER 1945",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary/7-23-september-1945.html",
+              "locator": "lines 28–32",
+              "supports": "Records the British occupation mission in Saigon to accept the Japanese surrender and maintain order."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The two UQAM entries are one scholarly source family, so they are counted as one independent source alongside the Vietnamese archival source."
+        },
+        {
+          "id": "c02-4",
+          "text": "French authorities were preparing to restore a French position in Indochina during the weeks after Japan’s surrender.",
+          "textVi": "Trong những tuần sau khi Nhật đầu hàng, phía Pháp đã chuẩn bị các bước để khôi phục vị thế của Pháp ở Đông Dương.",
+          "date": "1945-08/1945-09",
+          "places": [
+            "Indochina",
+            "Vietnam",
+            "Sài Gòn"
+          ],
+          "people": [
+            "Charles de Gaulle",
+            "Philippe Leclerc",
+            "Georges Thierry d’Argenlieu"
+          ],
+          "sources": [
+            {
+              "title": "Từ Cách mạng Tháng Tám đến ngày toàn quốc kháng chiến qua tài liệu lưu trữ",
+              "publisher": "Trung tâm Lưu trữ quốc gia I",
+              "url": "https://www.archives.org.vn/gioi-thieu-tai-lieu-nghiep-vu/tu-cach-mang-thang-8-den-ngay-toan-quoc-khang-chien-qua-tai-lieu-luu-tru.htm",
+              "locator": "lines 13–22 and 27–31",
+              "supports": "Uses archival material to describe French military planning and deployments aimed at returning to Indochina."
+            },
+            {
+              "title": "23 SEPTEMBER 1945",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary/7-23-september-1945.html",
+              "locator": "lines 28–32",
+              "supports": "Independently describes the French effort to regain control in Saigon in September 1945."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The passage says 'restore their position' rather than claiming that French colonial authority had already been restored nationwide."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "declaration",
+          "pos": "noun",
+          "meaningVi": "tuyên ngôn; lời tuyên bố chính thức",
+          "ipa": "/ˌdekləˈreɪʃən/"
+        },
+        {
+          "word": "provisional",
+          "pos": "adjective",
+          "meaningVi": "lâm thời; tạm thời",
+          "ipa": "/prəˈvɪʒənəl/"
+        },
+        {
+          "word": "sovereignty",
+          "pos": "noun",
+          "meaningVi": "chủ quyền",
+          "ipa": "/ˈsɑːvrənti/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "Ba Đình Square during the 2 September 1945 independence ceremony, with a large civilian gathering seen from a respectful distance.",
+        "period": "Hanoi, September 1945.",
+        "viewpoint": "Wide documentary-style view toward the temporary ceremony platform; identifiable faces should not be invented.",
+        "architecture": "Open Ba Đình space and period Hanoi surroundings only; no modern monuments or skyline.",
+        "clothing": "Civilian clothing appropriate to northern Vietnam in 1945; officials and guards only when based on archival references.",
+        "objects": "Temporary platform, microphones/loudspeakers, period flags and banners only when source-checked.",
+        "mustAvoid": "Modern Ba Đình structures, modern uniforms, later-war weapons, invented portraits, invented crowd numbers, celebratory fantasy lighting, or imagery implying that the political situation was already secure.",
+        "isGeneralIllustration": true
+      },
+      "openIssues": [
+        "Crowd-size estimates vary; no number is given.",
+        "The passage keeps international recognition wording cautious rather than making a broad legal claim beyond the opened source."
+      ]
+    },
+    {
+      "n": 3,
+      "id": "s03-sai-gon-nam-bo-september-1945",
+      "titleVi": "Sài Gòn / Nam Bộ, tháng 9/1945 — Kháng chiến ở miền Nam bắt đầu",
+      "titleEn": "Saigon / Southern Vietnam, September 1945 — Resistance begins in the South",
+      "dateLabelVi": "22–23 tháng 9 năm 1945",
+      "dateLabelEn": "22–23 September 1945",
+      "periodNote": "Main period: 1945–1954. This is the beginning of sustained resistance in the South, before the nationwide outbreak of December 1946.",
+      "place": {
+        "vi": "Sài Gòn – Chợ Lớn, Nam Bộ",
+        "en": "Saigon–Chợ Lớn, Southern Vietnam",
+        "modernNote": "Sài Gòn is the historically proper 1945 name; the central city is now part of Ho Chi Minh City."
+      },
+      "passageEn": "On 23 September 1945, the struggle in the South entered a new phase in Sài Gòn. UQAM scholarship describes British occupation authorities as facilitating a French coup de force after martial law and the rearming of French troops on 22 September. Vietnamese museum sources date French attacks on key offices to the afternoon of 22 September and record that, on the morning of the 23rd, southern revolutionary bodies met at 629 Cây Mai Street in Chợ Lớn and issued a call for resistance. In Vietnamese remembrance, 23 September is Nam Bộ Resistance Day. It marks the beginning of sustained fighting against the French return in the South, not yet the nationwide outbreak of December 1946.",
+      "passageVi": "Ngày 23/9/1945, cuộc đấu tranh ở Nam Bộ bước sang một giai đoạn mới tại Sài Gòn. Nghiên cứu của UQAM mô tả chính quyền chiếm đóng Anh đã tạo điều kiện cho cuộc đảo chính bằng vũ lực của Pháp sau khi ban bố thiết quân luật và cho tái vũ trang lực lượng Pháp tối 22/9. Nguồn của Bảo tàng Lịch sử Quốc gia ghi nhận quân Pháp tấn công một số cơ quan quan trọng từ chiều 22/9; sáng 23/9, các cơ quan cách mạng Nam Bộ họp tại số 629 đường Cây Mai, Chợ Lớn và thông qua lời kêu gọi kháng chiến. Trong ký ức lịch sử Việt Nam, 23/9 là Ngày Nam Bộ kháng chiến, đánh dấu sự khởi đầu của cuộc chiến đấu kéo dài chống sự trở lại của Pháp ở miền Nam, chưa phải thời điểm chiến tranh bùng nổ trên phạm vi toàn quốc vào tháng 12/1946.",
+      "captionVi": "Sài Gòn – Chợ Lớn, 22–23/9/1945: khủng hoảng chính trị và quân sự chuyển thành cuộc kháng chiến ở Nam Bộ.",
+      "captionEn": "Saigon–Chợ Lớn, 22–23 September 1945: a political and military crisis turns into sustained resistance in the South.",
+      "claims": [
+        {
+          "id": "c03-1",
+          "text": "British occupation authorities facilitated the French takeover in Saigon around 22–23 September 1945, including martial law and the rearming of French troops.",
+          "textVi": "Chính quyền chiếm đóng Anh đã tạo điều kiện cho lực lượng Pháp giành lại các vị trí ở Sài Gòn trong khoảng 22–23/9/1945, trong đó có việc ban bố thiết quân luật và cho tái vũ trang quân Pháp.",
+          "date": "1945-09-22/1945-09-23",
+          "places": [
+            "Sài Gòn"
+          ],
+          "people": [
+            "Douglas Gracey",
+            "Jean Cédile"
+          ],
+          "sources": [
+            {
+              "title": "23 SEPTEMBER 1945",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary/7-23-september-1945.html",
+              "locator": "lines 28–33",
+              "supports": "Explicitly states that the British facilitated a French coup de force, and describes martial law and the rearming/release of French troops on the evening of 22 September."
+            },
+            {
+              "title": "Memorandum of Conversation, by the Director of the Office of Far Eastern Affairs (Vincent), September 24, 1945",
+              "publisher": "U.S. Department of State, Office of the Historian, Foreign Relations of the United States",
+              "url": "https://history.state.gov//historicaldocuments/frus1945v06/d189",
+              "locator": "memorandum dated 24 September 1945",
+              "supports": "Contemporary U.S. diplomatic record notes anti-British demonstrations in Saigon over the belief that Britain was supporting the French return, and records British statements about maintaining order until French troops arrived and the proclamation of martial law."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The U.S. document corroborates the British role and martial-law context but does not use UQAM’s exact term 'coup de force'."
+        },
+        {
+          "id": "c03-2",
+          "text": "Vietnamese museum sources place French attacks on key offices in the afternoon of 22 September and a southern leadership meeting at 629 Cây Mai Street on the morning of 23 September, where a call for resistance was approved.",
+          "textVi": "Nguồn của Bảo tàng Lịch sử Quốc gia đặt các cuộc tấn công của quân Pháp vào một số cơ quan trọng yếu trong chiều 22/9 và ghi nhận sáng 23/9 có cuộc họp tại số 629 đường Cây Mai, nơi thông qua lời kêu gọi kháng chiến.",
+          "date": "1945-09-22/1945-09-23",
+          "places": [
+            "Sài Gòn",
+            "Chợ Lớn",
+            "629 đường Cây Mai"
+          ],
+          "people": [
+            "Trần Văn Giàu"
+          ],
+          "sources": [
+            {
+              "title": "Ngày Nam bộ kháng chiến 23-9-1945",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsu.vn/vi/Articles/3097/61816/ngay-nam-bo-khang-chien-23-9-1945.html",
+              "locator": "lines 38–41",
+              "supports": "Dates French firing on southern government offices to the afternoon of 22 September and records the 23 September meeting at 629 Cây Mai Street and its resistance appeal."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "The exact Cây Mai meeting detail was found in one opened source; it cites the published Lịch sử Nam bộ kháng chiến and related works."
+        },
+        {
+          "id": "c03-3",
+          "text": "23 September is remembered in Vietnam as Nam Bộ Resistance Day and marks the opening of sustained anti-French fighting in the South.",
+          "textVi": "Ngày 23/9 được ghi nhớ ở Việt Nam là Ngày Nam Bộ kháng chiến và đánh dấu sự mở đầu của cuộc chiến đấu kéo dài chống sự trở lại của Pháp ở miền Nam.",
+          "date": "1945-09-23",
+          "places": [
+            "Nam Bộ",
+            "Sài Gòn"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "Ngày Nam bộ kháng chiến 23-9-1945",
+              "publisher": "Bảo tàng Lịch sử Quốc gia",
+              "url": "https://baotanglichsu.vn/vi/Articles/3097/61816/ngay-nam-bo-khang-chien-23-9-1945.html",
+              "locator": "lines 38–46",
+              "supports": "Identifies 23 September as Ngày Nam Bộ kháng chiến."
+            },
+            {
+              "title": "23 SEPTEMBER 1945",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary/7-23-september-1945.html",
+              "locator": "lines 28–33",
+              "supports": "Independently describes 23–24 September as the start of war in the South, initially limited below the 16th parallel."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The passage deliberately uses 'beginning of sustained fighting in the South' rather than treating 23 September as the nationwide outbreak."
+        },
+        {
+          "id": "c03-4",
+          "text": "The fighting in the South in September 1945 was distinct from the full-scale nationwide outbreak centered on Hanoi on 19 December 1946.",
+          "textVi": "Chiến sự ở Nam Bộ từ tháng 9/1945 khác với thời điểm chiến tranh bùng nổ trên quy mô toàn quốc, tập trung ở Hà Nội, vào ngày 19/12/1946.",
+          "date": "1945-09-23; 1946-12-19",
+          "places": [
+            "Sài Gòn",
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "23 SEPTEMBER 1945",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/en/historical-dictionary/7-23-september-1945.html",
+              "locator": "lines 28 and 33",
+              "supports": "Distinguishes the southern conflict beginning in September 1945 from the full-scale outbreak in December 1946."
+            },
+            {
+              "title": "Danh sách biên niên tiểu sử — 18–19 December 1946 entries",
+              "publisher": "Bảo tàng Hồ Chí Minh",
+              "url": "https://baotanghochiminh.vn/danh-sach-bien-nien-tieu-su/p-369.htm",
+              "locator": "lines 138–169 and 195–205",
+              "supports": "Records the nationwide-resistance decision and appeal on 18–19 December 1946."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "This distinction prevents merging the southern resistance of 1945 with the nationwide war that began in late 1946."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "resistance",
+          "pos": "noun",
+          "meaningVi": "kháng chiến; sự chống cự",
+          "ipa": "/rɪˈzɪstəns/"
+        },
+        {
+          "word": "occupation",
+          "pos": "noun",
+          "meaningVi": "sự chiếm đóng",
+          "ipa": "/ˌɑːkjəˈpeɪʃən/"
+        },
+        {
+          "word": "martial law",
+          "pos": "noun phrase",
+          "meaningVi": "thiết quân luật",
+          "ipa": "/ˌmɑːrʃəl ˈlɔː/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "Period Sài Gòn–Chợ Lớn streets during 22–23 September 1945, showing tension around public buildings and closed or disrupted streets rather than a cinematic battle tableau.",
+        "period": "Sài Gòn, September 1945.",
+        "viewpoint": "Street-level wide shot with civilians and armed groups at a distance.",
+        "architecture": "Colonial-era Sài Gòn civic buildings, shophouses and Chợ Lớn streets; no modern Ho Chi Minh City towers.",
+        "clothing": "1945 southern Vietnamese civilian clothing; British, French and Vietnamese armed personnel only in historically appropriate uniforms and without invented named portraits.",
+        "objects": "Period bicycles, handcarts, shutters, street signs only if verified, simple barricades where appropriate.",
+        "mustAvoid": "Modern city name signage, later-war U.S. equipment, helicopters, M16 rifles, 1960s–1970s uniforms, invented massacres, exaggerated flames, or a single staged 'first shot' presented as settled fact.",
+        "isGeneralIllustration": true
+      },
+      "openIssues": [
+        "The Vietnamese museum chronology places French firing on key offices in the afternoon of 22 September; UQAM frames the main French coup de force as occurring on 23 September after martial law on the evening of the 22nd. The passage preserves the 22–23 September sequence instead of forcing both into one moment.",
+        "The specific 629 Cây Mai meeting is currently supported by one opened source."
+      ]
+    },
+    {
+      "n": 4,
+      "id": "s04-ha-noi-road-to-nationwide-resistance-1946",
+      "titleVi": "Hà Nội cuối năm 1946 — Con đường tới Toàn quốc kháng chiến",
+      "titleEn": "Hanoi, late 1946 — The road to nationwide resistance",
+      "dateLabelVi": "6/3, 14–15/9, 30/10 và 16–20/12/1946",
+      "dateLabelEn": "6 March; 14–15 September; 30 October; and 16–20 December 1946",
+      "periodNote": "Main period: 1945–1954. Dates for agreements, their entry into force, the decision for resistance, the outbreak of fighting, and the broadcast of the appeal are kept separate.",
+      "place": {
+        "vi": "Hà Nội và làng Vạn Phúc, Hà Đông",
+        "en": "Hanoi and Vạn Phúc village, Hà Đông",
+        "modernNote": "Vạn Phúc is now in Hà Đông District, Hanoi."
+      },
+      "passageEn": "Negotiation continued through 1946, but the agreements did not settle the struggle over sovereignty. The Preliminary Agreement was signed on 6 March. The later modus vivendi is dated 14 September, although an archival chronology says it was signed at 1 a.m. on 15 September and entered into force on 30 October. By mid-December, tension in Hà Nội was acute, yet a U.S. diplomatic telegram of 16 December recorded Vietnamese proposals to reduce the impasse. On 18 December, the Vietnamese leadership decided on nationwide resistance. Fighting broke out in Hà Nội on the evening of 19 December. Hồ Chí Minh wrote the nationwide resistance appeal on the 19th; Vietnamese museum chronology says it was broadcast on 20 December. Historians still dispute the precise chain of responsibility for the final outbreak.",
+      "passageVi": "Trong năm 1946, hai bên vẫn tiếp tục thương lượng, nhưng các thỏa thuận không giải quyết được xung đột về chủ quyền. Hiệp định Sơ bộ được ký ngày 6/3. Bản Tạm ước sau đó mang ngày 14/9, nhưng một biên niên lưu trữ cho biết văn bản thực tế được ký lúc 1 giờ sáng 15/9 và có hiệu lực từ 30/10. Đến giữa tháng 12, căng thẳng tại Hà Nội đã rất cao, song một điện văn ngoại giao Mỹ ngày 16/12 vẫn ghi nhận các đề xuất của phía Việt Nam nhằm giảm bế tắc. Ngày 18/12, lãnh đạo Việt Nam quyết định tiến hành kháng chiến trên phạm vi toàn quốc. Chiến sự bùng nổ tại Hà Nội tối 19/12. Hồ Chí Minh viết Lời kêu gọi toàn quốc kháng chiến ngày 19/12; biên niên của Bảo tàng Hồ Chí Minh cho biết lời kêu gọi được phát đi ngày 20/12. Giới sử học vẫn còn tranh luận về chuỗi trách nhiệm chính xác dẫn tới thời điểm bùng nổ cuối cùng.",
+      "captionVi": "Hà Nội, tháng 12/1946: thương lượng đổ vỡ, căng thẳng leo thang và chiến sự toàn quốc bùng nổ tối 19/12.",
+      "captionEn": "Hanoi, December 1946: negotiations fail, tensions rise, and full-scale war breaks out on the evening of 19 December.",
+      "claims": [
+        {
+          "id": "c04-1",
+          "text": "The Preliminary Agreement was signed on 6 March 1946 and recognized the DRV as a 'free state' within the Indochinese Federation and French Union while allowing French troops to replace Chinese Nationalist forces in the north under agreed terms.",
+          "textVi": "Hiệp định Sơ bộ được ký ngày 6/3/1946, theo đó Pháp công nhận Việt Nam Dân chủ Cộng hòa là một 'quốc gia tự do' trong Liên bang Đông Dương và Liên hiệp Pháp, đồng thời cho phép quân Pháp thay quân Trung Hoa Dân quốc ở miền Bắc theo các điều kiện đã thỏa thuận.",
+          "date": "1946-03-06",
+          "places": [
+            "Hà Nội",
+            "Northern Vietnam"
+          ],
+          "people": [
+            "Hồ Chí Minh",
+            "Jean Sainteny",
+            "Vũ Hồng Khanh"
+          ],
+          "sources": [
+            {
+              "title": "Chủ tịch Hồ Chí Minh từ hiệp định sơ bộ 06-3 đến tạm ước 14-9-1946",
+              "publisher": "Trung tâm Lưu trữ quốc gia I",
+              "url": "https://www.archives.org.vn/gioi-thieu-tai-lieu-nghiep-vu/chu-tich-ho-chi-minh-tu-hiep-dinh-so-bo-06-3-den-tam-uoc-14-9-1946.htm",
+              "locator": "lines 10–15",
+              "supports": "Gives the signing date and summarizes the agreement’s political and military terms."
+            },
+            {
+              "title": "19 DECEMBER 1946",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/vi/t-in-chin-tranh/8-19-december-1946.html",
+              "locator": "lines 31–35",
+              "supports": "Independently summarizes the 6 March agreement, including the 'free state' formula and the stationing of French troops replacing Chinese forces."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The passage does not describe the 6 March agreement as full French recognition of an independent, unified Vietnam."
+        },
+        {
+          "id": "c04-2",
+          "text": "The modus vivendi is dated 14 September 1946, but one archival chronology states that it was signed at 1 a.m. on 15 September and entered into force on 30 October.",
+          "textVi": "Bản Tạm ước mang ngày 14/9/1946, nhưng một biên niên lưu trữ cho biết văn bản được ký lúc 1 giờ sáng ngày 15/9 và có hiệu lực từ ngày 30/10.",
+          "date": "1946-09-14/1946-10-30",
+          "places": [
+            "Paris"
+          ],
+          "people": [
+            "Hồ Chí Minh",
+            "Marius Moutet"
+          ],
+          "sources": [
+            {
+              "title": "Chủ tịch Hồ Chí Minh từ hiệp định sơ bộ 06-3 đến tạm ước 14-9-1946",
+              "publisher": "Trung tâm Lưu trữ quốc gia I",
+              "url": "https://www.archives.org.vn/gioi-thieu-tai-lieu-nghiep-vu/chu-tich-ho-chi-minh-tu-hiep-dinh-so-bo-06-3-den-tam-uoc-14-9-1946.htm",
+              "locator": "lines 84–86",
+              "supports": "Explicitly distinguishes the document’s 14 September designation, its actual signing at 1 a.m. on 15 September, and its entry into force on 30 October."
+            },
+            {
+              "title": "Từ Cách mạng Tháng Tám đến ngày toàn quốc kháng chiến qua tài liệu lưu trữ",
+              "publisher": "Trung tâm Lưu trữ quốc gia I",
+              "url": "https://www.archives.org.vn/gioi-thieu-tai-lieu-nghiep-vu/tu-cach-mang-thang-8-den-ngay-toan-quoc-khang-chien-qua-tai-lieu-luu-tru.htm",
+              "locator": "lines 58–59",
+              "supports": "Separately confirms the 14 September designation and 30 October entry into force, though it describes signing as occurring on the evening of 14 September."
+            }
+          ],
+          "independentSources": 1,
+          "status": "single-source",
+          "notes": "Both opened pages are from the same archival institution and differ slightly on the clock/date of signing. The more specific chronology gives 1 a.m. on 15 September; the dossier explicitly flags that distinction rather than hiding it."
+        },
+        {
+          "id": "c04-3",
+          "text": "On 16 December 1946, a U.S. diplomatic telegram recorded Vietnamese proposals to reduce the impasse, including removing barricades and restoring a pre-20-November status quo in exchange for talks and mixed commissions.",
+          "textVi": "Ngày 16/12/1946, một điện văn ngoại giao Mỹ ghi nhận các đề xuất của phía Việt Nam nhằm giảm bế tắc, gồm dỡ bỏ chướng ngại phòng thủ và đề nghị khôi phục tình trạng trước ngày 20/11 để mở đường cho thương lượng và các ủy ban hỗn hợp.",
+          "date": "1946-12-16",
+          "places": [
+            "Hà Nội",
+            "Hải Phòng"
+          ],
+          "people": [
+            "Hoàng Minh Giám",
+            "O'Sullivan"
+          ],
+          "sources": [
+            {
+              "title": "The Vice Consul at Hanoi (O’Sullivan) to the Secretary of State, December 16, 1946",
+              "publisher": "U.S. Department of State, Office of the Historian, Foreign Relations of the United States",
+              "url": "https://history.state.gov/historicaldocuments/frus1946v08/d91",
+              "locator": "lines 9–18",
+              "supports": "Contemporary U.S. diplomatic record of Vietnamese proposals intended to reduce the impasse shortly before the outbreak."
+            },
+            {
+              "title": "Danh sách biên niên tiểu sử — 15–19 December 1946 entries",
+              "publisher": "Bảo tàng Hồ Chí Minh",
+              "url": "https://baotanghochiminh.vn/danh-sach-bien-nien-tieu-su/p-369.htm",
+              "locator": "lines 232–259 and 195–208",
+              "supports": "Records Vietnamese messages seeking to ease the situation and continue negotiations in the days immediately before 19 December."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The sources show that negotiation attempts and military preparations coexisted in mid-December; the passage does not infer motive beyond the documented proposals."
+        },
+        {
+          "id": "c04-4",
+          "text": "On 18 December, the Vietnamese leadership decided on nationwide resistance; fighting broke out in Hanoi on the evening of 19 December, Hồ Chí Minh wrote the appeal that day, and a Hồ Chí Minh Museum chronology states that it was broadcast on 20 December.",
+          "textVi": "Ngày 18/12, lãnh đạo Việt Nam quyết định tiến hành kháng chiến trên phạm vi toàn quốc; chiến sự bùng nổ tại Hà Nội tối 19/12, Hồ Chí Minh viết lời kêu gọi trong ngày 19/12, và biên niên của Bảo tàng Hồ Chí Minh cho biết lời kêu gọi được phát đi ngày 20/12.",
+          "date": "1946-12-18/1946-12-20",
+          "places": [
+            "Vạn Phúc",
+            "Hà Đông",
+            "Hà Nội"
+          ],
+          "people": [
+            "Hồ Chí Minh"
+          ],
+          "sources": [
+            {
+              "title": "Danh sách biên niên tiểu sử — 18–19 December 1946 entries",
+              "publisher": "Bảo tàng Hồ Chí Minh",
+              "url": "https://baotanghochiminh.vn/danh-sach-bien-nien-tieu-su/p-369.htm",
+              "locator": "lines 138–169 and 195–205",
+              "supports": "Dates the expanded Standing Committee decision to 18 December and the writing of the nationwide resistance appeal to 19 December."
+            },
+            {
+              "title": "Từ khát vọng hòa bình đến khát vọng phồn vinh, hạnh phúc",
+              "publisher": "Bảo tàng Hồ Chí Minh",
+              "url": "https://baotanghochiminh.vn/tu-khat-vong-hoa-binh-den-khat-vong-phon-vinh-hanh-phuc.htm",
+              "locator": "lines 112–115 and 141–145",
+              "supports": "States that the appeal was written on 19 December and broadcast on 20 December."
+            },
+            {
+              "title": "19 DECEMBER 1946",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/vi/t-in-chin-tranh/8-19-december-1946.html",
+              "locator": "lines 28–40",
+              "supports": "Independently dates the full-scale outbreak in Hanoi to the evening of 19 December 1946 and stresses that the final sequence remains contested."
+            }
+          ],
+          "independentSources": 2,
+          "status": "verified",
+          "notes": "The two Hồ Chí Minh Museum pages are one institutional source family. UQAM independently confirms the evening of 19 December as the full-scale outbreak."
+        },
+        {
+          "id": "c04-5",
+          "text": "Historians still dispute the precise responsibility and sequence of decisions that produced the final outbreak on 19 December 1946.",
+          "textVi": "Giới sử học vẫn còn tranh luận về trách nhiệm và chuỗi quyết định chính xác dẫn tới thời điểm chiến tranh bùng nổ tối 19/12/1946.",
+          "date": "1946-12-19",
+          "places": [
+            "Hà Nội"
+          ],
+          "people": [],
+          "sources": [
+            {
+              "title": "19 DECEMBER 1946",
+              "publisher": "Université du Québec à Montréal (UQAM), Historical Dictionary of the Indochina War",
+              "url": "https://indochine.uqam.ca/vi/t-in-chin-tranh/8-19-december-1946.html",
+              "locator": "lines 28–40",
+              "supports": "Explicitly states that responsibility and the exact events and decisions leading to the outbreak remain unclear and contested, while also noting evidence that Vietnamese forces opened hostilities that evening."
+            }
+          ],
+          "independentSources": 1,
+          "status": "disputed",
+          "notes": "The dossier therefore avoids a simplified claim that one side alone initiated every element of the crisis or that the exact final trigger is settled."
+        }
+      ],
+      "vocab": [
+        {
+          "word": "negotiation",
+          "pos": "noun",
+          "meaningVi": "cuộc đàm phán; thương lượng",
+          "ipa": "/nɪˌɡoʊʃiˈeɪʃən/"
+        },
+        {
+          "word": "ultimatum",
+          "pos": "noun",
+          "meaningVi": "tối hậu thư",
+          "ipa": "/ˌʌltɪˈmeɪtəm/"
+        },
+        {
+          "word": "impasse",
+          "pos": "noun",
+          "meaningVi": "tình trạng bế tắc",
+          "ipa": "/ˈɪmpæs/"
+        }
+      ],
+      "imageBrief": {
+        "setting": "Hanoi in mid-to-late December 1946, with defensive preparations in the city and a separate quiet interior reference to Vạn Phúc where political decisions and the appeal were prepared.",
+        "period": "December 1946.",
+        "viewpoint": "Documentary wide view; if showing Vạn Phúc, use an exterior or desk-and-paper scene without inventing identifiable faces.",
+        "architecture": "1946 Hanoi streets, French colonial-era civic buildings and old-quarter houses; Vạn Phúc village house only if based on museum reference.",
+        "clothing": "Vietnamese civilians, self-defense personnel and French troops in 1946-appropriate dress; no later-war equipment.",
+        "objects": "Street barricades, period bicycles, papers, radio equipment and telegraph context; any document text should be based on authenticated facsimiles rather than invented handwriting.",
+        "mustAvoid": "Invented first-shot scene, fabricated quotations on screen, later-war weapons or uniforms, modern Hanoi skyline, modern flags, graphic civilian casualties, or a visual claiming historians agree on the exact final trigger.",
+        "isGeneralIllustration": true
+      },
+      "openIssues": [
+        "The exact final chain of responsibility for 19 December 1946 remains contested in scholarship; the passage states this explicitly.",
+        "Two opened National Archives pages differ slightly on whether the modus vivendi was signed on the evening of 14 September or at 1 a.m. on 15 September. The more specific chronology gives 1 a.m. on 15 September; both agree that the document is known as the 14 September modus vivendi and that it entered into force on 30 October.",
+        "The Hồ Chí Minh Museum source used here dates the broadcast of the appeal to 20 December; the dossier does not collapse the writing date, outbreak date and broadcast date into one event."
+      ]
+    }
+  ]
+}

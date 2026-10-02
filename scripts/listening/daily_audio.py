@@ -1,5 +1,5 @@
 """Chạy mỗi ngày (Task Scheduler): dùng hết hạn mức Gemini TTS miễn phí trong ngày (10 lượt/ngày/mô hình, tính theo giờ Thái Bình Dương).
-Thứ tự ưu tiên: (1) âm thanh các section Listening còn thiếu (scripts/listening/pending.json, mỗi section 1 lượt),
+Thứ tự ưu tiên: (0) thuyết minh lịch sử, (1) âm thanh các section Listening còn thiếu (scripts/listening/pending.json, mỗi section 1 lượt),
 (2) âm đọc từ giọng Kore, (3) âm đọc từ giọng Fenrir (khi Kore đã đủ). Ghi nhật ký vào scripts/listening/daily.log.
 python daily_audio.py   (dùng D:/khkt-venv-lap/Scripts/python.exe vì cần transformers để kiểm bằng Whisper)"""
 import sys, json, subprocess, pathlib, datetime, re, os
@@ -38,6 +38,24 @@ log(f"ngày PT {day}, đã dùng {used}/{BUDGET}")
 def save():
     state[day] = used
     STATE.write_text(json.dumps(state))
+
+
+# (0) thuyết minh tiếng Anh của chủ đề lịch sử: mỗi nhóm 4 cảnh = 1 lượt (scripts/history/make_narration.py)
+HIST = "vn-khang-chien-chong-phap"
+for grp in ("s01,s02,s03,s04", "s05,s06,s07,s08", "s09,s10,s11,s12"):
+    ids = grp.split(",")
+    if all((ROOT / "public" / "history" / HIST / "audio" / "en" / f"{i}.mp3").exists() for i in ids):
+        continue
+    if used >= BUDGET:
+        break
+    r = subprocess.run([PY, str(ROOT / "scripts" / "history" / "make_narration.py"), HIST, grp, "--model", MODEL], capture_output=True, text=True, encoding="utf-8")
+    if r.returncode == 0:
+        used += 1; save(); log(f"OK thuyết minh lịch sử {grp}")
+        subprocess.run([PY, str(ROOT / "scripts" / "history" / "build_content.py"), HIST], capture_output=True, text=True, encoding="utf-8")
+    else:
+        log(f"LỖI thuyết minh lịch sử {grp}: {(r.stdout + r.stderr)[-300:]}")
+        if "Hết lượt" in (r.stdout + r.stderr):
+            used = BUDGET; save()
 
 
 # (1) section Listening còn thiếu

@@ -1,0 +1,1600 @@
+[
+  {
+    "id": "s01",
+    "n": 1,
+    "titleVi": "Đà Nẵng, 1858: hạm đội xuất hiện ngoài cửa biển",
+    "titleEn": "Đà Nẵng, 1858: a fleet arrives",
+    "dateLabel": {
+      "vi": "31/8 – 2/9/1858 và đầu năm 1859",
+      "en": "31 August – 2 September 1858, and early 1859"
+    },
+    "place": {
+      "vi": "Đà Nẵng (người Pháp khi đó gọi là Tourane)",
+      "en": "Đà Nẵng (called Tourane by the French)"
+    },
+    "paragraphs": [
+      {
+        "id": "s01-p1",
+        "vi": "Năm 1858, Pháp và Tây Ban Nha đưa tàu chiến tới bờ biển Việt Nam. Ngày 31/8, hạm đội có mặt ngoài cửa biển Đà Nẵng, một hải cảng rộng và sâu, không xa kinh đô Huế. Sáng hôm sau, 1/9, các tàu nổ súng vào những đồn ở cửa sông và bán đảo Sơn Trà. Chỉ trong hai ngày, những đồn đầu tiên đã rơi vào tay quân xâm lược.",
+        "en": "In 1858, France and Spain sent warships to the coast of Vietnam. On 31 August, the fleet arrived off Đà Nẵng, a wide, deep harbour not far from the capital, Huế. The next morning, 1 September, the ships opened fire on the forts at the river mouth and on the Sơn Trà peninsula. Within two days the first forts were in the invaders' hands."
+      },
+      {
+        "id": "s01-p2",
+        "vi": "Quân xâm lược đã định tiến nhanh ra Huế, nhưng việc đó không xảy ra. Quân đội Việt Nam, do Nguyễn Tri Phương chỉ huy, dựng các tuyến phòng thủ và giữ chân đối phương gần bờ biển trong nhiều tháng. Tháng 2/1859, đạo quân chính của Pháp chuyển vào phía nam, hướng tới Sài Gòn. Đây là khởi đầu của quá trình Pháp xâm chiếm thuộc địa, từ rất lâu trước cuộc kháng chiến 1945–1954.",
+        "en": "The invaders had planned a quick advance to Huế. It did not happen. Vietnamese forces, led by the commander Nguyễn Tri Phương, built defensive lines and kept the enemy close to the coast for months. In February 1859 the main French force sailed south toward Sài Gòn instead. This was the beginning of French colonial conquest, long before the resistance of 1945–1954."
+      }
+    ],
+    "claimIds": [
+      "c01-1",
+      "c01-2",
+      "c01-3",
+      "c01-4",
+      "c01-5"
+    ],
+    "sourceIds": [
+      "src-btlsqg-danang-1858",
+      "src-baodanang-dienhai",
+      "src-wiki-tourane"
+    ],
+    "vocab": [
+      {
+        "word": "invader",
+        "pos": "noun",
+        "meaningVi": "kẻ xâm lược",
+        "ipa": "/ɪnˈveɪdər/"
+      },
+      {
+        "word": "harbour",
+        "pos": "noun",
+        "meaningVi": "cảng, bến tàu",
+        "ipa": "/ˈhɑːrbər/"
+      },
+      {
+        "word": "fort",
+        "pos": "noun",
+        "meaningVi": "đồn, pháo đài",
+        "ipa": "/fɔːrt/"
+      },
+      {
+        "word": "advance",
+        "pos": "noun/verb",
+        "meaningVi": "cuộc tiến quân; tiến quân",
+        "ipa": "/ədˈvæns/"
+      },
+      {
+        "word": "colonial",
+        "pos": "adjective",
+        "meaningVi": "thuộc địa",
+        "ipa": "/kəˈloʊniəl/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s01-q1",
+        "type": "mcq",
+        "promptVi": "Kế hoạch của quân Pháp – Tây Ban Nha ở Đà Nẵng là gì?",
+        "promptEn": "What was the French–Spanish plan at Đà Nẵng?",
+        "options": [
+          {
+            "vi": "Chiếm nhanh cảng rồi tiến ra Huế",
+            "en": "To take the port quickly and advance to Huế"
+          },
+          {
+            "vi": "Xây một cảng thương mại hòa bình",
+            "en": "To build a peaceful trading port"
+          },
+          {
+            "vi": "Bảo vệ thành phố trước quân Trung Hoa",
+            "en": "To defend the city against Chinese troops"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s01-p2",
+        "explainVi": "Đoạn 2: quân xâm lược đã định tiến nhanh ra Huế nhưng không thực hiện được.",
+        "explainEn": "Paragraph 2: the invaders had planned a quick advance to Huế, but it did not happen."
+      },
+      {
+        "id": "s01-q2",
+        "type": "mcq",
+        "promptVi": "Bài mô tả năm 1858 có quan hệ thế nào với giai đoạn 1945–1954?",
+        "promptEn": "How does the text relate 1858 to 1945–1954?",
+        "options": [
+          {
+            "vi": "Đó là khởi đầu của quá trình xâm chiếm, từ rất lâu trước kháng chiến 1945–1954",
+            "en": "It was the start of colonial conquest, long before the 1945–1954 resistance"
+          },
+          {
+            "vi": "Đó là cùng một cuộc chiến liên tục",
+            "en": "It was the same, continuous war"
+          },
+          {
+            "vi": "Nó diễn ra sau Hiệp định Genève",
+            "en": "It happened after the Geneva Agreement"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s01-p2",
+        "explainVi": "Câu cuối đoạn 2 nêu rõ đây là khởi đầu của quá trình xâm chiếm, trước giai đoạn chính rất lâu.",
+        "explainEn": "The last sentence of paragraph 2 says this was the beginning of conquest, long before the main period."
+      }
+    ],
+    "periodNote": {
+      "vi": "Bối cảnh trước giai đoạn chính 1945–1954",
+      "en": "Background before the main 1945–1954 period"
+    },
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s01.webp",
+      "altVi": "Tranh pixel: tàu chiến hơi nước và buồm ngoài vịnh Đà Nẵng, các đồn đất và gạch ven cửa sông, núi Sơn Trà phía xa.",
+      "altEn": "Pixel art: steam and sailing warships in Đà Nẵng bay, earth-and-brick forts at the river mouth, Sơn Trà mountain beyond.",
+      "captionVi": "Minh họa Đà Nẵng đầu tháng 9/1858: hạm đội Pháp – Tây Ban Nha ngoài cửa sông và các đồn phòng thủ ven bờ.",
+      "captionEn": "Illustration of Đà Nẵng in early September 1858: a French–Spanish fleet off the river mouth and the coastal forts.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s02",
+    "n": 2,
+    "titleVi": "Hà Nội, 1945: tuyên bố độc lập và những thử thách đầu tiên",
+    "titleEn": "Hà Nội, 1945: independence and the first challenges",
+    "dateLabel": {
+      "vi": "2/9/1945 và những tuần sau đó",
+      "en": "2 September 1945 and the weeks that followed"
+    },
+    "place": {
+      "vi": "Quảng trường Ba Đình, Hà Nội",
+      "en": "Ba Đình Square, Hà Nội"
+    },
+    "paragraphs": [
+      {
+        "id": "s02-p1",
+        "vi": "Ngày 2/9/1945, tại quảng trường Ba Đình ở Hà Nội, Hồ Chí Minh đọc Tuyên ngôn Độc lập và tuyên bố sự ra đời của nước Việt Nam Dân chủ Cộng hòa. Nhà nước mới có một chính phủ lâm thời và hứa sẽ tổ chức bầu cử Quốc hội.",
+        "en": "On 2 September 1945, in Ba Đình Square in Hà Nội, Hồ Chí Minh read the Declaration of Independence and announced the birth of the Democratic Republic of Vietnam. The new state had a provisional government and promised an elected National Assembly."
+      },
+      {
+        "id": "s02-p2",
+        "vi": "Nhưng độc lập chưa mang lại bình yên. Một nạn đói khủng khiếp đã xảy ra, và nạn mù chữ còn phổ biến. Quân đội nước ngoài cũng kéo vào để giải giáp quân Nhật bại trận: quân Trung Hoa Dân quốc vào miền Bắc, quân Anh vào miền Nam. Cùng lúc, Pháp chuẩn bị quay trở lại Đông Dương. Chính phủ non trẻ vừa phải xây dựng bộ máy nhà nước, vừa phải đối phó với đói nghèo, dốt nát và nguy cơ một cuộc chiến tranh mới.",
+        "en": "But independence did not bring calm. A terrible famine had struck the country, and illiteracy was widespread. Foreign armies also arrived to disarm the defeated Japanese: Chinese Nationalist troops entered the north and British troops the south. At the same time, France was preparing to return to Indochina. The young government had to build a state while facing hunger, illiteracy and the threat of a new war."
+      }
+    ],
+    "claimIds": [
+      "c02-1",
+      "c02-2",
+      "c02-3",
+      "c02-4",
+      "c02-5"
+    ],
+    "sourceIds": [
+      "src-archives-le-doc-lap",
+      "src-uqam-drv",
+      "src-uqam-hanoi",
+      "src-btlsqg-tongtuyencu",
+      "src-archives-1945-1946",
+      "src-btlsqg-nambo-23-9"
+    ],
+    "vocab": [
+      {
+        "word": "declaration",
+        "pos": "noun",
+        "meaningVi": "bản tuyên ngôn; lời tuyên bố",
+        "ipa": "/ˌdekləˈreɪʃn/"
+      },
+      {
+        "word": "provisional",
+        "pos": "adjective",
+        "meaningVi": "lâm thời, tạm thời",
+        "ipa": "/prəˈvɪʒənl/"
+      },
+      {
+        "word": "famine",
+        "pos": "noun",
+        "meaningVi": "nạn đói",
+        "ipa": "/ˈfæmɪn/"
+      },
+      {
+        "word": "illiteracy",
+        "pos": "noun",
+        "meaningVi": "nạn mù chữ",
+        "ipa": "/ɪˈlɪtərəsi/"
+      },
+      {
+        "word": "disarm",
+        "pos": "verb",
+        "meaningVi": "giải giáp, tước vũ khí",
+        "ipa": "/dɪsˈɑːrm/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s02-q1",
+        "type": "mcq",
+        "promptVi": "Nhà nước mới hứa điều gì?",
+        "promptEn": "What did the new state promise?",
+        "options": [
+          {
+            "vi": "Tổ chức bầu cử Quốc hội",
+            "en": "An elected National Assembly"
+          },
+          {
+            "vi": "Xây một thủ đô mới",
+            "en": "To build a new capital"
+          },
+          {
+            "vi": "Rút khỏi Hà Nội",
+            "en": "To leave Hà Nội"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s02-p1",
+        "explainVi": "Đoạn 1: nhà nước mới có chính phủ lâm thời và hứa tổ chức bầu cử Quốc hội.",
+        "explainEn": "Paragraph 1: it had a provisional government and promised an elected National Assembly."
+      },
+      {
+        "id": "s02-q2",
+        "type": "mcq",
+        "promptVi": "Quân đội nước ngoài nào vào miền Bắc để giải giáp quân Nhật?",
+        "promptEn": "Which foreign troops entered the north to disarm the Japanese?",
+        "options": [
+          {
+            "vi": "Quân Trung Hoa Dân quốc",
+            "en": "Chinese Nationalist troops"
+          },
+          {
+            "vi": "Quân Anh",
+            "en": "British troops"
+          },
+          {
+            "vi": "Quân Mỹ",
+            "en": "American troops"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s02-p2",
+        "explainVi": "Đoạn 2: quân Trung Hoa Dân quốc vào miền Bắc, quân Anh vào miền Nam.",
+        "explainEn": "Paragraph 2: Chinese Nationalist troops entered the north and British troops the south."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s02.webp",
+      "altVi": "Tranh pixel: đám đông ở quảng trường Ba Đình quanh một lễ đài tạm, nhìn từ xa; nhà cửa Hà Nội thập niên 1940 xung quanh.",
+      "altEn": "Pixel art: a crowd in Ba Đình Square around a temporary platform, seen from a distance, with 1940s Hà Nội houses around.",
+      "captionVi": "Minh họa Hà Nội tháng 9/1945: đông đảo người dân tập trung ở khu vực Ba Đình trong ngày Quốc khánh đầu tiên.",
+      "captionEn": "Illustration of Hà Nội in September 1945: a large crowd gathers around Ba Đình on the first National Day.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s03",
+    "n": 3,
+    "titleVi": "Sài Gòn, tháng 9/1945: mở đầu kháng chiến ở Nam Bộ",
+    "titleEn": "Sài Gòn, September 1945: resistance begins in the South",
+    "dateLabel": {
+      "vi": "22–23/9/1945",
+      "en": "22–23 September 1945"
+    },
+    "place": {
+      "vi": "Sài Gòn (nay là trung tâm của TP. Hồ Chí Minh)",
+      "en": "Sài Gòn (the heart of today's Hồ Chí Minh City)"
+    },
+    "paragraphs": [
+      {
+        "id": "s03-p1",
+        "vi": "Tháng 9/1945, Sài Gòn căng thẳng. Quân Anh đã tới để giải giáp quân Nhật, và những lính Pháp từng bị giam giữ lại được trang bị vũ khí. Ngày 22/9, quân Pháp nổ súng vào các cơ quan của chính quyền Nam Bộ, trong đó có bưu điện và đài phát thanh. Ngày 23/9, với sự hỗ trợ của người Anh, họ đẩy các lực lượng Việt Nam ra khỏi Sài Gòn.",
+        "en": "In September 1945, Sài Gòn was tense. British troops had arrived to disarm the Japanese, and French soldiers who had been held as prisoners were given weapons again. On 22 September, French forces opened fire on offices of the southern government, including the post office and the radio station. On 23 September, with British help, they pushed Vietnamese forces out of Sài Gòn."
+      },
+      {
+        "id": "s03-p2",
+        "vi": "Sáng 23/9, lãnh đạo Xứ ủy, Ủy ban Nhân dân và Ủy ban Kháng chiến Nam Bộ họp tại một ngôi nhà trên đường Cây Mai (nay là đường Nguyễn Trãi, quận 5) và thông qua lời kêu gọi kháng chiến. Từ đó, 23/9 được nhớ đến là Ngày Nam Bộ kháng chiến. Đó là mở đầu của giao tranh ở miền Nam, nhưng chưa phải cuộc chiến toàn quốc, vốn bắt đầu vào tháng 12/1946.",
+        "en": "On the morning of 23 September, leaders of the southern Party committee, the People's Committee and the Resistance Committee met in a house on Cây Mai Street (today Nguyễn Trãi Street, District 5) and approved a call to resist. Since then, 23 September has been remembered as Nam Bộ Resistance Day. It was the start of fighting in the South, but not yet the nationwide war, which began in December 1946."
+      }
+    ],
+    "claimIds": [
+      "c03-1",
+      "c03-2",
+      "c03-3",
+      "c03-4",
+      "c03-5"
+    ],
+    "sourceIds": [
+      "src-btlsqg-nambo-23-9",
+      "src-archives-1945-1946",
+      "src-uqam-23sep1945"
+    ],
+    "vocab": [
+      {
+        "word": "prisoner",
+        "pos": "noun",
+        "meaningVi": "tù binh; người bị giam",
+        "ipa": "/ˈprɪznər/"
+      },
+      {
+        "word": "post office",
+        "pos": "noun",
+        "meaningVi": "bưu điện",
+        "ipa": "/ˈpoʊst ˌɑːfɪs/"
+      },
+      {
+        "word": "committee",
+        "pos": "noun",
+        "meaningVi": "ủy ban",
+        "ipa": "/kəˈmɪti/"
+      },
+      {
+        "word": "resist",
+        "pos": "verb",
+        "meaningVi": "kháng cự, kháng chiến",
+        "ipa": "/rɪˈzɪst/"
+      },
+      {
+        "word": "nationwide",
+        "pos": "adjective",
+        "meaningVi": "trên toàn quốc",
+        "ipa": "/ˌneɪʃnˈwaɪd/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s03-q1",
+        "type": "mcq",
+        "promptVi": "Ngày 23/9 được nhớ đến là ngày gì?",
+        "promptEn": "What is 23 September remembered as?",
+        "options": [
+          {
+            "vi": "Ngày Nam Bộ kháng chiến",
+            "en": "Nam Bộ Resistance Day"
+          },
+          {
+            "vi": "Ngày Độc lập",
+            "en": "Independence Day"
+          },
+          {
+            "vi": "Ngày ký Hiệp định Genève",
+            "en": "The day the Geneva Agreement was signed"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s03-p2",
+        "explainVi": "Đoạn 2: từ đó, 23/9 được nhớ đến là Ngày Nam Bộ kháng chiến.",
+        "explainEn": "Paragraph 2: since then, 23 September has been remembered as Nam Bộ Resistance Day."
+      },
+      {
+        "id": "s03-q2",
+        "type": "mcq",
+        "promptVi": "Theo bài, giao tranh tháng 9/1945 ở miền Nam là gì?",
+        "promptEn": "According to the text, what were the September 1945 clashes in the South?",
+        "options": [
+          {
+            "vi": "Mở đầu của giao tranh ở miền Nam, chưa phải chiến tranh toàn quốc",
+            "en": "The start of fighting in the South, not yet the nationwide war"
+          },
+          {
+            "vi": "Khởi đầu của chiến tranh toàn quốc",
+            "en": "The start of the nationwide war"
+          },
+          {
+            "vi": "Kết thúc của cuộc kháng chiến",
+            "en": "The end of the resistance"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s03-p2",
+        "explainVi": "Câu cuối đoạn 2 phân biệt giao tranh ở miền Nam với cuộc chiến toàn quốc bắt đầu tháng 12/1946.",
+        "explainEn": "The last sentence separates the clashes in the South from the nationwide war that began in December 1946."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s03.webp",
+      "altVi": "Tranh pixel: phố Sài Gòn thập niên 1940 với nhà hai tầng, xe đạp, người dân đứng xa nhìn các công sở; lính vũ trang nhỏ ở xa.",
+      "altEn": "Pixel art: a 1940s Sài Gòn street with two-storey buildings, bicycles and civilians watching from a distance, small armed figures far away.",
+      "captionVi": "Minh họa Sài Gòn tháng 9/1945: không khí căng thẳng quanh các công sở và phố xá thời thuộc địa.",
+      "captionEn": "Illustration of Sài Gòn in September 1945: tension around colonial-era offices and streets.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s04",
+    "n": 4,
+    "titleVi": "Hà Nội, cuối năm 1946: con đường dẫn tới Toàn quốc kháng chiến",
+    "titleEn": "Hà Nội, late 1946: the road to nationwide resistance",
+    "dateLabel": {
+      "vi": "3–12/1946",
+      "en": "March – December 1946"
+    },
+    "place": {
+      "vi": "Hà Nội và Vạn Phúc (Hà Đông)",
+      "en": "Hà Nội and Vạn Phúc (Hà Đông)"
+    },
+    "paragraphs": [
+      {
+        "id": "s04-p1",
+        "vi": "Năm 1946, Việt Nam và Pháp ký hai thỏa thuận, vào tháng 3 và tháng 9, nhưng hai bên vẫn bất đồng về việc ai nắm quyền thực sự. Tháng 11, quân Pháp kiểm soát cảng Hải Phòng và tiến về phía Lạng Sơn.",
+        "en": "In 1946 Vietnam and France signed two agreements, in March and September, but they still disagreed about who held real power. In November French forces took control of the port of Hải Phòng and moved toward Lạng Sơn."
+      },
+      {
+        "id": "s04-p2",
+        "vi": "Tháng 12, căng thẳng ở Hà Nội tăng cao. Quân Pháp nổ súng ở nhiều phố, và ngày 18/12 chỉ huy Pháp gửi tối hậu thư. Tại Vạn Phúc, gần Hà Đông, Hồ Chí Minh cùng các lãnh đạo của Đảng họp ngày 18–19/12 và quyết định kêu gọi cả nước kháng chiến; ngày 19/12 Người viết Lời kêu gọi toàn quốc kháng chiến. Giới sử học vẫn còn bất đồng về trách nhiệm đối với việc chiến tranh bùng nổ tối hôm đó.",
+        "en": "In December the tension in Hà Nội grew. French troops fired in several streets, and on 18 December the French commander sent an ultimatum. At Vạn Phúc, near Hà Đông, Hồ Chí Minh and the Party leaders met on 18–19 December and decided to call the whole country to resist, and on the 19th he wrote his Appeal for Nationwide Resistance. Historians still disagree about who bears responsibility for the outbreak of war that evening."
+      }
+    ],
+    "claimIds": [
+      "c04-1",
+      "c04-2",
+      "c04-3",
+      "c04-4",
+      "c04-5",
+      "c04-6"
+    ],
+    "sourceIds": [
+      "src-archives-hiepdinh-so-bo",
+      "src-btlsqg-19-12-1946",
+      "src-uqam-19dec1946",
+      "src-hcmmuseum-chrono-1946"
+    ],
+    "vocab": [
+      {
+        "word": "agreement",
+        "pos": "noun",
+        "meaningVi": "hiệp định, thỏa thuận",
+        "ipa": "/əˈɡriːmənt/"
+      },
+      {
+        "word": "sovereignty",
+        "pos": "noun",
+        "meaningVi": "chủ quyền",
+        "ipa": "/ˈsɑːvrənti/"
+      },
+      {
+        "word": "ultimatum",
+        "pos": "noun",
+        "meaningVi": "tối hậu thư",
+        "ipa": "/ˌʌltɪˈmeɪtəm/"
+      },
+      {
+        "word": "appeal",
+        "pos": "noun",
+        "meaningVi": "lời kêu gọi",
+        "ipa": "/əˈpiːl/"
+      },
+      {
+        "word": "responsibility",
+        "pos": "noun",
+        "meaningVi": "trách nhiệm",
+        "ipa": "/rɪˌspɑːnsəˈbɪləti/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s04-q1",
+        "type": "mcq",
+        "promptVi": "Hồ Chí Minh và lãnh đạo Đảng họp ở đâu để quyết định kêu gọi kháng chiến?",
+        "promptEn": "Where did Hồ Chí Minh and the Party leaders meet to decide on resistance?",
+        "options": [
+          {
+            "vi": "Vạn Phúc, gần Hà Đông",
+            "en": "Vạn Phúc, near Hà Đông"
+          },
+          {
+            "vi": "Hải Phòng",
+            "en": "Hải Phòng"
+          },
+          {
+            "vi": "Sài Gòn",
+            "en": "Sài Gòn"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s04-p2",
+        "explainVi": "Đoạn 2: cuộc họp ngày 18–19/12 diễn ra tại Vạn Phúc, gần Hà Đông.",
+        "explainEn": "Paragraph 2: the meeting on 18–19 December took place at Vạn Phúc, near Hà Đông."
+      },
+      {
+        "id": "s04-q2",
+        "type": "mcq",
+        "promptVi": "Điều gì bài nói về việc ai chịu trách nhiệm cho vụ chiến sự bùng nổ?",
+        "promptEn": "What does the text say about responsibility for the outbreak of war?",
+        "options": [
+          {
+            "vi": "Giới sử học vẫn còn bất đồng",
+            "en": "Historians still disagree"
+          },
+          {
+            "vi": "Mọi sử gia đều thống nhất",
+            "en": "All historians agree"
+          },
+          {
+            "vi": "Bài không nhắc tới",
+            "en": "It is not mentioned"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s04-p2",
+        "explainVi": "Câu cuối đoạn 2 nói giới sử học vẫn bất đồng.",
+        "explainEn": "The last sentence of paragraph 2 says historians still disagree."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s04.webp",
+      "altVi": "Tranh pixel: phố Hà Nội cuối năm 1946 với chướng ngại vật bằng bàn ghế và bao cát, xe điện đứng yên, người dân đi lại.",
+      "altEn": "Pixel art: a Hà Nội street in late 1946 with barricades of furniture and sandbags, a stopped tram and people moving about.",
+      "captionVi": "Minh họa Hà Nội tháng 12/1946: chướng ngại vật và không khí chuẩn bị trên các phố cổ.",
+      "captionEn": "Illustration of Hà Nội in December 1946: barricades and preparations in the old streets.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s05",
+    "n": 5,
+    "titleVi": "Hà Nội, 60 ngày đêm đầu kháng chiến",
+    "titleEn": "Hà Nội: sixty days and nights of fighting",
+    "dateLabel": {
+      "vi": "19/12/1946 – 17/2/1947",
+      "en": "19 December 1946 – 17 February 1947"
+    },
+    "place": {
+      "vi": "Hà Nội",
+      "en": "Hà Nội"
+    },
+    "paragraphs": [
+      {
+        "id": "s05-p1",
+        "vi": "Tối 19/12/1946, khoảng 8 giờ, đèn điện khắp Hà Nội vụt tắt. Đó là tín hiệu để chiến sự bắt đầu. Bộ đội, tự vệ và người dân đã chuẩn bị các con phố: cây bị chặt đổ, toa xe điện nằm chắn ngang đường, bàn ghế và gạch đá được chất thành chiến lũy. Những căn nhà và góc phố trở thành điểm tựa chiến đấu liên hoàn, và cuộc chiến diễn ra từng phố, từng nhà.",
+        "en": "On the evening of 19 December 1946, at about 8 p.m., the lights of Hà Nội went out across the city. It was the signal for the fighting to begin. Soldiers, self-defence units and ordinary residents had prepared the streets: trees were cut down, tram cars were left across the road, and furniture and bricks were piled into barricades. Houses and street corners became linked strongpoints, and the fighting moved from street to street."
+      },
+      {
+        "id": "s05-p2",
+        "vi": "Cuộc chiến đấu kéo dài khoảng 60 ngày đêm, từ 19/12/1946 đến 17/2/1947. Tháng 1/1947, Trung đoàn Thủ đô được thành lập. Sang tháng 2, để giữ lực lượng cho cuộc kháng chiến lâu dài, trung đoàn rút khỏi thành phố, vượt sông Hồng lên căn cứ an toàn. Hà Nội đã giữ chân đối phương, góp phần bảo vệ các cơ quan lãnh đạo khi chuyển lên chiến khu.",
+        "en": "The defence lasted about sixty days and nights, from 19 December 1946 to 17 February 1947. In January 1947 the Capital Regiment was formed. In February, to keep its strength for the long war, it left the city, crossed the Red River and moved to a safe zone. Hà Nội had held the enemy back and helped protect the leadership as it moved to the base area."
+      }
+    ],
+    "claimIds": [
+      "c05-1",
+      "c05-2",
+      "c05-3",
+      "c05-4",
+      "c05-5"
+    ],
+    "sourceIds": [
+      "src-btlsqg-19-12-1946",
+      "src-btlsqg-anh-hanoi-1946",
+      "src-hanoimoi-60-ngay-dem"
+    ],
+    "vocab": [
+      {
+        "word": "barricade",
+        "pos": "noun",
+        "meaningVi": "chiến lũy, vật cản chắn đường",
+        "ipa": "/ˈbærɪkeɪd/"
+      },
+      {
+        "word": "self-defence unit",
+        "pos": "noun",
+        "meaningVi": "đội tự vệ",
+        "ipa": "/ˌself dɪˈfens ˌjuːnɪt/"
+      },
+      {
+        "word": "regiment",
+        "pos": "noun",
+        "meaningVi": "trung đoàn",
+        "ipa": "/ˈredʒɪmənt/"
+      },
+      {
+        "word": "strongpoint",
+        "pos": "noun",
+        "meaningVi": "điểm tựa, cứ điểm",
+        "ipa": "/ˈstrɔːŋpɔɪnt/"
+      },
+      {
+        "word": "withdraw",
+        "pos": "verb",
+        "meaningVi": "rút lui",
+        "ipa": "/wɪðˈdrɔː/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s05-q1",
+        "type": "mcq",
+        "promptVi": "Theo cách tính phổ biến, cuộc chiến đấu ở Hà Nội kéo dài bao lâu?",
+        "promptEn": "According to the usual account, how long did the fighting in Hà Nội last?",
+        "options": [
+          {
+            "vi": "Khoảng 60 ngày đêm",
+            "en": "About sixty days and nights"
+          },
+          {
+            "vi": "Khoảng sáu tháng",
+            "en": "About six months"
+          },
+          {
+            "vi": "Khoảng hai tuần",
+            "en": "About two weeks"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s05-p2",
+        "explainVi": "Đoạn 2: khoảng 60 ngày đêm, từ 19/12/1946 đến 17/2/1947.",
+        "explainEn": "Paragraph 2: about sixty days and nights, from 19 December 1946 to 17 February 1947."
+      },
+      {
+        "id": "s05-q2",
+        "type": "mcq",
+        "promptVi": "Vì sao Trung đoàn Thủ đô rút khỏi Hà Nội vào tháng 2/1947?",
+        "promptEn": "Why did the Capital Regiment leave Hà Nội in February 1947?",
+        "options": [
+          {
+            "vi": "Để giữ lực lượng cho cuộc kháng chiến lâu dài",
+            "en": "To keep its strength for the long war"
+          },
+          {
+            "vi": "Vì đã hết lương thực",
+            "en": "Because food had run out"
+          },
+          {
+            "vi": "Vì cuộc chiến đã kết thúc",
+            "en": "Because the war had ended"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s05-p2",
+        "explainVi": "Đoạn 2 nói trung đoàn rút đi để giữ lực lượng cho cuộc kháng chiến lâu dài.",
+        "explainEn": "Paragraph 2 says it left to keep its strength for the long war."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s05.webp",
+      "altVi": "Tranh pixel: ngã tư phố cổ Hà Nội về đêm, chiến lũy bàn ghế gạch đá và một toa xe điện chắn ngang, ánh đèn dầu, cầu Long Biên mờ xa.",
+      "altEn": "Pixel art: a night junction in old Hà Nội with a barricade of furniture and bricks and a tram across the street, oil lamps, the Long Biên bridge faint in the distance.",
+      "captionVi": "Minh họa Hà Nội về đêm cuối tháng 12/1946: mất điện, chiến lũy bằng bàn ghế và xe điện chắn đường.",
+      "captionEn": "Illustration of Hà Nội at night in late December 1946: power cut, barricades of furniture and a tram across the street.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s06",
+    "n": 6,
+    "titleVi": "Việt Bắc: căn cứ của cuộc kháng chiến",
+    "titleEn": "Việt Bắc: the resistance base",
+    "dateLabel": {
+      "vi": "Từ cuối 1946 – 1954",
+      "en": "From late 1946 to 1954"
+    },
+    "place": {
+      "vi": "Việt Bắc (Thái Nguyên, Tuyên Quang, Bắc Kạn)",
+      "en": "Việt Bắc (Thái Nguyên, Tuyên Quang, Bắc Kạn)",
+      "modernNote": {
+        "vi": "Khu vực núi rừng phía bắc, cách xa Hà Nội; không phải một địa điểm ở Hà Nội.",
+        "en": "A mountain and forest region in the north, far from Hà Nội."
+      }
+    },
+    "paragraphs": [
+      {
+        "id": "s06-p1",
+        "vi": "Sau khi toàn quốc kháng chiến bắt đầu vào tháng 12/1946, Đảng, Chính phủ và Hồ Chí Minh cần một nơi an toàn để làm việc. Một đội công tác đặc biệt lên khảo sát vùng núi Việt Bắc và chọn một vùng núi rừng rộng lớn thuộc các tỉnh Thái Nguyên, Tuyên Quang và Bắc Kạn. Nơi này được gọi là An toàn khu, viết tắt là ATK.",
+        "en": "After the nationwide resistance began in December 1946, the Party, the government and Hồ Chí Minh needed a safe place to work. A special team went to survey the mountains of Việt Bắc and chose a large region of forests and hills in the provinces of Thái Nguyên, Tuyên Quang and Bắc Kạn. It was called an An toàn khu, or ATK: a 'safe zone'."
+      },
+      {
+        "id": "s06-p2",
+        "vi": "Vùng này được chọn vì hai lý do. Về quân sự, đó là nơi có thể tiến lên đánh và lui về giữ. Về chính trị, người dân ở đây ủng hộ kháng chiến. Ngày 20/5/1947, Hồ Chí Minh tới đồi Khau Tý ở Định Hóa, nơi đặt Phủ Chủ tịch đầu tiên. Từ đó, núi rừng Việt Bắc che chở bộ phận lãnh đạo của cuộc kháng chiến, xa các thành phố.",
+        "en": "The region was chosen for two reasons. Militarily, it was a place where fighters could advance to attack and fall back to defend. Politically, the local people supported the resistance. On 20 May 1947 Hồ Chí Minh reached Khau Tý hill in Định Hóa, where the first Presidential Office was set up. From then on, the mountains of Việt Bắc sheltered the leadership of the resistance, far from the cities."
+      }
+    ],
+    "claimIds": [
+      "c06-1",
+      "c06-2",
+      "c06-3"
+    ],
+    "sourceIds": [
+      "src-atk-dinh-hoa",
+      "src-thanhtra-thainguyen-atk"
+    ],
+    "vocab": [
+      {
+        "word": "survey",
+        "pos": "verb",
+        "meaningVi": "khảo sát",
+        "ipa": "/sərˈveɪ/"
+      },
+      {
+        "word": "province",
+        "pos": "noun",
+        "meaningVi": "tỉnh",
+        "ipa": "/ˈprɑːvɪns/"
+      },
+      {
+        "word": "sheltered",
+        "pos": "verb (past)",
+        "meaningVi": "che chở, bảo vệ",
+        "ipa": "/ˈʃeltərd/"
+      },
+      {
+        "word": "leadership",
+        "pos": "noun",
+        "meaningVi": "bộ phận lãnh đạo; sự lãnh đạo",
+        "ipa": "/ˈliːdərʃɪp/"
+      },
+      {
+        "word": "support",
+        "pos": "verb",
+        "meaningVi": "ủng hộ",
+        "ipa": "/səˈpɔːrt/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s06-q1",
+        "type": "mcq",
+        "promptVi": "ATK có nghĩa là gì?",
+        "promptEn": "What does ATK stand for?",
+        "options": [
+          {
+            "vi": "An toàn khu",
+            "en": "An toàn khu (safe zone)"
+          },
+          {
+            "vi": "Ủy ban tổng khởi nghĩa",
+            "en": "General Uprising Committee"
+          },
+          {
+            "vi": "Ban tác chiến khu",
+            "en": "Regional Operations Board"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s06-p1",
+        "explainVi": "Đoạn 1: nơi này được gọi là An toàn khu, viết tắt ATK.",
+        "explainEn": "Paragraph 1: it was called an An toàn khu, or ATK: a 'safe zone'."
+      },
+      {
+        "id": "s06-q2",
+        "type": "mcq",
+        "promptVi": "Vì sao vùng này được chọn?",
+        "promptEn": "Why was this region chosen?",
+        "options": [
+          {
+            "vi": "Địa thế lợi cho tiến – lui và người dân ủng hộ kháng chiến",
+            "en": "The land suited advance and retreat, and the people supported the resistance"
+          },
+          {
+            "vi": "Vì gần Hà Nội",
+            "en": "Because it was close to Hà Nội"
+          },
+          {
+            "vi": "Vì có nhiều thành phố lớn",
+            "en": "Because it had many big cities"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s06-p2",
+        "explainVi": "Đoạn 2 nêu hai lý do: quân sự và chính trị.",
+        "explainEn": "Paragraph 2 gives two reasons: military and political."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s06.webp",
+      "altVi": "Tranh pixel: thung lũng xanh giữa núi đá và rừng, nhà sàn mái lá dưới tán cây, khói bếp, người gánh và một xưởng tre đơn sơ.",
+      "altEn": "Pixel art: a green valley among limestone hills and forest, leaf-roofed stilt houses under trees, kitchen smoke, people carrying loads and a simple bamboo workshop.",
+      "captionVi": "Minh họa một căn cứ kháng chiến ở vùng núi Việt Bắc: nhà sàn giữa rừng, xưởng nhỏ và những con đường mòn kín đáo.",
+      "captionEn": "Illustration of a resistance base in the Việt Bắc mountains: stilt houses in the forest, a small workshop and hidden paths.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s07",
+    "n": 7,
+    "titleVi": "Chiến dịch Biên giới, 1950",
+    "titleEn": "The Border Campaign, 1950",
+    "dateLabel": {
+      "vi": "16/9 – giữa tháng 10/1950",
+      "en": "16 September – mid-October 1950"
+    },
+    "place": {
+      "vi": "Đường số 4, giữa Cao Bằng và Lạng Sơn",
+      "en": "Route 4, between Cao Bằng and Lạng Sơn",
+      "modernNote": {
+        "vi": "Vùng biên giới phía bắc, xa Hà Nội.",
+        "en": "A northern border region, far from Hà Nội."
+      }
+    },
+    "paragraphs": [
+      {
+        "id": "s07-p1",
+        "vi": "Đến năm 1950, vùng biên giới phía bắc vẫn do các đồn Pháp trấn giữ dọc đường số 4, nối Cao Bằng với Lạng Sơn. Lãnh đạo Việt Nam muốn phá thế cô lập của căn cứ Việt Bắc và khai thông biên giới với Trung Quốc để nhận sự giúp đỡ từ bên ngoài. Ngày 16/9/1950, quân đội Việt Nam tấn công cứ điểm Đông Khê của Pháp; đến ngày 18/9, cứ điểm này thất thủ.",
+        "en": "By 1950, the northern border region was still held by French posts along Route 4, which ran between Cao Bằng and Lạng Sơn. The Vietnamese leadership wanted to break the isolation of the Việt Bắc base and open the border with China, so that the resistance could receive help from abroad. On 16 September 1950 Vietnamese troops attacked the French post at Đông Khê, and it fell on 18 September."
+      },
+      {
+        "id": "s07-p2",
+        "vi": "Sau khi mất Đông Khê, bộ chỉ huy Pháp quyết định rút khỏi Cao Bằng. Hai cánh quân Pháp tìm cách gặp nhau gần Đông Khê vào đầu tháng 10 nhưng bị tấn công và đánh tan; thị xã Cao Bằng được giải phóng ngày 3/10. Trận đánh chính kéo dài khoảng một tháng. Chiến dịch phá vỡ tuyến phòng thủ của Pháp trên đường số 4, giải phóng phần lớn vùng biên giới và nối căn cứ Việt Bắc với biên giới Trung Quốc. Các nguồn Việt Nam coi đây là lúc quân đội giành thế chủ động ở chiến trường Bắc Bộ.",
+        "en": "After Đông Khê fell, the French command decided to leave Cao Bằng. Two French columns tried to meet near Đông Khê in early October, but they were attacked and defeated, and the town of Cao Bằng was freed on 3 October. The main fighting lasted about a month. The campaign broke the French defence line on Route 4, freed much of the border region and connected the Việt Bắc base with the Chinese border. Vietnamese sources describe it as the point when the army gained the initiative in the northern theatre."
+      }
+    ],
+    "claimIds": [
+      "c07-1",
+      "c07-2",
+      "c07-3",
+      "c07-4",
+      "c07-5"
+    ],
+    "sourceIds": [
+      "src-btlsqg-bien-gioi-14-10",
+      "src-qdnd-bien-gioi-hau-can",
+      "src-btlsqg-bien-gioi-17-10"
+    ],
+    "vocab": [
+      {
+        "word": "isolation",
+        "pos": "noun",
+        "meaningVi": "sự cô lập",
+        "ipa": "/ˌaɪsəˈleɪʃn/"
+      },
+      {
+        "word": "post",
+        "pos": "noun",
+        "meaningVi": "đồn, cứ điểm",
+        "ipa": "/poʊst/"
+      },
+      {
+        "word": "column",
+        "pos": "noun",
+        "meaningVi": "đoàn quân, đội hình hành quân",
+        "ipa": "/ˈkɑːləm/"
+      },
+      {
+        "word": "initiative",
+        "pos": "noun",
+        "meaningVi": "thế chủ động",
+        "ipa": "/ɪˈnɪʃətɪv/"
+      },
+      {
+        "word": "defence line",
+        "pos": "noun phrase",
+        "meaningVi": "tuyến phòng thủ",
+        "ipa": "/dɪˈfens laɪn/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s07-q1",
+        "type": "mcq",
+        "promptVi": "Chiến dịch Biên giới bắt đầu bằng trận đánh nào?",
+        "promptEn": "Which battle opened the Border Campaign?",
+        "options": [
+          {
+            "vi": "Cuộc tấn công cứ điểm Đông Khê",
+            "en": "The attack on the post at Đông Khê"
+          },
+          {
+            "vi": "Trận Điện Biên Phủ",
+            "en": "The battle of Điện Biên Phủ"
+          },
+          {
+            "vi": "Trận Hà Nội",
+            "en": "The fighting in Hà Nội"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s07-p1",
+        "explainVi": "Đoạn 1: ngày 16/9/1950 quân Việt Nam tấn công Đông Khê.",
+        "explainEn": "Paragraph 1: on 16 September 1950 Vietnamese troops attacked Đông Khê."
+      },
+      {
+        "id": "s07-q2",
+        "type": "mcq",
+        "promptVi": "Vì sao việc khai thông biên giới quan trọng?",
+        "promptEn": "Why was opening the border important?",
+        "options": [
+          {
+            "vi": "Để căn cứ Việt Bắc bớt bị cô lập và nhận được sự giúp đỡ từ bên ngoài",
+            "en": "It reduced the isolation of the Việt Bắc base and let it receive outside help"
+          },
+          {
+            "vi": "Để mở một con đường du lịch",
+            "en": "To open a tourist road"
+          },
+          {
+            "vi": "Để dời thủ đô",
+            "en": "To move the capital"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s07-p1",
+        "explainVi": "Đoạn 1 nêu mục tiêu phá thế cô lập và nhận sự giúp đỡ từ bên ngoài.",
+        "explainEn": "Paragraph 1 states the aim: break the isolation and receive help from abroad."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s07.webp",
+      "altVi": "Tranh pixel: con đường đất uốn quanh núi đá phủ sương, cứ điểm đắp đất trên đồi và đoàn bộ đội cùng dân công gánh đạn hành quân.",
+      "altEn": "Pixel art: a dirt road winding past misty limestone hills, an earthwork post on a hill and a column of soldiers and porters carrying ammunition.",
+      "captionVi": "Minh họa vùng biên giới phía bắc mùa thu 1950: đường số 4 giữa núi, một cứ điểm Pháp trên đồi và đoàn quân Việt Nam hành quân.",
+      "captionEn": "Illustration of the northern border in autumn 1950: Route 4 among the mountains, a French post on a hill and a Vietnamese column marching.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s08",
+    "n": 8,
+    "titleVi": "Hậu phương: học, làm và tiếp sức",
+    "titleEn": "Behind the front: study, work and support",
+    "dateLabel": {
+      "vi": "1945–1954 (minh họa chung)",
+      "en": "1945–1954 (a general illustration)"
+    },
+    "place": {
+      "vi": "Các vùng hậu phương",
+      "en": "Rear areas"
+    },
+    "paragraphs": [
+      {
+        "id": "s08-p1",
+        "vi": "Phía sau tiền tuyến, người dân góp sức duy trì cuộc kháng chiến. Nông dân tăng gia sản xuất và dành gạo cho bộ đội. Sau năm 1945, phong trào Bình dân học vụ dạy người lớn và trẻ em biết chữ vào ban đêm. Khi đó hơn 90% dân số mù chữ; đến cuối năm 1946, hơn 2,5 triệu người đã được xóa mù. Khẩu hiệu 'Đi học là kháng chiến' khích lệ người học.",
+        "en": "Behind the front lines, ordinary people helped keep the resistance going. Farmers worked to grow more food and set aside rice for the soldiers. After 1945, the Bình dân học vụ movement, a campaign of 'popular education', taught adults and children to read at night. At that time more than 90 per cent of the people could not read, and by the end of 1946 more than 2.5 million people had learned. The slogan 'To go to school is to resist' encouraged learners."
+      },
+      {
+        "id": "s08-p2",
+        "vi": "Trong các chiến dịch lớn, dân thường còn làm dân công, mang gạo, thuốc và đạn đi theo bộ đội. Trong Chiến dịch Biên giới 1950, chẳng hạn, hàng nghìn người ở Cao Bằng, Bắc Kạn và Lạng Sơn đi dân công, và nhiều gia đình bán hàng trăm tấn lương thực cho bộ đội.",
+        "en": "During big campaigns, civilians also served as porters, carrying rice, medicine and ammunition for the army. In the Border Campaign of 1950, for example, thousands of people from Cao Bằng, Bắc Kạn and Lạng Sơn joined as porters, and local families sold hundreds of tons of food to the army."
+      }
+    ],
+    "claimIds": [
+      "c08-1",
+      "c08-2",
+      "c08-3"
+    ],
+    "sourceIds": [
+      "src-qdnd-bien-gioi-hau-can",
+      "src-btlsqg-giao-duc-khang-chien"
+    ],
+    "vocab": [
+      {
+        "word": "porter",
+        "pos": "noun",
+        "meaningVi": "dân công, người khuân vác",
+        "ipa": "/ˈpɔːrtər/"
+      },
+      {
+        "word": "literacy",
+        "pos": "noun",
+        "meaningVi": "khả năng đọc viết",
+        "ipa": "/ˈlɪtərəsi/"
+      },
+      {
+        "word": "campaign",
+        "pos": "noun",
+        "meaningVi": "chiến dịch",
+        "ipa": "/kæmˈpeɪn/"
+      },
+      {
+        "word": "slogan",
+        "pos": "noun",
+        "meaningVi": "khẩu hiệu",
+        "ipa": "/ˈsloʊɡən/"
+      },
+      {
+        "word": "set aside",
+        "pos": "phrasal verb",
+        "meaningVi": "dành riêng, để dành",
+        "ipa": "/set əˈsaɪd/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s08-q1",
+        "type": "mcq",
+        "promptVi": "Phong trào Bình dân học vụ nhằm mục đích gì?",
+        "promptEn": "What was the Bình dân học vụ movement for?",
+        "options": [
+          {
+            "vi": "Dạy người lớn và trẻ em biết chữ",
+            "en": "Teaching adults and children to read"
+          },
+          {
+            "vi": "Xây dựng đường sắt",
+            "en": "Building railways"
+          },
+          {
+            "vi": "Tổ chức bầu cử",
+            "en": "Organising elections"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s08-p1",
+        "explainVi": "Đoạn 1: phong trào dạy người lớn và trẻ em biết chữ.",
+        "explainEn": "Paragraph 1: it taught adults and children to read."
+      },
+      {
+        "id": "s08-q2",
+        "type": "mcq",
+        "promptVi": "Dân công làm gì trong các chiến dịch lớn?",
+        "promptEn": "What did porters do during big campaigns?",
+        "options": [
+          {
+            "vi": "Mang gạo, thuốc và đạn cho bộ đội",
+            "en": "Carried rice, medicine and ammunition for the army"
+          },
+          {
+            "vi": "Dạy học ở trường",
+            "en": "Taught in schools"
+          },
+          {
+            "vi": "Đàm phán ở Genève",
+            "en": "Negotiated in Geneva"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s08-p2",
+        "explainVi": "Đoạn 2: dân công mang gạo, thuốc và đạn đi theo bộ đội.",
+        "explainEn": "Paragraph 2: porters carried rice, medicine and ammunition for the army."
+      }
+    ],
+    "periodNote": {
+      "vi": "Minh họa tổng hợp đời sống hậu phương trong cả giai đoạn, không tái hiện một ngày hay một làng cụ thể",
+      "en": "A composite illustration of life behind the front across the whole period, not one specific day or village"
+    },
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s08.webp",
+      "altVi": "Tranh pixel: làng ven sông, gặt lúa, lớp học đêm dưới mái lá, dân công gánh hàng và người dắt xe đạp chở nặng trên đê.",
+      "altEn": "Pixel art: a riverside village with rice harvest, an evening class under a thatched roof, porters with loads and people pushing loaded bicycles on a dyke.",
+      "captionVi": "Minh họa tổng hợp đời sống hậu phương trong những năm kháng chiến (không phải một ngày hay một làng cụ thể).",
+      "captionEn": "A composite illustration of life behind the front during the resistance years (not one specific day or village).",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s09",
+    "n": 9,
+    "titleVi": "Chuẩn bị Điện Biên Phủ: đường, gùi, xe đạp thồ",
+    "titleEn": "Preparing for Điện Biên Phủ: roads, loads and bicycles",
+    "dateLabel": {
+      "vi": "Cuối 1953 – tháng 3/1954",
+      "en": "Late 1953 – March 1954"
+    },
+    "place": {
+      "vi": "Tây Bắc (hướng Điện Biên Phủ)",
+      "en": "The north-west, towards Điện Biên Phủ",
+      "modernNote": {
+        "vi": "Vùng núi phía tây bắc, cách Hà Nội xa.",
+        "en": "A mountain region in the north-west, far from Hà Nội."
+      }
+    },
+    "paragraphs": [
+      {
+        "id": "s09-p1",
+        "vi": "Cuối năm 1953, quân Pháp đóng ở thung lũng Điện Biên Phủ, một lòng chảo giữa núi rừng Tây Bắc. Phía Việt Nam phải đưa lực lượng, lương thực và vũ khí tới đây qua những con đường núi dài và hiểm trở. Bộ đội mở đường, và rất đông dân công gánh, gùi hàng hoặc đẩy xe đạp thồ chở lương thực, đạn dược trên những lối mòn bị máy bay đối phương tìm đánh.",
+        "en": "At the end of 1953, French troops were based in the Điện Biên Phủ valley, a basin among the mountains of the north-west. The Vietnamese side had to bring soldiers, food and weapons there along long, steep mountain routes. Soldiers opened roads, and a great many porters carried loads or pushed bicycles loaded with food and ammunition along tracks that enemy aircraft tried to attack."
+      },
+      {
+        "id": "s09-p2",
+        "vi": "Ban đầu, bộ chỉ huy định đánh nhanh và đã kéo pháo vào vị trí. Nhưng cuối tháng 1/1954, lực lượng đối phương trong thung lũng mạnh lên, và bộ chỉ huy quyết định đổi sang cách đánh chắc, tiến chắc. Pháo bị kéo ra, rồi lại phải chuẩn bị lại từ đầu. Việc này vất vả và tốn công, nhưng giúp trận đánh được chuẩn bị kỹ hơn.",
+        "en": "At first, the command planned a quick attack and had pulled the guns into position. But at the end of January 1954 the enemy force in the valley grew stronger, and the command decided to change to a steadier approach: to strike only when sure of success. The guns were pulled back out, and the preparations began again. This was hard, costly work, but it meant the battle was prepared more carefully."
+      }
+    ],
+    "claimIds": [
+      "c09-1",
+      "c09-2",
+      "c09-3",
+      "c09-4"
+    ],
+    "sourceIds": [
+      "src-nda-dbp",
+      "src-baoquankhu2-dbp",
+      "src-nhandan-keo-phao",
+      "src-vnexpress-keo-phao",
+      "src-quocphongthudo-dbp"
+    ],
+    "vocab": [
+      {
+        "word": "porter",
+        "pos": "noun",
+        "meaningVi": "người khuân vác, dân công gánh",
+        "ipa": "/ˈpɔːrtər/"
+      },
+      {
+        "word": "basin",
+        "pos": "noun",
+        "meaningVi": "lòng chảo, thung lũng",
+        "ipa": "/ˈbeɪsn/"
+      },
+      {
+        "word": "steep",
+        "pos": "adjective",
+        "meaningVi": "dốc đứng",
+        "ipa": "/stiːp/"
+      },
+      {
+        "word": "ammunition",
+        "pos": "noun",
+        "meaningVi": "đạn dược",
+        "ipa": "/ˌæmjuˈnɪʃn/"
+      },
+      {
+        "word": "approach",
+        "pos": "noun",
+        "meaningVi": "cách tiếp cận, phương châm",
+        "ipa": "/əˈproʊtʃ/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s09-q1",
+        "type": "mcq",
+        "promptVi": "Cuối tháng 1/1954, bộ chỉ huy quyết định điều gì?",
+        "promptEn": "What did the command decide at the end of January 1954?",
+        "options": [
+          {
+            "vi": "Đổi sang cách đánh chắc, tiến chắc",
+            "en": "To change to a steadier approach"
+          },
+          {
+            "vi": "Nổ súng ngay lập tức",
+            "en": "To open fire immediately"
+          },
+          {
+            "vi": "Hủy bỏ chiến dịch",
+            "en": "To cancel the campaign"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s09-p2",
+        "explainVi": "Đoạn 2: bộ chỉ huy đổi sang cách đánh chắc, tiến chắc và kéo pháo ra.",
+        "explainEn": "Paragraph 2: the command changed to a steadier approach and pulled the guns out."
+      },
+      {
+        "id": "s09-q2",
+        "type": "mcq",
+        "promptVi": "Dân công vận chuyển bằng những cách nào được nhắc trong đoạn 1?",
+        "promptEn": "Which ways of carrying loads does paragraph 1 mention?",
+        "options": [
+          {
+            "vi": "Gùi trên lưng và xe đạp thồ",
+            "en": "On their backs and on bicycles"
+          },
+          {
+            "vi": "Tàu hỏa",
+            "en": "By train"
+          },
+          {
+            "vi": "Máy bay vận tải",
+            "en": "By transport aircraft"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s09-p1",
+        "explainVi": "Đoạn 1 nhắc dân công gánh, gùi và đẩy xe đạp thồ.",
+        "explainEn": "Paragraph 1 mentions porters carrying loads and pushing bicycles."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s09.webp",
+      "altVi": "Tranh pixel: đường mòn núi cheo leo, đoàn người gùi hàng và đẩy xe đạp thồ đi trong sương, rừng và vách đá hai bên.",
+      "altEn": "Pixel art: a steep mountain track with a line of people carrying loads and pushing loaded bicycles through mist, forest and cliffs on both sides.",
+      "captionVi": "Minh họa chung về việc vận chuyển ở vùng núi Tây Bắc: dân công gùi hàng và đẩy xe đạp thồ trên đường mòn.",
+      "captionEn": "General illustration of transport in the north-western mountains: porters with loads and bicycles on a narrow track.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s10",
+    "n": 10,
+    "titleVi": "Điện Biên Phủ, 13/3 – 7/5/1954",
+    "titleEn": "Điện Biên Phủ, 13 March – 7 May 1954",
+    "dateLabel": {
+      "vi": "13/3 – 7/5/1954",
+      "en": "13 March – 7 May 1954"
+    },
+    "place": {
+      "vi": "Thung lũng Mường Thanh, Điện Biên Phủ",
+      "en": "Mường Thanh valley, Điện Biên Phủ",
+      "modernNote": {
+        "vi": "Nay thuộc tỉnh Điện Biên, vùng Tây Bắc, không phải ở Hà Nội.",
+        "en": "Today in Điện Biên Province in the north-west, not in Hà Nội."
+      }
+    },
+    "paragraphs": [
+      {
+        "id": "s10-p1",
+        "vi": "Điện Biên Phủ nằm trong thung lũng Mường Thanh, bao quanh là núi. Đầu tháng 12/1953, tướng Navarre quyết định chấp nhận chiến đấu ở đây để chặn đường lên Thượng Lào. Quân Pháp xây một cụm cứ điểm nhiều vị trí, được tiếp tế chủ yếu bằng đường không.",
+        "en": "Điện Biên Phủ lies in the Mường Thanh valley, surrounded by mountains. In early December 1953 General Navarre decided to accept battle there in order to block the route into Upper Laos. The French built a cluster of strongpoints, supplied mainly by air."
+      },
+      {
+        "id": "s10-p2",
+        "vi": "Chiến dịch bắt đầu ngày 13/3/1954 và chia làm ba đợt. Đợt 1, từ 13 đến 17/3, chiếm các cứ điểm phía bắc như Him Lam và Độc Lập. Đợt 2 kéo dài tới đầu tháng 5. Đợt 3 diễn ra từ 1 đến 7/5/1954. Chiều 7/5, sở chỉ huy của đối phương bị chiếm và tập đoàn cứ điểm ngừng chiến đấu. Trận đánh kéo dài khoảng 56 ngày đêm và để lại tổn thất nặng nề cho cả hai bên.",
+        "en": "The campaign began on 13 March 1954 and had three phases. In the first, from 13 to 17 March, the northern strongpoints such as Him Lam and Độc Lập were taken. The second phase lasted into early May. The third ran from 1 to 7 May 1954. On the afternoon of 7 May the enemy headquarters was taken and the garrison stopped fighting. The battle lasted about 56 days and nights and cost both sides heavy losses."
+      }
+    ],
+    "claimIds": [
+      "c10-1",
+      "c10-2",
+      "c10-3",
+      "c10-4"
+    ],
+    "sourceIds": [
+      "src-nda-dbp",
+      "src-baocaobang-dbp",
+      "src-quocphongthudo-dbp",
+      "src-nhandan-keo-phao",
+      "src-quocphongthudo-10-10"
+    ],
+    "vocab": [
+      {
+        "word": "garrison",
+        "pos": "noun",
+        "meaningVi": "đội quân đồn trú",
+        "ipa": "/ˈɡærɪsn/"
+      },
+      {
+        "word": "strongpoint",
+        "pos": "noun",
+        "meaningVi": "cứ điểm",
+        "ipa": "/ˈstrɔːŋpɔɪnt/"
+      },
+      {
+        "word": "supplied",
+        "pos": "verb (past)",
+        "meaningVi": "được tiếp tế",
+        "ipa": "/səˈplaɪd/"
+      },
+      {
+        "word": "phase",
+        "pos": "noun",
+        "meaningVi": "đợt, giai đoạn",
+        "ipa": "/feɪz/"
+      },
+      {
+        "word": "surrounded",
+        "pos": "adjective",
+        "meaningVi": "bị bao quanh",
+        "ipa": "/səˈraʊndɪd/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s10-q1",
+        "type": "mcq",
+        "promptVi": "Chiến dịch Điện Biên Phủ bắt đầu và kết thúc vào những ngày nào?",
+        "promptEn": "On which dates did the Điện Biên Phủ campaign begin and end?",
+        "options": [
+          {
+            "vi": "13/3 và 7/5/1954",
+            "en": "13 March and 7 May 1954"
+          },
+          {
+            "vi": "19/12/1946 và 17/2/1947",
+            "en": "19 December 1946 and 17 February 1947"
+          },
+          {
+            "vi": "16/9 và 17/10/1950",
+            "en": "16 September and 17 October 1950"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s10-p2",
+        "explainVi": "Đoạn 2: bắt đầu 13/3/1954, kết thúc 7/5/1954.",
+        "explainEn": "Paragraph 2: it began on 13 March 1954 and ended on 7 May 1954."
+      },
+      {
+        "id": "s10-q2",
+        "type": "mcq",
+        "promptVi": "Quân Pháp ở Điện Biên Phủ được tiếp tế chủ yếu bằng cách nào?",
+        "promptEn": "How were the French at Điện Biên Phủ mainly supplied?",
+        "options": [
+          {
+            "vi": "Bằng đường không",
+            "en": "By air"
+          },
+          {
+            "vi": "Bằng tàu hỏa",
+            "en": "By train"
+          },
+          {
+            "vi": "Bằng đường sông",
+            "en": "By river"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s10-p1",
+        "explainVi": "Đoạn 1: được tiếp tế chủ yếu bằng đường không.",
+        "explainEn": "Paragraph 1: supplied mainly by air."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s10.webp",
+      "altVi": "Tranh pixel: lòng chảo giữa núi cao, cánh đồng lúa, đường băng đất và những đồi nhỏ có công sự, sương mỏng buổi sáng.",
+      "altEn": "Pixel art: a basin among high mountains with rice fields, an earth airstrip and small fortified hills in thin morning mist.",
+      "captionVi": "Minh họa thung lũng Mường Thanh trước chiến dịch: lòng chảo giữa núi, cánh đồng, sân bay và các đồi cứ điểm xa xa.",
+      "captionEn": "Illustration of the Mường Thanh valley: a basin among mountains with fields, an airstrip and strongpoint hills in the distance.",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s11",
+    "n": 11,
+    "titleVi": "Hội nghị Giơnevơ 1954",
+    "titleEn": "The Geneva Conference of 1954",
+    "dateLabel": {
+      "vi": "26/4 – 21/7/1954",
+      "en": "26 April – 21 July 1954"
+    },
+    "place": {
+      "vi": "Giơnevơ, Thụy Sĩ",
+      "en": "Geneva, Switzerland",
+      "modernNote": {
+        "vi": "Không phải ở Việt Nam.",
+        "en": "Not in Vietnam."
+      }
+    },
+    "paragraphs": [
+      {
+        "id": "s11-p1",
+        "vi": "Hội nghị Giơnevơ ở Thụy Sĩ họp từ ngày 26/4 đến 21/7/1954. Phiên về Đông Dương bàn việc chấm dứt chiến sự ở Việt Nam, Lào và Campuchia. Hiệp định đình chỉ chiến sự ở Việt Nam được ghi là làm ở Giơnevơ ngày 20/7/1954 và có hiệu lực từ 24 giờ ngày 22/7/1954, giờ Giơnevơ.",
+        "en": "The Geneva Conference in Switzerland met from 26 April to 21 July 1954. Its Indochina sessions discussed ending the fighting in Vietnam, Laos and Cambodia. The Agreement on the Cessation of Hostilities in Viet-Nam is recorded as done at Geneva on 20 July 1954, and it came into force at 24:00 on 22 July 1954, Geneva time."
+      },
+      {
+        "id": "s11-p2",
+        "vi": "Hiệp định đặt ra một vĩ tuyến phân định quân sự tạm thời, cùng khu phi quân sự rộng không quá 5 km mỗi bên. Quân hai bên tập kết về hai phía. Ngày 21/7, hội nghị đưa ra một Tuyên bố cuối cùng, nói đường phân định chỉ là tạm thời và không phải biên giới chính trị hay lãnh thổ, và dự kiến tổng tuyển cử vào tháng 7/1956. Tuyên bố này không được các đoàn ký.",
+        "en": "The Agreement set a provisional military demarcation line, with a demilitarized zone of no more than 5 km on either side. The forces of the two parties regrouped on opposite sides. On 21 July the conference issued a Final Declaration, saying that the line was provisional and not a political or territorial boundary, and foreseeing general elections in July 1956. The Declaration was not signed by the delegations."
+      }
+    ],
+    "claimIds": [
+      "c11-1",
+      "c11-2",
+      "c11-3",
+      "c11-4",
+      "c11-5"
+    ],
+    "sourceIds": [
+      "src-wiki-geneva-1954",
+      "src-vassar-final-declaration",
+      "src-avalon-geneva-agreement"
+    ],
+    "vocab": [
+      {
+        "word": "agreement",
+        "pos": "noun",
+        "meaningVi": "hiệp định, thỏa thuận",
+        "ipa": "/əˈɡriːmənt/"
+      },
+      {
+        "word": "demarcation line",
+        "pos": "noun",
+        "meaningVi": "đường phân định",
+        "ipa": "/ˌdiːmɑːrˈkeɪʃn laɪn/"
+      },
+      {
+        "word": "provisional",
+        "pos": "adjective",
+        "meaningVi": "tạm thời",
+        "ipa": "/prəˈvɪʒənl/"
+      },
+      {
+        "word": "regroup",
+        "pos": "verb",
+        "meaningVi": "tập kết, tập hợp lại",
+        "ipa": "/ˌriːˈɡruːp/"
+      },
+      {
+        "word": "boundary",
+        "pos": "noun",
+        "meaningVi": "biên giới, ranh giới",
+        "ipa": "/ˈbaʊndri/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s11-q1",
+        "type": "mcq",
+        "promptVi": "Theo Tuyên bố cuối cùng, đường phân định quân sự là gì?",
+        "promptEn": "According to the Final Declaration, what was the military demarcation line?",
+        "options": [
+          {
+            "vi": "Tạm thời, không phải biên giới chính trị hay lãnh thổ",
+            "en": "Provisional, not a political or territorial boundary"
+          },
+          {
+            "vi": "Biên giới quốc gia vĩnh viễn",
+            "en": "A permanent national border"
+          },
+          {
+            "vi": "Ranh giới giữa hai nước mới",
+            "en": "The border between two new countries"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s11-p2",
+        "explainVi": "Đoạn 2: đường phân định chỉ là tạm thời.",
+        "explainEn": "Paragraph 2: the line was provisional."
+      },
+      {
+        "id": "s11-q2",
+        "type": "mcq",
+        "promptVi": "Hiệp định đình chỉ chiến sự được ghi là làm ngày nào, và có hiệu lực khi nào?",
+        "promptEn": "On what date was the cessation-of-hostilities agreement done, and when did it come into force?",
+        "options": [
+          {
+            "vi": "Làm ngày 20/7, có hiệu lực từ 24 giờ ngày 22/7/1954",
+            "en": "Done on 20 July, in force from 24:00 on 22 July 1954"
+          },
+          {
+            "vi": "Làm ngày 21/7 và có hiệu lực ngay",
+            "en": "Done on 21 July and in force at once"
+          },
+          {
+            "vi": "Làm ngày 7/5/1954",
+            "en": "Done on 7 May 1954"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s11-p1",
+        "explainVi": "Đoạn 1 nêu hai mốc khác nhau: ngày làm 20/7 và ngày có hiệu lực 22/7.",
+        "explainEn": "Paragraph 1 gives two different dates: done 20 July, in force 22 July."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s11.webp",
+      "altVi": "Tranh pixel: phòng họp lớn có bàn dài, nhiều người mặc comple ngồi hai bên, cửa sổ nhìn ra hồ và núi tuyết.",
+      "altEn": "Pixel art: a large conference room with a long table and many people in suits on both sides, windows looking over a lake and snowy mountains.",
+      "captionVi": "Minh họa cảnh một phòng họp ngoại giao năm 1954: bàn dài, các đoàn đại biểu ngồi hai bên (không phải ảnh tư liệu).",
+      "captionEn": "Illustration of a diplomatic meeting room in 1954: a long table with delegations on both sides (not a documentary photograph).",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  },
+  {
+    "id": "s12",
+    "n": 12,
+    "titleVi": "Hà Nội, tháng 10/1954",
+    "titleEn": "Hà Nội, October 1954",
+    "dateLabel": {
+      "vi": "9–10/10/1954",
+      "en": "9–10 October 1954"
+    },
+    "place": {
+      "vi": "Hà Nội",
+      "en": "Hà Nội"
+    },
+    "paragraphs": [
+      {
+        "id": "s12-p1",
+        "vi": "Theo Hiệp định Giơnevơ, quân Pháp rút dần khỏi vùng Hà Nội. Ngày 9/10/1954, toán lính Pháp cuối cùng rút qua cầu Long Biên. Sáng 10/10/1954, các đơn vị Quân đội nhân dân Việt Nam, trong đó có Trung đoàn Thủ đô, tiến vào nội thành qua các cửa ô và tiếp quản Hà Nội trong sự đón chào của rất đông người dân.",
+        "en": "Under the Geneva Agreement, French forces gradually left the Hà Nội area. On 9 October 1954 the last French troops crossed the Long Biên Bridge. On the morning of 10 October 1954, units of the Vietnamese People's Army, including the Capital Regiment, entered the inner city through the gates and took over Hà Nội, welcomed by large crowds."
+      },
+      {
+        "id": "s12-p2",
+        "vi": "Sau ngày đó, Hà Nội không còn quân Pháp. Thành phố do một Ủy ban Quân chính tiếp quản và quản lý. Cầu Long Biên là một trong những nơi gắn với ngày ấy.",
+        "en": "After that day there were no French troops in Hà Nội. The city was taken over and run by a Military Administrative Committee. The Long Biên Bridge is one of the places linked with that day."
+      }
+    ],
+    "claimIds": [
+      "c12-1",
+      "c12-2",
+      "c12-3"
+    ],
+    "sourceIds": [
+      "src-quocphongthudo-10-10",
+      "src-hvtc-10-10"
+    ],
+    "vocab": [
+      {
+        "word": "take over",
+        "pos": "phrasal verb",
+        "meaningVi": "tiếp quản",
+        "ipa": "/teɪk ˈoʊvər/"
+      },
+      {
+        "word": "inner city",
+        "pos": "noun",
+        "meaningVi": "nội thành",
+        "ipa": "/ˌɪnər ˈsɪti/"
+      },
+      {
+        "word": "committee",
+        "pos": "noun",
+        "meaningVi": "ủy ban",
+        "ipa": "/kəˈmɪti/"
+      },
+      {
+        "word": "welcome",
+        "pos": "verb",
+        "meaningVi": "chào đón",
+        "ipa": "/ˈwelkəm/"
+      },
+      {
+        "word": "gate",
+        "pos": "noun",
+        "meaningVi": "cổng, cửa ô",
+        "ipa": "/ɡeɪt/"
+      }
+    ],
+    "questions": [
+      {
+        "id": "s12-q1",
+        "type": "mcq",
+        "promptVi": "Ngày nào các đơn vị Quân đội nhân dân Việt Nam vào tiếp quản nội thành Hà Nội?",
+        "promptEn": "On what day did Vietnamese People's Army units enter Hà Nội to take it over?",
+        "options": [
+          {
+            "vi": "10/10/1954",
+            "en": "10 October 1954"
+          },
+          {
+            "vi": "2/9/1945",
+            "en": "2 September 1945"
+          },
+          {
+            "vi": "7/5/1954",
+            "en": "7 May 1954"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s12-p1",
+        "explainVi": "Đoạn 1: sáng 10/10/1954.",
+        "explainEn": "Paragraph 1: the morning of 10 October 1954."
+      },
+      {
+        "id": "s12-q2",
+        "type": "mcq",
+        "promptVi": "Ngày 9/10/1954 có sự việc gì ở cầu Long Biên?",
+        "promptEn": "What happened at the Long Biên Bridge on 9 October 1954?",
+        "options": [
+          {
+            "vi": "Toán lính Pháp cuối cùng rút qua cầu",
+            "en": "The last French troops crossed it"
+          },
+          {
+            "vi": "Cầu bị xây dựng",
+            "en": "The bridge was built"
+          },
+          {
+            "vi": "Một trận đánh lớn xảy ra",
+            "en": "A big battle took place"
+          }
+        ],
+        "answerIndex": 0,
+        "evidenceParagraphId": "s12-p1",
+        "explainVi": "Đoạn 1: toán lính Pháp cuối cùng rút qua cầu Long Biên.",
+        "explainEn": "Paragraph 1: the last French troops crossed the Long Biên Bridge."
+      }
+    ],
+    "image": {
+      "file": "/history/vn-khang-chien-chong-phap/images/s12.webp",
+      "altVi": "Tranh pixel: phố Hà Nội buổi sáng, đoàn người đi bộ đông đúc dọc đường, nhà mái ngói hai bên, cầu sắt Long Biên mờ ở xa.",
+      "altEn": "Pixel art: a Hà Nội street in the morning with a large crowd walking along the road, tiled-roof houses on both sides and the iron Long Biên Bridge faint in the distance.",
+      "captionVi": "Minh họa chung về ngày tiếp quản Hà Nội: đoàn người đi bộ qua cổng ô và dọc phố, cầu Long Biên ở xa (không phải ảnh tư liệu).",
+      "captionEn": "General illustration of the day Hà Nội was taken over: people on foot through a city gate and along a street, with the Long Biên Bridge in the distance (not a documentary photograph).",
+      "isGeneralIllustration": true,
+      "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
+    },
+    "audioPending": true,
+    "status": "verified"
+  }
+]

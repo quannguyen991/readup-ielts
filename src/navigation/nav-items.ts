@@ -1,4 +1,5 @@
 import type { IconName } from '@/components/ui/Icon';
+import { hasPublishedHistory, isDevBuild } from '@/data/history';
 
 export type NavItem = {
   key: string;
@@ -19,6 +20,8 @@ export type NavItem = {
    * Điện thoại / máy tính bảng không thấy mục này (xem `visibleGroups`).
    */
   desktopOnly?: boolean;
+  /** Chỉ hiện khi đã có nội dung lịch sử qua cổng xuất bản (bản phát triển thì luôn hiện). */
+  requires?: 'history';
 };
 
 export type NavGroup = {
@@ -139,6 +142,7 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'quest-city', label: 'Thành phố Tri thức', href: '/quest/city', icon: 'building', desktopOnly: true },
           { key: 'quest-rail', label: 'Chuyến bay từ vựng', href: '/quest/rail', icon: 'compass' },
           { key: 'quest-travel', label: 'Du ngoạn thế giới', href: '/quest/du-ngoan', icon: 'compass' },
+          { key: 'quest-history', label: 'Lịch sử Việt Nam song ngữ', href: '/history', icon: 'book', requires: 'history' },
           { key: 'quest-world', label: 'Bản đồ Band 9', href: '/quest/world', icon: 'grid' },
           { key: 'quest-hero', label: 'Nhân vật & nhiệm vụ', href: '/quest/hero', icon: 'shield' },
           { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
@@ -223,8 +227,8 @@ export function parentNavKey(key: string | null): string | null {
 
 /** Bỏ các mục chỉ-máy-tính khi thiết bị không đủ điều kiện (không để lại dấu vết). */
 export function visibleGroups(groups: readonly NavGroup[], desktop: boolean): NavGroup[] {
-  if (desktop) return [...groups];
-  const keep = (i: NavItem): boolean => !i.desktopOnly;
+  const historyOk = isDevBuild() || hasPublishedHistory();
+  const keep = (i: NavItem): boolean => (desktop || !i.desktopOnly) && (i.requires !== 'history' || historyOk);
   return groups.map((g) => ({
     ...g,
     items: g.items.filter(keep).map((i) => (i.children ? { ...i, children: i.children.filter(keep) } : i)),
@@ -271,6 +275,7 @@ export const NAV_LABEL_EN: Record<string, string> = {
   'quest-city': 'Knowledge City',
   'quest-rail': 'Vocab flight',
   'quest-travel': 'Travel the world',
+  'quest-history': 'Vietnamese history, bilingual',
   'quest-world': 'Band 9 map',
   'quest-hero': 'Character & quests',
   leaderboard: 'Leaderboard',

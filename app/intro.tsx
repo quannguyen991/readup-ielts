@@ -7,6 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Grid } from '@/components/layout/Grid';
 import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from '@/components/layout/GridBackdrop';
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
+import { HistoryHomeCard } from '@/components/history/HistoryHomeCard';
 import { Hero3D, useHeroLogo } from '@/components/three/Hero3D';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
@@ -312,6 +313,11 @@ export default function IntroScreen() {
           </GridBackdrop>
           <LightSweep />
         </View>
+      </Appear>
+
+      {/* ------------------------------------- Khám phá lịch sử (ẩn tới khi có cảnh xuất bản) */}
+      <Appear index={1}>
+        <HistoryHomeCard marginTop={28} />
       </Appear>
 
       {/* ---------------------------------------------------------- sáu mảng */}
