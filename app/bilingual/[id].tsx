@@ -33,6 +33,16 @@ import { lemmatize } from '@/services/dictionary/lookup';
 import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
 import { useVocabStore } from '@/store/useVocabStore';
 import { HoverPressable } from '@/components/ui/HoverPressable';
+import {
+  BackdropCaption,
+  BackdropThumb,
+  PixelBackdrop,
+  useActiveBackdrop,
+  useAvailableBackdrops,
+  useMotionAllowed,
+} from '@/components/reader/PixelBackdrop';
+import { RANDOM, withAlpha, type Backdrop } from '@/data/backdrops';
+import { useBackdropStore } from '@/store/useBackdropStore';
 import { useL } from '@/i18n/useL';
 import { bilingualQuestionType, bilingualTopic } from '@/components/bilingual/labels-en';
 
@@ -98,7 +108,7 @@ export default function BilingualReaderScreen() {
 
   if (!article) {
     return (
-      <Backdrop>
+      <PageBackdrop>
         <SafeAreaView className="flex-1 items-center justify-center p-6">
           <View className="max-w-[460px] rounded-card p-6" style={{ backgroundColor: LIGHT.bg }}>
             <View aria-hidden className="mb-3">
@@ -120,17 +130,21 @@ export default function BilingualReaderScreen() {
             />
           </View>
         </SafeAreaView>
-      </Backdrop>
+      </PageBackdrop>
     );
   }
 
   return <Reader article={article} />;
 }
 
-function Backdrop({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+function PageBackdrop({ children, dark = false, art }: { children: React.ReactNode; dark?: boolean; art?: Backdrop | null }) {
+  const { width } = useWindowDimensions();
   return (
-    <View className="flex-1" style={{ backgroundColor: dark ? PAGE.dark : PAGE.light }}>
+    // zIndex 0 mở một ngăn xếp riêng để lớp tranh (zIndex -1) nằm sau nội dung nhưng trên màu nền.
+    <View className="flex-1" style={{ backgroundColor: dark ? PAGE.dark : PAGE.light, zIndex: 0 }}>
+      {art ? <PixelBackdrop backdrop={art} /> : null}
       {children}
+      {art ? <BackdropCaption backdrop={art} phone={width < 640} /> : null}
     </View>
   );
 }
@@ -150,7 +164,15 @@ function Reader({ article }: { article: BilingualArticle }) {
   const [checked, setChecked] = useState(false);
   const [toolbarH, setToolbarH] = useState(56);
 
-  const theme = dark ? DARK : LIGHT;
+  const { backdrop } = useActiveBackdrop();
+  const baseTheme = dark ? DARK : LIGHT;
+  // Có tranh: tấm giấy trong ~93% để tranh lấp ló quanh mép; chữ vẫn dùng đúng màu của giấy sáng/tối.
+  const theme = useMemo<Theme>(
+    () => (backdrop ? { ...baseTheme, bg: withAlpha(baseTheme.bg, wide ? 0.92 : 0.94) } : baseTheme),
+    [backdrop, baseTheme, wide],
+  );
+  // Chữ nằm TRỰC TIẾP trên tranh (thanh trên) theo tông tranh, không theo giấy.
+  const chromeInk = backdrop ? (backdrop.tone === 'dark' ? '#F4F2EA' : '#1A1A17') : dark ? '#F4F2EA' : '#1A1A17';
   const fontFamily = FONTS.find((f) => f.key === fontKey)?.family ?? readingFont.literata;
   const dict = useArticleDictionary(article.id);
 
@@ -240,7 +262,7 @@ function Reader({ article }: { article: BilingualArticle }) {
   const narrowPane = narrow === 'en' ? enPane : narrow === 'vi' ? viPane : narrow === 'questions' ? questionsPane : vocabPane;
 
   return (
-    <Backdrop dark={dark}>
+    <PageBackdrop dark={dark} art={backdrop}>
       <SafeAreaView edges={['top']} className="flex-1">
         <View className="w-full flex-1 self-center px-4 pt-3 lg:px-8" style={{ maxWidth: MAX_WIDTH + 64 }}>
           <View onLayout={(e) => setToolbarH(e.nativeEvent.layout.height)}>
@@ -257,6 +279,7 @@ function Reader({ article }: { article: BilingualArticle }) {
               dark={dark}
               onDark={() => setDark((d) => !d)}
               savedCount={savedCount}
+              ink={chromeInk}
             />
           </View>
 
@@ -287,7 +310,7 @@ function Reader({ article }: { article: BilingualArticle }) {
         paragraphIndex={pick?.paragraph ?? null}
         onClose={() => setPick(null)}
       />
-    </Backdrop>
+    </PageBackdrop>
   );
 }
 
@@ -309,8 +332,9 @@ function Toolbar(props: {
   dark: boolean;
   onDark: () => void;
   savedCount: number;
+  ink: string;
 }) {
-  const ink = props.dark ? '#F4F2EA' : '#1A1A17';
+  const ink = props.ink;
   const [open, setOpen] = useState(false);
   const { L } = useL();
 
@@ -350,8 +374,8 @@ function Toolbar(props: {
         style={({ hovered }) => [{ opacity: hovered ? 0.88 : 1 }, webTransition]}
       >
         <View className="h-10 flex-row items-center gap-2 rounded-pill px-4" style={{ backgroundColor: props.dark ? '#1D1C19' : '#FFFFFF', borderWidth: 1, borderColor: props.dark ? '#2E2D28' : '#E3E0D6' }}>
-          <Icon name="settings" size={16} color={ink} strokeWidth={2} />
-          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: ink }}>{L('Cài đặt', 'Settings')}</Text>
+          <Icon name="settings" size={16} color={props.dark ? '#F4F2EA' : '#1A1A17'} strokeWidth={2} />
+          <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: props.dark ? '#F4F2EA' : '#1A1A17' }}>{L('Cài đặt', 'Settings')}</Text>
         </View>
       </HoverPressable>
 
@@ -369,7 +393,7 @@ function ReaderSettings(
     onClose: () => void;
   } & Omit<React.ComponentProps<typeof Toolbar>, never>,
 ) {
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [fullscreen, setFullscreen] = useState(false);
   const { L } = useL();
   const views = [
@@ -405,10 +429,12 @@ function ReaderSettings(
             borderWidth: 1,
             borderColor: PAPER.rule,
             padding: 18,
+            maxHeight: height - 80,
             cursor: 'auto',
             ...(Platform.OS === 'web' ? ({ boxShadow: '0 12px 32px rgba(20,20,10,0.16)' } as object) : { elevation: 10 }),
           } as object}
         >
+         <ScrollView showsVerticalScrollIndicator={false}>
           <View className="flex-row items-center justify-between">
             <Text style={{ fontFamily: readingFont.sansHeavy, fontSize: 20, letterSpacing: -0.3, color: PAPER.ink }}>{L('Cài đặt đọc', 'Reading settings')}</Text>
             <Pressable accessibilityRole="button" accessibilityLabel={L('Đóng', 'Close')} onPress={props.onClose} className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: PAPER.chip }}>
@@ -458,6 +484,8 @@ function ReaderSettings(
             </Choice>
           </View>
 
+          {Platform.OS === 'web' ? <BackdropSetting /> : null}
+
           {Platform.OS === 'web' ? (
             <>
               <SettingLabel>{L('Màn hình', 'Screen')}</SettingLabel>
@@ -484,9 +512,74 @@ function ReaderSettings(
               <Text style={{ fontSize: 13, fontWeight: '700', color: PAPER.accent }}>{L('Mở sổ từ →', 'Open word notebook →')}</Text>
             </Pressable>
           </View>
+         </ScrollView>
         </Pressable>
       </Pressable>
     </Modal>
+  );
+}
+
+/** "Nền tranh pixel": TẮT mặc định; bật thì hiện lưới tranh (chỉ những bức có file), Ngẫu nhiên, Tắt nền. */
+function BackdropSetting() {
+  const { L } = useL();
+  const on = useBackdropStore((s) => s.on);
+  const choice = useBackdropStore((s) => s.choice);
+  const setOn = useBackdropStore((s) => s.setOn);
+  const setChoice = useBackdropStore((s) => s.setChoice);
+  const motion = useBackdropStore((s) => s.motion);
+  const setMotion = useBackdropStore((s) => s.setMotion);
+  const available = useAvailableBackdrops(on);
+  const motionOk = useMotionAllowed();
+  const weak = !motionOk;
+
+  return (
+    <>
+      <SettingLabel>{L('Nền tranh pixel', 'Pixel-art backdrop')}</SettingLabel>
+      <View className="flex-row flex-wrap gap-2">
+        <Choice on={!on} onPress={() => setOn(false)}>
+          {L('Tắt', 'Off')}
+        </Choice>
+        <Choice on={on} onPress={() => setOn(true)}>
+          {L('Bật', 'On')}
+        </Choice>
+      </View>
+      {weak && !on ? (
+        <Text style={{ marginTop: 6, fontSize: 12, color: PAPER.muted }}>{L('Máy này nên để tắt cho mượt.', 'Best left off on this device.')}</Text>
+      ) : null}
+      {on ? (
+        available.length === 0 ? (
+          <Text style={{ marginTop: 8, fontSize: 12.5, color: PAPER.muted }}>{L('Đang tải bộ tranh…', 'Loading paintings…')}</Text>
+        ) : (
+          <>
+            <View className="mt-3 flex-row flex-wrap gap-2">
+              {available.map((b) => (
+                <BackdropThumb key={b.id} backdrop={b} selected={choice === b.id} onPress={() => setChoice(b.id)} />
+              ))}
+            </View>
+            <View className="mt-3 flex-row flex-wrap gap-2">
+              <Choice on={choice === RANDOM} onPress={() => setChoice(RANDOM)}>
+                {L('Ngẫu nhiên mỗi lần đọc', 'Random each read')}
+              </Choice>
+              <Choice on={false} onPress={() => setOn(false)}>
+                {L('Tắt nền', 'Turn off')}
+              </Choice>
+            </View>
+            <SettingLabel>{L('Chuyển động nhẹ', 'Gentle motion')}</SettingLabel>
+            <View className="flex-row flex-wrap gap-2">
+              <Choice on={motionOk && motion} onPress={() => setMotion(true)}>
+                {L('Bật', 'On')}
+              </Choice>
+              <Choice on={!(motionOk && motion)} onPress={() => setMotion(false)}>
+                {L('Tắt', 'Off')}
+              </Choice>
+            </View>
+            {!motionOk ? (
+              <Text style={{ marginTop: 6, fontSize: 12, color: PAPER.muted }}>{L('Máy này tự tắt chuyển động.', 'Motion is off on this device.')}</Text>
+            ) : null}
+          </>
+        )
+      ) : null}
+    </>
   );
 }
 
