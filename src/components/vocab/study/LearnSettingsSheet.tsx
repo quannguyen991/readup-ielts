@@ -9,6 +9,8 @@ import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { STUDY_THEMES, THEME_ORDER } from './study-theme';
+import { ArtGallery } from '@/components/art/ArtBackdrop';
+import { useBackdropStore } from '@/store/useBackdropStore';
 
 /**
  * Bảng Cài đặt của màn Học.
@@ -266,6 +268,10 @@ function ThemePicker() {
   const setFx = useTopicStudyStore((s) => s.setStudyFx);
   const current = useTopicStudyStore((s) => s.studyTheme);
   const setTheme = useTopicStudyStore((s) => s.setStudyTheme);
+  const artOn = useBackdropStore((s) => s.studyOn);
+  const artChoice = useBackdropStore((s) => s.choice);
+  const setArtOn = useBackdropStore((s) => s.setStudyOn);
+  const pickArt = useBackdropStore((s) => s.setStudyChoice);
   return (
     <View className="gap-2.5">
       <Row on={fx} onPress={() => setFx(!fx)}>
@@ -282,14 +288,17 @@ function ThemePicker() {
         <View className="flex-row flex-wrap gap-2.5" accessibilityRole="radiogroup">
           {THEME_ORDER.map((id) => {
             const t = STUDY_THEMES[id];
-            const on = current === id;
+            const on = current === id && !artOn;
             return (
               <Pressable
                 key={id}
                 accessibilityRole="radio"
                 accessibilityState={{ selected: on }}
                 accessibilityLabel={en ? t.en : t.vi}
-                onPress={() => setTheme(id)}
+                onPress={() => {
+                  setTheme(id);
+                  setArtOn(false);
+                }}
                 style={{ width: '31%', minWidth: 96, flexGrow: 1 }}
               >
                 <View
@@ -313,6 +322,19 @@ function ThemePicker() {
               </Pressable>
             );
           })}
+        </View>
+      ) : null}
+      {fx ? (
+        <View className="mt-1 gap-2">
+          <Text className="font-strong text-label text-muted">{L('Tranh nổi tiếng', 'Famous paintings')}</Text>
+          <ArtGallery
+            active={artOn}
+            choice={artChoice}
+            onPick={pickArt}
+            onOff={() => setArtOn(false)}
+            randomLabel={L('Ngẫu nhiên mỗi lần học', 'Random each session')}
+            colors={{ ink: color.ink, muted: '#5B6678', chip: '#F7F4EE', accent: color.primary, onAccent: '#FFFFFF' }}
+          />
         </View>
       ) : null}
     </View>

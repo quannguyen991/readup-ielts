@@ -33,15 +33,8 @@ import { lemmatize } from '@/services/dictionary/lookup';
 import { useArticleDictionary } from '@/services/dictionary/rich-dictionary';
 import { useVocabStore } from '@/store/useVocabStore';
 import { HoverPressable } from '@/components/ui/HoverPressable';
-import {
-  BackdropCaption,
-  BackdropThumb,
-  PixelBackdrop,
-  useActiveBackdrop,
-  useAvailableBackdrops,
-  useMotionAllowed,
-} from '@/components/reader/PixelBackdrop';
-import { RANDOM, withAlpha, type Backdrop } from '@/data/backdrops';
+import { ArtBackdrop, ArtCaption, ArtGallery, useActiveBackdrop } from '@/components/art/ArtBackdrop';
+import { withAlpha, type Backdrop } from '@/data/backdrops';
 import { useBackdropStore } from '@/store/useBackdropStore';
 import { useL } from '@/i18n/useL';
 import { bilingualQuestionType, bilingualTopic } from '@/components/bilingual/labels-en';
@@ -142,9 +135,9 @@ function PageBackdrop({ children, dark = false, art }: { children: React.ReactNo
   return (
     // zIndex 0 mở một ngăn xếp riêng để lớp tranh (zIndex -1) nằm sau nội dung nhưng trên màu nền.
     <View className="flex-1" style={{ backgroundColor: dark ? PAGE.dark : PAGE.light, zIndex: 0 }}>
-      {art ? <PixelBackdrop backdrop={art} /> : null}
+      {art ? <ArtBackdrop backdrop={art} /> : null}
       {children}
-      {art ? <BackdropCaption backdrop={art} phone={width < 640} /> : null}
+      {art ? <ArtCaption backdrop={art} phone={width < 640} /> : null}
     </View>
   );
 }
@@ -519,22 +512,16 @@ function ReaderSettings(
   );
 }
 
-/** "Nền tranh pixel": TẮT mặc định; bật thì hiện lưới tranh (chỉ những bức có file), Ngẫu nhiên, Tắt nền. */
+/** "Nền tranh nổi tiếng": TẮT mặc định; bật thì hiện bộ chọn tranh dùng chung (cũng dùng ở màn học từ vựng). */
 function BackdropSetting() {
   const { L } = useL();
   const on = useBackdropStore((s) => s.on);
   const choice = useBackdropStore((s) => s.choice);
   const setOn = useBackdropStore((s) => s.setOn);
   const setChoice = useBackdropStore((s) => s.setChoice);
-  const motion = useBackdropStore((s) => s.motion);
-  const setMotion = useBackdropStore((s) => s.setMotion);
-  const available = useAvailableBackdrops(on);
-  const motionOk = useMotionAllowed();
-  const weak = !motionOk;
-
   return (
     <>
-      <SettingLabel>{L('Nền tranh pixel', 'Pixel-art backdrop')}</SettingLabel>
+      <SettingLabel>{L('Nền tranh nổi tiếng', 'Famous-painting backdrop')}</SettingLabel>
       <View className="flex-row flex-wrap gap-2">
         <Choice on={!on} onPress={() => setOn(false)}>
           {L('Tắt', 'Off')}
@@ -543,41 +530,10 @@ function BackdropSetting() {
           {L('Bật', 'On')}
         </Choice>
       </View>
-      {weak && !on ? (
-        <Text style={{ marginTop: 6, fontSize: 12, color: PAPER.muted }}>{L('Máy này nên để tắt cho mượt.', 'Best left off on this device.')}</Text>
-      ) : null}
       {on ? (
-        available.length === 0 ? (
-          <Text style={{ marginTop: 8, fontSize: 12.5, color: PAPER.muted }}>{L('Đang tải bộ tranh…', 'Loading paintings…')}</Text>
-        ) : (
-          <>
-            <View className="mt-3 flex-row flex-wrap gap-2">
-              {available.map((b) => (
-                <BackdropThumb key={b.id} backdrop={b} selected={choice === b.id} onPress={() => setChoice(b.id)} />
-              ))}
-            </View>
-            <View className="mt-3 flex-row flex-wrap gap-2">
-              <Choice on={choice === RANDOM} onPress={() => setChoice(RANDOM)}>
-                {L('Ngẫu nhiên mỗi lần đọc', 'Random each read')}
-              </Choice>
-              <Choice on={false} onPress={() => setOn(false)}>
-                {L('Tắt nền', 'Turn off')}
-              </Choice>
-            </View>
-            <SettingLabel>{L('Chuyển động nhẹ', 'Gentle motion')}</SettingLabel>
-            <View className="flex-row flex-wrap gap-2">
-              <Choice on={motionOk && motion} onPress={() => setMotion(true)}>
-                {L('Bật', 'On')}
-              </Choice>
-              <Choice on={!(motionOk && motion)} onPress={() => setMotion(false)}>
-                {L('Tắt', 'Off')}
-              </Choice>
-            </View>
-            {!motionOk ? (
-              <Text style={{ marginTop: 6, fontSize: 12, color: PAPER.muted }}>{L('Máy này tự tắt chuyển động.', 'Motion is off on this device.')}</Text>
-            ) : null}
-          </>
-        )
+        <View style={{ marginTop: 12 }}>
+          <ArtGallery active choice={choice} onPick={setChoice} onOff={() => setOn(false)} colors={{ ink: PAPER.ink, muted: PAPER.muted, chip: PAPER.chip, accent: PAPER.accent, onAccent: '#FFFFFF' }} />
+        </View>
       ) : null}
     </>
   );

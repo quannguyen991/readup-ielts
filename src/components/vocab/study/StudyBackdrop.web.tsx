@@ -8,7 +8,9 @@
 import React, { useEffect } from 'react';
 import { View } from 'react-native';
 
-import { themeOf, type StudyTheme } from './study-theme';
+import { ArtBackdrop, ArtCaption, useStudyBackdrop } from '@/components/art/ArtBackdrop';
+
+import { isArtTheme, themeOf, type StudyTheme } from './study-theme';
 
 const STYLE_ID = 'readup-study-backdrop';
 const CSS = `
@@ -142,6 +144,17 @@ export function StudyBackdrop({ id, children }: { id: string; children: React.Re
   const ref = React.useRef<HTMLDivElement | null>(null);
   useBackdropCss();
   usePauseWhenHidden(ref);
+  const art = useStudyBackdrop(true);
+  if (isArtTheme(theme.id) && art) {
+    // zIndex 0 mở ngăn xếp riêng để ảnh (zIndex -1) nằm sau nội dung, trên màu nền.
+    return (
+      <View className="flex-1" style={{ backgroundColor: theme.skyBase, zIndex: 0 }}>
+        <ArtBackdrop backdrop={art} />
+        {children}
+        <ArtCaption backdrop={art} phone={false} />
+      </View>
+    );
+  }
   return (
     <View className="flex-1" style={{ backgroundColor: theme.skyBase }}>
       <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>

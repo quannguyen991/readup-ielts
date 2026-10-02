@@ -11,7 +11,7 @@ import { pronounce, stopPronounce } from "@/services/audio/pronounce";
 import { flushPersist } from "@/store/persist";
 import { StudyThemeProvider, useStoreTheme, useStudyTheme } from "./useStudyTheme";
 import { useTopicStudyStore } from "@/store/useTopicStudyStore";
-import { STUDY_THEMES, THEME_ORDER, type StudyTheme } from "./study-theme";
+import { STUDY_THEMES, type StudyTheme } from "./study-theme";
 
 import { BattleStrip } from "@/components/game/BattleStrip";
 import { Icon } from "@/components/ui/Icon";
@@ -94,8 +94,8 @@ export function useHotkeys(
 const THEME_CSS_ID = "readup-study-theme-css";
 function themeCss(): string {
   let css = "";
-  for (const id of THEME_ORDER) {
-    const t = STUDY_THEMES[id];
+  for (const t of Object.values(STUDY_THEMES)) {
+    const id = t.id;
     if (!t.dark) continue;
     const r = `[data-st="${id}"]`;
     css +=
