@@ -23,6 +23,7 @@ import { INTERIOR_SIZE, type InteriorLayout } from '@/data/travel/interiors';
 import { buildSceneWorld, footprintRect, INTERIOR_CELL, interiorKindOf, interiorLayout, interiorMaskRows, type InteriorKind } from './scene';
 import { ambientAt, Lighting, type Light, type RGB } from './Lighting';
 import { Particles, PK } from './Particles';
+import { getPoiContent } from '@/data/travel/pois';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { CHATTER } from './dialogue';
 import { Camera, computeImageView, computeView, pointerToWorld, viewForK, zoomBounds, type View } from './view';
@@ -36,6 +37,27 @@ export type EngineCallbacks = {
   onZoom?(info: { z: number; min: number; max: number }): void;
   /** Phím F khi bản đồ đang được chọn. */
   onToggleFullscreen?(): void;
+  /** Con trỏ đang rê trên một địa điểm (toạ độ CSS trong canvas); `null` khi rời. Dùng cho khung chú thích. */
+  onHoverPoi?(id: string | null, at: { x: number; y: number }): void;
+  /** Vị trí người chơi (điểm nguồn của bản đồ), ~5 lần/giây — cho bản đồ nhỏ. */
+  onPlayer?(p: { x: number; y: number }): void;
+};
+
+/** Làm nổi địa điểm: `recommended` = nơi nên đi tiếp, `focus` = đang rê trong danh sách, `locked` = tập địa điểm đang khoá (ghi đè luật cũ). */
+export type PoiHighlights = { recommended?: string | null; focus?: string | null; locked?: ReadonlySet<string> };
+
+const KIND_ICON: Record<string, string> = {
+  restaurant: '🍜',
+  cafe: '☕',
+  hotel: '🛏️',
+  station: '🚉',
+  market: '🛍️',
+  museum: '🏛️',
+  landmark: '🏙️',
+  garden: '🌳',
+  airport: '✈️',
+  counter: '🎫',
+  secret: '✨',
 };
 
 export type EngineOptions = {
@@ -167,6 +189,8 @@ export class CityEngine {
   private bubble: Bubble = null;
   private toast: { text: string; until: number } | null = null;
   private hoverPoi: string | null = null;
+  private hl: PoiHighlights = {};
+  private playerCbT = 0;
   private pendingEnter: string | null = null;
   private enterLock: string | null = null;
   private keys: Dir[] = [];
@@ -304,6 +328,30 @@ export class CityEngine {
       if (d > 1 && !isBlockedAt(this.world!, state.pos.x, state.pos.y)) this.teleportTile(state.pos);
     }
     if (prev && prev.prefs.outfit !== state.prefs.outfit) this.player.bmps = this.personBitmaps(`player_${((state.prefs.outfit % 8) + 8) % 8}`);
+  }
+
+  setHighlights(h: PoiHighlights) {
+    this.hl = h;
+  }
+
+  /** Tự đi tới cửa một địa điểm (không vào). Trả về true nếu tìm được đường. */
+  walkToPoi(id: string): boolean {
+    if (this.interior) return false;
+    const poi = this.map.pois.find((q) => q.id === id);
+    if (!poi) return false;
+    const door = this.doorPt(poi);
+    if (!this.goTo(door)) return false;
+    // dừng cách cửa một quãng ngắn để không tự bước vào (muốn vào thì bấm "Vào" hoặc E)
+    const p = this.player;
+    const stop = this.isImg ? 15 : TS * 1.2;
+    while (p.path.length > 1 && Math.hypot(p.path[p.path.length - 1]!.x - door.x, p.path[p.path.length - 1]!.y - door.y) < stop) p.path.pop();
+    this.pendingEnter = null;
+    return true;
+  }
+
+  /** Khoá hay không: ưu tiên tập do lớp trên cấp (cùng luật với danh sách địa điểm), không có thì dùng luật gốc. */
+  private lockedPoi(poi: Poi): boolean {
+    return this.hl.locked ? this.hl.locked.has(poi.id) : isPoiLocked(poi, this.state);
   }
 
   setOptions(o: Partial<EngineOptions>) {
@@ -1057,6 +1105,11 @@ export class CityEngine {
     this.particles.update(dt);
     if (this.bubble && this.t * 1000 > this.bubble.until) this.bubble = null;
     this.updateAmbientSfx(dt);
+    this.playerCbT -= dt;
+    if (this.playerCbT <= 0 && this.cbs.onPlayer && !this.interior) {
+      this.playerCbT = 0.2;
+      this.cbs.onPlayer({ x: this.player.x, y: this.player.y });
+    }
     this.cam.update(dt, this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
     if (this.enterLock) {
       const poi = this.map.pois.find((q) => q.id === this.enterLock);
@@ -1208,7 +1261,7 @@ export class CityEngine {
     }
     if (!target) return;
     if (this.enterLock === target.id && !bump) return;
-    if (isPoiLocked(target, this.state)) {
+    if (this.lockedPoi(target)) {
       if (this.enterLock !== target.id) this.showLocked(target);
       this.enterLock = target.id;
       return;
@@ -1389,7 +1442,7 @@ export class CityEngine {
     if (this.sparkleT <= 0 && !calm) {
       this.sparkleT = 0.5;
       for (const poi of this.map.pois) {
-        if (isPoiLocked(poi, this.state)) continue;
+        if (this.lockedPoi(poi)) continue;
         if ((this.state.poi[poi.id]?.best ?? 0) > 0) continue;
         const d = this.doorPt(poi);
         const dx = d.x - this.player.x;
@@ -1773,7 +1826,7 @@ export class CityEngine {
       const x = d.x - camX;
       const y = d.y - camY;
       if (x < -20 || y < -40 || x > this.view.W + 20 || y > this.view.H + 20) continue;
-      const locked = isPoiLocked(poi, this.state);
+      const locked = this.lockedPoi(poi);
       const best = this.state.poi[poi.id]?.best ?? 0;
       const col = locked ? 'n' : best > 0 ? 'L' : 'u';
       const hi = locked ? 'B' : best > 0 ? 'l' : 'e';
@@ -1932,6 +1985,120 @@ export class CityEngine {
     return { x: v.offX + (wx - camX) * v.k, y: v.offY + (wy - camY) * v.k };
   }
 
+  /** Thẻ tên nổi trên mỗi địa điểm, vòng nhấp nháy ở nơi nên đi tiếp, mũi tên chỉ hướng khi nơi đó ngoài màn hình. */
+  private drawPoiTags(
+    d: CanvasRenderingContext2D,
+    camX: number,
+    camY: number,
+    px: (n: number) => number,
+    pill: (text: string, cx: number, cy: number, o: { bg: string; fg: string; border: string; size?: number }) => void,
+  ) {
+    const v = this.view;
+    const vi = this.opts.locale === 'vi';
+    const cssPer = v.k / v.dpr;
+    const pulse = this.opts.reducedMotion ? 0.5 : 0.5 + 0.5 * Math.sin(this.t * 3.2);
+    const rec = this.hl.recommended ?? null;
+    const focus = this.hl.focus ?? null;
+    for (const poi of this.map.pois) {
+      const dp = this.doorPt(poi);
+      const dist = Math.hypot(dp.x - this.player.x, dp.y - this.player.y);
+      const isRec = poi.id === rec;
+      const isFocus = poi.id === focus || poi.id === this.hoverPoi;
+      const near = dist * cssPer < 220;
+      const locked = this.lockedPoi(poi);
+      const best = this.state.poi[poi.id]?.best ?? 0;
+      const isAction = !!getPoiContent(poi.id)?.action;
+      const done = best >= 2 && !isAction;
+      const door = this.toDev(dp.x, dp.y, camX, camY);
+      const onScreen = door.x > -px(40) && door.x < v.devW + px(40) && door.y > -px(40) && door.y < v.devH + px(40);
+      // vòng quanh cửa: nơi nên đi (nhấp nháy) và nơi đã hoàn thành (vòng vàng mảnh)
+      if (onScreen && (isRec || done) && !locked) {
+        d.lineWidth = Math.max(1, px(isRec ? 2 : 1.5));
+        d.strokeStyle = isRec ? `rgba(226,200,143,${(0.55 + 0.4 * pulse).toFixed(2)})` : 'rgba(184,149,90,0.75)';
+        d.beginPath();
+        d.arc(door.x, door.y, px(isRec ? 11 + pulse * 5 : 9), 0, Math.PI * 2);
+        d.stroke();
+        if (isRec) {
+          d.strokeStyle = `rgba(226,200,143,${(0.3 * (1 - pulse)).toFixed(2)})`;
+          d.beginPath();
+          d.arc(door.x, door.y, px(18 + pulse * 8), 0, Math.PI * 2);
+          d.stroke();
+        }
+      }
+      if (!(near || isFocus || isRec)) continue;
+      // thẻ tên phía trên toà nhà (nếu có vùng chạm), không thì ngay dưới cửa
+      const rect = this.isImg ? (poi.hotspot ?? poi.footprint) : null;
+      const anchor = rect ? this.toDev(rect.x + rect.w / 2, rect.y + 3, camX, camY) : { x: door.x, y: door.y + px(12) };
+      if (anchor.x < -px(60) || anchor.x > v.devW + px(60) || anchor.y < -px(30) || anchor.y > v.devH + px(30)) continue;
+      const icon = locked ? '🔒' : done ? '✓' : (KIND_ICON[poi.kind] ?? '📍');
+      const name = vi ? poi.name.vi : poi.name.en;
+      const text = `${icon} ${name}`;
+      const size = px(12);
+      d.font = `700 ${size}px "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif`;
+      const tw = d.measureText(text).width;
+      const w = Math.round(tw + px(14));
+      const showStars = !isAction && !locked;
+      const h = Math.round(size + px(showStars ? 15 : 9));
+      const x = Math.round(Math.max(px(4), Math.min(v.devW - w - px(4), anchor.x - w / 2)));
+      const y = Math.round(Math.max(px(4), anchor.y - h - px(2)));
+      const bg = locked ? '#D8D2C3' : isRec ? '#FBF1D3' : '#F3EDE1';
+      const border = locked ? '#8c8576' : done || isRec ? '#B8955A' : '#0F1D33';
+      d.fillStyle = border;
+      d.fillRect(x - px(1), y - px(1), w + px(2), h + px(2));
+      d.fillStyle = bg;
+      d.fillRect(x, y, w, h);
+      d.globalAlpha = locked ? 0.7 : 1;
+      d.fillStyle = locked ? '#6b6556' : '#0F1D33';
+      d.textAlign = 'center';
+      d.fillText(text, Math.round(x + w / 2), Math.round(y + size / 2 + px(5)));
+      d.globalAlpha = 1;
+      if (showStars) {
+        for (let i = 0; i < 3; i++) {
+          d.fillStyle = i < best ? '#B8955A' : 'rgba(15,29,51,0.22)';
+          const sx = Math.round(x + w / 2 + (i - 1) * px(9));
+          d.beginPath();
+          d.arc(sx, Math.round(y + h - px(5)), px(2.4), 0, Math.PI * 2);
+          d.fill();
+        }
+      }
+    }
+    // mũi tên mục tiêu ở mép màn hình khi nơi nên đi nằm ngoài khung nhìn
+    const target = rec ? this.map.pois.find((q) => q.id === rec) : undefined;
+    if (target && !this.interior) {
+      const dp = this.toDev(this.doorPt(target).x, this.doorPt(target).y, camX, camY);
+      const m = px(34);
+      if (dp.x < m || dp.x > v.devW - m || dp.y < m || dp.y > v.devH - m) {
+        const cx = v.devW / 2;
+        const cy = v.devH / 2;
+        const dx = dp.x - cx;
+        const dy = dp.y - cy;
+        const k = Math.min((cx - m) / Math.max(1e-6, Math.abs(dx)), (cy - m) / Math.max(1e-6, Math.abs(dy)));
+        const ax = cx + dx * k;
+        const ay = cy + dy * k;
+        const ang = Math.atan2(dy, dx);
+        d.save();
+        d.translate(ax, ay);
+        d.rotate(ang);
+        d.globalAlpha = 0.75 + 0.25 * pulse;
+        d.fillStyle = '#E2C88F';
+        d.strokeStyle = '#0F1D33';
+        d.lineWidth = Math.max(1, px(1.5));
+        d.beginPath();
+        d.moveTo(px(12), 0);
+        d.lineTo(-px(8), px(9));
+        d.lineTo(-px(3), 0);
+        d.lineTo(-px(8), -px(9));
+        d.closePath();
+        d.fill();
+        d.stroke();
+        d.restore();
+        d.globalAlpha = 1;
+        const label = vi ? target.name.vi : target.name.en;
+        pill(label, Math.min(v.devW - px(60), Math.max(px(60), ax - Math.cos(ang) * px(54))), Math.min(v.devH - px(16), Math.max(px(16), ay - Math.sin(ang) * px(30))), { bg: '#FBF1D3', fg: '#0F1D33', border: '#B8955A', size: 11 });
+      }
+    }
+  }
+
   private drawOverlay(d: CanvasRenderingContext2D, camX: number, camY: number) {
     const v = this.view;
     const vi = this.opts.locale === 'vi';
@@ -1958,16 +2125,7 @@ export class CityEngine {
       pill(this.imgFailed ? (vi ? 'Không tải được bản đồ' : 'Could not load the map') : vi ? 'Đang tải bản đồ…' : 'Loading map…', v.devW / 2, v.devH / 2, { bg: '#0F1D33', fg: '#F3EDE1', border: '#B8955A', size: 14 });
     }
 
-    for (const poi of this.map.pois) {
-      const dp = this.doorPt(poi);
-      const near = Math.hypot(dp.x - this.player.x, dp.y - this.player.y) < (this.isImg ? 70 : 7 * TS);
-      if (!near && this.hoverPoi !== poi.id) continue;
-      const pos = this.toDev(dp.x, dp.y + (this.isImg ? 9 : TS - 2), camX, camY);
-      if (pos.x < -50 || pos.x > v.devW + 50 || pos.y < -20 || pos.y > v.devH + 20) continue;
-      const locked = isPoiLocked(poi, this.state);
-      const label = (locked ? '🔒 ' : '') + (vi ? poi.name.vi : poi.name.en);
-      pill(label, pos.x, pos.y, { bg: locked ? '#E6DFD0' : '#F3EDE1', fg: '#0F1D33', border: locked ? '#8c8576' : '#B8955A' });
-    }
+    if (!this.interior) this.drawPoiTags(d, camX, camY, px, pill);
 
     // Phòng trong: nhắc phím E gần chủ quán / lối ra
     if (this.interior && this.fade.a < 0.5) {
@@ -2074,7 +2232,9 @@ export class CityEngine {
       if (e.pointerType === 'touch') return;
       const r = rect();
       const hit = this.hit(e.clientX - r.left, e.clientY - r.top);
-      this.hoverPoi = hit.poi?.id ?? null;
+      const hp = hit.poi?.id ?? null;
+      this.hoverPoi = hp;
+      this.cbs.onHoverPoi?.(hp, { x: e.clientX - r.left, y: e.clientY - r.top });
       cv.style.cursor = hit.poi || hit.npc >= 0 ? 'pointer' : 'default';
     });
     on('pointerenter', () => {
@@ -2083,6 +2243,7 @@ export class CityEngine {
     on('pointerleave', () => {
       this.hovered = false;
       this.hoverPoi = null;
+      this.cbs.onHoverPoi?.(null, { x: 0, y: 0 });
     });
     on('focus', () => {
       this.focused = true;
@@ -2200,7 +2361,7 @@ export class CityEngine {
     if (h.poi) {
       const q = h.poi;
       const door = this.doorPt(q);
-      if (isPoiLocked(q, this.state)) {
+      if (this.lockedPoi(q)) {
         this.showLocked(q);
         this.goTo(door);
         return;
