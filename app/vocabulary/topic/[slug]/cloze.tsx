@@ -289,7 +289,7 @@ export default function ClozeScreen() {
       <StudyFrame backHref={backHref} title={L('Điền vào câu', 'Fill the gap')} segments={segments} footer={footer}>
         <CrossFade swapKey={`done-${roundNo}`}>
           <StudyCard>
-            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{L(`Xong vòng ${roundNo + 1}`, `Round ${roundNo + 1} complete`)}</Text>
+            <Text className="font-strong text-label text-primary-600">{L(`Xong vòng ${roundNo + 1}`, `Round ${roundNo + 1} complete`)}</Text>
             <Text className="mt-2 font-heavy text-pageTitle text-ink">
               {L(`${firstTry}/${roundWords.length} câu đúng ngay lần đầu`, `${firstTry}/${roundWords.length} right first time`)}
             </Text>

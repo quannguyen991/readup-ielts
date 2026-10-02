@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 
 /**
- * GIỌNG ĐỌC TIẾNG ANH CHUNG CỦA CẢ APP — giọng NỮ, chọn một lần cho mọi chỗ đọc.
+ * GIỌNG ĐỌC TIẾNG ANH CHUNG CỦA CẢ APP — chỉ hai giọng: một NỮ, một NAM (mặc định nữ), mỗi giới chọn giọng tốt nhất của máy.
  *
  * Người dùng muốn giọng nữ thay cho giọng mặc định của máy. Tên giọng khác nhau
  * theo máy (Windows có Aria/Jenny/Zira, Mac có Samantha/Ava, Chrome có "Google US
@@ -13,28 +13,43 @@ import * as Speech from 'expo-speech';
  *   - Anh–Mỹ +2, Anh–Anh +1.
  * Máy không có giọng nữ nào thì dùng giọng tiếng Anh tốt nhất còn lại (không nam).
  */
-import { bestVoice } from './voice-pick';
+import { bestVoiceFor, type Gender, type VoiceInfo } from './voice-pick';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 
-let chosen: string | undefined;
+let all: VoiceInfo[] = [];
+const chosen: Partial<Record<Gender, string>> = {};
 let loading = false;
+
+/** Giới đang chọn ("Nữ / Nam" trong Cài đặt học từ), mặc định nữ. */
+export function voiceGender(): Gender {
+  return useTopicStudyStore.getState().learnSettings.voiceGender === 'm' ? 'm' : 'f';
+}
 
 /** Nạp danh sách giọng (trên web danh sách tới trễ nên hỏi lại vài lần). */
 function load(attempt = 0) {
   if (loading && attempt === 0) return;
   loading = true;
   void Speech.getAvailableVoicesAsync()
-    .then((all) => {
-      const v = bestVoice(all.map((x) => ({ identifier: x.identifier, name: x.name, language: x.language })));
-      if (v) chosen = v.identifier;
-      else if (attempt < 6) setTimeout(() => load(attempt + 1), 400);
+    .then((list) => {
+      all = list.map((x) => ({ identifier: x.identifier, name: x.name, language: x.language }));
+      const f = bestVoiceFor(all, 'f');
+      const m = bestVoiceFor(all, 'm');
+      if (f) chosen.f = f.identifier;
+      if (m) chosen.m = m.identifier;
+      if (!f && !m && attempt < 6) setTimeout(() => load(attempt + 1), 400);
     })
     .catch(() => undefined);
 }
 
 if (Platform.OS === 'web' && typeof window !== 'undefined') load();
 
-/** Mã giọng nữ tiếng Anh đã chọn (undefined khi chưa nạp xong — máy dùng giọng mặc định). */
+/** Giọng tiếng Anh tốt nhất của một giới trên máy (undefined khi chưa nạp / không có — máy dùng giọng mặc định). */
+export function englishVoiceFor(gender: Gender): string | undefined {
+  if (!chosen[gender]) load();
+  return chosen[gender] ?? (gender === 'm' ? undefined : chosen.f);
+}
+
+/** Mã giọng đọc chung của cả app, theo giới đã chọn. */
 export function englishVoice(): string | undefined {
-  if (!chosen) load();
-  return chosen;
+  return englishVoiceFor(voiceGender());
 }

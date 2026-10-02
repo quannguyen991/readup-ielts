@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 
 import { CrossFade } from "@/components/motion/Motion";
 import { DetailFace, detailHeight, FlipCard, WordFace } from "./FlipCard";
 import { CARD_SHADOW, SpeakButton, StarButton, useHotkeys } from "./StudyKit";
 import { Icon } from "@/components/ui/Icon";
+import { preloadPronunciation, useAutoPronounce } from "@/services/audio/pronounce";
 import {
   seededRng,
   shuffled,
@@ -52,6 +53,11 @@ export function Flashcards<W extends StudyWord>({
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const word = list[index];
+  useAutoPronounce(word?.word, `${order}-${seed}-${index}`);
+  const nextWord = list[(index + 1) % list.length]?.word;
+  useEffect(() => {
+    if (nextWord) preloadPronunciation([nextWord]);
+  }, [nextWord]);
   const go = (d: number) => {
     setFlipped(false);
     setIndex((i) => (i + d + list.length) % list.length);

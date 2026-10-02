@@ -23,6 +23,9 @@ import {
 } from '@/services/shadow/align';
 import { canRecognize, speakSentence, startListening, type ListenEnd, type Listening } from '@/services/shadow/speech';
 import { useShadowStore } from '@/store/useShadowStore';
+import { CoachBubble, CoachToggle } from '@/components/speaking/CoachKit';
+import { playSfx } from '@/services/audio/sfx-ui';
+import { useVoiceCoach } from '@/services/audio/useVoiceCoach';
 import { color } from '@/theme/tokens';
 import { useGameStore } from '@/store/useGameStore';
 import { Label, Sticker } from '@/components/illust/Sticker';
@@ -87,6 +90,7 @@ export default function ShadowLesson() {
   const [sessionMissed, setSessionMissed] = useState<Record<string, number>>({});
   const [summary, setSummary] = useState(false);
 
+  const coach = useVoiceCoach();
   const listenRef = useRef<Listening | null>(null);
   // Mỗi lượt nghe một số hiệu: đổi câu giữa chừng thì kết quả muộn của lượt cũ bị bỏ qua.
   const turnRef = useRef(0);
@@ -117,6 +121,7 @@ export default function ShadowLesson() {
 
   const playModel = () => {
     if (!sentence || phase === 'listening') return;
+    coach.stop();
     stopVoice();
     setSpeaking(true);
     setKaraoke(0);
@@ -134,6 +139,7 @@ export default function ShadowLesson() {
     listenRef.current = null;
     if (capRef.current) clearTimeout(capRef.current);
     const text = heardRef.current;
+    playSfx('micStop');
     if (reason === 'denied') {
       setNotice(
         L('Hãy cho phép Micro ở biểu tượng ổ khoá trên thanh địa chỉ rồi thử lại.', 'Allow the microphone via the lock icon in the address bar, then retry.'),
@@ -169,10 +175,15 @@ export default function ShadowLesson() {
     });
     // Game khi học: đọc theo đạt từ 60 điểm là một đòn trúng — kèm tiếng chém.
     useGameStore.getState().answer(a.score >= 60, 'shadow');
+    // Huấn luyện viên giọng nói: nhận xét bằng lời (không tự bật micro lại).
+    const near = [...new Set(tokens.filter((_, i) => a.marks[i] === 'near').map((t) => t.norm))];
+    coach.feedback({ score: a.score, missed, near, sentence });
   };
 
   const startMic = () => {
     if (!supported || !sentence || phase === 'listening') return;
+    // Huấn luyện viên và giọng mẫu phải IM hẳn trước khi micro mở, kẻo micro nghe lại chính giọng máy.
+    coach.stop();
     stopVoice();
     setNotice(null);
     setResult(null);
@@ -201,6 +212,7 @@ export default function ShadowLesson() {
       return;
     }
     listenRef.current = l;
+    playSfx('micStart');
     setPhase('listening');
     // Chốt chặn: câu N từ thì nghe tối đa 4 giây + 0,8 giây mỗi từ.
     capRef.current = setTimeout(() => listenRef.current?.stop(), 4000 + tokens.length * 800);
@@ -214,6 +226,7 @@ export default function ShadowLesson() {
     if (capRef.current) clearTimeout(capRef.current);
     listenRef.current?.stop();
     listenRef.current = null;
+    coach.reset();
     stopVoice();
     setIndex(i);
     setPhase('idle');
@@ -225,8 +238,11 @@ export default function ShadowLesson() {
   };
 
   const next = () => {
-    if (index + 1 < sentences.length) go(index + 1);
-    else {
+    if (index + 1 < sentences.length) {
+      playSfx('next');
+      go(index + 1);
+    } else {
+      playSfx('success');
       stopVoice();
       setSummary(true);
     }
@@ -335,6 +351,8 @@ export default function ShadowLesson() {
               </View>
             </View>
 
+            {supported ? <View className="mt-3 flex-row"><CoachToggle /></View> : null}
+
             {supported ? (
               <View className="mt-6 items-center">
                 <MicButton listening={phase === 'listening'} onPress={phase === 'listening' ? stopMic : startMic} />
@@ -356,6 +374,8 @@ export default function ShadowLesson() {
                 </Text>
               </View>
             )}
+
+            <CoachBubble coach={coach} />
 
             {notice ? (
               <Appear>

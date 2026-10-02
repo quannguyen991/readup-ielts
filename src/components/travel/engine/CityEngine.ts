@@ -12,21 +12,29 @@
  */
 import { findPath } from '@/services/travel/pathfinding';
 import { daylight, localTime, weatherPlan } from '@/services/travel/clock';
-import type { CityMap, Npc, Poi, Route, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
+import type { CityMap, MapObject, Npc, Poi, Route, SceneSprite, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
 import { hash2, mulberry32 } from '@/data/travel/sprites/paint';
 import { getSpriteDef, personFrame, type Dir } from '@/data/travel/sprites';
 import { atlasFor, ctx2d, makeCanvas, type Atlas, type Bitmap } from './Atlas';
 import { buildWorld, GROUND_CHARS, isBlockedAt, isPoiLocked, pathField, TS, type Placed, type World } from './grid';
 import { buildImgWorld, findPathPx, isWalkPx, type ImgWorld, type Pt } from './imageWorld';
+import { drawInterior } from './interior';
+import { INTERIOR_SIZE, type InteriorLayout } from '@/data/travel/interiors';
+import { buildSceneWorld, footprintRect, INTERIOR_CELL, interiorKindOf, interiorLayout, interiorMaskRows, type InteriorKind } from './scene';
 import { ambientAt, Lighting, type Light, type RGB } from './Lighting';
 import { Particles, PK } from './Particles';
-import { Camera, computeImageView, computeView, pointerToWorld, type View } from './view';
+import { playSfx } from '@/services/audio/sfx-ui';
+import { Camera, computeImageView, computeView, pointerToWorld, viewForK, zoomBounds, type View } from './view';
 
 export type EngineCallbacks = {
   onEnterPoi(id: string): void;
   onMove(tile: Tile): void;
   /** Chế độ ảnh: không nạp được tranh nền (để lớp trên chuyển sang bản đồ ô dự phòng). */
   onImageError?(): void;
+  /** Mức phóng đổi (hoặc đổi cảnh): `z` là số bậc so với mức gốc, `min`/`max` là biên. */
+  onZoom?(info: { z: number; min: number; max: number }): void;
+  /** Phím F khi bản đồ đang được chọn. */
+  onToggleFullscreen?(): void;
 };
 
 export type EngineOptions = {
@@ -41,7 +49,7 @@ export type EngineOptions = {
 };
 
 type Ent = {
-  kind: 'player' | 'npc' | 'animal' | 'vehicle';
+  kind: 'player' | 'npc' | 'animal' | 'vehicle' | 'object';
   bmps: Bitmap[];
   /** Chân (điểm nguồn). */
   x: number;
@@ -60,9 +68,20 @@ type NpcRun = Ent & { npc: Npc; route: Pt[]; ri: number; wait: number; dir: Dir;
 type Player = Ent & { path: Pt[]; dir: Dir; stepT: number; dustT: number; moveAnnounced: boolean };
 type Pigeon = Ent & { home: Pt; mode: 0 | 1 | 2; t: number; vx: number; vy: number; hide: number };
 type Veh = Ent & { route: Route; pts: Pt[]; cum: number[]; len: number; s: number; dir: 1 | -1; sky: boolean; sp: number };
+type Walker = Ent & { path: Pt[]; wait: number; dir: Dir; walking: boolean; seed: number; chat: string | null; chatUntil: number; nextChat: number };
+type ObjEnt = Ent & { obj: MapObject };
 type Bubble = { en: string; vi: string; wx: number; wy: number; until: number } | null;
 
 export type EngineStats = { fps: number; frameMs: number; particles: number; drawn: number; k: number; W: number; H: number; dpr: number; mode: 'tile' | 'image' };
+
+/** Câu phiếm ngắn của người đi dạo (bong bóng nhỏ, ngẫu nhiên). */
+const CHATTER = {
+  en: ['Nice weather!', 'Hello!', 'So many people today.', 'Where to next?', 'I love this place.', 'Is it lunchtime yet?', 'Mind the step!', 'Great view, right?'],
+  vi: ['Trời đẹp quá!', 'Xin chào!', 'Hôm nay đông thật.', 'Đi đâu tiếp nhỉ?', 'Mình thích chỗ này.', 'Đến giờ ăn chưa nhỉ?', 'Coi chừng bậc thềm!', 'Cảnh đẹp nhỉ?'],
+};
+
+const PANEL_W = 418;
+const PANEL_H = 235;
 
 const KEYMAP: Record<string, Dir> = {
   ArrowUp: 'up',
@@ -105,7 +124,7 @@ export class CityEngine {
   private cam = new Camera();
   private world: World | null = null;
   private imgW: ImgWorld | null = null;
-  private bg: HTMLImageElement | null = null;
+  private bg: CanvasImageSource | null = null;
   private bgColor = '#141b2c';
   private imgFailed = false;
   private atlas!: Atlas;
@@ -124,6 +143,13 @@ export class CityEngine {
 
   private player!: Player;
   private npcs: NpcRun[] = [];
+  private walkers: Walker[] = [];
+  private objects: ObjEnt[] = [];
+  private interior: { poi: Poi; kind: InteriorKind; parent: CityMap; since: number; beat: boolean; hosted: boolean; layout: InteriorLayout } | null = null;
+  private fade = { a: 0, target: 0, cb: null as (() => void) | null };
+  private zoom = 0;
+  private baseK = 1;
+  private pointers = new Map<number, { x: number; y: number }>();
   private pigeons: Pigeon[] = [];
   private vehicles: Veh[] = [];
   private birds: { x: number; y: number; vx: number; t: number }[] = [];
@@ -180,7 +206,7 @@ export class CityEngine {
     this.dctx = canvas.getContext('2d', { alpha: false })!;
     this.dctx.imageSmoothingEnabled = false;
     canvas.style.imageRendering = 'pixelated';
-    canvas.style.touchAction = 'pan-y pinch-zoom';
+    canvas.style.touchAction = 'pan-y';
     canvas.style.outline = 'none';
     canvas.style.display = 'block';
     canvas.tabIndex = 0;
@@ -204,15 +230,20 @@ export class CityEngine {
   private get isImg(): boolean {
     return this.mode === 'image';
   }
+  private get isScene(): boolean {
+    return !!this.map.scene && !this.interior;
+  }
   /** Hệ số nhân tốc độ/khoảng cách: cảnh ảnh nhỏ hơn cảnh ô nên các hằng số được co lại. */
   private get u(): number {
     return this.mode === 'image' ? 0.55 : 1;
   }
 
   // ------------------------------------------------------------------ cấu hình
-  setMap(map: CityMap, state: TravelState) {
+  setMap(map: CityMap, state: TravelState, opts?: { bg?: CanvasImageSource; spawn?: Pt; lock?: string | null; interior?: CityEngine['interior'] }) {
     this.map = map;
+    this.interior = opts?.interior ?? null;
     this.state = state;
+    if (!opts?.interior) this.zoom = loadZoom(map.id);
     this.atlas = atlasFor(map.palette);
     this.mode = map.image ? 'image' : 'tile';
     this.stats.mode = this.mode;
@@ -226,11 +257,17 @@ export class CityEngine {
     this.particles.clear();
     this.bubble = null;
     this.pendingEnter = null;
-    this.enterLock = null;
+    this.enterLock = opts?.lock ?? null;
+    this.walkers = [];
+    this.objects = [];
     if (map.image) {
-      this.imgW = buildImgWorld(map.image);
+      this.imgW = map.scene ? buildSceneWorld(map) : buildImgWorld(map.image);
       const seq = ++this.loadSeq;
-      loadMapImage(map.image.smallSrc ?? map.image.src)
+      if (opts?.bg) {
+        this.bg = opts.bg;
+        this.bgColor = averageColor(opts.bg);
+      } else if (map.image.panels && map.image.panels.length > 1) this.loadPanels(map, seq);
+      else loadMapImage(map.image.smallSrc ?? map.image.src)
         .then((img) => {
           if (seq !== this.loadSeq) return;
           this.bg = img;
@@ -243,10 +280,18 @@ export class CityEngine {
         });
     } else this.world = buildWorld(map);
     this.tickClock(true);
-    this.initPlayer();
+    this.initPlayer(opts?.spawn);
+    // Xuất hiện sát một cửa (vừa về từ lượt hỏi) thì khoá cửa đó tới khi bước ra xa, khỏi tự vào lại.
+    if (map.scene && !this.interior && !this.enterLock) {
+      for (const poi of map.pois) {
+        const d = this.doorPt(poi);
+        if (Math.hypot(d.x - this.player.x, d.y - this.player.y) <= 12) this.enterLock = poi.id;
+      }
+    }
     this.initNpcs();
     this.initAnimals();
     this.initVehicles();
+    this.initScene();
     this.recomputeView();
     this.cam.snapTo(this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
     if (!this.isImg) this.rebuildStatic();
@@ -272,7 +317,11 @@ export class CityEngine {
 
   // ------------------------------------------------------------------ khung hình
   private recomputeView() {
-    const v = this.isImg ? computeImageView(this.cssW, this.cssH, this.view.dpr, this.imgW!.w, this.imgW!.h) : computeView(this.cssW, this.cssH, this.view.dpr);
+    const base = this.isImg ? computeImageView(this.cssW, this.cssH, this.view.dpr, this.imgW!.w, this.imgW!.h) : computeView(this.cssW, this.cssH, this.view.dpr);
+    this.baseK = base.k;
+    const b = zoomBounds(base.k);
+    const z = this.interior ? 0 : Math.max(b.min, Math.min(b.max, this.zoom));
+    const v = z === 0 ? base : viewForK(this.cssW, this.cssH, this.view.dpr, base.k + z);
     Object.assign(this.view as View, v);
     this.canvas.width = v.devW;
     this.canvas.height = v.devH;
@@ -280,10 +329,28 @@ export class CityEngine {
     this.lo = makeCanvas(v.W, v.H);
     this.loCtx = ctx2d(this.lo);
     this.lighting.resize(v.W, v.H);
+    this.cbs.onZoom?.({ z: this.interior ? 0 : z, min: this.interior ? 0 : b.min, max: this.interior ? 0 : b.max });
     this.stats.k = v.k;
     this.stats.W = v.W;
     this.stats.H = v.H;
     this.stats.dpr = v.dpr;
+  }
+
+  /** Đặt mức phóng (bậc nguyên so với mức gốc); lưu theo phiên cho từng thành phố. */
+  setZoom(z: number) {
+    if (this.interior) return;
+    const b = zoomBounds(this.baseK);
+    const nz = Math.max(b.min, Math.min(b.max, Math.round(z)));
+    if (nz === this.zoom) return;
+    this.zoom = nz;
+    saveZoom(this.map.id, nz);
+    this.recomputeView();
+    this.cam.snapTo(this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
+    this.renderFrame(0);
+  }
+
+  zoomBy(delta: number) {
+    this.setZoom(this.zoom + delta);
   }
 
   resize(cssW: number, cssH: number, dpr: number) {
@@ -367,6 +434,7 @@ export class CityEngine {
 
   // ------------------------------------------------------------------ khởi tạo thực thể
   private spriteIdFor(id: string): string {
+    if (this.isImg && (this.map.scene || this.interior) && getSpriteDef(`chibi_${id}`)) return `chibi_${id}`;
     return this.isImg && getSpriteDef(`mini_${id}`) ? `mini_${id}` : id;
   }
 
@@ -379,19 +447,20 @@ export class CityEngine {
   }
 
   private footRowOf(sid: string, h: number): number {
+    if (sid.startsWith('chibi_')) return 21;
     if (sid.startsWith('mini_player') || sid.startsWith('mini_npc')) return 12;
     if (sid.startsWith('player') || sid.startsWith('npc_')) return 22;
     return h - 1;
   }
 
-  private initPlayer() {
+  private initPlayer(spawn?: Pt) {
     const outfit = ((this.state.prefs.outfit % 8) + 8) % 8;
     const sid = this.spriteIdFor(`player_${outfit}`);
     const bmps = this.personBitmaps(`player_${outfit}`);
     let start: Pt;
     if (this.isImg) {
-      const s = this.state.city === this.map.id ? this.state.pos : this.map.spawn;
-      start = isWalkPx(this.imgW!, s.x, s.y) ? { x: s.x, y: s.y } : { x: this.map.spawn.x, y: this.map.spawn.y };
+      const s = spawn ?? (this.state.city === this.map.id ? this.state.pos : this.map.spawn);
+      start = spawn ?? (isWalkPx(this.imgW!, s.x, s.y) ? { x: s.x, y: s.y } : { x: this.map.spawn.x, y: this.map.spawn.y });
     } else {
       const s = this.state.city === this.map.id && !isBlockedAt(this.world!, this.state.pos.x, this.state.pos.y) ? this.state.pos : this.map.spawn;
       start = this.tileFootPt(s);
@@ -457,6 +526,7 @@ export class CityEngine {
 
   private initAnimals() {
     this.pigeons = [];
+    if (this.interior) return;
     const spots: Pt[] = [];
     if (this.isImg) {
       const w = this.imgW!;
@@ -541,6 +611,345 @@ export class CityEngine {
     }
   }
 
+  // ------------------------------------------------------------------ thế giới nhiều mảnh
+  /** Nạp mọi mảnh, ghép vào một canvas thế giới; mảnh hỏng (trừ mảnh đầu) bị chặn + bỏ vật/địa điểm trong đó. */
+  private loadPanels(map: CityMap, seq: number) {
+    const im = map.image!;
+    const panels = im.panels!;
+    void Promise.allSettled(panels.map((p) => loadMapImage(p.src))).then((res) => {
+      if (seq !== this.loadSeq) return;
+      if (res[0]!.status !== 'fulfilled') {
+        this.imgFailed = true;
+        this.cbs.onImageError?.();
+        return;
+      }
+      const cv = makeCanvas(im.size.w, im.size.h);
+      const c = ctx2d(cv);
+      c.fillStyle = '#0b1a22';
+      c.fillRect(0, 0, im.size.w, im.size.h);
+      const dead: { x: number; y: number; w: number; h: number }[] = [];
+      const ov = im.blend ?? 20;
+      const drawn: { x: number; y: number; w: number; h: number }[] = [];
+      res.forEach((r, i) => {
+        const p = panels[i]!;
+        if (r.status !== 'fulfilled') {
+          dead.push({ x: p.x, y: p.y, w: p.w ?? PANEL_W, h: p.h ?? PANEL_H });
+          return;
+        }
+        const img = r.value;
+        const pw = img.naturalWidth;
+        const ph = img.naturalHeight;
+        const overlaps = drawn.some((d) => p.x < d.x + d.w && d.x < p.x + pw && p.y < d.y + d.h && d.y < p.y + ph);
+        if (!overlaps || ov <= 0) c.drawImage(img, p.x, p.y);
+        else blendPanel(c, img, p.x, p.y, pw, ph, drawn, ov);
+        drawn.push({ x: p.x, y: p.y, w: pw, h: ph });
+      });
+      if (dead.length) this.dropRegions(dead);
+      this.bg = cv;
+      this.bgColor = averageColor(res[0]!.value);
+    });
+  }
+
+  private dropRegions(rs: { x: number; y: number; w: number; h: number }[]) {
+    const w = this.imgW!;
+    const inAny = (x: number, y: number) => rs.some((r) => x >= r.x && y >= r.y && x < r.x + r.w && y < r.y + r.h);
+    for (let j = 0; j < w.mh; j++)
+      for (let i = 0; i < w.mw; i++) if (inAny(i * w.cell + w.cell / 2, j * w.cell + w.cell / 2)) {
+        w.walk[j * w.mw + i] = 0;
+        w.water[j * w.mw + i] = 0;
+      }
+    const keep = (idx: Int32Array) => idx.filter((n) => !inAny((n % w.mw) * w.cell, Math.floor(n / w.mw) * w.cell));
+    (w as { walkCells: Int32Array }).walkCells = keep(w.walkCells);
+    (w as { waterCells: Int32Array }).waterCells = keep(w.waterCells);
+    this.objects = this.objects.filter((o) => !inAny(o.x, o.y - 1));
+    this.walkers = this.walkers.filter((k) => !inAny(k.x, k.y));
+    const pois = this.map.pois.filter((p) => !inAny(p.door.x, p.door.y));
+    this.map = { ...this.map, pois, npcs: this.map.npcs.filter((n) => !inAny(n.at.x, n.at.y)) };
+    this.npcs = this.npcs.filter((n) => !inAny(n.x, n.y));
+  }
+
+  // ------------------------------------------------------------------ cảnh đối tượng
+  private spriteCache = new Map<string, Promise<Bitmap | null>>();
+  private hostPending = false;
+  private lastCyc = 0;
+  private stepCount = 0;
+  private panelIdx = -1;
+  private planeT = 6;
+
+  /** Nạp một sprite vật (cắt/xoá theo `SceneSprite`) thành canvas. */
+  private loadObjectSprite(id: string, sp: SceneSprite): Promise<Bitmap | null> {
+    const key = `${this.map.id}/${id}`;
+    let p = this.spriteCache.get(key);
+    if (!p) {
+      p = loadMapImage(`/travel/sprites/${this.map.id}/${sp.file ?? `${id}.png`}`)
+        .then((img) => {
+          const cr = sp.crop ?? { x: 0, y: 0, w: img.naturalWidth, h: img.naturalHeight };
+          const cv = makeCanvas(cr.w, cr.h);
+          const c = ctx2d(cv);
+          c.drawImage(img, cr.x, cr.y, cr.w, cr.h, 0, 0, cr.w, cr.h);
+          for (const e of sp.erase ?? []) c.clearRect(e.x, e.y, e.w, e.h);
+          return { src: cv, w: cr.w, h: cr.h } as Bitmap;
+        })
+        .catch(() => null);
+      this.spriteCache.set(key, p);
+    }
+    return p;
+  }
+
+  private initScene() {
+    const sc = this.map.scene;
+    if (!sc || this.interior) return;
+    for (const o of sc.objects) {
+      const sp = sc.sprites[o.sprite];
+      if (!sp) continue;
+      const e: ObjEnt = { kind: 'object', bmps: [], x: o.x, y: o.y, z: 0, frame: 0, flip: false, footRow: sp.h, w: sp.w, h: sp.h, sortY: o.y + (o.z ?? 0), obj: o };
+      this.objects.push(e);
+      const seq = this.loadSeq;
+      void this.loadObjectSprite(o.sprite, sp).then((b) => {
+        if (b && seq === this.loadSeq) e.bmps = [b];
+      });
+    }
+    // người đi dạo nền
+    const n = sc.ambient ?? 8;
+    const w = this.imgW!;
+    const rnd = mulberry32(hash2(this.map.id.length, 77, 5));
+    for (let i = 0; i < n && w.walkCells.length > 0; i++) {
+      const bmps = this.personBitmaps(`walker_${i % 8}`);
+      if (!bmps.length) break;
+      const c = w.walkCells[Math.floor(rnd() * w.walkCells.length)]!;
+      const x = (c % w.mw) * w.cell + 1;
+      const y = Math.floor(c / w.mw) * w.cell + 1;
+      this.walkers.push({
+        kind: 'npc',
+        bmps,
+        x,
+        y,
+        z: 0,
+        frame: personFrame('down', 0),
+        flip: false,
+        footRow: 21,
+        w: 16,
+        h: 24,
+        sortY: y,
+        path: [],
+        wait: rnd() * 3,
+        dir: 'down',
+        walking: false,
+        seed: Math.floor(rnd() * 1e6),
+        chat: null,
+        chatUntil: 0,
+        nextChat: 4 + rnd() * 12,
+      });
+    }
+  }
+
+  /** Tiếng nền rất nhẹ: qua mảnh bản đồ khác, máy bay bay qua khi người chơi ở gần cổng sân bay. */
+  private updateAmbientSfx(dt: number) {
+    if (this.interior || !this.isImg) return;
+    const panels = this.map.image?.panels;
+    if (panels && panels.length > 1) {
+      let best = -1;
+      let bd = -1;
+      panels.forEach((q, i) => {
+        const w = q.w ?? 418;
+        const h = q.h ?? 235;
+        const px = this.player.x - q.x;
+        const py = this.player.y - q.y;
+        if (px < 0 || py < 0 || px >= w || py >= h) return;
+        const d = Math.min(px, w - px, py, h - py);
+        if (d > bd) {
+          bd = d;
+          best = i;
+        }
+      });
+      if (best >= 0 && best !== this.panelIdx) {
+        if (this.panelIdx >= 0) playSfx('seam');
+        this.panelIdx = best;
+      }
+    }
+    const gate = this.map.pois.find((q) => q.id.endsWith('-gate'));
+    if (gate) {
+      this.planeT -= dt;
+      if (this.planeT <= 0) {
+        this.planeT = 18 + Math.random() * 10;
+        const d = this.doorPt(gate);
+        if (Math.hypot(d.x - this.player.x, d.y - this.player.y) < 260) playSfx('plane');
+      }
+    }
+  }
+
+  private updateWalkers(dt: number) {
+    const w = this.imgW!;
+    const nowMs = this.t * 1000;
+    for (const k of this.walkers) {
+      if (k.path.length === 0) {
+        k.walking = false;
+        k.wait -= dt;
+        if (k.wait <= 0) {
+          const c = w.walkCells[hash2(k.seed, Math.floor(this.t * 3), 9) % w.walkCells.length]!;
+          const to = { x: (c % w.mw) * w.cell + 1, y: Math.floor(c / w.mw) * w.cell + 1 };
+          const path = findPathPx(w, { x: k.x, y: k.y }, to);
+          if (path && path.length) k.path = path.slice(0, 12);
+          k.wait = 1.5 + (hash2(k.seed, Math.floor(this.t), 4) % 40) / 10;
+        }
+      } else {
+        const next = k.path[0]!;
+        const dx = next.x - k.x;
+        const dy = next.y - k.y;
+        const d = Math.hypot(dx, dy);
+        const sp = 15 * dt;
+        k.dir = this.dirTo(dx, dy);
+        k.walking = true;
+        if (d <= sp) {
+          k.x = next.x;
+          k.y = next.y;
+          k.path.shift();
+        } else {
+          k.x += (dx / d) * sp;
+          k.y += (dy / d) * sp;
+        }
+      }
+      const cyc = k.walking ? Math.floor(this.t * 6 + k.seed) % 4 : 0;
+      k.frame = personFrame(k.dir, cyc === 1 ? 1 : cyc === 3 ? 2 : 0);
+      k.sortY = k.y;
+      // chuyện phiếm: bong bóng ngắn thi thoảng hiện
+      if (k.chat && nowMs > k.chatUntil) k.chat = null;
+      k.nextChat -= dt;
+      if (k.nextChat <= 0) {
+        const pool = CHATTER[this.opts.locale === 'vi' ? 'vi' : 'en'];
+        k.chat = pool[hash2(k.seed, Math.floor(this.t), 8) % pool.length]!;
+        k.chatUntil = nowMs + 2400;
+        k.nextChat = 10 + (hash2(k.seed, Math.floor(this.t), 3) % 100) / 5;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------------ vào / ra địa điểm
+  private startFade(target: number, cb?: () => void) {
+    this.fade.target = target;
+    this.fade.cb = cb ?? null;
+  }
+
+  private updateFade(dt: number) {
+    const f = this.fade;
+    if (f.a === f.target) return;
+    const step = dt * 4.5;
+    f.a = f.a < f.target ? Math.min(f.target, f.a + step) : Math.max(f.target, f.a - step);
+    if (f.a === f.target && f.cb) {
+      const cb = f.cb;
+      f.cb = null;
+      cb();
+    }
+  }
+
+  /** Bước vào địa điểm: có phòng trong → mờ dần rồi vào phòng; còn lại → thẳng vào lượt hỏi. */
+  private beginEnter(poi: Poi) {
+    if (this.fade.target === 1) return;
+    const kind = this.isImg ? interiorKindOf(poi.kind) : null;
+    this.player.path = [];
+    this.keys = [];
+    if (!kind || this.interior) {
+      playSfx('enter');
+      this.startFade(1, () => {
+        this.cbs.onEnterPoi(poi.id);
+        this.startFade(0);
+      });
+      return;
+    }
+    const parent = this.map;
+    playSfx('doorOpen');
+    this.startFade(1, () => {
+      this.openInterior(poi, kind, parent);
+      playSfx('enter');
+    });
+  }
+
+  private openInterior(poi: Poi, kind: InteriorKind, parent: CityMap) {
+    const layout = interiorLayout(kind);
+    const bg = drawInterior(kind, this.atlas.pal.colors, layout);
+    const host: Npc = {
+      id: `host-${poi.id}`,
+      sprite: kind === 'hotel' || kind === 'airport' || kind === 'counter' || kind === 'station' ? 'npc_staff' : 'npc_vendor',
+      at: { x: layout.host.x, y: layout.host.y },
+      lines: [{ en: 'Welcome! Shall we begin?', vi: 'Xin chào! Mình bắt đầu nhé?' }],
+    };
+    const im: CityMap = {
+      id: parent.id,
+      name: poi.name,
+      utcOffsetHours: parent.utcOffsetHours,
+      palette: parent.palette,
+      size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h },
+      layers: { ground: [], objects: [], roofs: [] },
+      spawn: layout.spawn,
+      pois: [],
+      npcs: [host],
+      image: { src: 'interior', scale: 1, size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h }, mask: { cell: INTERIOR_CELL, rows: interiorMaskRows(layout) } },
+      ambience: { weather: { kind: 'clear', intensity: 0 }, sounds: [] },
+    };
+    this.hostPending = false;
+    this.setMap(im, this.state, { bg, spawn: layout.spawn, interior: { poi, kind, parent, since: 0, beat: false, hosted: false, layout } });
+    this.startFade(0);
+    // Ảnh phòng thật (nếu có) thay phòng vẽ bằng mã; cùng bố cục nên thay êm.
+    const seq = this.loadSeq;
+    loadMapImage(`/travel/interiors/${kind}.small.png`)
+      .catch(() => loadMapImage(`/travel/interiors/${kind}.png`))
+      .then((img) => {
+        if (seq !== this.loadSeq || !this.interior) return;
+        // chuẩn hoá về cỡ phòng (lấy mẫu gần nhất) để khớp bố cục
+        let src: CanvasImageSource = img;
+        if (img.naturalWidth !== INTERIOR_SIZE.w || img.naturalHeight !== INTERIOR_SIZE.h) {
+          const cv = makeCanvas(INTERIOR_SIZE.w, INTERIOR_SIZE.h);
+          ctx2d(cv).drawImage(img, 0, 0, INTERIOR_SIZE.w, INTERIOR_SIZE.h);
+          src = cv;
+        }
+        this.bg = src;
+        this.bgColor = averageColor(src);
+      })
+      .catch(() => undefined);
+  }
+
+  private closeInterior() {
+    const it = this.interior;
+    if (!it) return;
+    const door = this.doorPt(it.poi);
+    playSfx('doorClose');
+    this.startFade(1, () => {
+      this.setMap(it.parent, this.state, { spawn: { x: door.x, y: door.y }, lock: it.poi.id });
+      playSfx('leave');
+      this.startFade(0);
+    });
+  }
+
+  /** Nói chuyện với chủ quán / lễ tân → bắt đầu lượt hỏi. */
+  private callHost() {
+    const it = this.interior;
+    if (!it || it.hosted) return;
+    it.hosted = true;
+    playSfx('greet');
+    this.bubble = { en: 'Welcome! Shall we begin?', vi: 'Xin chào! Mình bắt đầu nhé?', wx: it.layout.host.x, wy: it.layout.host.y - 24, until: this.t * 1000 + 1600 };
+    const poi = it.poi;
+    window.setTimeout(() => this.cbs.onEnterPoi(poi.id), 450);
+  }
+
+  private updateInterior() {
+    const it = this.interior;
+    if (!it || this.fade.target === 1) return;
+    const p = this.player;
+    // nhịp bước vào 600 ms rồi tự đi tới quầy
+    if (!it.beat && this.t > 0.6 && p.path.length === 0) {
+      it.beat = true;
+      p.path = [{ x: it.layout.hostFront.x, y: it.layout.hostFront.y }];
+      p.moveAnnounced = false;
+      this.hostPending = true;
+    }
+    if (this.hostPending && p.path.length === 0 && Math.hypot(p.x - it.layout.hostFront.x, p.y - it.layout.hostFront.y) < 3) {
+      this.hostPending = false;
+      this.callHost();
+    }
+    // lối ra ở đáy giữa
+    if (this.t > 1 && p.y >= it.layout.doorway.y + 4 && Math.abs(p.x - it.layout.exit.x) < it.layout.doorway.w) this.closeInterior();
+  }
+
   // ------------------------------------------------------------------ giờ & thời tiết
   private tickClock(force = false) {
     const now = Date.now();
@@ -552,6 +961,10 @@ export class CityEngine {
     const plan = weatherPlan(this.map.id, this.hour, this.dayKey);
     // Tranh nền có thể đã vẽ sẵn mưa (London): khi lịch thời tiết báo nắng mà bản đồ khai khí hậu mưa thì theo bản đồ.
     this.weather = this.opts.weather ?? (plan.kind === 'clear' && this.map.ambience.weather.kind !== 'clear' ? this.map.ambience.weather : plan);
+    if (this.interior) {
+      this.hour = 12;
+      this.weather = { kind: 'clear', intensity: 0 };
+    }
     this.darkness = 1 - daylight(this.hour);
     const night = this.night ? this.darkness > 0.3 : this.darkness > 0.45;
     if (night !== this.night) {
@@ -632,22 +1045,40 @@ export class CityEngine {
     const wTarget = this.weather.kind === 'rain' || this.weather.kind === 'drizzle' || this.weather.kind === 'shower-evening' ? this.weather.intensity : 0;
     this.wet += (wTarget - this.wet) * Math.min(1, dt * 0.6);
 
+    this.updateFade(dt);
     this.updatePlayer(dt);
+    if (this.isScene) this.autoDoor();
+    if (this.interior) this.updateInterior();
     if (!calm) {
       this.updateNpcs(dt);
       this.updatePigeons(dt);
       this.updateVehicles(dt);
-      this.updateBirds(dt);
+      if (!this.interior) this.updateBirds(dt);
+      if (this.walkers.length) this.updateWalkers(dt);
     } else this.updateVehicles(0);
     this.updateEffects(dt);
     this.particles.update(dt);
     if (this.bubble && this.t * 1000 > this.bubble.until) this.bubble = null;
+    this.updateAmbientSfx(dt);
     this.cam.update(dt, this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
     if (this.enterLock) {
       const poi = this.map.pois.find((q) => q.id === this.enterLock);
       if (poi) {
         const d = this.doorPt(poi);
         if (Math.hypot(d.x - this.player.x, d.y - this.player.y) > (this.isImg ? 12 : 14)) this.enterLock = null;
+      }
+    }
+  }
+
+  /** Chế độ đối tượng: bước lên ô cửa của địa điểm đang mở thì vào luôn (khoá thì báo). */
+  private autoDoor() {
+    if (this.fade.target === 1 || this.enterLock) return;
+    const p = this.player;
+    for (const poi of this.map.pois) {
+      const d = this.doorPt(poi);
+      if (Math.hypot(d.x - p.x, d.y - p.y) <= 4) {
+        this.tryEnterNear(true, poi.id);
+        return;
       }
     }
   }
@@ -714,7 +1145,7 @@ export class CityEngine {
       p.stepT = 0;
       if (!p.moveAnnounced) {
         p.moveAnnounced = true;
-        this.cbs.onMove(this.isImg ? { x: Math.round(p.x), y: Math.round(p.y) } : this.tileOf(p));
+        if (!this.interior) this.cbs.onMove(this.isImg ? { x: Math.round(p.x), y: Math.round(p.y) } : this.tileOf(p));
         if (this.pendingEnter) {
           const id = this.pendingEnter;
           this.pendingEnter = null;
@@ -748,6 +1179,11 @@ export class CityEngine {
     }
     p.stepT += dt;
     const cyc = Math.floor(p.stepT * 8) % 4;
+    if (p === this.player && cyc !== this.lastCyc && (cyc === 1 || cyc === 3)) {
+      this.stepCount += 1;
+      if (this.stepCount % 2 === 0) playSfx('step');
+    }
+    if (p === this.player) this.lastCyc = cyc;
     p.frame = personFrame(p.dir, cyc === 1 ? 1 : cyc === 3 ? 2 : 0);
     p.dustT -= dt;
     if (p.dustT <= 0 && !this.opts.reducedMotion) {
@@ -776,15 +1212,17 @@ export class CityEngine {
     if (!target) return;
     if (this.enterLock === target.id && !bump) return;
     if (isPoiLocked(target, this.state)) {
-      this.showLocked(target);
+      if (this.enterLock !== target.id) this.showLocked(target);
+      this.enterLock = target.id;
       return;
     }
     this.enterLock = target.id;
-    this.cbs.onEnterPoi(target.id);
+    this.beginEnter(target);
   }
 
   private showLocked(poi: Poi) {
     const after = poi.unlock?.after ? this.map.pois.find((q) => q.id === poi.unlock!.after) : undefined;
+    playSfx('locked');
     const vi = this.opts.locale === 'vi';
     const name = after ? (vi ? after.name.vi : after.name.en) : '';
     this.toast = {
@@ -1062,6 +1500,12 @@ export class CityEngine {
     const P = this.player;
     P.sortY = P.y;
     list.push(P);
+    for (const o of this.objects) {
+      if (o.bmps.length === 0) continue;
+      if (o.x + o.w / 2 < camX || o.x - o.w / 2 > camX + v.W || o.y < camY || o.y - o.h > camY + v.H) continue;
+      list.push(o);
+    }
+    for (const k of this.walkers) list.push(k);
     for (const n of this.npcs) {
       n.sortY = n.y;
       list.push(n);
@@ -1102,7 +1546,7 @@ export class CityEngine {
     }
 
     // 5. bóng mây
-    this.drawClouds(c, camX, camY, tt);
+    if (!this.interior) this.drawClouds(c, camX, camY, tt);
 
     // 6. sương mù
     if (this.weather.kind === 'fog') {
@@ -1130,7 +1574,8 @@ export class CityEngine {
         nl++;
       };
       if (this.world) for (const L of this.world.lights) push(Math.round(L.x - camX), Math.round(L.y - camY), L.r, L.warm);
-      if (this.isImg) for (const L of this.map.image!.lights ?? []) push(Math.round(L.x - camX), Math.round(L.y - camY), L.r, 1);
+      if (this.isImg && !this.interior) for (const L of this.map.image!.lights ?? []) push(Math.round(L.x - camX), Math.round(L.y - camY), L.r, 1);
+      for (const o of this.objects) if (o.obj.glow) push(Math.round(o.x + o.obj.glow.dx - camX), Math.round(o.y + o.obj.glow.dy - camY), o.obj.glow.r, 1);
       push(Math.round(P.x - camX), Math.round(P.y - camY - 6), this.isImg ? 14 : 26, 1);
     }
     ambientAt(this.hour, A.pal.ambient, this.wet > 0.05 ? { kind: 'rain', intensity: this.wet } : this.weather.kind === 'fog' ? this.weather : undefined, this.amb);
@@ -1198,6 +1643,15 @@ export class CityEngine {
       const y0 = Math.max(0, Math.floor(camY / TS));
       const y1 = Math.min(wd.h - 1, Math.ceil((camY + v.H) / TS));
       for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) if (wd.blocked[y * wd.w + x]) c.fillRect(x * TS - camX, y * TS - camY, TS, TS);
+    }
+    for (const o of this.objects) {
+      const f = footprintRect(o.obj);
+      c.fillStyle = 'rgba(255,0,200,0.35)';
+      c.fillRect(f.x - camX, f.y - camY, f.w, f.h);
+      c.strokeStyle = 'rgba(255,160,0,0.8)';
+      c.strokeRect(o.x - o.w / 2 - camX + 0.5, o.y - o.h - camY + 0.5, o.w - 1, o.h - 1);
+      c.fillStyle = '#fff';
+      c.fillRect(Math.round(o.x - camX), Math.round(o.y - camY), 1, 1);
     }
     for (const poi of this.map.pois) {
       const r = this.poiRect(poi);
@@ -1518,6 +1972,28 @@ export class CityEngine {
       pill(label, pos.x, pos.y, { bg: locked ? '#E6DFD0' : '#F3EDE1', fg: '#0F1D33', border: locked ? '#8c8576' : '#B8955A' });
     }
 
+    // Phòng trong: nhắc phím E gần chủ quán / lối ra
+    if (this.interior && this.fade.a < 0.5) {
+      const L = this.interior.layout;
+      const pl = this.player;
+      const vi2 = this.opts.locale === 'vi';
+      if (Math.hypot(pl.x - L.host.x, pl.y - L.host.y) < 34) {
+        const pp = this.toDev(L.host.x, L.host.y - 30, camX, camY);
+        pill(vi2 ? 'E · Nói chuyện' : 'E · Talk', pp.x, pp.y, { bg: '#F3EDE1', fg: '#0F1D33', border: '#B8955A' });
+      } else if (Math.hypot(pl.x - L.exit.x, pl.y - L.exit.y) < 30) {
+        const pp = this.toDev(L.exit.x, L.exit.y - 22, camX, camY);
+        pill(vi2 ? 'E · Ra ngoài' : 'E · Exit', pp.x, pp.y, { bg: '#F3EDE1', fg: '#0F1D33', border: '#B8955A' });
+      }
+    }
+
+    // chuyện phiếm của người đi dạo: bong bóng nhỏ
+    for (const k of this.walkers) {
+      if (!k.chat) continue;
+      const pos = this.toDev(k.x, k.y - 26, camX, camY);
+      if (pos.x < 0 || pos.x > v.devW || pos.y < 0 || pos.y > v.devH) continue;
+      pill(k.chat, pos.x, pos.y, { bg: '#FFFFFF', fg: '#0F1D33', border: '#0F1D33', size: 11 });
+    }
+
     const b = this.bubble;
     if (b) {
       const pos = this.toDev(b.wx, b.wy, camX, camY);
@@ -1563,6 +2039,10 @@ export class CityEngine {
       d.textAlign = 'center';
     }
 
+    if (this.fade.a > 0) {
+      d.fillStyle = `rgba(15,29,51,${this.fade.a.toFixed(3)})`;
+      d.fillRect(0, 0, v.devW, v.devH);
+    }
     if (this.toast && this.t * 1000 < this.toast.until) pill(this.toast.text, v.devW / 2, px(36), { bg: '#0F1D33', fg: '#F3EDE1', border: '#B8955A', size: 14 });
   }
 
@@ -1576,9 +2056,11 @@ export class CityEngine {
     const rect = () => cv.getBoundingClientRect();
     on('pointerdown', (e) => {
       cv.focus({ preventScroll: true });
+      this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       this.downAt = { x: e.clientX, y: e.clientY, t: performance.now() };
     });
     on('pointerup', (e) => {
+      this.pointers.delete(e.pointerId);
       const d = this.downAt;
       this.downAt = null;
       if (!d) return;
@@ -1586,10 +2068,12 @@ export class CityEngine {
       const r = rect();
       this.tap(e.clientX - r.left, e.clientY - r.top);
     });
-    on('pointercancel', () => {
+    on('pointercancel', (e) => {
+      this.pointers.delete(e.pointerId);
       this.downAt = null;
     });
     on('pointermove', (e) => {
+      if (this.pointers.has(e.pointerId)) this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (e.pointerType === 'touch') return;
       const r = rect();
       const hit = this.hit(e.clientX - r.left, e.clientY - r.top);
@@ -1620,6 +2104,11 @@ export class CityEngine {
         e.preventDefault();
         this.keys = this.keys.filter((k) => k !== d);
         this.keys.push(d);
+        return;
+      }
+      if ((e.key === 'f' || e.key === 'F') && this.cbs.onToggleFullscreen) {
+        e.preventDefault();
+        this.cbs.onToggleFullscreen();
         return;
       }
       if (e.key === 'Enter' || e.key === ' ' || e.key === 'e' || e.key === 'E') {
@@ -1730,15 +2219,26 @@ export class CityEngine {
   private talk(i: number) {
     const n = this.npcs[i];
     if (!n || n.npc.lines.length === 0) return;
+    if (this.interior && n.npc.id.startsWith('host-')) {
+      this.goTo({ x: this.interior.layout.hostFront.x, y: this.interior.layout.hostFront.y });
+      this.hostPending = true;
+      return;
+    }
     const line = n.npc.lines[n.line % n.npc.lines.length]!;
     n.line++;
     n.wait = Math.max(n.wait, 3);
     n.dir = this.dirTo(this.player.x - n.x, this.player.y - n.y);
+    playSfx('npc');
     this.bubble = { en: line.en, vi: line.vi, wx: n.x, wy: n.y - n.footRow - 3, until: this.t * 1000 + 4800 };
   }
 
   private interact() {
     const p = this.player;
+    if (this.interior) {
+      const L = this.interior.layout;
+      if (Math.hypot(p.x - L.host.x, p.y - L.host.y) < 34) return this.callHost();
+      if (Math.hypot(p.x - L.exit.x, p.y - L.exit.y) < 30) return this.closeInterior();
+    }
     let near = -1;
     const R = (this.isImg ? 18 : 26) ** 2;
     let bd = R;
@@ -1773,6 +2273,60 @@ export class CityEngine {
   }
 }
 
+const BAYER4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
+
+/**
+ * Vẽ mảnh `img` vào canvas thế giới tại (px,py); chỗ chồng lên mảnh đã vẽ thì hoà bằng MẶT NẠ HOÀ SẮC Bayer 4×4
+ * (kiểu pixel-art, không alpha mịn): càng gần mép mảnh mới càng giữ điểm cũ, càng vào trong càng lấy điểm mới.
+ */
+function blendPanel(c: CanvasRenderingContext2D, img: HTMLImageElement, px: number, py: number, pw: number, ph: number, drawn: { x: number; y: number; w: number; h: number }[], ov: number) {
+  const tmp = makeCanvas(pw, ph);
+  const tc = ctx2d(tmp);
+  tc.drawImage(img, 0, 0);
+  const src = tc.getImageData(0, 0, pw, ph);
+  const dst = c.getImageData(px, py, pw, ph);
+  const S = src.data;
+  const D = dst.data;
+  for (let y = 0; y < ph; y++)
+    for (let x = 0; x < pw; x++) {
+      const wx = px + x;
+      const wy = py + y;
+      let covered = false;
+      for (const d of drawn) if (wx >= d.x && wy >= d.y && wx < d.x + d.w && wy < d.y + d.h) covered = true;
+      let take = true;
+      if (covered) {
+        const t = Math.min(1, Math.min(x + 0.5, pw - x - 0.5, y + 0.5, ph - y - 0.5) / ov);
+        take = BAYER4[(wy & 3) * 4 + (wx & 3)]! < t * 16;
+      }
+      if (take) {
+        const i = (y * pw + x) * 4;
+        D[i] = S[i]!;
+        D[i + 1] = S[i + 1]!;
+        D[i + 2] = S[i + 2]!;
+        D[i + 3] = 255;
+      }
+    }
+  c.putImageData(dst, px, py);
+}
+
+function loadZoom(id: string): number {
+  try {
+    const v = typeof sessionStorage !== 'undefined' ? sessionStorage.getItem(`travel:zoom:${id}`) : null;
+    const n = v === null ? 0 : parseInt(v, 10);
+    return Number.isFinite(n) ? n : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function saveZoom(id: string, z: number) {
+  try {
+    if (typeof sessionStorage !== 'undefined') sessionStorage.setItem(`travel:zoom:${id}`, String(z));
+  } catch {
+    /* không có sessionStorage: bỏ qua */
+  }
+}
+
 function cmpSort(a: Placed | Ent, b: Placed | Ent): number {
   return a.sortY - b.sortY;
 }
@@ -1793,7 +2347,7 @@ function wrap(d: CanvasRenderingContext2D, text: string, maxW: number): string[]
 }
 
 /** Màu trung bình (tối đi) của tranh — dùng làm màu viền khi khung rộng hơn tranh. */
-function averageColor(img: HTMLImageElement): string {
+function averageColor(img: CanvasImageSource): string {
   try {
     const c = makeCanvas(8, 8);
     const x = ctx2d(c);

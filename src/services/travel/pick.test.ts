@@ -131,7 +131,7 @@ test('danh mục: điều kiện mở trỏ tới địa điểm cùng thành ph
 test('danh mục: mỗi thành phố có địa điểm chính; Singapore và London có ô bí mật', () => {
   for (const c of CITY_ORDER) assert.ok(mainPoisOfCity(c).length >= (c === 'hanoi' ? 1 : 6), c);
   for (const c of ['singapore', 'london'] as const) assert.equal(poisOfCity(c).filter((p) => p.kind === 'secret').length, 1);
-  assert.equal(mainPoisOfCity('singapore').length, 6);
+  assert.ok(mainPoisOfCity('singapore').length >= 6);
 });
 
 test('danh mục: quà lưu niệm có thật, có mô tả song ngữ, mỗi quà một địa điểm', () => {

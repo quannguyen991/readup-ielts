@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { Icon } from '@/components/ui/Icon';
 import { useCityStatus, useTravelReady } from '@/components/travel/useTravel';
+import { DeckBar } from '@/components/travel/ui/DeckPicker';
 import { GameButton, PixelPanel, StarsRow, StampGlyph, T, TicketGlyph } from '@/components/travel/ui/kit';
 import { useReducedMotion } from '@/components/travel/ui/hooks';
 import { Onboarding } from '@/components/travel/ui/Onboarding';
@@ -12,6 +13,7 @@ import { WorldMapView, type Flight } from '@/components/travel/ui/WorldMapView';
 import { bi, useL } from '@/i18n/useL';
 import { CITIES, CITY_ORDER, canFly } from '@/services/travel/world';
 import type { CityId } from '@/services/travel/types';
+import { pointsOf, readyTiers } from '@/services/travel/passport';
 import { useTravelStore } from '@/store/useTravelStore';
 
 /**
@@ -45,6 +47,9 @@ function World() {
   const poiState = useTravelStore((s) => s.poi);
   const visited = useTravelStore((s) => s.visited);
   const fly = useTravelStore((s) => s.fly);
+  const ledger = useTravelStore((s) => s.ledger);
+  const points = pointsOf(ledger);
+  const ready = readyTiers(ledger).length;
   const [selected, setSelected] = useState<CityId | null>(null);
   const [flight, setFlight] = useState<Flight | null>(null);
   const raf = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -184,9 +189,18 @@ function World() {
         ) : null}
       </PixelPanel>
 
+      <PixelPanel style={{ marginTop: 16 }} inner={{ padding: 14 }}>
+        <DeckBar />
+      </PixelPanel>
+
       <View style={{ flexDirection: 'row', gap: 10, flexWrap: 'wrap', marginTop: 16 }}>
         <GameButton label={L('Quầy vé', 'Ticket counter')} icon="plus" tone="paper" onPress={() => router.push('/quest/du-ngoan/airport' as never)} />
-        <GameButton label={L('Hộ chiếu', 'Passport')} icon="bookmark" tone="paper" onPress={() => router.push('/quest/du-ngoan/passport' as never)} />
+        <GameButton
+          label={ready ? L(`Hộ chiếu · ${points} điểm · ${ready} quà`, `Passport · ${points} pts · ${ready} reward${ready > 1 ? 's' : ''}`) : L(`Hộ chiếu · ${points} điểm`, `Passport · ${points} pts`)}
+          icon="bookmark"
+          tone={ready ? 'gold' : 'paper'}
+          onPress={() => router.push('/quest/du-ngoan/passport' as never)}
+        />
         <GameButton label={L('Vali', 'Suitcase')} icon="gift" tone="paper" onPress={() => router.push('/quest/du-ngoan/suitcase' as never)} />
       </View>
     </TravelPage>

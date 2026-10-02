@@ -6,6 +6,8 @@ import { router, usePathname } from "expo-router";
 import { isVocabStudyRoute } from "@/navigation/focus-routes";
 import * as Speech from "expo-speech";
 import { englishVoice } from "@/services/audio/voice";
+import { pronounce, stopPronounce } from "@/services/audio/pronounce";
+import { isSingleWord } from "@/services/audio/pronounce-core";
 
 import { BattleStrip } from "@/components/game/BattleStrip";
 import { useTravelBackdropOn } from "@/components/rail/TravelBackdrop";
@@ -36,12 +38,20 @@ export const CARD_SHADOW =
 export const GREEN = "#16A34A";
 export const RED = "#E11D48";
 
-/** Đọc to một từ hoặc một câu. `voice` là identifier của expo-speech, null = mặc định. */
+/**
+ * Đọc to một từ hoặc một câu. Từ đơn: bản ghi âm người thật nếu có, không thì giọng
+ * máy (`services/audio/pronounce.ts`). Câu / cụm từ, hoặc khi chỉ định `voice`
+ * (expo-speech identifier): giọng máy.
+ */
 export function speak(
   text: string,
   opts: { rate?: number; voice?: string | null } = {},
 ) {
-  Speech.stop();
+  if (!opts.voice && isSingleWord(text)) {
+    void pronounce(text, { rate: opts.rate });
+    return;
+  }
+  stopPronounce();
   Speech.speak(text, {
     language: "en-US",
     rate: opts.rate ?? 0.9,
@@ -161,12 +171,12 @@ function SegmentBar({ fractions, navy }: { fractions: number[]; navy: boolean })
       {fractions.map((s, i) => (
         <View
           key={i}
-          className="h-2.5 flex-1 overflow-hidden rounded-pill"
+          className="h-1.5 flex-1 overflow-hidden rounded-pill"
           style={{ backgroundColor: navy ? "rgba(255,255,255,0.16)" : "rgba(255,255,255,0.7)" }}
         >
           {/* Đầy dần bằng transform (không đụng bố cục); xong hẳn thì chuyển xanh lá. */}
           <View
-            className="h-2.5 w-full rounded-pill"
+            className="h-1.5 w-full rounded-pill"
             style={{
               backgroundColor: s >= 1 ? GREEN : navy ? "#D9BC7F" : color.primary,
               transform: [{ scaleX: Math.max(0, Math.min(1, s)) }],
@@ -207,7 +217,9 @@ export function SpeakButton({
       accessibilityRole="button"
       accessibilityLabel={`Nghe "${text}"`}
       onPress={() => speak(text, { rate })}
-      className="h-10 w-10 items-center justify-center rounded-pill bg-primary-50"
+      hitSlop={6}
+      className="h-10 w-10 items-center justify-center rounded-pill"
+      style={{ backgroundColor: "#FBF6EC" }}
     >
       <Icon name="volume" size={size} color={color.primary} />
     </Pressable>
@@ -273,8 +285,8 @@ export function ChoiceGrid({
       {options.map((opt, i) => {
         const isCorrect = revealed && i === correctIndex;
         const isWrong = revealed && i === picked && i !== correctIndex;
-        const border = isCorrect ? GREEN : isWrong ? RED : "#F0EBE2";
-        const bg = isCorrect ? "#ECFDF3" : isWrong ? "#FFF1F2" : "#FFFFFF";
+        const border = isCorrect ? GREEN : isWrong ? RED : "#EDE6D8";
+        const bg = isCorrect ? "#F6FBF7" : isWrong ? "#FEF7F8" : "#FFFFFF";
         const out = hidden.includes(i) && !isCorrect;
         return (
           <Pressable
@@ -283,11 +295,12 @@ export function ChoiceGrid({
             accessibilityLabel={out ? L(`${opt} — Cú đã loại`, `${opt} — removed by Owl`) : undefined}
             disabled={revealed || out}
             onPress={() => onPick(i)}
-            className={`flex-row items-center gap-3 rounded-2xl ${compact ? "px-3 py-3" : "px-4 py-4"}`}
+            className={`flex-row items-center gap-3 rounded-2xl ${compact ? "px-3 py-2.5" : "px-4 py-3"}`}
             style={{
               flexShrink: 1, flexBasis: compact ? 220 : 300,
               flexGrow: 1,
-              borderWidth: 1.5,
+              minHeight: 48,
+              borderWidth: 1,
               borderColor: border,
               backgroundColor: bg,
               opacity: out ? 0.38 : 1,
@@ -295,22 +308,22 @@ export function ChoiceGrid({
             }}
           >
             <View
-              className="h-8 w-8 items-center justify-center rounded-pill"
+              className="h-7 w-7 items-center justify-center rounded-pill"
               style={{
-                backgroundColor: isCorrect ? GREEN : isWrong ? RED : "#F7F4EE",
+                backgroundColor: isCorrect ? "#DCF3E3" : isWrong ? "#FBE1E6" : "#F7F4EE",
               }}
             >
               <Text
                 className="font-strong text-label"
                 style={{
-                  color: isCorrect || isWrong ? "#FFFFFF" : color.muted,
+                  color: isCorrect ? "#15803D" : isWrong ? "#BE123C" : color.muted,
                 }}
               >
                 {labels?.[i] ?? i + 1}
               </Text>
             </View>
             <Text
-              className="flex-1 font-semi text-bodyLg text-ink"
+              className="flex-1 font-mid text-body text-ink"
               style={out ? { textDecorationLine: "line-through" } : undefined}
             >
               {opt}
@@ -318,9 +331,9 @@ export function ChoiceGrid({
             {out ? (
               <Text className="font-semi text-label text-muted">{L("Cú đã loại", "Removed by Owl")}</Text>
             ) : isCorrect ? (
-              <Icon name="check" size={18} color={GREEN} />
+              <Icon name="check" size={16} color={GREEN} />
             ) : isWrong ? (
-              <Icon name="close" size={18} color={RED} />
+              <Icon name="close" size={16} color={RED} />
             ) : null}
           </Pressable>
         );
@@ -341,13 +354,13 @@ export function ExampleLine({
     .toLowerCase()
     .indexOf(word.toLowerCase().replace(/(e|y)$/, ""));
   if (i < 0)
-    return <Text className="font-sans text-body text-ink">{example}</Text>;
+    return <Text className="font-sans text-body text-muted">{example}</Text>;
   let end = i;
   while (end < example.length && /\p{L}/u.test(example[end]!)) end += 1;
   return (
-    <Text className="font-sans text-body text-ink">
+    <Text className="font-sans text-body text-muted">
       {example.slice(0, i)}
-      <Text className="font-strong text-primary-700">
+      <Text className="font-semi text-ink">
         {example.slice(i, end)}
       </Text>
       {example.slice(end)}
@@ -355,7 +368,7 @@ export function ExampleLine({
   );
 }
 
-/** Bảng phản hồi sau mỗi câu: đúng/sai, phiên âm, nghĩa, ví dụ, cụm đi kèm. */
+/** Bảng phản hồi sau mỗi câu: một dải mảnh đúng/sai, rồi từ, nghĩa, ví dụ một dòng. */
 export function FeedbackPanel({
   ok,
   word,
@@ -366,55 +379,36 @@ export function FeedbackPanel({
   onNext: () => void;
 }) {
   const { L } = useL();
+  const tone = ok ? GREEN : RED;
   return (
     <Appear>
-      <View className="mt-5">
-        <View
-          className="rounded-2xl p-5"
-          style={{
-            backgroundColor: ok ? "#ECFDF3" : "#FFF1F2",
-            borderWidth: 1,
-            borderColor: ok ? "#BBF7D0" : "#FECDD3",
-          }}
-        >
+      <View className="mt-4">
+        <View style={{ borderLeftWidth: 3, borderLeftColor: tone, paddingLeft: 12 }}>
           <View className="flex-row items-center justify-between gap-3">
-            <Text
-              className="font-strong text-cardTitle"
-              style={{ color: ok ? GREEN : RED }}
-            >
-              {ok ? L("Chính xác!", "Correct!") : L("Chưa đúng — xem lại nhé", "Not quite — take another look")}
-            </Text>
-            <SpeakButton text={word.word} />
+            <View className="flex-row items-center gap-1.5">
+              <Icon name={ok ? "check" : "close"} size={16} color={tone} />
+              <Text className="font-semi text-body" style={{ color: tone }}>
+                {ok ? L("Chính xác", "Correct") : L("Chưa đúng", "Not quite")}
+              </Text>
+            </View>
+            <SpeakButton text={word.word} size={16} />
           </View>
-          <View className="mt-3 flex-row flex-wrap items-baseline gap-2">
-            <Text className="font-strong text-sectionTitle text-ink">
-              {word.word}
-            </Text>
-            <Text className="font-sans text-body text-muted">
-              {posIpa(word)}
-            </Text>
+          <View className="flex-row flex-wrap items-baseline gap-x-2">
+            <Text className="font-strong text-bodyLg text-ink">{word.word}</Text>
+            <Text className="font-sans text-label text-muted">{posIpa(word)}</Text>
           </View>
-          <Text className="mt-1 font-semi text-bodyLg text-ink">
-            {word.meaningVi}
-          </Text>
+          <Text className="font-mid text-body text-ink">{word.meaningVi}</Text>
           {word.example ? (
-            <View
-              className="mt-3 border-t pt-3"
-              style={{ borderColor: ok ? "#BBF7D0" : "#FECDD3" }}
-            >
-              <Text className="font-strong text-label text-muted">{L("Ví dụ", "Example")}</Text>
-              <View className="mt-1 flex-row items-start gap-2">
-                <View className="flex-1">
-                  <ExampleLine example={word.example} word={word.word} />
-                </View>
-                <SpeakButton text={word.example} size={16} />
+            <View className="mt-2 flex-row items-center gap-1">
+              <View className="flex-1">
+                <ExampleLine example={word.example} word={word.word} />
               </View>
+              <SpeakButton text={word.example} size={14} />
             </View>
           ) : null}
           {word.collocation ? (
-            <Text className="mt-3 font-sans text-body text-muted">
-              {L("Hay đi cùng:", "Collocations:")}{" "}
-              <Text className="font-semi text-ink">{word.collocation}</Text>
+            <Text className="mt-1 font-sans text-label text-muted">
+              {L("Hay đi cùng", "Collocations")}: <Text className="font-semi text-ink">{word.collocation}</Text>
             </Text>
           ) : null}
           <SynAnt word={word} />
@@ -445,10 +439,10 @@ export function PrimaryButton({
         onPress();
         scrollTop?.();
       }}
-      className="mt-4 flex-row items-center justify-center gap-2 rounded-2xl py-4"
+      className="mt-3 flex-row items-center justify-center gap-2 rounded-2xl py-3"
       style={{ backgroundColor: disabled ? "#F4E7D1" : color.primary }}
     >
-      <Text className="font-strong text-bodyLg text-white">{label}</Text>
+      <Text className="font-strong text-body text-white">{label}</Text>
       {hint ? (
         <Text className="font-sans text-label text-white/70">{hint}</Text>
       ) : null}
@@ -467,10 +461,10 @@ export function GhostButton({
     <Pressable
       accessibilityRole="button"
       onPress={onPress}
-      className="mt-3 items-center rounded-2xl py-3.5"
+      className="mt-2 items-center rounded-2xl py-3"
       style={{ backgroundColor: "#F9F6F1" }}
     >
-      <Text className="font-semi text-bodyLg" style={{ color: "#475569" }}>
+      <Text className="font-semi text-body" style={{ color: "#475569" }}>
         {label}
       </Text>
     </Pressable>
@@ -481,20 +475,18 @@ export function GhostButton({
 export function SynAnt({ word, center }: { word: StudyWord; center?: boolean }) {
   const { L } = useL();
   const rows = [
-    { label: L('Đồng nghĩa', 'Synonyms'), words: word.synonyms ?? [], tone: GREEN, bg: '#ECFDF3' },
-    { label: L('Trái nghĩa', 'Antonyms'), words: word.antonyms ?? [], tone: RED, bg: '#FFF1F2' },
+    { label: L('Đồng nghĩa', 'Synonyms'), words: word.synonyms ?? [] },
+    { label: L('Trái nghĩa', 'Antonyms'), words: word.antonyms ?? [] },
   ].filter((r) => r.words.length > 0);
   if (rows.length === 0) return null;
   return (
-    <View className="mt-3 gap-1.5">
+    <View className="mt-1.5 gap-1">
       {rows.map((r) => (
         <View key={r.label} className={`flex-row flex-wrap items-center gap-1.5 ${center ? 'justify-center' : ''}`}>
-          <Text className="mr-1 font-strong text-label text-muted">{r.label}</Text>
+          <Text className="mr-0.5 font-sans text-label text-muted">{r.label}</Text>
           {r.words.map((w) => (
-            <View key={w} className="rounded-pill px-2.5 py-1" style={{ backgroundColor: r.bg }}>
-              <Text className="font-semi text-label" style={{ color: r.tone }}>
-                {w}
-              </Text>
+            <View key={w} className="rounded-pill px-2 py-0.5" style={{ backgroundColor: '#F7F4EE' }}>
+              <Text className="font-mid text-label text-ink">{w}</Text>
             </View>
           ))}
         </View>

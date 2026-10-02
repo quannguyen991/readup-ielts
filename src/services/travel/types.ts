@@ -7,7 +7,7 @@
  */
 import type { Bi } from '@/i18n/useL';
 
-export type CityId = 'hanoi' | 'singapore' | 'london' | 'paris' | 'amsterdam' | 'rome';
+export type CityId = 'hanoi' | 'singapore' | 'london' | 'paris' | 'amsterdam' | 'rome' | 'hochiminh' | 'danang';
 
 export type Level = 1 | 2 | 3;
 
@@ -108,10 +108,61 @@ export type ImageLayer = {
    * `rows[j][i]` ứng với điểm nguồn (i*cell, j*cell).
    */
   mask: { cell: number; rows: string[] };
+  /**
+   * (Thêm bởi bộ vẽ) NHIỀU MẢNH: thế giới lớn ghép từ nhiều ảnh đất, mỗi mảnh đặt ở độ lệch NGUYÊN (điểm nguồn) trong
+   * thế giới. Khi có `panels`, `size` của bản đồ/ảnh là hộp bao cả thế giới; `smallSrc` = mảnh đầu (mảnh gốc, trên-trái).
+   * Mảnh nào không tải được (trừ mảnh đầu) thì vùng đó bị chặn và vật/địa điểm nằm trong đó bị bỏ.
+   */
+  panels?: { src: string; x: number; y: number; w?: number; h?: number }[];
+  /** Bề rộng vùng chồng giữa hai mảnh kề nhau (điểm nguồn), hoà bằng mặt nạ Bayer; mặc định 20, 0 = cắt thẳng. */
+  blend?: number;
+  /** Chỗ nối giữa hai mảnh (toạ độ thế giới): lưới đi được được khoét thông quanh điểm này. `from`/`to` là chỉ số trong `panels`. */
+  links?: { from: number; to: number; x: number; y: number; r?: number }[];
   /** Phần ảnh vẽ đè lên người đứng phía sau (hiếm dùng): cắt từ ảnh; che người có chân ở y < baseY. */
   occluders?: { x: number; y: number; w: number; h: number; baseY: number }[];
   /** Nguồn sáng ban đêm (đèn đường, cửa sổ): điểm nguồn + bán kính. */
   lights?: { x: number; y: number; r: number }[];
+};
+
+/**
+ * (Thêm bởi bộ vẽ) CHẾ ĐỘ ĐỐI TƯỢNG (kiểu Bến Dừa): `image` là ảnh ĐẤT trống (không nhà) + lưới đi được; mỗi nhà /
+ * công trình là một `MapObject` đứng riêng (sprite có mặt tiền + cửa), xếp theo độ sâu cùng người chơi, có thể vào cửa.
+ * Toạ độ là điểm nguồn của ảnh đất (418×235).
+ */
+export type SceneSprite = {
+  w: number;
+  h: number;
+  /** Tệp trong `/travel/sprites/<cityId>/`; mặc định `<id>.png`. */
+  file?: string;
+  /** Cắt một phần của tệp (bảng nhiều vật). */
+  crop?: { x: number; y: number; w: number; h: number };
+  /** Xoá các hình chữ nhật (toạ độ sau khi cắt) — để tách vật dính nhau trong bảng. */
+  erase?: { x: number; y: number; w: number; h: number }[];
+};
+
+export type MapObject = {
+  id: string;
+  /** Mã trong `scene.sprites`. */
+  sprite: string;
+  /** GIỮA-ĐÁY của sprite trên mặt đất (điểm nguồn). */
+  x: number;
+  y: number;
+  poiId?: string;
+  /** Chỗ người chơi phải đứng để vào, tính từ giữa-đáy. */
+  door?: { dx: number; dy: number };
+  /** Vùng va chạm, TƯƠNG ĐỐI giữa-đáy (x,y là góc trên-trái so với giữa-đáy; thường là ~40% dưới của sprite). */
+  footprint: { x: number; y: number; w: number; h: number };
+  /** Quầng sáng ban đêm, tương đối giữa-đáy. */
+  glow?: { dx: number; dy: number; r: number };
+  /** Cộng thêm vào khoá xếp độ sâu (hiếm dùng). */
+  z?: number;
+};
+
+export type ObjectScene = {
+  sprites: Record<string, SceneSprite>;
+  objects: MapObject[];
+  /** Số NPC đi dạo ngẫu nhiên thêm vào (mặc định 8). */
+  ambient?: number;
 };
 
 export type CityMap = {
@@ -131,6 +182,8 @@ export type CityMap = {
   routes?: Route[];
   /** (Thêm bởi bộ vẽ, tuỳ chọn) chế độ ảnh nền; xem `ImageLayer`. */
   image?: ImageLayer;
+  /** (Thêm bởi bộ vẽ, tuỳ chọn) vật đứng riêng trên ảnh đất; cần `image` là ảnh đất. */
+  scene?: ObjectScene;
   ambience: { weather: WeatherPlan; sounds: string[] };
 };
 
@@ -163,4 +216,10 @@ export type TravelState = {
   updatedAt?: string;
   /** Câu đã làm gần đây: khoá câu/từ → mốc ISO. Dùng để không hỏi lại trong 24 giờ. */
   seen?: Record<string, string>;
+  /**
+   * Bộ từ người học TỰ CHỌN để học khi du ngoạn (mã `VOCAB_TOPICS` / `listening-*`). Rỗng / thiếu =
+   * theo lộ trình (nếu biết) rồi bộ mặc định của địa điểm. Theo `updatedAt` khi gộp hai máy.
+   * Điểm hộ chiếu và quà đã nhận KHÔNG có trường riêng: nằm trong `ledger` (`pp:` / `pc:`).
+   */
+  decks?: string[];
 };

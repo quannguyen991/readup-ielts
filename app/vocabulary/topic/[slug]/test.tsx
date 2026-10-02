@@ -117,7 +117,7 @@ export default function TestScreen() {
       <StudyFrame backHref={backHref} title={L('Kết quả kiểm tra', 'Test results')}>
         <CrossFade swapKey={`result-${seed}`}>
           <StudyCard>
-            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}</Text>
+            <Text className="font-strong text-label text-primary-600">{(en && (topic.kind === 'topic' || topic.kind === 'notebook') ? topic.name : topic.nameVi)}</Text>
             <Text className="mt-2 font-heavy text-hero text-ink">
               {score}/{questions.length}
             </Text>
@@ -173,7 +173,7 @@ export default function TestScreen() {
       <CrossFade swapKey={`t-${index}`}>
         <StudyCard>
           <View className="flex-row items-center gap-2">
-            <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">{L('Câu', 'Question')} {index + 1}</Text>
+            <Text className="font-semi text-label text-muted">{L('Câu', 'Question')} {index + 1}</Text>
             <View className="rounded-pill px-2.5 py-0.5" style={{ backgroundColor: '#FCF8F1' }}>
               <Text className="font-strong text-label" style={{ color: color.primary }}>
                 {en ? KIND_EN[q.kind] : QUIZ_KIND_LABEL[q.kind]}

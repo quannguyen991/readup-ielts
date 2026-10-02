@@ -37,24 +37,35 @@ export function imageMap(m: {
   occluders?: ImageLayer['occluders'];
   weather?: WeatherPlan;
   sounds?: string[];
+  /** Cỡ ảnh nhỏ (mặc định 418×235); ảnh đất mới có thể khác (vd London 403×243). */
+  size?: { w: number; h: number };
+  /** Dùng ảnh ĐẤT (`/travel/terrain/<id>*.png`) thay cho tranh phẳng. */
+  terrain?: boolean;
+  /** Thế giới nhiều mảnh (tên tệp `<id>.small.png`, `<id>-e…`); độ lệch theo điểm nguồn. */
+  panels?: { suffix: string; x: number; y: number; w?: number; h?: number }[];
+  links?: { from: number; to: number; x: number; y: number; r?: number }[];
 }): CityMap {
+  const size = m.size ?? { w: IMAGE_SIZE.w, h: IMAGE_SIZE.h };
+  const dir = m.terrain ? 'terrain' : 'maps';
   return {
     id: m.id,
     name: m.name,
     utcOffsetHours: m.utcOffsetHours,
     palette: m.palette ?? m.id,
-    size: { w: IMAGE_SIZE.w, h: IMAGE_SIZE.h },
+    size: { ...size },
     layers: { ground: [], objects: [], roofs: [] },
     spawn: m.spawn,
     pois: m.pois,
     npcs: m.npcs,
     routes: m.routes,
     image: {
-      src: `/travel/maps/${m.id}.png`,
-      smallSrc: `/travel/maps/${m.id}.small.png`,
+      src: `/travel/${dir}/${m.id}.png`,
+      smallSrc: `/travel/${dir}/${m.id}.small.png`,
       scale: 4,
-      size: { ...IMAGE_SIZE },
+      size: { ...size },
       mask: m.mask,
+      panels: m.panels?.map((p) => ({ src: `/travel/${dir}/${m.id}${p.suffix}.small.png`, x: p.x, y: p.y, w: p.w, h: p.h })),
+      links: m.links,
       lights: m.lights,
       occluders: m.occluders,
     },

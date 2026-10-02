@@ -126,6 +126,26 @@ export const PALETTES: Record<string, CityPalette> = {
     },
     { day: '#fff6e0', dusk: '#f2905a', night: '#363c72' },
   ),
+  // TP. Hồ Chí Minh: nắng gắt, xanh cây, đỏ cờ, ngói cam.
+  hochiminh: mk(
+    {
+      g: '#9ccf66', G: '#78b94f', h: '#2a7041', l: '#56b556', L: '#36994f',
+      s: '#eedcae', S: '#d9c28a', t: '#b49c6c',
+      p: '#d8342c', P: '#9a2220', r: '#d8683c', R: '#a4442a', y: '#f5e3b0', Y: '#dcc085',
+      a: '#80cfd6', A: '#4aa9c6', d: '#2a7aa3',
+    },
+    { day: '#fff8e4', dusk: '#f08a60', night: '#323c78' },
+  ),
+  // Đà Nẵng: biển xanh ngọc, cát trắng, cầu Rồng vàng.
+  danang: mk(
+    {
+      g: '#8fcf6e', G: '#6db857', h: '#245f4a', l: '#4ab05f', L: '#2f9658',
+      s: '#f2e6c0', S: '#e0cc98', t: '#b8a478',
+      p: '#1fa6c8', P: '#12708f', r: '#e6a23a', R: '#b3742a', y: '#f8f1dc', Y: '#e0d2a8',
+      a: '#7fe0e0', A: '#3fb8d2', d: '#1f84b0', u: '#e8b83c', U: '#b88a2a',
+    },
+    { dusk: '#f09a70', night: '#2c4278' },
+  ),
 };
 
 export function getPalette(id: string): CityPalette {

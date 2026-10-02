@@ -1,5 +1,6 @@
 import { Platform } from 'react-native';
 
+import { playSfx } from '@/services/audio/sfx-ui';
 import type { RecognizedSegment } from './metrics';
 
 /**
@@ -138,6 +139,7 @@ export function startRecorder(handlers: {
           failed = 'error';
         }
       }
+      playSfx('micStop');
       handlers.onEnd(stopped ? 'stopped' : (failed ?? 'error'), snap());
     };
     rec = r;
@@ -149,6 +151,7 @@ export function startRecorder(handlers: {
   } catch {
     return null;
   }
+  playSfx('micStart');
 
   return {
     startedAt,

@@ -22,6 +22,7 @@ import { GameFxLayer } from '@/components/game/GameFxLayer';
 import { PageTransition } from '@/components/motion/Motion';
 import { PageViewTracker } from '@/services/analytics/PageViewTracker';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
+import { useSfxBindings } from '@/services/audio/useSfxBindings';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
 import { color } from '@/theme/tokens';
@@ -50,6 +51,7 @@ export default function RootLayout() {
   // cấu hình Supabase — lúc ấy app chạy hoàn toàn cục bộ như trước.
   useAuthBootstrap();
   useSyncBootstrap();
+  useSfxBindings();
 
   const [fontsLoaded] = useFonts({
     PlusJakartaSans_400Regular,

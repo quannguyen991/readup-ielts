@@ -7,6 +7,8 @@
 import React, { useEffect, useState } from 'react';
 import { Image, Platform, PixelRatio, ScrollView, View, type LayoutChangeEvent, type ImageSourcePropType } from 'react-native';
 
+import { FullscreenButton } from '@/components/travel/scenes/fullscreen';
+
 export const SRC_W = 418;
 export const SRC_H = 235;
 
@@ -45,7 +47,10 @@ export function PixelStage({
   focus,
   label,
   children,
+  fullscreenButton,
 }: {
+  /** Hiện nút toàn màn hình nhỏ ở góc dưới-phải. */
+  fullscreenButton?: boolean;
   source: ImageSourcePropType;
   /** Điểm nguồn (px) cần ở giữa khi phải cuộn ngang. */
   focus?: { x: number; y: number };
@@ -92,6 +97,7 @@ export function PixelStage({
           stage
         )}
       </View>
+      {fullscreenButton ? <FullscreenButton bottom={12} right={scroll ? 12 : Math.max(12, (width - w) / 2 + 12)} /> : null}
     </View>
   );
 }

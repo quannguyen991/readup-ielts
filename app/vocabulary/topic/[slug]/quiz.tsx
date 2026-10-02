@@ -150,7 +150,7 @@ export default function QuizScreen() {
     return (
       <StudyFrame backHref={back} title={L('Quiz ôn tập', 'Review quiz')}>
         <StudyCard>
-          <Text className="font-semi text-label uppercase tracking-[1.4px] text-muted">{L('Xong lượt Quiz', 'Quiz complete')}</Text>
+          <Text className="font-semi text-label text-muted">{L('Xong lượt Quiz', 'Quiz complete')}</Text>
           <Text className="mt-2 font-heavy text-hero text-ink">
             {score}/{list.length}
           </Text>
@@ -187,7 +187,7 @@ export default function QuizScreen() {
       <CrossFade swapKey={`${seed}-${index}`}>
         <StudyCard>
           <View className="flex-row flex-wrap items-center gap-2">
-            <Text className="font-strong text-label uppercase tracking-[1.4px]" style={{ color: '#D97706' }}>
+            <Text className="font-strong text-label" style={{ color: '#D97706' }}>
               Question {index + 1}
             </Text>
             <View className="rounded-pill bg-white/80 px-2.5 py-0.5">

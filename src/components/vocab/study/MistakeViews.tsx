@@ -52,12 +52,8 @@ export function MistakeBox({ m }: { m: Mistake }) {
   return (
     <Appear>
       <View
-        className="mt-5 flex-row gap-3 rounded-2xl p-4"
-        style={{
-          backgroundColor: "#FFFBEB",
-          borderWidth: 1,
-          borderColor: "#FDE68A",
-        }}
+        className="mt-4 flex-row gap-2.5"
+        style={{ borderLeftWidth: 3, borderLeftColor: "#D9A441", paddingLeft: 12 }}
       >
         <Icon name="sparkle" size={18} color="#B45309" />
         <View className="flex-1">

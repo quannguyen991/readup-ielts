@@ -30,7 +30,7 @@ export type CityMeta = {
   poiCount: number;
 };
 
-export const CITY_ORDER: CityId[] = ['hanoi', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
+export const CITY_ORDER: CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
 
 export const CITIES: Record<CityId, CityMeta> = {
   hanoi: {
@@ -45,6 +45,34 @@ export const CITIES: Record<CityId, CityMeta> = {
     tint: '#B8955A',
     mapAt: { x: 45, y: 13 },
     poiCount: 2,
+  },
+  danang: {
+    id: 'danang',
+    name: { vi: 'Đà Nẵng', en: 'Da Nang' },
+    country: { vi: 'Việt Nam', en: 'Vietnam' },
+    utcOffsetHours: 7,
+    eurDst: false,
+    level: 1,
+    band: '5–6.5',
+    tagline: { vi: 'Cầu Rồng, biển Mỹ Khê, Bà Nà', en: 'Dragon Bridge, My Khe beach, Ba Na' },
+    tint: '#2E9CCA',
+    mapAt: { x: 46, y: 17 },
+    requires: 'singapore',
+    poiCount: 10,
+  },
+  hochiminh: {
+    id: 'hochiminh',
+    name: { vi: 'TP. Hồ Chí Minh', en: 'Ho Chi Minh City' },
+    country: { vi: 'Việt Nam', en: 'Vietnam' },
+    utcOffsetHours: 7,
+    eurDst: false,
+    level: 1,
+    band: '5.5–6.5',
+    tagline: { vi: 'Chợ Bến Thành, Nhà thờ Đức Bà, Landmark 81', en: 'Ben Thanh Market, Notre-Dame, Landmark 81' },
+    tint: '#E0603A',
+    mapAt: { x: 45, y: 21 },
+    requires: 'singapore',
+    poiCount: 10,
   },
   singapore: {
     id: 'singapore',
@@ -120,6 +148,9 @@ export const CITIES: Record<CityId, CityMeta> = {
 /** Đường bay trực tiếp (vô hướng) và giá vé — bảng ở mục 3 của kế hoạch. */
 export const ROUTES: { a: CityId; b: CityId; tickets: number }[] = [
   { a: 'hanoi', b: 'singapore', tickets: 1 },
+  { a: 'hanoi', b: 'danang', tickets: 1 },
+  { a: 'danang', b: 'hochiminh', tickets: 1 },
+  { a: 'hochiminh', b: 'singapore', tickets: 1 },
   { a: 'singapore', b: 'london', tickets: 2 },
   { a: 'london', b: 'paris', tickets: 1 },
   { a: 'paris', b: 'amsterdam', tickets: 1 },

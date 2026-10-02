@@ -18,8 +18,10 @@ out_ts = sys.argv[2] if len(sys.argv) > 2 else None
 prev = sys.argv[3] if len(sys.argv) > 3 and not sys.argv[3].startswith('--') else None
 
 CFG = json.load(open(__file__.replace('walkmask.py', 'walkmask.cfg.json'), encoding='utf-8'))[city]
+SRC_DIR = CFG.get('dir', 'maps')
+SRC_CITY = CFG.get('city', city)
 
-im = np.array(Image.open(f'public/travel/maps/{city}.small.png').convert('RGB'))
+im = np.array(Image.open(f'public/travel/{SRC_DIR}/{SRC_CITY}.small.png').convert('RGB'))
 H, W, _ = im.shape
 hsv = np.zeros((H, W, 3))
 for y in range(H):

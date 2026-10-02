@@ -9,6 +9,7 @@ import { TravelHud } from '@/components/travel/ui/Hud';
 import { useReducedMotion } from '@/components/travel/ui/hooks';
 import { Eyebrow, GameButton, PixelPanel, StarsRow, T } from '@/components/travel/ui/kit';
 import { CityCanvas } from '@/components/travel/scenes/CityCanvas';
+import { FsPortal, useFullscreen } from '@/components/travel/scenes/fullscreen';
 import { Icon } from '@/components/ui/Icon';
 import { getPoiContent, poisOfCity } from '@/data/travel/pois';
 import { bi, useL } from '@/i18n/useL';
@@ -45,17 +46,24 @@ function City({ city }: { city: keyof typeof CITIES }) {
   const reduced = useReducedMotion();
   // Khung bản đồ có chiều cao tường minh (canvas lấp đầy khung cha): màn rộng theo tỉ lệ tranh 418:235
   // (để thấy trọn tranh ở hệ số nguyên), điện thoại cao hơn để tranh lớn hơn và máy quay đi theo người chơi.
+  const map = useMemo(() => getCityMap(city), [city]);
   const win = useWindowDimensions();
+  const fs = useFullscreen();
   const [boxW, setBoxW] = useState(0);
   let canvasH: number;
   if (win.width >= 700 && boxW > 0) {
     // hệ số nguyên lớn nhất mà cả bề ngang lẫn chiều cao (≤ 85% màn) còn chứa trọn tranh
-    const k = Math.max(1, Math.min(Math.floor(boxW / 418), Math.floor((win.height * 0.85) / 235)));
-    canvasH = k * 235 + 4;
+    const mw = map?.size.w ?? 418;
+    const mh = map?.size.h ?? 235;
+    // thế giới nhiều mảnh (lớn hơn một ảnh): khung cao cố định, máy quay cuộn theo người chơi
+    if (mw > 500) canvasH = Math.round(Math.min(Math.max(win.height * 0.72, 420), 760));
+    else {
+      const k = Math.max(1, Math.min(Math.floor(boxW / mw), Math.floor((win.height * 0.85) / mh)));
+      canvasH = k * mh + 4;
+    }
   } else canvasH = Math.round(Math.min(560, win.height * 0.62));
   const state = useTravelStore();
   const setPos = useTravelStore((s) => s.setPos);
-  const map = useMemo(() => getCityMap(city), [city]);
   const pois = useMemo(() => poisOfCity(city), [city]);
 
   // Chưa ở thành phố này: về bản đồ thế giới (phải bay tới trước).
@@ -90,9 +98,23 @@ function City({ city }: { city: keyof typeof CITIES }) {
   return (
     <View style={{ gap: 18 }}>
       {canvasOk ? (
-        <View onLayout={(e) => setBoxW(Math.round(e.nativeEvent.layout.width))} style={{ height: canvasH, borderRadius: 8, overflow: 'hidden', borderWidth: 2, borderColor: T.navy }}>
+        <FsPortal active={fs.active}>
+        <View
+          onLayout={(e) => setBoxW(Math.round(e.nativeEvent.layout.width))}
+          style={fs.active ? { flex: 1, width: '100%' } : { height: canvasH, borderRadius: 8, overflow: 'hidden', borderWidth: 2, borderColor: T.navy }}
+        >
           <CityCanvas map={map!} fallbackMap={getFallbackMap(city)} state={state} onEnterPoi={enter} onMove={onMove} reducedMotion={reduced} />
+          {fs.active ? (
+            <View pointerEvents="none" style={{ position: 'absolute', top: 10, left: 10, flexDirection: 'row', gap: 8 }}>
+              {[`🎫 ${state.tickets}`, `● ${state.coins}`].map((t) => (
+                <View key={t} style={{ paddingHorizontal: 10, paddingVertical: 4, borderRadius: 999, backgroundColor: 'rgba(15,29,51,0.78)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.7)' }}>
+                  <Text style={{ color: '#F3EDE1', fontSize: 14, fontWeight: '700' }}>{t}</Text>
+                </View>
+              ))}
+            </View>
+          ) : null}
         </View>
+        </FsPortal>
       ) : null}
 
       <View>

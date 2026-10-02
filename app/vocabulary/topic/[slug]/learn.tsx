@@ -36,6 +36,7 @@ import { LearnSettingsSheet } from "@/components/vocab/study/LearnSettingsSheet"
 import { MistakeBox, RoundAnalysis } from "@/components/vocab/study/MistakeViews";
 import { Appear, CrossFade } from "@/components/motion/Motion";
 import { Icon } from "@/components/ui/Icon";
+import { preloadPronunciation, useAutoPronounce } from "@/services/audio/pronounce";
 import { useStudyDeck } from "@/components/vocab/study/useStudyDeck";
 import {
   activeKinds,
@@ -206,6 +207,19 @@ export default function LearnScreen() {
     // Chỉ khi sang câu mới, không phải mỗi lần chấm.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step, dir, word?.word]);
+
+  // Từ tiếng Anh hiện ra làm đề (thẻ / trắc nghiệm chiều Anh → Việt) thì đọc luôn;
+  // thẻ chiều Việt → Anh thì đọc khi lật ra từ. Chiều nghe đã tự đọc ở trên.
+  const shownWord =
+    word && verdict === null && dir === "enToVi" && (head?.kind === "flash" || head?.kind === "mcq")
+      ? word.word
+      : word && head?.kind === "flash" && dir === "viToEn" && flipped
+        ? word.word
+        : null;
+  useAutoPronounce(shownWord, `${step}-${flipped ? 1 : 0}`);
+  useEffect(() => {
+    preloadPronunciation(round.map((w) => w.word));
+  }, [round]);
 
   // Micro đang nghe thì tắt khi sang câu khác hoặc rời màn.
   const listenRef = useRef<Listening | null>(null);
@@ -551,7 +565,7 @@ export default function LearnScreen() {
       >
         <CrossFade swapKey="done">
           <StudyCard>
-            <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">
+            <Text className="font-strong text-label text-primary-600">
               {L("Xong vòng này", "Round complete")}
             </Text>
             <Text className="mt-2 font-heavy text-pageTitle text-ink">
@@ -684,7 +698,7 @@ export default function LearnScreen() {
             {head!.kind === "fill" && fill ? (
               <View>
                 <View className="flex-row items-start justify-between gap-3">
-                  <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
+                  <Text className="font-semi text-label text-muted">
                     {L("Chọn từ điền vào chỗ trống", "Choose the word for the blank")}
                   </Text>
                   {star}
@@ -715,7 +729,7 @@ export default function LearnScreen() {
             ) : head!.kind === "mcq" && mcq ? (
               <View>
                 <View className="flex-row items-start justify-between gap-3">
-                  <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
+                  <Text className="font-semi text-label text-muted">
                     {dir === "viToEn"
                       ? L("Chọn từ tiếng Anh đúng", "Choose the right English word")
                       : L("Chọn nghĩa đúng", "Choose the right meaning")}
@@ -725,16 +739,16 @@ export default function LearnScreen() {
                 <View className="mt-1 flex-row items-center justify-between gap-3">
                   <View className="flex-1">
                     {dir === "listen" ? (
-                      <Text className="font-heavy text-pageTitle text-ink">
+                      <Text className="font-heavy text-stat text-ink">
                         {L("Nghe và chọn nghĩa", "Listen and choose the meaning")}
                       </Text>
                     ) : (
-                      <Text className="font-heavy text-pageTitle text-ink">
+                      <Text className="font-heavy text-stat text-ink">
                         {dir === "enToVi" ? w.word : w.meaningVi}
                       </Text>
                     )}
                     {dir !== "viToEn" ? (
-                      <Text className="mt-1 font-sans text-body text-muted">
+                      <Text className="mt-0.5 font-sans text-label text-muted">
                         {posIpa(w)}
                       </Text>
                     ) : null}
@@ -759,7 +773,7 @@ export default function LearnScreen() {
             ) : (
               <View>
                 <View className="flex-row items-start justify-between gap-3">
-                  <Text className="font-semi text-label uppercase tracking-[1.2px] text-muted">
+                  <Text className="font-semi text-label text-muted">
                     {dir === "listen"
                       ? L("Nghe rồi gõ lại từ", "Listen and type the word")
                       : L("Gõ từ tiếng Anh", "Type the English word")}
@@ -777,7 +791,7 @@ export default function LearnScreen() {
                   </View>
                 ) : (
                   <>
-                    <Text className="mt-1 font-heavy text-pageTitle text-ink">
+                    <Text className="mt-1 font-heavy text-stat text-ink">
                       {w.meaningVi}
                     </Text>
                     <Text className="mt-1 font-sans text-body text-muted">
@@ -799,9 +813,9 @@ export default function LearnScreen() {
                     placeholder={micOk ? L("Gõ hoặc bấm micro để nói…", "Type, or tap the mic to speak…") : L("Gõ từ tiếng Anh…", "Type the English word…")}
                     placeholderTextColor="#94A3B8"
                     onSubmitEditing={() => submitTyped()}
-                    className="min-w-0 flex-1 rounded-2xl px-5 py-4 text-center font-semi text-sectionTitle text-ink"
+                    className="min-w-0 flex-1 rounded-2xl px-5 py-3 text-center font-semi text-cardTitle text-ink"
                     style={{
-                      borderWidth: 1.5,
+                      borderWidth: 1,
                       borderColor:
                         verdict === null ? (listening ? color.primary : "#E1D9CB") : verdict ? GREEN : RED,
                       backgroundColor: "#FCFBF8",

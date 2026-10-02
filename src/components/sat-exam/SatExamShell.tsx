@@ -5,6 +5,7 @@ import { usePathname } from 'expo-router';
 
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
+import { playSfx } from '@/services/audio/sfx-ui';
 import { isExamRoute } from '@/navigation/focus-routes';
 import { useDisplayName } from '@/store/useAuthStore';
 import { ExamToolsContext, type ExamTools } from './exam-context';
@@ -136,6 +137,25 @@ export function SatExamShell(props: SatExamShellProps) {
   }, [timer.kind]);
   const clockMs = timer.kind === 'up' ? elapsed : timer.remainingMs;
   const lowOnTime = timer.kind === 'down' && timer.remainingMs <= 5 * 60_000;
+
+  // Âm báo đồng hồ thi: còn 5 phút, còn 1 phút (cùng tiếng "sắp hết"), và hết giờ. Mỗi mốc kêu một lần.
+  const clockCues = useRef({ five: false, one: false, end: false });
+  useEffect(() => {
+    if (timer.kind !== 'down') return;
+    const left = timer.remainingMs;
+    const cues = clockCues.current;
+    if (left <= 0) {
+      if (!cues.end) playSfx('timerEnd');
+      cues.end = true;
+    } else if (left <= 60_000) {
+      if (!cues.one) playSfx('timerWarn');
+      cues.one = true;
+      cues.five = true;
+    } else if (left <= 5 * 60_000) {
+      if (!cues.five) playSfx('timerWarn');
+      cues.five = true;
+    }
+  }, [timer]);
 
   const tools = useMemo<ExamTools>(
     () => ({

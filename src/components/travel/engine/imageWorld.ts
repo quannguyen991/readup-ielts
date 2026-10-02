@@ -122,3 +122,43 @@ export function findPathPx(w: ImgWorld, from: Pt, to: Pt): Pt[] | null {
 export function isImageMap(map: CityMap): map is CityMap & { image: ImageLayer } {
   return !!map.image;
 }
+
+export type MaskPart = { x: number; y: number; w: number; h: number; cell: number; rows: string[] };
+
+/**
+ * Ghép lưới đi được của nhiều mảnh vào một lưới thế giới (ô `cell`). Mỗi ô lấy mẫu ở TÂM ô, ánh xạ về mảnh chứa nó
+ * (độ lệch mảnh không cần chia hết cho `cell`); ô không thuộc mảnh nào là chặn. Quanh mỗi điểm nối (`links`) khoét một
+ * hành lang bán kính `r` (mặc định 8) để chắc chắn thông nhau.
+ */
+export function composeMask(world: { w: number; h: number }, cell: number, parts: MaskPart[], links: { x: number; y: number; r?: number }[] = []): string[] {
+  const mw = Math.ceil(world.w / cell);
+  const mh = Math.ceil(world.h / cell);
+  const rows: string[] = [];
+  for (let j = 0; j < mh; j++) {
+    let r = '';
+    for (let i = 0; i < mw; i++) {
+      const cx = i * cell + cell / 2;
+      const cy = j * cell + cell / 2;
+      let ch = '.';
+      // vùng chồng: lấy mảnh mà ô này nằm SÂU nhất (khớp với hoà sắc: nửa trong của mỗi mảnh thuộc về mảnh đó)
+      let best: MaskPart | null = null;
+      let bd = -1;
+      for (const p of parts) {
+        if (cx < p.x || cy < p.y || cx >= p.x + p.w || cy >= p.y + p.h) continue;
+        const d = Math.min(cx - p.x, p.x + p.w - cx, cy - p.y, p.y + p.h - cy);
+        if (d > bd) {
+          bd = d;
+          best = p;
+        }
+      }
+      if (best) ch = best.rows[Math.floor((cy - best.y) / best.cell)]?.[Math.floor((cx - best.x) / best.cell)] ?? '.';
+      for (const l of links) {
+        const rr = l.r ?? 8;
+        if (Math.abs(cx - l.x) <= rr && Math.abs(cy - l.y) <= rr && ch !== '#') ch = '#';
+      }
+      r += ch;
+    }
+    rows.push(r);
+  }
+  return rows;
+}

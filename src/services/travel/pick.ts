@@ -24,6 +24,7 @@ import {
   type VisitQuestion,
   type WordRef,
 } from './content';
+import { themeOfDeck } from '@/data/travel/replies';
 import type { Level, PoiKind, QuestionType } from './types';
 
 export type PoiLike = {
@@ -53,6 +54,11 @@ export type PickInput = StudySnapshot & {
   nowMs?: number;
   rng?: () => number;
   count?: number;
+  /**
+   * Bộ từ ưu tiên (người học tự chọn, hoặc theo lộ trình — xem `decks.ts`). Từ của các bộ này
+   * được hỏi TRƯỚC từ của bộ mặc định của địa điểm; rỗng thì dùng bộ của địa điểm.
+   */
+  focusDecks?: string[];
 };
 
 export function seedFor(poiId: string, runNo: number): () => number {
@@ -79,7 +85,7 @@ function seenAt(seen: Record<string, string> | undefined, keys: string[]): numbe
 type Tiered = { ref: WordRef; tier: number; recent: boolean; lastSeen: number; lapses: number };
 
 /** Xếp từ theo bậc ưu tiên; trong bậc thì xáo theo hạt giống. Từ vừa làm bị đẩy xuống cuối. */
-function rankWords(pool: WordRef[], snap: StudySnapshot, input: PickInput, nowMs: number, rng: () => number): Tiered[] {
+function rankWords(pool: WordRef[], snap: StudySnapshot, input: PickInput, nowMs: number, rng: () => number, focus: ReadonlySet<string> = new Set()): Tiered[] {
   const dueSet = new Map<string, Set<string>>();
   for (const [deck, words] of Object.entries(snap.due ?? {})) dueSet.set(deck, new Set(words));
   const rows: Tiered[] = shuffled(pool, rng).map((ref) => {
@@ -91,7 +97,14 @@ function rankWords(pool: WordRef[], snap: StudySnapshot, input: PickInput, nowMs
     return { ref, tier, recent: seenRecently(input.seen, [key], nowMs), lastSeen: seenAt(input.seen, [key]), lapses };
   });
   // Ổn định: sort giữ thứ tự xáo trong cùng bậc.
-  return rows.sort((a, b) => Number(a.recent) - Number(b.recent) || a.tier - b.tier || (a.recent ? a.lastSeen - b.lastSeen : 0) || (a.tier === 2 ? b.lapses - a.lapses : 0));
+  const out = (r: Tiered) => (focus.has(r.ref.deck) ? 0 : 1);
+  return rows.sort((a, b) => Number(a.recent) - Number(b.recent) || out(a) - out(b) || a.tier - b.tier || (a.recent ? a.lastSeen - b.lastSeen : 0) || (a.tier === 2 ? b.lapses - a.lapses : 0));
+}
+
+/** Từ của bộ ưu tiên trước, rồi từ của địa điểm (bỏ từ trùng). */
+function mergePools(first: WordRef[], second: WordRef[]): WordRef[] {
+  const seen = new Set(first.map((r) => wordKey(r.deck, r.word.word)));
+  return [...first, ...second.filter((r) => !seen.has(wordKey(r.deck, r.word.word)))];
 }
 
 const FALLBACK_ORDER: QuestionType[] = ['cloze', 'listen-pick', 'order', 'dictation', 'reply', 'translate'];
@@ -111,8 +124,10 @@ export function pickVisitQuestions(input: PickInput): VisitQuestion[] {
   const wanted: QuestionType[] = types.length ? types : ['cloze'];
   const plan = spreadKinds(count, rng, wanted);
 
-  const pool = wordPool(poi.content.decks, level);
-  const ranked = rankWords(pool, input, input, nowMs, rng);
+  const focus = new Set((input.focusDecks ?? []).filter((d) => !themeOfDeck(d)));
+  const base = wordPool(poi.content.decks, level);
+  const pool = focus.size ? mergePools(wordPool([...focus], level), base) : base;
+  const ranked = rankWords(pool, input, input, nowMs, rng, focus);
   const used = new Set<string>();
 
   const replies = replyPool(poi.content.decks, poi.kind);
@@ -165,6 +180,8 @@ export const CUSTOMS_DEFAULT_DECKS = ['tourism', 'transport', 'food', 'shopping'
 export function pickCustomsQuestions(
   input: StudySnapshot & {
     studiedDecks?: string[];
+    /** Bộ ưu tiên (tự chọn / theo lộ trình): thay cho các bộ đã học khi có. */
+    focusDecks?: string[];
     level?: Level;
     day: string;
     run: number;
@@ -173,7 +190,7 @@ export function pickCustomsQuestions(
     count?: number;
   },
 ): VisitQuestion[] {
-  const decks = input.studiedDecks && input.studiedDecks.length ? input.studiedDecks.slice(0, 12) : CUSTOMS_DEFAULT_DECKS;
+  const decks = input.focusDecks && input.focusDecks.length ? input.focusDecks.slice(0, 12) : input.studiedDecks && input.studiedDecks.length ? input.studiedDecks.slice(0, 12) : CUSTOMS_DEFAULT_DECKS;
   return pickVisitQuestions({
     ...input,
     poi: {

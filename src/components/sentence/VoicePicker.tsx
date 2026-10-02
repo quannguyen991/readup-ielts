@@ -1,9 +1,11 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
 import * as Speech from 'expo-speech';
 
 import { Icon } from '@/components/ui';
-import { bestVoice } from '@/services/audio/voice-pick';
+import { bestVoiceFor, type Gender } from '@/services/audio/voice-pick';
+import { voiceGender } from '@/services/audio/voice';
+import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { paper } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 
@@ -27,23 +29,6 @@ export type EnglishVoice = {
   name: string;
   language: string;
 };
-
-const REGION_LABEL: Record<string, { vi: string; en: string }> = {
-  'en-GB': { vi: 'Anh – Anh', en: 'British English' },
-  'en-US': { vi: 'Anh – Mỹ', en: 'American English' },
-  'en-AU': { vi: 'Anh – Úc', en: 'Australian English' },
-  'en-IN': { vi: 'Anh – Ấn', en: 'Indian English' },
-  'en-IE': { vi: 'Anh – Ireland', en: 'Irish English' },
-  'en-ZA': { vi: 'Anh – Nam Phi', en: 'South African English' },
-  'en-NZ': { vi: 'Anh – New Zealand', en: 'New Zealand English' },
-  'en-CA': { vi: 'Anh – Canada', en: 'Canadian English' },
-};
-
-function regionOf(language: string, en: boolean): string {
-  const normalized = language.replace('_', '-');
-  const r = REGION_LABEL[normalized];
-  return r ? (en ? r.en : r.vi) : normalized;
-}
 
 /**
  * Nạp danh sách giọng tiếng Anh có trên máy.
@@ -92,38 +77,23 @@ export function useEnglishVoices(): EnglishVoice[] {
 }
 
 /**
- * Giọng nên chọn sẵn khi máy có nhiều lựa chọn.
- *
- * Giọng mặc định của hệ thống trên Windows và Android thường là giọng máy đọc
- * rất khô — người học mở bài lên, nghe câu đầu tiên, và tưởng bài khó trong khi
- * thật ra là giọng dở. Nên app tự chọn giúp một giọng nghe được, và vẫn để đổi.
- *
- * XẾP THEO THẾ HỆ GIỌNG, KHÔNG THEO GIỌNG NÀO TÔI THÍCH.
- *
- * Máy đọc chia làm hai thế hệ nghe khác hẳn nhau, và khoảng cách giữa hai thế
- * hệ lớn hơn mọi khác biệt bên trong một thế hệ:
- *
- *   · Mạng nơ-ron — Microsoft "Natural" (Aria, Sonia, Guy…), Apple Premium /
- *     Enhanced. Có ngữ điệu, ngắt nghỉ đúng chỗ, nghe được cả bài dài.
- *   · Ghép âm đời cũ — Google UK/US English, Microsoft David/Zira/Mark. Từng
- *     chữ đều một nhịp, nghe lâu thì mệt.
- *
- * Bản trước chọn "Google UK English Female" đầu tiên, tức là bốc một giọng đời
- * CŨ ngay cả trên máy đã có giọng nơ-ron. Giờ mọi giọng nơ-ron đứng trước, và
- * chỉ khi máy không có cái nào mới rơi xuống lớp cũ.
- *
- * Trong lớp cũ thì Google US đứng trên Google UK Female — giọng UK Female là
- * giọng mũi và đều nhất trong nhóm, và đó là giọng bị chê.
- *
- * KHÔNG khoá theo tên máy cụ thể: khớp theo TỪ KHOÁ trong tên ("natural",
- * "premium") nên máy nào cài thêm giọng nơ-ron mới cũng tự được ưu tiên, không
- * phải chờ tôi bổ sung danh sách.
+ * Giọng nên chọn sẵn: giọng tốt nhất của giới đang chọn (mặc định nữ), cùng luật
+ * chấm với giọng chung của app (`services/audio/voice-pick`: nơ-ron / Google trước, giọng SAPI cũ sau).
  */
 export function preferredVoice(voices: EnglishVoice[]): string | null {
-  // Giọng NỮ tiếng Anh, nơ-ron trước — cùng luật với giọng chung của app (`services/audio/voice-pick`).
-  return bestVoice(voices)?.identifier ?? voices[0]?.identifier ?? null;
+  return (
+    bestVoiceFor(voices, voiceGender())?.identifier ??
+    bestVoiceFor(voices, 'f')?.identifier ??
+    voices[0]?.identifier ??
+    null
+  );
 }
 
+/**
+ * Chỉ HAI lựa chọn: một giọng nữ và một giọng nam tốt nhất của máy này (tự chọn,
+ * không liệt kê cả chục giọng). Lựa chọn lưu chung với Cài đặt học từ nên mọi
+ * chỗ đọc trong app dùng cùng một giọng.
+ */
 export function VoicePicker({
   voices,
   voiceId,
@@ -136,128 +106,49 @@ export function VoicePicker({
   /** Đọc thử một câu ngắn bằng giọng vừa chọn. */
   onPreview: (identifier: string | null) => void;
 }) {
-  const [open, setOpen] = useState(false);
-  const { L, en } = useL();
+  const { L } = useL();
+  const female = bestVoiceFor(voices, 'f');
+  const male = bestVoiceFor(voices, 'm');
+  const setSettings = useTopicStudyStore((s) => s.setLearnSettings);
+  const stored = useTopicStudyStore((s) => s.learnSettings.voiceGender);
+  const gender: Gender = stored === 'm' ? 'm' : 'f';
 
-  const current = useMemo(
-    () => voices.find((v) => v.identifier === voiceId) ?? null,
-    [voices, voiceId],
-  );
+  if (voices.length === 0 || (!female && !male)) return null;
 
-  if (voices.length === 0) return null;
-
+  const options: { g: Gender; label: string; voice: EnglishVoice | null }[] = [
+    { g: 'f', label: L('Nữ', 'Female'), voice: female },
+    { g: 'm', label: L('Nam', 'Male'), voice: male },
+  ];
   return (
-    <>
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel={L('Chọn giọng đọc', 'Choose a voice')}
-        onPress={() => setOpen(true)}
-        className="max-w-full flex-row items-center gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5"
-      >
-        <Icon name="volume" size={14} color={paper.body} strokeWidth={1.9} />
-        {/* Tên giọng dài ("Microsoft Zira - English (United States)") co lại thành "…" thay vì đẩy tràn hàng. */}
-        <Text className="shrink font-semi text-label text-paper-body" numberOfLines={1}>
-          {current ? current.name : L('Giọng mặc định', 'Default voice')}
-        </Text>
-        <Icon name="chevron-down" size={13} color={paper.muted} />
-      </Pressable>
-
-      <Modal visible={open} transparent animationType="fade" onRequestClose={() => setOpen(false)}>
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={L('Đóng danh sách giọng', 'Close voice list')}
-          onPress={() => setOpen(false)}
-          style={{ flex: 1, backgroundColor: 'rgba(26,26,51,0.45)', justifyContent: 'center' }}
-        >
-          <Pressable
-            onPress={(event) => event.stopPropagation()}
-            className="w-full self-center px-4"
-            style={{ maxWidth: 520 }}
-          >
-            <View className="max-h-[70vh] overflow-hidden rounded-card bg-white">
-              <View className="flex-row items-center justify-between border-b border-brand-soft px-5 py-3.5">
-                <View className="min-w-0 flex-1">
-                  <Text className="font-heavy text-cardTitle text-paper-ink">{L('Giọng đọc', 'Voice')}</Text>
-                  <Text className="font-sans text-label text-paper-muted">
-                    {L(`${voices.length} giọng tiếng Anh có trên máy này`, `${voices.length} English voices on this device`)}
-                  </Text>
-                </View>
-                <Pressable
-                  accessibilityRole="button"
-                  accessibilityLabel={L('Đóng', 'Close')}
-                  onPress={() => setOpen(false)}
-                  className="h-8 w-8 items-center justify-center rounded-pill bg-brand-tint"
-                >
-                  <Icon name="close" size={15} color={paper.body} strokeWidth={2} />
-                </Pressable>
-              </View>
-
-              <ScrollView contentContainerStyle={{ padding: 12, gap: 6 }}>
-                <VoiceRow
-                  label={L('Giọng mặc định của máy', 'Device default voice')}
-                  sub={L('Dùng giọng hệ thống đang đặt sẵn', 'Uses the system voice currently set')}
-                  selected={voiceId === null}
-                  onPress={() => {
-                    onChange(null);
-                    onPreview(null);
-                  }}
-                />
-                {voices.map((voice) => (
-                  <VoiceRow
-                    key={voice.identifier}
-                    label={voice.name}
-                    sub={regionOf(voice.language, en)}
-                    selected={voice.identifier === voiceId}
-                    onPress={() => {
-                      onChange(voice.identifier);
-                      onPreview(voice.identifier);
-                    }}
-                  />
-                ))}
-              </ScrollView>
-
-              <View className="border-t border-brand-soft px-5 py-3">
-                <Text className="font-sans text-label text-paper-muted">
-                  {L('Chạm vào một giọng để nghe thử ngay. Chọn xong thì đóng bảng lại.', 'Tap a voice to hear it right away. Close the panel when you’re done.')}
-                </Text>
-              </View>
-            </View>
-          </Pressable>
-        </Pressable>
-      </Modal>
-    </>
-  );
-}
-
-function VoiceRow({
-  label,
-  sub,
-  selected,
-  onPress,
-}: {
-  label: string;
-  sub: string;
-  selected: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      accessibilityRole="button"
-      aria-selected={selected}
-      onPress={onPress}
-      className="flex-row items-center gap-3 rounded-panel border px-3.5 py-3"
-      style={{
-        borderColor: selected ? paper.brandMid : paper.brandSoft,
-        backgroundColor: selected ? paper.brandTint : '#FFFFFF',
-      }}
+    <View
+      accessibilityLabel={L('Giọng đọc', 'Voice')}
+      className="flex-row items-center rounded-pill border border-brand-soft bg-white p-0.5"
     >
-      <View className="min-w-0 flex-1">
-        <Text className="font-semi text-body text-paper-ink" numberOfLines={1}>
-          {label}
-        </Text>
-        <Text className="font-sans text-label text-paper-muted">{sub}</Text>
-      </View>
-      {selected ? <Icon name="check" size={17} color={paper.brandMid} strokeWidth={2.4} /> : null}
-    </Pressable>
+      {options.map(({ g, label, voice }) => {
+        const on = gender === g;
+        return (
+          <Pressable
+            key={g}
+            accessibilityRole="button"
+            aria-selected={on}
+            disabled={!voice}
+            onPress={() => {
+              const st = useTopicStudyStore.getState();
+              setSettings({ ...st.learnSettings, voiceGender: g });
+              const id = voice?.identifier ?? null;
+              onChange(id);
+              onPreview(id);
+            }}
+            className="flex-row items-center gap-1 rounded-pill px-3 py-1.5"
+            style={{ backgroundColor: on ? paper.brandTint : 'transparent', opacity: voice ? 1 : 0.4, minHeight: 32 }}
+          >
+            {on ? <Icon name="volume" size={13} color={paper.brandMid} strokeWidth={2} /> : null}
+            <Text className="font-semi text-label" style={{ color: on ? paper.brandMid : paper.muted }}>
+              {label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
   );
 }
