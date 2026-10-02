@@ -12,7 +12,7 @@ import type { CityCanvasProps } from './CityCanvas';
 
 export type { CityCanvasProps } from './CityCanvas';
 
-export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMove, reducedMotion, hour, weather, debug }: CityCanvasProps) {
+export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMove, reducedMotion, hour, weather, debug, highlights, onHoverPoi, onPlayer, handleRef, hideFullscreenButton }: CityCanvasProps) {
   const locale = useLocale();
   // Bản đồ ảnh không tải được tranh → chuyển sang bản đồ ô dự phòng (nếu có).
   const [failedId, setFailedId] = useState<string | null>(null);
@@ -21,12 +21,12 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
   const boxRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const engineRef = useRef<CityEngine | null>(null);
-  const cbs = useRef({ onEnterPoi, onMove });
+  const cbs = useRef({ onEnterPoi, onMove, onHoverPoi, onPlayer });
   const latest = useRef({ state, reducedMotion, locale, hour, weather });
 
   // Giữ bản mới nhất của callback/props trong ref (cập nhật ở effect, không trong lúc render).
   useEffect(() => {
-    cbs.current = { onEnterPoi, onMove };
+    cbs.current = { onEnterPoi, onMove, onHoverPoi, onPlayer };
     latest.current = { state, reducedMotion, locale, hour, weather };
   });
 
@@ -39,12 +39,13 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
     const L = latest.current;
     const engine = new CityEngine(
       canvas,
-      { onEnterPoi: (id) => cbs.current.onEnterPoi(id), onMove: (t) => cbs.current.onMove(t), onImageError: () => setFailedId(mapProp.id), onToggleFullscreen: () => toggleFullscreen() },
+      { onEnterPoi: (id) => cbs.current.onEnterPoi(id), onMove: (t) => cbs.current.onMove(t), onImageError: () => setFailedId(mapProp.id), onToggleFullscreen: () => toggleFullscreen(), onHoverPoi: (id, at) => cbs.current.onHoverPoi?.(id, at), onPlayer: (p) => cbs.current.onPlayer?.(p) },
       map,
       L.state,
       { reducedMotion: L.reducedMotion || !!mq?.matches, locale: L.locale, hour: L.hour, weather: L.weather, debug: debugOn },
     );
     engineRef.current = engine;
+    if (handleRef) handleRef.current = { walkToPoi: (id) => engine.walkToPoi(id) };
     const fit = () => {
       const r = box.getBoundingClientRect();
       if (r.width > 0 && r.height > 0) engine.resize(r.width, r.height, window.devicePixelRatio || 1);
@@ -63,6 +64,7 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
       mq?.removeEventListener?.('change', onMq);
       engine.dispose();
       if (engineRef.current === engine) engineRef.current = null;
+      if (handleRef?.current) handleRef.current = null;
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [map]);
@@ -70,6 +72,10 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
   useEffect(() => {
     engineRef.current?.setState(state);
   }, [state]);
+
+  useEffect(() => {
+    engineRef.current?.setHighlights(highlights ?? {});
+  }, [highlights, map]);
 
   useEffect(() => {
     const mq = window.matchMedia?.('(prefers-reduced-motion: reduce)');
@@ -86,7 +92,7 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
           style={{ width: '100%', height: '100%', display: 'block', imageRendering: 'pixelated' }}
         />
       </div>
-      <FullscreenButton />
+      {hideFullscreenButton ? null : <FullscreenButton />}
     </View>
   );
 }

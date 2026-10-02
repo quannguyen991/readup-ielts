@@ -25,7 +25,8 @@ import { awardPractice, awardVisit, isClaimed, markClaimed, pointsOf } from '@/s
 import { applyVisit, type VisitResult } from '@/services/travel/rewards';
 import { emptyTravel, normalizeTravel, POS_UNSET, pruneSeen, withDerived, type TravelPayload } from '@/services/travel/sync';
 import type { CityId, Level, Tile } from '@/services/travel/types';
-import { canFly, type FlyCheck } from '@/services/travel/world';
+import { allMissions, claimMission as claimMissionPure, type ClaimResult as MissionClaim } from '@/services/travel/missions';
+import { canFly, CITY_ORDER, type FlyCheck } from '@/services/travel/world';
 
 /**
  * Kho "Du ngoạn Band 9". Vé và xu LUÔN tính lại từ sổ cái (`ledger`) — không cộng
@@ -54,6 +55,8 @@ type Actions = {
   setDecks: (decks: string[]) => void;
   /** Nhận quà của một mốc điểm hộ chiếu (một lần mỗi mốc, đồng bộ không nhận đôi). */
   claimTier: (tierId: string) => ClaimResult;
+  /** Nhận thưởng một nhiệm vụ (idempotent, có trần vé theo ngày/tuần — xem `services/travel/missions.ts`). */
+  claimMission: (id: string) => MissionClaim;
   reset: () => void;
 };
 
@@ -229,6 +232,16 @@ export const useTravelStore = create<TravelStore>()(
         });
         set({ ledger, tickets: ticketsOf(ledger), coins: coinsOf(ledger), updatedAt: nowIso() });
         return out;
+      },
+
+      claimMission: (id) => {
+        const m = allMissions(CITY_ORDER).find((x) => x.id === id);
+        if (!m) return { ok: false, reason: 'not-done', ledger: get().ledger, tickets: 0, coins: 0 };
+        const s = get();
+        const r = claimMissionPure(m, { ledger: s.ledger, poi: s.poi, souvenirs: s.souvenirs, dailyCaps: s.dailyCaps, day: todayKey() });
+        if (!r.ok) return r;
+        set({ ledger: r.ledger, tickets: ticketsOf(r.ledger), coins: coinsOf(r.ledger), updatedAt: nowIso() });
+        return r;
       },
 
       reset: () => set({ ...emptyTravel(todayKey()) }),

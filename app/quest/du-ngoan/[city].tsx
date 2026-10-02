@@ -10,6 +10,7 @@ import { useReducedMotion } from '@/components/travel/ui/hooks';
 import { Eyebrow, GameButton, PixelPanel, StarsRow, T } from '@/components/travel/ui/kit';
 import { CityCanvas } from '@/components/travel/scenes/CityCanvas';
 import { FsPortal, useFullscreen } from '@/components/travel/scenes/fullscreen';
+import { ImmersiveCity } from '@/components/travel/immersive/ImmersiveCity';
 import { Icon } from '@/components/ui/Icon';
 import { getPoiContent, poisOfCity } from '@/data/travel/pois';
 import { bi, useL } from '@/i18n/useL';
@@ -29,14 +30,10 @@ export default function CityRoute() {
   const { L, locale } = useL();
   const id = Array.isArray(raw) ? raw[0] : raw;
   const valid = isCityId(id);
+  if (ready && valid) return <City city={id} />;
   return (
-    <TaskShell
-      backHref="/quest/du-ngoan"
-      backLabel={L('Bản đồ thế giới', 'World map')}
-      title={valid ? bi(CITIES[id].name, locale) : L('Thành phố', 'City')}
-      right={<TravelHud />}
-    >
-      {ready && valid ? <City city={id} /> : null}
+    <TaskShell backHref="/quest/du-ngoan" backLabel={L('Bản đồ thế giới', 'World map')} title={valid ? bi(CITIES[id].name, locale) : L('Thành phố', 'City')} right={<TravelHud />}>
+      {null}
     </TaskShell>
   );
 }
@@ -95,7 +92,11 @@ function City({ city }: { city: keyof typeof CITIES }) {
   if (!here) return null;
   const canvasOk = Platform.OS === 'web' && !!map && !unset && !outside;
 
+  // Web có bản đồ: chế độ TOÀN MÀN HÌNH kiểu Bến Dừa (HUD nổi + ngăn Địa điểm / Nhiệm vụ), không dùng khung trang.
+  if (canvasOk) return <ImmersiveCity city={city} map={map!} fallbackMap={getFallbackMap(city)} state={state} onEnterPoi={enter} onMove={onMove} reducedMotion={reduced} />;
+
   return (
+    <TaskShell backHref="/quest/du-ngoan" backLabel={L('Bản đồ thế giới', 'World map')} title={bi(CITIES[city].name, locale)} right={<TravelHud />}>
     <View style={{ gap: 18 }}>
       {canvasOk ? (
         <FsPortal active={fs.active}>
@@ -160,5 +161,6 @@ function City({ city }: { city: keyof typeof CITIES }) {
         <GameButton label={L('Hộ chiếu', 'Passport')} tone="paper" onPress={() => router.push('/quest/du-ngoan/passport' as never)} />
       </View>
     </View>
+    </TaskShell>
   );
 }

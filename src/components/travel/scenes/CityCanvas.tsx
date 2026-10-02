@@ -1,4 +1,10 @@
+import type { MutableRefObject } from 'react';
+
+import type { PoiHighlights } from '../engine/CityEngine';
 import type { CityMap, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
+
+/** Cần điều khiển từ ngoài: tự đi tới một địa điểm. */
+export type CityCanvasHandle = { walkToPoi(id: string): boolean };
 
 /**
  * Bản iOS/Android: KHÔNG vẽ canvas — giai đoạn đầu native chỉ có trang danh sách địa điểm
@@ -18,6 +24,14 @@ export type CityCanvasProps = {
   fallbackMap?: CityMap;
   /** Lớp gỡ lỗi (vùng đi được/vùng chạm/cửa/tuyến); chỉ khi `__DEV__`. Mặc định theo `?debug=1`. */
   debug?: boolean;
+  /** Làm nổi địa điểm (nơi nên đi, đang rê trong danh sách, tập khoá). */
+  highlights?: PoiHighlights;
+  onHoverPoi?(id: string | null, at: { x: number; y: number }): void;
+  onPlayer?(p: { x: number; y: number }): void;
+  /** Nhận tay điều khiển (đi tới địa điểm). */
+  handleRef?: MutableRefObject<CityCanvasHandle | null>;
+  /** Ẩn nút toàn màn hình tự có (khi lớp giao diện bên ngoài đã có nút riêng). */
+  hideFullscreenButton?: boolean;
 };
 
 export function CityCanvas(_props: CityCanvasProps): null {
