@@ -5,7 +5,7 @@ import { router } from 'expo-router';
 import { Icon } from '@/components/ui/Icon';
 import { useCityStatus, useTravelReady } from '@/components/travel/useTravel';
 import { DeckBar } from '@/components/travel/ui/DeckPicker';
-import { GameButton, PixelPanel, StarsRow, StampGlyph, T, TicketGlyph } from '@/components/travel/ui/kit';
+import { GameButton, PixelPanel, PlaneGlyph, StarsRow, StampGlyph, T, TicketGlyph } from '@/components/travel/ui/kit';
 import { useReducedMotion } from '@/components/travel/ui/hooks';
 import { Onboarding } from '@/components/travel/ui/Onboarding';
 import { TravelPage } from '@/components/travel/ui/TravelPage';
@@ -14,6 +14,7 @@ import { bi, useL } from '@/i18n/useL';
 import { CITIES, CITY_ORDER, canFly } from '@/services/travel/world';
 import type { CityId } from '@/services/travel/types';
 import { pointsOf, readyTiers } from '@/services/travel/passport';
+import { learningProgress, nextStop } from '@/services/travel/flightProgress';
 import { useTravelStore } from '@/store/useTravelStore';
 
 /**
@@ -49,6 +50,8 @@ function World() {
   const fly = useTravelStore((s) => s.fly);
   const ledger = useTravelStore((s) => s.ledger);
   const points = pointsOf(ledger);
+  const flightP = learningProgress({ poi: poiState });
+  const flightPct = Math.round(flightP * 100);
   const ready = readyTiers(ledger).length;
   const [selected, setSelected] = useState<CityId | null>(null);
   const [flight, setFlight] = useState<Flight | null>(null);
@@ -115,6 +118,16 @@ function World() {
   return (
     <TravelPage title={L('Du ngoạn thế giới', 'Travel the world')}>
       <WorldMapView current={current} selected={sel} status={status} onSelect={setSelected} flight={flight} />
+
+      <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', gap: 10 }} accessibilityRole="progressbar" accessibilityLabel={L(`Chuyến bay học tập ${flightPct}%`, `Learning flight ${flightPct}%`)} accessibilityValue={{ min: 0, max: 100, now: flightPct }}>
+        <PlaneGlyph size={20} color={T.navy} />
+        <View style={{ flex: 1, height: 10, borderRadius: 5, backgroundColor: T.line, overflow: 'hidden' }}>
+          <View style={{ width: `${Math.max(2, flightPct)}%`, height: '100%', backgroundColor: T.goldDark }} />
+        </View>
+        <Text className="font-strong" style={{ fontSize: 14, color: T.ink }}>
+          {flightPct >= 100 ? L('Đã tới nơi', 'Arrived') : L(`${flightPct}% · tới ${bi(CITIES[nextStop(flightP)].name, locale)}`, `${flightPct}% · to ${bi(CITIES[nextStop(flightP)].name, locale)}`)}
+        </Text>
+      </View>
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 14 }} accessibilityRole="list">
         {CITY_ORDER.map((c) => {

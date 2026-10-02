@@ -9,6 +9,10 @@ import { Pressable, Text, View, type GestureResponderEvent } from 'react-native'
 import { Icon } from '@/components/ui/Icon';
 import { bi, useL } from '@/i18n/useL';
 import { CITIES, flightCost } from '@/services/travel/world';
+import { learningProgress } from '@/services/travel/flightProgress';
+import { routePoint, WORLD_ART } from '@/services/travel/worldGeometry';
+import { useTravelStore } from '@/store/useTravelStore';
+import { WorldAmbient } from '@/components/travel/ambient/WorldAmbient';
 import type { CityId } from '@/services/travel/types';
 import { useReducedMotion } from './hooks';
 import { PlaneGlyph, T, TicketGlyph } from './kit';
@@ -25,41 +29,11 @@ export type CityStatus = {
 
 export type Flight = { from: CityId; to: CityId; t: number };
 
-/** Điểm sáng vàng của từng thành phố trong ảnh (px nguồn, lưới 418×235). */
-export const WORLD_ART: Record<CityId, { x: number; y: number }> = {
-  london: { x: 51, y: 42 },
-  paris: { x: 70, y: 64 },
-  amsterdam: { x: 94, y: 49 },
-  rome: { x: 102, y: 80 },
-  hanoi: { x: 332, y: 107 },
-  danang: { x: 343, y: 127 },
-  hochiminh: { x: 337, y: 143 },
-  singapore: { x: 331, y: 155 },
-};
+export { WORLD_ART };
 
 const ORDER: CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
 
-/** Máy bay đi theo đường cong nhẹ giữa hai điểm sáng (khớp nét đường bay vẽ sẵn). */
-function route(a: CityId, b: CityId, t: number): { x: number; y: number; angle: number } {
-  const p0 = WORLD_ART[a];
-  const p1 = WORLD_ART[b];
-  const mx = (p0.x + p1.x) / 2;
-  const my = (p0.y + p1.y) / 2;
-  const dx = p1.x - p0.x;
-  const dy = p1.y - p0.y;
-  const len = Math.hypot(dx, dy) || 1;
-  const bow = Math.min(40, len * 0.18);
-  const nx = dy / len;
-  const ny = -dx / len;
-  const sign = ny <= 0 ? 1 : -1;
-  const cx = mx + nx * sign * bow;
-  const cy = my + ny * sign * bow;
-  const x = (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * cx + t * t * p1.x;
-  const y = (1 - t) * (1 - t) * p0.y + 2 * (1 - t) * t * cy + t * t * p1.y;
-  const tx = 2 * (1 - t) * (cx - p0.x) + 2 * t * (p1.x - cx);
-  const ty = 2 * (1 - t) * (cy - p0.y) + 2 * t * (p1.y - cy);
-  return { x, y, angle: (Math.atan2(ty, tx) * 180) / Math.PI };
-}
+const route = routePoint;
 
 export function WorldMapView({
   current,
@@ -82,15 +56,18 @@ export function WorldMapView({
   // Thành phố mở kế tiếp: đã mở, chưa đến, gần đường bay nhất từ nơi đang ở.
   const next = useMemo(() => ORDER.filter((c) => c !== current && status[c].unlocked && !status[c].visited).sort((a, b) => flightCost(current, a) - flightCost(current, b))[0] ?? null, [current, status]);
 
+  const poi = useTravelStore((s) => s.poi);
+  const progress = learningProgress({ poi });
   const focus = WORLD_ART[flight ? flight.to : selected ?? current];
   const plane = flight ? route(flight.from, flight.to, flight.t) : null;
 
   return (
     <FsPortal active={fs.active}>
     <View style={fs.active ? { flex: 1, justifyContent: 'center', padding: 8 } : null}>
-    <PixelStage source={{ uri: '/travel/maps/world.png' }} focus={focus} label={L('Bản đồ thế giới', 'World map')} fullscreenButton>
+    <PixelStage source={{ uri: '/travel/maps/world-clean.png' }} focus={focus} label={L('Bản đồ thế giới', 'World map')} fullscreenButton>
       {(k) => (
         <>
+          <WorldAmbient progress={progress} k={k} still={still} hidePlane={!!flight} />
           {/* Chạm ra ngoài các vòng: chọn thành phố GẦN NHẤT trong bán kính 28px (chỉ cho chuột / cảm ứng). */}
           <Pressable
             tabIndex={-1}

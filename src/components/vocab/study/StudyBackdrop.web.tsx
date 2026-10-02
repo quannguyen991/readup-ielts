@@ -9,6 +9,7 @@ import React, { useEffect } from 'react';
 import { View } from 'react-native';
 
 import { ArtBackdrop, ArtCaption, useStudyBackdrop } from '@/components/art/ArtBackdrop';
+import { WorldBackdrop } from '@/components/travel/ambient/WorldBackdrop.web';
 
 import { isArtTheme, themeOf, type StudyTheme } from './study-theme';
 
@@ -134,6 +135,8 @@ function Layers({ theme }: { theme: StudyTheme }) {
           })}
         </>
       );
+    case 'world':
+      return <WorldBackdrop />;
     default:
       return null;
   }
