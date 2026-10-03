@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import { VOCAB_TOPICS } from '../../src/data/vocab-topics';
+import pronunciationVoice from '../../src/data/pronunciation-voice.json';
 
 const root = path.resolve(__dirname, '../../public/audio/words');
 const load = (v: string) => {
@@ -19,6 +20,10 @@ const load = (v: string) => {
 const norm = (s: string) => s.trim().toLowerCase();
 const kore = new Set(Object.keys(load('kore')).map(norm));
 const fenrir = new Set(Object.keys(load('fenrir')).map(norm));
+const defaultIndex = load(pronunciationVoice.id);
+const defaultClips = new Set(Object.entries(defaultIndex)
+  .filter(([, file]) => fs.existsSync(path.join(root, pronunciationVoice.id, file)))
+  .map(([word]) => norm(word)));
 
 const all = new Map<string, string>();
 for (const t of VOCAB_TOPICS) for (const w of t.words) all.set(norm(w.word), t.slug);
@@ -26,7 +31,9 @@ const words = [...all.keys()];
 const single = words.filter((w) => /^[a-z'-]+$/.test(w));
 const inKore = words.filter((w) => kore.has(w)).length;
 const inFen = words.filter((w) => fenrir.has(w)).length;
+const inDefault = words.filter((w) => defaultClips.has(w)).length;
 console.log(`tổng từ/cụm khác nhau: ${words.length} (từ đơn: ${single.length}, cụm nhiều chữ: ${words.length - single.length})`);
+console.log(`giọng mặc định ${pronunciationVoice.name}: ${inDefault}/${words.length} = ${((inDefault / words.length) * 100).toFixed(1)}%`);
 console.log(`có clip Kore (Nữ): ${inKore} = ${((inKore / words.length) * 100).toFixed(1)}%`);
 console.log(`có clip Fenrir (Nam): ${inFen} = ${((inFen / words.length) * 100).toFixed(1)}%`);
 

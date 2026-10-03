@@ -214,7 +214,7 @@ export default function LearnScreen() {
   // lúc nó xuất hiện — làm đề, lật ra, hoặc lộ ra cùng đáp án (đúng hay sai đều đọc).
   const speakWhen = word && head ? autoSpeakWhen({ kind: head.kind, dir, flipped, revealed: verdict !== null }) : null;
   const shownWord: string | null = word && speakWhen ? word.word : null;
-  const speakKey = `${step}-${speakWhen ?? ""}`;
+  const speakKey = `${slug}-${seed}-${step}-${speakWhen ?? ""}`;
   useAutoPronounce(shownWord, speakKey);
   useEffect(() => {
     preloadPronunciation(round.map((w) => w.word));

@@ -54,3 +54,8 @@ Các giả thuyết cần loại trừ lần lượt (làm trong **Chrome thật
 ## 7. Việc phụ (sau khi nghe được)
 - Hoàn tất clip Kore cho 338 từ còn lại (chạy `gen_word_audio.py` khi có hạn mức), commit `public/audio/words/kore/` + deploy; sau đó **bỏ nhánh giọng máy dự phòng** để thật sự chỉ còn một giọng.
 - Màn Chính tả (`dictation.tsx`) còn ô chọn giọng máy nhưng đã vô hiệu; nên gỡ ô đó.
+# Cập nhật 03/10/2026 — đã sửa âm thanh, người dùng chọn Aoede
+
+Người dùng đã nghe mẫu và chọn **Aoede** làm giọng mặc định, đồng thời cho phép triển khai Vercel. Yêu cầu Kore trong nội dung bàn giao cũ bên dưới đã được thay thế. Cấu hình duy nhất hiện tại: `src/data/pronunciation-voice.json`.
+
+Nguyên nhân chính: `afade=t=out:d=0.04` không có thời điểm bắt đầu, làm MP3 gần như im lặng sau 40 ms. Đã sửa bộ cắt âm thanh, khôi phục 1.948 clip Kore từ WAV gốc và tạo 2.061 clip Aoede đã kiểm tra. Xem [báo cáo sửa lỗi](./KIEM-THU-AM-THANH-AOEDE.md) trước khi sửa tiếp.
