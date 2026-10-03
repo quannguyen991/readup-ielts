@@ -36,6 +36,7 @@ export async function gradeSpeaking(input: {
           typed: input.typed,
           metrics: input.metrics,
           model: result.model,
+          requireSamples: input.answers.length <= 2,
         });
       } catch (err) {
         throw new AiError('bad_response', err instanceof Error ? err.message : 'Phiếu chấm không hợp lệ.');

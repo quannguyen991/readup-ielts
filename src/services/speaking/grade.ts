@@ -127,6 +127,7 @@ export type GradeContext = {
   metrics: AttemptMetrics;
   model: string;
   now?: Date;
+  requireSamples?: boolean;
 };
 
 /**
@@ -136,7 +137,7 @@ export type GradeContext = {
  */
 export function volumeCap(metrics: AttemptMetrics): { cap: number | null; noteVi: string | null } {
   if (metrics.words < 25) return { cap: 3, noteVi: `Cả lượt chỉ có ${metrics.words} từ — quá ít để chấm, mọi tiêu chí bị giới hạn ở 3,0.` };
-  if (metrics.words < 60 || metrics.avgWords < 10)
+  if ((metrics.words < 60 && metrics.answers > 1) || metrics.avgWords < 10)
     return { cap: 5, noteVi: `Câu trả lời trung bình chỉ ${metrics.avgWords} từ — mọi tiêu chí bị giới hạn ở 5,0. Hãy trả lời dài hơn, có lý do và ví dụ.` };
   return { cap: null, noteVi: null };
 }
@@ -244,11 +245,14 @@ export function validateGrade(raw: unknown, ctx: GradeContext): SpeakingGrade {
       const improved = str(o.improved, 1600);
       if (qi < 0 || qi >= ctx.transcripts.length || improved.split(' ').length < 8) continue;
       if (samples.some((x) => x.questionIndex === qi)) continue;
-      samples.push({ questionIndex: qi, improved, whyVi: str(o.whyVi, 300) });
+      samples.push({ questionIndex: qi, improved, whyVi: str(o.whyVi, 900) });
       if (samples.length >= 2) break;
     }
   }
 
+  if (ctx.requireSamples && ctx.transcripts.length <= 2 && samples.length !== ctx.transcripts.length) {
+    throw new Error('Model chưa cung cấp bài mẫu cho từng câu cần luyện lại.');
+  }
   return {
     criteria,
     overall: ctx.typed ? null : overallBand([criteria.fc.band, criteria.lr.band, criteria.gr.band, criteria.pr.band]),
