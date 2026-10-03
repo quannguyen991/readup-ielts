@@ -1,5 +1,7 @@
 import { registerSyncedStore, type SyncedStore } from './engine';
 import { useLocaleStore } from '@/i18n/useT';
+import { repairReviews } from '@/services/vocab/review-schedule';
+import { todayKey } from '@/store/persist';
 import {
   mergeBilling,
   mergeMath,
@@ -318,6 +320,7 @@ const topicStudyStore: SyncedStore = {
       // Lịch ôn Leitner: hàm gộp đã lo từ 30/09 nhưng trước 01/10 chưa được đọc ra
       // nên không lên máy chủ — lời nhắc "còn N từ cần ôn" (cron) đọc trường này.
       reviews: s.reviews,
+      resets: s.resets,
       mistakeLog: s.mistakeLog,
       learnSettings: s.learnSettings,
       lastAt: s.lastAt,
@@ -330,7 +333,9 @@ const topicStudyStore: SyncedStore = {
       scores: (data.scores ?? {}) as never,
       starred: (data.starred ?? {}) as never,
       lapses: (data.lapses ?? {}) as never,
-      reviews: (data.reviews ?? {}) as never,
+      // Máy chủ có thể còn lịch cũ bị đẩy xa: sửa trước khi nhận.
+      reviews: repairReviews((data.reviews ?? {}) as never, todayKey()),
+      resets: (data.resets ?? {}) as never,
       mistakeLog: (data.mistakeLog ?? []) as never,
       learnSettings: (data.learnSettings ?? useTopicStudyStore.getState().learnSettings) as never,
       lastAt: (data.lastAt ?? {}) as never,

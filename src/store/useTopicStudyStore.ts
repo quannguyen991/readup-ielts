@@ -6,7 +6,7 @@ import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/se
 import type { MistakeKind } from '@/services/vocab/mistake';
 import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
-import { loadByDay, nextReview, type ReviewEntry } from '@/services/vocab/review-schedule';
+import { loadByDay, nextReview, repairReviews, type ReviewEntry } from '@/services/vocab/review-schedule';
 import { todayKey } from './persist';
 
 /** Một lỗi đã gọi tên ở màn học từ vựng — nguồn của Hồ sơ lỗi. */
@@ -36,6 +36,8 @@ type TopicStudyState = {
   addLapse: (slug: string, word: string) => void;
   /** slug → từ → hộp ôn + ngày đến hạn (`services/vocab/review-schedule.ts`). */
   reviews: Record<string, Record<string, ReviewEntry>>;
+  /** slug → lúc bấm "Xoá tiến độ" (dấu xoá để đồng bộ nhiều máy không làm sống lại tiến độ cũ). */
+  resets: Record<string, string>;
   /** Ghi một lần trả lời (đúng / sai) vào lịch ôn theo ngày. */
   review: (slug: string, word: string, correct: boolean) => void;
   /** Nhật ký lỗi đã gọi tên (mới nhất cuối), giữ tối đa 400 dòng. */
@@ -68,6 +70,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       starred: {},
       lapses: {},
       reviews: {},
+      resets: {},
       review: (slug, word, correct) =>
         set((s) => {
           const today = todayKey();
@@ -125,7 +128,10 @@ export const useTopicStudyStore = create<TopicStudyState>()(
           delete lapses[slug];
           const reviews = { ...s.reviews };
           delete reviews[slug];
-          return { stages, lapses, reviews };
+          const lastAt = { ...s.lastAt };
+          delete lastAt[slug];
+          // Dấu xoá: gộp với máy khác không được làm sống lại tiến độ cũ.
+          return { stages, lapses, reviews, lastAt, resets: { ...s.resets, [slug]: new Date().toISOString() } };
         }),
     }),
     {
@@ -133,7 +139,7 @@ export const useTopicStudyStore = create<TopicStudyState>()(
       storage: storage<TopicStudyState>(),
       version: 1,
       partialize: (s) =>
-        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx }) as TopicStudyState,
+        ({ stages: s.stages, scores: s.scores, starred: s.starred, lapses: s.lapses, reviews: s.reviews, resets: s.resets, mistakeLog: s.mistakeLog, learnSettings: s.learnSettings, lastAt: s.lastAt, studyTheme: s.studyTheme, studyFx: s.studyFx }) as TopicStudyState,
       // Bản lưu cũ chưa có trường cài đặt mới: trộn với mặc định thay vì để undefined.
       merge: (persisted, current) => {
         // Bài SAT Math đổi cấu trúc 29/09/2026: dời tiến độ theo từ sang bài mới.
@@ -144,7 +150,10 @@ export const useTopicStudyStore = create<TopicStudyState>()(
         if (k.length === 3 && ['flash', 'mcq', 'type'].every((x) => k.includes(x as never))) learnSettings.kinds = [...DEFAULT_LEARN_SETTINGS.kinds];
         const studyTheme = isThemeId((p as { studyTheme?: unknown }).studyTheme) ? (p as { studyTheme: ThemeId }).studyTheme : 'scene';
         const studyFx = (p as { studyFx?: unknown }).studyFx === true;
-        return { ...current, ...p, learnSettings, studyTheme, studyFx };
+        // Lịch ôn lưu bởi bản cũ có thể bị đẩy xa quá cửa sổ của hộp (trần 15 từ/ngày): kéo về, xếp từ hôm nay.
+        const reviews = repairReviews((p as { reviews?: Record<string, Record<string, ReviewEntry>> }).reviews, todayKey());
+        const resets = (p as { resets?: Record<string, string> }).resets ?? {};
+        return { ...current, ...p, reviews, resets, learnSettings, studyTheme, studyFx };
       },
     },
   ),
