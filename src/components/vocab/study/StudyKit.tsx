@@ -6,8 +6,7 @@ import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/data/study-decks";
 import { router, usePathname } from "expo-router";
 import { isVocabStudyRoute } from "@/navigation/focus-routes";
-import * as Speech from "expo-speech";
-import { pronounce, stopPronounce } from "@/services/audio/pronounce";
+import { pronounce } from "@/services/audio/pronounce";
 import { flushPersist } from "@/store/persist";
 import { StudyThemeProvider, useStoreTheme, useStudyTheme } from "./useStudyTheme";
 import { useTopicStudyStore } from "@/store/useTopicStudyStore";
@@ -51,17 +50,9 @@ export function speak(
   text: string,
   opts: { rate?: number; voice?: string | null } = {},
 ) {
-  // Mọi tiếng đi qua một cửa: clip Gemini (từ/câu có sẵn) → bản ghi âm người → giọng máy.
-  if (!opts.voice) {
-    void pronounce(text, { rate: opts.rate });
-    return;
-  }
-  stopPronounce();
-  Speech.speak(text, {
-    language: "en-US",
-    rate: opts.rate ?? 0.9,
-    voice: opts.voice,
-  });
+  // MỘT giọng cho cả app: mọi tiếng đi qua một cửa (clip Gemini Kore; giọng máy chỉ tạm khi chưa có clip).
+  // `voice` (chọn giọng máy ở màn Chính tả) không còn tác dụng.
+  void pronounce(text, { rate: opts.rate });
 }
 
 /**

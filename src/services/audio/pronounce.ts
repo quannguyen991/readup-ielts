@@ -4,7 +4,7 @@ import * as Speech from 'expo-speech';
 
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { englishVoice, voiceGender } from './voice';
-import { clipVoiceFor, createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
+import { clipVoiceFor, createClipLibrary, type Accent, type ClipVoice } from './pronounce-core';
 
 export type { Accent } from './pronounce-core';
 
@@ -19,7 +19,6 @@ export type { Accent } from './pronounce-core';
  * Mọi lần phát đều dừng lần trước — không bao giờ chồng tiếng.
  */
 
-const lookup = createLookup();
 /** Kho clip giọng Gemini (Kore / Fenrir): từ + cụm từ, rồi câu. Thiếu thư mục / index thì bỏ qua. */
 export const clips = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'] });
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined' && typeof Audio !== 'undefined';
@@ -102,6 +101,11 @@ export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean };
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
 let shared: HTMLAudioElement | null = null;
 let unlockArmed = false;
+function needsSharedAudio(): boolean {
+  if (typeof navigator === 'undefined') return false;
+  const ua = navigator.userAgent;
+  return /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && (navigator.maxTouchPoints ?? 0) > 1);
+}
 function sharedAudio(): HTMLAudioElement {
   shared ??= new Audio();
   return shared;
@@ -119,7 +123,7 @@ function armAudioUnlock() {
     window.removeEventListener('keydown', go, true);
     try {
       const a = sharedAudio();
-      if (!current) {
+      if (!current && needsSharedAudio()) {
         a.src = SILENT_WAV;
         void a.play().then(() => a.pause()).catch(() => undefined);
       }
@@ -137,7 +141,7 @@ function armAudioUnlock() {
 }
 armAudioUnlock();
 
-const PLAY_TIMEOUT_MS = 2500;
+const PLAY_TIMEOUT_MS = 6000;
 
 /**
  * Phát một mp3 qua bộ quản lý âm thanh DUY NHẤT (mỗi lúc một tiếng, dừng tiếng trước).
@@ -153,11 +157,14 @@ export async function playClipUrl(
   try {
     // MỘT phần tử <audio> dùng chung, đã được "mở khoá" bằng cử chỉ đầu tiên của người dùng: iOS Safari chỉ cho
     // phát tự động trên phần tử đã mở khoá, còn `new Audio()` mới mỗi lần bị chặn khi không nằm trong lúc chạm.
-    const a = sharedAudio();
-    try {
-      a.pause();
-    } catch {
-      /* bỏ qua */
+    // Máy tính / Android: một phần tử MỚI mỗi lần (đã chạy tốt); chỉ iPhone / iPad mới cần phần tử dùng chung đã mở khoá.
+    const a = needsSharedAudio() ? sharedAudio() : new Audio();
+    if (a === shared) {
+      try {
+        a.pause();
+      } catch {
+        /* bỏ qua */
+      }
     }
     a.src = url;
     a.playbackRate = (opts.rate ?? 0.9) <= 0.7 ? 0.8 : 1;
@@ -187,7 +194,8 @@ export async function playClipUrl(
     // nếu không từ đó mất bản ghi âm thật cả phiên và lặng lẽ lùi về giọng máy.
     if (name === 'AbortError' || my !== token) return { ok: false, blocked: false };
     if (current && my === token) current = null;
-    badUrls.add(url); // 404 / không giải mã được / quá giờ: lần sau khỏi thử lại
+    // Quá giờ chỉ là mạng chậm / tab nền: lần này lùi về giọng máy nhưng KHÔNG đánh dấu clip hỏng. Chỉ lỗi thật (404, không giải mã được) mới đánh dấu.
+    if (name !== 'TimeoutError') badUrls.add(url);
     return { ok: false, blocked: false };
   }
 }
@@ -247,33 +255,6 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
  * Nạp sẵn bản ghi âm của các từ sắp tới. Thử lần lượt từng đường dẫn: cái nào 404 thì
  * đánh dấu hỏng (lúc phát khỏi chờ), cái nào tải được thì giữ lại cho trình duyệt nhớ.
  */
-const preloaded = new Map<string, HTMLAudioElement>();
-const probing = new Set<string>();
-function probe(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    try {
-      const a = new Audio();
-      const done = (ok: boolean) => {
-        clearTimeout(timer);
-        if (ok) {
-          preloaded.set(url, a);
-          if (preloaded.size > 24) preloaded.delete(preloaded.keys().next().value as string);
-        } else {
-          badUrls.add(url);
-        }
-        resolve(ok);
-      };
-      const timer = setTimeout(() => resolve(true), 5000); // chưa rõ: không kết luận là hỏng
-      a.preload = 'auto';
-      a.onloadeddata = () => done(true);
-      a.onerror = () => done(false);
-      a.src = url;
-    } catch {
-      resolve(true);
-    }
-  });
-}
-
 export function preloadPronunciation(_words?: readonly string[], _accent?: Accent): void {
   if (!isWeb) return;
   void clips.warm(currentClipVoice());
