@@ -14,7 +14,6 @@ import * as Speech from 'expo-speech';
  * Máy không có giọng nữ nào thì dùng giọng tiếng Anh tốt nhất còn lại (không nam).
  */
 import { bestVoiceFor, type Gender, type VoiceInfo } from './voice-pick';
-import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 
 let all: VoiceInfo[] = [];
 const chosen: Partial<Record<Gender, string>> = {};
@@ -22,7 +21,8 @@ let loading = false;
 
 /** Giới đang chọn ("Nữ / Nam" trong Cài đặt học từ), mặc định nữ. */
 export function voiceGender(): Gender {
-  return useTopicStudyStore.getState().learnSettings.voiceGender === 'm' ? 'm' : 'f';
+  // MỘT giọng duy nhất cho cả app (Kore, nữ) theo yêu cầu của chủ dự án; không còn lựa chọn giọng nam / vùng miền.
+  return 'f';
 }
 
 /** Nạp danh sách giọng (trên web danh sách tới trễ nên hỏi lại vài lần). */

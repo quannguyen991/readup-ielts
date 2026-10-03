@@ -145,18 +145,6 @@ export function LearnSettingsSheet({
                 <Icon name="volume" size={18} color={draft.autoPronounce ? color.primary : '#64748B'} />
                 <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Tự phát âm', 'Auto-pronounce')}</Text>
               </Row>
-              <Row on={draft.voiceGender !== 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'f' })}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nữ', 'Female voice')}</Text>
-              </Row>
-              <Row on={draft.voiceGender === 'm'} onPress={() => setDraft({ ...draft, voiceGender: 'm' })}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Giọng nam', 'Male voice')}</Text>
-              </Row>
-              <Row on={draft.accent === 'us'} onPress={() => setDraft({ ...draft, accent: 'us' })}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Mỹ', 'American')}</Text>
-              </Row>
-              <Row on={draft.accent === 'uk'} onPress={() => setDraft({ ...draft, accent: 'uk' })}>
-                <Text className="flex-1 font-sans text-bodyLg text-ink">{L('Anh–Anh', 'British')}</Text>
-              </Row>
             </Section>
 
             <Section title={L('Nhóm từ', 'Word filter')} warn={matches === 0 && !noDir && !noKind ? L('Không còn từ nào khớp bộ lọc này.', 'No words match this filter.') : undefined}>

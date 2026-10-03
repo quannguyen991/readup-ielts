@@ -3,7 +3,6 @@ import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
-import { isSfxMuted } from './sfx';
 import { englishVoice, voiceGender } from './voice';
 import { clipVoiceFor, createClipLibrary, createLookup, isSingleWord, planPlayback, type Accent, type ClipVoice } from './pronounce-core';
 
@@ -221,12 +220,11 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   const my = token;
   const accent = opts.accent ?? autoPronounceSettings().accent;
   const rate = opts.rate ?? 0.9;
-  const gender = voiceGender();
 
   try {
-    // 1) Clip Gemini.
+    // MỘT giọng duy nhất của cả app: clip Gemini Kore. Không còn bản ghi âm người thật hay giọng nam / Anh–Anh.
     if (isWeb) {
-      const url = await clips.find(clipVoiceFor(gender), word);
+      const url = await clips.find(currentClipVoice(), word);
       if (my !== token) return;
       if (url) {
         const r = await playClipUrl(url, { rate, my });
@@ -238,25 +236,7 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
         }
       }
     }
-    // 2) Bản ghi âm người thật — chỉ từ đơn, giọng Nữ.
-    if (!isWeb || !isSingleWord(word) || gender === 'm') {
-      tts(word, accent, rate, { auto: opts.auto, my });
-      return;
-    }
-    const plan = await planPlayback(word, accent, lookup);
-    if (my !== token) return; // đã có lần phát mới hơn
-    if (plan.kind === 'audio') {
-      for (const u of [plan.url, ...plan.alts]) {
-        const r = await playClipUrl(u, { rate, my });
-        if (my !== token) return;
-        if (r.ok) return;
-        if (r.blocked) {
-          if (opts.auto) retryOnGesture(() => void pronounce(word, { ...opts, auto: false }));
-          return;
-        }
-      }
-    }
-    // 3) Giọng máy.
+    // Chưa có clip của mục này (kho clip đang được sinh dần): giọng máy chỉ là TẠM THỜI để không im lặng.
     tts(word, accent, rate, { auto: opts.auto, my });
   } catch {
     if (my === token) tts(word, accent, rate, { auto: opts.auto, my });
@@ -294,24 +274,9 @@ function probe(url: string): Promise<boolean> {
   });
 }
 
-export function preloadPronunciation(words: readonly string[], accent?: Accent): void {
+export function preloadPronunciation(_words?: readonly string[], _accent?: Accent): void {
   if (!isWeb) return;
   void clips.warm(currentClipVoice());
-  if (voiceGender() === 'm') return;
-  const acc = accent ?? autoPronounceSettings().accent;
-  void (async () => {
-    for (const w of words) {
-      const key = `${acc}|${w}`;
-      if (!isSingleWord(w) || probing.has(key)) continue;
-      probing.add(key);
-      const p = await planPlayback(w, acc, lookup);
-      if (p.kind !== 'audio') continue;
-      for (const u of [p.url, ...p.alts]) {
-        if (badUrls.has(u)) continue;
-        if (preloaded.has(u) || (await probe(u))) break;
-      }
-    }
-  })();
 }
 
 /** Mỗi khoảng này một cặp (khoá, từ) chỉ tự phát một lần — chống React dựng lại hai lần. */
@@ -326,7 +291,9 @@ let lastAutoAt = 0;
 export function autoSpeak(word: string | null | undefined, id: string): boolean {
   if (!word) return false;
   const { auto } = autoPronounceSettings();
-  if (!auto || isSfxMuted()) return false;
+  // KHÔNG xét tắt tiếng hiệu ứng game: đó là âm thanh chém quái / chuông, còn phát âm là nội dung học. Người học muốn im
+  // thì tắt "Tự phát âm" ở Cài đặt học (nếu gộp hai thứ, tắt tiếng game sẽ lặng lẽ làm mất luôn tiếng đọc từ).
+  if (!auto) return false;
   const full = `${id}|${word}`;
   const now = Date.now();
   if (full === lastAuto && now - lastAutoAt < 1500) return false;
@@ -338,7 +305,7 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
 
 /**
  * Tự đọc `word` khi nó hiện ra (đổi `word` hoặc `key` = thẻ mới). `word` rỗng/null
- * thì im. Tôn trọng công tắc "Tự phát âm" và tắt tiếng của app.
+ * thì im. Chỉ theo công tắc "Tự phát âm" (không theo tắt tiếng hiệu ứng game).
  */
 export function useAutoPronounce(word: string | null | undefined, key: string | number = ''): void {
   useEffect(() => {
