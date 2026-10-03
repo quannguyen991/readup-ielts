@@ -28,3 +28,12 @@ Kho từ vựng có 2.064 mục chuẩn hóa; Aoede có 2.061 mục (99,85%). Ba
 Các WAV, nhãn, bản nhận dạng, báo cáo tín hiệu và log kiểm thử nằm trong `tmp-art/` (không đưa lên website). Chỉ đưa MP3 có trong index lên Vercel. Có thể thêm `?audioDebug=1` vào URL học để thu sự kiện phát trong console; bình thường không ghi log này.
 
 Triển khai từ worktree sạch để tránh đưa thay đổi lịch sử/du ngoạn của các phiên khác vào bản phát âm.
+
+## Triển khai và xác nhận production
+
+- Vercel: `https://readup-ielts-cxrpli1pu-siu6.vercel.app`, trạng thái Ready, alias `https://band9-ielts.vercel.app`; commit mã `8692097`, nhánh `codex/vocab-auto-audio-aoede`.
+- Index Aoede trên domain chính trả HTTP 200 và khớp toàn bộ index 2.061 mục local.
+- Bảy clip đại diện (`pollution`, `emission`, `biodiversity`, `accommodation`, `recalcitrant`, `inscription`, `medal`) trả 200 / audio/mpeg và SHA-256 khớp bản local đã kiểm tra tín hiệu.
+- Chrome trên domain chính ghi nhận `playing` rồi `ended` cho `/audio/words/aoede/emission-bcf5d1.mp3`; thời gian phát tiến đến 1,474375 giây, tab hiển thị, không mute, âm lượng 1.
+- Bằng chứng: `tmp-art/production-aoede-proof.json`, `tmp-art/aoede-browser-events.json`, `tmp-art/aoede-production.jpg`, `tmp-art/vercel-aoede-deploy.log`.
+- Chrome có thể chặn lần tự phát đầu khi chưa có thao tác trên trang. Sau một lần bấm/chạm, chỉ từ hiện tại được phát lại; các lượt đã hủy không được phát muộn.
