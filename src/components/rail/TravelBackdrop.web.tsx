@@ -53,12 +53,23 @@ export function useTravelBackdropOn(): boolean {
  * — màn ôn từ vựng luôn là làm bài; chép chính tả / viết câu chỉ khi đã mở một bộ.
  */
 export function useTravelActive(): boolean {
-  const on = useTravelBackdropOn();
   const pathname = usePathname();
   const practicing = useTravelPractice((s) => s.count > 0);
-  // Màn ôn từ chỉ chạy cảnh bay khi người học bật "Nền & hiệu ứng" và chọn chủ đề Cảnh bay pixel.
-  const sceneStudy = useStoreThemeId() === 'scene' && isVocabStudyRoute(pathname);
-  return sceneStudy || (on && isTravelLightRoute(pathname) && practicing);
+  const themeId = useStoreThemeId();
+  // Cảnh bay (canvas) chỉ chạy khi người học bật "Nền & hiệu ứng" và chọn chủ đề "Cảnh bay pixel" —
+  // ở màn ôn từ vựng và ở màn luyện câu (chỉ khi đang làm bài). Mọi chủ đề khác là nền tĩnh/CSS, không phải cảnh bay.
+  return themeId === 'scene' && (isVocabStudyRoute(pathname) || (isTravelLightRoute(pathname) && practicing));
+}
+
+/**
+ * Chủ đề nền đang áp cho màn LUYỆN CÂU (chép chính tả, dịch câu, nghe chép, chép theo video) khi đang làm bài;
+ * 'plain' nếu không phải màn đó, chưa vào bài, hoặc người học tắt "Nền & hiệu ứng". Dùng chung cài đặt với màn học từ.
+ */
+export function useSentenceThemeId(): string {
+  const pathname = usePathname();
+  const practicing = useTravelPractice((s) => s.count > 0);
+  const themeId = useStoreThemeId();
+  return isTravelLightRoute(pathname) && practicing ? themeId : 'plain';
 }
 
 /** Ô nhiễu 128×128 (SVG feTurbulence, xám) — lát kín, dùng để làm mịn dải chuyển sắc. */
@@ -71,8 +82,14 @@ export function TravelBackdrop({ color, tone = 'dark', children }: { color: stri
   // Màn ôn từ vựng: nền phẳng (mặc định) hoặc chủ đề người học chọn; chỉ chủ đề "Cảnh bay pixel" mới dựng cảnh canvas.
   if (hydrated && tone === 'dark' && themeId !== 'scene') return <StudyBackdrop id={themeId}>{children}</StudyBackdrop>;
   if (hydrated && tone === 'dark') return <Travel color={color} tone={tone}>{children}</Travel>;
+  // Màn luyện câu (tông sáng): nền theo chủ đề người học chọn — phẳng, cảnh bay, hoặc nền chủ đề / tranh.
+  if (tone === 'light') {
+    if (!hydrated || themeId === 'plain') return <LightGrid>{children}</LightGrid>;
+    if (themeId === 'scene') return <Travel color={color} tone={tone}>{children}</Travel>;
+    return <StudyBackdrop id={themeId}>{children}</StudyBackdrop>;
+  }
   // Trước khi hydrate (và khi người dùng tắt) giữ nền cũ: máy chủ không biết cài đặt của máy này.
-  if (!hydrated || !on) return tone === 'light' ? <LightGrid>{children}</LightGrid> : <OliveGrid color={color}>{children}</OliveGrid>;
+  if (!hydrated || !on) return <OliveGrid color={color}>{children}</OliveGrid>;
   return (
     <Travel color={color} tone={tone}>
       {children}

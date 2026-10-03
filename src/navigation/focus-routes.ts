@@ -103,8 +103,8 @@ export function isLookupBlocked(pathname: string): boolean {
   return NO_LOOKUP.some((re) => re.test(pathname));
 }
 
-/** Màn luyện câu có nền cảnh bay (tông sáng): chép chính tả, dịch / viết câu. */
-const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate)$/;
+/** Màn luyện câu có nền cá nhân hoá (cảnh bay, cảnh thành phố, tranh…; tông sáng): chép chính tả, dịch câu, nghe chép, chép theo video. */
+const TRAVEL_LIGHT = /^\/sentence\/(dictation|translate|listen|youtube)$/;
 
 /** Màn có nền cảnh bay: ôn từ vựng (tông tối) + luyện câu (tông sáng). */
 export function isTravelRoute(pathname: string): boolean {
@@ -147,7 +147,7 @@ export function isExamRoute(pathname: string): boolean {
  * trợ lý — màn tự vẽ thanh trên riêng (phòng thi Reading kiểu đề máy).
  */
 export function isImmersiveRoute(pathname: string): boolean {
-  return /^\/read\/[^/]+$/.test(pathname);
+  return /^\/read\/[^/]+$/.test(pathname) || /^\/history\/[^/]+$/.test(pathname);
 }
 
 /**

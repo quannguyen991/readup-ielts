@@ -250,7 +250,7 @@ function lowEndHint(): boolean {
  * Bật thì chọn chủ đề; áp dụng NGAY (không qua bản nháp, không bắt đầu lại vòng) nên nền phía sau bảng
  * đổi theo như xem trước. Mỗi thẻ là một ô màu nhỏ làm bằng CSS gradient.
  */
-function ThemePicker() {
+export function ThemePicker() {
   const { L, en } = useL();
   const fx = useTopicStudyStore((s) => s.studyFx);
   const setFx = useTopicStudyStore((s) => s.setStudyFx);
