@@ -99,6 +99,45 @@ function retryOnGesture(fn: () => void) {
 
 export type PronounceOpts = { accent?: Accent; rate?: number; auto?: boolean };
 
+/** WAV im lặng ~0 mẫu, chỉ để "mở khoá" phần tử âm thanh trong lần chạm đầu tiên. */
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=';
+let shared: HTMLAudioElement | null = null;
+let unlockArmed = false;
+function sharedAudio(): HTMLAudioElement {
+  shared ??= new Audio();
+  return shared;
+}
+
+/**
+ * Mở khoá âm thanh ở cử chỉ ĐẦU TIÊN (chạm / bấm phím) ở bất kỳ đâu trong app: phát một đoạn im lặng trên phần tử dùng chung
+ * và nói một câu rỗng bằng giọng máy. Từ đó trở đi các lần tự phát âm (không nằm trong lúc chạm) vẫn được phép — kể cả iOS.
+ */
+function armAudioUnlock() {
+  if (unlockArmed || !isWeb) return;
+  unlockArmed = true;
+  const go = () => {
+    window.removeEventListener('pointerdown', go, true);
+    window.removeEventListener('keydown', go, true);
+    try {
+      const a = sharedAudio();
+      if (!current) {
+        a.src = SILENT_WAV;
+        void a.play().then(() => a.pause()).catch(() => undefined);
+      }
+    } catch {
+      /* bỏ qua */
+    }
+    try {
+      if (typeof speechSynthesis !== 'undefined') speechSynthesis.speak(new SpeechSynthesisUtterance(''));
+    } catch {
+      /* bỏ qua */
+    }
+  };
+  window.addEventListener('pointerdown', go, true);
+  window.addEventListener('keydown', go, true);
+}
+armAudioUnlock();
+
 const PLAY_TIMEOUT_MS = 2500;
 
 /**
@@ -113,7 +152,15 @@ export async function playClipUrl(
   if (!isWeb || badUrls.has(url)) return { ok: false, blocked: false };
   const my = opts.my ?? token;
   try {
-    const a = new Audio(url);
+    // MỘT phần tử <audio> dùng chung, đã được "mở khoá" bằng cử chỉ đầu tiên của người dùng: iOS Safari chỉ cho
+    // phát tự động trên phần tử đã mở khoá, còn `new Audio()` mới mỗi lần bị chặn khi không nằm trong lúc chạm.
+    const a = sharedAudio();
+    try {
+      a.pause();
+    } catch {
+      /* bỏ qua */
+    }
+    a.src = url;
     a.playbackRate = (opts.rate ?? 0.9) <= 0.7 ? 0.8 : 1;
     current = a;
     a.onended = () => {
@@ -133,8 +180,14 @@ export async function playClipUrl(
     return { ok: true, blocked: false };
   } catch (e) {
     const name = (e as { name?: string })?.name;
+    if (name === 'NotAllowedError') {
+      if (current && my === token) current = null;
+      return { ok: false, blocked: true };
+    }
+    // Bị CẮT NGANG (lượt phát mới / người học bấm sang câu khác): không phải lỗi của clip — đừng đánh dấu hỏng,
+    // nếu không từ đó mất bản ghi âm thật cả phiên và lặng lẽ lùi về giọng máy.
+    if (name === 'AbortError' || my !== token) return { ok: false, blocked: false };
     if (current && my === token) current = null;
-    if (name === 'NotAllowedError') return { ok: false, blocked: true };
     badUrls.add(url); // 404 / không giải mã được / quá giờ: lần sau khỏi thử lại
     return { ok: false, blocked: false };
   }
