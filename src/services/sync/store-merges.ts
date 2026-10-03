@@ -212,12 +212,37 @@ export type TopicStudyPayload = {
   lastAt: Record<string, string>;
   /** Lịch ôn theo ngày (có từ 30/09/2026 — bản cũ không có). */
   reviews?: Record<string, Record<string, ReviewEntry>>;
+  /** slug → lúc người học bấm "Xoá tiến độ" bộ đó (dấu xoá để gộp nhiều máy không làm sống lại). */
+  resets?: Record<string, string>;
 };
 
+/**
+ * "Xoá tiến độ bộ này" phải KHÔNG sống lại khi gộp với máy khác (phép gộp là hợp + lấy lớn nhất nên nếu không có
+ * dấu xoá thì bản cũ ở máy kia sẽ trả mọi từ về). `resets[slug]` = lúc xoá. Phía nào có hoạt động bộ đó (`lastAt`)
+ * không muộn hơn lúc xoá thì dữ liệu từng từ của bộ đó ở phía ấy là CŨ → bỏ; học lại sau khi xoá thì `lastAt` mới hơn → giữ.
+ */
+function dropStaleAfterReset(side: TopicStudyPayload, resets: Record<string, string>): TopicStudyPayload {
+  const slugs = Object.keys(resets);
+  if (!slugs.length) return side;
+  const out: TopicStudyPayload = { ...side, stages: { ...side.stages }, lapses: { ...side.lapses }, reviews: { ...(side.reviews ?? {}) } };
+  for (const slug of slugs) {
+    if ((side.lastAt?.[slug] ?? '') > resets[slug]!) continue;
+    delete out.stages[slug];
+    delete out.lapses[slug];
+    delete out.reviews![slug];
+  }
+  return out;
+}
+
 export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicStudyPayload {
-  const a = (local as TopicStudyPayload | null) ?? emptyTopicStudy();
-  const b = remote as TopicStudyPayload | null;
+  let a = (local as TopicStudyPayload | null) ?? emptyTopicStudy();
+  let b = remote as TopicStudyPayload | null;
   if (!b) return a;
+  const resets: Record<string, string> = {};
+  for (const side of [a, b])
+    for (const [slug, at] of Object.entries(side.resets ?? {})) if (at > (resets[slug] ?? '')) resets[slug] = at;
+  a = dropStaleAfterReset(a, resets);
+  b = dropStaleAfterReset(b, resets);
 
   // Stages: hợp theo từng slug, với mỗi từ lấy stage lớn hơn (0: chưa học, 1: nhận ra, 2: nhớ được)
   const allStageSlugs = unionStrings(Object.keys(a.stages ?? {}), Object.keys(b.stages ?? {}));
@@ -314,6 +339,7 @@ export function mergeTopicStudy(local: unknown, remote: unknown | null): TopicSt
     learnSettings: { ...(b.learnSettings ?? {}), ...(a.learnSettings ?? {}) },
     lastAt,
     reviews,
+    resets,
   };
 }
 
