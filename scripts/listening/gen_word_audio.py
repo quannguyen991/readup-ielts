@@ -8,7 +8,26 @@ import sys, json, base64, time, pathlib, subprocess, urllib.request, urllib.erro
 
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-KEY = pathlib.Path("D:/Claude/.secrets/google-api.key").read_text().strip()
+def _load_keys():
+    """Nhiều khoá (mỗi khoá một hạn mức riêng): hết lượt khoá này thì chuyển khoá kế. Thứ tự: khoá mới trước."""
+    sec = pathlib.Path("D:/Claude/.secrets")
+    out = []
+    f = sec / "google-api-keys.txt"
+    if f.exists():
+        out += [x.strip() for x in f.read_text().splitlines() if x.strip()]
+    for name in ("google-api-2.key", "google-api.key"):
+        p = sec / name
+        if p.exists():
+            out.append(p.read_text().strip())
+    seen, uniq = set(), []
+    for k in out:
+        if k not in seen:
+            seen.add(k); uniq.append(k)
+    return uniq
+
+
+KEYS = _load_keys()
+KEY_I = 0
 args = sys.argv[1:]
 opt = lambda n, d=None: args[args.index(n) + 1] if n in args else d
 VOICE = opt("--voice", "Kore")
@@ -34,21 +53,30 @@ def slug(s):
 def tts(text):
     body = {"contents": [{"parts": [{"text": text}]}],
             "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": VOICE}}}}}
-    for lan in range(5):
+    global KEY_I
+    for lan in range(8):
         try:
-            rq = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={KEY}",
+            if KEY_I >= len(KEYS):
+                raise SystemExit("Hết lượt trong ngày của " + MODEL + " (đã thử hết " + str(len(KEYS)) + " khoá)")
+            rq = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent?key={KEYS[KEY_I]}",
                                         json.dumps(body).encode(), {"Content-Type": "application/json"})
             d = json.load(urllib.request.urlopen(rq, timeout=900))
+            if "candidates" not in d:
+                print("  ! không có candidates:", json.dumps(d)[:200]); time.sleep(10); continue
             b = base64.b64decode(d["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])
             if b[:4] != b"RIFF":
                 o = io.BytesIO(); w = wave.open(o, "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(24000); w.writeframes(b); w.close(); b = o.getvalue()
             return b
         except urllib.error.HTTPError as e:
             msg = e.read().decode("utf-8", "ignore")
-            if e.code == 429 and "PerDay" in msg:
-                raise SystemExit("Hết lượt trong ngày của " + MODEL)
+            if e.code == 429 and ("PerDay" in msg or "quota" in msg.lower()):
+                print(f"  khoá #{KEY_I + 1} hết lượt hôm nay, chuyển khoá kế"); KEY_I += 1; continue
+            if e.code in (400, 403) and "API key" in msg:
+                print(f"  khoá #{KEY_I + 1} không dùng được ({e.code}), chuyển khoá kế"); KEY_I += 1; continue
             if e.code in (429, 500, 503):
                 time.sleep(20 + lan * 20); continue
+            if e.code == 400:
+                print('  ! 400 INVALID_ARGUMENT cho lô này — chia nhỏ rồi thử lại'); return None
             raise SystemExit(msg[:500])
     raise SystemExit("Gemini TTS không trả tiếng")
 
@@ -76,11 +104,19 @@ if CHECK:
     from transformers import pipeline
     ASR = pipeline("automatic-speech-recognition", model="openai/whisper-base.en", device=-1)
 done_req = 0
+cur_batch = BATCH
 while todo and done_req < MAXREQ:
-    chunk, todo = todo[:BATCH], todo[BATCH:]
+    chunk, todo = todo[:cur_batch], todo[cur_batch:]
     text = "\n\n".join(f"{w}." if " " not in w or len(w.split()) > 3 else f"{w}." for w in chunk)
     print(f"yêu cầu {done_req + 1}: {len(chunk)} mục ({chunk[0]} … {chunk[-1]})")
     wav_bytes = tts(text); done_req += 1
+    if wav_bytes is None:
+        if len(chunk) == 1:
+            print(f'  ! bỏ mục {chunk[0]!r} (API từ chối)'); continue
+        cur_batch = max(1, len(chunk) // 2)   # API từ chối cả lô: trả mục về hàng chờ, thử lô nhỏ hơn
+        todo = chunk + todo
+        continue
+    cur_batch = BATCH
     with tempfile.TemporaryDirectory() as td:
         raw = pathlib.Path(td) / "raw.wav"; raw.write_bytes(wav_bytes)
         RAWDIR = ROOT / "tmp-art" / "raw-words"; RAWDIR.mkdir(parents=True, exist_ok=True)
