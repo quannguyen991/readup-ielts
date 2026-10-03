@@ -5,6 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
 import { StudyCard, StudyFrame } from '@/components/vocab/study/StudyKit';
+import { STUDY_THEMES } from '@/components/vocab/study/study-theme';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteMic, CuteTrophy, Motion } from '@/components/illust/CuteMore';
@@ -114,7 +115,7 @@ export default function SpeakingResult() {
 
   if (!attempt) {
     return (
-      <StudyFrame backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
+      <StudyFrame themeOverride={STUDY_THEMES.plain} backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">{L('Lượt này không còn trong máy.', 'This session is no longer on this device.')}</Text>
           <Button className="mt-4 self-start" label={L('Về phòng luyện nói', 'Back to the speaking room')} onPress={() => router.replace('/speaking' as never)} />
@@ -131,7 +132,7 @@ export default function SpeakingResult() {
   const lesson = attempt.practice ? attempt : parent?.practice ? parent : null;
 
   return (
-    <StudyFrame backHref="/speaking" title={L(coaching ? 'Phân tích & nói lại' : 'Phiếu điểm', coaching ? 'Feedback & try again' : 'Score sheet')}>
+    <StudyFrame themeOverride={STUDY_THEMES.plain} backHref="/speaking" title={L(coaching ? 'Phân tích & nói lại' : 'Phiếu điểm', coaching ? 'Feedback & try again' : 'Score sheet')}>
       <View className="gap-4">
         {/* ------------------------------------------------ band tổng */}
         <StudyCard>
