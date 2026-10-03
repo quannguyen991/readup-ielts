@@ -38,5 +38,6 @@ Các bằng chứng kiểm thử và AI thực tế được giữ tại `D:/Cla
 ## Lỗi tương phản đã phát hiện trên production
 
 - Trang Speaking bị bộ đổi màu của chủ đề Từ vựng ghi đè màu chữ trên thẻ trắng. StudyFrame hỗ trợ chủ đề hiển thị cục bộ; riêng kết quả Speaking đặt nền theme Mặc định để chữ luôn dễ đọc.
-- Lời nhắc AI yêu cầu khớp giải thích với ngữ pháp và nội dung thực có trong bài mẫu, cho phép bỏ qua sửa lỗi khi câu đã đúng và kết thúc bằng việc cụ thể cần luyện lại.
+- Lời nhắc AI yêu cầu khớp giải thích với ngữ pháp và nội dung thực có trong bài mẫu, cho phép bỏ qua sửa lỗi khi câu đã đúng, tránh giải thích mâu thuẫn, và kết thúc bằng việc cụ thể cần luyện lại. Không gợi ý bịa trải nghiệm cá nhân.
+- AI chạy thật (openai/gpt-oss-120b) trả đủ bài mẫu và phân tích riêng cho cả hai câu Weather; TTS tạo file Aoede cho bài mẫu.
 - Hai chỉnh sửa này cần cập nhật production lần nữa sau ảnh kiểm tra trực tiếp.
