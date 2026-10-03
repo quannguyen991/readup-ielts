@@ -9,7 +9,7 @@ import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
 import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
-import { TravelBackdrop, useTravelActive } from '@/components/rail/TravelBackdrop';
+import { TravelBackdrop, useSentenceThemeId, useTravelActive } from '@/components/rail/TravelBackdrop';
 import { isExamRoute, isFocusRoute, isImmersiveRoute, isPhoneChromelessRoute, isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
@@ -57,6 +57,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Thành phố và Chuyến bay từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
   // Màn học từ đang có nền cảnh bay: thanh bên trong suốt, chỉ còn biểu tượng.
   const travelGlass = useTravelActive();
+  const sentenceThemed = useSentenceThemeId() !== 'plain';
   const isCityRoute = pathname.startsWith('/quest/city') || pathname.startsWith('/quest/rail');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
@@ -84,7 +85,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       BÊN TRONG nền, không phải một dải trắng cắt ngang phía trên.
     */
     return (
-      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && travelGlass}>
+      <FocusBackdrop quest={isQuestRoute} navy={isVocabStudyRoute(pathname)} light={isTravelLightRoute(pathname) && (travelGlass || sentenceThemed)}>
         <View className="flex-1 lg:flex-row">
           <View
             className="hidden lg:flex"

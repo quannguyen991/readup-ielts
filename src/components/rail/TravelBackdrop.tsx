@@ -19,3 +19,8 @@ export function useTravelBackdropOn(): boolean {
 export function useTravelActive(): boolean {
   return false;
 }
+
+/** Chủ đề nền màn luyện câu (bản iOS/Android: luôn phẳng). */
+export function useSentenceThemeId(): string {
+  return 'plain';
+}

@@ -5,7 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { AuroraBackdrop } from './AuroraBackdrop';
 import { StudyBackdrop } from './LightGrid';
-import { useTravelActive } from '@/components/rail/TravelBackdrop';
+import { useSentenceThemeId, useTravelActive } from '@/components/rail/TravelBackdrop';
+import { themeOf } from '@/components/vocab/study/study-theme';
+import { BackgroundButton } from './BackgroundButton';
 import { isTravelLightRoute } from '@/navigation/focus-routes';
 import { useTravelPractice } from '@/store/useTravelPractice';
 import { Icon } from '@/components/ui/Icon';
@@ -76,10 +78,16 @@ export function TaskShell({
     return () => useTravelPractice.getState().leave();
   }, [practice]);
   const travel = useTravelActive() && practice;
+  // Nền chủ đề / tranh do người học chọn (không phải cảnh bay): nội dung bài nằm trên một tấm giấy sáng; chữ ở đầu màn theo màu chủ đề.
+  const themeId = useSentenceThemeId();
+  const themed = practice && !travel && themeId !== 'plain';
+  const th = themed ? themeOf(themeId) : null;
   // Nền cảnh bay phủ lớp sáng: chữ luôn dùng màu mực tối cho dễ đọc.
-  const onBrand = tone === 'brand' && !travel;
-  const titleColor = onBrand ? color.white : paper.ink;
-  const subColor = onBrand ? 'rgba(255,255,255,0.72)' : paper.muted;
+  const onBrand = tone === 'brand' && !travel && !themed;
+  const titleColor = th ? th.onBg : onBrand ? color.white : paper.ink;
+  const subColor = th ? th.onBg : onBrand ? 'rgba(255,255,255,0.72)' : paper.muted;
+  const pillBg = th ? th.pill : onBrand ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.75)';
+  const pillInk = th ? th.pillInk : onBrand ? color.white : paper.ink;
 
   const body = (
     <SafeAreaView edges={['top']} className="flex-1">
@@ -95,12 +103,12 @@ export function TaskShell({
                   accessibilityRole="link"
                   accessibilityLabel={backLabel}
                   className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5"
-                  style={{ backgroundColor: onBrand ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.75)' }}
+                  style={{ backgroundColor: pillBg }}
                 >
                   <View style={{ transform: [{ rotate: '180deg' }] }}>
-                    <Icon name="arrow-right" size={14} color={onBrand ? color.white : paper.ink} strokeWidth={2.2} />
+                    <Icon name="arrow-right" size={14} color={pillInk} strokeWidth={2.2} />
                   </View>
-                  <Text className="font-semi text-label" style={{ color: onBrand ? color.white : paper.ink }}>
+                  <Text className="font-semi text-label" style={{ color: pillInk }}>
                     {L('Thoát', 'Exit')}
                   </Text>
                 </Pressable>
@@ -109,6 +117,7 @@ export function TaskShell({
                 {title}
               </Text>
               {right}
+              {practice ? <BackgroundButton ink={pillInk} pill={pillBg} /> : null}
             </View>
           ) : null}
 
@@ -158,7 +167,11 @@ export function TaskShell({
           </>
           ) : null}
 
-          {children}
+          {themed ? (
+            <View style={{ backgroundColor: 'rgba(255,255,255,0.94)', borderRadius: 22, padding: 14 }}>{children}</View>
+          ) : (
+            children
+          )}
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -175,7 +188,7 @@ export function TaskShell({
     tâm đúng vào lúc cần tập trung nhất.
   */
   // Màn có nền cảnh bay (chép chính tả, viết câu): khung trong suốt để cảnh thành phố lộ ra.
-  if (travel) return <>{body}</>;
+  if (travel || themed) return <>{body}</>;
   if (onBrand) return <AuroraBackdrop>{body}</AuroraBackdrop>;
 
   /*
