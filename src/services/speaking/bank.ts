@@ -329,6 +329,9 @@ export type SessionPlan = {
   cue?: string;
   /** Một câu lẻ (mode 'q' — "Luyện lại câu này"). */
   questionId?: string;
+  /** Lượt luyện ngắn, 1–2 câu trong cùng chủ đề. Không áp dụng cho Full test. */
+  questionCount?: 1 | 2;
+  questionOffset?: number;
 };
 
 export type SessionStep = { question: SpeakingQuestion; /** Câu đầu tiên của một phần → giám khảo đọc lời mở đầu phần. */ partStart: boolean };
@@ -358,7 +361,10 @@ export function buildSession(plan: SessionPlan): SessionStep[] {
       break;
     }
     case 'p1':
-      push(topic.questions);
+      if (plan.questionCount) {
+        const offset = Number.isFinite(plan.questionOffset) ? Math.max(0, Math.trunc(plan.questionOffset!)) : 0;
+        push(Array.from({ length: plan.questionCount }, (_, i) => topic.questions[(offset + i) % topic.questions.length]!));
+      } else push(topic.questions);
       break;
     case 'p2':
       push([card.card]);

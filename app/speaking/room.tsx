@@ -15,7 +15,6 @@ import {
   getPart1Topic,
   getSpeakingQuestion,
   PART1_TOPICS,
-  PART_INTRO,
   PART_TIMING,
   PREP_MS,
   type SessionMode,
@@ -24,7 +23,7 @@ import {
 import { latestSampleFor, type SpeakingAnswer, type SpeakingAttempt } from '@/services/speaking/attempts';
 import { answerMetrics, attemptMetrics } from '@/services/speaking/metrics';
 import { startRecorder, transcriptOf, type Recorder, type RecorderEnd, type RecorderSnapshot } from '@/services/speaking/recognizer';
-import { speakSentence } from '@/services/shadow/speech';
+import { speakWithAoede } from '@/services/speaking/voice';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { useL } from '@/i18n/useL';
@@ -62,20 +61,27 @@ export default function SpeakingRoom() {
   // Màn thấp (điện thoại nhỏ / nằm ngang): thu nhỏ quả cầu để nút điều khiển còn trong tầm nhìn.
   const { height: winH } = useWindowDimensions();
   const orbSize = winH < 640 ? 120 : winH < 760 ? 160 : ORB;
-  const params = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string; q?: string; exam?: string; typed?: string; sample?: string }>();
+  const params = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string; q?: string; exam?: string; typed?: string; sample?: string; count?: string; offset?: string; coach?: string; retryOf?: string }>();
   const plan = useMemo<SessionPlan>(() => {
     const mode = (MODES as string[]).includes(params.mode ?? '') ? (params.mode as SessionMode) : 'p1';
-    return { mode, p1Topic: params.p1, cue: params.cue, questionId: params.q };
-  }, [params.mode, params.p1, params.cue, params.q]);
+    return { mode, p1Topic: params.p1, cue: params.cue, questionId: params.q,
+      ...(mode === 'p1' && params.exam !== '1' ? { questionCount: params.count === '1' ? 1 as const : 2 as const, questionOffset: Math.max(0, Number(params.offset) || 0) } : {}) };
+  }, [params.mode, params.p1, params.cue, params.q, params.count, params.offset, params.exam]);
   const steps = useMemo(() => buildSession(plan), [plan]);
   const exam = params.exam === '1' && plan.mode !== 'q';
+  const coaching = !exam && (plan.mode === 'p1' || plan.mode === 'q');
 
   const mic = useMicSupport();
   const [forceTyped, setForceTyped] = useState(false);
   const typed = params.typed === '1' || mic === false || forceTyped;
 
   const attempts = useSpeakingStore((s) => s.attempts);
-  const sample = useMemo(() => (plan.mode === 'q' && plan.questionId ? latestSampleFor(attempts, plan.questionId) : null), [attempts, plan]);
+  const previous = attempts.find((a) => a.id === params.retryOf);
+  const sample = useMemo(() => {
+    if (plan.mode !== 'q' || !plan.questionId) return null;
+    const index = previous?.answers.findIndex((a) => a.questionId === plan.questionId) ?? -1;
+    return previous?.grade?.samples.find((s) => s.questionIndex === index)?.improved ?? latestSampleFor(attempts, plan.questionId);
+  }, [attempts, plan, previous]);
   const [showSample, setShowSample] = useState(params.sample === '1');
   const [showQ, setShowQ] = useState(true);
 
@@ -153,7 +159,7 @@ export default function SpeakingRoom() {
     setNotice(null);
     enter('asking');
     const body = s.question.part === 2 ? cueCardSpoken(s.question) : s.question.text;
-    const text = s.partStart ? `${PART_INTRO[s.question.part]} ${body}` : body;
+    const text = body;
     let moved = false;
     const go = () => {
       if (moved || turn !== turnRef.current) return;
@@ -161,9 +167,9 @@ export default function SpeakingRoom() {
       stopVoiceRef.current = null;
       afterAsk(i);
     };
-    stopVoiceRef.current = speakSentence(text, { rate: 0.95, onDone: () => later(350, go) });
-    // Giọng máy hỏng im lặng (không phát sự kiện kết thúc) thì vẫn sang bước kế — ước rộng tay.
-    later(text.length * 95 + 4_000, go);
+    stopVoiceRef.current = speakWithAoede(text, { questionId: s.question.id, rate: 0.95,
+      onDone: () => later(350, go),
+      onError: (message) => { if (turn === turnRef.current) setNotice(message); } });
   };
 
   const skipReading = () => {
@@ -288,6 +294,7 @@ export default function SpeakingRoom() {
     next[indexRef.current] = a;
     answersRef.current = next;
     setAnswers(next);
+    if (coaching && indexRef.current + 1 >= steps.length) { finish(); return; }
     if (exam) {
       enter('review');
       const turn = turnRef.current;
@@ -353,6 +360,8 @@ export default function SpeakingRoom() {
       metrics: attemptMetrics(list),
       grade: null,
       gradeError: null,
+      ...(plan.mode === 'p1' && coaching ? { practice: { topicId: plan.p1Topic ?? PART1_TOPICS[0]!.id, questionCount: plan.questionCount ?? 2, questionOffset: plan.questionOffset ?? 0 } } : {}),
+      ...(params.retryOf ? { retryOf: params.retryOf } : {}),
     };
     useSpeakingStore.getState().add(attempt);
     const minutes = Math.round((finishedAt.getTime() - Date.parse(attempt.startedAt)) / 60_000);
@@ -441,7 +450,7 @@ export default function SpeakingRoom() {
               ? { label: L('Thử lại', 'Try again'), icon: 'mic' as const, act: 'beginAnswer' as const }
               : phase === 'review' && !exam
                 ? {
-                    label: index + 1 < steps.length ? L('Câu tiếp', 'Next question') : L('Nộp & chấm', 'Submit & grade'),
+                    label: index + 1 < steps.length ? coaching ? L('Luyện câu thứ hai', 'Practise the second question') : L('Câu tiếp', 'Next question') : L('Xem phân tích AI', 'Get AI feedback'),
                     icon: 'arrow-right' as const,
                     act: 'goNext' as const,
                   }
@@ -462,7 +471,7 @@ export default function SpeakingRoom() {
       right={
         done > 0 && phase !== 'saving' ? (
           <Pressable accessibilityRole="button" onPress={finish} className="items-center justify-center rounded-pill bg-white/80 px-3" style={{ minHeight: 44 }}>
-            <Text className="font-semi text-label text-ink">{L('Nộp & chấm', 'Submit & grade')}</Text>
+            <Text className="font-semi text-label text-ink">{L(coaching ? 'Phân tích câu vừa nói' : 'Nộp & chấm', coaching ? 'Get feedback now' : 'Submit & grade')}</Text>
           </Pressable>
         ) : null
       }
@@ -474,8 +483,8 @@ export default function SpeakingRoom() {
             <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 1.2, color: 'rgba(255,255,255,0.75)' }}>
               {phase === 'intro'
                 ? L(
-                    `${steps.length} CÂU · ${exam ? 'THI THẬT' : 'LUYỆN TẬP'}`,
-                    `${steps.length} QUESTIONS · ${exam ? 'EXAM MODE' : 'PRACTICE'}`,
+                    `${q.topicVi.toUpperCase()} · ${steps.length} CÂU · AOEDE`,
+                    `${steps.length} QUESTIONS · AOEDE`,
                   )
                 : en
                   ? topicEn
@@ -532,6 +541,7 @@ export default function SpeakingRoom() {
             )}
           </Text>
         )}
+        {coaching && phase === 'intro' ? <Text className="font-sans" style={{ marginTop: 10, fontSize: 14, color: '#5EEAD4', textAlign: 'center' }}>{L(params.retryOf ? 'Áp dụng gợi ý của AI, trả lời lại bằng lời của bạn.' : 'Trả lời ngắn, có lý do và ví dụ. Sau lượt này, AI phân tích và giúp bạn nói lại.', params.retryOf ? 'Apply the feedback and answer again in your own words.' : 'Give a reason and an example. Then review the AI feedback and try again.')}</Text> : null}
 
         {/* ---------------------------------------- vùng theo pha */}
         <View style={{ marginTop: 16, alignItems: 'center', width: '100%' }}>
@@ -596,8 +606,9 @@ export default function SpeakingRoom() {
               label={L('Nghe lại câu hỏi', 'Replay question')}
               disabled={phase === 'answering' && !typed}
               onPress={() => {
+                if (phase === 'asking') { ask(indexRef.current); return; }
                 stopVoiceRef.current?.();
-                stopVoiceRef.current = speakSentence(q.part === 2 ? cueCardSpoken(q) : q.text, { rate: 0.9 });
+                stopVoiceRef.current = speakWithAoede(q.part === 2 ? cueCardSpoken(q) : q.text, { questionId: q.id, rate: 0.9, onError: setNotice });
               }}
             />
           ) : null}

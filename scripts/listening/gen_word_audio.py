@@ -40,7 +40,7 @@ MAXREQ = int(opt("--max-requests", "10"))
 MODEL = opt("--model", default_voice["model"])
 RECOVER_RAW = opt("--recover-raw")
 TEXT_FILE = opt('--text-file')
-OUT = ROOT / "public" / "audio" / "words" / VOICE.lower()
+OUT = pathlib.Path(opt('--output-dir', str(ROOT / 'public' / 'audio' / 'words' / VOICE.lower())))
 OUT.mkdir(parents=True, exist_ok=True)
 IDX = OUT / "index.json"
 index = {word.strip().lower(): file for word, file in
@@ -68,7 +68,7 @@ def slug(s):
 
 def tts(text):
     body = {"contents": [{"parts": [{"text": text}]}],
-            "generationConfig": {"responseModalities": ["AUDIO"], "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": VOICE}}}}}
+            "generationConfig": {"maxOutputTokens": 32768, "responseModalities": ["AUDIO"], "speechConfig": {"voiceConfig": {"prebuiltVoiceConfig": {"voiceName": VOICE}}}}}
     global KEY_I
     for lan in range(8):
         try:
@@ -77,6 +77,8 @@ def tts(text):
             rq = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
                                         json.dumps(body).encode(), {"Content-Type": "application/json", "x-goog-api-key": KEYS[KEY_I]})
             d = json.load(urllib.request.urlopen(rq, timeout=900))
+            if d.get('candidates'):
+                print('  TTS finish:', d['candidates'][0].get('finishReason'), 'tokens:', d.get('usageMetadata', {}).get('candidatesTokenCount'), flush=True)
             if "candidates" not in d:
                 print("  ! không có candidates:", json.dumps(d)[:200]); time.sleep(10); continue
             b = base64.b64decode(d["candidates"][0]["content"]["parts"][0]["inlineData"]["data"])

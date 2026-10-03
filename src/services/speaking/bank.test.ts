@@ -3,6 +3,16 @@ import { test } from 'node:test';
 
 import { allSpeakingQuestions, buildSession, CUE_CARDS, cueCardOf, cueCardSpoken, getSpeakingQuestion, PART1_TOPICS } from './bank';
 
+test('topic coaching asks one or two Weather questions and the next round stays in Weather', () => {
+  const one = buildSession({ mode: 'p1', p1Topic: 'p1-weather', questionCount: 1 });
+  assert.deepEqual(one.map((s) => s.question.id), ['p1-weather-1']);
+  const two = buildSession({ mode: 'p1', p1Topic: 'p1-weather', questionCount: 2, questionOffset: 2 });
+  assert.deepEqual(two.map((s) => s.question.id), ['p1-weather-3', 'p1-weather-4']);
+  const wrapped = buildSession({ mode: 'p1', p1Topic: 'p1-weather', questionCount: 2, questionOffset: 3 });
+  assert.deepEqual(wrapped.map((s) => s.question.id), ['p1-weather-4', 'p1-weather-1']);
+  assert.equal(buildSession({ mode: 'full', questionCount: 1 }).length, 13);
+});
+
 test('ngân hàng đủ lượng tối thiểu: 12 bộ Part 1 × 4 câu, 12 thẻ Part 2, mỗi thẻ 4 câu Part 3', () => {
   assert.ok(PART1_TOPICS.length >= 12);
   for (const t of PART1_TOPICS) assert.equal(t.questions.length, 4, t.id);

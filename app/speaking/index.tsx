@@ -20,7 +20,7 @@ type LobbyMode = Exclude<SessionMode, 'q'>;
 
 const MODES: { key: LobbyMode; title: string; hint: Bi }[] = [
   { key: 'full', title: 'Full test', hint: { vi: '11–14 phút · Part 1 → 2 → 3', en: '11–14 min · Part 1 → 2 → 3' } },
-  { key: 'p1', title: 'Part 1', hint: { vi: '3–4 phút · 4 câu về bản thân', en: '3–4 min · 4 questions about you' } },
+  { key: 'p1', title: 'Part 1', hint: { vi: '1–2 câu cùng chủ đề · AI góp ý · nói lại', en: '1–2 questions per topic · AI feedback · try again' } },
   { key: 'p2', title: 'Part 2', hint: { vi: '1 phút chuẩn bị · nói 2 phút', en: '1 min to prepare · speak for 2 min' } },
   { key: 'p3', title: 'Part 3', hint: { vi: '4–5 phút · thảo luận mở rộng', en: '4–5 min · extended discussion' } },
 ];
@@ -50,12 +50,13 @@ export default function SpeakingLobby() {
   // `?mode=p1` — đường dẫn từ bài giáo viên giao (`services/classes/assignments.ts`).
   // `&p1=` / `&cue=` — đường dẫn từ Lộ trình học (`app/lo-trinh-hoc.tsx`) mở đúng chủ đề của bài.
   const { mode: modeParam, p1: p1Param, cue: cueParam } = useLocalSearchParams<{ mode?: string; p1?: string; cue?: string }>();
-  const [mode, setMode] = useState<LobbyMode>(() => MODES.find((m) => m.key === modeParam)?.key ?? 'full');
-  const [p1Topic, setP1Topic] = useState(() => PART1_TOPICS.find((t) => t.id === p1Param)?.id ?? pick(PART1_TOPICS).id);
+  const [mode, setMode] = useState<LobbyMode>(() => MODES.find((m) => m.key === modeParam)?.key ?? 'p1');
+  const [p1Topic, setP1Topic] = useState(() => PART1_TOPICS.find((t) => t.id === p1Param)?.id ?? 'p1-weather');
   const [cue, setCue] = useState(() => CUE_CARDS.find((c) => c.id === cueParam)?.id ?? pick(CUE_CARDS).id);
-  const [exam, setExam] = useState(true);
+  const [exam, setExam] = useState(modeParam === 'full');
+  const [questionCount, setQuestionCount] = useState<1 | 2>(2);
   const [typedChoice, setTypedChoice] = useState(false);
-  const [choosing, setChoosing] = useState(false);
+  const [choosing, setChoosing] = useState(true);
   const typed = mic === false || typedChoice;
 
   const graded = useMemo(() => attempts.filter((a) => !a.typed && a.grade?.overall != null), [attempts]);
@@ -63,11 +64,12 @@ export default function SpeakingLobby() {
   const modeInfo = MODES.find((m) => m.key === mode)!;
   const p1Found = PART1_TOPICS.find((t) => t.id === p1Topic);
   const cueFound = CUE_CARDS.find((c) => c.id === cue);
-  const p1Title = (en ? p1Found?.titleEn : p1Found?.titleVi) ?? '';
+  const p1Title = (en ? p1Found?.titleEn : `${p1Found?.titleEn} · ${p1Found?.titleVi}`) ?? '';
   const cueTitle = (en ? cueFound?.card.text : cueFound?.titleVi) ?? '';
 
   const start = () => {
     const q = new URLSearchParams({ mode, p1: p1Topic, cue, exam: exam ? '1' : '0', typed: typed ? '1' : '0' });
+    if (mode === 'p1' && !exam) { q.set('count', String(questionCount)); q.set('coach', '1'); }
     router.push(`/speaking/room?${q.toString()}` as never);
   };
   const shuffle = () => {
@@ -106,7 +108,7 @@ export default function SpeakingLobby() {
             <Sparkles count={6} />
             <View style={{ alignSelf: 'stretch', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-                {L('Giám khảo AI.', 'AI examiner.')}
+                {L(exam ? 'Giám khảo AI.' : 'Luyện cùng Aoede.', exam ? 'AI examiner.' : 'Practise with Aoede.')}
               </Text>
               <Label text={L('Nói cùng AI 🎙️', 'Talk with AI 🎙️')} color="#FACC15" ink="#1A1405" tilt={4} size={12} />
             </View>
@@ -115,7 +117,7 @@ export default function SpeakingLobby() {
                 state="idle"
                 size={wide ? 190 : 160}
                 onPress={mic === null ? undefined : start}
-                label={L('Chạm để vào phòng thi', 'Tap to enter the exam room')}
+                label={L(exam ? 'Chạm để vào phòng thi' : 'Bắt đầu luyện chủ đề đã chọn', exam ? 'Tap to enter the exam room' : 'Practise the selected topic')}
               />
             </View>
             <Text className="font-strong" style={{ marginTop: 10, fontSize: 14, color: 'rgba(255,255,255,0.75)' }}>
@@ -133,7 +135,7 @@ export default function SpeakingLobby() {
                     key={m.key}
                     accessibilityRole="radio"
                     aria-checked={on}
-                    onPress={() => setMode(m.key)}
+                    onPress={() => { setMode(m.key); setExam(m.key === 'full'); }}
                     style={{ borderRadius: 999, paddingHorizontal: 16, paddingVertical: 9, backgroundColor: on ? '#FFFFFF' : 'rgba(255,255,255,0.08)' }}
                   >
                     <Text className="font-strong" style={{ fontSize: 14, color: on ? '#0F172A' : '#FFFFFF' }}>
@@ -147,6 +149,19 @@ export default function SpeakingLobby() {
               {bi(modeInfo.hint, locale)}
             </Text>
 
+            {mode === 'p1' && !exam ? (
+              <View style={{ marginTop: 12, alignItems: 'center', gap: 10 }}>
+                <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', gap: 8 }}>
+                  {([1, 2] as const).map((n) => (
+                    <Pressable key={n} accessibilityRole="radio" aria-checked={questionCount === n} onPress={() => setQuestionCount(n)} style={{ borderRadius: 999, paddingHorizontal: 18, paddingVertical: 10, backgroundColor: questionCount === n ? '#22A06B' : 'rgba(255,255,255,0.08)' }}>
+                      <Text className="font-strong" style={{ color: '#FFFFFF' }}>{L(`${n} câu mỗi lượt`, `${n} per round`)}</Text>
+                    </Pressable>
+                  ))}
+                </View>
+                <Text className="font-sans" style={{ color: '#C7D2E0', fontSize: 13, textAlign: 'center' }}>{L('Trả lời → bài mẫu & phân tích AI → sửa ý → nói lại', 'Answer → model answer & AI feedback → improve → speak again')}</Text>
+              </View>
+            ) : null}
+
             <View style={{ marginTop: 16, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
               <Pressable
                 accessibilityRole="button"
@@ -156,7 +171,7 @@ export default function SpeakingLobby() {
               >
                 <Icon name="mic" size={18} color="#1A1405" />
                 <Text className="font-heavy" style={{ fontSize: 16, color: '#1A1405' }}>
-                  {typed ? L('Bắt đầu (gõ phím)', 'Start (typing)') : L('Vào phòng thi', 'Enter the exam room')}
+                  {typed ? L('Bắt đầu (gõ phím)', 'Start (typing)') : exam ? L('Vào phòng thi', 'Enter the exam room') : L('Luyện chủ đề này', 'Practise this topic')}
                 </Text>
               </Pressable>
               <Switch on={exam} onPress={() => setExam((v) => !v)} text={L('Thi thật', 'Exam mode')} />
@@ -213,7 +228,7 @@ export default function SpeakingLobby() {
             {choosing ? (
               <View style={{ marginTop: 12, gap: 10 }}>
                 {mode === 'full' || mode === 'p1' ? (
-                  <ChipList items={PART1_TOPICS.map((t) => ({ id: t.id, text: en ? t.titleEn : t.titleVi }))} value={p1Topic} onPick={setP1Topic} />
+                  <ChipList items={PART1_TOPICS.map((t) => ({ id: t.id, text: en ? t.titleEn : `${t.titleEn} · ${t.titleVi}` }))} value={p1Topic} onPick={setP1Topic} />
                 ) : null}
                 {mode !== 'p1' ? <ChipList items={CUE_CARDS.map((c) => ({ id: c.id, text: en ? c.card.text : c.titleVi }))} value={cue} onPick={setCue} /> : null}
               </View>

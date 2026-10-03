@@ -31,6 +31,9 @@ export type SpeakingAttempt = {
   gradeError?: string | null;
   /** Đã cộng thưởng game cho lượt này chưa (chống cộng hai lần khi mở lại). */
   awarded?: boolean;
+  /** Giữ cùng chủ đề qua vòng trả lời → phân tích → nói lại. */
+  practice?: { topicId: string; questionCount: 1 | 2; questionOffset: number };
+  retryOf?: string;
 };
 
 export const MAX_ATTEMPTS = 50;
