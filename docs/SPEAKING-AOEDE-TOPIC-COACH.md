@@ -19,9 +19,24 @@ Câu hỏi chưa có clip và bài mẫu dùng `/api/speaking/voice`, giọng Ao
 
 ## Kiểm tra
 
-- Toàn bộ bộ kiểm thử: 4.759 kiểm thử đạt trước chỉnh nhỏ cuối về nghe lại; bộ kiểm thử Speaking và TypeScript được chạy lại sau chỉnh cuối.
+- Toàn bộ bộ kiểm thử: 4.759 kiểm thử đạt trước chỉnh nhỏ cuối về nghe lại; 37/37 kiểm thử Speaking và TypeScript đều đạt sau chỉnh cuối.
 - AI thực tế tạo đủ hai bài mẫu cho hai câu Weather, phân tích và trích đúng lỗi ngữ pháp từ bài trả lời. Tạo Aoede thực tế cho bài mẫu thành công.
 - Chrome local: Aoede có sự kiện playing/ended, không mute; ô trả lời mở sau ended. Câu 1 dừng chờ thao tác; câu 2 tự mở trang phân tích với đúng hai câu. Nói lại mở đúng câu đã chọn.
 - Kiểm tra giao diện dùng nhập văn bản mẫu, không giả lập một bài nói qua micro. Nhận giọng nói vẫn dùng cơ chế Chrome hiện có; AI phân tích bản chữ, không trực tiếp nghe bản ghi âm.
 
 Các bằng chứng kiểm thử và AI thực tế được giữ tại `D:/Claude/readup-ielts/tmp-art/` (không đưa dữ liệu/quyền truy cập vào Git).
+
+## Triển khai
+
+- Commit mã nguồn: 88e23e, nhánh codex/speaking-topic-coach.
+- Vercel READY: https://readup-ielts-1bup2s7qy-siu6.vercel.app
+- Website: https://band9-ielts.vercel.app/speaking
+- Đã tải kiểm tra cả 48 clip trên production: SHA-256 khớp bản local. API giọng trả WAV Aoede; bài mẫu không đăng nhập trả 401.
+- Chrome production: hai câu Weather kết thúc đúng lượt, AI trả đủ hai bài mẫu và phân tích riêng; nút luyện lại mở đúng câu đã chọn.
+
+
+## Lỗi tương phản đã phát hiện trên production
+
+- Trang Speaking bị bộ đổi màu của chủ đề Từ vựng ghi đè màu chữ trên thẻ trắng. StudyFrame hỗ trợ chủ đề hiển thị cục bộ; riêng kết quả Speaking đặt nền theme Mặc định để chữ luôn dễ đọc.
+- Lời nhắc AI yêu cầu khớp giải thích với ngữ pháp và nội dung thực có trong bài mẫu, cho phép bỏ qua sửa lỗi khi câu đã đúng và kết thúc bằng việc cụ thể cần luyện lại.
+- Hai chỉnh sửa này cần cập nhật production lần nữa sau ảnh kiểm tra trực tiếp.
