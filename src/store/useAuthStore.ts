@@ -13,6 +13,7 @@ import {
 } from '@/services/auth/session';
 
 import { claimPendingInvite } from '@/services/referral/pending';
+import { claimWelcomePro, looksNewAccount } from '@/services/auth/welcome';
 import { useLocale } from '@/i18n/useL';
 
 import { useBillingStore } from './useBillingStore';
@@ -75,7 +76,20 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   refreshProfile: async () => {
     const user = get().user;
     if (!user) return;
-    const profile = await fetchProfile(user.id);
+    let profile = await fetchProfile(user.id);
+
+    /*
+      Quà đăng ký: tài khoản MỚI còn Free được máy chủ tặng gói Plus (`/api/welcome-pro`, một lần). Hỏi trước khi áp gói
+      để người dùng thấy gói quà ngay lần đăng nhập đầu, không phải đợi lần mở app sau.
+    */
+    const earlyToken = get().session?.access_token;
+    if (profile && profile.plan === 'free' && earlyToken && looksNewAccount(user.created_at)) {
+      if (await claimWelcomePro(user.id, earlyToken)) {
+        profile = (await fetchProfile(user.id)) ?? profile;
+        // Đã nhận gói rồi thì không còn lượt "học thử 5 ngày" nữa.
+        useBillingStore.setState({ proTrialUsed: true });
+      }
+    }
     set({ profile });
 
     /*

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, Card, Icon } from '@/components/ui';
@@ -62,7 +62,11 @@ export default function SignInScreen() {
     code. Hỏi máy chủ rồi mới vẽ nút, thay vì bày đủ bốn cái rồi để ba cái dẫn
     tới trang lỗi. Trong lúc chờ thì coi như chỉ có email — cái luôn chạy được.
   */
-  const [mode, setMode] = useState<'phone' | 'email'>('phone');
+  const params = useLocalSearchParams<{ mode?: string; next?: string }>();
+  // Chỉ nhận đường dẫn nội bộ (chống chuyển hướng ra ngoài).
+  const next = typeof params.next === 'string' && params.next.startsWith('/') && !params.next.startsWith('//') ? params.next : '/dashboard';
+  const wantsSignup = params.mode === 'signup';
+  const [mode, setMode] = useState<'phone' | 'email'>(wantsSignup ? 'email' : 'phone');
   const [caps, setCaps] = useState<AuthCapabilities>(UNKNOWN_CAPABILITIES);
 
   useEffect(() => {
@@ -72,7 +76,7 @@ export default function SignInScreen() {
       setCaps(next);
       // SMS chưa bật thì đừng để tab SMS đứng trước — người dùng gõ xong số mới
       // biết là không gửi được.
-      if (!next.phone) setMode('email');
+      if (!next.phone || wantsSignup) setMode('email');
     });
     return () => {
       alive = false;
@@ -89,7 +93,7 @@ export default function SignInScreen() {
    * mk đi, không cần gửi link về gmail nữa"). Liên kết qua email chỉ còn là lối
    * phụ cho tài khoản cũ chưa có mật khẩu và người quên mật khẩu.
    */
-  const [emailMode, setEmailMode] = useState<'signin' | 'signup'>('signin');
+  const [emailMode, setEmailMode] = useState<'signin' | 'signup'>(wantsSignup ? 'signup' : 'signin');
   const [busy, setBusy] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -135,7 +139,7 @@ export default function SignInScreen() {
         if (result.taken) setEmailMode('signin');
         return;
       }
-      router.replace('/dashboard' as never);
+      router.replace(next as never);
       return;
     }
     const value = email.trim().toLowerCase();
@@ -158,7 +162,7 @@ export default function SignInScreen() {
       );
       return;
     }
-    router.replace('/dashboard' as never);
+    router.replace(next as never);
   };
 
   const startEmail = async () => {
