@@ -167,12 +167,12 @@ export default function GameScreen() {
       setScore(scoreRef.current);
       setCombo((c) => c + 1);
       useGameStore.getState().answer(true, "vocab", { key: `game:${slug}:${r.target.word}` });
-      useTopicStudyStore.getState().review(slug, r.target.word, true);
+      useTopicStudyStore.getState().practice(slug, r.target.word, true);
     } else {
       b.popped = "bad";
       r.balloons[r.correctLane]!.popped = "ok";
       useGameStore.getState().answer(false, "vocab", { key: `game:${slug}:${r.target.word}` });
-      useTopicStudyStore.getState().review(slug, r.target.word, false);
+      useTopicStudyStore.getState().practice(slug, r.target.word, false);
       loseLife();
     }
     setTimeout(newRound, 450);

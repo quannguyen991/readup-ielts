@@ -68,7 +68,7 @@ export default function TestScreen() {
     questions.forEach((qq, i) => {
       const a = answers[i] ?? null;
       // Mỗi câu ĐÃ trả lời vào lịch ôn theo ngày (câu bỏ trống không phải bằng chứng).
-      if (isAnswered(a)) useTopicStudyStore.getState().review(slug, qq.word.word, isQuizCorrect(qq, a));
+      if (isAnswered(a)) useTopicStudyStore.getState().practice(slug, qq.word.word, isQuizCorrect(qq, a));
       if (qq.kind === 'type' && typeof a === 'string' && isAnswered(a) && !isQuizCorrect(qq, a)) {
         const why = diagnoseTyped(a, qq.word.word);
         if (why) log(slug, qq.word.word, why.kind);
