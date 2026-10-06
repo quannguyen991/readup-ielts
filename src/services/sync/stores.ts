@@ -41,6 +41,8 @@ import type { ListeningAttempt } from '@/services/listening/types';
 import { travelPayload, useTravelStore } from '@/store/useTravelStore';
 import { mergeTravel, normalizeTravel } from '@/services/travel/sync';
 import { historyPayload, useHistoryStore } from '@/store/useHistoryStore';
+import { mergeStudyAbroad, normalizeStudyAbroad } from '@/services/study-abroad/sync';
+import { useStudyAbroadStore } from '@/store/useStudyAbroadStore';
 import { mergeHistory, normalizeHistory } from '@/services/history/progress';
 
 /**
@@ -292,6 +294,19 @@ const historyStore: SyncedStore = {
   merge: (local, remote) => mergeHistory(local as never, remote as never),
 };
 
+/** Học kỳ du học: nhiệm vụ đã xong (một chiều), đồ trang trí phòng, lần nghỉ. */
+const studyAbroadStore: SyncedStore = {
+  key: 'study_abroad',
+  read: () => {
+    const s = useStudyAbroadStore.getState();
+    return { completed: s.completed, decorations: s.decorations, restedAt: s.restedAt };
+  },
+  write: (payload) => {
+    if (payload) useStudyAbroadStore.setState(normalizeStudyAbroad(payload));
+  },
+  merge: (local, remote) => mergeStudyAbroad(local, remote),
+};
+
 /** Gọi một lần lúc khởi động app. */
 /** Lộ trình tự lập: bản khai + dấu đã làm. */
 const roadmapStore: SyncedStore = {
@@ -364,4 +379,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(travelStore);
   registerSyncedStore(listeningStore);
   registerSyncedStore(historyStore);
+  registerSyncedStore(studyAbroadStore);
 }
