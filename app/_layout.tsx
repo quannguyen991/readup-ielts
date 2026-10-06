@@ -18,6 +18,7 @@ import {
 } from '@expo-google-fonts/plus-jakarta-sans';
 
 import { AppShell } from '@/components/layout/AppShell';
+import { MemberGate } from '@/components/access/MemberGate';
 import { GameFxLayer } from '@/components/game/GameFxLayer';
 import { PageTransition } from '@/components/motion/Motion';
 import { PageViewTracker } from '@/services/analytics/PageViewTracker';
@@ -79,7 +80,9 @@ export default function RootLayout() {
         <PageViewTracker />
         <AppShell>
           <PageTransition routeKey={pathname}>
-            <Slot />
+            <MemberGate>
+              <Slot />
+            </MemberGate>
           </PageTransition>
         </AppShell>
         <GameFxLayer />

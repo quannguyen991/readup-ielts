@@ -16,6 +16,8 @@ import {
 } from '@/lib/billing/plans';
 import { requiredPlanFor } from '@/lib/billing/entitlements';
 import { useBillingStore, usePlanStatus } from '@/store/useBillingStore';
+import { useAuthStore, useIsSignedIn } from '@/store/useAuthStore';
+import { WELCOME_DAYS, WELCOME_PLAN } from '@/lib/billing/welcome';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
@@ -95,6 +97,39 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   const start = useBillingStore((s) => s.startTrial);
   const tone = PLAN_TONE[status.onTrial ? status.plan : 'pro'];
   const { L } = useL();
+  const signedIn = useIsSignedIn();
+  const authAvailable = useAuthStore((s) => s.available);
+
+  // Khách chưa đăng nhập: không tự bật học thử trên máy — mời tạo tài khoản để nhận Pro thật do máy chủ cấp.
+  if (!signedIn && authAvailable) {
+    return (
+      <View className={`${className} flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3`} style={{ backgroundColor: '#F7F0E1' }}>
+        <Icon name="lock" size={18} color="#A8843F" />
+        <Text className="flex-1 font-sans text-body text-ink" style={{ minWidth: 200 }}>
+          <Text className="font-strong" style={{ color: '#A8843F' }}>
+            {L(`Tạo tài khoản mới — tặng ${WELCOME_DAYS} ngày gói Plus miễn phí.`, `Create an account — get ${WELCOME_DAYS} days of Plus free.`)}
+          </Text>{' '}
+          {L('Mở Du ngoạn, Du học, Speaking, Writing, Listening… (không gồm trợ giảng AI và bài mẫu). Không cần thẻ.', 'Unlocks Travel, Study Abroad, Speaking, Writing, Listening… (no AI tutor or model essays). No card needed.')}
+        </Text>
+        <Button label={L('Tạo tài khoản', 'Create account')} size="sm" onPress={() => router.push('/auth/sign-in?mode=signup' as never)} />
+      </View>
+    );
+  }
+
+  // Pro do máy chủ tặng lúc đăng ký (còn hạn): hiện số ngày còn lại.
+  if (status.source === 'server' && status.plan === WELCOME_PLAN && status.daysLeft !== null && status.daysLeft <= WELCOME_DAYS) {
+    return (
+      <View className={`${className} flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3`} style={{ backgroundColor: '#FCF8F2' }}>
+        <Icon name="clock" size={18} color="#B78939" />
+        <Text className="flex-1 font-sans text-body text-ink" style={{ minWidth: 200 }}>
+          <Text className="font-strong" style={{ color: '#B78939' }}>
+            {L(`Plus tặng thành viên mới · còn ${status.daysLeft} ngày.`, `Welcome Plus · ${status.daysLeft} days left.`)}
+          </Text>{' '}
+          {L('Mở hết nội dung, 20 lượt AI chấm bài mỗi tháng; hết hạn tự về gói Free, dữ liệu học vẫn giữ nguyên.', 'All content and 20 AI gradings a month; it returns to Free when it ends and your progress stays.')}
+        </Text>
+      </View>
+    );
+  }
 
   if (status.onTrial) {
     return (
