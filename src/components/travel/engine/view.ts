@@ -58,10 +58,12 @@ export class Camera {
   ix = 0;
   iy = 0;
   private inited = false;
+  /** Cho máy quay trượt ra ngoài mép bản đồ tối đa chừng này (điểm nguồn, theo trục dọc) — để đặt hai nhân vật ở đâu cũng được khi nói chuyện. */
+  padY = 0;
 
   snapTo(tx: number, ty: number, view: View, mapW: number, mapH: number) {
     this.x = this.clampAxis(tx - view.W / 2, view.W, mapW);
-    this.y = this.clampAxis(ty - view.H / 2, view.H, mapH);
+    this.y = this.clampAxis(ty - view.H / 2, view.H, mapH, this.padY);
     this.round();
     this.inited = true;
   }
@@ -69,7 +71,7 @@ export class Camera {
   update(dt: number, tx: number, ty: number, view: View, mapW: number, mapH: number) {
     if (!this.inited) return this.snapTo(tx, ty, view, mapW, mapH);
     const gx = this.clampAxis(tx - view.W / 2, view.W, mapW);
-    const gy = this.clampAxis(ty - view.H / 2, view.H, mapH);
+    const gy = this.clampAxis(ty - view.H / 2, view.H, mapH, this.padY);
     const a = 1 - Math.exp(-dt * 7);
     this.x += (gx - this.x) * a;
     this.y += (gy - this.y) * a;
@@ -80,9 +82,9 @@ export class Camera {
   }
 
   /** Bản đồ nhỏ hơn khung nhìn thì căn giữa; ngược lại kẹp mép. */
-  private clampAxis(v: number, view: number, map: number): number {
+  private clampAxis(v: number, view: number, map: number, pad = 0): number {
     if (map <= view) return (map - view) / 2;
-    return Math.max(0, Math.min(map - view, v));
+    return Math.max(pad > 0 ? -pad : 0, Math.min(map - view + pad, v));
   }
 
   private round() {

@@ -204,7 +204,107 @@ const DANANG: PoiContent[] = [
   p('danang', 'goldenbridge', 'landmark', 'Cầu Vàng', 'Golden Bridge', ['tourism', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 12, 'sv-dn-golden', 'nguhanhson'),
 ];
 
-export const POI_CATALOG: PoiContent[] = [...HANOI, ...SINGAPORE, ...LONDON, ...PARIS, ...AMSTERDAM, ...ROME, ...HOCHIMINH, ...DANANG];
+const TOKYO: PoiContent[] = [
+  p('tokyo', 'gate', 'airport', 'Sân bay Haneda — cổng lên máy bay', 'Haneda Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('tokyo', 'shibuya', 'landmark', 'Ngã tư Shibuya', 'Shibuya Crossing', ['tourism', 'transport', 'reply-directions'], ['reply', 'listen-pick', 'dictation'], 3, 13, 'sv-tokyo', undefined, { questions: 8 }),
+  p('tokyo', 'sensoji', 'landmark', 'Chùa Sensō-ji', 'Sensō-ji Temple', ['culture', 'history', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, undefined, 'shibuya'),
+  p('tokyo', 'tsukiji', 'market', 'Chợ Tsukiji', 'Tsukiji Market', ['food', 'shopping', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'sensoji'),
+  p('tokyo', 'ramen', 'restaurant', 'Quán ramen nhỏ', 'Ramen shop', ['food', 'reply-restaurant'], ['reply', 'cloze', 'order'], 3, 12, undefined, 'tsukiji'),
+  p('tokyo', 'shinjuku', 'station', 'Ga Shinjuku', 'Shinjuku Station', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, undefined, 'ramen'),
+];
+
+const SEOUL: PoiContent[] = [
+  p('seoul', 'gate', 'airport', 'Sân bay Incheon — cổng lên máy bay', 'Incheon Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('seoul', 'gyeongbokgung', 'landmark', 'Cung Gyeongbokgung', 'Gyeongbokgung Palace', ['history', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, 'sv-seoul', undefined, { questions: 8 }),
+  p('seoul', 'bukchon', 'landmark', 'Làng nhà hanok Bukchon', 'Bukchon Hanok Village', ['culture', 'housing', 'reply-directions'], ['reply', 'cloze', 'listen-pick'], 3, 12, undefined, 'gyeongbokgung'),
+  p('seoul', 'gwangjang', 'market', 'Chợ Gwangjang', 'Gwangjang Market', ['food', 'shopping', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'bukchon'),
+  p('seoul', 'hongdae', 'cafe', 'Quán cà phê Hongdae', 'Hongdae café', ['food', 'leisure', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 3, 11, undefined, 'gwangjang'),
+  p('seoul', 'station', 'station', 'Ga Seoul', 'Seoul Station', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, undefined, 'hongdae'),
+];
+
+const NEWYORK: PoiContent[] = [
+  p('newyork', 'gate', 'airport', 'Sân bay JFK — cổng lên máy bay', 'JFK Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('newyork', 'timessquare', 'landmark', 'Quảng trường Times', 'Times Square', ['tourism', 'transport', 'reply-directions'], ['reply', 'listen-pick', 'dictation'], 3, 13, 'sv-newyork', undefined, { questions: 8 }),
+  p('newyork', 'centralpark', 'garden', 'Công viên Central Park', 'Central Park', ['environment', 'leisure'], ['cloze', 'listen-pick', 'translate'], 3, 12, undefined, 'timessquare'),
+  p('newyork', 'metmuseum', 'museum', 'Bảo tàng Nghệ thuật Metropolitan', 'The Metropolitan Museum of Art', ['art', 'history', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, undefined, 'centralpark'),
+  p('newyork', 'brooklynpizza', 'restaurant', 'Tiệm pizza Brooklyn', 'Brooklyn pizzeria', ['food', 'reply-restaurant'], ['reply', 'cloze', 'order'], 3, 12, undefined, 'metmuseum'),
+  p('newyork', 'subway', 'station', 'Ga tàu điện ngầm', 'Subway station', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, undefined, 'brooklynpizza'),
+];
+
+const ISTANBUL: PoiContent[] = [
+  p('istanbul', 'gate', 'airport', 'Sân bay Istanbul — cổng lên máy bay', 'Istanbul Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('istanbul', 'hagia', 'landmark', 'Nhà thờ Hồi giáo Hagia Sophia', 'Hagia Sophia Grand Mosque', ['history', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, 'sv-istanbul', undefined, { questions: 8 }),
+  p('istanbul', 'grandbazaar', 'market', 'Chợ Grand Bazaar', 'Grand Bazaar', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'hagia'),
+  p('istanbul', 'spicebazaar', 'market', 'Chợ Gia vị', 'Spice Bazaar', ['food', 'shopping', 'reply-market'], ['reply', 'cloze', 'dictation'], 3, 12, undefined, 'grandbazaar'),
+  p('istanbul', 'ferry', 'station', 'Bến phà Eminönü', 'Eminönü ferry pier', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, undefined, 'spicebazaar'),
+  p('istanbul', 'lokanta', 'restaurant', 'Quán lokanta ven eo biển', 'Bosphorus lokanta', ['food', 'reply-restaurant'], ['reply', 'cloze', 'order'], 3, 12, undefined, 'ferry'),
+];
+
+const CAIRO: PoiContent[] = [
+  p('cairo', 'gate', 'airport', 'Sân bay Cairo — cổng lên máy bay', 'Cairo Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('cairo', 'giza', 'landmark', 'Quần thể Kim tự tháp Giza', 'Giza Pyramid Complex', ['history', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 14, 'sv-cairo', undefined, { questions: 8 }),
+  p('cairo', 'egyptianmuseum', 'museum', 'Bảo tàng Ai Cập', 'The Egyptian Museum', ['history', 'art', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, undefined, 'giza'),
+  p('cairo', 'khanelkhalili', 'market', 'Chợ Khan el-Khalili', 'Khan el-Khalili Bazaar', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'egyptianmuseum'),
+  p('cairo', 'nilepier', 'station', 'Bến thuyền sông Nile', 'Nile felucca pier', ['transport', 'listening-tourism-tours', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, undefined, 'khanelkhalili'),
+  p('cairo', 'koshary', 'restaurant', 'Quán koshary', 'Koshary restaurant', ['food', 'reply-restaurant'], ['reply', 'cloze', 'order'], 3, 11, undefined, 'nilepier'),
+];
+
+const SYDNEY: PoiContent[] = [
+  p('sydney', 'gate', 'airport', 'Sân bay Sydney — cổng lên máy bay', 'Sydney Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('sydney', 'operahouse', 'landmark', 'Nhà hát Opera Sydney', 'Sydney Opera House', ['art', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 14, 'sv-sydney', undefined, { questions: 8 }),
+  p('sydney', 'harbourbridge', 'landmark', 'Cầu Harbour', 'Sydney Harbour Bridge', ['transport', 'tourism', 'reply-directions'], ['reply', 'listen-pick', 'dictation'], 3, 13, undefined, 'operahouse'),
+  p('sydney', 'bondi', 'garden', 'Bãi biển Bondi', 'Bondi Beach', ['environment', 'leisure'], ['cloze', 'listen-pick', 'translate'], 3, 12, undefined, 'harbourbridge'),
+  p('sydney', 'circularquay', 'station', 'Bến phà Circular Quay', 'Circular Quay ferry terminal', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, undefined, 'bondi'),
+  p('sydney', 'fishmarket', 'market', 'Chợ cá Sydney', 'Sydney Fish Market', ['food', 'shopping', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'circularquay'),
+];
+
+const MEXICOCITY: PoiContent[] = [
+  p('mexicocity', 'gate', 'airport', 'Sân bay Benito Juárez — cổng lên máy bay', 'Benito Juárez Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('mexicocity', 'zocalo', 'landmark', 'Quảng trường Zócalo', 'Zócalo main square', ['history', 'architecture', 'reply-directions'], ['reply', 'cloze', 'listen-pick'], 3, 13, 'sv-mexicocity', undefined, { questions: 8 }),
+  p('mexicocity', 'fridamuseum', 'museum', 'Bảo tàng Frida Kahlo', 'Frida Kahlo Museum', ['art', 'culture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, undefined, 'zocalo'),
+  p('mexicocity', 'coyoacan', 'market', 'Chợ Coyoacán', 'Coyoacán Market', ['shopping', 'food', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'fridamuseum'),
+  p('mexicocity', 'taqueria', 'restaurant', 'Quán taquería', 'Neighborhood taquería', ['food', 'reply-restaurant'], ['reply', 'cloze', 'order'], 3, 12, undefined, 'coyoacan'),
+  p('mexicocity', 'chapultepec', 'garden', 'Công viên Chapultepec', 'Chapultepec Park', ['environment', 'leisure'], ['cloze', 'listen-pick', 'translate'], 3, 12, undefined, 'taqueria'),
+];
+
+const RIO: PoiContent[] = [
+  p('rio', 'gate', 'airport', 'Sân bay Galeão — cổng lên máy bay', 'Galeão Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('rio', 'christ', 'landmark', 'Tượng Chúa Cứu Thế', 'Christ the Redeemer', ['culture', 'tourism', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 14, 'sv-rio', undefined, { questions: 8 }),
+  p('rio', 'copacabana', 'garden', 'Bãi biển Copacabana', 'Copacabana Beach', ['environment', 'leisure'], ['cloze', 'listen-pick', 'translate'], 3, 12, undefined, 'christ'),
+  p('rio', 'selaron', 'landmark', 'Cầu thang Escadaria Selarón', 'Escadaria Selarón steps', ['art', 'culture', 'reply-directions'], ['reply', 'cloze', 'dictation'], 3, 12, undefined, 'copacabana'),
+  p('rio', 'feira', 'market', 'Hội chợ cuối tuần', 'Weekend feira', ['shopping', 'food', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'selaron'),
+  p('rio', 'botafogo', 'cafe', 'Quán cà phê Botafogo', 'Botafogo café', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 3, 11, undefined, 'feira'),
+];
+
+const CAPETOWN: PoiContent[] = [
+  p('capetown', 'gate', 'airport', 'Sân bay Cape Town — cổng lên máy bay', 'Cape Town Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('capetown', 'tablemountain', 'landmark', 'Núi Bàn', 'Table Mountain', ['environment', 'tourism', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 14, 'sv-capetown', undefined, { questions: 8 }),
+  p('capetown', 'bokaap', 'landmark', 'Khu Bo-Kaap', 'Bo-Kaap', ['culture', 'architecture', 'reply-directions'], ['reply', 'cloze', 'dictation'], 3, 12, undefined, 'tablemountain'),
+  p('capetown', 'waterfront', 'market', 'Chợ V&A Waterfront', 'V&A Waterfront market', ['shopping', 'food', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, undefined, 'bokaap'),
+  p('capetown', 'boulders', 'garden', 'Bãi biển Boulders', 'Boulders Beach', ['environment', 'animals'], ['cloze', 'listen-pick', 'translate'], 3, 12, undefined, 'waterfront'),
+  p('capetown', 'robben', 'museum', 'Bảo tàng đảo Robben', 'Robben Island Museum', ['history', 'education', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, undefined, 'boulders'),
+];
+
+const MARRAKECH: PoiContent[] = [
+  p('marrakech', 'gate', 'airport', 'Sân bay Marrakech — cổng lên máy bay', 'Marrakech Airport — boarding gate', [], [], 3, 0, undefined, undefined, { action: 'gate' }),
+  p('marrakech', 'jemaa', 'market', 'Quảng trường Jemaa el-Fnaa', 'Jemaa el-Fnaa square', ['culture', 'food', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 3, 14, 'sv-marrakech', undefined, { questions: 8 }),
+  p('marrakech', 'bahia', 'landmark', 'Cung điện Bahia', 'Bahia Palace', ['history', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 13, undefined, 'jemaa'),
+  p('marrakech', 'majorelle', 'garden', 'Vườn Majorelle', 'Majorelle Garden', ['environment', 'art', 'leisure'], ['cloze', 'listen-pick', 'translate'], 3, 12, undefined, 'bahia'),
+  p('marrakech', 'riad', 'hotel', 'Riad trong khu medina', 'Medina riad', ['housing', 'listening-accommodation', 'reply-hotel'], ['reply', 'cloze', 'order'], 3, 12, undefined, 'majorelle'),
+  p('marrakech', 'tagine', 'restaurant', 'Quán tagine', 'Tagine restaurant', ['food', 'reply-restaurant'], ['reply', 'cloze', 'order'], 3, 12, undefined, 'riad'),
+];
+
+const SHANGHAI: PoiContent[] = [
+  p('shanghai', 'gate', 'airport', 'Sân bay Phố Đông — cổng lên máy bay', 'Pudong Airport — boarding gate', [], [], 2, 0, undefined, undefined, { action: 'gate' }),
+  p('shanghai', 'bund', 'landmark', 'Bến Thượng Hải', 'The Bund', ['history', 'architecture', 'tourism', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 12, 'sv-sh-pearl', undefined, { questions: 8 }),
+  p('shanghai', 'pearltower', 'landmark', 'Tháp Đông Phương Minh Châu', 'Oriental Pearl Tower', ['tourism', 'listening-tourism-tours', 'reply-tickets'], ['reply', 'listen-pick', 'cloze'], 2, 12, undefined, 'bund'),
+  p('shanghai', 'yuyuan', 'garden', 'Vườn Dự Viên & Cầu Cửu Khúc', 'Yuyuan Garden', ['culture', 'environment', 'weather-climate'], ['cloze', 'listen-pick', 'translate'], 2, 11, 'sv-sh-tea', 'bund'),
+  p('shanghai', 'xiaolongbao', 'restaurant', 'Tiệm Bánh Bao Nam Tường', 'Nanxiang Xiaolongbao', ['food', 'listening-shopping-services', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-sh-dumpling', 'yuyuan'),
+  p('shanghai', 'nanjing', 'market', 'Phố đi bộ Nam Kinh', 'Nanjing Road Pedestrian Street', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 11, undefined, 'xiaolongbao'),
+  p('shanghai', 'station', 'station', 'Ga Tàu Lục Gia Chủy & Maglev', 'Lujiazui Station & Maglev', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 2, 11, undefined, 'pearltower'),
+];
+
+export const POI_CATALOG: PoiContent[] = [...HANOI, ...SINGAPORE, ...LONDON, ...PARIS, ...AMSTERDAM, ...ROME, ...HOCHIMINH, ...DANANG, ...TOKYO, ...SEOUL, ...NEWYORK, ...ISTANBUL, ...CAIRO, ...SYDNEY, ...MEXICOCITY, ...RIO, ...CAPETOWN, ...MARRAKECH, ...SHANGHAI];
 
 const BY_ID = new Map(POI_CATALOG.map((x) => [x.id, x]));
 

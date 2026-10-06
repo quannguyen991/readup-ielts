@@ -10,10 +10,12 @@ export type IPt = { x: number; y: number };
 
 export const INTERIOR_SIZE = { w: 418, h: 235 } as const;
 
-export type InteriorKindId = 'cafe' | 'restaurant' | 'hotel' | 'market' | 'museum' | 'station' | 'airport' | 'counter';
-export const INTERIOR_KIND_IDS: InteriorKindId[] = ['cafe', 'restaurant', 'hotel', 'market', 'museum', 'station', 'airport', 'counter'];
+export type InteriorKindId = 'cafe' | 'restaurant' | 'hotel' | 'market' | 'museum' | 'station' | 'airport' | 'counter' | 'garden' | 'landmark' | 'secret';
+export const INTERIOR_KIND_IDS: InteriorKindId[] = ['cafe', 'restaurant', 'hotel', 'market', 'museum', 'station', 'airport', 'counter', 'garden', 'landmark', 'secret'];
+export type InteriorZone = 'main' | 'platform';
 
 export type InteriorLayout = {
+  zone?: InteriorZone;
   floor: IRect;
   blockers: IRect[];
   /** Lối ra: hình chữ nhật đi được nối sàn với mép đáy ảnh. */
@@ -28,6 +30,8 @@ export type InteriorLayout = {
   exit: IPt;
   /** Quầy (để vẽ phòng dự phòng; ảnh thật tự vẽ quầy). */
   counter: IRect;
+  /** Lối sang khu vực khác trong cùng một địa điểm; dùng cho cầu thang ga tàu. */
+  portal?: { at: IPt; rect: IRect; destination: InteriorZone; spawn: IPt; label: { vi: string; en: string } };
 };
 
 // Đo từ ảnh `/travel/interiors/cafe.small.png` (và restaurant — cùng bố cục): sàn x 30–388, y 62–198; quầy + tủ kính
@@ -88,12 +92,20 @@ export const INTERIORS: Record<InteriorKindId, InteriorLayout> = {
     { x: 157, y: 42, w: 105, h: 38 },
     { host: { x: 209, y: 58 }, hostFront: { x: 209, y: 94 } },
   ),
-  station: base([
-    { x: 22, y: 85, w: 46, h: 47 },
-    { x: 22, y: 140, w: 63, h: 40 },
-    { x: 335, y: 85, w: 50, h: 47 },
-    { x: 332, y: 142, w: 63, h: 40 },
-  ]),
+  station: {
+    ...base([
+      { x: 22, y: 85, w: 46, h: 47 },
+      { x: 22, y: 140, w: 63, h: 40 },
+      { x: 332, y: 151, w: 55, h: 32 },
+    ]),
+    portal: {
+      at: { x: 351, y: 112 },
+      rect: { x: 315, y: 72, w: 78, h: 70 },
+      destination: 'platform',
+      spawn: { x: 114, y: 164 },
+      label: { vi: 'SÂN GA ↓', en: 'PLATFORM ↓' },
+    },
+  },
   // airport: quầy x135–270 + cổng soát x270–300 (liền quầy), ghế chờ hai bên
   airport: base(
     [
@@ -118,4 +130,44 @@ export const INTERIORS: Record<InteriorKindId, InteriorLayout> = {
     ],
     { x: 136, y: 52, w: 156, h: 36 },
   ),
+  garden: base([
+    { x: 24, y: 76, w: 48, h: 55 },
+    { x: 347, y: 75, w: 48, h: 56 },
+    { x: 45, y: 164, w: 74, h: 16 },
+    { x: 299, y: 164, w: 74, h: 16 },
+    { x: 188, y: 56, w: 42, h: 38 },
+  ]),
+  landmark: base([
+    { x: 24, y: 78, w: 65, h: 84 },
+    { x: 329, y: 78, w: 65, h: 84 },
+    { x: 164, y: 50, w: 90, h: 40 },
+    { x: 148, y: 170, w: 122, h: 20 },
+  ], { x: 316, y: 54, w: 70, h: 32 }, { host: { x: 351, y: 61 }, hostFront: { x: 311, y: 103 } }),
+  secret: base([
+    { x: 26, y: 65, w: 60, h: 105 },
+    { x: 332, y: 65, w: 60, h: 105 },
+    { x: 145, y: 52, w: 130, h: 34 },
+    { x: 57, y: 175, w: 65, h: 18 },
+    { x: 296, y: 175, w: 65, h: 18 },
+  ], { x: 146, y: 52, w: 128, h: 34 }),
+};
+
+/** Sân ga MRT bên dưới sảnh bán vé. Cầu thang phía trái dẫn ngược lên sảnh. */
+export const STATION_PLATFORM: InteriorLayout = {
+  zone: 'platform',
+  floor: { x: 12, y: 61, w: 394, h: 137 },
+  blockers: [{ x: 40, y: 62, w: 338, h: 68 }],
+  doorway: { x: 18, y: 140, w: 64, h: 58 },
+  host: { x: 212, y: 92 },
+  hostFront: { x: 212, y: 141 },
+  spawn: { x: 114, y: 164 },
+  exit: { x: 48, y: 170 },
+  counter: { x: 0, y: 0, w: 1, h: 1 },
+  portal: {
+    at: { x: 50, y: 169 },
+    rect: { x: 18, y: 139, w: 64, h: 59 },
+    destination: 'main',
+    spawn: { x: 300, y: 130 },
+    label: { vi: 'LÊN SẢNH ↑', en: 'UP TO CONCOURSE ↑' },
+  },
 };

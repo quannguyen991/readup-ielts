@@ -39,6 +39,8 @@ export function imageMap(m: {
   sounds?: string[];
   /** Cỡ ảnh nhỏ (mặc định 418×235); ảnh đất mới có thể khác (vd London 403×243). */
   size?: { w: number; h: number };
+  /** Hệ số phóng của ảnh gốc so với ảnh nhỏ; 1 nếu hai tệp cùng độ phân giải. */
+  scale?: number;
   /** Dùng ảnh ĐẤT (`/travel/terrain/<id>*.png`) thay cho tranh phẳng. */
   terrain?: boolean;
   /** Thế giới nhiều mảnh (tên tệp `<id>.small.png`, `<id>-e…`); độ lệch theo điểm nguồn. */
@@ -61,7 +63,7 @@ export function imageMap(m: {
     image: {
       src: `/travel/${dir}/${m.id}.png`,
       smallSrc: `/travel/${dir}/${m.id}.small.png`,
-      scale: 4,
+      scale: m.scale ?? 4,
       size: { ...size },
       mask: m.mask,
       panels: m.panels?.map((p) => ({ src: `/travel/${dir}/${m.id}${p.suffix}.small.png`, x: p.x, y: p.y, w: p.w, h: p.h })),

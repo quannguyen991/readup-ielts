@@ -30,7 +30,7 @@ export type CityMeta = {
   poiCount: number;
 };
 
-export const CITY_ORDER: CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
+export const CITY_ORDER: CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome', 'tokyo', 'seoul', 'newyork', 'istanbul', 'cairo', 'sydney', 'mexicocity', 'rio', 'capetown', 'marrakech', 'shanghai'];
 
 export const CITIES: Record<CityId, CityMeta> = {
   hanoi: {
@@ -143,6 +143,80 @@ export const CITIES: Record<CityId, CityMeta> = {
     requires: 'london',
     poiCount: 6,
   },
+  tokyo: {
+    id: 'tokyo', name: { vi: 'Tokyo', en: 'Tokyo' }, country: { vi: 'Nhật Bản', en: 'Japan' },
+    utcOffsetHours: 9, eurDst: false, level: 3, band: '6.5–7.5',
+    tagline: { vi: 'Shibuya, Sensō-ji, phố đèn lồng', en: 'Shibuya, Sensō-ji, lantern-lit lanes' },
+    tint: '#D94D60', mapAt: { x: 49, y: 8 }, requires: 'rome', poiCount: 5,
+  },
+  seoul: {
+    id: 'seoul', name: { vi: 'Seoul', en: 'Seoul' }, country: { vi: 'Hàn Quốc', en: 'South Korea' },
+    utcOffsetHours: 9, eurDst: false, level: 3, band: '6.5–7.5',
+    tagline: { vi: 'Cung Gyeongbokgung, hanok, chợ Gwangjang', en: 'Gyeongbokgung, hanok lanes, Gwangjang Market' },
+    tint: '#B85E47', mapAt: { x: 48, y: 10 }, requires: 'tokyo', poiCount: 5,
+  },
+  newyork: {
+    id: 'newyork', name: { vi: 'New York', en: 'New York' }, country: { vi: 'Hoa Kỳ', en: 'United States' },
+    utcOffsetHours: -5, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Tàu điện ngầm, Central Park, Broadway', en: 'Subway stops, Central Park, Broadway' },
+    tint: '#3D83B6', mapAt: { x: 9, y: 9 }, requires: 'seoul', poiCount: 5,
+  },
+  istanbul: {
+    id: 'istanbul', name: { vi: 'Istanbul', en: 'Istanbul' }, country: { vi: 'Thổ Nhĩ Kỳ', en: 'Türkiye' },
+    utcOffsetHours: 3, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Eo Bosphorus, mái vòm, chợ gia vị', en: 'The Bosphorus, domes, and spice bazaars' },
+    tint: '#D97A42', mapAt: { x: 30, y: 10 }, requires: 'newyork', poiCount: 5,
+  },
+  cairo: {
+    id: 'cairo', name: { vi: 'Cairo', en: 'Cairo' }, country: { vi: 'Ai Cập', en: 'Egypt' },
+    utcOffsetHours: 2, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Kim tự tháp, chợ Khan el-Khalili, sông Nile', en: 'Pyramids, Khan el-Khalili, and the Nile' },
+    tint: '#C38A43', mapAt: { x: 32, y: 13 }, requires: 'istanbul', poiCount: 5,
+  },
+  sydney: {
+    id: 'sydney', name: { vi: 'Sydney', en: 'Sydney' }, country: { vi: 'Úc', en: 'Australia' },
+    utcOffsetHours: 10, eurDst: false, level: 3, band: '6.5–7.5',
+    tagline: { vi: 'Nhà hát Opera, bến cảng, Bondi', en: 'The Opera House, the harbour, and Bondi' },
+    tint: '#2F9CB0', mapAt: { x: 52, y: 24 }, requires: 'cairo', poiCount: 5,
+  },
+  mexicocity: {
+    id: 'mexicocity', name: { vi: 'Thành phố Mexico', en: 'Mexico City' }, country: { vi: 'Mexico', en: 'Mexico' },
+    utcOffsetHours: -6, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Zócalo, Coyoacán, những quán taco', en: 'Zócalo, Coyoacán, and neighborhood taquerías' },
+    tint: '#D36C4A', mapAt: { x: 12, y: 13 }, requires: 'sydney', poiCount: 5,
+  },
+  rio: {
+    id: 'rio', name: { vi: 'Rio de Janeiro', en: 'Rio de Janeiro' }, country: { vi: 'Brazil', en: 'Brazil' },
+    utcOffsetHours: -3, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Christ the Redeemer, bãi Copacabana, vịnh Guanabara', en: 'Christ the Redeemer, Copacabana, and Guanabara Bay' },
+    tint: '#29A889', mapAt: { x: 18, y: 22 }, requires: 'mexicocity', poiCount: 5,
+  },
+  capetown: {
+    id: 'capetown', name: { vi: 'Cape Town', en: 'Cape Town' }, country: { vi: 'Nam Phi', en: 'South Africa' },
+    utcOffsetHours: 2, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Núi Bàn, Bo-Kaap, bờ Đại Tây Dương', en: 'Table Mountain, Bo-Kaap, and the Atlantic shore' },
+    tint: '#4788A6', mapAt: { x: 29, y: 28 }, requires: 'rio', poiCount: 5,
+  },
+  marrakech: {
+    id: 'marrakech', name: { vi: 'Marrakech', en: 'Marrakech' }, country: { vi: 'Ma-rốc', en: 'Morocco' },
+    utcOffsetHours: 1, eurDst: false, level: 3, band: '7+',
+    tagline: { vi: 'Medina đất đỏ, riad, vườn Majorelle', en: 'Red-earth medina, riads, and Majorelle Garden' },
+    tint: '#C34F38', mapAt: { x: 22, y: 16 }, requires: 'capetown', poiCount: 5,
+  },
+  shanghai: {
+    id: 'shanghai',
+    name: { vi: 'Thượng Hải', en: 'Shanghai' },
+    country: { vi: 'Trung Quốc', en: 'China' },
+    utcOffsetHours: 8,
+    eurDst: false,
+    level: 2,
+    band: '6–7',
+    tagline: { vi: 'Bến Thượng Hải, Tháp Minh Châu, Dự Viên', en: 'The Bund, Oriental Pearl, Yuyuan' },
+    tint: '#D97706',
+    mapAt: { x: 41, y: 8 },
+    requires: 'singapore',
+    poiCount: 6,
+  },
 };
 
 /** Đường bay trực tiếp (vô hướng) và giá vé — bảng ở mục 3 của kế hoạch. */
@@ -155,6 +229,18 @@ export const ROUTES: { a: CityId; b: CityId; tickets: number }[] = [
   { a: 'london', b: 'paris', tickets: 1 },
   { a: 'paris', b: 'amsterdam', tickets: 1 },
   { a: 'paris', b: 'rome', tickets: 1 },
+  { a: 'rome', b: 'tokyo', tickets: 3 },
+  { a: 'tokyo', b: 'seoul', tickets: 1 },
+  { a: 'seoul', b: 'newyork', tickets: 4 },
+  { a: 'newyork', b: 'istanbul', tickets: 4 },
+  { a: 'istanbul', b: 'cairo', tickets: 1 },
+  { a: 'cairo', b: 'sydney', tickets: 4 },
+  { a: 'sydney', b: 'mexicocity', tickets: 5 },
+  { a: 'mexicocity', b: 'rio', tickets: 2 },
+  { a: 'rio', b: 'capetown', tickets: 3 },
+  { a: 'capetown', b: 'marrakech', tickets: 3 },
+  { a: 'singapore', b: 'shanghai', tickets: 1 },
+  { a: 'shanghai', b: 'tokyo', tickets: 1 },
 ];
 
 export const HOME_CITY: CityId = 'hanoi';

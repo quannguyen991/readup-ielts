@@ -210,11 +210,16 @@ function Card({
           {q.setup}
         </Text>
         {q.line ? (
-          <Text className="font-semi" style={{ fontSize: 21, lineHeight: 30, color: T.ink, marginTop: 6 }}>
-            {'“'}
-            {q.line}
-            {'”'}
-          </Text>
+          <>
+            <Text className="font-strong" style={{ fontSize: 13, color: T.goldDark, marginTop: 8 }}>
+              {L('Nhân viên nói', 'Staff member says')}
+            </Text>
+            <Text className="font-semi" style={{ fontSize: 21, lineHeight: 30, color: T.ink, marginTop: 4 }}>
+              {'“'}
+              {q.line}
+              {'”'}
+            </Text>
+          </>
         ) : null}
         {checked ? (
           <Text className="font-sans" style={{ fontSize: 14, color: T.muted, marginTop: 6, marginBottom: 12 }}>
@@ -364,6 +369,17 @@ function Card({
         <Text className="font-sans" style={{ fontSize: 14, color: T.muted, marginTop: 4 }}>
           {q.answerVi}
         </Text>
+      ) : null}
+      {q.type === 'reply' ? (
+        <View style={{ marginTop: 10, padding: 10, borderRadius: 6, backgroundColor: T.paperDeep, gap: 6 }}>
+          <Text className="font-strong" style={{ fontSize: 14, color: T.goldDark }}>
+            {L('Luyện nói · nghe câu mẫu rồi nói lại', 'Speaking practice · listen, then say it aloud')}
+          </Text>
+          <Text className="font-semi" style={{ fontSize: 16, lineHeight: 23, color: T.ink }}>
+            {answerText(q)}
+          </Text>
+          <SpeakBtn text={answerText(q)} label={L('Nghe câu mẫu', 'Hear the model reply')} />
+        </View>
       ) : null}
       {info ? (
         <View style={{ marginTop: 8, paddingTop: 8, borderTopWidth: 1, borderColor: T.line }}>

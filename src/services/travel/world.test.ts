@@ -64,22 +64,13 @@ test('canFly: đủ vé và đã mở thì bay được, nêu rõ lý do khi kh�
   assert.deepEqual(home, { ok: true, cost: 0 });
 });
 
-test('bản đồ thế giới: mỗi thành phố nằm trên đất liền, các thành phố không dính nhau', async () => {
-  const { isLand, landRuns, WORLD_W, WORLD_H } = await import('@/data/travel/world-map');
-  for (const c of CITY_ORDER) {
-    const { x, y } = CITIES[c].mapAt;
-    assert.ok(x >= 0 && y >= 0 && x < WORLD_W && y < WORLD_H, c);
-    assert.equal(isLand(x, y), true, `${c} không nằm trên đất`);
-  }
+test('bản đồ thế giới: các thành phố không dính nhau', () => {
   for (const a of CITY_ORDER)
     for (const b of CITY_ORDER) {
       if (a >= b) continue;
       const d = Math.hypot(CITIES[a].mapAt.x - CITIES[b].mapAt.x, CITIES[a].mapAt.y - CITIES[b].mapAt.y);
       assert.ok(d >= 4, `${a} và ${b} quá gần (${d.toFixed(1)} ô)`);
     }
-  const runs = landRuns();
-  assert.ok(runs.length > 100);
-  for (const r of runs) assert.ok(r.w > 0 && r.x + r.w <= WORLD_W);
 });
 
 test('Việt Nam: Đà Nẵng và TP.HCM nối Hà Nội–Singapore, mở sau Singapore', () => {

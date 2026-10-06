@@ -9,6 +9,8 @@ export type ImmersiveCityProps = {
   onEnterPoi(id: string): void;
   onMove(tile: Tile): void;
   reducedMotion: boolean;
+  activeVisitPoiId: string | null;
+  onCloseVisit(): void;
 };
 
 export function ImmersiveCity(_props: ImmersiveCityProps): null {

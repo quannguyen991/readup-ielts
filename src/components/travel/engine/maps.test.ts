@@ -313,8 +313,8 @@ test('cảnh đối tượng: mỗi địa điểm có đúng một vật với 
   }
 });
 
-test('phòng trong: đủ 8 loại, mỗi loại có spawn/chủ/quầy/lối ra đúng chỗ và tới được', () => {
-  const kinds = ['cafe', 'restaurant', 'hotel', 'market', 'museum', 'station', 'airport', 'counter'] as const;
+test('phòng trong: đủ 11 bối cảnh, spawn/chủ/lối ra đúng chỗ và tới được', () => {
+  const kinds = ['cafe', 'restaurant', 'hotel', 'market', 'museum', 'station', 'airport', 'counter', 'garden', 'landmark', 'secret'] as const;
   assert.deepEqual([...INTERIOR_KIND_IDS].sort(), [...kinds].sort());
   for (const k of kinds) {
     assert.equal(interiorKindOf(k), k);
@@ -331,7 +331,17 @@ test('phòng trong: đủ 8 loại, mỗi loại có spawn/chủ/quầy/lối ra
     assert.ok(findPath(field, cell(L.hostFront), cell({ x: L.exit.x, y: L.exit.y - 4 }), { allowBlockedGoal: false }), `${k}: không ra được`);
     for (const b of L.blockers) assert.ok(b.x >= 0 && b.y >= 0 && b.x + b.w <= 418 && b.y + b.h <= 235, `${k}: đồ đạc ngoài ảnh`);
   }
-  for (const k of ['garden', 'landmark', 'secret'] as const) assert.equal(interiorKindOf(k), null);
+  const station = interiorLayout('station');
+  const platform = interiorLayout('station', 'platform');
+  assert.equal(station.portal?.destination, 'platform');
+  assert.equal(platform.portal?.destination, 'main');
+  for (const [label, layout] of [['station concourse', station], ['MRT platform', platform]] as const) {
+    const rows = interiorMaskRows(layout);
+    const field = { w: rows[0]!.length, h: rows.length, isBlocked: (x: number, y: number) => rows[y]![x] !== '#' };
+    const cell = (p: { x: number; y: number }) => ({ x: Math.floor(p.x / INTERIOR_CELL), y: Math.floor(p.y / INTERIOR_CELL) });
+    assert.ok(findPath(field, cell(layout.spawn), cell(layout.portal!.at)), `${label}: cầu thang không tới được`);
+    assert.ok(findPath(field, cell(layout.spawn), cell(layout.portal!.spawn)), `${label}: điểm đến bên kia cầu thang không tới được`);
+  }
 });
 
 test('thế giới nhiều mảnh: ghép lưới đi được theo độ lệch bất kỳ, khoét thông chỗ nối', () => {

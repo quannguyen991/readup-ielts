@@ -1,20 +1,31 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import { Platform } from 'react-native';
+import { AccessibilityInfo, Platform } from 'react-native';
 
 /** Người dùng bật "giảm chuyển động" ở hệ điều hành / trình duyệt. */
 const canQuery = () => Platform.OS === 'web' && typeof window !== 'undefined' && !!window.matchMedia;
+let nativeReducedMotion = false;
 
 function subscribeMotion(cb: () => void): () => void {
-  if (!canQuery()) return () => {};
-  const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-  mq.addEventListener?.('change', cb);
-  return () => mq.removeEventListener?.('change', cb);
+  if (canQuery()) {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    mq.addEventListener?.('change', cb);
+    return () => mq.removeEventListener?.('change', cb);
+  }
+  const subscription = AccessibilityInfo.addEventListener('reduceMotionChanged', (enabled) => {
+    nativeReducedMotion = enabled;
+    cb();
+  });
+  void AccessibilityInfo.isReduceMotionEnabled().then((enabled) => {
+    nativeReducedMotion = enabled;
+    cb();
+  });
+  return () => subscription.remove();
 }
 
 export function useReducedMotion(): boolean {
   return useSyncExternalStore(
     subscribeMotion,
-    () => canQuery() && window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    () => canQuery() ? window.matchMedia('(prefers-reduced-motion: reduce)').matches : nativeReducedMotion,
     () => false,
   );
 }

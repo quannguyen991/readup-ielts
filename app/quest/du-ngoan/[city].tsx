@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { Platform, Pressable, Text, useWindowDimensions, View } from 'react-native';
+import { Modal, Platform, Pressable, Text, useWindowDimensions, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { TaskShell } from '@/components/layout/TaskShell';
@@ -11,6 +11,7 @@ import { Eyebrow, GameButton, PixelPanel, StarsRow, T } from '@/components/trave
 import { CityCanvas } from '@/components/travel/scenes/CityCanvas';
 import { FsPortal, useFullscreen } from '@/components/travel/scenes/fullscreen';
 import { ImmersiveCity } from '@/components/travel/immersive/ImmersiveCity';
+import { VisitDialogue } from '@/components/travel/immersive/VisitDialogue';
 import { Icon } from '@/components/ui/Icon';
 import { getPoiContent, poisOfCity } from '@/data/travel/pois';
 import { hasHistoryGuide } from '@/data/history';
@@ -48,6 +49,7 @@ function City({ city }: { city: keyof typeof CITIES }) {
   const win = useWindowDimensions();
   const fs = useFullscreen();
   const [boxW, setBoxW] = useState(0);
+  const [activeVisitPoiId, setActiveVisitPoiId] = useState<string | null>(null);
   let canvasH: number;
   if (win.width >= 700 && boxW > 0) {
     // hệ số nguyên lớn nhất mà cả bề ngang lẫn chiều cao (≤ 85% màn) còn chứa trọn tranh
@@ -64,11 +66,17 @@ function City({ city }: { city: keyof typeof CITIES }) {
   const setPos = useTravelStore((s) => s.setPos);
   const pois = useMemo(() => poisOfCity(city), [city]);
 
-  // Chưa ở thành phố này: về bản đồ thế giới (phải bay tới trước).
+  // Chưa ở thành phố này: về bản đồ thế giới (trên localhost / ?preview=1 thì tự đặt để xem thử).
   const here = state.city === city;
   useEffect(() => {
-    if (!here) router.replace('/quest/du-ngoan' as never);
-  }, [here]);
+    if (!here) {
+      if (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || /[?&]preview=1/.test(window.location.search))) {
+        useTravelStore.setState({ city, pos: POS_UNSET });
+      } else {
+        router.replace('/quest/du-ngoan' as never);
+      }
+    }
+  }, [here, city]);
 
   // Vị trí chưa đặt hoặc nằm ngoài bản đồ → điểm xuất phát.
   const pos = state.pos;
@@ -86,7 +94,9 @@ function City({ city }: { city: keyof typeof CITIES }) {
       if (hasHistoryGuide(poi.id)) router.push(`/quest/du-ngoan/guide/${poi.id}` as never);
       else if (poi.action === 'customs') router.push('/quest/du-ngoan/airport' as never);
       else if (poi.action === 'gate') router.push('/quest/du-ngoan' as never);
-      else if (isPoiUnlocked(state, poi)) router.push(`/quest/du-ngoan/visit/${poi.id}` as never);
+      else if (isPoiUnlocked(state, poi)) {
+        setActiveVisitPoiId(poi.id);
+      }
     },
     [state],
   );
@@ -96,7 +106,7 @@ function City({ city }: { city: keyof typeof CITIES }) {
   const canvasOk = Platform.OS === 'web' && !!map && !unset && !outside;
 
   // Web có bản đồ: chế độ TOÀN MÀN HÌNH kiểu Bến Dừa (HUD nổi + ngăn Địa điểm / Nhiệm vụ), không dùng khung trang.
-  if (canvasOk) return <ImmersiveCity city={city} map={map!} fallbackMap={getFallbackMap(city)} state={state} onEnterPoi={enter} onMove={onMove} reducedMotion={reduced} />;
+  if (canvasOk) return <ImmersiveCity city={city} map={map!} fallbackMap={getFallbackMap(city)} state={state} onEnterPoi={enter} onMove={onMove} reducedMotion={reduced} activeVisitPoiId={activeVisitPoiId} onCloseVisit={() => setActiveVisitPoiId(null)} />;
 
   return (
     <TaskShell backHref="/quest/du-ngoan" backLabel={L('Bản đồ thế giới', 'World map')} title={bi(CITIES[city].name, locale)} right={<TravelHud />}>
@@ -164,6 +174,11 @@ function City({ city }: { city: keyof typeof CITIES }) {
         <GameButton label={L('Hộ chiếu', 'Passport')} tone="paper" onPress={() => router.push('/quest/du-ngoan/passport' as never)} />
       </View>
     </View>
+    {!activeVisitPoiId ? null : (
+      <Modal transparent animationType="fade" visible onRequestClose={() => setActiveVisitPoiId(null)}>
+        <VisitDialogue key={activeVisitPoiId} poiId={activeVisitPoiId} onClose={() => setActiveVisitPoiId(null)} />
+      </Modal>
+    )}
     </TaskShell>
   );
 }

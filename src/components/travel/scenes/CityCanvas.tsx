@@ -1,15 +1,20 @@
 import type { MutableRefObject } from 'react';
 
-import type { PoiHighlights } from '../engine/CityEngine';
+import type { MissionLayout, MissionNpcDef, PoiHighlights } from '../engine/CityEngine';
 import type { CityMap, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
+import type { TravelConversationContext } from '@/services/travel/conversation';
 
 /** Cần điều khiển từ ngoài: tự đi tới một địa điểm. */
 export type CityCanvasHandle = {
   walkToPoi(id: string): boolean;
   /** Cần điều khiển ảo: tập hướng đang giữ (rỗng = thả). */
   setStick(dirs: readonly ('up' | 'down' | 'left' | 'right')[]): void;
+  /** Lock movement and map clicks while the world remains visible behind a dialogue. */
+  setInputEnabled(enabled: boolean): void;
   /** Nút tương tác (như phím E). */
   interact(): void;
+  /** Nhiệm vụ du học: tự đi tới đứng cạnh NPC. */
+  missionWalkTo(id: string): boolean;
 };
 
 /**
@@ -20,6 +25,7 @@ export type CityCanvasProps = {
   map: CityMap;
   state: TravelState;
   onEnterPoi(id: string): void;
+  onTalkNpc?(context: TravelConversationContext): void;
   onMove(tile: Tile): void;
   reducedMotion: boolean;
   /** Ghi đè giờ địa phương 0..24 (trang thử). Bỏ trống = giờ thật của thành phố. */
@@ -38,6 +44,13 @@ export type CityCanvasProps = {
   handleRef?: MutableRefObject<CityCanvasHandle | null>;
   /** Ẩn nút toàn màn hình tự có (khi lớp giao diện bên ngoài đã có nút riêng). */
   hideFullscreenButton?: boolean;
+  /** Nhiệm vụ du học: NPC đứng cạnh địa điểm, mục tiêu, nói chuyện ngay trên bản đồ. */
+  missionNpcs?: MissionNpcDef[];
+  missionGoal?: string | null;
+  missionTalk?: string | null;
+  onMissionArrive?(id: string): void;
+  onMissionNear?(id: string | null): void;
+  onMissionLayout?(layout: MissionLayout): void;
 };
 
 export function CityCanvas(_props: CityCanvasProps): null {

@@ -26,6 +26,9 @@ import { Joystick } from './Joystick';
 import { createBus, HoverTip, MinimapLive, type Hover, type Pt } from './liveHud';
 import { MissionsDrawer, useClaimable } from './MissionsDrawer';
 import { PlacesDrawer, type PlaceRow } from './PlacesDrawer';
+import { VisitDialogue } from './VisitDialogue';
+import { TravelConversation } from './TravelConversation';
+import type { TravelConversationContext } from '@/services/travel/conversation';
 import { buttonsPerColumn, viewportKind, type StickDir } from '../mobile';
 import type { ImmersiveCityProps } from './ImmersiveCity';
 
@@ -52,7 +55,7 @@ function readMini(): boolean {
   }
 }
 
-export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMove, reducedMotion }: ImmersiveCityProps) {
+export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMove, reducedMotion, activeVisitPoiId, onCloseVisit }: ImmersiveCityProps) {
   const { L, locale } = useL();
   const win = useWindowDimensions();
   const kind = viewportKind(win.width, win.height);
@@ -69,7 +72,12 @@ export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMov
   const hoverBus = useMemo(() => createBus<Hover>(), []);
   const [now, setNow] = useState(() => Date.now());
   const [toast, setToast] = useState('');
+  const [activeNpcChat, setActiveNpcChat] = useState<TravelConversationContext | null>(null);
   const handle = useRef<CityCanvasHandle | null>(null);
+
+  useEffect(() => {
+    handle.current?.setInputEnabled(!activeVisitPoiId && !activeNpcChat);
+  }, [activeVisitPoiId, activeNpcChat]);
   const claimable = useClaimable(city);
   const sound = useGameStore((s) => s.sound);
   const setSound = useGameStore((s) => s.setSound);
@@ -130,12 +138,17 @@ export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMov
     },
     [L],
   );
-  const enter = useCallback(
+  const enterPlace = useCallback(
     (id: string) => {
       setDrawer(null);
+      const row = rows.find((r) => r.poi.id === id);
+      if (row?.unlocked && !row.poi.action && !hasHistoryGuide(row.poi.id)) {
+        if (!handle.current?.walkToPoi(id)) setToast(L('Chưa có đường tới đó — thử đi gần hơn.', 'No route there yet — try moving closer.'));
+        return;
+      }
       onEnterPoi(id);
     },
-    [onEnterPoi],
+    [L, onEnterPoi, rows],
   );
   const onHover = useCallback((id: string | null, at: Pt) => hoverBus.emit(id ? { id, at } : null), [hoverBus]);
   const onPlayer = useCallback((p: Pt) => playerBus.emit(p), [playerBus]);
@@ -206,7 +219,8 @@ export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMov
           map={map}
           fallbackMap={fallbackMap}
           state={state}
-          onEnterPoi={enter}
+          onEnterPoi={onEnterPoi}
+          onTalkNpc={setActiveNpcChat}
           onMove={onMove}
           reducedMotion={reducedMotion}
           highlights={highlights}
@@ -346,8 +360,10 @@ export function ImmersiveCity({ city, map, fallbackMap, state, onEnterPoi, onMov
 
         <HoverTip bus={hoverBus} pois={pois} locked={locked} stars={starsOf} hidden={!!drawer} />
 
-        {drawer === 'places' ? <PlacesDrawer rows={rows} state={state} onClose={() => setDrawer(null)} onGo={go} onEnter={enter} onFocus={setFocus} /> : null}
+        {drawer === 'places' ? <PlacesDrawer rows={rows} state={state} onClose={() => setDrawer(null)} onGo={go} onEnter={enterPlace} onFocus={setFocus} /> : null}
         {drawer === 'missions' ? <MissionsDrawer city={city} onClose={() => setDrawer(null)} onGo={go} /> : null}
+        {activeVisitPoiId ? <VisitDialogue key={activeVisitPoiId} poiId={activeVisitPoiId} onClose={onCloseVisit} /> : null}
+        {activeNpcChat ? <TravelConversation key={activeNpcChat.npcId} context={activeNpcChat} onClose={() => setActiveNpcChat(null)} /> : null}
       </View>
     </div>
   );

@@ -1,0 +1,50 @@
+[
+ {
+  "id": "apartment",
+  "file": "apartment.png",
+  "w": 80,
+  "h": 100
+ },
+ {
+  "id": "office",
+  "file": "office.png",
+  "w": 78,
+  "h": 91
+ },
+ {
+  "id": "shrine",
+  "file": "shrine.png",
+  "w": 104,
+  "h": 89
+ },
+ {
+  "id": "teahouse",
+  "file": "teahouse.png",
+  "w": 109,
+  "h": 82
+ },
+ {
+  "id": "treeA",
+  "file": "treeA.png",
+  "w": 60,
+  "h": 61
+ },
+ {
+  "id": "treeB",
+  "file": "treeB.png",
+  "w": 50,
+  "h": 45
+ },
+ {
+  "id": "lamp",
+  "file": "lamp.png",
+  "w": 28,
+  "h": 52
+ },
+ {
+  "id": "bench",
+  "file": "bench.png",
+  "w": 29,
+  "h": 16
+ }
+]
