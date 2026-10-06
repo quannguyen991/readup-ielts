@@ -66,7 +66,7 @@ export default function DictationScreen() {
     setVerdict(ok);
     if (ok) setCorrect((n) => n + 1);
     logQuestions(1);
-    useTopicStudyStore.getState().review(slug, word.word, ok);
+    useTopicStudyStore.getState().practice(slug, word.word, ok);
     useGameStore.getState().answer(ok, 'vocab', { key: `dict:${slug}:${word.word}:${sentenceMode ? 's' : 'w'}` });
   };
 

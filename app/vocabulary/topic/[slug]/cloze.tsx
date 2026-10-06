@@ -156,11 +156,11 @@ export default function ClozeScreen() {
     if (ok) {
       if (!head.retry) {
         setFirstTry((n) => n + 1);
-        useTopicStudyStore.getState().review(slug, q.word.word, true);
+        useTopicStudyStore.getState().practice(slug, q.word.word, true);
       }
       return;
     }
-    useTopicStudyStore.getState().review(slug, q.word.word, false);
+    useTopicStudyStore.getState().practice(slug, q.word.word, false);
     setMistake(m);
     if (m) {
       setMistakes((list) => [...list, { word: q.word.word, m }]);

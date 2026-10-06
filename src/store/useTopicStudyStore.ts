@@ -6,6 +6,7 @@ import { DEFAULT_LEARN_SETTINGS, type LearnSettings, type WordStage } from '@/se
 import type { MistakeKind } from '@/services/vocab/mistake';
 import { isThemeId, type ThemeId } from '@/components/vocab/study/study-theme';
 import { remapTopicStudy } from '@/services/vocab/sat-slug-migration';
+import { stageAfterQuiz } from '@/services/vocab/deck-status';
 import { loadByDay, nextReview, repairReviews, type ReviewEntry } from '@/services/vocab/review-schedule';
 import { todayKey } from './persist';
 
@@ -40,6 +41,11 @@ type TopicStudyState = {
   resets: Record<string, string>;
   /** Ghi một lần trả lời (đúng / sai) vào lịch ôn theo ngày. */
   review: (slug: string, word: string, correct: boolean) => void;
+  /**
+   * Một câu luyện ở màn KHÔNG tự chấm chặng (Điền chỗ trống, Chép chính tả, Bài kiểm tra, Bong bóng): vừa vào lịch ôn
+   * vừa đẩy chặng của từ (đúng lên một nấc, sai về tối đa 1) — để "Đã nhớ / Cần ôn" ở trang bộ từ chạy theo.
+   */
+  practice: (slug: string, word: string, correct: boolean) => void;
   /** Nhật ký lỗi đã gọi tên (mới nhất cuối), giữ tối đa 400 dòng. */
   mistakeLog: MistakeEntry[];
   logMistake: (slug: string, word: string, kind: MistakeKind) => void;
@@ -78,6 +84,16 @@ export const useTopicStudyStore = create<TopicStudyState>()(
           const load = loadByDay(s.reviews, today, { slug, word });
           return {
             reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, today, load) } },
+          };
+        }),
+      practice: (slug, word, correct) =>
+        set((s) => {
+          const today = todayKey();
+          const load = loadByDay(s.reviews, today, { slug, word });
+          return {
+            reviews: { ...s.reviews, [slug]: { ...(s.reviews[slug] ?? {}), [word]: nextReview(s.reviews[slug]?.[word], correct, today, load) } },
+            stages: { ...s.stages, [slug]: { ...(s.stages[slug] ?? {}), [word]: stageAfterQuiz(s.stages[slug]?.[word], correct) } },
+            lastAt: { ...s.lastAt, [slug]: new Date().toISOString() },
           };
         }),
       mistakeLog: [],
