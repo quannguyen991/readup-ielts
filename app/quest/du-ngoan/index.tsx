@@ -207,6 +207,7 @@ function World() {
       </PixelPanel>
 
       <View style={{ flexDirection: 'row', gap: 10, flexWrap: 'wrap', marginTop: 16 }}>
+        <GameButton label={L('Học kỳ quanh thế giới', 'Study Abroad World Tour')} icon="book" tone="gold" onPress={() => router.push('/quest/study-abroad' as never)} />
         <GameButton label={L('Quầy vé', 'Ticket counter')} icon="plus" tone="paper" onPress={() => router.push('/quest/du-ngoan/airport' as never)} />
         <GameButton
           label={ready ? L(`Hộ chiếu · ${points} điểm · ${ready} quà`, `Passport · ${points} pts · ${ready} reward${ready > 1 ? 's' : ''}`) : L(`Hộ chiếu · ${points} điểm`, `Passport · ${points} pts`)}
