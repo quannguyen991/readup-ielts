@@ -22,6 +22,17 @@ export const SCENE_OF_CITY: Record<CityId, PxSceneId> = {
   paris: 'paris',
   amsterdam: 'london',
   rome: 'paris',
+  tokyo: 'tokyo',
+  seoul: 'tokyo',
+  newyork: 'london',
+  istanbul: 'paris',
+  cairo: 'hanoi',
+  sydney: 'singapore',
+  mexicocity: 'hanoi',
+  rio: 'singapore',
+  capetown: 'singapore',
+  marrakech: 'hanoi',
+  shanghai: 'tokyo',
 };
 
 /** Điểm nhấn (0..1 theo chiều ngang) để cảnh không bị cắt mất vật chính trên màn hẹp. */

@@ -1,0 +1,50 @@
+[
+ {
+  "id": "deli",
+  "file": "deli.png",
+  "w": 88,
+  "h": 90
+ },
+ {
+  "id": "brickapt",
+  "file": "brickapt.png",
+  "w": 56,
+  "h": 84
+ },
+ {
+  "id": "flatiron",
+  "file": "flatiron.png",
+  "w": 49,
+  "h": 84
+ },
+ {
+  "id": "glasstower",
+  "file": "glasstower.png",
+  "w": 62,
+  "h": 86
+ },
+ {
+  "id": "treeA",
+  "file": "treeA.png",
+  "w": 52,
+  "h": 54
+ },
+ {
+  "id": "treeB",
+  "file": "treeB.png",
+  "w": 50,
+  "h": 53
+ },
+ {
+  "id": "lamp",
+  "file": "lamp.png",
+  "w": 9,
+  "h": 51
+ },
+ {
+  "id": "bench",
+  "file": "bench.png",
+  "w": 29,
+  "h": 15
+ }
+]

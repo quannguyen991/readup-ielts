@@ -7,7 +7,9 @@
  */
 import type { Bi } from '@/i18n/useL';
 
-export type CityId = 'hanoi' | 'singapore' | 'london' | 'paris' | 'amsterdam' | 'rome' | 'hochiminh' | 'danang';
+export type CityId =
+  | 'hanoi' | 'danang' | 'hochiminh' | 'singapore' | 'london' | 'paris' | 'amsterdam' | 'rome'
+  | 'tokyo' | 'seoul' | 'newyork' | 'istanbul' | 'cairo' | 'sydney' | 'mexicocity' | 'rio' | 'capetown' | 'marrakech' | 'shanghai';
 
 export type Level = 1 | 2 | 3;
 
@@ -63,6 +65,10 @@ export type Npc = {
   id: string;
   /** Mã sprite trong atlas. */
   sprite: string;
+  /** Vai trò dùng để mở hội thoại AI tự do khi người chơi bắt chuyện. */
+  chatPersona?: 'staff' | 'local' | 'traveller' | 'vendor' | 'student' | 'elder' | 'guide';
+  /** Tên hiển thị tuỳ chọn của nhân vật. */
+  chatName?: Bi;
   at: Tile;
   /** Đường đi lặp (ô); không có thì đứng yên. */
   path?: Tile[];
@@ -132,6 +138,8 @@ export type ImageLayer = {
 export type SceneSprite = {
   w: number;
   h: number;
+  /** Absolute public asset path; use this when a city reuses a shared 2D prop. */
+  src?: string;
   /** Tệp trong `/travel/sprites/<cityId>/`; mặc định `<id>.png`. */
   file?: string;
   /** Cắt một phần của tệp (bảng nhiều vật). */

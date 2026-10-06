@@ -18,6 +18,17 @@ export const WORLD_ART: Record<CityId, { x: number; y: number }> = {
   danang: { x: 343, y: 127 },
   hochiminh: { x: 337, y: 143 },
   singapore: { x: 331, y: 155 },
+  newyork: { x: 107, y: 83 },
+  mexicocity: { x: 113, y: 129 },
+  rio: { x: 145, y: 174 },
+  capetown: { x: 209, y: 196 },
+  marrakech: { x: 148, y: 106 },
+  istanbul: { x: 128, y: 76 },
+  cairo: { x: 177, y: 119 },
+  tokyo: { x: 380, y: 96 },
+  seoul: { x: 358, y: 106 },
+  shanghai: { x: 348, y: 110 },
+  sydney: { x: 374, y: 183 },
 };
 
 export type RoutePoint = { x: number; y: number; angle: number };

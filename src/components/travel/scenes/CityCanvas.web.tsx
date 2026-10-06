@@ -13,7 +13,7 @@ import type { CityCanvasProps } from './CityCanvas';
 
 export type { CityCanvasProps } from './CityCanvas';
 
-export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMove, reducedMotion, hour, weather, debug, highlights, onHoverPoi, onPlayer, handleRef, hideFullscreenButton }: CityCanvasProps) {
+export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onTalkNpc, onMove, reducedMotion, hour, weather, debug, highlights, onHoverPoi, onPlayer, handleRef, hideFullscreenButton, missionNpcs, missionGoal, missionTalk, onMissionArrive, onMissionNear, onMissionLayout }: CityCanvasProps) {
   const locale = useLocale();
   // Bản đồ ảnh không tải được tranh → chuyển sang bản đồ ô dự phòng (nếu có).
   const [failedId, setFailedId] = useState<string | null>(null);
@@ -22,12 +22,14 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
   const boxRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const engineRef = useRef<CityEngine | null>(null);
-  const cbs = useRef({ onEnterPoi, onMove, onHoverPoi, onPlayer });
+  const cbs = useRef({ onEnterPoi, onTalkNpc, onMove, onHoverPoi, onPlayer, onMissionArrive, onMissionNear, onMissionLayout });
+  const missionRef = useRef({ npcs: missionNpcs, goal: missionGoal, talk: missionTalk });
   const latest = useRef({ state, reducedMotion, locale, hour, weather });
 
   // Giữ bản mới nhất của callback/props trong ref (cập nhật ở effect, không trong lúc render).
   useEffect(() => {
-    cbs.current = { onEnterPoi, onMove, onHoverPoi, onPlayer };
+    cbs.current = { onEnterPoi, onTalkNpc, onMove, onHoverPoi, onPlayer, onMissionArrive, onMissionNear, onMissionLayout };
+    missionRef.current = { npcs: missionNpcs, goal: missionGoal, talk: missionTalk };
     latest.current = { state, reducedMotion, locale, hour, weather };
   });
 
@@ -40,13 +42,17 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
     const L = latest.current;
     const engine = new CityEngine(
       canvas,
-      { onEnterPoi: (id) => cbs.current.onEnterPoi(id), onMove: (t) => cbs.current.onMove(t), onImageError: () => setFailedId(mapProp.id), onToggleFullscreen: () => toggleFullscreen(), onHoverPoi: (id, at) => cbs.current.onHoverPoi?.(id, at), onPlayer: (p) => cbs.current.onPlayer?.(p) },
+      { onEnterPoi: (id) => cbs.current.onEnterPoi(id), onTalkNpc: (context) => cbs.current.onTalkNpc?.(context), onMove: (t) => cbs.current.onMove(t), onImageError: () => setFailedId(mapProp.id), onToggleFullscreen: () => toggleFullscreen(), onHoverPoi: (id, at) => cbs.current.onHoverPoi?.(id, at), onPlayer: (p) => cbs.current.onPlayer?.(p), onMissionArrive: (id) => cbs.current.onMissionArrive?.(id), onMissionNear: (id) => cbs.current.onMissionNear?.(id), onMissionLayout: (l) => cbs.current.onMissionLayout?.(l) },
       map,
       L.state,
       { reducedMotion: L.reducedMotion || !!mq?.matches, locale: L.locale, hour: L.hour, weather: L.weather, debug: debugOn },
     );
     engineRef.current = engine;
-    if (handleRef) handleRef.current = { walkToPoi: (id) => engine.walkToPoi(id), setStick: (d) => engine.setStick(d), interact: () => engine.interactNow() };
+    if (missionRef.current.npcs) {
+      engine.setMissionNpcs(missionRef.current.npcs);
+      engine.setMissionGoal(missionRef.current.goal ?? null);
+    }
+    if (handleRef) handleRef.current = { walkToPoi: (id) => engine.walkToPoi(id), setStick: (d) => engine.setStick(d), setInputEnabled: (enabled) => engine.setInputEnabled(enabled), interact: () => engine.interactNow(), missionWalkTo: (id) => engine.missionWalkTo(id) };
     // Đo lại khung: gộp mọi nguồn (đổi cỡ, xoay màn hình, thanh địa chỉ co/giãn, bàn phím) thành MỘT lần/khung hình.
     // Engine giữ nguyên trạng thái (vị trí, hội thoại, zoom) — chỉ đổi bộ đệm vẽ + máy quay.
     let pending = 0;
@@ -55,7 +61,8 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
     let lastDpr = 0;
     const measure = () => {
       pending = 0;
-      const r = box.getBoundingClientRect();
+      // clientWidth/Height (không bị ảnh hưởng bởi CSS transform phóng to của lớp ngoài) thay vì getBoundingClientRect.
+      const r = { width: box.clientWidth, height: box.clientHeight };
       if (r.width <= 0 || r.height <= 0) return;
       const dpr = capDpr(window.devicePixelRatio || 1);
       if (r.width === lastW && r.height === lastH && dpr === lastDpr) return;
@@ -95,6 +102,18 @@ export function CityCanvas({ map: mapProp, fallbackMap, state, onEnterPoi, onMov
   useEffect(() => {
     engineRef.current?.setState(state);
   }, [state]);
+
+  useEffect(() => {
+    engineRef.current?.setMissionNpcs(missionNpcs ?? []);
+  }, [missionNpcs]);
+
+  useEffect(() => {
+    engineRef.current?.setMissionGoal(missionGoal ?? null);
+  }, [missionGoal]);
+
+  useEffect(() => {
+    engineRef.current?.missionTalk(missionTalk ?? null);
+  }, [missionTalk]);
 
   useEffect(() => {
     engineRef.current?.setHighlights(highlights ?? {});

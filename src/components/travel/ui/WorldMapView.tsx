@@ -8,7 +8,7 @@ import { Pressable, Text, View, type GestureResponderEvent } from 'react-native'
 
 import { Icon } from '@/components/ui/Icon';
 import { bi, useL } from '@/i18n/useL';
-import { CITIES, flightCost } from '@/services/travel/world';
+import { CITIES, CITY_ORDER, flightCost } from '@/services/travel/world';
 import { learningProgress } from '@/services/travel/flightProgress';
 import { routePoint, WORLD_ART } from '@/services/travel/worldGeometry';
 import { useTravelStore } from '@/store/useTravelStore';
@@ -31,7 +31,7 @@ export type Flight = { from: CityId; to: CityId; t: number };
 
 export { WORLD_ART };
 
-const ORDER: CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
+const ORDER: CityId[] = CITY_ORDER;
 
 const route = routePoint;
 

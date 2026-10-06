@@ -4,6 +4,7 @@
  * trí trên tuyến Hà Nội → Singapore → London → Paris → Rome, chia theo độ dài đường bay. Hàm thuần.
  */
 import { mainPoisOfCity } from '@/data/travel/pois';
+import { CITY_ORDER } from './world';
 import { TRAVEL_ECONOMY } from './economy';
 import type { CityId, TravelState } from './types';
 import { routePoint, WORLD_ART, type RoutePoint } from './worldGeometry';
@@ -11,9 +12,9 @@ import { routePoint, WORLD_ART, type RoutePoint } from './worldGeometry';
 type View = Pick<TravelState, 'poi'>;
 
 /** Tuyến chính của chuyến bay (các thành phố còn lại — Đà Nẵng, TP.HCM, Amsterdam — vẫn góp vào tiến độ). */
-export const FLIGHT_CHAIN: readonly CityId[] = ['hanoi', 'singapore', 'london', 'paris', 'rome'];
+export const FLIGHT_CHAIN: readonly CityId[] = ['hanoi', 'danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome', 'tokyo', 'seoul', 'newyork', 'istanbul', 'cairo', 'sydney', 'mexicocity', 'rio', 'capetown', 'marrakech'];
 /** Thành phố góp vào tiến độ chung. */
-export const LEARNING_CITIES: readonly CityId[] = ['danang', 'hochiminh', 'singapore', 'london', 'paris', 'amsterdam', 'rome'];
+export const LEARNING_CITIES: readonly CityId[] = CITY_ORDER.filter((city) => city !== 'hanoi');
 
 /** Mức hoàn thành MỊN của một thành phố, 0..1: mỗi địa điểm chính tính min(1, sao / sao-đạt). */
 export function cityProgressFine(v: View, city: CityId): number {

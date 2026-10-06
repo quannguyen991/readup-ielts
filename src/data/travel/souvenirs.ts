@@ -146,6 +146,20 @@ export const SOUVENIRS: Souvenir[] = [
   s('sv-dn-crab', 'danang', 'Con cua biển', 'Sea crab', 'Mua tận thuyền cá.', 'Bought straight from the boat.', '🦀'),
   s('sv-dn-resortkey', 'danang', 'Thẻ phòng nghỉ dưỡng', 'Resort key card', 'Phòng nhìn ra biển.', 'A room with a sea view.', '🔑'),
   s('sv-dn-golden', 'danang', 'Cầu Vàng mini', 'Mini Golden Bridge', 'Hai bàn tay khổng lồ nâng cầu.', 'Held up by giant hands.', true, '🌉'),
+
+  s('sv-tokyo', 'tokyo', 'Đèn lồng Shibuya', 'Shibuya lantern', 'Một đốm sáng giữa ngã tư đông người.', 'A small glow above the busy crossing.', '🏮'),
+  s('sv-seoul', 'seoul', 'Họa tiết mái hanok', 'Hanok roof pattern', 'Mái ngói cong của con phố cổ.', 'Curved roof tiles from the old lanes.', '🏯'),
+  s('sv-newyork', 'newyork', 'Thẻ tàu điện ngầm', 'Subway token', 'Một vòng tàu qua những khu phố New York.', 'A ride through New York neighborhoods.', '🚇'),
+  s('sv-istanbul', 'istanbul', 'Mắt xanh nazar', 'Blue nazar charm', 'Bùa mắt xanh mua ở chợ gia vị.', 'A blue glass charm from the spice bazaar.', '🧿'),
+  s('sv-cairo', 'cairo', 'Mèo Ai Cập nhỏ', 'Little Egyptian cat', 'Món quà từ khu chợ cổ.', 'A keepsake from the old bazaar.', '🐈'),
+  s('sv-sydney', 'sydney', 'Nam châm nhà hát Opera', 'Opera House magnet', 'Những cánh buồm bên bến cảng.', 'Sails beside the harbour.', '⛵'),
+  s('sv-mexicocity', 'mexicocity', 'Alebrije tí hon', 'Tiny alebrije', 'Sinh vật sắc màu từ xưởng thủ công.', 'A colourful creature from an artisan workshop.', '🦎'),
+  s('sv-rio', 'rio', 'Mặt nạ lễ hội', 'Carnival mask', 'Màu sắc rực rỡ của Rio.', 'A burst of Rio carnival colour.', '🎭'),
+  s('sv-capetown', 'capetown', 'Chim cánh cụt Boulders', 'Boulders penguin', 'Vị khách nhỏ bên bờ biển.', 'A tiny visitor from the coast.', '🐧'),
+  s('sv-marrakech', 'marrakech', 'Viên gạch zellige', 'Zellige tile', 'Họa tiết hình học xanh ngọc.', 'A turquoise geometric pattern.', '🧩'),
+  s('sv-sh-pearl', 'shanghai', 'Mô hình Tháp Minh Châu', 'Oriental Pearl miniature', 'Quả cầu hồng ngọc soi bóng sông Hoàng Phố.', 'Ruby spheres glowing over Huangpu River.', true, '🗼'),
+  s('sv-sh-dumpling', 'shanghai', 'Xửng tiểu long bao gỗ', 'Bamboo dumpling steamer', 'Xửng tre nhỏ tỏa hương nước xúp Nam Tường.', 'Miniature bamboo steamer smelling of rich broth.', '🥟'),
+  s('sv-sh-tea', 'shanghai', 'Hộp trà Long Tỉnh Dự Viên', 'Yuyuan Longjing tea tin', 'Lá trà xanh hái sớm từ vùng Giang Nam.', 'Early-harvest green tea from Jiangnan.', '🍵'),
 ];
 
 const BY_ID = new Map(SOUVENIRS.map((x) => [x.id, x]));

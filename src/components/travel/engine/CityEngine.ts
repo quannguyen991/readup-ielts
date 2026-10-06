@@ -12,14 +12,14 @@
  */
 import { findPath } from '@/services/travel/pathfinding';
 import { daylight, localTime, weatherPlan } from '@/services/travel/clock';
-import type { CityMap, MapObject, Npc, Poi, Route, SceneSprite, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
+import type { CityId, CityMap, MapObject, Npc, Poi, Route, SceneSprite, Tile, TravelState, WeatherPlan } from '@/services/travel/types';
 import { hash2, mulberry32 } from '@/data/travel/sprites/paint';
 import { getSpriteDef, personFrame, type Dir } from '@/data/travel/sprites';
 import { atlasFor, ctx2d, makeCanvas, type Atlas, type Bitmap } from './Atlas';
 import { buildWorld, GROUND_CHARS, isBlockedAt, isPoiLocked, pathField, TS, type Placed, type World } from './grid';
 import { buildImgWorld, findPathPx, isWalkPx, type ImgWorld, type Pt } from './imageWorld';
 import { drawInterior } from './interior';
-import { INTERIOR_SIZE, type InteriorLayout } from '@/data/travel/interiors';
+import { INTERIOR_SIZE, type InteriorLayout, type InteriorZone } from '@/data/travel/interiors';
 import { buildSceneWorld, footprintRect, INTERIOR_CELL, interiorKindOf, interiorLayout, interiorMaskRows, type InteriorKind } from './scene';
 import { ambientAt, Lighting, type Light, type RGB } from './Lighting';
 import { Particles, PK } from './Particles';
@@ -28,9 +28,22 @@ import { playSfx } from '@/services/audio/sfx-ui';
 import { CHATTER } from './dialogue';
 import { Camera, clientToWorld, computeImageView, computeView, viewForK, zoomBounds, type View } from './view';
 import { frameInterval, type StickDir } from '../mobile';
+import { conversationContextForNpc, type TravelConversationContext } from '@/services/travel/conversation';
+
+/** NPC của nhiệm vụ đứng cạnh một địa điểm trên bản đồ. */
+export type MissionNpcDef = { id: string; poi: string; sprite: string; name: string };
+/** Vị trí (px CSS trong canvas) của hai nhân vật khi đang nói chuyện: x giữa người, `y` chân, `top` đỉnh đầu. */
+export type MissionLayout = { you: { x: number; y: number; top: number }; npc: { x: number; y: number; top: number }; k: number };
 
 export type EngineCallbacks = {
+  /** Người chơi đã tới cạnh NPC nhiệm vụ (đi bộ, chạm vào NPC hoặc bấm E). */
+  onMissionArrive?(id: string): void;
+  /** Đang đứng gần NPC mục tiêu (id) hoặc đã rời xa (null). */
+  onMissionNear?(id: string | null): void;
+  /** Camera đã khung hai nhân vật xong: toạ độ để đặt bong bóng thoại. */
+  onMissionLayout?(layout: MissionLayout): void;
   onEnterPoi(id: string): void;
+  onTalkNpc?(context: TravelConversationContext): void;
   onMove(tile: Tile): void;
   /** Chế độ ảnh: không nạp được tranh nền (để lớp trên chuyển sang bản đồ ô dự phòng). */
   onImageError?(): void;
@@ -88,7 +101,7 @@ type Ent = {
   sortY: number;
 };
 
-type NpcRun = Ent & { npc: Npc; route: Pt[]; ri: number; wait: number; dir: Dir; walking: boolean; line: number; person: boolean };
+type NpcRun = Ent & { npc: Npc; route: Pt[]; ri: number; wait: number; dir: Dir; walking: boolean; line: number; person: boolean; mission?: { name: string } };
 type Player = Ent & { path: Pt[]; dir: Dir; stepT: number; dustT: number; moveAnnounced: boolean };
 type Pigeon = Ent & { home: Pt; mode: 0 | 1 | 2; t: number; vx: number; vy: number; hide: number };
 type Veh = Ent & { route: Route; pts: Pt[]; cum: number[]; len: number; s: number; dir: 1 | -1; sky: boolean; sp: number };
@@ -169,7 +182,7 @@ export class CityEngine {
   private npcs: NpcRun[] = [];
   private walkers: Walker[] = [];
   private objects: ObjEnt[] = [];
-  private interior: { poi: Poi; kind: InteriorKind; parent: CityMap; since: number; beat: boolean; hosted: boolean; layout: InteriorLayout } | null = null;
+  private interior: { poi: Poi; kind: InteriorKind; zone: InteriorZone; parent: CityMap; since: number; beat: boolean; hosted: boolean; layout: InteriorLayout } | null = null;
   private fade = { a: 0, target: 0, cb: null as (() => void) | null };
   private zoom = 0;
   private baseK = 1;
@@ -199,6 +212,18 @@ export class CityEngine {
   private pendingEnter: string | null = null;
   private enterLock: string | null = null;
   private keys: Dir[] = [];
+  private inputEnabled = true;
+  // ---- chế độ nhiệm vụ du học (NPC hội thoại ngay trên bản đồ)
+  private missionMode = false;
+  private missionDefs: MissionNpcDef[] = [];
+  private missionGoal: string | null = null;
+  private missionArrive: string | null = null;
+  private missionTalkId: string | null = null;
+  private missionNear: string | null = null;
+  private camFocus: Pt | null = null;
+  private talkT = 0;
+  private stuck = { x: 0, y: 0, t: 0 };
+  private layoutSent = false;
   /** Hướng từ cần điều khiển ảo (cùng ngữ nghĩa với phím; phím vật lý được ưu tiên). */
   private stick: Dir[] = [];
   private lastActiveAt = 0;
@@ -425,7 +450,10 @@ export class CityEngine {
     this.wake();
     (this.view as View).dpr = dpr;
     this.recomputeView();
-    this.cam.snapTo(this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
+    const f = this.camFocus ?? { x: this.player.x, y: this.player.y - 6 };
+    this.cam.snapTo(f.x, f.y, this.view, this.worldW, this.worldH);
+    this.layoutSent = false;
+    this.talkT = 0.5;
     this.renderFrame(0);
   }
 
@@ -490,6 +518,7 @@ export class CityEngine {
 
   /** Cần điều khiển ảo: tập hướng đang giữ (rỗng = thả). Sao chép vào bộ đệm riêng nên truyền mảng tái dùng được. */
   setStick(dirs: readonly StickDir[]) {
+    if (!this.inputEnabled) return;
     this.stick.length = 0;
     for (const d of dirs) this.stick.push(d);
     if (dirs.length) this.wake();
@@ -497,8 +526,22 @@ export class CityEngine {
 
   /** Nút "tương tác" (như phím E): nói chuyện / vào địa điểm gần nhất. */
   interactNow() {
+    if (!this.inputEnabled) return;
     this.wake();
     this.interact();
+  }
+
+  /** Keep the animated world running while a modal conversation owns player input. */
+  setInputEnabled(enabled: boolean) {
+    this.inputEnabled = enabled;
+    if (!enabled) {
+      this.keys = [];
+      this.stick = [];
+      this.player.path = [];
+      this.pendingEnter = null;
+      this.downAt = null;
+    }
+    this.wake();
   }
 
   dispose() {
@@ -622,6 +665,224 @@ export class CityEngine {
         person,
       };
     });
+    this.addMissionNpcs();
+  }
+
+  // ------------------------------------------------------------------ nhiệm vụ du học
+  /** Đặt các NPC nhiệm vụ (mỗi người đứng cạnh cửa của một địa điểm). Bật chế độ nhiệm vụ: không vào địa điểm nữa. */
+  setMissionNpcs(defs: MissionNpcDef[]) {
+    this.missionMode = defs.length > 0;
+    this.missionDefs = defs;
+    if (this.player) {
+      this.npcs = this.npcs.filter((n) => !n.mission);
+      this.addMissionNpcs();
+    }
+    this.wake();
+  }
+
+  private addMissionNpcs() {
+    if (!this.missionDefs.length || !this.player) return;
+    for (const def of this.missionDefs) {
+      const poi = this.map.pois.find((q) => q.id === def.poi);
+      if (!poi) continue;
+      const door = this.doorPt(poi);
+      const offs: Pt[] = [{ x: 16, y: 4 }, { x: -16, y: 4 }, { x: 0, y: 14 }, { x: 0, y: -12 }, { x: 26, y: 8 }, { x: -26, y: 8 }];
+      const at = offs.map((o) => ({ x: door.x + o.x, y: door.y + o.y })).find((q) => this.walkableAtPt(q.x, q.y)) ?? door;
+      const sid = this.spriteIdFor(def.sprite);
+      const bmps = this.personBitmaps(def.sprite);
+      this.npcs.push({
+        kind: 'npc',
+        bmps,
+        x: at.x,
+        y: at.y,
+        z: 0,
+        frame: personFrame('down', 0),
+        flip: false,
+        footRow: this.footRowOf(sid, bmps[0]?.h ?? 24),
+        w: bmps[0]?.w ?? 16,
+        h: bmps[0]?.h ?? 24,
+        sortY: 0,
+        npc: { id: def.id, sprite: def.sprite, at: { x: at.x, y: at.y }, lines: [{ en: '…', vi: '…' }] },
+        route: [at],
+        ri: 0,
+        wait: 99,
+        dir: 'down' as Dir,
+        walking: false,
+        line: 0,
+        person: this.atlas.frameCount(sid) >= 12,
+        mission: { name: def.name },
+      });
+    }
+  }
+
+  setMissionGoal(id: string | null) {
+    this.missionGoal = id;
+    this.missionNear = null;
+    this.wake();
+  }
+
+  private missionNpc(id: string): NpcRun | undefined {
+    return this.npcs.find((n) => n.mission && n.npc.id === id);
+  }
+
+  /** Tự đi tới đứng cạnh NPC; tới nơi thì báo `onMissionArrive`. */
+  missionWalkTo(id: string): boolean {
+    const n = this.missionNpc(id);
+    if (!n || !this.player) return false;
+    this.wake();
+    const p = this.player;
+    if (Math.hypot(n.x - p.x, n.y - p.y) < 30) {
+      this.faceEachOther(n);
+      this.missionArrive = null;
+      this.cbs.onMissionArrive?.(id);
+      return true;
+    }
+    // Đứng bên cạnh (trái/phải) để hai người quay mặt vào nhau; chỉ khi hai bên đều kẹt mới đứng trên/dưới.
+    const dist = (o: Pt) => Math.hypot(n.x + o.x - p.x, n.y + o.y - p.y);
+    const order = [...[{ x: -20, y: 2 }, { x: 20, y: 2 }].sort((s, u) => dist(s) - dist(u)), { x: -28, y: 4 }, { x: 28, y: 4 }, { x: 0, y: 15 }, { x: 0, y: -10 }];
+    for (const o of order) {
+      const to = { x: n.x + o.x, y: n.y + o.y };
+      if (!this.walkableAtPt(to.x, to.y)) continue;
+      if (this.goTo(to)) {
+        this.missionArrive = id;
+        this.pendingEnter = null;
+        return true;
+      }
+    }
+    // Không có đường đi bộ tới (bản đồ chưa nối liền / bị sông chắn): đưa người chơi tới cạnh NPC luôn để nhiệm vụ không bị kẹt.
+    for (const o of order) {
+      const to = { x: n.x + o.x, y: n.y + o.y };
+      if (!this.walkableAtPt(to.x, to.y)) continue;
+      p.x = to.x;
+      p.y = to.y;
+      p.path = [];
+      this.missionArrive = null;
+      this.faceEachOther(n);
+      this.cbs.onMissionArrive?.(id);
+      return true;
+    }
+    return false;
+  }
+
+  private faceEachOther(n: NpcRun) {
+    const p = this.player;
+    p.dir = this.dirTo(n.x - p.x, n.y - p.y);
+    p.frame = personFrame(p.dir, 0);
+    n.dir = this.dirTo(p.x - n.x, p.y - n.y);
+    n.frame = n.person ? personFrame(n.dir, 0) : n.frame;
+  }
+
+  /** Vào / ra cảnh nói chuyện: camera khung hai người, tắt điều khiển. */
+  missionTalk(id: string | null) {
+    this.wake();
+    this.layoutSent = false;
+    this.talkT = 0;
+    if (!id) {
+      this.missionTalkId = null;
+      this.camFocus = null;
+      this.cam.padY = 0;
+      this.setInputEnabled(true);
+      return;
+    }
+    const n = this.missionNpc(id);
+    if (!n) return;
+    this.setInputEnabled(false);
+    this.missionTalkId = id;
+    this.missionArrive = null;
+    this.player.path = [];
+    this.faceEachOther(n);
+    this.camFocus = { x: (this.player.x + n.x) / 2, y: (this.player.y + n.y) / 2 - 8 };
+    this.cam.padY = this.view.H * 0.45;
+  }
+
+  private updateMission(dt: number) {
+    if (!this.missionMode || !this.player) return;
+    const p = this.player;
+    // đang tự đi mà kẹt (mặt nạ đi bộ của bản đồ chưa chuẩn): sau 2 giây gần như không nhúc nhích thì đặt người chơi tới cuối đường.
+    if (this.missionArrive && p.path.length > 0) {
+      if (Math.hypot(p.x - this.stuck.x, p.y - this.stuck.y) > 4) this.stuck = { x: p.x, y: p.y, t: 0 };
+      else {
+        this.stuck.t += dt;
+        if (this.stuck.t > 2) {
+          const end = p.path[p.path.length - 1]!;
+          p.x = end.x;
+          p.y = end.y;
+          p.path = [];
+          this.stuck.t = 0;
+        }
+      }
+    } else this.stuck = { x: p.x, y: p.y, t: 0 };
+    // tới nơi?
+    if (this.missionArrive && p.path.length === 0) {
+      const id = this.missionArrive;
+      this.missionArrive = null;
+      const n = this.missionNpc(id);
+      if (n) this.faceEachOther(n);
+      this.cbs.onMissionArrive?.(id);
+    }
+    // đứng gần mục tiêu?
+    if (!this.missionTalkId) {
+      const g = this.missionGoal ? this.missionNpc(this.missionGoal) : undefined;
+      const near = g && Math.hypot(g.x - p.x, g.y - p.y) < 36 ? g.npc.id : null;
+      if (near !== this.missionNear) {
+        this.missionNear = near;
+        this.cbs.onMissionNear?.(near);
+      }
+    }
+    // bố cục lúc nói chuyện, sau khi camera đã kịp trượt tới
+    if (this.missionTalkId && !this.layoutSent) {
+      this.talkT += dt;
+      if (this.talkT > 0.9) {
+        const n = this.missionNpc(this.missionTalkId);
+        if (n) {
+          this.layoutSent = true;
+          const v = this.view;
+          const css = (wx: number, wy: number) => {
+            const d = this.toDev(wx, wy, this.cam.ix, this.cam.iy);
+            return { x: d.x / v.dpr, y: d.y / v.dpr };
+          };
+          const head = (e: Ent) => (e.footRow ?? 20) * (v.k / v.dpr);
+          const you = css(p.x, p.y);
+          const npc = css(n.x, n.y);
+          this.cbs.onMissionLayout?.({ you: { ...you, top: you.y - head(p) }, npc: { ...npc, top: npc.y - head(n) }, k: v.k / v.dpr });
+        }
+      }
+    }
+  }
+
+  /** Thẻ tên + mũi tên vàng trên đầu NPC nhiệm vụ. */
+  private drawMissionTags(
+    d: CanvasRenderingContext2D,
+    camX: number,
+    camY: number,
+    px: (n: number) => number,
+    pill: (text: string, cx: number, cy: number, o: { bg: string; fg: string; border: string; size?: number }) => void,
+  ) {
+    if (!this.missionMode) return;
+    const v = this.view;
+    const me = this.toDev(this.player.x, this.player.y - this.player.footRow - 3, camX, camY);
+    pill(this.opts.locale === 'vi' ? 'Bạn' : 'You', me.x, me.y - px(6), { bg: '#B8955A', fg: '#0F1D33', border: '#0F1D33', size: 12 });
+    for (const n of this.npcs) {
+      if (!n.mission) continue;
+      const head = this.toDev(n.x, n.y - n.footRow - 3, camX, camY);
+      if (head.x < -40 || head.x > v.devW + 40 || head.y < -40 || head.y > v.devH + 40) continue;
+      pill(n.mission.name, head.x, head.y - px(6), { bg: '#0F1D33', fg: '#F3EDE1', border: '#B8955A', size: 12 });
+      if (this.missionGoal === n.npc.id && !this.missionTalkId) {
+        const bob = this.opts.reducedMotion ? 0 : Math.sin(this.t * 5) * px(3);
+        const ax = head.x;
+        const ay = head.y - px(34) + bob;
+        d.fillStyle = '#FFD34D';
+        d.strokeStyle = '#0F1D33';
+        d.lineWidth = px(2);
+        d.beginPath();
+        d.moveTo(ax - px(9), ay);
+        d.lineTo(ax + px(9), ay);
+        d.lineTo(ax, ay + px(14));
+        d.closePath();
+        d.fill();
+        d.stroke();
+      }
+    }
   }
 
   private initAnimals() {
@@ -771,6 +1032,7 @@ export class CityEngine {
   // ------------------------------------------------------------------ cảnh đối tượng
   private spriteCache = new Map<string, Promise<Bitmap | null>>();
   private hostPending = false;
+  private lastStationSoundCycle = -1;
   private lastCyc = 0;
   private stepCount = 0;
   private panelIdx = -1;
@@ -781,14 +1043,19 @@ export class CityEngine {
     const key = `${this.map.id}/${id}`;
     let p = this.spriteCache.get(key);
     if (!p) {
-      p = loadMapImage(`/travel/sprites/${this.map.id}/${sp.file ?? `${id}.png`}`)
+      p = loadMapImage(sp.src ?? `/travel/sprites/${this.map.id}/${sp.file ?? `${id}.png`}`)
         .then((img) => {
           const cr = sp.crop ?? { x: 0, y: 0, w: img.naturalWidth, h: img.naturalHeight };
-          const cv = makeCanvas(cr.w, cr.h);
+          const source = makeCanvas(cr.w, cr.h);
+          const sourceCtx = ctx2d(source);
+          sourceCtx.imageSmoothingEnabled = false;
+          sourceCtx.drawImage(img, cr.x, cr.y, cr.w, cr.h, 0, 0, cr.w, cr.h);
+          for (const e of sp.erase ?? []) sourceCtx.clearRect(e.x, e.y, e.w, e.h);
+          const cv = makeCanvas(sp.w, sp.h);
           const c = ctx2d(cv);
-          c.drawImage(img, cr.x, cr.y, cr.w, cr.h, 0, 0, cr.w, cr.h);
-          for (const e of sp.erase ?? []) c.clearRect(e.x, e.y, e.w, e.h);
-          return { src: cv, w: cr.w, h: cr.h } as Bitmap;
+          c.imageSmoothingEnabled = false;
+          c.drawImage(source, 0, 0, sp.w, sp.h);
+          return { src: cv, w: sp.w, h: sp.h } as Bitmap;
         })
         .catch(() => null);
       this.spriteCache.set(key, p);
@@ -944,7 +1211,7 @@ export class CityEngine {
 
   /** Bước vào địa điểm: có phòng trong → mờ dần rồi vào phòng; còn lại → thẳng vào lượt hỏi. */
   private beginEnter(poi: Poi) {
-    if (this.fade.target === 1) return;
+    if (this.fade.target === 1 || this.missionMode) return;
     const kind = this.isImg ? interiorKindOf(poi.kind) : null;
     this.player.path = [];
     this.keys = [];
@@ -965,13 +1232,13 @@ export class CityEngine {
   }
 
   private openInterior(poi: Poi, kind: InteriorKind, parent: CityMap) {
-    const layout = interiorLayout(kind);
+    const layout = interiorLayout(kind, 'main');
     const bg = drawInterior(kind, this.atlas.pal.colors, layout);
     const host: Npc = {
       id: `host-${poi.id}`,
       sprite: kind === 'hotel' || kind === 'airport' || kind === 'counter' || kind === 'station' ? 'npc_staff' : 'npc_vendor',
       at: { x: layout.host.x, y: layout.host.y },
-      lines: [{ en: 'Welcome! Shall we begin?', vi: 'Xin chào! Mình bắt đầu nhé?' }],
+      lines: [{ en: 'Welcome! How can I help?', vi: 'Xin chào! Tôi có thể giúp gì cho bạn?' }],
     };
     const im: CityMap = {
       id: parent.id,
@@ -982,17 +1249,19 @@ export class CityEngine {
       layers: { ground: [], objects: [], roofs: [] },
       spawn: layout.spawn,
       pois: [],
-      npcs: [host],
+      npcs: [host, ...interiorNpcs(poi, kind, parent.id)],
       image: { src: 'interior', scale: 1, size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h }, mask: { cell: INTERIOR_CELL, rows: interiorMaskRows(layout) } },
       ambience: { weather: { kind: 'clear', intensity: 0 }, sounds: [] },
     };
     this.hostPending = false;
-    this.setMap(im, this.state, { bg, spawn: layout.spawn, interior: { poi, kind, parent, since: 0, beat: false, hosted: false, layout } });
+    this.setMap(im, this.state, { bg, spawn: layout.spawn, interior: { poi, kind, zone: 'main', parent, since: 0, beat: false, hosted: false, layout } });
     this.startFade(0);
     // Ảnh phòng thật (nếu có) thay phòng vẽ bằng mã; cùng bố cục nên thay êm.
     const seq = this.loadSeq;
-    loadMapImage(`/travel/interiors/${kind}.small.png`)
-      .catch(() => loadMapImage(`/travel/interiors/${kind}.png`))
+    const image = kind === 'garden' || kind === 'landmark' || kind === 'secret'
+      ? Promise.reject(new Error('generated outdoor scene'))
+      : loadMapImage(`/travel/interiors/${kind}.small.png`).catch(() => loadMapImage(`/travel/interiors/${kind}.png`));
+    image
       .then((img) => {
         if (seq !== this.loadSeq || !this.interior) return;
         // chuẩn hoá về cỡ phòng (lấy mẫu gần nhất) để khớp bố cục
@@ -1020,13 +1289,31 @@ export class CityEngine {
     });
   }
 
+  private switchInteriorZone(destination: InteriorZone) {
+    const current = this.interior;
+    if (!current || current.zone === destination || this.fade.target === 1) return;
+    const portal = current.layout.portal;
+    if (!portal || portal.destination !== destination) return;
+    const layout = interiorLayout(current.kind, destination);
+    playSfx('doorOpen');
+    this.startFade(1, () => {
+      const bg = drawInterior(current.kind, this.atlas.pal.colors, layout);
+      const next = { ...current, zone: destination, since: 0, beat: true, hosted: true, layout };
+      this.hostPending = false;
+      this.lastStationSoundCycle = -1;
+      this.setMap(this.map, this.state, { bg, spawn: portal.spawn, interior: next });
+      playSfx('enter');
+      this.startFade(0);
+    });
+  }
+
   /** Nói chuyện với chủ quán / lễ tân → bắt đầu lượt hỏi. */
   private callHost() {
     const it = this.interior;
     if (!it || it.hosted) return;
     it.hosted = true;
     playSfx('greet');
-    this.bubble = { en: 'Welcome! Shall we begin?', vi: '', wx: it.layout.host.x, wy: it.layout.host.y - 24, until: this.t * 1000 + 1600 };
+    this.bubble = { en: 'Welcome! How can I help?', vi: '', wx: it.layout.host.x, wy: it.layout.host.y - 24, until: this.t * 1000 + 1600 };
     const poi = it.poi;
     window.setTimeout(() => this.cbs.onEnterPoi(poi.id), 450);
   }
@@ -1035,6 +1322,19 @@ export class CityEngine {
     const it = this.interior;
     if (!it || this.fade.target === 1) return;
     const p = this.player;
+    const portal = it.layout.portal;
+    if (portal && Math.hypot(p.x - portal.at.x, p.y - portal.at.y) < 19) {
+      this.switchInteriorZone(portal.destination);
+      return;
+    }
+    if (it.kind === 'station' && it.zone === 'platform') {
+      const cycle = Math.floor(this.t / 24);
+      const phase = this.t % 24;
+      if (phase >= 5 && phase < 5.25 && cycle !== this.lastStationSoundCycle) {
+        this.lastStationSoundCycle = cycle;
+        playSfx('train');
+      }
+    }
     // nhịp bước vào 600 ms rồi tự đi tới quầy
     if (!it.beat && this.t > 0.6 && p.path.length === 0) {
       it.beat = true;
@@ -1156,6 +1456,7 @@ export class CityEngine {
       if (!this.interior) this.updateBirds(dt);
       if (this.walkers.length) this.updateWalkers(dt);
     } else this.updateVehicles(0);
+    this.updateMission(dt);
     this.updateEffects(dt);
     this.particles.update(dt);
     if (this.bubble && this.t * 1000 > this.bubble.until) this.bubble = null;
@@ -1172,7 +1473,8 @@ export class CityEngine {
         this.cbs.onPlayer({ x: px, y: py });
       }
     }
-    this.cam.update(dt, this.player.x, this.player.y - 6, this.view, this.worldW, this.worldH);
+    const camT = this.camFocus ?? { x: this.player.x, y: this.player.y - 6 };
+    this.cam.update(dt, camT.x, camT.y, this.view, this.worldW, this.worldH);
     if (this.enterLock) {
       const poi = this.map.pois.find((q) => q.id === this.enterLock);
       if (poi) {
@@ -1557,6 +1859,100 @@ export class CityEngine {
   }
 
   // ------------------------------------------------------------------ vẽ
+  private drawInteriorEffects(c: CanvasRenderingContext2D, camX: number, camY: number, tt: number) {
+    const it = this.interior;
+    if (!it) return;
+    const px = (x: number) => Math.round(x - camX);
+    const py = (y: number) => Math.round(y - camY);
+    const rect = (x: number, y: number, w: number, h: number, color: string) => {
+      c.fillStyle = color;
+      c.fillRect(px(x), py(y), w, h);
+    };
+
+    if (it.kind === 'station' && it.zone === 'main' && it.layout.portal) {
+      const { rect: stair } = it.layout.portal;
+      rect(stair.x, stair.y, stair.w, stair.h, '#26354b');
+      rect(stair.x + 3, stair.y + 3, stair.w - 6, stair.h - 6, '#111d31');
+      rect(stair.x + 8, stair.y + 8, stair.w - 16, 13, '#374d67');
+      for (let i = 0; i < 6; i++) {
+        const x = stair.x + 8 + i * 3;
+        const y = stair.y + 27 + i * 5;
+        rect(x, y, stair.w - 18 - i * 6, 3, i % 2 ? '#b5c0c4' : '#d8c77b');
+      }
+      rect(stair.x + 8, stair.y + 4, stair.w - 16, 1, '#9acfc7');
+      c.fillStyle = Math.floor(tt * 2) % 2 ? '#ffe18a' : '#a2e6df';
+      c.font = '6px monospace';
+      c.fillText('PLATFORM ↓', px(stair.x + 13), py(stair.y + 19));
+      return;
+    }
+
+    if (it.kind === 'station' && it.zone === 'platform') {
+      const phase = tt % 24;
+      const trainX = phase < 5 ? -365 + (phase / 5) * 435 : phase < 15 ? 70 : phase < 19 ? 70 + (phase - 15) * 112 : -420;
+      const x = Math.round(trainX);
+      const y = 66;
+      rect(x - 5, y + 52, 354, 5, '#080d16');
+      rect(x, y, 344, 51, '#e3e5d7');
+      rect(x + 4, y + 5, 336, 7, '#e95c4f');
+      rect(x + 5, y + 41, 334, 8, '#28558a');
+      rect(x, y + 48, 344, 4, '#303944');
+      for (let i = 0; i < 7; i++) {
+        const wx = x + 12 + i * 45;
+        rect(wx, y + 14, 31, 18, '#263b55');
+        rect(wx + 2, y + 16, 27, 13, i % 2 ? '#84b9c2' : '#9bc9ce');
+        rect(wx + 3, y + 17, 8, 3, '#d9eedb');
+      }
+      const stopped = phase >= 5 && phase < 15;
+      for (const doorX of [145, 235]) {
+        rect(x + doorX, y + 13, 21, 28, stopped ? '#132237' : '#d4ddd2');
+        if (stopped) {
+          rect(x + doorX - 3, y + 12, 2, 30, '#f6d15e');
+          rect(x + doorX + 22, y + 12, 2, 30, '#f6d15e');
+        }
+      }
+      rect(x + 331, y + 15, 10, 20, '#b5c3c3');
+      rect(x + 340, y + 20, 3, 10, '#f7e18a');
+      if (stopped) {
+        rect(20, 119, 2, 8, '#f5dc69');
+        rect(396, 119, 2, 8, '#f5dc69');
+      }
+      return;
+    }
+
+    // A restrained looping pixel detail keeps each venue alive without obscuring the room art.
+    if (it.kind === 'cafe' || it.kind === 'restaurant') {
+      for (let i = 0; i < 3; i++) {
+        const drift = (tt * 7 + i * 11) % 16;
+        c.globalAlpha = 0.52 - drift / 45;
+        rect(116 + i * 6, 130 - drift, 2, 3, '#fff0d1');
+      }
+      c.globalAlpha = 1;
+    } else if (it.kind === 'market') {
+      if (Math.floor(tt * 3) % 5 === 0) rect(90 + (Math.floor(tt * 9) % 220), 112, 3, 3, '#ffe88c');
+    } else if (it.kind === 'museum') {
+      const blink = Math.floor(tt * 2) % 2;
+      rect(74, 60, 3, 3, blink ? '#ffe596' : '#f5c862');
+      rect(351, 104, 3, 3, blink ? '#fff0ad' : '#e2bf6a');
+    } else if (it.kind === 'airport') {
+      if (Math.floor(tt * 2) % 3 === 0) rect(299, 29, 4, 2, '#ffd666');
+    } else if (it.kind === 'hotel') {
+      const tick = Math.floor(tt * 2) % 2;
+      rect(328, 52, 3, 3, tick ? '#ffe198' : '#f0bc60');
+    } else if (it.kind === 'garden') {
+      const drift = (tt * 15) % 320;
+      rect(35 + drift, 60 + Math.sin(tt + drift) * 18, 3, 2, '#f0d875');
+      rect(345 - drift * 0.6, 93 + Math.cos(tt * 0.8) * 12, 2, 3, '#f0d875');
+    } else if (it.kind === 'landmark') {
+      const flutter = Math.floor(tt * 5) % 2;
+      rect(207, 50, 3, 8, '#5a2d30');
+      rect(210, 50, 11 + flutter * 2, 5, flutter ? '#ec6a55' : '#e9c65a');
+    } else if (it.kind === 'secret') {
+      const glow = Math.floor(tt * 3) % 2;
+      rect(54, 85, 12, 8, glow ? '#f5c05a' : '#c9924c');
+      rect(58, 87, 4, 4, glow ? '#fff2a1' : '#ffd981');
+    }
+  }
+
   private renderFrame(dt: number) {
     if (!this.world && !this.imgW) return;
     if (dt > 0) this.update(dt);
@@ -1587,6 +1983,7 @@ export class CityEngine {
     if (this.isImg) {
       if (this.bg) blitRegion(this.bg);
     } else if (this.staticCv) blitRegion(this.staticCv as CanvasImageSource);
+    if (this.interior) this.drawInteriorEffects(c, camX, camY, tt);
 
     // 2. nước, vũng, vòng cửa
     if (this.isImg) this.drawWaterImg(c, camX, camY, tt);
@@ -2189,6 +2586,7 @@ export class CityEngine {
     }
 
     if (!this.interior) this.drawPoiTags(d, camX, camY, px, pill);
+    this.drawMissionTags(d, camX, camY, px, pill);
 
     // Phòng trong: nhắc phím E gần chủ quán / lối ra
     if (this.interior && this.fade.a < 0.5) {
@@ -2206,7 +2604,7 @@ export class CityEngine {
 
     // chuyện phiếm của người đi dạo: bong bóng nhỏ
     for (const k of this.walkers) {
-      if (!k.chat) continue;
+      if (!k.chat || this.missionTalkId) continue;
       const pos = this.toDev(k.x, k.y - 26, camX, camY);
       if (pos.x < 0 || pos.x > v.devW || pos.y < 0 || pos.y > v.devH) continue;
       pill(k.chat, pos.x, pos.y, { bg: '#FFFFFF', fg: '#0F1D33', border: '#0F1D33', size: 11 });
@@ -2278,6 +2676,7 @@ export class CityEngine {
       return r;
     };
     on('pointerdown', (e) => {
+      if (!this.inputEnabled) return;
       this.wake();
       cv.focus({ preventScroll: true });
       this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -2300,6 +2699,10 @@ export class CityEngine {
     this.cleanup.push(() => document.removeEventListener('visibilitychange', onVis));
     on('pointerup', (e) => {
       this.pointers.delete(e.pointerId);
+      if (!this.inputEnabled) {
+        this.downAt = null;
+        return;
+      }
       const d = this.downAt;
       this.downAt = null;
       if (!d) return;
@@ -2338,6 +2741,7 @@ export class CityEngine {
       this.keys = [];
     });
     const kd = (e: KeyboardEvent) => {
+      if (!this.inputEnabled) return;
       if (!this.focused && !this.hovered) return;
       this.wake();
       const t = e.target as HTMLElement | null;
@@ -2444,6 +2848,7 @@ export class CityEngine {
   }
 
   private tap(cssX: number, cssY: number) {
+    if (!this.inputEnabled) return;
     this.toast = null;
     const h = this.hit(cssX, cssY);
     if (h.npc >= 0) {
@@ -2469,9 +2874,21 @@ export class CityEngine {
   private talk(i: number) {
     const n = this.npcs[i];
     if (!n || n.npc.lines.length === 0) return;
+    if (n.mission) {
+      this.missionWalkTo(n.npc.id);
+      return;
+    }
     if (this.interior && n.npc.id.startsWith('host-')) {
       this.goTo({ x: this.interior.layout.hostFront.x, y: this.interior.layout.hostFront.y });
       this.hostPending = true;
+      return;
+    }
+    if (this.cbs.onTalkNpc && n.npc.sprite.startsWith('npc_')) {
+      this.cbs.onTalkNpc(conversationContextForNpc({
+        cityId: this.map.id,
+        npc: n.npc,
+        ...(this.interior ? { poiId: this.interior.poi.id } : {}),
+      }));
       return;
     }
     const line = n.npc.lines[n.line % n.npc.lines.length]!;
@@ -2486,6 +2903,8 @@ export class CityEngine {
     const p = this.player;
     if (this.interior) {
       const L = this.interior.layout;
+      const portal = L.portal;
+      if (portal && Math.hypot(p.x - portal.at.x, p.y - portal.at.y) < 34) return this.switchInteriorZone(portal.destination);
       if (Math.hypot(p.x - L.host.x, p.y - L.host.y) < 34) return this.callHost();
       if (Math.hypot(p.x - L.exit.x, p.y - L.exit.y) < 30) return this.closeInterior();
     }
@@ -2521,6 +2940,54 @@ export class CityEngine {
     this.player.path = [];
     this.cam.snapTo(x, y - 6, this.view, this.worldW, this.worldH);
   }
+}
+
+function interiorNpcs(poi: Poi, kind: InteriorKind, cityId: CityId): Npc[] {
+  const localName = cityId === 'singapore'
+    ? { vi: 'Người Singapore', en: 'Singaporean commuter' }
+    : { vi: 'Người địa phương', en: 'Local resident' };
+  const first: Npc = {
+    id: `${poi.id}-local`,
+    sprite: kind === 'station' ? 'npc_business' : 'npc_local',
+    chatPersona: 'local',
+    chatName: localName,
+    at: { x: kind === 'station' ? 118 : 124, y: kind === 'station' ? 146 : 142 },
+    path: [{ x: 124, y: 142 }, { x: 182, y: 154 }, { x: 124, y: 142 }],
+    lines: [{ en: cityId === 'singapore' ? 'The MRT gets busy around this time.' : 'It is a nice time to be here.', vi: cityId === 'singapore' ? 'Giờ này MRT thường đông đấy.' : 'Đây là lúc khá đẹp để ghé thăm.' }],
+  };
+  const visitor: Npc = {
+    id: `${poi.id}-traveller`,
+    sprite: 'npc_tourist',
+    chatPersona: 'traveller',
+    chatName: { vi: 'Du khách quốc tế', en: 'Fellow traveller' },
+    at: { x: 286, y: kind === 'station' ? 145 : 143 },
+    path: [{ x: 286, y: 143 }, { x: 242, y: 132 }, { x: 286, y: 143 }],
+    lines: [{ en: 'I am still figuring out how this place works.', vi: 'Tôi vẫn đang tìm hiểu cách hoạt động ở đây.' }],
+  };
+  if (kind === 'station') {
+    first.chatName = cityId === 'singapore'
+      ? { vi: 'Người đi MRT Singapore', en: 'Singapore MRT commuter' }
+      : { vi: 'Hành khách địa phương', en: 'Local commuter' };
+    first.lines = [{ en: 'Are you heading to the platform too?', vi: 'Bạn cũng đang xuống sân ga à?' }];
+    visitor.lines = [{ en: 'I am trying to work out which train goes downtown.', vi: 'Tôi đang tìm xem tàu nào đi vào trung tâm.' }];
+  }
+  if (kind === 'market') {
+    visitor.chatName = { vi: 'Khách đang đi chợ', en: 'Market visitor' };
+    visitor.lines = [{ en: 'Everything here smells amazing.', vi: 'Mọi thứ ở đây thơm quá.' }];
+  }
+  if (kind === 'museum') {
+    visitor.chatName = { vi: 'Khách tham quan', en: 'Museum visitor' };
+    visitor.lines = [{ en: 'I did not expect to spend so long looking at this exhibit.', vi: 'Tôi không nghĩ mình sẽ đứng xem hiện vật này lâu đến vậy.' }];
+  }
+  if (kind === 'hotel') {
+    first.chatName = { vi: 'Khách đang nhận phòng', en: 'Another hotel guest' };
+    first.lines = [{ en: 'Have you just arrived as well?', vi: 'Bạn cũng vừa mới tới à?' }];
+  }
+  if (kind === 'airport') {
+    first.chatName = { vi: 'Hành khách', en: 'Fellow passenger' };
+    first.lines = [{ en: 'I hope our flight is on time.', vi: 'Mong là chuyến bay của chúng ta đúng giờ.' }];
+  }
+  return [first, visitor];
 }
 
 const BAYER4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];

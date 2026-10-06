@@ -16,6 +16,7 @@ import type { VisitQuestion } from '@/services/travel/content';
 import { todayKey } from '@/store/persist';
 import { useStarBalance } from '@/store/useStarBalance';
 import { useTravelStore } from '@/store/useTravelStore';
+import { TravelConversation } from '@/components/travel/immersive/TravelConversation';
 
 /**
  * /quest/du-ngoan/airport — Quầy đổi vé của sân bay Nội Bài: bài hải quan (5 câu,
@@ -41,6 +42,7 @@ function Airport() {
   const earnReview = useTravelStore((s) => s.earnReview);
   const exchange = useTravelStore((s) => s.exchange);
   const markSeen = useTravelStore((s) => s.markSeen);
+  const city = useTravelStore((s) => s.city);
   const stars = useStarBalance();
   const reduced = useReducedMotion();
   const snap = useStudySnapshot();
@@ -50,6 +52,7 @@ function Airport() {
   const [outcome, setOutcome] = useState<Outcome>(null);
   const [swap, setSwap] = useState<string | null>(null);
   const [ask, setAsk] = useState(false);
+  const [talkToStaff, setTalkToStaff] = useState(false);
 
   const day = todayKey();
   const today = rolloverCaps(caps, day);
@@ -200,6 +203,26 @@ function Airport() {
       </View>
 
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 16 }}>
+        <Block title={L('Hỏi nhân viên sân bay', 'Ask airport staff')}>
+          <Text className="font-sans" style={{ fontSize: 15, color: T.muted }}>
+            {L('Tự hỏi về quầy làm thủ tục, hành lý, cổng lên máy bay hoặc cách di chuyển trong sân bay.', 'Ask freely about check-in, baggage, boarding gates, or getting around the airport.')}
+          </Text>
+          {!talkToStaff ? (
+            <GameButton label={L('Trò chuyện với nhân viên', 'Talk to staff')} icon="chat" onPress={() => setTalkToStaff(true)} />
+          ) : (
+            <TravelConversation
+              embedded
+              onClose={() => setTalkToStaff(false)}
+              context={{
+                cityId: city,
+                npcId: 'noi-bai-airport-staff',
+                persona: 'staff',
+                displayName: { vi: 'Nhân viên sân bay', en: 'Airport staff member' },
+              }}
+            />
+          )}
+        </Block>
+
         <Block title={L('Kiểm tra hải quan', 'Customs check')}>
           <Text className="font-sans" style={{ fontSize: 15, color: T.muted }}>
             {L('5 câu. Đúng 4 câu để được 1 vé.', '5 questions. Get 4 right for a ticket.')}

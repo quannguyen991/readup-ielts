@@ -1,7 +1,7 @@
 /**
  * CHẾ ĐỘ ĐỐI TƯỢNG — phần thuần (không DOM): hình học của vật đứng riêng, ô bị chặn và cửa.
  */
-import { INTERIORS, INTERIOR_SIZE, type InteriorLayout } from '@/data/travel/interiors';
+import { INTERIORS, INTERIOR_SIZE, STATION_PLATFORM, type InteriorLayout, type InteriorZone } from '@/data/travel/interiors';
 import type { CityMap, MapObject, Poi, SceneSprite } from '@/services/travel/types';
 import { buildImgWorld, type ImgWorld, type Pt } from './imageWorld';
 
@@ -44,7 +44,7 @@ export function poiGeometry(o: MapObject, sp: SceneSprite): { door: Pt; hotspot:
   return { door: { x: Math.round(d.x), y: Math.round(d.y) }, hotspot: spriteRect(o, sp) };
 }
 
-export type InteriorKind = 'cafe' | 'hotel' | 'station' | 'market' | 'museum' | 'restaurant' | 'counter' | 'airport';
+export type InteriorKind = 'cafe' | 'hotel' | 'station' | 'market' | 'museum' | 'restaurant' | 'counter' | 'airport' | 'garden' | 'landmark' | 'secret';
 
 /** Loại địa điểm nào có phòng trong; còn lại (cảnh quan) vào thẳng lượt hỏi. */
 export function interiorKindOf(kind: Poi['kind']): InteriorKind | null {
@@ -58,6 +58,10 @@ export function interiorKindOf(kind: Poi['kind']): InteriorKind | null {
     case 'counter':
     case 'airport':
       return kind;
+    case 'garden':
+    case 'landmark':
+    case 'secret':
+      return kind;
     default:
       return null;
   }
@@ -66,8 +70,8 @@ export function interiorKindOf(kind: Poi['kind']): InteriorKind | null {
 
 export const INTERIOR_CELL = 2;
 
-export function interiorLayout(kind: InteriorKind): InteriorLayout {
-  return INTERIORS[kind];
+export function interiorLayout(kind: InteriorKind, zone: InteriorZone = 'main'): InteriorLayout {
+  return kind === 'station' && zone === 'platform' ? STATION_PLATFORM : INTERIORS[kind];
 }
 
 /** Lưới đi được của phòng: sàn − đồ đạc + lối ra. */
