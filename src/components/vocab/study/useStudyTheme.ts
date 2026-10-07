@@ -7,14 +7,14 @@ import { useStudyBackdrop } from '@/components/art/ArtBackdrop';
 import { STUDY_THEMES, themeOf, type StudyTheme } from './study-theme';
 
 /**
- * Chủ đề đang DÙNG theo cài đặt: "Nền & hiệu ứng" tắt (mặc định) thì luôn là chủ đề phẳng; bật thì theo
- * chủ đề đã chọn. Chỉ đọc hai trường của store nên chỉ vẽ lại khi một trong hai đổi.
+ * Chủ đề đang DÙNG theo cài đặt: tranh nổi tiếng (bật mặc định, công tắc riêng) đứng trước; không có tranh thì
+ * "Nền & hiệu ứng" tắt → chủ đề phẳng, bật → chủ đề đã chọn.
  * Chỉ `StudyFrame` và nền (`TravelBackdrop`) gọi hàm này; mọi thành phần con đọc qua `useStudyTheme()`.
  */
 export function useStoreTheme(): StudyTheme {
   const fx = useTopicStudyStore((s) => s.studyFx);
   const id = useTopicStudyStore((s) => s.studyTheme);
-  const art = useStudyBackdrop(fx);
+  const art = useStudyBackdrop();
   if (art) return STUDY_THEMES[art.tone === 'dark' ? 'art-dark' : 'art-light'];
   return fx ? themeOf(id) : STUDY_THEMES.plain;
 }

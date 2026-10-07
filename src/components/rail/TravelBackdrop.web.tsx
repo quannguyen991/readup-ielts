@@ -29,7 +29,7 @@ import { useTravelPractice } from '@/store/useTravelPractice';
 import { isTravelLightRoute, isVocabStudyRoute } from '@/navigation/focus-routes';
 import { useL } from '@/i18n/useL';
 import { FlyerThumb } from './FlyerThumb';
-import { StudyBackdrop } from '@/components/vocab/study/StudyBackdrop';
+import { StudyBackdrop, StudyBackdropCaption } from '@/components/vocab/study/StudyBackdrop';
 import { useStoreThemeId } from '@/components/vocab/study/useStudyTheme';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 
@@ -75,30 +75,62 @@ export function useSentenceThemeId(): string {
 /** Ô nhiễu 128×128 (SVG feTurbulence, xám) — lát kín, dùng để làm mịn dải chuyển sắc. */
 const DITHER = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
+type Variant = 'olive' | 'light' | 'study' | 'scene';
+
+const FILL = { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 } as const;
+
+/**
+ * KHUNG NỀN CỐ ĐỊNH. Nội dung trang (`children`) luôn nằm đúng một chỗ trong cùng một cây — đổi nền (bật/tắt
+ * tranh, đổi chủ đề, cảnh bay, lúc cài đặt vừa đọc xong khi tải trang) chỉ thay LỚP NỀN phía sau, không dựng lại
+ * trang. Trước đây mỗi kiểu nền bọc `children` bằng một thành phần khác nhau → React gỡ và dựng lại cả màn học:
+ * vòng học bắt đầu lại từ thẻ đầu và tiếng đọc từ bị cắt giữa chừng.
+ */
 export function TravelBackdrop({ color, tone = 'dark', children }: { color: string; tone?: 'dark' | 'light'; children: React.ReactNode }) {
   const hydrated = useHydrated();
-  const on = useRailStore((s) => s.backdrop);
   const themeId = useStoreThemeId();
-  // Màn ôn từ vựng: nền phẳng (mặc định) hoặc chủ đề người học chọn; chỉ chủ đề "Cảnh bay pixel" mới dựng cảnh canvas.
-  if (hydrated && tone === 'dark' && themeId !== 'scene') return <StudyBackdrop id={themeId}>{children}</StudyBackdrop>;
-  if (hydrated && tone === 'dark') return <Travel color={color} tone={tone}>{children}</Travel>;
-  // Màn luyện câu (tông sáng): nền theo chủ đề người học chọn — phẳng, cảnh bay, hoặc nền chủ đề / tranh.
-  if (tone === 'light') {
-    if (!hydrated || themeId === 'plain') return <LightGrid>{children}</LightGrid>;
-    if (themeId === 'scene') return <Travel color={color} tone={tone}>{children}</Travel>;
-    return <StudyBackdrop id={themeId}>{children}</StudyBackdrop>;
-  }
-  // Trước khi hydrate (và khi người dùng tắt) giữ nền cũ: máy chủ không biết cài đặt của máy này.
-  if (!hydrated || !on) return <OliveGrid color={color}>{children}</OliveGrid>;
+  const [arrived, setArrived] = useState<string | null>(null);
+  useEffect(() => {
+    if (!arrived) return;
+    const id = setTimeout(() => setArrived(null), 3800);
+    return () => clearTimeout(id);
+  }, [arrived]);
+
+  // Trước khi đọc xong cài đặt: nền cũ (máy chủ không biết cài đặt của máy này).
+  // Màn ôn từ (tông tối): nền phẳng / chủ đề / tranh; riêng "Cảnh bay pixel" dựng cảnh canvas.
+  // Màn luyện câu (tông sáng): 'plain' là lưới sáng, còn lại như trên.
+  const variant: Variant = !hydrated
+    ? tone === 'light'
+      ? 'light'
+      : 'olive'
+    : tone === 'light' && themeId === 'plain'
+      ? 'light'
+      : themeId === 'scene'
+        ? 'scene'
+        : 'study';
+
   return (
-    <Travel color={color} tone={tone}>
+    <View className="flex-1" style={{ zIndex: 0 }}>
+      <View pointerEvents="none" style={FILL}>
+        {variant === 'olive' ? (
+          <OliveGrid color={color}>{null}</OliveGrid>
+        ) : variant === 'light' ? (
+          <LightGrid>{null}</LightGrid>
+        ) : variant === 'study' ? (
+          <StudyBackdrop id={themeId} caption={false}>
+            {null}
+          </StudyBackdrop>
+        ) : (
+          <TravelScene color={color} tone={tone} onArrive={setArrived} />
+        )}
+      </View>
       {children}
-    </Travel>
+      {variant === 'scene' ? <TravelHud arrived={arrived} /> : variant === 'study' ? <StudyBackdropCaption id={themeId} /> : null}
+    </View>
   );
 }
 
-function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'light'; children: React.ReactNode }) {
-  const { L, en } = useL();
+/** Cảnh bay (canvas + lớp phủ) — chỉ là lớp NỀN, không bọc nội dung. */
+function TravelScene({ color, tone, onArrive }: { color: string; tone: 'dark' | 'light'; onArrive: (id: string) => void }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sceneRef = useRef<RailScene | null>(null);
   const boost = useRef(0);
@@ -107,7 +139,8 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
   const route = routeById(st.route).stops.includes(station.id) ? routeById(st.route) : routeOf(station.id);
   const next = nextOnRoute(route, station.id);
   const [now, setNow] = useState(() => new Date());
-  const [arrived, setArrived] = useState<string | null>(null);
+  const arriveRef = useRef(onArrive);
+  arriveRef.current = onArrive;
 
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 60_000);
@@ -171,25 +204,16 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
         boost.current = 1;
         const r = useRailStore.getState().step();
         if (r.arrived) {
-          setArrived(r.arrived);
+          arriveRef.current(r.arrived);
           sfx.flyArrive();
         }
       }),
     [],
   );
-  useEffect(() => {
-    if (!arrived) return;
-    const id = setTimeout(() => setArrived(null), 3800);
-    return () => clearTimeout(id);
-  }, [arrived]);
-
-  const left = Math.max(0, st.perStation - st.toward);
-  // Màn hẹp (điện thoại): huy hiệu thu gọn còn biểu tượng + chấm tiến độ, đỡ che nội dung.
-  const narrow = useWindowDimensions().width < 640;
 
   return (
     <View className="flex-1" style={{ backgroundColor: color }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, overflow: 'hidden' }}>
+      <View pointerEvents="none" style={{ ...FILL, overflow: 'hidden' }}>
         <canvas
           ref={canvasRef}
           aria-hidden
@@ -209,7 +233,23 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
         {/* Nhiễu rất nhẹ phá dải màu (banding) của lớp tối khi chuyển sắc. */}
         <div style={{ position: 'absolute', inset: 0, opacity: 0.07, mixBlendMode: 'overlay', backgroundImage: DITHER, backgroundSize: '128px 128px' }} />
       </View>
-      {children}
+    </View>
+  );
+}
+
+/** Huy hiệu chuyến bay + dấu "ĐÃ TỚI" — lớp TRÊN nội dung để bấm được. */
+function TravelHud({ arrived }: { arrived: string | null }) {
+  const { L, en } = useL();
+  const st = useRailStore();
+  const station = stationById(st.station);
+  const route = routeById(st.route).stops.includes(station.id) ? routeById(st.route) : routeOf(station.id);
+  const next = nextOnRoute(route, station.id);
+  const left = Math.max(0, st.perStation - st.toward);
+  // Màn hẹp (điện thoại): huy hiệu thu gọn còn biểu tượng + chấm tiến độ, đỡ che nội dung.
+  const narrow = useWindowDimensions().width < 640;
+
+  return (
+    <>
       <View style={{ position: 'absolute', left: 12, bottom: 12, flexDirection: 'row', alignItems: 'center', gap: 6 }}>
         <Pressable
           accessibilityRole="link"
@@ -242,6 +282,6 @@ function Travel({ color, tone, children }: { color: string; tone: 'dark' | 'ligh
           </View>
         </View>
       ) : null}
-    </View>
+    </>
   );
 }

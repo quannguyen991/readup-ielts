@@ -69,6 +69,21 @@ export function availableBackdrops(ok: ReadonlySet<string>): Backdrop[] {
   return BACKDROPS.filter((b) => ok.has(b.id));
 }
 
+/**
+ * Cách dò khuyên dùng: HEAD chỉ hỏi file có tồn tại, KHÔNG tải thân ảnh. Dò bằng `new Image()` kéo về cả 24 tệp (~10 MB)
+ * cùng lúc, chiếm hết băng thông nên clip phát âm của màn học từ bị nghẽn quá giờ và lùi về giọng máy.
+ */
+export function headProbe(fetchFn: typeof fetch): (url: string) => Promise<boolean> {
+  return async (url) => {
+    try {
+      const res = await fetchFn(url, { method: 'HEAD' });
+      return res.ok;
+    } catch {
+      return false;
+    }
+  };
+}
+
 /** Dò từng mục: `probe(url)` trả true nếu file tồn tại. Bỏ mục thiếu BẤT KỲ file nào trong `needs`. */
 export async function probeBackdrops(probe: (url: string) => Promise<boolean>): Promise<Set<string>> {
   const ok = new Set<string>();
@@ -105,18 +120,32 @@ export function scrimAlpha(b: Backdrop, phone: boolean): number {
 /* ---------------- Tuỳ chọn lưu theo máy ---------------- */
 
 /**
- * `on`: nền tranh ở màn đọc báo. `studyOn`: tranh làm "chủ đề" ở màn học từ vựng (còn phải bật
- * "Nền & hiệu ứng" ở đó). `choice` và `motion` DÙNG CHUNG hai nơi — một nguồn sự thật.
+ * `on`: nền tranh ở màn đọc báo. `studyOn`: tranh làm "chủ đề" ở màn học từ vựng — công tắc RIÊNG,
+ * không phụ thuộc "Nền & hiệu ứng". `choice` và `motion` DÙNG CHUNG hai nơi — một nguồn sự thật.
+ * Mặc định BẬT (người dùng yêu cầu 07/10/2026); ai không thích thì tắt, lựa chọn tắt được nhớ.
  */
 export type BackdropPrefs = { on: boolean; studyOn: boolean; choice: BackdropChoice; motion: boolean };
-export const DEFAULT_PREFS: BackdropPrefs = { on: false, studyOn: false, choice: DEFAULT_BACKDROP_ID, motion: true };
+export const DEFAULT_PREFS: BackdropPrefs = { on: true, studyOn: true, choice: DEFAULT_BACKDROP_ID, motion: true };
 
-/** Đọc lại từ localStorage: dữ liệu hỏng/lạ → mặc định (TẮT). Id không còn trong kho → 'starry'. */
+/** Đọc lại từ localStorage: dữ liệu hỏng/lạ → mặc định. Id không còn trong kho → 'starry'. */
 export function sanitizePrefs(raw: unknown): BackdropPrefs {
   const r = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>;
   const c = typeof r.choice === 'string' ? r.choice : DEFAULT_PREFS.choice;
   const choice = c === RANDOM || findBackdrop(c) ? c : DEFAULT_PREFS.choice;
-  return { on: r.on === true, studyOn: r.studyOn === true, choice, motion: r.motion !== false };
+  const bool = (v: unknown, d: boolean) => (typeof v === 'boolean' ? v : d);
+  return { on: bool(r.on, DEFAULT_PREFS.on), studyOn: bool(r.studyOn, DEFAULT_PREFS.studyOn), choice, motion: r.motion !== false };
+}
+
+/** Phiên bản bản lưu hiện tại. v1 = thời tranh còn TẮT mặc định. */
+export const PREFS_VERSION = 2;
+
+/**
+ * Nâng bản lưu cũ. Bản v1 không phân biệt "chưa từng bật" với "đã chủ động tắt" (cả hai đều là false),
+ * nên bật tranh MỘT lần cho mọi người; từ v2 trở đi lựa chọn tắt được giữ nguyên.
+ */
+export function migratePrefs(persisted: unknown, version: number): BackdropPrefs {
+  const p = sanitizePrefs(persisted);
+  return version < 2 ? { ...p, on: true, studyOn: true } : p;
 }
 
 /* ---------------- Chuyển động nhẹ ---------------- */

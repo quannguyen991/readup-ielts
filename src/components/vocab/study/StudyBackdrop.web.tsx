@@ -145,19 +145,23 @@ function Layers({ theme }: { theme: StudyTheme }) {
   }
 }
 
-export function StudyBackdrop({ id, children }: { id: string; children: React.ReactNode }) {
+/**
+ * `caption=false`: không vẽ chú thích tranh ở đây (người gọi tự đặt `StudyBackdropCaption` ở lớp TRÊN nội dung —
+ * dùng khi nền chỉ là một lớp phía sau, không bọc nội dung, để đổi nền không dựng lại cả trang).
+ */
+export function StudyBackdrop({ id, children, caption = true }: { id: string; children: React.ReactNode; caption?: boolean }) {
   const theme = themeOf(id);
   const ref = React.useRef<HTMLDivElement | null>(null);
   useBackdropCss();
   usePauseWhenHidden(ref);
-  const art = useStudyBackdrop(true);
+  const art = useStudyBackdrop();
   if (isArtTheme(theme.id) && art) {
     // zIndex 0 mở ngăn xếp riêng để ảnh (zIndex -1) nằm sau nội dung, trên màu nền.
     return (
       <View className="flex-1" style={{ backgroundColor: theme.skyBase, zIndex: 0 }}>
         <ArtBackdrop backdrop={art} />
         {children}
-        <ArtCaption backdrop={art} phone={false} />
+        {caption ? <ArtCaption backdrop={art} phone={false} /> : null}
       </View>
     );
   }
@@ -171,4 +175,11 @@ export function StudyBackdrop({ id, children }: { id: string; children: React.Re
       {children}
     </View>
   );
+}
+
+/** Chú thích tranh (tên tranh · hoạ sĩ, có nút ẩn) — vẽ ở lớp TRÊN nội dung để bấm được. */
+export function StudyBackdropCaption({ id }: { id: string }) {
+  const art = useStudyBackdrop();
+  if (!isArtTheme(themeOf(id).id) || !art) return null;
+  return <ArtCaption backdrop={art} phone={false} />;
 }
