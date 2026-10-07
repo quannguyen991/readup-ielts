@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
+import { Modal, Platform, Pressable, ScrollView, Text, View } from 'react-native';
 
 import { CARD_SHADOW } from './StudyKit';
 import { Icon, type IconName } from '@/components/ui/Icon';
@@ -312,7 +312,8 @@ export function ThemePicker() {
           })}
         </View>
       ) : null}
-      {fx ? (
+      {/* Tranh là công tắc RIÊNG, bật mặc định — luôn hiện để người học đổi tranh hoặc bấm "Tắt nền". */}
+      {Platform.OS === 'web' ? (
         <View className="mt-1 gap-2">
           <Text className="font-strong text-label text-muted">{L('Tranh nổi tiếng', 'Famous paintings')}</Text>
           <ArtGallery

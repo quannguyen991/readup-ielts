@@ -9,6 +9,7 @@ import {
   backdropUrl,
   captionOf,
   chooseBackdrop,
+  headProbe,
   motionActive,
   probeBackdrops,
   scrimAlpha,
@@ -25,14 +26,8 @@ const WEB = Platform.OS === 'web';
 let cached: Set<string> | null = null;
 let inflight: Promise<Set<string>> | null = null;
 
-function probeImage(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-}
+// HEAD, không tải ảnh: xem `headProbe` (dò bằng Image làm nghẽn tiếng phát âm).
+const probeImage = (url: string) => headProbe(window.fetch.bind(window))(url);
 
 /** Danh sách tranh CÓ file thật. `enabled=false` thì không đụng mạng. */
 export function useAvailableBackdrops(enabled: boolean): Backdrop[] {
@@ -66,10 +61,11 @@ const SESSION_SEED = Math.random();
  * thành phần: khung học và nền cùng gọi hook này nên 'ngẫu nhiên' phải ra cùng một bức. Chưa dò xong thì
  * coi mọi bức đều có (đỡ nhấp nháy đổi chủ đề) — ảnh lỗi chỉ làm lộ nền màu phẳng.
  */
-export function useStudyBackdrop(fx: boolean): Backdrop | null {
+export function useStudyBackdrop(): Backdrop | null {
+  // Công tắc riêng của tranh, KHÔNG phụ thuộc "Nền & hiệu ứng" (tranh bật mặc định, hiệu ứng thì không).
   const studyOn = useBackdropStore((s) => s.studyOn);
   const choice = useBackdropStore((s) => s.choice);
-  const want = WEB && fx && studyOn;
+  const want = WEB && studyOn;
   const probed = useAvailableBackdrops(want);
   return useMemo(() => (want ? chooseBackdrop(choice, probed.length ? probed : BACKDROPS, SESSION_SEED) : null), [want, choice, probed]);
 }
@@ -137,6 +133,8 @@ export function ArtBackdrop({ backdrop }: { backdrop: Backdrop }) {
         src={backdropUrl(backdrop.id)}
         alt=""
         decoding="async"
+        // Ảnh nền ~1 MB không được giành băng thông của clip phát âm (bật tranh mặc định ở màn học từ).
+        fetchPriority="low"
         draggable={false}
         onLoad={() => setLoadedId(backdrop.id)}
         style={{

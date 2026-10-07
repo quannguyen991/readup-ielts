@@ -11,6 +11,8 @@ import {
   lowEndHint,
   motionActive,
   probeBackdrops,
+  headProbe,
+  migratePrefs,
   sanitizePrefs,
   scrimAlpha,
   withAlpha,
@@ -58,15 +60,21 @@ test('scrimAlpha: điện thoại đậm hơn, không vượt 0,85', () => {
   }
 });
 
-test('prefs: mặc định TẮT cả hai nơi; dữ liệu hỏng quay về mặc định; id lạ → starry', () => {
+test('prefs: mặc định BẬT tranh cả hai nơi; người học tắt thì giữ tắt; dữ liệu hỏng quay về mặc định; id lạ → starry', () => {
   assert.deepEqual(sanitizePrefs(undefined), DEFAULT_PREFS);
   assert.deepEqual(sanitizePrefs('x'), DEFAULT_PREFS);
-  assert.equal(DEFAULT_PREFS.on, false);
-  assert.equal(DEFAULT_PREFS.studyOn, false);
-  assert.deepEqual(sanitizePrefs({ on: true, studyOn: true, choice: 'wave', motion: false }), { on: true, studyOn: true, choice: 'wave', motion: false });
+  assert.equal(DEFAULT_PREFS.on, true);
+  assert.equal(DEFAULT_PREFS.studyOn, true);
+  assert.deepEqual(sanitizePrefs({ on: false, studyOn: false, choice: 'wave', motion: false }), { on: false, studyOn: false, choice: 'wave', motion: false });
   assert.equal(sanitizePrefs({ choice: 'random' }).choice, 'random');
-  assert.deepEqual(sanitizePrefs({ on: 'yes', studyOn: 1, choice: 'nope' }), { on: false, studyOn: false, choice: 'starry', motion: true });
+  assert.deepEqual(sanitizePrefs({ on: 'yes', studyOn: 1, choice: 'nope' }), { on: true, studyOn: true, choice: 'starry', motion: true });
   assert.equal(sanitizePrefs({ motion: 'x' }).motion, true);
+});
+
+test('prefs bản lưu cũ (v1, khi tranh còn tắt mặc định): bật tranh một lần; từ v2 trở đi tôn trọng lựa chọn tắt', () => {
+  assert.deepEqual(migratePrefs({ on: false, studyOn: false, choice: 'kiss', motion: false }, 1), { on: true, studyOn: true, choice: 'kiss', motion: false });
+  assert.deepEqual(migratePrefs({ on: false, studyOn: false, choice: 'kiss', motion: true }, 2), { on: false, studyOn: false, choice: 'kiss', motion: true });
+  assert.deepEqual(migratePrefs(undefined, 0), DEFAULT_PREFS);
 });
 
 test('motionActive / lowEndHint: tắt khi máy yếu, giảm chuyển động hoặc người dùng tắt', () => {
@@ -84,4 +92,25 @@ test('caption và withAlpha', () => {
   assert.equal(captionOf(b, false), 'Đêm đầy sao · Vincent van Gogh');
   assert.equal(captionOf(b, true), 'The Starry Night · Vincent van Gogh');
   assert.equal(withAlpha('#FFFFFF', 0.93), '#FFFFFFed');
+});
+
+test('dò tranh bằng HEAD: không tải thân ảnh (tránh chiếm băng thông của tiếng phát âm)', async () => {
+  const calls: { url: string; method?: string }[] = [];
+  const fakeFetch = async (url: string, init?: { method?: string }) => {
+    calls.push({ url, method: init?.method });
+    return { ok: !url.includes('kiss') } as Response;
+  };
+  const ok = await probeBackdrops(headProbe(fakeFetch as unknown as typeof fetch));
+  assert.ok(calls.length > 0);
+  assert.ok(calls.every((c) => c.method === 'HEAD'), 'mọi lần dò phải là HEAD');
+  assert.equal(ok.has('kiss'), false);
+  assert.equal(ok.has('starry'), true);
+});
+
+test('dò tranh bằng HEAD: lỗi mạng coi như thiếu tranh, không ném lỗi', async () => {
+  const boom = async () => {
+    throw new Error('offline');
+  };
+  const ok = await probeBackdrops(headProbe(boom as unknown as typeof fetch));
+  assert.equal(ok.size, 0);
 });
