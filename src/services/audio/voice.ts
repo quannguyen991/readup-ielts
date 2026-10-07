@@ -21,7 +21,7 @@ let loading = false;
 
 /** Giới đang chọn ("Nữ / Nam" trong Cài đặt học từ), mặc định nữ. */
 export function voiceGender(): Gender {
-  // MỘT giọng duy nhất cho cả app (Kore, nữ) theo yêu cầu của chủ dự án; không còn lựa chọn giọng nam / vùng miền.
+  // Device TTS is only a temporary fallback for the configured female clip voice.
   return 'f';
 }
 

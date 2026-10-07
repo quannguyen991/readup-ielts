@@ -163,6 +163,39 @@ test('kho clip: tải index một lần, tra không phân biệt hoa thường, 
   assert.equal(lib.peek('kore', 'accreditation'), '/audio/words/kore/accreditation-1.mp3');
 });
 
+test('word playback does not wait for an unrelated sentence index', async () => {
+  const calls: string[] = [];
+  const lib = createClipLibrary({
+    sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'],
+    fetch: async (url) => {
+      calls.push(url);
+      if (url.includes('/lines/')) return new Promise(() => {});
+      return { ok: true, status: 200, json: async () => ({ pollution: 'pollution.mp3' }) };
+    },
+  });
+  assert.equal(await lib.find('kore', 'pollution'), '/audio/words/kore/pollution.mp3');
+  assert.deepEqual(calls, ['/audio/words/kore/index.json']);
+});
+
+test('a stalled clip index cannot prevent the TTS fallback indefinitely', async () => {
+  let attempts = 0;
+  const lib = createClipLibrary({
+    sets: ['/audio/words/{voice}/'], timeoutMs: 10,
+    fetch: () => { attempts++; return new Promise(() => {}); },
+  });
+  assert.equal(await lib.find('aoede', 'pollution'), null);
+  assert.equal(await lib.find('aoede', 'pollution'), null);
+  assert.equal(attempts, 1, 'temporary failure is retried after the cooldown');
+});
+
+test('a stalled index response body also reaches the TTS fallback', async () => {
+  const lib = createClipLibrary({
+    sets: ['/audio/words/{voice}/'], timeoutMs: 10,
+    fetch: async () => ({ ok: true, status: 200, json: () => new Promise(() => {}) }),
+  });
+  assert.equal(await lib.find('aoede', 'pollution'), null);
+});
+
 test('kho clip: thư mục / index thiếu thì bỏ qua, không ném lỗi, thử lại sau thời gian chờ', async () => {
   let t = 0;
   let calls = 0;
