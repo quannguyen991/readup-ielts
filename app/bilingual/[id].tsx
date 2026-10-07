@@ -193,6 +193,21 @@ function Reader({ article }: { article: BilingualArticle }) {
 
   const paneHeight = Math.max(380, height - toolbarH - (wide ? 40 : 28));
 
+  const checkAll = () => {
+    if (checked) {
+      setChecked(false);
+      setAnswers({});
+    } else {
+      setChecked(true);
+    }
+  };
+  const onAnswerQ = (q: number, o: number) => {
+    if (!checked) setAnswers((prev) => ({ ...prev, [q]: o }));
+  };
+  const questionsBody = (
+    <QuestionsBody questions={article.questions} theme={theme} answers={answers} checked={checked} onAnswer={onAnswerQ} onCheck={checkAll} />
+  );
+
   const enPane = (
     <EnglishPane
       article={article}
@@ -209,6 +224,7 @@ function Reader({ article }: { article: BilingualArticle }) {
         if (wide && right === 'vi') jumpTo('vi', i);
       }}
       onWord={onWord}
+      below={questionsBody}
     />
   );
 
@@ -647,6 +663,7 @@ function EnglishPane({
   onHoverPara,
   onJump,
   onWord,
+  below,
 }: {
   article: BilingualArticle;
   theme: Theme;
@@ -658,6 +675,7 @@ function EnglishPane({
   onHoverPara: (i: number | null) => void;
   onJump: (i: number) => void;
   onWord: (paragraph: number | null) => (p: WordPick) => void;
+  below?: React.ReactNode;
 }) {
   const source = article.source;
   const { L, en } = useL();
@@ -731,6 +749,10 @@ function EnglishPane({
           <EnglishParagraph paragraph={p} theme={theme} fontFamily={fontFamily} fontSize={fontSize} onWord={onWord(i)} />
         </ParagraphBlock>
       ))}
+
+      {below ? (
+        <View style={{ marginTop: 44, paddingTop: 28, borderTopWidth: 1, borderTopColor: theme.rule }}>{below}</View>
+      ) : null}
 
       {source ? <SourceNote theme={theme} article={article} /> : null}
     </Sheet>
@@ -927,25 +949,29 @@ function SourceNote({ theme, article }: { theme: Theme; article: BilingualArticl
 /*                                   CÂU HỎI                               */
 /* ====================================================================== */
 
-function QuestionsPane({
-  questions,
-  theme,
-  answers,
-  checked,
-  onAnswer,
-  onCheck,
-}: {
+type QuestionsProps = {
   questions: BilingualQuestion[];
   theme: Theme;
   answers: Record<number, number>;
   checked: boolean;
   onAnswer: (q: number, o: number) => void;
   onCheck: () => void;
-}) {
+};
+
+function QuestionsPane(props: QuestionsProps) {
+  return (
+    <Sheet theme={props.theme}>
+      <QuestionsBody {...props} />
+    </Sheet>
+  );
+}
+
+/** Phần câu hỏi trần (không có tấm giấy bao) — dùng cho cả tab "Câu hỏi" lẫn khối câu hỏi nằm dưới bài đọc. */
+function QuestionsBody({ questions, theme, answers, checked, onAnswer, onCheck }: QuestionsProps) {
   const score = questions.filter((q, i) => answers[i] === q.answerIndex).length;
   const { L, en } = useL();
   return (
-    <Sheet theme={theme}>
+    <>
       <Kicker theme={theme} label={L('Hiểu bài', 'Comprehension')} hint={L(`${questions.length} câu`, `${questions.length} questions`)} />
       <View className="flex-row items-center gap-3" style={{ marginTop: 14 }}>
         <Text style={{ flex: 1, minWidth: 0, fontFamily: readingFont.sansHeavy, letterSpacing: -0.5, fontSize: 26, lineHeight: 32, color: theme.ink }}>
@@ -1056,7 +1082,7 @@ function QuestionsPane({
           />
         </View>
       ) : null}
-    </Sheet>
+    </>
   );
 }
 
