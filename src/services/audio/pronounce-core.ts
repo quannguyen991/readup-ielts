@@ -202,7 +202,7 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
  * app lùi về bản ghi âm người thật rồi giọng máy như cũ.
  * ------------------------------------------------------------------ */
 
-export type ClipVoice = 'kore' | 'fenrir';
+export type ClipVoice = 'kore' | 'fenrir' | 'aoede';
 /** Nữ → Kore, Nam → Fenrir. */
 export function clipVoiceFor(gender: 'f' | 'm'): ClipVoice {
   return gender === 'm' ? 'fenrir' : 'kore';
@@ -213,7 +213,7 @@ export function clipKey(text: string): string {
   return text.trim().replace(/\s+/g, ' ').replace(/[’‘]/g, "'").toLowerCase();
 }
 
-export type ClipFetch = (url: string) => Promise<{ ok: boolean; status: number; json(): Promise<unknown> }>;
+export type ClipFetch = (url: string, init?: { signal?: AbortSignal }) => Promise<{ ok: boolean; status: number; json(): Promise<unknown> }>;
 
 export type ClipLibrary = {
   /** URL clip của `text` ở giọng `voice` trong các bộ đã đăng ký (theo thứ tự), hoặc null. */
@@ -226,7 +226,7 @@ export type ClipLibrary = {
 
 /** `sets`: thư mục gốc theo thứ tự ưu tiên, ví dụ `/audio/words/{voice}/` rồi `/audio/lines/{voice}/`. */
 export function createClipLibrary(
-  deps: { sets: readonly string[]; fetch?: ClipFetch; retryMs?: number; now?: () => number },
+  deps: { sets: readonly string[]; fetch?: ClipFetch; retryMs?: number; timeoutMs?: number; now?: () => number },
 ): ClipLibrary {
   const retryMs = deps.retryMs ?? 60_000;
   const now = deps.now ?? Date.now;
@@ -248,14 +248,26 @@ export function createClipLibrary(
     const f = deps.fetch ?? (typeof fetch === 'function' ? (fetch as unknown as ClipFetch) : null);
     if (!f) return Promise.resolve();
     entry.p = (async () => {
+      const controller = new AbortController();
+      let timer: ReturnType<typeof setTimeout> | undefined;
       try {
-        const res = await f(`${dirOf(tpl, voice)}index.json`);
-        if (!res.ok) {
+        const json = await Promise.race([
+          (async () => {
+            const res = await f(`${dirOf(tpl, voice)}index.json`, { signal: controller.signal });
+            return res.ok ? await res.json() : null;
+          })(),
+          new Promise<never>((_, reject) => {
+            timer = setTimeout(() => {
+              controller.abort();
+              reject(new Error('clip index timeout'));
+            }, deps.timeoutMs ?? 1500);
+          }),
+        ]);
+        if (json === null) {
           // 404: chưa có thư mục — thử lại sau, không chặn phát.
           entry.retryAt = now() + retryMs;
           return;
         }
-        const json = (await res.json()) as unknown;
         const map = new Map<string, string>();
         if (json && typeof json === 'object' && !Array.isArray(json)) {
           for (const [k, v] of Object.entries(json as Record<string, unknown>)) {
@@ -266,6 +278,7 @@ export function createClipLibrary(
       } catch {
         entry.retryAt = now() + retryMs;
       } finally {
+        clearTimeout(timer);
         entry.p = undefined;
       }
     })();
@@ -279,8 +292,9 @@ export function createClipLibrary(
 
   return {
     async find(voice, text) {
-      await Promise.all(deps.sets.map((s) => load(s, voice)));
       for (const s of deps.sets) {
+        // Do not delay a known word clip behind an unrelated sentence index.
+        await load(s, voice);
         const u = lookup(s, voice, text);
         if (u) return u;
       }

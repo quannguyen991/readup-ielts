@@ -1,3 +1,11 @@
+# Cập nhật 03/10/2026 — đã sửa âm thanh, người dùng chọn Aoede
+
+Người dùng đã nghe mẫu và chọn **Aoede** làm giọng mặc định, đồng thời cho phép triển khai Vercel. Yêu cầu Kore trong nội dung bàn giao cũ bên dưới đã được thay thế. Cấu hình duy nhất hiện tại: `src/data/pronunciation-voice.json`.
+
+Nguyên nhân chính: `afade=t=out:d=0.04` không có thời điểm bắt đầu, làm MP3 gần như im lặng sau 40 ms. Đã sửa bộ cắt âm thanh, khôi phục 1.948 clip Kore từ WAV gốc và tạo 2.061 clip Aoede đã kiểm tra. Xem [báo cáo sửa lỗi](./KIEM-THU-AM-THANH-AOEDE.md) trước khi sửa tiếp.
+
+---
+
 # Prompt bàn giao — Sửa lỗi "màn Học từ vựng không tự đọc từ" (Band 9)
 
 > Dán nguyên văn tệp này cho GPT/Codex. Repo: `D:\Claude\readup-ielts` (Expo SDK 57 web, expo-router, react-native-web, Zustand). Đọc `AGENTS.md` và `docs/BAN-GIAO-CODEX.md` trước.

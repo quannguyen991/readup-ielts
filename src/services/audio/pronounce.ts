@@ -3,23 +3,23 @@ import { Platform } from 'react-native';
 import * as Speech from 'expo-speech';
 
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
-import { englishVoice, voiceGender } from './voice';
-import { clipVoiceFor, createClipLibrary, type Accent, type ClipVoice } from './pronounce-core';
+import { englishVoice } from './voice';
+import { createClipLibrary, type Accent, type ClipVoice } from './pronounce-core';
+import pronunciationVoice from '@/data/pronunciation-voice.json';
 
 export type { Accent } from './pronounce-core';
 
 /**
  * PHÁT ÂM CHUNG CỦA CẢ APP.
  *
- * Từ đơn: thử bản ghi âm NGƯỜI THẬT trước (api.dictionaryapi.dev, mp3 giọng Mỹ /
- * Anh), quá 1,5 giây, không có bản, hoặc ngoại tuyến thì lùi về giọng máy tốt
- * nhất (`englishVoice`) với nhịp chậm 0,9. Cụm từ và câu đi thẳng giọng máy.
+ * Từ, cụm từ và câu: tìm clip của giọng mặc định trong kho dựng sẵn.
+ * Chưa có clip hoặc lỗi mạng thì tạm dùng giọng máy (`englishVoice`).
  * Bản ghi âm chỉ phát trên web; app gốc dùng giọng máy (chưa cài thư viện âm thanh).
  *
  * Mọi lần phát đều dừng lần trước — không bao giờ chồng tiếng.
  */
 
-/** Kho clip giọng Gemini (Kore / Fenrir): từ + cụm từ, rồi câu. Thiếu thư mục / index thì bỏ qua. */
+/** Kho clip giọng Gemini: từ + cụm từ, rồi câu. Thiếu thư mục / index thì bỏ qua. */
 export const clips = createClipLibrary({ sets: ['/audio/words/{voice}/', '/audio/lines/{voice}/'] });
 const isWeb = Platform.OS === 'web' && typeof window !== 'undefined' && typeof Audio !== 'undefined';
 
@@ -35,6 +35,7 @@ export function autoPronounceSettings(): { auto: boolean; accent: Accent } {
 /** Dừng mọi tiếng đang đọc (cả bản ghi âm lẫn giọng máy). */
 export function stopPronounce(): void {
   token++;
+  cancelGestureRetry?.();
   if (current) {
     try {
       current.pause();
@@ -70,7 +71,8 @@ function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean;
         voice: englishVoice(),
         onError: (e: unknown) => {
           const msg = String((e as { message?: string; error?: string })?.error ?? (e as { message?: string })?.message ?? e);
-          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate));
+          if (opts.my !== undefined && opts.my !== token) return;
+          if (opts.auto && /not-allowed/i.test(msg)) retryOnGesture(() => tts(text, accent, rate, { my: opts.my }));
         },
       });
     } catch {
@@ -81,16 +83,21 @@ function tts(text: string, accent: Accent, rate: number, opts: { auto?: boolean;
 }
 
 /** Autoplay bị trình duyệt chặn (chưa chạm gì vào trang): phát lại ở lần chạm đầu tiên. */
-let retryArmed = false;
+let cancelGestureRetry: (() => void) | null = null;
 function retryOnGesture(fn: () => void) {
-  if (retryArmed || typeof window === 'undefined') return;
-  retryArmed = true;
-  const go = () => {
-    retryArmed = false;
+  if (typeof window === 'undefined') return;
+  cancelGestureRetry?.();
+  const my = token;
+  const cancel = () => {
     window.removeEventListener('pointerdown', go, true);
     window.removeEventListener('keydown', go, true);
-    fn();
+    if (cancelGestureRetry === cancel) cancelGestureRetry = null;
   };
+  const go = () => {
+    cancel();
+    if (my === token) fn();
+  };
+  cancelGestureRetry = cancel;
   window.addEventListener('pointerdown', go, true);
   window.addEventListener('keydown', go, true);
 }
@@ -143,6 +150,14 @@ armAudioUnlock();
 
 const PLAY_TIMEOUT_MS = 6000;
 
+/** Optional console diagnostics for reproducing playback failures. */
+function tracePlayback(a: HTMLAudioElement, event: string) {
+  if (!isWeb || !new URLSearchParams(window.location.search).has('audioDebug')) return;
+  console.debug('[vocab-audio] ' + JSON.stringify({ event, src: a.src,
+    currentTime: a.currentTime, paused: a.paused, muted: a.muted, volume: a.volume,
+    visibility: document.visibilityState, at: performance.now() }));
+}
+
 /**
  * Phát một mp3 qua bộ quản lý âm thanh DUY NHẤT (mỗi lúc một tiếng, dừng tiếng trước).
  * Trả `true` khi đã phát được, `false` khi lỗi / quá giờ / bị chặn — người gọi tự lùi về nguồn khác.
@@ -154,11 +169,15 @@ export async function playClipUrl(
 ): Promise<{ ok: boolean; blocked: boolean }> {
   if (!isWeb || badUrls.has(url)) return { ok: false, blocked: false };
   const my = opts.my ?? token;
+  if (my !== token) return { ok: false, blocked: false };
+  let a: HTMLAudioElement | null = null;
+  let timer: ReturnType<typeof setTimeout> | undefined;
   try {
     // MỘT phần tử <audio> dùng chung, đã được "mở khoá" bằng cử chỉ đầu tiên của người dùng: iOS Safari chỉ cho
     // phát tự động trên phần tử đã mở khoá, còn `new Audio()` mới mỗi lần bị chặn khi không nằm trong lúc chạm.
     // Máy tính / Android: một phần tử MỚI mỗi lần (đã chạy tốt); chỉ iPhone / iPad mới cần phần tử dùng chung đã mở khoá.
-    const a = needsSharedAudio() ? sharedAudio() : new Audio();
+    a = needsSharedAudio() ? sharedAudio() : new Audio();
+    const playingAudio = a;
     if (a === shared) {
       try {
         a.pause();
@@ -167,24 +186,36 @@ export async function playClipUrl(
       }
     }
     a.src = url;
+    if (new URLSearchParams(window.location.search).has('audioDebug')) {
+      for (const event of ['playing', 'ended', 'error']) {
+        a.addEventListener(event, () => tracePlayback(playingAudio, event), { once: true });
+      }
+    }
     a.playbackRate = (opts.rate ?? 0.9) <= 0.7 ? 0.8 : 1;
     current = a;
     a.onended = () => {
-      if (current === a) current = null;
+      if (my === token && current === playingAudio) current = null;
     };
     await Promise.race([
       a.play(),
-      new Promise<never>((_, rej) => setTimeout(() => rej(Object.assign(new Error('timeout'), { name: 'TimeoutError' })), PLAY_TIMEOUT_MS)),
+      new Promise<never>((_, rej) => {
+        timer = setTimeout(() => rej(Object.assign(new Error('timeout'), { name: 'TimeoutError' })), PLAY_TIMEOUT_MS);
+      }),
     ]);
     if (my !== token) {
       try {
-        a.pause();
+        // A newer request may already be playing on the shared iOS element.
+        if (a !== shared) a.pause();
       } catch {
         /* bỏ qua */
       }
     }
-    return { ok: true, blocked: false };
+    return { ok: my === token, blocked: false };
   } catch (e) {
+    // A timed-out play() can still start later: stop it before TTS takes over.
+    if (a && my === token) {
+      try { a.pause(); } catch { /* already released */ }
+    }
     const name = (e as { name?: string })?.name;
     if (name === 'NotAllowedError') {
       if (current && my === token) current = null;
@@ -197,6 +228,8 @@ export async function playClipUrl(
     // Quá giờ chỉ là mạng chậm / tab nền: lần này lùi về giọng máy nhưng KHÔNG đánh dấu clip hỏng. Chỉ lỗi thật (404, không giải mã được) mới đánh dấu.
     if (name !== 'TimeoutError') badUrls.add(url);
     return { ok: false, blocked: false };
+  } finally {
+    clearTimeout(timer);
   }
 }
 
@@ -211,15 +244,14 @@ export async function playClip(url: string, opts: { rate?: number } = {}): Promi
   return r.ok;
 }
 
-/** Giọng Gemini đang chọn (Nữ → kore, Nam → fenrir). */
+/** One default voice shared by pronunciation and clip generation. */
 export function currentClipVoice(): ClipVoice {
-  return clipVoiceFor(voiceGender());
+  return pronunciationVoice.id as ClipVoice;
 }
 
 /**
- * Đọc MỘT từ / cụm từ / câu. Thứ tự: clip giọng Gemini theo giới đã chọn
- * (khoá = đúng chuỗi văn bản) → bản ghi âm người thật (chỉ từ đơn, chỉ giọng Nữ vì
- * bản ghi lẫn giới) → giọng máy. Lỗi ở nguồn nào cũng lùi sang nguồn kế, không im lặng.
+ * Đọc MỘT từ / cụm từ / câu bằng clip của giọng mặc định.
+ * Thiếu clip hoặc lỗi thì tạm dùng giọng máy, không đổi sang giọng Gemini khác.
  */
 export async function pronounce(text: string, opts: PronounceOpts = {}): Promise<void> {
   const word = text.trim();
@@ -230,7 +262,7 @@ export async function pronounce(text: string, opts: PronounceOpts = {}): Promise
   const rate = opts.rate ?? 0.9;
 
   try {
-    // MỘT giọng duy nhất của cả app: clip Gemini Kore. Không còn bản ghi âm người thật hay giọng nam / Anh–Anh.
+    // Use only the configured voice; missing clips temporarily use device TTS.
     if (isWeb) {
       const url = await clips.find(currentClipVoice(), word);
       if (my !== token) return;
@@ -263,9 +295,10 @@ export function preloadPronunciation(_words?: readonly string[], _accent?: Accen
 /** Mỗi khoảng này một cặp (khoá, từ) chỉ tự phát một lần — chống React dựng lại hai lần. */
 let lastAuto = '';
 let lastAutoAt = 0;
+let lastAutoToken = 0;
 
 /**
- * Tự đọc `word` nếu người học bật "Tự phát âm" và app không tắt tiếng. Dùng chung cho
+ * Tự đọc `word` nếu người học bật "Tự phát âm". Dùng chung cho
  * lúc từ hiện ra và lúc đáp án lộ ra (đúng hay sai). `id` chống phát hai lần cùng một lần hiện.
  * Trả `true` khi đã gọi phát.
  */
@@ -277,10 +310,11 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
   if (!auto) return false;
   const full = `${id}|${word}`;
   const now = Date.now();
-  if (full === lastAuto && now - lastAutoAt < 1500) return false;
+  if (full === lastAuto && token === lastAutoToken && now - lastAutoAt < 1500) return false;
   lastAuto = full;
   lastAutoAt = now;
   void pronounce(word, { auto: true });
+  lastAutoToken = token;
   return true;
 }
 
@@ -289,11 +323,20 @@ export function autoSpeak(word: string | null | undefined, id: string): boolean 
  * thì im. Chỉ theo công tắc "Tự phát âm" (không theo tắt tiếng hiệu ứng game).
  */
 export function useAutoPronounce(word: string | null | undefined, key: string | number = ''): void {
+  const enabled = useTopicStudyStore((s) => s.learnSettings.autoPronounce !== false);
   useEffect(() => {
-    if (!word) return;
-    const t = setTimeout(() => autoSpeak(word, String(key)), 150);
-    return () => clearTimeout(t);
-  }, [word, key]);
+    if (!word || !enabled) return;
+    let ownedToken: number | undefined;
+    const t = setTimeout(() => {
+      if (autoSpeak(word, String(key))) ownedToken = token;
+    }, 150);
+    return () => {
+      clearTimeout(t);
+      // Leaving/hiding a card also cancels its queued autoplay retry.
+      // A manual playback or another screen may already own the player.
+      if (ownedToken === token) stopPronounce();
+    };
+  }, [word, key, enabled]);
 }
 
 /** Một câu trong chuỗi `speakLines`. */
