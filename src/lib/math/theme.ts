@@ -59,7 +59,7 @@ export const MATH_DOMAIN_STYLE: Record<MathDomain, DomainStyle> = {
 };
 
 /** Kiểu bài tập — quyết định người học nên vào với tâm thế nào. */
-export type MathSetKind = 'warmup' | 'practice' | 'speed' | 'checkpoint' | 'mixed' | 'exam';
+export type MathSetKind = 'warmup' | 'practice' | 'speed' | 'checkpoint' | 'mixed' | 'exam' | 'quiz' | 'unit_test';
 
 export type SetKindStyle = {
   label: string;
@@ -120,6 +120,22 @@ export const MATH_SET_KIND_STYLE: Record<MathSetKind, SetKindStyle> = {
     ink: '#9F1239',
     icon: 'clipboard',
     purpose: 'Khổ đúng một module đề thật: 22 câu, 35 phút, trộn cả bốn domain.',
+  },
+  quiz: {
+    label: 'Quiz',
+    solid: '#0F766E',
+    soft: '#E6F7F5',
+    ink: '#0F625B',
+    icon: 'check',
+    purpose: 'Bốn câu kiểm tra nhanh, trộn các kỹ năng trong unit.',
+  },
+  unit_test: {
+    label: 'Bài kiểm tra unit',
+    solid: '#4338CA',
+    soft: '#EEF2FF',
+    ink: '#3730A3',
+    icon: 'clipboard',
+    purpose: 'Bài kiểm tra cân bằng theo kỹ năng để tìm phần cần ôn lại.',
   },
 };
 

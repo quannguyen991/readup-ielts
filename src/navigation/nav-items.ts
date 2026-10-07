@@ -1,5 +1,5 @@
 import type { IconName } from '@/components/ui/Icon';
-import { hasPublishedHistory, isDevBuild } from '@/data/history';
+import { hasPublishedHistory, HISTORY_LEARNING_ENABLED, isDevBuild } from '@/data/history';
 
 export type NavItem = {
   key: string;
@@ -85,6 +85,7 @@ export const NAV_GROUPS: NavGroup[] = [
         inBottomTabs: true,
         children: [
           { key: 'mock-tests', label: 'Thi thử Reading', href: '/mock-tests', icon: 'clipboard' },
+          { key: 'ielts-source-practice', label: 'Bộ đề riêng trên máy', href: '/ielts-source-practice', icon: 'list' },
           { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
           { key: 'bilingual', label: 'Đọc báo song ngữ', href: '/bilingual', icon: 'languages' },
           { key: 'writing', label: 'Writing', href: '/write', icon: 'pencil' },
@@ -145,6 +146,7 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'quest-history', label: 'Lịch sử Việt Nam song ngữ', href: '/history', icon: 'book', requires: 'history' },
           { key: 'quest-world', label: 'Bản đồ Band 9', href: '/quest/world', icon: 'grid' },
           { key: 'quest-hero', label: 'Nhân vật & nhiệm vụ', href: '/quest/hero', icon: 'shield' },
+          { key: 'community', label: 'Cộng đồng học tập', href: '/community', icon: 'chat' },
           { key: 'leaderboard', label: 'Xếp hạng', href: '/leaderboard', icon: 'trophy' },
           { key: 'weekly', label: 'Đề của tuần', href: '/weekly', icon: 'trophy' },
           { key: 'duel', label: 'Đấu 1–1', href: '/duel', icon: 'target' },
@@ -227,7 +229,7 @@ export function parentNavKey(key: string | null): string | null {
 
 /** Bỏ các mục chỉ-máy-tính khi thiết bị không đủ điều kiện (không để lại dấu vết). */
 export function visibleGroups(groups: readonly NavGroup[], desktop: boolean): NavGroup[] {
-  const historyOk = isDevBuild() || hasPublishedHistory();
+  const historyOk = HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory());
   const keep = (i: NavItem): boolean => (desktop || !i.desktopOnly) && (i.requires !== 'history' || historyOk);
   return groups.map((g) => ({
     ...g,
@@ -249,6 +251,7 @@ export const NAV_LABEL_EN: Record<string, string> = {
   mastery: 'Evidence book',
   ielts: 'IELTS',
   'mock-tests': 'Reading mock tests',
+  'ielts-source-practice': 'Private IELTS tests',
   library: 'Reading library',
   bilingual: 'Bilingual news',
   writing: 'Writing',
@@ -278,6 +281,7 @@ export const NAV_LABEL_EN: Record<string, string> = {
   'quest-history': 'Vietnamese history, bilingual',
   'quest-world': 'Band 9 map',
   'quest-hero': 'Character & quests',
+  community: 'Study community',
   leaderboard: 'Leaderboard',
   weekly: 'Weekly test',
   duel: '1-on-1 duel',

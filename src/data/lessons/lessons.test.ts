@@ -13,6 +13,11 @@ import { getStaticDeck } from '../study-decks';
 
 test('mỗi kỹ năng SAT Math có đúng một bài lý thuyết', () => {
   assert.deepEqual(MATH_LESSONS.map((l) => l.skill).sort(), Object.keys(MATH_SKILL_DOMAIN).sort());
+  for (const lesson of MATH_LESSONS) {
+    assert.ok(lesson.prerequisite?.trim(), `${lesson.skill} thiếu kiến thức tiên quyết`);
+    assert.ok(lesson.recognize?.trim(), `${lesson.skill} thiếu cách nhận dạng dạng bài`);
+    assert.ok(lesson.summary?.trim(), `${lesson.skill} thiếu tóm tắt cuối bài`);
+  }
 });
 
 test('mỗi kỹ năng SAT Verbal có đúng một bài lý thuyết', () => {

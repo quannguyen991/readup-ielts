@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Text, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { Screen } from '@/components/layout/Screen';
@@ -48,7 +48,9 @@ type Phase =
 
 export default function MathMockScreen() {
   const { L } = useL();
-  const [seed] = useState(() => String(Date.now()));
+  const params = useLocalSearchParams<{ form?: string }>();
+  const form = typeof params.form === 'string' ? params.form : null;
+  const [seed] = useState(() => form ? `band9:${form}:math:v1` : String(Date.now()));
   const [phase, setPhase] = useState<Phase>({ stage: 'intro' });
 
   const module1 = useMemo(() => buildMockModule(seed, 1, 'mixed'), [seed]);
@@ -135,7 +137,7 @@ export default function MathMockScreen() {
   if (phase.stage === 'intro') {
     return (
       <Screen>
-        <PageTitle text={L('Thi thử SAT Math', 'SAT Math mock test')} scene="test">
+        <PageTitle text={L(form ? `Thi thử SAT Math · Đề ${form.slice(-2)}` : 'Thi thử SAT Math', form ? `SAT Math mock · Form ${form.slice(-2)}` : 'SAT Math mock test')} scene="test">
           <Text className="mt-1 font-sans text-body text-muted">
             {L(
               'Hai module liên tiếp, đúng cấu trúc phần Math của đề số hoá.',

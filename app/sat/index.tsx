@@ -133,6 +133,31 @@ export default function SatHubScreen() {
           ))}
         </PaperSheet>
 
+        <Pressable
+          accessibilityRole="link"
+          onPress={() => go('/sat/practice-tests')}
+          style={({ hovered }: { hovered?: boolean }) => ({
+            marginTop: 12,
+            borderRadius: 16,
+            borderWidth: 1.5,
+            borderColor: B9.line,
+            backgroundColor: '#FFFFFF',
+            paddingHorizontal: 18,
+            paddingVertical: 14,
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 12,
+            opacity: hovered ? 0.86 : 1,
+          })}
+        >
+          <Icon name="clipboard" size={20} color={B9.goldDeep} strokeWidth={2.2} />
+          <View className="min-w-0 flex-1">
+            <Text className="font-heavy" style={{ fontSize: 16, color: B9.navy }}>{L('50 bộ đề luyện SAT', '50 SAT practice forms')}</Text>
+            <Text className="font-sans" style={{ marginTop: 2, fontSize: 13, lineHeight: 18, color: B9.muted }}>{L('Chọn Math, Reading and Writing hoặc full đề.', 'Choose Math, Reading and Writing, or the full test.')}</Text>
+          </View>
+          <Icon name="arrow-right" size={18} color={B9.goldDeep} strokeWidth={2.4} />
+        </Pressable>
+
         {/* ------------------------------------------- sang Lộ trình học theo mức */}
         <Pressable
           accessibilityRole="link"

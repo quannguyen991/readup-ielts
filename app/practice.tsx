@@ -32,9 +32,8 @@ import { useL, type L as LFn } from '@/i18n/useL';
  * TẬP có thanh lọc phân cấp: chọn kỹ năng → kiểu bài → khổ bài, rồi lọc thêm
  * theo nguồn và trình độ.
  *
- * Listening và Speaking hiện MỜ kèm chữ "Sắp có". Bày chúng ra như thật rồi bấm
- * vào thấy trống là kiểu thất hứa khó chịu nhất; giấu hẳn thì người dùng không
- * biết app định làm tới đâu.
+ * Listening links to its playable question bank. Speaking stays unavailable
+ * until a source-backed prompt set has been imported.
  */
 
 const TIER_BY_CHILD: Record<string, PassageTier> = {
@@ -368,6 +367,13 @@ export default function PracticeScreen() {
             size="lg"
             iconLeft="refresh"
             onPress={() => router.push('/practice-mixed' as never)}
+          />
+          <Button
+            label={L('Đề theo nguồn OCR cục bộ', 'Local OCR source tests')}
+            variant="outline"
+            size="lg"
+            iconLeft="book"
+            onPress={() => router.push('/ielts-source-practice' as never)}
           />
         </LightHero>
       </Appear>

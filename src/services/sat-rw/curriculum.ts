@@ -78,6 +78,58 @@ export type SatRwStage = {
   units: SatRwCurriculumUnit[];
 };
 
+export type SatRwCourseTier = 'foundation' | 'medium' | 'advanced';
+
+export type SatRwCourseTierInfo = {
+  id: SatRwCourseTier;
+  titleVi: string;
+  titleEn: string;
+  blurbVi: string;
+  blurbEn: string;
+  difficulty: Difficulty;
+};
+
+/**
+ * Khan groups SAT Reading & Writing practice into Foundation, Medium, and
+ * Advanced. Band 9 currently stores topics first and difficulty within each
+ * topic, so this view layers those same sets into three tiers without changing
+ * question IDs, set IDs, or learner progress.
+ */
+export const SAT_RW_COURSE_TIERS: readonly SatRwCourseTierInfo[] = [
+  {
+    id: 'foundation',
+    titleVi: 'Nền tảng · Foundation',
+    titleEn: 'Foundation',
+    blurbVi: 'Bắt đầu bằng câu dễ và lời giải ngay sau mỗi câu để nắm quy tắc, cách đọc và dấu hiệu nhận biết.',
+    blurbEn: 'Start with easier questions and immediate explanations to learn the rules, reading moves, and cues.',
+    difficulty: 'easy',
+  },
+  {
+    id: 'medium',
+    titleVi: 'Trung bình · Medium',
+    titleEn: 'Medium',
+    blurbVi: 'Luyện áp dụng kỹ năng trong ngữ cảnh mới; đọc kỹ lời giải để xác định vì sao đáp án nhiễu sai.',
+    blurbEn: 'Apply each skill in new contexts and use explanations to understand why distractors fail.',
+    difficulty: 'medium',
+  },
+  {
+    id: 'advanced',
+    titleVi: 'Nâng cao · Advanced',
+    titleEn: 'Advanced',
+    blurbVi: 'Làm các câu khó trước khi chuyển sang đề trộn; chú ý đoạn dài, suy luận và lựa chọn nhiễu sát nghĩa.',
+    blurbEn: 'Tackle harder questions before mixed practice, especially longer passages, inference, and close distractors.',
+    difficulty: 'hard',
+  },
+];
+
+export function getSatRwTierSet(
+  unit: SatRwCurriculumUnit,
+  tier: SatRwCourseTier,
+): SatRwExerciseSet | undefined {
+  const info = SAT_RW_COURSE_TIERS.find((item) => item.id === tier);
+  return info ? unit.sets.find((set) => set.slice !== null && set.difficulty === info.difficulty) : undefined;
+}
+
 /**
  * Bẫy trung tâm của từng bài, một câu mỗi bài.
  *
@@ -158,7 +210,7 @@ const GENERATED_SETS: Record<number, { title: string; blurb: string; count: numb
     count: 12,
     minutes: 18,
   },
-  16: {
+  10: {
     title: 'Sinh mới · chọn câu chốt đoạn',
     blurb:
       'Rhetorical Synthesis: cho sẵn ghi chú, chọn câu phục vụ đúng mục đích. 48 tổ hợp chủ đề × mục đích.',

@@ -37,7 +37,7 @@ export function createAoedeGenerator(keys: string[], fetcher: typeof fetch = fet
         const response = await fetcher(`https://generativelanguage.googleapis.com/v1beta/models/${pronunciationVoice.model}:generateContent`, {
           method: 'POST', signal: AbortSignal.timeout(remaining),
           headers: { 'Content-Type': 'application/json', 'x-goog-api-key': keys[i]! },
-          body: JSON.stringify({ contents: [{ parts: [{ text: `Read the following English text exactly as written, in a clear, natural, relaxed voice. Do not add any introduction or explanation.\n\n${text}` }] }],
+          body: JSON.stringify({ contents: [{ parts: [{ text: `Create a clear, natural English listening-practice recording at a relaxed, easy-to-follow pace. Do not add an introduction or explanation. If lines begin with speaker names in square brackets, treat those names as silent role cues: do not read them aloud, and use a subtly distinct, consistent conversational delivery for each speaker. Read only the spoken words.\n\n${text}` }] }],
             generationConfig: { maxOutputTokens: 32768, responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: pronunciationVoice.name } } } } }),
         });
         if (!response.ok) {

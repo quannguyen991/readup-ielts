@@ -11,9 +11,11 @@ import {
   getSet,
   getStageOfSet,
   getUnitOfSet,
+  stageIndexOfSet,
 } from './curriculum';
 import { MATH_SKILL_DOMAIN, type MathSkill } from '@/lib/math/types';
 import { MOCK_MODULE_LENGTH, MOCK_MODULE_MINUTES } from './mock';
+import { SAT_MATH_COURSE_ASSESSMENTS } from './course';
 
 /**
  * Lộ trình là thứ người học đi theo, nên hỏng ở đây không báo lỗi mà chỉ âm
@@ -50,6 +52,17 @@ test('bài học nằm đúng chặng của domain nó', () => {
 test('id bộ đề không trùng nhau', () => {
   const ids = ALL_SETS.map((s) => s.id);
   assert.equal(new Set(ids).size, ids.length, 'Có id trùng — tiến độ hai bài sẽ dính vào nhau.');
+});
+
+test('assessment 13-unit mở qua route cũ mà không nhập vào thứ tự/ID bộ luyện cũ', () => {
+  const assessment = SAT_MATH_COURSE_ASSESSMENTS[0]!;
+  assert.equal(getSet(assessment.id)?.id, assessment.id);
+  assert.equal(getUnitOfSet(assessment.id)?.id, `unit-${assessment.id}`);
+  assert.equal(getStageOfSet(assessment.id)?.domain, assessment.domain);
+  assert.ok(stageIndexOfSet(assessment.id) >= 0);
+  assert.equal(buildSetItems(assessment, 0).length, assessment.count);
+  assert.equal(ALL_SETS.some((set) => set.id === assessment.id), false);
+  assert.equal(ALL_SETS.length, CURRICULUM_TOTALS.sets);
 });
 
 test('thứ tự trong lộ trình liên tục và không trùng', () => {

@@ -2,6 +2,7 @@ import seed from './seed/sat-rw/index.json';
 import generated2 from './seed/sat-rw/generated-2.json';
 import hardConventions from './seed/sat-rw/hard-conventions.json';
 import hardReading from './seed/sat-rw/hard-reading.json';
+import { SAT_RW_ORIGINAL_READING_EXPANSION } from './seed/sat-rw/original-reading-expansion';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 import { difficultyScore } from '@/services/sat-rw/mock/difficulty';
 import { sortByDifficulty, type Difficulty } from '@/lib/difficulty';
@@ -185,6 +186,7 @@ function labelOldByUnit(questions: SatRwQuestion[]): SatRwQuestion[] {
 export const SAT_RW_QUESTIONS: SatRwQuestion[] = [
   ...labelOldByUnit([...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS]),
   ...SAT_RW_HARD_QUESTIONS,
+  ...SAT_RW_ORIGINAL_READING_EXPANSION,
 ];
 
 /** Bậc của một câu; câu sinh lúc chạy không mang nhãn thì coi là Vừa. */
@@ -204,7 +206,7 @@ export const SAT_RW_UNITS: SatRwUnit[] = data.units.map((u) => ({
  * Giữ nguyên tên tiếng Anh của College Board như mọi chỗ khác trong app: đó là
  * tên người luyện thi đọc trong mọi tài liệu, dịch ra lại thành xa lạ.
  */
-export const SAT_RW_DOMAINS: ReadonlyArray<{ key: string; labelVi: string; percent: string }> = [
+export const SAT_RW_DOMAINS: readonly { key: string; labelVi: string; percent: string }[] = [
   { key: 'Information and Ideas', labelVi: 'Nắm thông tin và ý', percent: '~26%' },
   { key: 'Craft and Structure', labelVi: 'Từ ngữ và cấu trúc', percent: '~28%' },
   { key: 'Expression of Ideas', labelVi: 'Diễn đạt ý', percent: '~20%' },

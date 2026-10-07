@@ -124,6 +124,11 @@ const DRAW: Record<SfxId, (e: Engine) => void> = {
   greet: (e) => bell(e, [659.25, 783.99], 0.09, 0.04, 0.3),
   seam: (e) => noise(e, { dur: 0.45, gain: 0.012, hz: 500, to: 1400, q: 0.5 }),
   plane: (e) => noise(e, { dur: 2.4, gain: 0.025, filter: 'lowpass', hz: 260, to: 900 }),
+  train: (e) => {
+    noise(e, { dur: 1.7, gain: 0.035, filter: 'lowpass', hz: 75, to: 520 });
+    tone(e, 92, { dur: 1.3, gain: 0.035, type: 'sawtooth', to: 145, attack: 0.12 });
+    tone(e, 740, { at: 1.05, dur: 0.12, gain: 0.025, type: 'triangle', to: 560 });
+  },
   npc: (e) => tone(e, 400 + Math.random() * 300, { dur: 0.045, gain: 0.035, type: 'square' }),
 };
 

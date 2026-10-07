@@ -13,6 +13,8 @@ import type { SpeakingPart } from './bank';
 export type GradeAnswerInput = {
   part: SpeakingPart;
   question: string;
+  /** Luyện hội thoại du lịch: ưu tiên độ tự nhiên và đúng ngữ cảnh, không ép độ dài IELTS. */
+  context?: 'travel';
   transcript: string;
   segments: RecognizedSegment[];
   durationSec: number;
@@ -129,7 +131,9 @@ export function speakingUserPrompt(input: { typed: boolean; answers: GradeAnswer
   );
   lines.push('');
   input.answers.forEach((a, i) => {
-    lines.push(`[${i}] Part ${a.part} — Câu hỏi: ${a.question}`);
+    lines.push(a.context === 'travel'
+      ? `[${i}] TRAVEL ROLE-PLAY — ${a.question}. Hãy ưu tiên câu trả lời tự nhiên, lịch sự, đúng mục đích tình huống; câu dịch vụ ngắn là phù hợp, bỏ qua ngưỡng số từ IELTS. Bản mẫu chỉ cần 1–3 câu hội thoại.`
+      : `[${i}] Part ${a.part} — Câu hỏi: ${a.question}`);
     const detail = input.typed
       ? `${a.durationSec}s`
       : `${a.durationSec}s` + (a.wpm != null ? `, ${a.wpm} từ/phút` : '') + `, ${a.fillers} từ đệm, ${a.longPauses} lần ngắt dài`;

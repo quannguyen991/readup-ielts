@@ -1,165 +1,165 @@
 import React from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
-import { LightHero, HeroStat } from '@/components/layout/LightHero';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { Appear } from '@/components/motion/Motion';
-import { Label } from '@/components/illust/Sticker';
-import { CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
-import { Sticker } from '@/components/illust/Sticker';
 import { ChapterSticker, LevelDots, levelState } from '@/components/sat-roadmap/RoadmapUi';
+import { WindingTrail } from '@/components/learning-path/WindingTrail';
 import { PHASES, ROAD_CHAPTERS, type RoadChapter } from '@/data/sat-roadmap';
 import { useSatRoadmapStore } from '@/store/useSatRoadmapStore';
 import { useL } from '@/i18n/useL';
 
-/**
- * LỘ TRÌNH SAT MATH THEO CHỦ ĐỀ — 27 chương theo thứ tự chủ đề của giáo trình
- * The College Panda (chỉ theo thứ tự và tên chủ đề; nội dung tự viết), chia 4
- * giai đoạn, mỗi chương 3 mức Dễ → Trung bình → Khó. Người dùng yêu cầu 30/09/2026.
- */
+/** Lộ trình SAT Math theo đường học so le, gom 27 chủ đề thành 4 chặng. */
 export default function SatRoadmap() {
   const hydrated = useHydrated();
-  const progress = useSatRoadmapStore((s) => s.progress);
-  const p = hydrated ? progress : {};
-  const { width } = useWindowDimensions();
-  const cols = width >= 1100 ? 3 : width >= 700 ? 2 : 1;
+  const savedProgress = useSatRoadmapStore((s) => s.progress);
+  const progress = hydrated ? savedProgress : {};
   const { L, en } = useL();
-
-  const passed = ROAD_CHAPTERS.reduce((a, c) => a + (['easy', 'medium', 'hard'] as const).filter((l) => levelState(p[c.id]?.[l]) === 'passed').length, 0);
-  const next = ROAD_CHAPTERS.find((c) => (['easy', 'medium', 'hard'] as const).some((l) => levelState(p[c.id]?.[l]) !== 'passed')) ?? ROAD_CHAPTERS[0]!;
+  const passed = ROAD_CHAPTERS.reduce(
+    (sum, chapter) => sum + (['easy', 'medium', 'hard'] as const).filter((level) => levelState(progress[chapter.id]?.[level]) === 'passed').length,
+    0,
+  );
+  const next = ROAD_CHAPTERS.find((chapter) =>
+    (['easy', 'medium', 'hard'] as const).some((level) => levelState(progress[chapter.id]?.[level]) !== 'passed'),
+  ) ?? ROAD_CHAPTERS[0]!;
 
   return (
     <Screen>
       <Appear>
-        <LightHero
-          scene="math"
-          badge={L('SAT MATH · LỘ TRÌNH THEO CHỦ ĐỀ', 'SAT MATH · TOPIC ROADMAP')}
-          line1={L('27 chủ đề, từ dễ tới khó', '27 topics, easy to hard')}
-          line2={L('lý thuyết Việt – Anh song song', 'theory in Vietnamese and English')}
-          subtitle={L('Bám sát giáo trình The College Panda: cùng kiến thức, cùng dạng bài, số mới mỗi lượt. Đọc lý thuyết, xem ví dụ, làm bộ bài theo sách rồi quiz 3 mức.', 'Follows The College Panda closely: same concepts, same question types, fresh numbers every round. Read the theory, study examples, do the book set, then a 3-level quiz.')}
-          footer={
-            <>
-              <HeroStat value={`${passed}/81`} label={L('mức đã qua', 'levels passed')} />
-              <HeroStat value="27" label={L('chủ đề', 'topics')} />
-              <HeroStat value="∞" label={L('câu luyện', 'practice questions')} />
-            </>
-          }
-        />
-      </Appear>
-
-      {/* Học tiếp */}
-      <Appear>
-        <Pressable accessibilityRole="link" onPress={() => router.push(`/sat/lo-trinh/${next.id}` as never)}>
-          <View style={{ marginTop: 16, borderRadius: 28, padding: 20, backgroundColor: '#A8843F', overflow: 'hidden', flexDirection: 'row', alignItems: 'center', gap: 16 }}>
-            <Sparkles count={6} />
-            <ChapterSticker art={next.art} size={78} />
-            <View style={{ flex: 1 }}>
-              <Label text={L('Học tiếp →', 'Continue →')} color="#FACC15" ink="#2A1B02" tilt={-4} size={14} />
-              <Text className="font-heavy" style={{ marginTop: 8, fontSize: 26, color: '#FFFFFF' }}>
-                {L('Chương', 'Chapter')} {next.n}. {en ? next.title.en : next.title.vi}
-              </Text>
-              {/* Dòng phụ tiếng Anh chỉ để người học Việt làm quen thuật ngữ; giao diện English thì bỏ. */}
-              {en ? null : (
-                <Text className="font-semi" style={{ fontSize: 14, color: 'rgba(255,255,255,0.85)' }} lang="en">
-                  {next.title.en}
-                </Text>
-              )}
-            </View>
+        <View className="rounded-[24px] bg-white p-5" style={CARD}>
+          <Text className="font-strong text-label uppercase tracking-[1.4px]" style={{ color: '#A8843F' }}>
+            SAT MATH · {L('LỘ TRÌNH', 'LEARNING PATH')}
+          </Text>
+          <Text className="mt-1 font-heavy text-pageTitle text-ink">
+            {L('27 chủ đề, từ dễ đến khó', '27 topics, from easy to hard')}
+          </Text>
+          <View className="mt-2 flex-row items-center justify-between gap-3">
+            <Text className="font-sans text-body text-muted">{L('Tiến độ các lượt luyện', 'Quiz progress')}</Text>
+            <Text className="font-heavy text-body text-ink">{passed}/81</Text>
           </View>
-        </Pressable>
+          <View className="mt-2 h-2 overflow-hidden rounded-pill" style={{ backgroundColor: '#F1ECE2' }}>
+            <View style={{ height: 8, width: `${(passed / 81) * 100}%`, borderRadius: 4, backgroundColor: '#22A06B' }} />
+          </View>
+
+          <Pressable
+            accessibilityRole="link"
+            onPress={() => router.push(`/sat/lo-trinh/${next.id}` as never)}
+            className="mt-4 flex-row items-center gap-3 rounded-2xl px-3 py-2.5"
+            style={{ backgroundColor: '#F8F4EA' }}
+          >
+            <ChapterSticker art={next.art} size={48} motion={false} />
+            <View className="min-w-0 flex-1">
+              <Text className="font-semi text-label" style={{ color: '#8F6E36' }}>{L('HỌC TIẾP', 'CONTINUE')}</Text>
+              <Text className="font-heavy text-body text-ink" numberOfLines={1}>
+                {L(`Chủ đề ${next.n}: ${next.title.vi}`, `Topic ${next.n}: ${next.title.en}`)}
+              </Text>
+            </View>
+            <Text className="font-heavy text-body" style={{ color: '#8F6E36' }}>→</Text>
+          </Pressable>
+        </View>
       </Appear>
 
-      {([1, 2, 3, 4] as const).map((ph) => {
-        const list = ROAD_CHAPTERS.filter((c) => c.phase === ph);
+      {([1, 2, 3, 4] as const).map((phase) => {
+        const chapters = ROAD_CHAPTERS.filter((chapter) => chapter.phase === phase);
+        const completed = chapters.filter((chapter) =>
+          (['easy', 'medium', 'hard'] as const).every((level) => levelState(progress[chapter.id]?.[level]) === 'passed'),
+        ).length;
+        const phaseColor = PHASES[phase].color;
+
         return (
-          <Appear key={ph}>
-            <View style={{ marginTop: 26 }}>
-              <View style={{ borderRadius: 26, paddingHorizontal: 22, paddingVertical: 18, backgroundColor: PHASES[ph].color, overflow: 'hidden', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <Sparkles count={5} />
-                <View>
-                  <Text className="font-strong" style={{ fontSize: 13, letterSpacing: 2, color: 'rgba(255,255,255,0.85)' }}>
-                    {L('GIAI ĐOẠN', 'PHASE')} {ph}
-                  </Text>
-                  <Text className="font-heavy" style={{ fontSize: 28, color: '#FFFFFF' }}>
-                    {en ? PHASES[ph].title.en : PHASES[ph].title.vi}.
-                  </Text>
+          <Appear key={phase}>
+            <View className="mt-7">
+              <View className="mb-3 flex-row items-center justify-between gap-3">
+                <View className="min-w-0 flex-row items-center gap-3">
+                  <View style={{ width: 12, height: 32, borderRadius: 6, backgroundColor: phaseColor }} />
+                  <View className="min-w-0">
+                    <Text className="font-semi text-label uppercase tracking-[1px] text-muted">
+                      {L(`CHẶNG ${phase}`, `PHASE ${phase}`)}
+                    </Text>
+                    <Text className="font-heavy text-sectionTitle text-ink" numberOfLines={1}>
+                      {en ? PHASES[phase].title.en : PHASES[phase].title.vi}
+                    </Text>
+                  </View>
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-                  <Label text={`Ch. ${list[0]!.n}–${list[list.length - 1]!.n}`} color="#FFFFFF" ink="#0F172A" tilt={4} size={13} />
-                  <ChapterSticker art={PHASE_ART[ph]} size={56} tilt={ph % 2 ? 8 : -8} />
-                </View>
+                <Text className="font-semi text-label text-muted">{completed}/{chapters.length}</Text>
               </View>
-              <View style={{ marginTop: 12, flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-                {list.map((c) => (
-                  <ChapterCard key={c.id} c={c} best={p[c.id]} basis={cols === 1 ? '100%' : cols === 2 ? '48%' : '31.5%'} />
-                ))}
+
+              <View className="overflow-hidden rounded-[24px] bg-white px-2 py-5" style={CARD}>
+                <WindingTrail
+                  items={chapters.map((chapter) => ({ id: chapter.id, chapter }))}
+                  rowHeight={180}
+                  nodeWidth={230}
+                  renderNode={({ chapter }) => (
+                    <ChapterNode chapter={chapter} best={progress[chapter.id]} nextId={next.id} />
+                  )}
+                />
               </View>
             </View>
           </Appear>
         );
       })}
-      <View style={{ height: 40 }} />
+      <View style={{ height: 28 }} />
     </Screen>
   );
 }
 
-const PHASE_ART: Record<1 | 2 | 3 | 4, RoadChapter['art']> = { 1: 'calculator', 2: 'pencil', 3: 'rocket', 4: 'globe' };
+const CARD = { boxShadow: '0 2px 12px rgba(34,35,31,0.06)' } as object;
 
-function ChapterCard({ c, best, basis }: { c: RoadChapter; best: ReturnType<typeof useSatRoadmapStore.getState>['progress'][string] | undefined; basis: string }) {
-  const done = (['easy', 'medium', 'hard'] as const).filter((l) => levelState(best?.[l]) === 'passed').length;
+function ChapterNode({
+  chapter,
+  best,
+  nextId,
+}: {
+  chapter: RoadChapter;
+  best: ReturnType<typeof useSatRoadmapStore.getState>['progress'][string] | undefined;
+  nextId: string;
+}) {
   const { L, en } = useL();
+  const passed = (['easy', 'medium', 'hard'] as const).filter((level) => levelState(best?.[level]) === 'passed').length;
+  const isDone = passed === 3;
+  const isNext = chapter.id === nextId;
+
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={L(`Chương ${c.n}: ${c.title.vi}, đã qua ${done}/3 mức`, `Chapter ${c.n}: ${c.title.en}, ${done}/3 levels passed`)}
-      onPress={() => router.push(`/sat/lo-trinh/${c.id}` as never)}
-      style={({ hovered }: { hovered?: boolean }) => ({
-        flexBasis: basis as never,
-        flexGrow: 1,
-        borderRadius: 24,
-        padding: 16,
-        backgroundColor: '#FFFFFF',
-        borderWidth: 1,
-        borderColor: '#F0EBE2',
-        transform: [{ translateY: hovered ? -3 : 0 }],
-        boxShadow: hovered ? '0 12px 26px rgba(15,23,42,0.12)' : '0 2px 8px rgba(15,23,42,0.05)',
-        transition: 'transform 160ms ease, box-shadow 160ms ease',
-      } as object)}
+      accessibilityLabel={L(`Chủ đề ${chapter.n}: ${chapter.title.vi}, ${passed}/3 mức đã qua`, `Topic ${chapter.n}: ${chapter.title.en}, ${passed}/3 levels passed`)}
+      onPress={() => router.push(`/sat/lo-trinh/${chapter.id}` as never)}
+      style={{ width: '100%', alignItems: 'center' }}
     >
-      <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
-        <ChapterSticker art={c.art} size={54} motion={false} />
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: '#64748B' }}>
-            {L('CHƯƠNG', 'CHAPTER')} {c.n}
-          </Text>
-          <Text className="font-heavy" style={{ fontSize: 18, color: '#0F172A' }}>
-            {en ? c.title.en : c.title.vi}
-          </Text>
-          {en ? null : (
-            <Text className="font-semi" style={{ fontSize: 13, color: '#64748B' }} lang="en">
-              {c.title.en}
-            </Text>
-          )}
-        </View>
-        {done === 3 ? (
-          <Motion kind="wobble">
-            <Sticker tilt={10}>
-              <CuteTrophy size={40} />
-            </Sticker>
-          </Motion>
+      <View
+        style={{
+          width: 76,
+          height: 76,
+          borderRadius: 38,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: isDone ? '#E7F7EF' : isNext ? '#FFF3CD' : '#FFFFFF',
+          borderWidth: isNext ? 3 : 2,
+          borderColor: isDone ? '#22A06B' : isNext ? '#D79B22' : '#E9DFCC',
+          boxShadow: isNext ? '0 5px 12px rgba(166,115,20,0.18)' : '0 2px 7px rgba(30,41,59,0.08)',
+        } as object}
+      >
+        <ChapterSticker art={chapter.art} size={53} motion={false} />
+        {isDone ? (
+          <View style={{ position: 'absolute', right: -2, bottom: -2, width: 23, height: 23, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: '#22A06B', borderWidth: 2, borderColor: '#FFFFFF' }}>
+            <Text style={{ color: '#FFFFFF', fontSize: 13, fontWeight: '800' }}>✓</Text>
+          </View>
         ) : null}
       </View>
-      <View style={{ marginTop: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
-        <View style={{ flex: 1, minWidth: 90 }}>
-          <LevelDots best={best} />
-        </View>
-        <View style={{ flexDirection: 'row', gap: 6 }}>
-          {c.bookSet?.length ? <Label text={`📖 ${c.bookSet.length}${levelState(best?.book) === 'passed' ? ' 🏅' : ''}`} color="#FFF1B8" ink="#2A1B02" tilt={-4} size={11} /> : null}
-          <Label text={`✏️ +20${levelState(best?.extra) === 'passed' ? ' 🏅' : ''}`} color="#E7F7EF" ink="#14532D" tilt={3} size={11} />
-        </View>
+      <Text className="mt-1 font-semi text-label uppercase" style={{ color: isNext ? '#9A6810' : '#81796D' }}>
+        {L(`CHỦ ĐỀ ${chapter.n}`, `TOPIC ${chapter.n}`)}
+      </Text>
+      <Text className="font-heavy text-center text-body text-ink" numberOfLines={2}>
+        {en ? chapter.title.en : chapter.title.vi}
+      </Text>
+      <View style={{ width: '74%', marginTop: 5 }}>
+        <LevelDots best={best} />
       </View>
+      <Text className="mt-1 font-semi text-center text-label" style={{ color: isDone ? '#16814E' : isNext ? '#9A6810' : '#81796D' }}>
+        {isDone ? L('Hoàn thành', 'Complete') : isNext ? L('Học tiếp', 'Up next') : L(`${passed}/3 mức`, `${passed}/3 levels`)}
+      </Text>
     </Pressable>
   );
 }

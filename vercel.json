@@ -1,6 +1,6 @@
 {
   "framework": null,
-  "buildCommand": "rm -rf dist && expo export -p web",
+  "buildCommand": "rm -rf dist && expo export -p web --max-workers 2",
   "outputDirectory": "dist/client",
   "functions": {
     "api/index.ts": {

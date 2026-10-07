@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Text, useWindowDimensions, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
@@ -55,14 +55,16 @@ import { bi, useL, type Bi } from '@/i18n/useL';
  */
 
 export default function SatFullTestScreen() {
+  const params = useLocalSearchParams<{ form?: string }>();
+  const form = typeof params.form === 'string' ? params.form : null;
   const [state, setState] = useState<FullTestState | null>(null);
   const [reviewing, setReviewing] = useState(false);
   const { L } = useL();
 
   const start = useCallback(() => {
     setReviewing(false);
-    setState(startFullTest(`full-${Date.now()}`));
-  }, []);
+    setState(startFullTest(form ? `band9:${form}:full:v1` : `full-${Date.now()}`));
+  }, [form]);
 
   // Xong cả bài thi thử đầy đủ → thép cho Thành Phố Tri Thức. Mã = hạt giống lượt thi,
   // nên mở lại màn kết quả hay tải lại trang không cộng lần hai.
@@ -79,7 +81,7 @@ export default function SatFullTestScreen() {
   if (!state) {
     return (
       <PageTransition routeKey="intro">
-        <Intro onStart={start} />
+        <Intro onStart={start} form={form} />
       </PageTransition>
     );
   }
@@ -187,7 +189,7 @@ const STAGES: readonly Stage[] = [
  * đề trần: đây là cửa vào của một việc kéo dài hơn hai tiếng, mà bản cũ trông
  * nhẹ hơn cả trang Cài đặt.
  */
-function Intro({ onStart }: { onStart: () => void }) {
+function Intro({ onStart, form }: { onStart: () => void; form: string | null }) {
   const { L } = useL();
   return (
     <ExamShell>
@@ -205,6 +207,7 @@ function Intro({ onStart }: { onStart: () => void }) {
           </>
         }
       >
+        {form ? <Text className="mb-2 font-semi text-label text-paper-ink">{L('Bộ đề', 'Form')} {form.replace('form-', '')} / 50</Text> : null}
         <Button
           label={L('Bắt đầu thi', 'Start test')}
           variant="brand"

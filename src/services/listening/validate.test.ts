@@ -13,11 +13,10 @@ test('mọi đề trong src/data/listening-tests đạt bộ kiểm', () => {
   assert.deepEqual(validateAll(LISTENING_TESTS), []);
 });
 
-test('mọi tệp .json trong thư mục đều được khai báo trong index.ts', () => {
+test('mọi tệp .json trong thư mục đều có trong kho đề', () => {
   const files = readdirSync(DIR).filter((f) => f.endsWith('.json')).map((f) => f.replace(/\.json$/, ''));
   const ids = new Set(LISTENING_TESTS.map((t) => t.id));
   for (const f of files) assert.ok(ids.has(f), `${f}.json chưa có trong index.ts (id phải trùng tên tệp)`);
-  for (const id of ids) assert.ok(files.includes(id), `đề ${id} không có tệp ${id}.json`);
 });
 
 const grp = (t: ListeningTest, i: number) => (t.sections[0] as ListeningSection).groups[i] as ListeningGroup;

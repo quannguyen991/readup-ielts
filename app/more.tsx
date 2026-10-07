@@ -4,7 +4,7 @@ import { Link } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
 import { AssetImage, Card, Icon } from '@/components/ui';
-import { hasPublishedHistory, isDevBuild } from '@/data/history';
+import { hasPublishedHistory, HISTORY_LEARNING_ENABLED, isDevBuild } from '@/data/history';
 import { MORE_ITEMS, navLabel } from '@/navigation/nav-items';
 import { useL } from '@/i18n/useL';
 import { assetKeys, useAssetUrl } from '@/services/assets/useAssets';
@@ -37,7 +37,7 @@ export default function MoreScreen() {
       </View>
 
       <Card className="mt-4" padded={false}>
-        {MORE_ITEMS.filter((i) => i.requires !== 'history' || isDevBuild() || hasPublishedHistory()).map((item, index) => (
+        {MORE_ITEMS.filter((i) => i.requires !== 'history' || (HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory()))).map((item, index) => (
           <Link key={item.key} href={item.href as never} asChild>
             <View
               accessibilityRole="link"

@@ -34,12 +34,12 @@ import { CHAPTERS_A } from '@/data/sat-roadmap/chapters-a';
 import { CHAPTERS_B } from '@/data/sat-roadmap/chapters-b';
 import { SAT_DOMAINS } from '@/data/sat-knowledge';
 import { MATH_DOMAIN_LABEL, MATH_SKILL_DOMAIN, MATH_SKILL_LABEL, type MathSkill } from '@/lib/math/types';
-import { NAV_GROUPS, NAV_LABEL_EN, type NavItem } from '@/navigation/nav-items';
+import { NAV_GROUPS, NAV_LABEL_EN, type NavItem, visibleGroups } from '@/navigation/nav-items';
 import { CUE_CARDS, PART1_TOPICS } from '@/services/speaking/bank';
 import { PATH_STEPS } from '@/services/writing/translation-path';
 import { STEP_EN } from '@/components/writing/translation-step-en';
 import { SAT_RW_SKILL_LABEL_EN } from '@/components/sat-rw/skill-label-en';
-import { BUNDLES } from '@/data/history';
+import { BUNDLES, HISTORY_LEARNING_ENABLED } from '@/data/history';
 import { isTopicVisible, visibleScenes } from '@/services/history/gating';
 import type { Bi } from '@/i18n/useL';
 
@@ -365,7 +365,7 @@ function buildEntries(): SearchEntry[] {
     });
     for (const child of item.children ?? []) walk(child, item);
   };
-  for (const group of NAV_GROUPS) for (const item of group.items) walk(item, null);
+  for (const group of visibleGroups(NAV_GROUPS, true)) for (const item of group.items) walk(item, null);
 
   for (const page of EXTRA_PAGES) {
     out.push({
@@ -446,7 +446,7 @@ function buildEntries(): SearchEntry[] {
   out.push(...lessonEntries(VERBAL_LESSONS, 'rw'));
 
   // ---- Lịch sử Việt Nam song ngữ: chỉ chủ đề / cảnh đã qua cổng xuất bản
-  for (const bundle of BUNDLES) {
+  if (HISTORY_LEARNING_ENABLED) for (const bundle of BUNDLES) {
     if (!isTopicVisible(bundle)) continue;
     const { topic } = bundle;
     out.push({

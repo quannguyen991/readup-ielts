@@ -49,6 +49,7 @@ export default function MockTestsScreen() {
           </>
         }
       >
+        <Button label={L('Xem điểm tổng hợp 4 kỹ năng IELTS', 'View four-skill IELTS score')} variant="outline" onPress={() => router.push('/ielts/score' as never)} />
         <Button
           label={L('Đổi bộ đề', 'Shuffle tests')}
           iconLeft="refresh"

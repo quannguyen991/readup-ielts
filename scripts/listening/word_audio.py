@@ -15,6 +15,33 @@ TRIM_FILTER = (
 )
 
 
+# Same pronunciation, different orthography (homophones Whisper hay ghi khác, và cặp Anh–Mỹ không theo quy tắc).
+SPELLING_EQUIVALENTS = {'prey': 'pray', 'heir': 'air', 'role': 'roll', 'rite': 'right', 'write': 'right',
+                        'ageing': 'aging', 'cheque': 'check', 'cheques': 'checks', 'artefact': 'artifact',
+                        'artefacts': 'artifacts', 'mould': 'mold', 'grey': 'gray', 'practise': 'practice',
+                        'practised': 'practiced', 'tyre': 'tire', 'tyres': 'tires', 'kerb': 'curb',
+                        'plough': 'plow', 'storey': 'story', 'jewellery': 'jewelry', 'sceptical': 'skeptical',
+                        'enquiry': 'inquiry', 'enquiries': 'inquiries', 'aluminium': 'aluminum',
+                        'aeroplane': 'airplane', 'pyjamas': 'pajamas', 'manoeuvre': 'maneuver',
+                        'licence': 'license', 'defence': 'defense', 'offence': 'offense', 'pretence': 'pretense'}
+
+
+def spelling_key(token):
+    """Một dạng chung cho chính tả Anh–Anh và Anh–Mỹ của CÙNG một từ (Whisper small.en luôn ghi kiểu Mỹ).
+
+    Áp cho cả từ cần đọc lẫn từ Whisper nghe ra nên không nới việc khớp: hai từ khác nhau vẫn khác nhau.
+    """
+    t = SPELLING_EQUIVALENTS.get(token, token)
+    t = re.sub(r'is(e|es|ed|ing|ation|ations|er|ers)$', r'iz\1', t)   # summarise / urbanisation
+    t = re.sub(r'ys(e|es|ed|ing)$', r'yz\1', t)                         # analyse
+    t = re.sub(r'(?<=[a-z]{3})our(s|ed|ing|ite|ites|able|hood|ful|less)?$', r'or\1', t)  # behaviour, harbour
+    t = re.sub(r'(?<=[bt])re(s|d)?$', r'er\1', t)                       # centre, fibre, theatre
+    t = re.sub(r'ogue(s)?$', r'og\1', t)                                # catalogue, dialogue
+    t = re.sub(r'mme(s)?$', r'm\1', t)                                  # programme
+    t = re.sub(r'l+', 'l', t)                                           # enrol(l), instal(l)ment, travel(l)ing
+    return t
+
+
 def align_words(expected, recognized, duration):
     """Map exact recognized text to time ranges; a missing word never shifts later clips.
 
@@ -24,14 +51,7 @@ def align_words(expected, recognized, duration):
     """
     def normalize(text):
         tokens = re.findall(r'[a-z]+', text.lower())
-        # Same pronunciation, different orthography; do not allow fuzzy words.
-        equivalents = {'prey': 'pray', 'heir': 'air', 'role': 'roll',
-                       'rite': 'right', 'write': 'right', 'ageing': 'aging',
-                       'neighbourhood': 'neighborhood', 'revolutionise': 'revolutionize',
-                       'colour': 'color', 'honour': 'honor', 'labour': 'labor',
-                       'centre': 'center', 'theatre': 'theater', 'metre': 'meter',
-                       'defence': 'defense', 'offence': 'offense'}
-        return ''.join(equivalents.get(token, token).replace('isation', 'ization') for token in tokens)
+        return ''.join(spelling_key(token) for token in tokens)
     wanted = [normalize(word) for word in expected]
     recognized = [word for word in recognized if normalize(word['word'])]
     heard = [normalize(word['word']) for word in recognized]

@@ -9,9 +9,8 @@ import { useL } from '@/i18n/useL';
 import type { NodeStatus } from '@/services/learning-path/progress';
 
 /**
- * Giao diện Lộ trình học — theo ngôn ngữ "phiếu" của Band 9 (`app/plan.tsx`):
- * giấy kem, chỉ vàng mảnh, số mục đánh như phiếu, nút vuông vức, cuống vé xanh
- * đậm. KHÔNG dùng khối màu bệt to, chip tròn hay tiêu đề có dấu chấm cuối.
+ * Giao diện Lộ trình học — nền giấy sáng, nút bài theo đường so le, trạng thái
+ * hoàn thành/học tiếp rõ ràng; giữ phần chọn kỳ thi và kế hoạch gọn, dễ quét.
  */
 export const P = {
   navy: '#0F1D33',
@@ -338,10 +337,10 @@ export function PartTrail({
   const { L, en } = useL();
   const [w, setW] = useState(0);
   const narrow = w > 0 && w < 520;
-  const cardW = w === 0 ? 0 : Math.round(narrow ? w * 0.86 : w * 0.64);
+  const cardW = w === 0 ? 0 : Math.round(narrow ? w * 0.68 : w * 0.46);
   const complete = progress.done === progress.total;
 
-  const centerX = (i: number, expanded: boolean) => (expanded || cardW === 0 ? w / 2 : i % 2 === 0 ? cardW / 2 : w - cardW / 2);
+  const centerX = (i: number, expanded: boolean) => (expanded || cardW === 0 || part.nodes.length === 1 ? w / 2 : i % 2 === 0 ? cardW / 2 : w - cardW / 2);
 
   return (
     <View style={{ marginTop: 30 }}>
@@ -354,7 +353,7 @@ export function PartTrail({
           <Text className="font-heavy" style={{ marginTop: 2, fontSize: 22, lineHeight: 28, color: P.navy }}>
             {en ? part.title.en : part.title.vi}
           </Text>
-          <Text className="font-sans" style={{ marginTop: 2, fontSize: 14, lineHeight: 20, color: P.muted }}>
+          <Text className="font-sans" numberOfLines={2} style={{ marginTop: 2, fontSize: 14, lineHeight: 20, color: P.muted }}>
             {en ? part.blurb.en : part.blurb.vi}
           </Text>
         </View>
@@ -418,7 +417,7 @@ function Connector({ width, from, to }: { width: number; from: number; to: numbe
   );
 }
 
-/** Thẻ một bài: con dấu răng cưa + tên bài; ba trạng thái xong / học tiếp / chưa học. */
+/** Nút bài kiểu bản đồ: trạng thái ở huy hiệu, tên bài nằm ngay bên dưới. */
 function NodeCard({
   node,
   index,
@@ -436,67 +435,55 @@ function NodeCard({
   isNext: boolean;
   selected: boolean;
   expanded: boolean;
-  /** Màn hẹp: bỏ nút nhỏ "Bắt đầu" trên thẻ (cuống vé phía trên đã có), nhường chỗ cho tên bài. */
+  /** Màn hẹp: thu nút tròn lại để giữ đủ khoảng trống hai bên đường học. */
   narrow: boolean;
   onPress: () => void;
   children?: React.ReactNode;
 }) {
-  const { L, en } = useL();
+  const { en } = useL();
   const statusText = useStatusText();
   const done = status?.state === 'done';
   const started = status?.state === 'started';
   const dark = isNext;
 
-  const bg = dark ? P.navy : done ? P.goldWash : '#FFFFFF';
-  const border = dark ? P.navy : selected ? P.gold : done ? P.goldLight : P.line;
-  const seal = done ? P.gold : dark ? P.goldMid : started ? P.goldDeep : P.navySoft;
-  const kicker = `${String(index).padStart(2, '0')} · ${en ? KIND_SKILL[node.target.kind].en : KIND_SKILL[node.target.kind].vi} · ${node.minutes}'`;
+  const seal = done ? '#FFFFFF' : dark ? P.navy : started ? P.goldDeep : P.navySoft;
+  const badge = done ? '#21A56A' : dark ? P.goldLight : started ? P.goldWash : '#FFFFFF';
+  const border = done ? '#16814E' : dark ? P.gold : selected ? P.goldMid : P.line;
+  const kicker = `${String(index).padStart(2, '0')} · ${node.minutes}'`;
 
   return (
-    <View
-      style={{
-        borderRadius: 16,
-        borderWidth: selected && !dark ? 1.5 : 1,
-        borderColor: border,
-        backgroundColor: bg,
-        boxShadow: dark ? '0 10px 24px -14px rgba(15,29,51,0.7)' : selected ? '0 6px 16px -12px rgba(143,110,54,0.6)' : undefined,
-      } as object}
-    >
+    <View style={{ alignItems: 'center', width: '100%' }}>
       <Pressable
         accessibilityRole="button"
         aria-expanded={expanded}
         aria-selected={selected}
         accessibilityLabel={`${en ? node.title.en : node.title.vi} · ${statusText(node, status, isNext)}`}
         onPress={onPress}
-        style={{ flexDirection: 'row', alignItems: 'center', gap: 12, paddingHorizontal: 12, paddingVertical: 12 }}
+        style={{ width: '100%', alignItems: 'center', paddingHorizontal: 8, paddingVertical: 4 }}
       >
-        <SealIcon name={done ? 'check' : KIND_ICON[node.target.kind]} color={seal} size={42} />
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text className="font-strong" numberOfLines={1} style={{ fontSize: 12, letterSpacing: 1, color: dark ? P.goldLight : P.goldDeep }}>
-            {kicker.toUpperCase()}
-          </Text>
-          <Text className="font-heavy" style={{ marginTop: 1, fontSize: 15, lineHeight: 20, color: dark ? '#FFFFFF' : P.navy }}>
-            {en ? node.title.en : node.title.vi}
-          </Text>
-          {dark || started || done ? (
-            <Text className="font-semi" style={{ marginTop: 2, fontSize: 12, color: dark ? 'rgba(255,255,255,0.7)' : done ? P.goldDeep : P.muted }}>
-              {dark && !started ? L('Bài tiếp theo của bạn', 'Your next lesson') : statusText(node, status, isNext)}
-            </Text>
+        <View style={{ width: narrow ? 58 : 66, height: narrow ? 58 : 66, borderRadius: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: badge, borderWidth: dark ? 3 : 2, borderColor: border, boxShadow: dark ? '0 5px 14px rgba(143,110,54,0.22)' : '0 2px 8px rgba(15,29,51,0.09)' } as object}>
+          <SealIcon name={done ? 'check' : KIND_ICON[node.target.kind]} color={seal} size={32} />
+          {dark ? (
+            <View style={{ position: 'absolute', right: -5, bottom: -3, width: 22, height: 22, borderRadius: 11, alignItems: 'center', justifyContent: 'center', backgroundColor: P.navy, borderWidth: 2, borderColor: '#FFFFFF' }}>
+              <Icon name="play" size={12} color="#FFFFFF" />
+            </View>
           ) : null}
         </View>
-        {dark && !expanded && !narrow ? (
-          <View style={{ borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: P.goldLight }}>
-            <Text className="font-heavy" style={{ fontSize: 12, color: P.navy }}>
-              {started ? L('Tiếp tục', 'Continue') : L('Bắt đầu', 'Start')}
-            </Text>
-          </View>
-        ) : (
-          <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={18} color={dark ? P.goldLight : P.faint} />
-        )}
+        <View style={{ alignItems: 'center', width: '100%', marginTop: 4 }}>
+          <Text className="font-semi" numberOfLines={1} style={{ fontSize: 11, letterSpacing: 0.7, color: dark ? P.goldDeep : P.muted }}>
+            {kicker}
+          </Text>
+          <Text className="font-heavy" numberOfLines={2} style={{ marginTop: 1, textAlign: 'center', fontSize: 15, lineHeight: 20, color: P.navy }}>
+            {en ? node.title.en : node.title.vi}
+          </Text>
+          {dark || started || done ? <Text className="font-semi" numberOfLines={1} style={{ marginTop: 1, fontSize: 12, color: done ? '#16814E' : dark ? P.goldDeep : P.muted }}>{statusText(node, status, isNext)}</Text> : null}
+        </View>
+        <View style={{ position: 'absolute', top: 26, right: 7 }}>
+          <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={16} color={dark ? P.goldDeep : P.faint} />
+        </View>
       </Pressable>
       {children ? (
-        <View style={{ paddingHorizontal: 14, paddingBottom: 14, paddingTop: 2, borderTopWidth: 1, borderColor: dark ? 'rgba(226,200,143,0.25)' : P.line, marginHorizontal: 0 }}>
-          <View style={{ height: 12 }} />
+        <View style={{ width: '100%', marginTop: 12, borderRadius: 16, borderWidth: 1, borderColor: dark ? P.navy : selected ? P.goldLight : P.line, backgroundColor: dark ? P.navy : P.paper, paddingHorizontal: 14, paddingBottom: 14, paddingTop: 2 }}>
           {children}
         </View>
       ) : null}

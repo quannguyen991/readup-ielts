@@ -5,7 +5,7 @@ import type { TheoryLesson } from './types';
  * bộ đề luyện của kỹ năng đó. Ví dụ tính tay; `lessons.test.ts` kiểm markup
  * toán và kiểm lại đáp số của các ví dụ bằng máy.
  */
-export const MATH_LESSONS: TheoryLesson[] = [
+const MATH_LESSON_CONTENT: TheoryLesson[] = [
   // ================================================================ Algebra
   {
     skill: 'linear_equations_one_var',
@@ -324,3 +324,106 @@ export const MATH_LESSONS: TheoryLesson[] = [
     ],
   },
 ];
+
+const LESSON_GUIDANCE: Record<string, Required<Pick<TheoryLesson, 'prerequisite' | 'recognize' | 'summary'>>> = {
+  linear_equations_one_var: {
+    prerequisite: 'Ôn phép phân phối, thu gọn hạng tử đồng dạng và các phép toán với phân số.',
+    recognize: 'Một biến xuất hiện ở hai vế hoặc trong ngoặc; đề hỏi giá trị của biến, số nghiệm hoặc một biểu thức theo biến.',
+    summary: 'Phân phối rồi thu gọn; làm cùng một phép ở hai vế; thay nghiệm vào phương trình ban đầu để kiểm tra.',
+  },
+  linear_equations_two_var: {
+    prerequisite: 'Biết thay giá trị vào biểu thức và đọc tọa độ (x, y) trên mặt phẳng.',
+    recognize: 'Có hai biến bậc nhất, thường hỏi một giao điểm, một cặp nghiệm hoặc cách mô hình hóa một tình huống.',
+    summary: 'Mỗi cặp nghiệm là một điểm trên đường thẳng; giao trục x thì y = 0, giao trục y thì x = 0.',
+  },
+  linear_functions: {
+    prerequisite: 'Ôn tọa độ hai điểm và phép trừ số âm.',
+    recognize: 'Đề cho f(x), đồ thị đường thẳng hoặc một tình huống có mức thay đổi đều theo mỗi đơn vị.',
+    summary: 'Trong f(x) = mx + b, m là mức thay đổi mỗi đơn vị, b là giá trị khi x = 0; hệ số góc = Δy/Δx.',
+  },
+  systems_linear_two_var: {
+    prerequisite: 'Giải phương trình một ẩn và biến đổi tương đương hai vế.',
+    recognize: 'Hai điều kiện tuyến tính cùng liên hệ x, y; câu hỏi có thể hỏi nghiệm hoặc số giao điểm.',
+    summary: 'Thế hoặc cộng đại số để khử một biến; nghiệm của hệ phải thỏa đồng thời cả hai phương trình.',
+  },
+  linear_inequalities: {
+    prerequisite: 'Giải phương trình một ẩn và hiểu ý nghĩa các dấu <, >, ≤, ≥.',
+    recognize: 'Câu dùng at least, at most, no more than hoặc hỏi khoảng giá trị thỏa điều kiện.',
+    summary: 'Giải gần như phương trình; khi nhân/chia hai vế cho số âm, đảo chiều dấu bất phương trình.',
+  },
+  equivalent_expressions: {
+    prerequisite: 'Ôn phân phối, quy tắc lũy thừa và phép nhân đa thức cơ bản.',
+    recognize: 'Đề yêu cầu biểu thức tương đương, khai triển, phân tích nhân tử hoặc tìm cấu trúc thuận tiện để thay thế.',
+    summary: 'Biến đổi giữ nguyên giá trị; kiểm tra số hạng giữa khi bình phương nhị thức và điều kiện mẫu khác 0.',
+  },
+  nonlinear_equations: {
+    prerequisite: 'Ôn phân tích nhân tử, nghiệm phương trình tuyến tính và căn bậc hai.',
+    recognize: 'Có bình phương, căn, mẫu chứa biến hoặc giao điểm giữa đường thẳng và đồ thị bậc hai.',
+    summary: 'Đưa về phương trình tương đương, giữ mọi nghiệm hợp lệ, rồi thế ngược để loại nghiệm ngoại lai.',
+  },
+  nonlinear_functions: {
+    prerequisite: 'Biết đọc f(x), tọa độ đồ thị và phép biến đổi biểu thức.',
+    recognize: 'Đề hỏi đỉnh/đồ thị parabol, tăng giảm theo tỉ lệ, giá trị hàm hoặc diễn giải tham số của hàm phi tuyến.',
+    summary: 'Dạng đỉnh cho trực tiếp cực trị; hàm mũ nhân theo tỉ lệ cố định, còn hàm tuyến tính cộng cùng một lượng.',
+  },
+  ratios_rates_units: {
+    prerequisite: 'Ôn phân số, tỉ số và đổi các đơn vị thời gian/độ dài.',
+    recognize: 'Có từ “mỗi”, tỉ số, tốc độ hoặc đại lượng cần đổi qua nhiều đơn vị.',
+    summary: 'Viết đơn vị cạnh từng số; lập tỉ lệ theo đúng thứ tự và chỉ nhân các hệ số đổi đơn vị tương đương 1.',
+  },
+  percentages: {
+    prerequisite: 'Ôn phân số thập phân và quan hệ phần – toàn thể.',
+    recognize: 'Đề hỏi phần trăm của một lượng, tăng/giảm phần trăm hoặc tìm giá trị ban đầu sau thay đổi.',
+    summary: 'Đổi p% thành p/100; tăng/giảm lần lượt nhân 1 + p/100 hoặc 1 − p/100; luôn xác định đúng giá gốc.',
+  },
+  one_var_data: {
+    prerequisite: 'Đọc bảng tần số và sắp xếp dữ liệu theo thứ tự.',
+    recognize: 'Dữ liệu thuộc một biến; câu hỏi hỏi trung tâm, độ phân tán, trung vị, trung bình hoặc hình dạng phân bố.',
+    summary: 'Trung bình nhạy với ngoại lệ; trung vị là vị trí giữa; độ phân tán mô tả mức dữ liệu trải rộng.',
+  },
+  two_var_data: {
+    prerequisite: 'Đọc trục tọa độ và biểu đồ đường thẳng.',
+    recognize: 'Mỗi quan sát có cặp (x, y), thường hiển thị bằng scatterplot hoặc một mô hình tuyến tính.',
+    summary: 'Đọc xu hướng từ mô hình phù hợp; tương quan mô tả xu hướng đồng biến/nghịch biến, không tự chứng minh nhân quả.',
+  },
+  probability: {
+    prerequisite: 'Ôn phân số và cách đọc bảng hai chiều.',
+    recognize: 'Câu hỏi có ngẫu nhiên, chọn ngẫu nhiên, “trong số những người...” hoặc nhiều điều kiện cùng lúc.',
+    summary: 'Xác suất = số kết quả thuận lợi / số kết quả trong đúng không gian mẫu; điều kiện mới thì mẫu số cũng đổi.',
+  },
+  sample_inference: {
+    prerequisite: 'Hiểu trung bình/tỉ lệ mẫu và phân biệt mẫu với tổng thể.',
+    recognize: 'Một mẫu được dùng để ước tính đặc điểm của cả nhóm lớn hơn hoặc để so sánh hai nhóm.',
+    summary: 'Mẫu ngẫu nhiên đại diện tốt hơn; cỡ mẫu lớn giảm dao động; kết quả là ước lượng chứ không phải số chính xác.',
+  },
+  statistical_claims: {
+    prerequisite: 'Phân biệt khảo sát quan sát với thí nghiệm có phân nhóm ngẫu nhiên.',
+    recognize: 'Đề nêu một nghiên cứu hoặc kết luận rồi hỏi có thể suy ra điều gì từ cách chọn mẫu và thiết kế.',
+    summary: 'Lấy mẫu ngẫu nhiên hỗ trợ khái quát cho tổng thể; phân nhóm ngẫu nhiên trong thí nghiệm hỗ trợ kết luận nhân quả.',
+  },
+  area_volume: {
+    prerequisite: 'Ôn diện tích hình cơ bản, thể tích và bình phương/căn bậc hai.',
+    recognize: 'Có hình phẳng hoặc khối 3D và hỏi độ dài, diện tích, diện tích mặt hoặc thể tích.',
+    summary: 'Chọn đúng công thức và đơn vị; diện tích có đơn vị vuông, thể tích có đơn vị lập phương.',
+  },
+  lines_angles_triangles: {
+    prerequisite: 'Nhớ tổng góc trên một đường thẳng, quanh một điểm và trong tam giác.',
+    recognize: 'Đề cho góc, đường song song, tam giác hoặc quan hệ đồng dạng/đồng dạng hình học.',
+    summary: 'Góc kề bù cộng 180°, góc phụ cộng 90°, góc trong tam giác cộng 180°; ghi rõ quan hệ trước khi tính.',
+  },
+  right_triangles_trig: {
+    prerequisite: 'Ôn định lý Pythagore và xác định cạnh đối/kề/huyền so với một góc.',
+    recognize: 'Có tam giác vuông, độ dài cạnh/góc hoặc yêu cầu dùng sin, cos, tan.',
+    summary: 'Chọn đúng góc tham chiếu; sin = đối/huyền, cos = kề/huyền, tan = đối/kề.',
+  },
+  circles: {
+    prerequisite: 'Ôn bán kính/đường kính, hệ thức khoảng cách và hoàn thành bình phương.',
+    recognize: 'Có đường tròn, tiếp tuyến, dây cung, cung/góc ở tâm hoặc phương trình chứa x² và y².',
+    summary: 'Tách bán kính khỏi đường kính; trong phương trình đường tròn, hoàn thành bình phương để đọc tâm và bán kính.',
+  },
+};
+
+export const MATH_LESSONS: TheoryLesson[] = MATH_LESSON_CONTENT.map((lesson) => ({
+  ...lesson,
+  ...LESSON_GUIDANCE[lesson.skill],
+}));

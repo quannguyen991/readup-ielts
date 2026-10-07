@@ -1,0 +1,28 @@
+# Stale exports and local rendering outputs must never enter a production upload.
+/dist
+/.expo
+/tmp
+/tmp-art
+/work
+/.local-private
+/.claude
+/.superpowers
+/.secrets-proxies.json
+/--full-page
+/shot1.png
+/b.textContent)
+/x.type
+/docs
+/README.md
+/HANDOFF_CLAUDE.md
+/assets/city/_raw
+/.kb
+/content/bilingual-rich-dictionary.json
+/data/provenance
+
+# WAV files here are source/debug recordings; the app serves the ready MP3s.
+/public/**/*.wav
+/**/__pycache__/**
+/**/*.pyc
+/eng.traineddata
+/vie.traineddata

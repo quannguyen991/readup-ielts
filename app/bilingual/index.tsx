@@ -113,6 +113,37 @@ function PortalView() {
         />
       </Appear>
 
+      <Appear index={1}>
+        <Pressable
+          accessibilityRole="link"
+          accessibilityLabel={L('Mở kệ sách song ngữ', 'Open bilingual book library')}
+          onPress={() => router.push('/bilingual/books' as never)}
+          className="mt-5"
+        >
+          <View className="flex-row flex-wrap items-center justify-between gap-4 rounded-[22px] bg-white p-5" style={SOFT_CARD}>
+            <View className="flex-row items-center gap-4" style={{ flexShrink: 1 }}>
+              <View className="h-14 w-14 items-center justify-center rounded-2xl" style={{ backgroundColor: '#F7E7C8' }}>
+                <Icon name="book" size={25} color="#9A7439" strokeWidth={1.9} />
+              </View>
+              <View style={{ flexShrink: 1 }}>
+                <Text className="font-heavy" style={{ color: INK, fontSize: 20 }}>
+                  {L('Kệ sách song ngữ', 'Bilingual bookshelf')}
+                </Text>
+                <Text className="mt-1 font-sans" style={{ color: MUTED, fontSize: 14, lineHeight: 20 }}>
+                  {L('Sách kiến thức, truyện và bản sách riêng của bạn', 'Nonfiction, stories and your own book files')}
+                </Text>
+              </View>
+            </View>
+            <View className="flex-row items-center gap-2 rounded-pill px-4 py-2.5" style={{ backgroundColor: color.primary }}>
+              <Text className="font-heavy" style={{ color: '#FFFFFF', fontSize: 13 }}>
+                {L('Mở kệ sách', 'Open library')}
+              </Text>
+              <Icon name="arrow-right" size={16} color="#FFFFFF" strokeWidth={2.2} />
+            </View>
+          </View>
+        </Pressable>
+      </Appear>
+
       <View className="mt-8">
         <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={22}>
           {BILINGUAL_OUTLETS.map((o, i) => (
