@@ -1,0 +1,79 @@
+#unit 6
+#en Effective communication
+#vi Giao tiếp hiệu quả
+#blurb Ngôn ngữ, cử chỉ, cách diễn đạt và những cụm nói giúp trình bày rõ ý
+accuracy|n|/ˈækjərəsi/|độ chính xác|the quality of being correct|Accuracy matters more than speed in a translation.|with accuracy|6-7
+communication|n|/kəˌmjuːnɪˈkeɪʃən/|sự giao tiếp|the exchange of information between people|Good communication keeps a team working well together.|effective communication|5-6
+concept|n|/ˈkɒnsept/|khái niệm|an abstract idea|The concept of freedom differs across cultures.|a difficult concept|6-7
+conjecture|n|/kənˈdʒektʃə/|sự phỏng đoán|an opinion based on incomplete information|Her theory is pure conjecture without evidence.|mere conjecture|8+
+dialect|n|/ˈdaɪəlekt/|phương ngữ|a form of a language spoken in one region|Many people in the north speak a local dialect.|a regional dialect|6-7
+fluency|n|/ˈfluːənsi/|sự trôi chảy|the ability to speak a language smoothly|Fluency comes from regular speaking practice.|achieve fluency|7-8
+gesture|nv|/ˈdʒestʃə/|cử chỉ; ra hiệu|a movement of the hand or head that conveys meaning|A smile is a universal gesture of friendliness.|a hand gesture|6-7
+hesitation|n|/ˌhezɪˈteɪʃən/|sự ngập ngừng|a pause before saying or doing something|She answered without hesitation.|without hesitation|7-8
+language|n|/ˈlæŋɡwɪdʒ/|ngôn ngữ|a system of words used for communication|Learning a second language opens many doors.|a foreign language|5-6
+language barrier|np|/ˈlæŋɡwɪdʒ ˈbæriə/|rào cản ngôn ngữ|a difficulty in communicating due to different languages|The language barrier made the trip difficult.|overcome a language barrier|6-7
+linguist|n|/ˈlɪŋɡwɪst/|nhà ngôn ngữ học|a person who studies languages|Linguists believe that thousands of languages may disappear.|a trained linguist|7-8
+linguistics|n|/lɪŋˈɡwɪstɪks/|ngôn ngữ học|the scientific study of language|She studied linguistics at university.|a linguistics degree|7-8
+means of communication|np|/miːnz əv kəˌmjuːnɪˈkeɪʃən/|phương tiện giao tiếp|a way of passing information to others|Email is now the main means of communication at work.|a means of communication|6-7
+mother tongue|np|/ˈmʌðə tʌŋ/|tiếng mẹ đẻ|the first language a person learns|English is not my mother tongue.|speak your mother tongue|6-7
+native speaker|np|/ˈneɪtɪv ˈspiːkə/|người bản ngữ|a person who has spoken a language since birth|Learners benefit from talking with a native speaker.|a native speaker|5-6
+pronunciation|n|/prəˌnʌnsiˈeɪʃən/|cách phát âm|the way a word is said|Clear pronunciation helps listeners understand you.|improve your pronunciation|6-7
+sign language|np|/ˈsaɪn ˈlæŋɡwɪdʒ/|ngôn ngữ ký hiệu|a way of communicating using hand movements|Many deaf people communicate using sign language.|learn sign language|6-7
+vocabulary|n|/vəˈkæbjələri/|vốn từ vựng|all the words a person knows|Reading widely builds a rich vocabulary.|expand your vocabulary|5-6
+incoherent|adj|/ˌɪnkəʊˈhɪərənt/|rời rạc, thiếu mạch lạc|not clear or logical|His incoherent answer confused the interviewers.|an incoherent argument|8+
+inherent|adj|/ɪnˈherənt/|vốn có|existing as a natural part of something|There are inherent risks in learning through translation alone.|inherent in|8+
+sophisticated|adj|/səˈfɪstɪkeɪtɪd/|tinh vi, tinh tế|complex and well developed|She uses sophisticated vocabulary in her essays.|a sophisticated argument|7-8
+spontaneous|adj|/spɒnˈteɪniəs/|tự phát, ngẫu hứng|done naturally without planning|Spontaneous conversation is the best way to practise speaking.|a spontaneous reaction|7-8
+clarify|v|/ˈklærɪfaɪ/|làm rõ|to make something easier to understand|Could you clarify what you mean by that?|clarify a point|6-7
+communicate|v|/kəˈmjuːnɪkeɪt/|giao tiếp|to share information with others|Babies communicate by crying and smiling.|communicate effectively|5-6
+comprehend|v|/ˌkɒmprɪˈhend/|hiểu thấu|to understand something fully|Young children cannot comprehend complex instructions.|fully comprehend|7-8
+conclude|v|/kənˈkluːd/|kết luận|to decide something after considering the facts|The study concluded that bilingual children learn faster.|conclude that|6-7
+confirm|v|/kənˈfɜːm/|xác nhận|to say or show that something is true|Please confirm your attendance by email.|confirm a booking|5-6
+converse|v|/kənˈvɜːs/|trò chuyện|to talk with someone|They conversed in French throughout dinner.|converse with|7-8
+define|v|/dɪˈfaɪn/|định nghĩa|to explain the exact meaning of something|It is hard to define what makes a good speaker.|define a term|6-7
+demonstrate|v|/ˈdemənstreɪt/|chứng minh, trình diễn|to show clearly that something is true|The test demonstrates a student's level of fluency.|demonstrate a skill|6-7
+distinguish|v|/dɪˈstɪŋɡwɪʃ/|phân biệt|to recognise the difference between things|It is difficult to distinguish between the two accents.|distinguish between|7-8
+emerge|v|/ɪˈmɜːdʒ/|nổi lên, xuất hiện|to appear or become known|New slang words emerge every year.|emerge from|7-8
+evolve|v|/ɪˈvɒlv/|tiến hoá|to develop gradually over time|Languages evolve as societies change.|evolve over time|7-8
+explain|v|/ɪkˈspleɪn/|giải thích|to make something clear by describing it|The teacher explained the grammar rule twice.|explain clearly|5-6
+express|v|/ɪkˈspres/|bày tỏ|to show a thought or feeling in words|It is difficult to express complex ideas in a foreign language.|express an opinion|5-6
+illustrate|v|/ˈɪləstreɪt/|minh hoạ|to make something clear with examples|The speaker illustrated her point with a short story.|illustrate a point|7-8
+imply|v|/ɪmˈplaɪ/|ngụ ý|to suggest something without saying it directly|His silence seemed to imply disagreement.|imply that|7-8
+indicate|v|/ˈɪndɪkeɪt/|chỉ ra, cho thấy|to show or point to something|Research indicates that gestures help memory.|clearly indicate|6-7
+pronounce|v|/prəˈnaʊns/|phát âm|to say a word in a particular way|Many learners find it hard to pronounce this sound.|pronounce correctly|6-7
+recall|v|/rɪˈkɔːl/|nhớ lại|to remember something from the past|She could not recall the speaker's name.|recall details|7-8
+refer to|v|/rɪˈfɜː tuː/|đề cập đến|to mention or speak about something|The author refers to several earlier studies.|refer to|6-7
+signify|v|/ˈsɪɡnɪfaɪ/|biểu thị, có nghĩa là|to be a sign of something|A nod can signify agreement in many cultures.|signify a change|8+
+state|v|/steɪt/|nêu rõ, tuyên bố|to say something clearly in speech or writing|Please state your name and address.|state clearly|6-7
+stutter|v|/ˈstʌtə/|nói lắp|to repeat sounds when speaking|He used to stutter when he felt nervous.|stutter slightly|8+
+suggest|v|/səˈdʒest/|gợi ý, đề xuất|to put forward an idea for consideration|The results suggest that practice improves fluency.|strongly suggest|5-6
+translate|v|/trænzˈleɪt/|dịch|to change words from one language into another|She translated the novel into Vietnamese.|translate into|6-7
+there is something to be said for|id|/ðeə ɪz ˈsʌmθɪŋ tə biː sed fɔː/|có điều đáng nói ủng hộ|used when an idea has some advantages|There is something to be said for learning through immersion.|there is something to be said for|8+
+needless to say|id|/ˈniːdləs tə seɪ/|không cần phải nói|used for something that is obvious|Needless to say, regular practice is the key to fluency.|needless to say|7-8
+have a say|id|/hæv ə seɪ/|có tiếng nói|to be allowed to give an opinion|Students should have a say in how they are taught.|have a say in|7-8
+when all is said and done|id|/wen ɔːl ɪz sed ənd dʌn/|rốt cuộc thì|used to say what is most important after all|When all is said and done, communication is about listening.|when all is said and done|8+
+having said that|id|/ˈhævɪŋ sed ðæt/|tuy nói vậy|used to add a contrasting point|Having said that, accuracy still matters in exams.|having said that|7-8
+to say the least|id|/tə seɪ ðə liːst/|nói một cách nhẹ nhất|used when you could say something stronger|His accent was difficult to follow, to say the least.|to say the least|8+
+you can say that again|id|/juː kæn seɪ ðæt əˈɡen/|chí lý, đúng thế|used to agree strongly with someone|"It was a long lecture." "You can say that again!"|you can say that again|7-8
+that is to say|id|/ðæt ɪz tə seɪ/|nghĩa là, tức là|used to explain something in other words|He is bilingual, that is to say he speaks two languages fluently.|that is to say|7-8
++++
+body language|np|/ˈbɒdi ˈlæŋɡwɪdʒ/|ngôn ngữ cơ thể|communication through movements and facial expressions|Body language often reveals what people really feel.|read body language|6-7
+eye contact|np|/ˈaɪ ˈkɒntækt/|giao tiếp bằng mắt|looking directly into another person's eyes|Good eye contact shows confidence and honesty.|maintain eye contact|6-7
+tone of voice|np|/təʊn əv vɔɪs/|giọng điệu|the way a voice sounds when expressing feelings|Her tone of voice showed she was angry.|a friendly tone of voice|7-8
+misunderstanding|n|/ˌmɪsʌndəˈstændɪŋ/|sự hiểu lầm|a failure to understand something correctly|A simple misunderstanding led to a long argument.|clear up a misunderstanding|7-8
+jargon|n|/ˈdʒɑːɡən/|biệt ngữ|special words used by a profession|Avoid jargon when you explain ideas to beginners.|technical jargon|8+
+slang|n|/slæŋ/|tiếng lóng|very informal words used by a particular group|Teenagers invent new slang all the time.|use slang|7-8
+bilingual|adj|/baɪˈlɪŋɡwəl/|song ngữ|able to speak two languages well|Bilingual children often switch between languages with ease.|bilingual education|7-8
+articulate|adj|/ɑːˈtɪkjələt/|diễn đạt rõ ràng|able to express ideas clearly|She is an articulate speaker who persuades her audience.|an articulate speaker|8+
+concise|adj|/kənˈsaɪs/|ngắn gọn súc tích|giving a lot of information in few words|A concise summary saves the reader's time.|a concise explanation|7-8
+ambiguous|adj|/æmˈbɪɡjuəs/|mơ hồ, đa nghĩa|having more than one possible meaning|The instructions were ambiguous and confusing.|an ambiguous statement|8+
+verbal|adj|/ˈvɜːbəl/|bằng lời|expressed in spoken words|Verbal agreements are hard to prove later.|verbal communication|7-8
+paraphrase|v|/ˈpærəfreɪz/|diễn đạt lại|to say something again using different words|Try to paraphrase the question before you answer.|paraphrase a sentence|7-8
+convey|v|/kənˈveɪ/|truyền đạt|to communicate an idea or feeling|Music can convey emotions that words cannot.|convey a message|7-8
+interpret|v|/ɪnˈtɜːprɪt/|diễn giải, phiên dịch|to explain the meaning of words or actions|Different cultures interpret silence in different ways.|interpret correctly|7-8
+persuade|v|/pəˈsweɪd/|thuyết phục|to make someone agree to do something|A confident speaker can persuade a large audience.|persuade someone to|6-7
+mumble|v|/ˈmʌmbəl/|nói lầm bầm|to speak unclearly and quietly|He mumbled his answer and looked at the floor.|mumble an apology|7-8
+eloquent|adj|/ˈeləkwənt/|hùng biện, lưu loát|expressing ideas fluently and persuasively|An eloquent speech can change public opinion.|an eloquent speaker|8+
+rapport|n|/ræˈpɔː/|mối quan hệ hoà hợp|a close and friendly understanding between people|A good teacher quickly builds rapport with a class.|build rapport|8+
+negotiate|v|/nɪˈɡəʊʃieɪt/|thương lượng|to discuss something to reach an agreement|Unions negotiate with employers about pay.|negotiate a deal|7-8
+dialogue|n|/ˈdaɪəlɒɡ/|cuộc đối thoại|a conversation between two or more people|Open dialogue between neighbours can prevent conflict.|open dialogue|6-7

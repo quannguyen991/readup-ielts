@@ -1,0 +1,45 @@
+#unit 16
+#en Energy and resources
+#blurb Nhiên liệu, khai khoáng, phát thải và các giải pháp năng lượng bền vững
+biofuel|n|/ˈbaɪəʊfjuːəl/|nhiên liệu sinh học|fuel made from plants or animal waste|Biofuel from crops can replace some petrol.|produce biofuel|8+
+carbon footprint|np|/ˈkɑːbən ˈfʊtprɪnt/|dấu chân carbon|the amount of carbon dioxide a person or group produces|You can reduce your carbon footprint by cycling to work.|reduce your carbon footprint|7-8
+consumption|n|/kənˈsʌmpʃən/|sự tiêu thụ|the amount of energy or goods that is used|Energy consumption has doubled since 1990.|energy consumption|7-8
+emissions|n|/ɪˈmɪʃənz/|khí thải|gases released into the air|Factories must reduce harmful emissions.|reduce emissions|7-8
+fumes|n|/fjuːmz/|khói độc|strong and often harmful gas or smoke|Exhaust fumes make the air in the city unhealthy.|toxic fumes|7-8
+greenhouse gas|np|/ˈɡriːnhaʊs ɡæs/|khí nhà kính|a gas that traps heat in the atmosphere|Methane is a powerful greenhouse gas.|release greenhouse gas|7-8
+mining|n|/ˈmaɪnɪŋ/|khai khoáng|the industry of digging minerals out of the ground|Coal mining has left scars on the landscape.|a mining industry|7-8
+natural resources|np|/ˌnætʃərəl rɪˈzɔːsɪz/|tài nguyên thiên nhiên|materials from nature that people use|The country is rich in natural resources.|exploit natural resources|7-8
+precious metal|np|/ˌpreʃəs ˈmetəl/|kim loại quý|a rare and valuable metal such as gold|Phones contain small amounts of precious metal.|a precious metal|8+
+scale|n|/skeɪl/|quy mô|the size or extent of something|The scale of the energy problem is enormous.|a large scale|7-8
+wind farm|np|/ˈwɪnd fɑːm/|trang trại điện gió|a group of wind turbines producing electricity|A large wind farm was built off the coast.|an offshore wind farm|7-8
+carbon neutral|adj|/ˌkɑːbən ˈnjuːtrəl/|trung hoà carbon|producing no overall increase in carbon dioxide|The company aims to become carbon neutral by 2035.|carbon neutral|8+
+eco-friendly|adj|/ˈiːkəʊ ˌfrendli/|thân thiện với môi trường|not harmful to the environment|Eco-friendly buses run on electricity.|eco-friendly transport|6-7
+rechargeable|adj|/ˌriːˈtʃɑːdʒəbəl/|có thể sạc lại|able to be filled with energy again|Rechargeable batteries reduce waste.|rechargeable batteries|7-8
+recyclable|adj|/ˌriːˈsaɪkləbəl/|có thể tái chế|able to be treated and used again|Most glass and metal packaging is recyclable.|recyclable materials|7-8
+renewable|adj|/rɪˈnjuːəbəl/|có thể tái tạo|able to be replaced naturally|Wind and solar are renewable sources of energy.|renewable energy|6-7
+precious|adj|/ˈpreʃəs/|quý giá|rare and valuable|Water is a precious resource in dry countries.|precious resources|7-8
+sustainable|adj|/səˈsteɪnəbəl/|bền vững|able to continue without harming the environment|Sustainable farming protects the soil for the future.|sustainable energy|7-8
+unleaded|adj|/ʌnˈledɪd/|không chì|containing no lead|Cars now run on unleaded petrol.|unleaded petrol|7-8
+capture|v|/ˈkæptʃə/|thu giữ|to catch or take something and keep it|New technology can capture carbon from power stations.|capture carbon|7-8
+conserve|v|/kənˈsɜːv/|tiết kiệm|to use something carefully to avoid waste|Households are urged to conserve water and energy.|conserve energy|7-8
+curb|v|/kɜːb/|hạn chế|to limit something harmful|Higher taxes could curb the use of fuel.|curb emissions|7-8
+discard|v|/dɪˈskɑːd/|vứt bỏ|to throw away something you no longer want|Millions of phones are discarded each year.|discard waste|8+
+emit|v|/ɪˈmɪt/|thải ra|to send out gas, light or heat|Coal power stations emit large amounts of carbon dioxide.|emit gases|7-8
+exhaust|v|/ɪɡˈzɔːst/|làm cạn kiệt|to use up completely|Overfishing has exhausted fish stocks in the area.|exhaust supplies|8+
+harness|v|/ˈhɑːnɪs/|khai thác (năng lượng tự nhiên)|to control natural energy and use it|Dams harness the power of rivers.|harness energy|8+
++++
+fossil fuel|np|/ˈfɒsəl ˈfjuːəl/|nhiên liệu hoá thạch|a fuel such as coal, oil or gas|Fossil fuels will eventually run out.|burn fossil fuels|7-8
+non-renewable|adj|/ˌnɒn rɪˈnjuːəbəl/|không tái tạo được|not able to be replaced once used|Oil is a non-renewable resource.|non-renewable resources|7-8
+solar panel|np|/ˈsəʊlə ˈpænəl/|tấm pin mặt trời|a device that turns sunlight into electricity|Many roofs now have solar panels fitted.|install solar panels|6-7
+hydroelectric|adj|/ˌhaɪdrəʊɪˈlektrɪk/|thuỷ điện|producing electricity from moving water|A hydroelectric dam supplies power to the capital.|hydroelectric power|8+
+nuclear|adj|/ˈnjuːkliə/|hạt nhân|using the energy released from atoms|Nuclear power plants produce no carbon dioxide.|nuclear power|7-8
+shortage|n|/ˈʃɔːtɪdʒ/|sự thiếu hụt|a situation where there is not enough of something|The country faces a severe fuel shortage.|a shortage of|6-7
+blackout|n|/ˈblækaʊt/|sự mất điện|a sudden loss of electrical power|A blackout left the city in darkness.|a power blackout|7-8
+reserves|n|/rɪˈzɜːvz/|trữ lượng|a supply of something kept for the future|Oil reserves are almost exhausted.|oil reserves|7-8
+efficiency|n|/ɪˈfɪʃənsi/|hiệu suất|the ability to use little energy for a result|Solar panels have improved in efficiency.|energy efficiency|7-8
+finite|adj|/ˈfaɪnaɪt/|hữu hạn|having an end or limit|Coal and oil are finite resources.|finite resources|8+
+insulate|v|/ˈɪnsjʊleɪt/|cách nhiệt|to cover something to stop heat from escaping|Insulate your loft to keep the house warm.|insulate a house|7-8
+phase out|v|/ˈfeɪz aʊt/|loại bỏ dần|to stop using something gradually|Several countries plan to phase out coal by 2030.|phase out coal|8+
+subsidise|v|/ˈsʌbsɪdaɪz/|trợ giá|to give money to help reduce a price|Governments subsidise solar panels to encourage their use.|subsidise renewables|8+
+deplete|v|/dɪˈpliːt/|làm cạn kiệt|to use up so that little remains|Overuse has depleted the world's oil reserves.|deplete resources|8+
+extract|v|/ɪkˈstrækt/|khai thác, chiết xuất|to take something out of the ground|Companies extract oil from beneath the sea.|extract oil|7-8

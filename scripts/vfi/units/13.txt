@@ -1,0 +1,82 @@
+#unit 13
+#en The modern world
+#vi Thế giới hiện đại
+#blurb Toàn cầu hoá, dân số, thống kê và những xu hướng lớn của xã hội
+attitude|n|/ˈætɪtjuːd/|thái độ|the way you think or feel about something|Attitudes to work are changing among young people.|a positive attitude|5-6
+brand|n|/brænd/|thương hiệu|a product or company name that is easy to recognise|Global brands dominate many markets.|a well-known brand|6-7
+culture|n|/ˈkʌltʃə/|văn hoá|the customs and beliefs of a society|Cultures influence each other more than ever before.|popular culture|5-6
+cycle|n|/ˈsaɪkəl/|chu kỳ|a series of events that repeat|The economy goes through a cycle of growth and decline.|an economic cycle|6-7
+demographics|n|/ˌdeməˈɡræfɪks/|nhân khẩu học|statistics about the make-up of a population|Changing demographics affect the demand for housing.|population demographics|8+
+development|n|/dɪˈveləpmənt/|sự phát triển|the process of growth or progress|Economic development has lifted millions out of poverty.|economic development|5-6
+diversity|n|/daɪˈvɜːsəti/|sự đa dạng|a range of different people or things|Cultural diversity makes cities more exciting.|cultural diversity|6-7
+globalisation|n|/ˌɡləʊbəlaɪˈzeɪʃən/|toàn cầu hoá|the growing connection of economies and cultures|Globalisation has created millions of jobs but also inequality.|the effects of globalisation|7-8
+hindsight|n|/ˈhaɪndsaɪt/|nhận thức muộn, sự nhìn lại|understanding of a situation after it has happened|With hindsight, the policy was a mistake.|with hindsight|8+
+icon|n|/ˈaɪkɒn/|biểu tượng|a person or thing seen as a symbol of something|The mobile phone is an icon of modern life.|a cultural icon|7-8
+identity|n|/aɪˈdentəti/|bản sắc|the qualities that make a person or group different|Many immigrants try to keep their cultural identity.|national identity|6-7
+implication|n|/ˌɪmplɪˈkeɪʃən/|hàm ý, hệ quả|a possible future effect|The findings have serious implications for health policy.|serious implications|7-8
+impact|n|/ˈɪmpækt/|tác động|a strong effect on something|The Internet has had a huge impact on shopping habits.|a major impact|6-7
+increase|n|/ˈɪŋkriːs/|sự tăng|a rise in amount or number|There has been a sharp increase in house prices.|a sharp increase|5-6
+influence|n|/ˈɪnfluəns/|ảnh hưởng|the power to affect people or events|Social media has a growing influence on young people.|a strong influence|6-7
+industry|n|/ˈɪndəstri/|ngành công nghiệp|the production of goods or services|The tourist industry employs thousands of people.|the tourist industry|5-6
+isolation|n|/ˌaɪsəˈleɪʃən/|sự cô lập|the state of being alone or apart|Social isolation affects many elderly people.|in isolation|7-8
+joint venture|np|/ˌdʒɔɪnt ˈventʃə/|liên doanh|a business project shared by two or more companies|The two firms set up a joint venture in India.|a joint venture|7-8
+monopoly|n|/məˈnɒpəli/|độc quyền|control of a market by a single company|The firm has a monopoly on the sale of tickets.|have a monopoly|8+
+market|n|/ˈmɑːkɪt/|thị trường|the business of buying and selling goods|The market for electric cars is growing fast.|the global market|5-6
+modernisation|n|/ˌmɒdənaɪˈzeɪʃən/|sự hiện đại hoá|the process of making something more modern|The modernisation of the railways took ten years.|rapid modernisation|7-8
+multiculturalism|n|/ˌmʌltiˈkʌltʃərəlɪzəm/|chủ nghĩa đa văn hoá|the policy of supporting different cultures in a society|Multiculturalism has enriched the life of many cities.|promote multiculturalism|8+
+percentage|n|/pəˈsentɪdʒ/|tỷ lệ phần trăm|a proportion expressed as a number out of 100|A large percentage of students work part-time.|a high percentage|6-7
+population|n|/ˌpɒpjʊˈleɪʃən/|dân số|the number of people living in a place|The world population is expected to reach ten billion.|a growing population|5-6
+prediction|n|/prɪˈdɪkʃən/|dự đoán|a statement about what will happen in the future|Experts' predictions about the economy proved wrong.|make a prediction|6-7
+projection|n|/prəˈdʒekʃən/|dự báo|an estimate of future numbers based on current trends|Official projections show the population will double.|population projections|8+
+proportion|n|/prəˈpɔːʃən/|tỷ lệ|the number of one thing compared with another|The proportion of elderly people is rising rapidly.|a high proportion|6-7
+rate|n|/reɪt/|tốc độ, tỷ lệ|the speed or frequency of something|The unemployment rate fell to a record low.|the birth rate|5-6
+statistics|n|/stəˈtɪstɪks/|số liệu thống kê|numbers that show facts about something|Official statistics show a rise in single-person households.|official statistics|6-7
+trend|n|/trend/|xu hướng|a general direction of change|There is a trend towards smaller families.|a current trend|6-7
+ageing|adj|/ˈeɪdʒɪŋ/|già hoá|becoming older|An ageing population puts pressure on health services.|an ageing population|6-7
+current|adj|/ˈkʌrənt/|hiện tại|happening now|The current situation is difficult to predict.|current trends|5-6
+demographic|adj|/ˌdeməˈɡræfɪk/|thuộc nhân khẩu|relating to the structure of a population|Demographic change is reshaping the labour market.|demographic change|8+
+elderly|adj|/ˈeldəli/|cao tuổi|old, especially in a way that makes you less strong|The elderly need better public transport.|elderly people|5-6
+ethnic|adj|/ˈeθnɪk/|thuộc sắc tộc|relating to a national or cultural group|The country has many ethnic minorities.|ethnic minorities|7-8
+exotic|adj|/ɪɡˈzɒtɪk/|kỳ lạ, ngoại lai|unusual and exciting because it is from another country|Supermarkets now sell exotic fruits from all over the world.|exotic food|7-8
+global|adj|/ˈɡləʊbəl/|toàn cầu|affecting the whole world|Climate change is a global problem.|global warming|5-6
+local|adj|/ˈləʊkəl/|địa phương|relating to a particular area|Local shops struggle to compete with big chains.|the local economy|5-6
+long-term|adj|/ˌlɒŋ ˈtɜːm/|dài hạn|lasting for a long time|Governments must plan for long-term growth.|a long-term solution|6-7
+mid-term|adj|/ˌmɪd ˈtɜːm/|trung hạn|lasting for a medium period of time|The mid-term forecast is for slow economic growth.|a mid-term plan|7-8
+multicultural|adj|/ˌmʌltiˈkʌltʃərəl/|đa văn hoá|including people from many different cultures|Toronto is one of the most multicultural cities in the world.|a multicultural society|7-8
+productive|adj|/prəˈdʌktɪv/|năng suất|producing a lot of goods or good results|Workers are more productive in a pleasant environment.|a productive worker|6-7
+sceptical|adj|/ˈskeptɪkəl/|hoài nghi|doubting that something is true or useful|Many scientists remain sceptical about the claim.|sceptical about|7-8
+short-term|adj|/ˌʃɔːt ˈtɜːm/|ngắn hạn|lasting for a short time|Short-term gains can lead to long-term problems.|a short-term solution|6-7
+subsequent|adj|/ˈsʌbsɪkwənt/|xảy ra sau đó|coming after something|Subsequent studies confirmed the original findings.|subsequent generations|7-8
+wealthy|adj|/ˈwelθi/|giàu có|having a lot of money|Wealthy countries should help poorer ones.|a wealthy nation|6-7
+worldwide|adj|/ˌwɜːldˈwaɪd/|trên toàn thế giới|happening everywhere in the world|The film was a worldwide success.|worldwide popularity|6-7
+compound|v|/kəmˈpaʊnd/|làm trầm trọng thêm|to make a problem worse|Rising prices compound the difficulties facing poor families.|compound a problem|8+
+contribute|v|/kənˈtrɪbjuːt/|đóng góp, góp phần|to help to cause or achieve something|Immigrants contribute greatly to the economy.|contribute to|6-7
+decline|v|/dɪˈklaɪn/|suy giảm|to become smaller or less|Birth rates have declined in most developed countries.|decline sharply|6-7
+diminish|v|/dɪˈmɪnɪʃ/|giảm bớt|to become or make something smaller|The importance of local traditions has diminished over time.|diminish in importance|7-8
+dominate|v|/ˈdɒmɪneɪt/|chiếm ưu thế|to have the most power or influence|A few giant companies dominate the market.|dominate the market|7-8
+dwindle|v|/ˈdwɪndəl/|teo tóp dần|to become smaller or fewer gradually|Support for the old party has dwindled.|dwindle away|8+
+factor|v|/ˈfæktə/|tính đến|to include something in a calculation|The cost of transport must be factored in.|factor in|8+
+indicate|v|/ˈɪndɪkeɪt/|cho thấy|to show that something is true|Figures indicate that the economy is recovering.|clearly indicate|6-7
+merge|v|/mɜːdʒ/|hợp nhất|to combine into one|The two companies merged to form a global giant.|merge with|7-8
+migrate|v|/maɪˈɡreɪt/|di cư|to move from one place to live in another|Many young people migrate to cities to find work.|migrate to|7-8
++++
+urbanisation|n|/ˌɜːbənaɪˈzeɪʃən/|đô thị hoá|the growth of towns and cities|Rapid urbanisation has put pressure on housing.|rapid urbanisation|7-8
+immigration|n|/ˌɪmɪˈɡreɪʃən/|sự nhập cư|the movement of people into a country to live there|Immigration policy is a hot political topic.|illegal immigration|7-8
+inequality|n|/ˌɪnɪˈkwɒləti/|sự bất bình đẳng|an unfair difference between groups of people|Income inequality has widened in recent decades.|income inequality|7-8
+consumerism|n|/kənˈsjuːmərɪzəm/|chủ nghĩa tiêu dùng|the belief that buying goods is very important|Critics blame consumerism for rising levels of debt.|rampant consumerism|8+
+outsourcing|n|/ˈaʊtsɔːsɪŋ/|thuê ngoài|using workers from outside a company or country|Outsourcing lowers costs but can reduce quality.|the outsourcing of jobs|8+
+workforce|n|/ˈwɜːkfɔːs/|lực lượng lao động|all the people who work in a country or company|The workforce is becoming more diverse.|a skilled workforce|7-8
+affluent|adj|/ˈæfluənt/|giàu có, sung túc|having a lot of money|Affluent societies produce more waste.|an affluent society|8+
+interconnected|adj|/ˌɪntəkəˈnektɪd/|liên kết với nhau|joined to each other|Today's economies are deeply interconnected.|an interconnected world|8+
+cutting-edge|adj|/ˌkʌtɪŋ ˈedʒ/|tiên phong|very modern and advanced|The company is a leader in cutting-edge technology.|cutting-edge technology|8+
+unprecedented|adj|/ʌnˈpresɪdentɪd/|chưa từng có|never having happened before|The world is experiencing unprecedented change.|unprecedented growth|8+
+sustainable|adj|/səˈsteɪnəbəl/|bền vững|able to continue without harming the environment|Sustainable development must balance growth and nature.|sustainable growth|7-8
+widespread|adj|/ˈwaɪdspred/|phổ biến rộng rãi|found or happening in many places|Fast food has become widespread across Asia.|widespread use|7-8
+homogenous|adj|/həˈmɒdʒənəs/|đồng nhất|all of the same kind|Critics fear a homogenous global culture.|a homogenous society|8+
+integrate|v|/ˈɪntɪɡreɪt/|hoà nhập|to become part of a group or society|Newcomers need help to integrate into the community.|integrate into|7-8
+assimilate|v|/əˈsɪmɪleɪt/|đồng hoá|to become fully part of a new culture|Many second-generation immigrants assimilate quickly.|assimilate into|8+
+outweigh|v|/ˌaʊtˈweɪ/|lớn hơn, vượt trội hơn|to be greater in value than something else|The benefits of the new law outweigh the costs.|outweigh the benefits|8+
+revolutionise|v|/ˌrevəˈluːʃənaɪz/|làm thay đổi hoàn toàn|to change something completely|Smartphones have revolutionised communication.|revolutionise the way|8+
+foster|v|/ˈfɒstə/|thúc đẩy|to encourage the growth of something|Trade can foster understanding between nations.|foster cooperation|7-8
+shape|v|/ʃeɪp/|định hình|to have a strong influence on how something develops|Our early experiences shape who we become.|shape public opinion|6-7
+stereotype|n|/ˈsteriətaɪp/|định kiến, khuôn mẫu|a fixed idea about a type of person|Films often reinforce stereotypes about other cultures.|challenge a stereotype|7-8

@@ -1,0 +1,98 @@
+#unit 19
+#en The media
+#vi Truyền thông
+#blurb Báo chí, quảng bá, riêng tư, tin tức và vai trò của truyền thông đại chúng
+access|n|/ˈækses/|quyền truy cập|the right or ability to use something|Many rural areas still have no access to the Internet.|access to|6-7
+attitude|n|/ˈætɪtjuːd/|thái độ|the way you think and feel about something|The media can shape public attitudes to crime.|public attitudes|5-6
+author|n|/ˈɔːθə/|tác giả|a person who writes a book or article|The author has published three bestselling novels.|a leading author|5-6
+bias|n|/ˈbaɪəs/|sự thiên vị|an unfair preference for one side|Readers should look out for bias in news stories.|political bias|7-8
+censorship|n|/ˈsensəʃɪp/|sự kiểm duyệt|the control of what people can see or read|Censorship limits freedom of speech.|government censorship|7-8
+challenge|n|/ˈtʃælɪndʒ/|thách thức|something difficult that tests your ability|Fake news is a serious challenge for modern journalists.|face a challenge|6-7
+credibility|n|/ˌkredəˈbɪləti/|độ tin cậy|the quality of being believable|The newspaper lost credibility after printing false stories.|lose credibility|8+
+current affairs|np|/ˈkʌrənt əˈfeəz/|thời sự|political and social events happening now|She watches a current affairs programme every evening.|a current affairs programme|7-8
+editor|n|/ˈedɪtə/|biên tập viên|a person who decides what is published|The editor rejected the article as inaccurate.|the editor of|6-7
+exposé|n|/ekˈspəʊzeɪ/|bài phanh phui|a news story that reveals something shocking|The newspaper published an exposé on corruption.|a shocking exposé|8+
+exposure|n|/ɪkˈspəʊʒə/|sự phơi bày, độ tiếp xúc|the state of being seen or known by the public|Constant exposure to violent films may affect children.|media exposure|7-8
+fame|n|/feɪm/|sự nổi tiếng|the state of being known by many people|Fame came to the young singer overnight.|rise to fame|6-7
+free press|np|/ˌfriː ˈpres/|báo chí tự do|newspapers and media independent from government control|A free press is essential in a democracy.|a free press|7-8
+ideology|n|/ˌaɪdiˈɒlədʒi/|hệ tư tưởng|a set of beliefs about politics or society|Many newspapers follow a clear political ideology.|political ideology|8+
+influence|nv|/ˈɪnfluəns/|ảnh hưởng|the power to affect people or events|Celebrities have a strong influence on teenagers.|a strong influence|6-7
+the Internet|np|/ðə ˈɪntənet/|mạng Internet|the global computer network|The Internet has become the main source of news.|on the Internet|5-6
+investigation|n|/ɪnˌvestɪˈɡeɪʃən/|cuộc điều tra|a careful examination of the facts|A newspaper investigation exposed the fraud.|a police investigation|6-7
+issue|n|/ˈɪʃuː/|vấn đề, số báo|a subject people discuss; one edition of a magazine|The latest issue of the magazine focuses on privacy.|an important issue|5-6
+journal|n|/ˈdʒɜːnəl/|tạp chí chuyên ngành|a magazine for a particular profession|The study was published in a medical journal.|a scientific journal|6-7
+journalism|n|/ˈdʒɜːnəlɪzəm/|nghề báo|the work of collecting and writing news|She wants to study journalism at university.|investigative journalism|6-7
+mass media|np|/ˌmæs ˈmiːdiə/|truyền thông đại chúng|television, newspapers and other means of reaching many people|The mass media can influence elections.|the mass media|7-8
+media|n|/ˈmiːdiə/|phương tiện truyền thông|the main ways of communicating news and entertainment|The media often focus on bad news.|the social media|5-6
+network|n|/ˈnetwɜːk/|mạng lưới, đài truyền hình|a group of linked stations or computers|The television network cancelled the show.|a television network|6-7
+the news|np|/ðə njuːz/|tin tức|reports about recent events|I read the news on my phone every morning.|watch the news|5-6
+newspaper|n|/ˈnjuːzpeɪpə/|báo giấy|a printed publication with news|Newspaper sales are falling as people read online.|a daily newspaper|5-6
+newsstand|n|/ˈnjuːzstænd/|sạp báo|a place on the street selling newspapers|He bought a magazine from the newsstand.|a newsstand|7-8
+opinion|n|/əˈpɪnjən/|ý kiến|a personal view about something|Public opinion turned against the policy.|public opinion|5-6
+paparazzi|n|/ˌpæpəˈrætsi/|thợ săn ảnh|photographers who follow famous people|The paparazzi chased the actress through the streets.|chased by paparazzi|8+
+press|n|/pres/|báo chí|newspapers and journalists in general|The press reported the story widely.|the popular press|6-7
+privacy|n|/ˈprɪvəsi/|sự riêng tư|the right to keep your life private|Celebrities complain that the media invade their privacy.|invade privacy|7-8
+publication|n|/ˌpʌblɪˈkeɪʃən/|ấn phẩm, sự xuất bản|the act of printing a book or article|The publication of the report caused a scandal.|a monthly publication|7-8
+publicity|n|/pʌbˈlɪsəti/|sự quảng bá|public attention given to someone or something|The film received a lot of publicity.|bad publicity|7-8
+publisher|n|/ˈpʌblɪʃə/|nhà xuất bản|a company that produces books or magazines|The publisher printed ten thousand copies.|a major publisher|6-7
+relevance|n|/ˈreləvəns/|sự liên quan|the quality of being closely connected to a subject|The relevance of the story to ordinary readers is unclear.|of relevance|7-8
+safeguard|n|/ˈseɪfɡɑːd/|biện pháp bảo vệ|something that protects against harm|Strong laws are a safeguard against unfair reporting.|a safeguard against|8+
+source|n|/sɔːs/|nguồn tin|a person or place that provides information|Journalists must protect their sources.|a reliable source|6-7
+speculation|n|/ˌspekjʊˈleɪʃən/|sự suy đoán|guessing without full knowledge|There was wild speculation about the singer's marriage.|media speculation|8+
+tabloid|n|/ˈtæblɔɪd/|báo lá cải|a newspaper with short stories and many pictures|Tabloids focus on celebrity gossip.|a tabloid newspaper|7-8
+the Web|np|/ðə web/|mạng web|the system of linked pages on the Internet|Information on the Web is not always accurate.|search the Web|6-7
+alternative|adj|/ɔːlˈtɜːnətɪv/|thay thế, khác lối thường|different from the usual or traditional one|Alternative news sites are growing in popularity.|an alternative view|6-7
+artificial|adj|/ˌɑːtɪˈfɪʃəl/|nhân tạo|made by people rather than nature|Social media can create an artificial picture of people's lives.|artificial intelligence|6-7
+attention-grabbing|adj|/əˈtenʃən ˌɡræbɪŋ/|thu hút sự chú ý|designed to be noticed|Attention-grabbing headlines encourage people to click.|an attention-grabbing headline|8+
+biased|adj|/ˈbaɪəst/|thiên vị|unfairly favouring one side|Some viewers believe the channel is biased.|biased reporting|7-8
+celebrity|adj|/səˈlebrəti/|thuộc người nổi tiếng|relating to famous people|Magazines are full of celebrity gossip.|celebrity culture|6-7
+controversial|adj|/ˌkɒntrəˈvɜːʃəl/|gây tranh cãi|causing public disagreement|The documentary was highly controversial.|a controversial topic|7-8
+distorted|adj|/dɪˈstɔːtɪd/|bị bóp méo|changed so that it is no longer true|The report gave a distorted picture of the facts.|a distorted view|8+
+entertaining|adj|/ˌentəˈteɪnɪŋ/|mang tính giải trí|amusing and interesting|The show is both entertaining and educational.|an entertaining programme|6-7
+factual|adj|/ˈfæktʃuəl/|dựa trên sự thật|based on facts|A good report should be factual and balanced.|a factual account|7-8
+informative|adj|/ɪnˈfɔːmətɪv/|nhiều thông tin|giving a lot of useful information|The documentary was both informative and moving.|an informative article|7-8
+intrusive|adj|/ɪnˈtruːsɪv/|xâm phạm|entering a place or situation uninvited|Many people find reporters intrusive.|intrusive questions|8+
+investigative|adj|/ɪnˈvestɪɡətɪv/|mang tính điều tra|involving a careful search for hidden facts|Investigative journalists expose corruption.|investigative journalism|8+
+mainstream|adj|/ˈmeɪnstriːm/|chính thống|accepted by most people|Mainstream media rarely cover local stories.|mainstream media|7-8
+pervasive|adj|/pəˈveɪsɪv/|lan tràn|present everywhere|Advertising is now pervasive in daily life.|a pervasive influence|8+
+realistic|adj|/ˌrɪəˈlɪstɪk/|thực tế|showing things as they really are|The film gives a realistic picture of life in the city.|a realistic portrayal|6-7
+sensationalist|adj|/senˈseɪʃənəlɪst/|giật gân|trying to shock people|Sensationalist headlines exaggerate the truth.|sensationalist reporting|8+
+superficial|adj|/ˌsuːpəˈfɪʃəl/|hời hợt|dealing only with the surface of something|The report gave a superficial account of the crisis.|a superficial analysis|8+
+unbiased|adj|/ʌnˈbaɪəst/|không thiên vị|treating all sides fairly|A good journalist gives unbiased information.|unbiased reporting|7-8
+well-informed|adj|/ˌwel ɪnˈfɔːmd/|có hiểu biết|having a lot of knowledge about something|Voters need to be well-informed before an election.|well-informed citizens|7-8
+affect|v|/əˈfekt/|ảnh hưởng|to have an influence on someone|Violent films may affect young viewers.|badly affect|5-6
+broadcast|v|/ˈbrɔːdkɑːst/|phát sóng|to send out a programme on television or radio|The match will be broadcast live around the world.|broadcast live|6-7
+censor|v|/ˈsensə/|kiểm duyệt|to remove parts that are thought to be offensive|The government censors any news critical of its policies.|censor information|8+
+control|v|/kənˈtrəʊl/|kiểm soát|to have power over something|A few companies control most of the media.|control information|5-6
+exploit|v|/ɪkˈsplɔɪt/|khai thác, lợi dụng|to use something unfairly for your own advantage|Some programmes exploit people's personal problems.|exploit a weakness|8+
+expose|v|/ɪkˈspəʊz/|phơi bày|to reveal something hidden or dishonest|The newspaper exposed a major scandal.|expose corruption|7-8
+inform|v|/ɪnˈfɔːm/|thông báo|to tell someone about something|The media should inform people accurately.|inform the public|6-7
+intrude|v|/ɪnˈtruːd/|xâm phạm|to enter a place or situation uninvited|Journalists should not intrude on private grief.|intrude on|8+
+invade|v|/ɪnˈveɪd/|xâm phạm|to enter someone's private space without permission|Hidden cameras invade people's privacy.|invade privacy|7-8
+investigate|v|/ɪnˈvestɪɡeɪt/|điều tra|to examine the facts carefully|Reporters investigated the causes of the accident.|investigate a claim|7-8
+publicise|v|/ˈpʌblɪsaɪz/|quảng bá|to bring something to the public's attention|The festival was widely publicised on social media.|publicise an event|7-8
+publish|v|/ˈpʌblɪʃ/|xuất bản|to print and sell a book or article|The newspaper published a letter from a reader.|publish an article|6-7
+report|v|/rɪˈpɔːt/|đưa tin|to tell people about something in the news|Several channels reported the incident.|report on|5-6
+review|v|/rɪˈvjuː/|đánh giá, nhận xét|to give an opinion on a book or film|Critics reviewed the film favourably.|review a book|6-7
+verify|v|/ˈverɪfaɪ/|xác minh|to check that something is true|Journalists must verify the facts before publishing.|verify information|7-8
++++
+headline|n|/ˈhedlaɪn/|tiêu đề báo|the title of a news story in large letters|The headline grabbed everyone's attention.|a front-page headline|6-7
+viral|adj|/ˈvaɪrəl/|lan truyền chóng mặt|spreading very quickly online|The video went viral within hours.|go viral|7-8
+fake news|np|/ˌfeɪk ˈnjuːz/|tin giả|false stories presented as real news|Fake news spreads faster than the truth on social media.|spread fake news|7-8
+propaganda|n|/ˌprɒpəˈɡændə/|tuyên truyền|information used to promote a political cause|State propaganda filled the newspapers during the war.|political propaganda|8+
+misinformation|n|/ˌmɪsɪnfəˈmeɪʃən/|thông tin sai lệch|false information spread by mistake or intent|Misinformation about vaccines caused real harm.|spread misinformation|8+
+sensationalism|n|/senˈseɪʃənəlɪzəm/|chủ nghĩa giật gân|the use of shocking stories to attract attention|Sensationalism sells newspapers but distorts the truth.|media sensationalism|8+
+subscription|n|/səbˈskrɪpʃən/|đăng ký dài hạn|a payment for regular access to a service|Many newspapers now require an online subscription.|a monthly subscription|7-8
+circulation|n|/ˌsɜːkjʊˈleɪʃən/|số lượng phát hành|the number of copies of a newspaper sold|The paper's circulation has fallen by half.|a falling circulation|8+
+bias against|ph|/ˈbaɪəs əˈɡenst/|định kiến chống lại|an unfair attitude towards a group|Studies show a media bias against small parties.|bias against|8+
+influencer|n|/ˈɪnfluənsə/|người có sức ảnh hưởng|a person who affects what others buy or do online|Brands pay influencers to promote their products.|a social media influencer|7-8
+sponsor|v|/ˈspɒnsə/|tài trợ|to pay for an event or programme|Banks often sponsor television programmes.|sponsor an event|7-8
+sponsorship|n|/ˈspɒnsəʃɪp/|sự tài trợ|money given by a company to support an event|Sports sponsorship brings in huge revenue.|a sponsorship deal|7-8
+tune in|v|/ˌtjuːn ˈɪn/|bật xem (đài, kênh)|to watch or listen to a programme|Millions of viewers tuned in for the final.|tune in to|6-7
+scrutinise|v|/ˈskruːtɪnaɪz/|xem xét kỹ lưỡng|to examine something very carefully|The press scrutinises every decision made by ministers.|scrutinise closely|8+
+sway|v|/sweɪ/|tác động, lay chuyển|to influence the opinion of people|Advertising can sway voters before an election.|sway opinion|8+
+slander|n|/ˈslɑːndə/|lời vu khống|a false spoken statement that harms someone|The politician sued the paper for slander.|a slander case|8+
+rumour|n|/ˈruːmə/|tin đồn|an unproven story that spreads among people|A rumour about the singer spread quickly.|spread a rumour|6-7
+exclusive|adj|/ɪkˈskluːsɪv/|độc quyền|reported by only one newspaper or channel|The paper has an exclusive interview with the winner.|an exclusive interview|7-8
+objective|adj|/əbˈdʒektɪv/|khách quan|based on facts rather than personal feelings|A news report should be objective and fair.|objective reporting|7-8
+clickbait|n|/ˈklɪkbeɪt/|mồi nhử lượt nhấp|online content designed to attract clicks|Clickbait headlines often promise more than the story delivers.|a clickbait headline|8+

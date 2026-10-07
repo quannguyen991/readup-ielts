@@ -1,0 +1,49 @@
+#unit 19
+#en Fame and the media
+#blurb Người nổi tiếng, báo chí, truyền thông và thiên kiến trong đưa tin
+bias|n|/ˈbaɪəs/|sự thiên vị|an unfair preference for one side|Readers should look out for bias in news stories.|political bias|7-8
+broadcaster|n|/ˈbrɔːdkɑːstə/|đài phát sóng, người dẫn chương trình|a person or company that sends out programmes|The broadcaster interviewed the winner live.|a national broadcaster|7-8
+episode|n|/ˈepɪsəʊd/|tập (phim, chương trình)|one programme in a television series|The final episode attracted ten million viewers.|the final episode|6-7
+headline|n|/ˈhedlaɪn/|tiêu đề báo|the title of a news story in large letters|The headline grabbed everyone's attention.|a front-page headline|7-8
+paparazzi|n|/ˌpæpəˈrætsi/|thợ săn ảnh|photographers who follow famous people|The paparazzi followed the singer everywhere.|chased by paparazzi|8+
+press|n|/pres/|báo chí|newspapers and journalists in general|The press reported the story widely.|the popular press|7-8
+viewer|n|/ˈvjuːə/|người xem|a person who watches television|The show has millions of loyal viewers.|a regular viewer|6-7
+biased|adj|/ˈbaɪəst/|thiên vị|unfairly favouring one side|Many viewers believe the channel is biased.|biased reporting|7-8
+eminent|adj|/ˈemɪnənt/|lỗi lạc|famous and respected|An eminent scientist gave the opening lecture.|an eminent scholar|8+
+high-profile|adj|/ˌhaɪ ˈprəʊfaɪl/|được chú ý nhiều|attracting a lot of public attention|The high-profile trial was shown live on television.|a high-profile case|8+
+impartial|adj|/ɪmˈpɑːʃəl/|công bằng|not favouring either side|A good journalist remains impartial.|impartial reporting|8+
+influential|adj|/ˌɪnfluˈenʃəl/|có ảnh hưởng|having a strong effect on people|She is one of the most influential voices in the media.|an influential figure|7-8
+prejudiced|adj|/ˈpredʒədɪst/|có định kiến|having an unfair opinion formed in advance|The article was prejudiced against immigrants.|a prejudiced view|8+
+prominent|adj|/ˈprɒmɪnənt/|nổi bật|important and well known|She is a prominent figure in public life.|a prominent role|7-8
+subjective|adj|/səbˈdʒektɪv/|chủ quan|based on personal opinion rather than facts|Film reviews are often highly subjective.|a subjective opinion|8+
+world-famous|adj|/ˌwɜːld ˈfeɪməs/|nổi tiếng thế giới|known by people all over the world|The world-famous singer visited the city.|a world-famous actor|7-8
+become famous overnight|vp|/bɪˈkʌm ˈfeɪməs ˌəʊvəˈnaɪt/|nổi tiếng chỉ sau một đêm|to be suddenly known by many people|Some singers become famous overnight after a video goes viral.|become famous overnight|8+
+chief claim to fame|np|/tʃiːf kleɪm tə feɪm/|điều khiến ai nổi tiếng|the main reason someone is well known|His chief claim to fame was a goal in the final.|a chief claim to fame|8+
+in the public eye|id|/ɪn ðə ˌpʌblɪk ˈaɪ/|trước sự chú ý của công chúng|being well known and often seen by the public|Celebrities live constantly in the public eye.|in the public eye|8+
+instant celebrities|np|/ˌɪnstənt səˈlebrətiz/|người nổi tiếng chớp nhoáng|people who become famous very quickly|Reality shows create instant celebrities.|create instant celebrities|8+
+making headlines|ph|/ˈmeɪkɪŋ ˈhedlaɪnz/|gây chú ý trên báo|being reported prominently in the news|The scandal kept making headlines for weeks.|keep making headlines|8+
+media attention|np|/ˈmiːdiə əˌtenʃən/|sự chú ý của truyền thông|interest shown by newspapers and television|The case attracted intense media attention.|attract media attention|8+
+new-found fame|np|/ˌnjuː faʊnd ˈfeɪm/|sự nổi tiếng mới có|fame that has only recently arrived|She struggled to cope with her new-found fame.|new-found fame|8+
+tabloid press|np|/ˈtæblɔɪd pres/|báo lá cải|newspapers that print short, sensational stories|The tabloid press published private photographs.|the tabloid press|7-8
+assert|v|/əˈsɜːt/|khẳng định|to state something firmly|The spokesman asserted that the report was false.|assert a claim|8+
+broadcast|v|/ˈbrɔːdkɑːst/|phát sóng|to send out a programme on television or radio|The match will be broadcast live around the world.|broadcast live|7-8
+contend|v|/kənˈtend/|cho rằng, tranh luận|to say that something is true|Critics contend that television harms children.|contend that|8+
+gossip|v|/ˈɡɒsɪp/|ngồi lê đôi mách|to talk about other people's private lives|Colleagues love to gossip about celebrities.|gossip about|7-8
+indicate|v|/ˈɪndɪkeɪt/|cho thấy|to show that something is true|Surveys indicate that trust in the media is falling.|clearly indicate|7-8
+speculate|v|/ˈspekjʊleɪt/|suy đoán|to guess about something without enough facts|Journalists speculate about the actor's next move.|speculate about|8+
++++
+celebrity|n|/səˈlebrəti/|người nổi tiếng|a famous person|The celebrity opened the new shopping centre.|a famous celebrity|7-8
+scandal|n|/ˈskændəl/|vụ bê bối|an event that shocks the public|A financial scandal forced the minister to resign.|a political scandal|7-8
+censorship|n|/ˈsensəʃɪp/|sự kiểm duyệt|the control of what people can see or read|Censorship limits freedom of speech.|government censorship|8+
+propaganda|n|/ˌprɒpəˈɡændə/|tuyên truyền|information used to promote a political cause|State propaganda filled the newspapers during the war.|political propaganda|8+
+misinformation|n|/ˌmɪsɪnfəˈmeɪʃən/|thông tin sai lệch|false information spread by mistake or on purpose|Misinformation about health spreads quickly online.|spread misinformation|8+
+sensationalism|n|/senˈseɪʃənəlɪzəm/|chủ nghĩa giật gân|the use of shocking stories to attract attention|Sensationalism sells papers but distorts the truth.|media sensationalism|8+
+influencer|n|/ˈɪnfluənsə/|người có sức ảnh hưởng|a person who affects what others buy online|Brands pay influencers to promote their products.|a social media influencer|7-8
+sensational|adj|/senˈseɪʃənəl/|giật gân|intended to shock or excite|The newspaper ran a sensational story about the actor.|a sensational story|8+
+reliable|adj|/rɪˈlaɪəbəl/|đáng tin cậy|able to be trusted|It is hard to find reliable sources online.|a reliable source|6-7
+viral|adj|/ˈvaɪrəl/|lan truyền chóng mặt|spreading very quickly online|The video went viral within hours.|go viral|7-8
+intrusive|adj|/ɪnˈtruːsɪv/|xâm phạm|entering a place or situation uninvited|Many celebrities find the press intrusive.|intrusive questions|8+
+exploit|v|/ɪkˈsplɔɪt/|lợi dụng, khai thác|to use something unfairly for your own advantage|Some programmes exploit people's personal problems.|exploit a weakness|8+
+scrutinise|v|/ˈskruːtɪnaɪz/|xem xét kỹ lưỡng|to examine something very carefully|The press scrutinises every decision made by ministers.|scrutinise closely|8+
+sway|v|/sweɪ/|tác động, lay chuyển|to influence the opinion of people|Advertising can sway voters before an election.|sway opinion|8+
+tabloid|n|/ˈtæblɔɪd/|báo lá cải|a newspaper with short stories and many pictures|The tabloid ran the story on its front page.|a tabloid newspaper|7-8

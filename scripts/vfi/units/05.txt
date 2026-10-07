@@ -1,0 +1,90 @@
+#unit 5
+#en Student life
+#vi Đời sống sinh viên
+#blurb Trường học, nghiên cứu, bằng cấp và cách người học làm việc với tri thức
+assignment|n|/əˈsaɪnmənt/|bài tập, nhiệm vụ|a piece of work given to a student|The assignment must be handed in by Friday.|complete an assignment|5-6
+college|n|/ˈkɒlɪdʒ/|trường cao đẳng, đại học|an institution for higher education|She went to college to study nursing.|attend college|5-6
+controversy|n|/ˈkɒntrəvɜːsi/|sự tranh cãi|a public disagreement about something|The new exam system caused great controversy.|spark controversy|7-8
+curriculum|n|/kəˈrɪkjələm/|chương trình học|the subjects taught in a school|The national curriculum now includes coding.|school curriculum|6-7
+dissertation|n|/ˌdɪsəˈteɪʃən/|luận văn|a long piece of academic writing for a degree|He spent a year writing his dissertation.|write a dissertation|7-8
+education|n|/ˌedʒʊˈkeɪʃən/|giáo dục|the process of teaching and learning|Free education should be available to every child.|higher education|5-6
+exam|n|/ɪɡˈzæm/|kỳ thi|a formal test of knowledge|She revised every night before the exam.|pass an exam|5-6
+field of study|np|/fiːld əv ˈstʌdi/|lĩnh vực nghiên cứu|a particular area of academic work|Medicine is her chosen field of study.|a field of study|6-7
+findings|n|/ˈfaɪndɪŋz/|kết quả nghiên cứu|the results of an investigation|The findings suggest that sleep improves memory.|research findings|7-8
+funding|n|/ˈfʌndɪŋ/|nguồn kinh phí|money provided for a particular purpose|Universities depend on government funding.|secure funding|7-8
+grade|n|/ɡreɪd/|điểm số, lớp|a mark given for schoolwork|He needs high grades to enter medical school.|get good grades|5-6
+graduation|n|/ˌɡrædʒuˈeɪʃən/|lễ tốt nghiệp|the completion of a course of study|Her family attended her graduation ceremony.|a graduation ceremony|6-7
+grant|n|/ɡrɑːnt/|khoản tài trợ|money given for education or research|She won a grant to study in Germany.|a research grant|7-8
+high school|np|/ˈhaɪ skuːl/|trường trung học phổ thông|a school for students aged about 14 to 18|Most high school students take national exams.|attend high school|5-6
+homework|n|/ˈhəʊmwɜːk/|bài tập về nhà|schoolwork done at home|Teachers set too much homework nowadays.|do homework|5-6
+junior school|np|/ˈdʒuːniə skuːl/|trường tiểu học (Anh)|a school for children aged about 7 to 11|Children learn basic maths in junior school.|junior school pupils|5-6
+kindergarten|n|/ˈkɪndəɡɑːtən/|trường mẫu giáo|a school for children aged about 3 to 6|Kindergarten teaches social skills through play.|attend kindergarten|5-6
+learning disorder|np|/ˈlɜːnɪŋ dɪsˈɔːdə/|rối loạn học tập|a condition that makes learning difficult|Dyslexia is a common learning disorder.|a learning disorder|8+
+lecturer|n|/ˈlektʃərə/|giảng viên|a university teacher|The lecturer gave us a reading list.|a university lecturer|6-7
+library|n|/ˈlaɪbrəri/|thư viện|a place where books are kept for use|Students spend long hours in the library before exams.|a public library|5-6
+limits|n|/ˈlɪmɪts/|giới hạn|the greatest amount or extent allowed|There are limits to what a single study can prove.|set limits|6-7
+Masters|n|/ˈmɑːstəz/|bằng thạc sĩ|a postgraduate degree|He is studying for a Masters in economics.|a Masters degree|6-7
+nursery|n|/ˈnɜːsəri/|nhà trẻ|a place where very young children are looked after|Both parents work, so the baby goes to nursery.|a nursery school|5-6
+PhD|n|/ˌpiː eɪtʃ ˈdiː/|bằng tiến sĩ|the highest university degree|She is completing a PhD in chemistry.|do a PhD|7-8
+primary school|np|/ˈpraɪməri skuːl/|trường tiểu học|a school for children aged about 5 to 11|Children learn to read in primary school.|primary school education|5-6
+program|n|/ˈprəʊɡræm/|chương trình|a planned course of study|The university offers a two-year exchange program.|a degree program|6-7
+project|n|/ˈprɒdʒekt/|dự án|a piece of work that needs careful planning|Group projects teach students to cooperate.|a research project|5-6
+research|n|/rɪˈsɜːtʃ/|nghiên cứu|careful study to discover new facts|Scientific research needs long-term funding.|conduct research|6-7
+resources|n|/rɪˈzɔːsɪz/|tài nguyên, học liệu|materials that can be used for study|Online resources have made studying easier.|learning resources|6-7
+results|n|/rɪˈzʌlts/|kết quả|the marks you get after an exam|Exam results will be published in August.|exam results|5-6
+scholarship|n|/ˈskɒləʃɪp/|học bổng|money awarded to a student for study|She won a scholarship to Oxford.|win a scholarship|6-7
+scope|n|/skəʊp/|phạm vi|the range of things a subject covers|The scope of the research is too narrow.|the scope of|7-8
+secondary school|np|/ˈsekəndri skuːl/|trường trung học|a school for students aged about 11 to 18|Secondary school prepares students for university.|secondary school students|5-6
+sources|n|/ˈsɔːsɪz/|nguồn tài liệu|places where information comes from|Always cite your sources in an essay.|reliable sources|6-7
+syllabus|n|/ˈsɪləbəs/|đề cương môn học|a list of topics in a course|The syllabus covers three hundred years of history.|follow the syllabus|7-8
+task|n|/tɑːsk/|nhiệm vụ|a piece of work to be done|The first task is to define the key terms.|a difficult task|5-6
+theory|n|/ˈθɪəri/|lý thuyết|a set of ideas that explain something|Einstein's theory changed modern physics.|a scientific theory|6-7
+thesis|n|/ˈθiːsɪs/|luận án|a long piece of research for a higher degree|His thesis explores climate policy.|defend a thesis|7-8
+tutor|n|/ˈtjuːtə/|gia sư, giảng viên hướng dẫn|a teacher who works with one student or a small group|My tutor gave me detailed feedback on the essay.|a private tutor|6-7
+topic|n|/ˈtɒpɪk/|chủ đề|a subject that is written or talked about|Choose a topic that really interests you.|a topic of discussion|5-6
+university|n|/ˌjuːnɪˈvɜːsəti/|trường đại học|an institution that offers degrees|She wants to attend a university abroad.|go to university|5-6
+academic|adj|/ˌækəˈdemɪk/|thuộc học thuật|relating to education and scholarship|Academic performance depends on motivation as well as ability.|academic achievement|6-7
+eligible|adj|/ˈelɪdʒəbəl/|đủ điều kiện|having the right to do or receive something|Only full-time students are eligible for the grant.|eligible for|7-8
+mixed|adj|/mɪkst/|hỗn hợp (nam nữ học chung)|including different kinds of people|Most state schools in the UK are mixed.|a mixed school|6-7
+postgraduate|adj|/ˌpəʊstˈɡrædʒuət/|sau đại học|relating to study after a first degree|Postgraduate courses are usually more specialised.|a postgraduate degree|7-8
+relevant|adj|/ˈreləvənt/|liên quan, thích hợp|connected with what is being discussed|Make sure your examples are relevant to the question.|highly relevant|6-7
+senior|adj|/ˈsiːniə/|cấp cao, lớn tuổi hơn|higher in rank or older|Senior students help the new arrivals settle in.|a senior lecturer|6-7
+single-sex|adj|/ˈsɪŋɡəl seks/|chỉ dành cho một giới|for boys only or girls only|Some parents prefer a single-sex school.|a single-sex school|7-8
+studious|adj|/ˈstjuːdiəs/|chăm học|spending a lot of time studying|He was a quiet and studious boy.|a studious pupil|7-8
+work-related|adj|/ˈwɜːk rɪˌleɪtɪd/|liên quan đến công việc|connected with a person's job|Work-related stress is a growing problem.|work-related training|7-8
+adopt an approach|vp|/əˈdɒpt ən əˈprəʊtʃ/|áp dụng một cách tiếp cận|to start using a particular method|Researchers adopt an approach that combines surveys and interviews.|adopt an approach|7-8
+analyse|v|/ˈænəlaɪz/|phân tích|to examine something in detail|Students must analyse the data carefully.|analyse results|6-7
+conduct|v|/kənˈdʌkt/|tiến hành|to organise and carry out an activity|The team will conduct a survey of five hundred students.|conduct research|6-7
+concentrate|v|/ˈkɒnsəntreɪt/|tập trung|to focus your attention on something|It is hard to concentrate in a noisy room.|concentrate on|5-6
+consider|v|/kənˈsɪdə/|cân nhắc, xem xét|to think carefully about something|Consider all the evidence before you decide.|consider carefully|5-6
+find out|v|/faɪnd aʊt/|tìm hiểu, khám phá|to discover information|We need to find out how many students applied.|find out about|5-6
+graduate|v|/ˈɡrædʒuət/|tốt nghiệp|to complete a university degree|He graduated with a first-class degree in law.|graduate from|6-7
+learn about|v|/lɜːn əˈbaʊt/|tìm hiểu về|to gain knowledge of a subject|Children learn about nature through outdoor lessons.|learn about|5-6
+organise|v|/ˈɔːɡənaɪz/|sắp xếp, tổ chức|to arrange things in a clear order|Good students organise their notes by topic.|organise your time|5-6
+overcome|v|/ˌəʊvəˈkʌm/|vượt qua|to succeed in dealing with a problem|She overcame her fear of public speaking.|overcome difficulties|6-7
+review|v|/rɪˈvjuː/|ôn lại, xem xét|to look again at something you have studied|Review your notes the day after each lesson.|review your notes|6-7
+revise|v|/rɪˈvaɪz/|ôn tập|to study again before an exam|Most students revise for several weeks before finals.|revise for an exam|6-7
+struggle|v|/ˈstrʌɡəl/|vật lộn, gặp khó khăn|to try hard to do something difficult|Many pupils struggle with mathematics.|struggle with|6-7
+take a course|vp|/teɪk ə kɔːs/|tham gia một khoá học|to follow a series of lessons|She decided to take a course in photography.|take a course|5-6
+relatively|adv|/ˈrelətɪvli/|tương đối|to a fairly large degree compared with others|Tuition fees are relatively low in this country.|relatively easy|6-7
++++
+tuition fees|np|/tjuˈɪʃən fiːz/|học phí|money paid to attend a school or university|Rising tuition fees put pressure on families.|pay tuition fees|6-7
+extracurricular|adj|/ˌekstrəkəˈrɪkjələ/|ngoại khoá|done outside the normal school timetable|Extracurricular activities help students make friends.|extracurricular activities|8+
+compulsory|adj|/kəmˈpʌlsəri/|bắt buộc|something you must do by law or rule|Education is compulsory until the age of sixteen.|compulsory subjects|7-8
+plagiarism|n|/ˈpleɪdʒərɪzəm/|đạo văn|using someone else's work as your own|Plagiarism can lead to a student being expelled.|commit plagiarism|8+
+literacy|n|/ˈlɪtərəsi/|khả năng đọc viết|the ability to read and write|Adult literacy programmes help workers find better jobs.|basic literacy|7-8
+peer review|np|/ˈpɪə rɪˈvjuː/|phản biện đồng cấp|checking of work by other experts|The article passed peer review before publication.|a peer review process|8+
+lecture|n|/ˈlektʃə/|bài giảng|a talk given to a class to teach a subject|The lecture on economics lasted two hours.|attend a lecture|6-7
+seminar|n|/ˈsemɪnɑː/|buổi hội thảo chuyên đề|a small class for discussion|Seminars encourage students to express their own views.|a weekly seminar|7-8
+enrol|v|/ɪnˈrəʊl/|ghi danh|to officially join a course|More adults are enrolling in evening classes.|enrol in|7-8
+drop out|v|/ˈdrɒp aʊt/|bỏ học|to leave a course before finishing it|Many students drop out because of money worries.|drop out of school|6-7
+cram|v|/kræm/|học nhồi|to study a lot in a short time before an exam|Students who cram the night before rarely remember much.|cram for an exam|7-8
+memorise|v|/ˈmeməraɪz/|ghi nhớ, học thuộc|to learn something so that you remember it exactly|Pupils still memorise dates and formulas.|memorise facts|6-7
+critical thinking|np|/ˈkrɪtɪkəl ˈθɪŋkɪŋ/|tư duy phản biện|the ability to judge ideas carefully|Schools should teach critical thinking from an early age.|develop critical thinking|7-8
+academic year|np|/ˌækəˈdemɪk jɪə/|năm học|the period of the year when classes take place|The academic year starts in September.|a new academic year|6-7
+undergraduate|n|/ˌʌndəˈɡrædʒuət/|sinh viên đại học|a student studying for a first degree|Most undergraduates live on campus in their first year.|an undergraduate course|7-8
+vocational|adj|/vəʊˈkeɪʃənəl/|dạy nghề|relating to skills needed for a particular job|Vocational training prepares students for skilled work.|vocational education|8+
+tutorial|n|/tjuːˈtɔːriəl/|buổi hướng dẫn nhỏ|a lesson for one student or a small group|He raised the problem in his weekly tutorial.|a tutorial session|7-8
+distinction|n|/dɪˈstɪŋkʃən/|loại xuất sắc|a very high mark in an exam|She passed the course with distinction.|graduate with distinction|8+
+deadline|n|/ˈdedlaɪn/|hạn chót|the time by which something must be finished|Missing the deadline will cost you marks.|meet a deadline|6-7
+dissertation topic|np|/ˌdɪsəˈteɪʃən ˈtɒpɪk/|đề tài luận văn|the subject chosen for a long academic essay|Choosing a dissertation topic early saves valuable time.|a dissertation topic|7-8

@@ -1,0 +1,40 @@
+#unit 17
+#en Business and finance
+#blurb Tài chính doanh nghiệp, ngân sách, rủi ro và các cụm từ nói về kinh doanh
+assets|n|/ˈæsets/|tài sản|things of value owned by a person or company|The company sold several assets to pay its debts.|company assets|7-8
+bankruptcy|n|/ˈbæŋkrʌptsi/|sự phá sản|the state of being unable to pay your debts|Many small firms face bankruptcy during a recession.|go into bankruptcy|8+
+bottom line|np|/ˌbɒtəm ˈlaɪn/|lợi nhuận cuối cùng|the final profit or loss of a company|Managers focus on the bottom line.|affect the bottom line|8+
+budget|n|/ˈbʌdʒɪt/|ngân sách|a plan for how money will be spent|The marketing budget has been cut this year.|a tight budget|7-8
+client|n|/ˈklaɪənt/|khách hàng|a person who pays for professional services|The firm has more than fifty clients abroad.|a regular client|7-8
+credit rating|np|/ˈkredɪt ˌreɪtɪŋ/|xếp hạng tín dụng|an official judgement of how reliably someone pays debts|A poor credit rating makes loans more expensive.|a high credit rating|8+
+cutback|n|/ˈkʌtbæk/|sự cắt giảm|a reduction in spending or staff|The company announced cutbacks in its research department.|make cutbacks|8+
+earnings|n|/ˈɜːnɪŋz/|thu nhập|money received for work|Average earnings have risen by two per cent.|average earnings|7-8
+equity|n|/ˈekwəti/|vốn cổ phần|the value of shares in a company|Investors hold equity in the firm.|private equity|8+
+household name|np|/ˌhaʊshəʊld ˈneɪm/|thương hiệu quen thuộc|a famous brand known by almost everyone|The small start-up soon became a household name.|become a household name|8+
+luxury goods|np|/ˈlʌkʃəri ɡʊdz/|hàng xa xỉ|expensive products that are not necessary|Sales of luxury goods fall during a recession.|buy luxury goods|7-8
+bankrupt|adj|/ˈbæŋkrʌpt/|phá sản|unable to pay debts|The company went bankrupt last winter.|go bankrupt|7-8
+hands-on|adj|/ˌhændz ˈɒn/|thực hành, trực tiếp tham gia|involving direct practical experience|The job offers hands-on experience in marketing.|hands-on experience|8+
+managerial|adj|/ˌmænəˈdʒɪəriəl/|thuộc quản lý|relating to the work of a manager|She has managerial experience in retail.|a managerial role|8+
+calculated risk|np|/ˌkælkjʊleɪtɪd ˈrɪsk/|rủi ro đã tính toán|a risk taken after careful thought|Opening a second shop was a calculated risk.|take a calculated risk|8+
+chair a meeting|vp|/tʃeər ə ˈmiːtɪŋ/|chủ trì cuộc họp|to lead a formal meeting|The director will chair a meeting on Monday.|chair a meeting|7-8
+golden opportunity|np|/ˌɡəʊldən ˌɒpəˈtjuːnəti/|cơ hội vàng|a very good chance to do something|The merger is a golden opportunity for growth.|a golden opportunity|8+
+keep track of|ph|/kiːp træk əv/|theo dõi|to continue to know what is happening|Accountants keep track of every payment.|keep track of spending|7-8
+make a name for yourself|id|/meɪk ə neɪm fə jɔːˈself/|tạo dựng tên tuổi|to become well known for doing something|She wants to make a name for herself in the fashion industry.|make a name for yourself|8+
+win-win situation|np|/ˌwɪn ˈwɪn sɪtjuˈeɪʃən/|tình huống đôi bên cùng có lợi|a situation in which everyone benefits|The deal is a win-win situation for both companies.|a win-win situation|8+
+amalgamate|v|/əˈmælɡəmeɪt/|sáp nhập|to combine two or more organisations|The two banks decided to amalgamate.|amalgamate with|8+
++++
+profit margin|np|/ˈprɒfɪt ˈmɑːdʒɪn/|biên lợi nhuận|the difference between the cost and the selling price|Online shops often have a low profit margin.|a high profit margin|8+
+shareholder|n|/ˈʃeəhəʊldə/|cổ đông|a person who owns shares in a company|Shareholders voted to appoint a new chairman.|a major shareholder|8+
+turnover|n|/ˈtɜːnəʊvə/|doanh thu|the total amount of business a company does|The firm's turnover rose by ten per cent.|annual turnover|8+
+liability|n|/ˌlaɪəˈbɪləti/|nợ, trách nhiệm pháp lý|a debt or legal responsibility|The firm has large liabilities to its suppliers.|a financial liability|8+
+overhead|n|/ˈəʊvəhed/|chi phí hoạt động|regular costs of running a business|High rent has increased the company's overheads.|reduce overheads|8+
+stakeholder|n|/ˈsteɪkhəʊldə/|bên liên quan|a person with an interest in a business|The company must listen to all its stakeholders.|key stakeholders|8+
+recession|n|/rɪˈseʃən/|suy thoái kinh tế|a period of falling economic activity|Many shops closed during the recession.|a deep recession|7-8
+inflation|n|/ɪnˈfleɪʃən/|lạm phát|a general rise in prices|Inflation has made food more expensive.|high inflation|7-8
+lucrative|adj|/ˈluːkrətɪv/|sinh lợi|producing a lot of money|Banking is a lucrative career.|a lucrative business|8+
+profitable|adj|/ˈprɒfɪtəbəl/|có lãi|making a profit|The new branch became profitable within a year.|highly profitable|7-8
+solvent|adj|/ˈsɒlvənt/|có khả năng thanh toán|having enough money to pay your debts|The firm remained solvent despite the crisis.|remain solvent|8+
+invest|v|/ɪnˈvest/|đầu tư|to put money into something to make a profit|Companies invest heavily in new technology.|invest in|7-8
+acquire|v|/əˈkwaɪə/|mua lại|to buy a company or property|The firm plans to acquire a smaller rival.|acquire a company|7-8
+diversify|v|/daɪˈvɜːsɪfaɪ/|đa dạng hoá|to start selling a wider range of products|The company decided to diversify into online services.|diversify into|8+
+dividend|n|/ˈdɪvɪdend/|cổ tức|a share of profit paid to people who own shares|Shareholders received a dividend of five per cent.|pay a dividend|8+

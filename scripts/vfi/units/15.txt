@@ -1,0 +1,95 @@
+#unit 15
+#en The green revolution
+#vi Cách mạng xanh
+#blurb Ô nhiễm, biến đổi khí hậu, bảo vệ môi trường và các giải pháp bền vững
+acid rain|np|/ˈæsɪd reɪn/|mưa axit|rain containing harmful chemicals from pollution|Acid rain has damaged forests across northern Europe.|cause acid rain|7-8
+biodiversity|n|/ˌbaɪəʊdaɪˈvɜːsəti/|đa dạng sinh học|the variety of plant and animal life|Deforestation threatens the biodiversity of the Amazon.|protect biodiversity|7-8
+climate change|np|/ˈklaɪmət tʃeɪndʒ/|biến đổi khí hậu|long-term changes in the Earth's weather patterns|Climate change is the greatest challenge of our age.|tackle climate change|6-7
+contamination|n|/kənˌtæmɪˈneɪʃən/|sự ô nhiễm, nhiễm bẩn|the presence of harmful substances in something|Contamination of drinking water can cause serious illness.|water contamination|8+
+deforestation|n|/ˌdiːfɒrɪˈsteɪʃən/|nạn phá rừng|the cutting down of large areas of forest|Deforestation is a major cause of soil erosion.|widespread deforestation|7-8
+disposal|n|/dɪˈspəʊzəl/|sự xử lý, vứt bỏ|the act of getting rid of something|The disposal of nuclear waste remains a problem.|waste disposal|7-8
+drought|n|/draʊt/|hạn hán|a long period without rain|The drought destroyed most of the harvest.|a severe drought|6-7
+ecosystem|n|/ˈiːkəʊsɪstəm/|hệ sinh thái|all the living things in an area and their environment|Oil spills can destroy an entire marine ecosystem.|a fragile ecosystem|7-8
+emission|n|/ɪˈmɪʃən/|khí thải|the release of gas into the air|Governments want to cut carbon emissions by half.|carbon emissions|7-8
+the environment|np|/ði ɪnˈvaɪrənmənt/|môi trường|the natural world around us|Plastic bags cause serious harm to the environment.|protect the environment|5-6
+erosion|n|/ɪˈrəʊʒən/|sự xói mòn|the gradual wearing away of land by wind or water|Soil erosion makes farmland less fertile.|coastal erosion|7-8
+exhaust fumes|np|/ɪɡˈzɔːst fjuːmz/|khí thải xe cộ|harmful gases from a vehicle's engine|Exhaust fumes make the air in the city centre unhealthy.|breathe in exhaust fumes|7-8
+fertilizer|n|/ˈfɜːtəlaɪzə/|phân bón|a substance added to soil to help plants grow|Too much fertilizer can pollute nearby rivers.|chemical fertilizer|6-7
+flood|n|/flʌd/|lũ lụt|a large amount of water covering dry land|The flood forced thousands of people to leave their homes.|a severe flood|5-6
+food chain|np|/ˈfuːd tʃeɪn/|chuỗi thức ăn|a series of living things that depend on each other for food|Chemicals can build up as they move up the food chain.|the food chain|6-7
+fumes|n|/fjuːmz/|khói độc|strong and often harmful gases or smoke|Factory fumes drift over the town.|toxic fumes|7-8
+greenhouse gases|np|/ˈɡriːnhaʊs ɡæsɪz/|khí nhà kính|gases that trap heat in the atmosphere|Burning coal releases large amounts of greenhouse gases.|reduce greenhouse gases|6-7
+impact|n|/ˈɪmpækt/|tác động|a strong effect on something|The impact of tourism on coral reefs is alarming.|environmental impact|6-7
+pollutant|n|/pəˈluːtənt/|chất gây ô nhiễm|a substance that makes air, water or soil dirty|Cars are a major source of air pollutants.|a harmful pollutant|8+
+pollution|n|/pəˈluːʃən/|sự ô nhiễm|damage caused to the environment by harmful substances|Air pollution causes breathing problems in children.|air pollution|5-6
+process|n|/ˈprəʊses/|quá trình|a series of actions that lead to a result|Recycling is a complex and costly process.|a slow process|5-6
+refuse|n|/ˈrefjuːs/|rác thải|waste material that has been thrown away|Refuse is collected from the street twice a week.|household refuse|7-8
+strain|n|/streɪn/|áp lực, sự căng thẳng|extra pressure on a system|Population growth puts a strain on water supplies.|put a strain on|7-8
+threat|n|/θret/|mối đe doạ|something that could cause harm|Plastic waste is a threat to marine life.|a serious threat|6-7
+waste|n|/weɪst/|rác thải, sự lãng phí|material that is no longer needed|Households produce huge amounts of waste.|food waste|5-6
+achievable|adj|/əˈtʃiːvəbəl/|có thể đạt được|able to be reached with effort|Cutting emissions by half is achievable by 2040.|an achievable goal|7-8
+advantageous|adj|/ˌædvənˈteɪdʒəs/|có lợi|helpful and likely to bring success|Solar power is advantageous in sunny countries.|highly advantageous|8+
+at risk|ph|/æt rɪsk/|có nguy cơ|in danger of harm|Coastal towns are at risk from rising sea levels.|at risk of|6-7
+beneficial|adj|/ˌbenɪˈfɪʃəl/|có ích|having a good effect|Recycling is beneficial to the environment.|beneficial effects|6-7
+chronic|adj|/ˈkrɒnɪk/|kéo dài, mãn tính|lasting a long time and hard to cure|The city suffers from chronic water shortages.|a chronic problem|7-8
+conceivable|adj|/kənˈsiːvəbəl/|có thể tưởng tượng|possible to imagine or believe|It is conceivable that sea levels will rise by a metre.|conceivable that|8+
+contaminated|adj|/kənˈtæmɪneɪtɪd/|bị nhiễm bẩn|made impure by harmful substances|Contaminated water spreads disease quickly.|contaminated water|7-8
+devastating|adj|/ˈdevəsteɪtɪŋ/|tàn phá|causing great damage|The hurricane had a devastating effect on the island.|a devastating impact|7-8
+doubtful|adj|/ˈdaʊtfəl/|đáng nghi ngờ|unlikely or uncertain|It is doubtful whether the target can be met.|highly doubtful|7-8
+environmental|adj|/ɪnˌvaɪrənˈmentəl/|thuộc môi trường|relating to the natural world|Environmental protection should be a priority for every government.|environmental damage|6-7
+environmentally friendly|adj|/ɪnˌvaɪrənˈmentəli ˈfrendli/|thân thiện với môi trường|not harmful to nature|Paper bags are more environmentally friendly than plastic ones.|environmentally friendly products|6-7
+feasible|adj|/ˈfiːzəbəl/|khả thi|possible to do and likely to work|A complete ban on plastic bags is feasible.|a feasible plan|7-8
+fruitless|adj|/ˈfruːtləs/|không có kết quả|producing no useful results|Years of talks have so far been fruitless.|a fruitless effort|8+
+futile|adj|/ˈfjuːtaɪl/|vô ích|having no chance of success|Individual efforts seem futile without government action.|a futile attempt|8+
+immune|adj|/ɪˈmjuːn/|miễn nhiễm|not affected by something|No country is immune to the effects of climate change.|immune to|8+
+impracticable|adj|/ɪmˈpræktɪkəbəl/|không thể thực hiện|not able to be done in a sensible way|Banning all cars at once would be impracticable.|an impracticable idea|8+
+improbable|adj|/ɪmˈprɒbəbəl/|khó xảy ra|not likely to happen|It is improbable that all countries will agree.|highly improbable|8+
+in danger of|ph|/ɪn ˈdeɪndʒə əv/|có nguy cơ|likely to suffer harm|Many species are in danger of dying out.|in danger of extinction|6-7
+insoluble|adj|/ɪnˈsɒljʊbəl/|không thể giải quyết|impossible to solve|The waste problem seems almost insoluble.|an insoluble problem|8+
+irreparable|adj|/ɪˈrepərəbəl/|không thể sửa chữa|too badly damaged to be repaired|Oil spills cause irreparable harm to wildlife.|irreparable damage|8+
+irreplaceable|adj|/ˌɪrɪˈpleɪsəbəl/|không thể thay thế|too valuable to be replaced|Ancient forests are irreplaceable.|an irreplaceable habitat|8+
+irreversible|adj|/ˌɪrɪˈvɜːsəbəl/|không thể đảo ngược|impossible to change back|Some of the damage to coral reefs is irreversible.|irreversible damage|8+
+liable|adj|/ˈlaɪəbəl/|có khả năng, dễ bị|likely to experience something unpleasant|Low-lying land is liable to flooding.|liable to|8+
+life-threatening|adj|/ˈlaɪf ˌθretənɪŋ/|đe doạ tính mạng|likely to cause death|Heat waves can be life-threatening for the elderly.|a life-threatening situation|7-8
+pervasive|adj|/pəˈveɪsɪv/|lan tràn khắp nơi|spreading through all parts of something|Plastic pollution is now pervasive in the oceans.|pervasive influence|8+
+pointless|adj|/ˈpɔɪntləs/|vô nghĩa|having no purpose|Recycling is pointless if the waste is simply dumped.|a pointless exercise|7-8
+pristine|adj|/ˈprɪstiːn/|nguyên sơ|in its original, unspoilt condition|Few pristine forests remain in this region.|pristine beaches|8+
+questionable|adj|/ˈkwestʃənəbəl/|đáng ngờ|open to doubt|The benefits of the scheme are questionable.|questionable value|8+
+recyclable|adj|/ˌriːˈsaɪkləbəl/|có thể tái chế|able to be treated and used again|Most glass and metal packaging is recyclable.|recyclable materials|7-8
+sustainable|adj|/səˈsteɪnəbəl/|bền vững|able to continue without harming the environment|Sustainable farming protects the soil for the future.|sustainable development|7-8
+taxing|adj|/ˈtæksɪŋ/|đòi hỏi nhiều sức lực|physically or mentally demanding|Cleaning up the oil spill was a taxing task.|a taxing job|8+
+unattainable|adj|/ˌʌnəˈteɪnəbəl/|không thể đạt được|impossible to reach|Zero waste seems unattainable in the short term.|an unattainable goal|8+
+unlikely|adj|/ʌnˈlaɪkli/|không chắc xảy ra|not probable|It is unlikely that temperatures will fall again soon.|highly unlikely|6-7
+unprecedented|adj|/ʌnˈpresɪdentɪd/|chưa từng có|never having happened before|The planet is warming at an unprecedented rate.|unprecedented levels|8+
+useless|adj|/ˈjuːsləs/|vô dụng|having no practical use|Laws are useless unless they are enforced.|a useless gesture|6-7
+viable|adj|/ˈvaɪəbəl/|khả thi|capable of working successfully|Wind power is now a viable alternative to coal.|a viable option|7-8
+vital|adj|/ˈvaɪtəl/|thiết yếu|extremely important|Clean water is vital for life.|vital importance|6-7
+worthwhile|adj|/ˌwɜːθˈwaɪl/|đáng làm|important enough to spend time on|Planting trees is a worthwhile investment.|a worthwhile cause|7-8
+confront|v|/kənˈfrʌnt/|đối mặt|to face and deal with a problem|Governments must confront the problem of plastic waste.|confront a problem|7-8
+contaminate|v|/kənˈtæmɪneɪt/|làm nhiễm bẩn|to make something dirty or harmful|Chemicals from the factory contaminated the river.|contaminate water|8+
+dispose of|v|/dɪˈspəʊz əv/|vứt bỏ, xử lý|to get rid of something|Hazardous waste must be disposed of carefully.|dispose of waste|7-8
+dump|v|/dʌmp/|đổ bỏ|to leave rubbish in a place carelessly|Companies are fined for dumping waste in the river.|dump waste|6-7
+threaten|v|/ˈθretən/|đe doạ|to be a danger to something|Rising sea levels threaten low-lying islands.|threaten wildlife|6-7
+inexorably|adv|/ɪnˈeksərəbli/|không thể cưỡng lại|in a way that cannot be stopped|Global temperatures are rising inexorably.|rise inexorably|8+
+inevitably|adv|/ɪnˈevɪtəbli/|không thể tránh khỏi|in a way that cannot be avoided|Without action, sea levels will inevitably rise.|inevitably lead to|7-8
++++
+renewable energy|np|/rɪˈnjuːəbəl ˈenədʒi/|năng lượng tái tạo|power from sources that do not run out|Renewable energy is now cheaper than coal in many places.|invest in renewable energy|6-7
+carbon footprint|np|/ˈkɑːbən ˈfʊtprɪnt/|dấu chân carbon|the amount of carbon dioxide a person or group produces|You can reduce your carbon footprint by cycling to work.|reduce your carbon footprint|7-8
+global warming|np|/ˌɡləʊbəl ˈwɔːmɪŋ/|sự nóng lên toàn cầu|the rise in the Earth's average temperature|Global warming is melting the polar ice caps.|the effects of global warming|6-7
+sea level|np|/ˈsiː levəl/|mực nước biển|the average height of the surface of the sea|Rising sea levels threaten many coastal cities.|rising sea levels|6-7
+ozone layer|np|/ˈəʊzəʊn ˈleɪə/|tầng ozone|a layer of gas that protects the Earth from the sun|Chemicals from old fridges damaged the ozone layer.|damage the ozone layer|7-8
+landfill|n|/ˈlændfɪl/|bãi chôn lấp rác|a place where rubbish is buried in the ground|Most household waste still ends up in landfill.|a landfill site|7-8
+conservation|n|/ˌkɒnsəˈveɪʃən/|sự bảo tồn|the protection of nature and natural resources|Conservation groups campaign to save endangered species.|energy conservation|7-8
+habitat|n|/ˈhæbɪtæt/|môi trường sống|the natural home of an animal or plant|Logging has destroyed the habitat of many birds.|natural habitat|6-7
+overfishing|n|/ˌəʊvəˈfɪʃɪŋ/|đánh bắt quá mức|catching so many fish that stocks fall|Overfishing has emptied many coastal waters.|ban overfishing|7-8
+non-biodegradable|adj|/ˌnɒn baɪəʊdɪˈɡreɪdəbəl/|không phân huỷ sinh học|not able to break down naturally|Plastic is non-biodegradable and stays in the soil for centuries.|non-biodegradable waste|8+
+hazardous|adj|/ˈhæzədəs/|nguy hiểm|dangerous, especially to health|Hazardous chemicals must be stored in sealed containers.|hazardous waste|8+
+eco-friendly|adj|/ˈiːkəʊ ˈfrendli/|thân thiện với môi trường|not harmful to the environment|More shops now sell eco-friendly cleaning products.|eco-friendly packaging|6-7
+carbon-neutral|adj|/ˈkɑːbən ˈnjuːtrəl/|trung hoà carbon|producing no overall increase in carbon dioxide|The company aims to become carbon-neutral by 2035.|carbon-neutral by|8+
+recycle|v|/ˌriːˈsaɪkəl/|tái chế|to treat used materials so they can be used again|We recycle glass, paper and plastic at home.|recycle waste|5-6
+combat|v|/ˈkɒmbæt/|chống lại|to fight against something bad|Countries must work together to combat global warming.|combat pollution|7-8
+mitigate|v|/ˈmɪtɪɡeɪt/|giảm nhẹ|to make something less serious|Planting trees can mitigate the effects of climate change.|mitigate the effects|8+
+curb|v|/kɜːb/|hạn chế|to limit something harmful|Higher taxes could curb plastic use.|curb emissions|7-8
+offset|v|/ˈɒfset/|bù đắp|to balance one thing against another|Airlines offset their emissions by funding forests.|offset emissions|8+
+smog|n|/smɒɡ/|khói bụi mù|thick, dirty air caused by pollution|Smog often hangs over the city in winter.|heavy smog|7-8
+reforestation|n|/ˌriːfɒrɪˈsteɪʃən/|việc trồng lại rừng|the planting of trees in areas that have lost them|Reforestation helps restore wildlife habitats.|a reforestation programme|8+

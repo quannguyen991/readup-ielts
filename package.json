@@ -85,6 +85,7 @@
     "setup:supabase": "tsx scripts/provision-supabase.ts",
     "grant": "tsx scripts/grant-account.ts",
     "vocab:topics": "tsx scripts/generate-vocab-topics.ts",
+    "vocab:vfi": "node scripts/vfi/build.mjs",
     "verify:credential": "tsx scripts/verify-credential.ts",
     "satrw:underlines": "tsx scripts/mark-underlines.ts",
     "kb:ingest": "tsx scripts/kb-ingest.ts"

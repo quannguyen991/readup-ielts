@@ -210,3 +210,18 @@ test('tổng kết lịch: hôm nay / mai / tuần này', () => {
   };
   assert.deepEqual(scheduleSummary(r, '2026-10-02'), { scheduled: 4, dueToday: 1, tomorrow: 1, week: 3 });
 });
+
+test('học 60 từ trong một buổi: mai ôn đủ 60, lần ôn thứ hai tách ~30/30 sang hai ngày liền, các hộp sau dàn trong cửa sổ', () => {
+  const t0 = '2026-10-08';
+  const reviews: Record<string, Record<string, ReviewEntry>> = { d: {} };
+  for (const w of names(0, 60)) reviews.d![w] = nextReview(undefined, true, t0, loadByDay(reviews, t0, { slug: 'd', word: w }));
+  const dueOn = (day: string) => Object.values(reviews.d!).filter((e) => e.due === day).length;
+  assert.equal(dueOn(addDays(t0, 1)), 60);
+  // Ngày 2: ôn đủ 60, tất cả đúng ⇒ lên hộp 1 (ngày chuẩn 2, cửa sổ [2,3]) và chia đều hai ngày.
+  const d1 = addDays(t0, 1);
+  for (const w of names(0, 60)) reviews.d![w] = nextReview(reviews.d![w], true, d1, loadByDay(reviews, d1, { slug: 'd', word: w }));
+  assert.equal(dueOn(addDays(d1, 2)), 30);
+  assert.equal(dueOn(addDays(d1, 3)), 30);
+  // Không từ nào bị hẹn xa hơn cửa sổ của hộp.
+  for (const e of Object.values(reviews.d!)) assert.ok(daysBetween(d1, e.due) <= windowOf(2)[1]);
+});

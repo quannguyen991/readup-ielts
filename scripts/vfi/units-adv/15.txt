@@ -1,0 +1,65 @@
+#unit 15
+#en Weather and natural disasters
+#blurb Thời tiết, địa chất, nông nghiệp và các thành ngữ về bão tố
+acid rain|np|/ˌæsɪd ˈreɪn/|mưa axit|rain containing harmful chemicals from pollution|Acid rain has damaged forests across northern Europe.|cause acid rain|7-8
+aftershock|n|/ˈɑːftəʃɒk/|dư chấn|a smaller earthquake that follows a larger one|Several aftershocks hit the town overnight.|a strong aftershock|8+
+agriculture|n|/ˈæɡrɪkʌltʃə/|nông nghiệp|the science and practice of farming|Climate change threatens agriculture in dry regions.|modern agriculture|7-8
+cattle|n|/ˈkætl/|gia súc|cows kept for milk or meat|Thousands of cattle died in the drought.|herd of cattle|7-8
+coast|n|/kəʊst/|bờ biển|the land beside the sea|Storms have damaged much of the coast.|the west coast|6-7
+deforestation|n|/ˌdiːfɒrɪˈsteɪʃən/|nạn phá rừng|the cutting down of large areas of forest|Deforestation increases the risk of flooding.|widespread deforestation|7-8
+desalination|n|/ˌdiːsælɪˈneɪʃən/|khử mặn|the removal of salt from sea water|Desalination plants supply drinking water to dry countries.|a desalination plant|8+
+draft|n|/drɑːft/|luồng gió lùa|a current of cold air in a room|A cold draft blew through the broken window.|a cold draft|8+
+erosion|n|/ɪˈrəʊʒən/|sự xói mòn|the gradual wearing away of land|Soil erosion makes farmland less fertile.|coastal erosion|7-8
+flooding|n|/ˈflʌdɪŋ/|lũ lụt|a large amount of water covering dry land|Severe flooding closed roads across the region.|severe flooding|7-8
+fungus|n|/ˈfʌŋɡəs/|nấm|a plant-like organism that grows on decaying matter|A fungus destroyed much of the wheat crop.|a harmful fungus|8+
+herbivore|n|/ˈhɜːbɪvɔː/|loài ăn cỏ|an animal that eats only plants|Cattle and sheep are both herbivores.|a large herbivore|8+
+lava|n|/ˈlɑːvə/|dung nham|hot liquid rock from a volcano|Lava flowed down the side of the mountain.|flowing lava|8+
+petal|n|/ˈpetəl/|cánh hoa|one of the coloured parts of a flower|The petals fell from the flower in the wind.|a rose petal|7-8
+productivity|n|/ˌprɒdʌkˈtɪvəti/|năng suất|the rate at which crops or goods are produced|Better seeds have raised farm productivity.|agricultural productivity|7-8
+puddle|n|/ˈpʌdəl/|vũng nước|a small pool of rainwater|Children jumped in the puddles after the storm.|a muddy puddle|7-8
+reservoir|n|/ˈrezəvwɑː/|hồ chứa nước|a lake used for storing water|The reservoir was almost empty after the drought.|a water reservoir|8+
+shore|n|/ʃɔː/|bờ (biển, hồ)|the land along the edge of a sea or lake|Waves crashed onto the shore.|the shore of|6-7
+species|n|/ˈspiːʃiːz/|loài|a group of living things of the same kind|Flooding destroyed the habitat of several rare species.|an endangered species|7-8
+stem|n|/stem/|thân cây|the main part of a plant above the ground|The stem of the plant was damaged by frost.|a plant stem|7-8
+tide|n|/taɪd/|thuỷ triều|the regular rise and fall of the sea|The tide rose rapidly and flooded the road.|a high tide|7-8
+tremor|n|/ˈtremə/|chấn động nhẹ|a small earthquake or shaking of the ground|Residents felt a tremor early in the morning.|feel a tremor|8+
+current|adj|/ˈkʌrənt/|hiện tại|happening now|Current weather patterns are hard to predict.|current conditions|6-7
+dense|adj|/dens/|dày đặc|thick and difficult to see through|Dense fog delayed all flights.|dense fog|7-8
+freezing|adj|/ˈfriːzɪŋ/|lạnh cóng|extremely cold|Freezing temperatures killed many crops.|freezing weather|6-7
+heavy|adj|/ˈhevi/|nặng, dữ dội|in large amounts or very strong|Heavy rain caused landslides in the hills.|heavy rain|5-6
+long-term|adj|/ˌlɒŋ ˈtɜːm/|dài hạn|continuing for a long time|The long-term effects of the flood are still unknown.|long-term effects|6-7
+native|adj|/ˈneɪtɪv/|bản địa|originating in a particular place|Native plants cope better with drought.|native species|7-8
+resistant|adj|/rɪˈzɪstənt/|có sức kháng|not harmed by something|These crops are resistant to drought.|resistant to|7-8
+severe|adj|/sɪˈvɪə/|nghiêm trọng|very serious or extreme|Severe storms battered the coast.|severe weather|6-7
+torrential|adj|/təˈrenʃəl/|xối xả|falling in large amounts very quickly|Torrential rain flooded the valley.|torrential rain|8+
+tropical|adj|/ˈtrɒpɪkəl/|nhiệt đới|relating to the hot, wet regions near the equator|Tropical storms are common between June and November.|a tropical storm|7-8
+a storm in a teacup|id|/ə ˌstɔːm ɪn ə ˈtiːkʌp/|chuyện bé xé ra to|a lot of fuss about something unimportant|The row was just a storm in a teacup.|a storm in a teacup|8+
+be snowed under|id|/biː ˈsnəʊd ˈʌndə/|ngập trong công việc|to have too much work to deal with|I'm snowed under with work at the moment.|be snowed under with|8+
+every cloud has a silver lining|id|/ˈevri klaʊd hæz ə ˌsɪlvə ˈlaɪnɪŋ/|trong cái rủi có cái may|there is something good even in a bad situation|Every cloud has a silver lining, as they say.|every cloud has a silver lining|8+
+in the cold light of day|id|/ɪn ðə kəʊld laɪt əv deɪ/|khi nhìn lại với đầu óc tỉnh táo|when you think about something calmly later|In the cold light of day, the plan seemed foolish.|in the cold light of day|8+
+know which way the wind is blowing|id|/nəʊ wɪtʃ weɪ ðə wɪnd ɪz ˈbləʊɪŋ/|biết xu hướng sắp tới|to understand what is likely to happen|Good politicians know which way the wind is blowing.|know which way the wind is blowing|8+
+not have the foggiest idea|id|/nɒt hæv ðə ˈfɒɡiɪst aɪˈdɪə/|không có chút khái niệm nào|to know nothing at all about something|I haven't the foggiest idea where the keys are.|have the foggiest idea|8+
+the calm before the storm|id|/ðə kɑːm bɪˈfɔː ðə stɔːm/|sự yên ả trước cơn bão|a quiet period before a time of trouble|Monday morning was the calm before the storm.|the calm before the storm|8+
+not a cloud in the sky|id|/nɒt ə klaʊd ɪn ðə skaɪ/|trời quang mây tạnh|completely clear weather|There was not a cloud in the sky all day.|not a cloud in the sky|7-8
+vicious circle|np|/ˌvɪʃəs ˈsɜːkəl/|vòng luẩn quẩn|a situation in which a problem makes itself worse|Poverty and poor health form a vicious circle.|a vicious circle|8+
+weather the storm|id|/ˈweðə ðə stɔːm/|vượt qua khó khăn|to survive a difficult period|Small businesses struggled to weather the storm.|weather the storm|8+
+breed|v|/briːd/|nhân giống|to keep animals in order to produce young|Farmers breed sheep that cope well with cold winters.|breed cattle|7-8
+cultivate|v|/ˈkʌltɪveɪt/|canh tác|to prepare land and grow crops|Farmers cultivate rice in the flooded fields.|cultivate crops|7-8
+flow|v|/fləʊ/|chảy|to move steadily in one direction|Water flowed down the hillside after the storm.|flow into|6-7
+sow|v|/səʊ/|gieo hạt|to plant seeds in the ground|Farmers sow wheat in the autumn.|sow seeds|8+
++++
+drought|n|/draʊt/|hạn hán|a long period with no rain|The drought lasted three years.|a severe drought|7-8
+hurricane|n|/ˈhʌrɪkən/|bão lớn|a violent storm with very strong winds|The hurricane destroyed thousands of homes.|a hurricane warning|7-8
+tsunami|n|/tsuːˈnɑːmi/|sóng thần|a huge wave caused by an earthquake under the sea|The tsunami struck the coast without warning.|a tsunami warning|8+
+landslide|n|/ˈlændslaɪd/|sạt lở đất|a fall of earth and rocks down a slope|Heavy rain triggered a landslide in the village.|trigger a landslide|7-8
+heatwave|n|/ˈhiːtweɪv/|đợt nắng nóng|a period of unusually hot weather|The heatwave pushed temperatures above forty degrees.|a prolonged heatwave|7-8
+blizzard|n|/ˈblɪzəd/|bão tuyết|a very heavy snowstorm with strong winds|A blizzard cut off power to the village.|a snow blizzard|8+
+earthquake|n|/ˈɜːθkweɪk/|động đất|a sudden violent shaking of the ground|The earthquake destroyed many old buildings.|a strong earthquake|6-7
+wildfire|n|/ˈwaɪldfaɪə/|cháy rừng|a large fire that spreads quickly in the countryside|A wildfire swept through the dry forest.|a raging wildfire|8+
+erupt|v|/ɪˈrʌpt/|phun trào|to burst out suddenly, as a volcano does|The volcano erupted after years of silence.|erupt violently|7-8
+evacuate|v|/ɪˈvækjueɪt/|sơ tán|to move people away from a dangerous place|Thousands were evacuated before the storm hit.|evacuate residents|8+
+submerge|v|/səbˈmɜːdʒ/|nhấn chìm|to cover completely with water|Rising seas could submerge low-lying islands.|submerge the land|8+
+devastate|v|/ˈdevəsteɪt/|tàn phá|to destroy or damage badly|The storm devastated the coastal towns.|devastate a region|8+
+battered|adj|/ˈbætəd/|bị tàn phá|damaged by repeated strong hits|The battered coastline took years to recover.|a battered coast|8+
+unpredictable|adj|/ˌʌnprɪˈdɪktəbəl/|khó lường|impossible to know in advance|Weather in the mountains is highly unpredictable.|unpredictable weather|7-8
+monsoon|n|/ˌmɒnˈsuːn/|gió mùa|a season of very heavy rain in South Asia|The monsoon brings flooding to many villages.|the monsoon season|7-8

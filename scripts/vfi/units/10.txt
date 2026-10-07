@@ -1,0 +1,81 @@
+#unit 10
+#en Reaching for the skies
+#vi Chinh phục bầu trời
+#blurb Vũ trụ, du hành không gian, thiên văn và công nghệ vệ tinh
+asteroid|n|/ˈæstərɔɪd/|tiểu hành tinh|a small rocky object that orbits the sun|An asteroid hit the planet millions of years ago.|an asteroid belt|7-8
+astronaut|n|/ˈæstrənɔːt/|phi hành gia|a person trained to travel in space|Astronauts train for years before a mission.|a trained astronaut|6-7
+atmosphere|n|/ˈætməsfɪə/|khí quyển|the layer of gases around a planet|The Earth's atmosphere protects us from harmful radiation.|the upper atmosphere|6-7
+cosmos|n|/ˈkɒzmɒs/|vũ trụ|the universe seen as an ordered system|Humans have always wondered about the cosmos.|explore the cosmos|8+
+crater|n|/ˈkreɪtə/|hố thiên thạch, miệng núi lửa|a large round hole in the ground|The moon's surface is covered in craters.|an impact crater|7-8
+debris|n|/ˈdeɪbriː/|mảnh vụn|broken pieces left after something is destroyed|Space debris threatens working satellites.|space debris|7-8
+Earth|n|/ɜːθ/|Trái Đất|the planet on which we live|Earth is the only known planet that supports life.|planet Earth|5-6
+exploration|n|/ˌekspləˈreɪʃən/|sự thám hiểm|the act of travelling to discover new places|Space exploration costs billions of dollars every year.|space exploration|6-7
+explorer|n|/ɪkˈsplɔːrə/|nhà thám hiểm|a person who travels to unknown places|Early explorers crossed the oceans in wooden ships.|a daring explorer|6-7
+galaxy|n|/ˈɡæləksi/|thiên hà|a huge group of stars and planets|Our solar system lies in the Milky Way galaxy.|a distant galaxy|6-7
+gas|n|/ɡæs/|khí|a substance like air that is not solid or liquid|Jupiter is made mostly of gas.|a toxic gas|5-6
+gravity|n|/ˈɡrævəti/|trọng lực|the force that pulls objects towards a planet|There is much less gravity on the moon than on Earth.|the force of gravity|6-7
+horizon|n|/həˈraɪzən/|đường chân trời|the line where the sky seems to meet the land|The sun slowly sank below the horizon.|on the horizon|6-7
+launch|n|/lɔːntʃ/|vụ phóng|the sending of a rocket into the air|The launch was delayed because of bad weather.|a rocket launch|6-7
+meteor|n|/ˈmiːtiɔː/|sao băng|a piece of rock that burns up as it enters the atmosphere|A bright meteor crossed the night sky.|a meteor shower|7-8
+moon|n|/muːn/|mặt trăng|the natural satellite that circles the Earth|The moon takes about a month to orbit the Earth.|a full moon|5-6
+ocean|n|/ˈəʊʃən/|đại dương|a very large area of sea|The Pacific is the largest ocean on Earth.|cross the ocean|5-6
+orbit|nv|/ˈɔːbɪt/|quỹ đạo; quay quanh|the curved path of an object around a planet|The satellite orbits the Earth every ninety minutes.|in orbit|6-7
+outer space|np|/ˈaʊtə speɪs/|không gian vũ trụ|the area beyond the Earth's atmosphere|Sound cannot travel through outer space.|travel into outer space|6-7
+planet|n|/ˈplænɪt/|hành tinh|a large round object that moves around a star|Mars is the planet most like Earth.|a distant planet|5-6
+radiation|n|/ˌreɪdiˈeɪʃən/|bức xạ|energy sent out in the form of waves or particles|Astronauts must be protected from cosmic radiation.|exposure to radiation|7-8
+rocket|n|/ˈrɒkɪt/|tên lửa|a vehicle that travels into space|The rocket carried a new satellite into orbit.|launch a rocket|6-7
+satellite|n|/ˈsætəlaɪt/|vệ tinh|an object that orbits the Earth to send signals|Weather satellites help forecast storms.|a communications satellite|6-7
+simulator|n|/ˈsɪmjʊleɪtə/|thiết bị mô phỏng|a machine that copies real conditions for training|Pilots practise emergency landings in a flight simulator.|a flight simulator|7-8
+solar system|np|/ˈsəʊlə ˈsɪstəm/|hệ mặt trời|the sun and the planets that move around it|Eight planets belong to our solar system.|the solar system|6-7
+space|n|/speɪs/|không gian|the area outside the Earth's atmosphere|Many countries now run their own space programmes.|outer space|5-6
+spacecraft|n|/ˈspeɪskrɑːft/|tàu vũ trụ|a vehicle that travels in space|The spacecraft reached Mars after seven months.|an unmanned spacecraft|7-8
+space shuttle|np|/ˈspeɪs ˈʃʌtəl/|tàu con thoi|a reusable spacecraft that carries people into orbit|The space shuttle landed safely after fourteen days.|a space shuttle mission|7-8
+space station|np|/ˈspeɪs ˈsteɪʃən/|trạm vũ trụ|a large structure in orbit where people can live|Astronauts spend months aboard the space station.|an orbiting space station|6-7
+surface|n|/ˈsɜːfɪs/|bề mặt|the outside layer of something|The surface of Mars is cold and dusty.|the surface of|6-7
+universe|n|/ˈjuːnɪvɜːs/|vũ trụ|everything that exists, including space and all stars|Scientists believe the universe is expanding.|the observable universe|6-7
+weightlessness|n|/ˈweɪtləsnəs/|trạng thái không trọng lượng|the feeling of having no weight in space|Weightlessness weakens astronauts' muscles over time.|experience weightlessness|8+
+commercial|adj|/kəˈmɜːʃəl/|mang tính thương mại|done to make money|Private companies are developing commercial space flights.|commercial flights|6-7
+cosmic|adj|/ˈkɒzmɪk/|thuộc vũ trụ|relating to the universe|Cosmic rays can damage a spacecraft's electronics.|cosmic radiation|8+
+extreme|adj|/ɪkˈstriːm/|khắc nghiệt|very great in degree|Astronauts face extreme temperatures outside the station.|extreme conditions|6-7
+gravitational|adj|/ˌɡrævɪˈteɪʃənəl/|thuộc lực hấp dẫn|relating to the force of gravity|The moon's gravitational pull causes the tides.|a gravitational field|8+
+horizontal|adj|/ˌhɒrɪˈzɒntəl/|nằm ngang|flat and level, parallel to the ground|The rocket moved from a vertical to a horizontal position.|a horizontal line|7-8
+inevitable|adj|/ɪˈnevɪtəbəl/|không thể tránh khỏi|certain to happen|Delays are inevitable in complex space missions.|an inevitable result|7-8
+lunar|adj|/ˈluːnə/|thuộc mặt trăng|relating to the moon|The lunar landing took place in 1969.|a lunar eclipse|7-8
+meteoric|adj|/ˌmiːtiˈɒrɪk/|nhanh như sao băng|very fast and successful|The company enjoyed a meteoric rise.|a meteoric rise|8+
+outer|adj|/ˈaʊtə/|bên ngoài|farthest from the centre|Neptune is the outer planet of our solar system.|the outer layer|5-6
+solar|adj|/ˈsəʊlə/|thuộc mặt trời|relating to the sun|Solar panels power the space station.|solar energy|6-7
+terrestrial|adj|/təˈrestriəl/|thuộc Trái Đất|relating to the planet Earth|Terrestrial planets such as Mars have solid surfaces.|terrestrial life|8+
+toxic|adj|/ˈtɒksɪk/|độc hại|poisonous and harmful|The atmosphere of Venus is toxic to humans.|toxic gas|7-8
+uninhabitable|adj|/ˌʌnɪnˈhæbɪtəbəl/|không thể sinh sống|not fit to live in|Most planets in our solar system are uninhabitable.|uninhabitable planet|8+
+universal|adj|/ˌjuːnɪˈvɜːsəl/|phổ quát|relating to everyone or everything|Gravity is a universal force.|a universal law|7-8
+unmanned|adj|/ʌnˈmænd/|không người lái|operating without a crew|An unmanned probe landed on the comet.|an unmanned mission|7-8
+acclimatise|v|/əˈklaɪmətaɪz/|thích nghi với môi trường|to get used to new conditions|Astronauts need time to acclimatise to weightlessness.|acclimatise to|8+
+colonise|v|/ˈkɒlənaɪz/|thực dân hoá, lập thuộc địa|to settle and take control of a new place|Some scientists dream of colonising Mars.|colonise a planet|8+
+explore|v|/ɪkˈsplɔː/|thám hiểm|to travel through an unknown place to learn about it|Robots can explore places too dangerous for people.|explore space|6-7
+float|v|/fləʊt/|trôi nổi|to stay in the air without falling|Objects float freely inside the space station.|float in the air|6-7
+propel|v|/prəˈpel/|đẩy tới|to push something forward with force|Powerful engines propel the rocket into space.|propel forward|8+
+rotate|v|/rəʊˈteɪt/|xoay|to turn around a central point|The Earth rotates once every twenty-four hours.|rotate on its axis|7-8
+sustain|v|/səˈsteɪn/|duy trì|to keep something going or alive|Plants on the station sustain the crew with fresh food.|sustain life|8+
+simulate|v|/ˈsɪmjʊleɪt/|mô phỏng|to create conditions that copy real ones|Engineers simulate the conditions of a lunar landing.|simulate conditions|8+
+undergo|v|/ˌʌndəˈɡəʊ/|trải qua|to experience something difficult or unpleasant|Astronauts undergo years of intensive training.|undergo training|7-8
++++
+mission|n|/ˈmɪʃən/|nhiệm vụ|an important task that people are sent to do|The Mars mission will last more than two years.|a space mission|6-7
+telescope|n|/ˈtelɪskəʊp/|kính thiên văn|an instrument for looking at distant stars|The new telescope can detect planets around distant stars.|a powerful telescope|6-7
+probe|n|/prəʊb/|tàu thăm dò|an unmanned spacecraft that collects information|The probe sent back images of Jupiter's moons.|a space probe|7-8
+constellation|n|/ˌkɒnstəˈleɪʃən/|chòm sao|a group of stars that forms a pattern|Orion is one of the most recognisable constellations.|a bright constellation|8+
+eclipse|n|/ɪˈklɪps/|nhật thực, nguyệt thực|an event when one object blocks light from another|People gathered to watch the solar eclipse.|a solar eclipse|7-8
+comet|n|/ˈkɒmɪt/|sao chổi|a bright object with a long tail that orbits the sun|The comet is visible only once every seventy-six years.|a passing comet|7-8
+black hole|np|/ˌblæk ˈhəʊl/|hố đen|a region of space with gravity so strong that nothing can escape|Nothing, not even light, can escape from a black hole.|a supermassive black hole|7-8
+space tourism|np|/ˌspeɪs ˈtʊərɪzəm/|du lịch vũ trụ|travel into space for pleasure|Space tourism is only affordable for the very rich.|space tourism industry|7-8
+payload|n|/ˈpeɪləʊd/|trọng tải|the cargo carried by a rocket or aircraft|The rocket's payload included a weather satellite.|a heavy payload|8+
+lift-off|n|/ˈlɪft ɒf/|sự cất cánh (tên lửa)|the moment a rocket leaves the ground|Millions watched the lift-off on television.|a successful lift-off|8+
+thruster|n|/ˈθrʌstə/|động cơ đẩy|a small engine used to change a spacecraft's direction|The thrusters fired to correct the satellite's course.|fire a thruster|8+
+interstellar|adj|/ˌɪntəˈstelə/|giữa các vì sao|between the stars|Interstellar travel remains a distant dream.|interstellar space|8+
+habitable|adj|/ˈhæbɪtəbəl/|có thể ở được|suitable for living in|Scientists are searching for habitable planets.|a habitable zone|8+
+celestial|adj|/səˈlestiəl/|thuộc bầu trời|relating to the sky or outer space|The stars and planets are celestial bodies.|a celestial body|8+
+visible|adj|/ˈvɪzəbəl/|có thể nhìn thấy|able to be seen|Venus is visible in the evening sky.|clearly visible|6-7
+revolve|v|/rɪˈvɒlv/|quay quanh|to move in a circle around a central point|The Earth revolves around the sun once a year.|revolve around|8+
+reentry|n|/riːˈentri/|sự trở lại khí quyển|the return of a spacecraft into the atmosphere|The capsule survived the extreme heat of reentry.|atmospheric reentry|8+
+navigate|v|/ˈnævɪɡeɪt/|dẫn đường, điều hướng|to find the way using maps or instruments|Early sailors navigated by the stars.|navigate by the stars|7-8
+infinite|adj|/ˈɪnfɪnət/|vô hạn|having no limit or end|The universe may be infinite in size.|infinite space|7-8
+spacewalk|n|/ˈspeɪswɔːk/|chuyến đi bộ ngoài không gian|a period of work outside a spacecraft in orbit|The astronaut completed a six-hour spacewalk to repair the antenna.|a risky spacewalk|8+

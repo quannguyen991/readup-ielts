@@ -1,0 +1,52 @@
+#unit 12
+#en Fashion and consumption
+#blurb Thời trang, xu hướng, tiêu dùng và những cụm từ nói về mua sắm
+archive|n|/ˈɑːkaɪv/|kho lưu trữ|a collection of historical documents or records|The museum keeps old photographs in its archive.|a digital archive|7-8
+acquisitiveness|n|/əˈkwɪzətɪvnəs/|tính ham sở hữu|a strong desire to own more things|Critics blame advertising for rising acquisitiveness.|human acquisitiveness|8+
+stockpile|n|/ˈstɒkpaɪl/|kho dự trữ|a large supply of something kept for future use|The government built a stockpile of medical supplies.|a stockpile of|8+
+supplies|n|/səˈplaɪz/|nguồn cung cấp|the goods needed for a particular purpose|Local shops ran out of food supplies.|medical supplies|6-7
+chic|adj|/ʃiːk/|thanh lịch, sành điệu|fashionable and stylish|She wore a chic black dress to the party.|a chic outfit|8+
+drab|adj|/dræb/|xám xịt, buồn tẻ|dull and without colour|The drab uniforms were replaced with colourful ones.|a drab colour|8+
+mundane|adj|/mʌnˈdeɪn/|tầm thường, nhàm chán|ordinary and not interesting|She turned mundane objects into works of art.|a mundane task|8+
+sophisticated|adj|/səˈfɪstɪkeɪtɪd/|tinh tế, sành điệu|knowing about and enjoying fashion and culture|The shop attracts a sophisticated young clientele.|a sophisticated style|7-8
+a must-have item|ph|/ə ˈmʌst hæv ˈaɪtəm/|món đồ nhất định phải có|a product that everyone wants to own|The bag has become this season's must-have item.|a must-have item|7-8
+a passing trend|ph|/ə ˈpɑːsɪŋ trend/|trào lưu nhất thời|a fashion that does not last long|Many people see skinny jeans as a passing trend.|a passing trend|7-8
+all the rage|id|/ɔːl ðə reɪdʒ/|đang rất thịnh hành|very fashionable at the moment|Retro sportswear is all the rage this year.|all the rage|8+
+casual dress|np|/ˌkæʒuəl ˈdres/|trang phục thường ngày|clothes that are not formal|The office allows casual dress on Fridays.|wear casual dress|6-7
+conspicuous consumption|np|/kənˌspɪkjuəs kənˈsʌmpʃən/|tiêu dùng phô trương|spending money to show how rich you are|Conspicuous consumption is common among the very wealthy.|conspicuous consumption|8+
+designer label|np|/dɪˌzaɪnə ˈleɪbəl/|nhãn hiệu thiết kế cao cấp|clothing by a famous fashion designer|She only buys clothes with a designer label.|a designer label|7-8
+disposable income|np|/dɪˌspəʊzəbəl ˈɪnkʌm/|thu nhập khả dụng|money left to spend after taxes and bills|Teenagers now have more disposable income than ever.|disposable income|8+
+fashion accessory|np|/ˈfæʃən əkˈsesəri/|phụ kiện thời trang|an item such as a scarf worn to complete an outfit|A scarf is a simple and cheap fashion accessory.|a fashion accessory|7-8
+get rid of|ph|/ɡet rɪd əv/|vứt bỏ|to throw away something you do not want|It is time to get rid of these old clothes.|get rid of clutter|6-7
+in vogue|ph|/ɪn vəʊɡ/|đang thịnh hành|currently fashionable|Short skirts were in vogue in the sixties.|back in vogue|8+
+mass branding|np|/ˈmæs ˈbrændɪŋ/|thương hiệu đại trà|promoting a brand to a very large audience|Mass branding makes global labels instantly recognisable.|mass branding|8+
+personal consumption|np|/ˌpɜːsənəl kənˈsʌmpʃən/|tiêu dùng cá nhân|the goods people buy for their own use|Personal consumption drives much of the economy.|personal consumption|8+
+spending patterns|np|/ˈspendɪŋ ˈpætənz/|thói quen chi tiêu|the usual ways in which people spend money|Online shopping has changed spending patterns.|changing spending patterns|8+
+the latest trend|ph|/ðə ˌleɪtɪst ˈtrend/|xu hướng mới nhất|the newest fashion|Teenagers follow the latest trend on social media.|follow the latest trend|7-8
+traditional dress|np|/trəˌdɪʃənəl ˈdres/|trang phục truyền thống|clothes typical of a culture|Visitors wear traditional dress at the festival.|wear traditional dress|6-7
+abandon|v|/əˈbændən/|từ bỏ|to stop using something completely|Many shoppers have abandoned high street stores.|abandon a habit|7-8
+conserve|v|/kənˈsɜːv/|tiết kiệm|to use something carefully to avoid waste|Families try to conserve energy to cut bills.|conserve resources|7-8
+consume|v|/kənˈsjuːm/|tiêu thụ|to use up goods, energy or time|The average family consumes a great deal of plastic.|consume resources|7-8
+discard|v|/dɪˈskɑːd/|vứt bỏ|to throw away something you no longer want|Shoppers discard clothes after wearing them only twice.|discard clothes|8+
+dump|v|/dʌmp/|đổ bỏ|to get rid of something carelessly|Companies are fined for dumping waste at sea.|dump waste|7-8
+eradicate|v|/ɪˈrædɪkeɪt/|xoá bỏ|to destroy something completely|The campaign aims to eradicate fast fashion.|eradicate a problem|8+
+hoard|v|/hɔːd/|tích trữ|to collect and store large amounts of something|Some people hoard food during a crisis.|hoard goods|8+
+maintain|v|/meɪnˈteɪn/|duy trì|to keep something in good condition|Well-made clothes are easy to maintain.|maintain quality|7-8
+preserve|v|/prɪˈzɜːv/|bảo tồn|to keep something in its original state|Craftspeople preserve traditional dress techniques.|preserve traditions|7-8
+retain|v|/rɪˈteɪn/|giữ lại|to keep something instead of losing it|Good brands retain their value over time.|retain customers|7-8
++++
+fast fashion|np|/ˌfɑːst ˈfæʃən/|thời trang nhanh|cheap clothes made quickly to follow trends|Fast fashion creates huge amounts of textile waste.|the fast fashion industry|7-8
+trendsetter|n|/ˈtrendsetə/|người dẫn đầu xu hướng|a person who starts a new fashion|The singer is a trendsetter among teenagers.|a fashion trendsetter|8+
+wardrobe|n|/ˈwɔːdrəʊb/|tủ quần áo, bộ sưu tập quần áo|all the clothes a person owns|She updates her wardrobe every season.|a seasonal wardrobe|7-8
+status symbol|np|/ˈsteɪtəs ˈsɪmbəl/|biểu tượng địa vị|an object that shows wealth or importance|For many people a luxury car is a status symbol.|a status symbol|8+
+impulse buying|np|/ˈɪmpʌls ˈbaɪɪŋ/|mua sắm bốc đồng|buying things without planning|Shop layouts are designed to encourage impulse buying.|impulse buying|8+
+bargain|n|/ˈbɑːɡɪn/|món hời|something bought for less than its usual price|At the sale I found a real bargain.|a bargain price|6-7
+second-hand|adj|/ˌsekənd ˈhænd/|đã qua sử dụng|owned by someone else before|Second-hand clothes are cheaper and greener.|second-hand shops|6-7
+extravagant|adj|/ɪkˈstrævəɡənt/|xa hoa, hoang phí|spending or costing a lot of money|An extravagant wedding can cost more than a house.|extravagant spending|8+
+frugal|adj|/ˈfruːɡəl/|tiết kiệm|careful about spending money|Frugal shoppers compare prices before buying.|a frugal lifestyle|8+
+stylish|adj|/ˈstaɪlɪʃ/|thời trang, phong cách|fashionable and attractive|The shop sells stylish clothes at low prices.|a stylish outfit|6-7
+outdated|adj|/ˌaʊtˈdeɪtɪd/|lỗi thời|no longer modern or useful|Outdated designs soon disappear from the shelves.|outdated fashion|7-8
+splurge|v|/splɜːdʒ/|vung tay tiêu xài|to spend a lot of money on something|She decided to splurge on a designer coat.|splurge on|8+
+tailor|v|/ˈteɪlə/|may đo, điều chỉnh theo|to make or adapt something for a particular person|The suit was tailored to fit him perfectly.|tailor to|8+
+resell|v|/ˌriːˈsel/|bán lại|to sell something you have bought|Many people resell unwanted clothes online.|resell goods|8+
+wholesale|adj|/ˈhəʊlseɪl/|bán buôn|selling goods in large amounts at low prices|The shop buys its stock at wholesale prices.|wholesale prices|8+

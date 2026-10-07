@@ -1,0 +1,74 @@
+#unit 7
+#en On the move
+#vi Du lịch và di chuyển
+#blurb Du lịch, điểm đến, cảnh quan và những từ tả chuyến đi
+accommodation|n|/əˌkɒməˈdeɪʃən/|chỗ ở|a place to live or stay|Accommodation in the city centre is very expensive.|book accommodation|6-7
+attraction|n|/əˈtrækʃən/|điểm thu hút|something that people want to visit|The old castle is the town's main tourist attraction.|a tourist attraction|6-7
+community|n|/kəˈmjuːnəti/|cộng đồng|a group of people living in the same area|Tourism can bring real benefits to a local community.|the local community|6-7
+countryside|n|/ˈkʌntrisaɪd/|vùng nông thôn|land outside towns and cities|We spent the weekend walking in the countryside.|the open countryside|5-6
+destination|n|/ˌdestɪˈneɪʃən/|điểm đến|the place where someone is going|Thailand is a popular holiday destination.|a tourist destination|5-6
+eco-tourism|n|/ˈiːkəʊ ˌtʊərɪzəm/|du lịch sinh thái|travel that protects the natural environment|Eco-tourism brings money to rural areas without damaging nature.|promote eco-tourism|7-8
+effect|n|/ɪˈfekt/|tác động|a change caused by something|Mass tourism has a harmful effect on coral reefs.|a positive effect|5-6
+facilities|n|/fəˈsɪlɪtiz/|cơ sở vật chất|buildings or services provided for a purpose|The resort has excellent sports facilities.|modern facilities|6-7
+identification|n|/aɪˌdentɪfɪˈkeɪʃən/|giấy tờ tuỳ thân|an official document proving who you are|Passengers must show identification at the airport.|proof of identification|7-8
+inhabitant|n|/ɪnˈhæbɪtənt/|cư dân|a person who lives in a place|The island has only two hundred inhabitants.|a local inhabitant|7-8
+itinerary|n|/aɪˈtɪnərəri/|lịch trình|a detailed plan of a journey|Our itinerary includes three days in Rome.|plan an itinerary|7-8
+journey|n|/ˈdʒɜːni/|hành trình|a trip from one place to another|The journey took us nearly ten hours.|a long journey|5-6
+landscape|n|/ˈlændskeɪp/|phong cảnh|the natural scenery of an area|The landscape changes completely as you go north.|a stunning landscape|6-7
+luggage|n|/ˈlʌɡɪdʒ/|hành lý|bags and cases carried on a journey|Airlines often charge extra for heavy luggage.|carry luggage|5-6
+peak|n|/piːk/|đỉnh, cao điểm|the highest point; the busiest time|Hotel prices rise sharply during the peak season.|the peak season|6-7
+tourism|n|/ˈtʊərɪzəm/|ngành du lịch|the business of providing services for tourists|Tourism is the main source of income for the island.|the tourism industry|6-7
+tourist|n|/ˈtʊərɪst/|khách du lịch|a person who travels for pleasure|Millions of tourists visit the city every year.|a foreign tourist|5-6
+transport|n|/ˈtrænspɔːt/|giao thông, vận tải|vehicles and systems for moving people|Public transport is cheap and reliable here.|public transport|5-6
+travel|n|/ˈtrævəl/|việc đi lại|the act of going from place to place|Air travel has become much cheaper.|international travel|5-6
+travelling|n|/ˈtrævəlɪŋ/|việc đi du lịch|the activity of making journeys|Travelling broadens the mind and teaches independence.|travelling abroad|5-6
+trend|n|/trend/|xu hướng|a general direction of change|Staying in local homes is a growing trend among tourists.|a growing trend|6-7
+trip|n|/trɪp/|chuyến đi|a short journey to a place and back|We took a day trip to the mountains.|a business trip|5-6
+village|n|/ˈvɪlɪdʒ/|ngôi làng|a small settlement in the countryside|They live in a quiet village near the coast.|a fishing village|5-6
+adventurous|adj|/ədˈventʃərəs/|ưa mạo hiểm|enjoying new and exciting experiences|Adventurous travellers often choose to go trekking in remote areas.|an adventurous traveller|7-8
+budget|adj|/ˈbʌdʒɪt/|giá rẻ, tiết kiệm|cheap and designed for people with little money|Budget airlines have made travel affordable for everyone.|budget accommodation|6-7
+breathtaking|adj|/ˈbreθteɪkɪŋ/|ngoạn mục, đẹp nghẹt thở|extremely beautiful or impressive|The view from the summit is breathtaking.|a breathtaking view|7-8
+coastal|adj|/ˈkəʊstəl/|ven biển|near or along the coast|Many coastal towns depend on summer visitors.|a coastal town|6-7
+cosmopolitan|adj|/ˌkɒzməˈpɒlɪtən/|mang tính quốc tế|containing people from many different countries|London is a vibrant and cosmopolitan city.|a cosmopolitan city|7-8
+diverse|adj|/daɪˈvɜːs/|đa dạng|made up of many different kinds|Vietnam has a diverse range of landscapes.|a diverse culture|6-7
+flexible|adj|/ˈfleksɪbəl/|linh hoạt|able to change easily to suit new conditions|Flexible tickets let you change the date of travel.|a flexible schedule|6-7
+foreign|adj|/ˈfɒrɪn/|nước ngoài|from or in a country that is not your own|Foreign visitors need a visa to enter the country.|a foreign country|5-6
+local|adj|/ˈləʊkəl/|thuộc địa phương|relating to a particular area|Try the local food when you travel.|local cuisine|5-6
+luxurious|adj|/lʌɡˈʒʊəriəs/|sang trọng|very comfortable and expensive|They stayed in a luxurious five-star hotel.|a luxurious resort|6-7
+mountainous|adj|/ˈmaʊntɪnəs/|nhiều núi|having many mountains|The northern region is mountainous and sparsely populated.|mountainous terrain|7-8
+peaceful|adj|/ˈpiːsfəl/|yên bình|quiet and calm|The village is a peaceful place to relax.|a peaceful atmosphere|5-6
+picturesque|adj|/ˌpɪktʃəˈresk/|đẹp như tranh|attractive in a way that looks like a picture|The picturesque harbour attracts many artists.|a picturesque village|7-8
+polluted|adj|/pəˈluːtɪd/|bị ô nhiễm|containing harmful substances|The river is too polluted to swim in.|polluted air|6-7
+quaint|adj|/kweɪnt/|cổ kính, xinh xắn|attractively old-fashioned|We wandered through the quaint streets of the old town.|a quaint cottage|8+
+remote|adj|/rɪˈməʊt/|xa xôi, hẻo lánh|far from towns and other places|They trekked to a remote village in the mountains.|a remote area|6-7
+rough|adj|/rʌf/|gồ ghề, dữ dội|not smooth or calm|The ferry was cancelled because of rough seas.|rough terrain|5-6
+rural|adj|/ˈrʊərəl/|thuộc nông thôn|relating to the countryside|Rural tourism helps keep villages alive.|rural areas|6-7
+scenic|adj|/ˈsiːnɪk/|có cảnh đẹp|having beautiful natural views|We took the scenic route along the coast.|a scenic route|7-8
+stunning|adj|/ˈstʌnɪŋ/|tuyệt đẹp|extremely beautiful|The island has stunning beaches.|a stunning view|6-7
+tough|adj|/tʌf/|khó khăn, gian khổ|difficult and demanding|The trek was tough but rewarding.|a tough journey|5-6
+traditional|adj|/trəˈdɪʃənəl/|truyền thống|following customs handed down over time|Visitors enjoy watching traditional dances.|traditional food|5-6
+unspoilt|adj|/ʌnˈspɔɪlt/|còn nguyên sơ|not damaged or changed by people|The island remains unspoilt by mass tourism.|an unspoilt beach|7-8
+urban|adj|/ˈɜːbən/|thuộc đô thị|relating to towns and cities|Urban tourism includes museums, shopping and nightlife.|urban areas|6-7
+affect|v|/əˈfekt/|ảnh hưởng|to have an influence on something|Tourism can seriously affect the daily life of local people.|badly affect|5-6
+fluctuate|v|/ˈflʌktʃueɪt/|dao động|to change often in amount or level|Hotel prices fluctuate with the seasons.|fluctuate widely|7-8
++++
+sightseeing|n|/ˈsaɪtsiːɪŋ/|việc tham quan|visiting interesting places as a tourist|We spent two days sightseeing in Paris.|go sightseeing|6-7
+souvenir|n|/ˌsuːvəˈnɪə/|quà lưu niệm|something you buy to remember a place|Tourists buy souvenirs to take home.|buy a souvenir|6-7
+excursion|n|/ɪkˈskɜːʃən/|chuyến tham quan ngắn|a short trip made for pleasure|We went on an excursion to the old fort.|a day excursion|7-8
+backpacker|n|/ˈbækpækə/|khách du lịch bụi|a traveller who carries a backpack and has little money|Backpackers often stay in cheap hostels.|a young backpacker|7-8
+heritage|n|/ˈherɪtɪdʒ/|di sản|traditions and buildings from the past|The old quarter is a World Heritage site.|cultural heritage|7-8
+hospitality|n|/ˌhɒspɪˈtæləti/|lòng hiếu khách|friendly and generous treatment of guests|Visitors are always moved by local hospitality.|warm hospitality|7-8
+overcrowded|adj|/ˌəʊvəˈkraʊdɪd/|quá đông đúc|containing too many people|Popular beaches become overcrowded in summer.|overcrowded cities|7-8
+off the beaten track|ph|/ɒf ðə ˈbiːtən træk/|ít người đặt chân đến|in a place few people visit|We prefer to stay in villages off the beaten track.|off the beaten track|8+
+jet lag|np|/ˈdʒet læɡ/|chứng lệch múi giờ|tiredness caused by flying across time zones|I suffered from severe jet lag after the flight.|suffer from jet lag|7-8
+sustainable tourism|np|/səˈsteɪnəbəl ˈtʊərɪzəm/|du lịch bền vững|travel that protects places for future visitors|Sustainable tourism limits damage to the environment.|promote sustainable tourism|7-8
+immerse|v|/ɪˈmɜːs/|đắm mình|to become completely involved in something|Staying with a local family helps you immerse yourself in the culture.|immerse yourself in|8+
+explore|v|/ɪkˈsplɔː/|khám phá|to travel around a place to learn about it|We hired bikes to explore the island.|explore a city|6-7
+embark|v|/ɪmˈbɑːk/|bắt đầu (một chuyến đi)|to start a journey or a new project|They embarked on a three-month tour of Asia.|embark on|8+
+commute|v|/kəˈmjuːt/|đi làm hằng ngày bằng phương tiện|to travel regularly between home and work|Millions of people commute into the capital every day.|commute to work|6-7
+wander|v|/ˈwɒndə/|đi lang thang|to walk slowly without a fixed aim|We wandered through the market for hours.|wander around|7-8
+scenery|n|/ˈsiːnəri/|phong cảnh|the natural features of a place|The scenery along the coast is magnificent.|stunning scenery|6-7
+pilgrimage|n|/ˈpɪlɡrɪmɪdʒ/|cuộc hành hương|a journey made to a holy place|Thousands make the pilgrimage to the temple each year.|go on a pilgrimage|8+
+exotic|adj|/ɪɡˈzɒtɪk/|kỳ lạ, ngoại lai|unusual and exciting because it is from far away|The market sells exotic fruits from all over Asia.|exotic destinations|7-8
+bustling|adj|/ˈbʌslɪŋ/|nhộn nhịp|full of busy and noisy activity|The bustling market is full of colour and sound.|a bustling city|7-8
+stopover|n|/ˈstɒpəʊvə/|điểm dừng chân giữa chặng|a short stay between two parts of a long journey|We had a two-day stopover in Dubai.|a short stopover|7-8

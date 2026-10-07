@@ -1,0 +1,42 @@
+#unit 11
+#en Materials and technology
+#blurb Vật liệu, kỹ thuật, không gian mạng và các từ chỉ sự đổi mới
+cyberspace|n|/ˈsaɪbəspeɪs/|không gian mạng|the online world of computers and the Internet|Many young people spend hours in cyberspace every day.|in cyberspace|8+
+expense|n|/ɪkˈspens/|chi phí|money spent on something|The expense of developing the vaccine was enormous.|at great expense|6-7
+fabric|n|/ˈfæbrɪk/|vải|cloth used for making clothes|The dress was made from a soft, expensive fabric.|a cotton fabric|7-8
+fibre|n|/ˈfaɪbə/|sợi|a thin thread of natural or artificial material|Fibre from bamboo is used to make eco-friendly clothing.|a natural fibre|7-8
+foam|n|/fəʊm/|bọt, mút xốp|a light material full of tiny air bubbles|The seat is filled with soft foam.|foam padding|8+
+log|n|/lɒɡ/|khúc gỗ|a thick piece of tree trunk|The cabin was built from logs.|a log cabin|6-7
+marble|n|/ˈmɑːbəl/|đá cẩm thạch|a hard smooth stone used for building|The floor of the palace is made of white marble.|a marble statue|7-8
+patent|n|/ˈpeɪtənt/|bằng sáng chế|an official right to be the only maker of an invention|The company applied for a patent on its new battery.|file a patent|7-8
+pillar|n|/ˈpɪlə/|cột trụ|a tall upright support for a building|Stone pillars hold up the roof of the temple.|a stone pillar|7-8
+plank|n|/plæŋk/|tấm ván|a long flat piece of wood|They laid a plank across the stream.|a wooden plank|8+
+polyester|n|/ˌpɒliˈestə/|sợi polyester|a man-made fabric used in clothes|The shirt is made of cotton and polyester.|polyester fibre|8+
+prop|n|/prɒp/|cột chống|a support that holds something up|A wooden prop held up the weak roof.|a wooden prop|8+
+technique|n|/tekˈniːk/|kỹ thuật|a special way of doing something|Builders use a new technique to join steel beams.|a modern technique|7-8
+thread|n|/θred/|sợi chỉ|a thin string used for sewing|The fabric is woven from silk thread.|a silk thread|7-8
+timber|n|/ˈtɪmbə/|gỗ xây dựng|wood used for building|Timber is a renewable building material.|a timber frame|7-8
+cutting-edge|adj|/ˌkʌtɪŋ ˈedʒ/|tiên tiến nhất|very modern and advanced|The lab uses cutting-edge technology to test materials.|cutting-edge research|8+
+futuristic|adj|/ˌfjuːtʃəˈrɪstɪk/|mang phong cách tương lai|very modern and like something from the future|The airport has a futuristic glass roof.|a futuristic design|7-8
+demolish|v|/dɪˈmɒlɪʃ/|phá dỡ|to pull down a building|The old factory was demolished last year.|demolish a building|7-8
+dye|v|/daɪ/|nhuộm|to change the colour of something|Workers dye the cloth in large vats.|dye fabric|7-8
+innovate|v|/ˈɪnəveɪt/|đổi mới|to introduce new ideas or methods|Companies must innovate to survive.|innovate constantly|7-8
+revolve|v|/rɪˈvɒlv/|xoay quanh|to turn around a central point|The wheel revolves on a steel axle.|revolve around|8+
+rotate|v|/rəʊˈteɪt/|xoay|to turn around a central point|The blades rotate faster in strong winds.|rotate slowly|7-8
+strike|v|/straɪk/|đánh, va đập|to hit something with force|Lightning can strike tall metal structures.|strike a balance|6-7
++++
+durable|adj|/ˈdjʊərəbəl/|bền|able to last a long time without damage|The bag is made of a durable material.|durable materials|7-8
+flexible|adj|/ˈfleksɪbəl/|dẻo, linh hoạt|able to bend easily|Flexible screens may soon replace glass ones.|a flexible material|6-7
+lightweight|adj|/ˈlaɪtweɪt/|nhẹ|weighing very little|Carbon fibre is strong yet lightweight.|a lightweight frame|7-8
+recyclable|adj|/ˌriːˈsaɪkləbəl/|có thể tái chế|able to be treated and used again|Most glass and metal packaging is recyclable.|recyclable materials|7-8
+biodegradable|adj|/ˌbaɪəʊdɪˈɡreɪdəbəl/|phân huỷ sinh học|able to break down naturally|Biodegradable bags rot away within months.|biodegradable plastic|8+
+sturdy|adj|/ˈstɜːdi/|chắc chắn|strong and not easily damaged|A sturdy table supported the heavy machine.|a sturdy structure|7-8
+steel|n|/stiːl/|thép|a strong metal made from iron|Skyscrapers have a steel frame.|stainless steel|6-7
+glass|n|/ɡlɑːs/|thuỷ tinh|a hard transparent material|The building is covered in tinted glass.|a glass wall|5-6
+alloy|n|/ˈælɔɪ/|hợp kim|a metal made by mixing two or more metals|Aircraft are built from a light alloy.|a metal alloy|8+
+prototype|n|/ˈprəʊtətaɪp/|bản mẫu|the first model of something new|The engineers built a working prototype.|build a prototype|7-8
+breakthrough|n|/ˈbreɪkθruː/|bước đột phá|an important new discovery|Scientists announced a breakthrough in battery design.|a major breakthrough|7-8
+manufacture|v|/ˌmænjʊˈfæktʃə/|sản xuất|to make goods in large numbers|The factory manufactures plastic components.|manufacture goods|7-8
+engineer|v|/ˌendʒɪˈnɪə/|thiết kế, chế tạo|to design and build something skilfully|The bridge was engineered to withstand earthquakes.|engineer a solution|8+
+withstand|v|/wɪðˈstænd/|chịu được|to remain undamaged by something|The material can withstand extreme heat.|withstand pressure|8+
+composite|n|/ˈkɒmpəzɪt/|vật liệu composite|a material made from two or more different substances|Aircraft wings are now made from a strong composite.|a composite material|8+

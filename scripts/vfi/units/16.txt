@@ -1,0 +1,75 @@
+#unit 16
+#en The energy crisis
+#vi Khủng hoảng năng lượng
+#blurb Nhiên liệu, điện năng, năng lượng tái tạo và chuyển đổi xanh
+atmosphere|n|/ˈætməsfɪə/|khí quyển|the layer of gases surrounding the Earth|Burning fuel releases carbon dioxide into the atmosphere.|the Earth's atmosphere|6-7
+balance|n|/ˈbæləns/|sự cân bằng|a situation where things are equal|We need a balance between economic growth and energy use.|strike a balance|6-7
+biofuel|n|/ˈbaɪəʊfjuːəl/|nhiên liệu sinh học|fuel made from plants or animal waste|Biofuel from crops can replace some petrol.|produce biofuel|8+
+carbon|n|/ˈkɑːbən/|carbon|a chemical element found in all living things|Carbon released from coal contributes to global warming.|carbon emissions|6-7
+carbon dioxide|np|/ˌkɑːbən daɪˈɒksaɪd/|khí CO₂|a gas produced when fuel is burned|Cars produce large amounts of carbon dioxide.|emit carbon dioxide|7-8
+crisis|n|/ˈkraɪsɪs/|cuộc khủng hoảng|a time of great danger or difficulty|The oil crisis pushed prices to record levels.|an energy crisis|6-7
+electricity|n|/ɪˌlekˈtrɪsəti/|điện|power used for lighting, heating and machines|Many villages still have no electricity.|generate electricity|5-6
+emissions|n|/ɪˈmɪʃənz/|khí thải|gases released into the air|Factories must reduce harmful emissions.|reduce emissions|7-8
+exhaust|n|/ɪɡˈzɔːst/|khí thải xe|waste gas from an engine|Exhaust from heavy traffic pollutes the air.|exhaust pipe|7-8
+fossil fuel|np|/ˈfɒsəl fjuːəl/|nhiên liệu hoá thạch|a fuel such as coal, oil or gas|Fossil fuels will eventually run out.|burn fossil fuels|6-7
+fuel|n|/ˈfjuːəl/|nhiên liệu|a material burned to produce energy|The price of fuel has doubled in two years.|run out of fuel|5-6
+fumes|n|/fjuːmz/|khói độc|strong and often harmful smoke or gas|Diesel fumes are harmful to health.|toxic fumes|7-8
+gas|n|/ɡæs/|khí đốt|a fuel used for cooking and heating|Many homes in Europe are heated by gas.|natural gas|5-6
+greenhouse gas|np|/ˈɡriːnhaʊs ɡæs/|khí nhà kính|a gas that traps heat in the atmosphere|Methane is a powerful greenhouse gas.|release greenhouse gas|7-8
+hybrid|n|/ˈhaɪbrɪd/|xe lai, vật lai|a car that uses both petrol and electricity|A hybrid uses less fuel than a normal car.|a hybrid car|7-8
+hydrogen|n|/ˈhaɪdrədʒən/|hydro|a light gas that can be used as fuel|Hydrogen produces only water when it burns.|hydrogen fuel|7-8
+petrol|n|/ˈpetrəl/|xăng|liquid fuel used in cars|Petrol is more expensive than it used to be.|run out of petrol|5-6
+resources|n|/rɪˈzɔːsɪz/|tài nguyên|useful things such as oil, water and coal|The world's energy resources are limited.|natural resources|6-7
+turbine|n|/ˈtɜːbaɪn/|tua-bin|a machine that turns movement into electricity|Wind turbines now supply a quarter of the country's power.|a wind turbine|7-8
+vehicle|n|/ˈvɪəkəl/|phương tiện giao thông|a machine used for carrying people or goods|Electric vehicles are quiet and produce no exhaust.|an electric vehicle|6-7
+alternative|adj|/ɔːlˈtɜːnətɪv/|thay thế|available as another choice|Wind and solar are alternative sources of energy.|alternative energy|6-7
+critical|adj|/ˈkrɪtɪkəl/|nghiêm trọng, then chốt|extremely important or serious|The situation became critical when supplies ran out.|a critical situation|7-8
+disposable|adj|/dɪˈspəʊzəbəl/|dùng một lần|intended to be thrown away after use|Disposable batteries add to toxic waste.|disposable batteries|7-8
+drastic|adj|/ˈdræstɪk/|mạnh mẽ, quyết liệt|extreme and sudden|Drastic action is needed to cut energy use.|drastic measures|7-8
+eco-friendly|adj|/ˈiːkəʊ ˌfrendli/|thân thiện với môi trường|not harmful to the environment|Electric buses are an eco-friendly form of transport.|eco-friendly fuel|6-7
+efficient|adj|/ɪˈfɪʃənt/|hiệu quả (tiết kiệm)|working well without wasting energy|Modern fridges are far more efficient than old ones.|energy efficient|6-7
+effective|adj|/ɪˈfektɪv/|hiệu quả|producing the result you want|Insulation is the most effective way to save heat.|an effective method|6-7
+environmentally friendly|adj|/ɪnˌvaɪrənˈmentəli ˈfrendli/|thân thiện với môi trường|not harmful to nature|Solar panels are an environmentally friendly source of power.|environmentally friendly fuel|6-7
+nuclear|adj|/ˈnjuːkliə/|hạt nhân|using the energy released from atoms|Nuclear power plants produce no carbon dioxide.|nuclear power|6-7
+rechargeable|adj|/ˌriːˈtʃɑːdʒəbəl/|có thể sạc lại|able to be filled with energy again|Rechargeable batteries cut down on waste.|rechargeable batteries|7-8
+renewable|adj|/rɪˈnjuːəbəl/|có thể tái tạo|able to be replaced naturally|Wind and solar are renewable sources of energy.|renewable energy|6-7
+solar|adj|/ˈsəʊlə/|thuộc mặt trời|using or relating to energy from the sun|Solar panels are now cheap enough for ordinary homes.|solar power|6-7
+unleaded petrol|np|/ʌnˈledɪd ˈpetrəl/|xăng không chì|petrol that contains no lead|Cars now run on unleaded petrol.|unleaded petrol|7-8
+absorb|v|/əbˈzɔːb/|hấp thụ|to take in a substance or energy|Trees absorb carbon dioxide from the air.|absorb heat|7-8
+conserve|v|/kənˈsɜːv/|tiết kiệm, bảo tồn|to use something carefully to avoid waste|We should conserve energy by switching off lights.|conserve energy|7-8
+consume|v|/kənˈsjuːm/|tiêu thụ|to use up fuel, energy or time|Air conditioners consume huge amounts of electricity.|consume energy|7-8
+convert|v|/kənˈvɜːt/|chuyển đổi|to change something into another form|Solar cells convert sunlight into electricity.|convert into|7-8
+counter|v|/ˈkaʊntə/|chống lại, đối phó|to act against something to reduce its effect|New taxes aim to counter rising fuel consumption.|counter a trend|8+
+deplete|v|/dɪˈpliːt/|làm cạn kiệt|to use up so little remains|Overuse has depleted the world's oil reserves.|deplete resources|8+
+diminish|v|/dɪˈmɪnɪʃ/|giảm bớt|to become smaller or less|Supplies of oil will diminish over the coming decades.|diminish rapidly|7-8
+discharge|v|/dɪsˈtʃɑːdʒ/|thải ra|to release a liquid or gas|Power stations discharge hot water into the river.|discharge waste|8+
+dwindle|v|/ˈdwɪndəl/|cạn dần|to become smaller or weaker gradually|Coal reserves are dwindling fast.|dwindling supplies|8+
+emit|v|/ɪˈmɪt/|thải ra|to send out gas, light or heat|Cars emit harmful gases into the air.|emit gases|7-8
+expend|v|/ɪkˈspend/|tiêu tốn|to use up energy, time or money|Rockets expend huge quantities of fuel at launch.|expend energy|8+
+limit|v|/ˈlɪmɪt/|hạn chế|to keep something below a fixed amount|Laws now limit the amount of fuel factories can burn.|limit consumption|6-7
+maintain|v|/meɪnˈteɪn/|duy trì|to keep something at the same level|It is hard to maintain supplies during a cold winter.|maintain supplies|6-7
+outweigh|v|/ˌaʊtˈweɪ/|vượt trội hơn|to be greater in importance than something else|The benefits of solar power outweigh its costs.|outweigh the costs|8+
+preserve|v|/prɪˈzɜːv/|bảo tồn|to protect something from being lost|We must preserve resources for future generations.|preserve resources|6-7
+retain|v|/rɪˈteɪn/|giữ lại|to keep something instead of losing it|Good insulation helps a house retain heat.|retain heat|7-8
+waste|v|/weɪst/|lãng phí|to use something carelessly|Leaving lights on all night wastes electricity.|waste energy|5-6
++++
+power plant|np|/ˈpaʊə plɑːnt/|nhà máy điện|a building where electricity is produced|The new power plant will supply the whole region.|a coal-fired power plant|6-7
+wind farm|np|/ˈwɪnd fɑːm/|trang trại điện gió|a group of wind turbines producing electricity|A large wind farm was built off the coast.|an offshore wind farm|7-8
+solar panel|np|/ˈsəʊlə ˈpænəl/|tấm pin mặt trời|a flat device that turns sunlight into electricity|Many roofs now have solar panels fitted.|install solar panels|6-7
+hydroelectric|adj|/ˌhaɪdrəʊɪˈlektrɪk/|thuỷ điện|producing electricity from moving water|A hydroelectric dam supplies power to the capital.|hydroelectric power|8+
+geothermal|adj|/ˌdʒiːəʊˈθɜːməl/|địa nhiệt|using heat from inside the Earth|Iceland heats many homes with geothermal energy.|geothermal energy|8+
+blackout|n|/ˈblækaʊt/|sự mất điện|a sudden loss of electrical power|A blackout left the city in darkness for six hours.|a power blackout|7-8
+shortage|n|/ˈʃɔːtɪdʒ/|sự thiếu hụt|a situation in which there is not enough of something|The country faces a severe fuel shortage.|a shortage of|6-7
+grid|n|/ɡrɪd/|lưới điện|the network of wires that carries electricity|Solar power is fed into the national grid.|the national grid|7-8
+generator|n|/ˈdʒenəreɪtə/|máy phát điện|a machine that produces electricity|The hospital has a generator in case of power cuts.|a backup generator|7-8
+reserves|n|/rɪˈzɜːvz/|trữ lượng|a supply of something kept for the future|Oil reserves under the sea are almost exhausted.|oil reserves|7-8
+finite|adj|/ˈfaɪnaɪt/|hữu hạn|having an end or limit|Coal and oil are finite resources.|finite resources|8+
+non-renewable|adj|/ˌnɒn rɪˈnjuːəbəl/|không thể tái tạo|not able to be replaced once used|Oil is a non-renewable resource.|non-renewable resources|7-8
+carbon-free|adj|/ˈkɑːbən friː/|không phát thải carbon|producing no carbon dioxide|Nuclear and wind power are both carbon-free.|carbon-free energy|8+
+sustainable|adj|/səˈsteɪnəbəl/|bền vững|able to continue without harming the environment|Cities need a sustainable energy plan.|sustainable energy|7-8
+insulate|v|/ˈɪnsjʊleɪt/|cách nhiệt|to cover something to stop heat from escaping|Insulate your loft to keep the house warm.|insulate a house|7-8
+harness|v|/ˈhɑːnɪs/|khai thác (sức gió, nước…)|to control and use natural energy|Dams harness the power of rivers.|harness energy|8+
+ration|v|/ˈræʃən/|phân phối hạn chế|to limit how much people can have of something|The government may ration petrol during a shortage.|ration fuel|8+
+phase out|v|/ˈfeɪz aʊt/|loại bỏ dần|to stop using something gradually|Several countries plan to phase out coal by 2030.|phase out coal|8+
+subsidise|v|/ˈsʌbsɪdaɪz/|trợ giá|to give money to help reduce a price|Governments subsidise solar panels to encourage their use.|subsidise renewable energy|8+
+retrofit|v|/ˈretrəʊfɪt/|cải tạo, lắp bổ sung|to add new technology to an old building|Old homes can be retrofitted with better insulation.|retrofit a house|8+

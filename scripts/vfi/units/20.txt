@@ -1,0 +1,113 @@
+#unit 20
+#en The arts
+#vi Nghệ thuật
+#blurb Hội hoạ, âm nhạc, sân khấu, sáng tạo và cách nghệ thuật chạm vào cảm xúc
+actor|n|/ˈæktə/|nam diễn viên|a man who performs in plays or films|The actor won an award for his role in the film.|a film actor|5-6
+actress|n|/ˈæktrəs/|nữ diễn viên|a woman who performs in plays or films|The actress spent months preparing for the role.|a leading actress|5-6
+aesthetics|n|/iːsˈθetɪks/|mỹ học|the study of beauty and art|The aesthetics of the building attract many visitors.|an aesthetics course|8+
+appreciation|n|/əˌpriːʃiˈeɪʃən/|sự thưởng thức, trân trọng|the understanding and enjoyment of something good|Music classes build an appreciation of classical works.|art appreciation|7-8
+artefact|n|/ˈɑːtɪfækt/|hiện vật|an object made by people, often of historical interest|The museum displays artefacts from ancient Greece.|a cultural artefact|7-8
+artist|n|/ˈɑːtɪst/|nghệ sĩ|a person who creates paintings or other art|The artist exhibited her work in London.|a talented artist|5-6
+atmosphere|n|/ˈætməsfɪə/|bầu không khí|the mood of a place|The theatre has a warm and friendly atmosphere.|a lively atmosphere|6-7
+audience|n|/ˈɔːdiəns/|khán giả|the people who watch or listen to a performance|The audience applauded for five minutes.|a large audience|5-6
+ballerina|n|/ˌbæləˈriːnə/|nữ diễn viên ba lê|a woman who dances in ballet|The young ballerina trained for ten years.|a famous ballerina|7-8
+ballet|n|/ˈbæleɪ/|múa ba lê|a type of dance with set steps|She has been learning ballet since she was five.|a ballet dancer|6-7
+carving|n|/ˈkɑːvɪŋ/|tác phẩm chạm khắc|a figure or pattern cut into wood or stone|The temple is decorated with beautiful stone carvings.|a wood carving|7-8
+conception|n|/kənˈsepʃən/|quan niệm, sự hình thành ý tưởng|an idea or way of understanding something|The artist's conception of beauty challenges tradition.|a clear conception|8+
+concert|n|/ˈkɒnsət/|buổi hoà nhạc|a live musical performance|Thousands of fans attended the concert.|a live concert|5-6
+crafts|n|/krɑːfts/|đồ thủ công|skilled work making things by hand|Village crafts such as weaving are still popular.|traditional crafts|6-7
+creation|n|/kriˈeɪʃən/|sự sáng tạo, tác phẩm|the act of making something new|The creation of the mural took two years.|artistic creation|6-7
+culture|n|/ˈkʌltʃə/|văn hoá|the arts and customs of a society|Museums help us understand other cultures.|popular culture|5-6
+emotion|n|/ɪˈməʊʃən/|cảm xúc|a strong feeling such as joy or sadness|Music is a powerful way to express emotion.|express emotion|6-7
+exhibition|n|/ˌeksɪˈbɪʃən/|triển lãm|a public show of art or other objects|The gallery is holding an exhibition of modern sculpture.|hold an exhibition|6-7
+expression|n|/ɪkˈspreʃən/|sự biểu đạt|the showing of feelings through words or art|Painting is a form of self-expression.|artistic expression|6-7
+festival|n|/ˈfestɪvəl/|lễ hội|a series of cultural events or performances|The city hosts an international film festival every year.|a music festival|5-6
+gallery|n|/ˈɡæləri/|phòng tranh|a building where art is displayed|We spent the afternoon in the national gallery.|an art gallery|5-6
+image|n|/ˈɪmɪdʒ/|hình ảnh|a picture or mental idea|The painting creates a powerful image of war.|a powerful image|5-6
+imagination|n|/ɪˌmædʒɪˈneɪʃən/|trí tưởng tượng|the ability to form new ideas and pictures|Children's books stimulate the imagination.|a vivid imagination|6-7
+influence|nv|/ˈɪnfluəns/|ảnh hưởng|an effect on how something develops|Picasso's influence on modern art is enormous.|a strong influence|6-7
+inspiration|n|/ˌɪnspɪˈreɪʃən/|nguồn cảm hứng|something that gives you new ideas|The countryside was her main source of inspiration.|a source of inspiration|6-7
+intimacy|n|/ˈɪntɪməsi/|sự gần gũi|a close and personal feeling|The small theatre gives the show a feeling of intimacy.|a sense of intimacy|8+
+literature|n|/ˈlɪtrətʃə/|văn học|written works of high quality|She studied English literature at university.|classic literature|6-7
+mood|n|/muːd/|tâm trạng, không khí|the feeling or atmosphere of something|The soft lighting creates a relaxed mood.|set the mood|6-7
+musician|n|/mjuːˈzɪʃən/|nhạc sĩ, nhạc công|a person who plays or writes music|The musician played the violin beautifully.|a talented musician|5-6
+opera|n|/ˈɒpərə/|nhạc kịch opera|a play in which the words are sung|We saw an opera at the national theatre.|an opera singer|6-7
+orchestra|n|/ˈɔːkɪstrə/|dàn nhạc giao hưởng|a large group of musicians|The orchestra performed a symphony by Beethoven.|a symphony orchestra|6-7
+painting|n|/ˈpeɪntɪŋ/|bức tranh, hội hoạ|a picture made with paint|The painting hangs in the main hall of the gallery.|an oil painting|5-6
+performance|n|/pəˈfɔːməns/|buổi biểu diễn|an act of entertaining an audience|Her performance in the film earned great praise.|a live performance|6-7
+the performing arts|np|/ðə pəˌfɔːmɪŋ ˈɑːts/|nghệ thuật biểu diễn|dance, music and theatre|Funding for the performing arts has been cut.|study the performing arts|7-8
+play|n|/pleɪ/|vở kịch|a story written to be acted on stage|We went to see a play at the theatre.|a Shakespeare play|5-6
+portrait|n|/ˈpɔːtrət/|bức chân dung|a picture of a person|The portrait of the queen hangs in the hall.|paint a portrait|6-7
+proportion|n|/prəˈpɔːʃən/|tỷ lệ cân đối|the balanced relation between parts|The sculptor paid close attention to proportion.|in proportion|7-8
+reflection|n|/rɪˈflekʃən/|sự phản ánh|an image of something that shows its qualities|The play is a reflection of life in the 1930s.|a reflection of|7-8
+response|n|/rɪˈspɒns/|phản ứng|a reaction to something|The audience's response to the film was positive.|a positive response|6-7
+sculptor|n|/ˈskʌlptə/|nhà điêu khắc|an artist who makes sculptures|The sculptor carved the statue from a single block of marble.|a famous sculptor|7-8
+sculpture|n|/ˈskʌlptʃə/|tác phẩm điêu khắc|a work of art made from stone, wood or metal|A huge sculpture stands in front of the museum.|a bronze sculpture|6-7
+stimulus|n|/ˈstɪmjʊləs/|tác nhân kích thích|something that makes a response happen|Art can be a stimulus for creative thinking.|a strong stimulus|8+
+style|n|/staɪl/|phong cách|a particular way of doing something|Her style of painting is unmistakable.|a unique style|5-6
+taste|n|/teɪst/|gu thẩm mỹ|a person's preferences in art or fashion|Tastes in music change from generation to generation.|good taste|6-7
+theatre|n|/ˈθɪətə/|nhà hát, sân khấu|a building where plays are performed|The old theatre has been restored to its former glory.|go to the theatre|5-6
+theme|n|/θiːm/|chủ đề|the main subject of a work of art|Love and loss are the main themes of the novel.|a central theme|6-7
+venue|n|/ˈvenjuː/|địa điểm tổ chức|a place where an event is held|The stadium is a popular venue for concerts.|a concert venue|6-7
+works|n|/wɜːks/|tác phẩm|pieces of art, music or writing|The gallery owns several works by Van Gogh.|collected works|6-7
+writer|n|/ˈraɪtə/|nhà văn|a person who writes books or articles|The writer's latest novel became a bestseller.|a famous writer|5-6
+abstract|adj|/ˈæbstrækt/|trừu tượng|not showing real objects but ideas and shapes|Abstract art is difficult for some people to appreciate.|abstract painting|6-7
+accomplished|adj|/əˈkʌmplɪʃt/|tài giỏi|very skilled at something|She is an accomplished pianist.|an accomplished artist|7-8
+aesthetic|adj|/iːsˈθetɪk/|thuộc thẩm mỹ|relating to the enjoyment of beauty|The park adds aesthetic value to the city.|aesthetic appeal|8+
+burgeoning|adj|/ˈbɜːdʒənɪŋ/|đang phát triển nhanh|growing or developing quickly|The city has a burgeoning arts scene.|a burgeoning industry|8+
+classical|adj|/ˈklæsɪkəl/|cổ điển|traditional and of lasting value|Classical music helps many people relax.|classical music|6-7
+creative|adj|/kriˈeɪtɪv/|sáng tạo|able to produce new and original ideas|Children are naturally creative.|a creative mind|5-6
+cultural|adj|/ˈkʌltʃərəl/|thuộc văn hoá|relating to the arts and traditions of a society|The city has a rich cultural life.|cultural heritage|6-7
+distracting|adj|/dɪˈstræktɪŋ/|gây xao nhãng|making it hard to concentrate|Loud background music can be distracting.|a distracting noise|7-8
+eclectic|adj|/ekˈlektɪk/|đa phong cách|taking ideas from many different sources|The gallery has an eclectic collection of modern art.|an eclectic mix|8+
+electric|adj|/ɪˈlektrɪk/|sôi động, như có điện|exciting and full of energy|The atmosphere at the concert was electric.|an electric atmosphere|7-8
+emotional|adj|/ɪˈməʊʃənəl/|xúc động|causing or showing strong feelings|The film's ending was deeply emotional.|an emotional response|6-7
+fundamental|adj|/ˌfʌndəˈmentəl/|cơ bản, nền tảng|forming the basis of something|Creativity is fundamental to all forms of art.|a fundamental part|7-8
+imaginative|adj|/ɪˈmædʒɪnətɪv/|giàu trí tưởng tượng|having new and original ideas|The designer produced an imaginative set for the play.|an imaginative story|7-8
+influential|adj|/ˌɪnflʊˈenʃəl/|có ảnh hưởng|having a strong effect on others|She was one of the most influential painters of her time.|an influential figure|7-8
+inspirational|adj|/ˌɪnspəˈreɪʃənəl/|đầy cảm hứng|giving people new ideas or energy|The teacher gave an inspirational speech.|an inspirational leader|7-8
+interactive|adj|/ˌɪntəˈræktɪv/|có tính tương tác|allowing the audience to take part|The museum has an interactive exhibition for children.|interactive displays|7-8
+literary|adj|/ˈlɪtərəri/|thuộc văn chương|relating to literature|She won a major literary prize.|a literary festival|7-8
+live|adj|/laɪv/|trực tiếp|performed in front of an audience|Nothing beats the thrill of live music.|live music|5-6
+magical|adj|/ˈmædʒɪkəl/|kỳ diệu|wonderful and mysterious|The ballet created a magical atmosphere on stage.|a magical experience|6-7
+monotonous|adj|/məˈnɒtənəs/|đơn điệu|boring because it never changes|The film's plot was dull and monotonous.|a monotonous tone|7-8
+mundane|adj|/mʌnˈdeɪn/|tầm thường, nhàm chán|ordinary and not interesting|Her paintings turn mundane objects into art.|a mundane task|8+
+passionate|adj|/ˈpæʃənət/|đam mê|having strong feelings about something|He is passionate about modern jazz.|a passionate speech|6-7
+popular|adj|/ˈpɒpjʊlə/|phổ biến|liked by many people|Street art is increasingly popular with young people.|a popular choice|5-6
+prominent|adj|/ˈprɒmɪnənt/|nổi bật|important and well known|She is a prominent figure in the art world.|a prominent role|7-8
+relaxing|adj|/rɪˈlæksɪŋ/|thư giãn|making you feel calm|Listening to quiet music is very relaxing.|a relaxing atmosphere|5-6
+stimulating|adj|/ˈstɪmjʊleɪtɪŋ/|kích thích tư duy|interesting and full of new ideas|The exhibition was intellectually stimulating.|a stimulating discussion|7-8
+visual|adj|/ˈvɪʒuəl/|thuộc thị giác|relating to seeing|Visual art includes painting, drawing and sculpture.|visual arts|6-7
+vivid|adj|/ˈvɪvɪd/|sống động|producing strong, clear pictures in the mind|The writer gives a vivid description of the city.|a vivid image|7-8
+choreograph|v|/ˈkɒriəɡrɑːf/|biên đạo múa|to design the movements of a dance|She choreographed the opening scene.|choreograph a dance|8+
+create|v|/kriˈeɪt/|sáng tạo|to make something new|The artist created a mural for the town square.|create a work|5-6
+depict|v|/dɪˈpɪkt/|miêu tả, khắc hoạ|to show or describe something in a picture or words|The painting depicts a battle scene.|depict life|7-8
+enrich|v|/ɪnˈrɪtʃ/|làm phong phú|to improve the quality of something|The arts enrich our lives in many ways.|enrich a culture|7-8
+escape|v|/ɪˈskeɪp/|thoát khỏi|to get away from something unpleasant|Many people escape their worries by reading novels.|escape from reality|6-7
+imagine|v|/ɪˈmædʒɪn/|tưởng tượng|to form a picture of something in the mind|Children imagine imaginary friends and adventures.|imagine a world|5-6
+inspire|v|/ɪnˈspaɪə/|truyền cảm hứng|to make someone want to create something|Nature has inspired many great poets.|inspire young people|6-7
+participate|v|/pɑːˈtɪsɪpeɪt/|tham gia|to take part in an activity|Pupils are encouraged to participate in school drama.|participate in|6-7
+perform|v|/pəˈfɔːm/|biểu diễn|to entertain an audience|The band will perform at the festival.|perform on stage|5-6
+provoke|v|/prəˈvəʊk/|khơi gợi, gây ra|to cause a strong reaction|The sculpture provoked an angry response.|provoke a reaction|8+
+transcend|v|/trænˈsend/|vượt lên trên|to go beyond normal limits|Great art can transcend cultural boundaries.|transcend boundaries|8+
++++
+masterpiece|n|/ˈmɑːstəpiːs/|kiệt tác|a work of outstanding skill|The painting is widely regarded as a masterpiece.|a true masterpiece|7-8
+canvas|n|/ˈkænvəs/|vải vẽ, toan|a strong cloth used for oil paintings|The artist covered the whole canvas in blue.|an oil canvas|7-8
+sketch|nv|/sketʃ/|phác thảo|a quick drawing; to draw roughly|He made a quick sketch of the harbour.|a pencil sketch|6-7
+mural|n|/ˈmjʊərəl/|bức tranh tường|a large painting done directly on a wall|A colourful mural covers the side of the school.|paint a mural|7-8
+exhibit|nv|/ɪɡˈzɪbɪt/|vật trưng bày; trưng bày|an object shown to the public; to show to the public|The museum exhibits paintings from the sixteenth century.|exhibit a work|7-8
+curator|n|/kjʊəˈreɪtə/|người phụ trách bảo tàng|a person who manages a museum's collection|The curator chose the paintings for the show.|a museum curator|8+
+critic|n|/ˈkrɪtɪk/|nhà phê bình|a person who judges art, books or films|Critics praised the film for its original story.|an art critic|6-7
+genre|n|/ˈʒɒnrə/|thể loại|a type of art, music or writing|Jazz is a genre that began in New Orleans.|a literary genre|7-8
+rhythm|n|/ˈrɪðəm/|nhịp điệu|a regular pattern of beats in music|The drums set a fast rhythm.|a steady rhythm|7-8
+melody|n|/ˈmelədi/|giai điệu|a tune made up of musical notes|The melody stayed in my head for days.|a haunting melody|7-8
+choir|n|/ˈkwaɪə/|dàn hợp xướng|a group of people who sing together|The school choir performed at the carol service.|a church choir|7-8
+composer|n|/kəmˈpəʊzə/|nhà soạn nhạc|a person who writes music|Mozart was a gifted composer from childhood.|a classical composer|7-8
+audition|n|/ɔːˈdɪʃən/|buổi thử vai|a short performance to test a performer's ability|She passed the audition for the national theatre.|attend an audition|7-8
+applaud|v|/əˈplɔːd/|vỗ tay tán thưởng|to clap hands to show approval|The crowd stood and applauded the singer.|applaud loudly|7-8
+captivate|v|/ˈkæptɪveɪt/|làm say mê|to attract and hold someone's attention|The storyteller captivated the children.|captivate an audience|8+
+evoke|v|/ɪˈvəʊk/|gợi lên|to bring a feeling or memory to mind|The music evoked memories of childhood.|evoke emotions|8+
+portray|v|/pɔːˈtreɪ/|khắc hoạ, thể hiện|to show someone or something in a particular way|The film portrays life in rural Vietnam.|portray a character|7-8
+perspective|n|/pəˈspektɪv/|góc nhìn|a particular way of thinking about something|The novel offers a fresh perspective on the war.|a fresh perspective|7-8
+symbolism|n|/ˈsɪmbəlɪzəm/|tính biểu tượng|the use of symbols to express ideas|The painting is full of religious symbolism.|use symbolism|8+
+ensemble|n|/ɒnˈsɒmbəl/|nhóm biểu diễn, tập hợp|a small group of musicians or actors who perform together|A string ensemble played at the opening of the gallery.|a musical ensemble|8+

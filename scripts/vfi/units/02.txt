@@ -1,0 +1,85 @@
+#unit 2
+#en Mental and physical development
+#vi Phát triển trí tuệ và thể chất
+#blurb Trí nhớ, kỹ năng, các giai đoạn phát triển từ trẻ sơ sinh đến trưởng thành
+ability|n|/əˈbɪləti/|khả năng|the power or skill to do something|Children differ greatly in their ability to concentrate.|natural ability|5-6
+adolescent|n|/ˌædəˈlesənt/|thanh thiếu niên|a young person developing into an adult|An adolescent needs both freedom and clear boundaries.|a troubled adolescent|6-7
+behaviour|n|/bɪˈheɪvjə/|hành vi|the way a person acts|Violent behaviour in children is often learned at home.|bad behaviour|5-6
+childhood|n|/ˈtʃaɪldhʊd/|thời thơ ấu|the period of life when someone is a child|Experiences in early childhood shape brain development.|early childhood|5-6
+concept|n|/ˈkɒnsept/|khái niệm|an abstract idea or principle|Young children cannot grasp the concept of time.|grasp a concept|6-7
+consequence|n|/ˈkɒnsɪkwəns/|hậu quả|a result of an action, often a bad one|Children must learn the consequences of their choices.|face the consequences|6-7
+gesture|nv|/ˈdʒestʃə/|cử chỉ; ra hiệu|a movement of the body that expresses a meaning|Babies understand gestures long before they can speak.|a friendly gesture|6-7
+growth|n|/ɡrəʊθ/|sự tăng trưởng|the process of increasing in size or maturity|Healthy food supports normal growth in young children.|rapid growth|5-6
+height|n|/haɪt/|chiều cao|how tall a person or thing is|Average height has risen steadily over the last century.|average height|5-6
+imagination|n|/ɪˌmædʒɪˈneɪʃən/|trí tưởng tượng|the ability to form new ideas or pictures in the mind|Pretend play stimulates a child's imagination.|a vivid imagination|6-7
+infancy|n|/ˈɪnfənsi/|thời kỳ sơ sinh|the earliest period of a child's life|The brain grows fastest during infancy.|in infancy|7-8
+infant|n|/ˈɪnfənt/|trẻ sơ sinh|a very young child or baby|Infant mortality has fallen sharply in developed countries.|a newborn infant|6-7
+knowledge|n|/ˈnɒlɪdʒ/|kiến thức|information and understanding gained through learning|Reading widely increases a child's general knowledge.|gain knowledge|5-6
+maturity|n|/məˈtʃʊərəti/|sự trưởng thành|the state of being fully developed in mind or body|Emotional maturity does not always come with age.|reach maturity|6-7
+memory|n|/ˈmeməri/|trí nhớ, ký ức|the ability to remember; something remembered|Her earliest memory is of playing in the garden.|a good memory|5-6
+milestone|n|/ˈmaɪlstəʊn/|cột mốc|an important stage in development|Taking the first steps is a major milestone for a toddler.|reach a milestone|7-8
+mind|n|/maɪnd/|tâm trí|the part of a person that thinks and feels|A young mind absorbs information like a sponge.|a sharp mind|5-6
+peers|n|/pɪəz/|bạn đồng trang lứa|people of the same age or status|Teenagers often value the opinion of peers above that of adults.|peer group|6-7
+period|n|/ˈpɪəriəd/|giai đoạn|a length of time in life or history|Puberty is a difficult period for many young people.|a critical period|5-6
+phase|n|/feɪz/|giai đoạn|one stage in a process of change|Rebelliousness is usually just a temporary phase.|go through a phase|6-7
+rate|n|/reɪt/|tốc độ, tỷ lệ|the speed at which something happens|Children develop at different rates.|at a steady rate|5-6
+reminder|n|/rɪˈmaɪndə/|vật gợi nhớ|something that helps you remember|Old photos are a powerful reminder of the past.|a gentle reminder|6-7
+social skills|np|/ˈsəʊʃəl skɪlz/|kỹ năng xã hội|the abilities needed to get along with other people|Group activities help shy children build social skills.|develop social skills|6-7
+skill|n|/skɪl/|kỹ năng|the ability to do something well|Learning to read is the most important skill in school.|acquire a skill|5-6
+stage|n|/steɪdʒ/|giai đoạn|a point in a process of development|Each stage of childhood brings new challenges.|an early stage|5-6
+toddler|n|/ˈtɒdlə/|trẻ tập đi|a child who has just learned to walk|A toddler explores the world by touching everything.|a curious toddler|6-7
+transition|n|/trænˈzɪʃən/|sự chuyển tiếp|a change from one state or stage to another|The transition to secondary school can be stressful.|a smooth transition|7-8
+abstract|adj|/ˈæbstrækt/|trừu tượng|existing as an idea rather than a physical thing|Abstract thinking develops during the teenage years.|abstract thought|6-7
+cognitive|adj|/ˈkɒɡnətɪv/|thuộc nhận thức|relating to thinking and understanding|Puzzles improve cognitive skills in young children.|cognitive development|7-8
+clumsy|adj|/ˈklʌmzi/|vụng về|moving in an awkward way|Toddlers are clumsy because their coordination is still developing.|a clumsy child|6-7
+fond|adj|/fɒnd/|yêu mến, thích|having a liking or love for someone|She has fond memories of her grandmother's kitchen.|fond of|6-7
+fully-grown|adj|/ˌfʊli ˈɡrəʊn/|đã trưởng thành hoàn toàn|having reached full size and development|A fully-grown elephant can weigh several tonnes.|a fully-grown adult|6-7
+immature|adj|/ˌɪməˈtʃʊə/|chưa trưởng thành|behaving in a childish way|His immature attitude annoyed his colleagues.|immature behaviour|6-7
+independent|adj|/ˌɪndɪˈpendənt/|độc lập|able to live without help from others|Teenagers become more independent as they grow up.|financially independent|5-6
+irresponsible|adj|/ˌɪrɪˈspɒnsəbəl/|vô trách nhiệm|not thinking about the results of your actions|It is irresponsible to leave young children at home alone.|irresponsible behaviour|6-7
+mature|adjv|/məˈtʃʊə/|trưởng thành; chín chắn|fully grown or sensible; to become fully developed|She is very mature for her age.|a mature attitude|6-7
+patient|adj|/ˈpeɪʃənt/|kiên nhẫn|able to wait calmly without getting angry|Parents of toddlers have to be extremely patient.|a patient teacher|5-6
+rebellious|adj|/rɪˈbeljəs/|nổi loạn|refusing to obey rules or authority|Rebellious teenagers often test the limits set by their parents.|a rebellious streak|7-8
+significant|adj|/sɪɡˈnɪfɪkənt/|đáng kể, quan trọng|large or important enough to have an effect|Sleep has a significant impact on learning.|a significant difference|6-7
+tolerant|adj|/ˈtɒlərənt/|khoan dung|willing to accept different behaviour or opinions|Children raised in diverse areas tend to be more tolerant.|tolerant of others|6-7
+acquire|v|/əˈkwaɪə/|tiếp thu, đạt được|to gain a skill or knowledge|Children acquire language remarkably quickly.|acquire a skill|7-8
+develop|v|/dɪˈveləp/|phát triển|to grow and become more advanced|Muscles develop through regular exercise.|develop normally|5-6
+grow|v|/ɡrəʊ/|lớn lên|to increase in size or become mature|Children grow quickly in their first two years.|grow rapidly|5-6
+imitate|v|/ˈɪmɪteɪt/|bắt chước|to copy the behaviour of someone else|Toddlers imitate the words and actions of adults.|imitate adults|6-7
+look back|v|/lʊk bæk/|nhìn lại|to think about the past|Looking back, I realise how much my parents sacrificed.|look back on|6-7
+master|v|/ˈmɑːstə/|làm chủ, thành thạo|to learn something so well that you can do it easily|It takes years to master a second language.|master a skill|6-7
+remember|v|/rɪˈmembə/|nhớ|to keep something in your memory|I remember my first day of school very clearly.|remember clearly|5-6
+remind|v|/rɪˈmaɪnd/|nhắc nhở|to make someone remember something|This song reminds me of my childhood.|remind someone of|5-6
+reminisce|v|/ˌremɪˈnɪs/|hồi tưởng|to talk or think about pleasant past experiences|The old friends spent the evening reminiscing about school.|reminisce about|8+
+throw a tantrum|vp|/θrəʊ ə ˈtæntrəm/|nổi cơn giận dữ|to show sudden anger like a small child|A toddler may throw a tantrum when his toy is taken away.|throw a tantrum in public|7-8
+visualise|v|/ˈvɪʒuəlaɪz/|hình dung|to form a picture of something in your mind|Try to visualise the problem before you solve it.|visualise success|7-8
+typically|adv|/ˈtɪpɪkli/|điển hình, thường thì|in the usual way or in most cases|Children typically start school at the age of six.|typically happens|6-7
+bear in mind|ph|/beə ɪn maɪnd/|lưu ý, ghi nhớ|to remember a fact when making a decision|Bear in mind that every child learns at a different speed.|bear in mind that|6-7
+broaden the mind|ph|/ˈbrɔːdən ðə maɪnd/|mở rộng tầm nhìn|to make someone more open to new ideas|Travel can broaden the mind of young people.|broaden the mind|7-8
+have something in mind|ph|/hæv ˈsʌmθɪŋ ɪn maɪnd/|đã dự định điều gì|to be thinking about a plan or idea|Do you have a particular career in mind?|have a plan in mind|6-7
+have something on your mind|ph|/hæv ˈsʌmθɪŋ ɒn jɔː maɪnd/|đang bận tâm, lo lắng|to be worried about something|He seems quiet because you can tell he might have something on his mind.|have a lot on your mind|7-8
+it slipped my mind|ph|/ɪt slɪpt maɪ maɪnd/|tôi quên mất|I forgot something|Sorry, it completely slipped my mind.|slip your mind|6-7
+keep an open mind|ph|/kiːp ən ˈəʊpən maɪnd/|giữ cái nhìn cởi mở|to stay willing to consider new ideas|Teachers should keep an open mind about every pupil.|keep an open mind|6-7
+my mind went blank|ph|/maɪ maɪnd went blæŋk/|đầu óc trống rỗng|I suddenly could not remember anything|When the exam started, my mind went blank.|your mind goes blank|7-8
+put your mind at ease|ph|/pʊt jɔː maɪnd æt iːz/|làm ai yên lòng|to stop someone from worrying|A short chat with the doctor can put your mind at ease.|put your mind at ease|7-8
++++
+puberty|n|/ˈpjuːbəti/|tuổi dậy thì|the stage when a child's body becomes sexually mature|Puberty begins earlier in girls than in boys.|reach puberty|7-8
+reflex|n|/ˈriːfleks/|phản xạ|an automatic physical reaction to something|Newborn babies have a strong grasping reflex.|a natural reflex|8+
+coordination|n|/kəʊˌɔːdɪˈneɪʃən/|sự phối hợp vận động|the ability to move different body parts together smoothly|Sport improves a child's hand-eye coordination.|hand-eye coordination|7-8
+curiosity|n|/ˌkjʊəriˈɒsəti/|sự tò mò|a strong desire to know or learn something|Children's curiosity drives much of their early learning.|arouse curiosity|6-7
+attention span|np|/əˈtenʃən spæn/|khả năng tập trung|the length of time someone can concentrate|Young children have a short attention span.|a short attention span|7-8
+verbal|adj|/ˈvɜːbəl/|bằng lời nói|relating to words or speech|Verbal skills develop rapidly between the ages of two and four.|verbal ability|7-8
+motor skills|np|/ˈməʊtə skɪlz/|kỹ năng vận động|the ability to control body movements|Drawing helps children refine their fine motor skills.|fine motor skills|8+
+sensory|adj|/ˈsensəri/|thuộc giác quan|relating to the senses such as touch and sight|Sensory play lets babies explore textures and sounds.|sensory experience|8+
+dexterity|n|/dekˈsterəti/|sự khéo léo|skill in using the hands|Playing the piano requires great manual dexterity.|manual dexterity|8+
+retain|v|/rɪˈteɪn/|ghi nhớ, giữ lại|to keep information in the memory|Students retain more when they teach the material to others.|retain information|7-8
+recall|v|/rɪˈkɔːl/|nhớ lại|to bring a memory back into your mind|Few adults can recall events from before the age of three.|recall details|7-8
+absorb|v|/əbˈzɔːb/|tiếp thu|to take in information easily|Young children absorb new vocabulary at an astonishing rate.|absorb information|7-8
+stimulate|v|/ˈstɪmjʊleɪt/|kích thích|to encourage something to develop or become active|Colourful toys stimulate a baby's curiosity.|stimulate growth|7-8
+adaptable|adj|/əˈdæptəbəl/|dễ thích nghi|able to change to suit new conditions|Young children are highly adaptable to new surroundings.|highly adaptable|7-8
+naive|adj|/naɪˈiːv/|ngây thơ|lacking experience and too ready to trust|Younger pupils are often naive about online dangers.|naive about|7-8
+impulsive|adj|/ɪmˈpʌlsɪv/|bốc đồng|acting without thinking about the results|Impulsive teenagers sometimes make choices they later regret.|impulsive behaviour|8+
+self-esteem|n|/ˌself ɪˈstiːm/|lòng tự trọng|a feeling of confidence in your own value|Praise from parents boosts a child's self-esteem.|low self-esteem|7-8
+dependence|n|/dɪˈpendəns/|sự phụ thuộc|the state of needing someone or something|Babies show complete dependence on their carers.|dependence on|7-8
+perception|n|/pəˈsepʃən/|nhận thức|the way you understand or notice something|A child's perception of danger is very limited.|visual perception|8+
+outgrow|v|/ˌaʊtˈɡrəʊ/|lớn vượt khỏi|to become too old or big for something|Most children outgrow their fear of the dark.|outgrow a habit|8+

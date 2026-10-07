@@ -1,0 +1,48 @@
+#unit 20
+#en Arts and entertainment
+#blurb Phim ảnh, văn học, âm nhạc, gu thẩm mỹ và tính từ miêu tả cảm xúc khi thưởng thức
+animation|n|/ˌænɪˈmeɪʃən/|phim hoạt hình|the technique of making moving cartoon pictures|The studio is famous for its hand-drawn animation.|computer animation|7-8
+culture|n|/ˈkʌltʃə/|văn hoá|the arts and customs of a society|Museums help us understand other cultures.|popular culture|6-7
+drama|n|/ˈdrɑːmə/|kịch, phim truyền hình|plays or television programmes about serious subjects|She studied drama at university.|a television drama|6-7
+echo|n|/ˈekəʊ/|tiếng vang|a sound that is repeated when it bounces off a surface|The echo in the cave lasted several seconds.|an echo of|7-8
+engraving|n|/ɪnˈɡreɪvɪŋ/|tranh khắc|a picture made by cutting lines into a hard surface|The museum owns a rare engraving from the sixteenth century.|a copper engraving|8+
+fiction|n|/ˈfɪkʃən/|tiểu thuyết, văn hư cấu|books about imaginary people and events|She prefers fiction to non-fiction.|a work of fiction|7-8
+imagination|n|/ɪˌmædʒɪˈneɪʃən/|trí tưởng tượng|the ability to form new ideas and pictures|Children's books stimulate the imagination.|a vivid imagination|7-8
+inspiration|n|/ˌɪnspəˈreɪʃən/|nguồn cảm hứng|something that gives you new ideas|The countryside was her main source of inspiration.|a source of inspiration|7-8
+abominable|adj|/əˈbɒmɪnəbəl/|ghê tởm, tệ hại|extremely bad|The critic described the acting as abominable.|abominable behaviour|8+
+abysmal|adj|/əˈbɪzməl/|cực kỳ tệ|extremely bad|The film received abysmal reviews.|an abysmal performance|8+
+dismal|adj|/ˈdɪzməl/|tồi tệ, ảm đạm|depressing or of very poor quality|The play was a dismal failure.|a dismal performance|8+
+fictional|adj|/ˈfɪkʃənəl/|hư cấu|invented and not real|The novel is set in a fictional town.|a fictional character|7-8
+figurative|adj|/ˈfɪɡjərətɪv/|theo nghĩa bóng|not literal, using images to express meaning|The poet uses figurative language to describe grief.|figurative language|8+
+hilarious|adj|/hɪˈleəriəs/|vui nhộn|extremely funny|The comedy was absolutely hilarious.|a hilarious scene|7-8
+inspirational|adj|/ˌɪnspəˈreɪʃənəl/|truyền cảm hứng|giving people new ideas or energy|The film tells an inspirational story of courage.|an inspirational speech|7-8
+petrified|adj|/ˈpetrɪfaɪd/|sợ cứng người|so frightened that you cannot move|The audience was petrified by the horror film.|petrified with fear|8+
+spectacular|adj|/spekˈtækjʊlə/|hoành tráng|very impressive to look at|The opening ceremony was spectacular.|a spectacular show|7-8
+spine-chilling|adj|/ˈspaɪn ˌtʃɪlɪŋ/|lạnh sống lưng|frightening in an exciting way|The film has a spine-chilling ending.|a spine-chilling scene|8+
+talented|adj|/ˈtæləntɪd/|có tài|having a natural ability to do something well|The film features a cast of young and talented actors.|a talented musician|7-8
+tedious|adj|/ˈtiːdiəs/|tẻ nhạt|boring and lasting too long|Many viewers found the film long and tedious.|a tedious task|8+
+terrified|adj|/ˈterɪfaɪd/|rất sợ hãi|extremely frightened|The children were terrified by the ghost story.|terrified of|7-8
+terrifying|adj|/ˈterɪfaɪɪŋ/|đáng sợ|making you extremely afraid|The horror film was truly terrifying.|a terrifying experience|7-8
+thrilling|adj|/ˈθrɪlɪŋ/|ly kỳ, hồi hộp|very exciting|The thrilling chase scene kept the audience on edge.|a thrilling story|7-8
+a matter of taste|id|/ə ˌmætər əv ˈteɪst/|tuỳ thuộc vào sở thích|something that depends on personal opinion|Whether a film is good is a matter of taste.|a matter of taste|7-8
+acquire a taste for|ph|/əˈkwaɪər ə teɪst fɔː/|dần quen và thích|to learn to enjoy something|Some people acquire a taste for classical music late in life.|acquire a taste for|8+
+be in bad taste|id|/biː ɪn bæd teɪst/|thiếu tế nhị|to be offensive or unsuitable|The joke was in bad taste at a funeral.|be in bad taste|8+
+compose a song|vp|/kəmˈpəʊz ə sɒŋ/|sáng tác bài hát|to write the music or words of a song|She composed a song for her sister's wedding.|compose a song|7-8
+have diverse tastes|vp|/hæv daɪˈvɜːs ˈteɪsts/|có sở thích đa dạng|to enjoy many different kinds of things|The festival suits people who have diverse tastes.|have diverse tastes|8+
+share the same taste|vp|/ʃeə ðə seɪm teɪst/|có cùng sở thích|to like the same kinds of things|Friends often share the same taste in music.|share the same taste|7-8
++++
+masterpiece|n|/ˈmɑːstəpiːs/|kiệt tác|a work of outstanding skill|The painting is widely regarded as a masterpiece.|a true masterpiece|7-8
+screenplay|n|/ˈskriːnpleɪ/|kịch bản phim|the written text of a film|She won an award for the best screenplay.|write a screenplay|8+
+soundtrack|n|/ˈsaʊndtræk/|nhạc phim|the music used in a film|The soundtrack made the film unforgettable.|a film soundtrack|7-8
+plot|n|/plɒt/|cốt truyện|the events that make up a story|The plot of the novel is full of unexpected twists.|a complicated plot|6-7
+sequel|n|/ˈsiːkwəl/|phần tiếp theo|a book or film that continues an earlier story|The sequel was less successful than the original.|a film sequel|7-8
+critic|n|/ˈkrɪtɪk/|nhà phê bình|a person who judges art, books or films|Critics praised the film for its original story.|a film critic|7-8
+genre|n|/ˈʒɒnrə/|thể loại|a type of art, music or writing|Jazz is a genre that began in New Orleans.|a literary genre|7-8
+exhibition|n|/ˌeksɪˈbɪʃən/|triển lãm|a public show of art or other objects|The gallery is holding an exhibition of modern sculpture.|hold an exhibition|7-8
+captivating|adj|/ˈkæptɪveɪtɪŋ/|lôi cuốn|holding your attention completely|The actor gave a captivating performance.|a captivating story|8+
+poignant|adj|/ˈpɔɪnjənt/|day dứt, xúc động|causing a strong feeling of sadness|The film ends on a poignant note.|a poignant moment|8+
+thought-provoking|adj|/ˈθɔːt prəˌvəʊkɪŋ/|gợi suy ngẫm|making you think carefully|It is a thought-provoking documentary about war.|a thought-provoking film|8+
+breathtaking|adj|/ˈbreθteɪkɪŋ/|ngoạn mục|extremely impressive|The final scene was breathtaking.|a breathtaking performance|7-8
+applaud|v|/əˈplɔːd/|vỗ tay khen ngợi|to clap to show approval|The crowd stood and applauded the singer.|applaud loudly|7-8
+portray|v|/pɔːˈtreɪ/|thể hiện, khắc hoạ|to show someone in a particular way|The actor portrays a lonely teacher.|portray a character|7-8
+evoke|v|/ɪˈvəʊk/|gợi lên|to bring a feeling or memory to mind|The music evokes memories of childhood.|evoke emotions|8+

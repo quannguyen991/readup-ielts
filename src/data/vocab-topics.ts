@@ -1,5 +1,7 @@
 import topics from './seed/vocab-topics/index.json';
 import { LISTENING_DECKS } from './vocab-listening';
+import { VFI_DECKS } from './vocab-for-ielts';
+import { VFIA_DECKS } from './vocab-for-ielts-advanced';
 
 /**
  * Bộ từ vựng IELTS soạn sẵn theo chủ đề.
@@ -39,11 +41,11 @@ export const VOCAB_TOPICS: VocabTopic[] = topics as unknown as VocabTopic[];
 
 /**
  * Tìm bộ theo slug — cả 50 chủ đề lẫn các bộ từ vựng Nghe (`listening-*`, xem
- * `vocab-listening.ts`). Các màn học chỉ gọi hàm này nên bộ Nghe chạy chung được
+ * `vocab-listening.ts`) và các bộ Vocabulary for IELTS (`vfi-*`, `vfia-*`, xem `vocab-for-ielts.ts` và `vocab-for-ielts-advanced.ts`). Các màn học chỉ gọi hàm này nên bộ Nghe chạy chung được
  * mà `VOCAB_TOPICS` (và test "50 × 50") vẫn giữ nguyên.
  */
 export function getVocabTopic(slug: string): VocabTopic | undefined {
-  return VOCAB_TOPICS.find((t) => t.slug === slug) ?? LISTENING_DECKS.find((d) => d.slug === slug);
+  return VOCAB_TOPICS.find((t) => t.slug === slug) ?? LISTENING_DECKS.find((d) => d.slug === slug) ?? VFI_DECKS.find((d) => d.slug === slug) ?? VFIA_DECKS.find((d) => d.slug === slug);
 }
 
 export const VOCAB_TOPIC_TOTALS = {

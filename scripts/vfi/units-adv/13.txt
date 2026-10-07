@@ -1,0 +1,37 @@
+#unit 13
+#en City life and urban growth
+#blurb Đô thị, hạ tầng, nhà ở, ô nhiễm và những vấn đề của thành phố lớn
+concrete jungle|np|/ˌkɒŋkriːt ˈdʒʌŋɡəl/|rừng bê tông|a city with many tall buildings and little nature|Many residents feel trapped in the concrete jungle.|a concrete jungle|8+
+employment opportunities|np|/ɪmˈplɔɪmənt ˌɒpəˈtjuːnətiz/|cơ hội việc làm|chances to find paid work|Cities offer more employment opportunities than villages.|employment opportunities|7-8
+garbage collection|np|/ˈɡɑːbɪdʒ kəˌlekʃən/|việc thu gom rác|the service of taking away household waste|Garbage collection takes place twice a week.|garbage collection|7-8
+high-rise building|np|/ˌhaɪ raɪz ˈbɪldɪŋ/|toà nhà cao tầng|a tall building with many floors|A new high-rise building dominates the skyline.|a high-rise building|7-8
+housing estate|np|/ˈhaʊzɪŋ ɪˌsteɪt/|khu nhà ở|a group of houses built together|They live on a large housing estate outside town.|a housing estate|7-8
+inner-city slum|np|/ˌɪnə sɪti ˈslʌm/|khu ổ chuột nội thành|a poor, overcrowded area near the city centre|Many families still live in inner-city slums.|an inner-city slum|8+
+noise pollution|np|/ˈnɔɪz pəˌluːʃən/|ô nhiễm tiếng ồn|harmful or annoying loud sound|Noise pollution from traffic disturbs sleep.|reduce noise pollution|7-8
+outer suburbs|np|/ˌaʊtə ˈsʌbɜːbz/|vùng ngoại ô xa|areas on the far edge of a city|Many commuters live in the outer suburbs.|the outer suburbs|7-8
+sewage system|np|/ˈsuːɪdʒ ˌsɪstəm/|hệ thống thoát nước thải|pipes that carry away waste water|The old sewage system cannot cope with heavy rain.|a sewage system|8+
+traffic congestion|np|/ˈtræfɪk kənˌdʒestʃən/|tắc nghẽn giao thông|a situation where roads are too full of traffic|Traffic congestion costs the city millions every year.|reduce traffic congestion|7-8
+urban sprawl|np|/ˌɜːbən ˈsprɔːl/|sự lan rộng của đô thị|uncontrolled spread of a city into the countryside|Urban sprawl swallows up farmland around the capital.|control urban sprawl|8+
+frantic|adj|/ˈfræntɪk/|hối hả, cuống cuồng|done in a hurried and anxious way|The pace of city life is frantic.|a frantic rush|8+
+high-rise|adj|/ˈhaɪ raɪz/|cao tầng|having many floors|Many families live in high-rise flats.|high-rise flats|7-8
+isolated|adj|/ˈaɪsəleɪtɪd/|bị cô lập|separated from other people or places|Elderly residents often feel isolated in big cities.|feel isolated|7-8
+overpopulated|adj|/ˌəʊvəˈpɒpjʊleɪtɪd/|quá đông dân|having too many people living in one area|Some of the world's most overpopulated cities lie in Asia.|an overpopulated city|7-8
+tranquil|adj|/ˈtræŋkwɪl/|yên tĩnh|calm and peaceful|The park offers a tranquil escape from the traffic.|a tranquil spot|8+
+migrate|v|/maɪˈɡreɪt/|di cư|to move from one place to live in another|Thousands of workers migrate to the city each year.|migrate to|7-8
+settle|v|/ˈsetəl/|định cư|to make your home in a place|Many newcomers settle in the suburbs.|settle in|6-7
++++
+infrastructure|n|/ˈɪnfrəstrʌktʃə/|cơ sở hạ tầng|basic systems such as roads and water supply|Poor infrastructure slows economic growth.|public infrastructure|7-8
+congestion|n|/kənˈdʒestʃən/|tình trạng ùn tắc|a situation where a place is too crowded|Congestion in the centre is getting worse.|traffic congestion|7-8
+gentrification|n|/ˌdʒentrɪfɪˈkeɪʃən/|sự nâng cấp khu dân cư|the process by which a poor area becomes wealthier|Gentrification has pushed rents up in the old quarter.|rapid gentrification|8+
+commuter|n|/kəˈmjuːtə/|người đi làm xa|a person who travels daily between home and work|Commuters spend hours on crowded trains.|a daily commuter|7-8
+amenities|n|/əˈmiːnətiz/|tiện ích|useful services or features of a place|The area has excellent amenities such as parks and schools.|local amenities|8+
+skyline|n|/ˈskaɪlaɪn/|đường chân trời thành phố|the outline of buildings against the sky|The new tower changed the city's skyline.|a city skyline|7-8
+affordable|adj|/əˈfɔːdəbəl/|vừa túi tiền|not too expensive|Affordable housing is in short supply.|affordable housing|6-7
+densely populated|adj|/ˈdensli ˈpɒpjʊleɪtɪd/|đông dân cư|having a lot of people in a small area|Hong Kong is one of the most densely populated places on Earth.|a densely populated area|8+
+run-down|adj|/ˌrʌn ˈdaʊn/|xuống cấp|in poor condition because of neglect|The run-down estate needs urgent investment.|a run-down area|7-8
+revitalise|v|/ˌriːˈvaɪtəlaɪz/|làm sống lại|to give new life to something|New investment will revitalise the old docks.|revitalise an area|8+
+displace|v|/dɪsˈpleɪs/|làm mất chỗ ở|to force people to leave their homes|The new road displaced hundreds of families.|displace residents|8+
+regenerate|v|/rɪˈdʒenəreɪt/|tái thiết|to improve an area through new building|The council plans to regenerate the city centre.|regenerate an area|8+
+sprawl|v|/sprɔːl/|lan rộng bừa bãi|to spread out over a large area|The city continues to sprawl across the valley.|sprawl outwards|8+
+bulldoze|v|/ˈbʊldəʊz/|ủi sạch, san phẳng|to destroy buildings with heavy machinery|Developers bulldozed the old market to build offices.|bulldoze a building|8+
+megacity|n|/ˈmeɡəsɪti/|siêu đô thị|a city with more than ten million people|Tokyo is the world's largest megacity.|a sprawling megacity|8+
