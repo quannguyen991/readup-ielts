@@ -1,0 +1,41 @@
+#unit 5
+#en Education and careers
+#blurb Học thuật, nghiên cứu, đào tạo nghề và con đường nghề nghiệp
+accounting|n|/əˈkaʊntɪŋ/|ngành kế toán|the work of recording and checking money records|She is studying accounting at university.|an accounting degree|6-7
+apprenticeship|n|/əˈprentɪsʃɪp/|thời gian học nghề|a period of learning a skill while working|He started an apprenticeship as an electrician at sixteen.|complete an apprenticeship|7-8
+conceptualisation|n|/kənˌseptʃuəlaɪˈzeɪʃən/|sự khái niệm hoá|the forming of an idea in the mind|The conceptualisation of the project took many months.|the conceptualisation of|8+
+consistency|n|/kənˈsɪstənsi/|sự nhất quán|the quality of always being the same|Consistency in study habits leads to better results.|lack consistency|7-8
+establishment|n|/ɪˈstæblɪʃmənt/|cơ sở, tổ chức|an organisation such as a school or a business|The college is a well-respected educational establishment.|an educational establishment|7-8
+formulation|n|/ˌfɔːmjʊˈleɪʃən/|sự xây dựng, công thức|the careful creation of a plan or theory|The formulation of a clear research question is essential.|the formulation of|8+
+hypothesis|n|/haɪˈpɒθəsɪs/|giả thuyết|an idea that is suggested but not yet proved|The experiment was designed to test her hypothesis.|test a hypothesis|7-8
+inconsistency|n|/ˌɪnkənˈsɪstənsi/|sự mâu thuẫn|a lack of agreement between parts of something|The examiner noticed an inconsistency in the data.|an inconsistency in|8+
+insignificance|n|/ˌɪnsɪɡˈnɪfɪkəns/|sự không đáng kể|the lack of importance|The insignificance of the result disappointed the team.|fade into insignificance|8+
+interpretation|n|/ɪnˌtɜːprɪˈteɪʃən/|sự diễn giải|an explanation of what something means|Students offered different interpretations of the poem.|a possible interpretation|7-8
+technician|n|/tekˈnɪʃən/|kỹ thuật viên|a person who works with technical equipment|A laboratory technician prepared the samples.|a laboratory technician|7-8
+theorist|n|/ˈθɪərɪst/|nhà lý luận|a person who develops ideas to explain something|The theorist argued that learning is a social process.|a leading theorist|8+
+vocation|n|/vəʊˈkeɪʃən/|thiên hướng nghề nghiệp|a job that you feel strongly suited to|Teaching is more a vocation than a career for her.|a sense of vocation|8+
+analytical|adj|/ˌænəˈlɪtɪkəl/|có khả năng phân tích|examining things in a careful and logical way|Good scientists have a clear and analytical mind.|an analytical approach|7-8
+blue-collar|adj|/ˌbluː ˈkɒlə/|lao động chân tay|relating to workers who do physical jobs|Many blue-collar jobs now require technical training.|blue-collar workers|8+
+conceptual|adj|/kənˈseptʃuəl/|thuộc khái niệm|relating to ideas rather than facts|Philosophy deals with conceptual questions.|a conceptual framework|8+
+hypothetical|adj|/ˌhaɪpəˈθetɪkəl/|mang tính giả định|based on an idea rather than a real situation|The teacher gave the class a hypothetical problem to solve.|a hypothetical case|8+
+indicative|adj|/ɪnˈdɪkətɪv/|biểu thị|showing that something is likely|The results are indicative of a wider problem.|indicative of|8+
+a process of trial and error|ph|/ə ˈprəʊses əv ˈtraɪəl ənd ˈerə/|quá trình thử và sai|finding a solution by trying different methods|Learning to code is often a process of trial and error.|a process of trial and error|8+
+give yourself something to aim for|ph|/ɡɪv jɔːˈself ˈsʌmθɪŋ tə eɪm fɔː/|đặt cho mình một mục tiêu|to set a target that motivates you|It helps to give yourself something to aim for each week.|give yourself something to aim for|8+
+make a concerted effort|ph|/meɪk ə kənˈsɜːtɪd ˈefət/|nỗ lực phối hợp|to try very hard together to achieve something|Staff must make a concerted effort to improve results.|make a concerted effort|8+
+set yourself a goal|ph|/set jɔːˈself ə ɡəʊl/|tự đặt mục tiêu|to decide what you want to achieve|Set yourself a goal and review it every month.|set yourself a goal|7-8
++++
+curriculum|n|/kəˈrɪkjələm/|chương trình giảng dạy|the subjects taught in a school or course|The curriculum now includes financial literacy.|a school curriculum|7-8
+qualification|n|/ˌkwɒlɪfɪˈkeɪʃən/|bằng cấp, trình độ|an exam passed or a course completed|A teaching qualification is required for the post.|a professional qualification|7-8
+vocational|adj|/vəʊˈkeɪʃənəl/|dạy nghề|relating to skills for a particular job|Vocational courses prepare students for skilled work.|vocational training|8+
+methodology|n|/ˌmeθəˈdɒlədʒi/|phương pháp luận|the methods used in a study|The paper explains its research methodology in detail.|a research methodology|8+
+literacy|n|/ˈlɪtərəsi/|khả năng đọc viết|the ability to read and write|Adult literacy programmes help workers get promoted.|basic literacy|7-8
+plagiarism|n|/ˈpleɪdʒərɪzəm/|đạo văn|using someone else's work as your own|Plagiarism is treated as a serious offence at universities.|commit plagiarism|8+
+tenure|n|/ˈtenjʊə/|biên chế, nhiệm kỳ|the right to keep a post permanently|The professor was granted tenure after ten years.|gain tenure|8+
+mentor|n|/ˈmentɔː/|người hướng dẫn|an experienced person who advises a junior one|Every new teacher is assigned a mentor.|a trusted mentor|7-8
+skilled|adj|/skɪld/|có tay nghề|having the training to do a job well|The country needs more skilled workers.|a skilled worker|6-7
+rigorous|adj|/ˈrɪɡərəs/|chặt chẽ, nghiêm ngặt|very careful and thorough|The course involves rigorous assessment of every student.|a rigorous test|8+
+interdisciplinary|adj|/ˌɪntədɪsəˈplɪnəri/|liên ngành|involving several different subjects|She leads an interdisciplinary research team.|interdisciplinary studies|8+
+enrol|v|/ɪnˈrəʊl/|đăng ký học|to officially join a course|He enrolled on an evening course in design.|enrol on a course|7-8
+acquire|v|/əˈkwaɪə/|tiếp thu|to gain knowledge or a skill|Apprentices acquire practical skills on the job.|acquire a skill|7-8
+undertake|v|/ˌʌndəˈteɪk/|đảm nhận, tiến hành|to begin and be responsible for a task|Students must undertake a research project in their final year.|undertake research|7-8
+specialise|v|/ˈspeʃəlaɪz/|chuyên về|to focus on one particular subject|After two years she chose to specialise in neuroscience.|specialise in|7-8

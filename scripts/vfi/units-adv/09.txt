@@ -1,0 +1,52 @@
+#unit 9
+#en Animals and habitats
+#blurb Động vật hoang dã, môi trường sống, đe doạ sinh thái và cách loài vật tồn tại
+burrow|n|/ˈbʌrəʊ/|hang (của thú)|a hole in the ground made by a small animal|The rabbit disappeared into its burrow.|a rabbit burrow|7-8
+colony|n|/ˈkɒləni/|đàn, quần thể|a large group of animals or insects living together|A colony of ants can contain thousands of insects.|a penguin colony|7-8
+deforestation|n|/ˌdiːfɒrɪˈsteɪʃən/|nạn phá rừng|the cutting down of large areas of forest|Deforestation destroys the habitat of many species.|widespread deforestation|7-8
+degradation|n|/ˌdeɡrəˈdeɪʃən/|sự suy thoái|the process of becoming worse in quality|Land degradation threatens food production.|environmental degradation|8+
+demise|n|/dɪˈmaɪz/|sự diệt vong|the end or failure of something|Pollution led to the demise of the local fishing industry.|the demise of|8+
+devastation|n|/ˌdevəˈsteɪʃən/|sự tàn phá|severe destruction|The fire left devastation across the forest.|widespread devastation|8+
+flooding|n|/ˈflʌdɪŋ/|lũ lụt|a large amount of water covering dry land|Flooding destroyed the nests of many ground birds.|severe flooding|7-8
+habitat|n|/ˈhæbɪtæt/|môi trường sống|the natural home of an animal or plant|Wetlands are an important habitat for wading birds.|natural habitat|7-8
+harm|n|/hɑːm/|tác hại|damage or injury|Plastic waste causes great harm to sea turtles.|do harm|6-7
+herd|n|/hɜːd/|bầy (gia súc, hươu...)|a large group of animals that live together|A herd of elephants crossed the river.|a herd of|7-8
+hive|n|/haɪv/|tổ ong|a structure where bees live|Each hive can hold fifty thousand bees.|a bee hive|8+
+lifespan|n|/ˈlaɪfspæn/|tuổi thọ|the length of time something lives|The average lifespan of a mouse is two years.|a long lifespan|8+
+pack|n|/pæk/|bầy (chó sói...)|a group of wolves or dogs that hunt together|A pack of wolves hunted in the valley.|a wolf pack|7-8
+parasite|n|/ˈpærəsaɪt/|ký sinh trùng|an animal that lives on another animal and harms it|The disease is spread by a tiny parasite.|a parasite infection|8+
+prey|n|/preɪ/|con mồi|an animal hunted by another|The owl hunts small prey at night.|easy prey|7-8
+rival|n|/ˈraɪvəl/|đối thủ|a person or animal competing with another|Male deer fight their rivals during the mating season.|a rival species|7-8
+swarm|n|/swɔːm/|đàn (côn trùng)|a large group of insects moving together|A swarm of locusts destroyed the crops.|a swarm of|8+
+threshold|n|/ˈθreʃhəʊld/|ngưỡng|the level at which something begins to happen|The species is on the threshold of extinction.|on the threshold of|8+
+appalling|adj|/əˈpɔːlɪŋ/|kinh khủng|shocking and very bad|The conditions in which the animals were kept were appalling.|appalling conditions|8+
+aquatic|adj|/əˈkwætɪk/|sống dưới nước|living or growing in water|Many aquatic species are affected by pollution.|aquatic life|8+
+hypocritical|adj|/ˌhɪpəˈkrɪtɪkəl/|đạo đức giả|saying one thing but doing another|It is hypocritical to protect pandas but destroy other habitats.|a hypocritical attitude|8+
+impartial|adj|/ɪmˈpɑːʃəl/|công bằng, vô tư|not favouring either side|Scientists must stay impartial when presenting evidence.|an impartial judge|8+
+irresponsible|adj|/ˌɪrɪˈspɒnsəbəl/|vô trách nhiệm|not thinking about the results of actions|It is irresponsible to feed wild animals.|irresponsible behaviour|7-8
+nocturnal|adj|/nɒkˈtɜːnəl/|hoạt động về đêm|active at night|Bats are nocturnal animals.|nocturnal animals|8+
+outrageous|adj|/aʊtˈreɪdʒəs/|quá quắt, gây phẫn nộ|shocking and morally unacceptable|The illegal trade in ivory is outrageous.|an outrageous act|8+
+risky|adj|/ˈrɪski/|nhiều rủi ro|involving the possibility of loss or danger|It is risky to approach wild animals.|a risky strategy|6-7
+venomous|adj|/ˈvenəməs/|có nọc độc|able to poison with a bite or sting|The venomous snake is rarely seen by tourists.|a venomous snake|8+
+flourish|v|/ˈflʌrɪʃ/|phát triển mạnh|to grow successfully|Plants flourish in the warm, wet climate.|flourish in|8+
+forage|v|/ˈfɒrɪdʒ/|kiếm ăn|to search for food|Squirrels forage for nuts in autumn.|forage for food|8+
+hibernate|v|/ˈhaɪbəneɪt/|ngủ đông|to spend the winter in a deep sleep|Bears hibernate in caves during the coldest months.|hibernate during winter|8+
+lay|v|/leɪ/|đẻ (trứng)|to produce eggs|The female turtle lays her eggs on the beach.|lay eggs|6-7
+poach|v|/pəʊtʃ/|săn trộm|to illegally hunt or catch animals|Criminals poach elephants for their tusks.|poach wildlife|8+
+thrive|v|/θraɪv/|phát đạt|to grow and do well|Some species thrive in cities.|thrive in|7-8
++++
+predator|n|/ˈpredətə/|loài săn mồi|an animal that hunts other animals|Wolves were once the main predator in the region.|a natural predator|7-8
+carnivore|n|/ˈkɑːnɪvɔː/|loài ăn thịt|an animal that eats meat|The lion is a large carnivore.|a fierce carnivore|8+
+herbivore|n|/ˈhɜːbɪvɔː/|loài ăn cỏ|an animal that eats only plants|The elephant is the largest land herbivore.|a grazing herbivore|8+
+scavenger|n|/ˈskævɪndʒə/|loài ăn xác thối|an animal that eats dead animals|Vultures are scavengers that clean the plains.|a natural scavenger|8+
+ecosystem|n|/ˈiːkəʊsɪstəm/|hệ sinh thái|all the living things in an area and their environment|Removing one species can upset the whole ecosystem.|a fragile ecosystem|7-8
+extinction|n|/ɪkˈstɪŋkʃən/|sự tuyệt chủng|the complete disappearance of a species|Many frogs are close to extinction.|face extinction|7-8
+poaching|n|/ˈpəʊtʃɪŋ/|nạn săn trộm|illegal hunting of wild animals|Poaching has reduced the rhino population by half.|illegal poaching|8+
+conservation|n|/ˌkɒnsəˈveɪʃən/|sự bảo tồn|the protection of nature and wildlife|Conservation projects aim to save rare animals.|wildlife conservation|7-8
+camouflage|n|/ˈkæməflɑːʒ/|sự ngụy trang|the colours or patterns that help animals hide|The chameleon uses camouflage to avoid predators.|natural camouflage|8+
+instinct|n|/ˈɪnstɪŋkt/|bản năng|natural behaviour that is not learned|Birds use instinct to find their way south.|a survival instinct|7-8
+endangered|adj|/ɪnˈdeɪndʒəd/|có nguy cơ tuyệt chủng|at risk of dying out|The tiger is an endangered species.|an endangered species|7-8
+migratory|adj|/ˈmaɪɡrətəri/|di cư|moving seasonally from one region to another|Migratory birds travel thousands of kilometres.|migratory birds|8+
+captive|adj|/ˈkæptɪv/|bị nuôi nhốt|kept in a cage or enclosure|Captive animals often show signs of stress.|captive animals|8+
+domesticated|adj|/dəˈmestɪkeɪtɪd/|đã được thuần hoá|tamed and kept by people|Dogs were among the first domesticated animals.|domesticated animals|7-8
+breed|v|/briːd/|sinh sản|to produce young animals|Pandas rarely breed in captivity.|breed in captivity|7-8

@@ -1,0 +1,95 @@
+#unit 3
+#en Keeping fit
+#vi Giữ gìn sức khoẻ
+#blurb Dinh dưỡng, bệnh tật, điều trị và lối sống lành mạnh
+allergy|n|/ˈælədʒi/|dị ứng|a medical condition causing a bad reaction to a substance|She has an allergy to peanuts.|a food allergy|6-7
+anxiety|n|/æŋˈzaɪəti/|chứng lo âu|a feeling of worry or fear|Exam anxiety affects many students.|suffer from anxiety|6-7
+appetite|n|/ˈæpɪtaɪt/|sự thèm ăn|the desire to eat food|Stress can cause a loss of appetite.|lose your appetite|6-7
+artery|n|/ˈɑːtəri/|động mạch|a tube carrying blood from the heart|Fatty food can block the arteries.|a blocked artery|7-8
+asset|n|/ˈæset/|tài sản quý|something valuable or useful|Good health is our greatest asset.|a valuable asset|6-7
+benefit|n|/ˈbenɪfɪt/|lợi ích|a helpful or good effect|Regular exercise has many health benefits.|health benefits|5-6
+cravings|n|/ˈkreɪvɪŋz/|cơn thèm|strong desires for a particular food|Cravings for sugar are hard to resist.|food cravings|7-8
+depression|n|/dɪˈpreʃən/|chứng trầm cảm|a medical condition of deep sadness|Exercise can help reduce symptoms of depression.|suffer from depression|6-7
+diagnosis|n|/ˌdaɪəɡˈnəʊsɪs/|sự chẩn đoán|the identification of an illness|Early diagnosis improves the chance of recovery.|an early diagnosis|7-8
+diet|n|/ˈdaɪət/|chế độ ăn|the food a person usually eats|A balanced diet includes fruit and vegetables.|a balanced diet|5-6
+dietician|n|/ˌdaɪəˈtɪʃən/|chuyên gia dinh dưỡng|an expert in healthy eating|A dietician advised him to eat less salt.|see a dietician|7-8
+disease|n|/dɪˈziːz/|bệnh|an illness affecting the body|Heart disease is a leading cause of death.|prevent disease|5-6
+eating disorder|np|/ˈiːtɪŋ dɪsˈɔːdə/|rối loạn ăn uống|a mental illness involving unhealthy eating habits|Many teenagers with an eating disorder hide it from their families.|suffer from an eating disorder|7-8
+exercise|n|/ˈeksəsaɪz/|sự tập luyện|physical activity done to stay healthy|Daily exercise strengthens the heart.|regular exercise|5-6
+factor|n|/ˈfæktə/|yếu tố|one of the things that influence a result|Diet is only one factor in good health.|a key factor|6-7
+fast food|np|/ˈfɑːst fuːd/|đồ ăn nhanh|cheap food that is prepared quickly|Fast food is high in fat and salt.|eat fast food|5-6
+fat|n|/fæt/|chất béo, mỡ|a substance in food that stores energy|Too much saturated fat raises cholesterol.|saturated fat|5-6
+harm|n|/hɑːm/|tác hại|damage or injury|Smoking does serious harm to the lungs.|do harm|5-6
+health|n|/helθ/|sức khoẻ|the condition of the body and mind|Sleep is essential for good health.|good health|5-6
+heart attack|np|/ˈhɑːt əˈtæk/|cơn đau tim|a sudden failure of the heart to work properly|Obesity increases the risk of a heart attack.|suffer a heart attack|6-7
+infection|n|/ɪnˈfekʃən/|sự nhiễm trùng|an illness caused by germs|Washing hands reduces the risk of infection.|a bacterial infection|6-7
+ingredients|n|/ɪnˈɡriːdiənts/|thành phần, nguyên liệu|the foods used to make a dish|Fresh ingredients make a meal healthier.|fresh ingredients|6-7
+insomnia|n|/ɪnˈsɒmniə/|chứng mất ngủ|the inability to sleep|Insomnia can be caused by constant worry.|suffer from insomnia|7-8
+intake|n|/ˈɪnteɪk/|lượng hấp thụ|the amount of food or drink taken in|Doctors advise a lower intake of sugar.|daily intake|7-8
+junk food|np|/ˈdʒʌŋk fuːd/|đồ ăn vặt kém dinh dưỡng|food that is unhealthy but convenient|Schools should ban junk food from their canteens.|eat junk food|5-6
+muscle|n|/ˈmʌsəl/|cơ bắp|body tissue that produces movement|Regular training builds muscle.|build muscle|5-6
+nutrient|n|/ˈnjuːtriənt/|chất dinh dưỡng|a substance the body needs to grow|Vegetables are rich in essential nutrients.|essential nutrients|7-8
+nutrition|n|/njuːˈtrɪʃən/|dinh dưỡng|the process of getting food needed for health|Good nutrition is vital for growing children.|good nutrition|6-7
+obesity|n|/əʊˈbiːsəti/|chứng béo phì|the condition of being very overweight|Childhood obesity is rising in many countries.|tackle obesity|6-7
+onset|n|/ˈɒnset/|sự khởi phát|the beginning of something unpleasant|Exercise can delay the onset of diabetes.|the onset of|8+
+portion|n|/ˈpɔːʃən/|khẩu phần, phần ăn|an amount of food for one person|Restaurants often serve very large portions.|a large portion|6-7
+risk|n|/rɪsk/|rủi ro|the possibility of something bad happening|Smoking increases the risk of cancer.|a health risk|5-6
+serving|n|/ˈsɜːvɪŋ/|suất ăn|a single helping of food|One serving of fruit contains plenty of vitamins.|a serving of|6-7
+stress|n|/stres/|căng thẳng|mental or emotional pressure|Work stress can damage your health.|reduce stress|5-6
+stroke|n|/strəʊk/|đột quỵ|a sudden loss of brain function caused by blocked blood flow|High blood pressure can lead to a stroke.|suffer a stroke|7-8
+treatment|n|/ˈtriːtmənt/|sự điều trị|medical care given for an illness|The treatment lasted for six months.|receive treatment|6-7
+therapy|n|/ˈθerəpi/|liệu pháp|treatment of a physical or mental problem|Physical therapy helped him walk again.|undergo therapy|7-8
+variety|n|/vəˈraɪəti/|sự đa dạng|a range of different things|A varied diet should include a variety of foods.|a wide variety|6-7
+weight|n|/weɪt/|cân nặng|how heavy a person or thing is|Eating less sugar helps people lose weight.|lose weight|5-6
+acute|adj|/əˈkjuːt/|cấp tính, nghiêm trọng|severe and sudden|He was taken to hospital with acute pain.|acute pain|7-8
+allergic|adj|/əˈlɜːdʒɪk/|bị dị ứng|having an allergy to something|Many children are allergic to milk.|allergic to|6-7
+alternate|adj|/ɔːlˈtɜːnət/|xen kẽ, luân phiên|happening one after the other in turn|Alternate days of rest help muscles recover.|alternate days|7-8
+brisk|adj|/brɪsk/|nhanh nhẹn, hăng hái|quick and energetic|A brisk walk every morning keeps you fit.|a brisk walk|7-8
+chronic|adj|/ˈkrɒnɪk/|mãn tính|lasting for a very long time|Chronic stress can weaken the immune system.|chronic illness|7-8
+harmful|adj|/ˈhɑːmfəl/|có hại|causing damage or injury|Too much sun is harmful to the skin.|harmful effects|5-6
+healthy|adj|/ˈhelθi/|khoẻ mạnh, lành mạnh|in good physical condition|A healthy lifestyle includes sleep and exercise.|a healthy lifestyle|5-6
+infectious|adj|/ɪnˈfekʃəs/|dễ lây nhiễm|able to spread from one person to another|Flu is highly infectious.|an infectious disease|7-8
+moderate|adj|/ˈmɒdərət/|vừa phải|neither too much nor too little|Moderate exercise is safe for most people.|moderate exercise|6-7
+obese|adj|/əʊˈbiːs/|béo phì|extremely overweight in a way that harms health|Obese patients face a higher risk of diabetes.|clinically obese|7-8
+overweight|adj|/ˌəʊvəˈweɪt/|thừa cân|heavier than is healthy|Nearly half of the adults in the survey were overweight.|slightly overweight|6-7
+persistent|adj|/pəˈsɪstənt/|dai dẳng|continuing for a long time without stopping|A persistent cough should be checked by a doctor.|a persistent cough|7-8
+regular|adj|/ˈreɡjʊlə/|đều đặn|happening often or at fixed intervals|Regular check-ups can detect problems early.|regular exercise|5-6
+vital|adj|/ˈvaɪtəl/|thiết yếu|absolutely necessary|Water is vital for life.|vital for|6-7
+avoid|v|/əˈvɔɪd/|tránh|to stay away from something|Try to avoid sugary drinks.|avoid risks|5-6
+counteract|v|/ˌkaʊntərˈækt/|chống lại, trung hoà|to reduce the bad effect of something|Exercise can counteract the effects of a poor diet.|counteract the effects|8+
+curb|v|/kɜːb/|kiềm chế|to control or limit something|Governments want to curb the sale of cigarettes.|curb your appetite|7-8
+cure|v|/kjʊə/|chữa khỏi|to make someone healthy again|Scientists are still searching for a way to cure cancer.|cure a disease|6-7
+diminish|v|/dɪˈmɪnɪʃ/|làm giảm|to make or become smaller|Regular exercise can diminish the risk of heart disease.|diminish the risk|7-8
+disrupt|v|/dɪsˈrʌpt/|làm gián đoạn|to interrupt the normal way something works|Night shifts can disrupt the body's natural sleep cycle.|disrupt sleep|7-8
+eliminate|v|/ɪˈlɪmɪneɪt/|loại bỏ|to remove something completely|Doctors advise eliminating trans fats from your diet.|eliminate risks|7-8
+maintain|v|/meɪnˈteɪn/|duy trì|to keep something at the same level|It is hard to maintain a healthy weight without exercise.|maintain good health|6-7
+overdo|v|/ˌəʊvəˈduː/|làm quá mức|to do something too much|Don't overdo exercise when you are just starting.|overdo it|7-8
+overeat|v|/ˌəʊvərˈiːt/|ăn quá nhiều|to eat more than is good for you|People often overeat when they feel stressed.|tend to overeat|6-7
+prevent|v|/prɪˈvent/|ngăn ngừa|to stop something from happening|Vaccines prevent many serious diseases.|prevent illness|6-7
+recommend|v|/ˌrekəˈmend/|khuyên, đề xuất|to advise something as being good|Doctors recommend at least thirty minutes of activity a day.|strongly recommend|6-7
+recover|v|/rɪˈkʌvə/|hồi phục|to become healthy again after illness|It took him months to recover from the operation.|recover from|6-7
+reduce|v|/rɪˈdjuːs/|giảm|to make something smaller in amount|Cutting down on salt can reduce blood pressure.|reduce the risk|5-6
+skip|v|/skɪp/|bỏ qua|to miss or avoid doing something|Many teenagers skip breakfast on school days.|skip a meal|6-7
+stimulate|v|/ˈstɪmjʊleɪt/|kích thích|to make something more active|Exercise stimulates the production of happy hormones.|stimulate the appetite|7-8
+trigger|v|/ˈtrɪɡə/|gây ra, kích phát|to cause something to start suddenly|Certain foods can trigger an allergic reaction.|trigger an attack|7-8
++++
+immune system|np|/ɪˈmjuːn ˈsɪstəm/|hệ miễn dịch|the body's defence against disease|Sleep helps strengthen the immune system.|boost the immune system|7-8
+metabolism|n|/məˈtæbəlɪzəm/|quá trình trao đổi chất|the chemical processes that turn food into energy|Muscle increases the body's metabolism.|a slow metabolism|8+
+cholesterol|n|/kəˈlestərɒl/|cholesterol|a fatty substance found in the blood|A diet rich in fibre can lower cholesterol.|high cholesterol|8+
+blood pressure|np|/ˈblʌd ˈpreʃə/|huyết áp|the force of blood against the walls of the arteries|Stress can raise your blood pressure.|high blood pressure|7-8
+sedentary|adj|/ˈsedəntri/|ít vận động|involving a lot of sitting and little exercise|A sedentary lifestyle increases the risk of heart disease.|a sedentary lifestyle|8+
+balanced|adj|/ˈbælənst/|cân đối|having the right amounts of different things|A balanced diet provides all the nutrients you need.|a balanced diet|5-6
+nourishing|adj|/ˈnʌrɪʃɪŋ/|bổ dưỡng|containing the substances needed for health|A bowl of nourishing soup is good for a cold.|a nourishing meal|8+
+fitness|n|/ˈfɪtnəs/|thể lực tốt|the state of being physically strong and healthy|Swimming is an excellent way to improve fitness.|physical fitness|6-7
+workout|n|/ˈwɜːkaʊt/|buổi tập luyện|a session of physical exercise|A short workout in the morning boosts energy.|a gym workout|6-7
+stamina|n|/ˈstæmɪnə/|sức bền|the ability to keep doing something tiring|Running builds stamina and strengthens the heart.|build stamina|7-8
+hygiene|n|/ˈhaɪdʒiːn/|vệ sinh|the practice of keeping yourself and things clean|Good hygiene prevents the spread of infection.|personal hygiene|7-8
+vaccination|n|/ˌvæksɪˈneɪʃən/|sự tiêm chủng|an injection that protects against a disease|Vaccination has wiped out smallpox.|a vaccination programme|7-8
+contagious|adj|/kənˈteɪdʒəs/|lây lan|spreading by direct contact|Measles is a highly contagious disease.|highly contagious|8+
+symptom|n|/ˈsɪmptəm/|triệu chứng|a sign that someone has an illness|A fever is a common symptom of flu.|show symptoms|6-7
+epidemic|n|/ˌepɪˈdemɪk/|dịch bệnh|a sudden spread of a disease among many people|The country faced an obesity epidemic.|an epidemic of|7-8
+detox|v|/ˈdiːtɒks/|thải độc|to clean the body of harmful substances|Some people detox with fruit juice for a week.|detox your body|8+
+hydrate|v|/haɪˈdreɪt/|bù nước|to give the body enough water|Athletes must hydrate before and after training.|stay hydrated|8+
+indulge|v|/ɪnˈdʌldʒ/|chiều theo, nuông chiều bản thân|to allow yourself to enjoy something you like|It is fine to indulge in dessert once in a while.|indulge in|7-8
+well-being|n|/ˌwel ˈbiːɪŋ/|trạng thái khoẻ mạnh|the state of being healthy and happy|Time outdoors improves both physical and mental well-being.|mental well-being|6-7
+calorie|n|/ˈkæləri/|calo|a unit measuring the energy in food|Fast food is often high in calories.|count calories|6-7

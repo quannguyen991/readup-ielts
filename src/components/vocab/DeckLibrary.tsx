@@ -8,6 +8,8 @@ import { Icon, SectionHeader } from '@/components/ui';
 import type { IconName } from '@/components/ui/Icon';
 import { SAT_MATH_VOCAB_LESSONS, SAT_VERBAL_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { NOTEBOOK_SLUG, notebookDeck } from '@/data/study-decks';
+import { VFI_DECKS } from '@/data/vocab-for-ielts';
+import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { byRecent, deckProgress, fold, isInProgress, type DeckProgress } from '@/services/vocab/deck-library';
@@ -47,6 +49,8 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'learning', label: 'Đang học', labelEn: 'In progress', icon: 'flame' },
   { key: 'mine', label: 'Của bạn', labelEn: 'Yours', icon: 'bookmark' },
   { key: 'ielts', label: 'Chủ đề IELTS', labelEn: 'IELTS topics', icon: 'book' },
+  { key: 'vfi', label: 'Vocabulary for IELTS', labelEn: 'Vocabulary for IELTS', icon: 'letters' },
+  { key: 'vfia', label: 'Vocabulary for IELTS Advanced', labelEn: 'Vocabulary for IELTS Advanced', icon: 'letters' },
   { key: 'listening', label: 'Nghe IELTS', labelEn: 'IELTS listening', icon: 'volume' },
   { key: 'satMath', label: 'SAT Math', labelEn: 'SAT Math', icon: 'grid' },
   { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
@@ -55,6 +59,8 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
 const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
   mine: { title: 'Của bạn', titleEn: 'Yours', subtitle: 'Sổ từ bạn lưu khi đọc và các bộ bạn tự tạo', subtitleEn: 'Words you saved while reading, plus decks you made', icon: 'bookmark' },
   ielts: { title: 'Chủ đề IELTS', titleEn: 'IELTS topics', subtitle: 'Mỗi bộ xếp từ dễ tới khó theo band', subtitleEn: 'Each deck goes from easy to hard by band', icon: 'book' },
+  vfi: { title: 'Vocabulary for IELTS', titleEn: 'Vocabulary for IELTS', subtitle: '20 unit theo giáo trình, mỗi unit thêm 20 từ mở rộng', subtitleEn: '20 units in book order, each with 20 extra words', icon: 'letters' },
+  vfia: { title: 'Vocabulary for IELTS Advanced', titleEn: 'Vocabulary for IELTS Advanced', subtitle: '20 unit nâng cao, mỗi unit thêm 15 từ mở rộng', subtitleEn: '20 advanced units, each with 15 extra words', icon: 'letters' },
   listening: { title: 'Nghe IELTS', titleEn: 'IELTS listening', subtitle: 'Chia theo từng Section của đề', subtitleEn: 'Grouped by test Section', icon: 'volume' },
   satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
   satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
@@ -72,6 +78,8 @@ function lib(slug: string, title: string, words: readonly { word: string }[], su
 
 const STATIC_DECKS: LibDeck[] = [
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
+  ...VFI_DECKS.map((t) => lib(t.slug, t.name, t.words, t.blurb, { title: t.name })),
+  ...VFIA_DECKS.map((t) => lib(t.slug, t.name, t.words, t.blurb, { title: t.name })),
   ...LISTENING_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
   ...SAT_MATH_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
   ...SAT_VERBAL_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
@@ -240,7 +248,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'ielts', 'listening', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'ielts', 'vfi', 'vfia', 'listening', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
                   <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
                   {sourceBody(s)}

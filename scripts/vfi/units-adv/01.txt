@@ -1,0 +1,44 @@
+#unit 1
+#en Personality
+#blurb Tính cách và cách mô tả con người, từ ưu điểm đến thói xấu
+adolescent|n|/ˌædəˈlesənt/|thanh thiếu niên|a young person who is developing into an adult|Every adolescent needs space to make their own mistakes.|a rebellious adolescent|6-7
+characteristic|n|/ˌkærəktəˈrɪstɪk/|đặc điểm|a typical quality of a person or thing|Generosity is her most striking characteristic.|a key characteristic|6-7
+trait|n|/treɪt/|nét tính cách|a particular quality in someone's character|Patience is a useful trait in a teacher.|a personality trait|7-8
+apprehensive|adj|/ˌæprɪˈhensɪv/|lo lắng, e ngại|worried that something bad may happen|She felt apprehensive about her first day at work.|feel apprehensive|7-8
+assertive|adj|/əˈsɜːtɪv/|quyết đoán, tự tin|confident and able to state your opinion firmly|An assertive manager makes decisions without hesitation.|an assertive manner|7-8
+clumsy|adj|/ˈklʌmzi/|vụng về|moving or doing things in an awkward way|He is so clumsy that he breaks something every week.|a clumsy movement|6-7
+cynical|adj|/ˈsɪnɪkəl/|hoài nghi, yếm thế|believing that people only act for selfish reasons|Years of politics have made him cynical.|a cynical view|8+
+desirable|adj|/dɪˈzaɪərəbəl/|đáng mong muốn|worth having or wanting|Honesty is a highly desirable quality in a leader.|a desirable trait|7-8
+eccentric|adj|/ɪkˈsentrɪk/|lập dị|behaving in an unusual way|The eccentric professor wore a different hat every day.|an eccentric character|8+
+egotistical|adj|/ˌiːɡəˈtɪstɪkəl/|tự cao tự đại|thinking only about yourself and your own importance|His egotistical attitude made him unpopular with colleagues.|an egotistical person|8+
+gullible|adj|/ˈɡʌləbəl/|cả tin|easily tricked because you trust too much|Gullible shoppers believe every advertisement they see.|too gullible|8+
+idealised|adj|/aɪˈdɪəlaɪzd/|được lý tưởng hoá|thought of as better than it really is|Many people have an idealised picture of life abroad.|an idealised version|8+
+inconsiderate|adj|/ˌɪnkənˈsɪdərət/|thiếu quan tâm đến người khác|not thinking about other people's feelings|It was inconsiderate of him to play loud music at midnight.|inconsiderate behaviour|7-8
+indecisive|adj|/ˌɪndɪˈsaɪsɪv/|thiếu quyết đoán|unable to make decisions quickly|An indecisive leader can cost a team valuable time.|an indecisive person|8+
+self-assured|adj|/ˌself əˈʃʊəd/|tự tin|confident in your own abilities|She spoke in a calm and self-assured way.|a self-assured manner|8+
+self-absorbed|adj|/ˌself əbˈzɔːbd/|chỉ biết mình|interested only in yourself|Self-absorbed people rarely notice how others feel.|self-absorbed behaviour|8+
+self-centred|adj|/ˌself ˈsentəd/|ích kỷ, tự cho mình là trung tâm|caring only about your own needs|Only children are sometimes unfairly called self-centred.|a self-centred attitude|7-8
+self-congratulatory|adj|/ˌself kənˌɡrætʃʊˈleɪtəri/|tự khen mình|showing too much pride in your own success|The speech was long, boring and self-congratulatory.|a self-congratulatory tone|8+
+self-deprecating|adj|/ˌself ˈdeprəkeɪtɪŋ/|khiêm tốn quá mức, tự hạ thấp|making your own achievements seem small|Her self-deprecating humour made the audience like her.|self-deprecating humour|8+
+self-important|adj|/ˌself ɪmˈpɔːtənt/|tự cho mình quan trọng|behaving as if you are more important than others|The self-important official kept everyone waiting.|a self-important manner|8+
+tactful|adj|/ˈtæktfəl/|khéo léo, tế nhị|careful not to upset people|A tactful teacher corrects mistakes without embarrassing pupils.|a tactful reply|7-8
+well-adjusted|adj|/ˌwel əˈdʒʌstɪd/|ổn định về tâm lý, hoà nhập tốt|emotionally stable and able to cope with life|Most well-adjusted children cope easily with change.|a well-adjusted child|8+
+well-bred|adj|/ˌwel ˈbred/|có giáo dục, lịch thiệp|polite and well brought up|He was a well-bred young man with perfect manners.|a well-bred person|8+
+well-brought-up|adj|/ˌwel brɔːt ˈʌp/|được dạy dỗ tử tế|having been taught good manners as a child|She is a polite and well-brought-up girl.|a well-brought-up child|8+
+well-dressed|adj|/ˌwel ˈdrest/|ăn mặc đẹp|wearing smart or fashionable clothes|The well-dressed man in the lobby was waiting for an interview.|a well-dressed woman|6-7
++++
+introvert|n|/ˈɪntrəvɜːt/|người hướng nội|a quiet person who prefers being alone|An introvert often recharges by spending time alone.|a typical introvert|7-8
+extrovert|n|/ˈekstrəvɜːt/|người hướng ngoại|a lively person who enjoys being with others|As an extrovert, she makes friends wherever she goes.|a confident extrovert|7-8
+easygoing|adj|/ˌiːziˈɡəʊɪŋ/|dễ tính|relaxed and not easily upset|My easygoing manager never gets angry about small mistakes.|an easygoing nature|6-7
+meticulous|adj|/məˈtɪkjələs/|tỉ mỉ|very careful about small details|A meticulous editor checks every comma.|meticulous attention to detail|8+
+stubborn|adj|/ˈstʌbən/|bướng bỉnh|refusing to change your mind|He is too stubborn to admit he was wrong.|a stubborn refusal|6-7
+resilient|adj|/rɪˈzɪliənt/|kiên cường, bền bỉ|able to recover quickly from difficulties|Resilient people bounce back after failure.|a resilient character|8+
+impulsive|adj|/ɪmˈpʌlsɪv/|bốc đồng|acting suddenly without thinking|An impulsive purchase can empty your savings.|impulsive behaviour|7-8
+aloof|adj|/əˈluːf/|xa cách, lạnh nhạt|not friendly or interested in other people|She seems aloof, but she is simply shy.|remain aloof|8+
+arrogant|adj|/ˈærəɡənt/|kiêu ngạo|believing you are better than others|His arrogant remarks offended the whole team.|an arrogant attitude|7-8
+humble|adj|/ˈhʌmbəl/|khiêm tốn|not proud or showing off|Despite his fame, he remains a humble man.|a humble origin|7-8
+charismatic|adj|/ˌkærɪzˈmætɪk/|có sức cuốn hút|having a special power to attract and inspire people|A charismatic speaker can win over a sceptical audience.|a charismatic leader|8+
+pessimistic|adj|/ˌpesɪˈmɪstɪk/|bi quan|expecting the worst to happen|Economists are pessimistic about next year's growth.|a pessimistic outlook|7-8
+narrow-minded|adj|/ˌnærəʊ ˈmaɪndɪd/|hẹp hòi|unwilling to accept new or different ideas|Narrow-minded people dislike anything unfamiliar.|a narrow-minded view|8+
+open-minded|adj|/ˌəʊpən ˈmaɪndɪd/|cởi mở|willing to consider new ideas|Travelling makes people more open-minded.|an open-minded attitude|7-8
+temperamental|adj|/ˌtemprəˈmentəl/|thất thường, nóng nảy|likely to change moods suddenly|The temperamental chef shouted at his staff.|a temperamental artist|8+

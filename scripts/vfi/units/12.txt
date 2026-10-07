@@ -1,0 +1,72 @@
+#unit 12
+#en Information technology
+#vi Công nghệ thông tin
+#blurb Máy tính, thiết bị, Internet và cách công nghệ thay đổi cuộc sống
+automatic pilot|np|/ˌɔːtəˈmætɪk ˈpaɪlət/|chế độ lái tự động|a device that flies a plane without human control|The plane flew on automatic pilot for most of the journey.|on automatic pilot|7-8
+computerisation|n|/kəmˌpjuːtəraɪˈzeɪʃən/|sự tin học hoá|the use of computers to do a job|Computerisation has reduced the need for office clerks.|the computerisation of|8+
+connection|n|/kəˈnekʃən/|kết nối|a link between devices or networks|I lost my internet connection during the call.|an internet connection|5-6
+data|n|/ˈdeɪtə/|dữ liệu|facts or information stored on a computer|Companies store huge amounts of customer data.|collect data|6-7
+device|n|/dɪˈvaɪs/|thiết bị|a machine made for a particular job|Most teenagers own at least one mobile device.|an electronic device|5-6
+function|n|/ˈfʌŋkʃən/|chức năng|the purpose of something|The main function of the app is to track your sleep.|a useful function|6-7
+gadget|n|/ˈɡædʒɪt/|thiết bị nhỏ tiện ích|a small, useful machine|He loves buying the latest gadgets.|a high-tech gadget|6-7
+the Internet|np|/ðə ˈɪntənet/|mạng Internet|the global network connecting computers|The Internet has transformed the way we shop.|access the Internet|5-6
+keyboard|n|/ˈkiːbɔːd/|bàn phím|a set of keys used to type on a computer|Her fingers flew across the keyboard.|a wireless keyboard|5-6
+keypad|n|/ˈkiːpæd/|bàn phím số|a small set of buttons used to enter numbers|Enter your code on the keypad.|a numeric keypad|7-8
+laptop|n|/ˈlæptɒp/|máy tính xách tay|a portable computer|Many students take notes on a laptop.|a laptop computer|5-6
+the latest|np|/ðə ˈleɪtɪst/|phiên bản mới nhất|the newest version of something|Teenagers always want the latest model of phone.|the latest technology|5-6
+memory|n|/ˈmeməri/|bộ nhớ|the part of a computer where data is stored|The phone has run out of memory.|memory capacity|5-6
+monitor|n|/ˈmɒnɪtə/|màn hình|a screen on which a computer displays information|Staring at a monitor all day can strain the eyes.|a computer monitor|6-7
+patent|n|/ˈpeɪtənt/|bằng sáng chế|an official right to be the only maker of an invention|The company filed a patent for its new battery.|file a patent|7-8
+program|n|/ˈprəʊɡræm/|chương trình|a set of instructions that a computer follows|The program crashed as soon as I opened it.|a computer program|6-7
+prototype|n|/ˈprəʊtətaɪp/|bản mẫu|the first model of a new product|The engineers tested the prototype for several months.|build a prototype|7-8
+remote control|np|/rɪˈməʊt kənˈtrəʊl/|điều khiển từ xa|a device for operating a machine from a distance|I can't find the remote control for the TV.|use a remote control|6-7
+silicon chip|np|/ˈsɪlɪkən tʃɪp/|chip silicon|a tiny piece of material that holds electronic circuits|Every smartphone contains a silicon chip.|a silicon chip|7-8
+technology|n|/tekˈnɒlədʒi/|công nghệ|machines and methods developed through science|Technology has made communication much faster.|modern technology|5-6
+telecommunications|n|/ˌtelɪkəˌmjuːnɪˈkeɪʃənz/|viễn thông|the sending of information by phone, radio or the Internet|Telecommunications companies are investing in 5G networks.|the telecommunications industry|8+
+vision|n|/ˈvɪʒən/|tầm nhìn|an idea of how something could be in the future|The founder's vision was to put a computer in every home.|a clear vision|7-8
+wireless connection|np|/ˈwaɪələs kəˈnekʃən/|kết nối không dây|a link between devices that uses no cables|A wireless connection lets me work from any room.|a wireless connection|7-8
+compact|adj|/ˈkɒmpækt/|nhỏ gọn|small and taking up little space|The new camera is light and compact.|a compact design|7-8
+computerised|adj|/kəmˈpjuːtəraɪzd/|được tin học hoá|controlled or operated by computers|The library has a computerised catalogue.|a computerised system|7-8
+cutting-edge|adj|/ˈkʌtɪŋ edʒ/|tiên tiến nhất|using the newest and most advanced ideas|The lab uses cutting-edge technology to study genes.|cutting-edge research|8+
+cyber|adj|/ˈsaɪbə/|thuộc mạng, không gian mạng|relating to computers and the Internet|Cyber crime is rising every year.|cyber security|8+
+dated|adj|/ˈdeɪtɪd/|lỗi thời|no longer modern|The software looks dated compared with new apps.|dated technology|7-8
+digital|adj|/ˈdɪdʒɪtəl/|kỹ thuật số|using electronic signals to store information|Digital cameras have replaced film cameras.|digital technology|6-7
+labour-saving|adj|/ˈleɪbə seɪvɪŋ/|tiết kiệm sức lao động|designed to make work easier|Washing machines are labour-saving devices.|labour-saving devices|7-8
+portable|adj|/ˈpɔːtəbəl/|xách tay, di động|easy to carry|A portable charger is useful when travelling.|a portable device|7-8
+state-of-the-art|adj|/ˌsteɪt əv ði ˈɑːt/|hiện đại nhất|using the newest and most advanced technology|The hospital has state-of-the-art scanning equipment.|state-of-the-art technology|7-8
+up-to-date|adj|/ˌʌp tə ˈdeɪt/|cập nhật|using the newest information or technology|Keep your anti-virus software up-to-date.|up-to-date information|6-7
+user-friendly|adj|/ˌjuːzə ˈfrendli/|dễ sử dụng|easy to use|The new app is simple and user-friendly.|a user-friendly interface|7-8
+virtual|adj|/ˈvɜːtʃuəl/|ảo|existing on a computer rather than in the real world|Virtual meetings save time and travel costs.|virtual reality|7-8
+access|v|/ˈækses/|truy cập|to get information from a computer|You can access your files from any device.|access the Internet|6-7
+connect|v|/kəˈnekt/|kết nối|to join one thing to another|Connect the printer to the computer with a cable.|connect to the Internet|5-6
+download|v|/ˌdaʊnˈləʊd/|tải xuống|to copy files from the Internet to your device|You can download the app for free.|download a file|5-6
+display|v|/dɪˈspleɪ/|hiển thị|to show information on a screen|The screen displays the time and temperature.|display information|6-7
+envisage|v|/ɪnˈvɪzɪdʒ/|hình dung, dự tính|to imagine something as a future possibility|Few experts envisaged how quickly smartphones would spread.|envisage a future|8+
+operate|v|/ˈɒpəreɪt/|vận hành|to make a machine work|It is easy to operate this machine.|operate a machine|6-7
+revolutionise|v|/ˌrevəˈluːʃənaɪz/|làm cách mạng hoá|to completely change the way something is done|The Internet revolutionised the way people shop.|revolutionise an industry|8+
+scroll|v|/skrəʊl/|cuộn (màn hình)|to move text up or down on a screen|He scrolled through the news on his phone.|scroll down|6-7
+speculate|v|/ˈspekjʊleɪt/|suy đoán|to guess about something without enough facts|Analysts speculate that robots will do many routine jobs.|speculate about|8+
+store|v|/stɔː/|lưu trữ|to keep information on a computer|Photos are stored in the cloud.|store data|5-6
+surpass|v|/səˈpɑːs/|vượt qua|to do or be better than something else|Mobile sales have surpassed desktop computers.|surpass expectations|8+
+automatically|adv|/ˌɔːtəˈmætɪkli/|một cách tự động|without being controlled by a person|The lights switch on automatically at dusk.|automatically update|6-7
++++
+algorithm|n|/ˈælɡərɪðəm/|thuật toán|a set of rules a computer follows to solve a problem|Social media algorithms choose which posts you see.|a search algorithm|8+
+software|n|/ˈsɒftweə/|phần mềm|programs used to operate a computer|The latest software update fixes several bugs.|install software|6-7
+hardware|n|/ˈhɑːdweə/|phần cứng|the physical parts of a computer|Hardware costs have fallen sharply in recent years.|computer hardware|7-8
+network|n|/ˈnetwɜːk/|mạng lưới|a system of connected computers|The school network was down for two hours.|a computer network|6-7
+firewall|n|/ˈfaɪəwɔːl/|tường lửa|a system that protects a network from unauthorised access|A firewall blocks suspicious traffic.|install a firewall|8+
+encryption|n|/ɪnˈkrɪpʃən/|mã hoá|the process of turning data into a secret code|Encryption protects your messages from hackers.|data encryption|8+
+bandwidth|n|/ˈbændwɪdθ/|băng thông|the amount of data that can be sent at one time|Video calls need a lot of bandwidth.|high bandwidth|8+
+the cloud|np|/ðə klaʊd/|điện toán đám mây|online storage that you can reach from any device|I keep my photos safely in the cloud.|store files in the cloud|7-8
+artificial intelligence|np|/ˌɑːtɪfɪʃəl ɪnˈtelɪdʒəns/|trí tuệ nhân tạo|computer systems that can do tasks needing human thought|Artificial intelligence can now diagnose some diseases.|develop artificial intelligence|7-8
+hacker|n|/ˈhækə/|tin tặc|a person who breaks into computer systems|A hacker stole thousands of customers' details.|a skilled hacker|7-8
+malware|n|/ˈmælweə/|phần mềm độc hại|software designed to damage a computer|Malware can steal your passwords without you knowing.|infected with malware|8+
+upgrade|nv|/ˈʌpɡreɪd/|bản nâng cấp; nâng cấp|a newer, better version; to improve a machine|It is time to upgrade your old computer.|a software upgrade|7-8
+obsolete|adj|/ˈɒbsəliːt/|lỗi thời, lạc hậu|no longer used because something better exists|Floppy disks are now completely obsolete.|become obsolete|8+
+interactive|adj|/ˌɪntərˈæktɪv/|có tính tương tác|allowing two-way communication with a user|Interactive whiteboards make lessons more engaging.|interactive learning|7-8
+glitch|n|/ɡlɪtʃ/|trục trặc nhỏ|a small problem that stops something working properly|A technical glitch delayed the online exam.|a software glitch|8+
+broadband|n|/ˈbrɔːdbænd/|băng thông rộng|a fast Internet connection|Broadband has reached most rural villages.|high-speed broadband|7-8
+streaming|n|/ˈstriːmɪŋ/|phát trực tuyến|playing video or music over the Internet|Streaming has changed the way we watch films.|music streaming|6-7
+automation|n|/ˌɔːtəˈmeɪʃən/|sự tự động hoá|the use of machines to do work without people|Automation threatens many factory jobs.|industrial automation|7-8
+innovate|v|/ˈɪnəveɪt/|đổi mới|to introduce new ideas or methods|Companies must innovate to survive.|innovate constantly|7-8
+pixel|n|/ˈpɪksəl/|điểm ảnh|the smallest unit of a picture on a screen|The screen has more than eight million pixels.|high pixel count|7-8

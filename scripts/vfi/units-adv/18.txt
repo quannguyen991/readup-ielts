@@ -1,0 +1,46 @@
+#unit 18
+#en Crime and punishment
+#blurb Các loại tội phạm, hình phạt, hồ sơ phạm tội và cụm từ pháp lý
+capital punishment|np|/ˌkæpɪtəl ˈpʌnɪʃmənt/|án tử hình|the legal killing of a person as a punishment|Many countries have abolished capital punishment.|support capital punishment|7-8
+community service|np|/kəˈmjuːnəti ˈsɜːvɪs/|lao động công ích|unpaid work done as a punishment|The teenager was given community service instead of prison.|do community service|7-8
+life sentence|np|/ˈlaɪf ˌsentəns/|án chung thân|a punishment of imprisonment for the rest of a life|The murderer received a life sentence.|serve a life sentence|7-8
+mugging|n|/ˈmʌɡɪŋ/|vụ cướp giật|a violent attack to steal from someone|Muggings are rare in this part of town.|a street mugging|7-8
+offence|n|/əˈfens/|hành vi phạm tội|an illegal act|Speeding is a minor offence.|a criminal offence|7-8
+organised crime|np|/ˌɔːɡənaɪzd ˈkraɪm/|tội phạm có tổ chức|crime carried out by large criminal groups|Police are working to combat organised crime.|fight organised crime|8+
+peer pressure|np|/ˈpɪə ˌpreʃə/|áp lực từ bạn bè|influence from people of your own age|Peer pressure can push teenagers towards crime.|resist peer pressure|7-8
+petty crime|np|/ˌpeti ˈkraɪm/|tội vặt|minor crime such as small thefts|Petty crime is common in busy shopping areas.|petty crime|7-8
+robbery|n|/ˈrɒbəri/|vụ cướp|the crime of stealing using violence or threats|The bank robbery took less than three minutes.|an armed robbery|7-8
+vandalism|n|/ˈvændəlɪzəm/|hành vi phá hoại|deliberate damage to public property|Vandalism costs the city thousands each year.|an act of vandalism|7-8
+violence|n|/ˈvaɪələns/|bạo lực|behaviour intended to hurt other people|Violence on television can affect young viewers.|domestic violence|7-8
+hostile|adj|/ˈhɒstaɪl/|thù địch|unfriendly and aggressive|The suspect became hostile when questioned.|a hostile attitude|8+
+lenient|adj|/ˈliːniənt/|khoan dung, nhẹ tay|not as strict as expected|Critics say the judge was too lenient with the offenders.|lenient sentences|8+
+accept the consequences of|vp|/əkˈsept ðə ˈkɒnsɪkwənsɪz əv/|chấp nhận hậu quả của|to face the results of your actions|Offenders must accept the consequences of their crimes.|accept the consequences of|8+
+accuse someone of|ph|/əˈkjuːz ˈsʌmwʌn əv/|buộc tội ai về việc|to say that someone has done something wrong|He was accused of stealing from his employer.|accuse someone of fraud|7-8
+arrest someone for|ph|/əˈrest ˈsʌmwʌn fɔː/|bắt ai vì tội|to take someone into police custody for a crime|Police arrested the man for burglary.|arrest someone for theft|7-8
+be held responsible for|ph|/biː held rɪˈspɒnsəbəl fɔː/|bị coi là chịu trách nhiệm về|to be blamed for something|Drivers must be held responsible for accidents they cause.|be held responsible for|8+
+be a victim of|ph|/biː ə ˈvɪktɪm əv/|là nạn nhân của|to be harmed by a crime|Many elderly people are a victim of fraud.|be a victim of crime|7-8
+convicted criminal|np|/kənˈvɪktɪd ˈkrɪmɪnəl/|tội phạm đã bị kết án|a person found guilty of a crime by a court|A convicted criminal may lose the right to vote.|a convicted criminal|8+
+criminal activity|np|/ˈkrɪmɪnəl ækˈtɪvəti/|hoạt động phạm pháp|illegal acts|Cameras help to prevent criminal activity.|criminal activity|7-8
+criminal offence|np|/ˈkrɪmɪnəl əˈfens/|tội hình sự|an act that breaks the law|Driving without insurance is a criminal offence.|a criminal offence|7-8
+criminal record|np|/ˈkrɪmɪnəl ˈrekɔːd/|tiền án|an official list of a person's past crimes|A criminal record can make it hard to get a job.|have a criminal record|7-8
+hardened criminal|np|/ˌhɑːdənd ˈkrɪmɪnəl/|tội phạm chai lì|a person who has committed many crimes|Hardened criminals rarely change their ways.|a hardened criminal|8+
+juvenile crime|np|/ˌdʒuːvənaɪl ˈkraɪm/|tội phạm vị thành niên|crimes committed by young people|Juvenile crime has fallen in most cities.|reduce juvenile crime|8+
+underlying causes|np|/ˌʌndəlaɪɪŋ ˈkɔːzɪz/|nguyên nhân gốc rễ|the deeper reasons for a problem|We must address the underlying causes of crime.|underlying causes|8+
+jail|v|/dʒeɪl/|bỏ tù|to put someone in prison|The thief was jailed for six months.|jail for|7-8
+punish|v|/ˈpʌnɪʃ/|trừng phạt|to make someone suffer for breaking a rule|Parents should not punish children by hitting them.|punish severely|6-7
++++
+sentence|nv|/ˈsentəns/|bản án; kết án|a punishment given by a court|The judge gave him a ten-year sentence.|a prison sentence|7-8
+verdict|n|/ˈvɜːdɪkt/|phán quyết|the decision of a jury or judge|The jury returned a guilty verdict.|reach a verdict|7-8
+witness|n|/ˈwɪtnəs/|nhân chứng|a person who sees a crime happen|The witness described the thief to police.|a key witness|7-8
+offender|n|/əˈfendə/|người phạm tội|a person who commits a crime|Young offenders need education, not punishment alone.|a repeat offender|7-8
+deterrent|n|/dɪˈterənt/|biện pháp răn đe|something that discourages people from acting|Heavy fines are an effective deterrent.|act as a deterrent|8+
+rehabilitation|n|/ˌriːəˌbɪlɪˈteɪʃən/|sự cải tạo|helping criminals return to normal life|Rehabilitation reduces the chance of reoffending.|prisoner rehabilitation|8+
+fraud|n|/frɔːd/|gian lận|the crime of deceiving people to get money|Online fraud is increasing every year.|commit fraud|7-8
+bribery|n|/ˈbraɪbəri/|hối lộ|the crime of giving money to get an unfair advantage|Bribery is widespread in some industries.|accused of bribery|8+
+legislation|n|/ˌledʒɪˈsleɪʃən/|luật pháp|laws made by a government|New legislation protects workers from unfair dismissal.|introduce legislation|8+
+reoffend|v|/ˌriːəˈfend/|tái phạm|to commit another crime after being punished|Many released prisoners reoffend within two years.|likely to reoffend|8+
+acquit|v|/əˈkwɪt/|tuyên trắng án|to officially decide someone is not guilty|The court acquitted him due to lack of evidence.|acquit of|8+
+sue|v|/suː/|kiện|to start a legal case against someone|She decided to sue the company for unfair dismissal.|sue for damages|7-8
+enforce|v|/ɪnˈfɔːs/|thực thi|to make sure a law is obeyed|The police enforce the traffic laws.|enforce a law|7-8
+deter|v|/dɪˈtɜː/|răn đe|to make someone decide not to do something|Harsh sentences may deter potential criminals.|deter crime|7-8
+custody|n|/ˈkʌstədi/|sự tạm giam|the state of being kept by the police|The suspect remained in police custody overnight.|in custody|8+

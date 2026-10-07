@@ -1,0 +1,104 @@
+#unit 17
+#en Talking business
+#vi Kinh doanh và việc làm
+#blurb Công ty, nghề nghiệp, lương thưởng, thị trường lao động và quảng cáo
+advertisement|n|/ədˈvɜːtɪsmənt/|quảng cáo|a notice that tries to sell a product or job|The company placed an advertisement in the local newspaper.|a job advertisement|6-7
+advertising|n|/ˈædvətaɪzɪŋ/|ngành quảng cáo|the business of promoting products|Advertising shapes what young people want to buy.|an advertising campaign|6-7
+boss|n|/bɒs/|ông chủ, sếp|the person in charge of a workplace|My boss lets us work from home on Fridays.|a demanding boss|5-6
+campaign|n|/kæmˈpeɪn/|chiến dịch|a planned series of actions to achieve an aim|The marketing campaign doubled sales in a month.|launch a campaign|6-7
+candidate|n|/ˈkændɪdət/|ứng viên|a person applying for a job|Each candidate must complete an online test.|a strong candidate|6-7
+career|n|/kəˈrɪə/|sự nghiệp|a job or series of jobs over a lifetime|She had a successful career in banking.|a career in|5-6
+clerk|n|/klɑːk/|nhân viên văn phòng|a person who does office or shop work|The bank clerk checked my details.|a bank clerk|6-7
+client|n|/ˈklaɪənt/|khách hàng|a person who pays for professional services|The firm has more than fifty clients abroad.|a regular client|6-7
+colleague|n|/ˈkɒliːɡ/|đồng nghiệp|a person you work with|I get on well with all my colleagues.|a colleague at work|5-6
+company|n|/ˈkʌmpəni/|công ty|a business that sells goods or services|She works for a large insurance company.|set up a company|5-6
+consumer|n|/kənˈsjuːmə/|người tiêu dùng|a person who buys goods or services|Consumers are demanding more environmentally friendly products.|consumer rights|6-7
+credibility|n|/ˌkredəˈbɪləti/|độ tin cậy|the quality of being trusted|The scandal damaged the company's credibility.|lose credibility|8+
+customer|n|/ˈkʌstəmə/|khách hàng|a person who buys goods in a shop|The shop gives free gifts to loyal customers.|customer service|5-6
+earnings|n|/ˈɜːnɪŋz/|thu nhập|money received for work|Average earnings have risen by two per cent.|average earnings|7-8
+employee|n|/ɪmˈplɔɪiː/|nhân viên|a person who is paid to work for someone|The firm has over two thousand employees.|a full-time employee|6-7
+employer|n|/ɪmˈplɔɪə/|nhà tuyển dụng|a person or company that pays people to work|Employers prefer graduates with practical experience.|a major employer|6-7
+employment|n|/ɪmˈplɔɪmənt/|việc làm|the state of having paid work|Employment among young people has fallen.|full-time employment|6-7
+experience|n|/ɪkˈspɪəriəns/|kinh nghiệm|knowledge gained by doing a job|Employers often ask for two years' experience.|work experience|5-6
+goods|n|/ɡʊdz/|hàng hoá|things that are made to be sold|The country exports goods worth billions each year.|consumer goods|6-7
+income|n|/ˈɪnkʌm/|thu nhập|money received regularly|Many families live on a low income.|a high income|6-7
+industry|n|/ˈɪndəstri/|ngành công nghiệp|the production of goods or services|The tourism industry has grown rapidly.|the car industry|5-6
+interview|n|/ˈɪntəvjuː/|buổi phỏng vấn|a formal meeting to assess a job applicant|I have a job interview on Monday.|a job interview|5-6
+job|n|/dʒɒb/|công việc|work that you do regularly to earn money|It is hard to find a job after graduation.|a full-time job|5-6
+job satisfaction|np|/ˈdʒɒb ˌsætɪsˈfækʃən/|sự hài lòng trong công việc|the feeling of enjoying and being pleased with your work|Job satisfaction matters more to many people than pay.|high job satisfaction|7-8
+labourer|n|/ˈleɪbərə/|lao động chân tay|a person who does heavy physical work|Many labourers work long hours for low pay.|a farm labourer|7-8
+management|n|/ˈmænɪdʒmənt/|ban quản lý|the people who run a company|Management introduced a four-day working week.|senior management|6-7
+manual work|np|/ˈmænjuəl wɜːk/|lao động tay chân|work done with the hands|Manual work is often badly paid.|do manual work|7-8
+market|n|/ˈmɑːkɪt/|thị trường|the business of buying and selling|The job market is very competitive this year.|the job market|5-6
+marketing|n|/ˈmɑːkɪtɪŋ/|tiếp thị|the activity of promoting and selling products|She works in digital marketing.|a marketing manager|6-7
+meeting|n|/ˈmiːtɪŋ/|cuộc họp|an event where people discuss something|The meeting lasted over two hours.|attend a meeting|5-6
+money|n|/ˈmʌni/|tiền|what you earn and use to buy things|Many people work abroad to earn more money.|earn money|5-6
+niche|n|/niːʃ/|thị trường ngách|a small market for a specialised product|The firm found a niche selling organic baby food.|a niche market|8+
+occupation|n|/ˌɒkjʊˈpeɪʃən/|nghề nghiệp|a person's job or profession|Please state your name, age and occupation.|a skilled occupation|7-8
+office|n|/ˈɒfɪs/|văn phòng|a room or building where people work at desks|Most employees now work from a home office.|an office worker|5-6
+overtime|n|/ˈəʊvətaɪm/|giờ làm thêm|extra hours worked beyond normal time|Nurses often work overtime during busy periods.|work overtime|6-7
+packaging|n|/ˈpækɪdʒɪŋ/|bao bì|material used to wrap products|Excess packaging creates unnecessary waste.|plastic packaging|6-7
+pay|n|/peɪ/|tiền lương|money received for work|Pay in the hospitality sector is often low.|equal pay|5-6
+perk|n|/pɜːk/|đặc quyền, phúc lợi|an extra benefit given with a job|Free meals are a popular perk of the job.|a job perk|7-8
+product|n|/ˈprɒdʌkt/|sản phẩm|something that is made to be sold|The company is launching a new product next month.|a new product|5-6
+profession|n|/prəˈfeʃən/|nghề chuyên môn|a job needing special training|Teaching is a respected profession.|a profession such as law|6-7
+prospects|n|/ˈprɒspekts/|triển vọng|chances of future success|Graduates from this university have excellent job prospects.|job prospects|6-7
+qualifications|n|/ˌkwɒlɪfɪˈkeɪʃənz/|bằng cấp, trình độ|exams passed or training completed|Applicants need qualifications in accounting.|academic qualifications|6-7
+retirement|n|/rɪˈtaɪəmənt/|sự nghỉ hưu|the time when someone stops working because of age|Many people struggle to save enough for retirement.|early retirement|6-7
+salary|n|/ˈsæləri/|lương tháng|fixed pay received each month|She earns a salary of fifty thousand a year.|a high salary|5-6
+shares|n|/ʃeəz/|cổ phiếu|units of ownership in a company|Employees can buy shares at a reduced price.|buy shares|7-8
+shift work|np|/ˈʃɪft wɜːk/|làm việc theo ca|work done in a regular changing pattern of hours|Shift work can disrupt sleep patterns.|do shift work|7-8
+skills|n|/skɪlz/|kỹ năng|abilities that allow you to do something well|Communication skills are vital in any job.|key skills|5-6
+staff|n|/stɑːf/|nhân viên|the people who work for an organisation|The hospital is short of staff.|a member of staff|5-6
+supervisor|n|/ˈsuːpəvaɪzə/|người giám sát|a person who watches over the work of others|Her supervisor praised her careful work.|a line supervisor|7-8
+takeover|n|/ˈteɪkəʊvə/|việc thâu tóm|the buying of one company by another|The takeover created the largest bank in the country.|a hostile takeover|8+
+target|n|/ˈtɑːɡɪt/|chỉ tiêu, mục tiêu|a goal that you try to reach|Sales staff have to meet monthly targets.|meet a target|6-7
+trade|n|/treɪd/|thương mại|the buying and selling of goods|Trade between the two countries has doubled.|international trade|6-7
+trend|n|/trend/|xu hướng|a general direction of change|There is a trend towards flexible working.|a growing trend|6-7
+unemployment|n|/ˌʌnɪmˈplɔɪmənt/|nạn thất nghiệp|the state of having no job|Youth unemployment is a serious concern.|high unemployment|6-7
+wages|n|/ˈweɪdʒɪz/|tiền công|money paid for work, often weekly|Wages in the factory are low.|low wages|6-7
+workforce|n|/ˈwɜːkfɔːs/|lực lượng lao động|all the people who work for a company or in a country|The company has a workforce of five thousand.|a skilled workforce|7-8
+workplace|n|/ˈwɜːkpleɪs/|nơi làm việc|the place where people work|Safety in the workplace is a legal requirement.|a modern workplace|6-7
+casual|adj|/ˈkæʒuəl/|tạm thời, thông thường|not regular or formal|Many students take casual jobs during the holidays.|casual work|6-7
+demanding|adj|/dɪˈmɑːndɪŋ/|đòi hỏi cao|needing a lot of effort or skill|Nursing is physically and emotionally demanding.|a demanding job|6-7
+economic|adj|/ˌiːkəˈnɒmɪk/|thuộc kinh tế|relating to money and trade|The country is facing economic difficulties.|economic growth|6-7
+economical|adj|/ˌiːkəˈnɒmɪkəl/|tiết kiệm|using money or resources carefully|Small cars are more economical to run.|an economical option|7-8
+exhausting|adj|/ɪɡˈzɔːstɪŋ/|kiệt sức|making you very tired|Working night shifts is exhausting.|an exhausting day|6-7
+hospitality|n|/ˌhɒspɪˈtæləti/|ngành dịch vụ lưu trú, nhà hàng|the business of hotels and restaurants|Many young people work in the hospitality industry.|the hospitality industry|7-8
+monotonous|adj|/məˈnɒtənəs/|đơn điệu|boring because it never changes|Assembly line work can be monotonous.|monotonous work|7-8
+part-time|adj|/ˌpɑːt ˈtaɪm/|bán thời gian|working only part of the normal hours|She has a part-time job at a bookshop.|part-time work|5-6
+retail|adj|/ˈriːteɪl/|bán lẻ|relating to selling goods to the public|Retail sales rose sharply before the holidays.|the retail sector|7-8
+redundant|adj|/rɪˈdʌndənt/|bị cho thôi việc|no longer needed in a job|Hundreds of workers were made redundant.|made redundant|7-8
+rewarding|adj|/rɪˈwɔːdɪŋ/|bõ công, thoả mãn|giving satisfaction and benefits|Teaching can be a very rewarding career.|a rewarding job|6-7
+unemployed|adj|/ˌʌnɪmˈplɔɪd/|thất nghiệp|without a job|Many unemployed graduates are retraining.|the unemployed|6-7
+unskilled|adj|/ʌnˈskɪld/|không có tay nghề|having no special training|Unskilled workers are the first to lose their jobs.|unskilled work|7-8
+apply|v|/əˈplaɪ/|nộp đơn|to make a formal request for a job|More than five hundred people applied for the post.|apply for a job|5-6
+compete|v|/kəmˈpiːt/|cạnh tranh|to try to be more successful than others|Small shops cannot compete with large supermarkets.|compete with|6-7
+earn|v|/ɜːn/|kiếm được|to receive money for work|She earns a good living as a translator.|earn a living|5-6
+endorse|v|/ɪnˈdɔːs/|quảng bá, ủng hộ|to publicly support or recommend a product|Famous athletes endorse sports brands.|endorse a product|8+
+invest in|v|/ɪnˈvest ɪn/|đầu tư vào|to put money into something to make a profit|Companies must invest in training their staff.|invest in|6-7
+persuade|v|/pəˈsweɪd/|thuyết phục|to make someone do something by giving reasons|Good advertising can persuade people to buy things they do not need.|persuade customers|6-7
+be promoted|vp|/biː prəˈməʊtɪd/|được thăng chức|to be moved to a more senior job|He was promoted to manager after two years.|be promoted to|6-7
+request|v|/rɪˈkwest/|yêu cầu|to ask for something politely or formally|Employees may request a transfer to another department.|request a meeting|6-7
+retire|v|/rɪˈtaɪə/|nghỉ hưu|to stop working because of age|Most people retire at the age of sixty-five.|retire early|5-6
++++
+entrepreneur|n|/ˌɒntrəprəˈnɜː/|doanh nhân khởi nghiệp|a person who starts their own business|Young entrepreneurs are launching tech start-ups.|a successful entrepreneur|7-8
+start-up|n|/ˈstɑːt ʌp/|công ty khởi nghiệp|a new small business|Many start-ups fail within the first two years.|a tech start-up|7-8
+turnover|n|/ˈtɜːnəʊvə/|doanh thu|the amount of business a company does|The firm's turnover rose by ten per cent.|annual turnover|8+
+profit|n|/ˈprɒfɪt/|lợi nhuận|money gained after costs are paid|The company made a record profit last year.|make a profit|6-7
+revenue|n|/ˈrevənjuː/|doanh thu, nguồn thu|income received by a company|Online sales now bring in most of the revenue.|generate revenue|7-8
+budget|n|/ˈbʌdʒɪt/|ngân sách|a plan for how money will be spent|The marketing budget has been cut this year.|a tight budget|6-7
+deadline|n|/ˈdedlaɪn/|hạn chót|the time by which work must be finished|We must meet the deadline to win the contract.|meet a deadline|6-7
+stakeholder|n|/ˈsteɪkhəʊldə/|bên liên quan|a person with an interest in a business|The company must listen to all its stakeholders.|key stakeholders|8+
+telecommuting|n|/ˈtelɪkəˌmjuːtɪŋ/|làm việc từ xa|working from home using the Internet|Telecommuting has cut commuting costs for many workers.|telecommuting options|8+
+freelance|adj|/ˈfriːlɑːns/|làm tự do|working for several companies rather than one|She works as a freelance designer.|a freelance writer|7-8
+competitive|adj|/kəmˈpetɪtɪv/|cạnh tranh|involving strong competition|The job market is extremely competitive.|a competitive salary|6-7
+lucrative|adj|/ˈluːkrətɪv/|sinh lời|producing a lot of money|Banking is a lucrative career.|a lucrative business|8+
+resign|v|/rɪˈzaɪn/|từ chức, xin nghỉ việc|to officially leave a job|She resigned after a dispute with her boss.|resign from a post|7-8
+dismiss|v|/dɪsˈmɪs/|sa thải|to make someone leave their job|He was dismissed for repeated lateness.|dismiss an employee|7-8
+negotiate|v|/nɪˈɡəʊʃieɪt/|đàm phán|to discuss something to reach agreement|She negotiated a higher salary with her employer.|negotiate a deal|7-8
+delegate|v|/ˈdelɪɡeɪt/|giao việc|to give part of your work to someone else|Good managers know when to delegate.|delegate tasks|8+
+outsource|v|/ˈaʊtsɔːs/|thuê ngoài|to pay another company to do some work|Many firms outsource customer service to other countries.|outsource work|8+
+recruit|v|/rɪˈkruːt/|tuyển dụng|to find new people to join a company|The firm plans to recruit fifty new graduates.|recruit staff|7-8
+commission|n|/kəˈmɪʃən/|tiền hoa hồng|money paid to a salesperson for each sale|Salespeople earn a commission on every sale.|earn commission|7-8
+brand loyalty|np|/ˈbrænd ˈlɔɪəlti/|sự trung thành với thương hiệu|the habit of always buying the same brand|Advertising aims to build brand loyalty among young shoppers.|build brand loyalty|8+

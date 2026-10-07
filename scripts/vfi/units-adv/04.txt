@@ -1,0 +1,45 @@
+#unit 4
+#en Chemicals in everyday life
+#blurb Hoá chất, dinh dưỡng, thuốc men và tác động của chúng lên sức khoẻ và môi trường
+capsule|n|/ˈkæpsjuːl/|viên nang|a small container holding medicine|Take one capsule with water after meals.|a vitamin capsule|7-8
+carbon dioxide|np|/ˌkɑːbən daɪˈɒksaɪd/|khí CO₂|a gas produced by burning fuel and by breathing|Trees absorb carbon dioxide from the air.|release carbon dioxide|7-8
+compound|n|/ˈkɒmpaʊnd/|hợp chất|a substance made of two or more elements|Water is a compound of hydrogen and oxygen.|a chemical compound|7-8
+consequences|n|/ˈkɒnsɪkwənsɪz/|hậu quả|results of an action|The consequences of overusing antibiotics are serious.|serious consequences|7-8
+dose|n|/dəʊs/|liều lượng|a measured amount of medicine|Do not exceed the recommended dose.|a daily dose|7-8
+emissions|n|/ɪˈmɪʃənz/|khí thải|gases released into the air|Factories must reduce their carbon emissions.|reduce emissions|7-8
+exposure|n|/ɪkˈspəʊʒə/|sự tiếp xúc|the state of being in contact with something harmful|Long exposure to chemicals can cause illness.|exposure to|7-8
+food chain|np|/ˈfuːd tʃeɪn/|chuỗi thức ăn|a series of living things that eat each other|Chemicals can build up as they move up the food chain.|the food chain|7-8
+infection|n|/ɪnˈfekʃən/|sự nhiễm trùng|an illness caused by germs|Antibiotics are used to treat bacterial infection.|a viral infection|7-8
+interaction|n|/ˌɪntərˈækʃən/|tương tác|the way two substances affect each other|Drug interaction can cause dangerous side effects.|a drug interaction|8+
+pesticide|n|/ˈpestɪsaɪd/|thuốc trừ sâu|a chemical used to kill insects that damage crops|Pesticide residues remain on some fruit and vegetables.|a harmful pesticide|7-8
+protein|n|/ˈprəʊtiːn/|chất đạm|a nutrient found in meat, eggs and beans|Athletes need a diet that is high in protein.|a source of protein|7-8
+reaction|n|/riˈækʃən/|phản ứng|a change that happens when substances meet|A chemical reaction produces heat and light.|an allergic reaction|7-8
+side effects|np|/ˈsaɪd ɪˌfekts/|tác dụng phụ|unwanted effects of a medicine|The drug has several unpleasant side effects.|suffer side effects|7-8
+bacterial|adj|/bækˈtɪəriəl/|thuộc vi khuẩn|caused by or relating to bacteria|A bacterial infection can spread quickly.|a bacterial infection|8+
+contagious|adj|/kənˈteɪdʒəs/|dễ lây|spreading by direct contact|Measles is a highly contagious disease.|highly contagious|8+
+contaminated|adj|/kənˈtæmɪneɪtɪd/|bị nhiễm bẩn|made impure by harmful substances|Contaminated water caused an outbreak of illness.|contaminated food|7-8
+controversial|adj|/ˌkɒntrəˈvɜːʃəl/|gây tranh cãi|causing public disagreement|The use of chemicals in farming remains controversial.|a controversial issue|7-8
+crucial|adj|/ˈkruːʃəl/|cốt yếu|extremely important|Vitamin D is crucial for strong bones.|a crucial role|7-8
+essential|adj|/ɪˈsenʃəl/|thiết yếu|absolutely necessary|Iron is an essential mineral for healthy blood.|essential nutrients|6-7
+natural|adj|/ˈnætʃərəl/|tự nhiên|existing in nature, not made by people|Many people prefer natural remedies to drugs.|natural ingredients|6-7
+organic|adj|/ɔːˈɡænɪk/|hữu cơ|produced without artificial chemicals|Organic vegetables are grown without pesticides.|organic farming|7-8
+petrochemicals|n|/ˌpetrəʊˈkemɪkəlz/|hoá dầu|chemicals made from oil or natural gas|Plastics are made from petrochemicals.|the petrochemicals industry|8+
+absorb|v|/əbˈzɔːb/|hấp thụ|to take in a substance|The body absorbs iron more easily with vitamin C.|absorb nutrients|7-8
+contaminate|v|/kənˈtæmɪneɪt/|làm ô nhiễm|to make something impure or harmful|Waste from the factory contaminated the river.|contaminate water|7-8
+release|v|/rɪˈliːs/|giải phóng, thải ra|to let a substance out|Burning coal releases harmful gases into the air.|release toxins|7-8
++++
+antibiotic|n|/ˌæntibaɪˈɒtɪk/|thuốc kháng sinh|a medicine that kills bacteria|Antibiotics do not work against viruses.|take antibiotics|7-8
+additive|n|/ˈædɪtɪv/|chất phụ gia|a substance added to food to improve it|Some food additives may cause allergic reactions.|a food additive|8+
+preservative|n|/prɪˈzɜːvətɪv/|chất bảo quản|a substance that stops food from going bad|This jam contains no artificial preservatives.|artificial preservatives|8+
+toxin|n|/ˈtɒksɪn/|độc tố|a poisonous substance|The body naturally removes many toxins.|harmful toxins|8+
+residue|n|/ˈrezɪdjuː/|chất cặn|a small amount left after a process|Pesticide residue was found on the apples.|chemical residue|8+
+nutrient|n|/ˈnjuːtriənt/|chất dinh dưỡng|a substance needed for growth and health|Soil needs nutrients to grow healthy crops.|essential nutrients|7-8
+vaccine|n|/ˈvæksiːn/|vắc-xin|a substance that protects against a disease|The vaccine was developed in under a year.|develop a vaccine|7-8
+toxic|adj|/ˈtɒksɪk/|độc hại|poisonous and harmful|Many cleaning products are toxic to pets.|toxic waste|7-8
+artificial|adj|/ˌɑːtɪˈfɪʃəl/|nhân tạo|made by people, not natural|Artificial sweeteners are common in diet drinks.|artificial ingredients|7-8
+synthetic|adj|/sɪnˈθetɪk/|tổng hợp|made by chemical processes, not natural|Synthetic fibres dry faster than cotton.|synthetic materials|8+
+hazardous|adj|/ˈhæzədəs/|nguy hiểm|dangerous to health or safety|Hazardous chemicals must be stored carefully.|hazardous waste|8+
+prescribe|v|/prɪˈskraɪb/|kê đơn|to officially recommend a medicine|The doctor prescribed a course of antibiotics.|prescribe medication|7-8
+dissolve|v|/dɪˈzɒlv/|hoà tan|to mix with a liquid and become part of it|Sugar dissolves quickly in hot water.|dissolve in water|7-8
+synthesise|v|/ˈsɪnθəsaɪz/|tổng hợp|to make a substance by chemical processes|Plants synthesise sugars from sunlight.|synthesise proteins|8+
+neutralise|v|/ˈnjuːtrəlaɪz/|trung hoà|to stop something from having an effect|Antacids neutralise the acid in your stomach.|neutralise acid|8+

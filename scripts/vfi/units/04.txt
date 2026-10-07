@@ -1,0 +1,96 @@
+#unit 4
+#en Lifestyles
+#vi Lối sống
+#blurb Thái độ sống, mục tiêu, áp lực và cách con người chọn cuộc sống của mình
+activity|n|/ækˈtɪvəti/|hoạt động|something that you do for enjoyment or exercise|Outdoor activities keep children healthy and happy.|leisure activities|5-6
+aspect|n|/ˈæspekt/|khía cạnh|one part of a situation or idea|Technology has changed every aspect of daily life.|an important aspect|6-7
+attitude|n|/ˈætɪtjuːd/|thái độ|the way you think and feel about something|A positive attitude helps people cope with change.|a positive attitude|5-6
+balance|n|/ˈbæləns/|sự cân bằng|a situation in which different things are equal|It is hard to achieve a balance between work and family.|achieve a balance|6-7
+competition|n|/ˌkɒmpəˈtɪʃən/|sự cạnh tranh|a contest to win something|Competition for good jobs is fierce.|fierce competition|6-7
+creativity|n|/ˌkriːeɪˈtɪvəti/|sự sáng tạo|the ability to produce new and original ideas|Art classes encourage creativity in children.|encourage creativity|6-7
+daily routine|np|/ˈdeɪli ruːˈtiːn/|thói quen hằng ngày|the usual things you do each day|My daily routine starts with a short run.|follow a daily routine|5-6
+desire|n|/dɪˈzaɪə/|khát khao|a strong wish to have or do something|She has a strong desire to travel the world.|a strong desire|6-7
+disappointment|n|/ˌdɪsəˈpɔɪntmənt/|sự thất vọng|the sadness of not getting what you hoped for|Failing the exam was a bitter disappointment.|a great disappointment|6-7
+experience|n|/ɪkˈspɪəriəns/|trải nghiệm, kinh nghiệm|knowledge or events you have lived through|Living abroad was a life-changing experience.|a valuable experience|5-6
+fulfilment|n|/fʊlˈfɪlmənt/|sự thoả mãn, viên mãn|a feeling of satisfaction at having achieved something|Many people find fulfilment in helping others.|a sense of fulfilment|7-8
+goal|n|/ɡəʊl/|mục tiêu|something you hope to achieve|His main goal is to become a doctor.|set a goal|5-6
+hobby|n|/ˈhɒbi/|sở thích|an activity done for pleasure in free time|Photography is her favourite hobby.|take up a hobby|5-6
+insight|n|/ˈɪnsaɪt/|sự thấu hiểu|a deep understanding of something|Travelling gives you insight into other cultures.|gain insight|7-8
+leisure|n|/ˈleʒə/|thời gian rảnh rỗi|free time when you are not working|Many workers have little leisure time.|leisure time|6-7
+lifestyle|n|/ˈlaɪfstaɪl/|lối sống|the way a person lives|A healthy lifestyle includes exercise and sleep.|a healthy lifestyle|5-6
+optimist|n|/ˈɒptɪmɪst/|người lạc quan|a person who expects good things to happen|An optimist sees every problem as a challenge.|a born optimist|6-7
+outlook|n|/ˈaʊtlʊk/|quan điểm, triển vọng|a person's general way of thinking|Her positive outlook inspired everyone around her.|a positive outlook|7-8
+opportunity|n|/ˌɒpəˈtjuːnəti/|cơ hội|a chance to do something good|Studying abroad is a great opportunity.|seize an opportunity|5-6
+personality|n|/ˌpɜːsəˈnæləti/|tính cách|the qualities that make a person different|He has a warm and outgoing personality.|a strong personality|5-6
+pessimist|n|/ˈpesɪmɪst/|người bi quan|a person who expects bad things to happen|A pessimist always expects the worst.|a hopeless pessimist|6-7
+priority|n|/praɪˈɒrəti/|việc ưu tiên|something that is more important than other things|Health should be everyone's top priority.|a top priority|6-7
+pressure|n|/ˈpreʃə/|áp lực|the feeling of being forced to do something|Students face enormous pressure to succeed.|under pressure|5-6
+realist|n|/ˈriːəlɪst/|người thực tế|a person who accepts things as they are|As a realist, she knew the job would be hard.|a practical realist|7-8
+risk-taker|n|/ˈrɪsk teɪkə/|người thích mạo hiểm|a person who is willing to try dangerous things|Successful entrepreneurs are often risk-takers.|a natural risk-taker|7-8
+self-expression|n|/ˌself ɪkˈspreʃən/|sự thể hiện bản thân|showing your thoughts and feelings openly|Music offers teenagers a way of self-expression.|freedom of self-expression|7-8
+sense|n|/sens/|cảm giác, ý thức|a feeling or awareness of something|A sense of humour helps you through hard times.|a sense of purpose|5-6
+active|adj|/ˈæktɪv/|năng động|full of energy and movement|Active people tend to live longer.|an active lifestyle|5-6
+bored|adj|/bɔːd/|chán nản|tired and unhappy because nothing interests you|Children get bored quickly without activities.|bored with|5-6
+confused|adj|/kənˈfjuːzd/|bối rối|unable to think clearly|Many graduates feel confused about their future.|feel confused|5-6
+dissatisfied|adj|/dɪsˈsætɪsfaɪd/|không hài lòng|unhappy with what you have|Many employees are dissatisfied with their pay.|dissatisfied with|7-8
+intense|adj|/ɪnˈtens/|dữ dội, căng thẳng|very strong or extreme|City life can be intense and exhausting.|intense pressure|7-8
+materialistic|adj|/məˌtɪəriəˈlɪstɪk/|thực dụng, coi trọng vật chất|caring too much about money and possessions|Advertising makes young people more materialistic.|a materialistic society|8+
+negative|adj|/ˈneɡətɪv/|tiêu cực|bad or harmful; lacking hope|Constant criticism has a negative effect on confidence.|a negative impact|5-6
+outdoor|adj|/ˈaʊtdɔː/|ngoài trời|happening or used outside|Outdoor sports are popular in warm countries.|outdoor activities|5-6
+positive|adj|/ˈpɒzətɪv/|tích cực|hopeful and confident|A positive mindset helps you cope with stress.|a positive attitude|5-6
+recreational|adj|/ˌrekriˈeɪʃənəl/|để giải trí|done for enjoyment in your free time|The city has many recreational facilities.|recreational activities|7-8
+successful|adj|/səkˈsesfəl/|thành công|achieving what you wanted|A successful career needs hard work and luck.|a successful career|5-6
+achieve a goal|vp|/əˈtʃiːv ə ɡəʊl/|đạt được mục tiêu|to succeed in reaching something you wanted|You need patience to achieve a goal like this.|achieve a goal|6-7
+appeal|v|/əˈpiːl/|hấp dẫn|to be attractive or interesting to someone|Extreme sports appeal to young adults.|appeal to|6-7
+attract|v|/əˈtrækt/|thu hút|to make people interested or draw them to something|Big cities attract young people looking for work.|attract attention|5-6
+choose|v|/tʃuːz/|chọn|to decide between options|It is hard to choose a career at eighteen.|choose carefully|5-6
+express|v|/ɪkˈspres/|bày tỏ|to show a feeling or opinion|Teenagers express themselves through fashion.|express your views|5-6
+enjoy|v|/ɪnˈdʒɔɪ/|thích, tận hưởng|to get pleasure from something|I enjoy cooking at weekends.|enjoy life|5-6
+fulfil|v|/fʊlˈfɪl/|hoàn thành, đáp ứng|to do or achieve what was hoped for|She worked hard to fulfil her dream of becoming a pilot.|fulfil your potential|7-8
+improve|v|/ɪmˈpruːv/|cải thiện|to become or make something better|Regular exercise can improve your mood.|improve your quality of life|5-6
+motivate|v|/ˈməʊtɪveɪt/|tạo động lực|to make someone want to do something|Good teachers motivate their students to learn.|motivate employees|6-7
+participate|v|/pɑːˈtɪsɪpeɪt/|tham gia|to take part in an activity|Everyone is encouraged to participate in class discussions.|participate in|6-7
+regret|v|/rɪˈɡret/|hối tiếc|to feel sorry about something you did|Many people regret not travelling when they were young.|deeply regret|6-7
+relax|v|/rɪˈlæks/|thư giãn|to rest and become calm|Music helps me relax after work.|relax at home|5-6
+satisfy|v|/ˈsætɪsfaɪ/|làm hài lòng|to give someone what they want or need|A short holiday cannot satisfy her need for adventure.|satisfy a need|6-7
+lead a happy life|vp|/liːd ə ˈhæpi laɪf/|sống hạnh phúc|to have a life full of contentment|Money alone does not help you lead a happy life.|lead a happy life|6-7
+live life on the edge|vp|/lɪv laɪf ɒn ði edʒ/|sống mạo hiểm|to do dangerous or risky things|Some people love to live life on the edge.|live life on the edge|8+
+live life to the full|vp|/lɪv laɪf tə ðə fʊl/|sống hết mình|to enjoy life as much as possible|After her illness she decided to live life to the full.|live life to the full|7-8
+make a choice|vp|/meɪk ə tʃɔɪs/|đưa ra lựa chọn|to select one option from several|Young people must make a choice about their future early.|make a choice|5-6
+make a decision|vp|/meɪk ə dɪˈsɪʒən/|đưa ra quyết định|to decide what to do|It took her weeks to make a decision about moving abroad.|make a decision|5-6
+make a living|vp|/meɪk ə ˈlɪvɪŋ/|kiếm sống|to earn enough money to live on|Many artists struggle to make a living.|make a living|6-7
+meet a need|vp|/miːt ə niːd/|đáp ứng nhu cầu|to provide what someone requires|The new gym helps meet a need for local sports facilities.|meet a need|7-8
+miss an opportunity|vp|/mɪs ən ˌɒpəˈtjuːnəti/|bỏ lỡ cơ hội|to fail to use a chance|Do not miss an opportunity to learn something new.|miss an opportunity|6-7
+play a role|vp|/pleɪ ə rəʊl/|đóng vai trò|to have an effect or influence on something|Hobbies play a role in keeping people balanced and happy.|play a key role|6-7
+put pressure on|vp|/pʊt ˈpreʃə ɒn/|gây áp lực lên|to try to force someone to do something|Parents should not put pressure on children to get top grades.|put pressure on|6-7
+set a goal|vp|/set ə ɡəʊl/|đặt mục tiêu|to decide what you want to achieve|Set a goal and work towards it every day.|set a goal|5-6
+take part|vp|/teɪk pɑːt/|tham gia|to join in an activity or event|More than a thousand people chose to take part in the marathon.|take part in|5-6
+work hard for a living|vp|/wɜːk hɑːd fər ə ˈlɪvɪŋ/|làm việc vất vả để kiếm sống|to do tiring jobs to earn money|Farmers work hard for a living in difficult conditions.|work hard for a living|7-8
+all walks of life|ph|/ɔːl wɔːks əv laɪf/|mọi tầng lớp xã hội|people from every kind of background|People from all walks of life attended the festival.|from all walks of life|7-8
+cost of living|ph|/kɒst əv ˈlɪvɪŋ/|chi phí sinh hoạt|the amount of money needed to live|The cost of living in big cities is rising fast.|a high cost of living|6-7
+lifelong ambition|ph|/ˈlaɪflɒŋ æmˈbɪʃən/|hoài bão cả đời|a goal you have wanted since you were young|Climbing Everest was his lifelong ambition.|a lifelong ambition|7-8
+living expenses|ph|/ˈlɪvɪŋ ɪkˈspensɪz/|chi phí sinh hoạt|money spent on rent, food and bills|Students often take part-time jobs to cover living expenses.|cover living expenses|6-7
+once in a lifetime opportunity|ph|/wʌns ɪn ə ˈlaɪftaɪm ˌɒpəˈtjuːnəti/|cơ hội chỉ có một lần trong đời|a chance that will probably never come again|Studying abroad was a once in a lifetime opportunity.|a once in a lifetime opportunity|7-8
+standard of living|ph|/ˈstændəd əv ˈlɪvɪŋ/|mức sống|the level of comfort and wealth people have|The standard of living has improved greatly over twenty years.|a high standard of living|6-7
+way of life|ph|/weɪ əv laɪf/|lối sống|the manner in which a person or group lives|Fishing is a traditional way of life in this village.|a traditional way of life|6-7
++++
+work-life balance|np|/ˌwɜːk laɪf ˈbæləns/|cân bằng công việc – cuộc sống|a good division between time at work and free time|A healthy work-life balance reduces stress.|maintain a work-life balance|7-8
+quality of life|np|/ˈkwɒləti əv laɪf/|chất lượng cuộc sống|how good or comfortable a person's life is|Access to green space improves quality of life.|improve the quality of life|7-8
+sedentary|adj|/ˈsedəntri/|ít vận động|spending a lot of time sitting down|A sedentary lifestyle is linked to many health problems.|a sedentary lifestyle|8+
+hectic|adj|/ˈhektɪk/|bận rộn, tất bật|full of continuous and fast activity|After a hectic week, she needed a quiet weekend.|a hectic schedule|7-8
+contented|adj|/kənˈtentɪd/|mãn nguyện|happy with what you have|He felt contented with a simple life in the countryside.|feel contented|7-8
+adventurous|adj|/ədˈventʃərəs/|ưa mạo hiểm|willing to try new and exciting things|Adventurous travellers prefer remote places.|an adventurous spirit|7-8
+ambitious|adj|/æmˈbɪʃəs/|tham vọng|having a strong wish to succeed|Ambitious graduates often move to the capital.|highly ambitious|6-7
+hardworking|adj|/ˌhɑːdˈwɜːkɪŋ/|chăm chỉ|putting a lot of effort into what you do|She is a hardworking student who never misses a deadline.|a hardworking employee|5-6
+spontaneous|adj|/spɒnˈteɪniəs/|tự phát, bộc phát|done without planning|Some of the best trips are spontaneous.|a spontaneous decision|7-8
+fulfilling|adj|/fʊlˈfɪlɪŋ/|làm thoả mãn|giving a feeling of satisfaction|A fulfilling job matters more than a high salary.|a fulfilling career|7-8
+simplicity|n|/sɪmˈplɪsəti/|sự giản dị|the quality of being plain and uncomplicated|Many people long for the simplicity of country life.|live in simplicity|7-8
+indulgence|n|/ɪnˈdʌldʒəns/|sự nuông chiều, thú vui xa xỉ|enjoying a pleasure without limits|A weekend spa visit is a little indulgence.|a small indulgence|8+
+mindset|n|/ˈmaɪndset/|tư duy, lối nghĩ|a person's usual attitude or way of thinking|A growth mindset helps people learn from failure.|a positive mindset|7-8
+burnout|n|/ˈbɜːnaʊt/|kiệt sức vì công việc|extreme tiredness caused by too much work|Long hours often lead to burnout.|suffer from burnout|8+
+downshift|v|/ˈdaʊnʃɪft/|sống chậm lại, giảm tải|to change to a less stressful way of life|Some professionals downshift to a quieter job in the countryside.|downshift to|8+
+unwind|v|/ʌnˈwaɪnd/|xả hơi, thư giãn|to relax after a period of work or worry|A walk by the river helps me unwind.|unwind after work|7-8
+pursue|v|/pəˈsjuː/|theo đuổi|to follow a goal or activity over time|She left her job to pursue her dream of acting.|pursue a career|7-8
+cherish|v|/ˈtʃerɪʃ/|trân trọng|to care for something because it is precious|We should cherish every moment with our family.|cherish memories|8+
+prioritise|v|/praɪˈɒrɪtaɪz/|ưu tiên|to treat something as more important than other things|Students must learn to prioritise their time.|prioritise tasks|7-8
+thrive|v|/θraɪv/|phát triển mạnh|to grow or succeed very well|Some people thrive under pressure.|thrive on|7-8

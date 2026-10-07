@@ -1,0 +1,50 @@
+#unit 2
+#en Time and change
+#blurb Các giai đoạn lịch sử, tốc độ thay đổi và cách nói về thời gian
+era|n|/ˈɪərə/|kỷ nguyên|a long period with its own character|The digital era has changed how people work.|a new era|6-7
+evolution|n|/ˌiːvəˈluːʃən/|sự tiến hoá, phát triển dần|the gradual development of something over time|The evolution of the language took several centuries.|the evolution of|7-8
+finds|n|/faɪndz/|hiện vật tìm được|objects discovered, especially by archaeologists|Recent finds suggest the city is much older than believed.|archaeological finds|7-8
+pioneer|n|/ˌpaɪəˈnɪə/|người tiên phong|a person who is among the first to do something|She was a pioneer of modern medicine.|a pioneer in|7-8
+remnants|n|/ˈremnənts/|tàn tích, phần còn sót lại|small parts that remain after the rest has gone|Remnants of the old wall can still be seen.|the remnants of|8+
+retrospect|n|/ˈretrəspekt/|sự nhìn lại|thinking about the past with later knowledge|In retrospect, the decision was a mistake.|in retrospect|8+
+status quo|np|/ˌsteɪtəs ˈkwəʊ/|hiện trạng|the existing situation|Some people prefer to preserve the status quo.|maintain the status quo|8+
+transition|n|/trænˈzɪʃən/|sự chuyển tiếp|a change from one state to another|The transition to online learning was very rapid.|a smooth transition|7-8
+trend|n|/trend/|xu hướng|a general direction of change|There is a trend towards later marriage.|a growing trend|6-7
+abrupt|adj|/əˈbrʌpt/|đột ngột|sudden and unexpected|The meeting came to an abrupt end.|an abrupt change|7-8
+bygone|adj|/ˈbaɪɡɒn/|đã qua|belonging to an earlier time|The museum recreates the atmosphere of a bygone age.|a bygone era|8+
+fleeting|adj|/ˈfliːtɪŋ/|thoáng qua|lasting only a very short time|She caught only a fleeting glimpse of the star.|a fleeting moment|8+
+immense|adj|/ɪˈmens/|to lớn|extremely large|The new law will have an immense impact on farmers.|an immense effect|7-8
+infinitesimal|adj|/ˌɪnfɪnɪˈtesɪməl/|cực kỳ nhỏ|extremely small|The difference in cost is infinitesimal.|an infinitesimal amount|8+
+moderate|adj|/ˈmɒdərət/|vừa phải|neither very large nor very small|There has been a moderate rise in prices.|a moderate increase|6-7
+periodic|adj|/ˌpɪəriˈɒdɪk/|định kỳ|happening at regular intervals|The patient needs periodic check-ups.|periodic checks|8+
+preceding|adj|/prɪˈsiːdɪŋ/|đứng trước|coming before something else|Sales rose sharply in the preceding year.|the preceding chapter|8+
+prehistoric|adj|/ˌpriːhɪˈstɒrɪk/|thời tiền sử|from the time before written records|Prehistoric tools were found near the river.|prehistoric times|7-8
+profound|adj|/prəˈfaʊnd/|sâu sắc|very great or deeply felt|The invention had a profound effect on society.|a profound change|7-8
+rapid|adj|/ˈræpɪd/|nhanh chóng|happening very quickly|The city has seen rapid growth since 2000.|rapid progress|6-7
+topical|adj|/ˈtɒpɪkəl/|mang tính thời sự|connected with current events|The debate focused on topical issues.|a topical subject|8+
+tremendous|adj|/trɪˈmendəs/|to lớn, ghê gớm|very great in size or amount|The festival was a tremendous success.|a tremendous impact|7-8
+turbulent|adj|/ˈtɜːbjələnt/|đầy biến động|full of sudden and violent change|The country has a turbulent history.|turbulent times|8+
+pressed for time|ph|/prest fə taɪm/|bị thúc ép về thời gian|having very little time available|Sorry, I can't talk now, I'm really pressed for time.|be pressed for time|7-8
+have the time of your life|id|/hæv ðə taɪm əv jɔː laɪf/|có khoảng thời gian tuyệt vời|to enjoy yourself enormously|The children always have the time of their life at the fair.|have the time of your life|7-8
+have time on your hands|id|/hæv taɪm ɒn jɔː hændz/|có nhiều thời gian rảnh|to have a lot of free time|Retired people often have time on their hands.|have time on your hands|7-8
+in next to no time|id|/ɪn nekst tə nəʊ taɪm/|chỉ trong chốc lát|very quickly|The meal was ready in next to no time.|in next to no time|7-8
+in the blink of an eye|id|/ɪn ðə blɪŋk əv ən aɪ/|trong nháy mắt|extremely quickly|The year seemed to pass in the blink of an eye.|in the blink of an eye|7-8
+there aren't enough hours in the day|id|/ðeər ɑːnt ɪˈnʌf ˈaʊəz ɪn ðə deɪ/|một ngày không đủ giờ|used when you are too busy to do everything|With two jobs, there aren't enough hours in the day.|there aren't enough hours in the day|7-8
+time goes so fast|id|/taɪm ɡəʊz səʊ fɑːst/|thời gian trôi nhanh quá|used when time seems to pass quickly|Time goes so fast when you are enjoying yourself.|time goes so fast|6-7
+excavate|v|/ˈekskəveɪt/|khai quật|to dig in the ground to find historical objects|Archaeologists will excavate the site next summer.|excavate a site|8+
++++
+chronological|adj|/ˌkrɒnəˈlɒdʒɪkəl/|theo trình tự thời gian|arranged in the order that things happened|The events are listed in chronological order.|chronological order|8+
+contemporary|adj|/kənˈtemprəri/|đương đại|belonging to the present time|Contemporary art often challenges traditional ideas.|contemporary society|7-8
+obsolete|adj|/ˈɒbsəliːt/|lỗi thời|no longer used because something better exists|Typewriters are obsolete in modern offices.|become obsolete|8+
+lasting|adj|/ˈlɑːstɪŋ/|lâu dài|continuing for a long time|The reforms had a lasting effect on education.|a lasting impact|7-8
+unprecedented|adj|/ʌnˈpresɪdentɪd/|chưa từng có|never having happened before|The company has achieved unprecedented growth.|unprecedented levels|8+
+gradual|adj|/ˈɡrædʒuəl/|từ từ|happening slowly over a long time|There has been a gradual decline in sales.|a gradual change|7-8
+swift|adj|/swɪft/|nhanh chóng|happening or moving very quickly|The government took swift action to stop the spread.|a swift response|7-8
+milestone|n|/ˈmaɪlstəʊn/|cột mốc|an important event in development|The first flight was a milestone in transport history.|reach a milestone|7-8
+legacy|n|/ˈleɡəsi/|di sản|something handed down from the past|The empire left a lasting legacy in law.|leave a legacy|7-8
+epoch|n|/ˈiːpɒk/|kỷ nguyên|a long period of time in history|The invention of printing marked a new epoch.|a new epoch|8+
+fade|v|/feɪd/|phai nhạt|to gradually become less strong or clear|Old traditions slowly fade as people move to cities.|fade away|7-8
+endure|v|/ɪnˈdjʊə/|tồn tại lâu dài, chịu đựng|to continue to exist over a long time|Her fame has endured for fifty years.|endure for centuries|8+
+revolutionise|v|/ˌrevəˈluːʃənaɪz/|làm cách mạng hoá|to change something completely|The telephone revolutionised communication.|revolutionise an industry|8+
+by and large|id|/baɪ ən ˈlɑːdʒ/|nhìn chung|in most cases|By and large, the changes have been welcome.|by and large|8+
+at the turn of the century|ph|/æt ðə tɜːn əv ðə ˈsentʃəri/|vào đầu thế kỷ|at the start of a new hundred-year period|At the turn of the century, few people owned a phone.|at the turn of the century|8+

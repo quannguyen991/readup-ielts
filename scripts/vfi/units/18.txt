@@ -1,0 +1,105 @@
+#unit 18
+#en The law
+#vi Pháp luật
+#blurb Tội phạm, toà án, hình phạt và cách xã hội giữ trật tự
+actions|n|/ˈækʃənz/|hành động|things that someone does|People must take responsibility for their actions.|criminal actions|5-6
+arson|n|/ˈɑːsən/|tội phóng hỏa|the crime of deliberately setting fire to property|Arson destroyed the warehouse overnight.|commit arson|8+
+authority|n|/ɔːˈθɒrəti/|chính quyền, thẩm quyền|the power or right to give orders|Local authorities enforce the new parking rules.|the local authority|6-7
+burglary|n|/ˈbɜːɡləri/|vụ trộm đột nhập|the crime of breaking into a building to steal|Burglary rates fall when neighbours look out for each other.|a burglary|7-8
+consequences|n|/ˈkɒnsɪkwənsɪz/|hậu quả|results of an action|Drivers must accept the consequences of breaking the law.|serious consequences|6-7
+convict|n|/ˈkɒnvɪkt/|phạm nhân bị kết án|a person found guilty of a crime and sent to prison|The convict escaped from prison last night.|a convicted criminal|7-8
+crime|n|/kraɪm/|tội phạm|an illegal act|Violent crime has fallen in recent years.|commit a crime|5-6
+crime rate|np|/ˈkraɪm reɪt/|tỷ lệ tội phạm|the number of crimes in an area|The crime rate in the city has halved.|a high crime rate|6-7
+criminal|nadj|/ˈkrɪmɪnəl/|tội phạm; thuộc hình sự|a person who commits a crime; relating to crime|Criminals who reoffend should receive harsher sentences.|a criminal record|5-6
+deterrent|n|/dɪˈterənt/|biện pháp răn đe|something that discourages people from acting|Heavy fines are an effective deterrent against littering.|act as a deterrent|8+
+evidence|n|/ˈevɪdəns/|bằng chứng|facts that show whether something is true|The police found no evidence of a crime.|strong evidence|6-7
+fine|n|/faɪn/|tiền phạt|money paid as a punishment|Drivers face a heavy fine for using a phone.|pay a fine|6-7
+fraud|n|/frɔːd/|gian lận|the crime of deceiving people to get money|Online fraud is increasing every year.|commit fraud|7-8
+imprisonment|n|/ɪmˈprɪzənmənt/|sự bỏ tù|the state of being kept in prison|He received three years' imprisonment.|life imprisonment|7-8
+inequality|n|/ˌɪnɪˈkwɒləti/|sự bất bình đẳng|an unfair difference between groups of people|Social inequality is a major cause of crime.|social inequality|7-8
+intent|n|/ɪnˈtent/|ý định|a plan to do something|The court must prove intent to cause harm.|criminal intent|8+
+intrusion|n|/ɪnˈtruːʒən/|sự xâm phạm|the act of entering a place without permission|Many people see cameras as an intrusion into privacy.|an intrusion into|8+
+judge|n|/dʒʌdʒ/|thẩm phán|a person who decides cases in a court|The judge sentenced him to two years in prison.|a High Court judge|6-7
+jury|n|/ˈdʒʊəri/|bồi thẩm đoàn|a group of citizens who decide if someone is guilty|The jury found her not guilty.|a member of the jury|7-8
+kidnapping|n|/ˈkɪdnæpɪŋ/|vụ bắt cóc|the crime of taking someone away by force|Kidnapping carries a severe prison sentence.|a kidnapping case|8+
+lawyer|n|/ˈlɔɪə/|luật sư|a person trained to give legal advice|She hired a lawyer to represent her in court.|hire a lawyer|5-6
+motive|n|/ˈməʊtɪv/|động cơ|a reason for doing something|The police could not find a motive for the murder.|a clear motive|7-8
+murder|n|/ˈmɜːdə/|vụ giết người|the crime of killing someone deliberately|The murder shocked the whole community.|commit murder|6-7
+offence|n|/əˈfens/|hành vi phạm tội|an illegal act|Speeding is a minor offence.|a criminal offence|6-7
+pickpocketing|n|/ˈpɪkpɒkɪtɪŋ/|nạn móc túi|the crime of stealing from people's pockets|Pickpocketing is common in crowded tourist areas.|prevent pickpocketing|8+
+prevention|n|/prɪˈvenʃən/|sự phòng ngừa|the action of stopping something from happening|Crime prevention programmes work best at community level.|crime prevention|7-8
+prison|n|/ˈprɪzən/|nhà tù|a building where criminals are kept|He spent five years in prison.|go to prison|5-6
+prisoner|n|/ˈprɪzənə/|tù nhân|a person kept in prison|Prisoners should be given training for work.|a political prisoner|6-7
+property crime|np|/ˈprɒpəti kraɪm/|tội xâm phạm tài sản|crime involving the theft or damage of property|Property crime rises in times of economic hardship.|a property crime|7-8
+prosecutor|n|/ˈprɒsɪkjuːtə/|công tố viên|a lawyer who accuses someone of a crime in court|The prosecutor presented the evidence to the jury.|a public prosecutor|8+
+protection|n|/prəˈtekʃən/|sự bảo vệ|the act of keeping someone safe|Witnesses may need police protection.|legal protection|6-7
+punishment|n|/ˈpʌnɪʃmənt/|hình phạt|a penalty for breaking a rule or law|Some people believe the death penalty is a cruel punishment.|a harsh punishment|6-7
+recklessness|n|/ˈrekləsnəs/|sự liều lĩnh|careless behaviour that ignores danger|The accident was caused by his recklessness.|sheer recklessness|8+
+smuggling|n|/ˈsmʌɡlɪŋ/|nạn buôn lậu|the crime of secretly taking goods across a border|Drug smuggling is punished severely in many countries.|drug smuggling|7-8
+social system|np|/ˈsəʊʃəl ˈsɪstəm/|hệ thống xã hội|the way a society is organised|A fair social system reduces crime.|a fair social system|7-8
+swearing|n|/ˈsweərɪŋ/|việc chửi thề|the use of rude or offensive words|Swearing in public can lead to a fine.|public swearing|6-7
+the accused|np|/ði əˈkjuːzd/|bị cáo|the person charged with a crime|The accused denied all the charges.|the accused person|7-8
+toxic waste|np|/ˈtɒksɪk weɪst/|chất thải độc hại|poisonous material left over from industry|Dumping toxic waste in rivers is a serious crime.|dump toxic waste|7-8
+vandalism|n|/ˈvændəlɪzəm/|hành vi phá hoại|deliberate damage to public property|Vandalism costs the city thousands each year.|an act of vandalism|7-8
+victim|n|/ˈvɪktɪm/|nạn nhân|a person harmed by a crime|Victims of crime should receive support.|a victim of crime|6-7
+violation|n|/ˌvaɪəˈleɪʃən/|sự vi phạm|an act that breaks a rule or law|Serious violations of the law are punished by a prison term.|a violation of|7-8
+drug-related|adj|/ˈdrʌɡ rɪˌleɪtɪd/|liên quan đến ma tuý|connected with illegal drugs|Drug-related crime is rising in some cities.|drug-related crime|7-8
+evil|adj|/ˈiːvəl/|độc ác|morally very bad|The film shows the struggle between good and evil.|an evil act|6-7
+guilty|adj|/ˈɡɪlti/|có tội|having committed a crime|The jury found him guilty of fraud.|plead guilty|6-7
+harsh|adj|/hɑːʃ/|khắc nghiệt|cruel or very severe|Many people think the sentence was too harsh.|a harsh punishment|6-7
+innocent|adj|/ˈɪnəsənt/|vô tội|not guilty of a crime|An innocent man was sent to prison.|innocent until proven guilty|6-7
+intentional|adj|/ɪnˈtenʃənəl/|có chủ ý|done on purpose|The fire was an intentional act of destruction.|an intentional act|7-8
+law-abiding|adj|/ˈlɔː əˌbaɪdɪŋ/|tuân thủ pháp luật|obeying the law|Most citizens are law-abiding.|a law-abiding citizen|7-8
+non-violent|adj|/ˌnɒn ˈvaɪələnt/|không bạo lực|not using physical force|Non-violent offenders should not be sent to prison.|a non-violent protest|7-8
+offensive|adj|/əˈfensɪv/|xúc phạm|causing someone to feel upset or insulted|Offensive language is banned in public places.|offensive behaviour|7-8
+on trial|ph|/ɒn ˈtraɪəl/|đang bị xét xử|being judged in a court|He is on trial for murder.|stand on trial|6-7
+petty crime|np|/ˈpeti kraɪm/|tội vặt|a minor crime|Petty crime is common in busy shopping areas.|petty crime|7-8
+punishable|adj|/ˈpʌnɪʃəbəl/|có thể bị trừng phạt|able to be punished by law|Theft is punishable by imprisonment.|punishable by law|8+
+random|adj|/ˈrændəm/|ngẫu nhiên|happening without a plan|The police made a number of random checks.|a random attack|6-7
+strict|adj|/strɪkt/|nghiêm ngặt|demanding that rules be obeyed|Strict laws can reduce drink driving.|strict rules|6-7
+unintentional|adj|/ˌʌnɪnˈtenʃənəl/|không cố ý|not done on purpose|The damage was unintentional.|an unintentional mistake|7-8
+victimless|adj|/ˈvɪktɪmləs/|không có nạn nhân|not directly harming other people|Some argue that using drugs is a victimless crime.|a victimless crime|8+
+abide by|v|/əˈbaɪd baɪ/|tuân theo|to accept and follow a rule|All visitors must abide by the safety rules.|abide by the law|7-8
+abolish|v|/əˈbɒlɪʃ/|bãi bỏ|to officially end a law or system|Many countries have abolished the death penalty.|abolish a law|7-8
+combat|v|/ˈkɒmbæt/|chống lại|to try to stop something bad|New cameras will help combat street crime.|combat crime|7-8
+deter|v|/dɪˈtɜː/|răn đe|to make someone decide not to do something|Higher fines may deter people from dropping litter.|deter crime|7-8
+enforce|v|/ɪnˈfɔːs/|thực thi|to make sure a law is obeyed|The police enforce the traffic laws.|enforce a law|7-8
+imprison|v|/ɪmˈprɪzən/|bỏ tù|to put someone in prison|He was imprisoned for ten years.|imprison a criminal|7-8
+monitor|v|/ˈmɒnɪtə/|giám sát|to watch carefully over a period of time|Cameras monitor the streets around the clock.|monitor behaviour|6-7
+obey|v|/əˈbeɪ/|vâng lời, tuân thủ|to do what a law or person tells you|Drivers must obey the speed limit.|obey the law|5-6
+offend|v|/əˈfend/|phạm tội, xúc phạm|to commit a crime or upset someone|Young people who offend should be given training, not prison.|offend against the law|7-8
+perpetrate|v|/ˈpɜːpɪtreɪt/|gây ra (tội ác)|to commit a crime or harmful act|The crime was perpetrated by a gang of teenagers.|perpetrate a crime|8+
+prevent|v|/prɪˈvent/|ngăn chặn|to stop something from happening|Better street lighting can prevent crime.|prevent crime|6-7
+protect|v|/prəˈtekt/|bảo vệ|to keep someone safe from harm|The law protects consumers from unfair practices.|protect the public|5-6
+prove|v|/pruːv/|chứng minh|to show that something is true|The lawyer could not prove his client's innocence.|prove guilty|6-7
+punish|v|/ˈpʌnɪʃ/|trừng phạt|to make someone suffer for breaking a rule|Parents should not punish children by hitting them.|punish severely|5-6
+resent|v|/rɪˈzent/|phẫn uất|to feel angry about something unfair|Workers resent being searched at the gate.|resent being|8+
+respect|v|/rɪˈspekt/|tôn trọng|to admire or obey something|Citizens should respect the law.|respect the rules|5-6
+violate|v|/ˈvaɪəleɪt/|vi phạm|to break a law or rule|The company violated safety regulations.|violate the law|7-8
+accept the consequences|vp|/əkˈsept ðə ˈkɒnsɪkwənsɪz/|chấp nhận hậu quả|to agree to face the results of your actions|Anyone who breaks the law must accept the consequences.|accept the consequences|7-8
+commit a crime|vp|/kəˈmɪt ə kraɪm/|phạm tội|to do something illegal|Poverty can drive people to commit a crime.|commit a crime|6-7
+convict a criminal|vp|/kənˈvɪkt ə ˈkrɪmɪnəl/|kết án tội phạm|to find someone guilty in court|The court failed to convict the criminal.|convict a criminal|7-8
+impose a fine|vp|/ɪmˈpəʊz ə faɪn/|phạt tiền|to order someone to pay money as a punishment|The court imposed a fine on the company.|impose a fine|7-8
+pass a law|vp|/pɑːs ə lɔː/|thông qua luật|to make a new law officially|Parliament passed a law banning smoking in public places.|pass a law|6-7
+solve a crime|vp|/sɒlv ə kraɪm/|phá án|to find out who committed a crime|Detectives used DNA to solve the crime.|solve a crime|6-7
++++
+sentence|nv|/ˈsentəns/|bản án; kết án|a punishment given by a court; to give such a punishment|The judge gave him a ten-year sentence.|a prison sentence|6-7
+verdict|n|/ˈvɜːdɪkt/|phán quyết|the decision of a jury or judge in a trial|The jury returned a guilty verdict.|reach a verdict|7-8
+witness|n|/ˈwɪtnəs/|nhân chứng|a person who sees a crime happen|The witness described the thief to police.|a key witness|6-7
+suspect|n|/ˈsʌspekt/|nghi phạm|a person thought to have committed a crime|The police have arrested a suspect.|a prime suspect|6-7
+offender|n|/əˈfendə/|người phạm tội|a person who commits a crime|Young offenders need education, not punishment alone.|a repeat offender|7-8
+reoffend|v|/ˌriːəˈfend/|tái phạm|to commit another crime after being punished|Many released prisoners reoffend within two years.|likely to reoffend|8+
+rehabilitation|n|/ˌriːəˌbɪlɪˈteɪʃən/|sự cải tạo|helping criminals return to normal life|Rehabilitation reduces the chances of reoffending.|prisoner rehabilitation|8+
+capital punishment|np|/ˌkæpɪtəl ˈpʌnɪʃmənt/|án tử hình|the legal killing of a person as a punishment|Many countries have abolished capital punishment.|support capital punishment|7-8
+community service|np|/kəˈmjuːnəti ˈsɜːvɪs/|lao động công ích|unpaid work done as a punishment|The teenager was given community service instead of prison.|do community service|7-8
+legislation|n|/ˌledʒɪˈsleɪʃən/|luật pháp|laws made by a government|New legislation protects workers from unfair dismissal.|introduce legislation|8+
+regulation|n|/ˌreɡjʊˈleɪʃən/|quy định|an official rule|Strict safety regulations apply to all factories.|safety regulations|7-8
+trial|n|/ˈtraɪəl/|phiên toà|a legal process to decide whether someone is guilty|The trial lasted for three weeks.|a fair trial|7-8
+cybercrime|n|/ˈsaɪbəkraɪm/|tội phạm mạng|crime committed using computers or the Internet|Cybercrime costs the global economy billions each year.|combat cybercrime|8+
+corruption|n|/kəˈrʌpʃən/|nạn tham nhũng|dishonest behaviour by people in power|Corruption damages public trust in the government.|tackle corruption|7-8
+bribery|n|/ˈbraɪbəri/|nạn hối lộ|the crime of giving money to get an unfair advantage|Bribery is widespread in some industries.|accused of bribery|8+
+acquit|v|/əˈkwɪt/|tuyên trắng án|to officially decide someone is not guilty|The court acquitted him due to lack of evidence.|acquit of|8+
+sue|v|/suː/|kiện|to start a legal case against someone|She decided to sue the company for unfair dismissal.|sue for damages|7-8
+trespass|v|/ˈtrespəs/|xâm phạm|to enter someone's land without permission|Walkers were warned not to trespass on private farmland.|trespass on|8+
+shoplifting|n|/ˈʃɒplɪftɪŋ/|nạn trộm cắp trong cửa hàng|the crime of stealing from a shop|Shoplifting costs retailers millions every year.|a shoplifting case|7-8
+jail|n|/dʒeɪl/|nhà giam|a place where criminals are kept|The thief was sent to jail for six months.|go to jail|6-7

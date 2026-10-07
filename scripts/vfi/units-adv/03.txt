@@ -1,0 +1,45 @@
+#unit 3
+#en Society and conformity
+#blurb Chuẩn mực xã hội, nhóm thiểu số, áp lực đồng trang lứa và hành vi cá nhân
+behaviour|n|/bɪˈheɪvjə/|hành vi|the way a person acts|Good behaviour is rewarded in many schools.|bad behaviour|6-7
+demographics|n|/ˌdeməˈɡræfɪks/|nhân khẩu học|statistics about the make-up of a population|The demographics of the area have changed rapidly.|population demographics|8+
+heritage|n|/ˈherɪtɪdʒ/|di sản|traditions and objects passed from the past|People are proud of their cultural heritage.|cultural heritage|7-8
+interaction|n|/ˌɪntərˈækʃən/|sự tương tác|communication or contact between people|Daily interaction with neighbours builds a sense of community.|social interaction|7-8
+minority|n|/maɪˈnɒrəti/|thiểu số|a small group within a larger one|Ethnic minorities are well represented on the council.|a minority group|7-8
+norm|n|/nɔːm/|chuẩn mực|a standard that is accepted as normal|Working from home has become the norm for many people.|social norms|7-8
+peer|n|/pɪə/|bạn đồng trang lứa|a person of the same age or status|Teenagers are strongly influenced by their peers.|peer group|7-8
+pressure|n|/ˈpreʃə/|áp lực|the feeling of being pushed to act in a certain way|Young people often feel pressure to conform.|under pressure|6-7
+segment|n|/ˈseɡmənt/|bộ phận, nhóm|one part of a larger group|The company targets the youngest segment of the market.|a segment of society|8+
+standard|n|/ˈstændəd/|tiêu chuẩn|a level of quality or behaviour that is expected|Standards of behaviour in public have fallen.|a high standard|6-7
+status|n|/ˈsteɪtəs/|địa vị|a person's position in society|Wealth often determines social status.|social status|7-8
+anti-social|adj|/ˌænti ˈsəʊʃəl/|chống đối xã hội|harmful or annoying to other people|Anti-social behaviour is a problem in some estates.|anti-social behaviour|7-8
+conservative|adj|/kənˈsɜːvətɪv/|bảo thủ|preferring traditional ideas|Older people are often more conservative in their views.|a conservative attitude|7-8
+conventional|adj|/kənˈvenʃənəl/|theo thông lệ|following accepted customs|She chose a conventional career in law.|conventional wisdom|7-8
+harmonious|adj|/hɑːˈməʊniəs/|hài hoà|peaceful and without disagreement|They enjoy a harmonious relationship with their neighbours.|a harmonious society|8+
+influential|adj|/ˌɪnfluˈenʃəl/|có ảnh hưởng|having a strong effect on people|She was one of the most influential writers of her time.|an influential figure|7-8
+multicultural|adj|/ˌmʌltiˈkʌltʃərəl/|đa văn hoá|including people of many different cultures|London is a vibrant multicultural city.|a multicultural society|7-8
+suburban|adj|/səˈbɜːbən/|thuộc ngoại ô|relating to the area on the edge of a city|Suburban life is quiet but often isolated.|suburban areas|7-8
+unconventional|adj|/ˌʌnkənˈvenʃənəl/|khác thường|not following the usual way of doing things|He had an unconventional upbringing on a boat.|an unconventional approach|8+
+follow accepted behaviour|vp|/ˈfɒləʊ əkˈseptɪd bɪˈheɪvjə/|tuân theo hành vi được chấp nhận|to act in the way society expects|Most people follow accepted behaviour in public places.|follow accepted behaviour|8+
+shun mainstream values|vp|/ʃʌn ˈmeɪnstriːm ˈvæljuːz/|xa lánh giá trị phổ biến|to avoid the ideas that most people accept|Some groups shun mainstream values and live independently.|shun mainstream values|8+
+conform|v|/kənˈfɔːm/|tuân theo|to behave in the way that most people do|Teenagers often conform to avoid being laughed at.|conform to|7-8
+exclude|v|/ɪkˈskluːd/|loại trừ|to prevent someone from taking part|Some groups exclude people who dress differently.|exclude from|7-8
+flaunt|v|/flɔːnt/|khoe khoang|to show something off proudly|He liked to flaunt his wealth in front of others.|flaunt your wealth|8+
+obey|v|/əˈbeɪ/|vâng lời, tuân thủ|to do what a rule or a person tells you|Citizens are expected to obey the law.|obey the rules|6-7
+skew|v|/skjuː/|làm lệch|to give a result that is not fair or accurate|Biased questions can skew the results of a survey.|skew the results|8+
++++
+stereotype|n|/ˈsteriətaɪp/|định kiến|a fixed idea about a type of person|Films often reinforce stereotypes about teenagers.|challenge a stereotype|7-8
+prejudice|n|/ˈpredʒədɪs/|thành kiến|an unfair opinion formed without good reason|Prejudice against older workers is still common.|racial prejudice|7-8
+discrimination|n|/dɪˌskrɪmɪˈneɪʃən/|sự phân biệt đối xử|unfair treatment of a group of people|Laws now protect workers from discrimination.|age discrimination|7-8
+integration|n|/ˌɪntɪˈɡreɪʃən/|sự hoà nhập|the process of becoming part of a group|Language classes help the integration of newcomers.|social integration|8+
+cohesion|n|/kəʊˈhiːʒən/|sự gắn kết|the state of sticking together as a group|Shared festivals promote social cohesion.|social cohesion|8+
+taboo|n|/təˈbuː/|điều cấm kỵ|a subject that society avoids discussing|Mental illness was once a taboo subject.|break a taboo|8+
+etiquette|n|/ˈetɪket/|phép xã giao|the accepted rules of polite behaviour|Business etiquette differs from country to country.|social etiquette|8+
+non-conformist|n|/ˌnɒn kənˈfɔːmɪst/|người không theo khuôn mẫu|a person who refuses to follow the accepted rules|The non-conformist refused to wear a uniform.|a social non-conformist|8+
+mainstream|adj|/ˈmeɪnstriːm/|chính thống|accepted by most people|Mainstream culture often ignores minority voices.|mainstream media|7-8
+marginalised|adj|/ˈmɑːdʒɪnəlaɪzd/|bị gạt ra bên lề|treated as unimportant and kept apart|Marginalised groups often lack a political voice.|marginalised communities|8+
+tolerant|adj|/ˈtɒlərənt/|khoan dung|accepting different opinions and behaviour|Cities tend to be more tolerant than villages.|a tolerant society|7-8
+cohesive|adj|/kəʊˈhiːsɪv/|gắn kết|forming a united whole|A cohesive community helps its weakest members.|a cohesive group|8+
+fit in|v|/ˌfɪt ˈɪn/|hoà nhập|to be accepted as part of a group|New students try hard to fit in.|fit in with|7-8
+stand out|v|/ˌstænd ˈaʊt/|nổi bật|to be easy to notice|People with unusual hair colours stand out in a crowd.|stand out from the crowd|7-8
+rebel|v|/rɪˈbel/|nổi loạn|to fight against authority or accepted rules|Teenagers often rebel against their parents' values.|rebel against|7-8

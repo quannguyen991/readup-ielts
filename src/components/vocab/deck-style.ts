@@ -1,6 +1,8 @@
 import type { IconName } from '@/components/ui/Icon';
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
 import { NOTEBOOK_SLUG } from '@/data/study-decks';
+import { VFI_DECKS } from '@/data/vocab-for-ielts';
+import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, type ListeningSection } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
@@ -10,7 +12,7 @@ import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
  * viện bộ từ và phần đầu trang một bộ, để bấm vào thẻ nào thì trang bộ đó cùng màu.
  */
 
-export type DeckSource = 'mine' | 'ielts' | 'listening' | 'satMath' | 'satVerbal';
+export type DeckSource = 'mine' | 'ielts' | 'vfi' | 'vfia' | 'listening' | 'satMath' | 'satVerbal';
 
 export type DeckLook = { source: DeckSource; sourceLabel: string; sourceLabelEn: string; accent: readonly [string, string]; icon: IconName };
 
@@ -114,6 +116,14 @@ const LISTENING_ICON: Record<string, IconName> = {
 };
 const LISTENING_BY_SLUG = new Map(LISTENING_DECKS.map((d) => [d.slug, d]));
 
+/** Vocabulary for IELTS: mỗi unit một biểu tượng theo nội dung, màu xoay theo thứ tự unit. */
+const VFI_ICON: Record<number, IconName> = {
+  1: 'home', 2: 'star', 3: 'heart', 4: 'sparkle', 5: 'book', 6: 'chat', 7: 'compass', 8: 'clock', 9: 'leaf', 10: 'target',
+  11: 'building', 12: 'grid', 13: 'trending', 14: 'building', 15: 'leaf', 16: 'gauge', 17: 'briefcase', 18: 'shield', 19: 'volume', 20: 'gift',
+};
+const VFI_BY_SLUG = new Map(VFI_DECKS.map((d) => [d.slug, d]));
+const VFIA_BY_SLUG = new Map(VFIA_DECKS.map((d) => [d.slug, d]));
+
 const TOPIC_INDEX = new Map(VOCAB_TOPICS.map((t, i) => [t.slug, i]));
 const SAT_SUBJECT = new Map(SAT_VOCAB_LESSONS.map((l) => [l.slug, l.subject]));
 
@@ -125,6 +135,10 @@ export function deckLook(slug: string): DeckLook {
   if (subject) return { source: 'satVerbal', sourceLabel: 'SAT Verbal', sourceLabelEn: 'SAT Verbal', accent: ['#FFE4E6', '#E11D48'], icon: 'letters' };
   const listening = LISTENING_BY_SLUG.get(slug);
   if (listening) return { source: 'listening', sourceLabel: 'Nghe IELTS', sourceLabelEn: 'IELTS listening', accent: LISTENING_ACCENT[listening.section], icon: LISTENING_ICON[slug] ?? 'volume' };
+  const vfi = VFI_BY_SLUG.get(slug);
+  if (vfi) return { source: 'vfi', sourceLabel: 'Vocabulary for IELTS', sourceLabelEn: 'Vocabulary for IELTS', accent: PALETTE[(vfi.unit - 1) % PALETTE.length]!, icon: VFI_ICON[vfi.unit] ?? 'book' };
+  const vfia = VFIA_BY_SLUG.get(slug);
+  if (vfia) return { source: 'vfia', sourceLabel: 'Vocabulary for IELTS Advanced', sourceLabelEn: 'Vocabulary for IELTS Advanced', accent: PALETTE[(vfia.unit + 4) % PALETTE.length]!, icon: VFI_ICON[vfia.unit] ?? 'book' };
   const i = TOPIC_INDEX.get(slug) ?? 0;
   return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', sourceLabelEn: 'IELTS topic', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };
 }

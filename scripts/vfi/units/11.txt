@@ -1,0 +1,98 @@
+#unit 11
+#en Design and innovation
+#vi Thiết kế và đổi mới
+#blurb Kiến trúc, vật liệu xây dựng, phát minh và công trình hiện đại
+balcony|n|/ˈbælkəni/|ban công|a platform on the outside wall of a building|We had breakfast on the balcony.|a small balcony|6-7
+brick|n|/brɪk/|gạch|a small block used for building walls|The house is built of red brick.|a brick wall|5-6
+building|n|/ˈbɪldɪŋ/|toà nhà|a structure with a roof and walls|The oldest building in the city is a church.|a tall building|5-6
+ceiling|n|/ˈsiːlɪŋ/|trần nhà|the inner surface at the top of a room|The room has a high ceiling and large windows.|a high ceiling|6-7
+concrete|n|/ˈkɒŋkriːt/|bê tông|a hard building material made from cement and sand|Most modern bridges are made of concrete.|reinforced concrete|6-7
+construction|n|/kənˈstrʌkʃən/|sự xây dựng|the process of building something|Construction of the stadium took three years.|under construction|6-7
+cottage|n|/ˈkɒtɪdʒ/|nhà tranh, nhà nhỏ ở nông thôn|a small house in the countryside|They rented a cottage by the lake.|a country cottage|6-7
+design|nv|/dɪˈzaɪn/|thiết kế|a plan for how something will look; to plan something|The design of the new library won an international prize.|a modern design|5-6
+device|n|/dɪˈvaɪs/|thiết bị|a machine made for a particular purpose|A smoke alarm is a simple but life-saving device.|a safety device|6-7
+elevator|n|/ˈelɪveɪtə/|thang máy|a machine that carries people up and down in a building|The elevator was out of order again.|take the elevator|6-7
+engineering|n|/ˌendʒɪˈnɪərɪŋ/|ngành kỹ thuật|the work of designing and building machines and structures|Civil engineering is essential for modern cities.|civil engineering|6-7
+frame|n|/freɪm/|khung|the supporting structure of a building|The frame of the house is made of timber.|a steel frame|6-7
+gadget|n|/ˈɡædʒɪt/|đồ dùng thông minh|a small useful device|Modern kitchens are full of clever gadgets.|a useful gadget|6-7
+housing|n|/ˈhaʊzɪŋ/|nhà ở|buildings where people live|The city needs more affordable housing.|affordable housing|6-7
+innovation|n|/ˌɪnəˈveɪʃən/|sự đổi mới|a new idea or method|Innovation drives economic growth.|technological innovation|7-8
+invention|n|/ɪnˈvenʃən/|phát minh|a new thing created for the first time|The invention of the printing press changed the world.|a brilliant invention|6-7
+landmark|n|/ˈlændmɑːk/|cột mốc, công trình biểu tượng|a building that is easy to recognise|The tower has become a landmark of the city.|a famous landmark|7-8
+lift shaft|np|/ˈlɪft ʃɑːft/|giếng thang máy|the vertical space in which a lift moves|The lift shaft runs through the centre of the building.|a lift shaft|8+
+occupant|n|/ˈɒkjəpənt/|người ở, người cư ngụ|a person who lives in or uses a building|Each occupant has a key to the main door.|the occupants|7-8
+platform|n|/ˈplætfɔːm/|bục, nền|a raised flat surface|The platform was built from steel beams.|a viewing platform|6-7
+quarry|n|/ˈkwɒri/|mỏ đá|a place where stone is dug from the ground|Stone for the cathedral came from a local quarry.|a stone quarry|8+
+residence|n|/ˈrezɪdəns/|nơi cư trú|a house or place where someone lives|The president's official residence is in the capital.|a private residence|7-8
+skyscraper|n|/ˈskaɪskreɪpə/|nhà chọc trời|a very tall building in a city|Dubai is famous for its skyscrapers.|a glass skyscraper|6-7
+staircase|n|/ˈsteəkeɪs/|cầu thang|a set of steps inside a building|A spiral staircase leads to the roof.|a spiral staircase|6-7
+steel|n|/stiːl/|thép|a strong metal made from iron|Modern skyscrapers have a steel frame.|stainless steel|6-7
+storage|n|/ˈstɔːrɪdʒ/|nơi chứa đồ|space for keeping things|The flat has plenty of storage space.|storage space|6-7
+structure|n|/ˈstrʌktʃə/|cấu trúc, công trình|a building or framework|The structure was designed to resist earthquakes.|a steel structure|6-7
+tension|n|/ˈtenʃən/|lực căng|the force that pulls on a material|Cables hold the bridge under constant tension.|under tension|8+
+timber|n|/ˈtɪmbə/|gỗ xây dựng|wood used for building|Timber is a renewable building material.|timber frame|7-8
+airy|adj|/ˈeəri/|thoáng đãng|with plenty of fresh air and space|The kitchen is bright and airy.|an airy room|7-8
+conventional|adj|/kənˈvenʃənəl/|theo lối thông thường|following traditional methods|Conventional buildings use more energy than modern ones.|conventional methods|7-8
+cosy|adj|/ˈkəʊzi/|ấm cúng|warm, comfortable and pleasant|The cottage is small but cosy.|a cosy room|6-7
+cramped|adj|/kræmpt/|chật chội|uncomfortably small|Families lived in cramped flats with no garden.|cramped conditions|7-8
+curved|adj|/kɜːvd/|cong|having a shape that bends smoothly|The stadium has a graceful curved roof.|a curved wall|6-7
+disposable|adj|/dɪˈspəʊzəbəl/|dùng một lần|made to be thrown away after use|Disposable cameras were popular in the 1990s.|disposable products|7-8
+domestic|adj|/dəˈmestɪk/|thuộc gia đình, trong nhà|relating to the home|Domestic appliances save a lot of time.|domestic appliances|7-8
+exterior|adj|/ɪkˈstɪəriə/|bên ngoài|on the outside|The exterior walls are painted bright white.|exterior design|7-8
+functional|adj|/ˈfʌŋkʃənəl/|thiết thực, tiện dụng|designed to be practical rather than beautiful|The office is plain but highly functional.|a functional design|6-7
+futuristic|adj|/ˌfjuːtʃəˈrɪstɪk/|mang phong cách tương lai|very modern and looking like the future|The airport has a futuristic glass roof.|a futuristic design|7-8
+high-rise|adj|/ˈhaɪ raɪz/|cao tầng|having many floors|Many families live in high-rise apartments.|high-rise buildings|6-7
+innovative|adj|/ˈɪnəveɪtɪv/|sáng tạo, đổi mới|using new and original methods|The architect is known for her innovative designs.|an innovative approach|7-8
+internal|adj|/ɪnˈtɜːnəl/|bên trong|inside something|Internal walls can be moved to create larger rooms.|internal walls|6-7
+mass-produced|adj|/ˌmæs prəˈdjuːst/|sản xuất hàng loạt|made in large numbers by machine|Mass-produced furniture is cheaper than handmade pieces.|mass-produced goods|7-8
+modern|adj|/ˈmɒdən/|hiện đại|relating to the present time|The city has many modern office buildings.|modern architecture|5-6
+multi-storey|adj|/ˌmʌlti ˈstɔːri/|nhiều tầng|having several floors|A multi-storey car park stands next to the station.|a multi-storey building|6-7
+old-fashioned|adj|/ˌəʊld ˈfæʃənd/|lỗi thời, cổ điển|no longer modern|The kitchen looks old-fashioned and needs updating.|an old-fashioned design|6-7
+ornate|adj|/ɔːˈneɪt/|trang trí cầu kỳ|decorated with complex patterns|The palace has an ornate ceiling painted with gold.|ornate decoration|8+
+prefabricated|adj|/ˌpriːˈfæbrɪkeɪtɪd/|đúc sẵn, lắp ghép|made in sections in a factory then put together|Prefabricated houses can be built in a few days.|prefabricated homes|8+
+single-storey|adj|/ˌsɪŋɡəl ˈstɔːri/|một tầng|having only one floor|They live in a single-storey house with a large garden.|a single-storey building|6-7
+spacious|adj|/ˈspeɪʃəs/|rộng rãi|having a lot of room inside|The apartment has a spacious living room.|a spacious flat|6-7
+state-of-the-art|adj|/ˌsteɪt əv ði ˈɑːt/|hiện đại nhất|using the newest technology|The hospital has state-of-the-art equipment.|state-of-the-art technology|7-8
+traditional|adj|/trəˈdɪʃənəl/|truyền thống|following old customs|Traditional houses are built of wood and clay.|traditional architecture|5-6
+two-storey|adj|/ˌtuː ˈstɔːri/|hai tầng|having two floors|Most houses in the village are two-storey.|a two-storey house|6-7
+typical|adj|/ˈtɪpɪkəl/|điển hình|having the usual qualities of a group|This is a typical example of Gothic architecture.|a typical example|5-6
+ultra-modern|adj|/ˌʌltrə ˈmɒdən/|siêu hiện đại|extremely modern|The ultra-modern museum looks like a giant ship.|an ultra-modern building|8+
+activate|v|/ˈæktɪveɪt/|kích hoạt|to make something start working|Motion sensors activate the lights automatically.|activate an alarm|7-8
+automate|v|/ˈɔːtəmeɪt/|tự động hoá|to make a process work without human control|Factories are automating many routine tasks.|automate a process|7-8
+build|v|/bɪld/|xây dựng|to make a structure by putting parts together|They plan to build a bridge across the river.|build a house|5-6
+condemn|v|/kənˈdem/|tuyên bố không an toàn, lên án|to declare a building unsafe to use|The council condemned the building as unsafe.|condemn a building|8+
+construct|v|/kənˈstrʌkt/|xây dựng, dựng nên|to build something large|The bridge was constructed in only two years.|construct a bridge|6-7
+decorate|v|/ˈdekəreɪt/|trang trí|to make something look more attractive|They decorated the hall with flowers.|decorate a room|5-6
+demolish|v|/dɪˈmɒlɪʃ/|phá dỡ|to pull down a building|The old factory was demolished last year.|demolish a building|7-8
+develop|v|/dɪˈveləp/|phát triển, xây dựng|to build on land for a purpose|The company plans to develop the old docks.|develop land|6-7
+devise|v|/dɪˈvaɪz/|nghĩ ra, sáng chế|to invent a plan or method|Engineers devised a clever system to save water.|devise a plan|8+
+haul|v|/hɔːl/|kéo, vận chuyển nặng|to pull something heavy with effort|Workers hauled the stones up the hill.|haul heavy loads|8+
+hoist|v|/hɔɪst/|nâng lên, kéo lên|to lift something heavy using ropes or a machine|A crane hoisted the steel beams into place.|hoist a flag|8+
+invent|v|/ɪnˈvent/|phát minh|to create something that did not exist before|Who invented the telephone?|invent a machine|5-6
+maintain|v|/meɪnˈteɪn/|bảo trì, duy trì|to keep something in good condition|It is expensive to maintain old buildings.|maintain a building|6-7
+occupy|v|/ˈɒkjəpaɪ/|chiếm giữ, sử dụng|to live in or use a space|The company occupies three floors of the tower.|occupy a building|7-8
+reconstruct|v|/ˌriːkənˈstrʌkt/|xây dựng lại|to build something again after damage|The town was reconstructed after the earthquake.|reconstruct a building|8+
+renovate|v|/ˈrenəveɪt/|cải tạo, tu sửa|to repair and improve an old building|They plan to renovate the kitchen next spring.|renovate a house|7-8
+support|v|/səˈpɔːt/|nâng đỡ, chống đỡ|to hold something up so it does not fall|Thick columns support the heavy roof.|support the weight|6-7
+trigger|v|/ˈtrɪɡə/|kích hoạt, gây ra|to make something start working|Smoke triggers the fire alarm.|trigger an alarm|7-8
++++
+blueprint|n|/ˈbluːprɪnt/|bản thiết kế|a detailed plan for building something|The architect showed us the blueprint of the new library.|draw up a blueprint|7-8
+prototype|n|/ˈprəʊtətaɪp/|bản mẫu|the first model of something new|Engineers tested the prototype before mass production.|build a prototype|7-8
+foundation|n|/faʊnˈdeɪʃən/|móng nhà|the solid base on which a building stands|The foundations must be deep to support a tall tower.|lay the foundations|7-8
+facade|n|/fəˈsɑːd/|mặt tiền|the front of a building|The glass facade reflects the sunset.|a glass facade|8+
+infrastructure|n|/ˈɪnfrəstrʌktʃə/|cơ sở hạ tầng|the basic systems a country needs, such as roads|Poor infrastructure slows economic growth.|public infrastructure|7-8
+insulation|n|/ˌɪnsjʊˈleɪʃən/|vật liệu cách nhiệt|material that stops heat from escaping|Good insulation can cut heating bills by a third.|roof insulation|7-8
+scaffolding|n|/ˈskæfəldɪŋ/|giàn giáo|a temporary frame used while a building is repaired|Scaffolding covers the front of the old theatre.|erect scaffolding|8+
+renovation|n|/ˌrenəˈveɪʃən/|sự cải tạo|the repair and improvement of an old building|The renovation of the hotel took eight months.|a major renovation|7-8
+eco-friendly|adj|/ˈiːkəʊ ˌfrendli/|thân thiện với môi trường|not harmful to the environment|Eco-friendly materials are becoming more popular.|eco-friendly buildings|6-7
+energy-efficient|adj|/ˌenədʒi ɪˈfɪʃənt/|tiết kiệm năng lượng|using little energy to do a job|Energy-efficient windows keep heat inside.|energy-efficient homes|7-8
+earthquake-proof|adj|/ˈɜːθkweɪk pruːf/|chống động đất|built to survive an earthquake|Tokyo requires all new towers to be earthquake-proof.|earthquake-proof design|8+
+sturdy|adj|/ˈstɜːdi/|vững chắc|strong and not easily damaged|The sturdy bridge has stood for two centuries.|a sturdy structure|7-8
+aesthetic|adj|/iːsˈθetɪk/|thuộc thẩm mỹ|relating to beauty and appearance|The aesthetic appeal of the building attracts tourists.|aesthetic appeal|8+
+minimalist|adj|/ˈmɪnɪməlɪst/|tối giản|using very few and simple elements|The flat has a minimalist design with clean white walls.|a minimalist style|8+
+refurbish|v|/ˌriːˈfɜːbɪʃ/|tân trang|to clean and decorate a place to make it like new|The hotel was refurbished before the Olympics.|refurbish a room|8+
+retrofit|v|/ˈretrəʊfɪt/|nâng cấp, lắp thêm|to add new equipment to an older building|Old offices can be retrofitted with solar panels.|retrofit a building|8+
+reinforce|v|/ˌriːɪnˈfɔːs/|gia cố|to make something stronger|Steel bars reinforce the concrete walls.|reinforce a wall|7-8
+pillar|n|/ˈpɪlə/|cột trụ|a tall upright support for a building|Stone pillars hold up the roof of the temple.|a stone pillar|7-8
+partition|n|/pɑːˈtɪʃən/|vách ngăn|a thin wall that divides a room|A glass partition separates the office from the corridor.|a glass partition|8+
+cement|n|/sɪˈment/|xi măng|a grey powder mixed with water to make concrete|Cement production releases large amounts of carbon dioxide.|mix cement|7-8

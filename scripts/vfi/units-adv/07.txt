@@ -1,0 +1,34 @@
+#unit 7
+#en Travel and places
+#blurb Tính từ miêu tả nơi chốn, cảnh quan và trải nghiệm chuyến đi
+breathtaking|adj|/ˈbreθteɪkɪŋ/|ngoạn mục|extremely beautiful or impressive|The view from the top of the mountain was breathtaking.|a breathtaking view|7-8
+charming|adj|/ˈtʃɑːmɪŋ/|duyên dáng, quyến rũ|pleasant and attractive|We stayed in a charming village by the sea.|a charming town|6-7
+comfortable|adj|/ˈkʌmftəbəl/|thoải mái|giving a feeling of ease|The hotel has large and comfortable rooms.|a comfortable bed|5-6
+dramatic|adj|/drəˈmætɪk/|ấn tượng, kịch tính|exciting and impressive|The coast has some of the most dramatic scenery in Europe.|a dramatic landscape|7-8
+magnificent|adj|/mæɡˈnɪfɪsənt/|nguy nga, tráng lệ|extremely beautiful and impressive|The palace is a magnificent example of Baroque architecture.|a magnificent view|7-8
+memorable|adj|/ˈmemərəbəl/|đáng nhớ|worth remembering|It was the most memorable holiday of my life.|a memorable trip|6-7
+mountainous|adj|/ˈmaʊntɪnəs/|nhiều núi|having many mountains|The interior of the island is wild and mountainous.|mountainous terrain|7-8
+precarious|adj|/prɪˈkeəriəs/|bấp bênh, nguy hiểm|not safe or stable|The path along the cliff is narrow and precarious.|a precarious position|8+
+remote|adj|/rɪˈməʊt/|xa xôi, hẻo lánh|far away from other places|They live in a remote village in the mountains.|a remote area|7-8
+rustic|adj|/ˈrʌstɪk/|mộc mạc, đồng quê|simple and typical of the countryside|We stayed in a rustic cottage with an open fire.|rustic charm|8+
+spectacular|adj|/spekˈtækjʊlə/|hùng vĩ|very impressive to look at|The waterfall is truly spectacular after the rains.|a spectacular view|7-8
+stunning|adj|/ˈstʌnɪŋ/|tuyệt đẹp|extremely beautiful|The hotel offers stunning views of the bay.|a stunning landscape|6-7
+attract|v|/əˈtrækt/|thu hút|to draw people to a place|The festival attracts thousands of visitors every year.|attract tourists|6-7
+damage|v|/ˈdæmɪdʒ/|làm hư hại|to harm or spoil something|Mass tourism can damage fragile ecosystems.|damage the environment|6-7
+outweigh|v|/ˌaʊtˈweɪ/|lớn hơn, vượt trội|to be greater in importance than something else|The benefits of tourism outweigh the problems.|outweigh the benefits|8+
++++
+secluded|adj|/sɪˈkluːdɪd/|hẻo lánh, yên tĩnh|quiet and private|We found a secluded beach away from the crowds.|a secluded spot|8+
+picturesque|adj|/ˌpɪktʃəˈresk/|đẹp như tranh|attractive in a way that looks like a picture|The picturesque village attracts many artists.|a picturesque setting|7-8
+bustling|adj|/ˈbʌslɪŋ/|nhộn nhịp|full of busy activity|The bustling market is full of colour and sound.|a bustling city|7-8
+tranquil|adj|/ˈtræŋkwɪl/|yên tĩnh|calm and peaceful|The lake is a tranquil place to relax.|a tranquil setting|8+
+vibrant|adj|/ˈvaɪbrənt/|sôi động|full of energy and life|The city has a vibrant nightlife.|a vibrant culture|7-8
+unspoilt|adj|/ʌnˈspɔɪlt/|còn nguyên sơ|not damaged or changed by people|The island remains unspoilt by mass tourism.|an unspoilt beach|7-8
+overrated|adj|/ˌəʊvəˈreɪtɪd/|được đánh giá quá cao|thought to be better than it really is|Many travellers find the famous tower overrated.|an overrated attraction|8+
+touristy|adj|/ˈtʊərɪsti/|đông khách du lịch|full of tourists and made for them|We avoided the touristy restaurants near the square.|a touristy area|7-8
+off the beaten track|id|/ɒf ðə ˈbiːtən træk/|ít người biết đến|in a place few people visit|We prefer destinations off the beaten track.|off the beaten track|8+
+panoramic|adj|/ˌpænəˈræmɪk/|toàn cảnh|giving a wide view of an area|A panoramic view of the valley opens up from the ridge.|a panoramic view|8+
+idyllic|adj|/ɪˈdɪlɪk/|thanh bình như tranh|extremely peaceful and beautiful|They spent a week on an idyllic island.|an idyllic setting|8+
+awe-inspiring|adj|/ˈɔːɪnspaɪərɪŋ/|đầy kinh ngạc|causing great admiration|The glaciers are an awe-inspiring sight.|an awe-inspiring view|8+
+erode|v|/ɪˈrəʊd/|xói mòn|to gradually wear away|Thousands of walkers have eroded the mountain path.|erode the coastline|8+
+trek|v|/trek/|đi bộ đường dài|to walk a long way over rough ground|We trekked for six days through the forest.|trek through|7-8
+backpack|v|/ˈbækpæk/|du lịch bụi|to travel cheaply carrying a bag|He spent a year backpacking around Asia.|backpack across|7-8

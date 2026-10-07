@@ -371,6 +371,7 @@ function WordRow({
             <Text className="font-heavy text-cardTitle text-ink">{word.word}</Text>
             <Text className="font-sans text-label text-subtle">{word.ipa}</Text>
             {word.pos ? <Badge label={word.pos} tone="neutral" shape="tag" /> : null}
+            {(word as { more?: boolean }).more ? <Badge label={L('Mở rộng', 'Extra')} tone="primary" shape="tag" /> : null}
           </View>
           <Text className="mt-0.5 font-strong text-body text-ink">{word.meaningVi}</Text>
         </View>

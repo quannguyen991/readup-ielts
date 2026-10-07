@@ -1,0 +1,57 @@
+#unit 6
+#en Advertising and marketing
+#blurb Quảng cáo, thương hiệu, bán hàng và cách quảng cáo tác động lên người tiêu dùng
+billboard|n|/ˈbɪlbɔːd/|biển quảng cáo|a large outdoor sign used for advertising|A giant billboard advertises the new film.|a roadside billboard|7-8
+branding|n|/ˈbrændɪŋ/|xây dựng thương hiệu|the process of giving a product a recognisable image|Good branding makes a product easy to remember.|corporate branding|7-8
+distributor|n|/dɪˈstrɪbjʊtə/|nhà phân phối|a company that supplies goods to shops|The distributor delivers goods to shops across the region.|a local distributor|8+
+flyer|n|/ˈflaɪə/|tờ rơi|a small printed sheet used for advertising|Volunteers handed out flyers outside the station.|hand out flyers|7-8
+gimmick|n|/ˈɡɪmɪk/|chiêu trò quảng cáo|a trick used to attract attention|The free toy is just a gimmick to sell more cereal.|a marketing gimmick|8+
+jingle|n|/ˈdʒɪŋɡəl/|đoạn nhạc quảng cáo|a short, catchy song used in an advert|The jingle stuck in my head all day.|a catchy jingle|8+
+manufacturer|n|/ˌmænjʊˈfæktʃərə/|nhà sản xuất|a company that makes goods in large numbers|The manufacturer recalled thousands of faulty phones.|a car manufacturer|7-8
+marketing|n|/ˈmɑːkɪtɪŋ/|hoạt động tiếp thị|the business of promoting and selling products|Digital marketing is replacing traditional advertising.|a marketing campaign|7-8
+online retailer|np|/ˈɒnlaɪn ˈriːteɪlə/|nhà bán lẻ trực tuyến|a company that sells goods over the Internet|Many online retailers offer free delivery.|a major online retailer|7-8
+ploy|n|/plɔɪ/|mánh khoé|a clever trick to gain an advantage|Free samples are a common marketing ploy.|a clever ploy|8+
+rebate|n|/ˈriːbeɪt/|khoản hoàn tiền|a partial refund of money paid|Buyers receive a rebate if they return the form.|claim a rebate|8+
+sales representative|np|/ˈseɪlz reprɪˈzentətɪv/|đại diện bán hàng|a person who sells a company's goods to customers|The sales representative visited fifty clients a month.|a sales representative|7-8
+slogan|n|/ˈsləʊɡən/|khẩu hiệu|a short phrase used in advertising|The company's slogan is easy to remember.|an advertising slogan|7-8
+telemarketing|n|/ˈtelɪmɑːkɪtɪŋ/|tiếp thị qua điện thoại|selling goods by phone|Telemarketing calls annoy many households.|telemarketing calls|8+
+vendor|n|/ˈvendɔː/|người bán hàng|a person or company that sells something|Street vendors sell snacks outside the stadium.|a street vendor|7-8
+catchy|adj|/ˈkætʃi/|dễ nhớ, bắt tai|easy to remember and pleasing|The advert has a catchy tune.|a catchy slogan|7-8
+compelling|adj|/kəmˈpelɪŋ/|thuyết phục|so interesting that you must pay attention|The advert tells a compelling story about family life.|a compelling argument|8+
+distracting|adj|/dɪˈstræktɪŋ/|gây xao nhãng|making it difficult to concentrate|Pop-up adverts are very distracting when you read online.|a distracting noise|7-8
+disturbing|adj|/dɪˈstɜːbɪŋ/|đáng lo ngại|causing worry or upset|Some of the images in the campaign were disturbing.|a disturbing trend|7-8
+infuriating|adj|/ɪnˈfjʊərieɪtɪŋ/|làm tức giận|making you extremely angry|It is infuriating to be interrupted by adverts every five minutes.|an infuriating delay|8+
+invasive|adj|/ɪnˈveɪsɪv/|xâm phạm|entering private areas without permission|Many people find targeted ads invasive.|invasive advertising|8+
+irritating|adj|/ˈɪrɪteɪtɪŋ/|gây khó chịu|making you slightly angry|The repeated phone calls were irritating.|an irritating habit|7-8
+monetary|adj|/ˈmʌnɪtəri/|thuộc tiền tệ|relating to money|Some customers are motivated purely by monetary rewards.|monetary value|8+
+persuasive|adj|/pəˈsweɪsɪv/|có sức thuyết phục|able to make people do or believe something|A persuasive advert can change what people buy.|a persuasive argument|7-8
+promotional|adj|/prəˈməʊʃənəl/|mang tính khuyến mãi|used to advertise a product|The shop is giving away promotional gifts this week.|promotional material|8+
+repetitive|adj|/rɪˈpetətɪv/|lặp đi lặp lại|doing or saying the same thing again and again|The radio advert was dull and repetitive.|repetitive tasks|7-8
+slick|adj|/slɪk/|bóng bẩy, trơn tru|smart and well produced but perhaps not sincere|The company produced a slick advertising campaign.|a slick presentation|8+
+ubiquitous|adj|/juːˈbɪkwɪtəs/|có mặt khắp nơi|seen or found everywhere|Smartphones are now ubiquitous in cities.|a ubiquitous presence|8+
+unavoidable|adj|/ˌʌnəˈvɔɪdəbəl/|không thể tránh|impossible to avoid|Adverts are an unavoidable part of modern life.|an unavoidable result|7-8
+assure|v|/əˈʃʊə/|cam đoan|to promise someone that something is true|The seller assured me that the product was safe.|assure customers|7-8
+cultivate|v|/ˈkʌltɪveɪt/|vun đắp, gây dựng|to try to develop something|Firms try to cultivate a loyal customer base.|cultivate an image|8+
+entice|v|/ɪnˈtaɪs/|dụ dỗ, lôi kéo|to attract someone by offering something pleasant|Special discounts entice shoppers into the store.|entice customers|8+
+induce|v|/ɪnˈdjuːs/|thúc đẩy|to persuade someone to do something|Cheap offers induce people to buy more than they need.|induce someone to|8+
+oblige|v|/əˈblaɪdʒ/|bắt buộc|to force someone to do something|Shops are obliged to display prices clearly.|be obliged to|8+
+pressurise|v|/ˈpreʃəraɪz/|gây áp lực|to try to force someone to do something|Salespeople should not pressurise customers into buying.|pressurise someone into|8+
+reassure|v|/ˌriːəˈʃʊə/|trấn an|to make someone feel less worried|Reviews reassure shoppers that a product is good.|reassure customers|7-8
+tempt|v|/tempt/|cám dỗ|to make someone want to do something wrong or unwise|Clever packaging tempts customers to buy.|tempt customers|7-8
+urge|v|/ɜːdʒ/|thúc giục|to strongly advise someone to do something|Ads urge viewers to buy before stock runs out.|urge people to|7-8
++++
+target audience|np|/ˈtɑːɡɪt ˈɔːdiəns/|đối tượng mục tiêu|the group of people an advert is aimed at|The target audience for this campaign is teenagers.|identify a target audience|7-8
+brand loyalty|np|/ˈbrænd ˈlɔɪəlti/|sự trung thành thương hiệu|the habit of always buying the same brand|Free gifts help build brand loyalty.|build brand loyalty|8+
+endorsement|n|/ɪnˈdɔːsmənt/|sự quảng bá của người nổi tiếng|public support for a product by a famous person|A celebrity endorsement can double sales.|a celebrity endorsement|8+
+testimonial|n|/ˌtestɪˈməʊniəl/|lời chứng thực của khách|a statement from a customer praising a product|The website shows testimonials from happy customers.|a customer testimonial|8+
+sponsorship|n|/ˈspɒnsəʃɪp/|sự tài trợ|money given to support an event in return for publicity|Sponsorship deals bring in millions for football clubs.|a sponsorship deal|8+
+market share|np|/ˈmɑːkɪt ʃeə/|thị phần|the percentage of sales a company controls|The firm has increased its market share to thirty per cent.|gain market share|8+
+consumerism|n|/kənˈsjuːmərɪzəm/|chủ nghĩa tiêu dùng|the belief that buying goods is very important|Critics blame consumerism for wasteful lifestyles.|rampant consumerism|8+
+word of mouth|np|/ˌwɜːd əv ˈmaʊθ/|truyền miệng|information passed on by people talking|Most small shops rely on word of mouth.|spread by word of mouth|7-8
+deceptive|adj|/dɪˈseptɪv/|lừa dối|likely to give a false impression|Deceptive advertising is illegal in many countries.|deceptive advertising|8+
+misleading|adj|/ˌmɪsˈliːdɪŋ/|gây hiểu lầm|giving a wrong idea|The label was misleading about the amount of sugar.|misleading information|7-8
+lucrative|adj|/ˈluːkrətɪv/|sinh lợi|producing a lot of money|Advertising to children is a lucrative business.|a lucrative market|8+
+promote|v|/prəˈməʊt/|quảng bá|to advertise a product to increase sales|The company spent millions to promote its new range.|promote a product|6-7
+launch|v|/lɔːntʃ/|tung ra thị trường|to introduce a new product|The firm will launch its new phone in March.|launch a product|6-7
+advertise|v|/ˈædvətaɪz/|quảng cáo|to tell people about a product publicly|Companies advertise on social media to reach young people.|advertise a product|6-7
+boycott|v|/ˈbɔɪkɒt/|tẩy chay|to refuse to buy a product as a protest|Customers threatened to boycott the brand.|boycott a company|8+

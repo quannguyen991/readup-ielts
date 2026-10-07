@@ -1,0 +1,53 @@
+#unit 14
+#en Problems and crises
+#blurb Thảm hoạ, khủng hoảng, trở ngại và các động từ chỉ cách giải quyết
+catastrophe|n|/kəˈtæstrəfi/|thảm hoạ|a sudden event causing great damage|The oil spill was an environmental catastrophe.|a global catastrophe|7-8
+cloning|n|/ˈkləʊnɪŋ/|nhân bản|the process of making an exact copy of a living thing|Human cloning raises serious ethical questions.|animal cloning|8+
+controversy|n|/ˈkɒntrəvɜːsi/|sự tranh cãi|a public disagreement about something|The decision caused a great deal of controversy.|cause controversy|7-8
+crisis|n|/ˈkraɪsɪs/|cuộc khủng hoảng|a time of great danger or difficulty|The housing crisis shows no sign of ending.|a financial crisis|6-7
+dilemma|n|/dɪˈlemə/|tình thế tiến thoái lưỡng nan|a situation where you must choose between bad options|Doctors face a moral dilemma when resources are limited.|face a dilemma|7-8
+disaster|n|/dɪˈzɑːstə/|thảm hoạ|an event that causes great damage or loss|The flood was the worst natural disaster in decades.|a natural disaster|6-7
+hurdle|n|/ˈhɜːdəl/|rào cản|a problem that must be solved before progress|Funding is the biggest hurdle for the project.|overcome a hurdle|7-8
+obstacle|n|/ˈɒbstəkəl/|trở ngại|something that blocks progress|Lack of money is a major obstacle to reform.|overcome an obstacle|7-8
+predicament|n|/prɪˈdɪkəmənt/|tình thế khó khăn|a difficult situation that is hard to escape|The company found itself in a serious predicament.|a difficult predicament|8+
+setback|n|/ˈsetbæk/|bước lùi|a problem that delays progress|The scheme suffered a major setback.|suffer a setback|8+
+catastrophic|adj|/ˌkætəˈstrɒfɪk/|thảm khốc|causing terrible damage|The effects of the drought were catastrophic.|catastrophic consequences|8+
+controversial|adj|/ˌkɒntrəˈvɜːʃəl/|gây tranh cãi|causing public disagreement|Nuclear power remains a controversial subject.|a controversial decision|7-8
+daunting|adj|/ˈdɔːntɪŋ/|đáng ngại, nản lòng|making you feel worried about your chances|Rebuilding the city after the earthquake is a daunting task.|a daunting task|8+
+disastrous|adj|/dɪˈzɑːstrəs/|tai hại|causing great damage or failure|The new policy had disastrous consequences.|disastrous results|7-8
+insurmountable|adj|/ˌɪnsəˈmaʊntəbəl/|không thể vượt qua|too great to be overcome|The costs seemed insurmountable at first.|an insurmountable problem|8+
+ongoing|adj|/ˈɒnɡəʊɪŋ/|đang diễn ra|continuing at the present time|There is an ongoing debate about the cure.|an ongoing problem|7-8
+pervasive|adj|/pəˈveɪsɪv/|lan tràn|present everywhere|Corruption has become pervasive in the industry.|a pervasive problem|8+
+problematic|adj|/ˌprɒbləˈmætɪk/|gây rắc rối|full of difficulties|The long-term effects of the drug are problematic.|a problematic issue|8+
+do more harm than good|id|/duː mɔː hɑːm ðən ɡʊd/|hại nhiều hơn lợi|to have a worse effect than a positive one|Some diets do more harm than good.|do more harm than good|7-8
+dwell on|ph|/ˈdwel ɒn/|nghĩ mãi về|to think or talk too much about something unpleasant|It is better not to dwell on past mistakes.|dwell on the past|8+
+energy crisis|np|/ˈenədʒi ˌkraɪsɪs/|khủng hoảng năng lượng|a shortage of power supplies|The energy crisis forced factories to close.|an energy crisis|7-8
+gain insight into|ph|/ɡeɪn ˈɪnsaɪt ˈɪntuː/|hiểu sâu hơn về|to understand something better|The survey helped us gain insight into the problem.|gain insight into|8+
+genetically modified food|np|/dʒəˌnetɪkli ˌmɒdɪfaɪd ˈfuːd/|thực phẩm biến đổi gen|food from plants with changed genes|Genetically modified food divides public opinion.|genetically modified food|7-8
+take stock|id|/teɪk stɒk/|đánh giá lại tình hình|to think carefully about a situation before deciding|We need to take stock before making any more changes.|take stock of|8+
+aggravate|v|/ˈæɡrəveɪt/|làm trầm trọng thêm|to make a bad situation worse|Cheap cars aggravate the problem of congestion.|aggravate the problem|8+
+alleviate|v|/əˈliːvieɪt/|làm dịu bớt|to make a problem less serious|New roads will alleviate traffic jams.|alleviate poverty|8+
+arise|v|/əˈraɪz/|nảy sinh|to begin to exist|Problems may arise if the project is delayed.|arise from|7-8
+exacerbate|v|/ɪɡˈzæsəbeɪt/|làm trầm trọng|to make a problem more serious|Poor planning exacerbates traffic jams.|exacerbate the situation|8+
+hinder|v|/ˈhɪndə/|cản trở|to make it difficult for something to happen|Bad weather hindered the rescue effort.|hinder progress|8+
+ignore|v|/ɪɡˈnɔː/|phớt lờ|to pay no attention to something|Governments cannot ignore the warnings of scientists.|ignore a problem|6-7
+improve|v|/ɪmˈpruːv/|cải thiện|to make something better|Better drainage would improve conditions.|improve conditions|6-7
+mitigate|v|/ˈmɪtɪɡeɪt/|giảm nhẹ|to make something less serious|Planting trees can mitigate the effects of floods.|mitigate the effects|8+
+rectify|v|/ˈrektɪfaɪ/|sửa chữa, điều chỉnh|to put right something that is wrong|The company moved quickly to rectify the error.|rectify a mistake|8+
+resolve|v|/rɪˈzɒlv/|giải quyết|to find an answer to a problem|Negotiators hope to resolve the dispute by Friday.|resolve a conflict|7-8
++++
+crisis management|np|/ˈkraɪsɪs ˈmænɪdʒmənt/|quản lý khủng hoảng|the process of dealing with a sudden serious problem|Good crisis management saved the company's reputation.|crisis management|8+
+bottleneck|n|/ˈbɒtəlnek/|điểm nghẽn|a point where progress is slowed down|Poor ports are a bottleneck for trade.|a major bottleneck|8+
+pitfall|n|/ˈpɪtfɔːl/|cạm bẫy, rủi ro tiềm ẩn|a hidden danger or difficulty|Planners must be aware of the pitfalls of rapid growth.|a common pitfall|8+
+repercussions|n|/ˌriːpəˈkʌʃənz/|hệ quả|unwanted results of an action|The cuts will have serious repercussions for schools.|serious repercussions|8+
+fallout|n|/ˈfɔːlaʊt/|hậu quả (của một sự kiện)|the bad results of an event|The political fallout from the scandal lasted for months.|the fallout from|8+
+backlash|n|/ˈbæklæʃ/|phản ứng dữ dội|a strong negative reaction from the public|The tax rise caused a public backlash.|a public backlash|8+
+deteriorate|v|/dɪˈtɪəriəreɪt/|xấu đi|to become worse|The patient's condition has deteriorated rapidly.|deteriorate rapidly|7-8
+worsen|v|/ˈwɜːsən/|trở nên tệ hơn|to become or make something worse|The situation will worsen without action.|worsen the situation|7-8
+tackle|v|/ˈtækəl/|giải quyết|to try to deal with a difficult problem|Cities are introducing charges to tackle congestion.|tackle a problem|6-7
+overcome|v|/ˌəʊvəˈkʌm/|vượt qua|to succeed in dealing with a difficulty|They overcame many obstacles to finish the bridge.|overcome difficulties|6-7
+unforeseen|adj|/ˌʌnfɔːˈsiːn/|không lường trước|not expected or predicted|The project was delayed by unforeseen circumstances.|unforeseen circumstances|8+
+irreversible|adj|/ˌɪrɪˈvɜːsəbəl/|không thể đảo ngược|impossible to change back|The damage to the coral reef may be irreversible.|irreversible damage|8+
+turmoil|n|/ˈtɜːmɔɪl/|tình trạng hỗn loạn|a state of great confusion or trouble|The country was in turmoil after the sudden resignation.|political turmoil|8+
+fiasco|n|/fiˈæskəʊ/|thất bại thảm hại|a complete and embarrassing failure|The opening of the new system was a total fiasco.|a complete fiasco|8+
+crippling|adj|/ˈkrɪplɪŋ/|làm tê liệt|causing severe damage or weakness|Crippling debt forced the firm to close.|crippling debt|8+

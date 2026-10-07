@@ -1,0 +1,76 @@
+#unit 9
+#en The natural world
+#vi Thế giới tự nhiên
+#blurb Hệ sinh thái, động thực vật, sự tuyệt chủng và nông nghiệp
+agriculture|n|/ˈæɡrɪkʌltʃə/|nông nghiệp|the science and practice of farming|Agriculture employs most of the rural population.|modern agriculture|6-7
+animal kingdom|np|/ˈænɪməl ˈkɪŋdəm/|giới động vật|all the animals of the world considered together|Insects make up the largest group in the animal kingdom.|the animal kingdom|6-7
+burrow|n|/ˈbʌrəʊ/|hang (của thú)|a hole in the ground made by a small animal|The rabbit disappeared into its burrow.|a rabbit burrow|7-8
+climate|n|/ˈklaɪmət/|khí hậu|the usual weather conditions of a region|The climate here is hot and humid.|a tropical climate|5-6
+crops|n|/krɒps/|cây trồng, vụ mùa|plants grown for food|Drought has destroyed crops across the region.|grow crops|5-6
+decline|n|/dɪˈklaɪn/|sự suy giảm|a gradual fall in number or quality|There has been a sharp decline in bee populations.|a steady decline|6-7
+den|n|/den/|hang, ổ (của thú dữ)|the home of a wild animal such as a fox|The fox returned to its den at dawn.|a lion's den|7-8
+disaster|n|/dɪˈzɑːstə/|thảm hoạ|an event causing great damage or loss|The oil spill was an ecological disaster.|a natural disaster|6-7
+ecological balance|np|/ˌiːkəˈlɒdʒɪkəl ˈbæləns/|cân bằng sinh thái|a stable relationship between living things and nature|Removing a predator can upset the ecological balance.|the ecological balance|8+
+ecology|n|/iˈkɒlədʒi/|sinh thái học|the study of living things and their environment|She is studying marine ecology at university.|marine ecology|7-8
+evolution|n|/ˌiːvəˈluːʃən/|sự tiến hoá|the gradual development of living things over time|Darwin's theory of evolution changed biology forever.|the theory of evolution|7-8
+extinction|n|/ɪkˈstɪŋkʃən/|sự tuyệt chủng|the complete disappearance of a species|Many amphibians are close to extinction.|face extinction|7-8
+fauna|n|/ˈfɔːnə/|hệ động vật|all the animals of a particular area|The island has unique flora and fauna.|local fauna|8+
+flora|n|/ˈflɔːrə/|hệ thực vật|all the plants of a particular area|The rainforest is rich in flora and fauna.|native flora|8+
+genetics|n|/dʒəˈnetɪks/|di truyền học|the study of how traits are passed on|Advances in genetics have transformed medicine.|human genetics|7-8
+habitat|n|/ˈhæbɪtæt/|môi trường sống|the natural home of an animal or plant|Deforestation destroys the habitat of many species.|natural habitat|6-7
+human nature|np|/ˈhjuːmən ˈneɪtʃə/|bản chất con người|the general qualities of all people|It is human nature to explore the unknown.|against human nature|6-7
+insect|n|/ˈɪnsekt/|côn trùng|a small creature with six legs|Bees are the most important insect for farming.|a harmful insect|5-6
+Mother Nature|np|/ˈmʌðə ˈneɪtʃə/|Mẹ thiên nhiên|nature thought of as a powerful force|Farmers depend on Mother Nature for good weather.|the power of Mother Nature|6-7
+pesticides|n|/ˈpestɪsaɪdz/|thuốc trừ sâu|chemicals used to kill insects that harm crops|Pesticides can poison rivers and wildlife.|spray pesticides|7-8
+predator|n|/ˈpredətə/|động vật ăn thịt, kẻ săn mồi|an animal that hunts other animals|The wolf is the main predator in this forest.|a natural predator|7-8
+prey|n|/preɪ/|con mồi|an animal hunted by another animal|The eagle seized its prey and flew off.|easy prey|7-8
+repercussions|n|/ˌriːpəˈkʌʃənz/|hệ quả, hậu quả|the unwanted results of an action|Removing the wetlands had serious repercussions for local fish.|serious repercussions|8+
+scent|n|/sent/|mùi hương|a smell, especially a pleasant one|Wolves track prey by following its scent.|a faint scent|7-8
+species|n|/ˈspiːʃiːz/|loài|a group of living things of the same kind|Thousands of species are at risk of disappearing.|an endangered species|6-7
+soil|n|/sɔɪl/|đất|the top layer of the earth in which plants grow|Heavy rain washes away rich soil.|fertile soil|5-6
+vegetation|n|/ˌvedʒɪˈteɪʃən/|thảm thực vật|plants in general|Thick vegetation covers the mountain slopes.|dense vegetation|7-8
+vermin|n|/ˈvɜːmɪn/|sinh vật gây hại|small animals that damage crops or spread disease|Farmers use traps to control vermin.|control vermin|8+
+weed|n|/wiːd/|cỏ dại|a wild plant growing where it is not wanted|Weeds quickly take over an unused field.|pull up weeds|6-7
+arid|adj|/ˈærɪd/|khô cằn|having very little rain|Few plants can survive in such an arid region.|arid land|7-8
+catastrophic|adj|/ˌkætəˈstrɒfɪk/|thảm khốc|causing sudden and terrible damage|The floods had catastrophic effects on farming.|catastrophic consequences|7-8
+disastrous|adj|/dɪˈzɑːstrəs/|tai hại|causing great damage or failure|Overfishing has had disastrous results for local fishermen.|a disastrous effect|7-8
+domesticated|adj|/dəˈmestɪkeɪtɪd/|đã được thuần hoá|tamed and kept by people|Dogs were the first domesticated animals.|domesticated animals|7-8
+endangered|adj|/ɪnˈdeɪndʒəd/|có nguy cơ tuyệt chủng|at risk of dying out|The giant panda is an endangered species.|an endangered species|6-7
+extinct|adj|/ɪkˈstɪŋkt/|đã tuyệt chủng|no longer existing|Dinosaurs became extinct millions of years ago.|become extinct|6-7
+genetically-modified|adj|/dʒəˌnetɪkli ˈmɒdɪfaɪd/|biến đổi gen|having had its genes changed artificially|Some countries ban genetically-modified crops.|genetically-modified food|7-8
+introduced|adj|/ˌɪntrəˈdjuːst/|được du nhập|brought into a place from elsewhere|Introduced species can threaten native plants.|an introduced species|8+
+native|adj|/ˈneɪtɪv/|bản địa|originating in a particular place|The kiwi is native to New Zealand.|native species|6-7
+natural|adj|/ˈnætʃərəl/|tự nhiên|existing in nature and not made by people|Wetlands are a natural defence against flooding.|natural resources|5-6
+resistant|adj|/rɪˈzɪstənt/|có sức đề kháng|not harmed by something|Some insects have become resistant to pesticides.|resistant to|7-8
+semi-arid|adj|/ˌsemi ˈærɪd/|bán khô hạn|having very little rainfall but not a desert|Farming in semi-arid regions needs careful water use.|a semi-arid region|8+
+tropical|adj|/ˈtrɒpɪkəl/|nhiệt đới|relating to the hot, wet regions near the equator|Tropical rainforests are home to millions of species.|tropical rainforest|6-7
+vulnerable|adj|/ˈvʌlnərəbəl/|dễ bị tổn thương|easily harmed or damaged|Young turtles are vulnerable to birds.|highly vulnerable|7-8
+wild|adj|/waɪld/|hoang dã|living in nature, not controlled by people|Wild animals need large areas to roam.|wild animals|5-6
+adapt|v|/əˈdæpt/|thích nghi|to change to suit new conditions|Many species cannot adapt to rising temperatures.|adapt to|6-7
+combat|v|/ˈkɒmbæt/|chống lại|to try to stop something bad|Scientists are working to combat the spread of the disease.|combat climate change|7-8
+cultivate|v|/ˈkʌltɪveɪt/|canh tác|to prepare land and grow crops|Farmers have cultivated rice here for centuries.|cultivate crops|7-8
+eradicate|v|/ɪˈrædɪkeɪt/|tiêu diệt, xoá sổ|to destroy something completely|The disease was eradicated through a global vaccination campaign.|eradicate a disease|8+
+evolve|v|/ɪˈvɒlv/|tiến hoá|to develop slowly over generations|Birds evolved from small dinosaurs.|evolve over time|7-8
+hibernate|v|/ˈhaɪbəneɪt/|ngủ đông|to spend the winter in a deep sleep|Bears hibernate in caves during winter.|hibernate for the winter|8+
+tolerate|v|/ˈtɒləreɪt/|chịu đựng|to be able to survive difficult conditions|Camels can tolerate extreme heat.|tolerate drought|7-8
++++
+biodiversity|n|/ˌbaɪəʊdaɪˈvɜːsəti/|đa dạng sinh học|the variety of living things in an area|Coral reefs support an enormous level of biodiversity.|protect biodiversity|7-8
+ecosystem|n|/ˈiːkəʊsɪstəm/|hệ sinh thái|all the living things in an area and their environment|A pond is a small but complete ecosystem.|a fragile ecosystem|7-8
+food chain|np|/ˈfuːd tʃeɪn/|chuỗi thức ăn|a series of living things that eat one another|Plants are at the bottom of the food chain.|the food chain|6-7
+natural selection|np|/ˈnætʃərəl sɪˈlekʃən/|chọn lọc tự nhiên|the process by which the best adapted survive|Natural selection explains why species change over time.|survive by natural selection|8+
+migration|n|/maɪˈɡreɪʃən/|sự di cư (của động vật)|the seasonal movement of animals to another region|Bird migration begins in early autumn.|annual migration|7-8
+poaching|n|/ˈpəʊtʃɪŋ/|nạn săn trộm|illegal hunting of wild animals|Poaching has pushed the rhino close to extinction.|illegal poaching|8+
+conservation|n|/ˌkɒnsəˈveɪʃən/|sự bảo tồn|the protection of nature and wildlife|Conservation projects aim to save rare animals.|wildlife conservation|7-8
+deforestation|n|/ˌdiːfɒrɪˈsteɪʃən/|nạn phá rừng|the cutting down of large areas of forest|Deforestation destroys the habitat of orangutans.|widespread deforestation|7-8
+pollination|n|/ˌpɒləˈneɪʃən/|sự thụ phấn|the transfer of pollen so that plants can reproduce|Bees are essential for the pollination of crops.|pollination by bees|8+
+offspring|n|/ˈɒfsprɪŋ/|con cái, thế hệ sau|the young of an animal or person|Birds work hard to feed their offspring.|produce offspring|8+
+carnivore|n|/ˈkɑːnɪvɔː/|động vật ăn thịt|an animal that eats meat|The lion is a large carnivore.|a fierce carnivore|8+
+nocturnal|adj|/nɒkˈtɜːnəl/|hoạt động về đêm|active at night rather than during the day|Owls are nocturnal hunters.|nocturnal animals|8+
+fertile|adj|/ˈfɜːtaɪl/|màu mỡ|able to support strong plant growth|The river delta has fertile soil.|fertile land|7-8
+barren|adj|/ˈbærən/|cằn cỗi|too poor to grow plants|Years of overgrazing left the land barren.|barren land|8+
+sustainable|adj|/səˈsteɪnəbəl/|bền vững|able to continue without harming the environment|Sustainable farming protects the soil for future generations.|sustainable farming|7-8
+thrive|v|/θraɪv/|phát triển mạnh|to grow and do well|Wildlife thrives in the protected valley.|thrive in|7-8
+breed|v|/briːd/|sinh sản, nhân giống|to produce young animals or plants|Many birds breed in the northern wetlands.|breed in captivity|7-8
+reproduce|v|/ˌriːprəˈdjuːs/|sinh sản|to produce young or new plants|Frogs reproduce in shallow water.|reproduce quickly|7-8
+graze|v|/ɡreɪz/|gặm cỏ|to feed on grass in a field|Cattle graze on the open grassland.|graze on|8+
+preserve|v|/prɪˈzɜːv/|bảo tồn|to keep something in its natural state|National parks preserve rare habitats.|preserve wildlife|6-7

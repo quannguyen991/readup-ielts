@@ -1,0 +1,76 @@
+#unit 1
+#en Growing up
+#vi Lớn lên
+#blurb Tuổi thơ, gia đình, quan hệ anh chị em và cách con người trưởng thành
+adolescence|n|/ˌædəˈlesəns/|tuổi vị thành niên|the period of life between childhood and adulthood|Adolescence is often a time of rapid emotional change.|during adolescence|6-7
+adulthood|n|/ˈædʌlthʊd/|tuổi trưởng thành|the state of being a fully grown person|Many people reach financial independence only in early adulthood.|reach adulthood|6-7
+bond|n|/bɒnd/|mối gắn kết|a close emotional link between people|A strong bond forms between a mother and her newborn baby.|a strong bond|6-7
+brotherhood|n|/ˈbrʌðəhʊd/|tình anh em|a feeling of friendship and loyalty within a group|The team's sense of brotherhood helped them survive a hard season.|a sense of brotherhood|7-8
+character|n|/ˈkærəktə/|tính cách|the qualities that make a person who they are|Hardship often builds character in young people.|build character|5-6
+childhood|n|/ˈtʃaɪldhʊd/|thời thơ ấu|the period of life when someone is a child|She had a happy childhood in a small village.|early childhood|5-6
+conflict|n|/ˈkɒnflɪkt/|xung đột|a serious disagreement or argument|Conflict between siblings is a normal part of family life.|resolve a conflict|6-7
+connection|n|/kəˈnekʃən/|sự gắn kết, mối liên hệ|a relationship in which people feel linked|Children need a close connection with at least one caring adult.|a close connection|5-6
+fatherhood|n|/ˈfɑːðəhʊd/|cương vị làm cha|the state of being a father|Fatherhood changed his priorities completely.|the joys of fatherhood|6-7
+friendship|n|/ˈfrendʃɪp/|tình bạn|a relationship between friends|Childhood friendships often last a lifetime.|form a friendship|5-6
+instinct|n|/ˈɪnstɪŋkt/|bản năng|a natural way of behaving without having to think|A mother's instinct is to protect her child from danger.|follow your instinct|6-7
+interaction|n|/ˌɪntərˈækʃən/|sự tương tác|communication or contact between people|Social interaction with peers helps children develop language.|social interaction|6-7
+motherhood|n|/ˈmʌðəhʊd/|cương vị làm mẹ|the state of being a mother|Motherhood forced her to rethink her career.|balance work and motherhood|6-7
+nature|n|/ˈneɪtʃə/|bản chất, yếu tố bẩm sinh|the basic character of a person, or the inborn part of it|The debate over nature and nurture is far from settled.|nature versus nurture|5-6
+parent|n|/ˈpeərənt/|cha mẹ|a father or mother|Every parent worries about their child's future.|a single parent|5-6
+relation|n|/rɪˈleɪʃən/|mối quan hệ, họ hàng|a connection between people, or a member of your family|Relations between the two brothers have improved.|family relations|6-7
+relationship|n|/rɪˈleɪʃənʃɪp/|mối quan hệ|the way two people feel and behave towards each other|Teenagers need a good relationship with their parents.|a close relationship with|5-6
+relative|n|/ˈrelətɪv/|họ hàng|a member of your family|We invite all our relatives to the Lunar New Year dinner.|a close relative|5-6
+resemblance|n|/rɪˈzembləns/|sự giống nhau|a way in which two people or things look alike|The resemblance between father and son is obvious.|bear a resemblance|6-7
+rivalry|n|/ˈraɪvəlri/|sự ganh đua|competition between people who want the same thing|Sibling rivalry often peaks when a new baby arrives.|fierce rivalry|6-7
+sibling|n|/ˈsɪblɪŋ/|anh chị em ruột|a brother or sister|Only children have no siblings to share their toys with.|an older sibling|6-7
+teenager|n|/ˈtiːneɪdʒə/|thanh thiếu niên|a person aged between thirteen and nineteen|Teenagers need more sleep than most adults realise.|a rebellious teenager|5-6
+temperament|n|/ˈtemprəmənt/|tính khí|a person's natural way of reacting and behaving|A calm temperament makes a child easier to raise.|an even temperament|7-8
+ties|n|/taɪz/|mối ràng buộc|connections that join people together|Family ties remain strong in many Asian societies.|close family ties|6-7
+upbringing|n|/ˈʌpbrɪŋɪŋ/|sự nuôi dạy|the way a child is taught and cared for|A strict upbringing does not always produce obedient adults.|a strict upbringing|6-7
+active role|np|/ˈæktɪv rəʊl/|vai trò tích cực|a part in which a person takes real action|Fathers today play an active role in raising children.|take an active role|6-7
+extended family|np|/ɪkˈstendɪd ˈfæməli/|đại gia đình|a family that includes grandparents, aunts and cousins|Living with an extended family means more help with childcare.|a large extended family|6-7
+family gathering|np|/ˈfæməli ˈɡæðərɪŋ/|buổi họp mặt gia đình|an occasion when relatives meet together|Family gatherings are the highlight of the holiday season.|attend a family gathering|5-6
+immediate family|np|/ɪˈmiːdiət ˈfæməli/|gia đình ruột thịt|parents, brothers, sisters and children|Only immediate family were invited to the ceremony.|the immediate family|6-7
+maternal instinct|np|/məˈtɜːnəl ˈɪnstɪŋkt/|bản năng làm mẹ|the natural urge of a mother to protect her child|Maternal instinct made her rush to the crying baby.|a strong maternal instinct|7-8
+sibling rivalry|np|/ˈsɪblɪŋ ˈraɪvəlri/|sự ganh đua anh chị em|competition between brothers and sisters|Sibling rivalry can fade if parents avoid making comparisons.|intense sibling rivalry|7-8
+stable upbringing|np|/ˈsteɪbəl ˈʌpbrɪŋɪŋ/|sự nuôi dạy ổn định|a childhood with steady care and routine|A stable upbringing gives children the confidence to take risks.|provide a stable upbringing|7-8
+striking resemblance|np|/ˈstraɪkɪŋ rɪˈzembləns/|sự giống nhau đáng kinh ngạc|a very obvious likeness|There is a striking resemblance between the twins.|bear a striking resemblance|7-8
+close|adj|/kləʊs/|thân thiết|having a strong, affectionate relationship|She is very close to her grandmother.|a close friend|5-6
+close-knit|adj|/ˌkləʊs ˈnɪt/|gắn bó khăng khít|with strong bonds between its members|Close-knit communities look after their elderly neighbours.|a close-knit family|7-8
+maternal|adj|/məˈtɜːnəl/|thuộc về người mẹ|relating to a mother|Her maternal grandmother taught her to cook.|maternal care|7-8
+parental|adj|/pəˈrentəl/|thuộc về cha mẹ|relating to a parent or parents|Parental guidance is essential for young children online.|parental guidance|6-7
+rewarding|adj|/rɪˈwɔːdɪŋ/|đáng giá, bõ công|giving satisfaction and a sense of achievement|Raising children is exhausting but deeply rewarding.|a rewarding experience|6-7
+stable|adj|/ˈsteɪbəl/|ổn định|not likely to change or fail suddenly|Children thrive in a stable home environment.|a stable relationship|5-6
+accommodate|v|/əˈkɒmədeɪt/|đáp ứng, thích nghi với|to adapt to the needs of someone|Parents must accommodate the different needs of each child.|accommodate differences|7-8
+adopt|v|/əˈdɒpt/|nhận nuôi, áp dụng|to legally take a child into your family|The couple decided to adopt a child from an orphanage.|adopt a child|6-7
+break down|v|/ˌbreɪk ˈdaʊn/|tan vỡ, đổ vỡ|to fail or come to an end|Communication can break down when parents never listen.|break down barriers|6-7
+develop|v|/dɪˈveləp/|phát triển|to grow or become more advanced|Children develop social skills by playing with others.|develop a skill|5-6
+endure|v|/ɪnˈdjʊə/|chịu đựng|to suffer something difficult for a long time|Many children endure years of bullying in silence.|endure hardship|7-8
+establish|v|/ɪˈstæblɪʃ/|thiết lập|to set up something that will last|Parents should establish clear rules from an early age.|establish a routine|6-7
+have something in common|vp|/hæv ˈsʌmθɪŋ ɪn ˈkɒmən/|có điểm chung|to share interests or qualities with someone|Close friends usually have something in common.|have a lot in common|5-6
+inherit|v|/ɪnˈherɪt/|thừa hưởng|to receive a quality or property from a parent|She inherited her mother's talent for music.|inherit a trait|6-7
+interact|v|/ˌɪntərˈækt/|tương tác|to communicate or work together with others|Toddlers learn to interact through simple games.|interact with others|6-7
+nurture|v|/ˈnɜːtʃə/|nuôi dưỡng|to care for and encourage the growth of|Good teachers nurture a child's natural curiosity.|nurture talent|7-8
+play a role|vp|/pleɪ ə ˈrəʊl/|đóng vai trò|to have an effect or influence on something|Grandparents play an important role in many families.|play a key role|6-7
+relate to|v|/rɪˈleɪt tuː/|liên hệ, thấu hiểu|to understand or feel connected with someone|Teenagers often struggle to relate to their parents' generation.|relate to others|6-7
++++
+nuclear family|np|/ˌnjuːkliə ˈfæməli/|gia đình hạt nhân|a family made up of parents and their children only|The nuclear family is becoming less common in some countries.|a nuclear family|6-7
+generation gap|np|/ˌdʒenəˈreɪʃən ɡæp/|khoảng cách thế hệ|a difference in attitudes between young and old people|The generation gap is widest over technology use.|bridge the generation gap|6-7
+peer pressure|np|/ˈpɪə ˈpreʃə/|áp lực từ bạn bè|the influence of people your own age to behave like them|Peer pressure leads many teenagers to try smoking.|give in to peer pressure|6-7
+discipline|n|/ˈdɪsəplɪn/|kỷ luật|training that teaches obedience and self-control|Firm discipline at home helps children respect rules.|maintain discipline|6-7
+guardian|n|/ˈɡɑːdiən/|người giám hộ|a person legally responsible for a child|The court appointed her uncle as the child's guardian.|a legal guardian|7-8
+dependent|adj|/dɪˈpendənt/|phụ thuộc|relying on someone else for support|Young children are completely dependent on their parents.|financially dependent|6-7
+nurturing|adj|/ˈnɜːtʃərɪŋ/|biết chăm sóc, vun đắp|caring for and encouraging growth|A nurturing environment helps shy children gain confidence.|a nurturing environment|7-8
+overprotective|adj|/ˌəʊvəprəˈtektɪv/|bảo bọc thái quá|trying too hard to protect someone from harm|Overprotective parents may prevent their children from learning independence.|overprotective parents|7-8
+bring up|v|/ˌbrɪŋ ˈʌp/|nuôi dạy|to care for a child until it is grown|She decided to bring up her children in the countryside.|bring up children|6-7
+take after|v|/ˈteɪk ɑːftə/|giống (cha mẹ)|to resemble an older relative in looks or character|He takes after his father in both looks and temperament.|take after your mother|6-7
+look up to|v|/ˈlʊk ʌp tuː/|ngưỡng mộ, kính trọng|to respect and admire someone|Younger children often look up to their older siblings.|look up to a role model|6-7
+grow apart|vp|/ɡrəʊ əˈpɑːt/|dần xa cách|to become less close over time|Childhood friends sometimes grow apart after leaving school.|grow apart from|7-8
+affection|n|/əˈfekʃən/|tình cảm yêu thương|a feeling of fond care for someone|Parents show affection through hugs and kind words.|show affection|6-7
+dysfunctional|adj|/dɪsˈfʌŋkʃənəl/|rối loạn chức năng|not behaving in a normal, healthy way|Growing up in a dysfunctional family can affect trust later in life.|a dysfunctional family|8+
+rite of passage|np|/ˌraɪt əv ˈpæsɪdʒ/|nghi lễ trưởng thành|an event marking the move to a new stage of life|Getting a driving licence is a rite of passage for many teenagers.|a rite of passage|8+
+formative|adj|/ˈfɔːmətɪv/|có tính định hình nhân cách|having an important influence on development|The formative years shape our beliefs for life.|formative years|8+
+foster|v|/ˈfɒstə/|nuôi dưỡng, thúc đẩy|to encourage the development of something|Schools should foster cooperation among pupils.|foster independence|7-8
+autonomy|n|/ɔːˈtɒnəmi/|quyền tự chủ|the freedom to make your own decisions|Teenagers crave autonomy but still need guidance.|gain autonomy|8+
+empathy|n|/ˈempəθi/|sự đồng cảm|the ability to share another person's feelings|Reading stories helps children develop empathy.|show empathy|7-8
+mentor|n|/ˈmentɔː/|người cố vấn|an experienced person who advises a younger one|A good mentor can change a young person's direction.|find a mentor|7-8

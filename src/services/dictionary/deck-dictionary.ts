@@ -1,4 +1,6 @@
 import { SAT_VOCAB_LESSONS } from '@/data/lessons/vocab-lessons';
+import { VFI_DECKS } from '@/data/vocab-for-ielts';
+import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS } from '@/data/vocab-topics';
 import { lemmaCandidates } from './lemma-candidates';
@@ -20,6 +22,8 @@ function build(): Map<string, DeckEntry> {
     if (key && !map.has(key)) map.set(key, w);
   };
   for (const t of VOCAB_TOPICS) for (const w of t.words) add(w);
+  for (const t of VFI_DECKS) for (const w of t.words) add(w);
+  for (const t of VFIA_DECKS) for (const w of t.words) add(w);
   for (const t of LISTENING_DECKS) for (const w of t.words) add(w);
   for (const l of SAT_VOCAB_LESSONS) for (const w of l.words) add(w);
   return map;

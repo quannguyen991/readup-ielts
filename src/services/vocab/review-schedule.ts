@@ -61,15 +61,15 @@ export function loadByDay(
 
 /**
  * Chọn ngày cho một lần ôn trong cửa sổ [from, to] (số ngày kể từ hôm nay), `ideal` là ngày chuẩn.
- * - Ôn ngắn (ideal ≤ 2, lúc còn đang nhớ vội): lấy ngày SỚM nhất, tính từ `ideal`; chỉ nhường sang ngày sau khi ngày đó đã quá 2,5× trần (học dồn cả trăm từ).
- * - Ôn dài: lấy ngày NHẸ nhất trong cửa sổ (hoà thì gần `ideal` hơn rồi sớm hơn) để dàn đều tải.
+ * - Lần ôn ĐẦU (ideal ≤ 1, lúc còn đang nhớ vội): lấy ngày SỚM nhất, tính từ `ideal`; chỉ nhường sang ngày sau khi ngày đó đã quá 2,5× trần (học dồn cả trăm từ).
+ * - Từ lần ôn thứ hai trở đi (kể cả hộp 2 ngày): lấy ngày NHẸ nhất trong cửa sổ — học 60 từ một buổi thì lần ôn thứ hai tách ~30/30 sang hai ngày liền thay vì dồn 60 vào một ngày.
  * - Cửa sổ đầy hết: nới sang SAU `to` đến ngày đầu tiên còn chỗ, tối đa thêm `max(2, 25% của to)` ngày; vẫn đầy thì
  *   lấy ngày ít việc nhất trong khoảng đó. Không bao giờ đẩy xa hơn thế.
  */
 export function pickDay(load: Record<string, number>, today: string, from: number, to: number, cap = DAILY_CAP, ideal = from): string {
   const count = (d: number) => load[addDays(today, d)] ?? 0;
-  if (ideal <= 2) {
-    // Giai đoạn đầu quý nhất: chỉ nhường ngày khi một ngày đã quá nặng (đợt học dồn hàng trăm từ), không theo trần thường.
+  if (ideal <= 1) {
+    // Lần ôn đầu quý nhất: chỉ nhường ngày khi một ngày đã quá nặng (đợt học dồn hàng trăm từ), không theo trần thường.
     const burst = cap * 2.5;
     for (let d = Math.max(from, ideal); d <= to; d += 1) if (count(d) < burst) return addDays(today, d);
   } else {

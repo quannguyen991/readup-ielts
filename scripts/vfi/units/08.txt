@@ -1,0 +1,65 @@
+#unit 8
+#en Through the ages
+#vi Qua các thời đại
+#blurb Lịch sử, khảo cổ, các mốc thời gian và cách nói về thời gian
+age|n|/eɪdʒ/|thời đại|a period of history|The Stone Age lasted for thousands of years.|the Bronze Age|5-6
+archaeologist|n|/ˌɑːkiˈɒlədʒɪst/|nhà khảo cổ|a person who studies ancient remains|Archaeologists uncovered a Roman road beneath the city.|a leading archaeologist|7-8
+century|n|/ˈsentʃəri/|thế kỷ|a period of one hundred years|The castle dates from the twelfth century.|in the twentieth century|5-6
+decade|n|/ˈdekeɪd/|thập kỷ|a period of ten years|Prices have doubled in the last decade.|the past decade|6-7
+era|n|/ˈɪərə/|kỷ nguyên|a long period with a distinct character|The digital era has changed how we work.|a new era|6-7
+evidence|n|/ˈevɪdəns/|bằng chứng|facts that show something is true|There is strong evidence of early farming in the valley.|archaeological evidence|6-7
+excavation|n|/ˌekskəˈveɪʃən/|cuộc khai quật|the digging up of old remains from the ground|The excavation revealed pottery over two thousand years old.|an archaeological excavation|7-8
+generation|n|/ˌdʒenəˈreɪʃən/|thế hệ|all the people born at about the same time|Each generation faces different challenges.|the younger generation|6-7
+the Middle Ages|np|/ðə ˈmɪdəl ˈeɪdʒɪz/|thời Trung cổ|the period of European history from about 500 to 1500|Most people lived in villages during the Middle Ages.|in the Middle Ages|6-7
+millennia|n|/mɪˈleniə/|các thiên niên kỷ|periods of one thousand years|Rice has been grown here for millennia.|for millennia|8+
+period|n|/ˈpɪəriəd/|giai đoạn|a length of time in history|The Renaissance was a period of great creativity.|a historical period|5-6
+phase|n|/feɪz/|giai đoạn|one stage in a process|The first phase of the project took five years.|a new phase|6-7
+pioneer|n|/ˌpaɪəˈnɪə/|người tiên phong|a person who is first to explore or develop something|Marie Curie was a pioneer of radiation research.|a pioneer in|7-8
+timeline|n|/ˈtaɪmlaɪn/|dòng thời gian|a list of events in the order they happened|The museum displays a timeline of the city's history.|a historical timeline|7-8
+ancient|adj|/ˈeɪnʃənt/|cổ đại|very old; from a long time ago|Ancient Egypt built enormous pyramids.|ancient civilisations|5-6
+chronological|adj|/ˌkrɒnəˈlɒdʒɪkəl/|theo trình tự thời gian|arranged in the order that things happened|The guide lists the events in chronological order.|chronological order|8+
+consecutive|adj|/kənˈsekjʊtɪv/|liên tiếp|following one after another without a break|The team won three consecutive titles.|consecutive years|7-8
+historical|adj|/hɪˈstɒrɪkəl/|thuộc lịch sử|relating to the past|The town has many historical buildings.|a historical event|6-7
+imminent|adj|/ˈɪmɪnənt/|sắp xảy ra|about to happen very soon|The collapse of the old bridge seemed imminent.|imminent danger|8+
+middle-aged|adj|/ˌmɪdəl ˈeɪdʒd/|trung niên|between about 40 and 60 years old|Many middle-aged workers are returning to education.|a middle-aged man|6-7
+nostalgic|adj|/nɒˈstældʒɪk/|hoài niệm|feeling a happy sadness about the past|Old songs make me feel nostalgic.|feel nostalgic|7-8
+prehistoric|adj|/ˌpriːhɪˈstɒrɪk/|thời tiền sử|from the time before written records|Prehistoric tools were found in the cave.|prehistoric times|7-8
+prior to|adj|/ˈpraɪə tuː/|trước khi|before a particular time|Prior to 1990, the region had no railway.|prior to|7-8
+punctual|adj|/ˈpʌŋktʃuəl/|đúng giờ|arriving at the right time|Employers value workers who are punctual.|punctual and polite|6-7
+time-consuming|adj|/ˈtaɪm kənˌsjuːmɪŋ/|tốn thời gian|taking a lot of time|Restoring old buildings is slow and time-consuming.|a time-consuming process|6-7
+erode|v|/ɪˈrəʊd/|xói mòn|to gradually wear away|Wind and rain have eroded the stone carvings.|erode slowly|7-8
+infer|v|/ɪnˈfɜː/|suy ra|to reach a conclusion from evidence|Historians infer how people lived from the objects they left behind.|infer from|8+
+predate|v|/ˌpriːˈdeɪt/|có trước, xảy ra trước|to exist or happen earlier than something|The temple predates the city by several centuries.|predate by|8+
+span|v|/spæn/|trải dài|to cover a period of time|Her career spanned almost fifty years.|span decades|7-8
+in time|ph|/ɪn taɪm/|kịp lúc|early enough for something|We arrived in time for the opening ceremony.|just in time|5-6
+lose track of time|ph|/luːz træk əv taɪm/|quên mất thời gian|to forget how much time has passed|I often lose track of time in the museum.|lose track of time|7-8
+on time|ph|/ɒn taɪm/|đúng giờ|at the planned time|The train arrived on time.|arrive on time|5-6
+save time|ph|/seɪv taɪm/|tiết kiệm thời gian|to avoid wasting time|Online research can save time for historians.|save time and money|5-6
+spend time|ph|/spend taɪm/|dành thời gian|to use time doing something|Archaeologists spend months working at a single site.|spend time on|5-6
+take so long|ph|/teɪk səʊ lɒŋ/|mất quá lâu|to need a lot of time|Why does the restoration take so long?|take so long to|6-7
+the right time|ph|/ðə raɪt taɪm/|thời điểm thích hợp|a suitable moment|Now is the right time to invest in heritage sites.|at the right time|5-6
+chronologically|adv|/ˌkrɒnəˈlɒdʒɪkli/|theo thứ tự thời gian|in the order in which events happened|The exhibits are arranged chronologically.|arranged chronologically|8+
+formerly|adv|/ˈfɔːməli/|trước kia|at an earlier time|The museum was formerly a royal palace.|formerly known as|7-8
+previously|adv|/ˈpriːviəsli/|trước đó|before the present time|The site had previously been a market.|previously unknown|6-7
+subsequently|adv|/ˈsʌbsɪkwəntli/|sau đó|at a later time|The city was subsequently rebuilt in stone.|subsequently became|7-8
++++
+civilisation|n|/ˌsɪvəlaɪˈzeɪʃən/|nền văn minh|a human society with an advanced culture|The Indus Valley civilisation had planned cities.|an ancient civilisation|7-8
+artefact|n|/ˈɑːtɪfækt/|hiện vật|an object made by people in the past|Archaeologists found a bronze artefact near the river.|an ancient artefact|7-8
+relic|n|/ˈrelɪk/|di vật|an object that survives from the past|The shield is a relic of the medieval battle.|an ancient relic|8+
+dynasty|n|/ˈdɪnəsti/|triều đại|a series of rulers from the same family|The Ming dynasty ruled China for nearly three centuries.|a ruling dynasty|7-8
+empire|n|/ˈempaɪə/|đế chế|a group of countries ruled by one power|The Roman Empire controlled much of Europe.|a vast empire|6-7
+monument|n|/ˈmɒnjəmənt/|đài tưởng niệm, công trình cổ|a building or structure that honours a person or event|The monument was built to remember the victims of war.|a national monument|6-7
+ruins|n|/ˈruːɪnz/|tàn tích|the remains of a destroyed building|Tourists explore the ruins of the ancient temple.|ancient ruins|6-7
+legacy|n|/ˈleɡəsi/|di sản|something handed down from the past|The empire left a lasting legacy in law and language.|a lasting legacy|7-8
+heritage|n|/ˈherɪtɪdʒ/|di sản|traditions and objects handed down from the past|The city is proud of its cultural heritage.|cultural heritage|7-8
+preserve|v|/prɪˈzɜːv/|bảo tồn|to protect something from damage|Volunteers work to preserve the old fortress.|preserve a building|6-7
+restore|v|/rɪˈstɔː/|phục chế|to repair something to its original condition|The painting was carefully restored by experts.|restore a building|6-7
+date back|v|/deɪt bæk/|có từ thời|to have existed since a particular time|The oldest houses date back to the fifteenth century.|date back to|7-8
+flourish|v|/ˈflʌrɪʃ/|hưng thịnh|to develop quickly and successfully|Trade flourished along the ancient Silk Road.|flourish under|8+
+decline|v|/dɪˈklaɪn/|suy tàn|to become weaker or less important|The empire began to decline after losing its colonies.|decline rapidly|7-8
+descend from|v|/dɪˈsend frɒm/|là hậu duệ của|to be related to a person who lived long ago|Many villagers descend from the first settlers.|descend from|8+
+timeless|adj|/ˈtaɪmləs/|vượt thời gian|not affected by the passing of time|The story has a timeless appeal.|a timeless classic|7-8
+obsolete|adj|/ˈɒbsəliːt/|lỗi thời|no longer used because something better exists|Typewriters became obsolete with the arrival of computers.|become obsolete|8+
+bygone|adj|/ˈbaɪɡɒn/|đã qua|belonging to an earlier period|The museum brings a bygone era to life.|a bygone era|8+
+medieval|adj|/ˌmediˈiːvəl/|thuộc thời Trung cổ|relating to the Middle Ages|The medieval castle is open to visitors.|medieval architecture|7-8
+chronicle|nv|/ˈkrɒnɪkəl/|biên niên sử; ghi chép|a record of events in the order they happened|The monk wrote a chronicle of the war.|a medieval chronicle|8+

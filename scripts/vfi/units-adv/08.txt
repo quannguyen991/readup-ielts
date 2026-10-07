@@ -1,0 +1,47 @@
+#unit 8
+#en Government and welfare
+#blurb Chính quyền, phúc lợi xã hội, an sinh và những lỗi hay gặp với tiền tố mis-
+bureaucrat|n|/ˈbjʊərəkræt/|quan chức hành chính|an official who follows rules strictly|The bureaucrat refused to approve the form without a stamp.|a government bureaucrat|8+
+civil servant|np|/ˌsɪvəl ˈsɜːvənt/|công chức|a person who works for the government|Her father worked as a civil servant for forty years.|a senior civil servant|7-8
+community|n|/kəˈmjuːnəti/|cộng đồng|a group of people living in the same area|The local community raised money for the new school.|the local community|6-7
+healthcare|n|/ˈhelθkeə/|chăm sóc y tế|the services that look after people's health|Free healthcare is a major election issue.|public healthcare|6-7
+mayor|n|/meə/|thị trưởng|the elected leader of a city|The mayor opened the new hospital.|the mayor of|6-7
+member of parliament|np|/ˌmembər əv ˈpɑːləmənt/|nghị sĩ|an elected politician in the national assembly|The member of parliament visited local schools.|a member of parliament|7-8
+military service|np|/ˌmɪlɪtri ˈsɜːvɪs/|nghĩa vụ quân sự|time spent as a soldier, often required by law|Military service is compulsory for young men in some countries.|do military service|7-8
+notion|n|/ˈnəʊʃən/|khái niệm, quan niệm|an idea or belief about something|The notion of free education appeals to many voters.|a vague notion|8+
+old-age pension|np|/ˌəʊld eɪdʒ ˈpenʃən/|lương hưu|regular money paid to elderly people|The old-age pension is barely enough to live on.|receive an old-age pension|7-8
+safety net|np|/ˈseɪfti net/|mạng lưới an sinh|a system that protects people from falling into hardship|Welfare acts as a safety net for the unemployed.|a social safety net|8+
+social services|np|/ˌsəʊʃəl ˈsɜːvɪsɪz/|dịch vụ xã hội|public help for people who need support|Social services help families in difficulty.|cut social services|7-8
+state|n|/steɪt/|nhà nước|the government of a country|The state provides free education up to sixteen.|state funding|6-7
+unemployment benefit|np|/ˌʌnɪmˈplɔɪmənt ˈbenɪfɪt/|trợ cấp thất nghiệp|money paid by the state to people without a job|Unemployment benefit helps families through hard times.|claim unemployment benefit|7-8
+leader of the opposition|ph|/ˈliːdər əv ði ˌɒpəˈzɪʃən/|lãnh đạo phe đối lập|the head of the main political party not in power|The leader of the opposition criticised the budget.|the leader of the opposition|8+
+lose control of|ph|/luːz kənˈtrəʊl əv/|mất kiểm soát|to no longer be able to manage something|Governments fear they may lose control of rising prices.|lose control of|7-8
+means tested|adj|/ˈmiːnz testɪd/|xét theo thu nhập|given only to people with a low income|Housing support is means tested.|means tested benefits|8+
+social welfare|np|/ˌsəʊʃəl ˈwelfeə/|phúc lợi xã hội|help from the state for those in need|Social welfare spending has risen sharply.|a social welfare system|7-8
+social well-being|np|/ˌsəʊʃəl wel ˈbiːɪŋ/|sự an lạc xã hội|the general health and happiness of a society|Parks contribute to social well-being in cities.|promote social well-being|8+
+miscalculate|v|/mɪsˈkælkjʊleɪt/|tính toán sai|to make a mistake in estimating something|The ministry miscalculated the cost of the scheme.|miscalculate the cost|8+
+misinform|v|/ˌmɪsɪnˈfɔːm/|cung cấp thông tin sai|to give someone wrong information|Voters were misinformed about the new tax.|misinform the public|8+
+misdiagnose|v|/ˌmɪsˈdaɪəɡnəʊz/|chẩn đoán sai|to wrongly identify an illness|The doctor misdiagnosed the infection as flu.|misdiagnose a condition|8+
+mismanage|v|/ˌmɪsˈmænɪdʒ/|quản lý yếu kém|to manage something badly|The project was badly mismanaged from the start.|mismanage funds|8+
+misunderstand|v|/ˌmɪsʌndəˈstænd/|hiểu sai|to fail to understand something correctly|Many people misunderstand how the tax system works.|misunderstand the rules|7-8
+misinterpret|v|/ˌmɪsɪnˈtɜːprɪt/|hiểu sai ý|to understand something wrongly|The public misinterpreted the minister's remarks.|misinterpret the data|8+
+mislead|v|/mɪsˈliːd/|đánh lừa|to give someone a wrong idea|The advert was designed to mislead voters.|mislead the public|7-8
+misjudge|v|/ˌmɪsˈdʒʌdʒ/|đánh giá sai|to form a wrong opinion about someone|The council misjudged the public mood.|misjudge the situation|8+
+mistrust|v|/ˌmɪsˈtrʌst/|không tin tưởng|to have no confidence in someone|Many citizens mistrust politicians.|mistrust authority|8+
+subsidise|v|/ˈsʌbsɪdaɪz/|trợ cấp|to give money to help pay for something|The government subsidises public transport.|subsidise housing|8+
++++
+legislation|n|/ˌledʒɪˈsleɪʃən/|luật pháp|laws made by a government|New legislation protects workers from unfair dismissal.|introduce legislation|8+
+taxation|n|/tækˈseɪʃən/|hệ thống thuế|the system of collecting money from citizens|High taxation can discourage investment.|a taxation system|8+
+public spending|np|/ˌpʌblɪk ˈspendɪŋ/|chi tiêu công|money spent by the government|Public spending on education has doubled.|cut public spending|7-8
+welfare state|np|/ˈwelfeə steɪt/|nhà nước phúc lợi|a system in which the state looks after citizens|The welfare state was created after the war.|a welfare state|8+
+election|n|/ɪˈlekʃən/|cuộc bầu cử|the process of choosing a leader by voting|The election will be held in November.|win an election|6-7
+policy|n|/ˈpɒləsi/|chính sách|a plan of action agreed by a government|The government introduced a new housing policy.|an economic policy|7-8
+reform|n|/rɪˈfɔːm/|cải cách|a change intended to improve a system|Education reform is a priority for the new minister.|introduce a reform|7-8
+corruption|n|/kəˈrʌpʃən/|nạn tham nhũng|dishonest behaviour by people in power|Corruption damages public trust in government.|tackle corruption|7-8
+democracy|n|/dɪˈmɒkrəsi/|nền dân chủ|a system where people choose their leaders|A free press is vital in a democracy.|a representative democracy|7-8
+accountable|adj|/əˈkaʊntəbəl/|chịu trách nhiệm|responsible for your decisions and actions|Politicians must be accountable to voters.|hold someone accountable|8+
+transparent|adj|/trænsˈpærənt/|minh bạch|open and easy to understand|Government decisions should be transparent.|a transparent process|8+
+fund|v|/fʌnd/|cấp vốn|to provide money for something|The state will fund the new school.|fund a project|7-8
+allocate|v|/ˈæləkeɪt/|phân bổ|to officially give resources to someone|The council allocated money for new housing.|allocate resources|8+
+implement|v|/ˈɪmplɪment/|thực thi|to put a plan into action|The government will implement the reforms next year.|implement a policy|7-8
+abolish|v|/əˈbɒlɪʃ/|bãi bỏ|to officially end a system or law|Several countries have abolished military service.|abolish a law|7-8

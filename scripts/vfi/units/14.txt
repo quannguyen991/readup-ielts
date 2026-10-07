@@ -1,0 +1,101 @@
+#unit 14
+#en Urbanisation
+#vi Đô thị hoá
+#blurb Thành phố lớn, dân số tăng nhanh, vấn đề đô thị và cách giải quyết
+benefit|n|/ˈbenɪfɪt/|lợi ích|an advantage or good effect|Public parks bring many benefits to city dwellers.|a major benefit|5-6
+challenge|n|/ˈtʃælɪndʒ/|thách thức|something difficult that tests your ability|Providing clean water is a major challenge for large cities.|face a challenge|6-7
+compromise|n|/ˈkɒmprəmaɪz/|sự thoả hiệp|an agreement in which each side gives something up|The council reached a compromise on the new road.|reach a compromise|7-8
+difficulty|n|/ˈdɪfɪkəlti/|khó khăn|a problem that is hard to deal with|Many families have difficulty finding affordable homes.|have difficulty|5-6
+dilemma|n|/dɪˈlemə/|tình thế tiến thoái lưỡng nan|a situation where you must choose between bad options|City planners face a dilemma between growth and conservation.|face a dilemma|7-8
+inhabitant|n|/ɪnˈhæbɪtənt/|cư dân|a person who lives in a place|The city has over ten million inhabitants.|a city inhabitant|7-8
+infrastructure|n|/ˈɪnfrəstrʌktʃə/|cơ sở hạ tầng|basic systems such as roads, water and electricity|Poor infrastructure slows economic growth.|public infrastructure|7-8
+isolation|n|/ˌaɪsəˈleɪʃən/|sự cô lập|the state of being alone|Many city dwellers suffer from social isolation.|social isolation|7-8
+issue|n|/ˈɪʃuː/|vấn đề|an important topic that people discuss|Traffic congestion is a serious issue in big cities.|a serious issue|5-6
+megacity|n|/ˈmeɡəsɪti/|siêu đô thị|a city with more than ten million people|Tokyo is the world's largest megacity.|a sprawling megacity|8+
+migrant|n|/ˈmaɪɡrənt/|người di cư|a person who moves to another place to find work|Migrants often take jobs that locals do not want.|a migrant worker|7-8
+obstacle|n|/ˈɒbstəkəl/|trở ngại|something that blocks progress|Lack of funding is the main obstacle to the project.|overcome an obstacle|6-7
+overpopulation|n|/ˌəʊvəpɒpjʊˈleɪʃən/|nạn quá tải dân số|a situation where too many people live in a place|Overpopulation puts pressure on water and food supplies.|suffer from overpopulation|7-8
+population|n|/ˌpɒpjʊˈleɪʃən/|dân số|the number of people living in a place|The city's population has doubled in twenty years.|a growing population|5-6
+poverty|n|/ˈpɒvəti/|sự nghèo đói|the state of being very poor|Poverty remains a problem in many large cities.|live in poverty|6-7
+resolution|n|/ˌrezəˈluːʃən/|giải pháp, nghị quyết|a solution to a problem or dispute|The two sides are working towards a peaceful resolution.|the resolution of|8+
+setback|n|/ˈsetbæk/|trở ngại, bước lùi|a problem that delays progress|The housing scheme suffered a major setback.|suffer a setback|8+
+slum|n|/slʌm/|khu ổ chuột|a very poor, crowded and dirty part of a city|Millions of people live in slums with no clean water.|live in a slum|7-8
+solution|n|/səˈluːʃən/|giải pháp|a way of solving a problem|Building more roads is not a long-term solution.|find a solution|5-6
+tolerance|n|/ˈtɒlərəns/|sự khoan dung|willingness to accept people who are different|Tolerance is essential in multicultural cities.|religious tolerance|7-8
+traffic|n|/ˈtræfɪk/|giao thông|vehicles moving along roads|Traffic is heavy during rush hour.|heavy traffic|5-6
+urbanisation|n|/ˌɜːbənaɪˈzeɪʃən/|đô thị hoá|the growth of towns and cities|Rapid urbanisation is common in developing countries.|rapid urbanisation|7-8
+adequate|adj|/ˈædɪkwət/|đủ, thích đáng|enough in quantity or quality|Many slums lack adequate sanitation.|adequate housing|7-8
+basic|adj|/ˈbeɪsɪk/|cơ bản|forming the simplest and most important part|Everyone has a right to basic healthcare.|basic needs|5-6
+booming|adj|/ˈbuːmɪŋ/|bùng nổ|growing quickly and successfully|The booming property market has pushed up rents.|a booming economy|7-8
+catastrophic|adj|/ˌkætəˈstrɒfɪk/|thảm khốc|causing terrible damage|The consequences of overcrowding can be catastrophic.|catastrophic effects|7-8
+crowded|adj|/ˈkraʊdɪd/|đông đúc|full of people|The metro is crowded in the morning.|a crowded city|5-6
+decent|adj|/ˈdiːsənt/|tử tế, tươm tất|of a good enough standard|Every family deserves a decent home.|decent housing|6-7
+developing|adj|/dɪˈveləpɪŋ/|đang phát triển|becoming more advanced economically|Developing countries are urbanising at record speed.|a developing country|6-7
+double-edged|adj|/ˌdʌbəl ˈedʒd/|con dao hai lưỡi|having both good and bad effects|Tourism is a double-edged sword for historic cities.|a double-edged sword|8+
+isolated|adj|/ˈaɪsəleɪtɪd/|bị cô lập|separated from other people or places|Some older residents feel isolated in big cities.|feel isolated|7-8
+one-sided|adj|/ˌwʌn ˈsaɪdɪd/|phiến diện|considering only one point of view|The report presents a one-sided view of the problem.|a one-sided argument|7-8
+long-sighted|adj|/ˌlɒŋ ˈsaɪtɪd/|nhìn xa trông rộng|thinking carefully about the future|Long-sighted planners protect green space for later generations.|a long-sighted policy|8+
+long-term|adj|/ˌlɒŋ ˈtɜːm/|dài hạn|lasting for a long time|The council needs a long-term transport plan.|a long-term plan|6-7
+overpriced|adj|/ˌəʊvəˈpraɪst/|đắt quá mức|costing more than it is worth|Overpriced flats are out of reach for young workers.|overpriced housing|7-8
+overworked|adj|/ˌəʊvəˈwɜːkt/|làm việc quá sức|made to work too hard|Overworked staff are more likely to make mistakes.|overworked employees|7-8
+pressing|adj|/ˈpresɪŋ/|cấp bách|needing urgent attention|Housing is the most pressing issue in the city.|a pressing problem|7-8
+rural|adj|/ˈrʊərəl/|thuộc nông thôn|relating to the countryside|Many rural areas are losing their young people.|rural areas|6-7
+short-sighted|adj|/ˌʃɔːt ˈsaɪtɪd/|thiển cận|not thinking about future results|Cutting public transport is a short-sighted decision.|a short-sighted policy|7-8
+short-term|adj|/ˌʃɔːt ˈtɜːm/|ngắn hạn|lasting only a short time|Short-term measures will not solve the housing shortage.|a short-term fix|6-7
+staggering|adj|/ˈstæɡərɪŋ/|kinh ngạc, choáng váng|so large that it is hard to believe|The staggering cost of housing shocked the residents.|a staggering amount|8+
+tolerant|adj|/ˈtɒlərənt/|khoan dung|accepting people with different beliefs|Cities tend to be more tolerant than small towns.|a tolerant society|6-7
+address|v|/əˈdres/|giải quyết|to deal with a problem|The government must address the housing shortage.|address the problem|6-7
+adjust|v|/əˈdʒʌst/|điều chỉnh, thích nghi|to change slightly to suit new conditions|New arrivals struggle to adjust to city life.|adjust to|6-7
+aggravate|v|/ˈæɡrəveɪt/|làm trầm trọng thêm|to make a bad situation worse|Cheap cars aggravate the problem of congestion.|aggravate a problem|8+
+cause|v|/kɔːz/|gây ra|to make something happen|Heavy traffic causes air pollution in the centre.|cause problems|5-6
+compete|v|/kəmˈpiːt/|cạnh tranh|to try to be more successful than others|Thousands of people compete for the same jobs.|compete for|6-7
+compound|v|/kəmˈpaʊnd/|làm nặng thêm|to make a problem worse|High rents compound the problem of homelessness.|compound the problem|8+
+deal with|v|/diːl wɪð/|xử lý|to take action to solve a problem|Local councils must deal with growing amounts of waste.|deal with a problem|5-6
+deteriorate|v|/dɪˈtɪəriəreɪt/|xấu đi|to become worse|Air quality has deteriorated rapidly in the last decade.|deteriorate rapidly|7-8
+enhance|v|/ɪnˈhɑːns/|nâng cao|to improve the quality of something|New parks enhance the quality of city life.|enhance the quality|7-8
+exacerbate|v|/ɪɡˈzæsəbeɪt/|làm trầm trọng|to make a problem more serious|Poor planning exacerbates traffic jams.|exacerbate the problem|8+
+exclude|v|/ɪkˈskluːd/|loại trừ|to leave someone or something out|High prices exclude poor families from the city centre.|exclude from|7-8
+face|v|/feɪs/|đối mặt|to have to deal with something difficult|Cities face growing pressure on housing.|face problems|5-6
+flourish|v|/ˈflʌrɪʃ/|phát đạt|to develop quickly and successfully|Small businesses flourish in busy city districts.|flourish in|8+
+identify|v|/aɪˈdentɪfaɪ/|xác định|to recognise and name something|Planners must identify the causes of congestion.|identify a problem|6-7
+improve|v|/ɪmˈpruːv/|cải thiện|to make something better|Better buses would improve city life.|improve conditions|5-6
+include|v|/ɪnˈkluːd/|bao gồm|to contain something as part of a whole|The plan includes new cycle lanes.|include in|5-6
+linger|v|/ˈlɪŋɡə/|kéo dài dai dẳng|to stay for a long time|The smell of exhaust fumes lingers over the city.|linger on|8+
+modify|v|/ˈmɒdɪfaɪ/|sửa đổi|to change something slightly|Councils should modify the old building rules.|modify a plan|7-8
+overcome|v|/ˌəʊvəˈkʌm/|vượt qua|to succeed in dealing with a difficulty|The city overcame its housing crisis with new policies.|overcome a difficulty|6-7
+present|v|/prɪˈzent/|đặt ra, trình bày|to cause or offer something to be dealt with|Rapid growth presents a serious challenge to planners.|present a challenge|7-8
+raise|v|/reɪz/|nêu ra, nâng lên|to bring up a subject or increase an amount|Residents raised the issue at the council meeting.|raise awareness|6-7
+reform|v|/rɪˈfɔːm/|cải cách|to improve a system by changing it|The government plans to reform the planning system.|reform a system|7-8
+regulate|v|/ˈreɡjʊleɪt/|điều tiết|to control something by rules|Cities regulate the number of cars allowed in the centre.|regulate traffic|7-8
+remedy|v|/ˈremədi/|khắc phục|to correct something that is wrong|The scheme will remedy the shortage of affordable homes.|remedy a situation|8+
+resolve|v|/rɪˈzɒlv/|giải quyết|to find an answer to a problem|The two sides resolved their dispute over the land.|resolve a conflict|7-8
+tackle|v|/ˈtækəl/|giải quyết, đương đầu|to try to deal with a difficult problem|Cities are introducing charges to tackle congestion.|tackle a problem|6-7
+tolerate|v|/ˈtɒləreɪt/|chịu đựng|to accept something unpleasant|Residents will not tolerate such high noise levels.|tolerate noise|7-8
+transform|v|/trænsˈfɔːm/|biến đổi|to change completely|The new metro has transformed the city.|transform the city|7-8
+worsen|v|/ˈwɜːsən/|trở nên tệ hơn|to become or make something worse|Traffic jams worsen every winter.|worsen the situation|7-8
+find a solution|vp|/faɪnd ə səˈluːʃən/|tìm ra giải pháp|to discover a way to solve a problem|The council must find a solution to the parking problem.|find a solution|6-7
+overcome a difficulty|vp|/ˌəʊvəˈkʌm ə ˈdɪfɪkəlti/|vượt qua khó khăn|to deal successfully with a problem|It took years to overcome the difficulty of funding the metro.|overcome a difficulty|7-8
+reach a compromise|vp|/riːtʃ ə ˈkɒmprəmaɪz/|đạt được thoả hiệp|to agree after each side gives something up|Residents and developers finally reached a compromise.|reach a compromise|7-8
+remedy a situation|vp|/ˈremədi ə ˌsɪtʃuˈeɪʃən/|khắc phục tình hình|to put right a bad situation|The government acted quickly to remedy the situation.|remedy a situation|8+
+resolve an issue|vp|/rɪˈzɒlv ən ˈɪʃuː/|giải quyết một vấn đề|to find an answer to a problem|The mayor promised to resolve the issue before winter.|resolve an issue|7-8
++++
+congestion|n|/kənˈdʒestʃən/|tình trạng ùn tắc|a situation in which a place is too crowded|Congestion costs the city millions every year.|traffic congestion|7-8
+gentrification|n|/ˌdʒentrɪfɪˈkeɪʃən/|quá trình nâng cấp khu dân cư|the process of a poor area becoming wealthier|Gentrification has pushed rents up in the old quarter.|the effects of gentrification|8+
+suburb|n|/ˈsʌbɜːb/|vùng ngoại ô|an area on the edge of a city where people live|Many families move to the suburbs for more space.|a quiet suburb|6-7
+commuter|n|/kəˈmjuːtə/|người đi làm xa|a person who travels daily to work|Commuters spend hours on crowded trains.|daily commuters|7-8
+rush hour|np|/ˈrʌʃ ˈaʊə/|giờ cao điểm|the time of day when roads are busiest|Buses are packed during the morning rush hour.|in the rush hour|5-6
+sprawl|n|/sprɔːl/|sự lan rộng của đô thị|the uncontrolled spread of a city into the countryside|Urban sprawl swallows up farmland around the capital.|urban sprawl|8+
+amenities|n|/əˈmiːnətiz/|tiện ích công cộng|useful services or features of a place|The district has good amenities such as parks and schools.|local amenities|8+
+affordable|adj|/əˈfɔːdəbəl/|vừa túi tiền|not too expensive|Affordable housing is in short supply.|affordable housing|6-7
+overcrowded|adj|/ˌəʊvəˈkraʊdɪd/|quá đông đúc|containing too many people|Overcrowded classrooms hurt learning.|overcrowded conditions|7-8
+densely populated|adj|/ˈdensli ˈpɒpjʊleɪtɪd/|đông dân cư|having a lot of people living in a small area|Hong Kong is one of the most densely populated places on Earth.|a densely populated area|8+
+vibrant|adj|/ˈvaɪbrənt/|sôi động|full of energy and life|The old town is a vibrant mix of cafes and galleries.|a vibrant city|7-8
+bustling|adj|/ˈbʌslɪŋ/|nhộn nhịp|full of busy activity|The bustling streets never seem to sleep.|a bustling market|7-8
+revitalise|v|/ˌriːˈvaɪtəlaɪz/|làm sống lại|to give new life to something|New investment will revitalise the old docks.|revitalise an area|8+
+displace|v|/dɪsˈpleɪs/|đẩy khỏi nơi ở|to force people to leave their home|The new road project displaced hundreds of families.|displace residents|8+
+regenerate|v|/rɪˈdʒenəreɪt/|tái thiết|to improve an area by new building and investment|The city plans to regenerate its run-down centre.|regenerate an area|8+
+sanitation|n|/ˌsænɪˈteɪʃən/|điều kiện vệ sinh|the systems that keep places clean and healthy|Poor sanitation spreads disease in crowded slums.|poor sanitation|8+
+zoning|n|/ˈzəʊnɪŋ/|quy hoạch phân khu|the division of land for different uses|Strict zoning laws protect residential neighbourhoods.|zoning laws|8+
+mass transit|np|/ˌmæs ˈtrænzɪt/|giao thông công cộng đại chúng|public transport that carries many people|Mass transit reduces the number of cars on the road.|a mass transit system|8+
+homelessness|n|/ˈhəʊmləsnəs/|tình trạng vô gia cư|the state of having no place to live|Homelessness has risen sharply in expensive cities.|tackle homelessness|7-8
+evict|v|/ɪˈvɪkt/|đuổi khỏi nhà|to force someone to leave their home|Tenants who cannot pay rent may be evicted.|evict a tenant|8+

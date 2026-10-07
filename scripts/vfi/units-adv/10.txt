@@ -1,0 +1,51 @@
+#unit 10
+#en Physical science and space
+#blurb Hiện tượng vật lý, thiên văn, kích thước cực lớn – cực nhỏ và các quá trình tự nhiên
+condensation|n|/ˌkɒndenˈseɪʃən/|sự ngưng tụ|the process of gas turning into liquid|Condensation forms on windows on cold mornings.|form condensation|8+
+debris|n|/ˈdebriː/|mảnh vụn|broken pieces left after something is destroyed|Space debris threatens working satellites.|space debris|7-8
+eclipse|n|/ɪˈklɪps/|nhật thực, nguyệt thực|an event when one body blocks light from another|Thousands gathered to watch the total eclipse.|a solar eclipse|7-8
+evaporation|n|/ɪˌvæpəˈreɪʃən/|sự bay hơi|the change of a liquid into vapour|Evaporation of seawater leaves salt behind.|rapid evaporation|8+
+gravity|n|/ˈɡrævəti/|trọng lực|the force that pulls objects towards a planet|There is much less gravity on the moon.|the force of gravity|7-8
+harbour|n|/ˈhɑːbə/|bến cảng|a sheltered area of water where ships stay|The ships returned to the harbour before the storm.|a natural harbour|7-8
+light year|np|/ˈlaɪt jɪə/|năm ánh sáng|the distance light travels in one year|The nearest star is over four light years away.|a light year|8+
+astronomical|adj|/ˌæstrəˈnɒmɪkəl/|thuộc thiên văn; cực lớn|relating to astronomy; extremely large|The cost of the space programme was astronomical.|an astronomical sum|8+
+climatic|adj|/klaɪˈmætɪk/|thuộc khí hậu|relating to climate|Climatic changes have affected crop yields.|climatic conditions|8+
+colossal|adj|/kəˈlɒsəl/|khổng lồ|extremely large|The explosion created a colossal cloud of dust.|a colossal amount|8+
+fascinating|adj|/ˈfæsɪneɪtɪŋ/|hấp dẫn|extremely interesting|It is fascinating to watch the stars through a telescope.|a fascinating discovery|6-7
+fleeting|adj|/ˈfliːtɪŋ/|thoáng qua|lasting only a very short time|We caught a fleeting glimpse of the comet.|a fleeting glimpse|8+
+immeasurable|adj|/ɪˈmeʒərəbəl/|không thể đo được|too large to be measured|The universe is of immeasurable size.|immeasurable distances|8+
+immense|adj|/ɪˈmens/|bao la|extremely large|The immense size of the galaxy is hard to imagine.|an immense size|7-8
+imperceptible|adj|/ˌɪmpəˈseptəbəl/|không thể nhận thấy|so slight that it cannot be noticed|The change in temperature was imperceptible.|an imperceptible change|8+
+infinitesimal|adj|/ˌɪnfɪnɪˈtesɪməl/|cực nhỏ|extremely small|The chance of life existing there is infinitesimal.|an infinitesimal amount|8+
+magnetic|adj|/mæɡˈnetɪk/|có từ tính|having the power of a magnet|The compass needle follows the magnetic field.|a magnetic field|7-8
+minuscule|adj|/ˈmɪnəskjuːl/|rất nhỏ|extremely small|Dust contains minuscule particles.|a minuscule amount|8+
+transient|adj|/ˈtrænziənt/|ngắn ngủi|lasting only a short time|The light from the meteor was transient.|transient effects|8+
+vast|adj|/vɑːst/|rộng lớn|extremely large in area or amount|The desert covers a vast area.|a vast distance|7-8
+absorb|v|/əbˈzɔːb/|hấp thụ|to take in light, heat or liquid|Dark surfaces absorb more heat than light ones.|absorb light|7-8
+activate|v|/ˈæktɪveɪt/|kích hoạt|to start something working|Sunlight activates the sensors on the satellite.|activate a switch|7-8
+burst|v|/bɜːst/|nổ tung|to break open suddenly|The star finally burst in a huge explosion.|burst into flames|7-8
+collide|v|/kəˈlaɪd/|va chạm|to crash into something|Scientists believe a large asteroid collided with the Earth.|collide with|7-8
+dilute|v|/daɪˈluːt/|pha loãng|to make a liquid weaker by adding water|The acid must be diluted before use.|dilute with water|8+
+dissolve|v|/dɪˈzɒlv/|hoà tan|to mix with a liquid and become part of it|Salt dissolves easily in water.|dissolve in water|7-8
+penetrate|v|/ˈpenətreɪt/|xuyên qua|to pass through something|Sunlight cannot penetrate the deepest part of the ocean.|penetrate the surface|8+
+pierce|v|/pɪəs/|đâm xuyên|to make a hole through something|A beam of light pierced the clouds.|pierce the darkness|8+
+reflect|v|/rɪˈflekt/|phản chiếu|to send back light or heat|Snow reflects most of the sunlight.|reflect light|7-8
+release|v|/rɪˈliːs/|giải phóng|to let energy or a substance out|The sun releases enormous amounts of energy.|release energy|7-8
+repel|v|/rɪˈpel/|đẩy lùi|to push something away|Two magnets with the same pole repel each other.|repel water|8+
+solidify|v|/səˈlɪdɪfaɪ/|đông đặc|to become solid|The lava solidified into rock.|solidify into|8+
++++
+orbit|nv|/ˈɔːbɪt/|quỹ đạo; quay quanh|the curved path of an object around a planet|The moon takes a month to orbit the Earth.|in orbit|7-8
+galaxy|n|/ˈɡæləksi/|thiên hà|a very large group of stars|Our galaxy contains billions of stars.|a distant galaxy|7-8
+atmosphere|n|/ˈætməsfɪə/|khí quyển|the layer of gases around a planet|Meteors burn up in the Earth's atmosphere.|the upper atmosphere|7-8
+telescope|n|/ˈtelɪskəʊp/|kính thiên văn|an instrument for looking at distant objects|A powerful telescope revealed new planets.|a powerful telescope|7-8
+radiation|n|/ˌreɪdiˈeɪʃən/|bức xạ|energy sent out as waves or particles|Astronauts are exposed to high levels of radiation.|exposure to radiation|8+
+velocity|n|/vəˈlɒsəti/|vận tốc|the speed of something in a particular direction|The rocket reached a velocity of eleven kilometres per second.|high velocity|8+
+friction|n|/ˈfrɪkʃən/|ma sát|the force that slows moving objects touching each other|Friction heats the spacecraft as it enters the atmosphere.|reduce friction|8+
+magnitude|n|/ˈmæɡnɪtjuːd/|độ lớn, cường độ|the great size or importance of something|Astronomers struggle to grasp the magnitude of space.|the magnitude of|8+
+phenomenon|n|/fəˈnɒmɪnən/|hiện tượng|something that happens and is observed|The northern lights are a natural phenomenon.|a natural phenomenon|7-8
+celestial|adj|/səˈlestiəl/|thuộc bầu trời|relating to the sky or outer space|Stars and planets are celestial bodies.|celestial bodies|8+
+cosmic|adj|/ˈkɒzmɪk/|thuộc vũ trụ|relating to the universe|Cosmic rays reach the Earth from deep space.|cosmic radiation|8+
+microscopic|adj|/ˌmaɪkrəˈskɒpɪk/|cực nhỏ, chỉ thấy qua kính hiển vi|too small to be seen without a microscope|Microscopic particles float in the air.|microscopic organisms|8+
+expand|v|/ɪkˈspænd/|giãn nở|to become larger|Metals expand when they are heated.|expand rapidly|7-8
+evaporate|v|/ɪˈvæpəreɪt/|bay hơi|to change from liquid to gas|Water evaporates faster in hot weather.|evaporate quickly|7-8
+revolve|v|/rɪˈvɒlv/|quay quanh|to move in a circle around a central point|The Earth revolves around the sun once a year.|revolve around|8+
