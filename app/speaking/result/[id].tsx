@@ -5,6 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
 import { StudyCard, StudyFrame } from '@/components/vocab/study/StudyKit';
+import { STUDY_THEMES } from '@/components/vocab/study/study-theme';
 import { SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteMic, CuteTrophy, Motion } from '@/components/illust/CuteMore';
@@ -12,7 +13,7 @@ import { bandTone, fmtBand, fmtDate, MetricTile, MODE_LABEL, Notice, SPK, SPK_CA
 import type { SpeakingAttempt } from '@/services/speaking/attempts';
 import { CRITERIA, type CriterionKey, type SpeakingGrade } from '@/services/speaking/grade';
 import { markFillers, MIN_WORDS } from '@/services/speaking/metrics';
-import { speakSentence } from '@/services/shadow/speech';
+import { speakWithAoede } from '@/services/speaking/voice';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useGameStore } from '@/store/useGameStore';
 import { useSpeakingStore } from '@/store/useSpeakingStore';
@@ -52,6 +53,7 @@ export default function SpeakingResult() {
   const { L } = useL();
   const { id = '' } = useLocalSearchParams<{ id: string }>();
   const attempt = useSpeakingStore((s) => s.attempts.find((a) => a.id === id));
+  const parent = useSpeakingStore((s) => s.attempts.find((a) => a.id === attempt?.retryOf));
   const accessToken = useAuthStore((s) => s.session?.access_token ?? null);
   const tokenRef = useRef<string | null>(null);
   useEffect(() => {
@@ -60,6 +62,7 @@ export default function SpeakingResult() {
 
   const [loading, setLoading] = useState(false);
   const [needLogin, setNeedLogin] = useState(false);
+  const [details, setDetails] = useState(false);
   const requested = useRef(false);
 
   const grade = (a: SpeakingAttempt) => {
@@ -112,7 +115,7 @@ export default function SpeakingResult() {
 
   if (!attempt) {
     return (
-      <StudyFrame backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
+      <StudyFrame themeOverride={STUDY_THEMES.plain} backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
         <StudyCard>
           <Text className="font-strong text-cardTitle text-ink">{L('Lượt này không còn trong máy.', 'This session is no longer on this device.')}</Text>
           <Button className="mt-4 self-start" label={L('Về phòng luyện nói', 'Back to the speaking room')} onPress={() => router.replace('/speaking' as never)} />
@@ -125,9 +128,11 @@ export default function SpeakingResult() {
   const m = attempt.metrics;
   const overall = attempt.typed ? null : (g?.overall ?? null);
   const tone = bandTone(overall);
+  const coaching = !!(attempt.practice || attempt.retryOf || attempt.mode === 'q');
+  const lesson = attempt.practice ? attempt : parent?.practice ? parent : null;
 
   return (
-    <StudyFrame backHref="/speaking" title={L('Phiếu điểm', 'Score sheet')}>
+    <StudyFrame themeOverride={STUDY_THEMES.plain} backHref="/speaking" title={L(coaching ? 'Phân tích & nói lại' : 'Phiếu điểm', coaching ? 'Feedback & try again' : 'Score sheet')}>
       <View className="gap-4">
         {/* ------------------------------------------------ band tổng */}
         <StudyCard>
@@ -203,6 +208,16 @@ export default function SpeakingResult() {
           </View>
         </StudyCard>
 
+        {coaching ? (
+          <View className="gap-3">
+            <Text className="font-strong text-body text-ink">{L('1. Trả lời  →  2. Xem góp ý  →  3. Nói lại', '1. Answer  →  2. Review feedback  →  3. Try again')}</Text>
+            {attempt.answers.map((a, i) => <AnswerCard key={`${a.questionId}-${i}`} attempt={attempt} index={i} previousAttempt={parent} />)}
+            {parent ? <Button variant="outline" size="sm" label={L('Xem góp ý của lượt trước', 'Review the previous feedback')} onPress={() => router.push(`/speaking/result/${parent.id}` as never)} /> : null}
+            <Button variant="outline" size="sm" label={details ? L('Ẩn điểm & chỉ số chi tiết', 'Hide detailed scores & metrics') : L('Xem điểm & chỉ số chi tiết', 'Show detailed scores & metrics')} onPress={() => setDetails((v) => !v)} />
+          </View>
+        ) : null}
+
+        {!coaching || details ? <>
         {/* ------------------------------------------------ 4 tiêu chí */}
         {g ? (
           <View className="flex-row flex-wrap gap-3">
@@ -331,15 +346,24 @@ export default function SpeakingResult() {
           </Text>
         </View>
 
+        </> : null}
+
         {/* ------------------------------------------------ từng câu */}
+        {!coaching ? (
         <View className="gap-3">
           {attempt.answers.map((a, i) => (
             <AnswerCard key={`${a.questionId}-${i}`} attempt={attempt} index={i} />
           ))}
         </View>
+        ) : null}
 
         <View className="flex-row flex-wrap gap-3">
-          <Button variant="brand" label={L('Luyện lượt mới', 'Start a new session')} iconRight="arrow-right" onPress={() => router.replace('/speaking' as never)} />
+          {lesson?.practice ? <Button variant="brand" label={L(`Luyện ${lesson.practice.questionCount} câu tiếp cùng chủ đề`, `Practise ${lesson.practice.questionCount} more on this topic`)} iconRight="arrow-right" onPress={() => {
+            const p = lesson.practice!;
+            const query = new URLSearchParams({ mode: 'p1', p1: p.topicId, count: String(p.questionCount), offset: String(p.questionOffset + p.questionCount), coach: '1', typed: attempt.typed ? '1' : '0' });
+            router.push(`/speaking/room?${query}` as never);
+          }} /> : null}
+          <Button variant="outline" label={L('Chọn chủ đề khác', 'Choose another topic')} onPress={() => router.replace('/speaking' as never)} />
         </View>
       </View>
     </StudyFrame>
@@ -408,11 +432,13 @@ function CriterionCard({ k, en, vi, grade, attempt }: { k: CriterionKey; en: str
   );
 }
 
-function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: number }) {
+function AnswerCard({ attempt, index, previousAttempt }: { attempt: SpeakingAttempt; index: number; previousAttempt?: SpeakingAttempt }) {
   const a = attempt.answers[index]!;
   const sample = attempt.grade?.samples.find((s) => s.questionIndex === index) ?? null;
   const fixes = attempt.grade?.fixes.filter((f) => f.questionIndex === index) ?? [];
   const [playing, setPlaying] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
+  const oldAnswer = previousAttempt?.answers.find((x) => x.questionId === a.questionId);
   const stopRef = useRef<(() => void) | null>(null);
   useEffect(() => () => stopRef.current?.(), []);
   const short = a.metrics.words < MIN_WORDS[a.part];
@@ -427,7 +453,8 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
       return;
     }
     setPlaying(true);
-    stopRef.current = speakSentence(sample.improved, { rate: 0.9, onDone: () => setPlaying(false) });
+    setVoiceError(null);
+    stopRef.current = speakWithAoede(sample.improved, { rate: 0.95, onDone: () => setPlaying(false), onError: (message) => { setPlaying(false); setVoiceError(message); } });
   };
 
   return (
@@ -452,7 +479,9 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
           {a.notes}
         </Text>
       ) : null}
-      <Text className="mt-3 rounded-2xl p-3 font-sans text-body text-ink" style={{ backgroundColor: SPK.panel, lineHeight: 23 }}>
+      {oldAnswer ? <View className="mt-3 gap-1"><Text className="font-strong text-label" style={{ color: SPK.muted }}>{L('Lần trước bạn nói', 'Your previous answer')}</Text><Text className="font-sans text-body text-ink" style={{ lineHeight: 22 }}>{oldAnswer.transcript}</Text></View> : null}
+      <Text className="mt-3 font-strong text-label" style={{ color: SPK.muted }}>{L(oldAnswer ? 'Lần này bạn nói' : 'Câu trả lời của bạn', oldAnswer ? 'Your new answer' : 'Your answer')}</Text>
+      <Text className="mt-2 rounded-2xl p-3 font-sans text-body text-ink" style={{ backgroundColor: SPK.panel, lineHeight: 23 }}>
         {markFillers(a.transcript).map((p, i) =>
           p.filler ? (
             <Text key={i} style={{ backgroundColor: '#FDE68A', color: '#92400E', fontWeight: '700' }}>
@@ -467,6 +496,7 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
       {fixes.map((f, i) => (
         <Text key={i} className="mt-2 font-sans text-label" style={{ color: '#334155', lineHeight: 18 }}>
           <Text style={{ color: SPK.rose }}>“{f.quote}”</Text> → <Text style={{ color: SPK.green, fontWeight: '700' }}>{f.better}</Text>
+          {'\n'}{f.problemVi}
         </Text>
       ))}
 
@@ -475,11 +505,11 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
           <View className="flex-row items-center gap-2">
             <Icon name="sparkle" size={16} color={SPK.teal} />
             <Text className="min-w-0 flex-1 font-strong text-body" style={{ color: SPK.teal }}>
-              {L('Bản hay hơn', 'Better version')}
+              {L('Bài mẫu gợi ý', 'Suggested model answer')}
             </Text>
             <Pressable
               accessibilityRole="button"
-              accessibilityLabel={playing ? L('Dừng đọc', 'Stop') : L('Nghe bản hay hơn', 'Hear the better version')}
+              accessibilityLabel={playing ? L('Dừng Aoede', 'Stop Aoede') : L('Nghe bài mẫu bằng Aoede', 'Hear the sample in Aoede')}
               onPress={play} className="h-9 w-9 items-center justify-center rounded-pill bg-white">
               <Icon name={playing ? 'close' : 'volume'} size={17} color={SPK.teal} />
             </Pressable>
@@ -488,20 +518,22 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
             {sample.improved}
           </Text>
           {sample.whyVi ? (
-            <Text className="mt-1.5 font-sans text-label" style={{ color: '#115E59', lineHeight: 18 }}>
+            <Text className="mt-3 font-sans text-body" style={{ color: '#115E59', lineHeight: 22 }}>
+              <Text className="font-strong">{L('AI phân tích & gợi ý nói lại: ', 'AI analysis & your next step: ')}</Text>
               {sample.whyVi}
             </Text>
           ) : null}
         </View>
       ) : null}
+      {voiceError ? <Text className="mt-2 font-sans text-label" style={{ color: SPK.rose }}>{voiceError}</Text> : null}
 
       <View className="mt-3 flex-row flex-wrap gap-2">
         <Button
           variant="outline"
           size="sm"
-          label={L('Luyện lại câu này', 'Practise this question again')}
+          label={L('Nói lại câu này', 'Try this question again')}
           iconLeft="refresh"
-          onPress={() => router.push(`/speaking/room?mode=q&q=${encodeURIComponent(a.questionId)}${attempt.typed ? '&typed=1' : ''}` as never)}
+          onPress={() => router.push(`/speaking/room?mode=q&q=${encodeURIComponent(a.questionId)}&retryOf=${encodeURIComponent(attempt.id)}${attempt.typed ? '&typed=1' : ''}` as never)}
         />
         {sample ? (
           <Button
@@ -509,7 +541,7 @@ function AnswerCard({ attempt, index }: { attempt: SpeakingAttempt; index: numbe
             size="sm"
             label={L('Nói lại bản hay hơn', 'Say the better version')}
             iconLeft="mic"
-            onPress={() => router.push(`/speaking/room?mode=q&q=${encodeURIComponent(a.questionId)}&sample=1` as never)}
+            onPress={() => router.push(`/speaking/room?mode=q&q=${encodeURIComponent(a.questionId)}&sample=1&retryOf=${encodeURIComponent(attempt.id)}${attempt.typed ? '&typed=1' : ''}` as never)}
           />
         ) : null}
       </View>
