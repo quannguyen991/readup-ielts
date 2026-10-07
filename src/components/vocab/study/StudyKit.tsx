@@ -124,9 +124,12 @@ export function StudyFrame({
   right,
   progress,
   battle = false,
+  themeOverride,
 }: {
   backHref: string;
   title: string;
+  /** Fixed card palettes can opt out of dark vocabulary text overrides. */
+  themeOverride?: StudyTheme;
   /** Hiện thanh trận đấu của game khi học — chỉ bật ở màn gọi `useGameStore.answer()`. */
   battle?: boolean;
   /** 0 chưa, 1 đang (nửa), 2 xong — mỗi đoạn một từ. */
@@ -138,7 +141,8 @@ export function StudyFrame({
   right?: React.ReactNode;
 }) {
   const { L } = useL();
-  const theme = useStoreTheme();
+  const storedTheme = useStoreTheme();
+  const theme = themeOverride ?? storedTheme;
   useThemeCss();
   // Rời màn học (Thoát, đổi trang; đóng tab đã có `pagehide`): ghi ngay tiến độ đang chờ ghi trễ.
   useEffect(() => () => flushPersist(), []);

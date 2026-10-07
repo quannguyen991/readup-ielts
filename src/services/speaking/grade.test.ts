@@ -44,6 +44,18 @@ const RAW = {
   ],
 };
 
+test('one natural-length Part 1 answer is not capped merely because a practice round contains one question', () => {
+  assert.equal(volumeCap({ ...METRICS, answers: 1, words: 45, avgWords: 45 }).cap, null);
+  assert.equal(volumeCap({ ...METRICS, answers: 1, words: 15, avgWords: 15 }).cap, 3);
+});
+
+test('a short coaching round requires a separate model answer for every question', () => {
+  const ctx = { transcripts: TRANSCRIPTS, typed: false, metrics: METRICS, model: 'm', requireSamples: true };
+  assert.throws(() => validateGrade(RAW, ctx), /bài mẫu/);
+  const raw = { ...RAW, samples: [RAW.samples[0]!, { ...RAW.samples[0]!, questionIndex: 1 }] };
+  assert.equal(validateGrade(raw, ctx).samples.length, 2);
+});
+
 test('kẹp band về 0–9, bước 0,5', () => {
   assert.equal(clampBand(6.3), 6.5);
   assert.equal(clampBand(6.2), 6);
