@@ -147,7 +147,8 @@ export function isExamRoute(pathname: string): boolean {
  * trợ lý — màn tự vẽ thanh trên riêng (phòng thi Reading kiểu đề máy).
  */
 export function isImmersiveRoute(pathname: string): boolean {
-  return /^\/read\/[^/]+$/.test(pathname) || /^\/history\/[^/]+$/.test(pathname);
+  // + trang giới thiệu ngắn cho người lần đầu mở link: không thanh bên, không băng khuyến mãi.
+  return /^\/read\/[^/]+$/.test(pathname) || /^\/history\/[^/]+$/.test(pathname) || pathname === '/gioi-thieu';
 }
 
 /**

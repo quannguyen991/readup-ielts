@@ -1,18 +1,30 @@
+import React, { useEffect, useState } from 'react';
+import { Platform } from 'react-native';
 import { Redirect } from 'expo-router';
 
+import { WELCOME_SEEN_KEY, entryPath } from '@/lib/welcome-page';
+
 /**
- * Cửa vào: MỌI NGƯỜI đều thấy trang giới thiệu trước.
+ * Cửa vào.
  *
- * Bản trước chia hai ngả — ai có dấu vết học thì vào thẳng Tổng quan, ai chưa
- * thì xem giới thiệu — với lý do "bắt người đã học ba tuần xem lại trang quảng
- * cáo mỗi lần mở app là phiền". Lý do đó không sai, nhưng nó đánh đổi bằng một
- * thứ đắt hơn: người quay lại KHÔNG BAO GIỜ còn thấy phần giới thiệu nữa, kể cả
- * khi app có thêm tính năng mới, và cũng không thấy bảng giá.
+ * Lần ĐẦU mở link trên một máy → trang giới thiệu ngắn `/gioi-thieu` (toàn màn hình, ít chữ: Band 9 là gì, phần nào
+ * mở/khoá, hai nút). Đã xem rồi → vào thẳng trang chủ app `/intro` (ở đó người đã học có nút "Tiếp tục học" đầu trang).
+ * Bản app gốc (không có localStorage) giữ như cũ: vào `/intro`.
  *
- * Cách bù cho người quay lại nằm ở chính trang giới thiệu: nếu họ đã học, nút
- * "Tiếp tục học" hiện lên ngay đầu trang, trước cả tiêu đề. Mất thêm một cú
- * bấm, đổi lại mọi người đều đi qua chỗ giới thiệu tính năng và bảng giá.
+ * Quyết định ở phía trình duyệt (bản dựng tĩnh không biết máy này đã xem hay chưa), nên khung đầu tiên không vẽ gì.
  */
 export default function Index() {
-  return <Redirect href="/intro" />;
+  const [target, setTarget] = useState<string | null>(Platform.OS === 'web' ? null : '/intro');
+  useEffect(() => {
+    if (Platform.OS !== 'web') return;
+    let seen = false;
+    try {
+      seen = localStorage.getItem(WELCOME_SEEN_KEY) === '1';
+    } catch {
+      seen = false;
+    }
+    setTarget(entryPath(seen));
+  }, []);
+  if (!target) return null;
+  return <Redirect href={target as never} />;
 }
