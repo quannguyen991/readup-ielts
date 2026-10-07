@@ -85,6 +85,7 @@ export const SFX_CATALOG = {
   greet: { debounce: 600, group: 'travel' },
   seam: { debounce: 1500, group: 'travel' },
   plane: { debounce: 8000, group: 'travel' },
+  train: { debounce: 20000, group: 'travel' },
 } as const;
 
 export type SfxId = keyof typeof SFX_CATALOG;

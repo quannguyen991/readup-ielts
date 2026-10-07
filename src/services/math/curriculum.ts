@@ -1,8 +1,9 @@
 import { generateMathSet } from './generator';
 import { MATH_SKILL_DOMAIN } from '@/lib/math/types';
-import type { MathDomain, MathItem, MathSkill } from '@/lib/math/types';
+import type { MathDifficulty, MathDomain, MathItem, MathSkill } from '@/lib/math/types';
 import type { MathSetKind } from '@/lib/math/theme';
 import { dominantDifficulty, type Difficulty, type DifficultyMix } from '@/lib/difficulty';
+import { buildCourseAssessmentItems, getCourseAssessment, getMathCourseUnit } from './course';
 
 /**
  * LỘ TRÌNH SAT MATH — giáo trình, không phải một kho đề rời.
@@ -51,6 +52,10 @@ export type MathExerciseSet = {
   unitTitle: string;
   /** null khi bộ trải cả bốn domain (đề tổng hợp). */
   domain: MathDomain | null;
+  /** Chỉ có ở quiz/bài kiểm tra của lộ trình 13 unit mới. */
+  assessment?: 'quiz' | 'unit_test';
+  /** Bậc mục tiêu của bài đánh giá lộ trình, dùng để sinh đúng nhóm câu. */
+  targetDifficulty?: MathDifficulty;
 };
 
 export type MathUnit = {
@@ -511,11 +516,24 @@ export const ALL_SETS: MathExerciseSet[] = MATH_CURRICULUM.flatMap((stage) =>
 export const ALL_UNITS: MathUnit[] = MATH_CURRICULUM.flatMap((stage) => stage.units);
 
 export function getSet(id: string): MathExerciseSet | undefined {
-  return ALL_SETS.find((s) => s.id === id);
+  return ALL_SETS.find((s) => s.id === id) ?? getCourseAssessment(id);
 }
 
 export function getUnitOfSet(setId: string): MathUnit | undefined {
-  return ALL_UNITS.find((u) => u.sets.some((s) => s.id === setId));
+  const existing = ALL_UNITS.find((u) => u.sets.some((s) => s.id === setId));
+  if (existing) return existing;
+  const assessment = getCourseAssessment(setId);
+  if (!assessment) return undefined;
+  const course = getMathCourseUnit(assessment.courseUnitId);
+  return {
+    id: `unit-${assessment.id}`,
+    title: course?.title.vi ?? assessment.unitTitle,
+    englishName: course?.title.en ?? assessment.unitTitle,
+    domain: assessment.domain,
+    skills: assessment.skills,
+    trap: assessment.blurb,
+    sets: [assessment],
+  };
 }
 
 /**
@@ -525,15 +543,21 @@ export function getUnitOfSet(setId: string): MathUnit | undefined {
  * so chỉ số chặng chứ không cần biết gì về nội dung.
  */
 export function stageIndexOfSet(setId: string): number {
-  return MATH_CURRICULUM.findIndex((stage) =>
+  const existing = MATH_CURRICULUM.findIndex((stage) =>
     stage.units.some((u) => u.sets.some((s) => s.id === setId)),
   );
+  if (existing >= 0) return existing;
+  const assessment = getCourseAssessment(setId);
+  return assessment ? MATH_CURRICULUM.findIndex((stage) => stage.domain === assessment.domain) : -1;
 }
 
 export function getStageOfSet(setId: string): MathStage | undefined {
-  return MATH_CURRICULUM.find((stage) =>
+  const existing = MATH_CURRICULUM.find((stage) =>
     stage.units.some((u) => u.sets.some((s) => s.id === setId)),
   );
+  if (existing) return existing;
+  const assessment = getCourseAssessment(setId);
+  return assessment ? MATH_CURRICULUM.find((stage) => stage.domain === assessment.domain) : undefined;
 }
 
 /**
@@ -544,6 +568,10 @@ export function getStageOfSet(setId: string): MathStage | undefined {
  * nguyên câu cũ và chỉ đang kiểm tra trí nhớ.
  */
 export function buildSetItems(set: MathExerciseSet, round: number): MathItem[] {
+  if (set.assessment && set.targetDifficulty) {
+    const courseAssessment = getCourseAssessment(set.id);
+    if (courseAssessment) return buildCourseAssessmentItems(courseAssessment, round);
+  }
   return generateMathSet({ skills: set.skills, count: set.count, seed: `${set.id}:r${round}`, mix: set.mix });
 }
 

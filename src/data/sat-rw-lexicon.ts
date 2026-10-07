@@ -16,6 +16,7 @@ import { T, W, type LexEntry } from './sat-rw-lex-helpers';
 import { MORE as MORE_A } from './sat-rw-lexicon-more-a';
 import { MORE as MORE_B } from './sat-rw-lexicon-more-b';
 import { MORE_C } from './sat-rw-lexicon-more-c';
+import { MORE_D } from './sat-rw-lexicon-more-d';
 
 export type { LexEntry };
 
@@ -130,10 +131,11 @@ export const SAT_RW_LEXICON_BASE: Record<string, LexEntry> = {
 };
 
 /**
- * Kho đầy đủ: bộ gốc + bổ sung 30/09/2026 (mỗi chủ đề từ vựng SAT Verbal ≥ 30
- * từ): `more-a` từ nối + dữ liệu/lập luận, `more-b` các chủ đề tính từ.
+ * Kho đầy đủ: bộ gốc + bổ sung (mỗi chủ đề từ vựng SAT Verbal ≥ 30 từ):
+ * `more-a` từ nối + dữ liệu/lập luận, `more-b` các chủ đề tính từ,
+ * `more-c` phương án khó, `more-d` 4 chủ đề trọng điểm Digital SAT.
  */
-export const SAT_RW_LEXICON: Record<string, LexEntry> = { ...SAT_RW_LEXICON_BASE, ...MORE_A, ...MORE_B, ...MORE_C };
+export const SAT_RW_LEXICON: Record<string, LexEntry> = { ...SAT_RW_LEXICON_BASE, ...MORE_A, ...MORE_B, ...MORE_C, ...MORE_D };
 
 /** Mục từ điển cho một phương án, không phân biệt hoa thường và dấu câu cuối. */
 export function lookupLex(option: string): LexEntry | undefined {

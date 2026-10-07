@@ -22,6 +22,8 @@ const SET_KIND_EN: Record<MathSetKind, string> = {
   checkpoint: 'Checkpoint',
   mixed: 'Mixed review',
   exam: 'Full test',
+  quiz: 'Quiz',
+  unit_test: 'Unit test',
 };
 
 const SET_KIND_PURPOSE_EN: Record<MathSetKind, string> = {
@@ -32,6 +34,8 @@ const SET_KIND_PURPOSE_EN: Record<MathSetKind, string> = {
   checkpoint: 'Real exam pace. Pass this and you have this skill down.',
   mixed: 'Several skills mixed, with no warning of the type — just like the real exam.',
   exam: 'Exactly one real module: 22 questions, 35 minutes, all four domains mixed.',
+  quiz: 'Four quick questions mixed across this unit’s skills.',
+  unit_test: 'A balanced unit test to show which skills need another review.',
 };
 
 const ERROR_LABEL_EN: Record<MathErrorTag, string> = {

@@ -65,6 +65,58 @@ export const VERBAL_THEMES_BASE: { title: string; blurb: string; words: string[]
   { title: 'Phổ biến, hiếm và đều đặn', blurb: 'ubiquitous ↔ unprecedented, uniform ↔ uneven', words: ['ubiquitous', 'unprecedented', 'predictable', 'uniform', 'uneven', 'monotonous', 'eclectic', 'seasonal', 'regional', 'recent', 'prolific'] },
   { title: 'Con người, thái độ và nơi chốn', blurb: 'indifferent, ambivalent, unanimous, austere…', words: ['indifferent', 'ambivalent', 'uninformed', 'unanimous', 'amateur', 'technical', 'experimental', 'austere', 'cluttered', 'crowded', 'confidential', 'illegal', 'unfinished'] },
   { title: 'Dữ liệu và cụm từ cố định', blurb: 'statistical ↔ anecdotal, consistent with ↔ at odds with', words: ['statistical', 'anecdotal', 'derived from', 'indifferent to', 'consistent with', 'at odds with'] },
+  {
+    title: 'Luận cứ khoa học, kiểm chứng và bác bỏ',
+    blurb: 'postulate, anomaly, untenable, conjecture, scrutinize…',
+    words: [
+      'postulate', 'anomaly', 'untenable', 'conjecture', 'subvert',
+      'paradoxical', 'nuance', 'scrutinize', 'discrepancy', 'attenuate',
+      'extrapolate', 'salient', 'validity', 'preclude', 'elucidate',
+      'rebuttal', 'axiom', 'concur', 'dissent', 'incongruous',
+      'confound', 'fallacy', 'antithesis', 'correlate', 'diverge',
+      'deduce', 'presuppose', 'tenable', 'corroborating', 'refutation',
+      'substantiating', 'substantiation',
+    ],
+  },
+  {
+    title: 'Văn học, tâm lý và tính cách nhân vật',
+    blurb: 'aloof, gregarious, condescending, disdain, earnest, poignant…',
+    words: [
+      'aloof', 'gregarious', 'condescending', 'deferential', 'disdain',
+      'veneration', 'earnest', 'flippant', 'melancholy', 'loquacious',
+      'resolute', 'vacillating', 'indignant', 'complacent', 'cynical',
+      'ingenuous', 'ostentatious', 'unpretentious', 'temperament', 'trepidation',
+      'solitude', 'wistful', 'impetuous', 'fastidious', 'sardonic',
+      'capricious', 'benevolent', 'malevolent', 'penchant', 'animosity',
+      'stoic', 'fickle',
+    ],
+  },
+  {
+    title: 'Lịch sử, quyền lực và cải cách xã hội',
+    blurb: 'sovereignty, autonomy, emancipate, disenfranchise, egalitarian…',
+    words: [
+      'sovereignty', 'autonomy', 'subjugation', 'emancipate', 'disenfranchise',
+      'enfranchise', 'hegemony', 'oppressive', 'egalitarian', 'hierarchical',
+      'advocate', 'adversary', 'rhetoric', 'sedition', 'tyranny',
+      'insurrection', 'subversion', 'ratify', 'repeal', 'polarization',
+      'discourse', 'mandate', 'faction', 'solidarity', 'encroachment',
+      'grievance', 'partisanship', 'coercion', 'precedent', 'inalienable',
+      'usurp', 'clemency',
+    ],
+  },
+  {
+    title: 'Tự nhiên, biến đổi và sinh thái',
+    blurb: 'symbiotic, equilibrium, mitigate, deplete, proliferate, biodiversity…',
+    words: [
+      'symbiotic', 'parasitic', 'equilibrium', 'catalyst', 'mitigate',
+      'exacerbate', 'deplete', 'replenish', 'proliferate', 'dwindle',
+      'volatile', 'precipitate', 'endemic', 'biodiversity', 'degradation',
+      'succumb', 'adaptation', 'finite', 'inexhaustible', 'flora',
+      'fauna', 'contamination', 'arid', 'forage', 'disperse',
+      'canopy', 'pristine', 'terrestrial', 'viable', 'sediment',
+      'carnivore', 'herbivore',
+    ],
+  },
 ];
 
 /** Chủ đề đầy đủ: từ gốc + từ bổ sung 30/09/2026 (mỗi chủ đề ≥ 30 từ) + từ của bộ câu khó 01/10/2026. */

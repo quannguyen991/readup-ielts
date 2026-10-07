@@ -182,6 +182,13 @@ export default function DashboardScreen() {
           onPress={() => router.push('/library' as never)}
         />
         <Button
+          label={L('Cộng đồng', 'Community')}
+          iconLeft="chat"
+          size="lg"
+          variant="outline"
+          onPress={() => router.push('/community' as never)}
+        />
+        <Button
           label={L('Xếp hạng', 'Leaderboard')}
           iconLeft="trophy"
           size="lg"

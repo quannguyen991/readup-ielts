@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import { Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
 import { Grid } from '@/components/layout/Grid';
@@ -10,7 +10,7 @@ import { GROUP_LABEL, ListeningCover } from '@/components/listening/cover';
 import { Button, Card, Icon, Pagination } from '@/components/ui';
 import { LISTENING_TESTS } from '@/data/listening-tests';
 import { sectionNumbers } from '@/services/listening/scoring';
-import type { ListeningLevel, ListeningSection, ListeningTest } from '@/services/listening/types';
+import type { ListeningGroupType, ListeningLevel, ListeningSection, ListeningTest } from '@/services/listening/types';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
 import { color } from '@/theme/tokens';
@@ -36,6 +36,16 @@ const buildSkills = (L: LFn): RailSkill[] => [
         children: [1, 2, 3, 4].map((n) => ({ key: `s${n}`, label: `Section ${n}` })),
       },
       { key: 'full', label: L('Full đề', 'Full test') },
+      {
+        key: 'task',
+        label: L('Luyện theo dạng', 'By question type'),
+        children: [
+          { key: 'gap', label: L('Điền từ', 'Completion') },
+          { key: 'mcq-one', label: L('Trắc nghiệm một đáp án', 'Single choice') },
+          { key: 'mcq-many', label: L('Trắc nghiệm nhiều đáp án', 'Multiple choice') },
+          { key: 'matching', label: L('Nối thông tin', 'Matching') },
+        ],
+      },
       { key: 'dictation', label: 'Dictation' },
     ],
   },
@@ -43,7 +53,7 @@ const buildSkills = (L: LFn): RailSkill[] => [
   { key: 'speaking', label: 'Speaking', icon: 'chat', tint: '#B07A3A', options: [], href: '/speaking' },
 ];
 
-type Item = { test: ListeningTest; section: ListeningSection | null };
+type Item = { test: ListeningTest; section: ListeningSection | null; task?: ListeningGroupType };
 
 const PAGE_SIZE = 12;
 
@@ -68,6 +78,7 @@ export default function ListeningLibrary() {
   const [selection, setSelection] = useState<RailSelection>({ skill: 'listening', option: 'single', child: null });
   const [sources, setSources] = useState<string[]>([]);
   const [levels, setLevels] = useState<ListeningLevel[]>([]);
+  const [category, setCategory] = useState<string | null>(null);
   const [railOpen, setRailOpen] = useState(false);
   const [page, setPage] = useState(0);
 
@@ -80,7 +91,9 @@ export default function ListeningLibrary() {
     return [...counts.entries()].map(([key, count]) => ({ key, label: key, count }));
   }, []);
 
-  const filterKey = [selection.option, selection.child, ...sources, ...levels].join('|');
+  const categories = useMemo(() => [...new Set(LISTENING_TESTS.map((t) => t.cover.category).filter((v): v is string => !!v))], []);
+
+  const filterKey = [selection.option, selection.child, category, ...sources, ...levels].join('|');
   const [lastKey, setLastKey] = useState(filterKey);
   if (lastKey !== filterKey) {
     setLastKey(filterKey);
@@ -89,21 +102,28 @@ export default function ListeningLibrary() {
 
   const items = useMemo<Item[]>(() => {
     const pool = LISTENING_TESTS.filter(
-      (t) => (sources.length === 0 || sources.includes(t.source)) && (levels.length === 0 || levels.includes(t.level)),
+      (t) => (sources.length === 0 || sources.includes(t.source)) && (levels.length === 0 || levels.includes(t.level)) && (!category || t.cover.category === category),
     );
     if (selection.option === 'full') {
       return pool.filter((t) => t.sections.length === 4).map((test) => ({ test, section: null }));
+    }
+    if (selection.option === 'task' && selection.child) {
+      const task = selection.child as ListeningGroupType;
+      return pool.flatMap((test) => test.sections
+        .filter((s) => s.groups.some((g) => g.type === task))
+        .map((section) => ({ test, section, task })));
     }
     const want = selection.child ? Number(selection.child.slice(1)) : null;
     return pool.flatMap((test) =>
       test.sections.filter((s) => want === null || s.n === want).map((section) => ({ test, section })),
     );
-  }, [levels, selection, sources]);
+  }, [category, levels, selection, sources]);
 
-  const filtersOn = sources.length + levels.length > 0;
+  const filtersOn = sources.length + levels.length > 0 || category !== null;
   const clear = () => {
     setSources([]);
     setLevels([]);
+    setCategory(null);
   };
 
   const rail = (
@@ -182,6 +202,12 @@ export default function ListeningLibrary() {
         ) : null}
 
         <View className="flex-1" key={filterKey}>
+          {categories.length ? (
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 10 }}>
+              <CategoryChip label={L('Tất cả chủ đề', 'All topics')} selected={!category} onPress={() => setCategory(null)} />
+              {categories.map((name) => <CategoryChip key={name} label={name} selected={category === name} onPress={() => setCategory(category === name ? null : name)} />)}
+            </ScrollView>
+          ) : null}
           <View className="mb-3 flex-row flex-wrap items-center justify-between gap-2">
             <Text className="font-mid text-label text-muted">
               <Text className="font-heavy text-ink">{items.length}</Text> {L('bài khớp bộ lọc', 'tests match')}
@@ -230,11 +256,11 @@ function countAttempts(list: { testId: string; section: number | null }[], it: I
 
 function TestCard({ item, count }: { item: Item; count: number }) {
   const { L } = useL();
-  const { test, section } = item;
-  const secs = section ? [section] : test.sections;
+  const { test, section, task } = item;
+  const secs = section ? [task ? { ...section, groups: section.groups.filter((g) => g.type === task) } : section] : test.sections;
   const types = typesOf(secs);
   const questions = secs.reduce((a, s) => a + sectionNumbers(s).length, 0);
-  const href = section ? `/listening/${test.id}?s=${section.n}` : `/listening/${test.id}`;
+  const href = section ? `/listening/${test.id}?s=${section.n}${task ? `&task=${task}` : ''}` : `/listening/${test.id}`;
 
   return (
     <PressScale
@@ -267,9 +293,14 @@ function TestCard({ item, count }: { item: Item; count: number }) {
           ) : null}
         </ListeningCover>
         <View className="flex-1 p-3.5">
+          {test.cover.category ? (
+            <Text className="mb-1.5 font-strong text-primary-700" style={{ fontSize: 11 }}>
+              {test.cover.category}
+            </Text>
+          ) : null}
           <Text className="font-heavy text-body text-ink" numberOfLines={2}>
             {test.title}
-            {section && test.sections.length > 1 ? ` — ${section.title}` : ''}
+            {section && test.sections.length > 1 ? ` — ${task ? GROUP_LABEL[task] : section.title}` : ''}
           </Text>
           <View className="mt-2 flex-row flex-wrap gap-1.5">
             {types.map((t) => (
@@ -286,5 +317,19 @@ function TestCard({ item, count }: { item: Item; count: number }) {
         </View>
       </View>
     </PressScale>
+  );
+}
+
+function CategoryChip({ label, selected, onPress }: { label: string; selected: boolean; onPress: () => void }) {
+  return (
+    <Pressable
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      onPress={() => { playSfx('tab'); onPress(); }}
+      className="rounded-pill border px-3.5 py-2"
+      style={{ minHeight: 40, borderColor: selected ? color.primary : color.border, backgroundColor: selected ? '#F5EBD8' : '#FFFFFF' }}
+    >
+      <Text className="font-strong" style={{ fontSize: 13, color: selected ? color.primary : color.ink }}>{label}</Text>
+    </Pressable>
   );
 }

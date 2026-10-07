@@ -6,6 +6,10 @@ import { answerMetrics, attemptMetrics, type AnswerMetrics, type RecognizedSegme
 import type { GradeAnswerInput } from '@/services/speaking/prompt';
 import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { errorText, msg } from '@/lib/server-locale';
+import { getPoiContent } from '@/data/travel/pois';
+import { replyPool } from '@/services/travel/content';
+import { contextualJourneyFor, resolveContextualSpeakingPrompt } from '@/services/travel/contextual-speaking';
+import { CITIES } from '@/services/travel/world';
 
 /**
  * POST /api/speaking/grade
@@ -18,7 +22,8 @@ import { errorText, msg } from '@/lib/server-locale';
  * Một lượt thi = MỘT lượt AI, dù là cả bài Full test.
  *
  * Không tin client:
- *   - Câu hỏi lấy từ ngân hàng theo `questionId`, không lấy chữ client gửi.
+ *   - Câu IELTS lấy từ ngân hàng; câu du lịch được dựng lại từ nội dung địa điểm
+ *     trên máy chủ. Không nhận lời nhắc câu hỏi tuỳ ý từ client.
  *   - Số từ, từ đệm, độ rõ tính lại ở đây từ bản chữ; chỉ số THỜI GIAN (tốc độ
  *     nói, khoảng lặng) chỉ client đo được nên nhận nhưng kẹp vào khoảng hợp lý.
  *
@@ -34,6 +39,61 @@ const num = (v: unknown, lo: number, hi: number): number | null =>
   typeof v === 'number' && Number.isFinite(v) ? Math.min(hi, Math.max(lo, v)) : null;
 
 type RawAnswer = { questionId?: unknown; transcript?: unknown; segments?: unknown; metrics?: unknown };
+
+function resolvePrompt(questionId: string): { part: 1 | 2 | 3; question: string; context?: 'travel' } | null {
+  const bankQuestion = getSpeakingQuestion(questionId);
+  if (bankQuestion) {
+    return {
+      part: bankQuestion.part,
+      question: bankQuestion.part === 2
+        ? `${bankQuestion.text} (${(bankQuestion.bullets ?? []).join('; ')}; ${bankQuestion.explain ?? ''})`
+        : bankQuestion.text,
+    };
+  }
+
+  if (questionId.startsWith('context:')) {
+    const key = questionId.slice('context:'.length);
+    const divider = key.indexOf(':');
+    if (divider <= 0 || divider === key.length - 1) return null;
+    const poi = getPoiContent(key.slice(0, divider));
+    if (!poi) return null;
+    const prompt = resolveContextualSpeakingPrompt(poi.kind, key.slice(divider + 1));
+    const journey = contextualJourneyFor(poi.kind);
+    if (!prompt || !journey) return null;
+    const body = prompt.part === 2
+      ? `${prompt.text} You should say: ${(prompt.bullets ?? []).join('; ')}; ${prompt.explain ?? ''}`
+      : prompt.text;
+    return { part: prompt.part, question: `[Context: ${poi.name.en}, ${CITIES[poi.city].name.en}, ${CITIES[poi.city].country.en}; speaking with a ${journey.role}. Topic: ${journey.topic}] ${body}` };
+  }
+
+  if (questionId.startsWith('context:')) {
+    const key = questionId.slice('context:'.length);
+    const divider = key.indexOf(':');
+    if (divider <= 0 || divider === key.length - 1) return null;
+    const poi = getPoiContent(key.slice(0, divider));
+    if (!poi) return null;
+    const prompt = resolveContextualSpeakingPrompt(poi.kind, key.slice(divider + 1));
+    if (!prompt) return null;
+    const details = prompt.part === 2 ? ` (${[...(prompt.bullets ?? []), prompt.explain].filter(Boolean).join('; ')})` : '';
+    return { part: prompt.part, question: `[IELTS ${prompt.topic}] ${prompt.text}${details}` };
+  }
+
+  if (!questionId.startsWith('travel:')) return null;
+  const key = questionId.slice('travel:'.length);
+  const divider = key.indexOf(':');
+  if (divider <= 0 || divider === key.length - 1) return null;
+  const poi = getPoiContent(key.slice(0, divider));
+  if (!poi) return null;
+  const itemId = key.slice(divider + 1);
+  const item = replyPool(poi.content.decks, poi.kind).find((reply) => reply.id === itemId && reply.line.trim());
+  if (!item) return null;
+
+  return {
+    part: 1,
+    context: 'travel',
+    question: `[TRAVEL ROLE-PLAY] ${item.setup.trim().slice(0, 250)} Staff member says: “${item.line.trim().slice(0, 250)}”`,
+  };
+}
 
 export async function POST(request: Request): Promise<Response> {
   const admin = getSupabaseAdmin();
@@ -70,10 +130,10 @@ export async function POST(request: Request): Promise<Response> {
       return Response.json({ error: msg(request, `Tối đa ${MAX_ANSWERS} câu mỗi lượt.`, `Up to ${MAX_ANSWERS} answers per attempt.`) }, { status: 413 });
     }
 
-    const answers: Array<GradeAnswerInput & { metrics: AnswerMetrics }> = [];
+    const answers: (GradeAnswerInput & { metrics: AnswerMetrics })[] = [];
     for (const a of rawAnswers) {
-      const q = getSpeakingQuestion(typeof a.questionId === 'string' ? a.questionId : '');
-      if (!q) return Response.json({ error: msg(request, 'Có câu hỏi không có trong ngân hàng đề.', "Some questions aren't in the question bank.") }, { status: 400 });
+      const prompt = resolvePrompt(typeof a.questionId === 'string' ? a.questionId : '');
+      if (!prompt) return Response.json({ error: msg(request, 'Không tìm thấy câu hỏi hoặc bối cảnh hội thoại hợp lệ.', 'The question or conversation situation could not be found.') }, { status: 400 });
       const transcript = (typeof a.transcript === 'string' ? a.transcript : '').trim().slice(0, MAX_CHARS);
       const segments: RecognizedSegment[] = (Array.isArray(a.segments) ? a.segments : [])
         .slice(0, MAX_SEGMENTS)
@@ -95,8 +155,9 @@ export async function POST(request: Request): Promise<Response> {
         startDelaySec: typed ? null : num(m.startDelaySec, 0, 300),
       };
       answers.push({
-        part: q.part,
-        question: q.part === 2 ? `${q.text} (${(q.bullets ?? []).join('; ')}; ${q.explain ?? ''})` : q.text,
+        part: prompt.part,
+        question: prompt.question,
+        context: prompt.context,
         transcript,
         segments,
         durationSec,

@@ -102,23 +102,26 @@ export function SpeedChips({ speed, onChange, disabled }: { speed: number; onCha
 
 /** Thẻ âm thanh (máy tính): nút phát, thanh tiến độ, tốc độ, ghi chú chế độ. */
 export function AudioCard({
-  audio, real, speed, onSpeed, title, context,
+  audio, real, speed, onSpeed, title, context, sourceNote, localAudioName, onPickAudio,
 }: {
   audio: SectionAudio; real: boolean; speed: number; onSpeed: (v: number) => void; title: string; context?: string;
+  sourceNote?: string;
+  localAudioName?: string; onPickAudio?: () => void;
 }) {
   const { L } = useL();
-  const seekable = !real && audio.mode === 'file';
+  const seekable = !real && (audio.mode === 'file' || audio.mode === 'aoede');
   return (
-    <View className="rounded-card border border-border bg-surface p-4">
+    <View className="rounded-card border border-border bg-surface p-5" style={{ minHeight: 420, justifyContent: 'center' }}>
       <View className="flex-row items-center gap-2">
         <Icon name="volume" size={17} color={color.primary} />
-        <Text className="flex-1 font-heavy text-ink" style={{ fontSize: 16 }} numberOfLines={2}>{title}</Text>
+        <Text className="flex-1 font-heavy text-ink" style={{ fontSize: 18, lineHeight: 24 }} numberOfLines={2}>{title}</Text>
       </View>
-      {context ? <Text className="mt-2 font-sans text-label text-muted" style={{ lineHeight: 18 }}>{context}</Text> : null}
+      {context ? <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 21 }}>{context}</Text> : null}
+      {sourceNote ? <Text className="mt-1 font-mid text-label text-muted" style={{ lineHeight: 18 }}>{sourceNote}</Text> : null}
 
       <View className="mt-4 items-center">
-        <PlayButton audio={audio} real={real} size={64} />
-        <Text className="mt-2 font-mid text-label text-muted">
+        <PlayButton audio={audio} real={real} size={76} />
+        <Text className="mt-2 font-mid text-body text-muted">
           {audio.status === 'playing'
             ? L('Đang phát…', 'Playing…')
             : audio.status === 'ended'
@@ -151,6 +154,20 @@ export function AudioCard({
         ) : null}
       </View>
 
+      {onPickAudio ? (
+        <View className="mt-4 rounded-panel border border-dashed border-borderStrong p-3">
+          <Pressable accessibilityRole="button" onPress={onPickAudio} className="flex-row items-center justify-center gap-2 rounded-pill bg-canvas px-4" style={{ minHeight: 46 }}>
+            <Icon name="volume" size={16} color={color.primary} />
+            <Text className="font-strong text-primary-700" style={{ fontSize: 13 }}>
+              {localAudioName ? L('Chọn tệp khác', 'Choose another file') : L('Nạp audio từ thiết bị', 'Load audio from device')}
+            </Text>
+          </Pressable>
+          <Text className="mt-2 text-center font-sans text-label text-muted" numberOfLines={2}>
+            {localAudioName ? `${L('Đã chọn', 'Selected')}: ${localAudioName}` : L('Tệp chỉ dùng trong phiên này, không tải lên máy chủ.', 'Used in this session only; the file is not uploaded.')}
+          </Text>
+        </View>
+      ) : null}
+
       {real ? (
         <Text className="mt-3 font-mid text-label" style={{ color: '#B26A00' }}>
           {L('Thi thật: nghe một lần, không tạm dừng, không tua.', 'Real test: one listen, no pause, no seeking.')}
@@ -163,14 +180,29 @@ export function AudioCard({
 
 export function FallbackNote({ audio }: { audio: SectionAudio }) {
   const { L } = useL();
+  if (audio.mode === 'aoede') {
+    return (
+      <View className="mt-3 flex-row gap-2 rounded-panel p-2.5" style={{ backgroundColor: '#F0F5EB' }}>
+        <Icon name="info" size={15} color="#537343" />
+        <Text className="min-w-0 flex-1 font-sans text-label" style={{ color: '#405B35', lineHeight: 18 }}>
+          {L('Đang dùng bản đọc học tập do AI tạo bằng giọng Aoede; đây không phải audio đề thi gốc.', 'AI study readout in the Aoede voice; this is not the original exam audio.')}
+        </Text>
+      </View>
+
+    );
+  }
   if (audio.mode !== 'tts') return null;
   return (
     <View className="mt-3 flex-row gap-2 rounded-panel p-2.5" style={{ backgroundColor: '#FEF4E6' }}>
       <Icon name="info" size={15} color="#B26A00" />
       <Text className="min-w-0 flex-1 font-sans text-label" style={{ color: '#7A4A00', lineHeight: 18 }}>
         {L(
-          'Chưa có tệp âm thanh cho phần này — app đang đọc bản chữ bằng giọng máy (không tua được).',
-          'No audio file for this section yet — reading the transcript with the device voice (no seeking).',
+          audio.ttsVoice === 'device'
+            ? 'Chưa có audio gốc; đang đọc bản chữ bằng giọng máy của thiết bị. Chế độ này không tua được.'
+            : 'Chưa có audio gốc. Bấm Phát để tạo bản đọc học tập bằng Aoede nếu máy chủ đã cấu hình; nếu không, app dùng giọng máy của thiết bị.',
+          audio.ttsVoice === 'device'
+            ? 'No original audio is available; reading the transcript with the device voice. This mode cannot seek.'
+            : 'No original audio is available. Press Play for an Aoede study readout if configured; otherwise the device voice is used.',
         )}
       </Text>
     </View>
@@ -185,7 +217,7 @@ export function FallbackNote({ audio }: { audio: SectionAudio }) {
 export function AudioBar({
   audio, real, label, speed = 1, onSpeed,
 }: { audio: SectionAudio; real: boolean; label: string; speed?: number; onSpeed?: (v: number) => void }) {
-  const seekable = !real && audio.mode === 'file';
+  const seekable = !real && (audio.mode === 'file' || audio.mode === 'aoede');
   const next = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length] ?? 1;
   const small = {
     minHeight: 44, minWidth: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 22,
@@ -222,7 +254,7 @@ export function AudioBar({
       </View>
       {audio.mode === 'tts' ? (
         <Text className="mt-1 font-mid" style={{ fontSize: 12, color: '#B26A00' }}>
-          TTS · chưa có tệp âm thanh / no audio file
+          {audio.ttsVoice === 'device' ? 'Giọng thiết bị · chưa có audio gốc' : 'Aoede dự phòng · chưa có audio gốc'}
         </Text>
       ) : null}
     </View>

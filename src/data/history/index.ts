@@ -20,6 +20,9 @@ import kcClaims from './vn-khang-chien-chong-phap/claims.json';
 import kcImages from './vn-khang-chien-chong-phap/images.json';
 import kcAudio from './vn-khang-chien-chong-phap/audio.json';
 
+/** Tạm ẩn mục học lịch sử khỏi các lối vào chính trong khi nội dung còn hoàn thiện. */
+export const HISTORY_LEARNING_ENABLED = false;
+
 export const KHANG_CHIEN_TOPIC_ID = 'vn-khang-chien-chong-phap';
 
 const load = (topic: unknown, scenes: unknown, sources: unknown, claims: unknown, images: unknown, audio: unknown): TopicBundle => ({
@@ -67,7 +70,7 @@ export function listTopics(dev = false): TopicBundle[] {
 
 /** Trang chủ chỉ hiện thẻ khi ít nhất một cảnh thật đã qua cổng. */
 export function hasPublishedHistory(): boolean {
-  return BUNDLES.some((b) => isTopicVisible(b));
+  return HISTORY_LEARNING_ENABLED && BUNDLES.some((b) => isTopicVisible(b));
 }
 
 /** Ảnh đại diện cho thẻ trang chủ: ảnh cảnh đầu tiên đã xuất bản. */

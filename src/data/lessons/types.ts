@@ -31,5 +31,11 @@ export type TheoryLesson = {
   minutes: number;
   /** Học xong bài này bạn làm được gì — một câu. */
   goal: string;
+  /** Kiến thức tiên quyết cần nhớ lại trước khi học. */
+  prerequisite?: string;
+  /** Dấu hiệu nhận ra kỹ năng này trong một câu hỏi SAT. */
+  recognize?: string;
+  /** Ý chính để tự nhắc lại sau khi học. */
+  summary?: string;
   blocks: LessonBlock[];
 };

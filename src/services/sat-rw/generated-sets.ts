@@ -29,8 +29,8 @@ export type GeneratedKind = 'words' | 'evidence' | 'synthesis';
 
 export const GENERATED_KIND_OF_UNIT: Record<number, GeneratedKind> = {
   11: 'words',
+  10: 'synthesis',
   15: 'evidence',
-  16: 'synthesis',
 };
 
 /** Xáo theo hạt giống — không dùng `Math.random` trực tiếp để còn test được. */

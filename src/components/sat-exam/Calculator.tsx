@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
-import { Linking, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { router } from 'expo-router';
 
 import { useL } from '@/i18n/useL';
 import { CalcError, evaluate, formatNumber, toFraction, type AngleMode } from './calc-eval';
@@ -10,8 +11,7 @@ import { EXAM } from './exam-theme';
  * tính, lịch sử bấm lại được. Tính bằng `calc-eval` — bộ phân tích tự viết,
  * không `eval`, không thư viện ngoài.
  *
- * Desmos (máy tính đồ thị của đề thật) cần khoá API để nhúng, nên ở đây chỉ có
- * một liên kết mở trang Desmos ở thẻ mới.
+ * Desmos có màn riêng để dùng máy tính đồ thị nhúng khi đã cấu hình API key.
  */
 
 type Entry = { expr: string; value: number };
@@ -225,11 +225,11 @@ export default function Calculator() {
         </View>
         <Pressable
           accessibilityRole="link"
-          onPress={() => void Linking.openURL('https://www.desmos.com/calculator')}
+          onPress={() => router.push('/sat/desmos' as never)}
           className="mt-1.5 self-end"
         >
           <Text className="font-semi text-label underline" style={{ color: EXAM.navySoft }}>
-            {L('Mở Desmos ở thẻ mới ↗', 'Open Desmos in a new tab ↗')}
+            {L('Mở Desmos cho câu hình học ↗', 'Open Desmos for geometry ↗')}
           </Text>
         </Pressable>
       </View>

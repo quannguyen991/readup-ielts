@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Platform } from 'react-native';
 
 import { speakLines, stopPronounce } from '@/services/audio/pronounce';
 import type { TranscriptLine } from '@/services/listening/types';
@@ -16,7 +17,7 @@ import type { TranscriptLine } from '@/services/listening/types';
  */
 
 export type AudioStatus = 'idle' | 'playing' | 'paused' | 'ended';
-export type AudioMode = 'file' | 'tts';
+export type AudioMode = 'file' | 'tts' | 'aoede';
 
 const WORDS_PER_SEC = 2.6;
 
@@ -33,19 +34,22 @@ export function estimateLineStarts(lines: readonly TranscriptLine[], speed: numb
   return { starts, total: t };
 }
 
-export function useSectionAudio(opts: { src: string; transcript: readonly TranscriptLine[]; speed: number }) {
-  const { src, transcript, speed } = opts;
+export function useSectionAudio(opts: { src: string; transcript: readonly TranscriptLine[]; speed: number; testId?: string; section?: number; preferPreparedAudio?: boolean }) {
+  const { src, transcript, speed, testId, section, preferPreparedAudio = false } = opts;
   const noAudio = typeof Audio === 'undefined';
   const [mode, setMode] = useState<AudioMode>(noAudio ? 'tts' : 'file');
   const [status, setStatus] = useState<AudioStatus>('idle');
   const [current, setCurrent] = useState(0);
   const [fileDuration, setFileDuration] = useState(0);
+  const [audioFileReady, setAudioFileReady] = useState(false);
   const [ttsLine, setTtsLine] = useState(0);
   const [blocked, setBlocked] = useState(false);
+  const [ttsVoice, setTtsVoice] = useState<'Aoede' | 'device' | null>(null);
   /** Đã từng phát (thi thật: chỉ được nghe một lần). */
   const [started, setStarted] = useState(false);
 
   const el = useRef<HTMLAudioElement | null>(null);
+  const aoedeUrl = useRef<string | null>(null);
   const stopTts = useRef<(() => void) | null>(null);
   const ttsAlive = useRef(false);
   const ttsIndex = useRef(0);
@@ -61,14 +65,18 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
     setStatus('idle');
     setCurrent(0);
     setFileDuration(0);
+    setAudioFileReady(false);
     setTtsLine(0);
     setBlocked(false);
+    setTtsVoice(null);
+    if (aoedeUrl.current) URL.revokeObjectURL(aoedeUrl.current);
+    aoedeUrl.current = null;
     setStarted(false);
     setMode(noAudio ? 'tts' : 'file');
   }
 
   const tts = useMemo(() => estimateLineStarts(transcript, speed), [transcript, speed]);
-  const duration = mode === 'file' ? fileDuration : tts.total;
+  const duration = mode === 'tts' ? tts.total : fileDuration;
 
   // Nạp tệp khi đổi section. Lỗi -> chuyển sang giọng máy.
   useEffect(() => {
@@ -77,12 +85,21 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
     const a = new Audio();
     a.preload = 'metadata';
     el.current = a;
-    const onMeta = () => setFileDuration(Number.isFinite(a.duration) ? a.duration : 0);
+    const onMeta = () => {
+      setFileDuration(Number.isFinite(a.duration) ? a.duration : 0);
+      if (!aoedeUrl.current) {
+        setAudioFileReady(true);
+        setMode('file');
+      }
+    };
     const onTime = () => setCurrent(a.currentTime);
     const onEnd = () => setStatus('ended');
     const onErr = () => {
       // Tệp thiếu (máy chủ trả trang HTML) hoặc không giải mã được.
-      if (a.src) setMode('tts');
+      if (a.src) {
+        setAudioFileReady(false);
+        setMode('tts');
+      }
     };
     a.addEventListener('loadedmetadata', onMeta);
     a.addEventListener('timeupdate', onTime);
@@ -101,6 +118,8 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
       ttsAlive.current = false;
       stopTts.current?.();
       stopPronounce();
+      if (aoedeUrl.current) URL.revokeObjectURL(aoedeUrl.current);
+      aoedeUrl.current = null;
     };
   }, [src]);
 
@@ -132,10 +151,49 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
     [transcript],
   );
 
-  const play = useCallback(() => {
+  const makeAoedeAudio = useCallback(async (): Promise<boolean> => {
+    if (!testId || !section || Platform.OS !== 'web' || typeof URL === 'undefined' || typeof Blob === 'undefined') return false;
+    const response = await fetch('/api/listening/tts', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ testId, section }),
+    });
+    if (!response.ok) throw new Error(`Aoede TTS returned ${response.status}.`);
+    const blob = await response.blob();
+    if (!blob.size) throw new Error('Aoede TTS returned an empty audio file.');
+    const url = URL.createObjectURL(blob);
+    const player = el.current;
+    if (!player) {
+      URL.revokeObjectURL(url);
+      return false;
+    }
+    if (aoedeUrl.current) URL.revokeObjectURL(aoedeUrl.current);
+    aoedeUrl.current = url;
+    player.src = url;
+    player.currentTime = 0;
+    player.playbackRate = speedRef.current;
+    setMode('aoede');
+    setTtsVoice('Aoede');
+    const playResult = player.play();
+    if (playResult && typeof playResult.then === 'function') await playResult;
+    setFileDuration(Number.isFinite(player.duration) ? player.duration : 0);
+    setStatus('playing');
+    return true;
+  }, [section, testId]);
+
+  const play = useCallback(async () => {
     setStarted(true);
     setBlocked(false);
     if (mode === 'tts') {
+      if (Platform.OS === 'web' && !preferPreparedAudio) {
+        try {
+          if (await makeAoedeAudio()) return;
+        } catch (error) {
+          if (__DEV__) console.warn('[Listening] Aoede TTS unavailable; using device voice.', error);
+          setTtsVoice('device');
+        }
+      } else if (Platform.OS === 'web') setTtsVoice('device');
+      setMode('tts');
       setStatus('playing');
       speakFrom(status === 'ended' ? 0 : ttsIndex.current);
       return;
@@ -153,7 +211,7 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
         setBlocked(true);
       });
     }
-  }, [mode, speakFrom, status]);
+  }, [makeAoedeAudio, mode, preferPreparedAudio, speakFrom, status]);
 
   const pause = useCallback(() => {
     if (mode === 'tts') {
@@ -216,7 +274,7 @@ export function useSectionAudio(opts: { src: string; transcript: readonly Transc
 
   const synced = mode === 'tts' || transcript.some((l) => typeof l.start === 'number');
 
-  return { mode, status, current, duration, activeLine, synced, blocked, started, play, pause, seek, seekLine };
+  return { mode, status, current, duration, activeLine, synced, blocked, started, audioFileReady, ttsVoice, play, pause, seek, seekLine };
 }
 
 export type SectionAudio = ReturnType<typeof useSectionAudio>;

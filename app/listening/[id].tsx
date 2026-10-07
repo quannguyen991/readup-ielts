@@ -12,7 +12,7 @@ import { useSectionAudio } from '@/components/listening/useSectionAudio';
 import { Button, Icon } from '@/components/ui';
 import { getListeningTest } from '@/data/listening-tests';
 import { answeredNumbers, bandFromScore, scoreSections, sectionNumbers } from '@/services/listening/scoring';
-import type { ListeningAnswers, ListeningAttempt, ListeningSection, ListeningTest } from '@/services/listening/types';
+import type { ListeningAnswers, ListeningAttempt, ListeningGroupType, ListeningSection, ListeningTest } from '@/services/listening/types';
 import { stopPronounce } from '@/services/audio/pronounce';
 import { playSfx } from '@/services/audio/sfx-ui';
 import { useListeningStore } from '@/store/useListeningStore';
@@ -32,7 +32,7 @@ type Phase = 'ready' | 'taking' | 'done';
 
 export default function ListeningExamScreen() {
   const { L } = useL();
-  const { id, s, attempt } = useLocalSearchParams<{ id: string; s?: string; attempt?: string }>();
+  const { id, s, task, attempt } = useLocalSearchParams<{ id: string; s?: string; task?: string; attempt?: string }>();
   const test = typeof id === 'string' ? getListeningTest(id) : undefined;
   if (!test) {
     return (
@@ -44,19 +44,23 @@ export default function ListeningExamScreen() {
       </SafeAreaView>
     );
   }
-  return <Exam key={`${test.id}-${s ?? 'all'}-${attempt ?? ''}`} test={test} sectionParam={s} attemptId={attempt} />;
+  return <Exam key={`${test.id}-${s ?? 'all'}-${task ?? 'all'}-${attempt ?? ''}`} test={test} sectionParam={s} taskParam={task} attemptId={attempt} />;
 }
 
-function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionParam?: string; attemptId?: string }) {
+function Exam({ test, sectionParam, taskParam, attemptId }: { test: ListeningTest; sectionParam?: string; taskParam?: string; attemptId?: string }) {
   const { L } = useL();
   const { width } = useWindowDimensions();
   const wide = width >= 1024;
 
   const wanted = sectionParam ? Number(sectionParam) : null;
+  const taskType = (['gap', 'mcq-one', 'mcq-many', 'matching'] as const).find((type) => type === taskParam) ?? null;
   const sections = useMemo(() => {
     const picked = wanted ? test.sections.filter((x) => x.n === wanted) : [];
-    return picked.length ? picked : test.sections;
-  }, [test, wanted]);
+    const source = picked.length ? picked : test.sections;
+    return taskType
+      ? source.map((section) => ({ ...section, groups: section.groups.filter((group) => group.type === taskType) })).filter((section) => section.groups.length > 0)
+      : source;
+  }, [taskType, test, wanted]);
   const sectionArg = sections.length === test.sections.length && !wanted ? null : (sections.length === 1 ? sections[0]?.n : null);
 
   const settings = useListeningStore((st) => st.settings);
@@ -82,8 +86,32 @@ function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionP
   );
 
   const section = (sections[secIdx] ?? sections[0]) as ListeningSection;
+  const hasPreparedAudio = test.source === 'Band 9 Original';
   const speed = real ? 1 : settings.speed;
-  const audio = useSectionAudio({ src: section.audio, transcript: section.transcript, speed });
+  const localAudioFiles = useRef<Record<string, { src: string; name: string }>>({});
+  const [localAudioRevision, setLocalAudioRevision] = useState(0);
+  const audioKey = `${test.id}:${section.n}`;
+  const localAudio = localAudioFiles.current[audioKey];
+  const audio = useSectionAudio({ src: localAudio?.src ?? section.audio, transcript: section.transcript, speed, testId: test.id, section: section.n, preferPreparedAudio: hasPreparedAudio });
+  useEffect(() => () => {
+    for (const item of Object.values(localAudioFiles.current)) URL.revokeObjectURL(item.src);
+  }, []);
+  const chooseLocalAudio = useCallback(() => {
+    if (Platform.OS !== 'web' || typeof document === 'undefined') return;
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'audio/*';
+    input.onchange = () => {
+      const file = input.files?.[0];
+      if (!file) return;
+      const previous = localAudioFiles.current[audioKey];
+      if (previous) URL.revokeObjectURL(previous.src);
+      localAudioFiles.current[audioKey] = { src: URL.createObjectURL(file), name: file.name };
+      setLocalAudioRevision((revision) => revision + 1);
+    };
+    input.click();
+  }, [audioKey]);
+  void localAudioRevision;
   const wantAuto = useRef(false);
 
   // Đồng hồ là `ElapsedPill` tự giữ giây của nó: trước đây mỗi giây cả màn
@@ -93,7 +121,7 @@ function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionP
   useExamWebTweaks();
   const keyboardInset = useKeyboardInset();
   useWakeLock(phase === 'taking' && audio.status === 'playing');
-  const draftId = `${test.id}-${sectionArg ?? 'all'}`;
+  const draftId = `${test.id}-${sectionArg ?? 'all'}-${taskType ?? 'all'}`;
   const draftState = useMemo(() => ({ answers: { j: JSON.stringify(answers) }, marked: {} }), [answers]);
   const [restoredCount, setRestoredCount] = useState(0);
   const onRestoreDraft = useCallback(
@@ -223,8 +251,9 @@ function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionP
     const a: ListeningAttempt = {
       id: `${test.id}-${sectionArg ?? 'all'}-${Date.now().toString(36)}`,
       testId: test.id,
-      title: test.title,
+      title: `${test.title}${sectionArg ? ` · Section ${sectionArg}` : ''}${taskType ? ` · ${taskType}` : ''}`,
       section: sectionArg ?? null,
+      task: taskType,
       mode: real ? 'real' : 'practice',
       startedAt: new Date(Date.now() - durationSec * 1000).toISOString(),
       finishedAt: new Date().toISOString(),
@@ -317,8 +346,15 @@ function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionP
                   <ModeOption
                     on={real}
                     title={L('Thi thật', 'Real test')}
-                    note={L('Nghe một lần, không tạm dừng, có 30 giây kiểm tra cuối mỗi section.', 'One listen, no pause, 30 seconds to check after each section.')}
-                    onPress={() => { playSfx('select'); setReal(true); }}
+                    note={audio.audioFileReady
+                      ? hasPreparedAudio
+                        ? L('Audio luyện tập Aoede đã chuẩn bị sẵn. Nghe một lần, có 30 giây kiểm tra cuối mỗi section.', 'Pre-generated Aoede practice audio is ready. One listen, with 30 seconds to check at the end of each section.')
+                        : L('Nghe một lần, không tạm dừng, có 30 giây kiểm tra cuối mỗi section.', 'One listen, no pause, 30 seconds to check after each section.')
+                      : hasPreparedAudio
+                        ? L('Đang tải audio luyện tập đã chuẩn bị sẵn…', 'Loading the pre-generated practice audio…')
+                        : L('Cần audio của đề này. Bạn có thể chọn tệp audio từ thiết bị.', 'This test needs audio. You can choose an audio file from your device.')}
+                    disabled={!audio.audioFileReady}
+                    onPress={() => { if (audio.audioFileReady) { playSfx('select'); setReal(true); } }}
                   />
                 </View>
                 {!real ? (
@@ -333,7 +369,21 @@ function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionP
                   </Text>
                 ) : null}
                 <FallbackNote audio={audio} />
-                <Button className="mt-5" size="lg" label={L('Bắt đầu làm bài', 'Start test')} iconRight="arrow-right" onPress={start} />
+                {hasPreparedAudio ? (
+                  <Text className="mt-3 font-mid text-label text-muted">{L('Audio luyện tập đã được tạo sẵn bằng giọng Aoede và phát trực tiếp từ thư viện.', 'Aoede practice audio is pre-generated and ready to stream from the library.')}</Text>
+                ) : (
+                  <>
+                    <Button
+                      className="mt-3"
+                      variant="outline"
+                      iconLeft="volume"
+                      label={localAudio?.name ? L(`Đã nạp: ${localAudio.name}`, `Loaded: ${localAudio.name}`) : L('Chọn audio của section này từ thiết bị', 'Choose this section’s audio from your device')}
+                      onPress={chooseLocalAudio}
+                    />
+                    <Text className="mt-1 font-sans text-label text-muted">{L('Tệp chỉ ở trên thiết bị trong phiên này. Tải audio của đề mới mở được chế độ thi thật.', 'The file stays on this device for this session. Test mode requires audio for this source.')}</Text>
+                  </>
+                )}
+                <Button className="mt-5" size="lg" label={L('Bắt đầu làm bài', 'Start test')} iconRight="arrow-right" disabled={real && !audio.audioFileReady} onPress={start} />
                 <Text className="mt-2 text-center font-sans text-label text-subtle">{L('Nên đeo tai nghe. Phím Space = phát / tạm dừng.', 'Headphones recommended. Space = play / pause.')}</Text>
               </View>
             </View>
@@ -375,15 +425,29 @@ function Exam({ test, sectionParam, attemptId }: { test: ListeningTest; sectionP
 
           <View className="min-h-0 flex-1" style={{ flexDirection: wide ? 'row' : 'column' }}>
             {wide ? (
-              <ScrollView style={{ width: 340, flexGrow: 0 }} contentContainerStyle={{ padding: 16 }}>
-                <AudioCard
-                  audio={audio}
-                  real={real}
-                  speed={speed}
-                  onSpeed={(v) => setSettings({ speed: v })}
-                  title={`Section ${section.n} — ${section.title}`}
-                  context={section.context}
-                />
+              <ScrollView
+                style={{ width: Math.min(520, Math.max(400, Math.round(width * 0.34))), flexGrow: 0 }}
+                contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 16 }}
+              >
+                <View style={{ width: '100%', maxWidth: 440, alignSelf: 'center' }}>
+                  <AudioCard
+                    audio={audio}
+                    real={real}
+                    speed={speed}
+                    onSpeed={(v) => setSettings({ speed: v })}
+                    title={`Section ${section.n} — ${section.title}`}
+                    context={section.context}
+                    localAudioName={localAudio?.name}
+                    sourceNote={hasPreparedAudio
+                      ? audio.audioFileReady
+                        ? L('Audio tạo sẵn bằng Aoede · đề luyện tập nguyên bản của Band 9', 'Pre-generated Aoede audio · original Band 9 practice material')
+                        : audio.mode === 'tts'
+                          ? L('Audio không tải được; đang dùng giọng đọc trên thiết bị làm dự phòng.', 'Audio could not load; using the device voice as a fallback.')
+                          : L('Đang tải audio Aoede đã chuẩn bị sẵn…', 'Loading the pre-generated Aoede audio…')
+                      : undefined}
+                    onPickAudio={real || hasPreparedAudio ? undefined : chooseLocalAudio}
+                  />
+                </View>
               </ScrollView>
             ) : null}
             <ScrollView className="flex-1" contentContainerStyle={{ padding: 16, paddingBottom: 32 + keyboardInset }} keyboardShouldPersistTaps="handled" keyboardDismissMode="on-drag">
@@ -534,14 +598,16 @@ function ElapsedPill({ startedAt }: { startedAt: number }) {
   );
 }
 
-function ModeOption({ on, title, note, onPress }: { on: boolean; title: string; note: string; onPress: () => void }) {
+function ModeOption({ on, title, note, onPress, disabled = false }: { on: boolean; title: string; note: string; onPress: () => void; disabled?: boolean }) {
   return (
     <Pressable
       accessibilityRole="radio"
       aria-checked={on}
+      aria-disabled={disabled}
+      disabled={disabled}
       onPress={onPress}
       className="flex-row items-start gap-3 rounded-panel border p-3"
-      style={{ borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF' }}
+      style={{ borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF', opacity: disabled ? 0.6 : 1 }}
     >
       <View style={{ width: 18, height: 18, borderRadius: 9, marginTop: 2, borderWidth: on ? 5 : 1.5, borderColor: on ? color.primary : color.borderStrong }} />
       <View className="min-w-0 flex-1">

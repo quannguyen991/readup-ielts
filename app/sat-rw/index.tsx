@@ -11,7 +11,10 @@ import { RW_HUB_LINKS } from '@/navigation/sat-hub';
 import { rwSetForTier } from '@/services/sat-rw/skill-sets';
 import { CrossFade } from '@/components/motion/Motion';
 import {
+  getSatRwTierSet,
+  SAT_RW_COURSE_TIERS,
   SAT_RW_STAGES,
+  type SatRwCourseTier,
   type SatRwCurriculumUnit,
 } from '@/services/sat-rw/curriculum';
 import {
@@ -21,11 +24,12 @@ import {
 } from '@/services/sat-rw/mixed-sets';
 import { Screen } from '@/components/layout/Screen';
 import { Badge, Card, Icon, IconCircle } from '@/components/ui';
-import { SAT_RW_DOMAINS, SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
+import { questionsForUnit, SAT_RW_DOMAINS, SAT_RW_QUESTIONS } from '@/data/sat-rw-repository';
 import { summarizeRwBySkill } from '@/services/sat-rw/progress';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
+import { officialSkillPracticeHref, SAT_RW_OFFICIAL_SKILLS, type OfficialSatRwSkill } from '@/services/sat-rw/official-course';
 
 /**
  * Tên College Board (to) và tên tiếng Việt (dòng phụ) của 12 kỹ năng trong kho.
@@ -48,18 +52,18 @@ const SKILL_NAME: Record<string, { en: string; vi: string; descEn: string }> = {
 };
 
 /**
- * Rhetorical Synthesis không nằm trong kho câu soạn tay mà có bộ SINH MỚI riêng (bài 16).
+ * Rhetorical Synthesis không nằm trong kho câu soạn tay mà có bộ SINH MỚI riêng (bài 10).
  * Thẻ trỏ thẳng vào bộ ấy để mảng Expression of Ideas đủ hai kỹ năng như đề thật.
  */
 const SYNTHESIS_SET = SAT_RW_STAGES.flatMap((st) => st.units)
-  .find((u) => u.number === 16)
+  .find((u) => u.number === 10)
   ?.sets.find((x) => x.kind === 'generated');
 
 /** Kỹ năng → mảng đề, suy từ chính kho câu hỏi. */
 const SKILL_DOMAIN: Record<string, string> = Object.fromEntries(SAT_RW_QUESTIONS.map((q) => [q.skill, q.domain]));
 const SKILLS_IN_ORDER = Object.keys(SKILL_NAME).filter((k) => SKILL_DOMAIN[k]);
 
-type Tab = 'skills' | 'mix' | 'units' | 'score';
+type Tab = 'path' | 'skills' | 'mix' | 'units' | 'score';
 
 /**
  * Hub SAT Reading & Writing — cùng bố cục với trang SAT Math (01/10/2026): tên
@@ -74,7 +78,7 @@ type Tab = 'skills' | 'mix' | 'units' | 'score';
  * trong kho này — hai con số khác nhau và nói hai chuyện khác nhau.
  */
 export default function SatRwHubScreen() {
-  const [tab, setTab] = useState<Tab>('skills');
+  const [tab, setTab] = useState<Tab>('path');
   const { L, en } = useL();
   const attempts = useSatRwStore((s) => s.attempts);
   const progress = useMemo(() => summarizeRwBySkill(SAT_RW_QUESTIONS, attempts), [attempts]);
@@ -98,6 +102,7 @@ export default function SatRwHubScreen() {
           value={tab}
           onChange={setTab}
           options={[
+            { key: 'path', label: L('Lộ trình', 'Path') },
             { key: 'skills', label: L('Kỹ năng', 'Skills') },
             { key: 'mix', label: L(`Đề trộn · ${mixStats.sets}`, `Mixed · ${mixStats.sets}`) },
             { key: 'units', label: L('Theo bài', 'By unit') },
@@ -108,6 +113,14 @@ export default function SatRwHubScreen() {
       </HubToolbar>
 
       <CrossFade swapKey={tab}>
+        {tab === 'path' ? (
+          <CoursePathView
+            attempts={attempts}
+            onShowMixed={() => setTab('mix')}
+            onShowUnits={() => setTab('units')}
+          />
+        ) : null}
+
         {tab === 'skills' ? (
           <View>
             {SAT_RW_DOMAINS.map((d) => {
@@ -216,6 +229,242 @@ export default function SatRwHubScreen() {
         ) : null}
       </CrossFade>
     </Screen>
+  );
+}
+
+function CoursePathView({
+  attempts,
+  onShowMixed,
+  onShowUnits,
+}: {
+  attempts: Record<string, { correct: boolean }>;
+  onShowMixed: () => void;
+  onShowUnits: () => void;
+}) {
+  const { L, en } = useL();
+  const [expandedTier, setExpandedTier] = useState<SatRwCourseTier | null>('foundation');
+  const [officialGroup, setOfficialGroup] = useState<'foundation' | 'medium' | 'advanced' | 'challenge' | 'grammar'>('foundation');
+
+  return (
+    <View className="mt-4 gap-3">
+      <Card>
+        <Text className="font-heavy text-cardTitle text-ink">
+          {L('Học theo lộ trình SAT Reading & Writing', 'SAT Reading & Writing learning path')}
+        </Text>
+        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+          {L(
+            'Đi từ Nền tảng đến Nâng cao. Mỗi mức dùng lại bộ câu hỏi hiện có theo từng kỹ năng; mở lời giải khi luyện và làm đề trộn sau khi đã ôn các mảng.',
+            'Move from Foundation to Advanced. Each tier reuses the current skill-based question sets; study with explanations, then try mixed practice across domains.',
+          )}
+        </Text>
+        <Text className="mt-2 font-mid text-label text-muted">
+          {L(
+            'Các unit bên dưới là chủ đề Band 9 hiện có, được xếp vào mức theo độ khó câu hỏi. Đây là lộ trình tương ứng gần nhất với cấu trúc Khan Academy; một số kỹ năng nhỏ vẫn đang gộp chung trong ngân hàng hiện tại.',
+            'The units below are existing Band 9 topics grouped by question difficulty. This is the closest fit to Khan Academy’s tiered structure; some finer skills still share a Band 9 question-bank category.',
+          )}
+        </Text>
+      </Card>
+
+      {SAT_RW_COURSE_TIERS.map((tier, tierIndex) => {
+        const expanded = expandedTier === tier.id;
+        const availableSets = SAT_RW_STAGES.flatMap((stage) => stage.units)
+          .map((unit) => getSatRwTierSet(unit, tier.id))
+          .filter((set) => !!set);
+        return (
+          <Card key={tier.id}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ expanded }}
+              onPress={() => setExpandedTier(expanded ? null : tier.id)}
+              className="flex-row items-center gap-3"
+            >
+              <IconCircle name={tierIndex === 0 ? 'book' : 'sparkle'} tone={STAGE_TONES[tierIndex]!} size={40} />
+              <View className="min-w-0 flex-1">
+                <Text className="font-strong text-cardTitle text-ink">
+                  {en ? tier.titleEn : tier.titleVi}
+                </Text>
+                <Text className="mt-1 font-sans text-label text-muted">
+                  {L(`${availableSets.length} bài luyện · chọn theo mảng SAT`, `${availableSets.length} practice units · grouped by SAT domain`)}
+                </Text>
+              </View>
+              <Icon name={expanded ? 'chevron-up' : 'chevron-down'} size={18} color={color.muted} strokeWidth={2} />
+            </Pressable>
+            {expanded ? (
+              <View className="mt-4 gap-5">
+                <Text className="font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+                  {en ? tier.blurbEn : tier.blurbVi}
+                </Text>
+                {SAT_RW_STAGES.map((stage, stageIndex) => (
+                  <View key={stage.id} className="gap-2">
+                    <Text className="font-strong text-label text-muted">
+                      {en ? stage.domain : stage.title.replace(/^Chặng \d+ · /, '')}
+                    </Text>
+                    <View className="gap-2">
+                      {stage.units.map((unit) => (
+                        <PathUnitLink
+                          key={`${tier.id}-${unit.number}`}
+                          unit={unit}
+                          tier={tier.id}
+                          stageIndex={stageIndex}
+                          attempts={attempts}
+                          en={en}
+                          L={L}
+                        />
+                      ))}
+                    </View>
+                  </View>
+                ))}
+              </View>
+            ) : null}
+          </Card>
+        );
+      })}
+
+      <Card>
+        <View className="flex-row flex-wrap items-center gap-2">
+          <Text className="font-heavy text-cardTitle text-ink">
+            {L('Đủ 47 kỹ năng theo khóa SAT R&W', 'All 47 SAT R&W course skills')}
+          </Text>
+          <Badge label={L('12 unit · 1:1', '12 units · mapped 1:1')} tone="primary" shape="tag" />
+        </View>
+        <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+          {L(
+            'Mỗi kỹ năng bên dưới có mục tiêu, chiến lược làm bài và bẫy cần tránh. Bộ luyện dùng câu hỏi cùng chủ đề trong Band 9; phần Reading đã bổ sung 12 đoạn văn và câu hỏi tự biên soạn mới.',
+            'Each skill below includes a goal, a solving strategy, and a common trap. Practice links use matching Band 9 questions; the Reading bank now includes 12 newly written passages and questions.',
+          )}
+        </Text>
+        <View className="mt-3 flex-row flex-wrap gap-2">
+          {([
+            ['foundation', L('Foundation', 'Foundation')],
+            ['medium', L('Medium', 'Medium')],
+            ['advanced', L('Advanced', 'Advanced')],
+            ['challenge', L('Challenge', 'Challenge')],
+            ['grammar', L('Ôn ngữ pháp', 'Grammar practice')],
+          ] as const).map(([key, label]) => (
+            <Pressable
+              key={key}
+              accessibilityRole="button"
+              accessibilityState={{ selected: officialGroup === key }}
+              onPress={() => setOfficialGroup(key)}
+              className={`rounded-pill border px-3 py-2 ${officialGroup === key ? 'border-primary-500 bg-primary-50' : 'border-border bg-surfaceAlt'}`}
+            >
+              <Text className="font-strong text-label text-ink">{label}</Text>
+            </Pressable>
+          ))}
+        </View>
+        <View className="mt-3 gap-2">
+          {SAT_RW_OFFICIAL_SKILLS.filter((skill) =>
+            officialGroup === 'challenge' ? skill.kind === 'challenge' :
+            officialGroup === 'grammar' ? skill.kind === 'grammar' :
+            skill.kind === 'tier' && skill.tier === officialGroup,
+          ).map((skill) => <OfficialSkillCard key={skill.id} skill={skill} L={L} />)}
+        </View>
+        <Text className="mt-3 font-sans text-label text-muted">
+          {L('Tham khảo cấu trúc khóa công khai của Khan Academy; toàn bộ đoạn đọc và câu hỏi mới của Band 9 được viết riêng.', 'Course structure is mapped from Khan Academy’s public course; all new Band 9 passages and questions are original.')}
+        </Text>
+      </Card>
+
+      <Card>
+        <Text className="font-strong text-cardTitle text-ink">
+          {L('Sau ba mức luyện', 'After the three practice tiers')}
+        </Text>
+        <Text className="mt-1 font-sans text-body text-muted" style={{ lineHeight: 22 }}>
+          {L(
+            'Ôn riêng 8 bài quy ước tiếng Anh khi cần củng cố ngữ pháp; sau đó thử bộ đề trộn để chuyển đổi giữa các dạng câu hỏi như trong bài thi.',
+            'Review the eight Standard English Conventions units when you need a grammar refresher, then use mixed sets to switch between question types as in the exam.',
+          )}
+        </Text>
+        <View className="mt-3 flex-row flex-wrap gap-2">
+          <Pressable
+            accessibilityRole="button"
+            onPress={onShowUnits}
+            className="rounded-panel border border-border bg-surfaceAlt px-3 py-2"
+          >
+            <Text className="font-strong text-label text-ink">{L('Ôn ngữ pháp theo bài', 'Review grammar by unit')}</Text>
+          </Pressable>
+          <Pressable
+            accessibilityRole="button"
+            onPress={onShowMixed}
+            className="rounded-panel border border-success bg-success-soft px-3 py-2"
+          >
+            <Text className="font-strong text-label text-ink">{L('Luyện đề trộn', 'Try mixed practice')}</Text>
+          </Pressable>
+        </View>
+      </Card>
+    </View>
+  );
+}
+
+function OfficialSkillCard({ skill, L }: { skill: OfficialSatRwSkill; L: (vi: string, english: string) => string }) {
+  const { en } = useL();
+  const newQuestions = SAT_RW_QUESTIONS.filter((q) => q.unit === skill.unit && q.skill === skill.legacySkill);
+  const tierLabel = skill.tier === 'foundation' ? 'easy' : skill.tier === 'medium' ? 'medium' : 'hard';
+  const count = skill.id.startsWith('rhetorical-synthesis')
+    ? 12
+    : skill.tier
+      ? newQuestions.filter((q) => q.difficulty === tierLabel).length
+      : newQuestions.length;
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={L(`${skill.titleVi}: luyện ${count} câu`, `${skill.title}: practice ${count} questions`)}
+      onPress={() => router.push(officialSkillPracticeHref(skill) as never)}
+      className="rounded-panel border border-border bg-surfaceAlt px-3 py-3"
+      style={({ pressed }) => pressed ? { opacity: 0.86 } : undefined}
+    >
+      <View className="flex-row flex-wrap items-center justify-between gap-2">
+        <Text className="font-strong text-label text-ink">{en ? skill.title : skill.titleVi}</Text>
+        <Badge label={L(`${count} câu · Bài ${skill.unit}`, `${count} questions · Unit ${skill.unit}`)} tone={count ? 'neutral' : 'warning'} shape="tag" />
+      </View>
+      <Text className="mt-1.5 font-sans text-label text-muted" style={{ lineHeight: 20 }}>
+        {en ? skill.strategy : skill.strategy}
+      </Text>
+      <Text className="mt-1 font-mid text-label" style={{ color: '#936B31' }}>
+        {L(`Cẩn thận: ${skill.trap}`, `Watch for: ${skill.trap}`)}
+      </Text>
+    </Pressable>
+  );
+}
+
+function PathUnitLink({
+  unit,
+  tier,
+  stageIndex,
+  attempts,
+  en,
+  L,
+}: {
+  unit: SatRwCurriculumUnit;
+  tier: SatRwCourseTier;
+  stageIndex: number;
+  attempts: Record<string, { correct: boolean }>;
+  en: boolean;
+  L: (vi: string, english: string) => string;
+}) {
+  const set = getSatRwTierSet(unit, tier);
+  if (!set) return null;
+  const setQuestions = set.slice ? questionsForUnit(unit.number).slice(set.slice.from, set.slice.to) : [];
+  const answered = setQuestions.filter((question) => attempts[question.id]).length;
+  return (
+    <Pressable
+      accessibilityRole="link"
+      accessibilityLabel={L(`${unit.title}, ${set.count} câu`, `${unit.title}, ${set.count} questions`)}
+      onPress={() => router.push(`/sat-rw/set/${set.id}` as never)}
+      className="flex-row items-center gap-3 rounded-panel border border-border bg-surfaceAlt px-3 py-3"
+      style={({ pressed }) => (pressed ? { opacity: 0.85 } : undefined)}
+    >
+      <IconCircle name="book" tone={STAGE_TONES[stageIndex]!} size={34} />
+      <View className="min-w-0 flex-1">
+        <Text className="font-strong text-label text-ink">
+          {L(`Bài ${unit.number} · ${unit.title}`, `Unit ${unit.number} · ${unit.title}`)}
+        </Text>
+        <Text className="mt-0.5 font-sans text-label text-muted">
+          {L(`${set.count} câu · đã làm ${answered}/${set.count}`, `${set.count} questions · ${answered}/${set.count} answered`)}
+        </Text>
+      </View>
+      <Badge label={en ? setTitleEn(set, true) : set.title} tone={tier === 'advanced' ? 'warning' : tier === 'medium' ? 'info' : 'primary'} shape="tag" />
+      <Icon name="chevron-right" size={16} color={color.muted} strokeWidth={2} />
+    </Pressable>
   );
 }
 
@@ -392,7 +641,7 @@ function CurriculumUnitCard({
 const GENERATED_SET_EN: Record<number, string> = {
   11: 'Fresh set · words in context',
   15: 'Fresh set · data evidence',
-  16: 'Fresh set · choosing the closing sentence',
+  10: 'Fresh set · rhetorical synthesis',
 };
 function setTitleEn(set: SatRwCurriculumUnit['sets'][number], en: boolean): string {
   if (!en) return set.title;

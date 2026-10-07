@@ -9,6 +9,8 @@ import { Button, Card } from '@/components/ui';
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
 import { MATH_DOMAIN_LABEL, MATH_SKILL_DOMAIN, type MathSkill } from '@/lib/math/types';
 import { lessonKey, useLessonStore } from '@/store/useLessonStore';
+import { useMathBankProgress } from '@/store/useMathStore';
+import { roundForTier } from '@/services/math/bank';
 import { useL } from '@/i18n/useL';
 
 export default function MathLessonScreen() {
@@ -19,6 +21,7 @@ export default function MathLessonScreen() {
   const key = lessonKey('math', skill);
   const done = useLessonStore((s) => !!s.done[key]);
   const markDone = useLessonStore((s) => s.markDone);
+  const bank = useMathBankProgress();
 
   if (!lesson) {
     return (
@@ -31,6 +34,16 @@ export default function MathLessonScreen() {
     );
   }
   const next = MATH_LESSONS[index + 1];
+  const practiceLevels = (['easy', 'medium', 'hard'] as const).flatMap((tier) => {
+    const round = roundForTier(skill as MathSkill, tier, bank[skill as MathSkill].doneRounds);
+    if (round === null) return [];
+    const label = {
+      easy: L('Luyện nền tảng', 'Foundation practice'),
+      medium: L('Luyện trung bình', 'Medium practice'),
+      hard: L('Luyện nâng cao', 'Advanced practice'),
+    }[tier];
+    return [{ key: tier, label, href: `/math/drill/${skill}?round=${round}` }];
+  });
   return (
     <LessonView
       key={skill}
@@ -46,6 +59,7 @@ export default function MathLessonScreen() {
       done={done}
       onDone={() => markDone(key)}
       practiceHref={`/math/drill/${skill}`}
+      practiceLevels={practiceLevels}
       next={next ? { title: next.title, href: `/math/learn/${next.skill}` } : undefined}
     />
   );

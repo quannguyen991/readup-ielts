@@ -14,6 +14,24 @@ class WordAudioTests(unittest.TestCase):
         ], 2)
         self.assertTrue(all(result))
 
+    def test_british_spellings_match_whisper_american_spellings(self):
+        # Bộ từ Vocabulary for IELTS dùng chính tả Anh; Whisper small.en ghi kiểu Mỹ.
+        pairs = [('enrol', 'enroll'), ('enrolment', 'enrollment'), ('catalogue', 'catalog'),
+                 ('summarise', 'summarize'), ('behaviour', 'behavior'), ('cheque', 'check'),
+                 ('artefact', 'artifact'), ('programme', 'program'), ('instalment', 'installment'),
+                 ('harbour', 'harbor'), ('analyse', 'analyze'), ('licence', 'license'),
+                 ('travelling', 'traveling'), ('fibre', 'fiber'), ('mould', 'mold'),
+                 ('driving licence', 'driving license'), ('practise', 'practice'), ('grey', 'gray')]
+        for uk, us in pairs:
+            with self.subTest(uk=uk):
+                heard = [{'word': w, 'start': .2 + i * .3, 'end': .4 + i * .3} for i, w in enumerate(us.split())]
+                self.assertIsNotNone(align_words([uk], heard, 2)[0])
+
+    def test_spelling_rules_do_not_accept_a_different_word(self):
+        for wanted, heard in [('harbour', 'harder'), ('catalogue', 'category'), ('enrol', 'enrich'), ('summarise', 'summary')]:
+            with self.subTest(wanted=wanted):
+                self.assertEqual(align_words([wanted], [{'word': heard, 'start': .2, 'end': .8}], 1), [None])
+
     def test_missing_word_does_not_relabel_following_clips(self):
         result = align_words(['driver', 'ripple', 'foster'], [
             {'word': 'driver', 'start': .2, 'end': .7},

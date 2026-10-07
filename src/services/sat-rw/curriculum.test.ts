@@ -5,7 +5,9 @@ import { SAT_RW_QUESTIONS, SAT_RW_UNITS, questionsForUnit } from '@/data/sat-rw-
 import {
   SAT_RW_ALL_SETS,
   SAT_RW_CURRICULUM_TOTALS,
+  SAT_RW_COURSE_TIERS,
   SAT_RW_STAGES,
+  getSatRwTierSet,
   getSatRwSet,
   nextSatRwSet,
 } from './curriculum';
@@ -20,6 +22,23 @@ test('mọi unit trong kho đều có mặt trong lộ trình, không sót bài 
     assert.ok(inCurriculum.has(unit.unit), `unit ${unit.unit} (${unit.title}) không có trong lộ trình`);
   }
   assert.equal(inCurriculum.size, SAT_RW_UNITS.length);
+});
+
+test('lộ trình ba mức tái dùng đúng set của cả 16 unit mà không tạo ID mới', () => {
+  const units = SAT_RW_STAGES.flatMap((stage) => stage.units);
+  assert.equal(SAT_RW_COURSE_TIERS.length, 3);
+  assert.deepEqual(SAT_RW_COURSE_TIERS.map((tier) => tier.difficulty), ['easy', 'medium', 'hard']);
+
+  for (const tier of SAT_RW_COURSE_TIERS) {
+    const mapped = units.map((unit) => getSatRwTierSet(unit, tier.id));
+    assert.equal(mapped.length, SAT_RW_UNITS.length);
+    assert.ok(mapped.every((set) => set && set.slice !== null && set.difficulty === tier.difficulty));
+  }
+
+  assert.ok(getSatRwSet('satrw-u1-learn'));
+  assert.ok(getSatRwSet('satrw-u1-drill'));
+  assert.ok(getSatRwSet('satrw-u1-hard'));
+  assert.ok(getSatRwSet('satrw-u1-checkpoint'));
 });
 
 test('không unit nào xuất hiện ở hai chặng', () => {
@@ -93,7 +112,7 @@ test('CHỈ ba bài có bộ sinh mới, và đúng ba bài có bộ sinh đứn
     kiểm được trong ba phút — họ bấm hai lần và thấy y hệt.
   */
   const withGenerated = SAT_RW_ALL_SETS.filter((s) => s.kind === 'generated').map((s) => s.unitNumber);
-  assert.deepEqual(withGenerated.sort((a, b) => a - b), [11, 15, 16]);
+  assert.deepEqual(withGenerated.sort((a, b) => a - b), [10, 11, 15]);
 });
 
 test('số câu của mỗi bộ khớp số câu thật của bài', () => {

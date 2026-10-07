@@ -47,6 +47,7 @@ export function LessonView({
   done,
   onDone,
   practiceHref,
+  practiceLevels,
   next,
 }: {
   lesson: TheoryLesson;
@@ -58,6 +59,7 @@ export function LessonView({
   done: boolean;
   onDone: () => void;
   practiceHref: string;
+  practiceLevels?: { key: string; label: string; href: string }[];
   next?: { title: string; href: string };
 }) {
   const tone = LEVEL_TONE[lesson.level];
@@ -76,7 +78,7 @@ export function LessonView({
         </Pressable>
 
         <Appear index={0}>
-          <View className="mt-5 rounded-[22px] bg-white p-6" style={CARD}>
+          <View className="mt-5 rounded-[22px] bg-white p-5" style={CARD}>
             <Text className="font-strong text-label uppercase tracking-[1.2px] text-primary-600">{eyebrow}</Text>
             <Text className="mt-1 font-heavy text-pageTitle text-ink">{en ? lesson.englishName : lesson.title}</Text>
             <Text className="mt-0.5 font-sans text-body text-muted">{en ? lesson.title : lesson.englishName}</Text>
@@ -101,37 +103,42 @@ export function LessonView({
                 </View>
               ) : null}
             </View>
-            <View className="mt-4 flex-row gap-3 rounded-2xl p-4" style={{ backgroundColor: '#FCF9F4' }}>
+            <View className="mt-4 flex-row gap-3 rounded-2xl p-3.5" style={{ backgroundColor: '#FCF9F4' }}>
               <Icon name="target" size={18} color={color.primary} />
-              <Text className="min-w-0 flex-1 font-semi text-body text-ink">{lesson.goal}</Text>
+              <View className="min-w-0 flex-1">
+                <Text className="font-strong text-label text-muted">{L('Mục tiêu', 'Goal')}</Text>
+                <Text className="mt-0.5 font-semi text-body text-ink">{lesson.goal}</Text>
+              </View>
             </View>
+            {lesson.prerequisite ? (
+              <View className="mt-3 flex-row gap-2">
+                <Text className="font-strong text-label text-muted">{L('Ôn trước:', 'Review:')}</Text>
+                <Text className="min-w-0 flex-1 font-sans text-label text-muted">{lesson.prerequisite}</Text>
+              </View>
+            ) : null}
           </View>
         </Appear>
 
-        {/* LUẬT CẦN NHỚ — mọi ý kiến thức trong MỘT khung, đọc một lượt là nắm cả bài. */}
+        {/* Một khung kiến thức, theo thứ tự đọc; công thức đi ngay dưới quy tắc. */}
         <Section
           icon="book"
-          title={L('Luật cần nhớ', 'Rules to remember')}
-          sub={L(
-            `${rulesOf(lesson).length} ý — đọc hết một lượt trước khi sang ví dụ`,
-            `${rulesOf(lesson).length} points — read them all once before the examples`,
-          )}
+          title={L('Ý chính', 'Key ideas')}
         />
         <Appear index={1}>
-          <View className="rounded-[22px] bg-white p-5 md:p-6" style={CARD}>
+          <View className="rounded-[22px] bg-white p-4 md:p-5" style={CARD}>
             {rulesOf(lesson).map((r, i) => (
-              <View key={i} className={i > 0 ? 'mt-4 border-t pt-4' : ''} style={{ borderColor: '#F6F3EE' }}>
+              <View key={i} className={i > 0 ? 'mt-3 border-t pt-3' : ''} style={{ borderColor: '#F1EDE6' }}>
                 <View className="flex-row items-start gap-3">
                   <View className="mt-1.5 h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: RULE_TONES[i % RULE_TONES.length] }} />
                   <View className="min-w-0 flex-1">
-                    <Text className="font-heavy text-ink" style={{ fontSize: 17, lineHeight: 23 }}>
+                    <Text className="font-heavy text-ink" style={{ fontSize: 16, lineHeight: 22 }}>
                       {r.title}
                     </Text>
-                    <View className="mt-1">
+                    <View className="mt-0.5">
                       <RichText math={!!math}>{r.body}</RichText>
                     </View>
                     {r.formula ? (
-                      <View className="mt-2.5 self-start rounded-xl px-4 py-2.5" style={{ backgroundColor: '#FBF8F4' }}>
+                      <View className="mt-2 self-start rounded-lg px-3 py-2" style={{ backgroundColor: '#F8F6F1' }}>
                         <RichText math={!!math} size={17} bold>
                           {r.formula}
                         </RichText>
@@ -144,13 +151,12 @@ export function LessonView({
           </View>
         </Appear>
 
-        {/* VÍ DỤ — tự chọn trước, rồi mới mở lời giải. */}
+        {/* Người học tự làm trước, lời giải chỉ mở khi chọn. */}
         {examplesOf(lesson).length > 0 ? (
           <>
             <Section
               icon="pencil"
-              title={L('Thử với ví dụ', 'Try the examples')}
-              sub={L('Tự trả lời trước, rồi mới mở lời giải từng bước', 'Answer first, then open the step-by-step solution')}
+              title={L('Ví dụ', 'Examples')}
             />
             <View className="gap-3">
               {examplesOf(lesson).map((ex, i) => (
@@ -162,13 +168,12 @@ export function LessonView({
           </>
         ) : null}
 
-        {/* BẪY + MẸO — tách riêng khỏi phần luật để không lẫn. */}
+        {/* Bẫy và mẹo được gom lại thành một phần ngắn. */}
         {notesOf(lesson).length > 0 ? (
           <>
             <Section
               icon="info"
-              title={L('Cẩn thận khi làm đề', 'Watch out on the test')}
-              sub={L('Bẫy đề hay giăng và mẹo làm nhanh', 'Common traps and quick tips')}
+              title={L('Bẫy & mẹo', 'Traps & tips')}
             />
             <View className="flex-row flex-wrap gap-3">
               {notesOf(lesson).map((n, i) => (
@@ -178,23 +183,45 @@ export function LessonView({
           </>
         ) : null}
 
+        {lesson.recognize ? (
+          <View className="mt-4 flex-row items-start gap-3 rounded-[22px] border border-border bg-white p-5" style={CARD}>
+            <Icon name="search" size={18} color={color.primary} />
+            <View className="min-w-0 flex-1">
+              <Text className="font-heavy text-body text-ink">{L('Nhận diện dạng bài', 'Recognize the question')}</Text>
+              <Text className="mt-1 font-sans text-body text-muted">{lesson.recognize}</Text>
+            </View>
+          </View>
+        ) : null}
+
         <Section
           icon="target"
           title={L('Tự kiểm tra', 'Check yourself')}
-          sub={L('3 câu, chấm ngay — sai câu nào xem lại luật tương ứng ở trên', '3 questions, marked instantly — if you miss one, review its rule above')}
         />
         {check}
 
+        {lesson.summary ? (
+          <View className="mt-4 rounded-[22px] border border-emerald-200 bg-emerald-50 p-5">
+            <View className="flex-row items-center gap-2">
+              <Icon name="check" size={17} color="#15803D" strokeWidth={2.4} />
+              <Text className="font-heavy text-body text-ink">{L('Nhớ nhanh', 'Remember')}</Text>
+            </View>
+            <Text className="mt-2 font-sans text-body text-ink">{lesson.summary}</Text>
+          </View>
+        ) : null}
+
         <Section
           icon="trophy"
-          title={L('Luyện bằng bộ đề', 'Practise with question sets')}
-          sub={L('Đạt 8/10 ở một bộ là nắm được bài', 'Score 8/10 on a set and you’ve got it')}
+          title={L('Luyện tiếp', 'Practice')}
         />
-        <View className="rounded-[22px] bg-white p-6" style={CARD}>
-          <Text className="font-sans text-bodyLg text-ink">
-            {L('Đạt 8/10 ở một bộ đề là nắm bài.', 'Score 8/10 on a set to master it.')}
-          </Text>
-          <View className="mt-4 flex-row flex-wrap gap-2">
+        <View className="rounded-[22px] bg-white p-5" style={CARD}>
+          {practiceLevels?.length ? (
+            <View className="flex-row flex-wrap gap-2">
+              {practiceLevels.map((level) => (
+                <Button key={level.key} size="sm" variant="outline" label={level.label} onPress={() => router.push(level.href as never)} />
+              ))}
+            </View>
+          ) : null}
+          <View className="mt-3 flex-row flex-wrap gap-2">
             <Button label={L('Luyện bộ đề', 'Practise sets')} iconRight="arrow-right" onPress={() => router.push(practiceHref as never)} />
             {!done ? <Button variant="secondary" label={L('Đánh dấu đã học xong', 'Mark as completed')} iconLeft="check" onPress={onDone} /> : null}
             {next ? <Button variant="ghost" label={L(`Bài tiếp: ${next.title}`, `Next lesson: ${next.title}`)} onPress={() => router.push(next.href as never)} /> : null}
@@ -221,15 +248,14 @@ const notesOf = (l: TheoryLesson) => l.blocks.filter((x): x is NoteBlock => x.ki
  * lộ sẵn đáp án, bẫy/mẹo lẫn giữa các luật. Giờ bài chia theo VIỆC người học
  * làm: đọc luật → tự thử ví dụ → xem bẫy → tự kiểm tra → luyện bộ đề.
  */
-function Section({ icon, title, sub }: { icon: IconName; title: string; sub?: string }) {
+function Section({ icon, title }: { icon: IconName; title: string }) {
   return (
-    <View className="mb-3 mt-8 flex-row items-center gap-3">
+    <View className="mb-2 mt-6 flex-row items-center gap-3">
       <View className="h-9 w-9 items-center justify-center rounded-xl bg-white" style={CARD}>
         <Icon name={icon} size={17} color={color.ink} />
       </View>
       <View className="min-w-0 flex-1">
         <Text className="font-heavy text-sectionTitle text-ink">{title}</Text>
-        {sub ? <Text className="font-sans text-label text-ink" style={{ opacity: 0.7 }}>{sub}</Text> : null}
       </View>
     </View>
   );
@@ -244,10 +270,8 @@ function ExampleCard({ block, math, n, total }: { block: ExampleBlock; math: boo
   const { L } = useL();
 
   return (
-    <View className="rounded-[22px] bg-white p-5" style={CARD}>
-      <Text className="font-semi text-label text-muted">
-        {L('Ví dụ', 'Example')} {n}/{total}
-      </Text>
+    <View className="rounded-[22px] bg-white p-4 md:p-5" style={CARD}>
+      <Text className="font-semi text-label text-muted">{n} / {total}</Text>
       <View className="mt-1.5">
         <RichText math={math} bold size={17}>
           {block.problem}

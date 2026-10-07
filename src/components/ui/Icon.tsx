@@ -27,6 +27,7 @@ export type IconName =
   | 'check'
   | 'close'
   | 'chevron-down'
+  | 'chevron-up'
   | 'chevron-right'
   | 'chevron-left'
   | 'arrow-up'
@@ -222,6 +223,8 @@ function renderPaths(name: IconName, p: CommonProps) {
       return <Path {...p} d="m6.5 6.5 11 11m0-11-11 11" />;
     case 'chevron-down':
       return <Polyline {...p} points="6.5 9.5 12 15 17.5 9.5" />;
+    case 'chevron-up':
+      return <Polyline {...p} points="6.5 14.5 12 9 17.5 14.5" />;
     case 'chevron-right':
       return <Polyline {...p} points="9.5 6.5 15 12 9.5 17.5" />;
     case 'chevron-left':

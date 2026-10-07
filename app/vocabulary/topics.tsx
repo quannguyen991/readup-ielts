@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
+import { router } from 'expo-router';
 
 import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
@@ -9,6 +10,7 @@ import { Card } from '@/components/ui';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
+import { color } from '@/theme/tokens';
 
 /**
  * Từ vựng theo chủ đề — cùng thư viện bộ từ với trang Quiz từ vựng, lọc sẵn
@@ -49,6 +51,28 @@ export default function VocabTopicsScreen() {
         />
       </Appear>
       <DueToday />
+      <View className="mt-4">
+        <Text className="font-heavy text-cardTitle text-ink">{L('Học theo chủ đề', 'Study by topic')}</Text>
+        <Text className="mt-1 font-sans text-label text-muted">{L('Chọn riêng từ vựng, collocations, phrasal verbs hoặc trộn cả ba.', 'Choose vocabulary, collocations, phrasal verbs, or mix all three.')}</Text>
+        <View className="mt-3 flex-row flex-wrap" style={{ gap: 9 }}>
+          {[
+            { mode: 'vocabulary', vi: 'Từ vựng', en: 'Vocabulary', detail: '50 từ mỗi chủ đề' },
+            { mode: 'collocations', vi: 'Collocations', en: 'Collocations', detail: 'Cụm từ tự nhiên' },
+            { mode: 'phrasal-verbs', vi: 'Phrasal verbs', en: 'Phrasal verbs', detail: 'Cụm động từ' },
+            { mode: 'mixed', vi: 'Học trộn', en: 'Mixed practice', detail: 'Kết hợp theo chủ đề' },
+          ].map((item) => (
+            <Pressable
+              key={item.mode}
+              accessibilityRole="link"
+              onPress={() => router.push({ pathname: '/vocabulary/phrasebook', params: { mode: item.mode } } as never)}
+              style={({ hovered }: { hovered?: boolean }) => ({ flexGrow: 1, flexBasis: 170, padding: 14, borderRadius: 16, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E9E2D8', opacity: hovered ? 0.88 : 1 })}
+            >
+              <Text className="font-heavy text-body" style={{ color: color.ink }}>{L(item.vi, item.en)}</Text>
+              <Text className="mt-1 font-sans text-label text-muted">{L(item.detail, item.mode === 'vocabulary' ? '50 words per topic' : item.mode === 'collocations' ? 'Natural word pairs' : item.mode === 'phrasal-verbs' ? 'Phrasal verbs' : 'Combined by topic')}</Text>
+            </Pressable>
+          ))}
+        </View>
+      </View>
       <DeckLibrary initialFilter="ielts" />
       <View className="h-10" />
     </Screen>

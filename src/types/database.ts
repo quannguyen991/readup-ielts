@@ -555,6 +555,33 @@ export type UserState = {
   updated_at: string;
 };
 
+export type CommunityFriendship = {
+  user_low_id: string;
+  user_high_id: string;
+  requested_by: string;
+  status: 'pending' | 'accepted' | 'declined';
+  created_at: string;
+  updated_at: string;
+  accepted_at: string | null;
+};
+
+export type CommunityPostRow = {
+  id: string;
+  author_id: string;
+  kind: 'question' | 'share';
+  category: 'vocabulary' | 'grammar' | 'speaking' | 'writing' | 'reading' | 'general';
+  title: string;
+  body: string;
+  hidden: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type CommunityCommentRow = { id: string; post_id: string; author_id: string; body: string; created_at: string };
+export type CommunityMessageRow = { id: string; sender_id: string; recipient_id: string; body: string; created_at: string; read_at: string | null };
+export type CommunityBlockRow = { blocker_id: string; blocked_id: string; created_at: string };
+export type CommunityReportRow = { id: string; reporter_id: string; target_kind: 'post' | 'comment' | 'message' | 'user'; target_id: string; reason: string; created_at: string };
+
 export type Database = {
   public: {
     Tables: {
@@ -655,6 +682,12 @@ export type Database = {
         'prompt' | 'model' | 'public_url' | 'width' | 'height'
       >;
       user_state: TableDef<UserState, 'updated_at'>;
+      community_friendships: TableDef<CommunityFriendship, 'created_at' | 'updated_at' | 'accepted_at'>;
+      community_posts: TableDef<CommunityPostRow, 'kind' | 'category' | 'hidden' | 'updated_at'>;
+      community_comments: TableDef<CommunityCommentRow, 'created_at'>;
+      community_messages: TableDef<CommunityMessageRow, 'created_at' | 'read_at'>;
+      community_blocks: TableDef<CommunityBlockRow, 'created_at'>;
+      community_reports: TableDef<CommunityReportRow, 'created_at'>;
     };
     Views: Record<string, never>;
     Functions: {

@@ -72,7 +72,7 @@ export type ListeningTest = {
   titleVi?: string;
   source: 'Band 9 Original' | string;
   level: ListeningLevel;
-  cover: { topic: string; hue?: number };
+  cover: { topic: string; category?: string; hue?: number };
   sections: ListeningSection[];
 };
 
@@ -86,6 +86,7 @@ export type ListeningAttempt = {
   title: string;
   /** null = cả đề; 1–4 = bài lẻ. */
   section: number | null;
+  task?: ListeningGroupType | null;
   mode: 'practice' | 'real';
   startedAt: string;
   finishedAt: string;

@@ -8,6 +8,7 @@ import { DifficultyFilter, DomainSection, Segmented, SkillCard, type DifficultyF
 import { HubLinkRow, HubTitle, HubToolbar } from '@/components/sat-hub/SatHub';
 import { Screen } from '@/components/layout/Screen';
 import { MATH_HUB_LINKS } from '@/navigation/sat-hub';
+import { MATH_LESSONS } from '@/data/lessons/math-lessons';
 import {
   FilterChip,
   SetCard,
@@ -29,6 +30,7 @@ import {
   getStageOfSet,
   stageIndexOfSet,
 } from '@/services/math/curriculum';
+import { getCourseAssessment, getCourseAssessmentsForUnit, isCourseAssessmentComplete, SAT_MATH_COURSE_UNITS, UNIT_TEST_PASS_THRESHOLD, type MathCourseUnit } from '@/services/math/course';
 import { PlanNudge } from '@/components/billing/PlanUi';
 import { isStageUnlocked, requiredPlanFor } from '@/lib/billing/entitlements';
 import { PLANS } from '@/lib/billing/plans';
@@ -47,7 +49,7 @@ import {
   useMathTotals,
 } from '@/store/useMathStore';
 import { color } from '@/theme/tokens';
-import { BANK_PER_SKILL, MATH_SKILLS, roundForTier } from '@/services/math/bank';
+import { BANK_PER_SKILL, MATH_SKILLS, roundForTier, roundTier, roundsFor } from '@/services/math/bank';
 import { CrossFade } from '@/components/motion/Motion';
 import { bi, useL, type Bi, type L as LFn } from '@/i18n/useL';
 import { mathDomainShort, mathErrorLabel, mathSetKindLabel } from '@/components/math/math-labels-en';
@@ -58,8 +60,8 @@ import { mathDomainShort, mathErrorLabel, mathSetKindLabel } from '@/components/
  * Đầu trang chỉ có tên, một hàng liên kết nhỏ và MỘT thanh công cụ mảnh
  * (01/10/2026) — bốn bước đầy đủ nằm ở `/sat`. Bốn chế độ xem:
  *
- *   KỸ NĂNG   — ngân hàng câu theo mảng, lọc Dễ / Vừa / Khó, mặc định mở
- *   LỘ TRÌNH  — "hôm nay làm bài nào"
+ *   LỘ TRÌNH  — giáo trình 13 unit, mặc định mở
+ *   KỸ NĂNG   — ngân hàng câu theo mảng, lọc Dễ / Vừa / Khó
  *   BỘ ĐỀ     — "tôi muốn tự chọn bài", lọc theo domain / kiểu / trạng thái
  *   KẾT QUẢ   — "tôi đang yếu chỗ nào", kèm điểm dự đoán
  *
@@ -71,7 +73,7 @@ type Tab = 'skills' | 'path' | 'library' | 'stats';
 
 export default function MathScreen() {
   const { L } = useL();
-  const [tab, setTab] = useState<Tab>('skills');
+  const [tab, setTab] = useState<Tab>('path');
   const [level, setLevel] = useState<DifficultyFilterValue>('all');
 
   const progressBySet = useMathSetProgress();
@@ -84,7 +86,7 @@ export default function MathScreen() {
 
   return (
     <Screen>
-      <HubTitle eyebrow="DIGITAL SAT" title="SAT Math" line={L('19 kỹ năng, mỗi kỹ năng đi Dễ → Khó.', '19 skills, each running Easy → Hard.')} />
+      <HubTitle eyebrow="DIGITAL SAT" title="SAT Math" line={L('13 unit theo lộ trình Nền tảng → Trung bình → Nâng cao.', '13 course units from Foundations → Medium → Advanced.')} />
       <HubLinkRow links={MATH_HUB_LINKS} />
 
       <HubToolbar>
@@ -205,7 +207,275 @@ function SkillsView({ level }: { level: DifficultyFilterValue }) {
 
 // ------------------------------------------------------------------ lộ trình
 
+type PathMode = 'course' | 'sets';
+
 function PathView({
+  progressBySet,
+  nextSetId,
+}: {
+  progressBySet: ReturnType<typeof useMathSetProgress>;
+  nextSetId: string | null;
+}) {
+  const { L } = useL();
+  const [mode, setMode] = useState<PathMode>('course');
+  return (
+    <View>
+      <View className="mt-4 self-start">
+        <Segmented
+          label={L('Lộ trình', 'Path')}
+          value={mode}
+          onChange={setMode}
+          options={[
+            { key: 'course', label: L('Giáo trình 13 unit', '13-unit course') },
+            { key: 'sets', label: L('Bộ luyện hiện có', 'Existing sets') },
+          ]}
+        />
+      </View>
+      <CrossFade swapKey={mode}>
+        {mode === 'course' ? <MathCoursePath progressBySet={progressBySet} /> : null}
+        {mode === 'sets' ? <ExistingPathView progressBySet={progressBySet} nextSetId={nextSetId} /> : null}
+      </CrossFade>
+    </View>
+  );
+}
+
+function MathCoursePath({ progressBySet }: { progressBySet: ReturnType<typeof useMathSetProgress> }) {
+  const { L, en } = useL();
+  const bank = useMathBankProgress();
+  const [open, setOpen] = useState('foundation-algebra');
+
+  const firstIncomplete = SAT_MATH_COURSE_UNITS.find((unit) =>
+    !!unit.level && !!unit.difficulty &&
+    courseUnitCompletion(unit, bank, progressBySet).done < courseUnitCompletion(unit, bank, progressBySet).total,
+  );
+  const activeId = firstIncomplete?.id ?? '';
+
+  return (
+    <View className="mt-4 gap-3">
+      <Card>
+        <View className="flex-row flex-wrap items-start justify-between gap-3">
+          <View className="min-w-0 flex-1">
+            <Text className="font-heavy text-cardTitle text-ink">{L('Lộ trình học SAT Math', 'SAT Math learning path')}</Text>
+            <Text className="mt-1 font-sans text-body text-muted">
+              {L(
+                'Bắt đầu với hướng dẫn, rồi học bốn mảng qua ba mức. Tiến độ tính theo lượt đã nộp; điểm thấp sẽ chỉ bạn quay lại kỹ năng cần ôn.',
+                'Start with the test guide, then work through four domains at three levels. Progress counts submitted attempts; lower scores point back to skills to review.',
+              )}
+            </Text>
+          </View>
+          <Badge label={L(`${SAT_MATH_COURSE_UNITS.length} unit`, `${SAT_MATH_COURSE_UNITS.length} units`)} tone="primary" shape="tag" />
+        </View>
+        <View className="mt-3 flex-row flex-wrap gap-2">
+          <Button
+            variant="outline"
+            label={L('Chẩn đoán 19 câu', '19-question placement check')}
+            onPress={() => router.push('/math/diagnostic' as never)}
+          />
+          <Button
+            variant="outline"
+            label={L('Thi thử Math', 'Math mock test')}
+            onPress={() => router.push('/math/mock' as never)}
+          />
+        </View>
+      </Card>
+
+      {SAT_MATH_COURSE_UNITS.map((unit) => {
+        const expanded = open === unit.id;
+        const current = unit.level && unit.difficulty
+          ? courseUnitCompletion(unit, bank, progressBySet)
+          : { done: 0, total: 0 };
+        const pct = current.total ? Math.round((current.done / current.total) * 100) : 0;
+        const isActive = activeId === unit.id;
+        const latestUnitTest = getCourseAssessment(`course-${unit.id}-unit-test`);
+        const latestUnitTestProgress = latestUnitTest ? progressBySet[latestUnitTest.id] : undefined;
+        const unitTestScore = latestUnitTestProgress?.lastRatio;
+        const needsReview = (latestUnitTestProgress?.rounds ?? 0) > 0 && unitTestScore !== undefined && unitTestScore < UNIT_TEST_PASS_THRESHOLD;
+        const unitLabel = en ? unit.title.en : unit.title.vi;
+        return (
+          <Card key={unit.id} padded={false}>
+            <Pressable
+              accessibilityRole="button"
+              accessibilityState={{ expanded }}
+              onPress={() => setOpen(expanded ? '' : unit.id)}
+              className="flex-row items-start gap-3 p-4"
+            >
+              <View className="h-10 w-10 items-center justify-center rounded-panel" style={{ backgroundColor: unit.level ? color.accentSoft : '#FEF3C7' }}>
+                <Text className="font-heavy text-body" style={{ color: unit.level ? color.accent : '#A16207' }}>{unit.number}</Text>
+              </View>
+              <View className="min-w-0 flex-1">
+                <View className="flex-row flex-wrap items-center gap-2">
+                  <Text className="font-heavy text-cardTitle text-ink">{unitLabel}</Text>
+                  {isActive ? (
+                    <Badge
+                      label={needsReview ? L(`Ôn lại · ${Math.round((unitTestScore ?? 0) * 100)}%`, `Review · ${Math.round((unitTestScore ?? 0) * 100)}%`) : L('Học tiếp', 'Next up')}
+                      tone={needsReview ? 'warning' : 'primary'}
+                      shape="tag"
+                    />
+                  ) : null}
+                </View>
+                <Text className="mt-1 font-sans text-label text-muted">{en ? unit.blurb.en : unit.blurb.vi}</Text>
+                {current.total > 0 ? (
+                  <View className="mt-2 flex-row items-center gap-3">
+                    <View className="flex-1"><ProgressBar value={pct} tone={pct === 100 ? 'success' : 'primary'} /></View>
+                    <Text className="font-strong text-label text-muted">{current.done}/{current.total} {L('phần đã làm', 'steps done')}</Text>
+                  </View>
+                ) : null}
+              </View>
+              <Icon name={expanded ? 'chevron-down' : 'chevron-right'} size={18} color={color.subtle} />
+            </Pressable>
+
+            {expanded ? (
+              <View className="gap-3 px-4 pb-4">
+                {unit.number === 1 ? <CourseOrientation /> : null}
+                {unit.level && unit.difficulty ? (
+                  <>
+                    <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={10}>
+                      {unit.skills.map((skill) => {
+                        const lesson = MATH_LESSONS.find((candidate) => candidate.skill === skill);
+                        const tierRounds = Array.from({ length: roundsFor(skill) }, (_, round) => round)
+                          .filter((round) => roundTier(skill, round) === unit.difficulty!);
+                        const doneRounds = bank[skill].doneRounds.filter((round) => tierRounds.includes(round)).length;
+                        const nextRound = roundForTier(skill, unit.difficulty!, bank[skill].doneRounds);
+                        return (
+                          <Card key={skill} padded={false}>
+                            <View className="p-3">
+                              <Text className="font-heavy text-body text-ink">{lesson?.title ?? MATH_SKILL_LABEL[skill]}</Text>
+                              <Text className="mt-0.5 font-sans text-label text-muted">{lesson?.englishName ?? MATH_SKILL_LABEL[skill]}</Text>
+                              {lesson ? <Text className="mt-2 font-sans text-label text-muted" numberOfLines={2}>{lesson.goal}</Text> : null}
+                              <View className="mt-2 flex-row flex-wrap items-center gap-2">
+                                <Badge
+                                  label={`${doneRounds}/${tierRounds.length} ${L('lượt đã nộp', 'rounds submitted')}`}
+                                  tone={doneRounds === tierRounds.length ? 'success' : 'neutral'}
+                                  shape="tag"
+                                />
+                              </View>
+                              <View className="mt-3 flex-row flex-wrap gap-2">
+                                {lesson ? (
+                                  <Button size="sm" variant="outline" label={L('Học bài', 'Learn')} onPress={() => router.push(`/math/learn/${skill}` as never)} />
+                                ) : null}
+                                {nextRound !== null ? (
+                                  <Button
+                                    size="sm"
+                                    label={L('Luyện', 'Practice')}
+                                    onPress={() => router.push(`/math/drill/${skill}?round=${nextRound}` as never)}
+                                  />
+                                ) : null}
+                              </View>
+                            </View>
+                          </Card>
+                        );
+                      })}
+                    </Grid>
+                    <CourseAssessments unit={unit} progressBySet={progressBySet} />
+                  </>
+                ) : null}
+              </View>
+            ) : null}
+          </Card>
+        );
+      })}
+    </View>
+  );
+}
+
+function CourseOrientation() {
+  const { L } = useL();
+  return (
+    <View className="rounded-card border border-border bg-canvas p-4">
+      <Text className="font-heavy text-body text-ink">{L('Chuẩn bị trước khi học', 'Before you start')}</Text>
+      <Text className="mt-1 font-sans text-label text-muted">
+        {L('Unit mở đầu không có bài tập chấm điểm. Hãy xem cấu trúc đề, làm chẩn đoán nếu muốn tìm lỗ hổng, hoặc vào thử đề khi đã sẵn sàng.', 'This introductory unit is informational. Review the test format, take the placement check to spot gaps, or start a mock when ready.')}
+      </Text>
+      <View className="mt-3 flex-row flex-wrap gap-2">
+        <Button size="sm" variant="outline" label={L('Kiến thức SAT', 'SAT essentials')} onPress={() => router.push('/sat/kien-thuc' as never)} />
+        <Button size="sm" label={L('Chẩn đoán đầu vào', 'Placement check')} onPress={() => router.push('/math/diagnostic' as never)} />
+      </View>
+    </View>
+  );
+}
+
+function CourseAssessments({
+  unit,
+  progressBySet,
+}: {
+  unit: MathCourseUnit;
+  progressBySet: ReturnType<typeof useMathSetProgress>;
+}) {
+  const { L } = useL();
+  const plan = usePlan();
+  const quizzes = getCourseAssessmentsForUnit(unit.id).filter((assessment) => assessment.assessment === 'quiz');
+  const test = getCourseAssessment(`course-${unit.id}-unit-test`);
+  if (quizzes.length === 0 || !test) return null;
+  const locked = !isStageUnlocked(plan, stageIndexOfSet(test.id));
+  return (
+    <View className="rounded-card border border-border bg-canvas p-3">
+      <Text className="font-heavy text-body text-ink">{L('Kiểm tra sau khi luyện', 'Check your learning')}</Text>
+      <Text className="mt-1 font-sans text-label text-muted">
+        {L('Các quiz 4 câu theo từng cụm kỹ năng; bài cuối unit rải đều câu hỏi qua những kỹ năng Band 9 đang có trong mảng này. Cần đúng ít nhất 3/4 (75%) để tính là qua unit; đây không phải nhãn mastery.', 'Take the four-question checkpoint quizzes by skill group. The unit test balances questions across the current Band 9 skills in this domain. Score at least 3/4 (75%) to pass the unit; this is not a mastery label.')}
+      </Text>
+      {(progressBySet[test.id]?.rounds ?? 0) > 0 && (progressBySet[test.id]?.lastRatio ?? 0) < UNIT_TEST_PASS_THRESHOLD ? (
+        <Text className="mt-2 rounded-xl bg-amber-50 p-3 font-semi text-label text-amber-900">
+          {L(
+            `Lần kiểm tra gần nhất đạt ${Math.round((progressBySet[test.id]?.lastRatio ?? 0) * 100)}%. Hãy xem lại bài học và các câu sai trong unit này trước khi chuyển sang unit tiếp theo.`,
+            `Your latest unit test was ${Math.round((progressBySet[test.id]?.lastRatio ?? 0) * 100)}%. Review the lessons and missed questions in this unit before moving on.`,
+          )}
+        </Text>
+      ) : null}
+      <View className="mt-3 flex-row flex-wrap gap-2">
+        {[...quizzes, test].map((assessment) => {
+          const attempted = (progressBySet[assessment.id]?.rounds ?? 0) > 0;
+          const score = progressBySet[assessment.id]?.lastRatio;
+          return (
+            <Button
+              key={assessment.id}
+              size="sm"
+              variant={assessment.assessment === 'quiz' ? 'outline' : 'secondary'}
+              label={L(
+                `${assessment.assessment === 'quiz' ? `Quiz ${assessment.quizNumber}` : 'Bài kiểm tra'} · ${assessment.count} câu${attempted && score !== undefined ? ` · ${Math.round(score * 100)}%` : ''}`,
+                `${assessment.assessment === 'quiz' ? `Quiz ${assessment.quizNumber}` : 'Unit test'} · ${assessment.count} questions${attempted && score !== undefined ? ` · ${Math.round(score * 100)}%` : ''}`,
+              )}
+              onPress={() => router.push((locked ? '/upgrade' : `/math/set/${assessment.id}`) as never)}
+            />
+          );
+        })}
+      </View>
+    </View>
+  );
+}
+
+function courseUnitCompletion(
+  unit: MathCourseUnit,
+  bank: ReturnType<typeof useMathBankProgress>,
+  progressBySet: ReturnType<typeof useMathSetProgress>,
+) {
+  if (!unit.difficulty) return { done: 0, total: 0 };
+  let done = 0;
+  const assessments = getCourseAssessmentsForUnit(unit.id);
+  let total = assessments.length;
+  for (const skill of unit.skills) {
+    const rounds = Array.from({ length: roundsFor(skill) }, (_, round) => round)
+      .filter((round) => roundTier(skill, round) === unit.difficulty);
+    total += rounds.length;
+    done += rounds.filter((round) => bank[skill].doneRounds.includes(round)).length;
+  }
+  for (const assessment of assessments) {
+    const progress = progressBySet[assessment.id];
+    if (isCourseAssessmentComplete(assessment, progress)) done += 1;
+  }
+  return { done, total };
+}
+
+function ExistingPathView({
+  progressBySet,
+  nextSetId,
+}: {
+  progressBySet: ReturnType<typeof useMathSetProgress>;
+  nextSetId: string | null;
+}) {
+  return <LegacyPathView progressBySet={progressBySet} nextSetId={nextSetId} />;
+}
+
+function LegacyPathView({
   progressBySet,
   nextSetId,
 }: {
