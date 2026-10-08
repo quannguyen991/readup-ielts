@@ -143,7 +143,7 @@ export async function POST(request: Request) {
     if (dlErr || !master) {
       return Response.json({ error: msg(request, 'Kho sách đang lỗi, thử lại sau ít phút.', 'The book store is unavailable. Try again shortly.') }, { status: 502 });
     }
-    const bytes = await stampPdf(new Uint8Array(await master.arrayBuffer()), who.email, orderRef(grant));
+    const bytes = await stampPdf(new Uint8Array(await master.arrayBuffer()), { email: who.email, orderRef: orderRef(grant), issuedAt: now });
     const { error: upErr } = await storage.upload(path, bytes, { contentType: 'application/pdf', upsert: true });
     if (upErr) {
       return Response.json({ error: msg(request, 'Không chuẩn bị được bản tải, thử lại sau.', 'Could not prepare your copy. Try again later.') }, { status: 502 });
