@@ -3,7 +3,7 @@ import { ActivityIndicator, Pressable, Text, TextInput, View } from 'react-nativ
 import { router, useLocalSearchParams } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
-import { Badge, Button, Card, Icon } from '@/components/ui';
+import { Button, Card, Icon } from '@/components/ui';
 import {
   UNKNOWN_CAPABILITIES,
   fetchAuthCapabilities,
@@ -374,15 +374,6 @@ export default function SignInScreen() {
               <Text className="flex-1 font-sans text-body text-danger-ink">{error}</Text>
             </View>
           ) : null}
-        </Card>
-
-        <Card className="mt-4" variant="flat">
-          <View className="flex-row items-center gap-2">
-            <Badge label={L('Riêng tư', 'Private')} tone="success" shape="tag" />
-            <Text className="flex-1 font-sans text-label text-muted">
-              {L('Chúng tôi chỉ lưu tiến độ học của bạn. Không đọc danh bạ, không đăng gì lên Facebook, không bán dữ liệu cho ai.', "We only store your study progress. We don't read your contacts, post to Facebook, or sell your data.")}
-            </Text>
-          </View>
         </Card>
 
         <Button
