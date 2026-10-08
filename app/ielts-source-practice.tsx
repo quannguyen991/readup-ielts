@@ -11,13 +11,15 @@ type TestMeta = {
   id: string; title: string; source: string; section?: 'Reading' | 'Listening';
   pageCount: number; supportPageCount: number; questionCount: number;
   hasAnswerKey: boolean; answerKeyVerified: boolean; hasPdf: boolean; audioCount: number;
+  externalOnly: boolean;
 };
 type TestContent = {
   id: string; title: string; source: string; section?: 'Reading' | 'Listening';
-  questionCount: number; pages: Page[]; pdfAsset?: string; sourceUrl?: string; audioFiles: string[];
+  questionCount: number; pages: Page[]; pdfAsset?: string; sourceStartPage?: number; sourceUrl?: string; audioFiles: string[];
+  externalOnly: boolean;
 };
 type Grade = {
-  score: number; total: number; verified: boolean;
+  score: number; total: number; verified: boolean; bandEstimate: number | null;
   results: Array<{ number: number; answer: string; expected: string; correct: boolean }>;
 };
 
@@ -85,13 +87,18 @@ export default function IeltsSourcePracticeScreen() {
     finally { setLoading(false); }
   };
 
-  const openPdf = (asset?: string, sourceUrl?: string) => {
-    if (sourceUrl) {
-      void Linking.openURL(sourceUrl);
+  const openPdf = (asset?: string, sourceUrl?: string, page?: number) => {
+    if (asset && Platform.OS === 'web' && typeof window !== 'undefined') {
+      const pageSuffix = page && page > 1 ? `#page=${page}` : '';
+      window.open(`${window.location.origin}${localAssetUrl(asset)}${pageSuffix}`, '_blank', 'noopener,noreferrer');
       return;
     }
-    if (asset && Platform.OS === 'web' && typeof window !== 'undefined') {
-      window.open(`${window.location.origin}${localAssetUrl(asset)}`, '_blank', 'noopener,noreferrer');
+    if (sourceUrl && Platform.OS === 'web' && typeof window !== 'undefined') {
+      window.open(sourceUrl, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    if (sourceUrl) {
+      void Linking.openURL(sourceUrl);
     }
   };
 
@@ -126,6 +133,7 @@ export default function IeltsSourcePracticeScreen() {
                     <Text className="mt-1 font-sans text-label text-muted">
                       {[item.section, `${item.questionCount} ${L('câu', 'questions')}`, `${item.pageCount} ${L('trang', 'pages')}`].filter(Boolean).join(' · ')}
                     </Text>
+                    {item.externalOnly ? <Text className="mt-1 font-mid text-label" style={{ color: '#A16F22' }}>{L('Chỉ có liên kết nguồn · chưa nhập câu hỏi', 'External source link · questions not imported')}</Text> : null}
                     {item.hasAnswerKey ? <Text className="mt-1 font-mid text-label" style={{ color: item.answerKeyVerified ? '#287452' : '#A16F22' }}>{item.answerKeyVerified ? L('Có đáp án nguồn', 'Source answer key') : L('Đáp án cần đối chiếu', 'Answer key needs review')}</Text> : null}
                   </Pressable>
                 ))}
@@ -142,13 +150,18 @@ export default function IeltsSourcePracticeScreen() {
                   <Text className="mt-1 font-sans text-label text-muted">{test.source}{test.section ? ` · ${test.section}` : ''} · {test.questionCount} {L('câu', 'questions')}</Text>
                 </View>
                 {test.pdfAsset || test.sourceUrl ? (
-                  <Pressable accessibilityRole="button" onPress={() => openPdf(test.pdfAsset, test.sourceUrl)} className="rounded-panel border border-borderStrong px-3 py-2">
-                    <Text className="font-mid text-label text-ink">{L('Mở bản đề gốc ↗', 'Open source PDF ↗')}</Text>
+                  <Pressable accessibilityRole="button" onPress={() => openPdf(test.pdfAsset, test.sourceUrl, test.sourceStartPage)} className="rounded-panel border border-borderStrong px-3 py-2">
+                    <Text className="font-mid text-label text-ink">{test.externalOnly ? L('Mở bài luyện gốc ↗', 'Open original practice ↗') : L('Mở bản đề gốc ↗', 'Open source PDF ↗')}</Text>
                   </Pressable>
                 ) : null}
               </View>
 
-              {test.audioFiles.length ? (
+              {test.externalOnly ? <View className="mt-4 rounded-panel border border-border bg-canvas p-4">
+                <Text className="font-strong text-ink">{L('Bộ này đang mở qua trang nguồn', 'This set opens on the source website')}</Text>
+                <Text className="mt-1 font-sans text-label text-muted">{L('Bảng tính có liên kết tới trang luyện đề, nhưng chưa có PDF/audio và khóa đáp án trong kho riêng nên phần này chưa làm hoặc chấm trực tiếp trong app.', 'The spreadsheet links to an external practice page. Its PDF/audio and answer key are not in the private store, so this set cannot be answered or graded inside the app yet.')}</Text>
+              </View> : null}
+
+              {!test.externalOnly && test.audioFiles.length ? (
                 <View className="mt-4 rounded-panel border border-border bg-canvas p-3">
                   <Text className="font-strong text-ink">{L('Audio đề thi', 'Test audio')}</Text>
                   <View className="mt-2 gap-3">
@@ -164,17 +177,34 @@ export default function IeltsSourcePracticeScreen() {
                     ))}
                   </View>
                 </View>
-              ) : test.section === 'Listening' ? (
+              ) : !test.externalOnly && test.section === 'Listening' ? (
                 <Text className="mt-3 font-mid text-label text-muted">{L('Thư mục Drive chưa có audio cho lượt này.', 'The Drive folder has no audio for this test.')}</Text>
               ) : null}
 
-              <View className="mt-5 rounded-panel border border-border bg-canvas p-4">
+              {!test.externalOnly ? <>
+              <Pressable accessibilityRole="button" onPress={() => setShowSource((value) => !value)} className="mt-5 flex-row items-center justify-between border-b border-border pb-2">
+                <View>
+                  <Text className="font-heavy text-ink" style={{ fontSize: 19 }}>{L('Nội dung đề nguồn', 'Source test pages')}</Text>
+                  <Text className="mt-1 font-sans text-label text-muted">{test.pages.length} {L('trang · bản nhập cục bộ', 'pages · imported locally')}</Text>
+                </View>
+                <Text className="font-strong text-primary-700">{showSource ? L('Thu gọn −', 'Collapse −') : L('Mở đề +', 'Open source +')}</Text>
+              </Pressable>
+              {showSource ? test.pages.map((page) => (
+                <View key={`q-${page.page}`} className="mt-4 border-b border-border pb-4">
+                  <Text className="font-strong text-primary-700">{L('Trang', 'Page')} {page.page}{test.source === 'Cambridge IELTS 8' && reviewSet.has(page.page) ? ` · ${L('Cần đối chiếu bản gốc', 'Check against original')}` : ''}</Text>
+                  {page.reviewLines.map((line, i) => <Text key={i} className="mt-1 font-mid text-label" style={{ color: '#A75B00' }}>{line.original}</Text>)}
+                  <Text selectable className="mt-2 font-sans text-body text-ink" style={{ lineHeight: 23 }}>{page.text || L('Trang này là ảnh; mở PDF gốc để xem rõ.', 'This page is image-only; open the source PDF to view it clearly.')}</Text>
+                </View>
+              )) : null}
+              </> : null}
+
+              {!test.externalOnly ? <View className="mt-5 rounded-panel border border-border bg-canvas p-4">
                 <View className="flex-row flex-wrap items-center justify-between gap-2">
                   <View>
                     <Text className="font-heavy text-ink" style={{ fontSize: 19 }}>{L('Phiếu trả lời', 'Answer sheet')}</Text>
                     <Text className="mt-1 font-sans text-label text-muted">{answeredCount}/{test.questionCount} · {L('Nhập chữ cái hoặc từ/cụm từ', 'Enter a letter or a word/phrase')}</Text>
                   </View>
-                  {submitted && grade ? <Text className="font-heavy" style={{ fontSize: 20, color: grade.verified ? '#287452' : '#A16F22' }}>{grade.score}/{grade.total}</Text> : null}
+                  {submitted && grade ? <Text className="font-heavy" style={{ fontSize: 20, color: grade.verified ? '#287452' : '#A16F22' }}>{grade.score}/{grade.total}{grade.bandEstimate !== null ? ` · ${L('band', 'band')} ${grade.bandEstimate}` : ''}</Text> : null}
                 </View>
                 <View className="mt-3 flex-row flex-wrap gap-2">
                   {Array.from({ length: test.questionCount }, (_, index) => index + 1).map((number) => (
@@ -196,26 +226,12 @@ export default function IeltsSourcePracticeScreen() {
                     <Text className="font-strong text-ink">
                       {grade.verified ? L(`Bạn đúng ${grade.score}/${grade.total} câu.`, `You got ${grade.score}/${grade.total} correct.`) : L(`Kết quả tạm tính: ${grade.score}/${grade.total}. Đáp án OCR cần được kiểm tra lại.`, `Provisional score: ${grade.score}/${grade.total}. The OCR answer key needs review.`)}
                     </Text>
+                    {grade.bandEstimate !== null ? <Text className="mt-1 font-mid text-label text-muted">{L(`Band ${grade.bandEstimate} ước tính · mốc quy đổi thay đổi theo phiên bản đề.`, `Estimated band ${grade.bandEstimate} · conversion thresholds vary by test version.`)}</Text> : null}
                     {wrongAnswers.length ? <Text className="mt-1 font-sans text-label text-muted">{wrongAnswers.slice(0, 12).map((item) => `${item.number}: ${item.answer || '—'} → ${item.expected || '—'}`).join('   ·   ')}</Text> : null}
                     {!grade.verified ? <Text className="mt-2 font-sans text-label text-muted">{L('Không dùng kết quả này làm band IELTS chính thức.', 'Do not treat this as an official IELTS band score.')}</Text> : null}
                   </View>
                 ) : submitted ? <Text className="mt-3 font-mid text-label text-muted">{L('Chưa có đáp án cấu trúc để tự chấm. Hãy dùng đáp án nguồn sau khi nộp.', 'No structured answer key is available for auto-scoring. Review the source key after submitting.')}</Text> : null}
-              </View>
-
-              <Pressable accessibilityRole="button" onPress={() => setShowSource((value) => !value)} className="mt-5 flex-row items-center justify-between border-b border-border pb-2">
-                <View>
-                  <Text className="font-heavy text-ink" style={{ fontSize: 19 }}>{L('Nội dung đề nguồn', 'Source test pages')}</Text>
-                  <Text className="mt-1 font-sans text-label text-muted">{test.pages.length} {L('trang · bản nhập cục bộ', 'pages · imported locally')}</Text>
-                </View>
-                <Text className="font-strong text-primary-700">{showSource ? L('Thu gọn −', 'Collapse −') : L('Mở đề +', 'Open source +')}</Text>
-              </Pressable>
-              {showSource ? test.pages.map((page) => (
-                <View key={`q-${page.page}`} className="mt-4 border-b border-border pb-4">
-                  <Text className="font-strong text-primary-700">{L('Trang', 'Page')} {page.page}{test.source === 'Cambridge IELTS 8' && reviewSet.has(page.page) ? ` · ${L('Cần đối chiếu bản gốc', 'Check against original')}` : ''}</Text>
-                  {page.reviewLines.map((line, i) => <Text key={i} className="mt-1 font-mid text-label" style={{ color: '#A75B00' }}>{line.original}</Text>)}
-                  <Text selectable className="mt-2 font-sans text-body text-ink" style={{ lineHeight: 23 }}>{page.text || L('Trang này là ảnh; mở PDF gốc để xem rõ.', 'This page is image-only; open the source PDF to view it clearly.')}</Text>
-                </View>
-              )) : null}
+              </View> : null}
 
               {submitted && support.length ? (
                 <View className="mt-6 border-t border-border pt-5">
