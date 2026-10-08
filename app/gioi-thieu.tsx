@@ -1,6 +1,6 @@
 /*
- * THESIS: Band 9 là một PHÒNG TRANH. Màn đầu là bức "Đêm đầy sao" (nền học mặc định trong app); mỗi phần của app treo như
- *   một bức tranh có khung vàng, đèn rọi và nhãn bảo tàng. Từ chối bố cục SaaS tối: tiêu đề + ô tính năng cùng cỡ.
+ * THESIS: Band 9 là một PHÒNG TRANH. Màn đầu là bức "Đêm đầy sao" (nền học mặc định trong app); mỗi phòng là một bức Van
+ *   Gogh khác làm nền, phần app treo lên như tranh có khung vàng, kèm nhãn bảo tàng. Từ chối bố cục SaaS tối: tiêu đề + ô tính năng cùng cỡ.
  * OWN-WORLD: tranh thật trong kho nền của app (Van Gogh, phạm vi công cộng) + ảnh pixel thành phố của Du ngoạn; tường phòng
  *   tranh navy đêm #0E1530, vàng kim #E3BE6A/#B8955A cho khung và điểm nhấn, chữ kem #F3EDE1. Phông: Playfair Display cho
  *   tiêu đề (câu thứ hai nghiêng vàng) + Plus Jakarta Sans của app cho mọi chữ còn lại.
@@ -13,7 +13,7 @@
  *   chê bản "Một ngày học".
  * FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
  */
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Image, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 import { useFonts, PlayfairDisplay_700Bold, PlayfairDisplay_600SemiBold_Italic } from '@expo-google-fonts/playfair-display';
@@ -48,7 +48,15 @@ const SANS_8 = 'PlusJakartaSans_800ExtraBold';
 const isWeb = Platform.OS === 'web';
 const LOGO = require('../assets/brand/band9-logo-mark.png');
 /** Tranh trong kho nền của app (public/backdrops/art) và ảnh pixel của Du ngoạn (public/travel/maps). */
-const ART = { starry: '/backdrops/art/starry.jpg', rhone: '/backdrops/art/rhone.jpg' };
+const ART = { starry: '/landing/starry.jpg', rhone: '/landing/rhone.jpg' };
+/** Tranh nền từng phòng: bản nén lại cho trang này (public/landing), gốc ở public/backdrops/art. */
+type RoomArt = { src: string; pos: string; vi: string; en: string; year: string; tint?: string };
+const ROOMS: Record<'cafe' | 'irises' | 'wheatcrows' | 'sunflowers', RoomArt> = {
+  cafe: { src: '/landing/cafe.jpg', pos: 'center 40%', vi: 'Hiên quán cà phê ban đêm', en: 'Café Terrace at Night', year: '1888' },
+  irises: { src: '/landing/irises.jpg', pos: 'center 55%', vi: 'Hoa diên vĩ', en: 'Irises', year: '1889' },
+  wheatcrows: { src: '/landing/wheatcrows.jpg', pos: 'center 40%', vi: 'Cánh đồng lúa mì và đàn quạ', en: 'Wheatfield with Crows', year: '1890' },
+  sunflowers: { src: '/landing/sunflowers.jpg', pos: 'center 35%', vi: 'Hoa hướng dương', en: 'Sunflowers', year: '1888', tint: '34,22,8' },
+};
 const PARIS = { uri: '/travel/maps/paris.png' };
 const THUMBS = [
   ['tokyo', 'Tokyo'],
@@ -174,100 +182,102 @@ export default function WelcomeScreen() {
         </View>
       </View>
 
-      {/* ===== PHÒNG TRANH: năm phòng của app ===== */}
-      <View style={{ backgroundColor: WALL, paddingHorizontal: pad, paddingTop: wide ? 128 : 72, paddingBottom: wide ? 140 : 80 }}>
-        <View className="mx-auto w-full" style={{ maxWidth: 1180 }}>
-          <Text accessibilityRole="header" style={{ color: CREAM, fontFamily: SERIF, fontSize: wide ? 60 : mid ? 46 : 36, lineHeight: wide ? 68 : mid ? 54 : 44, textAlign: 'center' }}>
-            {L('Đi một vòng Band 9.', 'A walk through Band 9.')}
-          </Text>
-          <Text style={{ fontFamily: SANS_4, marginTop: 14, color: MIST, fontSize: mid ? 18 : 16.5, lineHeight: 27, textAlign: 'center' }}>
-            {L('Năm phòng, từ đề thi tới từng câu nói.', 'Five rooms, from the exam paper to every sentence you say.')}
-          </Text>
-
-          <View style={{ marginTop: wide ? 110 : 64, gap: wide ? 150 : 88 }}>
-            <Exhibit
-              wide={wide}
-              frameWidth={560}
-              frame={<ExamScreen L={L} />}
-              title={L('Phòng thi thật', 'The exam room')}
-              line={L('Đồng hồ đếm ngược, chấm ngay, chỉ đúng chỗ sai.', 'A countdown, instant marking, the exact line you missed.')}
-              facts={L('IELTS Reading · Listening · Writing · SAT Math · SAT Reading & Writing', 'IELTS Reading · Listening · Writing · SAT Math · SAT Reading & Writing')}
-            />
-            <Exhibit
-              wide={wide}
-              flip
-              frameWidth={500}
-              frame={<SpeakScreen L={L} />}
-              title={L('Phòng luyện nói với AI', 'The AI speaking room')}
-              line={L('AI hỏi, bạn trả lời, nhận góp ý cho từng câu.', 'The AI asks, you answer, you get feedback on every sentence.')}
-              facts={L('Speaking Part 1 · Part 2 · Part 3', 'Speaking Part 1 · Part 2 · Part 3')}
-            />
-
-            {/* Du ngoạn: bức lớn nhất, treo giữa tường */}
-            <View>
-              <View style={{ position: 'relative' }}>
-                <Spotlight />
-                <Frame>
-                  <View>
-                    <Image source={PARIS} style={{ width: '100%', aspectRatio: mid ? 1672 / 940 : 1.1 }} resizeMode="cover" accessibilityLabel={L('Paris trong Du ngoạn', 'Paris in Travel mode')} />
-                    <View
-                      style={
-                        mid
-                          ? { position: 'absolute', left: '44%', right: 24, top: '30%', gap: 10, alignItems: 'flex-start' }
-                          : { position: 'absolute', left: 12, right: 12, bottom: 14, gap: 8, alignItems: 'flex-start' }
-                      }
-                    >
-                      <Bubble text="Excuse me, how do I get to the Louvre?" />
-                      <Bubble text="Take line 1. It's two stops from here." dark />
-                    </View>
-                  </View>
-                </Frame>
-              </View>
-              <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 64 : 28, marginTop: wide ? 48 : 28, alignItems: wide ? 'flex-start' : 'stretch' }}>
-                <View style={{ flex: wide ? 1 : undefined }}>
-                  <Placard
-                    wide={wide}
-                    title={L('Du ngoạn thế giới', 'Travel the world')}
-                    line={L('Hỏi đường, gọi món, nhập học: nói đúng tình huống thật.', 'Ask the way, order food, enrol: speak in real situations.')}
-                    facts={L('Học speaking qua ngữ cảnh', 'Speaking in context')}
-                  />
+      {/* ===== PHÒNG TRANH: mỗi phòng treo trên một bức Van Gogh ===== */}
+      <Room art={ROOMS.cafe} placard="right" wide={wide} pad={pad} L={L} heavyTop>
+        <Text accessibilityRole="header" style={{ color: CREAM, fontFamily: SERIF, fontSize: wide ? 60 : mid ? 46 : 36, lineHeight: wide ? 68 : mid ? 54 : 44, textAlign: 'center' }}>
+          {L('Đi một vòng Band\u00A09.', 'A walk through Band\u00A09.')}
+        </Text>
+        <Text style={{ fontFamily: SANS_4, marginTop: 14, color: MIST, fontSize: mid ? 18 : 16.5, lineHeight: 27, textAlign: 'center' }}>
+          {L('Bốn phòng, từ đề thi tới từng câu nói.', 'Four rooms, from the exam paper to every sentence you say.')}
+        </Text>
+        <View style={{ marginTop: wide ? 96 : 56 }}>
+          <Exhibit
+            wide={wide}
+            frameWidth={560}
+            frame={<ExamScreen L={L} />}
+            title={L('Phòng thi thật', 'The exam room')}
+            line={L('Đồng hồ đếm ngược, chấm ngay, chỉ đúng chỗ sai.', 'A countdown, instant marking, the exact line you missed.')}
+            facts={L('IELTS Reading · Listening · Writing · SAT Math · SAT Reading & Writing', 'IELTS Reading · Listening · Writing · SAT Math · SAT Reading & Writing')}
+          />
+        </View>
+      </Room>
+      <Room art={ROOMS.irises} placard="left" wide={wide} pad={pad} L={L}>
+        <Exhibit
+          wide={wide}
+          flip
+          frameWidth={500}
+          frame={<SpeakScreen L={L} />}
+          title={L('Phòng luyện nói với AI', 'The AI speaking room')}
+          line={L('AI hỏi, bạn trả lời, nhận góp ý cho từng câu.', 'The AI asks, you answer, you get feedback on every sentence.')}
+          facts={L('Speaking Part 1 · Part 2 · Part 3', 'Speaking Part 1 · Part 2 · Part 3')}
+        />
+      </Room>
+      <Room art={ROOMS.wheatcrows} placard="center" wide={wide} pad={pad} L={L}>
+        <View>
+          <View style={{ position: 'relative' }}>
+            <Frame>
+              <View>
+                <Image source={PARIS} style={{ width: '100%', aspectRatio: mid ? 1672 / 940 : 1.1 }} resizeMode="cover" accessibilityLabel={L('Paris trong Du ngoạn', 'Paris in Travel mode')} />
+                <View
+                  style={
+                    mid
+                      ? { position: 'absolute', left: '44%', right: 24, top: '30%', gap: 10, alignItems: 'flex-start' }
+                      : { position: 'absolute', left: 12, right: 12, bottom: 14, gap: 8, alignItems: 'flex-start' }
+                  }
+                >
+                  <Bubble text="Excuse me, how do I get to the Louvre?" />
+                  <Bubble text="Take line 1. It's two stops from here." dark />
                 </View>
-                {wide ? (
-                  <View style={{ flex: 1.2, flexDirection: 'row', gap: 14 }}>
-                    {THUMBS.map(([k, name]) => (
-                      <CityThumb key={k} k={k} name={name} L={L} style={{ flex: 1 }} />
-                    ))}
-                  </View>
-                ) : (
-                  <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 14 }}>
-                    {THUMBS.map(([k, name]) => (
-                      <CityThumb key={k} k={k} name={name} L={L} style={{ width: 150 }} />
-                    ))}
-                  </ScrollView>
-                )}
               </View>
+            </Frame>
+          </View>
+          <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 64 : 28, marginTop: wide ? 48 : 28, alignItems: wide ? 'flex-start' : 'stretch' }}>
+            <View style={{ flex: wide ? 1 : undefined }}>
+              <Placard
+                wide={wide}
+                title={L('Du ngoạn thế giới', 'Travel the world')}
+                line={L('Hỏi đường, gọi món, nhập học: nói đúng tình huống thật.', 'Ask the way, order food, enrol: speak in real situations.')}
+                facts={L('Học speaking qua ngữ cảnh', 'Speaking in context')}
+              />
             </View>
-
-            <Exhibit
-              wide={wide}
-              frameWidth={500}
-              frame={<VocabScreen L={L} en={en} />}
-              title={L('Từ vựng theo sở thích', 'Vocabulary you care about')}
-              line={L('Hơn 4.000 từ trong 111 bộ, chọn chủ đề bạn thích.', 'Over 4,000 words in 111 sets. Pick the topics you like.')}
-              facts={L('Ôn lại đúng lúc sắp quên', 'Review right before you forget')}
-            />
-            <Exhibit
-              wide={wide}
-              flip
-              frameWidth={460}
-              frame={<PlanScreen L={L} />}
-              title={L('Lộ trình của riêng bạn', 'A plan that is yours')}
-              line={L('Đặt mục tiêu band, app xếp việc học mỗi ngày.', 'Set a target band; the app plans every day.')}
-              facts={L('Học cá nhân hoá · IELTS và SAT', 'Personalised · IELTS and SAT')}
-            />
+            {wide ? (
+              <View style={{ flex: 1.2, flexDirection: 'row', gap: 14 }}>
+                {THUMBS.map(([k, name]) => (
+                  <CityThumb key={k} k={k} name={name} L={L} style={{ flex: 1 }} />
+                ))}
+              </View>
+            ) : (
+              <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 14 }}>
+                {THUMBS.map(([k, name]) => (
+                  <CityThumb key={k} k={k} name={name} L={L} style={{ width: 150 }} />
+                ))}
+              </ScrollView>
+            )}
           </View>
         </View>
-      </View>
+
+      </Room>
+      <Room art={ROOMS.sunflowers} placard="center" wide={wide} pad={pad} L={L}>
+        <View style={{ gap: wide ? 130 : 80 }}>
+          <Exhibit
+            wide={wide}
+            frameWidth={500}
+            frame={<VocabScreen L={L} en={en} />}
+            title={L('Từ vựng theo sở thích', 'Vocabulary you care about')}
+            line={L('Hơn 4.000 từ trong 111 bộ, chọn chủ đề bạn thích.', 'Over 4,000 words in 111 sets. Pick the topics you like.')}
+            facts={L('Ôn lại đúng lúc sắp quên', 'Review right before you forget')}
+          />
+          <Exhibit
+            wide={wide}
+            flip
+            frameWidth={460}
+            frame={<PlanScreen L={L} />}
+            title={L('Lộ trình của riêng bạn', 'A plan that is yours')}
+            line={L('Đặt mục tiêu band, app xếp việc học mỗi ngày.', 'Set a target band; the app plans every day.')}
+            facts={L('Học cá nhân hoá · IELTS và SAT', 'Personalised · IELTS and SAT')}
+          />
+        </View>
+      </Room>
 
       {/* ===== KẾT: Đêm đầy sao trên sông Rhône ===== */}
       <View style={{ overflow: 'hidden' }}>
@@ -275,6 +285,7 @@ export default function WelcomeScreen() {
           src={ART.rhone}
           pos="center 45%"
           scrim="linear-gradient(180deg,rgba(14,21,48,1) 0%,rgba(8,12,34,.62) 22%,rgba(8,12,34,.55) 60%,rgba(8,12,34,.9) 100%)"
+          lazy
         />
         <View style={{ paddingHorizontal: pad, paddingTop: wide ? 150 : 96, paddingBottom: 36 }}>
           <View className="mx-auto w-full" style={{ maxWidth: 820 }}>
@@ -314,7 +325,26 @@ export default function WelcomeScreen() {
 
 /* ---------------- Tranh nền, khung, đèn rọi, nhãn ---------------- */
 
-function Painting({ src, pos, scrim }: { src: string; pos: string; scrim: string }) {
+function Painting({ src, pos, scrim, lazy = false }: { src: string; pos: string; scrim: string; lazy?: boolean }) {
+  const [show, setShow] = useState(!lazy);
+  const ref = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (show || !isWeb) return;
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setShow(true);
+      return;
+    }
+    const io = new IntersectionObserver((es) => {
+      if (es.some((e) => e.isIntersecting)) {
+        setShow(true);
+        io.disconnect();
+      }
+    }, { rootMargin: '900px 0px' });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [show]);
+
   if (!isWeb) {
     return (
       <>
@@ -325,9 +355,55 @@ function Painting({ src, pos, scrim }: { src: string; pos: string; scrim: string
   }
   return (
     <>
-      {React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, background: `url(${src}) ${pos} / cover no-repeat` } })}
+      {React.createElement('div', {
+        ref,
+        'aria-hidden': true,
+        style: { position: 'absolute', inset: 0, backgroundColor: WALL, background: show ? `url(${src}) ${pos} / cover no-repeat ${WALL}` : WALL },
+      })}
       {React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, background: scrim } })}
     </>
+  );
+}
+
+/** Một phòng: tranh phủ kín, mép trên/dưới hoà vào tường, phía tấm nhãn tối hơn để chữ đọc rõ; nhãn tranh ở chân phòng. */
+function Room({
+  art,
+  placard,
+  wide,
+  pad,
+  L,
+  heavyTop = false,
+  children,
+}: {
+  art: RoomArt;
+  placard: 'left' | 'right' | 'center';
+  wide: boolean;
+  pad: number;
+  L: LFn;
+  heavyTop?: boolean;
+  children: React.ReactNode;
+}) {
+  const edges = heavyTop
+    ? `linear-gradient(180deg,${WALL} 0%,rgba(14,21,48,.82) 16%,rgba(14,21,48,0) 34%,rgba(14,21,48,0) 86%,${WALL} 100%)`
+    : `linear-gradient(180deg,${WALL} 0%,rgba(14,21,48,0) 14%,rgba(14,21,48,0) 86%,${WALL} 100%)`;
+  const t = art.tint ?? '8,12,34'; // màu lớp phủ: navy đêm; tranh nền vàng dùng nâu ấm để khỏi ngả xanh rêu
+  const side = !wide
+    ? `linear-gradient(rgba(${t},.7),rgba(${t},.7))`
+    : placard === 'center'
+      ? `linear-gradient(rgba(${t},.62),rgba(${t},.62))`
+      : `linear-gradient(${placard === 'right' ? 90 : 270}deg,rgba(${t},.42) 0%,rgba(${t},.5) 42%,rgba(${t},.84) 66%,rgba(${t},.9) 100%)`;
+  return (
+    <View style={{ overflow: 'hidden' }}>
+      <Painting src={art.src} pos={art.pos} scrim={`${edges},${side}`} lazy />
+      <View style={{ paddingHorizontal: pad, paddingTop: wide ? 130 : 80, paddingBottom: wide ? 56 : 40 }}>
+        <View className="mx-auto w-full" style={{ maxWidth: 1180 }}>
+          {children}
+          <View style={{ marginTop: wide ? 110 : 64 }}>
+            <ArtLabel title={L(art.vi, art.en)} meta={`Vincent van Gogh, ${art.year}`} align={wide ? 'right' : 'left'} />
+          </View>
+        </View>
+      </View>
+    </View>
   );
 }
 
@@ -353,23 +429,6 @@ function Frame({ children }: { children: React.ReactNode }) {
     },
     React.createElement('div', { style: { padding: 12, background: '#EFE7D6' } }, children),
   );
-}
-
-/** Đèn rọi tranh: quầng vàng nhạt trên tường phía trên khung. */
-function Spotlight() {
-  if (!isWeb) return null;
-  return React.createElement('div', {
-    'aria-hidden': true,
-    style: {
-      position: 'absolute',
-      left: '-15%',
-      right: '-15%',
-      top: -200,
-      height: 560,
-      background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(227,190,106,.13), rgba(227,190,106,0) 70%)',
-      pointerEvents: 'none',
-    },
-  });
 }
 
 function ArtLabel({ title, meta, align }: { title: string; meta: string; align: 'left' | 'right' | 'center' }) {
@@ -413,8 +472,7 @@ function Exhibit({
   return (
     <View style={{ flexDirection: wide ? (flip ? 'row-reverse' : 'row') : 'column', alignItems: wide ? 'center' : 'stretch', gap: wide ? 88 : 28 }}>
       <View style={{ flex: wide ? 1.15 : undefined, alignItems: wide ? (flip ? 'flex-start' : 'flex-end') : 'stretch' }}>
-        <View style={{ width: '100%', maxWidth: frameWidth, position: 'relative' }}>
-          <Spotlight />
+        <View style={{ width: '100%', maxWidth: frameWidth }}>
           <Frame>{frame}</Frame>
         </View>
       </View>
