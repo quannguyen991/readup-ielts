@@ -6,6 +6,8 @@ import { TravelPage } from '@/components/travel/ui/TravelPage';
 import { GameButton, PixelPanel, T } from '@/components/travel/ui/kit';
 import { bi, useL } from '@/i18n/useL';
 import { STUDY_ABROAD_CHAPTERS, STUDY_ABROAD_MISSIONS } from '@/data/study-abroad-campaign';
+import { STUDY_CAMPUSES } from '@/data/study-abroad-campus';
+import { STUDY_DAYS } from '@/data/study-abroad-schedule';
 import { useStudyAbroadStore } from '@/store/useStudyAbroadStore';
 import { useGameStore } from '@/store/useGameStore';
 import { pronounce } from '@/services/audio/pronounce';
@@ -70,6 +72,8 @@ export default function StudyAbroadCampaignScreen() {
         {STUDY_ABROAD_CHAPTERS.map((chapter) => {
           const missions = STUDY_ABROAD_MISSIONS.filter((mission) => mission.chapter === chapter.id);
           const chapterOpen = chapter.id <= activeChapter || missions.every((mission) => completed.includes(mission.id));
+          const campus = STUDY_CAMPUSES.find((entry) => entry.chapter === chapter.id);
+          const days = STUDY_DAYS.filter((day) => day.chapter === chapter.id);
           return (
             <PixelPanel key={chapter.id} inner={{ padding: 14, gap: 10 }}>
               <View className="flex-row flex-wrap items-baseline justify-between gap-2">
@@ -77,36 +81,55 @@ export default function StudyAbroadCampaignScreen() {
                 <Text className="font-sans" style={{ color: T.muted, fontSize: 12 }}>{missions.filter((mission) => completed.includes(mission.id)).length}/{missions.length}</Text>
               </View>
               <Text className="font-sans" style={{ color: T.muted, fontSize: 13, lineHeight: 19 }}>{bi(chapter.subtitle, locale)}</Text>
-              <View style={{ gap: 7 }}>
-                {missions.map((mission, index) => {
-                  const done = completed.includes(mission.id);
-                  const unlocked = chapterOpen && (done || mission.id === currentNext);
-                  const active = mission.id === selectedId;
-                  return (
-                    <Pressable
-                      key={mission.id}
-                      accessibilityRole="button"
-                      accessibilityState={{ disabled: !unlocked, selected: active }}
-                      disabled={!unlocked}
-                      onPress={() => chooseMission(mission.id)}
-                      style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 10, borderRadius: 10, borderWidth: 1.5, borderColor: active ? T.goldDark : T.line, backgroundColor: active ? '#F7EDDA' : T.paper, opacity: unlocked ? 1 : 0.52 }}
-                    >
-                      <View style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: done ? T.good : active ? T.goldDark : T.navy }}>
-                        <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 12 }}>{done ? '✓' : unlocked ? index + 1 : '🔒'}</Text>
-                      </View>
-                      <View className="min-w-0 flex-1">
-                        <Text className="font-strong" style={{ color: T.ink, fontSize: 14 }}>{bi(mission.place, locale)}</Text>
-                        <Text className="font-sans" style={{ color: T.muted, fontSize: 12 }}>{bi(mission.role, locale)} · {bi(mission.city, locale)}</Text>
-                      </View>
-                      <Text className="font-semi" style={{ color: T.goldDark, fontSize: 12 }}>{done ? L('Xong', 'Done') : unlocked ? '›' : '• • •'}</Text>
-                    </Pressable>
-                  );
-                })}
-              </View>
+              {campus && chapterOpen ? (
+                <GameButton label={L(`Khuôn viên: ${bi(campus.name, locale)}`, `Campus: ${bi(campus.name, locale)}`)} tone="paper" onPress={() => router.push(`/quest/study-abroad/campus/${campus.id}` as never)} />
+              ) : null}
+              {days.map((day) => (
+                <View key={day.day} style={{ gap: 7 }}>
+                  <Text className="font-heavy" style={{ color: T.goldDark, fontSize: 11, letterSpacing: 1 }}>{L(`NGÀY ${day.day}`, `DAY ${day.day}`)}</Text>
+                  {day.missions.map((mission) => {
+                    const index = missions.indexOf(mission);
+                    const done = completed.includes(mission.id);
+                    const unlocked = chapterOpen && (done || mission.id === currentNext);
+                    const active = mission.id === selectedId;
+                    return (
+                      <Pressable
+                        key={mission.id}
+                        accessibilityRole="button"
+                        accessibilityState={{ disabled: !unlocked, selected: active }}
+                        disabled={!unlocked}
+                        onPress={() => chooseMission(mission.id)}
+                        style={{ flexDirection: 'row', alignItems: 'center', gap: 10, padding: 10, borderRadius: 10, borderWidth: 1.5, borderColor: active ? T.goldDark : T.line, backgroundColor: active ? '#F7EDDA' : T.paper, opacity: unlocked ? 1 : 0.52 }}
+                      >
+                        <View style={{ width: 28, height: 28, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: done ? T.good : active ? T.goldDark : T.navy }}>
+                          <Text style={{ color: '#FFFFFF', fontWeight: '800', fontSize: 12 }}>{done ? '✓' : unlocked ? index + 1 : '🔒'}</Text>
+                        </View>
+                        <View className="min-w-0 flex-1">
+                          <Text className="font-strong" style={{ color: T.ink, fontSize: 14 }}>{bi(mission.place, locale)}</Text>
+                          <Text className="font-sans" style={{ color: T.muted, fontSize: 12 }}>{bi(mission.role, locale)} · {bi(mission.city, locale)}</Text>
+                        </View>
+                        <Text className="font-semi" style={{ color: T.goldDark, fontSize: 12 }}>{done ? L('Xong', 'Done') : unlocked ? '›' : '• • •'}</Text>
+                      </Pressable>
+                    );
+                  })}
+                </View>
+              ))}
             </PixelPanel>
           );
         })}
       </View>
+
+      <PixelPanel style={{ marginTop: 16 }} inner={{ padding: 14, gap: 10 }}>
+        <Text className="font-heavy" style={{ color: T.ink, fontSize: 17 }}>{L('Trường quốc tế thêm', 'Bonus international campuses')}</Text>
+        <Text className="font-sans" style={{ color: T.muted, fontSize: 13, lineHeight: 19 }}>
+          {L('Các trường này không gắn với chặng nào. Bạn có thể xem khuôn viên và phòng học bất cứ lúc nào.', 'These campuses are not tied to a chapter. You can explore their grounds and classrooms any time.')}
+        </Text>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
+          {STUDY_CAMPUSES.filter((entry) => entry.chapter === null).map((entry) => (
+            <GameButton key={entry.id} label={`${bi(entry.name, locale)} · ${bi(entry.city, locale)}`} tone="paper" onPress={() => router.push(`/quest/study-abroad/campus/${entry.id}` as never)} />
+          ))}
+        </View>
+      </PixelPanel>
 
       {learned.length > 0 ? (
         <PixelPanel style={{ marginTop: 16 }} inner={{ padding: 14, gap: 8 }}>
