@@ -36,7 +36,7 @@ test('có từ đến hạn → báo số từ, link thẳng tới bài ôn củ
   const r = buildReminder({ topic_study: { reviews: reviews('travel', 12, '2026-09-30') } }, TODAY, 'vi');
   assert.ok(r);
   assert.equal(r.title, 'Hôm nay bạn còn 12 từ cần ôn');
-  assert.equal(r.url, 'https://band9-ielts.vercel.app/vocabulary/topic/travel/quiz?only=due');
+  assert.equal(r.url, 'https://9band.com/vocabulary/topic/travel/quiz?only=due');
 });
 
 test('từ đến hạn ở nhiều bộ → cộng dồn, link về danh sách bộ', () => {
@@ -44,7 +44,7 @@ test('từ đến hạn ở nhiều bộ → cộng dồn, link về danh sách 
   const r = buildReminder({ topic_study: { reviews: rv } }, TODAY, 'vi');
   assert.ok(r);
   assert.match(r.title, /7 từ/u);
-  assert.equal(r.url, 'https://band9-ielts.vercel.app/vocabulary/topics');
+  assert.equal(r.url, 'https://9band.com/vocabulary/topics');
 });
 
 test('học liền 15 ngày tới hôm qua, hôm nay chưa học → nhắc giữ chuỗi', () => {
@@ -57,7 +57,7 @@ test('học liền 15 ngày tới hôm qua, hôm nay chưa học → nhắc gi�
   assert.ok(r);
   assert.equal(r.title, 'Chuỗi 15 ngày sắp đứt');
   assert.match(r.body, /5 phút/u);
-  assert.equal(r.url, 'https://band9-ielts.vercel.app/dashboard');
+  assert.equal(r.url, 'https://9band.com/dashboard');
 });
 
 test('chuỗi gặp nguy kèm từ đến hạn → một lời nhắc gộp, không hai', () => {
@@ -96,7 +96,7 @@ test('payload hỏng hoặc thiếu trường không làm sập', () => {
 test('gửi thử luôn có nội dung, kể cả khi lời nhắc thật im lặng', () => {
   const t = testReminder({}, TODAY, 'vi');
   assert.match(t.title, /Band 9/u);
-  assert.equal(t.url, 'https://band9-ielts.vercel.app/settings');
+  assert.equal(t.url, 'https://9band.com/settings');
   const real = testReminder({ topic_study: { reviews: reviews('travel', 2, TODAY) } }, TODAY, 'vi');
   assert.match(real.title, /2 từ/u);
 });
