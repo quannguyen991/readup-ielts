@@ -42,7 +42,7 @@
       { "name": "held-card", "value": "0 30px 70px rgba(0,0,0,0.5)", "purpose": "Unframed hero exam card, rotated 1.5deg." },
       { "name": "gold-glow", "value": "0 10px 30px rgba(227,190,106,0.35)", "purpose": "Solid primary button only." },
       { "name": "bubble-lift", "value": "0 8px 20px rgba(8,12,34,0.35)", "purpose": "Speech bubbles on the Paris map." },
-      { "name": "spotlight", "value": "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(227,190,106,.13), rgba(227,190,106,0) 70%)", "purpose": "Light pooled on the wall above each frame; 520px tall, top -110px, 12% overhang each side." },
+      { "name": "room-scrim", "value": "linear-gradient(180deg,#0E1530 0%,transparent 14%,transparent 86%,#0E1530 100%), linear-gradient(90deg,rgba(8,12,34,.42) 0%,rgba(8,12,34,.5) 42%,rgba(8,12,34,.84) 66%,rgba(8,12,34,.9) 100%)", "purpose": "Each room painting: edges fade to wall, placard side darker. Sunflowers uses tint 34,22,8." },
       { "name": "frame-gradient", "value": "#B8955A", "purpose": "Flat frame metal (no gradient)." },
       { "name": "scrim-hero-wide", "value": "linear-gradient(90deg,rgba(8,12,34,.92) 0%,rgba(8,12,34,.74) 36%,rgba(8,12,34,.18) 68%,rgba(8,12,34,.06) 100%)", "purpose": "Hero painting at >=980px; text on the dark left." },
       { "name": "scrim-hero-narrow", "value": "linear-gradient(180deg,rgba(8,12,34,.2) 0%,rgba(8,12,34,.6) 34%,rgba(8,12,34,.66) 70%,rgba(8,12,34,.9) 100%)", "purpose": "Hero painting below 980px." },
@@ -89,7 +89,7 @@
       "name": "Framed Exhibit",
       "kind": "card",
       "refersTo": "frame",
-      "description": "Signature: gold-leaf frame, cream mat and spotlight around a code-built app mock.",
+      "description": "Signature: flat gold frame and cream mat around a code-built app mock, hung over a room painting.",
       "html": "<div class=\"ds-wall\"><div class=\"ds-spot\"></div><div class=\"ds-frame\"><div class=\"ds-mat\"><div class=\"ds-screen\"><div class=\"ds-bar\"><span>IELTS Reading · Passage 2</span><span class=\"ds-timer\">18:42</span></div><div class=\"ds-q\">14. Most city parks were designed by engineers.<div class=\"ds-opts\"><span class=\"ds-opt ds-wrong\">TRUE</span><span class=\"ds-opt\">FALSE</span><span class=\"ds-opt ds-right\">NOT GIVEN</span></div></div></div></div></div></div>",
       "css": ".ds-wall{position:relative;padding:90px 40px 50px;background:#0E1530;overflow:hidden;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}.ds-spot{position:absolute;left:-12%;right:-12%;top:-20px;height:520px;background:radial-gradient(ellipse 50% 55% at 50% 0%,rgba(227,190,106,.17),rgba(227,190,106,0) 72%);pointer-events:none}.ds-frame{position:relative;max-width:460px;margin:0 auto;padding:7px;border-radius:3px;background:#B8955A;box-shadow:0 34px 70px rgba(0,0,0,.55)}.ds-mat{padding:12px;background:#EFE7D6}.ds-screen{background:#FBF8F2;border-radius:4px;overflow:hidden}.ds-bar{display:flex;justify-content:space-between;padding:10px 16px;background:#16264A;color:#F3EDE1;font-weight:700;font-size:13px}.ds-timer{color:#E3BE6A;font-variant-numeric:tabular-nums}.ds-q{padding:16px;color:#141A33;font-weight:600;font-size:15.5px;line-height:22px}.ds-opts{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.ds-opt{padding:7px 11px;border-radius:9px;border:1.5px solid rgba(20,26,51,0.15);font-weight:800;font-size:13px}.ds-wrong{border-color:#E5484D;background:rgba(229,72,77,0.08)}.ds-right{border-color:#22A06B;background:rgba(34,160,107,0.10)}"
     },
@@ -136,7 +136,7 @@
   ],
   "narrative": {
     "northStar": "The Night Gallery",
-    "overview": "Band 9 is shown as a museum after dark. The first viewport is a real painting, Van Gogh's The Starry Night (the app's default study backdrop), under a directional scrim. The middle of the page is the gallery wall: deep night navy, where each area of the app hangs as a framed exhibit with a gold-leaf frame, a cream mat, a warm spotlight pooling above it and a museum placard beside it. The page closes over Starry Night Over the Rhône, with a translucent panel listing what is open now and what needs an account.\n\nProof is shown, not claimed: every exhibit is a small app screen built in code (a marked Reading question, a speaking room with a live voice wave, a vocabulary card, a day plan). The largest piece on the wall is the Paris pixel map from Travel mode, with two speech bubbles on it and a row of small framed city thumbnails. Density is low and the pace is slow: one exhibit per row, 150px of wall between them, and short placards.\n\nThe page refuses the category's stock dark SaaS layout (headline + same-size feature tiles) and does not copy TID's identity. The Band 9 logo and gold stay in the top bar (PRODUCT.md brand commitments).",
+    "overview": "Band 9 is shown as a museum after dark. The first viewport is a real painting, Van Gogh's The Starry Night (the app's default study backdrop), under a directional scrim. The middle of the page is four rooms, each on its own Van Gogh painting under a night scrim; in every room an area of the app hangs as a framed exhibit with a flat gold frame, a cream mat and a museum placard beside it, and the painting's label sits at the room's foot. The page closes over Starry Night Over the Rhône, with a translucent panel listing what is open now and what needs an account.\n\nProof is shown, not claimed: every exhibit is a small app screen built in code (a marked Reading question, a speaking room with a live voice wave, a vocabulary card, a day plan). The largest piece on the wall is the Paris pixel map from Travel mode, with two speech bubbles on it and a row of small framed city thumbnails. Density is low and the pace is slow: one exhibit per row, 150px of wall between them, and short placards.\n\nThe page refuses the category's stock dark SaaS layout (headline + same-size feature tiles) and does not copy TID's identity. The Band 9 logo and gold stay in the top bar (PRODUCT.md brand commitments).",
     "keyCharacteristics": [
       "Real public-domain paintings from the app's own backdrop library as full-bleed grounds, always under a scrim and always credited.",
       "Night-navy wall, cream type, gold used as frame metal and as the accent of the second sentence.",
@@ -153,7 +153,7 @@
     ],
     "dos": [
       "**Do** use only real public-domain paintings from `public/backdrops/art` and the Travel pixel maps as imagery, each under a scrim and each credited with an Art Label.",
-      "**Do** hang every app mock on the wall inside a Frame with a Spotlight and a Placard (the held hero card is the single unframed exception).",
+      "**Do** hang every app mock inside a Frame with a Placard, in a Room with its own Van Gogh painting (the held hero card is the single unframed exception).",
       "**Do** write serif headlines as two sentences, the second in gold italic (The Second Sentence Rule).",
       "**Do** keep controls in Plus Jakarta Sans and in full pills; keep the 2px gold focus ring at 3px offset.",
       "**Do** use Gold Ink, not Frame Gold, for gold text on light grounds (The Two Golds Rule).",

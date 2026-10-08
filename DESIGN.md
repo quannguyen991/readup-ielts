@@ -175,7 +175,7 @@ Scope: this file records the visual world of the landing page `app/gioi-thieu.ts
 
 **Creative North Star: "The Night Gallery"**
 
-Band 9 is shown as a museum after dark. The first viewport is a real painting, Van Gogh's *The Starry Night* (the app's default study backdrop), under a directional scrim. The middle of the page is the gallery wall: deep night navy, where each area of the app hangs as a framed exhibit with a gold-leaf frame, a cream mat, a warm spotlight pooling above it and a museum placard beside it. The page closes over *Starry Night Over the Rhône*, with a translucent panel listing what is open now and what needs an account.
+Band 9 is shown as a museum after dark. The first viewport is a real painting, Van Gogh's *The Starry Night* (the app's default study backdrop), under a directional scrim. The middle of the page is four rooms, each on its own Van Gogh painting under a night scrim; in every room an area of the app hangs as a framed exhibit with a flat gold frame, a cream mat and a museum placard beside it, and the painting's label sits at the room's foot. The page closes over *Starry Night Over the Rhône*, with a translucent panel listing what is open now and what needs an account.
 
 Proof is shown, not claimed: every exhibit is a small app screen built in code (a marked Reading question, a speaking room with a live voice wave, a vocabulary card, a day plan). The largest piece on the wall is the Paris pixel map from Travel mode, with two speech bubbles on it and a row of small framed city thumbnails. Density is low and the pace is slow: one exhibit per row, 150px of wall between them, and short placards.
 
@@ -244,7 +244,7 @@ Text inside the code-built mocks runs 12.5–16px because it depicts app UI at r
 
 ## Layout
 
-Three bands: the hero painting (min height = viewport, clamped 720–960px, at ≥980px), the gallery wall, and the closing painting. Content sits in a centred container: 1180px on the wall, 820px for the closing section, 720px for the hero text column.
+Six bands, each on its own painting: the hero (The Starry Night; min height = viewport, clamped 720–960px, at ≥980px), four Rooms (Café Terrace at Night → exam room with the section title; Irises → AI speaking room; Wheatfield with Crows → Du ngoạn; Sunflowers → vocabulary + personal plan), and the closing painting (Starry Night Over the Rhône). No painting repeats. Content sits in a centred container: 1180px in the rooms, 820px for the closing section, 720px for the hero text column.
 
 Breakpoints: `mid` at 640px (larger type, buttons in a row, 40px gutter) and `wide` at 980px (two-column hero and exhibits, 72px gutter). Below 640px the gutter is 20px, everything stacks, the hero card is dropped, and the city thumbnails become a horizontal scroller of 150px cards.
 
@@ -261,7 +261,7 @@ Depth is theatrical: paintings recede under scrims, the wall is dark, and object
 - **Held card** (`box-shadow: 0 30px 70px rgba(0,0,0,0.5)`): the unframed hero exam card, tilted 1.5deg.
 - **Gold glow** (`box-shadow: 0 10px 30px rgba(227,190,106,0.35)`): the solid primary button only.
 - **Bubble lift** (`box-shadow: 0 8px 20px rgba(8,12,34,0.35)`): speech bubbles on the Paris map.
-- **Spotlight** (`radial-gradient(ellipse 50% 50% at 50% 50%, rgba(227,190,106,.13), transparent 70%)`, 560px tall, starting 200px above the frame and 15% wider on each side; centred so every edge is transparent and no band shows): light, not a shadow.
+- **Room scrim**: top and bottom 14% fade to Wall so rooms join without a hard cut (the first room fades harder, to 34%, under the section title); on ≥980px the placard side darkens to .84–.90 and the frame side stays at .42–.50 so the painting shows behind the hung work; centred rooms and phones use a flat .62/.70. Tint is night navy `8,12,34`, except warm brown `34,22,8` over Sunflowers so yellow does not turn olive.
 
 ### Named Rules
 **The Lit Object Rule.** Only hung or held objects cast shadows, and every shadow is soft and vertical. No hard offset shadows; no borders standing in for elevation.
@@ -283,7 +283,7 @@ Gold and confident; always paired, solid then outline.
 A single top bar over the painting: 34px logo mark (6px radius) + "Band 9" wordmark, and one "Sign in" pill (1px border at 40% cream, same washes as the outline button). No menu.
 
 ### Frame (signature)
-A flat 6px Frame Gold border (no gradient, no inner highlight), a 12px flat Mat mount, the frame drop, and a Spotlight behind. Native fallback: flat Frame Gold and Mat, no shadow or light.
+A flat 6px Frame Gold border (no gradient, no inner highlight), a 12px flat Mat mount, and the frame drop. The painting behind the room does the lighting; there is no separate spotlight. Native fallback: flat Frame Gold and Mat, no shadow or light.
 
 ### Placard (signature)
 Placard Title, one Body line in Mist, a 56 × 1px Gallery Gold rule, then a Facts line in Gallery Gold. No icon, no label above the title.
@@ -314,7 +314,7 @@ Eighteen 4px Gallery Gold bars scale vertically with `b9wave` (scaleY .35 → 1 
 
 ### Do:
 - **Do** use only real public-domain paintings from `public/backdrops/art` and the Travel pixel maps as imagery, each under a scrim and each credited with an Art Label.
-- **Do** hang every app mock on the wall inside a Frame with a Spotlight and a Placard (the held hero card is the single unframed exception).
+- **Do** hang every app mock inside a Frame with a Placard, in a Room that has its own Van Gogh painting with a museum label (title — artist, year) at its foot (the held hero card is the single unframed exception).
 - **Do** write serif headlines as two sentences, the second in gold italic (The Second Sentence Rule).
 - **Do** keep controls in Plus Jakarta Sans and in full pills; keep the 2px gold focus ring at 3px offset.
 - **Do** use Gold Ink, not Frame Gold, for gold text on light grounds (The Two Golds Rule).
