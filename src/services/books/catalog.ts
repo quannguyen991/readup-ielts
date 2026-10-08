@@ -1,5 +1,5 @@
 /**
- * Bộ sách PDF tặng kèm — 11 cuốn, soạn riêng cho ReadUp.
+ * Bộ sách PDF tặng kèm — 11 cuốn, soạn riêng cho Band 9 (trước đây ReadUp).
  *
  * DANH SÁCH CHỌN TAY, KHÔNG QUÉT THƯ MỤC. Thư mục sách gốc còn chứa lộ trình học
  * cá nhân, lịch tuần, danh mục Scribd và các script dựng sách — quét cả thư mục
@@ -147,7 +147,7 @@ export function bookById(id: string): Book | null {
   return BOOKS.find((book) => book.id === id) ?? null;
 }
 
-/** Tên file khi tải về: có chữ ReadUp để người mua tìm lại được trong thư mục Downloads. */
+/** Tên file khi tải về: có chữ Band9 để người mua tìm lại được trong thư mục Downloads. */
 export function downloadName(book: Book): string {
-  return `ReadUp-${book.file.replace(/^\d+-/, '')}`;
+  return `Band9-${book.file.replace(/^\d+-/, '')}`;
 }

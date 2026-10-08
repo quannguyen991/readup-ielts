@@ -161,6 +161,7 @@ export const NAV_GROUPS: NavGroup[] = [
         children: [
           { key: 'invite', label: 'Mời bạn, học miễn phí', href: '/invite', icon: 'sparkle' },
           { key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' },
+          { key: 'books', label: 'Tủ sách PDF', href: '/tu-sach', icon: 'book' },
           { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
           { key: 'teacher', label: 'Lớp học (giáo viên)', href: '/teacher', icon: 'clipboard' },
           { key: 'join-class', label: 'Vào lớp bằng mã', href: '/join', icon: 'letters' },
@@ -289,6 +290,7 @@ export const NAV_LABEL_EN: Record<string, string> = {
   me: 'Me',
   invite: 'Invite friends, learn free',
   upgrade: 'Plans',
+  books: 'PDF bookshelf',
   settings: 'Settings',
   observatory: 'AI question quality',
   teacher: 'Classes (teachers)',

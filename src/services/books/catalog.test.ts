@@ -35,8 +35,8 @@ test('tra theo id: có thì ra sách, id lạ thì null', () => {
   assert.equal(bookById(''), null);
 });
 
-test('tên file tải về có chữ ReadUp và bỏ số thứ tự', () => {
-  assert.equal(downloadName(bookById('ielts-reading')!), 'ReadUp-IELTS-Reading-Duong-toi-7.5.pdf');
+test('tên file tải về có chữ Band9 và bỏ số thứ tự', () => {
+  assert.equal(downloadName(bookById('ielts-reading')!), 'Band9-IELTS-Reading-Duong-toi-7.5.pdf');
 });
 
 test(

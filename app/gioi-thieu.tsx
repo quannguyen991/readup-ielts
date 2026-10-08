@@ -13,49 +13,56 @@
  *   chê bản "Một ngày học".
  * FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
  */
-import React, { useEffect, useRef, useState } from 'react';
-import { Image, Platform, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import React, { useEffect } from 'react';
+import { Image, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 import { useFonts, PlayfairDisplay_700Bold, PlayfairDisplay_600SemiBold_Italic } from '@expo-google-fonts/playfair-display';
 
+import {
+  WALL,
+  NAVY,
+  NAVY_2,
+  CREAM,
+  MIST,
+  GOLD,
+  GOLD_DEEP,
+  PAPER,
+  INK,
+  BODY,
+  RED,
+  GREEN,
+  SERIF,
+  SERIF_I,
+  SANS_4,
+  SANS_5,
+  SANS_6,
+  SANS_7,
+  SANS_8,
+  isWeb,
+  Painting,
+  Frame,
+  ArtLabel,
+} from '@/components/gallery/gallery';
 import { Icon } from '@/components/ui';
 import { FREE_SUMMARY, LOCKED_SUMMARY } from '@/lib/access/member-gate';
 import { WELCOME_DAYS } from '@/lib/billing/welcome';
 import { WELCOME_SEEN_KEY } from '@/lib/welcome-page';
 import { useL } from '@/i18n/useL';
+import { BOOKS, BOOK_TOTALS } from '@/services/books/catalog';
+import { BOOK_BUNDLE_RULE } from '@/services/books/entitlement';
 
-const WALL = '#0E1530';
-const NAVY = '#0F1D33';
-const NAVY_2 = '#16264A';
-const CREAM = '#F3EDE1';
-const MIST = '#C9CFDF';
-const GOLD = '#E3BE6A';
-const GOLD_DEEP = '#B8955A';
-const PAPER = '#FBF8F2';
-const INK = '#141A33';
-const BODY = '#4A4F66';
-const RED = '#E5484D';
-const GREEN = '#22A06B';
-
-const SERIF = 'PlayfairDisplay_700Bold';
-const SERIF_I = 'PlayfairDisplay_600SemiBold_Italic';
-const SANS_4 = 'PlusJakartaSans_400Regular';
-const SANS_5 = 'PlusJakartaSans_500Medium';
-const SANS_6 = 'PlusJakartaSans_600SemiBold';
-const SANS_7 = 'PlusJakartaSans_700Bold';
-const SANS_8 = 'PlusJakartaSans_800ExtraBold';
-
-const isWeb = Platform.OS === 'web';
 const LOGO = require('../assets/brand/band9-logo-mark.png');
 /** Tranh trong kho nền của app (public/backdrops/art) và ảnh pixel của Du ngoạn (public/travel/maps). */
 const ART = { starry: '/landing/starry.jpg', rhone: '/landing/rhone.jpg' };
 /** Tranh nền từng phòng: bản nén lại cho trang này (public/landing), gốc ở public/backdrops/art. */
 type RoomArt = { src: string; pos: string; vi: string; en: string; year: string; tint?: string };
-const ROOMS: Record<'cafe' | 'irises' | 'wheatcrows' | 'sunflowers', RoomArt> = {
+const ROOMS: Record<'cafe' | 'irises' | 'wheatcrows' | 'sunflowers' | 'village', RoomArt> = {
   cafe: { src: '/landing/cafe.jpg', pos: 'center 40%', vi: 'Hiên quán cà phê ban đêm', en: 'Café Terrace at Night', year: '1888' },
   irises: { src: '/landing/irises.jpg', pos: 'center 55%', vi: 'Hoa diên vĩ', en: 'Irises', year: '1889' },
   wheatcrows: { src: '/landing/wheatcrows.jpg', pos: 'center 40%', vi: 'Cánh đồng lúa mì và đàn quạ', en: 'Wheatfield with Crows', year: '1890' },
   sunflowers: { src: '/landing/sunflowers.jpg', pos: 'center 35%', vi: 'Hoa hướng dương', en: 'Sunflowers', year: '1888', tint: '34,22,8' },
+  // Hết tranh Van Gogh chưa dùng: phòng Tủ sách treo CHI TIẾT làng dưới chân "Đêm đầy sao" — khác hẳn khung trăng ở màn đầu.
+  village: { src: '/landing/starry.jpg', pos: 'center 96%', vi: 'Đêm đầy sao (chi tiết)', en: 'The Starry Night (detail)', year: '1889' },
 };
 const PARIS = { uri: '/travel/maps/paris.png' };
 const THUMBS = [
@@ -188,7 +195,7 @@ export default function WelcomeScreen() {
           {L('Đi một vòng Band\u00A09.', 'A walk through Band\u00A09.')}
         </Text>
         <Text style={{ fontFamily: SANS_4, marginTop: 14, color: MIST, fontSize: mid ? 18 : 16.5, lineHeight: 27, textAlign: 'center' }}>
-          {L('Bốn phòng, từ đề thi tới từng câu nói.', 'Four rooms, from the exam paper to every sentence you say.')}
+          {L('Năm phòng, từ đề thi tới từng câu nói.', 'Five rooms, from the exam paper to every sentence you say.')}
         </Text>
         <View style={{ marginTop: wide ? 96 : 56 }}>
           <Exhibit
@@ -278,6 +285,21 @@ export default function WelcomeScreen() {
           />
         </View>
       </Room>
+      <Room art={ROOMS.village} placard="center" wide={wide} pad={pad} L={L}>
+        <Placard
+          wide={wide}
+          title={L('Tủ sách PDF', 'The PDF bookshelf')}
+          line={L(
+            `${BOOK_TOTALS.count} cuốn, ${BOOK_TOTALS.pages.toLocaleString('vi-VN')} trang soạn riêng cho Band 9. Đọc thử miễn phí.`,
+            `${BOOK_TOTALS.count} books, ${BOOK_TOTALS.pages.toLocaleString('en-US')} pages written for Band 9. Free previews.`,
+          )}
+          facts={L(`Bản đầy đủ kèm ${BOOK_BUNDLE_RULE}`, 'Full books come with Max or any yearly plan')}
+        />
+        <Shelf wide={wide} width={Math.min(width - 2 * pad, 1180)} L={L} />
+        <View style={{ marginTop: 28, flexDirection: 'row' }}>
+          <CTA label={L('Vào tủ sách', 'Open the bookshelf')} onPress={() => router.push('/tu-sach' as never)} />
+        </View>
+      </Room>
 
       {/* ===== KẾT: Đêm đầy sao trên sông Rhône ===== */}
       <View style={{ overflow: 'hidden' }}>
@@ -325,46 +347,6 @@ export default function WelcomeScreen() {
 
 /* ---------------- Tranh nền, khung, đèn rọi, nhãn ---------------- */
 
-function Painting({ src, pos, scrim, lazy = false }: { src: string; pos: string; scrim: string; lazy?: boolean }) {
-  const [show, setShow] = useState(!lazy);
-  const ref = useRef<HTMLDivElement | null>(null);
-  useEffect(() => {
-    if (show || !isWeb) return;
-    const el = ref.current;
-    if (!el || typeof IntersectionObserver === 'undefined') {
-      setShow(true);
-      return;
-    }
-    const io = new IntersectionObserver((es) => {
-      if (es.some((e) => e.isIntersecting)) {
-        setShow(true);
-        io.disconnect();
-      }
-    }, { rootMargin: '900px 0px' });
-    io.observe(el);
-    return () => io.disconnect();
-  }, [show]);
-
-  if (!isWeb) {
-    return (
-      <>
-        <Image source={{ uri: src }} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} resizeMode="cover" />
-        <View style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(8,12,34,0.7)' }} />
-      </>
-    );
-  }
-  return (
-    <>
-      {React.createElement('div', {
-        ref,
-        'aria-hidden': true,
-        style: { position: 'absolute', inset: 0, backgroundColor: WALL, background: show ? `url(${src}) ${pos} / cover no-repeat ${WALL}` : WALL },
-      })}
-      {React.createElement('div', { 'aria-hidden': true, style: { position: 'absolute', inset: 0, background: scrim } })}
-    </>
-  );
-}
-
 /** Một phòng: tranh phủ kín, mép trên/dưới hoà vào tường, phía tấm nhãn tối hơn để chữ đọc rõ; nhãn tranh ở chân phòng. */
 function Room({
   art,
@@ -404,40 +386,6 @@ function Room({
         </View>
       </View>
     </View>
-  );
-}
-
-/** Khung tranh vàng + viền giấy kem bên trong. */
-function Frame({ children }: { children: React.ReactNode }) {
-  if (!isWeb) {
-    return (
-      <View style={{ padding: 6, backgroundColor: GOLD_DEEP }}>
-        <View style={{ padding: 12, backgroundColor: '#EFE7D6' }}>{children}</View>
-      </View>
-    );
-  }
-  return React.createElement(
-    'div',
-    {
-      style: {
-        padding: 6,
-        borderRadius: 2,
-        background: GOLD_DEEP,
-        boxShadow: '0 34px 70px rgba(0,0,0,.55)',
-        position: 'relative',
-      },
-    },
-    React.createElement('div', { style: { padding: 12, background: '#EFE7D6' } }, children),
-  );
-}
-
-function ArtLabel({ title, meta, align }: { title: string; meta: string; align: 'left' | 'right' | 'center' }) {
-  return (
-    <Text style={{ textAlign: align, color: 'rgba(243,237,225,0.82)', fontSize: 13, lineHeight: 19, fontFamily: SANS_5 }}>
-      <Text style={{ fontFamily: SERIF_I, fontSize: 14.5, color: CREAM }}>{title}</Text>
-      {' — '}
-      {meta}
-    </Text>
   );
 }
 
@@ -508,6 +456,39 @@ function Bubble({ text, dark = false }: { text: string; dark?: boolean }) {
       }}
     >
       <Text style={{ color: dark ? CREAM : INK, fontSize: 15, fontFamily: SANS_7 }}>{text}</Text>
+    </View>
+  );
+}
+
+/** Kệ 11 bìa sách: máy tính một hàng trên tấm ván vàng, điện thoại vuốt ngang. Bấm bìa là mở Tủ sách. */
+function Shelf({ wide, width, L }: { wide: boolean; width: number; L: LFn }) {
+  const gap = wide ? 12 : 10;
+  const coverW = wide ? Math.floor((width - gap * (BOOKS.length - 1)) / BOOKS.length) : 96;
+  const covers = BOOKS.map((b) => (
+    <Pressable
+      key={b.id}
+      accessibilityRole="link"
+      accessibilityLabel={L(`${b.title} — mở Tủ sách`, `${b.title} — open the bookshelf`)}
+      onPress={() => router.push('/tu-sach' as never)}
+      style={{ width: coverW }}
+    >
+      <Image
+        source={{ uri: `/books/covers/${b.id}.jpg` }}
+        style={{ width: '100%', aspectRatio: 480 / 680, borderRadius: 2, ...({ boxShadow: '0 10px 22px rgba(0,0,0,.5)' } as object) }}
+        resizeMode="cover"
+      />
+    </Pressable>
+  ));
+  return (
+    <View style={{ marginTop: wide ? 40 : 28 }}>
+      {wide ? (
+        <View style={{ flexDirection: 'row', gap, alignItems: 'flex-end' }}>{covers}</View>
+      ) : (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap, alignItems: 'flex-end' }}>
+          {covers}
+        </ScrollView>
+      )}
+      <View style={{ height: 7, marginHorizontal: -8, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 8px 16px rgba(0,0,0,.5)' } as object) }} />
     </View>
   );
 }
