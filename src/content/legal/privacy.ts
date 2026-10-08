@@ -18,7 +18,7 @@ export function privacyDoc(ctx: LegalContext): LegalDoc {
   return {
     id: 'privacy',
     title: 'Chính sách quyền riêng tư',
-    lead: 'ReadUp thu những gì, để làm gì, gửi cho ai và giữ bao lâu — kể cả những chỗ dữ liệu của bạn rời khỏi máy chủ của chúng tôi.',
+    lead: 'Band 9 (trước đây tên ReadUp) thu những gì, để làm gì, gửi cho ai và giữ bao lâu — kể cả những chỗ dữ liệu của bạn rời khỏi máy chủ của chúng tôi.',
     updatedAt: LEGAL_UPDATED_AT,
     sections: [
       {
@@ -66,7 +66,7 @@ export function privacyDoc(ctx: LegalContext): LegalDoc {
         blocks: [
           {
             kind: 'p',
-            text: 'ReadUp dùng một số nhà cung cấp để vận hành. Mỗi bên chỉ nhận phần dữ liệu cần cho việc của mình:',
+            text: 'Band 9 dùng một số nhà cung cấp để vận hành. Mỗi bên chỉ nhận phần dữ liệu cần cho việc của mình:',
           },
           {
             kind: 'list',
@@ -114,11 +114,11 @@ export function privacyDoc(ctx: LegalContext): LegalDoc {
           tracking
             ? {
                 kind: 'p',
-                text: `Nếu bạn bấm “Đồng ý” ở thông báo cookie, app tải thêm ${names} để đo quảng cáo nào đưa bạn tới ReadUp và bạn có mua gói hay không. Các công cụ này đặt cookie của riêng chúng. Bấm “Từ chối” thì chúng không được tải. Bạn đổi lựa chọn bất cứ lúc nào bằng nút “Cài đặt cookie” ở chân trang.`,
+                text: `Nếu bạn bấm “Đồng ý” ở thông báo cookie, app tải thêm ${names} để đo quảng cáo nào đưa bạn tới Band 9 và bạn có mua gói hay không. Các công cụ này đặt cookie của riêng chúng. Bấm “Từ chối” thì chúng không được tải. Bạn đổi lựa chọn bất cứ lúc nào bằng nút “Cài đặt cookie” ở chân trang.`,
               }
             : {
                 kind: 'p',
-                text: 'Hiện ReadUp không dùng cookie quảng cáo hay công cụ đo lường nào của bên thứ ba.',
+                text: 'Hiện Band 9 không dùng cookie quảng cáo hay công cụ đo lường nào của bên thứ ba.',
               },
         ],
       },

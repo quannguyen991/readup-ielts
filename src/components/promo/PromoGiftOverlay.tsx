@@ -77,7 +77,9 @@ export function PromoGiftOverlay() {
   const available = hydrated && giftAvailable(todayKey(), prizes);
   // Trang nhận dữ liệu khi chuyển tên miền: không chen quà vào giữa bước chuyển.
   // Không bao giờ chen vào màn làm bài / toàn khung, dù AppShell chỉ gắn nó ở màn duyệt.
-  if (!hydrated || hidden || (!available && !done) || pathname === '/chuyen-du-lieu' || onLegacySite()) return null;
+  // Trang pháp lý và Liên hệ phải đọc được ngay cả với khách vừa mở link (kể cả người xét duyệt của Google).
+  const readOnlyPage = pathname === '/contact' || pathname.startsWith('/legal/');
+  if (!hydrated || hidden || (!available && !done) || pathname === '/chuyen-du-lieu' || readOnlyPage || onLegacySite()) return null;
   if (isFocusRoute(pathname) || isImmersiveRoute(pathname)) return null;
 
   const claim = () => {

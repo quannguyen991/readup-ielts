@@ -34,16 +34,16 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
   return {
     id: 'terms',
     title: 'Điều khoản sử dụng',
-    lead: 'Thoả thuận giữa bạn và ReadUp khi bạn dùng app. Giá, số ngày dùng thử và các thời hạn trong trang này lấy thẳng từ cấu hình của app, nên luôn khớp với thứ bạn thấy lúc mua.',
+    lead: 'Thoả thuận giữa bạn và Band 9 khi bạn dùng app. Giá, số ngày dùng thử và các thời hạn trong trang này lấy thẳng từ cấu hình của app, nên luôn khớp với thứ bạn thấy lúc mua.',
     updatedAt: LEGAL_UPDATED_AT,
     sections: [
       {
         id: 'service',
-        heading: 'ReadUp là gì',
+        heading: 'Band 9 là gì',
         blocks: [
           {
             kind: 'p',
-            text: `ReadUp là ứng dụng web luyện thi IELTS và SAT${operatorClause(ctx.contact)}. Khi tạo tài khoản, mua gói hoặc tiếp tục dùng app, bạn đồng ý với các điều khoản dưới đây, cùng Chính sách quyền riêng tư và Chính sách hoàn tiền.`,
+            text: `Band 9 (trước đây tên ReadUp) là ứng dụng web luyện thi IELTS và SAT${operatorClause(ctx.contact)}. Khi tạo tài khoản, mua gói hoặc tiếp tục dùng app, bạn đồng ý với các điều khoản dưới đây, cùng Chính sách quyền riêng tư và Chính sách hoàn tiền.`,
           },
           {
             kind: 'p',
@@ -79,7 +79,7 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
           {
             kind: 'list',
             items: [
-              'Thanh toán bằng chuyển khoản ngân hàng qua mã QR, kèm một mã đối chiếu riêng cho từng đơn. ReadUp không nhận thẻ và không bao giờ hỏi mật khẩu hay mã OTP ngân hàng của bạn.',
+              'Thanh toán bằng chuyển khoản ngân hàng qua mã QR, kèm một mã đối chiếu riêng cho từng đơn. Band 9 không nhận thẻ và không bao giờ hỏi mật khẩu hay mã OTP ngân hàng của bạn.',
               `Gói được bật sau khi chúng tôi đối chiếu khoản tiền với mã đơn — thường trong vài giờ, chậm nhất là sang ngày hôm sau. Quá ${ACTIVATION_SLA_HOURS} giờ mà chưa bật, bạn được hoàn đủ nếu không muốn chờ.`,
               'Gói không tự gia hạn và không tự trừ tiền. Hết hạn thì tài khoản về Free; dữ liệu học giữ nguyên.',
               'Mua thêm đúng gói đang dùng thì thời hạn được cộng nối tiếp. Mua một gói khác khi gói cũ còn hạn thì gói mới tính từ lúc được bật, phần còn lại của gói cũ không cộng sang.',
@@ -146,8 +146,8 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
               'Đề và bài tập trong app được dựng theo đúng dạng đề thi thật, nhưng không phải đề thi chính thức. Đề chính thức mà app dẫn tới đều mở ở trang của đơn vị ra đề.',
               'Điểm và nhận xét do AI đưa ra (chấm Writing, trợ giảng, chatbox) là ước lượng để luyện tập, không phải điểm thi chính thức, và có thể sai.',
               'Bài đọc lấy từ nguồn bên ngoài vẫn thuộc về tác giả và giữ giấy phép gốc; mỗi bài ghi tên nguồn.',
-              'Giao diện, đề sinh bằng code, lời giải và bộ sách PDF thuộc về ReadUp. Bạn được dùng để tự học, không được sao chép hàng loạt hay dùng để làm sản phẩm khác.',
-              'IELTS là nhãn hiệu của British Council, IDP: IELTS Australia và Cambridge University Press & Assessment. SAT là nhãn hiệu đã đăng ký của College Board. ReadUp không liên kết với và không được các tổ chức này bảo trợ.',
+              'Giao diện, đề sinh bằng code, lời giải và bộ sách PDF thuộc về Band 9. Bạn được dùng để tự học, không được sao chép hàng loạt hay dùng để làm sản phẩm khác.',
+              'IELTS là nhãn hiệu của British Council, IDP: IELTS Australia và Cambridge University Press & Assessment. SAT là nhãn hiệu đã đăng ký của College Board. Band 9 không liên kết với và không được các tổ chức này bảo trợ.',
             ],
           },
         ],
@@ -178,9 +178,9 @@ export function termsDoc(ctx: LegalContext): LegalDoc {
           {
             kind: 'list',
             items: [
-              'ReadUp là công cụ luyện tập; chúng tôi không cam kết một mức điểm thi cụ thể.',
+              'Band 9 là công cụ luyện tập; chúng tôi không cam kết một mức điểm thi cụ thể.',
               'App có thể tạm dừng để bảo trì hoặc khi nhà cung cấp hạ tầng gặp sự cố. Cách bù khi sự cố kéo dài nằm ở Chính sách hoàn tiền.',
-              'Trong phạm vi pháp luật cho phép, trách nhiệm của chúng tôi với bạn không vượt quá số tiền bạn đã trả cho ReadUp trong 12 tháng gần nhất.',
+              'Trong phạm vi pháp luật cho phép, trách nhiệm của chúng tôi với bạn không vượt quá số tiền bạn đã trả cho Band 9 trong 12 tháng gần nhất.',
             ],
           },
         ],

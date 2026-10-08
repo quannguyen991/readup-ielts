@@ -78,7 +78,7 @@ export function refundDoc(ctx: LegalContext): LegalDoc {
             items: [
               `Gửi yêu cầu qua ${contactVia(ctx.contact)}, kèm mã đơn (bắt đầu bằng RU, nằm trong nội dung chuyển khoản) và ảnh chụp giao dịch.`,
               `Chúng tôi đối chiếu và trả lời chậm nhất sau ${REFUND_REPLY_WORKDAYS} ngày làm việc.`,
-              `Tiền hoàn về đúng tài khoản đã chuyển đi, trong ${REFUND_PROCESS_WORKDAYS} ngày làm việc kể từ khi xác nhận. Phí chuyển khoản, nếu có, do ReadUp chịu.`,
+              `Tiền hoàn về đúng tài khoản đã chuyển đi, trong ${REFUND_PROCESS_WORKDAYS} ngày làm việc kể từ khi xác nhận. Phí chuyển khoản, nếu có, do Band 9 chịu.`,
             ],
           },
         ],

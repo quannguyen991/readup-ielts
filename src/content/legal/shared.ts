@@ -35,7 +35,7 @@ export type LegalContext = {
 };
 
 /** Sửa chữ nào trong ba trang này thì đổi ngày này — người đọc có quyền biết bản nào đang có hiệu lực. */
-export const LEGAL_UPDATED_AT = '2026-09-11';
+export const LEGAL_UPDATED_AT = '2026-10-08';
 
 export type LegalLink = { key: LegalDocId | 'contact'; href: string; label: string };
 
