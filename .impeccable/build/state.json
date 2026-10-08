@@ -1,0 +1,18 @@
+{
+  "surface": "app/gioi-thieu.tsx",
+  "mode": "persuade",
+  "history": [
+    { "date": "2026-10-07", "direction": "Một ngày học với Band 9 (navy, dòng thời gian 06:45–21:00)", "source": "concept-seed 3f2c11d3, vị trí 7", "result": "người dùng chê hai lần: \"trang giới thiệu xấu quá\", \"vẫn chưa đẹp, giao diện và thiết kế vẫn xấu\"" },
+    {
+      "date": "2026-10-08",
+      "sketches": {
+        "a": ".impeccable/review/huong-a.png — tranh Van Gogh phủ kín, Playfair Display, thẻ câu Reading nổi",
+        "b": ".impeccable/review/huong-b.png — ảnh pixel Paris phủ kín, hộp thoại kiểu game",
+        "c": ".impeccable/review/huong-c.png — nền kem sáng, bưu thiếp + nhãn dán"
+      },
+      "picked": "a",
+      "picked_by": "người dùng (AskUserQuestion, 08/10/2026)",
+      "direction": "Phòng tranh: Đêm đầy sao ở màn đầu, mỗi phần app là một bức có khung, kết trên Đêm đầy sao trên sông Rhône"
+    }
+  ]
+}

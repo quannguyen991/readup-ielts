@@ -4,6 +4,7 @@
   "main": "expo-router/entry",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",
+    "@expo-google-fonts/playfair-display": "^0.4.2",
     "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
     "@expo/metro-runtime": "~57.0.8",
     "@noble/curves": "^2.4.0",
