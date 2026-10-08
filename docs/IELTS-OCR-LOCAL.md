@@ -1,15 +1,28 @@
-# Local IELTS OCR sources
+# IELTS source tests kept on this machine
 
-This private import keeps book OCR out of Git and normal app bundles.
+The Cambridge PDFs, audio, answer keys and extracted text live in `.local-private/ielts-ocr/`. That folder is ignored by Git and is not included in normal deploy bundles. The `/ielts-source-practice` screen reads this private store on the local Expo web server.
 
-From the repository root, run:
+## Sources imported
+
+- Cambridge IELTS 8 Academic Tests 1–4 and General Training Tests A–B.
+- Six Reading tests named **VOL 10 KEY**; this folder does not verify them as an official Cambridge volume.
+- Cambridge IELTS 20 Reading and Listening Tests 1–4, including answer keys. Reading/Listening pages are extracted into the 40-question answer-sheet flow. Audio is available for Listening Tests 1–2; the shared Drive folder did not contain playable audio for Tests 3–4.
+- Cambridge IELTS 17–19 full-book scans and their Listening audio. OCR output is machine-extracted and must be checked against the source PDF before using its answers for a final score.
+
+The spreadsheet contains 99 `XEM` links to an outside practice site. Cambridge IELTS 10–16 and 21 are listed in the screen as external-source entries so learners can open those pages; their questions, answers, PDFs and audio are not copied into the app. The sheet is not the source PDF library.
+
+## Rebuild the local import
+
+Place the Drive files in `.local-private/ielts-ocr/` with the names used by the importer, then run:
 
 ```sh
-npm run ielts:import-local-ocr -- "C:\Users\admin\Documents\Codex\2026-10-02\h-y-t-m-cho-t\outputs"
+node scripts/ielts/extract-drive-cambridge.mjs
+python scripts/ielts/ocr-drive-cambridge.py
+python scripts/ielts/import-drive-cambridge.py
 ```
 
-The importer writes `.local-private/ielts-ocr/source-tests.json`. Open `/ielts-source-practice` in the local Expo web app to browse the imported page text. Imported answers/support pages are requested only after submitting the page. Draft responses are saved in that browser's local storage.
+The OCR step requires local Python packages `pymupdf`, `numpy`, `rapidocr-onnxruntime` and `openpyxl`. It saves a checkpoint every 25 pages so an interrupted scan can resume. The Cambridge 20 extractor uses the repo's `pdfjs-dist` dependency. Rerunning the earlier Cambridge 8 importer preserves the Cambridge 17–20 and external-link entries already in the private bundle.
 
-The import contains Cambridge IELTS 8 Academic Tests 1–4, General Training Tests A–B, and six Reading tests named **VOL 10 KEY**. It does not identify VOL 10 KEY as official Cambridge IELTS 10. Original PDF page numbers and OCR confidence markers are retained. Cambridge pages flagged for review are 21, 44, 48, 62, 65, 67, 73, 85, 87, 88, 109, 111, 112, 120, 122, 126, 135, 154, 158, 164, 168, 171, and 173.
+## Practice behavior
 
-This view is a local OCR review/practice surface: it presents page text and a saved answer draft, then reveals source support pages after submission. It does not yet normalize every item into individual interactive question widgets or calculate Reading raw scores/bands. OCR content is not suitable for official scoring until the flagged lines and question/answer mapping are checked against the PDFs. No Cambridge Listening audio or Speaking prompt set is included.
+Choose a source and test at `/ielts-source-practice`, fill the 40 answer slots, and submit. Draft answers stay in that browser's local storage. Structured keys are hidden until submission. Verified Reading/Listening keys also show an estimated section band from typical raw-score thresholds; this is not an official result, and conversion cutoffs can vary by test version. Cambridge 17–19 OCR keys remain available as source pages after submission but are not auto-scored until their OCR answers are checked against the PDF. OCR review pages and their confidence notes are retained when present.

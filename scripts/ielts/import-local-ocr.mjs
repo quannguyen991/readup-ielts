@@ -85,6 +85,20 @@ const bundle = {
   tests: [...cambridgeAcademic, ...gt, ...volTests],
 };
 
+// Preserve user-imported Drive tests when this older OCR import is rerun.
+// Their PDFs, audio and extracted text stay private and are never bundled.
+try {
+  const existing = JSON.parse(await readFile(path.join(outDir, 'source-tests.json'), 'utf8'));
+  const driveTests = (existing.tests ?? []).filter((test) => test.externalOnly || /^cambridge-(17|18|19|20)-/.test(test.id));
+  const byId = new Map([...bundle.tests, ...driveTests].map((test) => [test.id, test]));
+  bundle.tests = [...byId.values()];
+  bundle.reviewPages = [...new Set([...bundle.reviewPages, ...(existing.reviewPages ?? [])])].sort((a, b) => a - b);
+  const sources = [...bundle.sources, ...(existing.sources ?? [])];
+  bundle.sources = [...new Map(sources.map((source) => [source.name, source])).values()];
+} catch {
+  // The first import has no previous private bundle to merge.
+}
+
 await mkdir(outDir, { recursive: true });
 await writeFile(path.join(outDir, 'source-tests.json'), JSON.stringify(bundle), 'utf8');
 console.log(`Imported ${bundle.tests.length} source sets (${bundle.tests.reduce((n, t) => n + t.pages.length, 0)} question pages).`);

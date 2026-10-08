@@ -12,21 +12,46 @@ type SourceTest = {
   supportPages: SourcePage[];
   answerKey?: Record<string, string | string[]>;
   pdfAsset?: string;
+  sourceStartPage?: number;
   sourceUrl?: string;
   audioFiles?: string[];
   answerKeyVerified?: boolean;
+  externalOnly?: boolean;
 };
 type PrivateOcrBundle = { tests: SourceTest[]; reviewPages: number[] };
 type GradeResult = { number: number; answer: string; expected: string; correct: boolean };
 
 const privateDir = path.join(process.cwd(), '.local-private', 'ielts-ocr');
 const jsonHeaders = { 'cache-control': 'no-store', 'content-type': 'application/json; charset=utf-8' };
+const publicExternalVolumes = [10, 11, 12, 13, 14, 15, 16, 21];
+
+function externalSourceOnlyTests(): SourceTest[] {
+  return publicExternalVolumes.flatMap((volume) => (['Listening', 'Reading'] as const).flatMap((section) => {
+    const sectionSlug = section.toLowerCase();
+    return Array.from({ length: 4 }, (_, index) => {
+      const testNumber = index + 1;
+      return {
+        id: `cambridge-${volume}-${sectionSlug}-${testNumber}`,
+        title: `Cambridge IELTS ${volume} · ${section} Test ${testNumber}`,
+        source: `Cambridge IELTS ${volume}`,
+        section,
+        questionCount: 40,
+        pages: [],
+        supportPages: [],
+        sourceUrl: `https://navsenglish.com/ielts/${sectionSlug}/test?slug=cambridge-${volume}-academic-${sectionSlug}-test-${testNumber}&ref=vankhongluoi`,
+        audioFiles: [],
+        answerKeyVerified: false,
+        externalOnly: true,
+      };
+    });
+  }));
+}
 
 async function readBundle(): Promise<PrivateOcrBundle | null> {
   try {
     return JSON.parse(await readFile(path.join(privateDir, 'source-tests.json'), 'utf8')) as PrivateOcrBundle;
   } catch {
-    return null;
+    return { tests: externalSourceOnlyTests(), reviewPages: [] };
   }
 }
 
@@ -39,11 +64,12 @@ export async function GET(request: Request): Promise<Response> {
 
   return Response.json({
     reviewPages: bundle.reviewPages,
-    tests: bundle.tests.map(({ id, title, source, section, questionCount, pages, supportPages, answerKey, pdfAsset, sourceUrl, audioFiles, answerKeyVerified }) => ({
+    tests: bundle.tests.map(({ id, title, source, section, questionCount, pages, supportPages, answerKey, pdfAsset, sourceUrl, audioFiles, answerKeyVerified, externalOnly }) => ({
       id, title, source, section, questionCount: questionCount ?? 40,
       pageCount: pages.length, supportPageCount: supportPages.length,
-      hasAnswerKey: Boolean(answerKey), answerKeyVerified: answerKeyVerified ?? false,
+      hasAnswerKey: Boolean(answerKey || supportPages.length), answerKeyVerified: answerKeyVerified ?? false,
       hasPdf: Boolean(pdfAsset || sourceUrl), audioCount: audioFiles?.length ?? 0,
+      externalOnly: externalOnly ?? false,
     })),
   }, { headers: jsonHeaders });
 }
@@ -62,7 +88,8 @@ export async function POST(request: Request): Promise<Response> {
     test: {
       id: test.id, title: test.title, source: test.source, section: test.section,
       questionCount: test.questionCount ?? 40, pages: test.pages,
-      pdfAsset: test.pdfAsset, sourceUrl: test.sourceUrl, audioFiles: test.audioFiles ?? [],
+      pdfAsset: test.pdfAsset, sourceStartPage: test.sourceStartPage ?? 1,
+      sourceUrl: test.sourceUrl, audioFiles: test.audioFiles ?? [], externalOnly: test.externalOnly ?? false,
     },
     supportPages: submitted ? test.supportPages : [],
     grade: submitted ? gradeTest(test, answers) : null,
@@ -115,7 +142,7 @@ function normalizeAnswer(value: string): string {
   return value.normalize('NFKC').toLocaleLowerCase().replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ').trim();
 }
 
-function gradeTest(test: SourceTest, answers: Record<string, string>): null | { score: number; total: number; results: GradeResult[]; verified: boolean } {
+function gradeTest(test: SourceTest, answers: Record<string, string>): null | { score: number; total: number; results: GradeResult[]; verified: boolean; bandEstimate: number | null } {
   if (!test.answerKey) return null;
   const total = test.questionCount ?? 40;
   const results = Array.from({ length: total }, (_, index) => {
@@ -126,5 +153,24 @@ function gradeTest(test: SourceTest, answers: Record<string, string>): null | { 
     const correct = Boolean(given) && expectedList.some((expected) => normalizeAnswer(expected) === normalizeAnswer(given));
     return { number, answer: given, expected: expectedList.join(' / '), correct };
   });
-  return { score: results.filter((item) => item.correct).length, total, results, verified: test.answerKeyVerified ?? false };
+  const score = results.filter((item) => item.correct).length;
+  const verified = test.answerKeyVerified ?? false;
+  const bandEstimate = verified && total === 40 && (test.section === 'Reading' || test.section === 'Listening')
+    ? estimateIeltsBand(score, test.section, results.some((item) => item.answer))
+    : null;
+  return { score, total, results, verified, bandEstimate };
+}
+
+function estimateIeltsBand(score: number, section: 'Reading' | 'Listening', attempted: boolean): number {
+  if (!attempted) return 0;
+  const listening = [
+    [39, 9], [37, 8.5], [35, 8], [32, 7.5], [30, 7], [26, 6.5], [23, 6],
+    [18, 5.5], [16, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [4, 2.5], [3, 2], [2, 1.5], [0, 1],
+  ] as const;
+  const reading = [
+    [39, 9], [37, 8.5], [35, 8], [33, 7.5], [30, 7], [27, 6.5], [23, 6],
+    [19, 5.5], [15, 5], [13, 4.5], [10, 4], [8, 3.5], [6, 3], [4, 2.5], [3, 2], [2, 1.5], [0, 1],
+  ] as const;
+  const thresholds = section === 'Listening' ? listening : reading;
+  return thresholds.find(([minimum]) => score >= minimum)?.[1] ?? 1;
 }
