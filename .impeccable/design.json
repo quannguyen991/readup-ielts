@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T00:00:00+07:00",
+  "title": "Design System: Band 9 — landing world (/gioi-thieu)",
+  "extensions": {
+    "colorMeta": {
+      "wall": { "role": "neutral", "displayName": "Gallery Wall", "canonical": "#0E1530", "tonalRamp": ["#070B19", "#0E1530", "#18224A", "#263264", "#3E4B82", "#6E7AA6", "#AAB2CE", "#E4E7F1"] },
+      "navy": { "role": "neutral", "displayName": "Navy (logo navy)", "canonical": "#0F1D33", "tonalRamp": ["#060C17", "#0F1D33", "#16264A", "#22345C", "#3A4E7A", "#6F7FA3", "#B9C0D3", "#E6E9F1"] },
+      "navy-2": { "role": "neutral", "displayName": "Navy 2", "canonical": "#16264A", "tonalRamp": ["#0A1428", "#16264A", "#22345C", "#30457A", "#4A5F92", "#7C8DB5", "#B4C0DB", "#E3E8F3"] },
+      "night-screen": { "role": "neutral", "displayName": "Night Screen", "canonical": "#0A1428", "tonalRamp": ["#050A15", "#0A1428", "#122039", "#1C2E4F", "#33476E", "#62759B", "#A2B0CA", "#DEE4EF"] },
+      "cream": { "role": "neutral", "displayName": "Cream", "canonical": "#F3EDE1", "tonalRamp": ["#3A3326", "#5E5440", "#857860", "#AA9E86", "#CBC1AD", "#E3DACA", "#F3EDE1", "#FBF8F2"] },
+      "mist": { "role": "neutral", "displayName": "Mist", "canonical": "#C9CFDF", "tonalRamp": ["#262A36", "#3F4556", "#5C6377", "#7A8299", "#9BA2B8", "#C9CFDF", "#DFE3EC", "#F2F4F8"] },
+      "gold": { "role": "primary", "displayName": "Gallery Gold", "canonical": "#E3BE6A", "tonalRamp": ["#3D2E10", "#5E471A", "#80622A", "#A8833C", "#CBA151", "#E3BE6A", "#EDCD84", "#F7E8C4"] },
+      "gold-hover": { "role": "primary", "displayName": "Gold Hover", "canonical": "#EDCD84", "tonalRamp": ["#3D2E10", "#5E471A", "#80622A", "#A8833C", "#CBA151", "#E3BE6A", "#EDCD84", "#F7E8C4"] },
+      "gold-deep": { "role": "primary", "displayName": "Frame Gold (brand gold)", "canonical": "#B8955A", "tonalRamp": ["#5A4318", "#6A5228", "#7E6230", "#8F6E36", "#B8955A", "#DDC28A", "#EBDAB3", "#FBF7EE"] },
+      "gold-ink": { "role": "primary", "displayName": "Gold Ink", "canonical": "#7A5E24", "tonalRamp": ["#2E230D", "#4A3816", "#7A5E24", "#9A7A3A", "#B99A5C", "#D3BC8C", "#EADBBD", "#F8F1E3"] },
+      "mat": { "role": "neutral", "displayName": "Mat", "canonical": "#EFE7D6", "tonalRamp": ["#39332A", "#5C5443", "#82785F", "#A89D82", "#CBC1A8", "#E2D9C5", "#EFE7D6", "#FAF6EE"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "#FBF8F2", "tonalRamp": ["#3B372F", "#5F594D", "#857E70", "#ABA494", "#CEC8BA", "#E8E3D8", "#F5F1E9", "#FBF8F2"] },
+      "white": { "role": "neutral", "displayName": "White", "canonical": "#FFFFFF", "tonalRamp": ["#262626", "#404040", "#5E5E5E", "#7F7F7F", "#A3A3A3", "#C7C7C7", "#E8E8E8", "#FFFFFF"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#141A33", "tonalRamp": ["#0A0D1A", "#141A33", "#262D4B", "#3E4666", "#5F6784", "#8A90A8", "#BCC0CF", "#E9EAF0"] },
+      "body": { "role": "neutral", "displayName": "Body", "canonical": "#4A4F66", "tonalRamp": ["#1C1E27", "#2F3242", "#4A4F66", "#646982", "#81869D", "#A4A8BA", "#CBCDD8", "#EEEFF3"] },
+      "red": { "role": "semantic", "displayName": "Red (wrong)", "canonical": "#E5484D", "tonalRamp": ["#4A1012", "#7A1C20", "#AC2B30", "#E5484D", "#EC7477", "#F2A0A2", "#F8CDCE", "#FDEEEE"] },
+      "green": { "role": "semantic", "displayName": "Green (right)", "canonical": "#22A06B", "tonalRamp": ["#0A3322", "#105538", "#17784F", "#22A06B", "#4FBD8D", "#86D4B1", "#BFEAD5", "#EAF8F1"] },
+      "green-light": { "role": "semantic", "displayName": "Green Light (open now)", "canonical": "#5FD39B", "tonalRamp": ["#0F3A26", "#185C3D", "#22A06B", "#3FBF84", "#5FD39B", "#8FE2BA", "#BFEFD6", "#EAFAF2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only; 84/90 wide, 64/70 at >=640px, 46/52 phones; fixed line breaks." },
+      "display-accent": { "displayName": "Display Accent", "purpose": "Second sentence of every serif headline, Playfair 600 Italic in Gallery Gold." },
+      "headline": { "displayName": "Headline", "purpose": "One centred per section; 46/54 at >=640px, 36/44 phones; closing headline one step larger." },
+      "placard-title": { "displayName": "Placard Title", "purpose": "Exhibit name; 32/40 below 980px." },
+      "art-title": { "displayName": "Art Title", "purpose": "Painting title in the Art Label." },
+      "lede": { "displayName": "Lede", "purpose": "One sentence under the hero headline; 17/27 phones." },
+      "body": { "displayName": "Body", "purpose": "Placard line and section subtitle in Mist; 16.5/26 below 980px." },
+      "facts": { "displayName": "Facts", "purpose": "Placard last line in Gallery Gold; access chips." },
+      "label": { "displayName": "Label", "purpose": "Sign-in link, city names, bubble text." },
+      "button": { "displayName": "Button", "purpose": "CTA labels." },
+      "wordmark": { "displayName": "Wordmark", "purpose": "Band 9 next to the logo mark." },
+      "timer": { "displayName": "Timer", "purpose": "Timers inside mocks, tabular numerals, Gallery Gold." }
+    },
+    "shadows": [
+      { "name": "frame-drop", "value": "0 34px 70px rgba(0,0,0,.55)", "purpose": "Every gold frame." },
+      { "name": "held-card", "value": "0 30px 70px rgba(0,0,0,0.5)", "purpose": "Unframed hero exam card, rotated 1.5deg." },
+      { "name": "gold-glow", "value": "0 10px 30px rgba(227,190,106,0.35)", "purpose": "Solid primary button only." },
+      { "name": "bubble-lift", "value": "0 8px 20px rgba(8,12,34,0.35)", "purpose": "Speech bubbles on the Paris map." },
+      { "name": "spotlight", "value": "radial-gradient(ellipse 50% 50% at 50% 50%, rgba(227,190,106,.13), rgba(227,190,106,0) 70%)", "purpose": "Light pooled on the wall above each frame; 520px tall, top -110px, 12% overhang each side." },
+      { "name": "frame-gradient", "value": "#B8955A", "purpose": "Flat frame metal (no gradient)." },
+      { "name": "scrim-hero-wide", "value": "linear-gradient(90deg,rgba(8,12,34,.92) 0%,rgba(8,12,34,.74) 36%,rgba(8,12,34,.18) 68%,rgba(8,12,34,.06) 100%)", "purpose": "Hero painting at >=980px; text on the dark left." },
+      { "name": "scrim-hero-narrow", "value": "linear-gradient(180deg,rgba(8,12,34,.2) 0%,rgba(8,12,34,.6) 34%,rgba(8,12,34,.66) 70%,rgba(8,12,34,.9) 100%)", "purpose": "Hero painting below 980px." },
+      { "name": "scrim-close", "value": "linear-gradient(180deg,rgba(14,21,48,1) 0%,rgba(8,12,34,.62) 22%,rgba(8,12,34,.55) 60%,rgba(8,12,34,.9) 100%)", "purpose": "Closing painting; starts at solid Wall." },
+      { "name": "glass-panel", "value": "background rgba(8,12,30,0.66); backdrop-filter blur(6px); border 1px rgba(227,190,106,0.25)", "purpose": "Access panel on the closing painting." }
+    ],
+    "motion": [
+      { "name": "b9wave", "value": "@keyframes b9wave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}} 1.1s cubic-bezier(.16,1,.3,1) infinite, 70ms stagger per bar", "purpose": "The only authored motion: speaking-room voice wave. Disabled under prefers-reduced-motion." },
+      { "name": "press-nudge", "value": "translateY(1px) while pressed", "purpose": "CTA press feedback." },
+      { "name": "focus-ring", "value": "outline: 2px solid #E3BE6A; outline-offset: 3px", "purpose": "Keyboard focus on buttons and links." },
+      { "name": "selection", "value": "::selection{background:#E3BE6A;color:#0F1D33}", "purpose": "Text selection." }
+    ],
+    "breakpoints": [
+      { "name": "mid", "value": "640px" },
+      { "name": "wide", "value": "980px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Solid gold pill with trailing arrow; always paired with the outline button.",
+      "html": "<div style=\"background:#0E1530;padding:24px\"><button class=\"ds-btn-primary\">Học thử ngay<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></button></div>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;padding:17px 30px;border:0;border-radius:999px;background:#E3BE6A;color:#0F1D33;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif;font-weight:800;font-size:17px;box-shadow:0 10px 30px rgba(227,190,106,0.35);cursor:pointer}.ds-btn-primary:hover{background:#EDCD84}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid #E3BE6A;outline-offset:3px}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Cream outline pill over a painting or the wall; the secondary of the pair.",
+      "html": "<div style=\"background:#0E1530;padding:24px\"><button class=\"ds-btn-outline\">Tạo tài khoản</button></div>",
+      "css": ".ds-btn-outline{padding:17px 30px;border:1.5px solid rgba(243,237,225,0.5);border-radius:999px;background:rgba(8,12,34,0.25);color:#F3EDE1;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif;font-weight:800;font-size:17px;cursor:pointer}.ds-btn-outline:hover{background:rgba(243,237,225,0.12)}.ds-btn-outline:active{transform:translateY(1px)}.ds-btn-outline:focus-visible{outline:2px solid #E3BE6A;outline-offset:3px}"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "nav-signin",
+      "description": "Logo mark + wordmark and a single Sign in pill over the hero painting.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-nav-brand\"><span class=\"ds-nav-mark\"></span>Band 9</span><a class=\"ds-nav-link\" href=\"#\">Đăng nhập</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;padding:28px 24px;background:linear-gradient(90deg,#0E1530,#2A3A6E);font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}.ds-nav-brand{display:flex;align-items:center;gap:10px;color:#F3EDE1;font-weight:800;font-size:20px;letter-spacing:-0.4px}.ds-nav-mark{width:34px;height:34px;border-radius:6px;background:#B8955A}.ds-nav-link{padding:9px 18px;border-radius:999px;border:1px solid rgba(243,237,225,0.4);background:rgba(8,12,34,0.25);color:#F3EDE1;font-weight:700;font-size:15px;text-decoration:none}.ds-nav-link:hover{background:rgba(243,237,225,0.12)}.ds-nav-link:focus-visible{outline:2px solid #E3BE6A;outline-offset:3px}"
+    },
+    {
+      "name": "Framed Exhibit",
+      "kind": "card",
+      "refersTo": "frame",
+      "description": "Signature: gold-leaf frame, cream mat and spotlight around a code-built app mock.",
+      "html": "<div class=\"ds-wall\"><div class=\"ds-spot\"></div><div class=\"ds-frame\"><div class=\"ds-mat\"><div class=\"ds-screen\"><div class=\"ds-bar\"><span>IELTS Reading · Passage 2</span><span class=\"ds-timer\">18:42</span></div><div class=\"ds-q\">14. Most city parks were designed by engineers.<div class=\"ds-opts\"><span class=\"ds-opt ds-wrong\">TRUE</span><span class=\"ds-opt\">FALSE</span><span class=\"ds-opt ds-right\">NOT GIVEN</span></div></div></div></div></div></div>",
+      "css": ".ds-wall{position:relative;padding:90px 40px 50px;background:#0E1530;overflow:hidden;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}.ds-spot{position:absolute;left:-12%;right:-12%;top:-20px;height:520px;background:radial-gradient(ellipse 50% 55% at 50% 0%,rgba(227,190,106,.17),rgba(227,190,106,0) 72%);pointer-events:none}.ds-frame{position:relative;max-width:460px;margin:0 auto;padding:7px;border-radius:3px;background:#B8955A;box-shadow:0 34px 70px rgba(0,0,0,.55)}.ds-mat{padding:12px;background:#EFE7D6}.ds-screen{background:#FBF8F2;border-radius:4px;overflow:hidden}.ds-bar{display:flex;justify-content:space-between;padding:10px 16px;background:#16264A;color:#F3EDE1;font-weight:700;font-size:13px}.ds-timer{color:#E3BE6A;font-variant-numeric:tabular-nums}.ds-q{padding:16px;color:#141A33;font-weight:600;font-size:15.5px;line-height:22px}.ds-opts{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.ds-opt{padding:7px 11px;border-radius:9px;border:1.5px solid rgba(20,26,51,0.15);font-weight:800;font-size:13px}.ds-wrong{border-color:#E5484D;background:rgba(229,72,77,0.08)}.ds-right{border-color:#22A06B;background:rgba(34,160,107,0.10)}"
+    },
+    {
+      "name": "Placard",
+      "kind": "custom",
+      "refersTo": "frame",
+      "description": "Signature: serif exhibit title, one line, a short gold rule and a gold facts line.",
+      "html": "<div class=\"ds-placard\"><h3>Phòng thi thật</h3><p>Giao diện luyện đề như thi thật: đồng hồ đếm ngược, bôi chọn đoạn văn, chấm ngay và chỉ đúng chỗ sai.</p><hr><div class=\"ds-facts\">IELTS Reading · Listening · Writing · SAT Math</div></div>",
+      "css": ".ds-placard{padding:40px;background:#0E1530;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}.ds-placard h3{margin:0;color:#F3EDE1;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:44px;line-height:52px}.ds-placard p{margin:14px 0 0;max-width:480px;color:#C9CFDF;font-size:18px;line-height:29px}.ds-placard hr{margin:22px 0 0;width:56px;height:1px;border:0;background:#E3BE6A}.ds-facts{margin-top:12px;color:#E3BE6A;font-weight:600;font-size:14px;line-height:21px}"
+    },
+    {
+      "name": "Art Label",
+      "kind": "custom",
+      "refersTo": "art-title",
+      "description": "Credit line for every painting ground: italic serif title, artist, year.",
+      "html": "<div class=\"ds-artlabel\"><em>Đêm đầy sao</em> — Vincent van Gogh, 1889 · nền học mặc định trong Band 9</div>",
+      "css": ".ds-artlabel{padding:24px;background:#0E1530;color:rgba(243,237,225,0.82);font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif;font-weight:500;font-size:13px;line-height:19px}.ds-artlabel em{color:#F3EDE1;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:600;font-size:14.5px}"
+    },
+    {
+      "name": "Access Panel",
+      "kind": "card",
+      "refersTo": "access-panel",
+      "description": "Translucent glass panel on the closing painting: open-now chips in green, account chips in gold.",
+      "html": "<div class=\"ds-close\"><div class=\"ds-panel\"><div class=\"ds-head\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5FD39B\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l5 5L20 7\"/></svg> Dùng ngay, không cần tài khoản</div><div class=\"ds-row\"><span class=\"ds-acc ds-free\">Từ vựng</span><span class=\"ds-acc ds-free\">Reading</span></div><div class=\"ds-head\">Cần tài khoản miễn phí</div><div class=\"ds-row\"><span class=\"ds-acc ds-lock\">Speaking</span><span class=\"ds-acc ds-lock\">Du ngoạn</span></div></div></div>",
+      "css": ".ds-close{padding:32px;background:linear-gradient(180deg,#0E1530,#2B3F7A);font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif}.ds-panel{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px;border-radius:20px;background:rgba(8,12,30,0.66);border:1px solid rgba(227,190,106,0.25);backdrop-filter:blur(6px)}.ds-head{color:#F3EDE1;font-weight:800;font-size:15px;margin-top:6px}.ds-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.ds-acc{padding:7px 13px;border-radius:999px;border:1px solid;font-weight:600;font-size:14px}.ds-free{color:#BFEFD6;border-color:rgba(95,211,155,0.5)}.ds-lock{color:#F1DDAE;border-color:rgba(227,190,106,0.5)}"
+    },
+    {
+      "name": "Topic Chips",
+      "kind": "chip",
+      "refersTo": "topic-chip",
+      "description": "Interest chips inside the vocabulary mock; selected = navy with gold check.",
+      "html": "<div class=\"ds-chips\"><span class=\"ds-chip ds-on\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#E3BE6A\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l5 5L20 7\"/></svg>Du lịch</span><span class=\"ds-chip ds-on\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#E3BE6A\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12l5 5L20 7\"/></svg>Thể thao</span><span class=\"ds-chip\">Ẩm thực</span><span class=\"ds-chip\">Vũ trụ</span></div>",
+      "css": ".ds-chips{display:flex;flex-wrap:wrap;gap:7px;padding:18px;background:#FBF8F2}.ds-chip{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:999px;background:rgba(15,29,51,0.06);color:#141A33;font-family:'Plus Jakarta Sans',Inter,system-ui,sans-serif;font-weight:600;font-size:13px}.ds-on{background:#0F1D33;color:#F3EDE1}"
+    },
+    {
+      "name": "Voice Wave",
+      "kind": "custom",
+      "refersTo": "frame",
+      "description": "The single authored motion: staggered gold bars in the dark speaking mock.",
+      "html": "<div class=\"ds-wave\"><i style=\"height:10px\"></i><i style=\"height:18px;animation-delay:70ms\"></i><i style=\"height:28px;animation-delay:140ms\"></i><i style=\"height:16px;animation-delay:210ms\"></i><i style=\"height:34px;animation-delay:280ms\"></i><i style=\"height:22px;animation-delay:350ms\"></i><i style=\"height:12px;animation-delay:420ms\"></i><i style=\"height:26px;animation-delay:490ms\"></i><i style=\"height:38px;animation-delay:560ms\"></i></div>",
+      "css": ".ds-wave{display:flex;align-items:center;gap:4px;height:42px;padding:18px;background:#0A1428;border-radius:4px}.ds-wave i{display:block;width:4px;border-radius:2px;background:#E3BE6A;transform-origin:50% 50%;animation:ds-b9wave 1.1s cubic-bezier(.16,1,.3,1) infinite}@keyframes ds-b9wave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}@media (prefers-reduced-motion: reduce){.ds-wave i{animation:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Gallery",
+    "overview": "Band 9 is shown as a museum after dark. The first viewport is a real painting, Van Gogh's The Starry Night (the app's default study backdrop), under a directional scrim. The middle of the page is the gallery wall: deep night navy, where each area of the app hangs as a framed exhibit with a gold-leaf frame, a cream mat, a warm spotlight pooling above it and a museum placard beside it. The page closes over Starry Night Over the Rhône, with a translucent panel listing what is open now and what needs an account.\n\nProof is shown, not claimed: every exhibit is a small app screen built in code (a marked Reading question, a speaking room with a live voice wave, a vocabulary card, a day plan). The largest piece on the wall is the Paris pixel map from Travel mode, with two speech bubbles on it and a row of small framed city thumbnails. Density is low and the pace is slow: one exhibit per row, 150px of wall between them, and short placards.\n\nThe page refuses the category's stock dark SaaS layout (headline + same-size feature tiles) and does not copy TID's identity. The Band 9 logo and gold stay in the top bar (PRODUCT.md brand commitments).",
+    "keyCharacteristics": [
+      "Real public-domain paintings from the app's own backdrop library as full-bleed grounds, always under a scrim and always credited.",
+      "Night-navy wall, cream type, gold used as frame metal and as the accent of the second sentence.",
+      "Playfair Display for anything that names something (headlines, placard titles, art labels); Plus Jakarta Sans for everything else.",
+      "App areas presented as framed exhibits with placards, alternating left and right.",
+      "One authored motion: the speaking-room voice wave."
+    ],
+    "rules": [
+      { "name": "The Lamp Rule", "body": "Gold is metal and light, never a ground. It frames, underlines, marks the second sentence and fills the one primary button; it never fills a section or a card.", "section": "colors" },
+      { "name": "The Two Golds Rule", "body": "Gallery Gold on navy, Frame Gold as metal, Gold Ink for gold text on light grounds. Frame Gold is not a text colour on white; it does not reach legible contrast there.", "section": "colors" },
+      { "name": "The Second Sentence Rule", "body": "Serif headlines are two sentences. The first is Playfair 700 in Cream; the second is Playfair 600 Italic in Gallery Gold. Line breaks are explicit.", "section": "typography" },
+      { "name": "The Museum Voice Rule", "body": "Serif names things (headlines, placard titles, painting titles). Anything you read to understand or press to act is Plus Jakarta Sans.", "section": "typography" },
+      { "name": "The Lit Object Rule", "body": "Only hung or held objects cast shadows, and every shadow is soft and vertical. No hard offset shadows; no borders standing in for elevation.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** use only real public-domain paintings from `public/backdrops/art` and the Travel pixel maps as imagery, each under a scrim and each credited with an Art Label.",
+      "**Do** hang every app mock on the wall inside a Frame with a Spotlight and a Placard (the held hero card is the single unframed exception).",
+      "**Do** write serif headlines as two sentences, the second in gold italic (The Second Sentence Rule).",
+      "**Do** keep controls in Plus Jakarta Sans and in full pills; keep the 2px gold focus ring at 3px offset.",
+      "**Do** use Gold Ink, not Frame Gold, for gold text on light grounds (The Two Golds Rule).",
+      "**Do** honour `prefers-reduced-motion` for any motion added; the voice wave is the only authored animation.",
+      "**Do** keep the Band 9 logo mark, wordmark and gold in the top bar (PRODUCT.md brand commitment)."
+    ],
+    "donts": [
+      "**Don't** fill a section or card ground with gold (The Lamp Rule).",
+      "**Don't** use hard offset shadows or put shadows on anything that is not hung or held (The Lit Object Rule).",
+      "**Don't** add stock photos, generated people or uncredited art.",
+      "**Don't** add icons or small labels above placard titles; the placard is title, line, rule, facts.",
+      "**Don't** fall back to a headline over a grid of same-size feature tiles.",
+      "**Don't** imitate TID's visual identity."
+    ]
+  }
+}
