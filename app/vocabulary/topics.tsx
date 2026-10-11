@@ -8,6 +8,7 @@ import { Appear } from '@/components/motion/Motion';
 import { DueToday } from '@/components/vocab/DueToday';
 import { Card } from '@/components/ui';
 import { DeckLibrary } from '@/components/vocab/DeckLibrary';
+import { UnitList } from '@/components/intl/UnitList';
 import { VOCAB_TOPICS, VOCAB_TOPIC_TOTALS } from '@/data/vocab-topics';
 import { useL } from '@/i18n/useL';
 import { color } from '@/theme/tokens';
@@ -71,6 +72,20 @@ export default function VocabTopicsScreen() {
               <Text className="mt-1 font-sans text-label text-muted">{L(item.detail, item.mode === 'vocabulary' ? '50 words per topic' : item.mode === 'collocations' ? 'Natural word pairs' : item.mode === 'phrasal-verbs' ? 'Phrasal verbs' : 'Combined by topic')}</Text>
             </Pressable>
           ))}
+        </View>
+      </View>
+      <View className="mt-6">
+        <Text className="font-heavy text-cardTitle text-ink">{L('TOEIC và TOEFL theo unit', 'TOEIC and TOEFL by unit')}</Text>
+        <Text className="mt-1 font-sans text-label text-muted">
+          {L('Mỗi unit 10 từ. Đánh dấu từ đã thuộc để theo dõi tiến độ.', 'Each unit has 10 words. Mark the words you know to track progress.')}
+        </Text>
+        <Text className="mt-4 font-strong text-body text-ink">TOEIC</Text>
+        <View className="mt-2">
+          <UnitList exam="toeic" compact />
+        </View>
+        <Text className="mt-4 font-strong text-body text-ink">TOEFL</Text>
+        <View className="mt-2">
+          <UnitList exam="toefl" compact />
         </View>
       </View>
       <DeckLibrary initialFilter="ielts" />

@@ -13,6 +13,7 @@ import {
   MATH_SKILL_LABEL,
   type MathDomain,
 } from '@/lib/math/types';
+import { mathQuestionDraft } from '@/services/community/question-draft';
 import { getSet, getUnitOfSet } from '@/services/math/curriculum';
 import { diagnosticHeadline, readDiagnostic } from '@/services/math/diagnostic';
 import { regenerateMathItem } from '@/services/math/generator';
@@ -300,6 +301,15 @@ export default function MathReviewScreen() {
             <Text className="mt-2 font-sans text-label text-muted">
               {L(`Thời gian: ${Math.round(attempt.timeSpentMs / 1000)}s`, `Time: ${Math.round(attempt.timeSpentMs / 1000)}s`)}
             </Text>
+            {item && !attempt.isCorrect ? (
+              <Button
+                className="mt-3 self-start"
+                size="sm"
+                variant="outline"
+                label={L('Hỏi cộng đồng về câu này', 'Ask the community about this question')}
+                onPress={() => router.push({ pathname: '/community', params: mathQuestionDraft(item, attempt, en) } as never)}
+              />
+            ) : null}
           </Card>
         ))}
       </View>

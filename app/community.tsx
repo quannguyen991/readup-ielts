@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { ActivityIndicator, Alert, Pressable, Text, TextInput, View } from 'react-native';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 import { Button, Card, Icon } from '@/components/ui';
 import { Screen } from '@/components/layout/Screen';
@@ -108,6 +108,12 @@ function FeedPane({ token, userId }: { token: string; userId: string }) {
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const draft = useLocalSearchParams<{ title?: string; body?: string }>();
+
+  useEffect(() => {
+    if (typeof draft.title === 'string') setTitle(draft.title);
+    if (typeof draft.body === 'string') setBody(draft.body);
+  }, [draft.title, draft.body]);
 
   const refresh = useCallback(async () => {
     setError('');
