@@ -95,6 +95,8 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'dictation-youtube', label: 'Chép theo video', href: '/sentence/youtube', icon: 'play' },
           { key: 'shadow', label: 'Đọc theo VOA', href: '/shadow', icon: 'mic' },
           { key: 'speaking', label: 'Phòng luyện nói', href: '/speaking', icon: 'chat' },
+          { key: 'toeic-toefl', label: 'TOEIC · TOEFL', href: '/toeic', icon: 'letters' },
+          { key: 'hsa-english', label: 'Luyện HSA · Tiếng Anh', href: '/hsa', icon: 'target' },
         ],
       },
       {
@@ -262,6 +264,8 @@ export const NAV_LABEL_EN: Record<string, string> = {
   'dictation-youtube': 'Dictate from video',
   shadow: 'VOA shadowing',
   speaking: 'Speaking room',
+  'toeic-toefl': 'TOEIC · TOEFL',
+  'hsa-english': 'HSA English practice',
   sat: 'SAT',
   'sat-home': 'SAT overview',
   math: 'SAT Math',
