@@ -18,7 +18,7 @@ import { LISTENING_TESTS } from '@/data/listening-tests';
 import { DICTATION_SETS, dictationTopicLabel } from '@/data/dictation-sets';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
-import { VOCAB_TOPICS } from '@/data/vocab-topics';
+import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { SAT_RW_SKILL_LABEL, SAT_RW_UNITS } from '@/data/sat-rw-repository';
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
@@ -531,6 +531,25 @@ function buildEntries(): SearchEntry[] {
       exam: 'ielts',
       skill: 'vocab',
       href: `/vocabulary/topic/${topic.slug}`,
+    });
+  }
+  for (const deck of GLOBAL_SUCCESS_DECKS) {
+    const schoolUnit = typeof deck.grade === 'number' && typeof deck.unit === 'number';
+    const unitTitle = deck.name.slice(deck.name.indexOf(': ') + 2);
+    const titleVi = schoolUnit ? `Global Success ${deck.grade} · Unit ${deck.unit}: ${unitTitle}` : deck.nameVi;
+    const titleEn = schoolUnit ? `Global Success ${deck.grade} · Unit ${deck.unit}: ${unitTitle}` : deck.name;
+    out.push({
+      id: `vocab:${deck.slug}`,
+      kind: 'vocab',
+      title: { vi: titleVi, en: titleEn },
+      subtitle: {
+        vi: `${schoolUnit ? `Lớp ${deck.grade} · Unit ${deck.unit}` : 'Bộ từ nâng cao'} · ${deck.words.length} từ`,
+        en: `${schoolUnit ? `Grade ${deck.grade} · Unit ${deck.unit}` : 'Advanced set'} · ${deck.words.length} words`,
+      },
+      keywords: [deck.name, deck.nameVi, 'global success', 'từ vựng', ...(schoolUnit ? [`lớp ${deck.grade}`, `unit ${deck.unit}`] : ['nâng cao', 'advanced'])],
+      exam: 'ielts',
+      skill: 'vocab',
+      href: `/vocabulary/topic/${deck.slug}`,
     });
   }
   for (const deck of LISTENING_DECKS) {

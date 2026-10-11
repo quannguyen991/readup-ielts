@@ -175,7 +175,7 @@ export default function VocabTopicScreen() {
           </View>
           <View className="mt-3">
             <Grid columns={7} tabletColumns={4} mobileColumns={2} gap={12}>
-              {MODES.map((m) => (
+              {MODES.filter((m) => m.key !== 'cloze' || topic.words.some((word) => Boolean(word.example))).map((m) => (
                 <ModeTile key={m.key} mode={m} en={en} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
               ))}
             </Grid>
@@ -362,6 +362,7 @@ function WordRow({
 }) {
   const [open, setOpen] = useState(false);
   const { L } = useL();
+  const hasDetails = Boolean(word.example || word.collocation);
 
   return (
     <Card>
@@ -377,12 +378,14 @@ function WordRow({
         </View>
 
         <View className="flex-row items-center gap-2">
-          <Button
-            label={open ? L('Thu gọn', 'Collapse') : L('Ví dụ', 'Example')}
-            variant="ghost"
-            size="sm"
-            onPress={() => setOpen((v) => !v)}
-          />
+          {hasDetails ? (
+            <Button
+              label={open ? L('Thu gọn', 'Collapse') : L('Ví dụ', 'Example')}
+              variant="ghost"
+              size="sm"
+              onPress={() => setOpen((v) => !v)}
+            />
+          ) : null}
           {saved ? (
             <View className="flex-row items-center gap-1 rounded-pill bg-success-soft px-2.5 py-1.5">
               <Icon name="check" size={13} color={color.success} />
@@ -396,10 +399,10 @@ function WordRow({
         </View>
       </View>
 
-      {open ? (
+      {open && hasDetails ? (
         <View className="mt-3 gap-2 border-t border-border pt-3">
-          <Detail label={L('Ví dụ', 'Example')} value={word.example} italic />
-          <Detail label={L('Cụm hay đi kèm', 'Common collocation')} value={word.collocation} />
+          {word.example ? <Detail label={L('Ví dụ', 'Example')} value={word.example} italic /> : null}
+          {word.collocation ? <Detail label={L('Cụm hay đi kèm', 'Common collocation')} value={word.collocation} /> : null}
         </View>
       ) : null}
     </Card>

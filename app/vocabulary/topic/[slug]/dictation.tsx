@@ -47,7 +47,8 @@ export default function DictationScreen() {
   const [correct, setCorrect] = useState(0);
 
   const word = words[index];
-  const target = word ? (sentenceMode ? word.example : word.word) : '';
+  const sentenceAvailable = words.some((entry) => Boolean(entry.example));
+  const target = word ? (sentenceMode && sentenceAvailable ? word.example : word.word) : '';
 
   const play = () => {
     if (target) speak(target, { rate: speed, voice: voiceId });
@@ -126,7 +127,7 @@ export default function DictationScreen() {
         `Từ ${index + 1} / ${words.length}  •  Đúng ${correct}  •  Phím Ctrl để nghe lại`,
         `Word ${index + 1} / ${words.length}  •  Correct ${correct}  •  Press Ctrl to replay`,
       )}
-      right={
+      right={sentenceAvailable ? (
         <Pressable
           accessibilityRole="switch"
           aria-checked={sentenceMode}
@@ -142,7 +143,7 @@ export default function DictationScreen() {
           </View>
           <Text className="font-semi text-label text-ink">{L('Chép câu ví dụ', 'Dictate example sentence')}</Text>
         </Pressable>
-      }
+      ) : null}
     >
       <CrossFade swapKey={`${index}:${sentenceMode}`}>
         <StudyCard>
