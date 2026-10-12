@@ -59,7 +59,7 @@ const FILL = { position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 } as c
 
 function DefaultCover() {
   return (
-    <LinearGradient colors={['#6366F1', '#8B5CF6', '#EC4899']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
+    <LinearGradient colors={['#F6DC8E', '#E2B54E', '#B8862B']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
       <View style={{ position: 'absolute', right: 18, top: 10 }}>
         <GlowStars scale={1.1} />
       </View>

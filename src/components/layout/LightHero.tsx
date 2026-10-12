@@ -14,11 +14,17 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 
-import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
+import { GridBackdrop } from './GridBackdrop';
+import { CUTE_PALETTES } from './cute-palettes';
+import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
+import { useRewardStore } from '@/store/useRewardStore';
 import { Badge } from '@/components/ui/Badge';
 import { type SceneKind } from '@/components/three/Hero3D';
 import { HeroArt, type ArtScene } from '@/components/illust/HeroArt';
 import { GoldHighlight } from './GoldHighlight';
+import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { RCREAM, RINK } from '@/components/profile-retro/retro-art';
+import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
 
 /**
  * Hero nền lưới sáng — kiểu đang dùng ở trang chủ, nay dùng chung.
@@ -41,6 +47,7 @@ export function LightHero({
   footer,
   scene,
   art: artScene,
+  cat,
 }: {
   badge: string;
   line1: string;
@@ -55,11 +62,20 @@ export function LightHero({
   scene?: SceneKind;
   /** Cụm sticker khác với `scene` (vd. 'quest', 'shop'); mặc định theo `scene`. */
   art?: ArtScene;
+  /** Mèo sticker ngồi ở góc trên phải; chỉ hiện trên điện thoại, máy tính giữ nguyên minh hoạ. */
+  cat?: CatPose;
 }) {
   const width = useWindowDimensions().width;
+  const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
+  const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
   const wide = width >= 768;
-  const size = wide ? 44 : 28;
-  const line = wide ? 52 : 36;
+  // Trong khung duyệt của giao diện retro: khối hero là thẻ kem có viền mực, không gradient.
+  const retro = useRetroStyle();
+  // Điện thoại: khối hero gọn như đầu một màn của app, không phải một trang quảng cáo.
+  const phone = width < 640;
+  const size = wide ? 44 : phone ? 24 : 28;
+  const line = wide ? 52 : phone ? 30 : 36;
   // Cụm minh hoạ chỉ hiện khi màn đủ rộng; máy tính bảng dựng đứng / điện
   // thoại bỏ hẳn để tiêu đề không bị ép xuống dòng (người dùng 01/10/2026).
   const art = width >= HEADER_ART_MIN;
@@ -70,10 +86,31 @@ export function LightHero({
     hàng ngang, flex-1 ăn theo bề ngang còn chiều cao do nội dung quyết định.
   */
   return (
-    <View style={HERO_FRAME}>
+    <View
+      style={
+        retro
+          ? ([
+              HERO_FRAME,
+              {
+                borderRadius: 24,
+                borderWidth: 3,
+                borderColor: RINK,
+                overflow: 'hidden',
+                ...(Platform.OS === 'web' ? { boxShadow: '6px 6px 0 #1F1A1D' } : {}),
+              },
+            ] as never)
+          : HERO_FRAME
+      }
+    >
       {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
           đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
-      <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={false}>
+      <GridBackdrop
+        colors={retro ? ([RCREAM, RCREAM] as never) : palette.study}
+        line={retro ? RINK : palette.studyLine}
+        blobs={retro ? ([RCREAM, RCREAM] as never) : [palette.study[0], palette.study[2]]}
+        showGrid={false}
+      >
+        {phone && cat ? <CatSticker pose={cat} size={84} style={{ position: 'absolute', top: 14, right: 14 }} /> : null}
         {art ? (
           <View style={{ position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' }}>
             <HeroArt scene={artScene ?? scene} size={150} />
@@ -81,15 +118,15 @@ export function LightHero({
         ) : null}
         <View
           style={{
-            paddingHorizontal: wide ? 40 : 22,
-            paddingVertical: wide ? 52 : 30,
+            paddingHorizontal: wide ? 40 : phone ? 18 : 22,
+            paddingVertical: wide ? 52 : phone ? 18 : 30,
             // Chừa chỗ bên phải cho ngôi sao, để chữ không chạy đè lên nó.
-            paddingRight: art ? 440 : wide ? 40 : 22,
+            paddingRight: art ? 440 : wide ? 40 : phone ? (cat ? 104 : 18) : 22,
           }}
         >
           <Badge label={badge} tone="neutral" shape="tag" />
 
-          <Text className="mt-4 font-heavy text-paper-ink" style={{ fontSize: size, lineHeight: line }}>
+          <Text className="mt-4 font-heavy text-paper-ink" style={{ fontSize: size, lineHeight: line, color: retro ? RINK : undefined }}>
             {line1}
           </Text>
 
@@ -99,12 +136,15 @@ export function LightHero({
             </GoldHighlight>
           ) : null}
 
-          <Text className="mt-4 font-sans text-bodyLg text-paper-body" style={{ maxWidth: 620 }}>
+          <Text
+            className={phone ? 'mt-2 font-sans text-paper-body' : 'mt-4 font-sans text-bodyLg text-paper-body'}
+            style={phone ? { fontSize: 14, lineHeight: 20, maxWidth: 620 } : { maxWidth: 620 }}
+          >
             {subtitle}
           </Text>
 
-          {children ? <View className="mt-6 flex-row flex-wrap gap-2">{children}</View> : null}
-          {footer ? <View className="mt-7 flex-row flex-wrap gap-2">{footer}</View> : null}
+          {children ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-2' : 'mt-6 flex-row flex-wrap gap-2'}>{children}</View> : null}
+          {footer ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-1.5' : 'mt-7 flex-row flex-wrap gap-2'}>{footer}</View> : null}
         </View>
       </GridBackdrop>
       <LightSweep />

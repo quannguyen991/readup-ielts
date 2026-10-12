@@ -1,7 +1,37 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 
-import { clampVolume, createSfxGate, isSfxId, SFX_CATALOG } from './sfx-core';
+import { clampVolume, createSfxGate, isSfxId, SFX_CATALOG, SOUND_FAMILY, soundOf } from './sfx-core';
+
+test('toàn app chỉ còn bốn nhóm âm: đúng/sai, lật, chuyển, click', () => {
+  const families = new Set<string>();
+  for (const id of Object.keys(SFX_CATALOG) as (keyof typeof SFX_CATALOG)[]) {
+    const kind = soundOf(id);
+    if (kind) families.add(SOUND_FAMILY[kind]);
+  }
+  assert.deepEqual([...families].sort(), ['click', 'chuyển', 'lật', 'đúng-sai'].sort());
+});
+
+test('đúng và sai là một nhóm; tiếng game đã bỏ thì im', () => {
+  assert.equal(SOUND_FAMILY.correct, SOUND_FAMILY.wrong);
+  assert.equal(soundOf('correct'), 'correct');
+  assert.equal(soundOf('wrong'), 'wrong');
+  for (const id of ['coin', 'reward', 'streak', 'toast', 'timerTick', 'npc'] as const) {
+    assert.equal(soundOf(id), null, id);
+  }
+  const gate = createSfxGate(() => 0);
+  assert.equal(gate.allow('coin'), false);
+});
+
+test('bấm nhiều nút liền nhau chỉ kêu một tích click', () => {
+  let t = 10_000;
+  const g = createSfxGate(() => t);
+  assert.equal(g.allow('tap'), true);
+  t += 20;
+  assert.equal(g.allow('select'), false, 'cùng nhóm click, trong khoảng chống dồn');
+  t += 200;
+  assert.equal(g.allow('select'), true);
+});
 
 test('id lạ bị bỏ qua, không nổ', () => {
   const g = createSfxGate(() => 1000);

@@ -18,6 +18,8 @@ import { requiredPlanFor } from '@/lib/billing/entitlements';
 import { useBillingStore, usePlanStatus } from '@/store/useBillingStore';
 import { useAuthStore, useIsSignedIn } from '@/store/useAuthStore';
 import { WELCOME_DAYS, WELCOME_PLAN } from '@/lib/billing/welcome';
+import { GLASS, GOLD_BUTTON } from '@/components/layout/phone-theme';
+import { useRetroStyle } from '@/components/profile-retro/retro-scope';
 import { CURRICULUM_TOTALS } from '@/services/math/curriculum';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
@@ -92,6 +94,21 @@ export const TRIAL_AI_CALLS = PLANS[TRIAL_AI_PLAN].quotas.ai_calls_per_month ?? 
  *
  * Đang học thử thì thẻ đổi sang đếm ngày còn lại; đã dùng rồi thì ẩn.
  */
+/** Khung và nút kiểu retro cho lời mời tạo tài khoản: thẻ kem viền mực, nút hồng bóng lệch. */
+const RETRO_BOX = {
+  borderRadius: 20,
+  borderWidth: 3,
+  borderColor: '#1F1A1D',
+  backgroundColor: '#FFFBF2',
+  ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}),
+};
+const RETRO_BUTTON = {
+  backgroundColor: '#F27BA8',
+  borderWidth: 3,
+  borderColor: '#1F1A1D',
+  ...(Platform.OS === 'web' ? { boxShadow: '3px 3px 0 #1F1A1D' } : {}),
+};
+
 export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   const status = usePlanStatus();
   const start = useBillingStore((s) => s.startTrial);
@@ -99,19 +116,30 @@ export function TrialCard({ className = 'mt-4' }: { className?: string }) {
   const { L } = useL();
   const signedIn = useIsSignedIn();
   const authAvailable = useAuthStore((s) => s.available);
+  const retro = useRetroStyle();
 
   // Khách chưa đăng nhập: không tự bật học thử trên máy — mời tạo tài khoản để nhận Pro thật do máy chủ cấp.
   if (!signedIn && authAvailable) {
     return (
-      <View className={`${className} flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3`} style={{ backgroundColor: '#F7F0E1' }}>
-        <Icon name="lock" size={18} color="#A8843F" />
-        <Text className="flex-1 font-sans text-body text-ink" style={{ minWidth: 200 }}>
-          <Text className="font-strong" style={{ color: '#A8843F' }}>
-            {L(`Tạo tài khoản mới — tặng ${WELCOME_DAYS} ngày gói Plus miễn phí.`, `Create an account — get ${WELCOME_DAYS} days of Plus free.`)}
-          </Text>{' '}
-          {L('Mở Du ngoạn, Du học, Speaking, Writing, Listening… (không gồm trợ giảng AI và bài mẫu). Không cần thẻ.', 'Unlocks Travel, Study Abroad, Speaking, Writing, Listening… (no AI tutor or model essays). No card needed.')}
-        </Text>
-        <Button label={L('Tạo tài khoản', 'Create account')} size="sm" onPress={() => router.push('/auth/sign-in?mode=signup' as never)} />
+      <View className={className} style={{ borderRadius: 24, padding: 16, gap: 12, ...(retro ? RETRO_BOX : GLASS) } as never}>
+        <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: 12 }}>
+          <View style={{ width: 36, height: 36, borderRadius: 18, backgroundColor: 'rgba(233,181,74,0.22)', alignItems: 'center', justifyContent: 'center' }}>
+            <Icon name="lock" size={17} color="#8C6A1F" />
+          </View>
+          <Text className="flex-1 font-sans text-body text-ink" style={{ lineHeight: 21 }}>
+            <Text className="font-strong" style={{ color: '#8C6A1F' }}>
+              {L(`Tạo tài khoản mới — tặng ${WELCOME_DAYS} ngày gói Plus miễn phí.`, `Create an account — get ${WELCOME_DAYS} days of Plus free.`)}
+            </Text>{' '}
+            {L('Mở Du ngoạn, Du học, Speaking, Writing, Listening… (không gồm trợ giảng AI và bài mẫu). Không cần thẻ.', 'Unlocks Travel, Study Abroad, Speaking, Writing, Listening… (no AI tutor or model essays). No card needed.')}
+          </Text>
+        </View>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push('/auth/sign-in?mode=signup' as never)}
+          style={({ pressed }) => ({ alignSelf: 'stretch', alignItems: 'center', borderRadius: 999, paddingVertical: 13, ...(retro ? RETRO_BUTTON : GOLD_BUTTON), transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
+        >
+          <Text className="font-heavy" style={{ fontSize: 15, color: retro ? '#1F1A1D' : '#3B2A10' }}>{L('Tạo tài khoản', 'Create account')}</Text>
+        </Pressable>
       </View>
     );
   }

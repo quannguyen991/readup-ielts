@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import { Platform, Pressable, Text, View } from 'react-native';
+import { Platform, Pressable, Text, useWindowDimensions, View } from 'react-native';
 import { Link, router, usePathname } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { Logo } from './Logo';
+import { useIsPhone } from './PhoneBackdrop';
 import { SearchIconButton } from '@/components/search/SearchTrigger';
 import { Icon } from '@/components/ui/Icon';
 import { Sheet } from '@/components/ui/Sheet';
 import { haptic } from '@/services/haptics';
-import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, navLabel, visibleGroups } from '@/navigation/nav-items';
+import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, flattenItems, hiddenOnPhone, navLabel, parentNavKey, visibleGroups } from '@/navigation/nav-items';
 import { useL } from '@/i18n/useL';
 import { useCityAvailable } from '@/services/city/availability';
 import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
@@ -18,6 +19,8 @@ import { skinOf, useRewardStore } from '@/store/useRewardStore';
 import { color, paper, shadow } from '@/theme/tokens';
 
 const webBarShadow = { boxShadow: '0 6px 22px rgba(26, 26, 51, 0.10)' } as const;
+/** Nền kính của thanh trên: trong, làm mờ phần nội dung chạy phía sau (chỉ web). */
+const glassPill = { backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(16px)' } as const;
 
 /**
  * Thanh điều hướng duy nhất của app — MỘT hàng ngang, dùng chung mọi khổ màn.
@@ -49,7 +52,7 @@ function isTopLevel(pathname: string): boolean {
 
 export function TopBar({ fixed = false }: { fixed?: boolean }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { L } = useL();
+  const { L, locale } = useL();
   const signedIn = useAuthStore((s) => s.status === 'signed_in');
   /*
     Vai trò đọc từ hồ sơ trên máy chủ, lấy lại mỗi lần tải trang. Nút này chỉ là
@@ -63,6 +66,12 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
   const skinId = useRewardStore((s) => s.skin);
   const plan = usePlan();
   const pathname = usePathname();
+  // Tên mục chính đang mở — điện thoại hiện tên này thay logo.
+  const activeParent = parentNavKey(activeNavKey(pathname));
+  const parentItem = NAV_GROUPS.flatMap((g) => g.items).find((i) => i.key === activeParent);
+  const sectionTitle = parentItem ? navLabel(parentItem, locale) : null;
+  // Điện thoại: không còn khung kính, chỉ còn tên mục, nút Khám phá và kính lúp.
+  const phone = useIsPhone();
 
   /*
     Chi hien nut lui khi DANG O MOT MAN CHI TIET.
@@ -84,7 +93,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
         một tầng riêng của trang.
       */}
       <View
-        className="px-2 pb-1 pt-2 sm:px-3 sm:pt-3"
+        className="px-4 pb-1 pt-2 sm:px-3 sm:pt-3"
         style={
           fixed
             ? ({ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100 } as const)
@@ -116,8 +125,8 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           ) : null}
 
           <View
-            className="min-w-0 flex-1 flex-row items-center gap-1 rounded-pill border border-brand-soft bg-paper py-1 pl-3 pr-1 sm:gap-3 sm:px-3 sm:py-2"
-            style={Platform.OS === 'web' ? webBarShadow : shadow.card}
+            className="min-w-0 flex-1 flex-row items-center gap-1 py-1 sm:gap-3 sm:rounded-pill sm:border sm:border-white sm:px-3 sm:py-2"
+            style={phone ? undefined : (Platform.OS === 'web' ? [webBarShadow, glassPill] : shadow.card)}
           >
           {/*
             Logo về TRANG GIỚI THIỆU, không về Tổng quan.
@@ -127,8 +136,16 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             "cho tôi về đầu", và đầu ở đây là cửa vào chứ không phải một màn giữa
             chừng. Người đang học vẫn có nút "Tiếp tục học" ngay đầu trang ấy.
           */}
+          {/* Điện thoại: tên mục đang mở thay cho logo, như tiêu đề một màn của app bản địa. */}
+          <Text
+            numberOfLines={1}
+            className="min-w-0 flex-1 font-heavy text-paper-ink sm:hidden"
+            style={{ fontSize: 19, lineHeight: 24 }}
+          >
+            {sectionTitle ?? 'Band 9'}
+          </Text>
           <Link href={'/intro' as never} asChild>
-            <Pressable accessibilityRole="link" accessibilityLabel={L('Về trang giới thiệu', 'Go to the intro page')} className="justify-center" style={{ minHeight: 44 }}>
+            <Pressable accessibilityRole="link" accessibilityLabel={L('Về trang giới thiệu', 'Go to the intro page')} className="hidden justify-center sm:flex" style={{ minHeight: 44 }}>
               <Logo compact />
             </Pressable>
           </Link>
@@ -149,7 +166,8 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
           </Pressable>
 
 
-          <View className="flex-1" />
+          {/* Điện thoại: tên mục chiếm hết chỗ trống, nên nút bên phải dạt sát mép. */}
+          <View className="hidden flex-1 sm:flex" />
 
           {/*
             Kính lúp mở bảng tìm bài. Màn điện thoại không đủ chỗ cho cả kính lúp
@@ -174,7 +192,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
             accessibilityRole="button"
             accessibilityLabel={signedIn ? L(`Hồ sơ của ${name}`, `${name}'s profile`) : L('Đăng nhập', 'Sign in')}
             onPress={() => router.push((signedIn ? '/profile' : '/auth/sign-in') as never)}
-            className="h-11 shrink-0 flex-row items-center justify-center gap-2 rounded-pill border border-brand-soft bg-white pl-1 pr-1 md:pr-3"
+            className="hidden h-11 shrink-0 sm:flex flex-row items-center justify-center gap-2 rounded-pill border border-brand-soft bg-white pl-1 pr-1 md:pr-3"
             style={{ minWidth: 44 }}
           >
             {signedIn ? (
@@ -233,7 +251,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           {plan === 'free' ? (
             <Link href={'/upgrade' as never} asChild>
-              <Pressable accessibilityRole="link" accessibilityLabel={L('Nâng cấp Premium', 'Upgrade to Premium')}>
+              <Pressable accessibilityRole="link" accessibilityLabel={L('Nâng cấp Premium', 'Upgrade to Premium')} className="hidden sm:flex">
                 <LinearGradient
                   colors={[paper.goldSoft, paper.gold]}
                   start={{ x: 0, y: 0 }}
@@ -299,61 +317,122 @@ function QuickLink({
  * Là bảng trượt từ đáy (`Sheet`): ngón cái với tới được, kéo tay cầm xuống /
  * chạm nền / Esc / nút Back đều đóng. Mỗi mục cao ≥ 48px.
  */
-function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+export function NavSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
+  const activeParent = parentNavKey(activeKey);
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const desktop = useCityAvailable();
   const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
   const { L, locale, en } = useL();
 
+  // Khối nào người dùng đã tự bấm mở/đóng thì giữ theo lựa chọn đó; khối chưa bấm
+  // thì mở đúng khối đang học, các khối khác thu gọn.
+  const [toggled, setToggled] = useState<Record<string, boolean>>({});
+  const isOpen = (key: string) => toggled[key] ?? key === activeParent;
+  const toggle = (key: string) => setToggled((s) => ({ ...s, [key]: !isOpen(key) }));
+  const pick = () => {
+    haptic();
+    onClose();
+  };
+
+  const { width } = useWindowDimensions();
+  const sections = groups.flatMap((g) => g.items).filter((i) => !hiddenOnPhone(i, width));
+  const adminKey = ADMIN_GROUP.key;
+
   return (
     <Sheet visible={open} onClose={onClose} title={L('Khám phá', 'Explore')} maxWidth={720}>
-      <View style={{ gap: 18 }}>
-        {groups.map((group) => (
-          <View key={group.key}>
-            {group.title ? (
-              <Text className="mb-2 font-strong text-label uppercase tracking-wide text-paper-muted">
-                {en && group.key === ADMIN_GROUP.key ? 'Admin' : group.title}
-              </Text>
-            ) : null}
-            <View className="flex-row flex-wrap gap-2">
-              {flattenItems(group.items).map((item) => {
-                const active = activeKey === item.key;
-                return (
-                  <Link key={item.key} href={item.href as never} asChild>
-                    <Pressable
-                      accessibilityRole="link"
-                      aria-selected={active}
-                      onPress={() => {
-                        haptic();
-                        onClose();
-                      }}
-                      className={[
-                        'flex-row items-center gap-2.5 rounded-panel border px-3.5 py-3',
-                        active ? 'border-brand bg-brand-soft' : 'border-brand-soft bg-white',
-                      ].join(' ')}
-                      style={{ flexGrow: 1, flexBasis: 150, minHeight: 48 }}
-                    >
-                      <Icon
-                        name={item.icon}
-                        size={18}
-                        color={active ? paper.brandMid : paper.body}
-                        strokeWidth={active ? 2 : 1.7}
-                      />
-                      <Text
-                        className={['min-w-0 flex-1 text-body', active ? 'font-strong text-paper-ink' : 'font-mid text-paper-body'].join(' ')}
-                        numberOfLines={2}
-                      >
-                        {navLabel(item, locale)}
-                      </Text>
-                    </Pressable>
-                  </Link>
-                );
-              })}
+      <View style={{ gap: 8 }}>
+        {sections.map((item) => {
+          const kids = item.children ?? [];
+          const groupTitle = item.key === adminKey ? (en ? 'Admin' : 'Quản trị') : null;
+          if (kids.length === 0) {
+            const active = activeKey === item.key;
+            return (
+              <Link key={item.key} href={item.href as never} asChild>
+                <Pressable
+                  accessibilityRole="link"
+                  aria-selected={active}
+                  onPress={pick}
+                  className={[
+                    'flex-row items-center gap-3 rounded-panel border px-3.5',
+                    active ? 'border-brand bg-brand-soft' : 'border-brand-soft bg-white',
+                  ].join(' ')}
+                  style={{ minHeight: 52 }}
+                >
+                  <Icon name={item.icon} size={18} color={active ? paper.brandMid : paper.body} strokeWidth={active ? 2 : 1.7} />
+                  <Text className={['flex-1 text-body', active ? 'font-strong text-paper-ink' : 'font-mid text-paper-body'].join(' ')}>
+                    {navLabel(item, locale)}
+                  </Text>
+                </Pressable>
+              </Link>
+            );
+          }
+
+          const expanded = isOpen(item.key);
+          const parentActive = activeParent === item.key;
+          return (
+            <View
+              key={item.key}
+              className={['overflow-hidden rounded-panel border bg-white', parentActive ? 'border-brand' : 'border-brand-soft'].join(' ')}
+            >
+              <View className="flex-row items-center">
+                <Link href={item.href as never} asChild>
+                  <Pressable
+                    accessibilityRole="link"
+                    onPress={pick}
+                    className="flex-1 flex-row items-center gap-3 px-3.5"
+                    style={{ minHeight: 52 }}
+                  >
+                    <Icon name={item.icon} size={18} color={parentActive ? paper.brandMid : paper.body} strokeWidth={parentActive ? 2 : 1.7} />
+                    <Text className="flex-1 font-strong text-body text-paper-ink">{groupTitle ?? navLabel(item, locale)}</Text>
+                    <Text className="font-sans text-label text-paper-muted">{kids.length}</Text>
+                  </Pressable>
+                </Link>
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={expanded ? L('Thu gọn', 'Collapse') : L('Mở rộng', 'Expand')}
+                  aria-expanded={expanded}
+                  onPress={() => toggle(item.key)}
+                  className="items-center justify-center"
+                  style={{ minHeight: 52, minWidth: 52 }}
+                >
+                  <Icon name={expanded ? 'chevron-up' : 'chevron-down'} size={16} color={paper.muted} />
+                </Pressable>
+              </View>
+
+              {expanded ? (
+                <View className="flex-row flex-wrap gap-2 px-2.5 pb-2.5">
+                  {kids.map((child) => {
+                    const active = activeKey === child.key;
+                    return (
+                      <Link key={child.key} href={child.href as never} asChild>
+                        <Pressable
+                          accessibilityRole="link"
+                          aria-selected={active}
+                          onPress={pick}
+                          className={[
+                            'flex-row items-center gap-2 rounded-panel border px-2.5',
+                            active ? 'border-brand bg-brand-soft' : 'border-brand-soft bg-brand-tint',
+                          ].join(' ')}
+                          style={{ width: '48.5%', minHeight: 44 }}
+                        >
+                          <Icon name={child.icon} size={15} color={active ? paper.brandMid : paper.muted} strokeWidth={active ? 2 : 1.7} />
+                          <Text
+                            className={['min-w-0 flex-1 text-label', active ? 'font-strong text-paper-ink' : 'font-mid text-paper-body'].join(' ')}
+                            numberOfLines={1}
+                          >
+                            {navLabel(child, locale)}
+                          </Text>
+                        </Pressable>
+                      </Link>
+                    );
+                  })}
+                </View>
+              ) : null}
             </View>
-          </View>
-        ))}
+          );
+        })}
       </View>
     </Sheet>
   );

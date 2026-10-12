@@ -54,7 +54,7 @@ export default function IeltsScoreScreen() {
 
   return (
     <Screen>
-      <LightHero
+      <LightHero cat="cheer"
         scene="progress"
         badge="IELTS · SCORE REPORT"
         line1={L('Ước lượng band IELTS', 'IELTS band estimate')}

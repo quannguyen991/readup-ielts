@@ -22,6 +22,11 @@ export type NavItem = {
   desktopOnly?: boolean;
   /** Chỉ hiện khi đã có nội dung lịch sử qua cổng xuất bản (bản phát triển thì luôn hiện). */
   requires?: 'history';
+  /**
+   * Ẩn trên ĐIỆN THOẠI (dưới `PHONE_MAX_WIDTH`): thanh tab dưới, bảng Khám phá. Trang
+   * vẫn mở được bằng đường dẫn; máy tính và máy tính bảng vẫn thấy mục này.
+   */
+  phoneHidden?: boolean;
 };
 
 export type NavGroup = {
@@ -141,6 +146,7 @@ export const NAV_GROUPS: NavGroup[] = [
         href: '/quest',
         icon: 'sparkle',
         inBottomTabs: true,
+        phoneHidden: true,
         children: [
           { key: 'quest-city', label: 'Thành phố Tri thức', href: '/quest/city', icon: 'building', desktopOnly: true },
           { key: 'quest-rail', label: 'Chuyến bay từ vựng', href: '/quest/rail', icon: 'compass' },
@@ -198,6 +204,14 @@ export const NAV_ITEMS: NavItem[] = NAV_GROUPS.flatMap((g) => flattenItems(g.ite
 export const BOTTOM_TAB_ITEMS = NAV_ITEMS.filter((i) => i.inBottomTabs);
 /** Những mục không nằm trong bottom tab sẽ gom vào tab "More" trên mobile. */
 export const MORE_ITEMS = NAV_ITEMS.filter((i) => !i.inBottomTabs);
+
+/** Dưới mốc này là điện thoại — khớp breakpoint `sm` của Tailwind. */
+export const PHONE_MAX_WIDTH = 640;
+
+/** Mục này có bị ẩn ở chiều rộng màn hình `width` không. */
+export function hiddenOnPhone(item: NavItem, width: number): boolean {
+  return item.phoneHidden === true && width < PHONE_MAX_WIDTH;
+}
 
 /**
  * Mục đang mở, tính theo đường dẫn dài nhất khớp tiền tố.

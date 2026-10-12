@@ -2,96 +2,84 @@
  * PHẦN THUẦN của bộ âm thanh — danh mục tiếng và cổng chặn (tắt tiếng, âm lượng,
  * chống kêu dồn). Không chạm Web Audio hay react-native nên test được trong Node.
  *
- * MỘT cửa duy nhất: `playSfx(id)` ở `sfx.ts`. Danh sách dưới đây là bảng
- * "sự kiện → mã tiếng"; thêm tiếng mới thì thêm một dòng ở đây VÀ một hàm vẽ ở
- * `sfx.ts` (TypeScript báo lỗi nếu thiếu một trong hai).
+ * Toàn app chỉ còn BỐN nhóm âm thanh:
+ *   - đúng / sai  (correct, wrong)  — một nhóm, hai sắc: đúng đi lên, sai đi xuống;
+ *   - lật         (flip)            — lật thẻ, lật bài;
+ *   - chuyển      (transition)      — đổi trang, mở / đóng hộp thoại, vào / ra cửa;
+ *   - click       (click)           — bấm nút, chọn, chuyển tab, quay lại.
+ * Mỗi mã tiếng trong `SFX_CATALOG` trỏ tới đúng một nhóm qua trường `sound`. Mã nào
+ * `sound: null` thì im — đó là chủ ý, không phải thiếu sót.
  *
- * | Sự kiện                                  | Mã tiếng           | Chỗ gọi                              |
- * | ---------------------------------------- | ------------------ | ------------------------------------ |
- * | Bấm nút / thẻ / liên kết (mọi màn)       | tap                | sfx-bindings (bắt click toàn app)    |
- * | Chọn một đáp án / lựa chọn               | select             | sfx-bindings (role radio/checkbox)   |
- * | Chuyển tab / chế độ                      | tab                | sfx-bindings (role tab)              |
- * | Đổi trang                                | nav                | sfx-bindings (đổi pathname)          |
- * | Mở / đóng hộp thoại, sheet, bài thi      | modalOpen/Close    | sfx-bindings (aria-modal xuất hiện)  |
- * | Lật thẻ từ                               | flip               | FlipCard                             |
- * | Sang câu / thẻ kế tiếp                   | next               | nút "tiếp" ở màn đọc theo / phát âm  |
- * | Quay lại / thoát                         | back               | sfx-bindings (nút Quay lại)          |
- * | Trả lời ĐÚNG / SAI (có game)             | sfx.correct…       | useGameStore.answer                  |
- * | Trả lời SAI ngoài trận đấu               | wrong              | màn tự chấm                          |
- * | Xong một bộ / bài                        | success            | Confetti                             |
- * | Điểm đọc ≥ 85 / 60–84 / < 60             | perfect/good/retry | useVoiceCoach                        |
- * | Nhận sao / xu                            | coin               | sfx-bindings (sự kiện stars)         |
- * | Nhận quà, nhận mốc                       | reward             | sfx-bindings (kho thưởng / hộ chiếu) |
- * | Lên cấp                                  | sfx.levelUp        | useGameStore                         |
- * | Chuỗi ngày học tăng                      | streak             | sfx-bindings                         |
- * | Thông báo / toast                        | toast, notify      | sfx-bindings (role alert / status)   |
- * | Bật / tắt micro                          | micStart/micStop   | shadow/speech, speaking/recognizer   |
- * | Đồng hồ thi: còn ít / hết giờ            | timerWarn/timerEnd | SatExamShell, RwRunner               |
- * | Du ngoạn: bước chân                      | step               | CityEngine                   |
- * | Du ngoạn: mở / đóng cửa                  | doorOpen/doorClose | CityEngine                   |
- * | Du ngoạn: vào / ra toà nhà               | enter/leave        | CityEngine                   |
- * | Du ngoạn: được vé                        | ticket             | sfx-bindings (useTravelStore)        |
- * | Du ngoạn: đóng dấu hộ chiếu              | stamp              | sfx-bindings (useTravelStore)        |
- * | Du ngoạn: nhận quà lưu niệm              | souvenir           | sfx-bindings (useTravelStore)        |
- * | Du ngoạn: zoom / toàn màn hình           | zoom/fullscreen    | scenes/fullscreen               |
- * | Du ngoạn: máy bay cất cánh               | takeoff            | sfx-bindings (đổi thành phố)         |
- * | Du ngoạn: NPC nói                        | npc                | CityEngine (khi hiện bóng thoại)     |
- * | Du ngoạn: bước chân người chơi           | step               | CityEngine (cách 2 bước, rất nhẹ)    |
- * | Du ngoạn: tắt toàn màn hình              | fullscreenOff      | scenes/fullscreen                    |
- * | Du ngoạn: cửa bị khoá                    | locked             | CityEngine.showLocked                |
- * | Du ngoạn: chủ quán chào                  | greet              | CityEngine.callHost                  |
- * | Du ngoạn: sang mảnh bản đồ khác          | seam               | CityEngine (rất nhẹ)                 |
- * | Du ngoạn: máy bay bay qua (sân bay)      | plane              | CityEngine (rất nhỏ, thưa)           |
+ * MỘT cửa duy nhất: `playSfx(id)` ở `sfx-ui.ts`. Thêm tiếng mới thì thêm một dòng
+ * ở đây; nếu nhóm mới thì thêm hàm vẽ ở `sfx-ui.ts` (TypeScript báo nếu thiếu).
  */
+
+export type SoundKind = 'correct' | 'wrong' | 'flip' | 'transition' | 'click';
+
+/** Bốn nhóm âm thanh của app. `correct` và `wrong` cùng một nhóm "đúng / sai". */
+export const SOUND_FAMILY: Record<SoundKind, 'đúng-sai' | 'lật' | 'chuyển' | 'click'> = {
+  correct: 'đúng-sai',
+  wrong: 'đúng-sai',
+  flip: 'lật',
+  transition: 'chuyển',
+  click: 'click',
+};
+
 export const SFX_CATALOG = {
-  tap: { debounce: 70, group: 'neutral' },
-  select: { debounce: 90, group: 'neutral' },
-  tab: { debounce: 90, group: 'neutral' },
-  nav: { debounce: 400, group: 'neutral' },
-  flip: { debounce: 150, group: 'neutral' },
-  next: { debounce: 150, group: 'neutral' },
-  back: { debounce: 150, group: 'neutral' },
-  modalOpen: { debounce: 250, group: 'neutral' },
-  modalClose: { debounce: 250, group: 'neutral' },
-  toast: { debounce: 500, group: 'neutral' },
-  notify: { debounce: 800, group: 'neutral' },
-  wrong: { debounce: 250, group: 'fail' },
-  retry: { debounce: 400, group: 'fail' },
-  success: { debounce: 600, group: 'success' },
-  perfect: { debounce: 600, group: 'success' },
-  good: { debounce: 600, group: 'success' },
-  coin: { debounce: 120, group: 'reward' },
-  reward: { debounce: 500, group: 'reward' },
-  streak: { debounce: 800, group: 'reward' },
-  micStart: { debounce: 300, group: 'neutral' },
-  micStop: { debounce: 300, group: 'neutral' },
-  timerTick: { debounce: 400, group: 'neutral' },
-  timerWarn: { debounce: 1500, group: 'fail' },
-  timerEnd: { debounce: 2000, group: 'fail' },
-  step: { debounce: 150, group: 'travel' },
-  doorOpen: { debounce: 300, group: 'travel' },
-  doorClose: { debounce: 300, group: 'travel' },
-  enter: { debounce: 400, group: 'travel' },
-  leave: { debounce: 400, group: 'travel' },
-  ticket: { debounce: 300, group: 'travel' },
-  stamp: { debounce: 500, group: 'travel' },
-  souvenir: { debounce: 500, group: 'travel' },
-  zoom: { debounce: 150, group: 'travel' },
-  fullscreen: { debounce: 300, group: 'travel' },
-  takeoff: { debounce: 1500, group: 'travel' },
-  npc: { debounce: 70, group: 'travel' },
-  fullscreenOff: { debounce: 300, group: 'travel' },
-  locked: { debounce: 800, group: 'travel' },
-  greet: { debounce: 600, group: 'travel' },
-  seam: { debounce: 1500, group: 'travel' },
-  plane: { debounce: 8000, group: 'travel' },
-  train: { debounce: 20000, group: 'travel' },
+  tap: { debounce: 70, group: 'neutral', sound: 'click' },
+  select: { debounce: 90, group: 'neutral', sound: 'click' },
+  tab: { debounce: 90, group: 'neutral', sound: 'click' },
+  back: { debounce: 150, group: 'neutral', sound: 'click' },
+  next: { debounce: 150, group: 'neutral', sound: 'click' },
+  micStart: { debounce: 300, group: 'neutral', sound: 'click' },
+  micStop: { debounce: 300, group: 'neutral', sound: 'click' },
+  nav: { debounce: 400, group: 'neutral', sound: 'transition' },
+  modalOpen: { debounce: 250, group: 'neutral', sound: 'transition' },
+  modalClose: { debounce: 250, group: 'neutral', sound: 'transition' },
+  flip: { debounce: 150, group: 'neutral', sound: 'flip' },
+  correct: { debounce: 250, group: 'success', sound: 'correct' },
+  success: { debounce: 600, group: 'success', sound: 'correct' },
+  perfect: { debounce: 600, group: 'success', sound: 'correct' },
+  good: { debounce: 600, group: 'success', sound: 'correct' },
+  wrong: { debounce: 250, group: 'fail', sound: 'wrong' },
+  retry: { debounce: 400, group: 'fail', sound: 'wrong' },
+  toast: { debounce: 500, group: 'neutral', sound: null },
+  notify: { debounce: 800, group: 'neutral', sound: null },
+  timerTick: { debounce: 400, group: 'neutral', sound: null },
+  timerWarn: { debounce: 1500, group: 'fail', sound: null },
+  timerEnd: { debounce: 2000, group: 'fail', sound: null },
+  coin: { debounce: 120, group: 'reward', sound: null },
+  reward: { debounce: 500, group: 'reward', sound: null },
+  streak: { debounce: 800, group: 'reward', sound: null },
+  step: { debounce: 150, group: 'travel', sound: null },
+  doorOpen: { debounce: 300, group: 'travel', sound: 'transition' },
+  doorClose: { debounce: 300, group: 'travel', sound: 'transition' },
+  enter: { debounce: 400, group: 'travel', sound: 'transition' },
+  leave: { debounce: 400, group: 'travel', sound: 'transition' },
+  ticket: { debounce: 300, group: 'travel', sound: null },
+  stamp: { debounce: 500, group: 'travel', sound: null },
+  souvenir: { debounce: 500, group: 'travel', sound: null },
+  zoom: { debounce: 150, group: 'travel', sound: 'transition' },
+  fullscreen: { debounce: 300, group: 'travel', sound: 'transition' },
+  fullscreenOff: { debounce: 300, group: 'travel', sound: 'transition' },
+  takeoff: { debounce: 1500, group: 'travel', sound: 'transition' },
+  npc: { debounce: 70, group: 'travel', sound: null },
+  locked: { debounce: 800, group: 'travel', sound: null },
+  greet: { debounce: 600, group: 'travel', sound: null },
+  seam: { debounce: 1500, group: 'travel', sound: null },
+  plane: { debounce: 8000, group: 'travel', sound: null },
+  train: { debounce: 20000, group: 'travel', sound: null },
 } as const;
 
 export type SfxId = keyof typeof SFX_CATALOG;
 
 export function isSfxId(id: unknown): id is SfxId {
   return typeof id === 'string' && Object.prototype.hasOwnProperty.call(SFX_CATALOG, id);
+}
+
+/** Nhóm âm thanh của một mã tiếng; `null` nghĩa là im. */
+export function soundOf(id: SfxId): SoundKind | null {
+  return SFX_CATALOG[id].sound;
 }
 
 /** Âm lượng 0–1; giá trị lạ (NaN, âm, > 1) được kẹp lại. */
@@ -101,8 +89,10 @@ export function clampVolume(v: number): number {
 }
 
 /**
- * Cổng cho `playSfx`: id lạ, đang tắt tiếng, âm lượng 0, hay cùng một tiếng kêu
- * lại trong khoảng chống dồn thì không cho phát. `now` tiêm vào để test.
+ * Cổng cho `playSfx`: id lạ, đang tắt tiếng, âm lượng 0, hay cùng một NHÓM âm thanh
+ * vừa kêu trong khoảng chống dồn thì không cho phát. Chống theo nhóm (không theo mã)
+ * để "đúng" từ màn học và "đúng" từ luật game không thành hai tiếng chồng nhau.
+ * `now` tiêm vào để test.
  */
 export function createSfxGate(now: () => number = Date.now) {
   let muted = false;
@@ -119,9 +109,11 @@ export function createSfxGate(now: () => number = Date.now) {
     getVolume: () => volume,
     allow(id: string): boolean {
       if (!isSfxId(id) || muted || volume <= 0) return false;
+      const sound = SFX_CATALOG[id].sound;
+      if (!sound) return false;
       const t = now();
-      if (t - (last.get(id) ?? -Infinity) < SFX_CATALOG[id].debounce) return false;
-      last.set(id, t);
+      if (t - (last.get(sound) ?? -Infinity) < SFX_CATALOG[id].debounce) return false;
+      last.set(sound, t);
       return true;
     },
   };

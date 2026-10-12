@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
 import { SealIcon } from '@/components/illust/HeroArt';
+import { CatSticker } from '@/components/mascot/CatSticker';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteChat, CuteMic, CuteTrophy, Motion, Sparkles } from '@/components/illust/CuteMore';
 import { bandTone, fmtBand, fmtDate, MODE_LABEL, useMicSupport } from '@/components/speaking/SpeakingKit';
@@ -91,6 +92,7 @@ export default function SpeakingLobby() {
               {L('Phòng luyện nói.', 'Speaking room.')}
             </Text>
           </View>
+          {!wide ? <CatSticker pose="peace" size={66} /> : null}
           {width >= HEADER_ART_MIN ? (
             <Motion kind="float">
               <Sticker tilt={8}>

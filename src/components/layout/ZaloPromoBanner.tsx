@@ -5,15 +5,15 @@ import * as Clipboard from 'expo-clipboard';
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
 
-const ZALO_PHONE = '0921.247.247';
-const ZALO_PHONE_RAW = '0921247247';
-const ZALO_LINK = `https://zalo.me/${ZALO_PHONE_RAW}`;
-const STORAGE_KEY = 'readup_zalo_max_promo_hidden_at_v2';
+export const ZALO_PHONE = '0921.247.247';
+export const ZALO_PHONE_RAW = '0921247247';
+export const ZALO_LINK = `https://zalo.me/${ZALO_PHONE_RAW}`;
+export const STORAGE_KEY = 'readup_zalo_max_promo_hidden_at_v2';
 
 /** Đóng banner thì ẩn 3 ngày (localStorage) — ẩn theo phiên thì mở lại web là hiện lại, gây phiền. */
-const HIDE_MS = 3 * 86_400_000;
+export const HIDE_MS = 3 * 86_400_000;
 
-function readHidden(): boolean {
+export function readHidden(): boolean {
   try {
     if (Platform.OS !== 'web' || typeof window === 'undefined') return false;
     const at = Number(window.localStorage.getItem(STORAGE_KEY));

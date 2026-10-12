@@ -80,8 +80,8 @@ export function AvatarBadge({ avatarId, name, size, skin }: { avatarId: string |
   const item = findItem(avatarId);
   if (item?.avatarLook) return <AnimatedAvatar look={item.avatarLook} size={size} skin={skin} />;
   return (
-    <View style={{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center', backgroundColor: '#EDE9FE' }}>
-      <Text style={{ fontSize: item?.glyph ? size * 0.5 : size * 0.4, fontWeight: '800', color: '#4C1D95' }}>{item?.glyph ?? (name.trim().slice(0, 1).toUpperCase() || '?')}</Text>
+    <View style={{ width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBEFCB' }}>
+      <Text style={{ fontSize: item?.glyph ? size * 0.5 : size * 0.4, fontWeight: '800', color: '#8C6A1F' }}>{item?.glyph ?? (name.trim().slice(0, 1).toUpperCase() || '?')}</Text>
     </View>
   );
 }

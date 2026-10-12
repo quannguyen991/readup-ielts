@@ -33,7 +33,7 @@ export default function WritingHome() {
 
   return (
     <Screen>
-      <LightHero
+      <LightHero cat="hangingPaws"
         badge="WRITING PRACTICE" art="writing"
         line1="Writing"
         line2={L('củng cố cấu trúc, mở rộng từ vựng', 'stronger structure, wider vocabulary')}

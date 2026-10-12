@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { CheckGroup, FilterRail, type RailSelection, type RailSkill } from '@/components/practice/FilterRail';
 import { GROUP_LABEL, ListeningCover } from '@/components/listening/cover';
+import { CatSticker } from '@/components/mascot/CatSticker';
 import { Button, Card, Icon, Pagination } from '@/components/ui';
 import { LISTENING_TESTS } from '@/data/listening-tests';
 import { sectionNumbers } from '@/services/listening/scoring';
@@ -173,14 +174,18 @@ export default function ListeningLibrary() {
             {L('Nghe một lần, làm như thi thật — hoặc nghe lại để học.', 'Listen once like the real test, or replay to learn.')}
           </Text>
         </View>
-        <Pressable
-          accessibilityRole="link"
-          onPress={() => router.push('/listening/history' as never)}
-          className="flex-row items-center gap-1.5 rounded-pill border border-border bg-surface px-3.5 py-2"
-        >
-          <Icon name="clock" size={15} color={color.primary} />
-          <Text className="font-strong text-label text-primary-700">{L('Xem lịch sử làm bài', 'View history')}</Text>
-        </Pressable>
+        <View>
+          <Pressable
+            accessibilityRole="link"
+            onPress={() => router.push('/listening/history' as never)}
+            className="flex-row items-center gap-1.5 rounded-pill border border-border bg-surface px-3.5 py-2"
+          >
+            <Icon name="clock" size={15} color={color.primary} />
+            <Text className="font-strong text-label text-primary-700">{L('Xem lịch sử làm bài', 'View history')}</Text>
+          </Pressable>
+          {/* Mèo đeo tai nghe ngồi trên nút lịch sử (màn hẹp) */}
+          {!wide ? <CatSticker pose="headphones" size={56} style={{ position: 'absolute', right: 12, top: -40 }} /> : null}
+        </View>
       </View>
 
       {!wide ? (
@@ -222,7 +227,7 @@ export default function ListeningLibrary() {
           {items.length === 0 ? (
             <Card>
               <View className="items-center py-6">
-                <Icon name="search" size={22} color={color.subtle} />
+                <CatSticker pose="sleep" size={96} />
                 <Text className="mt-3 text-center font-sans text-body text-muted">
                   {L('Chưa có bài nào khớp. Bỏ bớt một bộ lọc là ra.', 'Nothing matches yet. Remove a filter to see more.')}
                 </Text>

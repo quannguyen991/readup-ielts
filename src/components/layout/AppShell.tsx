@@ -3,10 +3,16 @@ import { View } from 'react-native';
 import { usePathname } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { CANVAS_LINE, CANVAS_STOPS, GridBackdrop } from './GridBackdrop';
+import { GridBackdrop } from './GridBackdrop';
 import { LightGrid, usePageBackground } from './LightGrid';
+import { CUTE_PALETTES } from './cute-palettes';
 import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
 import { Sidebar } from './Sidebar';
+import { RCREAM } from '@/components/profile-retro/retro-art';
+import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
+import { RetroScope } from '@/components/profile-retro/retro-scope';
+import { RetroSidebar } from '@/components/profile-retro/RetroSidebar';
+import { RetroPromoBanner, RetroTopBar } from '@/components/profile-retro/RetroTopBar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
 import { TravelBackdrop, useSentenceThemeId, useTravelActive } from '@/components/rail/TravelBackdrop';
@@ -18,9 +24,13 @@ import { GameBackdrop } from '@/components/game/GameBackdrop';
 import { ZaloPromoBanner } from './ZaloPromoBanner';
 import { DomainMoveBanner } from './DomainMoveBanner';
 import { useStreakGlass } from '@/services/city/useStreakGlass';
-import { PromoGiftOverlay } from '@/components/promo/PromoGiftOverlay';
 import { ReminderRunner } from '@/components/reminder/Reminder';
 import { SearchPalette } from '@/components/search/SearchPalette';
+import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
+import { useRewardStore } from '@/store/useRewardStore';
+import { CuteAtmosphere } from './CuteAtmosphere';
+import { PhoneBackdrop, useIsPhone } from './PhoneBackdrop';
+import { useHydrated } from './useHydrated';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#0F1D33';
@@ -62,10 +72,25 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
   const collapsed = useSidebarStore((st) => st.collapsed);
   const pageBg = usePageBackground('browse');
+  const cuteEffects = useCuteAppearanceStore((state) => state.effectsEnabled);
+  const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
+  const customMascotImage = useCuteAppearanceStore((state) => state.customMascotImage);
+  const hydrated = useHydrated();
+  const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
+  // Điện thoại dùng nền gradient xanh–tím riêng khi chưa chọn nền học mua bằng sao.
+  const phone = useIsPhone();
+  // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
+  const retro = useRetroOn();
 
   if (immersive) {
     // Phòng thi Reading tự vẽ thanh trên và phủ trọn màn: chỉ cần nền, không khung điều hướng.
-    return (<View className="flex-1" style={{ backgroundColor: '#F6F3EC' }}>{children}</View>);
+    return (
+      <View className="flex-1" style={{ position: 'relative', backgroundColor: palette.study[0] }}>
+        {children}
+        <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
+      </View>
+    );
   }
 
   if (focus) {
@@ -103,6 +128,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <View className="flex-1">{children}</View>
           </View>
         </View>
+        <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
         {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
         {isExamRoute(pathname) || isCityRoute ? null : <AskBubble />}
         <SelectionLookup />
@@ -117,23 +143,27 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={{ backgroundColor: isQuestRoute ? '#0B1A2E' : (pageBg?.stops[1] ?? CANVAS_STOPS[1]) }}
+      style={{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : (pageBg?.stops[1] ?? palette.browse[1]) }}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
       {/*
-        NỀN XANH KẺ CARO cho mọi màn duyệt (xem `CANVAS_STOPS`). Trước đây là
-        mảng xám bạc phẳng: thẻ trắng nằm trên nền gần trắng thì không còn ranh
-        giới nào. Nền loang xanh tím cũ thì ngược lại — các vệt màu trôi liên
-        tục tranh chú ý với nội dung. Ô kẻ đứng yên, chỉ làm nền có bề mặt.
+        NỀN PASTEL KẺ CARO cho mọi màn duyệt, theo bảng màu người học chọn.
+        Thẻ trắng vẫn có ranh giới rõ, còn hoạ tiết đứng yên để làm nền mà
+        không tranh chú ý với nội dung.
       */}
-      {!isQuestRoute ? (
+      {!isQuestRoute && !retro && phone && !pageBg ? (
+        <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+          <PhoneBackdrop />
+        </View>
+      ) : null}
+      {!isQuestRoute && !retro && !(phone && !pageBg) ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
           {/* Nền học / giao diện đổi bằng sao áp dụng cho MỌI trang; không có thì nền xanh mặc định. */}
           {pageBg ? (
             <GridBackdrop colors={pageBg.stops} line={pageBg.line} pattern={pageBg.pattern} blobs={pageBg.blobs} margin={pageBg.margin} cell={pageBg.cell ?? 34} />
           ) : (
-            <GridBackdrop colors={CANVAS_STOPS} line={CANVAS_LINE} />
+            <GridBackdrop colors={palette.browse} line={palette.browseLine} blobs={[palette.browse[0], palette.browse[2]]} />
           )}
         </View>
       ) : null}
@@ -148,24 +178,28 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           className="hidden lg:flex"
           style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
         >
-          <Sidebar />
+          {retro ? <RetroSidebar /> : <Sidebar />}
         </View>
         <View className={`min-w-0 flex-1 ${collapsed ? 'lg:pl-[76px]' : 'lg:pl-[248px]'}`}>
-          <View className="lg:hidden">
-            <TopBar />
-          </View>
+          {/* Trang Hôm nay trên điện thoại tự vẽ đầu trang riêng (xem PhoneHome), nên không có TopBar. */}
+          {phone && pathname === '/dashboard' ? null : (
+            <View className="lg:hidden">
+              {retro ? <RetroTopBar /> : <TopBar />}
+            </View>
+          )}
           {/* Không chen quảng cáo vào màn đang làm bài. */}
           <DomainMoveBanner />
-          {focus ? null : <ZaloPromoBanner />}
-          <View className="flex-1">{children}</View>
+          {focus || phone ? null : retro ? <RetroPromoBanner /> : <ZaloPromoBanner />}
+          <RetroScope value={retro}>
+            <View className="flex-1">{children}</View>
+          </RetroScope>
           <BottomTabsSpacer />
         </View>
       </View>
+      <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
       <BottomTabs />
       {isCityRoute ? null : <AskBubble />}
       <SelectionLookup />
-      {/* Quà cuối tháng 9 (+2.000 sao, 7 ngày Pro) — phủ màn hình ở trang duyệt, không chen vào màn làm bài. */}
-      <PromoGiftOverlay />
       <ReminderRunner />
       <SearchPalette />
     </SafeAreaView>
@@ -178,12 +212,13 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  * sáng là gần như biến mất.
  */
 function FocusBackdrop({ quest, navy, light, children }: { quest: boolean; navy: boolean; light: boolean; children: React.ReactNode }) {
+  const phone = useIsPhone();
   // Chép chính tả / viết câu: cảnh bay qua thành phố tông sáng (tắt thì về lưới sáng như cũ).
   if (light) return <TravelBackdrop color="#FBF6EE" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
   // Màn học từ: cảnh bay qua thành phố qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
   if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
-  if (!quest) return <LightGrid>{children}</LightGrid>;
+  if (!quest) return phone ? <PhoneBackdrop>{children}</PhoneBackdrop> : <LightGrid>{children}</LightGrid>;
   return (
     <View className="flex-1 bg-[#07111F]">
       <GameBackdrop />

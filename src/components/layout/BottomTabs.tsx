@@ -3,26 +3,36 @@ import { Platform, Pressable, Text, View } from 'react-native';
 import { router, usePathname } from 'expo-router';
 
 import { BOTTOM_BAR_HEIGHT, BOTTOM_BAR_VAR, useChromeStore } from './chrome-store';
-import { Icon } from '@/components/ui/Icon';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
-import { INITIAL_SCROLL_BAR_STATE, nextScrollBarState, type ScrollBarState } from '@/lib/mobile/scroll-direction';
-import { BOTTOM_TAB_ITEMS, activeNavKey, parentNavKey } from '@/navigation/nav-items';
+import { useDisplayName } from '@/store/useAuthStore';
 import { haptic } from '@/services/haptics';
-import { color } from '@/theme/tokens';
+import { RetroTabBar } from '@/components/profile-retro/RetroNav';
+import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
+import { GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
 
 const IS_WEB = Platform.OS === 'web';
 const SAFE_BOTTOM = 'env(safe-area-inset-bottom, 0px)';
-/** Trang có ít chỗ cuộn hơn bấy nhiêu thì khỏi ẩn thanh: chẳng có gì để cuộn. */
-const MIN_SCROLLABLE = 140;
+/** Khoảng cách từ thanh nổi tới mép màn hình. */
+const FLOAT_MARGIN = 14;
 
-/** Nhãn ngắn cho tab — "Từ vựng" thay vì cả nhãn mục. */
-const SHORT: Record<string, [string, string]> = {
-  dashboard: ['Hôm nay', 'Today'],
-  ielts: ['IELTS', 'IELTS'],
-  sat: ['SAT', 'SAT'],
-  vocabulary: ['Từ vựng', 'Words'],
-  quest: ['Quest', 'Quest'],
-};
+/**
+ * Bốn tab của thiết kế vàng kem. Chỉ hiện icon; tên tab (`vi`/`en`) nằm trong nhãn
+ * trợ năng. Mục còn lại (SAT, Từ vựng…) nằm trong bảng Khám phá ở thanh trên.
+ */
+const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; icon: IconName | null; vi: string; en: string }[] = [
+  { key: 'home', href: '/dashboard', icon: 'home', vi: 'Trang chủ', en: 'Home' },
+  { key: 'learn', href: '/practice', icon: 'book', vi: 'Học', en: 'Learn' },
+  { key: 'plan', href: '/plan', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
+  { key: 'you', href: '/profile', icon: null, vi: 'Bạn', en: 'You' },
+];
+
+function activeTab(pathname: string): (typeof TABS)[number]['key'] {
+  if (pathname === '/' || pathname === '/dashboard') return 'home';
+  if (pathname.startsWith('/plan')) return 'plan';
+  if (pathname.startsWith('/profile') || pathname.startsWith('/progress')) return 'you';
+  return 'learn';
+}
 
 /**
  * Chiều cao đáy mà thanh tab đang chiếm, theo CSS. Đưa ra biến để nút nổi (trợ
@@ -30,62 +40,30 @@ const SHORT: Record<string, [string, string]> = {
  * về thanh tab.
  */
 function bottomBarSpace(visible: boolean): string {
-  return visible ? `calc(${BOTTOM_BAR_HEIGHT}px + ${SAFE_BOTTOM})` : '0px';
+  return visible ? `calc(${BOTTOM_BAR_HEIGHT + FLOAT_MARGIN}px + ${SAFE_BOTTOM})` : '0px';
 }
 
 /**
  * Thanh tab dưới — chỉ ở màn hẹp (< lg) và chỉ ở màn DUYỆT (AppShell không vẽ nó
  * ở màn làm bài / toàn khung).
  *
- * - Năm đích chính; phần còn lại nằm sau nút "Khám phá" ở thanh trên.
- * - Cuộn xuống thì trượt ẩn, cuộn lên thì hiện (logic ở `lib/mobile/scroll-direction`).
- *   Nghe sự kiện `scroll` ở cấp tài liệu, kiểu capture + passive, đúng một chỗ —
- *   không màn nào phải nối dây, và không có lần render nào theo từng pixel cuộn:
- *   state chỉ đổi khi thanh đổi chiều.
- * - Bàn phím ảo mở (ô nhập đang focus) thì ẩn, đỡ ăn mất một phần ba màn hình.
+ * - Cố định ở đáy và luôn hiện: không ẩn khi cuộn, không trượt theo trang.
+ * - Chỉ có icon. Bàn phím ảo mở (ô nhập đang focus) thì tạm ẩn, đỡ che ô đang gõ.
  * - Vùng an toàn bằng `env(safe-area-inset-bottom)` (cần `viewport-fit=cover`, xem `app/+html.tsx`).
  */
 export function BottomTabs() {
   const pathname = usePathname();
   const { L } = useL();
-  const barHidden = useChromeStore((s) => s.barHidden);
+  const initial = (useDisplayName().trim()[0] ?? 'B').toUpperCase();
   const keyboardOpen = useChromeStore((s) => s.keyboardOpen);
-  const visible = !barHidden && !keyboardOpen;
+  const retro = useRetroOn();
+  const visible = !keyboardOpen;
 
-  const active = parentNavKey(activeNavKey(pathname));
+  const active = activeTab(pathname);
 
-  // Đổi trang thì thanh hiện lại.
-  useEffect(() => {
-    useChromeStore.getState().setBarHidden(false);
-  }, [pathname]);
-
-  // Ẩn / hiện theo chiều cuộn + theo bàn phím ảo.
+  // Bàn phím ảo: theo focus vào ô nhập. Chuyển focus từ ô này sang ô khác không làm thanh nhấp nháy.
   useEffect(() => {
     if (!IS_WEB || typeof document === 'undefined') return;
-    const states = new WeakMap<Element, ScrollBarState>();
-    let raf = 0;
-    let pending: Element | null = null;
-
-    const process = (el: Element) => {
-      const h = el as HTMLElement;
-      // Bỏ qua hàng cuộn ngang, hộp cuộn nhỏ lồng bên trong, trang quá ngắn.
-      if (h.scrollHeight - h.clientHeight < MIN_SCROLLABLE || h.clientHeight < window.innerHeight * 0.45) return;
-      const prev = states.get(h) ?? { ...INITIAL_SCROLL_BAR_STATE, anchor: h.scrollTop };
-      const next = nextScrollBarState(prev, h.scrollTop);
-      states.set(h, next);
-      useChromeStore.getState().setBarHidden(next.hidden);
-    };
-    const onScroll = (e: Event) => {
-      if (!(e.target instanceof Element)) return;
-      pending = e.target;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        if (pending) process(pending);
-      });
-    };
-    document.addEventListener('scroll', onScroll, { capture: true, passive: true });
-
     let blurTimer: ReturnType<typeof setTimeout> | undefined;
     const isField = (t: EventTarget | null) =>
       t instanceof HTMLElement && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
@@ -96,17 +74,14 @@ export function BottomTabs() {
     };
     const onFocusOut = (e: FocusEvent) => {
       if (!isField(e.target)) return;
-      // Chuyển focus từ ô này sang ô khác không được làm thanh nhấp nháy.
       blurTimer = setTimeout(() => useChromeStore.getState().setKeyboardOpen(false), 120);
     };
     document.addEventListener('focusin', onFocusIn);
     document.addEventListener('focusout', onFocusOut);
 
     return () => {
-      document.removeEventListener('scroll', onScroll, { capture: true });
       document.removeEventListener('focusin', onFocusIn);
       document.removeEventListener('focusout', onFocusOut);
-      cancelAnimationFrame(raf);
       clearTimeout(blurTimer);
       useChromeStore.getState().setKeyboardOpen(false);
     };
@@ -124,6 +99,9 @@ export function BottomTabs() {
     [],
   );
 
+  // Bản mẫu hồ sơ kiểu retro: đổi sang thanh tab cùng phong cách (xem profile-retro/RetroNav.tsx).
+  if (retro) return <RetroTabBar active={active} />;
+
   return (
     <View
       accessibilityRole="tablist"
@@ -131,26 +109,28 @@ export function BottomTabs() {
       className="lg:hidden"
       style={
         {
+          // Khối bo tròn nổi trên nội dung: kính ngà nhẹ, bóng mỏng, không dải vàng phía sau.
           position: IS_WEB ? 'fixed' : 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
+          left: FLOAT_MARGIN,
+          right: FLOAT_MARGIN,
+          bottom: IS_WEB ? `calc(${FLOAT_MARGIN}px + ${SAFE_BOTTOM})` : FLOAT_MARGIN,
           zIndex: 45,
-          backgroundColor: 'rgba(255,255,255,0.97)',
-          borderTopWidth: 1,
-          borderTopColor: '#EFE3C8',
-          paddingBottom: IS_WEB ? SAFE_BOTTOM : 0,
+          borderRadius: 28,
+          backgroundColor: 'rgba(255,252,242,0.72)',
+          borderWidth: 1,
+          borderColor: 'rgba(255,255,255,0.85)',
+          boxShadow: '0 10px 24px rgba(150,110,40,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
+          backdropFilter: 'blur(18px) saturate(120%)',
+          // Chỉ trượt xuống khi bàn phím mở.
           transform: [{ translateY: visible ? 0 : '110%' }],
-          // Trượt bằng transform (GPU), không đụng layout.
           ...(IS_WEB ? { transition: 'transform 200ms ease', willChange: 'transform' } : null),
         } as never
       }
     >
-      <View style={{ flexDirection: 'row', height: BOTTOM_BAR_HEIGHT }}>
-        {BOTTOM_TAB_ITEMS.map((item) => {
+      <View style={{ flexDirection: 'row', height: BOTTOM_BAR_HEIGHT, alignItems: 'center' }}>
+        {TABS.map((item) => {
           const on = active === item.key;
-          const [vi, en] = SHORT[item.key] ?? [item.label, item.label];
-          const label = L(vi, en);
+          const label = L(item.vi, item.en);
           return (
             <Pressable
               key={item.key}
@@ -163,32 +143,36 @@ export function BottomTabs() {
               }}
               style={({ pressed }) => ({
                 flex: 1,
+                height: BOTTOM_BAR_HEIGHT,
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 2,
                 opacity: pressed ? 0.7 : 1,
                 transform: [{ scale: pressed ? 0.94 : 1 }],
               })}
             >
               <View
-                style={{
-                  width: 52,
-                  height: 28,
-                  borderRadius: 14,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: on ? '#F3E7CC' : 'transparent',
-                }}
+                style={[
+                  { width: 60, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
+                  on ? GOLD_BUTTON : null,
+                ] as never}
               >
-                <Icon name={item.icon} size={21} color={on ? color.primaryDark : color.muted} strokeWidth={on ? 2.1 : 1.7} />
+                {item.icon ? (
+                  <Icon name={item.icon} size={22} color={on ? GOLD.ink : GOLD.body} strokeWidth={on ? 2.1 : 1.7} />
+                ) : (
+                  <View
+                    style={{
+                      width: 26,
+                      height: 26,
+                      borderRadius: 13,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: on ? 'rgba(255,255,255,0.8)' : '#F4E2B0',
+                    }}
+                  >
+                    <Text style={{ fontSize: 13, lineHeight: 16, fontWeight: '700', color: '#8C6A1F' }}>{initial}</Text>
+                  </View>
+                )}
               </View>
-              <Text
-                numberOfLines={1}
-                className={on ? 'font-strong' : 'font-mid'}
-                style={{ fontSize: 12, lineHeight: 14, color: on ? color.primaryDark : color.muted }}
-              >
-                {label}
-              </Text>
             </Pressable>
           );
         })}
@@ -203,7 +187,7 @@ export function BottomTabs() {
  * đang xem không nhúc nhích.
  */
 export function BottomTabsSpacer() {
-  const visible = useChromeStore((st) => !st.barHidden && !st.keyboardOpen);
+  const visible = useChromeStore((st) => !st.keyboardOpen);
   if (!IS_WEB) return null;
   // Tính bằng CSS ngay từ bản máy chủ (không chờ hydrate) nên không có cú giật bố cục lúc tải.
   return <View className="lg:hidden" style={{ height: bottomBarSpace(visible) as unknown as number }} />;

@@ -30,6 +30,8 @@ import {
 import { todayKey } from '@/store/persist';
 import { useCustomPlan, useRoadmapStore } from '@/store/useRoadmapStore';
 import { useL } from '@/i18n/useL';
+import { GOLD_BUTTON } from '@/components/layout/phone-theme';
+import { CatSticker } from '@/components/mascot/CatSticker';
 
 /* Bản tiếng Anh cho nhãn lấy từ services/plan/custom (bản tiếng Việt giữ ở đó). */
 const SKILL_LABEL_EN: Record<Skill, string> = {
@@ -137,14 +139,17 @@ function fmtDate(iso: string): string {
  * trình kèm nút lập — đúng cảm giác "vé đi Band 9".
  */
 const P = {
-  navy: '#0F1D33',
+  /** Mực nâu ấm: chữ chính và nền tối của phiếu (thay navy cũ, lệch với nền vàng). */
+  ink: '#3B2A10',
+  /** Vàng đậm: nền của mục đang chọn; chữ trắng đọc rõ trên đây. */
+  deep: '#8C6A1F',
   gold: '#A8843F',
   goldDeep: '#8F6E36',
   goldLight: '#E2C88F',
-  paper: '#FFFDF8',
-  line: '#E8DCC0',
-  muted: '#6B6250',
-  canvas: '#F3EDE1',
+  paper: '#FFFBF0',
+  line: '#EADFC6',
+  muted: '#6B5C3E',
+  canvas: '#F7E7B8',
 };
 
 /** Thang band trên thước: gộp thang "bây giờ" và thang "mục tiêu". */
@@ -264,9 +269,9 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
                 aria-checked={on}
                 accessibilityLabel={name}
                 onPress={() => setDays(on ? days.filter((x) => x !== d) : [...days, d])}
-                style={{ flex: 1, maxWidth: 56, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}
+                style={{ flex: 1, maxWidth: 56, height: 44, borderRadius: 10, alignItems: 'center', justifyContent: 'center', borderWidth: 1, borderColor: on ? P.deep : P.line, backgroundColor: on ? P.deep : '#FFFFFF' }}
               >
-                <Text className="font-strong" style={{ fontSize: 13, color: on ? P.goldLight : P.muted }}>
+                <Text className="font-strong" style={{ fontSize: 13, color: on ? '#FFFFFF' : P.muted }}>
                   {en ? (name ?? '').slice(0, 2) : WEEKDAY_SHORT[d]}
                 </Text>
               </Pressable>
@@ -292,7 +297,7 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
                   style={{ flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 10, paddingHorizontal: 12, paddingVertical: 9, borderWidth: 1, borderColor: on ? P.gold : P.line, backgroundColor: on ? '#FBF3E2' : '#FFFFFF' }}
                 >
                   <CheckSquare on={on} />
-                  <Text className="font-strong" style={{ fontSize: 14, color: P.navy }}>
+                  <Text className="font-strong" style={{ fontSize: 14, color: P.ink }}>
                     {en ? SKILL_LABEL_EN[s] : SKILL_LABEL[s]}
                   </Text>
                 </Pressable>
@@ -327,13 +332,14 @@ function PlanSetup({ initial }: { initial: PlanInput | null }) {
             <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 2.4, color: P.goldDeep }}>
               {L('BAND 9 · PHIẾU LỘ TRÌNH', 'BAND 9 · STUDY PLAN TICKET')}
             </Text>
-            <Text className="font-heavy" style={{ marginTop: 2, fontSize: wide ? 38 : 28, lineHeight: wide ? 44 : 34, color: P.navy }}>
+            <Text className="font-heavy" style={{ marginTop: 2, fontSize: wide ? 38 : 28, lineHeight: wide ? 44 : 34, color: P.ink }}>
               {initial ? L('Sửa lộ trình', 'Edit your plan') : L('Lập lộ trình', 'Build your plan')}
             </Text>
             <Text className="font-sans" style={{ marginTop: 4, fontSize: 15, color: P.muted }}>
               {L('Điền bốn mục, app xếp từng buổi vào đúng bài.', 'Fill in four steps and the app maps every session to the right lesson.')}
             </Text>
           </View>
+          {width < HEADER_ART_MIN ? <CatSticker pose="peeking" size={64} /> : null}
           {width >= HEADER_ART_MIN ? (
             <Motion kind="float">
               <Sticker tilt={8}>
@@ -369,7 +375,7 @@ function Section({ n, title, hint, right, wide, first, children }: { n: string; 
       <View style={{ flex: wide ? 1 : undefined, minWidth: 0 }}>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
           <View style={{ flexShrink: 1 }}>
-            <Text className="font-heavy" style={{ fontSize: 19, lineHeight: 26, color: P.navy }}>
+            <Text className="font-heavy" style={{ fontSize: 19, lineHeight: 26, color: P.ink }}>
               {title}
             </Text>
             {hint ? (
@@ -411,11 +417,11 @@ function ExamTile({ label, sub, on, onPress }: { label: string; sub: string; on:
       aria-checked={on}
       accessibilityLabel={L(`Thi ${label}`, `Taking ${label}`)}
       onPress={onPress}
-      style={{ flexGrow: 1, flexBasis: 120, maxWidth: 260, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12, borderWidth: on ? 1.5 : 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}
+      style={{ flexGrow: 1, flexBasis: 120, maxWidth: 260, flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 14, paddingHorizontal: 14, paddingVertical: 12, borderWidth: on ? 1.5 : 1, borderColor: on ? P.deep : P.line, backgroundColor: on ? P.deep : '#FFFFFF' }}
     >
       <CheckSquare on={on} light={on} />
       <View>
-        <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 22, color: on ? '#FFFFFF' : P.navy }}>
+        <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 22, color: on ? '#FFFFFF' : P.ink }}>
           {label}
         </Text>
         <Text className="font-sans" style={{ fontSize: 12, color: on ? 'rgba(255,255,255,0.7)' : P.muted }}>
@@ -434,7 +440,7 @@ function ExamTabs({ value, onChange }: { value: 'ielts' | 'sat'; onChange: (v: '
         const on = value === e;
         return (
           <Pressable key={e} accessibilityRole="tab" aria-selected={on} onPress={() => onChange(e)} style={{ paddingVertical: 4, borderBottomWidth: 2, borderColor: on ? P.gold : 'transparent' }}>
-            <Text className="font-heavy" style={{ fontSize: 14, color: on ? P.navy : P.muted }}>
+            <Text className="font-heavy" style={{ fontSize: 14, color: on ? P.ink : P.muted }}>
               {e === 'ielts' ? 'IELTS' : 'SAT'}
             </Text>
           </Pressable>
@@ -472,7 +478,7 @@ function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit
     <View>
       {/* số đọc to: bây giờ → mục tiêu */}
       <View style={{ flexDirection: 'row', alignItems: 'flex-end', flexWrap: 'wrap', gap: 10 }}>
-        <Text className="font-heavy" style={{ fontSize: compact ? 34 : 44, lineHeight: compact ? 40 : 50, color: goal.now === null ? '#B7AC95' : P.navy }}>
+        <Text className="font-heavy" style={{ fontSize: compact ? 34 : 44, lineHeight: compact ? 40 : 50, color: goal.now === null ? '#B7AC95' : P.ink }}>
           {goal.now === null ? '?' : fmt(goal.now)}
         </Text>
         <Text className="font-heavy" style={{ fontSize: compact ? 22 : 28, lineHeight: compact ? 34 : 44, color: P.gold }}>
@@ -494,17 +500,17 @@ function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit
       <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
         <View style={{ flexDirection: 'row', borderRadius: 10, borderWidth: 1, borderColor: P.line, overflow: 'hidden' }}>
           {(['target', 'now'] as const).map((m) => (
-            <Pressable key={m} accessibilityRole="button" aria-selected={mode === m} onPress={() => setMode(m)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: mode === m ? P.navy : '#FFFFFF' }}>
-              <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: m === 'target' ? P.gold : 'transparent', borderWidth: 2, borderColor: m === 'target' ? P.gold : mode === m ? '#FFFFFF' : P.navy }} />
-              <Text className="font-strong" style={{ fontSize: 13, color: mode === m ? '#FFFFFF' : P.navy }}>
+            <Pressable key={m} accessibilityRole="button" aria-selected={mode === m} onPress={() => setMode(m)} style={{ flexDirection: 'row', alignItems: 'center', gap: 6, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: mode === m ? P.deep : '#FFFFFF' }}>
+              <View style={{ width: 10, height: 10, borderRadius: 5, backgroundColor: m === 'target' ? P.gold : 'transparent', borderWidth: 2, borderColor: m === 'target' ? P.gold : mode === m ? '#FFFFFF' : P.ink }} />
+              <Text className="font-strong" style={{ fontSize: 13, color: mode === m ? '#FFFFFF' : P.ink }}>
                 {m === 'target' ? L('Đặt mục tiêu', 'Set target') : L('Đặt điểm bây giờ', 'Set current')}
               </Text>
             </Pressable>
           ))}
         </View>
         {mode === 'now' ? (
-          <Pressable accessibilityRole="button" aria-selected={goal.now === null} onPress={() => onChange({ ...goal, now: null })} style={{ borderRadius: 10, paddingHorizontal: 12, paddingVertical: 7, borderWidth: 1, borderColor: goal.now === null ? P.navy : P.line, backgroundColor: '#FFFFFF' }}>
-            <Text className="font-strong" style={{ fontSize: 13, color: P.navy }}>
+          <Pressable accessibilityRole="button" aria-selected={goal.now === null} onPress={() => onChange({ ...goal, now: null })} style={{ borderRadius: 10, paddingHorizontal: 12, paddingVertical: 7, borderWidth: 1, borderColor: goal.now === null ? P.ink : P.line, backgroundColor: '#FFFFFF' }}>
+            <Text className="font-strong" style={{ fontSize: 13, color: P.ink }}>
               {L('Chưa biết', "Don't know")}
             </Text>
           </Pressable>
@@ -519,7 +525,7 @@ function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit
             <View style={{ position: 'absolute', left: `${nPos}%`, width: `${tPos - nPos}%`, height: 4, borderRadius: 2, backgroundColor: P.gold }} />
           ) : null}
           {nPos !== null ? (
-            <View style={{ position: 'absolute', left: `${nPos}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#FFFFFF', borderWidth: 3, borderColor: P.navy }} />
+            <View style={{ position: 'absolute', left: `${nPos}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#FFFFFF', borderWidth: 3, borderColor: P.ink }} />
           ) : null}
           <View style={{ position: 'absolute', left: `${tPos}%`, marginLeft: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.gold, borderWidth: 3, borderColor: '#FFFFFF', boxShadow: '0 4px 10px -3px rgba(143,110,54,0.7)' } as object} />
         </View>
@@ -531,8 +537,8 @@ function GoalRuler({ scale, nowOptions, targetOptions, goal, onChange, fmt, unit
             const showLabel = !compact || i % 2 === 0 || chosen;
             return (
               <Pressable key={v} accessibilityRole="button" accessibilityLabel={fmt(v)} disabled={!ok} onPress={() => pick(v)} style={{ flex: 1, alignItems: 'center', paddingTop: 2, paddingBottom: 6 }}>
-                <View style={{ width: 2, height: major ? 12 : 7, borderRadius: 1, backgroundColor: ok ? P.navy : '#D9CEB6' }} />
-                <Text className={chosen ? 'font-heavy' : 'font-semi'} style={{ marginTop: 4, fontSize: compact ? 11 : 13, color: v === goal.target ? P.goldDeep : chosen ? P.navy : ok ? P.muted : '#C9BFA9' }}>
+                <View style={{ width: 2, height: major ? 12 : 7, borderRadius: 1, backgroundColor: ok ? P.ink : '#D9CEB6' }} />
+                <Text className={chosen ? 'font-heavy' : 'font-semi'} style={{ marginTop: 4, fontSize: compact ? 11 : 13, color: v === goal.target ? P.goldDeep : chosen ? P.ink : ok ? P.muted : '#C9BFA9' }}>
                   {showLabel ? fmt(v) : ' '}
                 </Text>
               </Pressable>
@@ -557,8 +563,8 @@ function ExamDatePicker({ value, today, minDate, onChange }: { value: string; to
             const iso = addDaysIso(today, w * 7);
             const on = value === iso;
             return (
-              <Pressable key={w} accessibilityRole="button" aria-selected={on} onPress={() => onChange(iso)} style={{ borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: on ? P.navy : P.line, backgroundColor: on ? P.navy : '#FFFFFF' }}>
-                <Text className="font-strong" style={{ fontSize: 12, color: on ? '#FFFFFF' : P.navy }}>
+              <Pressable key={w} accessibilityRole="button" aria-selected={on} onPress={() => onChange(iso)} style={{ borderRadius: 8, paddingHorizontal: 10, paddingVertical: 6, borderWidth: 1, borderColor: on ? P.deep : P.line, backgroundColor: on ? P.deep : '#FFFFFF' }}>
+                <Text className="font-strong" style={{ fontSize: 12, color: on ? '#FFFFFF' : P.ink }}>
                   {L(`Sau ${w} tuần`, `In ${w} weeks`)}
                 </Text>
               </Pressable>
@@ -567,7 +573,7 @@ function ExamDatePicker({ value, today, minDate, onChange }: { value: string; to
         </View>
       </View>
       <View style={{ minWidth: 120, alignItems: 'flex-start', borderLeftWidth: 2, borderColor: P.goldLight, paddingLeft: 14 }}>
-        <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 44, color: left === null ? '#B7AC95' : P.navy }}>
+        <Text className="font-heavy" style={{ fontSize: 40, lineHeight: 44, color: left === null ? '#B7AC95' : P.ink }}>
           {left === null ? '—' : left}
         </Text>
         <Text className="font-semi" style={{ fontSize: 13, color: P.muted }}>
@@ -585,8 +591,8 @@ function Segmented({ options, value, onChange, label }: { options: number[]; val
       {options.map((m) => {
         const on = value === m;
         return (
-          <Pressable key={m} accessibilityRole="button" aria-selected={on} onPress={() => onChange(m)} style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 9, backgroundColor: on ? P.navy : 'transparent' }}>
-            <Text className="font-strong" numberOfLines={1} style={{ fontSize: 13, color: on ? P.goldLight : P.navy }}>
+          <Pressable key={m} accessibilityRole="button" aria-selected={on} onPress={() => onChange(m)} style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 9, backgroundColor: on ? P.deep : 'transparent' }}>
+            <Text className="font-strong" numberOfLines={1} style={{ fontSize: 13, color: on ? '#FFFFFF' : P.ink }}>
               {label(m)}
             </Text>
           </Pressable>
@@ -601,7 +607,7 @@ function TicketStub({ ielts, sat, today, days, minutesText, weak, problems, edit
   const { L } = useL();
   const legs = [ielts ? { key: 'IELTS', g: ielts, fmt: (v: number) => v.toFixed(1) } : null, sat ? { key: 'SAT', g: sat, fmt: (v: number) => String(v) } : null].filter(Boolean) as { key: string; g: GoalInput; fmt: (v: number) => string }[];
   return (
-    <View style={{ borderRadius: 22, backgroundColor: P.navy, overflow: 'hidden' }}>
+    <View style={{ borderRadius: 22, backgroundColor: P.ink, overflow: 'hidden' }}>
       <View style={{ position: 'absolute', top: 8, left: 8, right: 8, bottom: 8, borderRadius: 16, borderWidth: 1, borderColor: 'rgba(226,200,143,0.35)' }} pointerEvents="none" />
       <View style={{ padding: 22, paddingBottom: 18 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -677,7 +683,16 @@ function TicketStub({ ielts, sat, today, days, minutesText, weak, problems, edit
             ))}
           </View>
         ) : null}
-        <Button label={editing ? L('Lập lại lộ trình', 'Rebuild plan') : L('Lập lộ trình', 'Build plan')} variant="brand" size="lg" iconRight="arrow-right" onPress={onSubmit} fullWidth />
+        <Pressable
+          accessibilityRole="button"
+          onPress={onSubmit}
+          style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderRadius: 999, paddingVertical: 15, ...GOLD_BUTTON, transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
+        >
+          <Text className="font-heavy" style={{ fontSize: 16, color: P.ink }}>
+            {editing ? L('Lập lại lộ trình', 'Rebuild plan') : L('Lập lộ trình', 'Build plan')}
+          </Text>
+          <Icon name="arrow-right" size={18} color={P.ink} strokeWidth={2.2} />
+        </Pressable>
         {editing ? <Button label={L('Huỷ', 'Cancel')} variant="outline" fullWidth onPress={() => router.replace('/plan' as never)} /> : null}
         <Pressable accessibilityRole="link" onPress={() => router.push('/plan?mau=1' as never)} style={{ alignSelf: 'center' }}>
           <Text className="font-semi" style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
@@ -704,7 +719,7 @@ function StubCell({ label, value }: { label: string; value: string }) {
 
 function DateField({ value, min, onChange, disabled }: { value: string; min: string; onChange: (iso: string) => void; disabled?: boolean }) {
   const { L } = useL();
-  const style = { height: 44, borderWidth: 1, borderColor: P.line, borderRadius: 10, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: P.navy, backgroundColor: disabled ? '#F4EFE4' : '#FFFFFF', width: '100%' as const, maxWidth: 280 };
+  const style = { height: 44, borderWidth: 1, borderColor: P.line, borderRadius: 10, paddingLeft: 12, paddingRight: 12, fontSize: 15, color: P.ink, backgroundColor: disabled ? '#F4EFE4' : '#FFFFFF', width: '100%' as const, maxWidth: 280 };
   if (Platform.OS === 'web') {
     return React.createElement('input', {
       type: 'date',
@@ -725,6 +740,7 @@ const PHASE_ORDER: Phase[] = ['nen', 'dang', 'de', 'nuoc-rut'];
 
 function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
   const { L, en } = useL();
+  const { width } = useWindowDimensions();
   const phaseLabel = (p: Phase) => (en ? PHASE_LABEL_EN[p] : PHASE_LABEL[p]);
   const weekdayLabel = (d: number) => (en ? WEEKDAY_LABEL_EN : WEEKDAY_LABEL)[d];
   const planText = (s: string) => (en ? (PLAN_TEXT_EN[s] ?? s) : s);
@@ -769,6 +785,12 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
 
   return (
     <View className="pb-8" style={{ gap: 14 }}>
+      {/* Mèo treo chân trên đầu khối lộ trình (màn hẹp) */}
+      {width < HEADER_ART_MIN ? (
+        <View style={{ alignItems: 'flex-end', marginBottom: 2 }}>
+          <CatSticker pose="hangingPaws" size={64} />
+        </View>
+      ) : null}
       {/* ------------------------------------------------ khối đầu (xanh) */}
       <Appear>
         <View style={{ borderRadius: 28, padding: 24, backgroundColor: '#A8843F', overflow: 'hidden' }}>
@@ -840,14 +862,14 @@ function MyPlan({ input, plan }: { input: PlanInput; plan: CustomPlan }) {
         >
           <Icon name="compass" size={22} color={P.gold} />
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text className="font-heavy" style={{ fontSize: 16, color: P.navy }}>
+            <Text className="font-heavy" style={{ fontSize: 16, color: P.ink }}>
               {L('Lộ trình học theo trình độ', 'Learning path by level')}
             </Text>
             <Text className="font-sans" style={{ fontSize: 13, color: P.muted }}>
               {L('Học từng bài theo chủ đề, đúng mức điểm bạn đang đứng.', 'Lesson-by-lesson topics matched to your current score.')}
             </Text>
           </View>
-          <Icon name="arrow-right" size={18} color={P.navy} />
+          <Icon name="arrow-right" size={18} color={P.ink} />
         </Pressable>
       </Appear>
 

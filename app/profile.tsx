@@ -1,5 +1,7 @@
-import React, { useMemo } from 'react';
-import { Pressable, Text, View, useWindowDimensions } from 'react-native';
+import React, { useMemo, useState } from 'react';
+import { Alert, Pressable, Switch, Text, View, useWindowDimensions } from 'react-native';
+import { Image } from 'expo-image';
+import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -10,6 +12,7 @@ import { HeroSprite } from '@/components/game/HeroSprite';
 import { AnimatedAvatar, AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { ProfileCover } from '@/components/profile/ProfileCover';
 import { ProfileEffect } from '@/components/profile/ProfileEffect';
+import { useHydrated } from '@/components/layout/useHydrated';
 import { Badge, Button, Card, SectionHeader } from '@/components/ui';
 import { SpacedRepetitionWidget } from '@/components/vocab/SpacedRepetitionWidget';
 import { MASCOTS, STAR_BONUS } from '@/services/game/mascots';
@@ -21,6 +24,11 @@ import { useGameStore } from '@/store/useGameStore';
 import { mascotOf, skinOf, useRewardStore, type WearSlot } from '@/store/useRewardStore';
 import { useStarLedger } from '@/store/useStarBalance';
 import { useStudyStore } from '@/store/useStudyStore';
+import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
+import type { CutePalette } from '@/store/useCuteAppearanceStore';
+import { CUTE_PALETTES } from '@/components/layout/cute-palettes';
+import { GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
+import { CatSticker } from '@/components/mascot/CatSticker';
 import { color } from '@/theme/tokens';
 import { PageStickers, SealIcon } from '@/components/illust/HeroArt';
 import { Label, Sticker } from '@/components/illust/Sticker';
@@ -28,6 +36,7 @@ import { Badge as SealBadge } from '@/components/illust/Cute';
 import { CuteStar, Motion } from '@/components/illust/CuteMore';
 import type { IconName } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
+import { RetroModeButton } from '@/components/profile-retro/RetroModeButton';
 import { achievementTitle, itemDetail, itemName, levelTitle, mascotName, mascotPerk, tierName } from '@/services/gamification/labels-en';
 
 /**
@@ -45,6 +54,7 @@ const SLOTS: { slot: WearSlot; title: string; titleEn: string; kinds: ShopItem['
   { slot: 'effect', title: 'Hiệu ứng hồ sơ', titleEn: 'Profile effect', kinds: ['effect'], tab: 'effect', empty: 'Chưa có hiệu ứng', emptyEn: 'No effect yet' },
   { slot: 'skin', title: 'Skin nhân vật', titleEn: 'Hero skin', kinds: ['skin'], tab: 'skin', empty: 'Hiệp sĩ xanh', emptyEn: 'Blue Knight' },
   { slot: 'mascot', title: 'Linh vật', titleEn: 'Mascot', kinds: ['mascot'], tab: 'mascot', empty: 'Chưa có bạn đồng hành', emptyEn: 'No companion yet' },
+  { slot: 'theme', title: 'Giao diện', titleEn: 'Theme', kinds: ['theme'], tab: 'theme', empty: 'Mặc định Band 9', emptyEn: 'Band 9 default' },
 ];
 
 export default function ProfileScreen() {
@@ -58,6 +68,39 @@ export default function ProfileScreen() {
   const life = useGameStore((s) => s.life);
   const achievements = useGameStore((s) => s.achievements);
   const ledger = useStarLedger();
+  const cuteEffects = useCuteAppearanceStore((state) => state.effectsEnabled);
+  const setCuteEffects = useCuteAppearanceStore((state) => state.setEffectsEnabled);
+  const cutePalette = useCuteAppearanceStore((state) => state.palette);
+  const setCutePalette = useCuteAppearanceStore((state) => state.setPalette);
+  const customMascotImage = useCuteAppearanceStore((state) => state.customMascotImage);
+  const setCustomMascotImage = useCuteAppearanceStore((state) => state.setCustomMascotImage);
+  const hydrated = useHydrated();
+  const displayedMascotImage = hydrated ? customMascotImage : null;
+  const [choosingMascotImage, setChoosingMascotImage] = useState(false);
+
+  const chooseMascotImage = async () => {
+    setChoosingMascotImage(true);
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ['images'],
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 0.65,
+        base64: true,
+      });
+      const image = result.assets?.[0];
+      if (!result.canceled && image) {
+        const uri = image.base64
+          ? `data:${image.mimeType ?? 'image/jpeg'};base64,${image.base64}`
+          : image.uri;
+        setCustomMascotImage(uri);
+      }
+    } catch {
+      Alert.alert(L('Không mở được thư viện ảnh', 'Could not open your photo library'));
+    } finally {
+      setChoosingMascotImage(false);
+    }
+  };
 
   const today = useMemo(() => new Date(), []);
   const lv = levelProgress(xp);
@@ -73,12 +116,21 @@ export default function ProfileScreen() {
 
   const wardrobe = SHOP_ITEMS.filter((i) => (reward.owned[i.id] ?? 0) > 0 && SLOTS.some((s) => s.kinds.includes(i.kind)));
   const slotOf = (item: ShopItem) => SLOTS.find((s) => s.kinds.includes(item.kind))!.slot;
-  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.skin, reward.mascot].filter((x): x is string => !!x));
+  const worn = new Set([reward.avatar, reward.cover, reward.effect, reward.skin, reward.mascot, reward.theme].filter((x): x is string => !!x));
+  const chiikawaItem = SHOP_ITEMS.find((item) => item.id === 'theme-chiikawa');
+  const ownsChiikawaTheme = (reward.owned['theme-chiikawa'] ?? 0) > 0;
+  const chiikawaThemeActive = reward.theme === 'theme-chiikawa';
 
   const avatarSize = wide ? 112 : 88;
 
   return (
     <Screen>
+      {/* Mèo đeo kính ngồi trên đầu hồ sơ (màn hẹp) */}
+      {!wide ? (
+        <View style={{ alignItems: 'flex-end', marginBottom: 2 }}>
+          <CatSticker pose="sunglasses" size={64} />
+        </View>
+      ) : null}
       {/* Bìa + avatar đè lên mép bìa */}
       <Appear>
         <View style={{ borderRadius: 24, overflow: 'hidden', backgroundColor: '#FFFFFF' }}>
@@ -94,7 +146,7 @@ export default function ProfileScreen() {
                 accessibilityRole="link"
                 accessibilityLabel={L('Đổi bìa hồ sơ', 'Change profile cover')}
                 onPress={() => router.push('/shop?tab=cover' as never)}
-                style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: 'rgba(15,23,42,0.45)' }}
+                style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: 'rgba(59,42,16,0.5)' }}
               >
                 <Text className="font-semi" style={{ fontSize: 13, color: '#FFFFFF' }}>
                   {L('Đổi bìa', 'Change cover')}
@@ -130,6 +182,125 @@ export default function ProfileScreen() {
             ) : null}
           </View>
         </View>
+      </Appear>
+
+      <Card className="mt-4">
+        <View style={{ gap: 16 }}>
+          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1, borderColor: 'rgba(233,181,74,0.35)', backgroundColor: 'rgba(255,250,235,0.85)' }}>
+            <View style={{ width: 82, height: 82, borderRadius: 20, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBEFCB' }}>
+              <Image source={require('../assets/illustrations/cute-home/mascot-wave.png')} contentFit="contain" style={{ width: 82, height: 82 }} />
+            </View>
+            <View style={{ flex: 1, minWidth: 220 }}>
+              <View className="flex-row flex-wrap items-center gap-2">
+                <Text className="font-heavy text-body text-ink">{L('Giao diện Chiikawa · Góc học hồng', 'Chiikawa · Pink study nook')}</Text>
+                <Badge label={chiikawaThemeActive ? L('Đang dùng', 'Active') : ownsChiikawaTheme ? L('Đã mở khóa', 'Unlocked') : L('Đổi bằng sao', 'Star reward')} tone={chiikawaThemeActive ? 'success' : 'primary'} shape="tag" />
+              </View>
+              <Text className="mt-1 font-sans text-label text-muted">
+                {L('Nền caro hồng sữa, mascot trên taskbar và nút hỏi Chiikawa. Mở khóa một lần; bạn tự chọn lúc bật, mặc định vẫn là giao diện Band 9.', 'Milk-pink checked backgrounds, taskbar mascots and a Chiikawa helper. Unlock once and choose when to turn it on; Band 9 remains the default.')}
+              </Text>
+            </View>
+            {ownsChiikawaTheme ? (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={chiikawaThemeActive ? L('Tắt giao diện Chiikawa', 'Turn off Chiikawa theme') : L('Dùng giao diện Chiikawa', 'Use Chiikawa theme')}
+                onPress={() => reward.equip('theme', chiikawaThemeActive ? null : 'theme-chiikawa')}
+                style={{ minHeight: 44, paddingHorizontal: 18, borderRadius: 14, alignItems: 'center', justifyContent: 'center', ...(chiikawaThemeActive ? { backgroundColor: '#FFF', borderWidth: 1, borderColor: '#E9CF9A' } : GOLD_BUTTON) }}
+              >
+                <Text className="font-strong text-label" style={{ color: chiikawaThemeActive ? GOLD.deep : GOLD.ink }}>{chiikawaThemeActive ? L('Tắt giao diện', 'Turn off') : L('Dùng giao diện', 'Use theme')}</Text>
+              </Pressable>
+            ) : (
+              <Pressable
+                accessibilityRole="button"
+                accessibilityLabel={L(`Đổi ${formatStars(chiikawaItem?.price ?? 500)} sao lấy giao diện Chiikawa`, `Unlock Chiikawa theme for ${formatStars(chiikawaItem?.price ?? 500)} stars`)}
+                onPress={() => router.push('/shop?tab=theme' as never)}
+                style={{ minHeight: 44, paddingHorizontal: 18, borderRadius: 14, alignItems: 'center', justifyContent: 'center', ...GOLD_BUTTON }}
+              >
+                <Text className="font-strong text-label" style={{ color: GOLD.ink }}>{L(`Đổi ${formatStars(chiikawaItem?.price ?? 500)} ⭐`, `Unlock · ${formatStars(chiikawaItem?.price ?? 500)} ⭐`)}</Text>
+              </Pressable>
+            )}
+          </View>
+          <View className="flex-row items-center gap-3">
+            <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: '#FBEFCB' }}>
+              <CuteStar size={34} />
+            </View>
+            <View className="min-w-0 flex-1">
+              <Text className="font-heavy text-cardTitle text-ink">{L('Hiệu ứng cute toàn app', 'Cute effects across the app')}</Text>
+              <Text className="mt-0.5 font-sans text-label text-muted">
+                {L('Mascot, sao lấp lánh và chuyển động nhẹ ở mọi màn.', 'Mascots, sparkles and gentle motion on every screen.')}
+              </Text>
+            </View>
+            <Switch
+              value={cuteEffects}
+              onValueChange={setCuteEffects}
+              accessibilityLabel={L('Bật hiệu ứng cute toàn app', 'Enable cute effects across the app')}
+              trackColor={{ false: '#D9D0DC', true: '#E2B54E' }}
+              thumbColor={cuteEffects ? '#B8862B' : '#FFFFFF'}
+            />
+          </View>
+          <View className="flex-row flex-wrap items-center gap-2">
+            <Text className="mr-1 font-semi text-label text-muted">
+              {L(`Màu nền · ${CUTE_PALETTES[cutePalette].label}`, `Background · ${CUTE_PALETTES[cutePalette].labelEn}`)}
+            </Text>
+            {(Object.keys(CUTE_PALETTES) as CutePalette[]).map((key) => (
+              <Pressable
+                key={key}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: cutePalette === key }}
+                accessibilityLabel={L(`Chọn nền ${CUTE_PALETTES[key].label}`, `Choose ${CUTE_PALETTES[key].labelEn} background`)}
+                onPress={() => setCutePalette(key)}
+                style={{
+                  width: 30,
+                  height: 30,
+                  borderRadius: 999,
+                  backgroundColor: CUTE_PALETTES[key].swatch,
+                  borderWidth: cutePalette === key ? 3 : 1,
+                  borderColor: cutePalette === key ? GOLD.deep : 'rgba(156,133,82,0.3)',
+                }}
+              />
+            ))}
+          </View>
+          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, borderTopWidth: 1, borderTopColor: 'rgba(156,133,82,0.25)', paddingTop: 14 }}>
+            <View style={{ width: 76, height: 76, borderRadius: 24, borderWidth: 2, borderColor: '#E2B54E', backgroundColor: '#FBEFCB', overflow: 'hidden', alignItems: 'center', justifyContent: 'center' }}>
+              <Image
+                source={displayedMascotImage ? { uri: displayedMascotImage } : require('../assets/illustrations/cute-home/mascot-wave.png')}
+                contentFit="cover"
+                style={{ width: 72, height: 72 }}
+              />
+            </View>
+            <View style={{ flex: 1, minWidth: 200 }}>
+              <Text className="font-strong text-body text-ink">{L('Ảnh sticker của bạn', 'Your personal sticker')}</Text>
+              <Text className="mt-0.5 font-sans text-label text-muted">
+                {L('Chọn ảnh vuông để làm sticker bay nhẹ trên các màn hình. Ảnh chỉ lưu trên thiết bị này.', 'Choose a square image to float as a sticker across the app. It stays on this device.')}
+              </Text>
+            </View>
+            <View className="flex-row flex-wrap gap-2">
+              <Button
+                label={choosingMascotImage ? L('Đang mở…', 'Opening…') : displayedMascotImage ? L('Đổi ảnh', 'Change image') : L('Tải ảnh lên', 'Upload image')}
+                size="sm"
+                iconLeft="sparkle"
+                loading={choosingMascotImage}
+                onPress={() => void chooseMascotImage()}
+              />
+              {displayedMascotImage ? <Button label={L('Xóa ảnh', 'Remove image')} size="sm" variant="outline" onPress={() => setCustomMascotImage(null)} /> : null}
+            </View>
+          </View>
+        </View>
+      </Card>
+
+      {/* Bản mẫu giao diện retro theo ảnh tham chiếu để thử; màn hồ sơ này vẫn là bản chính */}
+      <Appear index={1}>
+        <Card className="mt-4">
+          <View className="flex-row flex-wrap items-center gap-3">
+            <View className="min-w-0 flex-1" style={{ minWidth: 220 }}>
+              <Text className="font-heavy text-cardTitle text-ink">{L('Thử giao diện retro', 'Try the retro look')}</Text>
+              <Text className="mt-0.5 font-sans text-label text-muted">
+                {L('Bản mẫu theo ảnh tham chiếu, dùng đúng số liệu của bạn.', 'A sample laid out like the reference, using your own numbers.')}
+              </Text>
+            </View>
+            <RetroModeButton />
+            <Button label={L('Xem thử', 'Preview')} size="sm" iconLeft="sparkle" onPress={() => router.push('/profile-so-dan' as never)} />
+          </View>
+        </Card>
       </Appear>
 
       {/* Lặp lại ngắt quãng (FSRS / Spaced Repetition) */}
@@ -318,6 +489,13 @@ const NIGHT = '#1B1540';
 
 function SlotPreview({ slot, item, name, skin }: { slot: WearSlot; item: ShopItem | undefined; name: string; skin: ReturnType<typeof skinOf> }) {
   if (slot === 'avatar') return <AvatarBadge avatarId={item?.id ?? null} name={name} size={56} skin={skin} />;
+  if (slot === 'theme') {
+    return (
+      <View style={{ width: 84, height: 56, borderRadius: 12, overflow: 'hidden', backgroundColor: '#FFF0F4', alignItems: 'center', justifyContent: 'center' }}>
+        <Image source={require('../assets/illustrations/cute-home/mascot-wave.png')} contentFit="contain" style={{ width: 80, height: 54 }} />
+      </View>
+    );
+  }
   if (slot === 'cover') {
     return (
       <View style={{ width: 84, height: 56, borderRadius: 12, overflow: 'hidden' }}>

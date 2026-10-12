@@ -1,20 +1,16 @@
 import { create } from 'zustand';
 
 /**
- * Trạng thái khung điều hướng trên điện thoại (không lưu): thanh tab dưới đang
- * ẩn vì cuộn xuống, hay vì bàn phím ảo đang mở.
+ * Trạng thái khung điều hướng trên điện thoại (không lưu): hiện đang có bàn phím ảo
+ * mở, nên thanh tab dưới tạm ẩn để không che ô đang gõ.
  */
 type ChromeState = {
-  barHidden: boolean;
   keyboardOpen: boolean;
-  setBarHidden: (hidden: boolean) => void;
   setKeyboardOpen: (open: boolean) => void;
 };
 
 export const useChromeStore = create<ChromeState>((set) => ({
-  barHidden: false,
   keyboardOpen: false,
-  setBarHidden: (barHidden) => set((s) => (s.barHidden === barHidden ? s : { barHidden })),
   setKeyboardOpen: (keyboardOpen) => set((s) => (s.keyboardOpen === keyboardOpen ? s : { keyboardOpen })),
 }));
 

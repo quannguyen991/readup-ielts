@@ -8,6 +8,8 @@ import { matchesWritingFilter } from '@/lib/writing/prompt-filter';
 import { PlanNudge } from '@/components/billing/PlanUi';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
+import { CatSticker } from '@/components/mascot/CatSticker';
+import { GLASS, GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import {
@@ -139,6 +141,7 @@ export default function PracticeScreen() {
   const SKILLS = useMemo(() => buildSkills(L), [L]);
   const { width } = useWindowDimensions();
   const wide = width >= 1024;
+  const phone = width < 640;
 
   const [selection, setSelection] = useState<RailSelection>({
     skill: 'reading',
@@ -333,6 +336,27 @@ export default function PracticeScreen() {
 
   return (
     <Screen>
+      {phone ? (
+        <Appear>
+          <PhoneHeroPanel
+            eyebrow="IELTS · READING"
+            title="Reading"
+            line2={L('đọc để hiểu, không chỉ chọn đáp án', 'read to understand, not just to pick answers')}
+            subtitle={L('Chọn dạng câu, làm có giờ, xem lại kèm bằng chứng.', 'Pick a question type, work timed, review with evidence.')}
+            stats={[
+              { value: READABLE_TOTAL.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN'), label: L('bài đọc', 'readings') },
+              { value: '15', label: L('dạng câu hỏi', 'question types') },
+              { value: '60', label: L('phút full đề', 'min full test') },
+            ]}
+            primary={{ label: L('Bài ngắn', 'Short texts'), onPress: () => setSelection({ skill: 'reading', option: 'single', child: 'short' }) }}
+            links={[
+              { icon: 'clipboard', label: L('Full đề Reading', 'Full Reading test'), onPress: () => router.push('/mock-tests' as never) },
+              { icon: 'refresh', label: L('Xen kẽ dạng bài', 'Mixed practice'), onPress: () => router.push('/practice-mixed' as never) },
+              { icon: 'book', label: L('Đề theo nguồn OCR cục bộ', 'Local OCR source tests'), onPress: () => router.push('/ielts-source-practice' as never) },
+            ]}
+          />
+        </Appear>
+      ) : (
       <Appear>
         <LightHero
           badge="IELTS · READING" art="verbal"
@@ -377,16 +401,19 @@ export default function PracticeScreen() {
           />
         </LightHero>
       </Appear>
+      )}
 
       {!wide ? (
-        <View className="mt-3">
-          <Button
-            label={railOpen ? L('Đóng bộ lọc', 'Close filters') : L('Bộ lọc', 'Filters')}
-            variant="outline"
-            iconLeft="filter"
-            onPress={() => setRailOpen((v) => !v)}
-          />
-        </View>
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => setRailOpen((v) => !v)}
+          style={({ pressed }) => ({ marginTop: 12, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 8, borderRadius: 999, paddingHorizontal: 16, paddingVertical: 10, ...GLASS, transform: [{ scale: pressed ? 0.97 : 1 }] } as never)}
+        >
+          <Icon name="filter" size={16} color={GOLD.ink} strokeWidth={2} />
+          <Text className="font-strong" style={{ fontSize: 14, color: GOLD.ink }}>
+            {railOpen ? L('Đóng bộ lọc', 'Close filters') : L('Bộ lọc', 'Filters')}
+          </Text>
+        </Pressable>
       ) : null}
 
       <PlanNudge />
@@ -455,6 +482,87 @@ export default function PracticeScreen() {
   );
 }
 
+/**
+ * Đầu trang Luyện tập trên điện thoại: thẻ kính, nút vàng là việc chính, các lối phụ
+ * thành hàng danh sách. Máy tính và máy tính bảng vẫn dùng LightHero.
+ */
+function PhoneHeroPanel({
+  eyebrow,
+  title,
+  line2,
+  subtitle,
+  stats,
+  primary,
+  links,
+}: {
+  eyebrow: string;
+  title: string;
+  line2: string;
+  subtitle: string;
+  stats: { value: string; label: string }[];
+  primary: { label: string; onPress: () => void };
+  links: { icon: 'clipboard' | 'refresh' | 'book'; label: string; onPress: () => void }[];
+}) {
+  return (
+    <View style={{ borderRadius: 28, padding: 20, ...GLASS } as never}>
+      <CatSticker pose="sunglasses" size={72} style={{ position: 'absolute', top: 4, right: 10 }} />
+      <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.6, color: GOLD.deep }}>
+        {eyebrow}
+      </Text>
+      <Text className="font-heavy" style={{ marginTop: 4, fontSize: 30, lineHeight: 36, color: GOLD.ink }}>
+        {title}
+      </Text>
+      <Text className="font-strong" style={{ marginTop: 6, fontSize: 16, lineHeight: 22, color: GOLD.body }}>
+        {line2}
+      </Text>
+      <Text className="font-sans" style={{ marginTop: 4, fontSize: 13, lineHeight: 19, color: GOLD.muted }}>
+        {subtitle}
+      </Text>
+
+      <View style={{ marginTop: 16, flexDirection: 'row', borderRadius: 18, paddingVertical: 12, backgroundColor: 'rgba(255,255,255,0.45)' }}>
+        {stats.map((s, i) => (
+          <View key={s.label} style={{ flex: 1, alignItems: 'center', borderLeftWidth: i === 0 ? 0 : 1, borderColor: 'rgba(156,133,82,0.2)' }}>
+            <Text className="font-heavy" style={{ fontSize: 18, lineHeight: 24, color: GOLD.ink }}>
+              {s.value}
+            </Text>
+            <Text className="font-sans" style={{ fontSize: 11, lineHeight: 15, color: GOLD.muted }}>
+              {s.label}
+            </Text>
+          </View>
+        ))}
+      </View>
+
+      <Pressable
+        accessibilityRole="button"
+        onPress={primary.onPress}
+        style={({ pressed }) => ({ marginTop: 16, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 8, borderRadius: 999, paddingVertical: 14, ...GOLD_BUTTON, transform: [{ scale: pressed ? 0.98 : 1 }] } as never)}
+      >
+        <Text className="font-heavy" style={{ fontSize: 16, color: GOLD.ink }}>
+          {primary.label}
+        </Text>
+        <Icon name="arrow-right" size={18} color={GOLD.ink} strokeWidth={2.2} />
+      </Pressable>
+
+      <View style={{ marginTop: 12, gap: 8 }}>
+        {links.map((l) => (
+          <Pressable
+            key={l.label}
+            accessibilityRole="button"
+            onPress={l.onPress}
+            style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: 12, borderRadius: 16, paddingHorizontal: 14, minHeight: 50, backgroundColor: 'rgba(255,255,255,0.55)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.9)', opacity: pressed ? 0.8 : 1 } as never)}
+          >
+            <Icon name={l.icon} size={18} color={GOLD.deep} strokeWidth={2} />
+            <Text className="flex-1 font-strong" style={{ fontSize: 15, color: GOLD.ink }}>
+              {l.label}
+            </Text>
+            <Icon name="chevron-right" size={16} color={GOLD.muted} strokeWidth={2.2} />
+          </Pressable>
+        ))}
+      </View>
+    </View>
+  );
+}
+
 function ResultGrid({
   count,
   page,
@@ -494,9 +602,7 @@ function ResultGrid({
       {count === 0 ? (
         <Card>
           <View className="items-center py-6">
-            <View className="h-12 w-12 items-center justify-center rounded-pill bg-canvas">
-              <Icon name="search" size={20} color={color.subtle} />
-            </View>
+            <CatSticker pose="sleep" size={96} />
             <Text className="mt-3 text-center font-sans text-body text-muted">{empty}</Text>
             {onClear ? (
               <Button className="mt-3" label={L('Xoá bộ lọc', 'Clear filters')} variant="outline" onPress={onClear} />
