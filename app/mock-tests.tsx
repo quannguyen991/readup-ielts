@@ -9,6 +9,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Badge, Button, PaperCard, SectionHeader } from '@/components/ui';
 import { filterArticles, type ArticleMeta, topicLabel } from '@/data/articles';
 import { FULL_SET_ARTICLE_IDS } from '@/data/full-question-sets';
+import { LISTENING_TESTS } from '@/data/listening-tests';
 import { formatBand } from '@/lib/band';
 import { usePlan } from '@/store/useBillingStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -17,8 +18,8 @@ import type { PlanId } from '@/lib/billing/plans';
 import { useL } from '@/i18n/useL';
 
 /**
- * Mock test = 3 passage theo đúng cấu trúc IELTS Reading, tăng dần độ khó.
- * Bộ đề sinh cùng cơ chế với Practice, chỉ khác là chấm gộp cả 3 passage.
+ * Mock test gồm đủ hai phần của bài thi: Listening (4 section) rồi Reading (3 passage tăng dần độ khó).
+ * "Đi thi" mở hub /mock-run để làm lần lượt từng phần; "Luyện tập" chỉ mở passage đầu.
  */
 export default function MockTestsScreen() {
   const sessions = useStudyStore((s) => s.sessions);
@@ -40,7 +41,7 @@ export default function MockTestsScreen() {
         badge="IELTS · MOCK TESTS" art="test"
         line1="Mock Tests"
         line2={L('đúng nhịp bài thi thật', 'at the pace of the real exam')}
-        subtitle={L(`${tests.length} đề dựng sẵn, mỗi đề 3 passage trong 60 phút, độ khó tăng dần — không đề nào dùng lại passage của đề khác.`, `${tests.length} ready-made tests, each with 3 passages in 60 minutes, getting harder as you go — no passage is reused across tests.`)}
+        subtitle={L(`${tests.length} đề dựng sẵn, mỗi đề gồm 4 section Listening rồi 3 passage Reading (60 phút), độ khó tăng dần — không đề nào dùng lại passage của đề khác.`, `${tests.length} ready-made tests: 4 Listening sections, then 3 Reading passages (60 minutes), getting harder as you go — no passage is reused across tests.`)}
         footer={
           <>
             <HeroStat value={String(mockSessions.length)} label={L('đã thi thử', 'mocks taken')} />
@@ -105,6 +106,13 @@ export default function MockTestsScreen() {
  * trong năm tháng.
  */
 export const MOCK_TEST_COUNT = 50;
+
+/**
+ * Đề Listening đầy đủ (4 section) ghép vào từng Mock Test. Khi số đề thi nhiều hơn số đề nghe,
+ * các đề sau dùng lại đề nghe từ đầu; hub tra trạng thái theo đường dẫn của từng đề thi nên hai
+ * đề cùng một bài nghe vẫn có tiến độ riêng.
+ */
+const FULL_LISTENING = LISTENING_TESTS.filter((t) => t.sections.length >= 4);
 
 /**
  * Dựng 50 đề, mỗi đề 3 passage theo đúng cấu trúc IELTS Reading.
@@ -205,6 +213,9 @@ function MockTestCard({
   const { L } = useL();
   const minutes = test.reduce((sum, a) => sum + (a.estMinutes ?? 0), 0);
   const paid = plan !== 'free';
+  // Bài nghe gắn theo số thứ tự thẻ, nên mỗi đề luôn ra cùng một bộ Listening và Reading.
+  const listening = FULL_LISTENING[index % FULL_LISTENING.length];
+  const hubHref = `/mock-run?n=${index + 1}&l=${listening?.id ?? ''}&r=${test.map((a) => a.id).join(',')}`;
 
   return (
     <View
@@ -230,7 +241,7 @@ function MockTestCard({
             <Chip label={L(`~${minutes} phút đọc`, `~${minutes} min reading`)} tone="neutral" />
           </View>
           <Text className="mt-2 font-sans text-label text-muted">
-            {L('Ba passage, độ khó tăng dần — đúng nhịp bài thi thật.', 'Three passages, rising difficulty — just like the real exam.')}
+            {L('Listening 4 section, rồi Reading 3 passage tăng dần độ khó — đúng thứ tự bài thi thật.', 'Listening in 4 sections, then 3 Reading passages of rising difficulty — the real exam order.')}
           </Text>
         </View>
       </View>
@@ -286,7 +297,7 @@ function MockTestCard({
           label={L('Đi thi', 'Take test')}
           size="sm"
           iconLeft={paid ? 'clock' : 'clock'}
-          onPress={() => router.push(`/read/${test[0]!.id}` as never)}
+          onPress={() => router.push(hubHref as never)}
         />
       </View>
 

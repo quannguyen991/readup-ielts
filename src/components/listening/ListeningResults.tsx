@@ -18,7 +18,7 @@ import { useL } from '@/i18n/useL';
  * giọng nếu có mốc thời gian) — chạm vào từ để tra và lưu vào Sổ từ.
  */
 export function ListeningResults({
-  testTitle, sections, score, total, results, mode, durationSec, onRetry, onLibrary,
+  testTitle, sections, score, total, results, mode, durationSec, onRetry, onLibrary, libraryLabel,
 }: {
   testTitle: string;
   sections: ListeningSection[];
@@ -29,6 +29,8 @@ export function ListeningResults({
   durationSec: number;
   onRetry: () => void;
   onLibrary: () => void;
+  /** Nhãn nút quay lại; để trống thì là "Thư viện". Trong Mock Test đổi thành "Về thi thử". */
+  libraryLabel?: string;
 }) {
   const { L } = useL();
   const { width } = useWindowDimensions();
@@ -69,7 +71,7 @@ export function ListeningResults({
           ) : null}
           <View className="mt-4 flex-row flex-wrap gap-2">
             <Button label={L('Luyện lại', 'Try again')} iconLeft="refresh" onPress={onRetry} />
-            <Button label={L('Thư viện', 'Library')} variant="outline" iconLeft="list" onPress={onLibrary} />
+            <Button label={libraryLabel ?? L('Thư viện', 'Library')} variant="outline" iconLeft="list" onPress={onLibrary} />
             <Button label={L('Sổ từ', 'Word book')} variant="outline" iconLeft="bookmark" onPress={() => router.push('/vocabulary' as never)} />
           </View>
         </View>

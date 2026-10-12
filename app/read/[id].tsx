@@ -50,7 +50,8 @@ import { useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveGuard } from 
  * "khoanh bằng chứng" ở câu hỏi thì tự chuyển sang thẻ Bài đọc.
  */
 export default function ReadScreen() {
-  const { id, types, mode } = useLocalSearchParams<{ id: string; types?: string; mode?: string }>();
+  // `from`: hub Mock Test gọi sang. Có nó thì bài này là một passage của thi thử.
+  const { id, types, mode, from } = useLocalSearchParams<{ id: string; types?: string; mode?: string; from?: string }>();
   const { L, en } = useL();
 
   /*
@@ -581,7 +582,8 @@ export default function ReadScreen() {
       articleId: article.id,
       articleTitle: article.title,
       exam: article.exam,
-      mode: 'practice',
+      mode: from ? 'mock_test' : 'practice',
+      mockKey: from || undefined,
       rawScore: correct,
       total: attempts.length,
       accuracy: attempts.length === 0 ? 0 : Math.round((correct / attempts.length) * 100),
@@ -611,7 +613,9 @@ export default function ReadScreen() {
     }
 
     setSubmitting(false);
-    router.push(`/review/${sessionId}` as never);
+    // Trong Mock Test thì về hub để làm phần kế tiếp; bài chấm xem lại được từ hub.
+    if (from) router.replace(from as never);
+    else router.push(`/review/${sessionId}` as never);
   };
 
   const lay = examLayout(winW, winH);

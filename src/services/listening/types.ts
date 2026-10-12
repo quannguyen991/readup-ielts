@@ -88,6 +88,11 @@ export type ListeningAttempt = {
   section: number | null;
   task?: ListeningGroupType | null;
   mode: 'practice' | 'real';
+  /**
+   * Đường dẫn hub (/mock-run?…) của Mock Test đã làm lượt này; để trống là làm lẻ.
+   * Hub so khớp đúng đường dẫn này, không chỉ mã đề, vì một bài nghe có thể nằm trong nhiều Mock Test.
+   */
+  mock?: string;
   startedAt: string;
   finishedAt: string;
   durationSec: number;

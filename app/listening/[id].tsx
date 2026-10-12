@@ -32,7 +32,7 @@ type Phase = 'ready' | 'taking' | 'done';
 
 export default function ListeningExamScreen() {
   const { L } = useL();
-  const { id, s, task, attempt } = useLocalSearchParams<{ id: string; s?: string; task?: string; attempt?: string }>();
+  const { id, s, task, attempt, from } = useLocalSearchParams<{ id: string; s?: string; task?: string; attempt?: string; from?: string }>();
   const test = typeof id === 'string' ? getListeningTest(id) : undefined;
   if (!test) {
     return (
@@ -44,10 +44,14 @@ export default function ListeningExamScreen() {
       </SafeAreaView>
     );
   }
-  return <Exam key={`${test.id}-${s ?? 'all'}-${task ?? 'all'}-${attempt ?? ''}`} test={test} sectionParam={s} taskParam={task} attemptId={attempt} />;
+  return <Exam key={`${test.id}-${s ?? 'all'}-${task ?? 'all'}-${attempt ?? ''}`} test={test} sectionParam={s} taskParam={task} attemptId={attempt} from={from} />;
 }
 
-function Exam({ test, sectionParam, taskParam, attemptId }: { test: ListeningTest; sectionParam?: string; taskParam?: string; attemptId?: string }) {
+/**
+ * `from`: đường dẫn trang gọi (hub Mock Test). Có nó thì lượt này là một phần của thi thử:
+ * đánh dấu `mock`, và mọi nút quay lại đưa người học về đúng hub.
+ */
+function Exam({ test, sectionParam, taskParam, attemptId, from }: { test: ListeningTest; sectionParam?: string; taskParam?: string; attemptId?: string; from?: string }) {
   const { L } = useL();
   const { width } = useWindowDimensions();
   const wide = width >= 1024;
@@ -255,6 +259,7 @@ function Exam({ test, sectionParam, taskParam, attemptId }: { test: ListeningTes
       section: sectionArg ?? null,
       task: taskType,
       mode: real ? 'real' : 'practice',
+      mock: from || undefined,
       startedAt: new Date(Date.now() - durationSec * 1000).toISOString(),
       finishedAt: new Date().toISOString(),
       durationSec,
@@ -288,7 +293,7 @@ function Exam({ test, sectionParam, taskParam, attemptId }: { test: ListeningTes
 
   const exit = () => {
     if (phase === 'taking' && answered.size > 0) setConfirm('exit');
-    else router.replace('/listening' as never);
+    else router.replace((from ?? '/listening') as never);
   };
 
   const unanswered = allNumbers.length - answered.size;
@@ -508,7 +513,8 @@ function Exam({ test, sectionParam, taskParam, attemptId }: { test: ListeningTes
               mode={finalMeta?.mode ?? 'practice'}
               durationSec={finalMeta?.durationSec ?? 0}
               onRetry={retry}
-              onLibrary={() => router.replace('/listening' as never)}
+              onLibrary={() => router.replace((from ?? '/listening') as never)}
+              libraryLabel={from ? L('Về thi thử', 'Back to mock test') : undefined}
             />
           </View>
         </ScrollView>
@@ -571,7 +577,7 @@ function Exam({ test, sectionParam, taskParam, attemptId }: { test: ListeningTes
               onPress={() => {
                 if (confirm === 'exit') {
                   allowLeave();
-                  router.replace('/listening' as never);
+                  router.replace((from ?? '/listening') as never);
                 } else finish();
               }}
             />

@@ -42,6 +42,11 @@ export type TestSession = {
   /** Kỳ thi của bài đã làm — quyết định lượt này có quy ra band được hay không. */
   exam: ExamKind;
   mode: 'practice' | 'mock_test';
+  /**
+   * Đường dẫn hub của Mock Test chứa passage này; chỉ có ở lượt thi thử. Hub so khớp theo nó để
+   * một passage dùng lại ở đề khác (Đổi bộ đề) không bị tính là đã làm.
+   */
+  mockKey?: string;
   rawScore: number;
   total: number;
   accuracy: number;
