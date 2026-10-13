@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform, View, type ViewProps } from 'react-native';
 
 import { shadow } from '@/theme/tokens';
+import { useDesktopGold } from '@/components/layout/gold-skin';
+import { GLASS } from '@/components/layout/phone-theme';
 
 type CardProps = ViewProps & {
   /** 'flat' bỏ đổ bóng, dùng cho card lồng trong card. */
@@ -21,10 +23,12 @@ export function Card({
   children,
   ...rest
 }: CardProps) {
+  // Máy tính giữ bảng màu mặc định: thẻ raised thành kính ngà như điện thoại; thẻ lồng (flat) giữ nguyên.
+  const gold = useDesktopGold();
   return (
     <View
       className={[
-        'rounded-card border border-border bg-surface',
+        gold && variant === 'raised' ? 'rounded-card' : 'rounded-card border border-border bg-surface',
         padded ? 'p-4' : '',
         className ?? '',
       ]
@@ -35,6 +39,7 @@ export function Card({
         variant === 'raised' && Platform.OS === 'web'
           ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.05)' } as never)
           : null,
+        gold && variant === 'raised' ? (GLASS as never) : null,
         style,
       ]}
       {...rest}

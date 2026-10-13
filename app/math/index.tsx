@@ -85,7 +85,7 @@ export default function MathScreen() {
   const nextSet = useMemo(() => findNextSet(doneSetIds), [doneSetIds]);
 
   return (
-    <Screen>
+    <Screen cat="sunglasses">
       <HubTitle eyebrow="DIGITAL SAT" title="SAT Math" line={L('13 unit theo lộ trình Nền tảng → Trung bình → Nâng cao.', '13 course units from Foundations → Medium → Advanced.')} />
       <HubLinkRow links={MATH_HUB_LINKS} />
 

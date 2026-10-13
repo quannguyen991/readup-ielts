@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { GoldHighlight } from '@/components/layout/GoldHighlight';
 import { PhoneIntro } from '@/components/home/PhoneIntro';
+import { PerchCat } from '@/components/mascot/PerchCat';
 import { Image, Platform, Text, View, useWindowDimensions, type ImageSourcePropType } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -285,7 +286,7 @@ export default function IntroScreen() {
           chữ phải lật từ trắng sang mực, và hai nút bỏ variant "trên nền tối".
           Đổi nền mà giữ chữ trắng thì câu tiêu đề biến mất — đổi thì phải đổi cả cặp.
         */}
-        <View style={{ position: 'relative', width: '100%' }}>
+        <View style={{ position: 'relative', width: '100%', paddingTop: wide ? 92 : 0 }}>
         <View style={HERO_FRAME}>
           <View style={{ flex: 1, position: 'relative' }}>
           <GridBackdrop colors={palette.study} line={palette.studyLine} blobs={[palette.study[0], palette.study[2]]} showGrid={false}>
@@ -359,6 +360,7 @@ export default function IntroScreen() {
           </View>
           <LightSweep />
         </View>
+        {wide && !chiikawaTheme ? <PerchCat pose="sit" size={100} side="right" inset={120} offset={92} /> : null}
         {chiikawaTheme && wide ? (
           <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', inset: 0, zIndex: 6 }}>
             <Image
@@ -565,10 +567,16 @@ const CHIIKAWA_AREA_COLORS: readonly (readonly [string, string])[] = [
   ['#F8D4DE', '#C65A78'], ['#F5B8CC', '#A64462'], ['#F9C6D6', '#C65A78'],
 ];
 
+/** Tư thế mèo bám lên mép trên của từng thẻ mảng (theo thứ tự thẻ). */
+const AREA_CAT_POSE = ['sit', 'hangingPaws', 'curl', 'peeking', 'stretch', 'lie'] as const;
+
 function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaTheme: boolean; colorIndex: number }) {
   const { locale } = useL();
   const colors = chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : area.colors;
+  // Theme mặc định: mèo bám lên mép trên thẻ. Theme Chiikawa đã có nhân vật riêng trên thẻ.
+  const perch = !chiikawaTheme;
   return (
+    <View style={{ flex: 1, position: 'relative', paddingTop: perch ? 44 : 0 }}>
     <PressScale fill onPress={() => enterApp(area.href)} style={{ flex: 1 }}>
       <StickerCard bold colors={colors} style={{ flex: 1 }} ornament={<GlowStars />}>
         <View style={{ height: chiikawaTheme ? 112 : 48, position: 'relative' }}>
@@ -618,6 +626,8 @@ function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaThe
         </View>
       </StickerCard>
     </PressScale>
+    {perch ? <PerchCat pose={AREA_CAT_POSE[colorIndex % AREA_CAT_POSE.length] ?? 'sit'} size={64} side={colorIndex % 2 ? 'left' : 'right'} inset={28} offset={44} /> : null}
+    </View>
   );
 }
 

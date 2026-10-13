@@ -195,7 +195,7 @@ export default function ProgressScreen() {
   };
 
   return (
-    <Screen>
+    <Screen cat="sit">
       <HeroBanner
         title={L('Tiến độ của bạn', 'Your progress')}
         subtitle={L('Theo dõi kết quả, giữ nhịp đều, và biết chính xác nên luyện dạng nào tiếp theo.', 'Track your results, keep a steady rhythm, and know exactly what to practise next.')}

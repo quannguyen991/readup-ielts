@@ -25,6 +25,7 @@ import { GoldHighlight } from './GoldHighlight';
 import { useRetroStyle } from '@/components/profile-retro/retro-scope';
 import { RCREAM, RINK } from '@/components/profile-retro/retro-art';
 import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
+import { PerchCat } from '@/components/mascot/PerchCat';
 
 /**
  * Hero nền lưới sáng — kiểu đang dùng ở trang chủ, nay dùng chung.
@@ -79,6 +80,10 @@ export function LightHero({
   // Cụm minh hoạ chỉ hiện khi màn đủ rộng; máy tính bảng dựng đứng / điện
   // thoại bỏ hẳn để tiêu đề không bị ép xuống dòng (người dùng 01/10/2026).
   const art = width >= HEADER_ART_MIN;
+  // Mèo mặc định: mọi hero đều có mèo, trừ theme Chiikawa và giao diện retro (đã có nhân vật riêng).
+  const petCat: CatPose | undefined = cat ?? (chiikawaTheme || retro ? undefined : heroCatFor(badge));
+  // Máy tính, hero không truyền `cat`: mèo bám lên mép trên khung, nên cần đệm để không bị che.
+  const perchTop = wide && !cat && !!petCat;
 
   /*
     Bọc thêm một HÀNG NGANG quanh nền: `GridBackdrop` lấy cả khung bằng
@@ -86,6 +91,7 @@ export function LightHero({
     hàng ngang, flex-1 ăn theo bề ngang còn chiều cao do nội dung quyết định.
   */
   return (
+    <View style={{ position: 'relative', paddingTop: perchTop ? 66 : 0 }}>
     <View
       style={
         retro
@@ -110,10 +116,11 @@ export function LightHero({
         blobs={retro ? ([RCREAM, RCREAM] as never) : [palette.study[0], palette.study[2]]}
         showGrid={false}
       >
-        {phone && cat ? <CatSticker pose={cat} size={84} style={{ position: 'absolute', top: 14, right: 14 }} /> : null}
+        {phone && petCat ? <CatSticker pose={petCat} size={84} style={{ position: 'absolute', top: 14, right: 14 }} /> : null}
         {art ? (
           <View style={{ position: 'absolute', top: 0, bottom: 0, right: 36, justifyContent: 'center' }}>
-            <HeroArt scene={artScene ?? scene} size={150} />
+            {/* Trang có mèo sticker thì đặt mèo vào chỗ minh hoạ, giống bản điện thoại. */}
+            {cat ? <CatSticker pose={cat} size={150} /> : <HeroArt scene={artScene ?? scene} size={150} />}
           </View>
         ) : null}
         <View
@@ -121,7 +128,7 @@ export function LightHero({
             paddingHorizontal: wide ? 40 : phone ? 18 : 22,
             paddingVertical: wide ? 52 : phone ? 18 : 30,
             // Chừa chỗ bên phải cho ngôi sao, để chữ không chạy đè lên nó.
-            paddingRight: art ? 440 : wide ? 40 : phone ? (cat ? 104 : 18) : 22,
+            paddingRight: art ? 440 : wide ? 40 : phone ? (petCat ? 104 : 18) : 22,
           }}
         >
           <Badge label={badge} tone="neutral" shape="tag" />
@@ -149,7 +156,18 @@ export function LightHero({
       </GridBackdrop>
       <LightSweep />
     </View>
+    {perchTop ? <PerchCat pose={petCat as CatPose} size={70} side="right" inset={70} offset={66} /> : null}
+    </View>
   );
+}
+
+/** Mèo mặc định của hero: cùng một trang luôn có cùng một con (chọn theo nhãn khối). */
+const HERO_CATS: CatPose[] = ['read', 'headphones', 'think', 'write', 'cheer', 'wave', 'sunglasses', 'peace'];
+
+function heroCatFor(badge: string): CatPose {
+  let h = 0;
+  for (let i = 0; i < badge.length; i += 1) h = (h * 31 + badge.charCodeAt(i)) >>> 0;
+  return HERO_CATS[h % HERO_CATS.length] ?? 'read';
 }
 
 /**

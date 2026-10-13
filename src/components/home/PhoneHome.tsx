@@ -4,6 +4,7 @@ import { router } from 'expo-router';
 
 import { NavSheet } from '@/components/layout/TopBar';
 import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
+import { PerchCat } from '@/components/mascot/PerchCat';
 import { CUTE_FONT } from '@/components/cute-home/palette';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { GLASS, GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
@@ -71,6 +72,9 @@ function StatColumn({ icon, value, label, onPress }: { icon: IconName; value: st
   );
   return onPress ? <Pressable accessibilityRole="button" onPress={onPress} style={{ flex: 1 }}>{body}</Pressable> : <View style={{ flex: 1 }}>{body}</View>;
 }
+
+/** Mèo bám lên mép trên của từng ô kỹ năng (mỗi ô một tư thế riêng). */
+const PERCH: Partial<Record<string, CatPose>> = { reading: 'sit', listening: 'hangingPaws', writing: 'curl', speaking: 'peeking' };
 
 export function PhoneHome(p: PhoneHomeProps) {
   const { L, en } = p;
@@ -147,7 +151,7 @@ export function PhoneHome(p: PhoneHomeProps) {
         </View>
 
         {/* Lưới bốn kỹ năng */}
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 24, marginBottom: 12 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 24, marginBottom: 50 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexShrink: 1 }}>
             <CatSticker pose="think" size={40} />
             <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 18, lineHeight: 24, color: GOLD.ink, flexShrink: 1 }}>{L('Gợi ý cho bước tiếp theo', 'Made for your next step')}</Text>
@@ -156,7 +160,7 @@ export function PhoneHome(p: PhoneHomeProps) {
             <Text style={{ fontFamily: CUTE_FONT.semi, fontSize: 13, color: GOLD.deep }}>{L('Xem tất cả ›', 'See all ›')}</Text>
           </Pressable>
         </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 12 }}>
+        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', rowGap: 50 }}>
           {SKILLS.map((s) => (
             <Pressable
               key={s.key}
@@ -167,6 +171,7 @@ export function PhoneHome(p: PhoneHomeProps) {
             >
               <View style={[{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, borderRadius: 26 }, GLASS] as never} />
               {s.cat ? <CatSticker pose={s.cat.pose} size={s.cat.size} style={{ position: 'absolute', top: s.cat.top, right: s.cat.right }} /> : null}
+              {PERCH[s.key] ? <PerchCat pose={PERCH[s.key] as CatPose} size={58} side="right" inset={14} /> : null}
               <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: GOLD.tint, alignItems: 'center', justifyContent: 'center' }}>
                 <Icon name={s.icon} size={20} color={GOLD.deep} strokeWidth={2} />
               </View>

@@ -27,6 +27,10 @@ import { useVocabStore } from '@/store/useVocabStore';
 import { useSearchStore } from '@/store/useSearchStore';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { useRoadmapStore } from '@/store/useRoadmapStore';
+import { PerchCat } from '@/components/mascot/PerchCat';
+
+/** Tư thế mèo bám lên các ô khu vực trên máy tính, lần lượt theo ô. */
+const AREA_PERCH = ['sit', 'curl', 'lie', 'stretch'] as const;
 
 /*
   Trang chủ kiểu nhân vật — bản thử giao diện cho Band 9.
@@ -364,7 +368,7 @@ export default function CuteHomeScreen() {
         <View style={{ flexDirection: wide ? 'row' : 'column', gap: wide ? 28 : 8, alignItems: 'flex-start' }}>
           <View style={{ flex: wide ? 1 : undefined, width: wide ? undefined : '100%', minWidth: 0, flexDirection: 'row', flexWrap: 'wrap', marginHorizontal: -8 }}>
             {areas.map((a, i) => (
-              <View key={a.key} style={{ width: `${100 / cols}%`, padding: 8 }}>
+              <View key={a.key} style={{ width: `${100 / cols}%`, paddingHorizontal: 8, paddingBottom: 8, paddingTop: wide ? 46 : 40, position: 'relative' }}>
                 <Pressable
                   accessibilityRole="button"
                   accessibilityLabel={`${a.title}. ${a.line}`}
@@ -397,6 +401,7 @@ export default function CuteHomeScreen() {
                   <Text style={{ fontFamily: F.heavy, fontSize: 22, lineHeight: 28, color: C.ink }}>{a.title}</Text>
                   <Text style={{ fontFamily: F.semi, fontSize: 15, lineHeight: 22, color: C.inkSoft, marginTop: 2 }}>{a.line}</Text>
                 </Pressable>
+              <PerchCat pose={AREA_PERCH[i % AREA_PERCH.length] ?? 'sit'} size={wide ? 68 : 58} side={i % 2 ? 'left' : 'right'} inset={wide ? 30 : 20} offset={wide ? 46 : 40} />
               </View>
             ))}
           </View>

@@ -23,7 +23,7 @@ export default function HistoryIndex() {
   const progress = useHistoryStore((s) => s.topics);
 
   return (
-    <Screen>
+    <Screen cat="read">
       <View style={{ gap: 6, marginBottom: 16 }}>
         <Eyebrow>{L('Khám phá', 'Explore')}</Eyebrow>
         <Text accessibilityRole="header" style={{ fontFamily: readingFont.sansHeavy, fontSize: 32, lineHeight: 38, letterSpacing: -0.6, color: H.ink }}>

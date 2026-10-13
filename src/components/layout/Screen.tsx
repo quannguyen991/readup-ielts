@@ -1,21 +1,26 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View, useWindowDimensions } from 'react-native';
 
 import { layout } from '@/theme/tokens';
+import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
 
 type ScreenProps = {
   children: React.ReactNode;
   /** Tắt scroll khi màn hình tự quản lý vùng cuộn (ví dụ màn hình đọc 2 cột). */
   scroll?: boolean;
+  /** Mèo ngồi ở góc trên phải của trang; đệm thêm phía trên để mèo không che nút đầu trang. */
+  cat?: CatPose;
 };
 
 /** Vùng nội dung của mọi trang: nền xám nhạt, padding và bề rộng tối đa thống nhất. */
-export function Screen({ children, scroll = true }: ScreenProps) {
+export function Screen({ children, scroll = true, cat }: ScreenProps) {
+  const wide = useWindowDimensions().width >= 1024;
   const inner = (
     <View
       className="w-full self-center px-4 py-4 lg:px-6 lg:py-6"
-      style={{ maxWidth: layout.contentMaxWidth }}
+      style={{ maxWidth: layout.contentMaxWidth, position: 'relative', ...(cat ? { paddingTop: wide ? 96 : 80 } : null) }}
     >
+      {cat ? <CatSticker pose={cat} size={wide ? 76 : 64} style={{ position: 'absolute', top: wide ? 8 : 4, right: wide ? 28 : 16 }} /> : null}
       {children}
     </View>
   );

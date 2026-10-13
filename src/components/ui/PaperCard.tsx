@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform, View, type ViewProps } from 'react-native';
 
 import { shadow } from '@/theme/tokens';
+import { useDesktopGold } from '@/components/layout/gold-skin';
+import { GLASS } from '@/components/layout/phone-theme';
 
 /**
  * Thẻ giấy kem nổi trên nền xanh tím.
@@ -25,10 +27,12 @@ export function PaperCard({
   /** Ghi đè sau bóng đổ, giống `Card` — dùng cho bề ngang tối đa, đệm riêng. */
   style?: ViewProps['style'];
 }) {
+  // Máy tính giữ bảng màu mặc định: thẻ kính ngà như điện thoại, thay cho tờ giấy kem.
+  const gold = useDesktopGold();
   return (
     <View
-      className={['rounded-card bg-paper', padded ? 'p-5' : '', className].join(' ')}
-      style={[Platform.OS === 'web' ? webShadow : shadow.card, style]}
+      className={['rounded-card', gold ? '' : 'bg-paper', padded ? 'p-5' : '', className].join(' ')}
+      style={[gold ? (GLASS as never) : Platform.OS === 'web' ? webShadow : shadow.card, style]}
     >
       {children}
     </View>

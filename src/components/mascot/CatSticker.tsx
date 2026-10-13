@@ -9,7 +9,7 @@ import { Image, View } from 'react-native';
  * Vị trí do chỗ gọi đặt bằng `style` (thường `position: 'absolute'` để bám viền hoặc
  * ngồi trên một thẻ).
  */
-export type CatPose = 'sunglasses' | 'headphones' | 'hangingPaws' | 'peeking' | 'peace' | 'angry' | 'sleep' | 'wave' | 'think' | 'write' | 'read' | 'cheer';
+export type CatPose = 'sunglasses' | 'headphones' | 'hangingPaws' | 'peeking' | 'peace' | 'angry' | 'sleep' | 'wave' | 'think' | 'write' | 'read' | 'cheer' | 'sit' | 'lie' | 'stretch' | 'jump' | 'curl' | 'clingHang' | 'clingPeek' | 'clingWave' | 'clingSit' | 'clingLie' | 'clingClimb';
 
 const SOURCES: Record<CatPose, number> = {
   sunglasses: require('../../../assets/illustrations/cats/cat-1.png'),
@@ -24,6 +24,17 @@ const SOURCES: Record<CatPose, number> = {
   write: require('../../../assets/illustrations/cats/write.png'),
   read: require('../../../assets/illustrations/cats/read.png'),
   cheer: require('../../../assets/illustrations/cats/cheer.png'),
+  sit: require('../../../assets/illustrations/cats/pose-sit.png'),
+  lie: require('../../../assets/illustrations/cats/pose-lie.png'),
+  stretch: require('../../../assets/illustrations/cats/pose-stretch.png'),
+  jump: require('../../../assets/illustrations/cats/pose-jump.png'),
+  curl: require('../../../assets/illustrations/cats/pose-curl.png'),
+  clingHang: require('../../../assets/illustrations/cats/cling-hang.png'),
+  clingPeek: require('../../../assets/illustrations/cats/cling-peek.png'),
+  clingWave: require('../../../assets/illustrations/cats/cling-wave.png'),
+  clingSit: require('../../../assets/illustrations/cats/cling-sit.png'),
+  clingLie: require('../../../assets/illustrations/cats/cling-lie.png'),
+  clingClimb: require('../../../assets/illustrations/cats/cling-climb.png'),
 };
 
 /** `size` là cạnh của ô vuông chứa mèo; mèo được co vừa ô, giữ đúng tỉ lệ. */

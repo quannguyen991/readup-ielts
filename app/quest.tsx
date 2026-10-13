@@ -50,7 +50,7 @@ export default function QuestHome() {
   const wide = w >= 900;
 
   return (
-    <Screen>
+    <Screen cat="cheer">
       <View onLayout={onLayout} style={{ width: '100%', maxWidth: MAX_W, alignSelf: 'center', paddingBottom: 28 }}>
         {/* 0. Du ngoạn Band 9 — thẻ ghim */}
         <Appear>

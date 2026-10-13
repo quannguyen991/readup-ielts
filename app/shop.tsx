@@ -252,7 +252,7 @@ export default function ShopScreen() {
   const freezeOwned = SHOP_ITEMS.filter((i) => i.kind === 'freeze' && (reward.owned[i.id] ?? 0) > 0);
 
   return (
-    <Screen>
+    <Screen cat="wave">
       <Appear>
         <View className="flex-row items-center gap-3">
         <View className="min-w-0 flex-1">

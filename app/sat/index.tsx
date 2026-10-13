@@ -80,7 +80,7 @@ export default function SatHubScreen() {
   const nextId = hydrated ? (SAT_PATH_STEPS.find((s) => !started[s.id])?.id ?? null) : null;
 
   return (
-    <Screen>
+    <Screen cat="think">
       <View className="w-full self-center" style={{ maxWidth: 1080 }}>
         <HubTitle
           eyebrow="DIGITAL SAT"

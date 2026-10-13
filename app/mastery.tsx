@@ -89,7 +89,7 @@ export default function MasteryScreen() {
   }, [records]);
 
   return (
-    <Screen>
+    <Screen cat="peace">
       <View className="self-start rounded-pill border border-border bg-surface px-3 py-1.5">
         <Text className="font-semi uppercase tracking-wide text-muted" style={{ fontSize: 12 }}>
           {t('mastery.eyebrow')}

@@ -231,7 +231,7 @@ export default function LearningPathScreen() {
   );
 
   return (
-    <Screen>
+    <Screen cat="write">
       <View style={{ paddingBottom: 40 }}>
         {/* ------------------------------------------------ đầu trang */}
         <Appear>
