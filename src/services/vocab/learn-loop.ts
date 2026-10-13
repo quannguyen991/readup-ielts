@@ -13,12 +13,12 @@
  *
  * XEN KẼ (mặc định): trong phạm vi dạng hợp với mức của từ, câu sau luôn cố khác
  * dạng câu trước; từ mới đưa vào dần xen giữa các lần gặp lại, không dồn một dãy
- * thẻ lật ở đầu. TUẦN TỰ: mỗi từ đi đúng thứ tự trắc nghiệm → điền câu → gõ từ.
+ * thẻ lật ở đầu. TUẦN TỰ: mỗi từ đi đúng thứ tự trắc nghiệm → gõ từ.
  */
 import { activeKinds, type StageKind } from './topic-study';
 
 /** Các dạng luyện (không tính lật thẻ), từ dễ tới khó. */
-export const PRACTICE_ORDER: readonly StageKind[] = ['mcq', 'fill', 'type'];
+export const PRACTICE_ORDER: readonly StageKind[] = ['mcq', 'type'];
 
 /** Sai thì gặp lại sau bấy nhiêu câu. */
 export const GAP_WRONG = 2;

@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 
-import { TappableSentence } from "@/components/lookup/TapWord";
+import { ExampleSentence } from "@/components/vocab/ExampleSentence";
 import { Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Appear } from "@/components/motion/Motion";
 import { posIpa } from "@/data/study-decks";
@@ -423,17 +423,6 @@ export function ChoiceGrid({
   );
 }
 
-/** Câu ví dụ với từ đang học in đậm; chạm vào từ nào cũng ra nghĩa (không cần AI). */
-export function ExampleLine({
-  example,
-  word,
-}: {
-  example: string;
-  word: string;
-}) {
-  return <TappableSentence text={example} highlight={word} />;
-}
-
 /** Tách chuỗi "cụm 1, cụm 2; cụm 3" thành các chip. */
 function splitList(s: string | undefined): string[] {
   return (s ?? "")
@@ -527,8 +516,8 @@ export function FeedbackPanel({
             </FbRow>
           ) : null}
           {word.example ? (
-            <FbRow label={L("Ví dụ", "Example")} right={<SpeakButton text={word.example} small />}>
-              <ExampleLine example={word.example} word={word.word} />
+            <FbRow label={L("Ví dụ", "Example")}>
+              <ExampleSentence example={word.example} word={word.word} />
             </FbRow>
           ) : null}
           <ChipRow label={L("Đồng nghĩa", "Synonyms")} items={(word.synonyms ?? []).slice(0, 5)} />

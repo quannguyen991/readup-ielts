@@ -3,6 +3,7 @@ import { ScrollView, Text, View, useWindowDimensions } from 'react-native';
 
 import { layout } from '@/theme/tokens';
 import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
+import { useRewardStore } from '@/store/useRewardStore';
 
 type ScreenProps = {
   children: React.ReactNode;
@@ -15,12 +16,16 @@ type ScreenProps = {
 /** Vùng nội dung của mọi trang: nền xám nhạt, padding và bề rộng tối đa thống nhất. */
 export function Screen({ children, scroll = true, cat }: ScreenProps) {
   const wide = useWindowDimensions().width >= 1024;
+  // Giao diện Chiikawa: trên màn hình rộng, trang nào cũng có một con mèo ngồi góc phải (kể cả trang không truyền `cat`).
+  // Điện thoại không tự thêm mèo: đã có mèo bám thanh tab, thêm nữa thì rối.
+  const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
+  const pose: CatPose | undefined = cat ?? (chiikawa && wide ? 'sit' : undefined);
   const inner = (
     <View
       className="w-full self-center px-4 py-4 lg:px-6 lg:py-6"
-      style={{ maxWidth: layout.contentMaxWidth, position: 'relative', ...(cat ? { paddingTop: wide ? 96 : 80 } : null) }}
+      style={{ maxWidth: layout.contentMaxWidth, position: 'relative', ...(pose ? { paddingTop: wide ? 96 : 80 } : null) }}
     >
-      {cat ? <CatSticker pose={cat} size={wide ? 76 : 64} style={{ position: 'absolute', top: wide ? 8 : 4, right: wide ? 28 : 16 }} /> : null}
+      {pose ? <CatSticker pose={pose} size={wide ? 76 : 64} style={{ position: 'absolute', top: wide ? 8 : 4, right: wide ? 28 : 16 }} /> : null}
       {children}
     </View>
   );

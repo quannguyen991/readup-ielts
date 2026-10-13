@@ -206,8 +206,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
       </View>
       <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
-      {/* Đàn mèo đi dạo trên nền vàng kim: nằm trên nội dung, dưới thanh tab nổi. */}
-      {goldSkin && !retro && !pageBg && !isQuestRoute ? (
+      {/* Đàn mèo đi dạo trên nền vàng kim (chỉ máy tính): trên điện thoại mèo đã bám ở thanh tab, thêm đàn đi dạo thì rối. */}
+      {goldSkin && !retro && !pageBg && !isQuestRoute && !phone ? (
         <WalkingCats bottom={phone ? 74 : 14} left={viewportWidth >= 1024 ? SIDEBAR_WIDTH[collapsed ? 'collapsed' : 'expanded'] : 0} variant={phone ? 'phone' : 'desktop'} />
       ) : null}
       <BottomTabs />

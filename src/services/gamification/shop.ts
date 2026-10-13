@@ -332,8 +332,8 @@ export const SHOP_ITEMS: ShopItem[] = [
     id: 'theme-chiikawa',
     kind: 'theme',
     name: 'Chiikawa · Góc học hồng',
-    detail: 'Mở khóa giao diện hồng sữa, nền caro và mascot Chiikawa trên thanh tác vụ cùng các màn hình.',
-    price: 500,
+    detail: 'Miễn phí cho mọi người: giao diện hồng sữa, nền caro, mèo đi dạo và mascot Chiikawa trên thanh tác vụ.',
+    price: 0,
     glyph: '🎀',
     repeatable: false,
     themeLook: 'chiikawa',
@@ -410,7 +410,8 @@ export function balanceOf(lifetimeEarned: number, spent: number): number {
  */
 export function spendIdeas(balance: number, owned: Record<string, number>): { now: ShopItem[]; next: ShopItem | null } {
   const skip: ShopItemKind[] = ['plan', 'powerup', 'freeze'];
-  const candidates = SHOP_ITEMS.filter((i) => !skip.includes(i.kind) && (owned[i.id] ?? 0) === 0);
+  // Món giá 0 (miễn phí) không phải thứ để đổi sao, nên không gợi ý.
+  const candidates = SHOP_ITEMS.filter((i) => !skip.includes(i.kind) && i.price > 0 && (owned[i.id] ?? 0) === 0);
   const bestByKind = new Map<ShopItemKind, ShopItem>();
   for (const i of candidates) {
     if (i.price > balance) continue;

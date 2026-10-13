@@ -95,7 +95,7 @@ export default function LeaderboardScreen() {
   const me = userId ? userId.slice(0, 8) : null;
 
   return (
-    <Screen>
+    <Screen cat="cheer">
       {demo ? (
         <View className="mb-4 flex-row flex-wrap items-center gap-3 rounded-card px-4 py-3" style={{ backgroundColor: '#FEF3C7' }}>
           <Text style={{ fontSize: 16 }}>🧪</Text>

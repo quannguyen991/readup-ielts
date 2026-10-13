@@ -7,8 +7,10 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, SectionHeader } from '@/components/ui';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
+import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { groupDeckWords, NOTEBOOK_SLUG } from '@/data/study-decks';
 import type { StudyWord } from '@/services/vocab/topic-study';
+import { isLetterWord } from '@/services/vocab/review-games';
 import { useVocabStore } from '@/store/useVocabStore';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { color } from '@/theme/tokens';
@@ -175,7 +177,7 @@ export default function VocabTopicScreen() {
           </View>
           <View className="mt-3">
             <Grid columns={7} tabletColumns={4} mobileColumns={2} gap={12}>
-              {MODES.filter((m) => m.key !== 'cloze' || topic.words.some((word) => Boolean(word.example))).map((m) => (
+              {MODES.filter((m) => modeReady(m.key, topic.words)).map((m) => (
                 <ModeTile key={m.key} mode={m} en={en} onPress={() => router.push(`/vocabulary/topic/${topic.slug}/${m.key}` as never)} />
               ))}
             </Grid>
@@ -401,7 +403,14 @@ function WordRow({
 
       {open && hasDetails ? (
         <View className="mt-3 gap-2 border-t border-border pt-3">
-          {word.example ? <Detail label={L('Ví dụ', 'Example')} value={word.example} italic /> : null}
+          {word.example ? (
+            <View>
+              <Text className="font-mid text-label text-muted">{L('Ví dụ', 'Example')}</Text>
+              <View className="mt-0.5">
+                <ExampleSentence example={word.example} word={word.word} />
+              </View>
+            </View>
+          ) : null}
           {word.collocation ? <Detail label={L('Cụm hay đi kèm', 'Common collocation')} value={word.collocation} /> : null}
         </View>
       ) : null}
@@ -428,14 +437,24 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
 const MODES: { key: string; label: string; labelEn: string; note: string; noteEn: string; icon: IconName; tone: string; recommended?: boolean }[] = [
-  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · trắc nghiệm · gõ từ, từ sai quay lại', noteEn: 'Flashcards · multiple choice · typing; missed words come back', icon: 'book', tone: '#B8955A', recommended: true },
-  { key: 'quiz', label: 'Quiz ôn tập', labelEn: 'Review quiz', note: 'Trắc nghiệm A/B/C/D kiểu đề THPT', noteEn: 'A/B/C/D multiple choice, school-exam style', icon: 'target', tone: '#EA580C' },
+  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · chọn nghĩa ABCD · gõ từ, từ sai quay lại', noteEn: 'Flashcards · ABCD meanings · typing; missed words come back', icon: 'book', tone: '#B8955A', recommended: true },
   { key: 'dictation', label: 'Nghe chép', labelEn: 'Dictation', note: 'Nghe từ, viết đúng chính tả', noteEn: 'Hear the word, spell it right', icon: 'volume', tone: '#8E6A2C' },
   { key: 'cloze', label: 'Điền vào câu', labelEn: 'Fill the gap', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', noteEn: 'Pick, unscramble, type, listen — mixed', icon: 'pencil', tone: '#E0533D' },
   { key: 'speak', label: 'Phát âm', labelEn: 'Pronunciation', note: 'Đọc to, máy nghe và chấm', noteEn: 'Read aloud, the app listens and scores', icon: 'mic', tone: '#DB2777' },
   { key: 'test', label: 'Kiểm tra', labelEn: 'Test', note: '20 câu trộn 4 dạng, chấm khi nộp', noteEn: '20 mixed questions, marked on submit', icon: 'clipboard', tone: '#D97706' },
   { key: 'game', label: 'Bóng bay', labelEn: 'Balloons', note: 'Trò chơi, có bảng điểm', noteEn: 'A game with a leaderboard', icon: 'sparkle', tone: '#16A34A' },
+  { key: 'pairs', label: 'Ghép cặp', labelEn: 'Match pairs', note: 'Ghép từ với nghĩa, nhớ vị trí các ô', noteEn: 'Match each word to its meaning and remember where tiles are', icon: 'grid', tone: '#2563EB' },
+  { key: 'hangman', label: 'Đoán chữ', labelEn: 'Hangman', note: 'Đoán từ theo nghĩa, mỗi chữ sai mất một tim', noteEn: 'Guess the word from its meaning; each wrong letter costs a heart', icon: 'letters', tone: '#7C3AED' },
+  { key: 'sentence', label: 'Xếp câu', labelEn: 'Build sentence', note: 'Xếp lại các từ thành câu ví dụ đúng thứ tự', noteEn: 'Rebuild the example sentence in the right order', icon: 'list', tone: '#0891B2' },
 ];
+
+/** Chế độ cần dữ liệu riêng thì chỉ hiện khi bộ có đủ dữ liệu đó. */
+function modeReady(key: string, words: readonly StudyWord[]): boolean {
+  if (key === 'cloze') return words.some((word) => Boolean(word.example));
+  if (key === 'hangman') return words.some((word) => isLetterWord(word.word));
+  if (key === 'sentence') return words.some((word) => (word.example ?? '').trim().split(/\s+/).filter(Boolean).length >= 4);
+  return true;
+}
 
 const STATUS_TILES: { key: DeckStatus; label: string; labelEn: string; only: string; icon: IconName; tone: string; soft: string }[] = [
   { key: 'mastered', label: 'Đã nhớ', labelEn: 'Remembered', only: 'all', icon: 'check', tone: '#16A34A', soft: '#DCFCE7' },

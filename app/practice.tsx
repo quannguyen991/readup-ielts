@@ -335,7 +335,7 @@ export default function PracticeScreen() {
   );
 
   return (
-    <Screen>
+    <Screen cat="write">
       {phone ? (
         <Appear>
           <PhoneHeroPanel

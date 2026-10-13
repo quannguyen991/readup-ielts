@@ -19,16 +19,19 @@ export function PerchCat({
   side = 'right',
   inset = 16,
   offset = 0,
+  lift,
 }: {
   pose: CatPose;
   size?: number;
   side?: 'left' | 'right';
-  /** Khoảng cách từ mép ô tới mèo. */
-  inset?: number;
+  /** Khoảng cách từ mép ô tới mèo: số px, hoặc chuỗi phần trăm (ví dụ '12%') để theo bề rộng ô. */
+  inset?: number | `${number}%`;
   /** Mép trên của ô nằm cách đỉnh lớp chứa bao nhiêu (khi lớp chứa có đệm trên). */
   offset?: number;
+  /** Tỉ lệ chiều cao mèo nằm phía trên mép, tức chỗ chạm của mèo lên mép. Không truyền thì theo tư thế. */
+  lift?: number;
 }) {
-  const lift = CLINGING.includes(pose) ? 0.55 : 0.92;
+  const ratio = lift ?? (CLINGING.includes(pose) ? 0.55 : 0.92);
   const edge = side === 'right' ? { right: inset } : { left: inset };
-  return <CatSticker pose={pose} size={size} style={{ position: 'absolute', top: offset - size * lift, ...edge }} />;
+  return <CatSticker pose={pose} size={size} style={{ position: 'absolute', top: offset - size * ratio, ...edge }} />;
 }

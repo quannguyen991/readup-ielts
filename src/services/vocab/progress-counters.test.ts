@@ -7,13 +7,13 @@ import { footerLine, learnedCount, roundStats } from './progress-counters';
 const words = Array.from({ length: 10 }, (_, i) => ({ word: `w${i}` }));
 const O: LoopOptions = { kinds: ['flash', 'mcq', 'fill', 'type'], interleave: true, canFill: () => true };
 
-test('làm 10 câu đúng: số từ đã qua nhích lên (không còn đứng 0), chưa từ nào xong hẳn', () => {
+test('làm 10 câu đúng: số từ đã qua nhích lên (không còn đứng 0), chưa xong cả bộ', () => {
   let s = startLoop(words);
   for (let i = 0; i < 10; i += 1) s = answerLoop(s, true, O);
   const st = roundStats(s, words);
   assert.equal(st.answered, 10);
   assert.ok(st.passed >= 1, `đã qua ${st.passed}`);
-  assert.equal(st.done, 0);
+  assert.ok(st.done < words.length, `xong ${st.done}/${words.length}`);
 });
 
 test('sai làm tụt: từ vừa sai không còn tính là đã qua', () => {

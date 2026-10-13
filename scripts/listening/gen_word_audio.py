@@ -29,6 +29,29 @@ def _load_keys():
     return uniq
 
 
+def replace_retry(src, dst, tries=30):
+    """Đổi tên file tạm thành file đích. Windows có thể khoá file đích vài giây (trình xem, dev server đang đọc) nên thử lại."""
+    for _ in range(tries):
+        try:
+            src.replace(dst)
+            return
+        except PermissionError:
+            time.sleep(2)
+    shutil.copyfile(src, dst)  # khoá kéo dài: chép đè thay vì đổi tên
+    src.unlink(missing_ok=True)
+
+
+def write_retry(path, text, tries=30):
+    """Ghi file, thử lại khi bị khoá."""
+    for _ in range(tries):
+        try:
+            path.write_text(text, encoding="utf-8")
+            return
+        except PermissionError:
+            time.sleep(2)
+    raise SystemExit(f"Không ghi được {path}: file đang bị khoá")
+
+
 KEYS = _load_keys()
 KEY_I = 0
 args = sys.argv[1:]
@@ -43,6 +66,11 @@ TEXT_FILE = opt('--text-file')
 OUT = pathlib.Path(opt('--output-dir', str(ROOT / 'public' / 'audio' / 'words' / VOICE.lower())))
 OUT.mkdir(parents=True, exist_ok=True)
 IDX = OUT / "index.json"
+def clipkey(s):
+    """Khoá tra clip, khớp với clipKey trong pronounce-core.ts: gọn khoảng trắng, nháy thẳng, thường hoá."""
+    return re.sub(r"\s+", " ", s.strip().replace("’", "'").replace("‘", "'")).lower()
+
+
 index = {word.strip().lower(): file for word, file in
          (json.loads(IDX.read_text(encoding="utf-8")) if IDX.exists() else {}).items()}
 todo_all = json.loads(pathlib.Path(opt("--words-file", str(pathlib.Path(__file__).parent / "words-todo.json"))).read_text(encoding="utf-8"))
@@ -53,7 +81,7 @@ if RECOVER_RAW:
     BATCH = len(todo)
     MAXREQ = 1
 else:
-    todo = [w for w in todo_all if w not in index]
+    todo = [w for w in todo_all if clipkey(w) not in index]
 if TEXT_FILE and not RECOVER_RAW and len(todo) > BATCH:
     raise SystemExit('--text-file requires all pending entries to fit in one batch')
 print(f"{len(index)} đã có, {len(todo)} còn lại, giọng {VOICE}, mô hình {MODEL}")
@@ -124,7 +152,7 @@ while todo and done_req < MAXREQ:
     text = pathlib.Path(TEXT_FILE).read_text(encoding='utf-8') if TEXT_FILE else ("Read each vocabulary entry exactly as written in clear, natural English. "
             "Leave one second of silence between entries. "
             "Do not add introductions, numbering, explanations, or plural endings.\n\n"
-            + "\n\n".join(f"{w}." for w in chunk))
+            + "\n\n".join(w if w[-1:] in ".!?" else f"{w}." for w in chunk))
     print(f"yêu cầu {done_req + 1}: {len(chunk)} mục ({chunk[0]} … {chunk[-1]})")
     wav_bytes = pathlib.Path(RECOVER_RAW).read_bytes() if RECOVER_RAW else tts(text)
     done_req += 1
@@ -196,16 +224,16 @@ while todo and done_req < MAXREQ:
                 print(f"  x {w!r}: {e}"); rejected.append(w); continue
             staged = OUT / (name + '.pending')
             shutil.copyfile(candidate, staged)
-            staged.replace(OUT / name)
-            index[w] = name
+            replace_retry(staged, OUT / name)
+            index[clipkey(w)] = name
             if (i + 1) % 10 == 0:
                 staged_index = OUT / 'index.json.pending'
                 staged_index.write_text(json.dumps(index, ensure_ascii=False, indent=0), encoding='utf-8')
-                staged_index.replace(IDX)
+                replace_retry(staged_index, IDX)
                 print(f'  kiểm {i + 1}/{len(chunk)}, {len(index)} clip đã lưu', flush=True)
         # lưu nhật ký lô để kiểm tra về sau
         (OUT / "_batches.log").open("a", encoding="utf-8").write(json.dumps({"n": len(chunk), "dur": round(dur, 1), "first": chunk[0], "last": chunk[-1]}, ensure_ascii=False) + "\n")
-    IDX.write_text(json.dumps(index, ensure_ascii=False, indent=0), encoding="utf-8")
+    write_retry(IDX, json.dumps(index, ensure_ascii=False, indent=0))
     print(f"  xong, {len(index)} mục")
 print("bi loai:", len(rejected))
 print("kết thúc: còn", len([w for w in todo_all if w not in index]), "mục")

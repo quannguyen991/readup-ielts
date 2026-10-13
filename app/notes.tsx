@@ -21,7 +21,7 @@ export default function NotesScreen() {
   const [draft, setDraft] = useState('');
 
   return (
-    <Screen>
+    <Screen cat="write">
       <HeroBanner
         title={L('Ghi chú', 'Notes')}
         subtitle={L('Ghi chú và đoạn bôi màu bạn tạo khi đọc.', 'Notes and highlights you made while reading.')}

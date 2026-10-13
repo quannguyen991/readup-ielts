@@ -164,7 +164,7 @@ export default function ListeningLibrary() {
   );
 
   return (
-    <Screen>
+    <Screen cat="headphones">
       <View className="flex-row flex-wrap items-center justify-between gap-2">
         <View>
           <Text className="font-heavy text-ink" style={{ fontSize: 26 }}>

@@ -101,10 +101,10 @@ export default function VocabularyScreen() {
             onPress={() => router.push('/vocabulary/topic/so-tu' as never)}
           />
           <Button
-            label={L('Destination · Phiếu 50 câu', 'Destination · 50-question sheet')}
+            label={L('Trắc nghiệm THPT · 35 câu mỗi bài', 'THPT multiple choice · 35 questions per set')}
             variant="outline"
-            iconLeft="book"
-            onPress={() => router.push('/vocabulary/review' as never)}
+            iconLeft="target"
+            onPress={() => router.push('/vocabulary/thpt' as never)}
           />
         </View>
       </LightHero>

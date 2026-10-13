@@ -74,6 +74,7 @@ function StatColumn({ icon, value, label, onPress }: { icon: IconName; value: st
 }
 
 /** Mèo bám lên mép trên của từng ô kỹ năng (mỗi ô một tư thế riêng). */
+// Mỗi thẻ kỹ năng một mèo bám trên mép trên (không kèm mèo đứng trong thẻ, để trang khỏi rối).
 const PERCH: Partial<Record<string, CatPose>> = { reading: 'sit', listening: 'hangingPaws', writing: 'curl', speaking: 'peeking' };
 
 export function PhoneHome(p: PhoneHomeProps) {
@@ -131,9 +132,6 @@ export function PhoneHome(p: PhoneHomeProps) {
           </View>
           {/* Mèo đeo kính đen là hình chính, thay số 9 */}
           <CatSticker pose="sunglasses" size={150} style={{ position: 'absolute', right: 0, top: 40 }} />
-          {/* Hai mèo bám trên mép trên thẻ: bên trái ngồi, bên phải ló đầu */}
-          <CatSticker pose="hangingPaws" size={68} style={{ position: 'absolute', left: 2, top: -64 }} />
-          <CatSticker pose="peeking" size={66} style={{ position: 'absolute', right: 8, top: -58 }} />
         </View>
 
         {/* Dải số liệu: chuỗi ngày, mục tiêu band, phút hôm nay */}
@@ -153,7 +151,6 @@ export function PhoneHome(p: PhoneHomeProps) {
         {/* Lưới bốn kỹ năng */}
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 24, marginBottom: 50 }}>
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 6, flexShrink: 1 }}>
-            <CatSticker pose="think" size={40} />
             <Text style={{ fontFamily: CUTE_FONT.heavy, fontSize: 18, lineHeight: 24, color: GOLD.ink, flexShrink: 1 }}>{L('Gợi ý cho bước tiếp theo', 'Made for your next step')}</Text>
           </View>
           <Pressable accessibilityRole="button" onPress={() => router.push('/practice' as never)}>
@@ -170,7 +167,6 @@ export function PhoneHome(p: PhoneHomeProps) {
               style={({ pressed }) => ({ width: '48.5%', minHeight: 172, borderRadius: 26, padding: 14, justifyContent: 'space-between', transform: [{ scale: pressed ? 0.97 : 1 }] } as never)}
             >
               <View style={[{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, borderRadius: 26 }, GLASS] as never} />
-              {s.cat ? <CatSticker pose={s.cat.pose} size={s.cat.size} style={{ position: 'absolute', top: s.cat.top, right: s.cat.right }} /> : null}
               {PERCH[s.key] ? <PerchCat pose={PERCH[s.key] as CatPose} size={58} side="right" inset={14} /> : null}
               <View style={{ width: 44, height: 44, borderRadius: 22, backgroundColor: GOLD.tint, alignItems: 'center', justifyContent: 'center' }}>
                 <Icon name={s.icon} size={20} color={GOLD.deep} strokeWidth={2} />

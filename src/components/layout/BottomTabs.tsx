@@ -128,13 +128,13 @@ export function BottomTabs() {
         } as never
       }
     >
-      {/* Sáu con mèo bám lên mép trên thanh tab, xếp đều từ trái sang phải. Chỉ là trang trí, không nhận chạm. */}
-      <PerchCat pose="clingHang" size={50} side="left" inset={14} />
-      <PerchCat pose="clingWave" size={48} side="left" inset={70} />
-      <PerchCat pose="clingSit" size={52} side="left" inset={124} />
-      <PerchCat pose="clingLie" size={56} side="left" inset={182} />
-      <PerchCat pose="clingPeek" size={46} side="left" inset={244} />
-      <PerchCat pose="clingClimb" size={50} side="left" inset={296} />
+      {/* Sáu con mèo bám lên mép trên thanh tab, chỉ trên đoạn thẳng của mép (không vào góc bo). Bàn chân hoặc mông chạm đúng mép: lift theo từng tư thế. Chỉ là trang trí, không nhận chạm. */}
+      <PerchCat pose="clingHang" size={42} side="left" inset="8.6%" lift={0.4} />
+      <PerchCat pose="clingWave" size={42} side="left" inset="22.8%" lift={0.52} />
+      <PerchCat pose="clingSit" size={42} side="left" inset="37%" lift={0.78} />
+      <PerchCat pose="clingLie" size={42} side="left" inset="51.2%" lift={0.62} />
+      <PerchCat pose="clingPeek" size={42} side="left" inset="65.4%" lift={0.52} />
+      <PerchCat pose="clingClimb" size={42} side="left" inset="79.6%" lift={0.42} />
       <View style={{ flexDirection: 'row', height: BOTTOM_BAR_HEIGHT, alignItems: 'center' }}>
         {TABS.map((item) => {
           const on = active === item.key;

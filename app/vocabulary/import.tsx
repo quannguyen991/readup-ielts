@@ -7,7 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Appear } from '@/components/motion/Motion';
 import { Button } from '@/components/ui';
 import { Icon } from '@/components/ui/Icon';
-import { ExampleLine } from '@/components/vocab/study/StudyKit';
+import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { candidateToStudyWord, extractCandidates, type ImportCandidate } from '@/services/vocab/import';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { color } from '@/theme/tokens';
@@ -166,7 +166,7 @@ export default function ImportDeckScreen() {
                           />
                         ) : null}
                         <View className="mt-1.5">
-                          <ExampleLine example={c.example} word={c.word} />
+                          <ExampleSentence example={c.example} word={c.word} />
                         </View>
                       </View>
                     );

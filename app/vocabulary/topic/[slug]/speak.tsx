@@ -8,7 +8,7 @@ import { GhostButton, PrimaryButton, SpeakButton, StudyCard, StudyFrame, useHotk
 import { CrossFade } from '@/components/motion/Motion';
 import { Icon } from '@/components/ui/Icon';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
-import { normalizeAnswer } from '@/services/vocab/topic-study';
+import { normalizeAnswer, type StudyWord } from '@/services/vocab/topic-study';
 import { playCorrectChime } from '@/services/audio/chime';
 import { useGameStore } from '@/store/useGameStore';
 import { CoachBubble, CoachToggle } from '@/components/speaking/CoachKit';
@@ -17,6 +17,10 @@ import { useVoiceCoach } from '@/services/audio/useVoiceCoach';
 import { color } from '@/theme/tokens';
 import { useL } from '@/i18n/useL';
 import { useStoreTheme } from '@/components/vocab/study/useStudyTheme';
+import { useAuthStore } from '@/store/useAuthStore';
+import { PronounceTipCard } from '@/components/vocab/PronounceTipCard';
+import type { PronounceTip } from '@/services/vocab/pronounce-tip';
+import { requestPronounceTip } from '@/services/vocab/pronounce-tip-client';
 
 type Recognition = {
   lang: string;
@@ -48,6 +52,10 @@ function makeRecognition(): Recognition | null {
  * Máy nhận giọng trả về vài phương án nghe được; chỉ cần một phương án khớp
  * từ là tính đúng — bộ nhận giọng hay nghe nhầm từ hiếm thành từ phổ biến
  * đồng âm, và đó không phải lỗi phát âm của người học.
+ *
+ * Lượt đọc sai còn được AI giải thích (`askTip`): AI chỉ ra âm lệch và cách sửa,
+ * không chấm. Huấn luyện viên đọc lời đó bằng giọng Aoede, không có Aoede thì
+ * đọc bằng giọng máy.
  */
 export default function SpeakScreen() {
   const { slug = '' } = useLocalSearchParams<{ slug: string }>();
@@ -65,10 +73,22 @@ export default function SpeakScreen() {
   const [correct, setCorrect] = useState(0);
   const recRef = useRef<Recognition | null>(null);
   const coach = useVoiceCoach();
+  const [tip, setTip] = useState<PronounceTip | null>(null);
+  const [tipNote, setTipNote] = useState<string | null>(null);
+  // Tăng mỗi lần đổi lượt: câu trả lời AI đến muộn sau lượt khác sẽ bị bỏ.
+  const attemptRef = useRef(0);
+  const tipAbortRef = useRef<AbortController | null>(null);
 
   const word = words[index];
 
-  useEffect(() => () => recRef.current?.stop(), []);
+  useEffect(
+    () => () => {
+      attemptRef.current += 1;
+      tipAbortRef.current?.abort();
+      recRef.current?.stop();
+    },
+    [],
+  );
 
   const judge = (ok: boolean) => {
     setVerdict(ok);
@@ -78,10 +98,56 @@ export default function SpeakScreen() {
     }
   };
 
+  // Đổi lượt thì bỏ nhận xét AI đang hiện, chú thích của huấn luyện viên (nó trỏ tới thẻ nhận xét), và huỷ lời hỏi còn chạy.
+  const dropTip = () => {
+    attemptRef.current += 1;
+    tipAbortRef.current?.abort();
+    tipAbortRef.current = null;
+    setTip(null);
+    setTipNote(null);
+    coach.reset();
+  };
+
+  /**
+   * Hỏi AI vì sao máy nghe lệch. Chỉ hỏi khi máy đã nghe được gì và lượt đó là lượt sai. AI
+   * không chấm, chỉ giải thích: đúng hay sai vẫn do máy nhận giọng quyết.
+   */
+  const askTip = async (target: StudyWord, transcripts: string[], mine: number) => {
+    const controller = new AbortController();
+    tipAbortRef.current = controller;
+    setTipNote(L('Huấn luyện viên AI đang xem lượt đọc của bạn…', 'The AI coach is reviewing your attempt…'));
+    const result = await requestPronounceTip(
+      { word: target.word, ipa: target.ipa, pos: target.pos, meaningVi: target.meaningVi, heard: transcripts, correct: false },
+      {
+        token: useAuthStore.getState().session?.access_token ?? null,
+        signal: controller.signal,
+        fallbackMessage: L(
+          'Chưa có nhận xét AI lúc này. Bạn vẫn có lời huấn luyện viên thường.',
+          'No AI tip right now. You still get the regular coach feedback.',
+        ),
+      },
+    );
+    if (mine !== attemptRef.current) return;
+    tipAbortRef.current = null;
+    if (!result.ok) {
+      setTipNote(result.message);
+      return;
+    }
+    setTipNote(null);
+    setTip(result.tip);
+    coach.showTip({
+      band: 'ok',
+      captionVi: 'Nhận xét chi tiết ở bên dưới. Thử lại nhé.',
+      captionEn: 'The detailed tip is below. Try again.',
+      say: result.tip.sayEn,
+    });
+  };
+
   const listen = () => {
     if (!word || listening) return;
     // Huấn luyện viên phải im hẳn trước khi micro mở.
     coach.stop();
+    dropTip();
     const rec = makeRecognition();
     if (!rec) return;
     recRef.current = rec;
@@ -97,6 +163,9 @@ export default function SpeakScreen() {
       useGameStore.getState().answer(ok, 'vocab', { key: `speak:${slug}:${word.word}` });
       judge(ok);
       coach.feedback({ score: ok ? 100 : 40, missed: ok ? [] : [word.word], sentence: word.word });
+      // Không có chữ nào để so thì không hỏi AI: lời giải thích không có căn cứ.
+      const transcripts = alts.map((a) => a.trim()).filter(Boolean);
+      if (!ok && transcripts.length > 0) void askTip(word, transcripts, attemptRef.current);
     };
     rec.onerror = (e) => {
       setHeard([e.error === 'no-speech' ? L('(không nghe thấy gì)', '(heard nothing)') : L(`(lỗi micro: ${e.error})`, `(mic error: ${e.error})`)]);
@@ -114,6 +183,7 @@ export default function SpeakScreen() {
 
   const next = () => {
     coach.reset();
+    dropTip();
     playSfx('next');
     setHeard(null);
     setVerdict(null);
@@ -191,12 +261,18 @@ export default function SpeakScreen() {
 
           <CoachBubble coach={coach} />
 
+          {tip ? (
+            <PronounceTipCard tip={tip} />
+          ) : tipNote ? (
+            <Text className="mt-3 text-center font-sans text-label text-muted">{tipNote}</Text>
+          ) : null}
+
           {verdict !== null ? (
             <View className="mt-5 rounded-2xl p-5" style={{ backgroundColor: verdict ? theme.goodBg : theme.badBg }}>
               <Text className="font-strong text-cardTitle" style={{ color: verdict ? theme.good : theme.bad }}>
                 {verdict ? L('Phát âm rõ!', 'Clear pronunciation!') : L('Chưa khớp — nghe lại mẫu rồi thử lần nữa', 'No match — listen to the model and try again')}
               </Text>
-              {!verdict && supported ? <GhostButton label={L('Thử đọc lại', 'Try again')} onPress={() => { coach.stop(); setVerdict(null); setHeard(null); }} /> : null}
+              {!verdict && supported ? <GhostButton label={L('Thử đọc lại', 'Try again')} onPress={() => { coach.stop(); dropTip(); setVerdict(null); setHeard(null); }} /> : null}
               <PrimaryButton label={L('Từ tiếp theo', 'Next word')} hint="Enter" onPress={next} />
             </View>
           ) : null}

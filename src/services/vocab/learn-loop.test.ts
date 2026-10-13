@@ -17,7 +17,7 @@ import {
 } from './learn-loop';
 
 const words = ['a', 'b', 'c', 'd', 'e', 'f'].map((word) => ({ word }));
-const ALL: LoopOptions = { kinds: ['flash', 'mcq', 'fill', 'type'], interleave: true, canFill: () => true };
+const ALL: LoopOptions = { kinds: ['flash', 'mcq', 'type'], interleave: true, canFill: () => true };
 
 /** Chạy cả vòng; `answer` quyết định đúng/sai từng câu. Trả về dãy câu đã hỏi. */
 function run(o: LoopOptions, answer: (item: LoopItem, i: number) => boolean = () => true, list = words) {
@@ -50,23 +50,23 @@ test('đúng rồi cũng gặp lại, và càng lúc càng cách xa', () => {
   const { asked } = run(ALL);
   const at = asked.map((x, i) => (x.word === 'a' ? i : -1)).filter((i) => i >= 0);
   const gaps = at.slice(1).map((v, i) => v - at[i]!);
-  assert.ok(gaps.length >= 3);
+  assert.ok(gaps.length >= 2);
   // Sau lật thẻ, mỗi lần làm đúng thì lần gặp sau xa hơn lần trước.
-  assert.ok(gaps[2]! > gaps[1]!, `khoảng cách giãn dần: ${gaps.join(', ')}`);
+  assert.ok(gaps[1]! > gaps[0]!, `khoảng cách giãn dần: ${gaps.join(', ')}`);
 });
 
 test('sai thì gặp lại sớm, bằng dạng dễ hơn, và tụt mức', () => {
   let s = startLoop(words.slice(0, 4));
-  const o: LoopOptions = { ...ALL, kinds: ['mcq', 'fill', 'type'] };
-  // Làm đúng từ đầu tiên hai lần để nó lên mức 2 (sắp tới câu gõ từ)…
+  const o: LoopOptions = { ...ALL, kinds: ['mcq', 'type'] };
+  // Làm đúng từ đầu tiên một lần để nó lên mức 1 (sắp tới câu gõ từ)…
   const first = pickNext(s, o)!;
-  for (let guard = 0; slotOf(s, first.word).level < 2 && guard < 50; guard += 1) s = answerLoop(s, true, o);
+  for (let guard = 0; slotOf(s, first.word).level < 1 && guard < 50; guard += 1) s = answerLoop(s, true, o);
   // …rồi đợi tới lượt nó và trả lời sai.
   for (let guard = 0; pickNext(s, o)!.word !== first.word && guard < 50; guard += 1) s = answerLoop(s, true, o);
   assert.equal(pickNext(s, o)!.kind, 'type');
   const wrongAt = s.now;
   s = answerLoop(s, false, o);
-  assert.equal(slotOf(s, first.word).level, 1, 'sai thì tụt một mức');
+  assert.equal(slotOf(s, first.word).level, 0, 'sai thì tụt một mức');
   let back = -1;
   for (let guard = 0; guard < 20; guard += 1) {
     const item = pickNext(s, o)!;
@@ -89,24 +89,18 @@ test('xen kẽ: không hai câu liền nhau cùng một từ, và các dạng tr
   const kinds = asked.map((x) => x.kind).join(',');
   assert.ok(!kinds.includes('flash,flash,flash'), kinds);
   // Đủ các dạng đều xuất hiện.
-  for (const k of ['flash', 'mcq', 'fill', 'type'] as const) assert.ok(kinds.includes(k), `thiếu dạng ${k}`);
+  for (const k of ['flash', 'mcq', 'type'] as const) assert.ok(kinds.includes(k), `thiếu dạng ${k}`);
 });
 
-test('tuần tự: mỗi từ đi đúng thứ tự trắc nghiệm → điền câu → gõ từ', () => {
+test('tuần tự: mỗi từ đi đúng thứ tự trắc nghiệm → gõ từ', () => {
   const o: LoopOptions = { ...ALL, interleave: false };
   const { asked } = run(o);
   for (const { word } of words) {
     const seq = asked.filter((x) => x.word === word).map((x) => x.kind);
-    assert.deepEqual(seq, ['flash', 'mcq', 'fill', 'type'], word);
+    assert.deepEqual(seq, ['flash', 'mcq', 'type'], word);
   }
 });
 
-test('từ không có câu ví dụ khoét được thì không bao giờ gặp dạng điền câu', () => {
-  const o: LoopOptions = { ...ALL, canFill: (w) => w !== 'c' };
-  const { asked } = run(o, (_, i) => i % 4 !== 2);
-  assert.ok(asked.filter((x) => x.word === 'c').every((x) => x.kind !== 'fill'));
-  assert.equal(doneLevel(o, 'c'), 2);
-});
 
 test('chỉ bật một dạng: vẫn phải làm đúng hai lần giãn cách mới xong', () => {
   const o: LoopOptions = { ...ALL, kinds: ['mcq'] };

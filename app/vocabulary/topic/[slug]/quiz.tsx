@@ -7,7 +7,7 @@ import { CrossFade } from '@/components/motion/Motion';
 import { useDeckVisit } from '@/components/vocab/study/useDeckVisit';
 import { useStudyDeck } from '@/components/vocab/study/useStudyDeck';
 import { groupByStatus, stageAfterQuiz } from '@/services/vocab/deck-status';
-import { buildThptQuiz, THPT_KIND_LABEL, type ThptQuestion } from '@/services/vocab/thpt-quiz';
+import { buildThptQuiz, THPT_KIND_LABEL, THPT_QUESTIONS_PER_BAI, type ThptQuestion } from '@/services/vocab/thpt-quiz';
 import { seededRng, shuffled } from '@/services/vocab/topic-study';
 import { dueBySlug } from '@/services/vocab/review-schedule';
 import { todayKey } from '@/store/persist';
@@ -58,7 +58,7 @@ export default function QuizScreen() {
     const dueNow = new Set(dueBySlug({ [slug]: frozen.reviews ?? {} }, todayKey())[slug] ?? []);
     const pool = only === 'due' ? topic.words.filter((w) => dueNow.has(w.word)) : only === 'review' ? g.review : only === 'new' ? g.new : topic.words;
     const rng = seededRng(seed);
-    return buildThptQuiz(shuffled(pool, rng), topic.words, rng);
+    return buildThptQuiz(shuffled(pool, rng), topic.words, rng).slice(0, THPT_QUESTIONS_PER_BAI);
   }, [topic, only, seed, frozen]);
 
   // Hàng câu hỏi của lượt: bắt đầu bằng đề đã sinh, chen thêm câu hỏi lại khi trả lời sai.
@@ -109,7 +109,7 @@ export default function QuizScreen() {
     if (!topic) return;
     const words = topic.words.filter((w) => wrong.includes(w.word));
     const rng = seededRng(seed + 999);
-    setQueue(buildThptQuiz(shuffled(words, rng), topic.words, rng));
+    setQueue(buildThptQuiz(shuffled(words, rng), topic.words, rng).slice(0, THPT_QUESTIONS_PER_BAI));
     setWrong([]);
     retried.current = new Set();
     setIndex(0);
@@ -137,11 +137,11 @@ export default function QuizScreen() {
   });
 
   const back = `/vocabulary/topic/${slug}`;
-  if (!topic) return <StudyFrame backHref="/vocabulary/quiz" title={L('Quiz ôn tập', 'Review quiz')}>{null}</StudyFrame>;
+  if (!topic) return <StudyFrame backHref="/vocabulary/quiz" title={L('Trắc nghiệm THPT', 'THPT multiple choice')}>{null}</StudyFrame>;
 
   if (list.length === 0) {
     return (
-      <StudyFrame backHref={back} title={L('Quiz ôn tập', 'Review quiz')}>
+      <StudyFrame backHref={back} title={L('Trắc nghiệm THPT', 'THPT multiple choice')}>
         <StudyCard>
           <Text className="font-heavy text-sectionTitle text-ink">{L('Không còn từ nào trong nhóm này', 'No words left in this group')}</Text>
           <Text className="mt-1 font-sans text-body text-muted">{L('Chọn ôn cả bộ để làm tiếp.', 'Review the whole set to keep going.')}</Text>
@@ -153,7 +153,7 @@ export default function QuizScreen() {
   if (done) {
     const pct = Math.round((score / list.length) * 100);
     return (
-      <StudyFrame backHref={back} title={L('Quiz ôn tập', 'Review quiz')}>
+      <StudyFrame backHref={back} title={L('Trắc nghiệm THPT', 'THPT multiple choice')}>
         <StudyCard>
           <Text className="font-semi text-label text-muted">{L('Xong lượt Quiz', 'Quiz complete')}</Text>
           <Text className="mt-2 font-heavy text-hero text-ink">
@@ -181,7 +181,7 @@ export default function QuizScreen() {
   return (
     <StudyFrame
       backHref={back}
-      title={L('Quiz ôn tập', 'Review quiz')}
+      title={L('Trắc nghiệm THPT', 'THPT multiple choice')}
       battle
       progress={list.map((_, i) => (i < index || (i === index && revealed) ? 1 : 0))}
       footer={L(

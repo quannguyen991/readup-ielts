@@ -72,7 +72,6 @@ export function LearnSettingsSheet({
   const KINDS: { key: StageKind; label: string; icon: IconName }[] = [
     { key: 'flash', label: L('Lật thẻ', 'Flashcards'), icon: 'note' },
     { key: 'mcq', label: L('Trắc nghiệm 4 đáp án', 'Multiple choice (4 options)'), icon: 'list' },
-    { key: 'fill', label: L('Điền chỗ trống (kiểu đề THPT)', 'Fill in the blank (Vietnamese high-school exam style)'), icon: 'clipboard' },
     { key: 'type', label: L('Gõ từ', 'Type the word'), icon: 'pencil' },
   ];
 

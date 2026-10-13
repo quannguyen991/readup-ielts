@@ -23,7 +23,7 @@ import { useVocabStore } from '@/store/useVocabStore';
 import { useWeeklyStore } from '@/store/useWeeklyStore';
 import { useSatRwStore } from '@/store/useSatRwStore';
 import { gamePayload, useGameStore } from '@/store/useGameStore';
-import { rewardPayload, useRewardStore } from '@/store/useRewardStore';
+import { freeOwned, rewardPayload, useRewardStore } from '@/store/useRewardStore';
 import { mergeRoadmap, useRoadmapStore, type RoadmapPayload } from '@/store/useRoadmapStore';
 import { cityPayload, useCityStore } from '@/store/useCityStore';
 import { mergeRoadmapProgress, useSatRoadmapStore, type RoadmapProgress } from '@/store/useSatRoadmapStore';
@@ -184,7 +184,8 @@ const rewardStore: SyncedStore = {
   key: 'reward',
   read: () => rewardPayload(),
   write: (payload) => {
-    if (payload) useRewardStore.setState(payload as RewardPayload);
+    // Món miễn phí luôn có sẵn, kể cả khi dữ liệu từ máy chủ chưa ghi nhận.
+    if (payload) useRewardStore.setState({ ...(payload as RewardPayload), owned: { ...freeOwned(), ...(payload as RewardPayload).owned } });
   },
   merge: (local, remote) => mergeReward(local as RewardPayload | null, remote as RewardPayload | null),
 };

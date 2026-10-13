@@ -2,9 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useAudioPrefs } from '@/store/useAudioPrefs';
 import { useGameStore } from '@/store/useGameStore';
-import { planCoach, type CoachInput, type CoachMemory, type CoachPlan } from './coach-core';
+import { planCoach, type CoachBand, type CoachInput, type CoachMemory, type CoachPlan } from './coach-core';
 import { speakLines, stopPronounce } from './pronounce';
 import { playSfx } from './sfx-ui';
+import { speakWithAoede } from '@/services/speaking/voice';
 
 /**
  * HUẤN LUYỆN VIÊN GIỌNG NÓI dùng chung cho mọi màn luyện nói có chấm điểm (kiểu ELSA).
@@ -29,6 +30,9 @@ const memory: CoachMemory = {};
 /** Chờ tiếng báo điểm kêu xong rồi mới nói. */
 const LEAD_IN_MS = 550;
 
+/** Lời nhận xét do AI soạn: chú thích ngắn hai ngôn ngữ, và câu tiếng Anh huấn luyện viên đọc to. */
+export type TipCaption = { band: CoachBand; captionVi: string; captionEn: string; say: string };
+
 export type VoiceCoach = {
   /** Công tắc đang bật (đã tính cả tắt tiếng chung). */
   active: boolean;
@@ -38,6 +42,11 @@ export type VoiceCoach = {
   caption: { vi: string; en: string } | null;
   band: CoachPlan['band'] | null;
   feedback: (input: CoachInput) => CoachPlan;
+  /**
+   * Thay lời nhận xét khuôn bằng lời của AI: hiện chú thích rồi NÓI `say` bằng giọng Aoede.
+   * Không lấy được Aoede (chưa đăng nhập, hết lượt giọng) thì đọc bằng giọng máy để vẫn nghe được.
+   */
+  showTip: (tip: TipCaption) => void;
   /** Im ngay lập tức và huỷ lời đang chờ. Gọi TRƯỚC khi bật micro hoặc đổi câu. */
   stop: () => void;
   /** Xoá chú thích (đổi câu). */
@@ -107,5 +116,28 @@ export function useVoiceCoach(): VoiceCoach {
     [active],
   );
 
-  return { active, speaking, caption, band, feedback, stop, reset };
+  const showTip = useCallback(
+    (tip: TipCaption) => {
+      // Lời khuôn đang nói (nếu còn) phải im trước, để hai giọng không chồng lên nhau.
+      stop();
+      setBand(tip.band);
+      setCaption({ vi: tip.captionVi, en: tip.captionEn });
+      if (!active) return;
+      const mine = turn.current;
+      setSpeaking(true);
+      const finish = () => {
+        if (mine !== turn.current) return;
+        stopRef.current = null;
+        setSpeaking(false);
+      };
+      const deviceVoice = () => {
+        if (mine !== turn.current) return;
+        stopRef.current = speakLines([{ text: tip.say, rate: 0.9 }], { onEnd: finish });
+      };
+      stopRef.current = speakWithAoede(tip.say, { onDone: finish, onError: deviceVoice });
+    },
+    [active, stop],
+  );
+
+  return { active, speaking, caption, band, feedback, showTip, stop, reset };
 }

@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { STORAGE_PREFIX, storage } from './persist';
-import { buy as applyBuy, DEFAULT_LOOK, findItem, type PurchaseState, type RewardPayload } from '@/services/gamification/shop';
+import { buy as applyBuy, DEFAULT_LOOK, findItem, SHOP_ITEMS, type PurchaseState, type RewardPayload } from '@/services/gamification/shop';
 import { dateKey, shiftDays } from '@/services/gamification/points';
 import type { MascotId } from '@/services/game/mascots';
 import type { SkinId } from '@/components/game/sprites';
@@ -53,10 +53,15 @@ type RewardState = PurchaseState & {
   addCappedPrize: (key: string, stars: number, cap: number) => number;
 };
 
+/** Món giá 0 (giao diện miễn phí) thì ai cũng đã có sẵn, không cần đổi sao. */
+export function freeOwned(): Record<string, number> {
+  return Object.fromEntries(SHOP_ITEMS.filter((i) => i.price === 0 && !i.repeatable).map((i) => [i.id, 1]));
+}
+
 export const useRewardStore = create<RewardState>()(
   persist(
     (set, get) => ({
-      owned: {},
+      owned: freeOwned(),
       spent: 0,
       avatar: null,
       cover: null,
@@ -134,6 +139,11 @@ export const useRewardStore = create<RewardState>()(
       name: `${STORAGE_PREFIX}reward`,
       storage: storage(),
       version: 3,
+      // Người đã có dữ liệu cũ cũng được cấp món miễn phí; phần đã lưu giữ nguyên.
+      merge: (persisted, current) => {
+        const saved = (persisted ?? {}) as Partial<RewardState>;
+        return { ...current, ...saved, owned: { ...freeOwned(), ...(saved.owned ?? {}) } } as RewardState;
+      },
       migrate: (persisted) => ({
         ...(persisted as Partial<RewardState>),
         // Mặc định mở app phải về giao diện Band 9. Vật phẩm và sao vẫn giữ;

@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { pronounce } from '@/services/audio/pronounce';
+import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { useVocabStore, type VocabEntry } from '@/store/useVocabStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useStudyStore } from '@/store/useStudyStore';
@@ -508,9 +509,9 @@ export default function SpacedRepetitionScreen() {
                   {entry.definitionVi ?? entry.definitionGeneral ?? '—'}
                 </Text>
                 {entry.exampleSentence ? (
-                  <Text style={{ fontSize: 12, color: '#64748B', marginTop: 3 }} numberOfLines={2}>
-                    {entry.exampleSentence}
-                  </Text>
+                  <View style={{ marginTop: 3 }}>
+                    <ExampleSentence example={entry.exampleSentence} word={entry.word} className="font-sans text-label text-muted" />
+                  </View>
                 ) : null}
               </View>
 

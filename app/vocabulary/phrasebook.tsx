@@ -7,6 +7,7 @@ import { Screen } from '@/components/layout/Screen';
 import { Button, Card } from '@/components/ui';
 import { PHRASEBOOK_TOPICS, phrasebookItems, type PhrasebookMode } from '@/data/vocab-phrasebook';
 import { useL } from '@/i18n/useL';
+import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { lemmatize } from '@/services/dictionary/lookup';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
@@ -111,7 +112,9 @@ export default function PhrasebookScreen() {
                       <Text className="rounded-pill px-2 py-1 font-semi text-label" style={{ backgroundColor: '#F5F0E7', color: color.primary }}>{badge}</Text>
                     </View>
                     <Text className="mt-1 font-semi text-body text-ink">{item.meaningVi}</Text>
-                    <Text className="mt-2 font-sans text-label text-muted" style={{ lineHeight: 20 }}>{item.example}</Text>
+                    <View className="mt-2">
+                      <ExampleSentence example={item.example} word={item.term} className="font-sans text-label text-muted" />
+                    </View>
                   </View>
                   <Button
                     label={alreadySaved ? L('Đã lưu', 'Saved') : L('Lưu để ôn', 'Save to review')}

@@ -28,7 +28,7 @@ export default function BookmarksScreen() {
   );
 
   return (
-    <Screen>
+    <Screen cat="read">
       <HeroBanner
         title={L('Đã lưu', 'Saved')}
         subtitle={L('Bài đọc bạn đánh dấu để quay lại sau.', 'Passages you bookmarked to come back to later.')}

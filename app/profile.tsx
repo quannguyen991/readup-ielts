@@ -124,7 +124,7 @@ export default function ProfileScreen() {
   const avatarSize = wide ? 112 : 88;
 
   return (
-    <Screen>
+    <Screen cat="peace">
       {/* Mèo đeo kính ngồi trên đầu hồ sơ (màn hẹp) */}
       {!wide ? (
         <View style={{ alignItems: 'flex-end', marginBottom: 2 }}>

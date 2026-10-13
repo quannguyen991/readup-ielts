@@ -3,7 +3,8 @@ import { Pressable, Text, View } from 'react-native';
 import { levelLabel, posIpa } from '@/data/study-decks';
 import Animated, { Easing, interpolate, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
-import { CARD_SHADOW, ExampleLine, SpeakButton } from './StudyKit';
+import { CARD_SHADOW, SpeakButton } from './StudyKit';
+import { ExampleSentence } from '@/components/vocab/ExampleSentence';
 import { SkyEffect } from '@/components/effects/SkyEffect';
 import type { StudyWord } from '@/services/vocab/topic-study';
 import { useL } from '@/i18n/useL';
@@ -186,7 +187,7 @@ export function DetailFace({ word, showWord }: { word: StudyWord; showWord?: boo
         {word.example ? (
           <View>
             <Label>{L('Ví dụ', 'Example')}</Label>
-            <ExampleLine example={word.example} word={word.word} />
+            <ExampleSentence example={word.example} word={word.word} />
           </View>
         ) : null}
         {word.synonyms?.length ? (

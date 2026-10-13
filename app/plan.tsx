@@ -100,7 +100,7 @@ export default function PlanScreen() {
   if (mau) return <TemplatePlan />;
 
   return (
-    <Screen>
+    <Screen cat="think">
       <CrossFade swapKey={!input || sua ? 'setup' : 'plan'}>
         {!input || sua || !plan ? <PlanSetup initial={input} /> : <MyPlan input={input} plan={plan} />}
       </CrossFade>

@@ -26,8 +26,8 @@ export default function VocabQuizHub() {
           line1={L('Chọn một bộ từ,', 'Pick a word set,')}
           line2={L('vào trong là đủ cách luyện', 'every practice mode is inside')}
           subtitle={L(
-            'Học xen kẽ, Kiểm tra, Điền vào câu, Nghe chép, Phát âm, Bóng bay — cùng một bộ từ, đáp án chấm bằng luật, từ sai quay lại ngay trong lượt.',
-            'Mixed learning, Test, Fill the gap, Dictation, Pronunciation, Balloons — one word set, rule-based marking, and missed words come back in the same round.',
+            'Học xen kẽ, Kiểm tra, Điền vào câu, Nghe chép, Phát âm, Bóng bay, Ghép cặp, Đoán chữ, Xếp câu — cùng một bộ từ, đáp án chấm bằng luật, từ sai quay lại ngay trong lượt.',
+            'Mixed learning, Test, Fill the gap, Dictation, Pronunciation, Balloons, Match pairs, Hangman, Build sentence — one word set, rule-based marking, and missed words come back in the same round.',
           )}
         />
       </Appear>

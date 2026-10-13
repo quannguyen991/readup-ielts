@@ -163,7 +163,7 @@ export default function LibraryScreen() {
   const shown = articles.slice(current * PAGE_SIZE, current * PAGE_SIZE + PAGE_SIZE);
 
   return (
-    <Screen>
+    <Screen cat="read">
       <LightHero
         scene="home"
         badge="READING LIBRARY" art="verbal"

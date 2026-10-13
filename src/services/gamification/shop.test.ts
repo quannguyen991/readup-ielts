@@ -44,7 +44,8 @@ test('danh mục hợp lệ: mỗi loại mang đúng dữ liệu của nó', ()
   for (const item of SHOP_ITEMS) {
     assert.ok(!ids.has(item.id), `trùng mã ${item.id}`);
     ids.add(item.id);
-    assert.ok(item.price > 0);
+    // Chỉ giao diện Chiikawa được miễn phí (ai cũng có sẵn); mọi món khác phải có giá.
+    assert.ok(item.price > 0 || item.id === 'theme-chiikawa', `${item.id} giá 0 nhưng không phải món miễn phí`);
     if (item.kind === 'powerup') assert.ok(item.grants && item.grants in ITEMS, `${item.id} trao thứ lạ`);
     else assert.equal(item.grants, undefined, `${item.id} không phải đồ chiến đấu mà lại trao vật phẩm`);
     if (item.kind === 'plan') {

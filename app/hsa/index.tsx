@@ -23,7 +23,7 @@ export default function HsaHomeScreen() {
   const recent = sessions[0];
 
   return (
-    <Screen>
+    <Screen cat="sit">
       <View style={{ gap: 20 }}>
         <LinearGradient
           colors={['#FBF7EE', '#E9D6AF', '#C7A565']}

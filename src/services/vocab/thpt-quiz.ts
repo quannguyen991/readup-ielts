@@ -29,6 +29,9 @@ export type ThptQuestion = {
   correctIndex: number;
 };
 
+/** Số câu trong một lượt trắc nghiệm THPT của mỗi bài. */
+export const THPT_QUESTIONS_PER_BAI = 35;
+
 export const THPT_INSTRUCTION: Record<ThptKind, string> = {
   complete: 'Mark the letter A, B, C, or D to indicate the correct answer to the following question.',
   closest: 'Mark the letter A, B, C, or D to indicate the word CLOSEST in meaning to the underlined word.',

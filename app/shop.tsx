@@ -574,7 +574,7 @@ function ItemCard({
           ) : (
             <View className="flex-row items-center gap-1 rounded-pill px-2.5 py-1" style={{ backgroundColor: GOLD_SOFT }}>
               <Text style={{ fontSize: 12 }}>⭐</Text>
-              <Text className="font-heavy text-label text-ink">{formatStars(item.price)}</Text>
+              <Text className="font-heavy text-label text-ink">{item.price === 0 ? L('Miễn phí', 'Free') : formatStars(item.price)}</Text>
             </View>
           )}
           {bagCount !== null ? <Text className="font-sans text-label text-muted">{L('Trong túi:', 'In bag:')} {bagCount}</Text> : null}
