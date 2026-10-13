@@ -104,8 +104,12 @@ export default function MockTestsScreen() {
  * tiêu 3 bài và không đề nào dùng lại bài của đề khác — 20 đề mới dùng hết 60
  * bài, tức là 90% kho nằm không. Người luyện đều mỗi tuần một đề thì 20 đề hết
  * trong năm tháng.
+ *
+ * Nâng từ 50 lên 100 (13/10/2026) sau khi nạp thêm bài mở (Wikipedia, CC BY-SA) và chạy lại bộ
+ * sinh: kho đủ 13 câu nay có 662 bài. Chỉ 58 bài C2 đủ điều kiện, nên 58 đề đầu có đủ ba mức khó;
+ * các đề sau lùi bài khó nhất về C1 theo luật hạ cấp trong buildTests, không bỏ đề.
  */
-export const MOCK_TEST_COUNT = 50;
+export const MOCK_TEST_COUNT = 100;
 
 /**
  * Đề Listening đầy đủ (4 section) ghép vào từng Mock Test. Khi số đề thi nhiều hơn số đề nghe,
@@ -115,7 +119,7 @@ export const MOCK_TEST_COUNT = 50;
 const FULL_LISTENING = LISTENING_TESTS.filter((t) => t.sections.length >= 4);
 
 /**
- * Dựng 50 đề, mỗi đề 3 passage theo đúng cấu trúc IELTS Reading.
+ * Dựng tối đa MOCK_TEST_COUNT đề, mỗi đề 3 passage theo đúng cấu trúc IELTS Reading.
  *
  * BA ĐIỀU KHÁC BẢN TRƯỚC (bản trước chỉ dựng 3 đề):
  *

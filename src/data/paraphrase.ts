@@ -15,8 +15,14 @@
  * TRUE/FALSE thì mức độ chính là chỗ ăn thua. Thà bảng ngắn mà mỗi dòng đúng.
  */
 
-/** Thay được cho nhau mà không đổi nghĩa. Dùng để dựng nhận định ĐÚNG. */
-export const SYNONYMS: Readonly<Record<string, string>> = Object.freeze({
+/**
+ * Thay được cho nhau mà không đổi nghĩa. Dùng để dựng nhận định ĐÚNG.
+ *
+ * Ba bảng tra theo chữ (đây, ANTONYMS, QUANTIFIER_FLIPS) được dựng KHÔNG kế thừa Object.prototype:
+ * tra `constructor` hay `toString` mà chữ đó không có trong bảng thì phải ra undefined, chứ không
+ * ra hàm của JavaScript. Bài về lập trình có chữ `constructor` từng làm bộ sinh đề sập.
+ */
+export const SYNONYMS: Readonly<Record<string, string>> = Object.freeze(Object.assign(Object.create(null), {
   // động từ hay gặp trong bài học thuật
   found: 'discovered',
   discovered: 'found',
@@ -314,7 +320,7 @@ export const SYNONYMS: Readonly<Record<string, string>> = Object.freeze({
   projects: 'schemes',
   survey: 'study',
   surveys: 'studies',
-});
+}));
 
 /**
  * Đảo nghĩa. Dùng để dựng nhận định SAI — và mỗi cặp là MỘT lỗi có tên.
@@ -336,7 +342,7 @@ export const SYNONYMS: Readonly<Record<string, string>> = Object.freeze({
   losses", "known as" thành "unknown as". Câu sai ngữ pháp thì người học loại
   được mà không cần mở bài — đúng thứ hàng rào này sinh ra để chặn.
 */
-export const ANTONYMS: Readonly<Record<string, string>> = Object.freeze({
+export const ANTONYMS: Readonly<Record<string, string>> = Object.freeze(Object.assign(Object.create(null), {
   // động từ — hướng của hành động bị lật
   increased: 'decreased',
   decreased: 'increased',
@@ -654,10 +660,10 @@ export const ANTONYMS: Readonly<Record<string, string>> = Object.freeze({
   danger: 'safety',
   poverty: 'wealth',
   wealth: 'poverty',
-});
+}));
 
 /** Lượng từ — chỗ mất điểm TFNG nhiều nhất, nên tách riêng thành một luật. */
-export const QUANTIFIER_FLIPS: Readonly<Record<string, string>> = Object.freeze({
+export const QUANTIFIER_FLIPS: Readonly<Record<string, string>> = Object.freeze(Object.assign(Object.create(null), {
   all: 'some',
   some: 'all',
   every: 'some',
@@ -692,7 +698,7 @@ export const QUANTIFIER_FLIPS: Readonly<Record<string, string>> = Object.freeze(
   mainly: 'rarely',
   primarily: 'rarely',
   both: 'neither',
-});
+}));
 
 /** Tên của từng luật phá — hiện ra trong lời giải để người học biết mình sai gì. */
 export type MutationRule = 'antonym' | 'quantifier' | 'number' | 'agent-swap';
