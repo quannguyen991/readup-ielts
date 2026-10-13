@@ -202,6 +202,17 @@ export default function MockRunScreen() {
                 );
               })}
             </View>
+            {doneCount === 0 && passages[0] ? (
+              <View className="mt-3 flex-row">
+                <Button
+                  label={L('Thi liền mạch · 60 phút', 'Continuous exam · 60 min')}
+                  iconLeft="clock"
+                  onPress={() =>
+                    router.push(`/read/${passages[0]!.id}?from=${from}&until=${Date.now() + 60 * 60 * 1000}` as never)
+                  }
+                />
+              </View>
+            ) : null}
           </PaperCard>
         </Grid>
       </View>

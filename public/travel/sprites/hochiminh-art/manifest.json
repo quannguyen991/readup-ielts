@@ -1,0 +1,434 @@
+[
+ {
+  "id": "banhbao",
+  "file": "banhbao.png",
+  "w": 80,
+  "h": 76
+ },
+ {
+  "id": "banhbeo",
+  "file": "banhbeo.png",
+  "w": 80,
+  "h": 72
+ },
+ {
+  "id": "banhcanh",
+  "file": "banhcanh.png",
+  "w": 80,
+  "h": 75
+ },
+ {
+  "id": "banhcuon",
+  "file": "banhcuon.png",
+  "w": 80,
+  "h": 77
+ },
+ {
+  "id": "banhflan",
+  "file": "banhflan.png",
+  "w": 80,
+  "h": 75
+ },
+ {
+  "id": "banhmi",
+  "file": "banhmi.png",
+  "w": 83,
+  "h": 88
+ },
+ {
+  "id": "banhngot",
+  "file": "banhngot.png",
+  "w": 80,
+  "h": 73
+ },
+ {
+  "id": "banhtrang",
+  "file": "banhtrang.png",
+  "w": 75,
+  "h": 80
+ },
+ {
+  "id": "benthanh",
+  "file": "benthanh.png",
+  "w": 128,
+  "h": 104
+ },
+ {
+  "id": "bialo",
+  "file": "bialo.png",
+  "w": 80,
+  "h": 70
+ },
+ {
+  "id": "binhtay",
+  "file": "binhtay.png",
+  "w": 128,
+  "h": 98
+ },
+ {
+  "id": "bitexco",
+  "file": "bitexco.png",
+  "w": 100,
+  "h": 128
+ },
+ {
+  "id": "buivien",
+  "file": "buivien.png",
+  "w": 128,
+  "h": 126
+ },
+ {
+  "id": "bunmam",
+  "file": "bunmam.png",
+  "w": 80,
+  "h": 77
+ },
+ {
+  "id": "bunrieu",
+  "file": "bunrieu.png",
+  "w": 80,
+  "h": 80
+ },
+ {
+  "id": "bunthit",
+  "file": "bunthit.png",
+  "w": 80,
+  "h": 75
+ },
+ {
+  "id": "cafesua",
+  "file": "cafesua.png",
+  "w": 91,
+  "h": 88
+ },
+ {
+  "id": "cafevot",
+  "file": "cafevot.png",
+  "w": 80,
+  "h": 78
+ },
+ {
+  "id": "caphetrung",
+  "file": "caphetrung.png",
+  "w": 80,
+  "h": 75
+ },
+ {
+  "id": "cattoc",
+  "file": "cattoc.png",
+  "w": 80,
+  "h": 79
+ },
+ {
+  "id": "chaolong",
+  "file": "chaolong.png",
+  "w": 80,
+  "h": 77
+ },
+ {
+  "id": "comga",
+  "file": "comga.png",
+  "w": 79,
+  "h": 80
+ },
+ {
+  "id": "comtam",
+  "file": "comtam.png",
+  "w": 89,
+  "h": 88
+ },
+ {
+  "id": "conrua",
+  "file": "conrua.png",
+  "w": 128,
+  "h": 115
+ },
+ {
+  "id": "cuchi",
+  "file": "cuchi.png",
+  "w": 128,
+  "h": 120
+ },
+ {
+  "id": "dienthoai",
+  "file": "dienthoai.png",
+  "w": 80,
+  "h": 79
+ },
+ {
+  "id": "gate",
+  "file": "gate.png",
+  "w": 126,
+  "h": 128
+ },
+ {
+  "id": "giaydep",
+  "file": "giaydep.png",
+  "w": 80,
+  "h": 73
+ },
+ {
+  "id": "haisan",
+  "file": "haisan.png",
+  "w": 80,
+  "h": 69
+ },
+ {
+  "id": "hutieu",
+  "file": "hutieu.png",
+  "w": 75,
+  "h": 80
+ },
+ {
+  "id": "independence",
+  "file": "independence.png",
+  "w": 128,
+  "h": 99
+ },
+ {
+  "id": "kara",
+  "file": "kara.png",
+  "w": 75,
+  "h": 80
+ },
+ {
+  "id": "kem",
+  "file": "kem.png",
+  "w": 80,
+  "h": 80
+ },
+ {
+  "id": "landmark81",
+  "file": "landmark81.png",
+  "w": 97,
+  "h": 128
+ },
+ {
+  "id": "lanhong",
+  "file": "lanhong.png",
+  "w": 128,
+  "h": 123
+ },
+ {
+  "id": "lau",
+  "file": "lau.png",
+  "w": 80,
+  "h": 70
+ },
+ {
+  "id": "lichsutp",
+  "file": "lichsutp.png",
+  "w": 128,
+  "h": 108
+ },
+ {
+  "id": "mekong",
+  "file": "mekong.png",
+  "w": 128,
+  "h": 128
+ },
+ {
+  "id": "minimart",
+  "file": "minimart.png",
+  "w": 80,
+  "h": 67
+ },
+ {
+  "id": "nguyenhue",
+  "file": "nguyenhue.png",
+  "w": 128,
+  "h": 127
+ },
+ {
+  "id": "nharong",
+  "file": "nharong.png",
+  "w": 128,
+  "h": 103
+ },
+ {
+  "id": "nhasach",
+  "file": "nhasach.png",
+  "w": 80,
+  "h": 71
+ },
+ {
+  "id": "nhathuoc",
+  "file": "nhathuoc.png",
+  "w": 80,
+  "h": 78
+ },
+ {
+  "id": "nhatro",
+  "file": "nhatro.png",
+  "w": 37,
+  "h": 80
+ },
+ {
+  "id": "nonla",
+  "file": "nonla.png",
+  "w": 80,
+  "h": 69
+ },
+ {
+  "id": "notredame",
+  "file": "notredame.png",
+  "w": 125,
+  "h": 128
+ },
+ {
+  "id": "nuocep",
+  "file": "nuocep.png",
+  "w": 80,
+  "h": 71
+ },
+ {
+  "id": "nuocmia",
+  "file": "nuocmia.png",
+  "w": 78,
+  "h": 80
+ },
+ {
+  "id": "nuongtam",
+  "file": "nuongtam.png",
+  "w": 80,
+  "h": 78
+ },
+ {
+  "id": "oc",
+  "file": "oc.png",
+  "w": 80,
+  "h": 77
+ },
+ {
+  "id": "opera",
+  "file": "opera.png",
+  "w": 128,
+  "h": 110
+ },
+ {
+  "id": "phobo",
+  "file": "phobo.png",
+  "w": 73,
+  "h": 80
+ },
+ {
+  "id": "phoga",
+  "file": "phoga.png",
+  "w": 68,
+  "h": 80
+ },
+ {
+  "id": "phoshop",
+  "file": "phoshop.png",
+  "w": 87,
+  "h": 88
+ },
+ {
+  "id": "postoffice",
+  "file": "postoffice.png",
+  "w": 128,
+  "h": 101
+ },
+ {
+  "id": "quanao",
+  "file": "quanao.png",
+  "w": 80,
+  "h": 71
+ },
+ {
+  "id": "sinhto",
+  "file": "sinhto.png",
+  "w": 80,
+  "h": 74
+ },
+ {
+  "id": "skydeck",
+  "file": "skydeck.png",
+  "w": 106,
+  "h": 128
+ },
+ {
+  "id": "suadau",
+  "file": "suadau.png",
+  "w": 79,
+  "h": 80
+ },
+ {
+  "id": "suaxe",
+  "file": "suaxe.png",
+  "w": 80,
+  "h": 70
+ },
+ {
+  "id": "tandinh",
+  "file": "tandinh.png",
+  "w": 120,
+  "h": 128
+ },
+ {
+  "id": "taodan",
+  "file": "taodan.png",
+  "w": 128,
+  "h": 127
+ },
+ {
+  "id": "thaocam",
+  "file": "thaocam.png",
+  "w": 128,
+  "h": 105
+ },
+ {
+  "id": "thienhau",
+  "file": "thienhau.png",
+  "w": 128,
+  "h": 100
+ },
+ {
+  "id": "tiemanh",
+  "file": "tiemanh.png",
+  "w": 80,
+  "h": 79
+ },
+ {
+  "id": "tranhtiem",
+  "file": "tranhtiem.png",
+  "w": 80,
+  "h": 75
+ },
+ {
+  "id": "tratiem",
+  "file": "tratiem.png",
+  "w": 80,
+  "h": 79
+ },
+ {
+  "id": "trongiam",
+  "file": "trongiam.png",
+  "w": 72,
+  "h": 80
+ },
+ {
+  "id": "vinhnghiem",
+  "file": "vinhnghiem.png",
+  "w": 126,
+  "h": 128
+ },
+ {
+  "id": "vitquay",
+  "file": "vitquay.png",
+  "w": 80,
+  "h": 69
+ },
+ {
+  "id": "warmuseum",
+  "file": "warmuseum.png",
+  "w": 128,
+  "h": 96
+ },
+ {
+  "id": "xoi",
+  "file": "xoi.png",
+  "w": 80,
+  "h": 75
+ }
+]

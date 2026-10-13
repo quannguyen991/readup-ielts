@@ -1,0 +1,26 @@
+[
+ {
+  "id": "car_green",
+  "file": "car_green.png",
+  "w": 35,
+  "h": 16
+ },
+ {
+  "id": "car_yellow",
+  "file": "car_yellow.png",
+  "w": 35,
+  "h": 16
+ },
+ {
+  "id": "car_white",
+  "file": "car_white.png",
+  "w": 35,
+  "h": 17
+ },
+ {
+  "id": "car_grey",
+  "file": "car_grey.png",
+  "w": 35,
+  "h": 16
+ }
+]

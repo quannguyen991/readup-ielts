@@ -15,7 +15,7 @@ import { Hero3D, useHeroLogo } from '@/components/three/Hero3D';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
-import { INK, STICKER_TEXT_SHADOW, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
+import { INK, STICKER_TITLE_SHADOW } from '@/components/ui/StickerCard';
 import { GlowStars } from '@/components/ui/GlowStars';
 import { PLANS } from '@/lib/billing/plans';
 import { ARTICLES } from '@/data/articles';
@@ -600,16 +600,6 @@ function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaThe
         <Text className="font-heavy text-sectionTitle text-white" style={[STICKER_TITLE_SHADOW, { marginTop: chiikawaTheme ? 2 : 14 }]}>
           {bi(area.title, locale)}
         </Text>
-
-        {/* Chữ trắng đặc có quầng mực mờ: đầu sáng của gradient (thẻ cam, thẻ
-            xanh lá) không làm chữ chìm. */}
-        <View className="mt-2 gap-1.5">
-          {area.lines.map((line) => (
-            <Text key={line.vi} className="font-semi text-label text-white" style={STICKER_TEXT_SHADOW}>
-              {bi(line, locale)}
-            </Text>
-          ))}
-        </View>
 
         {/* Đẩy viên nhãn xuống đáy để các thẻ có nhãn thẳng hàng dù chữ dài ngắn khác nhau. */}
         <View className="flex-1" />

@@ -192,6 +192,8 @@ export type CityMap = {
   image?: ImageLayer;
   /** (Thêm bởi bộ vẽ, tuỳ chọn) vật đứng riêng trên ảnh đất; cần `image` là ảnh đất. */
   scene?: ObjectScene;
+  /** (Tuỳ chọn) bản lưới có phòng trong: vào các địa điểm trong nhà thì mở phòng như bản ảnh. */
+  interiors?: boolean;
   ambience: { weather: WeatherPlan; sounds: string[] };
 };
 

@@ -35,7 +35,7 @@ export type CoverLook = 'stars' | 'aurora' | 'sunset' | 'ocean' | 'cyberpunk' | 
 /** Hiệu ứng hồ sơ & thanh bên — `components/profile/ProfileEffect.tsx`. */
 export type EffectLook = 'sakura' | 'flame' | 'meteor' | 'snow' | 'bubbles' | 'sparkle' | 'autumn' | 'matrix' | 'fireflies' | 'butterflies' | 'lightning' | 'galaxy' | 'starlight' | 'neon_pulse' | 'rainbow';
 /** Kiểu giao diện toàn diện — đổi màu thanh bên và màn hình. */
-export type ThemeLook = 'sepia' | 'emerald' | 'midnight' | 'sakura' | 'cyberpunk' | 'ocean' | 'sunset' | 'lavender' | 'nord' | 'matcha';
+export type ThemeLook = 'sepia' | 'emerald' | 'midnight' | 'sakura' | 'cyberpunk' | 'ocean' | 'sunset' | 'lavender' | 'nord' | 'matcha' | 'chiikawa' | 'retro';
 
 export type ShopItem = {
   id: string;
@@ -327,6 +327,26 @@ export const SHOP_ITEMS: ShopItem[] = [
     glyph: '🍵',
     repeatable: false,
     themeLook: 'matcha',
+  },
+  {
+    id: 'theme-chiikawa',
+    kind: 'theme',
+    name: 'Chiikawa · Góc học hồng',
+    detail: 'Mở khóa giao diện hồng sữa, nền caro và mascot Chiikawa trên thanh tác vụ cùng các màn hình.',
+    price: 500,
+    glyph: '🎀',
+    repeatable: false,
+    themeLook: 'chiikawa',
+  },
+  {
+    id: 'theme-retro',
+    kind: 'theme',
+    name: 'Retro · Sổ sao',
+    detail: 'Mở khóa giao diện retro: cầu vồng, chữ sọc 70s, icon viền mực và nền kem trên toàn app.',
+    price: 500,
+    glyph: '🌈',
+    repeatable: false,
+    themeLook: 'retro',
   },
 
   // ---------------------------------------------------------------- nền học (sau mọi màn học)

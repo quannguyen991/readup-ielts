@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Svg, { Defs, Ellipse, LinearGradient, Pattern, Path, RadialGradient, Rect, Stop } from 'react-native-svg';
 
 /**
- * Nền giấy kẻ ô, tông xanh dương loang sang tím.
+ * Nền giấy kẻ ô, chuyển sắc pastel theo giao diện người học chọn.
  *
  * Ba lớp chồng lên nhau, vẽ trong CÙNG MỘT thẻ `<Svg>`:
  *
@@ -24,19 +24,10 @@ import Svg, { Defs, Ellipse, LinearGradient, Pattern, Path, RadialGradient, Rect
 /** Xanh dương đậm → chàm → tím. Đủ tối để chữ trắng và thẻ giấy sáng nổi lên. */
 const BASE_STOPS = ['#0F1D33', '#1A2B48', '#564528'] as const;
 
-/**
- * Bản SÁNG của cùng một nền: xanh nước biển rất nhạt, ngả tím ở góc dưới.
- *
- * Dùng cho màn ĐANG LÀM VIỆC — đọc bài, gõ bài, tra từ. Ở đó thẻ vẫn trắng, nên
- * nền chỉ cần đủ màu để tách thẻ ra khỏi trang; nền tối sẽ biến mỗi thẻ thành
- * một ô sáng chói giữa màn hình mà người ta phải nhìn vào hàng chục phút.
- *
- * ĐỨNG Ở ĐÂY chứ không nằm riêng trong `TaskShell`: giờ có sáu bảy màn dùng
- * chung, mà hai bộ số gần giống nhau ở hai file là hai bộ số sẽ trôi khỏi nhau.
- */
+/** Kem, hồng, tím nhạt: fallback dùng ở trang giới thiệu và hero sáng. */
 export const LIGHT_STOPS = ['#FFFDF8', '#FBF6EC', '#F5ECD9'] as const;
 
-/** Nét kẻ cho bản sáng — chàm rất mờ, không phải trắng. */
+/** Nét kẻ cho bản sáng — hồng rất mờ, không phải trắng. */
 export const LIGHT_LINE = 'rgba(143, 110, 54, 0.10)';
 
 /**
@@ -49,7 +40,7 @@ export const LIGHT_LINE = 'rgba(143, 110, 54, 0.10)';
  * LƯU Ý KHI ĐẶT CHỮ TRỰC TIẾP LÊN NỀN NÀY: chữ xám nhạt (`text-muted`) đọc
  * không nổi nữa. Chữ nằm ngoài thẻ phải là `text-ink` hoặc trắng.
  */
-// 01/10/2026 — Band 9: nền kem ấm, kẻ ô vàng kim rất mờ (thay xanh cornflower).
+// Nền duyệt mặc định — bảng màu 4 lựa chọn nằm trong `cute-palettes.ts`.
 export const CANVAS_STOPS = ['#F4EFE4', '#F0E9DA', '#EBE2CE'] as const;
 export const CANVAS_LINE = 'rgba(143, 110, 54, 0.10)';
 

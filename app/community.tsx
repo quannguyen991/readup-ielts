@@ -63,7 +63,6 @@ export default function CommunityScreen() {
   return (
     <Screen>
       <Header L={L} />
-      <Text className="mt-1 font-sans text-body text-muted">{L('Cùng hỏi, giải thích và động viên nhau học tốt hơn.', 'Ask questions, share what works and help each other keep learning.')}</Text>
       <View className="mt-5 flex-row flex-wrap gap-2">
         {tabs.map((item) => {
           const selected = tab === item.id;
@@ -92,7 +91,6 @@ function Header({ L }: { L: (vi: string, en: string) => string }) {
       </View>
       <View className="min-w-0 flex-1">
         <Text className="font-heavy text-pageTitle text-ink">{L('Cộng đồng học tập', 'Study community')}</Text>
-        <Text className="font-sans text-label text-muted">{L('Chia sẻ điều bạn đang học', 'Learn better together')}</Text>
       </View>
     </View>
   );

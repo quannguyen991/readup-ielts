@@ -65,6 +65,7 @@ export function studyBackground(look: string | null | undefined): StudyBackgroun
  * thanh bên tối (Vũ trụ sao đêm, Cyberpunk…), nền trang vẫn sáng.
  */
 export const THEME_PAGE_BACKGROUNDS: Record<string, StudyBackground> = {
+  'theme-chiikawa': { stops: ['#FFF0F4', '#FFE7EE', '#FCEAF2'], line: 'rgba(198,90,120,0.10)', pattern: 'grid', blobs: ['#F7CBD8', '#FCE8EE'] },
   'theme-midnight': { stops: ['#9AA8EC', '#8A96DE', '#A395E2'], line: 'rgba(30,35,110,0.14)', pattern: 'grid', blobs: ['#818CF8', '#C084FC'] },
   'theme-sakura': { stops: ['#F8BBD5', '#F3A9C9', '#F6B6DA'], line: 'rgba(150,30,90,0.12)', pattern: 'grid', blobs: ['#F9A8D4', '#FBCFE8'] },
   'theme-cyberpunk': { stops: ['#9EE3F4', '#B6A8F6', '#F0A6D4'], line: 'rgba(60,20,120,0.14)', pattern: 'grid', blobs: ['#22D3EE', '#F472B6'] },

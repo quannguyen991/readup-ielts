@@ -133,7 +133,13 @@ export const useRewardStore = create<RewardState>()(
     {
       name: `${STORAGE_PREFIX}reward`,
       storage: storage(),
-      version: 1,
+      version: 3,
+      migrate: (persisted) => ({
+        ...(persisted as Partial<RewardState>),
+        // Mặc định mở app phải về giao diện Band 9. Vật phẩm và sao vẫn giữ;
+        // người học có thể bật lại giao diện đã mở trong trang Cá nhân.
+        theme: null,
+      }) as RewardState,
       partialize: (s) => ({ owned: s.owned, spent: s.spent, avatar: s.avatar, cover: s.cover, effect: s.effect ?? null, theme: s.theme ?? null, studyBg: s.studyBg ?? null, skin: s.skin, mascot: s.mascot, wornAt: s.wornAt, frozenDays: s.frozenDays, prizes: s.prizes }) as RewardState,
     },
   ),

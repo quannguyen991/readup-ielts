@@ -1,0 +1,26 @@
+[
+ {
+  "id": "xeom",
+  "file": "xeom.png",
+  "w": 13,
+  "h": 24
+ },
+ {
+  "id": "ongcocho",
+  "file": "ongcocho.png",
+  "w": 14,
+  "h": 24
+ },
+ {
+  "id": "hoasen",
+  "file": "hoasen.png",
+  "w": 25,
+  "h": 24
+ },
+ {
+  "id": "nonla",
+  "file": "nonla.png",
+  "w": 15,
+  "h": 24
+ }
+]

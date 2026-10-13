@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
@@ -232,25 +232,42 @@ function photoOwners(): Map<string, string> {
 function CoverImage({ article }: { article: ArticleMeta }) {
   const [failed, setFailed] = React.useState(false);
   const src = coverSource(article, photoOwners());
-
-  if (src.kind === 'photo' && !failed) {
-    return (
-      <Image
-        source={{ uri: src.uri }}
-        style={{ width: '100%', aspectRatio: 16 / 10, backgroundColor: color.primarySoft }}
-        contentFit="cover"
-        transition={150}
-        cachePolicy="memory-disk"
-        onError={() => setFailed(true)}
-      />
-    );
-  }
+  const mascot = article.id.charCodeAt(0) % 2 === 0
+    ? require('../../../assets/illustrations/cute-home/mascot-wave.png')
+    : require('../../../assets/illustrations/cute-home/mascot-peace.png');
 
   return (
-    <GeneratedCoverArt
-      cover={src.kind === 'generated' ? src : generatedCover(article)}
-      aspect="wide"
-    />
+    <View style={{ width: '100%', aspectRatio: 16 / 10, position: 'relative', overflow: 'hidden', backgroundColor: color.primarySoft }}>
+      {src.kind === 'photo' && !failed ? (
+        <Image
+          source={{ uri: src.uri }}
+          style={StyleSheet.absoluteFill}
+          contentFit="cover"
+          transition={150}
+          cachePolicy="memory-disk"
+          onError={() => setFailed(true)}
+        />
+      ) : (
+        <GeneratedCoverArt
+          cover={src.kind === 'generated' ? src : generatedCover(article)}
+          aspect="wide"
+        />
+      )}
+      <View aria-hidden pointerEvents="none" style={{ position: 'absolute', right: 8, bottom: 7, width: 62, height: 62, padding: 2, alignItems: 'center', justifyContent: 'center', borderRadius: 22, borderWidth: 1.5, borderColor: 'rgba(255,255,255,0.9)', backgroundColor: 'rgba(255,240,244,0.82)', shadowColor: '#7A4357', shadowOpacity: 0.2, shadowRadius: 8, shadowOffset: { width: 0, height: 3 } }}>
+        <Image
+          source={mascot}
+          contentFit="contain"
+          style={{
+            width: 55,
+            height: 55,
+            transform: [
+              { scaleX: article.id.charCodeAt(0) % 2 === 0 ? 1 : -1 },
+              { rotate: article.id.charCodeAt(0) % 2 === 0 ? '-5deg' : '5deg' },
+            ],
+          }}
+        />
+      </View>
+    </View>
   );
 }
 

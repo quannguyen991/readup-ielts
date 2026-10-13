@@ -43,6 +43,8 @@ import { mergeTravel, normalizeTravel } from '@/services/travel/sync';
 import { historyPayload, useHistoryStore } from '@/store/useHistoryStore';
 import { mergeStudyAbroad, normalizeStudyAbroad } from '@/services/study-abroad/sync';
 import { useStudyAbroadStore } from '@/store/useStudyAbroadStore';
+import { mergeStartup, normalizeStartup } from '@/services/startup/sync';
+import { useStartupStore } from '@/store/useStartupStore';
 import { mergeHistory, normalizeHistory } from '@/services/history/progress';
 
 /**
@@ -299,12 +301,28 @@ const studyAbroadStore: SyncedStore = {
   key: 'study_abroad',
   read: () => {
     const s = useStudyAbroadStore.getState();
-    return { completed: s.completed, decorations: s.decorations, restedAt: s.restedAt };
+    return { completed: s.completed, decorations: s.decorations, restedAt: s.restedAt, ledger: s.ledger };
   },
   write: (payload) => {
     if (payload) useStudyAbroadStore.setState(normalizeStudyAbroad(payload));
   },
   merge: (local, remote) => mergeStudyAbroad(local, remote),
+};
+
+/** Quán khởi nghiệp: quán đã mở, sổ quán, món riêng. Vốn nằm ở sổ đồng du học (store Du học). */
+const startupStore: SyncedStore = {
+  key: 'startup',
+  read: () => {
+    const s = useStartupStore.getState();
+    return { shops: s.shops, ledger: s.ledger, customRecipes: s.customRecipes };
+  },
+  write: (payload) => {
+    if (payload) {
+      const n = normalizeStartup(payload);
+      useStartupStore.setState({ shops: n.shops, ledger: n.ledger, customRecipes: n.customRecipes });
+    }
+  },
+  merge: (local, remote) => mergeStartup(local, remote),
 };
 
 /** Gọi một lần lúc khởi động app. */
@@ -380,4 +398,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(listeningStore);
   registerSyncedStore(historyStore);
   registerSyncedStore(studyAbroadStore);
+  registerSyncedStore(startupStore);
 }

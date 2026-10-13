@@ -106,61 +106,54 @@ export default function LearningPathScreen() {
     );
   };
 
-  /* ---------------------------------------------------------------- phiếu chọn */
+  /* ---------------------------------------------------------------- bảng chọn lộ trình */
   const selector = (
-    <View style={{ borderRadius: 22, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, paddingHorizontal: compactPicker ? 16 : 24, paddingVertical: 6 }}>
-      <SheetRow n="01" title={L('Kỳ thi', 'Exam')} compact={compactPicker} first>
-        <View style={{ maxWidth: 320 }}>
-          <ExamSwitch
-            value={exam}
-            onChange={(e) => {
-              setExam(e);
-            }}
-          />
+    <View style={{ borderRadius: 24, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, padding: compactPicker ? 16 : 22, gap: 20, boxShadow: '0 10px 28px rgba(15,29,51,0.07)' } as object}>
+      <View style={{ flexDirection: compactPicker ? 'column' : 'row', alignItems: compactPicker ? 'stretch' : 'center', justifyContent: 'space-between', gap: 14 }}>
+        <View style={{ flex: 1, minWidth: 0 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+            <View style={{ width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: P.goldLight }}>
+              <Icon name="compass" size={14} color={P.goldDeep} strokeWidth={2.4} />
+            </View>
+            <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.5, color: P.goldDeep }}>{L('LỘ TRÌNH CỦA BẠN', 'YOUR LEARNING PATH')}</Text>
+          </View>
+          <Text className="font-heavy" style={{ marginTop: 7, fontSize: 20, lineHeight: 26, color: P.navy }}>{L('Chọn điểm bắt đầu', 'Choose your starting point')}</Text>
+          <Text className="font-sans" style={{ marginTop: 3, fontSize: 13, lineHeight: 19, color: P.muted }}>{L('Điều chỉnh kỳ thi và trình độ theo mục tiêu của bạn.', 'Set the exam and level that match your goal.')}</Text>
         </View>
-      </SheetRow>
-      <SheetRow
-        n="02"
-        title={L('Trình độ', 'Level')}
-        hint={planLevel ? L('Gợi ý theo lộ trình của bạn', 'Suggested from your plan') : L('Chọn mức gần với điểm hiện tại', 'Pick the level closest to your current score')}
-        compact={compactPicker}
-      >
+        <View style={{ width: compactPicker ? '100%' : 250 }}>
+          <ExamSwitch value={exam} onChange={setExam} />
+        </View>
+      </View>
+
+      <View>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 9 }}>
+          <Text className="font-heavy" style={{ fontSize: 15, color: P.navy }}>{L('Trình độ hiện tại', 'Current level')}</Text>
+          {planLevel ? <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 5, backgroundColor: P.goldWash }}><Icon name="target" size={12} color={P.goldDeep} /><Text className="font-strong" style={{ fontSize: 11, color: P.goldDeep }}>{L('Gợi ý cho bạn', 'Suggested for you')}</Text></View> : null}
+        </View>
         <LevelPicker levels={levels} value={level.id} planLevelId={planLevel?.id ?? null} onChange={(id) => setLevel(exam, id)} compact={compactPicker} />
-        <Text className="font-sans" style={{ marginTop: 10, fontSize: 14, lineHeight: 20, color: P.muted }}>
-          {en ? level.blurb.en : level.blurb.vi}
-        </Text>
-      </SheetRow>
-      <SheetRow n="03" title={L('Tiến độ', 'Progress')} compact={compactPicker}>
-        <View style={{ flexDirection: 'row', alignItems: 'flex-end', gap: 10, flexWrap: 'wrap' }}>
-          <Text className="font-heavy" style={{ fontSize: 32, lineHeight: 36, color: P.navy }}>
-            {prog.done}
-            <Text className="font-semi" style={{ fontSize: 16, color: P.muted }}>
-              {' '}
-              / {prog.total} {L('bài', 'lessons')}
-            </Text>
-          </Text>
-          <Text className="font-strong" style={{ marginBottom: 4, fontSize: 13, color: P.goldDeep }}>
-            {pct}%
-          </Text>
+        <Text className="font-sans" style={{ marginTop: 9, fontSize: 13, lineHeight: 19, color: P.muted }}>{en ? level.blurb.en : level.blurb.vi}</Text>
+      </View>
+
+      <View style={{ borderRadius: 17, backgroundColor: P.goldWash, borderWidth: 1, borderColor: P.line, padding: compactPicker ? 13 : 16 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+            <View style={{ width: 30, height: 30, borderRadius: 15, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' }}><Icon name="gauge" size={16} color={P.gold} strokeWidth={2.4} /></View>
+            <Text className="font-heavy" style={{ fontSize: 14, color: P.navy }}>{L('Tiến độ học', 'Your progress')}</Text>
+          </View>
+          <Text className="font-heavy" style={{ fontSize: 20, color: P.navy }}>{prog.done}<Text className="font-semi" style={{ fontSize: 13, color: P.muted }}> / {prog.total} {L('bài', 'lessons')}</Text></Text>
         </View>
-        <View style={{ marginTop: 10 }}>
-          <ProgressLine done={prog.done} total={prog.total} />
+        <View style={{ marginTop: 10 }}><ProgressLine done={prog.done} total={prog.total} /></View>
+        <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: compactPicker ? 7 : 11, flex: 1 }} aria-hidden>
+            {level.parts.map((p, i) => {
+              const pp = prog.parts[p.id]!;
+              const complete = pp.done === pp.total;
+              return <View key={p.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}><View style={{ width: 7, height: 7, borderRadius: 4, backgroundColor: complete ? '#64B58A' : pp.done > 0 ? P.gold : P.line }} /><Text className="font-semi" style={{ fontSize: 11, color: P.muted }}>P{i + 1} {pp.done}/{pp.total}</Text></View>;
+            })}
+          </View>
+          <Text className="font-heavy" style={{ fontSize: 12, color: P.goldDeep }}>{pct}%</Text>
         </View>
-        <View style={{ marginTop: 10, flexDirection: 'row', flexWrap: 'wrap', gap: 4 }} aria-hidden>
-          {level.parts.map((p, i) => {
-            const pp = prog.parts[p.id]!;
-            const full = pp.done === pp.total;
-            return (
-              <View key={p.id} style={{ flexDirection: 'row', alignItems: 'center', gap: 4, paddingRight: 8 }}>
-                <View style={{ width: 8, height: 8, borderRadius: 2, backgroundColor: full ? P.gold : pp.done > 0 ? P.goldLight : '#E6DCC6' }} />
-                <Text className="font-semi" style={{ fontSize: 12, color: P.muted }}>
-                  P{i + 1} {pp.done}/{pp.total}
-                </Text>
-              </View>
-            );
-          })}
-        </View>
-      </SheetRow>
+      </View>
     </View>
   );
 
@@ -272,7 +265,7 @@ export default function LearningPathScreen() {
                   level={level}
                   prog={prog}
                   node={panelNode}
-                  detail={detailFor(panelNode, true)}
+                  detail={detailFor(panelNode, false)}
                   onPickPart={(partId) => {
                     const part = level.parts.find((p) => p.id === partId)!;
                     const first = part.nodes.find((n) => prog.statuses[n.id]?.state !== 'done') ?? part.nodes[0]!;
@@ -297,37 +290,16 @@ export default function LearningPathScreen() {
 }
 
 /** Một hàng của phiếu: số mục vàng ở lề trái, tiêu đề, nội dung; ngăn bằng chỉ vàng. */
-function SheetRow({ n, title, hint, compact, first, children }: { n: string; title: string; hint?: string; compact: boolean; first?: boolean; children: React.ReactNode }) {
-  return (
-    <View style={{ flexDirection: compact ? 'column' : 'row', gap: compact ? 4 : 18, paddingVertical: 16, borderTopWidth: first ? 0 : 1, borderColor: P.line }}>
-      <Text className="font-heavy" style={{ width: compact ? undefined : 34, fontSize: compact ? 12 : 20, lineHeight: compact ? 16 : 26, letterSpacing: compact ? 1.6 : 0, color: P.gold }}>
-        {n}
-      </Text>
-      <View style={{ flex: compact ? undefined : 1, minWidth: 0 }}>
-        <Text className="font-heavy" style={{ fontSize: 17, lineHeight: 24, color: P.navy }}>
-          {title}
-        </Text>
-        {hint ? (
-          <Text className="font-sans" style={{ fontSize: 13, color: P.muted }}>
-            {hint}
-          </Text>
-        ) : null}
-        <View style={{ marginTop: 10 }}>{children}</View>
-      </View>
-    </View>
-  );
-}
-
 /** Đã xong hết trình độ: chúc mừng + mời sang trình độ kế. */
-function AllDone({ level, levels, onNext }: { level: PathLevel; levels: readonly PathLevel[]; onNext: (id: string) => void }) {
+function AllDone({ level, levels, onNext, light = false }: { level: PathLevel; levels: readonly PathLevel[]; onNext: (id: string) => void; light?: boolean }) {
   const { L, en } = useL();
   const next = levels[levels.indexOf(level) + 1];
   return (
     <View style={{ gap: 10 }}>
-      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: P.goldLight }}>
+      <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: light ? P.goldDeep : P.goldLight }}>
         {L('HOÀN THÀNH TRÌNH ĐỘ', 'LEVEL COMPLETE')}
       </Text>
-      <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 26, color: '#FFFFFF' }}>
+      <Text className="font-heavy" style={{ fontSize: 20, lineHeight: 26, color: light ? P.navy : '#FFFFFF' }}>
         {L(`Bạn đã đi hết ${level.label}`, `You have finished ${level.label}`)}
       </Text>
       {next ? (
@@ -338,7 +310,7 @@ function AllDone({ level, levels, onNext }: { level: PathLevel; levels: readonly
           <Icon name="arrow-right" size={16} color={P.navy} strokeWidth={2.4} />
         </Pressable>
       ) : (
-        <Text className="font-sans" style={{ fontSize: 14, color: 'rgba(255,255,255,0.75)' }}>
+        <Text className="font-sans" style={{ fontSize: 14, color: light ? P.muted : 'rgba(255,255,255,0.75)' }}>
           {en ? 'Keep the habit going with full mock tests.' : 'Giữ nhịp bằng các đề thi thử đầy đủ.'}
         </Text>
       )}
@@ -346,7 +318,7 @@ function AllDone({ level, levels, onNext }: { level: PathLevel; levels: readonly
   );
 }
 
-/** Cột bên (máy tính): cuống vé xanh đậm với bài đang chọn + danh sách Part. */
+/** Cột bên (máy tính): thẻ học tiếp sáng màu + danh sách Part. */
 function SidePanel({
   level,
   levels,
@@ -369,40 +341,32 @@ function SidePanel({
   const part = partOfNode(level, node.id)!;
   const partNo = level.parts.indexOf(part) + 1;
   return (
-    <View style={{ borderRadius: 22, backgroundColor: P.navy, overflow: 'hidden' }}>
-      <View pointerEvents="none" style={{ position: 'absolute', top: 8, left: 8, right: 8, bottom: 8, borderRadius: 16, borderWidth: 1, borderColor: 'rgba(226,200,143,0.3)' }} />
+    <View style={{ borderRadius: 24, backgroundColor: P.paper, borderWidth: 1, borderColor: P.line, overflow: 'hidden', boxShadow: '0 12px 32px rgba(15,29,51,0.10)' } as object}>
       <View style={{ padding: 22, paddingBottom: 16 }}>
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Text className="font-heavy" style={{ fontSize: 13, letterSpacing: 2.4, color: P.goldLight }}>
-            BAND 9
-          </Text>
-          <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)' }}>
+          <View style={{ borderRadius: 999, backgroundColor: P.goldWash, paddingHorizontal: 10, paddingVertical: 5 }}><Text className="font-heavy" style={{ fontSize: 11, letterSpacing: 1.5, color: P.goldDeep }}>BAND 9</Text></View>
+          <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.2, color: P.goldDeep }}>
             {prog.next ? (isNext ? L('HỌC TIẾP', 'UP NEXT') : L('BÀI ĐANG CHỌN', 'SELECTED')) : L('ĐÃ XONG HẾT', 'ALL DONE')}
           </Text>
         </View>
         {!prog.next ? (
           <View style={{ marginTop: 16 }}>
-            <AllDone level={level} levels={levels} onNext={onNextLevel} />
+            <AllDone level={level} levels={levels} onNext={onNextLevel} light />
           </View>
         ) : null}
-        <Text className="font-strong" style={{ marginTop: 16, fontSize: 12, letterSpacing: 1.4, color: 'rgba(255,255,255,0.55)' }}>
+        <Text className="font-strong" style={{ marginTop: 16, fontSize: 11, letterSpacing: 1.4, color: P.goldDeep }}>
           {`PART ${partNo} · ${(en ? part.title.en : part.title.vi).toUpperCase()}`}
         </Text>
-        <Text className="font-heavy" style={{ marginTop: 4, fontSize: 21, lineHeight: 27, color: '#FFFFFF' }}>
+        <Text className="font-heavy" style={{ marginTop: 4, fontSize: 21, lineHeight: 27, color: P.navy }}>
           {en ? node.title.en : node.title.vi}
         </Text>
         <View style={{ marginTop: 14 }}>{detail}</View>
       </View>
 
-      {/* đường xé */}
-      <View style={{ height: 24, justifyContent: 'center' }}>
-        <View style={{ marginHorizontal: 20, borderTopWidth: 2, borderStyle: 'dashed', borderColor: 'rgba(255,255,255,0.18)' }} />
-        <View style={{ position: 'absolute', left: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.canvas }} />
-        <View style={{ position: 'absolute', right: -12, width: 24, height: 24, borderRadius: 12, backgroundColor: P.canvas }} />
-      </View>
+      <View style={{ marginHorizontal: 20, borderTopWidth: 1, borderColor: P.line }} />
 
-      <View style={{ paddingHorizontal: 22, paddingBottom: 20, paddingTop: 6, gap: 4 }}>
-        <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.6, color: 'rgba(255,255,255,0.55)', marginBottom: 4 }}>
+      <View style={{ paddingHorizontal: 16, paddingBottom: 18, paddingTop: 12, gap: 4 }}>
+        <Text className="font-strong" style={{ fontSize: 11, letterSpacing: 1.3, color: P.muted, marginBottom: 4 }}>
           {L(`${level.label} · ${level.parts.length} PART`, `${level.label} · ${level.parts.length} PARTS`)}
         </Text>
         {level.parts.map((p, i) => {
@@ -414,15 +378,15 @@ function SidePanel({
               accessibilityRole="button"
               aria-current={here ? 'step' : undefined}
               onPress={() => onPickPart(p.id)}
-              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 8, paddingHorizontal: 8, paddingVertical: 7, backgroundColor: here ? 'rgba(226,200,143,0.14)' : hovered ? 'rgba(255,255,255,0.05)' : 'transparent' })}
+              style={({ hovered }: { hovered?: boolean }) => ({ flexDirection: 'row', alignItems: 'center', gap: 10, borderRadius: 11, paddingHorizontal: 10, paddingVertical: 9, backgroundColor: here ? P.goldWash : hovered ? '#FBF7EE' : 'transparent' })}
             >
-              <Text className="font-heavy" style={{ width: 22, fontSize: 12, color: P.goldLight }}>
+              <View style={{ width: 25, height: 25, borderRadius: 13, alignItems: 'center', justifyContent: 'center', backgroundColor: here ? P.gold : '#FBF7EE' }}><Text className="font-heavy" style={{ fontSize: 10, color: here ? '#FFFFFF' : P.goldDeep }}>
                 {String(i + 1).padStart(2, '0')}
-              </Text>
-              <Text className="font-semi" numberOfLines={1} style={{ flex: 1, fontSize: 13, color: '#FFFFFF' }}>
+              </Text></View>
+              <Text className="font-semi" numberOfLines={1} style={{ flex: 1, fontSize: 13, color: P.navy }}>
                 {en ? p.title.en : p.title.vi}
               </Text>
-              <Text className="font-strong" style={{ fontSize: 12, color: pp.done === pp.total ? P.goldLight : 'rgba(255,255,255,0.6)' }}>
+              <Text className="font-strong" style={{ fontSize: 12, color: pp.done === pp.total ? '#3F9C6D' : P.muted }}>
                 {pp.done}/{pp.total}
               </Text>
             </Pressable>

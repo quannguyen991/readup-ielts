@@ -25,8 +25,6 @@ export type SidebarThemeConfig = {
 
 export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
   id: 'default',
-  // Band 9 (01/10/2026): nền kem, chữ xanh đậm, mục đang mở là dải VÀNG KIM
-  // như ô vàng trên logo — sang, trầm, không loè.
   name: 'Mặc định (Vàng kim)',
   isDark: false,
   bgStyle: { backgroundColor: '#FBF8F1', backgroundImage: 'linear-gradient(180deg, #FDFBF6 0%, #F6F0E3 100%)' },
@@ -63,6 +61,21 @@ export const GLASS_SIDEBAR_THEME: SidebarThemeConfig = {
 
 export const SIDEBAR_THEMES: Record<string, SidebarThemeConfig> = {
   default: DEFAULT_SIDEBAR_THEME,
+  'theme-chiikawa': {
+    id: 'theme-chiikawa',
+    name: 'Chiikawa · Góc học hồng',
+    isDark: false,
+    bgStyle: { backgroundColor: '#FFF8FA', backgroundImage: 'linear-gradient(180deg, #FFFBFC 0%, #FCEAF0 100%)' },
+    borderRightColor: 'rgba(56, 189, 248, 0.2)',
+    textPrimary: '#F8FAFC',
+    textMuted: '#94A3B8',
+    activeFill: '#38BDF8',
+  activeGradient: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)',
+    activeTextColor: '#04111D',
+    activeGlow: '0 6px 18px rgba(198,90,120,0.32), inset 0 1px 0 rgba(255,255,255,0.5)',
+    hoverBg: 'rgba(217, 127, 155, 0.12)',
+    defaultEffect: 'sakura',
+  },
   'theme-midnight': {
     id: 'theme-midnight',
     name: 'Vũ trụ sao đêm',

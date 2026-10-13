@@ -7,6 +7,8 @@ import React, { useEffect } from 'react';
 import { Platform, Text, View } from 'react-native';
 
 import { BRAND } from './Logo';
+import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { RGOLD, RINK } from '@/components/profile-retro/retro-art';
 
 const CSS_ID = 'band9-gold-highlight';
 const CSS = `
@@ -18,20 +20,35 @@ const CSS = `
 `;
 
 export function GoldHighlight({ children, fontSize, lineHeight }: { children: string; fontSize: number; lineHeight: number }) {
+  const retro = useRetroStyle();
   useEffect(() => {
-    if (Platform.OS !== 'web' || typeof document === 'undefined' || document.getElementById(CSS_ID)) return;
-    const el = document.createElement('style');
+    if (Platform.OS !== 'web' || typeof document === 'undefined') return;
+    // Cập nhật cả style đã được chèn từ phiên bản cũ; nếu chỉ bỏ qua style cũ
+    // thì trình duyệt giữ dải hồng sau hot reload cho tới khi tải lại toàn trang.
+    const existing = document.getElementById(CSS_ID) as HTMLStyleElement | null;
+    const el = existing ?? document.createElement('style');
     el.id = CSS_ID;
     el.textContent = CSS;
-    document.head.appendChild(el);
+    if (!existing) document.head.appendChild(el);
   }, []);
   return (
     <View
       {...({ dataSet: { b9gold: '1' } } as object)}
-      className="mt-1.5 self-start rounded-md px-3 py-1 b9-gold"
-      style={{ marginLeft: -10, backgroundColor: BRAND.gold }}
+      className={retro ? 'mt-1.5 self-start px-3 py-1' : 'mt-1.5 self-start rounded-md px-3 py-1 b9-gold'}
+      style={
+        retro
+          ? ({
+              marginLeft: -10,
+              backgroundColor: RGOLD,
+              borderWidth: 3,
+              borderColor: RINK,
+              borderRadius: 14,
+              ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}),
+            } as never)
+          : { marginLeft: -10, backgroundColor: BRAND.gold }
+      }
     >
-      <Text className="font-heavy" style={{ fontSize, lineHeight, color: BRAND.navy }}>
+      <Text className="font-heavy" style={{ fontSize, lineHeight, color: retro ? RINK : BRAND.navy }}>
         {children}
       </Text>
     </View>

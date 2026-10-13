@@ -1,5 +1,8 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
+
+import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { RFONT, RGOLD, RINK, RLEAF, RORANGE, RPAPER, RPINK, RSKY } from '@/components/profile-retro/retro-art';
 
 export type BadgeTone =
   | 'primary'
@@ -20,6 +23,17 @@ const toneClass: Record<BadgeTone, { bg: string; text: string }> = {
   neutral: { bg: 'bg-surfaceAlt', text: 'text-muted' },
 };
 
+/** Màu nền retro theo sắc thái: mỗi nhãn một màu trong bảng màu của trang. */
+const retroFill: Record<BadgeTone, string> = {
+  primary: RGOLD,
+  accent: RORANGE,
+  success: RLEAF,
+  danger: RPINK,
+  warning: RGOLD,
+  info: RSKY,
+  neutral: RPAPER,
+};
+
 type BadgeProps = {
   label: string;
   tone?: BadgeTone;
@@ -37,20 +51,32 @@ export function Badge({
   className,
 }: BadgeProps) {
   const t = toneClass[tone];
+  const retro = useRetroStyle();
   return (
     <View
       className={[
         'self-start px-2.5 py-1',
-        shape === 'chip' ? 'rounded-pill' : 'rounded-md',
-        t.bg,
+        retro ? '' : shape === 'chip' ? 'rounded-pill' : 'rounded-md',
+        retro ? '' : t.bg,
         className ?? '',
       ]
         .filter(Boolean)
         .join(' ')}
+      style={
+        retro
+          ? ({
+              borderRadius: shape === 'chip' ? 999 : 8,
+              borderWidth: 2.5,
+              borderColor: RINK,
+              backgroundColor: retroFill[tone],
+              ...(Platform.OS === 'web' ? { boxShadow: '2px 2px 0 #1F1A1D' } : {}),
+            } as never)
+          : undefined
+      }
     >
       <Text
-        className={['font-semi text-label tracking-wide', t.text].join(' ')}
-        style={uppercase ? { letterSpacing: 0.6 } : undefined}
+        className={['font-semi text-label tracking-wide', retro ? '' : t.text].join(' ')}
+        style={[uppercase ? { letterSpacing: 0.6 } : null, retro ? { color: RINK, fontFamily: RFONT.heavy } : null]}
       >
         {uppercase ? label.toUpperCase() : label}
       </Text>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useL, useLocale } from "@/i18n/useL";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { Platform, Pressable, ScrollView, Text, View } from "react-native";
+import { Image, Platform, Pressable, ScrollView, Text, View } from "react-native";
 import { Link, router, usePathname } from "expo-router";
 
 import { Logo } from "./Logo";
@@ -30,6 +30,9 @@ import {
   useSidebarTheme,
   type SidebarThemeConfig,
 } from "./SidebarAtmosphere";
+import {
+  SidebarStickerWindow,
+} from "./SidebarCuteStickers";
 
 /**
  * Thanh bên trái — HIỆN ĐẦY ĐỦ TÊN, thu gọn được về dải biểu tượng.
@@ -59,6 +62,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
   const { L, locale } = useL();
 
   const theme = useSidebarTheme();
+  const chiikawaTheme = useRewardStore((s) => s.theme === "theme-chiikawa");
   const themeConfig = glass ? GLASS_SIDEBAR_THEME : theme.themeConfig;
   const activeEffect = glass ? null : theme.activeEffect;
 
@@ -104,6 +108,13 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
         />
       </View>
 
+      {/* Cửa sổ sticker kiểu desktop; ẩn khi thu gọn để giữ chỗ cho điều hướng. */}
+      {chiikawaTheme && !collapsed && !glass ? (
+        <View className="mt-2 px-[14px]">
+          <SidebarStickerWindow />
+        </View>
+      ) : null}
+
       <ScrollView
         className="mt-2 flex-1"
         showsVerticalScrollIndicator={false}
@@ -125,12 +136,15 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                   }}
                 />
               ) : (
-                <Text
-                  className="mb-1.5 px-3 font-strong text-[12px] uppercase tracking-[1.2px]"
-                  style={{ color: themeConfig.textMuted }}
-                >
-                  {group.title === "Quản trị" ? L("Quản trị", "Admin") : group.title}
-                </Text>
+                <View className="mb-1.5 flex-row items-center gap-1.5 px-3">
+                  <Text
+                    className="font-strong text-[12px] uppercase tracking-[1.2px]"
+                    style={{ color: themeConfig.textMuted }}
+                  >
+                    {group.title === "Quản trị" ? L("Quản trị", "Admin") : group.title}
+                  </Text>
+                  {chiikawaTheme ? <Text className="ml-auto text-[10px]" style={{ color: "#E4A0B4" }}>✦</Text> : null}
+                </View>
               )
             ) : null}
 
@@ -147,6 +161,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                       collapsed={collapsed}
                       subtitle={open && activeChild ? navLabel(activeChild, locale) : undefined}
                       themeConfig={themeConfig}
+                      chiikawaTheme={chiikawaTheme}
                     />
                     {/* Thu gọn thì chỉ còn sáu biểu tượng lớn — không bày trang con. */}
                     {open && !collapsed && item.children?.length ? (
@@ -159,6 +174,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
                             collapsed={collapsed}
                             child
                             themeConfig={themeConfig}
+                            chiikawaTheme={chiikawaTheme}
                           />
                         ))}
                       </View>
@@ -228,6 +244,7 @@ function NavRow({
   child = false,
   subtitle,
   themeConfig,
+  chiikawaTheme,
 }: {
   item: NavItem;
   active: boolean;
@@ -237,6 +254,7 @@ function NavRow({
   /** Tên trang con đang mở, in nhỏ dưới tên mục lớn. */
   subtitle?: string;
   themeConfig: SidebarThemeConfig;
+  chiikawaTheme: boolean;
 }) {
   const [hovered, setHovered] = useState(false);
   // Mục lớn: tô khối khi chính nó hoặc một trang con của nó đang mở.
@@ -276,12 +294,14 @@ function NavRow({
                 : undefined
           }
         >
-          <Icon
-            name={item.icon}
-            size={child ? 17 : 21}
-            color={tint}
-            strokeWidth={lit ? 2.1 : 1.8}
-          />
+          <View className="relative h-7 w-7 items-center justify-center">
+            <Icon
+              name={item.icon}
+              size={child ? 17 : 21}
+              color={tint}
+              strokeWidth={lit ? 2.1 : 1.8}
+            />
+          </View>
           {collapsed ? null : (
             <View className="min-w-0 flex-1">
               <Text
@@ -300,6 +320,15 @@ function NavRow({
           )}
         </Pressable>
       </Link>
+      {chiikawaTheme && !collapsed && !child && (active || parentOfActive) ? (
+        <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: "absolute", right: 0, top: 0, width: 106, height: 60, zIndex: 5 }}>
+          <Image
+            source={require('../../../assets/illustrations/cute-home/task-stickers/chiikawa-taskbar-single.png')}
+            resizeMode="contain"
+            style={{ width: 106, height: 60 }}
+          />
+        </View>
+      ) : null}
       {collapsed && hovered ? <TooltipCard label={label} /> : null}
     </View>
   );

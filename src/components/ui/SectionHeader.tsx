@@ -5,6 +5,8 @@ import { Pressable, Text, View } from 'react-native';
 import { Icon, type IconName } from './Icon';
 import { type IconTone } from './IconCircle';
 import { color } from '@/theme/tokens';
+import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { RFONT, RINK } from '@/components/profile-retro/retro-art';
 
 type SectionHeaderProps = {
   title: string;
@@ -42,6 +44,7 @@ export function SectionHeader({
   className,
   sticker = true,
 }: SectionHeaderProps) {
+  const retro = useRetroStyle();
   return (
     <View
       className={['flex-row items-center justify-between gap-3', className ?? '']
@@ -52,7 +55,7 @@ export function SectionHeader({
         {icon ? <SealIcon name={icon} color={SEAL_COLOR[iconTone]} size={42} /> : null}
         <View className="min-w-0 flex-1">
           <View className="flex-row items-center gap-1.5">
-            <Text className="font-strong text-cardTitle text-ink" numberOfLines={1}>
+            <Text className={retro ? 'text-cardTitle' : 'font-strong text-cardTitle text-ink'} style={retro ? { fontFamily: RFONT.heavy, color: RINK } : undefined} numberOfLines={1}>
               {title}
             </Text>
             {hint ? <Icon name="info" size={14} color={color.subtle} /> : null}

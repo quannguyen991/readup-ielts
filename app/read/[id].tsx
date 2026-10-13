@@ -49,9 +49,28 @@ import { useExamDraft, useExamWebTweaks, useKeyboardInset, useLeaveGuard } from 
  * Màn hẹp chỉ đủ một tấm, nên thanh trên có thêm hai thẻ Bài đọc / Câu hỏi; bấm
  * "khoanh bằng chứng" ở câu hỏi thì tự chuyển sang thẻ Bài đọc.
  */
+/** Thứ tự passage của một đề thi thử, đọc từ đường dẫn hub `…/mock-run?…&r=id1,id2,id3`. */
+function readingChain(hub: string | undefined): string[] {
+  if (!hub) return [];
+  const query = hub.split('?')[1] ?? '';
+  const part = query.split('&').find((p) => p.startsWith('r='));
+  return part ? part.slice(2).split(',').filter(Boolean) : [];
+}
+
+/*
+  Mỗi passage là một phiên làm bài riêng. `key` theo mã bài để khi chuyển sang passage kế tiếp
+  (thi liền mạch) toàn bộ trạng thái câu trả lời, đánh dấu và bằng chứng được dựng lại từ đầu.
+*/
 export default function ReadScreen() {
+  const { id } = useLocalSearchParams<{ id: string }>();
+  return <ReadSession key={id} />;
+}
+
+function ReadSession() {
   // `from`: hub Mock Test gọi sang. Có nó thì bài này là một passage của thi thử.
-  const { id, types, mode, from } = useLocalSearchParams<{ id: string; types?: string; mode?: string; from?: string }>();
+  // `until`: mốc kết thúc (ms) của đồng hồ thi liền mạch; có nó thì đồng hồ bám theo giờ thật.
+  const { id, types, mode, from, until } = useLocalSearchParams<{ id: string; types?: string; mode?: string; from?: string; until?: string }>();
+  const runEnd = until && Number.isFinite(Number(until)) ? Number(until) : undefined;
   const { L, en } = useL();
 
   /*
@@ -513,6 +532,8 @@ export default function ReadScreen() {
   };
 
   const submit = () => {
+    // Hết giờ và người học bấm nộp gần cùng lúc thì chỉ nộp một lần.
+    if (done || submitting) return;
     setSubmitting(true);
     setDone(true);
     draft.clear();
@@ -613,6 +634,14 @@ export default function ReadScreen() {
     }
 
     setSubmitting(false);
+    // Thi liền mạch: còn passage kế tiếp và còn giờ thì đi tiếp ngay, không quay về hub.
+    const chain = readingChain(from);
+    const at = chain.indexOf(article.id);
+    const nextId = at >= 0 ? chain[at + 1] : undefined;
+    if (from && nextId && runEnd !== undefined && runEnd > Date.now()) {
+      router.replace(`/read/${nextId}?from=${encodeURIComponent(from)}&until=${runEnd}` as never);
+      return;
+    }
     // Trong Mock Test thì về hub để làm phần kế tiếp; bài chấm xem lại được từ hub.
     if (from) router.replace(from as never);
     else router.push(`/review/${sessionId}` as never);
@@ -823,8 +852,10 @@ export default function ReadScreen() {
       <ExamTopBar
         narrow={phone}
         compact={lay.compactHeight}
-        paused={paused}
-        onTogglePause={() => setPaused((p) => !p)}
+        paused={runEnd !== undefined ? false : paused}
+        onTogglePause={runEnd !== undefined ? () => {} : () => setPaused((p) => !p)}
+        endAt={runEnd}
+        onExpire={() => submit()}
         onExit={() => router.back()}
         notesOpen={notesOpen}
         onNotes={toggleNotes}

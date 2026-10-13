@@ -1,12 +1,8 @@
 /**
  * BỘ THẺ CHUNG của sảnh game (/quest, /quest/hero, /quest/pick).
  *
- * Người dùng 30/09/2026: "phần chơi game cần hoàn thiện lại chỉn chu hơn" và
- * không thích tông tím. Ba trang game dùng chung MỘT hệ thẻ: nền xanh mực đậm,
- * viền mảnh, bo 20, cùng một thang khoảng cách (6 / 10 / 14 / 20 / 28) và cùng
- * một kiểu tiêu đề mục (con dấu màu + chữ đậm + một dòng giải thích). Màu nhấn
- * lấy từ bảng màu chung của app (xanh dương, vàng, xanh lá, cam, đỏ, xanh trời,
- * hồng) — không còn tím/chàm.
+ * Bộ thành phần của Band 9 Quest. Nền xanh mực, viền vàng nhẹ và các trạng thái
+ * màu lấy từ bảng màu mặc định của app.
  */
 import React, { useCallback, useState } from 'react';
 import { Platform, Pressable, Text, View, useWindowDimensions, type LayoutChangeEvent, type ViewStyle } from 'react-native';

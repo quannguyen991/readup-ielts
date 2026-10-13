@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 import Svg, { Rect } from 'react-native-svg';
@@ -9,6 +9,7 @@ import { OUTFITS } from '@/components/travel/ui/Traveller';
 import { DORM_SLOTS, STUDY_ABROAD_DECORATIONS, type DormDecoration, type DormSlot } from '@/data/study-abroad-dorm';
 import { STUDY_ABROAD_MISSIONS } from '@/data/study-abroad-campaign';
 import { bi, useL } from '@/i18n/useL';
+import { SG_APARTMENT, balanceOf, currentStudyDay, owns, rentOwed, settleApartmentRent } from '@/services/study-abroad/economy';
 import { useStudyAbroadStore } from '@/store/useStudyAbroadStore';
 import { useTravelStore } from '@/store/useTravelStore';
 import { useTravelReady } from '@/components/travel/useTravel';
@@ -21,9 +22,26 @@ export default function StudyAbroadDormScreen() {
   const restedAt = useStudyAbroadStore((state) => state.restedAt);
   const setDecoration = useStudyAbroadStore((state) => state.setDecoration);
   const rest = useStudyAbroadStore((state) => state.rest);
+  const ledger = useStudyAbroadStore((state) => state.ledger);
+  const buyDecoration = useStudyAbroadStore((state) => state.buyDecoration);
   const outfitIndex = useTravelStore((state) => state.prefs.outfit);
   const missionCount = STUDY_ABROAD_MISSIONS.length;
   const xp = completed.length * 15;
+  const [notice, setNotice] = useState<string | null>(null);
+  // Số dư và tiền thuê hiển thị theo sổ đã thanh toán tiền thuê; chưa mở căn hộ thì không có tiền thuê.
+  const apartmentOpen = completed.includes(SG_APARTMENT.unlockMission);
+  const settledLedger = settleApartmentRent(ledger, completed);
+  const day = currentStudyDay(completed);
+  const balance = balanceOf(settledLedger);
+  const rentUnpaid = apartmentOpen && rentOwed(settledLedger, SG_APARTMENT.city, day).length > 0;
+  const rentLabel = !apartmentOpen ? L('chưa mở', 'not open') : rentUnpaid ? L('chưa đóng', 'unpaid') : L('đã đóng', 'paid');
+  const buyFeedback = (outcome: ReturnType<typeof buyDecoration>, name: string) => {
+    if (outcome === 'ok') return L(`Đã mua ${name}.`, `Bought ${name}.`);
+    if (outcome === 'poor') return L('Chưa đủ đồng du học. Hãy đi làm thêm trước.', 'Not enough study funds yet. Work a shift first.');
+    if (outcome === 'rent-unpaid') return L('Còn nợ tiền thuê. Làm thêm để đóng tiền thuê trước khi mua.', 'Rent is still unpaid. Work a shift to pay it before buying.');
+    if (outcome === 'locked') return L('Món này chưa mở.', 'This item is still locked.');
+    return '';
+  };
 
   const itemAt = (slot: DormSlot) => STUDY_ABROAD_DECORATIONS.find((item) => item.id === decorations[slot]) ?? STUDY_ABROAD_DECORATIONS.find((item) => item.slot === slot)!;
 
@@ -37,6 +55,9 @@ export default function StudyAbroadDormScreen() {
               {L('Mỗi nhiệm vụ mở một món trang trí. Chọn đồ cho từng góc phòng; vật phẩm đã mở sẽ được lưu trên thiết bị.', 'Each completed mission unlocks a decoration. Choose an item for each part of the room; your choices are saved on this device.')}
             </Text>
             <Text className="font-semi" style={{ color: T.goldLight, fontSize: 13 }}>{L(`${completed.length}/${missionCount} nhiệm vụ · ${xp} XP`, `${completed.length}/${missionCount} missions · ${xp} XP`)}</Text>
+            <Text className="font-semi" style={{ color: T.goldLight, fontSize: 13 }}>
+              {L(`Số dư: ${balance} đồng du học · Tiền thuê: ${rentLabel}`, `Balance: ${balance} study funds · Rent: ${rentLabel}`)}
+            </Text>
           </PixelPanel>
 
           <DormPreview items={DORM_SLOTS.map((slot) => itemAt(slot.id))} outfitIndex={outfitIndex} />
@@ -50,6 +71,8 @@ export default function StudyAbroadDormScreen() {
                     const unlocked = !item.unlockMission || completed.includes(item.unlockMission);
                     const selected = decorations[slot.id] === item.id;
                     const mission = item.unlockMission ? STUDY_ABROAD_MISSIONS.find((entry) => entry.id === item.unlockMission) : null;
+                    const owned = owns(ledger, item.id);
+                    const priceLabel = item.price && !owned && unlocked ? L(`Giá ${item.price} đồng du học`, `Price ${item.price} study funds`) : undefined;
                     return (
                       <DecorationOption
                         key={item.id}
@@ -57,7 +80,16 @@ export default function StudyAbroadDormScreen() {
                         unlocked={unlocked}
                         selected={selected}
                         lockedHint={mission ? L(`Mở sau: ${bi(mission.place, locale)}`, `Unlock after: ${bi(mission.place, locale)}`) : L('Đồ cơ bản', 'Starter item')}
-                        onPress={() => setDecoration(slot.id, item.id)}
+                        priceLabel={priceLabel}
+                        onPress={() => {
+                          if (!item.price || owned) {
+                            setDecoration(slot.id, item.id);
+                            setNotice(null);
+                            return;
+                          }
+                          const outcome = buyDecoration(slot.id, item.id);
+                          setNotice(buyFeedback(outcome, bi(item.name, locale)));
+                        }}
                       />
                     );
                   })}
@@ -65,6 +97,10 @@ export default function StudyAbroadDormScreen() {
               </PixelPanel>
             ))}
           </View>
+
+          {notice ? (
+            <Text className="font-semi" style={{ marginTop: 10, color: T.goldDark, fontSize: 13, lineHeight: 19 }}>{notice}</Text>
+          ) : null}
 
           <PixelPanel tone="paper" style={{ marginTop: 14 }} inner={{ padding: 14, gap: 9 }}>
             <Text className="font-heavy" style={{ color: T.ink, fontSize: 16 }}>{L('Nghỉ giữa hành trình', 'Take a break')}</Text>
@@ -76,6 +112,8 @@ export default function StudyAbroadDormScreen() {
             <GameButton label={L('Nghỉ ngơi', 'Rest')} tone="navy" onPress={rest} />
             <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
               <GameButton label={L('Hồ sơ & trang phục', 'Profile & outfit')} tone="paper" onPress={() => router.push('/quest/study-abroad/profile' as never)} />
+              <GameButton label={L('Việc làm thêm', 'Part-time work')} tone="gold" onPress={() => router.push('/quest/study-abroad/work' as never)} />
+              <GameButton label={L('Quán của bạn', 'Your shop')} tone="paper" onPress={() => router.push('/quest/study-abroad/cafe' as never)} />
               <GameButton label={L('Về nhiệm vụ', 'Back to missions')} tone="gold" onPress={() => router.push('/quest/study-abroad' as never)} />
             </View>
           </PixelPanel>
@@ -200,7 +238,7 @@ function DormPreview({ items, outfitIndex }: { items: DormDecoration[]; outfitIn
   );
 }
 
-function DecorationOption({ item, unlocked, selected, lockedHint, onPress }: { item: DormDecoration; unlocked: boolean; selected: boolean; lockedHint: string; onPress: () => void }) {
+function DecorationOption({ item, unlocked, selected, lockedHint, priceLabel, onPress }: { item: DormDecoration; unlocked: boolean; selected: boolean; lockedHint: string; priceLabel?: string; onPress: () => void }) {
   const { locale } = useL();
   return (
     <Pressable
@@ -214,7 +252,7 @@ function DecorationOption({ item, unlocked, selected, lockedHint, onPress }: { i
         <Text style={{ fontSize: 22 }}>{unlocked ? item.glyph : '🔒'}</Text>
         <Text numberOfLines={2} className="font-semi" style={{ flex: 1, color: T.ink, fontSize: 12 }}>{unlocked ? bi(item.name, locale) : bi(item.name, locale)}</Text>
       </View>
-      <Text numberOfLines={2} className="font-sans" style={{ marginTop: 4, color: selected ? T.goldDark : T.muted, fontSize: 11, lineHeight: 15 }}>{unlocked ? (selected ? (locale === 'vi' ? 'Đang đặt' : 'Placed') : bi(item.description, locale)) : lockedHint}</Text>
+      <Text numberOfLines={2} className="font-sans" style={{ marginTop: 4, color: selected ? T.goldDark : priceLabel ? T.goldDark : T.muted, fontSize: 11, lineHeight: 15 }}>{unlocked ? (selected ? (locale === 'vi' ? 'Đang đặt' : 'Placed') : priceLabel ?? bi(item.description, locale)) : lockedHint}</Text>
     </Pressable>
   );
 }

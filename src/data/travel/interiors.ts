@@ -12,7 +12,15 @@ export const INTERIOR_SIZE = { w: 418, h: 235 } as const;
 
 export type InteriorKindId = 'cafe' | 'restaurant' | 'hotel' | 'market' | 'museum' | 'station' | 'airport' | 'counter' | 'garden' | 'landmark' | 'secret';
 export const INTERIOR_KIND_IDS: InteriorKindId[] = ['cafe', 'restaurant', 'hotel', 'market', 'museum', 'station', 'airport', 'counter', 'garden', 'landmark', 'secret'];
-export type InteriorZone = 'main' | 'platform';
+
+/**
+ * Thành phố có phòng trong vẽ riêng: `/travel/interiors/<thành phố>/<loại>.png` (cùng bố cục với tranh dùng chung).
+ * Loại không có trong danh sách thì dùng tranh dùng chung `/travel/interiors/<loại>.png`.
+ */
+export const CITY_INTERIOR_ART: Partial<Record<string, InteriorKindId[]>> = {
+  hochiminh: ['restaurant', 'cafe', 'market', 'museum', 'airport'],
+};
+export type InteriorZone = 'main' | 'platform' | 'back';
 
 export type InteriorLayout = {
   zone?: InteriorZone;
@@ -171,3 +179,107 @@ export const STATION_PLATFORM: InteriorLayout = {
     label: { vi: 'LÊN SẢNH ↑', en: 'UP TO CONCOURSE ↑' },
   },
 };
+
+// ---------------------------------------------------------------- khu phụ của phòng (bếp, kho, phòng 2, phòng VIP)
+
+/** Khu phụ vẽ riêng nối với phòng chính bằng một cửa trên mép sàn. */
+export type BackRoom = {
+  /** Cửa trên phòng chính; đi tới đó thì sang khu phụ. */
+  door: IRect;
+  /** Đồ đạc của khu phụ (vùng chặn), trên sàn chung FLOOR. */
+  blockers: IRect[];
+  /** Điểm xuất hiện trong khu phụ (ngay sau cửa). */
+  spawn: IPt;
+  /** Điểm đứng của người phụ trách (không đi lại được). */
+  host: IPt;
+  label: { main: { vi: string; en: string }; back: { vi: string; en: string } };
+};
+
+/** Cửa giữa phòng, nằm trong cột trống x 100–128 giữa hai khối đồ đạc; điểm đứng ngay sau cửa. */
+const BACK_DOOR: IRect = { x: 100, y: 62, w: 28, h: 14 };
+const BACK_SPAWN: IPt = { x: 114, y: 106 };
+const BACK_HOST: IPt = { x: 360, y: 186 };
+const BACK_LABEL_BACK = { vi: 'VỀ SẢNH ↓', en: 'BACK TO HALL ↓' };
+
+/** Khu phụ của từng phòng TP.HCM (mục tiêu: rộng hơn, nhiều đồ đạc hơn; chỉ các loại có tranh riêng). */
+export const CITY_BACK_ROOMS: Partial<Record<string, Partial<Record<InteriorKindId, BackRoom>>>> = {
+  hochiminh: {
+    restaurant: {
+      door: BACK_DOOR, spawn: BACK_SPAWN, host: BACK_HOST, label: { main: { vi: 'BẾP ↑', en: 'KITCHEN ↑' }, back: BACK_LABEL_BACK },
+      blockers: [
+        { x: 36, y: 62, w: 58, h: 22 }, // bếp gas dãy sau
+        { x: 150, y: 62, w: 110, h: 20 }, // bàn inox chuẩn bị
+        { x: 330, y: 62, w: 50, h: 64 }, // kệ bát đĩa
+        { x: 36, y: 112, w: 40, h: 40 }, // bao gạo xếp
+        { x: 170, y: 120, w: 110, h: 26 }, // bàn cắt thái giữa
+        { x: 320, y: 156, w: 50, h: 28 }, // tủ lạnh và thùng rác
+      ],
+    },
+    cafe: {
+      door: BACK_DOOR, spawn: BACK_SPAWN, host: BACK_HOST, label: { main: { vi: 'KHO ↑', en: 'STORE ↑' }, back: BACK_LABEL_BACK },
+      blockers: [
+        { x: 36, y: 62, w: 58, h: 26 }, // bao cà phê hạt
+        { x: 150, y: 62, w: 80, h: 30 }, // máy rang cà phê
+        { x: 245, y: 62, w: 110, h: 22 }, // kệ ly tách
+        { x: 170, y: 120, w: 90, h: 38 }, // bàn nhân viên
+        { x: 36, y: 112, w: 42, h: 44 }, // thùng carton
+        { x: 330, y: 110, w: 50, h: 60 }, // tủ lạnh sữa
+      ],
+    },
+    market: {
+      door: BACK_DOOR, spawn: BACK_SPAWN, host: BACK_HOST, label: { main: { vi: 'KHO HÀNG ↑', en: 'STOREROOM ↑' }, back: BACK_LABEL_BACK },
+      blockers: [
+        { x: 36, y: 62, w: 58, h: 30 }, // bao gạo
+        { x: 150, y: 62, w: 110, h: 30 }, // sọt trái cây
+        { x: 170, y: 120, w: 90, h: 30 }, // bàn cân
+        { x: 36, y: 110, w: 48, h: 44 }, // thùng đá bảo quản cá
+        { x: 330, y: 110, w: 50, h: 50 }, // thùng phuy nước mắm
+        { x: 250, y: 160, w: 60, h: 26 }, // chồng thùng nhựa
+      ],
+    },
+    museum: {
+      door: BACK_DOOR, spawn: BACK_SPAWN, host: BACK_HOST, label: { main: { vi: 'PHÒNG 2 ↑', en: 'GALLERY 2 ↑' }, back: BACK_LABEL_BACK },
+      blockers: [
+        { x: 36, y: 66, w: 56, h: 36 }, // tủ kính hiện vật bên trái
+        { x: 330, y: 66, w: 56, h: 36 }, // tủ kính hiện vật bên phải
+        { x: 190, y: 100, w: 24, h: 24 }, // bệ tượng giữa
+        { x: 140, y: 160, w: 150, h: 14 }, // ghế dài giữa
+        { x: 330, y: 130, w: 40, h: 40 }, // bệ tượng bán thân
+        { x: 36, y: 150, w: 50, h: 14 }, // ghế dài bên trái
+      ],
+    },
+    airport: {
+      door: BACK_DOOR, spawn: BACK_SPAWN, host: BACK_HOST, label: { main: { vi: 'VIP ↑', en: 'VIP LOUNGE ↑' }, back: BACK_LABEL_BACK },
+      blockers: [
+        { x: 36, y: 62, w: 58, h: 28 }, // quầy cà phê
+        { x: 240, y: 62, w: 140, h: 22 }, // màn hình thông tin chuyến bay
+        { x: 150, y: 118, w: 110, h: 30 }, // sofa giữa
+        { x: 36, y: 112, w: 50, h: 60 }, // sofa bên trái
+        { x: 330, y: 112, w: 50, h: 60 }, // sofa bên phải
+        { x: 150, y: 160, w: 30, h: 20 }, // chậu cây
+      ],
+    },
+  },
+};
+
+/** Bố cục phòng có khu phụ (cửa nối hai khu); null nếu loại/thành phố không có khu phụ. */
+export function roomLayout(kind: InteriorKindId, zone: InteriorZone, city: string | undefined): InteriorLayout | null {
+  const room = city ? CITY_BACK_ROOMS[city]?.[kind] : undefined;
+  if (!room || zone === 'platform') return null;
+  const at: IPt = { x: room.door.x + room.door.w / 2, y: room.door.y + room.door.h + 4 };
+  if (zone === 'back') {
+    return {
+      zone: 'back',
+      floor: FLOOR,
+      blockers: room.blockers,
+      doorway: DOORWAY,
+      host: room.host,
+      hostFront: room.host,
+      spawn: room.spawn,
+      exit: { x: 209, y: 216 },
+      counter: { x: 0, y: 0, w: 1, h: 1 },
+      portal: { at, rect: room.door, destination: 'main', spawn: { x: at.x, y: room.door.y + room.door.h + 30 }, label: room.label.back },
+    };
+  }
+  return { ...INTERIORS[kind], portal: { at, rect: room.door, destination: 'back', spawn: room.spawn, label: room.label.main } };
+}

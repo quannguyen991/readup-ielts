@@ -19,7 +19,7 @@ import { atlasFor, ctx2d, makeCanvas, type Atlas, type Bitmap } from './Atlas';
 import { buildWorld, GROUND_CHARS, isBlockedAt, isPoiLocked, pathField, TS, type Placed, type World } from './grid';
 import { buildImgWorld, findPathPx, isWalkPx, type ImgWorld, type Pt } from './imageWorld';
 import { drawInterior } from './interior';
-import { INTERIOR_SIZE, type InteriorLayout, type InteriorZone } from '@/data/travel/interiors';
+import { CITY_INTERIOR_ART, INTERIOR_SIZE, type InteriorLayout, type InteriorZone } from '@/data/travel/interiors';
 import { buildSceneWorld, footprintRect, INTERIOR_CELL, interiorKindOf, interiorLayout, interiorMaskRows, type InteriorKind } from './scene';
 import { ambientAt, Lighting, type Light, type RGB } from './Lighting';
 import { Particles, PK } from './Particles';
@@ -138,6 +138,9 @@ const DVEC: Record<Dir, [number, number]> = { up: [0, -1], down: [0, 1], left: [
 
 // ---- tải tranh nền (cache theo URL)
 const imageCache = new Map<string, Promise<HTMLImageElement>>();
+/** Mã sprite công trình tranh pixel đã gửi đi nạp (`art:<thư mục>/<tệp>`), để không nạp lại mỗi lần vào bản đồ. */
+const artRequested = new Set<string>();
+
 function loadMapImage(url: string): Promise<HTMLImageElement> {
   let p = imageCache.get(url);
   if (!p) {
@@ -307,6 +310,13 @@ export class CityEngine {
     this.state = state;
     if (!opts?.interior) this.zoom = loadZoom(map.id);
     this.atlas = atlasFor(map.palette);
+    // Công trình và nhân vật tranh pixel (`sprite: 'art:<thư mục>/<tệp>'`): nạp PNG vào Atlas, một lần cho mỗi mã.
+    // Nhân vật đã được thu sẵn về cùng chiều cao (24 điểm, khớp khung người chơi), nên nạp đúng cỡ tệp.
+    for (const id of [...map.pois.map((p) => p.sprite), ...map.npcs.map((n) => n.sprite), ...(map.routes ?? []).map((r) => r.sprite)]) {
+      if (!id?.startsWith('art:') || artRequested.has(id)) continue;
+      artRequested.add(id);
+      void this.atlas.registerImage(id, `/travel/sprites/${id.slice(4)}.png`);
+    }
     this.mode = map.image ? 'image' : 'tile';
     this.stats.mode = this.mode;
     this.world = null;
@@ -352,6 +362,7 @@ export class CityEngine {
     }
     this.initNpcs();
     this.initAnimals();
+    this.vehicleRetries = 0;
     this.initVehicles();
     this.initScene();
     this.recomputeView();
@@ -387,7 +398,8 @@ export class CityEngine {
     if (!this.goTo(door)) return false;
     // dừng cách cửa một quãng ngắn để không tự bước vào (muốn vào thì bấm "Vào" hoặc E)
     const p = this.player;
-    const stop = this.isImg ? 15 : TS * 1.2;
+    // Địa điểm có phòng trong (bản lưới): đi thẳng tới cửa để tự vào.
+    const stop = this.isImg ? 15 : this.roomKindOf(poi) ? 0 : TS * 1.2;
     while (p.path.length > 1 && Math.hypot(p.path[p.path.length - 1]!.x - door.x, p.path[p.path.length - 1]!.y - door.y) < stop) p.path.pop();
     this.pendingEnter = null;
     return true;
@@ -935,11 +947,18 @@ export class CityEngine {
     }
   }
 
+  private vehicleRetries = 0;
+
   private initVehicles() {
     this.vehicles = [];
+    let missing = false;
     for (const r of this.map.routes ?? []) {
       const def = this.atlas.sprite(r.sprite, 0);
-      if (!def) continue;
+      if (!def) {
+        // tranh xe (art:...) đang nạp: thử lại sau, tối đa ~9 giây
+        missing = true;
+        continue;
+      }
       const pts: Pt[] = r.path.map((p) => (this.isImg ? { x: p.x, y: p.y } : { x: p.x * TS + TS / 2, y: p.y * TS + TS - 2 }));
       const cum = [0];
       for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1]! + Math.hypot(pts[i]!.x - pts[i - 1]!.x, pts[i]!.y - pts[i - 1]!.y));
@@ -969,6 +988,12 @@ export class CityEngine {
           sp: r.speed * TS,
         });
       }
+    }
+    if (missing && this.vehicleRetries++ < 30) {
+      const map = this.map;
+      window.setTimeout(() => {
+        if (this.map === map) this.initVehicles();
+      }, 300);
     }
   }
 
@@ -1212,7 +1237,7 @@ export class CityEngine {
   /** Bước vào địa điểm: có phòng trong → mờ dần rồi vào phòng; còn lại → thẳng vào lượt hỏi. */
   private beginEnter(poi: Poi) {
     if (this.fade.target === 1 || this.missionMode) return;
-    const kind = this.isImg ? interiorKindOf(poi.kind) : null;
+    const kind = this.roomKindOf(poi);
     this.player.path = [];
     this.keys = [];
     if (!kind || this.interior) {
@@ -1232,35 +1257,18 @@ export class CityEngine {
   }
 
   private openInterior(poi: Poi, kind: InteriorKind, parent: CityMap) {
-    const layout = interiorLayout(kind, 'main');
+    const layout = interiorLayout(kind, 'main', parent.id);
     const bg = drawInterior(kind, this.atlas.pal.colors, layout);
-    const host: Npc = {
-      id: `host-${poi.id}`,
-      sprite: kind === 'hotel' || kind === 'airport' || kind === 'counter' || kind === 'station' ? 'npc_staff' : 'npc_vendor',
-      at: { x: layout.host.x, y: layout.host.y },
-      lines: [{ en: 'Welcome! How can I help?', vi: 'Xin chào! Tôi có thể giúp gì cho bạn?' }],
-    };
-    const im: CityMap = {
-      id: parent.id,
-      name: poi.name,
-      utcOffsetHours: parent.utcOffsetHours,
-      palette: parent.palette,
-      size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h },
-      layers: { ground: [], objects: [], roofs: [] },
-      spawn: layout.spawn,
-      pois: [],
-      npcs: [host, ...interiorNpcs(poi, kind, parent.id)],
-      image: { src: 'interior', scale: 1, size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h }, mask: { cell: INTERIOR_CELL, rows: interiorMaskRows(layout) } },
-      ambience: { weather: { kind: 'clear', intensity: 0 }, sounds: [] },
-    };
+    const im = roomMap(parent, poi, layout, roomNpcs(poi, kind, layout, parent.id));
     this.hostPending = false;
     this.setMap(im, this.state, { bg, spawn: layout.spawn, interior: { poi, kind, zone: 'main', parent, since: 0, beat: false, hosted: false, layout } });
     this.startFade(0);
     // Ảnh phòng thật (nếu có) thay phòng vẽ bằng mã; cùng bố cục nên thay êm.
     const seq = this.loadSeq;
+    const artDir = (CITY_INTERIOR_ART[parent.id] ?? []).includes(kind) ? `/travel/interiors/${parent.id}` : '/travel/interiors';
     const image = kind === 'garden' || kind === 'landmark' || kind === 'secret'
       ? Promise.reject(new Error('generated outdoor scene'))
-      : loadMapImage(`/travel/interiors/${kind}.small.png`).catch(() => loadMapImage(`/travel/interiors/${kind}.png`));
+      : loadMapImage(`${artDir}/${kind}.small.png`).catch(() => loadMapImage(`${artDir}/${kind}.png`));
     image
       .then((img) => {
         if (seq !== this.loadSeq || !this.interior) return;
@@ -1294,17 +1302,38 @@ export class CityEngine {
     if (!current || current.zone === destination || this.fade.target === 1) return;
     const portal = current.layout.portal;
     if (!portal || portal.destination !== destination) return;
-    const layout = interiorLayout(current.kind, destination);
+    const layout = interiorLayout(current.kind, destination, current.parent.id);
     playSfx('doorOpen');
     this.startFade(1, () => {
       const bg = drawInterior(current.kind, this.atlas.pal.colors, layout);
       const next = { ...current, zone: destination, since: 0, beat: true, hosted: true, layout };
       this.hostPending = false;
       this.lastStationSoundCycle = -1;
-      this.setMap(this.map, this.state, { bg, spawn: portal.spawn, interior: next });
+      const npcs = destination === 'back' ? [] : roomNpcs(current.poi, current.kind, layout, current.parent.id);
+      this.setMap(roomMap(current.parent, current.poi, layout, npcs), this.state, { bg, spawn: portal.spawn, interior: next });
+      if (destination === 'back') this.loadBackArt(current.kind, current.parent.id);
       playSfx('enter');
       this.startFade(0);
     });
+  }
+
+  /** Tranh khu phụ `<thành phố>/<loại>-back`, nạp sau khi đã vào; cùng cỡ với tranh phòng chính. */
+  private loadBackArt(kind: InteriorKind, cityId: string) {
+    const base = `/travel/interiors/${cityId}/${kind}-back`;
+    const seq = this.loadSeq;
+    loadMapImage(`${base}.small.png`).catch(() => loadMapImage(`${base}.png`))
+      .then((img) => {
+        if (seq !== this.loadSeq || this.interior?.zone !== 'back') return;
+        let src: CanvasImageSource = img;
+        if (img.naturalWidth !== INTERIOR_SIZE.w || img.naturalHeight !== INTERIOR_SIZE.h) {
+          const cv = makeCanvas(INTERIOR_SIZE.w, INTERIOR_SIZE.h);
+          ctx2d(cv).drawImage(img, 0, 0, INTERIOR_SIZE.w, INTERIOR_SIZE.h);
+          src = cv;
+        }
+        this.bg = src;
+        this.bgColor = averageColor(src);
+      })
+      .catch(() => undefined);
   }
 
   /** Nói chuyện với chủ quán / lễ tân → bắt đầu lượt hỏi. */
@@ -1447,7 +1476,7 @@ export class CityEngine {
 
     this.updateFade(dt);
     this.updatePlayer(dt);
-    if (this.isScene) this.autoDoor();
+    if (this.isScene || this.map.interiors) this.autoDoor();
     if (this.interior) this.updateInterior();
     if (!calm) {
       this.updateNpcs(dt);
@@ -1484,11 +1513,20 @@ export class CityEngine {
     }
   }
 
+  /** Phòng trong của địa điểm: bản ảnh mọi loại có phòng; bản lưới có phòng chỉ với địa điểm trong nhà (không có lệnh riêng). */
+  private roomKindOf(poi: Poi): InteriorKind | null {
+    if (this.isImg) return interiorKindOf(poi.kind);
+    if (!this.map.interiors || getPoiContent(poi.id)?.action) return null;
+    if (poi.kind === 'garden' || poi.kind === 'landmark' || poi.kind === 'secret') return null;
+    return interiorKindOf(poi.kind);
+  }
+
   /** Chế độ đối tượng: bước lên ô cửa của địa điểm đang mở thì vào luôn (khoá thì báo). */
   private autoDoor() {
     if (this.fade.target === 1 || this.enterLock) return;
     const p = this.player;
     for (const poi of this.map.pois) {
+      if (!this.isScene && !this.roomKindOf(poi)) continue;
       const d = this.doorPt(poi);
       if (Math.hypot(d.x - p.x, d.y - p.y) <= 4) {
         this.tryEnterNear(true, poi.id);
@@ -1869,6 +1907,17 @@ export class CityEngine {
       c.fillRect(px(x), py(y), w, h);
     };
 
+    if (it.layout.portal && it.kind !== 'station') {
+      const d = it.layout.portal.rect;
+      rect(d.x - 2, d.y - 2, d.w + 4, d.h + 4, '#2b170b');
+      rect(d.x, d.y, d.w, d.h, '#8a5530');
+      rect(d.x + 3, d.y + 3, d.w - 6, d.h - 6, '#a86a3a');
+      rect(d.x + Math.floor(d.w / 2) - 1, d.y + 3, 2, d.h - 6, '#5b3118');
+      rect(d.x + d.w - 7, d.y + Math.floor(d.h / 2) - 1, 2, 3, '#f2d27a');
+      c.fillStyle = Math.floor(tt * 2) % 2 ? '#ffe18a' : '#f7f0d8';
+      c.font = '6px monospace';
+      c.fillText(it.layout.portal.label.vi, px(d.x - 6), py(d.y - 4));
+    }
     if (it.kind === 'station' && it.zone === 'main' && it.layout.portal) {
       const { rect: stair } = it.layout.portal;
       rect(stair.x, stair.y, stair.w, stair.h, '#26354b');
@@ -2637,7 +2686,7 @@ export class CityEngine {
       d.fillRect(tx - px(1), y + h + px(6), px(2), px(2));
       d.textAlign = 'left';
       let ty = y + px(8) + fs / 2;
-      d.fillStyle = '#0F1D33';
+        d.fillStyle = '#6b6350';
       d.font = `600 ${fs}px "Plus Jakarta Sans", system-ui, sans-serif`;
       for (const ln of l1) {
         d.fillText(ln, x + px(10), Math.round(ty));
@@ -2940,6 +2989,34 @@ export class CityEngine {
     this.player.path = [];
     this.cam.snapTo(x, y - 6, this.view, this.worldW, this.worldH);
   }
+}
+
+/** Bản đồ của phòng (một zone): sàn đi được theo bố cục, và người đứng trong phòng. */
+function roomMap(parent: CityMap, poi: Poi, layout: InteriorLayout, npcs: Npc[]): CityMap {
+  return {
+    id: parent.id,
+    name: poi.name,
+    utcOffsetHours: parent.utcOffsetHours,
+    palette: parent.palette,
+    size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h },
+    layers: { ground: [], objects: [], roofs: [] },
+    spawn: layout.spawn,
+    pois: [],
+    npcs,
+    image: { src: 'interior', scale: 1, size: { w: INTERIOR_SIZE.w, h: INTERIOR_SIZE.h }, mask: { cell: INTERIOR_CELL, rows: interiorMaskRows(layout) } },
+    ambience: { weather: { kind: 'clear', intensity: 0 }, sounds: [] },
+  };
+}
+
+/** Người trong phòng chính: chủ quán sau quầy, khách địa phương và du khách. */
+function roomNpcs(poi: Poi, kind: InteriorKind, layout: InteriorLayout, cityId: CityId): Npc[] {
+  const host: Npc = {
+    id: `host-${poi.id}`,
+    sprite: kind === 'hotel' || kind === 'airport' || kind === 'counter' || kind === 'station' ? 'npc_staff' : 'npc_vendor',
+    at: { x: layout.host.x, y: layout.host.y },
+    lines: [{ en: 'Welcome! How can I help?', vi: 'Xin chào! Tôi có thể giúp gì cho bạn?' }],
+  };
+  return [host, ...interiorNpcs(poi, kind, cityId)];
 }
 
 function interiorNpcs(poi: Poi, kind: InteriorKind, cityId: CityId): Npc[] {

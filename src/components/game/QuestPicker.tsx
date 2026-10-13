@@ -19,9 +19,8 @@ import { islandShortName, islandTagline, levelLabel, missionTitle } from '@/comp
  * (loại bài học), rồi CHỌN BÀI (phần học nào), rồi mới vào lý thuyết và luyện —
  * không nhảy thẳng vào một bài lý thuyết do máy tự chọn.
  *
- * Nền xanh mực của sảnh game (bộ thẻ chung ở `quest-hub/kit`, bỏ tông tím ngày
- * 30/09/2026), thẻ mềm cùng tông màu mảng; không viền đen, không ô số tròn
- * đầu hàng (dáng IELTS Dictionary). Mỗi bài là một "màn" có lá cờ pixel: cờ màu
+ * Nền hồng sữa kiểu arcade, thẻ mềm cùng tông màu mảng; không viền đen, không ô số tròn
+ * đầu hàng. Mỗi bài là một "màn" có lá cờ pixel: cờ màu
  * mảng là chưa qua, cờ vàng là đã qua.
  */
 
@@ -79,20 +78,20 @@ function metaEn(meta: string): string {
  * Dịch hồng.
  */
 export const AREA_TONE: Record<IslandId, string> = {
-  math: HUB.blue,
-  verbal: HUB.red,
-  vocab: HUB.green,
-  listen: HUB.sky,
-  translate: HUB.pink,
-  arena: HUB.amber,
+  math: '#C96F91',
+  verbal: '#BA597B',
+  vocab: '#E18EAA',
+  listen: '#DA7C9D',
+  translate: '#CE6D91',
+  arena: '#E9A2B8',
 };
 
 /** Trận nhanh: vào thẳng, không có danh sách bài. */
 export const QUICK_FIGHTS: { title: string; titleEn: string; detail: string; detailEn: string; href: string; icon: IconName; color: string }[] = [
-  { title: 'Đọc theo VOA', titleEn: 'VOA shadowing', detail: 'Nói lại từng câu', detailEn: 'Repeat each sentence', href: '/shadow', icon: 'mic', color: HUB.green },
-  { title: 'Đề của tuần', titleEn: 'Weekly challenge', detail: 'Cả nước cùng một đề', detailEn: 'One test for the whole country', href: '/weekly', icon: 'trophy', color: HUB.amber },
-  { title: 'Đấu 1–1', titleEn: '1-on-1 duel', detail: 'Thách bạn 10 câu', detailEn: 'Challenge a friend to 10 questions', href: '/duel', icon: 'target', color: HUB.orange },
-  { title: 'Bản đồ Band 9', titleEn: 'Band 9 map', detail: 'Đi bộ qua sáu đảo', detailEn: 'Walk across six islands', href: '/quest/world', icon: 'compass', color: HUB.blue },
+  { title: 'Đọc theo VOA', titleEn: 'VOA shadowing', detail: 'Nói lại từng câu', detailEn: 'Repeat each sentence', href: '/shadow', icon: 'mic', color: '#D47D9B' },
+  { title: 'Đề của tuần', titleEn: 'Weekly challenge', detail: 'Cả nước cùng một đề', detailEn: 'One test for the whole country', href: '/weekly', icon: 'trophy', color: '#C96888' },
+  { title: 'Đấu 1–1', titleEn: '1-on-1 duel', detail: 'Thách bạn 10 câu', detailEn: 'Challenge a friend to 10 questions', href: '/duel', icon: 'target', color: '#E09AB1' },
+  { title: 'Bản đồ Band 9', titleEn: 'Band 9 map', detail: 'Đi bộ qua sáu đảo', detailEn: 'Walk across six islands', href: '/quest/world', icon: 'compass', color: '#BC6683' },
 ];
 
 /** Màu theo bậc khó (0 dễ → 3 khó) — màu mang thông tin, không xoay vòng. */
@@ -121,7 +120,7 @@ export function StepBar({ step }: { step: 1 | 2 | 3 }) {
             <View key={l} style={{ width: i + 1 === step ? 14 : 6, height: 6, borderRadius: 3, backgroundColor: i + 1 <= step ? QUEST_GOLD : 'rgba(255,255,255,0.3)' }} />
           ))}
         </View>
-        <Text className="font-strong" style={{ fontSize: 12, color: '#FDE68A' }}>
+        <Text className="font-strong" style={{ fontSize: 12, color: HUB.ink }}>
           {L('Bước', 'Step')} {step}/3 · {labels[step - 1]}
         </Text>
       </View>
@@ -152,7 +151,7 @@ export function StepBar({ step }: { step: 1 | 2 | 3 }) {
               ) : (
                 <View style={{ width: 7, height: 7, borderRadius: 2, backgroundColor: active ? QUEST_GOLD : 'rgba(255,255,255,0.35)' }} />
               )}
-              <Text className="font-strong" style={{ fontSize: 12, color: active ? '#FDE68A' : done ? '#FFFFFF' : QUEST_MUTED }}>
+              <Text className="font-strong" style={{ fontSize: 12, color: active ? QUEST_GOLD : done ? HUB.ink : QUEST_MUTED }}>
                 {label}
               </Text>
             </View>
@@ -183,7 +182,7 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
         backgroundColor: HUB.panel,
         borderWidth: 1,
         borderColor: hover ? `${tone}AA` : HUB.line,
-        ...(WEB ? ({ boxShadow: hover ? `0 18px 40px ${tone}33` : '0 10px 26px rgba(2,8,23,0.3)' } as object) : null),
+        ...(WEB ? ({ boxShadow: hover ? `0 18px 40px ${tone}33` : '0 9px 22px rgba(180,86,117,0.1)' } as object) : null),
         ...hoverStyle(hover),
       }}
     >
@@ -199,17 +198,17 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
             <Icon name={AREA_ICON[island.id]} size={22} color="#FFFFFF" strokeWidth={2.1} />
           </View>
           <View style={{ flex: 1, minWidth: 0 }}>
-            <Text className="font-heavy" style={{ fontSize: 17, color: '#FFFFFF' }} numberOfLines={1}>
+            <Text className="font-heavy" style={{ fontSize: 17, color: HUB.ink }} numberOfLines={1}>
               {islandShortName(island, locale)}
             </Text>
             <Text className="font-semi" style={{ fontSize: 12, color: QUEST_MUTED }} numberOfLines={1}>
               {en ? AREA_KIND_EN[island.id] : AREA_KIND[island.id]} · {L(`${island.missions.length} bài`, `${island.missions.length} lessons`)}
             </Text>
           </View>
-          <Icon name="arrow-right" size={18} color={hover ? '#FFFFFF' : 'rgba(255,255,255,0.4)'} />
+          <Icon name="arrow-right" size={18} color={hover ? tone : '#C4AAB5'} />
         </View>
 
-        <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: 'rgba(240, 235, 226,0.86)' }} numberOfLines={2}>
+        <Text className="font-sans" style={{ marginTop: 12, fontSize: 13, lineHeight: 19, color: HUB.muted }} numberOfLines={2}>
           {islandTagline(island, locale)}
         </Text>
 
@@ -218,7 +217,7 @@ export function AreaCard({ island, onPress }: { island: Island; onPress: () => v
           <View style={{ flex: 1, height: 6, borderRadius: 3, backgroundColor: HUB.track, overflow: 'hidden' }}>
             <View style={{ height: 6, width: '100%', backgroundColor: tone, transform: [{ scaleX: Math.max(0.02, island.progress) }], transformOrigin: 'left' }} />
           </View>
-          <Text className="font-strong" style={{ fontSize: 12, color: '#FFFFFF', fontVariant: ['tabular-nums'] }}>
+          <Text className="font-strong" style={{ fontSize: 12, color: HUB.ink, fontVariant: ['tabular-nums'] }}>
             {island.done}/{island.missions.length}
           </Text>
         </View>
@@ -290,7 +289,7 @@ export function StageTile({
         {mission.done ? (
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 999, paddingHorizontal: 8, paddingVertical: 3, backgroundColor: 'rgba(250,204,21,0.16)' }}>
             <Icon name="check" size={11} color={QUEST_GOLD} strokeWidth={2.8} />
-            <Text className="font-strong" style={{ fontSize: 11, color: '#FDE68A' }}>
+            <Text className="font-strong" style={{ fontSize: 11, color: HUB.gold }}>
               {L('Đã qua', 'Passed')}
             </Text>
           </View>
@@ -303,7 +302,7 @@ export function StageTile({
         ) : null}
       </View>
 
-      <Text className="font-heavy" style={{ marginTop: 10, fontSize: 16, lineHeight: 21, color: '#FFFFFF' }} numberOfLines={2}>
+      <Text className="font-heavy" style={{ marginTop: 10, fontSize: 16, lineHeight: 21, color: HUB.ink }} numberOfLines={2}>
         {title}
       </Text>
       {mission.blurb ? (
@@ -317,17 +316,17 @@ export function StageTile({
         {mission.meta ? (
           <>
             <Icon name="clock" size={12} color="rgba(255,255,255,0.5)" />
-            <Text className="font-semi" style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', flex: 1 }} numberOfLines={1}>
+            <Text className="font-semi" style={{ fontSize: 12, color: HUB.muted, flex: 1 }} numberOfLines={1}>
               {en ? metaEn(mission.meta) : mission.meta}
             </Text>
           </>
         ) : (
           <View style={{ flex: 1 }} />
         )}
-        <Text className="font-strong" style={{ fontSize: 12, color: hover || isNext ? QUEST_GOLD : 'rgba(255,255,255,0.45)' }}>
+        <Text className="font-strong" style={{ fontSize: 12, color: hover || isNext ? QUEST_GOLD : HUB.muted }}>
           {mission.done ? L('Học lại', 'Review') : L('Vào học', 'Start')}
         </Text>
-        <Icon name="arrow-right" size={13} color={hover || isNext ? QUEST_GOLD : 'rgba(255,255,255,0.45)'} />
+        <Icon name="arrow-right" size={13} color={hover || isNext ? QUEST_GOLD : HUB.muted} />
       </View>
     </Pressable>
   );
@@ -344,13 +343,13 @@ export function DarkChip({ label, active, onPress }: { label: string; active: bo
         borderRadius: 999,
         paddingHorizontal: 12,
         paddingVertical: 7,
-        backgroundColor: active ? '#FFFFFF' : hovered ? HUB.raisedHover : HUB.panel,
+        backgroundColor: active ? HUB.gold : hovered ? HUB.raisedHover : HUB.panel,
         borderWidth: 1,
-        borderColor: active ? '#FFFFFF' : HUB.line,
+        borderColor: active ? HUB.gold : HUB.line,
         ...(WEB ? ({ transition: 'background-color 150ms ease' } as object) : null),
       })}
     >
-      <Text className="font-strong" style={{ fontSize: 12, color: active ? HUB.panel : 'rgba(240, 235, 226,0.88)' }}>
+      <Text className="font-strong" style={{ fontSize: 12, color: active ? '#FFFFFF' : HUB.ink }}>
         {label}
       </Text>
     </Pressable>
@@ -380,7 +379,7 @@ export function QuickFight({ item, stacked = false }: { item: (typeof QUICK_FIGH
         <Icon name={item.icon} size={17} color="#FFFFFF" strokeWidth={2.1} />
       </View>
       <View style={{ flex: 1, minWidth: 0 }}>
-        <Text className="font-strong" style={{ fontSize: 14, color: '#FFFFFF' }} numberOfLines={1}>
+        <Text className="font-strong" style={{ fontSize: 14, color: HUB.ink }} numberOfLines={1}>
           {en ? item.titleEn : item.title}
         </Text>
         <Text className="font-sans" style={{ fontSize: 12, color: QUEST_MUTED }} numberOfLines={1}>

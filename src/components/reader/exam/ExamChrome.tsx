@@ -26,6 +26,8 @@ export function ExamTopBar({
   onTutor,
   narrow,
   compact = false,
+  endAt,
+  onExpire,
 }: {
   paused: boolean;
   onTogglePause: () => void;
@@ -38,6 +40,9 @@ export function ExamTopBar({
   narrow: boolean;
   /** Màn thấp (điện thoại nằm ngang): thanh mảnh hơn. */
   compact?: boolean;
+  /** Đồng hồ thi thật: mốc kết thúc và hành động khi hết giờ. */
+  endAt?: number;
+  onExpire?: () => void;
 }) {
   const { L } = useL();
   return (
@@ -57,7 +62,7 @@ export function ExamTopBar({
         </Pressable>
       </View>
 
-      <TimerPill paused={paused} onToggle={onTogglePause} narrow={narrow} />
+      <TimerPill paused={paused} onToggle={onTogglePause} narrow={narrow} endAt={endAt} onExpire={onExpire} />
 
       <View style={{ flex: narrow ? 0 : 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', gap: narrow ? 2 : 8 }}>
         <TopPill icon="note" label={L('Xem note', 'Notes')} active={notesOpen} onPress={onNotes} narrow={narrow} />
@@ -80,14 +85,48 @@ export function ExamTopBar({
  * Đồng hồ đếm ngược TỰ GIỮ giây của nó. Trước đây giây nằm ở state của cả màn,
  * nên mỗi giây cả bài đọc (hàng trăm ô chữ) và toàn bộ câu hỏi dựng lại một lượt.
  */
-function TimerPill({ paused, onToggle, narrow, startSeconds = 20 * 60 }: { paused: boolean; onToggle: () => void; narrow: boolean; startSeconds?: number }) {
+function TimerPill({
+  paused,
+  onToggle,
+  narrow,
+  startSeconds = 20 * 60,
+  endAt,
+  onExpire,
+}: {
+  paused: boolean;
+  onToggle: () => void;
+  narrow: boolean;
+  startSeconds?: number;
+  /** Mốc kết thúc tuyệt đối (ms): đồng hồ bám theo giờ thật, không đếm tích luỹ. */
+  endAt?: number;
+  /** Gọi đúng một lần khi hết giờ. */
+  onExpire?: () => void;
+}) {
   const { L } = useL();
-  const [left, setLeft] = useState(startSeconds);
+  const [left, setLeft] = useState(() => (endAt !== undefined ? Math.max(0, Math.ceil((endAt - Date.now()) / 1000)) : startSeconds));
+  const expireRef = useRef(onExpire);
   useEffect(() => {
+    expireRef.current = onExpire;
+  }, [onExpire]);
+  useEffect(() => {
+    if (endAt !== undefined) {
+      let fired = false;
+      const tick = () => {
+        const s = Math.max(0, Math.ceil((endAt - Date.now()) / 1000));
+        setLeft(s);
+        if (s <= 0 && !fired) {
+          fired = true;
+          expireRef.current?.();
+        }
+      };
+      tick();
+      const t = setInterval(tick, 1000);
+      return () => clearInterval(t);
+    }
     if (paused) return;
     const t = setInterval(() => setLeft((v) => Math.max(0, v - 1)), 1000);
     return () => clearInterval(t);
-  }, [paused]);
+  }, [paused, endAt]);
   const label = `${String(Math.floor(left / 60)).padStart(2, '0')}:${String(left % 60).padStart(2, '0')}`;
   return (
     <Pressable

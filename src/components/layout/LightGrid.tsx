@@ -1,10 +1,12 @@
 import React from 'react';
 
-import { GridBackdrop, LIGHT_LINE, LIGHT_STOPS } from './GridBackdrop';
+import { GridBackdrop } from './GridBackdrop';
 import { pageBackgroundFor } from './study-backgrounds';
 import { useHydrated } from './useHydrated';
 import { findItem, DEFAULT_LOOK } from '@/services/gamification/shop';
 import { useRewardStore } from '@/store/useRewardStore';
+import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
+import { CUTE_PALETTES } from './cute-palettes';
 
 /**
  * Nền lưới SÁNG, tràn viền — cho các màn tác vụ nhiều chữ.
@@ -35,6 +37,9 @@ export function LightGrid({ children }: { children: React.ReactNode }) {
  */
 export function StudyBackdrop({ children, showGrid = true }: { children: React.ReactNode; showGrid?: boolean }) {
   const bg = usePageBackground('study');
+  const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
+  const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
   if (bg) {
     return (
       <GridBackdrop colors={bg.stops} line={bg.line} pattern={bg.pattern} blobs={bg.blobs} margin={bg.margin} cell={bg.cell ?? 34}>
@@ -43,7 +48,7 @@ export function StudyBackdrop({ children, showGrid = true }: { children: React.R
     );
   }
   return (
-    <GridBackdrop colors={LIGHT_STOPS} line={LIGHT_LINE} showGrid={showGrid}>
+    <GridBackdrop colors={palette.study} line={palette.studyLine} blobs={[palette.study[0], palette.study[2]]} showGrid={showGrid}>
       {children}
     </GridBackdrop>
   );

@@ -1,9 +1,12 @@
 import React from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
+import { ActivityIndicator, Platform, Pressable, Text, View } from 'react-native';
 
 import { Icon, type IconName } from './Icon';
 import { haptic } from '@/services/haptics';
 import { color, paper } from '@/theme/tokens';
+import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { RCHAR, RGOLD, RINK, RORANGE, RPAPER, RPINK, RSKY } from '@/components/profile-retro/retro-art';
+import { useRewardStore } from '@/store/useRewardStore';
 
 export type ButtonVariant =
   | 'primary'
@@ -76,6 +79,29 @@ const sizing: Record<ButtonSize, { box: string; text: string; icon: number }> = 
   lg: { box: 'h-12 px-5 rounded-panel gap-2', text: 'text-bodyLg', icon: 19 },
 };
 
+/** Kiểu nút retro: viên có viền mực, bóng lệch đặc, màu theo vai trò của nút. Nút ghost không viền. */
+function retroButtonStyle(variant: ButtonVariant): object {
+  const fill: Partial<Record<ButtonVariant, string>> = {
+    primary: RGOLD,
+    secondary: RSKY,
+    brand: RPINK,
+    danger: RORANGE,
+    onDark: RCHAR,
+    onDarkSolid: RPAPER,
+    brandOutline: RPAPER,
+    outline: RPAPER,
+    ghost: 'transparent',
+  };
+  const ghost = variant === 'ghost';
+  return {
+    borderRadius: 999,
+    borderWidth: ghost ? 0 : 3,
+    borderColor: RINK,
+    backgroundColor: fill[variant] ?? RPAPER,
+    ...(!ghost && Platform.OS === 'web' ? { boxShadow: '3px 3px 0 #1F1A1D' } : {}),
+  };
+}
+
 export function Button({
   label,
   onPress,
@@ -90,6 +116,10 @@ export function Button({
 }: ButtonProps) {
   const s = sizing[size];
   const inactive = disabled || loading;
+  const retro = useRetroStyle();
+  const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
+  const chiikawaButton = chiikawaTheme && (variant === 'primary' || variant === 'brand' || variant === 'secondary');
+  const themedBorder = chiikawaTheme && (variant === 'brandOutline' || variant === 'outline');
 
   return (
     <Pressable
@@ -103,22 +133,31 @@ export function Button({
       className={[
         'flex-row items-center justify-center',
         s.box,
-        container[variant],
+        retro ? '' : container[variant],
         fullWidth ? 'w-full' : 'self-start',
         inactive ? 'opacity-50' : '',
         className ?? '',
       ]
         .filter(Boolean)
         .join(' ')}
-      style={({ pressed }) => (pressed ? { opacity: 0.85 } : undefined)}
+      // Khi retro bật, truyền object tĩnh: NativeWind không áp style dạng hàm (pressed) lên Pressable.
+      style={
+        retro
+          ? (retroButtonStyle(variant) as never)
+          : ({ pressed }) => ({
+              ...(pressed ? { opacity: 0.85 } : undefined),
+              ...(chiikawaButton ? { backgroundColor: '#C65A78' } : undefined),
+              ...(themedBorder ? { borderColor: '#F3C4D2' } : undefined),
+            })
+      }
     >
       {loading ? (
         <ActivityIndicator size="small" color={iconColor[variant]} />
       ) : (
         <>
-          {iconLeft ? <Icon name={iconLeft} size={s.icon} color={iconColor[variant]} /> : null}
-          <Text className={['font-semi', s.text, labelClass[variant]].join(' ')}>{label}</Text>
-          {iconRight ? <Icon name={iconRight} size={s.icon} color={iconColor[variant]} /> : null}
+          {iconLeft ? <Icon name={iconLeft} size={s.icon} color={retro ? RINK : iconColor[variant]} /> : null}
+          <Text className={['font-semi', s.text, retro ? '' : labelClass[variant]].join(' ')} style={retro ? { color: RINK, fontFamily: 'Nunito_900Black' } : undefined}>{label}</Text>
+          {iconRight ? <Icon name={iconRight} size={s.icon} color={retro ? RINK : iconColor[variant]} /> : null}
         </>
       )}
     </Pressable>

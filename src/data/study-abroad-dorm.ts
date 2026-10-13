@@ -9,6 +9,8 @@ export type DormDecoration = {
   name: Bi;
   description: Bi;
   unlockMission?: string;
+  /** Giá bằng đồng du học. Có giá thì phải mua mới đặt được (xem services/study-abroad/economy.ts). */
+  price?: number;
 };
 
 export const DORM_SLOTS: readonly { id: DormSlot; name: Bi }[] = [
@@ -47,6 +49,8 @@ export const STUDY_ABROAD_DECORATIONS: readonly DormDecoration[] = [
   { id: 'taxi-toy', slot: 'corner', glyph: '🚕', name: { vi: 'Xe taxi đồ chơi', en: 'Toy taxi' }, description: { vi: 'Kỷ niệm chuyến taxi vàng.', en: 'A memento of the yellow cab.' }, unlockMission: 'nyc-taxi' },
   { id: 'research-poster', slot: 'wall', glyph: '🔬', name: { vi: 'Poster nghiên cứu', en: 'Research poster' }, description: { vi: 'Ghi dấu lần đầu trình bày nghiên cứu.', en: 'A reminder of your first research presentation.' }, unlockMission: 'research-poster' },
   { id: 'scholarship-trophy', slot: 'shelf', glyph: '🏆', name: { vi: 'Cúp học bổng', en: 'Scholarship trophy' }, description: { vi: 'Phần thưởng hoàn thành buổi phỏng vấn.', en: 'Unlocked by completing the scholarship interview.' }, unlockMission: 'final-interview' },
+  { id: 'sg-orchid', slot: 'corner', glyph: '🌺', name: { vi: 'Chậu lan Singapore', en: 'Singapore orchid' }, description: { vi: 'Loài lan là quốc hoa của Singapore.', en: 'The orchid is Singapore\'s national flower.' }, unlockMission: 'arrival', price: 40 },
+  { id: 'sg-hawker-poster', slot: 'wall', glyph: '🍜', name: { vi: 'Tranh món hawker', en: 'Hawker food poster' }, description: { vi: 'Tranh vẽ các món ăn vặt Singapore.', en: 'A print of Singapore street-food dishes.' }, unlockMission: 'arrival', price: 20 },
 ];
 
 export const DEFAULT_DORM_DECORATIONS: Record<DormSlot, string> = {

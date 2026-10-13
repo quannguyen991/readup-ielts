@@ -13,8 +13,7 @@
 }
 
 /*
- * Nút và khối tô màu chính: dải xanh nhạt giống mục đang chọn ở thanh bên
- * (người dùng chọn 27/09/2026). Màu nền đặc vẫn là primary-600 cho bản native.
+ * Nút chính: dải vàng kim của giao diện mặc định.
  */
 @layer utilities {
   .bg-primary-600,

@@ -56,7 +56,7 @@ function ExploreTile({ tile, compact }: { tile: Tile; compact: boolean }) {
         backgroundColor: HUB.panel,
         borderWidth: 1,
         borderColor: hover ? `${tile.tone}AA` : HUB.line,
-        ...(WEB ? ({ boxShadow: hover ? `0 16px 34px ${tile.tone}2E` : '0 10px 26px rgba(2,8,23,0.3)' } as object) : null),
+        ...(WEB ? ({ boxShadow: hover ? `0 16px 34px ${tile.tone}2E` : '0 9px 22px rgba(180,86,117,0.1)' } as object) : null),
         ...lift(hover),
       }}
     >

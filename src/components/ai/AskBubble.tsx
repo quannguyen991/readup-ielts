@@ -1,16 +1,12 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { ActivityIndicator, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Image, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
-import { anim, ensureGameKeyframes, MOVE } from '@/components/game/game-anim';
-import { PixelSprite } from '@/components/game/PixelSprite';
 import { Icon } from '@/components/ui';
-import { MASCOTS } from '@/services/game/mascots';
-import { mascotOf, useRewardStore } from '@/store/useRewardStore';
 import { color } from '@/theme/tokens';
+import { useRewardStore } from '@/store/useRewardStore';
 import { currentLocale, pick, useL } from '@/i18n/useL';
 import { formatWordAnswer, isSingleWordQuestion } from '@/services/dictionary/word-answer';
 import { lookupOffline, resolveWord } from '@/services/dictionary/word-lookup';
-import type { MascotId } from '@/services/game/mascots';
 
 /**
  * Bong bóng hỏi nhanh, nổi ở góc màn.
@@ -23,9 +19,8 @@ import type { MascotId } from '@/services/game/mascots';
  * màn chép chính tả trống trơn góc phải); chỉ ẩn lúc đang thi (`isExamRoute`).
  * `position: fixed` trên web để cuộn trang nó vẫn đứng yên ở góc.
  *
- * LINH VẬT THAY BIỂU TƯỢNG: ai đã đổi và đang đeo linh vật (trang Đổi quà) thì
- * chính con linh vật đứng ở góc làm nút trợ lý, nhún nhảy, và khung chat mang
- * tên nó — phần thưởng đổi sao nhìn thấy được mỗi ngày chứ không nằm trong kho.
+ * MASCOT CHIKAWA: mascot luôn nhận diện được ở góc màn hình; bong bóng vẫn giữ
+ * hành vi hỏi nhanh để người học không phải rời trang đang làm.
  */
 
 type Msg = { role: 'user' | 'assistant'; content: string; /** Lỗi AI: hiện nút "Thử lại". */ retry?: boolean };
@@ -39,10 +34,8 @@ const GREETING =
 const GREETING_EN =
   "Ask me about grammar, vocabulary, how to tackle each question type, or how to use the app. I can't see your account or your writing.";
 
-/** Tên linh vật bản tiếng Anh (dữ liệu gốc ở services/game/mascots giữ tiếng Việt). */
-const PET_NAME_EN: Record<MascotId, string> = { owl: 'Wise Owl', fox: 'Clever Fox', cat: 'Lazy Cat', dragon: 'Baby Dragon' };
-
 const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
+const CHIIKAWA = require('../../../assets/illustrations/cute-home/mascot-wave.png');
 
 /**
  * Cách đáy `px` pixel, CỘNG phần thanh tab dưới đang chiếm (biến `--bb-h` do
@@ -55,11 +48,8 @@ function lift(px: number): { bottom: number; transition?: string } {
 
 export function AskBubble() {
   const { L, en } = useL();
+  const chiikawaTheme = useRewardStore((s) => s.theme === 'theme-chiikawa');
   const [open, setOpen] = useState(false);
-  const petId = mascotOf(useRewardStore((s) => s.mascot));
-  const pet = petId ? MASCOTS[petId] : null;
-  const petName = pet ? (en ? PET_NAME_EN[pet.id] : pet.name) : '';
-  React.useEffect(ensureGameKeyframes, []);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
@@ -147,71 +137,37 @@ export function AskBubble() {
   }, [ask, busy, messages]);
 
   if (!open) {
-    if (pet) {
-      return (
-        <Pressable
-          accessibilityRole="button"
-          accessibilityLabel={L(`Hỏi ${petName}`, `Ask ${petName}`)}
-          onPress={() => setOpen(true)}
-          style={{ position: FIXED, right: 16, ...lift(14), zIndex: 60, alignItems: 'center' }}
-        >
-          {({ hovered }: { hovered?: boolean }) => (
-            <>
-              {hovered ? (
-                <View className="mb-1 rounded-pill bg-white px-3 py-1" style={{ ...(Platform.OS === 'web' ? ({ boxShadow: '0 6px 18px rgba(15,23,42,0.12)' } as object) : null) }}>
-                  <Text className="font-strong text-label text-ink">{L(`Hỏi ${petName}`, `Ask ${petName}`)}</Text>
-                </View>
-              ) : null}
-              <View
-                style={{
-                  width: 66,
-                  height: 66,
-                  borderRadius: 33,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  backgroundColor: '#FFFFFF',
-                  borderWidth: 3,
-                  borderColor: pet.color,
-                  ...(Platform.OS === 'web' ? ({ boxShadow: `0 10px 26px ${pet.color}55` } as object) : null),
-                }}
-              >
-                <View style={anim('rg-bob', 1300, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
-                  <PixelSprite name={pet.look} color={pet.color} size={46} />
-                </View>
-              </View>
-            </>
-          )}
-        </Pressable>
-      );
-    }
     return (
       <Pressable
         accessibilityRole="button"
-        accessibilityLabel={L('Mở hỏi nhanh', 'Open quick ask')}
+        accessibilityLabel={chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Mở hỏi nhanh', 'Open quick ask')}
         onPress={() => setOpen(true)}
         style={{
           position: FIXED,
-          right: 18,
-          ...lift(18),
+          right: 20,
+          ...lift(20),
           zIndex: 60,
-          height: 52,
-          width: 52,
-          borderRadius: 26,
+          height: chiikawaTheme ? 68 : 52,
+          width: chiikawaTheme ? 68 : 52,
+          borderRadius: 34,
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: color.primary,
+          backgroundColor: chiikawaTheme ? '#FFF8FB' : color.primary,
+          borderWidth: chiikawaTheme ? 2 : 0,
+          borderColor: '#F2B8CC',
+          overflow: 'hidden',
           ...(Platform.OS === 'web'
-            ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 28px rgba(15,23,42,0.10)' } as never)
+            ? ({ boxShadow: chiikawaTheme ? '0 8px 24px rgba(166,68,98,0.24)' : '0 8px 24px rgba(15,23,42,0.18)' } as never)
             : {
-                shadowColor: '#0F172A',
-                shadowOffset: { width: 0, height: 6 },
-                shadowOpacity: 0.1,
-                shadowRadius: 16,
-                elevation: 6,
+                shadowColor: chiikawaTheme ? '#A64462' : '#0F172A',
+                shadowOffset: { width: 0, height: 5 },
+                shadowOpacity: 0.18,
+                shadowRadius: 12,
+                elevation: 7,
               }),
         }}
       >
-        <Icon name="sparkle" size={22} color="#fff" strokeWidth={2} />
+        {chiikawaTheme ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 65, height: 65 }} accessibilityIgnoresInvertColors /> : <Icon name="sparkle" size={22} color="#fff" strokeWidth={2.2} />}
       </Pressable>
     );
   }
@@ -232,7 +188,7 @@ export function AskBubble() {
         ...(Platform.OS === 'web'
           ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.05), 0 10px 28px rgba(15,23,42,0.10)' } as never)
           : {
-              shadowColor: '#0F172A',
+              shadowColor: chiikawaTheme ? '#49364B' : '#0F172A',
               shadowOffset: { width: 0, height: 6 },
               shadowOpacity: 0.1,
               shadowRadius: 16,
@@ -242,9 +198,12 @@ export function AskBubble() {
     >
       <View
         className="flex-row items-center justify-between py-0.5 pl-3 pr-1"
-        style={{ backgroundColor: color.primary }}
+        style={{ backgroundColor: chiikawaTheme ? '#C65A78' : color.primary }}
       >
-        <Text className="font-strong text-body text-white">{pet ? L(`Hỏi ${petName}`, `Ask ${petName}`) : L('Hỏi nhanh', 'Quick ask')}</Text>
+        <View className="flex-row items-center gap-2">
+          {chiikawaTheme ? <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#FFF8FB', overflow: 'hidden', alignItems: 'center', justifyContent: 'center' }}><Image source={CHIIKAWA} resizeMode="contain" style={{ width: 33, height: 33 }} accessibilityIgnoresInvertColors /></View> : <Icon name="sparkle" size={20} color="#fff" strokeWidth={2.2} />}
+          <Text className="font-strong text-body text-white">{chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Hỏi nhanh', 'Quick ask')}</Text>
+        </View>
         <Pressable
           accessibilityRole="button"
           accessibilityLabel={L('Đóng hỏi nhanh', 'Close quick ask')}

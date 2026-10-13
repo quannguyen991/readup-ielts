@@ -25,7 +25,7 @@ IELTS và SAT nằm chung một app.
 
 ## Capabilities and Constraints
 
-- Khách (chưa đăng nhập) dùng ngay: Từ vựng, Reading, Luyện câu, SAT Math, SAT Reading & Writing. Cần tài khoản: Listening, Speaking, Writing, Thi thử, Đọc báo song ngữ, Du ngoạn, Cộng đồng (nguồn: `src/lib/access/member-gate.ts`).
+- Khách (chưa đăng nhập) dùng ngay: Từ vựng, Reading, Luyện câu, SAT Math, SAT Reading & Writing, Du ngoạn, Du học. Cần tài khoản: Listening, Speaking, Writing, Thi thử, Đọc báo song ngữ, Cộng đồng (nguồn: `src/lib/access/member-gate.ts`).
 - Tài khoản mới được tặng 14 ngày gói Plus (`WELCOME_DAYS`).
 - Expo / React Native Web, deploy Vercel; tên miền `band9-ielts.vercel.app` và `9band.com`.
 - Giọng phát âm từ vựng: Gemini Aoede.

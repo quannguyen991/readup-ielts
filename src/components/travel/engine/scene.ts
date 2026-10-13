@@ -1,7 +1,7 @@
 /**
  * CHẾ ĐỘ ĐỐI TƯỢNG — phần thuần (không DOM): hình học của vật đứng riêng, ô bị chặn và cửa.
  */
-import { INTERIORS, INTERIOR_SIZE, STATION_PLATFORM, type InteriorLayout, type InteriorZone } from '@/data/travel/interiors';
+import { INTERIORS, INTERIOR_SIZE, roomLayout, STATION_PLATFORM, type InteriorKindId, type InteriorLayout, type InteriorZone } from '@/data/travel/interiors';
 import type { CityMap, MapObject, Poi, SceneSprite } from '@/services/travel/types';
 import { buildImgWorld, type ImgWorld, type Pt } from './imageWorld';
 
@@ -70,8 +70,9 @@ export function interiorKindOf(kind: Poi['kind']): InteriorKind | null {
 
 export const INTERIOR_CELL = 2;
 
-export function interiorLayout(kind: InteriorKind, zone: InteriorZone = 'main'): InteriorLayout {
-  return kind === 'station' && zone === 'platform' ? STATION_PLATFORM : INTERIORS[kind];
+export function interiorLayout(kind: InteriorKind, zone: InteriorZone = 'main', city?: string): InteriorLayout {
+  if (kind === 'station' && zone === 'platform') return STATION_PLATFORM;
+  return roomLayout(kind as InteriorKindId, zone, city) ?? INTERIORS[kind];
 }
 
 /** Lưới đi được của phòng: sàn − đồ đạc + lối ra. */

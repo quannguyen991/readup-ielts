@@ -125,6 +125,7 @@ export function DailyQuests() {
                   paddingHorizontal: 16,
                   paddingVertical: 9,
                   backgroundColor: hovered ? HUB.goldHover : HUB.gold,
+                  ...(WEB ? ({ backgroundImage: 'linear-gradient(135deg, #F5B8CA 0%, #D95D83 100%)', boxShadow: '0 3px 0 rgba(174,65,101,0.2), inset 0 1px 0 rgba(255,255,255,0.45)' } as object) : null),
                   ...(WEB ? ({ transition: 'background-color 150ms ease' } as object) : null),
                 })}
               >

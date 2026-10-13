@@ -31,6 +31,14 @@
       "expo-router",
       "expo-web-browser",
       "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Cho phép Band 9 dùng ảnh bạn chọn làm sticker cá nhân.",
+          "cameraPermission": false,
+          "microphonePermission": false
+        }
+      ],
       "expo-font",
       "expo-splash-screen",
       [

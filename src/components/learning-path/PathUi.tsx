@@ -76,9 +76,9 @@ export function ExamSwitch({ value, onChange }: { value: PathExam; onChange: (v:
             aria-selected={on}
             accessibilityLabel={e === 'ielts' ? 'IELTS' : 'SAT'}
             onPress={() => onChange(e)}
-            style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 10, backgroundColor: on ? P.navy : 'transparent' }}
+            style={{ flex: 1, alignItems: 'center', borderRadius: 9, paddingVertical: 10, backgroundColor: on ? P.gold : 'transparent' }}
           >
-            <Text className="font-heavy" style={{ fontSize: 15, letterSpacing: 0.6, color: on ? P.goldLight : P.navy }}>
+            <Text className="font-heavy" style={{ fontSize: 15, letterSpacing: 0.6, color: on ? '#FFFFFF' : P.navy }}>
               {e === 'ielts' ? 'IELTS' : 'SAT'}
             </Text>
           </Pressable>
@@ -120,8 +120,8 @@ export function LevelPicker({
               minWidth: 0,
               borderRadius: 12,
               borderWidth: on ? 1.5 : 1,
-              borderColor: on ? P.navy : P.line,
-              backgroundColor: on ? P.navy : '#FFFFFF',
+              borderColor: on ? P.gold : P.line,
+              backgroundColor: on ? P.gold : '#FFFFFF',
               paddingHorizontal: compact ? 8 : 14,
               paddingVertical: compact ? 10 : 12,
             }}
@@ -129,7 +129,7 @@ export function LevelPicker({
             <Text className="font-heavy" numberOfLines={1} style={{ fontSize: compact ? 17 : 22, lineHeight: compact ? 22 : 28, color: on ? '#FFFFFF' : P.navy }}>
               {l.label}
             </Text>
-            <Text className="font-semi" numberOfLines={compact ? 2 : 1} style={{ marginTop: 2, fontSize: compact ? 11 : 13, lineHeight: compact ? 14 : 17, color: on ? P.goldLight : P.muted }}>
+            <Text className="font-semi" numberOfLines={compact ? 2 : 1} style={{ marginTop: 2, fontSize: compact ? 11 : 13, lineHeight: compact ? 14 : 17, color: on ? '#FFFFFF' : P.muted }}>
               {en ? l.title.en : l.title.vi}
             </Text>
             {!compact ? (
@@ -138,9 +138,9 @@ export function LevelPicker({
               </Text>
             ) : null}
             {planLevelId === l.id ? (
-              <View style={{ marginTop: 6, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 5, paddingHorizontal: 5, paddingVertical: 1, backgroundColor: on ? 'rgba(226,200,143,0.16)' : P.goldWash }}>
-                <Icon name="target" size={10} color={on ? P.goldLight : P.goldDeep} strokeWidth={2.4} />
-                <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.4, color: on ? P.goldLight : P.goldDeep }}>
+                <View style={{ marginTop: 6, alignSelf: 'flex-start', flexDirection: 'row', alignItems: 'center', gap: 4, borderRadius: 5, paddingHorizontal: 5, paddingVertical: 1, backgroundColor: on ? 'rgba(255,255,255,0.18)' : P.goldWash }}>
+                <Icon name="target" size={10} color={on ? '#FFFFFF' : P.goldDeep} strokeWidth={2.4} />
+                <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 0.4, color: on ? '#FFFFFF' : P.goldDeep }}>
                   {L('Theo lộ trình', 'Your plan')}
                 </Text>
               </View>
@@ -247,14 +247,14 @@ export function NodeDetail({
           borderRadius: 10,
           paddingVertical: 12,
           paddingHorizontal: 16,
-          backgroundColor: dark ? P.goldLight : P.navy,
+          backgroundColor: dark ? P.goldLight : P.gold,
           opacity: pressed ? 0.85 : 1,
         })}
       >
-        <Text className="font-heavy" style={{ fontSize: 15, color: dark ? P.navy : P.goldLight }}>
+        <Text className="font-heavy" style={{ fontSize: 15, color: dark ? P.navy : '#FFFFFF' }}>
           {primaryLabel(status, L)}
         </Text>
-        <Icon name="arrow-right" size={16} color={dark ? P.navy : P.goldLight} strokeWidth={2.4} />
+        <Icon name="arrow-right" size={16} color={dark ? P.navy : '#FFFFFF'} strokeWidth={2.4} />
       </Pressable>
       {!auto ? (
         <Pressable

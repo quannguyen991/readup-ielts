@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { create } from 'zustand';
 import type { Session, User } from '@supabase/supabase-js';
 
+import { isLocalDevBypass } from '@/lib/dev-auth-bypass';
 import {
   displayNameOf,
   fetchProfile,
@@ -55,6 +56,11 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
   available: isAuthAvailable(),
 
   initialize: async () => {
+    // Dev trên localhost: coi như đã đăng nhập để kiểm thử các màn có cổng đăng nhập.
+    if (isLocalDevBypass()) {
+      set({ status: 'signed_in', available: true, session: null, user: { id: 'local-dev', email: 'local-dev@localhost' } as never, profile: null });
+      return;
+    }
     if (!isAuthAvailable()) {
       set({ status: 'signed_out', available: false });
       return;
@@ -139,6 +145,8 @@ export function useAuthBootstrap() {
   useEffect(() => {
     void initialize();
     return onAuthChange((session) => {
+      // Dev trên localhost giữ trạng thái giả lập, không để phiên trống ghi đè.
+      if (isLocalDevBypass()) return;
       applySession(session);
       if (session?.user) void refreshProfile();
     });

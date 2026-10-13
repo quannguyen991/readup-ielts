@@ -218,8 +218,11 @@ export default function ShopScreen() {
     if (!res.ok) return say(res.reason === 'đã-sở-hữu' ? L(`Bạn đã có ${item.name}.`, `You already have ${nm(item)}.`) : L(`Không đổi được ${item.name}.`, `Couldn't get ${nm(item)}.`));
     if (item.grants) useGameStore.getState().addItem(item.grants, 1);
     const slot = SLOT[item.kind];
-    if (slot) useRewardStore.getState().equip(slot, item.id);
-    say(L(`Đã đổi ${item.name}${slot ? ' và đeo luôn' : item.grants ? ' — đã vào túi đồ' : ''}. Còn ${formatStars(stars - item.price)} sao.`, `Got ${nm(item)}${slot ? ' and put it on' : item.grants ? ' — it’s in your bag' : ''}. ${formatStars(stars - item.price)} stars left.`));
+    const unlockOnly = item.id === 'theme-chiikawa' || item.id === 'theme-retro';
+    if (slot && !unlockOnly) useRewardStore.getState().equip(slot, item.id);
+    say(unlockOnly
+      ? L(`Đã mở khóa ${item.name}. Mặc định vẫn là giao diện Band 9; bạn có thể bật chủ đề mới trong mục Cá nhân. Còn ${formatStars(stars - item.price)} sao.`, `Unlocked ${nm(item)}. Band 9 remains the default; turn on the new theme from Personal. ${formatStars(stars - item.price)} stars left.`)
+      : L(`Đã đổi ${item.name}${slot ? ' và đeo luôn' : item.grants ? ' — đã vào túi đồ' : ''}. Còn ${formatStars(stars - item.price)} sao.`, `Got ${nm(item)}${slot ? ' and put it on' : item.grants ? ' — it’s in your bag' : ''}. ${formatStars(stars - item.price)} stars left.`));
   };
 
   const onPress = (item: ShopItem) => {

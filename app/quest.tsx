@@ -15,6 +15,7 @@ import { useGameStore } from '@/store/useGameStore';
 import { useCityAvailable } from '@/services/city/availability';
 import { QuestCityHero } from '@/components/city/QuestCityHero';
 import { QuestJourneyHero } from '@/components/rail/QuestJourneyHero';
+import { QuestTaskBoard } from '@/components/game/quest-hub/QuestTaskBoard';
 
 /**
  * BAND 9 QUEST — SẢNH GAME KHI HỌC.
@@ -57,6 +58,11 @@ export default function QuestHome() {
           <View style={{ marginBottom: GAP.md }}>
             <TravelHero />
           </View>
+        </Appear>
+
+        {/* Bảng nhiệm vụ arcade: level, điểm, XP, tim và các nút hành động thật. */}
+        <Appear index={1}>
+          <QuestTaskBoard />
         </Appear>
 
         {/* 1. Thành phố Tri thức (chỉ máy tính) (01/10/2026: "để cái xây thành phố trên đầu"), chỉ máy tính */}
@@ -172,7 +178,7 @@ function Rule({ glyph, text, tone }: { glyph: string; text: string; tone: string
         backgroundColor: HUB.panel,
         borderWidth: 1,
         borderColor: HUB.line,
-        ...(WEB ? ({ boxShadow: '0 10px 26px rgba(2,8,23,0.3)' } as object) : null),
+        ...(WEB ? ({ boxShadow: '0 9px 22px rgba(180,86,117,0.1)' } as object) : null),
       }}
     >
       <View aria-hidden style={{ width: 38, height: 38, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: `${tone}26` }}>

@@ -31,3 +31,23 @@ test('món chưa mở khoá bị bỏ, dữ liệu rác không làm nổ', () =>
   assert.equal(n.decorations.bed, 'bed-starter');
   assert.equal(n.restedAt, null);
 });
+
+test('sổ tiền riêng: hợp hai máy theo mã, không cộng đôi khoản chung', () => {
+  const m = mergeStudyAbroad(
+    { completed: ['arrival'], ledger: { 'pay:shift:1:a': 40 } },
+    { completed: ['arrival'], ledger: { 'pay:shift:1:a': 40, 'pay:shift:1:b': 30 } },
+  );
+  assert.equal(m.ledger['pay:shift:1:a'], 40);
+  assert.equal(m.ledger['pay:shift:1:b'], 30);
+});
+
+test('đồ có giá chỉ đặt được khi đã mua; dữ liệu cũ không có sổ vẫn đọc được', () => {
+  const locked = normalizeStudyAbroad({ completed: ['arrival'], decorations: { corner: 'sg-orchid' } });
+  assert.equal(locked.decorations.corner, 'corner-starter');
+
+  const bought = normalizeStudyAbroad({ completed: ['arrival'], decorations: { corner: 'sg-orchid' }, ledger: { 'pay:buy:sg-orchid': -40 } });
+  assert.equal(bought.decorations.corner, 'sg-orchid');
+
+  const old = normalizeStudyAbroad({ completed: ['arrival'] });
+  assert.deepEqual(old.ledger, {});
+});
