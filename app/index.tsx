@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { Redirect } from 'expo-router';
 
 import { WELCOME_SEEN_KEY, entryPath } from '@/lib/welcome-page';
@@ -28,6 +28,14 @@ export default function Index() {
     setTarget(entryPath(seen));
   }, []);
   const chiikawa = useChiikawaActive();
-  if (!target) return chiikawa ? <ChiikawaLoader label="Đang mở Band 9…" /> : null;
+  // Đang tải: hiện dòng chữ để người dùng biết app đang chạy, không để màn trắng.
+  if (!target)
+    return chiikawa ? (
+      <ChiikawaLoader label="Chờ một chút…" />
+    ) : (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBF8F1' }}>
+        <Text style={{ fontSize: 15, color: '#6E6552' }}>Chờ một chút…</Text>
+      </View>
+    );
   return <Redirect href={target as never} />;
 }

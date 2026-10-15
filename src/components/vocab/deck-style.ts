@@ -5,6 +5,7 @@ import { VFI_DECKS } from '@/data/vocab-for-ielts';
 import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, type ListeningSection } from '@/data/vocab-listening';
 import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
+import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
 
 /**
@@ -12,7 +13,7 @@ import { CUSTOM_PREFIX } from '@/store/useCustomDeckStore';
  * viện bộ từ và phần đầu trang một bộ, để bấm vào thẻ nào thì trang bộ đó cùng màu.
  */
 
-export type DeckSource = 'mine' | 'ielts' | 'globalSuccess' | 'vfi' | 'vfia' | 'listening' | 'satMath' | 'satVerbal';
+export type DeckSource = 'mine' | 'ielts' | 'globalSuccess' | 'vfi' | 'vfia' | 'listening' | 'destination' | 'satMath' | 'satVerbal' | 'toeic' | 'toefl';
 
 export type DeckLook = { source: DeckSource; sourceLabel: string; sourceLabelEn: string; accent: readonly [string, string]; icon: IconName };
 
@@ -123,6 +124,7 @@ const VFI_ICON: Record<number, IconName> = {
 };
 const VFI_BY_SLUG = new Map(VFI_DECKS.map((d) => [d.slug, d]));
 const VFIA_BY_SLUG = new Map(VFIA_DECKS.map((d) => [d.slug, d]));
+const DESTINATION_BY_SLUG = new Map(DESTINATION_DECKS.map((d) => [d.slug, d]));
 
 const TOPIC_INDEX = new Map(VOCAB_TOPICS.map((t, i) => [t.slug, i]));
 const GLOBAL_SUCCESS_SLUGS = new Set(GLOBAL_SUCCESS_DECKS.map((d) => d.slug));
@@ -140,6 +142,8 @@ export function deckLook(slug: string): DeckLook {
   if (vfi) return { source: 'vfi', sourceLabel: 'Vocabulary for IELTS', sourceLabelEn: 'Vocabulary for IELTS', accent: PALETTE[(vfi.unit - 1) % PALETTE.length]!, icon: VFI_ICON[vfi.unit] ?? 'book' };
   const vfia = VFIA_BY_SLUG.get(slug);
   if (vfia) return { source: 'vfia', sourceLabel: 'Vocabulary for IELTS Advanced', sourceLabelEn: 'Vocabulary for IELTS Advanced', accent: PALETTE[(vfia.unit + 4) % PALETTE.length]!, icon: VFI_ICON[vfia.unit] ?? 'book' };
+  const destination = DESTINATION_BY_SLUG.get(slug);
+  if (destination) return { source: 'destination', sourceLabel: `Destination ${destination.course.toUpperCase()}`, sourceLabelEn: `Destination ${destination.course.toUpperCase()}`, accent: PALETTE[destination.unit % PALETTE.length]!, icon: 'book' };
   if (GLOBAL_SUCCESS_SLUGS.has(slug)) return { source: 'globalSuccess', sourceLabel: 'Global Success 10–12', sourceLabelEn: 'Global Success 10–12', accent: ['#E6F6F4', '#0D9488'], icon: 'letters' };
   const i = TOPIC_INDEX.get(slug) ?? 0;
   return { source: 'ielts', sourceLabel: 'Chủ đề IELTS', sourceLabelEn: 'IELTS topic', accent: PALETTE[i % PALETTE.length]!, icon: TOPIC_ICON[slug] ?? 'book' };

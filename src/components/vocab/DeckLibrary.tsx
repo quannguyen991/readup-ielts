@@ -12,12 +12,15 @@ import { VFI_DECKS } from '@/data/vocab-for-ielts';
 import { VFIA_DECKS } from '@/data/vocab-for-ielts-advanced';
 import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
 import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
+import { DESTINATION_DECKS } from '@/data/destination-vocab';
+import { unitsFor } from '@/data/intl/units';
 import { byRecent, deckProgress, fold, isInProgress, type DeckProgress } from '@/services/vocab/deck-library';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
+import { isKnown, useIntlStore } from '@/store/useIntlStore';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { color } from '@/theme/tokens';
-import { useL } from '@/i18n/useL';
+import { bi, useL } from '@/i18n/useL';
 
 import { DeckActionCard, DeckCard } from './DeckCard';
 import { deckLook, type DeckLook, type DeckSource } from './deck-style';
@@ -42,6 +45,10 @@ type LibDeck = {
   haystack: string;
   /** Tên hiển thị khi giao diện tiếng Anh (bộ người dùng tự đặt tên và bài SAT thì giữ nguyên). */
   en?: { title: string; subtitle?: string };
+  /** Đường dẫn riêng (unit TOEIC/TOEFL mở trang unit thay vì trang bộ từ). */
+  href?: string;
+  /** Kỳ thi của unit: tiến độ lấy từ danh sách "đã thuộc" chứ không từ bảng học theo chủ đề. */
+  knownExam?: 'toeic' | 'toefl';
 };
 
 const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconName }[] = [
@@ -53,8 +60,11 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'vfi', label: 'Vocabulary for IELTS', labelEn: 'Vocabulary for IELTS', icon: 'letters' },
   { key: 'vfia', label: 'Vocabulary for IELTS Advanced', labelEn: 'Vocabulary for IELTS Advanced', icon: 'letters' },
   { key: 'listening', label: 'Nghe IELTS', labelEn: 'IELTS listening', icon: 'volume' },
+  { key: 'destination', label: 'Destination B1/B2', labelEn: 'Destination B1/B2', icon: 'book' },
   { key: 'satMath', label: 'SAT Math', labelEn: 'SAT Math', icon: 'grid' },
   { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
+  { key: 'toeic', label: 'TOEIC', labelEn: 'TOEIC', icon: 'book' },
+  { key: 'toefl', label: 'TOEFL', labelEn: 'TOEFL', icon: 'book' },
 ];
 
 const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: string; subtitleEn: string; icon: IconName }> = {
@@ -64,9 +74,45 @@ const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: st
   vfi: { title: 'Vocabulary for IELTS', titleEn: 'Vocabulary for IELTS', subtitle: '20 unit theo giáo trình, mỗi unit thêm 20 từ mở rộng', subtitleEn: '20 units in book order, each with 20 extra words', icon: 'letters' },
   vfia: { title: 'Vocabulary for IELTS Advanced', titleEn: 'Vocabulary for IELTS Advanced', subtitle: '20 unit nâng cao, mỗi unit thêm 15 từ mở rộng', subtitleEn: '20 advanced units, each with 15 extra words', icon: 'letters' },
   listening: { title: 'Nghe IELTS', titleEn: 'IELTS listening', subtitle: 'Chia theo từng Section của đề', subtitleEn: 'Grouped by test Section', icon: 'volume' },
+  destination: { title: 'Destination B1 & B2', titleEn: 'Destination B1 & B2', subtitle: 'Từ vựng theo unit, có quiz kiểu THPT', subtitleEn: 'Unit vocabulary with high-school exam practice', icon: 'book' },
   satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
   satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
+  toeic: { title: 'TOEIC', titleEn: 'TOEIC', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
+  toefl: { title: 'TOEFL', titleEn: 'TOEFL', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
 };
+
+const INTL_ACCENT: Record<'toeic' | 'toefl', readonly [string, string]> = {
+  toeic: ['#E0F2FE', '#0369A1'],
+  toefl: ['#FCE7F3', '#BE185D'],
+};
+
+/** Unit TOEIC/TOEFL thành thẻ bộ từ: nhãn TOEIC/TOEFL, bấm vào mở đúng trang unit. */
+function intlDecks(exam: 'toeic' | 'toefl'): LibDeck[] {
+  const label = exam.toUpperCase();
+  return unitsFor(exam).map((u) => {
+    const title = `Unit ${u.index} · ${bi(u.title, 'vi')}`;
+    const look: DeckLook = { source: exam, sourceLabel: label, sourceLabelEn: label, accent: INTL_ACCENT[exam], icon: 'book' };
+    return {
+      slug: `${exam}-unit-${u.index}`,
+      title,
+      subtitle: u.words.slice(0, 3).join(', '),
+      words: u.words.map((word) => ({ word })),
+      look,
+      en: { title: `Unit ${u.index} · ${bi(u.title, 'en')}` },
+      haystack: fold(`${title} ${label} ${u.words.join(' ')}`),
+      href: `/${exam}/vocab/${u.index}`,
+      knownExam: exam,
+    };
+  });
+}
+
+type StageMap = Parameters<typeof deckProgress>[1];
+/** Bộ đánh dấu "đã thuộc" → mức thuộc (2) để dùng chung thanh tiến độ với các bộ khác. */
+function knownStages(d: LibDeck, known: Record<string, true>): StageMap {
+  const out: Record<string, 2> = {};
+  for (const w of d.words) if (d.knownExam && isKnown(known, d.knownExam, w.word)) out[w.word] = 2;
+  return out;
+}
 
 const LISTENING_SECTION_OF = new Map(LISTENING_DECKS.map((d) => [d.slug, d.section]));
 
@@ -80,12 +126,16 @@ function lib(slug: string, title: string, words: readonly { word: string }[], su
 
 const STATIC_DECKS: LibDeck[] = [
   ...VOCAB_TOPICS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
-  ...GLOBAL_SUCCESS_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, t.blurb, { title: t.name })),
+  // Unit titles already identify the lesson; omit the long source/enrichment blurb on each card.
+  ...GLOBAL_SUCCESS_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, undefined, { title: t.name })),
   ...VFI_DECKS.map((t) => lib(t.slug, t.name, t.words, t.blurb, { title: t.name })),
   ...VFIA_DECKS.map((t) => lib(t.slug, t.name, t.words, t.blurb, { title: t.name })),
   ...LISTENING_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
+  ...DESTINATION_DECKS.map((t) => lib(t.slug, t.nameVi, t.words, t.name, { title: t.name })),
   ...SAT_MATH_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
   ...SAT_VERBAL_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
+  ...intlDecks('toeic'),
+  ...intlDecks('toefl'),
 ];
 
 export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: LibraryFilter }) {
@@ -94,6 +144,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const customMap = useCustomDeckStore((s) => s.decks);
   const stages = useTopicStudyStore((s) => s.stages);
   const lastAt = useTopicStudyStore((s) => s.lastAt);
+  const known = useIntlStore((s) => s.known);
   const [filter, setFilter] = useState<LibraryFilter>(initialFilter);
   const [query, setQuery] = useState('');
   const now = useMemo(() => new Date(), []);
@@ -112,9 +163,9 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
 
   const progress = useMemo(() => {
     const map = new Map<string, DeckProgress>();
-    for (const d of decks) map.set(d.slug, deckProgress(d.words, stages[d.slug], lastAt?.[d.slug]));
+    for (const d of decks) map.set(d.slug, deckProgress(d.words, d.knownExam ? knownStages(d, known) : stages[d.slug], lastAt?.[d.slug]));
     return map;
-  }, [decks, stages, lastAt]);
+  }, [decks, stages, lastAt, known]);
   const prog = (d: LibDeck) => progress.get(d.slug)!;
 
   const learning = useMemo(() => byRecent(decks.filter((d) => isInProgress(progress.get(d.slug)!)), (d) => progress.get(d.slug)!.lastAt), [decks, progress]);
@@ -123,10 +174,10 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const needle = fold(query);
   const results = needle ? decks.filter((d) => d.haystack.includes(needle)) : [];
 
-  const open = (slug: string) => router.push(`/vocabulary/topic/${slug}` as never);
+  const open = (d: LibDeck) => router.push((d.href ?? `/vocabulary/topic/${d.slug}`) as never);
   const card = (d: LibDeck, i: number) => (
     <Appear key={d.slug} index={Math.min(i, 8)} style={{ height: '100%' }}>
-      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} now={now} onPress={() => open(d.slug)} />
+      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} now={now} onPress={() => open(d)} />
     </Appear>
   );
   const createCard = (
@@ -251,7 +302,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'ielts', 'globalSuccess', 'vfi', 'vfia', 'listening', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
                   <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
                   {sourceBody(s)}
