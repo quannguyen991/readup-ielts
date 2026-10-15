@@ -5,11 +5,13 @@
  * máy chủ in email + mã đơn ở chân từng trang rồi trả link ký 10 phút.
  */
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Linking, Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
+import { ActivityIndicator, Image, Linking, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useFonts, PlayfairDisplay_700Bold, PlayfairDisplay_600SemiBold_Italic } from '@expo-google-fonts/playfair-display';
 
-import { ArtLabel, CREAM, GOLD, GOLD_DEEP, MIST, NAVY, Painting, SANS_4, SANS_5, SANS_6, SANS_7, SANS_8, SERIF, SERIF_I, WALL, isWeb } from '@/components/gallery/gallery';
+import { CREAM, GOLD, GOLD_DEEP, MIST, NAVY, SANS_4, SANS_5, SANS_6, SANS_7, SANS_8, SERIF, SERIF_I, isWeb } from '@/components/gallery/gallery';
+import { Aurora, BODY_G, DEEP_G, FX_CSS, GOLD_SKY, GOLD_SKY_LOC, INK_G, MUTED_G, Plaque } from '@/components/gallery/glass';
 import { Icon } from '@/components/ui';
 import { BOOKS, BOOK_TOTALS, type Book, type BookId } from '@/services/books/catalog';
 import { BOOK_BUNDLE_RULE } from '@/services/books/entitlement';
@@ -84,7 +86,7 @@ export default function BookshelfScreen() {
     }
   };
 
-  if (!fontsLoaded && !fontError) return <View style={{ flex: 1, backgroundColor: WALL }} />;
+  if (!fontsLoaded && !fontError) return <View style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} />;
 
   const granted = access.state === 'member' && access.granted;
   // Bìa chia đều theo bề rộng THẬT của kệ (cửa sổ trừ thanh menu): bìa ≥ 140px, IELTS 6 cuốn nằm một hàng khi đủ chỗ.
@@ -93,29 +95,26 @@ export default function BookshelfScreen() {
   const coverW = shelfW > 0 ? Math.floor((shelfW - gap * (cols - 1)) / cols) : 140;
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: WALL }} contentContainerStyle={{ paddingBottom: 48 }}>
-      {/* Đầu trang: tranh nền + tên tủ + trạng thái quyền tải */}
+    <ScrollView style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} contentContainerStyle={{ paddingBottom: 48 }}>
+      {isWeb ? <style>{FX_CSS}</style> : null}
+      {/* Đầu trang: sảnh vàng kim + tên tủ + nhãn phòng */}
       <View style={{ overflow: 'hidden' }}>
-        <Painting
-          src="/landing/cafe.jpg"
-          pos="center 30%"
-          scrim={`linear-gradient(180deg,rgba(8,12,34,.55) 0%,rgba(8,12,34,.7) 60%,${WALL} 100%)`}
-        />
+        <LinearGradient colors={GOLD_SKY} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
+        <Aurora variant="close" />
         <View style={{ paddingHorizontal: pad, paddingTop: wide ? 64 : 40, paddingBottom: wide ? 48 : 32 }}>
           <View className="mx-auto w-full" style={{ maxWidth: 1180 }}>
-            <Text accessibilityRole="header" style={{ color: CREAM, fontFamily: SERIF, fontSize: wide ? 52 : 36, lineHeight: wide ? 60 : 44 }}>
+            <Text accessibilityRole="header" className="b9-rise" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 52 : 36, lineHeight: wide ? 60 : 44 }}>
               {L('Tủ sách ', 'The ')}
-              <Text style={{ color: GOLD, fontFamily: SERIF_I }}>{L('Band 9', 'Band 9 shelf')}</Text>
+              <Text className="b9-gold" style={{ color: DEEP_G, fontFamily: SERIF_I }}>{L('Band 9', 'Band 9 shelf')}</Text>
             </Text>
-            <Text style={{ fontFamily: SANS_5, marginTop: 12, color: '#D4D9E8', fontSize: mid ? 18 : 16, lineHeight: 27, maxWidth: 620 }}>
+            <Text className="b9-rise b9-d2" style={{ fontFamily: SANS_5, marginTop: 12, color: BODY_G, fontSize: mid ? 18 : 16, lineHeight: 27, maxWidth: 620 }}>
               {L(
                 `${BOOK_TOTALS.count} cuốn PDF, ${BOOK_TOTALS.pages.toLocaleString('vi-VN')} trang soạn riêng cho Band 9. Đọc thử ${SAMPLE_PAGES} trang mỗi cuốn, miễn phí.`,
                 `${BOOK_TOTALS.count} PDF books, ${BOOK_TOTALS.pages.toLocaleString('en-US')} pages written for Band 9. Read the first ${SAMPLE_PAGES} pages of each for free.`,
               )}
             </Text>
-            <AccessBar access={access} L={L} />
             <View style={{ marginTop: 22 }}>
-              <ArtLabel title={L('Hiên quán cà phê ban đêm', 'Café Terrace at Night')} meta="Vincent van Gogh, 1888" align="left" />
+              <Plaque title={L('Tủ sách PDF', 'The PDF bookshelf')} meta={L('Phòng 5 · Band 9', 'Room 5 · Band 9')} align="left" />
             </View>
           </View>
         </View>
@@ -124,7 +123,7 @@ export default function BookshelfScreen() {
       {error ? (
         <View className="mx-auto w-full" style={{ maxWidth: 1180, paddingHorizontal: pad, marginTop: 8 }}>
           <View style={{ borderLeftWidth: 3, borderLeftColor: '#E5484D', paddingLeft: 12, paddingVertical: 6 }}>
-            <Text style={{ fontFamily: SANS_6, color: '#F6C1C3', fontSize: 14.5 }}>{error}</Text>
+            <Text style={{ fontFamily: SANS_6, color: '#9B2226', fontSize: 14.5 }}>{error}</Text>
           </View>
         </View>
       ) : null}
@@ -133,9 +132,9 @@ export default function BookshelfScreen() {
         const books = BOOKS.filter((b) => b.exam === shelf.exam);
         return (
           <View key={shelf.exam} className="mx-auto w-full" style={{ maxWidth: 1180, paddingHorizontal: pad, marginTop: wide ? 48 : 36 }}>
-            <Text accessibilityRole="header" style={{ color: CREAM, fontFamily: SERIF, fontSize: wide ? 30 : 24 }}>
+            <Text accessibilityRole="header" style={{ color: INK_G, fontFamily: SERIF, fontSize: wide ? 30 : 24 }}>
               {L(shelf.vi, shelf.en)}
-              <Text style={{ fontFamily: SANS_5, fontSize: 15, color: MIST }}>{`  ·  ${books.length} ${L('cuốn', books.length > 1 ? 'books' : 'book')}`}</Text>
+              <Text style={{ fontFamily: SANS_5, fontSize: 15, color: BODY_G }}>{`  ·  ${books.length} ${L('cuốn', books.length > 1 ? 'books' : 'book')}`}</Text>
             </Text>
             {/* Kệ: bìa đứng thành hàng trên tấm ván vàng */}
             <View style={{ marginTop: 20 }} onLayout={(e) => setShelfW(Math.round(e.nativeEvent.layout.width))}>
@@ -161,7 +160,7 @@ export default function BookshelfScreen() {
       })}
 
       <View className="mx-auto w-full" style={{ maxWidth: 1180, paddingHorizontal: pad, marginTop: 48 }}>
-        <Text style={{ fontFamily: SANS_4, color: '#9AA3BE', fontSize: 13, lineHeight: 20, maxWidth: 720 }}>
+        <Text style={{ fontFamily: SANS_4, color: MUTED_G, fontSize: 13, lineHeight: 20, maxWidth: 720 }}>
           {L(
             'Mỗi bản tải về được in email của bạn và mã đơn ở chân từng trang. Sách chỉ để bạn tự học: không chia sẻ, đăng lại hay bán lại.',
             'Every downloaded copy carries your email and order code at the foot of each page. For your own study only: do not share, repost or resell.',
@@ -247,7 +246,7 @@ function BookCard({
               borderRadius: 3,
               overflow: 'hidden',
               transform: [{ translateY: hovered ? -4 : 0 }],
-              ...({ boxShadow: hovered ? '0 18px 34px rgba(0,0,0,.55)' : '0 12px 26px rgba(0,0,0,.45)', transition: 'transform .18s ease, box-shadow .18s ease' } as object),
+              ...({ boxShadow: hovered ? '0 18px 34px rgba(60,40,10,.34)' : '0 12px 26px rgba(60,40,10,.28)', transition: 'transform .18s ease, box-shadow .18s ease' } as object),
             }}
           >
             <Image source={{ uri: `/books/covers/${book.id}.jpg` }} style={{ width: '100%', aspectRatio: 480 / 680 }} resizeMode="cover" accessibilityIgnoresInvertColors />
@@ -255,14 +254,14 @@ function BookCard({
         )}
       </Pressable>
       {/* tấm ván kệ dưới chân bìa */}
-      <View style={{ height: 6, marginTop: 0, marginHorizontal: -10, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 6px 12px rgba(0,0,0,.45)' } as object) }} />
-      <Text numberOfLines={2} style={{ marginTop: 14, fontFamily: SANS_8, color: CREAM, fontSize: 15, lineHeight: 20 }}>
+      <View style={{ height: 6, marginTop: 0, marginHorizontal: -10, backgroundColor: GOLD_DEEP, borderRadius: 1, ...({ boxShadow: '0 6px 12px rgba(60,40,10,.3)' } as object) }} />
+      <Text numberOfLines={2} style={{ marginTop: 14, fontFamily: SANS_8, color: INK_G, fontSize: 15, lineHeight: 20 }}>
         {book.title}
       </Text>
-      <Text numberOfLines={2} style={{ marginTop: 3, fontFamily: SANS_4, color: MIST, fontSize: 13, lineHeight: 18 }}>
+      <Text numberOfLines={2} style={{ marginTop: 3, fontFamily: SANS_4, color: BODY_G, fontSize: 13, lineHeight: 18 }}>
         {book.subtitle}
       </Text>
-      <Text style={{ marginTop: 6, fontFamily: SANS_5, color: '#9AA3BE', fontSize: 12.5 }}>{size}</Text>
+      <Text style={{ marginTop: 6, fontFamily: SANS_5, color: MUTED_G, fontSize: 12.5 }}>{size}</Text>
       <View style={{ marginTop: 10, gap: 8 }}>
         <SmallButton label={L(`Đọc thử ${SAMPLE_PAGES} trang`, `Preview ${SAMPLE_PAGES} pages`)} onPress={onSample} />
         {granted ? (
@@ -289,13 +288,13 @@ function SmallButton({ label, onPress, solid = false, busy = false }: { label: s
         paddingHorizontal: 12,
         borderRadius: 999,
         alignItems: 'center',
-        backgroundColor: solid ? (hovered ? '#EDCD84' : GOLD) : hovered ? 'rgba(243,237,225,0.12)' : 'transparent',
+        backgroundColor: solid ? (hovered ? '#F4DA94' : '#EBC26A') : hovered ? 'rgba(255,255,255,0.5)' : 'transparent',
         borderWidth: solid ? 0 : 1,
-        borderColor: 'rgba(243,237,225,0.45)',
+        borderColor: 'rgba(140,106,31,0.45)',
         opacity: busy ? 0.7 : 1,
       })}
     >
-      {busy ? <ActivityIndicator size="small" color={NAVY} /> : <Text style={{ fontFamily: SANS_7, color: solid ? NAVY : CREAM, fontSize: 13.5 }}>{label}</Text>}
+      {busy ? <ActivityIndicator size="small" color={INK_G} /> : <Text style={{ fontFamily: SANS_7, color: INK_G, fontSize: 13.5 }}>{label}</Text>}
     </Pressable>
   );
 }
