@@ -12,6 +12,8 @@ import { CUTE_PALETTES } from '@/components/layout/cute-palettes';
 import { HERO_FRAME, LightSweep } from '@/components/layout/LightHero';
 import { HistoryHomeCard } from '@/components/history/HistoryHomeCard';
 import { Hero3D, useHeroLogo } from '@/components/three/Hero3D';
+import { CHIIKAWA_IMG } from '@/components/chiikawa/chiikawa';
+import { SakuraRain } from '@/components/chiikawa/SakuraRain';
 import { Screen } from '@/components/layout/Screen';
 import { Appear, PressScale } from '@/components/motion/Motion';
 import { Badge, Button, Card, Icon, StickerCard, type IconName } from '@/components/ui';
@@ -38,6 +40,7 @@ import { useCuteAppearanceStore } from '@/store/useCuteAppearanceStore';
 import { useRewardStore } from '@/store/useRewardStore';
 import { stickerGradient } from '@/theme/tokens';
 import { bi, useL, type Bi } from '@/i18n/useL';
+import { VOCAB_TOPICS } from '@/data/vocab-topics';
 
 /**
  * Trang giới thiệu — thứ người mở app lần đầu nhìn thấy.
@@ -69,13 +72,13 @@ type Area = {
 
 const AREAS: Area[] = [
   {
-    icon: 'book',
-    sticker: require('../assets/illustrations/cute-home/task-stickers/reading.png'),
+    icon: 'letters',
+    sticker: require('../assets/illustrations/cute-home/task-stickers/vocabulary.png'),
     colors: stickerGradient.primary,
-    title: { vi: 'Reading', en: 'Reading' },
-    lines: [{ vi: `${ieltsCount} passage IELTS · ${satCount} passage SAT`, en: `${ieltsCount} IELTS passages · ${satCount} SAT passages` }],
-    badge: { vi: `${readableCount.toLocaleString('vi-VN')} BÀI`, en: `${readableCount.toLocaleString('en-US')} PASSAGES` },
-    href: '/practice',
+    title: { vi: 'Học từ vựng', en: 'Learn vocabulary' },
+    lines: [{ vi: 'Học theo chủ đề IELTS, từ dễ đến khó, có phát âm', en: 'IELTS topics, easy to hard, with pronunciation' }],
+    badge: { vi: `${VOCAB_TOPICS.length} CHỦ ĐỀ`, en: `${VOCAB_TOPICS.length} TOPICS` },
+    href: '/vocabulary/topics',
   },
   {
     icon: 'pencil',
@@ -246,6 +249,7 @@ export default function IntroScreen() {
 
   return (
     <Screen>
+      <SakuraRain />
       {returning ? (
         <Appear>
           <Card className="mb-4">
@@ -291,7 +295,9 @@ export default function IntroScreen() {
           <View style={{ flex: 1, position: 'relative' }}>
           <GridBackdrop colors={palette.study} line={palette.studyLine} blobs={[palette.study[0], palette.study[2]]} showGrid={false}>
             {/* Ngôi sao phát sáng bên phải — chỉ trên máy tính. */}
-            {star ? (
+            {chiikawaTheme ? (
+              <Image source={CHIIKAWA_IMG.hero} resizeMode="contain" style={{ position: 'absolute', top: 0, right: '4%', width: '26%', aspectRatio: 640 / 367 }} />
+            ) : star ? (
               <Hero3D scene="home" style={{ position: 'absolute', top: 0, bottom: 0, right: 0, width: '42%' }} />
             ) : null}
             <View
@@ -348,18 +354,19 @@ export default function IntroScreen() {
               </View>
             </View>
           </GridBackdrop>
-          {chiikawaTheme && wide ? (
-            <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', inset: 0, zIndex: 4 }}>
-              <Image
-                source={require('../assets/illustrations/cute-home/task-stickers/chiikawa-climbers.png')}
-                resizeMode="contain"
-                style={{ position: 'absolute', top: 2, right: 8, width: 330, height: 110 }}
-              />
-            </View>
-          ) : null}
           </View>
           <LightSweep />
         </View>
+        {/* Ba con bám trên viền khung: đặt NGOÀI khung (khung có overflow hidden sẽ cắt mất). Chân nằm sát mép trên của khung. */}
+        {chiikawaTheme && wide ? (
+          <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', top: 7, right: 8, width: 330, height: 110, zIndex: 4 }}>
+            <Image
+              source={require('../assets/illustrations/cute-home/task-stickers/chiikawa-climbers.png')}
+              resizeMode="contain"
+              style={{ width: 330, height: 110 }}
+            />
+          </View>
+        ) : null}
         {wide && !chiikawaTheme ? <PerchCat pose="sit" size={100} side="right" inset={120} offset={92} /> : null}
         {chiikawaTheme && wide ? (
           <View pointerEvents="none" accessibilityElementsHidden importantForAccessibility="no-hide-descendants" style={{ position: 'absolute', inset: 0, zIndex: 6 }}>
@@ -553,9 +560,10 @@ function StepCard({ step }: { step: (typeof STEPS)[number] }) {
   );
 }
 function StatPill({ value, label }: { value: string; label: string }) {
+  const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   return (
-    <View className="flex-row items-baseline gap-1.5 rounded-pill border border-brand-soft bg-white px-3 py-1.5">
-      <Text className="font-heavy text-body text-brand">{value}</Text>
+    <View className="flex-row items-baseline gap-1.5 rounded-pill bg-white px-3 py-1.5" style={{ borderWidth: 1, borderColor: chiikawaTheme ? '#F0B6C9' : '#E9D8B5' }}>
+      <Text className="font-heavy text-body" style={{ color: chiikawaTheme ? '#C64E79' : '#A8843F' }}>{value}</Text>
       <Text className="font-sans text-label text-paper-muted">{label}</Text>
     </View>
   );

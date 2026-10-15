@@ -32,6 +32,7 @@ import {
   WordFace,
 } from "@/components/vocab/study/FlipCard";
 import { LearnSettingsSheet } from "@/components/vocab/study/LearnSettingsSheet";
+import { StudyEntryChooser } from "@/components/vocab/study/StudyEntryChooser";
 import { RoundAnalysis } from "@/components/vocab/study/MistakeViews";
 import { useStoreTheme } from "@/components/vocab/study/useStudyTheme";
 import { Appear, CrossFade } from "@/components/motion/Motion";
@@ -159,6 +160,8 @@ export default function LearnScreen() {
   const [mistakes, setMistakes] = useState<{ word: string; m: Mistake }[]>([]);
   const [flipped, setFlipped] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  // Mỗi lần vào học thì hỏi chọn giao diện một lần.
+  const [entryOpen, setEntryOpen] = useState(true);
   const [listening, setListening] = useState(false);
   const [micNote, setMicNote] = useState<string | null>(null);
   const [seed] = useState(() => Date.now() % 100000);
@@ -873,6 +876,7 @@ export default function LearnScreen() {
         )}
       </CrossFade>
       {sheet}
+      <StudyEntryChooser visible={entryOpen} onDone={() => setEntryOpen(false)} />
     </StudyFrame>
   );
 }

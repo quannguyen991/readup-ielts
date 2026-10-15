@@ -1,5 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
+import { router } from 'expo-router';
 
 import { LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
@@ -25,11 +26,11 @@ export default function VocabQuizHub() {
           badge={L('QUIZ TỪ VỰNG', 'VOCABULARY QUIZ')}
           line1={L('Chọn một bộ từ,', 'Pick a word set,')}
           line2={L('vào trong là đủ cách luyện', 'every practice mode is inside')}
-          subtitle={L(
-            'Học xen kẽ, Kiểm tra, Điền vào câu, Nghe chép, Phát âm, Bóng bay, Ghép cặp, Đoán chữ, Xếp câu — cùng một bộ từ, đáp án chấm bằng luật, từ sai quay lại ngay trong lượt.',
-            'Mixed learning, Test, Fill the gap, Dictation, Pronunciation, Balloons, Match pairs, Hangman, Build sentence — one word set, rule-based marking, and missed words come back in the same round.',
-          )}
-        />
+        >
+          <Pressable accessibilityRole="link" onPress={() => router.push('/vocabulary/review' as never)} style={{ alignSelf: 'flex-start', paddingVertical: 11, paddingHorizontal: 15, borderRadius: 14, backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E8DFD4' }}>
+            <Text style={{ color: '#5A3B50', fontWeight: '700' }}>{L('Ôn Destination B1/B2 · phiếu 50 câu →', 'Review Destination B1/B2 · 50 questions →')}</Text>
+          </Pressable>
+        </LightHero>
       </Appear>
       <DeckLibrary />
       <View className="h-10" />

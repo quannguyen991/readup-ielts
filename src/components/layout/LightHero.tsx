@@ -54,7 +54,8 @@ export function LightHero({
   line1: string;
   /** Dòng chốt, in trắng trên khối chàm. Bỏ trống thì hero chỉ có một dòng. */
   line2?: string;
-  subtitle: string;
+  /** Đoạn mô tả dưới tiêu đề. Bỏ trống thì không hiện. */
+  subtitle?: string;
   /** Hàng nút. */
   children?: React.ReactNode;
   /** Hàng viên số liệu dưới cùng. */
@@ -143,12 +144,14 @@ export function LightHero({
             </GoldHighlight>
           ) : null}
 
-          <Text
-            className={phone ? 'mt-2 font-sans text-paper-body' : 'mt-4 font-sans text-bodyLg text-paper-body'}
-            style={phone ? { fontSize: 14, lineHeight: 20, maxWidth: 620 } : { maxWidth: 620 }}
-          >
-            {subtitle}
-          </Text>
+          {subtitle ? (
+            <Text
+              className={phone ? 'mt-2 font-sans text-paper-body' : 'mt-4 font-sans text-bodyLg text-paper-body'}
+              style={phone ? { fontSize: 14, lineHeight: 20, maxWidth: 620 } : { maxWidth: 620 }}
+            >
+              {subtitle}
+            </Text>
+          ) : null}
 
           {children ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-2' : 'mt-6 flex-row flex-wrap gap-2'}>{children}</View> : null}
           {footer ? <View className={phone ? 'mt-4 flex-row flex-wrap gap-1.5' : 'mt-7 flex-row flex-wrap gap-2'}>{footer}</View> : null}

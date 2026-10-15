@@ -1,7 +1,9 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { Alert, Pressable, Switch, Text, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
 import * as ImagePicker from 'expo-image-picker';
+import { ChiikawaStickerRow } from '@/components/chiikawa/ChiikawaStickerRow';
 import { router } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
@@ -146,7 +148,7 @@ export default function ProfileScreen() {
                 accessibilityRole="link"
                 accessibilityLabel={L('Đổi bìa hồ sơ', 'Change profile cover')}
                 onPress={() => router.push('/shop?tab=cover' as never)}
-                style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: 'rgba(59,42,16,0.5)' }}
+                style={{ borderRadius: 999, paddingHorizontal: 12, paddingVertical: 7, backgroundColor: themedHex('rgba(59,42,16,0.5)') }}
               >
                 <Text className="font-semi" style={{ fontSize: 13, color: '#FFFFFF' }}>
                   {L('Đổi bìa', 'Change cover')}
@@ -186,8 +188,8 @@ export default function ProfileScreen() {
 
       <Card className="mt-4">
         <View style={{ gap: 16 }}>
-          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1, borderColor: 'rgba(233,181,74,0.35)', backgroundColor: 'rgba(255,250,235,0.85)' }}>
-            <View style={{ width: 82, height: 82, borderRadius: 20, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBEFCB' }}>
+          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, padding: 14, borderRadius: 18, borderWidth: 1, borderColor: themedHex('rgba(233,181,74,0.35)'), backgroundColor: themedHex('rgba(255,250,235,0.85)') }}>
+            <View style={{ width: 82, height: 82, borderRadius: 20, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: themedHex('#FBEFCB') }}>
               <Image source={require('../assets/illustrations/cute-home/mascot-wave.png')} contentFit="contain" style={{ width: 82, height: 82 }} />
             </View>
             <View style={{ flex: 1, minWidth: 220 }}>
@@ -204,7 +206,7 @@ export default function ProfileScreen() {
                 accessibilityRole="button"
                 accessibilityLabel={chiikawaThemeActive ? L('Tắt giao diện Chiikawa', 'Turn off Chiikawa theme') : L('Dùng giao diện Chiikawa', 'Use Chiikawa theme')}
                 onPress={() => reward.equip('theme', chiikawaThemeActive ? null : 'theme-chiikawa')}
-                style={{ minHeight: 44, paddingHorizontal: 18, borderRadius: 14, alignItems: 'center', justifyContent: 'center', ...(chiikawaThemeActive ? { backgroundColor: '#FFF', borderWidth: 1, borderColor: '#E9CF9A' } : GOLD_BUTTON) }}
+                style={{ minHeight: 44, paddingHorizontal: 18, borderRadius: 14, alignItems: 'center', justifyContent: 'center', ...(chiikawaThemeActive ? { backgroundColor: '#FFF', borderWidth: 1, borderColor: themedHex('#E9CF9A') } : GOLD_BUTTON) }}
               >
                 <Text className="font-strong text-label" style={{ color: chiikawaThemeActive ? GOLD.deep : GOLD.ink }}>{chiikawaThemeActive ? L('Tắt giao diện', 'Turn off') : L('Dùng giao diện', 'Use theme')}</Text>
               </Pressable>
@@ -219,8 +221,13 @@ export default function ProfileScreen() {
               </Pressable>
             )}
           </View>
+          {ownsChiikawaTheme ? (
+            <View style={{ padding: 14, borderRadius: 18, borderWidth: 1, borderColor: '#F5CADB', backgroundColor: '#FFFFFF' }}>
+              <ChiikawaStickerRow title={L('Bộ sticker Chiikawa', 'Chiikawa stickers')} />
+            </View>
+          ) : null}
           <View className="flex-row items-center gap-3">
-            <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: '#FBEFCB' }}>
+            <View className="h-12 w-12 items-center justify-center rounded-2xl" style={{ backgroundColor: themedHex('#FBEFCB') }}>
               <CuteStar size={34} />
             </View>
             <View className="min-w-0 flex-1">
@@ -233,8 +240,8 @@ export default function ProfileScreen() {
               value={cuteEffects}
               onValueChange={setCuteEffects}
               accessibilityLabel={L('Bật hiệu ứng cute toàn app', 'Enable cute effects across the app')}
-              trackColor={{ false: '#D9D0DC', true: '#E2B54E' }}
-              thumbColor={cuteEffects ? '#B8862B' : '#FFFFFF'}
+              trackColor={{ false: '#D9D0DC', true: themedHex('#E2B54E') }}
+              thumbColor={cuteEffects ? themedHex('#B8862B') : '#FFFFFF'}
             />
           </View>
           <View className="flex-row flex-wrap items-center gap-2">
@@ -254,13 +261,13 @@ export default function ProfileScreen() {
                   borderRadius: 999,
                   backgroundColor: CUTE_PALETTES[key].swatch,
                   borderWidth: cutePalette === key ? 3 : 1,
-                  borderColor: cutePalette === key ? GOLD.deep : 'rgba(156,133,82,0.3)',
+                  borderColor: cutePalette === key ? GOLD.deep : themedHex('rgba(156,133,82,0.3)'),
                 }}
               />
             ))}
           </View>
-          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, borderTopWidth: 1, borderTopColor: 'rgba(156,133,82,0.25)', paddingTop: 14 }}>
-            <View style={{ width: 76, height: 76, borderRadius: 24, borderWidth: 2, borderColor: '#E2B54E', backgroundColor: '#FBEFCB', overflow: 'hidden', alignItems: 'center', justifyContent: 'center' }}>
+          <View style={{ flexDirection: wide ? 'row' : 'column', alignItems: wide ? 'center' : 'flex-start', gap: 14, borderTopWidth: 1, borderTopColor: themedHex('rgba(156,133,82,0.25)'), paddingTop: 14 }}>
+            <View style={{ width: 76, height: 76, borderRadius: 24, borderWidth: 2, borderColor: themedHex('#E2B54E'), backgroundColor: themedHex('#FBEFCB'), overflow: 'hidden', alignItems: 'center', justifyContent: 'center' }}>
               <Image
                 source={displayedMascotImage ? { uri: displayedMascotImage } : require('../assets/illustrations/cute-home/mascot-wave.png')}
                 contentFit="cover"
@@ -313,9 +320,9 @@ export default function ProfileScreen() {
       {/* Số liệu nhanh */}
       <Appear index={2}>
         <View className="mt-4 flex-row flex-wrap gap-3">
-          <Stat seal="star" tone="#F2B632" value={formatStars(ledger.balance)} label={L('sao đang có', 'stars')} />
+          <Stat seal="star" tone={themedHex('#F2B632')} value={formatStars(ledger.balance)} label={L('sao đang có', 'stars')} />
           <Stat seal="flame" tone="#F0703F" value={String(streak)} label={L('ngày liên tiếp', 'day streak')} />
-          <Stat seal="calendar" tone="#A8843F" value={String(month)} label={L('điểm tháng này', 'points this month')} />
+          <Stat seal="calendar" tone={themedHex('#A8843F')} value={String(month)} label={L('điểm tháng này', 'points this month')} />
           <Stat seal="check" tone="#22A06B" value={life.correct.toLocaleString(locale === 'en' ? 'en-US' : 'vi-VN')} label={L('câu đúng', 'correct answers')} />
         </View>
       </Appear>
@@ -392,7 +399,7 @@ export default function ProfileScreen() {
                   aria-selected={on}
                   onPress={() => reward.equip(slotOf(item), on ? null : item.id)}
                   className="flex-row items-center gap-2 rounded-pill py-1.5 pl-1.5 pr-3.5"
-                  style={{ backgroundColor: on ? '#FEF3C7' : '#FFFFFF', borderWidth: 2, borderColor: on ? '#F59E0B' : '#F6F3EE' }}
+                  style={{ backgroundColor: on ? themedHex('#FEF3C7') : '#FFFFFF', borderWidth: 2, borderColor: on ? themedHex('#F59E0B') : themedHex('#F6F3EE') }}
                 >
                   <MiniPreview item={item} skin={skin} />
                   <Text className="font-semi text-label text-ink">{itemName(item, locale)}</Text>
@@ -437,7 +444,7 @@ export default function ProfileScreen() {
                   key={a.id}
                   accessibilityLabel={L(`${a.title}${at ? ' — đã mở' : ' — chưa mở'}`, `${achievementTitle(a, locale)}${at ? ' — unlocked' : ' — locked'}`)}
                   className="items-center justify-center rounded-panel"
-                  style={{ width: 52, height: 52, backgroundColor: at ? '#FEF3C7' : '#F9F6F1' }}
+                  style={{ width: 52, height: 52, backgroundColor: at ? themedHex('#FEF3C7') : themedHex('#F9F6F1') }}
                 >
                   {at ? (
                     <Motion kind="hover">
@@ -460,7 +467,7 @@ export default function ProfileScreen() {
 
 function Stat({ seal, tone, value, label }: { seal: IconName; tone: string; value: string; label: string }) {
   return (
-    <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: '#F6F3EE' }}>
+    <View className="flex-row items-center gap-3 rounded-card bg-surface p-3" style={{ flexGrow: 1, flexShrink: 1, flexBasis: 160, borderWidth: 1, borderColor: themedHex('#F6F3EE') }}>
       <View aria-hidden>
         <SealIcon name={seal} color={tone} size={42} />
       </View>
@@ -522,7 +529,7 @@ function SlotPreview({ slot, item, name, skin }: { slot: WearSlot; item: ShopIte
   }
   const pet = item?.mascot ? MASCOTS[item.mascot] : null;
   return (
-    <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: pet ? NIGHT : '#F9F6F1', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ width: 56, height: 56, borderRadius: 12, backgroundColor: pet ? NIGHT : themedHex('#F9F6F1'), alignItems: 'center', justifyContent: 'center' }}>
       {pet ? (
         <View style={anim('rg-bob', 1100, { loop: true, timing: 'ease-in-out' })} {...MOVE}>
           <PixelSprite name={pet.look} color={pet.color} size={42} />
@@ -559,7 +566,7 @@ function MiniPreview({ item, skin }: { item: ShopItem; skin: ReturnType<typeof s
     );
   }
   return (
-    <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: '#FBF5EC', alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ width: 30, height: 30, borderRadius: 999, backgroundColor: themedHex('#FBF5EC'), alignItems: 'center', justifyContent: 'center' }}>
       <Text style={{ fontSize: 16 }}>{item.glyph}</Text>
     </View>
   );

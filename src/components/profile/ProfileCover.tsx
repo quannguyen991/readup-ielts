@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo } from 'react';
 import { View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -59,7 +60,7 @@ const FILL = { position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 } as c
 
 function DefaultCover() {
   return (
-    <LinearGradient colors={['#F6DC8E', '#E2B54E', '#B8862B']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
+    <LinearGradient colors={[themedHex('#F6DC8E'), themedHex('#E2B54E'), themedHex('#B8862B')]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={FILL}>
       <View style={{ position: 'absolute', right: 18, top: 10 }}>
         <GlowStars scale={1.1} />
       </View>
@@ -87,7 +88,7 @@ function StarsCover({ seed }: { seed: string }) {
           style={{ position: 'absolute', left: `${8 + i * 34}%`, top: `${6 + i * 14}%`, width: 70, height: 2, borderRadius: 2, transform: [{ rotate: '23deg' }] }}
         >
           <View style={{ width: 70, height: 2, ...loop('rp-shoot', 7000, { delay: 1200 + i * 3400, timing: 'linear' }) }} {...MOVE}>
-            <LinearGradient colors={['rgba(255,255,255,0)', '#FFFFFF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ width: 70, height: 2, borderRadius: 2 }} />
+            <LinearGradient colors={[themedHex('rgba(255,255,255,0)'), '#FFFFFF']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ width: 70, height: 2, borderRadius: 2 }} />
           </View>
         </View>
       ))}
@@ -104,7 +105,7 @@ function SunsetCover() {
         {[0, 1].map((k) => (
           <View key={k} style={{ width: '50%', height: 40 }}>
             {[8, 34, 58, 82].map((x) => (
-              <View key={x} style={{ position: 'absolute', left: `${x}%`, top: (x % 3) * 6, width: 54, height: 14, borderRadius: 8, backgroundColor: 'rgba(255,255,255,0.75)' }} />
+              <View key={x} style={{ position: 'absolute', left: `${x}%`, top: (x % 3) * 6, width: 54, height: 14, borderRadius: 8, backgroundColor: themedHex('rgba(255,255,255,0.75)') }} />
             ))}
           </View>
         ))}
@@ -183,7 +184,7 @@ function SakuraCover() {
 
 function MountainCover() {
   return (
-    <LinearGradient colors={['#FEF3C7', '#FDE68A', '#F59E0B']} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
+    <LinearGradient colors={[themedHex('#FEF3C7'), themedHex('#FDE68A'), themedHex('#F59E0B')]} start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} style={FILL}>
       <View style={{ position: 'absolute', left: '72%', top: '15%', width: 40, height: 40, borderRadius: 40, backgroundColor: '#FEF9C3', ...loop('rp-glow', 5000) }} {...MOVE} />
       <Svg width="100%" height="70%" viewBox="0 0 200 50" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0 }}>
         <Path d="M0 50 L35 15 L70 50 Z" fill="#475569" opacity="0.5" />

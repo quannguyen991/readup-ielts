@@ -1,9 +1,10 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ActivityIndicator, Image, Platform, Pressable, ScrollView, Text, TextInput, View } from 'react-native';
 
 import { Icon } from '@/components/ui';
 import { color } from '@/theme/tokens';
 import { useRewardStore } from '@/store/useRewardStore';
+import { CHIIKAWA_IMG } from '@/components/chiikawa/chiikawa';
 import { currentLocale, pick, useL } from '@/i18n/useL';
 import { formatWordAnswer, isSingleWordQuestion } from '@/services/dictionary/word-answer';
 import { lookupOffline, resolveWord } from '@/services/dictionary/word-lookup';
@@ -35,7 +36,23 @@ const GREETING_EN =
   "Ask me about grammar, vocabulary, how to tackle each question type, or how to use the app. I can't see your account or your writing.";
 
 const FIXED = (Platform.OS === 'web' ? 'fixed' : 'absolute') as 'absolute';
-const CHIIKAWA = require('../../../assets/illustrations/cute-home/mascot-wave.png');
+
+/** Chuyển động của bong bóng: Chiikawa lơ lửng, khung chat trượt lên. Tắt khi người dùng bật "giảm chuyển động". */
+const CSS_ID = 'readup-askbubble';
+const CSS = `
+@keyframes ab-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes ab-pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-ab]{animation:none!important}}
+`;
+function ensureCss() {
+  if (Platform.OS !== 'web' || typeof document === 'undefined' || document.getElementById(CSS_ID)) return;
+  const el = document.createElement('style');
+  el.id = CSS_ID;
+  el.textContent = CSS;
+  document.head.appendChild(el);
+}
+/** Chiikawa vẫy tay — cùng ảnh với các chỗ Chiikawa khác trong app. */
+const CHIIKAWA = CHIIKAWA_IMG.wave;
 
 /**
  * Cách đáy `px` pixel, CỘNG phần thanh tab dưới đang chiếm (biến `--bb-h` do
@@ -54,6 +71,8 @@ export function AskBubble() {
   const [draft, setDraft] = useState('');
   const [busy, setBusy] = useState(false);
   const scroller = useRef<ScrollView>(null);
+
+  useEffect(ensureCss, []);
 
   const ask = useCallback(async (next: Msg[]) => {
     const last = next[next.length - 1]!.content;
@@ -142,32 +161,48 @@ export function AskBubble() {
         accessibilityRole="button"
         accessibilityLabel={chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Mở hỏi nhanh', 'Open quick ask')}
         onPress={() => setOpen(true)}
-        style={{
-          position: FIXED,
-          right: 20,
-          ...lift(20),
-          zIndex: 60,
-          height: chiikawaTheme ? 68 : 52,
-          width: chiikawaTheme ? 68 : 52,
-          borderRadius: 34,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: chiikawaTheme ? '#FFF8FB' : color.primary,
-          borderWidth: chiikawaTheme ? 2 : 0,
-          borderColor: '#F2B8CC',
-          overflow: 'hidden',
-          ...(Platform.OS === 'web'
-            ? ({ boxShadow: chiikawaTheme ? '0 8px 24px rgba(166,68,98,0.24)' : '0 8px 24px rgba(15,23,42,0.18)' } as never)
-            : {
-                shadowColor: chiikawaTheme ? '#A64462' : '#0F172A',
-                shadowOffset: { width: 0, height: 5 },
-                shadowOpacity: 0.18,
-                shadowRadius: 12,
-                elevation: 7,
-              }),
-        }}
+        style={({ pressed, hovered }: { pressed: boolean; hovered?: boolean }) =>
+          ({
+            position: FIXED,
+            right: 14,
+            ...lift(6),
+            zIndex: 60,
+            height: chiikawaTheme ? 84 : 52,
+            width: chiikawaTheme ? 84 : 52,
+            borderRadius: chiikawaTheme ? 0 : 34,
+            alignItems: 'center',
+            justifyContent: 'center',
+            // Chiikawa: không nền tròn, không viền, không bóng khối — chỉ có hình.
+            backgroundColor: chiikawaTheme ? 'transparent' : color.primary,
+            borderWidth: 0,
+            overflow: 'visible',
+            // Nhấn lún nhẹ, rê vào nảy lên: chuyển động nối tiếp, không giật.
+            transform: [{ scale: pressed ? 0.92 : hovered ? 1.06 : 1 }],
+            transition: 'transform 220ms cubic-bezier(.2,.8,.2,1), bottom 200ms ease',
+            ...(chiikawaTheme
+              ? {}
+              : Platform.OS === 'web'
+                ? ({ boxShadow: '0 8px 24px rgba(15,23,42,0.18)' } as never)
+                : {
+                    shadowColor: '#0F172A',
+                    shadowOffset: { width: 0, height: 5 },
+                    shadowOpacity: 0.18,
+                    shadowRadius: 12,
+                    elevation: 7,
+                  }),
+          }) as never
+        }
       >
-        {chiikawaTheme ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 65, height: 65 }} accessibilityIgnoresInvertColors /> : <Icon name="sparkle" size={22} color="#fff" strokeWidth={2.2} />}
+        {chiikawaTheme ? (
+          <Image
+            source={CHIIKAWA}
+            resizeMode="contain"
+            style={{ width: 84, height: 84, ...(Platform.OS === 'web' ? ({ animation: 'ab-float 3.2s ease-in-out infinite', filter: 'drop-shadow(0 10px 14px rgba(198,90,120,0.28))' } as object) : null) }}
+            accessibilityIgnoresInvertColors
+          />
+        ) : (
+          <Icon name="sparkle" size={22} color="#fff" strokeWidth={2.2} />
+        )}
       </Pressable>
     );
   }
@@ -177,8 +212,9 @@ export function AskBubble() {
       style={{
         position: FIXED,
         zIndex: 60,
-        right: 18,
-        ...lift(18),
+        right: 14,
+        ...lift(6),
+        ...(Platform.OS === 'web' ? ({ animation: 'ab-pop 260ms cubic-bezier(.2,.8,.2,1)', transformOrigin: 'bottom right' } as object) : null),
         width: 340,
         maxWidth: '92%',
         maxHeight: Platform.OS === 'web' ? ('min(460px, calc(100dvh - 96px))' as unknown as number) : 460,
@@ -201,7 +237,7 @@ export function AskBubble() {
         style={{ backgroundColor: chiikawaTheme ? '#C65A78' : color.primary }}
       >
         <View className="flex-row items-center gap-2">
-          {chiikawaTheme ? <View style={{ width: 34, height: 34, borderRadius: 17, backgroundColor: '#FFF8FB', overflow: 'hidden', alignItems: 'center', justifyContent: 'center' }}><Image source={CHIIKAWA} resizeMode="contain" style={{ width: 33, height: 33 }} accessibilityIgnoresInvertColors /></View> : <Icon name="sparkle" size={20} color="#fff" strokeWidth={2.2} />}
+          {chiikawaTheme ? <Image source={CHIIKAWA} resizeMode="contain" style={{ width: 40, height: 40 }} accessibilityIgnoresInvertColors /> : <Icon name="sparkle" size={20} color="#fff" strokeWidth={2.2} />}
           <Text className="font-strong text-body text-white">{chiikawaTheme ? L('Hỏi Chiikawa', 'Ask Chiikawa') : L('Hỏi nhanh', 'Quick ask')}</Text>
         </View>
         <Pressable

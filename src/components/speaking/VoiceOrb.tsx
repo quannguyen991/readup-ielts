@@ -13,14 +13,17 @@
  * không render lại React. Không có âm lượng thì lõi vẫn nhịp theo trạng thái.
  * Tôn trọng "giảm chuyển động".
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useRef } from 'react';
-import { Platform, Pressable, View } from 'react-native';
+import { Image, Platform, Pressable, View } from 'react-native';
+
+import { CHIIKAWA_IMG, useChiikawaActive } from '@/components/chiikawa/chiikawa';
 
 export type OrbState = 'idle' | 'speaking' | 'listening' | 'thinking';
 
 const PAL: Record<OrbState, [string, string, string]> = {
   idle: ['#EAD0A4', '#A8843F', '#AB8035'],
-  speaking: ['#E0C699', '#B8955A', '#8F6E36'],
+  speaking: ['#E0C699', themedHex('#B8955A'), '#8F6E36'],
   listening: ['#86EFAC', '#14B8A6', '#0F766E'],
   thinking: ['#FDE68A', '#F2B632', '#D97706'],
 };
@@ -45,8 +48,18 @@ const CSS = `
 .vo-idle .vo-core{animation:vo-breathe 4.5s ease-in-out infinite}
 .vo-thinking .vo-core::before{animation-duration:3.2s}
 @keyframes vo-breathe{0%,100%{transform:scale(.96)}50%{transform:scale(1.03)}}
-@media (prefers-reduced-motion:reduce){.vo-ring,.vo-core,.vo-core::before,.vo-blob{animation:none!important}}
+/* Chủ đề Chiikawa: không vòng sáng, Chiikawa thay cho lõi. */
+.vo-ck{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .12s ease-out}
+.vo-ck img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 12px 18px rgba(198,90,120,.28))}
+.vo-idle .vo-ck img{animation:vo-breathe 4.5s ease-in-out infinite}
+.vo-speaking .vo-ck img{animation:vo-bob 1.6s ease-in-out infinite}
+.vo-thinking .vo-ck img{animation:vo-breathe 2.4s ease-in-out infinite}
+@keyframes vo-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.vo-ring,.vo-core,.vo-core::before,.vo-blob,.vo-ck img{animation:none!important}}
 `;
+
+/** Chiikawa theo trạng thái: chờ vẫy, đang hỏi vẫy liên tục, đang nghe reo, đang chấm ló lên. */
+const CK_POSE: Record<OrbState, 'wave' | 'cheer' | 'peek'> = { idle: 'wave', speaking: 'wave', listening: 'cheer', thinking: 'peek' };
 
 function ensureCss() {
   if (typeof document === 'undefined' || document.getElementById(CSS_ID)) return;
@@ -71,6 +84,7 @@ export function VoiceOrb({
   label: string;
 }) {
   const coreRef = useRef<HTMLDivElement | null>(null);
+  const chiikawa = useChiikawaActive();
 
   useEffect(() => {
     if (Platform.OS !== 'web') return;
@@ -104,7 +118,17 @@ export function VoiceOrb({
     );
   }
 
-  const orb = React.createElement(
+  const orb = chiikawa
+    ? React.createElement(
+        'div',
+        { className: `vo-wrap vo-${state}`, style: { width: size, height: size } },
+        React.createElement(
+          'div',
+          { className: 'vo-ck', ref: coreRef },
+          React.createElement('img', { src: Image.resolveAssetSource(CHIIKAWA_IMG[CK_POSE[state]]).uri, alt: '', draggable: false }),
+        ),
+      )
+    : React.createElement(
     'div',
     { className: `vo-wrap vo-${state}`, style: { width: size, height: size, ['--c1' as string]: c1, ['--c2' as string]: c2, ['--c3' as string]: c3 } },
     React.createElement('div', { className: 'vo-ring' }),
