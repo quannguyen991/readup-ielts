@@ -36,7 +36,7 @@ const GLASS_BASE = {
   borderWidth: 1,
   borderColor: 'rgba(255,255,255,0.9)',
   boxShadow: '0 14px 32px rgba(150,110,40,0.14), inset 0 1px 0 rgba(255,255,255,0.95)',
-  backdropFilter: 'blur(20px) saturate(120%)',
+  // Bỏ blur: mỗi thẻ kính là một lớp mờ phải vẽ lại khi cuộn, điện thoại giật. Nền đặc vẫn giữ nét kính.
 };
 
 const GLASS_CHIIKAWA = {

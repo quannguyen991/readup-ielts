@@ -112,6 +112,7 @@ export function useSfxBindings(): void {
   }, []);
   useEffect(() => {
     if (first.current) first.current = false;
-    else playSfx('nav');
+    // Điện thoại: chuyển tab dưới đã có rung nhẹ; tiếng gió mỗi lần đổi trang nghe chướng tai, nên bỏ ở màn hẹp.
+    else if (!(typeof window !== 'undefined' && window.matchMedia?.('(max-width: 1023px)').matches)) playSfx('nav');
   }, [pathname]);
 }

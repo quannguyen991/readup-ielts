@@ -20,7 +20,8 @@ import { color, paper, shadow } from '@/theme/tokens';
 
 const webBarShadow = { boxShadow: '0 6px 22px rgba(26, 26, 51, 0.10)' } as const;
 /** Nền kính của thanh trên: trong, làm mờ phần nội dung chạy phía sau (chỉ web). */
-const glassPill = { backgroundColor: 'rgba(255,255,255,0.72)', backdropFilter: 'blur(16px)' } as const;
+// Không blur trên thanh cố định: lớp mờ phải vẽ lại mỗi lần cuộn, điện thoại dễ giật.
+const glassPill = { backgroundColor: 'rgba(255,255,255,0.92)' } as const;
 
 /**
  * Thanh điều hướng duy nhất của app — MỘT hàng ngang, dùng chung mọi khổ màn.

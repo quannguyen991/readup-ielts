@@ -25,7 +25,7 @@ const FLOAT_MARGIN = 14;
  */
 const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; icon: IconName | null; vi: string; en: string }[] = [
   { key: 'home', href: '/intro', icon: 'home', vi: 'Trang chủ', en: 'Home' },
-  { key: 'learn', href: '/practice', icon: 'book', vi: 'Học', en: 'Learn' },
+  { key: 'learn', href: '/vocabulary/topics', icon: 'book', vi: 'Từ vựng', en: 'Vocabulary' },
   { key: 'plan', href: '/plan', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
   { key: 'you', href: '/profile', icon: null, vi: 'Bạn', en: 'You' },
 ];
@@ -120,11 +120,11 @@ export function BottomTabs() {
           bottom: IS_WEB ? `calc(${FLOAT_MARGIN}px + ${SAFE_BOTTOM})` : FLOAT_MARGIN,
           zIndex: 45,
           borderRadius: 28,
-          backgroundColor: chiikawaTheme ? 'rgba(255,247,250,0.9)' : 'rgba(255,252,242,0.72)',
+          // Không blur: lớp mờ nằm trên nội dung đang cuộn làm điện thoại giật; nền đặc hơn thay thế.
+          backgroundColor: chiikawaTheme ? 'rgba(255,247,250,0.97)' : 'rgba(255,252,242,0.95)',
           borderWidth: 1,
           borderColor: chiikawaTheme ? '#F3C7D5' : 'rgba(255,255,255,0.85)',
           boxShadow: chiikawaTheme ? '0 10px 24px rgba(185,74,112,0.14), inset 0 1px 0 rgba(255,255,255,0.9)' : '0 10px 24px rgba(150,110,40,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
-          backdropFilter: 'blur(18px) saturate(120%)',
           // Chỉ trượt xuống khi bàn phím mở.
           transform: [{ translateY: visible ? 0 : '110%' }],
           ...(IS_WEB ? { transition: 'transform 200ms ease', willChange: 'transform' } : null),

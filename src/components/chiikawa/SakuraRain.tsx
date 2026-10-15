@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, View, useWindowDimensions } from 'react-native';
 
 import { mulberry32 } from '@/services/questions/rng';
 import { useChiikawaActive } from './chiikawa';
@@ -26,11 +26,14 @@ function ensureCss() {
 
 export function SakuraRain({ count = 18 }: { count?: number }) {
   const active = useChiikawaActive();
+  const width = useWindowDimensions().width;
   useEffect(ensureCss, []);
+  // Điện thoại ít cánh hơn: mỗi cánh là một lớp composite riêng, nhiều quá sẽ giật khi cuộn.
+  const n = width < 760 ? Math.min(count, 9) : count;
 
   const petals = useMemo(() => {
     const rng = mulberry32(20261015);
-    return Array.from({ length: count }, (_, i) => ({
+    return Array.from({ length: n }, (_, i) => ({
       id: i,
       left: rng() * 100,
       size: 9 + rng() * 9,
@@ -40,7 +43,7 @@ export function SakuraRain({ count = 18 }: { count?: number }) {
       sway: `${Math.round(18 + rng() * 26)}px`,
       hue: rng() > 0.5 ? '#F7A9C6' : '#FFC8DA',
     }));
-  }, [count]);
+  }, [n]);
 
   if (!active || Platform.OS !== 'web') return null;
 
