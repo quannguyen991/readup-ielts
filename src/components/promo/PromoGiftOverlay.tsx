@@ -10,6 +10,7 @@
  *   đang có Pro) — mở nội dung, không cộng lượt AI. Gói đồng bộ theo tài khoản
  *   (khoá `billing`, gộp theo gói còn hiệu lực).
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useState } from 'react';
 import { Modal, Platform, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -105,7 +106,7 @@ export function PromoGiftOverlay() {
 
   const content = (
     <>
-          <LinearGradient colors={['#A8843F', '#CCA35B', '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 20, paddingTop: compact ? 18 : 28, paddingBottom: compact ? 16 : 24, alignItems: 'center' }}>
+          <LinearGradient colors={['#A8843F', themedHex('#CCA35B'), '#DB2777']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ paddingHorizontal: 20, paddingTop: compact ? 18 : 28, paddingBottom: compact ? 16 : 24, alignItems: 'center' }}>
             <Text style={{ fontSize: compact ? 40 : 54 }}>{done ? '🎉' : '🎁'}</Text>
             <Text className="font-strong" style={{ marginTop: 6, fontSize: 14, letterSpacing: 1.2, color: '#FDE68A' }}>
               {L('QUÀ CUỐI THÁNG 9 · BAND 9', 'END-OF-SEPTEMBER GIFT · BAND 9')}

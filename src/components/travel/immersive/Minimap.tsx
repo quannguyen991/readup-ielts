@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 
 import type { CityMap } from '@/services/travel/types';
@@ -41,7 +42,7 @@ export function Minimap({
       {map.pois.map((p) => {
         const isRec = p.id === recommended;
         const bg = isRec ? '#E2C88F' : locked.has(p.id) ? '#9a958a' : done.has(p.id) ? '#4FB67A' : '#F3EDE1';
-        return dot(`poi:${p.id}`, p.door.x, p.door.y, isRec ? 9 : 6, bg, isRec ? '#B8955A' : '#0F1D33', isRec ? 3 : 2);
+        return dot(`poi:${p.id}`, p.door.x, p.door.y, isRec ? 9 : 6, bg, isRec ? themedHex('#B8955A') : '#0F1D33', isRec ? 3 : 2);
       })}
       {player ? dot('player', player.x, player.y, 8, '#ffffff', '#E5483A', 4) : null}
     </div>

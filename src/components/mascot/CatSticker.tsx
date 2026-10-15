@@ -1,9 +1,16 @@
 import React from 'react';
 import { Image, View } from 'react-native';
 
+import { useChiikawaQuiet } from '@/components/chiikawa/chiikawa';
+import { useHydrated } from '@/components/layout/useHydrated';
+import { useRewardStore } from '@/store/useRewardStore';
+
 /**
  * MÈO STICKER CỦA BAND 9 — sáu tư thế do ChatGPT vẽ theo ảnh mẫu, đã tách nền thành trong
  * suốt (assets/illustrations/cats/cat-1..6.png, bảng gốc là cats-sheet-v1.png).
+ *
+ * Chủ đề Chiikawa: cùng chỗ gọi, nhưng hình là nhân vật Chiikawa (assets/illustrations/chiikawa/),
+ * chọn theo tư thế gần nhất. Chỗ gọi không phải đổi gì.
  *
  * Chỉ để trang trí: lớp bọc không nhận chạm, nên mèo đè lên nút cũng không chặn bấm.
  * Vị trí do chỗ gọi đặt bằng `style` (thường `position: 'absolute'` để bám viền hoặc
@@ -37,11 +44,53 @@ const SOURCES: Record<CatPose, number> = {
   clingClimb: require('../../../assets/illustrations/cats/cling-climb.png'),
 };
 
+/** Bộ Chiikawa đã tách nền: năm tư thế, tên khớp với tệp trong assets/illustrations/chiikawa/. */
+const CHIIKAWA_SOURCES = {
+  wave: require('../../../assets/illustrations/chiikawa/wave.png'),
+  lie: require('../../../assets/illustrations/chiikawa/lie.png'),
+  peek: require('../../../assets/illustrations/chiikawa/peek.png'),
+  sleep: require('../../../assets/illustrations/chiikawa/sleep.png'),
+  cheer: require('../../../assets/illustrations/chiikawa/cheer.png'),
+} as const;
+
+/** Tư thế mèo → tư thế Chiikawa tương ứng. */
+const CHIIKAWA_FOR: Record<CatPose, keyof typeof CHIIKAWA_SOURCES> = {
+  sunglasses: 'wave',
+  headphones: 'wave',
+  hangingPaws: 'peek',
+  peeking: 'peek',
+  peace: 'cheer',
+  angry: 'cheer',
+  sleep: 'sleep',
+  wave: 'wave',
+  think: 'wave',
+  write: 'wave',
+  read: 'wave',
+  cheer: 'cheer',
+  sit: 'wave',
+  lie: 'lie',
+  stretch: 'lie',
+  jump: 'cheer',
+  curl: 'sleep',
+  clingHang: 'peek',
+  clingPeek: 'peek',
+  clingWave: 'wave',
+  clingSit: 'wave',
+  clingLie: 'lie',
+  clingClimb: 'cheer',
+};
+
 /** `size` là cạnh của ô vuông chứa mèo; mèo được co vừa ô, giữ đúng tỉ lệ. */
 export function CatSticker({ pose, size = 90, style }: { pose: CatPose; size?: number; style?: object }) {
+  // Chờ hydrate: lượt đầu phải vẽ y như HTML máy chủ (mèo), nếu không React giữ hình cũ trên trang.
+  const hydrated = useHydrated();
+  const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
+  const useChiikawa = hydrated && chiikawa;
+  const quiet = useChiikawaQuiet();
+  const source = useChiikawa ? CHIIKAWA_SOURCES[CHIIKAWA_FOR[pose]] : SOURCES[pose];
   return (
-    <View pointerEvents="none" style={[{ width: size, height: size }, style] as never}>
-      <Image source={SOURCES[pose]} resizeMode="contain" style={{ width: '100%', height: '100%' }} />
+    <View pointerEvents="none" style={[{ width: size, height: size }, useChiikawa && quiet ? { opacity: 0.2 } : null, style] as never}>
+      <Image source={source} resizeMode="contain" style={{ width: '100%', height: '100%' }} />
     </View>
   );
 }

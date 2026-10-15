@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
@@ -30,7 +31,7 @@ function Progress({ audio, seekable }: { audio: SectionAudio; seekable: boolean 
       style={{ flex: 1, height: 36, justifyContent: 'center' }}
     >
       <View style={{ height: 6, borderRadius: 3, backgroundColor: '#EFE3C8', overflow: 'hidden' }}>
-        <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: '#B8955A' }} />
+        <View style={{ width: `${pct * 100}%`, height: 6, borderRadius: 3, backgroundColor: themedHex('#B8955A') }} />
       </View>
       {seekable ? (
         <View style={{ position: 'absolute', left: `${pct * 100}%`, marginLeft: -9, width: 18, height: 18, borderRadius: 9, backgroundColor: '#8F6E36' }} />
@@ -57,7 +58,7 @@ export function PlayButton({ audio, real, size = 56 }: { audio: SectionAudio; re
       }}
       style={{
         width: size, height: size, borderRadius: size / 2, alignItems: 'center', justifyContent: 'center',
-        backgroundColor: disabled ? '#D9CDB4' : '#B8955A',
+        backgroundColor: disabled ? '#D9CDB4' : themedHex('#B8955A'),
       }}
     >
       {playing && !disabled ? (

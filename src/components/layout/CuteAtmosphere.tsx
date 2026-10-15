@@ -7,6 +7,7 @@ import { SparkleStar } from '@/components/cute-home/Mascots';
 /** Subtle, non-interactive Chiikawa-inspired stickers shared by every app screen. */
 export function CuteAtmosphere({ enabled, customImage }: { enabled: boolean; customImage?: string | null }) {
   const { width } = useWindowDimensions();
+  // Chờ hydrate để lượt đầu khớp HTML máy chủ (xem CatSticker).
   if (!enabled) return null;
 
   const compact = width < 760;

@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
@@ -51,7 +52,7 @@ const buildSkills = (L: LFn): RailSkill[] => [
     key: 'reading',
     label: 'Reading',
     icon: 'book',
-    tint: '#B8955A',
+    tint: themedHex('#B8955A'),
     options: [
       {
         key: 'single',

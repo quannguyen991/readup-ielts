@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Image, Platform, Text, View } from 'react-native';
 
 import { useTravelActive } from '@/components/rail/TravelBackdrop';
+import { CHIIKAWA_IMG, useChiikawaActive } from '@/components/chiikawa/chiikawa';
 
 import { anim, ensureGameKeyframes, MOVE } from './game-anim';
 import { HeroSprite } from './HeroSprite';
@@ -81,6 +82,7 @@ export function GameFxLayer() {
 
 function LevelBanner({ level }: { level: number }) {
   const { L, locale } = useL();
+  const chiikawaOn = useChiikawaActive();
   return (
     <View style={{ position: 'absolute', left: 0, right: 0, top: '22%', alignItems: 'center', ...anim('rg-banner', 3000, { fill: 'forwards' }) }}>
       <View style={{ width: 300, height: 300, position: 'absolute', top: -96, alignItems: 'center', justifyContent: 'center', opacity: 0.55 }}>
@@ -88,13 +90,20 @@ function LevelBanner({ level }: { level: number }) {
           {Array.from({ length: 12 }, (_, i) => (
             <View
               key={i}
-              style={{ position: 'absolute', left: 146, top: 0, width: 8, height: 150, backgroundColor: i % 2 ? 'rgba(250,204,21,0.35)' : 'rgba(255,255,255,0.25)', transform: [{ rotate: `${i * 30}deg` }], transformOrigin: '50% 100%' }}
+              style={{ position: 'absolute', left: 146, top: 0, width: 8, height: 150, backgroundColor: i % 2 ? (chiikawaOn ? 'rgba(244,166,192,0.45)' : 'rgba(250,204,21,0.35)') : 'rgba(255,255,255,0.25)', transform: [{ rotate: `${i * 30}deg` }], transformOrigin: '50% 100%' }}
             />
           ))}
         </View>
       </View>
       <View style={{ alignItems: 'center', minWidth: 200, borderRadius: 22, paddingHorizontal: 30, paddingVertical: 18, backgroundColor: '#1B1540', borderWidth: 3, borderColor: '#FACC15', boxShadow: '0 18px 50px rgba(27,21,64,0.45)' } as object}>
-        <HeroSprite size={76} mood="happy" />
+        {chiikawaOn ? (
+          <>
+            <Image source={CHIIKAWA_IMG.cheer} resizeMode="contain" style={{ width: 96, height: 96 }} />
+            <Text style={{ fontSize: 14, letterSpacing: 4, color: '#F9C6D8' }}>♥ ♡ ♥</Text>
+          </>
+        ) : (
+          <HeroSprite size={76} mood="happy" />
+        )}
         <Text className="font-heavy" style={{ marginTop: 6, fontSize: 14, letterSpacing: 3, color: '#FDE68A' }}>
           {L('LÊN CẤP', 'LEVEL UP')}
         </Text>

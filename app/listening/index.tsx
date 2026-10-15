@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { Pressable, ScrollView, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
@@ -24,7 +25,7 @@ import { useL, type L as LFn } from '@/i18n/useL';
  */
 
 const buildSkills = (L: LFn): RailSkill[] => [
-  { key: 'reading', label: 'Reading', icon: 'book', tint: '#B8955A', options: [], href: '/practice' },
+  { key: 'reading', label: 'Reading', icon: 'book', tint: themedHex('#B8955A'), options: [], href: '/practice' },
   {
     key: 'listening',
     label: 'Listening',

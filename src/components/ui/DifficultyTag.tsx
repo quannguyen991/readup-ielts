@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 import { Text, View } from 'react-native';
 
@@ -13,7 +14,7 @@ import { useL } from '@/i18n/useL';
  */
 const TONE: Record<Difficulty, { bg: string; border: string; ink: string }> = {
   easy: { bg: '#FBF7EE', border: '#E2C88F', ink: '#7E6230' },
-  medium: { bg: '#F3EDE1', border: '#B8955A', ink: '#0F1D33' },
+  medium: { bg: '#F3EDE1', border: themedHex('#B8955A'), ink: '#0F1D33' },
   hard: { bg: '#0F1D33', border: '#0F1D33', ink: '#E2C88F' },
 };
 

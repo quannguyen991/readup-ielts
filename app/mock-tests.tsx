@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -326,8 +327,8 @@ function MockTestCard({
  */
 function TestCover({ index }: { index: number }) {
   const tones = [
-    ['#EAD1A6', '#B8955A'],
-    ['#EEDAB7', '#CCA35B'],
+    ['#EAD1A6', themedHex('#B8955A')],
+    ['#EEDAB7', themedHex('#CCA35B')],
     ['#6EE7A8', '#16A34A'],
     ['#FCD34D', '#D97706'],
     ['#FCA5A5', '#DC2626'],

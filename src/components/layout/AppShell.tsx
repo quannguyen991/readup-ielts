@@ -13,7 +13,7 @@ import { RCREAM } from '@/components/profile-retro/retro-art';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
 import { RetroScope } from '@/components/profile-retro/retro-scope';
 import { RetroSidebar } from '@/components/profile-retro/RetroSidebar';
-import { RetroPromoBanner, RetroTopBar } from '@/components/profile-retro/RetroTopBar';
+import { RetroTopBar } from '@/components/profile-retro/RetroTopBar';
 import { TopBar } from './TopBar';
 import { OliveGrid } from './OliveGrid';
 import { TravelBackdrop, useSentenceThemeId, useTravelActive } from '@/components/rail/TravelBackdrop';
@@ -22,7 +22,6 @@ import { SIDEBAR_WIDTH, useSidebarStore } from '@/store/useSidebarStore';
 import { AskBubble } from '@/components/ai/AskBubble';
 import { SelectionLookup } from '@/components/lookup/SelectionLookup';
 import { GameBackdrop } from '@/components/game/GameBackdrop';
-import { ZaloPromoBanner } from './ZaloPromoBanner';
 import { DomainMoveBanner } from './DomainMoveBanner';
 import { useStreakGlass } from '@/services/city/useStreakGlass';
 import { ReminderRunner } from '@/components/reminder/Reminder';
@@ -33,6 +32,7 @@ import { CuteAtmosphere } from './CuteAtmosphere';
 import { PhoneBackdrop, useIsPhone } from './PhoneBackdrop';
 import { useHydrated } from './useHydrated';
 import { WalkingCats } from '@/components/mascot/WalkingCats';
+import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 
 /** Nền chàm của màn học từ — đúng màu nền màn Đọc song ngữ. */
 const STUDY_NAVY = '#0F1D33';
@@ -64,6 +64,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   useStreakGlass();
   const focus = isFocusRoute(pathname);
   const immersive = isImmersiveRoute(pathname);
+  const cyberHackRoute = pathname === '/duel/hack';
   const isQuestRoute = pathname === '/quest' || pathname.startsWith('/quest/');
   // Thành phố 3D chiếm trọn màn: bong bóng trợ lý AI sẽ đè lên bảng điều hành.
   // Thành phố và Chuyến bay từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
@@ -89,6 +90,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const viewportWidth = useWindowDimensions().width;
   // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
   const retro = useRetroOn();
+
+  // Cyber Hack is a full-screen arcade match. The game draws its own HUD and
+  // background, so the study navigation and page chrome must not surround it.
+  if (cyberHackRoute) {
+    return <View className="flex-1" style={{ backgroundColor: '#170D2B' }}>{children}</View>;
+  }
 
   if (immersive) {
     // Phòng thi Reading tự vẽ thanh trên và phủ trọn màn: chỉ cần nền, không khung điều hướng.
@@ -198,7 +205,6 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           )}
           {/* Không chen quảng cáo vào màn đang làm bài. */}
           <DomainMoveBanner />
-          {focus || phone ? null : retro ? <RetroPromoBanner /> : <ZaloPromoBanner />}
           <RetroScope value={retro}>
             <View className="flex-1">{children}</View>
           </RetroScope>
@@ -225,11 +231,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
  * sáng là gần như biến mất.
  */
 function FocusBackdrop({ quest, navy, light, gold, children }: { quest: boolean; navy: boolean; light: boolean; gold: boolean; children: React.ReactNode }) {
+  const chiikawa = useChiikawaActive();
   // Chép chính tả / viết câu: cảnh bay qua thành phố tông sáng (tắt thì về lưới sáng như cũ).
   if (light) return <TravelBackdrop color="#FBF6EE" tone="light">{children}</TravelBackdrop>;
   // Màn học từ: nền chàm kẻ ô, cùng màu với màn Đọc song ngữ.
   // Màn học từ: cảnh bay qua thành phố qua các thành phố (web, người dùng tắt được) — không thì nền chàm kẻ ô.
-  if (navy) return <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
+  if (navy) return chiikawa ? <LightGrid>{children}</LightGrid> : <TravelBackdrop color={STUDY_NAVY}>{children}</TravelBackdrop>;
   if (!quest) return gold ? <PhoneBackdrop>{children}</PhoneBackdrop> : <LightGrid>{children}</LightGrid>;
   return (
     <View className="flex-1 bg-[#07111F]">

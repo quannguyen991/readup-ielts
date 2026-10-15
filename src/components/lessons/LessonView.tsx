@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -232,7 +233,7 @@ export function LessonView({
   );
 }
 
-const RULE_TONES = ['#B8955A', '#10B981', '#F59E0B', '#EC4899', '#D6B57C', '#B07A3A'];
+const RULE_TONES = [themedHex('#B8955A'), '#10B981', '#F59E0B', '#EC4899', '#D6B57C', '#B07A3A'];
 
 type RuleBlock = Extract<LessonBlock, { kind: 'rule' }>;
 type ExampleBlock = Extract<LessonBlock, { kind: 'example' }>;

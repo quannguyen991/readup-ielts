@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { HEADER_ART_MIN } from '@/components/three/hero-star-policy';
 import { Platform, Pressable, Text, TextInput, View, useWindowDimensions } from 'react-native';
@@ -140,9 +141,9 @@ function fmtDate(iso: string): string {
  */
 const P = {
   /** Mực nâu ấm: chữ chính và nền tối của phiếu (thay navy cũ, lệch với nền vàng). */
-  ink: '#3B2A10',
+  ink: themedHex('#3B2A10'),
   /** Vàng đậm: nền của mục đang chọn; chữ trắng đọc rõ trên đây. */
-  deep: '#8C6A1F',
+  deep: themedHex('#8C6A1F'),
   gold: '#A8843F',
   goldDeep: '#8F6E36',
   goldLight: '#E2C88F',

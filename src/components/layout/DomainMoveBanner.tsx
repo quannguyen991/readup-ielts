@@ -14,6 +14,7 @@
  *
  * Thử ở máy dev: http://localhost:8081/?legacy=1
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useRef, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { createPortal } from 'react-dom';
@@ -25,8 +26,11 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { useSyncStore } from '@/store/useSyncStore';
 import { useL } from '@/i18n/useL';
 
-/** Mã đếm lượt xem — không phải dữ liệu học, không tính là "có dữ liệu". */
-const IGNORE = new Set(['readup:vid', 'readup:sid']);
+/**
+ * Mã đếm lượt xem và cài đặt giờ nghỉ (tự ghi ngay khi mở app, không phải tiến độ)
+ * — không tính là "có dữ liệu", nếu không khách mới bị chặn bằng màn chuyển nhà.
+ */
+const IGNORE = new Set(['readup:vid', 'readup:sid', 'readup:break']);
 
 /**
  * Danh sách khoá CHỤP NGAY LÚC TẢI MÃ (trước khi app kịp ghi gì): bộ đếm lượt
@@ -115,7 +119,7 @@ export function DomainMoveBanner() {
       accessibilityRole="alert"
       style={{ position: 'fixed' as never, top: 0, left: 0, right: 0, bottom: 0, zIndex: 100000, backgroundColor: 'rgba(11,21,38,0.92)', alignItems: 'center', justifyContent: 'center', padding: 16 }}
     >
-      <View style={{ width: '100%', maxWidth: 520, borderRadius: 28, padding: 28, backgroundColor: '#0F1D33', borderWidth: 1, borderColor: '#B8955A', alignItems: 'center', gap: 14 }}>
+      <View style={{ width: '100%', maxWidth: 520, borderRadius: 28, padding: 28, backgroundColor: '#0F1D33', borderWidth: 1, borderColor: themedHex('#B8955A'), alignItems: 'center', gap: 14 }}>
         <BrandMark size={76} />
         <Text className="font-heavy" style={{ fontSize: 26, color: '#F3EDE1', textAlign: 'center' }}>
           {state === 'done' ? L('Xong! Đang mở Band 9…', 'Done! Opening Band 9…') : L('ReadUp đã chuyển sang nhà mới', 'ReadUp has moved to a new home')}
@@ -132,7 +136,7 @@ export function DomainMoveBanner() {
           accessibilityRole="button"
           disabled={state === 'sending' || state === 'done'}
           onPress={move}
-          style={{ marginTop: 4, borderRadius: 999, paddingHorizontal: 24, paddingVertical: 13, backgroundColor: '#B8955A', opacity: state === 'sending' || state === 'done' ? 0.65 : 1 }}
+          style={{ marginTop: 4, borderRadius: 999, paddingHorizontal: 24, paddingVertical: 13, backgroundColor: themedHex('#B8955A'), opacity: state === 'sending' || state === 'done' ? 0.65 : 1 }}
         >
           <Text className="font-heavy" style={{ fontSize: 16, color: '#0F1D33' }}>
             {state === 'sending'

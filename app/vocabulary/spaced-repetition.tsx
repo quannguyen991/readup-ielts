@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState, useEffect } from 'react';
 import { Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
@@ -202,7 +203,7 @@ export default function SpacedRepetitionScreen() {
               alignItems: 'center',
               gap: 8,
               borderRadius: 14,
-              backgroundColor: '#B8955A',
+              backgroundColor: themedHex('#B8955A'),
               backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
               boxShadow: '0 4px 14px rgba(168,132,63, 0.3)',
               paddingHorizontal: 16,
@@ -253,7 +254,7 @@ export default function SpacedRepetitionScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: '#B8955A',
+            backgroundColor: themedHex('#B8955A'),
             backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
             boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
             borderRadius: 20,
@@ -321,7 +322,7 @@ export default function SpacedRepetitionScreen() {
         <View
           style={{
             flex: 1,
-            backgroundColor: '#B8955A',
+            backgroundColor: themedHex('#B8955A'),
             backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
             boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
             borderRadius: 20,

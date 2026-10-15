@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { DueToday } from '@/components/vocab/DueToday';
 import { Pressable, Text, View } from 'react-native';
@@ -437,7 +438,7 @@ function Detail({ label, value, italic }: { label: string; value: string; italic
  * nhận ra lẫn nhớ lại; các chế độ còn lại luyện một mặt riêng.
  */
 const MODES: { key: string; label: string; labelEn: string; note: string; noteEn: string; icon: IconName; tone: string; recommended?: boolean }[] = [
-  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · chọn nghĩa ABCD · gõ từ, từ sai quay lại', noteEn: 'Flashcards · ABCD meanings · typing; missed words come back', icon: 'book', tone: '#B8955A', recommended: true },
+  { key: 'learn', label: 'Học xen kẽ', labelEn: 'Mixed learning', note: 'Lật thẻ · chọn nghĩa ABCD · gõ từ, từ sai quay lại', noteEn: 'Flashcards · ABCD meanings · typing; missed words come back', icon: 'book', tone: themedHex('#B8955A'), recommended: true },
   { key: 'dictation', label: 'Nghe chép', labelEn: 'Dictation', note: 'Nghe từ, viết đúng chính tả', noteEn: 'Hear the word, spell it right', icon: 'volume', tone: '#8E6A2C' },
   { key: 'cloze', label: 'Điền vào câu', labelEn: 'Fill the gap', note: 'Chọn, xếp chữ, gõ, nghe — xen kẽ', noteEn: 'Pick, unscramble, type, listen — mixed', icon: 'pencil', tone: '#E0533D' },
   { key: 'speak', label: 'Phát âm', labelEn: 'Pronunciation', note: 'Đọc to, máy nghe và chấm', noteEn: 'Read aloud, the app listens and scores', icon: 'mic', tone: '#DB2777' },

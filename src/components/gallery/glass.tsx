@@ -6,6 +6,7 @@
  * Native: chỉ còn nền ngà mờ tĩnh.
  * Màu và luật: DESIGN.md. Khung vàng và chữ dùng chung vẫn ở gallery.tsx.
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useRef, useState } from 'react';
 import { Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import { isWeb, SANS_5, SERIF_I } from './gallery';
@@ -15,10 +16,10 @@ export const GOLD_SKY = ['#FFFCF3', '#FAF0D6', '#F5E4B6', '#EED59C', '#F7EBCB'] 
 export const GOLD_SKY_DEEP = ['#FBEFCB', '#F2DCA2', '#E9C878', '#F2DCA2', '#FBEFCB'] as const;
 export const GOLD_SKY_LOC = [0, 0.3, 0.6, 0.85, 1] as const;
 /** Chữ trên nền vàng: mực nâu vàng cho tiêu đề, nâu cho đoạn văn, đồng đậm cho từ nhấn. */
-export const INK_G = '#3B2A10';
-export const BODY_G = '#6E5626';
-export const MUTED_G = '#9C8552';
-export const DEEP_G = '#8C6A1F';
+export const INK_G = themedHex('#3B2A10');
+export const BODY_G = themedHex('#6E5626');
+export const MUTED_G = themedHex('#9C8552');
+export const DEEP_G = themedHex('#8C6A1F');
 
 /** CSS chỉ cho web, nối vào thẻ <style> của trang. Mọi animation nằm trong khối giảm chuyển động bên dưới. */
 export const FX_CSS = `

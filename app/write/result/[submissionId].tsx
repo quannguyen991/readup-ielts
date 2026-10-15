@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -79,8 +80,8 @@ const CATEGORY_HIGHLIGHT: Record<AnnotationCategory, { fill: string; edge: strin
   grammar: { fill: '#FEF4E6', edge: '#F59E0B' },
   lexis: { fill: '#E8F8EE', edge: '#16A34A' },
   cohesion: { fill: '#FAF4EA', edge: '#B07A3A' },
-  expression: { fill: '#FCF9F3', edge: '#CCA35B' },
-  task: { fill: '#F7F0E1', edge: '#B8955A' },
+  expression: { fill: '#FCF9F3', edge: themedHex('#CCA35B') },
+  task: { fill: '#F7F0E1', edge: themedHex('#B8955A') },
 };
 
 type Tab = 'essay' | 'review' | 'errors' | 'fixed' | 'model';

@@ -4,7 +4,29 @@
  * còn file TS này dùng cho SVG, biểu đồ và những chỗ cần giá trị runtime.
  */
 
-export const color = {
+import { themed } from './palette-state';
+
+/** Bảng Chiikawa: hồng sữa, nâu mận cho chữ. Chỉ ghi đè các khoá cần đổi. */
+const CHIIKAWA_COLOR = {
+  canvas: '#FFF5F8',
+  surfaceAlt: '#FFF9FB',
+  border: '#FBE3EC',
+  borderStrong: '#F5CADB',
+  ink: '#4A2433',
+  body: '#7A4E62',
+  muted: '#A3768B',
+  subtle: '#C9A3B3',
+  primary: '#D65E86',
+  primaryDark: '#B94A70',
+  primarySoft: '#FFEAF1',
+  accent: '#F4A6C0',
+  accentDark: '#E68AAE',
+  accentSoft: '#FFF3F7',
+  info: '#C97A9A',
+  infoSoft: '#FDF0F5',
+};
+
+export const color = themed({
   canvas: '#F9F7F3',
   surface: '#FFFFFF',
   surfaceAlt: '#FBF7F1',
@@ -34,7 +56,7 @@ export const color = {
   infoSoft: '#FAF4EA',
 
   white: '#FFFFFF',
-} as const;
+} as const, CHIIKAWA_COLOR);
 
 /**
  * Bảng màu "giấy kẻ ô" — tông xanh tím + giấy kem, dùng cho các màn TÁC VỤ
@@ -47,7 +69,26 @@ export const color = {
  * lên. Trộn chung thành một bảng thì mọi màn đều phải chọn tông thủ công và
  * dần dần trôi mỗi nơi một kiểu.
  */
-export const paper = {
+/** Bảng Chiikawa cho giấy kẻ ô: các màu chàm/vàng đổi sang hồng mận. */
+const CHIIKAWA_PAPER = {
+  brand: '#D65E86',
+  brandDark: '#B94A70',
+  brandDeep: '#7A2E4E',
+  brandMid: '#D65E86',
+  brandSoft: '#FCE4EC',
+  brandTint: '#FFF4F8',
+  card: '#FFFAFC',
+  canvas: '#FFF5F8',
+  fill: '#FCE4EC',
+  fillEdge: '#E68AAE',
+  gold: '#F4A6C0',
+  goldSoft: '#FFE3EE',
+  ink: '#4A2433',
+  body: '#7A4E62',
+  muted: '#A3768B',
+};
+
+export const paper = themed({
   /** Tông chàm giữa của nền loang — dùng khi cần MỘT màu đại diện, không gradient. */
   brand: '#B8955A',
   brandDark: '#8F6E36',
@@ -77,7 +118,7 @@ export const paper = {
   ink: '#1A1A33',
   body: '#3B3B57',
   muted: '#7B7B99',
-} as const;
+} as const, CHIIKAWA_PAPER);
 
 /** Gradient xanh → tím dùng cho banner hero (ảnh 3, 4, 5). */
 export const gradient = {

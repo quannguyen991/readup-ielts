@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useState } from 'react';
 import { Pressable, Text, View, type LayoutChangeEvent } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
@@ -16,7 +17,7 @@ export const P = {
   navy: '#0F1D33',
   navySoft: '#24344F',
   gold: '#A8843F',
-  goldMid: '#B8955A',
+  goldMid: themedHex('#B8955A'),
   goldDeep: '#8F6E36',
   goldLight: '#E2C88F',
   goldWash: '#FBF3E2',

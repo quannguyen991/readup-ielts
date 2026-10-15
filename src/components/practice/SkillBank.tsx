@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -29,7 +30,7 @@ import { useL } from '@/i18n/useL';
 export const B9 = {
   navy: '#0F1D33',
   gold: '#A8843F',
-  goldMid: '#B8955A',
+  goldMid: themedHex('#B8955A'),
   goldDeep: '#8F6E36',
   goldLight: '#E2C88F',
   goldWash: '#FBF3E2',

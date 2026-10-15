@@ -14,6 +14,7 @@
  *   hiệu ứng ở src/components/gallery/glass.tsx; luật ở DESIGN.md.
  * FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect } from 'react';
 import { Image, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -503,7 +504,7 @@ function CTA({ label, onPress, solid = false }: { label: string; onPress: () => 
   );
   if (!solid) return <GlassPanel style={{ borderRadius: 999 }}>{inner}</GlassPanel>;
   return (
-    <View className="b9-sheen b9-cta-solid" style={{ borderRadius: 999, backgroundColor: isWeb ? undefined : '#EBC26A' }}>
+    <View className="b9-sheen b9-cta-solid" style={{ borderRadius: 999, backgroundColor: isWeb ? undefined : themedHex('#EBC26A') }}>
       {inner}
     </View>
   );

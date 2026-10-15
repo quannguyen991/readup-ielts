@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
 import { ActivityIndicator, Modal, Platform, Pressable, ScrollView, Text, TextInput, View, useWindowDimensions } from 'react-native';
 import { router, usePathname } from 'expo-router';
@@ -31,7 +32,7 @@ const C = {
   navy: '#0F1D33',
   navySoft: 'rgba(15,29,51,0.68)',
   navyMuted: 'rgba(15,29,51,0.5)',
-  gold: '#B8955A',
+  gold: themedHex('#B8955A'),
   goldDeep: '#8F6E36',
   goldMid: '#A8843F',
   goldLight: '#E2C88F',

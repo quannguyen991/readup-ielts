@@ -4,6 +4,7 @@
  * Bản đầy đủ: đơn ĐÃ TRẢ TIỀN của gói Max hoặc gói năm (services/books/entitlement), tải qua /api/books/pdf —
  * máy chủ in email + mã đơn ở chân từng trang rồi trả link ký 10 phút.
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, Image, Linking, Pressable, ScrollView, StyleSheet, Text, View, useWindowDimensions } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -288,7 +289,7 @@ function SmallButton({ label, onPress, solid = false, busy = false }: { label: s
         paddingHorizontal: 12,
         borderRadius: 999,
         alignItems: 'center',
-        backgroundColor: solid ? (hovered ? '#F4DA94' : '#EBC26A') : hovered ? 'rgba(255,255,255,0.5)' : 'transparent',
+        backgroundColor: solid ? (hovered ? themedHex('#F4DA94') : themedHex('#EBC26A')) : hovered ? 'rgba(255,255,255,0.5)' : 'transparent',
         borderWidth: solid ? 0 : 1,
         borderColor: 'rgba(140,106,31,0.45)',
         opacity: busy ? 0.7 : 1,

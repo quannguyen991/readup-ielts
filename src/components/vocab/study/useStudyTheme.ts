@@ -3,6 +3,7 @@ import React from 'react';
 import { useTopicStudyStore } from '@/store/useTopicStudyStore';
 
 import { useStudyBackdrop } from '@/components/art/ArtBackdrop';
+import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 
 import { STUDY_THEMES, themeOf, type StudyTheme } from './study-theme';
 
@@ -15,6 +16,8 @@ export function useStoreTheme(): StudyTheme {
   const fx = useTopicStudyStore((s) => s.studyFx);
   const id = useTopicStudyStore((s) => s.studyTheme);
   const art = useStudyBackdrop();
+  // Giao diện Chiikawa: nền hồng cho mọi màn ôn từ, đứng trước tranh và cảnh.
+  if (useChiikawaActive()) return STUDY_THEMES.chiikawa;
   if (art) return STUDY_THEMES[art.tone === 'dark' ? 'art-dark' : 'art-light'];
   return fx ? themeOf(id) : STUDY_THEMES.plain;
 }

@@ -2,6 +2,7 @@
  * Thế giới "phòng tranh" của Band 9 — dùng chung cho trang giới thiệu (/gioi-thieu) và Tủ sách (/tu-sach).
  * Hệ màu, phông và luật dùng: DESIGN.md. Tranh nền nén riêng ở public/landing (gốc: public/backdrops/art).
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useRef, useState } from 'react';
 import { Image, Platform, Text, View } from 'react-native';
 
@@ -11,7 +12,7 @@ export const NAVY_2 = '#16264A';
 export const CREAM = '#F3EDE1';
 export const MIST = '#C9CFDF';
 export const GOLD = '#E3BE6A';
-export const GOLD_DEEP = '#B8955A';
+export const GOLD_DEEP = themedHex('#B8955A');
 export const PAPER = '#FBF8F2';
 export const INK = '#141A33';
 export const BODY = '#4A4F66';

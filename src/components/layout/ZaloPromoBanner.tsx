@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import * as Clipboard from 'expo-clipboard';
 import { Icon } from '@/components/ui/Icon';
 import { useL } from '@/i18n/useL';
+import { useRewardStore } from '@/store/useRewardStore';
 
 export const ZALO_PHONE = '0921.247.247';
 export const ZALO_PHONE_RAW = '0921247247';
@@ -28,6 +29,7 @@ export function ZaloPromoBanner() {
   const [visible, setVisible] = useState(() => !readHidden());
   const [copied, setCopied] = useState(false);
   const { L } = useL();
+  const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
   // Đo bằng JS thay vì breakpoint CSS: banner chỉ hiện sau khi app đã nạp xong (không có bản dựng máy chủ của nó).
   const compact = useWindowDimensions().width < 640;
 
@@ -69,10 +71,10 @@ export function ZaloPromoBanner() {
   if (!visible) return null;
 
   return (
-    <View className="relative w-full overflow-hidden border-b border-amber-400/30 z-30">
+    <View className={`relative z-30 w-full overflow-hidden border-b ${chiikawa ? 'border-pink-300/30' : 'border-amber-400/30'}`}>
       {/* Nền gradient hoàng gia tinh tế */}
       <LinearGradient
-        colors={['#0B1526', '#132139', '#1A2B48']}
+        colors={chiikawa ? (['#3B2432', '#512B40', '#67344D'] as const) : (['#0B1526', '#132139', '#1A2B48'] as const)}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={{
@@ -94,7 +96,7 @@ export function ZaloPromoBanner() {
           width: 300,
           height: 80,
           borderRadius: 40,
-          backgroundColor: 'rgba(245, 158, 11, 0.18)',
+          backgroundColor: chiikawa ? 'rgba(232, 123, 160, 0.20)' : 'rgba(245, 158, 11, 0.18)',
           filter: Platform.OS === 'web' ? 'blur(32px)' : undefined,
         }}
       />
@@ -107,7 +109,7 @@ export function ZaloPromoBanner() {
           width: 260,
           height: 70,
           borderRadius: 35,
-          backgroundColor: 'rgba(184, 149, 90, 0.22)',
+          backgroundColor: chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(184, 149, 90, 0.22)',
           filter: Platform.OS === 'web' ? 'blur(28px)' : undefined,
         }}
       />
@@ -118,7 +120,7 @@ export function ZaloPromoBanner() {
       */}
       {compact ? (
       <View className="flex-row items-center gap-2 pl-3" style={{ minHeight: 52 }}>
-        <Icon name="gift" size={18} color="#FBBF24" />
+        <Icon name="gift" size={18} color={chiikawa ? '#F7B8CC' : '#FBBF24'} />
         <Pressable
           onPress={handleOpenZalo}
           accessibilityRole="link"
@@ -126,7 +128,7 @@ export function ZaloPromoBanner() {
           className="min-w-0 flex-1 justify-center"
           style={{ minHeight: 44 }}
         >
-          <Text className="text-[13px] font-bold leading-tight text-amber-200" numberOfLines={2}>
+          <Text className={`text-[13px] font-bold leading-tight ${chiikawa ? 'text-pink-200' : 'text-amber-200'}`} numberOfLines={2}>
             {L('Gói MAX 2 tháng miễn phí', '2 months of MAX free')}
             <Text className="font-medium text-white">{L(' · nhắn Zalo để nhận', ' · message us on Zalo')}</Text>
           </Text>
@@ -158,7 +160,7 @@ export function ZaloPromoBanner() {
         <View className="flex-1 flex-row items-center gap-3 min-w-[280px]">
           {/* Badge Icon Hộp quà */}
           <LinearGradient
-            colors={['#F59E0B', '#D97706']}
+            colors={chiikawa ? (['#E78EAA', '#BD416C'] as const) : (['#F59E0B', '#D97706'] as const)}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={{
@@ -167,29 +169,29 @@ export function ZaloPromoBanner() {
               borderRadius: 10,
               alignItems: 'center',
               justifyContent: 'center',
-              boxShadow: '0 4px 12px rgba(245, 158, 11, 0.35)',
+              boxShadow: chiikawa ? '0 4px 12px rgba(214, 94, 134, 0.35)' : '0 4px 12px rgba(245, 158, 11, 0.35)',
             }}
           >
-            <Icon name="gift" size={18} color="#451A03" />
+            <Icon name="gift" size={18} color={chiikawa ? '#FFFFFF' : '#451A03'} />
           </LinearGradient>
 
           {/* Text thông điệp */}
           <View className="flex-1 flex-row flex-wrap items-center gap-x-2 gap-y-0.5">
-            <View className="rounded-full bg-amber-400/20 px-2 py-0.5 border border-amber-300/35">
-              <Text className="text-[12px] font-bold uppercase tracking-wider text-amber-300">
+            <View className={`rounded-full px-2 py-0.5 border ${chiikawa ? 'bg-pink-300/20 border-pink-200/35' : 'bg-amber-400/20 border-amber-300/35'}`}>
+              <Text className={`text-[12px] font-bold uppercase tracking-wider ${chiikawa ? 'text-pink-200' : 'text-amber-300'}`}>
                 {L('Ưu Đãi Độc Quyền', 'Exclusive offer')}
               </Text>
             </View>
             <Text className="text-[13px] leading-tight text-white">
               {L('Nhắn tin Zalo', 'Message us on Zalo at')}{' '}
               <Text
-                className="font-bold text-amber-300 underline cursor-pointer"
+                className={`font-bold underline cursor-pointer ${chiikawa ? 'text-pink-200' : 'text-amber-300'}`}
                 onPress={handleOpenZalo}
               >
                 {ZALO_PHONE}
               </Text>{' '}
               {L('để nhận mã mời kích hoạt', 'to get an invite code for')}{' '}
-              <Text className="font-extrabold text-amber-200">
+              <Text className={`font-extrabold ${chiikawa ? 'text-pink-200' : 'text-amber-200'}`}>
                 {L('Gói MAX 2 tháng miễn phí!', '2 months of MAX free!')}
               </Text>
             </Text>
@@ -222,8 +224,8 @@ export function ZaloPromoBanner() {
             accessibilityLabel={L('Nhắn Zalo ngay để nhận gói Max 2 tháng', 'Message on Zalo now to get 2 months of Max')}
             className="flex-row items-center gap-1.5 rounded-lg px-3 py-1.5 shadow-md shadow-blue-500/25 transition-all hover:brightness-110 active:scale-95"
             style={{
-              backgroundColor: '#9C7A3A',
-              backgroundImage: Platform.OS === 'web' ? 'linear-gradient(90deg, #8F6E36 0%, #9C7A3A 100%)' : undefined,
+              backgroundColor: chiikawa ? '#C64E79' : '#9C7A3A',
+              backgroundImage: Platform.OS === 'web' ? chiikawa ? 'linear-gradient(90deg, #D65E86 0%, #B83D68 100%)' : 'linear-gradient(90deg, #8F6E36 0%, #9C7A3A 100%)' : undefined,
             }}
           >
             <View
@@ -236,7 +238,7 @@ export function ZaloPromoBanner() {
                 justifyContent: 'center',
               }}
             >
-              <Text style={{ fontSize: 12, fontWeight: '900', color: '#8F6E36' }}>Z</Text>
+              <Text style={{ fontSize: 12, fontWeight: '900', color: chiikawa ? '#B83D68' : '#8F6E36' }}>Z</Text>
             </View>
             <Text className="text-[12px] font-bold text-white">{L('Nhắn Zalo ngay', 'Message on Zalo')}</Text>
             <Icon name="external" size={12} color="#FFFFFF" />

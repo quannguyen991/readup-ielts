@@ -21,7 +21,7 @@ const BODY = '#FFFFFF';
 const STRIPE = '#B9BFC9';
 const BLUSH = '#F6B3C0';
 
-type Props = { size?: number; state?: CatState };
+type Props = { size?: number; state?: CatState; pose?: 'sit' | 'lie' };
 
 function Eyes({ state }: { state: CatState }) {
   if (state === 'happy') {
@@ -85,7 +85,63 @@ function Accent({ state }: { state: CatState }) {
   return null;
 }
 
-export function CatMascot({ size = 120, state = 'idle' }: Props) {
+/**
+ * Dáng NẰM DÀI, ngủ ngon: đầu đặt trên chân trước, thân duỗi ngang. Dùng cho giờ
+ * nghỉ (`pose="lie"`). Cùng bảng màu và viền mực với dáng ngồi.
+ */
+function LyingCat({ size }: { size: number }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 120 120" accessibilityLabel="Mèo Band 9 đang ngủ">
+      {/* đuôi buông ra phía sau */}
+      <Path d="M100 96 Q120 96 114 80" stroke={INK} strokeWidth={9} fill="none" strokeLinecap="round" />
+      <Path d="M100 96 Q120 96 114 80" stroke={BODY} strokeWidth={5} fill="none" strokeLinecap="round" />
+
+      {/* thân nằm dài */}
+      <Ellipse cx={66} cy={92} rx={42} ry={18} fill={BODY} stroke={INK} strokeWidth={3} />
+
+      {/* chân trước duỗi dưới cằm */}
+      <Ellipse cx={36} cy={106} rx={10} ry={5} fill={BODY} stroke={INK} strokeWidth={2.6} />
+
+      {/* tai */}
+      <Path d="M14 74 L16 50 L34 66 Z" fill={BODY} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+      <Path d="M44 66 L54 52 L56 76 Z" fill={BODY} stroke={INK} strokeWidth={3} strokeLinejoin="round" />
+
+      {/* đầu gối trên chân trước */}
+      <Ellipse cx={34} cy={84} rx={24} ry={18} fill={BODY} stroke={INK} strokeWidth={3} />
+
+      {/* ba vạch xám trên đầu */}
+      <G stroke={STRIPE} strokeWidth={3} strokeLinecap="round">
+        <Line x1={26} y1={70} x2={27} y2={76} />
+        <Line x1={34} y1={68} x2={34} y2={75} />
+        <Line x1={42} y1={70} x2={41} y2={76} />
+      </G>
+
+      {/* mắt nhắm */}
+      <G stroke={INK} strokeWidth={2.6} fill="none" strokeLinecap="round">
+        <Path d="M20 86 Q25 91 30 86" />
+        <Path d="M38 86 Q43 91 48 86" />
+      </G>
+
+      {/* má hồng, mũi */}
+      <Ellipse cx={18} cy={95} rx={5} ry={3} fill={BLUSH} />
+      <Ellipse cx={50} cy={95} rx={5} ry={3} fill={BLUSH} />
+      <Path d="M31 93 L37 93 L34 96 Z" fill={BLUSH} stroke={INK} strokeWidth={1} strokeLinejoin="round" />
+
+      {/* râu */}
+      <G stroke={INK} strokeWidth={1.4} strokeLinecap="round">
+        <Line x1={8} y1={89} x2={16} y2={90} />
+        <Line x1={8} y1={95} x2={16} y2={94} />
+      </G>
+
+      {/* chữ z bay lên */}
+      <SvgText x={76} y={60} fontSize={16} fontWeight="700" fill={INK}>z</SvgText>
+      <SvgText x={89} y={47} fontSize={12} fontWeight="700" fill={INK}>z</SvgText>
+    </Svg>
+  );
+}
+
+export function CatMascot({ size = 120, state = 'idle', pose = 'sit' }: Props) {
+  if (pose === 'lie') return <LyingCat size={size} />;
   return (
     <Svg width={size} height={size} viewBox="0 0 120 120" accessibilityLabel="Mèo Band 9">
       {/* đuôi: viền mực rồi lớp trắng đè lên */}

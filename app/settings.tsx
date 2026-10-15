@@ -6,6 +6,7 @@ import { SoundCard } from '@/components/account/SoundCard';
 import { Screen } from '@/components/layout/Screen';
 import { PushReminderCard } from '@/components/reminder/PushReminderCard';
 import { ReminderCard } from '@/components/reminder/Reminder';
+import { BreakCard } from '@/components/break/BreakCard';
 import { useL } from '@/i18n/useL';
 
 /**
@@ -32,6 +33,7 @@ export default function SettingsScreen() {
       <SoundCard />
       <PushReminderCard />
       <ReminderCard />
+      <BreakCard />
     </Screen>
   );
 }

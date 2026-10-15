@@ -10,6 +10,7 @@
  * chính" trước, đã chặn quyền thì chỉ đường mở lại, máy chủ chưa có khoá thì
  * thẻ khoá lại với dòng "Chưa bật trên máy chủ".
  */
+import { themedHex } from '@/theme/palette-state';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -67,7 +68,7 @@ function ToggleRow({ label, hint, on, disabled, busy, onPress }: { label: string
         {hint ? <Text className="mt-0.5 font-sans text-label text-muted">{hint}</Text> : null}
       </View>
       <View style={{ width: 46, height: 28, borderRadius: 999, padding: 3, backgroundColor: on ? '#0F1D33' : '#D9D2C3', justifyContent: 'center' }}>
-        <View style={{ width: 22, height: 22, borderRadius: 999, backgroundColor: on ? '#B8955A' : '#FFFFFF', alignSelf: on ? 'flex-end' : 'flex-start' }} />
+        <View style={{ width: 22, height: 22, borderRadius: 999, backgroundColor: on ? themedHex('#B8955A') : '#FFFFFF', alignSelf: on ? 'flex-end' : 'flex-start' }} />
       </View>
     </Pressable>
   );

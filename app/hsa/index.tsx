@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 import { Linking, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { Image } from 'expo-image';
@@ -74,7 +75,7 @@ export default function HsaHomeScreen() {
               <MiniStat value={recent ? `${recent.correct}/${recent.total}` : '♡'} label={L('lần gần nhất', 'last result')} />
             </View>
             <View style={{ marginTop: 13, height: 10, backgroundColor: '#F1E8D3', borderRadius: 999, overflow: 'hidden' }}>
-              <View style={{ width: `${vocabCount ? Math.min(100, (knownCount / vocabCount) * 100) : 0}%`, height: '100%', borderRadius: 999, backgroundColor: '#B8955A' }} />
+              <View style={{ width: `${vocabCount ? Math.min(100, (knownCount / vocabCount) * 100) : 0}%`, height: '100%', borderRadius: 999, backgroundColor: themedHex('#B8955A') }} />
             </View>
           </WindowPanel>
 
@@ -96,7 +97,7 @@ export default function HsaHomeScreen() {
         </View>
 
         <WindowPanel title={L('Bắt đầu học', 'Choose your next step')} icon="book" subtitle={L('Chọn một chiếc hộp để bắt đầu nha', 'Pick a little window to get started')} wide={false}>
-          <LinearGradient colors={['#B8955A', '#8F6E36']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 20, padding: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, overflow: 'hidden' }}>
+          <LinearGradient colors={[themedHex('#B8955A'), '#8F6E36']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ borderRadius: 20, padding: 18, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12, overflow: 'hidden' }}>
             <View style={{ flex: 1, gap: 7 }}>
               <Text style={{ color: '#FFFDF8', fontSize: 12, fontWeight: '900', letterSpacing: 1 }}>{L('ĐỀ MÔ PHỎNG HÔM NAY', 'TODAY’S PRACTICE PAPER')}</Text>
               <Text style={{ color: '#FFFFFF', fontSize: 21, fontWeight: '900' }}>{L('Đề số 01 · 50 câu', 'Paper 01 · 50 questions')}</Text>
@@ -177,7 +178,7 @@ function WindowPanel({ title, subtitle, icon, wide, children }: { title: string;
       <View style={{ minHeight: 43, paddingHorizontal: 14, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FBF3E2', borderBottomWidth: 1, borderBottomColor: '#E8DCC0' }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
           <View style={{ flexDirection: 'row', gap: 4 }}>
-            {['#B8955A', '#D5B377', '#E2C88F'].map((dot) => <View key={dot} style={{ width: 7, height: 7, borderRadius: 999, backgroundColor: dot }} />)}
+            {[themedHex('#B8955A'), '#D5B377', '#E2C88F'].map((dot) => <View key={dot} style={{ width: 7, height: 7, borderRadius: 999, backgroundColor: dot }} />)}
           </View>
           <Icon name={icon} size={15} color="#8F6E36" />
           <Text numberOfLines={1} style={{ color: '#0F1D33', fontWeight: '800', fontSize: 13 }}>{title}</Text>

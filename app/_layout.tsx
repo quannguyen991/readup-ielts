@@ -1,8 +1,7 @@
 import '../global.css';
 import '@/lib/nativewind-interop';
 
-import React, { useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { Slot, usePathname } from 'expo-router';
 import Head from 'expo-router/head';
 import { StatusBar } from 'expo-status-bar';
@@ -28,14 +27,19 @@ import {
 import { AppShell } from '@/components/layout/AppShell';
 import { MemberGate } from '@/components/access/MemberGate';
 import { GameFxLayer } from '@/components/game/GameFxLayer';
+import { BreakLayer } from '@/components/break/BreakLayer';
+import { ChiikawaReact } from '@/components/chiikawa/ChiikawaReact';
+import { ChiikawaTapFx } from '@/components/chiikawa/ChiikawaTapFx';
 import { PageTransition } from '@/components/motion/Motion';
 import { PageViewTracker } from '@/services/analytics/PageViewTracker';
 import { VercelAnalytics } from '@/services/analytics/VercelAnalytics';
 import { useSfxBindings } from '@/services/audio/useSfxBindings';
 import { useAuthBootstrap } from '@/store/useAuthStore';
 import { useSyncBootstrap } from '@/store/useSyncStore';
-import { color } from '@/theme/tokens';
 import { installLocaleFetch } from '@/i18n/fetch-locale';
+import { useHydrated } from '@/components/layout/useHydrated';
+import { useRewardStore } from '@/store/useRewardStore';
+import { setPaletteId } from '@/theme/palette-state';
 
 // Mọi lượt gọi `/api/...` mang theo ngôn ngữ đang chọn để máy chủ trả lời đúng
 // thứ tiếng. Chạy một lần lúc nạp module; gọi lại (HMR) vẫn chỉ bọc một lớp.
@@ -62,7 +66,10 @@ export default function RootLayout() {
   useSyncBootstrap();
   useSfxBindings();
 
-  const [fontsLoaded] = useFonts({
+  // Don't block the entire app on web font downloads. If one font request stalls,
+  // keep the interface usable with platform fallbacks and swap to branded fonts
+  // as soon as useFonts finishes loading them.
+  useFonts({
     PlusJakartaSans_400Regular,
     PlusJakartaSans_500Medium,
     PlusJakartaSans_600SemiBold,
@@ -75,17 +82,19 @@ export default function RootLayout() {
     Nunito_900Black,
   });
 
-  if (!fontsLoaded) {
-    return (
-      <View className="flex-1 items-center justify-center bg-canvas">
-        <AppTitle />
-        <ActivityIndicator color={color.primary} />
-      </View>
-    );
-  }
+  // Chủ đề Chiikawa: đổi bảng màu cho cả app. Chờ hydrate để lượt đầu khớp HTML máy
+  // chủ; đổi bảng thì dựng lại cả cây (key) để mọi màu trong JS được tính lại.
+  const hydrated = useHydrated();
+  const themeId = useRewardStore((s) => s.theme);
+  const paletteKey = hydrated && themeId === 'theme-chiikawa' ? 'chiikawa' : 'classic';
+  setPaletteId(paletteKey);
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    document.documentElement.classList.toggle('theme-chiikawa', paletteKey === 'chiikawa');
+  }, [paletteKey]);
 
   return (
-    <SafeAreaProvider>
+    <SafeAreaProvider key={paletteKey}>
       <QueryClientProvider client={queryClient}>
         <AppTitle />
         <StatusBar style="dark" />
@@ -99,6 +108,9 @@ export default function RootLayout() {
           </PageTransition>
         </AppShell>
         <GameFxLayer />
+        <BreakLayer />
+        <ChiikawaReact />
+        <ChiikawaTapFx />
       </QueryClientProvider>
     </SafeAreaProvider>
   );

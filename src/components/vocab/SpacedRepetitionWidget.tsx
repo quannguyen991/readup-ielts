@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useEffect } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
@@ -53,7 +54,7 @@ export function SpacedRepetitionWidget() {
     <View
       style={{
         borderRadius: 20,
-        backgroundColor: '#B8955A',
+        backgroundColor: themedHex('#B8955A'),
         backgroundImage: 'linear-gradient(105deg, #D9BC7F 0%, #A8843F 100%)',
         boxShadow: '0 8px 24px rgba(168,132,63, 0.28)',
         padding: 20,

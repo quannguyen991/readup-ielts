@@ -8,7 +8,7 @@
  * Độ tương phản chữ được test (WCAG AA >= 4,5:1) ở `study-theme.test.ts`.
  * "Mặc định" giữ nguyên nền cảnh bay pixel + thẻ trắng như trước.
  */
-export type ThemeId = 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light';
+export type ThemeId = 'chiikawa' | 'plain' | 'scene' | 'space' | 'sakura' | 'forest' | 'sunset' | 'rain' | 'journey' | 'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-singapore' | 'px-hanoi' | 'art-dark' | 'art-light';
 export type ThemeLayer = 'none' | 'scene' | 'stars' | 'petals' | 'mist' | 'dusk' | 'rain' | 'world' | 'pxscene';
 
 export type StudyTheme = {
@@ -143,6 +143,29 @@ const ART_THEMES: Record<'art-dark' | 'art-light', StudyTheme> = {
     pill: 'rgba(255,255,255,0.9)',
   },
 };
+
+/** Chủ đề Chiikawa: nền hồng sữa, thẻ trắng viền hồng, chữ nâu mận. Chọn tự động khi bật giao diện Chiikawa. */
+const CHIIKAWA_STUDY: StudyTheme = {
+  ...LIGHT_BASE,
+  id: 'chiikawa',
+  vi: 'Chiikawa',
+  en: 'Chiikawa',
+  layer: 'petals',
+  skyBase: '#FFF5F8',
+  skyStops: ['#FFF0F4', '#FFE7EE'],
+  sky: 'linear-gradient(180deg,#FFF5F8,#FFE7EE)',
+  swatch: '#FFE7EE',
+  card: 'rgba(255,255,255,0.94)',
+  cardBorder: '#F5CADB',
+  ink: '#4A2433',
+  muted: '#7A4E62',
+  onBg: '#4A2433',
+  accent: '#D65E86',
+  accentDisabled: '#F6D5E1',
+  pill: 'rgba(255,255,255,0.9)',
+  pillInk: '#4A2433',
+};
+
 export const ART_THEME_IDS: readonly ThemeId[] = ['art-dark', 'art-light'];
 export function isArtTheme(id: string): boolean {
   return id === 'art-dark' || id === 'art-light';
@@ -165,6 +188,7 @@ const PX_THEMES: Record<'px-auto' | 'px-tokyo' | 'px-paris' | 'px-london' | 'px-
 };
 
 export const STUDY_THEMES: Record<ThemeId, StudyTheme> = {
+  chiikawa: CHIIKAWA_STUDY,
   ...ART_THEMES,
   ...PX_THEMES,
   plain: {

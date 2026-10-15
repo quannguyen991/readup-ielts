@@ -3,6 +3,8 @@ import { Platform } from 'react-native';
 import { Redirect } from 'expo-router';
 
 import { WELCOME_SEEN_KEY, entryPath } from '@/lib/welcome-page';
+import { ChiikawaLoader } from '@/components/chiikawa/ChiikawaLoader';
+import { useChiikawaActive } from '@/components/chiikawa/chiikawa';
 
 /**
  * Cửa vào.
@@ -25,6 +27,7 @@ export default function Index() {
     }
     setTarget(entryPath(seen));
   }, []);
-  if (!target) return null;
+  const chiikawa = useChiikawaActive();
+  if (!target) return chiikawa ? <ChiikawaLoader label="Đang mở Band 9…" /> : null;
   return <Redirect href={target as never} />;
 }

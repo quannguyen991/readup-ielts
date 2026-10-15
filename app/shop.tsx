@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useMemo, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -469,21 +470,21 @@ function DefaultLookCard({ what, active, onPress }: { what: 'Giao diện' | 'N�
       disabled={active}
       onPress={onPress}
       className="rounded-card bg-white p-3"
-      style={{ borderWidth: active ? 2 : 1, borderColor: active ? '#B8955A' : '#E9DFC8', gap: 10, height: '100%' }}
+      style={{ borderWidth: active ? 2 : 1, borderColor: active ? themedHex('#B8955A') : '#E9DFC8', gap: 10, height: '100%' }}
     >
       {sidebar ? (
         // Xem trước THANH BÊN mặc định: nền kem, logo, một mục đang mở dải vàng kim.
         <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', flexDirection: 'row', backgroundColor: '#F4EFE4' }}>
           <View style={{ width: '46%', padding: 8, gap: 6, backgroundColor: '#FBF8F1', borderRightWidth: 1, borderRightColor: '#E9DFC8' }}>
             <BrandMark size={18} />
-            <View style={{ height: 14, borderRadius: 7, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: '#B8955A' }) }} />
+            <View style={{ height: 14, borderRadius: 7, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: themedHex('#B8955A') }) }} />
             <View style={{ height: 6, width: '70%', borderRadius: 3, backgroundColor: '#E2D6BD' }} />
             <View style={{ height: 6, width: '55%', borderRadius: 3, backgroundColor: '#E2D6BD' }} />
           </View>
         </View>
       ) : (
         <View style={{ height: 96, borderRadius: 14, overflow: 'hidden', alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4EFE4' }}>
-          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 26, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: '#B8955A' }) }} />
+          <View style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: 26, ...(Platform.OS === 'web' ? ({ backgroundImage: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)' } as object) : { backgroundColor: themedHex('#B8955A') }) }} />
           <BrandMark size={44} />
         </View>
       )}
@@ -491,7 +492,7 @@ function DefaultLookCard({ what, active, onPress }: { what: 'Giao diện' | 'N�
         <Text className="font-heavy text-body text-ink">{L('Mặc định · Band 9', 'Default · Band 9')}</Text>
         <Text className="font-sans text-label text-muted">{sidebar ? L('Thanh bên vàng kim · miễn phí', 'Gold sidebar · free') : L('Nền kem vàng kim · miễn phí', 'Cream and gold · free')}</Text>
       </View>
-      <View className="items-center rounded-pill py-1.5" style={{ backgroundColor: active ? '#F3E6C8' : '#B8955A' }}>
+      <View className="items-center rounded-pill py-1.5" style={{ backgroundColor: active ? '#F3E6C8' : themedHex('#B8955A') }}>
         <Text className="font-strong text-label" style={{ color: active ? '#6B5320' : '#0F1D33' }}>
           {active ? L('✓ Đang dùng', '✓ In use') : L('Dùng mặc định', 'Use default')}
         </Text>

@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useMemo } from 'react';
 import { Platform, View, useWindowDimensions } from 'react-native';
 import Animated, { Easing, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
@@ -22,7 +23,7 @@ import { hashString, mulberry32 } from '@/services/questions/rng';
  *
  * Tắt chuyển động (prefers-reduced-motion) thì không bắn — chỉ còn tiếng chuông.
  */
-const COLORS = ['#FF3B6B', '#FFB020', '#FFE14D', '#2EE6A6', '#CCA35B', '#DABB86', '#FF6EE7', '#FFFFFF'];
+const COLORS = ['#FF3B6B', '#FFB020', '#FFE14D', '#2EE6A6', themedHex('#CCA35B'), '#DABB86', '#FF6EE7', '#FFFFFF'];
 const DURATION = 3200;
 /** Giây mô phỏng ứng với toàn bộ thời gian chạy. */
 const T = 2.6;

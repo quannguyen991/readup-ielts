@@ -1,10 +1,11 @@
+import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 import Svg, { Rect } from 'react-native-svg';
 
 /** Ba mẫu áo của lữ khách pixel (chỉ số `prefs.outfit`). */
 export const OUTFITS = [
-  { jacket: '#0F1D33', scarf: '#B8955A', hair: '#2B1B12', name: { vi: 'Áo navy', en: 'Navy coat' } },
-  { jacket: '#B8955A', scarf: '#0F1D33', hair: '#5A3A22', name: { vi: 'Áo vàng', en: 'Gold coat' } },
+  { jacket: '#0F1D33', scarf: themedHex('#B8955A'), hair: '#2B1B12', name: { vi: 'Áo navy', en: 'Navy coat' } },
+  { jacket: themedHex('#B8955A'), scarf: '#0F1D33', hair: '#5A3A22', name: { vi: 'Áo vàng', en: 'Gold coat' } },
   { jacket: '#2F8F6B', scarf: '#F3EDE1', hair: '#15110E', name: { vi: 'Áo xanh lá', en: 'Green coat' } },
 ] as const;
 

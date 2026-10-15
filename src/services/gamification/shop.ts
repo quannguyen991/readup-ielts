@@ -80,12 +80,6 @@ export const SHOP_ITEMS: ShopItem[] = [
   // ---------------------------------------------------------------- vé gói
   // Vé ghi ở máy như bản dùng thử: mở phần nội dung bị khoá. Lượt gọi AI do máy
   // chủ đếm theo gói ĐÃ TRẢ TIỀN — vé không cộng lượt AI, nên mô tả không hứa điều đó.
-  { id: 'pass-plus-1', kind: 'plan', name: 'Vé Plus 1 ngày', detail: 'Trải nghiệm toàn bộ bài đọc, thi thử và sổ từ trong 24 giờ.', price: 120, glyph: '🎫', repeatable: true, plan: { id: 'plus', days: 1 } },
-  { id: 'pass-pro-1', kind: 'plan', name: 'Vé Pro 1 ngày', detail: 'Trải nghiệm trợ giảng AI và bài mẫu thẩm định trong 24 giờ.', price: 250, glyph: '👑', repeatable: true, plan: { id: 'pro', days: 1 } },
-  { id: 'pass-plus-7', kind: 'plan', name: 'Vé Plus 7 ngày', detail: 'Đọc, thi thử và sổ từ không giới hạn trong 7 ngày. Đang có vé Plus thì cộng dồn.', price: 700, glyph: '🎟️', repeatable: true, plan: { id: 'plus', days: 7 } },
-  { id: 'pass-pro-7', kind: 'plan', name: 'Vé Pro 7 ngày', detail: 'Mọi thứ của Plus, thêm bài mẫu đã kiểm định và chatbox trợ giảng, trong 7 ngày.', price: 1400, glyph: '👑', repeatable: true, plan: { id: 'pro', days: 7 } },
-  { id: 'pass-plus-14', kind: 'plan', name: 'Vé Plus 14 ngày', detail: 'Hai tuần luyện đọc và giải đề không giới hạn với giá tiết kiệm.', price: 1300, glyph: '🎟️', repeatable: true, plan: { id: 'plus', days: 14 } },
-  { id: 'pass-pro-14', kind: 'plan', name: 'Vé Pro 14 ngày', detail: 'Hai tuần luyện thi trọn vẹn mọi tính năng cao cấp cho giai đoạn nước rút.', price: 2600, glyph: '💎', repeatable: true, plan: { id: 'pro', days: 14 } },
 
   // ---------------------------------------------------------------- linh vật
   { id: 'mascot-owl', kind: 'mascot', name: 'Cú Thông Thái', detail: '3 lượt Hỏi Cú miễn phí mỗi ngày.', price: 500, glyph: '🦉', repeatable: false, mascot: 'owl' },

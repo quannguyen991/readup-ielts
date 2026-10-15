@@ -102,7 +102,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
             text: themeConfig.textPrimary,
             muted: themeConfig.textMuted,
             hover: themeConfig.hoverBg,
-            border: themeConfig.isDark ? "rgba(255,255,255,0.16)" : "rgba(184,149,90,0.38)",
+            border: themeConfig.isDark ? "rgba(255,255,255,0.16)" : chiikawaTheme ? "#F0B6C9" : "rgba(184,149,90,0.38)",
             isDark: themeConfig.isDark,
           }}
         />
@@ -381,6 +381,8 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
   const avatarId = useRewardStore((s) => s.avatar);
   const skin = skinOf(useRewardStore((s) => s.skin));
   const stars = useStarBalance();
+  // Khai báo ngay trong hàm: nhánh đã đăng nhập dùng nó (viền thẻ tài khoản). Thiếu dòng này là ReferenceError làm trắng cả trang.
+  const chiikawaTheme = useRewardStore((s) => s.theme === "theme-chiikawa");
 
   if (!signedIn) {
     return (
@@ -414,7 +416,7 @@ function AccountRow({ collapsed, themeConfig }: { collapsed: boolean; themeConfi
       className={`flex-row items-center gap-3 rounded-panel ${collapsed ? "p-1.5" : "px-3 py-2"}`}
       style={{
         borderWidth: 1,
-        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : "#F6F3EE",
+        borderColor: themeConfig.isDark ? "rgba(255,255,255,0.14)" : chiikawaTheme ? "#F0B6C9" : "#F6F3EE",
         backgroundColor: themeConfig.hoverBg,
       }}
     >

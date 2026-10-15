@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 import { router, usePathname } from 'expo-router';
@@ -11,6 +12,7 @@ import { RetroTabBar } from '@/components/profile-retro/RetroNav';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
 import { GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
 import { PerchCat } from '@/components/mascot/PerchCat';
+import { useRewardStore } from '@/store/useRewardStore';
 
 const IS_WEB = Platform.OS === 'web';
 const SAFE_BOTTOM = 'env(safe-area-inset-bottom, 0px)';
@@ -22,14 +24,14 @@ const FLOAT_MARGIN = 14;
  * trợ năng. Mục còn lại (SAT, Từ vựng…) nằm trong bảng Khám phá ở thanh trên.
  */
 const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; icon: IconName | null; vi: string; en: string }[] = [
-  { key: 'home', href: '/dashboard', icon: 'home', vi: 'Trang chủ', en: 'Home' },
+  { key: 'home', href: '/intro', icon: 'home', vi: 'Trang chủ', en: 'Home' },
   { key: 'learn', href: '/practice', icon: 'book', vi: 'Học', en: 'Learn' },
   { key: 'plan', href: '/plan', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
   { key: 'you', href: '/profile', icon: null, vi: 'Bạn', en: 'You' },
 ];
 
 function activeTab(pathname: string): (typeof TABS)[number]['key'] {
-  if (pathname === '/' || pathname === '/dashboard') return 'home';
+  if (pathname === '/' || pathname === '/dashboard' || pathname === '/intro') return 'home';
   if (pathname.startsWith('/plan')) return 'plan';
   if (pathname.startsWith('/profile') || pathname.startsWith('/progress')) return 'you';
   return 'learn';
@@ -59,6 +61,7 @@ export function BottomTabs() {
   const keyboardOpen = useChromeStore((s) => s.keyboardOpen);
   const retro = useRetroOn();
   const visible = !keyboardOpen;
+  const chiikawaTheme = useRewardStore((s) => s.theme === 'theme-chiikawa');
 
   const active = activeTab(pathname);
 
@@ -117,10 +120,10 @@ export function BottomTabs() {
           bottom: IS_WEB ? `calc(${FLOAT_MARGIN}px + ${SAFE_BOTTOM})` : FLOAT_MARGIN,
           zIndex: 45,
           borderRadius: 28,
-          backgroundColor: 'rgba(255,252,242,0.72)',
+          backgroundColor: chiikawaTheme ? 'rgba(255,247,250,0.9)' : 'rgba(255,252,242,0.72)',
           borderWidth: 1,
-          borderColor: 'rgba(255,255,255,0.85)',
-          boxShadow: '0 10px 24px rgba(150,110,40,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
+          borderColor: chiikawaTheme ? '#F3C7D5' : 'rgba(255,255,255,0.85)',
+          boxShadow: chiikawaTheme ? '0 10px 24px rgba(185,74,112,0.14), inset 0 1px 0 rgba(255,255,255,0.9)' : '0 10px 24px rgba(150,110,40,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
           backdropFilter: 'blur(18px) saturate(120%)',
           // Chỉ trượt xuống khi bàn phím mở.
           transform: [{ translateY: visible ? 0 : '110%' }],
@@ -129,12 +132,17 @@ export function BottomTabs() {
       }
     >
       {/* Sáu con mèo bám lên mép trên thanh tab, chỉ trên đoạn thẳng của mép (không vào góc bo). Bàn chân hoặc mông chạm đúng mép: lift theo từng tư thế. Chỉ là trang trí, không nhận chạm. */}
+      {/* Chủ đề Chiikawa: không có mèo bám trên thanh tab. */}
+      {chiikawaTheme ? null : (
+      <>
       <PerchCat pose="clingHang" size={42} side="left" inset="8.6%" lift={0.4} />
       <PerchCat pose="clingWave" size={42} side="left" inset="22.8%" lift={0.52} />
       <PerchCat pose="clingSit" size={42} side="left" inset="37%" lift={0.78} />
       <PerchCat pose="clingLie" size={42} side="left" inset="51.2%" lift={0.62} />
       <PerchCat pose="clingPeek" size={42} side="left" inset="65.4%" lift={0.52} />
       <PerchCat pose="clingClimb" size={42} side="left" inset="79.6%" lift={0.42} />
+      </>
+      )}
       <View style={{ flexDirection: 'row', height: BOTTOM_BAR_HEIGHT, alignItems: 'center' }}>
         {TABS.map((item) => {
           const on = active === item.key;
@@ -161,11 +169,11 @@ export function BottomTabs() {
               <View
                 style={[
                   { width: 60, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-                  on ? GOLD_BUTTON : null,
+                  on ? chiikawaTheme ? { backgroundColor: '#D65E86', boxShadow: '0 4px 12px rgba(198,90,120,0.28)' } : GOLD_BUTTON : null,
                 ] as never}
               >
                 {item.icon ? (
-                  <Icon name={item.icon} size={22} color={on ? GOLD.ink : GOLD.body} strokeWidth={on ? 2.1 : 1.7} />
+                  <Icon name={item.icon} size={22} color={on ? chiikawaTheme ? '#FFFFFF' : GOLD.ink : chiikawaTheme ? '#805E6D' : GOLD.body} strokeWidth={on ? 2.1 : 1.7} />
                 ) : (
                   <View
                     style={{
@@ -174,10 +182,10 @@ export function BottomTabs() {
                       borderRadius: 13,
                       alignItems: 'center',
                       justifyContent: 'center',
-                      backgroundColor: on ? 'rgba(255,255,255,0.8)' : '#F4E2B0',
+                      backgroundColor: on ? 'rgba(255,255,255,0.8)' : themedHex('#F4E2B0'),
                     }}
                   >
-                    <Text style={{ fontSize: 13, lineHeight: 16, fontWeight: '700', color: '#8C6A1F' }}>{initial}</Text>
+                    <Text style={{ fontSize: 13, lineHeight: 16, fontWeight: '700', color: themedHex('#8C6A1F') }}>{initial}</Text>
                   </View>
                 )}
               </View>

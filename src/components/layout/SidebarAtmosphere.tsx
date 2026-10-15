@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useMemo } from 'react';
 import { Platform, View } from 'react-native';
 
@@ -31,7 +32,7 @@ export const DEFAULT_SIDEBAR_THEME: SidebarThemeConfig = {
   borderRightColor: '#E9DFC8',
   textPrimary: '#0F1D33',
   textMuted: '#6E6552',
-  activeFill: '#B8955A',
+  activeFill: themedHex('#B8955A'),
   activeGradient: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)',
   activeTextColor: '#0F1D33',
   activeGlow: '0 6px 18px rgba(143,110,54,0.32), inset 0 1px 0 rgba(255,255,255,0.5)',
@@ -66,14 +67,14 @@ export const SIDEBAR_THEMES: Record<string, SidebarThemeConfig> = {
     name: 'Chiikawa · Góc học hồng',
     isDark: false,
     bgStyle: { backgroundColor: '#FFF8FA', backgroundImage: 'linear-gradient(180deg, #FFFBFC 0%, #FCEAF0 100%)' },
-    borderRightColor: 'rgba(56, 189, 248, 0.2)',
-    textPrimary: '#F8FAFC',
-    textMuted: '#94A3B8',
-    activeFill: '#38BDF8',
-  activeGradient: 'linear-gradient(100deg, #E6CD93 0%, #C7A565 45%, #A7833F 100%)',
-    activeTextColor: '#04111D',
-    activeGlow: '0 6px 18px rgba(198,90,120,0.32), inset 0 1px 0 rgba(255,255,255,0.5)',
-    hoverBg: 'rgba(217, 127, 155, 0.12)',
+    borderRightColor: '#F4C7D5',
+    textPrimary: '#49313E',
+    textMuted: '#805E6D',
+    activeFill: '#C64E79',
+    activeGradient: 'linear-gradient(100deg, #E78EAA 0%, #D65E86 55%, #BD416C 100%)',
+    activeTextColor: '#FFFFFF',
+    activeGlow: '0 6px 18px rgba(198,90,120,0.28), inset 0 1px 0 rgba(255,255,255,0.38)',
+    hoverBg: 'rgba(217, 127, 155, 0.14)',
     defaultEffect: 'sakura',
   },
   'theme-midnight': {

@@ -3,6 +3,7 @@
  * chỉ vàng mảnh, nút kiểu game, chip vé / xu. Chữ nội dung vẫn dùng phông đọc
  * của app (Plus Jakarta), cỡ ≥ 14px.
  */
+import { themedHex } from '@/theme/palette-state';
 import React from 'react';
 import { Platform, Pressable, Text, View, type StyleProp, type ViewStyle } from 'react-native';
 import Svg, { Circle, Path, Rect } from 'react-native-svg';
@@ -16,7 +17,7 @@ export const T = {
   paperDeep: '#F1E8D3',
   navy: '#0F1D33',
   navySoft: '#1B2D4D',
-  gold: '#B8955A',
+  gold: themedHex('#B8955A'),
   goldDark: '#A8843F',
   goldLight: '#E2C88F',
   ink: '#0F1D33',

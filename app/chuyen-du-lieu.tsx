@@ -1,3 +1,4 @@
+import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View } from 'react-native';
 
@@ -90,7 +91,7 @@ export default function ReceiveHandoff() {
           <Pressable
             accessibilityRole="link"
             onPress={() => window.location.assign('/dashboard')}
-            style={{ marginTop: 6, borderRadius: 999, paddingHorizontal: 22, paddingVertical: 12, backgroundColor: '#B8955A' }}
+            style={{ marginTop: 6, borderRadius: 999, paddingHorizontal: 22, paddingVertical: 12, backgroundColor: themedHex('#B8955A') }}
           >
             <Text className="font-heavy" style={{ fontSize: 15, color: '#0F1D33' }}>
               {L('Vào Band 9 →', 'Go to Band 9 →')}
