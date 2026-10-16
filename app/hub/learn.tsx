@@ -4,7 +4,8 @@ import { router } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
 import { GLASS_CARD, HUB } from '@/components/hub/theme';
-import { Icon, type IconName } from '@/components/ui/Icon';
+import { CoinIcon, type CoinName } from '@/components/ui/CoinIcon';
+import { Icon } from '@/components/ui/Icon';
 import { CHAPTERS, PHONEMES } from '@/services/hub/phonemes';
 import { useHubStore } from '@/store/useHubStore';
 
@@ -42,28 +43,26 @@ export default function HubLearn() {
       })}
 
       <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Luyện nói IELTS</Text>
-      <GameRow title="Lộ trình IELTS Speaking" desc="20 bài, 5 chặng từ band 5.0 đến 9.0, có ghi âm và bài mẫu." icon="mic" color={HUB.blue} route="/hub/ielts" />
+      <GameRow title="Lộ trình IELTS Speaking" desc="20 bài, 5 chặng từ band 5.0 đến 9.0, có ghi âm và bài mẫu." coin="path" route="/hub/ielts" />
 
       <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Trò chơi luyện</Text>
-      <GameRow title="Cặp âm tối thiểu" desc="Nghe và chọn từ đúng: sheep hay ship?" icon="volume" color={HUB.green} route="/hub/games/minimal-pairs" />
-      <GameRow title="Trọng âm từ" desc="Chạm vào âm tiết được nhấn mạnh nhất." icon="target" color={HUB.blue} route="/hub/games/stress" />
-      <GameRow title="Đường ngữ điệu" desc="Lên giọng hay xuống giọng ở cuối câu." icon="trending" color={HUB.blue} route="/hub/pitch" />
-      <GameRow title="Thử thách cuối chương" desc="Mười câu tổng hợp: cặp âm và ngữ pháp." icon="trophy" color={HUB.amber} route="/hub/games/boss" />
+      <GameRow title="Cặp âm tối thiểu" desc="Nghe và chọn từ đúng: sheep hay ship?" coin="listening" route="/hub/games/minimal-pairs" />
+      <GameRow title="Trọng âm từ" desc="Chạm vào âm tiết được nhấn mạnh nhất." coin="missions" route="/hub/games/stress" />
+      <GameRow title="Đường ngữ điệu" desc="Lên giọng hay xuống giọng ở cuối câu." coin="progress" route="/hub/pitch" />
+      <GameRow title="Thử thách cuối chương" desc="Mười câu tổng hợp: cặp âm và ngữ pháp." coin="achievements" route="/hub/games/boss" />
     </HubScreen>
   );
 }
 
-function GameRow({ title, desc, icon, color, route }: { title: string; desc: string; icon: IconName; color: string; route?: string }) {
+function GameRow({ title, desc, coin, route }: { title: string; desc: string; coin: CoinName; route?: string }) {
   return (
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={title}
       onPress={() => route && router.push(route as never)}
-      style={[GLASS_CARD, { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, opacity: route ? 1 : 0.6 }]}
+      style={[GLASS_CARD, { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 12, opacity: route ? 1 : 0.6 }]}
     >
-      <View style={{ width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong }}>
-        <Icon name={icon} size={20} color={color} />
-      </View>
+      <CoinIcon name={coin} size={48} />
       <View style={{ flex: 1, gap: 2 }}>
         <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{title}</Text>
         <Text style={{ color: HUB.muted, fontSize: 12 }}>{desc}</Text>

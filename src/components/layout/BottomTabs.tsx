@@ -4,13 +4,12 @@ import { Platform, Pressable, Text, View } from 'react-native';
 import { router, usePathname } from 'expo-router';
 
 import { BOTTOM_BAR_HEIGHT, BOTTOM_BAR_VAR, useChromeStore } from './chrome-store';
-import { Icon, type IconName } from '@/components/ui/Icon';
+import { CoinIcon, type CoinName } from '@/components/ui/CoinIcon';
 import { useL } from '@/i18n/useL';
 import { useDisplayName } from '@/store/useAuthStore';
 import { haptic } from '@/services/haptics';
 import { RetroTabBar } from '@/components/profile-retro/RetroNav';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
-import { GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
 import { PerchCat } from '@/components/mascot/PerchCat';
 import { useRewardStore } from '@/store/useRewardStore';
 
@@ -23,11 +22,11 @@ const FLOAT_MARGIN = 14;
  * Bốn tab của thiết kế vàng kem. Chỉ hiện icon; tên tab (`vi`/`en`) nằm trong nhãn
  * trợ năng. Mục còn lại (SAT, Từ vựng…) nằm trong bảng Khám phá ở thanh trên.
  */
-const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; icon: IconName | null; vi: string; en: string }[] = [
-  { key: 'home', href: '/intro', icon: 'home', vi: 'Trang chủ', en: 'Home' },
-  { key: 'learn', href: '/vocabulary/topics', icon: 'book', vi: 'Từ vựng', en: 'Vocabulary' },
-  { key: 'plan', href: '/plan', icon: 'calendar', vi: 'Lộ trình', en: 'Plan' },
-  { key: 'you', href: '/profile', icon: null, vi: 'Bạn', en: 'You' },
+const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; coin: CoinName | null; vi: string; en: string }[] = [
+  { key: 'home', href: '/intro', coin: 'home', vi: 'Trang chủ', en: 'Home' },
+  { key: 'learn', href: '/vocabulary/topics', coin: 'vocab', vi: 'Từ vựng', en: 'Vocabulary' },
+  { key: 'plan', href: '/plan', coin: 'path', vi: 'Lộ trình', en: 'Plan' },
+  { key: 'you', href: '/profile', coin: null, vi: 'Bạn', en: 'You' },
 ];
 
 function activeTab(pathname: string): (typeof TABS)[number]['key'] {
@@ -169,11 +168,14 @@ export function BottomTabs() {
               <View
                 style={[
                   { width: 60, height: 44, borderRadius: 22, alignItems: 'center', justifyContent: 'center' },
-                  on ? chiikawaTheme ? { backgroundColor: '#D65E86', boxShadow: '0 4px 12px rgba(198,90,120,0.28)' } : GOLD_BUTTON : null,
+                  on ? { backgroundColor: chiikawaTheme ? 'rgba(214,94,134,0.14)' : 'rgba(217,164,65,0.18)' } : null,
                 ] as never}
               >
-                {item.icon ? (
-                  <Icon name={item.icon} size={22} color={on ? chiikawaTheme ? '#FFFFFF' : GOLD.ink : chiikawaTheme ? '#805E6D' : GOLD.body} strokeWidth={on ? 2.1 : 1.7} />
+                {item.coin ? (
+                  // Tab đang mở to và rõ; tab khác nhỏ và mờ đi, giữ đúng màu đồng xu.
+                  <View style={{ opacity: on ? 1 : 0.55 }}>
+                    <CoinIcon name={item.coin} size={on ? 40 : 34} />
+                  </View>
                 ) : (
                   <View
                     style={{
