@@ -1,0 +1,6326 @@
+[
+  {
+    "slug": "destination-b2-unit-2",
+    "name": "Destination B2 · Unit 2: Travel and transport",
+    "nameVi": "Destination B2 · Bài 2: Travel and transport",
+    "blurb": "28 headwords from the unit vocabulary reference.",
+    "unit": 2,
+    "course": "b2",
+    "words": [
+      {
+        "word": "voyage",
+        "pos": "noun",
+        "ipa": "/ˈvɔɪɪdʒ/",
+        "meaningVi": "chuyến hải trình",
+        "definitionEn": "",
+        "example": "The voyage across the Pacific took several weeks by ship.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "journey",
+          "crossing"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "book",
+        "pos": "verb",
+        "ipa": "/bʊk/",
+        "meaningVi": "đặt trước (chỗ, vé)",
+        "definitionEn": "",
+        "example": "We want to book two tickets for the concert next Saturday.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "reserve",
+          "secure"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "journey",
+        "pos": "noun",
+        "ipa": "/ˈdʒɜːni/",
+        "meaningVi": "hành trình",
+        "definitionEn": "a trip from one place to another",
+        "example": "The journey from the airport to the hotel took almost an hour.",
+        "collocation": "a long journey",
+        "band": "6-7",
+        "synonyms": [
+          "trip",
+          "travel"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "keep",
+        "pos": "verb",
+        "ipa": "/kiːp/",
+        "meaningVi": "giữ, duy trì",
+        "definitionEn": "",
+        "example": "Please keep the receipt in case the product breaks.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "retain",
+          "hold on to"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "trip",
+        "pos": "noun",
+        "ipa": "/trɪp/",
+        "meaningVi": "chuyến đi",
+        "definitionEn": "a short journey to a place and back",
+        "example": "We went on a short trip to the mountains during the holiday.",
+        "collocation": "a business trip",
+        "band": "6-7",
+        "synonyms": [
+          "excursion",
+          "outing"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "arrive",
+        "pos": "verb",
+        "ipa": "/əˈraɪv/",
+        "meaningVi": "đến, xảy đến",
+        "definitionEn": "",
+        "example": "The train will arrive at the station at seven o'clock in the evening.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "reach",
+          "come"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "travel",
+        "pos": "noun",
+        "ipa": "/ˈtrævəl/",
+        "meaningVi": "du lịch, đi lại",
+        "definitionEn": "the act of going from place to place",
+        "example": "Long-distance travel by bus can be tiring, so bring some snacks.",
+        "collocation": "international travel",
+        "band": "6-7",
+        "synonyms": [
+          "journey",
+          "trip"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "reach",
+        "pos": "verb",
+        "ipa": "/riːtʃ/",
+        "meaningVi": "vươn tới, đạt tới",
+        "definitionEn": "",
+        "example": "We reached the village just before the rain began to fall.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "get to",
+          "arrive at"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "live",
+        "pos": "verb",
+        "ipa": "/lɪv/",
+        "meaningVi": "trực tiếp",
+        "definitionEn": "",
+        "example": "The concert will be shown live on television this Saturday night.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "on air",
+          "in real time"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "excursion",
+        "pos": "noun",
+        "ipa": "/ɪkˈskɜːʃən/",
+        "meaningVi": "chuyến tham quan ngắn",
+        "definitionEn": "a short journey or trip, especially one taken for pleasure",
+        "example": "Our class went on an excursion to the botanical garden last spring.",
+        "collocation": "day excursion",
+        "band": "6-7",
+        "synonyms": [
+          "trip",
+          "outing",
+          "jaunt"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "stay",
+        "pos": "verb",
+        "ipa": "/steɪ/",
+        "meaningVi": "ở lại, tiếp tục",
+        "definitionEn": "",
+        "example": "We will stay at a small guesthouse near the beach for three nights.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "remain",
+          "lodge"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "view",
+        "pos": "noun",
+        "ipa": "/vjuː/",
+        "meaningVi": "cái nhìn, quan điểm",
+        "definitionEn": "",
+        "example": "The room has a beautiful view of the lake and the mountains.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "scene",
+          "vista"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "border",
+        "pos": "noun",
+        "ipa": "/ˈbɔːdə/",
+        "meaningVi": "biên giới",
+        "definitionEn": "",
+        "example": "The two countries share a long border across the mountains.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "frontier",
+          "boundary"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sight",
+        "pos": "noun",
+        "ipa": "/saɪt/",
+        "meaningVi": "tầm nhìn, tầm mắt",
+        "definitionEn": "",
+        "example": "The tall tower came into sight after we turned the corner.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "view",
+          "vision"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "edge",
+        "pos": "noun",
+        "ipa": "/edʒ/",
+        "meaningVi": "mép, cạnh",
+        "definitionEn": "",
+        "example": "Stand back from the edge of the platform until the train has stopped.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "rim",
+          "brink"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "line",
+        "pos": "noun",
+        "ipa": "/laɪn/",
+        "meaningVi": "đường thẳng, vạch",
+        "definitionEn": "",
+        "example": "Draw a straight line between the two points on the map.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "stroke",
+          "mark"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "length",
+        "pos": "noun",
+        "ipa": "/lɛn(t)θ/",
+        "meaningVi": "chiều dài",
+        "definitionEn": "",
+        "example": "The length of the bridge is about two kilometres from end to end.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "span",
+          "distance"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "earth",
+        "pos": "noun",
+        "ipa": "/ɜːθ/",
+        "meaningVi": "trái đất",
+        "definitionEn": "the planet on which we live",
+        "example": "The Earth travels around the Sun once every year.",
+        "collocation": "planet Earth",
+        "band": "6-7",
+        "synonyms": [
+          "world",
+          "planet"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "distance",
+        "pos": "noun",
+        "ipa": "/ˈdɪstəns/",
+        "meaningVi": "khoảng cách",
+        "definitionEn": "",
+        "example": "The distance between my house and the school is about three kilometres.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "length",
+          "space"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "area",
+        "pos": "noun",
+        "ipa": "/ˈeəriə/",
+        "meaningVi": "diện tích, khu vực",
+        "definitionEn": "",
+        "example": "The area around the lake is popular with families on weekends.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "region",
+          "zone"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "territory",
+        "pos": "noun",
+        "ipa": "/ˈterɪtəri/",
+        "meaningVi": "lãnh thổ, vùng đất",
+        "definitionEn": "",
+        "example": "The island is part of the country's territory in the Pacific.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "land",
+          "domain"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "guide",
+        "pos": "verb",
+        "ipa": "/ɡaɪd/",
+        "meaningVi": "hướng dẫn viên; sách hướng dẫn",
+        "definitionEn": "a person who leads others on trips or through unfamiliar places",
+        "example": "The guide showed us the ancient temple and told us its history.",
+        "collocation": "tour guide",
+        "band": "6-7",
+        "synonyms": [
+          "escort"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "lead",
+        "pos": "verb",
+        "ipa": "/liːd/",
+        "meaningVi": "dẫn tới",
+        "definitionEn": "to cause something to happen or to result in a particular situation",
+        "example": "This road will lead you to the centre of the old town.",
+        "collocation": "lead to",
+        "band": "6-7",
+        "synonyms": [
+          "result in",
+          "bring about",
+          "cause"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "season",
+        "pos": "noun",
+        "ipa": "/ˈsiːzn/",
+        "meaningVi": "mùa",
+        "definitionEn": "",
+        "example": "Autumn is my favourite season because the weather is cool and pleasant.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "period",
+          "time"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "native",
+        "pos": "adjective",
+        "ipa": "/ˈneɪtɪv/",
+        "meaningVi": "bản ngữ",
+        "definitionEn": "",
+        "example": "She is a native speaker of Vietnamese and also speaks French.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "indigenous"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "period",
+        "pos": "noun",
+        "ipa": "/ˈpɪr.i.əd/",
+        "meaningVi": "khoảng thời gian",
+        "definitionEn": "a length of time",
+        "example": "The period of study lasts two years before students take their final exams.",
+        "collocation": "early childhood period",
+        "band": "6-7",
+        "synonyms": [
+          "era",
+          "epoch",
+          "phase"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fare",
+        "pos": "noun",
+        "ipa": "/fɛr/",
+        "meaningVi": "giá vé",
+        "definitionEn": "The money paid for a journey on public transport.",
+        "example": "The bus fare has increased by five thousand dong this month.",
+        "collocation": "bus fare",
+        "band": "6-7",
+        "synonyms": [
+          "ticket price",
+          "fee"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ticket",
+        "pos": "noun",
+        "ipa": "/ˈtɪk.ɪt/",
+        "meaningVi": "vé",
+        "definitionEn": "a piece of paper or e-document that lets you travel",
+        "example": "Please show your ticket before you enter the cinema hall.",
+        "collocation": "book a ticket",
+        "band": "6-7",
+        "synonyms": [
+          "pass"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-4",
+    "name": "Destination B2 · Unit 4: Hobbies, sport and games",
+    "nameVi": "Destination B2 · Bài 4: Hobbies, sport and games",
+    "blurb": "31 headwords from the unit vocabulary reference.",
+    "unit": 4,
+    "course": "b2",
+    "words": [
+      {
+        "word": "pitch",
+        "pos": "noun",
+        "ipa": "/pɪtʃ/",
+        "meaningVi": "cao độ (âm)",
+        "definitionEn": "an area of grass marked out for a game such as football",
+        "example": "The singer's voice rose to a high pitch at the end of the song.",
+        "collocation": "football pitch",
+        "band": "6-7",
+        "synonyms": [
+          "playing field"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fee",
+        "pos": "noun",
+        "ipa": "/fiː/",
+        "meaningVi": "khoản phí",
+        "definitionEn": "an amount of money paid for a service or to join",
+        "example": "The entrance fee to the museum is very reasonable for students.",
+        "collocation": "entrance fee",
+        "band": "6-7",
+        "synonyms": [
+          "charge",
+          "payment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "track",
+        "pos": "noun",
+        "ipa": "/træk/",
+        "meaningVi": "đường ray, dấu vết",
+        "definitionEn": "",
+        "example": "The train runs along a single track through the mountains.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "rail",
+          "path"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "miss",
+        "pos": "verb",
+        "ipa": "/mɪs/",
+        "meaningVi": "bỏ lỡ, bỏ qua",
+        "definitionEn": "",
+        "example": "I did not want to miss the first lesson, so I left home early.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "skip",
+          "overlook"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "court",
+        "pos": "noun",
+        "ipa": "/kɔːt/",
+        "meaningVi": "tòa án",
+        "definitionEn": "A place where legal cases are heard and judgments are made.",
+        "example": "The judge will review the case in the district court tomorrow.",
+        "collocation": "court of law",
+        "band": "6-7",
+        "synonyms": [
+          "tribunal"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "lose",
+        "pos": "verb",
+        "ipa": "/luːz/",
+        "meaningVi": "mất, đánh mất",
+        "definitionEn": "",
+        "example": "Our team might lose the match if we do not play more carefully.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fail",
+          "forfeit"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "course",
+        "pos": "noun",
+        "ipa": "/kɔːs/",
+        "meaningVi": "khoá học",
+        "definitionEn": "a series of lessons on a particular subject",
+        "example": "I enrolled in a short course on digital marketing last month.",
+        "collocation": "take a course",
+        "band": "6-7",
+        "synonyms": [
+          "programme"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "take",
+        "pos": "verb",
+        "ipa": "/teɪk/",
+        "meaningVi": "lấy đi, chiếm lấy",
+        "definitionEn": "",
+        "example": "Please take your umbrella because it looks like it will rain.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "carry",
+          "bring"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ring",
+        "pos": "noun",
+        "ipa": "/rɪŋ/",
+        "meaningVi": "vòng",
+        "definitionEn": "",
+        "example": "The wooden ring on the table shows how old the tree is.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "circle",
+          "loop"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bring",
+        "pos": "verb",
+        "ipa": "/ˈbɹɪŋ/",
+        "meaningVi": "mang lại; mang đến",
+        "definitionEn": "",
+        "example": "The new park will bring joy to families living nearby.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "provide",
+          "deliver"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rink",
+        "pos": "noun",
+        "ipa": "/rɪŋk/",
+        "meaningVi": "sân trượt băng",
+        "definitionEn": "",
+        "example": "We spent the afternoon skating on the ice rink in the city centre.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "arena",
+          "skating ground"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "racket",
+        "pos": "noun",
+        "ipa": "/ˈrækɪt/",
+        "meaningVi": "vợt",
+        "definitionEn": "",
+        "example": "She bought a new tennis racket for the summer competition.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bat",
+          "paddle"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "win",
+        "pos": "verb",
+        "ipa": "/wɪn/",
+        "meaningVi": "thắng, giành chiến thắng",
+        "definitionEn": "",
+        "example": "Our class managed to win the quiz after a close final round.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "triumph",
+          "prevail"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "amateur",
+        "pos": "adjective",
+        "ipa": "/ˈæm.ə.tər/",
+        "meaningVi": "nghiệp dư",
+        "definitionEn": "a person who does an activity for pleasure, not for pay",
+        "example": "He is an amateur painter who paints only at weekends.",
+        "collocation": "amateur player",
+        "band": "6-7",
+        "synonyms": [
+          "non-professional"
+        ],
+        "antonyms": [
+          "professional"
+        ]
+      },
+      {
+        "word": "beat",
+        "pos": "verb",
+        "ipa": "/biːt/",
+        "meaningVi": "đánh bại; nhịp đập",
+        "definitionEn": "",
+        "example": "Our team beat the other school by three goals in the final.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "defeat",
+          "overcome"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "professional",
+        "pos": "adjective",
+        "ipa": "/prəˈfeʃənl/",
+        "meaningVi": "chuyên nghiệp",
+        "definitionEn": "",
+        "example": "She is a professional athlete who trains every morning for six hours.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "expert",
+          "skilled"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "score",
+        "pos": "verb",
+        "ipa": "/skɔːr/",
+        "meaningVi": "ghi điểm",
+        "definitionEn": "the number of points achieved in a game",
+        "example": "He scored a goal in the first minute of the second half.",
+        "collocation": "final score",
+        "band": "6-7",
+        "synonyms": [
+          "tally",
+          "result"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sport",
+        "pos": "noun",
+        "ipa": "/spɔːt/",
+        "meaningVi": "thể thao",
+        "definitionEn": "",
+        "example": "Football is the most popular sport among young people in the country.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "game",
+          "recreation"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "play",
+        "pos": "noun",
+        "ipa": "/pleɪ/",
+        "meaningVi": "vở kịch; trận đấu",
+        "definitionEn": "a story written to be acted on stage",
+        "example": "The students performed a short play about the history of the village.",
+        "collocation": "a Shakespeare play",
+        "band": "6-7",
+        "synonyms": [
+          "drama",
+          "performance"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "athletics",
+        "pos": "noun",
+        "ipa": "/æθˈlɛtɪks/",
+        "meaningVi": "điền kinh",
+        "definitionEn": "",
+        "example": "Athletics competitions include running, jumping, and throwing events.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "track and field",
+          "sports"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "game",
+        "pos": "noun",
+        "ipa": "/ɡeɪm/",
+        "meaningVi": "trò chơi; trận đấu",
+        "definitionEn": "",
+        "example": "The game was exciting because both teams scored in the final minutes.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "match",
+          "contest"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "interval",
+        "pos": "noun",
+        "ipa": "/ˈɪn.tə.vəl/",
+        "meaningVi": "khoảng cách thời gian",
+        "definitionEn": "a short break between two parts of a performance",
+        "example": "There is a short interval between the first and second half of the match.",
+        "collocation": "during the interval",
+        "band": "6-7",
+        "synonyms": [
+          "intermission"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "spectator",
+        "pos": "noun",
+        "ipa": "/ˈspekteɪtər/",
+        "meaningVi": "khán giả",
+        "definitionEn": "a person who watches at a show, game, or other event",
+        "example": "Spectators cheered loudly when the home team scored.",
+        "collocation": "spectator sport",
+        "band": "6-7",
+        "synonyms": [
+          "viewer",
+          "onlooker"
+        ],
+        "antonyms": [
+          "participant"
+        ]
+      },
+      {
+        "word": "half time",
+        "pos": "noun",
+        "ipa": "/ˌhɑːf ˈtaɪm/",
+        "meaningVi": "giờ nghỉ giữa trận",
+        "definitionEn": "",
+        "example": "The players rested during half time and drank some water.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "interval",
+          "break"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "viewer",
+        "pos": "noun",
+        "ipa": "/ˈvjuːə/",
+        "meaningVi": "người xem",
+        "definitionEn": "",
+        "example": "Millions of viewers watched the final on television.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "spectator",
+          "onlooker"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "draw",
+        "pos": "verb",
+        "ipa": "/dɹɔː/",
+        "meaningVi": "rút, lấy (từ)",
+        "definitionEn": "",
+        "example": "Let us draw a picture of our dream house on the paper.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "sketch",
+          "depict"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "equal",
+        "pos": "verb",
+        "ipa": "/ˈiːkwəl/",
+        "meaningVi": "bằng nhau",
+        "definitionEn": "being the same in quantity, size, degree, or value",
+        "example": "Two plus two equals four, which is an easy calculation.",
+        "collocation": "equal to",
+        "band": "6-7",
+        "synonyms": [
+          "identical",
+          "equivalent",
+          "matching"
+        ],
+        "antonyms": [
+          "unequal"
+        ]
+      },
+      {
+        "word": "referee",
+        "pos": "noun",
+        "ipa": "/ˌrefəˈriː/",
+        "meaningVi": "trọng tài",
+        "definitionEn": "an official who enforces the rules of a game",
+        "example": "The referee blew the whistle to start the second half of the match.",
+        "collocation": "referee's decision",
+        "band": "6-7",
+        "synonyms": [
+          "umpire",
+          "official"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "competitor",
+        "pos": "noun",
+        "ipa": "/kəmˈpet.ɪ.tər/",
+        "meaningVi": "đối thủ cạnh tranh",
+        "definitionEn": "a company that sells similar products to yours",
+        "example": "Each competitor must register before the morning race starts.",
+        "collocation": "business competitor",
+        "band": "6-7",
+        "synonyms": [
+          "rival"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "opponent",
+        "pos": "noun",
+        "ipa": "/əˈpəʊnənt/",
+        "meaningVi": "đối thủ",
+        "definitionEn": "a person or team that one competes against",
+        "example": "Our opponent in the semi-final was strong, but we still won.",
+        "collocation": "tough opponent",
+        "band": "6-7",
+        "synonyms": [
+          "rival",
+          "adversary"
+        ],
+        "antonyms": [
+          "teammate",
+          "ally"
+        ]
+      },
+      {
+        "word": "final",
+        "pos": "noun",
+        "ipa": "/ˈfaɪ.nəl/",
+        "meaningVi": "trận chung kết",
+        "definitionEn": "",
+        "example": "Our school team reached the final of the football tournament.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "championship",
+          "decider"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-6",
+    "name": "Destination B2 · Unit 6: Science and technology",
+    "nameVi": "Destination B2 · Bài 6: Science and technology",
+    "blurb": "21 headwords from the unit vocabulary reference.",
+    "unit": 6,
+    "course": "b2",
+    "words": [
+      {
+        "word": "artificial",
+        "pos": "adjective",
+        "ipa": "/ˌɑːtɪˈfɪʃəl/",
+        "meaningVi": "nhân tạo",
+        "definitionEn": "made by people rather than nature",
+        "example": "Artificial flowers are cheaper, but they do not smell like real ones.",
+        "collocation": "artificial intelligence",
+        "band": "6-7",
+        "synonyms": [
+          "synthetic",
+          "fake"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "finale",
+        "pos": "noun",
+        "ipa": "/fɪˈnɑːli/",
+        "meaningVi": "màn cuối; phần kết",
+        "definitionEn": "",
+        "example": "The finale of the show was a spectacular fireworks display.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "climax",
+          "conclusion"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "false",
+        "pos": "adjective",
+        "ipa": "/fɔːls/",
+        "meaningVi": "sai, giả",
+        "definitionEn": "",
+        "example": "The report contained false information that confused many readers.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "untrue",
+          "incorrect"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "natural",
+        "pos": "adjective",
+        "ipa": "/ˈnætʃərəl/",
+        "meaningVi": "tự nhiên",
+        "definitionEn": "existing in nature and not made by people",
+        "example": "The natural beauty of the countryside attracts many visitors every year.",
+        "collocation": "natural resources",
+        "band": "6-7",
+        "synonyms": [
+          "organic",
+          "unspoilt"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ending",
+        "pos": "noun",
+        "ipa": "/ˈendɪŋ/",
+        "meaningVi": "phần kết thúc",
+        "definitionEn": "",
+        "example": "The ending of the film made the whole audience feel emotional.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "conclusion",
+          "finish"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "physical",
+        "pos": "adjective",
+        "ipa": "/ˈfɪzɪkl/",
+        "meaningVi": "thuộc thể chất, vật lý",
+        "definitionEn": "",
+        "example": "Regular physical activity keeps your heart and muscles strong.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bodily",
+          "material"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bat",
+        "pos": "noun",
+        "ipa": "/bæt/",
+        "meaningVi": "gậy (thể thao)",
+        "definitionEn": "",
+        "example": "The batter swung the bat and hit the ball over the fence.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "club",
+          "racket"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "true",
+        "pos": "adjective",
+        "ipa": "/truː/",
+        "meaningVi": "đúng, thực",
+        "definitionEn": "",
+        "example": "The story is based on true events that happened in a small village.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "real",
+          "accurate"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "stick",
+        "pos": "noun",
+        "ipa": "/stɪk/",
+        "meaningVi": "gậy",
+        "definitionEn": "",
+        "example": "The hockey player lifted his stick and prepared to shoot.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "club",
+          "cane"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "accurate",
+        "pos": "adjective",
+        "ipa": "/ˈækjərət/",
+        "meaningVi": "chính xác",
+        "definitionEn": "",
+        "example": "The weather forecast was accurate, so we took our umbrellas.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "precise",
+          "correct"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "method",
+        "pos": "noun",
+        "ipa": "/ˈmeθ.əd/",
+        "meaningVi": "phương pháp",
+        "definitionEn": "a particular way of doing something",
+        "example": "The teacher uses a new method to help students memorise vocabulary.",
+        "collocation": "research method",
+        "band": "6-7",
+        "synonyms": [
+          "approach",
+          "technique"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "way",
+        "pos": "noun",
+        "ipa": "/weɪ/",
+        "meaningVi": "cách, con đường",
+        "definitionEn": "",
+        "example": "There is an easy way to remember the spelling of this word.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "method",
+          "means"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "industry",
+        "pos": "noun",
+        "ipa": "/ˈɪndəstri/",
+        "meaningVi": "ngành công nghiệp",
+        "definitionEn": "the production of goods or services",
+        "example": "The car industry has grown quickly in the region over the last decade.",
+        "collocation": "the tourist industry",
+        "band": "6-7",
+        "synonyms": [
+          "sector",
+          "business"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "engine",
+        "pos": "noun",
+        "ipa": "/ˈen.dʒɪn/",
+        "meaningVi": "động cơ",
+        "definitionEn": "a machine that turns fuel into movement",
+        "example": "The engine of the old bus made a loud noise on the hill.",
+        "collocation": "petrol engine",
+        "band": "6-7",
+        "synonyms": [
+          "motor"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "factory",
+        "pos": "noun",
+        "ipa": "/ˈfæktri/",
+        "meaningVi": "nhà máy",
+        "definitionEn": "",
+        "example": "The factory produces thousands of bottles of juice every day.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "plant",
+          "mill"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "machine",
+        "pos": "noun",
+        "ipa": "/məˈʃiːn/",
+        "meaningVi": "cỗ máy",
+        "definitionEn": "a piece of equipment with moving parts that does a job",
+        "example": "The machine in the kitchen can grind coffee beans in a few seconds.",
+        "collocation": "washing machine",
+        "band": "6-7",
+        "synonyms": [
+          "apparatus"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "motor",
+        "pos": "noun",
+        "ipa": "/ˈməʊtə/",
+        "meaningVi": "động cơ",
+        "definitionEn": "",
+        "example": "The motor of the boat stopped suddenly in the middle of the lake.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "engine",
+          "drive"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "reward",
+        "pos": "noun",
+        "ipa": "/rɪˈwɔːd/",
+        "meaningVi": "phần thưởng",
+        "definitionEn": "",
+        "example": "The students received a small reward for finishing the project early.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "prize",
+          "bonus"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "aim",
+        "pos": "noun",
+        "ipa": "/eɪm/",
+        "meaningVi": "mục đích, mục tiêu",
+        "definitionEn": "",
+        "example": "The aim of the workshop is to help students write clear essays.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "goal",
+          "objective"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cause",
+        "pos": "noun",
+        "ipa": "/kɔːz/",
+        "meaningVi": "nguyên nhân",
+        "definitionEn": "to make something happen, especially something bad",
+        "example": "The cause of the accident is still under investigation by the police.",
+        "collocation": "cause damage",
+        "band": "6-7",
+        "synonyms": [
+          "bring about",
+          "provoke",
+          "generate",
+          "produce"
+        ],
+        "antonyms": [
+          "prevent"
+        ]
+      },
+      {
+        "word": "occur",
+        "pos": "verb",
+        "ipa": "/əˈkɜː/",
+        "meaningVi": "xảy ra",
+        "definitionEn": "",
+        "example": "Floods can occur after heavy rain in the mountainous areas.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "happen",
+          "take place"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-8",
+    "name": "Destination B2 · Unit 8: The media",
+    "nameVi": "Destination B2 · Bài 8: The media",
+    "blurb": "52 headwords from the unit vocabulary reference.",
+    "unit": 8,
+    "course": "b2",
+    "words": [
+      {
+        "word": "reason",
+        "pos": "noun",
+        "ipa": "/ˈɹiːzən/",
+        "meaningVi": "lý do",
+        "definitionEn": "",
+        "example": "There is a good reason why the library closes early on Sundays.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cause",
+          "motive"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "deny",
+        "pos": "verb",
+        "ipa": "/dɪˈnaɪ/",
+        "meaningVi": "phủ nhận",
+        "definitionEn": "",
+        "example": "He continued to deny the charges, saying he was not at the scene.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "refute",
+          "reject"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "refuse",
+        "pos": "verb",
+        "ipa": "/ˈrefjuːs/",
+        "meaningVi": "từ chối, không chịu",
+        "definitionEn": "waste material that has been thrown away",
+        "example": "She refused to sign the document until she read every page.",
+        "collocation": "household refuse",
+        "band": "6-7",
+        "synonyms": [
+          "decline",
+          "reject"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "estimate",
+        "pos": "verb",
+        "ipa": "/ˈestɪmeɪt/",
+        "meaningVi": "ước tính",
+        "definitionEn": "",
+        "example": "Experts estimate that the new road will cut travel time by half.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "quote"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "calculate",
+        "pos": "verb",
+        "ipa": "/ˈkælkjuleɪt/",
+        "meaningVi": "Tính toán",
+        "definitionEn": "",
+        "example": "Please calculate the total cost before you pay for the meal.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "compute",
+          "work out"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "agree",
+        "pos": "verb",
+        "ipa": "/əˈɡriː/",
+        "meaningVi": "đồng ý",
+        "definitionEn": "",
+        "example": "All the members agreed to change the date of the meeting.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "accept",
+          "consent"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "electric",
+        "pos": "adjective",
+        "ipa": "/ɪˈlektrɪk/",
+        "meaningVi": "chạy điện",
+        "definitionEn": "exciting and full of energy",
+        "example": "The electric car produces no exhaust fumes and is very quiet.",
+        "collocation": "an electric atmosphere",
+        "band": "6-7",
+        "synonyms": [
+          "battery-powered",
+          "electrical"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "accept",
+        "pos": "verb",
+        "ipa": "/əkˈsept/",
+        "meaningVi": "chấp nhận",
+        "definitionEn": "",
+        "example": "The company decided to accept the offer from the new supplier.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "agree to",
+          "approve"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "electronic",
+        "pos": "adjective",
+        "ipa": "/ɪˌlekˈtrɒnɪk/",
+        "meaningVi": "thuộc điện tử",
+        "definitionEn": "",
+        "example": "Students can read electronic books on their tablets during the trip.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "digital",
+          "computerised"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "headline",
+        "pos": "noun",
+        "ipa": "/ˈhedlaɪn/",
+        "meaningVi": "tiêu đề tin tức",
+        "definitionEn": "a heading at the top of an article or page",
+        "example": "The headline on the front page announced the winner of the election.",
+        "collocation": "bold headline",
+        "band": "6-7",
+        "synonyms": [
+          "title",
+          "heading"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "invent",
+        "pos": "verb",
+        "ipa": "/ɪnˈvent/",
+        "meaningVi": "sáng tạo ra, phát minh",
+        "definitionEn": "to create something that did not exist before",
+        "example": "A young engineer invented a machine that cleans solar panels.",
+        "collocation": "invent a machine",
+        "band": "6-7",
+        "synonyms": [
+          "create",
+          "devise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "heading",
+        "pos": "noun",
+        "ipa": "/ˈhedɪŋ/",
+        "meaningVi": "tiêu đề (mục)",
+        "definitionEn": "",
+        "example": "Write the heading of your essay in capital letters at the top of the page.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "title",
+          "caption"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "discover",
+        "pos": "verb",
+        "ipa": "/dɪˈskʌvə(r)/",
+        "meaningVi": "khám phá, phát hiện",
+        "definitionEn": "",
+        "example": "Archaeologists discovered an ancient coin in the river bed.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "find",
+          "uncover"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "feature",
+        "pos": "noun",
+        "ipa": "/ˈfiːtʃə/",
+        "meaningVi": "đặc điểm",
+        "definitionEn": "",
+        "example": "A key feature of the new phone is its excellent camera.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "characteristic",
+          "attribute"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "research",
+        "pos": "noun",
+        "ipa": "/rɪˈsɜːtʃ/",
+        "meaningVi": "nghiên cứu",
+        "definitionEn": "careful study to discover new facts",
+        "example": "Research shows that reading daily improves vocabulary and memory.",
+        "collocation": "conduct research",
+        "band": "6-7",
+        "synonyms": [
+          "investigation",
+          "study"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "article",
+        "pos": "noun",
+        "ipa": "/ˈɑːrtɪkl/",
+        "meaningVi": "bài báo",
+        "definitionEn": "a piece of writing in a newspaper or magazine",
+        "example": "I read an interesting article about climate change in the newspaper.",
+        "collocation": "feature article",
+        "band": "6-7",
+        "synonyms": [
+          "piece",
+          "story"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "experiment",
+        "pos": "noun",
+        "ipa": "/ɪkˈsperɪmənt/",
+        "meaningVi": "thí nghiệm",
+        "definitionEn": "",
+        "example": "The experiment showed that plants need sunlight to grow.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "trial",
+          "test"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "talk show",
+        "pos": "noun",
+        "ipa": "/ˈtɔːk ʃəʊ/",
+        "meaningVi": "chương trình trò chuyện",
+        "definitionEn": "",
+        "example": "The talk show invited a famous actor to share stories about his childhood.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "chat show",
+          "interview programme"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "progress",
+        "pos": "noun",
+        "ipa": "/ˈprɒɡrɛs/",
+        "meaningVi": "sự tiến bộ",
+        "definitionEn": "forward or onward movement toward a goal",
+        "example": "The team is making steady progress on the new project.",
+        "collocation": "make progress",
+        "band": "6-7",
+        "synonyms": [
+          "advancement",
+          "headway",
+          "development"
+        ],
+        "antonyms": [
+          "regression",
+          "decline"
+        ]
+      },
+      {
+        "word": "development",
+        "pos": "noun",
+        "ipa": "/dɪˈveləpmənt/",
+        "meaningVi": "sự phát triển",
+        "definitionEn": "the process of growing or improving",
+        "example": "The development of the new railway will take five years.",
+        "collocation": "economic development",
+        "band": "6-7",
+        "synonyms": [
+          "growth",
+          "progress",
+          "advancement",
+          "evolution"
+        ],
+        "antonyms": [
+          "decline"
+        ]
+      },
+      {
+        "word": "quiz show",
+        "pos": "noun",
+        "ipa": "/ˈkwɪz ʃəʊ/",
+        "meaningVi": "chương trình đố vui",
+        "definitionEn": "",
+        "example": "Our family likes to watch a quiz show on television every Friday.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "game show",
+          "trivia contest"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "modern",
+        "pos": "adjective",
+        "ipa": "/ˈmɒdən/",
+        "meaningVi": "hiện đại",
+        "definitionEn": "relating to the present time",
+        "example": "The city has many modern buildings alongside old temples.",
+        "collocation": "modern architecture",
+        "band": "6-7",
+        "synonyms": [
+          "contemporary",
+          "current"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "game show",
+        "pos": "noun",
+        "ipa": "/ˈɡeɪm ʃəʊ/",
+        "meaningVi": "chương trình trò chơi truyền hình",
+        "definitionEn": "",
+        "example": "The game show offers big prizes to the contestants who answer correctly.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "quiz show",
+          "contest"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "new",
+        "pos": "adjective",
+        "ipa": "/njuː/",
+        "meaningVi": "mới",
+        "definitionEn": "",
+        "example": "She bought a new bicycle with the money she saved last summer.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fresh",
+          "recent"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "announcer",
+        "pos": "noun",
+        "ipa": "/əˈnaʊnsər/",
+        "meaningVi": "phát thanh viên; người dẫn chương trình",
+        "definitionEn": "",
+        "example": "The announcer read the names of the winners in a clear voice.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "presenter",
+          "broadcaster"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "connection",
+        "pos": "noun",
+        "ipa": "/kəˈnekʃən/",
+        "meaningVi": "mối liên hệ",
+        "definitionEn": "a relationship in which people feel linked",
+        "example": "There is a clear connection between diet and health.",
+        "collocation": "a close connection",
+        "band": "6-7",
+        "synonyms": [
+          "transfer"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "blame",
+        "pos": "noun",
+        "ipa": "/bleɪm/",
+        "meaningVi": "sự đổ lỗi",
+        "definitionEn": "",
+        "example": "Nobody wanted to take the blame for the broken window.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fault",
+          "responsibility"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "commentator",
+        "pos": "noun",
+        "ipa": "/ˈkɒmənteɪtə/",
+        "meaningVi": "bình luận viên",
+        "definitionEn": "",
+        "example": "The commentator described every move of the players in the final.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "analyst",
+          "reporter"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fault",
+        "pos": "noun",
+        "ipa": "/fɔːlt/",
+        "meaningVi": "lỗi; trách nhiệm",
+        "definitionEn": "",
+        "example": "It was not my fault that the report was late, because the printer broke.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "blame",
+          "error"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "old",
+        "pos": "adjective",
+        "ipa": "/ˈɒʊld/",
+        "meaningVi": "cũ",
+        "definitionEn": "",
+        "example": "The old house has a beautiful garden with many flowers.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "aged",
+          "elderly"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ancient",
+        "pos": "adjective",
+        "ipa": "/ˈeɪnʃənt/",
+        "meaningVi": "cổ đại",
+        "definitionEn": "belonging to the very distant past, especially before the end of the Western Roman Empire",
+        "example": "The ancient city was built more than two thousand years ago.",
+        "collocation": "ancient civilization",
+        "band": "6-7",
+        "synonyms": [
+          "old",
+          "archaic"
+        ],
+        "antonyms": [
+          "modern"
+        ]
+      },
+      {
+        "word": "broadsheet",
+        "pos": "noun",
+        "ipa": "/ˈbrɔːdʃiːt/",
+        "meaningVi": "báo khổ lớn",
+        "definitionEn": "a large-format newspaper, typically considered more serious",
+        "example": "The broadsheet newspaper includes long articles on politics and economics.",
+        "collocation": "broadsheet newspaper",
+        "band": "6-7",
+        "synonyms": [
+          "quality paper",
+          "daily"
+        ],
+        "antonyms": [
+          "tabloid"
+        ]
+      },
+      {
+        "word": "journalist",
+        "pos": "noun",
+        "ipa": "/ˈdʒɜːnəlɪst/",
+        "meaningVi": "nhà báo",
+        "definitionEn": "",
+        "example": "The journalist interviewed the mayor about the new hospital plan.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "reporter",
+          "correspondent"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "audience",
+        "pos": "noun",
+        "ipa": "/ˈɔːdiəns/",
+        "meaningVi": "khán giả",
+        "definitionEn": "the assembled spectators or listeners at a performance or exhibition",
+        "example": "The audience clapped loudly after the singer finished the song.",
+        "collocation": "target audience",
+        "band": "6-7",
+        "synonyms": [
+          "spectators",
+          "viewers"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "enjoy",
+        "pos": "verb",
+        "ipa": "/ɪnˈdʒɔɪ/",
+        "meaningVi": "tận hưởng",
+        "definitionEn": "to get pleasure from something",
+        "example": "We enjoyed the music at the festival in the evening.",
+        "collocation": "enjoy life",
+        "band": "6-7",
+        "synonyms": [
+          "appreciate",
+          "relish"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "columnist",
+        "pos": "noun",
+        "ipa": "/ˈkɒləmnɪst/",
+        "meaningVi": "người viết chuyên mục",
+        "definitionEn": "",
+        "example": "The columnist writes a weekly article about food and culture.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "commentator",
+          "writer"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "please",
+        "pos": "verb",
+        "ipa": "/pliːz/",
+        "meaningVi": "làm hài lòng",
+        "definitionEn": "",
+        "example": "The new menu will please customers who love vegetarian dishes.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "satisfy",
+          "delight"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "support",
+        "pos": "verb",
+        "ipa": "/səˈpɔːt/",
+        "meaningVi": "hỗ trợ",
+        "definitionEn": "",
+        "example": "The school will support students who want to study abroad.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "back",
+          "assist"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "press",
+        "pos": "noun",
+        "ipa": "/pres/",
+        "meaningVi": "báo chí",
+        "definitionEn": "newspapers and journalists in general",
+        "example": "The press covered the opening ceremony of the new stadium.",
+        "collocation": "the popular press",
+        "band": "6-7",
+        "synonyms": [
+          "media",
+          "newspapers"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "assist",
+        "pos": "verb",
+        "ipa": "/əˈsɪst/",
+        "meaningVi": "hỗ trợ, giúp đỡ",
+        "definitionEn": "",
+        "example": "Volunteers assist the teachers during the summer camp.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "help",
+          "aid"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "kind",
+        "pos": "adjective",
+        "ipa": "/kaɪnd/",
+        "meaningVi": "tốt bụng; loại",
+        "definitionEn": "",
+        "example": "The nurse was kind and patient with every child in the ward.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "gentle",
+          "caring"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "programme",
+        "pos": "noun",
+        "ipa": "/ˈprəʊɡræm/",
+        "meaningVi": "chương trình",
+        "definitionEn": "",
+        "example": "The training programme includes lessons on speaking, writing, and presentation skills.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "schedule"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "polite",
+        "pos": "adjective",
+        "ipa": "/pəˈlaɪt/",
+        "meaningVi": "lịch sự",
+        "definitionEn": "",
+        "example": "It is polite to wait your turn in the queue without complaining.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "courteous",
+          "respectful"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "program",
+        "pos": "noun",
+        "ipa": "/ˈprəʊɡræm/",
+        "meaningVi": "chương trình (phần mềm)",
+        "definitionEn": "a planned course of study",
+        "example": "The computer program helps students practise pronunciation at home.",
+        "collocation": "a degree program",
+        "band": "6-7",
+        "synonyms": [
+          "software",
+          "application"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sympathetic",
+        "pos": "adjective",
+        "ipa": "/ˌsɪmpəˈθɛtɪk/",
+        "meaningVi": "thông cảm, đồng cảm",
+        "definitionEn": "showing understanding and care for someone else's feelings or problems",
+        "example": "The doctor was sympathetic when the patient described his pain.",
+        "collocation": "sympathetic ear",
+        "band": "6-7",
+        "synonyms": [
+          "compassionate",
+          "understanding"
+        ],
+        "antonyms": [
+          "unsympathetic"
+        ]
+      },
+      {
+        "word": "channel",
+        "pos": "noun",
+        "ipa": "/ˈtʃænl/",
+        "meaningVi": "kênh, lạch nước",
+        "definitionEn": "",
+        "example": "The news channel reports on events in the region every evening.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "station",
+          "network"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "likeable",
+        "pos": "adjective",
+        "ipa": "/ˈlaɪkəbl/",
+        "meaningVi": "đáng mến",
+        "definitionEn": "",
+        "example": "She is a likeable teacher, and all the students enjoy her lessons.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "pleasant",
+          "charming"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "broadcast",
+        "pos": "noun",
+        "ipa": "/ˈbrɔːdkɑːst/",
+        "meaningVi": "(chương trình) phát sóng",
+        "definitionEn": "",
+        "example": "The broadcast of the match reached millions of viewers across the country.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "transmission",
+          "programme"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "nervous",
+        "pos": "adjective",
+        "ipa": "/ˈnɜːvəs/",
+        "meaningVi": "lo lắng, bồn chồn",
+        "definitionEn": "",
+        "example": "He felt nervous before the interview, so he practised his answers again.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "anxious",
+          "uneasy"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bulletin",
+        "pos": "noun",
+        "ipa": "/ˈbʊlətɪn/",
+        "meaningVi": "bản tin",
+        "definitionEn": "",
+        "example": "The bulletin reported the weather for the next three days.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "report",
+          "announcement"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "newsflash",
+        "pos": "noun",
+        "ipa": "/ˈnjuːzflæʃ/",
+        "meaningVi": "tin khẩn",
+        "definitionEn": "",
+        "example": "A newsflash interrupted the programme to report the earthquake.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "news bulletin",
+          "alert"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sensitive",
+        "pos": "adjective",
+        "ipa": "/ˈsensətɪv/",
+        "meaningVi": "nhạy cảm",
+        "definitionEn": "",
+        "example": "The topic is sensitive, so speakers should choose their words carefully.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "delicate",
+          "touchy"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-10",
+    "name": "Destination B2 · Unit 10: People and society",
+    "nameVi": "Destination B2 · Bài 10: People and society",
+    "blurb": "23 headwords from the unit vocabulary reference.",
+    "unit": 10,
+    "course": "b2",
+    "words": [
+      {
+        "word": "sensible",
+        "pos": "adjective",
+        "ipa": "/ˈsensəbl/",
+        "meaningVi": "hợp lý, khôn ngoan",
+        "definitionEn": "",
+        "example": "It was sensible to bring a coat because the evening was cold.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "wise",
+          "practical"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "relationship",
+        "pos": "noun",
+        "ipa": "/rɪˈleɪʃənʃɪp/",
+        "meaningVi": "mối quan hệ",
+        "definitionEn": "the way two people feel and behave towards each other",
+        "example": "They have a strong relationship built on trust and respect.",
+        "collocation": "a close relationship with",
+        "band": "6-7",
+        "synonyms": [
+          "bond",
+          "connection"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "company",
+        "pos": "noun",
+        "ipa": "/ˈkʌmpəni/",
+        "meaningVi": "công ty",
+        "definitionEn": "a business that sells goods or services",
+        "example": "The company offers training courses for its new employees.",
+        "collocation": "set up a company",
+        "band": "6-7",
+        "synonyms": [
+          "firm",
+          "business"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "group",
+        "pos": "noun",
+        "ipa": "/ɡruːp/",
+        "meaningVi": "nhóm",
+        "definitionEn": "a number of people who work or study together",
+        "example": "A small group of students volunteered to clean the beach.",
+        "collocation": "group project",
+        "band": "6-7",
+        "synonyms": [
+          "team"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "commit",
+        "pos": "verb",
+        "ipa": "/kəˈmɪt/",
+        "meaningVi": "cam kết; phạm tội",
+        "definitionEn": "",
+        "example": "The man committed a serious crime and was sentenced to prison.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "perpetrate",
+          "pledge"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "break",
+        "pos": "verb",
+        "ipa": "/breɪk/",
+        "meaningVi": "hỏng, gãy",
+        "definitionEn": "a short period of rest from work or other activities",
+        "example": "The glass fell on the floor and broke into many pieces.",
+        "collocation": "take a break",
+        "band": "6-7",
+        "synonyms": [
+          "rest",
+          "pause"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "popular",
+        "pos": "adjective",
+        "ipa": "/ˈpɒpjʊlə/",
+        "meaningVi": "phổ biến",
+        "definitionEn": "liked by many people",
+        "example": "This café is popular with students because the coffee is cheap.",
+        "collocation": "a popular choice",
+        "band": "6-7",
+        "synonyms": [
+          "well-liked",
+          "fashionable"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rule",
+        "pos": "noun",
+        "ipa": "/ruːl/",
+        "meaningVi": "quy tắc",
+        "definitionEn": "",
+        "example": "The rule says that students must arrive on time for every lesson.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "regulation",
+          "law"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "famous",
+        "pos": "adjective",
+        "ipa": "/ˈfeɪməs/",
+        "meaningVi": "nổi tiếng",
+        "definitionEn": "",
+        "example": "The famous painter exhibited his works in Paris last year.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "renowned",
+          "celebrated"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "law",
+        "pos": "noun",
+        "ipa": "/lɔː/",
+        "meaningVi": "luật pháp",
+        "definitionEn": "",
+        "example": "The new law protects workers from unsafe conditions at the factory.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "act",
+          "statute"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "typical",
+        "pos": "adjective",
+        "ipa": "/ˈtɪpɪkəl/",
+        "meaningVi": "điển hình",
+        "definitionEn": "having the usual qualities of a group",
+        "example": "A typical breakfast in this country includes rice soup and fruit.",
+        "collocation": "a typical example",
+        "band": "6-7",
+        "synonyms": [
+          "usual",
+          "standard"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "justice",
+        "pos": "noun",
+        "ipa": "/ˈdʒʌs.tɪs/",
+        "meaningVi": "công lý, sự công bằng",
+        "definitionEn": "The quality of being fair and reasonable; the administration of what is just.",
+        "example": "Everyone deserves justice, no matter how rich or poor they are.",
+        "collocation": "social justice",
+        "band": "6-7",
+        "synonyms": [
+          "fairness",
+          "equity",
+          "righteousness"
+        ],
+        "antonyms": [
+          "injustice"
+        ]
+      },
+      {
+        "word": "usual",
+        "pos": "adjective",
+        "ipa": "/ˈjuːʒuəl/",
+        "meaningVi": "thường lệ, thông thường",
+        "definitionEn": "",
+        "example": "The usual time for the meeting is nine o'clock on Monday.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "normal",
+          "customary"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "right",
+        "pos": "noun",
+        "ipa": "/ˈɹaɪt/",
+        "meaningVi": "quyền; điều đúng",
+        "definitionEn": "",
+        "example": "Every citizen has the right to a fair trial in court.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "entitlement",
+          "privilege"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ordinary",
+        "pos": "adjective",
+        "ipa": "/ˈɔːdnri/",
+        "meaningVi": "bình thường",
+        "definitionEn": "",
+        "example": "The ordinary people in the village work hard to support their families.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "common",
+          "everyday"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "judge",
+        "pos": "noun",
+        "ipa": "/dʒʌdʒ/",
+        "meaningVi": "thẩm phán; đánh giá",
+        "definitionEn": "A public official who presides over a court of law and makes legal decisions.",
+        "example": "The judge listened carefully to the lawyers before making a decision.",
+        "collocation": "presiding judge",
+        "band": "6-7",
+        "synonyms": [
+          "magistrate",
+          "justice"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "close",
+        "pos": "adjective",
+        "ipa": "/kləʊs/",
+        "meaningVi": "đóng lại, gần",
+        "definitionEn": "having a strong, affectionate relationship",
+        "example": "The school is close to my house, so I can walk there every morning.",
+        "collocation": "a close friend",
+        "band": "6-7",
+        "synonyms": [
+          "near",
+          "nearby"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "jury",
+        "pos": "noun",
+        "ipa": "/ˈdʒʊəri/",
+        "meaningVi": "bồi thẩm đoàn",
+        "definitionEn": "A group of people sworn to give a verdict in a court based on evidence.",
+        "example": "The jury took three hours to reach a verdict in the trial.",
+        "collocation": "jury trial",
+        "band": "6-7",
+        "synonyms": [
+          "panel of jurors"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "near",
+        "pos": "adjective",
+        "ipa": "/nɪə/",
+        "meaningVi": "gần",
+        "definitionEn": "",
+        "example": "The hospital is near the train station, so it is easy to reach.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "close",
+          "adjacent"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "prosecute",
+        "pos": "verb",
+        "ipa": "/ˈprɒsɪkjuːt/",
+        "meaningVi": "truy tố",
+        "definitionEn": "",
+        "example": "The government decided to prosecute the company for polluting the river.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "sue",
+          "charge"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "unknown",
+        "pos": "adjective",
+        "ipa": "/ʌnˈnəʊn/",
+        "meaningVi": "không xác định",
+        "definitionEn": "",
+        "example": "The author remained unknown until his novel won a national prize.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "anonymous",
+          "obscure"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "persecute",
+        "pos": "verb",
+        "ipa": "/ˈpɜːsɪkjuːt/",
+        "meaningVi": "ngược đãi",
+        "definitionEn": "",
+        "example": "Many people were persecuted for their religious beliefs in the past.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "oppress",
+          "harass"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "infamous",
+        "pos": "adjective",
+        "ipa": "/ˈɪnfəməs/",
+        "meaningVi": "tai tiếng",
+        "definitionEn": "",
+        "example": "The infamous bank robber was finally arrested after ten years.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "notorious",
+          "disreputable"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-12",
+    "name": "Destination B2 · Unit 12: The law and crime",
+    "nameVi": "Destination B2 · Bài 12: The law and crime",
+    "blurb": "27 headwords from the unit vocabulary reference.",
+    "unit": 12,
+    "course": "b2",
+    "words": [
+      {
+        "word": "proof",
+        "pos": "noun",
+        "ipa": "/pruːf/",
+        "meaningVi": "bằng chứng",
+        "definitionEn": "",
+        "example": "The receipt is proof that you paid for the goods.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "evidence",
+          "confirmation"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "evidence",
+        "pos": "noun",
+        "ipa": "/ˈɛvɪdəns/",
+        "meaningVi": "bằng chứng",
+        "definitionEn": "Information or objects presented in court to prove a fact.",
+        "example": "The police found strong evidence that linked him to the crime.",
+        "collocation": "circumstantial evidence",
+        "band": "6-7",
+        "synonyms": [
+          "proof",
+          "testimony"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "robber",
+        "pos": "noun",
+        "ipa": "/ˈrɒbə/",
+        "meaningVi": "kẻ cướp",
+        "definitionEn": "",
+        "example": "The robber escaped on a motorbike before the police arrived.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "thief",
+          "burglar"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "suspect",
+        "pos": "verb",
+        "ipa": "/ˈsʌspekt/",
+        "meaningVi": "nghi ngờ, cho là có thể",
+        "definitionEn": "a person thought to have committed a crime",
+        "example": "The teacher began to suspect that someone had copied the homework.",
+        "collocation": "a prime suspect",
+        "band": "6-7",
+        "synonyms": [
+          "doubt",
+          "distrust"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "burglar",
+        "pos": "noun",
+        "ipa": "/ˈbɜːɡlə/",
+        "meaningVi": "kẻ trộm",
+        "definitionEn": "",
+        "example": "The burglar broke into the house through a back window.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "thief",
+          "housebreaker"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "arrest",
+        "pos": "verb",
+        "ipa": "/əˈrest/",
+        "meaningVi": "bắt giữ",
+        "definitionEn": "",
+        "example": "The police arrested the suspect at the airport this morning.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "detain",
+          "apprehend"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "thief",
+        "pos": "noun",
+        "ipa": "/θiːf/",
+        "meaningVi": "kẻ trộm",
+        "definitionEn": "",
+        "example": "The thief stole a bag full of money from the market stall.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "robber",
+          "pickpocket"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "charge",
+        "pos": "verb",
+        "ipa": "/tʃɑːdʒ/",
+        "meaningVi": "tính phí",
+        "definitionEn": "",
+        "example": "The company will charge a small fee for each online order.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bill",
+          "levy"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "vandal",
+        "pos": "noun",
+        "ipa": "/ˈvændl/",
+        "meaningVi": "kẻ phá hoại",
+        "definitionEn": "",
+        "example": "A vandal damaged the bus stop by painting graffiti on the walls.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "hooligan",
+          "destroyer"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "hooligan",
+        "pos": "noun",
+        "ipa": "/ˈhuːlɪɡən/",
+        "meaningVi": "kẻ côn đồ",
+        "definitionEn": "",
+        "example": "A group of hooligans caused trouble after the football match.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "vandal",
+          "ruffian"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "accused",
+        "pos": "noun",
+        "ipa": "/əˈkjuːzd/",
+        "meaningVi": "bị cáo",
+        "definitionEn": "",
+        "example": "The accused denied all the charges in front of the court.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "defendant",
+          "suspect"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sentence",
+        "pos": "verb",
+        "ipa": "/ˈsentəns/",
+        "meaningVi": "kết án",
+        "definitionEn": "The punishment given by a court to a person convicted of a crime.",
+        "example": "The judge will sentence the thief to two years in prison.",
+        "collocation": "serve a sentence",
+        "band": "6-7",
+        "synonyms": [
+          "punishment",
+          "penalty"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "decision",
+        "pos": "noun",
+        "ipa": "/dɪˈsɪʒən/",
+        "meaningVi": "quyết định",
+        "definitionEn": "",
+        "example": "The decision to move to a bigger city was difficult for the family.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "choice",
+          "verdict"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "imprison",
+        "pos": "verb",
+        "ipa": "/ɪmˈprɪzn/",
+        "meaningVi": "giam cầm, cầm tù",
+        "definitionEn": "",
+        "example": "The court decided to imprison the man for five years.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "jail",
+          "incarcerate"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "verdict",
+        "pos": "noun",
+        "ipa": "/ˈvɜːdɪkt/",
+        "meaningVi": "phán quyết, kết luận",
+        "definitionEn": "A decision made by a jury on a legal case.",
+        "example": "The jury reached a verdict of not guilty after a long trial.",
+        "collocation": "give a verdict",
+        "band": "6-7",
+        "synonyms": [
+          "ruling",
+          "judgment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "innocent",
+        "pos": "adjective",
+        "ipa": "/ˈɪn.ə.sənt/",
+        "meaningVi": "vô tội",
+        "definitionEn": "free from moral wrong; not corrupted or guilty",
+        "example": "The lawyer proved that his client was innocent of the crime.",
+        "collocation": "innocent childhood",
+        "band": "6-7",
+        "synonyms": [
+          "naive",
+          "pure",
+          "guileless",
+          "childlike"
+        ],
+        "antonyms": [
+          "guilty",
+          "corrupt"
+        ]
+      },
+      {
+        "word": "cure",
+        "pos": "noun",
+        "ipa": "/kjʊə/",
+        "meaningVi": "phương thuốc chữa khỏi",
+        "definitionEn": "to make someone healthy again",
+        "example": "Scientists are searching for a cure for the disease.",
+        "collocation": "cure a disease",
+        "band": "6-7",
+        "synonyms": [
+          "remedy",
+          "treatment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "guilty",
+        "pos": "adjective",
+        "ipa": "/ˈɡɪlti/",
+        "meaningVi": "cảm thấy có lỗi",
+        "definitionEn": "having committed a crime",
+        "example": "He felt guilty for forgetting his friend's birthday.",
+        "collocation": "plead guilty",
+        "band": "6-7",
+        "synonyms": [
+          "ashamed",
+          "sorry"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "therapy",
+        "pos": "noun",
+        "ipa": "/ˈθerəpi/",
+        "meaningVi": "liệu pháp, trị liệu",
+        "definitionEn": "Treatment intended to relieve or heal a disorder.",
+        "example": "She goes to therapy once a week to manage her stress.",
+        "collocation": "undergo therapy",
+        "band": "6-7",
+        "synonyms": [
+          "treatment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "witness",
+        "pos": "noun",
+        "ipa": "/ˈwɪtnəs/",
+        "meaningVi": "nhân chứng",
+        "definitionEn": "A person who sees an event, typically a crime, and can testify in court.",
+        "example": "A witness described the car that left the scene quickly.",
+        "collocation": "eyewitness",
+        "band": "6-7",
+        "synonyms": [
+          "observer",
+          "eyewitness"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bystander",
+        "pos": "noun",
+        "ipa": "/ˈbaɪstændə/",
+        "meaningVi": "người chứng kiến; người qua đường",
+        "definitionEn": "",
+        "example": "A bystander called the ambulance right after the accident happened.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "onlooker",
+          "passerby"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "effect",
+        "pos": "noun",
+        "ipa": "/ɪˈfekt/",
+        "meaningVi": "hiệu ứng, tác động",
+        "definitionEn": "a change that results when something is done or happens",
+        "example": "The change in weather had a strong effect on the crops.",
+        "collocation": "have a significant effect",
+        "band": "6-7",
+        "synonyms": [
+          "result",
+          "consequence",
+          "outcome",
+          "impact"
+        ],
+        "antonyms": [
+          "cause"
+        ]
+      },
+      {
+        "word": "lawyer",
+        "pos": "noun",
+        "ipa": "/ˈlɔɪə/",
+        "meaningVi": "luật sư",
+        "definitionEn": "a person trained to give legal advice",
+        "example": "The lawyer explained the contract to her client in simple language.",
+        "collocation": "hire a lawyer",
+        "band": "6-7",
+        "synonyms": [
+          "attorney",
+          "counsellor"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "result",
+        "pos": "noun",
+        "ipa": "/rɪˈzʌlt/",
+        "meaningVi": "kết quả",
+        "definitionEn": "the outcome of an action or situation",
+        "example": "The result of the test will be announced on Friday.",
+        "collocation": "as a result of",
+        "band": "6-7",
+        "synonyms": [
+          "outcome",
+          "consequence",
+          "effect",
+          "upshot"
+        ],
+        "antonyms": [
+          "cause"
+        ]
+      },
+      {
+        "word": "healthy",
+        "pos": "adjective",
+        "ipa": "/ˈhelθi/",
+        "meaningVi": "khỏe mạnh",
+        "definitionEn": "in good physical condition",
+        "example": "A healthy lifestyle includes sleep, exercise, and balanced meals.",
+        "collocation": "a healthy lifestyle",
+        "band": "6-7",
+        "synonyms": [
+          "fit",
+          "well"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "solicitor",
+        "pos": "noun",
+        "ipa": "/səˈlɪsɪtə/",
+        "meaningVi": "luật sư",
+        "definitionEn": "",
+        "example": "The solicitor reviewed the house sale documents before the signing.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "lawyer",
+          "legal adviser"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fit",
+        "pos": "adjective",
+        "ipa": "/fɪt/",
+        "meaningVi": "vừa vặn; khoẻ mạnh",
+        "definitionEn": "",
+        "example": "The shoes fit perfectly, so I will buy them today.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "suitable",
+          "healthy"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-14",
+    "name": "Destination B2 · Unit 14: Health and fitness",
+    "nameVi": "Destination B2 · Bài 14: Health and fitness",
+    "blurb": "26 headwords from the unit vocabulary reference.",
+    "unit": 14,
+    "course": "b2",
+    "words": [
+      {
+        "word": "examine",
+        "pos": "verb",
+        "ipa": "/ig'zæmin/",
+        "meaningVi": "xem xét, kiểm tra",
+        "definitionEn": "",
+        "example": "The doctor will examine the patient carefully before recommending any medicine.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "inspect",
+          "check"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "prescription",
+        "pos": "noun",
+        "ipa": "/prɪˈskrɪpʃn/",
+        "meaningVi": "đơn thuốc",
+        "definitionEn": "",
+        "example": "The pharmacist checked the prescription before giving her the medicine.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "medication order",
+          "script"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "investigate",
+        "pos": "verb",
+        "ipa": "/ɪnˈvestɪɡeɪt/",
+        "meaningVi": "điều tra, tìm hiểu",
+        "definitionEn": "to examine the facts carefully",
+        "example": "Scientists want to investigate why the bees are disappearing from the farms.",
+        "collocation": "investigate a claim",
+        "band": "6-7",
+        "synonyms": [
+          "examine",
+          "probe"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "recipe",
+        "pos": "noun",
+        "ipa": "/'resəpi/",
+        "meaningVi": "công thức (nấu ăn)",
+        "definitionEn": "",
+        "example": "She followed the recipe step by step to bake a perfect chocolate cake.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "formula",
+          "method"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "infection",
+        "pos": "noun",
+        "ipa": "/in'fek∫ən/",
+        "meaningVi": "sự nhiễm trùng",
+        "definitionEn": "",
+        "example": "The nurse cleaned the wound to prevent an infection from spreading.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "illness",
+          "disease"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "operation",
+        "pos": "noun",
+        "ipa": "/ˌɒpəˈreɪʃn/",
+        "meaningVi": "hoạt động, ca phẫu thuật",
+        "definitionEn": "",
+        "example": "The operation took three hours, and the patient recovered well.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "surgery",
+          "procedure"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "pollution",
+        "pos": "noun",
+        "ipa": "/pəˈluːʃən/",
+        "meaningVi": "ô nhiễm",
+        "definitionEn": "the presence of harmful substances in the environment",
+        "example": "Pollution from factories has made the river dirty and unsafe for fish.",
+        "collocation": "air pollution",
+        "band": "6-7",
+        "synonyms": [
+          "contamination"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "surgery",
+        "pos": "noun",
+        "ipa": "/ˈsɜːrdʒəri/",
+        "meaningVi": "phẫu thuật",
+        "definitionEn": "Medical treatment involving an incision to repair or remove body parts.",
+        "example": "He had surgery on his back and needed weeks of rest.",
+        "collocation": "undergo surgery",
+        "band": "6-7",
+        "synonyms": [
+          "operation"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "plaster",
+        "pos": "noun",
+        "ipa": "/ˈplɑːstə/",
+        "meaningVi": "miếng băng dán y tế",
+        "definitionEn": "",
+        "example": "I put a plaster on the cut on my finger to stop the bleeding.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bandage",
+          "dressing"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sore",
+        "pos": "adjective",
+        "ipa": "/sɔː/",
+        "meaningVi": "đau, nhức",
+        "definitionEn": "",
+        "example": "My throat is sore after talking for a long time in the meeting.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "painful",
+          "aching"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bandage",
+        "pos": "noun",
+        "ipa": "/ˈbændɪdʒ/",
+        "meaningVi": "băng gạc",
+        "definitionEn": "",
+        "example": "The nurse wrapped a clean bandage around his injured arm.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "dressing",
+          "gauze"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "hurt",
+        "pos": "verb",
+        "ipa": "/hɜːt/",
+        "meaningVi": "bị thương",
+        "definitionEn": "",
+        "example": "The fall may hurt his leg, so he should see a doctor.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "injure",
+          "wound"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "pain",
+        "pos": "noun",
+        "ipa": "/peɪn/",
+        "meaningVi": "đau đớn",
+        "definitionEn": "",
+        "example": "She took a painkiller because the headache caused a lot of pain.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "ache",
+          "soreness"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ward",
+        "pos": "noun",
+        "ipa": "/wɔːd/",
+        "meaningVi": "phòng bệnh (bệnh viện)",
+        "definitionEn": "",
+        "example": "The patients in the children's ward are visited by doctors every morning.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "unit",
+          "section"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "clinic",
+        "pos": "noun",
+        "ipa": "/ˈklɪn.ɪk/",
+        "meaningVi": "phòng khám",
+        "definitionEn": "a place where people go for medical advice or treatment",
+        "example": "We visited the local clinic when my son had a high fever.",
+        "collocation": "health clinic",
+        "band": "6-7",
+        "synonyms": [
+          "surgery"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "disease",
+        "pos": "noun",
+        "ipa": "/dɪˈziːz/",
+        "meaningVi": "bệnh tật",
+        "definitionEn": "an illness affecting the body",
+        "example": "Scientists are searching for a cure for this rare disease.",
+        "collocation": "prevent disease",
+        "band": "6-7",
+        "synonyms": [
+          "illness",
+          "sickness"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "injured",
+        "pos": "adjective",
+        "ipa": "/ˈɪndʒəd/",
+        "meaningVi": "bị tổn hại",
+        "definitionEn": "",
+        "example": "The injured player was taken to hospital after the accident.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "wounded",
+          "hurt"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "damaged",
+        "pos": "adjective",
+        "ipa": "/ˈdæm.ɪdʒd/",
+        "meaningVi": "bị hư hỏng",
+        "definitionEn": "harmed so that it is no longer in good condition",
+        "example": "The storm damaged several houses along the coast.",
+        "collocation": "arrive damaged",
+        "band": "6-7",
+        "synonyms": [
+          "broken",
+          "harmed"
+        ],
+        "antonyms": [
+          "intact"
+        ]
+      },
+      {
+        "word": "fix",
+        "pos": "noun",
+        "ipa": "/ˈfɪks/",
+        "meaningVi": "giải pháp nhanh",
+        "definitionEn": "",
+        "example": "The quick fix for the leak was a new rubber seal.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "remedy",
+          "solution"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "thin",
+        "pos": "adjective",
+        "ipa": "/θɪn/",
+        "meaningVi": "mỏng, thưa",
+        "definitionEn": "",
+        "example": "The paper is so thin that the words can be seen from the other side.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "slim",
+          "narrow"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fever",
+        "pos": "noun",
+        "ipa": "/ˈfiːvə/",
+        "meaningVi": "sốt",
+        "definitionEn": "",
+        "example": "She had a high fever and stayed in bed for two days.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "temperature",
+          "pyrexia"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "slim",
+        "pos": "adjective",
+        "ipa": "/slɪm/",
+        "meaningVi": "mảnh mai, mỏng",
+        "definitionEn": "",
+        "example": "She is slim and wears a size small in most clothes.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "slender",
+          "thin"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "remedy",
+        "pos": "noun",
+        "ipa": "/ˈremədi/",
+        "meaningVi": "biện pháp khắc phục",
+        "definitionEn": "to correct something that is wrong",
+        "example": "Honey and lemon tea is a popular home remedy for a sore throat.",
+        "collocation": "remedy a situation",
+        "band": "6-7",
+        "synonyms": [
+          "cure",
+          "treatment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rash",
+        "pos": "noun",
+        "ipa": "/ræʃ/",
+        "meaningVi": "nổi mẩn; hấp tấp",
+        "definitionEn": "acting or done without careful consideration of the consequences",
+        "example": "A red rash appeared on her arm after she touched the plant.",
+        "collocation": "rash decision",
+        "band": "6-7",
+        "synonyms": [
+          "reckless",
+          "impulsive",
+          "hasty",
+          "impetuous"
+        ],
+        "antonyms": [
+          "cautious",
+          "prudent"
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-16",
+    "name": "Destination B2 · Unit 16: Food and drink",
+    "nameVi": "Destination B2 · Bài 16: Food and drink",
+    "blurb": "37 headwords from the unit vocabulary reference.",
+    "unit": 16,
+    "course": "b2",
+    "words": [
+      {
+        "word": "chop",
+        "pos": "verb",
+        "ipa": "/tʃɒp/",
+        "meaningVi": "chặt; thái",
+        "definitionEn": "",
+        "example": "Chop the onions and garlic before you put them in the pan.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cut",
+          "dice"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "vegetable",
+        "pos": "noun",
+        "ipa": "/ˈvɛd͡ʒtəbəl/",
+        "meaningVi": "rau, thực vật làm lương thực",
+        "definitionEn": "",
+        "example": "Carrots and spinach are healthy vegetables that many children enjoy.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "greens",
+          "produce"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "slice",
+        "pos": "verb",
+        "ipa": "/slaɪs/",
+        "meaningVi": "lát",
+        "definitionEn": "",
+        "example": "Slice the bread thinly so that it toasts evenly.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cut",
+          "carve"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "vegetarian",
+        "pos": "noun",
+        "ipa": "/ˌvedʒəˈteəriən/",
+        "meaningVi": "người ăn chay",
+        "definitionEn": "",
+        "example": "My cousin is a vegetarian, so she never eats meat.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "herbivore",
+          "non-meat eater"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "grate",
+        "pos": "verb",
+        "ipa": "/ɡreɪt/",
+        "meaningVi": "nạo; bào",
+        "definitionEn": "",
+        "example": "Grate the cheese finely and sprinkle it over the pasta.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "shred",
+          "mince"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "vegan",
+        "pos": "noun",
+        "ipa": "/ˈviːɡən/",
+        "meaningVi": "người ăn thuần chay",
+        "definitionEn": "",
+        "example": "A vegan does not eat any meat, eggs, or dairy products.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "plant-eater",
+          "non-dairy eater"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bake",
+        "pos": "verb",
+        "ipa": "/beɪk/",
+        "meaningVi": "nướng",
+        "definitionEn": "",
+        "example": "We bake bread in the oven every Sunday morning.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "roast",
+          "cook"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "grill",
+        "pos": "verb",
+        "ipa": "/ɡrɪl/",
+        "meaningVi": "nướng (vỉ)",
+        "definitionEn": "",
+        "example": "We grill fish on the barbecue when the weather is warm.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "barbecue",
+          "broil"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fast food",
+        "pos": "noun",
+        "ipa": "/ˈfɑːst fuːd/",
+        "meaningVi": "đồ ăn nhanh",
+        "definitionEn": "cheap food that is prepared quickly",
+        "example": "Fast food is quick and cheap, but it is not always healthy.",
+        "collocation": "eat fast food",
+        "band": "6-7",
+        "synonyms": [
+          "takeaway food",
+          "junk food"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fry",
+        "pos": "verb",
+        "ipa": "/fraɪ/",
+        "meaningVi": "chiên; rán",
+        "definitionEn": "",
+        "example": "Fry the eggs in a little oil until the edges turn golden.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "stir-fry",
+          "sear"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "takeaway",
+        "pos": "noun",
+        "ipa": "/ˈteɪkəweɪ/",
+        "meaningVi": "đồ ăn mua mang đi",
+        "definitionEn": "",
+        "example": "We ordered a takeaway for dinner because nobody wanted to cook.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "takeout",
+          "carry-out"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "roast",
+        "pos": "verb",
+        "ipa": "/ɹəʊst/",
+        "meaningVi": "quay; nướng",
+        "definitionEn": "",
+        "example": "The family roast a chicken in the oven for Sunday lunch.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bake",
+          "grill"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "kettle",
+        "pos": "noun",
+        "ipa": "/ˈkɛ.təl/",
+        "meaningVi": "ấm đun nước",
+        "definitionEn": "",
+        "example": "Boil water in the kettle and pour it into the teapot.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "water heater",
+          "jug"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "boil",
+        "pos": "verb",
+        "ipa": "/bɔɪl/",
+        "meaningVi": "đun sôi, nấu sôi",
+        "definitionEn": "",
+        "example": "Boil the pasta for ten minutes until it becomes soft.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "simmer",
+          "cook"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "teapot",
+        "pos": "noun",
+        "ipa": "/ˈtiːpɒt/",
+        "meaningVi": "ấm trà",
+        "definitionEn": "",
+        "example": "She poured hot tea from the teapot into two small cups.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "tea urn",
+          "pot"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cook",
+        "pos": "noun",
+        "ipa": "/kʊk/",
+        "meaningVi": "nấu ăn; đầu bếp",
+        "definitionEn": "",
+        "example": "My father is a good cook and makes delicious soup.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "chef",
+          "kitchen worker"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "freezer",
+        "pos": "noun",
+        "ipa": "/ˈfriːzə/",
+        "meaningVi": "ngăn đông; tủ đông",
+        "definitionEn": "",
+        "example": "Keep the ice cream in the freezer so that it stays firm.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "freezer compartment",
+          "icebox"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cooker",
+        "pos": "noun",
+        "ipa": "/ˈkʊkə/",
+        "meaningVi": "bếp; nồi nấu",
+        "definitionEn": "",
+        "example": "The cooker in the kitchen has four burners and an oven.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "stove",
+          "range"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fridge",
+        "pos": "noun",
+        "ipa": "/frɪdʒ/",
+        "meaningVi": "tủ lạnh",
+        "definitionEn": "",
+        "example": "Put the milk back in the fridge after you finish breakfast.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "refrigerator",
+          "icebox"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "chef",
+        "pos": "noun",
+        "ipa": "/ʃef/",
+        "meaningVi": "đầu bếp",
+        "definitionEn": "",
+        "example": "The chef prepared a special dish for the guests at the restaurant.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cook",
+          "head cook"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "frozen",
+        "pos": "adjective",
+        "ipa": "/ˈfrəʊzn/",
+        "meaningVi": "đông lạnh",
+        "definitionEn": "",
+        "example": "We bought frozen peas because they are cheap and keep for months.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "iced",
+          "chilled"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "oven",
+        "pos": "noun",
+        "ipa": "/ˈʌ.vn̩/",
+        "meaningVi": "lò nướng",
+        "definitionEn": "",
+        "example": "Preheat the oven to two hundred degrees before you put the cake in.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "stove",
+          "cooker"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "freezing",
+        "pos": "adjective",
+        "ipa": "/ˈfriːzɪŋ/",
+        "meaningVi": "gần đóng băng, lạnh giá",
+        "definitionEn": "extremely cold",
+        "example": "The water in the lake was freezing, so nobody wanted to swim.",
+        "collocation": "freezing weather",
+        "band": "6-7",
+        "synonyms": [
+          "icy",
+          "chilly"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "mix",
+        "pos": "verb",
+        "ipa": "/ˈmɪks/",
+        "meaningVi": "trộn",
+        "definitionEn": "",
+        "example": "Mix the flour and eggs in a large bowl before you add the milk.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "blend",
+          "stir"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "hob",
+        "pos": "noun",
+        "ipa": "/hɒb/",
+        "meaningVi": "bếp nấu",
+        "definitionEn": "",
+        "example": "The hob has four rings, and each one can be adjusted separately.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cooktop",
+          "burner"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "stir",
+        "pos": "verb",
+        "ipa": "/stɜː(r)/",
+        "meaningVi": "khuấy",
+        "definitionEn": "",
+        "example": "Stir the sauce slowly so that it does not burn at the bottom of the pan.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "mix",
+          "whisk"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "kitchen",
+        "pos": "noun",
+        "ipa": "/ˈkɪt͡ʃən/",
+        "meaningVi": "nhà bếp",
+        "definitionEn": "",
+        "example": "The kitchen smells wonderful because my mother is baking bread.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cookhouse",
+          "galley"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "whisk",
+        "pos": "verb",
+        "ipa": "/wɪsk/",
+        "meaningVi": "đánh trứng; phới lồng",
+        "definitionEn": "",
+        "example": "Whisk the egg whites until they become thick and fluffy.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "beat",
+          "blend"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cuisine",
+        "pos": "noun",
+        "ipa": "/kwɪˈziːn/",
+        "meaningVi": "ẩm thực",
+        "definitionEn": "A style or method of cooking characteristic of a particular region or culture.",
+        "example": "Vietnamese cuisine is famous for its fresh herbs and light broths.",
+        "collocation": "local cuisine",
+        "band": "6-7",
+        "synonyms": [
+          "cooking style",
+          "gastronomy"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "soft drink",
+        "pos": "noun",
+        "ipa": "/ˈsɒft drɪŋk/",
+        "meaningVi": "nước ngọt",
+        "definitionEn": "",
+        "example": "A cold soft drink is refreshing on a hot summer afternoon.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "soda",
+          "pop"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "lunch",
+        "pos": "noun",
+        "ipa": "/lʌntʃ/",
+        "meaningVi": "bữa trưa",
+        "definitionEn": "",
+        "example": "We had lunch together in the park, with sandwiches and fruit.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "midday meal",
+          "luncheon"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "dinner",
+        "pos": "noun",
+        "ipa": "/ˈdɪnə/",
+        "meaningVi": "bữa tối",
+        "definitionEn": "",
+        "example": "Our family eats dinner together at seven o'clock every evening.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "supper",
+          "evening meal"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fizzy drink",
+        "pos": "noun",
+        "ipa": "/ˈfɪzi drɪŋk/",
+        "meaningVi": "nước có ga",
+        "definitionEn": "",
+        "example": "Fizzy drinks contain a lot of sugar, so they are not good for teeth.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "sparkling drink",
+          "soda"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "plate",
+        "pos": "noun",
+        "ipa": "/pleɪt/",
+        "meaningVi": "đĩa thức ăn, mâm",
+        "definitionEn": "",
+        "example": "She served the rice on a large white plate with grilled chicken.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "dish",
+          "platter"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "menu",
+        "pos": "noun",
+        "ipa": "/ˈmɛnju/",
+        "meaningVi": "thực đơn",
+        "definitionEn": "",
+        "example": "The menu offers a choice of soups, salads, and grilled meats.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bill of fare",
+          "list of dishes"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bowl",
+        "pos": "noun",
+        "ipa": "/bəʊl/",
+        "meaningVi": "bát, tô",
+        "definitionEn": "",
+        "example": "He ate a big bowl of noodle soup for breakfast.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "dish",
+          "basin"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "catalogue",
+        "pos": "noun",
+        "ipa": "/ˈkæt.ə.lɒɡ/",
+        "meaningVi": "danh mục, mục lục",
+        "definitionEn": "a list of all the books in a library",
+        "example": "Please check the catalogue to see the latest kitchen equipment.",
+        "collocation": "library catalogue",
+        "band": "6-7",
+        "synonyms": [
+          "index",
+          "listing"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "saucer",
+        "pos": "noun",
+        "ipa": "/ˈsɔːsə/",
+        "meaningVi": "đĩa lót tách",
+        "definitionEn": "",
+        "example": "She placed the teacup on a small saucer and offered me a biscuit.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "plate",
+          "dish"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "dish",
+        "pos": "noun",
+        "ipa": "/dɪʃ/",
+        "meaningVi": "món ăn",
+        "definitionEn": "",
+        "example": "The chef's special dish is grilled fish with lemon and herbs.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "meal",
+          "course"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-18",
+    "name": "Destination B2 · Unit 18: Education and learning",
+    "nameVi": "Destination B2 · Bài 18: Education and learning",
+    "blurb": "28 headwords from the unit vocabulary reference.",
+    "unit": 18,
+    "course": "b2",
+    "words": [
+      {
+        "word": "measure",
+        "pos": "verb",
+        "ipa": "/ˈmeʒə/",
+        "meaningVi": "đo lường",
+        "definitionEn": "",
+        "example": "Measure the flour carefully so that the cake is not too dry.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "weigh",
+          "gauge"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "take",
+        "pos": "verb",
+        "ipa": "/teɪk/",
+        "meaningVi": "lấy đi, chiếm lấy",
+        "definitionEn": "",
+        "example": "Please take the bread out of the oven before it burns.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "remove",
+          "carry"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "degree",
+        "pos": "noun",
+        "ipa": "/dɪˈɡriː/",
+        "meaningVi": "mức độ",
+        "definitionEn": "a qualification awarded by a college or university after completing a course of study",
+        "example": "The soup should be heated to a high degree before serving.",
+        "collocation": "bachelor's degree",
+        "band": "6-7",
+        "synonyms": [
+          "qualification",
+          "diploma"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "read",
+        "pos": "verb",
+        "ipa": "/ɹiːd/",
+        "meaningVi": "được đọc",
+        "definitionEn": "",
+        "example": "I read the instructions on the packet before cooking the rice.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "peruse",
+          "scan"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "certificate",
+        "pos": "noun",
+        "ipa": "/səˈtɪfɪkət/",
+        "meaningVi": "chứng chỉ; giấy chứng nhận",
+        "definitionEn": "",
+        "example": "She received a certificate for completing the English course.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "diploma",
+          "document"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "study",
+        "pos": "verb",
+        "ipa": "/ˈstʌdi/",
+        "meaningVi": "nghiên cứu",
+        "definitionEn": "",
+        "example": "I study English every evening before going to bed.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "learn",
+          "revise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "results",
+        "pos": "noun",
+        "ipa": "/rɪˈzʌlts/",
+        "meaningVi": "kết quả",
+        "definitionEn": "the marks you get after an exam",
+        "example": "The results of the exam will be announced on Monday morning.",
+        "collocation": "exam results",
+        "band": "6-7",
+        "synonyms": [
+          "grades",
+          "outcomes"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "test",
+        "pos": "noun",
+        "ipa": "/test/",
+        "meaningVi": "kiểm tra, phép thử",
+        "definitionEn": "",
+        "example": "We have a spelling test every Friday in our English class.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "exam",
+          "quiz"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "speak",
+        "pos": "verb",
+        "ipa": "/spiːk/",
+        "meaningVi": "nói (ngôn ngữ)",
+        "definitionEn": "",
+        "example": "Can you speak English fluently after two years of study?",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "talk",
+          "converse"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "exam",
+        "pos": "noun",
+        "ipa": "/ɪɡˈzæm/",
+        "meaningVi": "kỳ thi",
+        "definitionEn": "a formal test of knowledge",
+        "example": "The final exam covers all the lessons from the whole semester.",
+        "collocation": "pass an exam",
+        "band": "6-7",
+        "synonyms": [
+          "test",
+          "assessment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "talk",
+        "pos": "verb",
+        "ipa": "/toːk/",
+        "meaningVi": "nói chuyện",
+        "definitionEn": "",
+        "example": "The students talk about their favourite films during the break.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "chat",
+          "discuss"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "lesson",
+        "pos": "noun",
+        "ipa": "/ˈlɛsən/",
+        "meaningVi": "bài học",
+        "definitionEn": "an experience that teaches a moral or practical lesson",
+        "example": "Today's lesson focuses on reading comprehension and vocabulary.",
+        "collocation": "learn a lesson",
+        "band": "6-7",
+        "synonyms": [
+          "teaching",
+          "moral",
+          "takeaway"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "primary",
+        "pos": "adjective",
+        "ipa": "/ˈpraɪməri/",
+        "meaningVi": "tiểu học, chính, chủ yếu",
+        "definitionEn": "",
+        "example": "Children start primary school at the age of six in this country.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "elementary",
+          "basic"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "secondary",
+        "pos": "adjective",
+        "ipa": "/ˈsekəndri/",
+        "meaningVi": "trung học",
+        "definitionEn": "",
+        "example": "Secondary students take more difficult subjects than primary students.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "high school",
+          "middle school"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "subject",
+        "pos": "noun",
+        "ipa": "/ˈsʌb.dʒekt/",
+        "meaningVi": "chủ đề, môn học",
+        "definitionEn": "an area of study, such as history or physics",
+        "example": "Biology is my favourite subject because I enjoy studying living things.",
+        "collocation": "a core subject",
+        "band": "6-7",
+        "synonyms": [
+          "discipline"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "achieve",
+        "pos": "verb",
+        "ipa": "/əˈtʃiːv/",
+        "meaningVi": "đạt được",
+        "definitionEn": "to successfully reach a desired objective or result",
+        "example": "She worked hard to achieve her goal of getting a scholarship.",
+        "collocation": "achieve a goal",
+        "band": "6-7",
+        "synonyms": [
+          "attain",
+          "accomplish",
+          "realize",
+          "fulfill"
+        ],
+        "antonyms": [
+          "fail"
+        ]
+      },
+      {
+        "word": "reach",
+        "pos": "verb",
+        "ipa": "/riːtʃ/",
+        "meaningVi": "vươn tới, đạt tới",
+        "definitionEn": "",
+        "example": "The students reached the final round of the competition after three weeks.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "arrive at",
+          "attain"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "colleague",
+        "pos": "noun",
+        "ipa": "/ˈkɒliːɡ/",
+        "meaningVi": "đồng nghiệp",
+        "definitionEn": "a person with whom one works in a professional setting",
+        "example": "My colleague helped me prepare the presentation for the meeting.",
+        "collocation": "close colleague",
+        "band": "6-7",
+        "synonyms": [
+          "coworker",
+          "associate"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "task",
+        "pos": "noun",
+        "ipa": "/tɑːsk/",
+        "meaningVi": "nhiệm vụ, công việc",
+        "definitionEn": "a piece of work to be done",
+        "example": "The teacher gave each student a short task to complete in class.",
+        "collocation": "a difficult task",
+        "band": "6-7",
+        "synonyms": [
+          "job"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "classmate",
+        "pos": "noun",
+        "ipa": "/ˈklɑːsmeɪt/",
+        "meaningVi": "bạn cùng lớp",
+        "definitionEn": "",
+        "example": "My classmate lent me her notes when I was sick last week.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "schoolmate",
+          "peer"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "effort",
+        "pos": "noun",
+        "ipa": "/ˈɛfərt/",
+        "meaningVi": "nỗ lực",
+        "definitionEn": "the physical or mental energy needed to do something",
+        "example": "It took a lot of effort to finish the marathon in under four hours.",
+        "collocation": "make a concerted effort",
+        "band": "6-7",
+        "synonyms": [
+          "endeavor",
+          "exertion",
+          "attempt"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "prefect",
+        "pos": "noun",
+        "ipa": "/ˈpriːfekt/",
+        "meaningVi": "lớp trưởng; học sinh phụ trách nề nếp",
+        "definitionEn": "",
+        "example": "The prefect helped the teachers keep the corridors quiet during lessons.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "monitor",
+          "head pupil"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "know",
+        "pos": "verb",
+        "ipa": "/nəʊ/",
+        "meaningVi": "biết",
+        "definitionEn": "",
+        "example": "I know the answer, but I am not sure how to explain it.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "understand",
+          "realise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "recognise",
+        "pos": "verb",
+        "ipa": "/ˈrekəɡnaɪz/",
+        "meaningVi": "nhận ra",
+        "definitionEn": "",
+        "example": "She recognised her old friend from the photo immediately.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "identify",
+          "know"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "student",
+        "pos": "noun",
+        "ipa": "/ˈstjuː.dənt/",
+        "meaningVi": "học sinh, sinh viên",
+        "definitionEn": "",
+        "example": "Every student must bring a pen and paper to the exam room.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "pupil",
+          "learner"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "teach",
+        "pos": "verb",
+        "ipa": "/tiːt͡ʃ/",
+        "meaningVi": "dạy",
+        "definitionEn": "",
+        "example": "The teacher teaches English to students who want to study abroad.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "instruct",
+          "educate"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "qualifications",
+        "pos": "noun",
+        "ipa": "/ˌkwɒlɪfɪˈkeɪʃənz/",
+        "meaningVi": "bằng cấp; các điều kiện kèm theo",
+        "definitionEn": "exams passed or training completed",
+        "example": "Good qualifications are important when you apply for a job in a company.",
+        "collocation": "academic qualifications",
+        "band": "6-7",
+        "synonyms": [
+          "credentials",
+          "certificates"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "qualities",
+        "pos": "noun",
+        "ipa": "/ˈkwɒlɪtiz/",
+        "meaningVi": "các phẩm chất",
+        "definitionEn": "",
+        "example": "Honesty and patience are two important qualities of a good teacher.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "traits",
+          "characteristics"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-20",
+    "name": "Destination B2 · Unit 20: Weather and the environment",
+    "nameVi": "Destination B2 · Bài 20: Weather and the environment",
+    "blurb": "40 headwords from the unit vocabulary reference.",
+    "unit": 20,
+    "course": "b2",
+    "words": [
+      {
+        "word": "count",
+        "pos": "verb",
+        "ipa": "/kaʊnt/",
+        "meaningVi": "đếm",
+        "definitionEn": "",
+        "example": "Please count the chairs before the guests arrive at the party.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "tally",
+          "number"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "urban",
+        "pos": "adjective",
+        "ipa": "/ˈɜːrbən/",
+        "meaningVi": "thuộc đô thị",
+        "definitionEn": "relating to a city or town",
+        "example": "Urban life can be busy and noisy, but it offers many opportunities.",
+        "collocation": "urban planning",
+        "band": "6-7",
+        "synonyms": [
+          "metropolitan",
+          "city",
+          "municipal"
+        ],
+        "antonyms": [
+          "rural"
+        ]
+      },
+      {
+        "word": "suburban",
+        "pos": "adjective",
+        "ipa": "/səˈbɜːr.bən/",
+        "meaningVi": "ngoại ô",
+        "definitionEn": "relating to a suburb, a residential area outside a city",
+        "example": "Many families move to suburban areas to find bigger houses and quiet streets.",
+        "collocation": "suburban area",
+        "band": "6-7",
+        "synonyms": [
+          "outlying"
+        ],
+        "antonyms": [
+          "urban"
+        ]
+      },
+      {
+        "word": "environment",
+        "pos": "noun",
+        "ipa": "/in'vaiərənmənt/",
+        "meaningVi": "môi trường",
+        "definitionEn": "",
+        "example": "We must protect the environment for future generations to enjoy.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "nature",
+          "surroundings"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rural",
+        "pos": "adjective",
+        "ipa": "/ˈrʊrəl/",
+        "meaningVi": "thuộc nông thôn",
+        "definitionEn": "relating to the countryside rather than the town",
+        "example": "Rural areas often have fewer schools and hospitals than cities.",
+        "collocation": "rural landscape",
+        "band": "6-7",
+        "synonyms": [
+          "countryside",
+          "rustic",
+          "pastoral",
+          "agricultural"
+        ],
+        "antonyms": [
+          "urban"
+        ]
+      },
+      {
+        "word": "surroundings",
+        "pos": "noun",
+        "ipa": "/səˈraʊndɪŋz/",
+        "meaningVi": "môi trường xung quanh",
+        "definitionEn": "",
+        "example": "The quiet surroundings of the village help me relax after work.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "environment",
+          "setting"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "smog",
+        "pos": "noun",
+        "ipa": "/smɒɡ/",
+        "meaningVi": "khói mù",
+        "definitionEn": "a mixture of smoke and fog, often caused by air pollution",
+        "example": "Smog covered the city on the hot afternoon, making it hard to breathe.",
+        "collocation": "photochemical smog",
+        "band": "6-7",
+        "synonyms": [
+          "haze",
+          "air pollution"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "wind",
+        "pos": "noun",
+        "ipa": "/wɪnd/",
+        "meaningVi": "gió",
+        "definitionEn": "natural movement of air used for energy",
+        "example": "The strong wind blew the umbrellas away from the beach.",
+        "collocation": "wind energy",
+        "band": "6-7",
+        "synonyms": [
+          "air current"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fog",
+        "pos": "noun",
+        "ipa": "/fɑːɡ/",
+        "meaningVi": "sương mù",
+        "definitionEn": "A thick cloud of tiny water droplets suspended in the air near the ground, reducing visibility.",
+        "example": "The fog was so thick that the car lights could barely be seen.",
+        "collocation": "dense fog",
+        "band": "6-7",
+        "synonyms": [
+          "mist",
+          "haze"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "air",
+        "pos": "noun",
+        "ipa": "/ˈɛə/",
+        "meaningVi": "không khí",
+        "definitionEn": "",
+        "example": "Fresh air in the mountains makes me feel healthy and calm.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "atmosphere",
+          "breeze"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "smoke",
+        "pos": "noun",
+        "ipa": "/sməʊk/",
+        "meaningVi": "khói",
+        "definitionEn": "",
+        "example": "Smoke from the factory drifted over the village all afternoon.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fumes",
+          "vapour"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "reservoir",
+        "pos": "noun",
+        "ipa": "/ˈrezəvwɑː/",
+        "meaningVi": "hồ chứa nước",
+        "definitionEn": "a lake used for storing water",
+        "example": "The reservoir supplies water to the farms in the valley.",
+        "collocation": "a water reservoir",
+        "band": "6-7",
+        "synonyms": [
+          "lake",
+          "dam"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "mist",
+        "pos": "noun",
+        "ipa": "/mɪst/",
+        "meaningVi": "sương mù nhẹ",
+        "definitionEn": "",
+        "example": "A light mist covered the hills early in the morning.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fog",
+          "haze"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "lake",
+        "pos": "noun",
+        "ipa": "/leɪk/",
+        "meaningVi": "hồ",
+        "definitionEn": "",
+        "example": "We rowed a small boat across the lake at sunset.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "pond",
+          "lagoon"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "weather",
+        "pos": "noun",
+        "ipa": "/ˈweðə/",
+        "meaningVi": "thời tiết",
+        "definitionEn": "",
+        "example": "The weather is hot and humid during the summer months in Hanoi.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "climate",
+          "conditions"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "puddle",
+        "pos": "noun",
+        "ipa": "/ˈpʌdəl/",
+        "meaningVi": "vũng nước",
+        "definitionEn": "a small pool of rainwater",
+        "example": "The children jumped into the puddle after the rain stopped.",
+        "collocation": "a muddy puddle",
+        "band": "6-7",
+        "synonyms": [
+          "pool",
+          "splash"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "climate",
+        "pos": "noun",
+        "ipa": "/ˈklaɪmət/",
+        "meaningVi": "khí hậu",
+        "definitionEn": "The long-term average weather conditions of a region, including temperature, precipitation, and wind patterns.",
+        "example": "The climate in the north is cooler than the climate in the south.",
+        "collocation": "climate change",
+        "band": "6-7",
+        "synonyms": [
+          "weather pattern"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "pond",
+        "pos": "noun",
+        "ipa": "/pɒnd/",
+        "meaningVi": "ao",
+        "definitionEn": "",
+        "example": "Ducks swim in the pond near the old temple every afternoon.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "lake",
+          "pool"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "thunder",
+        "pos": "noun",
+        "ipa": "/ˈθʌndə/",
+        "meaningVi": "sấm",
+        "definitionEn": "",
+        "example": "The thunder rolled across the sky before the heavy rain began.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "rumble",
+          "boom"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "forecast",
+        "pos": "noun",
+        "ipa": "/ˈfɔːrkæst/",
+        "meaningVi": "dự báo",
+        "definitionEn": "A prediction of future weather conditions based on scientific analysis.",
+        "example": "The forecast says it will rain tomorrow, so take an umbrella.",
+        "collocation": "weather forecast",
+        "band": "6-7",
+        "synonyms": [
+          "prediction",
+          "outlook"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "lightning",
+        "pos": "noun",
+        "ipa": "/ˈlaɪtnɪŋ/",
+        "meaningVi": "sét, chớp",
+        "definitionEn": "A bright flash of light produced by electrical discharge in the atmosphere during a storm.",
+        "example": "Lightning struck a tall tree in the field during the storm.",
+        "collocation": "lightning bolt",
+        "band": "6-7",
+        "synonyms": [
+          "flash",
+          "bolt"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "prediction",
+        "pos": "noun",
+        "ipa": "/prɪˈdɪkʃən/",
+        "meaningVi": "sự dự đoán",
+        "definitionEn": "a statement about what will happen in the future based on evidence or analysis",
+        "example": "The prediction of the weather team was correct again this year.",
+        "collocation": "make predictions",
+        "band": "6-7",
+        "synonyms": [
+          "forecast",
+          "projection"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "global",
+        "pos": "adjective",
+        "ipa": "/ˈɡləʊbl/",
+        "meaningVi": "mang tính toàn cục",
+        "definitionEn": "",
+        "example": "The global economy depends on trade between countries.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "worldwide",
+          "international"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "waste",
+        "pos": "noun",
+        "ipa": "/weɪst/",
+        "meaningVi": "chất thải, sự lãng phí",
+        "definitionEn": "",
+        "example": "Waste from the market is collected every morning by the local workers.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "rubbish",
+          "refuse"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "worldwide",
+        "pos": "adjective",
+        "ipa": "/ˌwɜːldˈwaɪd/",
+        "meaningVi": "trên toàn thế giới",
+        "definitionEn": "happening everywhere in the world",
+        "example": "The band has fans worldwide, from Asia to Europe and America.",
+        "collocation": "worldwide popularity",
+        "band": "6-7",
+        "synonyms": [
+          "global",
+          "international"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "litter",
+        "pos": "noun",
+        "ipa": "/ˈlɪtə/",
+        "meaningVi": "rác thải bừa bãi",
+        "definitionEn": "Waste material, such as paper and cans, left in public places.",
+        "example": "Litter on the beach harms the sea animals and spoils the view.",
+        "collocation": "litter bin",
+        "band": "6-7",
+        "synonyms": [
+          "rubbish",
+          "trash"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "plain",
+        "pos": "noun",
+        "ipa": "/pleɪn/",
+        "meaningVi": "đồng bằng",
+        "definitionEn": "",
+        "example": "The rice fields spread across the wide plain near the river.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "flatland",
+          "lowland"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "land",
+        "pos": "noun",
+        "ipa": "/lænd/",
+        "meaningVi": "đất liền",
+        "definitionEn": "",
+        "example": "The farmers worked on the land from sunrise until sunset.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "ground",
+          "soil"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rubbish",
+        "pos": "noun",
+        "ipa": "/ˈrʌbɪʃ/",
+        "meaningVi": "rác",
+        "definitionEn": "",
+        "example": "Please put the rubbish in the bin before you leave the classroom.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "trash",
+          "waste"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "clean",
+        "pos": "adjective",
+        "ipa": "/kliːn/",
+        "meaningVi": "sạch, làm sạch",
+        "definitionEn": "",
+        "example": "Keep the kitchen clean so that the food stays safe to eat.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "spotless",
+          "tidy"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "field",
+        "pos": "noun",
+        "ipa": "/fiːld/",
+        "meaningVi": "cánh đồng",
+        "definitionEn": "",
+        "example": "The children played football in the field behind the school.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "meadow",
+          "pasture"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "clear",
+        "pos": "adjective",
+        "ipa": "/klɪə(r)/",
+        "meaningVi": "rõ ràng",
+        "definitionEn": "",
+        "example": "The sky was clear after the storm, and the stars were bright.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "bright",
+          "cloudless"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "desert",
+        "pos": "noun",
+        "ipa": "/dɪˈzɜːt/",
+        "meaningVi": "sa mạc",
+        "definitionEn": "",
+        "example": "The camel walked slowly across the hot sand of the desert.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "wasteland",
+          "dune area"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "pour",
+        "pos": "verb",
+        "ipa": "/pɔː/",
+        "meaningVi": "rót, đổ (chất lỏng)",
+        "definitionEn": "",
+        "example": "Pour the juice into a tall glass and add some ice.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "spill",
+          "decant"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "extinct",
+        "pos": "adjective",
+        "ipa": "/ɪkˈstɪŋkt/",
+        "meaningVi": "tuyệt chủng",
+        "definitionEn": "",
+        "example": "The dodo became extinct about three hundred years ago.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "vanished",
+          "dead"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "drizzle",
+        "pos": "verb",
+        "ipa": "/ˈdrɪzl/",
+        "meaningVi": "mưa phùn",
+        "definitionEn": "",
+        "example": "Light rain began to drizzle as we walked to the bus stop.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "sprinkle",
+          "spit"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "endangered",
+        "pos": "adjective",
+        "ipa": "/ɪnˈdeɪn.dʒəd/",
+        "meaningVi": "có nguy cơ tuyệt chủng",
+        "definitionEn": "at risk of extinction",
+        "example": "The tiger is an endangered animal, so the government protects its forests.",
+        "collocation": "endangered species",
+        "band": "6-7",
+        "synonyms": [
+          "threatened",
+          "at-risk"
+        ],
+        "antonyms": [
+          "thriving"
+        ]
+      },
+      {
+        "word": "recycle",
+        "pos": "verb",
+        "ipa": "/ˌriːˈsaɪkəl/",
+        "meaningVi": "tái chế",
+        "definitionEn": "to treat used materials so they can be used again",
+        "example": "We recycle glass bottles and cans to reduce waste in the city.",
+        "collocation": "recycle waste",
+        "band": "6-7",
+        "synonyms": [
+          "reuse",
+          "reprocess"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "reuse",
+        "pos": "verb",
+        "ipa": "/riːˈjuːz/",
+        "meaningVi": "tái sử dụng",
+        "definitionEn": "",
+        "example": "You can reuse plastic containers to store food in the kitchen.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "recycle",
+          "repurpose"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-22",
+    "name": "Destination B2 · Unit 22: Money and shopping",
+    "nameVi": "Destination B2 · Bài 22: Money and shopping",
+    "blurb": "12 headwords from the unit vocabulary reference.",
+    "unit": 22,
+    "course": "b2",
+    "words": [
+      {
+        "word": "products",
+        "pos": "noun",
+        "ipa": "/ˈpɹɒd.əkts/",
+        "meaningVi": "các sản phẩm",
+        "definitionEn": "",
+        "example": "The shop sells local products such as honey, tea, and handmade soap.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "goods",
+          "merchandise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "economic",
+        "pos": "adjective",
+        "ipa": "/ˌiːkəˈnɒmɪk/",
+        "meaningVi": "kinh tế",
+        "definitionEn": "",
+        "example": "The economic growth of the country has improved the lives of many families.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "financial",
+          "commercial"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "economical",
+        "pos": "adjective",
+        "ipa": "/ˌiːkəˈnɒmɪkəl/",
+        "meaningVi": "tiết kiệm",
+        "definitionEn": "using money or resources carefully",
+        "example": "A small car is more economical because it uses less petrol.",
+        "collocation": "an economical option",
+        "band": "6-7",
+        "synonyms": [
+          "thrifty",
+          "cost-effective"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "goods",
+        "pos": "noun",
+        "ipa": "/ɡʊdz/",
+        "meaningVi": "hàng hóa",
+        "definitionEn": "things that are made to be sold",
+        "example": "The truck carries goods from the factory to the port every night.",
+        "collocation": "consumer goods",
+        "band": "6-7",
+        "synonyms": [
+          "products",
+          "merchandise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "receipt",
+        "pos": "noun",
+        "ipa": "/rɪˈsiːt/",
+        "meaningVi": "hoá đơn mua hàng",
+        "definitionEn": "a printed note showing that you have paid for something",
+        "example": "Please keep the receipt if you want to return the item later.",
+        "collocation": "keep the receipt",
+        "band": "6-7",
+        "synonyms": [
+          "proof of payment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bill",
+        "pos": "noun",
+        "ipa": "/bɪl/",
+        "meaningVi": "hóa đơn",
+        "definitionEn": "",
+        "example": "The waiter brought the bill to our table after the meal.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "invoice",
+          "check"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "exchange",
+        "pos": "verb",
+        "ipa": "/ɪksˈtʃeɪndʒ/",
+        "meaningVi": "tổng đài (điện thoại)",
+        "definitionEn": "to give and receive information, ideas, or opinions in a conversation",
+        "example": "The shop gave me a new shirt in exchange for the old one.",
+        "collocation": "exchange ideas",
+        "band": "6-7",
+        "synonyms": [
+          "share",
+          "swap"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "make",
+        "pos": "noun",
+        "ipa": "/meɪk/",
+        "meaningVi": "nhãn hiệu; kiểu",
+        "definitionEn": "",
+        "example": "This make of camera is popular with professional photographers.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "brand",
+          "model"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fake",
+        "pos": "adjective",
+        "ipa": "/feɪk/",
+        "meaningVi": "giả, giả mạo",
+        "definitionEn": "",
+        "example": "The bag was fake, so it broke after one week of use.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "counterfeit",
+          "imitation"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "brand",
+        "pos": "noun",
+        "ipa": "/brænd/",
+        "meaningVi": "thương hiệu",
+        "definitionEn": "a name, term, design, or symbol that identifies a product",
+        "example": "This brand of coffee is sold in most supermarkets across the country.",
+        "collocation": "brand awareness",
+        "band": "6-7",
+        "synonyms": [
+          "trademark",
+          "label"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "plastic",
+        "pos": "adjective",
+        "ipa": "/ˈplæstɪk/",
+        "meaningVi": "nhựa",
+        "definitionEn": "",
+        "example": "The plastic bottle was light and easy to carry on the trip.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "synthetic",
+          "artificial"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "bargain",
+        "pos": "noun",
+        "ipa": "/ˈbɑːrɡɪn/",
+        "meaningVi": "món hời, mặc cả",
+        "definitionEn": "An item bought or sold at a price lower than its usual value; a negotiation.",
+        "example": "We found a bargain at the market and bought two shirts for the price of one.",
+        "collocation": "bargain hunt",
+        "band": "6-7",
+        "synonyms": [
+          "deal",
+          "good buy"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "checkout",
+        "pos": "noun",
+        "ipa": "/ˈtʃekaʊt/",
+        "meaningVi": "quầy thanh toán",
+        "definitionEn": "",
+        "example": "Please go to the checkout to pay for your shopping before you leave.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cash desk",
+          "till"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-24",
+    "name": "Destination B2 · Unit 24: Entertainment",
+    "nameVi": "Destination B2 · Bài 24: Entertainment",
+    "blurb": "22 headwords from the unit vocabulary reference.",
+    "unit": 24,
+    "course": "b2",
+    "words": [
+      {
+        "word": "enjoy",
+        "pos": "verb",
+        "ipa": "/ɪnˈdʒɔɪ/",
+        "meaningVi": "tận hưởng",
+        "definitionEn": "to get pleasure from something",
+        "example": "We enjoy cooking together every weekend in the big kitchen.",
+        "collocation": "enjoy life",
+        "band": "6-7",
+        "synonyms": [
+          "relish",
+          "appreciate"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "entertain",
+        "pos": "verb",
+        "ipa": "/ˌentəˈteɪn/",
+        "meaningVi": "giải trí",
+        "definitionEn": "",
+        "example": "The clown tried to entertain the children at the birthday party.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "amuse",
+          "delight"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "discount",
+        "pos": "noun",
+        "ipa": "/ˈdɪskaʊnt/",
+        "meaningVi": "chiết khấu, giảm giá",
+        "definitionEn": "A reduction from the usual price of something.",
+        "example": "The shop offers a discount on all winter clothes this week.",
+        "collocation": "discount rate",
+        "band": "6-7",
+        "synonyms": [
+          "markdown",
+          "reduction"
+        ],
+        "antonyms": [
+          "markup"
+        ]
+      },
+      {
+        "word": "play",
+        "pos": "verb",
+        "ipa": "/pleɪ/",
+        "meaningVi": "chơi",
+        "definitionEn": "a story written to be acted on stage",
+        "example": "The children play in the park until the sun goes down.",
+        "collocation": "a Shakespeare play",
+        "band": "6-7",
+        "synonyms": [
+          "frolic",
+          "romp"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "offer",
+        "pos": "noun",
+        "ipa": "/ˈɒfə(r)/",
+        "meaningVi": "cung cấp, đưa ra",
+        "definitionEn": "",
+        "example": "The hotel will offer free breakfast to all guests this month.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "provide",
+          "supply"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "act",
+        "pos": "verb",
+        "ipa": "/æk/",
+        "meaningVi": "hành động",
+        "definitionEn": "",
+        "example": "She will act in a play about the history of the village next month.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "perform",
+          "portray"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "price",
+        "pos": "noun",
+        "ipa": "/praɪs/",
+        "meaningVi": "giá cả",
+        "definitionEn": "the amount of money you must pay for something",
+        "example": "The price of rice has risen sharply this year.",
+        "collocation": "raise prices",
+        "band": "6-7",
+        "synonyms": [
+          "cost"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "star",
+        "pos": "verb",
+        "ipa": "/stɑː(ɹ)/",
+        "meaningVi": "đóng vai chính",
+        "definitionEn": "",
+        "example": "The actress will star in the new film about a famous scientist.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "feature",
+          "appear"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cost",
+        "pos": "noun",
+        "ipa": "/kɒst/",
+        "meaningVi": "chi phí",
+        "definitionEn": "the amount of money needed to buy or make something",
+        "example": "The cost of the course includes books and a certificate.",
+        "collocation": "production costs",
+        "band": "6-7",
+        "synonyms": [
+          "expense"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "audition",
+        "pos": "noun",
+        "ipa": "/ɔːˈdɪʃən/",
+        "meaningVi": "buổi thử vai",
+        "definitionEn": "a short performance to test a performer's ability",
+        "example": "She went to an audition for the school play and got a small role.",
+        "collocation": "attend an audition",
+        "band": "6-7",
+        "synonyms": [
+          "tryout",
+          "casting"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "change",
+        "pos": "noun",
+        "ipa": "/tʃeɪndʒ/",
+        "meaningVi": "sự thay đổi",
+        "definitionEn": "the process of becoming different",
+        "example": "There has been a change in the time of the meeting.",
+        "collocation": "undergo change",
+        "band": "6-7",
+        "synonyms": [
+          "alteration",
+          "transformation",
+          "shift",
+          "variation"
+        ],
+        "antonyms": [
+          "stability"
+        ]
+      },
+      {
+        "word": "cash",
+        "pos": "noun",
+        "ipa": "/kæʃ/",
+        "meaningVi": "tiền mặt",
+        "definitionEn": "",
+        "example": "Please pay in cash if the card machine is not working.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "money",
+          "notes"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rehearsal",
+        "pos": "noun",
+        "ipa": "/rɪˈhɜː.səl/",
+        "meaningVi": "buổi tập dượt",
+        "definitionEn": "a practice of a performance before the real one",
+        "example": "The rehearsal lasted three hours before the actors were ready for the show.",
+        "collocation": "dress rehearsal",
+        "band": "6-7",
+        "synonyms": [
+          "practice run"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "wealth",
+        "pos": "noun",
+        "ipa": "/welθ/",
+        "meaningVi": "sự giàu có, của cải",
+        "definitionEn": "a large amount of money, property, or valuable possessions",
+        "example": "The wealth of the country comes from its farms and factories.",
+        "collocation": "accumulate wealth",
+        "band": "6-7",
+        "synonyms": [
+          "riches",
+          "affluence",
+          "prosperity"
+        ],
+        "antonyms": [
+          "poverty"
+        ]
+      },
+      {
+        "word": "rehearse",
+        "pos": "verb",
+        "ipa": "/rɪˈhɜːs/",
+        "meaningVi": "tập dượt",
+        "definitionEn": "to practise a talk or performance before the real one",
+        "example": "The singers rehearse every evening before the big concert.",
+        "collocation": "rehearse a talk",
+        "band": "6-7",
+        "synonyms": [
+          "practise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fortune",
+        "pos": "noun",
+        "ipa": "/ˈfɔːtʃuːn/",
+        "meaningVi": "gia tài, số tiền lớn",
+        "definitionEn": "",
+        "example": "He made a fortune in the stock market during the boom years.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "wealth",
+          "riches"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "till",
+        "pos": "noun",
+        "ipa": "/tɪl/",
+        "meaningVi": "máy tính tiền; quầy thu ngân",
+        "definitionEn": "",
+        "example": "The cashier counted the money in the till before closing the shop.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "cash register",
+          "cash drawer"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "practise",
+        "pos": "verb",
+        "ipa": "/ˈpræktɪs/",
+        "meaningVi": "thực hành, thực hiện",
+        "definitionEn": "",
+        "example": "Students practise speaking English with a partner every Monday.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "rehearse",
+          "drill"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "scene",
+        "pos": "noun",
+        "ipa": "/siːn/",
+        "meaningVi": "cảnh, giới (văn hóa)",
+        "definitionEn": "",
+        "example": "The film has a beautiful scene of the sunset over the sea.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "setting",
+          "view"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "scenery",
+        "pos": "noun",
+        "ipa": "/ˈsiːnəri/",
+        "meaningVi": "phong cảnh",
+        "definitionEn": "the natural features of a place",
+        "example": "The scenery along the coast is stunning, with blue sea and white beaches.",
+        "collocation": "stunning scenery",
+        "band": "6-7",
+        "synonyms": [
+          "landscape"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "hear",
+        "pos": "verb",
+        "ipa": "/hɪə(ɹ)/",
+        "meaningVi": "nghe thấy",
+        "definitionEn": "",
+        "example": "I could hear the music from the room next door.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "listen to",
+          "catch"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "stage",
+        "pos": "noun",
+        "ipa": "/steɪdʒ/",
+        "meaningVi": "giai đoạn",
+        "definitionEn": "a point in a process of development",
+        "example": "The singers walked onto the stage to a loud round of applause.",
+        "collocation": "an early stage",
+        "band": "6-7",
+        "synonyms": [
+          "platform",
+          "podium"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-26",
+    "name": "Destination B2 · Unit 26: Fashion and design",
+    "nameVi": "Destination B2 · Bài 26: Fashion and design",
+    "blurb": "44 headwords from the unit vocabulary reference.",
+    "unit": 26,
+    "course": "b2",
+    "words": [
+      {
+        "word": "band",
+        "pos": "noun",
+        "ipa": "/bænd/",
+        "meaningVi": "dải, vành màu",
+        "definitionEn": "",
+        "example": "A band of students played music in the square on Sunday evening.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "group",
+          "ensemble"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "orchestra",
+        "pos": "noun",
+        "ipa": "/ˈɔːkɪstrə/",
+        "meaningVi": "dàn nhạc giao hưởng",
+        "definitionEn": "a large group of musicians",
+        "example": "The orchestra played a famous symphony at the concert hall.",
+        "collocation": "a symphony orchestra",
+        "band": "6-7",
+        "synonyms": [
+          "ensemble",
+          "band"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "wear",
+        "pos": "verb",
+        "ipa": "/weə/",
+        "meaningVi": "sự mòn, hao mòn",
+        "definitionEn": "",
+        "example": "The wear on the tyres means that they should be replaced soon.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "deterioration",
+          "erosion"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "group",
+        "pos": "noun",
+        "ipa": "/ɡruːp/",
+        "meaningVi": "nhóm",
+        "definitionEn": "a number of people who work or study together",
+        "example": "A group of students visited the museum on Friday morning.",
+        "collocation": "group project",
+        "band": "6-7",
+        "synonyms": [
+          "team"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "costume",
+        "pos": "noun",
+        "ipa": "/ˈkɒs.tjuːm/",
+        "meaningVi": "trang phục hóa trang",
+        "definitionEn": "a set of clothes worn to represent a particular character or culture, especially during festivals",
+        "example": "She wore a colourful costume for the school play about ancient Vietnam.",
+        "collocation": "traditional costume",
+        "band": "6-7",
+        "synonyms": [
+          "outfit",
+          "attire"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "review",
+        "pos": "noun",
+        "ipa": "/rɪˈvjuː/",
+        "meaningVi": "sự xem xét, ôn tập",
+        "definitionEn": "to look again at something you have studied",
+        "example": "The teacher gave a review of the lessons before the test.",
+        "collocation": "review your notes",
+        "band": "6-7",
+        "synonyms": [
+          "revision",
+          "appraisal"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "suit",
+        "pos": "noun",
+        "ipa": "/suːt/",
+        "meaningVi": "bộ com-lê",
+        "definitionEn": "",
+        "example": "He wore a dark suit to the job interview and looked very smart.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "outfit",
+          "ensemble"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "criticism",
+        "pos": "noun",
+        "ipa": "/ˈkrɪtɪsɪzəm/",
+        "meaningVi": "sự phê bình, chỉ trích",
+        "definitionEn": "",
+        "example": "The film received criticism for its weak plot and poor acting.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "censure",
+          "disapproval"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "dye",
+        "pos": "verb",
+        "ipa": "/daɪ/",
+        "meaningVi": "thuốc nhuộm",
+        "definitionEn": "to change the colour of something",
+        "example": "She used a natural dye made from flowers to colour the cloth.",
+        "collocation": "dye fabric",
+        "band": "6-7",
+        "synonyms": [
+          "colourant",
+          "pigment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "paint",
+        "pos": "verb",
+        "ipa": "/peɪnt/",
+        "meaningVi": "sơn",
+        "definitionEn": "",
+        "example": "We paint the walls of the classroom a bright yellow colour.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "coat",
+          "colour"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "ticket",
+        "pos": "noun",
+        "ipa": "/ˈtɪk.ɪt/",
+        "meaningVi": "vé",
+        "definitionEn": "a piece of paper or e-document that lets you travel",
+        "example": "The ticket to the concert cost forty dollars for each person.",
+        "collocation": "book a ticket",
+        "band": "6-7",
+        "synonyms": [
+          "pass"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fit",
+        "pos": "verb",
+        "ipa": "/fɪt/",
+        "meaningVi": "đưa vào, lắp vào",
+        "definitionEn": "",
+        "example": "The new shoes fit well, so I can walk all day without pain.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "suit",
+          "match"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fee",
+        "pos": "noun",
+        "ipa": "/fiː/",
+        "meaningVi": "khoản phí",
+        "definitionEn": "an amount of money paid for a service or to join",
+        "example": "There is a small fee for entering the museum on weekends.",
+        "collocation": "entrance fee",
+        "band": "6-7",
+        "synonyms": [
+          "charge",
+          "payment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "match",
+        "pos": "verb",
+        "ipa": "/mætʃ/",
+        "meaningVi": "phù hợp, khớp với",
+        "definitionEn": "a sports contest between two teams or players",
+        "example": "The colour of the curtains does not match the carpet.",
+        "collocation": "home match",
+        "band": "6-7",
+        "synonyms": [
+          "game",
+          "fixture"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "novel",
+        "pos": "noun",
+        "ipa": "/ˈnɒvl/",
+        "meaningVi": "tiểu thuyết",
+        "definitionEn": "",
+        "example": "She read a long novel about a family living in the countryside.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "book",
+          "story"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fiction",
+        "pos": "noun",
+        "ipa": "/ˈfɪkʃən/",
+        "meaningVi": "tiểu thuyết, văn hư cấu",
+        "definitionEn": "books about imaginary people and events",
+        "example": "She enjoys reading fiction, especially stories about love and adventure.",
+        "collocation": "a work of fiction",
+        "band": "6-7",
+        "synonyms": [
+          "fable",
+          "tale"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cloth",
+        "pos": "noun",
+        "ipa": "/klɒθ/",
+        "meaningVi": "vải",
+        "definitionEn": "",
+        "example": "The cloth was soft and light, so it was perfect for a summer dress.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fabric",
+          "material"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "clothing",
+        "pos": "noun",
+        "ipa": "/ˈkləʊðɪŋ/",
+        "meaningVi": "quần áo",
+        "definitionEn": "",
+        "example": "The shop sells clothing for children, teenagers, and adults.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "garments",
+          "apparel"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "cartoon",
+        "pos": "noun",
+        "ipa": "/kɑːˈtuːn/",
+        "meaningVi": "phim hoạt hình; tranh biếm họa",
+        "definitionEn": "",
+        "example": "The children laughed at the funny cartoon on television.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "animation",
+          "comic"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "blouse",
+        "pos": "noun",
+        "ipa": "/blaʊs/",
+        "meaningVi": "áo kiểu nữ",
+        "definitionEn": "",
+        "example": "She wore a white blouse with a long grey skirt to the office.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "shirt",
+          "top"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "design",
+        "pos": "verb",
+        "ipa": "/dɪˈzaɪn/",
+        "meaningVi": "thiết kế",
+        "definitionEn": "a plan for how something will look; to plan something",
+        "example": "The students design posters that show the dangers of litter.",
+        "collocation": "a modern design",
+        "band": "6-7",
+        "synonyms": [
+          "create",
+          "plan"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "comedian",
+        "pos": "noun",
+        "ipa": "/kəˈmiːdiən/",
+        "meaningVi": "diễn viên hài",
+        "definitionEn": "",
+        "example": "The comedian made the audience laugh with his funny stories.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "comic",
+          "humorist"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "manufacture",
+        "pos": "verb",
+        "ipa": "/ˌmænjʊˈfæktʃə/",
+        "meaningVi": "sản xuất",
+        "definitionEn": "to make goods in large numbers",
+        "example": "The company will manufacture electric scooters in the new factory.",
+        "collocation": "manufacture goods",
+        "band": "6-7",
+        "synonyms": [
+          "produce",
+          "make"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "watch",
+        "pos": "verb",
+        "ipa": "/wɒtʃ/",
+        "meaningVi": "quan sát, xem",
+        "definitionEn": "",
+        "example": "We watch a film together every Friday evening after dinner.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "view",
+          "observe"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "see",
+        "pos": "verb",
+        "ipa": "/siː/",
+        "meaningVi": "nhìn thấy",
+        "definitionEn": "",
+        "example": "I can see the mountains from my bedroom window.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "notice",
+          "spot"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "current",
+        "pos": "adjective",
+        "ipa": "/'kʌrənt/",
+        "meaningVi": "hiện tại",
+        "definitionEn": "",
+        "example": "The current price of petrol is higher than it was last year.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "present",
+          "contemporary"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "new",
+        "pos": "adjective",
+        "ipa": "/njuː/",
+        "meaningVi": "mới",
+        "definitionEn": "",
+        "example": "The school opened a new library with thousands of books.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "fresh",
+          "novel"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "look",
+        "pos": "verb",
+        "ipa": "/lʊk/",
+        "meaningVi": "nhìn",
+        "definitionEn": "",
+        "example": "Please look at the picture and describe what you can see.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "glance",
+          "gaze"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "modern",
+        "pos": "adjective",
+        "ipa": "/ˈmɒdən/",
+        "meaningVi": "hiện đại",
+        "definitionEn": "relating to the present time",
+        "example": "The museum has a modern design with large glass windows.",
+        "collocation": "modern architecture",
+        "band": "6-7",
+        "synonyms": [
+          "contemporary",
+          "up-to-date"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "listen",
+        "pos": "verb",
+        "ipa": "/ˈlɪsn/",
+        "meaningVi": "lắng nghe",
+        "definitionEn": "",
+        "example": "Please listen carefully to the instructions before you start.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "attend",
+          "hear"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "appearance",
+        "pos": "noun",
+        "ipa": "/əˈpɪərəns/",
+        "meaningVi": "sự xuất hiện, vẻ ngoài",
+        "definitionEn": "",
+        "example": "Her appearance on television made her famous across the country.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "look",
+          "arrival"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "salary",
+        "pos": "noun",
+        "ipa": "/ˈsæləri/",
+        "meaningVi": "tiền lương",
+        "definitionEn": "fixed pay received each month",
+        "example": "The new salary is higher than the old one, so she feels more secure.",
+        "collocation": "a high salary",
+        "band": "6-7",
+        "synonyms": [
+          "pay",
+          "earnings"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "supply",
+        "pos": "verb",
+        "ipa": "/səˈplaɪ/",
+        "meaningVi": "cung cấp",
+        "definitionEn": "The amount of a product that is available for consumers to purchase.",
+        "example": "The water company supplies clean water to every house on the street.",
+        "collocation": "supply chain",
+        "band": "6-7",
+        "synonyms": [
+          "provision",
+          "stock"
+        ],
+        "antonyms": [
+          "demand"
+        ]
+      },
+      {
+        "word": "commute",
+        "pos": "verb",
+        "ipa": "/kəˈmjuːt/",
+        "meaningVi": "việc đi lại (đi làm)",
+        "definitionEn": "A regular journey to and from work or study.",
+        "example": "I commute to the city centre by train, which takes about forty minutes.",
+        "collocation": "long commute",
+        "band": "6-7",
+        "synonyms": [
+          "daily journey",
+          "trip to work"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "produce",
+        "pos": "verb",
+        "ipa": "/prəˈdjuːs/",
+        "meaningVi": "sản xuất, tạo ra",
+        "definitionEn": "to cause a particular result or effect",
+        "example": "The farm produces fresh milk and cheese for local markets.",
+        "collocation": "produce an effect",
+        "band": "6-7",
+        "synonyms": [
+          "generate",
+          "create",
+          "yield"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "deliver",
+        "pos": "verb",
+        "ipa": "/dɪˈlɪvə(r)/",
+        "meaningVi": "truyền tải, đưa đến",
+        "definitionEn": "",
+        "example": "The newspaper will deliver the message to every home in the town.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "convey",
+          "transmit"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "glimpse",
+        "pos": "verb",
+        "ipa": "/ɡlɪmps/",
+        "meaningVi": "thoáng thấy",
+        "definitionEn": "",
+        "example": "I caught a glimpse of the famous actor at the airport.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "glance",
+          "peek"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "retire",
+        "pos": "verb",
+        "ipa": "/rɪˈtaɪə/",
+        "meaningVi": "nghỉ hưu",
+        "definitionEn": "to stop working because of age",
+        "example": "My father plans to retire next year after twenty-five years in the bank.",
+        "collocation": "retire early",
+        "band": "6-7",
+        "synonyms": [
+          "stop working",
+          "withdraw"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "glance",
+        "pos": "verb",
+        "ipa": "/ɡlɑːns/",
+        "meaningVi": "liếc nhìn",
+        "definitionEn": "",
+        "example": "She took a quick glance at the clock and realised she was late.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "peek",
+          "look"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "resign",
+        "pos": "verb",
+        "ipa": "/rɪˈzaɪn/",
+        "meaningVi": "từ chức",
+        "definitionEn": "",
+        "example": "He decided to resign from his job after three years at the company.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "quit",
+          "step down"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "average",
+        "pos": "adjective",
+        "ipa": "/ˈævərɪdʒ/",
+        "meaningVi": "trung bình",
+        "definitionEn": "",
+        "example": "The average temperature in the city is about twenty-five degrees.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "typical",
+          "normal"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "fire",
+        "pos": "verb",
+        "ipa": "/ˈfɑeə(ɹ)/",
+        "meaningVi": "sa thải; bắn",
+        "definitionEn": "",
+        "example": "The company decided to fire the manager after the scandal.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "dismiss",
+          "sack"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "everyday",
+        "pos": "adjective",
+        "ipa": "/ˈevrideɪ/",
+        "meaningVi": "hàng ngày, thường nhật",
+        "definitionEn": "",
+        "example": "Everyday life in the village is simple, quiet, and peaceful.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "daily",
+          "ordinary"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "sack",
+        "pos": "verb",
+        "ipa": "/sæk/",
+        "meaningVi": "sa thải; bao tải",
+        "definitionEn": "",
+        "example": "The owner had to sack two workers because the shop lost money.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "dismiss",
+          "fire"
+        ],
+        "antonyms": []
+      }
+    ]
+  },
+  {
+    "slug": "destination-b2-unit-28",
+    "name": "Destination B2 · Unit 28: Work and business",
+    "nameVi": "Destination B2 · Bài 28: Work and business",
+    "blurb": "18 headwords from the unit vocabulary reference.",
+    "unit": 28,
+    "course": "b2",
+    "words": [
+      {
+        "word": "employer",
+        "pos": "noun",
+        "ipa": "/ɪmˈplɔɪər/",
+        "meaningVi": "chủ lao động, người sử dụng lao động",
+        "definitionEn": "a person or organization that hires people to work for them",
+        "example": "The employer offers free lunch to all the staff on Fridays.",
+        "collocation": "employer contributions",
+        "band": "6-7",
+        "synonyms": [
+          "company",
+          "boss"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "employee",
+        "pos": "noun",
+        "ipa": "/ɪmˈplɔɪiː/",
+        "meaningVi": "nhân viên",
+        "definitionEn": "a person who is paid to work for an organization or another person",
+        "example": "Each employee must sign the form before the end of the week.",
+        "collocation": "employee benefits",
+        "band": "6-7",
+        "synonyms": [
+          "worker",
+          "staff member"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "overtime",
+        "pos": "noun",
+        "ipa": "/ˈəʊvətaɪm/",
+        "meaningVi": "giờ làm thêm",
+        "definitionEn": "",
+        "example": "She worked overtime for two weeks to finish the important report.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "extra hours"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "staff",
+        "pos": "noun",
+        "ipa": "/stɑːf/",
+        "meaningVi": "nhân viên",
+        "definitionEn": "the people who work for an organisation",
+        "example": "The hotel staff are friendly and always ready to help guests.",
+        "collocation": "a member of staff",
+        "band": "6-7",
+        "synonyms": [
+          "personnel",
+          "workforce"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "promotion",
+        "pos": "noun",
+        "ipa": "/prəˈməʊʃən/",
+        "meaningVi": "sự thăng chức; việc quảng bá",
+        "definitionEn": "the act of moving an employee to a higher position or rank",
+        "example": "She hopes for a promotion after finishing her training next year.",
+        "collocation": "career promotion",
+        "band": "6-7",
+        "synonyms": [
+          "advancement",
+          "upgrade"
+        ],
+        "antonyms": [
+          "demotion"
+        ]
+      },
+      {
+        "word": "job",
+        "pos": "noun",
+        "ipa": "/dʒɒb/",
+        "meaningVi": "công việc",
+        "definitionEn": "work that you do regularly to earn money",
+        "example": "She found a job in a bookshop near her home last month.",
+        "collocation": "a full-time job",
+        "band": "6-7",
+        "synonyms": [
+          "position",
+          "post"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "pension",
+        "pos": "noun",
+        "ipa": "/ˈpenʃən/",
+        "meaningVi": "lương hưu",
+        "definitionEn": "a regular payment made to a retired person by their employer or the state",
+        "example": "After he retired, he lived comfortably on his pension.",
+        "collocation": "pension contribution",
+        "band": "6-7",
+        "synonyms": [
+          "retirement payment"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "work",
+        "pos": "noun",
+        "ipa": "/wɜːk/",
+        "meaningVi": "công việc, làm việc",
+        "definitionEn": "",
+        "example": "He starts work at seven and finishes at five in the afternoon.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "job",
+          "labour"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "career",
+        "pos": "noun",
+        "ipa": "/kəˈrɪər/",
+        "meaningVi": "sự nghiệp",
+        "definitionEn": "the job or series of jobs that someone does over a long period of their life, often with opportunities for advancement",
+        "example": "She chose a long career in teaching because she loves working with children.",
+        "collocation": "career path",
+        "band": "6-7",
+        "synonyms": [
+          "profession",
+          "vocation"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "company",
+        "pos": "noun",
+        "ipa": "/ˈkʌmpəni/",
+        "meaningVi": "công ty",
+        "definitionEn": "a business that sells goods or services",
+        "example": "The company hired ten new engineers for its growing team.",
+        "collocation": "set up a company",
+        "band": "6-7",
+        "synonyms": [
+          "firm",
+          "business"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "earn",
+        "pos": "verb",
+        "ipa": "/ɜːn/",
+        "meaningVi": "kiếm được",
+        "definitionEn": "to receive money for work",
+        "example": "Students often earn extra money by working part-time in the evenings.",
+        "collocation": "earn a living",
+        "band": "6-7",
+        "synonyms": [
+          "make",
+          "gain"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "business",
+        "pos": "noun",
+        "ipa": "/ˈbɪd.nəs/",
+        "meaningVi": "công việc kinh doanh",
+        "definitionEn": "",
+        "example": "My uncle runs a small business that sells coffee and tea.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "company",
+          "enterprise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "win",
+        "pos": "verb",
+        "ipa": "/wɪn/",
+        "meaningVi": "thắng, giành chiến thắng",
+        "definitionEn": "",
+        "example": "Our class hopes to win the prize for the best science project.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "triumph",
+          "prevail"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "union",
+        "pos": "noun",
+        "ipa": "/ˈjuːniən/",
+        "meaningVi": "công đoàn, liên minh",
+        "definitionEn": "",
+        "example": "The workers joined a union to ask for better pay and holidays.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "association",
+          "alliance"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "gain",
+        "pos": "verb",
+        "ipa": "/ɡeɪn/",
+        "meaningVi": "đạt được",
+        "definitionEn": "",
+        "example": "Students gain confidence when they speak English in front of others.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "acquire",
+          "obtain"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "charity",
+        "pos": "noun",
+        "ipa": "/ˈtʃær.ə.ti/",
+        "meaningVi": "từ thiện",
+        "definitionEn": "an organisation that raises money to help people in need",
+        "example": "The charity collects clothes for families who live in poverty.",
+        "collocation": "charity shop",
+        "band": "6-7",
+        "synonyms": [
+          "non-profit"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "raise",
+        "pos": "noun",
+        "ipa": "/reɪz/",
+        "meaningVi": "tăng (giá)",
+        "definitionEn": "",
+        "example": "She asked her boss for a raise after completing the difficult project.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "increase",
+          "pay rise"
+        ],
+        "antonyms": []
+      },
+      {
+        "word": "rise",
+        "pos": "noun",
+        "ipa": "/raɪz/",
+        "meaningVi": "nở, dâng lên",
+        "definitionEn": "",
+        "example": "There has been a rise in the price of vegetables this month.",
+        "collocation": "",
+        "band": "6-7",
+        "synonyms": [
+          "increase",
+          "growth"
+        ],
+        "antonyms": []
+      }
+    ]
+  }
+]
