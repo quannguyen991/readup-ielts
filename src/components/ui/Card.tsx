@@ -6,6 +6,7 @@ import { RINK, RPAPER } from '@/components/profile-retro/retro-art';
 import { shadow } from '@/theme/tokens';
 import { useDesktopGold } from '@/components/layout/gold-skin';
 import { GLASS } from '@/components/layout/phone-theme';
+import { pixelCardStyle, usePixelTheme } from '@/components/pixel-theme/pixel-art';
 
 type CardProps = ViewProps & {
   /** 'flat' bỏ đổ bóng, dùng cho card lồng trong card. */
@@ -27,12 +28,14 @@ export function Card({
   ...rest
 }: CardProps) {
   const retro = useRetroStyle();
+  const px = usePixelTheme();
+  const pixel = px !== null;
   // Máy tính giữ bảng màu mặc định: thẻ raised thành kính ngà như điện thoại; thẻ lồng (flat) giữ nguyên.
   const gold = useDesktopGold();
   return (
     <View
       className={[
-        retro ? '' : gold && variant === 'raised' ? 'rounded-card' : 'rounded-card border border-border bg-surface',
+        retro || pixel ? '' : gold && variant === 'raised' ? 'rounded-card' : 'rounded-card border border-border bg-surface',
         padded ? 'p-4' : '',
         className ?? '',
       ]
@@ -48,11 +51,12 @@ export function Card({
               ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}),
             } as never)
           : null,
-        !retro && variant === 'raised' && Platform.OS !== 'web' ? shadow.card : null,
-        !retro && variant === 'raised' && Platform.OS === 'web'
+        px ? pixelCardStyle(px) : null,
+        !retro && !pixel && variant === 'raised' && Platform.OS !== 'web' ? shadow.card : null,
+        !retro && !pixel && variant === 'raised' && Platform.OS === 'web'
           ? ({ boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 8px 24px rgba(15,23,42,0.05)' } as never)
           : null,
-        !retro && gold && variant === 'raised' ? (GLASS as never) : null,
+        !retro && !pixel && gold && variant === 'raised' ? (GLASS as never) : null,
         style,
       ]}
       {...rest}

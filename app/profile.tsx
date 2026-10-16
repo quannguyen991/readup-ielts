@@ -59,6 +59,28 @@ const SLOTS: { slot: WearSlot; title: string; titleEn: string; kinds: ShopItem['
   { slot: 'theme', title: 'Giao diện', titleEn: 'Theme', kinds: ['theme'], tab: 'theme', empty: 'Mặc định Band 9', emptyEn: 'Band 9 default' },
 ];
 
+/** Gói giao diện pixel: hai chủ đề cùng họ, mở khóa ở Đổi quà, bật/tắt ở đây. */
+const PIXEL_FAMILY = [
+  {
+    id: 'theme-pixel',
+    name: 'Pixel · Y2K tím',
+    nameEn: 'Pixel · Y2K lilac',
+    detail: 'Nền lưới tím, thẻ viền đậm và nút pixel hồng–tím.',
+    detailEn: 'Lilac grid background, bold-outlined cards and pink–purple pixel buttons.',
+    swatch: '#9D7BFF',
+    fill: '#8A63F0',
+  },
+  {
+    id: 'theme-cyber',
+    name: 'Cyber · Neon xanh',
+    nameEn: 'Cyber · Neon blue',
+    detail: 'Nền navy đêm, viền neon cyan, mặt trời neon và lưới phát sáng.',
+    detailEn: 'Night-navy background, neon cyan outlines, a neon sun and a glowing grid.',
+    swatch: '#3DD9F5',
+    fill: '#1E4FD1',
+  },
+] as const;
+
 export default function ProfileScreen() {
   const { L, locale } = useL();
   const wide = useWindowDimensions().width >= 760;
@@ -122,6 +144,12 @@ export default function ProfileScreen() {
   const chiikawaItem = SHOP_ITEMS.find((item) => item.id === 'theme-chiikawa');
   const ownsChiikawaTheme = (reward.owned['theme-chiikawa'] ?? 0) > 0;
   const chiikawaThemeActive = reward.theme === 'theme-chiikawa';
+  const pixelRows = PIXEL_FAMILY.map((t) => ({
+    ...t,
+    price: SHOP_ITEMS.find((i) => i.id === t.id)?.price ?? 500,
+    owned: (reward.owned[t.id] ?? 0) > 0,
+    active: reward.theme === t.id,
+  }));
 
   const avatarSize = wide ? 112 : 88;
 
@@ -162,7 +190,8 @@ export default function ProfileScreen() {
                 <AvatarBadge avatarId={reward.avatar} name={name} size={avatarSize} skin={skin} />
               </View>
               <View style={{ flex: wide ? 1 : undefined, minWidth: 0, paddingTop: wide ? 12 : 0 }}>
-                <Text className="font-heavy text-pageTitle text-ink" numberOfLines={1}>
+                {/* Khối này luôn nền trắng (kể cả theme tối), nên tên cố định màu mực để đọc được. */}
+                <Text className="font-heavy text-pageTitle" style={{ color: '#1A1A33' }} numberOfLines={1}>
                   {name}
                 </Text>
                 <View className="mt-1 flex-row flex-wrap items-center gap-2">
@@ -185,6 +214,51 @@ export default function ProfileScreen() {
           </View>
         </View>
       </Appear>
+
+      <Card className="mt-4">
+        <View style={{ gap: 12 }}>
+          <Text className="font-heavy text-cardTitle text-ink">{L('Gói giao diện pixel', 'Pixel theme pack')}</Text>
+          <Text className="font-sans text-label text-muted">
+            {L('Hai giao diện pixel dùng chung một cách vẽ. Đã mở khóa thì bật ở đây; tắt đi là về Band 9.', 'Two pixel themes share one style. Once unlocked, turn one on here; turn it off to go back to Band 9.')}
+          </Text>
+          {pixelRows.map((t) => (
+            <View
+              key={t.id}
+              className="flex-row flex-wrap items-center gap-3 rounded-card border border-border bg-surface p-3.5"
+            >
+              <View style={{ width: 44, height: 44, borderRadius: 10, borderWidth: 2, borderColor: t.swatch, backgroundColor: t.fill }} />
+              <View className="min-w-0 flex-1" style={{ minWidth: 200 }}>
+                <View className="flex-row flex-wrap items-center gap-2">
+                  <Text className="font-heavy text-body text-ink">{L(t.name, t.nameEn)}</Text>
+                  <Badge label={t.active ? L('Đang dùng', 'Active') : t.owned ? L('Đã mở khóa', 'Unlocked') : L('Đổi bằng sao', 'Star reward')} tone={t.active ? 'success' : 'primary'} shape="tag" />
+                </View>
+                <Text className="mt-0.5 font-sans text-label text-muted">{L(t.detail, t.detailEn)}</Text>
+              </View>
+              {t.owned ? (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={t.active ? L(`Tắt ${t.name}`, `Turn off ${t.nameEn}`) : L(`Dùng ${t.name}`, `Use ${t.nameEn}`)}
+                  onPress={() => reward.equip('theme', t.active ? null : t.id)}
+                  style={{ minHeight: 44, paddingHorizontal: 18, borderRadius: 10, borderWidth: 2, borderColor: t.swatch, alignItems: 'center', justifyContent: 'center', backgroundColor: t.active ? '#FFFFFF' : t.fill }}
+                >
+                  <Text className="font-strong text-label" style={{ color: t.active ? '#2B1B4E' : '#FFFFFF' }}>
+                    {t.active ? L('Tắt giao diện', 'Turn off') : L('Dùng giao diện', 'Use theme')}
+                  </Text>
+                </Pressable>
+              ) : (
+                <Pressable
+                  accessibilityRole="button"
+                  accessibilityLabel={L(`Đổi ${formatStars(t.price)} sao lấy ${t.name}`, `Unlock ${t.nameEn} for ${formatStars(t.price)} stars`)}
+                  onPress={() => router.push('/shop?tab=theme' as never)}
+                  style={{ minHeight: 44, paddingHorizontal: 18, borderRadius: 10, borderWidth: 2, borderColor: t.swatch, alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF' }}
+                >
+                  <Text className="font-strong text-label" style={{ color: '#2B1B4E' }}>{L(`Đổi ${formatStars(t.price)} ⭐`, `Unlock · ${formatStars(t.price)} ⭐`)}</Text>
+                </Pressable>
+              )}
+            </View>
+          ))}
+        </View>
+      </Card>
 
       <Card className="mt-4">
         <View style={{ gap: 16 }}>

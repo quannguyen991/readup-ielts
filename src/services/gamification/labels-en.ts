@@ -118,6 +118,8 @@ const ITEM_EN: Record<string, Pair> = {
   'theme-sunset': { name: 'Blazing sunset', detail: 'Warm pastel orange and purple like an evening sky.' },
   'theme-lavender': { name: 'Lavender dream', detail: 'A dreamy lavender purple for total relaxation.' },
   'theme-nord': { name: 'Nordic snow', detail: 'A minimalist Scandinavian look with falling snow.' },
+  'theme-cyber': { name: 'Cyber · Neon blue', detail: 'Unlock the cyber pixel look: a navy night background, neon cyan outlines, electric-blue buttons and glowing offset shadows across the app.' },
+  'theme-pixel': { name: 'Pixel · Y2K lilac', detail: 'Unlock the pixel look: a lilac grid background, ink-outlined panels with hard shadows and pink, cyan and purple pixel buttons across the app.' },
   'theme-retro': { name: 'Retro · Star ledger', detail: 'Unlock the retro look: rainbow ribbons, 70s striped type, ink-outlined icons and cream surfaces across the app.' },
   'theme-matcha': { name: 'Matcha tea', detail: 'A soft green-tea look with a calm, zen feel.' },
   'theme-chiikawa': { name: 'Chiikawa · Pink study nook', detail: 'Unlock a milk-pink interface, checked-paper backgrounds and Chiikawa mascots on the taskbar and screens.' },

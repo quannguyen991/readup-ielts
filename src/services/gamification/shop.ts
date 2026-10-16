@@ -35,7 +35,7 @@ export type CoverLook = 'stars' | 'aurora' | 'sunset' | 'ocean' | 'cyberpunk' | 
 /** Hiệu ứng hồ sơ & thanh bên — `components/profile/ProfileEffect.tsx`. */
 export type EffectLook = 'sakura' | 'flame' | 'meteor' | 'snow' | 'bubbles' | 'sparkle' | 'autumn' | 'matrix' | 'fireflies' | 'butterflies' | 'lightning' | 'galaxy' | 'starlight' | 'neon_pulse' | 'rainbow';
 /** Kiểu giao diện toàn diện — đổi màu thanh bên và màn hình. */
-export type ThemeLook = 'sepia' | 'emerald' | 'midnight' | 'sakura' | 'cyberpunk' | 'ocean' | 'sunset' | 'lavender' | 'nord' | 'matcha' | 'chiikawa' | 'retro';
+export type ThemeLook = 'sepia' | 'emerald' | 'midnight' | 'sakura' | 'cyberpunk' | 'ocean' | 'sunset' | 'lavender' | 'nord' | 'matcha' | 'chiikawa' | 'retro' | 'pixel' | 'cyber';
 
 export type ShopItem = {
   id: string;
@@ -341,6 +341,26 @@ export const SHOP_ITEMS: ShopItem[] = [
     glyph: '🌈',
     repeatable: false,
     themeLook: 'retro',
+  },
+  {
+    id: 'theme-pixel',
+    kind: 'theme',
+    name: 'Pixel · Y2K tím',
+    detail: 'Mở khóa giao diện pixel: nền tím lưới ô, thẻ viền mực có bóng lệch, nút pixel hồng–xanh–tím trên toàn app.',
+    price: 500,
+    glyph: '👾',
+    repeatable: false,
+    themeLook: 'pixel',
+  },
+  {
+    id: 'theme-cyber',
+    kind: 'theme',
+    name: 'Cyber · Neon xanh',
+    detail: 'Mở khóa giao diện cyber pixel cho vibe con trai: nền navy đêm, viền neon cyan, nút xanh điện, bóng lệch sáng trên toàn app.',
+    price: 500,
+    glyph: '🕹️',
+    repeatable: false,
+    themeLook: 'cyber',
   },
 
   // ---------------------------------------------------------------- nền học (sau mọi màn học)

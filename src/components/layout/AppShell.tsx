@@ -10,6 +10,7 @@ import { BottomTabs, BottomTabsSpacer } from './BottomTabs';
 import { Sidebar } from './Sidebar';
 import { SidebarCats } from './SidebarCats';
 import { RCREAM } from '@/components/profile-retro/retro-art';
+import { pixelPageBg, usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { useRetroOn } from '@/components/profile-retro/retro-mode-store';
 import { RetroScope } from '@/components/profile-retro/retro-scope';
 import { RetroSidebar } from '@/components/profile-retro/RetroSidebar';
@@ -81,12 +82,15 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const hydrated = useHydrated();
   const paletteKey = useCuteAppearanceStore((state) => state.palette);
   const selectedPalette = CUTE_PALETTES[paletteKey];
-  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
+  const px = usePixelTheme();
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : px ? px.palette : selectedPalette;
   // Điện thoại dùng nền gradient xanh–tím riêng khi chưa chọn nền học mua bằng sao.
   const phone = useIsPhone();
   // Nền vàng kim như điện thoại: luôn bật trên điện thoại; trên máy tính chỉ khi giữ bảng màu
   // mặc định và không bật theme Chiikawa (bảng màu khác vẫn giữ lưới caro).
-  const goldSkin = phone || (!chiikawaTheme && paletteKey === 'original');
+  // Giao diện pixel tự vẽ nền và thẻ riêng nên tắt nền vàng kim (và các mèo đi kèm).
+  const pixel = px !== null;
+  const goldSkin = !pixel && (phone || (!chiikawaTheme && paletteKey === 'original'));
   const viewportWidth = useWindowDimensions().width;
   // Giao diện retro áp cho mọi khung duyệt; khung tác vụ và khung toàn màn giữ nguyên.
   const retro = useRetroOn();
@@ -157,7 +161,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       className="relative flex-1"
       // Màu nền đặt THẬT ở đây chứ không chỉ vẽ trong SVG: các phép đo độ
       // tương phản (và trình duyệt khi in) đọc `backgroundColor` của tổ tiên.
-      style={{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : (pageBg?.stops[1] ?? palette.browse[1]) }}
+      style={[{ backgroundColor: isQuestRoute ? '#0B1A2E' : retro ? RCREAM : (pageBg?.stops[1] ?? palette.browse[1]) }, px && !isQuestRoute ? pixelPageBg(px) : null] as never}
     >
       {/* Trang game (/quest…) nằm trên trời đêm pixel cùng bảng màu với thanh trận đấu. */}
       {isQuestRoute ? <GameBackdrop /> : null}
@@ -171,7 +175,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           <PhoneBackdrop />
         </View>
       ) : null}
-      {!isQuestRoute && !retro && !(goldSkin && !pageBg) ? (
+      {!isQuestRoute && !retro && !pixel && !(goldSkin && !pageBg) ? (
         <View pointerEvents="none" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
           {/* Nền học / giao diện đổi bằng sao áp dụng cho MỌI trang; không có thì nền xanh mặc định. */}
           {pageBg ? (

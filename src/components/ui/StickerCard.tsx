@@ -5,6 +5,7 @@ import Animated, { Easing, useAnimatedStyle, useReducedMotion, useSharedValue, w
 import { radius } from '@/theme/tokens';
 import { useRetroStyle } from '@/components/profile-retro/retro-scope';
 import { RINK } from '@/components/profile-retro/retro-art';
+import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 
 type StickerCardProps = ViewProps & {
   /** Hai màu cùng tông, sáng → đậm — nền gradient chéo của thẻ. */
@@ -65,9 +66,13 @@ type Pose = 'rest' | 'hover' | 'press';
  * CHỈ DÙNG Ở NHỮNG CHỖ CHỌN LỰA CHỌN (chủ đề từ vựng, chế độ luyện tập, lưới
  * "App có gì", kệ tính năng) — KHÔNG thay `Card` mặc định của cả app.
  */
-export function StickerCard({ colors, children, className, style, bold, ornament, ...rest }: StickerCardProps) {
+export function StickerCard({ colors: colorsProp, children, className, style, bold, ornament, ...rest }: StickerCardProps) {
   const reduced = useReducedMotion();
   const retro = useRetroStyle();
+  const px = usePixelTheme();
+  const pixel = px !== null;
+  // Pixel: mọi thẻ dùng chung một tông tím, viền mực và bóng lệch đặc.
+  const colors = px ? px.sticker : colorsProp;
   const [pose, setPose] = useState<Pose>('rest');
   const ty = useSharedValue(0);
 
@@ -84,7 +89,9 @@ export function StickerCard({ colors, children, className, style, bold, ornament
   const shadow =
     Platform.OS === 'web'
       ? ({
-          boxShadow: `0 1px 2px rgba(15,23,42,0.06), 0 ${lifted ? 16 : bold ? 10 : 8}px ${lifted ? 32 : 24}px ${tone}${lifted ? '59' : '40'}`,
+          boxShadow: pixel
+            ? px?.elev ?? 'none'
+            : `0 1px 2px rgba(15,23,42,0.06), 0 ${lifted ? 16 : bold ? 10 : 8}px ${lifted ? 32 : 24}px ${tone}${lifted ? '59' : '40'}`,
           transitionProperty: 'box-shadow',
           transitionDuration: '140ms',
           transitionTimingFunction: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
@@ -109,7 +116,7 @@ export function StickerCard({ colors, children, className, style, bold, ornament
 
   return (
     <CardHoverContext.Provider value={pose !== 'rest'}>
-      <Animated.View className={['rounded-card', className ?? ''].filter(Boolean).join(' ')} style={[{ borderRadius: radius.card }, shadow, motion, retro ? { borderWidth: 3, borderColor: RINK, ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}) } : null, style]} {...(handlers as object)} {...rest}>
+      <Animated.View className={['rounded-card', className ?? ''].filter(Boolean).join(' ')} style={[{ borderRadius: radius.card }, shadow, motion, retro ? { borderWidth: 3, borderColor: RINK, ...(Platform.OS === 'web' ? { boxShadow: '4px 4px 0 #1F1A1D' } : {}) } : null, px ? { borderWidth: px.bw, borderColor: px.line, borderRadius: px.radius } : null, style]} {...(handlers as object)} {...rest}>
         <View className="flex-1 overflow-hidden rounded-card">
           <LinearGradient colors={face} start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }} style={{ padding: 16, flex: 1 }}>
             {children}

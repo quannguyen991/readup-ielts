@@ -5,6 +5,7 @@ import { Icon, type IconName } from './Icon';
 import { haptic } from '@/services/haptics';
 import { color, paper } from '@/theme/tokens';
 import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { pixelButtonStyle, pixelLabelColor, usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { RCHAR, RGOLD, RINK, RORANGE, RPAPER, RPINK, RSKY } from '@/components/profile-retro/retro-art';
 import { useRewardStore } from '@/store/useRewardStore';
 
@@ -117,6 +118,8 @@ export function Button({
   const s = sizing[size];
   const inactive = disabled || loading;
   const retro = useRetroStyle();
+  const px = usePixelTheme();
+  const pixel = px !== null;
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   const chiikawaButton = chiikawaTheme && (variant === 'primary' || variant === 'brand' || variant === 'secondary');
   const themedBorder = chiikawaTheme && (variant === 'brandOutline' || variant === 'outline');
@@ -133,7 +136,7 @@ export function Button({
       className={[
         'flex-row items-center justify-center',
         s.box,
-        retro ? '' : container[variant],
+        retro || pixel ? '' : container[variant],
         fullWidth ? 'w-full' : 'self-start',
         inactive ? 'opacity-50' : '',
         className ?? '',
@@ -144,7 +147,9 @@ export function Button({
       style={
         retro
           ? (retroButtonStyle(variant) as never)
-          : ({ pressed }) => ({
+          : px
+            ? (pixelButtonStyle(variant, px) as never)
+            : ({ pressed }) => ({
               ...(pressed ? { opacity: 0.85 } : undefined),
               ...(chiikawaButton ? { backgroundColor: '#C65A78' } : undefined),
               ...(themedBorder ? { borderColor: '#F3C4D2' } : undefined),
@@ -156,7 +161,7 @@ export function Button({
       ) : (
         <>
           {iconLeft ? <Icon name={iconLeft} size={s.icon} color={retro ? RINK : iconColor[variant]} /> : null}
-          <Text className={['font-semi', s.text, retro ? '' : labelClass[variant]].join(' ')} style={retro ? { color: RINK, fontFamily: 'Nunito_900Black' } : undefined}>{label}</Text>
+          <Text className={['font-semi', s.text, retro || pixel ? '' : labelClass[variant]].join(' ')} style={retro ? { color: RINK, fontFamily: 'Nunito_900Black' } : px ? { color: pixelLabelColor(variant, px) } : undefined}>{label}</Text>
           {iconRight ? <Icon name={iconRight} size={s.icon} color={retro ? RINK : iconColor[variant]} /> : null}
         </>
       )}

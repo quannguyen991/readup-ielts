@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import Svg, { Path, Rect } from 'react-native-svg';
+import { themedHex } from '@/theme/palette-state';
 
 /** Bảng màu thương hiệu Band 9 (theo logo người dùng gửi 01/10/2026). */
 export const BRAND = {
@@ -51,7 +52,7 @@ export function Logo({
     <View className="flex-row items-center gap-2.5">
       <BrandMark size={compact ? 32 : 36} />
       {markOnly ? null : (
-        <Text className={`font-heavy ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`} style={{ color: BRAND.navy, letterSpacing: 0.2 }}>
+        <Text className={`font-heavy ${compact ? 'text-cardTitle' : 'text-sectionTitle'}`} style={{ color: themedHex(BRAND.navy), letterSpacing: 0.2 }}>
           Band 9
         </Text>
       )}

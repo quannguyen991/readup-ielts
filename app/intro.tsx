@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { GoldHighlight } from '@/components/layout/GoldHighlight';
 import { PhoneIntro } from '@/components/home/PhoneIntro';
 import { PerchCat } from '@/components/mascot/PerchCat';
@@ -198,7 +199,8 @@ export default function IntroScreen() {
   const { L, en } = useL();
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
-  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
+  const px = usePixelTheme();
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : px ? px.palette : selectedPalette;
   const num = (n: number) => n.toLocaleString(en ? 'en-US' : 'vi-VN');
 
   /*

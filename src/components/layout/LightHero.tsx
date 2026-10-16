@@ -23,6 +23,7 @@ import { type SceneKind } from '@/components/three/Hero3D';
 import { HeroArt, type ArtScene } from '@/components/illust/HeroArt';
 import { GoldHighlight } from './GoldHighlight';
 import { useRetroStyle } from '@/components/profile-retro/retro-scope';
+import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { RCREAM, RINK } from '@/components/profile-retro/retro-art';
 import { CatPose, CatSticker } from '@/components/mascot/CatSticker';
 import { PerchCat } from '@/components/mascot/PerchCat';
@@ -70,10 +71,13 @@ export function LightHero({
   const width = useWindowDimensions().width;
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
-  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
+  const px = usePixelTheme();
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : px ? px.palette : selectedPalette;
   const wide = width >= 768;
   // Trong khung duyệt của giao diện retro: khối hero là thẻ kem có viền mực, không gradient.
   const retro = useRetroStyle();
+  // Giao diện pixel: khối hero là thẻ lilac có viền mực và bóng lệch đặc.
+  const pixel = px !== null;
   // Điện thoại: khối hero gọn như đầu một màn của app, không phải một trang quảng cáo.
   const phone = width < 640;
   const size = wide ? 44 : phone ? 24 : 28;
@@ -106,15 +110,26 @@ export function LightHero({
                 ...(Platform.OS === 'web' ? { boxShadow: '6px 6px 0 #1F1A1D' } : {}),
               },
             ] as never)
-          : HERO_FRAME
+          : pixel
+            ? ([
+                HERO_FRAME,
+                {
+                  borderRadius: px?.radius,
+                  borderWidth: px?.bw,
+                  borderColor: px?.line,
+                  overflow: 'hidden',
+                  ...(Platform.OS === 'web' ? { boxShadow: px?.elevLg } : {}),
+                },
+              ] as never)
+            : HERO_FRAME
       }
     >
       {/* Hero dạng LightHero dùng nền loang sạch; lưới caro chỉ giữ ở các màn
           đọc/thi/tác vụ có chủ đích dùng GridBackdrop riêng. */}
       <GridBackdrop
-        colors={retro ? ([RCREAM, RCREAM] as never) : palette.study}
-        line={retro ? RINK : palette.studyLine}
-        blobs={retro ? ([RCREAM, RCREAM] as never) : [palette.study[0], palette.study[2]]}
+        colors={retro ? ([RCREAM, RCREAM] as never) : pixel ? ([px?.paper, px?.paper] as never) : palette.study}
+        line={retro ? RINK : px ? px.line : palette.studyLine}
+        blobs={retro ? ([RCREAM, RCREAM] as never) : pixel ? ([px?.paper, px?.paper] as never) : [palette.study[0], palette.study[2]]}
         showGrid={false}
       >
         {phone && petCat ? <CatSticker pose={petCat} size={84} style={{ position: 'absolute', top: 14, right: 14 }} /> : null}

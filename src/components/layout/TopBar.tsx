@@ -16,6 +16,7 @@ import { AvatarBadge } from '@/components/profile/AnimatedAvatar';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { usePlan } from '@/store/useBillingStore';
 import { skinOf, useRewardStore } from '@/store/useRewardStore';
+import { pixelCardStyle, usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { color, paper, shadow } from '@/theme/tokens';
 
 const webBarShadow = { boxShadow: '0 6px 22px rgba(26, 26, 51, 0.10)' } as const;
@@ -73,6 +74,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
   const sectionTitle = parentItem ? navLabel(parentItem, locale) : null;
   // Điện thoại: không còn khung kính, chỉ còn tên mục, nút Khám phá và kính lúp.
   const phone = useIsPhone();
+  const px = usePixelTheme();
 
   /*
     Chi hien nut lui khi DANG O MOT MAN CHI TIET.
@@ -127,7 +129,7 @@ export function TopBar({ fixed = false }: { fixed?: boolean }) {
 
           <View
             className="min-w-0 flex-1 flex-row items-center gap-1 py-1 sm:gap-3 sm:rounded-pill sm:border sm:border-white sm:px-3 sm:py-2"
-            style={phone ? undefined : (Platform.OS === 'web' ? [webBarShadow, glassPill] : shadow.card)}
+            style={phone ? undefined : px ? (pixelCardStyle(px) as never) : (Platform.OS === 'web' ? [webBarShadow, glassPill] : shadow.card)}
           >
           {/*
             Logo về TRANG GIỚI THIỆU, không về Tổng quan.

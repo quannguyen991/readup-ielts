@@ -86,11 +86,13 @@ export default function RootLayout() {
   // chủ; đổi bảng thì dựng lại cả cây (key) để mọi màu trong JS được tính lại.
   const hydrated = useHydrated();
   const themeId = useRewardStore((s) => s.theme);
-  const paletteKey = hydrated && themeId === 'theme-chiikawa' ? 'chiikawa' : 'classic';
+  const paletteKey = hydrated && themeId === 'theme-chiikawa' ? 'chiikawa' : hydrated && themeId === 'theme-pixel' ? 'pixel' : hydrated && themeId === 'theme-cyber' ? 'cyber' : 'classic';
   setPaletteId(paletteKey);
   useEffect(() => {
     if (typeof document === 'undefined') return;
     document.documentElement.classList.toggle('theme-chiikawa', paletteKey === 'chiikawa');
+    document.documentElement.classList.toggle('theme-pixel', paletteKey === 'pixel');
+    document.documentElement.classList.toggle('theme-cyber', paletteKey === 'cyber');
   }, [paletteKey]);
 
   return (

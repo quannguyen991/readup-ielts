@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { usePixelTheme } from '@/components/pixel-theme/pixel-art';
 import { GridBackdrop } from './GridBackdrop';
 import { pageBackgroundFor } from './study-backgrounds';
 import { useHydrated } from './useHydrated';
@@ -39,7 +40,8 @@ export function StudyBackdrop({ children, showGrid = true }: { children: React.R
   const bg = usePageBackground('study');
   const chiikawaTheme = useRewardStore((state) => state.theme === 'theme-chiikawa');
   const selectedPalette = CUTE_PALETTES[useCuteAppearanceStore((state) => state.palette)];
-  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : selectedPalette;
+  const px = usePixelTheme();
+  const palette = chiikawaTheme ? CUTE_PALETTES.strawberry : px ? px.palette : selectedPalette;
   if (bg) {
     return (
       <GridBackdrop colors={bg.stops} line={bg.line} pattern={bg.pattern} blobs={bg.blobs} margin={bg.margin} cell={bg.cell ?? 34}>

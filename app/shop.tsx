@@ -219,7 +219,7 @@ export default function ShopScreen() {
     if (!res.ok) return say(res.reason === 'đã-sở-hữu' ? L(`Bạn đã có ${item.name}.`, `You already have ${nm(item)}.`) : L(`Không đổi được ${item.name}.`, `Couldn't get ${nm(item)}.`));
     if (item.grants) useGameStore.getState().addItem(item.grants, 1);
     const slot = SLOT[item.kind];
-    const unlockOnly = item.id === 'theme-chiikawa' || item.id === 'theme-retro';
+    const unlockOnly = item.id === 'theme-chiikawa' || item.id === 'theme-retro' || item.id === 'theme-pixel' || item.id === 'theme-cyber';
     if (slot && !unlockOnly) useRewardStore.getState().equip(slot, item.id);
     say(unlockOnly
       ? L(`Đã mở khóa ${item.name}. Mặc định vẫn là giao diện Band 9; bạn có thể bật chủ đề mới trong mục Cá nhân. Còn ${formatStars(stars - item.price)} sao.`, `Unlocked ${nm(item)}. Band 9 remains the default; turn on the new theme from Personal. ${formatStars(stars - item.price)} stars left.`)
