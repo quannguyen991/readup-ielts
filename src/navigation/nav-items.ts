@@ -100,6 +100,8 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'dictation-youtube', label: 'Chép theo video', href: '/sentence/youtube', icon: 'play' },
           { key: 'shadow', label: 'Đọc theo VOA', href: '/shadow', icon: 'mic' },
           { key: 'speaking', label: 'Phòng luyện nói', href: '/speaking', icon: 'chat' },
+          // Khu luyện nói: phát âm, gia sư AI, khoá học. Có thanh tab riêng (app/hub/_layout.tsx).
+          { key: 'hub', label: 'Luyện nói AI', href: '/hub', icon: 'mic' },
           { key: 'toeic-toefl', label: 'TOEIC · TOEFL', href: '/toeic', icon: 'letters' },
           { key: 'hsa-english', label: 'Luyện HSA · Tiếng Anh', href: '/hsa', icon: 'target' },
         ],

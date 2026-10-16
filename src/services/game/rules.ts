@@ -312,6 +312,8 @@ export function newAchievements(l: Lifetime, have: Record<string, string>): Achi
 
 export type GamePayload = BattleState & {
   items: Record<ItemKind, number>;
+  /** Tổng số nhiệm vụ hằng ngày đã nhận thưởng từ trước tới nay (để tính quà sách). Bản lưu cũ thiếu trường này thì coi như 0. */
+  questsClaimed?: number;
   /** Sao thưởng từ trận đấu (hạ quái, boss, lên cấp, nhiệm vụ, huy hiệu) — cộng vào số sao đổi quà. */
   bonusStars: number;
   /** Ngày tính lượt dùng quyền linh vật, và số lượt đã dùng trong ngày đó. */

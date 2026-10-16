@@ -229,16 +229,10 @@ export default function VocabularyScreen() {
 }
 
 /**
- * Lối vào luyện sổ từ, đặt NGAY TRÊN danh sách từ: ba kiểu của Quiz từ vựng chạy
- * thẳng trên chính sổ từ của người học (bộ `so-tu`). Sổ dưới 4 từ thì chưa đủ
- * làm phương án nhiễu cho trắc nghiệm — nói rõ thay vì mở ra màn trống.
+ * Dải luyện sổ từ, đặt NGAY TRÊN danh sách từ: nút mở Quiz từ vựng chạy trên chính
+ * sổ từ của người học. Sổ dưới 4 từ thì chưa đủ làm phương án nhiễu cho trắc
+ * nghiệm — nói rõ thay vì mở ra màn trống.
  */
-const NOTEBOOK_MODES: { id: string; label: Bi; icon: React.ComponentProps<typeof Icon>['name'] }[] = [
-  { id: 'learn', label: { vi: 'Học xen kẽ', en: 'Mixed learning' }, icon: 'book' },
-  { id: 'test', label: { vi: 'Kiểm tra', en: 'Test' }, icon: 'clipboard' },
-  { id: 'cloze', label: { vi: 'Điền vào câu', en: 'Fill the gap' }, icon: 'pencil' },
-];
-
 function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
   const { L, locale } = useL();
   if (entries.length === 0) return null;
@@ -250,7 +244,7 @@ function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
         title={L('Luyện sổ từ', 'Practise your notebook')}
         subtitle={
           enough
-            ? L('Ba kiểu quiz chạy trên chính những từ bạn đã lưu', 'Three quiz types using the words you’ve saved')
+            ? L('Quiz chạy trên chính những từ bạn đã lưu', 'Quizzes running on the words you’ve saved')
             : L(`Lưu thêm ${4 - entries.length} từ nữa là luyện được`, `Save ${4 - entries.length} more words to start practising`)
         }
         icon="target"
@@ -259,23 +253,6 @@ function PracticeStrip({ entries }: { entries: VocabEntry[] }) {
           onPress: () => router.push('/vocabulary/quiz' as never),
         }}
       />
-      <View className="mt-3 flex-row flex-wrap gap-2">
-        {NOTEBOOK_MODES.map((mode) => (
-          <Pressable
-            key={mode.id}
-            accessibilityRole="button"
-            aria-disabled={!enough}
-            disabled={!enough}
-            onPress={() => router.push(`/vocabulary/topic/so-tu/${mode.id}` as never)}
-            className={`flex-row items-center gap-2 rounded-pill border px-3 py-2 ${
-              enough ? 'border-primary-200 bg-primary-50' : 'border-border bg-surfaceAlt'
-            }`}
-          >
-            <Icon name={mode.icon} size={15} color={enough ? color.primary : color.subtle} />
-            <Text className={enough ? 'font-strong text-label text-ink' : 'font-mid text-label text-subtle'}>{bi(mode.label, locale)}</Text>
-          </Pressable>
-        ))}
-      </View>
     </Card>
   );
 }

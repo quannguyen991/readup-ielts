@@ -3,6 +3,8 @@ import { LISTENING_DECKS } from './vocab-listening';
 import { VFI_DECKS } from './vocab-for-ielts';
 import { VFIA_DECKS } from './vocab-for-ielts-advanced';
 import globalSuccessDecks from './seed/vocab-global-success/index.json';
+import { DESTINATION_DECKS } from './destination-vocab';
+import { DAILY_TALK_TOPICS } from './vocab-daily';
 
 /**
  * Bộ từ vựng IELTS soạn sẵn theo chủ đề.
@@ -29,6 +31,8 @@ export type VocabTopicWord = {
   synonyms?: string[];
   antonyms?: string[];
   origin?: 'source-list' | 'original-advanced';
+  /** Ngữ cảnh dùng (tiếng Việt): nói câu này khi nào, ở đâu. Chỉ có ở bộ giao tiếp hằng ngày. */
+  context?: string;
 };
 
 export type VocabTopic = {
@@ -53,7 +57,7 @@ export const GLOBAL_SUCCESS_DECKS: VocabTopic[] = globalSuccessDecks as unknown 
  * mà `VOCAB_TOPICS` (và test "50 × 50") vẫn giữ nguyên.
  */
 export function getVocabTopic(slug: string): VocabTopic | undefined {
-  return VOCAB_TOPICS.find((t) => t.slug === slug) ?? GLOBAL_SUCCESS_DECKS.find((d) => d.slug === slug) ?? LISTENING_DECKS.find((d) => d.slug === slug) ?? VFI_DECKS.find((d) => d.slug === slug) ?? VFIA_DECKS.find((d) => d.slug === slug);
+  return VOCAB_TOPICS.find((t) => t.slug === slug) ?? GLOBAL_SUCCESS_DECKS.find((d) => d.slug === slug) ?? LISTENING_DECKS.find((d) => d.slug === slug) ?? VFI_DECKS.find((d) => d.slug === slug) ?? VFIA_DECKS.find((d) => d.slug === slug) ?? DESTINATION_DECKS.find((d) => d.slug === slug) ?? DAILY_TALK_TOPICS.find((d) => d.slug === slug);
 }
 
 export const VOCAB_TOPIC_TOTALS = {

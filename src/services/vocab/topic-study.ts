@@ -15,6 +15,8 @@ export type StudyWord = {
   example: string;
   collocation: string;
   band: string;
+  /** Ngữ cảnh dùng (bộ giao tiếp hằng ngày). */
+  context?: string;
   /** Chỉ bộ có dữ liệu viết tay (SAT Verbal): từ đồng nghĩa, trái nghĩa. */
   synonyms?: string[];
   antonyms?: string[];

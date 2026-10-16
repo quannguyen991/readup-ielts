@@ -46,6 +46,8 @@ import { useStudyAbroadStore } from '@/store/useStudyAbroadStore';
 import { mergeStartup, normalizeStartup } from '@/services/startup/sync';
 import { useStartupStore } from '@/store/useStartupStore';
 import { mergeHistory, normalizeHistory } from '@/services/history/progress';
+import { useHubStore } from '@/store/useHubStore';
+import { mergeHub, type HubPayload } from '@/services/hub/sync';
 
 /**
  * Nối từng zustand store vào engine đồng bộ.
@@ -311,6 +313,40 @@ const studyAbroadStore: SyncedStore = {
 };
 
 /** Quán khởi nghiệp: quán đã mở, sổ quán, món riêng. Vốn nằm ở sổ đồng du học (store Du học). */
+const hubStore: SyncedStore = {
+  key: 'hub',
+  read: (): HubPayload => {
+    const s = useHubStore.getState();
+    return {
+      phonemeBest: s.phonemeBest,
+      phonemeTries: s.phonemeTries,
+      doneByDay: s.doneByDay,
+      lessonsDone: s.lessonsDone,
+      roleplayDone: s.roleplayDone,
+      ieltsDone: s.ieltsDone,
+      userSets: s.userSets,
+      saved: s.saved,
+      slides: s.slides,
+    };
+  },
+  write: (payload) => {
+    if (!payload || typeof payload !== 'object') return;
+    const merged = payload as HubPayload;
+    useHubStore.setState({
+      phonemeBest: merged.phonemeBest ?? {},
+      phonemeTries: merged.phonemeTries ?? {},
+      doneByDay: merged.doneByDay ?? {},
+      lessonsDone: merged.lessonsDone ?? {},
+      roleplayDone: merged.roleplayDone ?? {},
+      ieltsDone: merged.ieltsDone ?? {},
+      userSets: merged.userSets ?? [],
+      saved: merged.saved ?? [],
+      slides: merged.slides ?? [],
+    });
+  },
+  merge: (local, remote) => mergeHub(local, remote),
+};
+
 const startupStore: SyncedStore = {
   key: 'startup',
   read: () => {
@@ -400,4 +436,5 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(historyStore);
   registerSyncedStore(studyAbroadStore);
   registerSyncedStore(startupStore);
+  registerSyncedStore(hubStore);
 }

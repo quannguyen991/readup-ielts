@@ -68,6 +68,8 @@ const FOCUS_PATTERNS: readonly RegExp[] = [
   /^\/quest\/du-ngoan\/visit\/[^/]+$/,
   /^\/quest\/du-ngoan\/guide\/[^/]+$/,
   /^\/quest\/du-ngoan\/(hanoi|singapore|london|paris|amsterdam|rome|hochiminh|danang)$/,
+  // Khu luyện nói (phát âm, gia sư, khoá học): có thanh tab riêng, không dùng thanh điều hướng chung.
+  /^\/hub(\/|$)/,
   // Bản đồ ReadUp: thế giới pixel chiếm trọn màn hình.
   /^\/quest\/world(\/[^/]+)?$/,
 ];
@@ -161,6 +163,8 @@ export function isImmersiveRoute(pathname: string): boolean {
  * dùng đang duyệt và cần thanh điều hướng.
  */
 const PHONE_CHROMELESS_EXTRA: readonly RegExp[] = [
+  // Khu luyện nói có đầu trang riêng (số chuỗi, XP, nút quay lại) nên không cần thanh đầu trang chung.
+  /^\/hub(\/|$)/,
   /^\/math\/(drill|review|set)\/[^/]+$/,
   /^\/sat-rw\/(?!learn$)[^/]+$/,
   /^\/sat-rw\/(mix|set|skill)\/[^/]+$/,

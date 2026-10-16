@@ -2,6 +2,7 @@ import { getSupabaseAdmin } from '@/lib/supabase-admin';
 import { msg } from '@/lib/server-locale';
 import { bookById, downloadName } from '@/services/books/catalog';
 import { bookGrant, type PaymentForBooks } from '@/services/books/entitlement';
+import { GIFT_FIRST_BOOK } from '@/services/books/gift';
 import { stampPdf } from '@/services/books/stamp';
 import {
   BOOKS_BUCKET,
@@ -69,6 +70,11 @@ function orderRef(p: PaymentForBooks): string {
   return p.reference?.trim() || p.id.slice(0, 8).toUpperCase();
 }
 
+/** Mã in ở chân trang cuốn quà: không có đơn nào, nên lấy mã từ tài khoản. */
+function giftRef(userId: string): string {
+  return `QUA-${userId.slice(0, 8).toUpperCase()}`;
+}
+
 async function readLog(admin: Admin, userId: string): Promise<DownloadLog> {
   const { data } = await admin.storage.from(BOOKS_BUCKET).download(logPath(userId));
   return parseLog(data ? await data.text() : null);
@@ -96,7 +102,8 @@ export async function GET(request: Request) {
   try {
     const admin = getSupabaseAdmin();
     const grant = await grantFor(admin, who.userId);
-    const downloaded = grant ? downloadedBooks(await readLog(admin, who.userId)) : [];
+    // Sổ tải có cả lượt nhận quà, nên đọc cho mọi tài khoản đã đăng nhập.
+    const downloaded = downloadedBooks(await readLog(admin, who.userId));
     return Response.json({ granted: Boolean(grant), order: grant ? orderRef(grant) : null, downloaded });
   } catch {
     return Response.json({ error: msg(request, 'Không đọc được đơn hàng, thử lại sau.', 'Could not read your orders. Try again later.') }, { status: 500 });
@@ -118,9 +125,11 @@ export async function POST(request: Request) {
 
   const admin = getSupabaseAdmin();
   const grant = await grantFor(admin, who.userId).catch(() => null);
-  if (!grant) {
+  // Quà khi đăng ký: cuốn tặng đầu tiên tải được với mọi tài khoản đã đăng nhập.
+  const gift = !grant && bookId === GIFT_FIRST_BOOK;
+  if (!grant && !gift) {
     return Response.json(
-      { error: msg(request, 'Bản đầy đủ kèm gói Max hoặc gói trả theo năm.', 'The full book comes with Max or any yearly plan.') },
+      { error: msg(request, 'Bản đầy đủ kèm gói Max hoặc gói trả theo năm. Đăng ký tài khoản để nhận 1 cuốn quà.', 'The full book comes with Max or any yearly plan. Sign up to get one book as a gift.') },
       { status: 403 },
     );
   }
@@ -143,7 +152,7 @@ export async function POST(request: Request) {
     if (dlErr || !master) {
       return Response.json({ error: msg(request, 'Kho sách đang lỗi, thử lại sau ít phút.', 'The book store is unavailable. Try again shortly.') }, { status: 502 });
     }
-    const bytes = await stampPdf(new Uint8Array(await master.arrayBuffer()), { email: who.email, orderRef: orderRef(grant), issuedAt: now });
+    const bytes = await stampPdf(new Uint8Array(await master.arrayBuffer()), { email: who.email, orderRef: grant ? orderRef(grant) : giftRef(who.userId), issuedAt: now });
     const { error: upErr } = await storage.upload(path, bytes, { contentType: 'application/pdf', upsert: true });
     if (upErr) {
       return Response.json({ error: msg(request, 'Không chuẩn bị được bản tải, thử lại sau.', 'Could not prepare your copy. Try again later.') }, { status: 502 });
@@ -157,7 +166,7 @@ export async function POST(request: Request) {
   }
 
   // Sổ tải là căn cứ của Chính sách hoàn tiền: ghi TRƯỚC khi trả link. Ghi hỏng thì không trả link.
-  const next = appendDownload(log, { book: book.id, at: now.toISOString(), paymentId: grant.id });
+  const next = appendDownload(log, { book: book.id, at: now.toISOString(), paymentId: grant ? grant.id : 'gift' });
   const { error: logErr } = await storage.upload(logPath(who.userId), JSON.stringify(next), { contentType: 'application/json', upsert: true });
   if (logErr) {
     return Response.json({ error: msg(request, 'Không ghi được lượt tải, thử lại sau.', 'Could not record the download. Try again.') }, { status: 502 });

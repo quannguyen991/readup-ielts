@@ -144,7 +144,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </View>
         <CuteAtmosphere enabled={cuteEffects || chiikawaTheme} customImage={hydrated ? customMascotImage : null} />
         {/* Trợ lý AI ghim cả ở màn làm bài — chỉ ẩn khi đang thi (isExamRoute). */}
-        {isExamRoute(pathname) || isCityRoute ? null : <AskBubble />}
+        {isExamRoute(pathname) || isCityRoute || pathname.startsWith('/hub') ? null : <AskBubble />}
         <SelectionLookup />
         <SearchPalette />
       </FocusBackdrop>

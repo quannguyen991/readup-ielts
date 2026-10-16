@@ -15,6 +15,9 @@ import { CREAM, GOLD, GOLD_DEEP, MIST, NAVY, SANS_4, SANS_5, SANS_6, SANS_7, SAN
 import { Aurora, BODY_G, DEEP_G, FX_CSS, GOLD_SKY, GOLD_SKY_LOC, INK_G, MUTED_G, Plaque } from '@/components/gallery/glass';
 import { Icon } from '@/components/ui';
 import { BOOKS, BOOK_TOTALS, type Book, type BookId } from '@/services/books/catalog';
+import { GIFT_FIRST_BOOK, GIFT_LESSON_GOAL, GIFT_QUEST_GOAL, giftProgress } from '@/services/books/gift';
+import { useGameStore } from '@/store/useGameStore';
+import { useLessonStore } from '@/store/useLessonStore';
 import { BOOK_BUNDLE_RULE } from '@/services/books/entitlement';
 import { useAuthStore } from '@/store/useAuthStore';
 import { useL } from '@/i18n/useL';
@@ -87,9 +90,15 @@ export default function BookshelfScreen() {
     }
   };
 
+  const questsDone = useGameStore((s) => s.questsClaimed ?? 0);
+  const lessonsDone = useLessonStore((s) => Object.keys(s.done).length);
   if (!fontsLoaded && !fontError) return <View style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} />;
 
   const granted = access.state === 'member' && access.granted;
+  // Quà khi đăng ký: một cuốn tải được với mọi tài khoản đã đăng nhập. Tiến độ mở toàn bộ đếm từ máy này.
+  const giftBook = BOOKS.find((b) => b.id === GIFT_FIRST_BOOK);
+  const giftGot = access.state === 'member' && access.downloaded.includes(GIFT_FIRST_BOOK);
+  const progress = giftProgress(questsDone, lessonsDone);
   // Bìa chia đều theo bề rộng THẬT của kệ (cửa sổ trừ thanh menu): bìa ≥ 140px, IELTS 6 cuốn nằm một hàng khi đủ chỗ.
   const gap = wide ? 24 : 16;
   const cols = shelfW > 0 ? Math.max(2, Math.min(6, Math.floor((shelfW + gap) / (140 + gap)))) : 2;
@@ -98,6 +107,31 @@ export default function BookshelfScreen() {
   return (
     <ScrollView style={{ flex: 1, backgroundColor: GOLD_SKY[1] }} contentContainerStyle={{ paddingBottom: 48 }}>
       {isWeb ? <style>{FX_CSS}</style> : null}
+      {/* Quà sách: đăng ký nhận một cuốn; học đủ thì mở toàn bộ tủ. */}
+      <View style={{ marginHorizontal: 16, marginTop: 16, padding: 16, borderRadius: 18, backgroundColor: 'rgba(255,255,255,0.7)', borderWidth: 1, borderColor: 'rgba(184,149,90,0.35)', gap: 10 }}>
+        <Text style={{ color: INK_G, fontFamily: SERIF, fontSize: 18 }}>{L('Quà khi học trên Band 9', 'Gifts for studying on Band 9')}</Text>
+        <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 14, lineHeight: 20 }}>
+          {access.state === 'guest'
+            ? L(`Đăng ký tài khoản để nhận 1 cuốn quà: ${giftBook?.title ?? ''}.`, `Sign up to get one book as a gift: ${giftBook?.title ?? ''}.`)
+            : giftGot
+              ? L(`Bạn đã nhận quà: ${giftBook?.title ?? ''}.`, `You have received your gift: ${giftBook?.title ?? ''}.`)
+              : L(`Quà của bạn: ${giftBook?.title ?? ''}. Bấm tải ở bìa sách.`, `Your gift: ${giftBook?.title ?? ''}. Tap download on its cover.`)}
+        </Text>
+        <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 14, lineHeight: 20 }}>
+          {L(
+            `Mở toàn bộ tủ sách: làm ${GIFT_QUEST_GOAL} nhiệm vụ và học ${GIFT_LESSON_GOAL} bài. Hiện có ${progress.questsDone}/${GIFT_QUEST_GOAL} nhiệm vụ và ${progress.lessonsDone}/${GIFT_LESSON_GOAL} bài.`,
+            `Unlock the whole shelf: finish ${GIFT_QUEST_GOAL} tasks and ${GIFT_LESSON_GOAL} lessons. You have ${progress.questsDone}/${GIFT_QUEST_GOAL} tasks and ${progress.lessonsDone}/${GIFT_LESSON_GOAL} lessons.`,
+          )}
+        </Text>
+        <View style={{ height: 8, borderRadius: 4, backgroundColor: 'rgba(184,149,90,0.2)', overflow: 'hidden' }}>
+          <View style={{ height: 8, width: `${Math.round(progress.ratio * 100)}%`, backgroundColor: GOLD_DEEP, borderRadius: 4 }} />
+        </View>
+        {progress.unlocked ? (
+          <Text style={{ color: BODY_G, fontFamily: SANS_5, fontSize: 13 }}>
+            {L('Bạn đã đủ điều kiện. Mở toàn bộ tủ sách đang được hoàn thiện.', 'You have met the goal. Unlocking the full shelf is being finished.')}
+          </Text>
+        ) : null}
+      </View>
       {/* Đầu trang: sảnh vàng kim + tên tủ + nhãn phòng */}
       <View style={{ overflow: 'hidden' }}>
         <LinearGradient colors={GOLD_SKY} locations={GOLD_SKY_LOC} start={{ x: 0.15, y: 0 }} end={{ x: 0.85, y: 1 }} style={StyleSheet.absoluteFill} />
@@ -147,7 +181,7 @@ export default function BookshelfScreen() {
                     width={coverW}
                     en={en}
                     L={L}
-                    granted={granted}
+                    granted={granted || (access.state === 'member' && book.id === GIFT_FIRST_BOOK)}
                     downloaded={access.state === 'member' && access.downloaded.includes(book.id)}
                     busy={busy === book.id}
                     onSample={() => openSample(book)}

@@ -14,6 +14,7 @@ import { LISTENING_DECKS, LISTENING_SECTIONS } from '@/data/vocab-listening';
 import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
 import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { unitsFor } from '@/data/intl/units';
+import { DAILY_TALK_TOPICS } from '@/data/vocab-daily';
 import { byRecent, deckProgress, fold, isInProgress, type DeckProgress } from '@/services/vocab/deck-library';
 import { CUSTOM_PREFIX, useCustomDeckStore } from '@/store/useCustomDeckStore';
 import { isKnown, useIntlStore } from '@/store/useIntlStore';
@@ -63,6 +64,7 @@ const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconN
   { key: 'destination', label: 'Destination B1/B2', labelEn: 'Destination B1/B2', icon: 'book' },
   { key: 'satMath', label: 'SAT Math', labelEn: 'SAT Math', icon: 'grid' },
   { key: 'satVerbal', label: 'SAT Verbal', labelEn: 'SAT Verbal', icon: 'letters' },
+  { key: 'daily', label: 'Giao tiếp hằng ngày', labelEn: 'Everyday talk', icon: 'letters' },
   { key: 'toeic', label: 'TOEIC', labelEn: 'TOEIC', icon: 'book' },
   { key: 'toefl', label: 'TOEFL', labelEn: 'TOEFL', icon: 'book' },
 ];
@@ -77,11 +79,13 @@ const SECTION: Record<DeckSource, { title: string; titleEn: string; subtitle: st
   destination: { title: 'Destination B1 & B2', titleEn: 'Destination B1 & B2', subtitle: 'Từ vựng theo unit, có quiz kiểu THPT', subtitleEn: 'Unit vocabulary with high-school exam practice', icon: 'book' },
   satMath: { title: 'Từ vựng SAT Math', titleEn: 'SAT Math vocabulary', subtitle: 'Từ hay gặp trong đề Toán, chia bài ngắn', subtitleEn: 'Common words in Math questions, in short lessons', icon: 'grid' },
   satVerbal: { title: 'Từ vựng SAT Verbal', titleEn: 'SAT Verbal vocabulary', subtitle: 'Từ nối, sắc thái, từ trong ngữ cảnh', subtitleEn: 'Transitions, nuance and words in context', icon: 'letters' },
+  daily: { title: 'Giao tiếp hằng ngày', titleEn: 'Everyday talk', subtitle: '20 chủ đề, mỗi từ kèm ví dụ và ngữ cảnh dùng', subtitleEn: '20 topics, each word with an example and where to use it', icon: 'letters' },
   toeic: { title: 'TOEIC', titleEn: 'TOEIC', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
   toefl: { title: 'TOEFL', titleEn: 'TOEFL', subtitle: 'Mỗi unit 10 từ, đánh dấu từ đã thuộc để theo dõi tiến độ', subtitleEn: 'Each unit has 10 words; mark the ones you know to track progress', icon: 'book' },
 };
 
-const INTL_ACCENT: Record<'toeic' | 'toefl', readonly [string, string]> = {
+const INTL_ACCENT: Record<'toeic' | 'toefl' | 'daily', readonly [string, string]> = {
+  daily: ['#ECFDF5', '#047857'],
   toeic: ['#E0F2FE', '#0369A1'],
   toefl: ['#FCE7F3', '#BE185D'],
 };
@@ -136,6 +140,7 @@ const STATIC_DECKS: LibDeck[] = [
   ...SAT_VERBAL_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
   ...intlDecks('toeic'),
   ...intlDecks('toefl'),
+  ...DAILY_TALK_TOPICS.map((t) => ({ slug: t.slug, title: t.nameVi, subtitle: t.blurb, words: t.words, look: { source: 'daily' as const, sourceLabel: 'Giao tiếp hằng ngày', sourceLabelEn: 'Everyday talk', accent: INTL_ACCENT.daily, icon: 'letters' as const }, en: { title: t.name, subtitle: t.blurb }, haystack: fold(`${t.nameVi} ${t.name} giao tiếp hằng ngày ${t.words.map((w) => w.word).join(' ')}`) })),
 ];
 
 export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: LibraryFilter }) {
@@ -302,7 +307,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
                   {grid(learning.slice(0, LEARNING_PREVIEW).map(card))}
                 </View>
               ) : null}
-              {(['mine', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
+              {(['mine', 'daily', 'ielts', 'toeic', 'toefl', 'globalSuccess', 'vfi', 'vfia', 'listening', 'destination', 'satMath', 'satVerbal'] as const).map((s) => (
                 <View key={s} className="mt-7">
                   <SectionHeader title={L(SECTION[s].title, SECTION[s].titleEn)} subtitle={L(SECTION[s].subtitle, SECTION[s].subtitleEn)} icon={SECTION[s].icon} />
                   {sourceBody(s)}

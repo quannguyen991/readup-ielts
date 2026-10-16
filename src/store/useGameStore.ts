@@ -84,6 +84,7 @@ function initial(): GamePayload {
     perkDay: dateKey(new Date()),
     perkHints: 0,
     perkShieldUsed: false,
+    questsClaimed: 0,
   };
 }
 
@@ -358,7 +359,7 @@ export const useGameStore = create<GameState>()(
         const levelStars = levelForXp(xp) > levelForXp(s.xp) ? starGain((levelForXp(xp) - levelForXp(s.xp)) * STAR_BONUS.levelUp, 'lên cấp') : 0;
         const achievements = awardAchievements(life, s.achievements);
         const stars = questStars + levelStars + achievementStars(s.achievements, achievements);
-        set({ xp, items, day, today: { ...today, stars: today.stars + stars }, claimed: [...claimed, id], life, achievements, bonusStars: (s.bonusStars ?? 0) + stars });
+        set({ xp, items, day, today: { ...today, stars: today.stars + stars }, claimed: [...claimed, id], life, achievements, bonusStars: (s.bonusStars ?? 0) + stars, questsClaimed: (s.questsClaimed ?? 0) + 1 });
         return true;
       },
 

@@ -365,7 +365,7 @@ function WordRow({
 }) {
   const [open, setOpen] = useState(false);
   const { L } = useL();
-  const hasDetails = Boolean(word.example || word.collocation);
+  const hasDetails = Boolean(word.example || word.collocation || word.context);
 
   return (
     <Card>
@@ -413,6 +413,7 @@ function WordRow({
             </View>
           ) : null}
           {word.collocation ? <Detail label={L('Cụm hay đi kèm', 'Common collocation')} value={word.collocation} /> : null}
+          {word.context ? <Detail label={L('Ngữ cảnh dùng', 'Where to use it')} value={word.context} /> : null}
         </View>
       ) : null}
     </Card>
