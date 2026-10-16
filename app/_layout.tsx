@@ -27,7 +27,7 @@ import {
 import { AppShell } from '@/components/layout/AppShell';
 import { MemberGate } from '@/components/access/MemberGate';
 import { GameFxLayer } from '@/components/game/GameFxLayer';
-import { BreakLayer } from '@/components/break/BreakLayer';
+// import { BreakLayer } from '@/components/break/BreakLayer'; // tạm tắt đếm giờ nghỉ
 import { ChiikawaReact } from '@/components/chiikawa/ChiikawaReact';
 import { ChiikawaTapFx } from '@/components/chiikawa/ChiikawaTapFx';
 import { PageTransition } from '@/components/motion/Motion';
@@ -108,7 +108,7 @@ export default function RootLayout() {
           </PageTransition>
         </AppShell>
         <GameFxLayer />
-        <BreakLayer />
+        {/* <BreakLayer /> tạm tắt đếm giờ nghỉ */}
         <ChiikawaReact />
         <ChiikawaTapFx />
       </QueryClientProvider>
