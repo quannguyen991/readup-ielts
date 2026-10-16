@@ -27,6 +27,12 @@ type HubState = {
   /** Bài luyện nói IELTS đã đánh dấu xong: id bài → thời điểm. */
   ieltsDone: Record<string, string>;
   completeIelts: (id: string) => void;
+  /** Điểm chấm cao nhất (0–100) cho từng cụm nói theo câu: id cụm → điểm. */
+  phraseBest: Record<string, number>;
+  recordPhrase: (id: string, pct: number) => void;
+  /** Đề luyện nói theo chủ đề đã làm trọn: id chủ đề → thời điểm. */
+  topicsDone: Record<string, string>;
+  completeTopic: (id: string) => void;
   /** Bộ học do người học tự tạo. */
   userSets: UserSet[];
   /** Bộ học đã lưu (bookmark). */
@@ -53,6 +59,11 @@ export const useHubStore = create<HubState>()(
       roleplayDone: {},
       ieltsDone: {},
       completeIelts: (id) => set((s) => ({ ieltsDone: { ...s.ieltsDone, [id]: s.ieltsDone[id] ?? new Date().toISOString() } })),
+      phraseBest: {},
+      recordPhrase: (id, pct) =>
+        set((s) => ({ phraseBest: { ...s.phraseBest, [id]: Math.max(s.phraseBest[id] ?? 0, Math.round(pct)) } })),
+      topicsDone: {},
+      completeTopic: (id) => set((s) => ({ topicsDone: { ...s.topicsDone, [id]: s.topicsDone[id] ?? new Date().toISOString() } })),
       userSets: [],
       saved: [],
       slides: [],
@@ -89,6 +100,8 @@ export const useHubStore = create<HubState>()(
           lessonsDone: s.lessonsDone,
           roleplayDone: s.roleplayDone,
           ieltsDone: s.ieltsDone,
+          phraseBest: s.phraseBest,
+          topicsDone: s.topicsDone,
           userSets: s.userSets,
           saved: s.saved,
           slides: s.slides,

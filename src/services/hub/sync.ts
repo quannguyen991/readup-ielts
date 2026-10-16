@@ -17,13 +17,27 @@ export type HubPayload = {
   lessonsDone: Record<string, string>;
   roleplayDone: Record<string, number>;
   ieltsDone: Record<string, string>;
+  phraseBest: Record<string, number>;
+  topicsDone: Record<string, string>;
   userSets: UserSet[];
   saved: string[];
   slides: string[];
 };
 
 function empty(): HubPayload {
-  return { phonemeBest: {}, phonemeTries: {}, doneByDay: {}, lessonsDone: {}, roleplayDone: {}, ieltsDone: {}, userSets: [], saved: [], slides: [] };
+  return {
+    phonemeBest: {},
+    phonemeTries: {},
+    doneByDay: {},
+    lessonsDone: {},
+    roleplayDone: {},
+    ieltsDone: {},
+    phraseBest: {},
+    topicsDone: {},
+    userSets: [],
+    saved: [],
+    slides: [],
+  };
 }
 
 export function mergeHub(local: unknown, remote: unknown | null): HubPayload {
@@ -40,6 +54,8 @@ export function mergeHub(local: unknown, remote: unknown | null): HubPayload {
     lessonsDone: mergeRecords(a.lessonsDone, b.lessonsDone, earlier),
     roleplayDone: mergeRecords(a.roleplayDone, b.roleplayDone, maxNum),
     ieltsDone: mergeRecords(a.ieltsDone, b.ieltsDone, earlier),
+    phraseBest: mergeRecords(a.phraseBest, b.phraseBest, maxNum),
+    topicsDone: mergeRecords(a.topicsDone, b.topicsDone, earlier),
     userSets: unionByKey(a.userSets, b.userSets, (s) => s.id),
     saved: unionStrings(a.saved, b.saved),
     slides: a.slides.length > 0 ? a.slides : b.slides,

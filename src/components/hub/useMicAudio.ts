@@ -11,7 +11,11 @@ export function useMicAudio() {
   const procRef = useRef<ScriptProcessorNode | null>(null);
   const chunksRef = useRef<Float32Array[]>([]);
 
-  const start = useCallback(async (): Promise<boolean> => {
+  /**
+   * `onLevel` nhận mức âm lượng RMS (0–1 thực tế) của từng khung âm thanh, để vẽ sóng theo giọng
+   * nói thật. Không truyền thì hook chỉ thu âm như trước.
+   */
+  const start = useCallback(async (onLevel?: (rms: number) => void): Promise<boolean> => {
     if (Platform.OS !== 'web' || typeof navigator === 'undefined' || !navigator.mediaDevices?.getUserMedia) return false;
     const stream = await navigator.mediaDevices
       .getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false } })
@@ -29,7 +33,13 @@ export function useMicAudio() {
     mute.gain.value = 0;
     chunksRef.current = [];
     proc.onaudioprocess = (e) => {
-      chunksRef.current.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+      const frame = e.inputBuffer.getChannelData(0);
+      chunksRef.current.push(new Float32Array(frame));
+      if (onLevel) {
+        let sum = 0;
+        for (let i = 0; i < frame.length; i += 1) sum += (frame[i] ?? 0) * (frame[i] ?? 0);
+        onLevel(Math.sqrt(sum / Math.max(1, frame.length)));
+      }
     };
     src.connect(proc);
     proc.connect(mute);

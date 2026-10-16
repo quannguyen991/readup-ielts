@@ -44,6 +44,8 @@ export default function HubLearn() {
 
       <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Luyện nói IELTS</Text>
       <GameRow title="Lộ trình IELTS Speaking" desc="20 bài, 5 chặng từ band 5.0 đến 9.0, có ghi âm và bài mẫu." coin="path" route="/hub/ielts" />
+      <GameRow title="Đề luyện nói theo chủ đề" desc="12 chủ đề đủ Part 1, cue card và Part 3, có số liệu sau mỗi câu." coin="speaking" route="/hub/topics" />
+      <GameRow title="Nói cùng Leo (giám khảo AI)" desc="Leo hỏi bằng giọng nói, phản hồi từng câu và cuối buổi có phân tích chi tiết." coin="friends" route="/hub/live" />
 
       <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Trò chơi luyện</Text>
       <GameRow title="Cặp âm tối thiểu" desc="Nghe và chọn từ đúng: sheep hay ship?" coin="listening" route="/hub/games/minimal-pairs" />
