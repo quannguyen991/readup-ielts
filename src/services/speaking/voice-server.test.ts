@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import voice from '@/data/pronunciation-voice.json';
+
 import { createAoedeGenerator, pcmToWav } from './voice-server';
 
 const pcm = new Uint8Array(4800).fill(3);
@@ -14,12 +16,12 @@ test('Aoede wraps the full PCM in a 24kHz mono WAV instead of fading away the sp
   assert.throws(() => pcmToWav(new Uint8Array(4800)));
 });
 
-test('quota exhaustion moves to the next key and always requests Aoede on the configured free TTS model', async () => {
+test('quota exhaustion moves to the next key and always requests the configured voice on the configured free TTS model', async () => {
   const calls: string[] = [];
   const generate = createAoedeGenerator(['dummy-a', 'dummy-b'], async (url, init) => {
-    assert.match(String(url), /gemini-2\.5-flash-preview-tts:generateContent$/);
+    assert.match(String(url), new RegExp(`${voice.model.replace(/[.]/g, '\.')}:generateContent$`));
     const body = JSON.parse(init!.body as string);
-    assert.equal(body.generationConfig.speechConfig.voiceConfig.prebuiltVoiceConfig.voiceName, 'Aoede');
+    assert.equal(body.generationConfig.speechConfig.voiceConfig.prebuiltVoiceConfig.voiceName, voice.name);
     calls.push((init!.headers as Record<string, string>)['x-goog-api-key']!);
     return calls.length === 1 ? new Response('', { status: 429 }) : good();
   });

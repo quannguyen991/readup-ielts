@@ -110,7 +110,7 @@ export default function SpeakingLobby() {
             <Sparkles count={6} />
             <View style={{ alignSelf: 'stretch', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
               <Text className="font-heavy" style={{ fontSize: 24, color: '#FFFFFF' }}>
-                {L(exam ? 'Giám khảo AI.' : 'Luyện cùng Aoede.', exam ? 'AI examiner.' : 'Practise with Aoede.')}
+                {L(exam ? 'Giám khảo AI.' : 'Luyện cùng Kore.', exam ? 'AI examiner.' : 'Practise with Kore.')}
               </Text>
               <Label text={L('Nói cùng AI 🎙️', 'Talk with AI 🎙️')} color="#FACC15" ink="#1A1405" tilt={4} size={12} />
             </View>

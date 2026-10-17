@@ -34,14 +34,14 @@ export function groupTitle(group: ListeningGroup): string {
 export const GroupBlock = memo(function GroupBlock({ group, ...common }: { group: ListeningGroup } & Common) {
   return (
     <View className="rounded-card border border-border bg-surface p-4" style={{ marginBottom: 16 }}>
-      <Text className="font-heavy text-ink" style={{ fontSize: 16 }}>
+      <Text className="font-nun-heavy text-ink" style={{ fontSize: 16 }}>
         {groupTitle(group)}
       </Text>
-      <Text className="mt-1 font-sans text-body text-body" style={{ lineHeight: 22 }}>
+      <Text className="mt-1 font-nun text-body text-body" style={{ lineHeight: 22 }}>
         {group.instruction}
       </Text>
       {group.wordLimit && !group.instruction.toUpperCase().includes(group.wordLimit.toUpperCase()) ? (
-        <Text className="mt-1 font-strong text-label" style={{ color: color.primary, letterSpacing: 0.3 }}>
+        <Text className="mt-1 font-nun-strong text-label" style={{ color: color.primary, letterSpacing: 0.3 }}>
           {group.wordLimit}
         </Text>
       ) : null}
@@ -79,7 +79,7 @@ function GapInput({ n, answers, setAnswer, locked }: { n: number } & Common) {
       }}
     >
       <View style={{ width: 32, alignSelf: 'stretch', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FBF7EE' }}>
-        <Text className="font-heavy" style={{ fontSize: 13, color: color.primary }}>
+        <Text className="font-nun-heavy" style={{ fontSize: 13, color: color.primary }}>
           {n}
         </Text>
       </View>
@@ -116,13 +116,13 @@ function Segments({ text, ...common }: { text: string } & Common) {
   for (const m of text.matchAll(MARKER)) {
     const before = text.slice(last, m.index);
     before.split(/(\s+)/).forEach((w) => {
-      if (w) out.push(<Text key={k++} className="font-sans text-body text-ink" style={{ fontSize: 15, lineHeight: 30 }}>{w}</Text>);
+      if (w) out.push(<Text key={k++} className="font-nun text-body text-ink" style={{ fontSize: 15, lineHeight: 30 }}>{w}</Text>);
     });
     out.push(<GapInput key={k++} n={Number(m[1])} {...common} />);
     last = (m.index ?? 0) + m[0].length;
   }
   text.slice(last).split(/(\s+)/).forEach((w) => {
-    if (w) out.push(<Text key={k++} className="font-sans text-body text-ink" style={{ fontSize: 15, lineHeight: 30 }}>{w}</Text>);
+    if (w) out.push(<Text key={k++} className="font-nun text-body text-ink" style={{ fontSize: 15, lineHeight: 30 }}>{w}</Text>);
   });
   return <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', rowGap: 6 }}>{out}</View>;
 }
@@ -142,7 +142,7 @@ function GapBody({ group, ...common }: { group: ListeningGroup } & Common) {
             {cells.map((c, ci) => (
               <View key={ci} style={{ flex: 1, minWidth: 0, padding: 8, borderLeftWidth: ci ? 1 : 0, borderColor: color.borderStrong }}>
                 {r === 0 && !c.includes('{{') ? (
-                  <Text className="font-strong text-ink" style={{ fontSize: 14 }}>{c}</Text>
+                  <Text className="font-nun-strong text-ink" style={{ fontSize: 14 }}>{c}</Text>
                 ) : (
                   <Segments text={c} {...common} />
                 )}
@@ -161,7 +161,7 @@ function GapBody({ group, ...common }: { group: ListeningGroup } & Common) {
     flushTable(`t${i}`);
     if (line.startsWith('## ')) {
       rows.push(
-        <Text key={i} className="font-heavy text-ink" style={{ fontSize: 15, marginTop: i ? 8 : 0, marginBottom: 2 }}>
+        <Text key={i} className="font-nun-heavy text-ink" style={{ fontSize: 15, marginTop: i ? 8 : 0, marginBottom: 2 }}>
           {line.slice(3)}
         </Text>,
       );
@@ -198,10 +198,10 @@ function OptionRow({
         {on && multi ? (
           <Icon name="check" size={14} color="#FFFFFF" strokeWidth={3} />
         ) : (
-          <Text className="font-heavy" style={{ fontSize: 12, color: on ? '#FFFFFF' : color.muted }}>{option.key}</Text>
+          <Text className="font-nun-heavy" style={{ fontSize: 12, color: on ? '#FFFFFF' : color.muted }}>{option.key}</Text>
         )}
       </View>
-      <Text className="min-w-0 flex-1 font-sans text-body text-ink" style={{ fontSize: 15, lineHeight: 21 }}>
+      <Text className="min-w-0 flex-1 font-nun text-body text-ink" style={{ fontSize: 15, lineHeight: 21 }}>
         {option.text}
       </Text>
     </Pressable>
@@ -213,10 +213,10 @@ function QuestionLabel({ q, span }: { q: ListeningQuestion; span?: number }) {
   return (
     <View className="mb-2 flex-row items-start gap-2.5">
       <View style={{ minWidth: 28, height: 28, paddingHorizontal: 6, borderRadius: 14, backgroundColor: '#FBF7EE', alignItems: 'center', justifyContent: 'center' }}>
-        <Text className="font-heavy" style={{ fontSize: 12, color: color.primary }}>{label}</Text>
+        <Text className="font-nun-heavy" style={{ fontSize: 12, color: color.primary }}>{label}</Text>
       </View>
       {q.prompt ? (
-        <Text className="min-w-0 flex-1 font-strong text-ink" style={{ fontSize: 15, lineHeight: 22, paddingTop: 3 }}>
+        <Text className="min-w-0 flex-1 font-nun-strong text-ink" style={{ fontSize: 15, lineHeight: 22, paddingTop: 3 }}>
           {q.prompt}
         </Text>
       ) : null}
@@ -268,7 +268,7 @@ function McqManyBody({ group, answers, setAnswer, locked }: { group: ListeningGr
         return (
           <View key={q.n} nativeID={qDomId(q.n)}>
             <QuestionLabel q={q} span={k} />
-            <Text className="mb-2 font-mid text-label text-muted">
+            <Text className="mb-2 font-nun-mid text-label text-muted">
               {L(`Chọn ${k} đáp án`, `Choose ${k === 2 ? 'TWO' : 'THREE'} answers`)} · {picked.length}/{k}
             </Text>
             <View style={{ gap: 8 }}>
@@ -308,8 +308,8 @@ function MatchingBody({ group, answers, setAnswer, locked }: { group: ListeningG
       <View className="mb-3.5 rounded-panel border border-border p-3" style={{ backgroundColor: '#FCFAF5', gap: 4 }}>
         {opts.map((o) => (
           <View key={o.key} className="flex-row gap-2.5">
-            <Text className="font-heavy" style={{ width: 18, color: color.primary, fontSize: 14 }}>{o.key}</Text>
-            <Text className="min-w-0 flex-1 font-sans text-ink" style={{ fontSize: 14, lineHeight: 20 }}>{o.text}</Text>
+            <Text className="font-nun-heavy" style={{ width: 18, color: color.primary, fontSize: 14 }}>{o.key}</Text>
+            <Text className="min-w-0 flex-1 font-nun text-ink" style={{ fontSize: 14, lineHeight: 20 }}>{o.text}</Text>
           </View>
         ))}
       </View>
@@ -338,7 +338,7 @@ function MatchingBody({ group, answers, setAnswer, locked }: { group: ListeningG
                       borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? color.primary : '#FFFFFF',
                     }}
                   >
-                    <Text className="font-heavy" style={{ fontSize: 14, color: on ? '#FFFFFF' : color.body }}>{o.key}</Text>
+                    <Text className="font-nun-heavy" style={{ fontSize: 14, color: on ? '#FFFFFF' : color.body }}>{o.key}</Text>
                   </Pressable>
                 );
               })}

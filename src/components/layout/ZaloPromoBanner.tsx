@@ -97,7 +97,7 @@ export function ZaloPromoBanner() {
           height: 80,
           borderRadius: 40,
           backgroundColor: chiikawa ? 'rgba(232, 123, 160, 0.20)' : 'rgba(245, 158, 11, 0.18)',
-          filter: Platform.OS === 'web' ? 'blur(32px)' : undefined,
+          backgroundImage: Platform.OS === 'web' ? `radial-gradient(closest-side, ${chiikawa ? 'rgba(232, 123, 160, 0.20)' : 'rgba(245, 158, 11, 0.18)'}, transparent)` : undefined,
         }}
       />
       <View
@@ -110,7 +110,7 @@ export function ZaloPromoBanner() {
           height: 70,
           borderRadius: 35,
           backgroundColor: chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(184, 149, 90, 0.22)',
-          filter: Platform.OS === 'web' ? 'blur(28px)' : undefined,
+          backgroundImage: Platform.OS === 'web' ? `radial-gradient(closest-side, ${chiikawa ? 'rgba(214, 94, 134, 0.24)' : 'rgba(184, 149, 90, 0.22)'}, transparent)` : undefined,
         }}
       />
 

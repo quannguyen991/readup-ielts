@@ -23,6 +23,12 @@ import {
 import { useSentenceStore, type DictationAttempt } from '@/store/useSentenceStore';
 import { useStudyStore } from '@/store/useStudyStore';
 import { color, paper } from '@/theme/tokens';
+import { LinearGradient } from 'expo-linear-gradient';
+
+import { themedHex } from '@/theme/palette-state';
+import { GOLD_BUTTON } from '@/components/layout/phone-theme';
+import { LionMascot, type LionPose } from '@/components/mascot/LionMascot';
+import { SpeakingWave } from '@/components/sentence/SpeakingWave';
 import { CrossFade, PageTransition } from '@/components/motion/Motion';
 import { BattleStrip } from '@/components/game/BattleStrip';
 import { useOwlHint } from '@/components/game/useOwlHint';
@@ -67,7 +73,8 @@ function sentencesOfSet(set: DictationSet): (DictationItem & { vi: string })[] {
 }
 
 const SESSION_LENGTH = 10;
-const RATES = [1, 0.75, 0.5] as const;
+/** Thứ tự chậm → nhanh, khớp dải chọn tốc độ của mockup. */
+const RATES = [0.5, 0.75, 1] as const;
 
 type Phase = 'setup' | 'running' | 'summary';
 type InputMode = 'cells' | 'free';
@@ -317,18 +324,15 @@ function RunningView({
     else if (mode === 'free' && freeGrade) strike(freeGrade.accuracy >= 0.8);
   }, [mode, grade.done, freeGrade, revealed, strike]);
 
-  // Hỏi Cú (ô chữ): mở hộ từ đầu tiên chưa đúng. Tự gõ thì không có gì để mở.
-  useOwlHint(
-    mode === 'cells' && !done
-      ? () => {
-          const filled = revealNextWord(board, letters);
-          if (filled === null) return false;
-          setLetters(filled);
-          inputRef.current?.focus();
-          return true;
-        }
-      : null,
-  );
+  // Mở hộ từ đầu tiên chưa đúng (ô chữ). Dùng chung cho Hỏi Cú và nút "Gợi ý một từ".
+  const hintOneWord = () => {
+    const filled = revealNextWord(board, letters);
+    if (filled === null) return false;
+    setLetters(filled);
+    inputRef.current?.focus();
+    return true;
+  };
+  useOwlHint(mode === 'cells' && !done ? hintOneWord : null);
 
   useEffect(() => {
     enteredAt.current = Date.now();
@@ -436,6 +440,9 @@ function RunningView({
     return () => window.removeEventListener('keydown', onKey, true);
   });
 
+  // Linh vật phản ứng với kết quả: đúng cả câu thì vui, xong mà còn sai thì suy nghĩ, đang làm thì đọc sách.
+  const lionPose: LionPose = allCorrect ? 'cheer' : done ? 'think' : 'read';
+
   /** Từ nào đã điền đúng trọn vẹn thì mở ra ở bảng luyện phát âm. */
   const solvedWords = useMemo(
     () =>
@@ -479,60 +486,83 @@ function RunningView({
             />
 
             {/* ------------------------------------------------- trình đọc */}
-            <View className="flex-row flex-wrap items-center gap-3 rounded-panel bg-paper-canvas p-3.5">
+            {/*
+              Linh vật ngồi đọc sách ở trên, nút vàng đè lên mép dưới của linh vật.
+              Không có thanh tiến trình hay mốc thời gian: expo-speech không cho biết
+              độ dài đoạn đọc nên thanh chạy sẽ là con số bịa.
+            */}
+            {/*
+              Sân khấu vàng nhạt: linh vật ở giữa, nút vàng đè lên mép dưới của nó.
+              Linh vật đổi theo kết quả câu này — vui khi chép đúng cả câu, suy nghĩ khi
+              còn chữ sai. Sóng âm chỉ chạy khi trình đọc đang phát, nên nó báo đúng trạng thái.
+            */}
+            <LinearGradient
+              colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={{ borderRadius: 22, padding: 18, alignItems: 'center' }}
+            >
+              <LionMascot pose={lionPose} size={132} />
               <Pressable
                 accessibilityRole="button"
                 accessibilityLabel={speaking ? L('Dừng đọc', 'Stop') : L('Nghe câu', 'Play sentence')}
                 onPress={() => (speaking ? Speech.stop() : play(item.text, rate))}
-                className="h-12 w-12 items-center justify-center rounded-pill"
-                style={{ backgroundColor: paper.brandMid }}
+                className="-mt-9 h-[72px] w-[72px] items-center justify-center rounded-pill"
+                style={[GOLD_BUTTON as never, { boxShadow: '0 10px 24px rgba(170,120,40,0.32)' }]}
               >
-                <Icon name={speaking ? 'close' : 'play'} size={20} color="#FFFFFF" strokeWidth={2} />
+                <Icon name={speaking ? 'close' : 'play'} size={26} color="#FFFFFF" strokeWidth={2} />
               </Pressable>
+              <SpeakingWave active={speaking} />
+              <Text className="mt-2 text-center font-strong text-cardTitle text-paper-ink">
+                {L('Nghe kỹ, viết đúng', 'Listen closely, write it right')}
+              </Text>
+              <Text className="mt-1 text-center font-sans text-body text-paper-body">
+                {speaking
+                  ? L('Đang đọc…', 'Playing…')
+                  : L('Nghe đoạn này rồi nhập lại những gì bạn nghe được.', 'Listen, then type what you heard.')}
+              </Text>
+            </LinearGradient>
 
-              <View className="flex-1">
-                <Text className="font-strong text-body text-paper-ink">
-                  {speaking ? L('Đang đọc…', 'Playing…') : L('Nghe câu', 'Play sentence')}
-                </Text>
-                <Text className="font-sans text-label text-paper-muted">
-                  {L('Bấm để nghe lại bao nhiêu lần cũng được.', 'Tap to replay as many times as you like.')}
-                </Text>
-              </View>
-
-              {/* `max-w-full`: không có nó hàng này dài bằng nội dung và tràn khỏi thẻ trên điện thoại, cắt mất nút tốc độ. */}
-              <View className="max-w-full flex-row flex-wrap items-center gap-1.5">
-                <VoicePicker
-                  voices={voices}
-                  voiceId={voiceId}
-                  onChange={(id) => {
-                    voiceTouched.current = true;
-                    setVoiceId(id);
-                  }}
-                  onPreview={(id) => play(item.text, rate, id)}
-                />
-                {RATES.map((r) => (
+            {/* Tốc độ dạng dải chọn một, giọng đọc nằm ngay dưới. `max-w-full` giữ dải trong thẻ trên điện thoại. */}
+            <View className="mt-4 max-w-full flex-row rounded-pill border border-brand-soft bg-white p-1">
+              {RATES.map((r) => {
+                const on = rate === r;
+                return (
                   <Pressable
                     key={r}
                     accessibilityRole="button"
+                    aria-selected={on}
                     onPress={() => {
                       setRate(r);
                       play(item.text, r);
                     }}
-                    className="rounded-pill border px-2.5 py-1.5"
-                    style={{
-                      backgroundColor: rate === r ? paper.brandMid : '#FFFFFF',
-                      borderColor: rate === r ? paper.brandMid : paper.brandSoft,
-                    }}
+                    className="flex-1 items-center rounded-pill py-2"
+                    style={
+                      on
+                        ? { backgroundColor: themedHex('#FFF4CF'), borderWidth: 1, borderColor: themedHex('#EBC26A') }
+                        : undefined
+                    }
                   >
                     <Text
-                      className="font-strong text-label"
-                      style={{ color: rate === r ? '#FFFFFF' : paper.body }}
+                      className={on ? 'font-strong text-label' : 'font-mid text-label text-paper-body'}
+                      style={on ? { color: themedHex('#8C6A1F') } : undefined}
                     >
                       {r}×
                     </Text>
                   </Pressable>
-                ))}
-              </View>
+                );
+              })}
+            </View>
+            <View className="mt-2 items-center">
+              <VoicePicker
+                voices={voices}
+                voiceId={voiceId}
+                onChange={(id) => {
+                  voiceTouched.current = true;
+                  setVoiceId(id);
+                }}
+                onPreview={(id) => play(item.text, rate, id)}
+              />
             </View>
 
             {/* ---------------------------------------------- chọn chế độ */}
@@ -565,6 +595,11 @@ function RunningView({
                   </Text>
                 </Pressable>
               ))}
+            </View>
+
+            <View className="mt-5 flex-row items-center justify-between">
+              <Text className="font-strong text-body text-paper-ink">{L('Nhập những gì bạn nghe được', 'Type what you heard')}</Text>
+              <Text className="font-sans text-label text-paper-muted">{L(`${board.words.length} từ`, `${board.words.length} words`)}</Text>
             </View>
 
             {mode === 'cells' ? (
@@ -643,6 +678,20 @@ function RunningView({
               </View>
             )}
 
+            {/* Gợi ý một từ: chỉ ở ô chữ, mở hộ từ đầu tiên chưa đúng. Cùng hành động với Hỏi Cú. */}
+            {mode === 'cells' && !done ? (
+              <View className="mt-3 items-center">
+                <Pressable
+                  accessibilityRole="button"
+                  onPress={() => hintOneWord()}
+                  className="h-11 flex-row items-center gap-2 rounded-pill border border-brand-soft bg-white px-5"
+                >
+                  <Icon name="sparkle" size={16} color={paper.brandMid} strokeWidth={2} />
+                  <Text className="font-strong text-label text-paper-ink">{L('Gợi ý một từ', 'Hint one word')}</Text>
+                </Pressable>
+              </View>
+            ) : null}
+
             {/* ------------------------------------------------- kết thúc */}
             {done ? (
               <View className="mt-4">
@@ -715,6 +764,34 @@ function RunningView({
               ) : null}
 
               <View className="flex-1" />
+            </View>
+
+            {/*
+              Nút vàng lớn là hành động chính của câu: khi chưa xong thì "Kiểm tra"
+              (chỉ bấm được ở chế độ tự gõ đã có chữ), xong rồi thì sang câu sau.
+              Enter vẫn làm đúng việc này, nên nút chỉ là đường đi bằng chuột.
+            */}
+            <Pressable
+              accessibilityRole="button"
+              disabled={!done && !(mode === 'free' && freeText.trim().length > 0)}
+              onPress={() => (done ? next() : setFreeChecked(true))}
+              className="mt-5 h-14 flex-row items-center justify-center gap-2 rounded-pill"
+              style={[GOLD_BUTTON as never, { opacity: done || (mode === 'free' && freeText.trim().length > 0) ? 1 : 0.5 }]}
+            >
+              <Text className="font-strong text-bodyLg" style={{ color: '#FFFFFF' }}>
+                {done
+                  ? index + 1 === total
+                    ? L('Xem kết quả', 'See results')
+                    : L('Câu tiếp theo', 'Next sentence')
+                  : L('Kiểm tra', 'Check')}
+              </Text>
+              <Icon name="arrow-right" size={18} color="#FFFFFF" strokeWidth={2.2} />
+            </Pressable>
+            <View className="mt-3 flex-row items-center justify-center gap-2">
+              <Icon name="info" size={14} color={paper.muted} />
+              <Text className="font-sans text-label text-paper-muted">
+                {L('Bạn có thể nghe lại không giới hạn.', 'You can replay as many times as you like.')}
+              </Text>
             </View>
 
             {/*

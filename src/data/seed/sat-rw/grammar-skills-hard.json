@@ -1,0 +1,244 @@
+{
+  "questions": [
+    {
+      "id": "satrw-g-u05-h01",
+      "unit": 5,
+      "unitTitle": "Chủ ngữ hợp số với động từ",
+      "domain": "Standard English Conventions",
+      "skill": "modifier",
+      "difficulty": "hard",
+      "passage": "Reviewing the archive's ledgers, ______ two discrepancies that the earlier audit had missed.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["the auditor found", "the earlier audit found", "the ledgers were found", "the archive discovered"],
+      "answerIndex": 0,
+      "explainVi": "Cụm đầu câu Reviewing the archive's ledgers mô tả người đang rà soát sổ sách, nên chủ ngữ phải là the auditor. Vế sau cho biết đợt kiểm toán trước đã bỏ sót các sai lệch, nên phương án the earlier audit found tự mâu thuẫn.",
+      "whyWrong": [
+        "",
+        "Bổ ngữ treo và mâu thuẫn: đợt kiểm toán trước đã bỏ sót sai lệch, nên nó không thể là người phát hiện ra chúng.",
+        "Sổ cái không tự rà soát chính mình; chủ ngữ phải là người làm việc rà soát.",
+        "Kho lưu trữ không rà soát sổ sách; chủ ngữ phải là người làm việc rà soát."
+      ],
+      "meaningVi": "Khi rà soát sổ sách lưu trữ, kiểm toán viên phát hiện hai chỗ sai lệch mà đợt kiểm toán trước đã bỏ sót."
+    },
+    {
+      "id": "satrw-g-u05-h02",
+      "unit": 5,
+      "unitTitle": "Chủ ngữ hợp số với động từ",
+      "domain": "Standard English Conventions",
+      "skill": "modifier",
+      "difficulty": "hard",
+      "passage": "Caught in the rain without an umbrella, ______ before reaching the station.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["the station was flooded", "the umbrella was lost", "the commuters were soaked", "the rain was caught"],
+      "answerIndex": 2,
+      "explainVi": "Cụm đầu câu Caught in the rain mô tả người đi đường bị mắc mưa, nên chủ ngữ phải là the commuters. Nhà ga và chiếc ô không bị mắc mưa theo nghĩa của cụm này; và mưa không thể bị bắt.",
+      "whyWrong": [
+        "Nhà ga không thể bị mắc mưa khi không có ai đi qua; chủ ngữ phải là người đi đường.",
+        "Chiếc ô không phải thứ bị mắc mưa; cụm đầu câu không mô tả nó.",
+        "",
+        "Mưa không thể bị bắt; chủ ngữ phải là người đang bị mắc mưa."
+      ],
+      "meaningVi": "Bị mắc mưa mà không có ô, những người đi làm đã ướt sũng trước khi tới nhà ga."
+    },
+    {
+      "id": "satrw-g-u05-h03",
+      "unit": 5,
+      "unitTitle": "Chủ ngữ hợp số với động từ",
+      "domain": "Standard English Conventions",
+      "skill": "modifier",
+      "difficulty": "hard",
+      "passage": "Written in 1605 for a London audience, ______ remains one of the most frequently staged works in modern theatre.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["the audience", "the theatre companies", "the playwright", "the play"],
+      "answerIndex": 3,
+      "explainVi": "Written in 1605 là cụm bị động rút gọn: thứ được viết vào năm 1605 phải là chủ ngữ, tức vở kịch. Khán giả, đoàn kịch và nhà viết kịch đều không thể được viết ra theo cách đó.",
+      "whyWrong": [
+        "Khán giả không được viết ra; cụm đầu câu nói về một tác phẩm được viết năm 1605.",
+        "Đoàn kịch không được viết ra vào năm 1605.",
+        "Nhà viết kịch là người viết vở kịch, không phải thứ được viết ra.",
+        ""
+      ],
+      "meaningVi": "Được viết năm 1605 cho khán giả London, vở kịch ấy vẫn là một trong những tác phẩm được dựng nhiều nhất trong sân khấu hiện đại."
+    },
+    {
+      "id": "satrw-g-u05-h04",
+      "unit": 5,
+      "unitTitle": "Chủ ngữ hợp số với động từ",
+      "domain": "Standard English Conventions",
+      "skill": "modifier",
+      "difficulty": "hard",
+      "passage": "Stripped of its paint by decades of weather, ______ still stood at the edge of the harbor.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["the lighthouse", "the sailors", "the storm", "the tide"],
+      "answerIndex": 0,
+      "explainVi": "Cụm đầu câu Stripped of its paint là bị động rút gọn: thứ bị tróc sơn phải là chủ ngữ, tức ngọn hải đăng. Thủy thủ, cơn bão và thủy triều không có sơn để bị tróc.",
+      "whyWrong": [
+        "",
+        "Thủy thủ không bị tróc sơn; chủ ngữ phải là vật có sơn.",
+        "Cơn bão không có sơn để bị tróc.",
+        "Thủy triều không có sơn để bị tróc."
+      ],
+      "meaningVi": "Bị gió mưa làm tróc sơn qua nhiều thập kỷ, ngọn hải đăng vẫn đứng ở mép cảng."
+    },
+    {
+      "id": "satrw-g-u05-h05",
+      "unit": 5,
+      "unitTitle": "Chủ ngữ hợp số với động từ",
+      "domain": "Standard English Conventions",
+      "skill": "modifier",
+      "difficulty": "hard",
+      "passage": "Asked to explain the discrepancy in the accounts, ______ repeated the same figures without comment.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["the chart", "the director", "the ledger", "the report"],
+      "answerIndex": 1,
+      "explainVi": "Cụm đầu câu Asked to explain là bị động rút gọn kèm to V: người được yêu cầu giải thích phải là chủ ngữ. Chỉ người mới có thể được hỏi và trả lời; biểu đồ, sổ cái và báo cáo chỉ là vật.",
+      "whyWrong": [
+        "Biểu đồ không thể được hỏi để giải thích; chủ ngữ phải là người có thể trả lời.",
+        "",
+        "Sổ cái không thể được hỏi để giải thích; chủ ngữ phải là người.",
+        "Báo cáo không thể được hỏi để giải thích; chủ ngữ phải là người."
+      ],
+      "meaningVi": "Được yêu cầu giải thích chỗ chênh lệch trong sổ sách, giám đốc lặp lại đúng các con số mà không bình luận gì."
+    },
+    {
+      "id": "satrw-g-u05-h06",
+      "unit": 5,
+      "unitTitle": "Chủ ngữ hợp số với động từ",
+      "domain": "Standard English Conventions",
+      "skill": "modifier",
+      "difficulty": "hard",
+      "passage": "Rising early to catch the first train, ______ had packed the sandwiches the night before.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["the train", "the platform", "the station", "the traveler"],
+      "answerIndex": 3,
+      "explainVi": "Cụm đầu câu Rising early to catch the first train mô tả người dậy sớm để kịp chuyến tàu; người đó cũng là người đã chuẩn bị bánh từ tối hôm trước. Tàu, sân ga và nhà ga không dậy sớm hay chuẩn bị đồ ăn.",
+      "whyWrong": [
+        "Tàu không dậy sớm và không đóng gói bánh; chủ ngữ phải là người.",
+        "Sân ga không dậy sớm để đi tàu.",
+        "Nhà ga cũng không tự đóng gói bánh sandwich.",
+        ""
+      ],
+      "meaningVi": "Dậy sớm để kịp chuyến tàu đầu tiên, người khách đã chuẩn bị sẵn bánh sandwich từ tối hôm trước."
+    },
+    {
+      "id": "satrw-g-u07-verb-h01",
+      "unit": 7,
+      "unitTitle": "Thì, dạng động từ và thế song song",
+      "domain": "Standard English Conventions",
+      "skill": "verbform",
+      "difficulty": "hard",
+      "passage": "The manager suggested ______ the project schedule before the board meeting.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["to revise", "revising", "revised", "revise"],
+      "answerIndex": 1,
+      "explainVi": "suggest đi với V-ing (suggest doing), không đi với to V. revised là quá khứ phân từ và revise là nguyên thể trần; cả hai đều không đứng được sau suggest trong cấu trúc này.",
+      "whyWrong": [
+        "suggest không đi với to V; cấu trúc đúng là suggest + V-ing.",
+        "",
+        "Quá khứ phân từ không đứng sau suggest trong cấu trúc này.",
+        "Nguyên thể trần không đi sau suggest."
+      ],
+      "meaningVi": "Người quản lý gợi ý điều chỉnh lịch dự án trước cuộc họp ban giám đốc."
+    },
+    {
+      "id": "satrw-g-u07-verb-h02",
+      "unit": 7,
+      "unitTitle": "Thì, dạng động từ và thế song song",
+      "domain": "Standard English Conventions",
+      "skill": "verbform",
+      "difficulty": "hard",
+      "passage": "______ by the committee last year, the proposal was finally approved this spring.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["Rejected", "Rejecting", "To reject", "Having rejected"],
+      "answerIndex": 0,
+      "explainVi": "Cụm đầu câu mang nghĩa bị động: đề xuất bị ủy ban bác bỏ năm ngoái. Dạng V-ed (Rejected) đúng. Rejecting và Having rejected đều mang nghĩa chủ động, còn To reject không diễn đạt được quan hệ bị động ở đây.",
+      "whyWrong": [
+        "",
+        "Rejecting mang nghĩa chủ động: đề xuất không tự bác bỏ được.",
+        "To reject không diễn đạt đúng quan hệ bị động của câu này.",
+        "Having rejected cũng mang nghĩa chủ động: đề xuất không tự bác bỏ được."
+      ],
+      "meaningVi": "Bị ủy ban bác bỏ năm ngoái, đề xuất cuối cùng đã được thông qua vào mùa xuân năm nay."
+    },
+    {
+      "id": "satrw-g-u07-verb-h03",
+      "unit": 7,
+      "unitTitle": "Thì, dạng động từ và thế song song",
+      "domain": "Standard English Conventions",
+      "skill": "verbform",
+      "difficulty": "hard",
+      "passage": "The city council has delayed ______ a decision on the new stadium until next spring.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["to make", "make", "making", "made"],
+      "answerIndex": 2,
+      "explainVi": "delay đi với V-ing (delay doing). to make sai dạng này; make là nguyên thể trần; made là quá khứ hoặc phân từ, không đứng được ở vị trí này.",
+      "whyWrong": [
+        "delay không đi với to V; cấu trúc đúng là delay + V-ing.",
+        "Nguyên thể trần không đứng sau delay.",
+        "",
+        "Quá khứ hoặc phân từ không đi sau delay trong cấu trúc này."
+      ],
+      "meaningVi": "Hội đồng thành phố đã trì hoãn việc đưa ra quyết định về sân vận động mới đến mùa xuân tới."
+    },
+    {
+      "id": "satrw-g-u07-verb-h04",
+      "unit": 7,
+      "unitTitle": "Thì, dạng động từ và thế song song",
+      "domain": "Standard English Conventions",
+      "skill": "verbform",
+      "difficulty": "hard",
+      "passage": "The company offered ______ the damaged equipment at no extra cost.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["replacing", "replace", "to replace", "replaced"],
+      "answerIndex": 2,
+      "explainVi": "offer đi với to V (offer to do), nên dạng đúng là to replace. Dạng V-ing, nguyên thể trần và quá khứ phân từ đều không đứng được sau offer ở vị trí này.",
+      "whyWrong": [
+        "offer không đi với V-ing trong cấu trúc này; dùng offer + to V.",
+        "Nguyên thể trần không đứng sau offer ở đây.",
+        "",
+        "Quá khứ phân từ không đứng sau offer trong cấu trúc này."
+      ],
+      "meaningVi": "Công ty đề nghị thay thiết bị hỏng mà không tính thêm chi phí."
+    },
+    {
+      "id": "satrw-g-u07-verb-h05",
+      "unit": 7,
+      "unitTitle": "Thì, dạng động từ và thế song song",
+      "domain": "Standard English Conventions",
+      "skill": "verbform",
+      "difficulty": "hard",
+      "passage": "Having ______ the ballots twice, the officials announced the final result.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["count", "to count", "counting", "counted"],
+      "answerIndex": 3,
+      "explainVi": "Cấu trúc hoàn thành rút gọn là Having + quá khứ phân từ: Having counted. Các dạng count, to count và counting không đi được sau having trong cấu trúc này.",
+      "whyWrong": [
+        "Sau having phải là quá khứ phân từ, không phải nguyên thể.",
+        "to count không đứng được sau having.",
+        "counting không đi với having trong cấu trúc hoàn thành này.",
+        ""
+      ],
+      "meaningVi": "Sau khi kiểm phiếu hai lần, các viên chức công bố kết quả cuối cùng."
+    },
+    {
+      "id": "satrw-g-u07-verb-h06",
+      "unit": 7,
+      "unitTitle": "Thì, dạng động từ và thế song song",
+      "domain": "Standard English Conventions",
+      "skill": "verbform",
+      "difficulty": "hard",
+      "passage": "The mayor denied ______ any role in the decision to close the bridge.",
+      "stem": "Which choice completes the text so that it conforms to the conventions of Standard English?",
+      "options": ["to have", "have", "had", "having"],
+      "answerIndex": 3,
+      "explainVi": "deny đi với V-ing (deny doing); having là V-ing hoàn thành, dùng cho việc đã xảy ra. to have, have và had không đúng cấu trúc này.",
+      "whyWrong": [
+        "deny không đi với to V.",
+        "Nguyên thể trần không đi sau deny.",
+        "Quá khứ không đứng sau deny ở vị trí này.",
+        ""
+      ],
+      "meaningVi": "Thị trưởng phủ nhận có bất kỳ vai trò nào trong quyết định đóng cửa cây cầu."
+    }
+  ]
+}

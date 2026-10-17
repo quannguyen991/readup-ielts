@@ -125,7 +125,7 @@ export default function HsaHomeScreen() {
                     icon={index % 2 === 0 ? 'letters' : 'pencil'}
                     title={bi(HSA_KIND_LABEL[kind], locale)}
                     note={`${count} ${L('câu', 'items')}`}
-                    color={PALETTES[index % PALETTES.length]}
+                    color={PALETTES[index % PALETTES.length]!}
                     onPress={() => router.push(`/hsa/practice/${kind}` as never)}
                   />
                 );
@@ -144,7 +144,7 @@ export default function HsaHomeScreen() {
                     icon={index % 2 === 0 ? 'target' : 'book'}
                     title={bi(HSA_KIND_LABEL[kind], locale)}
                     note={`${count} ${L('câu', 'items')}`}
-                    color={PALETTES[(index + 1) % PALETTES.length]}
+                    color={PALETTES[(index + 1) % PALETTES.length]!}
                     onPress={() => router.push(`/hsa/practice/${kind}` as never)}
                   />
                 );

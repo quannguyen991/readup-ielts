@@ -53,6 +53,24 @@ export function registeredStoreKeys(): string[] {
   return [...registry.keys()];
 }
 
+/**
+ * Xoá dữ liệu học của tài khoản khỏi máy này: mỗi store được ghi bằng bản rỗng do chính
+ * hàm gộp của nó trả về khi cả hai phía đều trống. Dùng khi đổi sang tài khoản khác, để
+ * dữ liệu của người trước không bị gộp vào tài khoản mới. Store nào không reset được thì
+ * trả về danh sách lỗi và người gọi phải dừng, không được gộp tiếp.
+ */
+export function resetSyncedStores(): { ok: true } | { ok: false; failed: string[] } {
+  const failed: string[] = [];
+  for (const store of registry.values()) {
+    try {
+      store.write(store.merge(null, null));
+    } catch {
+      failed.push(store.key);
+    }
+  }
+  return failed.length ? { ok: false, failed } : { ok: true };
+}
+
 export type SyncOutcome =
   | { ok: true; synced: string[] }
   | { ok: false; reason: 'not_configured' | 'signed_out' | 'error'; message: string };

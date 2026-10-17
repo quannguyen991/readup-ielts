@@ -1,17 +1,20 @@
-import React from 'react';
-import { Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 import { router, usePathname } from 'expo-router';
 
 import { Screen } from '@/components/layout/Screen';
-import { Button, Card, Icon } from '@/components/ui';
-import { WELCOME_DAYS } from '@/lib/billing/welcome';
-import { FREE_SUMMARY, LOCKED_SUMMARY, isMemberOnlyPath, lockedFeatureName } from '@/lib/access/member-gate';
+import { Card, Icon } from '@/components/ui';
+import { signInWithOAuth } from '@/services/auth/session';
+import { isMemberOnlyPath, lockedFeatureName } from '@/lib/access/member-gate';
 import { useL } from '@/i18n/useL';
 import { useAuthStore } from '@/store/useAuthStore';
 
 /**
- * Khách (chưa đăng nhập) vào khu dành cho thành viên → hiện màn mời đăng nhập / tạo tài khoản (tặng gói Plus `WELCOME_DAYS` ngày).
+ * Khách (chưa đăng nhập) vào khu dành cho thành viên → hiện màn mời đăng nhập.
  * Đang tải phiên thì giữ nguyên nội dung (tránh nháy); chưa cấu hình tài khoản thì không chặn.
+ *
+ * Màn khoá chỉ nói "<tính năng> cần đăng nhập". Nút chính là Google; dưới đó là
+ * "Chưa có tài khoản? Đăng ký". Không liệt kê khu nào khoá hay mở.
  *
  * KHÔNG gỡ `children` (tức `<Slot/>` của expo-router) khi khoá — chỉ ẩn đi và đè màn khoá lên. Gỡ bộ định tuyến giữa lúc
  * chuyển trang làm expo-router mất trạng thái và quay về '/' (→ /intro): khách bấm Listening/Speaking… bị đẩy về trang chủ.
@@ -29,54 +32,54 @@ export function MemberGate({ children }: { children: React.ReactNode }) {
   );
 }
 
-function Chips({ items, tone }: { items: string[]; tone: 'locked' | 'free' }) {
-  return (
-    <View className="flex-row flex-wrap justify-center gap-1.5">
-      {items.map((x) => (
-        <View
-          key={x}
-          className="rounded-pill px-3 py-1"
-          style={{ backgroundColor: tone === 'free' ? 'rgba(34,160,107,0.10)' : '#F4EEE2' }}
-        >
-          <Text className="font-semi text-label" style={{ color: tone === 'free' ? '#17784F' : '#6B5A3A' }}>
-            {x}
-          </Text>
-        </View>
-      ))}
-    </View>
-  );
-}
-
 function GateScreen({ next }: { next: string }) {
   const { L, en } = useL();
   const name = lockedFeatureName(next, en) ?? L('Tính năng này', 'This feature');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const go = (mode: 'signin' | 'signup') => router.push(`/auth/sign-in?mode=${mode}&next=${encodeURIComponent(next)}` as never);
+
+  const google = async () => {
+    setError(null);
+    setBusy(true);
+    const result = await signInWithOAuth('google');
+    setBusy(false);
+    if (!result.ok) setError(result.error.message);
+  };
+
   return (
     <Screen>
-      <View className="mx-auto mt-6 w-full" style={{ maxWidth: 520 }}>
+      <View className="mx-auto mt-6 w-full" style={{ maxWidth: 440 }}>
         <Card>
-          <View className="items-center gap-3 p-6">
+          <View className="items-center gap-4 p-6">
             <View className="h-12 w-12 items-center justify-center rounded-full bg-surfaceAlt">
               <Icon name="lock" size={22} color="#A8843F" />
             </View>
-            <Text className="text-center font-heavy text-pageTitle text-ink">{L(`${name} cần đăng nhập`, `${name} needs an account`)}</Text>
-            <Text className="text-center font-sans text-bodyLg text-muted">
-              {L(`Tài khoản miễn phí · tặng ${WELCOME_DAYS} ngày gói Plus`, `Free account · ${WELCOME_DAYS} days of Plus included`)}
+            <Text className="text-center font-heavy text-pageTitle text-ink">{L(`${name} cần đăng nhập`, `${name} needs sign-in`)}</Text>
+
+            <Pressable
+              accessibilityRole="button"
+              disabled={busy}
+              onPress={google}
+              className="w-full flex-row items-center justify-center gap-3 rounded-pill border border-borderStrong bg-white"
+              style={{ minHeight: 52, opacity: busy ? 0.6 : 1 }}
+            >
+              {busy ? <ActivityIndicator color="#A8843F" /> : <Text className="font-heavy text-cardTitle" style={{ color: '#4285F4' }}>G</Text>}
+              <Text className="font-strong text-body text-ink">{L('Tiếp tục với Google', 'Continue with Google')}</Text>
+            </Pressable>
+
+            {error ? <Text className="text-center font-sans text-label" style={{ color: '#B42318' }}>{error}</Text> : null}
+
+            <Text className="text-center font-sans text-body text-muted">
+              {L('Chưa có tài khoản? ', "Don't have an account? ")}
+              <Text className="font-strong text-primary-700" accessibilityRole="link" onPress={() => go('signup')}>
+                {L('Đăng ký', 'Sign up')}
+              </Text>
             </Text>
-
-            <View className="mt-1 w-full gap-1.5">
-              <Text className="text-center font-strong text-label text-muted">{L('Cần đăng nhập', 'Needs an account')}</Text>
-              <Chips items={en ? LOCKED_SUMMARY.en : LOCKED_SUMMARY.vi} tone="locked" />
-            </View>
-            <View className="w-full gap-1.5">
-              <Text className="text-center font-strong text-label text-muted">{L('Dùng ngay, không cần tài khoản', 'Open to everyone')}</Text>
-              <Chips items={en ? FREE_SUMMARY.en : FREE_SUMMARY.vi} tone="free" />
-            </View>
-
-            <View className="mt-2 w-full gap-2">
-              <Button label={L('Tạo tài khoản', 'Create account')} fullWidth onPress={() => go('signup')} />
-              <Button label={L('Đăng nhập', 'Sign in')} variant="secondary" fullWidth onPress={() => go('signin')} />
-            </View>
+            <Pressable accessibilityRole="link" onPress={() => go('signin')}>
+              <Text className="font-strong text-label text-muted">{L('Đăng nhập bằng email hoặc số điện thoại', 'Sign in with email or phone')}</Text>
+            </Pressable>
           </View>
         </Card>
       </View>

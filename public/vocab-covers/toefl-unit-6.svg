@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1"><stop offset="0" stop-color="#fecf9e"/><stop offset="0.55" stop-color="#FDBA74"/><stop offset="1" stop-color="#C2410C"/></linearGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.36" r="0.6"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.28"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+  <radialGradient id="ground" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#4e1a05" stop-opacity="0.45"/><stop offset="1" stop-color="#4e1a05" stop-opacity="0"/></radialGradient>
+  <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#da8d6d"/><stop offset="0.6" stop-color="#C2410C"/><stop offset="1" stop-color="#9b340a"/></linearGradient>
+  <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fed9b3"/><stop offset="1" stop-color="#FDBA74"/></linearGradient>
+  <radialGradient id="gS" cx="0.34" cy="0.3" r="0.85"><stop offset="0" stop-color="#e7b39e"/><stop offset="0.55" stop-color="#C2410C"/><stop offset="1" stop-color="#842c08"/></radialGradient>
+  <radialGradient id="gS2" cx="0.34" cy="0.3" r="0.85"><stop offset="0" stop-color="#fee3c7"/><stop offset="0.6" stop-color="#FDBA74"/><stop offset="1" stop-color="#ca955d"/></radialGradient>
+  <linearGradient id="gP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFDF6"/><stop offset="1" stop-color="#F2E4C8"/></linearGradient>
+  <filter id="drop" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#571d05" flood-opacity="0.38"/></filter>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000000" flood-opacity="0.18"/></filter>
+  <filter id="speck" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" seed="7" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.07  0 0 0 0 0.02  0 0 0 0.9 -0.42"/></filter>
+  <clipPath id="front"><rect x="-240" y="0" width="480" height="240"/></clipPath>
+</defs>
+<rect width="1200" height="800" fill="url(#bg)"/>
+<rect width="1200" height="800" fill="url(#glow)"/>
+<circle cx="150" cy="140" r="260" fill="#FFFFFF" opacity="0.07"/>
+<circle cx="1110" cy="720" r="300" fill="#742707" opacity="0.10"/>
+<circle cx="321" cy="688" r="2.9" fill="#FFFFFF" opacity="0.41"/><circle cx="366" cy="717" r="3.1" fill="#FFFFFF" opacity="0.43"/><circle cx="411" cy="747" r="3.2" fill="#FFFFFF" opacity="0.45"/><circle cx="455" cy="36" r="3.3" fill="#FFFFFF" opacity="0.46"/><circle cx="500" cy="66" r="3.4" fill="#FFFFFF" opacity="0.48"/><circle cx="545" cy="95" r="3.6" fill="#FFFFFF" opacity="0.49"/><circle cx="589" cy="125" r="3.7" fill="#FFFFFF" opacity="0.51"/><circle cx="634" cy="154" r="3.8" fill="#FFFFFF" opacity="0.53"/><circle cx="679" cy="184" r="4.0" fill="#FFFFFF" opacity="0.54"/><circle cx="723" cy="213" r="4.1" fill="#FFFFFF" opacity="0.56"/><circle cx="768" cy="243" r="4.2" fill="#FFFFFF" opacity="0.57"/><circle cx="813" cy="272" r="4.3" fill="#FFFFFF" opacity="0.59"/><circle cx="857" cy="302" r="4.5" fill="#FFFFFF" opacity="0.61"/><circle cx="902" cy="332" r="4.6" fill="#FFFFFF" opacity="0.62"/><circle cx="947" cy="361" r="1.5" fill="#FFFFFF" opacity="0.64"/><circle cx="991" cy="391" r="1.6" fill="#FFFFFF" opacity="0.25"/><circle cx="1036" cy="420" r="1.8" fill="#FFFFFF" opacity="0.27"/><circle cx="1080" cy="450" r="1.9" fill="#FFFFFF" opacity="0.29"/><circle cx="1125" cy="479" r="2.0" fill="#FFFFFF" opacity="0.30"/><circle cx="50" cy="509" r="2.2" fill="#FFFFFF" opacity="0.32"/><circle cx="94" cy="538" r="2.3" fill="#FFFFFF" opacity="0.33"/><circle cx="139" cy="568" r="2.4" fill="#FFFFFF" opacity="0.35"/><circle cx="184" cy="597" r="2.5" fill="#FFFFFF" opacity="0.37"/><circle cx="228" cy="627" r="2.7" fill="#FFFFFF" opacity="0.38"/><circle cx="273" cy="656" r="2.8" fill="#FFFFFF" opacity="0.40"/><circle cx="318" cy="686" r="2.9" fill="#FFFFFF" opacity="0.41"/>
+<circle cx="600" cy="392" r="300" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="3 14" stroke-linecap="round" opacity="0.5"/>
+<circle cx="600" cy="392" r="330" fill="url(#halo)"/>
+<ellipse cx="600" cy="660" rx="300" ry="34" fill="url(#ground)"/>
+<g transform="translate(600 392) scale(1.9)" filter="url(#drop)">
+    <path d="M0 78C-108 8-100-84-46-84C-16-84 0-58 0-42C0-58 16-84 46-84C100-84 108 8 0 78Z" fill="url(#gA)"/>
+    <path d="M-62-46Q-54-70-30-72" stroke="#FFFFFF" stroke-width="8" fill="none" stroke-linecap="round" opacity=".55"/>
+    <path d="M-40 -6Q-30 -26 -12 -30" stroke="#FFFFFF" stroke-width="5" fill="none" stroke-linecap="round" opacity=".3"/></g>
+<g transform="translate(1020 190) scale(0.62)" filter="url(#soft)">
+    <path d="M-86 64C-96-40-12-98 96-88C98 24 22 88-86 64Z" fill="url(#gA)"/>
+    <path d="M-74 58Q-6 4 70-74" stroke="url(#gB)" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M-36 24Q-18-2 6-10M-6 -4Q10-30 30-40M14 -28Q32-50 56-58" stroke="url(#gB)" stroke-width="4" fill="none" stroke-linecap="round" opacity=".7"/>
+    <path d="M-86 64L-124 116" stroke="#C2410C" stroke-width="11" stroke-linecap="round"/>
+    <path d="M-40 -40Q-10-70 30-70" stroke="#FFFFFF" stroke-width="6" fill="none" stroke-linecap="round" opacity=".4"/></g>
+<path transform="translate(190 170) scale(1.1)" d="M0 -22Q3 -3 22 0Q3 3 0 22Q-3 3 -22 0Q-3 -3 0 -22Z" fill="#FFFFFF" opacity="0.85"/><path transform="translate(262 292) scale(0.6)" d="M0 -22Q3 -3 22 0Q3 3 0 22Q-3 3 -22 0Q-3 -3 0 -22Z" fill="#FFFFFF" opacity="0.6"/><path transform="translate(980 560) scale(0.8)" d="M0 -22Q3 -3 22 0Q3 3 0 22Q-3 3 -22 0Q-3 -3 0 -22Z" fill="#FFFFFF" opacity="0.7"/>
+<rect width="1200" height="800" filter="url(#speck)" opacity="0.16"/>
+</svg>

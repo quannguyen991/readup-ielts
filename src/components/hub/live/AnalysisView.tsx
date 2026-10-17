@@ -72,7 +72,7 @@ export function AnalysisView({
               borderColor: overall === null ? 'rgba(143,110,54,0.2)' : scoreColor(overall),
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: 'rgba(255,255,255,0.7)',
+              backgroundColor: 'rgba(120, 68, 21, 0.7)',
             }}
           >
             <Text style={{ color: HUB.ink, fontSize: 30, fontWeight: '800' }}>{overall ?? '—'}</Text>

@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { create } from 'zustand';
 
-import { forgetMerged, markMerged, pushAll, syncAll } from '@/services/sync/engine';
+import { forgetMerged, markMerged, pushAll, registerSyncedStore, resetSyncedStores, syncAll } from '@/services/sync/engine';
+import { readOwner, writeOwner } from '@/services/sync/owner';
 import { registerAllSyncedStores } from '@/services/sync/stores';
+import { courseSyncStore } from './useCourseStore';
 import { useAuthStore } from './useAuthStore';
 import { flushPersist } from './persist';
 import { useMathStore } from './useMathStore';
@@ -82,6 +84,7 @@ const PUSH_DEBOUNCE_MS = 8_000;
  * tức nếu phiên đăng nhập đã được khôi phục từ ổ đĩa.
  */
 registerAllSyncedStores();
+registerSyncedStore(courseSyncStore);
 
 export function useSyncBootstrap() {
   const userId = useAuthStore((s) => s.user?.id ?? null);
@@ -92,19 +95,38 @@ export function useSyncBootstrap() {
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const previousUser = useRef<string | null>(null);
 
-  // Gộp hai chiều ngay khi có phiên đăng nhập.
+  // Gộp hai chiều ngay khi có phiên đăng nhập. Đổi sang tài khoản khác thì xoá dữ liệu học
+  // của người trước khỏi máy trước khi gộp, để không ai nhận lịch sử của người khác.
   useEffect(() => {
     if (status !== 'signed_in' || !userId) {
-      if (previousUser.current) {
-        forgetMerged(previousUser.current);
+      const leaving = previousUser.current;
+      if (leaving) {
         previousUser.current = null;
-        reset();
+        // Đăng xuất: đẩy nốt thay đổi lên tài khoản, rồi mới xoá khỏi máy. Đẩy lỗi thì giữ
+        // nguyên dữ liệu và chủ sở hữu để không mất gì; lần đăng nhập sau sẽ tự xử lý.
+        void (async () => {
+          const pushed = await pushAll(leaving);
+          forgetMerged(leaving);
+          reset();
+          if (pushed.ok && resetSyncedStores().ok) await writeOwner(null);
+        })();
       }
       return;
     }
     if (previousUser.current === userId) return;
     previousUser.current = userId;
-    void syncNow(userId, 'merge');
+    void (async () => {
+      const owner = await readOwner();
+      if (owner && owner !== userId) {
+        const cleared = resetSyncedStores();
+        if (!cleared.ok) {
+          useSyncStore.setState({ status: 'error', message: 'Không xoá được dữ liệu của tài khoản trước trên máy này. Hãy tải lại trang rồi thử lại.' });
+          return;
+        }
+      }
+      await writeOwner(userId);
+      await syncNow(userId, 'merge');
+    })();
   }, [reset, status, syncNow, userId]);
 
   // Đẩy lên sau khi ngừng thao tác.

@@ -48,7 +48,7 @@ test('mỗi kỹ năng thêm ít nhất 30% câu khó so với kho cũ', () => {
 });
 
 test('câu khó: bốn phương án khác nhau, mỗi phương án sai có lý do, đáp án không có', () => {
-  assert.equal(SAT_RW_HARD_QUESTIONS.length, 210);
+  assert.equal(SAT_RW_HARD_QUESTIONS.length, 222);
   for (const q of SAT_RW_HARD_QUESTIONS) {
     assert.equal(q.difficulty, 'hard');
     assert.equal(q.options.length, 4, q.id);

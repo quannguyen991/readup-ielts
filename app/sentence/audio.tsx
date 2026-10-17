@@ -63,7 +63,10 @@ export default function AudioLibraryScreen() {
           </>
         }
       >
-        <Button label={L('Bắt đầu nghe', 'Start listening')} variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
+        <View className="flex-row flex-wrap gap-2">
+          <Button label={L('Bắt đầu nghe', 'Start listening')} variant="brand" size="lg" iconRight="arrow-right" onPress={() => setSearch('')} />
+          <Button label={L('Báo nói', 'Spoken news')} variant="outline" size="lg" iconRight="volume" onPress={() => router.push('/sentence/news' as never)} />
+        </View>
       </LightHero>
 
       <View className="mt-4 flex-row items-start gap-2.5 rounded-panel border border-border bg-surface p-3.5">

@@ -16,6 +16,7 @@ import { THEME_ADDITIONS as ADD_A } from '../sat-rw-lexicon-more-a';
 import { THEME_ADDITIONS as ADD_B } from '../sat-rw-lexicon-more-b';
 import { THEME_ADDITIONS as ADD_C } from '../sat-rw-lexicon-more-c';
 import type { StudyWord } from '@/services/vocab/topic-study';
+import satBookVocab from './sat-book-vocab.json';
 
 export type VocabLesson = {
   slug: string;
@@ -145,5 +146,6 @@ const verbalLessons: VocabLesson[] = VERBAL_THEMES.map((theme, i) => ({
 }));
 
 export const SAT_MATH_VOCAB_LESSONS = mathLessons;
-export const SAT_VERBAL_VOCAB_LESSONS = verbalLessons;
-export const SAT_VOCAB_LESSONS: VocabLesson[] = [...mathLessons, ...verbalLessons];
+const satBookVocabLessons = satBookVocab as unknown as VocabLesson[];
+export const SAT_VERBAL_VOCAB_LESSONS = [...verbalLessons, ...satBookVocabLessons];
+export const SAT_VOCAB_LESSONS: VocabLesson[] = [...mathLessons, ...SAT_VERBAL_VOCAB_LESSONS];

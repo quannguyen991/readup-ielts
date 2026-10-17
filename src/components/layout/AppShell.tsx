@@ -71,6 +71,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   // Thành phố và Chuyến bay từ vựng có giao diện toàn màn hình riêng: không có bong bóng hỏi đáp.
   // Màn học từ đang có nền cảnh bay: thanh bên trong suốt, chỉ còn biểu tượng.
   const travelGlass = useTravelActive();
+  // Khu Speaking (/hub) luôn mở rộng thanh bên; các màn thi vẫn là dải biểu tượng.
+  const hubRoute = pathname.startsWith('/hub');
   const sentenceThemed = useSentenceThemeId() !== 'plain';
   const isCityRoute = pathname.startsWith('/quest/city') || pathname.startsWith('/quest/rail');
   // Vùng nội dung lùi đúng bằng bề rộng thanh bên (SIDEBAR_WIDTH), mở rộng hay thu gọn.
@@ -134,9 +136,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             className="hidden lg:flex"
             style={{ position: 'fixed', left: 0, top: 0, bottom: 0, zIndex: 40 }}
           >
-            <Sidebar compact glass={travelGlass} />
+            <Sidebar compact={!hubRoute} expanded={hubRoute} glass={travelGlass} />
           </View>
-          <View className="min-w-0 flex-1 lg:pl-[76px]">
+          <View className={`min-w-0 flex-1 ${hubRoute ? 'lg:pl-[248px]' : 'lg:pl-[76px]'}`}>
             {/* Màn thi / luyện từng bài: điện thoại không có thanh đầu trang của app (màn tự có thanh riêng). */}
             {isPhoneChromelessRoute(pathname) ? null : (
               <View className="lg:hidden">

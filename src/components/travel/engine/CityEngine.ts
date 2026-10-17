@@ -3067,11 +3067,9 @@ function interiorNpcs(poi: Poi, kind: InteriorKind, cityId: CityId): Npc[] {
   return [first, visitor];
 }
 
-const BAYER4 = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
-
 /**
- * Vẽ mảnh `img` vào canvas thế giới tại (px,py); chỗ chồng lên mảnh đã vẽ thì hoà bằng MẶT NẠ HOÀ SẮC Bayer 4×4
- * (kiểu pixel-art, không alpha mịn): càng gần mép mảnh mới càng giữ điểm cũ, càng vào trong càng lấy điểm mới.
+ * Vẽ mảnh `img` vào canvas thế giới tại (px,py); chỗ chồng lên mảnh đã vẽ thì PHA MÀU MƯỢT trên dải `ov` điểm
+ * (smoothstep): sát mép mảnh mới giữ màu cũ, vào trong dần chuyển sang màu mới, nên các mảnh quyện vào nhau, không còn vạch.
  */
 function blendPanel(c: CanvasRenderingContext2D, img: HTMLImageElement, px: number, py: number, pw: number, ph: number, drawn: { x: number; y: number; w: number; h: number }[], ov: number) {
   const tmp = makeCanvas(pw, ph);
@@ -3085,20 +3083,20 @@ function blendPanel(c: CanvasRenderingContext2D, img: HTMLImageElement, px: numb
     for (let x = 0; x < pw; x++) {
       const wx = px + x;
       const wy = py + y;
+      const i = (y * pw + x) * 4;
       let covered = false;
       for (const d of drawn) if (wx >= d.x && wy >= d.y && wx < d.x + d.w && wy < d.y + d.h) covered = true;
-      let take = true;
-      if (covered) {
-        const t = Math.min(1, Math.min(x + 0.5, pw - x - 0.5, y + 0.5, ph - y - 0.5) / ov);
-        take = BAYER4[(wy & 3) * 4 + (wx & 3)]! < t * 16;
-      }
-      if (take) {
-        const i = (y * pw + x) * 4;
+      if (!covered) {
         D[i] = S[i]!;
         D[i + 1] = S[i + 1]!;
         D[i + 2] = S[i + 2]!;
         D[i + 3] = 255;
+        continue;
       }
+      const t = Math.min(1, Math.max(0, Math.min(x + 0.5, pw - x - 0.5, y + 0.5, ph - y - 0.5) / ov));
+      const w = t * t * (3 - 2 * t);
+      for (let k = 0; k < 3; k++) D[i + k] = D[i + k]! * (1 - w) + S[i + k]! * w;
+      D[i + 3] = 255;
     }
   c.putImageData(dst, px, py);
 }

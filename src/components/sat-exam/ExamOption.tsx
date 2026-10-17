@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 
 import { useL } from '@/i18n/useL';
+import { Icon } from '@/components/ui';
+import { themedHex } from '@/theme/palette-state';
 import { EXAM } from './exam-theme';
 import { useExamTools } from './exam-context';
 import { haptic } from '@/lib/mobile/useMobileExam';
 
 export type OptionState = 'idle' | 'correct' | 'wrong';
+
+/**
+ * `exam` — chàm đậm của phòng thi thật (mặc định, bài thi và mock không đổi).
+ * `gold` — bộ luyện: chọn thì viền, vòng chữ cái và dấu tick đổi sang vàng kim.
+ */
+export type OptionTone = 'exam' | 'gold';
 
 /**
  * Một dòng phương án kiểu phòng thi số: khung viền trọn bề ngang, chữ cái trong
@@ -24,6 +32,7 @@ export function ExamOption({
   out,
   onPress,
   children,
+  tone = 'exam',
 }: {
   index: number;
   selected: boolean;
@@ -34,18 +43,41 @@ export function ExamOption({
   out?: boolean;
   onPress: () => void;
   children: React.ReactNode;
+  tone?: OptionTone;
 }) {
   const { L } = useL();
   const tools = useExamTools();
   const [hovered, setHovered] = useState(false);
   const struck = !!tools?.struck.includes(index);
   const letter = 'ABCDEFGH'[index] ?? '?';
+  const gold = tone === 'gold';
+  const goldLine = themedHex('#E0B04E');
+  const goldFill = themedHex('#D9A441');
+  const goldSoft = themedHex('#FFF8E4');
+  const goldIdle = themedHex('#F3EFE6');
 
   const border =
-    state === 'correct' ? EXAM.success : state === 'wrong' ? EXAM.danger : selected ? EXAM.navy : EXAM.optionLine;
-  const bg = state === 'correct' ? EXAM.successSoft : state === 'wrong' ? EXAM.dangerSoft : '#FFFFFF';
+    state === 'correct'
+      ? EXAM.success
+      : state === 'wrong'
+        ? EXAM.danger
+        : selected
+          ? gold ? goldLine : EXAM.navy
+          : gold ? '#EADFC6' : EXAM.optionLine;
+  const bg =
+    state === 'correct' ? EXAM.successSoft : state === 'wrong' ? EXAM.dangerSoft : selected && gold ? goldSoft : '#FFFFFF';
   const filled = selected || state === 'correct';
-  const circleBg = state === 'correct' ? EXAM.success : state === 'wrong' && selected ? EXAM.danger : filled ? EXAM.navy : '#FFFFFF';
+  const fillColor = gold ? goldFill : EXAM.navy;
+  const circleBg =
+    state === 'correct'
+      ? EXAM.success
+      : state === 'wrong' && selected
+        ? EXAM.danger
+        : filled
+          ? fillColor
+          : gold
+            ? goldIdle
+            : '#FFFFFF';
 
   return (
     <View className="flex-row items-center gap-2.5">
@@ -84,6 +116,11 @@ export function ExamOption({
         </View>
         <View className="min-w-0 flex-1">{children}</View>
         {out ? <Text className="font-semi text-label" style={{ color: EXAM.muted }}>{L('Cú đã loại', 'Removed by Owl')}</Text> : null}
+        {gold && selected && state === 'idle' && !out ? (
+          <View className="h-6 w-6 items-center justify-center rounded-pill" style={{ backgroundColor: goldFill }}>
+            <Icon name="check" size={13} color="#FFFFFF" strokeWidth={2.6} />
+          </View>
+        ) : null}
         {/* Vạch gạch ngang cả dòng: phương án toán là chữ + công thức lồng nhau, gạch chữ thôi thì sót. */}
         {struck ? (
           <View pointerEvents="none" style={{ position: 'absolute', left: 8, right: 8, top: '50%', height: 2, backgroundColor: EXAM.ink }} />

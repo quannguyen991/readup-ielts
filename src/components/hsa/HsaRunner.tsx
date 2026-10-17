@@ -61,7 +61,7 @@ export function HsaRunner({ title, questions, activity, durationSeconds }: Props
     return <Screen><Text className="font-strong text-body text-ink">{L('Chưa có câu hỏi cho mục này.', 'There are no questions in this section yet.')}</Text></Screen>;
   }
 
-  const q = questions[current];
+  const q = questions[current] ?? questions[0]!;
   const picked = answers[current];
   const answered = answers.filter((value) => value !== null).length;
 

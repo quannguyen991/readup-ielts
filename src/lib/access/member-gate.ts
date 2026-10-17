@@ -3,10 +3,10 @@
  * Hàm thuần: nhận đường dẫn, trả về có thuộc khu dành cho thành viên không.
  *
  * Giữ MỞ cho khách: trang chủ, từ vựng, kho bài đọc, câu/đoạn luyện, SAT Math + SAT Verbal (đã có hạn mức theo gói),
- * trang gói/giá, đăng nhập, điều khoản. Chặn theo TIỀN TỐ để mọi trang con của khu đó cũng bị chặn.
+ * Du ngoạn và Du học (/quest, mở cho mọi người), trang gói/giá, đăng nhập, điều khoản.
+ * Chặn theo TIỀN TỐ để mọi trang con của khu đó cũng bị chặn.
  */
 export const MEMBER_ONLY_PREFIXES = [
-  '/quest', // Du ngoạn, Du học, Thành phố tri thức, xếp hạng, cửa hàng quà
   '/speaking',
   '/write',
   '/listening',
@@ -55,15 +55,22 @@ export function lockedFeatureName(pathname: string, en: boolean): string | null 
 
 /** Màn khoá liệt kê ngắn: phần cần tài khoản và phần khách dùng ngay (khớp `MEMBER_ONLY_PREFIXES`). */
 export const LOCKED_SUMMARY = {
-  vi: ['Listening', 'Speaking', 'Writing', 'Thi thử', 'Đọc báo song ngữ', 'Du ngoạn', 'Cộng đồng'],
-  en: ['Listening', 'Speaking', 'Writing', 'Mock tests', 'Bilingual news', 'Travel', 'Community'],
+  vi: ['Listening', 'Speaking', 'Writing', 'Thi thử', 'Đọc báo song ngữ', 'Cộng đồng'],
+  en: ['Listening', 'Speaking', 'Writing', 'Mock tests', 'Bilingual news', 'Community'],
 };
 export const FREE_SUMMARY = {
-  vi: ['Từ vựng', 'Reading', 'Luyện câu', 'SAT Math', 'SAT Reading & Writing'],
-  en: ['Vocabulary', 'Reading', 'Sentence practice', 'SAT Math', 'SAT Reading & Writing'],
+  vi: ['Từ vựng', 'Reading', 'Luyện câu', 'SAT Math', 'SAT Reading & Writing', 'Du ngoạn', 'Du học'],
+  en: ['Vocabulary', 'Reading', 'Sentence practice', 'SAT Math', 'SAT Reading & Writing', 'Travel', 'Study Abroad'],
 };
+
+/**
+ * TẠM MỞ cho khách để thử các nút trong trang Quest (đấu, tuần, xếp hạng, quà, shadow).
+ * Đặt lại [] là khoá lại như cũ. Danh sách MEMBER_ONLY_PREFIXES không đổi.
+ */
+export const TEMP_OPEN_PREFIXES: readonly string[] = ['/duel', '/weekly', '/leaderboard', '/shop', '/shadow'];
 
 export function isMemberOnlyPath(pathname: string): boolean {
   const p = pathname.split('?')[0]!.replace(/\/+$/, '') || '/';
+  if (TEMP_OPEN_PREFIXES.some((prefix) => p === prefix || p.startsWith(`${prefix}/`))) return false;
   return MEMBER_ONLY_PREFIXES.some((prefix) => p === prefix || p.startsWith(`${prefix}/`) || p.startsWith(`${prefix}-`));
 }

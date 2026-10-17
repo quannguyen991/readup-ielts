@@ -264,7 +264,9 @@ test('cảnh đối tượng: sprite có thật, kích thước khớp tệp, v�
       const buf = readFileSync(file);
       const fw = buf.readUInt32BE(16);
       const fh = buf.readUInt32BE(20);
-      if (!sp.crop) assert.deepEqual([sp.w, sp.h], [fw, fh], `${m.id}/${id}: w,h lệch tệp`);
+      // tranh thu nhỏ có chủ ý (dùng chung một tệp với kích thước riêng) chỉ cần không lớn hơn tệp gốc
+      if (!sp.crop && sp.file) assert.ok(sp.w <= fw && sp.h <= fh, `${m.id}/${id}: lớn hơn tệp gốc`);
+      else if (!sp.crop) assert.deepEqual([sp.w, sp.h], [fw, fh], `${m.id}/${id}: w,h lệch tệp`);
       else {
         assert.ok(sp.crop.x + sp.crop.w <= fw && sp.crop.y + sp.crop.h <= fh, `${m.id}/${id}: crop ngoài tệp`);
         assert.deepEqual([sp.w, sp.h], [sp.crop.w, sp.crop.h]);

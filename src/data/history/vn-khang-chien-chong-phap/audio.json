@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "sceneId": "s09",
+    "lang": "en",
+    "file": "/history/vn-khang-chien-chong-phap/audio/en/s09.mp3",
+    "voice": "Kore",
+    "engine": "gemini-3.1-flash-tts-preview",
+    "textSha256": "16c5bc71bb09b4570f366214e399b511bd4215a97220a3865393c840932d219c",
+    "generatedAt": "2026-10-03"
+  },
+  {
+    "sceneId": "s10",
+    "lang": "en",
+    "file": "/history/vn-khang-chien-chong-phap/audio/en/s10.mp3",
+    "voice": "Kore",
+    "engine": "gemini-3.1-flash-tts-preview",
+    "textSha256": "20e09f04d7de6cadd83e6b0a86f3bfc023953079b65e3dffcd6ecacae5b028c0",
+    "generatedAt": "2026-10-03"
+  },
+  {
+    "sceneId": "s11",
+    "lang": "en",
+    "file": "/history/vn-khang-chien-chong-phap/audio/en/s11.mp3",
+    "voice": "Kore",
+    "engine": "gemini-3.1-flash-tts-preview",
+    "textSha256": "9ef9abe29baeea27f020f358a0d56936b569310ebba42d3d48978ff6f8c4d06d",
+    "generatedAt": "2026-10-03"
+  },
+  {
+    "sceneId": "s12",
+    "lang": "en",
+    "file": "/history/vn-khang-chien-chong-phap/audio/en/s12.mp3",
+    "voice": "Kore",
+    "engine": "gemini-3.1-flash-tts-preview",
+    "textSha256": "51bbea2739c3968251fbc08402f3be48f995cbe69cef31338754bc0e40d064ef",
+    "generatedAt": "2026-10-03"
+  }
+]

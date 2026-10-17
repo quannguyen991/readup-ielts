@@ -23,7 +23,7 @@ const LANGUAGE_BLUEPRINT: readonly [HsaQuestionKind, number][] = [
 
 function rotatePick<T>(items: readonly T[], start: number, count: number): T[] {
   if (!items.length) return [];
-  return Array.from({ length: Math.min(count, items.length) }, (_, index) => items[(start + index) % items.length]);
+  return Array.from({ length: Math.min(count, items.length) }, (_, index) => items[(start + index) % items.length]!);
 }
 
 function contextGroups(kind: HsaQuestionKind): HsaQuestion[][] {

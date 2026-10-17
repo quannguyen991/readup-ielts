@@ -91,7 +91,7 @@ export function SpeedChips({ speed, onChange, disabled }: { speed: number; onCha
             className="items-center justify-center rounded-pill border px-3.5"
             style={{ minHeight: 44, minWidth: 48, borderColor: on ? color.primary : color.borderStrong, backgroundColor: on ? '#FBF7EE' : '#FFFFFF', opacity: disabled ? 0.45 : 1 }}
           >
-            <Text className="font-strong" style={{ fontSize: 14, color: on ? color.primary : color.muted }}>
+            <Text className="font-nun-strong" style={{ fontSize: 14, color: on ? color.primary : color.muted }}>
               {v}x
             </Text>
           </Pressable>
@@ -115,14 +115,14 @@ export function AudioCard({
     <View className="rounded-card border border-border bg-surface p-5" style={{ minHeight: 420, justifyContent: 'center' }}>
       <View className="flex-row items-center gap-2">
         <Icon name="volume" size={17} color={color.primary} />
-        <Text className="flex-1 font-heavy text-ink" style={{ fontSize: 18, lineHeight: 24 }} numberOfLines={2}>{title}</Text>
+        <Text className="flex-1 font-nun-heavy text-ink" style={{ fontSize: 18, lineHeight: 24 }} numberOfLines={2}>{title}</Text>
       </View>
-      {context ? <Text className="mt-2 font-sans text-body text-muted" style={{ lineHeight: 21 }}>{context}</Text> : null}
-      {sourceNote ? <Text className="mt-1 font-mid text-label text-muted" style={{ lineHeight: 18 }}>{sourceNote}</Text> : null}
+      {context ? <Text className="mt-2 font-nun text-body text-muted" style={{ lineHeight: 21 }}>{context}</Text> : null}
+      {sourceNote ? <Text className="mt-1 font-nun-mid text-label text-muted" style={{ lineHeight: 18 }}>{sourceNote}</Text> : null}
 
       <View className="mt-4 items-center">
         <PlayButton audio={audio} real={real} size={76} />
-        <Text className="mt-2 font-mid text-body text-muted">
+        <Text className="mt-2 font-nun-mid text-body text-muted">
           {audio.status === 'playing'
             ? L('Đang phát…', 'Playing…')
             : audio.status === 'ended'
@@ -134,9 +134,9 @@ export function AudioCard({
       </View>
 
       <View className="mt-3 flex-row items-center gap-3">
-        <Text className="font-mid text-muted" style={{ fontSize: 12, width: 36 }}>{fmtTime(audio.current)}</Text>
+        <Text className="font-nun-mid text-muted" style={{ fontSize: 12, width: 36 }}>{fmtTime(audio.current)}</Text>
         <Progress audio={audio} seekable={seekable} />
-        <Text className="font-mid text-muted" style={{ fontSize: 12, width: 36, textAlign: 'right' }}>
+        <Text className="font-nun-mid text-muted" style={{ fontSize: 12, width: 36, textAlign: 'right' }}>
           {audio.duration ? fmtTime(audio.duration) : '--:--'}
         </Text>
       </View>
@@ -146,10 +146,10 @@ export function AudioCard({
         {seekable ? (
           <View className="flex-row gap-1.5">
             <Pressable accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} className="items-center justify-center rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 52 }}>
-              <Text className="font-strong text-muted" style={{ fontSize: 14 }}>-10s</Text>
+              <Text className="font-nun-strong text-muted" style={{ fontSize: 14 }}>-10s</Text>
             </Pressable>
             <Pressable accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} className="items-center justify-center rounded-pill border border-border px-3" style={{ minHeight: 44, minWidth: 52 }}>
-              <Text className="font-strong text-muted" style={{ fontSize: 14 }}>+10s</Text>
+              <Text className="font-nun-strong text-muted" style={{ fontSize: 14 }}>+10s</Text>
             </Pressable>
           </View>
         ) : null}
@@ -159,18 +159,18 @@ export function AudioCard({
         <View className="mt-4 rounded-panel border border-dashed border-borderStrong p-3">
           <Pressable accessibilityRole="button" onPress={onPickAudio} className="flex-row items-center justify-center gap-2 rounded-pill bg-canvas px-4" style={{ minHeight: 46 }}>
             <Icon name="volume" size={16} color={color.primary} />
-            <Text className="font-strong text-primary-700" style={{ fontSize: 13 }}>
+            <Text className="font-nun-strong text-primary-700" style={{ fontSize: 13 }}>
               {localAudioName ? L('Chọn tệp khác', 'Choose another file') : L('Nạp audio từ thiết bị', 'Load audio from device')}
             </Text>
           </Pressable>
-          <Text className="mt-2 text-center font-sans text-label text-muted" numberOfLines={2}>
+          <Text className="mt-2 text-center font-nun text-label text-muted" numberOfLines={2}>
             {localAudioName ? `${L('Đã chọn', 'Selected')}: ${localAudioName}` : L('Tệp chỉ dùng trong phiên này, không tải lên máy chủ.', 'Used in this session only; the file is not uploaded.')}
           </Text>
         </View>
       ) : null}
 
       {real ? (
-        <Text className="mt-3 font-mid text-label" style={{ color: '#B26A00' }}>
+        <Text className="mt-3 font-nun-mid text-label" style={{ color: '#B26A00' }}>
           {L('Thi thật: nghe một lần, không tạm dừng, không tua.', 'Real test: one listen, no pause, no seeking.')}
         </Text>
       ) : null}
@@ -185,7 +185,7 @@ export function FallbackNote({ audio }: { audio: SectionAudio }) {
     return (
       <View className="mt-3 flex-row gap-2 rounded-panel p-2.5" style={{ backgroundColor: '#F0F5EB' }}>
         <Icon name="info" size={15} color="#537343" />
-        <Text className="min-w-0 flex-1 font-sans text-label" style={{ color: '#405B35', lineHeight: 18 }}>
+        <Text className="min-w-0 flex-1 font-nun text-label" style={{ color: '#405B35', lineHeight: 18 }}>
           {L('Đang dùng bản đọc học tập do AI tạo bằng giọng Aoede; đây không phải audio đề thi gốc.', 'AI study readout in the Aoede voice; this is not the original exam audio.')}
         </Text>
       </View>
@@ -196,7 +196,7 @@ export function FallbackNote({ audio }: { audio: SectionAudio }) {
   return (
     <View className="mt-3 flex-row gap-2 rounded-panel p-2.5" style={{ backgroundColor: '#FEF4E6' }}>
       <Icon name="info" size={15} color="#B26A00" />
-      <Text className="min-w-0 flex-1 font-sans text-label" style={{ color: '#7A4A00', lineHeight: 18 }}>
+      <Text className="min-w-0 flex-1 font-nun text-label" style={{ color: '#7A4A00', lineHeight: 18 }}>
         {L(
           audio.ttsVoice === 'device'
             ? 'Chưa có audio gốc; đang đọc bản chữ bằng giọng máy của thiết bị. Chế độ này không tua được.'
@@ -230,8 +230,8 @@ export function AudioBar({
         <PlayButton audio={audio} real={real} size={56} />
         <View className="min-w-0 flex-1">
           <View className="flex-row items-center justify-between">
-            <Text className="font-strong text-ink" style={{ fontSize: 13 }} numberOfLines={1}>{label}</Text>
-            <Text className="font-mid text-muted" style={{ fontSize: 13, fontVariant: ['tabular-nums'] }}>
+            <Text className="font-nun-strong text-ink" style={{ fontSize: 13 }} numberOfLines={1}>{label}</Text>
+            <Text className="font-nun-mid text-muted" style={{ fontSize: 13, fontVariant: ['tabular-nums'] }}>
               {fmtTime(audio.current)} / {audio.duration ? fmtTime(audio.duration) : '--:--'}
             </Text>
           </View>
@@ -240,21 +240,21 @@ export function AudioBar({
         {seekable ? (
           <>
             <Pressable accessibilityRole="button" accessibilityLabel="-10s" onPress={() => audio.seek(audio.current - 10)} style={small}>
-              <Text className="font-strong text-muted" style={{ fontSize: 13 }}>-10</Text>
+              <Text className="font-nun-strong text-muted" style={{ fontSize: 13 }}>-10</Text>
             </Pressable>
             <Pressable accessibilityRole="button" accessibilityLabel="+10s" onPress={() => audio.seek(audio.current + 10)} style={small}>
-              <Text className="font-strong text-muted" style={{ fontSize: 13 }}>+10</Text>
+              <Text className="font-nun-strong text-muted" style={{ fontSize: 13 }}>+10</Text>
             </Pressable>
           </>
         ) : null}
         {!real && onSpeed ? (
           <Pressable accessibilityRole="button" accessibilityLabel={`Speed ${speed}x`} onPress={() => onSpeed(next)} style={small}>
-            <Text className="font-strong" style={{ fontSize: 13, color: color.primary }}>{speed}x</Text>
+            <Text className="font-nun-strong" style={{ fontSize: 13, color: color.primary }}>{speed}x</Text>
           </Pressable>
         ) : null}
       </View>
       {audio.mode === 'tts' ? (
-        <Text className="mt-1 font-mid" style={{ fontSize: 12, color: '#B26A00' }}>
+        <Text className="mt-1 font-nun-mid" style={{ fontSize: 12, color: '#B26A00' }}>
           {audio.ttsVoice === 'device' ? 'Giọng thiết bị · chưa có audio gốc' : 'Aoede dự phòng · chưa có audio gốc'}
         </Text>
       ) : null}

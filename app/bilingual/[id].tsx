@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Linking,
   Modal,
@@ -25,7 +25,9 @@ import {
   type BilingualQuestion,
   type BilingualVocab,
 } from '@/data/bilingual-repository';
-import { parseInline } from '@/lib/inlineMarkup';
+import { parseInline, stripInline } from '@/lib/inlineMarkup';
+import { useListen } from '@/components/hub/useListen';
+import { percentOf, scoreSaying } from '@/services/hub/say-it';
 import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { Label, Sticker } from '@/components/illust/Sticker';
 import { CuteBulb, CuteMagnifier, CuteNotebook, CuteTrophy, Motion } from '@/components/illust/CuteMore';
@@ -652,6 +654,239 @@ function Kicker({ theme, label, hint }: { theme: Theme; label: string; hint?: st
   );
 }
 
+function TtsShadowBar({
+  paragraphs,
+  theme,
+  onHighlightPara,
+}: {
+  paragraphs: BilingualParagraph[];
+  theme: Theme;
+  onHighlightPara: (index: number | null) => void;
+}) {
+  const { L } = useL();
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const [rate, setRate] = useState<number>(1.0);
+  const [shadowMode, setShadowMode] = useState<boolean>(false);
+  const [activeShadow, setActiveShadow] = useState<number | null>(null);
+  const [shadowScore, setShadowScore] = useState<number | null>(null);
+  const [shadowSpoken, setShadowSpoken] = useState<string>('');
+  const listen = useListen();
+  const armed = useRef(false);
+
+  useEffect(() => {
+    if (listen.listening || !armed.current || activeShadow === null) return;
+    armed.current = false;
+    if (!listen.text.trim()) {
+      setShadowScore(null);
+      return;
+    }
+    const targetText = stripInline(paragraphs[activeShadow]?.en ?? '');
+    const res = scoreSaying(targetText, listen.text);
+    setShadowSpoken(listen.text);
+    setShadowScore(percentOf(res));
+  }, [listen.listening, listen.text, activeShadow, paragraphs]);
+
+  const stopAll = useCallback(() => {
+    Speech.stop();
+    listen.stop();
+    setPlayingIndex(null);
+    onHighlightPara(null);
+  }, [listen, onHighlightPara]);
+
+  const playPara = useCallback(
+    (idx: number) => {
+      if (idx < 0 || idx >= paragraphs.length) {
+        stopAll();
+        return;
+      }
+      Speech.stop();
+      setPlayingIndex(idx);
+      onHighlightPara(idx);
+
+      const cleanText = stripInline(paragraphs[idx]?.en ?? '');
+      Speech.speak(cleanText, {
+        language: 'en-GB',
+        rate: rate * 0.95,
+        voice: englishVoice(),
+        onDone: () => {
+          if (shadowMode) {
+            setPlayingIndex(null);
+            setActiveShadow(idx);
+            setShadowScore(null);
+            setShadowSpoken('');
+            armed.current = true;
+            listen.start();
+          } else if (idx + 1 < paragraphs.length) {
+            playPara(idx + 1);
+          } else {
+            stopAll();
+          }
+        },
+        onStopped: () => {
+          setPlayingIndex(null);
+          onHighlightPara(null);
+        },
+      });
+    },
+    [paragraphs, rate, shadowMode, listen, stopAll, onHighlightPara],
+  );
+
+  const toggleSpeed = () => {
+    const nextRate = rate === 0.8 ? 1.0 : rate === 1.0 ? 1.25 : 0.8;
+    setRate(nextRate);
+  };
+
+  return (
+    <View
+      className="mt-4 mb-3 rounded-card p-3"
+      style={{
+        backgroundColor: theme.tint,
+        borderWidth: 1,
+        borderColor: playingIndex !== null || shadowMode ? theme.accent : theme.rule,
+      }}
+    >
+      <View className="flex-row flex-wrap items-center justify-between gap-2">
+        <View className="flex-row items-center gap-2">
+          <Pressable
+            accessibilityRole="button"
+            onPress={() => {
+              if (playingIndex !== null) stopAll();
+              else playPara(0);
+            }}
+            className="flex-row items-center gap-1.5 rounded-pill px-3.5 py-1.5"
+            style={{ backgroundColor: playingIndex !== null ? '#DC2626' : theme.accent }}
+          >
+            <Icon name={playingIndex !== null ? 'close' : 'play'} size={14} color="#FFFFFF" />
+            <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: '#FFFFFF' }}>
+              {playingIndex !== null
+                ? L(`Đang đọc đoạn ${playingIndex + 1} (Dừng)`, `Reading para ${playingIndex + 1} (Stop)`)
+                : L('Đọc to toàn bài (TTS)', 'Read aloud (TTS)')}
+            </Text>
+          </Pressable>
+
+          <Pressable
+            accessibilityRole="button"
+            onPress={toggleSpeed}
+            className="rounded-pill px-2.5 py-1.5"
+            style={{ backgroundColor: theme.rule }}
+          >
+            <Text style={{ fontFamily: readingFont.mono, fontSize: 12, fontWeight: '700', color: theme.ink }}>
+              {rate}x
+            </Text>
+          </Pressable>
+        </View>
+
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => {
+            const nextMode = !shadowMode;
+            setShadowMode(nextMode);
+            if (!nextMode) {
+              setActiveShadow(null);
+              setShadowScore(null);
+              listen.stop();
+            }
+          }}
+          className="flex-row items-center gap-1.5 rounded-pill px-3 py-1.5"
+          style={{
+            backgroundColor: shadowMode ? 'rgba(217,119,6,0.18)' : 'transparent',
+            borderWidth: 1,
+            borderColor: shadowMode ? '#D97706' : theme.rule,
+          }}
+        >
+          <Icon name="mic" size={14} color={shadowMode ? '#D97706' : theme.muted} strokeWidth={2} />
+          <Text
+            style={{
+              fontFamily: readingFont.sansBold,
+              fontSize: 12.5,
+              color: shadowMode ? '#D97706' : theme.muted,
+            }}
+          >
+            {L('Nói đuổi (Shadowing)', 'Shadowing Mode')}
+          </Text>
+        </Pressable>
+      </View>
+
+      {activeShadow !== null ? (
+        <View className="mt-3 rounded-panel p-2.5 border" style={{ borderColor: theme.accent, backgroundColor: theme.bg }}>
+          <View className="flex-row items-center justify-between">
+            <Text style={{ fontFamily: readingFont.sansBold, fontSize: 13, color: theme.ink }}>
+              {L(`Luyện nói đuổi đoạn ${activeShadow + 1}`, `Shadowing Paragraph ${activeShadow + 1}`)}
+            </Text>
+            <Pressable onPress={() => { listen.stop(); setActiveShadow(null); }}>
+              <Icon name="close" size={13} color={theme.muted} />
+            </Pressable>
+          </View>
+          <Text style={{ marginTop: 2, fontSize: 12, color: theme.muted }}>
+            {listen.listening
+              ? L('Đang nghe bạn nói... Hãy đọc đuổi theo ngữ điệu bài đọc!', 'Listening... Speak along with rhythm!')
+              : L('Bấm micro để nói lại đoạn vừa nghe:', 'Tap mic to repeat the paragraph:')}
+          </Text>
+
+          <View className="mt-2 flex-row items-center gap-2">
+            <Pressable
+              onPress={() => playPara(activeShadow)}
+              className="rounded-pill p-1.5"
+              style={{ backgroundColor: theme.rule }}
+            >
+              <Icon name="volume" size={14} color={theme.ink} />
+            </Pressable>
+
+            <Pressable
+              onPress={() => {
+                if (listen.listening) {
+                  listen.stop();
+                } else {
+                  setShadowScore(null);
+                  setShadowSpoken('');
+                  armed.current = true;
+                  listen.start();
+                }
+              }}
+              className="flex-row items-center gap-1 rounded-pill px-3 py-1"
+              style={{ backgroundColor: listen.listening ? '#DC2626' : theme.accent }}
+            >
+              <Icon name="mic" size={13} color="#FFFFFF" />
+              <Text style={{ fontSize: 12, fontWeight: '700', color: '#FFFFFF' }}>
+                {listen.listening ? L('Đang thu… (Dừng)', 'Recording… (Stop)') : L('Nói lại đoạn này', 'Speak now')}
+              </Text>
+            </Pressable>
+          </View>
+
+          {shadowScore !== null ? (
+            <View
+              className="mt-2.5 rounded-card p-2"
+              style={{
+                backgroundColor:
+                  shadowScore >= 80 ? 'rgba(22,163,74,0.12)' : shadowScore >= 60 ? 'rgba(217,119,6,0.12)' : 'rgba(220,38,38,0.12)',
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 12.5,
+                  fontWeight: '800',
+                  color: shadowScore >= 80 ? '#16A34A' : shadowScore >= 60 ? '#D97706' : '#DC2626',
+                }}
+              >
+                {shadowScore >= 80
+                  ? L(`Khớp ${shadowScore}% · Band 8.0 - 9.0 · Phát âm & ngữ điệu cực tốt! 🌟`, `Matched ${shadowScore}% · Band 8.0 - 9.0 · Great flow! 🌟`)
+                  : shadowScore >= 60
+                    ? L(`Khớp ${shadowScore}% · Band 6.5 - 7.5 · Tương đối tốt, chú ý nhấn âm`, `Matched ${shadowScore}% · Band 6.5 - 7.5 · Good effort`)
+                    : L(`Khớp ${shadowScore}% · Thử nghe mẫu lại và nói chậm hơn nhé`, `Matched ${shadowScore}% · Listen again and pace yourself`)}
+              </Text>
+              {shadowSpoken ? (
+                <Text style={{ marginTop: 2, fontSize: 11.5, color: theme.body }}>
+                  {L('Đã nhận diện: ', 'Transcribed: ')}“{shadowSpoken}”
+                </Text>
+              ) : null}
+            </View>
+          ) : null}
+        </View>
+      ) : null}
+    </View>
+  );
+}
+
 function EnglishPane({
   article,
   theme,
@@ -735,6 +970,8 @@ function EnglishPane({
         {L(`${article.estMinutes} phút`, `${article.estMinutes} min`)}
         {source?.author ? ` · ${source.author}` : ''}
       </Text>
+
+      <TtsShadowBar paragraphs={article.paragraphs} theme={theme} onHighlightPara={onHoverPara} />
 
       {article.paragraphs.map((p, i) => (
         <ParagraphBlock
@@ -1090,6 +1327,127 @@ function QuestionsBody({ questions, theme, answers, checked, onAnswer, onCheck }
 /*                                   TỪ VỰNG                               */
 /* ====================================================================== */
 
+function VocabPronounceWidget({ word, meaningVi, theme }: { word: string; meaningVi: string; theme: Theme }) {
+  const [open, setOpen] = useState(false);
+  const listen = useListen();
+  const [score, setScore] = useState<number | null>(null);
+  const [spokenText, setSpokenText] = useState('');
+  const armed = useRef(false);
+  const { L } = useL();
+
+  useEffect(() => {
+    if (listen.listening || !armed.current) return;
+    armed.current = false;
+    if (!listen.text.trim()) {
+      setScore(null);
+      return;
+    }
+    const res = scoreSaying(word, listen.text);
+    setSpokenText(listen.text);
+    setScore(percentOf(res));
+  }, [listen.listening, listen.text, word]);
+
+  const handleMicPress = () => {
+    if (listen.listening) {
+      listen.stop();
+    } else {
+      setScore(null);
+      setSpokenText('');
+      armed.current = true;
+      listen.start();
+    }
+  };
+
+  return (
+    <View style={{ marginTop: 4 }}>
+      {!open ? (
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={L(`Chấm phát âm từ ${word}`, `Score pronunciation for “${word}”`)}
+          onPress={() => setOpen(true)}
+          className="flex-row items-center gap-1 self-start rounded-pill px-2.5 py-1"
+          style={{ backgroundColor: theme.tint, borderWidth: 1, borderColor: theme.rule }}
+        >
+          <Icon name="mic" size={12} color={theme.accent} strokeWidth={2} />
+          <Text style={{ fontSize: 11, fontFamily: readingFont.sansBold, color: theme.accent }}>
+            {L('Chấm phát âm', 'Pronounce')}
+          </Text>
+        </Pressable>
+      ) : (
+        <View className="rounded-panel p-2.5" style={{ backgroundColor: theme.tint, borderWidth: 1, borderColor: theme.accent }}>
+          <View className="flex-row items-center justify-between">
+            <Text style={{ fontFamily: readingFont.sansBold, fontSize: 12.5, color: theme.ink }}>
+              {L('Chấm phát âm từ vựng', 'Pronunciation Test')}
+            </Text>
+            <Pressable onPress={() => { listen.stop(); setOpen(false); }}>
+              <Icon name="close" size={12} color={theme.muted} />
+            </Pressable>
+          </View>
+
+          <Text style={{ marginTop: 2, fontSize: 11.5, color: theme.muted }}>
+            {L('Đọc to vào micro: ', 'Say into microphone: ')}
+            <Text style={{ fontWeight: '700', color: theme.ink }}>{word}</Text>
+          </Text>
+
+          <View className="mt-2 flex-row items-center gap-2">
+            <Pressable
+              onPress={() => {
+                Speech.stop();
+                Speech.speak(word, { language: 'en-GB', rate: 0.85, voice: englishVoice() });
+              }}
+              className="rounded-pill p-1.5"
+              style={{ backgroundColor: theme.rule }}
+              accessibilityLabel="Nghe mẫu"
+            >
+              <Icon name="volume" size={13} color={theme.ink} />
+            </Pressable>
+
+            <Pressable
+              onPress={handleMicPress}
+              className="flex-row items-center gap-1 rounded-pill px-3 py-1"
+              style={{ backgroundColor: listen.listening ? '#DC2626' : theme.accent }}
+            >
+              <Icon name="mic" size={12} color="#FFFFFF" />
+              <Text style={{ fontSize: 11.5, fontWeight: '700', color: '#FFFFFF' }}>
+                {listen.listening ? L('Đang thu… (Dừng)', 'Listening… (Stop)') : L('Bắt đầu đọc', 'Record')}
+              </Text>
+            </Pressable>
+          </View>
+
+          {score !== null ? (
+            <View
+              className="mt-2 rounded-card p-2"
+              style={{
+                backgroundColor:
+                  score >= 80 ? 'rgba(22,163,74,0.12)' : score >= 60 ? 'rgba(217,119,6,0.12)' : 'rgba(220,38,38,0.12)',
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 12,
+                  fontWeight: '800',
+                  color: score >= 80 ? '#16A34A' : score >= 60 ? '#D97706' : '#DC2626',
+                }}
+              >
+                {score >= 80
+                  ? L(`Band 8.0 - 9.0 (${score}%) · Chuẩn xác! 🌟`, `Band 8.0 - 9.0 (${score}%) · Perfect! 🌟`)
+                  : score >= 60
+                    ? L(`Band 6.5 - 7.5 (${score}%) · Khá tốt, chú ý trọng âm`, `Band 6.5 - 7.5 (${score}%) · Good attempt`)
+                    : L(`Band 5.0 - 6.0 (${score}%) · Cần nghe mẫu lại nhé`, `Band 5.0 - 6.0 (${score}%) · Try again with audio`)}
+              </Text>
+              {spokenText ? (
+                <Text style={{ marginTop: 2, fontSize: 11, color: theme.body }}>
+                  {L('Đã nhận diện: ', 'Transcribed: ')}“{spokenText}”
+                </Text>
+              ) : null}
+            </View>
+          ) : null}
+        </View>
+      )}
+    </View>
+  );
+}
+
 function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: Theme; article: BilingualArticle }) {
   const saveWord = useVocabStore((s) => s.saveWord);
   const entries = useVocabStore((s) => s.entries);
@@ -1163,6 +1521,8 @@ function VocabPane({ vocab, theme, article }: { vocab: BilingualVocab[]; theme: 
                   </Text>
                 </Pressable>
               </View>
+
+              <VocabPronounceWidget word={v.word} meaningVi={v.meaningVi} theme={theme} />
               <Text style={{ marginTop: 4, fontFamily: readingFont.sans, fontSize: 15, fontWeight: '600', color: theme.body }}>
                 {v.meaningVi}
               </Text>

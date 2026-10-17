@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "Select Factory",
+    "snapshot": "\n\t\t\t55 container\n\t\t\t\t56 image Factory\n\t\t\t57 image Factory\n\t\t\t58 text Fast-Paced, Money-Making Madness!\n\t\t\t59 text Difficulty\n\t\t\t60 image Difficulty\n\t\t\t61 text Complex Skills\n\t\t\t62 image Skills\n\t\t\t63 text Strategy & Speed Ideal Time\n\t\t\t64 image Time\n\t\t\t65 text 7 min Questions\n\t\t\t66 image Questions\n\t\t\t67 text Self-paced Prompting High Frequency Players\n\t\t\t68 image Players\n\t\t\t69 text 1 Min 6 Ideal 60 Free Max 300 Plus Max\n\t\t\t70 button Host\n\t"
+  },
+  {
+    "mode": "Select Tower Defense 2",
+    "snapshot": "\n\t\t\t55 container\n\t\t\t\t56 image Tower Defense 2\n\t\t\t57 image Defense2\n\t\t\t58 text Focus and Strategize to Survive!\n\t\t\t59 text Difficulty\n\t\t\t60 image Difficulty\n\t\t\t61 text Complex Skills\n\t\t\t62 image Skills\n\t\t\t63 text Strategy & Accuracy Ideal Time\n\t\t\t64 image Time\n\t\t\t65 text 10 min Questions\n\t\t\t66 image Questions\n\t\t\t67 text Self-paced Prompting Normal Frequency Players\n\t\t\t68 image Players\n\t\t\t69 text 1 Min 6 Ideal 60 Free Max 300 Plus Max\n\t\t\t70 button Host\n\t"
+  },
+  {
+    "mode": "Select Monster Brawl",
+    "snapshot": "\n\t\t\t55 container\n\t\t\t\t56 image Monster Brawl\n\t\t\t57 image Brawl\n\t\t\t58 text Become the Ultimate Monster Brawler!\n\t\t\t59 text Difficulty\n\t\t\t60 image Difficulty\n\t\t\t61 text Normal Skills\n\t\t\t62 image Skills\n\t\t\t63 text Dexterity & Strategy Ideal Time\n\t\t\t64 image Time\n\t\t\t65 text 8 min Questions\n\t\t\t66 image Questions\n\t\t\t67 text Self-paced Prompting Normal Frequency Players\n\t\t\t68 image Players\n\t\t\t69 text 1 Min 6 Ideal 60 Free Max 300 Plus Max\n\t\t\t70 button Host\n\t"
+  },
+  {
+    "mode": "Select Gold Quest",
+    "snapshot": "\n\t\t\t55 container\n\t\t\t\t56 image Gold Quest\n\t\t\t57 image Gold\n\t\t\t58 text Spooky, Sneaky, Scary Learning!\n\t\t\t59 text Difficulty\n\t\t\t60 image Difficulty\n\t\t\t61 text Simple Skills\n\t\t\t62 image Skills\n\t\t\t63 text Luck & Speed Ideal Time\n\t\t\t64 image Time\n\t\t\t65 text 7 min Questions\n\t\t\t66 image Questions\n\t\t\t67 text Self-paced Prompting High Frequency Players\n\t\t\t68 image Players\n\t\t\t69 text 1 Min 5 Ideal 60 Free Max 300 Plus Max\n\t\t\t70 button Host\n\t"
+  },
+  {
+    "mode": "Select Classic",
+    "snapshot": "\n\t\t\t55 container\n\t\t\t\t56 image Classic\n\t\t\t57 image Classic\n\t\t\t58 text Good Ol' Fashioned Blooket!\n\t\t\t59 text Difficulty\n\t\t\t60 image Difficulty\n\t\t\t61 text Simple Skills\n\t\t\t62 image Skills\n\t\t\t63 text Speed & Accuracy Ideal Time\n\t\t\t64 image Time\n\t\t\t65 text 7 min Questions\n\t\t\t66 image Questions\n\t\t\t67 text Synced Prompting High Frequency Players\n\t\t\t68 image Players\n\t\t\t69 text 1 Min 8 Ideal 60 Free Max 300 Plus Max\n\t\t\t70 button Host\n\t"
+  },
+  {
+    "mode": "Select Racing",
+    "snapshot": "\n\t\t\t55 container\n\t\t\t\t56 image Racing\n\t\t\t57 image Racing\n\t\t\t58 text Exhilarating, Suspense-Filled Action!\n\t\t\t59 text Difficulty\n\t\t\t60 image Difficulty\n\t\t\t61 text Simple Skills\n\t\t\t62 image Skills\n\t\t\t63 text Speed & Accuracy Ideal Time\n\t\t\t64 image Time\n\t\t\t65 text 5 min Questions\n\t\t\t66 image Questions\n\t\t\t67 text Self-paced Prompting High Frequency Players\n\t\t\t68 image Players\n\t\t\t69 text 1 Min 8 Ideal 60 Free Max 300 Plus Max\n\t\t\t70 button Host\n\t"
+  }
+]

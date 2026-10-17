@@ -10,6 +10,7 @@
  *   - mã bộ câu đáp tình huống `reply-<chủ đề>` (xem `data/travel/replies.ts`).
  */
 import type { Bi } from '@/i18n/useL';
+import { HANOI_STREET } from '@/data/travel/hanoi-street';
 import type { CityId, Level, PoiKind, QuestionType } from '@/services/travel/types';
 
 export type PoiContent = {
@@ -24,6 +25,8 @@ export type PoiContent = {
   questions?: number;
   /** Địa điểm đặc biệt không phải lượt hỏi: mở quầy hải quan / ra cổng bay. */
   action?: 'customs' | 'gate';
+  /** Cửa hàng phụ: có lượt luyện và quà, nhưng không tính vào tiến độ thành phố. */
+  optional?: boolean;
 };
 
 const p = (
@@ -93,7 +96,26 @@ const HANOI: PoiContent[] = [
   p('hanoi', 'cafegiang', 'cafe', 'Cà phê Giảng', 'Giang Café', ['food', 'leisure', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hn-cafegiang', 'eggcoffee'),
   p('hanoi', 'banhmichao', 'cafe', 'Bánh mì Chảo Hiệu Lực', 'Hieu Luc pan-fried bánh mì', ['food', 'leisure', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hn-banhmichao', 'banhmi'),
   p('hanoi', 'honguom', 'museum', 'Nhà hát Hồ Gươm', 'Ho Guom Theatre', ['art', 'culture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hn-honguom', 'opera'),
+  p('hanoi', 'hoangthanh', 'landmark', 'Hoàng Thành Thăng Long', 'Thang Long Imperial Citadel', ['history', 'culture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 11, 'sv-hn-hoangthanh', 'opera'),
+  p('hanoi', 'hangbac', 'market', 'Phố Hàng Bạc', 'Hang Bac silver street', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hn-hangbac', 'dongxuan'),
+  p('hanoi', 'chohom', 'market', 'Chợ Hôm', 'Cho Hom market', ['shopping', 'food', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hn-chohom', 'dongxuan'),
+  p('hanoi', 'phunghung', 'landmark', 'Đường tàu Phùng Hưng', 'Phung Hung railway street', ['tourism', 'culture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hn-phunghung', 'opera'),
 ];
+
+const STREET_BY_KIND = {
+  cafe: { decks: ['food', 'leisure', 'reply-cafe'], types: ['reply', 'cloze', 'dictation'] },
+  restaurant: { decks: ['food', 'reply-restaurant'], types: ['reply', 'cloze', 'order'] },
+  market: { decks: ['shopping', 'money', 'reply-market'], types: ['reply', 'cloze', 'translate'] },
+  hotel: { decks: ['housing', 'listening-accommodation', 'reply-hotel'], types: ['reply', 'cloze', 'order'] },
+  garden: { decks: ['environment', 'culture', 'reply-tickets'], types: ['cloze', 'listen-pick', 'translate'] },
+  landmark: { decks: ['history', 'culture', 'reply-tickets'], types: ['reply', 'cloze', 'listen-pick'] },
+} as const;
+
+const HANOI_EXTRA: PoiContent[] = HANOI_STREET.map((shop, i) => {
+  const base = STREET_BY_KIND[shop.kind];
+  const sight = shop.kind === 'garden' || shop.kind === 'landmark';
+  return p('hanoi', shop.lot, shop.kind, shop.name.vi, shop.name.en, [...base.decks], [...base.types], sight ? 2 : 1, 6 + (i % 4), `sv-hn-st-${shop.lot}`, undefined, { optional: true });
+});
 
 const SINGAPORE: PoiContent[] = [
   p('singapore', 'changi', 'airport', 'Sân bay Changi', 'Changi Airport', ['listening-personal-details', 'listening-numbers-dates-money', 'reply-airport'], ['reply', 'listen-pick', 'cloze'], 1, 8, 'sv-sg-boarding'),
@@ -201,7 +223,6 @@ const HOCHIMINH: PoiContent[] = [
   p('hochiminh', 'skydeck', 'landmark', 'Đài quan sát Sky Deck', 'Sky Deck viewpoint', ['tourism', 'architecture', 'listening-tourism-tours'], ['reply', 'cloze', 'dictation'], 3, 13, 'sv-hcm-skydeck', 'landmark81'),
   p('hochiminh', 'bitexco', 'landmark', 'Tháp Bitexco', 'Bitexco Tower', ['tourism', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 11, 'sv-hcm-bitexco', 'banhmi'),
   p('hochiminh', 'landmark81', 'landmark', 'Landmark 81', 'Landmark 81', ['tourism', 'listening-tourism-tours', 'reply-tickets'], ['reply', 'listen-pick', 'dictation'], 2, 12, 'sv-hcm-landmark81', 'bitexco'),
-  // Địa điểm thêm (Google Maps, 12/10/2026): trung tâm, quận 1–3, quận 5 và quận 6.
   p('hochiminh', 'nguyenhue', 'landmark', 'Phố đi bộ Nguyễn Huệ', 'Nguyen Hue Walking Street', ['leisure', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 1, 9, 'sv-hcm-nguyenhue', 'benthanh'),
   p('hochiminh', 'nharong', 'museum', 'Bến Nhà Rồng — Bảo tàng Hồ Chí Minh', 'Nha Rong Wharf — Ho Chi Minh Museum', ['history', 'culture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 11, 'sv-hcm-nharong', 'warmuseum'),
   p('hochiminh', 'vinhnghiem', 'landmark', 'Chùa Vĩnh Nghiêm', 'Vinh Nghiem Pagoda', ['culture', 'festivals', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-vinhnghiem', 'thienhau'),
@@ -212,33 +233,6 @@ const HOCHIMINH: PoiContent[] = [
   p('hochiminh', 'binhtay', 'market', 'Chợ Bình Tây', 'Binh Tay Market', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, 'sv-hcm-binhtay', 'thienhau'),
   p('hochiminh', 'lichsutp', 'museum', 'Bảo tàng Lịch sử TP.HCM', 'HCMC History Museum', ['history', 'education', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 3, 12, 'sv-hcm-lichsutp', 'nharong'),
   p('hochiminh', 'conrua', 'garden', 'Hồ Con Rùa', 'Turtle Lake', ['environment', 'culture'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-conrua', 'tandinh'),
-  p('hochiminh', 'jade', 'landmark', 'Chùa Ngọc Hoàng', 'Jade Emperor Pagoda', ['culture', 'festivals', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-jade', 'thienhau'),
-  p('hochiminh', 'khaitri', 'museum', 'Thư viện Khai Trí', 'Khai Tri Library', ['education', 'culture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-khaitri', 'postoffice'),
-  p('hochiminh', 'vincom', 'market', 'Vincom Đồng Khởi', 'Vincom Dong Khoi mall', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 10, 'sv-hcm-vincom', 'nguyenhue'),
-  p('hochiminh', 'bxmiendong', 'station', 'Bến xe Miền Đông', 'Mien Dong bus station', ['tourism', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'cloze'], 3, 12, 'sv-hcm-bxmiendong', 'bitexco'),
-  p('hochiminh', 'mymythuat', 'museum', 'Bảo tàng Mỹ thuật TP.HCM', 'HCMC Fine Arts Museum', ['art', 'culture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hcm-mymythuat', 'opera'),
-  p('hochiminh', 'cong239', 'garden', 'Công viên 23/9', '23/9 Park', ['environment', 'leisure'], ['cloze', 'listen-pick', 'dictation'], 1, 9, 'sv-hcm-cong239', 'taodan'),
-  p('hochiminh', 'bachdang', 'landmark', 'Bến Bạch Đằng', 'Bach Dang Wharf', ['tourism', 'architecture', 'listening-tourism-tours'], ['reply', 'listen-pick', 'dictation'], 2, 10, 'sv-hcm-bachdang', 'nharong'),
-  p('hochiminh', 'vinhkhanh', 'restaurant', 'Phố ẩm thực Vĩnh Khánh', 'Vinh Khanh food street', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hcm-vinhkhanh', 'comtam'),
-  p('hochiminh', 'kimbien', 'market', 'Chợ Kim Biên', 'Kim Bien Market', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, 'sv-hcm-kimbien', 'binhtay'),
-  p('hochiminh', 'bunbo', 'restaurant', 'Quán bún bò Huế', 'Bun bo Hue stall', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-bunbo', 'phoshop'),
-  p('hochiminh', 'banhxeo', 'restaurant', 'Quán bánh xèo', 'Banh xeo corner', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-banhxeo', 'cafesua'),
-  p('hochiminh', 'chetrau', 'restaurant', 'Quán chè', 'Sweet soup stall', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-chetrau', 'banhmi'),
-  p('hochiminh', 'trasua', 'cafe', 'Quán trà sữa', 'Milk tea shop', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-trasua', 'cafesua'),
-  p('hochiminh', 'capheberu', 'cafe', 'Cà phê vỉa hè', 'Street-side coffee bench', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-capheberu', 'cafesua'),
-  p('hochiminh', 'nhau', 'restaurant', 'Quán nhậu bia hơi', 'Beer hall', ['food', 'leisure', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-nhau', 'buivien'),
-  p('hochiminh', 'sachcu', 'market', 'Hiệu sách cũ', 'Second-hand bookshop', ['education', 'shopping', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-sachcu', 'vinhnghiem'),
-  p('hochiminh', 'tapho', 'market', 'Tạp hoá đầu ngõ', 'Corner grocery', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-tapho', 'banhmi'),
-  p('hochiminh', 'vang', 'market', 'Tiệm vàng', 'Gold shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-vang', 'benthanh'),
-  p('hochiminh', 'thuocbac', 'market', 'Hiệu thuốc Bắc', 'Herbal medicine shop', ['culture', 'shopping'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-thuocbac', 'lanhong'),
-  p('hochiminh', 'aodai', 'market', 'Tiệm may áo dài', 'Ao dai tailor', ['culture', 'shopping', 'reply-market'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hcm-aodai', 'opera'),
-  p('hochiminh', 'khachsan', 'hotel', 'Khách sạn mini', 'Mini hotel', ['housing', 'listening-accommodation', 'reply-hotel'], ['reply', 'cloze', 'order'], 1, 8, 'sv-hcm-khachsan', 'benthanh'),
-  p('hochiminh', 'nhanghi', 'hotel', 'Nhà nghỉ phố Tây', 'Backpacker guesthouse', ['housing', 'reply-hotel'], ['reply', 'cloze', 'order'], 2, 9, 'sv-hcm-nhanghi', 'buivien'),
-  p('hochiminh', 'benxe', 'station', 'Trạm xe buýt', 'Bus stop', ['tourism', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'cloze'], 1, 8, 'sv-hcm-benxe', 'nguyenhue'),
-  p('hochiminh', 'chohoa', 'market', 'Chợ hoa', 'Flower market', ['environment', 'shopping', 'reply-market'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hcm-chohoa', 'nguyenhue'),
-  p('hochiminh', 'rapchieu', 'landmark', 'Rạp chiếu phim', 'Cinema', ['art', 'leisure', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-rapchieu', 'opera'),
-  p('hochiminh', 'caphetb', 'cafe', 'Quán cà phê Tân Bình', 'Tan Binh coffee shop', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-caphetb', 'thuocbac'),
-  p('hochiminh', 'comnhat', 'restaurant', 'Quán cơm bình dân', 'Cheap rice shop', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-comnhat', 'vinhkhanh'),
   p('hochiminh', 'phoga', 'restaurant', 'Phở Gà Ông Tư', 'Ong Tu chicken pho', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-phoga', 'benthanh'),
   p('hochiminh', 'phobo', 'restaurant', 'Phở Bò Tái Anh Hai', 'Anh Hai rare beef pho', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-phobo', 'nguyenhue'),
   p('hochiminh', 'bunmam', 'restaurant', 'Bún Mắm Cô Ba', 'Co Ba fermented fish noodles', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 2, 9, 'sv-hcm-bunmam', 'comtam'),
@@ -248,21 +242,19 @@ const HOCHIMINH: PoiContent[] = [
   p('hochiminh', 'bunthit', 'restaurant', 'Bún Thịt Nướng Chị Mai', 'Chi Mai grilled pork noodles', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-bunthit', 'buivien'),
   p('hochiminh', 'banhcuon', 'restaurant', 'Bánh Cuốn Nóng', 'Hot steamed rice rolls', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-banhcuon', 'notredame'),
   p('hochiminh', 'banhcanh', 'restaurant', 'Bánh Canh Cua Bến Tre', 'Ben Tre crab noodle soup', ['food', 'reply-restaurant'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-banhcanh', 'postoffice'),
-  p('hochiminh', 'chaolong', 'restaurant', 'Cháo Lòng Bà Sáu', 'Ba Sau offal porridge', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-chaolong', 'vinhkhanh'),
+  p('hochiminh', 'chaolong', 'restaurant', 'Cháo Lòng Bà Sáu', 'Ba Sau offal porridge', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-chaolong', 'benthanh'),
   p('hochiminh', 'banhbeo', 'restaurant', 'Bánh Bèo Chén Huế', 'Hue water fern cakes', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 7, 'sv-hcm-banhbeo', 'binhtay'),
   p('hochiminh', 'xoi', 'restaurant', 'Xôi Mặn Chị Hằng', 'Chi Hang savory sticky rice', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-xoi', 'tandinh'),
   p('hochiminh', 'banhbao', 'restaurant', 'Bánh Bao Bà Tư', 'Ba Tu steamed buns', ['food', 'reply-restaurant'], ['reply', 'cloze', 'translate'], 1, 7, 'sv-hcm-banhbao', 'vinhnghiem'),
   p('hochiminh', 'nuongtam', 'restaurant', 'Quán Nướng Anh Ba', 'Anh Ba grill house', ['food', 'leisure', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-nuongtam', 'taodan'),
-  p('hochiminh', 'lau', 'restaurant', 'Lẩu Bò Nhà Lá', 'Leaf-house beef hotpot', ['food', 'leisure', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 2, 9, 'sv-hcm-lau', 'benthanh'),
   p('hochiminh', 'oc', 'restaurant', 'Ốc Nướng Dì Tám', 'Aunt Tam grilled snails', ['food', 'leisure', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-oc', 'nguyenhue'),
   p('hochiminh', 'cafevot', 'cafe', 'Cà Phê Vợt Chú Hải', 'Chu Hai sock coffee', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-cafevot', 'comtam'),
-  p('hochiminh', 'caphetrung', 'cafe', 'Cà Phê Trứng Phố Cũ', 'Old quarter egg coffee', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-caphetrung', 'banhmi'),
   p('hochiminh', 'sinhto', 'cafe', 'Sinh Tố Mẹ Bông', 'Mother Bong smoothies', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-sinhto', 'cafesua'),
   p('hochiminh', 'nuocmia', 'cafe', 'Nước Mía Chú Bây', 'Chu Bay sugarcane juice', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-nuocmia', 'phoshop'),
   p('hochiminh', 'nuocep', 'cafe', 'Nước Ép Bảy Lý', 'Bay Ly juice bar', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 1, 7, 'sv-hcm-nuocep', 'buivien'),
   p('hochiminh', 'kem', 'cafe', 'Kem Xe Chú Tư', 'Chu Tu ice cream cart', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-kem', 'notredame'),
   p('hochiminh', 'banhflan', 'cafe', 'Bánh Flan Cô Huệ', 'Co Hue caramel custard', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'translate'], 1, 7, 'sv-hcm-banhflan', 'postoffice'),
-  p('hochiminh', 'suadau', 'cafe', 'Sữa Đậu Nành Bà Bốn', 'Ba Bon soy milk', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-suadau', 'vinhkhanh'),
+  p('hochiminh', 'suadau', 'cafe', 'Sữa Đậu Nành Bà Bốn', 'Ba Bon soy milk', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-suadau', 'benthanh'),
   p('hochiminh', 'banhngot', 'cafe', 'Bánh Ngọt Nhà Lý', 'Ly family bakery', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'dictation'], 2, 9, 'sv-hcm-banhngot', 'binhtay'),
   p('hochiminh', 'tratiem', 'cafe', 'Trà Nhà Bạch', 'Bach House tea', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-tratiem', 'tandinh'),
   p('hochiminh', 'banhtrang', 'restaurant', 'Bánh Tráng Trộn Bé Hai', 'Be Hai rice paper salad', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 7, 'sv-hcm-banhtrang', 'vinhnghiem'),
@@ -272,24 +264,39 @@ const HOCHIMINH: PoiContent[] = [
   p('hochiminh', 'nonla', 'market', 'Nón Lá Bà Tứ', 'Ba Tu conical hats', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-nonla', 'comtam'),
   p('hochiminh', 'tranhtiem', 'market', 'Tiệm Tranh Sài Gòn', 'Saigon painting shop', ['shopping', 'culture', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-tranhtiem', 'banhmi'),
   p('hochiminh', 'giaydep', 'market', 'Giày Dép Anh Tài', 'Anh Tai shoes and sandals', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-giaydep', 'cafesua'),
-  p('hochiminh', 'quanao', 'market', 'Thời Trang Hà My', 'Ha My boutique', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-quanao', 'phoshop'),
-  p('hochiminh', 'suaxe', 'market', 'Sửa Xe Anh Bé', 'Anh Be motorbike repair', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-suaxe', 'buivien'),
-  p('hochiminh', 'tiemanh', 'market', 'Chụp Ảnh Ngọc Diệp', 'Ngoc Diep photo studio', ['shopping', 'art', 'reply-market'], ['reply', 'cloze', 'dictation'], 2, 9, 'sv-hcm-tiemanh', 'notredame'),
-  p('hochiminh', 'dienthoai', 'market', 'Điện Thoại Phúc Long', 'Phuc Long phone shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-dienthoai', 'postoffice'),
-  p('hochiminh', 'nhasach', 'market', 'Nhà Sách Đức Nhuận', 'Duc Nhuan bookshop', ['education', 'shopping', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-nhasach', 'vinhkhanh'),
-  p('hochiminh', 'cattoc', 'market', 'Tiệm Cắt Tóc Anh Nam', 'Anh Nam barbershop', ['shopping', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-cattoc', 'binhtay'),
-  p('hochiminh', 'nhathuoc', 'market', 'Nhà Thuốc Bình An', 'Binh An pharmacy', ['housing', 'shopping', 'reply-market'], ['reply', 'cloze', 'dictation'], 2, 9, 'sv-hcm-nhathuoc', 'tandinh'),
-  p('hochiminh', 'minimart', 'market', 'Mini Mart Sài Gòn', 'Saigon mini mart', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-minimart', 'vinhnghiem'),
-  p('hochiminh', 'trongiam', 'market', 'Gốm Sứ Bình Dương', 'Binh Duong pottery', ['culture', 'shopping', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-trongiam', 'taodan'),
-  p('hochiminh', 'nhatro', 'hotel', 'Nhà Nghỉ Bình Minh', 'Binh Minh guesthouse', ['housing', 'listening-accommodation', 'reply-hotel'], ['reply', 'cloze', 'order'], 1, 8, 'sv-hcm-nhatro', 'benthanh'),
-  p('hochiminh', 'kara', 'landmark', 'Karaoke Đêm Vàng', 'Golden Night karaoke', ['leisure', 'art', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-kara', 'nguyenhue'),
-  p('hochiminh', 'caphesantuong', 'cafe', 'Cà phê sân thượng', 'Rooftop coffee', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-caphesantuong', 'cafesua'),
-  p('hochiminh', 'chothinghe', 'market', 'Chợ Thị Nghè', 'Thi Nghe Market', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 10, 'sv-hcm-chothinghe', 'tandinh'),
-  p('hochiminh', 'bachkhoa', 'landmark', 'Đại học Bách Khoa', 'HCMC University of Technology', ['education', 'architecture', 'reply-directions'], ['reply', 'cloze', 'listen-pick'], 3, 12, 'sv-hcm-bachkhoa', 'lichsutp'),
-  p('hochiminh', 'quanoc', 'restaurant', 'Quán ốc', 'Snail eatery', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-quanoc', 'vinhkhanh'),
-  p('hochiminh', 'comtam10', 'restaurant', 'Quán cơm tấm Quận 10', 'District 10 broken-rice shop', ['food', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-comtam10', 'comtam'),
-  p('hochiminh', 'giatla', 'market', 'Tiệm giặt là', 'Laundry shop', ['housing', 'shopping', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-giatla', 'nhanghi'),
-  p('hochiminh', 'quannhau', 'restaurant', 'Quán nhậu Nguyễn Trãi', 'Nguyen Trai beer shop', ['food', 'leisure', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-quannhau', 'nhau'),
+  p('hochiminh', 'quanao', 'market', 'Cửa hàng quần áo', 'Clothes shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-quanao', 'benthanh'),
+  p('hochiminh', 'suaxe', 'market', 'Tiệm sửa xe máy', 'Motorbike repair shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-suaxe', 'benthanh'),
+  p('hochiminh', 'dienthoai', 'market', 'Cửa hàng điện thoại', 'Phone shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-dienthoai', 'nguyenhue'),
+  p('hochiminh', 'nhasach', 'market', 'Nhà sách', 'Bookshop', ['shopping', 'culture', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-nhasach', 'postoffice'),
+  p('hochiminh', 'trongiam', 'market', 'Điểm trông giữ xe', 'Bike parking attendant', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-trongiam', 'comtam'),
+  p('hochiminh', 'tiemanh', 'market', 'Tiệm chụp ảnh', 'Photo studio', ['shopping', 'culture', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-tiemanh', 'independence'),
+  p('hochiminh', 'nhathuoc', 'market', 'Nhà thuốc', 'Pharmacy', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-nhathuoc', 'notredame'),
+  p('hochiminh', 'minimart', 'market', 'Minimart Sài Gòn', 'Saigon minimart', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-minimart', 'phoshop'),
+  p('hochiminh', 'nhatro', 'market', 'Nhà trọ mini', 'Mini guesthouse', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 3, 12, 'sv-hcm-nhatro', 'warmuseum'),
+  p('hochiminh', 'cattoc', 'market', 'Tiệm cắt tóc', 'Barbershop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-cattoc', 'taodan'),
+  p('hochiminh', 'kara', 'cafe', 'Quán karaoke', 'Karaoke bar', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-kara', 'phoshop'),
+  p('hochiminh', 'lau', 'restaurant', 'Quán lẩu bò', 'Beef hotpot', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-lau', 'comtam'),
+  p('hochiminh', 'caphetrung', 'cafe', 'Cà phê trứng', 'Egg coffee', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-caphetrung', 'cafesua'),
+  p('hochiminh', 'ngochoang', 'landmark', 'Chùa Ngọc Hoàng', 'Jade Emperor Pagoda', ['culture', 'festivals', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-hcm-ngochoang', 'thienhau'),
+  p('hochiminh', 'giaclam', 'landmark', 'Chùa Giác Lâm', 'Giac Lam Pagoda', ['culture', 'history', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 10, 'sv-hcm-giaclam', 'tandinh'),
+  p('hochiminh', 'kimbien', 'market', 'Chợ Kim Biên', 'Kim Bien Market', ['shopping', 'food', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-kimbien', 'binhtay'),
+  p('hochiminh', 'levantam', 'garden', 'Công viên Lê Văn Tám', 'Le Van Tam Park', ['environment', 'leisure', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 1, 9, 'sv-hcm-levantam', 'taodan'),
+  p('hochiminh', 'tiemvang', 'market', 'Tiệm vàng Bảo Ngọc', 'Bao Ngoc gold shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-tiemvang', 'benthanh'),
+  p('hochiminh', 'banhxeo', 'restaurant', 'Bánh xèo Bà Hai', 'Ba Hai sizzling pancakes', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-banhxeo', 'comtam'),
+  p('hochiminh', 'trasua', 'cafe', 'Quán trà sữa Hồng Trà', 'Hong Tra milk tea corner', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-trasua', 'cafesua'),
+  p('hochiminh', 'tiemhoa', 'market', 'Tiệm hoa Mộc Lan', 'Moc Lan flower shop', ['shopping', 'culture', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 9, 'sv-hcm-tiemhoa', 'postoffice'),
+  p('hochiminh', 'sachcu', 'market', 'Hiệu sách cũ', 'Old bookshop', ['culture', 'education', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-sachcu', 'nhasach'),
+  p('hochiminh', 'quanche', 'cafe', 'Chè Cô Sáu', 'Co Sau dessert stall', ['food', 'leisure', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-quanche', 'cafesua'),
+  p('hochiminh', 'giatui', 'market', 'Tiệm giặt ủi', 'Laundry shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-giatui', 'minimart'),
+  p('hochiminh', 'comchay', 'restaurant', 'Cơm chay Thiện Phúc', 'Thien Phuc vegetarian rice', ['food', 'culture', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-comchay', 'comtam'),
+  p('hochiminh', 'bunbo', 'restaurant', 'Bún bò Huế vỉa hè', 'Hue beef noodle stall', ['food', 'reply-restaurant'], ['reply', 'cloze', 'dictation'], 1, 8, 'sv-hcm-bunbo', 'comtam'),
+  p('hochiminh', 'suachua', 'cafe', 'Sữa chua nếp cẩm', 'Yogurt stall', ['food', 'leisure', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-suachua', 'cafesua'),
+  p('hochiminh', 'chechuoi', 'cafe', 'Chè chuối', 'Banana dessert stall', ['food', 'leisure', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-hcm-chechuoi', 'benthanh'),
+  p('hochiminh', 'sapbao', 'market', 'Sạp báo', 'Newspaper stand', ['shopping', 'culture', 'reply-market'], ['reply', 'cloze', 'translate'], 1, 8, 'sv-hcm-sapbao', 'postoffice'),
+  p('hochiminh', 'buucuc', 'market', 'Bưu cục nhỏ', 'Small post branch', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-buucuc', 'postoffice'),
+  p('hochiminh', 'quanbia', 'restaurant', 'Quán bia Sài Gòn', 'Saigon beer bar', ['food', 'leisure', 'reply-restaurant'], ['reply', 'cloze', 'listen-pick'], 2, 9, 'sv-hcm-quanbia', 'nguyenhue'),
+  p('hochiminh', 'dodien', 'market', 'Cửa hàng điện máy', 'Appliance shop', ['shopping', 'money', 'reply-market'], ['reply', 'cloze', 'translate'], 2, 9, 'sv-hcm-dodien', 'independence'),
+  // Địa điểm thêm (Google Maps, 12/10/2026): trung tâm, quận 1–3, quận 5 và quận 6.
 ];
 
 const DANANG: PoiContent[] = [
@@ -309,8 +316,15 @@ const DANANG: PoiContent[] = [
   p('danang', 'ponagar', 'landmark', 'Tháp Chăm cổ', 'Ancient Cham tower', ['history', 'culture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 3, 12, 'sv-dn-tower', 'japanbridge'),
   p('danang', 'seafood', 'restaurant', 'Nhà hàng hải sản', 'Seafood restaurant', ['food', 'reply-restaurant', 'festivals'], ['reply', 'cloze', 'order'], 2, 10, 'sv-dn-crab', 'beachbar'),
   p('danang', 'resort', 'hotel', 'Khu nghỉ dưỡng bên biển', 'Beach resort', ['housing', 'listening-accommodation', 'reply-hotel'], ['reply', 'cloze', 'order'], 2, 10, 'sv-dn-resortkey', 'seafood'),
+  p('danang', 'mykhe', 'restaurant', 'Quán hải sản Mỹ Khê', 'My Khe seafood stall', ['food', 'reply-restaurant', 'festivals'], ['reply', 'cloze', 'order'], 1, 8, 'sv-dn-mykhe', 'seafood'),
+  p('danang', 'cafemykhe', 'cafe', 'Quán cà phê Mỹ Khê', 'My Khe café', ['leisure', 'food', 'reply-cafe'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-dn-cafemykhe', 'mykhe'),
+  p('danang', 'hotelmykhe', 'hotel', 'Khách sạn Mỹ Khê', 'My Khe hotel', ['housing', 'listening-accommodation', 'reply-hotel'], ['reply', 'cloze', 'order'], 2, 10, 'sv-dn-hotelmykhe', 'resort'),
   p('danang', 'sontra', 'garden', 'Bán đảo Sơn Trà', 'Son Tra Peninsula', ['environment', 'agriculture'], ['cloze', 'listen-pick', 'translate'], 2, 11, 'sv-dn-langur', 'resort'),
   p('danang', 'banahills', 'station', 'Cáp treo Bà Nà Hills', 'Ba Na Hills cable car', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 3, 12, 'sv-dn-cablecar', 'sontra'),
+  p('danang', 'lovebridge', 'landmark', 'Cầu Tình Yêu', 'Love Bridge', ['tourism', 'culture', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 1, 9, 'sv-dn-lovebridge', 'dragonbridge'),
+  p('danang', 'chocon', 'market', 'Chợ Cồn', 'Con Market', ['shopping', 'food', 'reply-market'], ['reply', 'cloze', 'listen-pick'], 1, 8, 'sv-dn-chocon', 'chohan'),
+  p('danang', 'linhung', 'landmark', 'Chùa Linh Ứng', 'Linh Ung Pagoda', ['culture', 'festivals', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 2, 10, 'sv-dn-linhung', 'ladybuddha'),
+  p('danang', 'nonnuoc', 'garden', 'Bãi biển Non Nước', 'Non Nuoc Beach', ['environment', 'leisure', 'reply-tickets'], ['reply', 'cloze', 'listen-pick'], 1, 9, 'sv-dn-nonnuoc', 'seafood'),
   p('danang', 'goldenbridge', 'landmark', 'Cầu Vàng', 'Golden Bridge', ['tourism', 'architecture', 'reply-tickets'], ['reply', 'cloze', 'dictation'], 2, 12, 'sv-dn-golden', 'nguhanhson'),
 ];
 
@@ -414,7 +428,7 @@ const SHANGHAI: PoiContent[] = [
   p('shanghai', 'station', 'station', 'Ga Tàu Lục Gia Chủy & Maglev', 'Lujiazui Station & Maglev', ['transport', 'listening-directions-maps', 'reply-directions'], ['reply', 'listen-pick', 'order'], 2, 11, undefined, 'pearltower'),
 ];
 
-export const POI_CATALOG: PoiContent[] = [...HANOI, ...SINGAPORE, ...LONDON, ...PARIS, ...AMSTERDAM, ...ROME, ...HOCHIMINH, ...DANANG, ...TOKYO, ...SEOUL, ...NEWYORK, ...ISTANBUL, ...CAIRO, ...SYDNEY, ...MEXICOCITY, ...RIO, ...CAPETOWN, ...MARRAKECH, ...SHANGHAI];
+export const POI_CATALOG: PoiContent[] = [...HANOI, ...HANOI_EXTRA, ...SINGAPORE, ...LONDON, ...PARIS, ...AMSTERDAM, ...ROME, ...HOCHIMINH, ...DANANG, ...TOKYO, ...SEOUL, ...NEWYORK, ...ISTANBUL, ...CAIRO, ...SYDNEY, ...MEXICOCITY, ...RIO, ...CAPETOWN, ...MARRAKECH, ...SHANGHAI];
 
 const BY_ID = new Map(POI_CATALOG.map((x) => [x.id, x]));
 
@@ -428,7 +442,7 @@ export function poisOfCity(city: CityId): PoiContent[] {
 
 /** Địa điểm tính vào tiến độ thành phố: có lượt hỏi, không phải ô bí mật. */
 export function mainPoisOfCity(city: CityId): PoiContent[] {
-  return POI_CATALOG.filter((x) => x.city === city && x.kind !== 'secret' && !x.action);
+  return POI_CATALOG.filter((x) => x.city === city && x.kind !== 'secret' && !x.action && !x.optional);
 }
 
 export function cityOfPoi(poiId: string): CityId | undefined {

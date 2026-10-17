@@ -13,7 +13,7 @@ const MUST_STAY_REACHABLE = [
   '/intro', '/dashboard', '/practice', '/write', '/mock-tests', '/math', '/sat-rw', '/sat/full-test',
   '/sentence', '/sentence/sets', '/sentence/youtube', '/library', '/bilingual', '/vocabulary',
   '/vocabulary/quiz', '/vocabulary/topics', '/notes', '/bookmarks', '/plan', '/progress',
-  '/leaderboard', '/shop', '/profile', '/mastery', '/teacher', '/quest', '/quest/hero', '/invite', '/upgrade', '/settings',
+  '/leaderboard', '/shop', '/profile', '/teacher', '/quest', '/quest/hero', '/invite', '/upgrade', '/settings',
 ];
 
 test('không trang nào mất lối vào sau khi gộp', () => {

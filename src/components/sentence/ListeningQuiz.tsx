@@ -195,14 +195,14 @@ export function ListeningQuiz({ videoId, sentences, onSeek }: Props) {
   return (
     <View>
       <View className="mb-3 flex-row flex-wrap items-center gap-2">
-        <Text className="font-strong text-body text-white">
+        <Text className="font-strong text-body text-paper-ink">
           {L(`${answered}/${questions.length} câu đã trả lời`, `${answered}/${questions.length} answered`)}
         </Text>
         {answered > 0 ? (
-          <Text className="font-sans text-label text-white/80">{L(`· đúng ${correct}`, `· ${correct} correct`)}</Text>
+          <Text className="font-sans text-label text-paper-body">{L(`· đúng ${correct}`, `· ${correct} correct`)}</Text>
         ) : null}
         <View className="flex-1" />
-        <Button variant="onDark" label={L('Ra đề khác', 'New questions')} iconLeft="refresh" onPress={reload} />
+        <Button variant="brandOutline" label={L('Ra đề khác', 'New questions')} iconLeft="refresh" onPress={reload} />
       </View>
 
       <View className="gap-3">

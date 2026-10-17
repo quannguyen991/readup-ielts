@@ -4,6 +4,8 @@ import { Image, View } from 'react-native';
 import { useChiikawaQuiet } from '@/components/chiikawa/chiikawa';
 import { useHydrated } from '@/components/layout/useHydrated';
 import { useRewardStore } from '@/store/useRewardStore';
+import type { LionPose } from './LionMascot';
+import { useLionSkin } from './lion-skin';
 
 /**
  * MÈO STICKER CỦA BAND 9 — sáu tư thế do ChatGPT vẽ theo ảnh mẫu, đã tách nền thành trong
@@ -80,14 +82,46 @@ const CHIIKAWA_FOR: Record<CatPose, keyof typeof CHIIKAWA_SOURCES> = {
   clingClimb: 'cheer',
 };
 
+/** Giao diện vàng kim: tư thế mèo → tư thế Leo (sư tử) gần nhất; tư thế bám cạnh chưa có hình riêng. */
+const LION_FOR: Record<CatPose, LionPose> = {
+  sunglasses: 'cheer',
+  headphones: 'read',
+  hangingPaws: 'point',
+  peeking: 'point',
+  peace: 'cheer',
+  angry: 'think',
+  sleep: 'sleep',
+  wave: 'wave',
+  think: 'think',
+  write: 'read',
+  read: 'read',
+  cheer: 'cheer',
+  sit: 'read',
+  lie: 'sleep',
+  stretch: 'cheer',
+  jump: 'cheer',
+  curl: 'sleep',
+  clingHang: 'point',
+  clingPeek: 'point',
+  clingWave: 'wave',
+  clingSit: 'read',
+  clingLie: 'sleep',
+  clingClimb: 'point',
+};
+
 /** `size` là cạnh của ô vuông chứa mèo; mèo được co vừa ô, giữ đúng tỉ lệ. */
 export function CatSticker({ pose, size = 90, style }: { pose: CatPose; size?: number; style?: object }) {
   // Chờ hydrate: lượt đầu phải vẽ y như HTML máy chủ (mèo), nếu không React giữ hình cũ trên trang.
   const hydrated = useHydrated();
   const chiikawa = useRewardStore((s) => s.theme === 'theme-chiikawa');
   const useChiikawa = hydrated && chiikawa;
+  const lion = hydrated && !useChiikawa && useLionSkin();
   const quiet = useChiikawaQuiet();
-  const source = useChiikawa ? CHIIKAWA_SOURCES[CHIIKAWA_FOR[pose]] : SOURCES[pose];
+  const source = useChiikawa
+    ? CHIIKAWA_SOURCES[CHIIKAWA_FOR[pose]]
+    : lion
+      ? { uri: `/mascot/lion/lion-${LION_FOR[pose]}.png` }
+      : SOURCES[pose];
   return (
     <View pointerEvents="none" style={[{ width: size, height: size }, useChiikawa && quiet ? { opacity: 0.2 } : null, style] as never}>
       <Image source={source} resizeMode="contain" style={{ width: '100%', height: '100%' }} />

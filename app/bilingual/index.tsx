@@ -5,8 +5,9 @@ import { router, useLocalSearchParams } from 'expo-router';
 import { Grid } from '@/components/layout/Grid';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { Screen } from '@/components/layout/Screen';
-import { Appear, CrossFade, PressScale } from '@/components/motion/Motion';
+import { Appear, CrossFade } from '@/components/motion/Motion';
 import { BilingualLines, LessonCard } from '@/components/sentence/LessonCard';
+import { ArticleFeed } from '@/components/bilingual/ArticleFeed';
 import { HScroll, Icon, Pagination } from '@/components/ui';
 import {
   BILINGUAL_LEVELS,
@@ -144,112 +145,18 @@ function PortalView() {
         </Pressable>
       </Appear>
 
-      <View className="mt-8">
-        <Grid columns={2} tabletColumns={2} mobileColumns={1} gap={22}>
-          {BILINGUAL_OUTLETS.map((o, i) => (
-            <Appear key={o.key} index={i + 1} style={{ height: '100%' }}>
-              <OutletCard outlet={o} count={articlesOfOutlet(o.key).length} />
-            </Appear>
-          ))}
-        </Grid>
-      </View>
+      <Appear index={2}>
+        <View className="mt-8">
+          <ArticleFeed />
+        </View>
+      </Appear>
 
-      <Appear index={6}>
+      <Appear index={3}>
         <Text className="font-sans" style={{ marginTop: 22, fontSize: 13, lineHeight: 20, color: INK, opacity: 0.75 }}>
           {L('Bài có giấy phép dùng lại, kèm link gốc.', 'Openly licensed articles, each linked to its source.')}
         </Text>
       </Appear>
     </View>
-  );
-}
-
-/**
- * Thẻ một tờ báo = BÌA TẠP CHÍ: tên báo in lớn trên màu riêng của báo, bên dưới
- * là ba tiêu đề mới nhất THẬT của chính tờ ấy — nhìn là biết báo này viết về gì,
- * thay cho thanh phân bố trình độ + chú thích lặt vặt của bản trước (người dùng
- * chê "thiết kế xấu quá", 27/09/2026).
- */
-function OutletCard({ outlet, count }: { outlet: BilingualOutlet; count: number }) {
-  const featured = outlet.key === 'readup';
-  const articles = useMemo(() => articlesOfOutlet(outlet.key), [outlet.key]);
-  const headlines = articles.slice(0, 3);
-  const levels = BILINGUAL_LEVELS.filter((l) => articles.some((x) => x.level === l));
-  const levelSpan = levels.length > 1 ? `${levels[0]} → ${levels[levels.length - 1]}` : (levels[0] ?? '');
-  const [hover, setHover] = useState(false);
-  const { L, en } = useL();
-
-  return (
-    <PressScale
-      accessibilityRole="link"
-      accessibilityLabel={L(`Mở ${outlet.name}`, `Open ${outlet.name}`)}
-      onPress={() => router.setParams({ s: outlet.key })}
-      style={{ height: '100%' }}
-    >
-      <View
-        className="h-full overflow-hidden rounded-[22px] bg-white"
-        {...({ onMouseEnter: () => setHover(true), onMouseLeave: () => setHover(false) } as object)}
-        style={{
-          ...SOFT_CARD,
-          ...(Platform.OS === 'web'
-            ? ({
-                transform: hover ? 'translateY(-3px)' : 'none',
-                transition: 'transform 200ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 200ms ease',
-                boxShadow: hover ? '0 18px 40px rgba(94, 72, 35,0.16)' : (SOFT_CARD as { boxShadow?: string }).boxShadow,
-              } as object)
-            : null),
-        }}
-      >
-        {/* Bìa */}
-        <View className="px-5 pb-4 pt-5" style={{ backgroundColor: outlet.cover }}>
-          <View className="flex-row items-center justify-between gap-3">
-            <Text className="font-strong" style={{ fontSize: 12, letterSpacing: 1.4, color: outlet.ink, opacity: 0.75 }}>
-              {featured ? L('NÊN ĐỌC TRƯỚC', 'START HERE') : outlet.license.toUpperCase()}
-            </Text>
-            <Text className="font-strong" style={{ fontSize: 12, color: outlet.ink, opacity: 0.85 }}>
-              {L(`${count} bài`, `${count} articles`)} · {levelSpan}
-            </Text>
-          </View>
-          <Text className="mt-3 font-heavy" style={{ fontSize: 28, lineHeight: 32, color: outlet.ink }} numberOfLines={1}>
-            {outlet.name}
-          </Text>
-          <Text className="mt-1 font-sans" style={{ fontSize: 14, lineHeight: 20, color: outlet.ink, opacity: 0.85 }} numberOfLines={2}>
-            {bilingualTagline(outlet.key, outlet.tagline, en)}
-          </Text>
-        </View>
-
-        {/* Ba tiêu đề thật */}
-        <View className="flex-1 px-5 py-3">
-          {headlines.map((h, i) => (
-            <View key={h.id} className={`flex-row items-start gap-2.5 py-2 ${i > 0 ? 'border-t' : ''}`} style={{ borderColor: '#F6F3EE' }}>
-              <View style={{ width: 4, height: 16, borderRadius: 2, marginTop: 2, backgroundColor: outlet.cover }} />
-              <View className="min-w-0 flex-1">
-                <Text className="font-strong" style={{ fontSize: 14.5, lineHeight: 20, color: INK }} numberOfLines={1}>
-                  {stripInline(h.titleEn)}
-                </Text>
-                {/* Giao diện English: chỉ tiêu đề gốc, bỏ dòng dịch tiếng Việt. */}
-                {en ? null : (
-                  <Text className="font-sans" style={{ fontSize: 12.5, color: MUTED }} numberOfLines={1}>
-                    {stripInline(h.titleVi)}
-                  </Text>
-                )}
-              </View>
-              <Text className="font-semi" style={{ fontSize: 11.5, color: MUTED }}>
-                {h.level}
-              </Text>
-            </View>
-          ))}
-        </View>
-
-        <View className="flex-row items-center justify-between px-5 pb-4">
-          <Text className="font-semi" style={{ fontSize: 13, color: MUTED }}>
-            {L(`Xem cả ${count} bài`, `See all ${count} articles`)}
-          </Text>
-          <View className="h-9 w-9 items-center justify-center rounded-pill" style={{ backgroundColor: hover ? outlet.cover : '#FBF7F1' }}>
-            <Icon name="arrow-right" size={17} color={hover ? outlet.ink : INK} strokeWidth={2.2} />
-          </View>
-        </View>
-      </View>
-    </PressScale>
   );
 }
 

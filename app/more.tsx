@@ -6,6 +6,8 @@ import { Screen } from '@/components/layout/Screen';
 import { AssetImage, Card, Icon } from '@/components/ui';
 import { hasPublishedHistory, HISTORY_LEARNING_ENABLED, isDevBuild } from '@/data/history';
 import { MORE_ITEMS, navLabel } from '@/navigation/nav-items';
+import { ieltsShown } from '@/navigation/ielts-focus';
+import { useIeltsFocusStore } from '@/store/useIeltsFocusStore';
 import { useL } from '@/i18n/useL';
 import { assetKeys, useAssetUrl } from '@/services/assets/useAssets';
 import { color } from '@/theme/tokens';
@@ -16,6 +18,7 @@ import { Motion } from '@/components/illust/CuteMore';
 
 /** Tab "More" trên mobile: chứa các mục sidebar không nằm trong 5 tab chính. */
 export default function MoreScreen() {
+  const ieltsFeatures = useIeltsFocusStore((st) => st.features);
   const { L, locale } = useL();
   return (
     <Screen>
@@ -37,7 +40,7 @@ export default function MoreScreen() {
       </View>
 
       <Card className="mt-4" padded={false}>
-        {MORE_ITEMS.filter((i) => i.requires !== 'history' || (HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory()))).map((item, index) => (
+        {MORE_ITEMS.filter((i) => ieltsShown(i.key, ieltsFeatures) && (i.requires !== 'history' || (HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory())))).map((item, index) => (
           <Link key={item.key} href={item.href as never} asChild>
             <View
               accessibilityRole="link"

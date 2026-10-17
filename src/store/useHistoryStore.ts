@@ -45,7 +45,10 @@ export const useHistoryStore = create<HistoryState>()(
       partialize: (s) => ({ topics: s.topics, prefs: s.prefs }) as HistoryState,
       merge: (persisted, current) => {
         const p = persisted as Partial<HistoryState> | undefined;
-        return { ...current, topics: normalizeHistory(p).topics, prefs: { ...DEFAULT_PREFS, ...(p?.prefs ?? {}) } };
+        const prefs = { ...DEFAULT_PREFS, ...(p?.prefs ?? {}) };
+        // Existing installs saved the old 1× default; start those readers at the new, slower pace.
+        if (prefs.speed === 1 || prefs.speed === 0.85) prefs.speed = DEFAULT_PREFS.speed;
+        return { ...current, topics: normalizeHistory(p).topics, prefs };
       },
     },
   ),

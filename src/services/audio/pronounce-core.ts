@@ -203,9 +203,9 @@ export async function planPlayback(text: string, accent: Accent, lookup: Lookup)
  * ------------------------------------------------------------------ */
 
 export type ClipVoice = 'kore' | 'fenrir' | 'aoede';
-/** Nữ → Kore, Nam → Fenrir. */
+/** Nữ → Aoede, Nam → Fenrir. */
 export function clipVoiceFor(gender: 'f' | 'm'): ClipVoice {
-  return gender === 'm' ? 'fenrir' : 'kore';
+  return gender === 'm' ? 'fenrir' : 'aoede';
 }
 
 /** Chuẩn hoá khoá tra clip: bỏ khoảng trắng thừa, thường hoá, dấu nháy cong → thẳng. */

@@ -1,5 +1,9 @@
 import React from 'react';
+import { Image } from 'react-native';
 import Svg, { Circle, Ellipse, G, Line, Path, Text as SvgText } from 'react-native-svg';
+
+import type { LionPose } from './LionMascot';
+import { useLionSkin } from './lion-skin';
 
 /**
  * MÈO LINH VẬT CỦA BAND 9 — tự vẽ bằng SVG, không lấy hình có bản quyền.
@@ -140,7 +144,13 @@ function LyingCat({ size }: { size: number }) {
   );
 }
 
+const LION_FOR_STATE: Record<CatState, LionPose> = { idle: 'wave', happy: 'cheer', oops: 'point', think: 'think', sleep: 'sleep' };
+
 export function CatMascot({ size = 120, state = 'idle', pose = 'sit' }: Props) {
+  const lion = useLionSkin();
+  if (lion) {
+    return <Image source={{ uri: `/mascot/lion/lion-${pose === 'lie' ? 'sleep' : LION_FOR_STATE[state]}.png` }} resizeMode="contain" style={{ width: size, height: size }} accessibilityLabel="Leo" />;
+  }
   if (pose === 'lie') return <LyingCat size={size} />;
   return (
     <Svg width={size} height={size} viewBox="0 0 120 120" accessibilityLabel="Mèo Band 9">

@@ -44,28 +44,28 @@ export function ListeningResults({
     <View style={{ flexDirection: wide ? 'row' : 'column', gap: 16, alignItems: 'flex-start' }}>
       <View style={{ flex: wide ? 1 : undefined, width: '100%', minWidth: 0 }}>
         <View className="rounded-card border border-border bg-surface p-5">
-          <Text className="font-mid text-label text-muted">{testTitle}</Text>
+          <Text className="font-nun-mid text-label text-muted">{testTitle}</Text>
           <View className="mt-2 flex-row flex-wrap items-end gap-x-6 gap-y-2">
             <View>
-              <Text className="font-heavy text-ink" style={{ fontSize: 44, lineHeight: 48 }}>
+              <Text className="font-nun-heavy text-ink" style={{ fontSize: 44, lineHeight: 48 }}>
                 {score}
-                <Text className="font-strong text-muted" style={{ fontSize: 22 }}>/{total}</Text>
+                <Text className="font-nun-strong text-muted" style={{ fontSize: 22 }}>/{total}</Text>
               </Text>
-              <Text className="font-sans text-label text-muted">{L('câu đúng', 'correct')}</Text>
+              <Text className="font-nun text-label text-muted">{L('câu đúng', 'correct')}</Text>
             </View>
             <View>
-              <Text className="font-heavy" style={{ fontSize: 34, lineHeight: 40, color: color.primary }}>~{formatBand(band)}</Text>
-              <Text className="font-sans text-label text-muted">
+              <Text className="font-nun-heavy" style={{ fontSize: 34, lineHeight: 40, color: color.primary }}>~{formatBand(band)}</Text>
+              <Text className="font-nun text-label text-muted">
                 {total === 40 ? L('Band xấp xỉ', 'Approx. band') : L('Band xấp xỉ (quy ra 40 câu)', 'Approx. band (scaled to 40)')}
               </Text>
             </View>
             <View>
-              <Text className="font-strong text-ink" style={{ fontSize: 16 }}>{Math.max(1, Math.round(durationSec / 60))} {L('phút', 'min')}</Text>
-              <Text className="font-sans text-label text-muted">{mode === 'real' ? L('Thi thật', 'Real test') : L('Luyện tập', 'Practice')}</Text>
+              <Text className="font-nun-strong text-ink" style={{ fontSize: 16 }}>{Math.max(1, Math.round(durationSec / 60))} {L('phút', 'min')}</Text>
+              <Text className="font-nun text-label text-muted">{mode === 'real' ? L('Thi thật', 'Real test') : L('Luyện tập', 'Practice')}</Text>
             </View>
           </View>
           {unanswered > 0 ? (
-            <Text className="mt-3 font-sans text-label" style={{ color: '#B26A00' }}>
+            <Text className="mt-3 font-nun text-label" style={{ color: '#B26A00' }}>
               {L(`${unanswered} câu bỏ trống.`, `${unanswered} unanswered.`)}
             </Text>
           ) : null}
@@ -78,13 +78,13 @@ export function ListeningResults({
 
         <View className="mt-4 rounded-card border border-border bg-surface p-4">
           <View className="mb-2 flex-row items-center justify-between">
-            <Text className="font-heavy text-ink" style={{ fontSize: 16 }}>{L('Đối chiếu từng câu', 'Answer review')}</Text>
+            <Text className="font-nun-heavy text-ink" style={{ fontSize: 16 }}>{L('Đối chiếu từng câu', 'Answer review')}</Text>
             <Pressable accessibilityRole="button" onPress={() => setOnlyWrong((v) => !v)} className="rounded-pill border px-3 py-1.5" style={{ borderColor: onlyWrong ? color.primary : color.borderStrong, backgroundColor: onlyWrong ? '#FBF7EE' : '#FFFFFF' }}>
-              <Text className="font-strong" style={{ fontSize: 12, color: onlyWrong ? color.primary : color.muted }}>{L('Chỉ câu sai', 'Wrong only')}</Text>
+              <Text className="font-nun-strong" style={{ fontSize: 12, color: onlyWrong ? color.primary : color.muted }}>{L('Chỉ câu sai', 'Wrong only')}</Text>
             </Pressable>
           </View>
           {shown.length === 0 ? (
-            <Text className="py-4 text-center font-sans text-body text-muted">{L('Không có câu sai. Tuyệt!', 'No wrong answers. Great!')}</Text>
+            <Text className="py-4 text-center font-nun text-body text-muted">{L('Không có câu sai. Tuyệt!', 'No wrong answers. Great!')}</Text>
           ) : (
             shown.map((r) => <ReviewRow key={r.n} r={r} />)
           )}
@@ -106,20 +106,20 @@ function ReviewRow({ r }: { r: QuestionResult }) {
   return (
     <View className="flex-row items-start gap-3 border-t border-border py-2.5">
       <View style={{ minWidth: 34, height: 28, paddingHorizontal: 6, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: tone }}>
-        <Text className="font-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>{label}</Text>
+        <Text className="font-nun-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>{label}</Text>
       </View>
       <View className="min-w-0 flex-1">
-        {r.prompt ? <Text className="font-sans text-label text-muted" numberOfLines={2}>{r.prompt}</Text> : null}
-        <Text className="font-strong" style={{ fontSize: 14, color: r.correct ? '#0F7A38' : '#C0362B', textDecorationLine: r.correct || !r.userText ? 'none' : 'line-through' }}>
+        {r.prompt ? <Text className="font-nun text-label text-muted" numberOfLines={2}>{r.prompt}</Text> : null}
+        <Text className="font-nun-strong" style={{ fontSize: 14, color: r.correct ? '#0F7A38' : '#C0362B', textDecorationLine: r.correct || !r.userText ? 'none' : 'line-through' }}>
           {r.userText || L('(bỏ trống)', '(blank)')}
         </Text>
         {!r.correct ? (
-          <Text className="font-strong" style={{ fontSize: 14, color: '#0F7A38' }}>
+          <Text className="font-nun-strong" style={{ fontSize: 14, color: '#0F7A38' }}>
             {L('Đáp án', 'Answer')}: {r.expectedText}
-            {r.accepted.length ? <Text className="font-sans text-muted" style={{ fontSize: 12 }}> · {L('cũng nhận', 'also accepted')}: {r.accepted.join(', ')}</Text> : null}
+            {r.accepted.length ? <Text className="font-nun text-muted" style={{ fontSize: 12 }}> · {L('cũng nhận', 'also accepted')}: {r.accepted.join(', ')}</Text> : null}
           </Text>
         ) : null}
-        {r.span > 1 ? <Text className="font-sans text-muted" style={{ fontSize: 12 }}>{r.got}/{r.span}</Text> : null}
+        {r.span > 1 ? <Text className="font-nun text-muted" style={{ fontSize: 12 }}>{r.got}/{r.span}</Text> : null}
       </View>
       <Icon name={r.correct ? 'check' : 'close'} size={16} color={tone} strokeWidth={2.4} />
     </View>
@@ -156,7 +156,7 @@ function TranscriptPanel({ sections }: { sections: ListeningSection[] }) {
               className="rounded-pill px-3.5 py-1.5"
               style={{ backgroundColor: i === idx ? SECTION_COLOR[s.n] : '#F5F1E9' }}
             >
-              <Text className="font-strong" style={{ fontSize: 12, color: i === idx ? '#FFFFFF' : color.muted }}>Section {s.n}</Text>
+              <Text className="font-nun-strong" style={{ fontSize: 12, color: i === idx ? '#FFFFFF' : color.muted }}>Section {s.n}</Text>
             </Pressable>
           ))}
         </View>
@@ -165,8 +165,8 @@ function TranscriptPanel({ sections }: { sections: ListeningSection[] }) {
       <AudioCard audio={audio} real={false} speed={speed} onSpeed={setSpeed} title={`Section ${section.n} — ${section.title}`} />
 
       <View className="rounded-card border border-border bg-surface p-4">
-        <Text className="font-heavy text-ink" style={{ fontSize: 16 }}>Transcript</Text>
-        <Text className="mb-2 mt-0.5 font-sans text-label text-muted">
+        <Text className="font-nun-heavy text-ink" style={{ fontSize: 16 }}>Transcript</Text>
+        <Text className="mb-2 mt-0.5 font-nun text-label text-muted">
           {L('Chạm vào một từ để tra nghĩa và lưu vào Sổ từ.', 'Tap any word to look it up and save it to your word book.')}
           {audio.synced ? '' : ` ${L('(Bản này chưa có mốc thời gian nên chữ không chạy theo giọng.)', '(No timestamps yet, so the text will not follow the audio.)')}`}
         </Text>
@@ -186,8 +186,8 @@ function TranscriptPanel({ sections }: { sections: ListeningSection[] }) {
                   <Icon name="play" size={14} color={on ? color.primary : color.subtle} />
                 </Pressable>
                 <View className="min-w-0 flex-1">
-                  {l.speaker ? <Text className="font-strong" style={{ fontSize: 11, color: color.primary, letterSpacing: 0.4 }}>{l.speaker.toUpperCase()}</Text> : null}
-                  <TappableSentence text={l.text} source={L('Listening', 'Listening')} className="font-sans text-body text-ink" />
+                  {l.speaker ? <Text className="font-nun-strong" style={{ fontSize: 11, color: color.primary, letterSpacing: 0.4 }}>{l.speaker.toUpperCase()}</Text> : null}
+                  <TappableSentence text={l.text} source={L('Listening', 'Listening')} className="font-nun text-body text-ink" />
                 </View>
               </View>
             );

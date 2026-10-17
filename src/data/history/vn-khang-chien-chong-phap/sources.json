@@ -216,6 +216,30 @@
     "accessed": "2026-10-02"
   },
   {
+    "id": "src-lemonde-dbp-navarre",
+    "title": "La bataille de Diên Biên Phu",
+    "publisher": "Le Monde",
+    "url": "https://www.lemonde.fr/archives/article/1961/12/14/iv-la-bataille-de-dien-bien-phu_2280473_1819218.html",
+    "kind": "news",
+    "accessed": "2026-10-02"
+  },
+  {
+    "id": "src-lemonde-dbp-airlift",
+    "title": "La bataille de Diên Biên Phu n'était pas au rendez-vous",
+    "publisher": "Le Monde (contemporary report, 15 February 1954)",
+    "url": "https://www.lemonde.fr/archives/article/1954/02/15/i-la-bataille-n-etait-pas-au-rendez-vous_2033988_1819218.html",
+    "kind": "news",
+    "accessed": "2026-10-02"
+  },
+  {
+    "id": "src-nhandan-dbp-air-supply",
+    "title": "Ta diệt toàn bộ quân địch ở phía bắc sân bay và kiểm soát một nửa sân bay",
+    "publisher": "Báo Nhân Dân (reprint of a report published 21–25 April 1954)",
+    "url": "https://dienbienphu.nhandan.vn/ta-diet-toan-bo-quan-dich-o-phia-bac-san-bay-va-kiem-soat-mot-nua-san-bay-476.html",
+    "kind": "primary-document",
+    "accessed": "2026-10-02"
+  },
+  {
     "id": "src-baocaobang-dbp",
     "title": "Chiến dịch lịch sử Điện Biên Phủ",
     "publisher": "Báo Cao Bằng",
@@ -252,6 +276,22 @@
     "title": "Agreement on the Cessation of Hostilities in Viet-Nam, 20 July 1954",
     "publisher": "The Avalon Project, Yale Law School",
     "url": "https://avalon.law.yale.edu/20th_century/inch001.asp",
+    "kind": "primary-document",
+    "accessed": "2026-10-02"
+  },
+  {
+    "id": "src-frus-geneva-status",
+    "title": "Smith–Mendès-France Meeting, Geneva, July 19, Afternoon",
+    "publisher": "U.S. Department of State, Office of the Historian (FRUS 1952–1954, vol. XVI)",
+    "url": "https://history.state.gov/historicaldocuments/frus1952-54v16/d980",
+    "kind": "primary-document",
+    "accessed": "2026-10-02"
+  },
+  {
+    "id": "src-hansard-geneva-declaration",
+    "title": "Indo-China (Geneva Conference Declaration), House of Commons debate, 21 March 1955",
+    "publisher": "UK Parliament, Hansard",
+    "url": "https://hansard.parliament.uk/Commons/1955-03-21/debates/8d955e2c-df49-4652-9383-ba0a5c8c7d86/Indo-China(GenevaConferenceDeclaration)",
     "kind": "primary-document",
     "accessed": "2026-10-02"
   },

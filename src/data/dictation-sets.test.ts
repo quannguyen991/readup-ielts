@@ -11,14 +11,14 @@ import {
   getDictationSet,
 } from './dictation-sets';
 
-test('kho có đủ 50 bộ, 600 câu, id và số thứ tự không trùng', () => {
-  assert.equal(DICTATION_SETS.length, 50);
-  assert.equal(new Set(DICTATION_SETS.map((s) => s.id)).size, 50, 'có id bị trùng');
-  assert.equal(new Set(DICTATION_SETS.map((s) => s.order)).size, 50, 'có số thứ tự bị trùng');
-  assert.equal(dictationSetStats().sentences, 600);
+test('kho có đủ 54 bộ, 648 câu, id và số thứ tự không trùng', () => {
+  assert.equal(DICTATION_SETS.length, 54);
+  assert.equal(new Set(DICTATION_SETS.map((s) => s.id)).size, 54, 'có id bị trùng');
+  assert.equal(new Set(DICTATION_SETS.map((s) => s.order)).size, 54, 'có số thứ tự bị trùng');
+  assert.equal(dictationSetStats().sentences, 648);
 });
 
-test('số thứ tự nguồn phủ kín 1..50, không hụt bài nào', () => {
+test('số thứ tự nguồn phủ kín 1..54, không hụt bài nào', () => {
   const orders = DICTATION_SETS.map((s) => s.order).sort((a, b) => a - b);
   orders.forEach((order, i) => {
     assert.equal(order, i + 1, `thiếu bài số ${i + 1}`);
@@ -95,7 +95,7 @@ test('mỗi bộ đều có tiêu đề, mô tả và gợi ý giọng', () => {
 });
 
 test('lọc theo trình độ và chủ đề thu hẹp đúng kho', () => {
-  assert.equal(filterDictationSets().length, 50);
+  assert.equal(filterDictationSets().length, 54);
 
   for (const level of DICTATION_SET_LEVELS) {
     const got = filterDictationSets({ level });

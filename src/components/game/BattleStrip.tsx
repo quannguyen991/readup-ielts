@@ -254,7 +254,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
       <View
         ref={box}
         onLayout={(e) => setWidth(Math.round(e.nativeEvent.layout.width))}
-        style={{ height: 152, borderRadius: 20, overflow: 'hidden', backgroundColor: '#17123A', ...(shake ? anim(shake, 420) : null) }}
+        style={{ height: 152, borderRadius: 20, overflow: 'hidden', backgroundColor: '#FFFDF7', ...(shake ? anim(shake, 420) : null) }}
         {...MOVE}
       >
         <Backdrop tint={enemy.color} />
@@ -391,7 +391,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
           <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, maxWidth: ENEMY_BOX }}>
             {enemy.boss ? (
               <View style={{ borderRadius: 4, paddingHorizontal: 4, backgroundColor: '#DC2626' }}>
-                <Text className="font-heavy" style={{ fontSize: 9, letterSpacing: 1, color: '#FFFFFF' }}>
+                <Text className="font-heavy" style={{ fontSize: 9, letterSpacing: 1, color: '#2A1808' }}>
                   BOSS
                 </Text>
               </View>
@@ -474,7 +474,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
       </View>
 
       {bag ? (
-        <View style={{ marginTop: 8, borderRadius: 16, backgroundColor: '#1B1540', padding: 10 }}>
+        <View style={{ marginTop: 8, borderRadius: 16, backgroundColor: '#FFFDF7', padding: 10 }}>
           <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 8 }}>
             {ITEM_ORDER.map((k) => (
               <Pressable
@@ -486,7 +486,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               >
                 <Text style={{ fontSize: 22 }}>{ITEMS[k].glyph}</Text>
                 <View style={{ flex: 1 }}>
-                  <Text className="font-strong" style={{ fontSize: 13, color: '#FFFFFF' }}>
+                  <Text className="font-strong" style={{ fontSize: 13, color: '#2A1808' }}>
                     {itemKindName(k, ITEMS[k].name, locale)} <Text style={{ color: GOLD }}>×{items[k] ?? 0}</Text>
                   </Text>
                   <Text className="font-sans" style={{ fontSize: 12, color: 'rgba(255,255,255,0.68)' }}>
@@ -504,7 +504,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
               style={{ flexDirection: 'row', alignItems: 'center', gap: 6, borderRadius: 10, paddingHorizontal: 10, paddingVertical: 6, backgroundColor: 'rgba(255,255,255,0.07)' }}
             >
               <Text style={{ fontSize: 13 }}>{sound ? '🔊' : '🔇'}</Text>
-              <Text className="font-semi" style={{ fontSize: 12, color: '#FFFFFF' }}>
+              <Text className="font-semi" style={{ fontSize: 12, color: '#2A1808' }}>
                 {sound ? L('Âm thanh: bật', 'Sound: on') : L('Âm thanh: tắt', 'Sound: off')}
               </Text>
             </Pressable>
@@ -529,7 +529,7 @@ function Strip({ className, step, charge }: { className?: string; step?: StripSt
 function Backdrop({ tint }: { tint: string }) {
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0 }}>
-      <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: '#1D1650' }} />
+      <View style={{ position: 'absolute', left: 0, top: 0, right: 0, bottom: 0, backgroundColor: '#FFFDF7' }} />
       <View style={{ position: 'absolute', left: 0, right: 0, top: 50, bottom: 0, backgroundColor: '#614B24' }} />
       <View style={{ position: 'absolute', left: 0, right: 0, top: 78, bottom: 0, backgroundColor: '#72592E' }} />
       <Svg width="100%" height="100%" viewBox="0 0 240 68" preserveAspectRatio="xMidYMax slice" {...CRISP} style={{ position: 'absolute', left: 0, top: 0 }}>
@@ -634,7 +634,7 @@ function HudButton({ label, hotkey, glyph, owl, count, onPress, active, dim, a11
     >
       {owl ? <PixelSprite name="owl" size={18} color="#A16207" /> : <Text style={{ fontSize: 14 }}>{glyph}</Text>}
       {label ? (
-        <Text className="font-semi" style={{ fontSize: 12, color: '#FFFFFF' }}>
+        <Text className="font-semi" style={{ fontSize: 12, color: '#2A1808' }}>
           {label}
         </Text>
       ) : null}
@@ -709,7 +709,7 @@ function CenterFloat({ e }: { e: FxEvent }) {
   if (!text) return null;
   return (
     <View pointerEvents="none" style={{ position: 'absolute', left: 8, right: 8, top: 66, zIndex: 4, alignItems: 'center', ...anim('rg-float', text.ms) }}>
-      <View style={{ borderRadius: 10, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: 'rgba(15,10,40,0.82)' }}>
+      <View style={{ borderRadius: 10, paddingHorizontal: 10, paddingVertical: 4, backgroundColor: 'rgba(255, 253, 247, 0.96)' }}>
         <Text className="font-heavy" style={{ fontSize: 13, color: text.c }} numberOfLines={2}>
           {text.t}
         </Text>

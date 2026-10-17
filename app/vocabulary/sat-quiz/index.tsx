@@ -26,7 +26,7 @@ const LEVEL_EN: Record<number, { name: string; task: string }> = {
 };
 
 const GROUP_LABEL_EN: Record<string, string> = {
-  verbal: 'SAT Verbal · by meaning topic',
+  verbal: 'SAT Verbal · vocabulary and reading',
   math: 'SAT Math · question terms',
 };
 

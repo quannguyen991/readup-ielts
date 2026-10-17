@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Platform, Text, View } from 'react-native';
+import { Platform, ScrollView, Text, View } from 'react-native';
 
 import { HoverGlossText, type InlineGloss, type WordPick } from '@/components/reader/HoverGloss';
 import { useL } from '@/i18n/useL';
@@ -8,6 +8,7 @@ import { readingFont } from '@/lib/readingFonts';
 import type { DisplayLang, Scene } from '@/services/history/types';
 
 import { Card, Chip, Eyebrow, H, pickLang } from './ui';
+import { historyPoster } from './posterTheme';
 
 const WEB = Platform.OS === 'web';
 
@@ -47,6 +48,8 @@ export function SceneReader({
   playingScene,
   evidenceParagraph,
   onWord,
+  immersive = false,
+  bodyMaxHeight,
 }: {
   scene: Scene;
   total: number;
@@ -58,82 +61,107 @@ export function SceneReader({
   playingScene: boolean;
   evidenceParagraph: string | null;
   onWord: (paragraphIndex: number) => (p: WordPick) => void;
+  /** Tờ giấy kính nổi trên tranh toàn màn hình. */
+  immersive?: boolean;
+  /** Giới hạn riêng vùng đoạn văn để phần đầu cảnh và nút nghe luôn ở trong tầm tay. */
+  bodyMaxHeight?: number;
 }) {
   const { L } = useL();
   const glosses = useMemo(() => sceneGlosses(scene), [scene]);
   const showEn = lang !== 'vi';
   const showVi = lang !== 'en';
+  const paragraphs = scene.paragraphs.map((p, i) => {
+    const hl = playingParagraph === p.id;
+    const ev = evidenceParagraph === p.id;
+    return (
+      <View
+        key={p.id}
+        nativeID={`hp-${p.id}`}
+        style={[
+          {
+            marginTop: 8,
+            paddingVertical: 10,
+            paddingLeft: 14,
+            paddingRight: 10,
+            borderRadius: 12,
+            borderLeftWidth: 3,
+              borderLeftColor: ev ? (immersive ? historyPoster.gold : '#E0A800') : hl || playingScene ? (immersive ? historyPoster.red : H.accent) : 'transparent',
+              backgroundColor: ev ? (immersive ? 'rgba(244,184,35,.34)' : '#FFF6D6') : hl ? (immersive ? 'rgba(244,184,35,.18)' : H.tint) : 'transparent',
+            gap: 8,
+          },
+          WEB ? ({ transition: 'background-color .25s, border-color .25s' } as object) : null,
+        ]}
+      >
+        {showEn ? (
+          <HoverGlossText
+            text={p.en}
+            bundled={glosses}
+            fontFamily={readingFont.literata}
+            fontSize={fontSize}
+            lineHeight={fontSize * 1.7}
+            color={immersive ? historyPoster.ink : H.body}
+            onWordPress={onWord(i)}
+          />
+        ) : null}
+        {showVi ? (
+          <Rich
+            text={p.vi}
+            style={{
+              fontFamily: readingFont.sans,
+              fontSize: showEn ? fontSize - 2 : fontSize,
+              lineHeight: (showEn ? fontSize - 2 : fontSize) * 1.65,
+              color: immersive ? historyPoster.olive : showEn ? H.muted : H.body,
+            }}
+          />
+        ) : null}
+      </View>
+    );
+  });
 
   return (
-    <Card id="history-reader" style={{ padding: 0, overflow: 'hidden' }}>
+    <Card
+      id="history-reader"
+      style={{
+        padding: 0,
+        overflow: 'hidden',
+        ...(immersive
+          ? {
+              borderRadius: 4,
+              backgroundColor: historyPoster.cream,
+              borderColor: historyPoster.deepRed,
+              borderLeftWidth: 12,
+              borderLeftColor: historyPoster.red,
+              ...(WEB ? ({ backdropFilter: 'none', boxShadow: '10px 10px 0 rgba(11,19,12,.55)' } as object) : {}),
+            }
+          : {}),
+      }}
+    >
       {playingScene ? <View accessibilityLabel={L('Đang thuyết minh cảnh này', 'Narrating this scene')} style={{ height: 3, backgroundColor: H.accent }} /> : null}
-      <View style={{ padding: 20, paddingBottom: 8, gap: 10 }}>
+      <View style={{ padding: immersive ? 18 : 20, paddingBottom: 8, gap: 10 }}>
         <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: 8 }}>
-          <Eyebrow>{`${L('Cảnh', 'Scene')} ${scene.n}/${total}`}</Eyebrow>
-          <Chip label={pickLang(lang, scene.dateLabel.vi, scene.dateLabel.en)} tone="accent" />
-          {scene.periodNote ? <Chip label={pickLang(lang, scene.periodNote.vi, scene.periodNote.en)} tone="warn" /> : null}
-          {playingScene ? <Chip label={L('Đang thuyết minh', 'Now narrating')} tone="good" /> : null}
+          <Eyebrow poster={immersive}>{`${L('Cảnh', 'Scene')} ${scene.n}/${total}`}</Eyebrow>
+          <Chip poster={immersive} label={pickLang(lang, scene.dateLabel.vi, scene.dateLabel.en)} tone="accent" />
+          {scene.periodNote ? <Chip poster={immersive} label={pickLang(lang, scene.periodNote.vi, scene.periodNote.en)} tone="warn" /> : null}
+          {playingScene ? <Chip poster={immersive} label={L('Đang thuyết minh', 'Now narrating')} tone="good" /> : null}
         </View>
-        <Text accessibilityRole="header" style={{ fontFamily: readingFont.sansHeavy, fontSize: 28, lineHeight: 34, letterSpacing: -0.6, color: H.ink }}>
+        <Text accessibilityRole="header" style={{ fontFamily: readingFont.display, fontWeight: '700', fontSize: immersive ? 30 : 29, lineHeight: immersive ? 36 : 36, letterSpacing: -0.45, color: immersive ? historyPoster.deepRed : H.ink }}>
           {pickLang(lang, scene.titleVi, scene.titleEn)}
         </Text>
-        {lang === 'both' ? <Text style={{ fontFamily: readingFont.literata, fontStyle: 'italic', fontSize: 17, lineHeight: 24, color: H.muted }}>{scene.titleEn}</Text> : null}
-        <Text style={{ fontFamily: readingFont.sansMedium, fontSize: 13.5, lineHeight: 20, color: H.muted }}>
+        {lang === 'both' ? <Text style={{ fontFamily: readingFont.literata, fontStyle: 'italic', fontSize: 17, lineHeight: 24, color: immersive ? historyPoster.olive : H.muted }}>{scene.titleEn}</Text> : null}
+        <Text style={{ fontFamily: readingFont.sansMedium, fontSize: 13.5, lineHeight: 20, color: immersive ? historyPoster.red : H.muted }}>
           {L('Địa điểm: ', 'Place: ')}
           {pickLang(lang, scene.place.vi, scene.place.en)}
           {scene.place.modernNote ? ` — ${pickLang(lang, scene.place.modernNote.vi, scene.place.modernNote.en)}` : ''}
         </Text>
       </View>
 
-      <View style={{ paddingHorizontal: 12, paddingBottom: 16 }}>
-        {scene.paragraphs.map((p, i) => {
-          const hl = playingParagraph === p.id;
-          const ev = evidenceParagraph === p.id;
-          return (
-            <View
-              key={p.id}
-              nativeID={`hp-${p.id}`}
-              style={[
-                {
-                  marginTop: 8,
-                  paddingVertical: 10,
-                  paddingLeft: 14,
-                  paddingRight: 10,
-                  borderRadius: 12,
-                  borderLeftWidth: 3,
-                  borderLeftColor: ev ? '#E0A800' : hl || playingScene ? H.accent : 'transparent',
-                  backgroundColor: ev ? '#FFF6D6' : hl ? H.tint : 'transparent',
-                  gap: 8,
-                },
-                WEB ? ({ transition: 'background-color .25s, border-color .25s' } as object) : null,
-              ]}
-            >
-              {showEn ? (
-                <HoverGlossText
-                  text={p.en}
-                  bundled={glosses}
-                  fontFamily={readingFont.literata}
-                  fontSize={fontSize}
-                  lineHeight={fontSize * 1.7}
-                  color={H.body}
-                  onWordPress={onWord(i)}
-                />
-              ) : null}
-              {showVi ? (
-                <Rich
-                  text={p.vi}
-                  style={{
-                    fontFamily: readingFont.sans,
-                    fontSize: showEn ? fontSize - 2 : fontSize,
-                    lineHeight: (showEn ? fontSize - 2 : fontSize) * 1.65,
-                    color: showEn ? H.muted : H.body,
-                  }}
-                />
-              ) : null}
-            </View>
-          );
-        })}
-      </View>
+      {immersive ? (
+        <ScrollView style={{ maxHeight: bodyMaxHeight, flexGrow: 0 }} contentContainerStyle={{ paddingHorizontal: 12, paddingBottom: 16 }} nestedScrollEnabled showsVerticalScrollIndicator={false}>
+          {paragraphs}
+        </ScrollView>
+      ) : (
+        <View style={{ paddingHorizontal: 12, paddingBottom: 16 }}>{paragraphs}</View>
+      )}
     </Card>
   );
 }

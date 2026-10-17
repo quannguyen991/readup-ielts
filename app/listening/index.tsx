@@ -168,10 +168,10 @@ export default function ListeningLibrary() {
     <Screen cat="headphones">
       <View className="flex-row flex-wrap items-center justify-between gap-2">
         <View>
-          <Text className="font-heavy text-ink" style={{ fontSize: 26 }}>
+          <Text className="font-nun-heavy text-ink" style={{ fontSize: 26 }}>
             Listening
           </Text>
-          <Text className="font-sans text-label text-muted">
+          <Text className="font-nun text-label text-muted">
             {L('Nghe một lần, làm như thi thật — hoặc nghe lại để học.', 'Listen once like the real test, or replay to learn.')}
           </Text>
         </View>
@@ -182,7 +182,7 @@ export default function ListeningLibrary() {
             className="flex-row items-center gap-1.5 rounded-pill border border-border bg-surface px-3.5 py-2"
           >
             <Icon name="clock" size={15} color={color.primary} />
-            <Text className="font-strong text-label text-primary-700">{L('Xem lịch sử làm bài', 'View history')}</Text>
+            <Text className="font-nun-strong text-label text-primary-700">{L('Xem lịch sử làm bài', 'View history')}</Text>
           </Pressable>
           {/* Mèo đeo tai nghe ngồi trên nút lịch sử (màn hẹp) */}
           {!wide ? <CatSticker pose="headphones" size={56} style={{ position: 'absolute', right: 12, top: -40 }} /> : null}
@@ -215,12 +215,12 @@ export default function ListeningLibrary() {
             </ScrollView>
           ) : null}
           <View className="mb-3 flex-row flex-wrap items-center justify-between gap-2">
-            <Text className="font-mid text-label text-muted">
-              <Text className="font-heavy text-ink">{items.length}</Text> {L('bài khớp bộ lọc', 'tests match')}
+            <Text className="font-nun-mid text-label text-muted">
+              <Text className="font-nun-heavy text-ink">{items.length}</Text> {L('bài khớp bộ lọc', 'tests match')}
             </Text>
             {filtersOn ? (
               <Pressable onPress={clear} accessibilityRole="button">
-                <Text className="font-strong text-label text-primary-700">{L('Xoá bộ lọc', 'Clear filters')}</Text>
+                <Text className="font-nun-strong text-label text-primary-700">{L('Xoá bộ lọc', 'Clear filters')}</Text>
               </Pressable>
             ) : null}
           </View>
@@ -229,7 +229,7 @@ export default function ListeningLibrary() {
             <Card>
               <View className="items-center py-6">
                 <CatSticker pose="sleep" size={96} />
-                <Text className="mt-3 text-center font-sans text-body text-muted">
+                <Text className="mt-3 text-center font-nun text-body text-muted">
                   {L('Chưa có bài nào khớp. Bỏ bớt một bộ lọc là ra.', 'Nothing matches yet. Remove a filter to see more.')}
                 </Text>
               </View>
@@ -285,14 +285,14 @@ function TestCard({ item, count }: { item: Item; count: number }) {
             <View
               style={{ position: 'absolute', left: 10, top: 10, borderRadius: 999, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: 'rgba(15,23,42,0.55)' }}
             >
-              <Text className="font-strong" style={{ fontSize: 11, color: '#FFFFFF' }}>
+              <Text className="font-nun-strong" style={{ fontSize: 11, color: '#FFFFFF' }}>
                 {L(`${count} lượt làm bài`, `${count} ${count === 1 ? 'attempt' : 'attempts'}`)}
               </Text>
             </View>
           ) : null}
           {!section ? (
             <View style={{ position: 'absolute', left: 10, bottom: 10, borderRadius: 8, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: '#0F1D33' }}>
-              <Text className="font-heavy" style={{ fontSize: 12, color: '#F3D9A0' }}>
+              <Text className="font-nun-heavy" style={{ fontSize: 12, color: '#F3D9A0' }}>
                 Full test
               </Text>
             </View>
@@ -300,24 +300,24 @@ function TestCard({ item, count }: { item: Item; count: number }) {
         </ListeningCover>
         <View className="flex-1 p-3.5">
           {test.cover.category ? (
-            <Text className="mb-1.5 font-strong text-primary-700" style={{ fontSize: 11 }}>
+            <Text className="mb-1.5 font-nun-strong text-primary-700" style={{ fontSize: 11 }}>
               {test.cover.category}
             </Text>
           ) : null}
-          <Text className="font-heavy text-body text-ink" numberOfLines={2}>
+          <Text className="font-nun-heavy text-body text-ink" numberOfLines={2}>
             {test.title}
             {section && test.sections.length > 1 ? ` — ${task ? GROUP_LABEL[task] : section.title}` : ''}
           </Text>
           <View className="mt-2 flex-row flex-wrap gap-1.5">
             {types.map((t) => (
               <View key={t} className="rounded-pill bg-primary-50 px-2.5 py-1">
-                <Text className="font-semi text-primary-700" style={{ fontSize: 11 }}>
+                <Text className="font-nun-mid text-primary-700" style={{ fontSize: 11 }}>
                   {t}
                 </Text>
               </View>
             ))}
           </View>
-          <Text className="mt-2.5 font-mid text-label text-muted">
+          <Text className="mt-2.5 font-nun-mid text-label text-muted">
             {L(`${questions} câu · ~${minutesOf(secs)} phút`, `${questions} questions · ~${minutesOf(secs)} min`)}
           </Text>
         </View>
@@ -335,7 +335,7 @@ function CategoryChip({ label, selected, onPress }: { label: string; selected: b
       className="rounded-pill border px-3.5 py-2"
       style={{ minHeight: 40, borderColor: selected ? color.primary : color.border, backgroundColor: selected ? '#F5EBD8' : '#FFFFFF' }}
     >
-      <Text className="font-strong" style={{ fontSize: 13, color: selected ? color.primary : color.ink }}>{label}</Text>
+      <Text className="font-nun-strong" style={{ fontSize: 13, color: selected ? color.primary : color.ink }}>{label}</Text>
     </Pressable>
   );
 }

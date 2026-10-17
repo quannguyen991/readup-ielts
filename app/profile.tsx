@@ -81,6 +81,33 @@ const PIXEL_FAMILY = [
   },
 ] as const;
 
+/** Màn thay cho hồ sơ khi chưa có tài khoản: chỉ nói cần đăng nhập để làm gì, không lộ dữ liệu nào. */
+function ProfileSignInGate({ loading }: { loading: boolean }) {
+  const { L } = useL();
+  return (
+    <Screen cat="peace">
+      <Card className="mt-4">
+        <View style={{ gap: 12 }}>
+          <Text className="font-heavy text-cardTitle text-ink">{L('Hồ sơ của bạn', 'Your profile')}</Text>
+          {loading ? (
+            <Text className="font-sans text-label text-muted">{L('Đang kiểm tra đăng nhập…', 'Checking your sign-in…')}</Text>
+          ) : (
+            <>
+              <Text className="font-sans text-label text-muted">
+                {L(
+                  'Đăng nhập để lưu hồ sơ, lịch sử học, đồ đã mở và điểm. Dữ liệu sẽ gắn với đúng tài khoản của bạn và đồng bộ giữa các thiết bị.',
+                  'Sign in to save your profile, study history, unlocked items and points. Your data is tied to your own account and syncs across your devices.',
+                )}
+              </Text>
+              <Button label={L('Đăng nhập', 'Sign in')} onPress={() => router.push('/auth/sign-in' as never)} />
+            </>
+          )}
+        </View>
+      </Card>
+    </Screen>
+  );
+}
+
 export default function ProfileScreen() {
   const { L, locale } = useL();
   const wide = useWindowDimensions().width >= 760;
@@ -152,6 +179,10 @@ export default function ProfileScreen() {
   }));
 
   const avatarSize = wide ? 112 : 88;
+
+  // Hồ sơ là dữ liệu của MỘT tài khoản. Chưa đăng nhập thì không hiện số liệu, đồ đạc hay lịch sử nào.
+  const authStatus = useAuthStore((s) => s.status);
+  if (!signedIn) return <ProfileSignInGate loading={authStatus === 'loading'} />;
 
   return (
     <Screen cat="peace">

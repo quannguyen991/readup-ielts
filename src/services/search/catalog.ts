@@ -19,6 +19,7 @@ import { DICTATION_SETS, dictationTopicLabel } from '@/data/dictation-sets';
 import { TRANSLATION_SETS } from '@/data/translation-sets';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { GLOBAL_SUCCESS_DECKS, VOCAB_TOPICS } from '@/data/vocab-topics';
+import { DESTINATION_DECKS } from '@/data/destination-vocab';
 import { WRITING_PROMPTS } from '@/data/writing-repository';
 import { SAT_RW_SKILL_LABEL, SAT_RW_UNITS } from '@/data/sat-rw-repository';
 import { MATH_LESSONS } from '@/data/lessons/math-lessons';
@@ -228,6 +229,7 @@ const EXTRA_PAGES: {
   { key: 'sat-rw-mix', title: { vi: 'Đề trộn SAT Verbal (12 câu)', en: 'Mixed SAT Verbal sets (12 questions)' }, href: '/sat-rw/mix/satrw-mix-01', kind: 'test', exam: 'sat', skill: 'verbal', keywords: ['đề trộn', 'mixed', 'tổng hợp', 'module'] },
   { key: 'dictation', title: { vi: 'Chép chính tả từng câu', en: 'Sentence dictation' }, href: '/sentence/dictation', exam: 'ielts', skill: 'listening', keywords: ['chép chính tả', 'dictation', 'nghe điền'] },
   { key: 'translate', title: { vi: 'Dịch câu Việt → Anh', en: 'Translate sentences (VI → EN)' }, href: '/sentence/translate', exam: 'ielts', skill: 'writing', keywords: ['dịch', 'translate', 'translation', 'viết câu'] },
+  { key: 'news-audio', title: { vi: 'Báo nói', en: 'Spoken news' }, subtitle: { vi: 'Báo tiếng Anh được AI đọc, bấm từng đoạn để nghe', en: 'English news read aloud by AI, tap a paragraph to follow' }, href: '/sentence/news', exam: 'ielts', skill: 'listening', keywords: ['báo', 'bao', 'news', 'tin tức', 'thuyết minh', 'đọc báo', 'AI đọc'] },
   { key: 'audio-library', title: { vi: 'Thư viện nghe VOA', en: 'VOA listening library' }, subtitle: { vi: '251 bài nghe có lời', en: '251 listening pieces with transcripts' }, href: '/sentence/audio', exam: 'ielts', skill: 'listening', keywords: ['voa', 'podcast', 'audio', 'nghe hiểu'] },
   { key: 'video-library', title: { vi: 'Thư viện video', en: 'Video library' }, href: '/sentence/videos', exam: 'ielts', skill: 'listening', keywords: ['video', 'youtube', '6 minute english', 'bbc'] },
   { key: 'write-tests', title: { vi: 'Kho đề Writing', en: 'Writing prompt bank' }, href: '/write/tests', exam: 'ielts', skill: 'writing', keywords: ['đề writing', 'task 1', 'task 2', 'prompts'] },
@@ -518,17 +520,20 @@ function buildEntries(): SearchEntry[] {
   }
 
   // ---- Từ vựng
-  for (const topic of VOCAB_TOPICS) {
+  for (const topic of [...VOCAB_TOPICS, ...DESTINATION_DECKS]) {
+    const course = 'course' in topic ? topic.course : null;
+    const destination = Boolean(course);
+    const courseStr = typeof course === 'string' ? course.toUpperCase() : '';
     out.push({
       id: `vocab:${topic.slug}`,
       kind: 'vocab',
       title: { vi: topic.nameVi, en: topic.name },
       subtitle: {
-        vi: `Từ vựng IELTS theo chủ đề · ${topic.words.length} từ`,
-        en: `IELTS topic vocabulary · ${topic.words.length} words`,
+        vi: destination ? `Destination ${courseStr} · ${topic.words.length} từ` : `Từ vựng IELTS theo chủ đề · ${topic.words.length} từ`,
+        en: destination ? `Destination ${courseStr} · ${topic.words.length} words` : `IELTS topic vocabulary · ${topic.words.length} words`,
       },
-      keywords: [topic.name, topic.nameVi, 'chủ đề', 'topic'],
-      exam: 'ielts',
+      keywords: [topic.name, topic.nameVi, 'chủ đề', 'topic', ...(destination ? ['destination', 'B1', 'B2'] : [])],
+      exam: destination ? 'both' : 'ielts',
       skill: 'vocab',
       href: `/vocabulary/topic/${topic.slug}`,
     });

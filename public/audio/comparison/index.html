@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>So Sánh Giọng Gốc Aoede vs Giọng Clone F5-TTS</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    body { background: #0f172a; color: #f8fafc; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .card { background: #1e293b; border-radius: 24px; border: 1px solid #334155; max-width: 860px; width: 100%; padding: 40px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+    .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    h1 { font-size: 28px; font-weight: 800; margin-bottom: 12px; background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    p.desc { color: #94a3b8; font-size: 15px; line-height: 1.6; margin-bottom: 28px; }
+    .test-box { background: #0f172a; border-radius: 16px; border: 1px solid #334155; padding: 20px; margin-bottom: 32px; }
+    .test-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; font-weight: 700; margin-bottom: 8px; }
+    .test-sentence { font-size: 18px; color: #f1f5f9; font-weight: 600; font-style: italic; line-height: 1.5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .voice-col { background: #0f172a; border-radius: 20px; padding: 24px; border: 2px solid transparent; transition: all 0.3s; position: relative; }
+    .voice-col.orig { border-color: rgba(56, 189, 248, 0.4); }
+    .voice-col.clone { border-color: rgba(168, 85, 247, 0.4); }
+    .tag { font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 12px; }
+    .orig .tag { background: #0284c7; color: #fff; }
+    .clone .tag { background: #9333ea; color: #fff; }
+    .voice-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    .voice-subtitle { font-size: 13px; color: #94a3b8; margin-bottom: 20px; }
+    audio { width: 100%; border-radius: 8px; margin-bottom: 16px; outline: none; }
+    .details { font-size: 13px; color: #64748b; line-height: 1.6; }
+    .details li { margin-bottom: 4px; list-style: none; display: flex; justify-content: space-between; }
+    .details strong { color: #cbd5e1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">🎙️ Band 9 IELTS Voice Evaluation</div>
+    <h1>So Sánh Trực Tiếp: Giọng Gốc Aoede vs Giọng Clone</h1>
+    <p class="desc">Cùng một câu tiếng Anh mẫu IELTS Speaking, được thu và tổng hợp bởi 2 công nghệ khác nhau để bạn thẩm định và đánh giá độ chân thật, ngữ điệu và sắc thái âm thanh.</p>
+
+    <div class="test-box">
+      <div class="test-label">Câu kiểm tra phát âm (Test Sentence):</div>
+      <div class="test-sentence">“Success in IELTS Speaking requires natural fluency, rich vocabulary, and confident pronunciation.”</div>
+    </div>
+
+    <div class="grid">
+      <!-- Voice Gốc -->
+      <div class="voice-col orig">
+        <span class="tag">Bản Gốc 100%</span>
+        <h2 class="voice-title">Giọng Gốc Aoede</h2>
+        <p class="voice-subtitle">Google DeepMind Gemini TTS (24.000 Hz Studio)</p>
+        <audio controls src="/audio/comparison/aoede_original.wav"></audio>
+        <ul class="details">
+          <li><span>Nguồn phát:</span> <strong>Google Cloud AI</strong></li>
+          <li><span>Đặc tính:</span> <strong>Tự nhiên, nhẹ nhàng, nguyên bản</strong></li>
+          <li><span>Tần số lấy mẫu:</span> <strong>24.000 Hz Mono</strong></li>
+        </ul>
+      </div>
+
+      <!-- Voice Clone v1 -->
+      <div class="voice-col clone" style="border-color: rgba(168, 85, 247, 0.4);">
+        <span class="tag" style="background: #9333ea;">Clone v1 (Mặc định)</span>
+        <h2 class="voice-title">Giọng Clone v1</h2>
+        <p class="voice-subtitle">F5-TTS mẫu câu hỏi (nfe=32, cfg=2.0)</p>
+        <audio controls src="/audio/comparison/aoede_cloned.wav"></audio>
+        <ul class="details">
+          <li><span>Chất giọng:</span> <strong>Bắt âm sắc nhưng hơi khô</strong></li>
+          <li><span>Nhấn nhá:</span> <strong>Ngữ điệu câu hỏi, hơi gượng</strong></li>
+        </ul>
+      </div>
+
+      <!-- Voice Clone v2 -->
+      <div class="voice-col clone" style="border-color: rgba(34, 197, 94, 0.4);">
+        <span class="tag" style="background: #16a34a;">Clone v2</span>
+        <h2 class="voice-title">Giọng Clone v2</h2>
+        <p class="voice-subtitle">F5-TTS mẫu câu học thuật (nfe=64, 4.9s - nói hơi nhanh)</p>
+        <audio controls src="/audio/comparison/aoede_cloned_v2.wav"></audio>
+        <ul class="details">
+          <li><span>Nhược điểm:</span> <strong>Tốc độ hơi nhanh, nhịp dồn</strong></li>
+        </ul>
+      </div>
+
+      <!-- Voice Clone v4 - Calm & Dictionary Stress -->
+      <div class="voice-col clone" style="border-color: rgba(234, 179, 8, 0.7); background: rgba(30, 41, 59, 0.9);">
+        <span class="tag" style="background: #eab308; color: #000;">⭐ Clone v4 (Bình Tĩnh & Chuẩn Nhấn)</span>
+        <h2 class="voice-title" style="color: #fde047;">Giọng Clone v4</h2>
+        <p class="voice-subtitle">F5-TTS chậm rãi, nhấn trọng âm từng từ (7.64s ~ 8.81s bản gốc)</p>
+        <audio controls src="/audio/comparison/aoede_cloned_v4_calm.wav"></audio>
+        <ul class="details">
+          <li><span>Tốc độ:</span> <strong>0.70x chậm rãi, bình tĩnh chuẩn từ điển</strong></li>
+          <li><span>Ngắt nghỉ:</span> <strong>Dừng đúng cụm: Speaking... fluency... vocabulary</strong></li>
+          <li><span>Trọng âm:</span> <strong>Nhấn rõ âm tiết chính từng từ</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

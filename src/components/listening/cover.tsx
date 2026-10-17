@@ -76,7 +76,7 @@ export function ListeningCover({
         <View
           style={{ position: 'absolute', left: 10, bottom: 10, borderRadius: 8, paddingHorizontal: 9, paddingVertical: 3, backgroundColor: SECTION_COLOR[section] ?? '#8F6E36' }}
         >
-          <Text className="font-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>
+          <Text className="font-nun-heavy" style={{ fontSize: 12, color: '#FFFFFF' }}>
             Section {section}
           </Text>
         </View>

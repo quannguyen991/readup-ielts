@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, useWindowDimensions, View } from 'react-native';
+import { Image, type ImageSourcePropType, useWindowDimensions, View } from 'react-native';
 import Animated, {
   Easing,
   cancelAnimation,
@@ -13,6 +13,7 @@ import Animated, {
 } from 'react-native-reanimated';
 
 import { CatSticker } from './CatSticker';
+import { useLionSkin } from './lion-skin';
 
 /**
  * ĐÀN MÈO ĐI DẠO — tám con mèo sticker đi ngang một dải phía dưới màn, cả đi sang phải lẫn đi ngược
@@ -26,8 +27,8 @@ import { CatSticker } from './CatSticker';
  * thấy đàn mèo.
  */
 
-/** Sáu khung đi bộ theo thứ tự một chu kỳ. */
-const WALK_FRAMES: number[] = [
+/** Sáu khung đi bộ theo thứ tự một chu kỳ (mèo). */
+const CAT_WALK: ImageSourcePropType[] = [
   require('../../../assets/illustrations/cats/walk-1.png'),
   require('../../../assets/illustrations/cats/walk-2.png'),
   require('../../../assets/illustrations/cats/walk-3.png'),
@@ -35,6 +36,9 @@ const WALK_FRAMES: number[] = [
   require('../../../assets/illustrations/cats/walk-5.png'),
   require('../../../assets/illustrations/cats/walk-6.png'),
 ];
+
+/** Bốn khung đi bộ của Leo (giao diện vàng kim), public/mascot/lion/lion-walk-1..4.png. */
+const LION_WALK: ImageSourcePropType[] = [1, 2, 3, 4].map((n) => ({ uri: `/mascot/lion/lion-walk-${n}.png` }));
 
 const FRAME_MS = 110;
 const STEP_MS = 110;
@@ -68,6 +72,7 @@ const PERCHED = {
  */
 export function WalkingCats({ bottom, left, variant }: { bottom: number; left: number; variant: 'phone' | 'desktop' }) {
   const reduced = useReducedMotion();
+  const frames = useLionSkin() ? LION_WALK : CAT_WALK;
   // Đo bằng cỡ cửa sổ, không dùng onLayout: onLayout có thể đến muộn, hoặc không đến khi trình duyệt
   // đang ẩn, và khi đó đàn mèo không hiện ra.
   const trackWidth = Math.max(0, useWindowDimensions().width - left);
@@ -83,14 +88,14 @@ export function WalkingCats({ bottom, left, variant }: { bottom: number; left: n
   return (
     <View style={{ position: 'absolute', left, right: 0, bottom, height: 72, overflow: 'hidden', zIndex: 30, pointerEvents: 'none' } as never}>
       {WALKERS.map((spec, i) => (
-        <Walker key={i} trackWidth={trackWidth} frame={frame + i} {...spec} />
+        <Walker key={i} trackWidth={trackWidth} frame={frame + i} frames={frames} {...spec} />
       ))}
       {variant === 'desktop' ? <CatSticker pose={perched.pose} size={perched.size} style={{ position: 'absolute', right: perched.right, bottom: 0 }} /> : null}
     </View>
   );
 }
 
-function Walker({ trackWidth, size, duration, delay, dir, frame }: WalkerSpec & { trackWidth: number; frame: number }) {
+function Walker({ trackWidth, size, duration, delay, dir, frame, frames }: WalkerSpec & { trackWidth: number; frame: number; frames: ImageSourcePropType[] }) {
   const progress = useSharedValue(0);
   const bob = useSharedValue(0);
 
@@ -120,7 +125,7 @@ function Walker({ trackWidth, size, duration, delay, dir, frame }: WalkerSpec & 
 
   return (
     <Animated.View style={[{ position: 'absolute', bottom: 0, width: size, height: size, pointerEvents: 'none' } as never, style]}>
-      <Image source={WALK_FRAMES[frame % WALK_FRAMES.length]!} resizeMode="contain" style={{ width: '100%', height: '100%' }} />
+      <Image source={frames[frame % frames.length]!} resizeMode="contain" style={{ width: '100%', height: '100%' }} />
     </Animated.View>
   );
 }

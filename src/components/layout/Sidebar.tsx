@@ -16,6 +16,7 @@ import {
   type NavItem,
   navLabel,
 } from "@/navigation/nav-items";
+import { useIeltsFocusStore } from "@/store/useIeltsFocusStore";
 import { useCityAvailable } from "@/services/city/availability";
 import { usePlan } from "@/store/useBillingStore";
 import { useAuthStore, useDisplayName } from "@/store/useAuthStore";
@@ -52,12 +53,12 @@ import {
  * mỗi 170px nhường lại là thêm một cột chữ cho bài đọc. Nút thu gọn ẩn đi vì
  * ở đây không có gì để mở rộng.
  */
-export function Sidebar({ compact = false, glass = false }: { compact?: boolean; /** Trong suốt, chỉ biểu tượng (màn học có nền cảnh bay). */ glass?: boolean }) {
+export function Sidebar({ compact = false, expanded = false, glass = false }: { compact?: boolean; /** Luôn mở rộng, không có nút thu gọn (khu Speaking). */ expanded?: boolean; /** Trong suốt, chỉ biểu tượng (màn học có nền cảnh bay). */ glass?: boolean }) {
   const pathname = usePathname();
   const activeKey = activeNavKey(pathname);
   const activeParent = parentNavKey(activeKey);
   const stored = useSidebarStore((s) => s.collapsed);
-  const collapsed = compact || stored;
+  const collapsed = compact || (!expanded && stored);
   const toggle = useSidebarStore((s) => s.toggle);
   const { L, locale } = useL();
 
@@ -70,7 +71,8 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
   // Đây chỉ là ẩn/hiện nút; quyền thật nằm ở `src/services/admin/guard.ts`.
   const isAdmin = useAuthStore((s) => s.profile?.role === "admin");
   const desktop = useCityAvailable();
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
+  const ieltsFeatures = useIeltsFocusStore((s) => s.features);
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures);
   const width = collapsed ? SIDEBAR_WIDTH.collapsed : SIDEBAR_WIDTH.expanded;
 
   return (
@@ -195,7 +197,7 @@ export function Sidebar({ compact = false, glass = false }: { compact?: boolean;
         }
       >
         {compact ? null : <LanguageSwitch tone={themeConfig.isDark ? "dark" : "light"} compact={collapsed} />}
-        {compact ? null : (
+        {compact || expanded ? null : (
           <Pressable
             accessibilityRole="button"
             accessibilityLabel={
@@ -266,7 +268,7 @@ function NavRow({
 
   return (
     <View style={{ position: "relative" }}>
-      <Link href={item.href as never} asChild>
+      <Link href={item.href as never} prefetch asChild>
         <Pressable
           accessibilityRole="link"
           accessibilityLabel={label}

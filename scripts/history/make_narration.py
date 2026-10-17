@@ -13,9 +13,9 @@ ROOT = HERE.parents[1]
 args = sys.argv[1:]
 topic, ids = args[0], args[1].split(",")
 opt = lambda n, d=None: args[args.index(n) + 1] if n in args else d
-VOICE = opt("--voice", "Kore")
+VOICE = opt("--voice", "Aoede")
 MODEL = opt("--model", "gemini-3.1-flash-tts-preview")
-KEY = pathlib.Path("D:/Claude/.secrets/google-api.key").read_text().strip()
+KEY = pathlib.Path(opt("--key-file", "D:/Claude/.secrets/google-api.key")).read_text().strip()
 OUT = ROOT / "public" / "history" / topic / "audio" / "en"
 OUT.mkdir(parents=True, exist_ok=True)
 
@@ -144,8 +144,15 @@ for k, sid in enumerate(ids):
         if len(idxs) < 0.7 * (s["last"] - s["first"] + 1):
             ok = False; break
         start = max(0.0, tmap[idxs[0]][0] - offset)
-        end = min(d2, tmap[idxs[-1]][1] - offset + 0.05)
+        end = min(d2, tmap[idxs[-1]][1] - offset)
         sents.append(dict(start=round(start, 2), end=round(end, 2), text=s["text"]))
+    if ok:
+        last_end = 0.0
+        for sentence in sents:
+            if sentence["start"] < last_end - 0.001 or sentence["end"] <= sentence["start"]:
+                ok = False
+                break
+            last_end = sentence["end"]
     (OUT / f"{sid}.sentences.json").write_text(json.dumps(dict(durationSec=round(d2, 1), sentences=sents if ok else []), ensure_ascii=False), encoding="utf-8")
     print(f"  {sid}: {d2:.1f}s, câu có mốc: {len(sents) if ok else 0}")
 (OUT / "_narration-log.json").write_text(json.dumps(log_info, ensure_ascii=False, indent=1), encoding="utf-8")

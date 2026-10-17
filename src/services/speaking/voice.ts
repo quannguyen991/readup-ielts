@@ -3,9 +3,14 @@ import { stopPronounce } from '@/services/audio/pronounce';
 import { useAuthStore } from '@/store/useAuthStore';
 import { currentLocale, pick } from '@/i18n/useL';
 
-const library = createClipLibrary({ sets: ['/audio/speaking/{voice}/'] });
+const library = createClipLibrary({ sets: ['/audio/speaking/{voice}/', '/audio/lines/{voice}/', '/audio/words/{voice}/'] });
 const cache = new Map<string, Blob>();
 let cancelActive: (() => void) | null = null;
+
+/** Dừng câu Aoede đang phát (nếu có). */
+export function stopSpeakWithAoede(): void {
+  cancelActive?.();
+}
 
 /** Aoede for both questions and AI model answers. Microphones wait for onDone. */
 export function speakWithAoede(text: string, opts: { rate?: number; questionId?: string; onDone?: () => void; onError?: (message: string) => void } = {}): () => void {

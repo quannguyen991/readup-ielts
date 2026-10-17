@@ -12,6 +12,7 @@ import { makeChoices, seededRng, shuffled, type StudyWord } from '@/services/voc
 
 export const DUEL_LENGTH = 10;
 export const QUESTION_MS = 10_000;
+export const MAX_DUEL_PLAYERS = 30;
 
 /** Bỏ các ký tự dễ nhìn nhầm (0/O, 1/I/L). */
 const ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
@@ -36,10 +37,10 @@ function hash(text: string): number {
 }
 
 /** Cùng hạt + cùng bộ từ → cùng 10 câu, cùng thứ tự phương án, ở mọi máy. */
-export function buildDuel(words: readonly StudyWord[], seed: string): DuelQuestion[] {
+export function buildDuel(words: readonly StudyWord[], seed: string, length = DUEL_LENGTH): DuelQuestion[] {
   const rand = seededRng(hash(seed));
   return shuffled(words, rand)
-    .slice(0, Math.min(DUEL_LENGTH, words.length))
+    .slice(0, Math.min(words.length, Math.max(0, Math.floor(length))))
     .map((word, i) => {
       const enToVi = i % 2 === 0;
       const { options, correctIndex } = makeChoices(word, words, (w) => (enToVi ? w.meaningVi : w.word), rand);

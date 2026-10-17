@@ -19,17 +19,22 @@ export function SceneTimeline({
   playingId,
   completed,
   onSelect,
+  compact = false,
 }: {
   scenes: Scene[];
   activeId: string;
   playingId: string | null;
   completed: ReadonlySet<string>;
   onSelect: (id: string) => void;
+  /** Phiên bản gọn cho dòng thời gian phủ lên sân khấu ảnh. */
+  compact?: boolean;
 }) {
   const { L, en } = useL();
   const reduced = useReducedMotion();
   const scroller = useRef<ScrollView>(null);
   const xs = useRef<Record<string, number>>({});
+  const nodeWidth = compact ? 84 : 96;
+  const buttonSize = compact ? 44 : 44;
 
   // Giữ nốt đang xem trong tầm nhìn khi đổi cảnh.
   useEffect(() => {
@@ -39,7 +44,7 @@ export function SceneTimeline({
 
   return (
     <View accessibilityRole="tablist" accessibilityLabel={L('Dòng thời gian các cảnh', 'Scene timeline')}>
-      <ScrollView ref={scroller} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingVertical: 6, paddingHorizontal: 4 }}>
+      <ScrollView ref={scroller} horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ paddingVertical: compact ? 2 : 6, paddingHorizontal: 4 }}>
         {scenes.map((s, i) => {
           const on = s.id === activeId;
           const done = completed.has(s.id);
@@ -47,8 +52,8 @@ export function SceneTimeline({
           const label = en ? s.dateLabel.en : s.dateLabel.vi;
           const title = en ? s.titleEn : s.titleVi;
           return (
-            <View key={s.id} onLayout={(e) => (xs.current[s.id] = e.nativeEvent.layout.x)} style={{ width: 96, alignItems: 'center' }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', height: 44 }}>
+            <View key={s.id} onLayout={(e) => (xs.current[s.id] = e.nativeEvent.layout.x)} style={{ width: nodeWidth, alignItems: 'center' }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', width: '100%', height: buttonSize }}>
                 <View style={{ flex: 1, height: 2, backgroundColor: i === 0 ? 'transparent' : H.rule }} />
                 <Pressable
                   accessibilityRole="tab"
@@ -56,9 +61,9 @@ export function SceneTimeline({
                   accessibilityLabel={`${L('Cảnh', 'Scene')} ${s.n}: ${title}`}
                   onPress={() => onSelect(s.id)}
                   style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 22,
+                    width: buttonSize,
+                    height: buttonSize,
+                    borderRadius: buttonSize / 2,
                     alignItems: 'center',
                     justifyContent: 'center',
                     backgroundColor: on ? H.accent : done ? H.accentSoft : H.paper,
@@ -77,7 +82,7 @@ export function SceneTimeline({
                 </Pressable>
                 <View style={{ flex: 1, height: 2, backgroundColor: i === scenes.length - 1 ? 'transparent' : H.rule }} />
               </View>
-              <Text numberOfLines={2} style={{ marginTop: 2, textAlign: 'center', fontFamily: on ? readingFont.sansBold : readingFont.sansMedium, fontSize: 12, lineHeight: 16, color: on ? H.ink : H.muted, paddingHorizontal: 4 }}>
+              <Text numberOfLines={2} style={{ marginTop: 2, textAlign: 'center', fontFamily: on ? readingFont.sansBold : readingFont.sansMedium, fontSize: compact ? 11 : 12, lineHeight: compact ? 14 : 16, color: on ? H.ink : H.muted, paddingHorizontal: 4 }}>
                 {label}
               </Text>
             </View>

@@ -8,6 +8,7 @@ import { ChartFigure } from '@/components/writing/ChartFigure';
 import { matchesWritingFilter } from '@/lib/writing/prompt-filter';
 import { PlanNudge } from '@/components/billing/PlanUi';
 import { Grid } from '@/components/layout/Grid';
+import { IeltsFocusPicker } from '@/components/practice/IeltsFocusPicker';
 import { HeroStat, LightHero } from '@/components/layout/LightHero';
 import { CatSticker } from '@/components/mascot/CatSticker';
 import { GLASS, GOLD, GOLD_BUTTON } from '@/components/layout/phone-theme';
@@ -337,6 +338,9 @@ export default function PracticeScreen() {
 
   return (
     <Screen cat="write">
+      <View className="mb-5">
+        <IeltsFocusPicker />
+      </View>
       {phone ? (
         <Appear>
           <PhoneHeroPanel

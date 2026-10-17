@@ -15,6 +15,15 @@ import {
   PlusJakartaSans_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/plus-jakarta-sans';
+// Be Vietnam Pro: phông chính của app (các class font-sans/mid/semi/strong/heavy, xem tailwind.config.js).
+// Thiết kế riêng cho tiếng Việt, dấu rõ và đều ở mọi cỡ chữ.
+// Nạp từng trọng lượng theo đường dẫn riêng: gói gom tất cả (index gốc) kéo theo cả biến thể
+// Italic có file thiếu trong bản 0.4.1, làm Metro lỗi khi build.
+import { BeVietnamPro_400Regular } from '@expo-google-fonts/be-vietnam-pro/400Regular';
+import { BeVietnamPro_500Medium } from '@expo-google-fonts/be-vietnam-pro/500Medium';
+import { BeVietnamPro_600SemiBold } from '@expo-google-fonts/be-vietnam-pro/600SemiBold';
+import { BeVietnamPro_700Bold } from '@expo-google-fonts/be-vietnam-pro/700Bold';
+import { BeVietnamPro_800ExtraBold } from '@expo-google-fonts/be-vietnam-pro/800ExtraBold';
 // Nunito: font bo tròn cho giao diện trang chủ kiểu nhân vật (xem src/components/cute-home).
 import {
   Nunito_400Regular,
@@ -27,7 +36,7 @@ import {
 import { AppShell } from '@/components/layout/AppShell';
 import { MemberGate } from '@/components/access/MemberGate';
 import { GameFxLayer } from '@/components/game/GameFxLayer';
-// import { BreakLayer } from '@/components/break/BreakLayer'; // tạm tắt đếm giờ nghỉ
+import { BreakLayer } from '@/components/break/BreakLayer';
 import { ChiikawaReact } from '@/components/chiikawa/ChiikawaReact';
 import { ChiikawaTapFx } from '@/components/chiikawa/ChiikawaTapFx';
 import { PageTransition } from '@/components/motion/Motion';
@@ -70,6 +79,11 @@ export default function RootLayout() {
   // keep the interface usable with platform fallbacks and swap to branded fonts
   // as soon as useFonts finishes loading them.
   useFonts({
+    BeVietnamPro_400Regular,
+    BeVietnamPro_500Medium,
+    BeVietnamPro_600SemiBold,
+    BeVietnamPro_700Bold,
+    BeVietnamPro_800ExtraBold,
     PlusJakartaSans_400Regular,
     PlusJakartaSans_500Medium,
     PlusJakartaSans_600SemiBold,
@@ -110,7 +124,7 @@ export default function RootLayout() {
           </PageTransition>
         </AppShell>
         <GameFxLayer />
-        {/* <BreakLayer /> tạm tắt đếm giờ nghỉ */}
+        <BreakLayer />
         <ChiikawaReact />
         <ChiikawaTapFx />
       </QueryClientProvider>

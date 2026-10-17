@@ -1,0 +1,13 @@
+import { masterBlueprint } from '@/world/master-blueprint';
+import { World } from '@/world/raster';
+import { components } from '@/world/nav';
+const bp = masterBlueprint;
+console.log('chunks', bp.chunksX, bp.chunksY, 'roads', bp.roads.length, 'lots', bp.lots.length, 'rivers', bp.rivers.length, 'bridges', bp.bridges.length, 'portals', bp.portals.length);
+const w = new World(bp);
+const { sizes } = components(w);
+const big = [...sizes.values()].sort((a, b) => b - a);
+console.log('W,H', w.W, w.H, 'walk comps', big.length, 'largest', big.slice(0, 5));
+const counts: Record<number, number> = {};
+for (let i = 0; i < w.terrain.length; i++) counts[w.terrain[i]!] = (counts[w.terrain[i]!] ?? 0) + 1;
+console.log('terrain counts', counts);
+console.log('objects', w.objects.length);

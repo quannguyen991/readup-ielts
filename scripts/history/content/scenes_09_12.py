@@ -34,6 +34,23 @@ SRC_EXTRA = {
     "src-hvtc-10-10": dict(
         title="Giải phóng Thủ đô (10/10/1954) – mốc son trên chặng đường hành quân lịch sử của quân và dân Hà Nội", publisher="Học viện Tài chính",
         url="https://hvtc.edu.vn/Giai--phong-Thu-do-10101954--moc-son-tren-chang-duong-hanh-quan-lich-su-cua-quan-va-dan-Ha-Noi_3164.html", kind="news"),
+    "src-lemonde-dbp-airlift": dict(
+        title="La bataille de Diên Biên Phu n'était pas au rendez-vous", publisher="Le Monde (contemporary report, 15 February 1954)",
+        url="https://www.lemonde.fr/archives/article/1954/02/15/i-la-bataille-n-etait-pas-au-rendez-vous_2033988_1819218.html", kind="news"),
+    "src-nhandan-dbp-air-supply": dict(
+        title="Ta diệt toàn bộ quân địch ở phía bắc sân bay và kiểm soát một nửa sân bay",
+        publisher="Báo Nhân Dân (reprint of a report published 21–25 April 1954)",
+        url="https://dienbienphu.nhandan.vn/ta-diet-toan-bo-quan-dich-o-phia-bac-san-bay-va-kiem-soat-mot-nua-san-bay-476.html", kind="primary-document"),
+    "src-lemonde-dbp-navarre": dict(
+        title="La bataille de Diên Biên Phu", publisher="Le Monde",
+        url="https://www.lemonde.fr/archives/article/1961/12/14/iv-la-bataille-de-dien-bien-phu_2280473_1819218.html", kind="news"),
+    "src-frus-geneva-status": dict(
+        title="Smith–Mendès-France Meeting, Geneva, July 19, Afternoon", publisher="U.S. Department of State, Office of the Historian (FRUS 1952–1954, vol. XVI)",
+        url="https://history.state.gov/historicaldocuments/frus1952-54v16/d980", kind="primary-document"),
+    "src-hansard-geneva-declaration": dict(
+        title="Indo-China (Geneva Conference Declaration), House of Commons debate, 21 March 1955",
+        publisher="UK Parliament, Hansard",
+        url="https://hansard.parliament.uk/Commons/1955-03-21/debates/8d955e2c-df49-4652-9383-ba0a5c8c7d86/Indo-China(GenevaConferenceDeclaration)", kind="primary-document"),
 }
 
 S9 = dict(
@@ -136,14 +153,17 @@ S10 = dict(
     claims=[
         dict(id="c10-1", paragraph=0, textEn="On 3 December 1953 Navarre decided to accept battle at Điện Biên Phủ; the post was meant to block the way into Upper Laos.",
              textVi="3/12/1953 Navarre quyết định chấp nhận chiến đấu ở Điện Biên Phủ; vị trí này nhằm chặn đường vào Thượng Lào.",
-             date="1953-12-03", places=["Điện Biên Phủ"], people=["Henri Navarre"], status="single-source", independentSources=1,
-             notes="Nguồn đọc: bài của Học viện Quốc phòng; các bài khác nhắc ý 'chặn Thượng Lào' nhưng chưa đối chiếu ngày 3/12 độc lập.",
-             sources=[dict(id="src-nda-dbp", locator="đoạn 'Ngày 3 tháng 12 năm 1953, Navarre đã quyết định…'", supports="Navarre chấp nhận chiến đấu; chỉ thị 2/11/1953 nhằm thiết lập điểm ngăn chặn bảo vệ Thượng Lào")]),
+             date="1953-12-03", places=["Điện Biên Phủ"], people=["Henri Navarre"], status="verified", independentSources=2,
+             notes="Ngày 3/12 và quyết định chấp nhận trận đánh được đối chiếu giữa bài của Học viện Quốc phòng và ghi chép của Le Monde dẫn lại văn bản Navarre; mục tiêu chặn đường vào Thượng Lào được nêu trong nguồn Học viện Quốc phòng.",
+             sources=[dict(id="src-nda-dbp", locator="đoạn 'Ngày 3 tháng 12 năm 1953, Navarre đã quyết định…'", supports="Navarre chấp nhận chiến đấu; chỉ thị 2/11/1953 nhằm thiết lập điểm ngăn chặn bảo vệ Thượng Lào"),
+                      dict(id="src-lemonde-dbp-navarre", locator="ghi chú 4, trích văn bản Navarre ngày 3/12/1953 về quyết định chấp nhận trận đánh ở Tây Bắc và tập trung phòng thủ tại Điện Biên Phủ", supports="ngày và quyết định chấp nhận trận đánh")]),
         dict(id="c10-2", paragraph=0, textEn="The French garrison was a cluster of strongpoints supplied mainly by air.",
              textVi="Quân Pháp ở đó là cụm cứ điểm được tiếp tế chủ yếu bằng đường không.",
-             date="1953-11/1954-05", places=["Điện Biên Phủ"], people=[], status="single-source", independentSources=1,
-             notes="Chỉ xác nhận 'cụm cứ điểm' trong nguồn đã đọc; ý 'tiếp tế chủ yếu bằng đường không' là kiến thức chung nhưng chưa trích nguồn riêng — cần bổ sung nếu muốn nâng lên verified.",
-             sources=[dict(id="src-nda-dbp", locator="đoạn mô tả lực lượng quân Pháp và các phân khu", supports="tập đoàn cứ điểm nhiều phân khu; sân bay Hồng Cúm")]),
+             date="1953-11/1954-05", places=["Điện Biên Phủ"], people=[], status="verified", independentSources=2,
+             notes="Le Monde tường thuật đương thời về cầu hàng không, các đợt thả dù/hạ cánh và các chuyến tiếp tế; bài Nhân Dân đăng lại tư liệu tháng 4/1954 gọi máy bay là đường tiếp tế duy nhất lúc đó. Học viện Quốc phòng hỗ trợ mô tả cụm cứ điểm.",
+             sources=[dict(id="src-nda-dbp", locator="đoạn mô tả lực lượng quân Pháp và các phân khu", supports="tập đoàn cứ điểm nhiều phân khu; sân bay Hồng Cúm"),
+                      dict(id="src-lemonde-dbp-airlift", locator="mục 'Pont aérien et Vie souterraine': sân bay, cầu hàng không từ Hà Nội, thả dù/hạ cánh và các chuyến tiếp tế", supports="tiếp tế chủ yếu bằng đường không; mạng lưới cứ điểm"),
+                      dict(id="src-nhandan-dbp-air-supply", locator="đoạn 'Sau đó bộ đội phòng không và cao xạ của ta tiếp tục chặn đường tiếp tế duy nhất bằng máy bay của địch'", supports="đến giữa tháng 4/1954, đường tiếp tế duy nhất còn lại của Pháp là bằng máy bay")]),
         dict(id="c10-3", paragraph=1, textEn="The campaign began on 13 March 1954 and ran in three phases; phase one (13–17 March) took the northern strongpoints such as Him Lam and Độc Lập; phase three ran from 1 to 7 May.",
              textVi="Chiến dịch bắt đầu 13/3/1954, ba đợt; đợt 1 (13–17/3) chiếm Him Lam, Độc Lập…; đợt 3 từ 1 đến 7/5.",
              date="1954-03-13/1954-05-07", places=["Điện Biên Phủ"], people=[], status="verified", independentSources=2, notes="Không nêu số thương vong.",
@@ -161,8 +181,7 @@ S10 = dict(
                     period="Đầu 1954 (trước khi giao tranh)", viewpoint="Toàn cảnh từ sườn núi, người rất nhỏ", architecture="Công sự đất, lán, không nhà hiện đại",
                     clothing="Không cần nhân vật rõ nét", objects="Đường băng đất, dây thép gai, hầm hào, ruộng, sương",
                     mustAvoid="Giao tranh, thi thể, lửa, cờ, chữ, xe tăng/máy bay chi tiết sai niên đại"),
-    openIssues=["Ý 'tiếp tế chủ yếu bằng đường không' chưa có trích dẫn riêng — cần bổ sung nguồn trước khi nâng lên verified.",
-                "Ngày 3/12/1953 mới có một nguồn độc lập."],
+    openIssues=[],
 )
 
 S11 = dict(
@@ -218,9 +237,10 @@ S11 = dict(
              sources=[dict(id="src-vassar-final-declaration", locator="điều 6 và điều 7", supports="đường phân định tạm thời; tổng tuyển cử tháng 7/1956")]),
         dict(id="c11-5", paragraph=1, textEn="The Final Declaration was not signed by the delegations.",
              textVi="Tuyên bố cuối cùng không được các đoàn ký.",
-             date="1954-07-21", places=["Geneva"], people=[], status="single-source", independentSources=1,
-             notes="Chỉ xác nhận từ nguồn thứ cấp (Wikipedia: 'unsigned Final Declaration'); cần nguồn học thuật/FRUS để nâng lên verified.",
-             sources=[dict(id="src-wiki-geneva-1954", locator="đoạn nói về ICC và Final Declaration", supports="'The unsigned Final Declaration'")]),
+             date="1954-07-21", places=["Geneva"], people=[], status="verified", independentSources=2,
+             notes="Được đối chiếu bằng điện tín đương thời của đoàn Mỹ (FRUS, 19/7/1954), dự kiến đây là văn kiện của hội nghị chứ không phải hiệp định có chữ ký, và câu trả lời tại Quốc hội Anh ngày 21/3/1955 gọi đây là tuyên bố không phải hiệp ước hay thỏa thuận đã ký.",
+             sources=[dict(id="src-frus-geneva-status", locator="đoạn 2 của điện tín ngày 19/7/1954: 'only conference document and not signed agreement'", supports="tuyên bố được dự kiến là văn kiện hội nghị, không phải hiệp định có chữ ký"),
+                      dict(id="src-hansard-geneva-declaration", locator="câu trả lời của Bộ Ngoại giao trong phiên Hạ viện 21/3/1955", supports="Tuyên bố cuối cùng không phải hiệp ước hay thỏa thuận đã ký; không có các bên tham gia theo nghĩa pháp lý chặt")]),
     ],
     imageBrief=dict(setting="Phòng họp ngoại giao lớn năm 1954 với bàn dài, các đoàn ngồi hai bên, cửa sổ nhìn ra hồ và núi",
                     period="Giơnevơ, 1954", viewpoint="Từ cuối phòng, người nhỏ vô danh, không nhận ra mặt", architecture="Sảnh họp kiểu châu Âu giữa thế kỷ 20",

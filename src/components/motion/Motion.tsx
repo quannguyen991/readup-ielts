@@ -32,14 +32,20 @@ import Animated, {
 
 /** Thời lượng chuẩn, dùng chung để mọi thứ trong app cùng một nhịp. */
 export const MOTION = {
-  page: 180,
-  item: 220,
-  press: 110,
-  /** Khoảng lệch giữa hai phần tử liền nhau khi xếp lớp. */
-  stagger: 40,
-  /** Trần tổng độ trễ khi xếp lớp. */
-  staggerCap: 240,
+  /*
+    Chuyển trang và chuyển tab phải CẢM GIÁC tức thì: nội dung mới hiện gần như
+    ngay (xem `ENTER_FROM`), không còn chờ mờ dần từ số 0 rồi mới thấy chữ.
+  */
+  page: 110,
+  item: 130,
+  press: 90,
+  /** Không xếp lớp theo thời gian nữa: mọi thẻ trong một lượt hiện cùng lúc. */
+  stagger: 0,
+  staggerCap: 0,
 } as const;
+
+/** Độ mờ lúc bắt đầu. Khác 0 để không có một khoảng trắng trơn giữa hai màn. */
+const ENTER_FROM = 0.45;
 
 /**
  * Chạy 0 → 1 một lần khi gắn vào cây, rồi trả ra style mờ dần + nhích lên.
@@ -49,7 +55,7 @@ export const MOTION = {
  */
 function useEnter(delay: number, duration: number, lift: number) {
   const reduced = useReducedMotion();
-  const t = useSharedValue(reduced ? 1 : 0);
+  const t = useSharedValue(reduced ? 1 : ENTER_FROM);
 
   React.useEffect(() => {
     if (reduced) {
@@ -83,7 +89,7 @@ export function PageTransition({
   // `key` nằm ở đây chứ không ở trong: đổi key là dựng lại `Enter`, tức là chạy
   // lại effect. Không có nó thì hiệu ứng chỉ chạy đúng một lần lúc mở app.
   return (
-    <Enter key={routeKey} duration={MOTION.page} lift={10} style={{ flex: 1 }}>
+    <Enter key={routeKey} duration={MOTION.page} lift={0} style={{ flex: 1 }}>
       {children}
     </Enter>
   );
@@ -110,7 +116,7 @@ export function Appear({
     <Enter
       delay={Math.min(index * MOTION.stagger, MOTION.staggerCap)}
       duration={duration}
-      lift={8}
+      lift={4}
       style={style}
     >
       {children}

@@ -4,7 +4,10 @@ import { Image, Platform, Pressable, Text, View } from 'react-native';
 import { useReducedMotion } from '@/components/travel/ui/hooks';
 import { useL } from '@/i18n/useL';
 import { readingFont } from '@/lib/readingFonts';
+import type { SceneMotionProfile } from '@/services/history/types';
 
+import { HistorySceneVideo } from './HistorySceneVideo';
+import { HistorySceneMotion } from './HistorySceneMotion';
 const WEB = Platform.OS === 'web';
 
 /**
@@ -13,11 +16,10 @@ const WEB = Platform.OS === 'web';
  *   - Lỗi tải → khung dự phòng + nút thử lại, KHÔNG để lỗ trống;
  *   - Ảnh pixel: chỉ dùng `image-rendering: pixelated` khi phóng LÊN, và phóng theo HỆ SỐ NGUYÊN khi vừa
  *     khung (thu NHỎ thì để trình duyệt làm mịn — pixelated khi thu nhỏ ra răng cưa);
- *   - Tỉ lệ 16:9 cố định nên đổi cảnh không làm nhảy bố cục.
- * `children` vẽ chồng lên ảnh; lớp `futureMedia` rỗng ở dưới là CHỖ DÀNH cho parallax / chuyển động nhẹ về sau
- * (xem `Scene.futureMedia`) — hiện chưa làm gì.
+ *   - Ảnh thường giữ tỉ lệ 16:9; sân khấu video lấp đầy khung kể chuyện.
+ * `children` vẽ chồng lên ảnh; vùng `history-future-media` nhận lớp chuyển động môi trường theo từng cảnh.
  */
-export function HistoryImage({ file, alt, children }: { file: string; alt: string; children?: React.ReactNode }) {
+export function HistoryImage({ file, alt, children, immersive = false, sceneId, motion, motionActive = true, videoBase, videoSequence, nextVideoBase }: { file: string; alt: string; children?: React.ReactNode; immersive?: boolean; sceneId?: string; motion?: SceneMotionProfile; motionActive?: boolean; videoBase?: string; videoSequence?: string[]; nextVideoBase?: string }) {
   const { L } = useL();
   const reduced = useReducedMotion();
   const [state, setState] = useState<'loading' | 'ok' | 'error'>('loading');
@@ -49,7 +51,9 @@ export function HistoryImage({ file, alt, children }: { file: string; alt: strin
   return (
     <View
       onLayout={(e) => setBoxW(Math.round(e.nativeEvent.layout.width))}
-      style={{ width: '100%', aspectRatio: 16 / 9, borderRadius: 14, overflow: 'hidden', backgroundColor: '#E9E4D6', alignItems: 'center', justifyContent: 'center' }}
+      style={immersive
+        ? { width: '100%', height: '100%', overflow: 'hidden', backgroundColor: '#25261E', alignItems: 'center', justifyContent: 'center' }
+        : { width: '100%', aspectRatio: 16 / 9, borderRadius: 14, overflow: 'hidden', backgroundColor: '#E9E4D6', alignItems: 'center', justifyContent: 'center' }}
     >
       {state === 'loading' ? <Skeleton reduced={reduced} label={L('Đang tải ảnh…', 'Loading image…')} /> : null}
       {state === 'error' ? (
@@ -72,13 +76,17 @@ export function HistoryImage({ file, alt, children }: { file: string; alt: strin
             onLoad={onLoad as never}
             onError={() => setState('error')}
             style={{
-              width: intW ? `${intW}px` : '100%',
+              position: immersive ? 'absolute' : 'relative',
+              top: immersive ? 0 : undefined,
+              left: immersive ? 0 : undefined,
+              width: immersive ? '100%' : intW ? `${intW}px` : '100%',
               maxWidth: '100%',
-              height: intW ? 'auto' : '100%',
+              height: immersive ? '100%' : intW ? 'auto' : '100%',
               objectFit: 'cover',
               imageRendering: pixelated ? 'pixelated' : 'auto',
               opacity: state === 'ok' ? 1 : 0,
-              transition: reduced ? 'none' : 'opacity .35s ease',
+              transition: reduced ? 'none' : 'opacity .55s ease',
+              ...(immersive && WEB && !reduced && !videoBase ? ({ animation: 'historyPan 42s ease-in-out infinite alternate' } as object) : {}),
               userSelect: 'none',
               display: 'block',
             }}
@@ -94,8 +102,14 @@ export function HistoryImage({ file, alt, children }: { file: string; alt: strin
           />
         )
       ) : null}
-      {/* CHỖ DÀNH cho parallax / lớp tiền cảnh-hậu cảnh về sau (Scene.futureMedia). Rỗng: không chiếm sự kiện chạm. */}
-      <View pointerEvents="none" nativeID="history-future-media" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+      {immersive && WEB ? (
+        <style>{`@keyframes historyPan{from{transform:scale(1.015) translate3d(0,0,0)}to{transform:scale(1.075) translate3d(-.35%,-.25%,0)}}`}</style>
+      ) : null}
+      {immersive && WEB && videoBase ? <HistorySceneVideo base={videoBase} sequence={videoSequence} nextBase={nextVideoBase} sceneId={sceneId} active={motionActive} /> : null}
+      {/* Lớp môi trường của scene, không nhận thao tác chạm. */}
+      <View pointerEvents="none" nativeID="history-future-media" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+        {sceneId ? <HistorySceneMotion key={sceneId} sceneId={sceneId} profile={motion} isScreenFocused={motionActive} /> : null}
+      </View>
       {children}
     </View>
   );

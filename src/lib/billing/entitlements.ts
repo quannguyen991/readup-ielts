@@ -1,4 +1,5 @@
 import {
+  EVERYONE_PLAN,
   PLANS,
   PLAN_ORDER,
   QUOTA_PERIOD,
@@ -159,13 +160,12 @@ function isoWeekKey(date: Date): string {
  * thấy mất sạch dữ liệu sẽ không quay lại. Họ chỉ mất phần mở khoá thêm.
  */
 export function effectivePlan(
-  plan: PlanId | null | undefined,
-  expiresAtIso: string | null | undefined,
-  now: Date = new Date(),
+  _plan: PlanId | null | undefined,
+  _expiresAtIso: string | null | undefined,
+  _now: Date = new Date(),
 ): PlanId {
-  if (!plan || plan === 'free') return 'free';
-  if (!expiresAtIso) return plan;
-  return new Date(expiresAtIso).getTime() > now.getTime() ? plan : 'free';
+  // App cộng đồng không thương mại: không còn gói trả phí, mọi người dùng có quyền gói cao nhất.
+  return EVERYONE_PLAN;
 }
 
 /** Số ngày còn lại, làm tròn LÊN. 0 nghĩa là hết hôm nay. */

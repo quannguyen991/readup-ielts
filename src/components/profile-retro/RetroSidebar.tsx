@@ -14,6 +14,7 @@ import { shortcutLabel } from '@/components/search/keys';
 import { useL, type L } from '@/i18n/useL';
 import { useLocaleStore } from '@/i18n/useT';
 import { ADMIN_GROUP, NAV_GROUPS, activeNavKey, navLabel, parentNavKey, visibleGroups, type NavItem } from '@/navigation/nav-items';
+import { useIeltsFocusStore } from '@/store/useIeltsFocusStore';
 import { useCityAvailable } from '@/services/city/availability';
 import { formatStars } from '@/services/gamification/shop';
 import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
@@ -77,7 +78,9 @@ export function RetroSidebar() {
   const isAdmin = useAuthStore((s) => s.profile?.role === 'admin');
   const desktop = useCityAvailable();
 
-  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop);
+  const ieltsFeatures = useIeltsFocusStore((s) => s.features);
+
+  const groups = visibleGroups(isAdmin ? [...NAV_GROUPS, ADMIN_GROUP] : NAV_GROUPS, desktop, ieltsFeatures);
   const activeKey = activeNavKey(navPathFor(pathname));
   const activeParent = parentNavKey(activeKey);
 

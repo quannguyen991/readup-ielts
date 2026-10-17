@@ -3,70 +3,155 @@ import { Pressable, Text, View } from 'react-native';
 import { router } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
-import { GLASS_CARD, HUB, TAG_COLOR } from '@/components/hub/theme';
+import { BADGE_STYLES, GLASS_CARD, HUB } from '@/components/hub/theme';
+import { CuteBook, CuteCalendar, CuteCloud, CuteGlobe, CutePencil, CutePlane } from '@/components/illust/Cute';
+import {
+  CuteBulb,
+  CuteCalculator,
+  CuteChat,
+  CuteFlame,
+  CuteHeadphones,
+  CuteMagnifier,
+  CuteMic,
+  CuteNotebook,
+  CutePlant,
+  CuteRocket,
+  CuteStar,
+  CuteTrophy,
+} from '@/components/illust/CuteMore';
 import { Icon } from '@/components/ui/Icon';
-import { TUTORS, type Tutor } from '@/services/hub/tutors';
+import { useL } from '@/i18n/useL';
+import { TUTORS, type Tutor, type TutorTag } from '@/services/hub/tutors';
+import { tutorCopy } from '@/services/hub/tutors-en';
 
-export default function TutorList() {
-  const live = TUTORS.filter((t) => t.status === 'live');
-  const soon = TUTORS.filter((t) => t.status === 'soon');
+type Art = (p: { size?: number }) => React.ReactElement;
 
+/** Minh hoạ cho từng gia sư: lấy từ bộ Cute, không dùng emoji. */
+const TUTOR_ART: Record<string, Art> = {
+  grammar: CuteBook,
+  'speech-analysis': CuteMic,
+  vocab: CuteNotebook,
+  pronounce: CuteHeadphones,
+  meeting: CuteCalendar,
+  interview: CuteChat,
+  'public-speaking': CuteStar,
+  presentation: CuteBulb,
+  sales: CuteRocket,
+  dating: CutePlant,
+  travel: CutePlane,
+  negotiation: CuteCalculator,
+  conflict: CuteCloud,
+  'leader-comms': CuteTrophy,
+  storytelling: CutePencil,
+  leadership: CuteFlame,
+  'ielts-examiner': CuteMagnifier,
+  profile: CuteGlobe,
+  phone: CuteChat,
+  diary: CuteNotebook,
+};
+
+/** Gia sư đã có màn riêng trong app: bấm vào mở đúng màn đó, không đi qua phòng hội thoại AI chung. */
+const OWN_SCREEN: Record<string, string> = {
+  grammar: '/hub/tutor/grammar',
+  'speech-analysis': '/hub/analyze',
+  pronounce: '/hub/learn',
+  meeting: '/hub/meeting',
+};
+
+/**
+ * Đích của một dòng: màn riêng nếu có; gia sư `soon` (chưa sẵn sàng) mở màn "đang chuẩn bị";
+ * còn lại vào phòng hội thoại AI dùng vai của gia sư đó.
+ */
+function tutorRoute(t: Tutor): string {
+  if (OWN_SCREEN[t.id]) return OWN_SCREEN[t.id]!;
+  if (t.status === 'soon') return `/hub/tutor/coming/${t.id}`;
+  return `/hub/tutor/${t.id}`;
+}
+
+function tagPill(tag: TutorTag): { text: string; style: { bg: string; text: string; border: string } } {
+  if (tag === 'MỚI' || tag === 'NEW') return { text: 'NEW', style: BADGE_STYLES.NEW };
+  if (tag === 'BETA') return { text: 'BETA', style: BADGE_STYLES.BETA };
+  if (tag === 'PREMIUM') return { text: 'PREMIUM', style: BADGE_STYLES.PREMIUM };
+  return { text: 'BAND 9', style: BADGE_STYLES.PREMIUM };
+}
+
+function TagPill({ tag }: { tag: TutorTag }) {
+  const p = tagPill(tag);
   return (
-    <HubScreen title="Gia sư" subtitle="Gia sư AI luyện theo từng tình huống">
-      <Pressable
-        accessibilityRole="button"
-        accessibilityLabel="Làm chủ ngữ pháp tiếng Anh"
-        onPress={() => router.push('/hub/tutor/grammar' as never)}
-        style={[GLASS_CARD, { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14 }]}
-      >
-        <View style={{ width: 48, height: 48, borderRadius: 14, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong }}>
-          <Icon name="book" size={22} color={HUB.blue} />
-        </View>
-        <View style={{ flex: 1, gap: 2 }}>
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>Làm chủ ngữ pháp tiếng Anh</Text>
-          <Text style={{ color: HUB.muted, fontSize: 12 }}>Lộ trình A1 đến C, có bài học và câu hỏi đầy đủ ở A1.</Text>
-        </View>
-        <Icon name="chevron-right" size={18} color={HUB.muted} />
-      </Pressable>
+    <View
+      style={{
+        paddingHorizontal: 7,
+        paddingVertical: 2,
+        borderRadius: 999,
+        backgroundColor: p.style.bg,
+        borderWidth: 1,
+        borderColor: p.style.border,
+      }}
+    >
+      <Text style={{ color: p.style.text, fontSize: 10, fontWeight: '800', letterSpacing: 0.3 }}>{p.text}</Text>
+    </View>
+  );
+}
 
-      <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Đang sẵn sàng</Text>
+/** Danh sách gia sư kiểu ELSA: minh hoạ, tên, badge, mô tả ngắn và mũi tên. */
+export default function TutorList() {
+  const { L } = useL();
+  return (
+    <HubScreen
+      title={L('Gia sư', 'Tutors')}
+      subtitle={L(`${TUTORS.length} gia sư AI theo mục tiêu của bạn`, `${TUTORS.length} AI tutors for your goals`)}
+    >
       <View style={{ gap: 10 }}>
-        {live.map((t) => <TutorRow key={t.id} t={t} />)}
+        {TUTORS.map((t) => (
+          <TutorRow key={t.id} t={t} />
+        ))}
       </View>
 
-      {soon.length > 0 ? (
-        <>
-          <Text style={{ color: HUB.ink, fontSize: 16, fontWeight: '800' }}>Sắp có</Text>
-          <View style={{ gap: 10 }}>
-            {soon.map((t) => <TutorRow key={t.id} t={t} />)}
-          </View>
-        </>
-      ) : null}
+      <View style={{ paddingVertical: 12, alignItems: 'center' }}>
+        <Text style={{ color: HUB.muted, fontSize: 13, fontWeight: '600' }}>
+          {L('Sẽ sớm có thêm gia sư mới.', 'More tutors are coming soon.')}
+        </Text>
+      </View>
     </HubScreen>
   );
 }
 
 function TutorRow({ t }: { t: Tutor }) {
-  const live = t.status === 'live';
+  const { en } = useL();
+  const copy = tutorCopy(t, en);
+  const Art = TUTOR_ART[t.id] ?? CuteStar;
+
   return (
     <Pressable
       accessibilityRole="button"
-      accessibilityLabel={t.name}
-      disabled={!live}
-      onPress={() => live && router.push(`/hub/tutor/${t.id}` as never)}
-      style={[GLASS_CARD, { flexDirection: 'row', alignItems: 'center', gap: 12, padding: 14, opacity: live ? 1 : 0.6 }]}
+      accessibilityLabel={copy.name}
+      onPress={() => router.push(tutorRoute(t) as never)}
+      style={[GLASS_CARD, { flexDirection: 'row', alignItems: 'center', gap: 14, padding: 14 }]}
     >
-      <View style={{ width: 40, height: 40, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glassStrong }}>
-        <Icon name="sparkle" size={18} color={live ? HUB.violet : HUB.muted} />
+      <View
+        style={{
+          width: 60,
+          height: 60,
+          borderRadius: 18,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: HUB.goldSoft,
+        }}
+      >
+        <Art size={44} />
       </View>
-      <View style={{ flex: 1, gap: 3 }}>
+
+      <View style={{ flex: 1, minWidth: 0, gap: 4 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '700' }}>{t.name}</Text>
-          {t.tag ? <Text style={{ color: TAG_COLOR[t.tag], fontSize: 10, fontWeight: '800', borderWidth: 1, borderColor: TAG_COLOR[t.tag], borderRadius: 999, paddingHorizontal: 6, paddingVertical: 1 }}>{t.tag}</Text> : null}
+          <Text style={{ color: HUB.ink, fontSize: 15, fontWeight: '800' }}>{copy.name}</Text>
+          {t.tag ? <TagPill tag={t.tag} /> : null}
         </View>
-        <Text style={{ color: HUB.muted, fontSize: 12, lineHeight: 17 }}>{t.desc}</Text>
+        <Text numberOfLines={2} style={{ color: HUB.muted, fontSize: 12, lineHeight: 17 }}>
+          {copy.desc}
+        </Text>
       </View>
-      {live ? <Icon name="chevron-right" size={18} color={HUB.muted} /> : <Text style={{ color: HUB.muted, fontSize: 10, fontWeight: '700' }}>SẮP CÓ</Text>}
+
+      <Icon name="chevron-right" size={18} color={HUB.muted} />
     </Pressable>
   );
 }

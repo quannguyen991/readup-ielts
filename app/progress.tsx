@@ -6,11 +6,14 @@ import { BarChart, DonutChart, Heatmap, HorizontalBars, LineChart } from '@/comp
 import { Grid } from '@/components/layout/Grid';
 import { useNow } from '@/lib/clock';
 import { Screen } from '@/components/layout/Screen';
+import { LinearGradient } from 'expo-linear-gradient';
+
+import { LionMascot, type LionPose } from '@/components/mascot/LionMascot';
 import {
   Badge,
   Button,
   Card,
-  HeroBanner,
+  Icon,
   ProgressBar,
   SectionHeader,
   StatCard,
@@ -26,9 +29,10 @@ import { useQuestionStore } from '@/store/useQuestionStore';
 import { useAccuracyByType, useRecentDays, useStreak, useStudyStore } from '@/store/useStudyStore';
 import { useVocabStore } from '@/store/useVocabStore';
 import { useRoadmapStore } from '@/store/useRoadmapStore';
-import { useAuthStore } from '@/store/useAuthStore';
+import { useAuthStore, useDisplayName } from '@/store/useAuthStore';
 import { goalProgress } from '@/services/progress/goal';
 import { chartPalette, color } from '@/theme/tokens';
+import { themedHex } from '@/theme/palette-state';
 import { useL } from '@/i18n/useL';
 
 /**
@@ -103,7 +107,8 @@ function MathProgressCard() {
 
 /** Progress — bám ảnh tham chiếu số 3, số liệu lấy từ chính hoạt động của bạn. */
 export default function ProgressScreen() {
-  const { L } = useL();
+  const { L, en } = useL();
+  const displayName = useDisplayName();
   const [range, setRange] = useState<7 | 30 | 90>(30);
 
   const sessions = useStudyStore((s) => s.sessions);
@@ -194,66 +199,193 @@ export default function ProgressScreen() {
     router.push(`/read/${article.id}` as never);
   };
 
+  const rangeLabel = (r: 7 | 30 | 90) => (r === 7 ? L('Tuần', 'Week') : r === 30 ? L('Tháng', 'Month') : L('3 tháng', '3 months'));
+  const weekdays = en ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] : ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7'];
+  const weekdayOf = (date: string) => weekdays[new Date(`${date}T00:00:00`).getDay()] ?? date.slice(5);
+  // Linh vật theo chuỗi thật: chuỗi từ 3 ngày thì mừng, đang có chuỗi thì vẫy, chưa có thì đọc sách mời học.
+  const lionPose: LionPose = streak.current >= 3 ? 'cheer' : streak.current > 0 ? 'wave' : 'read';
+
   return (
-    <Screen cat="sit">
-      <HeroBanner
-        title={L('Tiến độ của bạn', 'Your progress')}
-        subtitle={L('Theo dõi kết quả, giữ nhịp đều, và biết chính xác nên luyện dạng nào tiếp theo.', 'Track your results, keep a steady rhythm, and know exactly what to practise next.')}
-        illustration="progress-hero"
-        right={
-          <View className="w-[260px] rounded-card bg-white p-4">
-            <View className="flex-row items-center justify-between">
-              <Text className="font-strong text-cardTitle text-ink">{L('Mục tiêu', 'Goal')}</Text>
-              <Text className="font-semi text-label text-primary-600">{L('Band IELTS', 'IELTS band')}</Text>
-            </View>
-
-            {goal.state === 'no-goal' ? (
-              <>
-                <Text className="mt-2 font-heavy text-hero text-subtle">—</Text>
-                <Text className="mt-1 font-mid text-label text-muted">{L('Bạn chưa đặt band mục tiêu.', "You haven't set a target band yet.")}</Text>
-                <Pressable
-                  accessibilityRole="button"
-                  onPress={() => router.push('/plan' as never)}
-                  className="mt-3 self-start rounded-pill bg-primary-600 px-3.5 py-2"
-                >
-                  <Text className="font-semi text-label text-white">{L('Đặt mục tiêu', 'Set a goal')}</Text>
-                </Pressable>
-              </>
-            ) : (
-              <>
-                <Text className="mt-2 font-heavy text-hero text-ink">{goal.target.toFixed(1)}</Text>
-                <ProgressBar value={goal.state === 'no-score' ? 0 : goal.pct} className="mt-2" />
-                <Text className="mt-2 font-mid text-label text-muted">
-                  {goal.state === 'no-score'
-                    ? L('Chưa có bài chấm band — làm một bài đọc để có điểm đầu.', 'No band score yet — do a reading test to get a starting point.')
-                    : goal.state === 'reached'
-                      ? L(`Đã đạt mục tiêu · band hiện tại ${formatBand(goal.current)}`, `Goal reached · current band ${formatBand(goal.current)}`)
-                      : L(`${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)} band · ${goal.pct}% quãng đường`, `${formatBand(goal.start)} → ${formatBand(goal.current)} · ${goal.left.toFixed(1)} band to go · ${goal.pct}% of the way`)}
-                </Text>
-              </>
-            )}
-          </View>
-        }
-      />
-
-      <View className="mt-4 flex-row items-center gap-2">
-        {([7, 30, 90] as const).map((r) => (
-          <Pressable
-            key={r}
-            onPress={() => setRange(r)}
-            className={[
-              'rounded-panel px-4 py-2',
-              range === r ? 'bg-primary-600' : 'bg-surface border border-border',
-            ].join(' ')}
-          >
-            <Text
-              className={['font-semi text-body', range === r ? 'text-white' : 'text-muted'].join(' ')}
-            >
-              {r} Days
-            </Text>
-          </Pressable>
-        ))}
+    <Screen>
+      {/* Đầu trang: lời chào, linh vật, mục tiêu. Số liệu chi tiết nằm ở phần "Chi tiết" bên dưới. */}
+      <View className="flex-row items-center justify-between">
+        <Text className="font-heavy text-hero text-ink">{L('Tiến độ của bạn', 'Your progress')}</Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel={L('Mở kế hoạch học', 'Open study plan')}
+          onPress={() => router.push('/plan' as never)}
+          className="h-11 w-11 items-center justify-center rounded-pill border border-border bg-white"
+        >
+          <Icon name="calendar" size={20} color={color.ink} />
+        </Pressable>
       </View>
+
+      {/*
+        Thẻ đầu trang: linh vật đổi theo chuỗi ngày thật (chuỗi dài thì vui, chưa có chuỗi
+        thì mời học). Chấm 7 ngày gần nhất cho thấy nhịp học đều hay đứt quãng.
+      */}
+      <LinearGradient
+        colors={[themedHex('#FFFBEF'), themedHex('#F6E3AE')]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{ marginTop: 16, borderRadius: 24, padding: 20, borderWidth: 1, borderColor: '#FFFFFF' }}
+      >
+        <View className="flex-row items-center gap-4">
+          <LionMascot pose={lionPose} size={104} />
+          <View className="min-w-0 flex-1 gap-1">
+            <Text numberOfLines={1} className="font-strong text-cardTitle text-ink">
+              {displayName || L('Bạn', 'You')}
+            </Text>
+            <View className="flex-row items-end gap-1.5">
+              <Text className="font-heavy text-stat text-ink">{streak.current}</Text>
+              <Text className="pb-1 font-mid text-label text-body">{L('ngày liên tiếp', 'day streak')}</Text>
+            </View>
+            <Pressable
+              accessibilityRole="button"
+              onPress={() => router.push('/plan' as never)}
+              className="mt-1 self-start rounded-pill px-3 py-1.5"
+              style={{ backgroundColor: 'rgba(255,255,255,0.75)' }}
+            >
+              <Text className="font-semi text-label" style={{ color: themedHex('#8C6A1F') }}>
+                {goal.state === 'no-goal' ? L('Đặt mục tiêu', 'Set a goal') : L(`Mục tiêu IELTS ${goal.target.toFixed(1)}`, `IELTS goal ${goal.target.toFixed(1)}`)}
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+
+        <View className="mt-4 flex-row gap-2">
+          {recentDays.slice(-7).map((d) => (
+            <View key={d.date} className="flex-1 items-center gap-1.5">
+              <View
+                accessibilityLabel={d.minutes > 0 ? L('Có học', 'Studied') : L('Chưa học', 'Not studied')}
+                className="h-8 w-8 items-center justify-center rounded-pill"
+                style={{ backgroundColor: d.minutes > 0 ? themedHex('#D9A441') : 'rgba(255,255,255,0.75)' }}
+              >
+                {d.minutes > 0 ? <Icon name="check" size={14} color="#FFFFFF" strokeWidth={2.6} /> : null}
+              </View>
+              <Text className="font-mid text-label text-muted">{weekdayOf(d.date)}</Text>
+            </View>
+          ))}
+        </View>
+      </LinearGradient>
+
+      <View
+        accessibilityRole="tablist"
+        className="mt-5 flex-row rounded-pill border border-border bg-white p-1"
+      >
+        {([7, 30, 90] as const).map((r) => {
+          const on = range === r;
+          return (
+            <Pressable
+              key={r}
+              accessibilityRole="tab"
+              aria-selected={on}
+              onPress={() => setRange(r)}
+              className="flex-1 items-center rounded-pill py-2"
+              style={on ? { backgroundColor: themedHex('#FFF4CF'), borderWidth: 1, borderColor: themedHex('#EBC26A') } : undefined}
+            >
+              <Text className={on ? 'font-strong text-label' : 'font-mid text-label text-muted'} style={on ? { color: themedHex('#8C6A1F') } : undefined}>
+                {rangeLabel(r)}
+              </Text>
+            </Pressable>
+          );
+        })}
+      </View>
+
+      <Card className="mt-4">
+        <View className="flex-row items-center justify-between">
+          <Text className="font-strong text-cardTitle text-ink">{L('Thời gian học', 'Study time')}</Text>
+          <Text className="font-mid text-label text-muted">{rangeLabel(range)}</Text>
+        </View>
+        <Text className="mt-2 font-heavy text-hero text-ink">{formatStudyTime(totalMinutes, en)}</Text>
+        <WeekBars
+          days={recentDays.slice(-7).map((d) => ({ label: weekdayOf(d.date), minutes: d.minutes }))}
+          emptyLabel={L('Chưa có ngày học trong khoảng này', 'No study days in this range yet')}
+        />
+      </Card>
+
+      <View className="mt-4 flex-row gap-3">
+        <Pressable
+          accessibilityRole="button"
+          onPress={() => router.push('/vocabulary' as never)}
+          className="flex-1 gap-3 rounded-card border border-border bg-white p-4"
+        >
+          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: themedHex('#FFF4CF') }}>
+            <Icon name="book" size={18} color={themedHex('#8C6A1F')} />
+          </View>
+          <View>
+            <Text className="font-heavy text-stat text-ink">{words}</Text>
+            <Text className="font-mid text-label text-muted">{L('từ đã nhớ', 'words saved')}</Text>
+          </View>
+        </Pressable>
+        <View className="flex-1 gap-3 rounded-card border border-border bg-white p-4">
+          <View className="h-10 w-10 items-center justify-center rounded-pill" style={{ backgroundColor: '#FDEBD6' }}>
+            <Icon name="flame" size={18} color="#C77A1E" />
+          </View>
+          <View>
+            <Text className="font-heavy text-stat text-ink">{streak.longest}</Text>
+            <Text className="font-mid text-label text-muted">{L('chuỗi dài nhất (ngày)', 'longest streak (days)')}</Text>
+          </View>
+        </View>
+      </View>
+
+      <Card className="mt-4">
+        <View className="flex-row items-center justify-between">
+          <Text className="font-strong text-cardTitle text-ink">{L('Kỹ năng', 'Skills')}</Text>
+          <Text className="font-mid text-label text-muted">{L('Theo dạng câu', 'By question type')}</Text>
+        </View>
+        <View className="mt-3">
+          {accuracyByType.length === 0 ? (
+            <Text className="py-4 font-sans text-body text-muted">
+              {L('Làm thử một bài để thấy điểm mạnh yếu.', 'Do a test to see your strengths and weaknesses.')}
+            </Text>
+          ) : (
+            <HorizontalBars
+              data={accuracyByType.slice(0, 4).map((row, i) => ({
+                label: QUESTION_TYPE_LABEL[row.type],
+                percent: row.percent,
+                tone: chartPalette[i % chartPalette.length],
+              }))}
+            />
+          )}
+        </View>
+      </Card>
+
+      <Pressable
+        accessibilityRole="button"
+        onPress={() => router.push('/plan' as never)}
+        className="mt-4 h-12 flex-row items-center justify-center gap-2 rounded-pill border bg-white"
+        style={{ borderColor: themedHex('#EBC26A') }}
+      >
+        <Text className="font-strong text-body" style={{ color: themedHex('#8C6A1F') }}>
+          {L('Điều chỉnh mục tiêu', 'Adjust goal')}
+        </Text>
+        <Icon name="chevron-right" size={16} color={themedHex('#8C6A1F')} />
+      </Pressable>
+
+      <Text className="mt-8 font-strong text-cardTitle text-ink">{L('Chi tiết', 'Details')}</Text>
+
+      <Card className="mt-3">
+        <SectionHeader
+          title={L('Mục tiêu band', 'Band goal')}
+          subtitle={
+            goal.state === 'no-goal'
+              ? L('Chưa đặt band mục tiêu', 'No target band yet')
+              : goal.state === 'no-score'
+                ? L('Chưa có bài chấm band', 'No band score yet')
+                : goal.state === 'reached'
+                  ? L(`Đã đạt · band hiện tại ${formatBand(goal.current)}`, `Reached · current band ${formatBand(goal.current)}`)
+                  : L(`${formatBand(goal.start)} → ${formatBand(goal.current)} · còn ${goal.left.toFixed(1)} band`, `${formatBand(goal.start)} → ${formatBand(goal.current)} · ${goal.left.toFixed(1)} band to go`)
+          }
+          icon="target"
+          iconTone="accent"
+        />
+        {goal.state === 'no-goal' ? (
+          <Button className="mt-3 self-start" label={L('Đặt mục tiêu', 'Set a goal')} onPress={() => router.push('/plan' as never)} />
+        ) : (
+          <ProgressBar value={goal.state === 'no-score' ? 0 : goal.pct} className="mt-3" />
+        )}
+      </Card>
 
       <View className="mt-4">
         <Grid columns={5} tabletColumns={2} mobileColumns={1}>
@@ -510,6 +642,56 @@ export default function ProgressScreen() {
       </Card>
     </Screen>
   );
+}
+
+/**
+ * Cột học theo ngày, vẽ bằng View để cột nào cũng có nhãn giá trị và nhãn ngày.
+ * Chiều cao theo phút thật (không chuẩn hoá). Cột cao nhất trong khoảng là ngày học
+ * nhiều nhất, tô vàng đậm; các ngày khác vàng nhạt, ngày không học là vạch mờ.
+ */
+function WeekBars({ days, emptyLabel }: { days: { label: string; minutes: number }[]; emptyLabel: string }) {
+  const max = Math.max(0, ...days.map((d) => d.minutes));
+  const best = max > 0 ? days.findIndex((d) => d.minutes === max) : -1;
+  return (
+    <View className="mt-4">
+      <View className="h-44 flex-row items-stretch gap-2">
+        {days.map((d, i) => {
+          const height = d.minutes > 0 ? Math.max(12, Math.round((d.minutes / max) * 112)) : 6;
+          const top = i === best;
+          return (
+            <View key={`${d.label}-${i}`} className="flex-1 items-center justify-end gap-1.5">
+              <Text className="font-semi text-label text-muted" numberOfLines={1}>
+                {d.minutes > 0 ? shortMinutes(d.minutes) : ' '}
+              </Text>
+              <View
+                style={{
+                  width: '100%',
+                  height,
+                  borderRadius: 10,
+                  backgroundColor: top ? themedHex('#D9A441') : d.minutes > 0 ? themedHex('#F1DDA0') : '#EFE9DA',
+                }}
+              />
+              <Text className={top ? 'font-strong text-label text-ink' : 'font-mid text-label text-muted'}>{d.label}</Text>
+            </View>
+          );
+        })}
+      </View>
+      {max === 0 ? <Text className="mt-3 text-center font-sans text-body text-muted">{emptyLabel}</Text> : null}
+    </View>
+  );
+}
+
+/** Nhãn cột ngắn: "45m", "1.5h" — đủ chỗ cho bảy cột trên điện thoại. */
+function shortMinutes(minutes: number): string {
+  return minutes < 60 ? `${minutes}m` : `${(minutes / 60).toFixed(1)}h`;
+}
+
+/** "18 giờ 40 phút" trên đầu trang; phần chi tiết vẫn dùng `formatMinutes` gọn hơn. */
+function formatStudyTime(minutes: number, en: boolean): string {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (en) return h > 0 ? `${h}h ${String(m).padStart(2, '0')}m` : `${m}m`;
+  return h > 0 ? `${h} giờ ${String(m).padStart(2, '0')} phút` : `${m} phút`;
 }
 
 function formatMinutes(minutes: number): string {

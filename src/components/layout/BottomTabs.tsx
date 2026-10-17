@@ -24,7 +24,7 @@ const FLOAT_MARGIN = 14;
  */
 const TABS: { key: 'home' | 'learn' | 'plan' | 'you'; href: string; coin: CoinName | null; vi: string; en: string }[] = [
   { key: 'home', href: '/intro', coin: 'home', vi: 'Trang chủ', en: 'Home' },
-  { key: 'learn', href: '/vocabulary/topics', coin: 'vocab', vi: 'Từ vựng', en: 'Vocabulary' },
+  { key: 'learn', href: '/vocabulary/quiz', coin: 'vocab', vi: 'Từ vựng', en: 'Vocabulary' },
   { key: 'plan', href: '/plan', coin: 'path', vi: 'Lộ trình', en: 'Plan' },
   { key: 'you', href: '/profile', coin: null, vi: 'Bạn', en: 'You' },
 ];
@@ -152,6 +152,10 @@ export function BottomTabs() {
               accessibilityRole="tab"
               accessibilityState={{ selected: on }}
               accessibilityLabel={label}
+              // Tải sẵn trang khi ngón tay chạm xuống, để lúc thả ra chuyển trang gần như tức thì.
+              onPressIn={() => {
+                if (!on) router.prefetch(item.href as never);
+              }}
               onPress={() => {
                 haptic();
                 if (!on) router.navigate(item.href as never);

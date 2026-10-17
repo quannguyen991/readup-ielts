@@ -1,4 +1,5 @@
 import seed from './seed/bilingual/index.json';
+import { PRESS_ARTICLES } from './bilingual-press-articles';
 
 /**
  * Kho bài đọc song ngữ Anh–Việt.
@@ -67,6 +68,8 @@ export type BilingualArticle = {
   paragraphs: BilingualParagraph[];
   vocab: BilingualVocab[];
   questions: BilingualQuestion[];
+  /** Ảnh bìa (đường dẫn trong app, ví dụ /bilingual/covers/bl-01.jpg). Không có thì thẻ dùng nền màu theo chủ đề. */
+  cover?: string;
 };
 
 /*
@@ -74,7 +77,10 @@ export type BilingualArticle = {
   (`lib/inlineMarkup.ts`). Chỗ nào chỉ cần chữ trơn — ô tìm kiếm, thẻ danh sách,
   từ điển — thì gỡ thẻ tại chỗ bằng `stripInline`.
 */
-export const BILINGUAL_ARTICLES: BilingualArticle[] = seed as BilingualArticle[];
+export const BILINGUAL_ARTICLES: BilingualArticle[] = [
+  ...(seed as BilingualArticle[]),
+  ...PRESS_ARTICLES,
+];
 
 export function getBilingualArticleById(id: string): BilingualArticle | undefined {
   return BILINGUAL_ARTICLES.find((a) => a.id === id);
@@ -126,15 +132,6 @@ export function bilingualStats() {
 
 /*
   NGUỒN BÀI — cổng "Đọc báo song ngữ" chia kho theo nơi bài được đăng.
-
-  Chỉ gồm những nơi cho phép dùng lại TOÀN VĂN VÀ ĐƯỢC DỊCH: VOA và NASA (tài
-  liệu của chính phủ Mỹ, không giữ bản quyền), Global Voices (CC BY 3.0),
-  Wikinews (CC BY 2.5 — dự án đã đóng, bài cũ vẫn theo giấy phép), Wikipedia
-  (CC BY-SA 4.0 — bản dịch phải phát hành cùng giấy phép, ghi ở cuối bài).
-
-  ĐÃ XÉT VÀ LOẠI: The Conversation (CC BY-ND, điều khoản ghi rõ không cho dịch),
-  ProPublica (không cho sửa/dịch, chỉ phi thương mại). Báo giữ bản quyền
-  (Guardian, NYT, Economist…) KHÔNG được đưa vào, kể cả khi để link gốc.
 */
 export type BilingualOutlet = {
   key: string;
@@ -155,6 +152,38 @@ export const BILINGUAL_OUTLETS: BilingualOutlet[] = [
     license: 'Bản quyền Band 9',
     cover: '#F2B84B',
     ink: '#1F2A12',
+  },
+  {
+    key: 'economist',
+    name: 'The Economist',
+    tagline: 'Kinh tế vĩ mô, AI, địa chính trị — chuẩn C1-C2 Band 8.5-9.0',
+    license: 'Educational Fair Use / Band 9 Edition',
+    cover: '#E3120B',
+    ink: '#FFFFFF',
+  },
+  {
+    key: 'bbc',
+    name: 'BBC News & Future',
+    tagline: 'Khoa học thường thức, tâm lý học, giáo dục & văn hóa toàn cầu',
+    license: 'Educational Fair Use / Band 9 Edition',
+    cover: '#0F172A',
+    ink: '#FFFFFF',
+  },
+  {
+    key: 'cnn_nyt',
+    name: 'CNN & The New York Times',
+    tagline: 'Thời sự quốc tế, y tế, dân số học & xã hội hiện đại',
+    license: 'Educational Fair Use / Band 9 Edition',
+    cover: '#0C2340',
+    ink: '#FFFFFF',
+  },
+  {
+    key: 'guardian_nature',
+    name: 'The Guardian & Nature',
+    tagline: 'Môi trường, sinh học biển, biến đổi khí hậu — sát chuẩn IELTS Passage 3',
+    license: 'Educational Fair Use / Band 9 Edition',
+    cover: '#052962',
+    ink: '#FFFFFF',
   },
   {
     key: 'voa',
@@ -200,6 +229,10 @@ export const BILINGUAL_OUTLETS: BilingualOutlet[] = [
 
 export function outletKeyOf(article: BilingualArticle): string {
   if (!article.source) return 'readup';
+  if (/Economist/i.test(article.source.outlet)) return 'economist';
+  if (/BBC/i.test(article.source.outlet)) return 'bbc';
+  if (/CNN|New York Times|NYT/i.test(article.source.outlet)) return 'cnn_nyt';
+  if (/Guardian|Nature/i.test(article.source.outlet)) return 'guardian_nature';
   if (/VOA/i.test(article.source.outlet)) return 'voa';
   if (/Global Voices/i.test(article.source.outlet)) return 'gv';
   if (/NASA/i.test(article.source.outlet)) return 'nasa';

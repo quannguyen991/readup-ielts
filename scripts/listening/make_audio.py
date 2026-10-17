@@ -19,7 +19,7 @@ for t in turns:
     sp = t.get("speaker") or "Speaker"
     if sp not in speakers:
         speakers.append(sp)
-DEFAULT = ["Kore", "Charon", "Puck", "Zephyr"]
+DEFAULT = ["Aoede", "Charon", "Puck", "Zephyr"]
 for i, sp in enumerate(speakers):
     VOICES.setdefault(sp, DEFAULT[i % len(DEFAULT)])
 clean = lambda s: re.sub(r"\s+", " ", s.replace("\u2019", "'")).strip()

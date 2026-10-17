@@ -1,72 +1,89 @@
-import { GLASS } from '@/components/layout/phone-theme';
-import { GOLD_SKY, INK_G, BODY_G, MUTED_G } from '@/components/gallery/glass';
-import { themed, paletteId } from '@/theme/palette-state';
-
 /**
- * Bảng màu khu luyện nói theo chủ đề của app:
- * - Giao diện mặc định: vàng kim (nền trời vàng kem, chữ nâu mực, nút vàng đậm).
- * - Giao diện Chiikawa: hồng (nền trời hồng, chữ mận, nút hồng).
- *
- * Dùng `themed()` như các token khác: đọc lúc vẽ, nên đổi chủ đề là khu này đổi theo.
- * Các màu trạng thái (xanh, vàng, đỏ) giữ nguyên ở cả hai để người học đọc điểm nhất quán.
+ * Ngôn ngữ thiết kế khu luyện nói (Hub) — SÁNG, ẤM, đồng bộ với phần còn lại của Band 9:
+ * - Nền kem vàng nhạt (#FFF9EF → #F6EBDA), thẻ trắng viền be, bóng nâu mờ.
+ * - Chữ nâu đậm (#2A1808 ink, #573E29 body, #7C6552 muted); nhấn nâu vàng #8C531B.
+ * - Tên khoá cũ (COSMIC, GLASS_CARD…) giữ nguyên để mọi màn Hub tự đổi theo.
  */
-const BASE = {
-  bg: GOLD_SKY as readonly string[],
-  ink: INK_G as string,
-  body: BODY_G as string,
-  muted: MUTED_G as string,
-  line: 'rgba(184,149,90,0.32)',
-  glass: 'rgba(255,252,242,0.55)',
-  glassStrong: 'rgba(255,255,255,0.72)',
-  /** Màu nhấn: vàng đậm để chữ trắng trên nút vẫn đọc được. */
-  blue: '#8F6E36',
-  violet: '#A7833F',
-  green: '#2E7D4F',
-  amber: '#A8741A',
-  red: '#B33A2A',
-  orange: '#B9661B',
-  /** Nền nổi (modal, thanh tab): kem ấm, hơi đặc để chữ nổi trên cảnh vàng. */
-  paper: 'rgba(255,252,242,0.97)',
+
+export const COSMIC = {
+  bg: ['#FFF9EF', '#FBF3E4', '#F6EBDA'] as readonly string[],
+  ink: '#2A1808',
+  body: '#573E29',
+  muted: '#7C6552',
+  line: '#EADFCF',
+  glass: '#FFFFFF',
+  glassStrong: '#FAF3E8',
+  cardBg: '#FFFFFF',
+  cardBorder: '#EFE5D8',
+  blue: '#8C531B',
+  sky: '#A8671F',
+  cyan: '#0E8FA8',
+  violet: '#7C5CE0',
+  green: '#16A34A',
+  amber: '#D98A0B',
+  orange: '#EA6A12',
+  red: '#DC3F3F',
+  paper: '#FFF9EF',
+  primary: '#8C531B',
+  gold: '#C8923A',
+  goldSoft: '#F7E7C6',
 };
 
-const CHIIKAWA = {
-  bg: ['#FFF8FA', '#FCE4EC', '#F9C6D8', '#F4B0C9', '#FBE8EF'] as readonly string[],
-  ink: '#4A2433',
-  body: '#7A4E62',
-  muted: '#A3768B',
-  line: 'rgba(214,94,134,0.3)',
-  glass: 'rgba(255,246,250,0.6)',
-  glassStrong: 'rgba(255,255,255,0.8)',
-  blue: '#C64E79',
-  violet: '#D65E86',
-  orange: '#C64E79',
-  paper: 'rgba(255,247,250,0.97)',
+export const HUB = COSMIC;
+
+/** Thẻ trắng bo góc 18, viền be, bóng nâu rất nhẹ. Dùng dạng mảng: `[GLASS_CARD, { padding: 16 }]`. */
+export const GLASS_CARD = {
+  backgroundColor: '#FFFFFF',
+  borderRadius: 18,
+  borderWidth: 1,
+  borderColor: '#EFE5D8',
+  shadowColor: '#784415',
+  shadowOpacity: 0.07,
+  shadowRadius: 14,
+  shadowOffset: { width: 0, height: 5 },
+} as const;
+
+/** Nền chip/ô lồng trong thẻ (thay cho rgba trắng mờ của bản tối). */
+export const SOFT_FILL = '#FAF3E8';
+export const SOFT_LINE = '#EADFCF';
+
+export const BAND_COLOR = {
+  good: '#16A34A',
+  fair: '#D98A0B',
+  poor: '#DC3F3F',
+  unknown: '#A38F7E',
+} as const;
+
+export const DIFF_COLOR = {
+  EASY: '#16A34A',
+  MEDIUM: '#8C531B',
+  HARD: '#EA6A12',
+} as const;
+
+export const BADGE_STYLES = {
+  NEW: { bg: '#E0F2FE', text: '#0369A1', border: '#BAE6FD' },
+  BETA: { bg: '#EDE9FE', text: '#6D28D9', border: '#DDD6FE' },
+  PREMIUM: { bg: '#FEF3C7', text: '#B45309', border: '#FDE68A' },
+  EASY: { bg: '#DCFCE7', text: '#15803D', border: '#BBF7D0' },
+  MEDIUM: { bg: '#FEF3C7', text: '#B45309', border: '#FDE68A' },
+  HARD: { bg: '#FFEDD5', text: '#C2410C', border: '#FED7AA' },
+  SO_CAP: { bg: '#F5EBDD', text: '#6A5645', border: '#EADFCF' },
+} as const;
+
+export const TAG_COLOR = {
+  NEW: '#0369A1',
+  BETA: '#6D28D9',
+  PREMIUM: '#B45309',
+} as const;
+
+/** Quả cầu AI theo trạng thái — vàng kim / cam / xanh ngọc cho hợp nền sáng. */
+const GLOW_COSMIC: Record<'idle' | 'speaking' | 'listening' | 'thinking', [string, string]> = {
+  idle: ['#F5C451', '#E08A1E'],
+  speaking: ['#F59E0B', '#EA580C'],
+  listening: ['#34D399', '#0EA5A5'],
+  thinking: ['#A78BFA', '#EC4899'],
 };
 
-export const HUB = themed(BASE, CHIIKAWA) as typeof BASE;
-
-/** Thẻ kính của app, bo góc 16. Dùng dạng mảng: `[GLASS_CARD, { padding: 16 }]`. */
-export const GLASS_CARD = [GLASS, { borderRadius: 16 }] as never;
-
-export const BAND_COLOR = { good: '#2E7D4F', fair: '#A8741A', poor: '#B33A2A', unknown: '#8E95B3' } as const;
-
-export const DIFF_COLOR = { EASY: '#2E7D4F', MEDIUM: '#8F6E36', HARD: '#B9661B' } as const;
-
-export const TAG_COLOR = { NEW: '#8F6E36', BETA: '#A7833F', PREMIUM: '#A8741A' } as const;
-
-/** Quả cầu AI theo mood và chủ đề. */
-const GLOW_BASE: Record<'idle' | 'speaking' | 'listening' | 'thinking', [string, string]> = {
-  idle: ['#F4DA94', '#B8955A'],
-  speaking: ['#FBE7AE', '#A7833F'],
-  listening: ['#B9E3C4', '#4E9A6A'],
-  thinking: ['#FBD38D', '#C0822E'],
-};
-const GLOW_CHIIKAWA: Record<'idle' | 'speaking' | 'listening' | 'thinking', [string, string]> = {
-  idle: ['#FCE4EC', '#D65E86'],
-  speaking: ['#FFD0E1', '#C64E79'],
-  listening: ['#D7F3E0', '#4E9A6A'],
-  thinking: ['#FFE3B3', '#E0609A'],
-};
 export function glowFor(mood: 'idle' | 'speaking' | 'listening' | 'thinking'): [string, string] {
-  return paletteId() === 'chiikawa' ? GLOW_CHIIKAWA[mood] : GLOW_BASE[mood];
+  return GLOW_COSMIC[mood];
 }

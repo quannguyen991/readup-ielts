@@ -582,7 +582,7 @@ const AREA_CAT_POSE = ['sit', 'hangingPaws', 'curl', 'peeking', 'stretch', 'lie'
 
 function AreaCard({ area, chiikawaTheme, colorIndex }: { area: Area; chiikawaTheme: boolean; colorIndex: number }) {
   const { locale } = useL();
-  const colors = chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : area.colors;
+  const colors = (chiikawaTheme ? CHIIKAWA_AREA_COLORS[colorIndex % CHIIKAWA_AREA_COLORS.length] : area.colors) ?? ['#4A7FE8', '#7FA3F6'];
   // Theme mặc định: mèo bám lên mép trên thẻ. Theme Chiikawa đã có nhân vật riêng trên thẻ.
   const perch = !chiikawaTheme;
   return (

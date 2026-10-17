@@ -1,13 +1,17 @@
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { CAM_VOL_TEST_PACKAGES, testPackageToSourceTest } from '@/data/ielts-cam-vol-bank';
 
+type TestSection = 'Reading' | 'Listening' | 'Writing' | 'Speaking';
 type SourcePage = { page: number; text: string; reviewLines: Array<{ confidence: number; original: string }> };
 type SourceTest = {
   id: string;
   title: string;
   source: string;
-  section?: 'Reading' | 'Listening';
+  section?: TestSection;
   questionCount?: number;
+  answerMode?: 'short' | 'long';
+  responseLabels?: string[];
   pages: SourcePage[];
   supportPages: SourcePage[];
   answerKey?: Record<string, string | string[]>;
@@ -15,6 +19,7 @@ type SourceTest = {
   sourceStartPage?: number;
   sourceUrl?: string;
   audioFiles?: string[];
+  audioCloudUrl?: string;
   answerKeyVerified?: boolean;
   externalOnly?: boolean;
 };
@@ -48,10 +53,32 @@ function externalSourceOnlyTests(): SourceTest[] {
 }
 
 async function readBundle(): Promise<PrivateOcrBundle | null> {
+  const masterTests = CAM_VOL_TEST_PACKAGES.map(testPackageToSourceTest) as SourceTest[];
   try {
-    return JSON.parse(await readFile(path.join(privateDir, 'source-tests.json'), 'utf8')) as PrivateOcrBundle;
+    const raw = JSON.parse(await readFile(path.join(privateDir, 'source-tests.json'), 'utf8')) as PrivateOcrBundle;
+    const testMap = new Map<string, SourceTest>();
+    for (const t of raw.tests) testMap.set(t.id, t);
+    for (const mt of masterTests) {
+      if (testMap.has(mt.id)) {
+        const existing = testMap.get(mt.id)!;
+        testMap.set(mt.id, {
+          ...existing,
+          title: mt.title,
+          source: mt.source,
+          section: mt.section,
+          questionCount: mt.questionCount,
+          answerKey: mt.answerKey ?? existing.answerKey,
+          answerKeyVerified: true,
+          externalOnly: false,
+          supportPages: (mt.supportPages && mt.supportPages.length > 0) ? mt.supportPages : existing.supportPages,
+        });
+      } else {
+        testMap.set(mt.id, mt);
+      }
+    }
+    return { tests: Array.from(testMap.values()), reviewPages: raw.reviewPages ?? [] };
   } catch {
-    return { tests: externalSourceOnlyTests(), reviewPages: [] };
+    return { tests: [...masterTests, ...externalSourceOnlyTests()], reviewPages: [] };
   }
 }
 
@@ -64,11 +91,13 @@ export async function GET(request: Request): Promise<Response> {
 
   return Response.json({
     reviewPages: bundle.reviewPages,
-    tests: bundle.tests.map(({ id, title, source, section, questionCount, pages, supportPages, answerKey, pdfAsset, sourceUrl, audioFiles, answerKeyVerified, externalOnly }) => ({
+    tests: bundle.tests.map(({ id, title, source, section, questionCount, answerMode, responseLabels, pages, supportPages, answerKey, pdfAsset, sourceUrl, audioFiles, audioCloudUrl, answerKeyVerified, externalOnly }) => ({
       id, title, source, section, questionCount: questionCount ?? 40,
+      answerMode, responseLabels,
       pageCount: pages.length, supportPageCount: supportPages.length,
       hasAnswerKey: Boolean(answerKey || supportPages.length), answerKeyVerified: answerKeyVerified ?? false,
       hasPdf: Boolean(pdfAsset || sourceUrl), audioCount: audioFiles?.length ?? 0,
+      audioCloudUrl,
       externalOnly: externalOnly ?? false,
     })),
   }, { headers: jsonHeaders });
@@ -78,18 +107,25 @@ export async function POST(request: Request): Promise<Response> {
   const bundle = await readBundle();
   if (!bundle) return Response.json({ error: 'Chưa nhập dữ liệu OCR cục bộ.' }, { status: 404 });
   const body = await request.json().catch(() => ({})) as { id?: unknown; submitted?: unknown; answers?: unknown };
-  if (typeof body.id !== 'string') return Response.json({ error: 'Thiếu mã đề.' }, { status: 400 });
-  const test = bundle.tests.find((item) => item.id === body.id);
-  if (!test) return Response.json({ error: 'Không tìm thấy đề.' }, { status: 404 });
+  const requestedId = typeof body.id === 'string' ? body.id : '';
+  const test = bundle.tests.find((item) =>
+    item.id === requestedId ||
+    (requestedId ? (
+      item.id === requestedId.replace('-test-', '-reading-') ||
+      item.id === requestedId.replace('-reading-', '-test-') ||
+      item.id === requestedId.replace('-academic-', '-')
+    ) : false)
+  );
+  if (!test || !requestedId) return Response.json({ error: 'Không tìm thấy đề.' }, { status: 404 });
 
   const submitted = body.submitted === true;
-  const answers = submitted ? sanitizeAnswers(body.answers, test.questionCount ?? 40) : {};
+  const answers = submitted ? sanitizeAnswers(body.answers, test.questionCount ?? 40, test.answerMode === 'long' ? 10000 : 120) : {};
   return Response.json({
     test: {
       id: test.id, title: test.title, source: test.source, section: test.section,
-      questionCount: test.questionCount ?? 40, pages: test.pages,
+      questionCount: test.questionCount ?? 40, answerMode: test.answerMode, responseLabels: test.responseLabels, pages: test.pages,
       pdfAsset: test.pdfAsset, sourceStartPage: test.sourceStartPage ?? 1,
-      sourceUrl: test.sourceUrl, audioFiles: test.audioFiles ?? [], externalOnly: test.externalOnly ?? false,
+      sourceUrl: test.sourceUrl, audioFiles: test.audioFiles ?? [], audioCloudUrl: test.audioCloudUrl, externalOnly: test.externalOnly ?? false,
     },
     supportPages: submitted ? test.supportPages : [],
     grade: submitted ? gradeTest(test, answers) : null,
@@ -128,12 +164,12 @@ async function servePrivateAsset(request: Request, bundle: PrivateOcrBundle, req
   }
 }
 
-function sanitizeAnswers(raw: unknown, count: number): Record<string, string> {
+function sanitizeAnswers(raw: unknown, count: number, maxLength: number): Record<string, string> {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return {};
   const out: Record<string, string> = {};
   for (const [key, value] of Object.entries(raw)) {
     const number = Number(key);
-    if (Number.isInteger(number) && number >= 1 && number <= count && typeof value === 'string') out[String(number)] = value.slice(0, 120).trim();
+    if (Number.isInteger(number) && number >= 1 && number <= count && typeof value === 'string') out[String(number)] = value.slice(0, maxLength).trim();
   }
   return out;
 }

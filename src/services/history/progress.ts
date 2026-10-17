@@ -29,7 +29,7 @@ export type HistoryPrefs = {
   autoAdvance: boolean;
 };
 
-export const DEFAULT_PREFS: HistoryPrefs = { displayLang: 'both', narrationLang: 'en', speed: 1, autoAdvance: false };
+export const DEFAULT_PREFS: HistoryPrefs = { displayLang: 'both', narrationLang: 'en', speed: 0.75, autoAdvance: false };
 
 const empty = (iso: string): TopicProgress => ({ updatedAt: iso, scenes: {} });
 

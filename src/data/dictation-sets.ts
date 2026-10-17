@@ -1,5 +1,6 @@
 import { DICTATION_SETS_A, type DictationSet, type DictationSetSentence } from './dictation-sets-a';
 import { DICTATION_SETS_B } from './dictation-sets-b';
+import { DICTATION_SETS_C } from './dictation-sets-c';
 
 /**
  * Kho BỘ ĐỀ chép chính tả — gộp các nửa lại thành một danh sách.
@@ -28,7 +29,7 @@ const LEVEL_RANK: Record<string, number> = { A2: 0, B1: 1, B2: 2, C1: 3 };
  * `id` giữ nguyên vì tiến độ đã lưu trên máy người dùng khoá theo id; thứ đổi
  * chỉ là VỊ TRÍ hiển thị, và `position` bên dưới mới là số bài in trên thẻ.
  */
-export const DICTATION_SETS: DictationSet[] = [...DICTATION_SETS_A, ...DICTATION_SETS_B].sort(
+export const DICTATION_SETS: DictationSet[] = [...DICTATION_SETS_A, ...DICTATION_SETS_B, ...DICTATION_SETS_C].sort(
   (a, b) => (LEVEL_RANK[a.level] ?? 9) - (LEVEL_RANK[b.level] ?? 9) || a.order - b.order,
 );
 

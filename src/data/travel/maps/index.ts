@@ -6,10 +6,10 @@ import type { CityId, CityMap } from '@/services/travel/types';
 import { amsterdam } from './amsterdam';
 import { amsterdamFlat } from './amsterdam.flat';
 import { danang, danangTiles } from './danang';
-import { hanoi, hanoiTiles } from './hanoi';
+import { hanoiTiles } from './hanoi';
+import { hanoiWorld as hanoi } from './hanoi-world';
 import { hanoiGrid } from './hanoi.grid';
 import { hochiminh, hochiminhTiles } from './hochiminh';
-import { hochiminhGrid } from './hochiminh.grid';
 import { london } from './london';
 import { londonFlat } from './london.flat';
 import { paris } from './paris';
@@ -24,7 +24,7 @@ import { tokyo } from './tokyo';
 import { newyork } from './newyork';
 import { shanghai } from './shanghai';
 
-export const CITY_MAPS: Record<CityId, CityMap> = { hanoi: hanoiGrid, singapore, london, paris, amsterdam, rome, hochiminh: hochiminhGrid, danang, tokyo, seoul, newyork, istanbul, cairo, sydney, mexicocity, rio, capetown, marrakech, shanghai };
+export const CITY_MAPS: Record<CityId, CityMap> = { hanoi: hanoi, singapore, london, paris, amsterdam, rome, hochiminh, danang, tokyo, seoul, newyork, istanbul, cairo, sydney, mexicocity, rio, capetown, marrakech, shanghai };
 
 /** Bản đồ ô dự phòng (code-drawn) cho thành phố nào đã có. */
 export const TILE_FALLBACKS: Partial<Record<CityId, CityMap>> = { singapore: singaporeTiles, hanoi: hanoiTiles, hochiminh: hochiminhTiles, danang: danangTiles };

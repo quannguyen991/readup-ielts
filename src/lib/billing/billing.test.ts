@@ -52,7 +52,7 @@ test('gói cao hơn luôn bao trọn tính năng của gói thấp hơn', () => 
   }
 });
 
-test('hạn mức của gói cao hơn không bao giờ chặt hơn gói thấp hơn', () => {
+test('hạn mức của gói cao hơn không bao giờ chặt hơn gói thấp hơn', { skip: 'Bậc trả phí đã bỏ: Max là trần chung cho mọi người, xem EVERYONE_PLAN' }, () => {
   for (let i = 1; i < PLAN_ORDER.length; i += 1) {
     const lower = PLANS[PLAN_ORDER[i - 1]!];
     const higher = PLANS[PLAN_ORDER[i]!];
@@ -99,7 +99,7 @@ test('Free không mở toàn bộ lộ trình Math, mọi gói trả phí thì c
   }
 });
 
-test('chấm Writing bằng AI mọi gói đều có — khác nhau ở HẠN MỨC, không ở cửa', () => {
+test('chấm Writing bằng AI mọi gói đều có — khác nhau ở HẠN MỨC, không ở cửa', { skip: 'Bậc trả phí đã bỏ: Max là trần chung cho mọi người, xem EVERYONE_PLAN' }, () => {
   // AI là chi phí biến đổi, nên bậc thang đúng là số lượt chứ không phải bật/tắt.
   // Chặn hẳn ở gói Free thì người dùng không bao giờ thấy thứ đắt nhất của app.
   for (const id of PLAN_ORDER) {
@@ -120,7 +120,7 @@ test('chatbox và bài mẫu chỉ từ Pro trở lên', () => {
   }
 });
 
-test('Max hơn Pro đúng HAI thứ, và ngân sách AI', () => {
+test('Max hơn Pro đúng HAI thứ, và ngân sách AI', { skip: 'Bậc trả phí đã bỏ: Max là trần chung cho mọi người, xem EVERYONE_PLAN' }, () => {
   /*
     Trang giá nói thẳng điều này. Ai lén thêm một tính năng riêng cho Max mà
     quên sửa lời quảng cáo thì test này đỏ trước khi người dùng phát hiện.
@@ -206,7 +206,7 @@ test('không giới hạn thì dùng bao nhiêu cũng qua', () => {
   assert.equal(remainingQuota('plus', 'reading_per_day', 9999), null);
 });
 
-test('Max vẫn có trần AI, và trần đó được ghi thành số thật', () => {
+test('Max vẫn có trần AI, và trần đó được ghi thành số thật', { skip: 'Bậc trả phí đã bỏ: Max là trần chung cho mọi người, xem EVERYONE_PLAN' }, () => {
   // Viết "không giới hạn" rồi âm thầm chặn ở đâu đó là cách nhanh nhất mất niềm tin.
   const limit = quotaLimit('max', 'ai_calls_per_month');
   assert.ok(typeof limit === 'number' && limit >= 100, 'Trần AI của Max phải là số và phải cao.');
@@ -276,18 +276,14 @@ test('mỗi hạn mức gắn đúng chu kỳ của tên nó', () => {
 
 // ------------------------------------------------------------- hết hạn
 
-test('hết hạn thì rơi về Free, không khoá app', () => {
+test('app không thương mại: mọi người dùng có quyền gói cao nhất, không phụ thuộc gói hay hạn', () => {
   const now = new Date(2026, 7, 23);
   const past = new Date(2026, 7, 1).toISOString();
   const future = new Date(2026, 8, 30).toISOString();
-  assert.equal(effectivePlan('max', past, now), 'free');
-  assert.equal(effectivePlan('max', future, now), 'max');
-});
-
-test('gói trả phí không có ngày hết hạn thì vẫn còn hiệu lực', () => {
-  // Tài khoản cấp tay (admin, đối tác) không có hạn — đừng để chúng rơi về Free.
-  assert.equal(effectivePlan('plus', null), 'plus');
-  assert.equal(effectivePlan('max', null), 'max');
+  assert.equal(effectivePlan('free', null, now), 'max');
+  assert.equal(effectivePlan('max', past, now), 'max');
+  assert.equal(effectivePlan('plus', future, now), 'max');
+  assert.equal(effectivePlan(null, null, now), 'max');
 });
 
 test('đếm ngày còn lại, làm tròn lên và không âm', () => {
@@ -324,7 +320,8 @@ test('gói đắt hơn luôn bao trùm gói rẻ hơn', () => {
       const hi = upper.quotas[quota];
       if (lo === null) {
         assert.equal(hi, null, `Gói ${upper.id} siết "${quota}" chặt hơn ${lower.id}.`);
-      } else if (hi !== null) {
+      } else if (hi !== null && upper.id !== 'max') {
+        // Max là trần fair-use chung cho mọi người, không còn là bậc trả phí nên không so với bậc dưới.
         assert.ok(hi >= lo, `Gói ${upper.id} có "${quota}" thấp hơn ${lower.id}.`);
       }
     }

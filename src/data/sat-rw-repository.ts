@@ -2,6 +2,8 @@ import seed from './seed/sat-rw/index.json';
 import generated2 from './seed/sat-rw/generated-2.json';
 import hardConventions from './seed/sat-rw/hard-conventions.json';
 import hardReading from './seed/sat-rw/hard-reading.json';
+import grammarSkills from './seed/sat-rw/grammar-skills.json';
+import grammarSkillsHard from './seed/sat-rw/grammar-skills-hard.json';
 import { SAT_RW_ORIGINAL_READING_EXPANSION } from './seed/sat-rw/original-reading-expansion';
 import type { MockItem } from '@/services/sat-rw/mock/item';
 import { difficultyScore } from '@/services/sat-rw/mock/difficulty';
@@ -155,6 +157,7 @@ function fromHardSeed(q: HardSeed): SatRwQuestion {
 export const SAT_RW_HARD_QUESTIONS: SatRwQuestion[] = [
   ...(hardConventions as { questions: HardSeed[] }).questions,
   ...(hardReading as { questions: HardSeed[] }).questions,
+  ...(grammarSkillsHard as { questions: HardSeed[] }).questions,
 ].map(fromHardSeed);
 
 /**
@@ -186,6 +189,8 @@ function labelOldByUnit(questions: SatRwQuestion[]): SatRwQuestion[] {
 export const SAT_RW_QUESTIONS: SatRwQuestion[] = [
   ...labelOldByUnit([...SAT_RW_BASE_QUESTIONS, ...SAT_RW_EXTRA_QUESTIONS]),
   ...SAT_RW_HARD_QUESTIONS,
+  // Câu ngữ pháp mới (bổ ngữ, dạng động từ) mang sẵn bậc Dễ/Vừa; không đi qua `labelOldByUnit`.
+  ...(grammarSkills as { questions: SatRwQuestion[] }).questions,
   ...SAT_RW_ORIGINAL_READING_EXPANSION,
 ];
 
@@ -226,6 +231,8 @@ export const SAT_RW_SKILL_LABEL: Record<string, string> = {
   central: 'Central Ideas',
   evidence: 'Command of Evidence',
   inference: 'Inferences',
+  modifier: 'Bổ ngữ & vị trí',
+  verbform: 'Dạng động từ',
 };
 
 export function getSatRwUnit(unit: number): SatRwUnit | undefined {

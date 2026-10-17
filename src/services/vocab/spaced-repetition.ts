@@ -3,6 +3,7 @@ import { CARD_KINDS, cardKey, emptyCard, applyGrade, fromStored, isDue, type Car
 import type { VocabEntry } from '@/store/useVocabStore';
 import { LISTENING_DECKS } from '@/data/vocab-listening';
 import { VOCAB_TOPICS, type VocabTopicWord } from '@/data/vocab-topics';
+import { DESTINATION_DECKS } from '@/data/destination-vocab';
 
 /**
  * Xếp lịch và thống kê LẶP LẠI NGẮT QUÃNG (Spaced Repetition / FSRS).
@@ -189,7 +190,7 @@ export function calculateMemoryLevels(
 /** Tra cứu thông tin từ theo chủ đề trong bộ 2.500 từ */
 const topicWordsMap = new Map<string, VocabTopicWord>();
 // 50 chủ đề đứng trước: từ trùng thì giữ bản ở chủ đề, bộ Nghe chỉ bổ sung từ còn thiếu.
-for (const topic of [...VOCAB_TOPICS, ...LISTENING_DECKS]) {
+for (const topic of [...VOCAB_TOPICS, ...LISTENING_DECKS, ...DESTINATION_DECKS]) {
   for (const w of topic.words) {
     const key = w.word.trim().toLowerCase();
     if (!topicWordsMap.has(key)) {

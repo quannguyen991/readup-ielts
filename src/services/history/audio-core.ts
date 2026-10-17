@@ -2,7 +2,7 @@ import type { AudioSentence, NarrationLang, Scene, SceneAudioTrack } from './typ
 
 /** Phần thuần (không DOM) của trình phát thuyết minh — để test được. */
 
-export const SPEEDS = [0.75, 1, 1.25, 1.5] as const;
+export const SPEEDS = [0.65, 0.75, 0.85, 1, 1.25, 1.5] as const;
 export type Speed = (typeof SPEEDS)[number];
 export const SEEK_STEP = 10;
 

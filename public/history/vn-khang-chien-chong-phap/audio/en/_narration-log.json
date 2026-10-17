@@ -1,0 +1,14 @@
+{
+ "voice": "Kore",
+ "model": "gemini-3.1-flash-tts-preview",
+ "date": "2026-10-03",
+ "scriptHash": "259d34d7a602",
+ "scenes": [
+  "s05",
+  "s06",
+  "s07",
+  "s08"
+ ],
+ "coverage": 0.872,
+ "duration": 196.3
+}

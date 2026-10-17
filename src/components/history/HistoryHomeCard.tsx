@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { router } from 'expo-router';
 
-import { devBundles, featuredImage, hasPublishedHistory, isDevBuild, KHANG_CHIEN_TOPIC_ID, getBundle } from '@/data/history';
+import { devBundles, featuredImage, hasPublishedHistory, HISTORY_LEARNING_ENABLED, isDevBuild, KHANG_CHIEN_TOPIC_ID, getBundle } from '@/data/history';
 import { useL } from '@/i18n/useL';
-import { readingFont } from '@/lib/readingFonts';
+import { readingFont, useReadingFonts } from '@/lib/readingFonts';
 import { visibleScenes } from '@/services/history/gating';
 import { resumeScene } from '@/services/history/progress';
 import { useHistoryStore } from '@/store/useHistoryStore';
@@ -18,6 +18,7 @@ import { Chip, H, softShadow } from './ui';
  * "Sắp ra mắt" (dành cho người làm app, để thấy chỗ đặt) — người dùng thật không bao giờ thấy.
  */
 export function HistoryHomeCard({ compact = false, marginTop = 0 }: { compact?: boolean; marginTop?: number }) {
+  useReadingFonts();
   const { L } = useL();
   const { width } = useWindowDimensions();
   const published = hasPublishedHistory();
@@ -33,7 +34,7 @@ export function HistoryHomeCard({ compact = false, marginTop = 0 }: { compact?: 
     return s?.image ? { file: s.image.file, altVi: s.image.altVi, altEn: s.image.altEn } : null;
   }, []);
 
-  if (!published && !isDevBuild()) return null;
+  if (!HISTORY_LEARNING_ENABLED || (!published && !isDevBuild())) return null;
 
   const started = !!topics[KHANG_CHIEN_TOPIC_ID];
   const bundle = getBundle(KHANG_CHIEN_TOPIC_ID);
@@ -77,7 +78,7 @@ export function HistoryHomeCard({ compact = false, marginTop = 0 }: { compact?: 
           <Chip tone="accent" label={L('Mới · Song ngữ Việt–Anh', 'New · Bilingual EN–VI')} />
           {!published ? <Chip tone="warn" label={L('Sắp ra mắt (chỉ hiện ở bản dev)', 'Coming soon (dev builds only)')} /> : null}
         </View>
-        <Text style={{ fontFamily: readingFont.sansHeavy, fontSize: wide ? 28 : 22, lineHeight: wide ? 34 : 28, letterSpacing: -0.5, color: H.ink }}>
+        <Text style={{ fontFamily: readingFont.display, fontWeight: '700', fontSize: wide ? 30 : 24, lineHeight: wide ? 38 : 31, letterSpacing: -0.35, color: H.ink }}>
           {L('Khám phá lịch sử Việt Nam song ngữ', 'Explore Vietnamese history, bilingual')}
         </Text>
         <Text style={{ fontFamily: readingFont.sans, fontSize: 15, lineHeight: 22, color: H.body }}>

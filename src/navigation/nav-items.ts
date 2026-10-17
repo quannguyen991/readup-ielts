@@ -79,7 +79,7 @@ export const NAV_GROUPS: NavGroup[] = [
           { key: 'learning-path', label: 'Lộ trình học', href: '/lo-trinh-hoc', icon: 'compass' },
           { key: 'progress', label: 'Tiến độ', href: '/progress', icon: 'trending' },
           { key: 'errors', label: 'Hồ sơ lỗi', href: '/errors', icon: 'target' },
-          { key: 'mastery', label: 'Sổ bằng chứng', href: '/mastery', icon: 'clipboard' },
+          { key: 'clips', label: 'Clip tiếng Anh', href: '/clip', icon: 'play' },
         ],
       },
       {
@@ -89,6 +89,7 @@ export const NAV_GROUPS: NavGroup[] = [
         icon: 'book',
         inBottomTabs: true,
         children: [
+          { key: 'luyen-doc', label: 'Luyện đọc', href: '/luyen-doc', icon: 'book' },
           { key: 'mock-tests', label: 'Thi thử Reading', href: '/mock-tests', icon: 'clipboard' },
           { key: 'ielts-source-practice', label: 'Bộ đề riêng trên máy', href: '/ielts-source-practice', icon: 'list' },
           { key: 'library', label: 'Kho bài đọc', href: '/library', icon: 'list' },
@@ -169,8 +170,6 @@ export const NAV_GROUPS: NavGroup[] = [
         href: '/profile',
         icon: 'star',
         children: [
-          { key: 'invite', label: 'Mời bạn, học miễn phí', href: '/invite', icon: 'sparkle' },
-          { key: 'upgrade', label: 'Gói học', href: '/upgrade', icon: 'sparkle' },
           { key: 'books', label: 'Tủ sách PDF', href: '/tu-sach', icon: 'book' },
           { key: 'settings', label: 'Cài đặt', href: '/settings', icon: 'settings' },
           { key: 'teacher', label: 'Lớp học (giáo viên)', href: '/teacher', icon: 'clipboard' },
@@ -246,13 +245,26 @@ export function parentNavKey(key: string | null): string | null {
   return null;
 }
 
-/** Bỏ các mục chỉ-máy-tính khi thiết bị không đủ điều kiện (không để lại dấu vết). */
-export function visibleGroups(groups: readonly NavGroup[], desktop: boolean): NavGroup[] {
+/**
+ * Bỏ các mục chỉ-máy-tính khi thiết bị không đủ điều kiện (không để lại dấu vết).
+ *
+ * `ieltsFeatures`: các trang con IELTS người học đã chọn (xem ielts-focus.ts).
+ * `null` = chưa chọn, hiện đủ. Chỉ lọc các trang con của mục IELTS.
+ */
+export function visibleGroups(
+  groups: readonly NavGroup[],
+  desktop: boolean,
+  ieltsFeatures: readonly string[] | null = null,
+): NavGroup[] {
   const historyOk = HISTORY_LEARNING_ENABLED && (isDevBuild() || hasPublishedHistory());
   const keep = (i: NavItem): boolean => (desktop || !i.desktopOnly) && (i.requires !== 'history' || historyOk);
+  const keepIelts = (parentKey: string, i: NavItem): boolean =>
+    parentKey !== 'ielts' || ieltsFeatures === null || ieltsFeatures.includes(i.key);
   return groups.map((g) => ({
     ...g,
-    items: g.items.filter(keep).map((i) => (i.children ? { ...i, children: i.children.filter(keep) } : i)),
+    items: g.items
+      .filter(keep)
+      .map((i) => (i.children ? { ...i, children: i.children.filter((c) => keep(c) && keepIelts(i.key, c)) } : i)),
   }));
 }
 
@@ -268,6 +280,8 @@ export const NAV_LABEL_EN: Record<string, string> = {
   progress: 'Progress',
   errors: 'Mistake log',
   mastery: 'Evidence book',
+  clips: 'English clips',
+  'luyen-doc': 'Reading practice',
   ielts: 'IELTS',
   'mock-tests': 'Reading mock tests',
   'ielts-source-practice': 'Private IELTS tests',
@@ -308,8 +322,6 @@ export const NAV_LABEL_EN: Record<string, string> = {
   duel: '1-on-1 duel',
   shop: 'Rewards shop',
   me: 'Me',
-  invite: 'Invite friends, learn free',
-  upgrade: 'Plans',
   books: 'PDF bookshelf',
   settings: 'Settings',
   observatory: 'AI question quality',

@@ -6,7 +6,7 @@ import { shuffled, type StudyWord } from '@/services/vocab/topic-study';
  *
  * Người dùng yêu cầu 26/09/2026: "bổ sung quiz ôn tập từ vựng SAT, từ dễ đến
  * khó, chia theo chủ đề". Chủ đề là 23 bài từ SAT sẵn có (Math theo mảng kiến
- * thức, Verbal theo chủ đề nghĩa). Ba mức khác nhau ở VIỆC PHẢI LÀM, không chỉ
+ * thức, Verbal theo chủ đề nghĩa và nội dung từ sách). Ba mức khác nhau ở VIỆC PHẢI LÀM, không chỉ
  * ở số câu:
  *
  *   Dễ  — nhìn từ tiếng Anh, chọn nghĩa tiếng Việt. Chỉ cần nhận ra.
@@ -51,7 +51,7 @@ export const SAT_QUIZ_KIND_LABEL: Record<SatQuizKind, string> = {
 };
 
 export const SAT_QUIZ_TOPICS: { subject: 'math' | 'verbal'; label: string; lessons: VocabLesson[] }[] = [
-  { subject: 'verbal', label: 'SAT Verbal · theo chủ đề nghĩa', lessons: SAT_VERBAL_VOCAB_LESSONS },
+  { subject: 'verbal', label: 'SAT Verbal · từ vựng và đọc hiểu', lessons: SAT_VERBAL_VOCAB_LESSONS },
   { subject: 'math', label: 'SAT Math · thuật ngữ đề bài', lessons: SAT_MATH_VOCAB_LESSONS },
 ];
 

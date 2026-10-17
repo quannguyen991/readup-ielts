@@ -1,26 +1,11 @@
 import seed from './seed/video-library/index.json';
+import seedBilingual from './seed/bilingual-videos.json';
 
 /**
  * Thư viện video luyện nghe.
  *
- * CHỈ CHỨA SIÊU DỮ LIỆU ĐỂ NHÚNG — id video, tiêu đề, tên kênh, thời lượng.
- * Không có phụ đề, không có nội dung video. Video phát qua trình nhúng chính
- * thức của YouTube, đúng cách nó được thiết kế để dùng; phần nội dung vẫn thuộc
- * về chủ kênh và người xem vẫn được tính lượt xem cho họ.
- *
- * Danh sách tuyển thẳng từ trang kênh trên YouTube bằng
- * `scripts/build-video-library.mjs`, KHÔNG lấy từ nền tảng học nào khác: danh
- * sách bài của một app khác là công sức tuyển chọn của họ.
- *
- * MỘT SỰ THẬT PHẢI NÓI RÕ, vì nó định hình cả tính năng: app KHÔNG tự lấy được
- * phụ đề. Đo cả hai đường vào 05/09/2026 — máy chủ Vercel gọi `timedtext` nhận
- * HTTP 200 nhưng 0 byte, mọi client InnerTube trả về 0 caption track; còn từ
- * trình duyệt thì trang watch bị CORS chặn và InnerTube cũng bị chặn. YouTube
- * nay đòi tham số ký sinh từ chính trình phát của họ.
- *
- * Nên thư viện này KHÔNG hứa "bấm là có bài". Nó hứa đúng thứ nó làm được: chọn
- * sẵn video hợp trình độ, và người học dán phụ đề một lần cho mỗi video. Đã dán
- * rồi thì `useVideoTranscriptStore` nhớ lại, lần sau vào là làm ngay.
+ * Chứa siêu dữ liệu của các video tuyển chọn (CNN, BBC News, Vietnam Today, Podcast, TED-Ed)
+ * kèm các video có sẵn phụ đề song ngữ Anh - Việt.
  */
 
 export type LibraryVideo = {
@@ -32,7 +17,16 @@ export type LibraryVideo = {
   durationSeconds: number | null;
 };
 
-export const LIBRARY_VIDEOS: LibraryVideo[] = seed as LibraryVideo[];
+const bilingualVideos: LibraryVideo[] = (seedBilingual.videos ?? []) as LibraryVideo[];
+const bilingualIdSet = new Set(bilingualVideos.map((v) => v.id));
+const otherVideos = (seed as LibraryVideo[]).filter((v) => !bilingualIdSet.has(v.id));
+
+export const LIBRARY_VIDEOS: LibraryVideo[] = [...bilingualVideos, ...otherVideos];
+export const BILINGUAL_VIDEO_IDS = new Set(Object.keys(seedBilingual.prepared ?? {}));
+
+export function isBilingualVideo(id: string): boolean {
+  return BILINGUAL_VIDEO_IDS.has(id);
+}
 
 /** Trình độ, xếp từ dễ tới khó chứ không theo bảng chữ cái. */
 export const VIDEO_LEVELS = ['A2', 'B1', 'B2', 'C1'] as const;
@@ -63,13 +57,14 @@ export function formatDuration(seconds: number | null): string | null {
   return `${Math.round(seconds / 60)} phút`;
 }
 
-export function filterVideos(filters: { level?: string; topic?: string; search?: string } = {}): LibraryVideo[] {
-  const { level = 'all', topic = 'all', search = '' } = filters;
+export function filterVideos(filters: { level?: string; topic?: string; channel?: string; search?: string } = {}): LibraryVideo[] {
+  const { level = 'all', topic = 'all', channel = 'all', search = '' } = filters;
   const q = search.trim().toLowerCase();
 
   return LIBRARY_VIDEOS.filter((v) => {
     if (level !== 'all' && v.level !== level) return false;
     if (topic !== 'all' && v.topic !== topic) return false;
+    if (channel !== 'all' && v.channel !== channel) return false;
     if (q && !v.title.toLowerCase().includes(q) && !v.channel.toLowerCase().includes(q)) return false;
     return true;
   });

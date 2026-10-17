@@ -1105,12 +1105,17 @@
       {
         "sourceId": "src-nda-dbp",
         "locator": "đoạn 'Ngày 3 tháng 12 năm 1953, Navarre đã quyết định…'",
-        "supports": "partial"
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-lemonde-dbp-navarre",
+        "locator": "ghi chú 4, trích văn bản Navarre ngày 3/12/1953 về quyết định chấp nhận trận đánh ở Tây Bắc và tập trung phòng thủ tại Điện Biên Phủ",
+        "supports": "full"
       }
     ],
-    "independentSources": 1,
-    "status": "single-source",
-    "notes": "Nguồn đọc: bài của Học viện Quốc phòng; các bài khác nhắc ý 'chặn Thượng Lào' nhưng chưa đối chiếu ngày 3/12 độc lập."
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Ngày 3/12 và quyết định chấp nhận trận đánh được đối chiếu giữa bài của Học viện Quốc phòng và ghi chép của Le Monde dẫn lại văn bản Navarre; mục tiêu chặn đường vào Thượng Lào được nêu trong nguồn Học viện Quốc phòng."
   },
   {
     "id": "c10-2",
@@ -1127,12 +1132,22 @@
       {
         "sourceId": "src-nda-dbp",
         "locator": "đoạn mô tả lực lượng quân Pháp và các phân khu",
-        "supports": "partial"
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-lemonde-dbp-airlift",
+        "locator": "mục 'Pont aérien et Vie souterraine': sân bay, cầu hàng không từ Hà Nội, thả dù/hạ cánh và các chuyến tiếp tế",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-nhandan-dbp-air-supply",
+        "locator": "đoạn 'Sau đó bộ đội phòng không và cao xạ của ta tiếp tục chặn đường tiếp tế duy nhất bằng máy bay của địch'",
+        "supports": "full"
       }
     ],
-    "independentSources": 1,
-    "status": "single-source",
-    "notes": "Chỉ xác nhận 'cụm cứ điểm' trong nguồn đã đọc; ý 'tiếp tế chủ yếu bằng đường không' là kiến thức chung nhưng chưa trích nguồn riêng — cần bổ sung nếu muốn nâng lên verified."
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Le Monde tường thuật đương thời về cầu hàng không, các đợt thả dù/hạ cánh và các chuyến tiếp tế; bài Nhân Dân đăng lại tư liệu tháng 4/1954 gọi máy bay là đường tiếp tế duy nhất lúc đó. Học viện Quốc phòng hỗ trợ mô tả cụm cứ điểm."
   },
   {
     "id": "c10-3",
@@ -1301,14 +1316,19 @@
     "people": [],
     "sources": [
       {
-        "sourceId": "src-wiki-geneva-1954",
-        "locator": "đoạn nói về ICC và Final Declaration",
-        "supports": "partial"
+        "sourceId": "src-frus-geneva-status",
+        "locator": "đoạn 2 của điện tín ngày 19/7/1954: 'only conference document and not signed agreement'",
+        "supports": "full"
+      },
+      {
+        "sourceId": "src-hansard-geneva-declaration",
+        "locator": "câu trả lời của Bộ Ngoại giao trong phiên Hạ viện 21/3/1955",
+        "supports": "full"
       }
     ],
-    "independentSources": 1,
-    "status": "single-source",
-    "notes": "Chỉ xác nhận từ nguồn thứ cấp (Wikipedia: 'unsigned Final Declaration'); cần nguồn học thuật/FRUS để nâng lên verified."
+    "independentSources": 2,
+    "status": "verified",
+    "notes": "Được đối chiếu bằng điện tín đương thời của đoàn Mỹ (FRUS, 19/7/1954), dự kiến đây là văn kiện của hội nghị chứ không phải hiệp định có chữ ký, và câu trả lời tại Quốc hội Anh ngày 21/3/1955 gọi đây là tuyên bố không phải hiệp ước hay thỏa thuận đã ký."
   },
   {
     "id": "c12-1",

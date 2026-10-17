@@ -4,6 +4,7 @@
   "main": "expo-router/entry",
   "dependencies": {
     "@anthropic-ai/sdk": "^0.116.0",
+    "@expo-google-fonts/be-vietnam-pro": "^0.4.1",
     "@expo-google-fonts/nunito": "^0.4.2",
     "@expo-google-fonts/playfair-display": "^0.4.2",
     "@expo-google-fonts/plus-jakarta-sans": "^0.4.2",
@@ -84,6 +85,8 @@
     "test": "tsx --test \"src/**/*.test.ts\"",
     "typecheck": "tsc --noEmit",
     "lint": "expo lint",
+    "world:validate": "tsx scripts/world/validate-world.ts",
+    "world:export": "tsx scripts/world/export-world.ts",
     "assets:plan": "tsx scripts/generate-assets.ts --plan",
     "assets:generate": "tsx scripts/generate-assets.ts",
     "ai:layout": "tsx scripts/ask-layout.ts",

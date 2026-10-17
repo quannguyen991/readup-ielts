@@ -33,9 +33,10 @@ test('hasSentenceSync / ngôn ngữ thuyết minh theo audio có thật', () => 
 });
 
 test('tốc độ, tua, đồng hồ, cảnh kế', () => {
-  assert.deepEqual([...SPEEDS], [0.75, 1, 1.25, 1.5]);
+  assert.deepEqual([...SPEEDS], [0.65, 0.75, 0.85, 1, 1.25, 1.5]);
   assert.equal(nextSpeed(1), 1.25);
-  assert.equal(nextSpeed(1.5), 0.75);
+  assert.equal(nextSpeed(1.5), 0.65);
+  assert.equal(nextSpeed(0.65), 0.75);
   assert.equal(nextSpeed(3), 1);
   assert.equal(clampSeek(-5, 30), 0);
   assert.equal(clampSeek(50, 30), 30);

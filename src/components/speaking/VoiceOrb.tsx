@@ -17,7 +17,7 @@ import { themedHex } from '@/theme/palette-state';
 import React, { useEffect, useRef } from 'react';
 import { Image, Platform, Pressable, View } from 'react-native';
 
-import { CHIIKAWA_IMG, useChiikawaActive } from '@/components/chiikawa/chiikawa';
+import { CHIIKAWA_IMG } from '@/components/chiikawa/chiikawa';
 
 export type OrbState = 'idle' | 'speaking' | 'listening' | 'thinking';
 
@@ -59,6 +59,17 @@ const CSS = `
 `;
 
 /** Chiikawa theo trạng thái: chờ vẫy, đang hỏi vẫy liên tục, đang nghe reo, đang chấm ló lên. */
+/** Đường dẫn ảnh của một tài nguyên require(). Web không có Image.resolveAssetSource nên rơi về các dạng còn lại. */
+function assetUri(mod: unknown): string {
+  const resolve = (Image as unknown as { resolveAssetSource?: (m: unknown) => { uri: string } }).resolveAssetSource;
+  if (typeof resolve === 'function') return resolve(mod).uri;
+  if (typeof mod === 'string') return mod;
+  const m = mod as { uri?: string; default?: unknown };
+  if (typeof m?.uri === 'string') return m.uri;
+  if (typeof m?.default === 'string') return m.default;
+  return '';
+}
+
 const CK_POSE: Record<OrbState, 'wave' | 'cheer' | 'peek'> = { idle: 'wave', speaking: 'wave', listening: 'cheer', thinking: 'peek' };
 
 function ensureCss() {
@@ -84,7 +95,8 @@ export function VoiceOrb({
   label: string;
 }) {
   const coreRef = useRef<HTMLDivElement | null>(null);
-  const chiikawa = useChiikawaActive();
+  // Phòng nói luôn dùng Chiikawa thay quả cầu tròn (yêu cầu 16/10/2026), không phụ thuộc theme đang bật.
+  const chiikawa = true;
 
   useEffect(() => {
     if (Platform.OS !== 'web') return;
@@ -125,7 +137,7 @@ export function VoiceOrb({
         React.createElement(
           'div',
           { className: 'vo-ck', ref: coreRef },
-          React.createElement('img', { src: Image.resolveAssetSource(CHIIKAWA_IMG[CK_POSE[state]]).uri, alt: '', draggable: false }),
+          React.createElement('img', { src: assetUri(CHIIKAWA_IMG[CK_POSE[state]]), alt: '', draggable: false }),
         ),
       )
     : React.createElement(

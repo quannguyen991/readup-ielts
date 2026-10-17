@@ -172,6 +172,54 @@ export const SPEAKING_TOPICS: SpeakingTopic[] = [
       'How can schools teach children to care for the environment?',
     ],
   },
+  {
+    id: 'work',
+    title: 'Work',
+    titleVi: 'Công việc',
+    tipVi: 'Khi nói về việc làm, nêu cả việc bạn thích lẫn việc bạn chưa thích và lý do.',
+    part1: ['What do you do for work or study?', 'What part of your job do you enjoy most?', 'Would you like to change your job in the future?'],
+    part2: {
+      prompt: 'Describe a job you would like to try one day.',
+      bullets: ['what the job is', 'what skills it needs', 'why it interests you', 'and how you would prepare for it'],
+    },
+    part3: ['Is it better to have one job for life or to change jobs often?', 'Do you think working from home will become more common?'],
+  },
+  {
+    id: 'health',
+    title: 'Health',
+    titleVi: 'Sức khoẻ',
+    tipVi: 'Ở Part 3, nói về trách nhiệm của cá nhân và của nhà nước bằng một ví dụ cụ thể.',
+    part1: ['How do you keep healthy?', 'Do you exercise regularly?', 'What do you usually eat for breakfast?'],
+    part2: {
+      prompt: 'Describe a healthy habit that you have tried to keep.',
+      bullets: ['what the habit is', 'when you started it', 'how you keep it up', 'and whether it has helped you'],
+    },
+    part3: ['Should governments pay more for public health services?', 'Why do many people find it hard to build healthy habits?'],
+  },
+  {
+    id: 'city',
+    title: 'Living in a city',
+    titleVi: 'Sống ở thành phố',
+    tipVi: 'Khi so sánh thành phố với nông thôn, đưa ra một ưu điểm và một nhược điểm rõ ràng.',
+    part1: ['Do you live in a city or in the countryside?', 'What is your favourite place in your city?', 'Is it easy to get around where you live?'],
+    part2: {
+      prompt: 'Describe a busy place in a city that you know well.',
+      bullets: ['where it is', 'who usually goes there', 'what people do there', 'and why you like or dislike it'],
+    },
+    part3: ['Will more people move to cities in the future?', 'How can cities reduce traffic jams?'],
+  },
+  {
+    id: 'friends',
+    title: 'Friendship',
+    titleVi: 'Bạn bè',
+    tipVi: 'Ở Part 2, kể một kỷ niệm cụ thể thay vì nói chung chung về tình bạn.',
+    part1: ['Do you have a close friend?', 'How often do you meet your friends?', 'Do you prefer meeting friends in person or online?'],
+    part2: {
+      prompt: 'Describe a friend who has helped you in a difficult time.',
+      bullets: ['who the person is', 'how you met them', 'what difficult time they helped you with', 'and how you felt about their help'],
+    },
+    part3: ['Is it harder to make close friends as an adult?', 'Can online friendships be as strong as real-life ones?'],
+  },
 ];
 
 export function topicById(id: string): SpeakingTopic | undefined {

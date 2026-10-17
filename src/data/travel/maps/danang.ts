@@ -10,11 +10,12 @@ import type { MapObject, Npc, SceneSprite } from '@/services/travel/types';
 import { poiGeometry } from '@/components/travel/engine/scene';
 import { imageMap, imagePoi } from './imagemap';
 import { composeMask } from '@/components/travel/engine/imageWorld';
-import { seamDecor } from './seams';
 import { DANANG_SCENE_MASK, DANANG_SCENE_MASK_CELL } from './danang.scene-walk';
 import { DANANG_SCENE_E_MASK } from './danang.scene-walk-e';
 import { DANANG_SCENE_S_MASK } from './danang.scene-walk-s';
 import { DANANG_SCENE_SE_MASK } from './danang.scene-walk-se';
+import { DANANG_SCENE_EE_MASK } from './danang.scene-walk-ee';
+import { DANANG_SCENE_SEE_MASK } from './danang.scene-walk-see';
 
 /** Thế giới 2×2 mảnh 418×235 chồng nhau OV điểm (hoà Bayer): E lệch phải, S lệch xuống, SE lệch cả hai. Hộp bao 816×450. */
 const PW = 418;
@@ -22,13 +23,15 @@ const PH = 235;
 const OV = 20;
 const EX = PW - OV;
 const SY = PH - OV;
-const WORLD = { w: EX + PW, h: SY + PH };
+/** Cột Đông thứ hai (EE): bờ biển Mỹ Khê, nối tiếp mảnh E ở x = 2·EX (chỉ có ở hàng trên). */
+const EE_X = 2 * EX;
+const WORLD = { w: EE_X + PW, h: SY + PH };
 
 const linkLine = (from: number, to: number, a: { x: number; y: number }, b: { x: number; y: number }, r = 10, step = 12) => {
   const n = Math.max(1, Math.ceil(Math.hypot(b.x - a.x, b.y - a.y) / step));
   return Array.from({ length: n + 1 }, (_, i) => ({ from, to, x: Math.round(a.x + ((b.x - a.x) * i) / n), y: Math.round(a.y + ((b.y - a.y) * i) / n), r }));
 };
-const LINKS = [
+const LINKS_BASE = [
   { from: 0, to: 1, x: EX + OV / 2, y: 107, r: 12 }, // cầu đá bên phải A ↔ cầu bên trái E
   ...linkLine(0, 2, { x: 123, y: SY + 3 }, { x: 120, y: SY + OV - 3 }), // vạch qua đường thứ nhất
   ...linkLine(0, 2, { x: 274, y: SY + 3 }, { x: 248, y: SY + OV - 3 }), // vạch qua đường thứ hai
@@ -36,6 +39,50 @@ const LINKS = [
   ...linkLine(1, 3, { x: EX + 211, y: SY + 2 }, { x: EX + 145, y: SY + OV - 2 }),
 ];
 import { vietnamTiles } from './vietnam.tiles';
+
+const PARTS = [
+  { x: 0, y: 0, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_MASK },
+  { x: EX, y: 0, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_E_MASK },
+  { x: 0, y: SY, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_S_MASK },
+  { x: EX, y: SY, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_SE_MASK },
+  { x: EE_X, y: 0, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_EE_MASK },
+  { x: EE_X, y: SY, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_SEE_MASK },
+];
+const MASK_BASE = composeMask(WORLD, DANANG_SCENE_MASK_CELL, PARTS, LINKS_BASE);
+/** Điểm nối dọc ranh giới E ↔ EE (mỗi 10 px), bỏ chỗ có nước để không lát đường qua biển. */
+const eeSeam: { from: number; to: number; x: number; y: number; r: number }[] = [];
+for (let y = 10; y < PH - 4; y += 10) {
+  const x = EE_X + OV / 2;
+  let wet = false;
+  for (let dy = -10; dy <= 10 && !wet; dy += 2) for (let dx = -10; dx <= 10 && !wet; dx += 2) {
+    if (MASK_BASE[Math.floor((y + dy) / DANANG_SCENE_MASK_CELL)]?.[Math.floor((x + dx) / DANANG_SCENE_MASK_CELL)] === '~') wet = true;
+  }
+  if (!wet) eeSeam.push({ from: 0, to: 0, x, y, r: 10 });
+}
+/** Lọc điểm nối: bỏ điểm có nước quanh nó (theo mặt nạ nền), giữ phần còn lại làm lối đi. */
+const seamLinks = (pts: { x: number; y: number }[]) =>
+  pts
+    .filter((p) => {
+      for (let dy = -10; dy <= 10; dy += 2) for (let dx = -10; dx <= 10; dx += 2) {
+        if (MASK_BASE[Math.floor((p.y + dy) / DANANG_SCENE_MASK_CELL)]?.[Math.floor((p.x + dx) / DANANG_SCENE_MASK_CELL)] === '~') return false;
+      }
+      return true;
+    })
+    .map((p) => ({ from: 0, to: 0, x: p.x, y: p.y, r: 10 }));
+/** Ranh giới EE ↔ mảnh biển phía dưới (dọc và ngang), mỗi 10 px. */
+const seeVert: { x: number; y: number }[] = [];
+for (let y = SY + 4; y < WORLD.h - 4; y += 10) seeVert.push({ x: EE_X + OV / 2, y });
+const seeHoriz: { x: number; y: number }[] = [];
+for (let x = EE_X + 10; x < WORLD.w - 4; x += 10) seeHoriz.push({ x, y: SY + OV / 2 });
+/** Nối 2 khu đi được bị tách (mảnh EE/SEE) về mạng chính, không qua nước và không qua chân công trình. */
+const ISLAND_LINKS = [
+  ...linkLine(0, 0, { x: 655, y: 213 }, { x: 655, y: 201 }, 10, 12),
+  ...linkLine(0, 0, { x: 655, y: 201 }, { x: 655, y: 195 }, 10, 12),
+  ...linkLine(0, 0, { x: 511, y: 221 }, { x: 511, y: 211 }, 10, 12),
+  ...linkLine(0, 0, { x: 885, y: 419 }, { x: 873, y: 419 }, 10, 12),
+  ...linkLine(0, 0, { x: 873, y: 419 }, { x: 871, y: 415 }, 10, 12),
+];
+const LINKS = [...LINKS_BASE, ...eeSeam, ...seamLinks(seeVert), ...seamLinks(seeHoriz), ...ISLAND_LINKS];
 
 const SPRITES: Record<string, SceneSprite> = {
   hanmarket: { w: 137, h: 69 },
@@ -54,10 +101,20 @@ const SPRITES: Record<string, SceneSprite> = {
   resort: { w: 131, h: 74 },
   seafood: { w: 124, h: 72 },
   sontra: { w: 135, h: 64 },
+  seambush_a: { file: 'seambush_a.png', w: 16, h: 14 },
+  seambush_b: { file: 'seambush_b.png', w: 18, h: 15 },
+  seambush_c: { file: 'seambush_c.png', w: 14, h: 12 },
   banahills: { w: 125, h: 77 },
+  lovebridge: { file: 'lovebridge.png', w: 87, h: 60 },
+  chocon: { file: 'chocon.png', w: 87, h: 78 },
+  linhung: { file: 'linhung.png', w: 85, h: 61 },
+  nonnuoc: { file: 'nonnuoc.png', w: 87, h: 78 },
   airport: { w: 171, h: 75 },
   lamp: { file: '../hanoi/lamp.png', w: 16, h: 72 },
   lampS: { file: '../hanoi/lamp.png', w: 16, h: 30, crop: { x: 0, y: 42, w: 16, h: 30 } },
+  seafoodhouse: { file: 'seafoodhouse.png', w: 59, h: 44 },
+  beachcafe: { file: 'beachcafe.png', w: 43, h: 44 },
+  beachhotel: { file: 'beachhotel.png', w: 42, h: 36 },
 };
 
 const fp = (sprite: string, frac = 0.22, inset = 0.1) => {
@@ -95,6 +152,15 @@ const OBJECTS: MapObject[] = [
   O('se-airport', 'airport', EX + 178, SY + 143, { poiId: 'danang-gate', door: { dx: 0, dy: 5 } }),
   O('se-ponagar', 'ponagar', EX + 60, SY + 57),
   O('se-hoianhouse', 'hoianhouse', EX + 276, SY + 152),
+  // công trình biển ở các ô xám của mảnh EE và mảnh biển (trang trí)
+  O('ee-seafoodhouse', 'seafoodhouse', 942, 72, { poiId: 'danang-mykhe', door: { dx: 0, dy: 4 } }),
+  O('ee-beachcafe', 'beachcafe', 943, 182, { poiId: 'danang-cafemykhe', door: { dx: 0, dy: 4 } }),
+  O('see-beachhotel', 'beachhotel', 965, 288, { poiId: 'danang-hotelmykhe', door: { dx: 0, dy: 4 } }),
+  // địa điểm mới: cầu, chợ, chùa, bãi biển ở các ô trống
+  O('d-lovebridge', 'lovebridge', 1169, 287, { poiId: 'danang-lovebridge', door: { dx: 0, dy: 4 } }),
+  O('d-chocon', 'chocon', 907, 417, { poiId: 'danang-chocon', door: { dx: 0, dy: 4 } }),
+  O('d-linhung', 'linhung', 1018, 61, { poiId: 'danang-linhung', door: { dx: 0, dy: 4 } }),
+  O('d-nonnuoc', 'nonnuoc', 869, 228, { poiId: 'danang-nonnuoc', door: { dx: 0, dy: 4 } }),
 ];
 
 const poiOf = (poiId: string) => {
@@ -162,31 +228,23 @@ const NPCS: Npc[] = [
   { id: 'danang-npc-cat', sprite: 'cat_sit', at: { x: 140, y: 214 }, lines: [{ en: 'Meow!', vi: 'Meo!' }] },
 ];
 
-const MASK = composeMask(
-  WORLD,
-  DANANG_SCENE_MASK_CELL,
-  [
-    { x: 0, y: 0, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_MASK },
-    { x: EX, y: 0, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_E_MASK },
-    { x: 0, y: SY, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_S_MASK },
-    { x: EX, y: SY, w: PW, h: PH, cell: DANANG_SCENE_MASK_CELL, rows: DANANG_SCENE_SE_MASK },
-  ],
-  LINKS,
-);
+const MASK = composeMask(WORLD, DANANG_SCENE_MASK_CELL, PARTS, LINKS);
 
-const SEAMS = seamDecor({
+
+import { seamHedge } from './seams';
+/** Hàng bụi/cây dọc mọi mép mảnh (che đường nối cho quyện hoà; không có đèn). */
+const SEAMS = seamHedge({
   prefix: 'seam',
   maskRows: MASK,
   cell: DANANG_SCENE_MASK_CELL,
   lines: [
-    { x0: EX + OV / 2, y0: 10, x1: EX + OV / 2, y1: PH - 4 },
-    { x0: EX + OV / 2, y0: SY + 4, x1: EX + OV / 2, y1: WORLD.h - 10 },
-    { x0: 10, y0: SY + OV / 2, x1: PW - 4, y1: SY + OV / 2 },
-    { x0: EX + 4, y0: SY + OV / 2, x1: WORLD.w - 10, y1: SY + OV / 2 },
+    { x0: 408, y0: 10, x1: 408, y1: 440 },
+    { x0: 806, y0: 10, x1: 806, y1: 440 },
+    { x0: 10, y0: 225, x1: 1204, y1: 225 },
   ],
   gaps: LINKS,
-  sprites: ['lampS'],
-  spacing: 64,
+  sprites: ['seambush_a', 'seambush_b', 'seambush_c'],
+  spacing: 12,
 });
 
 export const danang = (() => {
@@ -208,6 +266,8 @@ export const danang = (() => {
       { suffix: '-e', x: EX, y: 0 },
       { suffix: '-s', x: 0, y: SY },
       { suffix: '-se', x: EX, y: SY },
+      { suffix: '-ee', x: EE_X, y: 0 },
+      { suffix: '-see', x: EE_X, y: SY },
     ],
     links: LINKS,
     mask: { cell: DANANG_SCENE_MASK_CELL, rows: MASK },

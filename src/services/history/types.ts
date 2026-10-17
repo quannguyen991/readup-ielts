@@ -89,6 +89,14 @@ export type SceneImage = {
   credit: string;
 };
 
+/** Optional editorial film attached to a scene; files are served from `public/`. */
+export type SceneVideo = {
+  file: string;
+  poster: string;
+  title: Bi;
+  description: Bi;
+};
+
 /** Mốc thời gian THẬT của từng câu (giây). Chỉ khai khi có timestamp thực / audio cắt theo câu. */
 export type AudioSentence = { start: number; end: number; paragraphId?: string; text: string };
 
@@ -109,7 +117,35 @@ export type SceneQuestion = {
   explainEn: string;
 };
 
-/** Điểm mở rộng cho giai đoạn sau (chuyển động nhẹ, parallax, mô hình 3D). CHƯA dùng. */
+/** Mảng hiệu ứng môi trường được phép phủ lên minh họa, không thay đổi vật thể lịch sử. */
+export type SceneMotionEffect = 'mist' | 'water' | 'smoke' | 'sunlight' | 'lamp' | 'foliage' | 'dust' | 'glow';
+
+export type SceneMotionLayer = {
+  id: string;
+  effect: SceneMotionEffect;
+  /** Tọa độ theo phần trăm khung ảnh. */
+  top: number;
+  left: number;
+  width: number;
+  height: number;
+  /** Opacity tối đa, từ 0 đến 1. */
+  opacity: number;
+  /** 0 = gần tiền cảnh, 1 = xa hậu cảnh. */
+  depth: number;
+  /** Chu kỳ chuyển động chậm, mili giây. */
+  durationMs: number;
+  phaseMs?: number;
+};
+
+export type SceneAmbience = 'water' | 'city' | 'mountain' | 'room';
+
+/** Chuyển động khai báo theo cảnh, chỉ dùng cho sương/ánh sáng/nước/khói/tán lá. */
+export type SceneMotionProfile = {
+  ambience?: SceneAmbience;
+  layers: SceneMotionLayer[];
+};
+
+/** Điểm mở rộng media khác; giữ để hỗ trợ lớp ảnh hoặc mô hình khi có tài nguyên chính xác. */
 export type FutureMedia = {
   parallaxLayers?: { file: string; depth: number }[];
   model3d?: { file: string; note?: string };
@@ -127,6 +163,7 @@ export type Scene = {
   place: { vi: string; en: string; modernNote?: Bi };
   paragraphs: Paragraph[];
   image?: SceneImage;
+  video?: SceneVideo;
   audio?: { en?: SceneAudioTrack; vi?: SceneAudioTrack };
   /** Đánh dấu rõ thay vì để trống: cảnh `published` không được còn cờ nào trong hai cờ này. */
   imagePending?: boolean;
@@ -137,6 +174,7 @@ export type Scene = {
   questions: SceneQuestion[];
   status: SceneStatus;
   futureMedia?: FutureMedia;
+  motion?: SceneMotionProfile;
 };
 
 /* ------------------------------------------------------- nguồn & khẳng định */

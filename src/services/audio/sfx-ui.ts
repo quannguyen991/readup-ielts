@@ -20,8 +20,9 @@ const DRAW: Record<SoundKind, (e: Engine) => void> = {
     tone(e, 520, { dur: 0.12, gain: 0.02, to: 780 });
   },
   flip: (e) => {
-    noise(e, { dur: 0.13, gain: 0.06, hz: 1400, to: 4200, q: 0.8 });
-    tone(e, 320, { dur: 0.06, gain: 0.04, to: 220 });
+    noise(e, { dur: 0.09, gain: 0.02, hz: 900, to: 2400, q: 0.6 });
+    tone(e, 659.25, { dur: 0.12, gain: 0.035, type: 'sine', to: 783.99 });
+    tone(e, 987.77, { at: 0.05, dur: 0.16, gain: 0.02, type: 'sine' });
   },
   correct: (e) => bell(e, [783.99, 1046.5], 0.09, 0.07, 0.26),
   wrong: (e) => {

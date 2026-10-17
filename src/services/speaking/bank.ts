@@ -118,6 +118,48 @@ export const PART1_TOPICS: Part1Topic[] = [
     'What was the last thing you bought for yourself?',
     'Do you usually compare prices before you buy something?',
   ]),
+  p1('p1-cooking', 'Nấu ăn', 'Cooking', [
+    'Do you enjoy cooking, or do you prefer eating out?',
+    'What is a dish you can cook well?',
+    'Who usually does the cooking in your home?',
+    'Would you like to learn a new cuisine in the future?',
+  ]),
+  p1('p1-technology', 'Công nghệ', 'Technology', [
+    'How often do you use your phone during the day?',
+    'What do you usually use technology for?',
+    'Do you think people rely too much on technology nowadays?',
+    'Is there a new gadget you would like to buy?',
+  ]),
+  p1('p1-clothes', 'Quần áo', 'Clothes', [
+    'How would you describe the way you usually dress?',
+    'Do you like shopping for clothes, or do you find it tiring?',
+    'Is there a piece of clothing you wear very often?',
+    'Do people in your country pay much attention to fashion?',
+  ]),
+  p1('p1-nature', 'Thiên nhiên', 'Nature', [
+    'Do you like spending time outdoors in nature?',
+    'Is there a park or a natural place near where you live?',
+    'Do you think people should care more about the environment?',
+    'What would you do to protect nature in your area?',
+  ]),
+  p1('p1-festivals', 'Lễ hội', 'Festivals', [
+    'Which festival is the most important in your country?',
+    'How do you usually celebrate it?',
+    'Did you celebrate any festival with friends or family last year?',
+    'Are traditional festivals still popular with young people?',
+  ]),
+  p1('p1-money', 'Tiền bạc', 'Money', [
+    'Do you prefer to pay with cash or with a card?',
+    'Are you good at saving money?',
+    'What do you usually spend most of your money on?',
+    'Is it important to learn about money at school?',
+  ]),
+  p1('p1-pets', 'Thú cưng', 'Pets', [
+    'Do you have any pets, or would you like to have one?',
+    'What are the advantages of keeping a pet?',
+    'Do you think pets should be allowed in apartments?',
+    'Have you ever looked after an animal that was not yours?',
+  ]),
 ];
 
 export const CUE_CARDS: CueCard[] = [
@@ -277,6 +319,78 @@ export const CUE_CARDS: CueCard[] = [
       'Can apps really help people build better habits?',
     ],
   ),
+  cue('p2-old-friend', 'Một người bạn cũ', 'Describe an old friend you have not seen for a long time.', ['who this friend is', 'how you met', 'why you have lost contact'], 'and explain how you feel about meeting them again.', [
+    'Why do people sometimes lose touch with old friends?',
+    'Is it easy to keep friendships over long distances?',
+    'Do social media platforms help people reconnect with old friends?',
+    'Should friends always try to stay in contact?',
+  ]),
+  cue('p2-bad-service', 'Một trải nghiệm dịch vụ không tốt', 'Describe a time you were unhappy with a service you received.', ['what the service was', 'what went wrong', 'how the staff responded'], 'and explain what you would do differently next time.', [
+    'Why do customers complain about service quality?',
+    'How important is customer service in a business?',
+    'Is it better to complain directly or to post a review online?',
+    'What makes a service experience good in your opinion?',
+  ]),
+  cue('p2-tradition', 'Một phong tục gia đình', 'Describe a family tradition that you value.', ['what the tradition is', 'when and how the family does it', 'who takes part in it'], 'and explain why this tradition matters to you.', [
+    'Are family traditions becoming less important in modern life?',
+    'Do young people today want to keep their parents\' traditions?',
+    'What traditions should governments support?',
+    'How do traditions help families stay together?',
+  ]),
+  cue('p2-volunteer', 'Một lần làm tình nguyện', 'Describe a time you volunteered to help other people.', ['what you did', 'who you helped', 'how long you were involved'], 'and explain what you learned from the experience.', [
+    'Why do some people choose to volunteer?',
+    'Should schools require students to do volunteer work?',
+    'Is volunteering more useful for the community or for the volunteer?',
+    'What kinds of volunteer work are most needed in your country?',
+  ]),
+  cue('p2-invention', 'Một phát minh giúp cuộc sống', 'Describe an invention that has made life easier for people.', ['what the invention is', 'how it works', 'who uses it most'], 'and explain why you think it is important.', [
+    'Which invention do you think has changed the world the most?',
+    'Do new inventions always make life better?',
+    'Should governments invest more money in research?',
+    'What invention would you like to see in the future?',
+  ]),
+  cue('p2-train-journey', 'Một chuyến đi bằng tàu', 'Describe a memorable journey you made by train.', ['where you went', 'who you travelled with', 'what you saw along the way'], 'and explain why the journey was memorable.', [
+    'Is train travel becoming more popular in your country?',
+    'What are the advantages of travelling by train rather than by plane?',
+    'Should governments spend more on railways?',
+    'How will travel change in the next twenty years?',
+  ]),
+  cue('p2-favourite-dish', 'Một món ăn yêu thích', 'Describe a dish you enjoy eating that someone else cooks for you.', ['what the dish is', 'who cooks it', 'when you usually eat it'], 'and explain why you enjoy it so much.', [
+    'Do people in your country still cook traditional dishes at home?',
+    'Is it healthier to cook at home or to eat out?',
+    'How do food traditions change between generations?',
+    'What food do you think represents your country best?',
+  ]),
+  cue('p2-gift', 'Một món quà đáng nhớ', 'Describe a special gift you received that was meaningful to you.', ['what the gift was', 'who gave it to you', 'when you received it'], 'and explain why it was meaningful to you.', [
+    'Do you think expensive gifts are more meaningful than simple ones?',
+    'Is it difficult to choose a good gift for someone?',
+    'What is the best way to say thank you for a gift?',
+    'Should people give gifts on every special occasion?',
+  ]),
+  cue('p2-animal', 'Một con vật bạn từng gặp', 'Describe an animal you once met that impressed you.', ['what kind of animal it was', 'where you saw it', 'what it did'], 'and explain why it impressed you.', [
+    'Should wild animals be kept in zoos?',
+    'What role do animals play in people\'s lives?',
+    'How can people protect endangered animals?',
+    'Do you think people should be allowed to keep wild animals as pets?',
+  ]),
+  cue('p2-festival-trip', 'Một lễ hội bạn đã tham dự', 'Describe a festival you attended that you enjoyed.', ['where it took place', 'what happened there', 'who you went with'], 'and explain what made the festival special.', [
+    'Do festivals help local communities?',
+    'Are big festivals good for tourism?',
+    'Should cities organise more cultural events?',
+    'How have festivals changed in recent years?',
+  ]),
+  cue('p2-mentor', 'Một người thầy hoặc người hướng dẫn', 'Describe a teacher or mentor who had a strong influence on you.', ['who this person is', 'how you met them', 'what they taught you'], 'and explain how they affected your life.', [
+    'What qualities make a good teacher?',
+    'Should teachers be paid more than they are now?',
+    'Is it important for young people to have mentors?',
+    'How has the role of the teacher changed over time?',
+  ]),
+  cue('p2-lost-item', 'Một món đồ bị thất lạc', 'Describe a time you lost something important to you.', ['what you lost', 'how it happened', 'what you did to find it'], 'and explain how you felt and what you learned.', [
+    'Why do people lose things so often?',
+    'What can people do to avoid losing important items?',
+    'Is it important to have a backup of important information?',
+    'How should lost property be returned to its owners?',
+  ]),
 ];
 
 /** Lời giám khảo mở đầu từng phần — tự viết, không chép kịch bản giám khảo chính thức. */

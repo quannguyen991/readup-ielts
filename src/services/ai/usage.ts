@@ -1,4 +1,4 @@
-import { PLAN_ORDER, type PlanId } from '@/lib/billing/plans';
+import { EVERYONE_PLAN, EVERYONE_SEARCH_AI_PER_MONTH, type PlanId } from '@/lib/billing/plans';
 import { quotaLimit } from '@/lib/billing/entitlements';
 import { msg, type LocaleSource } from '@/lib/server-locale';
 import type { getSupabaseAdmin } from '@/lib/supabase-admin';
@@ -50,7 +50,7 @@ export const SEARCH_AI_LIMIT: Record<PlanId, number> = {
   free: 30,
   plus: 150,
   pro: 600,
-  max: 2000,
+  max: EVERYONE_SEARCH_AI_PER_MONTH,
 };
 
 function periodFor(kind: AiCallKind, now: Date = new Date()): string {
@@ -58,21 +58,9 @@ function periodFor(kind: AiCallKind, now: Date = new Date()): string {
 }
 
 /** Gói còn hiệu lực của một người dùng, đọc từ máy chủ. */
-async function planOfUser(admin: Admin, userId: string): Promise<PlanId> {
-  const { data } = await admin
-    .from('profiles')
-    .select('plan, plan_expires_at')
-    .eq('id', userId)
-    .maybeSingle();
-
-  const row = data as { plan?: string; plan_expires_at?: string | null } | null;
-  if (!row || !PLAN_ORDER.includes(row.plan as PlanId)) return 'free';
-  const plan = row.plan as PlanId;
-  if (plan === 'free') return 'free';
-  // Hết hạn thì rơi về Free — cùng luật với `effectivePlan` ở client, nhưng đây
-  // mới là chỗ nói lời cuối.
-  if (row.plan_expires_at && new Date(row.plan_expires_at).getTime() <= Date.now()) return 'free';
-  return plan;
+async function planOfUser(_admin: Admin, _userId: string): Promise<PlanId> {
+  // App cộng đồng không thương mại: mọi người dùng dùng hạn mức của gói cao nhất (trần kỹ thuật, không phải hàng rào trả phí).
+  return EVERYONE_PLAN;
 }
 
 /** `locale`: ngôn ngữ của lời nhắn hết lượt — truyền `request` của route vào. */

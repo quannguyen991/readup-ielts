@@ -47,6 +47,10 @@ import { mergeStartup, normalizeStartup } from '@/services/startup/sync';
 import { useStartupStore } from '@/store/useStartupStore';
 import { mergeHistory, normalizeHistory } from '@/services/history/progress';
 import { useHubStore } from '@/store/useHubStore';
+import { useLevelTestStore } from '@/store/useLevelTestStore';
+import { mergeLevelTests, type LevelTestRecord } from '@/services/hub/level-test';
+import { useDialogueStore } from '@/store/useDialogueStore';
+import { mergeDialogueBest, type DialogueBest } from '@/services/hub/dialogue';
 import { mergeHub, type HubPayload } from '@/services/hub/sync';
 
 /**
@@ -351,6 +355,26 @@ const hubStore: SyncedStore = {
   merge: (local, remote) => mergeHub(local, remote),
 };
 
+/** Đề kiểm tra ngữ pháp theo cấp độ: điểm cao nhất và số lần làm của từng cấp. */
+const grammarTestStore: SyncedStore = {
+  key: 'grammar_tests',
+  read: (): LevelTestRecord => useLevelTestStore.getState().best,
+  write: (payload) => {
+    if (payload && typeof payload === 'object') useLevelTestStore.setState({ best: payload as LevelTestRecord });
+  },
+  merge: (local, remote) => mergeLevelTests(local as LevelTestRecord, remote as LevelTestRecord),
+};
+
+/** Điểm cao nhất của từng bài hội thoại mẫu. */
+const dialogueBestStore: SyncedStore = {
+  key: 'dialogue_best',
+  read: (): DialogueBest => useDialogueStore.getState().best,
+  write: (payload) => {
+    if (payload && typeof payload === 'object') useDialogueStore.setState({ best: payload as DialogueBest });
+  },
+  merge: (local, remote) => mergeDialogueBest(local as DialogueBest, remote as DialogueBest),
+};
+
 const startupStore: SyncedStore = {
   key: 'startup',
   read: () => {
@@ -441,4 +465,6 @@ export function registerAllSyncedStores(): void {
   registerSyncedStore(studyAbroadStore);
   registerSyncedStore(startupStore);
   registerSyncedStore(hubStore);
+  registerSyncedStore(grammarTestStore);
+  registerSyncedStore(dialogueBestStore);
 }

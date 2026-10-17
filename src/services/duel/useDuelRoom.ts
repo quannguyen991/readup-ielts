@@ -3,10 +3,10 @@ import type { RealtimeChannel } from '@supabase/supabase-js';
 
 import { hasSupabaseConfig } from '@/lib/env';
 import { getSupabase } from '@/lib/supabase';
-import { addAnswer, emptyTally, type PlayerTally } from './duel';
+import { addAnswer, emptyTally, MAX_DUEL_PLAYERS, type PlayerTally } from './duel';
 
 export type DuelPlayer = { id: string; name: string };
-export type DuelStart = { seed: string; deck: string; at: number };
+export type DuelStart = { seed: string; deck: string; at: number; players: string[] };
 
 type AnswerMsg = { id: string; index: number; correct: boolean; ms: number };
 
@@ -16,7 +16,7 @@ type AnswerMsg = { id: string; index: number; correct: boolean; ms: number };
  * - BROADCAST: `start` (hạt + bộ từ + mốc giờ), `answer` (một câu vừa trả lời),
  *   `finish`. Máy nào cũng tự tính điểm của đối thủ từ các gói `answer`.
  *
- * Kênh chỉ sống khi cả hai đang mở trang; đóng tab là rời phòng.
+ * Kênh sống khi người chơi còn mở trang; đóng tab là rời phòng.
  */
 export function useDuelRoom(code: string, me: DuelPlayer | null, hostDeck?: string) {
   // Chưa cấu hình máy chủ thì "ngoại tuyến" ngay từ đầu — không đặt state trong effect.
@@ -81,7 +81,8 @@ export function useDuelRoom(code: string, me: DuelPlayer | null, hostDeck?: stri
 
   /** Chủ phòng phát lệnh bắt đầu; máy mình cũng tự bắt đầu (broadcast không vọng lại mình). */
   const begin = (deck: string) => {
-    const s: DuelStart = { seed: `${code}:${Date.now()}`, deck, at: Date.now() + 3500 };
+    const roster = players.some((player) => player.id === me?.id) ? players : me ? [...players, me] : players;
+    const s: DuelStart = { seed: `${code}:${Date.now()}`, deck, at: Date.now() + 3500, players: roster.slice(0, MAX_DUEL_PLAYERS).map((player) => player.id) };
     setStart(s);
     setTallies({});
     setFinished({});

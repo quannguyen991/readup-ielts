@@ -1,0 +1,2480 @@
+{
+  "videos": [
+    {
+      "id": "eRRiAEdHtDY",
+      "title": "Are we building the AI that destroys us? | BBC News",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Khoa học & Công nghệ",
+      "durationSeconds": 896
+    },
+    {
+      "id": "KqRMgUN6aIg",
+      "title": "Gen Z is taking to the streets. But why? | BBC News",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Thời sự và xã hội",
+      "durationSeconds": 755
+    },
+    {
+      "id": "8G-NflYNCts",
+      "title": "Can Trump fight off a Democratic blue wave this US midterms? | BBC News",
+      "channel": "BBC News",
+      "level": "C1",
+      "topic": "Thời sự và xã hội",
+      "durationSeconds": 1243
+    },
+    {
+      "id": "-nqq5zKogJs",
+      "title": "Albania's anti-government demonstrations continue for fourth day | BBC News",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Thời sự và xã hội",
+      "durationSeconds": 250
+    },
+    {
+      "id": "hwXmUpCLxU4",
+      "title": "Are Labour ready to talk about welfare? | BBC Newscast",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Chính trị & Xã hội",
+      "durationSeconds": 1164
+    },
+    {
+      "id": "GQnQj29shKw",
+      "title": "Nuclear strategy and international deterrence | BBC News",
+      "channel": "BBC News",
+      "level": "C1",
+      "topic": "Thời sự quốc tế",
+      "durationSeconds": 960
+    },
+    {
+      "id": "6R3gBfn7Dro",
+      "title": "How AI 'reskins' are stealing human content | BBC News",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Công nghệ & Bản quyền",
+      "durationSeconds": 931
+    },
+    {
+      "id": "nSsKYX-D540",
+      "title": "How rogue diplomats are impacting US relations | The Global Story",
+      "channel": "BBC News",
+      "level": "C1",
+      "topic": "Ngoại giao & Quốc tế",
+      "durationSeconds": 1653
+    },
+    {
+      "id": "YANXLDxMh8c",
+      "title": "Inside Ukrainian offensive pushing Russia back | BBC News",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Thời sự quốc tế",
+      "durationSeconds": 323
+    },
+    {
+      "id": "v36FeYEMowE",
+      "title": "White House communications and press strategy | BBC News",
+      "channel": "BBC News",
+      "level": "B2",
+      "topic": "Chính trị & Truyền thông",
+      "durationSeconds": 310
+    },
+    {
+      "id": "moL5e5BJaCk",
+      "title": "Artistic persona versus private identity | BBC News",
+      "channel": "BBC News",
+      "level": "B1",
+      "topic": "Văn hóa & Nghệ thuật",
+      "durationSeconds": 591
+    },
+    {
+      "id": "LaC3IbvbHDQ",
+      "title": "'Catastrophic': Forecaster moves 11 more House races toward Dems | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Thời sự và xã hội",
+      "durationSeconds": 364
+    },
+    {
+      "id": "T2tjt2Dk3ng",
+      "title": "Federal judges block parts of student loan relief plan | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Kinh tế & Pháp luật",
+      "durationSeconds": 340
+    },
+    {
+      "id": "O9uWX7BOV8E",
+      "title": "Key takeaways from the vice presidential debate | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Chính trị & Bầu cử",
+      "durationSeconds": 415
+    },
+    {
+      "id": "RMdhIekKaiM",
+      "title": "Hurricane recovery and emergency response in Florida | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Môi trường & Thiên tai",
+      "durationSeconds": 380
+    },
+    {
+      "id": "CqU1q8Wb_y8",
+      "title": "Campaign strategies in the final presidential stretch | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Thời sự và xã hội",
+      "durationSeconds": 410
+    },
+    {
+      "id": "l_13dD-x58s",
+      "title": "Middle East diplomatic efforts and ceasefire negotiations | CNN",
+      "channel": "CNN",
+      "level": "C1",
+      "topic": "Thời sự quốc tế",
+      "durationSeconds": 395
+    },
+    {
+      "id": "70-E7xLzD28",
+      "title": "Economic indicators show inflation cooling down | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Kinh tế & Thị trường",
+      "durationSeconds": 330
+    },
+    {
+      "id": "bP1G_B4lM1w",
+      "title": "Supreme Court weighs major voting rights arguments | CNN",
+      "channel": "CNN",
+      "level": "C1",
+      "topic": "Pháp luật & Tư pháp",
+      "durationSeconds": 420
+    },
+    {
+      "id": "pOm0__wzIJM",
+      "title": "South Korea's Han Kang wins Nobel Prize in Literature | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Văn học & Văn hóa",
+      "durationSeconds": 370
+    },
+    {
+      "id": "j1s1_XW9q58",
+      "title": "Aviation safety and runway inspection protocols | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Giao thông & Hàng không",
+      "durationSeconds": 360
+    },
+    {
+      "id": "d_H_sB0wZfg",
+      "title": "Tech giants invest in clean energy for AI data centers | CNN",
+      "channel": "CNN",
+      "level": "B2",
+      "topic": "Công nghệ & Môi trường",
+      "durationSeconds": 380
+    },
+    {
+      "id": "DgxKv5AQuzU",
+      "title": "EU summit faces economic pressures | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Kinh tế và xã hội",
+      "durationSeconds": 164
+    },
+    {
+      "id": "jeDwSHPIqDc",
+      "title": "Vietnam encourages business formalisation and expansion | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Kinh tế Việt Nam",
+      "durationSeconds": 166
+    },
+    {
+      "id": "PDVud2eUNHA",
+      "title": "Check-in Guide: Hanoi – A Destination for Wellness | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Du lịch & Văn hóa",
+      "durationSeconds": 132
+    },
+    {
+      "id": "foB5o8bXnz0",
+      "title": "Hanoi - City of art and creativity | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Nghệ thuật & Sáng tạo",
+      "durationSeconds": 124
+    },
+    {
+      "id": "8e9lQsPRM78",
+      "title": "Flagship concept redefines retail experiences | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Kinh tế & Thị trường",
+      "durationSeconds": 218
+    },
+    {
+      "id": "f3JHzkKmaks",
+      "title": "Vietnam - China strengthen bilateral economic ties | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B2",
+      "topic": "Hợp tác quốc tế",
+      "durationSeconds": 153
+    },
+    {
+      "id": "NMHt_DXvkRE",
+      "title": "Vietnam - Laos deepen traditional bilateral ties | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Ngoại giao & Hữu nghị",
+      "durationSeconds": 88
+    },
+    {
+      "id": "FpwnwbMuca8",
+      "title": "Vietnamese entrepreneurs: Innovating for global reach | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B2",
+      "topic": "Khởi nghiệp & Đổi mới sáng tạo",
+      "durationSeconds": 177
+    },
+    {
+      "id": "iflt1LO5eLg",
+      "title": "ASEAN steps up cybersecurity cooperation | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B2",
+      "topic": "An ninh mạng & Công nghệ",
+      "durationSeconds": 128
+    },
+    {
+      "id": "-SyxhbviQBg",
+      "title": "The many languages of cultural belonging | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Văn hóa & Đời sống",
+      "durationSeconds": 161
+    },
+    {
+      "id": "HTcjBg1zCY8",
+      "title": "Khmer traditional arts enter university classrooms | Vietnam Today",
+      "channel": "Vietnam Today",
+      "level": "B1",
+      "topic": "Văn hóa & Giáo dục",
+      "durationSeconds": 188
+    },
+    {
+      "id": "pEO9-iPZQWA",
+      "title": "Climate and extreme weather ⏲️ 6 Minute English",
+      "channel": "BBC Learning English",
+      "level": "A2",
+      "topic": "Tiếng Anh hằng ngày",
+      "durationSeconds": 375
+    },
+    {
+      "id": "xwseWCSXD3Y",
+      "title": "How are smell adjectives different? ⏲️ 6 Minute English",
+      "channel": "BBC Learning English",
+      "level": "A2",
+      "topic": "Tiếng Anh hằng ngày",
+      "durationSeconds": 376
+    },
+    {
+      "id": "SC_opiKLohg",
+      "title": "Sharing the road with driverless cars ⏲️ 6 Minute English",
+      "channel": "BBC Learning English",
+      "level": "B1",
+      "topic": "Khoa học & Công nghệ",
+      "durationSeconds": 360
+    },
+    {
+      "id": "zl0dwwKhmuM",
+      "title": "AI hacking other companies by itself ⏲️ 6 Minute English",
+      "channel": "BBC Learning English",
+      "level": "B1",
+      "topic": "An ninh mạng & AI",
+      "durationSeconds": 496
+    },
+    {
+      "id": "FuExlxdoTcY",
+      "title": "Nepal recovering from impact of flash floods ⏲️ Learn English",
+      "channel": "BBC Learning English",
+      "level": "A2",
+      "topic": "Thời sự & Môi trường",
+      "durationSeconds": 500
+    },
+    {
+      "id": "q4JyFF46528",
+      "title": "Do you like cleaning? 🚽🧹 | Real Easy English",
+      "channel": "BBC Learning English",
+      "level": "A2",
+      "topic": "Tiếng Anh hằng ngày",
+      "durationSeconds": 359
+    },
+    {
+      "id": "bRnGm3y0IFU",
+      "title": "BOX SET: English In A Minute – Essential idioms and phrases",
+      "channel": "BBC Learning English",
+      "level": "A2",
+      "topic": "Từ vựng & Cụm từ",
+      "durationSeconds": 692
+    },
+    {
+      "id": "BFJsSnEEGrI",
+      "title": "How do you take your coffee? ☕ | Real Easy English",
+      "channel": "BBC Learning English",
+      "level": "A2",
+      "topic": "Tiếng Anh hằng ngày",
+      "durationSeconds": 337
+    },
+    {
+      "id": "TeVE4TQPEwM",
+      "title": "What is imposter syndrome and how can you combat it? | TED-Ed",
+      "channel": "TED-Ed",
+      "level": "B1",
+      "topic": "Tâm lý & Kỹ năng sống",
+      "durationSeconds": 270
+    },
+    {
+      "id": "av3zdxYvCp8",
+      "title": "Why do we get goosebumps? | TED-Ed",
+      "channel": "TED-Ed",
+      "level": "B1",
+      "topic": "Khoa học sinh học",
+      "durationSeconds": 240
+    },
+    {
+      "id": "1uTRlM6MbMo",
+      "title": "How do deep-sea creatures survive crushing pressure? | TED-Ed",
+      "channel": "TED-Ed",
+      "level": "B2",
+      "topic": "Đại dương & Sinh vật biển",
+      "durationSeconds": 310
+    }
+  ],
+  "prepared": {
+    "eRRiAEdHtDY": {
+      "videoId": "eRRiAEdHtDY",
+      "sentences": [
+        {
+          "start": 9.36,
+          "end": 18.5,
+          "text": "This week on AI Decoded, a new documentary asks whether the technology we are developing today could pose an existential threat to humanity."
+        },
+        {
+          "start": 18.5,
+          "end": 28.2,
+          "text": "Artificial intelligence has advanced at breathtaking speed over the last two years, outperforming humans in complex mathematical tests and reasoning."
+        },
+        {
+          "start": 28.2,
+          "end": 39.0,
+          "text": "Tech leaders and computer scientists are divided over whether superintelligent systems can be safely controlled once they surpass human intelligence."
+        },
+        {
+          "start": 39.0,
+          "end": 49.5,
+          "text": "Some pioneers in the field warn that without strict international safety protocols, we risk losing control over autonomous decision-making agents."
+        },
+        {
+          "start": 49.5,
+          "end": 60.0,
+          "text": "However, other researchers argue that the real and immediate risks are misinformation, cyber attacks, and algorithmic bias in automated hiring."
+        },
+        {
+          "start": 60.0,
+          "end": 71.0,
+          "text": "Governments in Washington, London, and Brussels are now racing to establish regulatory frameworks and mandatory testing for frontier AI models."
+        },
+        {
+          "start": 71.0,
+          "end": 82.5,
+          "text": "The European Union has passed the landmark AI Act, categorising AI applications according to the degree of risk they pose to citizens."
+        },
+        {
+          "start": 82.5,
+          "end": 94.0,
+          "text": "Meanwhile, major tech laboratories are investing hundreds of millions of dollars into AI alignment research to ensure models remain helpful and safe."
+        },
+        {
+          "start": 94.0,
+          "end": 105.0,
+          "text": "The central challenge is whether humanity can cooperate globally to govern a technology that promises both immense wealth and unprecedented peril."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "KqRMgUN6aIg": {
+      "videoId": "KqRMgUN6aIg",
+      "sentences": [
+        {
+          "start": 0.24,
+          "end": 10.0,
+          "text": "Across major cities, young people from Generation Z are organising unprecedented protest movements demanding economic and political reform."
+        },
+        {
+          "start": 10.0,
+          "end": 20.5,
+          "text": "Unlike previous generations, these activists are coordinating almost entirely through digital platforms like TikTok, Discord, and Telegram."
+        },
+        {
+          "start": 20.5,
+          "end": 31.0,
+          "text": "Soaring housing costs, student loan debt, and inflation have left many young graduates feeling shut out of financial stability."
+        },
+        {
+          "start": 31.0,
+          "end": 42.0,
+          "text": "In countries from Kenya to South Korea, Gen Z voters are expressing deep frustration with traditional political parties and political elites."
+        },
+        {
+          "start": 42.0,
+          "end": 53.0,
+          "text": "They want transparent governance, immediate action on climate change, and fair economic opportunities for entry-level workers."
+        },
+        {
+          "start": 53.0,
+          "end": 64.0,
+          "text": "Political analysts note that this demographic represents a decisive voting bloc that cannot be won over by conventional campaign rhetoric."
+        },
+        {
+          "start": 64.0,
+          "end": 75.0,
+          "text": "As elections approach worldwide, leaders are being forced to address the urgent economic realities confronting the newest generation of workers."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "8G-NflYNCts": {
+      "videoId": "8G-NflYNCts",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "American voters are preparing to cast their ballots in midterm elections that will determine the balance of power in Washington."
+        },
+        {
+          "start": 9.5,
+          "end": 19.0,
+          "text": "Control of both the House of Representatives and the Senate hangs on a handful of razor-thin competitive races."
+        },
+        {
+          "start": 19.0,
+          "end": 29.0,
+          "text": "Economic issues including consumer inflation, mortgage interest rates, and job security dominate voter priorities across key swing states."
+        },
+        {
+          "start": 29.0,
+          "end": 39.5,
+          "text": "Republicans are focusing their campaign messaging on border security and cost of living pressures affecting suburban households."
+        },
+        {
+          "start": 39.5,
+          "end": 50.0,
+          "text": "Meanwhile, Democrats are energising their base around healthcare protections, reproductive rights, and democratic institutional stability."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "Turnout among independent voters and suburban women is expected to be the deciding factor in critical suburban battlegrounds."
+        },
+        {
+          "start": 61.0,
+          "end": 72.0,
+          "text": "The outcome will either grant the president a mandate to advance key policies or usher in divided government and legislative gridlock."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "-nqq5zKogJs": {
+      "videoId": "-nqq5zKogJs",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.0,
+          "text": "In Tirana, anti-government demonstrations have entered their fourth consecutive day, with thousands gathering in front of parliament."
+        },
+        {
+          "start": 8.0,
+          "end": 17.5,
+          "text": "Opposition supporters are demanding the resignation of senior officials over allegations of corruption and mismanagement of public funds."
+        },
+        {
+          "start": 17.5,
+          "end": 27.0,
+          "text": "Security forces have deployed tear gas and water cannons after protesters attempted to breach the barricades surrounding the prime minister's office."
+        },
+        {
+          "start": 27.0,
+          "end": 37.0,
+          "text": "European Union representatives have called on all political factions to exercise maximum restraint and engage in constructive dialogue."
+        },
+        {
+          "start": 37.0,
+          "end": 47.0,
+          "text": "Civil society groups emphasize that judicial independence and media freedom are essential prerequisites for Albania's European integration."
+        },
+        {
+          "start": 47.0,
+          "end": 58.0,
+          "text": "Despite international appeals for calm, opposition leaders have pledged to continue daily protests until concrete reforms are enacted."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "hwXmUpCLxU4": {
+      "videoId": "hwXmUpCLxU4",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Welcome to BBC Newscast. Today we examine the politically contentious debate surrounding welfare reform in the United Kingdom."
+        },
+        {
+          "start": 9.0,
+          "end": 18.5,
+          "text": "The government faces soaring costs in disability benefits and long-term sickness allowances following the pandemic."
+        },
+        {
+          "start": 18.5,
+          "end": 29.0,
+          "text": "Ministers argue that helping people with manageable health conditions return to employment is crucial for economic productivity."
+        },
+        {
+          "start": 29.0,
+          "end": 39.5,
+          "text": "However, poverty charities warn that tightening eligibility criteria risks pushing vulnerable families deeper into financial distress."
+        },
+        {
+          "start": 39.5,
+          "end": 50.0,
+          "text": "The shadow cabinet is under intense pressure to present a comprehensive strategy that balances fiscal responsibility with a compassionate safety net."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "With public services already under strain, finding consensus on welfare spending remains one of the toughest challenges in British politics."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "GQnQj29shKw": {
+      "videoId": "GQnQj29shKw",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "Global defense analysts are closely monitoring diplomatic rhetoric regarding nuclear deterrence and non-proliferation treaties."
+        },
+        {
+          "start": 9.5,
+          "end": 19.5,
+          "text": "The doctrine of strategic deterrence relies on the mutual understanding that the use of nuclear weapons would result in catastrophic retaliation."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Former officials emphasize that maintaining open communication channels between world powers is essential to prevent miscalculation."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Recent regional tensions have renewed discussions about the resilience of missile defense shields and early-warning satellite networks."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "United Nations diplomats continue to advocate for revitalized disarmament talks to preserve stability in volatile geopolitical corridors."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "History demonstrates that crisis management requires steady diplomacy, transparent protocols, and unwavering adherence to international law."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "6R3gBfn7Dro": {
+      "videoId": "6R3gBfn7Dro",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Content creators around the world are raising alarms over automated software that copies their original videos within seconds of posting."
+        },
+        {
+          "start": 9.0,
+          "end": 19.0,
+          "text": "These AI tools rewrite scripts using synonyms, generate synthetic voiceovers, and mirror visual layouts to evade copyright filters."
+        },
+        {
+          "start": 19.0,
+          "end": 29.5,
+          "text": "Known as reskinning, this practice allows digital pirate accounts to harvest millions of views and monetize someone else's creative effort."
+        },
+        {
+          "start": 29.5,
+          "end": 40.0,
+          "text": "Independent educators and animators say current platform takedown systems are too slow to stop automated piracy at scale."
+        },
+        {
+          "start": 40.0,
+          "end": 50.5,
+          "text": "Legal experts argue that digital watermarking and machine learning detectors will be required to verify intellectual property rights online."
+        },
+        {
+          "start": 50.5,
+          "end": 61.0,
+          "text": "Without stronger protections, creators fear that generative tools could undermine the financial viability of authentic human storytelling."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "nSsKYX-D540": {
+      "videoId": "nSsKYX-D540",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 10.0,
+          "text": "Today on The Global Story, we investigate the controversial role of private intermediaries conducting shadow diplomacy in sensitive conflict zones."
+        },
+        {
+          "start": 10.0,
+          "end": 20.5,
+          "text": "While official ambassadors are bound by government protocols, informal emissaries often hold unofficial backchannel negotiations with hostile regimes."
+        },
+        {
+          "start": 20.5,
+          "end": 31.0,
+          "text": "Supporters contend that these actors can break diplomatic deadlocks and facilitate prisoner exchanges when formal relations are severed."
+        },
+        {
+          "start": 31.0,
+          "end": 42.0,
+          "text": "Critics counter that unauthorized negotiations undermine official policy and can be exploited by foreign intelligence agencies for geopolitical leverage."
+        },
+        {
+          "start": 42.0,
+          "end": 53.0,
+          "text": "The State Department insists that all international commitments must adhere strictly to established legal and constitutional oversight frameworks."
+        },
+        {
+          "start": 53.0,
+          "end": 64.0,
+          "text": "The growing prevalence of freelance diplomacy reflects an increasingly fragmented world order where traditional multilateral institutions struggle to maintain control."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "YANXLDxMh8c": {
+      "videoId": "YANXLDxMh8c",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Frontline reports indicate Ukrainian military units have advanced through fortified defensive lines in eastern territorial counter-offensives."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Soldiers on the ground describe grueling combat conditions characterized by dense minefields, artillery duels, and relentless reconnaissance drone surveillance."
+        },
+        {
+          "start": 18.0,
+          "end": 28.0,
+          "text": "Western-supplied armored vehicles and precision rocket systems have provided crucial tactical support during coordinated assaults on strategic supply hubs."
+        },
+        {
+          "start": 28.0,
+          "end": 38.5,
+          "text": "Military commanders stress that neutralizing logistics depots behind enemy lines is vital to limiting the adversary's capacity to reinforce defensive positions."
+        },
+        {
+          "start": 38.5,
+          "end": 49.0,
+          "text": "Meanwhile, civilian volunteer networks continue delivering essential medical supplies and generators to liberated towns recovering from prolonged occupation."
+        },
+        {
+          "start": 49.0,
+          "end": 60.0,
+          "text": "With winter weather rapidly approaching, commanders are racing against time to consolidate territorial gains before muddy terrain hampers mechanized mobility."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "v36FeYEMowE": {
+      "videoId": "v36FeYEMowE",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "The White House press office plays a pivotal role in shaping how presidential policies and executive decisions are communicated to the American public."
+        },
+        {
+          "start": 9.0,
+          "end": 19.0,
+          "text": "Daily press briefings in the James S. Brady Press Briefing Room serve as a vital forum where journalists hold administration officials accountable."
+        },
+        {
+          "start": 19.0,
+          "end": 29.5,
+          "text": "High turnover among strategic communications personnel often reflects the intense pressure of managing fast-moving news cycles in the digital era."
+        },
+        {
+          "start": 29.5,
+          "end": 40.0,
+          "text": "Senior aides must coordinate messaging across multiple agencies on complex topics ranging from national security to fiscal policy initiatives."
+        },
+        {
+          "start": 40.0,
+          "end": 51.0,
+          "text": "Maintaining credibility with reporters while fiercely defending the president's agenda requires extraordinary diplomatic tact and discipline."
+        },
+        {
+          "start": 51.0,
+          "end": 62.0,
+          "text": "In an era of hyper-partisan news coverage, clear and transparent public communication remains essential for preserving public trust in democratic institutions."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "moL5e5BJaCk": {
+      "videoId": "moL5e5BJaCk",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Many legendary performers create theatrical stage personas that contrast sharply with their quiet and unassuming private lives."
+        },
+        {
+          "start": 9.0,
+          "end": 19.0,
+          "text": "In a candid interview, iconic rock musicians reflect on how creating an onstage alter ego helped them overcome personal shyness."
+        },
+        {
+          "start": 19.0,
+          "end": 29.0,
+          "text": "Behind the dramatic costumes, makeup, and loud pyrotechnics, artists often describe spending their free time with family, books, and gardening."
+        },
+        {
+          "start": 29.0,
+          "end": 39.5,
+          "text": "Psychologists explain that adopting a persona provides an emotional shield that allows performers to express raw creativity without fear of judgment."
+        },
+        {
+          "start": 39.5,
+          "end": 50.0,
+          "text": "However, separating professional celebrity from personal identity requires strong boundaries and a grounded support network."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "Ultimately, the enduring appeal of great artists lies in their ability to entertain millions while retaining their authentic humanity offstage."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "LaC3IbvbHDQ": {
+      "videoId": "LaC3IbvbHDQ",
+      "sentences": [
+        {
+          "start": 0.32,
+          "end": 10.56,
+          "text": "11 more House races moving in the Democratic direction tonight. The Cook Political Report, which is one of the nation's top election forecasters, is now moving those 11 seats away from Republicans."
+        },
+        {
+          "start": 10.56,
+          "end": 19.6,
+          "text": "And they're doing it here right on the eve of the election. Right, we're less than 3 weeks away. And these races could very well decide which party controls the House."
+        },
+        {
+          "start": 19.6,
+          "end": 30.8,
+          "text": "And in some of them, there are incredibly competitive Senate races as well. Eight of the 11 were considered solid or likely Republican. So this is a huge shift."
+        },
+        {
+          "start": 30.8,
+          "end": 42.0,
+          "text": "And look at these five seats currently held by Republicans that are now lean Republican or tossup. These five all went for Trump by double digits in 2024."
+        },
+        {
+          "start": 42.0,
+          "end": 54.0,
+          "text": "I want to go to Dave Wasserman. He's senior editor and elections analyst for the Cook Political Report. Dave, how serious is this fire for Republicans?"
+        },
+        {
+          "start": 54.0,
+          "end": 68.0,
+          "text": "Erin, this has gone from bad to potentially catastrophic for Republicans. We're seeing some shocking polling numbers in districts that voted for Donald Trump."
+        },
+        {
+          "start": 68.0,
+          "end": 79.5,
+          "text": "First of all, this is kind of a back to the future election in the sense that the places that swung the most toward Trump are now competitive again."
+        },
+        {
+          "start": 79.5,
+          "end": 92.0,
+          "text": "Iowa is a major problem state for Republicans. They are in danger of losing three of the four districts in Iowa."
+        },
+        {
+          "start": 92.0,
+          "end": 105.0,
+          "text": "The other theme that we're seeing is that Republicans have a big problem holding open seats where the incumbent has retired."
+        },
+        {
+          "start": 105.0,
+          "end": 118.0,
+          "text": "Incumbents who established distinctive brands from Trump are performing much better than newcomers who lack strong local recognition."
+        },
+        {
+          "start": 118.0,
+          "end": 132.0,
+          "text": "One theme we're seeing is that this is the worst economic anxiety in rural America since the 1980s farm crisis."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "T2tjt2Dk3ng": {
+      "videoId": "T2tjt2Dk3ng",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "Federal appeals court judges have issued a temporary injunction blocking key provisions of the administration's student debt forgiveness initiative."
+        },
+        {
+          "start": 9.5,
+          "end": 19.5,
+          "text": "The legal challenge, led by several state attorneys general, argues that large-scale debt cancellation requires explicit authorization from Congress."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Millions of borrowers enrolled in income-driven repayment programs now face renewed uncertainty regarding their monthly payment schedules."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Department of Education officials maintain that existing federal statutes grant the secretary authority to modify loan terms during economic hardship."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Financial advisors urge borrowers to continue tracking their loan servicer accounts and avoid making unverified assumptions about forgiveness."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "The dispute is widely expected to reach the Supreme Court as judges weigh the constitutional boundaries of executive administrative authority."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "O9uWX7BOV8E": {
+      "videoId": "O9uWX7BOV8E",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Viewers across the country tuned in as the vice presidential candidates met on the debate stage for their sole televised confrontation."
+        },
+        {
+          "start": 9.0,
+          "end": 19.0,
+          "text": "The debate was notable for its civil tone, with both candidates directing their sharpest attacks at the opposing presidential nominees rather than each other."
+        },
+        {
+          "start": 19.0,
+          "end": 29.5,
+          "text": "Discussions centered heavily on manufacturing revitalization, child tax credit expansions, and foreign policy crises in Eastern Europe and the Middle East."
+        },
+        {
+          "start": 29.5,
+          "end": 40.0,
+          "text": "Both contenders sought to project calm competence, aiming to reassure moderate undecided voters in crucial Midwestern battleground states."
+        },
+        {
+          "start": 40.0,
+          "end": 50.5,
+          "text": "Post-debate analysis suggests neither candidate made a disqualifying mistake, leaving the fundamental contours of the presidential race largely unchanged."
+        },
+        {
+          "start": 50.5,
+          "end": 61.0,
+          "text": "With only weeks remaining until election day, campaign strategists are now shifting all available resources toward early voter mobilization efforts."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "RMdhIekKaiM": {
+      "videoId": "RMdhIekKaiM",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "Emergency crews are working around the clock across Florida to restore power and clear debris following catastrophic hurricane landfall."
+        },
+        {
+          "start": 9.5,
+          "end": 19.5,
+          "text": "Storm surges reaching historic levels flooded coastal communities, destroying residential neighborhoods and knocking down electrical infrastructure."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Federal disaster assistance teams have arrived with food, clean drinking water, and emergency mobile satellite communication units."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Local officials caution residents to beware of downed power lines, contaminated floodwaters, and unstable structural building foundations."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Insurance experts warn that recovery costs will reach tens of billions of dollars, putting severe financial strain on private property insurers."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "Community volunteer networks continue assisting elderly residents with immediate cleanup efforts as rebuilding plans take shape."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "CqU1q8Wb_y8": {
+      "videoId": "CqU1q8Wb_y8",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "With the presidential election entering its final sprint, campaign schedules reflect intense focus on the seven battleground states."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "Both candidates are holding multiple rallies daily, targeting working-class voters in industrial centers and suburbs."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Digital advertising spending has shattered records as campaigns flood social platforms with targeted video appeals."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Pollsters emphasize that turnout operations, known as ground games, will likely determine the winner in states decided by tens of thousands of votes."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Election workers are conducting rigorous machine testing and training poll watchers to ensure transparent and secure vote counting."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "The world is watching closely as American voters prepare to decide the nation's political trajectory for the next four years."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "l_13dD-x58s": {
+      "videoId": "l_13dD-x58s",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "High-level diplomatic envoys are convening across regional capitals in an urgent push to negotiate humanitarian ceasefires and hostage releases."
+        },
+        {
+          "start": 9.5,
+          "end": 19.5,
+          "text": "The humanitarian crisis has deepened severely, with aid agencies warning of catastrophic food and medical shortages among displaced families."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Negotiators from international mediator countries are circulating revised framework proposals addressing security guarantees and aid corridors."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "However, major obstacles remain regarding long-term troop deployments and the future governance structure of affected territories."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "United Nations officials reiterate that unimpeded access for relief convoys is required immediately to prevent widespread famine."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "Diplomats caution that without sustained political will from key leaders, temporary pauses risk collapsing into renewed hostilities."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "70-E7xLzD28": {
+      "videoId": "70-E7xLzD28",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Fresh economic data released this morning shows consumer inflation continuing its gradual descent toward the Federal Reserve's target."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Gasoline prices and used car costs fell significantly last month, providing tangible relief for household budgets."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "However, shelter and service costs remain sticky, keeping core inflation metrics slightly elevated above historical norms."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "Financial markets reacted positively to the figures, with major stock indices rallying on expectations of monetary policy easing."
+        },
+        {
+          "start": 39.0,
+          "end": 49.5,
+          "text": "Central bank policymakers stress they will maintain a data-dependent approach when evaluating future interest rate adjustments."
+        },
+        {
+          "start": 49.5,
+          "end": 60.0,
+          "text": "Economists note that achieving a soft landing without triggering recession would represent an extraordinary achievement for monetary policy."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "bP1G_B4lM1w": {
+      "videoId": "bP1G_B4lM1w",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "The Supreme Court heard oral arguments today in a pivotal constitutional challenge regarding legislative redistricting maps."
+        },
+        {
+          "start": 9.5,
+          "end": 19.5,
+          "text": "Plaintiffs argue that district boundaries were drawn in a manner that dilutes the collective voting influence of minority communities."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "State attorneys defended the map design, asserting that districts complied with geographic compactness and county boundary rules."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Justices actively questioned both sides regarding the precise legal thresholds required under Section Two of the Voting Rights Act."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Civil rights advocates warn that weakening federal voting safeguards could diminish representative accountability in dozens of districts."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "A formal written opinion from the high court is expected before the end of the current judicial term."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "pOm0__wzIJM": {
+      "videoId": "pOm0__wzIJM",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "South Korean author Han Kang has been awarded the Nobel Prize in Literature, making history as the first writer from her country to receive the honor."
+        },
+        {
+          "start": 9.5,
+          "end": 20.0,
+          "text": "The Swedish Academy praised her intense poetic prose that confronts historical traumas and exposes the fragility of human life."
+        },
+        {
+          "start": 20.0,
+          "end": 30.5,
+          "text": "Her groundbreaking novel The Vegetarian, which won the International Booker Prize, explored body autonomy, societal pressure, and nonviolent resistance."
+        },
+        {
+          "start": 30.5,
+          "end": 41.0,
+          "text": "Bookstores across Seoul were inundated with crowds within hours of the announcement, celebrating a momentous cultural milestone."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Literary critics highlight that her recognition underscores the profound global resonance and artistic depth of contemporary Asian literature."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "In her acceptance reflections, the author dedicated the prize to readers who find solace and truth through contemplative written words."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "j1s1_XW9q58": {
+      "videoId": "j1s1_XW9q58",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Federal aviation authorities are rolling out upgraded runway safety protocols following several close-call incidents at commercial airports."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "New radar detection systems and ground surveillance technology are being installed to give air traffic controllers instantaneous runway conflict alerts."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Commercial airlines are also refreshing pilot recurrent training programs with enhanced focus on situational awareness during low-visibility taxiing."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Aviation safety investigators emphasize that commercial flying remains the safest form of passenger travel due to redundant multi-layered safety margins."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Continuous communication between flight crews and tower personnel is essential to prevent runway incursions during peak traffic hours."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "Industry experts stress that investing in modern airport infrastructure is critical to accommodating sustained growth in global air passenger volumes."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "d_H_sB0wZfg": {
+      "videoId": "d_H_sB0wZfg",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "The exponential computational demands of artificial intelligence are driving major technology corporations to seek massive new sources of clean electricity."
+        },
+        {
+          "start": 9.5,
+          "end": 20.0,
+          "text": "Leading cloud providers have announced long-term power purchase agreements with next-generation nuclear facilities and geothermal energy developers."
+        },
+        {
+          "start": 20.0,
+          "end": 30.5,
+          "text": "Modern hyperscale data centers require gigawatts of constant baseload power to train and run large neural network models without interruption."
+        },
+        {
+          "start": 30.5,
+          "end": 41.0,
+          "text": "Environmental advocates praise investments in carbon-free energy but caution that growing tech power consumption must not crowd out local residential grids."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Engineers are also developing innovative liquid cooling systems to substantially reduce water and electrical overhead inside server racks."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "The transition demonstrates how the artificial intelligence revolution is catalyzing rapid advancements across the global clean energy landscape."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "DgxKv5AQuzU": {
+      "videoId": "DgxKv5AQuzU",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Rising energy prices, competition from abroad, and weak consumer demand are placing severe economic pressures across Europe."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "European heads of state gathered in Brussels this week for a high-stakes summit focused on boosting industrial competitiveness."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "The European Union is facing dual challenges of sluggish economic expansion and the need to finance green energy transitions."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "Leaders discussed common funding mechanisms, simplifying bureaucratic regulations, and securing domestic supply chains for critical minerals."
+        },
+        {
+          "start": 39.0,
+          "end": 49.5,
+          "text": "Meanwhile, trade relations with major global partners remain delicate as member states balance protectionist pressures against free trade commitments."
+        },
+        {
+          "start": 49.5,
+          "end": 61.0,
+          "text": "Economists suggest that deepening the single market for services and technology is vital if Europe is to keep pace with the US and Asia."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "jeDwSHPIqDc": {
+      "videoId": "jeDwSHPIqDc",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "Vietnam is actively encouraging household businesses and informal enterprises to transition into registered corporate entities."
+        },
+        {
+          "start": 9.5,
+          "end": 20.0,
+          "text": "The private sector currently accounts for over forty percent of the country's gross domestic product and employs millions of workers."
+        },
+        {
+          "start": 20.0,
+          "end": 31.0,
+          "text": "By registering officially, business owners gain easier access to commercial bank loans, digital payment infrastructure, and legal protections."
+        },
+        {
+          "start": 31.0,
+          "end": 42.0,
+          "text": "Government initiatives include simplified tax procedures, corporate income tax exemptions during the initial operating years, and digital training programs."
+        },
+        {
+          "start": 42.0,
+          "end": 53.0,
+          "text": "Experts believe that formalising the economy will enhance productivity, improve product quality, and integrate domestic firms into global supply chains."
+        },
+        {
+          "start": 53.0,
+          "end": 64.0,
+          "text": "As Vietnam targets sustained growth, a thriving and transparent business community remains a cornerstone of future prosperity."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "PDVud2eUNHA": {
+      "videoId": "PDVud2eUNHA",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Hanoi is renowned worldwide for its tranquil lakes, tree-lined boulevards, and rich thousand-year heritage."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "In recent years, the capital has rapidly emerged as a beloved destination for wellness tourism and cultural mindfulness."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Visitors can begin their morning with traditional tai chi alongside local residents by the peaceful waters of Hoan Kiem Lake."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "The Old Quarter offers authentic herbal tea houses, traditional acupuncture clinics, and rejuvenating holistic therapy spas."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Hanoi's cuisine also emphasizes natural balance, featuring fresh herbs, nutritious broths, and vegetarian delicacies."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "For travellers seeking healing and relaxation, Hanoi offers a unique harmony between ancient tranquility and modern hospitality."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "foB5o8bXnz0": {
+      "videoId": "foB5o8bXnz0",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "As a member of the UNESCO Creative Cities Network, Hanoi continues to cultivate its dynamic arts and design ecosystem."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Historic industrial spaces, such as old factories and warehouses, are being successfully transformed into vibrant creative hubs."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "Young Vietnamese designers and artists are blending indigenous folklore with contemporary digital aesthetics in fashion and multimedia exhibitions."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "Annual design festivals celebrate traditional craftsmanship from surrounding artisan villages, from Bat Trang ceramics to Van Phuc silk weaving."
+        },
+        {
+          "start": 39.0,
+          "end": 50.0,
+          "text": "These cultural initiatives not only enrich urban community life but also attract international art enthusiasts to the capital."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "Hanoi stands proudly as a bridge where age-old cultural legacies inspire cutting-edge modern artistic expression."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "8e9lQsPRM78": {
+      "videoId": "8e9lQsPRM78",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Retail spaces in Vietnam are undergoing a profound transformation as brands shift focus from pure sales to immersive flagship experiences."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "Consumers today seek sensory engagement, interactive product testing, and community gathering areas rather than simple display aisles."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Leading lifestyle brands are designing flagship stores in historic heritage villas, creating seamless blends between heritage architecture and modern shopping."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Technology integration, including smart mirrors and seamless mobile checkouts, provides convenient and personalized customer journeys."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Market analysts note that young urban consumers view retail destinations as social spaces for connection, discovery, and leisure."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "This experiential approach is reshaping downtown commercial districts across major economic hubs like Ho Chi Minh City and Hanoi."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "f3JHzkKmaks": {
+      "videoId": "f3JHzkKmaks",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "High-level bilateral meetings between Vietnam and China have reaffirmed mutual commitments to expanding trade and infrastructural connectivity."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Cross-border trade turnover has reached record highs, driven by strong demand for agricultural produce, electronics, and industrial raw materials."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "Both sides emphasized fast-tracking cross-border railway links and modernizing customs clearance gates with digital documentation systems."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "Vietnam's high-quality tropical fruits, including durian and dragon fruit, continue gaining expanding market share across major Chinese provinces."
+        },
+        {
+          "start": 39.0,
+          "end": 50.0,
+          "text": "Economic leaders agreed to enhance supply chain resilience, cooperate on green energy development, and support technology transfer initiatives."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "Strengthening comprehensive strategic cooperation provides important stability and economic momentum for the entire Southeast Asian region."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "NMHt_DXvkRE": {
+      "videoId": "NMHt_DXvkRE",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.0,
+          "text": "Vietnam and Laos continue to nurture their unique special solidarity and comprehensive partnership across all sectors."
+        },
+        {
+          "start": 8.0,
+          "end": 17.5,
+          "text": "Joint initiatives focus on energy cooperation, cross-border highway infrastructure, and educational scholarship exchange programs."
+        },
+        {
+          "start": 17.5,
+          "end": 27.0,
+          "text": "Vietnamese enterprises are actively investing in telecommunications, agricultural processing, and renewable hydroelectric energy in Laos."
+        },
+        {
+          "start": 27.0,
+          "end": 37.0,
+          "text": "Security and defense cooperation remains a cornerstone of bilateral stability along shared border provinces."
+        },
+        {
+          "start": 37.0,
+          "end": 47.0,
+          "text": "Both governments are committed to facilitating cross-border trade and transit access for landlocked Laotian logistics via Vietnamese seaports."
+        },
+        {
+          "start": 47.0,
+          "end": 57.0,
+          "text": "The timeless fraternal bond between the two nations remains an invaluable asset cherished by successive generations of leaders and citizens."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "FpwnwbMuca8": {
+      "videoId": "FpwnwbMuca8",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "A dynamic wave of young Vietnamese entrepreneurs is expanding beyond domestic borders, bringing technological innovations to international markets."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "From software-as-a-service platforms to sustainable consumer products, startup founders are designing solutions with global scalability from day one."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Access to international venture capital and supportive local incubation programs has accelerated growth across fintech and artificial intelligence sectors."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Founders emphasize that adaptability, strong engineering talent, and deep understanding of emerging markets give Vietnamese startups competitive advantages."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Government policies promoting the national innovation ecosystem are establishing sandbox regulations for testing experimental digital services."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "With ambition and ingenuity, Vietnam's entrepreneurial community is cementing the country's status as a rising technology powerhouse in Asia."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "iflt1LO5eLg": {
+      "videoId": "iflt1LO5eLg",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Member states of the Association of Southeast Asian Nations are stepping up regional collaboration to counter escalating cybersecurity threats."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "With the rapid digital transformation of banking, critical infrastructure, and government portals, cyber attacks have become increasingly sophisticated."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "Regional cybersecurity drills and intelligence-sharing centers help computer emergency response teams detect vulnerabilities and neutralize threats swiftly."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "Vietnam has taken an active role in proposing regional incident response protocols and hosting specialized capacity-building technical workshops."
+        },
+        {
+          "start": 39.0,
+          "end": 50.0,
+          "text": "Experts stress that establishing common legal standards on data privacy and cyber crime is essential for safeguarding the regional digital economy."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "A unified cyber defense posture ensures that Southeast Asia remains a secure and trusted destination for global digital commerce and investment."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "-SyxhbviQBg": {
+      "videoId": "-SyxhbviQBg",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Language is not merely a communication tool; it embodies memory, ancestral identity, and community belonging."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "Across Vietnam's multi-ethnic tapestry, preservationists are documenting endangered dialects and oral storytelling traditions."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "In highland communities, bilingual education initiatives enable children to learn national curriculum while preserving their native mother tongues."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Digital archiving projects record folk songs, epic poetry, and traditional proverbs for future generations of scholars and researchers."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Cultural anthropologists emphasize that celebrating linguistic diversity enriches national unity and mutual empathy among diverse communities."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "Honoring our diverse linguistic heritage ensures that every culture's unique wisdom continues echoing across generations."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "HTcjBg1zCY8": {
+      "videoId": "HTcjBg1zCY8",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Universities across the Mekong Delta region are integrating traditional Khmer musical arts and classical dance into formal academic degree programs."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "Veteran artisans and master musicians are invited onto university faculties to teach intricate Robam dance techniques and Pinpeat orchestral instruments."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Students study both practical performance artistry and the historical religious philosophy behind ancient temple performance rituals."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Academic institutionalization provides formal recognized credentials for young artists and preserves intangible cultural treasures from fading."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Campus student ensembles regularly perform at regional cultural festivals, generating enthusiastic appreciation among younger audiences."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "Bridging traditional master-apprentice heritage with contemporary higher education ensures a vibrant future for ethnic cultural treasures."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "pEO9-iPZQWA": {
+      "videoId": "pEO9-iPZQWA",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Hello and welcome to 6 Minute English from BBC Learning English. I am Neil, and joining me today is Beth."
+        },
+        {
+          "start": 8.5,
+          "end": 17.5,
+          "text": "Today we are discussing extreme weather events, which have been occurring with increasing frequency around our planet."
+        },
+        {
+          "start": 17.5,
+          "end": 28.0,
+          "text": "From unprecedented heatwaves to torrential rainstorms, scientists say that our changing climate is driving these phenomena."
+        },
+        {
+          "start": 28.0,
+          "end": 39.0,
+          "text": "Before we dive in, here is our quiz question: What is the highest temperature ever reliably recorded on Earth?"
+        },
+        {
+          "start": 39.0,
+          "end": 50.0,
+          "text": "Is it A) 54.0 degrees Celsius, B) 56.7 degrees Celsius, or C) 58.2 degrees Celsius?"
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "Meteorologists use the term heat dome to describe high atmospheric pressure that traps hot air over an entire region."
+        },
+        {
+          "start": 61.0,
+          "end": 72.0,
+          "text": "When hot air is trapped for days, it leads to scorching conditions that put immense strain on energy grids and agriculture."
+        },
+        {
+          "start": 72.0,
+          "end": 83.0,
+          "text": "Communities are adapting by planting urban forests and creating cooling centres to protect vulnerable elderly citizens."
+        },
+        {
+          "start": 83.0,
+          "end": 95.0,
+          "text": "And the answer to our quiz question is B, 56.7 degrees Celsius, recorded in Death Valley, California in 1913."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "xwseWCSXD3Y": {
+      "videoId": "xwseWCSXD3Y",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Welcome to 6 Minute English. I am Georgie, and today we are exploring how humans describe smells and aromas."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "English has a rich collection of sensory adjectives, but many people find it surprisingly difficult to put smells into words."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "We often borrow words from taste, such as sweet or sour, or describe the object that produces the odor, like floral or woody."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Words like fragrant, aromatic, and scented usually carry positive connotations, describing fresh flowers, spices, or perfumes."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "On the other hand, adjectives like pungent, rancid, foul, and acrid warn us of rotten food or dangerous chemicals."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "Scientists discover that our olfactory system connects directly to the brain's emotional memory centre, the amygdala."
+        },
+        {
+          "start": 63.0,
+          "end": 74.0,
+          "text": "That is why a single whiff of baked bread can instantly transport you back to your childhood kitchen decades ago."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "SC_opiKLohg": {
+      "videoId": "SC_opiKLohg",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Welcome to 6 Minute English. Today we are looking into the future of autonomous vehicles and driverless transport."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "Self-driving cars are already navigating streets in cities like San Francisco, Phoenix, and Beijing without anyone behind the steering wheel."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Advocates argue that autonomous vehicles will dramatically reduce traffic accidents caused by human fatigue, speeding, and drunk driving."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Sensors including LIDAR, radar, and high-resolution cameras allow these robotaxis to detect pedestrians and obstacles from hundreds of meters away."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "However, critics raise ethical questions regarding liability when unexpected accidents occur in complex rainy or foggy conditions."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "Transportation authorities are updating road infrastructure and testing emergency protocols before deploying autonomous buses on public routes."
+        },
+        {
+          "start": 63.0,
+          "end": 74.0,
+          "text": "Whether we are ready or not, artificial intelligence is reshaping how people and goods move across our modern cities."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "zl0dwwKhmuM": {
+      "videoId": "zl0dwwKhmuM",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.5,
+          "text": "Hello and welcome to 6 Minute English. Today we are discussing cybersecurity and the emergence of autonomous AI hacking agents."
+        },
+        {
+          "start": 9.5,
+          "end": 20.0,
+          "text": "Computer scientists recently demonstrated that specialized AI models can scan computer networks, identify software bugs, and execute exploits autonomously."
+        },
+        {
+          "start": 20.0,
+          "end": 30.5,
+          "text": "While security researchers use these automated agents to patch vulnerabilities, there are growing fears that cybercriminals could repurpose them for malicious attacks."
+        },
+        {
+          "start": 30.5,
+          "end": 41.0,
+          "text": "Traditional firewalls and antivirus programs are struggling to keep up with malware that rewrites its own code to evade signature detection."
+        },
+        {
+          "start": 41.0,
+          "end": 51.5,
+          "text": "Companies are now deploying defensive artificial intelligence that monitors network anomalies in real time and automatically isolates breached servers."
+        },
+        {
+          "start": 51.5,
+          "end": 62.0,
+          "text": "Experts emphasize that maintaining strong passwords, multi-factor authentication, and employee vigilance remains the foundational bedrock of digital defense."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "FuExlxdoTcY": {
+      "videoId": "FuExlxdoTcY",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Welcome to Learn about the News in English. Today we report on emergency recovery efforts following severe monsoon flooding in Nepal."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "Torrential rains triggered widespread landslides and swollen rivers that swept away bridges and cut off remote Himalayan mountain villages."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Military helicopters and local rescue volunteers are delivering food packages, tents, and medical supplies to stranded families."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Meteorologists explain that changing rainfall patterns are making monsoon seasons less predictable and considerably more destructive."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Community groups are working tirelessly to clear mud from drinking water reservoirs and re-establish damaged electrical lines."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "International humanitarian organizations have pledged long-term funding to help rebuild resilient schools and flood defenses."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "q4JyFF46528": {
+      "videoId": "q4JyFF46528",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Hello and welcome to Real Easy English! Today we are talking about household chores and cleaning routines."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Some people find doing chores therapeutic and relaxing, while others view tidying up as a dreaded obligation."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "Common chores include vacuuming the carpet, washing dirty dishes, wiping kitchen surfaces, and folding laundry."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "Psychological studies suggest that having an organized living space helps reduce stress and promotes mental clarity."
+        },
+        {
+          "start": 39.0,
+          "end": 49.5,
+          "text": "Many people make cleaning more enjoyable by listening to their favorite podcasts or upbeat music while scrubbing."
+        },
+        {
+          "start": 49.5,
+          "end": 60.0,
+          "text": "Whether you love it or hate it, keeping your environment clean creates a welcoming atmosphere to unwind after a busy day."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "bRnGm3y0IFU": {
+      "videoId": "bRnGm3y0IFU",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Welcome to English in a Minute! Today we are learning common natural idioms that native speakers use in casual conversation."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "When someone says bite the bullet, it means to face a difficult situation with courage and get it over with."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Another common idiom is break a leg, which sounds strange, but it is actually used to wish performers good luck before going on stage."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "If you are feeling under the weather, that simply means you are feeling slightly sick, tired, or unwell."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Learning idiomatic expressions in context makes your spoken English sound much more fluid, expressive, and natural."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "Practice using these phrases in your daily conversations to boost your speaking fluency and confidence!"
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "BFJsSnEEGrI": {
+      "videoId": "BFJsSnEEGrI",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Welcome to Real Easy English. Today we are asking everyday people how they like to drink their morning coffee."
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Coffee culture has exploded globally, with cafes offering everything from traditional drip coffee to plant-based oat milk lattes."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "Some purists prefer a bold, dark espresso with zero sugar, while others enjoy sweet iced beverages topped with whipped cream."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "In Vietnam, iced coffee with sweet condensed milk, known as ca phe sua da, is an iconic national staple beloved by all ages."
+        },
+        {
+          "start": 39.0,
+          "end": 49.5,
+          "text": "Caffeine stimulates the central nervous system, helping people stay alert and focused during demanding work tasks."
+        },
+        {
+          "start": 49.5,
+          "end": 60.0,
+          "text": "How do you take your coffee? Share your favorite brewing style and daily routine in English!"
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "TeVE4TQPEwM": {
+      "videoId": "TeVE4TQPEwM",
+      "sentences": [
+        {
+          "start": 8.36,
+          "end": 18.0,
+          "text": "Even after winning major awards or excelling in their careers, highly accomplished people often fear they will be exposed as frauds."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "This psychological phenomenon is known as imposter syndrome: the persistent feeling that your success is due to luck rather than ability."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "First identified by psychologists Pauline Clance and Suzanne Imes in the late 1970s, it affects students, executives, and artists alike."
+        },
+        {
+          "start": 39.0,
+          "end": 50.0,
+          "text": "People experiencing imposter syndrome tend to dismiss positive feedback, attributing their achievements to timing or mistakes by evaluators."
+        },
+        {
+          "start": 50.0,
+          "end": 61.0,
+          "text": "Pluralistic ignorance plays a major role: we compare our private doubts with the calm and confident exterior projected by everyone else."
+        },
+        {
+          "start": 61.0,
+          "end": 72.0,
+          "text": "The most effective way to combat this feeling is talking openly with trusted colleagues and mentors about vulnerability."
+        },
+        {
+          "start": 72.0,
+          "end": 84.0,
+          "text": "Remember that feeling like you have more to learn is not proof of incompetence; rather, it is the hallmark of genuine intellectual curiosity."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "av3zdxYvCp8": {
+      "videoId": "av3zdxYvCp8",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 8.5,
+          "text": "Have you ever wondered why listening to moving music or stepping into chilly air causes tiny bumps to appear across your skin?"
+        },
+        {
+          "start": 8.5,
+          "end": 18.0,
+          "text": "Scientifically known as piloerection, goosebumps are an evolutionary physiological reflex inherited from our prehistoric mammal ancestors."
+        },
+        {
+          "start": 18.0,
+          "end": 28.5,
+          "text": "Tiny muscles located at the base of each hair follicle, called arrector pili, contract involuntarily in response to cold temperatures or adrenaline."
+        },
+        {
+          "start": 28.5,
+          "end": 39.0,
+          "text": "In animals with thick fur coats, raising hairs traps a layer of insulating air near the body to preserve vital body heat."
+        },
+        {
+          "start": 39.0,
+          "end": 49.5,
+          "text": "Fluffing up also makes an animal appear larger and more intimidating when confronting potential predators in the wild."
+        },
+        {
+          "start": 49.5,
+          "end": 60.0,
+          "text": "While humans have lost dense body hair over millennia, the underlying neurological and muscular reflex remains wired into our biology."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    },
+    "1uTRlM6MbMo": {
+      "videoId": "1uTRlM6MbMo",
+      "sentences": [
+        {
+          "start": 0.0,
+          "end": 9.0,
+          "text": "Thousands of meters beneath the ocean surface lies the hadal zone, an environment of near-freezing darkness and unimaginable hydrostatic pressure."
+        },
+        {
+          "start": 9.0,
+          "end": 19.5,
+          "text": "At the bottom of the Mariana Trench, pressure exceeds one thousand atmospheres, equivalent to having an elephant standing on your thumb."
+        },
+        {
+          "start": 19.5,
+          "end": 30.0,
+          "text": "Terrestrial animals would be crushed instantly, yet snailfish, giant amphipods, and translucent jellyfish thrive in these abyssal depths."
+        },
+        {
+          "start": 30.0,
+          "end": 41.0,
+          "text": "Deep-sea organisms lack gas-filled air cavities like lungs and swim bladders, which would collapse violently under immense external force."
+        },
+        {
+          "start": 41.0,
+          "end": 52.0,
+          "text": "Their cell membranes contain specialized unsaturated fatty acids and piezolytes that stabilize proteins and maintain cellular flexibility under pressure."
+        },
+        {
+          "start": 52.0,
+          "end": 63.0,
+          "text": "These astonishing biochemical adaptations illustrate the boundless resilience and creativity of life across Earth's most extreme frontiers."
+        }
+      ],
+      "autoGenerated": false,
+      "preparedAt": "2026-10-17T09:00:00.000Z",
+      "doneCount": 0
+    }
+  },
+  "translations": {
+    "eRRiAEdHtDY": [
+      "Tuần này trong chương trình AI Decoded, một bộ phim tài liệu mới đặt ra câu hỏi liệu công nghệ chúng ta phát triển hôm nay có đe dọa sự tồn vong của nhân loại hay không.",
+      "Trí tuệ nhân tạo đã phát triển với tốc độ đáng kinh ngạc trong hai năm qua, vượt trội con người trong các bài kiểm tra toán học và suy luận phức tạp.",
+      "Các nhà lãnh đạo công nghệ và nhà khoa học máy tính đang chia rẽ về việc liệu các hệ thống siêu thông minh có thể được kiểm soát an toàn khi vượt qua trí tuệ con người hay không.",
+      "Một số nhà tiên phong cảnh báo rằng nếu không có các quy chuẩn an toàn quốc tế nghiêm ngặt, chúng ta có nguy cơ mất quyền kiểm soát các tác nhân tự đưa ra quyết định.",
+      "Tuy nhiên, các nhà nghiên cứu khác lại cho rằng những rủi ro thực tế trước mắt là thông tin sai lệch, các cuộc tấn công mạng và định kiến thuật toán trong tuyển dụng tự động.",
+      "Chính phủ tại Washington, London và Brussels hiện đang chạy đua để thiết lập khung pháp lý và thử nghiệm bắt buộc đối với các mô hình AI tiên tiến nhất.",
+      "Liên minh Châu Âu đã thông qua Đạo luật AI mang tính bước ngoặt, phân loại các ứng dụng AI dựa trên mức độ rủi ro đối với người dân.",
+      "Trong khi đó, các phòng thí nghiệm công nghệ lớn đang đầu tư hàng trăm triệu USD vào nghiên cứu căn chỉnh an toàn AI để đảm bảo các mô hình luôn hữu ích và an toàn.",
+      "Thách thức cốt lõi là liệu nhân loại có thể hợp tác trên phạm vi toàn cầu để quản trị một công nghệ vừa mang lại nguồn của cải khổng lồ vừa tiềm ẩn hiểm họa chưa từng có."
+    ],
+    "KqRMgUN6aIg": [
+      "Tại nhiều thành phố lớn, những người trẻ thuộc thế hệ Gen Z đang khởi xướng các phong trào biểu tình với quy mô chưa từng có để đòi cải cách kinh tế và chính trị.",
+      "Khác với các thế hệ đi trước, những nhà hoạt động trẻ này tổ chức gần như hoàn toàn thông qua các nền tảng kỹ thuật số như TikTok, Discord và Telegram.",
+      "Giá nhà đất đắt đỏ, nợ vay học phí sinh viên và lạm phát khiến nhiều cử nhân mới tốt nghiệp cảm thấy mất cơ hội đạt được sự ổn định tài chính.",
+      "Tại các quốc gia từ Kenya đến Hàn Quốc, cử tri Gen Z đang bày tỏ sự thất vọng sâu sắc đối với các đảng phái truyền thống và giới tinh hoa chính trị.",
+      "Họ mong muốn sự quản trị minh bạch, hành động tức thì trước biến đổi khí hậu và cơ hội kinh tế công bằng cho những lao động mới vào nghề.",
+      "Các nhà phân tích chính trị nhận định rằng khối cử tri này là lực lượng định đoạt kết quả bầu cử mà những bài diễn văn tranh cử sáo rỗng không thể thuyết phục.",
+      "Khi các cuộc bầu cử trên toàn cầu đến gần, các nhà lãnh đạo buộc phải đối diện với thực tế kinh tế cấp bách mà thế hệ lao động trẻ nhất đang phải gánh chịu."
+    ],
+    "8G-NflYNCts": [
+      "Các cử tri Mỹ đang chuẩn bị bỏ phiếu trong kỳ bầu cử giữa nhiệm kỳ sẽ quyết định cán cân quyền lực tại thủ đô Washington.",
+      "Quyền kiểm soát cả Hạ viện lẫn Thượng viện đang phụ thuộc vào một số ít các cuộc đua sít sao đầy gay cấn.",
+      "Các vấn đề kinh tế bao gồm lạm phát tiêu dùng, lãi suất vay mua nhà và an ninh việc làm đang chi phối mối quan tâm hàng đầu của cử tri tại các bang chiến trường.",
+      "Phe Cộng hòa tập trung thông điệp tranh cử vào an ninh biên giới và áp lực chi phí sinh hoạt đè nặng lên các hộ gia đình ngoại ô.",
+      "Trong khi đó, phe Dân chủ đang tập hợp lực lượng xung quanh các cam kết bảo vệ y tế, quyền sinh sản và sự ổn định của thể chế dân chủ.",
+      "Tỷ lệ đi bầu của nhóm cử tri độc lập và phụ nữ vùng ngoại ô được dự đoán sẽ là yếu tố quyết định tại các địa bàn cạnh tranh then chốt.",
+      "Kết quả cuối cùng sẽ mang lại cho tổng thống quyền thúc đẩy các chính sách quan trọng hoặc dẫn tới tình trạng chính quyền chia rẽ và bế tắc lập pháp."
+    ],
+    "-nqq5zKogJs": [
+      "Tại thủ đô Tirana, các cuộc biểu tình phản đối chính phủ đã bước sang ngày thứ tư liên tiếp khi hàng nghìn người tụ tập trước tòa nhà quốc hội.",
+      "Những người ủng hộ phe đối lập đang yêu cầu các quan chức cấp cao từ chức do những cáo buộc tham nhũng và quản lý yếu kém ngân sách công.",
+      "Lực lượng an ninh đã sử dụng hơi cay và vòi rồng sau khi người biểu tình tìm cách vượt qua hàng rào phong tỏa quanh văn phòng thủ tướng.",
+      "Các đại diện của Liên minh Châu Âu đã kêu gọi tất cả các bên kiềm chế tối đa và tham gia vào các cuộc đối thoại mang tính xây dựng.",
+      "Các tổ chức xã hội dân sự nhấn mạnh rằng sự độc lập của tư pháp và tự do truyền thông là điều kiện tiên quyết cho tiến trình gia nhập EU của Albania.",
+      "Bất chấp những lời kêu gọi bình tĩnh từ cộng đồng quốc tế, các lãnh đạo phe đối lập cam kết sẽ tiếp tục biểu tình hàng ngày cho tới khi có cải cách cụ thể."
+    ],
+    "hwXmUpCLxU4": [
+      "Chào mừng bạn đến với chương trình BBC Newscast. Hôm nay chúng ta xem xét cuộc tranh luận chính trị gay gắt về cải cách phúc lợi tại Vương quốc Anh.",
+      "Chính phủ đang đối mặt với chi phí trợ cấp khuyết tật và trợ cấp ốm đau dài hạn tăng vọt sau đại dịch.",
+      "Các bộ trưởng cho rằng việc hỗ trợ những người có tình trạng sức khỏe ổn định quay trở lại thị trường lao động là yếu tố sống còn cho năng suất kinh tế.",
+      "Tuy nhiên, các tổ chức từ thiện vì người nghèo cảnh báo việc thắt chặt tiêu chuẩn xét duyệt có nguy cơ đẩy các gia đình dễ tổn thương vào cảnh túng quẫn.",
+      "Nội các đối lập đang chịu áp lực lớn trong việc đưa ra chiến lược toàn diện, vừa đảm bảo kỷ luật tài khóa vừa duy trì mạng lưới an sinh nhân văn.",
+      "Khi các dịch vụ công vốn đã quá tải, việc tìm kiếm sự đồng thuận về chi tiêu phúc lợi tiếp tục là một trong những bài toán hóc búa nhất của chính trường Anh."
+    ],
+    "GQnQj29shKw": [
+      "Các nhà phân tích quốc phòng quốc tế đang theo dõi sát sao những phát biểu ngoại giao liên quan đến răn đe hạt nhân và các hiệp ước không phổ biến vũ khí.",
+      "Học thuyết răn đe chiến lược dựa trên sự hiểu biết chung rằng việc sử dụng vũ khí hạt nhân sẽ dẫn tới sự đáp trả mang tính hủy diệt cho cả hai bên.",
+      "Các cựu quan chức nhấn mạnh việc duy trì các kênh liên lạc mở giữa các cường quốc là điều tối quan trọng để ngăn chặn những tính toán sai lầm.",
+      "Những căng thẳng khu vực gần đây đã hâm nóng lại các cuộc tranh luận về hiệu quả của lá chắn phòng thủ tên lửa và mạng lưới vệ tinh cảnh báo sớm.",
+      "Các nhà ngoại giao Liên Hợp Quốc tiếp tục thúc đẩy tái khởi động các cuộc đàm phán giải trừ vũ khí nhằm bảo vệ sự ổn định ở các khu vực địa chính trị bất ổn.",
+      "Lịch sử chứng minh rằng việc quản trị khủng hoảng đòi hỏi sự ngoại giao điềm tĩnh, quy trình minh bạch và sự tuân thủ nghiêm ngặt luật pháp quốc tế."
+    ],
+    "6R3gBfn7Dro": [
+      "Các nhà sáng tạo nội dung trên toàn cầu đang gióng lên hồi chuông cảnh báo về các phần mềm tự động sao chép video gốc chỉ vài giây sau khi đăng tải.",
+      "Những công cụ AI này viết lại kịch bản bằng từ đồng nghĩa, tạo giọng đọc nhân tạo và đổi góc khung hình để lách qua các bộ lọc bản quyền.",
+      "Được gọi là 'reskinning', chiêu trò này cho phép các tài khoản lậu thu hút hàng triệu lượt xem và kiếm tiền bất chính trên công sức sáng tạo của người khác.",
+      "Nhiều nhà giáo dục độc lập và nghệ sĩ hoạt hình cho biết hệ thống xử lý vi phạm bản quyền hiện tại của các nền tảng quá chậm chạp để ngăn chặn nạn sao chép hàng loạt.",
+      "Các chuyên gia pháp lý lập luận rằng cần áp dụng dấu bản quyền kỹ thuật số và các bộ phát hiện bằng máy học để bảo vệ quyền sở hữu trí tuệ trên mạng.",
+      "Nếu không có các biện pháp bảo vệ mạnh mẽ hơn, các nhà sáng tạo lo ngại công nghệ sinh nội dung có thể làm suy kiệt nguồn thu của những câu chuyện chân thực do con người tạo ra."
+    ],
+    "nSsKYX-D540": [
+      "Hôm nay trong chương trình The Global Story, chúng ta điều tra vai trò gây tranh cãi của các bên trung gian tư nhân thực hiện ngoại giao ngầm tại các vùng xung đột nhạy cảm.",
+      "Trong khi các đại sứ chính thức bị ràng buộc bởi nghi thức chính phủ, các phái viên không chính thức lại thường đàm phán qua kênh ngầm với các chính quyền đối địch.",
+      "Những người ủng hộ cho rằng các cá nhân này có thể phá vỡ bế tắc ngoại giao và hỗ trợ việc trao đổi tù nhân khi quan hệ chính thức bị cắt đứt.",
+      "Ngược lại, các nhà phê bình chỉ ra rằng các cuộc đàm phán không được cấp phép sẽ làm suy yếu chính sách chính thống và có thể bị tình báo nước ngoài lợi dụng để gây áp lực.",
+      "Bộ Ngoại giao Mỹ khẳng định mọi cam kết quốc tế phải tuân thủ nghiêm ngặt các khuôn khổ giám sát pháp lý và hiến pháp hiện hành.",
+      "Sự gia tăng của hoạt động ngoại giao tự do phản ánh một trật tự thế giới ngày càng phân mảnh, nơi các thể chế đa phương truyền thống gặp khó khăn trong việc kiểm soát tình hình."
+    ],
+    "YANXLDxMh8c": [
+      "Các báo cáo từ tiền tuyến cho thấy các đơn vị quân đội Ukraine đã tiến qua các phòng tuyến kiên cố trong các chiến dịch phản công tại miền đông.",
+      "Những người lính trên thực địa miêu tả điều kiện chiến đấu vô cùng khốc liệt với các bãi mìn dày đặc, những trận pháo kích liên miên và máy bay không người lái do thám liên tục.",
+      "Các phương tiện bọc thép và hệ thống tên lửa dẫn đường do phương Tây viện trợ đã cung cấp sự yểm trợ chiến thuật quan trọng trong các đòn tấn công vào các đầu mối tiếp tế chiến lược.",
+      "Các chỉ huy quân sự nhấn mạnh việc vô hiệu hóa các kho hậu cần phía sau chiến tuyến là yếu tố then chốt để hạn chế khả năng tăng viện của đối phương.",
+      "Trong khi đó, mạng lưới tình nguyện viên dân sự tiếp tục vận chuyển các vật tư y tế thiết yếu và máy phát điện tới các thị trấn vừa được giải phóng khỏi sự chiếm đóng kéo dài.",
+      "Khi thời tiết mùa đông đang đến gần, các chỉ huy đang chạy đua với thời gian để củng cố các vùng kiểm soát trước khi địa hình lầy lội làm cản trở khả năng cơ động của khí tài cơ giới."
+    ],
+    "v36FeYEMowE": [
+      "Văn phòng báo chí Nhà Trắng giữ vai trò trọng yếu trong việc truyền tải các chính sách của tổng thống và các quyết định hành pháp tới công chúng Mỹ.",
+      "Các buổi họp báo thường nhật tại Phòng họp báo James S. Brady là diễn đàn quan trọng nơi các nhà báo chất vấn và yêu cầu quan chức chính phủ giải trình.",
+      "Sự thay đổi nhân sự thường xuyên tại các vị trí truyền thông chiến lược phản ánh áp lực khủng khiếp trong việc xử lý các dòng tin tức biến đổi từng phút trong thời đại số.",
+      "Các cố vấn cấp cao phải đồng bộ hóa thông điệp giữa nhiều bộ ngành về các chủ đề phức tạp từ an ninh quốc gia cho tới các sáng kiến chính sách tài khóa.",
+      "Việc duy trì uy tín với giới phóng viên trong khi kiên quyết bảo vệ chương trình nghị sự của tổng thống đòi hỏi sự khéo léo ngoại giao và tính kỷ luật phi thường.",
+      "Trong thời đại truyền thông bị phân hóa sâu sắc, sự giao tiếp công khai và minh bạch tiếp tục là yếu tố cốt lõi để giữ vững niềm tin của công chúng vào các thể chế dân chủ."
+    ],
+    "moL5e5BJaCk": [
+      "Nhiều nghệ sĩ biểu diễn huyền thoại đã xây dựng nên những nhân vật sân khấu ấn tượng, hoàn toàn đối lập với cuộc sống đời tư kín đáo và bình dị của họ.",
+      "Trong một cuộc phỏng vấn chân thực, các nhạc sĩ rock biểu tượng chia sẻ cách mà việc tạo ra một hình mẫu sân khấu khác biệt đã giúp họ vượt qua sự rụt rè của bản thân.",
+      "Đằng sau những bộ trang phục lộng lẫy, lớp hóa trang và hiệu ứng sân khấu bùng nổ, các nghệ sĩ thường dành thời gian rảnh rỗi bên gia đình, đọc sách và làm vườn.",
+      "Các nhà tâm lý học giải thích rằng việc khoác lên mình một nhân vật nghệ thuật tạo ra lá chắn cảm xúc, cho phép người biểu diễn tự do sáng tạo mà không sợ bị phán xét.",
+      "Tuy nhiên, việc phân định ranh giới giữa danh tiếng trước công chúng và con người thật bên trong đòi hỏi kỷ luật nghiêm túc và một điểm tựa gia đình vững vàng.",
+      "Sau cùng, sức cuốn hút lâu bền của những nghệ sĩ vĩ đại nằm ở năng lực cống hiến cho hàng triệu khán giả nhưng vẫn giữ trọn nét mộc mạc và chân thành sau ánh đèn sân khấu."
+    ],
+    "LaC3IbvbHDQ": [
+      "Tối nay có thêm 11 cuộc đua vào Hạ viện nghiêng về phía đảng Dân chủ. Báo cáo Chính trị Cook, cơ quan dự báo bầu cử hàng đầu, hiện chuyển 11 ghế đó khỏi tầm tay đảng Cộng hòa.",
+      "Và họ đưa ra quyết định này ngay trước thềm ngày bầu cử. Chúng ta chỉ còn chưa đầy 3 tuần nữa, và các cuộc đua này rất có thể định đoạt đảng nào nắm quyền kiểm soát Hạ viện.",
+      "Tại một số bang, còn có các cuộc đua vào Thượng viện vô cùng gay cấn. 8 trong số 11 ghế từng được coi là vững chắc của phe Cộng hòa, vì vậy đây là bước chuyển biến rất lớn.",
+      "Hãy nhìn vào 5 ghế hiện do phe Cộng hòa nắm giữ nhưng giờ chuyển sang thế giằng co khó đoán. Cả 5 ghế này từng ủng hộ ông Trump với cách biệt hai con số vào năm 2024.",
+      "Chúng ta cùng kết nối với Dave Wasserman, biên tập viên cao cấp và chuyên gia phân tích bầu cử của Cook Political Report. Dave, tình hình này nghiêm trọng ra sao đối với phe Cộng hòa?",
+      "Erin, tình thế đã chuyển từ xấu sang thảm họa tiềm tàng đối với đảng Cộng hòa. Chúng tôi đang ghi nhận những số liệu thăm dò gây sốc ở các học khu từng ủng hộ ông Trump.",
+      "Trước hết, đây là cuộc bầu cử quay ngược thời gian, khi những khu vực từng nghiêng mạnh về ông Trump nay lại trở thành tâm điểm cạnh tranh quyết liệt.",
+      "Iowa đang là vấn đề đau đầu đối với phe Cộng hòa. Họ đứng trước nguy cơ mất 3 trong số 4 hạt tại bang này.",
+      "Một đặc điểm nổi bật khác là phe Cộng hòa gặp trở ngại rất lớn trong việc bảo vệ các ghế trống khi dân biểu đương nhiệm nghỉ hưu.",
+      "Những người đương nhiệm xây dựng được hình ảnh độc lập với ông Trump có kết quả tốt hơn nhiều so với các ứng viên mới thiếu uy tín tại địa phương.",
+      "Một nguyên nhân cốt lõi là sự lo lắng về kinh tế ở các vùng nông thôn Mỹ đang ở mức căng thẳng nhất kể từ cuộc khủng hoảng nông nghiệp thập niên 1980."
+    ],
+    "T2tjt2Dk3ng": [
+      "Các thẩm phán tòa phúc thẩm liên bang vừa ban hành lệnh tạm hoãn nhằm chặn các điều khoản then chốt trong sáng kiến xóa nợ sinh viên của chính quyền.",
+      "Đơn kiện do tổng chưởng lý của nhiều bang đứng đầu lập luận rằng việc xóa nợ với quy mô lớn bắt buộc phải có sự phê chuẩn rõ ràng từ Quốc hội.",
+      "Hàng triệu người vay tiền tham gia các chương trình trả nợ theo thu nhập hiện phải đối mặt với sự bất định mới về lịch thanh toán hàng tháng của họ.",
+      "Các quan chức Bộ Giáo dục khẳng định các đạo luật liên bang hiện hành cho phép bộ trưởng quyền điều chỉnh các điều khoản cho vay trong thời kỳ kinh tế khó khăn.",
+      "Các chuyên gia tài chính khuyến cáo người vay nên tiếp tục theo dõi tài khoản quản lý nợ của mình và tránh đưa ra những phán đoán thiếu căn cứ về việc được xóa nợ.",
+      "Vụ tranh chấp này được dự đoán rộng rãi sẽ phải lên tới Tòa án Tối cao khi các thẩm phán xem xét giới hạn hiến pháp của quyền lực hành pháp."
+    ],
+    "O9uWX7BOV8E": [
+      "Khán giả cả nước đã theo dõi buổi tranh luận trực tiếp trên truyền hình khi các ứng viên phó tổng thống bước vào cuộc đối đầu duy nhất của chiến dịch.",
+      "Buổi tranh luận gây ấn tượng bởi thái độ lịch thiệp khi cả hai ứng viên đều hướng mũi nhọn công kích về phía ứng viên tổng thống của phe đối địch thay vì công kích cá nhân.",
+      "Các cuộc thảo luận tập trung nhiều vào sự phục hồi ngành sản xuất chế tạo, mở rộng tín dụng thuế cho trẻ em và các cuộc khủng hoảng ngoại giao tại Đông Âu và Trung Đông.",
+      "Cả hai ứng viên đều cố gắng thể hiện năng lực lãnh đạo điềm tĩnh nhằm trấn an nhóm cử tri ôn hòa còn đang lưỡng lự tại các bang chiến trường vùng Trung Tây.",
+      "Các phân tích sau buổi tranh luận cho thấy không ứng viên nào mắc phải sai lầm mang tính chí mạng, khiến cho cục diện cơ bản của cuộc đua vào Nhà Trắng hầu như không đổi.",
+      "Khi chỉ còn vài tuần trước ngày bầu cử, các chiến lược gia đang dồn toàn bộ nguồn lực vào chiến dịch vận động cử tri tham gia bỏ phiếu sớm."
+    ],
+    "RMdhIekKaiM": [
+      "Các đội cứu hộ khẩn cấp đang làm việc ngày đêm khắp bang Florida để khôi phục mạng lưới điện và dọn dẹp đống đổ nát sau cơn bão lịch sử đổ bộ.",
+      "Nước biển dâng cao kỷ lục gây ngập lụt nghiêm trọng các khu dân cư ven biển, phá hủy nhiều công trình nhà ở và quật ngã hạ tầng điện lưới.",
+      "Các đội cứu trợ thảm họa liên bang đã có mặt mang theo lương thực, nước sạch và các trạm liên lạc vệ tinh di động phục vụ ứng phó khẩn cấp.",
+      "Chính quyền địa phương cảnh báo người dân đề phòng đường dây điện đứt rơi, nguồn nước ngập bị ô nhiễm và các móng nhà suy yếu kết cấu.",
+      "Các chuyên gia bảo hiểm ước tính chi phí tái thiết sẽ lên tới hàng chục tỷ USD, tạo áp lực tài chính nặng nề lên các công ty bảo hiểm tài sản tư nhân.",
+      "Mạng lưới tình nguyện viên địa phương tiếp tục hỗ trợ những cư dân lớn tuổi dọn dẹp nhà cửa khi kế hoạch tái thiết bắt đầu được triển khai."
+    ],
+    "CqU1q8Wb_y8": [
+      "Khi cuộc bầu cử tổng thống bước vào chặng nước rút cuối cùng, lịch trình tranh cử thể hiện sự tập trung cao độ vào 7 bang chiến trường quyết định.",
+      "Cả hai ứng viên đều tổ chức nhiều cuộc vận động cử tri mỗi ngày, nhắm trực tiếp vào tầng lớp lao động tại các trung tâm công nghiệp và vùng ngoại ô.",
+      "Chi tiêu quảng cáo kỹ thuật số đã phá vỡ mọi kỷ lục khi các chiến dịch phủ sóng mạng xã hội bằng các thông điệp video được cá nhân hóa cao độ.",
+      "Các chuyên gia thăm dò nhấn mạnh việc vận động cử tri trực tiếp tại cơ sở sẽ quyết định thắng bại ở những bang mà khoảng cách chỉ là vài chục nghìn phiếu.",
+      "Các nhân viên bầu cử đang tiến hành kiểm tra máy móc nghiêm ngặt và đào tạo giám sát viên để đảm bảo quá trình kiểm phiếu diễn ra minh bạch, an toàn.",
+      "Cả thế giới đang dõi theo khi các cử tri Mỹ chuẩn bị định đoạt hướng đi chính trị của quốc gia này trong 4 năm tới."
+    ],
+    "l_13dD-x58s": [
+      "Các phái viên ngoại giao cấp cao đang tề tựu tại các thủ đô trong khu vực với nỗ lực khẩn trương nhằm đàm phán lệnh ngừng bắn nhân đạo và phóng thích con tin.",
+      "Cuộc khủng hoảng nhân đạo đã trở nên vô cùng trầm trọng khi các tổ chức cứu trợ cảnh báo về tình trạng thiếu lương thực và y tế nghiêm trọng trong các gia đình sơ tán.",
+      "Các nhà đàm phán từ những quốc gia trung gian quốc tế đang luân chuyển những bản đề xuất khung sửa đổi giải quyết các cam kết an ninh và hành lang cứu trợ.",
+      "Tuy nhiên, những trở ngại lớn vẫn còn liên quan đến việc triển khai quân sự dài hạn và cấu trúc quản trị tương lai của các vùng lãnh thổ bị ảnh hưởng.",
+      "Các quan chức Liên Hợp Quốc tái khẳng định quyền tiếp cận không bị cản trở của các đoàn xe cứu trợ là điều cần thiết ngay lập tức để ngăn ngừa thảm họa nạn đói.",
+      "Các nhà ngoại giao lưu ý rằng nếu không có ý chí chính trị kiên định từ các bên lãnh đạo, các khoảng dừng tạm thời sẽ có nguy cơ biến thành xung đột bùng phát trở lại."
+    ],
+    "70-E7xLzD28": [
+      "Các số liệu kinh tế mới công bố sáng nay cho thấy lạm phát tiêu dùng tiếp tục hạ nhiệt dần về mức mục tiêu của Cục Dự trữ Liên bang Mỹ (Fed).",
+      "Giá xăng dầu và giá xe ô tô cũ giảm đáng kể trong tháng qua đã mang lại sự giải tỏa thiết thực cho ngân sách chi tiêu của các hộ gia đình.",
+      "Tuy nhiên, chi phí nhà ở và dịch vụ vẫn duy trì ở mức cao, khiến các chỉ số lạm phát lõi nhỉnh hơn đôi chút so với mức thông lệ trước đây.",
+      "Thị trường tài chính đã phản ứng tích cực trước các con số này khi các chỉ số chứng khoán chủ lực đồng loạt tăng điểm trước kỳ vọng nới lỏng tiền tệ.",
+      "Các nhà hoạch định chính sách của ngân hàng trung ương nhấn mạnh họ sẽ tiếp tục bám sát dữ liệu thực tế khi cân nhắc các đợt điều chỉnh lãi suất tiếp theo.",
+      "Các nhà kinh tế nhận định việc đưa nền kinh tế 'hạ cánh mềm' mà không rơi vào suy thoái sẽ là một kỳ tích ấn tượng của chính sách tiền tệ."
+    ],
+    "bP1G_B4lM1w": [
+      "Tòa án Tối cao hôm nay đã lắng nghe các phần tranh tụng miệng trong một vụ kiện hiến pháp trọng yếu liên quan đến việc phân định lại bản đồ địa hạt bầu cử.",
+      "Các nguyên đơn lập luận rằng ranh giới các địa hạt được vẽ nhằm làm phân tán và giảm bớt tầm ảnh hưởng lá phiếu của các cộng đồng người thiểu số.",
+      "Đại diện pháp lý của chính quyền bang đã bảo vệ thiết kế bản đồ, khẳng định các địa hạt đều tuân thủ nguyên tắc địa bàn liền mạch và ranh giới hành chính hạt.",
+      "Các thẩm phán đã tích cực chất vấn cả hai bên về các tiêu chuẩn pháp lý cụ thể được quy định tại Mục Hai của Đạo luật Quyền Bầu cử.",
+      "Các nhà bảo vệ quyền công dân cảnh báo việc làm suy yếu các biện pháp bảo hộ bầu cử liên bang có thể làm xói mòn trách nhiệm giải trình tại hàng chục khu vực.",
+      "Phán quyết chính thức bằng văn bản của tòa án cấp cao dự kiến sẽ được công bố trước khi kết thúc nhiệm kỳ tư pháp hiện tại."
+    ],
+    "pOm0__wzIJM": [
+      "Nhà văn Hàn Quốc Han Kang vừa được vinh danh tại Giải Nobel Văn học, làm nên lịch sử khi trở thành tác giả đầu tiên của xứ sở kim chi nhận giải thưởng danh giá này.",
+      "Viện Hàn lâm Thụy Điển ca ngợi văn phong giàu chất thơ mãnh liệt của bà, khi can đảm đối diện với những nỗi đau lịch sử và phơi bày sự mong manh của kiếp nhân sinh.",
+      "Tiểu thuyết mang tính đột phá 'Người ăn chay', từng đoạt giải Quốc tế Booker, khám phá quyền tự chủ thân thể, áp lực định kiến xã hội và sự kháng cự bất bạo động.",
+      "Các hiệu sách khắp Seoul đã chật kín người mua chỉ trong vài giờ sau khi tin tức được công bố, tạo nên một ngày hội ăn mừng dấu ấn văn hóa chói lọi.",
+      "Các nhà phê bình văn học nhận định rằng sự vinh danh này khẳng định sức lan tỏa sâu sắc và tầm vóc nghệ thuật của nền văn học châu Á đương đại.",
+      "Trong những lời chia sẻ sau giải thưởng, nữ tác giả dành tặng vinh dự này tới tất cả những độc giả luôn tìm thấy sự an ủi và chân lý qua từng trang viết trầm lắng."
+    ],
+    "j1s1_XW9q58": [
+      "Các cơ quan quản lý hàng không liên bang đang triển khai nâng cấp các quy trình an toàn đường băng sau một số sự cố máy bay suýt va chạm tại các sân bay thương mại.",
+      "Các hệ thống radar phát hiện mới và công nghệ giám sát mặt đất đang được lắp đặt nhằm cung cấp cho kiểm soát viên không lưu cảnh báo tức thì về xung đột trên đường băng.",
+      "Các hãng hàng không thương mại cũng đang đổi mới chương trình huấn luyện phi công định kỳ, chú trọng đặc biệt vào nhận thức tình huống khi lăn bánh trong tầm nhìn hạn chế.",
+      "Các nhà điều tra an toàn hàng không nhấn mạnh rằng di chuyển bằng máy bay thương mại vẫn là hình thức đi lại an toàn nhất nhờ các tầng phòng ngừa rủi ro đa lớp.",
+      "Sự liên lạc thông suốt và liên tục giữa tổ bay và đài kiểm soát không lưu là yếu tố bắt buộc để ngăn chặn các sự cố xâm phạm đường băng vào các khung giờ cao điểm.",
+      "Các chuyên gia đầu ngành khẳng định việc đầu tư vào cơ sở hạ tầng sân bay hiện đại là điều kiện tiên quyết để đáp ứng đà tăng trưởng bền vững của lượng khách hàng không toàn cầu."
+    ],
+    "d_H_sB0wZfg": [
+      "Nhu cầu tính toán tăng theo cấp số nhân của trí tuệ nhân tạo đang thúc đẩy các tập đoàn công nghệ hàng đầu tìm kiếm các nguồn điện sạch khổng lồ mới.",
+      "Những nhà cung cấp điện toán đám mây lớn nhất đã công bố các hợp đồng mua điện dài hạn từ các cơ sở năng lượng hạt nhân thế hệ mới và các dự án địa nhiệt.",
+      "Các trung tâm dữ liệu quy mô siêu lớn ngày nay đòi hỏi hàng gigawatt điện tải nền liên tục để huấn luyện và vận hành các mô hình mạng nơ-ron mà không bị gián đoạn.",
+      "Các tổ chức bảo vệ môi trường hoan nghênh dòng vốn đầu tư vào năng lượng không phát thải nhưng lưu ý mức tiêu thụ điện của ngành công nghệ không được gây áp lực lên lưới điện dân sinh.",
+      "Các kỹ sư cũng đang phát triển các hệ thống làm mát bằng chất lỏng sáng tạo nhằm giảm thiểu đáng kể lượng nước và chi phí điện năng vận hành trong các cụm máy chủ.",
+      "Sự chuyển dịch này minh chứng cho thấy cuộc cách mạng trí tuệ nhân tạo đang trở thành chất xúc tác mạnh mẽ thúc đẩy các bước tiến vượt bậc trong bức tranh năng lượng sạch toàn cầu."
+    ],
+    "DgxKv5AQuzU": [
+      "Giá năng lượng leo thang, sự cạnh tranh gay gắt từ bên ngoài và sức mua yếu của người tiêu dùng đang đặt ra những áp lực kinh tế nặng nề khắp châu Âu.",
+      "Các nguyên thủ quốc gia châu Âu đã tề tựu tại Brussels tuần này để tham dự hội nghị thượng đỉnh quan trọng nhằm thúc đẩy năng lực cạnh tranh công nghiệp.",
+      "Liên minh Châu Âu đang phải đối mặt với thách thức kép: đà tăng trưởng kinh tế ảm đạm cùng nhu cầu ngân sách khổng lồ cho quá trình chuyển đổi năng lượng xanh.",
+      "Các nhà lãnh đạo đã thảo luận về cơ chế tài chính chung, cắt giảm thủ tục hành chính rườm rà và củng cố chuỗi cung ứng trong khối cho các khoáng sản thiết yếu.",
+      "Trong khi đó, quan hệ thương mại với các đối tác lớn trên thế giới vẫn khá nhạy cảm khi các nước thành viên phải cân bằng giữa bảo hộ và cam kết tự do thương mại.",
+      "Các chuyên gia kinh tế cho rằng việc hoàn thiện thị trường chung cho dịch vụ và công nghệ là yếu tố sống còn để châu Âu bắt kịp nhịp độ phát triển của Mỹ và châu Á."
+    ],
+    "jeDwSHPIqDc": [
+      "Việt Nam đang tích cực khuyến khích các hộ kinh doanh cá thể và cơ sở phi chính thức chuyển đổi thành doanh nghiệp chính quy.",
+      "Khu vực kinh tế tư nhân hiện đóng góp hơn 40% tổng sản phẩm quốc nội (GDP) của cả nước và tạo việc làm cho hàng triệu lao động.",
+      "Khi đăng ký thành lập doanh nghiệp chính thức, các chủ kinh doanh sẽ dễ dàng tiếp cận nguồn vốn vay ngân hàng, hạ tầng thanh toán số và sự bảo hộ của pháp luật.",
+      "Các chính sách hỗ trợ của Chính phủ bao gồm đơn giản hóa thủ tục thuế, miễn giảm thuế thu nhập doanh nghiệp trong những năm đầu và đào tạo kỹ năng số.",
+      "Các chuyên gia nhận định việc chính thức hóa nền kinh tế sẽ nâng cao năng suất, cải thiện chất lượng sản phẩm và đưa doanh nghiệp Việt Nam hội nhập chuỗi giá trị toàn cầu.",
+      "Để hướng tới mục tiêu tăng trưởng bền vững, một cộng đồng doanh nghiệp minh bạch và thịnh vượng tiếp tục là nền tảng vững chắc cho tương lai."
+    ],
+    "PDVud2eUNHA": [
+      "Hà Nội nổi tiếng khắp thế giới với những hồ nước thanh bình, những con phố rợp bóng cây cổ thụ và bề dày di sản ngàn năm văn hiến.",
+      "Trong những năm gần đây, thủ đô đã nhanh chóng vươn lên thành điểm đến yêu thích của xu hướng du lịch chăm sóc sức khỏe và tĩnh dưỡng tinh thần.",
+      "Du khách có thể bắt đầu ngày mới bằng việc tập dưỡng sinh cùng người dân địa phương bên bờ hồ Hoàn Kiếm thơ mộng.",
+      "Khu phố cổ mang đến cho bạn những quán trà thảo mộc thanh tao, các phòng khám y học cổ truyền và những liệu trình spa thư giãn tự nhiên.",
+      "Ẩm thực Hà Nội cũng đề cao sự cân bằng âm dương với rau thơm tươi sạch, nước dùng thanh ngọt tự nhiên và nhiều món chay thanh đạm.",
+      "Đối với những ai tìm kiếm sự chữa lành và thảnh thơi tâm hồn, Hà Nội mang lại sự hòa quyện tuyệt vời giữa nét an nhiên cổ kính và lòng hiếu khách hiện đại."
+    ],
+    "foB5o8bXnz0": [
+      "Là thành viên trong Mạng lưới các thành phố sáng tạo của UNESCO, Hà Nội tiếp tục nuôi dưỡng một hệ sinh thái nghệ thuật và thiết kế đầy năng động.",
+      "Những không gian công nghiệp lịch sử như các nhà máy, nhà kho cũ đang được chuyển đổi thành công thành các tổ hợp sáng tạo giàu sức sống.",
+      "Các nhà thiết kế và nghệ sĩ trẻ Việt Nam đang khéo léo kết hợp văn hóa dân gian bản địa với mỹ thuật số đương đại trong các triển lãm thời trang và đa phương tiện.",
+      "Những lễ hội thiết kế thường niên tôn vinh nét tinh hoa thủ công từ các làng nghề lân cận, từ gốm Bát Tràng đến lụa Vạn Phúc.",
+      "Những sáng kiến văn hóa này không chỉ làm phong phú đời sống cộng đồng đô thị mà còn thu hút đông đảo bạn bè nghệ thuật quốc tế đến với thủ đô.",
+      "Hà Nội tự hào là cây cầu nối vững chắc, nơi di sản văn hóa nghìn năm trở thành nguồn cảm hứng bất tận cho những sáng tạo nghệ thuật hiện đại."
+    ],
+    "8e9lQsPRM78": [
+      "Các không gian bán lẻ tại Việt Nam đang trải qua bước chuyển mình mạnh mẽ khi các thương hiệu chuyển dịch trọng tâm từ bán hàng thuần túy sang trải nghiệm cửa hàng flagship ấn tượng.",
+      "Khách hàng ngày nay mong muốn được trải nghiệm đa giác quan, dùng thử sản phẩm tương tác và có không gian giao lưu cộng đồng thay vì chỉ nhìn ngắm các quầy kệ đơn điệu.",
+      "Nhiều thương hiệu phong cách sống hàng đầu đang đặt cửa hàng flagship trong các biệt thự cổ lịch sử, tạo nên sự giao thoa hài hòa giữa kiến trúc di sản và phong cách mua sắm hiện đại.",
+      "Việc ứng dụng công nghệ như gương soi thông minh và thanh toán một chạm trên điện thoại giúp mang lại hành trình mua sắm tiện lợi và cá nhân hóa cho khách hàng.",
+      "Các chuyên gia phân tích thị trường nhận xét rằng giới trẻ đô thị coi các điểm đến bán lẻ là không gian xã hội để kết nối bạn bè, khám phá điều mới và thư giãn.",
+      "Mô hình mua sắm trải nghiệm này đang định hình lại diện mạo các khu thương mại trung tâm tại các đầu tàu kinh tế như TP. Hồ Chí Minh và Hà Nội."
+    ],
+    "f3JHzkKmaks": [
+      "Các cuộc tiếp xúc cấp cao giữa Việt Nam và Trung Quốc đã tái khẳng định cam kết chung trong việc mở rộng hợp tác thương mại và kết nối hạ tầng giao thông.",
+      "Kim ngạch thương mại song phương qua biên giới đã đạt những mốc kỷ lục mới nhờ nhu cầu mạnh mẽ đối với nông sản, linh kiện điện tử và nguyên liệu sản xuất công nghiệp.",
+      "Hai bên nhấn mạnh việc đẩy nhanh tiến độ các tuyến đường sắt kết nối biên giới và hiện đại hóa các cửa khẩu thông minh bằng hệ thống thủ tục hải quan số hóa.",
+      "Nhiều loại trái cây nhiệt đới chất lượng cao của Việt Nam, tiêu biểu như sầu riêng và thanh long, tiếp tục mở rộng thị phần tại nhiều tỉnh thành lớn của Trung Quốc.",
+      "Các nhà lãnh đạo kinh tế nhất trí tăng cường khả năng chống chịu của chuỗi cung ứng, hợp tác phát triển năng lượng xanh và thúc đẩy chuyển giao công nghệ.",
+      "Việc làm sâu sắc thêm mối quan hệ đối tác hợp tác chiến lược toàn diện mang lại sự ổn định và động lực tăng trưởng kinh tế quan trọng cho toàn khu vực Đông Nam Á."
+    ],
+    "NMHt_DXvkRE": [
+      "Việt Nam và Lào tiếp tục vun đắp mối quan hệ đoàn kết đặc biệt và hợp tác toàn diện mẫu mực trên tất cả các lĩnh vực.",
+      "Các sáng kiến chung tập trung vào hợp tác năng lượng, xây dựng hạ tầng đường cao tốc kết nối biên giới và các chương trình trao đổi học bổng giáo dục.",
+      "Nhiều doanh nghiệp Việt Nam đang tích cực đầu tư vào viễn thông, chế biến nông sản và phát triển thủy điện năng lượng tái tạo tại Lào.",
+      "Hợp tác quốc phòng và an ninh tiếp tục là trụ cột vững chắc duy trì sự bình yên dọc theo các tỉnh biên giới chung giữa hai nước.",
+      "Chính phủ hai nước cam kết tạo điều kiện thuận lợi nhất cho thương mại biên giới và mở đường ra biển cho hàng hóa quá cảnh của Lào qua các cảng biển Việt Nam.",
+      "Tình hữu nghị anh em son sắt thủy chung giữa hai dân tộc là tài sản vô giá luôn được các thế hệ lãnh đạo và nhân dân gìn giữ, phát huy."
+    ],
+    "FpwnwbMuca8": [
+      "Làn sóng các doanh nhân trẻ khởi nghiệp đầy năng động của Việt Nam đang mạnh dạn vươn ra ngoài biên giới, mang những sáng kiến công nghệ tới thị trường quốc tế.",
+      "Từ các nền tảng phần mềm dịch vụ (SaaS) đến các sản phẩm tiêu dùng xanh bền vững, các nhà sáng lập đang xây dựng giải pháp với tư duy toàn cầu hóa ngay từ ngày đầu.",
+      "Khả năng tiếp cận các quỹ đầu tư mạo hiểm quốc tế cùng hệ thống vườn ươm khởi nghiệp trong nước đã thúc đẩy tốc độ tăng trưởng vượt bậc trong lĩnh vực fintech và AI.",
+      "Các nhà sáng lập chia sẻ rằng khả năng thích ứng linh hoạt, đội ngũ kỹ sư phần mềm tài năng và sự am hiểu thị trường mới nổi tạo nên lợi thế cạnh tranh cho startup Việt.",
+      "Những chính sách của Chính phủ thúc đẩy hệ sinh thái đổi mới sáng tạo quốc gia đang mở ra các cơ chế thử nghiệm có kiểm soát (sandbox) cho các dịch vụ số mới.",
+      "Với khát vọng và trí tuệ, cộng đồng khởi nghiệp Việt Nam đang khẳng định vị thế của đất nước như một trung tâm công nghệ mới nổi bật tại châu Á."
+    ],
+    "iflt1LO5eLg": [
+      "Các quốc gia thành viên Hiệp hội các quốc gia Đông Nam Á (ASEAN) đang đẩy mạnh hợp tác khu vực nhằm ứng phó với các mối đe dọa an ninh mạng ngày càng gia tăng.",
+      "Trước tốc độ chuyển đổi số nhanh chóng của ngành ngân hàng, hạ tầng trọng yếu và các cổng dịch vụ công, các cuộc tấn công mạng ngày càng trở nên tinh vi.",
+      "Những cuộc diễn tập an ninh mạng khu vực và các trung tâm chia sẻ thông tin tình báo giúp các đội ứng cứu khẩn cấp kịp thời phát hiện lỗ hổng và ngăn chặn hiểm họa.",
+      "Việt Nam đã phát huy vai trò tích cực khi đề xuất các quy trình phối hợp ứng phó sự cố khu vực và đăng cai tổ chức các hội thảo nâng cao năng lực kỹ thuật chuyên sâu.",
+      "Các chuyên gia nhấn mạnh việc xây dựng các chuẩn mực pháp lý chung về bảo vệ dữ liệu và phòng chống tội phạm mạng là điều cốt lõi để bảo vệ nền kinh tế số khu vực.",
+      "Một thế trận phòng thủ không gian mạng đồng bộ sẽ đảm bảo Đông Nam Á tiếp tục là điểm đến an toàn và tin cậy cho thương mại số và đầu tư quốc tế."
+    ],
+    "-SyxhbviQBg": [
+      "Ngôn ngữ không đơn thuần là công cụ giao tiếp; nó chứa đựng ký ức, cội nguồn bản sắc và cảm thức thuộc về một cộng đồng.",
+      "Khắp bức tranh văn hóa đa dạng của 54 dân tộc Việt Nam, các nhà bảo tồn đang tích cực ghi chép các phương ngữ quý hiếm và truyền thống kể chuyện dân gian.",
+      "Tại các bản làng vùng cao, những lớp học song ngữ giúp con em đồng bào vừa học tốt chương trình phổ thông vừa giữ gìn tiếng mẹ đẻ thiêng liêng.",
+      "Các dự án số hóa di sản đang thu âm và lưu trữ những điệu dân ca, trường ca sử thi và tục ngữ cổ cho các thế hệ học giả và nhà nghiên cứu mai sau.",
+      "Những nhà nhân chủng học văn hóa nhấn mạnh việc trân trọng sự đa dạng ngôn ngữ làm giàu thêm khối đại đoàn kết toàn dân và sự thấu cảm giữa các cộng đồng.",
+      "Tôn vinh vốn di sản ngôn ngữ đa dạng chính là cách để bảo đảm cho trí tuệ độc đáo của mỗi dân tộc tiếp tục ngân vang qua muôn thế hệ."
+    ],
+    "HTcjBg1zCY8": [
+      "Các trường đại học tại khu vực Đồng bằng sông Cửu Long đang đưa nghệ thuật âm nhạc và các điệu múa cổ truyền của đồng bào Khmer vào giảng dạy chính quy.",
+      "Nhiều nghệ nhân kỳ cựu và nghệ sĩ bậc thầy được mời tham gia thỉnh giảng để truyền dạy kỹ thuật múa Rô-băm điêu luyện và nhạc cụ dàn nhạc ngũ âm Pinpeat.",
+      "Sinh viên được học cả kỹ năng biểu diễn thực hành lẫn triết lý lịch sử và tín ngưỡng tâm linh đằng sau các nghi lễ nghệ thuật cung đình và đền chùa cổ kính.",
+      "Việc đưa vào môi trường học thuật giúp các nghệ sĩ trẻ có văn bằng chuyên môn được công nhận, đồng thời ngăn chặn nguy cơ mai một của các báu vật văn hóa phi vật thể.",
+      "Các đoàn nghệ thuật sinh viên thường xuyên tham gia biểu diễn tại các ngày hội văn hóa khu vực, đón nhận sự hưởng ứng nồng nhiệt từ khán giả trẻ tuổi.",
+      "Sự kết hợp giữa truyền thống truyền nghề dân gian với giáo dục đại học hiện đại mở ra một tương lai tươi sáng và bền vững cho các di sản văn hóa dân tộc."
+    ],
+    "pEO9-iPZQWA": [
+      "Xin chào và chào mừng bạn đến với chương trình 6 Minute English từ BBC Learning English. Tôi là Neil, đồng hành cùng tôi hôm nay là Beth.",
+      "Hôm nay chúng ta sẽ bàn luận về các hiện tượng thời tiết cực đoan, vốn đang xuất hiện với tần suất ngày càng dày đặc trên khắp hành tinh.",
+      "Từ những đợt nắng nóng chưa từng có đến các cơn mưa bão xối xả, các nhà khoa học cho biết biến đổi khí hậu chính là nguyên nhân dẫn tới những hiện tượng này.",
+      "Trước khi đi sâu vào bài học, đây là câu hỏi trắc nghiệm của chúng ta: Nhiệt độ cao nhất từng được ghi nhận chính xác trên Trái Đất là bao nhiêu?",
+      "Đáp án là: A) 54,0 độ C, B) 56,7 độ C, hay C) 58,2 độ C?",
+      "Các nhà khí tượng học sử dụng thuật ngữ 'vòm nhiệt' (heat dome) để mô tả vùng áp cao khí quyển giữ khí nóng luẩn quẩn trên cả một khu vực.",
+      "Khi luồng khí nóng bị giữ lại nhiều ngày, nó tạo ra điều kiện thiêu đốt gay gắt, gây áp lực khổng lồ lên lưới điện và sản xuất nông nghiệp.",
+      "Nhiều cộng đồng đang thích nghi bằng cách trồng thêm rừng đô thị và mở các trung tâm làm mát công cộng để bảo vệ người cao tuổi.",
+      "Và đáp án chính xác cho câu đố là B, 56,7 độ C, được ghi nhận tại Thung lũng Chết, bang California vào năm 1913."
+    ],
+    "xwseWCSXD3Y": [
+      "Chào mừng bạn đến với 6 Minute English. Tôi là Georgie, và hôm nay chúng ta sẽ tìm hiểu cách con người dùng từ ngữ để miêu tả mùi hương.",
+      "Tiếng Anh sở hữu kho tính từ cảm giác rất phong phú, nhưng nhiều người lại cảm thấy việc diễn đạt mùi thành lời nói khó khăn đến bất ngờ.",
+      "Chúng ta thường mượn các từ chỉ vị giác như ngọt ngào hay chua, hoặc gọi tên chính sự vật tạo ra mùi đó như mùi hoa cỏ hay mùi gỗ thơm.",
+      "Những từ như fragrant (ngát hương), aromatic (nồng nàn) hay scented (thơm tho) thường mang sắc thái tích cực, miêu tả hoa tươi, gia vị hoặc nước hoa.",
+      "Ngược lại, các tính từ như pungent (hắc nồng), rancid (ôi thiu), foul (hôi hám) hay acrid (khét lẹt) lại cảnh báo chúng ta về thức ăn hỏng hoặc hóa chất độc hại.",
+      "Các nhà khoa học phát hiện ra rằng hệ khứu giác của chúng ta liên kết trực tiếp với hạch hạnh nhân – trung tâm lưu giữ ký ức cảm xúc trong não bộ.",
+      "Đó chính là lý do vì sao chỉ một làn hương thoảng của bánh mì nướng cũng có thể ngay lập tức đưa bạn trở về căn bếp tuổi thơ của nhiều năm trước."
+    ],
+    "SC_opiKLohg": [
+      "Chào mừng bạn đến với 6 Minute English. Hôm nay chúng ta sẽ cùng khám phá tương lai của các phương tiện giao thông tự hành và xe không người lái.",
+      "Xe ô tô tự lái hiện đã lăn bánh trên các tuyến phố ở San Francisco, Phoenix và Bắc Kinh mà không cần bất kỳ tài xế nào ngồi sau tay lái.",
+      "Những người ủng hộ khẳng định xe tự hành sẽ giảm thiểu đáng kể tai nạn giao thông xuất phát từ lỗi con người như buồn ngủ, chạy quá tốc độ hay say xỉn.",
+      "Các cảm biến bao gồm LIDAR, radar và camera độ phân giải cao cho phép taxi tự động nhận diện người đi bộ và vật cản từ khoảng cách hàng trăm mét.",
+      "Dẫu vậy, các chuyên gia vẫn đặt ra những câu hỏi đạo đức về trách nhiệm pháp lý khi xảy ra các tình huống va chạm khó lường trong thời tiết mưa gió hay sương mù dày đặc.",
+      "Các cơ quan quản lý giao thông đang nâng cấp cơ sở hạ tầng đường bộ và hoàn thiện quy trình ứng phó khẩn cấp trước khi đưa xe buýt tự hành vào phục vụ công cộng.",
+      "Dù chúng ta đã sẵn sàng hay chưa, trí tuệ nhân tạo đang làm thay đổi toàn diện cách con người và hàng hóa di chuyển trong các đô thị hiện đại."
+    ],
+    "zl0dwwKhmuM": [
+      "Xin chào và chào mừng bạn đến với 6 Minute English. Hôm nay chúng ta sẽ thảo luận về an ninh mạng và sự xuất hiện của các tác nhân AI tự động tấn công mạng.",
+      "Các nhà khoa học máy tính gần đây đã chứng minh rằng các mô hình AI chuyên dụng có thể quét hệ thống mạng, tự phát hiện lỗi phần mềm và thực hiện các cuộc tấn công tự động.",
+      "Mặc dù các chuyên gia an ninh sử dụng các tác nhân tự động này để vá lỗ hổng, nhưng đang có mối lo ngại ngày càng tăng rằng tin tặc có thể biến tướng chúng cho mục đích xấu.",
+      "Các tường lửa và phần mềm diệt virus truyền thống đang gặp nhiều khó khăn để bắt kịp những loại mã độc có khả năng tự viết lại mã nguồn nhằm lách qua nhận diện chữ ký mẫu.",
+      "Các doanh nghiệp hiện đang triển khai các hệ thống AI phòng thủ để giám sát những điểm bất thường trong mạng theo thời gian thực và tự động cách ly máy chủ bị xâm nhập.",
+      "Các chuyên gia khẳng định rằng việc duy trì mật khẩu mạnh, xác thực hai lớp và sự cảnh giác của nhân viên vẫn là nền tảng phòng thủ số quan trọng nhất."
+    ],
+    "FuExlxdoTcY": [
+      "Chào mừng bạn đến với chương trình Học tiếng Anh qua tin tức. Hôm nay chúng tôi đưa tin về các nỗ lực khắc phục khẩn cấp sau đợt lũ quét nghiêm trọng tại Nepal.",
+      "Những cơn mưa như trút nước đã gây ra lở đất trên diện rộng và làm nước sông dâng cao, cuốn trôi nhiều cây cầu và cô lập các bản làng vùng núi Himalaya xa xôi.",
+      "Trực thăng quân đội và các đội tình nguyện viên cứu hộ địa phương đang vận chuyển các gói lương thực, lều bạt và thuốc men tới các gia đình bị mắc kẹt.",
+      "Các nhà khí tượng học giải thích rằng sự biến đổi của các đợt mưa khiến mùa gió mùa trở nên khó dự đoán hơn và gây tàn phá nghiêm trọng hơn rất nhiều.",
+      "Các nhóm cộng đồng đang nỗ lực không mệt mỏi để nạo vét bùn đất khỏi các hồ chứa nước sinh hoạt và nối lại các đường dây điện bị đứt hỏng.",
+      "Các tổ chức nhân đạo quốc tế đã cam kết hỗ trợ tài chính dài hạn để giúp xây dựng lại các trường học kiên cố và các công trình phòng chống lũ vững chắc."
+    ],
+    "q4JyFF46528": [
+      "Xin chào và chào mừng bạn đến với Real Easy English! Hôm nay chúng ta sẽ cùng trò chuyện về công việc nhà và thói quen dọn dẹp.",
+      "Một số người cảm thấy làm việc nhà là một cách trị liệu tinh thần và thư giãn, trong khi những người khác lại coi việc dọn dẹp như một gánh nặng bắt buộc.",
+      "Những công việc nhà quen thuộc bao gồm hút bụi thảm, rửa bát đĩa bẩn, lau chùi mặt bàn bếp và gấp quần áo sạch.",
+      "Các nghiên cứu tâm lý học chỉ ra rằng một không gian sống ngăn nắp, gọn gàng giúp làm giảm căng thẳng và đem lại sự minh mẫn cho tâm trí.",
+      "Nhiều người biến việc dọn dẹp trở nên thú vị hơn bằng cách vừa lau chùi vừa lắng nghe những podcast yêu thích hoặc những bản nhạc sôi động.",
+      "Dù bạn yêu thích hay ghét việc nhà, việc giữ cho không gian sống sạch sẽ luôn tạo nên một bầu không khí ấm áp để nghỉ ngơi sau một ngày bận rộn."
+    ],
+    "bRnGm3y0IFU": [
+      "Chào mừng bạn đến với English in a Minute! Hôm nay chúng ta sẽ cùng học những thành ngữ thông dụng mà người bản xứ hay dùng trong giao tiếp đời thường.",
+      "Khi ai đó nói 'bite the bullet' (cắn răng chịu đựng), điều đó có nghĩa là dũng cảm đối mặt với một tình huống khó khăn để vượt qua nó.",
+      "Một thành ngữ quen thuộc khác là 'break a leg', nghe có vẻ kỳ lạ nhưng thực chất nó dùng để chúc may mắn các nghệ sĩ trước khi bước lên sân khấu biểu diễn.",
+      "Nếu bạn cảm thấy 'under the weather', điều đó đơn giản có nghĩa là bạn đang thấy hơi mệt mỏi, khó ở hoặc cảm vặt trong người.",
+      "Việc học các thành ngữ theo đúng ngữ cảnh thực tế sẽ giúp khả năng nói tiếng Anh của bạn trở nên lưu loát, giàu biểu cảm và tự nhiên hơn rất nhiều.",
+      "Hãy luyện tập sử dụng những cụm từ này trong các cuộc trò chuyện hàng ngày để nâng cao phản xạ và sự tự tin khi nói tiếng Anh nhé!"
+    ],
+    "BFJsSnEEGrI": [
+      "Chào mừng bạn đến với Real Easy English. Hôm nay chúng tôi sẽ hỏi thăm mọi người về sở thích thưởng thức cà phê buổi sáng của họ.",
+      "Văn hóa cà phê đã phát triển bùng nổ trên toàn cầu với các quán cà phê phục vụ đủ loại từ cà phê phin truyền thống đến latte sữa yến mạch.",
+      "Một số người sành cà phê chuộng một ly espresso đậm đặc nguyên chất không đường, trong khi những người khác lại mê đồ uống đá ngọt ngào phủ kem tươi.",
+      "Tại Việt Nam, cà phê đá pha sữa đặc hay còn gọi là cà phê sữa đá, là thức uống biểu tượng quốc dân được mọi lứa tuổi yêu mến.",
+      "Chất caffein kích thích hệ thần kinh trung ương, giúp chúng ta duy trì sự tỉnh táo và tập trung cao độ trong công việc hàng ngày.",
+      "Còn bạn thì thích uống cà phê như thế nào? Hãy chia sẻ cách pha chế yêu thích và thói quen mỗi sáng bằng tiếng Anh nhé!"
+    ],
+    "TeVE4TQPEwM": [
+      "Ngay cả sau khi gặt hái được những giải thưởng danh giá hay thành công rực rỡ trong sự nghiệp, nhiều người xuất chúng vẫn nơm nớp lo sợ mình sẽ bị vạch trần là kẻ giả mạo.",
+      "Hiện tượng tâm lý này được gọi là hội chứng kẻ giả mạo (imposter syndrome): cảm giác dai dẳng rằng thành tựu của bạn chỉ là nhờ may mắn chứ không phải thực tài.",
+      "Được phát hiện lần đầu bởi hai nhà tâm lý học Pauline Clance và Suzanne Imes vào cuối thập niên 1970, hội chứng này ảnh hưởng đến cả sinh viên, nhà quản lý lẫn nghệ sĩ.",
+      "Những người mắc hội chứng này thường phớt lờ những lời khen ngợi, cho rằng thành công của mình là do ăn may hoặc do hội đồng đánh giá đã nhìn nhận sai.",
+      "Sự ngộ nhận tập thể (pluralistic ignorance) đóng vai trò lớn: chúng ta so sánh những nỗi tự hoài nghi bên trong mình với vẻ ngoài tự tin, điềm tĩnh của người khác.",
+      "Biện pháp hữu hiệu nhất để đẩy lùi cảm giác này là cởi mở trò chuyện với các đồng nghiệp và người cố vấn đáng tin cậy về những trăn trở của bản thân.",
+      "Hãy ghi nhớ rằng việc bạn cảm thấy mình còn nhiều điều phải học hỏi không phải bằng chứng của sự kém cỏi; đó thực chất là dấu hiệu của sự khiêm nhường và lòng ham hiểu biết."
+    ],
+    "av3zdxYvCp8": [
+      "Bạn có bao giờ tự hỏi vì sao khi lắng nghe một bản nhạc xúc động hay khi bước vào làn gió lạnh, trên da chúng ta lại nổi lên những nốt sần li ti hay không?",
+      "Trong thuật ngữ khoa học gọi là hiện tượng dựng lông (piloerection), sởn gai ốc là một phản xạ sinh lý tiến hóa mà chúng ta thừa hưởng từ tổ tiên động vật có vú thời tiền sử.",
+      "Các cơ nhỏ li ti nằm ở gốc mỗi nang lông, gọi là cơ dựng lông (arrector pili), co thắt lại một cách vô thức trước nhiệt độ lạnh hoặc sự kích thích của hoóc-môn adrenaline.",
+      "Ở các loài động vật có lớp lông dày, việc dựng lông giúp giữ lại một lớp không khí cách nhiệt sát cơ thể để bảo tồn thân nhiệt thiết yếu.",
+      "Xù lông cũng làm cho con vật trông to lớn và hung dữ hơn khi phải đối đầu với các loài thú săn mồi nguy hiểm trong tự nhiên.",
+      "Mặc dù con người đã mất đi lớp lông rậm rạp qua hàng triệu năm tiến hóa, nhưng phản xạ thần kinh và cơ bắp này vẫn tồn tại nguyên vẹn trong hệ sinh học của chúng ta."
+    ],
+    "1uTRlM6MbMo": [
+      "Hàng nghìn mét bên dưới bề mặt đại dương là vùng biển sâu thẳm, một môi trường tối tăm gần như đóng băng cùng áp suất thủy tĩnh lớn đến mức không tưởng.",
+      "Dưới đáy rãnh Mariana, áp suất vượt quá một nghìn atmosphere, tương đương với sức nặng của một con voi đè lên đầu ngón tay cái của bạn.",
+      "Các loài động vật trên cạn sẽ bị nghiền nát ngay tức khắc, vậy mà cá ốc, giáp xác khổng lồ và những loài sứa trong suốt vẫn sinh sôi mạnh mẽ ở nơi vực sâu này.",
+      "Các sinh vật biển sâu không có các khoang chứa khí như phổi hay bong bóng cá – những bộ phận sẽ bị bẹp rúm dưới áp lực khổng lồ từ bên ngoài.",
+      "Màng tế bào của chúng chứa các axit béo không bão hòa đặc biệt và các hợp chất piezolyte giúp giữ vững cấu trúc protein và duy trì độ đàn hồi của tế bào dưới áp suất cao.",
+      "Những sự thích nghi sinh hóa kỳ diệu này minh chứng cho sức sống dẻo dai và khả năng thích ứng phi thường của sự sống ở những nơi khắc nghiệt nhất trên Trái Đất."
+    ]
+  }
+}

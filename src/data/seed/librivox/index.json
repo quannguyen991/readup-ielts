@@ -1,0 +1,931 @@
+[
+  {
+    "id": "421",
+    "title": "Happy Prince and Other Tales",
+    "author": "Oscar Wilde",
+    "language": "English",
+    "level": "A2",
+    "topic": "Truyện cổ tích",
+    "totalSeconds": 6098,
+    "readers": [
+      "Joy Chan"
+    ],
+    "sourceUrl": "https://librivox.org/the-happy-prince-and-other-tales-by-oscar-wilde/",
+    "chapters": [
+      {
+        "n": 1,
+        "title": "The Happy Prince",
+        "seconds": 1318,
+        "url": "https://www.archive.org/download/hpot_librivox/hpot_01_happy_prince_64kb.mp3",
+        "reader": "Joy Chan"
+      },
+      {
+        "n": 2,
+        "title": "The Nightingale and the Rose",
+        "seconds": 861,
+        "url": "https://www.archive.org/download/hpot_librivox/hpot_02_nightingale_rose_64kb.mp3",
+        "reader": "Joy Chan"
+      },
+      {
+        "n": 3,
+        "title": "The Selfish Giant",
+        "seconds": 599,
+        "url": "https://www.archive.org/download/hpot_librivox/hpot_03_selfish_giant_64kb.mp3",
+        "reader": "Joy Chan"
+      },
+      {
+        "n": 4,
+        "title": "The Devoted Friend",
+        "seconds": 1567,
+        "url": "https://www.archive.org/download/hpot_librivox/hpot_04_devoted_friend_64kb.mp3",
+        "reader": "Joy Chan"
+      },
+      {
+        "n": 5,
+        "title": "The Remarkable Rocket",
+        "seconds": 1753,
+        "url": "https://www.archive.org/download/hpot_librivox/hpot_05_remarkable_rocket_64kb.mp3",
+        "reader": "Joy Chan"
+      }
+    ]
+  },
+  {
+    "id": "353",
+    "title": "Aesop's Fables, Volume 01 (Fables 1-25)",
+    "author": "Aesop",
+    "language": "English",
+    "level": "A2",
+    "topic": "Truyện ngụ ngôn",
+    "totalSeconds": 2758,
+    "readers": [
+      "Chip",
+      "Joplin James",
+      "Kristin LeMoine",
+      "worraps",
+      "Annie Coleman Rothenberg",
+      "Beth Dudek",
+      "Kara Shallenberg (1969-2023)",
+      "Robert Garrison",
+      "Alice Elizabeth Still"
+    ],
+    "sourceUrl": "https://librivox.org/aesops-fables-volume-1-fables-1-25/",
+    "chapters": [
+      {
+        "n": 0,
+        "title": "Introduction by GK Chesterton",
+        "seconds": 668,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_00_aesop_64kb.mp3",
+        "reader": "Chip"
+      },
+      {
+        "n": 1,
+        "title": "The Fox and The Grapes",
+        "seconds": 46,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_01_aesop_64kb.mp3",
+        "reader": "Joplin James"
+      },
+      {
+        "n": 2,
+        "title": "The Goose That Laid The Golden Eggs",
+        "seconds": 66,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_02_aesop_64kb.mp3",
+        "reader": "Joplin James"
+      },
+      {
+        "n": 3,
+        "title": "The Cat and the Mice",
+        "seconds": 101,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_03_aesop_64kb.mp3",
+        "reader": "Kristin LeMoine"
+      },
+      {
+        "n": 4,
+        "title": "The Mischievous Dog",
+        "seconds": 82,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_04_aesop_64kb.mp3",
+        "reader": "Kristin LeMoine"
+      },
+      {
+        "n": 5,
+        "title": "The Charcoal-Burner and The Fuller",
+        "seconds": 67,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_05_aesop_64kb.mp3",
+        "reader": "worraps"
+      },
+      {
+        "n": 6,
+        "title": "The Mice in Council",
+        "seconds": 90,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_06_aesop_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 7,
+        "title": "The Bat And The Weasels",
+        "seconds": 96,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_07_aesop_64kb.mp3",
+        "reader": "Beth Dudek"
+      },
+      {
+        "n": 8,
+        "title": "The Dog and The Sow",
+        "seconds": 44,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_08_aesop_64kb.mp3",
+        "reader": "Beth Dudek"
+      },
+      {
+        "n": 9,
+        "title": "The Fox And The Crow",
+        "seconds": 96,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_09_aesop_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 10,
+        "title": "The Horse and the Groom",
+        "seconds": 65,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_10_aesop_64kb.mp3",
+        "reader": "Kristin LeMoine"
+      },
+      {
+        "n": 11,
+        "title": "The Wolf and the Lamb",
+        "seconds": 99,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_11_aesop_64kb.mp3",
+        "reader": "Kristin LeMoine"
+      },
+      {
+        "n": 12,
+        "title": "The Peacock And The Crane",
+        "seconds": 58,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_12_aesop_64kb.mp3",
+        "reader": "Beth Dudek"
+      },
+      {
+        "n": 13,
+        "title": "The Cat And The Birds",
+        "seconds": 56,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_13_aesop_64kb.mp3",
+        "reader": "Beth Dudek"
+      },
+      {
+        "n": 14,
+        "title": "The Spendthrift and the Swallow",
+        "seconds": 73,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_14_aesop_64kb.mp3",
+        "reader": "Kristin LeMoine"
+      },
+      {
+        "n": 15,
+        "title": "The Old Woman and the Doctor",
+        "seconds": 129,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_15_aesop_64kb.mp3",
+        "reader": "Kristin LeMoine"
+      },
+      {
+        "n": 16,
+        "title": "The Moon and her Mother",
+        "seconds": 49,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_16_aesop_64kb.mp3",
+        "reader": "worraps"
+      },
+      {
+        "n": 17,
+        "title": "Mercury and the Woodman",
+        "seconds": 155,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_17_aesop_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 18,
+        "title": "The Ass, The Fox, and The Lion",
+        "seconds": 112,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_18_aesop_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 19,
+        "title": "The Lion And The Mouse",
+        "seconds": 107,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_19_aesop_64kb.mp3",
+        "reader": "Robert Garrison"
+      },
+      {
+        "n": 20,
+        "title": "The Crow And The Pitcher",
+        "seconds": 84,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_20_aesop_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 21,
+        "title": "The Boys and The Frogs",
+        "seconds": 70,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_21_aesop_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 22,
+        "title": "The North Wind and The Sun",
+        "seconds": 81,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_22_aesop_64kb.mp3",
+        "reader": "Alice Elizabeth Still"
+      },
+      {
+        "n": 23,
+        "title": "The Mistress and Her Servants",
+        "seconds": 66,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_23_aesop_64kb.mp3",
+        "reader": "Alice Elizabeth Still"
+      },
+      {
+        "n": 24,
+        "title": "The Goods and The Ills",
+        "seconds": 102,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_24_aesop_64kb.mp3",
+        "reader": "Alice Elizabeth Still"
+      },
+      {
+        "n": 25,
+        "title": "The Hares and The Frogs",
+        "seconds": 96,
+        "url": "https://www.archive.org/download/aesop_fables_volume_one_librivox/fables_01_25_aesop_64kb.mp3",
+        "reader": "Alice Elizabeth Still"
+      }
+    ]
+  },
+  {
+    "id": "391",
+    "title": "Gift of the Magi",
+    "author": "O. Henry",
+    "language": "English",
+    "level": "A2",
+    "topic": "Truyện ngắn",
+    "totalSeconds": 802,
+    "readers": [
+      "Betsie Bush"
+    ],
+    "sourceUrl": "https://librivox.org/the-gift-of-the-magi-by-o-henry/",
+    "chapters": [
+      {
+        "n": 1,
+        "title": "The Gift of the Magi",
+        "seconds": 802,
+        "url": "https://www.archive.org/download/giftofmagi/gift_of_the_magi_henry_blb_64kb.mp3",
+        "reader": "Betsie Bush"
+      }
+    ]
+  },
+  {
+    "id": "200",
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "language": "English",
+    "level": "B1",
+    "topic": "Truyện thiếu nhi",
+    "totalSeconds": 9866,
+    "readers": [
+      "Kristen McQuillin",
+      "Brad Bush",
+      "Roger W. Barnett",
+      "miette",
+      "Mark Bradford",
+      "Raza Shah",
+      "Kara Shallenberg (1969-2023)",
+      "MarinaMechanical",
+      "R. Francis Smith",
+      "Chris Goringe"
+    ],
+    "sourceUrl": "https://librivox.org/alices-adventures-in-wonderland-by-lewis-carroll/",
+    "chapters": [
+      {
+        "n": 1,
+        "title": "Chapter 1",
+        "seconds": 640,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_01_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 2,
+        "title": "Chapter 2",
+        "seconds": 735,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_02_64kb.mp3",
+        "reader": "Brad Bush"
+      },
+      {
+        "n": 3,
+        "title": "Chapter 3",
+        "seconds": 1063,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_03_64kb.mp3",
+        "reader": "Roger W. Barnett"
+      },
+      {
+        "n": 4,
+        "title": "Chapter 4",
+        "seconds": 1192,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_04_64kb.mp3",
+        "reader": "miette"
+      },
+      {
+        "n": 5,
+        "title": "Chapter 5",
+        "seconds": 809,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_05_64kb.mp3",
+        "reader": "Mark Bradford"
+      },
+      {
+        "n": 6,
+        "title": "Chapter 6",
+        "seconds": 809,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_06_64kb.mp3",
+        "reader": "Raza Shah"
+      },
+      {
+        "n": 7,
+        "title": "Chapter 7",
+        "seconds": 1046,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_07_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 8,
+        "title": "Chapter 8",
+        "seconds": 798,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_08_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 9,
+        "title": "Chapter 9",
+        "seconds": 15,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_09_64kb.mp3",
+        "reader": "MarinaMechanical"
+      },
+      {
+        "n": 10,
+        "title": "Chapter 10",
+        "seconds": 1368,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_10_64kb.mp3",
+        "reader": "Roger W. Barnett"
+      },
+      {
+        "n": 11,
+        "title": "Chapter 11",
+        "seconds": 619,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_11_64kb.mp3",
+        "reader": "R. Francis Smith"
+      },
+      {
+        "n": 12,
+        "title": "Chapter 12",
+        "seconds": 772,
+        "url": "https://www.archive.org/download/alice_in_wonderland_librivox/wonderland_ch_12_64kb.mp3",
+        "reader": "Chris Goringe"
+      }
+    ]
+  },
+  {
+    "id": "71",
+    "title": "Canterville Ghost",
+    "author": "Oscar Wilde",
+    "language": "English",
+    "level": "B1",
+    "topic": "Truyện ngắn",
+    "totalSeconds": 4988,
+    "readers": [
+      "David Barnes"
+    ],
+    "sourceUrl": "https://librivox.org/the-canterville-ghost-by-oscar-wilde/",
+    "chapters": [
+      {
+        "n": 1,
+        "title": "Chapters 1 to 3",
+        "seconds": 2206,
+        "url": "https://www.archive.org/download/canterville_ghost_librivox/cantervilleghost_1-3_wilde_64kb.mp3",
+        "reader": "David Barnes"
+      },
+      {
+        "n": 2,
+        "title": "Chapters 4 to 5",
+        "seconds": 1504,
+        "url": "https://www.archive.org/download/canterville_ghost_librivox/cantervilleghost_4-5_wilde_64kb.mp3",
+        "reader": "David Barnes"
+      },
+      {
+        "n": 3,
+        "title": "Chapters 6 to 7",
+        "seconds": 1278,
+        "url": "https://www.archive.org/download/canterville_ghost_librivox/cantervilleghost_6-7_wilde_64kb.mp3",
+        "reader": "David Barnes"
+      }
+    ]
+  },
+  {
+    "id": "817",
+    "title": "Time Machine",
+    "author": "H. G. Wells",
+    "language": "English",
+    "level": "B2",
+    "topic": "Khoa học viễn tưởng",
+    "totalSeconds": 14969,
+    "readers": [
+      "Aaron Elliott",
+      "TBOL3",
+      "Kevin Kivikko",
+      "Steven Wendal",
+      "Scott Merrill",
+      "Jc Guan",
+      "stf",
+      "Sean McGaughey"
+    ],
+    "sourceUrl": "https://librivox.org/the-time-machine-by-hg-wells/",
+    "chapters": [
+      {
+        "n": 0,
+        "title": "Chapter 1",
+        "seconds": 1172,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_01_ae_64kb.mp3",
+        "reader": "Aaron Elliott"
+      },
+      {
+        "n": 1,
+        "title": "Chapter 1",
+        "seconds": 1462,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_01_tbol3_64kb.mp3",
+        "reader": "TBOL3"
+      },
+      {
+        "n": 2,
+        "title": "Chapter 2",
+        "seconds": 901,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_02_64kb.mp3",
+        "reader": "TBOL3"
+      },
+      {
+        "n": 3,
+        "title": "Chapter 3",
+        "seconds": 1023,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_03_64kb.mp3",
+        "reader": "TBOL3"
+      },
+      {
+        "n": 4,
+        "title": "Chapter 4",
+        "seconds": 1906,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_04_64kb.mp3",
+        "reader": "TBOL3"
+      },
+      {
+        "n": 5,
+        "title": "Chapter 5",
+        "seconds": 2394,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_05_64kb.mp3",
+        "reader": "Kevin Kivikko"
+      },
+      {
+        "n": 6,
+        "title": "Chapter 6",
+        "seconds": 776,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_06_64kb.mp3",
+        "reader": "Kevin Kivikko"
+      },
+      {
+        "n": 7,
+        "title": "Chapter 7",
+        "seconds": 931,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_07_64kb.mp3",
+        "reader": "Steven Wendal"
+      },
+      {
+        "n": 8,
+        "title": "Chapter 8",
+        "seconds": 1026,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_08_64kb.mp3",
+        "reader": "Scott Merrill"
+      },
+      {
+        "n": 9,
+        "title": "Chapter 9",
+        "seconds": 1274,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_09_64kb.mp3",
+        "reader": "Jc Guan"
+      },
+      {
+        "n": 10,
+        "title": "Chapter 10",
+        "seconds": 458,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_10_64kb.mp3",
+        "reader": "stf"
+      },
+      {
+        "n": 11,
+        "title": "Chapter 11",
+        "seconds": 793,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_11_64kb.mp3",
+        "reader": "Sean McGaughey"
+      },
+      {
+        "n": 12,
+        "title": "Chapter 12",
+        "seconds": 853,
+        "url": "https://www.archive.org/download/time_machine_0805_librivox/timemachinewells_12__64kb.mp3",
+        "reader": "Aaron Elliott"
+      }
+    ]
+  },
+  {
+    "id": "314",
+    "title": "Adventures of Sherlock Holmes",
+    "author": "Sir Arthur Conan Doyle",
+    "language": "English",
+    "level": "B2",
+    "topic": "Trinh thám",
+    "totalSeconds": 37079,
+    "readers": [
+      "TBOL3",
+      "Kara Shallenberg (1969-2023)",
+      "Robin Cotter",
+      "Zachary Brewster-Geisz",
+      "Kirsten Ferreri",
+      "Julian Jamison",
+      "J A Carter",
+      "Kevin McAsh",
+      "J. M. Smallheer",
+      "Gesine",
+      "Laurie Anne Walden"
+    ],
+    "sourceUrl": "https://librivox.org/the-adventures-of-sherlock-holmes/",
+    "chapters": [
+      {
+        "n": 1,
+        "title": "A Scandal in Bohemia",
+        "seconds": 3906,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_01_doyle_64kb.mp3",
+        "reader": "TBOL3"
+      },
+      {
+        "n": 2,
+        "title": "The Red-Headed League",
+        "seconds": 3546,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_02_doyle_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 3,
+        "title": "A Case of Identity",
+        "seconds": 2719,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_03_doyle_64kb.mp3",
+        "reader": "Robin Cotter"
+      },
+      {
+        "n": 4,
+        "title": "The Boscombe Valley Mystery",
+        "seconds": 3180,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_04_doyle_64kb.mp3",
+        "reader": "Zachary Brewster-Geisz"
+      },
+      {
+        "n": 5,
+        "title": "The Five Orange Pips",
+        "seconds": 2479,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_05_doyle_64kb.mp3",
+        "reader": "Kirsten Ferreri"
+      },
+      {
+        "n": 6,
+        "title": "The Man with the Twisted Lip",
+        "seconds": 3095,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_06_doyle_64kb.mp3",
+        "reader": "Julian Jamison"
+      },
+      {
+        "n": 7,
+        "title": "The Adventure of the Blue Carbuncle",
+        "seconds": 2493,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_07_doyle_64kb.mp3",
+        "reader": "J A Carter"
+      },
+      {
+        "n": 8,
+        "title": "The Adventure of the Speckled Band",
+        "seconds": 3257,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_08_doyle_64kb.mp3",
+        "reader": "Kirsten Ferreri"
+      },
+      {
+        "n": 9,
+        "title": "The Adventure of the Engineer's Thumb",
+        "seconds": 2523,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_09_doyle_64kb.mp3",
+        "reader": "Kevin McAsh"
+      },
+      {
+        "n": 10,
+        "title": "The Adventure of the Noble Bachelor",
+        "seconds": 2692,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_10_doyle_64kb.mp3",
+        "reader": "J. M. Smallheer"
+      },
+      {
+        "n": 11,
+        "title": "The Adventure of the Beryl Coronet",
+        "seconds": 3625,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_11_doyle_64kb.mp3",
+        "reader": "Gesine"
+      },
+      {
+        "n": 12,
+        "title": "The Adventure of the Copper Beeches",
+        "seconds": 3564,
+        "url": "https://www.archive.org/download/adventures_holmes/adventureholmes_12_doyle_64kb.mp3",
+        "reader": "Laurie Anne Walden"
+      }
+    ]
+  },
+  {
+    "id": "253",
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "language": "English",
+    "level": "B2",
+    "topic": "Tiểu thuyết kinh điển",
+    "totalSeconds": 47203,
+    "readers": [
+      "Chris Goringe",
+      "Kara Shallenberg (1969-2023)",
+      "Kristen McQuillin",
+      "Maureen S. O'Brien",
+      "Gord Mackenzie",
+      "Mark Bradford",
+      "Annie Coleman Rothenberg",
+      "Elisabeth Shields",
+      "Sherry Crowther",
+      "PenelopePitstop",
+      "Gesine",
+      "Eileen aka e",
+      "Susan Hooks"
+    ],
+    "sourceUrl": "https://librivox.org/pride-and-prejudice-by-jane-austen/",
+    "chapters": [
+      {
+        "n": 1,
+        "title": "Chapters 1-3",
+        "seconds": 1132,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_01-03_austen_64kb.mp3",
+        "reader": "Chris Goringe"
+      },
+      {
+        "n": 2,
+        "title": "Chapters 4-5",
+        "seconds": 865,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_04-05_austen_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 3,
+        "title": "Chapter 6",
+        "seconds": 777,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_06_austen_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 4,
+        "title": "Chapter 7",
+        "seconds": 638,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_07_austen_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 5,
+        "title": "Chapter 8",
+        "seconds": 819,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_08_austen_64kb.mp3",
+        "reader": "Maureen S. O'Brien"
+      },
+      {
+        "n": 6,
+        "title": "Chapter 9",
+        "seconds": 701,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_09_austen_64kb.mp3",
+        "reader": "Maureen S. O'Brien"
+      },
+      {
+        "n": 7,
+        "title": "Chapters 10-11",
+        "seconds": 1563,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_10-11_austen_64kb.mp3",
+        "reader": "Gord Mackenzie"
+      },
+      {
+        "n": 8,
+        "title": "Chapters 12-13",
+        "seconds": 901,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_12-13_austen_64kb.mp3",
+        "reader": "Chris Goringe"
+      },
+      {
+        "n": 9,
+        "title": "Chapters 14-15",
+        "seconds": 997,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_14-15_austen_64kb.mp3",
+        "reader": "Mark Bradford"
+      },
+      {
+        "n": 10,
+        "title": "Chapters 16-17",
+        "seconds": 1830,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_16-17_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 11,
+        "title": "Chapters 18-19",
+        "seconds": 2853,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_18-19_austen_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 12,
+        "title": "Chapter 20",
+        "seconds": 750,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_20_austen_64kb.mp3",
+        "reader": "Elisabeth Shields"
+      },
+      {
+        "n": 13,
+        "title": "Chapters 21-22",
+        "seconds": 1643,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_21-22_austen_64kb.mp3",
+        "reader": "Elisabeth Shields"
+      },
+      {
+        "n": 14,
+        "title": "Chapters 23-25",
+        "seconds": 2269,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_23-25_austen_64kb.mp3",
+        "reader": "Elisabeth Shields"
+      },
+      {
+        "n": 15,
+        "title": "Chapter 26",
+        "seconds": 740,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_26_austen_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 16,
+        "title": "Chapter 27",
+        "seconds": 419,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_27_austen_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 17,
+        "title": "Chapters 28-29",
+        "seconds": 1590,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_28-29_austen_64kb.mp3",
+        "reader": "Sherry Crowther"
+      },
+      {
+        "n": 18,
+        "title": "Chapter 30",
+        "seconds": 402,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_30_austen_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 19,
+        "title": "Chapter 31",
+        "seconds": 526,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_31_austen_64kb.mp3",
+        "reader": "Kristen McQuillin"
+      },
+      {
+        "n": 20,
+        "title": "Chapters 32-33",
+        "seconds": 1140,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_32-33_austen_64kb.mp3",
+        "reader": "Chris Goringe"
+      },
+      {
+        "n": 21,
+        "title": "Chapters 34-35",
+        "seconds": 2158,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_34-35_austen_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 22,
+        "title": "Chapters 36-37",
+        "seconds": 1414,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_36-37_austen_64kb.mp3",
+        "reader": "Sherry Crowther"
+      },
+      {
+        "n": 23,
+        "title": "Chapters 38-39",
+        "seconds": 1030,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_38-39_austen_64kb.mp3",
+        "reader": "Sherry Crowther"
+      },
+      {
+        "n": 24,
+        "title": "Chapters 40-41",
+        "seconds": 1677,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_40-41_austen_64kb.mp3",
+        "reader": "Gord Mackenzie"
+      },
+      {
+        "n": 25,
+        "title": "Chapters 42-43",
+        "seconds": 2624,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_42-43_austen_64kb.mp3",
+        "reader": "Kara Shallenberg (1969-2023)"
+      },
+      {
+        "n": 26,
+        "title": "Chapters 44-45",
+        "seconds": 1470,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_44-45_austen_64kb.mp3",
+        "reader": "Mark Bradford"
+      },
+      {
+        "n": 27,
+        "title": "Chapter 46",
+        "seconds": 1191,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_46_austen_64kb.mp3",
+        "reader": "PenelopePitstop"
+      },
+      {
+        "n": 28,
+        "title": "Chapters 47-48",
+        "seconds": 2320,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_47-48_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 29,
+        "title": "Chapter 49",
+        "seconds": 935,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_49_austen_64kb.mp3",
+        "reader": "Gesine"
+      },
+      {
+        "n": 30,
+        "title": "Chapters 50-51",
+        "seconds": 1379,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_50-51_austen_64kb.mp3",
+        "reader": "Eileen aka e"
+      },
+      {
+        "n": 31,
+        "title": "Chapters 52-53",
+        "seconds": 2287,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_52-53f_austen_64kb.mp3",
+        "reader": "Sherry Crowther"
+      },
+      {
+        "n": 32,
+        "title": "Chapter 54",
+        "seconds": 632,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_54_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 33,
+        "title": "Chapter 55",
+        "seconds": 956,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_55_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 34,
+        "title": "Chapters 56-57",
+        "seconds": 1714,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_56-57_austen_64kb.mp3",
+        "reader": "Susan Hooks"
+      },
+      {
+        "n": 35,
+        "title": "Chapter 58",
+        "seconds": 908,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_58_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 36,
+        "title": "Chapter 59",
+        "seconds": 919,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_59_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      },
+      {
+        "n": 37,
+        "title": "Chapters 60-61",
+        "seconds": 1034,
+        "url": "https://www.archive.org/download/pride_and_prejudice_librivox/prideandprejudice_60-61_austen_64kb.mp3",
+        "reader": "Annie Coleman Rothenberg"
+      }
+    ]
+  }
+]

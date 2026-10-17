@@ -5,7 +5,8 @@ import { MathFigure } from './MathFigure';
 import { MathText } from './MathText';
 import { flattenMath } from '@/lib/math/flatten';
 import { Badge } from '@/components/ui';
-import { PressScale } from '@/components/motion/Motion';
+import { Appear, PressScale } from '@/components/motion/Motion';
+import { LionMascot } from '@/components/mascot/LionMascot';
 import { MATH_ERROR_LABEL, MATH_SKILL_LABEL } from '@/lib/math/types';
 import type { MathItem } from '@/lib/math/types';
 import { gradeMathItem } from '@/services/math/grade';
@@ -15,6 +16,18 @@ import { useL } from '@/i18n/useL';
 import { mathErrorLabel } from './math-labels-en';
 import { ExamOption } from '@/components/sat-exam/ExamOption';
 import { HighlightHost } from '@/components/sat-exam/HighlightPassage';
+
+/**
+ * Thẻ đề của bộ luyện: một tấm trắng nổi nhẹ trên nền, để đề là thứ đầu tiên mắt bắt.
+ * Phòng thi thật không dùng — ở đó đề nằm trong khung của phòng thi.
+ */
+const PRACTICE_STEM = {
+  backgroundColor: '#FFFFFF',
+  borderRadius: 18,
+  paddingVertical: 20,
+  paddingHorizontal: 20,
+  boxShadow: '0 10px 28px rgba(150,110,40,0.12)',
+} as never;
 
 /** Bản tiếng Anh của `GRID_IN_REASON_LABEL` (dữ liệu gốc ở services/math/grid-in giữ tiếng Việt). */
 const GRID_IN_REASON_EN: Record<keyof typeof GRID_IN_REASON_LABEL, string> = {
@@ -86,6 +99,7 @@ export function MathQuestionView({
   showGrade = true,
   surface = 'light',
   hidden = [],
+  practice = false,
 }: {
   item: MathItem;
   answer: string | null;
@@ -111,6 +125,11 @@ export function MathQuestionView({
    * nằm cách nhau hai centimet không cho biết thêm gì, chỉ làm thẻ rối.
    */
   showGrade?: boolean;
+  /**
+   * Bộ luyện (có lời giải tức thì) — chỉ đổi phần trình bày: dòng "Câu N · kỹ năng"
+   * hiện lại ở đầu đề, phương án chọn đổi sang vàng kim. Phòng thi thật giữ nguyên.
+   */
+  practice?: boolean;
 }) {
   const grade = revealed ? gradeMathItem(item, answer) : null;
   const locked = !onAnswer;
@@ -123,7 +142,7 @@ export function MathQuestionView({
   return (
     <View>
       {/* Phòng thi: số câu đã ở dải đầu câu của khung, không nhắc lại; nhãn kỹ năng chỉ hiện sau khi chấm. */}
-      {exam && !grade ? null : (
+      {exam && !grade && !practice ? null : (
         <View className={`flex-row flex-wrap items-center gap-2 ${exam ? 'mb-3' : ''}`}>
           {index !== undefined ? (
             <Text className="font-strong text-cardTitle text-ink">{L('Câu', 'Question')} {index + 1}</Text>
@@ -132,7 +151,7 @@ export function MathQuestionView({
           {item.format === 'grid_in' ? (
             <Badge label={L('Tự điền đáp án', 'Grid-in')} tone="info" shape="tag" />
           ) : null}
-          {grade && showGrade ? (
+          {grade && showGrade && !practice ? (
             <Badge
               label={grade.isCorrect ? L('Đúng', 'Correct') : answer === null ? L('Bỏ trắng', 'Blank') : L('Sai', 'Wrong')}
               tone={grade.isCorrect ? 'success' : answer === null ? 'neutral' : 'danger'}
@@ -142,13 +161,15 @@ export function MathQuestionView({
       )}
 
       {exam ? (
-        <HighlightHost texts={stemTexts}>
-          {({ marks, openMark }) => (
-            <MathText size={17} weight="semibold" highlight={{ block: 0, marks, onMarkPress: openMark }}>
-              {item.stem}
-            </MathText>
-          )}
-        </HighlightHost>
+        <View style={practice ? PRACTICE_STEM : undefined}>
+          <HighlightHost texts={stemTexts}>
+            {({ marks, openMark }) => (
+              <MathText size={17} weight="semibold" highlight={{ block: 0, marks, onMarkPress: openMark }}>
+                {item.stem}
+              </MathText>
+            )}
+          </HighlightHost>
+        </View>
       ) : (
         <View className={`mt-3 rounded-card p-3 ${sf.inset}`}>
           <MathText size={15} weight="semibold">
@@ -176,6 +197,7 @@ export function MathQuestionView({
                 state={!revealed ? 'idle' : choiceIndex === item.correctIndex ? 'correct' : selected ? 'wrong' : 'idle'}
                 disabled={locked}
                 out={isOut}
+                tone={practice ? 'gold' : 'exam'}
                 onPress={() => onAnswer?.(String(choiceIndex))}
               >
                 <MathText size={16}>{choice.display}</MathText>
@@ -211,9 +233,39 @@ export function MathQuestionView({
       )}
 
       {grade ? (
-        <Explanation item={item} answer={answer} grade={grade} surface={surface} />
+        <Explanation item={item} answer={answer} grade={grade} surface={surface} practice={practice} />
       ) : null}
     </View>
+  );
+}
+
+/**
+ * Dải kết quả của bộ luyện: linh vật và một câu ngắn, thay cho nhãn nhỏ ở đầu câu.
+ * Chỉ đọc lại kết quả đã chấm, không thêm nhận xét nào khác.
+ */
+function Verdict({ correct, blank }: { correct: boolean; blank: boolean }) {
+  const { L } = useL();
+  const title = correct
+    ? L('Chính xác', 'Correct')
+    : blank
+      ? L('Chưa chọn đáp án', 'No answer chosen')
+      : L('Chưa đúng', 'Not quite');
+  return (
+    <Appear>
+      <View className="flex-row items-center gap-3 rounded-card p-3" style={{ backgroundColor: correct ? '#E7F5EC' : '#FFF4E0' }}>
+        <LionMascot pose={correct ? 'cheer' : 'think'} size={64} />
+        <View className="min-w-0 flex-1 gap-0.5">
+          <Text className="font-strong text-cardTitle" style={{ color: correct ? '#1E6B4A' : '#8A5A12' }}>
+            {title}
+          </Text>
+          <Text className="font-sans text-body text-muted">
+            {correct
+              ? L('Đúng rồi, qua câu tiếp theo.', 'Right, on to the next one.')
+              : L('Xem lỗi và lời giải bên dưới.', 'See the mistake and the solution below.')}
+          </Text>
+        </View>
+      </View>
+    </Appear>
   );
 }
 
@@ -262,16 +314,20 @@ function Explanation({
   answer,
   grade,
   surface,
+  practice,
 }: {
   item: MathItem;
   answer: string | null;
   grade: NonNullable<ReturnType<typeof gradeMathItem>>;
   surface: MathSurface;
+  practice: boolean;
 }) {
   const sf = SURFACE[surface];
   const { L, en } = useL();
   return (
     <View className={`mt-3 gap-2 rounded-card border p-3 ${sf.panel}`}>
+      {practice ? <Verdict correct={grade.isCorrect} blank={answer === null} /> : null}
+
       {!grade.isCorrect && grade.gridVerdict && !grade.gridVerdict.ok ? (
         <Text className="font-sans text-body text-ink">
           {en ? GRID_IN_REASON_EN[grade.gridVerdict.reason] : GRID_IN_REASON_LABEL[grade.gridVerdict.reason]}

@@ -132,7 +132,36 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "water",
+      "layers": [
+        {
+          "id": "bay-haze",
+          "effect": "mist",
+          "top": 36,
+          "left": 14,
+          "width": 70,
+          "height": 16,
+          "opacity": 0.1,
+          "depth": 0.86,
+          "durationMs": 8550,
+          "phaseMs": 311
+        },
+        {
+          "id": "sea-glint",
+          "effect": "water",
+          "top": 61,
+          "left": 38,
+          "width": 52,
+          "height": 13,
+          "opacity": 0.13,
+          "depth": 0.46,
+          "durationMs": 3700,
+          "phaseMs": 1044
+        }
+      ]
+    }
   },
   {
     "id": "s02",
@@ -265,8 +294,49 @@
       "isGeneralIllustration": true,
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
+    "video": {
+      "file": "/history/vn-khang-chien-chong-phap/videos/vietnam-1945.mp4",
+      "poster": "/history/vn-khang-chien-chong-phap/videos/vietnam-1945-poster.jpg",
+      "title": {
+        "vi": "Video dẫn nhập: từ Cách mạng tháng Tám đến Điện Biên Phủ",
+        "en": "Chapter preview: from the August Revolution to Điện Biên Phủ"
+      },
+      "description": {
+        "vi": "Đây là montage tóm lược cả hành trình 1945–1954, không chỉ riêng ngày 2/9/1945. Phần đầu khớp với cảnh Hà Nội năm 1945; phim sau đó nhảy tới những thử thách đầu kháng chiến và chiến thắng Điện Biên Phủ. Các cảnh tiếp theo sẽ lần lượt giải thích những mốc ấy theo dòng thời gian.",
+        "en": "This montage previews the whole 1945–1954 journey, not only 2 September 1945. Its opening matches this Hanoi scene; it then jumps ahead to the early challenges of the resistance and the victory at Điện Biên Phủ. The following scenes explain those milestones in chronological order."
+      }
+    },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "city",
+      "layers": [
+        {
+          "id": "square-light",
+          "effect": "sunlight",
+          "top": 6,
+          "left": 15,
+          "width": 72,
+          "height": 36,
+          "opacity": 0.075,
+          "depth": 0.9,
+          "durationMs": 7000,
+          "phaseMs": 622
+        },
+        {
+          "id": "sunlit-dust",
+          "effect": "dust",
+          "top": 41,
+          "left": 34,
+          "width": 45,
+          "height": 26,
+          "opacity": 0.09,
+          "depth": 0.25,
+          "durationMs": 4000,
+          "phaseMs": 55
+        }
+      ]
+    }
   },
   {
     "id": "s03",
@@ -397,7 +467,36 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "city",
+      "layers": [
+        {
+          "id": "street-haze",
+          "effect": "mist",
+          "top": 22,
+          "left": 14,
+          "width": 68,
+          "height": 23,
+          "opacity": 0.085,
+          "depth": 0.82,
+          "durationMs": 8200,
+          "phaseMs": 933
+        },
+        {
+          "id": "warm-window-glow",
+          "effect": "glow",
+          "top": 38,
+          "left": 25,
+          "width": 40,
+          "height": 24,
+          "opacity": 0.065,
+          "depth": 0.25,
+          "durationMs": 2050,
+          "phaseMs": 366
+        }
+      ]
+    }
   },
   {
     "id": "s04",
@@ -530,7 +629,36 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "city",
+      "layers": [
+        {
+          "id": "street-haze",
+          "effect": "mist",
+          "top": 18,
+          "left": 8,
+          "width": 78,
+          "height": 27,
+          "opacity": 0.09,
+          "depth": 0.88,
+          "durationMs": 8550,
+          "phaseMs": 1244
+        },
+        {
+          "id": "street-dust",
+          "effect": "dust",
+          "top": 53,
+          "left": 18,
+          "width": 63,
+          "height": 23,
+          "opacity": 0.065,
+          "depth": 0.2,
+          "durationMs": 4700,
+          "phaseMs": 677
+        }
+      ]
+    }
   },
   {
     "id": "s05",
@@ -661,7 +789,36 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "city",
+      "layers": [
+        {
+          "id": "oil-lamp-glow",
+          "effect": "lamp",
+          "top": 38,
+          "left": 22,
+          "width": 46,
+          "height": 42,
+          "opacity": 0.13,
+          "depth": 0.22,
+          "durationMs": 2200,
+          "phaseMs": 255
+        },
+        {
+          "id": "night-haze",
+          "effect": "mist",
+          "top": 16,
+          "left": 12,
+          "width": 76,
+          "height": 25,
+          "opacity": 0.08,
+          "depth": 0.9,
+          "durationMs": 8200,
+          "phaseMs": 988
+        }
+      ]
+    }
   },
   {
     "id": "s06",
@@ -793,7 +950,48 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "mountain",
+      "layers": [
+        {
+          "id": "kitchen-smoke",
+          "effect": "smoke",
+          "top": 30,
+          "left": 23,
+          "width": 29,
+          "height": 37,
+          "opacity": 0.14,
+          "depth": 0.24,
+          "durationMs": 5600,
+          "phaseMs": 566
+        },
+        {
+          "id": "forest-mist",
+          "effect": "mist",
+          "top": 21,
+          "left": 13,
+          "width": 78,
+          "height": 26,
+          "opacity": 0.12,
+          "depth": 0.88,
+          "durationMs": 8550,
+          "phaseMs": 1299
+        },
+        {
+          "id": "canopy-light",
+          "effect": "foliage",
+          "top": 4,
+          "left": 3,
+          "width": 51,
+          "height": 34,
+          "opacity": 0.075,
+          "depth": 0.28,
+          "durationMs": 4500,
+          "phaseMs": 732
+        }
+      ]
+    }
   },
   {
     "id": "s07",
@@ -928,7 +1126,36 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "mountain",
+      "layers": [
+        {
+          "id": "ridge-mist",
+          "effect": "mist",
+          "top": 21,
+          "left": 11,
+          "width": 83,
+          "height": 29,
+          "opacity": 0.15,
+          "depth": 0.9,
+          "durationMs": 8550,
+          "phaseMs": 877
+        },
+        {
+          "id": "trail-dust",
+          "effect": "dust",
+          "top": 55,
+          "left": 17,
+          "width": 52,
+          "height": 22,
+          "opacity": 0.06,
+          "depth": 0.2,
+          "durationMs": 4700,
+          "phaseMs": 310
+        }
+      ]
+    }
   },
   {
     "id": "s08",
@@ -1060,7 +1287,36 @@
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
     "audioPending": true,
-    "status": "verified"
+    "status": "verified",
+    "motion": {
+      "ambience": "water",
+      "layers": [
+        {
+          "id": "river-reflection",
+          "effect": "water",
+          "top": 62,
+          "left": 13,
+          "width": 69,
+          "height": 13,
+          "opacity": 0.12,
+          "depth": 0.48,
+          "durationMs": 3700,
+          "phaseMs": 1188
+        },
+        {
+          "id": "ricefield-light",
+          "effect": "foliage",
+          "top": 31,
+          "left": 38,
+          "width": 43,
+          "height": 26,
+          "opacity": 0.075,
+          "depth": 0.72,
+          "durationMs": 3800,
+          "phaseMs": 621
+        }
+      ]
+    }
   },
   {
     "id": "s09",
@@ -1195,8 +1451,54 @@
       "isGeneralIllustration": true,
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
-    "audioPending": true,
-    "status": "verified"
+    "audio": {
+      "en": {
+        "file": "/history/vn-khang-chien-chong-phap/audio/en/s09.mp3",
+        "durationSec": 49.4
+      }
+    },
+    "status": "published",
+    "motion": {
+      "ambience": "mountain",
+      "layers": [
+        {
+          "id": "far-valley-mist",
+          "effect": "mist",
+          "top": 28,
+          "left": 36,
+          "width": 56,
+          "height": 18,
+          "opacity": 0.17,
+          "depth": 0.94,
+          "durationMs": 8200,
+          "phaseMs": 199
+        },
+        {
+          "id": "near-ridge-mist",
+          "effect": "mist",
+          "top": 45,
+          "left": 45,
+          "width": 45,
+          "height": 15,
+          "opacity": 0.12,
+          "depth": 0.24,
+          "durationMs": 8550,
+          "phaseMs": 932
+        },
+        {
+          "id": "stream-reflection",
+          "effect": "water",
+          "top": 76,
+          "left": 56,
+          "width": 30,
+          "height": 9,
+          "opacity": 0.13,
+          "depth": 0.42,
+          "durationMs": 3700,
+          "phaseMs": 365
+        }
+      ]
+    }
   },
   {
     "id": "s10",
@@ -1235,6 +1537,9 @@
     ],
     "sourceIds": [
       "src-nda-dbp",
+      "src-lemonde-dbp-navarre",
+      "src-lemonde-dbp-airlift",
+      "src-nhandan-dbp-air-supply",
       "src-baocaobang-dbp",
       "src-quocphongthudo-dbp",
       "src-nhandan-keo-phao",
@@ -1331,8 +1636,54 @@
       "isGeneralIllustration": true,
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
-    "audioPending": true,
-    "status": "verified"
+    "audio": {
+      "en": {
+        "file": "/history/vn-khang-chien-chong-phap/audio/en/s10.mp3",
+        "durationSec": 44.7
+      }
+    },
+    "status": "published",
+    "motion": {
+      "ambience": "mountain",
+      "layers": [
+        {
+          "id": "basin-mist",
+          "effect": "mist",
+          "top": 22,
+          "left": 5,
+          "width": 90,
+          "height": 21,
+          "opacity": 0.15,
+          "depth": 0.93,
+          "durationMs": 8550,
+          "phaseMs": 510
+        },
+        {
+          "id": "field-water",
+          "effect": "water",
+          "top": 52,
+          "left": 42,
+          "width": 38,
+          "height": 15,
+          "opacity": 0.105,
+          "depth": 0.71,
+          "durationMs": 3700,
+          "phaseMs": 1243
+        },
+        {
+          "id": "dawn-light",
+          "effect": "sunlight",
+          "top": 1,
+          "left": 31,
+          "width": 41,
+          "height": 36,
+          "opacity": 0.1,
+          "depth": 0.98,
+          "durationMs": 6300,
+          "phaseMs": 676
+        }
+      ]
+    }
   },
   {
     "id": "s11",
@@ -1373,7 +1724,9 @@
     "sourceIds": [
       "src-wiki-geneva-1954",
       "src-vassar-final-declaration",
-      "src-avalon-geneva-agreement"
+      "src-avalon-geneva-agreement",
+      "src-frus-geneva-status",
+      "src-hansard-geneva-declaration"
     ],
     "vocab": [
       {
@@ -1466,8 +1819,110 @@
       "isGeneralIllustration": true,
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
-    "audioPending": true,
-    "status": "verified"
+    "audio": {
+      "en": {
+        "file": "/history/vn-khang-chien-chong-phap/audio/en/s11.mp3",
+        "durationSec": 47.5,
+        "sentences": [
+          {
+            "start": 0,
+            "end": 5.53,
+            "paragraphId": "s11-p1",
+            "text": "The Geneva Conference in Switzerland met from 26 April to 21 July 1954."
+          },
+          {
+            "start": 5.53,
+            "end": 10.67,
+            "paragraphId": "s11-p1",
+            "text": "Its Indochina sessions discussed ending the fighting in Vietnam, Laos and Cambodia."
+          },
+          {
+            "start": 10.67,
+            "end": 22.85,
+            "paragraphId": "s11-p1",
+            "text": "The Agreement on the Cessation of Hostilities in Viet-Nam is recorded as done at Geneva on 20 July 1954, and it came into force at 24:00 on 22 July 1954, Geneva time."
+          },
+          {
+            "start": 22.85,
+            "end": 30.69,
+            "paragraphId": "s11-p2",
+            "text": "The Agreement set a provisional military demarcation line, with a demilitarized zone of no more than 5 km on either side."
+          },
+          {
+            "start": 30.69,
+            "end": 34.17,
+            "paragraphId": "s11-p2",
+            "text": "The forces of the two parties regrouped on opposite sides."
+          },
+          {
+            "start": 34.17,
+            "end": 45.25,
+            "paragraphId": "s11-p2",
+            "text": "On 21 July the conference issued a Final Declaration, saying that the line was provisional and not a political or territorial boundary, and foreseeing general elections in July 1956."
+          },
+          {
+            "start": 45.25,
+            "end": 47.51,
+            "paragraphId": "s11-p2",
+            "text": "The Declaration was not signed by the delegations."
+          }
+        ]
+      }
+    },
+    "status": "published",
+    "motion": {
+      "ambience": "room",
+      "layers": [
+        {
+          "id": "lake-perspective-glint",
+          "effect": "water",
+          "top": 45,
+          "left": 34,
+          "width": 34,
+          "height": 9,
+          "opacity": 0.13,
+          "depth": 0.48,
+          "durationMs": 3700,
+          "phaseMs": 821
+        },
+        {
+          "id": "chandelier-light",
+          "effect": "glow",
+          "top": 4,
+          "left": 32,
+          "width": 38,
+          "height": 27,
+          "opacity": 0.12,
+          "depth": 0.18,
+          "durationMs": 1700,
+          "phaseMs": 254
+        },
+        {
+          "id": "window-light",
+          "effect": "sunlight",
+          "top": 17,
+          "left": 22,
+          "width": 59,
+          "height": 31,
+          "opacity": 0.075,
+          "depth": 0.9,
+          "durationMs": 6650,
+          "phaseMs": 987
+        },
+        {
+          "id": "right-chandelier-glow",
+          "effect": "glow",
+          "top": 4,
+          "left": 64,
+          "width": 15,
+          "height": 20,
+          "opacity": 0.11,
+          "depth": 0.28,
+          "durationMs": 2050,
+          "phaseMs": 780
+        }
+      ]
+    }
   },
   {
     "id": "s12",
@@ -1594,7 +2049,103 @@
       "isGeneralIllustration": true,
       "credit": "Minh họa pixel tái dựng, không phải ảnh tư liệu"
     },
-    "audioPending": true,
-    "status": "verified"
+    "audio": {
+      "en": {
+        "file": "/history/vn-khang-chien-chong-phap/audio/en/s12.mp3",
+        "durationSec": 29.2,
+        "sentences": [
+          {
+            "start": 0,
+            "end": 4.31,
+            "paragraphId": "s12-p1",
+            "text": "Under the Geneva Agreement, French forces gradually left the Hà Nội area."
+          },
+          {
+            "start": 4.31,
+            "end": 9.37,
+            "paragraphId": "s12-p1",
+            "text": "On 9 October 1954 the last French troops crossed the Long Biên Bridge."
+          },
+          {
+            "start": 9.37,
+            "end": 20.29,
+            "paragraphId": "s12-p1",
+            "text": "On the morning of 10 October 1954, units of the Vietnamese People's Army, including the Capital Regiment, entered the inner city through the gates and took over Hà Nội, welcomed by large crowds."
+          },
+          {
+            "start": 20.29,
+            "end": 22.23,
+            "paragraphId": "s12-p2",
+            "text": "After that day there were no French troops in Hà Nội."
+          },
+          {
+            "start": 23.09,
+            "end": 26.81,
+            "paragraphId": "s12-p2",
+            "text": "The city was taken over and run by a Military Administrative Committee."
+          },
+          {
+            "start": 26.81,
+            "end": 29.21,
+            "paragraphId": "s12-p2",
+            "text": "The Long Biên Bridge is one of the places linked with that day."
+          }
+        ]
+      }
+    },
+    "status": "published",
+    "motion": {
+      "ambience": "city",
+      "layers": [
+        {
+          "id": "canopy-glint",
+          "effect": "foliage",
+          "top": 2,
+          "left": 0,
+          "width": 41,
+          "height": 38,
+          "opacity": 0.14,
+          "depth": 0.22,
+          "durationMs": 3800,
+          "phaseMs": 1132
+        },
+        {
+          "id": "river-reflection",
+          "effect": "water",
+          "top": 13,
+          "left": 48,
+          "width": 48,
+          "height": 13,
+          "opacity": 0.13,
+          "depth": 0.86,
+          "durationMs": 3350,
+          "phaseMs": 565
+        },
+        {
+          "id": "morning-light",
+          "effect": "sunlight",
+          "top": 4,
+          "left": 16,
+          "width": 67,
+          "height": 42,
+          "opacity": 0.085,
+          "depth": 0.96,
+          "durationMs": 7000,
+          "phaseMs": 1298
+        },
+        {
+          "id": "right-tree-flicker",
+          "effect": "foliage",
+          "top": 8,
+          "left": 84,
+          "width": 16,
+          "height": 30,
+          "opacity": 0.13,
+          "depth": 0.24,
+          "durationMs": 4150,
+          "phaseMs": 620
+        }
+      ]
+    }
   }
 ]

@@ -1,5 +1,6 @@
 {
   "name": "Aoede",
   "id": "aoede",
-  "model": "gemini-2.5-flash-preview-tts"
+  "model": "gemini-2.5-flash-preview-tts",
+  "_note": "Một giọng cho cả app: name/model dùng cho đọc trực tiếp (voice-server); id là thư mục kho clip (public/audio/words/aoede, lines/aoede, speaking/aoede)."
 }

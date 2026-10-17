@@ -249,6 +249,8 @@ export function MathRunner({
     >
       <MathQuestionView
         surface="exam"
+        practice={instantSolution}
+        index={index}
         item={current}
         answer={answers[current.id] ?? null}
         revealed={isRevealed}

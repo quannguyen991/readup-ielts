@@ -186,11 +186,11 @@ export const fontSize = {
 } as const;
 
 export const fontFamily = {
-  regular: 'PlusJakartaSans_400Regular',
-  medium: 'PlusJakartaSans_500Medium',
-  semibold: 'PlusJakartaSans_600SemiBold',
-  bold: 'PlusJakartaSans_700Bold',
-  extrabold: 'PlusJakartaSans_800ExtraBold',
+  regular: 'BeVietnamPro_400Regular',
+  medium: 'BeVietnamPro_500Medium',
+  semibold: 'BeVietnamPro_600SemiBold',
+  bold: 'BeVietnamPro_700Bold',
+  extrabold: 'BeVietnamPro_800ExtraBold',
 } as const;
 
 /** Đổ bóng rất nhẹ của card trắng trong ảnh tham chiếu. */

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { Image, Pressable, Text, View } from 'react-native';
+import { Redirect, useLocalSearchParams } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
 import { GLASS_CARD, DIFF_COLOR, HUB } from '@/components/hub/theme';
 import { markTaskDone } from '@/components/hub/hooks';
+import { CATEGORY_LABEL, gradeRoleplay, roleplayById } from '@/services/hub/roleplay';
 import { dayKeyOf } from '@/services/hub/daily';
-import { gradeRoleplay, roleplayById } from '@/services/hub/roleplay';
+import { useVoiceReply } from '@/components/hub/useVoiceReply';
 import { speak } from '@/services/hub/speak';
+import { SCENE_IMAGE } from '@/data/hub/scenes';
 import { useHubStore } from '@/store/useHubStore';
 
-/** Kịch bản ba lượt: nghe lời đối phương, chọn cách đáp, xem vì sao. */
+/** Kịch bản nhập vai ba lượt: nghe lời đối phương, chọn cách đáp, xem vì sao. */
 export default function RoleplayPage() {
   const { id = '' } = useLocalSearchParams<{ id: string }>();
   const play = roleplayById(id);
@@ -19,6 +21,7 @@ export default function RoleplayPage() {
   const [picks, setPicks] = useState<(number | null)[]>([]);
   const [chosen, setChosen] = useState<number | null>(null);
   const [finished, setFinished] = useState(false);
+  const voice = useVoiceReply(play && play.mode === 'roleplay' ? (play.steps[step]?.options ?? null) : null, (k) => pick(k));
 
   if (!play) {
     return (
@@ -27,6 +30,7 @@ export default function RoleplayPage() {
       </HubScreen>
     );
   }
+  if (play.mode === 'call') return <Redirect href={`/hub/call/${play.id}` as never} />;
 
   const current = play.steps[step];
   const result = finished ? gradeRoleplay(picks, play.steps) : null;
@@ -62,9 +66,33 @@ export default function RoleplayPage() {
 
   return (
     <HubScreen title={play.title} subtitle={play.scene} back>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+      <Image source={{ uri: SCENE_IMAGE[play.setting] }} accessibilityIgnoresInvertColors resizeMode="cover" style={{ width: '100%', height: 180, borderRadius: 16, backgroundColor: HUB.glassStrong }} />
+
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         <Text style={{ color: DIFF_COLOR[play.difficulty], fontSize: 11, fontWeight: '800', borderWidth: 1, borderColor: DIFF_COLOR[play.difficulty], borderRadius: 999, paddingHorizontal: 7, paddingVertical: 2 }}>{play.difficulty}</Text>
-        <Text style={{ color: HUB.muted, fontSize: 12 }}>Lượt {Math.min(step + 1, play.steps.length)}/{play.steps.length}</Text>
+        <Text style={{ color: HUB.muted, fontSize: 12 }}>{CATEGORY_LABEL[play.category]} · Lượt {Math.min(step + 1, play.steps.length)}/{play.steps.length}</Text>
+      </View>
+
+      <View style={[GLASS_CARD, { padding: 14, gap: 8 }]}>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Nhiệm vụ</Text>
+        {play.tasks.map((task, i) => (
+          <Text key={task} style={{ color: i < step || (finished && result?.passed) ? HUB.green : HUB.body, fontSize: 13, lineHeight: 19 }}>
+            {`${i < step || (finished && result?.passed) ? '✓' : '○'}  ${task}`}
+          </Text>
+        ))}
+      </View>
+
+      <View style={[GLASS_CARD, { padding: 14, gap: 10 }]}>
+        <Text style={{ color: HUB.ink, fontSize: 14, fontWeight: '800' }}>Từ mục tiêu</Text>
+        {play.vocab.map((v) => (
+          <Pressable key={v.word} accessibilityRole="button" accessibilityLabel={`Nghe ${v.word}`} onPress={() => speak(v.word)} style={{ flexDirection: 'row', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
+            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'baseline', gap: 6, flexWrap: 'wrap' }}>
+              <Text style={{ color: HUB.blue, fontSize: 14, fontWeight: '700' }}>{v.word}</Text>
+              <Text style={{ color: HUB.muted, fontSize: 11 }}>{v.pos}</Text>
+            </View>
+            <Text style={{ color: HUB.body, fontSize: 13 }}>{v.meaning}</Text>
+          </Pressable>
+        ))}
       </View>
 
       {!finished && current ? (
@@ -82,6 +110,19 @@ export default function RoleplayPage() {
               </Pressable>
             );
           })}
+          {chosen === null && voice.supported ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel={voice.listening ? 'Dừng nghe' : 'Trả lời bằng giọng nói'}
+              onPress={voice.listening ? voice.stop : voice.start}
+              style={{ height: 46, borderRadius: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: voice.listening ? HUB.red : HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}
+            >
+              <Text style={{ color: voice.listening ? '#fff' : HUB.ink, fontWeight: '700' }}>
+                {voice.listening ? (voice.live || 'Đang nghe… bấm để dừng') : 'Trả lời bằng giọng nói'}
+              </Text>
+            </Pressable>
+          ) : null}
+          {chosen === null && voice.note ? <Text style={{ color: HUB.amber, fontSize: 12, lineHeight: 18 }}>{voice.note}</Text> : null}
           {chosen !== null ? (
             <View style={{ gap: 10 }}>
               <Text style={{ color: current.options[chosen]!.good ? HUB.green : HUB.amber, fontSize: 13, lineHeight: 19 }}>

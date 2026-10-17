@@ -334,8 +334,10 @@ export const SAT_DOMAINS: readonly Domain[] = [
     lessons: [
       { label: 'Ranh giới câu & dấu câu', labelEn: 'Sentence boundaries and punctuation', href: V('boundaries') },
       { label: 'Hoà hợp chủ – vị', labelEn: 'Subject–verb agreement', href: V('form') },
+      { label: 'Bổ ngữ & vị trí cụm', labelEn: 'Modifier placement', href: V('modifier') },
       { label: 'Đại từ', labelEn: 'Pronouns', href: V('pronoun') },
       { label: 'Thì & song song', labelEn: 'Tense and parallelism', href: V('tense') },
+      { label: 'Dạng động từ', labelEn: 'Verb forms', href: V('verbform') },
       { label: 'Sở hữu & số nhiều', labelEn: 'Possessives and plurals', href: V('possessive') },
     ],
   },

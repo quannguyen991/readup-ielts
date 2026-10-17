@@ -93,4 +93,25 @@ for voice in (default_voice["name"],):
         used = BUDGET; save(); break
     if re.search(r"kết thúc: còn [1-9]", out):
         break
+# (3) âm đọc của bộ Destination: từ chưa có clip, rồi câu ví dụ chưa có clip (cùng giọng, cùng hạn mức trong ngày)
+try:
+    dest_units = [u for f in ("b1.json", "b2.json") for u in json.loads((ROOT / "src/data/seed/destination" / f).read_text(encoding="utf-8"))]
+    dest_words = list(dict.fromkeys(w["word"] for u in dest_units for w in u["words"]))
+    dest_examples = list(dict.fromkeys(w["example"] for u in dest_units for w in u["words"] if w.get("example")))
+    (HERE / "dest-words-todo.json").write_text(json.dumps(dest_words, ensure_ascii=False), encoding="utf-8")
+    (HERE / "dest-examples-todo.json").write_text(json.dumps(dest_examples, ensure_ascii=False), encoding="utf-8")
+except Exception as e:
+    log(f"LỖI đọc dữ liệu Destination: {e}")
+else:
+    lines_dir = ROOT / "public" / "audio" / "lines" / default_voice["name"].lower()
+    for label, todo, extra in (("từ", "dest-words-todo.json", []), ("câu", "dest-examples-todo.json", ["--output-dir", str(lines_dir)])):
+        if used >= BUDGET:
+            break
+        r = subprocess.run([PY, str(HERE / "gen_word_audio.py"), "--voice", default_voice["name"], "--words-file", str(HERE / todo), "--batch", "80", "--max-requests", str(BUDGET - used), "--model", default_voice["model"], *extra], capture_output=True, text=True, encoding="utf-8")
+        out = r.stdout + r.stderr
+        n = len(re.findall(r"^yêu cầu \d+", out, re.M))
+        used += n; save()
+        log(f"Destination {label}: {n} lượt; {out.strip().splitlines()[-1] if out.strip() else ''}")
+        if "Hết lượt" in out:
+            used = BUDGET; save(); break
 log(f"xong, đã dùng {used}/{BUDGET}")

@@ -50,7 +50,7 @@ export function speak(
   text: string,
   opts: { rate?: number; voice?: string | null } = {},
 ) {
-  // MỘT giọng cho cả app: mọi tiếng đi qua một cửa (clip Gemini Kore; giọng máy chỉ tạm khi chưa có clip).
+  // MỘT giọng cho cả app: mọi tiếng đi qua một cửa (clip Gemini Aoede; giọng máy chỉ tạm khi chưa có clip).
   // `voice` (chọn giọng máy ở màn Chính tả) không còn tác dụng.
   void pronounce(text, { rate: opts.rate });
 }

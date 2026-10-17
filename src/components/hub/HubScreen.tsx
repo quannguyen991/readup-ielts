@@ -1,16 +1,23 @@
-import React, { type ReactNode } from 'react';
-import { Image, Pressable, ScrollView, Text, View } from 'react-native';
+import React, { useState, type ReactNode } from 'react';
+import { Modal, Pressable, ScrollView, Text, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 
 import { Icon } from '@/components/ui/Icon';
-import { CHIIKAWA_IMG, useChiikawaActive } from '@/components/chiikawa/chiikawa';
-import { useGameStore } from '@/store/useGameStore';
-import { useHubStore } from '@/store/useHubStore';
+import { useHubStore, type ProgramMode } from '@/store/useHubStore';
 import { dayKeyOf, streakDays } from '@/services/hub/daily';
-import { HUB } from './theme';
+import { COSMIC, GLASS_CARD } from './theme';
 
-/** Khung chung: nền vũ trụ, đầu trang với chỉ số (chuỗi ngày, XP), và nội dung cuộn. */
+const PROGRAMS: { id: ProgramMode; label: string; desc: string; icon: string }[] = [
+  { id: 'academic', label: 'Band 9 IELTS Academic', desc: 'Luyện 4 kỹ năng chuyên sâu học thuật', icon: '🎓' },
+  { id: 'speaking', label: 'Band 9 Real-Life Speaking', desc: 'Phản xạ giao tiếp & phát âm chuẩn ELSA', icon: '🎙️' },
+  { id: 'sat', label: 'Band 9 Digital SAT', desc: 'Chiến thuật Reading & Writing 750+', icon: '⚡' },
+];
+
+/** Bề ngang tối đa của nội dung Hub: màn rộng thì giữ cột gọn ở giữa, không dãn hết màn. */
+const CONTENT_MAX = 860;
+
+/** Khung chung Cosmic Dark Mode: đầu trang Top Header với Program Switcher & 3 chỉ số Gamification. */
 export function HubScreen({
   title,
   subtitle,
@@ -27,50 +34,202 @@ export function HubScreen({
   padBottom?: number;
 }) {
   const doneByDay = useHubStore((s) => s.doneByDay);
-  const xp = useGameStore((s) => s.xp);
-  const streak = streakDays(doneByDay, dayKeyOf(new Date()));
-  const chiikawa = useChiikawaActive();
+  const streakCount = useHubStore((s) => s.streakCount);
+  const gems = useHubStore((s) => s.gems);
+  const trophyScore = useHubStore((s) => s.trophyScore);
+  const selectedProgram = useHubStore((s) => s.selectedProgram);
+  const setProgram = useHubStore((s) => s.setProgram);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const calculatedStreak = streakDays(doneByDay, dayKeyOf(new Date()));
+  const displayStreak = Math.max(streakCount, calculatedStreak);
+  const displayTrophy = trophyScore >= 10000 ? '10000+' : String(trophyScore);
+
+  const currentProgram = PROGRAMS.find((p) => p.id === selectedProgram) ?? PROGRAMS[1]!;
 
   const header = (
-    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 18, paddingTop: 14, paddingBottom: 10, gap: 10 }}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, flex: 1, minWidth: 0 }}>
-        {back ? (
-          <Pressable accessibilityRole="button" accessibilityLabel="Quay lại" onPress={() => (router.canGoBack() ? router.back() : router.replace('/hub' as never))} style={{ width: 36, height: 36, borderRadius: 18, alignItems: 'center', justifyContent: 'center', backgroundColor: HUB.glass }}>
-            <Icon name="chevron-left" size={20} color={HUB.ink} />
-          </Pressable>
-        ) : null}
-        <View style={{ flex: 1, minWidth: 0 }}>
-          <Text numberOfLines={1} style={{ color: HUB.ink, fontSize: 22, fontWeight: '800' }}>{title}</Text>
-          {subtitle ? <Text numberOfLines={2} style={{ color: HUB.muted, fontSize: 13, marginTop: 2 }}>{subtitle}</Text> : null}
+    <View style={{ paddingHorizontal: 16, paddingTop: 14, paddingBottom: 12, gap: 10, width: '100%', maxWidth: CONTENT_MAX, alignSelf: 'center' }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+        {/* Góc trái: Nút back (nếu có) + Tiêu đề Tab & Program Switcher */}
+        <View style={{ flex: 1, minWidth: 0, flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+          {back ? (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Quay lại"
+              onPress={() => (router.canGoBack() ? router.back() : router.replace('/hub' as never))}
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: 12,
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(120, 68, 21, 0.08)',
+                borderWidth: 1,
+                borderColor: 'rgba(120, 68, 21, 0.14)',
+              }}
+            >
+              <Icon name="chevron-left" size={20} color={COSMIC.ink} />
+            </Pressable>
+          ) : null}
+
+          <View style={{ flex: 1, minWidth: 0 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Text numberOfLines={1} style={{ color: COSMIC.ink, fontSize: 22, fontWeight: '800', letterSpacing: -0.3 }}>
+                {title}
+              </Text>
+            </View>
+
+            {/* Dropdown Program Switcher */}
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Chuyển đổi chương trình học"
+              onPress={() => setDropdownOpen(true)}
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 5,
+                marginTop: 2,
+                alignSelf: 'flex-start', maxWidth: '100%',
+                paddingHorizontal: 8,
+                paddingVertical: 3,
+                borderRadius: 8,
+                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                borderWidth: 1,
+                borderColor: 'rgba(56, 189, 248, 0.25)',
+              }}
+            >
+              <Text style={{ fontSize: 11 }}>{currentProgram.icon}</Text>
+              <Text numberOfLines={1} style={{ color: COSMIC.blue, fontSize: 11, fontWeight: '700', flexShrink: 1 }}>
+                {currentProgram.label}
+              </Text>
+              <Icon name="chevron-down" size={12} color={COSMIC.blue} />
+            </Pressable>
+          </View>
+        </View>
+
+        {/* Góc phải: Cụm 3 chỉ số Gamification luôn hiển thị */}
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 7 }}>
+          {/* 1. Streak 🔥 */}
+          <View
+            accessibilityLabel={`Chuỗi ${displayStreak} ngày`}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              paddingHorizontal: 8,
+              paddingVertical: 5,
+              borderRadius: 20,
+              backgroundColor: 'rgba(249, 115, 22, 0.14)',
+              borderWidth: 1,
+              borderColor: 'rgba(249, 115, 22, 0.35)',
+            }}
+          >
+            <Text style={{ fontSize: 13 }}>🔥</Text>
+            <Text style={{ color: '#EA6A12', fontSize: 12, fontWeight: '800' }}>{displayStreak}</Text>
+          </View>
+
+          {/* 2. Gems 💎 */}
+          <View
+            accessibilityLabel={`${gems} đá quý`}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              paddingHorizontal: 8,
+              paddingVertical: 5,
+              borderRadius: 20,
+              backgroundColor: 'rgba(168, 85, 247, 0.14)',
+              borderWidth: 1,
+              borderColor: 'rgba(168, 85, 247, 0.35)',
+            }}
+          >
+            <Text style={{ fontSize: 13 }}>💎</Text>
+            <Text style={{ color: '#7C3AED', fontSize: 12, fontWeight: '800' }}>{gems}</Text>
+          </View>
+
+          {/* 3. Trophy 🏆 */}
+          <View
+            accessibilityLabel={`Cúp ${displayTrophy}`}
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 4,
+              paddingHorizontal: 8,
+              paddingVertical: 5,
+              borderRadius: 20,
+              backgroundColor: 'rgba(245, 158, 11, 0.14)',
+              borderWidth: 1,
+              borderColor: 'rgba(245, 158, 11, 0.35)',
+            }}
+          >
+            <Text style={{ fontSize: 13 }}>🏆</Text>
+            <Text style={{ color: '#B45309', fontSize: 12, fontWeight: '800' }}>{displayTrophy}</Text>
+          </View>
         </View>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-        <Chip icon="flame" color={HUB.orange} value={String(streak)} label="chuỗi" />
-        <Chip icon="trophy" color={HUB.amber} value={xp >= 10000 ? '10000+' : String(xp)} label="XP" />
-        {chiikawa ? <Image source={CHIIKAWA_IMG.wave} resizeMode="contain" style={{ width: 40, height: 40 }} accessibilityIgnoresInvertColors /> : null}
-      </View>
+
+      {subtitle ? <Text numberOfLines={2} style={{ color: COSMIC.muted, fontSize: 12, marginTop: -2 }}>{subtitle}</Text> : null}
+
+      {/* Program Switcher Modal */}
+      <Modal visible={dropdownOpen} transparent animationType="fade" onRequestClose={() => setDropdownOpen(false)}>
+        <Pressable onPress={() => setDropdownOpen(false)} style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0.7)', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+          <View style={[GLASS_CARD, { backgroundColor: '#FFFFFF', padding: 20, gap: 14, width: '100%', maxWidth: 380, borderWidth: 1, borderColor: 'rgba(168, 85, 247, 0.3)' }]}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Text style={{ color: COSMIC.ink, fontSize: 17, fontWeight: '800' }}>Chọn chương trình học</Text>
+              <Pressable onPress={() => setDropdownOpen(false)}>
+                <Icon name="close" size={18} color={COSMIC.muted} />
+              </Pressable>
+            </View>
+
+            <View style={{ gap: 10 }}>
+              {PROGRAMS.map((p) => {
+                const isSelected = p.id === selectedProgram;
+                return (
+                  <Pressable
+                    key={p.id}
+                    onPress={() => {
+                      setProgram(p.id);
+                      setDropdownOpen(false);
+                    }}
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 12,
+                      padding: 14,
+                      borderRadius: 14,
+                      backgroundColor: isSelected ? 'rgba(56, 189, 248, 0.15)' : 'rgba(120, 68, 21, 0.05)',
+                      borderWidth: 1,
+                      borderColor: isSelected ? COSMIC.blue : 'rgba(120, 68, 21, 0.1)',
+                    }}
+                  >
+                    <Text style={{ fontSize: 24 }}>{p.icon}</Text>
+                    <View style={{ flex: 1 }}>
+                      <Text style={{ color: isSelected ? COSMIC.blue : COSMIC.ink, fontSize: 15, fontWeight: '700' }}>
+                        {p.label}
+                      </Text>
+                      <Text style={{ color: COSMIC.muted, fontSize: 12, marginTop: 2 }}>{p.desc}</Text>
+                    </View>
+                    {isSelected ? <Icon name="check" size={18} color={COSMIC.blue} /> : null}
+                  </Pressable>
+                );
+              })}
+            </View>
+          </View>
+        </Pressable>
+      </Modal>
     </View>
   );
 
   return (
-    <LinearGradient colors={HUB.bg as never} start={{ x: 0, y: 0 }} end={{ x: 0.6, y: 1 }} style={{ flex: 1 }}>
+    <LinearGradient colors={COSMIC.bg as never} start={{ x: 0, y: 0 }} end={{ x: 0.8, y: 1 }} style={{ flex: 1 }}>
       {header}
       {scroll ? (
-        <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: padBottom, gap: 16 }} showsVerticalScrollIndicator={false}>
-          {children}
+        <ScrollView contentContainerStyle={{ paddingHorizontal: 16, paddingBottom: padBottom }} showsVerticalScrollIndicator={false}>
+          <View style={{ width: '100%', maxWidth: CONTENT_MAX, alignSelf: 'center', gap: 16 }}>{children}</View>
         </ScrollView>
       ) : (
-        <View style={{ flex: 1, paddingHorizontal: 16, paddingBottom: padBottom }}>{children}</View>
+        <View style={{ flex: 1, paddingHorizontal: 16, paddingBottom: padBottom, width: '100%', maxWidth: CONTENT_MAX, alignSelf: 'center' }}>{children}</View>
       )}
     </LinearGradient>
-  );
-}
-
-function Chip({ icon, color, value, label }: { icon: 'flame' | 'trophy'; color: string; value: string; label: string }) {
-  return (
-    <View accessibilityLabel={`${value} ${label}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 5, paddingHorizontal: 9, paddingVertical: 5, borderRadius: 999, backgroundColor: HUB.glassStrong, borderWidth: 1, borderColor: HUB.line }}>
-      <Icon name={icon} size={14} color={color} strokeWidth={2.2} />
-      <Text style={{ color: HUB.ink, fontSize: 13, fontWeight: '700' }}>{value}</Text>
-    </View>
   );
 }

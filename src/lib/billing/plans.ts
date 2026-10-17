@@ -151,6 +151,14 @@ const COACH_FEATURES: Feature[] = [...CONTENT_FEATURES, 'model_essays', 'ai_chat
  * GIÁ cũng nhẹ nhàng đẩy người sẵn sàng cam kết dài hạn lên gói cao hơn, không
  * chỉ dựa vào cắt tính năng.
  */
+/**
+ * Hạn mức AI cho mọi người dùng, tính theo tháng. Đây là ngân sách API, không phải gói bán:
+ * chỉnh ở đây là đổi cho cả app, cả phía client lẫn máy chủ.
+ */
+export const EVERYONE_AI_CALLS_PER_MONTH = 30;
+/** Lượt "Hỏi AI" khi tìm bài, mỗi tháng (model rẻ, nên trần cao hơn). */
+export const EVERYONE_SEARCH_AI_PER_MONTH = 60;
+
 export const PLANS: Record<PlanId, Plan> = {
   free: {
     id: 'free',
@@ -238,7 +246,7 @@ export const PLANS: Record<PlanId, Plan> = {
       mock_per_week: null,
       // 600 → 720, và tỉ lệ so với Pro giãn từ 4 lần lên 6 lần (120*6=720) —
       // ngân sách AI vẫn là trục khác biệt CHÍNH giữa Pro và Max.
-      ai_calls_per_month: 720,
+      ai_calls_per_month: EVERYONE_AI_CALLS_PER_MONTH,
       vocab_total: null,
     },
     highlights: [
@@ -252,6 +260,12 @@ export const PLANS: Record<PlanId, Plan> = {
 
 /** Từ rẻ tới đắt. Thứ tự này là nguồn sự thật cho việc so hai gói hơn kém. */
 export const PLAN_ORDER: PlanId[] = ['free', 'plus', 'pro', 'max'];
+
+/**
+ * App cộng đồng, không thương mại: mọi người dùng có quyền của gói cao nhất.
+ * Hạn mức AI (ai_calls_per_month) vẫn là trần kỹ thuật để không cháy tiền API.
+ */
+export const EVERYONE_PLAN: PlanId = 'max';
 
 /** Vị trí trong bậc thang. Dùng để so gói, không so bằng chuỗi. */
 export function planRank(id: PlanId): number {

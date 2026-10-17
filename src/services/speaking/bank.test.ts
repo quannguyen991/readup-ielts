@@ -62,9 +62,10 @@ test('Full test: 2 bộ Part 1 (8 câu) → thẻ Part 2 → 4 câu Part 3, đú
     steps.map((s) => s.question.part),
     [1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 3, 3, 3],
   );
-  // Bộ cuối danh sách thì bộ thứ hai quay vòng về bộ đầu.
+  // Bộ thứ hai là bộ đứng ngay sau bộ đã chọn trong danh sách.
+  const after = PART1_TOPICS[(PART1_TOPICS.findIndex((t) => t.id === 'p1-shopping') + 1) % PART1_TOPICS.length]!;
   assert.equal(steps[0]!.question.id, 'p1-shopping-1');
-  assert.equal(steps[4]!.question.id, `${PART1_TOPICS[0]!.id}-1`);
+  assert.equal(steps[4]!.question.id, `${after.id}-1`);
   assert.equal(steps[8]!.question.id, 'p2-goal');
   assert.equal(steps[9]!.question.id, 'p2-goal-p3-1');
   assert.deepEqual(

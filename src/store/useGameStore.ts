@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 import { STORAGE_PREFIX, storage } from './persist';
 import { useGameFx } from './useGameFx';
 import { useCityStore } from './useCityStore';
+import { useAlbumStore } from './useAlbumStore';
 import { mascotOf, useRewardStore } from './useRewardStore';
 import { MASCOTS, perksOf, STAR_BONUS } from '@/services/game/mascots';
 import { isFlightSfx, setSfxMuted, sfx } from '@/services/audio/sfx';
@@ -231,6 +232,7 @@ export const useGameStore = create<GameState>()(
 
         const achievements = awardAchievements(life, s.achievements);
         stars += achievementStars(s.achievements, achievements);
+        if (correct && !opts?.selfGraded) useAlbumStore.getState().addCorrect();
         set({
           ...o.state,
           hearts,

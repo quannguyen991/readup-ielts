@@ -1,0 +1,1574 @@
+[
+ {
+  "slug": "education",
+  "source": "topic",
+  "en": "Education",
+  "vi": "Giáo dục"
+ },
+ {
+  "slug": "environment",
+  "source": "topic",
+  "en": "Environment",
+  "vi": "Môi trường"
+ },
+ {
+  "slug": "technology",
+  "source": "topic",
+  "en": "Technology",
+  "vi": "Công nghệ"
+ },
+ {
+  "slug": "health",
+  "source": "topic",
+  "en": "Health",
+  "vi": "Sức khoẻ"
+ },
+ {
+  "slug": "work",
+  "source": "topic",
+  "en": "Work and Careers",
+  "vi": "Công việc"
+ },
+ {
+  "slug": "society",
+  "source": "topic",
+  "en": "Society",
+  "vi": "Xã hội"
+ },
+ {
+  "slug": "government",
+  "source": "topic",
+  "en": "Government and Law",
+  "vi": "Chính phủ và pháp luật"
+ },
+ {
+  "slug": "economy",
+  "source": "topic",
+  "en": "Economy",
+  "vi": "Kinh tế"
+ },
+ {
+  "slug": "media",
+  "source": "topic",
+  "en": "Media",
+  "vi": "Truyền thông"
+ },
+ {
+  "slug": "culture",
+  "source": "topic",
+  "en": "Culture and Tradition",
+  "vi": "Văn hoá"
+ },
+ {
+  "slug": "family",
+  "source": "topic",
+  "en": "Family",
+  "vi": "Gia đình"
+ },
+ {
+  "slug": "transport",
+  "source": "topic",
+  "en": "Transport",
+  "vi": "Giao thông"
+ },
+ {
+  "slug": "tourism",
+  "source": "topic",
+  "en": "Tourism",
+  "vi": "Du lịch"
+ },
+ {
+  "slug": "city-life",
+  "source": "topic",
+  "en": "City Life",
+  "vi": "Đời sống đô thị"
+ },
+ {
+  "slug": "crime",
+  "source": "topic",
+  "en": "Crime and Punishment",
+  "vi": "Tội phạm"
+ },
+ {
+  "slug": "science",
+  "source": "topic",
+  "en": "Science and Research",
+  "vi": "Khoa học"
+ },
+ {
+  "slug": "art",
+  "source": "topic",
+  "en": "Art",
+  "vi": "Nghệ thuật"
+ },
+ {
+  "slug": "sport",
+  "source": "topic",
+  "en": "Sport",
+  "vi": "Thể thao"
+ },
+ {
+  "slug": "food",
+  "source": "topic",
+  "en": "Food and Diet",
+  "vi": "Ẩm thực"
+ },
+ {
+  "slug": "housing",
+  "source": "topic",
+  "en": "Housing",
+  "vi": "Nhà ở"
+ },
+ {
+  "slug": "money",
+  "source": "topic",
+  "en": "Money and Spending",
+  "vi": "Tiền bạc"
+ },
+ {
+  "slug": "globalisation",
+  "source": "topic",
+  "en": "Globalisation",
+  "vi": "Toàn cầu hoá"
+ },
+ {
+  "slug": "language",
+  "source": "topic",
+  "en": "Language",
+  "vi": "Ngôn ngữ"
+ },
+ {
+  "slug": "children",
+  "source": "topic",
+  "en": "Children and Youth",
+  "vi": "Trẻ em và thanh niên"
+ },
+ {
+  "slug": "elderly",
+  "source": "topic",
+  "en": "Ageing",
+  "vi": "Người cao tuổi"
+ },
+ {
+  "slug": "animals",
+  "source": "topic",
+  "en": "Animals",
+  "vi": "Động vật"
+ },
+ {
+  "slug": "space",
+  "source": "topic",
+  "en": "Space and Exploration",
+  "vi": "Vũ trụ"
+ },
+ {
+  "slug": "happiness",
+  "source": "topic",
+  "en": "Happiness and Wellbeing",
+  "vi": "Hạnh phúc"
+ },
+ {
+  "slug": "history",
+  "source": "topic",
+  "en": "History",
+  "vi": "Lịch sử"
+ },
+ {
+  "slug": "energy",
+  "source": "topic",
+  "en": "Energy",
+  "vi": "Năng lượng"
+ },
+ {
+  "slug": "personality",
+  "source": "topic",
+  "en": "Personality and Character",
+  "vi": "Tính cách"
+ },
+ {
+  "slug": "emotions",
+  "source": "topic",
+  "en": "Emotions",
+  "vi": "Cảm xúc"
+ },
+ {
+  "slug": "places",
+  "source": "topic",
+  "en": "Describing Places",
+  "vi": "Tả nơi chốn"
+ },
+ {
+  "slug": "memories",
+  "source": "topic",
+  "en": "Memories and Childhood",
+  "vi": "Ký ức"
+ },
+ {
+  "slug": "success-failure",
+  "source": "topic",
+  "en": "Success and Failure",
+  "vi": "Thành công và thất bại"
+ },
+ {
+  "slug": "risk-safety",
+  "source": "topic",
+  "en": "Risk and Safety",
+  "vi": "Rủi ro và an toàn"
+ },
+ {
+  "slug": "ethics",
+  "source": "topic",
+  "en": "Ethics and Morality",
+  "vi": "Đạo đức"
+ },
+ {
+  "slug": "change",
+  "source": "topic",
+  "en": "Change and Development",
+  "vi": "Thay đổi"
+ },
+ {
+  "slug": "comparison",
+  "source": "topic",
+  "en": "Comparison and Contrast",
+  "vi": "So sánh"
+ },
+ {
+  "slug": "cause-effect",
+  "source": "topic",
+  "en": "Cause and Effect",
+  "vi": "Nguyên nhân và kết quả"
+ },
+ {
+  "slug": "agriculture",
+  "source": "topic",
+  "en": "Agriculture and Food Production",
+  "vi": "Nông nghiệp"
+ },
+ {
+  "slug": "animals-nature",
+  "source": "topic",
+  "en": "Animals and Wildlife",
+  "vi": "Động vật hoang dã"
+ },
+ {
+  "slug": "weather-climate",
+  "source": "topic",
+  "en": "Weather and Climate",
+  "vi": "Thời tiết và khí hậu"
+ },
+ {
+  "slug": "architecture",
+  "source": "topic",
+  "en": "Architecture and Design",
+  "vi": "Kiến trúc"
+ },
+ {
+  "slug": "fashion",
+  "source": "topic",
+  "en": "Fashion and Appearance",
+  "vi": "Thời trang"
+ },
+ {
+  "slug": "festivals",
+  "source": "topic",
+  "en": "Festivals and Celebrations",
+  "vi": "Lễ hội"
+ },
+ {
+  "slug": "shopping",
+  "source": "topic",
+  "en": "Shopping and Consumers",
+  "vi": "Mua sắm"
+ },
+ {
+  "slug": "leisure",
+  "source": "topic",
+  "en": "Leisure and Free Time",
+  "vi": "Giải trí"
+ },
+ {
+  "slug": "communication",
+  "source": "topic",
+  "en": "Communication Skills",
+  "vi": "Giao tiếp"
+ },
+ {
+  "slug": "ai-future",
+  "source": "topic",
+  "en": "AI and the Future",
+  "vi": "AI và tương lai"
+ },
+ {
+  "slug": "global-success-10-unit-01",
+  "source": "global",
+  "en": "Global Success 10 · Unit 1: Family Life",
+  "vi": "Global Success 10 · Unit 1: Family Life"
+ },
+ {
+  "slug": "global-success-10-unit-02",
+  "source": "global",
+  "en": "Global Success 10 · Unit 2: Humans and the Environment",
+  "vi": "Global Success 10 · Unit 2: Humans and the Environment"
+ },
+ {
+  "slug": "global-success-10-unit-03",
+  "source": "global",
+  "en": "Global Success 10 · Unit 3: Music",
+  "vi": "Global Success 10 · Unit 3: Music"
+ },
+ {
+  "slug": "global-success-10-unit-04",
+  "source": "global",
+  "en": "Global Success 10 · Unit 4: For a Better Community",
+  "vi": "Global Success 10 · Unit 4: For a Better Community"
+ },
+ {
+  "slug": "global-success-10-unit-05",
+  "source": "global",
+  "en": "Global Success 10 · Unit 5: Inventions",
+  "vi": "Global Success 10 · Unit 5: Inventions"
+ },
+ {
+  "slug": "global-success-10-unit-06",
+  "source": "global",
+  "en": "Global Success 10 · Unit 6: Gender Equality",
+  "vi": "Global Success 10 · Unit 6: Gender Equality"
+ },
+ {
+  "slug": "global-success-10-unit-07",
+  "source": "global",
+  "en": "Global Success 10 · Unit 7: Viet Nam and International Organisations",
+  "vi": "Global Success 10 · Unit 7: Viet Nam and International Organisations"
+ },
+ {
+  "slug": "global-success-10-unit-08",
+  "source": "global",
+  "en": "Global Success 10 · Unit 8: New Ways to Learn",
+  "vi": "Global Success 10 · Unit 8: New Ways to Learn"
+ },
+ {
+  "slug": "global-success-10-unit-09",
+  "source": "global",
+  "en": "Global Success 10 · Unit 9: Protecting the Environment",
+  "vi": "Global Success 10 · Unit 9: Protecting the Environment"
+ },
+ {
+  "slug": "global-success-10-unit-10",
+  "source": "global",
+  "en": "Global Success 10 · Unit 10: Ecotourism",
+  "vi": "Global Success 10 · Unit 10: Ecotourism"
+ },
+ {
+  "slug": "global-success-11-unit-01",
+  "source": "global",
+  "en": "Global Success 11 · Unit 1: A long and healthy life",
+  "vi": "Global Success 11 · Unit 1: A long and healthy life"
+ },
+ {
+  "slug": "global-success-11-unit-02",
+  "source": "global",
+  "en": "Global Success 11 · Unit 2: The generation gap",
+  "vi": "Global Success 11 · Unit 2: The generation gap"
+ },
+ {
+  "slug": "global-success-11-unit-03",
+  "source": "global",
+  "en": "Global Success 11 · Unit 3: Cities of the future",
+  "vi": "Global Success 11 · Unit 3: Cities of the future"
+ },
+ {
+  "slug": "global-success-11-unit-04",
+  "source": "global",
+  "en": "Global Success 11 · Unit 4: ASEAN and Viet Nam",
+  "vi": "Global Success 11 · Unit 4: ASEAN and Viet Nam"
+ },
+ {
+  "slug": "global-success-11-unit-05",
+  "source": "global",
+  "en": "Global Success 11 · Unit 5: Global warming",
+  "vi": "Global Success 11 · Unit 5: Global warming"
+ },
+ {
+  "slug": "global-success-11-unit-06",
+  "source": "global",
+  "en": "Global Success 11 · Unit 6: Preserving our heritage",
+  "vi": "Global Success 11 · Unit 6: Preserving our heritage"
+ },
+ {
+  "slug": "global-success-11-unit-07",
+  "source": "global",
+  "en": "Global Success 11 · Unit 7: Education options for school-leavers",
+  "vi": "Global Success 11 · Unit 7: Education options for school-leavers"
+ },
+ {
+  "slug": "global-success-11-unit-08",
+  "source": "global",
+  "en": "Global Success 11 · Unit 8: Becoming independent",
+  "vi": "Global Success 11 · Unit 8: Becoming independent"
+ },
+ {
+  "slug": "global-success-11-unit-09",
+  "source": "global",
+  "en": "Global Success 11 · Unit 9: Social issues",
+  "vi": "Global Success 11 · Unit 9: Social issues"
+ },
+ {
+  "slug": "global-success-11-unit-10",
+  "source": "global",
+  "en": "Global Success 11 · Unit 10: The ecosystem",
+  "vi": "Global Success 11 · Unit 10: The ecosystem"
+ },
+ {
+  "slug": "global-success-12-unit-01",
+  "source": "global",
+  "en": "Global Success 12 · Unit 1: Life stories we admire",
+  "vi": "Global Success 12 · Unit 1: Life stories we admire"
+ },
+ {
+  "slug": "global-success-12-unit-02",
+  "source": "global",
+  "en": "Global Success 12 · Unit 2: A multicultural world",
+  "vi": "Global Success 12 · Unit 2: A multicultural world"
+ },
+ {
+  "slug": "global-success-12-unit-03",
+  "source": "global",
+  "en": "Global Success 12 · Unit 3: Green living",
+  "vi": "Global Success 12 · Unit 3: Green living"
+ },
+ {
+  "slug": "global-success-12-unit-04",
+  "source": "global",
+  "en": "Global Success 12 · Unit 4: Urbanisation",
+  "vi": "Global Success 12 · Unit 4: Urbanisation"
+ },
+ {
+  "slug": "global-success-12-unit-05",
+  "source": "global",
+  "en": "Global Success 12 · Unit 5: The world of work",
+  "vi": "Global Success 12 · Unit 5: The world of work"
+ },
+ {
+  "slug": "global-success-12-unit-06",
+  "source": "global",
+  "en": "Global Success 12 · Unit 6: Artificial intelligence",
+  "vi": "Global Success 12 · Unit 6: Artificial intelligence"
+ },
+ {
+  "slug": "global-success-12-unit-07",
+  "source": "global",
+  "en": "Global Success 12 · Unit 7: The world of mass media",
+  "vi": "Global Success 12 · Unit 7: The world of mass media"
+ },
+ {
+  "slug": "global-success-12-unit-08",
+  "source": "global",
+  "en": "Global Success 12 · Unit 8: Wildlife conservation",
+  "vi": "Global Success 12 · Unit 8: Wildlife conservation"
+ },
+ {
+  "slug": "global-success-12-unit-09",
+  "source": "global",
+  "en": "Global Success 12 · Unit 9: Career paths",
+  "vi": "Global Success 12 · Unit 9: Career paths"
+ },
+ {
+  "slug": "global-success-12-unit-10",
+  "source": "global",
+  "en": "Global Success 12 · Unit 10: Lifelong learning",
+  "vi": "Global Success 12 · Unit 10: Lifelong learning"
+ },
+ {
+  "slug": "global-success-advanced",
+  "source": "global",
+  "en": "Global Success 10–12 · Advanced",
+  "vi": "Global Success 10–12 · Nâng cao"
+ },
+ {
+  "slug": "vfi-unit-01",
+  "source": "vfi",
+  "en": "Unit 1: Growing up",
+  "vi": "Tuổi thơ, gia đình, quan hệ anh chị em và cách con người trưởng thành"
+ },
+ {
+  "slug": "vfi-unit-02",
+  "source": "vfi",
+  "en": "Unit 2: Mental and physical development",
+  "vi": "Trí nhớ, kỹ năng, các giai đoạn phát triển từ trẻ sơ sinh đến trưởng thành"
+ },
+ {
+  "slug": "vfi-unit-03",
+  "source": "vfi",
+  "en": "Unit 3: Keeping fit",
+  "vi": "Dinh dưỡng, bệnh tật, điều trị và lối sống lành mạnh"
+ },
+ {
+  "slug": "vfi-unit-04",
+  "source": "vfi",
+  "en": "Unit 4: Lifestyles",
+  "vi": "Thái độ sống, mục tiêu, áp lực và cách con người chọn cuộc sống của mình"
+ },
+ {
+  "slug": "vfi-unit-05",
+  "source": "vfi",
+  "en": "Unit 5: Student life",
+  "vi": "Trường học, nghiên cứu, bằng cấp và cách người học làm việc với tri thức"
+ },
+ {
+  "slug": "vfi-unit-06",
+  "source": "vfi",
+  "en": "Unit 6: Effective communication",
+  "vi": "Ngôn ngữ, cử chỉ, cách diễn đạt và những cụm nói giúp trình bày rõ ý"
+ },
+ {
+  "slug": "vfi-unit-07",
+  "source": "vfi",
+  "en": "Unit 7: On the move",
+  "vi": "Du lịch, điểm đến, cảnh quan và những từ tả chuyến đi"
+ },
+ {
+  "slug": "vfi-unit-08",
+  "source": "vfi",
+  "en": "Unit 8: Through the ages",
+  "vi": "Lịch sử, khảo cổ, các mốc thời gian và cách nói về thời gian"
+ },
+ {
+  "slug": "vfi-unit-09",
+  "source": "vfi",
+  "en": "Unit 9: The natural world",
+  "vi": "Hệ sinh thái, động thực vật, sự tuyệt chủng và nông nghiệp"
+ },
+ {
+  "slug": "vfi-unit-10",
+  "source": "vfi",
+  "en": "Unit 10: Reaching for the skies",
+  "vi": "Vũ trụ, du hành không gian, thiên văn và công nghệ vệ tinh"
+ },
+ {
+  "slug": "vfi-unit-11",
+  "source": "vfi",
+  "en": "Unit 11: Design and innovation",
+  "vi": "Kiến trúc, vật liệu xây dựng, phát minh và công trình hiện đại"
+ },
+ {
+  "slug": "vfi-unit-12",
+  "source": "vfi",
+  "en": "Unit 12: Information technology",
+  "vi": "Máy tính, thiết bị, Internet và cách công nghệ thay đổi cuộc sống"
+ },
+ {
+  "slug": "vfi-unit-13",
+  "source": "vfi",
+  "en": "Unit 13: The modern world",
+  "vi": "Toàn cầu hoá, dân số, thống kê và những xu hướng lớn của xã hội"
+ },
+ {
+  "slug": "vfi-unit-14",
+  "source": "vfi",
+  "en": "Unit 14: Urbanisation",
+  "vi": "Thành phố lớn, dân số tăng nhanh, vấn đề đô thị và cách giải quyết"
+ },
+ {
+  "slug": "vfi-unit-15",
+  "source": "vfi",
+  "en": "Unit 15: The green revolution",
+  "vi": "Ô nhiễm, biến đổi khí hậu, bảo vệ môi trường và các giải pháp bền vững"
+ },
+ {
+  "slug": "vfi-unit-16",
+  "source": "vfi",
+  "en": "Unit 16: The energy crisis",
+  "vi": "Nhiên liệu, điện năng, năng lượng tái tạo và chuyển đổi xanh"
+ },
+ {
+  "slug": "vfi-unit-17",
+  "source": "vfi",
+  "en": "Unit 17: Talking business",
+  "vi": "Công ty, nghề nghiệp, lương thưởng, thị trường lao động và quảng cáo"
+ },
+ {
+  "slug": "vfi-unit-18",
+  "source": "vfi",
+  "en": "Unit 18: The law",
+  "vi": "Tội phạm, toà án, hình phạt và cách xã hội giữ trật tự"
+ },
+ {
+  "slug": "vfi-unit-19",
+  "source": "vfi",
+  "en": "Unit 19: The media",
+  "vi": "Báo chí, quảng bá, riêng tư, tin tức và vai trò của truyền thông đại chúng"
+ },
+ {
+  "slug": "vfi-unit-20",
+  "source": "vfi",
+  "en": "Unit 20: The arts",
+  "vi": "Hội hoạ, âm nhạc, sân khấu, sáng tạo và cách nghệ thuật chạm vào cảm xúc"
+ },
+ {
+  "slug": "vfia-unit-01",
+  "source": "vfia",
+  "en": "Advanced · Unit 1: Personality",
+  "vi": "Tính cách và cách mô tả con người, từ ưu điểm đến thói xấu"
+ },
+ {
+  "slug": "vfia-unit-02",
+  "source": "vfia",
+  "en": "Advanced · Unit 2: Time and change",
+  "vi": "Các giai đoạn lịch sử, tốc độ thay đổi và cách nói về thời gian"
+ },
+ {
+  "slug": "vfia-unit-03",
+  "source": "vfia",
+  "en": "Advanced · Unit 3: Society and conformity",
+  "vi": "Chuẩn mực xã hội, nhóm thiểu số, áp lực đồng trang lứa và hành vi cá nhân"
+ },
+ {
+  "slug": "vfia-unit-04",
+  "source": "vfia",
+  "en": "Advanced · Unit 4: Chemicals in everyday life",
+  "vi": "Hoá chất, dinh dưỡng, thuốc men và tác động của chúng lên sức khoẻ và môi trường"
+ },
+ {
+  "slug": "vfia-unit-05",
+  "source": "vfia",
+  "en": "Advanced · Unit 5: Education and careers",
+  "vi": "Học thuật, nghiên cứu, đào tạo nghề và con đường nghề nghiệp"
+ },
+ {
+  "slug": "vfia-unit-06",
+  "source": "vfia",
+  "en": "Advanced · Unit 6: Advertising and marketing",
+  "vi": "Quảng cáo, thương hiệu, bán hàng và cách quảng cáo tác động lên người tiêu dùng"
+ },
+ {
+  "slug": "vfia-unit-07",
+  "source": "vfia",
+  "en": "Advanced · Unit 7: Travel and places",
+  "vi": "Tính từ miêu tả nơi chốn, cảnh quan và trải nghiệm chuyến đi"
+ },
+ {
+  "slug": "vfia-unit-08",
+  "source": "vfia",
+  "en": "Advanced · Unit 8: Government and welfare",
+  "vi": "Chính quyền, phúc lợi xã hội, an sinh và những lỗi hay gặp với tiền tố mis-"
+ },
+ {
+  "slug": "vfia-unit-09",
+  "source": "vfia",
+  "en": "Advanced · Unit 9: Animals and habitats",
+  "vi": "Động vật hoang dã, môi trường sống, đe doạ sinh thái và cách loài vật tồn tại"
+ },
+ {
+  "slug": "vfia-unit-10",
+  "source": "vfia",
+  "en": "Advanced · Unit 10: Physical science and space",
+  "vi": "Hiện tượng vật lý, thiên văn, kích thước cực lớn – cực nhỏ và các quá trình tự nhiên"
+ },
+ {
+  "slug": "vfia-unit-11",
+  "source": "vfia",
+  "en": "Advanced · Unit 11: Materials and technology",
+  "vi": "Vật liệu, kỹ thuật, không gian mạng và các từ chỉ sự đổi mới"
+ },
+ {
+  "slug": "vfia-unit-12",
+  "source": "vfia",
+  "en": "Advanced · Unit 12: Fashion and consumption",
+  "vi": "Thời trang, xu hướng, tiêu dùng và những cụm từ nói về mua sắm"
+ },
+ {
+  "slug": "vfia-unit-13",
+  "source": "vfia",
+  "en": "Advanced · Unit 13: City life and urban growth",
+  "vi": "Đô thị, hạ tầng, nhà ở, ô nhiễm và những vấn đề của thành phố lớn"
+ },
+ {
+  "slug": "vfia-unit-14",
+  "source": "vfia",
+  "en": "Advanced · Unit 14: Problems and crises",
+  "vi": "Thảm hoạ, khủng hoảng, trở ngại và các động từ chỉ cách giải quyết"
+ },
+ {
+  "slug": "vfia-unit-15",
+  "source": "vfia",
+  "en": "Advanced · Unit 15: Weather and natural disasters",
+  "vi": "Thời tiết, địa chất, nông nghiệp và các thành ngữ về bão tố"
+ },
+ {
+  "slug": "vfia-unit-16",
+  "source": "vfia",
+  "en": "Advanced · Unit 16: Energy and resources",
+  "vi": "Nhiên liệu, khai khoáng, phát thải và các giải pháp năng lượng bền vững"
+ },
+ {
+  "slug": "vfia-unit-17",
+  "source": "vfia",
+  "en": "Advanced · Unit 17: Business and finance",
+  "vi": "Tài chính doanh nghiệp, ngân sách, rủi ro và các cụm từ nói về kinh doanh"
+ },
+ {
+  "slug": "vfia-unit-18",
+  "source": "vfia",
+  "en": "Advanced · Unit 18: Crime and punishment",
+  "vi": "Các loại tội phạm, hình phạt, hồ sơ phạm tội và cụm từ pháp lý"
+ },
+ {
+  "slug": "vfia-unit-19",
+  "source": "vfia",
+  "en": "Advanced · Unit 19: Fame and the media",
+  "vi": "Người nổi tiếng, báo chí, truyền thông và thiên kiến trong đưa tin"
+ },
+ {
+  "slug": "vfia-unit-20",
+  "source": "vfia",
+  "en": "Advanced · Unit 20: Arts and entertainment",
+  "vi": "Phim ảnh, văn học, âm nhạc, gu thẩm mỹ và tính từ miêu tả cảm xúc khi thưởng thức"
+ },
+ {
+  "slug": "listening-accommodation",
+  "source": "listening",
+  "en": "Accommodation & renting",
+  "vi": "Thuê nhà & chỗ ở"
+ },
+ {
+  "slug": "listening-travel-booking",
+  "source": "listening",
+  "en": "Travel booking & timetables",
+  "vi": "Đặt vé & lịch trình"
+ },
+ {
+  "slug": "listening-personal-details",
+  "source": "listening",
+  "en": "Personal details & spelling",
+  "vi": "Thông tin cá nhân & đánh vần"
+ },
+ {
+  "slug": "listening-shopping-services",
+  "source": "listening",
+  "en": "Shopping, services & complaints",
+  "vi": "Mua sắm, dịch vụ & khiếu nại"
+ },
+ {
+  "slug": "listening-membership-events",
+  "source": "listening",
+  "en": "Membership, tickets & events",
+  "vi": "Thẻ thành viên, vé & sự kiện"
+ },
+ {
+  "slug": "listening-jobs-work",
+  "source": "listening",
+  "en": "Jobs, interviews & work arrangements",
+  "vi": "Việc làm, phỏng vấn & giờ làm"
+ },
+ {
+  "slug": "listening-tourism-tours",
+  "source": "listening",
+  "en": "Tourist attractions & tours",
+  "vi": "Điểm tham quan & tour"
+ },
+ {
+  "slug": "listening-directions-maps",
+  "source": "listening",
+  "en": "Directions & map labelling",
+  "vi": "Chỉ đường & điền bản đồ"
+ },
+ {
+  "slug": "listening-community-facilities",
+  "source": "listening",
+  "en": "Facilities, community & local services",
+  "vi": "Tiện ích, cộng đồng & dịch vụ địa phương"
+ },
+ {
+  "slug": "listening-sports-leisure",
+  "source": "listening",
+  "en": "Sports, clubs & leisure activities",
+  "vi": "Thể thao, câu lạc bộ & giải trí"
+ },
+ {
+  "slug": "listening-university-life",
+  "source": "listening",
+  "en": "University life, deadlines & assignments",
+  "vi": "Đời sống đại học, hạn nộp & bài tập"
+ },
+ {
+  "slug": "listening-research-methods",
+  "source": "listening",
+  "en": "Research project & methodology",
+  "vi": "Dự án nghiên cứu & phương pháp"
+ },
+ {
+  "slug": "listening-presentations-groupwork",
+  "source": "listening",
+  "en": "Presentations, group work & feedback",
+  "vi": "Thuyết trình, làm nhóm & nhận xét"
+ },
+ {
+  "slug": "listening-courses-library",
+  "source": "listening",
+  "en": "Courses, library & study skills",
+  "vi": "Môn học, thư viện & kỹ năng học"
+ },
+ {
+  "slug": "listening-environment-wildlife",
+  "source": "listening",
+  "en": "Environment & wildlife",
+  "vi": "Môi trường & động vật hoang dã"
+ },
+ {
+  "slug": "listening-history-architecture",
+  "source": "listening",
+  "en": "History, archaeology & architecture",
+  "vi": "Lịch sử, khảo cổ & kiến trúc"
+ },
+ {
+  "slug": "listening-science-engineering",
+  "source": "listening",
+  "en": "Science, technology & engineering",
+  "vi": "Khoa học, công nghệ & kỹ thuật"
+ },
+ {
+  "slug": "listening-psychology-health",
+  "source": "listening",
+  "en": "Psychology, education & health",
+  "vi": "Tâm lý, giáo dục & sức khoẻ"
+ },
+ {
+  "slug": "listening-business-economics",
+  "source": "listening",
+  "en": "Business, economics & marketing",
+  "vi": "Kinh doanh, kinh tế & tiếp thị"
+ },
+ {
+  "slug": "listening-numbers-dates-money",
+  "source": "listening",
+  "en": "Numbers, dates, times & money",
+  "vi": "Số, ngày tháng, giờ & tiền"
+ },
+ {
+  "slug": "listening-signposts-corrections",
+  "source": "listening",
+  "en": "Signpost & correction phrases",
+  "vi": "Từ báo hiệu & cụm sửa lại ý"
+ },
+ {
+  "slug": "destination-b1-unit-3",
+  "source": "destination",
+  "en": "Destination B1 · Unit 3: Fun and games",
+  "vi": "Destination B1 · Bài 3: Fun and games"
+ },
+ {
+  "slug": "destination-b1-unit-6",
+  "source": "destination",
+  "en": "Destination B1 · Unit 6: Learning and doing",
+  "vi": "Destination B1 · Bài 6: Learning and doing"
+ },
+ {
+  "slug": "destination-b1-unit-9",
+  "source": "destination",
+  "en": "Destination B1 · Unit 9: Coming and going",
+  "vi": "Destination B1 · Bài 9: Coming and going"
+ },
+ {
+  "slug": "destination-b1-unit-12",
+  "source": "destination",
+  "en": "Destination B1 · Unit 12: Friends and relations",
+  "vi": "Destination B1 · Bài 12: Friends and relations"
+ },
+ {
+  "slug": "destination-b1-unit-15",
+  "source": "destination",
+  "en": "Destination B1 · Unit 15: Buying and selling",
+  "vi": "Destination B1 · Bài 15: Buying and selling"
+ },
+ {
+  "slug": "destination-b1-unit-18",
+  "source": "destination",
+  "en": "Destination B1 · Unit 18: Inventions and discoveries",
+  "vi": "Destination B1 · Bài 18: Inventions and discoveries"
+ },
+ {
+  "slug": "destination-b1-unit-21",
+  "source": "destination",
+  "en": "Destination B1 · Unit 21: Sending and receiving",
+  "vi": "Destination B1 · Bài 21: Sending and receiving"
+ },
+ {
+  "slug": "destination-b1-unit-24",
+  "source": "destination",
+  "en": "Destination B1 · Unit 24: People and daily life",
+  "vi": "Destination B1 · Bài 24: People and daily life"
+ },
+ {
+  "slug": "destination-b1-unit-27",
+  "source": "destination",
+  "en": "Destination B1 · Unit 27: Working and earning",
+  "vi": "Destination B1 · Bài 27: Working and earning"
+ },
+ {
+  "slug": "destination-b1-unit-30",
+  "source": "destination",
+  "en": "Destination B1 · Unit 30: Body and lifestyle",
+  "vi": "Destination B1 · Bài 30: Body and lifestyle"
+ },
+ {
+  "slug": "destination-b1-unit-33",
+  "source": "destination",
+  "en": "Destination B1 · Unit 33: Creating and building",
+  "vi": "Destination B1 · Bài 33: Creating and building"
+ },
+ {
+  "slug": "destination-b1-unit-36",
+  "source": "destination",
+  "en": "Destination B1 · Unit 36: Nature and the universe",
+  "vi": "Destination B1 · Bài 36: Nature and the universe"
+ },
+ {
+  "slug": "destination-b1-unit-39",
+  "source": "destination",
+  "en": "Destination B1 · Unit 39: Laughing and crying",
+  "vi": "Destination B1 · Bài 39: Laughing and crying"
+ },
+ {
+  "slug": "destination-b1-unit-42",
+  "source": "destination",
+  "en": "Destination B1 · Unit 42: Problems and solutions",
+  "vi": "Destination B1 · Bài 42: Problems and solutions"
+ },
+ {
+  "slug": "destination-b2-unit-2",
+  "source": "destination",
+  "en": "Destination B2 · Unit 2: Travel and transport",
+  "vi": "Destination B2 · Bài 2: Travel and transport"
+ },
+ {
+  "slug": "destination-b2-unit-4",
+  "source": "destination",
+  "en": "Destination B2 · Unit 4: Hobbies, sport and games",
+  "vi": "Destination B2 · Bài 4: Hobbies, sport and games"
+ },
+ {
+  "slug": "destination-b2-unit-6",
+  "source": "destination",
+  "en": "Destination B2 · Unit 6: Science and technology",
+  "vi": "Destination B2 · Bài 6: Science and technology"
+ },
+ {
+  "slug": "destination-b2-unit-8",
+  "source": "destination",
+  "en": "Destination B2 · Unit 8: The media",
+  "vi": "Destination B2 · Bài 8: The media"
+ },
+ {
+  "slug": "destination-b2-unit-10",
+  "source": "destination",
+  "en": "Destination B2 · Unit 10: People and society",
+  "vi": "Destination B2 · Bài 10: People and society"
+ },
+ {
+  "slug": "destination-b2-unit-12",
+  "source": "destination",
+  "en": "Destination B2 · Unit 12: The law and crime",
+  "vi": "Destination B2 · Bài 12: The law and crime"
+ },
+ {
+  "slug": "destination-b2-unit-14",
+  "source": "destination",
+  "en": "Destination B2 · Unit 14: Health and fitness",
+  "vi": "Destination B2 · Bài 14: Health and fitness"
+ },
+ {
+  "slug": "destination-b2-unit-16",
+  "source": "destination",
+  "en": "Destination B2 · Unit 16: Food and drink",
+  "vi": "Destination B2 · Bài 16: Food and drink"
+ },
+ {
+  "slug": "destination-b2-unit-18",
+  "source": "destination",
+  "en": "Destination B2 · Unit 18: Education and learning",
+  "vi": "Destination B2 · Bài 18: Education and learning"
+ },
+ {
+  "slug": "destination-b2-unit-20",
+  "source": "destination",
+  "en": "Destination B2 · Unit 20: Weather and the environment",
+  "vi": "Destination B2 · Bài 20: Weather and the environment"
+ },
+ {
+  "slug": "destination-b2-unit-22",
+  "source": "destination",
+  "en": "Destination B2 · Unit 22: Money and shopping",
+  "vi": "Destination B2 · Bài 22: Money and shopping"
+ },
+ {
+  "slug": "destination-b2-unit-24",
+  "source": "destination",
+  "en": "Destination B2 · Unit 24: Entertainment",
+  "vi": "Destination B2 · Bài 24: Entertainment"
+ },
+ {
+  "slug": "destination-b2-unit-26",
+  "source": "destination",
+  "en": "Destination B2 · Unit 26: Fashion and design",
+  "vi": "Destination B2 · Bài 26: Fashion and design"
+ },
+ {
+  "slug": "destination-b2-unit-28",
+  "source": "destination",
+  "en": "Destination B2 · Unit 28: Work and business",
+  "vi": "Destination B2 · Bài 28: Work and business"
+ },
+ {
+  "slug": "sat-math-bai-1",
+  "source": "satMath",
+  "en": "Số học nền tảng",
+  "vi": "Số học nền tảng"
+ },
+ {
+  "slug": "sat-math-bai-2",
+  "source": "satMath",
+  "en": "Algebra",
+  "vi": "Algebra"
+ },
+ {
+  "slug": "sat-math-bai-3",
+  "source": "satMath",
+  "en": "Advanced Math",
+  "vi": "Advanced Math"
+ },
+ {
+  "slug": "sat-math-bai-4",
+  "source": "satMath",
+  "en": "Problem-Solving and Data Analysis",
+  "vi": "Problem-Solving and Data Analysis"
+ },
+ {
+  "slug": "sat-math-bai-5",
+  "source": "satMath",
+  "en": "Geometry and Trigonometry",
+  "vi": "Geometry and Trigonometry"
+ },
+ {
+  "slug": "sat-math-bai-6",
+  "source": "satMath",
+  "en": "Cụm từ trong đề bài",
+  "vi": "Cụm từ trong đề bài"
+ },
+ {
+  "slug": "sat-verbal-bai-1",
+  "source": "satVerbal",
+  "en": "Từ nối: kết quả và bổ sung",
+  "vi": "Từ nối: kết quả và bổ sung"
+ },
+ {
+  "slug": "sat-verbal-bai-2",
+  "source": "satVerbal",
+  "en": "Từ nối: tương phản và nhượng bộ",
+  "vi": "Từ nối: tương phản và nhượng bộ"
+ },
+ {
+  "slug": "sat-verbal-bai-3",
+  "source": "satVerbal",
+  "en": "Từ nối: ví dụ, diễn giải, thời gian",
+  "vi": "Từ nối: ví dụ, diễn giải, thời gian"
+ },
+ {
+  "slug": "sat-verbal-bai-4",
+  "source": "satVerbal",
+  "en": "Chắc chắn hay còn bỏ ngỏ",
+  "vi": "Chắc chắn hay còn bỏ ngỏ"
+ },
+ {
+  "slug": "sat-verbal-bai-5",
+  "source": "satVerbal",
+  "en": "Thật, giả và trung thực",
+  "vi": "Thật, giả và trung thực"
+ },
+ {
+  "slug": "sat-verbal-bai-6",
+  "source": "satVerbal",
+  "en": "Kỹ lưỡng hay qua loa",
+  "vi": "Kỹ lưỡng hay qua loa"
+ },
+ {
+  "slug": "sat-verbal-bai-7",
+  "source": "satVerbal",
+  "en": "Thấy được, nghe được",
+  "vi": "Thấy được, nghe được"
+ },
+ {
+  "slug": "sat-verbal-bai-8",
+  "source": "satVerbal",
+  "en": "Mạnh, yếu, lợi, hại",
+  "vi": "Mạnh, yếu, lợi, hại"
+ },
+ {
+  "slug": "sat-verbal-bai-9",
+  "source": "satVerbal",
+  "en": "Phổ biến, hiếm và đều đặn",
+  "vi": "Phổ biến, hiếm và đều đặn"
+ },
+ {
+  "slug": "sat-verbal-bai-10",
+  "source": "satVerbal",
+  "en": "Con người, thái độ và nơi chốn",
+  "vi": "Con người, thái độ và nơi chốn"
+ },
+ {
+  "slug": "sat-verbal-bai-11",
+  "source": "satVerbal",
+  "en": "Dữ liệu và cụm từ cố định",
+  "vi": "Dữ liệu và cụm từ cố định"
+ },
+ {
+  "slug": "sat-verbal-bai-12",
+  "source": "satVerbal",
+  "en": "Luận cứ khoa học, kiểm chứng và bác bỏ",
+  "vi": "Luận cứ khoa học, kiểm chứng và bác bỏ"
+ },
+ {
+  "slug": "sat-verbal-bai-13",
+  "source": "satVerbal",
+  "en": "Văn học, tâm lý và tính cách nhân vật",
+  "vi": "Văn học, tâm lý và tính cách nhân vật"
+ },
+ {
+  "slug": "sat-verbal-bai-14",
+  "source": "satVerbal",
+  "en": "Lịch sử, quyền lực và cải cách xã hội",
+  "vi": "Lịch sử, quyền lực và cải cách xã hội"
+ },
+ {
+  "slug": "sat-verbal-bai-15",
+  "source": "satVerbal",
+  "en": "Tự nhiên, biến đổi và sinh thái",
+  "vi": "Tự nhiên, biến đổi và sinh thái"
+ },
+ {
+  "slug": "sat-princeton-cram",
+  "source": "satVerbal",
+  "en": "SAT Power Vocab · Cram List",
+  "vi": "SAT Power Vocab · Cram List"
+ },
+ {
+  "slug": "sat-princeton-glossary-1",
+  "source": "satVerbal",
+  "en": "SAT Power Vocab · Glossary A–C",
+  "vi": "SAT Power Vocab · Glossary A–C"
+ },
+ {
+  "slug": "sat-princeton-glossary-2",
+  "source": "satVerbal",
+  "en": "SAT Power Vocab · Glossary C–E",
+  "vi": "SAT Power Vocab · Glossary C–E"
+ },
+ {
+  "slug": "sat-princeton-glossary-3",
+  "source": "satVerbal",
+  "en": "SAT Power Vocab · Glossary E–M",
+  "vi": "SAT Power Vocab · Glossary E–M"
+ },
+ {
+  "slug": "sat-princeton-glossary-4",
+  "source": "satVerbal",
+  "en": "SAT Power Vocab · Glossary M–P",
+  "vi": "SAT Power Vocab · Glossary M–P"
+ },
+ {
+  "slug": "sat-princeton-glossary-5",
+  "source": "satVerbal",
+  "en": "SAT Power Vocab · Glossary P–V",
+  "vi": "SAT Power Vocab · Glossary P–V"
+ },
+ {
+  "slug": "sat-critical-reader-passage",
+  "source": "satVerbal",
+  "en": "Critical Reader · Từ trong đoạn đọc",
+  "vi": "Critical Reader · Từ trong đoạn đọc"
+ },
+ {
+  "slug": "sat-critical-reader-confused-1",
+  "source": "satVerbal",
+  "en": "Critical Reader · Từ dễ nhầm 1",
+  "vi": "Critical Reader · Từ dễ nhầm 1"
+ },
+ {
+  "slug": "sat-critical-reader-confused-2",
+  "source": "satVerbal",
+  "en": "Critical Reader · Từ dễ nhầm 2",
+  "vi": "Critical Reader · Từ dễ nhầm 2"
+ },
+ {
+  "slug": "sat-critical-reader-writing",
+  "source": "satVerbal",
+  "en": "Critical Reader · Viết luận và lập luận",
+  "vi": "Critical Reader · Viết luận và lập luận"
+ },
+ {
+  "slug": "sat-critical-reader-context",
+  "source": "satVerbal",
+  "en": "Critical Reader · Nghĩa theo ngữ cảnh",
+  "vi": "Critical Reader · Nghĩa theo ngữ cảnh"
+ },
+ {
+  "slug": "daily-greetings",
+  "source": "daily",
+  "en": "Greetings & introductions",
+  "vi": "Chào hỏi & làm quen"
+ },
+ {
+  "slug": "daily-ordering",
+  "source": "daily",
+  "en": "Ordering food",
+  "vi": "Gọi món ở nhà hàng"
+ },
+ {
+  "slug": "daily-shopping",
+  "source": "daily",
+  "en": "Shopping",
+  "vi": "Mua sắm"
+ },
+ {
+  "slug": "daily-directions",
+  "source": "daily",
+  "en": "Getting around",
+  "vi": "Đi lại & hỏi đường"
+ },
+ {
+  "slug": "daily-hotel",
+  "source": "daily",
+  "en": "Hotel stay",
+  "vi": "Ở khách sạn"
+ },
+ {
+  "slug": "daily-work",
+  "source": "daily",
+  "en": "Work small talk",
+  "vi": "Công việc hằng ngày"
+ },
+ {
+  "slug": "daily-plans",
+  "source": "daily",
+  "en": "Making plans",
+  "vi": "Hẹn gặp & lên kế hoạch"
+ },
+ {
+  "slug": "daily-phone",
+  "source": "daily",
+  "en": "Phone & messages",
+  "vi": "Điện thoại & nhắn tin"
+ },
+ {
+  "slug": "daily-health",
+  "source": "daily",
+  "en": "Health & the doctor",
+  "vi": "Sức khoẻ & khám bệnh"
+ },
+ {
+  "slug": "daily-small-talk",
+  "source": "daily",
+  "en": "Small talk & weather",
+  "vi": "Trò chuyện xã giao"
+ },
+ {
+  "slug": "daily-family",
+  "source": "daily",
+  "en": "Family & friends",
+  "vi": "Gia đình & bạn bè"
+ },
+ {
+  "slug": "daily-hobbies",
+  "source": "daily",
+  "en": "Hobbies & free time",
+  "vi": "Sở thích & giải trí"
+ },
+ {
+  "slug": "daily-housing",
+  "source": "daily",
+  "en": "Housing & renting",
+  "vi": "Nhà cửa & thuê nhà"
+ },
+ {
+  "slug": "daily-money",
+  "source": "daily",
+  "en": "Money & banking",
+  "vi": "Tiền bạc & ngân hàng"
+ },
+ {
+  "slug": "daily-school",
+  "source": "daily",
+  "en": "School & study",
+  "vi": "Trường học & học tập"
+ },
+ {
+  "slug": "daily-travel",
+  "source": "daily",
+  "en": "Travel & the airport",
+  "vi": "Du lịch & sân bay"
+ },
+ {
+  "slug": "daily-cooking",
+  "source": "daily",
+  "en": "Cooking at home",
+  "vi": "Nấu ăn ở nhà"
+ },
+ {
+  "slug": "daily-feelings",
+  "source": "daily",
+  "en": "Feelings & support",
+  "vi": "Cảm xúc & động viên"
+ },
+ {
+  "slug": "daily-polite",
+  "source": "daily",
+  "en": "Polite phrases",
+  "vi": "Cách nói lịch sự"
+ },
+ {
+  "slug": "daily-online",
+  "source": "daily",
+  "en": "Online shopping & delivery",
+  "vi": "Mua hàng online & giao hàng"
+ },
+ {
+  "slug": "toeic-unit-1",
+  "source": "toeic",
+  "en": "Unit 1 Office and HR",
+  "vi": "Unit 1 Nhân sự văn phòng"
+ },
+ {
+  "slug": "toeic-unit-2",
+  "source": "toeic",
+  "en": "Unit 2 Money and budgets",
+  "vi": "Unit 2 Tiền bạc và ngân sách"
+ },
+ {
+  "slug": "toeic-unit-3",
+  "source": "toeic",
+  "en": "Unit 3 Business and negotiation",
+  "vi": "Unit 3 Kinh doanh và đàm phán"
+ },
+ {
+  "slug": "toeic-unit-4",
+  "source": "toeic",
+  "en": "Unit 4 Shipping and facilities",
+  "vi": "Unit 4 Vận chuyển và cơ sở vật chất"
+ },
+ {
+  "slug": "toeic-unit-5",
+  "source": "toeic",
+  "en": "Unit 5 Schedules and deadlines",
+  "vi": "Unit 5 Lịch trình và thời hạn"
+ },
+ {
+  "slug": "toeic-unit-6",
+  "source": "toeic",
+  "en": "Unit 6 Marketing and customers",
+  "vi": "Unit 6 Tiếp thị và khách hàng"
+ },
+ {
+  "slug": "toeic-unit-7",
+  "source": "toeic",
+  "en": "Unit 7 Conferences and travel",
+  "vi": "Unit 7 Hội nghị và đi lại"
+ },
+ {
+  "slug": "toeic-unit-8",
+  "source": "toeic",
+  "en": "Unit 8 Office operations",
+  "vi": "Unit 8 Hoạt động văn phòng"
+ },
+ {
+  "slug": "toeic-unit-9",
+  "source": "toeic",
+  "en": "Unit 9 Quality and performance",
+  "vi": "Unit 9 Chất lượng và hiệu suất"
+ },
+ {
+  "slug": "toeic-unit-10",
+  "source": "toeic",
+  "en": "Unit 10 Finance and contracts",
+  "vi": "Unit 10 Tài chính và hợp đồng"
+ },
+ {
+  "slug": "toeic-unit-11",
+  "source": "toeic",
+  "en": "Unit 11 International trade and customs",
+  "vi": "Unit 11 Thương mại quốc tế và hải quan"
+ },
+ {
+  "slug": "toeic-unit-12",
+  "source": "toeic",
+  "en": "Unit 12 Recruiting and careers",
+  "vi": "Unit 12 Tuyển dụng và sự nghiệp"
+ },
+ {
+  "slug": "toeic-unit-13",
+  "source": "toeic",
+  "en": "Unit 13 Production and supply chain",
+  "vi": "Unit 13 Sản xuất và chuỗi cung ứng"
+ },
+ {
+  "slug": "toeic-unit-14",
+  "source": "toeic",
+  "en": "Unit 14 Banking and investment",
+  "vi": "Unit 14 Ngân hàng và đầu tư"
+ },
+ {
+  "slug": "toeic-unit-15",
+  "source": "toeic",
+  "en": "Unit 15 Digital marketing and media",
+  "vi": "Unit 15 Tiếp thị số và truyền thông"
+ },
+ {
+  "slug": "toeic-unit-16",
+  "source": "toeic",
+  "en": "Unit 16 Contracts and legal terms",
+  "vi": "Unit 16 Hợp đồng và pháp lý"
+ },
+ {
+  "slug": "toeic-unit-17",
+  "source": "toeic",
+  "en": "Unit 17 Hospitality services",
+  "vi": "Unit 17 Khách sạn và dịch vụ"
+ },
+ {
+  "slug": "toeic-unit-18",
+  "source": "toeic",
+  "en": "Unit 18 Procurement and pricing",
+  "vi": "Unit 18 Mua sắm và báo giá"
+ },
+ {
+  "slug": "toeic-unit-19",
+  "source": "toeic",
+  "en": "Unit 19 Reports and analysis",
+  "vi": "Unit 19 Báo cáo và phân tích"
+ },
+ {
+  "slug": "toeic-unit-20",
+  "source": "toeic",
+  "en": "Unit 20 Customer service",
+  "vi": "Unit 20 Chăm sóc khách hàng"
+ },
+ {
+  "slug": "toefl-unit-1",
+  "source": "toefl",
+  "en": "Unit 1 Analysis and research",
+  "vi": "Unit 1 Phân tích và nghiên cứu"
+ },
+ {
+  "slug": "toefl-unit-2",
+  "source": "toefl",
+  "en": "Unit 2 Society and economy",
+  "vi": "Unit 2 Xã hội và kinh tế"
+ },
+ {
+  "slug": "toefl-unit-3",
+  "source": "toefl",
+  "en": "Unit 3 Nature and science",
+  "vi": "Unit 3 Thiên nhiên và khoa học"
+ },
+ {
+  "slug": "toefl-unit-4",
+  "source": "toefl",
+  "en": "Unit 4 Concepts and structure",
+  "vi": "Unit 4 Khái niệm và cấu trúc"
+ },
+ {
+  "slug": "toefl-unit-5",
+  "source": "toefl",
+  "en": "Unit 5 Measurement and hypotheses",
+  "vi": "Unit 5 Đo lường và giả thuyết"
+ },
+ {
+  "slug": "toefl-unit-6",
+  "source": "toefl",
+  "en": "Unit 6 Biology and health",
+  "vi": "Unit 6 Sinh học và sức khoẻ"
+ },
+ {
+  "slug": "toefl-unit-7",
+  "source": "toefl",
+  "en": "Unit 7 Technology and systems",
+  "vi": "Unit 7 Công nghệ và hệ thống"
+ },
+ {
+  "slug": "toefl-unit-8",
+  "source": "toefl",
+  "en": "Unit 8 History and culture",
+  "vi": "Unit 8 Lịch sử và văn hoá"
+ },
+ {
+  "slug": "toefl-unit-9",
+  "source": "toefl",
+  "en": "Unit 9 Psychology and cognition",
+  "vi": "Unit 9 Tâm lý và nhận thức"
+ },
+ {
+  "slug": "toefl-unit-10",
+  "source": "toefl",
+  "en": "Unit 10 Economics and society",
+  "vi": "Unit 10 Kinh tế và xã hội"
+ },
+ {
+  "slug": "toefl-unit-11",
+  "source": "toefl",
+  "en": "Unit 11 Geology and climate",
+  "vi": "Unit 11 Địa chất và khí hậu"
+ },
+ {
+  "slug": "toefl-unit-12",
+  "source": "toefl",
+  "en": "Unit 12 Astronomy and physics",
+  "vi": "Unit 12 Thiên văn và vật lý"
+ },
+ {
+  "slug": "toefl-unit-13",
+  "source": "toefl",
+  "en": "Unit 13 Chemistry and materials",
+  "vi": "Unit 13 Hoá học và vật liệu"
+ },
+ {
+  "slug": "toefl-unit-14",
+  "source": "toefl",
+  "en": "Unit 14 Ecology and animals",
+  "vi": "Unit 14 Sinh thái và động vật"
+ },
+ {
+  "slug": "toefl-unit-15",
+  "source": "toefl",
+  "en": "Unit 15 Politics and governance",
+  "vi": "Unit 15 Chính trị và quản trị"
+ },
+ {
+  "slug": "toefl-unit-16",
+  "source": "toefl",
+  "en": "Unit 16 Education and learning",
+  "vi": "Unit 16 Giáo dục và học tập"
+ },
+ {
+  "slug": "toefl-unit-17",
+  "source": "toefl",
+  "en": "Unit 17 Arts and literature",
+  "vi": "Unit 17 Nghệ thuật và văn học"
+ },
+ {
+  "slug": "toefl-unit-18",
+  "source": "toefl",
+  "en": "Unit 18 Language and communication",
+  "vi": "Unit 18 Ngôn ngữ và giao tiếp"
+ },
+ {
+  "slug": "toefl-unit-19",
+  "source": "toefl",
+  "en": "Unit 19 Cities and architecture",
+  "vi": "Unit 19 Đô thị và kiến trúc"
+ },
+ {
+  "slug": "toefl-unit-20",
+  "source": "toefl",
+  "en": "Unit 20 Media and information",
+  "vi": "Unit 20 Truyền thông và thông tin"
+ }
+]

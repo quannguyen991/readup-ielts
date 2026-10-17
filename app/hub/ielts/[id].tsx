@@ -3,6 +3,7 @@ import { Pressable, Text, View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 
 import { HubScreen } from '@/components/hub/HubScreen';
+import { SayItCard } from '@/components/hub/SayItCard';
 import { GLASS_CARD, HUB } from '@/components/hub/theme';
 import { useListen } from '@/components/hub/useListen';
 import { Icon } from '@/components/ui/Icon';
@@ -103,6 +104,14 @@ function Lesson({ lesson }: { lesson: IeltsLesson }) {
           </Pressable>
         ))}
       </View>
+
+      <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Nói theo cụm từ</Text>
+      <Text style={{ color: HUB.muted, fontSize: 12, marginTop: -10 }}>
+        Ghi âm từng cụm. Từ nào đúng, sai hiện ngay bên dưới.
+      </Text>
+      {lesson.phrases.map((p) => (
+        <SayItCard key={p.phrase} id={`${lesson.id}:${p.phrase}`} phrase={p.phrase} meaningVi={p.meaningVi} />
+      ))}
 
       <Text style={{ color: HUB.ink, fontSize: 17, fontWeight: '800' }}>Bài tập ghi âm</Text>
       <Text style={{ color: HUB.muted, fontSize: 12, marginTop: -10 }}>

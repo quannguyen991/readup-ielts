@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
 import pronunciationVoice from '@/data/pronunciation-voice.json';
 
 /** SERVER ONLY: Gemini credentials never reach the browser. */
@@ -21,12 +24,34 @@ export function pcmToWav(pcm: Uint8Array): Uint8Array {
 export function createAoedeGenerator(keys: string[], fetcher: typeof fetch = fetch) {
   const cache = new Map<string, Uint8Array>();
   const pending = new Map<string, Promise<Uint8Array>>();
+  const cacheDir = path.join(process.cwd(), 'public', 'audio', 'cache', pronunciationVoice.id);
+  try {
+    fs.mkdirSync(cacheDir, { recursive: true });
+  } catch {
+    /* ignore */
+  }
   let cacheBytes = 0;
   let firstKey = 0;
   return async (text: string): Promise<Uint8Array> => {
-    const saved = cache.get(text);
+    const trimmed = text.trim();
+    const saved = cache.get(trimmed);
     if (saved) return saved;
-    const running = pending.get(text);
+
+    // Check persistent disk cache first (0ms, 0 API calls, completely offline)
+    const hash = crypto.createHash('sha256').update(trimmed).digest('hex').slice(0, 32);
+    const diskPath = path.join(cacheDir, `${hash}.wav`);
+    if (fs.existsSync(diskPath)) {
+      try {
+        const fileBuf = fs.readFileSync(diskPath);
+        const wav = new Uint8Array(fileBuf.buffer, fileBuf.byteOffset, fileBuf.byteLength);
+        cache.set(trimmed, wav);
+        return wav;
+      } catch {
+        /* fallback to generator */
+      }
+    }
+
+    const running = pending.get(trimmed);
     if (running) return running;
     const job = (async () => {
       const started = Date.now();
@@ -37,7 +62,7 @@ export function createAoedeGenerator(keys: string[], fetcher: typeof fetch = fet
         const response = await fetcher(`https://generativelanguage.googleapis.com/v1beta/models/${pronunciationVoice.model}:generateContent`, {
           method: 'POST', signal: AbortSignal.timeout(remaining),
           headers: { 'Content-Type': 'application/json', 'x-goog-api-key': keys[i]! },
-          body: JSON.stringify({ contents: [{ parts: [{ text: `Create a clear, natural English listening-practice recording at a relaxed, easy-to-follow pace. Do not add an introduction or explanation. If lines begin with speaker names in square brackets, treat those names as silent role cues: do not read them aloud, and use a subtly distinct, consistent conversational delivery for each speaker. Read only the spoken words.\n\n${text}` }] }],
+          body: JSON.stringify({ contents: [{ parts: [{ text: `Create a clear, natural English listening-practice recording at a relaxed, easy-to-follow pace. Do not add an introduction or explanation. If lines begin with speaker names in square brackets, treat those names as silent role cues: do not read them aloud, and use a subtly distinct, consistent conversational delivery for each speaker. Read only the spoken words.\n\n${trimmed}` }] }],
             generationConfig: { maxOutputTokens: 32768, responseModalities: ['AUDIO'], speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: pronunciationVoice.name } } } } }),
         });
         if (!response.ok) {
@@ -50,16 +75,24 @@ export function createAoedeGenerator(keys: string[], fetcher: typeof fetch = fet
         const pcm = Uint8Array.from(Buffer.from(audio.data, 'base64'));
         const wav = pcmToWav(pcm);
         firstKey = i;
-        while (cacheBytes + wav.length > 16_000_000 && cache.size) {
+
+        // Persist to disk so future requests never call API again
+        try {
+          fs.writeFileSync(diskPath, Buffer.from(wav));
+        } catch {
+          /* ignore write failure */
+        }
+
+        while (cacheBytes + wav.length > 32_000_000 && cache.size) {
           const oldest = cache.keys().next().value!;
           cacheBytes -= cache.get(oldest)!.length; cache.delete(oldest);
         }
-        cache.set(text, wav); cacheBytes += wav.length;
+        cache.set(trimmed, wav); cacheBytes += wav.length;
         return wav;
       }
       throw new Error('Aoede is temporarily unavailable');
     })();
-    pending.set(text, job);
-    try { return await job; } finally { pending.delete(text); }
+    pending.set(trimmed, job);
+    try { return await job; } finally { pending.delete(trimmed); }
   };
 }

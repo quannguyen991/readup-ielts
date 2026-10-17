@@ -7,7 +7,7 @@ import { bi, useL } from '@/i18n/useL';
 
 export default function HsaKindPractice() {
   const { kind: rawKind } = useLocalSearchParams<{ kind: string }>();
-  const kind = HSA_KIND_ORDER.includes(rawKind as HsaQuestionKind) ? rawKind as HsaQuestionKind : HSA_KIND_ORDER[0];
+  const kind = (HSA_KIND_ORDER.includes(rawKind as HsaQuestionKind) ? rawKind as HsaQuestionKind : HSA_KIND_ORDER[0])!;
   const { L, locale } = useL();
   const questions = HSA_QUESTION_BANK.filter((question) => question.kind === kind);
   return <HsaRunner title={`${L('HSA ·', 'HSA ·')} ${bi(HSA_KIND_LABEL[kind], locale)}`} questions={questions} activity={`practice:${kind}`} />;

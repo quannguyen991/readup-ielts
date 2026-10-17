@@ -1,0 +1,20 @@
+[
+  {
+    "file": "sample_1_short.mp3",
+    "path": "public/audio/aoede_reference/sample_1_short.mp3",
+    "text": "what is the weather like where you live at this time of year?",
+    "size": 14277
+  },
+  {
+    "file": "sample_2_medium.mp3",
+    "path": "public/audio/aoede_reference/sample_2_medium.mp3",
+    "text": "which room in your home do you spend the most time in, and why?",
+    "size": 16197
+  },
+  {
+    "file": "sample_3_long.mp3",
+    "path": "public/audio/aoede_reference/sample_3_long.mp3",
+    "text": "do you prefer having a few close friends or lots of friends?",
+    "size": 37317
+  }
+]

@@ -78,11 +78,17 @@ module.exports = {
       // Tên key tránh trùng với utility font-weight của Tailwind
       // (medium / semibold / bold / extrabold) để không sinh class đè nhau.
       fontFamily: {
-        sans: ['PlusJakartaSans_400Regular', 'Inter', 'system-ui', 'sans-serif'],
-        mid: ['PlusJakartaSans_500Medium', 'Inter', 'system-ui', 'sans-serif'],
-        semi: ['PlusJakartaSans_600SemiBold', 'Inter', 'system-ui', 'sans-serif'],
-        strong: ['PlusJakartaSans_700Bold', 'Inter', 'system-ui', 'sans-serif'],
-        heavy: ['PlusJakartaSans_800ExtraBold', 'Inter', 'system-ui', 'sans-serif'],
+        // Be Vietnam Pro: phông chính, nạp trong app/_layout.tsx. Plus Jakarta Sans vẫn còn cho trang giới thiệu.
+        sans: ['BeVietnamPro_400Regular', 'Inter', 'system-ui', 'sans-serif'],
+        mid: ['BeVietnamPro_500Medium', 'Inter', 'system-ui', 'sans-serif'],
+        semi: ['BeVietnamPro_600SemiBold', 'Inter', 'system-ui', 'sans-serif'],
+        strong: ['BeVietnamPro_700Bold', 'Inter', 'system-ui', 'sans-serif'],
+        heavy: ['BeVietnamPro_800ExtraBold', 'Inter', 'system-ui', 'sans-serif'],
+        // Nunito (bo tròn): phòng Listening và Writing theo bố cục tham chiếu.
+        nun: ['Nunito_400Regular', 'system-ui', 'sans-serif'],
+        'nun-mid': ['Nunito_600SemiBold', 'system-ui', 'sans-serif'],
+        'nun-strong': ['Nunito_700Bold', 'system-ui', 'sans-serif'],
+        'nun-heavy': ['Nunito_800ExtraBold', 'system-ui', 'sans-serif'],
       },
       // Thang chữ nâng một bậc (22/09/2026): chữ thường 14px -> 16px. Bản cũ
       // đọc như app thu nhỏ trên màn laptop — người dùng so với các app luyện

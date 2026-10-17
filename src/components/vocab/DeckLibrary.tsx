@@ -24,6 +24,7 @@ import { color } from '@/theme/tokens';
 import { bi, useL } from '@/i18n/useL';
 
 import { DeckActionCard, DeckCard } from './DeckCard';
+import { VOCAB_COVERS } from '@/data/vocab-covers';
 import { deckLook, type DeckLook, type DeckSource } from './deck-style';
 
 /**
@@ -50,6 +51,8 @@ type LibDeck = {
   href?: string;
   /** Kỳ thi của unit: tiến độ lấy từ danh sách "đã thuộc" chứ không từ bảng học theo chủ đề. */
   knownExam?: 'toeic' | 'toefl';
+  /** Ảnh bìa của bộ (nếu đã có), xem `VOCAB_COVERS`. */
+  cover?: string;
 };
 
 const FILTERS: { key: LibraryFilter; label: string; labelEn: string; icon: IconName }[] = [
@@ -125,7 +128,7 @@ const LEARNING_PREVIEW = 6;
 
 function lib(slug: string, title: string, words: readonly { word: string }[], subtitle?: string, en?: LibDeck['en']): LibDeck {
   const look = deckLook(slug);
-  return { slug, title, subtitle, words, look, en, haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
+  return { slug, title, subtitle, words, look, en, cover: VOCAB_COVERS[slug], haystack: fold(`${title} ${subtitle ?? ''} ${look.sourceLabel} ${en?.title ?? ''} ${look.sourceLabelEn}`) };
 }
 
 const STATIC_DECKS: LibDeck[] = [
@@ -140,7 +143,7 @@ const STATIC_DECKS: LibDeck[] = [
   ...SAT_VERBAL_VOCAB_LESSONS.map((l) => lib(l.slug, l.title, l.words)),
   ...intlDecks('toeic'),
   ...intlDecks('toefl'),
-  ...DAILY_TALK_TOPICS.map((t) => ({ slug: t.slug, title: t.nameVi, subtitle: t.blurb, words: t.words, look: { source: 'daily' as const, sourceLabel: 'Giao tiếp hằng ngày', sourceLabelEn: 'Everyday talk', accent: INTL_ACCENT.daily, icon: 'letters' as const }, en: { title: t.name, subtitle: t.blurb }, haystack: fold(`${t.nameVi} ${t.name} giao tiếp hằng ngày ${t.words.map((w) => w.word).join(' ')}`) })),
+  ...DAILY_TALK_TOPICS.map((t) => ({ slug: t.slug, title: t.nameVi, subtitle: t.blurb, words: t.words, look: { source: 'daily' as const, sourceLabel: 'Giao tiếp hằng ngày', sourceLabelEn: 'Everyday talk', accent: INTL_ACCENT.daily, icon: 'letters' as const }, en: { title: t.name, subtitle: t.blurb }, cover: VOCAB_COVERS[t.slug], haystack: fold(`${t.nameVi} ${t.name} giao tiếp hằng ngày ${t.words.map((w) => w.word).join(' ')}`) })),
 ];
 
 export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: LibraryFilter }) {
@@ -182,7 +185,7 @@ export function DeckLibrary({ initialFilter = 'all' }: { initialFilter?: Library
   const open = (d: LibDeck) => router.push((d.href ?? `/vocabulary/topic/${d.slug}`) as never);
   const card = (d: LibDeck, i: number) => (
     <Appear key={d.slug} index={Math.min(i, 8)} style={{ height: '100%' }}>
-      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} now={now} onPress={() => open(d)} />
+      <DeckCard title={en && d.en ? d.en.title : d.title} subtitle={en && d.en ? d.en.subtitle : d.subtitle} progress={prog(d)} accent={d.look.accent} icon={d.look.icon} sourceLabel={en ? d.look.sourceLabelEn : d.look.sourceLabel} cover={d.cover} now={now} onPress={() => open(d)} />
     </Appear>
   );
   const createCard = (

@@ -18,7 +18,7 @@ export function seamDecor(o: {
   spacing?: number;
 }): MapObject[] {
   const gap = Math.max(o.gap ?? 28, 28);
-  const spacing = Math.max(o.spacing ?? 120, 110);
+  const spacing = Math.max(o.spacing ?? 120, 8);
   const out: MapObject[] = [];
   let n = 0;
   for (const l of o.lines) {
@@ -42,6 +42,46 @@ export function seamDecor(o: {
         x,
         y,
         footprint: { x: -5, y: -6, w: 10, h: 6 },
+      });
+      n++;
+    }
+  }
+  return out;
+}
+
+/**
+ * HÀNG BỤI CHE MÉP MẢNH: dọc mỗi đường mép đặt bụi liên tục trên đất liền (không đặt trên nước), chừa hở quanh điểm nối
+ * để đường vẫn thông. Bụi không có chân chặn (footprint 0) nên không làm đứt lối đi — chỉ để mép hoà vào cảnh.
+ */
+export function seamHedge(o: {
+  prefix: string;
+  maskRows: string[];
+  cell: number;
+  lines: SeamLine[];
+  gaps: { x: number; y: number }[];
+  sprites: string[];
+  gap?: number;
+  spacing?: number;
+}): MapObject[] {
+  const gap = Math.max(o.gap ?? 26, 12);
+  const spacing = Math.max(o.spacing ?? 12, 6);
+  const out: MapObject[] = [];
+  let n = 0;
+  for (const l of o.lines) {
+    const len = Math.hypot(l.x1 - l.x0, l.y1 - l.y0);
+    const count = Math.max(1, Math.floor(len / spacing));
+    for (let i = 0; i <= count; i++) {
+      const x = Math.round(l.x0 + ((l.x1 - l.x0) * i) / count);
+      const y = Math.round(l.y0 + ((l.y1 - l.y0) * i) / count);
+      const ch = o.maskRows[Math.floor(y / o.cell)]?.[Math.floor(x / o.cell)];
+      if (ch === undefined || ch === '~') continue;
+      if (o.gaps.some((g) => Math.abs(g.x - x) <= gap && Math.abs(g.y - y) <= gap)) continue;
+      out.push({
+        id: `${o.prefix}-${n}`,
+        sprite: o.sprites[n % o.sprites.length]!,
+        x,
+        y,
+        footprint: { x: -1, y: -1, w: 2, h: 2 },
       });
       n++;
     }

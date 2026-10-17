@@ -16,14 +16,20 @@ export async function POST(request: Request): Promise<Response> {
       const question = getSpeakingQuestion(body.questionId);
       if (!question) return Response.json({ error: msg(request, 'Không tìm thấy câu hỏi.', 'Question not found.') }, { status: 400 });
       text = question.part === 2 ? cueCardSpoken(question) : question.text;
-    } else {
+    } else if (typeof body.text === 'string') {
+      text = body.text.trim();
+      if (!text || text.length > 2500) return Response.json({ error: msg(request, 'Nội dung quá dài hoặc chưa có nội dung.', 'The text is empty or too long.') }, { status: 400 });
       const token = (request.headers.get('authorization') ?? '').replace(/^Bearer\s+/i, '');
-      if (!token) return Response.json({ error: msg(request, 'Đăng nhập để nghe bài mẫu bằng Aoede.', 'Sign in to hear the model answer in Aoede.') }, { status: 401 });
-      const { data, error } = await getSupabaseAdmin().auth.getUser(token);
-      if (error || !data.user) return Response.json({ error: msg(request, 'Phiên đăng nhập không hợp lệ.', 'Invalid session.') }, { status: 401 });
-      identity = data.user.id;
-      text = typeof body.text === 'string' ? body.text.trim() : '';
-      if (!text || text.length > 1800) return Response.json({ error: msg(request, 'Bài mẫu quá dài hoặc chưa có nội dung.', 'The sample is empty or too long.') }, { status: 400 });
+      if (token) {
+        try {
+          const { data } = await getSupabaseAdmin().auth.getUser(token);
+          if (data?.user) identity = data.user.id;
+        } catch {
+          /* fallback to IP */
+        }
+      }
+    } else {
+      return Response.json({ error: msg(request, 'Thiếu nội dung câu hỏi hoặc văn bản cần đọc.', 'Missing question or text to speak.') }, { status: 400 });
     }
     if (!keys.length) return Response.json({ error: msg(request, 'Aoede chưa sẵn sàng. Bạn vẫn có thể đọc câu hỏi và luyện trả lời.', 'Aoede is not ready. You can still read the question and practise.') }, { status: 503 });
     const now = Date.now();

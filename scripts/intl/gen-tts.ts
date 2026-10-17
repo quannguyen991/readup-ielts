@@ -13,7 +13,7 @@ import { collectAudioUnits, estimateAudio } from '../../src/data/intl/audio-unit
 import { pcm16ToWav } from '../../src/services/intl/wav';
 
 const MODEL = process.env.INTL_TTS_MODEL ?? 'gemini-2.5-flash-preview-tts';
-const VOICE = process.env.INTL_TTS_VOICE ?? 'Charon';
+const VOICE = process.env.INTL_TTS_VOICE ?? 'Aoede';
 const OUT_DIR = join(process.cwd(), 'public', 'audio', 'intl');
 const MANIFEST = join(process.cwd(), 'src', 'data', 'intl', 'audio-manifest.json');
 const run = process.argv.includes('--run');
